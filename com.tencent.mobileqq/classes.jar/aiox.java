@@ -1,10 +1,30 @@
-import com.tencent.image.URLImageView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
+import com.tencent.mobileqq.widget.QQVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-class aiox
+public class aiox
+  implements MediaPlayer.OnPreparedListener
 {
-  public URLImageView a;
+  public aiox(BlessActivity paramBlessActivity) {}
   
-  private aiox(aiov paramaiov) {}
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    }
+    if (BlessActivity.a(this.a) != null) {
+      BlessActivity.a(this.a).start();
+    }
+    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    }
+    bcst.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+  }
 }
 
 

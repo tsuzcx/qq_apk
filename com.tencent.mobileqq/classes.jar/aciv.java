@@ -1,35 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatPie.84;
-import com.tencent.mobileqq.activity.BaseChatPie.84.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.SystemClock;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-public class aciv
-  implements Animation.AnimationListener
+class aciv
+  implements agra
 {
-  public aciv(BaseChatPie.84 param84) {}
+  aciv(aciu paramaciu, AdArkAdapter.Callback paramCallback) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-    this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new BaseChatPie.84.2.1(this));
-  }
+  public void a() {}
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
     }
   }
 }

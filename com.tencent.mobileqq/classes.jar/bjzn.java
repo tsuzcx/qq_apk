@@ -1,37 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
 
 public class bjzn
-  extends bjxz
+  implements DialogInterface.OnClickListener
 {
-  public static String a;
-  public static String b = "setPGCNavViewSetting";
+  public bjzn(VideoJsProxyImpl.2 param2) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "Qzone";
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (!b.equals(paramString3))) {
-      return false;
+    bjzk.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
-    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
-    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzn
  * JD-Core Version:    0.7.0.1
  */

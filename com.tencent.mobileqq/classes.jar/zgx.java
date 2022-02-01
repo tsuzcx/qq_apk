@@ -1,17 +1,17 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public abstract interface zgx
+public final class zgx
+  implements FilenameFilter
 {
-  public abstract void a(List<LatLng> paramList, int paramInt);
-  
-  public abstract boolean b();
-  
-  public abstract void l();
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.endsWith(".mp4");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zgx
  * JD-Core Version:    0.7.0.1
  */

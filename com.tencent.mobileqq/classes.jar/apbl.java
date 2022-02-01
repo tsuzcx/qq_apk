@@ -1,62 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import java.lang.ref.WeakReference;
-
 public class apbl
-  implements Handler.Callback
+  extends apbj
 {
-  private WeakReference<DanmakuManager> a;
+  public static final apbl a;
+  public apbn a;
+  public apbp a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  private apbl(DanmakuManager paramDanmakuManager)
+  static
   {
-    this.a = new WeakReference(paramDanmakuManager);
+    jdField_a_of_type_Apbl = new apbl(false);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public apbl()
   {
-    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
-    if (localDanmakuManager == null) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 2: 
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
-    }
-    DanmakuManager.i(localDanmakuManager);
-    return false;
+    this.b = 128L;
+  }
+  
+  public apbl(boolean paramBoolean)
+  {
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

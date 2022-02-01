@@ -1,28 +1,14 @@
-import android.os.Process;
-
 public class akud
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  static
+  public akud(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    jdField_a_of_type_JavaLangString = bdgk.e();
-    jdField_b_of_type_JavaLangString = bdgk.i();
-    jdField_c_of_type_JavaLangString = bdgk.g();
-    jdField_a_of_type_Int = bdgk.b();
-    jdField_a_of_type_Long = bdgk.a();
-  }
-  
-  public akud()
-  {
-    this.jdField_b_of_type_Long = bdgk.a(Process.myPid());
-    this.jdField_c_of_type_Long = bdgk.f();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
 }
 

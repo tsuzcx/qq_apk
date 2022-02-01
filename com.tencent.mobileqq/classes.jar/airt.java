@@ -1,37 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
 public class airt
-  extends aiqq
+  implements anjl
 {
-  protected airt(AlbumListFragment paramAlbumListFragment)
-  {
-    super(paramAlbumListFragment);
-  }
+  public airt(AddContactsView paramAddContactsView) {}
   
-  public void initData(Intent paramIntent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super.initData(paramIntent);
-    this.a.filter.setSupportWebp(true);
-  }
-  
-  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    int i;
-    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-    for (;;)
+    if ((paramInt == 2) && (paramBoolean))
     {
-      azqs.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
-      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
-      if (paramQQAlbumInfo._id.equals("qzone_album")) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+      this.a.d = true;
+      this.a.f();
     }
   }
 }

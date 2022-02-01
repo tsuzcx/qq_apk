@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class zeh
-  implements Parcelable.Creator<NewerGuidePlugin.PhoneInfo>
+public class zeh
+  implements View.OnClickListener
 {
-  public NewerGuidePlugin.PhoneInfo a(Parcel paramParcel)
-  {
-    return new NewerGuidePlugin.PhoneInfo(paramParcel);
-  }
+  public zeh(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public NewerGuidePlugin.PhoneInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new NewerGuidePlugin.PhoneInfo[paramInt];
+    zef localzef = PermissionSettingActivity.a(this.a).a();
+    if (localzef != null)
+    {
+      PermissionSettingActivity.a(this.a, localzef);
+      this.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zeh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class apxd
-  implements Animation.AnimationListener
+  implements TypeEvaluator<apxb>
 {
-  public apxd(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  public apxd(apwv paramapwv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public apxb a(float paramFloat, apxb paramapxb1, apxb paramapxb2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
+    return paramapxb2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

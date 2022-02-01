@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
-class aewv
-  implements badp
+public class aewv
+  implements Animation.AnimationListener
 {
-  aewv(aewu paramaewu) {}
+  public aewv(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
-    int k = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
-    badx localbadx = new badx(new bado[] { new bads(450, i, j, i, k), new bads(450, i, k, i, j) });
-    localbadx.a = true;
-    this.a.a.jdField_a_of_type_Baes.a(new bado[] { localbadx });
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

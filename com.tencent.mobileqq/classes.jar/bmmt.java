@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-
-public class bmmt
-  implements DialogInterface.OnDismissListener
+public abstract interface bmmt
 {
-  public bmmt(EditVideoGuide paramEditVideoGuide) {}
+  public abstract void aJ();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_Bmnj.a(14);
-  }
+  public abstract void aK();
 }
 
 

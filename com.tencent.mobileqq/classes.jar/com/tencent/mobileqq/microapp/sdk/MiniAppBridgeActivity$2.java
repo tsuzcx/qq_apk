@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bety;
+import biau;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -62,7 +62,7 @@ class MiniAppBridgeActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity.2
  * JD-Core Version:    0.7.0.1
  */

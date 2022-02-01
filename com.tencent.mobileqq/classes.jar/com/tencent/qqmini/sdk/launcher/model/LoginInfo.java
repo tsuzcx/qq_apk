@@ -13,26 +13,28 @@ public class LoginInfo
   private byte[] loginSig;
   private int loginType;
   private String nickName;
+  private String payAccessToken;
   private String payOpenId;
   private String payOpenKey;
   private String platformId;
   
   public LoginInfo() {}
   
-  public LoginInfo(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, byte[] paramArrayOfByte, String paramString5, String paramString6)
+  public LoginInfo(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte, String paramString6, String paramString7)
   {
     this.loginType = paramInt;
     this.account = paramString1;
     this.nickName = paramString2;
     this.payOpenId = paramString3;
     this.payOpenKey = paramString4;
+    this.payAccessToken = paramString5;
     if (paramArrayOfByte != null)
     {
       this.loginSig = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, paramArrayOfByte, 0, paramArrayOfByte.length);
+      System.arraycopy(paramArrayOfByte, 0, this.loginSig, 0, paramArrayOfByte.length);
     }
     this.payOpenId = paramString3;
-    this.appId = paramString6;
+    this.appId = paramString7;
   }
   
   public int describeContents()
@@ -65,6 +67,11 @@ public class LoginInfo
     return this.nickName;
   }
   
+  public String getPayAccessToken()
+  {
+    return this.payAccessToken;
+  }
+  
   public String getPayOpenId()
   {
     return this.payOpenId;
@@ -95,7 +102,7 @@ public class LoginInfo
     if (paramArrayOfByte != null)
     {
       this.loginSig = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, paramArrayOfByte, 0, paramArrayOfByte.length);
+      System.arraycopy(paramArrayOfByte, 0, this.loginSig, 0, paramArrayOfByte.length);
     }
   }
   
@@ -107,6 +114,11 @@ public class LoginInfo
   public void setNickName(String paramString)
   {
     this.nickName = paramString;
+  }
+  
+  public void setPayAccessToken(String paramString)
+  {
+    this.payAccessToken = paramString;
   }
   
   public void setPayOpenId(String paramString)
@@ -131,6 +143,7 @@ public class LoginInfo
     paramParcel.writeString(this.nickName);
     paramParcel.writeString(this.payOpenId);
     paramParcel.writeString(this.payOpenKey);
+    paramParcel.writeString(this.payAccessToken);
     paramParcel.writeByteArray(this.loginSig);
     paramParcel.writeString(this.platformId);
     paramParcel.writeString(this.appId);
@@ -138,7 +151,7 @@ public class LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

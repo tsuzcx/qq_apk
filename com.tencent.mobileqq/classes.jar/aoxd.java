@@ -1,90 +1,99 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-public class aoxd
+class aoxd
+  extends aoyk
 {
-  private boolean a;
-  private boolean b;
+  aoxd(aoxb paramaoxb) {}
   
-  public static aoxd a(aoko[] paramArrayOfaoko)
+  public void a()
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
     }
-    aoxd localaoxd = new aoxd();
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfaoko.length;
-    int i = 0;
-    while (i < j)
+    if (aoxb.a(this.a) == null)
     {
-      localArrayList.add(paramArrayOfaoko[i].a);
-      i += 1;
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
+      return;
     }
-    if (localArrayList.size() > 0)
-    {
-      paramArrayOfaoko = new HashMap();
-      i = 0;
-      if (i < localArrayList.size())
-      {
-        Object localObject = (String)localArrayList.get(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((String)localObject).split("=");
-          if (localObject.length == 2)
-          {
-            if (!TextUtils.isEmpty(localObject[1])) {
-              localObject[1] = localObject[1].trim();
-            }
-            paramArrayOfaoko.put(localObject[0], localObject[1]);
-            if (QLog.isColorLevel()) {
-              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
-            }
-          }
-        }
-      }
-      localaoxd.a = "1".equals(paramArrayOfaoko.get("enable_tencent_docs_assistant"));
-      localaoxd.b = "1".equals(paramArrayOfaoko.get("preload_tool_process"));
-      paramArrayOfaoko = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramArrayOfaoko instanceof QQAppInterface))
-      {
-        paramArrayOfaoko = (QQAppInterface)paramArrayOfaoko;
-        baic.b(paramArrayOfaoko, localaoxd.b);
-        baic.a(paramArrayOfaoko, localaoxd.a);
-      }
+    aoxb.a(this.a).sendMessage(aoxb.a(this.a).obtainMessage(3));
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
     }
-    for (;;)
+    if (aoxb.a(this.a) == null)
     {
-      return localaoxd;
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    aoxb.a(this.a).sendMessage(aoxb.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      long l = 100L * paramLong1 / paramLong2;
       if (QLog.isColorLevel()) {
-        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
+      }
+      if (aoxb.a(this.a) == null) {
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
       }
     }
+    else
+    {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.arg1 = ((int)paramLong1);
+    localMessage.arg2 = ((int)paramLong2);
+    aoxb.a(this.a).sendMessage(localMessage);
   }
   
-  public boolean a()
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
+    }
+    if (aoxb.a(this.a) == null) {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
+    }
+    do
+    {
+      return;
+      if (paramArConfigInfo != null)
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = paramArConfigInfo;
+        aoxb.a(this.a).sendMessage(localMessage);
+      }
+      if (paramArEffectConfig != null)
+      {
+        paramArConfigInfo = Message.obtain();
+        paramArConfigInfo.what = 2;
+        paramArConfigInfo.obj = paramArEffectConfig;
+        aoxb.a(this.a).sendMessage(paramArConfigInfo);
+      }
+    } while (paramARCommonConfigInfo == null);
+    paramArConfigInfo = Message.obtain();
+    paramArConfigInfo.what = 9;
+    paramArConfigInfo.obj = paramARCommonConfigInfo;
+    aoxb.a(this.a).sendMessage(paramArConfigInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxd
  * JD-Core Version:    0.7.0.1
  */

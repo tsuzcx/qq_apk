@@ -2,7 +2,7 @@
 <com.tencent.mobileqq.emoticonview.EmoticonMainPanel android:id="@id/emoview" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ja2">
-        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.emoticonview.EmoticonPanelViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/l0r" android:visibility="invisible" android:layout="@layout/mw" android:inflatedId="@id/bpe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/l0s" android:visibility="invisible" android:layout="@layout/ny" android:inflatedId="@id/c38" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/mfv" android:visibility="invisible" android:layout="@layout/c5o" android:inflatedId="@id/lby" android:layout_width="fill_parent" android:layout_height="fill_parent" />

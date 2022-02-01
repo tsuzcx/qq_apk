@@ -1,43 +1,26 @@
-import android.os.SystemClock;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oxl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentDotClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxl
+  implements owp
 {
-  final long a;
-  public final String a;
-  long b;
-  public final String b;
-  
-  oxl(String paramString1, String paramString2)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  oxl(String paramString1, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  boolean a()
-  {
-    if (this.jdField_b_of_type_Long > 0L) {
-      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
-    }
-    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxm(parampay, paramContainer, parampan, paramContainer.getVirtualView().findViewBaseByName("id_first_comment_view")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxl
  * JD-Core Version:    0.7.0.1
  */

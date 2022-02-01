@@ -6,21 +6,21 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bbvz;
-import bbwa;
+import bewl;
+import bewm;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopMemberListRefresher$1$1
   implements Runnable
 {
-  public TroopMemberListRefresher$1$1(bbwa parambbwa) {}
+  public TroopMemberListRefresher$1$1(bewm parambewm) {}
   
   public void run()
   {
     try
     {
       QLog.e("RefreshMemberList", 4, "onUpdateTroopGetMemberList - success");
-      String str = bbvz.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
+      String str = bewl.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
       if (TextUtils.isEmpty(str)) {
         return;
       }
@@ -33,7 +33,7 @@ public class TroopMemberListRefresher$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1
  * JD-Core Version:    0.7.0.1
  */

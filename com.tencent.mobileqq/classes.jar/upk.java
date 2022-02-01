@@ -1,10 +1,22 @@
-public abstract interface upk
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+
+final class upk
+  implements ShareActionSheet.OnItemClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  upk(Context paramContext, uoc paramuoc) {}
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    uph.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Uoc);
+    paramShareActionSheet.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upk
  * JD-Core Version:    0.7.0.1
  */

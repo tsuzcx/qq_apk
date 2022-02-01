@@ -1,33 +1,24 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awbp
-  implements View.OnTouchListener
+class awbp
+  implements View.OnClickListener
 {
-  public awbp(PromotionEntry paramPromotionEntry) {}
+  awbp(awbl paramawbl, View.OnClickListener paramOnClickListener) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    this.jdField_a_of_type_Awbl.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbp
  * JD-Core Version:    0.7.0.1
  */

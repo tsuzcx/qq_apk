@@ -1,18 +1,17 @@
-public abstract interface ansv
+class ansv
+  implements lxe
 {
-  public abstract String a(ansy paramansy);
+  ansv(anst paramanst) {}
   
-  public abstract boolean a(ansy paramansy);
-  
-  public abstract boolean a(ansy paramansy, boolean paramBoolean);
-  
-  public abstract String b(ansy paramansy);
-  
-  public abstract boolean b(ansy paramansy);
+  public void a(lxd paramlxd)
+  {
+    paramlxd.a(this.a.a.a);
+    paramlxd.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ansv
  * JD-Core Version:    0.7.0.1
  */

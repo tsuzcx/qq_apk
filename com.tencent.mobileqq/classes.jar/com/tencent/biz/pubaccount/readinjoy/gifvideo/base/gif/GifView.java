@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -18,54 +18,55 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import orc;
-import pbu;
-import pbv;
+import pgk;
+import psp;
+import psq;
 
 public class GifView
   extends FrameLayout
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  private static final int MAXTRYCOUNTS = 2;
+  private static final String TAG = "gifvideo.GifView";
+  private static Drawable mLoadingDrawable;
+  private Context mContext;
+  private NativeReadInjoyImageView mCoverImageView;
+  protected String mCoverUrl;
+  private int mGifHeight;
+  private URLImageView mGifImageView;
+  private String mGifUrl;
+  private int mGifWidth;
+  private boolean mIsBigImg;
+  private NativeReadInjoyImageView mStaticZImageView;
+  public int mTryCounts = 1;
+  private boolean needGifUrl;
   
   public GifView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 1;
-    c();
+    init();
   }
   
   public GifView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 1;
-    c();
+    init();
   }
   
   public GifView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 1;
-    c();
+    init();
   }
   
-  private static Drawable a()
+  private static Drawable getLoadingDrawable()
   {
-    if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841378);
+    if (mLoadingDrawable == null) {
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841680);
     }
-    return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return mLoadingDrawable;
   }
   
-  private void a(URLDrawable paramURLDrawable)
+  private void handleDrawableLoadListener(URLDrawable paramURLDrawable)
   {
     if (paramURLDrawable == null) {}
     AtomicLong localAtomicLong1;
@@ -81,134 +82,164 @@ public class GifView
       l = System.currentTimeMillis();
       localAtomicLong3 = new AtomicLong(l);
       localAtomicLong4 = new AtomicLong(0L);
-      paramURLDrawable.setDownloadListener(new pbu(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
-    } while (this.jdField_a_of_type_ComTencentImageURLImageView == null);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new pbv(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
+      paramURLDrawable.setDownloadListener(new psp(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+    } while (this.mGifImageView == null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    this.mGifImageView.setURLDrawableDownListener(new psq(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
   }
   
-  private boolean b()
+  private void hideGifAnim()
   {
-    return this.jdField_a_of_type_Int <= 2;
+    this.mCoverImageView.setVisibility(4);
   }
   
-  private void c()
+  private void init()
   {
-    this.jdField_a_of_type_AndroidContentContext = getContext();
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView(this.jdField_a_of_type_ComTencentImageURLImageView, -1, -1);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, -1, -1);
+    this.mContext = getContext();
+    this.mGifImageView = new URLImageView(this.mContext);
+    this.mCoverImageView = new NativeReadInjoyImageView(this.mContext);
+    this.mStaticZImageView = new NativeReadInjoyImageView(this.mContext);
+    this.mGifImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.mCoverImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.mStaticZImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    addView(this.mGifImageView, -1, -1);
+    addView(this.mCoverImageView, -1, -1);
+    addView(this.mStaticZImageView, -1, -1);
   }
   
-  private void d()
+  private void initBigImgParams()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
+    this.mTryCounts = 1;
+    this.mIsBigImg = false;
   }
   
-  private void e()
+  private void reloadBigImg()
   {
-    a(this.jdField_b_of_type_Int >> this.jdField_a_of_type_Int, this.c >> this.jdField_a_of_type_Int);
+    displayGif(this.mGifWidth >> this.mTryCounts, this.mGifHeight >> this.mTryCounts);
   }
   
-  private void f()
+  private boolean shouldTryLoad()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(4);
+    return this.mTryCounts <= 2;
   }
   
-  public void a()
+  public void displayCover()
   {
-    a(-1, -1);
+    this.mCoverImageView.setVisibility(0);
+    this.mCoverImageView.setAlpha(1.0F);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void displayGif()
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    displayGif(-1, -1);
+  }
+  
+  public void displayGif(int paramInt1, int paramInt2)
+  {
+    if ((!TextUtils.isEmpty(this.mGifUrl)) && (this.mGifImageView.getVisibility() == 0))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = a();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = a();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getLoadingDrawable();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getLoadingDrawable();
       if ((paramInt2 > 0) && (paramInt1 > 0))
       {
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt1;
       }
-      localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      localObject = URLDrawable.getDrawable(this.mGifUrl, (URLDrawable.URLDrawableOptions)localObject);
       if (((URLDrawable)localObject).getStatus() == 1) {
-        f();
+        hideGifAnim();
       }
-      a((URLDrawable)localObject);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      handleDrawableLoadListener((URLDrawable)localObject);
+      this.mGifImageView.setImageDrawable((Drawable)localObject);
     }
   }
   
-  public boolean a()
+  public boolean isPlaying()
   {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getVisibility() != 0);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setAlpha(1.0F);
+    return (this.mCoverImageView != null) && (this.mCoverImageView.getVisibility() != 0);
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    b();
+    displayCover();
   }
   
   public void setCoverUrl(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {}
+    this.mCoverUrl = paramString;
+    if ((this.mCoverImageView != null) && (paramString != null)) {}
     try
     {
-      orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_a_of_type_JavaLangString), getContext());
-      d();
+      pgk.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
       return;
     }
     catch (MalformedURLException paramString)
     {
-      for (;;)
-      {
-        QLog.d("gifvideo.GifView", 2, paramString.getMessage());
-      }
+      QLog.d("gifvideo.GifView", 2, paramString.getMessage());
     }
   }
   
   public void setGifHeight(int paramInt)
   {
-    this.c = paramInt;
+    this.mGifHeight = paramInt;
   }
   
   public void setGifUrl(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    d();
+    if ((this.needGifUrl) && (paramString != null) && (!paramString.contains("fmt=gif")))
+    {
+      setStaticImageUrl(paramString);
+      this.mGifImageView.setURLDrawableDownListener(null);
+      this.mStaticZImageView.setVisibility(0);
+      this.mGifImageView.setVisibility(8);
+      this.mCoverImageView.setVisibility(8);
+      return;
+    }
+    this.mStaticZImageView.setVisibility(8);
+    this.mGifImageView.setVisibility(0);
+    this.mCoverImageView.setVisibility(0);
+    this.mGifUrl = paramString;
   }
   
   public void setGifWidth(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.mGifWidth = paramInt;
   }
   
   public void setIsBigImg(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mIsBigImg = paramBoolean;
+  }
+  
+  public void setNeedGifUrl(boolean paramBoolean)
+  {
+    this.needGifUrl = paramBoolean;
   }
   
   public void setScaleType(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
+    if (this.mCoverImageView != null) {
+      this.mCoverImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
     }
-    if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
+    if (this.mGifImageView != null) {
+      this.mGifImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(paramInt, ImageView.ScaleType.CENTER_CROP));
+    }
+  }
+  
+  public void setStaticImageUrl(String paramString)
+  {
+    if ((this.mStaticZImageView != null) && (paramString != null)) {}
+    try
+    {
+      pgk.a(this.mStaticZImageView, new URL(paramString), getContext());
+      return;
+    }
+    catch (MalformedURLException paramString)
+    {
+      QLog.d("gifvideo.GifView", 2, paramString.getMessage());
     }
   }
 }

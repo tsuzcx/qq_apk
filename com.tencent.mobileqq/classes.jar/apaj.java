@@ -1,8 +1,11 @@
 public class apaj
 {
-  public int a;
-  public long a;
-  public String a;
+  public int a = 3000;
+  
+  public String toString()
+  {
+    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
+  }
 }
 
 

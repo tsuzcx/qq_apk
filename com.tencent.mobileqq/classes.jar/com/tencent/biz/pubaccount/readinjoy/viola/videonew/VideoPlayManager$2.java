@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import rjn;
+import sfb;
 
 class VideoPlayManager$2
   implements Runnable
 {
-  VideoPlayManager$2(VideoPlayManager paramVideoPlayManager, rjn paramrjn) {}
+  VideoPlayManager$2(VideoPlayManager paramVideoPlayManager, sfb paramsfb) {}
   
   public void run()
   {
-    this.a.i();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.2
  * JD-Core Version:    0.7.0.1
  */

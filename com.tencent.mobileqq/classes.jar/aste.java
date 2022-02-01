@@ -1,16 +1,19 @@
-import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class aste
-  extends LruCache<String, astf>
+public class aste
+  implements atve
 {
-  aste(astd paramastd, int paramInt)
+  public aste(UniformDownloadActivity paramUniformDownloadActivity) {}
+  
+  public void a()
   {
-    super(paramInt);
+    UniformDownloadActivity.a(this.a);
   }
   
-  protected int a(String paramString, astf paramastf)
+  public void b()
   {
-    return 1;
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

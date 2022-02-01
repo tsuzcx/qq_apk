@@ -1,34 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowEntryData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
 
-public class avkk
-  implements bhuk
+class avkk
+  extends CustomizedReport
 {
-  public avkk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bhuf parambhuf) {}
+  avkk(avju paramavju) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
+  
+  public void onReport(Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    avjl localavjl = avkt.a().a();
+    if (localavjl != null) {
+      localavjl.a(paramBundle);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.e();
-      return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
-      }
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
+      umq.a(avks.jdField_a_of_type_JavaLangString, "", "", avks.b, avks.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
     }
   }
+  
+  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkk
  * JD-Core Version:    0.7.0.1
  */

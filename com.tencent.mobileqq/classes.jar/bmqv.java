@@ -1,16 +1,23 @@
-public abstract interface bmqv
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class bmqv
+  extends Handler
 {
-  public abstract void a(bmyj parambmyj);
+  bmqv(bmqu parambmqu, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(bmyj parambmyj, int paramInt1, int paramInt2);
-  
-  public abstract void a(bmyj parambmyj, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract void b(bmyj parambmyj);
-  
-  public abstract void b(bmyj parambmyj, int paramInt1, int paramInt2);
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      this.a.jdField_a_of_type_Bmqr = null;
+      this.a.jdField_a_of_type_Boolean = false;
+    }
+  }
 }
 
 

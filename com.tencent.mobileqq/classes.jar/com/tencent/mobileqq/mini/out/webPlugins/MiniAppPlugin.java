@@ -1,18 +1,27 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import alud;
+import NS_COMM.COMM.Entry;
+import NS_COMM.COMM.StCommonExt;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import apmh;
-import apml;
-import aprh;
-import begz;
+import anni;
+import arpd;
+import arph;
+import arui;
+import bhod;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.share.MiniArkShareModelBuilder;
+import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
+import com.tencent.mobileqq.minigame.ui.PayForFriendView;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -20,6 +29,7 @@ import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -34,11 +44,11 @@ public class MiniAppPlugin
   public static final String PLUGIN_NAMESPACE = "miniApp";
   public static final String SCHEME = "miniApp";
   public static final String TAG = "MiniAppPlugin";
-  private static final String URL_PREFIX_HTTP_MINIAPP_HEAD_URL_1 = "http://www.mqqapi.com//microapp/open?";
-  private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "http://mqqapi//microapp/open?";
+  private static final String URL_PREFIX_HTTP_MINIAPP_HEAD_URL_1 = "https://www.mqqapi.com//microapp/open?";
+  private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "https://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private apmh remoteRespObserver = new MiniAppPlugin.3(this);
+  private arpd remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -51,10 +61,10 @@ public class MiniAppPlugin
     if (!TextUtils.isEmpty(paramString))
     {
       localObject = null;
-      if (!paramString.startsWith("http://mqqapi//microapp/open?")) {
+      if (!paramString.startsWith("https://mqqapi//microapp/open?")) {
         break label30;
       }
-      localObject = "http://mqqapi//microapp/open?";
+      localObject = "https://mqqapi//microapp/open?";
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label45;
       }
@@ -70,10 +80,10 @@ public class MiniAppPlugin
         do
         {
           return paramString;
-          if (!paramString.startsWith("http://www.mqqapi.com//microapp/open?")) {
+          if (!paramString.startsWith("https://www.mqqapi.com//microapp/open?")) {
             break;
           }
-          localObject = "http://www.mqqapi.com//microapp/open?";
+          localObject = "https://www.mqqapi.com//microapp/open?";
           break;
           localObject = getUrlParam(paramString, (String)localObject);
         } while (localObject == null);
@@ -119,10 +129,10 @@ public class MiniAppPlugin
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(paramString)) {
-      if (!paramString.startsWith("http://mqqapi//microapp/open?"))
+      if (!paramString.startsWith("https://mqqapi//microapp/open?"))
       {
         bool1 = bool2;
-        if (!paramString.startsWith("http://www.mqqapi.com//microapp/open?")) {}
+        if (!paramString.startsWith("https://www.mqqapi.com//microapp/open?")) {}
       }
       else
       {
@@ -183,48 +193,41 @@ public class MiniAppPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    Object localObject = null;
-    boolean bool1 = false;
-    boolean bool2 = true;
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("miniApp")) || (paramString3 == null))
-    {
-      bool1 = false;
-      return bool1;
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("miniApp")) || (paramString3 == null)) {
+      return false;
     }
     if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
       return false;
     }
     if (paramString3.equals("openApp")) {}
-    label730:
-    label735:
-    label741:
-    label746:
-    label751:
+    label1139:
+    label1142:
+    label1145:
     for (;;)
     {
       try
       {
         paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
         if (paramJsBridgeListener != null) {
-          break label751;
+          break label1145;
         }
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        if (!paramJsBridgeListener.has("appid")) {
-          break label746;
+        paramString1 = null;
+        paramString2 = null;
+        paramString3 = null;
+        paramVarArgs = null;
+        if (paramJsBridgeListener.has("appid")) {
+          paramString1 = paramJsBridgeListener.optString("appid");
         }
-        paramString1 = paramJsBridgeListener.optString("appid");
-        if (!paramJsBridgeListener.has("apptype")) {
-          break label741;
+        if (paramJsBridgeListener.has("apptype")) {
+          paramString2 = paramJsBridgeListener.optString("apptype");
         }
-        paramString2 = paramJsBridgeListener.optString("apptype");
-        if (!paramJsBridgeListener.has("via")) {
-          break label735;
+        if (paramJsBridgeListener.has("via")) {
+          paramString3 = paramJsBridgeListener.optString("via");
         }
-        paramString3 = paramJsBridgeListener.optString("via");
-        paramVarArgs = localObject;
         if (paramJsBridgeListener.has("callback")) {
           paramVarArgs = paramJsBridgeListener.optString("callback");
         }
@@ -236,57 +239,53 @@ public class MiniAppPlugin
           callJs(paramVarArgs, new String[] { paramJsBridgeListener.toString() });
           return true;
         }
+        paramJsBridgeListener = new Bundle();
+        paramJsBridgeListener.putString("miniapp_appid", paramString1);
+        paramJsBridgeListener.putString("miniapp_type", paramString2);
+        paramJsBridgeListener.putString("miniapp_via", paramString3);
+        sendRemoteReq(arph.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       }
       catch (Throwable paramJsBridgeListener)
       {
         QLog.e("MiniAppPlugin", 1, "openApp error.", paramJsBridgeListener);
-        return true;
+        continue;
       }
-      paramJsBridgeListener = new Bundle();
-      paramJsBridgeListener.putString("miniapp_appid", paramString1);
-      paramJsBridgeListener.putString("miniapp_type", paramString2);
-      paramJsBridgeListener.putString("miniapp_via", paramString3);
-      sendRemoteReq(apml.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       return true;
       if (paramString3.equals("canOpenApp")) {
-        try
-        {
-          paramString1 = new JSONObject();
-          if (canOpenApp == 1) {
-            bool1 = true;
-          }
-          paramString1.put("canOpenApp", bool1);
-          paramJsBridgeListener.a(paramString1);
-          return true;
-        }
-        catch (Throwable paramJsBridgeListener)
-        {
-          QLog.e("MiniAppPlugin", 1, "canOpenApp error.", paramJsBridgeListener);
-          return true;
-        }
-      }
-      if (paramString3.equals("chooseAddress"))
-      {
-        bool1 = bool2;
-        if (paramVarArgs == null) {
-          break;
-        }
-        bool1 = bool2;
-      }
-      for (;;)
-      {
         for (;;)
         {
           try
           {
-            if (paramVarArgs.length <= 0) {
-              break;
+            paramString1 = new JSONObject();
+            if (canOpenApp != 1) {
+              continue;
             }
-            paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-            if (!paramJsBridgeListener.has("callback")) {
-              break label730;
+            bool = true;
+            paramString1.put("canOpenApp", bool);
+            paramJsBridgeListener.a(paramString1);
+          }
+          catch (Throwable paramJsBridgeListener)
+          {
+            boolean bool;
+            QLog.e("MiniAppPlugin", 1, "canOpenApp error.", paramJsBridgeListener);
+            continue;
+          }
+          return true;
+          bool = false;
+        }
+      }
+      if (paramString3.equals("chooseAddress"))
+      {
+        if (paramVarArgs != null) {}
+        try
+        {
+          if (paramVarArgs.length > 0)
+          {
+            paramJsBridgeListener = null;
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            if (paramString1.has("callback")) {
+              paramJsBridgeListener = paramString1.optString("callback");
             }
-            paramJsBridgeListener = paramJsBridgeListener.optString("callback");
             if (paramVarArgs[0] != null)
             {
               if (QLog.isColorLevel()) {
@@ -300,48 +299,93 @@ public class MiniAppPlugin
             paramString1.put("ret", 0);
             paramString1.put("msg", "get addressResult suc.");
             callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            return true;
-          }
-          catch (Throwable paramJsBridgeListener)
-          {
-            QLog.e("MiniAppPlugin", 1, "chooseAddress error.", paramJsBridgeListener);
-            return true;
-          }
-          if (paramString3.equals("payCallback")) {
-            try
-            {
-              paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-              QLog.i("MiniAppPlugin", 1, "payCallback" + paramJsBridgeListener.toString());
-              paramString1 = new Intent();
-              paramString1.putExtra("errCode", paramJsBridgeListener.optInt("errCode"));
-              paramString1.putExtra("errMsg", paramJsBridgeListener.optString("errMsg"));
-              bool1 = bool2;
-              if (this.mRuntime == null) {
-                break;
-              }
-              bool1 = bool2;
-              if (this.mRuntime.a() == null) {
-                break;
-              }
-              this.mRuntime.a().setResult(-1, paramString1);
-              this.mRuntime.a().finish();
-              return true;
-            }
-            catch (Throwable paramJsBridgeListener)
-            {
-              QLog.e("MiniAppPlugin", 1, "payCallback error.", paramJsBridgeListener);
-              return true;
-            }
           }
         }
-        return false;
-        paramJsBridgeListener = null;
+        catch (Throwable paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            QLog.e("MiniAppPlugin", 1, "chooseAddress error.", paramJsBridgeListener);
+          }
+        }
+        return true;
       }
-      paramString3 = null;
-      continue;
-      paramString2 = null;
-      continue;
-      paramString1 = null;
+      if (paramString3.equals("payCallback")) {
+        try
+        {
+          paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+          QLog.i("MiniAppPlugin", 1, "payCallback" + paramJsBridgeListener.toString());
+          paramString1 = new Intent();
+          paramString1.putExtra("errCode", paramJsBridgeListener.optInt("errCode"));
+          paramString1.putExtra("errMsg", paramJsBridgeListener.optString("errMsg"));
+          if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+          {
+            this.mRuntime.a().setResult(-1, paramString1);
+            this.mRuntime.a().finish();
+          }
+          return true;
+        }
+        catch (Throwable paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            QLog.e("MiniAppPlugin", 1, "payCallback error.", paramJsBridgeListener);
+          }
+        }
+      }
+      if (paramString3.equals("closeFriendPaymentH5"))
+      {
+        if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
+          this.mRuntime.a().setVisibility(8);
+        }
+        return true;
+      }
+      if (paramString3.equals("shareFriendPayment")) {
+        paramString1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      }
+      for (;;)
+      {
+        try
+        {
+          paramString2 = paramString1.getString("prepayId");
+          int i = paramString1.optInt("setEnv", 0);
+          paramJsBridgeListener = paramString1.optString("title");
+          paramString1 = paramString1.optString("imageUrl");
+          if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+            break label1142;
+          }
+          paramJsBridgeListener = GameWnsUtils.defaultPayShareTitle();
+          if (!TextUtils.isEmpty(paramString1)) {
+            break label1139;
+          }
+          paramString1 = GameWnsUtils.defaultPayShareImg();
+          paramString3 = new COMM.StCommonExt();
+          paramVarArgs = new COMM.Entry();
+          paramVarArgs.key.set("prepay_id");
+          paramVarArgs.value.set(paramString2);
+          paramString3.mapInfo.get().add(paramVarArgs);
+          paramString2 = new COMM.Entry();
+          paramString2.key.set("set_env");
+          paramString2.value.set(i + "");
+          paramString3.mapInfo.get().add(paramString2);
+          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof PayForFriendView)))
+          {
+            paramString2 = (PayForFriendView)this.mRuntime.a();
+            paramVarArgs = paramString2.getAppId();
+            String str1 = paramString2.getAppName();
+            String str2 = paramString2.getAppIconUrl();
+            String str3 = paramString2.getAppVersionId();
+            i = paramString2.getAppVerType();
+            MiniProgramShareUtils.shareAsArkMessage(this.mRuntime.a(), new MiniArkShareModelBuilder().setAppId(paramVarArgs).setTitle(str1).setDescription(paramJsBridgeListener).setShareScene(4).setShareTemplateType(1).setShareBusinessType(1).setPicUrl(paramString1).setVidUrl(null).setJumpUrl("").setIconUrl(str2).setVersionType(i).setVersionId(str3).setWebURL("").setTemplateId("").setTemplateData("").setEntryModel(null).setShareChatModel(null).setShareTarget(0).setRcvOpenId("").createMiniArkShareModel(), false, 13, paramString3, null);
+          }
+          return true;
+        }
+        catch (Throwable paramJsBridgeListener)
+        {
+          QLog.e("MiniAppPlugin", 1, "shareFriendPayment error.", paramJsBridgeListener);
+        }
+        return false;
+      }
     }
   }
   
@@ -367,35 +411,35 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    aprh.a().a(this.remoteRespObserver);
+    arui.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    aprh.a().b(this.remoteRespObserver);
+    arui.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!aprh.a().a())
+    if (!arui.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), alud.a(2131707224), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), anni.a(2131705615), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      aprh.a().b(paramBundle);
+      arui.a().b(paramBundle);
       return;
     }
-    aprh.a().a(paramBundle);
+    arui.a().a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin
  * JD-Core Version:    0.7.0.1
  */

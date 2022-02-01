@@ -1,34 +1,52 @@
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class anol
-  implements ArkAppPreloader.PreloadAppCallback
+public class anol
 {
-  anol(anoj paramanoj) {}
+  int jdField_a_of_type_Int = -1;
+  String jdField_a_of_type_JavaLangString;
+  ArrayList<anok> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void beginAppload(String paramString, int paramInt)
+  public void a()
   {
-    if (paramInt == 1) {
-      anod.a(paramString);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  public String toString()
   {
-    if (paramInt == 1)
+    int i = 2000;
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
+    if (j > 2000) {}
+    for (;;)
     {
-      anod.b(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
+      StringBuilder localStringBuilder = new StringBuilder(i);
+      localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append(",");
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localStringBuilder.append("{");
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            localStringBuilder.append((anok)localIterator.next()).append(",");
+            continue;
+            if (j >= 100) {
+              break label155;
+            }
+            i = 100;
+            break;
+          }
+        }
+        localStringBuilder.append("}");
       }
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+      label155:
+      i = j;
     }
-  }
-  
-  public void onReleaseAndReload(String paramString, int paramInt)
-  {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
-    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new anom(this, paramString));
   }
 }
 

@@ -12,7 +12,7 @@ final class ApolloItemBuilder$3
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298998));
     if (QLog.isColorLevel()) {
       QLog.d("ApolloItemBuilder", 2, "fav action number is 144");
     }
@@ -20,7 +20,7 @@ final class ApolloItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

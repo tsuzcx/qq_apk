@@ -1,18 +1,21 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avsc
-  extends avqj
+class avsc
+  implements View.OnClickListener
 {
-  public TextView g;
+  avsc(avsa paramavsa, avrz paramavrz, avse paramavse) {}
   
-  public avsc(avsb paramavsb)
+  public void onClick(View paramView)
   {
-    super(paramavsb);
+    avsa.a(this.jdField_a_of_type_Avsa).b(avsa.a(this.jdField_a_of_type_Avsa), this.jdField_a_of_type_Avsa, this.jdField_a_of_type_Avrz, this.jdField_a_of_type_Avse);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsc
  * JD-Core Version:    0.7.0.1
  */

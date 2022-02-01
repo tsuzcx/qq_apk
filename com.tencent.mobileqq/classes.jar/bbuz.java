@@ -1,37 +1,42 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
 public class bbuz
+  extends bbva
 {
-  static long a;
-  public int a;
-  public Bundle a;
-  public bbva a;
-  public String a;
-  public nac a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
-  public int f = 1;
+  public Button a;
   
-  public bbuz()
+  public bbuz(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    long l = jdField_a_of_type_Long + 1L;
-    jdField_a_of_type_Long = l;
-    this.jdField_b_of_type_Long = l;
+    super(paramViewGroup, paramInt);
+  }
+  
+  public Button a()
+  {
+    return this.a;
+  }
+  
+  protected void a()
+  {
+    this.h = ((TextView)this.b.findViewById(2131371720));
+    this.e = ((ImageView)this.b.findViewById(2131361795));
+    this.i = ((TextView)this.b.findViewById(2131376456));
+    this.k = ((TextView)this.b.findViewById(2131377713));
+    this.a = ((Button)this.b.findViewById(2131376443));
+    this.a.setText(anni.a(2131689550));
+    this.j = ((TextView)this.b.findViewById(2131376453));
+    if ((this.e instanceof ThemeImageView)) {
+      ((ThemeImageView)this.e).setSupportMaskView(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuz
  * JD-Core Version:    0.7.0.1
  */

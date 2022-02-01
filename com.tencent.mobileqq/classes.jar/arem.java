@@ -1,265 +1,471 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.1;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.2;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.3;
-import com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.4;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Point;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
-public abstract class arem
-  implements IExcitingTransferRecvListener
+public class arem
+  extends areb
 {
-  protected final int a;
-  protected long a;
-  protected final aren a;
-  private arep a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  public boolean a;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private aren[] jdField_a_of_type_ArrayOfAren;
   protected int b;
-  public long b;
-  protected final long c;
-  protected final long d;
+  private List<List<aren>> b;
+  private int c;
   
-  public arem(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, aren paramaren)
+  protected arem(arew paramarew, arec paramarec, Comparator<aren> paramComparator, argg paramargg, argb paramargb)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 201;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = paramLong1;
-    this.jdField_a_of_type_Aren = paramaren;
-    this.c = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
+    super(paramarew, paramarec, paramComparator, paramargg, paramargb);
   }
   
-  private void b(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  private int a(aren paramaren)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_Long != 0L)
+    if ((paramaren == null) || (this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_JavaUtilList == null)) {}
+    int j;
+    do
     {
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
-    }
-    ThreadManager.post(new ExtfBaseFileDownloader.3(this, paramInt, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
+      return -1;
+      int i = 0;
+      j = -1;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        if (paramaren.c() == this.jdField_a_of_type_ArrayOfInt[i]) {
+          j = i;
+        }
+        i += 1;
+      }
+    } while (this.jdField_b_of_type_JavaUtilList.size() <= j);
+    return j;
   }
   
-  public void OnOneSlotComplete(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  private void a(aren paramaren, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (paramaren.e()) {
+      this.jdField_a_of_type_Arec.a(paramaren, this.jdField_a_of_type_Arew);
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("Id[").append(this.d).append("] ^_^ OnOneSlotComplete:").append(paramInt).append(" RP:");
-    if (paramExcitingTransferOneSlotComplete != null) {}
-    for (String str = paramExcitingTransferOneSlotComplete.toString();; str = "")
+    paramaren.a(paramInt2, paramInt1, this.jdField_a_of_type_Argg.a(), this.jdField_a_of_type_Argb.a());
+  }
+  
+  private void a(arfm paramarfm)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.c != paramarfm.a()))
     {
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, str);
-      if (this.jdField_a_of_type_Arep == null) {
+      this.c = paramarfm.a();
+      this.jdField_a_of_type_ArrayOfInt = new int[this.c];
+      paramarfm = new aren[this.c];
+      if (this.jdField_a_of_type_ArrayOfAren != null) {
+        System.arraycopy(this.jdField_a_of_type_ArrayOfAren, 0, paramarfm, 0, Math.min(paramarfm.length, this.jdField_a_of_type_ArrayOfAren.length));
+      }
+      this.jdField_a_of_type_ArrayOfAren = paramarfm;
+      if (this.jdField_b_of_type_JavaUtilList != null)
+      {
+        i = this.jdField_b_of_type_JavaUtilList.size();
+        if (i < this.c) {
+          while (i < this.c)
+          {
+            this.jdField_b_of_type_JavaUtilList.add(new LinkedList());
+            i += 1;
+          }
+        }
+        i -= 1;
+        while (i >= this.c)
+        {
+          this.jdField_b_of_type_JavaUtilList.remove(i);
+          i -= 1;
+        }
+      }
+      this.jdField_b_of_type_JavaUtilList = new ArrayList(this.c);
+      i = 0;
+      while (i < this.c)
+      {
+        this.jdField_b_of_type_JavaUtilList.add(new LinkedList());
+        i += 1;
+      }
+    }
+    int j = this.jdField_a_of_type_Arew.a();
+    StringBuilder localStringBuilder1 = new StringBuilder("[");
+    int i = 0;
+    if (i < this.c)
+    {
+      this.jdField_a_of_type_ArrayOfInt[i] = (i * j + this.jdField_b_of_type_Int);
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(this.jdField_a_of_type_ArrayOfInt[i]);
+      if (i != this.c - 1) {}
+      for (paramarfm = ", ";; paramarfm = "")
+      {
+        localStringBuilder2.append(paramarfm);
+        i += 1;
         break;
       }
-      this.jdField_a_of_type_Arep.a(paramInt, paramExcitingTransferOneSlotComplete);
-      return;
     }
+    localStringBuilder1.append("]");
+    argp.b("Danmaku_R2LWindow", new Object[] { "reloadConfig, mRowCount = %d, mMarginTop = %d, lineHeight = %d, lineTops = %s", Integer.valueOf(this.c), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(j), localStringBuilder1 });
+    a(this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfInt);
   }
   
-  public void OnSpeed(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
+  private void a(List<List<aren>> paramList, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    ThreadManager.post(new ExtfBaseFileDownloader.4(this, paramExcitingTransferDownloadSpeedInfo), 5, null, false);
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public ExcitingTransferDownloadCompletedInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
-  }
-  
-  protected abstract ExcitingTransferDownloadConfig a();
-  
-  protected ExcitingTransferDownloadReqInfo a()
-  {
-    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
-    if (this.jdField_a_of_type_Aren != null)
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      localExcitingTransferDownloadReqInfo.fileSize = this.jdField_a_of_type_Aren.a();
-      localExcitingTransferDownloadReqInfo.md5 = this.jdField_a_of_type_Aren.a();
-      localExcitingTransferDownloadReqInfo.isSupportHttps = this.jdField_a_of_type_Aren.b();
-      localExcitingTransferDownloadReqInfo.sslCName = this.jdField_a_of_type_Aren.d();
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_Aren.a();
-      if (this.jdField_a_of_type_Aren.a() != null) {
-        localExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])this.jdField_a_of_type_Aren.a().toArray(new ExcitingTransferHostInfo[this.jdField_a_of_type_Aren.a().size()]));
+      Iterator localIterator = ((List)paramList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        areu localareu = (areu)localIterator.next();
+        localareu.a();
+        long l = this.jdField_a_of_type_Argb.a();
+        int k = (int)localareu.b();
+        b(localareu);
+        localareu.c(l - (int)((localareu.f() - k) / -localareu.a()));
+        localareu.h(paramArrayOfInt[i]);
+        localareu.g(k);
       }
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_Aren.a();
-      localExcitingTransferDownloadReqInfo.serverPath = this.jdField_a_of_type_Aren.b();
+      i += 1;
+    }
+  }
+  
+  private boolean a(aren paramaren)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      if (((List)localIterator.next()).contains(paramaren))
+      {
+        argp.b("Danmaku_R2LWindow", new Object[] { paramaren, " is repeat" });
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void e()
+  {
+    int i2 = arew.a().e();
+    if (argp.jdField_a_of_type_Int >= 5) {
+      argp.b("Danmaku_R2LWindow", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilTreeSet.size()) });
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeSet.iterator();
+    int i = 0;
+    aren localaren;
+    int k;
+    int j;
+    int m;
+    label252:
+    int i1;
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        localaren = (aren)localIterator.next();
+        localIterator.remove();
+        if ((localaren.b(this.jdField_a_of_type_Argb.a())) || (localaren.a(this.jdField_a_of_type_Argg.a())) || (a(localaren)))
+        {
+          if (argp.jdField_a_of_type_Int >= 5) {
+            argp.b("Danmaku_R2LWindow", new Object[] { localaren, " is out side" });
+          }
+          this.jdField_a_of_type_JavaUtilList.add(localaren);
+        }
+        else
+        {
+          if (!localaren.b()) {
+            arek.a(this.jdField_a_of_type_Arew, localaren);
+          }
+          k = localaren.b(this.c);
+          if (k >= 0)
+          {
+            j = k;
+            m = 2147483647;
+            if (k < 0) {
+              break label295;
+            }
+          }
+          label295:
+          for (int n = j + 1;; n = this.c + j)
+          {
+            argp.c("Danmaku_R2LWindow", "startLayout, startLine = " + j + ", maxLine = " + n + ", danmaku = " + localaren);
+            k = j;
+            j = m;
+            if (k >= n) {
+              break label1016;
+            }
+            m = k;
+            while (m >= this.c) {
+              m -= this.c;
+            }
+            j = localaren.a(this.c);
+            break;
+          }
+          if (argp.jdField_a_of_type_Int >= 5)
+          {
+            argp.b("Danmaku_R2LWindow", new Object[] { localaren, " try layout" });
+            i1 = 0;
+            if (i1 < this.c)
+            {
+              StringBuilder localStringBuilder = new StringBuilder().append("row ").append(i1);
+              if (this.jdField_a_of_type_ArrayOfAren[i1] == null) {}
+              for (Object localObject = " null";; localObject = this.jdField_a_of_type_ArrayOfAren[i1])
+              {
+                argp.b("Danmaku_R2LWindow", localObject);
+                i1 += 1;
+                break;
+              }
+            }
+          }
+          if (this.jdField_a_of_type_ArrayOfAren[m] == null)
+          {
+            this.jdField_a_of_type_ArrayOfAren[m] = localaren;
+            ((List)this.jdField_b_of_type_JavaUtilList.get(m)).add(localaren);
+            this.jdField_a_of_type_Int += 1;
+            a(localaren, this.jdField_a_of_type_ArrayOfInt[m], i2);
+            if (argp.jdField_a_of_type_Int >= 4) {
+              argp.b("Danmaku_R2LWindow", new Object[] { localaren, " layout success:", Integer.valueOf(m), ",top:", Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[m]) });
+            }
+            m = 1;
+            k = i;
+            i = m;
+          }
+        }
+      }
     }
     for (;;)
     {
-      localExcitingTransferDownloadReqInfo.strCookie = c();
-      localExcitingTransferDownloadReqInfo.strTempFilePath = b();
-      localExcitingTransferDownloadReqInfo.strSaveFileDir = a();
-      a(localExcitingTransferDownloadReqInfo);
-      return localExcitingTransferDownloadReqInfo;
-      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] getDownloadInfo mFileInfo = null ^^^^");
+      m = i;
+      if (i == 0)
+      {
+        m = i;
+        if (localaren.a(j))
+        {
+          this.jdField_a_of_type_ArrayOfAren[k] = localaren;
+          ((List)this.jdField_b_of_type_JavaUtilList.get(k)).add(localaren);
+          this.jdField_a_of_type_Int += 1;
+          a(localaren, this.jdField_a_of_type_ArrayOfInt[k], i2);
+          if (argp.jdField_a_of_type_Int >= 4) {
+            argp.b("Danmaku_R2LWindow", new Object[] { localaren, " layout success:", Integer.valueOf(k), ",top:", this.jdField_a_of_type_ArrayOfInt[k] + ", danmakuRepeatTime = " + localaren.e() });
+          }
+          m = 1;
+        }
+      }
+      if (m == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(localaren);
+        if (argp.jdField_a_of_type_Int >= 4) {
+          argp.b("Danmaku_R2LWindow", new Object[] { localaren, " can not in window" });
+        }
+      }
+      if ((localaren.h()) && (m != 0)) {
+        argp.b("Danmaku_R2LWindow", "must show danmaku layout success :" + localaren);
+      }
+      i = k;
+      break;
+      if (this.jdField_a_of_type_ArrayOfAren[m].a())
+      {
+        m = i;
+        i = j;
+        j = m;
+        label804:
+        k += 1;
+        m = i;
+        i = j;
+        j = m;
+        break label252;
+      }
+      i1 = argn.a(this.jdField_a_of_type_ArrayOfAren[m], localaren, this.jdField_a_of_type_Argb.a());
+      if (i1 < j) {
+        j = m;
+      }
+      for (i = i1;; i = i1)
+      {
+        if (i < 0)
+        {
+          this.jdField_a_of_type_ArrayOfAren[m] = localaren;
+          ((List)this.jdField_b_of_type_JavaUtilList.get(m)).add(localaren);
+          this.jdField_a_of_type_Int += 1;
+          a(localaren, this.jdField_a_of_type_ArrayOfInt[m], i2);
+          if (argp.jdField_a_of_type_Int >= 4) {
+            argp.b("Danmaku_R2LWindow", new Object[] { localaren, " layout success:", Integer.valueOf(m), ",top:", this.jdField_a_of_type_ArrayOfInt[m] + ", hitTime = " + i });
+          }
+          k = 1;
+          m = i;
+          i = k;
+          k = j;
+          j = m;
+          break;
+          return;
+        }
+        break label804;
+        i1 = j;
+        j = i;
+      }
+      label1016:
+      k = i;
+      i = 0;
     }
   }
   
-  protected String a()
+  private void f()
   {
-    return arqx.a().b();
+    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        aren localaren = (aren)localIterator.next();
+        if ((localaren.b(this.jdField_a_of_type_Argb.a())) || (!localaren.c()))
+        {
+          if (localaren == this.jdField_a_of_type_ArrayOfAren[i]) {
+            this.jdField_a_of_type_ArrayOfAren[i] = null;
+          }
+          localIterator.remove();
+          this.jdField_a_of_type_Int -= 1;
+          this.jdField_a_of_type_JavaUtilList.add(localaren);
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public aren a(argk paramargk)
+  {
+    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        aren localaren = (aren)localIterator.next();
+        if ((localaren.d()) && (localaren.a(paramargk.jdField_a_of_type_AndroidGraphicsPoint.x, paramargk.jdField_a_of_type_AndroidGraphicsPoint.y, paramargk.jdField_a_of_type_Int, paramargk.jdField_a_of_type_Long)))
+        {
+          if (argp.jdField_a_of_type_Int >= 5) {
+            argp.a("Danmaku_R2LWindow", new Object[] { "onClick:", localaren, "[left:", Float.valueOf(localaren.b()), ",top:", Float.valueOf(localaren.c()), "]" });
+          }
+          return localaren;
+        }
+      }
+      i += 1;
+    }
+    argp.a("Danmaku_R2LWindow", "onClick:null");
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] stopDownloadFile ^^^^");
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Long == 0L);
-    ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
+    arfm localarfm = arew.a();
+    this.jdField_b_of_type_Int = localarfm.b();
+    a(localarfm);
+    a(this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfInt);
   }
-  
-  public void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] *_* *_* onFailure errcode:" + paramInt);
-    if (this.jdField_a_of_type_Arep != null) {
-      this.jdField_a_of_type_Arep.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (this.jdField_a_of_type_Arep != null) {
-      this.jdField_a_of_type_Arep.a(paramLong1, paramLong2, paramLong3);
-    }
-  }
-  
-  public void a(arep paramarep)
-  {
-    this.jdField_a_of_type_Arep = paramarep;
-  }
-  
-  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] ^_^ ^_^ onSuccess");
-    if (this.jdField_a_of_type_Arep != null) {
-      this.jdField_a_of_type_Arep.a(0, paramExcitingTransferDownloadCompletedInfo);
-    }
-  }
-  
-  protected void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
   
   public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 201;
-    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = a();
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile >>>>");
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] reqInfo   = {" + localExcitingTransferDownloadReqInfo.toString() + "}");
-    long l = ExcitingTransferEngine.getInstance().recvFileEx(localExcitingTransferDownloadReqInfo, a(), this);
-    if (l == -1L)
+    if (this.jdField_b_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile fail");
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = l;
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] startDownloadFile excitingId:" + this.jdField_a_of_type_Long);
-    return true;
-  }
-  
-  protected abstract String b();
-  
-  protected String c()
-  {
-    if (this.jdField_a_of_type_Aren != null) {
-      return "Cookie:t=0;v=" + AppSetting.a() + ";" + this.jdField_a_of_type_Aren.c() + ";\r\n";
-    }
-    return "";
-  }
-  
-  public void onRecvComplete(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    boolean bool;
-    StringBuilder localStringBuilder;
-    if (paramInt == 0)
-    {
-      bool = true;
-      localStringBuilder = new StringBuilder().append("Id[").append(this.d).append("] onExcitingDownloadResult suc:").append(bool).append(" errcode:").append(paramInt).append(" RP:");
-      if (paramExcitingTransferDownloadCompletedInfo == null) {
-        break label147;
+      int j = this.jdField_b_of_type_JavaUtilList.size();
+      int i = 0;
+      while (i < j)
+      {
+        List localList = (List)this.jdField_b_of_type_JavaUtilList.get(i);
+        if ((localList != null) && (localList.size() > 0)) {
+          return true;
+        }
+        i += 1;
       }
     }
-    label147:
-    for (String str = paramExcitingTransferDownloadCompletedInfo.toString();; str = "")
-    {
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, str);
-      if ((bool) && (this.jdField_a_of_type_Aren != null)) {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Aren.a();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Long = 0L;
-      if (!bool) {
-        break label154;
-      }
-      ThreadManager.post(new ExtfBaseFileDownloader.2(this, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
-      return;
-      bool = false;
-      break;
-    }
-    label154:
-    b(paramInt, paramExcitingTransferDownloadCompletedInfo);
+    return false;
   }
   
-  public void onRecvProgress(long paramLong1, long paramLong2, long paramLong3)
+  public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Long = paramLong2;
-    ThreadManager.post(new ExtfBaseFileDownloader.1(this, paramLong1, paramLong3), 5, null, false);
+    e();
+    f();
   }
   
-  public void onRecvStart()
+  public void b(Canvas paramCanvas, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        aren localaren = (aren)localIterator.next();
+        localaren.a(this.jdField_a_of_type_Argb.c(), this.jdField_a_of_type_Argb.a());
+        if (!localaren.c(this.jdField_a_of_type_Argb.a())) {
+          a(paramCanvas, localaren);
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    int j = 0;
+    int i = 0;
+    while (i < this.c)
+    {
+      this.jdField_a_of_type_ArrayOfAren[i] = null;
+      i += 1;
+    }
+    int k = this.jdField_b_of_type_JavaUtilList.size();
+    i = j;
+    while (i < k)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        aren localaren = (aren)localIterator.next();
+        localIterator.remove();
+        this.jdField_a_of_type_Int -= 1;
+        this.jdField_a_of_type_JavaUtilList.add(localaren);
+      }
+      i += 1;
+    }
+  }
+  
+  public void c(aren paramaren)
+  {
+    int j = a(paramaren);
+    if (j < 0) {}
+    for (;;)
     {
       return;
-      QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, "Id[" + this.d + "] onExcitingSendStart.");
-    } while (this.jdField_a_of_type_Arep == null);
-    this.jdField_a_of_type_Arep.a();
+      int i = 0;
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(j)).iterator();
+      while (localIterator.hasNext())
+      {
+        aren localaren = (aren)localIterator.next();
+        j = i;
+        if (localaren == paramaren) {
+          j = 1;
+        }
+        i = j;
+        if (j != 0)
+        {
+          localaren.c();
+          i = j;
+        }
+      }
+    }
+  }
+  
+  public void d(aren paramaren)
+  {
+    int i = a(paramaren);
+    if (i < 0) {}
+    for (;;)
+    {
+      return;
+      paramaren = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (paramaren.hasNext()) {
+        ((aren)paramaren.next()).d();
+      }
+    }
   }
 }
 

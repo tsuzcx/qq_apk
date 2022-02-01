@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
-import tyn;
-import tyq;
+import vlg;
+import vlj;
 
 public class ScrollMoreGuideView$3$1
   implements Runnable
 {
-  public ScrollMoreGuideView$3$1(tyq paramtyq) {}
+  public ScrollMoreGuideView$3$1(vlj paramvlj) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ScrollMoreGuideView$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.content.ScrollMoreGuideView.3.1
  * JD-Core Version:    0.7.0.1
  */

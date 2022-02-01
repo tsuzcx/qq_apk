@@ -13,14 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import ors;
-import qnt;
+import pha;
+import rip;
 import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 
 public class VideoColumnInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new qnt();
+  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new rip();
   public static final String a;
   public int a;
   public long a;
@@ -37,6 +37,7 @@ public class VideoColumnInfo
   public String d;
   public int e;
   public String e;
+  public int f;
   public String f;
   public String g;
   public String h;
@@ -64,7 +65,7 @@ public class VideoColumnInfo
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.f = paramParcel.readString();
+      this.jdField_f_of_type_JavaLangString = paramParcel.readString();
       this.g = paramParcel.readString();
       this.h = paramParcel.readString();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
@@ -75,6 +76,7 @@ public class VideoColumnInfo
       this.i = paramParcel.readString();
       this.j = paramParcel.readString();
       this.jdField_e_of_type_Int = paramParcel.readInt();
+      this.jdField_f_of_type_Int = paramParcel.readInt();
       return;
     }
   }
@@ -93,8 +95,8 @@ public class VideoColumnInfo
         {
           localObject1 = new VideoColumnInfo();
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = ors.a(paramVideoColumnInfo.bytes_column_name);
-          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = ors.a(paramVideoColumnInfo.bytes_column_icon_url);
+          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_name);
+          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_icon_url);
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
           ((VideoColumnInfo)localObject1).jdField_b_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
           ((VideoColumnInfo)localObject1).jdField_c_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
@@ -108,18 +110,18 @@ public class VideoColumnInfo
     for (boolean bool = true;; bool = false)
     {
       ((VideoColumnInfo)localObject1).jdField_a_of_type_Boolean = bool;
-      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = ors.a(paramVideoColumnInfo.bytes_column_card_bg_url);
-      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = ors.a(paramVideoColumnInfo.bytes_column_card_bg_color);
-      ((VideoColumnInfo)localObject1).f = ors.a(paramVideoColumnInfo.bytes_column_card_icon_url);
-      ((VideoColumnInfo)localObject1).g = ors.a(paramVideoColumnInfo.bytes_app_name);
-      ((VideoColumnInfo)localObject1).h = ors.a(paramVideoColumnInfo.bytes_app_icon_url);
+      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_bg_url);
+      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_bg_color);
+      ((VideoColumnInfo)localObject1).jdField_f_of_type_JavaLangString = pha.a(paramVideoColumnInfo.bytes_column_card_icon_url);
+      ((VideoColumnInfo)localObject1).g = pha.a(paramVideoColumnInfo.bytes_app_name);
+      ((VideoColumnInfo)localObject1).h = pha.a(paramVideoColumnInfo.bytes_app_icon_url);
       ((VideoColumnInfo)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
       ((VideoColumnInfo)localObject1).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.video_jump_info);
       ((VideoColumnInfo)localObject1).jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.subscribe_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
-      ((VideoColumnInfo)localObject1).i = ors.a(paramVideoColumnInfo.bytes_from_txt);
-      ((VideoColumnInfo)localObject1).j = ors.a(paramVideoColumnInfo.bytes_column_name_color);
+      ((VideoColumnInfo)localObject1).i = pha.a(paramVideoColumnInfo.bytes_from_txt);
+      ((VideoColumnInfo)localObject1).j = pha.a(paramVideoColumnInfo.bytes_column_name_color);
       return localObject1;
     }
   }
@@ -140,11 +142,6 @@ public class VideoColumnInfo
       k += 1;
     }
     return localArrayList;
-  }
-  
-  public String a()
-  {
-    return "#" + this.jdField_b_of_type_JavaLangString;
   }
   
   public articlesummary.VideoColumnInfo a()
@@ -168,8 +165,8 @@ public class VideoColumnInfo
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
         localVideoColumnInfo.bytes_column_card_bg_url.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
       }
-      if (!TextUtils.isEmpty(this.f)) {
-        localVideoColumnInfo.bytes_column_card_icon_url.set(ByteStringMicro.copyFromUtf8(this.f));
+      if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+        localVideoColumnInfo.bytes_column_card_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
       }
       if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
         localVideoColumnInfo.bytes_column_card_bg_color.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
@@ -215,7 +212,7 @@ public class VideoColumnInfo
   
   public String toString()
   {
-    return "VideoColumnInfo{columnId=" + this.jdField_a_of_type_Int + ", columnName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", columnIconUrl=" + this.jdField_c_of_type_JavaLangString + '\'' + ", lastUpdateTime=" + this.jdField_a_of_type_Long + '\'' + ", videoCount=" + this.jdField_b_of_type_Int + '\'' + ", subscribeCount='" + this.jdField_c_of_type_Int + '\'' + ", isSubscribed='" + this.jdField_a_of_type_Boolean + '\'' + ", cardBgUrl=" + this.jdField_d_of_type_JavaLangString + '\'' + ", cardBgColor=" + this.jdField_e_of_type_JavaLangString + '\'' + ", cardIconUrl=" + this.f + '\'' + ", appName=" + this.g + ", appIconUrl='" + this.h + '\'' + ", defaultJumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", videoJumpInfo=" + this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", subscribeJumpInfo=" + this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", appJumpInfo='" + this.jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + '\'' + ", cardBgStyle='" + this.jdField_d_of_type_Int + '\'' + ", fromText='" + this.i + '\'' + ", columnNameColor='" + this.j + '\'' + ", columnStyle='" + this.jdField_e_of_type_Int + '\'' + '}';
+    return "VideoColumnInfo{columnId=" + this.jdField_a_of_type_Int + ", columnName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", columnIconUrl=" + this.jdField_c_of_type_JavaLangString + '\'' + ", lastUpdateTime=" + this.jdField_a_of_type_Long + '\'' + ", videoCount=" + this.jdField_b_of_type_Int + '\'' + ", subscribeCount='" + this.jdField_c_of_type_Int + '\'' + ", isSubscribed='" + this.jdField_a_of_type_Boolean + '\'' + ", cardBgUrl=" + this.jdField_d_of_type_JavaLangString + '\'' + ", cardBgColor=" + this.jdField_e_of_type_JavaLangString + '\'' + ", cardIconUrl=" + this.jdField_f_of_type_JavaLangString + '\'' + ", appName=" + this.g + ", appIconUrl='" + this.h + '\'' + ", defaultJumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", videoJumpInfo=" + this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", subscribeJumpInfo=" + this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", appJumpInfo='" + this.jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + '\'' + ", cardBgStyle='" + this.jdField_d_of_type_Int + '\'' + ", fromText='" + this.i + '\'' + ", columnNameColor='" + this.j + '\'' + ", columnStyle='" + this.jdField_e_of_type_Int + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -232,7 +229,7 @@ public class VideoColumnInfo
       paramParcel.writeByte((byte)k);
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-      paramParcel.writeString(this.f);
+      paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
       paramParcel.writeString(this.g);
       paramParcel.writeString(this.h);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo, paramInt);
@@ -243,6 +240,7 @@ public class VideoColumnInfo
       paramParcel.writeString(this.i);
       paramParcel.writeString(this.j);
       paramParcel.writeInt(this.jdField_e_of_type_Int);
+      paramParcel.writeInt(this.jdField_f_of_type_Int);
       return;
     }
   }

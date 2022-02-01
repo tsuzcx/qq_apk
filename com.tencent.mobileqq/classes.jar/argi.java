@@ -1,32 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
-final class argi
-  implements View.OnClickListener
+final class argi<T>
 {
-  argi(arhw paramarhw, FileManagerEntity paramFileManagerEntity) {}
+  public argi<T> a;
+  public final T a;
+  public argi<T> b;
   
-  public void onClick(View paramView)
+  public argi()
   {
-    try
-    {
-      paramView = bcnt.a(this.jdField_a_of_type_Arhw.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.e == null) {
-        return;
-      }
-      if (bdin.a(this.jdField_a_of_type_Arhw.getActivity()) == 0)
-      {
-        bcmp.a(this.jdField_a_of_type_Arhw.getActivity(), this.jdField_a_of_type_Arhw.getActivity().getString(2131698042));
-        return;
-      }
-      bcmp.a(this.jdField_a_of_type_Arhw.getActivity(), this.jdField_a_of_type_Arhw.getActivity().getString(2131692914), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_Arhw.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
-      return;
-    }
-    catch (Exception paramView) {}
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Argi = this;
+    this.b = this;
+  }
+  
+  public argi(T paramT, argi<T> paramargi1, argi<T> paramargi2)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Argi = paramargi1;
+    this.b = paramargi2;
   }
 }
 

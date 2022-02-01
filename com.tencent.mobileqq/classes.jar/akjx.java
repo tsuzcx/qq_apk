@@ -1,45 +1,72 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class akjx
-  extends Animation
+  extends akhu
 {
-  akjx(akjt paramakjt, View paramView, int paramInt) {}
+  private final int jdField_a_of_type_Int = 1024;
+  private final long jdField_a_of_type_Long = 600000L;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected akjx(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
-        }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    super(paramNewPhotoListActivity);
   }
   
-  public boolean willChangeBounds()
+  boolean a(LocalMediaInfo paramLocalMediaInfo)
   {
+    if (bgkc.getMediaType(paramLocalMediaInfo) == 1) {}
+    for (int i = 1; (i != 0) && (paramLocalMediaInfo.mDuration > 600000L); i = 0)
+    {
+      QQToast.a(this.mActivity, anni.a(2131706838) + 10L + anni.a(2131706850), 0).a();
+      return false;
+    }
+    Iterator localIterator = this.mPhotoCommonData.selectedPhotoList.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = bgmg.a((String)localIterator.next()) + l) {}
+    if (bgmg.a(paramLocalMediaInfo.path) + l > 1073741824L)
+    {
+      QQToast.a(this.mActivity, anni.a(2131706844) + "1.0G" + anni.a(2131706873), 0).a();
+      return false;
+    }
     return true;
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    if (this.jdField_a_of_type_Akht.isSupportVideoCheckbox) {
+      return ((NewPhotoListActivity)this.mActivity).getString(2131696725, new Object[] { Integer.valueOf(i) });
+    }
+    return ((NewPhotoListActivity)this.mActivity).getString(2131696726, new Object[] { Integer.valueOf(i) });
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+  }
+  
+  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
+  {
+    LocalMediaInfo localLocalMediaInfo = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+    if (localLocalMediaInfo == null) {
+      super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
+    }
+    while (!a(localLocalMediaInfo)) {
+      return;
+    }
+    super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjx
  * JD-Core Version:    0.7.0.1
  */

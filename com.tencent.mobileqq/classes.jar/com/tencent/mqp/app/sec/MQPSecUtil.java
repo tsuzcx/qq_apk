@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import azqs;
+import bcst;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -321,7 +321,7 @@ public class MQPSecUtil
     if (QLog.isColorLevel()) {
       QLog.d("MQPSecUtil", 2, "report_tracer:" + paramString);
     }
-    azqs.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Safe_MQPSecUtil", "", "AntiTrace", paramString, 0, 0, "", "", "", "");
+    bcst.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Safe_MQPSecUtil", "", "AntiTrace", paramString, 0, 0, "", "", "", "");
   }
   
   public static native boolean memchk(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
@@ -332,7 +332,7 @@ public class MQPSecUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSecUtil
  * JD-Core Version:    0.7.0.1
  */

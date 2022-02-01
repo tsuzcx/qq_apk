@@ -1,32 +1,42 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.PublicPlat;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adap
-  extends bhry
+  implements acxp
 {
-  public adap(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    if (this.a.d == null) {
-      return;
-    }
-    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
-      this.a.i(1);
-    }
-    this.a.d.clearAnimation();
-    this.a.a.clearAnimation();
+    return 1008;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a()
   {
-    if (this.a.d == null) {}
-    while (paramAnimation != FriendProfileCardActivity.a(this.a)) {
-      return;
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a(paramMessageRecord.frienduin);
+    msg_svc.PublicPlat localPublicPlat = new msg_svc.PublicPlat();
+    localPublicPlat.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
+    {
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      bgva.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      localPublicPlat.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    this.a.i(0);
+    paramRoutingHead.public_plat.set(localPublicPlat);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

@@ -1,53 +1,77 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aecb
-  implements bhuk
+  extends MqqHandler
 {
-  public aecb(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bhuf parambhuf) {}
+  public aecb(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (!bdin.d(BaseApplication.getContext()))
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new beub(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694768, 1500);
     }
-    try
+    label424:
+    do
     {
-      if (this.jdField_a_of_type_Bhuf != null) {
-        this.jdField_a_of_type_Bhuf.dismiss();
-      }
-      return;
-      int i = -1;
-      switch (paramInt)
+      do
       {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
-    }
+        do
+        {
+          return;
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
+        return;
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
+        }
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(anni.a(2131702133) + i + anni.a(2131702134));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new aecc(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+        }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131693868));
+          if (!AppSetting.c) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(anni.a(2131702139) + this.a.getString(2131693868) + anni.a(2131702131));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 

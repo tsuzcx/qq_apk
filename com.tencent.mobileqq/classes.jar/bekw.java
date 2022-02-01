@@ -1,29 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import java.io.File;
 
 public class bekw
-  implements bela
+  extends Handler
 {
-  public bekw(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  public bekw(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10003;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.g = true;
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bekm.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    default: 
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+    case 3: 
+      TroopBarReplyActivity.b(this.a, false);
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      TroopBarReplyActivity.b(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
+      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+      TroopBarReplyActivity.a(this.a, 0);
+      if (!this.a.k) {
+        break;
+      }
+      bfqu.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
+      return;
     }
   }
 }

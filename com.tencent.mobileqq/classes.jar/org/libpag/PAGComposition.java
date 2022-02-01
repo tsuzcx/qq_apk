@@ -37,6 +37,10 @@ public class PAGComposition
   
   public native int getLayerIndex(PAGLayer paramPAGLayer);
   
+  public native PAGLayer[] getLayersByName(String paramString);
+  
+  public native PAGLayer[] getLayersUnderPoint(float paramFloat1, float paramFloat2);
+  
   public native int height();
   
   public native int numChildren();
@@ -64,7 +68,7 @@ public class PAGComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGComposition
  * JD-Core Version:    0.7.0.1
  */

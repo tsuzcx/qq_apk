@@ -27,7 +27,7 @@ public class z
         if ("1000011".equals(this.a.getAction()))
         {
           SecureService.b(this.b, this.a.getBooleanExtra("key_download_listener", false));
-          SecureService.b(this.b, "http://fwd.3g.qq.com:8080/forward.jsp?bid=882");
+          SecureService.b(this.b, "https://qqwx.qq.com/s?aid=index&p=1&c=107048&vt=1&pf=0");
         }
       }
       return;
@@ -42,7 +42,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.z
  * JD-Core Version:    0.7.0.1
  */

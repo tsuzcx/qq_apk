@@ -1,49 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-final class bczj
-  implements DownloadParams.DecodeHandler
+class bczj
+  implements AdExposureChecker.ExposureCallback
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bczj(bczi parambczi, akmh paramakmh, Context paramContext, GdtAd paramGdtAd) {}
+  
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    Object localObject;
-    if (paramBitmap == null)
-    {
-      localObject = null;
-      return localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "reportImpression...");
     }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
-    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
-    {
-      int j;
-      int k;
-      boolean bool;
-      if (i != 0)
-      {
-        paramDownloadParams = new Matrix();
-        paramDownloadParams.postRotate(i);
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        if (i % 90 != 0) {
-          bool = true;
-        }
-      }
-      label84:
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
-      {
-        localObject = paramDownloadParams;
-        if (paramDownloadParams == paramBitmap) {
-          break;
-        }
-        paramBitmap.recycle();
-        return paramDownloadParams;
-        bool = false;
-        break label84;
-      }
-    }
+    this.jdField_a_of_type_Akmh.a(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Akmh.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression());
+    akmh.a("public.tailplace.show", "", "", "1", "");
   }
 }
 

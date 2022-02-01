@@ -1,18 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aivt
-  implements View.OnClickListener
+  implements ajig
 {
-  public aivt(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public aivt(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.b.setVisibility(8);
-    this.a.a.setVisibility(8);
-    RedPacketKSongFragment.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
+    }
+    if (paramInt != -1)
+    {
+      TroopView.a(this.a).setCurrentPosition(-1, false);
+      int i = TroopView.a(this.a).getCurrentItem();
+      if (QLog.isColorLevel()) {
+        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      }
+      Object localObject = TroopView.a(this.a).a(i, false);
+      if (localObject != null)
+      {
+        localObject = (AddContactViewPagerTroopFragment)localObject;
+        aius localaius = (aius)this.a.a.get(i);
+        localaius.b = -1;
+        ((AddContactViewPagerTroopFragment)localObject).a(localaius.d, "");
+      }
+    }
   }
 }
 

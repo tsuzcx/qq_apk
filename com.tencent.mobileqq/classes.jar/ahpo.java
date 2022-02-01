@@ -1,7 +1,14 @@
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
 public class ahpo
+  implements ahor
 {
-  public int a;
-  public long a;
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagup.c(paramafzq, paramagwc, paramString);
+  }
 }
 
 

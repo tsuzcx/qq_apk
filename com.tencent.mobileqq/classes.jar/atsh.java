@@ -1,44 +1,32 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atsh
-  implements TextWatcher
+class atsh
+  implements View.OnClickListener
 {
-  public atsh(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
+  atsh(atsg paramatsg) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() > 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(0);
-      this.c.setVisibility(0);
-    }
+    if (!atsg.a(this.a)) {}
     for (;;)
     {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
-      }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
+      long l = athc.b();
+      bcst.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, "" + l, "0", "", "");
+      if ((1 == atsg.a(this.a)) && (!atsg.b(this.a))) {
+        atvb.a(atsg.a(this.a), 2131697571, 2131697570, new atsi(this));
+      } else {
+        atsg.a(this.a);
+      }
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsh
  * JD-Core Version:    0.7.0.1
  */

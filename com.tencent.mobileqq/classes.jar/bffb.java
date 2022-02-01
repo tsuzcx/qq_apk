@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class bffb
-  implements DialogInterface.OnClickListener
+  implements bhye
 {
-  public bffb(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public bffb(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class asmo
-  extends GestureDetector.SimpleOnGestureListener
+final class asmo
+  implements DialogInterface.OnClickListener
 {
-  public asmo(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  asmo(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (this.jdField_a_of_type_Boolean) {
+      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,40 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-
 public class woh
-  extends woi<BannerFeedItem>
 {
-  public woh(@NonNull BannerFeedItem paramBannerFeedItem)
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  
+  public woh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    super(paramBannerFeedItem);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public List<StoryVideoItem> a()
+  public String toString()
   {
-    return new ArrayList(0);
-  }
-  
-  public void a() {}
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    return true;
+    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     woh
  * JD-Core Version:    0.7.0.1
  */

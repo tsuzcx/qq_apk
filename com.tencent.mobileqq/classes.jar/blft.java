@@ -1,307 +1,159 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewStub;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.os.AsyncTask;
 
-@SuppressLint({"UseSparseArrays"})
 public class blft
+  extends AsyncTask<String, String, String>
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private bkpl jdField_a_of_type_Bkpl;
-  private Map<Integer, blfs> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_a_of_type_Boolean;
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  public blft(Activity paramActivity, View paramView, bkpl parambkpl)
+  public blft(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Bkpl = parambkpl;
-    this.jdField_a_of_type_JavaUtilSet = a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private int a(int paramInt)
+  /* Error */
+  protected String a(String... paramVarArgs)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      if (paramInt >> 16 == localInteger.intValue() >> 16) {
-        return localInteger.intValue();
-      }
-    }
-    return 65536;
-  }
-  
-  private Set<Integer> a()
-  {
-    HashSet localHashSet = new HashSet();
-    int j = blat.a.a();
-    int i = j;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      i = j;
-      if (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null) {
-        i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", blat.a.a());
-      }
-    }
-    if ((blat.c.a(i)) || (blat.t.a(i)) || (blat.n.a(i)) || (blat.e.a(i)) || (blat.d(i)))
-    {
-      localHashSet.add(Integer.valueOf(131072));
-      localHashSet.add(Integer.valueOf(196608));
-      localHashSet.add(Integer.valueOf(262144));
-      localHashSet.add(Integer.valueOf(327680));
-      localHashSet.add(Integer.valueOf(393216));
-      localHashSet.add(Integer.valueOf(458752));
-      localHashSet.add(Integer.valueOf(524288));
-      localHashSet.add(Integer.valueOf(589824));
-      localHashSet.add(Integer.valueOf(655360));
-      localHashSet.add(Integer.valueOf(786432));
-    }
-    for (;;)
-    {
-      if (blat.a(this.jdField_a_of_type_Bkpl) == 204)
-      {
-        localHashSet.remove(Integer.valueOf(786432));
-        localHashSet.remove(Integer.valueOf(524288));
-      }
-      if (blat.a(this.jdField_a_of_type_Bkpl) == 205) {
-        localHashSet.remove(Integer.valueOf(655360));
-      }
-      return localHashSet;
-      if (blat.e.a(i))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-        localHashSet.add(Integer.valueOf(786432));
-      }
-      else if ((blat.C.a(i)) || (blat.B.a(i)))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-      }
-      else if (blat.w.a(i))
-      {
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(786432));
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(393216));
-      }
-      else
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-        localHashSet.add(Integer.valueOf(786432));
-      }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
-      }
-      return;
-      localObject = new blbe(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bkuy(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bkuh(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bkvx(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bktp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new blfj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bkyj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bkys(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new blgj(this.jdField_a_of_type_AndroidAppActivity, (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131362193), this);
-      continue;
-      localObject = new bkwr(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new blbl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-    }
-  }
-  
-  private <T> T b(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return this.jdField_a_of_type_Bkpl;
-  }
-  
-  private void b(int paramInt, Object... paramVarArgs) {}
-  
-  private void g()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      a(((Integer)localIterator.next()).intValue());
-    }
-  }
-  
-  private void h()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a();
-    }
-  }
-  
-  public bkzy a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    blfs localblfs = (blfs)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((localblfs instanceof bkuy)) {
-      return ((bkuy)localblfs).a();
-    }
-    return null;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    blfs localblfs = (blfs)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localblfs != null) {
-      return localblfs.a(paramInt, paramVarArgs);
-    }
-    return b(paramInt, paramVarArgs);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        g();
-        h();
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    blfs localblfs = (blfs)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localblfs != null)
-    {
-      localblfs.a(paramInt, paramVarArgs);
-      return;
-    }
-    b(paramInt, paramVarArgs);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    return (blfs)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null;
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).h();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).i();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((blfs)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).g();
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: getstatic 23	blft:jdField_a_of_type_Boolean	Z
+    //   5: ifeq +8 -> 13
+    //   8: ldc 25
+    //   10: astore_2
+    //   11: aload_2
+    //   12: areturn
+    //   13: iconst_1
+    //   14: putstatic 23	blft:jdField_a_of_type_Boolean	Z
+    //   17: new 27	java/lang/StringBuilder
+    //   20: dup
+    //   21: invokespecial 28	java/lang/StringBuilder:<init>	()V
+    //   24: astore_3
+    //   25: new 30	java/lang/ProcessBuilder
+    //   28: dup
+    //   29: iconst_3
+    //   30: anewarray 32	java/lang/String
+    //   33: dup
+    //   34: iconst_0
+    //   35: ldc 34
+    //   37: aastore
+    //   38: dup
+    //   39: iconst_1
+    //   40: ldc 36
+    //   42: aastore
+    //   43: dup
+    //   44: iconst_2
+    //   45: aload_0
+    //   46: getfield 15	blft:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   49: ldc 38
+    //   51: iconst_0
+    //   52: invokevirtual 44	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   55: invokevirtual 50	java/io/File:getPath	()Ljava/lang/String;
+    //   58: aastore
+    //   59: invokespecial 53	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   62: astore_1
+    //   63: aload_1
+    //   64: iconst_1
+    //   65: invokevirtual 57	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   68: pop
+    //   69: new 59	java/io/BufferedReader
+    //   72: dup
+    //   73: new 61	java/io/InputStreamReader
+    //   76: dup
+    //   77: aload_1
+    //   78: invokevirtual 65	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   81: invokevirtual 71	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   84: invokespecial 74	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   87: invokespecial 77	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   90: astore_1
+    //   91: aload_1
+    //   92: invokevirtual 80	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   95: astore 4
+    //   97: aload 4
+    //   99: ifnull +42 -> 141
+    //   102: aload 4
+    //   104: ldc 38
+    //   106: invokevirtual 84	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   109: ifeq -18 -> 91
+    //   112: aload_3
+    //   113: aload 4
+    //   115: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: ldc 90
+    //   120: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: pop
+    //   124: goto -33 -> 91
+    //   127: astore_3
+    //   128: aload_1
+    //   129: ifnull -118 -> 11
+    //   132: aload_1
+    //   133: invokevirtual 93	java/io/BufferedReader:close	()V
+    //   136: aconst_null
+    //   137: areturn
+    //   138: astore_1
+    //   139: aconst_null
+    //   140: areturn
+    //   141: ldc 95
+    //   143: iconst_1
+    //   144: new 27	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 28	java/lang/StringBuilder:<init>	()V
+    //   151: ldc 97
+    //   153: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: aload_3
+    //   157: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   160: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   166: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: aload_1
+    //   170: ifnull -159 -> 11
+    //   173: aload_1
+    //   174: invokevirtual 93	java/io/BufferedReader:close	()V
+    //   177: aconst_null
+    //   178: areturn
+    //   179: astore_1
+    //   180: aconst_null
+    //   181: areturn
+    //   182: astore_2
+    //   183: aconst_null
+    //   184: astore_1
+    //   185: aload_1
+    //   186: ifnull +7 -> 193
+    //   189: aload_1
+    //   190: invokevirtual 93	java/io/BufferedReader:close	()V
+    //   193: aload_2
+    //   194: athrow
+    //   195: astore_1
+    //   196: goto -3 -> 193
+    //   199: astore_2
+    //   200: goto -15 -> 185
+    //   203: astore_1
+    //   204: aconst_null
+    //   205: astore_1
+    //   206: goto -78 -> 128
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	209	0	this	blft
+    //   0	209	1	paramVarArgs	String[]
+    //   1	11	2	str1	String
+    //   182	12	2	localObject1	java.lang.Object
+    //   199	1	2	localObject2	java.lang.Object
+    //   24	89	3	localStringBuilder	java.lang.StringBuilder
+    //   127	30	3	localThrowable	java.lang.Throwable
+    //   95	19	4	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   91	97	127	java/lang/Throwable
+    //   102	124	127	java/lang/Throwable
+    //   141	169	127	java/lang/Throwable
+    //   132	136	138	java/lang/Exception
+    //   173	177	179	java/lang/Exception
+    //   17	91	182	finally
+    //   189	193	195	java/lang/Exception
+    //   91	97	199	finally
+    //   102	124	199	finally
+    //   141	169	199	finally
+    //   17	91	203	java/lang/Throwable
   }
 }
 

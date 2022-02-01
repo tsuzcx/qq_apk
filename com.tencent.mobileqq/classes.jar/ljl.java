@@ -1,38 +1,24 @@
-import java.util.ArrayList;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public class ljl
+class ljl
+  implements Camera.AutoFocusCallback
 {
-  int jdField_a_of_type_Int = 0;
-  public String a;
-  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  final ljo jdField_a_of_type_Ljo;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  ljl(ljk paramljk) {}
   
-  ljl(ljo paramljo, ArrayList<String> paramArrayList, boolean paramBoolean)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    this.jdField_a_of_type_Ljo = paramljo;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Int >= 3;
-  }
-  
-  public String toString()
-  {
-    return "ItemRecord{" + this.jdField_a_of_type_Ljo + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
+    GraphicRenderMgr.getInstance().setIsFocusing(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljl
  * JD-Core Version:    0.7.0.1
  */

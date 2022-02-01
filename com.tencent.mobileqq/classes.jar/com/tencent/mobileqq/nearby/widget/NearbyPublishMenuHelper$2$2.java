@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import bety;
+import biau;
 
 class NearbyPublishMenuHelper$2$2
   implements Runnable
@@ -16,7 +16,7 @@ class NearbyPublishMenuHelper$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper.2.2
  * JD-Core Version:    0.7.0.1
  */

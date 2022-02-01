@@ -1,7 +1,6 @@
 package com.tencent.widget.immersive;
 
-import ajeq;
-import alsf;
+import akws;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,11 +15,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AlphaAnimation;
-import bdep;
-import bhtb;
-import bnle;
+import anll;
+import bgjq;
+import bqcd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -146,14 +146,14 @@ public class ImmersiveUtils
   
   public static void a(Window paramWindow)
   {
-    if (bhtb.j())
+    if (VersionUtils.isLOLLIPOP())
     {
       paramWindow.clearFlags(67108864);
       paramWindow.getDecorView().setSystemUiVisibility(1280);
       paramWindow.addFlags(-2147483648);
       paramWindow.setStatusBarColor(0);
     }
-    while (!bhtb.i()) {
+    while (!VersionUtils.isKITKAT()) {
       return;
     }
     paramWindow.addFlags(67108864);
@@ -180,14 +180,14 @@ public class ImmersiveUtils
   
   public static boolean a()
   {
-    return (bhtb.i()) && (((jdField_d_of_type_Boolean) && (bdep.b())) || (bdep.d()));
+    return (VersionUtils.isKITKAT()) && (((jdField_d_of_type_Boolean) && (bgjq.b())) || (bgjq.d()));
   }
   
   public static boolean a(Activity paramActivity)
   {
     if (!jdField_e_of_type_Boolean)
     {
-      f = bnle.b(paramActivity);
+      f = bqcd.b(paramActivity);
       jdField_e_of_type_Boolean = true;
     }
     return f;
@@ -217,23 +217,23 @@ public class ImmersiveUtils
   
   public static boolean a(Window paramWindow, boolean paramBoolean)
   {
-    if (!bhtb.i()) {}
+    if (!VersionUtils.isKITKAT()) {}
     do
     {
       return false;
-      if ((jdField_d_of_type_Boolean) && (bdep.b())) {
+      if ((jdField_d_of_type_Boolean) && (bgjq.b())) {
         return b(paramWindow, paramBoolean);
       }
-    } while (!bdep.d());
+    } while (!bgjq.d());
     return c(paramWindow, paramBoolean);
   }
   
   public static boolean a(boolean paramBoolean, Window paramWindow)
   {
-    if (ajeq.e()) {
+    if (akws.e()) {
       return c(paramWindow, paramBoolean);
     }
-    if (ajeq.a()) {
+    if (akws.a()) {
       return d(paramWindow, paramBoolean);
     }
     if (paramBoolean)
@@ -342,8 +342,8 @@ public class ImmersiveUtils
   public static boolean c()
   {
     boolean bool1 = false;
-    boolean bool2 = ajeq.a();
-    boolean bool3 = ajeq.e();
+    boolean bool2 = akws.a();
+    boolean bool3 = akws.e();
     if (Build.VERSION.SDK_INT >= 23) {}
     for (int i = 1;; i = 0)
     {
@@ -459,7 +459,7 @@ public class ImmersiveUtils
         if (j > 0) {
           i = localResources.getDimensionPixelSize(j);
         }
-        f1 = alsf.a.density;
+        f1 = anll.a.density;
         if (QLog.isColorLevel()) {
           QLog.d("systembar", 2, "getStatusBarHeight org=" + i + ", sys density=" + f1 + ", cur density=" + paramContext.getResources().getDisplayMetrics().density);
         }
@@ -508,7 +508,7 @@ public class ImmersiveUtils
     }
     String str1 = Build.MANUFACTURER.toUpperCase();
     String str2 = str1 + "-" + Build.MODEL;
-    if ((str1.endsWith("BBK")) || ((str1.endsWith("VIVO")) && (Build.VERSION.SDK_INT < 20)) || (str2.equals("OPPO-3007"))) {}
+    if (((!str1.endsWith("BBK")) && (!str1.endsWith("VIVO"))) || ((Build.VERSION.SDK_INT < 20) || (str2.equals("OPPO-3007")))) {}
     for (jdField_a_of_type_Int = 0;; jdField_a_of_type_Int = 1) {
       return jdField_a_of_type_Int;
     }

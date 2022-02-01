@@ -1,111 +1,71 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class yun
-  extends BaseAdapter
+  implements bkmq
 {
-  public long a;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  public String a;
-  List<arnw> jdField_a_of_type_JavaUtilList;
-  private short jdField_a_of_type_Short;
-  private boolean jdField_a_of_type_Boolean;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  private String f;
+  yun(yul paramyul) {}
   
-  public yun(List<arnw> paramList, Activity paramActivity)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramActivity);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public void a(List<arnw> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, short paramShort)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.f = paramString;
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560702, null);
-      paramView = new yup();
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131366327));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131366330));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131366333));
-      paramView.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131375792);
-      paramViewGroup.setTag(paramView);
-      paramViewGroup.setOnClickListener(new yuo(this));
+      paramView.c(l);
+      return;
     }
-    paramView = (yup)paramViewGroup.getTag();
-    arnw localarnw = (arnw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localarnw.jdField_a_of_type_Boolean)
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
     {
-      paramView.b.setText(alud.a(2131717440));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(arrr.d(localarnw.jdField_a_of_type_JavaLangString));
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130843887);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bgnt.g(this.a.a())) {
+        break label118;
+      }
+      if (this.a.jdField_a_of_type_Wrl != null) {
+        this.a.jdField_a_of_type_Wrl.a();
+      }
+      this.a.f();
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_Arnw = localarnw;
-      return paramViewGroup;
-      paramView.b.setText(arso.a(localarnw.jdField_a_of_type_Long));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(arrr.d(localarnw.jdField_a_of_type_JavaLangString));
-      arrr.a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localarnw.jdField_a_of_type_JavaLangString);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (arrr.a(localarnw.jdField_a_of_type_JavaLangString) == 0)
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().b(localarnw.b);
-        localFileManagerEntity.isZipInnerFile = true;
-        arrr.b(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
-        localQQAppInterface.a().c(localFileManagerEntity);
-      }
+      ((ajhj)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label118:
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
     }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yun
  * JD-Core Version:    0.7.0.1
  */

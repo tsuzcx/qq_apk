@@ -1,52 +1,62 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.arch.lifecycle.MutableLiveData;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
-class uyp
-  extends SimpleObserver<List<vlp>>
+public class uyp
+  extends uzx
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
+  private QCirclePersonalBottomView jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
+  private vuf jdField_a_of_type_Vuf;
   
-  uyp(uyl paramuyl) {}
-  
-  public void a(List<vlp> paramList)
+  public uyp(Bundle paramBundle)
   {
-    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
-    super.onNext(paramList);
-    int i = 0;
-    while (i < paramList.size())
-    {
-      vlp localvlp = (vlp)paramList.get(i);
-      if (!localvlp.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localvlp.b);
-      }
-      i += 1;
+    super(paramBundle);
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Vuf = ((vuf)getViewModel(vuf.class));
+    this.jdField_a_of_type_Vuf.a().observe((QCircleBaseFragment)getParentFragment(), new uyq(this));
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView != null) {
+      return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.b();
     }
+    return -1;
   }
   
-  public void onCancel()
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
   {
-    super.onCancel();
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramzxu);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.setReportBean(a());
+    a();
+    return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
   }
   
-  public void onComplete()
+  protected String a()
   {
-    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
-    super.onComplete();
-    this.jdField_a_of_type_Uyl.a(this.jdField_a_of_type_JavaUtilArrayList);
+    return "QCirclePersonalBottomBlock";
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(QCircleInitBean paramQCircleInitBean)
   {
-    wxe.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
-    super.onError(paramError);
-    this.jdField_a_of_type_Uyl.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = paramQCircleInitBean;
   }
+  
+  public void loadData(zxz paramzxz) {}
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyp
  * JD-Core Version:    0.7.0.1
  */

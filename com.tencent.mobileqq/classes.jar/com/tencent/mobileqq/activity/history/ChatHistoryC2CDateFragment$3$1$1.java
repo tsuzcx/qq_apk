@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahzf;
-import alud;
+import ajpt;
+import anni;
 
 class ChatHistoryC2CDateFragment$3$1$1
   implements Runnable
@@ -10,12 +10,12 @@ class ChatHistoryC2CDateFragment$3$1$1
   
   public void run()
   {
-    this.a.a.a.c(alud.a(2131702022));
+    this.a.a.a.c(anni.a(2131700442));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1.1
  * JD-Core Version:    0.7.0.1
  */

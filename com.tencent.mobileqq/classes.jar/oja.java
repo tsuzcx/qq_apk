@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
 
-class oja
+public class oja
+  extends pmn
 {
-  ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView;
+  public oja(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  oja(oiz paramoiz) {}
+  public void a_(List<twg> paramList)
+  {
+    this.a.a(paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oja
  * JD-Core Version:    0.7.0.1
  */

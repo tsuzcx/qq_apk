@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import abta;
-import aliw;
-import alud;
+import acvy;
+import ancd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import azqs;
-import bcpa;
-import bcpx;
-import bcqa;
-import bdgc;
+import anni;
+import bcst;
+import bftr;
+import bfup;
+import bfus;
+import bglf;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -24,10 +24,11 @@ import com.tencent.mobileqq.data.AioPushData;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.data.HotChatItemData;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nav;
+import njo;
 
 public class RecentHotchatItem
   extends RecentBaseData
@@ -41,7 +42,7 @@ public class RecentHotchatItem
   public RecentHotchatItem(HotChatItemData paramHotChatItemData)
   {
     this.mOriginalData = paramHotChatItemData;
-    if (c() > 0) {}
+    if (a() > 0) {}
     for (int i = 2;; i = 1)
     {
       this.mType = i;
@@ -61,15 +62,10 @@ public class RecentHotchatItem
   
   public int a()
   {
-    return 1;
-  }
-  
-  public long a()
-  {
     if (this.mOriginalData == null) {
-      return 0L;
+      return -1;
     }
-    return this.mOriginalData.mLatestMsgSec;
+    return this.mOriginalData.mGameId;
   }
   
   public AioPushData a()
@@ -82,7 +78,29 @@ public class RecentHotchatItem
     if (this.mOriginalData == null) {
       return "";
     }
-    return this.mOriginalData.mTroopUin;
+    return this.mOriginalData.mHotChatCode;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.mOriginalData != null) && (this.mOriginalData.mGameId <= 0) && (!TextUtils.isEmpty(this.mOriginalData.mHotChatCode)) && (paramQQAppInterface != null))
+    {
+      Object localObject = (ancd)paramQQAppInterface.getManager(155);
+      if (localObject != null)
+      {
+        localObject = ((ancd)localObject).a(this.mOriginalData.mHotChatCode);
+        if (localObject != null) {
+          this.mOriginalData.mGameId = ((ApolloGameData)localObject).gameId;
+        }
+      }
+    }
+    if ((paramQQAppInterface != null) && (a() > 0))
+    {
+      paramQQAppInterface = (ancd)paramQQAppInterface.getManager(155);
+      if (paramQQAppInterface != null) {
+        this.mGameData = paramQQAppInterface.a(a(), a());
+      }
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -90,13 +108,13 @@ public class RecentHotchatItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    b(paramQQAppInterface);
+    a(paramQQAppInterface);
     if (QLog.isColorLevel()) {
-      QLog.d("RecentHotchatItem", 2, "[update] " + c() + " " + a() + " " + a() + " " + d());
+      QLog.d("RecentHotchatItem", 2, "[update] " + a() + " " + getRecentUserUin() + " " + getRecentUserType() + " " + c());
     }
     QQMessageFacade.Message localMessage = null;
-    Object localObject4 = a();
-    int i = a();
+    Object localObject4 = getRecentUserUin();
+    int i = getRecentUserType();
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {
       localMessage = ((QQMessageFacade)localObject1).a((String)localObject4, i);
@@ -109,11 +127,11 @@ public class RecentHotchatItem
       localObject1 = paramQQAppInterface.a();
       if (localObject1 != null)
       {
-        this.mUnreadNum = ((abta)localObject1).a(localMessage.frienduin, localMessage.istroop);
-        if ((bcpa.a((String)localObject4)) || (bcpa.c((String)localObject4)))
+        this.mUnreadNum = ((acvy)localObject1).a(localMessage.frienduin, localMessage.istroop);
+        if ((bftr.a((String)localObject4)) || (bftr.c((String)localObject4)))
         {
-          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131720832);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131166981);
+          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131718575);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167064);
         }
         j = this.mMenuFlag;
         localObject1 = (TroopManager)paramQQAppInterface.getManager(52);
@@ -143,12 +161,12 @@ public class RecentHotchatItem
         long l1;
         if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          this.mTitleName = bdgc.a(paramQQAppInterface, (String)localObject4, true);
-          localObject4 = a();
+          this.mTitleName = bglf.a(paramQQAppInterface, (String)localObject4, true);
+          localObject4 = getMsgSummaryTemp();
           if ((localMessage != null) && (TextUtils.isEmpty(localMessage.nickName))) {
             localMessage.nickName = localMessage.senderuin;
           }
-          a(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject4);
+          buildMessageBody(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject4);
           if ((TextUtils.isEmpty(((MsgSummary)localObject4).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject4).suffix)))
           {
             localObject3 = localObject1;
@@ -157,14 +175,14 @@ public class RecentHotchatItem
             }
             ((MsgSummary)localObject4).strContent = ((CharSequence)localObject3);
           }
-          a(paramQQAppInterface);
-          a(paramQQAppInterface, (MsgSummary)localObject4);
-          a(paramQQAppInterface, paramContext, (MsgSummary)localObject4);
+          dealStatus(paramQQAppInterface);
+          dealDraft(paramQQAppInterface, (MsgSummary)localObject4);
+          extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject4);
           l1 = 0L;
         }
         try
         {
-          long l2 = Long.parseLong(a());
+          long l2 = Long.parseLong(getRecentUserUin());
           l1 = l2;
         }
         catch (NumberFormatException localNumberFormatException)
@@ -177,42 +195,42 @@ public class RecentHotchatItem
         this.mIsGroupVideoNotify = paramQQAppInterface.a().b(l1);
         if (this.mIsGroupVideoNotify)
         {
-          localObject1 = (bcqa)paramQQAppInterface.getManager(164);
-          if ((localObject1 != null) && (((bcqa)localObject1).a(a()) == 2)) {
+          localObject1 = (bfus)paramQQAppInterface.getManager(164);
+          if ((localObject1 != null) && (((bfus)localObject1).a(getRecentUserUin()) == 2)) {
             this.mIsGroupVideoNotify = false;
           }
         }
         if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
         {
-          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131698231);
-          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167008);
+          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131697082);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167092);
         }
         if ((this.mIsGroupVideoNotify) && (!bool))
         {
           localObject1 = String.valueOf(l1);
-          azqs.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + bcpx.a(paramQQAppInterface, (String)localObject1), "", "");
+          bcst.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + bfup.a(paramQQAppInterface, (String)localObject1), "", "");
         }
-        if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localObject4 != null) && (nav.a(localMessage))) {
-          this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131697672), -1);
+        if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localObject4 != null) && (njo.a(localMessage))) {
+          this.mLastMsg = ((MsgSummary)localObject4).parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696514), -1);
         }
         this.mMenuFlag &= 0xFFFFFF0F;
         j = this.mMenuFlag;
-        if (b())
+        if (a())
         {
           i = 32;
           this.mMenuFlag = (i | j);
           if (this.mOriginalData.mState != 1) {
             break label1017;
           }
-          if ((d()) && ((!d()) || (!this.mOriginalData.mIsRead4List))) {
+          if ((c()) && ((!c()) || (!this.mOriginalData.mIsRead4List))) {
             break label896;
           }
           if (QLog.isColorLevel()) {
             QLog.d("RecentHotchatItem", 2, "[update] kicked out");
           }
-          paramQQAppInterface = alud.a(2131713550);
-          ((MsgSummary)localObject4).a();
-          this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramQQAppInterface, -1);
+          paramQQAppInterface = anni.a(2131711929);
+          ((MsgSummary)localObject4).reset();
+          this.mLastMsg = ((MsgSummary)localObject4).parseMsgWithExtraInfo(paramContext, paramQQAppInterface, -1);
           this.mUnreadFlag = 0;
           if (!AppSetting.c) {
             break label1119;
@@ -240,14 +258,14 @@ public class RecentHotchatItem
           break label287;
           i = 16;
           break label676;
-          if ((!e()) || (c())) {
+          if ((!d()) || (b())) {
             break label758;
           }
           this.mMsgExtroInfo = "";
-          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167008);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167092);
           localObject1 = this.mGameData.wording;
-          ((MsgSummary)localObject4).a();
-          this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, (String)localObject1, -1);
+          ((MsgSummary)localObject4).reset();
+          this.mLastMsg = ((MsgSummary)localObject4).parseMsgWithExtraInfo(paramContext, (String)localObject1, -1);
           paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13);
           if (paramQQAppInterface != null) {
             paramQQAppInterface.a(100);
@@ -258,13 +276,13 @@ public class RecentHotchatItem
           QLog.d("RecentHotchatItem", 2, "[update] " + this.mGameData);
           break label758;
           label1017:
-          if ((e()) && (!c()))
+          if ((d()) && (!b()))
           {
             this.mMsgExtroInfo = "";
-            this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167008);
+            this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167092);
             paramQQAppInterface = this.mGameData.wording;
-            ((MsgSummary)localObject4).a();
-            this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramQQAppInterface, -1);
+            ((MsgSummary)localObject4).reset();
+            this.mLastMsg = ((MsgSummary)localObject4).parseMsgWithExtraInfo(paramContext, paramQQAppInterface, -1);
             if (QLog.isColorLevel()) {
               QLog.d("RecentHotchatItem", 2, "[update] " + this.mGameData);
             }
@@ -288,7 +306,27 @@ public class RecentHotchatItem
     }
   }
   
-  public long b()
+  public boolean a()
+  {
+    return (this.mOriginalData != null) && (this.mOriginalData.mIsMakeTop);
+  }
+  
+  public boolean b()
+  {
+    return (this.mOriginalData != null) && (this.mOriginalData.mIsRead4List);
+  }
+  
+  public boolean c()
+  {
+    return (this.mOriginalData != null) && (this.mGameData != null) && (!this.mGameData.isShow);
+  }
+  
+  public boolean d()
+  {
+    return this.mGameData != null;
+  }
+  
+  public long getLastDraftTime()
   {
     if (this.mOriginalData == null) {
       return 0L;
@@ -296,67 +334,37 @@ public class RecentHotchatItem
     return this.mOriginalData.mDraftSec;
   }
   
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.mOriginalData != null) && (this.mOriginalData.mGameId <= 0) && (!TextUtils.isEmpty(this.mOriginalData.mHotChatCode)) && (paramQQAppInterface != null))
-    {
-      Object localObject = (aliw)paramQQAppInterface.getManager(155);
-      if (localObject != null)
-      {
-        localObject = ((aliw)localObject).a(this.mOriginalData.mHotChatCode);
-        if (localObject != null) {
-          this.mOriginalData.mGameId = ((ApolloGameData)localObject).gameId;
-        }
-      }
-    }
-    if ((paramQQAppInterface != null) && (c() > 0))
-    {
-      paramQQAppInterface = (aliw)paramQQAppInterface.getManager(155);
-      if (paramQQAppInterface != null) {
-        this.mGameData = paramQQAppInterface.a(c(), c());
-      }
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.mOriginalData != null) && (this.mOriginalData.mIsMakeTop);
-  }
-  
-  public int c()
+  public long getLastMsgTime()
   {
     if (this.mOriginalData == null) {
-      return -1;
+      return 0L;
     }
-    return this.mOriginalData.mGameId;
+    return this.mOriginalData.mLatestMsgSec;
   }
   
-  public String c()
+  public int getRecentUserType()
+  {
+    return 1;
+  }
+  
+  public String getRecentUserUin()
   {
     if (this.mOriginalData == null) {
       return "";
     }
-    return this.mOriginalData.mHotChatCode;
+    return this.mOriginalData.mTroopUin;
   }
   
-  public boolean c()
+  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
   {
-    return (this.mOriginalData != null) && (this.mOriginalData.mIsRead4List);
-  }
-  
-  public boolean d()
-  {
-    return (this.mOriginalData != null) && (this.mGameData != null) && (!this.mGameData.isShow);
-  }
-  
-  public boolean e()
-  {
-    return this.mGameData != null;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.RecentHotchatItem
  * JD-Core Version:    0.7.0.1
  */

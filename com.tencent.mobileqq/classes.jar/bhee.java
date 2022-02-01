@@ -1,80 +1,25 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StCurrChannelInfo;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
-public class bhee
-  extends bhdw
+class bhee
+  implements Drawable.Callback
 {
-  private INTERFACE.StUseUserAppReq a = new INTERFACE.StUseUserAppReq();
+  bhee(bhed parambhed, bheb parambheb) {}
   
-  public bhee(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    this.a.appId.set(paramString1);
-    this.a.verType.set(paramInt1);
-    this.a.source.set(paramInt2);
-    paramString1 = new INTERFACE.StCurrChannelInfo();
-    paramString1.refer.set(paramString2);
-    paramString1.via.set(paramString3);
-    this.a.channelInfo.set(paramString1);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (this.jdField_a_of_type_Bheb != null) {
+      this.jdField_a_of_type_Bheb.a(paramDrawable);
     }
   }
   
-  protected String a()
-  {
-    return "mini_app_userapp";
-  }
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
   
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
-    try
-    {
-      localStUseUserAppRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStUseUserAppRsp != null)
-      {
-        if (localStUseUserAppRsp.extInfo != null)
-        {
-          paramArrayOfByte = new JSONObject();
-          paramArrayOfByte.put("ext", localStUseUserAppRsp.extInfo.get());
-          return paramArrayOfByte;
-        }
-        QMLog.d("UseUserAppRequest", "onResponse fail.extInfo = null");
-        return null;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("UseUserAppRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    QMLog.d("UseUserAppRequest", "onResponse fail.rsp = null");
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "UseUserApp";
-  }
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhee
  * JD-Core Version:    0.7.0.1
  */

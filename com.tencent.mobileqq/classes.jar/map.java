@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.view.View;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.ui.AVActivity;
 
 public class map
-  implements DialogInterface.OnClickListener
+  implements bkhw
 {
-  public map(AVSchema paramAVSchema) {}
+  public map(AVActivity paramAVActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.a.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     map
  * JD-Core Version:    0.7.0.1
  */

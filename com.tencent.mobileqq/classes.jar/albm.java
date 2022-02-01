@@ -1,6 +1,24 @@
-public abstract interface albm
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+
+public class albm
+  extends alcd
 {
-  public abstract void a(int paramInt);
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
+  {
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = LayoutInflater.from(paramContext).inflate(2131558927, null);
+    }
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramObject.setOnLongClickListener(paramOnLongClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
+  }
 }
 
 

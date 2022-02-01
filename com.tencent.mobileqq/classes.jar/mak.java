@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
-
-public final class mak
-  implements Parcelable.Creator<RecvMsg>
+public class mak
+  extends mah
 {
-  public RecvMsg a(Parcel paramParcel)
+  boolean a = false;
+  
+  public mak(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
-    return new RecvMsg(paramParcel);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.a = paramBoolean;
   }
   
-  public RecvMsg[] a(int paramInt)
+  public int a()
   {
-    return new RecvMsg[paramInt];
+    return 2;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mak
  * JD-Core Version:    0.7.0.1
  */

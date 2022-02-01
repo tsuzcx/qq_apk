@@ -1,54 +1,15 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class agdi
-  implements bemz
+public class agdi
+  implements bdet
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Activity> b;
+  public agdi(FriendShipWaveView paramFriendShipWaveView) {}
   
-  agdi(agda paramagda, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramActivity);
-  }
-  
-  public void a(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity = (Activity)this.b.get();
-    if ((localActivity == null) || (localQQAppInterface == null)) {
-      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
-    }
-    do
-    {
-      do
-      {
-        return;
-        aepi.n = true;
-      } while (this.jdField_a_of_type_Agda.a());
-      localObject = aepi.a(paramView);
-    } while ((aoiy.a((MessageRecord)localObject)) || (atlt.a(this.jdField_a_of_type_Agda.a)) || (((ChatMessage)localObject).istroop == 10007) || (paramView.getId() == 2131377827) || (paramView.getId() == 2131370777) || (paramView.getId() == 2131364201));
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
-        return;
-      }
-      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Agda.a.a);
-      return;
-    }
+    bdfb localbdfb = new bdfb(new bdes[] { new bdfa(300, 0.1F, 1.1F), new bdfa(100, 1.2F, 0.9F), new bdfa(100, 0.9F, 1.0F) });
+    this.a.c.a(new bdes[] { localbdfb });
+    this.a.b.a(new bdes[] { new bdfa(300, 0.0F, 1.0F) });
   }
 }
 

@@ -1,33 +1,26 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.SimpleAdapter.ViewBinder;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class rlc
-  extends PhoneStateListener
+  implements SimpleAdapter.ViewBinder
 {
-  rlc(rlb paramrlb) {}
+  public rlc(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public boolean setViewValue(View paramView, Object paramObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
+    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
     {
-    default: 
-      return;
-    case 1: 
-      this.a.d(true);
-      return;
-    case 2: 
-      this.a.d(true);
-      return;
+      ((TextView)paramView).setText((CharSequence)paramObject);
+      return true;
     }
-    this.a.c();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlc
  * JD-Core Version:    0.7.0.1
  */

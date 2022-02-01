@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aese
-  implements Parcelable.Creator<ForwardUtils.Section_Pic>
+public class aese
+  implements View.OnClickListener
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  public aese(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

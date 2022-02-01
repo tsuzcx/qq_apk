@@ -1,8 +1,8 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import java.nio.ByteBuffer;
 
 public abstract interface BinaryMessenger
@@ -18,7 +18,7 @@ public abstract interface BinaryMessenger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.BinaryMessenger
  * JD-Core Version:    0.7.0.1
  */

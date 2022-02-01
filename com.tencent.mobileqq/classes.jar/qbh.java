@@ -1,97 +1,53 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qbh
-  extends pxl
 {
-  public qbh(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext, parambdbb, paramrqj);
-  }
-  
-  public pxl a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().g().l().j().n().h();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
-    }
-    if (this.jdField_a_of_type_Pxk != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout2.setLayoutParams(localLayoutParams);
-      localLinearLayout2.addView((View)this.jdField_a_of_type_Pxk);
-      localLinearLayout1.addView(localLinearLayout2);
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anni.a(2131711630));
+      localJSONObject1.put("id_gallery_cnt", localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
+      localJSONObject1.put("id_gallery_img", localObject);
+      localJSONObject1.put("id_gallery_bg", new JSONObject());
+      qcd.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label207;
+      }
+      qcd.a(paramBaseArticleInfo, localJSONObject1);
+      qcd.b(paramBaseArticleInfo, localJSONObject1);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    for (;;)
+    {
+      qcd.l(paramBaseArticleInfo, localJSONObject1);
+      qcd.e(paramBaseArticleInfo, localJSONObject1);
+      qcd.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      qcd.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label207:
+      qcd.d(paramBaseArticleInfo, localJSONObject1);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
-  }
-  
-  public pxl p()
-  {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_Pxt);
-    }
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qbh
  * JD-Core Version:    0.7.0.1
  */

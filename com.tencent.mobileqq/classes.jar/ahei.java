@@ -1,16 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahei
-  implements View.OnTouchListener
+final class ahei
+  implements OnCompositionLoadedListener
 {
-  public ahei(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  ahei(DiniFlyAnimationView paramDiniFlyAnimationView, aguj paramaguj, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ahej(this));
+    if (paramLottieComposition == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(aheh.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    if ((this.jdField_a_of_type_Aguj != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramLottieComposition = this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
+      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
 }
 

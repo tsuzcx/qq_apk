@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class asqc
-  extends ThreadLocal<Boolean>
+class asqc
+  implements DialogInterface.OnDismissListener
 {
-  public asqc(JefsClass paramJefsClass) {}
+  asqc(aspz paramaspz) {}
   
-  protected Boolean a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return Boolean.valueOf(false);
+    aspz.a(this.a).dismiss();
   }
 }
 

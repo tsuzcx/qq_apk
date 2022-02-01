@@ -1,125 +1,103 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.camera.CameraObserver.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class lme
-  implements Observer
 {
-  Handler a = null;
+  private static int d = 48;
+  public int a;
+  public long a;
+  public lnm a;
+  public int b;
+  public int c;
   
-  private void a(Object paramObject)
+  public lme()
+  {
+    this.jdField_a_of_type_Lnm = new lnm();
+  }
+  
+  private static int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < 4)
+    {
+      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
+      i += 1;
+    }
+    return j;
+  }
+  
+  private static long a(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
-    if (paramObject == null) {
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isDevelopLevel()) {
-      QLog.w("CameraObserver", 1, "OnUpdate, msgType[" + i + "]");
-    }
-    boolean bool;
-    switch (i)
+    int i = 0;
+    while (i < 8)
     {
-    default: 
-      return;
-    case 1: 
-      if (paramObject.length > 1)
+      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
+      i += 1;
+    }
+    return l;
+  }
+  
+  public static ArrayList<lme> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    ArrayList localArrayList = null;
+    Object localObject;
+    if (paramArrayOfByte == null)
+    {
+      localObject = localArrayList;
+      if (QLog.isColorLevel())
       {
-        bool = ((Boolean)paramObject[1]).booleanValue();
-        if (paramObject.length <= 2) {
-          break label317;
-        }
+        QLog.e("AVInviteAccount", 2, "getListFromBuffer detail is null");
+        localObject = localArrayList;
       }
-      break;
     }
-    label317:
-    for (l = ((Long)paramObject[2]).longValue();; l = 0L)
+    do
     {
-      a(l, bool);
-      return;
-      a();
-      return;
-      bool = ((Boolean)paramObject[1]).booleanValue();
-      i = ((Integer)paramObject[2]).intValue();
-      if (paramObject.length > 3) {
-        l = ((Long)paramObject[3]).longValue();
+      return localObject;
+      if (paramInt != 0) {
+        break;
       }
-      a(l, bool, i);
-      return;
-      if (paramObject.length > 1) {
-        l = ((Long)paramObject[1]).longValue();
+      localObject = localArrayList;
+    } while (!QLog.isColorLevel());
+    QLog.e("AVInviteAccount", 2, "getListFromBuffer buflen == 0");
+    return null;
+    int i = paramInt / d;
+    localArrayList = new ArrayList();
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
       }
-      a(l);
-      return;
-      bool = ((Boolean)paramObject[1]).booleanValue();
-      if (paramObject.length > 2) {
-        l = ((Long)paramObject[2]).longValue();
-      }
-      b(l, bool);
-      return;
-      b();
-      return;
-      a(((Boolean)paramObject[1]).booleanValue());
-      return;
+      localObject = new lme();
+      ((lme)localObject).jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt);
+      ((lme)localObject).jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 8);
       try
       {
-        paramObject = (byte[])paramObject[1];
-        a(paramObject);
-        return;
+        ((lme)localObject).jdField_a_of_type_Lnm.a = new String(paramArrayOfByte, d * paramInt + 16, 5, "UTF-8");
+        ((lme)localObject).jdField_a_of_type_Lnm.b = new String(paramArrayOfByte, d * paramInt + 21, 5, "UTF-8");
+        ((lme)localObject).jdField_a_of_type_Lnm.c = new String(paramArrayOfByte, d * paramInt + 26, 12, "UTF-8");
+        ((lme)localObject).b = a(paramArrayOfByte, d * paramInt + 40);
+        ((lme)localObject).c = a(paramArrayOfByte, d * paramInt + 44);
+        localArrayList.add(localObject);
+        paramInt += 1;
       }
-      catch (Exception paramObject)
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         for (;;)
         {
-          paramObject.printStackTrace();
-          paramObject = null;
+          localUnsupportedEncodingException.printStackTrace();
         }
       }
-      b(((Boolean)paramObject[1]).booleanValue());
-      return;
     }
-  }
-  
-  @Deprecated
-  protected void a() {}
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(byte[] paramArrayOfByte) {}
-  
-  protected void b() {}
-  
-  protected void b(long paramLong, boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new CameraObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lme
  * JD-Core Version:    0.7.0.1
  */

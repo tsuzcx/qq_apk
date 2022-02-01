@@ -1,21 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class yrt
-  implements beex
+public class yrt
 {
-  yrt(yrr paramyrr, int paramInt, String paramString) {}
+  public static String a;
   
-  public void a(Bundle paramBundle)
+  public static boolean a(long paramLong, Context paramContext)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Yrr.a.a(121, paramBundle);
+    a = anlj.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrt
  * JD-Core Version:    0.7.0.1
  */

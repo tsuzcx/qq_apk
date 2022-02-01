@@ -12,7 +12,7 @@ public class ViscousFluidInterpolator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.ViscousFluidInterpolator
  * JD-Core Version:    0.7.0.1
  */

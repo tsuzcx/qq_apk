@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bdnn;
+import bgsp;
 
 class ScreenOffOnListener$1
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ class ScreenOffOnListener$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bdnn.a(paramIntent.getAction())) {}
+    if (bgsp.a(paramIntent.getAction())) {}
     while (ScreenOffOnListener.access$000(this.this$0) == null) {
       return;
     }
@@ -21,7 +21,7 @@ class ScreenOffOnListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.ScreenOffOnListener.1
  * JD-Core Version:    0.7.0.1
  */

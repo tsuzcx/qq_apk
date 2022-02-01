@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
 
 public class adbr
-  implements QQPermissionCallback
+  extends AbType
 {
-  public adbr(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void active()
   {
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
+    setPerfTimeout(1, 9223372036854775807L);
+    setPerfTimeout(4, 9223372036854775807L);
+    setPerfTimeout(2, 9223372036854775807L);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String getDescription()
   {
-    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    return "AIO3D背景";
+  }
+  
+  public void unActive()
+  {
+    setPerfTimeout(1, 3000L);
+    setPerfTimeout(2, 2000L);
+    setPerfTimeout(4, 9223372036854775807L);
   }
 }
 

@@ -1,71 +1,133 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ashx
-  implements TextWatcher
 {
   public int a;
-  public CharSequence a;
+  public List<ashy> a;
   public boolean a;
-  int b = -1;
-  int c = -1;
+  public boolean b;
   
-  public ashx(BlockableEditTextView paramBlockableEditTextView)
+  private int a()
   {
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
-      return;
-    }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
-    {
-      Editable localEditable;
-      ashy[] arrayOfashy;
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0;; i = ((ashy)localIterator.next()).jdField_a_of_type_JavaUtilList.size() + i)
       {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfashy = (ashy[])localEditable.getSpans(paramInt1, paramInt1, ashy.class);
-      } while ((arrayOfashy == null) || (arrayOfashy.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfashy[0]);
-      this.c = localEditable.getSpanEnd(arrayOfashy[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
+        j = i;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      }
+    }
+    int j = 0;
+    return j;
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      long l = System.currentTimeMillis();
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
+      {
+        if (Math.abs(l - ((ashy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long) > 60000L) {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public ashy a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+        localObject1 = (ashy)this.jdField_a_of_type_JavaUtilList.get(0);
+      }
+    }
+    return localObject1;
+  }
+  
+  public ashy a(String paramString)
+  {
+    int i;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+        if (paramString.equals(((ashy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString))
+        {
+          paramString = (ashy)this.jdField_a_of_type_JavaUtilList.get(i);
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+      }
+      return paramString;
+      i += 1;
+      break;
+      paramString = null;
+    }
+  }
+  
+  public void a(ashy paramashy, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_Int = paramInt;
+    a();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramashy)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramashy);
+    }
+    if ((paramashy == null) || (paramashy.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilList.add(0, paramashy);
+      while ((a() > 500) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mShowCard").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mMaxLikeCount").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" ").append("mTags").append("=").append(" [");
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        ashy localashy = (ashy)this.jdField_a_of_type_JavaUtilList.get(i);
+        localStringBuilder.append("\n");
+        localStringBuilder.append("index_").append(i).append("=").append(localashy.toString());
+        i += 1;
+      }
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

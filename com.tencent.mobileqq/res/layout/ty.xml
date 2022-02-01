@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.view.EditorClipView android:id="@id/bc8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge android:layout_width="115.0dip" android:layout_height="115.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.story.view.AnimationQIMCircleProgress android:layout_gravity="center" android:id="@id/kuj" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/mtg" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+    <ImageView android:layout_gravity="center" android:id="@id/mt7" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+</merge>

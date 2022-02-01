@@ -2,26 +2,26 @@ package dov.com.qq.im.ae.gif.video;
 
 import android.os.Handler;
 import android.os.Looper;
-import bleu;
-import blex;
+import bnuc;
+import bnuf;
 
 public class PngsCreateWorkingQueue$3
   implements Runnable
 {
-  public PngsCreateWorkingQueue$3(bleu parambleu, boolean paramBoolean) {}
+  public PngsCreateWorkingQueue$3(bnuc parambnuc, boolean paramBoolean) {}
   
   public void run()
   {
-    bleu.a(this.this$0).a();
+    bnuc.a(this.this$0).a();
     if (this.a) {
-      bleu.a(this.this$0);
+      bnuc.a(this.this$0);
     }
-    bleu.a(this.this$0).getLooper().quit();
+    bnuc.a(this.this$0).getLooper().quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.video.PngsCreateWorkingQueue.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,25 @@
-import android.view.View;
-
-class tgl
-  extends tgm
+public final class tgl
 {
-  tgl(tgk paramtgk) {}
-  
-  public void hide()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super.hide();
-    if (tgk.a(this.a) != null)
-    {
-      tgk.a(this.a).setVisibility(4);
-      tgk.a(this.a, 0);
-    }
+    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
   }
   
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super.updateUnreadCount(paramInt, paramBoolean);
-    if (paramInt == 0) {
-      tgk.a(this.a, 0);
+    paramFloat1 /= paramFloat4 / 2.0F;
+    if (paramFloat1 < 1.0F) {
+      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
     }
-    while ((paramInt <= tgk.a(this.a)) || (tgk.a(this.a) == null)) {
-      return;
-    }
-    tgk.a(this.a).setVisibility(0);
-    tgk.a(this.a, paramInt);
+    paramFloat3 /= 2.0F;
+    paramFloat1 -= 2.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgl
  * JD-Core Version:    0.7.0.1
  */

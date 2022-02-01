@@ -1,35 +1,37 @@
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aowl
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
+  Context a;
+  public ayko a;
+  public bgpa a;
   
-  private static aowl b(String paramString)
+  public aowl(Context paramContext, ayko paramayko)
   {
-    aowl localaowl = new aowl();
-    try
-    {
-      localaowl.c = new JSONObject(paramString).optInt("action", b);
-      return localaowl;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
-    }
-    return localaowl;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ayko = paramayko;
+    this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_AndroidContentContext, 230);
+    paramContext = new aowm(this);
+    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690078, paramContext);
+    this.jdField_a_of_type_Bgpa.setNegativeButton(2131690077, paramContext);
+    this.jdField_a_of_type_Bgpa.setMessage(2131690080);
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.c == a;
+    if (!this.jdField_a_of_type_Bgpa.isShowing()) {
+      this.jdField_a_of_type_Bgpa.show();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
+    }
+    bcst.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowl
  * JD-Core Version:    0.7.0.1
  */

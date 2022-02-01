@@ -1,110 +1,69 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.CmShowRscCacheManager.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class akqa
 {
-  private static akqa jdField_a_of_type_Akqa;
-  private final SparseArray<akqb> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private SendHbActivity a;
   
-  private akqa()
+  public akqa(SendHbActivity paramSendHbActivity)
   {
-    a();
-  }
-  
-  public static akqa a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Akqa == null) {
-        jdField_a_of_type_Akqa = new akqa();
-      }
-      akqa localakqa = jdField_a_of_type_Akqa;
-      return localakqa;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Object localObject1 = new akqi();
-    ((akqi)localObject1).jdField_a_of_type_Int = 100;
-    ((akqi)localObject1).jdField_a_of_type_Long = 1L;
-    ((akqi)localObject1).jdField_a_of_type_JavaLangString = "all_room3D";
-    localObject1 = ((akqi)localObject1).b() + "all_room3D.json";
-    Object localObject2 = new File((String)localObject1);
-    if (((File)localObject2).exists()) {
-      try
-      {
-        localObject2 = new JSONObject(bdhb.b((File)localObject2)).optJSONObject("data");
-        if (localObject2 != null)
-        {
-          localObject1 = ((JSONObject)localObject2).optString("downloadUrl");
-          localObject2 = ((JSONObject)localObject2).optJSONObject("list");
-          Iterator localIterator = ((JSONObject)localObject2).keys();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (String)localIterator.next();
-            int i = ApolloUtil.b((String)localObject3);
-            if (i > -2147483648)
-            {
-              localObject3 = ((JSONObject)localObject2).optJSONObject((String)localObject3);
-              if (localObject3 != null)
-              {
-                localObject3 = ((JSONObject)localObject3).optString("source_qq");
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  akqb localakqb = new akqb();
-                  localakqb.c = "all_room3D.json";
-                  localakqb.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                  localakqb.jdField_b_of_type_Int = i;
-                  localakqb.jdField_a_of_type_Int = 8;
-                  localakqb.jdField_a_of_type_JavaLangString = ((String)localObject3);
-                  this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localakqb);
-                }
-              }
-            }
-          }
-        }
-        ApolloUtil.b("小窝json不存在");
-      }
-      catch (Exception localException)
-      {
-        QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson e:", localException);
-        if (QLog.isColorLevel()) {
-          QLog.d("rscContent_CmShowRscCacheManager", 2, "initRoomJson mRoomRscMap:" + this.jdField_a_of_type_AndroidUtilSparseArray);
-        }
-        return;
-      }
-    }
-    QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson file is no exsit path:" + localException);
-  }
-  
-  public akqb a(int paramInt1, int paramInt2)
-  {
-    akqb localakqb = null;
-    if (paramInt1 == 8) {
-      localakqb = (akqb)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    }
-    if (localakqb == null) {
-      ApolloUtil.b("未获取资源getRscItem type:" + paramInt1 + " id:" + paramInt2);
-    }
-    return localakqb;
+    this.a = paramSendHbActivity;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscCacheManager", 2, "onRoomZipUpdated");
+    Map localMap = this.a.a();
+    localMap.put("channel", this.a.jdField_a_of_type_Int + "");
+    localMap.put("bus_type", "1");
+    localMap.put("type", "1");
+    a(localMap);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    ThreadManager.executeOnSubThread(new CmShowRscCacheManager.1(this));
+    try
+    {
+      localJSONObject.put("userId", paramString2);
+      localJSONObject.put("viewTag", "qrcodeHb");
+      localJSONObject.put("comeForm", 1);
+      paramString2 = new JSONObject();
+      if (!TextUtils.isEmpty(paramString1)) {
+        paramString2.putOpt("qrToken", paramString1);
+      }
+      paramString2.putOpt("comeFrom", Integer.valueOf(1));
+      localJSONObject.put("extra_data", paramString2.toString());
+      paramString1 = new Bundle();
+      paramString1.putString("json", localJSONObject.toString());
+      paramString1.putString("callbackSn", "0");
+      paramString1.putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+      PayBridgeActivity.a(this.a, 5, paramString1);
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    Object localObject = new JSONObject(paramMap);
+    paramMap = this.a.b();
+    paramMap.put("extra_data", ((JSONObject)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("json", new JSONObject(paramMap).toString());
+    ((Bundle)localObject).putString("callbackSn", "0");
+    ((Bundle)localObject).putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+    PayBridgeActivity.a(this.a, 5, (Bundle)localObject);
   }
 }
 

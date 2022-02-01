@@ -1,233 +1,127 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.GradientDrawable.Orientation;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.lyric.widget.LyricViewDetail;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import java.lang.ref.WeakReference;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class aurz
-  extends Handler
+  extends SQLiteOpenHelper
 {
-  private final WeakReference<MusicPlayerActivity> a;
+  private Context a;
   
-  public aurz(MusicPlayerActivity paramMusicPlayerActivity)
+  public aurz(Context paramContext)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramMusicPlayerActivity);
+    super(paramContext, "WADLTASK.db", null, 28);
+    this.a = paramContext;
   }
   
-  private void a(int[] paramArrayOfInt, boolean paramBoolean)
+  private ausa a(Cursor paramCursor)
   {
-    MusicPlayerActivity localMusicPlayerActivity = (MusicPlayerActivity)this.a.get();
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length >= 2) && (localMusicPlayerActivity != null))
+    if (paramCursor != null)
     {
-      int i = paramArrayOfInt[0];
-      int j = Color.argb(0, Color.red(i), Color.green(i), Color.blue(i));
-      GradientDrawable localGradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, j, j, j, j, j, i });
-      ((ImageView)localMusicPlayerActivity.findViewById(2131370895)).setImageDrawable(localGradientDrawable);
-      localMusicPlayerActivity.findViewById(2131370898).setBackgroundColor(i);
-      i = paramArrayOfInt[1];
-      j = Color.argb(128, Color.red(i), Color.green(i), Color.blue(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity).setTextColor(i);
-      MusicPlayerActivity.b(localMusicPlayerActivity).setTextColor(i);
-      localMusicPlayerActivity.a.a().setLyricHilightColor(i);
-      localMusicPlayerActivity.a.a().setLyricColor(j);
-      MusicPlayerActivity.b(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.c(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130841453, i);
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130841454, i);
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130839667, i);
-      if (paramBoolean)
-      {
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841046, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841048, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841047, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130837513, i);
-      }
+      ausa localausa = new ausa();
+      localausa.jdField_a_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("appId"));
+      localausa.jdField_b_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("packageName"));
+      localausa.jdField_c_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("apkUrl"));
+      localausa.jdField_d_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("apkSign"));
+      localausa.jdField_a_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
+      localausa.e = paramCursor.getString(paramCursor.getColumnIndex("appName"));
+      localausa.f = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
+      localausa.g = paramCursor.getString(paramCursor.getColumnIndex("apkChannel"));
+      localausa.h = paramCursor.getString(paramCursor.getColumnIndex("via"));
+      localausa.jdField_b_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
+      localausa.i = paramCursor.getString(paramCursor.getColumnIndex("fromWebUrl"));
+      localausa.jdField_c_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("actionFrom"));
+      localausa.j = paramCursor.getString(paramCursor.getColumnIndex("adtag"));
+      localausa.k = paramCursor.getString(paramCursor.getColumnIndex("extraData"));
+      localausa.jdField_a_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("totalSize"));
+      localausa.jdField_b_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("downloadSize"));
+      localausa.l = paramCursor.getString(paramCursor.getColumnIndex("savePath"));
+      localausa.jdField_d_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("status"));
+      localausa.m = paramCursor.getString(paramCursor.getColumnIndex("taskId"));
+      localausa.jdField_c_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("createTime"));
+      return localausa;
     }
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  private boolean a()
   {
-    int i = 4;
-    int j = 1;
-    Object localObject1 = (MusicPlayerActivity)this.a.get();
-    Object localObject2 = paramMessage.getData();
-    if (localObject1 != null) {
-      switch (paramMessage.what)
-      {
-      }
+    return new File(this.a.getDatabasePath("WADLTASK.db").getPath()).exists();
+  }
+  
+  public List<ausa> a()
+  {
+    Object localObject1 = null;
+    SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
+    if (localSQLiteDatabase == null) {
+      return null;
     }
-    label495:
-    do
+    Cursor localCursor = localSQLiteDatabase.rawQuery("select * from TASKS", null);
+    for (;;)
     {
-      do
+      Object localObject4;
+      if (localCursor != null) {
+        localObject4 = localObject1;
+      }
+      try
       {
-        do
+        if (localCursor.moveToNext())
         {
-          do
+          localObject4 = localObject1;
+          ausa localausa = a(localCursor);
+          if (localausa == null) {
+            continue;
+          }
+          Object localObject3 = localObject1;
+          if (localObject1 == null)
           {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  a(((Bundle)localObject2).getIntArray("KEY_COLOR_LIST"), ((Bundle)localObject2).getBoolean("KEY_MATCH_SONG"));
-                  return;
-                  i = paramMessage.arg1;
-                  paramMessage = MusicPlayerActivity.b((MusicPlayerActivity)localObject1).getTag();
-                  if ((paramMessage instanceof Integer))
-                  {
-                    j = ((Integer)paramMessage).intValue();
-                    MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130841453, j);
-                    MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130841454, j);
-                  }
-                  if ((i == 3) || (i == 4)) {
-                    MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setImageResource(2130841454);
-                  }
-                  for (;;)
-                  {
-                    MusicPlayerActivity.a((MusicPlayerActivity)localObject1);
-                    return;
-                    MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setImageResource(2130841453);
-                  }
-                } while (!(paramMessage.obj instanceof ausb));
-                localObject2 = (ausb)paramMessage.obj;
-                if (paramMessage.arg1 == 1) {
-                  i = 0;
-                }
-                MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setVisibility(i);
-                if (MusicPlayerActivity.a((MusicPlayerActivity)localObject1).isSelected()) {
-                  MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841047);
-                }
-                for (;;)
-                {
-                  MusicPlayerActivity.c((MusicPlayerActivity)localObject1).setVisibility(i);
-                  MusicPlayerActivity.c((MusicPlayerActivity)localObject1).setImageResource(2130841046);
-                  MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setVisibility(i);
-                  MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130837513);
-                  MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setTag(localObject2);
-                  return;
-                  MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841048);
-                }
-              } while (localObject2 == null);
-              paramMessage = ((Bundle)localObject2).getString("KEY_SONG_NAME");
-              ((Bundle)localObject2).getString("KEY_SINGER_NAME");
-              Object localObject3 = ((Bundle)localObject2).getString("KEY_IMG_URL");
-              boolean bool1 = ((Bundle)localObject2).getBoolean("KEY_MATCH_SONG");
-              boolean bool2 = ((Bundle)localObject2).getBoolean("KEY_IS_FAVOURITE");
-              if (!TextUtils.isEmpty(paramMessage)) {
-                MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setText(paramMessage);
-              }
-              if (bool1)
-              {
-                if (!bool2) {
-                  break label495;
-                }
-                MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841047);
-              }
-              URLDrawable localURLDrawable;
-              Object localObject4;
-              for (;;)
-              {
-                MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setSelected(bool2);
-                if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!Patterns.WEB_URL.matcher((CharSequence)localObject3).matches())) {
-                  break label522;
-                }
-                paramMessage = (URLImageView)((MusicPlayerActivity)localObject1).findViewById(2131370904);
-                localURLDrawable = URLDrawable.getDrawable((String)localObject3, URLDrawable.URLDrawableOptions.obtain());
-                localObject4 = aurh.a((String)localObject3);
-                if (localObject4 == null) {
-                  break label550;
-                }
-                localObject3 = new int[((List)localObject4).size()];
-                i = 0;
-                while (i < ((List)localObject4).size())
-                {
-                  localObject3[i] = ((Integer)((List)localObject4).get(i)).intValue();
-                  i += 1;
-                }
-                MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841048);
-              }
-              a((int[])localObject3, bool1);
-              for (;;)
-              {
-                paramMessage.setImageDrawable(localURLDrawable);
-                paramMessage = ((Bundle)localObject2).getString("KEY_SOURCE_NAME");
-                if (!TextUtils.isEmpty(paramMessage)) {
-                  break;
-                }
-                MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setText(2131694641);
-                return;
-                localObject3 = new aurh((String)localObject3, MusicPlayerActivity.a((MusicPlayerActivity)localObject1), Boolean.valueOf(bool1));
-                if (localURLDrawable.getStatus() == 1)
-                {
-                  localObject4 = localURLDrawable.getCurrDrawable();
-                  if ((localObject4 instanceof RegionDrawable)) {
-                    ((aurh)localObject3).run(null, ((RegionDrawable)localObject4).getBitmap());
-                  }
-                }
-                else
-                {
-                  localURLDrawable.setDecodeHandler((DownloadParams.DecodeHandler)localObject3);
-                }
-              }
-              MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setText(((MusicPlayerActivity)localObject1).getString(2131694639, new Object[] { paramMessage }));
-              return;
-              MusicPlayerActivity.a((MusicPlayerActivity)localObject1);
-              return;
-            } while (!(paramMessage.obj instanceof View));
-            localObject2 = (View)paramMessage.obj;
-            paramMessage = bidc.a((Context)localObject1).b(3).a(((MusicPlayerActivity)localObject1).getString(paramMessage.arg1)).a(paramMessage.arg2);
-            paramMessage.c(49);
-            paramMessage = new bide(paramMessage).b(Color.argb(13, 255, 255, 255)).a(5).a();
-          } while (paramMessage == null);
-          paramMessage = paramMessage.a();
-        } while (paramMessage == null);
-        paramMessage.a((View)localObject2);
-        return;
-        localObject1 = MusicPlayerActivity.d((MusicPlayerActivity)localObject1).getTag();
-      } while (!(localObject1 instanceof ausb));
-      localObject1 = (ausb)localObject1;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    label522:
-    label550:
-    localObject2 = (Bitmap)paramMessage.obj;
-    long l = System.currentTimeMillis();
-    i = j;
-    if (paramMessage.arg1 == 2) {
-      i = 0;
+            localObject4 = localObject1;
+            localObject3 = new ArrayList();
+          }
+          localObject4 = localObject3;
+          ((List)localObject3).add(localausa);
+          localObject1 = localObject3;
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return localObject4;
+        return localException;
+      }
+      finally
+      {
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        localSQLiteDatabase.close();
+      }
     }
-    WXShareHelper.a().a(String.valueOf(l), ((ausb)localObject1).a, (Bitmap)localObject2, ((ausb)localObject1).b, ((ausb)localObject1).d, i, ((ausb)localObject1).e);
+  }
+  
+  public SQLiteDatabase getReadableDatabase()
+  {
+    if (!a()) {
+      return null;
+    }
+    return super.getReadableDatabase();
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    throw new SQLiteException("WadlTaskReader don't upgrade database from version " + paramInt1 + " to " + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurz
  * JD-Core Version:    0.7.0.1
  */

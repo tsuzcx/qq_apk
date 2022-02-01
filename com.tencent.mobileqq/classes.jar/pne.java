@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class pne
-  implements View.OnClickListener
+final class pne
+  implements pnh
 {
-  pne(pna parampna, pgd parampgd, rqj paramrqj) {}
+  public void l() {}
   
-  public void onClick(View paramView)
+  public void m()
   {
-    this.jdField_a_of_type_Pgd.a();
-    rro localrro = this.jdField_a_of_type_Rqj.a();
-    if (localrro != null) {
-      localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
-    }
+    pmy.a().a("2909288299", pnc.b, false, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pne
  * JD-Core Version:    0.7.0.1
  */

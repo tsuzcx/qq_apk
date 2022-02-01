@@ -1,16 +1,53 @@
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bncb
+class bncb
+  implements bole
 {
-  public abstract void a(int paramInt, bnck parambnck);
+  bncb(bnbz parambnbz) {}
   
-  public abstract void a(List<bnck> paramList);
+  public void a(bolr parambolr) {}
   
-  public abstract void c();
+  public void a(bolr parambolr, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
+    }
+    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
+      paramBundle = (EffectsCameraCaptureView)this.a.a;
+    }
+    try
+    {
+      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
+      if (paramBundle != null)
+      {
+        parambolr = bnbz.a(this.a, parambolr);
+        paramBundle.setWatermarkPath(parambolr);
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + parambolr);
+        }
+      }
+      return;
+    }
+    catch (Throwable parambolr)
+    {
+      QLog.e("QIMEmojiRedPacketCameraCapture", 2, parambolr.getStackTrace());
+    }
+  }
   
-  public abstract void d();
+  public void a(bolu parambolu, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public abstract void e();
+  public void a(bomb parambomb, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  
+  public void a(bpyf parambpyf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
+    }
+  }
 }
 
 

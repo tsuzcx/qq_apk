@@ -1,30 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahfb
-  extends ahex
+  extends ahfe
 {
-  public ahfb(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ahfa paramahfa)
-  {
-    super(paramQQAppInterface, paramContext, paramXListView, paramahfa);
-  }
+  public FrameLayout a;
+  public RelativeLayout a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public View c;
+  public int e;
+  public int f;
   
-  protected ahes a()
+  public ahfb(ahfa paramahfa)
   {
-    return new ahew(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    super.b();
-    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+    super(paramahfa);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

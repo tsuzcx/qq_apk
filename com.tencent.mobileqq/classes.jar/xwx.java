@@ -1,208 +1,140 @@
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xwx
-  extends Drawable
+class xwx
+  extends Drawable.ConstantState
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public BitmapShader a;
-  public Paint a;
-  public Path a;
-  public RectF a;
-  public boolean a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
+  private long jdField_a_of_type_Long;
+  @NonNull
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  @NonNull
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Error jdField_a_of_type_JavaLangError;
+  @NonNull
+  public final String a;
+  private final CopyOnWriteArraySet<xxa> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  @NonNull
+  private xxb<Bitmap> jdField_a_of_type_Xxb;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String b = "story.icon.ShareGroupDrawableState";
   
-  public xwx()
+  public xwx(String paramString, Context paramContext, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  }
-  
-  private void a()
-  {
-    Matrix localMatrix = new Matrix();
-    localMatrix.set(null);
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    localMatrix.postScale(getIntrinsicWidth() / i, getIntrinsicHeight() / j);
-    localMatrix.postTranslate(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(localMatrix);
-  }
-  
-  private void a(int paramInt, Path paramPath)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    case 1: 
-      c(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
-    case 2: 
-      b(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
-      return;
+    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
+      throw new IllegalArgumentException("params should not be null");
     }
-    d(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
   }
   
-  private void a(Canvas paramCanvas)
+  private void a(boolean paramBoolean)
   {
-    switch (this.jdField_c_of_type_Int)
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-    }
-    for (;;)
-    {
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      while (localIterator.hasNext())
       {
-        return;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-        break;
-      } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        xxa localxxa = (xxa)localIterator.next();
+        if (xxa.a(localxxa))
+        {
+          if (paramBoolean) {
+            localxxa.a(this);
+          } else {
+            localxxa.b(this);
+          }
+        }
+        else
+        {
+          xwv.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localxxa);
+        }
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      a();
     }
+    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
   }
   
-  private void a(RectF paramRectF, Path paramPath)
+  private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    {
+      xwv.a(this.b, "startLoad");
+      this.jdField_a_of_type_Xxb.a(this).subscribe(new xwy(this));
     }
-    paramPath.moveTo(this.jdField_a_of_type_Float + paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.jdField_c_of_type_Float + this.d);
-    paramPath.lineTo(paramRectF.left, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
-  }
-  
-  private void b(RectF paramRectF, Path paramPath)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
+      return;
     }
-    paramPath.moveTo(paramRectF.left + Math.min(this.d, this.jdField_b_of_type_Float), paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float / 2.0F + this.d, paramRectF.top);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 180.0F, 90.0F);
-    paramPath.close();
+    xwv.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
+    this.jdField_a_of_type_JavaLangError = null;
+    b(true);
   }
   
-  private void c(RectF paramRectF, Path paramPath)
+  Bitmap a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public Drawable a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top, paramRectF.right - this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.right, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
+    return null;
   }
   
-  private void d(RectF paramRectF, Path paramPath)
+  Error a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
-    }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d + this.jdField_a_of_type_Float / 2.0F, paramRectF.bottom);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + Math.min(this.jdField_b_of_type_Float, this.d), paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, paramRectF.bottom - this.jdField_c_of_type_Float), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
-    paramPath.close();
+    return this.jdField_a_of_type_JavaLangError;
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a()
   {
-    a(paramCanvas);
+    xwv.b(this.b, "recycle");
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public int getIntrinsicHeight()
+  public void a(xwz paramxwz)
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.height();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new xxa(paramxwz));
   }
   
-  public int getIntrinsicWidth()
+  void a(@NonNull xxb<Bitmap> paramxxb)
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.width();
+    this.jdField_a_of_type_Xxb = paramxxb;
   }
   
-  public int getOpacity()
+  public void b()
   {
-    return -3;
+    b(false);
   }
   
-  protected void onBoundsChange(Rect paramRect)
+  public int getChangingConfigurations()
   {
-    super.onBoundsChange(paramRect);
+    return 0;
   }
   
-  public void setAlpha(int paramInt)
+  @NonNull
+  public Drawable newDrawable()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    return new xxc(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xwx
  * JD-Core Version:    0.7.0.1
  */

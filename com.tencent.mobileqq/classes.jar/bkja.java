@@ -1,12 +1,6 @@
-import android.content.Intent;
-import java.util.HashSet;
-import org.json.JSONObject;
-
 public abstract interface bkja
 {
-  public abstract HashSet<String> getFilterCmds();
-  
-  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
+  public abstract void a();
 }
 
 

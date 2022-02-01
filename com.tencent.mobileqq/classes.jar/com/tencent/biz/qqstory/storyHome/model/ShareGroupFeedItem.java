@@ -16,13 +16,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Iterator;
 import java.util.List;
-import uwa;
-import wfw;
-import wqm;
-import xqq;
+import wpm;
+import xzh;
+import yjx;
+import zkb;
 
 public class ShareGroupFeedItem
-  extends VideoListFeedItem<wqm, ShareGroupItem>
+  extends VideoListFeedItem<yjx, ShareGroupItem>
 {
   public String des = "";
   private ShareGroupItem mOwner = new ShareGroupItem();
@@ -54,7 +54,7 @@ public class ShareGroupFeedItem
     ShareGroupFeedItem localShareGroupFeedItem = new ShareGroupFeedItem();
     localShareGroupFeedItem.feedId = makeFakeFeedId(paramString1, paramString2);
     localShareGroupFeedItem.setDate(paramString2);
-    localShareGroupFeedItem.mOwner = ((wfw)uwa.a(7)).b(paramString1);
+    localShareGroupFeedItem.mOwner = ((xzh)wpm.a(7)).b(paramString1);
     localShareGroupFeedItem.ownerId = paramString1;
     localShareGroupFeedItem.mViewTotalTime = 0L;
     localShareGroupFeedItem.mHadLike = 0;
@@ -78,7 +78,7 @@ public class ShareGroupFeedItem
   {
     super.copy(paramObject);
     paramObject = (ShareGroupFeedItem)paramObject;
-    xqq.a(this.mOwner);
+    zkb.a(this.mOwner);
     this.mOwner.copy(paramObject.mOwner);
     if (paramObject.des != null) {
       this.des = paramObject.des;
@@ -108,7 +108,7 @@ public class ShareGroupFeedItem
       this.mOwner = new ShareGroupItem();
       this.mOwner.convertFrom(paramString.info);
       this.ownerId = this.mOwner.shareGroupId;
-      this.mOwner = ((wfw)uwa.a(7)).a(this.mOwner);
+      this.mOwner = ((xzh)wpm.a(7)).a(this.mOwner);
       return true;
     }
   }
@@ -124,15 +124,15 @@ public class ShareGroupFeedItem
     {
       localPBStringField.set(str);
       localShareGroupFeed.today_join_member_count.set(this.todayJoinMemberCount);
-      xqq.a(this.des);
+      zkb.a(this.des);
       return localShareGroupFeed.toByteArray();
     }
   }
   
   @NonNull
-  public wqm generateHomeFeed()
+  public yjx generateHomeFeed()
   {
-    return new wqm(this);
+    return new yjx(this);
   }
   
   public int getCommentLikeType()
@@ -157,9 +157,9 @@ public class ShareGroupFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    xqq.a(this.ownerId);
+    zkb.a(this.ownerId);
     if (!TextUtils.isEmpty(this.ownerId)) {
-      this.mOwner = ((wfw)uwa.a(7)).b(this.ownerId);
+      this.mOwner = ((xzh)wpm.a(7)).b(this.ownerId);
     }
   }
   
@@ -187,7 +187,7 @@ public class ShareGroupFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem
  * JD-Core Version:    0.7.0.1
  */

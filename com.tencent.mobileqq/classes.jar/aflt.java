@@ -1,19 +1,40 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class aflt
-  implements bemz
+public class aflt
+  implements View.OnClickListener
 {
-  aflt(aflo paramaflo) {}
+  public aflt(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    aepi.n = true;
-    if (this.a.a()) {
-      return;
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", this.a.b);
+    List localList = (List)this.a.jdField_a_of_type_Afnc.a.get(TroopMemberListActivity.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      localArrayList.add(((afna)localList.get(i)).a);
+      i += 1;
     }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    ((Intent)localObject).putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
+    localObject = ((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    bgjt.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bgjt.a((TroopMemberInfo)localObject) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

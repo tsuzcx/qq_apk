@@ -1,31 +1,85 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqqm
-  implements View.OnLongClickListener
+  extends aqkz<aqql>
 {
-  public aqqm(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public boolean onLongClick(View paramView)
+  public static aqql a()
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    return (aqql)aqlk.a().a(426);
+  }
+  
+  public static boolean a()
+  {
+    aqql localaqql = a();
+    if (localaqql != null) {}
+    for (boolean bool = localaqql.b();; bool = false)
+    {
+      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
+      return bool;
     }
-    paramView.setSelected(true);
-    bdpi localbdpi = new bdpi();
-    localbdpi.a(2131366762, paramView.getContext().getString(2131692837));
-    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbdpi);
-    this.a.a = bdft.a(paramView, localbdpi, new aqqn(this, paramView), new aqqp(this, paramView));
+  }
+  
+  @NonNull
+  public aqql a(int paramInt)
+  {
+    return new aqql();
+  }
+  
+  @Nullable
+  public aqql a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      new aqql();
+      return aqql.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(aqql paramaqql)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramaqql.toString());
+    }
+  }
+  
+  public Class<aqql> clazz()
+  {
+    return aqql.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 426;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqm
  * JD-Core Version:    0.7.0.1
  */

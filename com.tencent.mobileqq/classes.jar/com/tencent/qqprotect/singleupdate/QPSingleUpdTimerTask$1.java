@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.singleupdate;
 
-import bhps;
+import bkda;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class QPSingleUpdTimerTask$1
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
       if (localQQAppInterface != null)
       {
-        ((bhps)localQQAppInterface.getManager(194)).a();
+        ((bkda)localQQAppInterface.getManager(194)).a();
         return;
       }
       QLog.w("QPUpdate", 1, "qqprotect failed to start update because QQAppInterface is null");
@@ -29,7 +29,7 @@ class QPSingleUpdTimerTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdTimerTask.1
  * JD-Core Version:    0.7.0.1
  */

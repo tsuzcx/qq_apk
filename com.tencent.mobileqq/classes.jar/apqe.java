@@ -1,14 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apqe
-  extends akfy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public apqe(MessengerService paramMessengerService) {}
+  public apqe(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a(paramBundle);
+    if (paramBoolean)
+    {
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.c();
+      this.a.a("close");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import adpn;
-import alud;
+import aevv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import bacc;
-import bacd;
-import bacn;
-import bety;
+import anni;
+import bddg;
+import bddh;
+import bddr;
+import biau;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,7 +28,7 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private bety jdField_a_of_type_Bety;
+  private biau jdField_a_of_type_Biau;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
   
   public static void a(Map<String, String> paramMap)
@@ -38,26 +39,26 @@ public class StudyRoomLoadingFragment
     for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
     {
       localIntent.putExtra("param", paramMap);
-      adpn.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      aevv.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bety == null)
+    if (this.jdField_a_of_type_Biau == null)
     {
-      this.jdField_a_of_type_Bety = new bety(getActivity(), 40);
-      this.jdField_a_of_type_Bety.a(alud.a(2131708220));
-      this.jdField_a_of_type_Bety.setOnCancelListener(new bacc(this));
+      this.jdField_a_of_type_Biau = new biau(getActivity(), 40);
+      this.jdField_a_of_type_Biau.a(anni.a(2131706597));
+      this.jdField_a_of_type_Biau.setOnCancelListener(new bddg(this));
     }
-    this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bety != null) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if (this.jdField_a_of_type_Biau != null) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
   }
   
@@ -95,6 +96,7 @@ public class StudyRoomLoadingFragment
   {
     paramLayoutInflater = new FrameLayout(paramViewGroup.getContext());
     paramLayoutInflater.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -133,12 +135,12 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = bacn.a(getActivity().getApplicationContext(), paramView, false, new bacd(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = bddr.a(getActivity().getApplicationContext(), paramView, false, new bddh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

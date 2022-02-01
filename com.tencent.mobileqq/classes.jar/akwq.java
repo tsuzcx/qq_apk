@@ -1,15 +1,6 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-
 class akwq
-  implements MediaPlayer.OnCompletionListener
 {
-  akwq(akwn paramakwn) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    this.a.a(10);
-  }
+  public static final akwp a = new akwp(null);
 }
 
 

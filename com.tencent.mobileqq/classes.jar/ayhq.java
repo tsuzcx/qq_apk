@@ -1,8 +1,19 @@
-public abstract interface ayhq
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+
+public final class ayhq
+  implements Parcelable.Creator<TranslateResult>
 {
-  public abstract void a();
+  public TranslateResult a(Parcel paramParcel)
+  {
+    return new TranslateResult(paramParcel);
+  }
   
-  public abstract void b();
+  public TranslateResult[] a(int paramInt)
+  {
+    return new TranslateResult[paramInt];
+  }
 }
 
 

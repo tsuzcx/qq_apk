@@ -1,23 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
-class njp
-  implements View.OnClickListener
+public class njp
 {
-  njp(nin paramnin, npo paramnpo) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onClick(View paramView)
+  public byte[] a()
   {
-    yuq.a((BaseActivity)this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.jdField_a_of_type_Nin));
-    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(this.a)) {}
+    do
+    {
+      return null;
+      try
+      {
+        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+        return arrayOfByte;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njp
  * JD-Core Version:    0.7.0.1
  */

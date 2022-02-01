@@ -1,12 +1,12 @@
 package cooperation.qqindividuality.ipc;
 
-import biya;
-import biyc;
+import blml;
+import blmn;
 
 public class QQIndividualityRemoteProxy$1
   implements Runnable
 {
-  public QQIndividualityRemoteProxy$1(biya parambiya, biyc parambiyc) {}
+  public QQIndividualityRemoteProxy$1(blml paramblml, blmn paramblmn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QQIndividualityRemoteProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1
  * JD-Core Version:    0.7.0.1
  */

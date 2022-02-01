@@ -1,68 +1,56 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.1;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aeue
-  extends VasQuickUpdateManager.CallBacker
+  extends anut
 {
-  public aeue(PokePanel paramPokePanel) {}
+  public aeue(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(int paramInt, String paramString)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramLong == 21L)
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
     {
-      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
-      }
-      paramString1 = paramVasQuickUpdateManager.app;
-      ThreadManager.getUIHandler().post(new PokePanel.3.1(this, paramString1));
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    if (paramInt == 39)
+    {
+      bcst.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      bglp.a(this.a, 230, this.a.getString(2131694209), this.a.getString(2131694208), null, this.a.getString(2131691829), new aeuf(this), null).show();
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131694207);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131694213);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramString2)) {
-        ThreadManager.getUIHandler().post(new PokePanel.3.2(this, paramString2, paramString1, bool1));
-      }
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
       return;
-      label107:
-      if (paramString1.startsWith("poke.item.effect."))
-      {
-        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (;;)
-        {
-          paramString2 = "poke.item.effect.";
-          break;
-          bool1 = false;
-        }
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131694212);
       }
-      if (paramString1.startsWith("poke.item.res."))
-      {
-        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (bool1 = bool3;; bool1 = false)
-        {
-          paramString2 = "poke.item.res.";
-          break;
-        }
-      }
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
     }
   }
 }

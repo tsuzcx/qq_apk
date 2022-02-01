@@ -1,29 +1,49 @@
+import android.text.TextUtils;
+
 public class amxz
+  implements Comparable<amxz>
 {
   public int a;
   public long a;
-  public long[] a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
   public long b;
+  public String b;
+  public short b;
+  public boolean b;
+  public int c;
   public long c;
+  public String c;
+  public int d;
   public long d;
+  public String d;
+  public int e = -1;
   public long e;
-  public long f;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 0;
+  public String g;
+  public int h;
   
-  public amxz(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
+  public int a(amxz paramamxz)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    if (paramamxz == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_a_of_type_Boolean == paramamxz.jdField_a_of_type_Boolean) {
+        return -(int)(this.c - paramamxz.c);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return 0;
   }
   
-  public String toString()
+  public boolean a(String paramString)
   {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
+    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
   }
 }
 

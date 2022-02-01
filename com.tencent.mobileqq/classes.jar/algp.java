@@ -1,6 +1,21 @@
-public abstract interface algp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+
+public class algp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public algp(LoginView paramLoginView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+  }
 }
 
 

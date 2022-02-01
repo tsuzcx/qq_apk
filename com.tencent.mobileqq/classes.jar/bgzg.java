@@ -1,106 +1,116 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class bgzg
+  extends QIPCModule
 {
-  private static MiniAppInfo a;
-  private static MiniAppInfo b;
+  private static bgzg a;
   
-  public static void a()
+  private bgzg(String paramString)
   {
-    QMLog.d("JsApiUpdateManager", "handleUpdateApp() called");
-    if ((a != null) && (b != null) && (a.launchParam != null) && (b.launchParam != null))
-    {
-      b.forceReroad = 3;
-      b.launchParam.scene = a.launchParam.scene;
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("key_app_info", b);
-      bgtu.a().a("cmd_update_app_for_mini_game", localBundle, null);
-      return;
-    }
-    QMLog.e("JsApiUpdateManager", "handleUpdateApp olderMiniAppInfo = " + a + " newerMiniAppInfo = " + b);
+    super(paramString);
   }
   
-  public static void a(bgxn parambgxn, boolean paramBoolean)
+  /* Error */
+  public static bgzg a()
   {
-    try
-    {
-      QMLog.d("JsApiUpdateManager", "handleUpdateCheckResult() called with: gameJsPluginEngine = [" + parambgxn + "], hasUpdate = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("hasUpdate", paramBoolean);
-      if (parambgxn != null) {
-        parambgxn.getJsRuntime(1).evaluateSubscribeJs("onUpdateCheckResult", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (JSONException parambgxn)
-    {
-      QMLog.e("JsApiUpdateManager", "handleNativeRequest", parambgxn);
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 14	bgzg:a	Lbgzg;
+    //   6: ifnonnull +27 -> 33
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 14	bgzg:a	Lbgzg;
+    //   15: ifnonnull +15 -> 30
+    //   18: new 2	bgzg
+    //   21: dup
+    //   22: ldc 16
+    //   24: invokespecial 17	bgzg:<init>	(Ljava/lang/String;)V
+    //   27: putstatic 14	bgzg:a	Lbgzg;
+    //   30: ldc 2
+    //   32: monitorexit
+    //   33: getstatic 14	bgzg:a	Lbgzg;
+    //   36: astore_0
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: aload_0
+    //   41: areturn
+    //   42: astore_0
+    //   43: ldc 2
+    //   45: monitorexit
+    //   46: aload_0
+    //   47: athrow
+    //   48: astore_0
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   36	5	0	localbgzg	bgzg
+    //   42	5	0	localObject1	java.lang.Object
+    //   48	5	0	localObject2	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	30	42	finally
+    //   30	33	42	finally
+    //   43	46	42	finally
+    //   3	12	48	finally
+    //   33	37	48	finally
+    //   46	48	48	finally
   }
   
-  public static void a(MiniAppInfo paramMiniAppInfo, bgxn parambgxn)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    int i;
+    boolean bool;
+    if ("is_white_name".equals(paramString))
     {
-      a = paramMiniAppInfo;
-      QMLog.d("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgxn + "]");
-      if (paramMiniAppInfo.verType != 3)
+      i = paramBundle.getInt("managerId", -1);
+      if (i == 490)
       {
-        QMLog.w("JsApiUpdateManager", "checkForUpdate skip check for not online version");
-        a(parambgxn, false);
-        return;
+        bool = axal.a().a();
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
       }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramMiniAppInfo.appId, "", "", new bgzh(paramMiniAppInfo, parambgxn));
-      return;
     }
-    QMLog.e("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambgxn + "]");
-  }
-  
-  private static void b(bgxn parambgxn, MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null)
+    for (;;)
     {
-      QMLog.d("JsApiUpdateManager", "handleUpdateDownload() called with: gameJsPluginEngine = [" + parambgxn + "], miniAppConfig = [" + paramMiniAppInfo + "]");
-      bgyk.a(paramMiniAppInfo, new bgzi(parambgxn));
-    }
-  }
-  
-  private static void c(bgxn parambgxn, boolean paramBoolean)
-  {
-    try
-    {
-      QMLog.d("JsApiUpdateManager", "handleUpdateDownloadResult() called with: gameJsPluginEngine = [" + parambgxn + "], success = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {}
-      for (String str = "success";; str = "failed")
+      callbackResult(paramInt, paramString);
+      return null;
+      if (i == 491)
       {
-        localJSONObject.put("updateResult", str);
-        if (parambgxn == null) {
-          break;
+        bool = aqxa.c().mIsEnable;
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
+      }
+      else
+      {
+        paramString = EIPCResult.createResult(-1, new Bundle());
+        continue;
+        if ("paySuccess".equals(paramString))
+        {
+          ((anyj)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(27)).notifyUI(5, true, paramBundle);
+          paramString = EIPCResult.createResult(0, null);
         }
-        parambgxn.getJsRuntime(1).evaluateSubscribeJs("onUpdateDownloadResult", localJSONObject.toString());
-        return;
+        else
+        {
+          paramString = null;
+        }
       }
-      return;
-    }
-    catch (JSONException parambgxn)
-    {
-      QMLog.e("JsApiUpdateManager", "handleUpdateDownloadResult", parambgxn);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgzg
  * JD-Core Version:    0.7.0.1
  */

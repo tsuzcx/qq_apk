@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class OpenID
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String appID;
   public String openID;
   
@@ -17,7 +17,7 @@ public class OpenID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.OpenID
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,64 @@
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.open.adapter.OpenAppClient;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.manager.TicketManager;
 
-public class aduk
-  extends AccountObserver
+class aduk
+  implements View.OnClickListener
 {
-  public aduk(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  aduk(aduc paramaduc, int paramInt, aeks paramaeks, String paramString) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void onClick(View paramView)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
+    Object localObject;
+    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_Aeks.a.istroop == 1001) || (this.jdField_a_of_type_Aeks.a.istroop == 10002)))
+    {
+      localObject = bgva.a(this.jdField_a_of_type_JavaLangString);
+      localObject = bgng.a(this.jdField_a_of_type_Aduc.a.app, this.jdField_a_of_type_Aduc.a, (String)localObject);
+      if (localObject != null) {
+        ((bgmp)localObject).a();
+      }
     }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
+      {
+        ChatActivityUtils.a(this.jdField_a_of_type_Aduc.a, this.jdField_a_of_type_Aduc.a.app, this.jdField_a_of_type_Aeks.a.action, this.jdField_a_of_type_Aeks.a.shareAppID, this.jdField_a_of_type_Aeks.a.msgtype);
+      }
+      else if (this.jdField_a_of_type_Int == -3005)
+      {
+        ChatActivityUtils.a(this.jdField_a_of_type_Aduc.a, this.jdField_a_of_type_Aduc.a.app, this.jdField_a_of_type_Aeks.a.action, this.jdField_a_of_type_Aeks.a.shareAppID, this.jdField_a_of_type_Aeks.a.msgtype);
+      }
+      else if (this.jdField_a_of_type_Int == -3001)
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("schemaurl", this.jdField_a_of_type_JavaLangString);
+        String str = this.jdField_a_of_type_Aduc.a.app.getCurrentAccountUin();
+        ((Bundle)localObject).putString("uin", str);
+        ((Bundle)localObject).putString("vkey", ((TicketManager)this.jdField_a_of_type_Aduc.a.app.getManager(2)).getSkey(str));
+        OpenAppClient.a(this.jdField_a_of_type_Aduc.a, (Bundle)localObject);
+      }
+      else if (ahdu.a(this.jdField_a_of_type_Aeks.a))
+      {
+        AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_Aeks.a, this.jdField_a_of_type_Aduc.a.a, abga.a(paramView));
+      }
+      else
+      {
+        if ((this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003)) {
+          this.jdField_a_of_type_Aeks.a.isInMixedMsg = true;
+        }
+        ahdu.a(this.jdField_a_of_type_Aduc.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_Aeks.a, this.jdField_a_of_type_Aduc.a.a, false, true, true, null);
+      }
     }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
   }
 }
 

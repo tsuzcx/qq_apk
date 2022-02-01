@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tow
-  implements View.OnClickListener
+  extends tou
 {
-  public tow(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onClick(View paramView)
+  public tow(BridgeModule paramBridgeModule)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
-    PublicAccountImageCollectionCommentActivity.b(this.a, false);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$600(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tow
  * JD-Core Version:    0.7.0.1
  */

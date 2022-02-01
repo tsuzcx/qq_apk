@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.data;
 
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import avxu;
+import anni;
+import ayhm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class OcrConfig
   implements Parcelable, Serializable
 {
   public static final String CHINESE = "zh";
-  public static final Parcelable.Creator<OcrConfig> CREATOR = new avxu();
+  public static final Parcelable.Creator<OcrConfig> CREATOR = new ayhm();
   public static final String DEFAULT_SUPPORT_LANGUAGE = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th";
   public static final String ENGLISH = "en";
   public static final String TAG = "OcrConfig";
@@ -49,70 +49,70 @@ public class OcrConfig
   
   static
   {
-    a.put("zh", alud.a(2131708088));
-    a.put("en", alud.a(2131708100));
-    a.put("af", alud.a(2131708129));
-    a.put("ar", alud.a(2131708145));
-    a.put("eu", alud.a(2131708110));
-    a.put("be", alud.a(2131708124));
-    a.put("hr", alud.a(2131708098));
-    a.put("da", alud.a(2131708143));
-    a.put("nl", alud.a(2131708105));
-    a.put("fo", alud.a(2131708094));
-    a.put("fi", alud.a(2131708109));
-    a.put("fr", alud.a(2131708114));
-    a.put("gd", alud.a(2131708122));
-    a.put("de", alud.a(2131708101));
-    a.put("he", alud.a(2131708132));
-    a.put("hu", alud.a(2131708137));
-    a.put("id", alud.a(2131708120));
-    a.put("it", alud.a(2131708108));
-    a.put("kr", alud.a(2131708135));
-    a.put("ko", alud.a(2131708118));
-    a.put("lv", alud.a(2131708147));
-    a.put("mk", alud.a(2131708123));
-    a.put("mt", alud.a(2131708112));
-    a.put("no", alud.a(2131708136));
-    a.put("pt", alud.a(2131708133));
-    a.put("rm", alud.a(2131708131));
-    a.put("ro", alud.a(2131708115));
-    a.put("sr", alud.a(2131708146));
-    a.put("sk", alud.a(2131708127));
-    a.put("sb", alud.a(2131708113));
-    a.put("es", alud.a(2131708119));
-    a.put("sx", alud.a(2131708128));
-    a.put("sv", alud.a(2131708125));
-    a.put("ts", alud.a(2131708102));
-    a.put("tr", alud.a(2131708092));
-    a.put("ur", alud.a(2131708087));
-    a.put("vi", alud.a(2131708139));
-    a.put("ji", alud.a(2131708096));
-    a.put("sq", alud.a(2131708111));
-    a.put("bg", alud.a(2131708116));
-    a.put("ca", alud.a(2131708095));
-    a.put("cs", alud.a(2131708140));
-    a.put("et", alud.a(2131708141));
-    a.put("fa", alud.a(2131708097));
-    a.put("ga", alud.a(2131708134));
-    a.put("el", alud.a(2131708093));
-    a.put("hi", alud.a(2131708107));
-    a.put("is", alud.a(2131708091));
-    a.put("jp", alud.a(2131708142));
-    a.put("ja", alud.a(2131708144));
-    a.put("lt", alud.a(2131708130));
-    a.put("ms", alud.a(2131708106));
-    a.put("pl", alud.a(2131708121));
-    a.put("ru", alud.a(2131708126));
-    a.put("sz", alud.a(2131708138));
-    a.put("sl", alud.a(2131708117));
-    a.put("th", alud.a(2131708086));
-    a.put("tn", alud.a(2131708089));
-    a.put("uk", alud.a(2131708099));
-    a.put("ve", alud.a(2131708148));
-    a.put("xh", alud.a(2131708104));
-    a.put("zu", alud.a(2131708103));
-    a.put("jap", alud.a(2131708142));
-    a.put("unk", alud.a(2131708090));
+    a.put("zh", anni.a(2131706465));
+    a.put("en", anni.a(2131706477));
+    a.put("af", anni.a(2131706506));
+    a.put("ar", anni.a(2131706522));
+    a.put("eu", anni.a(2131706487));
+    a.put("be", anni.a(2131706501));
+    a.put("hr", anni.a(2131706475));
+    a.put("da", anni.a(2131706520));
+    a.put("nl", anni.a(2131706482));
+    a.put("fo", anni.a(2131706471));
+    a.put("fi", anni.a(2131706486));
+    a.put("fr", anni.a(2131706491));
+    a.put("gd", anni.a(2131706499));
+    a.put("de", anni.a(2131706478));
+    a.put("he", anni.a(2131706509));
+    a.put("hu", anni.a(2131706514));
+    a.put("id", anni.a(2131706497));
+    a.put("it", anni.a(2131706485));
+    a.put("kr", anni.a(2131706512));
+    a.put("ko", anni.a(2131706495));
+    a.put("lv", anni.a(2131706524));
+    a.put("mk", anni.a(2131706500));
+    a.put("mt", anni.a(2131706489));
+    a.put("no", anni.a(2131706513));
+    a.put("pt", anni.a(2131706510));
+    a.put("rm", anni.a(2131706508));
+    a.put("ro", anni.a(2131706492));
+    a.put("sr", anni.a(2131706523));
+    a.put("sk", anni.a(2131706504));
+    a.put("sb", anni.a(2131706490));
+    a.put("es", anni.a(2131706496));
+    a.put("sx", anni.a(2131706505));
+    a.put("sv", anni.a(2131706502));
+    a.put("ts", anni.a(2131706479));
+    a.put("tr", anni.a(2131706469));
+    a.put("ur", anni.a(2131706464));
+    a.put("vi", anni.a(2131706516));
+    a.put("ji", anni.a(2131706473));
+    a.put("sq", anni.a(2131706488));
+    a.put("bg", anni.a(2131706493));
+    a.put("ca", anni.a(2131706472));
+    a.put("cs", anni.a(2131706517));
+    a.put("et", anni.a(2131706518));
+    a.put("fa", anni.a(2131706474));
+    a.put("ga", anni.a(2131706511));
+    a.put("el", anni.a(2131706470));
+    a.put("hi", anni.a(2131706484));
+    a.put("is", anni.a(2131706468));
+    a.put("jp", anni.a(2131706519));
+    a.put("ja", anni.a(2131706521));
+    a.put("lt", anni.a(2131706507));
+    a.put("ms", anni.a(2131706483));
+    a.put("pl", anni.a(2131706498));
+    a.put("ru", anni.a(2131706503));
+    a.put("sz", anni.a(2131706515));
+    a.put("sl", anni.a(2131706494));
+    a.put("th", anni.a(2131706463));
+    a.put("tn", anni.a(2131706466));
+    a.put("uk", anni.a(2131706476));
+    a.put("ve", anni.a(2131706525));
+    a.put("xh", anni.a(2131706481));
+    a.put("zu", anni.a(2131706480));
+    a.put("jap", anni.a(2131706519));
+    a.put("unk", anni.a(2131706467));
   }
   
   public OcrConfig() {}
@@ -150,7 +150,7 @@ public class OcrConfig
   {
     Object localObject2;
     if (TextUtils.isEmpty(paramString)) {
-      localObject2 = alud.a(2131708090);
+      localObject2 = anni.a(2131706467);
     }
     Object localObject1;
     do
@@ -159,7 +159,7 @@ public class OcrConfig
       localObject2 = (String)a.get(paramString);
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = alud.a(2131708090);
+        localObject1 = anni.a(2131706467);
       }
       localObject2 = localObject1;
     } while (!QLog.isColorLevel());
@@ -1373,7 +1373,7 @@ public class OcrConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,46 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public class ahgd
-  implements akkb
+class ahgd
+  extends akrr
 {
-  public ahgd(AddContactsView paramAddContactsView) {}
+  ahgd(ahgb paramahgb) {}
   
-  public void a()
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
+      QLog.i(ahgb.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
     }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
+    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
+    {
+      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localSparseArray != null)
+      {
+        paramInt = 0;
+        while (paramInt < localSparseArray.size())
+        {
+          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
+          paramBundle = null;
+          if (localObject != null) {
+            paramBundle = (ahge)((WeakReference)localObject).get();
+          }
+          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
+          {
+            localObject = (MessageForQQWalletMsg)paramBundle.a;
+            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
+              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
+            }
+          }
+          paramInt += 1;
+        }
+      }
     }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
   }
 }
 

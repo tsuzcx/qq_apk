@@ -1,7 +1,8 @@
 package me.weishu.epic.art.method;
 
 import android.os.Build.VERSION;
-import com.qq.android.dexposed.utility.Runtime;
+import com.taobao.android.dexposed.utility.Logger;
+import com.taobao.android.dexposed.utility.Runtime;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import me.weishu.epic.art.EpicNative;
@@ -11,6 +12,7 @@ class Offset
   static Offset ART_ACCESS_FLAG_OFFSET;
   static Offset ART_JNI_ENTRY_OFFSET;
   static Offset ART_QUICK_CODE_OFFSET;
+  private static final String TAG = "Offset";
   private Offset.BitWidth length;
   private long offset;
   
@@ -23,9 +25,6 @@ class Offset
     ART_JNI_ENTRY_OFFSET = new Offset();
     ART_ACCESS_FLAG_OFFSET.setLength(Offset.BitWidth.DWORD);
     int i = Build.VERSION.SDK_INT;
-    if (i > 27) {
-      throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
-    }
     if (Runtime.is64Bit())
     {
       ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
@@ -35,79 +34,91 @@ class Offset
       case 20: 
       default: 
         throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
+      case 28: 
+      case 29: 
+        ART_QUICK_CODE_OFFSET.setOffset(32L);
+        ART_JNI_ENTRY_OFFSET.setOffset(24L);
+        ART_ACCESS_FLAG_OFFSET.setOffset(4L);
+      }
+    }
+    for (;;)
+    {
+      Logger.i("Offset", "quick code offset: " + ART_QUICK_CODE_OFFSET.getOffset());
+      Logger.i("Offset", "access flag offset: " + ART_ACCESS_FLAG_OFFSET.getOffset());
+      Logger.i("Offset", "jni code offset: " + ART_JNI_ENTRY_OFFSET.getOffset());
+      return;
+      ART_QUICK_CODE_OFFSET.setOffset(40L);
+      ART_JNI_ENTRY_OFFSET.setOffset(32L);
+      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setOffset(48L);
+      ART_JNI_ENTRY_OFFSET.setOffset(40L);
+      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setOffset(48L);
+      ART_JNI_ENTRY_OFFSET.setOffset(40L);
+      ART_ACCESS_FLAG_OFFSET.setOffset(12L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setOffset(52L);
+      ART_JNI_ENTRY_OFFSET.setOffset(44L);
+      ART_ACCESS_FLAG_OFFSET.setOffset(20L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setOffset(40L);
+      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
+      ART_JNI_ENTRY_OFFSET.setOffset(32L);
+      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
+      ART_ACCESS_FLAG_OFFSET.setOffset(56L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setOffset(32L);
+      ART_ACCESS_FLAG_OFFSET.setOffset(28L);
+      continue;
+      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.DWORD);
+      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.DWORD);
+      switch (i)
+      {
+      case 20: 
+      default: 
+        throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
+      case 28: 
+      case 29: 
+        ART_QUICK_CODE_OFFSET.setOffset(24L);
+        ART_JNI_ENTRY_OFFSET.setOffset(20L);
+        ART_ACCESS_FLAG_OFFSET.setOffset(4L);
+        break;
       case 26: 
       case 27: 
-        ART_QUICK_CODE_OFFSET.setOffset(40L);
-        ART_JNI_ENTRY_OFFSET.setOffset(32L);
+        ART_QUICK_CODE_OFFSET.setOffset(28L);
+        ART_JNI_ENTRY_OFFSET.setOffset(24L);
         ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-        return;
+        break;
       case 24: 
       case 25: 
-        ART_QUICK_CODE_OFFSET.setOffset(48L);
-        ART_JNI_ENTRY_OFFSET.setOffset(40L);
+        ART_QUICK_CODE_OFFSET.setOffset(32L);
+        ART_JNI_ENTRY_OFFSET.setOffset(28L);
         ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-        return;
+        break;
       case 23: 
-        ART_QUICK_CODE_OFFSET.setOffset(48L);
-        ART_JNI_ENTRY_OFFSET.setOffset(40L);
+        ART_QUICK_CODE_OFFSET.setOffset(36L);
+        ART_JNI_ENTRY_OFFSET.setOffset(32L);
         ART_ACCESS_FLAG_OFFSET.setOffset(12L);
-        return;
+        break;
       case 22: 
-        ART_QUICK_CODE_OFFSET.setOffset(52L);
-        ART_JNI_ENTRY_OFFSET.setOffset(44L);
+        ART_QUICK_CODE_OFFSET.setOffset(44L);
+        ART_JNI_ENTRY_OFFSET.setOffset(40L);
         ART_ACCESS_FLAG_OFFSET.setOffset(20L);
-        return;
+        break;
       case 21: 
         ART_QUICK_CODE_OFFSET.setOffset(40L);
         ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
         ART_JNI_ENTRY_OFFSET.setOffset(32L);
         ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
         ART_ACCESS_FLAG_OFFSET.setOffset(56L);
-        return;
+        break;
+      case 19: 
+        ART_QUICK_CODE_OFFSET.setOffset(32L);
+        ART_ACCESS_FLAG_OFFSET.setOffset(28L);
       }
-      ART_QUICK_CODE_OFFSET.setOffset(32L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(28L);
-      return;
     }
-    ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.DWORD);
-    ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.DWORD);
-    switch (i)
-    {
-    case 20: 
-    default: 
-      throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
-    case 26: 
-    case 27: 
-      ART_QUICK_CODE_OFFSET.setOffset(28L);
-      ART_JNI_ENTRY_OFFSET.setOffset(24L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-      return;
-    case 24: 
-    case 25: 
-      ART_QUICK_CODE_OFFSET.setOffset(32L);
-      ART_JNI_ENTRY_OFFSET.setOffset(28L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-      return;
-    case 23: 
-      ART_QUICK_CODE_OFFSET.setOffset(36L);
-      ART_JNI_ENTRY_OFFSET.setOffset(32L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(12L);
-      return;
-    case 22: 
-      ART_QUICK_CODE_OFFSET.setOffset(44L);
-      ART_JNI_ENTRY_OFFSET.setOffset(40L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(20L);
-      return;
-    case 21: 
-      ART_QUICK_CODE_OFFSET.setOffset(40L);
-      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
-      ART_JNI_ENTRY_OFFSET.setOffset(32L);
-      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
-      ART_ACCESS_FLAG_OFFSET.setOffset(56L);
-      return;
-    }
-    ART_QUICK_CODE_OFFSET.setOffset(32L);
-    ART_ACCESS_FLAG_OFFSET.setOffset(28L);
   }
   
   public static long read(long paramLong, Offset paramOffset)
@@ -156,7 +167,7 @@ class Offset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.method.Offset
  * JD-Core Version:    0.7.0.1
  */

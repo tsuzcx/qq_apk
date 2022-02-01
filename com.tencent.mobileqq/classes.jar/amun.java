@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-public class amun
-  implements ValueAnimator.AnimatorUpdateListener
+public final class amun
+  implements Parcelable.Creator<SpriteTaskParam>
 {
-  public amun(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public SpriteTaskParam a(Parcel paramParcel)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
+    return new SpriteTaskParam(paramParcel);
+  }
+  
+  public SpriteTaskParam[] a(int paramInt)
+  {
+    return new SpriteTaskParam[paramInt];
   }
 }
 

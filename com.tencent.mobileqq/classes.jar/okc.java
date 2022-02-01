@@ -1,23 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class okc
-  implements ViewBase.OnClickListener
+public class okc
+  implements View.OnClickListener
 {
-  okc(ojn paramojn, ViewBase paramViewBase) {}
+  public okc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    ors.a(this.jdField_a_of_type_Ojn.jdField_a_of_type_Omg.a().getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
-    if (this.jdField_a_of_type_Ojn.jdField_a_of_type_Omg.a() != null) {
-      this.jdField_a_of_type_Ojn.jdField_a_of_type_Omg.a().g(this.jdField_a_of_type_Ojn.jdField_a_of_type_Omt);
-    }
+    pha.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     okc
  * JD-Core Version:    0.7.0.1
  */

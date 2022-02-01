@@ -1,73 +1,48 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
 
-class akkv
-  implements View.OnClickListener
+public class akkv
+  extends akif
 {
-  akkv(akkt paramakkt) {}
-  
-  public void onClick(View paramView)
+  akkv(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (!akkt.a(this.a)) {
-      bdgm.a(akkt.a(this.a), 230, "", alud.a(2131713873), new akkw(this), null).show();
-    }
-    do
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  protected void d()
+  {
+    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
+    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+    if (localObject != null)
     {
+      akgm.a(((ArrayList)localObject).size(), this.a.totalPicCount);
+      akgm.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+    }
+    localObject = (NewPhotoPreviewActivity)this.mActivity;
+    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
       return;
-      localObject = paramView.getTag();
-    } while ((localObject == null) || (!(localObject instanceof String)));
-    if ((paramView instanceof Button))
-    {
-      paramView = (Button)paramView;
-      if (paramView != null) {
-        paramView.setEnabled(false);
-      }
     }
-    Object localObject = (String)localObject;
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(akkt.a(this.a));
-      }
-      catch (Exception paramView)
-      {
-        try
-        {
-          l2 = Long.parseLong((String)localObject);
-          akkt.a(this.a).add(localObject);
-          ((amdu)akkt.a(this.a).a(20)).c(l1, l2);
-          if (akkt.a(this.a) == null) {
-            break;
-          }
-          azqs.b(akkt.a(this.a).app, "dc00898", "", "", "", "0X8009FA0", 0, 0, (String)localObject, "", "", "");
-          return;
-        }
-        catch (Exception paramView)
-        {
-          long l1;
-          long l2;
-          break label189;
-        }
-        paramView = paramView;
-        l1 = 0L;
-      }
-      label189:
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotAdapter", 2, "parseLong err", paramView);
-      }
-      l2 = 0L;
+    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)localObject).finish();
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
+    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
+      paramAdapterView.titleView.setText(anni.a(2131706912));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkv
  * JD-Core Version:    0.7.0.1
  */

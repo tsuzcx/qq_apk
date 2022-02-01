@@ -1,12 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class allh
-  implements View.OnClickListener
+public abstract interface allh
 {
-  allh(allg paramallg) {}
+  public abstract void b(int paramInt);
   
-  public void onClick(View paramView) {}
+  public abstract void c(String paramString);
+  
+  public abstract void i();
 }
 
 

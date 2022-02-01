@@ -1,21 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
 
 class afet
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AccessibilityDelegateCompat
 {
-  afet(afeq paramafeq) {}
+  afet(afer paramafer) {}
   
-  public void onGlobalLayout()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!azmk.b()))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(false);
   }
 }
 

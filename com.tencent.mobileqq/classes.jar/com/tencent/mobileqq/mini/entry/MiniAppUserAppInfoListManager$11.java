@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awgf;
-import awgg;
-import awgh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -26,15 +26,15 @@ class MiniAppUserAppInfoListManager$11
       if (this.val$needCheckDbData) {
         MiniAppUserAppInfoListManager.access$1200(this.this$0, (AppInterface)localObject1, this.val$appInfoList);
       }
-      awgf localawgf = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      if (localawgf == null) {
+      EntityManager localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localEntityManager == null) {
         continue;
       }
-      localObject1 = localawgf.a();
+      localObject1 = localEntityManager.getTransaction();
       if (localObject1 != null) {}
       try
       {
-        ((awgh)localObject1).a();
+        ((EntityTransaction)localObject1).begin();
         localStringBuilder = new StringBuilder();
         Iterator localIterator = this.val$appInfoList.iterator();
         int i = 1;
@@ -44,7 +44,7 @@ class MiniAppUserAppInfoListManager$11
           localMiniAppInfo.position = i;
           MiniAppEntity localMiniAppEntity = new MiniAppEntity(localMiniAppInfo);
           localMiniAppEntity.setStatus(1000);
-          MiniAppUserAppInfoListManager.access$1100(this.this$0, localawgf, localMiniAppEntity);
+          MiniAppUserAppInfoListManager.access$1100(this.this$0, localEntityManager, localMiniAppEntity);
           i += 1;
           localStringBuilder.append(localMiniAppInfo.name).append(", ");
         }
@@ -60,14 +60,14 @@ class MiniAppUserAppInfoListManager$11
           QLog.d("MiniAppUserAppInfoListManager", 2, new Object[] { "saveMiniAppInfoList : ", localStringBuilder.toString() });
         }
         if (localObject1 != null) {
-          ((awgh)localObject1).c();
+          ((EntityTransaction)localObject1).commit();
         }
         return;
       }
       finally
       {
         if (localObject1 != null) {
-          ((awgh)localObject1).b();
+          ((EntityTransaction)localObject1).end();
         }
       }
     }
@@ -75,7 +75,7 @@ class MiniAppUserAppInfoListManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akfh
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public akfh(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
+  public akfh(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Akfw.c.setVisibility(4);
+    int i = 1;
+    Object localObject = this.a.a;
+    boolean bool;
+    String str;
+    if (!this.a.a.isChecked())
+    {
+      bool = true;
+      ((CheckBox)localObject).setChecked(bool);
+      this.a.d = this.a.a.isChecked();
+      this.a.i = 2;
+      localObject = this.a;
+      str = this.a.getCurrentAccountUin();
+      if (!this.a.d) {
+        break label103;
+      }
+    }
+    for (;;)
+    {
+      bgsg.E((Context)localObject, str, i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+      label103:
+      i = 0;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

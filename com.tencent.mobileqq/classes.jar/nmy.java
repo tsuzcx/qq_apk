@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import java.nio.charset.Charset;
 
-class nmy
-  implements DialogInterface.OnClickListener
+final class nmy
+  extends ThreadLocal<Charset>
 {
-  nmy(nmx paramnmx, JsResult paramJsResult) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Charset a()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    return Charset.forName("UTF-8");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nmy
  * JD-Core Version:    0.7.0.1
  */

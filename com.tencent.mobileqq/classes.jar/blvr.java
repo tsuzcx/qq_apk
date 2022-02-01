@@ -1,8 +1,8 @@
+import java.util.List;
+
 public abstract interface blvr
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString, bmvz parambmvz);
+  public abstract void a(String paramString, List<Long> paramList);
 }
 
 

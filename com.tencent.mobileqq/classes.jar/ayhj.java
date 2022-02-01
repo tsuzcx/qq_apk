@@ -1,6 +1,11 @@
-public abstract interface ayhj
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+
+public class ayhj
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public long a;
+  public OcrRecogResult a;
+  public String a;
 }
 
 

@@ -10,6 +10,7 @@ public class c
   extends PagerAdapter
 {
   private static final String TAG = "AdImagesCarouselPagerAdapter";
+  private int pageLimit;
   private List<View> viewList;
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -24,7 +25,7 @@ public class c
   
   public float getPageWidth(int paramInt)
   {
-    return 0.5F;
+    return 1.0F / this.pageLimit;
   }
   
   public View getView(int paramInt)
@@ -47,6 +48,11 @@ public class c
     return paramView == paramObject;
   }
   
+  public void setPageLimit(int paramInt)
+  {
+    this.pageLimit = paramInt;
+  }
+  
   public void setViewList(List<View> paramList)
   {
     this.viewList = paramList;
@@ -54,7 +60,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.managers;
 
-import ammy;
-import aoks;
-import aoqb;
-import auaa;
+import aoht;
+import aqlk;
+import aqrs;
+import awhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PushNotificationManager$1
   implements Runnable
 {
-  public PushNotificationManager$1(auaa paramauaa, QQAppInterface paramQQAppInterface) {}
+  public PushNotificationManager$1(awhj paramawhj, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    auaa.a(this.this$0, (aoqb)aoks.a().a(390));
-    ammy.a(this.a);
+    awhj.a(this.this$0, (aqrs)aqlk.a().a(390));
+    aoht.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.managers.PushNotificationManager.1
  * JD-Core Version:    0.7.0.1
  */

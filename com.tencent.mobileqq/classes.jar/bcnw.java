@@ -1,12 +1,14 @@
 public class bcnw
 {
-  public long a;
   public String a;
+  public String b;
+  public String c;
   
-  public bcnw(String paramString, long paramLong)
+  public bcnw(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

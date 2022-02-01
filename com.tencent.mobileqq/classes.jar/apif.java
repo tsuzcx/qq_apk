@@ -1,22 +1,7 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-
-class apif
-  implements View.OnClickListener
+public abstract interface apif
+  extends apie
 {
-  apif(apie paramapie) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
-    {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
-      HotChatFlashPicActivity.a(this.a.a, null);
-      this.a.a.finish();
-    }
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

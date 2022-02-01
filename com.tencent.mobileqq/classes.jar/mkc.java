@@ -1,55 +1,55 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class mkc
-  implements Animation.AnimationListener
+public class mkc
+  implements DialogInterface.OnClickListener
 {
-  mkc(mkb parammkb) {}
+  int jdField_a_of_type_Int;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mkc(VideoInviteActivity paramVideoInviteActivity, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.b();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
       return;
     }
-    catch (Exception paramAnimation)
+    long l = AudioHelper.b();
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "]");
+    switch (this.jdField_a_of_type_Int)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().m();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l()) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().g(false);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        paramDialogInterface.a(l, paramInt, false, true);
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e();
+        return;
+      }
     }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(l, true);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mkc
  * JD-Core Version:    0.7.0.1
  */

@@ -224,7 +224,7 @@ public class DnsService
     //   18: ifnonnull +13 -> 31
     //   21: new 2	com/tencent/component/network/module/common/DnsService
     //   24: dup
-    //   25: invokespecial 305	com/tencent/component/network/module/common/DnsService:<init>	()V
+    //   25: invokespecial 303	com/tencent/component/network/module/common/DnsService:<init>	()V
     //   28: putstatic 64	com/tencent/component/network/module/common/DnsService:sIntance	Lcom/tencent/component/network/module/common/DnsService;
     //   31: aload_0
     //   32: monitorexit
@@ -426,7 +426,7 @@ public class DnsService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.module.common.DnsService
  * JD-Core Version:    0.7.0.1
  */

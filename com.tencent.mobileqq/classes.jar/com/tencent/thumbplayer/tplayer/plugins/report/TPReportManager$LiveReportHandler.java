@@ -30,27 +30,27 @@ class TPReportManager$LiveReportHandler
     }
     for (;;)
     {
-      TPReportManager.access$3600(this.this$0, paramITPReportProperties, paramInt, bool1);
-      TPReportManager.access$3900(this.this$0, paramITPReportProperties, bool1);
+      TPReportManager.access$3800(this.this$0, paramITPReportProperties, paramInt, bool1);
+      TPReportManager.access$4100(this.this$0, paramITPReportProperties, bool1);
       if (paramInt != 205) {
         paramITPReportProperties.put("loadingtime", 0);
       }
-      TPLogUtil.i("TPReportManager", "liveExParam.prePlayLengthInt: " + TPReportManager.access$4000(this.this$0).getLiveExParam().prePlayLengthInt);
-      TPReportManager.access$3700(this.this$0, paramITPReportProperties);
+      TPLogUtil.i("TPReportManager", "liveExParam.prePlayLengthInt: " + TPReportManager.access$4200(this.this$0).getLiveExParam().prePlayLengthInt);
+      TPReportManager.access$3900(this.this$0, paramITPReportProperties);
       return;
-      TPReportManager.access$3500(this.this$0).removeMessages(3000);
+      TPReportManager.access$3700(this.this$0).removeMessages(3000);
       paramInt = 263;
       continue;
-      TPReportManager.access$3500(this.this$0).removeMessages(3000);
+      TPReportManager.access$3700(this.this$0).removeMessages(3000);
       continue;
-      TPReportManager.access$3500(this.this$0).removeMessages(3000);
-      TPReportManager.access$3500(this.this$0).sendEmptyMessageDelayed(3000, 60000L);
+      TPReportManager.access$3700(this.this$0).removeMessages(3000);
+      TPReportManager.access$3700(this.this$0).sendEmptyMessageDelayed(3000, 60000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.LiveReportHandler
  * JD-Core Version:    0.7.0.1
  */

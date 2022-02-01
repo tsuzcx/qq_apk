@@ -1,31 +1,33 @@
-import org.json.JSONObject;
-
 public class becf
+  extends becg
 {
   public int a;
+  public String a;
   public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
   public becf()
   {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public becf(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public String toString()
   {
-    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" voiceLength:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" autoToText:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

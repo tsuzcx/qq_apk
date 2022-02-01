@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import maj;
+import lxh;
 
 public class RecvGVideoLevelInfo$Medal
   implements Parcelable
 {
-  public static final Parcelable.Creator<Medal> CREATOR = new maj();
+  public static final Parcelable.Creator<Medal> CREATOR = new lxh();
   public int a;
   public String a;
   public int b;
@@ -77,7 +77,7 @@ public class RecvGVideoLevelInfo$Medal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.service.RecvGVideoLevelInfo.Medal
  * JD-Core Version:    0.7.0.1
  */

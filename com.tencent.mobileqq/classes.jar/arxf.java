@@ -1,41 +1,106 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-import java.util.Map;
+import android.support.v4.util.SparseArrayCompat;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-public abstract class arxf
-  implements MethodChannel.MethodCallHandler
+public class arxf
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  private SparseArrayCompat<SparseArrayCompat<arwe>> a = new SparseArrayCompat(10);
+  private SparseArrayCompat<arwe> b = new SparseArrayCompat();
   
-  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public arxf(EmoticonPanelController paramEmoticonPanelController)
   {
-    String str = paramMethodCall.method;
-    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
-    if (TextUtils.isEmpty(str))
+    a(1, new aryb(paramEmoticonPanelController));
+    a(2, new aryf(paramEmoticonPanelController));
+    a(3, new arxr(paramEmoticonPanelController));
+    a(4, new aryv(paramEmoticonPanelController));
+    a(5, new aryo(paramEmoticonPanelController));
+    a(6, new aryu(paramEmoticonPanelController));
+    a(7, new aryi(paramEmoticonPanelController));
+    a(8, new aryw(paramEmoticonPanelController));
+  }
+  
+  private void a(int paramInt, arwe paramarwe)
+  {
+    this.b.put(paramInt, paramarwe);
+    int[] arrayOfInt = paramarwe.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      paramResult.notImplemented();
-      return;
-    }
-    if (str.equals("sendRequest"))
-    {
-      paramMethodCall = paramMethodCall.argument("req");
-      if ((paramMethodCall instanceof Map))
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
       {
-        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
-        return;
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
       }
-      paramResult.notImplemented();
+      localSparseArrayCompat1.put(paramInt, paramarwe);
+      i += 1;
+    }
+  }
+  
+  private void a(arwe paramarwe, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      paramarwe.d();
+      return;
+    case 2: 
+      paramarwe.e();
+      return;
+    case 9: 
+      paramarwe.j();
+      return;
+    case 10: 
+      paramarwe.k();
+      return;
+    case 8: 
+      paramarwe.i();
+      return;
+    case 3: 
+      paramarwe.a(paramInt2);
+      return;
+    case 5: 
+      paramarwe.f();
+      return;
+    case 4: 
+      paramarwe.a(paramBoolean);
+      return;
+    case 7: 
+      paramarwe.h();
       return;
     }
-    paramResult.notImplemented();
+    paramarwe.g();
+  }
+  
+  public <T extends arwe> T a(int paramInt)
+  {
+    return (arwe)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    a(paramInt, -1, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt1);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        a((arwe)localSparseArrayCompat.valueAt(i), paramInt1, paramInt2, paramBoolean);
+        i += 1;
+      }
+    }
   }
 }
 

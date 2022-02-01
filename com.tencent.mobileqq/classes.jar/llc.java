@@ -1,151 +1,84 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.os.SystemClock;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class llc
-  extends ljg
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private lle jdField_a_of_type_Lle;
-  private lld[] jdField_a_of_type_ArrayOfLld = new lld[14];
+  private long jdField_a_of_type_Long;
+  private lkz jdField_a_of_type_Lkz;
+  public boolean a;
+  private boolean b;
   
-  public llc(VideoAppInterface paramVideoAppInterface)
+  public llc(lkz paramlkz)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lle = new lle(paramVideoAppInterface);
+    this.jdField_a_of_type_Lkz = paramlkz;
   }
   
-  private lld a(int paramInt)
+  private void b()
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLld[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (this.jdField_a_of_type_Boolean)
     {
-      lld locallld = this.jdField_a_of_type_ArrayOfLld[paramInt];
-      localObject1 = locallld;
-      if (locallld == null)
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      return;
+    }
+    b(this.jdField_a_of_type_Lkz.a);
+  }
+  
+  private void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+      if (l > 3000L)
       {
-        locallld = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = locallld;
-        if (locallld != null)
-        {
-          this.jdField_a_of_type_ArrayOfLld[paramInt] = locallld;
-          localObject1 = locallld;
+        HashMap localHashMap = new HashMap();
+        String str1 = Integer.toHexString(paramInt);
+        String str2 = String.valueOf(l);
+        localHashMap.put("color", str1);
+        localHashMap.put("duration", str2);
+        UserAction.onUserAction("actAVFunChatDrawing", true, -1L, -1L, localHashMap, true);
+        if (QLog.isColorLevel()) {
+          QLog.d("DoodleReportController", 2, "onUserAction colorString = " + str1 + ", durationString = " + str2);
         }
+        this.b = true;
       }
-      return localObject1;
     }
   }
   
-  private lld a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public void a()
   {
-    long l1 = System.currentTimeMillis();
-    Object localObject = null;
-    switch (paramInt)
+    a(false);
+    if (this.b)
     {
-    default: 
-      localObject = this.jdField_a_of_type_Lle;
+      lld.a("0X80077C2");
+      return;
     }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((lld)localObject).a();
-      }
-      long l2 = System.currentTimeMillis();
-      lek.c("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
-      return localObject;
-      localObject = new llh(paramVideoAppInterface);
-      continue;
-      localObject = new llf(paramVideoAppInterface);
-      continue;
-      localObject = new llg(paramVideoAppInterface);
-    }
+    lld.a("0X80077C1");
   }
-  
-  public int a(int paramInt, String paramString)
-  {
-    int i = 1;
-    lld locallld = a(paramInt);
-    paramInt = i;
-    if (locallld != null) {
-      paramInt = locallld.a(paramString);
-    }
-    return paramInt;
-  }
-  
-  protected void a() {}
   
   public void a(int paramInt)
   {
-    int i = 0;
-    while (i < 14)
+    if ((this.jdField_a_of_type_Boolean) && (paramInt != this.jdField_a_of_type_Lkz.a))
     {
-      if ((paramInt == 255) || (paramInt == i))
-      {
-        lld locallld = a(i);
-        if (locallld != null) {
-          locallld.b();
-        }
-      }
-      i += 1;
+      b(paramInt);
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     }
   }
   
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    lek.c("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
-    switch (paramInt)
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      a(255);
-      return;
-    }
-    b();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString)
-  {
-    lld locallld = a(paramInt1);
-    if (locallld != null) {
-      return locallld.a(paramInt2, paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    boolean bool = true;
-    lld locallld = a(paramInt);
-    if (locallld != null) {
-      bool = locallld.a(paramString);
-    }
-    return bool;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    while (i < 14)
-    {
-      lld locallld = a(i);
-      if (locallld != null) {
-        locallld.c();
-      }
-      i += 1;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     llc
  * JD-Core Version:    0.7.0.1
  */

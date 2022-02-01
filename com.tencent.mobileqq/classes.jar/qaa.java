@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class qaa
-  implements View.OnClickListener
+public class qaa
 {
-  qaa(pzz parampzz) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public qaa(String paramString)
   {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public qaa(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 2;
+    this.d = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.e = paramString4;
+  }
+  
+  public String toString()
+  {
+    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qaa
  * JD-Core Version:    0.7.0.1
  */

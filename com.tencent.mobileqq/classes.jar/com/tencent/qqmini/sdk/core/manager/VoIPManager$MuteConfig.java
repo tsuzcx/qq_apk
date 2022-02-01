@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgvc;
+import com.tencent.qqmini.sdk.launcher.annotation.JsonORM.Column;
 
 public class VoIPManager$MuteConfig
 {
-  @bgvc(a="muteEarphone")
+  @JsonORM.Column(key="muteEarphone")
   public boolean isMuteEarphone;
-  @bgvc(a="muteMicrophone")
+  @JsonORM.Column(key="muteMicrophone")
   public boolean isMuteMicrophone;
   
   public String toString()
@@ -16,7 +16,7 @@ public class VoIPManager$MuteConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.MuteConfig
  * JD-Core Version:    0.7.0.1
  */

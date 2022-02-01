@@ -7,8 +7,8 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
-import bnle;
+import bgtn;
+import bqcd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -51,9 +51,9 @@ public class VConsoleDragView
   
   private void initScreenConfig()
   {
-    this.mScreenWidth = bdoo.a();
-    int j = bdoo.b();
-    if (bnle.b()) {}
+    this.mScreenWidth = bgtn.a();
+    int j = bgtn.b();
+    if (bqcd.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       this.mScreenHeight = (i + j);
@@ -144,8 +144,8 @@ public class VConsoleDragView
   
   public void requestLandscapeLayout()
   {
-    int i = bdoo.a();
-    int k = bdoo.b();
+    int i = bgtn.a();
+    int k = bgtn.b();
     if (i > k)
     {
       j = i;
@@ -158,7 +158,7 @@ public class VConsoleDragView
       this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
       return;
     }
-    if (bnle.b()) {}
+    if (bqcd.b()) {}
     for (int j = ImmersiveUtils.getStatusBarHeight(getContext());; j = 0)
     {
       j += k;
@@ -173,7 +173,7 @@ public class VConsoleDragView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.VConsoleDragView
  * JD-Core Version:    0.7.0.1
  */

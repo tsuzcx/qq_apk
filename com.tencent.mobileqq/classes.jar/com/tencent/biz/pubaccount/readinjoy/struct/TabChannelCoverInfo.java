@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import qnc;
+import rhy;
 
 public class TabChannelCoverInfo
   extends ChannelCoverInfo
@@ -8,23 +8,23 @@ public class TabChannelCoverInfo
   public static int TYPE_CHANNEL_MY_CONFIG = 700;
   public static int TYPE_CHANNEL_RECOMMEND_CONFIG = 701;
   public long bid;
-  public int bold_font;
+  public int boldFont;
   public long channelConfigType;
   public int dynamicSort;
   public long endTimestamp;
-  public int fonts_color;
-  public int frame_color;
-  public int only_cover;
+  public int fontsColor;
+  public int frameColor;
+  public int onlyCover;
   public String proxy;
   public int reason;
-  public qnc redPoint;
+  public rhy redPoint;
   public String redPointJson;
   public long sectionId;
   public int seq;
-  public int show_cover;
-  public int show_icon;
+  public int showCover;
+  public int showIcon;
   public long startTimestamp;
-  public String web_url;
+  public String webUrl;
   
   public TabChannelCoverInfo() {}
   
@@ -55,7 +55,7 @@ public class TabChannelCoverInfo
     TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)super.clone();
     if (this.redPoint != null)
     {
-      localTabChannelCoverInfo.redPoint = new qnc();
+      localTabChannelCoverInfo.redPoint = new rhy();
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = this.redPoint.jdField_a_of_type_Boolean;
       localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = this.redPoint.jdField_b_of_type_Long;
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = this.redPoint.jdField_a_of_type_Long;
@@ -78,7 +78,7 @@ public class TabChannelCoverInfo
     StringBuilder localStringBuilder = new StringBuilder().append("TabChannelCoverInfo{redPoint=");
     if (this.redPoint != null) {}
     for (String str = this.redPoint.toString();; str = "") {
-      return str + ", startTimestamp=" + this.startTimestamp + ", endTimestamp=" + this.endTimestamp + ", reason=" + this.reason + ", bold_font=" + this.bold_font + ", show_icon=" + this.show_icon + ", show_cover=" + this.show_cover + ", frame_color=" + this.frame_color + ", fonts_color=" + this.fonts_color + ", web_url='" + this.web_url + '\'' + ", proxy='" + this.proxy + '\'' + ", channelConfigType=" + this.channelConfigType + ", seq=" + this.seq + ", mChannelId=" + this.mChannelId + ", mChannelCoverId=" + this.mChannelCoverId + ", mChannelCoverName='" + this.mChannelCoverName + '\'' + ", mChannelCoverStyle=" + this.mChannelCoverStyle + ", mChannelCoverSummary='" + this.mChannelCoverSummary + '\'' + ", mChannelCoverPicUrl='" + this.mChannelCoverPicUrl + '\'' + ", mChannelJumpUrl='" + this.mChannelJumpUrl + '\'' + ", mArticleId=" + this.mArticleId + ", mChannelType=" + this.mChannelType + ", mChannelCoverSpec='" + this.mChannelCoverSpec + '\'' + ", mFollowType=" + this.mFollowType + ", mColumnType=" + this.mColumnType + ", mTipsType=" + this.mTipsType + ", mTipsText='" + this.mTipsText + '\'' + ", mPreUpdateTime=" + this.mPreUpdateTime + ", mUpdateTime=" + this.mUpdateTime + ", isReport=" + this.isReport + ", mIconUrl='" + this.mIconUrl + '\'' + ", mFontColor=" + this.mFontColor + ", mFrameColor=" + this.mFrameColor + ", isExternalExposure=" + this.isExternalExposure + ", externalExposureBackgroundUrl='" + this.externalExposureBackgroundUrl + '\'' + ", isExternalExposurePersist=" + this.isExternalExposurePersist + ", hasFilterColor=" + this.hasFilterColor + ", filterColor=" + this.filterColor + ", mIsTopic=" + this.mIsTopic + ", isSelected=" + this.isSelected + ", sectionId=" + this.sectionId + ", bid=" + this.bid + ", mChannelCoverIcon=" + this.mChannelCoverIcon + ", mChannelVersion=" + this.mChannelVersion + '}';
+      return str + ", startTimestamp=" + this.startTimestamp + ", endTimestamp=" + this.endTimestamp + ", reason=" + this.reason + ", bold_font=" + this.boldFont + ", show_icon=" + this.showIcon + ", show_cover=" + this.showCover + ", frame_color=" + this.frameColor + ", fonts_color=" + this.fontsColor + ", web_url='" + this.webUrl + '\'' + ", proxy='" + this.proxy + '\'' + ", channelConfigType=" + this.channelConfigType + ", seq=" + this.seq + ", mChannelId=" + this.mChannelId + ", mChannelCoverId=" + this.mChannelCoverId + ", mChannelCoverName='" + this.mChannelCoverName + '\'' + ", mChannelCoverStyle=" + this.mChannelCoverStyle + ", mChannelCoverSummary='" + this.mChannelCoverSummary + '\'' + ", mChannelCoverPicUrl='" + this.mChannelCoverPicUrl + '\'' + ", mChannelJumpUrl='" + this.mChannelJumpUrl + '\'' + ", mArticleId=" + this.mArticleId + ", mChannelType=" + this.mChannelType + ", mChannelCoverSpec='" + this.mChannelCoverSpec + '\'' + ", mFollowType=" + this.mFollowType + ", mColumnType=" + this.mColumnType + ", mTipsType=" + this.mTipsType + ", mTipsText='" + this.mTipsText + '\'' + ", mPreUpdateTime=" + this.mPreUpdateTime + ", mUpdateTime=" + this.mUpdateTime + ", isReport=" + this.isReport + ", mIconUrl='" + this.mIconUrl + '\'' + ", mFontColor=" + this.mFontColor + ", mFrameColor=" + this.mFrameColor + ", isExternalExposure=" + this.isExternalExposure + ", externalExposureBackgroundUrl='" + this.externalExposureBackgroundUrl + '\'' + ", isExternalExposurePersist=" + this.isExternalExposurePersist + ", hasFilterColor=" + this.hasFilterColor + ", filterColor=" + this.filterColor + ", mIsTopic=" + this.mIsTopic + ", isSelected=" + this.isSelected + ", sectionId=" + this.sectionId + ", bid=" + this.bid + ", mChannelCoverIcon=" + this.mChannelCoverIcon + ", mChannelVersion=" + this.mChannelVersion + '}';
     }
   }
 }

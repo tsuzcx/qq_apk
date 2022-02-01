@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class amhv
-  implements Comparator<File>
+  implements Manager
 {
-  public amhv(CleanCache paramCleanCache) {}
+  public static String a = "ApolloNativeSSOReqMgr";
   
-  public int a(File paramFile1, File paramFile2)
+  public amhv(QQAppInterface paramQQAppInterface)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
     }
-    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
-      return -1;
-    }
-    return 0;
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amhv
  * JD-Core Version:    0.7.0.1
  */

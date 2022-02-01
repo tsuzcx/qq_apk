@@ -1,96 +1,189 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.now.NowVideoLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.1;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.2;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneClickReport;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class azxi
-  extends azut
+  implements Manager
 {
-  private QQAppInterface a;
+  public QQAppInterface a;
   
-  protected int b()
+  public azxi(QQAppInterface paramQQAppInterface)
   {
-    return 18;
+    this.a = paramQQAppInterface;
   }
   
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  private SharedPreferences a()
   {
-    Object localObject1 = null;
+    String str2 = "";
+    String str1 = str2;
+    if (this.a != null)
+    {
+      str1 = str2;
+      if (this.a.getCurrentAccountUin() != null) {
+        str1 = this.a.getCurrentAccountUin();
+      }
+    }
+    str1 = str1 + "_QZoneAlbumRedTouch";
+    return BaseApplication.getContext().getSharedPreferences(str1, 0);
+  }
+  
+  public static boolean c()
+  {
+    long l = 0L;
     if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemLayout18", 2, "getView.");
+      l = System.currentTimeMillis();
     }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    paramContext.getResources();
-    if ((paramBundle instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    paramBundle = null;
-    if (((Iterator)localObject2).hasNext())
+    if (bmiz.a().b())
     {
-      azus localazus = (azus)((Iterator)localObject2).next();
-      if (!"live".equals(localazus.a)) {
-        break label255;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "checkNewImages cost:" + (System.currentTimeMillis() - l));
       }
-      paramBundle = (azwb)localazus;
+      return true;
     }
-    label247:
-    label255:
-    for (;;)
-    {
-      break;
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
-        }
-        return null;
-      }
-      if (paramView != null)
-      {
-        paramContext = (azxj)paramView.getTag();
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = paramContext;
-        paramContext = (Context)localObject2;
-        if (paramView != null) {
-          break label247;
-        }
-        paramView = new azxj();
-        paramView.jdField_a_of_type_Azwb = paramBundle;
-        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
-      }
-      for (;;)
-      {
-        ((View)localObject1).setTag(paramView);
-        paramView = ((View)localObject1).findViewById(2131377137);
-        if (paramView != null) {
-          paramView.setOnClickListener(paramBundle.a);
-        }
-        if (paramContext != null) {
-          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
-        return localObject1;
-        localObject2 = paramBundle.a(paramContext, null, null);
-        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131377137);
-        paramContext.a();
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        break;
-        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-      }
-    }
+    return false;
   }
   
-  public String b()
+  public long a()
   {
-    return "Layout18";
+    return a().getLong("key_photo_guide_has_red_date", 0L);
+  }
+  
+  public void a()
+  {
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "setRedTouch");
+    }
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), azxk.class);
+    localNewIntent.putExtra("req", new operation_red_touch_req(1L));
+    this.a.startServlet(localNewIntent);
+  }
+  
+  @TargetApi(9)
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (this.a == null)) {
+      return;
+    }
+    QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
+  }
+  
+  public boolean a()
+  {
+    long l2 = a();
+    if (l2 <= 0L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+      }
+    }
+    do
+    {
+      return false;
+      long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
+      l2 = System.currentTimeMillis() - l2;
+      if ((l2 <= l1) && (l2 >= 0L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
+  }
+  
+  public boolean b()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    Object localObject = (baif)this.a.getManager(36);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((baif)localObject).a(String.valueOf(100180));
+    return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
+  }
+  
+  public void c()
+  {
+    if ((!bmiz.d()) && (bmiz.c()) && (bmiz.e()))
+    {
+      LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
+      if (b()) {
+        break label65;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
+      }
+      if ((!a()) && (c())) {
+        d();
+      }
+    }
+    label65:
+    while (c()) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
+    }
+    b();
+  }
+  
+  @TargetApi(9)
+  public void d()
+  {
+    int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
+    SharedPreferences.Editor localEditor = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    if (Build.VERSION.SDK_INT < 9) {
+      localEditor.commit();
+    }
+    while ((i == 1) && (this.a != null) && (this.a.getApp() != null) && (azxl.a(this.a.getApp(), 84)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
+      }
+      new azxl(this.a, this).a();
+      return;
+      localEditor.apply();
+    }
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

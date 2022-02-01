@@ -1,0 +1,284 @@
+{
+    "ReadInjoy_ad_small_game_collection_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "relative",
+            "value": "207"
+        },
+        "width": {
+            "type": "relative",
+            "value": "140"
+        },
+        "subviews": [
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_back_shadow",
+                "default_visible": "YES",
+                "margin_left": "-3",
+                "margin_top": "3",
+                "height": {
+                    "type": "relative",
+                    "value": "199"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "146"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setCornerRadiusString:": "8",
+                    "setImageWithURLString:lineup:": [
+                        "http://img.nfa.qq.com/gmaster_test/15916608/gmaster_fphsszvemew_game_cell_bg.png",
+                        "-1"
+                    ]
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_small_game_cell_bg",
+                "event_type": "cmd_ad_small_game_cell_click",
+                "layout_type": "layout_relative",
+                "margin_left": "3",
+                "margin_top": "-196",
+                "default_visible": "YES",
+                "height": {
+                    "type": "relative",
+                    "value": "187"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "134"
+                },
+                "attributes": {
+                    "setClipsToBounds:": "1",
+                    "setBackgroundColorString:": "#FFFFFF",
+                    "setCornerRadiusString:": "5"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_small_game_icon",
+                        "margin_top": "15",
+                        "margin_left": "36.5",
+                        "height": {
+                            "type": "relative",
+                            "value": "61"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "61"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setCornerRadiusString:": "8",
+                            "setImageWithURLString:lineup:": [
+                                "$game_icon",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_type_label",
+                        "margin_left": "-2.5",
+                        "margin_top": "15",
+                        "height": {
+                            "type": "relative",
+                            "value": "16.5"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "27"
+                        },
+                        "attributes": {
+                            "setText:": "$game_type_label",
+                            "setTextAlignmentString:": "1",
+                            "setTextColorString:": "#ffffff",
+                            "setFontSizeString:": "10",
+                            "setNumberOfLinesString:": "1",
+                            "setBackgroundColorString:": "$game_type_label_color",
+                            "setCornerRadiusArray:type:": [
+                                [
+                                    "2",
+                                    "8.25",
+                                    "8.25",
+                                    "2"
+                                ],
+                                "relative"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_title_label",
+                        "margin_left": "6",
+                        "margin_top": "80",
+                        "height": {
+                            "type": "relative",
+                            "value": "21"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "122"
+                        },
+                        "attributes": {
+                            "setText:": "$game_title",
+                            "setTextAlignmentString:": "1",
+                            "setTextColorString:": "#262626",
+                            "setFontSizeString:": "16",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "horizontal",
+                        "margin_top": "110",
+                        "margin_left": "9",
+                        "height": {
+                            "type": "relative",
+                            "value": "32"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "116"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_avator_list1",
+                                "visible_depend_on_children": "YES",
+                                "layout_type": "layout_linear",
+                                "direction": "horizontal",
+                                "margin_top": "0",
+                                "margin_right": "3",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "14"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_avator_icon_1",
+                                        "margin_left": "0",
+                                        "margin_top": "0",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$avator_icon_1",
+                                                "1"
+                                            ],
+                                            "setCornerRadiusString:": "7"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_avator_icon_2",
+                                        "margin_left": "-3",
+                                        "margin_top": "0",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$avator_icon_2",
+                                                "1"
+                                            ],
+                                            "setCornerRadiusString:": "7"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_avator_icon_3",
+                                        "margin_left": "-3",
+                                        "margin_top": "0",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "14"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$avator_icon_3",
+                                                "1"
+                                            ],
+                                            "setCornerRadiusString:": "7"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_game_gray_label",
+                                "margin_left": "0",
+                                "margin_top": "0",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setText:lineSpace:": [
+                                        "$game_gray_label",
+                                        "2"
+                                    ],
+                                    "setTextColorString:": "#A8A8A8",
+                                    "setFontSizeString:": "12",
+                                    "setMaxWidth:type:": [
+                                        "116",
+                                        "relative"
+                                    ],
+                                    "setNumberOfLinesString:": "2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_button_label",
+                        "margin_top": "149",
+                        "margin_left": "19",
+                        "height": {
+                            "type": "relative",
+                            "value": "23"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "96"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$game_button_label",
+                            "setTextAlignmentString:": "1",
+                            "setTextColorString:": "#FFFFFF",
+                            "setFontSizeString:": "11",
+                            "setNumberOfLinesString:": "1",
+                            "setCornerRadiusString:": "11.5",
+                            "setBackgroundColorString:": "#00CAFB"
+                        }
+                    }
+                ]
+            }]
+    }
+}

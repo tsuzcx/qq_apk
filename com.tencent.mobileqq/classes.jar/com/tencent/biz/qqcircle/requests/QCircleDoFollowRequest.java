@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.requests;
 
 import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudMeta.StUser;
@@ -14,10 +15,22 @@ public class QCircleDoFollowRequest
   
   public QCircleDoFollowRequest(FeedCloudMeta.StUser paramStUser, int paramInt, FeedCloudCommon.StCommonExt paramStCommonExt)
   {
+    this(paramStUser, paramInt, paramStCommonExt, false);
+  }
+  
+  public QCircleDoFollowRequest(FeedCloudMeta.StUser paramStUser, int paramInt, FeedCloudCommon.StCommonExt paramStCommonExt, boolean paramBoolean)
+  {
     this.mRequest.user.set(paramStUser);
     this.mRequest.followType.set(paramInt);
     if (paramStCommonExt != null) {
       this.mRequest.extInfo.set(paramStCommonExt);
+    }
+    paramStUser = this.mRequest.followMethod;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramStUser.set(paramInt);
+      return;
     }
   }
   
@@ -40,7 +53,7 @@ public class QCircleDoFollowRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoFollowRequest
  * JD-Core Version:    0.7.0.1
  */

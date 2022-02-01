@@ -1,12 +1,8 @@
-public class akyf
+public abstract interface akyf
 {
-  public static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
-    }
-    return "ltgame_redpkg_plankinfo.check_game";
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

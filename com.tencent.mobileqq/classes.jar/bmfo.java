@@ -1,28 +1,97 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
-import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.report.lp.LpReport_Retention_dc03208;
+import cooperation.qzone.util.QZLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class bmfo
-  implements DialogInterface.OnClickListener
 {
-  public bmfo(LightWeightCameraCaptureUnit.10 param10) {}
+  public static final Set<String> a = new HashSet();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(int paramInt)
   {
-    paramDialogInterface = this.a.this$0.jdField_a_of_type_Bmhh.a();
-    if (paramInt == 1)
+    a(String.valueOf(paramInt), null);
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (a(paramString))
     {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
+      i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
+      if ((i == 0) || (i == 2)) {
+        b(paramString, paramHashMap);
+      }
+      if ((i == 0) || (i == 1)) {
+        LpReport_Retention_dc03208.report(paramString, paramHashMap);
+      }
+      if (QZLog.isColorLevel()) {
+        QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", paramString });
+      }
+    }
+    while (!QZLog.isColorLevel())
+    {
+      int i;
       return;
     }
-    paramDialogInterface.finish();
+    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (a.size() == 0)
+    {
+      Object localObject = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report_blacklist", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split(",");
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            CharSequence localCharSequence = localObject[i];
+            if (!TextUtils.isEmpty(localCharSequence)) {}
+            try
+            {
+              a.add(localCharSequence);
+              i += 1;
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                QZLog.e("Retention.Report", "meetConditon error", localException);
+              }
+            }
+          }
+        }
+      }
+    }
+    return (a.size() <= 0) || (!a.contains(paramString));
+  }
+  
+  public static void b(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    for (;;)
+    {
+      try
+      {
+        paramHashMap = new HashMap();
+        paramHashMap.put("function_id", paramString);
+        bctj.a(BaseApplicationImpl.getContext()).a(null, "qzone_retention_" + paramString, true, 0L, 0L, paramHashMap, null);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QZLog.e("Retention.Report", "统计率上报失败", paramString);
+        return;
+      }
+    }
   }
 }
 

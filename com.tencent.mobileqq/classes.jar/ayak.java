@@ -1,27 +1,94 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Set;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Headers.Builder;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import org.json.JSONArray;
 
-class ayak
-  implements DialogInterface.OnClickListener
+public class ayak
 {
-  ayak(ayaa paramayaa, int paramInt, Object paramObject) {}
+  public static ayak a;
+  private Callback a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    switch (this.jdField_a_of_type_Int)
+    jdField_a_of_type_Ayak = new ayak();
+  }
+  
+  private ayak()
+  {
+    this.jdField_a_of_type_Okhttp3Callback = new ayal(this);
+  }
+  
+  private String a(Bundle paramBundle)
+  {
+    JSONArray localJSONArray1 = new JSONArray();
+    JSONArray localJSONArray2 = new JSONArray();
+    String str1 = "";
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+      String str2 = (String)localIterator.next();
+      if ("tid".equals(str2))
+      {
+        str1 = paramBundle.getString(str2);
+      }
+      else
+      {
+        if (!"bid".equals(str2))
+        {
+          localJSONArray1.put(str2);
+          if (!bgsp.a(paramBundle.getString(str2))) {
+            break label111;
+          }
+        }
+        label111:
+        for (str2 = "";; str2 = paramBundle.getString(str2))
+        {
+          localJSONArray2.put(str2);
+          break;
+        }
+      }
     }
-    do
+    paramBundle = new JSONArray();
+    paramBundle.put(localJSONArray2);
+    try
     {
+      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
+      return paramBundle;
+    }
+    catch (UnsupportedEncodingException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    return "";
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
+    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
+    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
+    ayaj.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      QLog.d("TurtleReportCenter", 4, "send(): no data to report");
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
-    ayaa.a(this.jdField_a_of_type_Ayaa).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Ayaa.updateUI();
+    }
+    b(paramBundle);
   }
 }
 

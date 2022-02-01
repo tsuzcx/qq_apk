@@ -1,25 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-class bfpo
-  implements View.OnClickListener
+public abstract interface bfpo
 {
-  bfpo(bfpl parambfpl, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfpl, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bfpl.dismiss();
-    }
-  }
+  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfpo
  * JD-Core Version:    0.7.0.1
  */

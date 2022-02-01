@@ -1,58 +1,48 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bhpc
+public final class bhpc
+  implements WtTicketPromise
 {
-  protected boolean a;
+  public bhpc(String paramString, long paramLong) {}
   
-  private bhpc(bhou parambhou) {}
-  
-  public void a()
+  public void Done(Ticket paramTicket)
   {
-    if (this.a) {
-      bhou.a(this.b).a();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if (paramTicket == null) {
+        break label64;
+      }
+    }
+    label64:
+    for (paramTicket = "";; paramTicket = ". But result was null!")
+    {
+      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
+      return;
     }
   }
   
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    bhon localbhon2;
-    do
-    {
-      return;
-      localbhon2 = bhou.a(this.b).a(paramInt1);
-    } while ((localbhon2 != null) && (paramString1.equals(localbhon2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localbhon2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localbhon2.jdField_b_of_type_Int) && (paramInt3 == localbhon2.c));
-    bhon localbhon1;
-    if (localbhon2 == null) {
-      localbhon1 = new bhon();
+    if (QLog.isColorLevel()) {
+      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    for (;;)
-    {
-      localbhon1.jdField_a_of_type_Int = paramInt1;
-      localbhon1.jdField_b_of_type_Int = paramInt2;
-      localbhon1.c = paramInt3;
-      localbhon1.jdField_b_of_type_JavaLangString = paramString1;
-      localbhon1.jdField_a_of_type_JavaLangString = paramString2;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("Add lost lib: %d,%d,%d,%s", new Object[] { Integer.valueOf(localbhon1.jdField_a_of_type_Int), Integer.valueOf(localbhon1.jdField_b_of_type_Int), Integer.valueOf(localbhon1.c), localbhon1.jdField_b_of_type_JavaLangString }));
-      }
-      bhou.a(this.b).a(localbhon1, false);
-      this.a = true;
-      return;
-      bhou.a(this.b).a(paramInt1, false);
-      localbhon1 = localbhon2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
-        localbhon1 = localbhon2;
-      }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpc
  * JD-Core Version:    0.7.0.1
  */

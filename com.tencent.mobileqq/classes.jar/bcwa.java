@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
 
-public class bcwa
-  extends bcoc
+final class bcwa
+  implements bkhw
 {
-  public bcwa(TroopInteractGiftAnimationController.1.1 param1) {}
+  bcwa(String paramString, Context paramContext) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      bcvz.a().dismiss();
+      return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

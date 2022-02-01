@@ -1,15 +1,9 @@
-class ajkr
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+
+public abstract class ajkr
+  implements ajkv, ajkw
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public ajkr(String paramString1, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  ajkr(CommonRefreshLayout paramCommonRefreshLayout) {}
 }
 
 

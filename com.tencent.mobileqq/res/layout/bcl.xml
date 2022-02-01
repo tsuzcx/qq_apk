@@ -7,10 +7,7 @@
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
                 <include android:id="@id/h3i" layout="@layout/bdm" />
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-                <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <include android:id="@id/h40" layout="@layout/bde" />
-                    <ImageView android:id="@id/h5a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-15.0dip" android:layout_marginBottom="20.0dip" android:maxHeight="13.0dip" android:layout_toRightOf="@id/h40" android:layout_alignBottom="@id/h40" android:contentDescription="@null" />
-                </RelativeLayout>
+                <include android:id="@id/h40" layout="@layout/bde" />
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/h3s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />

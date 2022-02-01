@@ -1,70 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Collections;
+import java.util.List;
 
 public class akub
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
+  public akub(ChooseItemView paramChooseItemView) {}
   
-  public WebResourceResponse a()
+  public void onClick(View paramView)
   {
-    try
+    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
     {
-      if (this.b != null)
-      {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
-          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
-        }
-        if (!bdhb.a(this.b)) {
-          break label102;
-        }
-        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
-        return localWebResourceResponse;
-      }
+      Collections.shuffle(ChooseItemView.a(this.a));
+      this.a.a.a(ChooseItemView.b(this.a));
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
+    if (ChooseItemView.a(this.a) != null) {
+      ChooseItemView.a(this.a).onClick(paramView);
     }
-    return null;
-    label102:
-    return null;
-  }
-  
-  public String a()
-  {
-    return "file://" + this.b;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bdhb.a(this.b)))
-      {
-        if (bdhb.b(this.b) <= 8388608L) {
-          break label84;
-        }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
-        return;
-        label84:
-        this.jdField_a_of_type_ArrayOfByte = bdhb.a(this.b);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

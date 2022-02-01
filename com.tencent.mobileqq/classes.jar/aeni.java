@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeni
-  extends altm
+  extends antu
 {
-  public aeni(ActivateFriendView paramActivateFriendView) {}
+  public aeni(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = bdgc.b(ActivateFriendView.a(this.a), str, false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
-    {
-      String str = bdgc.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
-      i += 1;
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+      return;
     }
+    paramObject = ajvi.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

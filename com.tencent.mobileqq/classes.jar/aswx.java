@@ -1,23 +1,59 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
 public class aswx
-  implements Cloneable
+  extends asyw
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  public aswx(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public aswx(aswm paramaswm, int paramInt, long paramLong)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    super.a(paramInt, paramLong, paramString);
+    atvo.a(paramLong, paramInt, paramString);
+    bnaz.a(this.a.a, paramInt);
   }
   
-  protected aswx a()
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    return (aswx)super.clone();
+    super.a(paramLong, paramString1, paramInt, paramString2);
+    atvo.a(paramLong);
+  }
+  
+  protected void a(athr paramathr)
+  {
+    if (paramathr == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramathr.a instanceof FileManagerEntity));
+      localFileManagerEntity = (FileManagerEntity)paramathr.a;
+    } while ((paramathr.b == null) || (paramathr.b.length() <= 0));
+    localFileManagerEntity.strThumbPath = paramathr.b;
+    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
+    this.a.i();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
   }
 }
 

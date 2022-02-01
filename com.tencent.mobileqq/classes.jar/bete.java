@@ -1,11 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bete
+class bete
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
+  bete(besy parambesy, besl parambesl) {}
   
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, betf parambetf);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).b(this.jdField_a_of_type_Besl);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

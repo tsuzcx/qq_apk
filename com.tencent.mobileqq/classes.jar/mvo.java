@@ -1,16 +1,38 @@
-public abstract class mvo
+import android.os.SystemClock;
+
+public class mvo
 {
-  public abstract void a();
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  private mvo(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.b = mvg.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mvg.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
+    }
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
+    {
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
+      return;
+      this.d = paramInt1;
+    }
+    this.jdField_a_of_type_Int = paramInt3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvo
  * JD-Core Version:    0.7.0.1
  */

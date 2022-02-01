@@ -99,7 +99,7 @@ public final class fj
   
   private static boolean a(int paramInt)
   {
-    return paramInt != eu.a.c.ordinal();
+    return paramInt != et.a.c.ordinal();
   }
   
   public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -224,13 +224,13 @@ public final class fj
     return true;
   }
   
-  public static boolean a(eu parameu)
+  public static boolean a(et paramet)
   {
-    if (parameu == null) {}
+    if (paramet == null) {}
     for (int i = 1; i != 0; i = 0) {
       return false;
     }
-    return a(parameu.a.ordinal(), parameu.b, parameu.c, parameu.d, parameu.e);
+    return a(paramet.a.ordinal(), paramet.b, paramet.c, paramet.d, paramet.e);
   }
   
   private static int b(int paramInt, SignalStrength paramSignalStrength1, SignalStrength paramSignalStrength2)
@@ -267,7 +267,7 @@ public final class fj
   
   private static boolean b(int paramInt)
   {
-    return paramInt == eu.a.c.ordinal();
+    return paramInt == et.a.c.ordinal();
   }
   
   private static boolean b(CellLocation paramCellLocation)

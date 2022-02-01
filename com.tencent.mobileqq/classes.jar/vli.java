@@ -1,13 +1,20 @@
-public class vli
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class vli
+  implements View.OnTouchListener
 {
-  public static boolean a(int paramInt)
+  vli(vlg paramvlg) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return paramInt > 1000;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,23 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class sqd
+  implements View.OnLongClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public sqd(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public sqd() {}
-  
-  public sqd(JSONObject paramJSONObject)
+  public boolean onLongClick(View paramView)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
-      return;
-      if (paramJSONObject.has("busiType")) {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
-      }
-      if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
-      }
-      if (paramJSONObject.has("width")) {
-        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
-      }
-      if (paramJSONObject.has("height")) {
-        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
-      }
-      if (paramJSONObject.has("duration")) {
-        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
-      }
-      if (paramJSONObject.has("poster")) {
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
-      }
-      if (paramJSONObject.has("title")) {
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
-      }
-      if (paramJSONObject.has("xgFileSize")) {
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
-      }
-    } while (!paramJSONObject.has("videoUrl"));
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
-  }
-  
-  public String toString()
-  {
-    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", XGFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqd
  * JD-Core Version:    0.7.0.1
  */

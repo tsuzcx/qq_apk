@@ -1,37 +1,22 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class afjc
-  extends ampt
+class afjc
+  implements DialogInterface.OnClickListener
 {
-  afjc(afjb paramafjb, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  afjc(afjb paramafjb, bgpa parambgpa) {}
   
-  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
-      return;
-    }
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < 3) {
-      return;
-    }
-    a(paramInt1, null);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    a(paramInt, paramSosoLbsInfo);
+    bcst.b(this.jdField_a_of_type_Afjb.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afjb.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Afjb.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Afjb.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bgpa.cancel();
   }
 }
 

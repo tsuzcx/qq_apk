@@ -1,8 +1,28 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aoep
+public class aoep
+  extends aniz
 {
-  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
+  public aoep(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
+  
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  {
+    super.onSetHiddenSession(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    }
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aoeq.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+      }
+    }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aoeq.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+  }
 }
 
 

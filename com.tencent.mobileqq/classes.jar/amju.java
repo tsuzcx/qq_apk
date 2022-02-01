@@ -1,55 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.CustomImgView;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class amju
-  implements View.OnClickListener
+public abstract class amju
+  implements amjy
 {
-  public amju(AIOIceBreakView paramAIOIceBreakView) {}
+  protected int[] a;
   
-  public void onClick(View paramView)
+  public amju(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    int i = 1;
-    QLog.i("IceBreak.HotPic", 2, "onClick.");
-    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
-    paramView = (agxz)paramView.getTag();
-    if ((localURLImageView.getDrawable() instanceof URLDrawable))
-    {
-      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
-        AIOIceBreakView.a(this.a, paramView);
-      }
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+  }
+  
+  private int[] a(int[] paramArrayOfInt)
+  {
+    if ((GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
+      return paramArrayOfInt;
     }
-    else if (abti.a(AIOIceBreakView.a(this.a).a.a) != 1044) {
-      if (AIOIceBreakView.a(this.a).a.a != 0) {
-        break label170;
-      }
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
     }
     for (;;)
     {
-      azqs.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
-      if (AIOIceBreakView.a(this.a) != null) {
-        AIOIceBreakView.a(this.a).a(localURLImageView);
-      }
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
-      break;
-      label170:
-      i = 2;
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amju
  * JD-Core Version:    0.7.0.1
  */

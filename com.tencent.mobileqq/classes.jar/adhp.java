@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class adhp
-  implements Animation.AnimationListener
+  extends anjq
 {
-  public adhp(LoginInfoActivity paramLoginInfoActivity) {}
+  public adhp(AboutActivity paramAboutActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

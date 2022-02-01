@@ -1,28 +1,23 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nxi
-  implements Animation.AnimationListener
+class nxi
+  implements View.OnClickListener
 {
-  public nxi(ReadInJoyNaviController.2 param2) {}
+  nxi(nxe paramnxe) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    nxf.a(this.a.this$0, true);
-    nxf.a(this.a.this$0).setAlpha(0.0F);
-    nxf.a(this.a.this$0).removeView(nxf.a(this.a.this$0));
+    this.a.a.dismiss();
+    nxe.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxi
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter.AuthorizeInfo;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,53 +70,74 @@ public class PermissionListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AuthorizeCenter.AuthorizeInfo localAuthorizeInfo;
+    AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = getItem(paramInt);
+    FormSwitchItem localFormSwitchItem;
     boolean bool;
-    if (paramView != null)
-    {
-      paramView = (FormSwitchItem)paramView;
-      localAuthorizeInfo = getItem(paramInt);
-      if (localAuthorizeInfo != null)
+    label37:
+    String str;
+    if (localAuthorizeInfo != null) {
+      if ((paramView instanceof FormSwitchItem))
       {
+        localFormSwitchItem = (FormSwitchItem)paramView;
         if (localAuthorizeInfo.authFlag != 2) {
-          break label100;
+          break label127;
         }
         bool = true;
-        label33:
-        paramView.setChecked(bool);
-        paramView.a().setTag(localAuthorizeInfo.scopeName);
-        paramViewGroup = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
-        if (paramViewGroup == null) {
-          break label106;
+        localFormSwitchItem.setChecked(bool);
+        localFormSwitchItem.a().setTag(localAuthorizeInfo.scopeName);
+        str = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
+        if (str == null) {
+          break label133;
         }
+        label78:
+        localFormSwitchItem.setText(str);
       }
     }
     for (;;)
     {
-      paramView.setText(paramViewGroup);
-      return paramView;
-      paramView = new FormSwitchItem(this.context);
-      paramView.setOnCheckedChangeListener(this.checkedChangeListener);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localFormSwitchItem;
+      localFormSwitchItem = new FormSwitchItem(this.context);
+      localFormSwitchItem.setOnCheckedChangeListener(this.checkedChangeListener);
       break;
-      label100:
+      label127:
       bool = false;
-      break label33;
-      label106:
-      paramViewGroup = localAuthorizeInfo.scopeName;
+      break label37;
+      label133:
+      str = localAuthorizeInfo.scopeName;
+      break label78;
+      localFormSwitchItem = null;
     }
   }
   
   public void setScopeList(List<AuthorizeCenter.AuthorizeInfo> paramList)
   {
     this.scopeList.clear();
+    int i;
     if (paramList != null) {
-      this.scopeList.addAll(paramList);
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramList.size())
+      {
+        AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)paramList.get(i);
+        if ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName)) {
+          paramList.remove(localAuthorizeInfo);
+        }
+      }
+      else
+      {
+        this.scopeList.addAll(paramList);
+        return;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionListAdapter
  * JD-Core Version:    0.7.0.1
  */

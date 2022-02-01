@@ -1,20 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class nmz
-  implements DialogInterface.OnClickListener
+public class nmz
+  extends MSFServlet
 {
-  nmz(nmx paramnmx, JsResult paramJsResult) {}
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String[] getPreferSSOCommands()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    return this.a;
   }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    nna localnna = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localnna != null) {
+      localnna.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nmz
  * JD-Core Version:    0.7.0.1
  */

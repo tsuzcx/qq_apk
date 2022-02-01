@@ -1,10 +1,13 @@
+import android.widget.ImageView.ScaleType;
+
 public class amyh
 {
   public int a;
-  long jdField_a_of_type_Long;
+  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
+  public String a;
   public int b;
-  
-  public amyh(amyg paramamyg) {}
+  public String b;
+  public int c;
 }
 
 

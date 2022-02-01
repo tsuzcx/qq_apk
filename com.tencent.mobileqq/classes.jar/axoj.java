@@ -1,17 +1,16 @@
-public class axoj
+class axoj
+  implements xry
 {
-  long a;
-  public String a;
-  public boolean a;
-  long b;
-  public String b;
-  public boolean b;
-  public String c;
-  boolean c;
+  axoj(axof paramaxof, axnx paramaxnx) {}
+  
+  public void a_(xrt paramxrt)
+  {
+    this.jdField_a_of_type_Axnx.a(this.jdField_a_of_type_Axof);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axoj
  * JD-Core Version:    0.7.0.1
  */

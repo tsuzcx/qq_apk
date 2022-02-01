@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import bmnj;
+import bpep;
 
 public class EditVideoPartManager$6
   implements Runnable
 {
-  public EditVideoPartManager$6(bmnj parambmnj) {}
+  public EditVideoPartManager$6(bpep parambpep) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class EditVideoPartManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager.6
  * JD-Core Version:    0.7.0.1
  */

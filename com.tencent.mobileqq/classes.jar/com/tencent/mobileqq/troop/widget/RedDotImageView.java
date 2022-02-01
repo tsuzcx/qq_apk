@@ -52,7 +52,7 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849801);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, " showRedDot() : " + this.jdField_b_of_type_Int + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
@@ -183,7 +183,7 @@ public class RedDotImageView
       }
     }
     label219:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845297);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849243))
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845693);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849794))
     {
       this.jdField_b_of_type_Int = paramInt;
       postInvalidate();
@@ -193,7 +193,7 @@ public class RedDotImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView
  * JD-Core Version:    0.7.0.1
  */

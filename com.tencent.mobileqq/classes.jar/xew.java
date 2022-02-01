@@ -1,28 +1,20 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class xew
-  extends xff
+  implements xfa
 {
-  xew(xet paramxet, xes paramxes)
-  {
-    super(paramxes);
-  }
+  xew(xev paramxev) {}
   
-  protected void a(@Nullable xes arg1)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    super.onResult(???);
-    wxe.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_Xes = null;
-      this.a.c();
-      return;
-    }
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xew
  * JD-Core Version:    0.7.0.1
  */

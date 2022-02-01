@@ -1,65 +1,101 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.2;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.3;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.4;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.6;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.data.OperateVoipTipsInfo;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class anjq
-  implements INetInfoHandler
+  implements anil
 {
-  anjq(anjo paramanjo) {}
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
   
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + anjo.b(this.a));
-    }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
-  }
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList) {}
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + anjo.b(this.a));
-    }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
-  }
+  protected void a(boolean paramBoolean) {}
   
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + anjo.b(this.a));
-    }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
-  }
+  protected void a(boolean paramBoolean, int paramInt) {}
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + anjo.b(this.a));
-    }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
-  }
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + anjo.b(this.a));
-    }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
-  }
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID) {}
   
-  public void onNetWifi2None()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void b(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean, long paramLong) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + anjo.b(this.a));
+    switch (paramInt)
+    {
     }
-    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              a(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              a(paramBoolean, (GetResourceRespInfo)paramObject);
+              return;
+              a(paramBoolean, (String)paramObject);
+              return;
+              a(paramBoolean, (UpgradeDetailWrapper)paramObject);
+              return;
+              a(paramBoolean, (AppShareID)paramObject);
+              return;
+              b(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              a(paramBoolean, ((Integer)paramObject).intValue());
+              return;
+              if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
+              {
+                paramObject = (OperateVoipTipsInfo)paramObject;
+                a(paramObject.uin, paramObject.uinType, paramObject.taskList);
+              }
+              b(paramBoolean);
+              return;
+              paramObject = (Pair)paramObject;
+              a(paramBoolean, (String)paramObject.first, (String)paramObject.second);
+              return;
+              b(paramBoolean, ((Boolean)paramObject).booleanValue());
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+            a(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          a((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length <= 4);
+      b((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+      return;
+    } while (!(paramObject instanceof Object[]));
+    a(((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
   }
 }
 

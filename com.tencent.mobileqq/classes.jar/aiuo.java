@@ -1,34 +1,31 @@
-import Wallet.GetBroadCastHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aiuo
-  implements ajfp
+public class aiuo
 {
-  aiuo(aiul paramaiul, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(String paramString)
+  public boolean a()
   {
-    int i = 1;
-    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
-    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
-    localGetBroadCastHbIdiomReq.sKey = paramString;
-    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
-    for (;;)
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof aiuo))
     {
-      localGetBroadCastHbIdiomReq.fromType = i;
-      localGetBroadCastHbIdiomReq.platform = 0;
-      localGetBroadCastHbIdiomReq.qqVersion = "8.3.5";
-      aivh.a(localGetBroadCastHbIdiomReq, new aiup(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
-        i = 2;
-      } else {
-        i = 0;
-      }
+      paramObject = (aiuo)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
     }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 

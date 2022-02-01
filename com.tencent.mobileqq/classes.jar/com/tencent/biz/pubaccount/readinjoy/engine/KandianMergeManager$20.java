@@ -1,23 +1,41 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import bkbq;
+import adrm;
+import anhk;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class KandianMergeManager$20
   implements Runnable
 {
-  KandianMergeManager$20(KandianMergeManager paramKandianMergeManager, long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
+  KandianMergeManager$20(KandianMergeManager paramKandianMergeManager, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bkbq.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putLong("subscribe_push_msg_time", this.jdField_a_of_type_Long);
-    localEditor.putString("subscribe_push_msg_uin", this.jdField_a_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
-    localEditor.putString("subscribe_push_msg_xml", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_msgtype", this.jdField_b_of_type_Int);
-    bkbq.a(localEditor, true);
+    KandianMergeManager.a(this.this$0).a().a(anhk.aA, 7220, false, false);
+    if (this.a.extInt == 2)
+    {
+      KandianMergeManager.a(this.this$0).a().b(anhk.aA, 7220, this.a.uniseq);
+      if (KandianMergeManager.a(this.this$0).get() > 0) {
+        this.this$0.c(2);
+      }
+    }
+    do
+    {
+      return;
+      if (this.a.extInt == 1)
+      {
+        SessionInfo localSessionInfo = new SessionInfo();
+        localSessionInfo.jdField_a_of_type_JavaLangString = anhk.az;
+        localSessionInfo.jdField_a_of_type_Int = 1008;
+        adrm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        return;
+      }
+    } while (this.a.extInt != 5);
+    KandianMergeManager.a(this.this$0).a().b(anhk.aA, 7220, this.a.uniseq);
   }
 }
 

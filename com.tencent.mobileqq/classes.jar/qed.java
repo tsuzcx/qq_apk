@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class qed
-  implements View.OnClickListener
+class qed
+  implements qlx
 {
-  public qed(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
+  qed(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ComponentHeaderSubscribe.a(this.a);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qed
  * JD-Core Version:    0.7.0.1
  */

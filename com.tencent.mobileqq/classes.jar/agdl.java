@@ -1,32 +1,15 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class agdl
-  implements Animation.AnimationListener
+  implements bdet
 {
-  agdl(agdj paramagdj, agdn paramagdn, CharSequence paramCharSequence) {}
+  agdl(agdj paramagdj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_Agdn.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Agdn.d.startAnimation(this.jdField_a_of_type_Agdj.a);
-    this.jdField_a_of_type_Agdn.a.requestLayout();
-    this.jdField_a_of_type_Agdn.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Agdn.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_Agdn.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Agdn.g = 0;
-    this.jdField_a_of_type_Agdn.d.startAnimation(this.jdField_a_of_type_Agdj.b);
+    bdez localbdez = new bdez(3000, 360, 0);
+    localbdez.a = true;
+    this.a.a.e.a(new bdes[] { localbdez });
   }
 }
 

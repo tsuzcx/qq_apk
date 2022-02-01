@@ -1,17 +1,29 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhy
-  implements View.OnCreateContextMenuListener
+  implements View.OnClickListener
 {
-  public adhy(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public adhy(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void onClick(View paramView)
   {
-    paramContextMenu.clear();
+    View localView = (View)paramView.getParent().getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localView.getTag()).intValue();
+      if ((i != 0) || (aywm.a().a(this.a.app, this.a)))
+      {
+        this.a.a(i);
+        bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

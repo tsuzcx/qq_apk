@@ -1,66 +1,86 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.util.WeakReference;
 
-public class aenl
-  implements View.OnClickListener
+class aenl
 {
-  public aenl(BirthdayActivatePage paramBirthdayActivatePage) {}
+  private static int jdField_a_of_type_Int;
+  private static aenl jdField_a_of_type_Aenl;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  aoch jdField_a_of_type_Aoch;
+  String jdField_a_of_type_JavaLangString;
+  volatile boolean jdField_a_of_type_Boolean;
+  private aenl b;
   
-  public void onClick(View paramView)
+  static aenl a()
   {
-    Object localObject;
-    long[] arrayOfLong;
-    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localObject = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
-      arrayOfLong = this.a.a.a();
-      String[] arrayOfString = this.a.a.a();
-      if (arrayOfLong.length <= 0) {
-        break label358;
-      }
-      paramView = "";
-      int i = 0;
-      while (i < arrayOfLong.length)
+      if (jdField_a_of_type_Aenl != null)
       {
-        paramView = paramView + arrayOfLong[i];
-        paramView = paramView + "_";
-        String str = paramView + arrayOfString[i];
-        int j = i + 1;
-        i = j;
-        paramView = str;
-        if (j < arrayOfLong.length)
-        {
-          paramView = str + "|";
-          i = j;
-        }
+        aenl localaenl = jdField_a_of_type_Aenl;
+        jdField_a_of_type_Aenl = localaenl.b;
+        localaenl.b = null;
+        jdField_a_of_type_Int -= 1;
+        return localaenl;
       }
-      paramView = ((String)localObject).replace("{uin_uin}", Uri.encode(paramView)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
-      localObject = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).setData(Uri.parse(paramView));
-      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject, 1000);
-      azqs.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
+      return new aenl();
     }
-    for (;;)
+  }
+  
+  static aenl a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "obtain FacePlayInfo:", paramString });
+    }
+    aenl localaenl = a();
+    localaenl.jdField_a_of_type_JavaLangString = paramString;
+    aoch localaoch = localaenl.a();
+    if (localaoch != null) {
+      localaoch.b();
+    }
+    localaenl.jdField_a_of_type_Aoch = aoch.a(paramQQAppInterface, String.valueOf(paramString), (byte)4);
+    localaenl.jdField_a_of_type_Boolean = false;
+    return localaenl;
+  }
+  
+  aoch a()
+  {
+    if (this.jdField_a_of_type_Aoch == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Aoch;
+  }
+  
+  void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.jdField_a_of_type_JavaLangString });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ??? = a();
+    if (??? != null) {
+      ((aoch)???).b();
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + paramView);
+      if (jdField_a_of_type_Int < 3)
+      {
+        this.b = jdField_a_of_type_Aenl;
+        jdField_a_of_type_Aenl = this;
       }
       return;
-      label358:
-      paramView = (View)localObject;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  boolean a(String paramString)
+  {
+    return (!this.jdField_a_of_type_Boolean) && (paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
   }
 }
 

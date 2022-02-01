@@ -1,34 +1,72 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class aikf
-  extends alwx
+public class aikf
+  extends aiiq
 {
-  aikf(aike paramaike) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public aikf(QQAppInterface paramQQAppInterface)
   {
-    if (aike.a(this.a) != null) {
-      aike.a(this.a).a(paramString1);
-    }
+    super(paramQQAppInterface);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  private static boolean a(List<String> paramList, String paramString)
   {
-    a(paramBoolean, paramString, paramLong, null);
+    if ((paramList != null) && (paramList.size() > 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (((String)paramList.next()).equals(paramString)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, alwu paramalwu)
+  public List<aike> a(String paramString, aijx paramaijx, SessionInfo paramSessionInfo)
   {
-    if (aike.a(this.a) != null) {
-      aike.a(this.a).a(paramString);
+    if ((paramaijx == null) || (!paramaijx.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return null;
+      localObject1 = paramaijx.jdField_a_of_type_JavaUtilList;
+    } while ((localObject1 == null) || (((List)localObject1).size() == 0));
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (aikd)((Iterator)localObject1).next();
+      if (a(((aikd)localObject2).jdField_a_of_type_JavaUtilList, paramString))
+      {
+        new aikc().a(this.a, paramSessionInfo, paramString);
+        if ((((aikd)localObject2).b != null) && (((aikd)localObject2).b.size() > 0))
+        {
+          localObject2 = ((aikd)localObject2).b.iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            localArrayList.add(new aike((aikb)((Iterator)localObject2).next(), paramSessionInfo, paramString));
+          }
+        }
+      }
     }
+    if (paramaijx.jdField_a_of_type_Int == 1) {
+      Collections.shuffle(localArrayList);
+    }
+    return localArrayList;
   }
   
-  public void b(String paramString)
+  public List<aike> a(String paramString, SessionInfo paramSessionInfo)
   {
-    if (aike.a(this.a) != null) {
-      aike.a(this.a).a(paramString);
-    }
+    return a(paramString, aijy.a(this.a.getApp(), this.a.c()), paramSessionInfo);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return true;
   }
 }
 

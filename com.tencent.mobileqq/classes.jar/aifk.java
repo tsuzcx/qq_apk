@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
 
 class aifk
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  aifk(aiez paramaiez) {}
+  private aifk(aidp paramaidp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.getIntent().removeExtra("if_check_account_same");
-    this.a.b.dismiss();
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      aidp.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    aidp.a(this.a, 1);
   }
 }
 

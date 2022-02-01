@@ -1,29 +1,63 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.content.Intent;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adob
-  implements awqz
+  extends WtloginObserver
 {
-  public adob(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adob(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramInt == 0) {
-      if (ProfileActivity.AllInOne.b(this.a.a))
-      {
-        paramInt = 1;
-        azqs.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
-        azqs.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
       }
-    }
-    while (paramInt != 2) {
-      for (;;)
+      asfr.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691793), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+      }
+      AuthDevOpenUgActivity.a(this.a, true, 0);
+      paramErrMsg = new Intent();
+      paramErrMsg.putExtra("auth_dev_open", true);
+      if (AuthDevOpenUgActivity.a(this.a) != null) {}
+      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
       {
+        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+        this.a.a(-1, paramErrMsg);
         return;
-        paramInt = 2;
       }
     }
-    azqs.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131691835), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if ((paramInt != 0) || (paramDevlockInfo == null))
+    {
+      QQToast.a(this.a, this.a.getString(2131691844), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
   }
 }
 

@@ -1,6 +1,6 @@
-public abstract interface azga
+class azga
 {
-  public abstract void a(Object paramObject, int paramInt, Object... paramVarArgs);
+  private static final azfy a = new azfy(null);
 }
 
 

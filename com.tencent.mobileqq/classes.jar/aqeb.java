@@ -1,6 +1,21 @@
-public abstract interface aqeb
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aqeb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  aqeb(aqdz paramaqdz) {}
+  
+  public void onClick(View paramView)
+  {
+    aqdv.a(this.a.a).setVisibility(8);
+    aqdv.a(this.a.a, null);
+    if (aqdv.a(this.a.a).getItemCount() == 0) {
+      aqdv.a(this.a.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,31 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
 public class lvb
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public lvb(RandomController paramRandomController) {}
+  WeakReference<RedPacketRollTextView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lvb(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    if (RandomController.a(this.a) == 1) {
-      azqs.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    this.a = new WeakReference(paramRedPacketRollTextView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      this.a.c();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        azqs.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
       }
-    }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvb
  * JD-Core Version:    0.7.0.1
  */

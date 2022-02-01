@@ -1,98 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
 
-public class beat
+public abstract class beat
 {
-  public static int a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
+  static final String TAG = "PreDownload.Task";
+  protected QQAppInterface app;
+  protected beaw ctrl;
+  public String key;
+  protected Handler subHandler;
+  public Object userData;
+  
+  protected beat(QQAppInterface paramQQAppInterface, String paramString)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramInt = localSharedPreferences.getInt(paramQQAppInterface, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramInt);
-    }
-    return paramInt;
+    this.key = paramString;
+    this.app = paramQQAppInterface;
+    this.ctrl = ((beaw)this.app.getManager(193));
+    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public static long a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
+  public final void cancel()
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramLong = localSharedPreferences.getLong(paramQQAppInterface, paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramLong);
-    }
-    return paramLong;
+    this.subHandler.post(new AbsPreDownloadTask.2(this));
   }
   
-  public static String a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
+  public abstract void realCancel();
+  
+  public abstract void realStart();
+  
+  public final void start()
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramString1 = localSharedPreferences.getString(paramQQAppInterface, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramString1);
-    }
-    return paramString1;
+    this.subHandler.post(new AbsPreDownloadTask.1(this));
   }
   
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
+  public String toString()
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putInt(paramQQAppInterface, paramInt).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putLong(paramQQAppInterface, paramLong).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.edit().putString(paramQQAppInterface, paramString2).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramString2);
-    }
-    return bool;
-  }
-  
-  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramBoolean = localSharedPreferences.getBoolean(paramQQAppInterface, paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramBoolean);
-    }
-    return paramBoolean;
-  }
-  
-  public static boolean b(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
-    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
-    paramBoolean = localSharedPreferences.edit().putBoolean(paramQQAppInterface, paramBoolean).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramBoolean);
-    }
-    return paramBoolean;
+    return super.toString() + "[" + this.key + "]";
   }
 }
 

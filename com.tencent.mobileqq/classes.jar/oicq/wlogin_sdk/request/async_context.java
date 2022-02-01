@@ -45,6 +45,7 @@ public class async_context
   public tlv_t17b _t17b = new tlv_t17b();
   public tlv_t402 _t402 = new tlv_t402();
   public tlv_t403 _t403 = new tlv_t403();
+  public byte[] _t542_data = new byte[0];
   public tlv_t543 _t543 = new tlv_t543();
   public tlv_t546 _t546 = new tlv_t546();
   public byte[] _tgtgt_key = new byte[16];

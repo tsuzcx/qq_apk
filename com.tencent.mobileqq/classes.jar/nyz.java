@@ -1,23 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nyz
-  implements nbs
+class nyz
+  implements View.OnClickListener
 {
-  public nyz(ReadInJoyFeedsActivity.1 param1) {}
+  nyz(nyy paramnyy) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    RIJRedPacketManager.a().a(paramView.getContext(), 2, 0, 0);
+    PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).b(2, PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.a.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nyz
  * JD-Core Version:    0.7.0.1
  */

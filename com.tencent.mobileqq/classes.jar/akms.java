@@ -1,118 +1,117 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class akms
-  extends akmm
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131693302 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130839330 };
-  private static final int[] c = { 2131370214 };
-  private alrk jdField_a_of_type_Alrk;
-  private int jdField_b_of_type_Int;
-  
-  public akms(QQAppInterface paramQQAppInterface, Context paramContext, awge paramawge, int paramInt)
+  public static int a(String paramString1, String paramString2, int paramInt)
   {
-    super(paramQQAppInterface, paramContext, paramawge);
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bibh = a(this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Alrk = ((alrk)paramQQAppInterface.getManager(53));
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    int i = paramInt;
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString2 + paramString1, paramInt);
     }
-    this.jdField_a_of_type_Int = 0;
+    return i;
   }
   
-  public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
+  public static long a(String paramString1, String paramString2, long paramLong)
   {
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof akmt)))
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    long l = paramLong;
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong(paramString2 + paramString1, paramLong);
+    }
+    return l;
+  }
+  
+  private static SharedPreferences a(String paramString)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences(paramString, 4);
+    }
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    String str = paramString3;
+    if (localSharedPreferences != null) {
+      str = localSharedPreferences.getString(paramString2 + paramString1, paramString3);
+    }
+    return str;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().remove(paramString2 + paramString1).apply();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt(paramString2 + paramString1, paramInt).commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong(paramString2 + paramString1, paramLong).commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putString(paramString2 + paramString1, paramString3).apply();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean(paramString2 + paramString1, paramBoolean).commit();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559028, null);
-      paramViewGroup = new akmt();
-      paramView = this.jdField_a_of_type_Bibh.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup, -1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377607));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
-      ((RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).leftMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131377609));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.g.setBackgroundResource(2130839217);
-      if (this.jdField_b_of_type_Int != 2) {
-        break label279;
-      }
-      localObject = (DiscussionInfo)this.jdField_a_of_type_Awge;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((DiscussionInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_a_of_type_Int = 101;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((DiscussionInfo)localObject).discussionName);
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(String.format("(%d)", new Object[] { Integer.valueOf(this.jdField_a_of_type_Alrk.a(((DiscussionInfo)localObject).uin)) }));
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166910));
-      a(paramView, paramInt2, paramViewGroup, paramOnClickListener);
-      return paramView;
-      paramViewGroup = (akmt)paramView.getTag();
-      break;
-      label279:
-      localObject = (TroopInfo)this.jdField_a_of_type_Awge;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((TroopInfo)localObject).troopuin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_a_of_type_Int = 4;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopName());
-      paramViewGroup.b.setVisibility(8);
-    }
-  }
-  
-  protected void a(int paramInt, bibj[] paramArrayOfbibj)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbibj.length < 0)
-      {
-        paramArrayOfbibj[0].jdField_b_of_type_Int = 0;
-        paramArrayOfbibj[0].jdField_a_of_type_Int = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbibj.length)
-      {
-        paramArrayOfbibj[paramInt].jdField_b_of_type_Int = -1;
-        paramArrayOfbibj[paramInt].jdField_a_of_type_Int = -1;
-        paramInt += 1;
+      long l1 = localSharedPreferences.getLong("F2FRedpack_EntryColorBeginTime" + paramString, 0L);
+      long l2 = localSharedPreferences.getLong("F2FRedpack_EntryColorEndTime" + paramString, 0L);
+      long l3 = NetConnInfoCenter.getServerTimeMillis();
+      if ((l3 > l1) && (l3 < l2)) {
+        return true;
       }
     }
+    return false;
   }
   
-  protected int[] a()
+  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    return c;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
-  }
-  
-  protected int[] c()
-  {
-    return jdField_b_of_type_ArrayOfInt;
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    boolean bool = paramBoolean;
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean(paramString2 + paramString1, paramBoolean);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akms
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ final class ApolloGameUtil$16
     {
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838379);
+        Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838478);
         localIntent.setFlags(337641472);
         ApolloGameUtil.a(localIntent, this.jdField_a_of_type_JavaLangString, localBitmap, null);
         return;
@@ -45,7 +45,7 @@ final class ApolloGameUtil$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.16
  * JD-Core Version:    0.7.0.1
  */

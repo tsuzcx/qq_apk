@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class aezr
-  implements afao
+  implements DialogInterface.OnDismissListener
 {
-  public aezr(DoodleLayout paramDoodleLayout) {}
+  public aezr(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
+    this.a.finish();
   }
 }
 

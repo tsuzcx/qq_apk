@@ -1,16 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimTipsInfo;
 
-final class akcu
-  implements DialogInterface.OnClickListener
+public class akcu
+  implements View.OnClickListener
 {
-  akcu(Context paramContext) {}
+  public akcu(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((Activity)this.a).finish();
+    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006710", "0X8006710", 0, 0, "", "", "", "");
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    blnc.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
+    String str = ContactListView.a(this.a).getAccount();
+    Bundle localBundle = new Bundle();
+    localBundle.putString(blmr.o, blmr.j);
+    localBundle.putInt(blmr.p, QQPimGetTipsInfoIPC.a().a.b);
+    localBundle.putString(blmr.l, str);
+    new blmx().a(ContactListView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

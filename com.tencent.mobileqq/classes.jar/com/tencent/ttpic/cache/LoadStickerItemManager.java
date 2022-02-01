@@ -193,10 +193,97 @@ public class LoadStickerItemManager
       this.mBitmapLazyLoad.reset();
     }
   }
+  
+  public void updateCache(String paramString)
+  {
+    int i = 0;
+    int k = 0;
+    if (this.mCache != null) {
+      this.mCache.clear();
+    }
+    if ((this.mImageTask != null) && (!this.mImageTask.isCancelled())) {
+      this.mImageTask.cancel(true);
+    }
+    if (this.mBitmapLazyLoad != null)
+    {
+      this.mBitmapLazyLoad.reset();
+      this.mBitmapLazyLoad.releaseBitmap();
+    }
+    if (this.mPreLoader != null) {
+      this.mPreLoader.reset();
+    }
+    if (this.loadType == LoadItemManager.LOAD_TYPE.LOAD_ALL) {
+      if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+      {
+        HashSet localHashSet = new HashSet();
+        ArrayList localArrayList = new ArrayList(this.item.frames);
+        if (this.item.markMode != 0)
+        {
+          i = 0;
+          int j;
+          for (;;)
+          {
+            j = k;
+            if (i > 10) {
+              break;
+            }
+            j = 0;
+            while (j < this.item.frames)
+            {
+              localArrayList.add(i + ".png");
+              j += 1;
+            }
+            i += 1;
+          }
+          while (j < this.item.frames)
+          {
+            localArrayList.add(this.item.id + "_" + j + "_x.png");
+            j += 1;
+          }
+        }
+        localHashSet.addAll(VideoFilterUtil.getAllPngFileNames(paramString + File.separator + this.item.subFolder));
+        while (i < this.item.frames)
+        {
+          localHashSet.add(this.item.id + "_" + i + ".png");
+          i += 1;
+        }
+        localArrayList.addAll(localHashSet);
+        Collections.sort(localArrayList, mPngComperator);
+        Log.i(this.TAG, "updateCache ALL LOAD:Load name:" + this.item.id + ",nums:" + localHashSet.size());
+        this.mImageTask = new LoadImageTask(this.mCache, localArrayList, paramString + File.separator + this.item.subFolder, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+      }
+    }
+    do
+    {
+      do
+      {
+        try
+        {
+          this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          LogUtils.e(paramString);
+          return;
+        }
+        if (this.loadType != LoadItemManager.LOAD_TYPE.LOAD_LAZY) {
+          break;
+        }
+        Log.i(this.TAG, "updateCache LOAD_LAZY:Load name:" + this.item.id);
+      } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+      this.mBitmapLazyLoad = new BitmapLoadCache(this.item.frames, paramString + File.separator + this.item.subFolder + File.separator + this.item.id + "_", 2);
+      this.mBitmapLazyLoad.preLoadImages();
+      return;
+    } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+    this.mPreLoader = new ImagePreLoader(this.mCache, paramString, this.item, 2);
+    ((ImagePreLoader)this.mPreLoader).setDIYMaterialId(VideoMaterialUtil.getMaterialId(this.dataPath));
+    this.mPreLoader.prepare();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadStickerItemManager
  * JD-Core Version:    0.7.0.1
  */

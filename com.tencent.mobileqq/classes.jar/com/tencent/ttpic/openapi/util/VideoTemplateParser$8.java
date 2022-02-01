@@ -1,19 +1,21 @@
 package com.tencent.ttpic.openapi.util;
 
-import android.util.Pair;
-import java.util.Comparator;
+import java.util.HashMap;
 
 final class VideoTemplateParser$8
-  implements Comparator<Pair<Float, Integer>>
+  extends HashMap<String, String>
 {
-  public int compare(Pair<Float, Integer> paramPair1, Pair<Float, Integer> paramPair2)
+  VideoTemplateParser$8()
   {
-    return ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
+    put("radius", "0.755");
+    put("positionX", "0");
+    put("positionY", "0.667");
+    put("positionZ", "0.057");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.8
  * JD-Core Version:    0.7.0.1
  */

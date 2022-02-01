@@ -1,159 +1,68 @@
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bazl
+  extends PagerAdapter
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord, String paramString)
-  {
-    int i = 2;
-    if ((paramInt == 9063) || (paramInt == 90632)) {
-      paramInt = 1;
-    }
-    int j;
-    do
-    {
-      do
-      {
-        return paramInt;
-        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
-          break;
-        }
-        if (paramInt != -9527) {
-          break label119;
-        }
-        j = a(paramString);
-        paramInt = i;
-      } while (j == 197);
-      if ((j != 202) && (j != 201)) {
-        break;
-      }
-      return 3;
-      if (paramInt != -9527) {
-        break;
-      }
-      j = a(paramString);
-      paramInt = i;
-    } while (j == 199);
-    if ((j == 206) || (j == 207)) {
-      return 3;
-    }
-    label119:
-    return -1;
-  }
+  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  private static int a(String paramString)
+  private bazl(ActionListActivity paramActionListActivity) {}
+  
+  public void a()
   {
-    int j = 0;
-    int i = j;
-    if (paramString != null)
-    {
-      paramString = paramString.split("_");
-      i = j;
-      if (paramString != null)
-      {
-        i = j;
-        if (paramString.length != 2) {}
-      }
-    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
     try
     {
-      i = Integer.parseInt(paramString[1]);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0;
-  }
-  
-  private static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-    case 2: 
-      return BaseApplicationImpl.getApplication().getResources().getString(2131690029);
-    }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131690028);
-  }
-  
-  public static String a(MessageForPic paramMessageForPic)
-  {
-    Object localObject2 = null;
-    int i;
-    try
-    {
-      String str = paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitError");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty(str)) {
-        break label155;
-      }
-      i = a(Integer.parseInt(str), paramMessageForPic, paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitErrorReason"));
-      if (i == 3)
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(str)) {
-          break label155;
-        }
-        long l1 = Long.parseLong(str);
-        long l2 = SystemClock.uptimeMillis();
-        if (orr.a(l1, l2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);
-          }
-          return a(i);
-        }
-        paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
-        paramMessageForPic.updateMsgExtFiled();
-        return null;
+        bbch localbbch = (bbch)localIterator.next();
+        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+        localGridView.setNumColumns(3);
+        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        localGridView.setSelector(new ColorDrawable(0));
+        localGridView.setScrollingCacheEnabled(false);
+        localGridView.setAdapter(new bazk(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localbbch.jdField_a_of_type_JavaUtilArrayList));
+        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
       }
-    }
-    catch (Exception paramMessageForPic)
-    {
-      paramMessageForPic.printStackTrace();
-      return null;
-    }
-    Object localObject1 = a(i);
-    label155:
-    return localObject1;
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, int paramInt, String paramString1, String paramString2)
-  {
-    if ((paramMessageRecord instanceof MessageForPic))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadExplicitError", 2, "uploadFailUpdateMsg,errCode:" + paramInt + " errStr:" + paramString1 + " uinType:" + paramMessageRecord.istroop + " msg:" + paramMessageRecord);
-      }
-      int i = a(paramInt, paramMessageRecord, paramString2);
-      if (i > 0)
-      {
-        if (i != 3) {
-          break label124;
-        }
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
-        paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
-      }
-    }
-    for (;;)
-    {
-      ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
       return;
-      label124:
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
-      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      System.gc();
+      super.notifyDataSetChanged();
+    }
+  }
+  
+  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup.addView(localGridView);
+    return localGridView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

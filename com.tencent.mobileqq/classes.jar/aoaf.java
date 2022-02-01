@@ -1,32 +1,24 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.automator.step.GetSig;
 
-final class aoaf
-  implements URLDrawableDownListener
+public class aoaf
+  extends anqd
 {
-  aoaf(URLImageView paramURLImageView) {}
+  private aoaf(GetSig paramGetSig) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void j(boolean paramBoolean)
   {
-    this.a.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.setVisibility(0);
+    GetSig localGetSig = this.a;
+    if (paramBoolean) {}
+    for (int i = 7;; i = 6)
+    {
+      localGetSig.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoaf
  * JD-Core Version:    0.7.0.1
  */

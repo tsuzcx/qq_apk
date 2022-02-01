@@ -1,24 +1,47 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
 public class bict
-  implements View.OnFocusChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bict(XPanelContainer paramXPanelContainer) {}
+  public bict(TabDragAnimationView paramTabDragAnimationView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    if (TabDragAnimationView.a(this.a) != null) {
+      return TabDragAnimationView.a(this.a).onDoubleTap(paramMotionEvent);
     }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    super.onLongPress(paramMotionEvent);
+    if (TabDragAnimationView.a(this.a) != null) {
+      TabDragAnimationView.a(this.a).onLongClick(this.a);
+    }
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (TabDragAnimationView.a(this.a) != null) {
+      TabDragAnimationView.a(this.a).onSingleTapConfirmed(paramMotionEvent);
+    }
+    ViewParent localViewParent = this.a.getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bict
  * JD-Core Version:    0.7.0.1
  */

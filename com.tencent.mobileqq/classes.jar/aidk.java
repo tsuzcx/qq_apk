@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aidk
-  implements Comparator<aidf>
+class aidk
+  implements aatt
 {
-  public aidk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aidk(aidf paramaidf) {}
   
-  public int a(aidf paramaidf1, aidf paramaidf2)
+  public void a()
   {
-    return paramaidf1.f.compareToIgnoreCase(paramaidf2.f);
+    axhf localaxhf = this.a.jdField_a_of_type_Axhf;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
+    for (int i = 8;; i = 6)
+    {
+      localaxhf.a(false, true, i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Axhf.a();
   }
 }
 

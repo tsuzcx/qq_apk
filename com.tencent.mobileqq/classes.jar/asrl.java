@@ -1,78 +1,37 @@
-import QC.BubbleInfo;
-import QC.BubbleRecommendRsp;
-import QC.ItemBase;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
 
 public class asrl
-  implements asru<BubbleRecommendRsp>
+  implements atxg
 {
-  public int a()
-  {
-    return 4;
-  }
+  public asrl(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public String a(Context paramContext)
-  {
-    return bdtg.a(paramContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab");
-  }
+  public void a() {}
   
-  public String a(FontBubble paramFontBubble)
-  {
-    return bdtg.a("bubblePreview").replace("[id]", Integer.toString(paramFontBubble.bubbleId));
-  }
+  public void a(boolean paramBoolean) {}
   
-  public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
+  public void b()
   {
-    int j = 0;
-    paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).a(paramQQAppInterface.getAccount());
-    int i;
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
-      i = 0;
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
+      return;
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_Athl != null)
     {
-      paramQQAppInterface = new ArrayList();
-      if (paramBubbleRecommendRsp.vItems == null) {
-        break;
-      }
-      paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
-      while (paramBubbleRecommendRsp.hasNext())
-      {
-        BubbleInfo localBubbleInfo = (BubbleInfo)paramBubbleRecommendRsp.next();
-        FontBubble localFontBubble = new FontBubble();
-        localFontBubble.viewType = 1;
-        localFontBubble.fontId = i;
-        localFontBubble.engine = j;
-        localFontBubble.bubbleId = localBubbleInfo.item.itemId;
-        localFontBubble.name = localBubbleInfo.name;
-        localFontBubble.feeType = localBubbleInfo.feeType;
-        localFontBubble.payUrl = localBubbleInfo.payUrl;
-        localFontBubble.title = localBubbleInfo.title;
-        localFontBubble.msg = localBubbleInfo.msg;
-        localFontBubble.btn = localBubbleInfo.btn;
-        localFontBubble.picUrl = localBubbleInfo.strPicUrl;
-        localFontBubble.panelType = 4;
-        paramQQAppInterface.add(localFontBubble);
-      }
-      i = (int)paramQQAppInterface.uVipFont;
-      j = paramQQAppInterface.vipFontType;
+      this.a.jdField_a_of_type_Athl.l = "3";
+      this.a.jdField_a_of_type_Athl.e = System.currentTimeMillis();
     }
-    return paramQQAppInterface;
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
   
-  public void a(amca paramamca)
-  {
-    paramamca.e();
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

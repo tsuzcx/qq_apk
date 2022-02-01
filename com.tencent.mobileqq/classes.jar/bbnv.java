@@ -1,34 +1,38 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbnv
-  implements TextWatcher
+  extends bbnh
 {
-  public bbnv(NewTroopContactView paramNewTroopContactView) {}
+  public String a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bbnv(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    }
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public bbnv(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(String paramString)
+  {
+    try
+    {
+      this.a = new JSONObject(paramString).optString("title");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 0, paramString.toString());
+    }
+  }
 }
 
 

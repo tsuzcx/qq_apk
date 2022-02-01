@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aqiu;
-import bdoo;
+import ason;
+import bgtn;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LabelLayout
@@ -36,40 +40,69 @@ public class LabelLayout
     setOrientation(0);
   }
   
-  public void setLabels(List<aqiu> paramList)
+  public int a(int paramInt1, List<ason> paramList, boolean paramBoolean, int paramInt2)
   {
-    if (paramList != null)
+    removeAllViews();
+    int j = bgtn.b(12.0F);
+    int k = bgtn.b(1.0F);
+    int m = bgtn.b(8.0F);
+    int n = bgtn.b(6.0F);
+    Object localObject = new Paint();
+    ((Paint)localObject).setTextSize(bgtn.b(paramInt2));
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    int i1 = paramList.size();
+    int i = 0;
+    ason localason;
+    if (i < i1)
     {
-      removeAllViews();
-      int j = bdoo.a(4.0F);
-      int k = bdoo.a(1.0F);
-      int m = bdoo.a(6.0F);
-      int n = bdoo.a(5.0F);
-      int i1 = bdoo.a(25.0F);
-      int i2 = paramList.size();
-      int i = 0;
-      while (i < i2)
+      localason = (ason)paramList.get(i);
+      if (TextUtils.isEmpty(localason.jdField_a_of_type_JavaLangCharSequence)) {
+        break label366;
+      }
+      int i2 = (int)(((Paint)localObject).measureText(localason.jdField_a_of_type_JavaLangCharSequence.toString()) + m * 2);
+      if (paramInt1 >= i2 + n)
       {
-        Object localObject = (aqiu)paramList.get(i);
-        LabelTextView localLabelTextView = new LabelTextView(getContext());
-        localLabelTextView.setParam(((aqiu)localObject).jdField_a_of_type_Int, ((aqiu)localObject).b, j);
-        localLabelTextView.setTextSize(12);
-        localLabelTextView.setText(((aqiu)localObject).jdField_a_of_type_JavaLangString);
-        localLabelTextView.setPadding(m, k, m, k);
-        localLabelTextView.setMinWidthCheck(i1);
+        localArrayList.add(localason);
+        paramInt1 = paramInt1 - i2 - n;
+      }
+    }
+    label366:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (i == 0) {
+        localArrayList.add(localason);
+      }
+      i = localArrayList.size();
+      paramInt1 = 0;
+      while (paramInt1 < i)
+      {
+        localObject = (ason)localArrayList.get(paramInt1);
+        paramList = new LabelTextView(getContext());
+        paramList.setParam(((ason)localObject).jdField_a_of_type_Int, ((ason)localObject).b, j);
+        paramList.setTextSize(paramInt2);
+        paramList.setText(((ason)localObject).jdField_a_of_type_JavaLangCharSequence);
+        paramList.setPadding(m, k, m, k);
         localObject = new LinearLayout.LayoutParams(-2, -2);
-        if (i != 0) {
+        if (paramInt1 != 0) {
           ((LinearLayout.LayoutParams)localObject).leftMargin = n;
         }
-        addView(localLabelTextView, (ViewGroup.LayoutParams)localObject);
-        i += 1;
+        addView(paramList, (ViewGroup.LayoutParams)localObject);
+        paramInt1 += 1;
       }
+      if (paramBoolean)
+      {
+        addView(new View(getContext()), 0, new LinearLayout.LayoutParams(0, 0, 1.0F));
+        addView(new View(getContext()), getChildCount(), new LinearLayout.LayoutParams(0, 0, 1.0F));
+      }
+      return localArrayList.size();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.LabelLayout
  * JD-Core Version:    0.7.0.1
  */

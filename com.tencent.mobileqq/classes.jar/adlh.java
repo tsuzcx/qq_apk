@@ -1,44 +1,48 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class adlh
-  implements CompoundButton.OnCheckedChangeListener
+  extends anmu
 {
-  public adlh(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlh(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if (AddRequestActivity.a(this.a))
     {
-      bhsc.a();
-      localQQAppInterface = this.a.app;
       if (!paramBoolean) {
-        break label81;
-      }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label87;
+        this.a.a(2130839571, this.a.getString(2131717746));
       }
     }
-    label81:
-    label87:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      azqs.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.c) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription(alud.a(2131708034));
-      }
+    else {
       return;
-      bhsc.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
     }
   }
 }

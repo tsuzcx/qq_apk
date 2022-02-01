@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-class acmu
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class acmu
+  implements DialogInterface.OnDismissListener
 {
-  acmu(acms paramacms, String paramString) {}
+  acmu(acml paramacml) {}
   
-  public void onClick(View paramView)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Acms.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    acml.a(this.a).b();
   }
 }
 

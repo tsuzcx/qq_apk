@@ -1,27 +1,20 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.widget.XPanelContainer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import mqq.os.MqqHandler;
 
 public class aeoh
-  extends amgd
+  implements View.OnTouchListener
 {
-  public aeoh(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public aeoh(LoginInfoActivity paramLoginInfoActivity, FrameLayout paramFrameLayout) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.e();
-    SendBirthdayWishesActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-    }
-    if (paramInt != 2)
-    {
-      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
-      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
-    }
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).removeMessages(20200313);
+    return false;
   }
 }
 

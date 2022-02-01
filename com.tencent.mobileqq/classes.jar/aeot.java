@@ -1,37 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeot
+class aeot
+  implements DialogInterface.OnClickListener
 {
-  public static BaseChatPie a()
-  {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
-    {
-      localObject = ((FragmentActivity)localObject).getChatFragment();
-      if (localObject != null) {
-        return ((ChatFragment)localObject).a();
-      }
-    }
-    return null;
-  }
+  aeot(aeos paramaeos) {}
   
-  public static boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    BaseChatPie localBaseChatPie = a();
-    if (localBaseChatPie != null) {
-      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    return a();
+    if ((paramInt == 1) && (this.a.a(aeos.a(this.a)))) {}
   }
 }
 

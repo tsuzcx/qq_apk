@@ -1,45 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class azjm
-  implements View.OnTouchListener
+public class azjm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  azjm(azjh paramazjh) {}
+  public azjm(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (azjh.a(this.a) == null);
-        paramView = azjh.a(this.a).getText().toString().trim();
-        bool1 = bool2;
-      } while (alud.a(2131713683).trim().equals(paramView));
-      azjh.a(this.a).setAlpha(0.5F);
-      return true;
-      if (azjh.a(this.a) != null) {
-        azjh.a(this.a).setAlpha(1.0F);
-      }
-      azjh.a(this.a, azjh.a(this.a));
-      azjh.b(this.a, System.currentTimeMillis());
-      bool1 = bool2;
-    } while (azjh.a(this.a) - azjh.b(this.a) < 300L);
-    azjh.a(this.a);
-    return true;
+    paramValueAnimator = (Rect)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramValueAnimator);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramValueAnimator);
   }
 }
 

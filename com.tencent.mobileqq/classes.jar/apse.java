@@ -1,6 +1,12 @@
-public abstract class apse
+import java.util.Set;
+
+public class apse
 {
-  public void a(int paramInt) {}
+  public long a;
+  public String a;
+  public Set<String> a;
+  public String b;
+  public String c;
 }
 
 

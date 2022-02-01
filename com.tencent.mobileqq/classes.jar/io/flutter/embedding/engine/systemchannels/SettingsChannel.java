@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.JSONMessageCodec;
@@ -28,7 +28,7 @@ public class SettingsChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.SettingsChannel
  * JD-Core Version:    0.7.0.1
  */

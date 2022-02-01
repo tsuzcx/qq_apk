@@ -1,10 +1,10 @@
 package cooperation.vip.ar.util;
 
 import android.text.TextUtils;
-import azqh;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Properties;
+import java.util.HashMap;
 
 public final class VipARUtils$5
   implements Runnable
@@ -20,9 +20,9 @@ public final class VipARUtils$5
     {
       if ((this.c != null) && (!TextUtils.isEmpty(this.c)))
       {
-        Properties localProperties = new Properties();
-        localProperties.put(this.b, this.c);
-        azqh.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.jdField_a_of_type_JavaLangString, localProperties, this.jdField_a_of_type_Int);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put(this.b, this.c);
+        bctj.a(BaseApplicationImpl.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
       }
       return;
     }
@@ -34,7 +34,7 @@ public final class VipARUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ar.util.VipARUtils.5
  * JD-Core Version:    0.7.0.1
  */

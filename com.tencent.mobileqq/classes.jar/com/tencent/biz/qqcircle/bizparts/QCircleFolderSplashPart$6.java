@@ -1,22 +1,22 @@
 package com.tencent.biz.qqcircle.bizparts;
 
 import com.tencent.qphone.base.util.QLog;
-import tsk;
+import vbk;
 
 public class QCircleFolderSplashPart$6
   implements Runnable
 {
-  public QCircleFolderSplashPart$6(tsk paramtsk) {}
+  public QCircleFolderSplashPart$6(vbk paramvbk) {}
   
   public void run()
   {
     QLog.d("QCircleFolderSplashPart", 4, "mDownloadAPacketRunnable run...");
-    tsk.c(this.this$0);
+    vbk.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.6
  * JD-Core Version:    0.7.0.1
  */

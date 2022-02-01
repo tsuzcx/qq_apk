@@ -1,44 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.LinearLayout;
 
-public class vds
-  extends QQUIEventReceiver<vdq, vdp>
+class vds
+  implements Animator.AnimatorListener
 {
-  public vds(vdq paramvdq)
+  vds(vdq paramvdq) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramvdq);
+    if (vdq.a(this.a) != null) {
+      vdq.a(this.a).setVisibility(8);
+    }
   }
   
-  public void a(@NonNull vdq paramvdq, @NonNull vdp paramvdp)
-  {
-    if (paramvdq.a()) {}
-    do
-    {
-      return;
-      if (paramvdp.jdField_a_of_type_Boolean)
-      {
-        vdq.a(paramvdq);
-        return;
-      }
-      if ((paramvdp.a() != null) && (!paramvdp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramvdp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    vdq.a(paramvdq);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public Class acceptEventClass()
-  {
-    return vdp.class;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vds
  * JD-Core Version:    0.7.0.1
  */

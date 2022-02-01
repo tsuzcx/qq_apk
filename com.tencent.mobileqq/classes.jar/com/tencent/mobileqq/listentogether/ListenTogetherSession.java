@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.listentogether;
 
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atmq;
-import atmr;
-import bapt;
+import anni;
+import avtp;
+import avtq;
+import bdrn;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListenTogetherSession
-  extends bapt
+  extends bdrn
   implements Parcelable
 {
-  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new atmq();
+  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new avtp();
   public int a;
   public String a;
   public List<MusicInfo> a;
@@ -82,7 +82,7 @@ public class ListenTogetherSession
   
   public String a(int paramInt1, int paramInt2)
   {
-    return atmr.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
+    return avtq.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
   }
   
   public void a(ListenTogetherSession paramListenTogetherSession)
@@ -118,13 +118,13 @@ public class ListenTogetherSession
     do
     {
       return i;
-      if (alud.a(2131693940).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (anni.a(2131693252).equals(this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (alud.a(2131693951).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (anni.a(2131693261).equals(this.jdField_a_of_type_JavaLangString)) {
         return 2;
       }
-    } while (alud.a(2131693970).equals(this.jdField_a_of_type_JavaLangString));
+    } while (anni.a(2131693273).equals(this.jdField_a_of_type_JavaLangString));
     return 4;
   }
   
@@ -179,7 +179,7 @@ public class ListenTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherSession
  * JD-Core Version:    0.7.0.1
  */

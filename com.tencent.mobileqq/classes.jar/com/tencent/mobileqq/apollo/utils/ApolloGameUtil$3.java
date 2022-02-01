@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
 import android.util.SparseArray;
-import awgf;
 import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 final class ApolloGameUtil$3
   implements Runnable
 {
-  ApolloGameUtil$3(awgf paramawgf) {}
+  ApolloGameUtil$3(EntityManager paramEntityManager) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ final class ApolloGameUtil$3
         if (this.a == null) {
           break label212;
         }
-        Object localObject1 = this.a.a(ApolloGameRedDot.class);
+        Object localObject1 = this.a.query(ApolloGameRedDot.class);
         localSparseArray = new SparseArray();
         Object localObject2;
         if (QLog.isColorLevel())
@@ -70,7 +70,7 @@ final class ApolloGameUtil$3
       }
       continue;
       label193:
-      this.a.b(localApolloGameRedDot);
+      this.a.remove(localApolloGameRedDot);
     }
     ApolloGameUtil.a = localSparseArray;
     return;
@@ -80,7 +80,7 @@ final class ApolloGameUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.3
  * JD-Core Version:    0.7.0.1
  */

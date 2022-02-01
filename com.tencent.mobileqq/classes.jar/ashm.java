@@ -1,23 +1,30 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import org.json.JSONObject;
 
-public class ashm
-  implements RadioGroup.OnCheckedChangeListener
+class ashm
+  implements MiniAppCmdInterface
 {
-  public ashm(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
+  ashm(ashl paramashl, ashn paramashn) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-    default: 
-      return;
-    case 2131380210: 
-      azmk.a(0);
+      paramJSONObject = paramJSONObject.opt("data");
+      if ((paramJSONObject instanceof MiniAppRecommInfo))
+      {
+        ashl.a(this.jdField_a_of_type_Ashl, (MiniAppRecommInfo)paramJSONObject);
+        this.jdField_a_of_type_Ashl.a(ashl.a(this.jdField_a_of_type_Ashl));
+        if (this.jdField_a_of_type_Ashn != null) {
+          this.jdField_a_of_type_Ashn.a(true, ashl.a(this.jdField_a_of_type_Ashl));
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Ashn == null) {
       return;
     }
-    azmk.a(1);
+    this.jdField_a_of_type_Ashn.a(false, null);
   }
 }
 

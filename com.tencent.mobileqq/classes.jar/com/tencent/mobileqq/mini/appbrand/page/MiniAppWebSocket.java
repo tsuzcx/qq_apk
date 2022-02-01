@@ -5,9 +5,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdin;
-import bdoo;
-import bjdm;
+import bgnt;
+import bgtn;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -106,7 +106,7 @@ public class MiniAppWebSocket
       JSONObject localJSONObject1 = new JSONObject();
       localJSONObject1.put("appId", this.mApkgInfo.appId);
       localJSONObject1.put("icon", this.mApkgInfo.iconUrl);
-      localJSONObject1.put("nickname", "testuser");
+      localJSONObject1.put("nickname", this.mApkgInfo.apkgName);
       JSONObject localJSONObject2 = new JSONObject(this.mApkgInfo.mConfigStr);
       localJSONObject2.put("appContactInfo", new JSONObject("{'operationInfo':{'jsonInfo':{'apiAvailable':{'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0}}}}"));
       localJSONObject2.remove("preload");
@@ -119,7 +119,7 @@ public class MiniAppWebSocket
           str1 = this.mApkgInfo.appConfig.config.getVerTypeStr();
         }
       }
-      str2 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + bjdm.a() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
+      str2 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + blru.a() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
       str1 = str2;
       if (Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mApkgInfo.appId + "_debug", false)).booleanValue()) {
         str1 = str2 + "__qqConfig.debug =true;";
@@ -142,9 +142,9 @@ public class MiniAppWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.3.5");
+      localJSONObject.put("qq_version", "8.4.1");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bdoo.a());
+      localJSONObject.put("screen_width", bgtn.a());
       localJSONObject.put("publib", AppLoaderFactory.getAppLoaderManager().getBaseLibInfo().baseLibVersion);
       return localJSONObject;
     }
@@ -209,7 +209,7 @@ public class MiniAppWebSocket
   
   int getNetworkType()
   {
-    int i = bdin.b(BaseApplicationImpl.getContext());
+    int i = bgnt.b(BaseApplicationImpl.getContext());
     if (i == 5) {
       return 1;
     }
@@ -341,7 +341,7 @@ public class MiniAppWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.MiniAppWebSocket
  * JD-Core Version:    0.7.0.1
  */

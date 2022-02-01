@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.support.v4.app.FragmentManager;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contacts.base.Contacts;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import oxp;
-import syb;
+import pmy;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public final class ReadinjoySPEventReport$2
   implements Runnable
@@ -23,14 +23,14 @@ public final class ReadinjoySPEventReport$2
   {
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
-    if (oxp.b(8))
+    if (pmy.b(8))
     {
       localArrayList = new ArrayList();
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
       localAttributeList.att_name.set("DTHasRed");
       PBStringField localPBStringField = localAttributeList.att_value;
-      if (!oxp.b()) {
+      if (!pmy.b()) {
         break label189;
       }
       localObject = String.valueOf(1);
@@ -62,8 +62,8 @@ public final class ReadinjoySPEventReport$2
         localAttributeList.att_name.set("tab");
         localAttributeList.att_value.set((String)localObject);
         localArrayList.add(localAttributeList);
-        syb.a(8, localArrayList);
-        oxp.b(System.currentTimeMillis());
+        tzo.a(8, localArrayList);
+        pmy.b(System.currentTimeMillis());
         return;
         label189:
         localObject = String.valueOf(0);

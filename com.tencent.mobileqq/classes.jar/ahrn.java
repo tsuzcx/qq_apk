@@ -1,25 +1,6 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
-
-class ahrn
-  implements View.OnLongClickListener
+public class ahrn
 {
-  private WeakReference<ahri> a;
-  
-  public ahrn(ahri paramahri)
-  {
-    this.a = new WeakReference(paramahri);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    ahri localahri = (ahri)this.a.get();
-    if (localahri != null) {
-      return localahri.onLongClick(paramView);
-    }
-    return false;
-  }
+  public static float a = 1.0F;
 }
 
 

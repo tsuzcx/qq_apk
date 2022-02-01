@@ -1,42 +1,49 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import qqcircle.QQCirclePrivateMsgShow.UserPMGiftInfo;
 
-class vjl
-  extends vim
+public class vjl
 {
-  vjl(vji paramvji, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  private static volatile vjl jdField_a_of_type_Vjl;
+  private ConcurrentHashMap<String, QQCirclePrivateMsgShow.UserPMGiftInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public boolean b()
+  public static vjl a()
   {
-    Object localObject = (String)a("result");
+    if (jdField_a_of_type_Vjl == null) {}
     try
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
+      if (jdField_a_of_type_Vjl == null) {
+        jdField_a_of_type_Vjl = new vjl();
+      }
+      return jdField_a_of_type_Vjl;
+    }
+    finally {}
+  }
+  
+  public QQCirclePrivateMsgShow.UserPMGiftInfo a(String paramString)
+  {
+    return (QQCirclePrivateMsgShow.UserPMGiftInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(List<QQCirclePrivateMsgShow.UserPMGiftInfo> paramList)
+  {
+    QLog.d("QCircleChatGiftManager", 1, "updateGiftInfo");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = (QQCirclePrivateMsgShow.UserPMGiftInfo)paramList.next();
+      if (localUserPMGiftInfo != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localUserPMGiftInfo.uid.get(), localUserPMGiftInfo);
       }
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      wxe.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjl
  * JD-Core Version:    0.7.0.1
  */

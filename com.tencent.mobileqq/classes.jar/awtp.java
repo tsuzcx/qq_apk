@@ -1,19 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
-public final class awtp
-  implements apuj
+public class awtp
 {
-  public List<apwv> a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new apwv(7, 7, null));
-    return localArrayList;
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtp
  * JD-Core Version:    0.7.0.1
  */

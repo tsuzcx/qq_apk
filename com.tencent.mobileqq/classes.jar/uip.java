@@ -1,73 +1,110 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.List;
+import UserGrowth.stSchema;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-class uip
-  extends SimpleObserver<List<uiz>>
+public class uip
+  implements uii
 {
-  uip(uio paramuio, ujn paramujn) {}
+  private stSchema jdField_a_of_type_UserGrowthStSchema;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
+  private MiniAppLauncher.MiniAppLaunchListener jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
+  private uih jdField_a_of_type_Uih;
+  private uir jdField_a_of_type_Uir;
+  private uos jdField_a_of_type_Uos;
+  private boolean jdField_a_of_type_Boolean;
+  private uir jdField_b_of_type_Uir;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void a(List<uiz> paramList)
+  public uip(Context paramContext)
   {
-    super.onNext(paramList);
-    uio.a(this.jdField_a_of_type_Uio, 0);
-    Object localObject = new uis();
-    ((uis)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
-    ((uis)localObject).jdField_a_of_type_JavaUtilList = paramList;
-    umc.a().dispatch((Dispatcher.Dispatchable)localObject);
-    if (!paramList.isEmpty()) {
-      uio.a(this.jdField_a_of_type_Uio, this.jdField_a_of_type_Ujn.a(), this.jdField_a_of_type_Ujn.b());
-    }
-    long l = System.currentTimeMillis() - uio.a(this.jdField_a_of_type_Uio);
-    String str = uio.a(paramList);
-    if (this.jdField_a_of_type_Ujn.a())
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Uir = new uis();
+    this.jdField_b_of_type_Uir = new uit();
+  }
+  
+  public stSchema a()
+  {
+    return this.jdField_a_of_type_UserGrowthStSchema;
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public WSDownloadParams a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
+  }
+  
+  public MiniAppLauncher.MiniAppLaunchListener a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
+  }
+  
+  public uih a()
+  {
+    return this.jdField_a_of_type_Uih;
+  }
+  
+  public uip a(stSchema paramstSchema)
+  {
+    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
+    return this;
+  }
+  
+  public uip a(WSDownloadParams paramWSDownloadParams)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramWSDownloadParams;
+    return this;
+  }
+  
+  public uip a(uih paramuih)
+  {
+    this.jdField_a_of_type_Uih = paramuih;
+    return this;
+  }
+  
+  public uip a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public uos a()
+  {
+    return this.jdField_a_of_type_Uos;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_UserGrowthStSchema == null))
     {
-      localObject = "2";
-      wxj.a("video_shoot_slides", "scan", 0, 0, new String[] { "", localObject, l + "" });
-      if (!this.jdField_a_of_type_Ujn.a()) {
-        break label271;
-      }
-    }
-    label271:
-    for (localObject = "2";; localObject = "1")
-    {
-      wxj.a("video_shoot_slides", "piece_smartalbum", 0, 0, new String[] { str, localObject, paramList.size() + "" });
-      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split success timecost=%s : ScanInfo =%s result=%s", new Object[] { Long.valueOf(l), this.jdField_a_of_type_Ujn, str });
-      uio.a(this.jdField_a_of_type_Uio, this.jdField_a_of_type_Ujn);
+      upe.d("WSStSchemaJumpManager", "[WSStSchemaJumpManager.java][processStSchemaClickAction] mContext:" + this.jdField_a_of_type_AndroidContentContext + ", mStSchema" + this.jdField_a_of_type_UserGrowthStSchema);
       return;
-      localObject = "1";
-      break;
+    }
+    if (this.jdField_b_of_type_Boolean) {}
+    for (Object localObject = this.jdField_a_of_type_Uir;; localObject = this.jdField_b_of_type_Uir)
+    {
+      localObject = ((uir)localObject).a(this);
+      if (localObject == null) {
+        break;
+      }
+      ((uig)localObject).a();
+      return;
     }
   }
   
-  public void onError(@NonNull Error paramError)
+  public boolean a()
   {
-    super.onError(paramError);
-    Object localObject = new uis();
-    ((uis)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = ((ErrorMessage)paramError);
-    ((uis)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
-    umc.a().dispatch((Dispatcher.Dispatchable)localObject);
-    uio.a(this.jdField_a_of_type_Uio, 0);
-    wxe.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split falied : " + paramError);
-    long l1 = System.currentTimeMillis();
-    long l2 = uio.a(this.jdField_a_of_type_Uio);
-    int i = ((ErrorMessage)paramError).errorCode;
-    localObject = ((ErrorMessage)paramError).errorMsg;
-    if (this.jdField_a_of_type_Ujn.a()) {}
-    for (paramError = "2";; paramError = "1")
-    {
-      wxj.a("video_shoot_slides", "scan", 0, i, new String[] { localObject, paramError, l1 - l2 + "" });
-      return;
-    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uip
  * JD-Core Version:    0.7.0.1
  */

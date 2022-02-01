@@ -1,15 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
-
-public class bcuv
-  implements baej
+public abstract class bcuv
 {
-  bcuv(bcur parambcur) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a()
-  {
-    this.a.a.post(new TroopGiftAnimationController.4.1(this));
-  }
+  public abstract String a();
 }
 
 

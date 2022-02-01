@@ -1,40 +1,21 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public class try
+class try
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  try(trw paramtrw, VVideoView paramVVideoView, View paramView) {}
   
-  public try(List<String> paramList, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int > 0) || ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0));
+    trw.a(this.jdField_a_of_type_Trw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     try
  * JD-Core Version:    0.7.0.1
  */

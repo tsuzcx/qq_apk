@@ -1,23 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 class yeo
-  implements View.OnClickListener
+  implements bhye
 {
-  yeo(yen paramyen, CertifiedAccountMeta.StFeed paramStFeed) {}
+  yeo(yen paramyen, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (((this.jdField_a_of_type_Yen.itemView instanceof RelativeFeedItemView)) && (yei.a(this.jdField_a_of_type_Yen.a) != null)) {
-      yei.a(this.jdField_a_of_type_Yen.a).a(this.jdField_a_of_type_Yen.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    }
+    yqp.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    wik.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yeo
  * JD-Core Version:    0.7.0.1
  */

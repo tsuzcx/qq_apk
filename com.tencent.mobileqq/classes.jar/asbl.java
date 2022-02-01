@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class asbl
-  implements View.OnClickListener
 {
-  asbl(asbj paramasbj) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onClick(View paramView)
-  {
-    asbj.a(this.a);
-  }
+  private asbl(asbi paramasbi) {}
 }
 
 

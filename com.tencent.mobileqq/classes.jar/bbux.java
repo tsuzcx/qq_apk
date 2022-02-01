@@ -1,53 +1,52 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+
 public class bbux
+  implements bbvf
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  public long h;
+  protected View a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bbvg jdField_a_of_type_Bbvg;
+  private List<bbvg> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public bbux()
+  public bbux() {}
+  
+  public bbux(ViewGroup paramViewGroup, int paramInt)
   {
-    a();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371277));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368751)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368757)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368763)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368769)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368770)));
+    this.jdField_a_of_type_Bbvg = new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368771));
   }
   
-  public void a()
+  public View a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.h = 0L;
-    this.jdField_g_of_type_Int = 0;
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bbvg> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

@@ -1,6 +1,21 @@
-public abstract interface algq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+
+public class algq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong, String paramString);
+  public algq(LoginView paramLoginView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

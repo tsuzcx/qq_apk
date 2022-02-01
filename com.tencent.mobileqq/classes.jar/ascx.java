@@ -1,23 +1,28 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1;
+import com.tencent.widget.AbsListView;
 
-class ascx
-  extends Handler
+public class ascx
+  implements bkhe
 {
-  ascx(ascq paramascq) {}
+  public ascx(SystemAndEmojiUniversalPanel.1.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, alud.a(2131705199), 0).a();
-    }
-    while (1 != paramMessage.what) {
+    SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, paramAbsListView);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) || (paramInt == 2))
+    {
+      URLDrawable.resume();
+      SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, this.a.jdField_a_of_type_JavaUtilList, SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0));
       return;
     }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    URLDrawable.pause();
   }
 }
 

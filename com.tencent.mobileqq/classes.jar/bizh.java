@@ -1,54 +1,45 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import com.tencent.gamecenter.appointment.GameCenterReceiver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.open.wadl.WadlConfigCenter.1;
+import java.util.HashMap;
 
 public class bizh
-  extends RemoteCommand
 {
-  public bizh()
+  private static volatile bizh jdField_a_of_type_Bizh;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private HashMap<String, bizf> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  private bizh()
   {
-    super("qqreader_plugin_asyn_cmd");
+    a();
+    GameCenterReceiver.a();
   }
   
-  private QQAppInterface a()
+  public static bizh a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    switch (paramBundle.getInt("CommondType"))
+    if (jdField_a_of_type_Bizh == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-    }
-    for (;;)
-    {
-      return null;
-      if (a() != null)
-      {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        syb.a(a(), a().getApp(), paramBundle, new bizi(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
+      if (jdField_a_of_type_Bizh == null) {
+        jdField_a_of_type_Bizh = new bizh();
       }
+      return jdField_a_of_type_Bizh;
     }
   }
   
-  public boolean isSynchronized()
+  public <T> T a(String paramString)
   {
-    return false;
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    ThreadManagerV2.excute(new WadlConfigCenter.1(this), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bizh
  * JD-Core Version:    0.7.0.1
  */

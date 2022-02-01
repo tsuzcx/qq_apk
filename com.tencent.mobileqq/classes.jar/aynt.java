@@ -1,18 +1,18 @@
 import android.view.View;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aynt
-  extends ayns
+class aynt
+  implements View.OnClickListener
 {
-  public abstract int a();
+  aynt(aynq paramaynq, AutoReplyText paramAutoReplyText) {}
   
-  public abstract String a();
-  
-  public abstract List<aynu> a();
-  
-  public abstract void a(View paramView);
-  
-  public abstract String b();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Aynq.a(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

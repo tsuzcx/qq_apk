@@ -1,56 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-public class odw
+public final class odw
+  implements Parcelable.Creator<RecentShopParcel>
 {
-  public static int a(int paramInt)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
-    case 13: 
-      return 3;
-    }
-    return 4;
+    return new RecentShopParcel(paramParcel);
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public RecentShopParcel[] a(int paramInt)
   {
-    if ((!szl.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
-    {
-      return;
-      if ((paramViewBase instanceof prf))
-      {
-        noy.a(new obk().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
-      {
-        noy.a(new obk().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      noy.a(new obk().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-      return;
-    }
-    noy.a(new obk().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+    return new RecentShopParcel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     odw
  * JD-Core Version:    0.7.0.1
  */

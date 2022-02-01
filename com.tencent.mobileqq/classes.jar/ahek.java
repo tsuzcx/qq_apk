@@ -1,73 +1,38 @@
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahek
-  implements Handler.Callback
+final class ahek
+  implements DialogInterface.OnClickListener
 {
-  public ahek(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  ahek(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    if (true == aheh.a) {
+      aheh.a = false;
     }
-    switch (paramMessage.arg2)
-    {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      break;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        break;
-      case 20: 
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131716033));
-        paramMessage = TroopMemberHistoryFragment.a(this.a).getContext().getResources();
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = aepi.a(320.0F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = aepi.a(177.5F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bayu.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bayu.a;
-        paramMessage = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/e4f73825907a4cdeb29db9c6688cd82c.png", (URLDrawable.URLDrawableOptions)localObject);
-        localObject = (ImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131377824);
-        ((ImageView)localObject).setImageDrawable(paramMessage);
-        ((ImageView)localObject).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        continue;
-        if ((paramMessage.obj instanceof List))
-        {
-          this.a.jdField_a_of_type_Aheo.a((List)paramMessage.obj);
-          this.a.jdField_a_of_type_Aheo.notifyDataSetChanged();
-        }
-        switch (paramMessage.arg1)
-        {
-        default: 
-          break;
-        case 20: 
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          continue;
-          if (paramMessage.arg1 == 20)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131698019);
-            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          }
-          break;
-        }
-        break;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
     }
+    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694492), "");
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      return;
+    }
+    bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718361), "");
+    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

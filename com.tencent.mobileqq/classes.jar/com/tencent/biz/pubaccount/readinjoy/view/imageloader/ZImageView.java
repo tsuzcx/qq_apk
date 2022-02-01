@@ -5,147 +5,100 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import biby;
+import bkpj;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import pdz;
-import sfd;
-import sfg;
-import sfm;
-import sfo;
-import sfp;
-import tpv;
+import puw;
+import pux;
+import tdt;
+import tdw;
+import ted;
+import tef;
+import teg;
+import uwv;
 
 public class ZImageView
   extends ImageView
 {
-  static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-1);
-  static int e = 300;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private String jdField_a_of_type_JavaLangString = "zimage.ZImageView.v" + hashCode();
-  private URL jdField_a_of_type_JavaNetURL;
-  protected sfd a;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
+  static int FADE_DURATION = 300;
+  static Drawable sColorDrawable = new ColorDrawable(-1);
+  private boolean hasSetAlphaBgDrawable;
+  private boolean isRound;
+  private ValueAnimator mAlphaAnimator;
+  private Drawable mBackgroundDrawableTemp;
+  protected tdt mController;
+  private URL mUrl;
+  private boolean startAplhaOnce;
+  private String tag = "zimage.ZImageView.v" + hashCode();
   
   public ZImageView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public ZImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public ZImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    this.jdField_a_of_type_Sfd = new sfd(jdField_a_of_type_AndroidGraphicsDrawableDrawable, this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(e);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new sfo(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new sfp(this));
+    this.mController = new tdt(sColorDrawable, this);
+    this.mAlphaAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
+    this.mAlphaAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.mAlphaAnimator.setDuration(FADE_DURATION);
+    this.mAlphaAnimator.addListener(new tef(this));
+    this.mAlphaAnimator.addUpdateListener(new teg(this));
   }
   
-  private void b()
+  private void resetBgDrawable()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Sfd.jdField_a_of_type_AndroidGraphicsDrawableDrawable != jdField_a_of_type_AndroidGraphicsDrawableDrawable))
+    if (this.hasSetAlphaBgDrawable)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getBackground();
-      setBackgroundDrawable(this.jdField_a_of_type_Sfd.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_b_of_type_Boolean = true;
+      setBackgroundDrawable(this.mBackgroundDrawableTemp);
+      this.hasSetAlphaBgDrawable = false;
       if (QLog.isColorLevel()) {
-        sfm.a(this.jdField_a_of_type_JavaLangString, "set alpha bg drawable !");
+        ted.a(this.tag, "cancel alpha bg drawable !");
       }
     }
   }
   
-  private void c()
+  private void setBgDrawable()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if ((!this.hasSetAlphaBgDrawable) && (this.mController.a != sColorDrawable))
     {
-      setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_b_of_type_Boolean = false;
+      this.mBackgroundDrawableTemp = getBackground();
+      setBackgroundDrawable(this.mController.a);
+      this.hasSetAlphaBgDrawable = true;
       if (QLog.isColorLevel()) {
-        sfm.a(this.jdField_a_of_type_JavaLangString, "cancel alpha bg drawable !");
+        ted.a(this.tag, "set alpha bg drawable !");
       }
     }
   }
   
-  public ZImageView a(Drawable paramDrawable)
+  public void doAlphaAnimationInNextDraw()
   {
-    this.jdField_a_of_type_JavaNetURL = null;
-    this.jdField_a_of_type_Sfd.a(paramDrawable);
-    return this;
-  }
-  
-  public ZImageView a(URL paramURL)
-  {
-    biby.a("ZImageView.setImage");
-    if (paramURL == null)
-    {
-      biby.a();
-      return this;
-    }
-    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.getPath().equals(paramURL.getPath()))) {
-      QLog.d("ZImageView", 2, "setImage | same");
-    }
-    this.jdField_a_of_type_JavaNetURL = null;
-    if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "setImage " + paramURL);
-    }
-    if (getWidth() > 0)
-    {
-      biby.a("ZImageView.newImageRequest");
-      sfg localsfg = new sfg();
-      localsfg.jdField_a_of_type_JavaNetURL = paramURL;
-      localsfg.jdField_a_of_type_Int = getWidth();
-      localsfg.b = getHeight();
-      pdz.a(1, localsfg);
-      this.jdField_a_of_type_Sfd.a(localsfg);
-      biby.a();
-    }
-    for (;;)
-    {
-      biby.a();
-      return this;
-      this.jdField_a_of_type_JavaNetURL = paramURL;
-    }
-  }
-  
-  public ZImageView a(sfg paramsfg, tpv paramtpv)
-  {
-    if ((paramsfg == null) || (paramsfg.jdField_a_of_type_JavaNetURL == null)) {
-      return this;
-    }
-    if (paramtpv != null) {
-      this.jdField_a_of_type_Sfd.a(paramtpv);
-    }
-    this.jdField_a_of_type_JavaNetURL = null;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setImageForImageCollection url = " + paramsfg.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramsfg.jdField_a_of_type_Int + " reqHeight = " + paramsfg.b);
-    }
-    this.jdField_a_of_type_Sfd.a(paramsfg);
-    return this;
+    this.startAplhaOnce = true;
+    this.mAlphaAnimator.cancel();
   }
   
   @Deprecated
-  public boolean a()
+  public boolean isRound()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.isRound;
   }
   
   protected void onAttachedToWindow()
@@ -161,8 +114,8 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "onAttachedToWindow, parent: " + (String)localObject);
-      this.jdField_a_of_type_Sfd.b("onAttachedToWindow");
+      ted.a(this.tag, "onAttachedToWindow, parent: " + (String)localObject);
+      this.mController.b("onAttachedToWindow");
       return;
     }
   }
@@ -171,24 +124,24 @@ public class ZImageView
   {
     super.onDetachedFromWindow();
     if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "onDetachedFromWindow");
+      ted.a(this.tag, "onDetachedFromWindow");
     }
-    this.jdField_a_of_type_Sfd.a("onDetachedFromWindow");
+    this.mController.a("onDetachedFromWindow");
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_JavaNetURL != null)
+    if (this.mUrl != null)
     {
       if (QLog.isColorLevel()) {
-        sfm.a(this.jdField_a_of_type_JavaLangString, "onDraw dispatch load image");
+        ted.a(this.tag, "onDraw dispatch load image");
       }
-      sfg localsfg = new sfg();
-      localsfg.jdField_a_of_type_JavaNetURL = this.jdField_a_of_type_JavaNetURL;
-      localsfg.jdField_a_of_type_Int = getWidth();
-      localsfg.b = getHeight();
-      this.jdField_a_of_type_Sfd.a(localsfg);
-      this.jdField_a_of_type_JavaNetURL = null;
+      tdw localtdw = new tdw();
+      localtdw.jdField_a_of_type_JavaNetURL = this.mUrl;
+      localtdw.jdField_a_of_type_Int = getWidth();
+      localtdw.b = getHeight();
+      this.mController.a(localtdw);
+      this.mUrl = null;
     }
     super.onDraw(paramCanvas);
   }
@@ -197,9 +150,9 @@ public class ZImageView
   {
     super.onFinishTemporaryDetach();
     if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "onFinishTemporaryDetach");
+      ted.a(this.tag, "onFinishTemporaryDetach");
     }
-    this.jdField_a_of_type_Sfd.b("onFinishTemporaryDetach");
+    this.mController.b("onFinishTemporaryDetach");
   }
   
   public void onStartTemporaryDetach()
@@ -215,41 +168,109 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "onStartTemporaryDetach, parent: " + (String)localObject);
-      this.jdField_a_of_type_Sfd.a("onStartTemporaryDetach");
+      ted.a(this.tag, "onStartTemporaryDetach, parent: " + (String)localObject);
+      this.mController.a("onStartTemporaryDetach");
       return;
     }
+  }
+  
+  public ZImageView setImage(URL paramURL)
+  {
+    bkpj.a("ZImageView.setImage");
+    if (paramURL == null)
+    {
+      bkpj.a();
+      return this;
+    }
+    if ((this.mUrl != null) && (this.mUrl.getPath().equals(paramURL.getPath()))) {
+      QLog.d("ZImageView", 2, "setImage | same");
+    }
+    this.mUrl = null;
+    if (QLog.isColorLevel())
+    {
+      boolean bool = false;
+      if (Build.VERSION.SDK_INT >= 19) {
+        bool = isAttachedToWindow();
+      }
+      ted.a(this.tag, "setImage " + paramURL + " width " + getWidth() + " isAttach " + bool);
+    }
+    if (getWidth() > 0)
+    {
+      bkpj.a("ZImageView.newImageRequest");
+      tdw localtdw = new tdw();
+      pux.a.a(localtdw, paramURL.toString());
+      localtdw.jdField_a_of_type_Int = getWidth();
+      localtdw.b = getHeight();
+      puw.a(1, localtdw);
+      this.mController.a(localtdw);
+      bkpj.a();
+    }
+    for (;;)
+    {
+      bkpj.a();
+      return this;
+      this.mUrl = paramURL;
+    }
+  }
+  
+  public void setImageDrawable(@Nullable Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
   }
   
   public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      b();
+      this.mAlphaAnimator.cancel();
+      setBgDrawable();
       setImageDrawable(paramDrawable);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.mAlphaAnimator.start();
       return;
     }
     setImageDrawable(paramDrawable);
   }
   
-  public void setPublicAccountImageDownListener(tpv paramtpv)
+  public ZImageView setImageForImageCollection(tdw paramtdw, uwv paramuwv)
   {
-    if (paramtpv != null) {
-      this.jdField_a_of_type_Sfd.a(paramtpv);
+    if ((paramtdw == null) || (paramtdw.jdField_a_of_type_JavaNetURL == null)) {
+      return this;
+    }
+    pux.a.a(paramtdw, paramtdw.jdField_a_of_type_JavaNetURL.toString());
+    if (paramuwv != null) {
+      this.mController.a(paramuwv);
+    }
+    this.mUrl = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.tag, 2, "setImageForImageCollection url = " + paramtdw.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramtdw.jdField_a_of_type_Int + " reqHeight = " + paramtdw.b);
+    }
+    this.mController.a(paramtdw);
+    return this;
+  }
+  
+  public ZImageView setImagePlaceHolder(Drawable paramDrawable)
+  {
+    this.mUrl = null;
+    this.mController.a(paramDrawable);
+    return this;
+  }
+  
+  public void setPublicAccountImageDownListener(uwv paramuwv)
+  {
+    if (paramuwv != null) {
+      this.mController.a(paramuwv);
     }
   }
   
   @Deprecated
   public void setRound(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.isRound = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView
  * JD-Core Version:    0.7.0.1
  */

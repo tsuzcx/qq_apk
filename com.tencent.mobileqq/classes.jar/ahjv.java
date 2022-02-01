@@ -1,13 +1,14 @@
-class ahjv
-  extends altm
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+
+public class ahjv
+  implements PopupWindow.OnDismissListener
 {
-  ahjv(ahjr paramahjr) {}
+  public ahjv(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onDismiss()
   {
-    if ((paramBoolean) && (ahjr.a(this.a) != null)) {
-      ahjr.a(this.a).a(String.valueOf(paramObject));
-    }
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 

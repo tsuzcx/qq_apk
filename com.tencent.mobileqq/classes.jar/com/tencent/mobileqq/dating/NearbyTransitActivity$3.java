@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import aluj;
+import anno;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
@@ -13,12 +13,12 @@ class NearbyTransitActivity$3
   public void run()
   {
     boolean bool = true;
-    aluj localaluj = (aluj)this.this$0.app.a(35);
+    anno localanno = (anno)this.this$0.app.a(35);
     Common.WifiPOIInfo localWifiPOIInfo = this.a;
     if (this.a.uint32_wifi_poi_type.get() == 1) {}
     for (;;)
     {
-      localaluj.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
+      localanno.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
       return;
       bool = false;
     }
@@ -26,7 +26,7 @@ class NearbyTransitActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyTransitActivity.3
  * JD-Core Version:    0.7.0.1
  */

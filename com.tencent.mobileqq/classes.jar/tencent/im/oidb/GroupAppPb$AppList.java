@@ -15,7 +15,7 @@ public final class GroupAppPb$AppList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.GroupAppPb.AppList
  * JD-Core Version:    0.7.0.1
  */

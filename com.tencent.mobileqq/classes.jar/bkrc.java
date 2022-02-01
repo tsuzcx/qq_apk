@@ -1,18 +1,23 @@
-import android.view.View;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface bkrc
+class bkrc
+  implements bkqz
 {
-  public abstract View a();
+  private final GestureDetector a;
   
-  public abstract void a(int paramInt, bkqp parambkqp, bkqo parambkqo);
+  public bkrc(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
+  }
   
-  public abstract View b();
-  
-  public abstract void b(int paramInt, bkqp parambkqp, bkqo parambkqo);
-  
-  public abstract View c();
-  
-  public abstract void c(int paramInt, bkqp parambkqp, bkqo parambkqo);
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

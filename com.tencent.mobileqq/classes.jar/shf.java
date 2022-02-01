@@ -1,42 +1,94 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class shf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnBusinessObserver;", "Lmqq/observer/BusinessObserver;", "dataManager", "Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;", "topicId", "", "rowKey", "(Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;Ljava/lang/String;Ljava/lang/String;)V", "getRowKey", "()Ljava/lang/String;", "getTopicId", "weakRef", "Ljava/lang/ref/WeakReference;", "addToDataManager", "", "json", "Lorg/json/JSONObject;", "onReceive", "type", "", "isSuccess", "", "bundle", "Landroid/os/Bundle;", "parseToJson", "byteArray", "", "removeRequest", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class shf
+  implements BusinessObserver
 {
-  public static CharSequence a(String paramString1, String paramString2, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private WeakReference<shg> jdField_a_of_type_JavaLangRefWeakReference;
+  @NotNull
+  private final String b;
+  
+  public shf(@NotNull shg paramshg, @NotNull String paramString1, @NotNull String paramString2)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
-    if (!TextUtils.isEmpty(paramString4)) {}
-    for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramshg);
+  }
+  
+  private final JSONObject a(byte[] paramArrayOfByte)
+  {
+    WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+    localWebSsoResponseBody.mergeFrom(paramArrayOfByte);
+    paramArrayOfByte = new JSONObject().put("data", new JSONObject(localWebSsoResponseBody.data.get())).put("retcode", localWebSsoResponseBody.ret.get()).put("cret", 0);
+    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "JSONObject()\n           …          .put(\"cret\", 0)");
+    return paramArrayOfByte;
+  }
+  
+  private final void a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      paramString4.setBounds(0, 0, xin.b(BaseApplicationImpl.getContext(), 17.0F), xin.b(BaseApplicationImpl.getContext(), 17.0F));
-      localObject = new SpannableStringBuilder();
-      SpannableString localSpannableString = new SpannableString(paramString1);
-      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
-      localSpannableString.setSpan(new AbsoluteSizeSpan(16, true), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(localSpannableString);
-      paramString1 = " " + paramString3;
-      paramString3 = new SpannableString(paramString1);
-      paramString3.setSpan(new xww(paramString4), 0, 1, 17);
-      paramString3.setSpan(new shg(-12084769, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(paramString3);
-      return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());
+      localObject = (shg)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((shg)localObject).a(paramString);
+      }
+    }
+  }
+  
+  private final void a(JSONObject paramJSONObject)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (shg)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((shg)localObject).a(this.jdField_a_of_type_JavaLangString, paramJSONObject);
+      }
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      if (paramBundle == null) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null) {
+          a(a(paramBundle));
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("VideoColumnDataManager", 1, "parse video column json error: " + paramBundle.getMessage());
+        continue;
+      }
+      a(this.jdField_a_of_type_JavaLangString);
+      return;
+      QLog.e("VideoColumnDataManager", 1, "request error, topicId: " + this.jdField_a_of_type_JavaLangString + ", rowKey: " + this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     shf
  * JD-Core Version:    0.7.0.1
  */

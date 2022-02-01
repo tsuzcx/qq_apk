@@ -1,32 +1,29 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-
 public class biaa
 {
-  public float a;
   public int a;
-  public BitmapDrawable a;
-  public Drawable a;
-  public URLDrawable a;
   public String a;
   public int b;
   public String b;
   public String c;
+  public String d;
+  public String e;
   
-  public biaa() {}
-  
-  public biaa(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", vid=").append(this.c);
+    localStringBuilder.append(", jumpUrl=").append(this.d);
+    localStringBuilder.append(", spiritImageUrl=").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biaa
  * JD-Core Version:    0.7.0.1
  */

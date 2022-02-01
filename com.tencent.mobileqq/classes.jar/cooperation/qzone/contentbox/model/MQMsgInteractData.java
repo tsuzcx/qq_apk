@@ -6,12 +6,15 @@ import NS_QZONE_MQMSG.MsgInteractData;
 import NS_QZONE_MQMSG.ShareInfo;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 public class MQMsgInteractData
   implements Serializable
 {
   public static final String TAG = "QZoneMsgManager.MQMsgInteractData";
+  public List<MQButtonCell> buttonInfos;
   public single_feed feed;
   public String jumpUrlToDetail = "";
   public MQLikeCell likeCell;
@@ -34,6 +37,7 @@ public class MQMsgInteractData
       localMQMsgInteractData.likeCell = MQLikeCell.parseFromJson(paramJSONObject.optJSONObject("likeCell"));
       localMQMsgInteractData.shareToFriend = MQShareCell.parseFromJson(paramJSONObject.optJSONObject("shareToFriend"));
       localMQMsgInteractData.shareToQzone = MQShareCell.parseFromJson(paramJSONObject.optJSONObject("shareToQzone"));
+      localMQMsgInteractData.buttonInfos = MQButtonCell.parseFromJsonArray(paramJSONObject.optJSONArray("buttonInfo"));
       return localMQMsgInteractData;
     }
     catch (Exception paramJSONObject)
@@ -55,6 +59,9 @@ public class MQMsgInteractData
     }
     localMQMsgInteractData.shareToFriend = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToFriend);
     localMQMsgInteractData.shareToQzone = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToQzone);
+    if ((paramMsgInteractData.vecButtonInfo != null) && (paramMsgInteractData.vecButtonInfo.size() > 0)) {
+      localMQMsgInteractData.buttonInfos = MQButtonCell.readFromList(paramMsgInteractData.vecButtonInfo);
+    }
     localMQMsgInteractData.feed = paramMsgInteractData.shareInfo.single_feed_data;
     return localMQMsgInteractData;
   }
@@ -70,6 +77,7 @@ public class MQMsgInteractData
       localJSONObject.put("likeCell", this.likeCell.convertToJson());
       localJSONObject.put("shareToFriend", this.shareToFriend.convertToJson());
       localJSONObject.put("shareToQzone", this.shareToQzone.convertToJson());
+      localJSONObject.put("buttonInfos", MQButtonCell.convertToJsonArray(this.buttonInfos));
       return localJSONObject;
     }
     catch (Exception localException)
@@ -81,7 +89,7 @@ public class MQMsgInteractData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsgInteractData
  * JD-Core Version:    0.7.0.1
  */

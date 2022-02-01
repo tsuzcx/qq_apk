@@ -1,84 +1,55 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class atas
-  implements atbg
+  implements aszc
 {
-  atas(atar paramatar) {}
+  atas(atar paramatar, String paramString, atbj paramatbj) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(int paramInt, String paramString)
   {
-    Intent localIntent = new Intent(atav.a(atar.a(this.a)));
-    localIntent.putExtra("key_state", paramInt);
-    switch (paramInt)
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
     {
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atar.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_Atar.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
       {
-        atar.a(this.a).sendBroadcast(localIntent);
-        return;
-        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[0]).longValue());
-        continue;
-        paramInt = ((Integer)paramVarArgs[0]).intValue();
-        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[1]).longValue());
-        localIntent.putExtra("key_progress", paramInt);
-        continue;
-        localIntent.putExtra("key_installedplugin", (InstalledPlugin)paramVarArgs[0]);
-        if (atav.a(atar.a(this.a)))
-        {
-          atbh.a("2691709");
-        }
-        else if (atav.b(atar.a(this.a)))
-        {
-          atbh.a("2597857");
-          continue;
-          localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
-          if (atav.a(atar.a(this.a)))
-          {
-            atbh.a("2691710");
-          }
-          else if (atav.b(atar.a(this.a)))
-          {
-            atbh.a("2597858");
-            continue;
-            if ("download".equals(atar.b(this.a)))
-            {
-              InstalledPlugin localInstalledPlugin = (InstalledPlugin)paramVarArgs[0];
-              boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
-              long l = ((Long)paramVarArgs[2]).longValue();
-              atar.a(this.a, localInstalledPlugin, bool, l);
-            }
-            if (atav.a(atar.a(this.a)))
-            {
-              atbh.a("2691703");
-            }
-            else if (atav.b(atar.a(this.a)))
-            {
-              atbh.a("2597720");
-              continue;
-              localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
-              if (atav.a(atar.a(this.a))) {
-                atbh.a("2691704");
-              } else if (atav.b(atar.a(this.a))) {
-                atbh.a("2597721");
-              }
-            }
-          }
-        }
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
       }
     }
-    atar.a(this.a);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Atar.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Atar.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Atar.d);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atar.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atar.f);
+    localBundle.putString("_m_ForwardUuid", paramString1);
+    localBundle.putString("_m_ForwardFileIdCrc", paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atar.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    }
+    this.jdField_a_of_type_Atbj.a(paramString1, localBundle);
   }
 }
 

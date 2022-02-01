@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.model;
 
-import aufn;
+import awmr;
 
 public class EmoticonManager$24
   implements Runnable
 {
-  public EmoticonManager$24(aufn paramaufn, int paramInt) {}
+  public EmoticonManager$24(awmr paramawmr, int paramInt) {}
   
   /* Error */
   public void run()
@@ -26,8 +26,8 @@ public class EmoticonManager$24
     //   25: aload 5
     //   27: astore 4
     //   29: aload_0
-    //   30: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
-    //   33: getfield 44	aufn:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   30: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Lawmr;
+    //   33: getfield 44	awmr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   36: ldc 46
     //   38: iconst_1
     //   39: aconst_null
@@ -210,14 +210,14 @@ public class EmoticonManager$24
     //   420: aload 5
     //   422: astore 4
     //   424: aload_0
-    //   425: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
-    //   428: getfield 137	aufn:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   425: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Lawmr;
+    //   428: getfield 137	awmr:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   431: ifnull +28 -> 459
     //   434: aload 5
     //   436: astore 4
     //   438: aload_0
-    //   439: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Laufn;
-    //   442: getfield 137	aufn:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   439: getfield 14	com/tencent/mobileqq/model/EmoticonManager$24:this$0	Lawmr;
+    //   442: getfield 137	awmr:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   445: new 139	com/tencent/mobileqq/model/EmoticonManager$24$1
     //   448: dup
     //   449: aload_0
@@ -338,7 +338,7 @@ public class EmoticonManager$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.24
  * JD-Core Version:    0.7.0.1
  */

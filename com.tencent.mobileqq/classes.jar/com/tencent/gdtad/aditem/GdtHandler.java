@@ -1,9 +1,10 @@
 package com.tencent.gdtad.aditem;
 
-import aasd;
-import aase;
-import aath;
-import aati;
+import acqx;
+import acqy;
+import acrk;
+import acsb;
+import acsc;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class GdtHandler
 {
-  private static AdClickUtil.Params a(GdtHandler.Params paramParams)
+  public static AdClickUtil.Params a(GdtHandler.Params paramParams)
   {
     WeakReference localWeakReference = null;
     if (paramParams == null) {
@@ -45,28 +46,30 @@ public class GdtHandler
     localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
     if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
     {
-      aase.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
+      acqy.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
       localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
     {
       localParams.videoPlayForced = paramParams.f;
+      localParams.halfScreenPageEnabled = paramParams.g;
       localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
       return localParams;
-      aase.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
+      acqy.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
     }
   }
   
   public static void a(GdtHandler.Params paramParams)
   {
-    aase.b("GdtHandler", "handle");
+    acqy.b("GdtHandler", "handle");
     ThreadManager.getSubThreadHandler().post(new GdtHandler.1(paramParams));
-    aath localaath = aath.a();
+    acsb localacsb = acsb.a();
     if ((paramParams != null) && (paramParams.a())) {}
     for (Activity localActivity = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
     {
-      localaath.a(localActivity, new aati());
+      localacsb.a(localActivity, new acsc());
       b(paramParams);
+      acrk.a(paramParams.jdField_a_of_type_OrgJsonJSONObject);
       return;
     }
   }
@@ -79,7 +82,7 @@ public class GdtHandler
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString);
-      aase.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
+      acqy.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
       paramString = localJSONObject1.getJSONObject("options");
       boolean bool1 = paramString.getBoolean("reportForClick");
       boolean bool2 = paramString.getBoolean("appAutoDownload");
@@ -106,14 +109,15 @@ public class GdtHandler
       paramOptions.e = bool5;
       paramOptions.jdField_a_of_type_AndroidGraphicsRect = localRect;
       paramOptions.f = paramString.optBoolean("videoPlayForced");
+      paramOptions.g = paramString.optBoolean("halfScreenPageEnabled");
       if (localJSONObject1.has("adInfo")) {
-        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
       }
       return true;
     }
     catch (Throwable paramOptions)
     {
-      aase.d("GdtHandler", "handleJsCallRequest error", paramOptions);
+      acqy.d("GdtHandler", "handleJsCallRequest error", paramOptions);
     }
     return false;
   }
@@ -129,12 +133,12 @@ public class GdtHandler
     if (paramParams != null) {
       i = paramParams.getErrorCode();
     }
-    aase.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
+    acqy.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler
  * JD-Core Version:    0.7.0.1
  */

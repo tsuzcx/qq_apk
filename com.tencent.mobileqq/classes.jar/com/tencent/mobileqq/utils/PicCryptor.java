@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import baub;
-import baud;
-import bdqa;
+import bdvs;
+import bdvt;
+import bgva;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.Cryptor;
@@ -14,11 +14,11 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 
 public class PicCryptor
-  implements baud
+  implements bdvt
 {
   private int jdField_a_of_type_Int;
   public long a;
-  public baub a;
+  public bdvs a;
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -44,7 +44,7 @@ public class PicCryptor
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_Baub.a.get("Range");
+    String str = (String)this.jdField_a_of_type_Bdvs.a.get("Range");
     if (!TextUtils.isEmpty(str))
     {
       str = str.replace("bytes=", "");
@@ -58,7 +58,7 @@ public class PicCryptor
   
   public static String a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = bdqa.a(paramArrayOfByte);
+    paramArrayOfByte = bgva.a(paramArrayOfByte);
     if (paramArrayOfByte == null) {
       throw new IllegalArgumentException("byte2Hex error, byte not null");
     }
@@ -74,7 +74,7 @@ public class PicCryptor
   
   public static byte[] a(String paramString)
   {
-    paramString = bdqa.a(paramString);
+    paramString = bgva.a(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("hex2byte error, hexStr length must even");
     }
@@ -149,11 +149,6 @@ public class PicCryptor
     this.jdField_e_of_type_ArrayOfByte = null;
     this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public boolean a()
-  {
-    return this.f == 2;
   }
   
   public byte[] a(byte[] paramArrayOfByte)
@@ -306,7 +301,7 @@ public class PicCryptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PicCryptor
  * JD-Core Version:    0.7.0.1
  */

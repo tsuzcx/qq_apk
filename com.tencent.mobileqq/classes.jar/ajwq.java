@@ -1,22 +1,36 @@
-public final class ajwq
-  implements ajwt
+import com.tencent.qphone.base.util.QLog;
+
+class ajwq
+  extends ayes
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  ajwq(ajvr paramajvr) {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
     }
-    return -paramInt1;
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
   }
 }
 

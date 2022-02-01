@@ -1,25 +1,20 @@
-import java.io.File;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
 
 public class basi
+  implements basn
 {
-  File a;
+  public basi(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
   
-  public basi(File paramFile)
+  public GLSurfaceView.EGLConfigChooser a()
   {
-    this.a = paramFile;
+    return new baso(this.a, true);
   }
   
-  basj a(String paramString)
+  public GLSurfaceView.EGLContextFactory a()
   {
-    return new basj(this, paramString);
-  }
-  
-  File a(String paramString)
-  {
-    if (!this.a.exists()) {
-      this.a.mkdirs();
-    }
-    return new File(this.a, paramString);
+    return new basj(this);
   }
 }
 

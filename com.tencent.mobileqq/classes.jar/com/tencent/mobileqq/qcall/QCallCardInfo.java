@@ -4,35 +4,35 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.OnClickListener;
-import awge;
-import awhp;
-import awhs;
-import axae;
-import axax;
-import bdnn;
+import azvt;
+import azwm;
+import bgsp;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 
 public class QCallCardInfo
-  extends awge
+  extends Entity
   implements Parcelable, Cloneable
 {
   public static final int CARD_BLACK = 2;
   public static final int CARD_FREE = 1;
-  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new axae();
+  public static final Parcelable.Creator<QCallCardInfo> CREATOR = new azvt();
   public static int HIDE = 1;
   public static final int NONE = 0;
   public static int SHOW;
   public String autoRemark;
   public int birthday;
-  @awhp
+  @notColumn
   public int card_type;
-  @awhp
+  @notColumn
   public int contact_qq_status;
-  @awhp
+  @notColumn
   public int freeStatus;
   public int gender;
   public int identity;
   public int in_use_flag;
-  @awhp
+  @notColumn
   public int isPopup;
   public int is_ever_pstn;
   public View.OnClickListener mOnClickListener;
@@ -43,9 +43,9 @@ public class QCallCardInfo
   public int phone_mask;
   public String phonenum;
   public int pre_recycle_flag;
-  @awhp
+  @notColumn
   public int pstn_freeStatus;
-  @awhp
+  @notColumn
   public int qid_qq_status;
   public String qq;
   @Deprecated
@@ -57,7 +57,7 @@ public class QCallCardInfo
   public String reg_ip;
   public int reg_time;
   public String remark;
-  @awhs
+  @unique
   public String uin;
   public int used_free_time;
   public int vip_all_free_time;
@@ -92,13 +92,13 @@ public class QCallCardInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ qid=").append(axax.a(this.uin));
-    localStringBuilder.append(",nickname=").append(bdnn.g(this.nickname));
+    localStringBuilder.append("[ qid=").append(azwm.a(this.uin));
+    localStringBuilder.append(",nickname=").append(bgsp.g(this.nickname));
     localStringBuilder.append(",in_use_flag=").append(this.in_use_flag);
-    localStringBuilder.append(",phoneNum=").append(axax.a(this.phonenum));
+    localStringBuilder.append(",phoneNum=").append(azwm.a(this.phonenum));
     localStringBuilder.append(",phone_mask=").append(this.phone_mask);
-    localStringBuilder.append(",qqUin=").append(axax.a(this.qq));
-    localStringBuilder.append(",qqUin2=").append(axax.a(this.qqUin2));
+    localStringBuilder.append(",qqUin=").append(azwm.a(this.qq));
+    localStringBuilder.append(",qqUin2=").append(azwm.a(this.qqUin2));
     localStringBuilder.append(",remark=").append(this.remark);
     localStringBuilder.append(",network=").append(this.netstatus);
     localStringBuilder.append(",autoRemark=").append(this.autoRemark);
@@ -161,7 +161,7 @@ public class QCallCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardInfo
  * JD-Core Version:    0.7.0.1
  */

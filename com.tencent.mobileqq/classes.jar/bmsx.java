@@ -1,22 +1,17 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-public class bmsx
+class bmsx
+  implements bmtn
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bmta parambmta)
-  {
-    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambmta, paramLong);
-  }
+  bmsx(bmsv parambmsv) {}
   
-  private static ValueAnimator a(ValueAnimator paramValueAnimator, bmta parambmta, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new bmsy(parambmta));
-    paramValueAnimator.addListener(new bmsz(parambmta, paramValueAnimator));
-    paramValueAnimator.setDuration(paramLong);
-    return paramValueAnimator;
+    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
+    bmsv.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      bmti.a().a(bmsv.a(this.a));
+    }
   }
 }
 

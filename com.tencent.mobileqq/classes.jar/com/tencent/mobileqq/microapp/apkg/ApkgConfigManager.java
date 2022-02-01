@@ -2,9 +2,9 @@ package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
 import Wallet.GetMiniAppReq;
-import aivh;
-import aixs;
-import ajeu;
+import akmf;
+import akpd;
+import akww;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.microapp.ext.ManagerProxy;
@@ -42,7 +42,7 @@ public class ApkgConfigManager
     if (LaunchParam.isCollectionPage(paramMiniAppConfig2.config.mini_appid)) {
       return true;
     }
-    return ajeu.c(paramMiniAppConfig1.config.union_id, paramMiniAppConfig2.config.union_id);
+    return akww.c(paramMiniAppConfig1.config.union_id, paramMiniAppConfig2.config.union_id);
   }
   
   public BaseLibInfo getBaseLibInfo()
@@ -52,15 +52,15 @@ public class ApkgConfigManager
     String str1;
     if (this.baseLibInfo == null)
     {
-      aixs localaixs = ManagerProxy.getQWalletConfigManager(this.mApp);
+      akpd localakpd = ManagerProxy.getQWalletConfigManager(this.mApp);
       str3 = "";
       str2 = "";
       str1 = "";
-      if (localaixs != null)
+      if (localakpd != null)
       {
-        str3 = localaixs.a("miniapp", "", new String[] { "base_lib_url" });
-        str2 = localaixs.a("miniapp", "", new String[] { "base_lib_key" });
-        str1 = localaixs.a("miniapp", "", new String[] { "base_lib_version" });
+        str3 = localakpd.a("miniapp", "", new String[] { "base_lib_url" });
+        str2 = localakpd.a("miniapp", "", new String[] { "base_lib_key" });
+        str1 = localakpd.a("miniapp", "", new String[] { "base_lib_version" });
       }
       if ((!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1))) {
         break label130;
@@ -96,7 +96,7 @@ public class ApkgConfigManager
     if (QLog.isColorLevel()) {
       QLog.d("ApkgConfigManager", 2, "getNewestConfig GetMiniAppReq|" + localGetMiniAppReq);
     }
-    aivh.a(localGetMiniAppReq, new c(this, parama, paramLaunchParam));
+    akmf.a(localGetMiniAppReq, new c(this, parama, paramLaunchParam));
   }
   
   public void onDestroy() {}
@@ -111,7 +111,7 @@ public class ApkgConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.ApkgConfigManager
  * JD-Core Version:    0.7.0.1
  */

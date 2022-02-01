@@ -1,67 +1,22 @@
-import android.view.View;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
 import com.tencent.qphone.base.util.QLog;
 
-public class ayqv
-  extends ayrm
+class ayqv
+  implements ayry
 {
-  private aypv jdField_a_of_type_Aypv;
-  private ayqe jdField_a_of_type_Ayqe;
-  private ayqr jdField_a_of_type_Ayqr;
-  private ayqx jdField_a_of_type_Ayqx;
+  ayqv(ayqu paramayqu) {}
   
-  public ayqv(bdbb parambdbb)
+  public void a(PoiBean paramPoiBean)
   {
-    super(parambdbb);
-    this.jdField_a_of_type_Ayqr = new ayqr(parambdbb);
-    this.jdField_a_of_type_Ayqe = new ayqe(parambdbb);
-    this.jdField_a_of_type_Aypv = new aypv(parambdbb, 268435456);
-  }
-  
-  public void b(aynu paramaynu, aywd paramaywd)
-  {
-    if ((!(paramaynu instanceof aynq)) && (!(paramaynu instanceof ayms))) {
-      QLog.e("MostUsedResultPresenter", 2, "unresolved model");
-    }
-    do
+    try
     {
-      return;
-      if ((paramaynu instanceof aynq))
-      {
-        localObject = (aynq)paramaynu;
-        int i = aypf.a(((aynq)localObject).e());
-        if (i == 2)
-        {
-          this.jdField_a_of_type_Ayqr.b(paramaynu, paramaywd);
-          return;
-        }
-        if (i == 1)
-        {
-          this.jdField_a_of_type_Ayqe.b(paramaynu, paramaywd);
-          return;
-        }
-        QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((aynq)localObject).e());
-        return;
-      }
-    } while (!(paramaynu instanceof ayms));
-    Object localObject = (ayms)paramaynu;
-    if (aypf.a(((ayms)localObject).e()) == 3)
-    {
-      this.jdField_a_of_type_Aypv.b(paramaynu, paramaywd);
+      this.a.a(paramPoiBean);
       return;
     }
-    QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((ayms)localObject).e());
-  }
-  
-  protected void c(aynu paramaynu, aywd paramaywd)
-  {
-    if (this.jdField_a_of_type_Ayqx != null)
+    catch (Throwable paramPoiBean)
     {
-      if (paramaywd.a() != null) {
-        paramaywd.a().setOnClickListener(new ayqw(this));
-      }
-      return;
+      QLog.e("LocationCategoryDetector", 1, "getPoiResultError", paramPoiBean);
     }
-    super.c(paramaynu, paramaywd);
   }
 }
 

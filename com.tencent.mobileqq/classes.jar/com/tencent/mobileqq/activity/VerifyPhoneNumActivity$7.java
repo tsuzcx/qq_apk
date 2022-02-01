@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import biau;
 
 class VerifyPhoneNumActivity$7
   implements Runnable
@@ -13,8 +13,8 @@ class VerifyPhoneNumActivity$7
     {
       if ((VerifyPhoneNumActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        VerifyPhoneNumActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        VerifyPhoneNumActivity.a(this.this$0).c(2131695090);
+        VerifyPhoneNumActivity.a(this.this$0, new biau(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        VerifyPhoneNumActivity.a(this.this$0).c(2131694158);
       }
       if ((VerifyPhoneNumActivity.a(this.this$0) != null) && (!VerifyPhoneNumActivity.a(this.this$0).isShowing())) {
         VerifyPhoneNumActivity.a(this.this$0).show();
@@ -32,7 +32,7 @@ class VerifyPhoneNumActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,23 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyLeakHelper.2.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class auvo
-  implements View.OnClickListener
+public class auvo
+  implements akse
 {
-  public void onClick(View paramView)
+  public auvo(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131707591) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("nearby-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new NearbyLeakHelper.2.1(this));
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvo
  * JD-Core Version:    0.7.0.1
  */

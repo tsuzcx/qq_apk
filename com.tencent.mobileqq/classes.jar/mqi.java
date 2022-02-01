@@ -1,20 +1,98 @@
-public abstract interface mqi
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class mqi
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  public int a;
+  ArrayList<mqg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  public abstract void a(String paramString);
+  public mqi()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
   
-  public abstract void g();
+  public int a()
+  {
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    {
+      k = j;
+      if (((mqg)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j;
+  }
   
-  public abstract void h();
+  public ArrayList<mqg> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
   
-  public abstract void i();
+  public mqg a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      mqg localmqg = (mqg)localIterator.next();
+      if (localmqg.a() == paramInt) {
+        return localmqg;
+      }
+    }
+    return null;
+  }
   
-  public abstract void j();
+  public void a(int paramInt)
+  {
+    b(a(paramInt));
+  }
+  
+  public void a(mqg parammqg)
+  {
+    if (parammqg == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parammqg);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public ArrayList<mqg> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((mqg)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void b(mqg parammqg)
+  {
+    if (parammqg == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parammqg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqi
  * JD-Core Version:    0.7.0.1
  */

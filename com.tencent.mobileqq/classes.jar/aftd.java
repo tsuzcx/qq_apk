@@ -1,17 +1,32 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class aftd
-  extends afuf
+public class aftd
+  implements BusinessObserver
 {
-  aftd(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftd(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new aflg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramInt == 2002)
+    {
+      if (paramBoolean) {}
+      try
+      {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
+      }
+      this.a.b(3, "system error");
+      return;
+    }
   }
 }
 

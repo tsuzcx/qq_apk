@@ -1,41 +1,45 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class altg
-  implements awdn
+public class altg
+  extends BroadcastReceiver
 {
-  private WeakReference<FrameHelperActivity> a;
+  public altg(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public altg(FrameHelperActivity paramFrameHelperActivity)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
-  
-  public void a()
-  {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity == null) {}
-    FragmentActivity localFragmentActivity;
-    QQAppInterface localQQAppInterface;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+      }
+    }
+    int i;
+    int j;
     do
     {
       do
       {
         return;
-        localFragmentActivity = localFrameHelperActivity.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
-      localQQAppInterface = localFragmentActivity.app;
-    } while ((!awia.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
-    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
-    azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     altg
  * JD-Core Version:    0.7.0.1
  */

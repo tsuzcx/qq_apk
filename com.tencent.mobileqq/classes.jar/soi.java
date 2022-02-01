@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.widget.AbsListView;
 
-public class soi
-  implements smr
+class soi
+  implements bkhe
 {
-  public soi(BridgeModule paramBridgeModule, String paramString) {}
+  soi(snh paramsnh) {}
   
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    this.a.g();
+    snh.b(this.a);
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soi
  * JD-Core Version:    0.7.0.1
  */

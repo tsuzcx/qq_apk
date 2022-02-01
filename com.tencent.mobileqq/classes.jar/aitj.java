@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aitj
-  implements DialogInterface.OnClickListener
+public class aitj
+  implements View.OnClickListener
 {
-  aitj(aitg paramaitg, Runnable paramRunnable) {}
+  public aitj(SearchContactsActivity paramSearchContactsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.setResult(0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,44 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
-class ygw
-  implements View.OnClickListener
+public class ygw
+  extends zpa
 {
-  ygw(ygq paramygq, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public static final String KEY = "MemoriesPlaceHolderSegment";
   
-  public void onClick(View paramView)
+  public ygw(Context paramContext)
   {
-    ygg.a(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  {
+    paramInt = zlx.d(this.a);
+    int i = zlx.e(this.a);
+    paramynb.a().getLayoutParams().height = (paramInt - i);
+    return paramynb.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ynb(LayoutInflater.from(this.a).inflate(2131561737, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ygw
  * JD-Core Version:    0.7.0.1
  */

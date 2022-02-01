@@ -1,51 +1,25 @@
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.dataline.activities.LiteActivity;
+import com.dataline.activities.LiteAdvanceActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
 public class as
-  implements bhuk
+  implements View.OnClickListener
 {
-  public as(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bhuf parambhuf) {}
+  public as(LiteActivity paramLiteActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.cancel();
-      return;
-      if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
-      {
-        paramView = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-        if (paramView.a(this.jdField_a_of_type_JavaUtilList))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
-          {
-            DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord))
-            {
-              localDataLineMsgRecord.bIsResendOrRecvFile = true;
-              localDataLineMsgRecord.fileMsgStatus = 0L;
-              localDataLineMsgRecord.progress = 0.0F;
-            }
-          }
-          this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
-        }
-        else
-        {
-          arri.a(2131694064);
-        }
-      }
-    }
+    afur.n = true;
+    bcti.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
+    Intent localIntent = new Intent(this.a, LiteAdvanceActivity.class);
+    localIntent.putExtra("targetUin", this.a.b);
+    this.a.startActivityForResult(localIntent, 7);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

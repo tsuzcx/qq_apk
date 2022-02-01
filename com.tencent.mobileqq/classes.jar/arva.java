@@ -1,25 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class arva
-  implements arrh
+public abstract interface arva
 {
-  public arva(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
-  {
-    QfileEditBottomBar.a(this.a).a().a(QfileEditBottomBar.a(this.a));
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    arbs.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).f(false);
-    QfileEditBottomBar.a(this.a).b();
-  }
-  
-  public void b() {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

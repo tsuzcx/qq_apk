@@ -1,53 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.PageParams;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class pkh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/dt/RIJDtParamBuilder;", "", "()V", "params", "Ljava/util/HashMap;", "", "addChannelID", "channelID", "", "addElementID", "id", "addRowkey", "rowkey", "build", "", "buildPageParams", "Lcom/tencent/qqlive/module/videoreport/PageParams;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pkh
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private final HashMap<String, Object> a = new HashMap();
+  
+  public pkh()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
-    localJSONObject1.put("id_small_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
-    localJSONObject1.put("id_small_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", localObject);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("small_video_duration", orc.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_small_video_duration", localObject);
-      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label186;
-      }
-      pkm.a(paramBaseArticleInfo, localJSONObject1);
-      pkm.b(paramBaseArticleInfo, localJSONObject1);
-    }
+    ((Map)this.a).put("dt_appkey", "00000T4FEU34A5O9");
+  }
+  
+  @NotNull
+  public final PageParams a()
+  {
+    return new PageParams((Map)this.a);
+  }
+  
+  @NotNull
+  public final Map<String, Object> a()
+  {
+    return (Map)this.a;
+  }
+  
+  @NotNull
+  public final pkh a(long paramLong)
+  {
+    ((Map)this.a).put("channel_id", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  @NotNull
+  public final pkh a(@Nullable String paramString)
+  {
+    Map localMap = (Map)this.a;
+    if (paramString != null) {}
     for (;;)
     {
-      pkm.l(paramBaseArticleInfo, localJSONObject1);
-      pkm.e(paramBaseArticleInfo, localJSONObject1);
-      pkm.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
-      pkm.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label186:
-      pkm.d(paramBaseArticleInfo, localJSONObject1);
+      localMap.put("rowkey", paramString);
+      return this;
+      paramString = "null";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pkh
  * JD-Core Version:    0.7.0.1
  */

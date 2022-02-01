@@ -1,178 +1,113 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.RemoteException;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class maf
+public abstract class maf
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  lza jdField_a_of_type_Lza = null;
-  mag jdField_a_of_type_Mag = null;
-  mah jdField_a_of_type_Mah = new mah(this);
-  
-  public maf(Context paramContext)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a(long paramLong, int paramInt)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return 0;
-      try
-      {
-        paramInt = this.jdField_a_of_type_Lza.a(paramLong, paramInt);
-        return paramInt;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
-    return 0;
-  }
-  
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return null;
-      try
-      {
-        paramArrayOfByte = this.jdField_a_of_type_Lza.a(paramArrayOfByte);
-        return paramArrayOfByte;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
-    return null;
-  }
-  
-  public void a()
-  {
-    b(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Mag = null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Lza == null)
-    {
-      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Mah, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "bindService result == " + bool);
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
+    if (paramVideoAppInterface == null) {
       return;
-      try
-      {
-        this.jdField_a_of_type_Lza.a(paramString);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
     }
-    do
-    {
+    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
+    ((lif)paramVideoAppInterface.a(11)).b();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
       return;
-      try
-      {
-        this.jdField_a_of_type_Lza.a(paramString, paramBitmap);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
-  }
-  
-  public void a(mag parammag)
-  {
-    this.jdField_a_of_type_Mag = parammag;
-    a(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
     }
-    do
-    {
+    ((lif)paramVideoAppInterface.a(11)).c();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
       return;
-      try
-      {
-        this.jdField_a_of_type_Lza.a(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
-  }
-  
-  public void b(Context paramContext)
-  {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Mah);
-    this.jdField_a_of_type_Lza = null;
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lza == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
     }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lza.c(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
+    ((lif)paramVideoAppInterface.a(11)).a(paramInt);
   }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lif)paramVideoAppInterface.a(11)).a(paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lif)paramVideoAppInterface.a(11)).d();
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     maf
  * JD-Core Version:    0.7.0.1
  */

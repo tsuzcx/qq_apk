@@ -1,21 +1,20 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qdm
-  extends CharacterStyle
+class qdm
+  implements ViewBase.OnClickListener
 {
-  public qdm(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
+  qdm(qdi paramqdi, pxk parampxk, Container paramContainer) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(aepi.a(2, 14, this.a.getResources()));
+    this.jdField_a_of_type_Qdi.a(this.jdField_a_of_type_Pxk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdm
  * JD-Core Version:    0.7.0.1
  */

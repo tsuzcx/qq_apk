@@ -1,34 +1,36 @@
-import android.text.Editable;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 import java.util.Comparator;
 
 public class okt
-  implements Comparator<BiuNicknameSpan>
+  implements Comparator<oky>
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
+  public okt(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public okt(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
+  public int a(oky paramoky1, oky paramoky2)
   {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
-  }
-  
-  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
-  {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
-    if (i > j) {
-      return 1;
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(oky.a(paramoky1)))
+    {
+      i = 2147483647;
+      if (!TextUtils.isEmpty(oky.a(paramoky2))) {
+        break label44;
+      }
     }
-    if (i < j) {
-      return -1;
+    for (;;)
+    {
+      return i - j;
+      i = oky.a(paramoky1).codePointAt(0);
+      break;
+      label44:
+      j = oky.a(paramoky2).codePointAt(0);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     okt
  * JD-Core Version:    0.7.0.1
  */

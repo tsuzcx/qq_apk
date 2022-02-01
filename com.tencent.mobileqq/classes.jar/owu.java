@@ -1,47 +1,39 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class owu
-  implements pgr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class owu
+  implements ViewBase.OnClickListener
 {
-  public owu(KandianSubscribeManager paramKandianSubscribeManager) {}
+  owu(pay parampay, pan parampan, Container paramContainer) {}
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public final void onClick(ViewBase paramViewBase)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageRecord localMessageRecord;
-    do
-    {
-      return;
-      localQQMessageFacade = localQQAppInterface.a();
-      localMessageRecord = localQQMessageFacade.b(alof.aR, 1008);
-    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
-    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageRecord.createMessageUniseq();
-    localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+    if (opu.a(this.jdField_a_of_type_Pay)) {
+      if ((this.jdField_a_of_type_Pay.a.advertisementInfo == null) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_Pay.a.advertisementInfo.mAdVideoUrl)) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_Pay.a.advertisementInfo.mAdViewId))) {
+        break label101;
+      }
     }
-    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
+    label101:
+    for (int i = 6;; i = 5)
+    {
+      paramViewBase = this.jdField_a_of_type_Pan.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, i);
+      return;
+    }
   }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     owu
  * JD-Core Version:    0.7.0.1
  */

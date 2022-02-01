@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+import kotlin.Metadata;
 
-public final class qnx
-  implements Parcelable.Creator<WeishiRedDotInfo>
-{
-  public WeishiRedDotInfo a(Parcel paramParcel)
-  {
-    return new WeishiRedDotInfo(paramParcel);
-  }
-  
-  public WeishiRedDotInfo[] a(int paramInt)
-  {
-    return new WeishiRedDotInfo[paramInt];
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLitePlayableCardView$Companion;", "", "()V", "ACTION_DESTROY", "", "ACTION_PAUSE", "ACTION_START", "ACTION_STOP", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qnx {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnx
  * JD-Core Version:    0.7.0.1
  */

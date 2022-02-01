@@ -1,16 +1,13 @@
+import com.tencent.common.app.BaseApplicationImpl;
+
 class aqry
-  extends aqty
+  implements bosh
 {
-  aqry(aqrv paramaqrv, aqsa paramaqsa) {}
+  aqry(aqrx paramaqrx) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void a(String paramString)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqsa.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aqsa.a(paramInt, paramString1);
+    bpye.a(BaseApplicationImpl.getContext(), paramString);
   }
 }
 

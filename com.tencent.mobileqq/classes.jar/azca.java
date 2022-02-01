@@ -1,89 +1,167 @@
-import QMF_PROTOCAL.QmfDownstream;
-import QzoneCombine.ClientOnlineNotfiyRsp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.WNSStream;
-import java.io.IOException;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.util.DisplayMetrics;
+import android.view.View;
+import java.util.ArrayList;
 
 public class azca
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private static final float jdField_c_of_type_Float = Resources.getSystem().getDisplayMetrics().density;
+  private float jdField_a_of_type_Float;
+  public int a;
+  private long jdField_a_of_type_Long;
+  public Context a;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  public View a;
+  private ArrayList<azbz> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private int jdField_c_of_type_Int;
+  private int d;
+  private int e;
+  
+  public static int a(int paramInt)
   {
-    if (paramFromServiceMsg == null) {
-      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
-    }
-    for (;;)
+    return Math.round(paramInt * jdField_c_of_type_Float);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
     {
+      int j = (int)(5.0D * Math.random());
+      azbz localazbz = azbz.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, j, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localazbz.jdField_a_of_type_Long = System.currentTimeMillis();
+      localazbz.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localazbz);
+      i += 1;
+    }
+    this.jdField_b_of_type_Int += paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = (paramInt2 * 3 / 8);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label192;
+    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 400L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_b_of_type_Int <= 5) {
+        a(1);
       }
-      Object localObject = new WNSStream();
-      paramFromServiceMsg = bdpd.b(paramFromServiceMsg.getWupBuffer());
-      try
+    }
+    int i = 0;
+    azbz localazbz;
+    float f1;
+    float f2;
+    if (i < this.jdField_b_of_type_Int)
+    {
+      localazbz = (azbz)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localazbz.e = ((float)(System.currentTimeMillis() - localazbz.jdField_a_of_type_Long) / 1000.0F);
+      f1 = localazbz.jdField_c_of_type_Float;
+      f2 = localazbz.e;
+      float f3 = localazbz.d;
+      float f4 = localazbz.e;
+      float f5 = a(400);
+      float f6 = localazbz.e;
+      float f7 = localazbz.e;
+      localazbz.jdField_a_of_type_ArrayOfFloat[0] = (f1 * f2 + this.jdField_a_of_type_Float);
+      localazbz.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f4 - 0.5F * f5 * f6 * f7));
+      if (localazbz.jdField_c_of_type_Int > 200)
       {
-        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
-        if (paramFromServiceMsg != null)
+        localazbz.jdField_c_of_type_Int -= 1;
+        label206:
+        if ((localazbz.jdField_c_of_type_Int < 0) || ((this.e > 0) && (localazbz.jdField_a_of_type_ArrayOfFloat[1] > this.e)))
         {
-          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bilr.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
-          if (paramFromServiceMsg != null)
-          {
-            localObject = paramFromServiceMsg.AttachInfo;
-            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
-            localObject = bdhe.a((byte[])localObject);
-            paramIntent = paramIntent.getStringExtra("key_uin");
-            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
-            }
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramFromServiceMsg.apply();
-              return;
-            }
+          localazbz.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
+          localazbz.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_b_of_type_Float;
+          localazbz.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+          localazbz.jdField_a_of_type_Long = System.currentTimeMillis();
+          localazbz.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 1.308996938995747D);
+          localazbz.jdField_b_of_type_Float = (a(90) + (float)Math.random() * a(50));
+          localazbz.jdField_c_of_type_Float = ((float)(localazbz.jdField_b_of_type_Float * Math.cos(localazbz.jdField_a_of_type_Double)));
+          localazbz.d = ((float)(localazbz.jdField_b_of_type_Float * Math.sin(localazbz.jdField_a_of_type_Double)));
+          localazbz.jdField_a_of_type_Float = ((float)Math.random() * a(18) - a(18));
+          int j = (int)(Math.random() * 5.0D);
+          Bitmap localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j];
+          localazbz.jdField_a_of_type_AndroidGraphicsBitmap = azbz.a(j, localazbz.jdField_a_of_type_Int, localazbz.jdField_b_of_type_Int, localBitmap);
+          if (j != 0) {
+            break label514;
           }
         }
       }
-      catch (IOException paramIntent)
+      label514:
+      for (localazbz.jdField_a_of_type_Int = afur.a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; localazbz.jdField_a_of_type_Int = afur.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
       {
-        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
-        return;
+        localazbz.jdField_b_of_type_Int = ((int)(localazbz.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / localazbz.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * localazbz.jdField_a_of_type_Int));
+        i += 1;
+        break;
+        localazbz.jdField_c_of_type_Int -= (int)(Math.random() * 5.0D + 26.0D);
+        break label206;
       }
     }
-    paramFromServiceMsg.commit();
-    return;
-    label192:
-    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
+    i = 0;
+    while (i < this.jdField_b_of_type_Int)
+    {
+      localazbz = (azbz)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localazbz.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_c_of_type_Int) && (localazbz.jdField_a_of_type_ArrayOfFloat[0] > 0.0F) && (localazbz.jdField_a_of_type_ArrayOfFloat[1] < this.d) && (localazbz.jdField_a_of_type_ArrayOfFloat[1] > 0.0F))
+      {
+        f1 = localazbz.jdField_a_of_type_Int * 1.0F / localazbz.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        f2 = localazbz.jdField_b_of_type_Int * 1.0F / localazbz.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localazbz.jdField_a_of_type_Int / 2 / f1, -localazbz.jdField_b_of_type_Int / 2 / f2);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localazbz.jdField_a_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localazbz.jdField_a_of_type_ArrayOfFloat[0] / f1, localazbz.jdField_a_of_type_ArrayOfFloat[1] / f2);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f2);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localazbz.jdField_c_of_type_Int);
+        paramCanvas.drawBitmap(localazbz.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      i += 1;
+    }
+    a();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void b()
   {
-    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
-    paramIntent = paramIntent.getStringExtra("key_uin");
-    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
-    byte[] arrayOfByte = bdhe.a(paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
-    }
-    bjcq localbjcq = new bjcq(l, arrayOfByte);
-    arrayOfByte = localbjcq.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
-    {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbjcq.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbjcq.uniKey());
-    paramPacket.putSendData(paramIntent);
+    this.jdField_a_of_type_Boolean = true;
+    a();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

@@ -1,201 +1,85 @@
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qbs
 {
-  public pgd a;
-  public pxt a;
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return qfg.a(paramArticleInfo);
-  }
-  
-  public static boolean a(pgd parampgd)
-  {
-    return (parampgd.a() == 49) || (parampgd.a() == 62) || (parampgd.a() == 63);
-  }
-  
-  public static boolean b(ArticleInfo paramArticleInfo)
-  {
-    return qfg.b(paramArticleInfo);
-  }
-  
-  public static boolean b(pgd parampgd)
-  {
-    return (parampgd.a() == 39) || (parampgd.a() == 116) || (parampgd.a() == 66) || (parampgd.a() == 115) || (parampgd.a() == 122);
-  }
-  
-  public static boolean c(ArticleInfo paramArticleInfo)
-  {
-    int i = rqj.c(paramArticleInfo);
-    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
-  }
-  
-  public static boolean c(pgd parampgd)
-  {
-    switch (parampgd.a())
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject;
+    int i;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-    default: 
-      return false;
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_double_image", localJSONObject2);
+      localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      qcd.a(paramBaseArticleInfo, localJSONObject1, true, "3");
+      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label292;
+      }
+      qcd.d(paramBaseArticleInfo, localJSONObject1);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
+      if (((AdvertisementInfo)paramBaseArticleInfo).mShowAdButton) {
+        localJSONObject1.put("id_view_AdDownloadView", localObject);
+      }
+      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
+        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
+        if (localObject != null) {
+          ((URLDrawable)localObject).startDownload();
+        }
+      }
+      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
+        break label275;
+      }
+      i = 1;
     }
-    return true;
-  }
-  
-  public static boolean d(pgd parampgd)
-  {
-    return parampgd.c() == 3;
-  }
-  
-  public static boolean e(pgd parampgd)
-  {
-    return parampgd.a() == 10;
-  }
-  
-  public static boolean f(pgd parampgd)
-  {
-    return parampgd.a() == 11;
-  }
-  
-  public static boolean g(pgd parampgd)
-  {
-    return parampgd.a() == 12;
-  }
-  
-  public static boolean h(pgd parampgd)
-  {
-    return parampgd.a() == 27;
-  }
-  
-  public static boolean i(pgd parampgd)
-  {
-    return parampgd.a() == 28;
-  }
-  
-  public static boolean j(pgd parampgd)
-  {
-    return qfg.b(parampgd.a());
-  }
-  
-  public static boolean k(pgd parampgd)
-  {
-    return qfg.a(parampgd.a());
-  }
-  
-  public int a()
-  {
-    if ((m()) && ((this.jdField_a_of_type_Pgd.a() instanceof AdvertisementInfo))) {
-      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Pgd.a());
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Pgd != null) && (this.jdField_a_of_type_Pgd.a() != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a != null)) {}
-    try
+    for (;;)
     {
-      long l = this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a.a;
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      localNumberFormatException.printStackTrace();
-      return 0L;
-    }
-    catch (Exception localException)
-    {
+      label220:
+      qcd.l(paramBaseArticleInfo, localJSONObject1);
+      qcd.e(paramBaseArticleInfo, localJSONObject1);
+      qcd.c(paramBaseArticleInfo, localJSONObject1);
+      oqj.b(paramBaseArticleInfo, localJSONObject1);
+      oqj.a(paramBaseArticleInfo, localJSONObject1);
+      oqj.c(paramBaseArticleInfo, localJSONObject1);
+      if (i != 0) {
+        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell_new_division");
+      }
       for (;;)
       {
-        localException.printStackTrace();
+        qcd.a(localJSONObject1, paramBaseArticleInfo);
+        return localJSONObject1;
+        localObject = null;
+        break;
+        label275:
+        i = 0;
+        break label220;
+        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell");
       }
+      label292:
+      i = 0;
     }
-  }
-  
-  public pgd a()
-  {
-    return this.jdField_a_of_type_Pgd;
-  }
-  
-  public void a(pgd parampgd)
-  {
-    this.jdField_a_of_type_Pgd = parampgd;
-  }
-  
-  public void a(pxt parampxt)
-  {
-    this.jdField_a_of_type_Pxt = parampxt;
-  }
-  
-  public boolean a()
-  {
-    return d(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean b()
-  {
-    return e(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean c()
-  {
-    return f(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean d()
-  {
-    return g(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean e()
-  {
-    return h(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean f()
-  {
-    return (this.jdField_a_of_type_Pgd.a() == 50) || (this.jdField_a_of_type_Pgd.a() == 51) || (this.jdField_a_of_type_Pgd.a() == 52);
-  }
-  
-  public boolean g()
-  {
-    return i(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean h()
-  {
-    return a(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean i()
-  {
-    return j(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean j()
-  {
-    return k(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean k()
-  {
-    return c(this.jdField_a_of_type_Pgd);
-  }
-  
-  public boolean l()
-  {
-    return this.jdField_a_of_type_Pgd.a() == 16;
-  }
-  
-  public boolean m()
-  {
-    return b(this.jdField_a_of_type_Pgd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qbs
  * JD-Core Version:    0.7.0.1
  */

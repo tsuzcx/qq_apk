@@ -1,71 +1,116 @@
-import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.QQLiveDrawable.OnStateListener;
+import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.NearbyOfficalReportHelper.1;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
+import mqq.app.AppRuntime;
 
 public class avsn
 {
-  public static avsn a = new avsn();
+  private static avsn jdField_a_of_type_Avsn;
+  public static boolean a;
+  private avso jdField_a_of_type_Avso;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = true;
+  }
   
   public static avsn a()
   {
-    return a;
+    if (jdField_a_of_type_Avsn == null) {
+      jdField_a_of_type_Avsn = new avsn();
+    }
+    return jdField_a_of_type_Avsn;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public static URLDrawable a(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManagerV2.excute(new NearbyOfficalReportHelper.1(this, paramQQAppInterface, paramString1, paramString2), 16, null, false);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = new arnj(-10065297, 100, 100);
+    localURLDrawableOptions.mFailedDrawable = new arnj(-10065297, 100, 100);
+    localURLDrawableOptions.mRequestHeight = paramInt2;
+    localURLDrawableOptions.mRequestWidth = paramInt1;
+    return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo)
+  public static URLDrawable a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt3, QQLiveDrawable.OnStateListener paramOnStateListener, URLDrawable paramURLDrawable)
   {
-    Object localObject = new avsp();
-    ((avsp)localObject).a(paramRedDotInfo);
-    if (((avsp)localObject).jdField_b_of_type_Boolean)
+    QQLiveDrawable.QQLiveDrawableParams localQQLiveDrawableParams = new QQLiveDrawable.QQLiveDrawableParams();
+    localQQLiveDrawableParams.mPreviewWidth = paramInt1;
+    localQQLiveDrawableParams.mPreviewHeight = paramInt2;
+    localQQLiveDrawableParams.mDataSourceType = 3;
+    localQQLiveDrawableParams.mDataSource = paramString1;
+    localQQLiveDrawableParams.mLoopback = paramBoolean1;
+    localQQLiveDrawableParams.mMute = paramBoolean2;
+    localQQLiveDrawableParams.mPlayPause = paramBoolean3;
+    localQQLiveDrawableParams.mStartPosi = paramInt3;
+    localQQLiveDrawableParams.mPlayType = 2;
+    localQQLiveDrawableParams.mListener = paramOnStateListener;
+    localQQLiveDrawableParams.msgUniseq = paramLong;
+    localQQLiveDrawableParams.mCoverUrl = ShortVideoUtils.a(paramString2).toString();
+    localQQLiveDrawableParams.mCoverLoadingDrawable = new arnj(-10065297, 100, 100);
+    localQQLiveDrawableParams.mReportTag = "bus_type_aio_light_bubble";
+    paramString1 = URLDrawable.URLDrawableOptions.obtain();
+    paramString1.mExtraInfo = localQQLiveDrawableParams;
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL().getPath().equals(paramString2))) {}
+    for (paramString1.mLoadingDrawable = paramURLDrawable;; paramString1.mLoadingDrawable = new arnj(-10065297, 100, 100))
     {
-      paramQQAppInterface = String.valueOf(auwq.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-      paramRedDotInfo = String.valueOf(((avsp)localObject).c);
-      localObject = String.valueOf(((avsp)localObject).jdField_b_of_type_Int);
-      azqs.b(null, "dc00899", "grp_lbs", "", "entry", "official_push_received", 0, 0, paramQQAppInterface, paramRedDotInfo, (String)localObject, "");
-      Log.i(" NearbyRecommend", "reportLebaRedDotReceive op_name = official_push_receivedd1 = " + paramQQAppInterface + " d2 = " + paramRedDotInfo + " d3 = " + (String)localObject);
+      paramString1.mRequestWidth = paramInt1;
+      paramString1.mRequestHeight = paramInt2;
+      return URLDrawable.getDrawable(ahhm.a(paramLong), paramString1);
     }
   }
   
-  public void a(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2)
+  public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    Object localObject = paramNearbyAppInterface.a().a();
-    String str;
-    if (((avsr)localObject).a > 1)
+    ChatMessage localChatMessage = MediaPlayerManager.a(paramQQAppInterface).a();
+    if (((localChatMessage == paramChatMessage) || (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == paramChatMessage.uniseq))) && (((MessageForLightVideo)paramChatMessage).videoStatus == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramNearbyAppInterface = "1";
-      if (((avsr)localObject).d <= 0) {
-        break label136;
+      if (bool) {
+        MediaPlayerManager.a(paramQQAppInterface).a(true);
       }
-      str = "1";
-      label33:
-      if (((avsr)localObject).c <= 0) {
-        break label143;
-      }
+      return bool;
     }
-    label136:
-    label143:
-    for (localObject = "1";; localObject = "0")
-    {
-      azqs.b(null, "dc00899", "grp_lbs", "", paramString1, paramString2, 0, 0, str, (String)localObject, "", paramNearbyAppInterface);
-      Log.i(" NearbyRecommend", "reportNearByRedDotEvent op_type = " + paramString1 + " op_name = " + paramString2 + " d1 = " + str + " d2 = " + (String)localObject + " d4 = " + paramNearbyAppInterface);
-      return;
-      paramNearbyAppInterface = "0";
-      break;
-      str = "0";
-      break label33;
+  }
+  
+  public void a(avso paramavso)
+  {
+    this.jdField_a_of_type_Avso = paramavso;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LightVideoPlayMgr", 2, "switchEarOrLoudspeaker:" + paramBoolean);
     }
+    jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Avso != null) {
+      this.jdField_a_of_type_Avso.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return MediaPlayerManager.a((QQAppInterface)localAppRuntime).b();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsn
  * JD-Core Version:    0.7.0.1
  */

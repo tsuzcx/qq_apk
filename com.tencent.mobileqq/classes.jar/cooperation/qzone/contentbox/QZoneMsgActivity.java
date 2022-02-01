@@ -1,9 +1,9 @@
 package cooperation.qzone.contentbox;
 
-import alud;
-import amor;
+import Override;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -12,34 +12,38 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bexc;
-import bill;
-import bjhn;
-import bjho;
-import bjqu;
-import bjqw;
-import bjqx;
+import anni;
+import aony;
+import biea;
+import bkyx;
+import blvt;
+import blvu;
+import bmfd;
+import bmfg;
+import bmfh;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import syb;
+import tzo;
 
 public class QZoneMsgActivity
   extends IphoneTitleBarActivity
-  implements bexc, bjqx
+  implements biea, bmfh
 {
-  amor jdField_a_of_type_Amor;
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
+  aony jdField_a_of_type_Aony;
   PlusMenuContainer jdField_a_of_type_CooperationQzoneContentboxPlusMenuContainer;
   
   public static void a(long paramLong, Context paramContext)
@@ -54,9 +58,9 @@ public class QZoneMsgActivity
   
   public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (bill.a(paramQQAppInterface))
+    if (bkyx.a(paramQQAppInterface))
     {
-      long l = bill.a();
+      long l = bkyx.a();
       if (l != 0L) {
         a(l, paramContext);
       }
@@ -92,30 +96,6 @@ public class QZoneMsgActivity
     }
   }
   
-  public void a(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 5: 
-      paramView = new Intent();
-      paramView.putExtra("need_finish", true);
-      paramView.putExtra("uin", "2290230341");
-      paramView.putExtra("uinname", alud.a(2131720579));
-      paramView.putExtra("uintype", 1008);
-      syb.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
-      return;
-    case 4: 
-      a();
-      b();
-      return;
-    }
-    onBackEvent();
-  }
-  
   public void b()
   {
     if ((this.jdField_a_of_type_CooperationQzoneContentboxPlusMenuContainer != null) && (!this.jdField_a_of_type_CooperationQzoneContentboxPlusMenuContainer.isShown()))
@@ -134,6 +114,14 @@ public class QZoneMsgActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -144,9 +132,9 @@ public class QZoneMsgActivity
     {
       if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof QZoneMsgFragment))
       {
-        bjhn localbjhn = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
-        if (localbjhn != null) {
-          localbjhn.a(paramInt1, paramInt2, paramIntent);
+        blvt localblvt = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
+        if (localblvt != null) {
+          localblvt.a(paramInt1, paramInt2, paramIntent);
         }
       }
       return;
@@ -167,43 +155,43 @@ public class QZoneMsgActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 2130849576;
+    int i = 2130850127;
     super.doOnCreate(paramBundle);
-    setContentView(2131562194);
-    setTitle(bjho.a(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131375863);
+    setContentView(2131562429);
+    setTitle(blvu.a(this));
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376599);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130849577;
+        i = 2130850128;
       }
       paramBundle = getDrawable(i);
       localNavBarCommon.setRightImage(paramBundle);
-      localNavBarCommon.setRightImageDesc(getString(2131696898));
+      localNavBarCommon.setRightImageDesc(getString(2131695720));
       localNavBarCommon.setOnItemSelectListener(this);
       this.jdField_a_of_type_AndroidSupportV4AppFragment = getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment");
       if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null) {
-        break label236;
+        break label233;
       }
       this.jdField_a_of_type_AndroidSupportV4AppFragment = new QZoneMsgFragment();
-      getSupportFragmentManager().beginTransaction().add(2131366799, this.jdField_a_of_type_AndroidSupportV4AppFragment, "QZoneMsgFragment").commit();
+      getSupportFragmentManager().beginTransaction().add(2131367067, this.jdField_a_of_type_AndroidSupportV4AppFragment, "QZoneMsgFragment").commit();
     }
     for (;;)
     {
-      bjqu.a().a(this);
+      bmfd.a().a(this);
       long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME_READ", 0L);
       QLog.d("[PhotoAlbum]QZoneMsgActivity", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME_READ lastUpdateTime:", Long.valueOf(l) });
-      bjqu.a().a().a(l);
-      this.jdField_a_of_type_Amor = new amor();
+      bmfd.a().a().a(l);
+      this.jdField_a_of_type_Aony = new aony();
       getWindow().setFlags(16777216, 16777216);
       return true;
       paramBundle = getResources();
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130849577;
+        i = 2130850128;
       }
       paramBundle = paramBundle.getDrawable(i);
       break;
-      label236:
+      label233:
       if (QLog.isColorLevel()) {
         QLog.i("QZoneMsgActivity", 2, "QZoneMsgFragment added");
       }
@@ -213,20 +201,51 @@ public class QZoneMsgActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bjqu.a().b(this);
-    this.jdField_a_of_type_Amor.a();
+    bmfd.a().b(this);
+    this.jdField_a_of_type_Aony.a();
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Amor.b();
+    this.jdField_a_of_type_Aony.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Amor.c();
+    this.jdField_a_of_type_Aony.c();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onItemSelect(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 5: 
+      paramView = new Intent();
+      paramView.putExtra("need_finish", true);
+      paramView.putExtra("uin", "2290230341");
+      paramView.putExtra("uinname", anni.a(2131718385));
+      paramView.putExtra("uintype", 1008);
+      tzo.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
+      return;
+    case 4: 
+      a();
+      b();
+      return;
+    }
+    onBackEvent();
   }
   
   public void onWebEvent(String paramString, Bundle paramBundle)
@@ -263,7 +282,7 @@ public class QZoneMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgActivity
  * JD-Core Version:    0.7.0.1
  */

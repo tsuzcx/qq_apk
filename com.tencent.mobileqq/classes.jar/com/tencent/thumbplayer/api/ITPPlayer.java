@@ -7,6 +7,8 @@ import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
+import com.tencent.thumbplayer.tplayer.plugins.ITPPluginBase;
+import com.tencent.thumbplayer.tplayer.plugins.ITPPluginManager;
 import java.util.Map;
 
 public abstract interface ITPPlayer
@@ -27,6 +29,8 @@ public abstract interface ITPPlayer
   
   public abstract void addAudioTrackSource(String paramString1, String paramString2, TPDownloadParamData paramTPDownloadParamData);
   
+  public abstract ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase);
+  
   public abstract void addSubtitleSource(@NonNull String paramString1, String paramString2, @NonNull String paramString3);
   
   public abstract void addSubtitleSource(@NonNull String paramString1, String paramString2, @NonNull String paramString3, TPDownloadParamData paramTPDownloadParamData);
@@ -40,6 +44,8 @@ public abstract interface ITPPlayer
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
+  
+  public abstract long getPlayableDurationMs();
   
   public abstract ITPPlayerProxy getPlayerProxy();
   
@@ -79,6 +85,8 @@ public abstract interface ITPPlayer
   
   public abstract void setAudioGainRatio(float paramFloat);
   
+  public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void setDataSource(ITPMediaAsset paramITPMediaAsset);
@@ -86,6 +94,8 @@ public abstract interface ITPPlayer
   public abstract void setDataSource(String paramString);
   
   public abstract void setDataSource(String paramString, Map<String, String> paramMap);
+  
+  public abstract void setIsActive(boolean paramBoolean);
   
   public abstract void setLoopback(boolean paramBoolean);
   
@@ -106,6 +116,8 @@ public abstract interface ITPPlayer
   public abstract void setOnSeekCompleteListener(ITPPlayerListener.IOnSeekCompleteListener paramIOnSeekCompleteListener);
   
   public abstract void setOnSubtitleDataListener(ITPPlayerListener.IOnSubtitleDataListener paramIOnSubtitleDataListener);
+  
+  public abstract void setOnSubtitleFrameOutListener(ITPPlayerListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener);
   
   public abstract void setOnVideoFrameOutListener(ITPPlayerListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener);
   
@@ -135,7 +147,7 @@ public abstract interface ITPPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.ITPPlayer
  * JD-Core Version:    0.7.0.1
  */

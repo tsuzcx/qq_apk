@@ -1,27 +1,45 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-class bhcj
-  implements AsyncResult
+public class bhcj
 {
-  bhcj(bhch parambhch, List paramList) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    if (paramBoolean)
+    String str2 = "";
+    String str1 = str2;
+    try
     {
-      QMLog.d("MiniProgramReporter", "performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
+      Object localObject = paramMessageRecord.extStr;
+      paramMessageRecord = str2;
+      str1 = str2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        str1 = str2;
+        localObject = new JSONObject((String)localObject);
+        str1 = str2;
+        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
+        paramMessageRecord = str2;
+        str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        }
+      }
+      return paramMessageRecord;
     }
-    QMLog.e("MiniProgramReporter", "performDataReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bhch.b(this.jdField_a_of_type_JavaUtilList);
+    catch (Throwable paramMessageRecord)
+    {
+      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
+    }
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcj
  * JD-Core Version:    0.7.0.1
  */

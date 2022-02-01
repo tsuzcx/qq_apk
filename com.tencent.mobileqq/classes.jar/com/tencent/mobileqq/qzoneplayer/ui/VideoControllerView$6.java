@@ -9,6 +9,7 @@ import com.tencent.oskplayer.PlayerConfig;
 import com.tencent.oskplayer.model.PlayerCallBack;
 import com.tencent.oskplayer.report.IVideoReporter;
 import com.tencent.oskplayer.util.PlayerUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -103,27 +104,31 @@ class VideoControllerView$6
     if (VideoControllerView.access$200(this.this$0) != null) {
       VideoControllerView.access$200(this.this$0).onStopTrackingTouch(paramSeekBar);
     }
-    if (!this.this$0.isShowing()) {
-      break label33;
-    }
-    label33:
-    while (this.this$0.mPlayer == null) {
-      return;
-    }
-    VideoControllerView.access$302(this.this$0, false);
-    if (this.mDestProgress >= this.mStartProgress)
+    if (!this.this$0.isShowing()) {}
+    for (;;)
     {
-      if (!this.this$0.mPlayer.canSeekForward())
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      if (this.this$0.mPlayer != null)
       {
-        this.this$0.mProgress.setProgress(this.mStartProgress);
-        PlayerUtils.log(5, "VideoControllerView", "seekforward is not possible");
+        VideoControllerView.access$302(this.this$0, false);
+        if (this.mDestProgress >= this.mStartProgress)
+        {
+          if (this.this$0.mPlayer.canSeekForward()) {
+            break;
+          }
+          this.this$0.mProgress.setProgress(this.mStartProgress);
+          PlayerUtils.log(5, "VideoControllerView", "seekforward is not possible");
+        }
+        else
+        {
+          if (this.this$0.mPlayer.canSeekBackward()) {
+            break;
+          }
+          this.this$0.mProgress.setProgress(this.mStartProgress);
+          PlayerUtils.log(5, "VideoControllerView", "seekbackward is not possible");
+        }
       }
-    }
-    else if (!this.this$0.mPlayer.canSeekBackward())
-    {
-      this.this$0.mProgress.setProgress(this.mStartProgress);
-      PlayerUtils.log(5, "VideoControllerView", "seekbackward is not possible");
-      return;
     }
     int i = this.this$0.mPlayer.getDuration();
     if (i > 0) {
@@ -148,9 +153,9 @@ class VideoControllerView$6
           this.this$0.mProgress.setProgress(i);
           l1 = l2;
         }
-        label288:
+        label299:
         if ((VideoControllerView.access$400(this.this$0) < 0) || (l1 < VideoControllerView.access$400(this.this$0))) {
-          break label462;
+          break label479;
         }
         this.this$0.mPlayer.seekTo(0);
         this.this$0.mPlayer.pause();
@@ -163,23 +168,23 @@ class VideoControllerView$6
       this.this$0.show(VideoControllerView.sDefaultTimeout);
       this.this$0.mHandler.removeMessages(2);
       this.this$0.mHandler.sendEmptyMessage(2);
-      paramSeekBar = PlayerConfig.g().getCallbacks();
-      if (paramSeekBar == null) {
+      localObject = PlayerConfig.g().getCallbacks();
+      if (localObject == null) {
         break;
       }
-      paramSeekBar = paramSeekBar.iterator();
-      while (paramSeekBar.hasNext())
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = (PlayerCallBack)paramSeekBar.next();
-        ((PlayerCallBack)localObject).onMediaEvent((PlayerCallBack)localObject, PlayerCallBack.EVENT_SEEK_BAR_STOP_SEEK, null, null);
+        PlayerCallBack localPlayerCallBack = (PlayerCallBack)((Iterator)localObject).next();
+        localPlayerCallBack.onMediaEvent(localPlayerCallBack, PlayerCallBack.EVENT_SEEK_BAR_STOP_SEEK, null, null);
       }
-      break label33;
+      break;
       l1 = i;
-      break label288;
+      break label299;
       l1 = i;
       l1 = j * l1 / 1000L;
-      break label288;
-      label462:
+      break label299;
+      label479:
       this.this$0.mPlayer.seekTo((int)l1);
       if (VideoControllerView.access$100(this.this$0) != null) {
         VideoControllerView.access$100(this.this$0).setText(this.this$0.mPlayer.time2str((int)l1));
@@ -189,7 +194,7 @@ class VideoControllerView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.VideoControllerView.6
  * JD-Core Version:    0.7.0.1
  */

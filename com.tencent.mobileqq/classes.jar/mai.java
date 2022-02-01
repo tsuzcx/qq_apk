@@ -1,23 +1,77 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
-public final class mai
-  implements Parcelable.Creator<RecvGVideoLevelInfo>
+public class mai
+  extends maj
 {
-  public RecvGVideoLevelInfo a(Parcel paramParcel)
+  WeakReference<View.OnClickListener> a = null;
+  int f = 0;
+  int g = 0;
+  int h = -1;
+  int i = -1;
+  int j = -1;
+  
+  public mai(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    return new RecvGVideoLevelInfo(paramParcel);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.f = paramInt5;
+    this.g = paramInt6;
+    if (paramOnClickListener != null) {
+      this.a = new WeakReference(paramOnClickListener);
+    }
   }
   
-  public RecvGVideoLevelInfo[] a(int paramInt)
+  public int a()
   {
-    return new RecvGVideoLevelInfo[paramInt];
+    return 3;
+  }
+  
+  public View.OnClickListener a()
+  {
+    if ((this.a == null) || (this.a.isEnqueued())) {
+      return null;
+    }
+    return (View.OnClickListener)this.a.get();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null)
+    {
+      this.a = new WeakReference(paramOnClickListener);
+      return;
+    }
+    this.a = null;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,33 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajmf
-  extends ajlr
+  implements bkhw
 {
-  public ajmf(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699985);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public ajmf(ContactsTroopAdapter paramContactsTroopAdapter, boolean paramBoolean, TroopInfo paramTroopInfo, bkho parambkho) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if (!bgnt.g(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131691985, 0).a();
+    }
+    for (;;)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bbpe.a(this.c);
-      }
+      this.jdField_a_of_type_Bkho.e();
       return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      this.c = this.jdField_a_of_type_Bbpe.a();
-      localJSONObject.put("messageNavInfo", this.c);
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      paramView = (anie)this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (this.jdField_a_of_type_Boolean)
       {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
       }
     }
   }

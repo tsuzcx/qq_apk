@@ -1,11 +1,46 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ahkx
+class ahkx
+  extends bhhe
 {
-  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  ahkx(ahku paramahku, String paramString1, String paramString2)
+  {
+    super(paramString1, paramString2);
+  }
   
-  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void onCancel(bhhf parambhhf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambhhf);
+    }
+  }
+  
+  public void onDone(bhhf parambhhf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambhhf);
+    }
+    if (parambhhf.b()) {}
+    do
+    {
+      return;
+      parambhhf.a().getInt("type");
+    } while (parambhhf.a() == -1);
+    parambhhf = new Message();
+    parambhhf.what = ahku.jdField_a_of_type_Int;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambhhf);
+  }
+  
+  public boolean onStart(bhhf parambhhf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambhhf);
+    }
+    return true;
+  }
 }
 
 

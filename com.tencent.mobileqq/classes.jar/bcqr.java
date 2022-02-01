@@ -1,104 +1,23 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class bcqr
-  implements bcto
 {
-  private long jdField_a_of_type_Long;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
+  public int a;
+  public long a;
   public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
+  public long b;
   public String b;
-  private boolean jdField_b_of_type_Boolean;
+  public long c;
   public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bcqr(String paramString1, String paramString2, String paramString3)
+  private bcqr(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
-    }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b()
-  {
-    h();
-    g();
-  }
-  
-  public void c()
-  {
-    h();
-  }
-  
-  public void d()
-  {
-    a();
-  }
-  
-  public void e()
-  {
-    b();
+    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
   }
 }
 

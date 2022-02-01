@@ -2,14 +2,23 @@ package com.tencent.richmediabrowser.presenter;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.image.RegionDrawableData;
 import com.tencent.richmediabrowser.core.BrowserBuilder;
 import com.tencent.richmediabrowser.core.BrowserDirector;
+import com.tencent.richmediabrowser.core.IBrowserBuilder;
+import com.tencent.richmediabrowser.core.IViewBuilder;
+import com.tencent.richmediabrowser.core.ViewBuilder;
+import com.tencent.richmediabrowser.download.HttpDownloadManager;
 import com.tencent.richmediabrowser.listener.IDownloadEventListener;
 import com.tencent.richmediabrowser.listener.IVideoEnventListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.model.BrowserBaseModel;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
@@ -26,31 +35,54 @@ public class MainBrowserPresenter
   extends BasePresenter
   implements IDownloadEventListener, IVideoEnventListener
 {
-  private static final String TAG = "AIOGalleryPresenter";
+  private static final String TAG = "MainBrowserPresenter";
   public MainBrowserModel browserModel;
   public MainBrowserScene browserScene;
   private ConcurrentHashMap<Integer, BrowserBasePresenter> presenterMap = new ConcurrentHashMap();
   
   public void buildComplete() {}
   
-  public void buildMVP(int paramInt)
+  public BrowserBaseView buildItemView(int paramInt)
   {
-    if (!this.presenterMap.containsKey(Integer.valueOf(paramInt)))
+    if (this.presenterMap.containsKey(Integer.valueOf(paramInt)))
     {
-      BrowserBuilder localBrowserBuilder = new BrowserBuilder(this.browserScene.mContext, paramInt);
-      localBrowserBuilder.setRelyPresenter(this);
-      new BrowserDirector(localBrowserBuilder).construct(this.browserScene.mIntent);
-      if ((localBrowserBuilder.getPresenter() instanceof BrowserBasePresenter))
-      {
-        ((BrowserBasePresenter)localBrowserBuilder.getPresenter()).setMainBrowserPresenter(this);
-        this.presenterMap.put(Integer.valueOf(paramInt), (BrowserBasePresenter)localBrowserBuilder.getPresenter());
-      }
+      localObject = new ViewBuilder(this.browserScene.mContext, paramInt, getPresenter(paramInt));
+      new BrowserDirector().constructItemView((IViewBuilder)localObject, this.browserScene.mIntent);
+      return ((ViewBuilder)localObject).getView();
     }
+    Object localObject = new BrowserBuilder(this.browserScene.mContext, paramInt);
+    ((BrowserBuilder)localObject).setRelyPresenter(this);
+    new BrowserDirector().construct((IBrowserBuilder)localObject, this.browserScene.mIntent);
+    if ((((BrowserBuilder)localObject).getPresenter() instanceof BrowserBasePresenter))
+    {
+      ((BrowserBasePresenter)((BrowserBuilder)localObject).getPresenter()).setMainBrowserPresenter(this);
+      this.presenterMap.put(Integer.valueOf(paramInt), (BrowserBasePresenter)((BrowserBuilder)localObject).getPresenter());
+    }
+    return ((BrowserBuilder)localObject).getView();
   }
   
   public void buildParams(Intent paramIntent) {}
   
   public void buildPresenter() {}
+  
+  public boolean enableScrollLeft()
+  {
+    return getCurrentPosition() != 0;
+  }
+  
+  public boolean enableScrollRight()
+  {
+    return getCurrentPosition() != getItemCount() - 1;
+  }
+  
+  public Rect getAnimationEndDstRect()
+  {
+    BrowserBasePresenter localBrowserBasePresenter = getCurrentPresenter();
+    if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
+      return localBrowserBasePresenter.browserBaseView.getAnimationEndDstRect();
+    }
+    return null;
+  }
   
   public int getCurrentPosition()
   {
@@ -70,6 +102,22 @@ public class MainBrowserPresenter
       }
     }
     return null;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.browserModel != null) {
+      return this.browserModel.getCount();
+    }
+    return 0;
+  }
+  
+  public int getLastVisibleItemPosition()
+  {
+    if (this.browserScene != null) {
+      return this.browserScene.getLastVisibleItemPosition();
+    }
+    return -1;
   }
   
   public BrowserBasePresenter getPresenter(int paramInt)
@@ -108,6 +156,11 @@ public class MainBrowserPresenter
     return bool1;
   }
   
+  public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
+  {
+    return (this.browserScene != null) && (this.browserScene.isNeedDisallowInterceptEvent(paramMotionEvent));
+  }
+  
   public boolean needEnterRectAnimation()
   {
     if (this.browserScene != null)
@@ -137,7 +190,10 @@ public class MainBrowserPresenter
     if (paramList != null) {}
     for (int i = paramList.size();; i = 0)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "notifyImageListChanged list size " + i + ", selected " + paramInt);
+      BrowserLogHelper.getInstance().getGalleryLog().i("MainBrowserPresenter", 2, "notifyImageListChanged list size " + i + ", selected " + paramInt);
+      if (this.browserModel != null) {
+        this.browserModel.updateList(paramList);
+      }
       if (this.browserScene != null) {
         this.browserScene.notifyImageModelDataChanged();
       }
@@ -226,9 +282,39 @@ public class MainBrowserPresenter
     if (this.browserScene != null) {
       this.browserScene.onDestroy();
     }
+    HttpDownloadManager.getInstance().clean();
   }
   
-  public void onItemSelect(int paramInt) {}
+  public void onDoubleTap()
+  {
+    if (this.browserScene != null) {
+      this.browserScene.onDoubleTap();
+    }
+  }
+  
+  public void onItemSelect(int paramInt)
+  {
+    if (this.browserModel != null)
+    {
+      this.browserModel.setSelectedIndex(paramInt);
+      Object localObject = this.browserModel.getItem(paramInt);
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
+      {
+        localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
+        if (localObject != null)
+        {
+          if (this.browserScene.getCurrentView() != null) {
+            ((BrowserBasePresenter)localObject).setGalleryView(this.browserScene.getCurrentView());
+          }
+          BrowserLogHelper.getInstance().getGalleryLog().i("MainBrowserPresenter", 2, "onItemSelect position = " + paramInt + ", id = " + this.browserModel.getItem(paramInt).baseData.id);
+          ((BrowserBasePresenter)localObject).onItemSelect(paramInt);
+        }
+      }
+    }
+    if (this.browserScene != null) {
+      this.browserScene.onItemSelected(paramInt);
+    }
+  }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
@@ -249,6 +335,34 @@ public class MainBrowserPresenter
   {
     if (this.browserScene != null) {
       this.browserScene.onResume();
+    }
+  }
+  
+  public void onScale()
+  {
+    if (this.browserScene != null) {
+      this.browserScene.onScale();
+    }
+  }
+  
+  public void onScaleBegin()
+  {
+    if (this.browserScene != null) {
+      this.browserScene.onScaleBegin();
+    }
+  }
+  
+  public void onScaleEnd()
+  {
+    if (this.browserScene != null) {
+      this.browserScene.onScaleEnd();
+    }
+  }
+  
+  public void onShowAreaChanged(View paramView, RegionDrawableData paramRegionDrawableData)
+  {
+    if (this.browserScene != null) {
+      this.browserScene.onShowAreaChanged(getCurrentPosition(), paramView, paramRegionDrawableData);
     }
   }
   
@@ -273,6 +387,48 @@ public class MainBrowserPresenter
     }
   }
   
+  public void preInitItem(int paramInt)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("MainBrowserPresenter", 4, "preInitItem position = " + paramInt);
+    if (this.browserModel != null)
+    {
+      Object localObject = this.browserModel.getItem(paramInt);
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
+      {
+        localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
+        if (localObject != null) {
+          ((BrowserBasePresenter)localObject).preInitItem(paramInt);
+        }
+      }
+    }
+  }
+  
+  public void requestDisallowInterceptDragEvent(boolean paramBoolean)
+  {
+    if (this.browserScene != null) {
+      this.browserScene.requestDisallowInterceptDragEvent(paramBoolean);
+    }
+  }
+  
+  public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
+  {
+    if (this.browserScene != null) {
+      this.browserScene.requestDisallowInterceptTouchEvent(paramBoolean);
+    }
+  }
+  
+  public void resetItemView(int paramInt)
+  {
+    Object localObject = this.baseModel.getItem(paramInt);
+    if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
+    {
+      localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
+      if ((localObject != null) && (((BrowserBasePresenter)localObject).browserBaseView != null)) {
+        ((BrowserBasePresenter)localObject).browserBaseView.reset();
+      }
+    }
+  }
+  
   public void setGalleryModel(MainBrowserModel paramMainBrowserModel)
   {
     this.browserModel = paramMainBrowserModel;
@@ -286,7 +442,7 @@ public class MainBrowserPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.MainBrowserPresenter
  * JD-Core Version:    0.7.0.1
  */

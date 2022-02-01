@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import ofx;
+import ost;
 
 public class ReadInJoyAdPopSheetDialog$2
   implements Runnable
 {
-  public ReadInJoyAdPopSheetDialog$2(ofx paramofx) {}
+  public ReadInJoyAdPopSheetDialog$2(ost paramost) {}
   
   public void run()
   {
-    ofx.a(this.this$0);
+    ost.a(this.this$0);
   }
 }
 

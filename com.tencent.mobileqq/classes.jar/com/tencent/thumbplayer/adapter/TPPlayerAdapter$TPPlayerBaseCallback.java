@@ -7,20 +7,22 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListe
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
+import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 
 class TPPlayerAdapter$TPPlayerBaseCallback
-  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
+  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
 {
   private TPPlayerAdapter$TPPlayerBaseCallback(TPPlayerAdapter paramTPPlayerAdapter) {}
   
   public void onAudioPcmOut(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    TPPlayerAdapter.access$900(this.this$0, paramTPAudioFrameBuffer);
+    TPPlayerAdapter.access$1000(this.this$0, paramTPAudioFrameBuffer);
   }
   
   public void onCompletion()
@@ -53,9 +55,14 @@ class TPPlayerAdapter$TPPlayerBaseCallback
     TPPlayerAdapter.access$700(this.this$0, paramTPSubtitleData);
   }
   
+  public void onSubtitleFrameOut(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
+  {
+    TPPlayerAdapter.access$800(this.this$0, paramTPSubtitleFrameBuffer);
+  }
+  
   public void onVideoFrameOut(TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    TPPlayerAdapter.access$800(this.this$0, paramTPVideoFrameBuffer);
+    TPPlayerAdapter.access$900(this.this$0, paramTPVideoFrameBuffer);
   }
   
   public void onVideoSizeChanged(long paramLong1, long paramLong2)
@@ -65,7 +72,7 @@ class TPPlayerAdapter$TPPlayerBaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerAdapter.TPPlayerBaseCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
 
-class asam
-  implements URLDrawable.URLDrawableListener
+public final class asam
+  implements Parcelable.Creator<EmotionPreviewInfo>
 {
-  asam(asal paramasal) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public EmotionPreviewInfo a(Parcel paramParcel)
   {
-    paramURLDrawable.setBounds(bdhj.a(paramURLDrawable, 36, 100, this.a.a));
-    asal.a(this.a).setImageDrawable(paramURLDrawable);
+    return new EmotionPreviewInfo(paramParcel);
+  }
+  
+  public EmotionPreviewInfo[] a(int paramInt)
+  {
+    return new EmotionPreviewInfo[paramInt];
   }
 }
 

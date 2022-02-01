@@ -1,13 +1,19 @@
-class ahuc
-  implements babe
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+public class ahuc
 {
-  ahuc(ahub paramahub) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public void a(boolean paramBoolean)
-  {
-    paramBoolean = this.a.a();
-    this.a.d(paramBoolean);
-  }
+  public ahuc(ahua paramahua) {}
 }
 
 

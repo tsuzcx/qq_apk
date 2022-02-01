@@ -1,9 +1,9 @@
 package com.tencent.av.gaudio;
 
 import java.lang.ref.WeakReference;
-import lpj;
+import lmg;
 import mqq.os.MqqHandler;
-import mww;
+import mue;
 
 class AVNotifyCenter$UpdateChattingTime
   implements Runnable
@@ -22,22 +22,22 @@ class AVNotifyCenter$UpdateChattingTime
     do
     {
       return;
-      if (localAVNotifyCenter.a(String.valueOf(localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Long)))
+      if (localAVNotifyCenter.a(String.valueOf(AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Long)))
       {
         localAVNotifyCenter.jdField_b_of_type_JavaLangRunnable = null;
         return;
       }
-      if (localAVNotifyCenter.a != null) {
-        localAVNotifyCenter.a.postDelayed(this, 2000L);
+      if (localAVNotifyCenter.jdField_a_of_type_MqqOsMqqHandler != null) {
+        localAVNotifyCenter.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 2000L);
       }
-    } while (!localAVNotifyCenter.f);
-    String str = mww.a(localAVNotifyCenter.c);
-    if (localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Int == 3)
+    } while (!localAVNotifyCenter.jdField_b_of_type_Boolean);
+    String str = mue.a(localAVNotifyCenter.jdField_a_of_type_Long);
+    if (AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Int == 3)
     {
-      localAVNotifyCenter.a(29, 0, Long.toString(localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Long), str);
+      localAVNotifyCenter.a(29, 0, Long.toString(AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Long), str);
       return;
     }
-    localAVNotifyCenter.a(29, 0, localAVNotifyCenter.jdField_b_of_type_Lpj.b, str);
+    localAVNotifyCenter.a(29, 0, AVNotifyCenter.a(localAVNotifyCenter).b, str);
   }
 }
 

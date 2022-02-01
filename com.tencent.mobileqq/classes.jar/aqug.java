@@ -1,62 +1,110 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqug
-  extends aqvc
+public class aqug
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public int a;
+  public List<Long> a;
+  public int b;
+  public int c;
   
-  aqug(aque paramaque, MessageRecord paramMessageRecord)
+  public aqug()
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqva paramaqva)
+  public static aqug a(aqlg[] paramArrayOfaqlg)
   {
-    if ("1".equals(this.g))
+    aqug localaqug = new aqug();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      int j = paramArrayOfaqlg.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfaqlg[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((aqlg)localObject).a;
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            if (((JSONObject)localObject).has("gtcSwitch")) {
+              localaqug.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gtcSwitch");
+            }
+            if (((JSONObject)localObject).has("groupMemberCount")) {
+              localaqug.b = ((JSONObject)localObject).optInt("groupMemberCount");
+            }
+            if (((JSONObject)localObject).has("allGroupTypesEnable")) {
+              localaqug.c = ((JSONObject)localObject).optInt("allGroupTypesEnable");
+            }
+            if (((JSONObject)localObject).has("enabledGroupTypes"))
+            {
+              localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
+              localaqug.jdField_a_of_type_JavaUtilList.addAll(a((JSONArray)localObject));
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localaqug.toString());
+          }
+        }
       }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
-      return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    return localaqug;
+  }
+  
+  private static List<Long> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
+            }
+          }
+        }
       }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
-      return;
     }
-    aqrv localaqrv = aque.a(this.jdField_a_of_type_Aque).a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    localaqrv.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aquh(this, paramString, paramaqva));
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.jdField_a_of_type_Int).append(", groupMemberCount: ").append(this.b).append(", allGroupTypesEnable: ").append(this.c).append(", enabledGroupTypes: ").append(this.jdField_a_of_type_JavaUtilList.toString()).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqug
  * JD-Core Version:    0.7.0.1
  */

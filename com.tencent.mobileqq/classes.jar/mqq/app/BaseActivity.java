@@ -1,5 +1,6 @@
 package mqq.app;
 
+import Override;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -17,9 +18,11 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -84,6 +87,14 @@ public class BaseActivity
     return true;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public final AppRuntime getAppRuntime()
   {
     return this.app;
@@ -125,6 +136,13 @@ public class BaseActivity
   protected void onAccountChanged() {}
   
   protected void onAccoutChangeFailed() {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
   
   protected void onCreate(Bundle paramBundle)
   {
@@ -260,6 +278,9 @@ public class BaseActivity
   
   protected void onStop()
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("mqq", 2, "[Activity]" + getClass().getSimpleName() + " onStop");
+    }
     if (!this.mIsShadow) {
       super.onStop();
     }

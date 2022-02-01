@@ -1,10 +1,26 @@
-public abstract interface xmr
+import android.content.Intent;
+import android.os.Bundle;
+
+public class xmr
+  implements xli
 {
-  public abstract void a();
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xmr
  * JD-Core Version:    0.7.0.1
  */

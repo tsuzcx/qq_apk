@@ -1,9 +1,24 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+
 class annp
-  extends anno
+  implements bhtl<oidb_0x8e4.RspBody>
 {
-  private annp()
+  annp(anno paramanno) {}
+  
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    super(null);
+    if (paramInt == 0)
+    {
+      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
+      {
+        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
+        axey.a().a(0, paramRspBody, 0L, null);
+      }
+    }
   }
 }
 

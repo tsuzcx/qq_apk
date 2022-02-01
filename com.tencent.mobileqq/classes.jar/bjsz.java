@@ -1,16 +1,20 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-final class bjsz
-  extends bjsy
+public class bjsz
+  implements DialogInterface.OnClickListener
 {
-  public boolean a(Collector paramCollector)
+  public bjsz(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjsz
  * JD-Core Version:    0.7.0.1
  */

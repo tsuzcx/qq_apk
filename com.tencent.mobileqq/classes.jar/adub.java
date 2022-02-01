@@ -1,21 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adub
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public adub(RegisterActivity paramRegisterActivity) {}
+  public adub(ChatHistory paramChatHistory) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    if (this.a.d > 1)
     {
-      RegisterActivity.b(this.a);
-      return true;
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839096);
+      ChatHistory localChatHistory = this.a;
+      localChatHistory.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840469);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aduc.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,8 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-
-class ayac
-  implements MessageQueue.IdleHandler
+public class ayac
 {
-  ayac(ayaa paramayaa) {}
-  
-  public boolean queueIdle()
+  public static boolean a(int paramInt)
   {
-    AIOPictureData localAIOPictureData = this.a.a();
-    axyn localaxyn = new axyn();
-    if ((localAIOPictureData != null) && (localaxyn.a(localAIOPictureData, 4)) && (localaxyn.a(localAIOPictureData, 4) == null))
-    {
-      this.a.e(true);
-      this.a.updateUI();
-    }
-    return false;
+    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022) || (paramInt == 10023) || (paramInt == 10024) || (paramInt == 10025) || (paramInt == 10026) || (paramInt == 10027);
   }
 }
 

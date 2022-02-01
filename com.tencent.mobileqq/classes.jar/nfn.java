@@ -1,24 +1,40 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.util.AVGameNodeReportUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nfn
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public nfn(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public nfn(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
-    if (paramInt1 != this.a.b) {
-      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
+    QLog.e("AvGameManagerAvGameLoadingActivity", 2, "mExitBtn " + AvGameLoadingActivity.a(this.a) + " bExitEnable " + AvGameLoadingActivity.a(this.a) + "mExit" + AvGameLoadingActivity.b(this.a));
+    if (AvGameLoadingActivity.b(this.a) != null)
+    {
+      long l = nga.a(AvGameLoadingActivity.b(this.a));
+      AvGameLoadingActivity.a(this.a, l);
+    }
+    bcst.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
+    if (AvGameLoadingActivity.a(this.a))
+    {
+      AVGameNodeReportUtil.b(1);
+      this.a.a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "mExitBtn click but not enabled");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfn
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,18 @@ import java.util.concurrent.Executor;
 public class UrlRequestBuilderImpl
   extends UrlRequest.Builder
 {
-  private static final String ACCEPT_ENCODING = "Accept-Encoding";
-  private static final String TAG = UrlRequestBuilderImpl.class.getSimpleName();
-  private String mAddress;
-  private String mBody;
-  private byte[] mBodyBytes;
-  private final UrlRequest.Callback mCallback;
-  private boolean mDisableCache;
-  private final Executor mExecutor;
-  private String mHost;
-  private String mMethod;
-  private int mPriority = 3;
-  private final ArrayList<Pair<String, String>> mRequestHeaders = new ArrayList();
-  private final String mUrl;
+  private static final String a = UrlRequestBuilderImpl.class.getSimpleName();
+  private final String b;
+  private final UrlRequest.Callback c;
+  private final Executor d;
+  private String e;
+  private final ArrayList<Pair<String, String>> f = new ArrayList();
+  private boolean g;
+  private int h = 3;
+  private String i;
+  private byte[] j;
+  private String k;
+  private String l;
   
   public UrlRequestBuilderImpl(String paramString, UrlRequest.Callback paramCallback, Executor paramExecutor)
   {
@@ -36,9 +35,9 @@ public class UrlRequestBuilderImpl
     if (paramExecutor == null) {
       throw new NullPointerException("Executor is required.");
     }
-    this.mUrl = paramString;
-    this.mCallback = paramCallback;
-    this.mExecutor = paramExecutor;
+    this.b = paramString;
+    this.c = paramCallback;
+    this.d = paramExecutor;
   }
   
   public UrlRequestBuilderImpl addHeader(String paramString1, String paramString2)
@@ -52,45 +51,93 @@ public class UrlRequestBuilderImpl
     if ("Accept-Encoding".equalsIgnoreCase(paramString1)) {
       return this;
     }
-    this.mRequestHeaders.add(Pair.create(paramString1, paramString2));
+    this.f.add(Pair.create(paramString1, paramString2));
     return this;
   }
   
   public UrlRequest build()
   {
-    Object localObject1 = X5CoreEngine.getInstance();
-    if ((localObject1 != null) && (((X5CoreEngine)localObject1).isX5Core()))
+    Object localObject1 = v.a();
+    Object localObject2;
+    if ((localObject1 != null) && (((v)localObject1).b()))
     {
-      localObject1 = ((X5CoreEngine)localObject1).wizard().dexLoader();
-      Object localObject2 = Integer.TYPE;
-      Class localClass = Boolean.TYPE;
-      String str1 = this.mUrl;
-      int i = this.mPriority;
-      UrlRequest.Callback localCallback = this.mCallback;
-      Executor localExecutor = this.mExecutor;
-      boolean bool = this.mDisableCache;
-      String str2 = this.mMethod;
-      ArrayList localArrayList = this.mRequestHeaders;
-      String str3 = this.mBody;
-      byte[] arrayOfByte = this.mBodyBytes;
-      String str4 = this.mHost;
-      String str5 = this.mAddress;
-      localObject2 = (UrlRequest)((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "UrlRequest_getX5UrlRequestProvider", new Class[] { String.class, localObject2, UrlRequest.Callback.class, Executor.class, localClass, String.class, ArrayList.class, String.class, [B.class, String.class, String.class }, new Object[] { str1, Integer.valueOf(i), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3, arrayOfByte, str4, str5 });
+      DexLoader localDexLoader = ((v)localObject1).c().b();
+      localObject1 = Integer.TYPE;
+      localObject2 = Boolean.TYPE;
+      String str1 = this.b;
+      int m = this.h;
+      UrlRequest.Callback localCallback = this.c;
+      Executor localExecutor = this.d;
+      boolean bool = this.g;
+      String str2 = this.e;
+      ArrayList localArrayList = this.f;
+      String str3 = this.i;
+      byte[] arrayOfByte = this.j;
+      String str4 = this.k;
+      String str5 = this.l;
+      localObject2 = (UrlRequest)localDexLoader.invokeStaticMethod("com.tencent.smtt.net.X5UrlRequestProvider", "GetX5UrlRequestProvider", new Class[] { String.class, localObject1, UrlRequest.Callback.class, Executor.class, localObject2, String.class, ArrayList.class, String.class, [B.class, String.class, String.class }, new Object[] { str1, Integer.valueOf(m), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3, arrayOfByte, str4, str5 });
       localObject1 = localObject2;
-      if (localObject2 == null) {
+      if (localObject2 == null)
+      {
+        localObject1 = Integer.TYPE;
+        localObject2 = Boolean.TYPE;
+        str1 = this.b;
+        m = this.h;
+        localCallback = this.c;
+        localExecutor = this.d;
+        bool = this.g;
+        str2 = this.e;
+        localArrayList = this.f;
+        str3 = this.i;
+        localObject1 = (UrlRequest)localDexLoader.invokeStaticMethod("com.tencent.smtt.net.X5UrlRequestProvider", "GetX5UrlRequestProvider", new Class[] { String.class, localObject1, UrlRequest.Callback.class, Executor.class, localObject2, String.class, ArrayList.class, String.class }, new Object[] { str1, Integer.valueOf(m), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3 });
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = Integer.TYPE;
+        localObject2 = Boolean.TYPE;
+        str1 = this.b;
+        m = this.h;
+        localCallback = this.c;
+        localExecutor = this.d;
+        bool = this.g;
+        str2 = this.e;
+        localArrayList = this.f;
+        localObject2 = (UrlRequest)localDexLoader.invokeStaticMethod("com.tencent.smtt.net.X5UrlRequestProvider", "GetX5UrlRequestProvider", new Class[] { String.class, localObject1, UrlRequest.Callback.class, Executor.class, localObject2, String.class, ArrayList.class }, new Object[] { str1, Integer.valueOf(m), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList });
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = Integer.TYPE;
+        localObject2 = Boolean.TYPE;
+        str1 = this.b;
+        m = this.h;
+        localCallback = this.c;
+        localExecutor = this.d;
+        bool = this.g;
+        str2 = this.e;
+        localArrayList = this.f;
+        str3 = this.i;
+        arrayOfByte = this.j;
+        str4 = this.k;
+        str5 = this.l;
+        localObject1 = (UrlRequest)localDexLoader.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "UrlRequest_getX5UrlRequestProvider", new Class[] { String.class, localObject1, UrlRequest.Callback.class, Executor.class, localObject2, String.class, ArrayList.class, String.class, [B.class, String.class, String.class }, new Object[] { str1, Integer.valueOf(m), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3, arrayOfByte, str4, str5 });
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
         throw new NullPointerException("UrlRequest build fail");
       }
     }
     else
     {
-      localObject1 = null;
+      localObject2 = null;
     }
-    return localObject1;
+    return localObject2;
   }
   
   public UrlRequestBuilderImpl disableCache()
   {
-    this.mDisableCache = true;
+    this.g = true;
     return this;
   }
   
@@ -99,8 +146,8 @@ public class UrlRequestBuilderImpl
     if ((paramString1 == null) || (paramString2 == null)) {
       throw new NullPointerException("host and address are required.");
     }
-    this.mHost = paramString1;
-    this.mAddress = paramString2;
+    this.k = paramString1;
+    this.l = paramString2;
     return this;
   }
   
@@ -109,13 +156,13 @@ public class UrlRequestBuilderImpl
     if (paramString == null) {
       throw new NullPointerException("Method is required.");
     }
-    this.mMethod = paramString;
+    this.e = paramString;
     return this;
   }
   
   public UrlRequestBuilderImpl setPriority(int paramInt)
   {
-    this.mPriority = paramInt;
+    this.h = paramInt;
     return this;
   }
   
@@ -124,7 +171,7 @@ public class UrlRequestBuilderImpl
     if (paramString == null) {
       throw new NullPointerException("Body is required.");
     }
-    this.mBody = paramString;
+    this.i = paramString;
     return this;
   }
   
@@ -133,13 +180,13 @@ public class UrlRequestBuilderImpl
     if (paramArrayOfByte == null) {
       throw new NullPointerException("Body is required.");
     }
-    this.mBodyBytes = paramArrayOfByte;
+    this.j = paramArrayOfByte;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.UrlRequestBuilderImpl
  * JD-Core Version:    0.7.0.1
  */

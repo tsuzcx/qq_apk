@@ -1,31 +1,60 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
-import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
-import com.tencent.av.share.AVSchema;
-import com.tencent.av.share.AVSchema.MyMsgListener.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mat
-  extends lje<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
+  implements View.OnClickListener
 {
-  public mas a;
+  public mat(AVActivity paramAVActivity) {}
   
-  public mat(AVSchema paramAVSchema, mas parammas)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Mas = parammas;
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
-  {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
+    if (this.a.isDestroyed()) {}
+    label237:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Object localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (!((ley)localObject).x)
+      {
+        int i = ((ley)localObject).d;
+        long l = AudioHelper.b();
+        QLog.w(this.a.b, 1, "onMsgClick, sessionType[" + i + "], state[" + ((ley)localObject).jdField_g_of_type_Int + "], seq[" + l + "]");
+        if ((i == 1) || (i == 2))
+        {
+          if (!((ley)localObject).o()) {
+            this.a.a(l, this.a.c, this.a.d, this.a.k);
+          }
+        }
+        else {
+          for (;;)
+          {
+            if (AVActivity.a(this.a) == null) {
+              break label237;
+            }
+            AVActivity.a(this.a).a();
+            break;
+            if ((i == 3) || (i == 4))
+            {
+              localObject = String.valueOf(((ley)localObject).jdField_g_of_type_Long);
+              String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, (String)localObject, null);
+              this.a.a(l, (String)localObject, this.a.d, str);
+            }
+          }
+        }
+      }
     }
-    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mat
  * JD-Core Version:    0.7.0.1
  */

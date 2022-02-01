@@ -1,75 +1,131 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.network.http.HttpCallBack;
+import com.tencent.mobileqq.mini.network.http.MiniappHttpUtil;
+import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.Map;
 import org.json.JSONObject;
 
 class FileJsPlugin$5
-  implements FileJsPlugin.FileTask
+  extends HttpCallBack
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, long paramLong) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, int paramInt, JsRuntime paramJsRuntime, long paramLong, WeakReference paramWeakReference, File paramFile) {}
   
-  public String run()
+  private void reportUploadResult(long paramLong, int paramInt)
   {
-    Object localObject = MiniAppFileManager.getInstance().getAbsolutePath(this.val$tempFilePath);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "tempFilePath file not exist", this.val$callbackId);
-    }
-    if (TextUtils.isEmpty(this.val$filePath))
+    if (this.this$0.isMiniGameRuntime()) {}
+    for (String str = "1";; str = "0")
     {
-      if (!MiniAppFileManager.getInstance().isFolderCanWrite(1, FileUtils.getFileSizes((String)localObject))) {
-        return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "the maximum size of the file storage is exceeded", this.val$callbackId);
-      }
-      str = MiniAppFileManager.getInstance().savePath(this.val$tempFilePath);
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject).put("savedFilePath", str);
-          QLog.d("[mini] FileJsPlugin", 1, "saveFile old succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], saveFilePath:" + str);
-          return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, (JSONObject)localObject, this.val$callbackId);
-        }
-        catch (Throwable localThrowable1)
-        {
-          for (;;)
-          {
-            localThrowable1.printStackTrace();
-          }
-        }
-      }
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, null, this.val$callbackId);
+      MiniReportManager.reportEventType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 641, null, null, null, paramInt, str, paramLong, null);
+      return;
     }
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$filePath, this.val$callbackId);
-    }
-    if (!MiniAppFileManager.getInstance().isFolderCanWrite(2, FileUtils.getFileSizes((String)localObject))) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "the maximum size of the file storage is exceeded", this.val$callbackId);
-    }
-    String str = MiniAppFileManager.getInstance().getUsrPath(this.val$filePath);
-    FileUtils.copyFile((String)localObject, str);
-    localObject = new JSONObject();
+  }
+  
+  public void headersReceived(int paramInt, Map<String, List<String>> paramMap)
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("savedFilePath", this.val$filePath);
-      QLog.d("[mini] FileJsPlugin", 1, "saveFile succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], saveAboPath:" + str);
-      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, (JSONObject)localObject, this.val$callbackId);
+      localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+      localJSONObject.put("header", paramMap);
+      localJSONObject.put("errMsg", "ok");
+      localJSONObject.put("statusCode", paramInt);
+      localJSONObject.put("state", "headersReceived");
+      this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+      return;
     }
-    catch (Throwable localThrowable2)
+    catch (Exception paramMap)
     {
-      for (;;)
+      QLog.e("[mini] FileJsPlugin", 2, "httpUpload--headersReceived fail---");
+    }
+  }
+  
+  public void httpCallBack(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
+  {
+    QLog.d("[mini] FileJsPlugin", 1, "uploadTask httpCallBack! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], resCode:" + paramInt);
+    paramMap = (JsRuntime)this.val$webviewRef.get();
+    if (paramMap == null) {
+      return;
+    }
+    if (paramInt > 0) {}
+    for (;;)
+    {
+      try
       {
-        localThrowable2.printStackTrace();
+        localJSONObject = new JSONObject();
+        localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+        localJSONObject.put("progress", 100);
+        localJSONObject.put("totalBytesSent", this.val$uploadFile.length());
+        localJSONObject.put("totalBytesExpectedToSend", this.val$uploadFile.length());
+        localJSONObject.put("state", "progressUpdate");
+        paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+        if (paramArrayOfByte != null) {
+          continue;
+        }
+        paramArrayOfByte = "";
+        localJSONObject = new JSONObject();
+        localJSONObject.put("data", paramArrayOfByte);
+        localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+        localJSONObject.put("statusCode", paramInt);
+        localJSONObject.put("state", "success");
+        paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
       }
+      catch (Throwable paramArrayOfByte)
+      {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+          localJSONObject.put("state", "fail");
+          localJSONObject.put("errMsg", paramArrayOfByte.getMessage());
+          paramMap.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+        }
+        catch (Throwable paramArrayOfByte) {}
+        continue;
+      }
+      reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
+      return;
+      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+      continue;
+      paramArrayOfByte = new JSONObject();
+      paramArrayOfByte.put("uploadTaskId", this.val$uploadTaskId);
+      paramArrayOfByte.put("state", "fail");
+      MiniappHttpUtil.fillErrMsg("uploadFile", paramArrayOfByte, paramInt);
+      paramMap.evaluateSubcribeJS("onUploadTaskStateChange", paramArrayOfByte.toString(), 0);
+    }
+  }
+  
+  public void onProgressUpdate(int paramInt1, int paramInt2, int paramInt3)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uploadTaskId", this.val$uploadTaskId);
+      localJSONObject.put("totalBytesWritten", paramInt2);
+      localJSONObject.put("totalBytesExpectedWrite", paramInt3);
+      localJSONObject.put("totalBytesSent", paramInt2);
+      localJSONObject.put("totalBytesExpectedToSend", paramInt3);
+      localJSONObject.put("progress", paramInt1);
+      localJSONObject.put("state", "progressUpdate");
+      this.val$webview.evaluateSubcribeJS("onUploadTaskStateChange", localJSONObject.toString(), 0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("[mini] FileJsPlugin", 2, "httpUpload--onProgressUpdate fail---");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

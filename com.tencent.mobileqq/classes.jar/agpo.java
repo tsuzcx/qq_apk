@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class agpo
-  extends aspm
+  extends afwr
 {
-  agpo(agpi paramagpi) {}
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  protected void a()
-  {
-    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      agpi.a(this.a).a(this.a.jdField_a_of_type_Agzq, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Agzq.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (agpi.b(this.a).a() == 14)) {
-      agpi.c(this.a).a();
-    }
-  }
+  agpo(agpn paramagpn) {}
 }
 
 

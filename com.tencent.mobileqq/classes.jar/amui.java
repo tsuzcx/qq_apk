@@ -1,12 +1,15 @@
-public class amui
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class amui
+  implements amxk
 {
-  public int a;
-  public long a;
+  amui(ancr paramancr, QQAppInterface paramQQAppInterface, int paramInt, int[] paramArrayOfInt) {}
   
-  public amui(long paramLong, int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_Ancr != null) {
+      this.jdField_a_of_type_Ancr.a(-1L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    }
   }
 }
 

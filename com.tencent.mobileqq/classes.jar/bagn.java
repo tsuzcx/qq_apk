@@ -1,16 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleTextureView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-final class bagn
-  implements DialogInterface.OnClickListener
+public class bagn
+  extends Handler
 {
-  bagn(bdjz parambdjz) {}
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bagn(ParticleTextureView paramParticleTextureView, Looper paramLooper)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_INIT_DATA");
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.c = 0;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_ADD_DATA");
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap);
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
+      return;
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView;
+      paramMessage.c += 1;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a())
+      {
+        ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
+        return;
+      }
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
+      return;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_REFRESH_VIEW size = " + this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size());
+    } while ((this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size() <= 0) && (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.d();
   }
 }
 

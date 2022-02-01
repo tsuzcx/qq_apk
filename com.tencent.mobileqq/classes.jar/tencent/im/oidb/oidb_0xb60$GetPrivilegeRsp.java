@@ -17,7 +17,7 @@ public final class oidb_0xb60$GetPrivilegeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp
  * JD-Core Version:    0.7.0.1
  */

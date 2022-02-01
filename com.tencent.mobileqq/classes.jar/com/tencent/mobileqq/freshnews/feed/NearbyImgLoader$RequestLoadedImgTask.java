@@ -38,17 +38,17 @@ public class NearbyImgLoader$RequestLoadedImgTask
     //   34: aload_1
     //   35: getfield 55	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   38: astore_3
-    //   39: new 57	asic
+    //   39: new 57	auor
     //   42: dup
     //   43: aload_0
-    //   44: invokespecial 60	asic:<init>	(Lcom/tencent/mobileqq/freshnews/feed/NearbyImgLoader$RequestLoadedImgTask;)V
+    //   44: invokespecial 60	auor:<init>	(Lcom/tencent/mobileqq/freshnews/feed/NearbyImgLoader$RequestLoadedImgTask;)V
     //   47: astore_2
     //   48: aload_0
     //   49: getfield 15	com/tencent/mobileqq/freshnews/feed/NearbyImgLoader$RequestLoadedImgTask:this$0	Lcom/tencent/mobileqq/freshnews/feed/NearbyImgLoader;
-    //   52: getfield 63	com/tencent/mobileqq/freshnews/feed/NearbyImgLoader:jdField_a_of_type_Bauz	Lbauz;
+    //   52: getfield 63	com/tencent/mobileqq/freshnews/feed/NearbyImgLoader:jdField_a_of_type_Bdwn	Lbdwn;
     //   55: aload_1
     //   56: aload_2
-    //   57: invokevirtual 69	bauz:loadImageFile	(Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   57: invokevirtual 69	bdwn:loadImageFile	(Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
     //   60: astore 4
     //   62: aconst_null
     //   63: astore_2
@@ -82,16 +82,16 @@ public class NearbyImgLoader$RequestLoadedImgTask
     //   124: aload 4
     //   126: invokevirtual 106	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   129: aload_1
-    //   130: invokestatic 111	bdhj:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   130: invokestatic 111	bgmo:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   133: pop
     //   134: aload_1
     //   135: getfield 114	android/graphics/BitmapFactory$Options:outWidth	I
     //   138: i2l
-    //   139: invokestatic 120	bdgk:i	()J
+    //   139: invokestatic 120	bgln:i	()J
     //   142: lcmp
     //   143: ifle +17 -> 160
     //   146: aload_1
-    //   147: invokestatic 120	bdgk:i	()J
+    //   147: invokestatic 120	bgln:i	()J
     //   150: aload_1
     //   151: getfield 114	android/graphics/BitmapFactory$Options:outWidth	I
     //   154: i2l
@@ -104,7 +104,7 @@ public class NearbyImgLoader$RequestLoadedImgTask
     //   165: aload 4
     //   167: invokevirtual 106	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   170: aload_1
-    //   171: invokestatic 111	bdhj:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   171: invokestatic 111	bgmo:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   174: astore_1
     //   175: aload_0
     //   176: getfield 15	com/tencent/mobileqq/freshnews/feed/NearbyImgLoader$RequestLoadedImgTask:this$0	Lcom/tencent/mobileqq/freshnews/feed/NearbyImgLoader;
@@ -122,7 +122,7 @@ public class NearbyImgLoader$RequestLoadedImgTask
     //   204: ifeq +146 -> 350
     //   207: aload 4
     //   209: invokeinterface 141 1 0
-    //   214: checkcast 143	asib
+    //   214: checkcast 143	auoq
     //   217: astore 5
     //   219: aload 5
     //   221: ifnull -24 -> 197
@@ -201,7 +201,7 @@ public class NearbyImgLoader$RequestLoadedImgTask
     //   323	19	1	localObject3	Object
     //   38	303	3	str	java.lang.String
     //   60	148	4	localObject5	Object
-    //   217	3	5	localasib	asib
+    //   217	3	5	localauoq	auoq
     //   293	46	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
     // Exception table:
     //   from	to	target	type
@@ -230,7 +230,7 @@ public class NearbyImgLoader$RequestLoadedImgTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahzi
-  extends aqru
+class ahzi
+  implements DialogInterface.OnClickListener
 {
-  public ahzi(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  ahzi(ahzf paramahzf) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+    paramDialogInterface.dismiss();
+    bgmg.d(this.a.g);
+    this.a.g = "";
   }
 }
 

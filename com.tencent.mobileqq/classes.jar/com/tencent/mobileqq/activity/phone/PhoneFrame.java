@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ailh;
+import akcb;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 public class PhoneFrame
   extends PhoneInnerFrame
 {
-  private ailh a;
+  private akcb a;
   
   public PhoneFrame(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class PhoneFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected ailh a()
+  protected akcb a()
   {
     return this.a;
   }
@@ -35,14 +35,14 @@ public class PhoneFrame
     a().finish();
   }
   
-  public void setPhoneContext(ailh paramailh)
+  public void setPhoneContext(akcb paramakcb)
   {
-    this.a = paramailh;
+    this.a = paramakcb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-class arkx
-  implements arip
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.dating.DatingUtil.1;
+
+public class arkx
+  implements DialogInterface.OnClickListener
 {
-  arkx(arkq paramarkq) {}
+  public arkx(DatingUtil.1 param1) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false, arqo.a(this.a.a.a()), this.a.c(), new arky(this));
-  }
-  
-  public void b()
-  {
-    this.a.v();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+
 public abstract interface amxx
 {
-  public abstract void a(amxz paramamxz);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 

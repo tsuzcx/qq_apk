@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afib;
+import agpj;
 import android.widget.ImageView;
 
 class ApolloItemBuilder$1$1
@@ -16,7 +16,7 @@ class ApolloItemBuilder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

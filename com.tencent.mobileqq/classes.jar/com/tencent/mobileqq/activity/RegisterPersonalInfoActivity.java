@@ -1,33 +1,37 @@
 package com.tencent.mobileqq.activity;
 
-import aduo;
-import alud;
+import Override;
+import afay;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import axmf;
-import axmj;
-import azqs;
-import bdin;
-import bebv;
-import bhsj;
+import anni;
+import baim;
+import baiq;
+import bcst;
+import bgnt;
+import bhix;
+import bkft;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RegisterPersonalInfoActivity
   extends RegisterNewBaseActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private axmj jdField_a_of_type_Axmj;
-  private bebv jdField_a_of_type_Bebv;
+  private baiq jdField_a_of_type_Baiq;
+  private bhix jdField_a_of_type_Bhix;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private boolean jdField_a_of_type_Boolean;
   
@@ -38,19 +42,19 @@ public class RegisterPersonalInfoActivity
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_send_sms", false);
-    b(alud.a(2131713749));
+    b(anni.a(2131712128));
     b();
     a(80);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363587));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363785));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131371165));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new aduo(this));
-    if (this.jdField_a_of_type_Bebv != null)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131371724));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new afay(this));
+    if (this.jdField_a_of_type_Bhix != null)
     {
-      this.jdField_a_of_type_Bebv.a();
+      this.jdField_a_of_type_Bhix.a();
       return;
     }
-    this.jdField_a_of_type_Bebv = new bebv(this, findViewById(2131369148), 2);
+    this.jdField_a_of_type_Bhix = new bhix(this, findViewById(2131369537), 2);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4, int paramInt)
@@ -76,53 +80,61 @@ public class RegisterPersonalInfoActivity
     String str = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
     if ((TextUtils.isEmpty(str)) || (str.trim().length() == 0))
     {
-      a(2131717495, 1);
+      a(2131715743, 1);
       return false;
     }
     return true;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 2) && (paramInt2 == -1) && (this.jdField_a_of_type_Bebv != null) && (this.jdField_a_of_type_Bebv.jdField_a_of_type_Axmf != null)) {
-      this.jdField_a_of_type_Bebv.jdField_a_of_type_Axmf.a(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 2) && (paramInt2 == -1) && (this.jdField_a_of_type_Bhix != null) && (this.jdField_a_of_type_Bhix.jdField_a_of_type_Baim != null)) {
+      this.jdField_a_of_type_Bhix.jdField_a_of_type_Baim.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561666);
+    setContentView(2131561903);
     if (QLog.isDevelopLevel()) {
-      bebv.a(getClass().getSimpleName(), getIntent());
+      bhix.a(getClass().getSimpleName(), getIntent());
     }
     a();
-    azqs.b(this.app, "CliOper", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
-    azqs.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
+    bcst.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
     if (!this.jdField_b_of_type_Boolean)
     {
-      azqs.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 1, 0, "", "", "", "");
+      bcst.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 1, 0, "", "", "", "");
       if (this.jdField_a_of_type_Boolean) {
-        azqs.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 3, 0, "", "", "", "");
+        bcst.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 3, 0, "", "", "", "");
       }
       if (this.jdField_b_of_type_Int != 4) {
         break label232;
       }
-      azqs.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
+      bcst.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
     }
     for (;;)
     {
       return true;
-      azqs.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 2, 0, "", "", "", "");
+      bcst.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 2, 0, "", "", "", "");
       break;
       label232:
       if (this.jdField_b_of_type_Int == 5) {
-        azqs.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
+        bcst.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
       } else if (this.jdField_b_of_type_Int == 6) {
-        azqs.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "3", "", "", "", "", "", "", "");
+        bcst.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "3", "", "", "", "", "", "", "");
       } else {
-        azqs.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
+        bcst.a(this.app, "new_reg", "setting_page_no", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
       }
     }
   }
@@ -132,7 +144,7 @@ public class RegisterPersonalInfoActivity
     super.doOnNewIntent(paramIntent);
     super.setIntent(paramIntent);
     if (QLog.isDevelopLevel()) {
-      bebv.a("RegisterPersonalInfoActivity -- doOnNewIntent", getIntent());
+      bhix.a("RegisterPersonalInfoActivity -- doOnNewIntent", getIntent());
     }
     a();
   }
@@ -146,46 +158,53 @@ public class RegisterPersonalInfoActivity
   {
     switch (paramView.getId())
     {
-    default: 
-    case 2131363587: 
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_Bebv != null) && (this.jdField_a_of_type_Bebv.jdField_a_of_type_Boolean))
-        {
-          this.jdField_a_of_type_Bebv.a(true);
-          return;
-        }
-        if (!bdin.d(BaseApplication.getContext()))
-        {
-          a(2131692398, 0);
-          return;
-        }
-      } while (!a());
-      paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-      if (this.jdField_a_of_type_Axmj == null) {
-        this.jdField_a_of_type_Axmj = new axmj(this);
-      }
-      this.jdField_a_of_type_Axmj.a(paramView);
-      azqs.a(this.app, "new_reg", "setting_page_no", "reg_clk", "", 1, "");
-      return;
     }
-    bhsj.a(this);
-    new Handler().postDelayed(new RegisterPersonalInfoActivity.2(this), 200L);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Bhix != null) && (this.jdField_a_of_type_Bhix.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Bhix.a(true);
+      }
+      else if (!bgnt.d(BaseApplication.getContext()))
+      {
+        a(2131691985, 0);
+      }
+      else if (a())
+      {
+        String str = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+        if (this.jdField_a_of_type_Baiq == null) {
+          this.jdField_a_of_type_Baiq = new baiq(this);
+        }
+        this.jdField_a_of_type_Baiq.a(str);
+        bcst.a(this.app, "new_reg", "setting_page_no", "reg_clk", "", 1, "");
+        continue;
+        bkft.a(this);
+        new Handler().postDelayed(new RegisterPersonalInfoActivity.2(this), 200L);
+      }
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     c();
-    if (this.jdField_a_of_type_Bebv != null) {
-      this.jdField_a_of_type_Bebv.b();
+    if (this.jdField_a_of_type_Bhix != null) {
+      this.jdField_a_of_type_Bhix.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPersonalInfoActivity
  * JD-Core Version:    0.7.0.1
  */

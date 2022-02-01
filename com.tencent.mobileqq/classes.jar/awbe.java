@@ -1,22 +1,156 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.HeadSetView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
+import java.util.List;
 
-class awbe
-  implements ValueAnimator.AnimatorUpdateListener
+public class awbe
+  extends BaseAdapter
+  implements aobv
 {
-  awbe(awaw paramawaw, View paramView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avzs jdField_a_of_type_Avzs;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final HeadSetView jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
+  private final HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public awbe(QQAppInterface paramQQAppInterface, Context paramContext, HorizontalListView paramHorizontalListView, HeadSetView paramHeadSetView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * aepi.a(25.0F, awaw.a(this.jdField_a_of_type_Awaw)));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = paramHeadSetView;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  protected static final <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  private void b(@NonNull List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(avzs paramavzs)
+  {
+    this.jdField_a_of_type_Avzs = paramavzs;
+    this.jdField_a_of_type_Avzs.a(this);
+  }
+  
+  public void a(@NonNull List<String> paramList)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList.equals(paramList)) && (QLog.isColorLevel())) {
+      QLog.d("HeadAdapter", 2, new Object[] { "notifyDataSetChangedAdvance: invoked. same list, ", " newHeadSetList: ", paramList, " headSetList: ", this.jdField_a_of_type_JavaUtilList });
+    }
+    b(paramList);
+    if (this.jdField_a_of_type_JavaUtilList.size() <= this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a()) {
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(1);
+    }
+    for (;;)
+    {
+      super.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(0);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Avzs == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = (String)getItem(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559293, null);
+      paramView = new awbg(localView);
+      if (QLog.isColorLevel()) {
+        QLog.d("HeadAdapter", 2, new Object[] { "getView: invoked. ", " position: ", Integer.valueOf(paramInt) });
+      }
+      paramView.jdField_a_of_type_JavaLangString = str;
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      localView.setOnClickListener(new awbf(this, str));
+      Bitmap localBitmap = this.jdField_a_of_type_Avzs.a(paramView.jdField_a_of_type_JavaLangString);
+      Object localObject = localBitmap;
+      if (localBitmap == null) {
+        localObject = bgmo.a();
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      awao.a(localView, bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 0) + "正在共享位置");
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (awbg)paramView.getTag();
+      ((awbg)localObject).jdField_a_of_type_JavaLangString = str;
+      localView = paramView;
+      paramView = (View)localObject;
+    }
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    paramInt2 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildCount();
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 < paramInt2)
+      {
+        Object localObject = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(paramInt1).getTag();
+        if (!(localObject instanceof awbg)) {
+          break label87;
+        }
+        localObject = (awbg)localObject;
+        if ((paramString == null) || (!paramString.equals(((awbg)localObject).jdField_a_of_type_JavaLangString))) {
+          break label87;
+        }
+        if (paramBitmap != null)
+        {
+          paramString = this.jdField_a_of_type_Avzs.a(paramString);
+          if (paramString != null) {
+            ((awbg)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
+          }
+        }
+      }
+      return;
+      label87:
+      paramInt1 += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbe
  * JD-Core Version:    0.7.0.1
  */

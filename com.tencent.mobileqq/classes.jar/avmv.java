@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 
-class avmv
-  implements DialogInterface.OnClickListener
+public final class avmv
+  implements Parcelable.Creator<WatchTogetherSession>
 {
-  avmv(avmf paramavmf) {}
+  public WatchTogetherSession a(Parcel paramParcel)
+  {
+    return new WatchTogetherSession(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public WatchTogetherSession[] a(int paramInt)
+  {
+    return new WatchTogetherSession[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmv
  * JD-Core Version:    0.7.0.1
  */

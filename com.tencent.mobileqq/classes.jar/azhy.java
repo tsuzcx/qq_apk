@@ -1,11 +1,18 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.widget.RoundedImageView;
 
 public class azhy
+  extends RecyclerView.ViewHolder
 {
-  public azhj a;
-  public AtomicBoolean a = new AtomicBoolean(false);
-  public azhj b;
-  public azhj c;
+  public RoundedImageView a;
+  public boolean a;
+  
+  public azhy(azhw paramazhw, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131376597));
+  }
 }
 
 

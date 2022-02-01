@@ -1,24 +1,27 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class tjh
-  extends tjd<tiw, WSPushStrategyInfo>
+  implements tja
 {
-  public tjh(tiw paramtiw)
+  private final ViewPagerCompat a;
+  
+  public tjh(ViewPagerCompat paramViewPagerCompat)
   {
-    super(paramtiw);
+    this.a = paramViewPagerCompat;
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public void a(tjf paramtjf)
   {
-    WSHomeFragment.a(paramContext);
-    return true;
+    this.a.setCurrentItem(paramtjf.a());
   }
+  
+  public void b(tjf paramtjf) {}
+  
+  public void c(tjf paramtjf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tjh
  * JD-Core Version:    0.7.0.1
  */

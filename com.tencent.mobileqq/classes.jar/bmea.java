@@ -1,14 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
+import android.content.Context;
+import android.content.ServiceConnection;
+import java.lang.ref.WeakReference;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public abstract class bmea
+public class bmea
 {
-  public abstract void a(@NonNull Runnable paramRunnable);
+  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bmeb();
+  static bmde jdField_a_of_type_Bmde;
+  private static WeakReference<bmec> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public abstract boolean a();
+  public static void a(Context paramContext, bmec parambmec)
+  {
+    if ((jdField_a_of_type_Bmde != null) && (jdField_a_of_type_Bmde.b()))
+    {
+      if (parambmec != null) {
+        parambmec.a(jdField_a_of_type_Bmde);
+      }
+      return;
+    }
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmec);
+    bmcy.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
+  }
   
-  public abstract void b(@NonNull Runnable paramRunnable);
+  private static void b()
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+  }
 }
 
 

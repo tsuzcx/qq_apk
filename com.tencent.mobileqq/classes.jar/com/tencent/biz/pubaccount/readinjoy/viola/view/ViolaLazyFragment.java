@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import ajen;
+import akwo;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -18,22 +18,26 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bqcd;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import rdm;
-import srl;
-import srm;
+import ryx;
+import tsv;
+import tsw;
 
 public abstract class ViolaLazyFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int = 0;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new srl(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tsv(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -63,18 +67,18 @@ public abstract class ViolaLazyFragment
   
   private void a(NavBarCommon paramNavBarCommon)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368624));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368947));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131378616));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131368979));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131379468));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131369362));
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368670));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368655));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131368638));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368994));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368979));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131368961));
   }
   
   public abstract int a();
@@ -94,6 +98,8 @@ public abstract class ViolaLazyFragment
     return this.jdField_a_of_type_JavaLangBoolean;
   }
   
+  public abstract void a();
+  
   public void a(float paramFloat)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setAlpha(paramFloat);
@@ -102,11 +108,11 @@ public abstract class ViolaLazyFragment
   public void a(int paramInt, ViewGroup paramViewGroup)
   {
     if ((a() == null) || (a().getParent() == null)) {
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558913, paramViewGroup, false));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558979, paramViewGroup, false);
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378043));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378887));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
@@ -114,7 +120,7 @@ public abstract class ViolaLazyFragment
       }
       paramViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131375863);
+      localLayoutParams.addRule(3, 2131376599);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup, localLayoutParams);
       this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
       return;
@@ -154,7 +160,7 @@ public abstract class ViolaLazyFragment
     label37:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      ajen.a(localFragmentActivity, paramBoolean1);
+      akwo.a(localFragmentActivity, paramBoolean1);
       this.jdField_a_of_type_JavaLangBoolean = paramBoolean;
       return;
     }
@@ -192,11 +198,6 @@ public abstract class ViolaLazyFragment
     return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
   }
   
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   protected void b(ViewGroup paramViewGroup)
   {
     if ((getUserVisibleHint()) && (!this.jdField_c_of_type_Boolean))
@@ -205,7 +206,7 @@ public abstract class ViolaLazyFragment
       c(paramViewGroup);
       return;
     }
-    j();
+    k();
   }
   
   public void b(String paramString)
@@ -228,12 +229,15 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  public abstract void c();
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
   protected void c(ViewGroup paramViewGroup)
   {
     a(a(), paramViewGroup);
-    d();
+    e();
     a(getArguments(), this.jdField_b_of_type_AndroidViewViewGroup);
   }
   
@@ -258,15 +262,6 @@ public abstract class ViolaLazyFragment
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundColor(-1);
   }
   
-  public void d()
-  {
-    if (getActivity() == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375863));
-    a(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
-  }
-  
   public void d(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -278,7 +273,14 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  protected void e() {}
+  public void e()
+  {
+    if (getActivity() == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376599));
+    a(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
+  }
   
   public void e(String paramString)
   {
@@ -291,16 +293,7 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  protected void f()
-  {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ajen.a(localFragmentActivity, bool);
-      return;
-    }
-  }
+  protected void f() {}
   
   public void f(String paramString)
   {
@@ -313,7 +306,16 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  protected void g() {}
+  protected void g()
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      akwo.a(localFragmentActivity, bool);
+      return;
+    }
+  }
   
   public void g(String paramString)
   {
@@ -323,14 +325,14 @@ public abstract class ViolaLazyFragment
         break label46;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130848998));
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849526));
     }
     label46:
     while (!"drawable_white".equals(paramString)) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850060));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850652));
   }
   
   protected void h() {}
@@ -350,13 +352,15 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  protected void j()
+  protected void j() {}
+  
+  protected void k()
   {
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558913, this.jdField_a_of_type_AndroidViewViewGroup, false));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558979, this.jdField_a_of_type_AndroidViewViewGroup, false);
     a(getArguments());
   }
   
-  public void k()
+  public void l()
   {
     if ((!this.jdField_c_of_type_Boolean) && (a() != null))
     {
@@ -365,7 +369,7 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  public void l()
+  public void m()
   {
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
@@ -397,31 +401,17 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  public void m()
+  public void n()
   {
     if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
       this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarVisible(2, 0);
     }
   }
   
-  public void n()
+  public void o()
   {
     if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
       this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarVisible(0, 0);
-    }
-  }
-  
-  public void o()
-  {
-    if (((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
-    {
-      Window localWindow = getActivity().getWindow();
-      if (localWindow != null) {
-        localWindow.setFlags(1024, 1024);
-      }
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = getActivity().mSystemBarComp;
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-      m();
     }
   }
   
@@ -451,10 +441,12 @@ public abstract class ViolaLazyFragment
       a(getActivity(), 16777216);
     }
     b(paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    for (paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);; paramLayoutInflater = this.jdField_a_of_type_AndroidViewView)
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
     }
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroyView()
@@ -463,7 +455,7 @@ public abstract class ViolaLazyFragment
     this.jdField_b_of_type_AndroidViewViewGroup = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
     if (this.jdField_c_of_type_Boolean) {
-      i();
+      j();
     }
     this.jdField_c_of_type_Boolean = false;
   }
@@ -472,7 +464,7 @@ public abstract class ViolaLazyFragment
   {
     super.onPause();
     if (this.jdField_c_of_type_Boolean) {
-      g();
+      h();
     }
   }
   
@@ -491,9 +483,9 @@ public abstract class ViolaLazyFragment
     label53:
     for (boolean bool = true;; bool = false)
     {
-      ajen.a(localFragmentActivity, bool);
+      akwo.a(localFragmentActivity, bool);
       if (this.jdField_c_of_type_Boolean) {
-        f();
+        g();
       }
       return;
     }
@@ -502,11 +494,12 @@ public abstract class ViolaLazyFragment
   public void onStart()
   {
     super.onStart();
+    VideoReport.addToDetectionWhitelist(getActivity());
     QLog.d("ViolaLazyFragment", 2, "debugForTimeCost onStart:" + System.currentTimeMillis());
     if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean) && (getUserVisibleHint()))
     {
       this.jdField_a_of_type_Boolean = true;
-      e();
+      f();
     }
   }
   
@@ -516,7 +509,7 @@ public abstract class ViolaLazyFragment
     if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (getUserVisibleHint()))
     {
       this.jdField_a_of_type_Boolean = false;
-      h();
+      i();
     }
   }
   
@@ -524,17 +517,31 @@ public abstract class ViolaLazyFragment
   {
     super.onWindowFocusChanged(paramBoolean);
     if (this.jdField_d_of_type_Boolean) {
-      s();
+      t();
     }
   }
   
   public void p()
   {
+    if (((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
+    {
+      Window localWindow = getActivity().getWindow();
+      if (localWindow != null) {
+        localWindow.setFlags(1024, 1024);
+      }
+      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = getActivity().mSystemBarComp;
+      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
+      n();
+    }
+  }
+  
+  public void q()
+  {
     try
     {
       if (a() != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)a().findViewById(2131375863));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)a().findViewById(2131376599));
         this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility();
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() == 0) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(8);
@@ -549,11 +556,11 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  public void q()
+  public void r()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375863));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376599));
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() != 0) && (this.jdField_a_of_type_Int == 0)) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(0);
       }
@@ -566,7 +573,7 @@ public abstract class ViolaLazyFragment
     }
   }
   
-  public void r()
+  public void s()
   {
     if (!this.jdField_b_of_type_Boolean) {
       a("#ffffff");
@@ -578,52 +585,57 @@ public abstract class ViolaLazyFragment
     f("#000000");
   }
   
-  public void s()
-  {
-    if (this.jdField_b_of_type_Int < 0) {
-      this.jdField_b_of_type_Int = getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    }
-    rdm.a(getActivity());
-  }
-  
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
     if ((paramBoolean) && (!this.jdField_c_of_type_Boolean)) {
-      k();
+      l();
     }
     if ((this.jdField_c_of_type_Boolean) && (a() != null))
     {
       if (paramBoolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        e();
         f();
+        g();
       }
     }
     else {
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    g();
     h();
+    i();
   }
   
   public void t()
   {
-    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new srm(this));
-    int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
+    if (this.jdField_b_of_type_Int < 0) {
+      this.jdField_b_of_type_Int = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    }
+    ryx.a(getActivity());
   }
   
   public void u()
   {
+    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new tsw(this));
+    int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
+  }
+  
+  public void v()
+  {
     a(getActivity(), 1024);
+    bqcd.a(getActivity());
+    if (bqcd.b()) {
+      bqcd.c(getActivity());
+    }
+    VideoFeedsPlayActivity.a(getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment
  * JD-Core Version:    0.7.0.1
  */

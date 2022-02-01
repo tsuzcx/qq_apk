@@ -1,40 +1,32 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajsx
-  implements baug
+  implements View.OnClickListener
 {
-  public void onResp(bavf parambavf)
-  {
-    Object localObject = (ajta)parambavf.jdField_a_of_type_Bave.a();
-    lek.c("VideoFilterTools", "download file call back. file = " + ((ajta)localObject).a);
-    if (parambavf.jdField_a_of_type_Int != 0)
-    {
-      lek.c("VideoFilterTools", "download file faild. errcode = " + parambavf.b);
-      return;
-    }
-    if (!((ajta)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
-    {
-      lek.c("VideoFilterTools", "download file faild : md5 is not match.");
-      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-      return;
-    }
-    lek.c("VideoFilterTools", "download file successed.");
-    try
-    {
-      localObject = ajsv.a();
-      bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
-      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-      return;
-    }
-    catch (IOException parambavf)
-    {
-      parambavf.printStackTrace();
-      lek.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
-    }
-  }
+  ajsx(ajsw paramajsw) {}
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368947));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Ajtv != null) {
+      this.a.a.jdField_a_of_type_Ajtv.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

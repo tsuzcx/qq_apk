@@ -15,6 +15,10 @@ public class TPMediaCodecManager
   private static AtomicInteger codecNum = new AtomicInteger(0);
   private static SparseArray<ITPMediaCodecDecoder> mCodecList = new SparseArray();
   
+  private static native void _onMediaCodecException(int paramInt, String paramString);
+  
+  private static native void _onMediaCodecReady(int paramInt, String paramString);
+  
   private static void addCodecToList(int paramInt, ITPMediaCodecDecoder paramITPMediaCodecDecoder)
   {
     try
@@ -33,7 +37,7 @@ public class TPMediaCodecManager
     }
     int i = codecNum.getAndIncrement();
     if (paramBoolean) {}
-    for (Object localObject = new TPMediaCodecAudioDecoder();; localObject = new TPMediaCodecVideoDecoder())
+    for (Object localObject = new TPMediaCodecAudioDecoder(i);; localObject = new TPMediaCodecVideoDecoder(i))
     {
       addCodecToList(i, (ITPMediaCodecDecoder)localObject);
       return i;
@@ -102,6 +106,16 @@ public class TPMediaCodecManager
       return false;
     }
     return localITPMediaCodecDecoder.startDecoder();
+  }
+  
+  public static void onMediaCodecException(int paramInt, String paramString)
+  {
+    _onMediaCodecException(paramInt, paramString);
+  }
+  
+  public static void onMediaCodecReady(int paramInt, String paramString)
+  {
+    _onMediaCodecReady(paramInt, paramString);
   }
   
   @TPMethodCalledByNative
@@ -173,6 +187,18 @@ public class TPMediaCodecManager
       return;
     }
     localITPMediaCodecDecoder.setCryptoInfo(paramInt2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfByte1, paramArrayOfByte2, paramInt3);
+  }
+  
+  @TPMethodCalledByNative
+  public static int setMediaCodecOperateRate(int paramInt, float paramFloat)
+  {
+    ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt);
+    if (localITPMediaCodecDecoder == null)
+    {
+      TPNativeLog.printLog(3, "TPMediaCodecManager", "setMediaCodecOperateRate failed!");
+      return 3;
+    }
+    return localITPMediaCodecDecoder.setOperateRate(paramFloat);
   }
   
   @TPMethodCalledByNative
@@ -273,7 +299,7 @@ public class TPMediaCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,37 @@
-import android.text.style.CharacterStyle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
 
 class r
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  char jdField_a_of_type_Char;
-  int jdField_a_of_type_Int;
-  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  r(q paramq) {}
   
-  public String toString()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return "FounderColorModel{type=" + this.jdField_a_of_type_Int + ", charAt=" + this.jdField_a_of_type_Char + ", width=" + this.b + ", height=" + this.c + ", left=" + this.d + ", top=" + this.e + ", lineIndex=" + this.f + ", isMissingWord=" + this.jdField_a_of_type_Boolean + '}';
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i >= this.a.i[0])
+    {
+      this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.e = 0;
+      this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
+      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+      if (this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener != null) {
+        this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener.a(this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      }
+    }
+    while (i <= this.a.e) {
+      return;
+    }
+    this.a.e = i;
+    this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     r
  * JD-Core Version:    0.7.0.1
  */

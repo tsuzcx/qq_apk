@@ -1,26 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
 
-class amxv
-  implements DialogInterface.OnClickListener
+public abstract interface amxv
 {
-  amxv(amxu paramamxu) {}
+  public abstract String a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131690232, 0).a();
-      paramDialogInterface.dismiss();
-      azqs.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
-      return;
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
+  
+  public abstract String a(amxs paramamxs);
+  
+  public abstract String a(String paramString);
+  
+  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
+  
+  public abstract String a(int[] paramArrayOfInt);
+  
+  public abstract void a(int paramInt, int[] paramArrayOfInt);
+  
+  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

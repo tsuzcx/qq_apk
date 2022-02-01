@@ -1,17 +1,25 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
 
-class afsh
-  extends afuf
+public class afsh
+  implements Handler.Callback
 {
-  afsh(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsh(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new aojq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (ActivateFriendActivity.a(this.a) != null) {
+        ActivateFriendActivity.a(this.a).e();
+      }
+    }
   }
 }
 

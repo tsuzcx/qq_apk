@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class aytq
-  extends ayuf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class aytq
+  implements DialogInterface.OnClickListener
 {
-  public aytq(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
-  }
+  aytq(Function0 paramFunction0) {}
   
-  public aynt a(List<aynu> paramList, String paramString)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new aynd(paramList, paramString, GroupSearchEngine.a(this.a));
+    this.a.invoke();
   }
 }
 

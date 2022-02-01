@@ -1,32 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import org.json.JSONObject;
 
-public final class aask
+public class aask
 {
-  private static aasl a(int paramInt)
-  {
-    aast localaast = null;
-    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
-      localaast = new aast();
-    }
-    return localaast;
-  }
+  public float a;
+  public String a;
+  public boolean a;
+  public float b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public aask(JSONObject paramJSONObject)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
-    aasl localaasl;
-    do
-    {
-      do
-      {
-        aasr.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-      } while ((paramInt2 < 0) || (paramInt2 >= 4));
-      localaasl = a(paramInt2);
-    } while (localaasl == null);
-    localaasl.a(paramInt1, paramInt2, paramAdInfo);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("startTime");
+    this.c = paramJSONObject.optString("endTime");
+    this.d = paramJSONObject.optString("jumpUrl");
+    this.jdField_a_of_type_Float = ((float)paramJSONObject.optDouble("durationStart"));
+    this.jdField_b_of_type_Float = ((float)paramJSONObject.optDouble("durationEnd"));
+    this.e = paramJSONObject.optString("replaceImage");
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("replace");
   }
 }
 

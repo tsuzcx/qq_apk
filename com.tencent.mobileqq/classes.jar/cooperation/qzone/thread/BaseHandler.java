@@ -6,9 +6,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
-import bjtm;
-import bjtn;
-import bjto;
+import bmhw;
+import bmhx;
+import bmhy;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,13 +16,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  static ThreadLocal<Integer> InitalPriority = new bjtn();
+  static ThreadLocal<Integer> InitalPriority = new bmhx();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal<Boolean> isRegulated = new bjto();
+  public static ThreadLocal<Boolean> isRegulated = new bmhy();
   static AtomicInteger regulalteCount = new AtomicInteger(0);
   static Runnable regultorPriority = new BaseHandler.4();
   static Runnable resetPriority = new BaseHandler.5();
@@ -34,7 +34,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new bjtm(this));
+      paramLooper.setMessageLogging(new bmhw(this));
     }
   }
   
@@ -257,7 +257,7 @@ public class BaseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler
  * JD-Core Version:    0.7.0.1
  */

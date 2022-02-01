@@ -1,34 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class waq
-  extends umf<wah, vcz>
+  extends aniz
 {
-  public waq(wah paramwah)
-  {
-    super(paramwah);
-  }
+  public waq(QCircleInsFeedItemView paramQCircleInsFeedItemView) {}
   
-  public void a(@NonNull wah paramwah, @NonNull vcz paramvcz)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    if ((paramwah.a != null) && (paramvcz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcz.jdField_a_of_type_JavaUtilList.contains(paramwah.a.a)))
+    if (paramBoolean)
     {
-      wxe.a(this.TAG, "receive tag info change event. %s", paramvcz.toString());
-      paramwah.i();
+      String str = paramCard.strNick;
+      if (QCircleInsFeedItemView.a(this.a) != null) {
+        QCircleInsFeedItemView.a(this.a).a(paramCard.strNick, paramCard.uin);
+      }
+      if (uxx.a(paramCard.uin))
+      {
+        uxc.a().nick.set(str);
+        uxc.a(str);
+      }
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return vcz.class;
-  }
-  
-  public void b(@NonNull wah paramwah, @NonNull vcz paramvcz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     waq
  * JD-Core Version:    0.7.0.1
  */

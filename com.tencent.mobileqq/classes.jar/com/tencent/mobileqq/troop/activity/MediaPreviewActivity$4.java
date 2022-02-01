@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import auuc;
-import auul;
+import axbo;
+import axby;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ class MediaPreviewActivity$4
     String str1;
     if (this.this$0.app != null)
     {
-      int j = ((auul)this.this$0.app.getManager(106)).b();
+      int j = ((axby)this.this$0.app.getManager(106)).b();
       if ((this.this$0.b <= 0) || (((MediaPreviewInfo)this.this$0.a.get(0)).a != 2)) {
         break label108;
       }
@@ -35,7 +35,7 @@ class MediaPreviewActivity$4
     label119:
     for (String str2 = "2";; str2 = "1")
     {
-      auuc.a("clk_detail", "", new String[] { "", str1, "", str2 });
+      axbo.a("clk_detail", "", new String[] { "", str1, "", str2 });
       return;
       i = 0;
       break;
@@ -46,7 +46,7 @@ class MediaPreviewActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

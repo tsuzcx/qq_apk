@@ -1,8 +1,9 @@
-public abstract interface bkkj<T>
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
+
+public abstract interface bkkj
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
-  
-  public abstract void a(T paramT);
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong);
 }
 
 

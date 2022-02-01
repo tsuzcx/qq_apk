@@ -1,279 +1,82 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Method;
+import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
+import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.auth.UserAuthInfo;
+import com.tencent.qqmini.sdk.launcher.core.auth.UserSettingInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.AuthListResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-public class bjvp
+class bjvp
+  implements MiniAppCmdInterface
 {
-  public static final int a;
-  public static final String a;
-  public static int b = -1;
+  bjvp(bjvo parambjvo, ChannelProxy.AuthListResult paramAuthListResult) {}
   
-  static
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    jdField_a_of_type_JavaLangString = "[PhotoAlbum]" + bjvp.class.getSimpleName();
-    jdField_a_of_type_Int = a(27);
-  }
-  
-  public static int a(int paramInt)
-  {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    float f = paramInt;
-    return (int)(localDisplayMetrics.density * f + 0.5F);
-  }
-  
-  private static int a(Context paramContext)
-  {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
-    }
-    return i;
-  }
-  
-  public static int a(Context paramContext, Activity paramActivity)
-  {
-    if (b != -1)
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "has notchHeight:", Integer.valueOf(b) });
-      return b;
-    }
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.MODEL:", Build.MODEL });
-    if (b(paramContext)) {
-      b = jdField_a_of_type_Int;
-    }
-    for (;;)
-    {
-      return b;
-      if (a(paramContext)) {
-        b = 80;
-      } else if (c(paramContext)) {
-        b = a(paramContext)[1];
-      } else if ((d(paramContext)) || (e(paramContext)) || (c())) {
-        b = a(paramContext);
-      } else if (d()) {
-        b = 121;
-      } else if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null)) {
-        b = a(paramActivity.getWindow().getDecorView()).top;
-      }
-    }
-  }
-  
-  @NonNull
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect();
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.VERSION.SDK_INT:", Integer.valueOf(Build.VERSION.SDK_INT) });
-    if (Build.VERSION.SDK_INT >= 23) {
-      try
+      localObject1 = paramJSONObject.opt("authList");
+      if ((localObject1 instanceof byte[]))
       {
-        paramView = bjue.a(paramView, "getRootWindowInsets", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "insets:", paramView });
-        Object localObject3 = bjue.a(paramView, "getDisplayCutout", false, null, null);
-        if (localObject3 == null)
+        paramJSONObject = new INTERFACE.StGetAuthListRsp();
+        try
         {
-          QZLog.d(jdField_a_of_type_JavaLangString, 1, "displayCutout == null");
-          return localRect;
+          paramJSONObject.mergeFrom((byte[])localObject1);
+          localObject1 = paramJSONObject.auths.get().iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (INTERFACE.StUserAuthInfo)((Iterator)localObject1).next();
+            UserAuthInfo localUserAuthInfo = new UserAuthInfo();
+            localUserAuthInfo.scope = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
+            localUserAuthInfo.desc = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
+            localUserAuthInfo.authState = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
+            localArrayList1.add(localUserAuthInfo);
+          }
+          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult == null) {
+            break label208;
+          }
         }
-        paramView = bjue.a(localObject3, "getSafeInsetTop", false, null, null);
-        Object localObject1 = bjue.a(localObject3, "getSafeInsetBottom", false, null, null);
-        Object localObject2 = bjue.a(localObject3, "getSafeInsetLeft", false, null, null);
-        localObject3 = bjue.a(localObject3, "getSafeInsetRight", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "safeInsetTop:", paramView, " safeInsetBottom:", localObject1, " safeInsetLeft:", localObject2, " safeInsetRight:", localObject3 });
-        if ((localObject2 instanceof Integer)) {
-          localRect.left = ((Integer)localObject2).intValue();
-        }
-        if ((localObject1 instanceof Integer)) {
-          localRect.bottom = ((Integer)localObject1).intValue();
-        }
-        if ((localObject3 instanceof Integer)) {
-          localRect.right = ((Integer)localObject3).intValue();
-        }
-        if ((paramView instanceof Integer))
+        catch (InvalidProtocolBufferMicroException paramJSONObject)
         {
-          localRect.top = ((Integer)paramView).intValue();
-          return localRect;
+          QLog.e("ChannelProxyImpl", 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          paramJSONObject.printStackTrace();
         }
       }
-      catch (Exception paramView)
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(false, localArrayList1, localArrayList2);
+    label208:
+    do
+    {
+      return;
+      paramJSONObject = paramJSONObject.settings.get().iterator();
+      while (paramJSONObject.hasNext())
       {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, paramView, new Object[0]);
+        localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
+        localObject2 = new UserSettingInfo();
+        ((UserSettingInfo)localObject2).settingItem = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
+        ((UserSettingInfo)localObject2).authState = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
+        ((UserSettingInfo)localObject2).desc = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
       }
-    }
-    return localRect;
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2)
-  {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class, String.class }).invoke(paramContext, new Object[] { new String(paramString1), new String(paramString2) });
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      return paramString2;
-    }
-    catch (IllegalArgumentException paramContext) {}
-    return paramString2;
-  }
-  
-  private static boolean a()
-  {
-    return Build.MODEL.endsWith("L78011");
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
-      return paramContext;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize ClassNotFoundException");
-      return arrayOfInt;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize NoSuchMethodException");
-      return arrayOfInt;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize Exception");
-      return arrayOfInt;
-    }
-    finally {}
-    return arrayOfInt;
-  }
-  
-  private static boolean b()
-  {
-    return "GM1910".equals(Build.MODEL);
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    try
-    {
-      paramContext = bjue.a("android.util.FtFeature", "isFeatureSupport", false, bjvs.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(32) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
-  }
-  
-  private static boolean c()
-  {
-    return (a()) || (b()) || (e()) || ("Pixel 3 XL".equals(Build.MODEL));
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen ClassNotFoundException");
-      return false;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen NoSuchMethodException");
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen Exception");
-      return false;
-    }
-    finally {}
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    return "FS8010".equals(Build.MODEL);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    paramContext = a(paramContext, "ro.miui.notch", "0");
-    if (paramContext != null) {
-      return paramContext.equals("1");
-    }
-    return false;
-  }
-  
-  private static boolean e()
-  {
-    return "SM-F9000".equals(Build.MODEL);
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    try
-    {
-      paramContext = bjue.a("smartisanos.api.DisplayUtilsSmt", "isFeatureSupport", false, bjvs.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(1) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
+    } while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult == null);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(true, localArrayList1, localArrayList2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvp
  * JD-Core Version:    0.7.0.1
  */

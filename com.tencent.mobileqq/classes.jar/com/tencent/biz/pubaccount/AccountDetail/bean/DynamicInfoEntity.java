@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.AccountDetail.bean;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class DynamicInfoEntity
-  extends awge
+  extends Entity
 {
   public byte[] dynamicInfoData;
-  @awhs
+  @unique
   public String puin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity
  * JD-Core Version:    0.7.0.1
  */

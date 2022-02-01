@@ -1,248 +1,328 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.selectable.CommonMenuWrapper.1;
+import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class alqj
+  implements alqv
 {
-  public static Comparator<awge> a = new alqk();
+  private static final int e = bgtn.b(72.0F);
+  private static final int f = bgtn.b(63.0F);
+  public int a;
+  private alqt jdField_a_of_type_Alqt;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  bguh jdField_a_of_type_Bguh;
+  private bkiz jdField_a_of_type_Bkiz;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public int b;
+  private bguh b;
+  private int jdField_c_of_type_Int;
+  private bguh jdField_c_of_type_Bguh;
+  private int d;
   
-  private static int a(char paramChar)
+  private void c()
   {
-    if (((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'))) {
-      return 1;
+    if (this.jdField_a_of_type_Alqt == null) {
+      throw new IllegalStateException("Delegate has not bound.");
     }
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return 10;
-    }
-    return 5;
   }
   
-  public static int a(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public int a()
   {
-    if (paramInt1 > paramInt2) {
-      return 1;
-    }
-    if (paramInt1 < paramInt2) {
-      return -1;
-    }
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    return str.compareTo(paramString1);
+    return this.jdField_c_of_type_Int;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public alqk a(View paramView, BaseChatPie paramBaseChatPie)
   {
-    int k = 1;
-    int i;
+    int m = 0;
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationInWindow(arrayOfInt);
+    int n = arrayOfInt[1];
+    int i = arrayOfInt[1];
+    i = paramView.getHeight() + i;
+    paramView = paramBaseChatPie;
+    if (paramBaseChatPie == null)
+    {
+      paramView = paramBaseChatPie;
+      if ((this instanceof alqb)) {
+        paramView = ((alqb)this).a;
+      }
+    }
     int j;
-    if (paramString1 != null)
+    int k;
+    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
     {
-      i = paramString1.length();
-      if (paramString2 == null) {
-        break label40;
+      paramView.a.getLocationInWindow(arrayOfInt);
+      j = arrayOfInt[1];
+      if (n + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
+        break label344;
       }
-      j = paramString2.length();
-      label21:
-      if ((i != 0) && (j != 0)) {
-        break label45;
+      if (i + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
+        break label221;
       }
-      i -= j;
+      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.jdField_c_of_type_Int)) {
+        break label171;
+      }
+      i = this.jdField_a_of_type_Int + 0;
+      k = m;
     }
-    label40:
-    label45:
-    char[] arrayOfChar1;
-    char[] arrayOfChar2;
-    label175:
-    label180:
-    label233:
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return i;
-          i = 0;
-          break;
-          j = 0;
-          break label21;
-          arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
-          arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
-          j = a(arrayOfChar1[0]);
-          m = a(arrayOfChar2[0]);
-          i = k;
-        } while (j > m);
-        if (j < m) {
-          return -1;
-        }
-        i = k;
-      } while (arrayOfChar1[0] > arrayOfChar2[0]);
-      if (arrayOfChar1[0] < arrayOfChar2[0]) {
-        return -1;
-      }
-      if (paramString1.charAt(0) < 'ÿ')
-      {
-        i = 1;
-        if (paramString2.charAt(0) >= 'ÿ') {
-          break label175;
-        }
-      }
-      for (j = 1;; j = 0)
-      {
-        if ((i ^ j) == 0) {
-          break label180;
-        }
-        return paramString1.charAt(0) - paramString2.charAt(0);
-        i = 0;
-        break;
-      }
-      int m = Math.min(arrayOfChar1.length, arrayOfChar2.length);
-      j = 1;
-      for (;;)
-      {
-        if (j >= m) {
-          break label233;
-        }
-        i = k;
-        if (arrayOfChar1[j] > arrayOfChar2[j]) {
-          break;
-        }
-        if (arrayOfChar1[j] < arrayOfChar2[j]) {
-          return -1;
-        }
-        j += 1;
-      }
-      i = k;
-    } while (arrayOfChar1.length > arrayOfChar2.length);
-    if (arrayOfChar1.length < arrayOfChar2.length) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  public static String a(DiscussionInfo paramDiscussionInfo)
-  {
-    return paramDiscussionInfo.discussionName + "-" + paramDiscussionInfo.uin;
-  }
-  
-  public static String a(Friends paramFriends)
-  {
-    String str = paramFriends.getFriendNick();
-    return str + "-" + paramFriends.uin;
-  }
-  
-  public static String a(PublicAccountInfo paramPublicAccountInfo)
-  {
-    return paramPublicAccountInfo.name + "-" + paramPublicAccountInfo.uin;
-  }
-  
-  public static String a(TroopInfo paramTroopInfo)
-  {
-    if ((paramTroopInfo.hasSetTroopName()) || (TextUtils.isEmpty(paramTroopInfo.newTroopName))) {
-      return paramTroopInfo.troopname + "-" + paramTroopInfo.troopcode;
-    }
-    return paramTroopInfo.getTroopName() + "-" + paramTroopInfo.troopcode;
-  }
-  
-  public static ArrayList<awge> a(ArrayList<awge> paramArrayList, awge paramawge)
-  {
-    if (paramArrayList == null) {
-      return null;
-    }
-    paramArrayList = (ArrayList)paramArrayList.clone();
-    if (paramArrayList.size() == 0)
-    {
-      paramArrayList.add(paramawge);
-      return paramArrayList;
-    }
-    Groups localGroups1 = (Groups)paramawge;
-    int j = 0;
-    int i = paramArrayList.size() - 1;
-    if (j <= i)
-    {
-      int k = (j + i) / 2;
-      Groups localGroups2 = (Groups)paramArrayList.get(k);
-      if (localGroups1.seqid > localGroups2.seqid) {
-        j = k + 1;
-      }
-      for (;;)
-      {
-        break;
-        i = k - 1;
-      }
-    }
-    paramArrayList.add(i + 1, paramawge);
-    return paramArrayList;
-  }
-  
-  public static void a(DiscussionInfo paramDiscussionInfo)
-  {
-    String str = a(paramDiscussionInfo);
-    paramDiscussionInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramDiscussionInfo.mComparePartInt = b(str, paramDiscussionInfo.mCompareSpell);
-  }
-  
-  public static void a(Friends paramFriends)
-  {
-    String str = a(paramFriends);
-    paramFriends.mCompareSpell = ChnToSpell.a(str, 1);
-    paramFriends.mComparePartInt = b(str, paramFriends.mCompareSpell);
-  }
-  
-  public static void a(PublicAccountInfo paramPublicAccountInfo)
-  {
-    String str = a(paramPublicAccountInfo);
-    paramPublicAccountInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramPublicAccountInfo.mComparePartInt = b(str, paramPublicAccountInfo.mCompareSpell);
-  }
-  
-  public static void a(TroopInfo paramTroopInfo)
-  {
-    String str = a(paramTroopInfo);
-    paramTroopInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramTroopInfo.mComparePartInt = b(str, paramTroopInfo.mCompareSpell);
-  }
-  
-  public static int b(String paramString1, String paramString2)
-  {
-    int k = paramString2.charAt(0);
-    int i;
-    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)))
-    {
-      i = 65536;
-      if (paramString1.charAt(0) < 'ÿ') {
-        break label89;
-      }
-    }
-    label89:
-    for (int j = 1;; j = 0)
-    {
-      return j | k << 8 | i | 0x0;
-      if ((k >= 48) && (k <= 57))
-      {
-        i = 262144;
-        break;
-      }
-      i = 131072;
+      return new alqk(i, k);
+      j = bgtn.b();
       break;
+      label171:
+      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+      {
+        i = this.jdField_a_of_type_Int + 0;
+        k = 1;
+      }
+      else
+      {
+        i = e + ImmersiveUtils.jdField_c_of_type_Int;
+        k = m;
+        continue;
+        label221:
+        i += 0;
+        if (f + i > j) {
+          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.jdField_c_of_type_Int))
+          {
+            j = this.jdField_a_of_type_Int + 0;
+            i = 0;
+          }
+        }
+        for (;;)
+        {
+          k = i;
+          i = j;
+          break;
+          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+          {
+            j = this.jdField_a_of_type_Int + 0;
+            i = 1;
+          }
+          else
+          {
+            j = e + ImmersiveUtils.jdField_c_of_type_Int + f + 0;
+            i = 0;
+            continue;
+            k = 1;
+            j = i;
+            i = k;
+          }
+        }
+        label344:
+        i = j;
+        k = m;
+        if (n <= j)
+        {
+          i = n + 0;
+          k = m;
+        }
+      }
     }
+  }
+  
+  @Nullable
+  public alqt a()
+  {
+    return this.jdField_a_of_type_Alqt;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(@Nullable alqt paramalqt)
+  {
+    this.jdField_a_of_type_Alqt = paramalqt;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    c();
+    bguh localbguh;
+    if (this.jdField_a_of_type_Alqt.c())
+    {
+      int i = this.jdField_a_of_type_Alqt.c();
+      int j = this.jdField_a_of_type_Alqt.b();
+      if (this.jdField_a_of_type_Alqt.a() == i - j) {
+        localbguh = this.b;
+      }
+    }
+    for (;;)
+    {
+      a(localbguh, paramView, paramInt1, paramInt2, paramInt3);
+      return;
+      if (this.jdField_c_of_type_Bguh != null)
+      {
+        localbguh = this.jdField_c_of_type_Bguh;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Bguh == null)
+        {
+          this.jdField_a_of_type_Bguh = new bguh();
+          this.jdField_a_of_type_Bguh.a(2131365147, anni.a(2131701044), 2130838920);
+          this.jdField_a_of_type_Bguh.a(2131377124, anni.a(2131701042), 2130838938);
+          this.jdField_a_of_type_Bguh.a(2131367027, anni.a(2131701046), 2130838929);
+          this.jdField_a_of_type_Bguh.a(2131366271, anni.a(2131701043), 2130838928);
+        }
+        localbguh = this.jdField_a_of_type_Bguh;
+        continue;
+        localbguh = this.b;
+      }
+    }
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, bguh parambguh, int paramInt3, boolean paramBoolean)
+  {
+    a(paramView, paramInt1, paramInt2, parambguh, paramInt3, paramBoolean, null);
+  }
+  
+  protected void a(View paramView, int paramInt1, int paramInt2, bguh parambguh, int paramInt3, boolean paramBoolean, Activity paramActivity)
+  {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bgkw.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), parambguh, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+    }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
+    parambguh = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if (paramInt3 == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      parambguh.d(paramBoolean);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bkiz);
+      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
+      this.jdField_c_of_type_Int = paramInt1;
+      this.d = paramInt2;
+      return;
+    }
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, bguh parambguh, boolean paramBoolean, int paramInt3)
+  {
+    a(paramView, paramInt1, paramInt2, parambguh, paramBoolean, paramInt3, null);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, bguh parambguh, boolean paramBoolean, int paramInt3, Activity paramActivity)
+  {
+    this.b = parambguh;
+    this.jdField_c_of_type_Bguh = null;
+    a(paramView, paramInt1, paramInt2, parambguh, paramInt3, paramBoolean, paramActivity);
+  }
+  
+  void a(bguh parambguh, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramView, paramInt1, paramInt2, parambguh, paramInt3, false);
+  }
+  
+  public void a(bguh parambguh, boolean paramBoolean)
+  {
+    this.b = parambguh;
+    this.jdField_c_of_type_Bguh = null;
+    Object localObject;
+    int i;
+    if ((paramBoolean) && (parambguh != null))
+    {
+      localObject = parambguh.a();
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        parambguh = new ArrayList(Arrays.asList((Object[])localObject));
+        i = 0;
+        if (i >= localObject.length) {
+          break label171;
+        }
+        if (localObject[i].a() != 2131365147) {}
+      }
+    }
+    for (;;)
+    {
+      localObject = new bguj();
+      ((bguj)localObject).a(2131377124);
+      ((bguj)localObject).a(anni.a(2131701045));
+      ((bguj)localObject).b(2130838938);
+      parambguh.add(i + 1, localObject);
+      this.jdField_c_of_type_Bguh = new bguh();
+      parambguh = parambguh.iterator();
+      for (;;)
+      {
+        if (parambguh.hasNext())
+        {
+          localObject = (bguj)parambguh.next();
+          this.jdField_c_of_type_Bguh.a((bguj)localObject);
+          continue;
+          i += 1;
+          break;
+        }
+      }
+      return;
+      label171:
+      i = 0;
+    }
+  }
+  
+  public void a(bkiz parambkiz)
+  {
+    this.jdField_a_of_type_Bkiz = parambkiz;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
+  }
+  
+  public int b()
+  {
+    return this.d;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqj
  * JD-Core Version:    0.7.0.1
  */

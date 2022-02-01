@@ -1,23 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajjh
-  implements View.OnTouchListener
+public class ajjh
+  extends aniz
 {
-  ajjh(ajjg paramajjg) {}
+  private ajjh(FriendFragment paramFriendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    for (;;)
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
       }
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }

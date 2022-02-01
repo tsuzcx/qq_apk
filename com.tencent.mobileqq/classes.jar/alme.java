@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class alme
-  extends bead
+  extends almg
 {
-  public alme(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDone(beae parambeae)
+  public void a()
   {
-    super.onDone(parambeae);
-    if (3 == parambeae.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.q();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambeae.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr.a().a(2);
   }
 }
 

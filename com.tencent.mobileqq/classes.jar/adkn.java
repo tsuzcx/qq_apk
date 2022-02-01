@@ -1,44 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.ims.signature.SignatureKickData;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class adkn
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adkn(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
+  public adkn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    try
+    if (this.a.a != null)
     {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label106:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
     }
-    catch (Exception paramDialogInterface)
+    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!this.a.isFinishing())
+      {
+        localObject = new njt(this.a);
+        ((njt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131698679));
+        ((njt)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850427);
+        ((njt)localObject).a();
+      }
+    }
+    for (;;)
     {
-      break label106;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (((String)localObject).length() > 90)
+      {
+        localObject = new ReportDialog(this.a, 2131755823);
+        ((Dialog)localObject).setContentView(2131562815);
+        ((TextView)((Dialog)localObject).findViewById(2131365475)).setText(this.a.getString(2131690952));
+        ((ProgressBar)((Dialog)localObject).findViewById(2131366957)).setVisibility(8);
+        ((ImageView)((Dialog)localObject).findViewById(2131380280)).setImageResource(2130839586);
+        ((Dialog)localObject).show();
+      }
+      else
+      {
+        this.a.a((String)localObject, true);
+        if (bgnt.d(this.a)) {
+          AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), (String)localObject, this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+        } else {
+          QQToast.a(this.a, 1, 2131693948, 0).b(this.a.getTitleBarHeight());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,24 @@
-public abstract interface pxj
-  extends pxk
-{}
+public class pxj
+{
+  public int a;
+  public String a;
+  public boolean a;
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pxj
  * JD-Core Version:    0.7.0.1
  */

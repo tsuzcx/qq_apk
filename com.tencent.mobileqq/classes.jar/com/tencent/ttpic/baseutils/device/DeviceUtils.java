@@ -710,7 +710,7 @@ public class DeviceUtils
   
   public static String getExternalLocalIpAddress()
   {
-    String str = fetchExternalIpProviderHTML("http://checkip.dyndns.org/");
+    String str = fetchExternalIpProviderHTML("https://checkip.dyndns.org/");
     if (str == null) {
       return null;
     }
@@ -2201,7 +2201,7 @@ public class DeviceUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.device.DeviceUtils
  * JD-Core Version:    0.7.0.1
  */

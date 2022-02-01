@@ -125,9 +125,12 @@ public class ThreadManagerV2
     if (RECENT_THREAD_HANDLER == null) {}
     try
     {
-      RECENT_THREAD = newFreeHandlerThread("Recent_Handler", 0);
-      RECENT_THREAD.start();
-      RECENT_THREAD_HANDLER = new Handler(RECENT_THREAD.getLooper());
+      if (RECENT_THREAD_HANDLER == null)
+      {
+        RECENT_THREAD = newFreeHandlerThread("Recent_Handler", 0);
+        RECENT_THREAD.start();
+        RECENT_THREAD_HANDLER = new Handler(RECENT_THREAD.getLooper());
+      }
       return RECENT_THREAD_HANDLER.getLooper();
     }
     finally {}

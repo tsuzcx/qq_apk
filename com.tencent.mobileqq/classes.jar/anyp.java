@@ -1,19 +1,10 @@
-import java.lang.ref.WeakReference;
+import MWIFI.SCGet3rdCloudCheck;
 
-public class anyp
+public abstract interface anyp
 {
-  public int a;
-  public String a;
-  public WeakReference<anyo> a;
-  public int b = 0;
-  public int c = 0;
+  public abstract void a(int paramInt);
   
-  public anyp()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
+  public abstract void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck);
 }
 
 

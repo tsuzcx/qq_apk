@@ -1,22 +1,22 @@
-import java.util.Comparator;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
-final class aust
-  implements Comparator<String>
+public class aust
+  implements View.OnTouchListener
 {
-  public int a(String paramString1, String paramString2)
+  public aust(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramString1.length() > paramString2.length()) {
-      return -1;
-    }
-    if (paramString1.length() < paramString2.length()) {
-      return 1;
-    }
-    return 0;
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aust
  * JD-Core Version:    0.7.0.1
  */

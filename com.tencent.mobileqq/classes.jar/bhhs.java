@@ -1,53 +1,72 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
-import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader;
+import android.app.Activity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.util.Pair;
+import mqq.os.MqqHandler;
 
-public final class bhhs
-  implements bguo<FlutterRuntimeLoader>
+public class bhhs
+  extends bhhn
 {
-  public FlutterRuntimeLoader a(Context paramContext, Bundle paramBundle)
+  String a()
   {
-    return new FlutterRuntimeLoader(paramContext);
+    return "KC.KCWraper.Other";
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  void a(ViewGroup paramViewGroup)
   {
-    if ((TissueGlobal.tissueEnv != null) && (!TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir()))) {}
-    for (int i = 1; i != 0; i = 0) {
+    a("can not call bindActivationView");
+  }
+  
+  void a(bhhy parambhhy, boolean paramBoolean)
+  {
+    a("queryKingCard : from cache");
+    Pair localPair = a();
+    if (parambhhy != null)
+    {
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambhhy, localPair));
+      }
+    }
+    else {
+      return;
+    }
+    parambhhy.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : do nothing");
+  }
+  
+  boolean a()
+  {
+    a("isReady : do nothing");
+    return true;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    if (c())
+    {
+      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
       return true;
     }
-    if (paramBundle != null) {
-      try
-      {
-        paramBundle = (String)paramBundle.get("tissuenativelibdir");
-        if (TissueGlobal.tissueEnv == null) {
-          TissueGlobal.tissueEnv = new bhht(this, paramBundle);
-        }
-        boolean bool = TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir());
-        if (!bool) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-        return false;
-      }
-      catch (Throwable paramBundle) {}
-    }
+    return false;
   }
   
-  public boolean a(MiniAppInfo paramMiniAppInfo)
+  boolean b()
   {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
+    boolean bool = c();
+    a("supportActivationView = " + bool);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhs
  * JD-Core Version:    0.7.0.1
  */

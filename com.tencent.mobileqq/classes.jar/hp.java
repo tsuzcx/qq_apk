@@ -1,90 +1,49 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.RspBody;
 
 public class hp
-  implements BusinessObserver
+  extends niv
 {
-  public void a(double paramDouble1, double paramDouble2)
+  private hn a;
+  
+  public hp(boolean paramBoolean, hn paramhn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "handleChangeMapViewAngle= " + paramDouble1 + "|" + paramDouble2);
-    }
+    super(paramBoolean);
+    this.a = paramhn;
   }
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetLBSPoiList, isSuccess  = " + paramBoolean);
-    }
-  }
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetRedPackPage, isSuccess  = " + paramBoolean);
-    }
-  }
-  
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
+    paramBundle = new oidb_0xa4d.RspBody();
+    if (paramInt == 0) {
+      try
       {
+        if (QLog.isColorLevel()) {
+          QLog.i("ImmersionHandler", 2, "HapticMediaPlayer request success.errorcode = " + paramInt);
+        }
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (oidb_0xa4d.IMMRRsp)paramBundle.msg_immr_rsp.get();
+        this.a.setConnection(new hl(paramArrayOfByte));
         return;
-        c(paramBoolean, paramBundle);
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
         return;
-        d(paramBoolean, paramBundle);
-        return;
-        e(paramBoolean, paramBundle);
-        return;
-        f(paramBoolean, paramBundle);
-        return;
-        b(paramBoolean, paramBundle);
-        return;
-        a(paramBoolean, paramBundle);
-        return;
-      } while (paramBundle == null);
-      a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
-      return;
+      }
     }
-    ArrayList localArrayList = null;
-    paramInt = i;
-    if (paramBundle != null)
-    {
-      localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
-      paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
+    if (QLog.isColorLevel()) {
+      QLog.e("ImmersionHandler", 2, "HapticMediaPlayer request failerrorcode = " + paramInt);
     }
-    a(paramInt, paramBoolean, localArrayList);
+    this.a.setConnection(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     hp
  * JD-Core Version:    0.7.0.1
  */

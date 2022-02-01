@@ -1,24 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
-public class bnjv
-  extends BroadcastReceiver
+public abstract interface bnjv
 {
-  public bnjv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
-  }
+  public abstract void a(int paramInt, AEFilterManager paramAEFilterManager);
 }
 
 

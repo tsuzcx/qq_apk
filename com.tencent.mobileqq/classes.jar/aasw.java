@@ -1,147 +1,43 @@
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.AdvExposureInfo;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoReq;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoRsp;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoReq;
-import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.lang.ref.WeakReference;
 
-public final class aasw
-  extends MSFServlet
+public class aasw
+  extends bfss
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public aasw(TroopGiftPanel paramTroopGiftPanel, int paramInt, aasi paramaasi) {}
+  
+  public void a(int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int i;
-    int j;
-    String str;
-    Bundle localBundle;
-    int k;
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      j = paramIntent.getIntExtra("key_operation", -1);
-      str = paramIntent.getStringExtra("key_adID");
-      localBundle = new Bundle();
-      if (i != 1000) {
-        break label322;
-      }
-      k = -10000;
-      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (j != 0) {
-        break label278;
-      }
-      localObject1 = (ExposeAndGetAdvInfoRsp)aasx.a(paramFromServiceMsg, "ExposeAndGetAdvInfo");
-      if (localObject1 == null) {
-        break label339;
-      }
-      i = ((ExposeAndGetAdvInfoRsp)localObject1).Code;
-      paramFromServiceMsg = ((ExposeAndGetAdvInfoRsp)localObject1).Msg;
-      localObject1 = ((ExposeAndGetAdvInfoRsp)localObject1).vecAdvExposureInfo;
-    }
-    for (;;)
-    {
-      label98:
-      j = k;
-      if (i == 0)
-      {
-        j = k;
-        if (localObject1 != null)
-        {
-          j = k;
-          if (((ArrayList)localObject1).size() > 0) {
-            j = ((AdvExposureInfo)((ArrayList)localObject1).get(0)).iAuditResult;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QBossC2SCheckerServlet", 2, "onReceive: " + str + ", code: " + j);
-      }
-      label183:
-      localBundle.putString("msg", paramFromServiceMsg);
-      localBundle.putInt("code", j);
-      localBundle.putString("adid", str);
-      if (QLog.isColorLevel()) {
-        QLog.d("QBossC2SCheckerServlet", 2, "onReceive code=" + j + " adID=" + str);
-      }
-      if (j == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        notifyObserver(paramIntent, 100, bool, localBundle, aasv.class);
-        return;
-        i = -1;
-        break;
-        label278:
-        if (1 != j) {
-          break label339;
-        }
-        localObject1 = (GetAdvInfoRsp)aasx.a(paramFromServiceMsg, "GetAdvInfo");
-        if (localObject1 == null) {
-          break label339;
-        }
-        i = ((GetAdvInfoRsp)localObject1).Code;
-        paramFromServiceMsg = ((GetAdvInfoRsp)localObject1).Msg;
-        localObject1 = ((GetAdvInfoRsp)localObject1).vecAdvExposureInfo;
-        break label98;
-        label322:
-        j = -20000;
-        paramFromServiceMsg = (FromServiceMsg)localObject1;
-        break label183;
-      }
-      label339:
-      i = -10000;
-      localObject1 = null;
-      paramFromServiceMsg = localObject2;
-    }
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aasi.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(int paramInt, String paramString)
   {
-    int i = paramIntent.getIntExtra("key_operation", -1);
-    Object localObject3 = paramIntent.getStringExtra("key_uin");
-    paramIntent = paramIntent.getStringExtra("key_adID");
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("QBossC2SCheckerServlet", 2, "onSend operationType= " + i + " adID=" + paramIntent);
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    paramIntent = "";
-    Object localObject2 = "";
-    Object localObject1 = null;
-    if (i == 0)
-    {
-      paramIntent = "RevenueQboss.ExposeAndGetAdvInfo";
-      localObject2 = "ExposeAndGetAdvInfo";
-      localObject1 = new ExposeAndGetAdvInfoReq(localArrayList, (String)localObject3);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, anni.a(2131714102), 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298998));
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aasi.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    for (;;)
-    {
-      localObject3 = new aasx((String)localObject3, (JceStruct)localObject1, paramIntent, (String)localObject2);
-      localObject2 = ((aasx)localObject3).encode();
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        QLog.e("QBossC2SCheckerServlet", 1, "onSend request encode result is null.cmd = " + ((aasx)localObject3).uniKey());
-        localObject1 = new byte[4];
-      }
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + paramIntent);
-      paramPacket.putSendData((byte[])localObject1);
-      return;
-      if (1 == i)
-      {
-        paramIntent = "RevenueQboss.GetAdvInfo";
-        localObject2 = "GetAdvInfo";
-        localObject1 = new GetAdvInfoReq(localArrayList, (String)localObject3);
-      }
+    Context localContext = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anni.a(2131714087);
     }
+    QQToast.a(localContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131298998));
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aasi.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

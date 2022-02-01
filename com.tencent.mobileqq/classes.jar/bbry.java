@@ -1,105 +1,125 @@
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bbry
+public abstract class bbry
+  implements bbrr
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private bbrt jdField_a_of_type_Bbrt;
+  private bbrx jdField_a_of_type_Bbrx = new bbrx();
+  protected QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<bbrs> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bbry()
+  public bbrt a()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Boolean = true;
+    return this.jdField_a_of_type_Bbrt;
   }
   
-  public static bbry a(QQAppInterface paramQQAppInterface, String paramString, JSONObject paramJSONObject)
+  protected abstract bbrt a(Context paramContext);
+  
+  public String a()
   {
-    boolean bool2 = true;
-    if ((paramJSONObject == null) || (!paramJSONObject.has("msg"))) {}
-    bbry localbbry;
-    JSONObject localJSONObject;
-    do
+    return this.jdField_a_of_type_Bbrx.a();
+  }
+  
+  protected void a() {}
+  
+  public void a(bbrs parambbrs)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbrs);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "create, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3 + " templateid:" + paramInt);
+    }
+    this.jdField_a_of_type_Bbrx.a(true);
+    this.jdField_a_of_type_Bbrx.a(paramString1);
+    this.jdField_a_of_type_Bbrx.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bbrt = a(paramContext);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "updateData, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3);
+    }
+    this.jdField_a_of_type_Bbrx.a(paramString1);
+    this.jdField_a_of_type_Bbrx.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "pause");
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireEvent, key:" + paramString1 + " value:" + paramString2);
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      do
-      {
-        return null;
-        localbbry = new bbry();
-        localbbry.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
-        localJSONObject = paramJSONObject.optJSONObject("msg");
-      } while (localJSONObject == null);
-      localbbry.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
-      if (localbbry.jdField_c_of_type_JavaLangString != null) {
-        localbbry.jdField_c_of_type_JavaLangString = localbbry.jdField_c_of_type_JavaLangString.replace("&#10;", "<br/>");
-      }
-      localbbry.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-      if (localbbry.jdField_b_of_type_JavaLangString != null) {
-        localbbry.jdField_b_of_type_JavaLangString = localbbry.jdField_b_of_type_JavaLangString.replace("&#10;", "<br/>");
-      }
-    } while ((localbbry.jdField_b_of_type_JavaLangString == null) || (localbbry.jdField_c_of_type_JavaLangString == null));
-    localbbry.i = paramJSONObject.optString("fid");
-    Object localObject = localJSONObject.optJSONArray("pics");
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-    {
-      localObject = ((JSONArray)localObject).optJSONObject(0);
-      if (localObject != null)
-      {
-        localbbry.d = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/628");
-        localbbry.e = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/");
+      bbrs localbbrs = (bbrs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbbrs != null) {
+        localbbrs.a(this, paramString1, paramString2);
       }
     }
-    localObject = paramJSONObject.optJSONObject("settings");
-    if (localObject != null)
-    {
-      if (((JSONObject)localObject).optInt("is_show_edit_card", 0) != 1) {
-        break label424;
-      }
-      bool1 = true;
-      localbbry.jdField_a_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("tip_window_type", 0) != 0) {
-        break label429;
-      }
-      bool1 = true;
-      label303:
-      localbbry.jdField_b_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("confirm_required", 0) != 1) {
-        break label434;
-      }
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "resume");
     }
-    label424:
-    label429:
-    label434:
-    for (boolean bool1 = bool2;; bool1 = false)
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "destroy");
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_Bbrt != null)
     {
-      localbbry.jdField_c_of_type_Boolean = bool1;
-      if (localJSONObject.has("v"))
-      {
-        localJSONObject = localJSONObject.optJSONObject("v");
-        localbbry.f = localJSONObject.optString("l");
-        localbbry.d = localJSONObject.optString("bi");
+      this.jdField_a_of_type_Bbrt.f();
+      this.jdField_a_of_type_Bbrt = null;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Bbrx = null;
+  }
+  
+  protected void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      bbrs localbbrs = (bbrs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbbrs != null) {
+        localbbrs.a(this);
       }
-      localbbry.g = paramJSONObject.optString("u");
-      localbbry.h = bdgc.h(paramQQAppInterface, paramString, localbbry.g);
-      localbbry.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
-      localbbry.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
-      return localbbry;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label303;
     }
   }
 }

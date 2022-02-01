@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdoo;
+import bgtn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -31,7 +31,7 @@ class SearchResultAdapter$SearchResultViewHolder
   TextView payingFriendsDesc;
   TextView userNumDesc;
   
-  public void update(View paramView, SearchInfo paramSearchInfo, Activity paramActivity, String paramString)
+  public void update(View paramView, SearchInfo paramSearchInfo, Activity paramActivity, String paramString, int paramInt)
   {
     MiniAppInfo localMiniAppInfo = paramSearchInfo.getMiniAppInfo();
     this.icon.setImageDrawable(MiniAppUtils.getIcon(paramView.getContext(), localMiniAppInfo.iconUrl, false, 0, 48));
@@ -47,10 +47,10 @@ class SearchResultAdapter$SearchResultViewHolder
     }
     for (;;)
     {
-      paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramString));
+      paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt, paramString));
       paramView = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(322);
       paramSearchInfo = new MiniAppConfig(localMiniAppInfo);
-      paramSearchInfo.launchParam.scene = 2077;
+      paramSearchInfo.launchParam.scene = paramInt;
       paramView.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(paramSearchInfo, "page_view", "expo"));
       return;
       this.avatarContainer.removeAllViews();
@@ -64,10 +64,10 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           ImageView localImageView = new ImageView(paramView.getContext());
           localImageView.setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject));
-          int j = bdoo.b(12.0F);
+          int j = bgtn.b(12.0F);
           localObject = new LinearLayout.LayoutParams(j, j);
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject).leftMargin = (-bdoo.b(2.0F));
+            ((LinearLayout.LayoutParams)localObject).leftMargin = (-bgtn.b(2.0F));
           }
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
           this.avatarContainer.addView(localImageView);
@@ -79,7 +79,7 @@ class SearchResultAdapter$SearchResultViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter.SearchResultViewHolder
  * JD-Core Version:    0.7.0.1
  */

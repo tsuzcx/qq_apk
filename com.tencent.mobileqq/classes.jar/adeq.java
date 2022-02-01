@@ -1,66 +1,35 @@
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class adeq
-  extends aluu
+class adeq
+  extends SimpleObserver<awlp>
 {
-  public adeq(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  adeq(adep paramadep, adez paramadez) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void a(awlp paramawlp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    adez localadez = this.jdField_a_of_type_Adez;
+    if (paramawlp.c == 1) {}
+    for (int i = 2;; i = 3)
     {
-      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
-      if (paramString1 != null)
-      {
-        paramString1.memo = this.a.d;
-        paramString1.memoUrl = this.a.e;
-        paramString1.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, alud.a(2131705920), 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
+      localadez.a(paramawlp, i);
       return;
     }
-    paramString1 = alud.a(2131705923);
-    if (paramInt == 1282) {
-      paramString1 = alud.a(2131705928);
-    }
-    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
+  public void onError(@NonNull Error paramError)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
     }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    if ((paramError instanceof AppInfoError)) {}
+    for (int i = ((AppInfoError)paramError).type;; i = 0)
     {
-      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.memo = this.a.d;
-        paramArrayOfByte.memoUrl = this.a.e;
-        paramArrayOfByte.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, alud.a(2131705927), 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
+      this.jdField_a_of_type_Adez.a(null, i);
       return;
     }
-    paramArrayOfByte = alud.a(2131705921);
-    if (paramInt == 1288) {
-      paramArrayOfByte = alud.a(2131705925);
-    }
-    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 

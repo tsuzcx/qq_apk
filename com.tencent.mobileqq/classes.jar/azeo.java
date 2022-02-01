@@ -1,8 +1,19 @@
-public class azeo
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
+
+public final class azeo
+  implements Parcelable.Creator<PersonalityLabelZan>
 {
-  public long a;
-  public long b;
-  public long c;
+  public PersonalityLabelZan a(Parcel paramParcel)
+  {
+    return new PersonalityLabelZan(paramParcel);
+  }
+  
+  public PersonalityLabelZan[] a(int paramInt)
+  {
+    return new PersonalityLabelZan[paramInt];
+  }
 }
 
 

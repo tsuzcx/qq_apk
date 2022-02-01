@@ -1,71 +1,41 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class asng
-  extends MSFServlet
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "taskDescription", "Landroid/widget/TextView;", "getTaskDescription", "()Landroid/widget/TextView;", "setTaskDescription", "(Landroid/widget/TextView;)V", "taskStatus", "Landroid/widget/Button;", "getTaskStatus", "()Landroid/widget/Button;", "setTaskStatus", "(Landroid/widget/Button;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asng
+  extends RecyclerView.ViewHolder
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  @NotNull
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public asng(@NotNull View paramView)
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("GameCenterUnissoServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      asne localasne = (asne)((QQAppInterface)super.getAppRuntime()).a(175);
-      if (localasne != null) {
-        localasne.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterUnissoServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
-    }
+    super(paramView);
+    View localView = paramView.findViewById(2131378297);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "itemView.findViewById(R.id.task_description)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    paramView = paramView.findViewById(2131378302);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "itemView.findViewById(R.id.task_status)");
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  @NotNull
+  public final Button a()
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
-      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterUnissoServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      bdqa.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
-    }
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

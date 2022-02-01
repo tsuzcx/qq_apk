@@ -1,22 +1,51 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowUserListItemView;
 
 public class vxa
-  implements vyl
+  implements vxe
 {
-  public vxa(TrimTextureVideoView paramTrimTextureVideoView) {}
+  public vxa(QCircleFollowUserListItemView paramQCircleFollowUserListItemView) {}
   
-  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    if (QCircleFollowUserListItemView.a(this.a) == 1)
+    {
+      vrf.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 4);
+      return;
     }
-    return true;
+    String str = QCircleFollowUserListItemView.a(this.a);
+    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
+    for (int i = 28;; i = 30)
+    {
+      vrf.a(str, 11, i, 4);
+      return;
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      if (QCircleFollowUserListItemView.a(this.a) == 1) {
+        vrf.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 3);
+      }
+    }
+    else {
+      return;
+    }
+    String str = QCircleFollowUserListItemView.a(this.a);
+    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
+    for (paramInt = 28;; paramInt = 30)
+    {
+      vrf.a(str, 11, paramInt, 3);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxa
  * JD-Core Version:    0.7.0.1
  */

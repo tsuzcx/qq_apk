@@ -1,41 +1,48 @@
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
-class bhwg
-  implements ViewTreeObserver.OnPreDrawListener
+public class bhwg
+  implements Animation.AnimationListener
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  private bhwg(DraggableGridView paramDraggableGridView) {}
   
-  bhwg(bhwf parambhwf, View paramView, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    int i = 0;
+    while (i < DraggableGridView.a(this.a).getChildCount())
+    {
+      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      if ((paramAnimation instanceof GridView))
+      {
+        paramAnimation = (GridView)paramAnimation;
+        int j = 0;
+        while (j < paramAnimation.getChildCount())
+        {
+          paramAnimation.getChildAt(j).clearAnimation();
+          paramAnimation.getChildAt(j).setPressed(false);
+          paramAnimation.getChildAt(j).setVisibility(0);
+          j += 1;
+        }
+      }
+      i += 1;
+    }
+    this.a.a();
+    DraggableGridView.b(this.a, false);
+    DraggableGridView.c(this.a, false);
+    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
   
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Bhwf.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, DynamicGridView.a(this.jdField_a_of_type_Bhwf.a) + bhwf.a(this.jdField_a_of_type_Bhwf));
-    DynamicGridView.b(this.jdField_a_of_type_Bhwf.a, DynamicGridView.b(this.jdField_a_of_type_Bhwf.a) + bhwf.b(this.jdField_a_of_type_Bhwf));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, this.jdField_a_of_type_Bhwf.a.a(DynamicGridView.a(this.jdField_a_of_type_Bhwf.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bhwf.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bhwf.a).setVisibility(4);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bhwf.a, this.jdField_a_of_type_Int, this.b);
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwg
  * JD-Core Version:    0.7.0.1
  */

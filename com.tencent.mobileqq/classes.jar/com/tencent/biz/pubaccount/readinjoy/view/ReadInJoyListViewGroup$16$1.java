@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import otf;
-import oxp;
-import oyd;
+import pil;
+import pmy;
+import pnn;
 
 class ReadInJoyListViewGroup$16$1
   implements Runnable
@@ -11,14 +11,14 @@ class ReadInJoyListViewGroup$16$1
   
   public void run()
   {
-    if (((this.a.this$0.a() == 0) || (otf.c(this.a.this$0.a()))) && (!this.a.a)) {
-      oxp.a().a.a(8, this.a.this$0.a);
+    if (((this.a.this$0.a() == 0) || (pil.c(this.a.this$0.a()))) && (!this.a.a)) {
+      pmy.a().a.a(8, this.a.this$0.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.16.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.util.Log;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.AgeType;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
@@ -38,6 +39,7 @@ public class AgeDetector
   private int mInitCheckCount = 0;
   private boolean mIsDetectingAge = false;
   private boolean mNeedDetectAge = false;
+  private boolean mSyncDetectAge = false;
   
   private void addFaceKeyPoint2Detect(int paramInt, FaceInfo paramFaceInfo, boolean paramBoolean)
   {
@@ -96,7 +98,7 @@ public class AgeDetector
   
   private void realDectect(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<FaceInfo> paramList)
   {
-    this.mIsDetectingAge = true;
+    updateDetectStatus(true);
     if (this.mDetectorAgeHandler == null) {
       initThreadHandle();
     }
@@ -123,7 +125,7 @@ public class AgeDetector
         break;
       }
     }
-    this.mIsDetectingAge = bool1;
+    updateDetectStatus(bool1);
     if (bool1)
     {
       this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
@@ -142,7 +144,7 @@ public class AgeDetector
       this.mDetectAgeRunnable.clear();
     }
     sInstance = null;
-    this.mIsDetectingAge = false;
+    updateDetectStatus(false);
   }
   
   public void detectAge(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<FaceInfo> paramList)
@@ -150,26 +152,40 @@ public class AgeDetector
     this.mFaceInfos = paramList;
     if (!isInitial)
     {
+      if (this.mSyncDetectAge)
+      {
+        if (this.mDetectorAgeHandler == null)
+        {
+          HandlerThread localHandlerThread = new HandlerThread("AgeDetectThread");
+          localHandlerThread.start();
+          this.mDetectorAgeHandler = new Handler(localHandlerThread.getLooper());
+        }
+        getInstance().init();
+      }
+    }
+    else
+    {
+      this.DISTANCE_MAX_TWO_POINTS = (paramInt1 * 3 / 4);
+      if (this.mNeedDetectAge) {
+        break label143;
+      }
+      if (this.mDetectorAgeHandler != null) {
+        this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
+      }
+      if (this.mDetectAgeRunnable != null) {
+        this.mDetectAgeRunnable.reset();
+      }
+      this.mFaceCount = 0;
+    }
+    label143:
+    do
+    {
+      return;
       if (this.mInitCheckCount % 30 == 0) {
         initThreadHandle();
       }
       this.mInitCheckCount += 1;
-    }
-    do
-    {
       return;
-      this.DISTANCE_MAX_TWO_POINTS = (paramInt1 * 3 / 4);
-      if (!this.mNeedDetectAge)
-      {
-        if (this.mDetectorAgeHandler != null) {
-          this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
-        }
-        if (this.mDetectAgeRunnable != null) {
-          this.mDetectAgeRunnable.reset();
-        }
-        this.mFaceCount = 0;
-        return;
-      }
       if ((paramList != null) && (paramList.size() != this.mFaceCount)) {
         this.mFaceCount = paramList.size();
       }
@@ -192,6 +208,27 @@ public class AgeDetector
   {
     if ((!isInitial) || (this.mDetectAgeRunnable == null) || (this.mFaceInfos == null) || (this.mFaceInfos.size() < 1)) {
       return this.mFaceInfos;
+    }
+    if (this.mSyncDetectAge) {
+      try
+      {
+        for (;;)
+        {
+          boolean bool = this.mIsDetectingAge;
+          if (!bool) {
+            break;
+          }
+          try
+          {
+            wait();
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            Log.e("AgeDetector", localInterruptedException.getMessage());
+          }
+        }
+      }
+      finally {}
     }
     Iterator localIterator = this.mFaceInfos.iterator();
     while (localIterator.hasNext())
@@ -234,10 +271,30 @@ public class AgeDetector
   {
     this.mNeedDetectAge = paramBoolean;
   }
+  
+  public void setSyncDetectAge(boolean paramBoolean)
+  {
+    this.mSyncDetectAge = paramBoolean;
+  }
+  
+  public void updateDetectStatus(boolean paramBoolean)
+  {
+    try
+    {
+      this.mIsDetectingAge = paramBoolean;
+      notifyAll();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector
  * JD-Core Version:    0.7.0.1
  */

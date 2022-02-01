@@ -1,25 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-public class sll
-  extends AnimatorListenerAdapter
+class sll
+  implements slp
 {
-  public sll(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  sll(slk paramslk) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(slr paramslr)
   {
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a();
+    slk.a(this.a, 2);
+    slk localslk = this.a;
+    String str;
+    if (paramslr.jdField_a_of_type_JavaLangString == null)
+    {
+      str = "";
+      slk.a(localslk, str);
+      if (paramslr.jdField_a_of_type_Int != 1) {
+        break label78;
+      }
+      slk.b(this.a, 1);
+    }
+    for (;;)
+    {
+      if (slk.a(this.a) != null) {
+        slk.a(this.a).onPrepared();
+      }
+      return;
+      str = paramslr.jdField_a_of_type_JavaLangString;
+      break;
+      label78:
+      slk.b(this.a, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sll
  * JD-Core Version:    0.7.0.1
  */

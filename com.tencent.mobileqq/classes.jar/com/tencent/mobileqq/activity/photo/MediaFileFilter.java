@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.util.SparseArray;
+import java.util.ArrayList;
 
-public abstract class MediaFileFilter
+public class MediaFileFilter
   implements Cloneable
 {
   public static final MediaFileFilter MEDIA_FILTER_DEFAULT;
@@ -22,7 +23,13 @@ public abstract class MediaFileFilter
   public static final int MF_SHOW_IMAGE_AND_HEIF = 6;
   public static final int MF_SHOW_IMAGE_NO_GIF = 4;
   public static final int MF_SHOW_VIDEO = 2;
+  public static final int MIN_SIZE = 1000;
+  public ArrayList<String> blockPaths;
+  public int imageMinHeight = -1;
+  public long imageMinSize = 1000L;
+  public int imageMinWidth = -1;
   private boolean supportWebp = false;
+  public long videoMaxDuration = -1L;
   
   static
   {
@@ -46,19 +53,20 @@ public abstract class MediaFileFilter
   
   public static MediaFileFilter getFilter(int paramInt)
   {
-    MediaFileFilter localMediaFileFilter2 = (MediaFileFilter)MEDIA_FILTER_MAP.get(paramInt);
-    MediaFileFilter localMediaFileFilter1 = localMediaFileFilter2;
-    if (localMediaFileFilter2 != null) {}
-    try
-    {
-      localMediaFileFilter1 = (MediaFileFilter)localMediaFileFilter2.clone();
-      return localMediaFileFilter1;
+    MediaFileFilter localMediaFileFilter1 = (MediaFileFilter)MEDIA_FILTER_MAP.get(paramInt);
+    if (localMediaFileFilter1 != null) {
+      try
+      {
+        MediaFileFilter localMediaFileFilter2 = (MediaFileFilter)localMediaFileFilter1.clone();
+        return localMediaFileFilter2;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException)
+      {
+        localCloneNotSupportedException.printStackTrace();
+        return localMediaFileFilter1;
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return localMediaFileFilter2;
+    return new MediaFileFilter();
   }
   
   public boolean filter(String paramString)
@@ -97,7 +105,7 @@ public abstract class MediaFileFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaFileFilter
  * JD-Core Version:    0.7.0.1
  */

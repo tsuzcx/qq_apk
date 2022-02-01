@@ -1,173 +1,200 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
-import com.tencent.mobileqq.flutter.container.QFlutterFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class arxj
-  implements arya, OnFirstFrameRenderedListener
+public abstract class arxj
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private arxi jdField_a_of_type_Arxi;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
+  int jdField_a_of_type_Int;
+  arxg jdField_a_of_type_Arxg;
+  arxi jdField_a_of_type_Arxi;
+  public String a;
+  List<arxg> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  arxg jdField_b_of_type_Arxg;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  arxg jdField_c_of_type_Arxg;
+  boolean jdField_c_of_type_Boolean;
+  int jdField_d_of_type_Int;
+  arxg jdField_d_of_type_Arxg;
+  boolean jdField_d_of_type_Boolean;
+  arxg jdField_e_of_type_Arxg;
+  boolean jdField_e_of_type_Boolean;
+  arxg jdField_f_of_type_Arxg;
+  boolean jdField_f_of_type_Boolean;
   
-  public arxj(arxi paramarxi)
+  public arxj()
   {
-    this.jdField_a_of_type_Arxi = paramarxi;
+    this.jdField_a_of_type_JavaLangString = "init";
   }
   
-  private void f()
+  public int a()
   {
-    Object localObject1 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ((FrameLayout)localObject1).setId(2131366790);
-    Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    this.jdField_a_of_type_AndroidViewViewGroup.bringChildToFront(this.jdField_a_of_type_AndroidViewView);
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-    localObject1 = null;
-    if (this.jdField_a_of_type_AndroidOsBundle.getSerializable("params") != null) {
-      localObject1 = ((BoostFlutterActivity.SerializableMap)this.jdField_a_of_type_AndroidOsBundle.getSerializable("params")).getMap();
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new HashMap();
-    }
-    localObject1 = new arxk().a(str).a((Map)localObject2).a();
-    ((QFlutterFragment)localObject1).a(new arxl(this));
-    localObject2 = this.jdField_a_of_type_Arxi.a();
-    if (localObject2 != null) {
-      ((FragmentManager)localObject2).beginTransaction().add(2131366790, (Fragment)localObject1).commitAllowingStateLoss();
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public View a()
+  public int a(int paramInt)
   {
-    QFlutterSkinEnginePlugin.setCurrentThemeId(ThemeUtil.getCurrentThemeId());
-    this.jdField_a_of_type_AndroidViewViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130849461);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560708, null);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    int j = 1;
+    int i = 0;
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonLinearLayout", 2, "getRealIndex, position:" + paramInt + ",pageTotalNum:" + this.jdField_d_of_type_Int + ",page:" + this.jdField_c_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramInt + 1) % this.jdField_d_of_type_Int == 0) {
+        paramInt = -1;
+      }
+    }
+    int m;
+    label237:
+    label242:
+    do
+    {
+      do
+      {
+        return paramInt;
+        return paramInt + this.jdField_c_of_type_Int * (this.jdField_d_of_type_Int - 1);
+        if (this.jdField_e_of_type_Boolean)
+        {
+          if ((paramInt == 0) && (this.jdField_c_of_type_Int == 0)) {
+            return -5;
+          }
+          if (this.jdField_f_of_type_Boolean) {
+            i = 1;
+          }
+          if ((paramInt == 1) && (this.jdField_c_of_type_Int == 0) && (this.jdField_f_of_type_Boolean)) {
+            return -6;
+          }
+          if (this.jdField_c_of_type_Int == 0) {
+            return paramInt - 1 - i;
+          }
+          return this.jdField_d_of_type_Int - 1 + (this.jdField_c_of_type_Int - 1) * this.jdField_d_of_type_Int + paramInt - i;
+        }
+        m = this.jdField_a_of_type_JavaUtilList.size();
+        if (this.jdField_d_of_type_Boolean)
+        {
+          i = 1;
+          if (!this.jdField_c_of_type_Boolean) {
+            break label237;
+          }
+        }
+        for (;;)
+        {
+          if (this.jdField_c_of_type_Int + paramInt != 0) {
+            break label270;
+          }
+          if (!this.jdField_d_of_type_Boolean) {
+            break label242;
+          }
+          return -4;
+          i = 0;
+          break;
+          j = 0;
+        }
+        paramInt = k;
+      } while (this.jdField_a_of_type_JavaUtilList.size() != 0);
+      paramInt = k;
+    } while (!this.jdField_c_of_type_Boolean);
+    return -2;
+    label270:
+    if (this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt == i + (m - 1) + j)
+    {
+      if (this.jdField_c_of_type_Boolean) {
+        return -2;
+      }
+      return this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    if (this.jdField_d_of_type_Boolean) {
+      return this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt - 1;
+    }
+    return paramInt + this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
+  }
+  
+  public arxg a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    if (paramInt == -1) {
+      return this.jdField_a_of_type_Arxg;
+    }
+    if (paramInt == -2) {
+      return this.jdField_c_of_type_Arxg;
+    }
+    if (paramInt == -3) {
+      return this.jdField_b_of_type_Arxg;
+    }
+    if (paramInt == -4) {
+      return this.jdField_d_of_type_Arxg;
+    }
+    if (paramInt == -5) {
+      return this.jdField_e_of_type_Arxg;
+    }
+    if (paramInt == -6) {
+      return this.jdField_f_of_type_Arxg;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (arxg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
   }
   
   public void a()
   {
-    if (aryd.a().a()) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    aryd.a().a(this, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Boolean);
-    aryg.a().a();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      paramBundle.remove("android:support:fragments");
-    }
-    if ((this.jdField_a_of_type_Arxi.a() == null) || (this.jdField_a_of_type_Arxi.a() == null)) {
-      throw new RuntimeException("must specify Activity and FragmentManager!");
-    }
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Arxi.a();
-    this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Arxi.a();
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    }
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("click_millis", 0L);
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("preload_process", false);
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_b_of_type_Long == 0L)) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Arxi != null) {
+      this.jdField_a_of_type_Arxi.a();
     }
   }
   
-  public void a(aryb paramaryb)
+  public void a(int paramInt)
   {
-    if ((paramaryb != null) && (paramaryb.a()))
-    {
-      this.jdField_c_of_type_Boolean = paramaryb.jdField_a_of_type_Boolean;
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_d_of_type_Long = SystemClock.elapsedRealtime();
-      f();
-      if (paramaryb.jdField_b_of_type_Boolean) {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 0, 2131698547, 1).a();
-      }
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131694092, 1).a();
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void b() {}
-  
-  public void c()
+  public void a(int paramInt1, int paramInt2)
   {
-    aryg.a().b();
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = (paramInt2 * paramInt1);
+    this.jdField_a_of_type_Arxi.a(paramInt1, paramInt2);
   }
   
-  public void d()
+  public abstract void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup);
+  
+  public void a(arxg paramarxg)
   {
-    aryd.a().a(this);
-    aryg.a().a(this.jdField_c_of_type_Boolean, this.jdField_d_of_type_Boolean);
+    this.jdField_a_of_type_Arxg = paramarxg;
   }
   
-  public void e()
+  public void a(arxi paramarxi)
   {
-    QFlutterSkinEnginePlugin.setCurrentThemeId(ThemeUtil.getCurrentThemeId());
+    this.jdField_a_of_type_Arxi = paramarxi;
   }
   
-  public void onFirstFrameRendered()
+  public void a(List<arxg> paramList)
   {
-    QLog.d("QFlutter.fragment", 1, String.format("onFirstFrameRendered, mIsFirstLaunch: %s, mIsFirstFrame: %s", new Object[] { Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.e) }));
-    if ((!this.jdField_c_of_type_Boolean) && (!this.e))
-    {
-      this.e = true;
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
-    long l4 = SystemClock.elapsedRealtime();
-    long l1 = l4 - this.jdField_a_of_type_Long;
-    long l2 = l4 - this.jdField_b_of_type_Long;
-    long l3 = this.jdField_d_of_type_Long - this.jdField_c_of_type_Long;
-    l4 -= this.jdField_d_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.fragment", 2, String.format("[QFlutterFirstFrame], mIsPreloadProcess: %s, isFirstLaunch: %s, totalCost: %s, toolCost: %s, launchCost: %s, openPageCost: %s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(this.jdField_c_of_type_Boolean), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4) }));
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      aryh.a(this.jdField_c_of_type_Boolean, l1, l2, l3, l4, this.jdField_b_of_type_Boolean);
-    }
-    aryg.a().a(this.jdField_c_of_type_Boolean);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
 }
 

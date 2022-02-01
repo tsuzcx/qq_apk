@@ -1,26 +1,27 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 
 public class avxt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public avxt(LocationDialogUtil.11 param11) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
-    return localStringBuilder.toString();
+    paramDialogInterface = avwv.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
+    paramDialogInterface.c(new avwp(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
+    paramDialogInterface.a(true);
+    paramDialogInterface.a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
+    LocationShareFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxt
  * JD-Core Version:    0.7.0.1
  */

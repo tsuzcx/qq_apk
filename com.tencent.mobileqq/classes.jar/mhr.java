@@ -1,39 +1,31 @@
+import android.graphics.drawable.ClipDrawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.QavPanel;
 
 public class mhr
-  implements AdapterView.OnItemClickListener
+  implements View.OnTouchListener
 {
-  public mhr(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  public mhr(QavPanel paramQavPanel) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_Muo == null) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      return;
-      paramAdapterView = (mhp)paramView.getTag();
-      if (paramAdapterView != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
-    return;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
-    {
-      this.a.jdField_a_of_type_Muo.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
-      return;
     }
-    this.a.jdField_a_of_type_Muo.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
+    for (;;)
+    {
+      return false;
+      this.a.a.setAlpha(127);
+      continue;
+      this.a.a.setAlpha(255);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhr
  * JD-Core Version:    0.7.0.1
  */

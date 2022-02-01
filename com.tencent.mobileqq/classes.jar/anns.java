@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anns
-  implements INetInfoHandler
+final class anns
+  implements DialogInterface.OnClickListener
 {
-  public anns(ArkAppCenter paramArkAppCenter) {}
+  anns(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArkAppCenter.a(this.a, 1, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 1, 2);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 2, 1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    ArkAppCenter.a(this.a, 2, 0);
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 

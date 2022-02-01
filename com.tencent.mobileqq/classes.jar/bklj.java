@@ -1,330 +1,655 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
-import com.tencent.weiyun.utils.IOUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.KandianNegativeWindow.3;
+import com.tencent.widget.NegativeChildrenLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class bklj
-  implements Handler.Callback
+  extends PopupWindow
 {
-  private final bklk jdField_a_of_type_Bklk;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  public final int a;
+  Context jdField_a_of_type_AndroidContentContext;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bkll(this);
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  bkln jdField_a_of_type_Bkln;
+  bklo jdField_a_of_type_Bklo = new bklm(this);
+  NegativeChildrenLayout jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout;
+  public final String a;
+  ArrayList<DislikeInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  Map<Long, String> jdField_a_of_type_JavaUtilMap = new HashMap(6);
+  public final int b;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  public final String b;
+  ArrayList<DislikeInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  public final int c;
+  View jdField_c_of_type_AndroidViewView;
+  String jdField_c_of_type_JavaLangString = "";
+  ArrayList<DislikeInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  public final int d;
+  View jdField_d_of_type_AndroidViewView;
+  String jdField_d_of_type_JavaLangString = "";
+  ArrayList<DislikeInfo> jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+  public final int e;
+  View jdField_e_of_type_AndroidViewView;
+  ArrayList<DislikeInfo> jdField_e_of_type_JavaUtilArrayList = new ArrayList();
+  public final int f;
+  View jdField_f_of_type_AndroidViewView;
+  ArrayList<View> jdField_f_of_type_JavaUtilArrayList = new ArrayList();
+  public final int g = 3;
+  public int h = -1;
+  public int i;
+  public int j;
+  public int k;
+  int l;
+  public int m;
+  int n = 0;
+  protected int o;
+  protected int p;
+  protected int q;
+  int r;
   
-  public bklj(bklk parambklk, ReleaseLooperHandler paramReleaseLooperHandler)
+  public bklj(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_Bklk = parambklk;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-  }
-  
-  /* Error */
-  private String a(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore_2
-    //   8: invokestatic 34	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   11: iconst_1
-    //   12: invokevirtual 38	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
-    //   15: astore 7
-    //   17: aload 7
-    //   19: ifnonnull +5 -> 24
-    //   22: aconst_null
-    //   23: areturn
-    //   24: iconst_4
-    //   25: invokestatic 44	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   28: astore_3
-    //   29: new 46	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   36: ldc 49
-    //   38: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: ldc 55
-    //   43: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: ldc 57
-    //   48: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: ldc 59
-    //   53: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: astore 4
-    //   61: aload 7
-    //   63: ldc 64
-    //   65: iconst_1
-    //   66: anewarray 66	java/lang/String
-    //   69: dup
-    //   70: iconst_0
-    //   71: ldc 68
-    //   73: aastore
-    //   74: aload 4
-    //   76: iconst_2
-    //   77: anewarray 66	java/lang/String
-    //   80: dup
-    //   81: iconst_0
-    //   82: aload_1
-    //   83: aastore
-    //   84: dup
-    //   85: iconst_1
-    //   86: aload_3
-    //   87: aastore
-    //   88: aconst_null
-    //   89: aconst_null
-    //   90: ldc 70
-    //   92: invokevirtual 76	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   95: astore_3
-    //   96: aload_3
-    //   97: ifnull +237 -> 334
-    //   100: aload_3
-    //   101: invokeinterface 82 1 0
-    //   106: ifeq +228 -> 334
-    //   109: aload_3
-    //   110: iconst_0
-    //   111: invokeinterface 85 2 0
-    //   116: astore_2
-    //   117: aload_3
-    //   118: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   121: aload_2
-    //   122: astore_3
-    //   123: aload_2
-    //   124: invokestatic 97	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   127: ifeq +148 -> 275
-    //   130: aload 5
-    //   132: astore_3
-    //   133: aload 6
-    //   135: astore 4
-    //   137: iconst_4
-    //   138: invokestatic 44	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   141: astore 8
-    //   143: aload 5
-    //   145: astore_3
-    //   146: aload 6
-    //   148: astore 4
-    //   150: new 46	java/lang/StringBuilder
-    //   153: dup
-    //   154: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   157: ldc 99
-    //   159: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc 55
-    //   164: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: ldc 57
-    //   169: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: ldc 59
-    //   174: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: astore 9
-    //   182: aload 5
-    //   184: astore_3
-    //   185: aload 6
-    //   187: astore 4
-    //   189: aload 7
-    //   191: ldc 101
-    //   193: iconst_1
-    //   194: anewarray 66	java/lang/String
-    //   197: dup
-    //   198: iconst_0
-    //   199: ldc 68
-    //   201: aastore
-    //   202: aload 9
-    //   204: iconst_2
-    //   205: anewarray 66	java/lang/String
-    //   208: dup
-    //   209: iconst_0
-    //   210: aload_1
-    //   211: aastore
-    //   212: dup
-    //   213: iconst_1
-    //   214: aload 8
-    //   216: aastore
-    //   217: aconst_null
-    //   218: aconst_null
-    //   219: ldc 70
-    //   221: invokevirtual 76	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   224: astore 5
-    //   226: aload_2
-    //   227: astore_1
-    //   228: aload 5
-    //   230: ifnull +38 -> 268
-    //   233: aload_2
-    //   234: astore_1
-    //   235: aload 5
-    //   237: astore_3
-    //   238: aload 5
-    //   240: astore 4
-    //   242: aload 5
-    //   244: invokeinterface 82 1 0
-    //   249: ifeq +19 -> 268
-    //   252: aload 5
-    //   254: astore_3
-    //   255: aload 5
-    //   257: astore 4
-    //   259: aload 5
-    //   261: iconst_0
-    //   262: invokeinterface 85 2 0
-    //   267: astore_1
-    //   268: aload 5
-    //   270: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   273: aload_1
-    //   274: astore_3
-    //   275: invokestatic 34	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   278: aload 7
-    //   280: invokevirtual 105	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
-    //   283: aload_3
-    //   284: areturn
-    //   285: astore_2
-    //   286: aconst_null
-    //   287: astore_2
-    //   288: aload_2
-    //   289: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   292: aconst_null
-    //   293: astore_2
-    //   294: goto -173 -> 121
-    //   297: astore_1
-    //   298: aload_2
-    //   299: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   302: aload_1
-    //   303: athrow
-    //   304: astore_1
-    //   305: aload_3
-    //   306: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   309: aload_2
-    //   310: astore_3
-    //   311: goto -36 -> 275
-    //   314: astore_1
-    //   315: aload 4
-    //   317: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   320: aload_1
-    //   321: athrow
-    //   322: astore_1
-    //   323: aload_3
-    //   324: astore_2
-    //   325: goto -27 -> 298
-    //   328: astore_2
-    //   329: aload_3
-    //   330: astore_2
-    //   331: goto -43 -> 288
-    //   334: aconst_null
-    //   335: astore_2
-    //   336: goto -219 -> 117
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	339	0	this	bklj
-    //   0	339	1	paramString	String
-    //   7	227	2	str1	String
-    //   285	1	2	localThrowable1	java.lang.Throwable
-    //   287	38	2	localObject1	Object
-    //   328	1	2	localThrowable2	java.lang.Throwable
-    //   330	6	2	localObject2	Object
-    //   28	302	3	localObject3	Object
-    //   59	257	4	localObject4	Object
-    //   1	268	5	localCursor	android.database.Cursor
-    //   4	182	6	localObject5	Object
-    //   15	264	7	localJobDbWrapper	com.tencent.weiyun.transmission.db.JobDbWrapper
-    //   141	74	8	str2	String
-    //   180	23	9	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   24	96	285	java/lang/Throwable
-    //   24	96	297	finally
-    //   137	143	304	java/lang/Throwable
-    //   150	182	304	java/lang/Throwable
-    //   189	226	304	java/lang/Throwable
-    //   242	252	304	java/lang/Throwable
-    //   259	268	304	java/lang/Throwable
-    //   137	143	314	finally
-    //   150	182	314	finally
-    //   189	226	314	finally
-    //   242	252	314	finally
-    //   259	268	314	finally
-    //   100	117	322	finally
-    //   100	117	328	java/lang/Throwable
-  }
-  
-  private void b(bkkp parambkkp)
-  {
-    boolean bool = true;
-    if (parambkkp == null) {}
-    Object localObject;
-    do
+    super(paramContext);
+    this.jdField_a_of_type_JavaLangString = "KandianNegativeWindow";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_c_of_type_Int = 3;
+    this.jdField_d_of_type_Int = 5;
+    this.jdField_e_of_type_Int = 8;
+    this.jdField_f_of_type_Int = 9;
+    this.jdField_b_of_type_JavaLangString = anni.a(2131704710);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560222, null);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setHeight(-2);
+    setTouchable(true);
+    setFocusable(true);
+    setOutsideTouchable(false);
+    try
     {
-      String str2;
-      String str3;
-      String str4;
-      do
-      {
-        do
-        {
-          do
-          {
-            long l1;
-            long l2;
-            do
-            {
-              do
-              {
-                return;
-                str2 = parambkkp.d();
-                str3 = parambkkp.a().c;
-                str4 = parambkkp.b();
-                l1 = parambkkp.a().a;
-                l2 = parambkkp.a().b;
-              } while (parambkkp.d());
-              if ((!TextUtils.isEmpty(str2)) && (TextUtils.equals(str3, IOUtils.getFileSha1(str2))))
-              {
-                this.jdField_a_of_type_Bklk.a(parambkkp.a(), true, false, false, str2);
-                return;
-              }
-            } while (parambkkp.d());
-            if (!IOUtils.ensureStorageSpace(str4, l1 - l2))
-            {
-              this.jdField_a_of_type_Bklk.a(parambkkp.a(), false, false, true, "");
-              return;
-            }
-          } while (parambkkp.d());
-          if (!IOUtils.ensureWritable(str4))
-          {
-            this.jdField_a_of_type_Bklk.a(parambkkp.a(), false, true, false, "");
-            return;
-          }
-        } while (parambkkp.d());
-        localObject = IOUtils.ensureFilePath(str4, parambkkp.a().b);
-      } while (parambkkp.d());
-      String str1 = a(str3);
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.equals(str2, str1)) && (TextUtils.equals(str3, IOUtils.getFileSha1(str1))))
-      {
-        if (TextUtils.equals(str4, IOUtils.getParentDir(str1))) {
-          localObject = str1;
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bklk.a(parambkkp.a(), bool, false, false, (String)localObject);
-          return;
-          bool = IOUtils.copyFileAndNotifyOS(WeiyunTransmissionGlobal.getInstance().getContext(), str1, (String)localObject);
-        }
-      }
-    } while (parambkkp.d());
-    this.jdField_a_of_type_Bklk.a(parambkkp.a(), false, false, false, (String)localObject);
-  }
-  
-  public void a(bkkp parambkkp)
-  {
-    if (parambkkp == null) {
+      a(this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 11, parambkkp));
+    catch (Exception paramContext) {}
   }
   
-  public boolean handleMessage(Message paramMessage)
+  private String a(ArrayList<DislikeInfo> paramArrayList)
   {
-    if (paramMessage.what == 11)
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i1 = 0;
+    for (;;)
     {
-      b((bkkp)paramMessage.obj);
-      return true;
+      if ((i1 >= paramArrayList.size()) || (i1 >= 3)) {
+        return localStringBuilder.toString();
+      }
+      if (!TextUtils.isEmpty(((DislikeInfo)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString))
+      {
+        if (i1 != 0) {
+          localStringBuilder.append("、");
+        }
+        localStringBuilder.append(((DislikeInfo)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      }
+      i1 += 1;
     }
-    return false;
+  }
+  
+  private void a(View paramView, boolean paramBoolean)
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    paramView = this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout;
+    float f2;
+    if (paramBoolean)
+    {
+      localObject = this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout;
+      paramView = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      f2 = -1.0F;
+    }
+    for (float f1 = 1.0F;; f1 = -1.0F)
+    {
+      TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(1, f1, 1, 0.0F, 1, 0.0F, 1, 0.0F);
+      localTranslateAnimation1.setDuration(300L);
+      TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(1, 0.0F, 1, f2, 1, 0.0F, 1, 0.0F);
+      localTranslateAnimation2.setDuration(300L);
+      ((View)localObject).startAnimation(localTranslateAnimation1);
+      paramView.startAnimation(localTranslateAnimation2);
+      return;
+      f2 = 1.0F;
+    }
+  }
+  
+  private void a(Object paramObject, boolean paramBoolean)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("folder_status", pha.jdField_d_of_type_Int);
+      localJSONObject.put("kandian_mode", pha.e());
+      localJSONObject.put("feeds_type", "" + this.q);
+      localJSONObject.put("channel_id", this.p + "");
+      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+        this.jdField_d_of_type_JavaLangString = "";
+      }
+      localJSONObject.put("rowkey", this.jdField_d_of_type_JavaLangString);
+      paramObject = (DislikeInfo)paramObject;
+      if (paramObject != null)
+      {
+        localJSONObject.put("tag_id", paramObject.jdField_a_of_type_Long + "");
+        localJSONObject.put("tag_name", paramObject.jdField_a_of_type_JavaLangString);
+        if (paramBoolean) {
+          this.jdField_c_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      label191:
+      break label191;
+    }
+    oat.a(null, "", "0X8009990", "0X8009990", 0, 0, String.valueOf(this.r), "", this.jdField_c_of_type_JavaLangString, localJSONObject.toString(), false);
+  }
+  
+  private boolean a(View paramView, int[] paramArrayOfInt)
+  {
+    int i1 = b();
+    paramView.getLocationOnScreen(paramArrayOfInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i2 = paramArrayOfInt[0];
+    int i3 = paramArrayOfInt[1];
+    boolean bool;
+    if (paramArrayOfInt[1] + i1 + paramView.getHeight() <= this.j)
+    {
+      paramArrayOfInt[1] = (paramArrayOfInt[1] + paramView.getHeight() / 2 + paramView.getHeight() / 8);
+      setAnimationStyle(2131755036);
+      bool = false;
+      b(paramView, bool);
+      c(paramView, bool);
+      paramArrayOfInt[0] = ((this.i - this.k) / 2);
+      if ((this.h > 0) && (this.j > 0)) {
+        break label175;
+      }
+    }
+    for (;;)
+    {
+      ThreadManager.executeOnSubThread(new KandianNegativeWindow.3(this, localStringBuilder, i2, i3, true));
+      return true;
+      setAnimationStyle(2131755039);
+      paramArrayOfInt[1] = (paramArrayOfInt[1] + paramView.getHeight() / 2 - i1 - paramView.getHeight() / 8);
+      bool = true;
+      break;
+      label175:
+      if ((paramArrayOfInt[0] <= 0) || (paramArrayOfInt[1] <= 0) || (this.m > 0)) {}
+    }
+  }
+  
+  private void b(View paramView, boolean paramBoolean)
+  {
+    int i1 = 0;
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    if (arrayOfInt[0] < this.i * 2 / 3) {}
+    for (;;)
+    {
+      if (paramBoolean) {
+        if (i1 != 0) {
+          i1 = 2131755038;
+        }
+      }
+      for (;;)
+      {
+        setAnimationStyle(i1);
+        return;
+        i1 = 2131755039;
+        continue;
+        if (i1 != 0) {
+          i1 = 2131755035;
+        } else {
+          i1 = 2131755036;
+        }
+      }
+      i1 = 1;
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(12, this.jdField_b_of_type_AndroidWidgetLinearLayout.getId());
+    if (paramBoolean) {
+      localLayoutParams.addRule(12);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+      return;
+      localLayoutParams.addRule(10);
+    }
+  }
+  
+  private void c(View paramView, boolean paramBoolean)
+  {
+    Object localObject = new int[2];
+    paramView.getLocationOnScreen((int[])localObject);
+    int i1 = localObject[0];
+    int i2 = paramView.getWidth() / 2;
+    int i3 = this.l;
+    localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (!paramBoolean) {
+      localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    }
+    ((LinearLayout.LayoutParams)localObject).leftMargin = (i1 + i2 - i3 - paramView.getWidth() / 5);
+    if (paramBoolean)
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    for (;;)
+    {
+      b(paramBoolean);
+      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+  }
+  
+  private void e()
+  {
+    d();
+    int i1 = this.jdField_f_of_type_JavaUtilArrayList.size();
+    if (i1 > 0)
+    {
+      if (i1 <= 1) {
+        ((View)this.jdField_f_of_type_JavaUtilArrayList.get(0)).setBackgroundResource(2130842894);
+      }
+    }
+    else {
+      return;
+    }
+    ((View)this.jdField_f_of_type_JavaUtilArrayList.get(0)).setBackgroundResource(2130842896);
+    ((View)this.jdField_f_of_type_JavaUtilArrayList.get(i1 - 1)).setBackgroundResource(2130842895);
+  }
+  
+  protected int a()
+  {
+    int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i1 = i2;
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() > i2) {
+      i1 = this.jdField_b_of_type_JavaUtilArrayList.size();
+    }
+    i2 = i1;
+    if (this.jdField_c_of_type_JavaUtilArrayList.size() > i1) {
+      i2 = this.jdField_c_of_type_JavaUtilArrayList.size();
+    }
+    i1 = i2;
+    if (this.jdField_d_of_type_JavaUtilArrayList.size() > i2) {
+      i1 = this.jdField_d_of_type_JavaUtilArrayList.size();
+    }
+    i2 = i1;
+    if (i1 > 6) {
+      i2 = 6;
+    }
+    return i2;
+  }
+  
+  protected void a()
+  {
+    setHeight(b());
+    e();
+  }
+  
+  public void a(float paramFloat)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, ArrayList<DislikeInfo> paramArrayList, String paramString)
+  {
+    b();
+    this.o = paramInt1;
+    this.p = paramInt2;
+    this.q = paramInt3;
+    this.jdField_d_of_type_JavaLangString = paramString;
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    {
+      Iterator localIterator = paramArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        DislikeInfo localDislikeInfo = (DislikeInfo)localIterator.next();
+        if (localDislikeInfo != null)
+        {
+          switch (localDislikeInfo.jdField_c_of_type_Int)
+          {
+          }
+          for (;;)
+          {
+            QLog.e("KandianNegativeWindow", 1, "dislikeInfo," + localDislikeInfo.toString());
+            break;
+            this.jdField_a_of_type_JavaUtilArrayList.add(localDislikeInfo);
+            continue;
+            if (TextUtils.isEmpty(localDislikeInfo.jdField_a_of_type_JavaLangString))
+            {
+              String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localDislikeInfo.jdField_a_of_type_Long));
+              paramString = str;
+              if (str == null) {
+                paramString = "";
+              }
+              localDislikeInfo.jdField_a_of_type_JavaLangString = paramString;
+            }
+            this.jdField_b_of_type_JavaUtilArrayList.add(localDislikeInfo);
+            continue;
+            this.jdField_c_of_type_JavaUtilArrayList.add(localDislikeInfo);
+          }
+        }
+      }
+    }
+    for (paramInt1 = paramArrayList.size();; paramInt1 = 0)
+    {
+      paramArrayList = new DislikeInfo();
+      paramArrayList.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      paramArrayList.jdField_c_of_type_Int = 9;
+      paramArrayList.jdField_b_of_type_JavaLangString = "";
+      this.jdField_d_of_type_JavaUtilArrayList.add(paramArrayList);
+      paramArrayList = new DislikeInfo();
+      paramArrayList.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131717052);
+      paramArrayList.jdField_c_of_type_Int = 8;
+      paramArrayList.jdField_b_of_type_JavaLangString = "";
+      this.jdField_e_of_type_JavaUtilArrayList.add(paramArrayList);
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_AndroidViewView, 2130841648, anni.a(2131704716), true);
+      a(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_c_of_type_AndroidViewView, 2130841652, anni.a(2131704726), true);
+      a(this.jdField_c_of_type_JavaUtilArrayList, this.jdField_d_of_type_AndroidViewView, 2130841641, a(this.jdField_c_of_type_JavaUtilArrayList), false);
+      a(this.jdField_d_of_type_JavaUtilArrayList, this.jdField_e_of_type_AndroidViewView, 2130841645, anni.a(2131704722), false);
+      a(this.jdField_e_of_type_JavaUtilArrayList, this.jdField_f_of_type_AndroidViewView, 2130841640, BaseApplicationImpl.getContext().getString(2131717052), false);
+      a();
+      QLog.e("KandianNegativeWindow", 1, "setData,size:" + paramInt1);
+      return;
+    }
+  }
+  
+  protected void a(int paramInt, View paramView)
+  {
+    if (paramInt > 0) {
+      this.jdField_f_of_type_JavaUtilArrayList.add(paramView);
+    }
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371602);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131371598);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371604);
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131371601);
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131371600);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_e_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_f_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371605));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371606));
+    this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout = ((NegativeChildrenLayout)paramView.findViewById(2131364477));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370469));
+    ((ImageView)paramView.findViewById(2131366636).findViewById(2131369740)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.i = ((int)bgln.i());
+    this.j = ((int)bgln.j());
+    this.l = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298700));
+    this.k = (this.i - this.l * 2);
+    setWidth(this.k);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364999));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(1L), anni.a(2131704723));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(2L), anni.a(2131704721));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(3L), anni.a(2131704712));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(4L), anni.a(2131704713));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(5L), anni.a(2131704718));
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(6L), anni.a(2131704717));
+    this.m = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298676));
+    this.jdField_e_of_type_AndroidViewView.findViewById(2131377231).setVisibility(4);
+    setBackgroundDrawable(new ColorDrawable());
+    setOnDismissListener(new bklk(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  public void a(View paramView, bkln parambkln)
+  {
+    if (isShowing()) {
+      dismiss();
+    }
+    this.jdField_a_of_type_Bkln = parambkln;
+    parambkln = new int[2];
+    try
+    {
+      bool = a(paramView, parambkln);
+      if (bool)
+      {
+        showAtLocation(paramView, 51, parambkln[0], parambkln[1]);
+        a(0.8F);
+        a(this);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        boolean bool = false;
+      }
+    }
+  }
+  
+  public void a(PopupWindow paramPopupWindow)
+  {
+    try
+    {
+      View localView;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        localView = (View)paramPopupWindow.getContentView().getParent();
+        if (paramPopupWindow.getBackground() == null) {
+          break label95;
+        }
+        localView = (View)localView.getParent();
+      }
+      for (;;)
+      {
+        paramPopupWindow = (WindowManager)paramPopupWindow.getContentView().getContext().getSystemService("window");
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)localView.getLayoutParams();
+        localLayoutParams.flags |= 0x2;
+        localLayoutParams.dimAmount = 0.2F;
+        paramPopupWindow.updateViewLayout(localView, localLayoutParams);
+        return;
+        localView = paramPopupWindow.getContentView();
+        break;
+      }
+    }
+    catch (Exception paramPopupWindow) {}
+  }
+  
+  protected void a(ArrayList<DislikeInfo> paramArrayList, View paramView, int paramInt, String paramString, boolean paramBoolean)
+  {
+    int i1 = 8;
+    int i2 = i1;
+    TextView localTextView;
+    ImageView localImageView;
+    if (!paramArrayList.isEmpty())
+    {
+      i2 = i1;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ((TextView)paramView.findViewById(2131368900)).setText(paramString);
+        localTextView = (TextView)paramView.findViewById(2131368896);
+        localImageView = (ImageView)paramView.findViewById(2131368885);
+        ((ImageView)paramView.findViewById(2131368826)).setImageResource(paramInt);
+        paramString = "";
+        if (!paramBoolean) {
+          break label150;
+        }
+        paramArrayList = a(paramArrayList);
+        paramView.setTag(null);
+      }
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramArrayList)) {
+        i1 = 0;
+      }
+      localImageView.setVisibility(i1);
+      localTextView.setText(paramArrayList);
+      localTextView.setVisibility(i1);
+      this.n += 1;
+      i2 = 0;
+      paramView.setVisibility(i2);
+      return;
+      label150:
+      paramView.setTag(paramArrayList.get(0));
+      paramArrayList = paramString;
+    }
+  }
+  
+  public void a(pya parampya, ArrayList<DislikeInfo> paramArrayList)
+  {
+    int i2 = 0;
+    String str = null;
+    if (parampya != null) {}
+    for (;;)
+    {
+      try
+      {
+        i1 = parampya.jdField_b_of_type_Int;
+        i2 = parampya.jdField_a_of_type_Int;
+        parampya = parampya.a();
+        int i3 = pha.a(parampya);
+        str = "";
+        if (parampya != null) {
+          str = parampya.innerUniqueID;
+        }
+        a(i1, i2, i3, paramArrayList, str);
+        return;
+      }
+      catch (Exception parampya)
+      {
+        return;
+      }
+      int i1 = 0;
+      parampya = str;
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i2 = 8;
+    int i1 = 0;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(i2);
+      this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setVisibility(i1);
+      if (paramBoolean)
+      {
+        a(this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout, paramBoolean);
+        return;
+      }
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramBoolean);
+      return;
+      i2 = 0;
+      i1 = 8;
+    }
+  }
+  
+  protected int b()
+  {
+    if (this.h <= 0)
+    {
+      b(this.jdField_b_of_type_AndroidWidgetImageView);
+      this.h = this.jdField_b_of_type_AndroidWidgetImageView.getMeasuredHeight();
+    }
+    int i1 = (a() + 1) * this.m + this.h;
+    b(this.jdField_b_of_type_AndroidViewView);
+    int i2 = this.jdField_b_of_type_AndroidViewView.getMeasuredHeight() * this.n + this.h;
+    if (i1 > i2) {
+      return i1;
+    }
+    return i2;
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.jdField_c_of_type_JavaUtilArrayList.clear();
+    this.jdField_d_of_type_JavaUtilArrayList.clear();
+    this.jdField_f_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.n = 0;
+  }
+  
+  protected void b(View paramView)
+  {
+    paramView.measure(0, 0);
+  }
+  
+  protected void c()
+  {
+    dismiss();
+  }
+  
+  protected void c(View paramView)
+  {
+    if (paramView == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Bkln == null);
+      paramView = paramView.getTag();
+    } while (!(paramView instanceof DislikeInfo));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add((DislikeInfo)paramView);
+    this.jdField_a_of_type_Bkln.a(null, this.o, localArrayList, null);
+  }
+  
+  protected void d()
+  {
+    this.jdField_f_of_type_JavaUtilArrayList.clear();
+    a(this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_b_of_type_AndroidViewView);
+    a(this.jdField_b_of_type_JavaUtilArrayList.size(), this.jdField_c_of_type_AndroidViewView);
+    a(this.jdField_c_of_type_JavaUtilArrayList.size(), this.jdField_d_of_type_AndroidViewView);
+    a(this.jdField_d_of_type_JavaUtilArrayList.size(), this.jdField_e_of_type_AndroidViewView);
   }
 }
 

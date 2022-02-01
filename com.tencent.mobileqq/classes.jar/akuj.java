@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-
 public class akuj
-  implements DialogInterface.OnClickListener
 {
-  public akuj(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akuj(String paramString, float paramFloat)
   {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

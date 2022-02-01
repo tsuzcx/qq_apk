@@ -1,9 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordConfig;
 
-public abstract interface bcqu
+public class bcqu
+  implements IRecordConfig
 {
-  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
+  public bcqu(RecordTracer paramRecordTracer) {}
+  
+  public int getCachedEventSize()
+  {
+    return 0;
+  }
+  
+  public String getTitleBarId()
+  {
+    return "com.tencent.mobileqq:id/ivTitleName";
+  }
+  
+  public boolean isEnableRelease()
+  {
+    return true;
+  }
+  
+  public boolean isFilterUGC()
+  {
+    return false;
+  }
 }
 
 

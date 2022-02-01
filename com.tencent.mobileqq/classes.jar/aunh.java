@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aunh
-  implements aume
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aunh(MultiCardFragment paramMultiCardFragment) {}
+  public aunh(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694401), "qqsetting_auto_receive_pic_key", paramBoolean);
+    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunh
  * JD-Core Version:    0.7.0.1
  */

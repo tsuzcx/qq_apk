@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ainn;
+import akeh;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -41,13 +41,13 @@ public class AvatarGridView
     if (localListAdapter != null)
     {
       localObject1 = localObject2;
-      if ((a().getItem(paramInt1 - 1) instanceof ainn)) {
-        localObject1 = (ainn)a().getItem(paramInt1 - 1);
+      if ((a().getItem(paramInt1 - 1) instanceof akeh)) {
+        localObject1 = (akeh)a().getItem(paramInt1 - 1);
       }
     }
     int i;
     if (localObject1 != null) {
-      if ((((ainn)localObject1).b != 0) && (((ainn)localObject1).b == 4)) {
+      if ((((akeh)localObject1).b != 0) && (((akeh)localObject1).b == 4)) {
         i = paramInt1 - 1;
       }
     }
@@ -88,7 +88,7 @@ public class AvatarGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarGridView
  * JD-Core Version:    0.7.0.1
  */

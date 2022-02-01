@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import albl;
-import alcg;
-import alch;
+import amur;
+import amvm;
+import amvn;
 
 public class CmShowSpriteDrawerInfoBridge$5
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$5(alch paramalch, alcg paramalcg) {}
+  public CmShowSpriteDrawerInfoBridge$5(amvn paramamvn, amvm paramamvm) {}
   
   public void run()
   {
-    albl localalbl = this.a.a();
-    if (localalbl != null) {
-      localalbl.b();
+    amur localamur = this.a.a();
+    if (localamur != null) {
+      localamur.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.5
  * JD-Core Version:    0.7.0.1
  */

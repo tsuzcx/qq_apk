@@ -1,24 +1,43 @@
 package com.tencent.mobileqq.wxapi;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import bjsa;
+import android.view.MotionEvent;
+import bmgk;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AndroidOreoUtils;
 
 public class WXEntryActivity
   extends Activity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
   {
     return SharedPreferencesProxyManager.getInstance().getProxy(paramString, paramInt);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -41,7 +60,7 @@ public class WXEntryActivity
     {
       try
       {
-        bjsa.a().a(this, getIntent());
+        bmgk.a().a(this, getIntent());
       }
       catch (Throwable paramBundle)
       {
@@ -82,7 +101,7 @@ public class WXEntryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXEntryActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aiwn
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public aiwn(SendHbActivity paramSendHbActivity) {}
+  public aiwn(PublicView paramPublicView, AppActivity paramAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.denied();
+    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.grant();
   }
 }
 

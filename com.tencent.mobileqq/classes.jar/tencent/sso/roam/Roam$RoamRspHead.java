@@ -17,7 +17,7 @@ public final class Roam$RoamRspHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.sso.roam.Roam.RoamRspHead
  * JD-Core Version:    0.7.0.1
  */

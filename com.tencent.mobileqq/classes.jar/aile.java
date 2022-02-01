@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aile
-  implements DialogInterface.OnClickListener
+class aile
+  implements View.OnClickListener
 {
-  public aile(BaseActivityView paramBaseActivityView) {}
+  aile(aild paramaild) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.f();
+    aild.a(this.a).a();
+    ChatActivityUtils.a(aild.a(this.a), aild.a(this.a), aild.a(this.a).jdField_a_of_type_Int, aild.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
+    bcst.b(aild.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

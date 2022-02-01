@@ -1,25 +1,33 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
-
-class zfg
-  implements Animation.AnimationListener
+public class zfg
 {
-  zfg(zfa paramzfa, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    return "Q.qqstory.record.RMW." + paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static void a(String paramString1, String paramString2)
+  {
+    yqp.a(a(paramString1), paramString2);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yqp.c(a(paramString1), String.format(paramString2, paramVarArgs));
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    yqp.b(a(paramString1), paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    yqp.c(a(paramString1), paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zfg
  * JD-Core Version:    0.7.0.1
  */

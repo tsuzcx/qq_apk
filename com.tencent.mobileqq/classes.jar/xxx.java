@@ -1,72 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xxx
-  extends ValueAnimator
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wwh>
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  private xxx(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public xxx(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setObjectValues(new Object[] { new xya(paramFloat1, paramFloat2, paramFloat3), new xya(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new xyb(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new xxy(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  private CircularRevealCompatLayout a(View paramView)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wwh paramwwh)
   {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwwh.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
-    }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
-  }
-  
-  public static xxx a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
-  {
-    return new xxx(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localObject instanceof CircularRevealCompatLayout))
+    if ((paramwwh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
-      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
-      int i = localViewGroup.indexOfChild((View)localObject);
-      localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      }
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
     }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwh);
   }
   
-  public void removeAllUpdateListeners()
+  public Class acceptEventClass()
   {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    return wwh.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxx
  * JD-Core Version:    0.7.0.1
  */

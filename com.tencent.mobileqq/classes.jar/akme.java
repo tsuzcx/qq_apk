@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import Wallet.GetPasswordReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class akme
-  implements Comparator<TroopInfo>
 {
-  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
-      return -1;
+    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
+    {
+      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
+      localGetPasswordReq.MQOS = "Android";
+      localGetPasswordReq.MQVersion = bgln.a(paramQQAppInterface.getApp());
+      ((antg)paramQQAppInterface.a(42)).a(localGetPasswordReq);
     }
-    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
-      return 1;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
+      return;
     }
-    return alqj.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
+    localIntent.putExtra("sendUin", paramLong);
+    localIntent.putExtra("tokenId", paramString);
+    paramQQAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akme
  * JD-Core Version:    0.7.0.1
  */

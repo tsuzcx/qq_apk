@@ -1,23 +1,36 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class anjr
-  implements SensorEventListener
+public class anjr
+  implements Manager
 {
-  anjr(anjo paramanjo) {}
+  private bggv jdField_a_of_type_Bggv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public Object a;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public anjr(QQAppInterface paramQQAppInterface)
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      anjo.a(this.a, paramSensorEvent);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public bggv a()
+  {
+    if (this.jdField_a_of_type_Bggv == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Bggv == null) {
+        this.jdField_a_of_type_Bggv = new bggv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      return this.jdField_a_of_type_Bggv;
     }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Bggv != null) {
+      this.jdField_a_of_type_Bggv.a();
     }
-    anjo.b(this.a, paramSensorEvent);
   }
 }
 

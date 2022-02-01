@@ -1,18 +1,39 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-class loa
-  implements FileFilter
+public class loa
 {
-  public boolean accept(File paramFile)
+  private short jdField_a_of_type_Short;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private short b;
+  
+  public loa(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.jdField_a_of_type_Short = paramShort1;
+    this.b = paramShort2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public int a()
+  {
+    return b() + 4;
+  }
+  
+  public short a()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public short b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     loa
  * JD-Core Version:    0.7.0.1
  */

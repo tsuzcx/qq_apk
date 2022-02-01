@@ -1,169 +1,89 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Map;
 
 public class mqk
 {
-  public static int a(String paramString, int paramInt)
+  public static String a;
+  
+  static
   {
-    QLog.i("QavRecordUtils", 1, "parseMaxRecordTime " + paramString + ", def=" + paramInt);
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
+    jdField_a_of_type_JavaLangString = "AVEnterPopActionSheetUtil";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "app == null || context == null || sessionInfo == null");
+    }
     do
     {
-      return paramInt;
-      i = paramString.lastIndexOf("#");
-    } while ((i < 0) || (i == paramString.length() - 1));
-    paramString = paramString.substring(i + 1);
-    try
+      do
+      {
+        return;
+      } while (muh.a());
+      muh localmuh = muh.a(paramContext);
+      int[] arrayOfInt = new int[5];
+      localmuh.a(2131689514);
+      arrayOfInt[0] = 1;
+      localmuh.b(2131718646);
+      arrayOfInt[1] = 2;
+      localmuh.b(2131718660);
+      localmuh.c(2131690582);
+      localmuh.a(new mql());
+      localmuh.a(new mqm(localmuh, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
+      localmuh.show();
+    } while (paramInt != 3);
+    if (paramSessionInfo.jdField_a_of_type_Int == 1)
     {
-      i = Integer.parseInt(paramString);
-      return i;
+      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
+      return;
     }
-    catch (Throwable paramString) {}
-    return paramInt;
+    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
   }
   
-  public static void a(String paramString)
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordUtils", 2, "convertMp3ToPcm path=" + paramString);
-    }
-    if (!mlf.f())
-    {
-      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm system not support");
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
       return;
     }
-    paramString = new File(paramString);
-    if (!paramString.exists())
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "enterGroupVideo,, isAudio[" + paramBoolean + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm, dir not exist");
+      ahny.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.c(), "");
       return;
-    }
-    if (!paramString.isDirectory())
-    {
-      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm, dir not a directory");
-      return;
-    }
-    paramString = paramString.listFiles();
-    if ((paramString == null) || (paramString.length == 0))
-    {
-      QLog.i("QavRecordUtils", 1, "convertMp3ToPcm files == null || files.length == 0");
-      return;
-    }
-    mpu localmpu = new mpu(48000, 16, 1);
-    localmpu.a(new mql());
-    int i = 0;
-    if (i < paramString.length)
-    {
-      Object localObject = paramString[i];
-      String str;
-      if ((localObject.exists()) && (localObject.isFile()) && (localObject.getName().endsWith(".mp3")))
-      {
-        str = localObject.getAbsolutePath().replace(".mp3", ".pcm");
-        File localFile = new File(str);
-        if ((localFile.exists()) && (localFile.length() > 0L)) {
-          QLog.i("QavRecordUtils", 1, "convertMp3ToPcm file exists, skip, " + localFile.getName());
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l1 = System.currentTimeMillis();
-        try
-        {
-          localmpu.a(localObject.getAbsolutePath(), str);
-          long l2 = System.currentTimeMillis();
-          QLog.i("QavRecordUtils", 1, "convertMp3ToPcm decode file=" + localObject.getName() + ", cost=" + (l2 - l1));
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            QLog.e("QavRecordUtils", 1, "convertMp3ToPcm decode exception:" + localThrowable, localThrowable);
-            mqj.a(false, -7);
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QavRecordUtils", 2, "convertMp3ToPcm skip file=" + localObject.getName());
-        }
-      }
-    }
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm DONE");
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str1 = Build.MANUFACTURER;
-    String str2 = Build.MODEL;
-    int i = Build.VERSION.SDK_INT;
-    boolean bool1 = bool2;
-    if ("Meizu".equalsIgnoreCase(str1))
-    {
-      if (i != 22) {
-        break label89;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      QLog.i("QavRecordUtils", 1, "isRubbishDeviceNotSupportPcm brand=" + str1 + ", model=" + str2 + ", api=" + i + ", result=" + bool1);
-      return bool1;
-      label89:
-      if ((i == 21) && ("M040".equalsIgnoreCase(str2)))
-      {
-        bool1 = true;
-      }
-      else
-      {
-        bool1 = bool2;
-        if (i == 21)
-        {
-          bool1 = bool2;
-          if ("MX5".equalsIgnoreCase(str2)) {
-            bool1 = true;
-          }
-        }
-      }
     }
   }
   
-  public static boolean a(String paramString)
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
   {
-    try
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {}
+    do
     {
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4);
-      int j = ((SharedPreferences)localObject).getInt("pcm_" + paramString, 0);
-      ((SharedPreferences)localObject).edit().putInt("pcm_" + paramString, j + 1).commit();
-      localObject = mqg.a();
-      if (localObject == null) {}
-      for (int i = 1;; i = ((mqg)localObject).k)
-      {
-        QLog.i("QavRecordUtils", 1, "canConvertPCM md5=" + paramString + ", count=" + j + ", limit=" + i);
-        if (j >= i) {
-          break;
-        }
-        return true;
-      }
-      return false;
+      return;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+      localObject = (awmz)paramQQAppInterface.getManager(11);
+    } while (localObject == null);
+    String str;
+    if (paramSessionInfo.jdField_a_of_type_Int == 1006) {
+      str = ((awmz)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
     }
-    catch (Throwable paramString)
+    for (Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;; localObject = ((awmz)localObject).b(str))
     {
-      QLog.e("QavRecordUtils", 1, "canConvertPCM Throwable=" + paramString, paramString);
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, "from_internal", paramMap);
+      return;
+      str = paramSessionInfo.jdField_a_of_type_JavaLangString;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqk
  * JD-Core Version:    0.7.0.1
  */

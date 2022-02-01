@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
-class aejf
-  implements DialogInterface.OnClickListener
+public class aejf
+  extends bdpx
 {
-  aejf(aeje paramaeje, bdjz parambdjz) {}
+  WeakReference<afen> a;
+  WeakReference<View> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aejf(afen paramafen, View paramView)
   {
-    azqs.b(this.jdField_a_of_type_Aeje.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Aeje.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Aeje.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Aeje.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_Bdjz.cancel();
+    this.a = new WeakReference(paramafen);
+    this.b = new WeakReference(paramView);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    afen localafen = (afen)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localafen != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localafen, localView));
+    }
+    return super.a(paramInt);
   }
 }
 

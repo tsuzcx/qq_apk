@@ -1,32 +1,78 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class aska
+  extends RecyclerView.OnScrollListener
 {
-  public int a;
-  public String a;
-  public ArrayList<asjy> a;
-  public HashMap<String, String> a;
-  public int b;
-  public String b;
-  public ArrayList<String> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  public aska(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public aska()
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.a.jdField_a_of_type_Aobu != null)
+    {
+      if (paramInt != 0) {
+        break label94;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_Aobu.b();
+      this.a.av_();
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        ExtendFriendSquareFragment.c(this.a);
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label94:
+      this.a.c = true;
+      this.a.jdField_a_of_type_Aobu.c();
+      this.a.jdField_a_of_type_Aobu.a();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
+      }
+    }
   }
   
-  public String toString()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
-    return localStringBuilder.toString();
+    this.a.h = this.a.d();
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.a.e != -1L)
+    {
+      long l = System.currentTimeMillis() - this.a.e;
+      f1 = f2;
+      if (l > 0L)
+      {
+        f1 = f2;
+        if (l < 2000L) {
+          f1 = paramInt2 * 1.0F / (float)l;
+        }
+      }
+    }
+    this.a.e = System.currentTimeMillis();
+    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
+    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Askg != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Askg.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,16 +1,15 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aetr
+class aetr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  aetr(aetm paramaetm) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

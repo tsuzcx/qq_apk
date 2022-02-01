@@ -1,13 +1,28 @@
-import com.tencent.image.URLDrawable;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class atvx
+final class atvx
+  extends ClickableSpan
 {
-  public URLDrawable a;
-  public boolean a;
+  atvx(atwb paramatwb) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atvx
  * JD-Core Version:    0.7.0.1
  */

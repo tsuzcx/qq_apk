@@ -1,25 +1,32 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardTextOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aula
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public aula(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
+  public aula(ForwardTextOption paramForwardTextOption) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
+    if (this.a.jdField_a_of_type_Bgpa == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
-      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_Bgpa.hideSoftInputFromWindow();
+      auiq localauiq = new auiq(this.a.jdField_a_of_type_Bgpa);
+      localauiq.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692399), this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Bgpa.addPreviewView(localauiq.b());
+      this.a.E();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aula
  * JD-Core Version:    0.7.0.1
  */

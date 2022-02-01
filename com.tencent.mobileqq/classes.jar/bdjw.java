@@ -1,23 +1,45 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdjw
-  implements ArkViewImplement.LoadCallback
 {
-  bdjw(bdju parambdju) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public static bdjw a(JSONObject paramJSONObject)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
+    if (paramJSONObject != null) {
+      try
+      {
+        if ((paramJSONObject.has("retcode")) && (paramJSONObject.getInt("retcode") == 0) && (paramJSONObject.has("data")))
+        {
+          bdjw localbdjw = new bdjw();
+          paramJSONObject = paramJSONObject.getJSONObject("data");
+          if (paramJSONObject != null)
+          {
+            localbdjw.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+            localbdjw.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+            localbdjw.jdField_a_of_type_Int = paramJSONObject.optInt("localPadId");
+            localbdjw.c = paramJSONObject.optString("localPadId");
+            localbdjw.d = paramJSONObject.optString("doc_id");
+            localbdjw.jdField_b_of_type_Int = paramJSONObject.optInt("doc_type");
+            localbdjw.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isCache");
+          }
+          return localbdjw;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("ImportFormData", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+      }
+    }
+    return null;
   }
 }
 

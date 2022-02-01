@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import pha;
 
 class Conversation$25
   implements Runnable
@@ -10,16 +10,12 @@ class Conversation$25
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "delayUpdateMayKnowRecommendRunnable");
-    }
-    Conversation.i(this.this$0);
-    this.this$0.a.sendEmptyMessage(1009);
+    pha.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.25
  * JD-Core Version:    0.7.0.1
  */

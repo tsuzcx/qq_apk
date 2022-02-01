@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahqm
-  implements Comparator<structmsg.StructMsg>
+class ahqm
+  implements View.OnClickListener
 {
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  ahqm(ahqj paramahqj) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    if (ahqj.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(ahqj.a(this.a).a) }));
+      }
+      ahqi localahqi = ahqj.a(this.a);
+      ahqj.a(this.a);
+      if (localahqi != null) {
+        localahqi.a();
+      }
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arjw
-  implements View.OnClickListener
+public class arjw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  arjw(arjq paramarjq, int paramInt) {}
+  public arjw(DataReportViewer paramDataReportViewer) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Arjq.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label79;
-      }
-      azqs.b(null, "dc00898", "", "", "0X800A745", "0X800A745", arsx.c(this.jdField_a_of_type_Arjq.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Arjq.a.c()) {
-        this.jdField_a_of_type_Arjq.a.b();
-      }
+    this.a.a = paramBoolean;
+    if (this.a.a) {
+      this.a.a();
     }
-    label79:
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_Arjq.a.g();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

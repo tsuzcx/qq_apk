@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amzb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import ansd;
+import aoxs;
+import apsi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new amzb();
+  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aoxs();
   static boolean a;
   static String b;
   public String a;
@@ -463,7 +463,7 @@ public class ARScanStarFaceConfigInfo
     //   185: invokevirtual 206	java/io/BufferedOutputStream:flush	()V
     //   188: aload 7
     //   190: aload 6
-    //   192: invokestatic 211	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   192: invokestatic 211	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
     //   195: istore 4
     //   197: aload_1
     //   198: ifnull +7 -> 205
@@ -656,9 +656,9 @@ public class ARScanStarFaceConfigInfo
             } else if (localNumberFormatException.equalsIgnoreCase("adImgUrl")) {
               ((ARScanStarFaceActInfo)localObject).f = localException.nextText();
             } else if (localNumberFormatException.equalsIgnoreCase("beginTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = ansd.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = apsi.a(localException.nextText());
             } else if (localNumberFormatException.equalsIgnoreCase("endTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = ansd.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = apsi.a(localException.nextText());
             }
           }
           else if ((i == 3) && (localException.getName().equalsIgnoreCase("Activity")))
@@ -706,7 +706,7 @@ public class ARScanStarFaceConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo
  * JD-Core Version:    0.7.0.1
  */

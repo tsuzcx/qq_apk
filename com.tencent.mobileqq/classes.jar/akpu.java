@@ -1,21 +1,28 @@
-import android.view.SurfaceHolder;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
 public class akpu
+  implements View.OnFocusChangeListener
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  public akpu(LingHbFragment paramLingHbFragment) {}
   
-  public String toString()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
-    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", w=").append(this.b);
-    localStringBuffer.append(", h=").append(this.c);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
   }
 }
 

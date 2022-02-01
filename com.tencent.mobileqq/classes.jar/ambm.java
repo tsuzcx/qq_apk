@@ -1,852 +1,204 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RedpointHandler.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsDetailInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsSubnation;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedPath;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeReqBody;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ExpandableListView;
 
-public class ambm
-  extends alpd
-  implements alpe
+public abstract class ambm
+  extends bkng
+  implements aobv, bkhe
 {
-  public static final HashSet<String> a;
-  public int a;
-  private ampn a;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private aobu jdField_a_of_type_Aobu;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected ExpandableListView a;
   
-  static
+  public ambm(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_Aobu = new aobu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Aobu.a(this);
+    bgmo.a();
   }
   
-  public ambm(QQAppInterface paramQQAppInterface)
+  protected void a(amcl paramamcl, Bitmap paramBitmap)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 600000;
-    this.jdField_a_of_type_Ampn = new ambn(this, "vas_red_point", false);
+    a(paramamcl, paramBitmap, true);
   }
   
-  private BusinessInfoCheckUpdate.LbsInfo a(SosoInterface.SosoLocation paramSosoLocation)
+  protected void a(amcl paramamcl, Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (paramSosoLocation == null) {
-      return null;
+    if (paramamcl.jdField_c_of_type_AndroidWidgetImageView == null) {
+      return;
     }
-    BusinessInfoCheckUpdate.LbsInfo localLbsInfo = new BusinessInfoCheckUpdate.LbsInfo();
-    BusinessInfoCheckUpdate.LbsDetailInfo localLbsDetailInfo = new BusinessInfoCheckUpdate.LbsDetailInfo();
-    BusinessInfoCheckUpdate.LbsSubnation localLbsSubnation = new BusinessInfoCheckUpdate.LbsSubnation();
-    if (TextUtils.isEmpty(paramSosoLocation.f)) {}
-    for (paramSosoLocation = "";; paramSosoLocation = paramSosoLocation.f)
+    if (anhk.z.equals(paramamcl.a))
     {
-      localLbsSubnation.code.set(paramSosoLocation);
-      localLbsSubnation.nation.set("unknown");
-      localLbsSubnation.province.set("unknown");
-      localLbsSubnation.city.set("unknown");
-      localLbsSubnation.district.set("unknown");
-      localLbsDetailInfo.subnation.set(localLbsSubnation);
-      localLbsInfo.detail_info.set(localLbsDetailInfo);
-      return localLbsInfo;
+      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844220);
+      return;
+    }
+    if (anhk.A.equals(paramamcl.a))
+    {
+      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844218);
+      return;
+    }
+    if (anhk.B.equals(paramamcl.a))
+    {
+      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844223);
+      return;
+    }
+    if (anhk.y.equals(paramamcl.a))
+    {
+      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839564);
+      return;
+    }
+    if (paramBitmap == null) {
+      paramBitmap = this.jdField_a_of_type_Aobu.a(paramamcl.jdField_c_of_type_Int, paramamcl.a);
+    }
+    for (;;)
+    {
+      Bitmap localBitmap = paramBitmap;
+      if (paramBitmap == null)
+      {
+        if (paramBoolean) {
+          paramBitmap = bgmo.a();
+        }
+        localBitmap = paramBitmap;
+        if (!this.jdField_a_of_type_Aobu.a())
+        {
+          this.jdField_a_of_type_Aobu.a(paramamcl.a, paramamcl.jdField_c_of_type_Int, false);
+          localBitmap = paramBitmap;
+        }
+      }
+      if (localBitmap == null) {
+        break;
+      }
+      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
     }
   }
   
-  public static List<ambo> a(AppRuntime paramAppRuntime)
+  public void a(View paramView, int paramInt) {}
+  
+  protected void a(String paramString, Bitmap paramBitmap)
   {
-    if (paramAppRuntime == null) {}
-    ArrayList localArrayList;
-    do
-    {
-      return null;
-      localArrayList = new ArrayList();
-      paramAppRuntime = LebaPluginInfo.getAll(((QQAppInterface)paramAppRuntime).getEntityManagerFactory().createEntityManager());
-    } while (paramAppRuntime == null);
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
     int i = 0;
-    while (i < paramAppRuntime.size())
+    if (i < j)
     {
-      ambo localambo = new ambo();
-      localambo.jdField_a_of_type_Long = ((LebaPluginInfo)paramAppRuntime.get(i)).uiResId;
-      localambo.jdField_a_of_type_Int = ((int)((LebaPluginInfo)paramAppRuntime.get(i)).uiResId);
-      localArrayList.add(localambo);
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  private void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      ThreadManager.post(new RedpointHandler.2(this, paramInt, paramSosoLbsInfo), 5, null, true);
-      return;
-    }
-    b(paramInt, paramSosoLbsInfo);
-  }
-  
-  private void a(long paramLong)
-  {
-    if (jdField_a_of_type_JavaUtilHashSet == null) {}
-    do
-    {
-      return;
-      if (paramLong == 1113L)
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof amcl)))
       {
-        jdField_a_of_type_JavaUtilHashSet.add("1113.100800");
-        jdField_a_of_type_JavaUtilHashSet.add("1113.100801");
-        jdField_a_of_type_JavaUtilHashSet.add("1113.100802");
-        jdField_a_of_type_JavaUtilHashSet.add("1113.100803");
-        jdField_a_of_type_JavaUtilHashSet.add("1113.100804");
-        return;
+        localObject = (amcl)localObject;
+        if (paramString != null) {
+          break label69;
+        }
+        a((amcl)localObject, null, false);
       }
-    } while (paramLong != 100001113L);
-    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100800");
-    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100801");
-    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100802");
-    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100803");
-    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100804");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = (azbi)paramQQAppInterface.getManager(12);
-    if (localObject != null) {
-      ((azbi)localObject).a();
-    }
-    localObject = new NewIntent(paramQQAppInterface.getApplication(), azbl.class);
-    ((NewIntent)localObject).setAction("gc_refresh_ui");
-    ((NewIntent)localObject).putExtra("gc_notify_type", 6);
-    paramQQAppInterface.startServlet((NewIntent)localObject);
-    ((ambm)paramQQAppInterface.a(87)).notifyUI(3, true, null);
-  }
-  
-  private void a(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
-  {
-    Object localObject1 = (bdtc)this.app.getManager(177);
-    if ((!((bdtc)localObject1).jdField_b_of_type_Boolean) && (!((bdtc)localObject1).jdField_a_of_type_Boolean)) {
-      ((bdtc)localObject1).a(this.app.getCurrentAccountUin());
-    }
-    int j;
-    int i;
-    if (paramTimeRspBody.rptMsgAppInfo.has())
-    {
-      j = paramTimeRspBody.rptMsgAppInfo.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      label69:
+      while (!paramString.equals(((amcl)localObject).a))
       {
-        localObject2 = (BusinessInfoCheckUpdate.AppInfo)paramTimeRspBody.rptMsgAppInfo.get(i);
-        if (localObject2 == null) {
-          break label269;
-        }
-        if (String.valueOf(100005).equals(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get()))
-        {
-          if ((((bdtc)localObject1).jdField_a_of_type_Int == 0) || (TextUtils.isEmpty(((bdtc)localObject1).jdField_a_of_type_JavaLangString)) || (((bdtc)localObject1).jdField_b_of_type_Int != 0)) {
-            break label269;
-          }
-          ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.set(0);
-          ((BusinessInfoCheckUpdate.AppInfo)localObject2).modify_ts.set((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
-        }
-      }
-      else
-      {
-        if (!paramTimeRspBody.rptMsgNumRedInfo.has()) {
-          break label346;
-        }
-        localObject1 = new ArrayList();
-        localObject2 = paramTimeRspBody.rptMsgNumRedInfo.get();
-        if (localObject2 != null) {
-          break;
-        }
-        return;
-      }
-      if (((BusinessInfoCheckUpdate.AppInfo)localObject2).uiAppId.get() == 769) {
-        this.app.getApp().getSharedPreferences("check_update_sp_key", 0).edit().putInt("reader_zone_appinfo_last_pull_timestamp_" + this.app.getCurrentAccountUin(), (int)(NetConnInfoCenter.getServerTimeMillis() / 1000L)).apply();
-      }
-      label269:
-      i += 1;
-    }
-    Object localObject2 = ((List)localObject2).iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (BusinessInfoCheckUpdate.NumRedInfo)((Iterator)localObject2).next();
-      if (((BusinessInfoCheckUpdate.NumRedInfo)localObject3).appid.get() == 7719) {
-        ((List)localObject1).add(localObject3);
-      }
-    }
-    auwa.a().a(this.app, (List)localObject1);
-    label346:
-    if (QLog.isColorLevel()) {
-      QLog.d("RedpointHandler", 2, "individuation jump open");
-    }
-    if (paramTimeRspBody.rptSetting.get() != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        localObject3 = paramTimeRspBody.rptSetting.get().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)((Iterator)localObject3).next();
-          if (localAppSetting != null)
-          {
-            StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("appid: ");
-            if (localAppSetting.appid.has())
-            {
-              localObject1 = Integer.valueOf(localAppSetting.appid.get());
-              label462:
-              localStringBuilder = localStringBuilder.append(localObject1).append("  setting:");
-              if (!localAppSetting.setting.has()) {
-                break label565;
-              }
-              localObject1 = Boolean.valueOf(localAppSetting.setting.get());
-              label501:
-              localStringBuilder = localStringBuilder.append(localObject1).append(" modify_ts:");
-              if (!localAppSetting.modify_ts.has()) {
-                break label573;
-              }
-            }
-            label565:
-            label573:
-            for (localObject1 = Long.valueOf(localAppSetting.modify_ts.get());; localObject1 = "null")
-            {
-              localStringBuilder.append(localObject1).append("\n");
-              break;
-              localObject1 = "null";
-              break label462;
-              localObject1 = "null";
-              break label501;
-            }
-          }
-        }
-        QLog.i("RedpointHandler", 2, ((StringBuilder)localObject2).toString());
-      }
-      aieq.a().a(paramTimeRspBody.rptSetting.get());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("RedpointHandler", 2, "update NearbyNumAppinfo");
-    }
-    avuf.a(this.app, true);
-  }
-  
-  private void a(Object paramObject)
-  {
-    if (paramObject == null) {
-      QLog.e("RedpointHandler", 1, "handleResponse data = null");
-    }
-    Object localObject1;
-    int i;
-    axlx localaxlx;
-    label604:
-    do
-    {
-      do
-      {
-        return;
-        try
-        {
-          localObject1 = new BusinessInfoCheckUpdate.TimeRspBody();
-          ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).mergeFrom((byte[])paramObject);
-          paramObject = localObject1;
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            QLog.e("RedpointHandler", 1, "mergeFrom failed");
-            paramObject = null;
-          }
-        }
-        if (paramObject == null)
-        {
-          QLog.e("RedpointHandler", 1, "handleResponse prb = null");
-          return;
-        }
-        if (paramObject.iResult.get() == 0) {
-          break;
-        }
-        QLog.d("RedpointHandler", 2, "handleResponse,return fail ,TimeRspBody result:" + paramObject.iResult.get());
-      } while (paramObject.iResult.get() != 104005);
-      localObject1 = new BusinessInfoCheckUpdate.TimeRspBody();
-      QLog.i("RedpointHandler", 1, "handleResponse");
-      paramObject = this.app.getApp().getSharedPreferences("check_update_sp_key", 0).edit();
-      if (((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iInterval.has())
-      {
-        localObject2 = "businessinfo_check_update_interval_" + this.app.getCurrentAccountUin();
-        if (((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iInterval.get() > 0)
-        {
-          i = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iInterval.get();
-          paramObject.putInt((String)localObject2, i);
-        }
-      }
-      for (;;)
-      {
-        paramObject.putInt("businessinfo_check_update_interval_lbsinfo_" + this.app.getCurrentAccountUin(), ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iLbsInterval.get());
-        QLog.d("RedpointHandler", 1, "handleResponse, iInterval = " + ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iInterval.get() + "; lbsInterval = " + ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).iLbsInterval.get());
-        paramObject.putInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
-        paramObject.apply();
-        this.app.getEntityManagerFactory().createEntityManager();
-        localaxlx = (axlx)this.app.getManager(36);
-        try
-        {
-          if (!((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.has()) {
-            break label667;
-          }
-          paramObject = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.get().iterator();
-          while (paramObject.hasNext())
-          {
-            localObject2 = (BusinessInfoCheckUpdate.AppInfo)paramObject.next();
-            if (localObject2 != null)
-            {
-              if ((!a(this.app, (BusinessInfoCheckUpdate.AppInfo)localObject2)) && (1 == ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get()))
-              {
-                ((BusinessInfoCheckUpdate.AppInfo)localObject2).modify_ts.set((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
-                ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.set(0);
-                if (QLog.isColorLevel()) {
-                  QLog.d("RedpointHandler", 2, "verifyDataCorrect,return false ,appInfo.path.get():" + ((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get());
-                }
-              }
-              if (((BusinessInfoCheckUpdate.AppInfo)localObject2).use_cache.get())
-              {
-                localObject3 = localaxlx.a(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get());
-                if (localObject3 != null) {
-                  ((BusinessInfoCheckUpdate.AppInfo)localObject2).buffer.set(((BusinessInfoCheckUpdate.AppInfo)localObject3).buffer.get());
-                }
-              }
-            }
-          }
-          localaxlx.a((BusinessInfoCheckUpdate.TimeRspBody)localObject1);
-        }
-        catch (Exception paramObject)
-        {
-          QLog.i("RedpointHandler", 2, "handleResponse", paramObject);
-        }
-        a((BusinessInfoCheckUpdate.TimeRspBody)localObject1);
-        a(this.app);
-        return;
-        i = 0;
-        break;
-        paramObject.remove("businessinfo_check_update_interval_" + this.app.getCurrentAccountUin());
-      }
-      if (!((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgNumRedInfo.has()) {
-        break;
-      }
-      paramObject = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgNumRedInfo.get();
-    } while (paramObject == null);
-    label667:
-    paramObject = paramObject.iterator();
-    while (paramObject.hasNext())
-    {
-      localObject2 = ((BusinessInfoCheckUpdate.NumRedInfo)paramObject.next()).num_red_path.get();
-      if (localObject2 != null)
-      {
-        i = 0;
-        while (i < ((List)localObject2).size())
-        {
-          ((BusinessInfoCheckUpdate.NumRedPath)((List)localObject2).get(i)).uint32_push_num_red_ts.set((int)(System.currentTimeMillis() / 1000L));
-          i += 1;
-        }
-      }
-    }
-    Object localObject2 = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptSetting.get();
-    paramObject = localaxlx.a();
-    Object localObject3 = new ArrayList();
-    label810:
-    int j;
-    if ((localObject2 != null) && (paramObject != null))
-    {
-      i = 0;
-      if (i < ((List)localObject2).size())
-      {
-        BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(i);
-        j = 0;
-        label836:
-        if (j < paramObject.size())
-        {
-          if (((BusinessInfoCheckUpdate.AppSetting)paramObject.get(j)).appid.get() != localAppSetting.appid.get()) {
-            break label1246;
-          }
-          paramObject.set(j, localAppSetting);
-          j = 1;
-          label885:
-          if (j != 0) {
-            break label1239;
-          }
-          ((List)localObject3).add(localAppSetting);
-          break label1239;
-        }
-      }
-      else
-      {
-        paramObject.addAll((Collection)localObject3);
-      }
-    }
-    for (;;)
-    {
-      label911:
-      ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptSetting.set(paramObject);
-      paramObject = new StringBuilder("Rsp Body :");
-      if (((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.has())
-      {
-        localObject2 = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.get().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (BusinessInfoCheckUpdate.AppInfo)((Iterator)localObject2).next();
-          if (localObject3 != null)
-          {
-            paramObject.append("appid = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).uiAppId.get());
-            paramObject.append(" path = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).path.get());
-            paramObject.append(" inewflag = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).iNewFlag.get());
-            paramObject.append(" exposure_max = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).exposure_max.get());
-            paramObject.append(" mission_level = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).mission_level.get());
-            paramObject.append(" missions = ").append(((BusinessInfoCheckUpdate.AppInfo)localObject3).missions.get());
-            paramObject.append(";");
-          }
-        }
-      }
-      if (((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgNumRedInfo.has())
-      {
-        localObject2 = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgNumRedInfo.get().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (BusinessInfoCheckUpdate.NumRedInfo)((Iterator)localObject2).next();
-          if (localObject3 != null)
-          {
-            paramObject.append("numred appid = ").append(((BusinessInfoCheckUpdate.NumRedInfo)localObject3).appid.get());
-            paramObject.append(" appset = ").append(((BusinessInfoCheckUpdate.NumRedInfo)localObject3).appset.get());
-            paramObject.append(";");
-          }
-        }
-      }
-      QLog.i("RedpointHandler", 2, paramObject.toString());
-      break label604;
-      label1239:
-      label1246:
-      do
-      {
-        break label911;
-        j = 0;
-        break label885;
-        localObject1 = paramObject;
-        break;
-        i += 1;
-        break label810;
-        j += 1;
-        break label836;
-      } while (paramObject != null);
-      paramObject = localObject2;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if (paramAppInfo == null) {}
-    for (;;)
-    {
-      return false;
-      if (paramAppInfo.appset.get() == 3) {
-        return true;
-      }
-      Object localObject1 = a(paramQQAppInterface);
-      Object localObject2;
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        int j = ((List)localObject1).size();
-        i = 0;
-        while (i < j)
-        {
-          long l = ((ambo)((List)localObject1).get(i)).jdField_a_of_type_Long;
-          localObject2 = "100600." + (100000000L + l) + "";
-          if (((((ambo)((List)localObject1).get(i)).jdField_a_of_type_Long + "").equals(paramAppInfo.path.get())) || (((String)localObject2).equals(paramAppInfo.path.get()))) {
-            return true;
-          }
-          if ((jdField_a_of_type_JavaUtilHashSet != null) && (jdField_a_of_type_JavaUtilHashSet.contains(paramAppInfo.path.get()))) {
-            return true;
-          }
-          i += 1;
-        }
-      }
-      localObject1 = alpe.a.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (alpf)((Iterator)localObject1).next();
-        if (localObject2 != null)
-        {
-          localObject2 = ((alpf)localObject2).a(paramQQAppInterface);
-          if ((localObject2 != null) && (((List)localObject2).contains(paramAppInfo.path.get()))) {
-            return true;
-          }
-        }
-      }
-      int i = 0;
-      while (i < jdField_a_of_type_Array2dOfJavaLangString.length)
-      {
-        paramQQAppInterface = paramAppInfo.path.get();
-        if (jdField_a_of_type_Array2dOfJavaLangString[i][1].equals(paramQQAppInterface)) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  private void b(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    QLog.d("RedpointHandler", 1, "sendReq start");
-    BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
-    localTimeReqBody.iProtocolVer.set(1);
-    localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("8.3.5.4555");
-    localTimeReqBody.uiUin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    int i = bdin.a(BaseApplication.getContext());
-    localTimeReqBody.uiNetType.set(i);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      paramSosoLbsInfo = a(paramSosoLbsInfo.a);
-      if (paramSosoLbsInfo != null) {
-        localTimeReqBody.lbs.set(paramSosoLbsInfo);
-      }
-    }
-    this.app.getEntityManagerFactory().createEntityManager();
-    List localList = a(this.app);
-    Object localObject3 = (axlx)this.app.getManager(36);
-    Object localObject1;
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    ArrayList localArrayList3;
-    label203:
-    Object localObject2;
-    int k;
-    int j;
-    if (localObject3 == null)
-    {
-      localObject1 = null;
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      localArrayList3 = new ArrayList();
-      if (localList == null) {
-        break label488;
-      }
-      paramSosoLbsInfo = null;
-      if (localObject1 != null) {
-        break label311;
-      }
-      paramInt = 0;
-      i = 0;
-      if (i >= localList.size()) {
-        break label488;
-      }
-      localObject2 = ((ambo)localList.get(i)).jdField_a_of_type_Long + "";
-      k = ((ambo)localList.get(i)).jdField_a_of_type_Int;
-      j = 0;
-      label269:
-      if (j >= paramInt) {
-        break label334;
-      }
-      paramSosoLbsInfo = (BusinessInfoCheckUpdate.AppSetting)((List)localObject1).get(j);
-      if (paramSosoLbsInfo != null) {
-        break label322;
-      }
-    }
-    label311:
-    label322:
-    while (k != paramSosoLbsInfo.appid.get())
-    {
-      j += 1;
-      break label269;
-      localObject1 = ((axlx)localObject3).a();
-      break;
-      paramInt = ((List)localObject1).size();
-      break label203;
-    }
-    label334:
-    if ((j == paramInt) || (paramSosoLbsInfo == null))
-    {
-      paramSosoLbsInfo = new BusinessInfoCheckUpdate.AppSetting();
-      paramSosoLbsInfo.appid.set(k);
-      paramSosoLbsInfo.setting.set(true);
-      paramSosoLbsInfo.modify_ts.set(0L);
-    }
-    for (;;)
-    {
-      if (!paramSosoLbsInfo.setting.get())
-      {
-        long l = 100000000L + ((ambo)localList.get(i)).jdField_a_of_type_Long;
-        localObject2 = "100600." + l + "";
-        a(l);
-      }
-      for (;;)
-      {
-        localTimeReqBody.rptSetting.add(paramSosoLbsInfo);
-        localArrayList1.add(localObject2);
         i += 1;
         break;
-        a(((ambo)localList.get(i)).jdField_a_of_type_Long);
       }
-      label488:
-      localArrayList1.addAll(jdField_a_of_type_JavaUtilHashSet);
-      paramSosoLbsInfo = alpe.a.iterator();
-      while (paramSosoLbsInfo.hasNext())
-      {
-        localObject1 = (alpf)paramSosoLbsInfo.next();
-        if ((localObject1 != null) && (((alpf)localObject1).a(this.app) != null)) {
-          localArrayList1.addAll(((alpf)localObject1).a(this.app));
-        }
-      }
-      paramInt = 0;
-      while (paramInt < jdField_a_of_type_Array2dOfJavaLangString.length)
-      {
-        localArrayList1.add(jdField_a_of_type_Array2dOfJavaLangString[paramInt][1]);
-        paramInt += 1;
-      }
-      if (localObject3 != null)
-      {
-        paramSosoLbsInfo = ((axlx)localObject3).b(3).iterator();
-        while (paramSosoLbsInfo.hasNext()) {
-          localArrayList1.add(((BusinessInfoCheckUpdate.AppInfo)paramSosoLbsInfo.next()).path.get());
-        }
-        if (((axlx)localObject3).a() == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RedpointHandler", 2, "BusinessInfoCheckUpdateItem pb file does not exist");
-          }
-          localArrayList2.addAll(localArrayList1);
-        }
-      }
-      else
-      {
-        localTimeReqBody.rptMsgAppInfo.set(localArrayList3);
-        localTimeReqBody.rptNoRedPath.set(localArrayList2);
-        localTimeReqBody.sQimei.set(String.valueOf(UserAction.getQIMEI()));
-        if (!this.app.q) {
-          break label1277;
-        }
-        localTimeReqBody.bHebaFlag.set(true);
-        label740:
-        if ((!((fx)this.app.getManager(42)).jdField_a_of_type_Boolean) && (localTimeReqBody.rptMsgAppInfo.has()))
-        {
-          paramInt = 0;
-          if (paramInt < localTimeReqBody.rptMsgAppInfo.size())
-          {
-            if (!"100005.100011".equals(((BusinessInfoCheckUpdate.AppInfo)localTimeReqBody.rptMsgAppInfo.get(paramInt)).path.get())) {
-              break label1289;
-            }
-            localTimeReqBody.rptMsgAppInfo.remove(paramInt);
-          }
-        }
-        label771:
-        if (!QLog.isColorLevel()) {
-          break label1326;
-        }
-        paramSosoLbsInfo = new StringBuilder();
-        paramSosoLbsInfo.append("req red pathlist:");
-        if (!localTimeReqBody.rptMsgAppInfo.has()) {
-          break label1296;
-        }
-        paramInt = 0;
-        while (paramInt < localTimeReqBody.rptMsgAppInfo.size())
-        {
-          localObject1 = ((BusinessInfoCheckUpdate.AppInfo)localTimeReqBody.rptMsgAppInfo.get(paramInt)).path.get();
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            paramSosoLbsInfo.append((String)localObject1);
-            paramSosoLbsInfo.append(";");
-          }
-          paramInt += 1;
-        }
-      }
-      paramSosoLbsInfo = ((axlx)localObject3).a();
-      if (paramSosoLbsInfo.rptMsgAppInfo.has())
-      {
-        i = 0;
-        label934:
-        if (i < localArrayList1.size())
-        {
-          localObject1 = (String)localArrayList1.get(i);
-          paramInt = 0;
-          label960:
-          if (paramInt >= paramSosoLbsInfo.rptMsgAppInfo.size()) {
-            break label1378;
-          }
-          localObject2 = (BusinessInfoCheckUpdate.AppInfo)paramSosoLbsInfo.rptMsgAppInfo.get(paramInt);
-          if (!((String)localObject1).equals(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get())) {
-            break label1257;
-          }
-          localObject3 = ((BusinessInfoCheckUpdate.AppInfo)localObject2).missions.get();
-          paramInt = 0;
-          if ((localObject3 == null) || (((List)localObject3).size() == 0)) {
-            paramInt = 1;
-          }
-          if ((((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() != 0) || (paramInt == 0)) {
-            break label1067;
-          }
-          paramInt = 1;
-        }
-      }
-      for (;;)
-      {
-        if (paramInt != 0) {
-          localArrayList2.add(localObject1);
-        }
-        i += 1;
-        break label934;
-        break;
-        label1067:
-        localObject3 = new BusinessInfoCheckUpdate.AppInfo();
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).path.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).uiAppId.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).uiAppId.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).buffer.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).buffer.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).modify_ts.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).modify_ts.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).iNewFlag.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).type.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).type.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).push_red_ts.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).push_red_ts.get());
-        ((BusinessInfoCheckUpdate.AppInfo)localObject3).mission_level.set(((BusinessInfoCheckUpdate.AppInfo)localObject2).mission_level.get());
-        paramInt = 0;
-        while (paramInt < ((BusinessInfoCheckUpdate.AppInfo)localObject2).missions.size())
-        {
-          ((BusinessInfoCheckUpdate.AppInfo)localObject3).missions.add(((BusinessInfoCheckUpdate.AppInfo)localObject2).missions.get(paramInt));
-          paramInt += 1;
-        }
-        localArrayList3.add(localObject3);
-        paramInt = 0;
-        continue;
-        label1257:
-        paramInt += 1;
-        break label960;
-        localArrayList2.addAll(localArrayList1);
-        break;
-        label1277:
-        localTimeReqBody.bHebaFlag.set(false);
-        break label740;
-        label1289:
-        paramInt += 1;
-        break label771;
-        label1296:
-        QLog.d("RedpointHandler", 1, "getNewFlagOp rptMsginfoPath:" + paramSosoLbsInfo.toString());
-        label1326:
-        if (QLog.isColorLevel()) {}
-        QLog.d("RedpointHandler", 1, "getNewFlagOp local message ok");
-        paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QQClubComm.getNewFlag");
-        paramSosoLbsInfo.putWupBuffer(localTimeReqBody.toByteArray());
-        sendPbReq(paramSosoLbsInfo);
-        return;
-        label1378:
-        paramInt = 1;
-      }
+      ((amcl)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
     }
   }
   
-  private void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void b()
   {
-    QLog.d("RedpointHandler", 2, "getNewFlagOp:send redInfo start");
-    SharedPreferences localSharedPreferences = this.app.getApp().getSharedPreferences("check_update_sp_key", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int i = localSharedPreferences.getInt("businessinfo_check_update_interval_" + this.app.getCurrentAccountUin(), 600);
-    this.jdField_a_of_type_Int = (i * 1000);
-    int j = localSharedPreferences.getInt("businessinfo_check_update_interval_lbsinfo_" + this.app.getCurrentAccountUin(), 43200000);
-    int k = localSharedPreferences.getInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), 0);
-    int m = localSharedPreferences.getInt("businessinfo_last_check_lbsinfo_timestamp_" + this.app.getCurrentAccountUin(), 0);
-    int n = (int)(System.currentTimeMillis() / 1000L);
-    boolean bool = localSharedPreferences.getBoolean("redtouch_force", false);
-    QLog.d("RedpointHandler", 1, "getNewFlagOp:sendredInfo :systemTimestamp = " + n + ";lastUpdateTimestamp = " + k + ";updateInterval = " + i + ";updateLbsInterval = " + j + ";lastCheckLbsInfo = " + m + ";isDebugVersion = " + false);
-    if ((!bool) && (!paramBoolean1) && (n - k <= i) && (n >= k)) {
-      return;
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
     }
-    localEditor.putInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
-    localEditor.putBoolean("redtouch_force", false);
-    localEditor.apply();
-    if ((paramBoolean2) && ((n - m > j) || (n < k)))
+  }
+  
+  public int c_()
+  {
+    return 0;
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    return 0L;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    return 0;
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return null;
+  }
+  
+  public int getGroupCount()
+  {
+    return 0;
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((!this.jdField_a_of_type_Aobu.a()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
     {
-      localEditor.putInt("businessinfo_last_check_lbsinfo_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L)).commit();
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if (this.app.getApplication().getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
-        {
-          a(-1, null);
-          return;
-        }
-        ampk.a(this.jdField_a_of_type_Ampn);
-        return;
-      }
-      ampk.a(this.jdField_a_of_type_Ampn);
+      this.jdField_a_of_type_Aobu.a();
+      this.jdField_a_of_type_Aobu.c();
+    }
+    while (!this.jdField_a_of_type_Aobu.a()) {
       return;
     }
-    a(-1, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("RedpointHandler", 1, "forceSendReq fromSrc:" + paramInt);
-    a(-1, null);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    b(paramBoolean1, paramBoolean2);
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return ambp.class;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    ampk.b(this.jdField_a_of_type_Ampn);
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (("QQClubComm.getNewFlag".equals(paramFromServiceMsg.getServiceCmd())) && (i != 0)) {
-        a(paramObject);
-      }
-      return;
-    }
+    this.jdField_a_of_type_Aobu.a();
+    this.jdField_a_of_type_Aobu.b();
+    a(null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambm
  * JD-Core Version:    0.7.0.1
  */

@@ -136,7 +136,7 @@ public class d
       paramArrayOfByte4 = paramArrayOfByte4.getBuf();
       continue;
       paramArrayOfByte4 = new RegTLV(37);
-      paramArrayOfByte4.setShort(t.az);
+      paramArrayOfByte4.setShort(t.aA);
       paramArrayOfByte4 = paramArrayOfByte4.getBuf();
       continue;
       paramArrayOfByte4 = new RegTLV(9);

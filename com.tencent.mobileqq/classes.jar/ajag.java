@@ -1,55 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
 public class ajag
-  extends Handler
+  implements tja
 {
-  private LinkedList<ajai> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  public ajag(SystemMsgListView paramSystemMsgListView) {}
   
-  public ajag(PreloadManager paramPreloadManager, Looper paramLooper)
+  public void a(tjf paramtjf)
   {
-    super(paramLooper);
-  }
-  
-  private void a()
-  {
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
-    ajai localajai = (ajai)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localajai), 64, null, false);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
-    do
+    int j;
+    if (paramtjf != null)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((ajai)paramMessage.obj);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramtjf.a() + " tabid = " + (Integer)paramtjf.a());
       }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    sendEmptyMessage(2);
-    return;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
-      return;
+      SystemMsgListView.a(this.a).a(((Integer)paramtjf.a()).intValue(), paramtjf.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramtjf = (aixs)SystemMsgListView.a(this.a).get(i);
+      if (paramtjf == null) {
+        break label141;
+      }
+      j = paramtjf.b;
     }
-    this.jdField_a_of_type_Boolean = false;
+    for (int i = paramtjf.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
+    }
   }
+  
+  public void b(tjf paramtjf) {}
+  
+  public void c(tjf paramtjf) {}
 }
 
 

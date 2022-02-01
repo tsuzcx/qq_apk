@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adth
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adth(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  public adth(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a(12, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

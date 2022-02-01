@@ -1,15 +1,71 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
-class aroq
-  implements View.OnClickListener
+public class aroq
+  extends arnz
 {
-  aroq(aron paramaron) {}
-  
-  public void onClick(View paramView)
+  public aroq(QQAppInterface paramQQAppInterface)
   {
-    this.a.a.finish();
+    super("qq.android.qav.video", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10049;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavVideoData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadVideoDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+    }
+    try
+    {
+      bgmg.a(paramString, mrs.c(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavVideoData localQavVideoData = (QavVideoData)a();
+    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
+    {
+      localQavVideoData.autoDownload = true;
+      arnn.a(localQavVideoData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavVideoData)a()).autoDownload;
   }
 }
 

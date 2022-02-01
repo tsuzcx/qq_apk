@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import beqp;
-import beus;
+import bhxx;
+import bibq;
 
 public abstract class ImageViewTouchBase
   extends ImageView
@@ -22,14 +22,14 @@ public abstract class ImageViewTouchBase
   static final float SCALE_RATE = 1.15F;
   private boolean bShadow;
   protected Matrix mBaseMatrix = new Matrix();
-  protected final beus mBitmapDisplayed = new beus(null);
+  protected final bibq mBitmapDisplayed = new bibq(null);
   private final Matrix mDisplayMatrix = new Matrix();
   protected Handler mHandler = new Handler();
   private final float[] mMatrixValues = new float[9];
   float mMaxZoom = 3.0F;
   float mMinZoom = 0.5F;
   private Runnable mOnLayoutRunnable;
-  private beqp mRecycler;
+  private bhxx mRecycler;
   protected Matrix mSuppMatrix = new Matrix();
   int mThisHeight = -1;
   int mThisWidth = -1;
@@ -47,15 +47,15 @@ public abstract class ImageViewTouchBase
     init();
   }
   
-  private void getProperBaseMatrix(beus parambeus, Matrix paramMatrix)
+  private void getProperBaseMatrix(bibq parambibq, Matrix paramMatrix)
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = parambeus.c();
-    float f4 = parambeus.b();
+    float f3 = parambibq.c();
+    float f4 = parambibq.b();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(parambeus.a());
+    paramMatrix.postConcat(parambibq.a());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -186,7 +186,7 @@ public abstract class ImageViewTouchBase
     return this.mMaxZoom;
   }
   
-  public beus getRotateBitmap()
+  public bibq getRotateBitmap()
   {
     return this.mBitmapDisplayed;
   }
@@ -326,20 +326,20 @@ public abstract class ImageViewTouchBase
   
   public void setImageBitmapResetBase(Bitmap paramBitmap, boolean paramBoolean)
   {
-    setImageRotateBitmapResetBase(new beus(paramBitmap), paramBoolean);
+    setImageRotateBitmapResetBase(new bibq(paramBitmap), paramBoolean);
   }
   
-  public void setImageRotateBitmapResetBase(beus parambeus, boolean paramBoolean)
+  public void setImageRotateBitmapResetBase(bibq parambibq, boolean paramBoolean)
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambeus, paramBoolean);
+      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambibq, paramBoolean);
       return;
     }
-    if (parambeus.a() != null)
+    if (parambibq.a() != null)
     {
-      getProperBaseMatrix(parambeus, this.mBaseMatrix);
-      setImageBitmap(parambeus.a(), parambeus.a());
+      getProperBaseMatrix(parambibq, this.mBaseMatrix);
+      setImageBitmap(parambibq.a(), parambibq.a());
     }
     for (;;)
     {
@@ -354,9 +354,9 @@ public abstract class ImageViewTouchBase
     }
   }
   
-  public void setRecycler(beqp parambeqp)
+  public void setRecycler(bhxx parambhxx)
   {
-    this.mRecycler = parambeqp;
+    this.mRecycler = parambhxx;
   }
   
   public void setShadow(boolean paramBoolean)
@@ -460,7 +460,7 @@ public abstract class ImageViewTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewTouchBase
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import azri;
+import bctj;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ class ShortVideoPlayActivity$5
     Object localObject;
     if (this.this$0.b())
     {
-      if (this.this$0.jdField_b_of_type_Long <= 0L) {
+      if (this.this$0.d <= 0L) {
         this.this$0.h();
       }
       if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
@@ -29,7 +29,7 @@ class ShortVideoPlayActivity$5
       }
       if (ShortVideoPlayActivity.a(this.this$0) != 0L)
       {
-        ShortVideoPlayActivity.a(this.this$0, (int)(ShortVideoPlayActivity.a(this.this$0) * 10000L / this.this$0.jdField_b_of_type_Long + 0.5D));
+        ShortVideoPlayActivity.a(this.this$0, (int)(ShortVideoPlayActivity.a(this.this$0) * 10000L / this.this$0.d + 0.5D));
         if (!ShortVideoPlayActivity.a(this.this$0)) {
           ShortVideoPlayActivity.b(this.this$0, ShortVideoPlayActivity.a(this.this$0));
         }
@@ -46,14 +46,14 @@ class ShortVideoPlayActivity$5
           }
           localObject = new HashMap();
           ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.b(this.this$0)));
-          azri.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
+          bctj.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
         }
       }
     }
-    if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.this$0.g == 0L) || (this.this$0.i)) {}
+    if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.this$0.jdField_i_of_type_Long == 0L) || (this.this$0.jdField_i_of_type_Boolean)) {}
     try
     {
-      ShortVideoPlayActivity.b(this.this$0, (int)(this.this$0.f * 10000L / this.this$0.g));
+      ShortVideoPlayActivity.b(this.this$0, (int)(this.this$0.h * 10000L / this.this$0.jdField_i_of_type_Long));
       label411:
       if (this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.b(this.this$0)) {
         this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.setSecondaryProgress(ShortVideoPlayActivity.b(this.this$0));
@@ -68,13 +68,13 @@ class ShortVideoPlayActivity$5
           QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
         }
       }
-      while (this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get() == null)
+      while (this.this$0.b.get() == null)
       {
         return;
         ShortVideoPlayActivity.b(this.this$0, 10000);
         break;
       }
-      ((MqqHandler)this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get()).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 50L);
+      ((MqqHandler)this.this$0.b.get()).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 50L);
       return;
     }
     catch (Throwable localThrowable)
@@ -85,7 +85,7 @@ class ShortVideoPlayActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.5
  * JD-Core Version:    0.7.0.1
  */

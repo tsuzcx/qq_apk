@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
-class mbe
-  implements DialogInterface.OnDismissListener
+public class mbe
+  extends BroadcastReceiver
 {
-  mbe(mbc parammbc) {}
+  public mbe(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Mbh + "]");
-    }
-    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Mbh != null)) {
-      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbe
  * JD-Core Version:    0.7.0.1
  */

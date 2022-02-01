@@ -1,6 +1,7 @@
 package com.tencent.superplayer.api;
 
 public class TVideoNetInfo$DefinitionInfo
+  implements Cloneable
 {
   private String mDefn = "";
   private String mDefnName = "";
@@ -13,6 +14,11 @@ public class TVideoNetInfo$DefinitionInfo
     this.mDefnName = paramString2;
     this.mDefnRate = paramString3;
     this.mDefnShowName = paramString4;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
   }
   
   public String getDefn()
@@ -57,7 +63,7 @@ public class TVideoNetInfo$DefinitionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.api.TVideoNetInfo.DefinitionInfo
  * JD-Core Version:    0.7.0.1
  */

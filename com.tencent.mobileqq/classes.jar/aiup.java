@@ -1,49 +1,36 @@
-import Wallet.BroadCastInfo;
-import Wallet.GetBroadCastHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
+import java.util.List;
 
-class aiup
-  implements BusinessObserver
+public abstract interface aiup
 {
-  aiup(aiuo paramaiuo) {}
+  public abstract void a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 28)
-    {
-      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        break label21;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label21:
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_Aiul.a = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_Aiul.a(str) != null) && (localBroadCastInfo != null)) {
-            if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_Aiul.a(str);
-            } else {
-              this.a.jdField_a_of_type_Aiul.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
-            }
-          }
-        }
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, List<aiuo> paramList);
+  
+  public abstract void a(List<String> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

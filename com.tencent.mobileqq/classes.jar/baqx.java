@@ -1,99 +1,143 @@
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.net.URL;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.SparseArray;
 
 public class baqx
-  extends baqn
+  extends barm
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private SparseArray<baqz> a = new SparseArray();
+  private Handler jdField_b_of_type_AndroidOsHandler = new baqy(this, a());
+  private String jdField_b_of_type_JavaLangString;
+  
+  public baqx(Context paramContext)
   {
-    if ((paramDownloadParams == null) || (paramDownloadParams.url == null)) {
-      paramOutputStream = null;
-    }
-    String str;
-    Object localObject2;
-    do
+    super(paramContext);
+    int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
+    if (i == 0)
     {
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams.url.getHost();
-      str = paramDownloadParams.url.getFile();
-      if (!"DEFAULT_HEAD".equals(paramOutputStream)) {
-        break;
+      this.jdField_b_of_type_JavaLangString = "c2c";
+      return;
+    }
+    if (i == 1)
+    {
+      this.jdField_b_of_type_JavaLangString = "grp";
+      return;
+    }
+    if (i == 3000)
+    {
+      this.jdField_b_of_type_JavaLangString = "dis";
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = "other";
+  }
+  
+  private baqz a(int paramInt)
+  {
+    baqz localbaqz2 = (baqz)this.a.get(paramInt);
+    baqz localbaqz1 = localbaqz2;
+    if (localbaqz2 == null)
+    {
+      localbaqz1 = new baqz(paramInt, this.jdField_b_of_type_JavaLangString);
+      this.a.put(paramInt, localbaqz1);
+    }
+    return localbaqz1;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    baqz.a(a(paramInt));
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    String str;
+    if (localbaqz != null)
+    {
+      paramInt = baro.a(paramLong1, paramLong2);
+      str = null;
+      switch (paramInt)
+      {
       }
-      localObject2 = alof.aX + "avatarPendantDefaultHead" + str;
-      localObject1 = new File((String)localObject2);
-      paramOutputStream = (OutputStream)localObject1;
-    } while (((File)localObject1).exists());
-    Object localObject1 = "https://i.gtimg.cn/qqshow/admindata/comdata/mobileDefaultHead/" + str;
-    paramOutputStream = (OutputStream)localObject2;
+    }
     for (;;)
     {
-      for (;;)
-      {
-        if (localObject1 != null)
-        {
-          paramDownloadParams.url = new URL((String)localObject1);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("AvatarPendantDownloader", 4, "downloadImage pendant: " + (String)localObject1 + " -> " + paramOutputStream);
-          }
-          paramURLDrawableHandler.publishProgress(0);
-          localObject2 = new FileOutputStream(paramOutputStream);
-          try
-          {
-            new batt().a((OutputStream)localObject2, paramDownloadParams, paramURLDrawableHandler);
-            ((FileOutputStream)localObject2).close();
-            paramDownloadParams = new File(paramOutputStream);
-            paramOutputStream = paramDownloadParams;
-            if (paramDownloadParams.exists()) {
-              break;
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("AvatarPendantDownloader", 2, "downloadImage pendant fail.-> " + (String)localObject1);
-            }
-            return null;
-            if ((!"AIO_STATIC".equals(paramOutputStream)) || (TextUtils.isEmpty(str))) {
-              break label410;
-            }
-            paramOutputStream = new File(alof.bQ + str);
-            if (!paramOutputStream.exists()) {
-              paramOutputStream.mkdir();
-            }
-            long l = Long.valueOf(str.split("/")[1]).longValue();
-            localObject1 = bdfp.b(l, 5);
-            localObject2 = new File((String)localObject1);
-            paramOutputStream = (OutputStream)localObject2;
-            if (((File)localObject2).exists()) {
-              break;
-            }
-            localObject2 = bdfp.c(l, 5);
-            paramOutputStream = (OutputStream)localObject1;
-            localObject1 = localObject2;
-          }
-          catch (Exception paramDownloadParams)
-          {
-            for (;;)
-            {
-              ((FileOutputStream)localObject2).close();
-              new File(paramOutputStream).delete();
-            }
-          }
-        }
-      }
-      return null;
-      label410:
-      paramOutputStream = null;
-      localObject1 = null;
+      baqz.b(localbaqz, str);
+      return;
+      str = "long";
+      continue;
+      str = "small";
+      continue;
+      str = "mid";
+      continue;
+      str = "large";
+      continue;
+      str = "extra";
     }
   }
   
-  public boolean a()
+  public void a(int paramInt, String paramString)
   {
-    return false;
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if (localbaqz != null) {
+      baqz.d(localbaqz, paramString);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if (localbaqz != null) {
+      baqz.a(localbaqz, paramBoolean);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if ((localbaqz != null) && (baqz.a(localbaqz))) {
+      baqz.b(localbaqz);
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if (localbaqz != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (String str = "dynamic";; str = "static")
+    {
+      baqz.c(localbaqz, str);
+      return;
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if ((localbaqz != null) && (baqz.a(localbaqz))) {
+      baqz.c(localbaqz);
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    baqz localbaqz = (baqz)this.a.get(paramInt);
+    if ((localbaqz != null) && (baqz.a(localbaqz))) {
+      baqz.a(localbaqz, "sender");
+    }
   }
 }
 

@@ -1,228 +1,235 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.FutureListener;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobControlHandler;
+import com.tribe.async.async.JobController;
+import com.tribe.async.async.JobController.CancelCommand;
+import com.tribe.async.async.LightWeightExecutor;
+import com.tribe.async.async.MonitorThreadPoolExecutor.ThreadPoolMonitorListener;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
 
 public class wfk
-  extends wfd
-  implements uqm
+  implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
 {
-  public ShareGroupItem a;
-  public HashMap<String, WeakReference<wfm>> a;
-  public List<HotSortVideoEntry> a;
-  wfu a;
-  protected boolean a;
-  protected boolean b;
+  private static final int jdField_a_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_c_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final JobController jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  private final LightWeightExecutor jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  private final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new wfm("StoryBoss.NetworkExecutor", 128, jdField_c_of_type_Int, null);
+  private final Executor[] jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor = new Executor[3];
+  private long jdField_b_of_type_Long;
+  private final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new wfm("StoryBoss.CpuExecutor", 16, jdField_a_of_type_Int, null);
+  private final Executor jdField_c_of_type_JavaUtilConcurrentExecutor = new wfm("StoryBoss.FileExecutor", 64, jdField_b_of_type_Int, null);
   
-  public wfk(Context paramContext, boolean paramBoolean)
+  public wfk(Context paramContext)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor = new LightWeightExecutor(wfo.a().getDefaultLooper(), 100);
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.setMonitorListener(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(wfo.a().getDefaultLooper());
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController = new JobController(this);
+    wfo.a().registerSubscriber("root_group", this.jdField_a_of_type_ComTribeAsyncAsyncJobController);
   }
   
-  private void a(List<HotSortVideoEntry> paramList)
+  @NonNull
+  private <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, int paramInt1, int paramInt2, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    if (paramList.isEmpty()) {}
-    do
+    paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramParams);
+    paramJob.addFutureListener(new wfl(this, paramJob));
+    if (paramInt1 == 0)
     {
-      int i;
-      int k;
-      do
-      {
-        return;
-        if (this.b)
-        {
-          localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-          if (localVideoCollectionItem.collectionType == 7)
-          {
-            localVideoCollectionItem.hotSortVideoLIst.set(1, paramList.get(0));
-            paramList.remove(0);
-            this.b = false;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]填了一个坑");
-            }
-          }
-        }
-        int m = paramList.size() / 2;
-        if (paramList.size() % 2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          int j = 0;
-          k = 0;
-          while (j < m)
-          {
-            localVideoCollectionItem = new VideoCollectionItem();
-            localVideoCollectionItem.collectionType = 7;
-            localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(j), "0_xx");
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k + 1));
-            k += 2;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-            this.b = false;
-            j += 1;
-          }
-        }
-      } while ((paramList.size() <= 0) || (i == 0));
-      VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-      localVideoCollectionItem.collectionType = 7;
-      localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(k), "0_xx");
-      localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-      localVideoCollectionItem.hotSortVideoLIst.add(null);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      this.b = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]又挖了一个坑");
-  }
-  
-  private static void b(ImageView paramImageView, int paramInt, String paramString)
-  {
-    if (paramImageView == null) {
-      wxe.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "update imageView error. imageView is null.");
+      wfo.a().dispatch(paramJob);
+      return paramJob;
     }
-    do
-    {
-      return;
-      paramImageView.setVisibility(paramInt);
-    } while (paramInt != 0);
-    xsm.b(paramImageView, xsj.a(paramString), 80, 80, null, "StoryDiscoverHeadImage");
+    wfo.a().dispatchDelayed(paramJob, paramInt1);
+    return paramJob;
   }
   
-  protected View a(int paramInt, ViewGroup paramViewGroup)
+  public <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramInt = getItemViewType(paramInt);
-    View localView = null;
-    if (paramInt == 1)
-    {
-      localView = localLayoutInflater.inflate(2131561568, paramViewGroup, false);
-      localView.setTag(new wfm(localView, this));
+    paramJob = prepareWorker(paramJob, paramJob.getJobType(), paramFutureListener, paramParams);
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController.getDefaultHandler().handleExecute(this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor, paramJob);
+    if (paramJob != null) {
+      yqp.b("StoryBoss", "work hash code:" + paramJob.hashCode());
     }
-    do
-    {
-      return localView;
-      if (paramInt == 0)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131561503, paramViewGroup, false);
-        paramViewGroup.setTag(new wfr(paramViewGroup, this));
-        return paramViewGroup;
-      }
-      if (paramInt == 2)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131561567, paramViewGroup, false);
-        paramViewGroup.setTag(new wfq(paramViewGroup, this));
-        return paramViewGroup;
-      }
-    } while (paramInt != 7);
-    paramViewGroup = localLayoutInflater.inflate(2131561564, paramViewGroup, false);
-    paramViewGroup.setTag(new wfp(paramViewGroup, this));
-    return paramViewGroup;
+    return paramJob;
   }
   
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
+  public <Result> void cancelJob(Future<Result> paramFuture, boolean paramBoolean)
   {
-    int i = 0;
+    if ((paramFuture instanceof Worker)) {
+      wfo.a().cancelDispatch("", (Worker)paramFuture);
+    }
+    wfo.a().dispatch(new JobController.CancelCommand(paramFuture, paramBoolean));
+  }
+  
+  @NonNull
+  public Executor getExecutor(int paramInt)
+  {
+    Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    switch (paramInt)
+    {
+    default: 
+      return localExecutor;
+    case 2: 
+      return this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    case 4: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    case 8: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public Executor[] getExecutors()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public JobController getJobController()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  }
+  
+  @NonNull
+  public Executor getLightWeightExecutor()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  }
+  
+  public void onQueueExceedLimit(String paramString, int paramInt)
+  {
+    yqp.e("StoryBoss", paramString + " onQueueExceedLimit, size = " + paramInt);
+    if (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long > 7200000L) {
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    }
+  }
+  
+  public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
+  {
+    Iterator localIterator = paramList.iterator();
+    if (localIterator.hasNext())
+    {
+      Runnable localRunnable = (Runnable)localIterator.next();
+      paramList = localRunnable.getClass().getSimpleName();
+      if (!(localRunnable instanceof Worker)) {
+        break label116;
+      }
+      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
+    }
+    label116:
     for (;;)
     {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        if (((HotSortVideoEntry)this.jdField_a_of_type_JavaUtilList.get(i)).storyId.equals(paramHotSortVideoEntry.storyId)) {
-          this.jdField_a_of_type_JavaUtilList.set(i, paramHotSortVideoEntry);
-        }
+      yqp.e("StoryBoss", paramString + " onWorkerExceedTime, runnable = " + paramList);
+      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= 7200000L) {
+        break;
       }
-      else {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(ShareGroupItem paramShareGroupItem)
-  {
-    if (paramShareGroupItem != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-      super.notifyDataSetChanged();
-    }
-  }
-  
-  public void a(String paramString, List<wnd> paramList)
-  {
-    paramList = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((paramList != null) && (paramList.get() != null))
-    {
-      VideoCollectionItem localVideoCollectionItem = ((uvn)uwa.a(19)).a(paramString);
-      if (localVideoCollectionItem == null) {
-        break label55;
-      }
-      ((wfm)paramList.get()).a.setData(localVideoCollectionItem);
-    }
-    label55:
-    while (!QLog.isColorLevel()) {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      break;
       return;
     }
-    QLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "updateCollectionData: videoCollectionItem is null, collectionId:" + paramString);
   }
   
-  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob)
   {
-    this.jdField_a_of_type_Boolean = false;
-    super.a(paramList, paramBoolean);
+    return a(paramJob, null, null);
   }
   
-  public void a(wfu paramwfu)
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    super.a(paramwfu, paramwfu);
-    this.jdField_a_of_type_Wfu = paramwfu;
+    return a(paramJob, paramFutureListener, paramParams);
   }
   
-  protected boolean a()
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
   {
-    return false;
+    return a(paramJob, null, paramParams);
   }
   
-  public boolean a(boolean paramBoolean)
+  public void postLightWeightJob(Runnable paramRunnable, int paramInt)
   {
-    return false;
-  }
-  
-  public void e(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    b();
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = false;
-    a(VideoCollectionItem.getProfilePlaceholderItem("hotsort"));
-    a(VideoCollectionItem.getCurrentYearFakeItem("hotsort"));
-    a(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void f(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    if (paramList.isEmpty()) {
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.execute(paramRunnable);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a(paramList);
-    notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramInt);
   }
+  
+  @NonNull
+  public <Params, Progress, Result> Worker<Progress, Result> prepareWorker(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    zkb.a(paramJob);
+    paramJob.setJobType(paramInt);
+    paramJob.setParams(paramParams);
+    paramParams = new Worker(paramJob);
+    if (paramFutureListener != null) {
+      paramParams.addFutureListener(paramFutureListener);
+    }
+    paramJob.onPost();
+    return paramParams;
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), null, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, paramParams);
+  }
+  
+  public void shutdown() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wfk
  * JD-Core Version:    0.7.0.1
  */

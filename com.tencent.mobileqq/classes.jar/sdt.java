@@ -1,62 +1,24 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class sdt
+class sdt
+  extends AnimatorListenerAdapter
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String b = "utf-8";
+  sdt(sdq paramsdq, rxy paramrxy) {}
   
-  public sdt(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this(paramString, "utf-8");
+    this.jdField_a_of_type_Sdq.b(this.jdField_a_of_type_Rxy);
   }
   
-  public sdt(String paramString1, String paramString2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    a();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void a()
-  {
-    if (!this.jdField_a_of_type_JavaLangString.endsWith("?")) {
-      this.jdField_a_of_type_JavaLangString += "?";
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
-  }
-  
-  public sdt a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
-      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
-      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
-      return this;
-    }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return this;
+    sdq.a(this.jdField_a_of_type_Sdq).setRepeatCount(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdt
  * JD-Core Version:    0.7.0.1
  */

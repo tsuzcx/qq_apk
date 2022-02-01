@@ -1,18 +1,18 @@
-class baxh
-  extends alwx
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+
+public class baxh
 {
-  baxh(baxe parambaxe) {}
-  
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  public static void a(String paramString1, String paramString2)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramalwy);
-    if (paramBoolean)
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(anhk.bg)))
     {
-      this.a.e();
-      return;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("src_file_path", paramString1);
+      localHashMap.put("des_file_path", paramString2);
+      bctj.a(BaseApplication.getContext()).a(null, "qq_images_file_delete", true, 0L, 0L, localHashMap, "");
     }
-    this.a.d();
   }
 }
 

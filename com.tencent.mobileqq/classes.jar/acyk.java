@@ -1,40 +1,27 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyk
-  extends alpa
+  extends aczg
 {
-  public acyk(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public int a()
   {
-    if (paramInt2 == 0)
-    {
-      this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
-    }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131705233), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131705232), 0).a();
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131695087);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+    return super.a() + 2;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

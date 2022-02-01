@@ -1,34 +1,35 @@
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqzl
-  extends aqyt
+public class aqzl
 {
-  public aqzl(aqyp paramaqyp)
-  {
-    super(paramaqyp);
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public int c = b;
   
-  protected String a()
+  private static aqzl b(String paramString)
   {
-    return "StateRefuseByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    aqzl localaqzl = new aqzl();
+    try
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      localaqzl.c = new JSONObject(paramString).optInt("action", b);
+      return localaqzl;
     }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 6);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Aqyt = new aqzj(this.jdField_a_of_type_Aqyp);
+    catch (Throwable paramString)
+    {
+      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    }
+    return localaqzl;
+  }
+  
+  public boolean a()
+  {
+    return this.c == a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-class agen
-  extends Handler
+public class agen
+  extends VasQuickUpdateManager.CallBacker
 {
-  boolean jdField_a_of_type_Boolean = true;
+  public agen(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  agen(agem paramagem) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (paramMessage.what == agem.a()) {}
-    for (;;)
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
     {
-      super.handleMessage(paramMessage);
       return;
-      if (paramMessage.what != agem.b()) {}
-    }
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 

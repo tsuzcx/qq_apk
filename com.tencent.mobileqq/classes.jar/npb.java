@@ -1,40 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.3;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class npb
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public npb(NativeAdUtils.3 param3) {}
+  public npb(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    try
+    if (this.a.a != null)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, " new report success");
-        }
-      }
-      return;
+      Intent localIntent = new Intent(this.a, ChatHistory.class);
+      localIntent.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      localIntent.putExtra("uintype", 1024);
+      this.a.startActivity(localIntent);
+      oat.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npb
  * JD-Core Version:    0.7.0.1
  */

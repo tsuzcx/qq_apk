@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.account_folder.passive_bubble;
 
-import alud;
+import aaae;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azqs;
-import ybt;
+import anni;
+import bcst;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PassiveBubbleView
   extends LinearLayout
@@ -37,12 +38,12 @@ public class PassiveBubbleView
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    azqs.b(null, "dc00898", "", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+    bcst.b(null, "dc00898", "", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
   
   protected void a()
   {
-    ybt.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
+    aaae.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
     setVisibility(8);
   }
   
@@ -50,7 +51,7 @@ public class PassiveBubbleView
   {
     if (this.a != null)
     {
-      String str = paramInt + alud.a(2131708285);
+      String str = paramInt + anni.a(2131706662);
       this.a.setText(str);
       a("auth_page", "msg_exp", "", "", "", "");
     }
@@ -60,9 +61,9 @@ public class PassiveBubbleView
   {
     setOrientation(0);
     setGravity(16);
-    setBackgroundResource(2130838748);
-    inflate(paramContext, 2131558713, this);
-    this.a = ((TextView)findViewById(2131370227));
+    setBackgroundResource(2130838999);
+    inflate(paramContext, 2131558779, this);
+    this.a = ((TextView)findViewById(2131370669));
     setOnClickListener(this);
   }
   
@@ -70,11 +71,12 @@ public class PassiveBubbleView
   {
     a();
     a("auth_page", "msg_clk", "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.passive_bubble.PassiveBubbleView
  * JD-Core Version:    0.7.0.1
  */

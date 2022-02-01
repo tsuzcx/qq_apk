@@ -1,212 +1,127 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class aqhh
+  extends arfx
 {
-  public static final String[] a = { "expand_feed_bg1.png", "expand_feed_bg2.png", "expand_feed_bg3.png", "expand_feed_bg4.png", "expand_voice_logo1.png", "expand_voice_logo2.png", "expand_voice_logo3.png", "expand_voice_logo4.png", "expand_square_blank.png", "expand_voice_animation.json", "expand_summary_bg.png", "expand_summary_default_bg.png", "expand_guide_wording.png", "expand_guide_profile.png", "expand_guide_switch.png", "expand_summary_bg1.png", "expand_summary_bg2.png", "expand_summary_bg3.png", "expand_summary_bg4.png" };
-  public static final String[] b = { "expand_summary_bg1.png", "expand_summary_bg2.png", "expand_summary_bg3.png", "expand_summary_bg4.png" };
-  public static final String[] c = { "expand_feed_bg1.png", "expand_feed_bg2.png", "expand_feed_bg3.png", "expand_feed_bg4.png" };
-  public static final String[] d = { "expand_voice_logo1.png", "expand_voice_logo2.png", "expand_voice_logo3.png", "expand_voice_logo4.png" };
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+  private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
+  private apss jdField_a_of_type_Apss;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, List<aqhl>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private int b;
   
-  /* Error */
-  public static android.graphics.Bitmap a(String paramString, android.graphics.BitmapFactory.Options paramOptions)
+  public aqhh(Context paramContext)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload 4
-    //   5: astore_2
-    //   6: aload_0
-    //   7: invokestatic 71	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifne +58 -> 68
-    //   13: new 73	java/io/File
-    //   16: dup
-    //   17: aload_0
-    //   18: invokespecial 77	java/io/File:<init>	(Ljava/lang/String;)V
-    //   21: astore_2
-    //   22: aload_2
-    //   23: invokevirtual 81	java/io/File:exists	()Z
-    //   26: ifeq +139 -> 165
-    //   29: new 83	java/io/BufferedInputStream
-    //   32: dup
-    //   33: new 85	java/io/FileInputStream
-    //   36: dup
-    //   37: aload_2
-    //   38: invokespecial 88	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   41: invokespecial 91	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   44: astore_3
-    //   45: aload_3
-    //   46: astore_2
-    //   47: aload_3
-    //   48: aconst_null
-    //   49: aload_1
-    //   50: invokestatic 97	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   53: astore_1
-    //   54: aload_1
-    //   55: astore_0
-    //   56: aload_0
-    //   57: astore_2
-    //   58: aload_3
-    //   59: ifnull +9 -> 68
-    //   62: aload_3
-    //   63: invokevirtual 102	java/io/InputStream:close	()V
-    //   66: aload_0
-    //   67: astore_2
-    //   68: aload_2
-    //   69: areturn
-    //   70: astore_1
-    //   71: aconst_null
-    //   72: astore_3
-    //   73: aload_3
-    //   74: astore_2
-    //   75: ldc 104
-    //   77: iconst_1
-    //   78: ldc 106
-    //   80: iconst_1
-    //   81: anewarray 4	java/lang/Object
-    //   84: dup
-    //   85: iconst_0
-    //   86: aload_0
-    //   87: aastore
-    //   88: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   91: aload_1
-    //   92: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   95: aload 4
-    //   97: astore_2
-    //   98: aload_3
-    //   99: ifnull -31 -> 68
-    //   102: aload_3
-    //   103: invokevirtual 102	java/io/InputStream:close	()V
-    //   106: aconst_null
-    //   107: areturn
-    //   108: astore_0
-    //   109: aconst_null
-    //   110: areturn
-    //   111: astore_1
-    //   112: aconst_null
-    //   113: astore_3
-    //   114: aload_3
-    //   115: astore_2
-    //   116: ldc 104
-    //   118: iconst_1
-    //   119: ldc 106
-    //   121: iconst_1
-    //   122: anewarray 4	java/lang/Object
-    //   125: dup
-    //   126: iconst_0
-    //   127: aload_0
-    //   128: aastore
-    //   129: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   132: aload_1
-    //   133: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   136: aload 4
-    //   138: astore_2
-    //   139: aload_3
-    //   140: ifnull -72 -> 68
-    //   143: aload_3
-    //   144: invokevirtual 102	java/io/InputStream:close	()V
-    //   147: aconst_null
-    //   148: areturn
-    //   149: astore_0
-    //   150: aconst_null
-    //   151: areturn
-    //   152: astore_0
-    //   153: aconst_null
-    //   154: astore_2
-    //   155: aload_2
-    //   156: ifnull +7 -> 163
-    //   159: aload_2
-    //   160: invokevirtual 102	java/io/InputStream:close	()V
-    //   163: aload_0
-    //   164: athrow
-    //   165: ldc 104
-    //   167: iconst_1
-    //   168: ldc 117
-    //   170: iconst_1
-    //   171: anewarray 4	java/lang/Object
-    //   174: dup
-    //   175: iconst_0
-    //   176: aload_0
-    //   177: aastore
-    //   178: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   181: invokestatic 120	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   184: aconst_null
-    //   185: areturn
-    //   186: astore_1
-    //   187: aload_0
-    //   188: areturn
-    //   189: astore_1
-    //   190: goto -27 -> 163
-    //   193: astore_0
-    //   194: goto -39 -> 155
-    //   197: astore_1
-    //   198: goto -84 -> 114
-    //   201: astore_1
-    //   202: goto -129 -> 73
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	205	0	paramString	String
-    //   0	205	1	paramOptions	android.graphics.BitmapFactory.Options
-    //   5	155	2	localObject1	Object
-    //   44	100	3	localBufferedInputStream	java.io.BufferedInputStream
-    //   1	136	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   29	45	70	java/lang/Exception
-    //   102	106	108	java/lang/Exception
-    //   29	45	111	java/lang/OutOfMemoryError
-    //   143	147	149	java/lang/Exception
-    //   29	45	152	finally
-    //   62	66	186	java/lang/Exception
-    //   159	163	189	java/lang/Exception
-    //   47	54	193	finally
-    //   75	95	193	finally
-    //   116	136	193	finally
-    //   47	54	197	java/lang/OutOfMemoryError
-    //   47	54	201	java/lang/Exception
-  }
-  
-  public static String a(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { aqbm.a(), paramString });
-  }
-  
-  public static boolean a()
-  {
-    return a(a(a));
-  }
-  
-  public static boolean a(String[] paramArrayOfString)
-  {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      if (!new File(str).exists())
-      {
-        QLog.e("ExtendFriendResourceUtil", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { str }));
-        return false;
-      }
-      i += 1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = Color.parseColor("#00CAFC");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    return true;
+    this.b = ChatTextSizeSettingActivity.a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = new ViewGroup.LayoutParams(-2, bggq.a(paramContext, 21.0F));
+    b();
   }
   
-  public static String[] a(String[] paramArrayOfString)
+  private void a(aqhg paramaqhg, RoundImageView paramRoundImageView, arev paramarev)
   {
-    String[] arrayOfString = null;
-    if (paramArrayOfString != null)
+    if (paramaqhg.jdField_a_of_type_Boolean)
     {
-      arrayOfString = new String[paramArrayOfString.length];
-      int i = 0;
-      while (i < paramArrayOfString.length)
+      paramaqhg = njo.a(paramaqhg.jdField_a_of_type_Int);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      localObject = URLDrawable.getDrawable(paramaqhg, (URLDrawable.URLDrawableOptions)localObject);
+      if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
       {
-        arrayOfString[i] = a(paramArrayOfString[i]);
-        i += 1;
+        paramRoundImageView.setImageDrawable((Drawable)localObject);
+        return;
+      }
+      ((URLDrawable)localObject).setURLDrawableListener(new aqhj(this, paramRoundImageView, paramarev, paramaqhg));
+      ((URLDrawable)localObject).startDownload();
+      return;
+    }
+    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramaqhg.jdField_a_of_type_JavaLangString);
+    Object localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    ((List)localObject).add(new aqhl(this, paramRoundImageView, paramarev));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramaqhg.jdField_a_of_type_JavaLangString, localObject);
+    paramRoundImageView.setImageBitmap(this.jdField_a_of_type_Apss.a(paramaqhg.jdField_a_of_type_JavaLangString, true));
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Apss = new apss(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Apss.a();
+    this.jdField_a_of_type_Apss.a(new aqhi(this));
+  }
+  
+  public arfy a(int paramInt)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558924, null);
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    return new aqhk(this, localView);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apss != null) {
+      this.jdField_a_of_type_Apss.b();
+    }
+  }
+  
+  public void a(int paramInt, arfy paramarfy, arev paramarev)
+  {
+    aqhg localaqhg;
+    ETTextView localETTextView;
+    if ((paramarev != null) && ((paramarev.a() instanceof aqhg)) && ((paramarfy instanceof aqhk)))
+    {
+      localaqhg = (aqhg)paramarev.a();
+      paramarfy = (aqhk)paramarfy;
+      paramarfy.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText(new bdnt(localaqhg.a(), 3, this.b));
+      localETTextView = paramarfy.jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+      if (!a(localaqhg.jdField_a_of_type_JavaLangString)) {
+        break label110;
       }
     }
-    return arrayOfString;
+    label110:
+    for (paramInt = this.jdField_a_of_type_Int;; paramInt = -1)
+    {
+      localETTextView.setTextColor(paramInt);
+      paramarfy.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setAlpha(0.85F);
+      a(localaqhg, paramarfy.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView, paramarev);
+      return;
+    }
   }
 }
 

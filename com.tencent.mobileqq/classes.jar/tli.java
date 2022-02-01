@@ -1,26 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-final class tli
-  extends ClickableSpan
+public class tli
+  implements tlm
 {
-  tli(String paramString) {}
+  public tli(ViolaAccessHelper.2 param2) {}
   
-  public void onClick(@NonNull View paramView)
+  public void a()
   {
-    tlq.a(tlf.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
+    }
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void a(long paramLong)
   {
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tli
  * JD-Core Version:    0.7.0.1
  */

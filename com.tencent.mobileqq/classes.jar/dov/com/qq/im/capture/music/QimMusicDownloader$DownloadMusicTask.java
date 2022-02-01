@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
 import android.os.SystemClock;
-import bdeu;
-import beae;
-import beag;
-import blts;
+import bgjw;
+import bhhf;
+import bhhh;
+import bomw;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 import com.tencent.qphone.base.util.QLog;
@@ -14,15 +14,15 @@ import java.io.File;
 class QimMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  blts jdField_a_of_type_Blts;
+  bomw jdField_a_of_type_Bomw;
   String jdField_a_of_type_JavaLangString;
   String b;
   
-  public QimMusicDownloader$DownloadMusicTask(String paramString1, String paramString2, blts paramblts)
+  public QimMusicDownloader$DownloadMusicTask(String paramString1, String paramString2, bomw parambomw)
   {
     this.b = paramString1;
     this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Blts = paramblts;
+    this.jdField_a_of_type_Bomw = parambomw;
   }
   
   public void run()
@@ -30,10 +30,10 @@ class QimMusicDownloader$DownloadMusicTask
     if (QLog.isColorLevel()) {
       QLog.d("MusicProviderView.Downloader", 2, "begin download " + this.jdField_a_of_type_JavaLangString + " " + this.b);
     }
-    if ((bdeu.a()) && (bdeu.b() < 20971520L))
+    if ((bgjw.a()) && (bgjw.b() < 20971520L))
     {
-      if (this.jdField_a_of_type_Blts != null) {
-        this.jdField_a_of_type_Blts.a(this.b, false);
+      if (this.jdField_a_of_type_Bomw != null) {
+        this.jdField_a_of_type_Bomw.a(this.b, false);
       }
       QLog.e("MusicProviderView.Downloader", 1, "download err no space");
     }
@@ -50,21 +50,21 @@ class QimMusicDownloader$DownloadMusicTask
       }
       localObject = new File(this.jdField_a_of_type_JavaLangString);
       l1 = SystemClock.uptimeMillis();
-      localObject = new beae(this.b, (File)localObject);
-      ((beae)localObject).n = true;
-      ((beae)localObject).b = 2;
-      ((beae)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((beae)localObject).b(512);
-      ((beae)localObject).a(this.jdField_a_of_type_Blts);
-      i = beag.a((beae)localObject, null, null);
+      localObject = new bhhf(this.b, (File)localObject);
+      ((bhhf)localObject).n = true;
+      ((bhhf)localObject).b = 2;
+      ((bhhf)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((bhhf)localObject).b(512);
+      ((bhhf)localObject).a(this.jdField_a_of_type_Bomw);
+      i = bhhh.a((bhhf)localObject, null, null);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("MusicProviderView.Downloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((beae)localObject).jdField_a_of_type_JavaLangString);
+    QLog.i("MusicProviderView.Downloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((bhhf)localObject).jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QimMusicDownloader.DownloadMusicTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aifo
-  implements DialogInterface.OnClickListener
+  extends anmu
 {
-  aifo(aiez paramaiez) {}
+  aifo(aifl paramaifl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
+    }
+    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      aifl.a(this.a);
+    }
   }
 }
 

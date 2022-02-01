@@ -1,17 +1,13 @@
 class avms
-  implements auvz
+  implements avlu
 {
-  avms(avmf paramavmf) {}
+  avms(avmp paramavmp) {}
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.c(paramBoolean);
-    this.a.u = paramBoolean;
-  }
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avms
  * JD-Core Version:    0.7.0.1
  */

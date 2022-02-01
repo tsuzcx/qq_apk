@@ -1,118 +1,96 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.HashMap;
+import java.util.Map;
 
 public class xvr
-  extends ImageSpan
+  extends xsr
 {
-  private WeakReference<Drawable> a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private wrb jdField_a_of_type_Wrb;
+  private xne jdField_a_of_type_Xne;
+  private boolean c;
   
-  public xvr(Drawable paramDrawable)
+  public Map<Subscriber, String> a()
   {
-    this(paramDrawable, 4);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(new xvt(this), "");
+    return localHashMap;
   }
   
-  public xvr(Drawable paramDrawable, int paramInt)
+  public boolean a(View paramView)
   {
-    super(paramDrawable, paramInt);
-  }
-  
-  private Drawable a()
-  {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
+    if (!super.a(paramView)) {
+      return false;
     }
-    localObject = localDrawable;
-    if (localDrawable == null)
-    {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
+    if (this.jdField_a_of_type_Xne == null) {
+      return false;
     }
-    return localObject;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramCharSequence.getBounds();
-    float f;
-    switch (this.mVerticalAlignment)
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Xne.a();
+    paramView = zol.a(this.jdField_a_of_type_Xso.b(), localStoryVideoItem.mOwnerUid, "4", localStoryVideoItem.mVid, 3, localStoryVideoItem.mWsSchema);
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)this.jdField_a_of_type_Xso.a()).a();
+    if (paramView != null)
     {
-    case 2: 
-    default: 
-      f = paramInt5 - paramPaint.height();
-    }
-    for (;;)
-    {
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, f);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      f = paramInt4 - paramPaint.height();
-      continue;
-      f = (paramInt5 - paramInt3 - paramPaint.height()) / 2 + paramInt3;
-      continue;
-      f = paramInt3;
-    }
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = a().getBounds();
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetrics();
-      f1 = paramPaint.top - paramPaint.ascent;
-      f2 = paramPaint.bottom - paramPaint.descent;
-      f3 = paramPaint.descent;
-      f4 = paramPaint.ascent;
-      paramInt1 = paramCharSequence.height();
-      switch (this.mVerticalAlignment)
-      {
-      case 2: 
-      default: 
-        f2 = paramPaint.descent - paramInt1;
-        paramFontMetricsInt.ascent = ((int)f2);
-        paramFontMetricsInt.top = ((int)(f2 + f1));
+      if (localVideoViewVideoHolder != null) {
+        localVideoViewVideoHolder.c(true);
       }
+      paramView.setOnDismissListener(new xvs(this, localVideoViewVideoHolder));
+    }
+    if (zmi.a(this.jdField_a_of_type_Xso.b())) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      yqu.a("weishi_share", "link_click", 0, 0, new String[] { paramView, localStoryVideoItem.mOwnerUid, "", localStoryVideoItem.mVid });
+      return true;
+    }
+  }
+  
+  public void b(xss paramxss, xne paramxne)
+  {
+    this.jdField_a_of_type_Xne = paramxne;
+    StoryVideoItem localStoryVideoItem = paramxne.a();
+    this.jdField_a_of_type_Wrb = localStoryVideoItem.getOALinkInfo();
+    if ((this.jdField_a_of_type_Wrb == null) || (this.jdField_a_of_type_Wrb.jdField_a_of_type_Int != 6))
+    {
+      this.jdField_a_of_type_Xso.k();
+      return;
+    }
+    this.jdField_a_of_type_Xso.j();
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramxne.jdField_a_of_type_JavaLangString)) {
+      this.c = false;
     }
     for (;;)
     {
-      return paramCharSequence.right;
-      f4 = paramPaint.descent - (f3 - f4) / 2.0F;
-      f3 = f4 - paramInt1 / 2;
-      f4 += paramInt1 / 2;
-      paramFontMetricsInt.ascent = ((int)f3);
-      paramFontMetricsInt.top = ((int)(f1 + f3));
-      paramFontMetricsInt.descent = ((int)f4);
-      paramFontMetricsInt.bottom = ((int)(f4 + f2));
-      continue;
-      f2 = -paramInt1;
-      paramFontMetricsInt.ascent = (-paramInt1);
-      paramFontMetricsInt.top = ((int)(f2 + f1));
-      continue;
-      f1 = paramInt1;
-      f1 = paramPaint.ascent + f1;
-      paramFontMetricsInt.descent = ((int)f1);
-      paramFontMetricsInt.bottom = ((int)(f1 + f2));
+      paramxne = this.jdField_a_of_type_Wrb.b;
+      String str1 = this.jdField_a_of_type_Wrb.c;
+      String str2 = this.jdField_a_of_type_Wrb.d;
+      yqp.a("WeiShiFlowBannerVideoInfoController", "WeiShiFlowBannerVideoInfoController doOnBind, title:%s, body:%s, picUrl:%s", paramxne, str1, str2);
+      paramxss.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramxss.b.setVisibility(0);
+      paramxss.b.setTypeface(null, 0);
+      paramxss.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      xso.a(str2, paramxss.jdField_a_of_type_AndroidWidgetImageView, paramxss.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramxss.jdField_a_of_type_Int, paramxss.jdField_a_of_type_Int);
+      paramxss.b.setText(paramxne);
+      paramxss.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      if (!this.c) {
+        break;
+      }
+      yqu.a("weishi_share", "link_exp", 0, 0, new String[] { "", localStoryVideoItem.mOwnerUid, "", localStoryVideoItem.mVid });
+      return;
+      this.c = true;
+      this.jdField_a_of_type_JavaLangString = paramxne.jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvr
  * JD-Core Version:    0.7.0.1
  */

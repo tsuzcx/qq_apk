@@ -6,7 +6,7 @@ public abstract interface OrientationDetector$OnOrientationChangedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.OnOrientationChangedListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aepi;
+import afur;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
@@ -13,16 +13,16 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import azqs;
-import bdbk;
-import bdhj;
+import aoch;
+import bcst;
+import bgmo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import java.util.ArrayList;
 import java.util.List;
-import mww;
+import mue;
 
 public class ExtendFriendBottomBarView
   extends FrameLayout
@@ -50,20 +50,20 @@ public class ExtendFriendBottomBarView
   public ExtendFriendBottomBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131560933, this);
+    inflate(paramContext, 2131561138, this);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Int = aepi.a(66.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363380));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(mww.a);
+    this.jdField_a_of_type_Int = afur.a(66.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363573));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(mue.a);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363384));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363577));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setTranslationY(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367553));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367865));
     int i = 0;
     while (i < this.jdField_b_of_type_AndroidWidgetRelativeLayout.getChildCount())
     {
@@ -72,7 +72,7 @@ public class ExtendFriendBottomBarView
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
       i += 1;
     }
-    ImageView localImageView = (ImageView)findViewById(2131362826);
+    ImageView localImageView = (ImageView)findViewById(2131362939);
     Object localObject = localImageView.getDrawable();
     if ((localObject instanceof SkinnableBitmapDrawable)) {}
     for (localObject = ((SkinnableBitmapDrawable)localObject).mutate2();; localObject = ((Drawable)localObject).mutate())
@@ -97,7 +97,7 @@ public class ExtendFriendBottomBarView
       localObjectAnimator.setDuration(500L);
       localObjectAnimator.start();
     }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2E", "0X8009E2E", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2E", "0X8009E2E", 0, 0, "", "", "", "");
   }
   
   private void c()
@@ -134,7 +134,7 @@ public class ExtendFriendBottomBarView
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850260);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850868);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
       this.c = true;
@@ -173,8 +173,8 @@ public class ExtendFriendBottomBarView
             if (TextUtils.isEmpty(str)) {
               break label140;
             }
-            Drawable localDrawable = bdhj.a(true);
-            localImageView.setImageDrawable(bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str, 4, localDrawable, localDrawable));
+            Drawable localDrawable = bgmo.a(true);
+            localImageView.setImageDrawable(aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str, 4, localDrawable, localDrawable));
             localImageView.setVisibility(0);
           }
           for (;;)
@@ -229,7 +229,7 @@ public class ExtendFriendBottomBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,55 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
 public class amwb
-  extends amvl
 {
-  public ArCloudConfigInfo a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
   
-  public amwb(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  private amwb(Activity paramActivity)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new amwc(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
   }
   
-  public String toString()
+  private int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    int j;
+    int k;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      k = j - i;
+      if (k <= j / 4) {
+        break label58;
+      }
+    }
+    label58:
+    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
+    {
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    new amwb(paramActivity);
   }
 }
 

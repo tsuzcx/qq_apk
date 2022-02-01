@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import bfse;
+import bizj;
 import java.util.Map;
 
 public final class WadlJsBridgeCall$1
@@ -10,12 +10,12 @@ public final class WadlJsBridgeCall$1
   
   public void run()
   {
-    bfse.a().put(this.a, new Boolean(false));
+    bizj.a().put(this.a, new Boolean(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridgeCall.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,24 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qsn
-  extends SimpleAdapter
+class qsn
+  implements View.OnClickListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131368041, 2131377802, 2131377801 };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  qsn(qsh paramqsh) {}
   
-  public qsn(Context paramContext, List<Map<String, CharSequence>> paramList)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramList, 2131560139, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
-  }
-  
-  public void setViewImage(ImageView paramImageView, String paramString)
-  {
-    if ("create_topic".equals(paramString))
-    {
-      paramImageView.setImageResource(2130849000);
-      return;
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsn
  * JD-Core Version:    0.7.0.1
  */

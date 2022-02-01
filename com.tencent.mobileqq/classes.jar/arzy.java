@@ -1,12 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-class arzy
-  implements DialogInterface.OnClickListener
+public abstract class arzy
+  extends arwf
 {
-  arzy(arzx paramarzx) {}
+  arvc jdField_a_of_type_Arvc = new asaa(this);
+  arvf jdField_a_of_type_Arvf = new arzz(this);
+  protected int h = 2;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public arzy(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, arxd paramarxd)
+  {
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd);
+    aruo.a().a(this.jdField_a_of_type_Arvc);
+    arvg.a().a(this.jdField_a_of_type_Arvf);
+  }
+  
+  public void a()
+  {
+    super.a();
+    aruo.a().b(this.jdField_a_of_type_Arvc);
+    arvg.a().b(this.jdField_a_of_type_Arvf);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage) {}
 }
 
 

@@ -1,76 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class lso
+  extends lsk
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = null;
-  int d = 0;
-  int e = 0;
-  
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, FilterDesc paramFilterDesc, VideoMaterial paramVideoMaterial, PendantItem paramPendantItem, lrs paramlrs, int paramInt4)
+  public lso(RandomWebProtocol paramRandomWebProtocol, int paramInt1, long paramLong, int paramInt2, String paramString)
   {
-    String str;
-    label34:
-    label43:
-    StringBuilder localStringBuilder;
-    if ((paramFilterDesc == null) || (paramFilterDesc.name == null))
+    super(paramRandomWebProtocol);
+    boolean bool = RandomWebProtocol.b();
+    paramRandomWebProtocol = new JSONObject();
+    try
     {
-      paramFilterDesc = "null";
-      if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-        break label522;
-      }
-      str = "null";
-      if (paramVideoMaterial != null) {
-        break label532;
-      }
-      paramVideoMaterial = "null";
-      if ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int) || (paramInt3 != this.jdField_c_of_type_Int) || (paramBoolean != this.jdField_b_of_type_Boolean) || (this.d != paramlrs.jdField_a_of_type_ArrayOfByte.length) || (this.jdField_a_of_type_Boolean != paramlrs.jdField_a_of_type_Boolean) || (this.e != paramInt4) || (!TextUtils.equals(paramFilterDesc, this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(paramVideoMaterial, this.jdField_c_of_type_JavaLangString)))
-      {
-        localStringBuilder = new StringBuilder().append("RenderInfoLog, frameIndex[").append(paramLong).append("], width[").append(this.jdField_a_of_type_Int).append("->").append(paramInt1).append("], height[").append(this.jdField_b_of_type_Int).append("->").append(paramInt2).append("], angle[").append(this.jdField_c_of_type_Int).append("->").append(paramInt3).append("], needfacedata[").append(this.jdField_b_of_type_Boolean).append("->").append(paramBoolean).append("], mDataLen[").append(this.d).append("->").append(paramlrs.jdField_a_of_type_ArrayOfByte.length).append("], mBeautyLevel[").append(this.e).append("->").append(paramInt4).append("], isFront[").append(this.jdField_a_of_type_Boolean).append("->").append(paramlrs.jdField_a_of_type_Boolean).append("], getFrameAngle[").append(lse.a(paramlrs.jdField_a_of_type_Boolean)).append("], fAngle[").append((paramlrs.d - lse.a(paramlrs.jdField_a_of_type_Boolean) - 1 + 4) % 4).append("], strFilterDesc[").append(paramFilterDesc).append("], strPendantItem[").append(str).append("], pendantItem[");
-        if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-          break label542;
-        }
+      paramRandomWebProtocol.put("session_type", paramInt1).put("groupid", paramLong);
+      if (4 == paramInt2) {
+        paramRandomWebProtocol.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), paramString));
       }
     }
-    label522:
-    label532:
-    label542:
-    for (paramPendantItem = "null";; paramPendantItem = paramPendantItem.getId())
+    catch (Exception paramString)
     {
-      QLog.w(paramString, 1, paramPendantItem + "], strFilters[" + paramVideoMaterial + "]");
-      this.jdField_a_of_type_Boolean = paramlrs.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_c_of_type_Int = paramInt3;
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaLangString = paramFilterDesc;
-      this.jdField_b_of_type_JavaLangString = str;
-      this.jdField_c_of_type_JavaLangString = paramVideoMaterial;
-      this.d = paramlrs.jdField_a_of_type_ArrayOfByte.length;
-      this.e = paramInt4;
-      return;
-      paramFilterDesc = paramFilterDesc.name;
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          continue;
+          paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/getroomowner";
+        }
+      } while (paramInt2 != 4);
+      if (!bool) {
+        break label139;
+      }
+    }
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramRandomWebProtocol;
+    this.jdField_a_of_type_Boolean = bool;
+    if (paramInt2 == 5) {
+      if (bool)
+      {
+        paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/getroomowner";
+        this.c = paramRandomWebProtocol;
+        this.d = "[m] RequestMultiRoomOwner";
+        return;
+      }
+    }
+    label139:
+    for (paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/multichatkick";; paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/multichatkick")
+    {
+      this.c = paramRandomWebProtocol;
       break;
-      str = paramPendantItem.getId();
-      break label34;
-      paramVideoMaterial = paramVideoMaterial.toString();
-      break label43;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lso
  * JD-Core Version:    0.7.0.1
  */

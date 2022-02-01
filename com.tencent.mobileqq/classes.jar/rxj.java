@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rxj
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+class rxj
+  implements View.OnClickListener
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
-  }
+  rxj(rxg paramrxg, VideoInfo paramVideoInfo) {}
   
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
+    AdvertisementInfo localAdvertisementInfo = oqu.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    oqj.a(localAdvertisementInfo, 2005, rwy.a(this.jdField_a_of_type_Rxg.a));
+    rwy.a(this.jdField_a_of_type_Rxg.a, rxg.a(this.jdField_a_of_type_Rxg), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, localAdvertisementInfo, 2005);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxj
  * JD-Core Version:    0.7.0.1
  */

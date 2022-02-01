@@ -32,19 +32,19 @@ public class MoreCommentPanel
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562459, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370734));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370732));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562695, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371290));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371288));
     if (this.jdField_a_of_type_Boolean)
     {
-      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166764));
-      setBackgroundResource(2130848717);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165311));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848715);
+      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166844));
+      setBackgroundResource(2130849194);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165347));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849192);
       return;
     }
-    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165796));
-    setBackgroundResource(2130848716);
+    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165845));
+    setBackgroundResource(2130849193);
   }
   
   public void setHintText(CharSequence paramCharSequence)
@@ -56,7 +56,7 @@ public class MoreCommentPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.MoreCommentPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,8 @@ package com.tencent.superplayer.player;
 import android.graphics.Bitmap;
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.api.TVideoNetInfo;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import java.util.ArrayList;
 
 class SuperPlayerMgr$MgrListenerAdapter
@@ -15,7 +17,10 @@ class SuperPlayerMgr$MgrListenerAdapter
     this.mMgrCallBack = paramSuperPlayerMgrCallBack;
   }
   
-  public void onAudioPcmData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong) {}
+  public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
+  {
+    this.mMgrCallBack.onAudioFrameOutput(paramTPAudioFrameBuffer);
+  }
   
   public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
   {
@@ -39,16 +44,25 @@ class SuperPlayerMgr$MgrListenerAdapter
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
+    if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
+      SuperPlayerMgr.access$200((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
+    }
     return this.mMgrCallBack.onError(paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
   }
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
+    if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
+      SuperPlayerMgr.access$100((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
+    }
     return this.mMgrCallBack.onInfo(paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
   }
   
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
+    if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
+      SuperPlayerMgr.access$300((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
+    }
     this.mMgrCallBack.onSeekComplete(paramISuperPlayer);
   }
   
@@ -57,12 +71,15 @@ class SuperPlayerMgr$MgrListenerAdapter
     this.mMgrCallBack.onTVideoNetInfoUpdate(paramISuperPlayer, paramTVideoNetInfo);
   }
   
-  public void onVideoOutputFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong) {}
+  public void onVideoFrameOutput(TPVideoFrameBuffer paramTPVideoFrameBuffer)
+  {
+    this.mMgrCallBack.onVideoFrameOutput(paramTPVideoFrameBuffer);
+  }
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      ((SuperPlayerMgr)this.mMgrCallBack.getPlayer()).handleOnVideoPrepared();
+      SuperPlayerMgr.access$000((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
     }
     this.mMgrCallBack.onVideoPrepared(paramISuperPlayer);
   }
@@ -74,7 +91,7 @@ class SuperPlayerMgr$MgrListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgr.MgrListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

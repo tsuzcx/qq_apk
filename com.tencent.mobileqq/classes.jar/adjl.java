@@ -1,37 +1,15 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class adjl
-  extends uxx
+  implements DialogInterface.OnDismissListener
 {
-  public adjl(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public adjl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      if ((!this.a.isFinishing()) && (!this.a.c))
-      {
-        this.a.c = false;
-        this.a.a.a(1, paramSosoLbsInfo);
-      }
-      return;
-    }
+    this.a.finish();
   }
 }
 

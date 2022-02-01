@@ -1,11 +1,20 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class alet
+  extends aleq
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
+  public alet(Context paramContext)
+  {
+    this.a = "";
+  }
+  
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    return new alet(BaseApplication.getContext());
+  }
 }
 
 

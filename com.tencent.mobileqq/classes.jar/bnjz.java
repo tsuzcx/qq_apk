@@ -1,17 +1,15 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnjz
-  implements arrh
+class bnjz
+  implements DialogInterface.OnClickListener
 {
-  public bnjz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnjz(bnjw parambnjw) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    bnjw.a(this.a).a(bnjw.a(this.a).a(), bnjw.a(this.a), bnjw.a(this.a));
   }
-  
-  public void b() {}
 }
 
 

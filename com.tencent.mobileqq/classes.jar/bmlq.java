@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class bmlq
-  implements bmnv
+  implements bmgl
 {
-  bmlq(bmlp parambmlp) {}
+  bmlq(bmlo parambmlo) {}
   
-  public void a()
+  public void a(BaseResp paramBaseResp)
   {
-    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bmvw.b = bool;
-      return;
-    }
+    bmlo.a(this.a, paramBaseResp);
   }
 }
 

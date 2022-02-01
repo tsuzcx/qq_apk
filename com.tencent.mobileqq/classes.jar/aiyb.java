@@ -1,19 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aiyb
-  implements View.OnClickListener
+  extends aiyk
 {
-  public aiyb(LingHbFragment paramLingHbFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public String c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public String d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public String e;
+  public TextView f;
+  public TextView g;
 }
 
 

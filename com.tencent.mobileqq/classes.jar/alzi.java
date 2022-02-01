@@ -1,18 +1,23 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class alzi
-  implements FileFilter
+public class alzi
+  implements apsw
 {
-  public boolean accept(File paramFile)
+  public alzi(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzi
  * JD-Core Version:    0.7.0.1
  */

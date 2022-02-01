@@ -1,63 +1,29 @@
-import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
-import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudWrite.StDoFollowRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class udv
-  implements zac<FeedCloudWrite.StDoFollowRsp>
+  implements View.OnClickListener
 {
-  public udv(QCircleFollowView paramQCircleFollowView, int paramInt, boolean paramBoolean) {}
+  public udv(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) {}
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
-      if ((QCircleFollowView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) && (this.jdField_a_of_type_Int == 1)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), 2, 2131698320, 0).a();
-      }
-      if (this.jdField_a_of_type_Int == 1) {
-        yiw.a().a(new QCircleFuelAnimationEvent());
-      }
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null)
-      {
-        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
-          QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a(true, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView));
-        }
-        yiw.a().a(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get()));
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get(), this.jdField_a_of_type_Int);
-        paramString = tyy.a();
-        paramStDoFollowRsp = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get();
-        if (this.jdField_a_of_type_Int != 1) {
-          break label273;
-        }
-      }
-      label273:
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.a(paramStDoFollowRsp, paramBoolean);
-        return;
-      }
-    }
-    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2131698319;; i = 2131698393)
-    {
-      QQToast.a(paramString, 1, i, 0).a();
-      return;
-    }
+    WSRecommendFragment.a(this.a).b();
+    ((umg)this.a.b()).a(true, true, "");
+    ((umg)this.a.b()).a("");
+    WSRecommendFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    umq.a(136, 1, null);
+    umw.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udv
  * JD-Core Version:    0.7.0.1
  */

@@ -73,20 +73,20 @@ public class GdtMvAppBtnView
     if (this.b) {
       if (this.jdField_a_of_type_Boolean)
       {
-        localDrawable = getResources().getDrawable(2130839791);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839790);
+        localDrawable = getResources().getDrawable(2130840211);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840210);
       }
     }
     while (this.jdField_a_of_type_Boolean)
     {
       setBackgroundDrawable(localDrawable);
       return;
-      i = getResources().getColor(2131165403);
+      i = getResources().getColor(2131165439);
       continue;
       if (this.jdField_a_of_type_Boolean) {
-        localDrawable = getResources().getDrawable(2130839790);
+        localDrawable = getResources().getDrawable(2130840210);
       } else {
-        i = getResources().getColor(2131165411);
+        i = getResources().getColor(2131165447);
       }
     }
     setBackgroundColor(i);
@@ -134,7 +134,7 @@ public class GdtMvAppBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvAppBtnView
  * JD-Core Version:    0.7.0.1
  */

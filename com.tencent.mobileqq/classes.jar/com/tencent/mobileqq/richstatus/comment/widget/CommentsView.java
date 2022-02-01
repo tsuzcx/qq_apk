@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -16,16 +16,16 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import ayek;
-import ayel;
-import ayen;
-import ayeo;
-import ayep;
-import ayeq;
-import ayer;
-import ayes;
-import ayet;
-import bamp;
+import bbcs;
+import bbct;
+import bbcv;
+import bbcw;
+import bbcx;
+import bbcy;
+import bbcz;
+import bbda;
+import bbdb;
+import bdnt;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import com.tencent.qphone.base.util.QLog;
@@ -38,10 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ayen<View> jdField_a_of_type_Ayen;
-  private ayer jdField_a_of_type_Ayer;
-  private ayes jdField_a_of_type_Ayes;
-  private ayet jdField_a_of_type_Ayet;
+  private bbcv<View> jdField_a_of_type_Bbcv;
+  private bbcz jdField_a_of_type_Bbcz;
+  private bbda jdField_a_of_type_Bbda;
+  private bbdb jdField_a_of_type_Bbdb;
   private String jdField_a_of_type_JavaLangString = "CommentsView";
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
@@ -70,20 +70,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new ayeq(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new bbcy(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Ayen.a();
+    View localView2 = (View)this.jdField_a_of_type_Bbcv.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561851, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562088, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -92,7 +92,7 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    ayel localayel = new ayel(this.b, this.b);
+    bbct localbbct = new bbct(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     String str = localCommentItem.user.b;
     paramView = "";
@@ -104,24 +104,27 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131719213));
+      localSpannableStringBuilder.append(getContext().getString(2131717319));
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(a(paramView, localCommentItem.toReplyUser.jdField_a_of_type_JavaLangString));
     }
     localSpannableStringBuilder.append(": ");
-    localSpannableStringBuilder.append(localCommentItem.content);
-    localTextView.setText(new bamp(localSpannableStringBuilder, 3, 16));
+    paramView = localCommentItem.content;
+    if (!TextUtils.isEmpty(paramView)) {
+      localSpannableStringBuilder.append(paramView);
+    }
+    localTextView.setText(new bdnt(localSpannableStringBuilder, 3, 16));
     localTextView.setTextColor(this.c);
-    localTextView.setMovementMethod(localayel);
-    localTextView.setOnClickListener(new ayeo(this, localayel, paramInt));
-    localTextView.setOnLongClickListener(new ayep(this, localayel, paramInt));
+    localTextView.setMovementMethod(localbbct);
+    localTextView.setOnClickListener(new bbcw(this, localbbct, paramInt));
+    localTextView.setOnLongClickListener(new bbcx(this, localbbct, paramInt));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Ayen = new ayen();
+    this.jdField_a_of_type_Bbcv = new bbcv();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167087);
+    this.c = getResources().getColor(2131167171);
   }
   
   public void a()
@@ -135,7 +138,7 @@ public class CommentsView
       return;
       setVisibility(0);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = aepi.a(2.0F, getResources());
+      localLayoutParams.topMargin = afur.a(2.0F, getResources());
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         if (getChildCount() > i) {
@@ -163,8 +166,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166372));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166834));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166445));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166915));
       return;
     }
     finally
@@ -187,7 +190,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Ayen.a(paramView2);
+    this.jdField_a_of_type_Bbcv.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -200,24 +203,24 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(ayer paramayer)
+  public void setOnItemClickListener(bbcz parambbcz)
   {
-    this.jdField_a_of_type_Ayer = paramayer;
+    this.jdField_a_of_type_Bbcz = parambbcz;
   }
   
-  public void setOnItemLongClickListener(ayes paramayes)
+  public void setOnItemLongClickListener(bbda parambbda)
   {
-    this.jdField_a_of_type_Ayes = paramayes;
+    this.jdField_a_of_type_Bbda = parambbda;
   }
   
-  public void setOnSpanItemClick(ayet paramayet)
+  public void setOnSpanItemClick(bbdb parambbdb)
   {
-    this.jdField_a_of_type_Ayet = paramayet;
+    this.jdField_a_of_type_Bbdb = parambbdb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.CommentsView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,41 @@
-import android.app.Activity;
+import android.graphics.Rect;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import java.lang.ref.WeakReference;
 
-class aiil
-  implements bhuw
+public class aiil
+  implements aiim
 {
-  aiil(aiie paramaiie) {}
+  public aiil(StickerBubbleListView paramStickerBubbleListView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Aieh.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
     {
-      return;
-      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aieh.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      ((StickerBubbleImageView)paramView).a();
+      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
+        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
+      }
+      paramView = (View)paramView.getParent();
+      View localView = (View)paramView.getParent();
+      if (StickerBubbleListView.a(this.a) == null) {
+        StickerBubbleListView.a(this.a, new Rect());
+      }
+      Rect localRect = StickerBubbleListView.a(this.a);
+      int i = localView.getLeft();
+      int j = paramView.getLeft();
+      int k = localView.getTop();
+      int m = paramView.getTop();
+      int n = localView.getLeft();
+      int i1 = paramView.getRight();
+      int i2 = localView.getTop();
+      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
+      }
     }
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
-    this.a.a(true);
   }
 }
 

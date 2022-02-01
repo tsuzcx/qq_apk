@@ -1,62 +1,97 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.CancellationSignalCompat;
+import com.tencent.mm.vfs.StatisticsCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
 
 public class bhgf
+  implements StatisticsCallback
 {
-  private bhgg jdField_a_of_type_Bhgg;
-  private final ConcurrentLinkedQueue<AppBrandPage> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
   
-  public bhgf(bglv parambglv)
+  private void a(Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Bhgg = new bhgg(parambglv);
+    bcrp.a(paramThrowable);
   }
   
-  public bhgg a()
+  protected void a()
   {
-    return this.jdField_a_of_type_Bhgg;
-  }
-  
-  public AppBrandPage a(bglv parambglv, AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    QMLog.d("AppBrandPagePool", "mBrandPageList size : " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-    AppBrandPage localAppBrandPage = (AppBrandPage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    if (localAppBrandPage == null)
+    try
     {
-      QMLog.i("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
-      return new AppBrandPage(parambglv, paramAppBrandPageContainer);
+      jdField_a_of_type_Boolean = true;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator2.hasNext())
+      {
+        Map localMap = (Map)localIterator2.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
+        }
+        bctj.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
+      }
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
     }
-    QMLog.i("AppBrandPagePool", "getAppBrandPage from cache.");
-    return localAppBrandPage;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    }
-    if (this.jdField_a_of_type_Bhgg != null) {
-      this.jdField_a_of_type_Bhgg.a();
-    }
-  }
-  
-  public void a(bglv parambglv, AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) || (parambglv == null)) {}
-    do
+    catch (Exception localException)
     {
+      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
       return;
-      QMLog.d("AppBrandPagePool", "preLoadAppBrandPage");
-      parambglv = new AppBrandPage(parambglv, paramAppBrandPageContainer);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambglv);
-    } while (this.jdField_a_of_type_Bhgg == null);
-    this.jdField_a_of_type_Bhgg.a(paramAppBrandPageContainer);
+    }
+    Iterator localIterator1 = b.iterator();
+    while (localIterator1.hasNext()) {
+      a((Throwable)localIterator1.next());
+    }
+    b.clear();
+  }
+  
+  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
+  
+  public void reportError(Throwable paramThrowable)
+  {
+    QLog.e("VFSRegisterProxy", 1, paramThrowable, new Object[0]);
+    if (jdField_a_of_type_Boolean)
+    {
+      a(paramThrowable);
+      return;
+    }
+    b.add(paramThrowable);
+  }
+  
+  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
+  {
+    if (paramMap != null) {
+      try
+      {
+        paramMap.put("id", paramString);
+        paramMap.put("phase", String.valueOf(paramInt));
+        if (jdField_a_of_type_Boolean)
+        {
+          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          bctj.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
+          return;
+          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgf
  * JD-Core Version:    0.7.0.1
  */

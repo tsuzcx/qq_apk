@@ -1,71 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 
-final class swl
-  implements BusinessObserver
+public class swl
+  implements syg
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public swl(FastWebActivity paramFastWebActivity, int paramInt, BaseData paramBaseData) {}
+  
+  public BaseData a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportClickEventForAdver onReceive: " + String.valueOf(paramBoolean));
-    }
-    long l2;
-    if (paramBoolean) {
-      l2 = -1L;
-    }
-    do
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    syf localsyf = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).a(this.jdField_a_of_type_Int);
+    if (localsyf != null)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.ReportPublicAccountResponse localReportPublicAccountResponse = new mobileqq_mp.ReportPublicAccountResponse();
-        localReportPublicAccountResponse.mergeFrom(paramBundle);
-        l1 = l2;
-        if (localReportPublicAccountResponse.ret_info.has())
-        {
-          l1 = l2;
-          if (localReportPublicAccountResponse.ret_info.ret_code.has())
-          {
-            paramInt = localReportPublicAccountResponse.ret_info.ret_code.get();
-            l2 = paramInt;
-            l1 = l2;
-            if (l2 == 0L)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l2));
-              }
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        long l1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PAReport", 2, "reportClickEventRuntime exception", paramBundle);
-        return;
-      }
-      finally
-      {
-        if (!QLog.isColorLevel()) {
-          break label288;
-        }
-        QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(-1L));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l1));
+      tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, localsyf.jdField_a_of_type_Float, localsyf.jdField_a_of_type_Long);
+      return;
+    }
+    tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swl
  * JD-Core Version:    0.7.0.1
  */

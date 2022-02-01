@@ -1,160 +1,87 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.util.ArrayList;
 
 public class aveh
 {
-  protected static int a;
-  protected static long a;
-  protected static String a;
-  protected static int b;
-  protected static long b;
-  protected static long c;
-  protected static long d;
-  protected static long e;
-  protected static long f;
+  private static volatile aveh jdField_a_of_type_Aveh;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avej(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new avei(this);
+  private ArrayList<avek> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  private aveh(Context paramContext)
   {
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    a(true);
   }
   
-  public static long a()
+  public static aveh a(Context paramContext)
   {
-    return f - jdField_a_of_type_Long;
+    if (jdField_a_of_type_Aveh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aveh == null) {
+        jdField_a_of_type_Aveh = new aveh(paramContext);
+      }
+      return jdField_a_of_type_Aveh;
+    }
+    finally {}
   }
   
-  public static void a()
+  public void a(avek paramavek)
   {
-    jdField_b_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartGetVideoInfoTime,time = " + jdField_b_of_type_Long);
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramavek)) && (paramavek != null)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramavek);
     }
   }
   
-  public static void a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    jdField_b_of_type_Int = paramInt;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    c = 0L;
-    e = 0L;
-    f = 0L;
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = ndd.a() + "";
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportEntryTime,time = " + jdField_a_of_type_Long);
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoLoad,time =  feedid = " + paramString + " loadingTime =" + jdField_a_of_type_Int);
-    }
-    azqs.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_load_again", paramInt, 0, String.valueOf(jdField_a_of_type_Int), "", "", "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayResult,time = feedid = " + paramString1 + " playType=" + paramInt + " errCode=" + paramString2 + " subErrCode=" + paramString3);
-    }
-    azqs.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_result", paramInt, 0, paramString2, paramString3, "", "||" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
-  {
-    if (jdField_b_of_type_Int == 2) {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, " reportVideoSurportPlayOnline,time =  feedid = " + paramString1 + " reportType=" + paramInt + " downloadProgress=" + paramString2 + " videoSize=" + paramString3 + "downloadedSize=" + paramString4 + "waitTime=" + (System.currentTimeMillis() - jdField_a_of_type_Long) + " isPlaying = " + paramBoolean + " startPlayTime =  " + f);
-    }
-    int i;
     if (paramBoolean)
     {
-      i = 1;
-      paramString5 = new StringBuilder().append(System.currentTimeMillis() - jdField_a_of_type_Long).append("|");
-      if (f != 0L) {
-        break label212;
-      }
-    }
-    label212:
-    for (int j = 1;; j = 2)
-    {
-      azqs.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_support_online", paramInt, i, paramString2, paramString3, paramString4, j + "|" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (jdField_b_of_type_Int != 0) {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
+      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      localIntentFilter.addAction("VolumeBtnDown");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
       return;
     }
-    long l1 = f - e;
-    long l2 = c - jdField_b_of_type_Long;
-    long l3 = d - jdField_a_of_type_Long;
-    long l4 = f - jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayLoadTime,videoLoadTime = " + l1 + " getVideoInfoTime = " + l2 + " initVideoListUITime =" + l3 + " allTimeConsume=" + l4 + " feedsid=" + paramString + " playType=" + paramInt + " isUrlProvide=" + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      azqs.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_loading_time", paramInt, i, String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4) + "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
-      return;
-    }
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
   
-  public static long b()
+  public boolean a()
   {
-    return f - e;
-  }
-  
-  public static void b()
-  {
-    c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportFinisGetVideoInfoTime,time = " + c);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+      return false;
     }
+    return true;
   }
   
-  public static void c()
+  public void b(avek paramavek)
   {
-    d = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportUIInitFinishTime,time = " + d);
+    if ((paramavek != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavek))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavek);
     }
-  }
-  
-  public static void d()
-  {
-    e = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportInitToPlayTime,time = " + e);
-    }
-  }
-  
-  public static void e()
-  {
-    f = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartPlayTime,time = " + f);
-    }
-  }
-  
-  public static void f()
-  {
-    jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aveh
  * JD-Core Version:    0.7.0.1
  */

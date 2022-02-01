@@ -1,28 +1,23 @@
-public class agxa
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+
+final class agxa
+  implements ahbm
 {
-  public double a;
-  public double b;
-  
-  public agxa(double paramDouble1, double paramDouble2)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public agxa(agxa paramagxa)
-  {
-    a(paramagxa);
-  }
-  
-  public void a(agxa paramagxa)
-  {
-    this.a = paramagxa.a;
-    this.b = paramagxa.b;
-  }
-  
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
+    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
+      return 63;
+    }
+    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
+      return 72;
+    }
+    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
+      return 9;
+    }
+    return 0;
   }
 }
 

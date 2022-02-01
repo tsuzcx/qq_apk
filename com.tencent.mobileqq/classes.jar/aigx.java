@@ -1,31 +1,69 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aigx
-  implements bhux
+public class aigx
+  extends BroadcastReceiver
 {
-  aigx(aigp paramaigp) {}
+  public aigx(TroopChatPie paramTroopChatPie) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Aign.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
     {
-      return true;
-      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aign.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_Aihj = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new bdpi();
-    paramAdapterView.a(2131364912, alud.a(2131701665), 2130838669);
-    paramAdapterView.a(2131366760, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692837), 2130838678);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView, paramAdapterView, aigp.a(this.a), new aigy(this, paramView));
-    return true;
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        label41:
+        Object localObject = new JSONObject(paramContext);
+        paramContext = ((JSONObject)localObject).optString("groupCode");
+        if (TextUtils.equals(paramContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          paramIntent = ((JSONObject)localObject).optString("content");
+          String str1 = ((JSONObject)localObject).optString("source");
+          int i = ((JSONObject)localObject).optInt("rankId", 333);
+          String str2 = ((JSONObject)localObject).optString("nickName");
+          String str3 = ((JSONObject)localObject).optString("uin");
+          String str4 = ((JSONObject)localObject).optString("course");
+          localObject = ((JSONObject)localObject).optString("name");
+          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+          {
+            ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str3, str2, i, str4, (String)localObject);
+            if (this.a.jdField_a_of_type_Ailq != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
+              }
+              this.a.jdField_a_of_type_Ailq.a(TroopChatPie.a(this.a), false);
+            }
+            if (TroopChatPie.a(this.a) != null) {
+              TroopChatPie.a(this.a).a(i);
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
+            return;
+          }
+        }
+      }
+      catch (JSONException paramContext) {}
+    }
   }
 }
 

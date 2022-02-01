@@ -1,83 +1,114 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.voiceChange.VipVoiceChange.subCmd0x1ReqAuth;
+import com.tencent.pb.voiceChange.VipVoiceChange.subCmd0x1RspAuth;
+import com.tencent.pb.voiceChange.VipVoiceChange.voiceChangeReq;
+import com.tencent.pb.voiceChange.VipVoiceChange.voiceChangeRsp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class anyl
-  implements bckx
+  extends anii
 {
-  public anyl(WordMatchManager paramWordMatchManager) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  final String jdField_a_of_type_JavaLangString = "VoiceChangeHandler";
+  WeakReference<ListenChangeVoicePanel> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public anyl(QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
-    if (paramJSONObject != null) {}
-    try
-    {
-      int j = paramJSONObject.getInt("retcode");
-      if (j != 0) {
-        i = 0;
-      }
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
-        }
-        this.a.a(false);
-        return;
-      }
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(int paramInt1, int paramInt2, ListenChangeVoicePanel paramListenChangeVoicePanel)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramListenChangeVoicePanel);
+    paramListenChangeVoicePanel = super.createToServiceMsg("voiceChange.Auth");
+    paramListenChangeVoicePanel.extraData.putInt("callId", paramInt2);
+    VipVoiceChange.voiceChangeReq localvoiceChangeReq = new VipVoiceChange.voiceChangeReq();
+    localvoiceChangeReq.int32_platform.set(109);
+    localvoiceChangeReq.int32_sub_cmd.set(1);
+    localvoiceChangeReq.str_qq_version.set("8.4.1");
+    VipVoiceChange.subCmd0x1ReqAuth localsubCmd0x1ReqAuth = new VipVoiceChange.subCmd0x1ReqAuth();
+    localsubCmd0x1ReqAuth.int32_item_id.set(paramInt2);
+    localvoiceChangeReq.msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);
+    localvoiceChangeReq.setHasFlag(true);
+    paramListenChangeVoicePanel.putWupBuffer(localvoiceChangeReq.toByteArray());
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceChangeHandler", 2, "sendReqToSVR funcType=" + paramInt1 + ", voiceID:" + paramInt2);
     }
-    catch (JSONException paramBundle)
+    super.sendPbReq(paramListenChangeVoicePanel);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return bhks.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (!"voiceChange.Auth".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    Bundle localBundle;
+    for (;;)
     {
-      paramBundle = paramBundle;
-      paramBundle.printStackTrace();
-      paramBundle = new anym();
       try
       {
-        if (paramJSONObject.has("result"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("result");
-          if (paramJSONObject.has("id")) {
-            paramBundle.c = paramJSONObject.getString("id");
-          }
-          if (paramJSONObject.has("md5")) {
-            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
-          }
-          if (paramJSONObject.has("type")) {
-            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-          }
-          if (paramJSONObject.has("need_flag")) {
-            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
-          }
-          if (paramJSONObject.has("delay")) {
-            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
-          }
-          if (paramJSONObject.has("base_md5")) {
-            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
-          }
+        localBundle = new Bundle();
+        localBundle.putInt("callId", paramToServiceMsg.extraData.getInt("callId"));
+        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
+          break label171;
         }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
-          }
+        i = 1;
+        if (i != 0) {
+          break;
         }
-        this.a.a(paramBundle);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
-      }
-      if (paramBundle.jdField_a_of_type_Int != paramInt)
-      {
-        this.a.a(false);
+        QLog.e("VoiceChangeHandler", 1, "onReceive~ isSuccess=false ,data=" + bgva.a((byte[])paramObject));
+        bipi.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 0, anni.a(2131715513), true);
+        localBundle.putInt("result", -1);
+        super.notifyUI(1, false, localBundle);
         return;
       }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("VoiceChangeHandler", 1, "onReceive prb.mergeFrom error: " + paramToServiceMsg.getMessage());
+      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+      label171:
+      i = 0;
     }
-    finally {}
+    paramToServiceMsg = new VipVoiceChange.voiceChangeRsp();
+    paramToServiceMsg.mergeFrom((byte[])paramObject);
+    int i = paramToServiceMsg.int32_sub_cmd.get();
+    paramToServiceMsg = (VipVoiceChange.subCmd0x1RspAuth)paramToServiceMsg.msg_subcmd0x1_rsp_auth.get();
+    int j = paramToServiceMsg.int32_ret.get();
+    paramFromServiceMsg = paramToServiceMsg.str_error_msg.get();
+    paramObject = paramToServiceMsg.str_active_url.get();
+    localBundle.putInt("result", j);
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceChangeHandler", 2, "VoiceChangeHandler onReceive~ ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
+    }
+    localBundle.putString("message", paramFromServiceMsg);
+    localBundle.putString("svr_url", paramObject);
+    localBundle.putString("svr_actStr", null);
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {}
+    for (paramToServiceMsg = (ListenChangeVoicePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramToServiceMsg = null)
+    {
+      if (paramToServiceMsg != null)
+      {
+        paramToServiceMsg.a(i, j, localBundle, false);
+        break;
+      }
+      QLog.e("VoiceChangeHandler", 1, "VoiceChangeHandler onReceive~ null == listenChangeVoicePanel ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
+      break;
+    }
   }
 }
 

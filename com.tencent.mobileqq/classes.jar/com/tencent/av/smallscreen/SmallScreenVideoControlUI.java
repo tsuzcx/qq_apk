@@ -9,7 +9,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import bdfi;
+import bgkl;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
@@ -17,9 +17,9 @@ import com.tencent.av.ui.VideoControlUI;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lid;
-import mbv;
-import meu;
+import ley;
+import lyx;
+import mbx;
 
 public class SmallScreenVideoControlUI
   implements Animation.AnimationListener
@@ -31,7 +31,7 @@ public class SmallScreenVideoControlUI
   SmallScreenService jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService;
   SmallScreenVideoControlUI.TimmerRunnable jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = null;
   protected WeakReference<Context> a;
-  protected meu a;
+  protected mbx a;
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
   String b;
   protected boolean b;
@@ -39,7 +39,7 @@ public class SmallScreenVideoControlUI
   protected boolean c;
   protected int e = 0;
   
-  public SmallScreenVideoControlUI(VideoAppInterface paramVideoAppInterface, SmallScreenService paramSmallScreenService, meu parammeu)
+  public SmallScreenVideoControlUI(VideoAppInterface paramVideoAppInterface, SmallScreenService paramSmallScreenService, mbx parammbx)
   {
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService = paramSmallScreenService;
@@ -49,7 +49,7 @@ public class SmallScreenVideoControlUI
     if (this.jdField_a_of_type_AndroidContentResResources == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mRes is null. exit video progress");
-      paramVideoAppInterface = paramSmallScreenService.getString(2131721302) + " 0x03";
+      paramVideoAppInterface = paramSmallScreenService.getString(2131719019) + " 0x03";
       QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
       paramSmallScreenService.stopSelf();
       return;
@@ -58,12 +58,12 @@ public class SmallScreenVideoControlUI
     if (this.jdField_a_of_type_ComTencentAvVideoController == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mVideoController is null. exit video progress");
-      paramVideoAppInterface = this.jdField_a_of_type_AndroidContentResResources.getString(2131721302) + " 0x04";
+      paramVideoAppInterface = this.jdField_a_of_type_AndroidContentResResources.getString(2131719019) + " 0x04";
       QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
       paramSmallScreenService.stopSelf();
       return;
     }
-    this.jdField_a_of_type_Meu = parammeu;
+    this.jdField_a_of_type_Mbx = parammbx;
   }
   
   public int a(int paramInt)
@@ -91,7 +91,7 @@ public class SmallScreenVideoControlUI
     this.jdField_a_of_type_ComTencentAvVideoController = null;
     this.jdField_a_of_type_ArrayOfAndroidViewView = null;
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = null;
-    this.jdField_a_of_type_Meu = null;
+    this.jdField_a_of_type_Mbx = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;
   }
   
@@ -126,7 +126,7 @@ public class SmallScreenVideoControlUI
   public void c(int paramInt)
   {
     QLog.d("SmallScreenVideoControlUI", 1, "onClose type = " + paramInt);
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().n()) || (this.jdField_a_of_type_ComTencentAvVideoController.f))
+    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().o()) || (this.jdField_a_of_type_ComTencentAvVideoController.f))
     {
       d(paramInt);
       u();
@@ -139,10 +139,10 @@ public class SmallScreenVideoControlUI
     {
       v();
       return;
-      if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentAvVideoController.d()) && (this.jdField_a_of_type_ComTencentAvVideoController.a().o()))
+      if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentAvVideoController.d()) && (this.jdField_a_of_type_ComTencentAvVideoController.a().p()))
       {
         d(65);
-        bdfi.a(2131230741, 1, new mbv(this));
+        bgkl.a(2131230741, 1, new lyx(this));
       }
     }
   }
@@ -166,9 +166,11 @@ public class SmallScreenVideoControlUI
   
   protected void j()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131372898));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131372619);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131372619);
+    SmallScreenRelativeLayout localSmallScreenRelativeLayout1 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a(1);
+    SmallScreenRelativeLayout localSmallScreenRelativeLayout2 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localSmallScreenRelativeLayout2.findViewById(2131373513));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localSmallScreenRelativeLayout1.findViewById(2131373233);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localSmallScreenRelativeLayout2.findViewById(2131373233);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -214,7 +216,7 @@ public class SmallScreenVideoControlUI
   public void t()
   {
     if (this.jdField_b_of_type_Boolean) {}
-    while (((this.e < 2) || (this.e > 4)) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().k())) {
+    while (((this.e < 2) || (this.e > 4)) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().l())) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -272,7 +274,7 @@ public class SmallScreenVideoControlUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoControlUI
  * JD-Core Version:    0.7.0.1
  */

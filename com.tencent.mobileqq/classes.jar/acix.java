@@ -1,20 +1,24 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.ark.ArkViewImplement.InputCallback;
 
-public class acix
-  implements bets
+class acix
+  implements ArkViewImplement.InputCallback
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372245);
+  acix(aciu paramaciu, AdArkAdapter.Callback paramCallback) {}
   
-  public acix(BaseChatPie paramBaseChatPie) {}
-  
-  public boolean a()
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
+    }
   }
+  
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

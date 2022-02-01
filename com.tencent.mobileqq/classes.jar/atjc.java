@@ -1,16 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-public final class atjc
-  implements oil
+public class atjc
+  extends bbio<bbmy, bbvg>
 {
-  public atjc(spj paramspj, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public atjc(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void a(oio paramoio)
+  protected bbps<bbmy, bbvg> a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Spj != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, UiApiPlugin.a(paramoio, this.b, this.c, this.d));
-    }
+    return new atje();
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atjg(paramViewGroup);
   }
 }
 

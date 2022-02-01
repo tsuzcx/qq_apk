@@ -22,7 +22,7 @@ class QQSettingMe$16
     //   24: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   27: bipush 51
     //   29: invokevirtual 42	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   32: checkcast 44	alto
+    //   32: checkcast 44	anmw
     //   35: astore 4
     //   37: aload_0
     //   38: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
@@ -31,7 +31,7 @@ class QQSettingMe$16
     //   45: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   48: aload_0
     //   49: getfield 16	com/tencent/mobileqq/activity/QQSettingMe$16:a	Ljava/lang/String;
-    //   52: invokestatic 49	bddf:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   52: invokestatic 49	bghy:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   55: putfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
     //   58: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   61: ifeq +163 -> 224
@@ -107,7 +107,7 @@ class QQSettingMe$16
     //   239: aload 4
     //   241: aload_0
     //   242: getfield 16	com/tencent/mobileqq/activity/QQSettingMe$16:a	Ljava/lang/String;
-    //   245: invokevirtual 134	alto:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   245: invokevirtual 134	anmw:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   248: astore 4
     //   250: aload 4
     //   252: ifnull +316 -> 568
@@ -216,15 +216,15 @@ class QQSettingMe$16
     //   492: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   495: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   498: bipush 27
-    //   500: invokevirtual 192	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalpd;
-    //   503: checkcast 194	amfs
+    //   500: invokevirtual 192	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanii;
+    //   503: checkcast 194	anyj
     //   506: astore 4
     //   508: aload 4
     //   510: ifnull +27 -> 537
     //   513: aload_0
     //   514: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   517: aload 4
-    //   519: invokevirtual 196	amfs:a	()Ljava/lang/String;
+    //   519: invokevirtual 196	anyj:a	()Ljava/lang/String;
     //   522: invokestatic 176	com/tencent/mobileqq/data/MedalList:parse	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/MedalList;
     //   525: invokestatic 179	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/activity/QQSettingMe;Lcom/tencent/mobileqq/data/MedalList;)Lcom/tencent/mobileqq/data/MedalList;
     //   528: pop
@@ -355,7 +355,7 @@ class QQSettingMe$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.16
  * JD-Core Version:    0.7.0.1
  */

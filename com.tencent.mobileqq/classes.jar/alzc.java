@@ -1,183 +1,49 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.method.MovementMethod;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class alzc
+class alzc
+  extends bdox
 {
-  private static alzg jdField_a_of_type_Alzg;
-  private static boolean jdField_a_of_type_Boolean;
+  alzc(alyz paramalyz, String paramString) {}
   
-  public static MovementMethod a()
+  public void onComplete(String paramString, int paramInt)
   {
-    if (jdField_a_of_type_Alzg == null) {
-      jdField_a_of_type_Alzg = new alzg();
-    }
-    return jdField_a_of_type_Alzg;
-  }
-  
-  public static bdjz a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, null, null);
-  }
-  
-  public static bdjz a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131699653));
-    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/index.html"), 114, 120, 33);
-    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 114, 120, 17);
-    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/privacy/index.html"), 121, 127, 33);
-    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 121, 127, 17);
-    localSpannableString.setSpan(new alzf(paramContext, paramString, "https://ti.qq.com/agreement/privateProtocal.html"), 128, 136, 33);
-    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 128, 136, 17);
-    paramString = new alzd(paramOnClickListener1);
-    paramOnClickListener1 = new alze(paramOnClickListener2);
-    paramContext = bdgm.a(paramContext, 0, paramContext.getString(2131699655), localSpannableString.toString(), 2131699654, 2131699652, paramOnClickListener1, paramString);
-    paramContext.setCanceledOnTouchOutside(false);
-    paramContext.setCancelable(true);
-    paramString = (TextView)paramContext.findViewById(2131365233);
-    paramString.setText(localSpannableString);
-    paramString.setTextSize(1, 13.0F);
-    paramString.setHighlightColor(0);
-    paramString.setMovementMethod(a());
-    ((TextView)paramContext.findViewById(2131365228)).setTextColor(Color.parseColor("#40A0FF"));
-    paramContext.show();
-    return paramContext;
-  }
-  
-  public static String a()
-  {
-    String str2 = bdea.a(BaseApplication.getContext(), "privacypolicy_state");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "0";
-    }
-    return str1;
-  }
-  
-  public static void a()
-  {
-    a();
-  }
-  
-  public static void a(RedTouch paramRedTouch)
-  {
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_desc.set("");
-    localRedTypeInfo.red_content.set("");
-    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
-    localAppInfo.iNewFlag.set(1);
-    paramRedTouch.a(localRedTypeInfo);
-  }
-  
-  public static void a(String paramString)
-  {
-    bdea.a(BaseApplication.getContext(), "privacypolicy_state", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("PrivacyPolicyHelper", 2, "setPrivacyPolicyStatus, state=" + paramString);
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((!jdField_a_of_type_Boolean) && (a().equals("1"))) {
-      jdField_a_of_type_Boolean = true;
-    }
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool3 = false;
-    if (a().equals("0")) {}
-    for (boolean bool1 = true;; bool1 = false)
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
+    try
     {
-      boolean bool2;
-      if (paramInt == 0)
-      {
-        bool2 = bool1;
-        if (bool1)
-        {
-          if (!b()) {
-            break label100;
-          }
-          bool1 = bool3;
-        }
-      }
-      label100:
-      for (;;)
-      {
-        bool2 = bool1;
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PrivacyPolicyHelper", 2, "needShowPrivacyPolicy, needShow=" + bool2 + ", from=" + paramInt);
-          }
-          return bool2;
-          bool2 = bool1;
-          if (paramInt == 1)
-          {
-            bool2 = bool1;
-            if (bool1)
-            {
-              b("1");
-              bool2 = bool1;
-            }
-          }
-        }
-      }
+      paramString = new JSONObject();
+      paramString.put("code", 2);
+      paramString.put("errorCode", paramInt);
+      this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
     }
   }
   
-  public static String b()
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
   {
-    String str2 = bdea.a(BaseApplication.getContext(), "privacypolicy_show_reddot");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "0";
+    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 1);
+      paramString.put("progress", i);
+      this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
     }
-    return str1;
-  }
-  
-  public static void b(String paramString)
-  {
-    bdea.a(BaseApplication.getContext(), "privacypolicy_show_reddot", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("PrivacyPolicyHelper", 2, "setHasShowRedDotState, state=" + paramString);
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
     }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = false;
-    if (b().equals("1")) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PrivacyPolicyHelper", 2, "hasShowRedDotState, hasShow=" + bool);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,15 @@
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.data.Friends;
 
-public abstract interface benw
+class benw
 {
-  public abstract void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan);
+  public int a;
+  public Friends a;
+  
+  public benw(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

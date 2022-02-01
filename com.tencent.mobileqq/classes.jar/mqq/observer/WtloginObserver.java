@@ -107,19 +107,8 @@ public abstract class WtloginObserver
       OnCheckSMSAndGetStExt(paramBundle.getString("userAccount"), paramBundle.getByteArray("userInput"), (WUserSigInfo)paramBundle.getParcelable("sigInfo"), (byte[][])null, paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"));
       return;
     case 2117: 
-      if (paramBundle.getBoolean("reg_LiangHao"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("wtLogin_LiangHao", 2, "OnRegGetSMSVerifyLoginAccountWithLhSig");
-        }
-        OnRegGetSMSVerifyLoginAccountWithLhSig(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"), paramBundle.getByteArray("lhsig"));
-      }
-      for (;;)
-      {
-        OnRegGetSMSVerifyLoginAccount(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"));
-        return;
-        OnRegGetSMSVerifyLoginAccount(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"));
-      }
+      onReceiveRegGetSMSVerifyLoginAccount(paramBundle);
+      return;
     case 2118: 
       OnCheckSMSVerifyLoginAccount(paramBundle.getLong("appid"), paramBundle.getLong("subAppid"), paramBundle.getString("countryCode"), paramBundle.getString("mobile"), paramBundle.getString("msg"), paramBundle.getInt("msgCnt"), paramBundle.getInt("timeLimit"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("errMsg"));
       return;
@@ -130,25 +119,7 @@ public abstract class WtloginObserver
       OnVerifySMSVerifyLoginAccount(paramBundle.getString("mobile"), paramBundle.getString("msgCode"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("errMsg"));
       return;
     case 2121: 
-      byte[] arrayOfByte = paramBundle.getByteArray("lhsig");
-      paramInt = paramBundle.getInt("ret");
-      String str2 = paramBundle.getString("userAccount");
-      String str1 = str2;
-      if (paramInt != 0)
-      {
-        str1 = str2;
-        if (arrayOfByte != null)
-        {
-          str2 = paramBundle.getString("uin");
-          str1 = str2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("wtlogin_Lianghao", 2, "SMSVerifyLogin|phone=" + paramBundle.getString("userAccount") + "|" + str2);
-            str1 = str2;
-          }
-        }
-      }
-      OnGetStViaSMSVerifyLogin(str1, paramBundle.getLong("dwAppid"), paramBundle.getInt("dwMainSigMap"), paramBundle.getLong("dwSubDstAppid"), paramInt, arrayOfByte, (ErrMsg)paramBundle.getParcelable("lastError"));
+      onReceiveGetStViaSMSVerifyLogin(paramBundle);
       return;
     case 2122: 
       OnGetSubaccountStViaSMSVerifyLogin(paramBundle.getString("submainaccount"), paramBundle.getString("userAccount"), paramBundle.getLong("dwAppid"), paramBundle.getInt("dwMainSigMap"), paramBundle.getLong("dwSubDstAppid"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"));
@@ -158,6 +129,46 @@ public abstract class WtloginObserver
       return;
     }
     OnException(paramBundle.getString("error"), paramBundle.getInt("cmd"));
+  }
+  
+  protected void onReceiveGetStViaSMSVerifyLogin(Bundle paramBundle)
+  {
+    byte[] arrayOfByte = paramBundle.getByteArray("lhsig");
+    int i = paramBundle.getInt("ret");
+    String str2 = paramBundle.getString("userAccount");
+    String str1 = str2;
+    if (i != 0)
+    {
+      str1 = str2;
+      if (arrayOfByte != null)
+      {
+        str2 = paramBundle.getString("uin");
+        str1 = str2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("wtlogin_Lianghao", 2, "SMSVerifyLogin|phone=" + paramBundle.getString("userAccount") + "|" + str2);
+          str1 = str2;
+        }
+      }
+    }
+    OnGetStViaSMSVerifyLogin(str1, paramBundle.getLong("dwAppid"), paramBundle.getInt("dwMainSigMap"), paramBundle.getLong("dwSubDstAppid"), i, arrayOfByte, (ErrMsg)paramBundle.getParcelable("lastError"));
+  }
+  
+  protected void onReceiveRegGetSMSVerifyLoginAccount(Bundle paramBundle)
+  {
+    if (paramBundle.getBoolean("reg_LiangHao"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("wtLogin_LiangHao", 2, "OnRegGetSMSVerifyLoginAccountWithLhSig");
+      }
+      OnRegGetSMSVerifyLoginAccountWithLhSig(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"), paramBundle.getByteArray("lhsig"));
+    }
+    for (;;)
+    {
+      OnRegGetSMSVerifyLoginAccount(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"));
+      return;
+      OnRegGetSMSVerifyLoginAccount(paramBundle.getInt("ret"), paramBundle.getLong("userAccount"), paramBundle.getByteArray("supersig"), paramBundle.getByteArray("contactssig"), paramBundle.getByteArray("msg"));
+    }
   }
 }
 

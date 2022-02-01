@@ -1,19 +1,28 @@
-import org.apache.http.HttpResponse;
+import android.text.Spannable;
+import java.util.Comparator;
 
-public class bfme
+final class bfme
+  implements Comparator<bfmd>
 {
-  public int a;
-  public HttpResponse a;
+  bfme(Spannable paramSpannable) {}
   
-  public bfme(HttpResponse paramHttpResponse, int paramInt)
+  public int a(bfmd parambfmd1, bfmd parambfmd2)
   {
-    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
-    this.jdField_a_of_type_Int = paramInt;
+    int i = 0;
+    int j = this.a.getSpanStart(parambfmd1);
+    int k = this.a.getSpanStart(parambfmd2);
+    if (j < k) {
+      i = -1;
+    }
+    while (j <= k) {
+      return i;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfme
  * JD-Core Version:    0.7.0.1
  */

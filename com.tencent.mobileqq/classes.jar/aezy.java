@@ -1,53 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.1;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.2;
-import com.tencent.qphone.base.util.QLog;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class aezy
-  implements aezo
+  implements View.OnClickListener
 {
-  public aezy(DoodleMsgView paramDoodleMsgView) {}
+  public aezy(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
-    this.a.a(new DoodleMsgView.1.2(this, paramInt));
-  }
-  
-  public void a(String arg1, long paramLong, Bitmap paramBitmap)
-  {
-    if (DoodleMsgView.a(this.a) == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBitmap != null) {
-        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
-          if (DoodleMsgView.a(this.a) == null)
-          {
-            DoodleMsgView.a(this.a, new Paint());
-            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-            DoodleMsgView.a(this.a).setAntiAlias(true);
-          }
-        }
-      }
-      synchronized (this.a)
-      {
-        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
-        this.a.postInvalidate();
-        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
-          continue;
-        }
-        this.a.d();
-        this.a.a(new DoodleMsgView.1.1(this));
-        return;
-      }
-    }
+    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localSvcDevLoginInfo.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

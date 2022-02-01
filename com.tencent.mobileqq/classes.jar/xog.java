@@ -1,22 +1,43 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
+
 public class xog
+  implements DialogInterface.OnDismissListener
 {
-  protected int a = 48000;
-  protected int b = 1;
-  protected int c = 1;
-  protected int d = 48000;
-  protected int e = 1;
-  protected int f = 1;
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void a() {}
-  
-  public byte[] a(int paramInt1, int paramInt2)
+  public xog(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    return null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
+    {
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
+      }
+      yqp.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+    }
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xog
  * JD-Core Version:    0.7.0.1
  */

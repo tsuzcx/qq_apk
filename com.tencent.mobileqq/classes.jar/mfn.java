@@ -1,26 +1,20 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class mfn
-  implements mkg
+  implements DialogInterface.OnClickListener
 {
-  public mfn(DoubleVideoMeetingCtrlUI.4 param4) {}
+  public mfn(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.k = true;
-    this.a.this$0.L();
-  }
-  
-  public void b()
-  {
-    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
-    this.a.this$0.k = false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mfn
  * JD-Core Version:    0.7.0.1
  */

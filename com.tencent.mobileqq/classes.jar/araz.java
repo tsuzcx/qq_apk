@@ -1,35 +1,9 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
-import mqq.app.MobileQQ;
+import java.util.List;
 
-class araz
-  implements bkkj<WeiyunPB.PwdVerifyMsgRsp>
+public class araz
 {
-  araz(arau paramarau) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
-    }
-    arau.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
-  }
-  
-  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
-    }
-    String str = bkmh.a(paramPwdVerifyMsgRsp.cs_sig.get());
-    if (!TextUtils.isEmpty(str)) {
-      bkkk.a(arau.a(this.a).getApplication().getApplicationContext(), str);
-    }
-    bkkk.c(arau.a(this.a).getApplication().getApplicationContext(), true);
-    arau.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
-  }
+  public int a;
+  public List<aray> a;
 }
 
 

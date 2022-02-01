@@ -1,12 +1,12 @@
 package com.tencent.gdtad.adapter;
 
-import aamn;
+import acjx;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class GdtThreadManagerAdapter$2
   implements Runnable
 {
-  public GdtThreadManagerAdapter$2(aamn paramaamn, Runnable paramRunnable, int paramInt) {}
+  public GdtThreadManagerAdapter$2(acjx paramacjx, Runnable paramRunnable, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class GdtThreadManagerAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

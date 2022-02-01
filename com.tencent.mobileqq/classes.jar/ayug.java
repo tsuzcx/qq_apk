@@ -1,24 +1,51 @@
-import java.util.List;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface ayug<T extends ayns>
+public class ayug
+  extends anqd
 {
-  public abstract List<T> a(ayuu paramayuu);
+  public ayug(OpenApiManager paramOpenApiManager) {}
   
-  public abstract void a();
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    a(false, paramString1, paramLong2);
+  }
   
-  public abstract void a(ayuu paramayuu, ayuh<T> paramayuh);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    Intent localIntent;
+    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
+      }
+      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
+      paramString = (ayuk)OpenApiManager.access$200(this.a).get(paramString);
+      if (paramString != null)
+      {
+        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
+        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
+        if (!paramBoolean) {
+          break label171;
+        }
+      }
+    }
+    label171:
+    for (int i = 0;; i = -9)
+    {
+      localIntent.putExtra("rs_code", i);
+      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayug
  * JD-Core Version:    0.7.0.1
  */

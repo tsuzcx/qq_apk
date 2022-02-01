@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class tbh
-  implements View.OnClickListener
+final class tbh
+  implements tbk
 {
-  public tbh(WSHomeFragment paramWSHomeFragment) {}
+  tbh(tbi paramtbi) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    WSHomeFragment.a(this.a);
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tbh
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ public class MiniProgramLpReportDC05116
         if (paramString.indexOf('?') != -1)
         {
           str2 = paramString.substring(0, paramString.indexOf('?'));
-          paramMiniAppConfig = paramMiniAppConfig.config.appId + '|' + paramString + '|' + str1 + '|' + String.valueOf(paramInt) + '|' + paramLong2 + '|' + l + '|' + paramDownloadResult + '|' + str2 + '|' + MiniProgramReportHelper.getNetworkType() + '|' + paramMiniAppConfig.config.getReportType() + '|' + "Android" + '|' + NetConnInfoCenter.getServerTimeMillis();
+          paramMiniAppConfig = paramMiniAppConfig.config.appId + '|' + paramString + '|' + str1 + '|' + String.valueOf(paramInt) + '|' + paramLong2 + '|' + l + '|' + paramDownloadResult + '|' + str2 + '|' + MiniProgramReportHelper.getNetworkType() + '|' + paramMiniAppConfig.config.getReportType() + '|' + "android" + '|' + NetConnInfoCenter.getServerTimeMillis();
           paramString = new Bundle();
           paramString.putString("log_key", "dc05116");
           paramString.putStringArray("data", new String[] { paramMiniAppConfig });
@@ -67,7 +67,7 @@ public class MiniProgramLpReportDC05116
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05116
  * JD-Core Version:    0.7.0.1
  */

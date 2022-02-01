@@ -1,167 +1,151 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class bbyg
-  extends bkms
-  implements View.OnClickListener
+class bbyg
+  implements BusinessObserver
 {
-  private TextView b;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private String jdField_c_of_type_JavaLangString;
+  bbyg(bbyc parambbyc, long paramLong, String paramString, Context paramContext, int paramInt) {}
   
-  public bbyg(bmhh parambmhh, bmhg parambmhg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(parambmhh, parambmhg);
-  }
-  
-  protected int a()
-  {
-    return 2131562740;
-  }
-  
-  public View a()
-  {
-    View localView1 = super.a();
-    xpg.a(a().getLayoutInflater(), new bbyh(this, a().getLayoutInflater()));
-    Object localObject1 = localView1.findViewById(2131367743);
-    Object localObject2 = localView1.findViewById(2131367744);
-    View localView2 = localView1.findViewById(2131367745);
-    View localView3 = localView1.findViewById(2131379555);
-    View localView4 = localView1.findViewById(2131379556);
-    int i = xsm.d(a()) / 4;
-    int j = xsm.a(a()) / 3;
-    ((RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams()).setMargins(0, i, 0, 0);
-    ((RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams()).setMargins(0, i * 2, 0, 0);
-    ((RelativeLayout.LayoutParams)localView2.getLayoutParams()).setMargins(0, i * 3, 0, 0);
-    ((RelativeLayout.LayoutParams)localView3.getLayoutParams()).setMargins(j, 0, 0, 0);
-    ((RelativeLayout.LayoutParams)localView4.getLayoutParams()).setMargins(j * 2, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    localObject1 = (Button)localView1.findViewById(2131379430);
-    ((Button)localObject1).setVisibility(0);
-    this.b = ((TextView)localView1.findViewById(2131362788));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131362789));
-    localObject2 = (uvt)uwa.a(10);
-    if ((localObject2 != null) && (((Boolean)((uvt)localObject2).b("SP_ARITHMETIC_GUIDE_SHOW", Boolean.valueOf(true))).booleanValue()))
+    if (QLog.isColorLevel())
     {
-      this.b.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.b.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      ((uvt)localObject2).b("SP_ARITHMETIC_GUIDE_SHOW", Boolean.valueOf(false));
+      QLog.d("AppLaucherHelper", 2, "t=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 2, "onReceive");
+    }
+    new Bundle();
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    if (paramBoolean)
+    {
+      Object localObject2 = paramBundle.getByteArray("data");
+      try
+      {
+        paramBundle = new FastAuthorize.AuthorizeResponse();
+        paramBundle.mergeFrom((byte[])localObject2);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
+          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
+          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
+          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
+          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
+          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
+          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
+          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
+          QLog.d("AppLaucherHelper", 2, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
+        }
+        this.jdField_a_of_type_Bbyc.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+        this.jdField_a_of_type_Bbyc.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
+        if ((!paramBundle.ret.get().equals("0")) || (!paramBundle.apk_name.has())) {
+          break label1163;
+        }
+        if (paramBundle.access_token.has())
+        {
+          localObject2 = paramBundle.access_token.get();
+          this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject2);
+        }
+        if (paramBundle.pay_token.has())
+        {
+          localObject2 = paramBundle.pay_token.get();
+          this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject2);
+        }
+        if (paramBundle.openid.has())
+        {
+          localObject2 = paramBundle.openid.get();
+          this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject2);
+        }
+        for (;;)
+        {
+          if (paramBundle.pfkey.has())
+          {
+            localObject2 = paramBundle.pfkey.get();
+            this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject2);
+          }
+          if (paramBundle.encrykey.has())
+          {
+            localObject2 = paramBundle.encrykey.get();
+            this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject2);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 2, "mParams=" + this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString);
+          }
+          paramBundle = paramBundle.apk_name.get();
+          if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.contains(this.jdField_a_of_type_JavaLangString))) {
+            break;
+          }
+          bbyc.jdField_a_of_type_Boolean = false;
+          QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
+          return;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
+          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
+          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
+          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
+          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
+          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
+          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
+          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
+          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
+          QLog.d("AppLaucherHelper", 1, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
+        }
+        localObject1 = paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        paramBundle = (Bundle)localObject1;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException1.getMessage());
+          localObject1 = paramBundle;
+        }
+        for (;;)
+        {
+          paramBundle = bbyc.a(this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
+          }
+          biub.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
+          bbyc.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent == null) {
+            return;
+          }
+          this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+          this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent = null;
+          return;
+          try
+          {
+            QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 4, "pkg=" + paramBundle);
+            localObject1 = paramBundle;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
+        }
+      }
+      label1163:
+      QLog.d(this.jdField_a_of_type_Bbyc.getClass().getSimpleName(), 4, "start without login state");
     }
     for (;;)
     {
-      ((Button)localObject1).setOnClickListener(this);
-      localView1.setFocusable(true);
-      localView1.setFocusableInTouchMode(true);
-      localView1.requestFocus();
-      localView1.setOnKeyListener(new bbyi(this, null));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363909)).setOnClickListener(this);
-      return localView1;
-      this.b.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      break;
+      QLog.e("AppLaucherHelper", 1, "FastAuthorize.AuthorizeRequest failed");
     }
-  }
-  
-  protected axqt a()
-  {
-    axqt localaxqt = super.a();
-    localaxqt.l(2);
-    localaxqt.a(1280);
-    localaxqt.b(720);
-    localaxqt.a(false);
-    localaxqt.i(2);
-    return localaxqt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramIntent != null)
-    {
-      ArrayList localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        a().setResult(paramInt2, paramIntent);
-        a().finish();
-        a().overridePendingTransition(2130772036, 2130772234);
-      }
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.f();
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bmhh.a().getIntent().getStringExtra("troop_uin");
-    if (this.jdField_c_of_type_JavaLangString == null)
-    {
-      this.jdField_c_of_type_JavaLangString = "";
-      QLog.e("ArithmeticCameraCaptureUnit", 1, "troopUin null!");
-    }
-    bdes.a("Grp_edu", "Grp_oral", "Oral_Photo_In", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, "" });
-  }
-  
-  public void a(axqw paramaxqw)
-  {
-    Activity localActivity = this.jdField_a_of_type_Bmhh.a();
-    paramaxqw = EditPicActivity.a(localActivity, paramaxqw.a, false, false, false, true, false, 11);
-    paramaxqw.putExtra("arithmetic_ability", 1L);
-    paramaxqw.putExtra("troop_uin", this.jdField_c_of_type_JavaLangString);
-    localActivity.startActivityForResult(paramaxqw, 10001);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
-  }
-  
-  public void h()
-  {
-    super.h();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131363909)
-    {
-      bdes.a("Grp_edu", "Grp_oral", "Oral_Photo_Out", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, "" });
-      a().finish();
-      a().overridePendingTransition(2130772036, 2130772234);
-      return;
-    }
-    super.onClick(paramView);
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131362788: 
-    case 2131362789: 
-      bdes.a("Grp_edu", "Grp_oral", "Oral_Photo_Tip_In", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, "" });
-    case 2131379430: 
-      BeginnerGuideFragment.b(a(), null, 7);
-      this.b.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    x();
   }
 }
 

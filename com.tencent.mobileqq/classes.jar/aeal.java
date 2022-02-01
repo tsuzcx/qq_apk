@@ -1,26 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeal
-  implements bhuk
+  implements Handler.Callback
 {
-  public aeal(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bhuf parambhuf) {}
+  public aeal(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    awhd.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
     {
-    default: 
-      return;
-    case 0: 
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
-      this.jdField_a_of_type_Bhuf.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.f());
-      return;
+      this.a.a(1134013, 0L, false);
+      return true;
     }
-    this.jdField_a_of_type_Bhuf.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
+    this.a.d(true);
+    return true;
   }
 }
 

@@ -1,28 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public class qtq
-  implements DialogInterface.OnClickListener
+class qtq
+  implements View.OnTouchListener
 {
-  public qtq(EditColumnFragment paramEditColumnFragment) {}
+  qtq(qtn paramqtn, RelativeLayout paramRelativeLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(true);
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0)
-    {
-      this.a.jdField_a_of_type_Qtv.a(EditColumnFragment.a(this.a), this.a.a());
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
     }
-    QQToast.a(this.a.getActivity(), 0, 2131718777, 0).a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtq
  * JD-Core Version:    0.7.0.1
  */

@@ -4,32 +4,32 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 import java.util.Iterator;
 import java.util.Set;
-import qrv;
-import qsb;
+import rmy;
+import rne;
 
 public class PlayerCaptureProxy$2
   implements Runnable
 {
-  public PlayerCaptureProxy$2(qsb paramqsb) {}
+  public PlayerCaptureProxy$2(rne paramrne) {}
   
   public void run()
   {
-    if (qsb.a(this.this$0) == null) {
+    if (rne.a(this.this$0) == null) {
       QLog.e("PlayerCaptureProxy", 1, "onPreviewVideoPrepared error for player is null");
     }
     for (;;)
     {
       return;
-      qsb.a(this.this$0, true);
-      int i = qsb.a(this.this$0).getVideoWidth();
-      int j = qsb.a(this.this$0).getVideoHeight();
-      long l = qsb.a(this.this$0).getDurationMs();
-      Iterator localIterator = qsb.a(this.this$0).iterator();
+      rne.a(this.this$0, true);
+      int i = rne.a(this.this$0).getVideoWidth();
+      int j = rne.a(this.this$0).getVideoHeight();
+      long l = rne.a(this.this$0).getDurationMs();
+      Iterator localIterator = rne.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        qrv localqrv = (qrv)localIterator.next();
-        if (localqrv != null) {
-          localqrv.a(i, j, l);
+        rmy localrmy = (rmy)localIterator.next();
+        if (localrmy != null) {
+          localrmy.a(i, j, l);
         }
       }
     }

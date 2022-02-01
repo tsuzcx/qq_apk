@@ -1,550 +1,323 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
 import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.13;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.14;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.15;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.16;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.18;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.19;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.text.DecimalFormat;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;>;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.cs.doutu.Doutu.GetImgInfoReq;
+import tencent.im.cs.doutu.Doutu.GetImgInfoRsp;
+import tencent.im.cs.doutu.Doutu.ImgInfo;
+import tencent.im.cs.doutu.Doutu.ReqBody;
+import tencent.im.cs.doutu.Doutu.RspBody;
+import tencent.im.cs.doutu.DoutuRecommend.GetImgInfoReq;
+import tencent.im.cs.doutu.DoutuRecommend.GetImgInfoRsp;
+import tencent.im.cs.doutu.DoutuRecommend.ImgInfo;
+import tencent.im.cs.doutu.DoutuRecommend.ReqBody;
+import tencent.im.cs.doutu.DoutuRecommend.RspBody;
 
 public class arnb
-  extends armd
-  implements aqxm, arko
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new arnh(this);
-  protected AudioManager a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new arnj(this);
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new arni(this);
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new arnm(this);
-  public aron a;
-  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
-  public TVK_IMediaPlayer a;
-  protected TVK_IProxyFactory a;
-  public TVK_PlayerVideoInfo a;
-  public final Runnable a;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  Runnable jdField_b_of_type_JavaLangRunnable = new VideoFilePresenter.19(this);
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  
-  public arnb(arki paramarki, Activity paramActivity)
+  public List<DoutuData> a(List<DoutuRecommend.ImgInfo> paramList)
   {
-    super(paramarki, paramActivity);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new VideoFilePresenter.18(this);
-    this.jdField_a_of_type_Aron = new aron(paramActivity);
-    a(this.jdField_a_of_type_Aron);
-    s();
-  }
-  
-  private int a(int paramInt)
-  {
-    long l2 = this.jdField_a_of_type_Long;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return null;
     }
-    float f1 = paramInt / 10000.0F;
-    return (int)((float)l1 * f1);
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DoutuRecommend.ImgInfo localImgInfo = (DoutuRecommend.ImgInfo)paramList.next();
+      DoutuData localDoutuData = new DoutuData();
+      localDoutuData.pic_md5 = localImgInfo.bytes_pic_md5.get().toStringUtf8();
+      localDoutuData.pic_size = localImgInfo.uint64_pic_size.get();
+      localDoutuData.pic_height = localImgInfo.uint32_pic_height.get();
+      localDoutuData.pic_width = localImgInfo.uint32_pic_width.get();
+      localDoutuData.pic_down_url = localImgInfo.bytes_pic_down_url.get().toStringUtf8();
+      localDoutuData.thumb_md5 = localImgInfo.bytes_thumb_file_md5.get().toStringUtf8().toUpperCase();
+      localDoutuData.thumb_size = localImgInfo.uint64_thumb_size.get();
+      localDoutuData.thumb_height = localImgInfo.uint32_thumb_height.get();
+      localDoutuData.thumb_width = localImgInfo.uint32_thumb_width.get();
+      localDoutuData.thumb_down_url = localImgInfo.bytes_thumb_down_url.get().toStringUtf8();
+      localDoutuData.suppliers_name = localImgInfo.bytes_source_name.get().toStringUtf8();
+      localArrayList.add(localDoutuData);
+    }
+    return localArrayList;
   }
   
-  private void a(ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfArrayList)
+  public List<DoutuData> a(List<Doutu.ImgInfo> paramList, int paramInt)
   {
-    if ((paramArrayOfArrayList != null) && (paramArrayOfArrayList.length > 0))
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      int i = 0;
-      while (i < paramArrayOfArrayList.length)
-      {
-        Object localObject = paramArrayOfArrayList[i];
-        if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-        {
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject).next()).action == 26) {
-              azqs.b(null, "dc00898", "", "", "0X800A60D", "0X800A60D", 0, 0, "", "", "", "");
-            }
-          }
-        }
-        i += 1;
+      Doutu.ImgInfo localImgInfo = (Doutu.ImgInfo)paramList.next();
+      DoutuData localDoutuData = new DoutuData();
+      localDoutuData.pic_md5 = localImgInfo.bytes_pic_md5.get().toStringUtf8();
+      localDoutuData.pic_size = localImgInfo.uint64_pic_size.get();
+      localDoutuData.pic_height = localImgInfo.uint32_pic_height.get();
+      localDoutuData.pic_width = localImgInfo.uint32_pic_width.get();
+      localDoutuData.pic_down_url = localImgInfo.bytes_pic_down_url.get().toStringUtf8();
+      localDoutuData.thumb_md5 = localImgInfo.bytes_thumb_file_md5.get().toStringUtf8().toUpperCase();
+      localDoutuData.thumb_size = localImgInfo.uint64_thumb_size.get();
+      localDoutuData.thumb_height = localImgInfo.uint32_thumb_height.get();
+      localDoutuData.thumb_width = localImgInfo.uint32_thumb_width.get();
+      localDoutuData.thumb_down_url = localImgInfo.bytes_thumb_down_url.get().toStringUtf8();
+      localDoutuData.suppliers_name = localImgInfo.bytes_source_name.get().toStringUtf8();
+      if (paramInt > 0) {
+        localDoutuData.pic_type = paramInt;
+      }
+      localArrayList.add(localDoutuData);
+    }
+    return localArrayList;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    int j = paramIntent.getIntExtra("KEY_CMD", -1);
+    long l = paramIntent.getLongExtra("key_sequence", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.i("DoutuServlet", 2, "onReceive, cmd = " + j + ", key:" + l);
+    }
+    boolean bool;
+    if (paramFromServiceMsg == null)
+    {
+      bool = false;
+      paramIntent = (armt)getAppRuntime().getManager(214);
+      if (!bool) {
+        break label505;
       }
     }
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying());
-  }
-  
-  private void h()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Aron.f();
-  }
-  
-  private void q()
-  {
-    if ((!arrr.c(this.jdField_a_of_type_Arki.d())) && (this.jdField_a_of_type_Arki.d() == 1))
+    label616:
+    for (;;)
     {
-      this.jdField_a_of_type_Aron.h(true);
-      if (this.jdField_a_of_type_Arki.b() == 16)
+      try
       {
-        this.jdField_a_of_type_Aron.a(this.jdField_a_of_type_Arki.d(), this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131692973));
-        this.jdField_a_of_type_Arki.a(true);
-        if ((this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+        ((ByteBuffer)localObject).get(paramFromServiceMsg);
+        switch (j)
+        {
+        case 2: 
+        case 3: 
+        case 4: 
+        default: 
+          return;
         }
+      }
+      catch (InvalidProtocolBufferMicroException paramIntent)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("DoutuServlet", 2, paramIntent, new Object[0]);
         return;
       }
-      r();
-      this.jdField_a_of_type_Aron.b(true);
-      b(this.jdField_a_of_type_Arki.a());
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Arki.d();
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_video_file");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setPlayType(4);
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Arki.d(), 0L, 0L, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
-  }
-  
-  private void r()
-  {
-    arit localarit = this.jdField_a_of_type_Arki.a();
-    if (localarit == null)
-    {
-      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "get video biz, data is null!");
-      return;
-    }
-    aqxi.a(localarit.a()).a(localarit, new arnf(this));
-  }
-  
-  private void s()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(-1);
-    if ((this.jdField_a_of_type_AndroidMediaAudioManager == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory == null))
-    {
-      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = ((PowerManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("power")).newWakeLock(536870922, "FileBrowserPresenter<FileAssistant>");
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setConfigMap("RawVideoPlay", "true");
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-      this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    }
-  }
-  
-  private void t()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.13(this));
-    }
-  }
-  
-  private void u()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.14(this));
-  }
-  
-  private void v()
-  {
-    if (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 2500L);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = video");
-    }
-    this.jdField_a_of_type_Aron.b(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Aron.d(10000);
-    this.jdField_a_of_type_Aron.a(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
-    this.jdField_a_of_type_Aron.d();
-    this.jdField_a_of_type_Arki.a(this);
-    this.jdField_a_of_type_Aron.f(false);
-    aqxi.a(this.jdField_a_of_type_AndroidAppActivity, new arnc(this));
-    if (this.jdField_a_of_type_Arhx != null) {
-      this.jdField_a_of_type_Arhx.a(true);
-    }
-    if ((arrr.c(this.jdField_a_of_type_Arki.d())) && (this.jdField_a_of_type_Arki.i() == 2)) {
-      this.jdField_a_of_type_Aron.f(true);
-    }
-    int i = this.jdField_a_of_type_Arki.i();
-    int j = this.jdField_a_of_type_Arki.h();
-    if ((i == 6) && (j == 1))
-    {
-      this.jdField_a_of_type_Aron.b(false);
-      this.jdField_a_of_type_Aron.f(false);
-      this.jdField_a_of_type_Aron.c(true);
-    }
-    this.jdField_a_of_type_Aron.e(this.jdField_a_of_type_Arki.k());
-    bexu.a(this.jdField_a_of_type_AndroidAppActivity, 53);
-  }
-  
-  public void a(float paramFloat)
-  {
-    b(paramFloat);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.15(this, paramInt, paramString));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfArrayList, String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
-    {
-      localObject2 = new ShareActionSheetV2.Param();
-      ((ShareActionSheetV2.Param)localObject2).context = this.jdField_a_of_type_AndroidAppActivity;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnDismissListener(new arnk(this));
-    if (paramArrayOfArrayList != null) {
-      if (paramArrayOfArrayList.length == 1) {
-        paramArrayOfArrayList = paramArrayOfArrayList[0];
-      }
-    }
-    for (;;)
-    {
-      if (((paramArrayOfArrayList != null) && (!paramArrayOfArrayList.isEmpty())) || ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty())))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetTitle(paramString);
-        paramString = this.jdField_a_of_type_Arki.a();
-        localObject2 = this.jdField_a_of_type_Arki.a();
-        if ((paramString != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-          break label260;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(8, 0, 0);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(paramArrayOfArrayList, (List)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new arnl(this));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-        this.f = true;
-        if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPauseing()) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))) {}
-        try
-        {
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.captureImageInTime(0, 0);
-          return;
-        }
-        catch (IllegalAccessException paramArrayOfArrayList)
-        {
-          paramArrayOfArrayList.printStackTrace();
-          return;
-        }
-        if (paramArrayOfArrayList.length != 2) {
-          break label295;
-        }
-        localObject2 = paramArrayOfArrayList[0];
-        localObject1 = paramArrayOfArrayList[1];
-        paramArrayOfArrayList = (ArrayList<ShareActionSheetBuilder.ActionSheetItem>[])localObject2;
-        break;
-        label260:
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(paramString);
-        this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("big_brother_source_key", (String)localObject2);
-      }
-      label295:
-      paramArrayOfArrayList = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void aG_()
-  {
-    n();
-  }
-  
-  public void aH_()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.16(this));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    try
-    {
-      arrp.a("0X8007426");
-      arrp.a("0X8007427");
-      this.jdField_a_of_type_Aron.a(this.jdField_a_of_type_Arki.k(), this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = aqxi.a(this.jdField_a_of_type_Arki.k()).a();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = aqxi.a(this.jdField_a_of_type_Arki.k()).a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_Aron.b(), this);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new arnn(this));
-      this.jdField_a_of_type_Aron.h(true);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new arno(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new arnp(this));
-      q();
-      this.jdField_a_of_type_Aron.d(d());
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new arnd(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCaptureImageListener(new arne(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 1) == 1;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Aron.f(false);
-    this.jdField_a_of_type_Aron.b(true);
-    this.jdField_a_of_type_Aron.c(false);
-    b(this.jdField_a_of_type_Arki.a());
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Aron.f(true);
-    this.jdField_a_of_type_Aron.b(false);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Aron.f(true);
-    this.jdField_a_of_type_Aron.b(false);
-    if ((this.jdField_a_of_type_Arki != null) && ((this.jdField_a_of_type_Arki instanceof arka))) {
-      q();
-    }
-  }
-  
-  public void g()
-  {
-    if (!arso.b(this.jdField_a_of_type_Arki.d())) {
-      return;
-    }
-    this.jdField_a_of_type_Aron.b(false);
-    this.jdField_a_of_type_Aron.f(false);
-    this.jdField_a_of_type_Aron.c(true);
-  }
-  
-  public void i()
-  {
-    int i = 5;
-    this.jdField_a_of_type_Aron.c();
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    String str2 = "";
-    String str1 = "4";
-    String str4 = "";
-    int j = this.jdField_a_of_type_Arki.k();
-    String str3;
-    if ((j == 3) || (j == 4))
-    {
-      str3 = this.jdField_a_of_type_Arki.b();
-      str1 = "3";
-      i = 2;
-      Object localObject = new DecimalFormat("0.00");
-      str4 = ((DecimalFormat)localObject).format(this.jdField_a_of_type_Long / 1000.0D);
-      localObject = ((DecimalFormat)localObject).format(this.jdField_b_of_type_Long / 1000.0D);
-      azqs.b(null, "dc00898", "", str2, "0X8009AA6", "0X8009AA6", i, 0, str1, "3", str4 + ";" + (String)localObject, str3);
-      if (!arrr.c(this.jdField_a_of_type_Arki.d())) {
-        break label319;
-      }
-      aqxi.a(this.jdField_a_of_type_Arki.k());
-    }
-    for (;;)
-    {
-      super.i();
-      return;
-      if ((j == 5) || (j == 6))
-      {
-        str1 = "3";
-        i = 2;
-        str3 = str4;
-        break;
-      }
-      if (j != 1)
-      {
-        str3 = str4;
-        if (j != 2) {
-          break;
-        }
-      }
-      str1 = "3";
-      str2 = this.jdField_a_of_type_Arki.b();
-      i = 1;
-      str3 = str4;
+      bool = paramFromServiceMsg.isSuccess();
       break;
-      label319:
-      aqxi.b(this.jdField_a_of_type_Arki.k());
-    }
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (this.f)
-    {
-      this.f = false;
-      return;
-    }
-    if ((this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) && (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld())) {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
-    }
-    t();
-  }
-  
-  public void k()
-  {
-    super.k();
-    aron localaron = this.jdField_a_of_type_Aron;
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaron.d(bool);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
-      return;
-    }
-  }
-  
-  public void l()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(17432576, 17432577);
-  }
-  
-  protected void m()
-  {
-    int i = this.jdField_a_of_type_Arki.h();
-    if (i == 2) {
-      if (this.jdField_a_of_type_Arki.a() != null) {
-        this.jdField_a_of_type_Arki.a().b();
-      }
-    }
-    for (;;)
-    {
-      n();
-      return;
-      if (i == 1)
+      Object localObject = new Doutu.RspBody();
+      ((Doutu.RspBody)localObject).mergeFrom(paramFromServiceMsg);
+      paramFromServiceMsg = (Doutu.GetImgInfoRsp)((Doutu.RspBody)localObject).msg_get_imginfo_rsp.get();
+      int i = paramFromServiceMsg.int32_result.get();
+      if (i == 0)
       {
-        if (this.jdField_a_of_type_Arki.a() != null) {
-          this.jdField_a_of_type_Arki.a().b();
+        localObject = paramFromServiceMsg.rpt_msg_img_info.get();
+        if ((localObject == null) || (((List)localObject).size() == 0))
+        {
+          if (paramIntent != null) {
+            paramIntent.a(false, null);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("DoutuServlet", 2, "onReceive: rpt_msg_img_info is null");
+          }
         }
-      }
-      else if (QLog.isColorLevel()) {
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "Video stop transform, but status unknown!");
-      }
-    }
-  }
-  
-  protected void n()
-  {
-    this.jdField_a_of_type_Arki.a("0X8009D60", null);
-    super.n();
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(17432576, 17432577);
-  }
-  
-  public void p()
-  {
-    List localList = null;
-    ArrayList[] arrayOfArrayList;
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
-    {
-      arrayOfArrayList = this.jdField_a_of_type_Arki.b();
-      if (arrayOfArrayList == null) {
-        break label103;
-      }
-      if (arrayOfArrayList.length != 1) {
-        break label86;
-      }
-      localArrayList = arrayOfArrayList[0];
-    }
-    for (;;)
-    {
-      if (((localArrayList != null) && (!localArrayList.isEmpty())) || ((localList != null) && (!localList.isEmpty()))) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localArrayList, localList);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.refresh();
-      }
-      return;
-      label86:
-      if (arrayOfArrayList.length == 2)
-      {
-        localArrayList = arrayOfArrayList[0];
-        localList = arrayOfArrayList[1];
+        else
+        {
+          paramIntent.a(true, a((List)localObject, paramFromServiceMsg.uint32_rsp_type.get()));
+        }
       }
       else
       {
-        label103:
-        localArrayList = null;
+        if (paramIntent != null) {
+          paramIntent.a(false, null);
+        }
+        paramFromServiceMsg = paramFromServiceMsg.bytes_fail_msg.get().toStringUtf8();
+        paramIntent = paramFromServiceMsg;
+        if (paramFromServiceMsg == null) {
+          paramIntent = "null";
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.i("DoutuServlet", 2, "onReceive : Failed ! result = " + i + ", errMsg = " + paramIntent);
+          return;
+          localObject = new DoutuRecommend.RspBody();
+          ((DoutuRecommend.RspBody)localObject).mergeFrom(paramFromServiceMsg);
+          paramFromServiceMsg = (DoutuRecommend.GetImgInfoRsp)((DoutuRecommend.RspBody)localObject).msg_get_imginfo_rsp.get();
+          i = paramFromServiceMsg.int32_result.get();
+          if (i == 0)
+          {
+            paramIntent.a(true, a(paramFromServiceMsg.rpt_msg_img_info.get()), l);
+            return;
+          }
+          if (paramIntent != null) {
+            paramIntent.a(false, null, l);
+          }
+          paramIntent = paramFromServiceMsg.bytes_fail_msg.get().toStringUtf8();
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoutuServlet", 2, "onReceive recommend Failed result:" + i + ", errMsg:" + paramIntent);
+            return;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("DoutuServlet", 2, "onReceive CMD_REPORT_NEW  success .");
+              return;
+              label505:
+              if (paramFromServiceMsg == null)
+              {
+                i = -1;
+                switch (j)
+                {
+                }
+              }
+              for (;;)
+              {
+                if (!QLog.isColorLevel()) {
+                  break label616;
+                }
+                QLog.i("DoutuServlet", 2, "onReceive : Failed, errCode:" + i + ", cmd:" + j);
+                return;
+                i = paramFromServiceMsg.getResultCode();
+                break;
+                if (paramIntent != null)
+                {
+                  paramIntent.a(false, null);
+                  continue;
+                  if (paramIntent != null) {
+                    paramIntent.a(l);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    int i = paramIntent.getIntExtra("KEY_CMD", -1);
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = localObject4;
+    Object localObject2 = localObject3;
+    switch (i)
+    {
+    default: 
+      localObject2 = localObject3;
+      localObject1 = localObject4;
+    }
+    for (;;)
+    {
+      if ((localObject2 != null) && (localObject1 != null))
+      {
+        paramPacket.setSSOCommand((String)localObject2);
+        paramPacket.putSendData((byte[])localObject1);
+      }
+      while (!QLog.isColorLevel())
+      {
+        return;
+        localObject1 = new Doutu.GetImgInfoReq();
+        long l1 = paramIntent.getLongExtra("KEY_SRC_UIN", 0L);
+        i = paramIntent.getByteExtra("KEY_AGE", (byte)0);
+        int j = paramIntent.getShortExtra("key_gender", (short)0);
+        ((Doutu.GetImgInfoReq)localObject1).uint64_src_uin.set(l1);
+        ((Doutu.GetImgInfoReq)localObject1).uint32_age.set(i);
+        ((Doutu.GetImgInfoReq)localObject1).uint32_src_term.set(2);
+        ((Doutu.GetImgInfoReq)localObject1).uin32_gender.set(j);
+        if (QLog.isColorLevel()) {
+          QLog.i("DoutuServlet", 2, "onSend, CMD_DOU_TU , src_uin = " + l1 + ", age = " + i + ", gender:" + j);
+        }
+        paramIntent = new Doutu.ReqBody();
+        paramIntent.msg_get_imginfo_req.set((MessageMicro)localObject1);
+        localObject2 = "ImageFight.GetInfo";
+        localObject1 = bguc.a(paramIntent.toByteArray());
+        break;
+        localObject1 = new DoutuRecommend.GetImgInfoReq();
+        l1 = paramIntent.getLongExtra("KEY_SRC_UIN", 0L);
+        long l2 = paramIntent.getLongExtra("KEY_TO_UIN", 0L);
+        localObject2 = paramIntent.getStringExtra("KEY_MD5");
+        i = paramIntent.getByteExtra("KEY_AGE", (byte)0);
+        j = paramIntent.getShortExtra("key_gender", (short)0);
+        localObject3 = paramIntent.getStringExtra("key_url");
+        int k = paramIntent.getIntExtra("KEY_SESSION_TYPE", 0);
+        if (QLog.isColorLevel()) {
+          QLog.i("DoutuServlet", 2, "onSend,CMD_RECOMMEND, srcUin1:" + l1 + ", md5Str:" + (String)localObject2 + ", age = " + i + ", gender:" + j);
+        }
+        ((DoutuRecommend.GetImgInfoReq)localObject1).uint64_src_uin.set(l1);
+        ((DoutuRecommend.GetImgInfoReq)localObject1).uint64_to_uin.set(l2);
+        ((DoutuRecommend.GetImgInfoReq)localObject1).uint32_src_term.set(2);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((DoutuRecommend.GetImgInfoReq)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
+        }
+        if (k == 1) {
+          ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(1);
+        }
+        for (;;)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+            ((DoutuRecommend.GetImgInfoReq)localObject1).bytes_url.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
+          }
+          ((DoutuRecommend.GetImgInfoReq)localObject1).uin32_gender.set(j);
+          ((DoutuRecommend.GetImgInfoReq)localObject1).uint32_age.set(i);
+          paramIntent = new DoutuRecommend.ReqBody();
+          paramIntent.msg_get_imginfo_req.set((MessageMicro)localObject1);
+          localObject2 = "ImageFightRecSvc.GetImage";
+          localObject1 = bguc.a(paramIntent.toByteArray());
+          paramPacket.setTimeout(3000L);
+          break;
+          if (k == 2) {
+            ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(2);
+          } else {
+            ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(255);
+          }
+        }
+        localObject1 = bguc.a(paramIntent.getStringExtra("key_report_content").getBytes());
+        if (!QLog.isColorLevel()) {
+          break label676;
+        }
+        localObject2 = paramIntent.getStringExtra("key_report_content");
+        localObject3 = new StringBuilder().append("onSend,CMD_REPORT_NEW, REPORT_CONTENT :");
+        paramIntent = (Intent)localObject2;
+        if (localObject2 == null) {
+          paramIntent = "null";
+        }
+        QLog.d("DoutuServlet", 2, paramIntent);
+        localObject2 = "MQInference.CommonReport";
+        break;
+      }
+      QLog.e("DoutuServlet", 2, "exception request!");
+      return;
+      label676:
+      localObject2 = "MQInference.CommonReport";
     }
   }
 }

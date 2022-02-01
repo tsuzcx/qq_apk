@@ -1,28 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-class tnl
-  extends GestureDetector.SimpleOnGestureListener
+public class tnl
+  implements bcpg
 {
-  tnl(tnk paramtnk) {}
+  public tnl(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a()
   {
-    tlo.b("WSVerticalVideoItemView", "itemView onDoubleTap");
-    tnk.a(this.a, paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void b()
   {
-    tlo.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
-    tnk.a(this.a);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnl
  * JD-Core Version:    0.7.0.1
  */

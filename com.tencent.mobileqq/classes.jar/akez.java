@@ -1,62 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-public class akez
+class akez
+  implements bkhw
 {
-  public List<akfa> a = new ArrayList();
+  akez(akey paramakey, bkho parambkho) {}
   
-  public static akez a(JSONObject paramJSONObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramJSONObject == null) {
-      paramJSONObject = new akez();
-    }
-    for (;;)
+    if (paramInt != this.jdField_a_of_type_Akey.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      return paramJSONObject;
-      localakez = new akez();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
-        paramJSONObject = localakez;
-        if (localJSONArray == null) {
-          continue;
-        }
-        paramJSONObject = localakez;
-        if (localJSONArray.length() < 0) {
-          continue;
-        }
-        int j = localJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          paramJSONObject = localakez;
-          if (i >= j) {
-            break;
-          }
-          paramJSONObject = akfa.a(localJSONArray.getJSONObject(i));
-          localakez.a.add(paramJSONObject);
-          i += 1;
-        }
-        return localakez;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localakez;
-      }
-      catch (OutOfMemoryError paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localakez;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
+      this.jdField_a_of_type_Akey.a(paramInt);
+      this.jdField_a_of_type_Akey.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
     }
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

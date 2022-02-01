@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahvr;
-import ajij;
-import alud;
+import ajkq;
+import alas;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -13,9 +12,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdoo;
+import anni;
+import bgtn;
 import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,16 +25,16 @@ import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
 
 public class ContactsMiniAppEntryManager
-  implements ahvr, ajij, BusinessObserver
+  implements ajkq, alas, BusinessObserver
 {
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = bdoo.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = bdoo.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = bdoo.a(-100.0F);
+  private static final int OFFSET_NODE_OPEN = bgtn.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = bgtn.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = bgtn.a(-100.0F);
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = bdoo.a(-70.0F);
+  private static final int STORY_TRANSLATE = bgtn.a(-70.0F);
   public static final String TAG = "ContactsMiniAppEntryManager";
   public static long sScrollTimestamp;
   private int OFFSET_SCROLL_OVER;
@@ -85,7 +85,7 @@ public class ContactsMiniAppEntryManager
     }
     for (;;)
     {
-      if (paramFloat <= bdoo.b(-70.0F)) {
+      if (paramFloat <= bgtn.b(-70.0F)) {
         break label299;
       }
       this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -150,7 +150,7 @@ public class ContactsMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mPullRefreshHeader.findViewById(2131375583);
+    View localView = this.mPullRefreshHeader.findViewById(2131376307);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -265,8 +265,8 @@ public class ContactsMiniAppEntryManager
             {
               if (paramInt <= -paramCommonRefreshLayout.a())
               {
-                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131375587);
-                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(alud.a(2131702966)))) {}
+                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376312);
+                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anni.a(2131701373)))) {}
                 for (this.mode = 3;; this.mode = 2)
                 {
                   paramCommonRefreshLayout.setShowMiniAppPanel(true);
@@ -363,7 +363,7 @@ public class ContactsMiniAppEntryManager
     if ((this.mPullRefreshHeader != null) && (this.mPullRefreshHeader.indexOfChild(this.mContentView) < 0))
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(3, 2131375583);
+      localLayoutParams.addRule(3, 2131376307);
       this.mPullRefreshHeader.addView(this.mContentView, localLayoutParams);
       this.mode = 1;
       this.mContentView.setVisibility(8);
@@ -396,7 +396,7 @@ public class ContactsMiniAppEntryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.ContactsMiniAppEntryManager
  * JD-Core Version:    0.7.0.1
  */

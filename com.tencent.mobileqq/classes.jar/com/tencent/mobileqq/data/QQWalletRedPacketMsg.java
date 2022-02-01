@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import blqz;
+import blra;
+import blrb;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.List;
 import tencent.im.msg.im_msg_body.QQWalletAioBody;
 
 public class QQWalletRedPacketMsg
+  implements blqz
 {
   public String authkey;
   public QQWalletAioBodyReserve body;
   private int channelId;
   public int conftype;
-  public QQWalletTransferMsgElem elem;
+  public QQWalletBaseMsgElem elem;
   public String envelopeName;
   public int envelopeid;
   public boolean isOpened;
@@ -45,7 +46,7 @@ public class QQWalletRedPacketMsg
       this.body = new QQWalletAioBodyReserve();
       return;
     }
-    this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.receiver);
+    this.elem = new QQWalletBaseMsgElem(paramQQWalletAioBody.receiver);
     this.body = new QQWalletAioBodyReserve(paramQQWalletAioBody);
     this.channelId = paramQQWalletAioBody.sint32_channelid.get();
     this.templateId = paramQQWalletAioBody.sint32_templateid.get();
@@ -65,247 +66,164 @@ public class QQWalletRedPacketMsg
     this.redChannel = paramQQWalletAioBody.uint32_redchannel.get();
   }
   
-  private void readVersionUpgradeFiled(ObjectInput paramObjectInput)
+  public byte[] flushMsgData(int paramInt)
   {
-    try
-    {
-      this.elem.iconUrl = paramObjectInput.readUTF();
-      this.elem.contentColor = paramObjectInput.readInt();
-      this.elem.contentBgColor = paramObjectInput.readInt();
-      this.elem.aioImageLeft = paramObjectInput.readUTF();
-      this.elem.aioImageRight = paramObjectInput.readUTF();
-      this.elem.cftImage = paramObjectInput.readUTF();
-    }
-    catch (IOException localThrowable)
+    Object localObject3 = null;
+    for (;;)
     {
       try
       {
-        this.envelopeid = paramObjectInput.readInt();
-        this.envelopeName = paramObjectInput.readUTF();
-        this.conftype = paramObjectInput.readInt();
+        localObject1 = new blrb();
+        localObject2 = localObject1;
       }
-      catch (IOException localThrowable)
+      catch (Exception localException1)
       {
         try
         {
-          this.msgFrom = paramObjectInput.readInt();
+          writeHeader((blrb)localObject1, paramInt);
+          writeExternal((blrb)localObject1);
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          if (localObject2 != null) {
+            localObject1 = localObject2.a();
+          }
+          return localObject1;
         }
-        catch (IOException localThrowable)
+        catch (Exception localException2)
         {
-          try
-          {
-            this.redPacketIndex = paramObjectInput.readUTF();
-          }
-          catch (IOException localThrowable)
-          {
-            try
-            {
-              this.redChannel = paramObjectInput.readInt();
-              this.specifyUinList = ((List)paramObjectInput.readObject());
-            }
-            catch (Exception localThrowable)
-            {
-              try
-              {
-                this.elem.soundRecordDuration = paramObjectInput.readInt();
-              }
-              catch (Exception localThrowable)
-              {
-                try
-                {
-                  this.elem.resourceType = paramObjectInput.readInt();
-                  this.elem.skinId = paramObjectInput.readInt();
-                  this.elem.effectsId = paramObjectInput.readInt();
-                  this.elem.special_pop_id = paramObjectInput.readInt();
-                }
-                catch (Exception localThrowable)
-                {
-                  try
-                  {
-                    this.elem.themeId = paramObjectInput.readInt();
-                  }
-                  catch (Exception localThrowable)
-                  {
-                    try
-                    {
-                      this.elem.hbFrom = paramObjectInput.readInt();
-                    }
-                    catch (Exception localThrowable)
-                    {
-                      try
-                      {
-                        this.elem.songId = paramObjectInput.readInt();
-                        this.elem.songFlag = paramObjectInput.readInt();
-                      }
-                      catch (Exception localThrowable)
-                      {
-                        try
-                        {
-                          this.body.feedId = paramObjectInput.readUTF();
-                        }
-                        catch (Throwable localThrowable)
-                        {
-                          try
-                          {
-                            for (;;)
-                            {
-                              this.elem.lastPinyin = paramObjectInput.readUTF();
-                              try
-                              {
-                                this.body.subChannel = paramObjectInput.readInt();
-                                return;
-                              }
-                              catch (IOException paramObjectInput)
-                              {
-                                this.body.subChannel = 0;
-                              }
-                              localIOException1 = localIOException1;
-                              this.elem.iconUrl = "";
-                              this.elem.contentColor = 13487565;
-                              this.elem.contentBgColor = -1;
-                              this.elem.aioImageLeft = "";
-                              this.elem.aioImageRight = "";
-                              this.elem.cftImage = "";
-                              continue;
-                              localIOException2 = localIOException2;
-                              this.envelopeid = -1;
-                              this.envelopeName = "";
-                              this.conftype = -1;
-                              continue;
-                              localIOException3 = localIOException3;
-                              this.msgFrom = -1;
-                              continue;
-                              localIOException4 = localIOException4;
-                              this.redPacketIndex = "";
-                              continue;
-                              localException1 = localException1;
-                              this.redChannel = 0;
-                              this.specifyUinList = new ArrayList();
-                              continue;
-                              localException2 = localException2;
-                              this.elem.soundRecordDuration = 12000;
-                              continue;
-                              localException3 = localException3;
-                              this.elem.resourceType = 0;
-                              this.elem.skinId = 0;
-                              this.elem.effectsId = 0;
-                              this.elem.special_pop_id = 0;
-                              continue;
-                              localException4 = localException4;
-                              this.elem.themeId = 0;
-                              continue;
-                              localException5 = localException5;
-                              this.elem.hbFrom = 0;
-                              continue;
-                              localException6 = localException6;
-                              this.elem.songId = 0;
-                              this.elem.songFlag = 0;
-                              continue;
-                              localThrowable = localThrowable;
-                              this.body.feedId = "";
-                            }
-                          }
-                          catch (IOException localIOException5)
-                          {
-                            for (;;)
-                            {
-                              this.elem.lastPinyin = "";
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          Object localObject1;
+          Object localObject2;
+          break label42;
         }
+        localException1 = localException1;
+        localObject1 = null;
+      }
+      label42:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.msg.qqwalletmsg", 2, "QQWalletRedPacketMsg write Exception", localException1);
+        localObject2 = localObject1;
       }
     }
   }
   
-  public void readExternal(ObjectInput paramObjectInput)
+  public void readExternal(blra paramblra)
   {
-    this.elem = new QQWalletTransferMsgElem();
-    this.elem.background = paramObjectInput.readInt();
-    this.elem.icon = paramObjectInput.readInt();
-    this.elem.title = paramObjectInput.readUTF();
-    this.elem.subTitle = paramObjectInput.readUTF();
-    this.elem.content = paramObjectInput.readUTF();
-    this.elem.linkUrl = paramObjectInput.readUTF();
-    this.elem.blackStripe = paramObjectInput.readUTF();
-    this.elem.notice = paramObjectInput.readUTF();
-    this.channelId = paramObjectInput.readInt();
-    this.templateId = paramObjectInput.readInt();
-    this.resend = paramObjectInput.readInt();
-    this.redtype = paramObjectInput.readInt();
-    this.redPacketId = paramObjectInput.readUTF();
-    this.authkey = paramObjectInput.readUTF();
-    this.isOpened = paramObjectInput.readBoolean();
-    this.elem.titleColor = paramObjectInput.readInt();
-    this.elem.subtitleColor = paramObjectInput.readInt();
-    this.elem.actionsPriority = paramObjectInput.readUTF();
-    this.elem.jumpUrl = paramObjectInput.readUTF();
-    this.elem.nativeAndroid = paramObjectInput.readUTF();
-    readVersionUpgradeFiled(paramObjectInput);
+    this.elem = new QQWalletBaseMsgElem();
+    this.elem.background = paramblra.a();
+    this.elem.icon = paramblra.a();
+    this.elem.title = paramblra.a();
+    this.elem.subTitle = paramblra.a();
+    this.elem.content = paramblra.a();
+    this.elem.linkUrl = paramblra.a();
+    this.elem.blackStripe = paramblra.a();
+    this.elem.notice = paramblra.a();
+    this.channelId = paramblra.a();
+    this.templateId = paramblra.a();
+    this.resend = paramblra.a();
+    this.redtype = paramblra.a();
+    this.redPacketId = paramblra.a();
+    this.authkey = paramblra.a();
+    this.isOpened = paramblra.a();
+    this.elem.titleColor = paramblra.a();
+    this.elem.subtitleColor = paramblra.a();
+    this.elem.actionsPriority = paramblra.a();
+    this.elem.jumpUrl = paramblra.a();
+    this.elem.nativeAndroid = paramblra.a();
+    this.elem.iconUrl = paramblra.a();
+    this.elem.contentColor = paramblra.a(13487565);
+    this.elem.contentBgColor = paramblra.a(-1);
+    this.elem.aioImageLeft = paramblra.a();
+    this.elem.aioImageRight = paramblra.a();
+    this.elem.cftImage = paramblra.a();
+    this.envelopeid = paramblra.a(-1);
+    this.envelopeName = paramblra.a();
+    this.conftype = paramblra.a(-1);
+    this.msgFrom = paramblra.a(-1);
+    this.redPacketIndex = paramblra.a();
+    this.redChannel = paramblra.a();
+    this.specifyUinList = ((List)paramblra.a(new ArrayList()));
+    this.elem.soundRecordDuration = paramblra.a(12000);
+    this.elem.resourceType = paramblra.a();
+    this.elem.skinId = paramblra.a();
+    this.elem.effectsId = paramblra.a();
+    this.elem.special_pop_id = paramblra.a();
+    this.elem.themeId = paramblra.a();
+    this.elem.hbFrom = paramblra.a();
+    this.elem.songId = paramblra.a();
+    this.elem.songFlag = paramblra.a();
+    this.body.feedId = paramblra.a();
+    this.elem.lastPinyin = paramblra.a();
+    this.body.subChannel = paramblra.a();
+    this.body.poemRule = paramblra.a();
+    this.body.makeHbExtend = paramblra.a();
     if (QLog.isColorLevel()) {
       QLog.d("QQWalletRedPacketMsg", 2, "readExternal redtype=" + this.redtype + ", skinId=" + this.elem.skinId + ", effectsId=" + this.elem.effectsId + ", special_pop_id=" + this.elem.special_pop_id + ", themeId=" + this.elem.themeId);
     }
   }
   
-  public void writeExternal(ObjectOutput paramObjectOutput)
+  public void writeExternal(blrb paramblrb)
   {
-    paramObjectOutput.writeInt(this.elem.background);
-    paramObjectOutput.writeInt(this.elem.icon);
-    paramObjectOutput.writeUTF(this.elem.title);
-    paramObjectOutput.writeUTF(this.elem.subTitle);
-    paramObjectOutput.writeUTF(this.elem.content);
-    paramObjectOutput.writeUTF(this.elem.linkUrl);
-    paramObjectOutput.writeUTF(this.elem.blackStripe);
-    paramObjectOutput.writeUTF(this.elem.notice);
-    paramObjectOutput.writeInt(this.channelId);
-    paramObjectOutput.writeInt(this.templateId);
-    paramObjectOutput.writeInt(this.resend);
-    paramObjectOutput.writeInt(this.redtype);
-    paramObjectOutput.writeUTF(this.redPacketId);
-    paramObjectOutput.writeUTF(this.authkey);
-    paramObjectOutput.writeBoolean(this.isOpened);
-    paramObjectOutput.writeInt(this.elem.titleColor);
-    paramObjectOutput.writeInt(this.elem.subtitleColor);
-    paramObjectOutput.writeUTF(this.elem.actionsPriority);
-    paramObjectOutput.writeUTF(this.elem.jumpUrl);
-    paramObjectOutput.writeUTF(this.elem.nativeAndroid);
-    paramObjectOutput.writeUTF(this.elem.iconUrl);
-    paramObjectOutput.writeInt(this.elem.contentColor);
-    paramObjectOutput.writeInt(this.elem.contentBgColor);
-    paramObjectOutput.writeUTF(this.elem.aioImageLeft);
-    paramObjectOutput.writeUTF(this.elem.aioImageRight);
-    paramObjectOutput.writeUTF(this.elem.cftImage);
-    paramObjectOutput.writeInt(this.envelopeid);
-    paramObjectOutput.writeUTF(this.envelopeName);
-    paramObjectOutput.writeInt(this.conftype);
-    paramObjectOutput.writeInt(this.msgFrom);
-    paramObjectOutput.writeUTF(this.redPacketIndex);
-    paramObjectOutput.writeInt(this.redChannel);
-    paramObjectOutput.writeObject(this.specifyUinList);
-    paramObjectOutput.writeInt(this.elem.soundRecordDuration);
-    paramObjectOutput.writeInt(this.elem.resourceType);
-    paramObjectOutput.writeInt(this.elem.skinId);
-    paramObjectOutput.writeInt(this.elem.effectsId);
-    paramObjectOutput.writeInt(this.elem.special_pop_id);
-    paramObjectOutput.writeInt(this.elem.themeId);
-    paramObjectOutput.writeInt(this.elem.hbFrom);
-    paramObjectOutput.writeInt(this.elem.songId);
-    paramObjectOutput.writeInt(this.elem.songFlag);
-    paramObjectOutput.writeUTF(this.body.feedId);
-    paramObjectOutput.writeUTF(this.elem.lastPinyin);
-    paramObjectOutput.writeInt(this.body.subChannel);
+    paramblrb.a(this.elem.background);
+    paramblrb.a(this.elem.icon);
+    paramblrb.a(this.elem.title);
+    paramblrb.a(this.elem.subTitle);
+    paramblrb.a(this.elem.content);
+    paramblrb.a(this.elem.linkUrl);
+    paramblrb.a(this.elem.blackStripe);
+    paramblrb.a(this.elem.notice);
+    paramblrb.a(this.channelId);
+    paramblrb.a(this.templateId);
+    paramblrb.a(this.resend);
+    paramblrb.a(this.redtype);
+    paramblrb.a(this.redPacketId);
+    paramblrb.a(this.authkey);
+    paramblrb.a(this.isOpened);
+    paramblrb.a(this.elem.titleColor);
+    paramblrb.a(this.elem.subtitleColor);
+    paramblrb.a(this.elem.actionsPriority);
+    paramblrb.a(this.elem.jumpUrl);
+    paramblrb.a(this.elem.nativeAndroid);
+    paramblrb.a(this.elem.iconUrl);
+    paramblrb.a(this.elem.contentColor);
+    paramblrb.a(this.elem.contentBgColor);
+    paramblrb.a(this.elem.aioImageLeft);
+    paramblrb.a(this.elem.aioImageRight);
+    paramblrb.a(this.elem.cftImage);
+    paramblrb.a(this.envelopeid);
+    paramblrb.a(this.envelopeName);
+    paramblrb.a(this.conftype);
+    paramblrb.a(this.msgFrom);
+    paramblrb.a(this.redPacketIndex);
+    paramblrb.a(this.redChannel);
+    paramblrb.a(this.specifyUinList);
+    paramblrb.a(this.elem.soundRecordDuration);
+    paramblrb.a(this.elem.resourceType);
+    paramblrb.a(this.elem.skinId);
+    paramblrb.a(this.elem.effectsId);
+    paramblrb.a(this.elem.special_pop_id);
+    paramblrb.a(this.elem.themeId);
+    paramblrb.a(this.elem.hbFrom);
+    paramblrb.a(this.elem.songId);
+    paramblrb.a(this.elem.songFlag);
+    paramblrb.a(this.body.feedId);
+    paramblrb.a(this.elem.lastPinyin);
+    paramblrb.a(this.body.subChannel);
+    paramblrb.a(this.body.poemRule);
+    paramblrb.a(this.body.makeHbExtend);
+  }
+  
+  public void writeHeader(blrb paramblrb, int paramInt)
+  {
+    paramblrb.a(32);
+    paramblrb.a(2);
+    paramblrb.a(2);
+    paramblrb.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletRedPacketMsg
  * JD-Core Version:    0.7.0.1
  */

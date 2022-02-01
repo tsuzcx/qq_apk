@@ -14,7 +14,7 @@ import android.os.SystemClock;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.utils.MsfPullConfigUtil;
@@ -23,12 +23,9 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.mobileqq.msf.service.q;
-import com.tencent.mobileqq.msf.service.t;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.msf.service.protocol.pb.StatSvcSimpleGet.ReqBody;
 import com.tencent.msf.service.protocol.pb.StatSvcSimpleGet.RspBody;
 import com.tencent.msf.service.protocol.push.SvcReqRegister;
 import com.tencent.msf.service.protocol.push.SvcRespRegister;
@@ -145,65 +142,6 @@ public class e
     {
       QLog.d("MSF.C.PushManager:PushCoder", 1, "watchdog startWatchdogForInfoLogin excep!", localException);
     }
-  }
-  
-  void a(a parama)
-  {
-    if ((parama != null) && (MsfSdkUtils.isBatteryOnlineStatus(parama.k)))
-    {
-      l1 = this.f.g() + this.f.f();
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.PushManager:PushCoder", 2, new Object[] { "sendBatteryMsgPush, curTime=", g.h.format(Long.valueOf(l2)), ", shouldSendBatteryTime=", g.h.format(Long.valueOf(l1)) });
-      }
-      if (l2 >= l1)
-      {
-        localToServiceMsg = new ToServiceMsg("", parama.k.uin, k);
-        localToServiceMsg.setAppId(parama.a);
-        localToServiceMsg.setTimeout(30000L);
-        localToServiceMsg.setMsfCommand(MsfCommand._msf_sendBatteryPush);
-        localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-        localReqBody = new StatSvcSimpleGet.ReqBody();
-        i1 = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
-        localReqBody.int32_battrey_status.set(i1);
-        arrayOfByte1 = localReqBody.toByteArray();
-        l1 = arrayOfByte1.length;
-        arrayOfByte2 = new byte[(int)l1 + 4];
-        q.a(arrayOfByte2, 0, 4L + l1);
-        System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, (int)l1);
-        localToServiceMsg.putWupBuffer(arrayOfByte2);
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.PushManager:PushCoder", 1, new Object[] { "sendBatteryMsgPush battery status:", Integer.valueOf(localReqBody.int32_battrey_status.get()) });
-        }
-        MsfSdkUtils.addToMsgProcessName(parama.b, localToServiceMsg);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        long l1;
-        long l2;
-        ToServiceMsg localToServiceMsg;
-        StatSvcSimpleGet.ReqBody localReqBody;
-        int i1;
-        byte[] arrayOfByte1;
-        byte[] arrayOfByte2;
-        this.f.c.sendSsoMsg(localToServiceMsg);
-        this.f.d(System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.PushManager:PushCoder", 2, "sendBatteryMsgPush send " + parama.k.uin + " query push id " + parama.c);
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MSF.C.PushManager:PushCoder", 1, "sendBatteryMsgPush error " + localException, localException);
-        }
-      }
-    }
-    QLog.d("MSF.C.PushManager:PushCoder", 2, "sendBatteryMsgPush not enter");
   }
   
   void a(a parama, ToServiceMsg paramToServiceMsg, boolean paramBoolean, RegPushReason paramRegPushReason)
@@ -410,20 +348,17 @@ public class e
   
   void a(a parama, boolean paramBoolean)
   {
-    long l1;
     if ((com.tencent.mobileqq.msf.core.a.a.u) && (!paramBoolean))
     {
-      l1 = this.f.i() + this.f.e();
+      long l1 = this.f.g() + this.f.e();
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager:PushCoder", 2, "sendMsgPushQuery, check time now=" + g.h.format(Long.valueOf(System.currentTimeMillis())) + ", shouldSendQueryTime=" + g.h.format(Long.valueOf(l1)));
       }
-      if (System.currentTimeMillis() < l1)
-      {
-        a(parama);
+      if (System.currentTimeMillis() < l1) {
         this.f.a(l1 - System.currentTimeMillis());
       }
     }
-    label758:
+    label604:
     do
     {
       for (;;)
@@ -431,17 +366,17 @@ public class e
         return;
         try
         {
-          if (this.f.j() > 0L) {
-            g.l = SystemClock.elapsedRealtime() - this.f.j();
+          if (this.f.h() > 0L) {
+            g.l = SystemClock.elapsedRealtime() - this.f.h();
           }
           if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.PushManager:PushCoder", 2, "alarmTime: " + g.l + " ,lastRecvSsoPacketTimeForSimpleGet=" + this.f.j());
+            QLog.d("MSF.C.PushManager:PushCoder", 2, "alarmTime: " + g.l + " ,lastRecvSsoPacketTimeForSimpleGet=" + this.f.h());
           }
           if ((com.tencent.mobileqq.msf.core.a.a.v) && (g.l > com.tencent.mobileqq.msf.core.a.a.bm()))
           {
             str = MsfService.getCore().getAccountCenter().i();
             if ((com.tencent.mobileqq.msf.core.a.a.w) && (Long.parseLong(str) % 2L != 0L)) {
-              break label758;
+              break label604;
             }
             QLog.d("MSF.C.PushManager:PushCoder", 1, "try closeConn closeByAlarmWakeUpTooLong by a exceeded time to wakeup alarm :" + g.l);
             this.f.c.sender.b.a(com.tencent.qphone.base.a.D);
@@ -450,7 +385,7 @@ public class e
             }
           }
           if ((com.tencent.mobileqq.msf.core.a.a.v) && (g.l > com.tencent.mobileqq.msf.core.a.a.bn()) && (g.l <= com.tencent.mobileqq.msf.core.a.a.bm())) {
-            this.f.I = SystemClock.elapsedRealtime();
+            this.f.F = SystemClock.elapsedRealtime();
           }
           if (parama.k != null) {
             if ((parama.k.uin != null) && (parama.c > 0L))
@@ -465,22 +400,6 @@ public class e
               {
                 localToServiceMsg.addAttribute("_attr_alarm_elapsed_time", Long.valueOf(g.l));
                 g.l = 0L;
-              }
-              if (MsfSdkUtils.isBatteryOnlineStatus(parama.k))
-              {
-                StatSvcSimpleGet.ReqBody localReqBody = new StatSvcSimpleGet.ReqBody();
-                int i1 = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
-                localReqBody.int32_battrey_status.set(i1);
-                byte[] arrayOfByte1 = localReqBody.toByteArray();
-                l1 = arrayOfByte1.length;
-                byte[] arrayOfByte2 = new byte[(int)l1 + 4];
-                q.a(arrayOfByte2, 0, 4L + l1);
-                System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, (int)l1);
-                localToServiceMsg.putWupBuffer(arrayOfByte2);
-                if (QLog.isColorLevel()) {
-                  QLog.d("MSF.C.PushManager:PushCoder", 1, new Object[] { "battery status:", Integer.valueOf(localReqBody.int32_battrey_status.get()) });
-                }
-                this.f.d(System.currentTimeMillis());
               }
               MsfSdkUtils.addToMsgProcessName(parama.b, localToServiceMsg);
             }
@@ -500,7 +419,7 @@ public class e
               }
               QLog.d("MSF.C.PushManager:PushCoder", 2, "send " + parama.k.uin + " query push id " + parama.c + " model:" + str);
               return;
-              this.f.G = SystemClock.elapsedRealtime();
+              this.f.D = SystemClock.elapsedRealtime();
               QLog.d("MSF.C.PushManager:PushCoder", 1, "wakeup too long, but not close conn:" + g.l);
             }
             localException1 = localException1;
@@ -521,7 +440,7 @@ public class e
   
   public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = t.c();
+    paramToServiceMsg = u.c();
     try
     {
       if (paramFromServiceMsg.isSuccess())
@@ -616,7 +535,7 @@ public class e
         if (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_UnRegPush)
         {
           QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush unregister push succ " + MD5.toMD5(paramFromServiceMsg.getUin()));
-          localObject4 = t.b(paramToServiceMsg);
+          localObject4 = u.b(paramToServiceMsg);
           localObject4 = (a)this.f.i.get(localObject4);
           if (localObject4 != null)
           {
@@ -679,8 +598,8 @@ public class e
           {
             try
             {
-              ag.c(((SvcRespRegister)localObject1).strClientIP);
-              ag.d(((SvcRespRegister)localObject1).iClientPort);
+              aj.c(((SvcRespRegister)localObject1).strClientIP);
+              aj.d(((SvcRespRegister)localObject1).iClientPort);
               i4 = ((SvcRespRegister)localObject1).bUpdateFlag;
               l3 = l1;
             }
@@ -730,9 +649,6 @@ public class e
                 i2 = i3;
                 l2 = l3;
                 l4 = ((SvcRespRegister)localObject1).uClientBatteryGetInterval;
-                i2 = i3;
-                l2 = l3;
-                this.f.c(l4);
               }
               i2 = i3;
               l2 = l3;
@@ -786,7 +702,7 @@ public class e
         else
         {
           QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush register push succ " + MD5.toMD5(paramFromServiceMsg.getUin()) + " bUpdateFlag: " + i4 + ", timeStamp:  " + l2 + ", cReplyCode:" + i5 + " ,iStatus: " + i3 + ", regPushReason: " + (String)localObject1);
-          b(t.b(paramToServiceMsg));
+          b(u.b(paramToServiceMsg));
           continue;
           if (this.f.c.getStatReporter() == null) {
             continue;
@@ -823,10 +739,10 @@ public class e
       }
       paramFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
       break label544;
-      MsfSdkUtils.addFromMsgProcessName(t.b(paramToServiceMsg), paramFromServiceMsg);
+      MsfSdkUtils.addFromMsgProcessName(u.b(paramToServiceMsg), paramFromServiceMsg);
       this.f.c.addRespToQuque(null, paramFromServiceMsg);
       break label569;
-      label1546:
+      label1529:
       k localk;
       if ((l6 > this.h) && (!this.g))
       {
@@ -843,16 +759,16 @@ public class e
       else
       {
         if (this.f.c.getStatReporter() == null) {
-          break label1688;
+          break label1671;
         }
         localk = this.f.c.getStatReporter();
         i2 = paramFromServiceMsg.getBusinessFailCode();
         if (paramToServiceMsg.getMsfCommand() != MsfCommand._msf_UnRegPush) {
-          break label1690;
+          break label1673;
         }
       }
-      label1688:
-      label1690:
+      label1671:
+      label1673:
       for (bool = true;; bool = false)
       {
         localk.a(false, l7, i2, l8, bool, (String)localObject1);
@@ -862,7 +778,7 @@ public class e
         }
         this.i += 1;
         this.f.a(60000L);
-        break label1546;
+        break label1529;
         break;
       }
     }
@@ -909,7 +825,7 @@ public class e
       } while (!QLog.isColorLevel());
       QLog.d("MSF.C.PushManager:PushCoder", 2, "watchdog startWatchdogCallback mbIsInfoLoginGetted:" + MsfService.getCore().mbIsInfoLoginGetted + " ok");
       return;
-      if (!t.b()) {
+      if (!u.b()) {
         break;
       }
       if (this.A < 6)
@@ -935,12 +851,12 @@ public class e
     QLog.d("MSF.C.PushManager:PushCoder", 2, "watchdog startWatchdogCallback QQProcessRunning mnWatchdogForInfoLoginRetryCount:" + this.A);
     return;
     QLog.d("MSF.C.PushManager:PushCoder", 1, "watchdog startWatchdogCallback QQProcess killed restart now");
-    c(t.c());
+    c(u.c());
   }
   
   void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str = t.b(paramToServiceMsg);
+    String str = u.b(paramToServiceMsg);
     if ((a)this.f.i.get(str) != null)
     {
       long l1 = System.currentTimeMillis();
@@ -950,7 +866,7 @@ public class e
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          this.f.e(SystemClock.elapsedRealtime());
+          this.f.c(SystemClock.elapsedRealtime());
           paramToServiceMsg = new byte[paramFromServiceMsg.getWupBuffer().length - 4];
           System.arraycopy(paramFromServiceMsg.getWupBuffer(), 4, paramToServiceMsg, 0, paramToServiceMsg.length);
           paramFromServiceMsg = new StatSvcSimpleGet.RspBody();
@@ -960,7 +876,7 @@ public class e
             this.f.C = (paramFromServiceMsg.uint32_hello_interval.get() * 1000);
           }
           this.f.a(this.f.e());
-          ag.c(paramFromServiceMsg.str_clientip.get());
+          aj.c(paramFromServiceMsg.str_clientip.get());
           return;
         }
         if (this.f.c.getStatReporter() != null) {
@@ -1020,37 +936,6 @@ public class e
     catch (Exception paramString)
     {
       QLog.w("MSF.C.PushManager:PushCoder", 1, "query push error " + paramString, paramString);
-    }
-  }
-  
-  void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = t.b(paramToServiceMsg);
-    if ((a)this.f.i.get(paramToServiceMsg) != null) {
-      try
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          paramToServiceMsg = new byte[paramFromServiceMsg.getWupBuffer().length - 4];
-          System.arraycopy(paramFromServiceMsg.getWupBuffer(), 4, paramToServiceMsg, 0, paramToServiceMsg.length);
-          paramFromServiceMsg = new StatSvcSimpleGet.RspBody();
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg);
-          int i1 = paramFromServiceMsg.uint32_client_battey_get_interval.get();
-          this.f.c(i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.PushManager:PushCoder", 2, new Object[] { "onBatteryPushResp interval:", Integer.valueOf(i1) });
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("MSF.C.PushManager:PushCoder", 2, "onBatteryPushResp faile");
-          return;
-        }
-      }
-      catch (Throwable paramToServiceMsg)
-      {
-        QLog.e("MSF.C.PushManager:PushCoder", 2, "onBatteryPushResp e:", paramToServiceMsg);
-      }
     }
   }
   

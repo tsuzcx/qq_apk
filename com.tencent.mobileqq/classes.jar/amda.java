@@ -1,22 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
+import java.util.Comparator;
+import org.json.JSONObject;
 
 class amda
+  implements Comparator<JSONObject>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  String jdField_a_of_type_JavaLangString;
+  amda(amcz paramamcz) {}
   
-  amda(amcw paramamcw, String paramString, Context paramContext, Intent paramIntent)
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amda
  * JD-Core Version:    0.7.0.1
  */

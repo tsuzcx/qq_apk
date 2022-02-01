@@ -1,47 +1,64 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-class aarg
-  implements aane
+public abstract class aarg
+  extends niv
 {
-  aarg(aard paramaard) {}
-  
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0) {
+      a(false, paramInt, null);
     }
-    return -2147483648L;
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aase.b("GdtBaseBannerFragment", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, aand paramaand)
-  {
-    aase.d("GdtBaseBannerFragment", "onAdFailedToLoad " + paramaand.a());
-    Toast.makeText(this.a.getActivity().getApplicationContext(), "onAdFailedToLoad " + paramaand.a(), 0).show();
-  }
-  
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aase.b("GdtBaseBannerFragment", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aase.b("GdtBaseBannerFragment", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    aase.b("GdtBaseBannerFragment", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    label103:
+    do
+    {
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0x6d8.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
+          if (!paramArrayOfByte.int32_ret_code.has()) {
+            break label103;
+          }
+          if (paramArrayOfByte.int32_ret_code.get() == 0)
+          {
+            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+            if (paramArrayOfByte == null) {
+              continue;
+            }
+            a(true, 0, paramArrayOfByte);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          a(false, -1, null);
+          return;
+        }
+      }
+      a(false, paramArrayOfByte.int32_ret_code.get(), null);
+      return;
+      if (!paramArrayOfByte.file_info.has()) {
+        break;
+      }
+      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+    } while (paramArrayOfByte == null);
+    a(true, 0, paramArrayOfByte);
+    return;
+    a(false, -1, null);
   }
 }
 

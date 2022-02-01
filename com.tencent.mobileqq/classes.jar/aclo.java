@@ -1,19 +1,24 @@
-import java.util.Map;
+import android.content.Context;
 
-public class aclo
+public final class aclo
 {
-  public int a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
+  
+  public aclo(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      acqy.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
+    }
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
+  }
 }
 
 

@@ -1,41 +1,26 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-
 public class aqly
-  implements bhtv
 {
-  public aqly(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  @avnm(a="poll_interval")
+  public int a;
+  @avnm(a="jump_url")
+  public String a;
+  @avnm(a="search_empty_show_troop_recommend")
+  public int b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public aqly()
   {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
-    }
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static aqly a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.g + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
+    return (aqly)avnn.a(paramString, aqly.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqly
  * JD-Core Version:    0.7.0.1
  */

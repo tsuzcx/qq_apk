@@ -1,27 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import java.util.List;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class sry
-  extends Handler
+  implements View.OnTouchListener
 {
-  public sry(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public sry(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
     }
-    paramMessage = (List)paramMessage.obj;
-    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,41 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import qqcircle.QQCircleCountergroup.GetGroupCountRsp;
 
 class bflt
-  implements Comparator<String>
+  implements zxa
 {
-  public int a(String paramString1, String paramString2)
+  bflt(bfls parambfls) {}
+  
+  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject)
   {
-    return paramString1.compareTo(paramString2);
+    if ((paramBoolean) && ((paramObject instanceof QQCircleCountergroup.GetGroupCountRsp)))
+    {
+      paramString = (QQCircleCountergroup.GetGroupCountRsp)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("QCircleMsgProcessor", 2, String.format(Locale.getDefault(), "rsp.content=%s,rsp.count=%d, rsp.hasMore=%d, rsp.iconUrl=%s, rsp.latestFeedTime=%s, rsp.timeInterval=%s", new Object[] { paramString.content.get(), Integer.valueOf(paramString.count.get()), Integer.valueOf(paramString.hasMore.get()), paramString.iconUrl.get(), Integer.valueOf(paramString.latestFeedTime.get()), Integer.valueOf(paramString.timeInterval.get()) }));
+      }
+      if ((paramString.count.get() < 1) || (TextUtils.isEmpty(paramString.content.get())))
+      {
+        QLog.d("QCircleMsgProcessor", 2, "rsp.count.get() < 1 || TextUtils.isEmpty(rsp.content.get())");
+        return;
+      }
+      bfls.a(this.a, paramString);
+      bfls.a(this.a, NetConnInfoCenter.getServerTimeMillis() / 1000L);
+      bfls.b(this.a, paramString.timeInterval.get());
+      bcst.b(null, "dc00898", "", String.valueOf(bfls.a(this.a)), "0X800B24E", "0X800B24E", 0, 0, "", "", "", "");
+      return;
+    }
+    QLog.e("QCircleMsgProcessor", 2, "retCode:" + paramLong + ", errMsg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bflt
  * JD-Core Version:    0.7.0.1
  */

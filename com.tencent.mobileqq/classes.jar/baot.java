@@ -1,18 +1,20 @@
-public class baot
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+
+public abstract interface baot
 {
-  public void a() {}
+  public abstract void a();
   
-  public void a(long paramLong1, long paramLong2) {}
+  public abstract void a(int paramInt);
   
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
+  public abstract void a(baox parambaox);
   
-  public boolean a(baoo parambaoo)
-  {
-    return false;
-  }
+  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

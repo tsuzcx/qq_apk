@@ -1,38 +1,22 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class toj
-  implements toy
+public class toj
+  extends tou
 {
-  toj(toi paramtoi) {}
-  
-  public void a(Object paramObject)
+  public toj(BridgeModule paramBridgeModule)
   {
-    if ((paramObject instanceof top))
-    {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).h();
-      }
-      this.a.b = true;
-    }
-    while ((paramObject instanceof toq)) {
-      if (toi.a(this.a))
-      {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).g();
-      }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
-    }
-    this.a.d(true);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$1100(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     toj
  * JD-Core Version:    0.7.0.1
  */

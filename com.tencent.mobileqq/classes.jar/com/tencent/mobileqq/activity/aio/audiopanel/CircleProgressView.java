@@ -14,7 +14,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.ViewParent;
 import android.widget.ImageView;
-import azkz;
+import bclx;
 import com.tencent.qphone.base.util.QLog;
 
 public class CircleProgressView
@@ -30,7 +30,7 @@ public class CircleProgressView
   private int b = -1;
   private int c = -9013368;
   private int d = 6;
-  private int e = azkz.a(9.0F);
+  private int e = bclx.a(9.0F);
   
   public CircleProgressView(Context paramContext)
   {
@@ -148,7 +148,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

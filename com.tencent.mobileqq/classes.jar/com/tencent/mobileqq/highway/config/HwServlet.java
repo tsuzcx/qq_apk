@@ -179,7 +179,7 @@ public class HwServlet
         for (;;)
         {
           if (i != 0) {
-            Ipv6Config.updateCfgFromSrv(BaseApplication.getContext(), j, k, m);
+            Ipv6Config.getInstance().updateCfgFromSrv(BaseApplication.getContext(), j, k, m);
           }
           return;
         }

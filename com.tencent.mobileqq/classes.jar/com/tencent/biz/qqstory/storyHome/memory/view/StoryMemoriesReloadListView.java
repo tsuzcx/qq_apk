@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
-import wnl;
+import ygw;
 
 public class StoryMemoriesReloadListView
   extends SegmentList
@@ -28,7 +28,7 @@ public class StoryMemoriesReloadListView
   
   public void a()
   {
-    a(new wnl(this.a));
+    a(new ygw(this.a));
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
@@ -42,7 +42,7 @@ public class StoryMemoriesReloadListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesReloadListView
  * JD-Core Version:    0.7.0.1
  */

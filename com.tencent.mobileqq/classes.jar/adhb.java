@@ -1,103 +1,70 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class adhb
-  extends alpq
+  implements adea
 {
-  public adhb(LikeSettingActivity paramLikeSettingActivity) {}
+  EditText a;
   
-  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public adhb() {}
+  
+  public adhb(EditText paramEditText)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",voteAllowed=" + paramBoolean2 + ",praiseStatusAllowed=" + paramBoolean3);
-    }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    this.a = paramEditText;
   }
   
-  protected void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    if (this.a == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      LikeSettingActivity.a(this.a, this.a.b.a(), paramBoolean2);
-      this.a.a.a(paramBoolean2);
+      a(paramString, bool);
+      return;
     }
   }
   
-  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  private void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    QLog.d("DoraemonOpenAPI.test", 2, paramString);
+    if (this.a != null) {
+      this.a.append(paramString);
     }
-    if (paramBoolean1)
-    {
-      LikeSettingActivity.a(this.a, this.a.d.a(), paramBoolean2);
-      this.a.a.b(paramBoolean2);
-      if (!paramBoolean2) {
-        this.a.b.setVisibility(8);
-      }
+    if (paramBoolean) {
+      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
     }
-    else
-    {
-      return;
-    }
-    this.a.b.setVisibility(0);
   }
   
-  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onComplete()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",forNearPeople=" + paramBoolean2 + ",allowed=" + paramBoolean3);
-    }
-    if ((!this.a.app.getCurrentAccountUin().equals(paramString)) || (!paramBoolean2)) {}
-    while (paramBoolean1) {
-      return;
-    }
-    QQToast.a(this.a, 1, 2131719884, 0).b(this.a.getTitleBarHeight());
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean3);
+    a("onComplete\n");
   }
   
-  protected void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onFailure(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, 2131719884, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.a());
-      return;
-    }
-    this.a.a.a(paramBoolean2);
+    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
   }
   
-  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onPermission(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    a("onPermission " + paramInt + "\n", true);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    a("onSuccess " + paramJSONObject + "\n", true);
+    if (this.a != null) {
+      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(anni.a(2131713541), null).create().show();
     }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, 2131719884, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.c());
-      return;
-    }
-    this.a.a.b(paramBoolean2);
-    if (!paramBoolean2)
-    {
-      this.a.b.setVisibility(8);
-      return;
-    }
-    this.a.b.setVisibility(0);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    a("onTrigger\n");
   }
 }
 

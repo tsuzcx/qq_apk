@@ -1,27 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
-class afnv
-  implements DialogInterface.OnClickListener
+public class afnv
+  extends anvm
 {
-  afnv(afnt paramafnt) {}
+  public afnv(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    if (!bdin.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
-      bflz.a().a(2131691613);
-    }
-    do
-    {
+    if (this.a.isFinishing()) {
       return;
-      paramDialogInterface = (ztp)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
-      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-    } while (paramDialogInterface == null);
-    aagb.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131718153), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131718150), 0).a();
   }
 }
 

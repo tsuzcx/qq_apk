@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class axmi
+public class axmi
+  implements View.OnClickListener
 {
-  public RegisterNewBaseActivity a;
-  public QQAppInterface a;
+  public axmi(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  protected axmi(RegisterNewBaseActivity paramRegisterNewBaseActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
+    ((Activity)this.a.getContext()).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axmi
  * JD-Core Version:    0.7.0.1
  */

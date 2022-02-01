@@ -1,104 +1,33 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
 
-public class bdpn
+class bdpn
+  extends Handler
 {
-  protected float a;
-  protected bdpo a;
-  private bdpp a;
-  protected bdpq a;
-  protected boolean a;
-  protected float b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d = true;
-  
-  public bdpn(bdpo parambdpo, bdpq parambdpq, boolean paramBoolean)
+  bdpn(bdpl parambdpl, Looper paramLooper)
   {
-    if ((parambdpo != null) && (parambdpq != null))
-    {
-      this.jdField_a_of_type_Bdpo = parambdpo;
-      this.jdField_a_of_type_Bdpq = parambdpq;
-      return;
-    }
-    throw new IllegalArgumentException("DragSource and DropTarget shouldn't be null!");
+    super(paramLooper);
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f2;
-    float f1;
-    if (this.jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      f2 = paramMotionEvent.getRawX();
-      f1 = paramMotionEvent.getRawY();
-      f2 += this.jdField_a_of_type_Float;
-      f1 += this.jdField_b_of_type_Float;
-      switch (paramMotionEvent.getAction())
-      {
-      }
     }
-    label258:
     do
     {
       do
       {
-        do
-        {
-          return false;
-          f2 = paramMotionEvent.getX();
-          f1 = paramMotionEvent.getY();
-          break;
-          this.jdField_a_of_type_Bdpp = this.jdField_a_of_type_Bdpo.a(f2, f1);
-        } while (this.jdField_a_of_type_Bdpp == null);
-        if ((this.jdField_a_of_type_Bdpo.a(this.jdField_a_of_type_Bdpp, f2, f1)) && (this.jdField_a_of_type_Bdpp.a(this.jdField_a_of_type_Bdpo, f2, f1))) {
-          this.jdField_b_of_type_Boolean = true;
-        }
-        return true;
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Bdpo.a(this.jdField_a_of_type_Bdpp, f2, f1);
-      this.jdField_a_of_type_Bdpp.a(this.jdField_a_of_type_Bdpo, f2, f1);
-      if (this.d)
-      {
-        if (!this.jdField_a_of_type_Bdpq.a(f2, f1)) {
-          break label258;
-        }
-        if (!this.c)
-        {
-          this.c = true;
-          this.d = this.jdField_a_of_type_Bdpq.b(this.jdField_a_of_type_Bdpo, this.jdField_a_of_type_Bdpp, f2, f1);
-        }
-        this.jdField_a_of_type_Bdpq.b(this.jdField_a_of_type_Bdpo, this.jdField_a_of_type_Bdpp, f2, f1);
-      }
-      for (;;)
-      {
-        return true;
-        if (this.c)
-        {
-          this.c = false;
-          this.jdField_a_of_type_Bdpq.a(this.jdField_a_of_type_Bdpo, this.jdField_a_of_type_Bdpp, f2, f1);
-        }
-      }
-    } while (!this.jdField_b_of_type_Boolean);
-    if ((this.jdField_a_of_type_Bdpq.a(f2, f1)) && (this.jdField_a_of_type_Bdpq.a(this.jdField_a_of_type_Bdpo, this.jdField_a_of_type_Bdpp, f2, f1)))
-    {
-      this.jdField_a_of_type_Bdpo.a(this.jdField_a_of_type_Bdpq, this.jdField_a_of_type_Bdpp, f2, f1);
-      this.jdField_a_of_type_Bdpp.a(this.jdField_a_of_type_Bdpo, this.jdField_a_of_type_Bdpq, f2, f1);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      this.d = true;
-      return true;
-      this.jdField_a_of_type_Bdpo.a(null, this.jdField_a_of_type_Bdpp, f2, f1);
-      this.jdField_a_of_type_Bdpp.a(this.jdField_a_of_type_Bdpo, null, f2, f1);
-    }
+        return;
+      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
+      this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return;
+    } while (this.a.a == null);
+    QQToast.a(this.a.a.getApplication(), anni.a(2131706364), 4000).a();
   }
 }
 

@@ -1,48 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class bhsl
-  extends MqqHandler
+public abstract interface bhsl
+  extends bhni
 {
-  private WeakReference<Handler.Callback> a;
+  public abstract boolean getPayActionSucc();
   
-  public bhsl(Handler.Callback paramCallback)
-  {
-    this.a = new WeakReference(paramCallback);
-  }
+  public abstract Activity getTopActivity();
   
-  public bhsl(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public bhsl(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
-  {
-    super(paramLooper, null, paramBoolean);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
-  }
+  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhsl
  * JD-Core Version:    0.7.0.1
  */

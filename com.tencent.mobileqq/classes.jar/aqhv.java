@@ -1,14 +1,31 @@
-import android.graphics.drawable.GradientDrawable;
+import SummaryCard.CondFitUser;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class aqhv
+  implements anjn
 {
-  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public aqhv(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setColor(paramInt);
-    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
-    return localGradientDrawable;
+    this.a.a();
+    if (paramInt != 1) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 2131690894, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QQToast.a(this.a, 2131690897, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Anjh.b(), this.a.jdField_a_of_type_Anjh.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 

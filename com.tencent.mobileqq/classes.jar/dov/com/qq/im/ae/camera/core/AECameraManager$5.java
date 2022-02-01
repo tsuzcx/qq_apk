@@ -1,35 +1,33 @@
 package dov.com.qq.im.ae.camera.core;
 
-import azho;
-import bksp;
-import bljn;
+import allk;
+import android.graphics.SurfaceTexture;
+import bnho;
+import bnzb;
 
 public class AECameraManager$5
   implements Runnable
 {
-  public AECameraManager$5(bksp parambksp) {}
+  public AECameraManager$5(bnho parambnho, SurfaceTexture paramSurfaceTexture, allk paramallk) {}
   
   public void run()
   {
-    if ((bksp.a(this.this$0) != null) && (bksp.a(this.this$0)))
+    if (!bnho.a(this.this$0))
     {
-      if (!bksp.c(this.this$0)) {
-        bksp.a(this.this$0);
-      }
-      while ((bksp.b(this.this$0) == this.this$0.a) && (bksp.c(this.this$0) == this.this$0.b)) {
-        return;
-      }
-      bksp.a().a(true);
-      bksp.a(this.this$0, false);
-      bksp.a(this.this$0);
+      bnzb.d("AECameraManager", "startCameraPreview EXIT: camera NOT created");
       return;
     }
-    bljn.b("AECameraManager", "### startCameraPreview failed: mSurfaceTexture = " + bksp.a(this.this$0) + ", cameraCreated = " + bksp.a(this.this$0));
+    if (bnho.b(this.this$0))
+    {
+      bnzb.d("AECameraManager", "startCameraPreview EXIT: camera is already previewing");
+      return;
+    }
+    bnho.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, this.jdField_a_of_type_Allk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
 public class oaa
-  implements bhum
+  implements BusinessObserver
 {
-  public oaa(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public oaa(PublicAccountManager.1 param1) {}
   
-  public void onDismiss()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,83 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class axlp
-  extends axlo
+public class axlp
 {
-  public ResultReceiver a;
+  private static axlp a = new axlp();
   
-  public static axlp a(Bundle paramBundle)
+  public static axlp a()
   {
-    if (paramBundle == null) {
-      return null;
-    }
-    int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
-    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
-      }
-      try
-      {
-        localObject = (axlp)((Class)localObject).newInstance();
-        ((axlp)localObject).b(paramBundle);
-        return localObject;
-      }
-      catch (Exception paramBundle)
-      {
-        return null;
-      }
-    }
-    return null;
+    return a;
   }
   
-  public void a(Bundle paramBundle)
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      Parcel localParcel = Parcel.obtain();
-      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramBundle.putParcelable("redpoint.fromReceiverKey", localResultReceiver);
+      yqp.e("ImageLoader", "ImageView or uri is null.");
+      return;
     }
-  }
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
-  
-  public final boolean a(Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+    }
+    Drawable localDrawable = paramDrawable1;
+    if (paramDrawable1 == null) {
+      localDrawable = bdzx.a;
+    }
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    paramDrawable1 = paramDrawable2;
+    if (paramDrawable2 == null) {
+      paramDrawable1 = bdzx.a;
+    }
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
+    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
+    localURLDrawableOptions.mUseAutoScaleParams = false;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    if (paramBoolean) {
+      paramString.setDecodeHandler(bgey.a);
+    }
+    if (paramURLDrawableListener != null)
+    {
+      if (paramString.getStatus() != 1) {
+        break label208;
       }
-      return false;
+      yqp.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramString);
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-    return true;
+    for (;;)
+    {
+      paramString.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramString);
+      return;
+      label208:
+      yqp.b("ImageLoader", "start load URLDrawable.");
+    }
   }
   
-  public void b(Bundle paramBundle)
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    super.b(paramBundle);
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
+  }
+  
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  {
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlp
  * JD-Core Version:    0.7.0.1
  */

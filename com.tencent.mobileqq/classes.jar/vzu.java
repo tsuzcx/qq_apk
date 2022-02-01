@@ -1,33 +1,29 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
 
-public class vzu
-  extends umf<vzl, utf>
+class vzu
+  implements uxv
 {
-  public vzu(vzl paramvzl)
-  {
-    super(paramvzl);
-  }
+  vzu(vzq paramvzq, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void a(@NonNull vzl paramvzl, @NonNull utf paramutf)
+  public void a(int paramInt)
   {
-    if ((paramvzl.a != null) && (TextUtils.equals(paramvzl.a.b, paramutf.a)))
+    if (paramInt == uxw.c)
     {
-      wxe.a(this.TAG, "receive feed info change event. %s.", paramutf.toString());
-      paramvzl.i();
+      ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_Vzq.a.getContext().getSystemService("clipboard");
+      if (localClipboardManager != null) {
+        localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.content.get()));
+      }
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return utf.class;
-  }
-  
-  public void b(@NonNull vzl paramvzl, @NonNull utf paramutf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzu
  * JD-Core Version:    0.7.0.1
  */

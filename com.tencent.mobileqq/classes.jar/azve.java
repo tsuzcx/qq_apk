@@ -1,73 +1,66 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
-import mqq.os.MqqHandler;
+import java.io.File;
 
-public final class azve
-  implements View.OnClickListener
+public class azve
+  implements bdvw
 {
-  public void onClick(View paramView)
+  int jdField_a_of_type_Int;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
+  String d;
+  
+  public azve(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject2 = paramView.findViewById(2131377139);
-    if (localObject2 == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = ((View)localObject2).getTag(2131377139);
-      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
-      {
-        localObject1 = (StructMsgForAudioShare)localObject1;
-        paramView = paramView.getTag();
-        if ((paramView != null) && ((paramView instanceof agcx)))
-        {
-          paramView = (agcx)paramView;
-          localObject2 = ((View)localObject2).getContext();
-        }
-      }
-      try
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
-        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
-        {
-          azqs.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
-          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
-          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
-          if (localQQAppInterface == null) {
-            continue;
-          }
-          ndq.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, ndq.a(paramView.a.a));
-          MediaPlayerManager.a(localQQAppInterface).a(true);
-        }
-      }
-      catch (AccountNotMatchException paramView)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("StructMsg", 4, paramView.getStackTrace().toString());
-          }
-        }
-      }
-    }
-    azqs.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
-    azqs.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-    azqs.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType) });
-    }
-    StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString4;
+    this.d = paramString2;
+    this.c = paramString3;
   }
+  
+  public void onResp(bdwt parambdwt)
+  {
+    try
+    {
+      if (parambdwt.jdField_a_of_type_Int == 0)
+      {
+        QLog.i("QSplash@QbossSplashDownloadManager", 1, "ResFile has download!");
+        if (!TextUtils.isEmpty(this.d))
+        {
+          if (azvg.a(this.d, false))
+          {
+            parambdwt = new File(this.d);
+            parambdwt.renameTo(new File(this.d.substring(0, this.d.lastIndexOf("."))));
+            long l = parambdwt.length();
+            parambdwt = (beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+            if (parambdwt.a())
+            {
+              QLog.i("QSplash@QbossSplashUtil", 1, "preDownloadSuccess");
+              parambdwt.a(this.b, l);
+            }
+            azvc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+          azvc.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          QLog.i("QSplash@QbossSplashUtil", 1, "ResFile check not exist");
+        }
+      }
+      else if (parambdwt.jdField_a_of_type_Int == 1)
+      {
+        azvc.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        QLog.i("QSplash@QbossSplashUtil", 1, "ResFile dowload faield");
+      }
+      return;
+    }
+    catch (Exception parambdwt) {}
+  }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

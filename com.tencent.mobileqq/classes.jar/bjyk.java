@@ -1,24 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bjyk
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  bjyk(bjyj parambjyj) {}
+  bjyk(bjyg parambjyg, Activity paramActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
-      bjyj.a(this.a, i);
+    if (bjyg.a(this.jdField_a_of_type_Bjyg).isShowing()) {
+      bjyg.a(this.jdField_a_of_type_Bjyg).dismiss();
     }
+    aqfv.a(this.jdField_a_of_type_AndroidAppActivity, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyk
  * JD-Core Version:    0.7.0.1
  */

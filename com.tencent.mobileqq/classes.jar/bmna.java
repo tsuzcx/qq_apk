@@ -1,42 +1,15 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bmna
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bmna(bmmx parambmmx) {}
+  bmna(bmmu parambmmu, String[] paramArrayOfString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bmzh.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Bmzh.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        bmnj localbmnj = this.a.jdField_a_of_type_Bmnj;
-        if (this.a.jdField_a_of_type_Bmnj.a())
-        {
-          paramView = "2";
-          localbmnj.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bmnj.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
+    paramDialogInterface.dismiss();
+    bmmu.a(this.jdField_a_of_type_Bmmu, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 

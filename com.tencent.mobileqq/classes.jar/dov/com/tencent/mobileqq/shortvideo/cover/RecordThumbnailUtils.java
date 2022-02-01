@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.text.TextUtils;
-import bnqj;
-import bnsv;
+import bqgx;
+import bqjj;
 import java.io.File;
 
 public class RecordThumbnailUtils
@@ -198,7 +198,7 @@ public class RecordThumbnailUtils
     //   340: aload 11
     //   342: iload_2
     //   343: iload_3
-    //   344: invokestatic 125	bnse:a	([I[BII)V
+    //   344: invokestatic 125	bqis:a	([I[BII)V
     //   347: aload 12
     //   349: iload_2
     //   350: iload_3
@@ -214,7 +214,7 @@ public class RecordThumbnailUtils
     //   370: aload_1
     //   371: astore 11
     //   373: iload 5
-    //   375: invokestatic 139	bnin:a	(I)Z
+    //   375: invokestatic 139	bpzq:a	(I)Z
     //   378: ifne +11 -> 389
     //   381: aload_1
     //   382: iload 5
@@ -396,7 +396,7 @@ public class RecordThumbnailUtils
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     File localFile = new File(paramString);
-    return a(paramString, paramInt1, paramInt2, bnqj.a + File.separator + bnsv.a(localFile) + ".jpg", paramInt3, paramConfig);
+    return a(paramString, paramInt1, paramInt2, bqgx.a + File.separator + bqjj.a(localFile) + ".jpg", paramInt3, paramConfig);
   }
   
   /* Error */
@@ -482,7 +482,7 @@ public class RecordThumbnailUtils
     //   151: iload 4
     //   153: ifeq +237 -> 390
     //   156: iload 4
-    //   158: invokestatic 139	bnin:a	(I)Z
+    //   158: invokestatic 139	bpzq:a	(I)Z
     //   161: ifne +229 -> 390
     //   164: aload 5
     //   166: iload 4
@@ -533,7 +533,7 @@ public class RecordThumbnailUtils
     //   264: ldc 239
     //   266: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   269: aload_3
-    //   270: invokestatic 244	bdhb:b	(Ljava/lang/String;)Z
+    //   270: invokestatic 244	bgmg:b	(Ljava/lang/String;)Z
     //   273: invokevirtual 247	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   276: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   279: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -629,7 +629,7 @@ public class RecordThumbnailUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils
  * JD-Core Version:    0.7.0.1
  */

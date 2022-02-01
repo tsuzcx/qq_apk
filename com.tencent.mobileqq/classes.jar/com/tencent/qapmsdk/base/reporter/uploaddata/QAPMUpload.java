@@ -32,9 +32,11 @@ public abstract class QAPMUpload
 {
   public static final int CHUNK_SIZE = 1048576;
   public static final QAPMUpload.Companion Companion = new QAPMUpload.Companion(null);
+  public static final int ERROR_CLIENT = 400;
   public static final int ERROR_FILE_NOT_EXIT = 601;
   public static final int ERROR_OOM = 600;
   public static final int ERROR_OTHER = 700;
+  public static final int ERROR_SERVICE = 500;
   public static final int SOCKET_TIMEOUT_MILLI = 30000;
   private static final String TAG = "QAPM_base_QAPMUpload";
   private int protocol;
@@ -191,7 +193,7 @@ public abstract class QAPMUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.QAPMUpload
  * JD-Core Version:    0.7.0.1
  */

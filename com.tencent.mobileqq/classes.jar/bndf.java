@@ -1,26 +1,12 @@
-import android.util.Property;
+import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
 
-class bndf
-  extends Property<bndb, Integer>
+final class bndf
+  implements AECoderFactory.AEEncoderFactory
 {
-  bndf(bndb parambndb, Class paramClass, String paramString)
+  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bndb parambndb)
-  {
-    if (parambndb != null) {
-      return Integer.valueOf(bndb.b(parambndb));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bndb parambndb, Integer paramInteger)
-  {
-    if (parambndb != null) {
-      bndb.b(parambndb, paramInteger.intValue());
-    }
+    return new barq(paramString, paramInt1, paramInt2);
   }
 }
 

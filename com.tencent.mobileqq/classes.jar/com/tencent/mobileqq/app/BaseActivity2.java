@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import alow;
-import amck;
+import Override;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -16,11 +15,14 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import azcm;
-import azri;
+import anib;
+import anuu;
+import bcdl;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -31,6 +33,7 @@ import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -44,7 +47,7 @@ public class BaseActivity2
   private static final int DEFAULT_FLING_ACTION = 2;
   protected static final String TAG = "BaseActivity2";
   public static boolean mAppForground = true;
-  private static amck shakeListener;
+  private static anuu shakeListener;
   private static boolean snapChecked;
   public static BaseActivity2 topActivity;
   private String className = getClass().getSimpleName();
@@ -138,11 +141,19 @@ public class BaseActivity2
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doInMultiWindowModeStatusBarVisibilityChange(int paramInt) {}
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131298914);
+    return getResources().getDimensionPixelSize(2131298998);
   }
   
   @TargetApi(24)
@@ -227,6 +238,7 @@ public class BaseActivity2
     if ((isWrapContent()) && (this.mFlingHandler != null)) {
       this.mFlingHandler.onConfigurationChanged(paramConfiguration);
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -239,8 +251,8 @@ public class BaseActivity2
     {
       if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
       {
-        azcm.e = System.currentTimeMillis();
-        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(azcm.e) });
+        bcdl.e = System.currentTimeMillis();
+        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(bcdl.e) });
       }
     }
     catch (Exception paramBundle)
@@ -283,18 +295,18 @@ public class BaseActivity2
           {
             paramBundle = new IntentFilter();
             paramBundle.addAction("android.intent.action.SCREEN_OFF");
-            this.mScreenReceiver = new alow(this, null);
+            this.mScreenReceiver = new anib(this, null);
             registerReceiver(this.mScreenReceiver, paramBundle);
             if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
             {
               getWindow().addFlags(67108864);
               if (this.mActNeedImmersive)
               {
-                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131166959));
+                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131167042));
                 if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
                   break;
                 }
-                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130845746));
+                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846162));
               }
             }
             return;
@@ -330,7 +342,7 @@ public class BaseActivity2
       QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " process id =" + Process.myPid() + " onDestroy task : " + getTaskId());
     }
     topActivity = null;
-    azri.a(this).d(this);
+    bctj.a(this).d(this);
     if (this.mScreenReceiver != null) {}
     try
     {
@@ -357,7 +369,7 @@ public class BaseActivity2
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onPause");
     }
     this.isPause = true;
-    azri.a(this).c(this);
+    bctj.a(this).c(this);
     cleanScreenShot();
   }
   
@@ -371,14 +383,14 @@ public class BaseActivity2
     super.onResume();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      azcm.i = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(azcm.i) });
+      bcdl.i = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(bcdl.i) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onResume ");
     }
     this.isPause = false;
-    azri.a(this).b(this);
+    bctj.a(this).b(this);
     topActivity = this;
     this.currentActivityStayTime = SystemClock.uptimeMillis();
     int i;
@@ -432,8 +444,8 @@ public class BaseActivity2
     super.onStart();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      azcm.g = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(azcm.g) });
+      bcdl.g = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(bcdl.g) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onStart");

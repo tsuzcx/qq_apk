@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import sfm;
+import ted;
 
 public class NativeBitmap
 {
@@ -25,7 +25,7 @@ public class NativeBitmap
     {
       a = false;
       if (QLog.isColorLevel()) {
-        sfm.a("NativeBitmap", "load so fail");
+        ted.a("NativeBitmap", "load so fail");
       }
       if (BaseApplicationImpl.sProcessId == 1)
       {
@@ -33,14 +33,14 @@ public class NativeBitmap
         localHashMap.put("model", Build.MODEL);
         localHashMap.put("androidVersion", Build.VERSION.SDK);
         localHashMap.put("brand", Build.BRAND);
-        azri.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
+        bctj.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
       }
       return;
     }
     finally
     {
       if (QLog.isColorLevel()) {
-        sfm.a("NativeBitmap", "canUseNativeBitmap:" + a);
+        ted.a("NativeBitmap", "canUseNativeBitmap:" + a);
       }
     }
   }
@@ -49,7 +49,7 @@ public class NativeBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.NativeBitmap
  * JD-Core Version:    0.7.0.1
  */

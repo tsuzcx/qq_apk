@@ -1,30 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import AccostSvc.ReqGetBlackList;
+import AccostSvc.ReqHeader;
+import AccostSvc.RespGetBlackList;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-class bbyo
-  implements urr<bbyq, uro>
+public class bbyo
+  implements bcbk
 {
-  bbyo(bbyn parambbyn) {}
+  public static String a;
+  private final QQAppInterface a;
   
-  public void a(@NonNull bbyq parambbyq, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
+  static
   {
-    if (paramErrorMessage.isFail())
+    jdField_a_of_type_JavaLangString = "GetBlackListItem";
+  }
+  
+  public bbyo(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 116;
+    Object localObject = new ReqHeader();
+    ((ReqHeader)localObject).shVersion = 0;
+    ((ReqHeader)localObject).lMID = bbzb.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()));
+    ((ReqHeader)localObject).iAppID = AppSetting.a();
+    localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("AccostObj");
+    localUniPacket.setFuncName("CMD_GET_BlackList");
+    localUniPacket.put("ReqGetBlackList", localObject);
+    localReqItem.vecParam = localUniPacket.encode();
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 116) && (paramRespItem.cResult == 2))
     {
-      wxe.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
-      bbyn.a(this.a, paramErrorMessage);
-      return;
+      Object localObject = new UniPacket();
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramRespItem.vecUpdate);
+      paramRespItem = (RespGetBlackList)((UniPacket)localObject).getByClass("RespGetBlackList", new RespGetBlackList());
+      localObject = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg();
+      localFromServiceMsg.setMsgSuccess();
+      ((MessageHandler)localObject).a(null, localFromServiceMsg, paramRespItem);
     }
-    if (paramuro.a == 0)
-    {
-      parambbyq = new bbyr();
-      parambbyq.a = bbyn.a(this.a);
-      parambbyq.b = bbyn.a(this.a).b;
-      bbyn.a(this.a, parambbyq);
-      return;
-    }
-    wxe.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramuro.b);
-    bbyn.b(this.a, new ErrorMessage(paramuro.a, paramuro.b));
   }
 }
 

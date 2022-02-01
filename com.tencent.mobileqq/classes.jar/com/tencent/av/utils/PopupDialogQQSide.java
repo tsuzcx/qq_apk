@@ -6,17 +6,18 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdgm;
-import bdjz;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import mvd;
-import mve;
-import mvf;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import msj;
+import msk;
+import msl;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bdjz a = null;
+  public bgpa a = null;
   
   void a()
   {
@@ -39,31 +40,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new mvd(this, (ResultReceiver)localObject2);
-    localObject2 = new mve(this, (ResultReceiver)localObject2);
+    localObject1 = new msj(this, (ResultReceiver)localObject2);
+    localObject2 = new msk(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131721336;
+      i = 2131719054;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131721336;
+        j = 2131719054;
       }
       for (;;)
       {
-        bdjz localbdjz = bdgm.a(getActivity(), k);
-        localbdjz.setMessage(str2);
-        localbdjz.setTitle(str1);
+        bgpa localbgpa = bglp.a(getActivity(), k);
+        localbgpa.setMessage(str2);
+        localbgpa.setTitle(str1);
         if (bool1) {
-          localbdjz.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbgpa.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbdjz.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbgpa.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbdjz.setOnDismissListener(new mvf(this));
-        localbdjz.setCancelable(true);
-        localbdjz.show();
-        this.a = localbdjz;
+        localbgpa.setOnDismissListener(new msl(this));
+        localbgpa.setCancelable(true);
+        localbgpa.show();
+        this.a = localbgpa;
         return;
       }
     }
@@ -71,7 +72,9 @@ public class PopupDialogQQSide
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -88,7 +91,7 @@ public class PopupDialogQQSide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide
  * JD-Core Version:    0.7.0.1
  */

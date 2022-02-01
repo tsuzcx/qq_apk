@@ -1,14 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class avve
-  implements BusinessObserver
+class avve
+  implements DialogInterface.OnCancelListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  avve(avuv paramavuv) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.b(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avve
  * JD-Core Version:    0.7.0.1
  */

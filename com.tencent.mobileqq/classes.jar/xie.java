@@ -1,147 +1,100 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.graphics.PorterDuff.Mode;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.TimeZone;
 
 class xie
-  extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoCoverImgBorder jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder;
+  private String jdField_a_of_type_JavaLangString;
   
-  public xie(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public xie(xid paramxid, View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.c = (this.jdField_a_of_type_Int / this.b);
-    a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder = ((VideoCoverImgBorder)paramView.findViewById(2131363548));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378686));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setOnClickListener(new xif(this, paramxid));
   }
   
-  private void a()
+  private void a(String paramString, int paramInt)
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = xin.b(getContext(), 3.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    while (i < this.b)
+    if (TextUtils.isEmpty(paramString))
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131561489, null);
-      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
-      ((ImageView)localView.findViewById(2131369820)).setPadding(k, k, k, k);
-      addView(localView);
-      i += 1;
+      zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Xid.a), VideoCoverListBar.a(this.jdField_a_of_type_Xid.a), VideoCoverListBar.c(this.jdField_a_of_type_Xid.a), VideoCoverListBar.d(this.jdField_a_of_type_Xid.a), "VideoCoverList");
+      return;
     }
+    zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Xid.a), VideoCoverListBar.b(this.jdField_a_of_type_Xid.a), VideoCoverListBar.c(this.jdField_a_of_type_Xid.a), VideoCoverListBar.d(this.jdField_a_of_type_Xid.a), "VideoCoverList");
   }
   
-  private void a(int paramInt)
+  public void a(int paramInt)
   {
-    int i = 0;
-    int j;
+    yqp.a("Q.qqstory.player:VideoCoverListBar", "bindView, position=%d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Xid.a(paramInt);
+    Object localObject = VideoCoverListBar.a(this.jdField_a_of_type_Xid.a).b(this.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      localObject = new StoryVideoItem();
+      ((StoryVideoItem)localObject).mVid = this.jdField_a_of_type_JavaLangString;
+    }
     for (;;)
     {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
+      if (!TextUtils.isEmpty(((StoryVideoItem)localObject).getThumbUrl()))
+      {
+        a(zlu.a(((StoryVideoItem)localObject).getThumbUrl()), paramInt);
+        if (!((StoryVideoItem)localObject).isUploadFail()) {
+          break label177;
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(0);
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
+      for (;;)
+      {
+        if ((!VideoCoverListBar.a(this.jdField_a_of_type_Xid.a).a()) && (!VideoCoverListBar.a(this.jdField_a_of_type_Xid.a).b())) {
+          break label246;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.clearColorFilter();
+        return;
+        a(zlu.a(yqm.a(((StoryVideoItem)localObject).mVideoLocalThumbnailPath)), paramInt);
         break;
+        label177:
+        if (TextUtils.isEmpty(VideoCoverListBar.a(this.jdField_a_of_type_Xid.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        } else if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, VideoCoverListBar.a(this.jdField_a_of_type_Xid.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(1);
+        } else {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        }
       }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  public void a(xhu paramxhu, int paramInt1, int paramInt2)
-  {
-    int i = paramInt1 * this.b;
-    label31:
-    Object localObject3;
-    URLImageView localURLImageView;
-    TextView localTextView;
-    Object localObject2;
-    String str;
-    Object localObject1;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = paramxhu.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
+      label246:
+      if ((xfe.b((StoryVideoItem)localObject)) || (((StoryVideoItem)localObject).mErrorCode != 0))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
         return;
       }
-      localObject3 = getChildAt(paramInt2 - i);
-      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131369820);
-      localTextView = (TextView)((View)localObject3).findViewById(2131369832);
-      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131369830);
-      str = paramxhu.b(paramInt2);
-      localObject1 = paramxhu.a(paramInt2);
-      if (localObject1 != null) {
-        break label137;
+      long l2 = ((StoryVideoItem)localObject).mCreateTime;
+      long l1;
+      if (((StoryVideoItem)localObject).mTimeZoneOffsetMillis != 2147483647L) {
+        l1 = ((StoryVideoItem)localObject).mTimeZoneOffsetMillis;
       }
-      wxe.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramxhu.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label137:
-      ((View)localObject3).setContentDescription(str);
-      localTextView.setText(str);
-      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131377441, Integer.valueOf(paramInt2));
-      localObject3 = (Boolean)localURLImageView.getTag(2131377419);
-      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131377450))))
+      for (boolean bool = true;; bool = false)
       {
-        ((ProgressBar)localObject2).setVisibility(4);
-      }
-      else
-      {
-        localURLImageView.setTag(2131377450, localObject1);
-        localURLImageView.setTag(2131377419, Boolean.valueOf(false));
-        ((ProgressBar)localObject2).setVisibility(0);
-        localObject2 = new xif((String)localObject1, localURLImageView, (ProgressBar)localObject2);
-        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = bayu.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bayu.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-        if (((URLDrawable)localObject1).getStatus() == 1) {
-          ((xif)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-        }
-        localURLImageView.setImageDrawable((Drawable)localObject1);
+        localObject = ykw.a(l2, l1, bool, false, true);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+        l1 = TimeZone.getDefault().getRawOffset();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xie
  * JD-Core Version:    0.7.0.1
  */

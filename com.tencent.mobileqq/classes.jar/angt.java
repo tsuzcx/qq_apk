@@ -1,23 +1,24 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1.1.1;
 
 public class angt
-  implements MessageQueue.IdleHandler
+  implements Animation.AnimationListener
 {
-  public angt(ARScanEntryView paramARScanEntryView) {}
+  public angt(ApolloPanelListAdapter.1.1.1 param1) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
-    }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
-    }
-    return false;
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Anfh.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

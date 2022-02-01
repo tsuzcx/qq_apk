@@ -1,28 +1,27 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
 
 public class akno
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+  implements Animator.AnimatorListener
 {
-  akno(aknn paramaknn) {}
+  public akno(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Object localObject = akwd.a(aknm.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((akyg)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+    this.a.b.setRotation(0.0F);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akno
  * JD-Core Version:    0.7.0.1
  */

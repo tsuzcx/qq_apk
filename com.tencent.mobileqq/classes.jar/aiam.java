@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiam
-  implements DialogInterface.OnClickListener
+class aiam
+  implements View.OnClickListener
 {
-  public aiam(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  aiam(ahzy paramahzy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
+    ahvz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

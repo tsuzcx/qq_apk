@@ -1,42 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class agux
-  implements BusinessObserver
+  extends ClickableSpan
 {
-  agux(agti paramagti) {}
+  agux(agup paramagup) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.ap = true;
-          this.a.bH();
-          this.a.bs();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.B(2131695729);
-    this.a.bs();
+    paramTextPaint.setColor(-12541697);
   }
 }
 

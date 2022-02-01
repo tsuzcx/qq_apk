@@ -1,98 +1,82 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.minigame.task.MiniAppInfoLoadTask.1;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-@bglp(a="MiniAppInfoLoadTask")
-public class bgzp
-  extends bhlt
+public class bgzp<V>
+  implements Manager
 {
-  private MiniAppInfo a;
+  private final ArrayList<bgzr<V>> a = new ArrayList();
   
-  public bgzp(Context paramContext, bgun parambgun)
+  static
   {
-    super(paramContext, parambgun);
+    bhek.a.a();
   }
   
-  private void d()
+  public static <E> bgzq<E> a(bgzq<E> parambgzq)
   {
-    QMLog.i("MiniAppInfoLoadTask", "start executing");
-    if (this.a == null)
+    return new bgzs(parambgzq);
+  }
+  
+  public void a(String arg1, bgzq<V> parambgzq, Object paramObject)
+  {
+    if (parambgzq != null)
     {
-      QMLog.e("MiniAppInfoLoadTask", "MiniAppInfo must not be null");
-      e();
-      return;
-    }
-    if (this.a.isShortcutFakeApp())
-    {
-      QMLog.i("MiniAppInfoLoadTask", "Start from shortcut, download MiniAppInfo ");
-      h();
-      return;
-    }
-    if (this.a.isFakeAppInfo())
-    {
-      if (this.a.link != null)
+      parambgzq = new bgzr(parambgzq, paramObject, ???);
+      synchronized (this.a)
       {
-        i();
+        this.a.add(parambgzq);
         return;
       }
-      h();
-      return;
     }
-    c();
   }
   
-  private void h()
+  public void a(String paramString, V paramV)
   {
-    String str1;
-    if (this.a.launchParam.entryPath == null)
+    if (paramString == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
     {
-      str1 = "";
-      if (this.a.launchParam.envVersion != null) {
-        break label77;
+      int i;
+      synchronized (this.a)
+      {
+        i = this.a.size() - 1;
+        if (i >= 0)
+        {
+          bgzr localbgzr = (bgzr)this.a.get(i);
+          if (paramString.equals(localbgzr.jdField_a_of_type_JavaLangString))
+          {
+            this.a.remove(i);
+            localArrayList.add(localbgzr);
+          }
+        }
+        else
+        {
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          ??? = (bgzr)paramString.next();
+          ((bgzr)???).jdField_a_of_type_Bgzq.a(paramV, ((bgzr)???).jdField_a_of_type_JavaLangObject);
+        }
       }
-    }
-    label77:
-    for (String str2 = "";; str2 = this.a.launchParam.envVersion)
-    {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.a.appId, str1, str2, new bgzq(this));
-      return;
-      str1 = this.a.launchParam.entryPath;
-      break;
+      i -= 1;
     }
   }
   
-  private void i()
+  public void onDestroy()
   {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.a.link, this.a.linkType, new bgzr(this));
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.a;
-  }
-  
-  public void a() {}
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.a = paramMiniAppInfo;
-    if (!b())
+    synchronized (this.a)
     {
-      d();
+      this.a.clear();
       return;
     }
-    ThreadManager.a().post(new MiniAppInfoLoadTask.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-public class bnlf
-  implements ValueAnimator.AnimatorUpdateListener
+class bnlf
+  implements View.OnTouchListener
 {
-  public bnlf(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bnlf(bnlc parambnlc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    if ((bnlc.a(this.a) != null) && (bnlc.c(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bnlc.c(this.a), bnlc.a(this.a));
+    }
+    return true;
   }
 }
 

@@ -1,13 +1,12 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alud;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import anni;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,11 +15,11 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ufs;
-import yif;
+import vys;
+import zxs;
 
 public class QCircleTagPageHeaderView
-  extends BaseWidgetView<yif>
+  extends QCircleBaseWidgetView<zxs>
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -37,39 +36,44 @@ public class QCircleTagPageHeaderView
   
   public int a()
   {
-    return 2131560593;
+    return 2131560785;
+  }
+  
+  protected String a()
+  {
+    return "QCircleTagPageHeaderView";
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131363000));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
-    this.b = ((TextView)paramView.findViewById(2131378918));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368719));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView = ((QCircleFollowTagView)paramView.findViewById(2131373248));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setItemReportListener(new ufs(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131363114));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379957));
+    this.b = ((TextView)paramView.findViewById(2131379808));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369056));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView = ((QCircleFollowTagView)paramView.findViewById(2131373941));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setItemReportListener(new vys(this));
   }
   
-  protected void a(yif paramyif)
+  protected void a(zxs paramzxs)
   {
-    if ((paramyif != null) && ((paramyif.a instanceof FeedCloudMeta.StTagInfo)))
+    if ((paramzxs != null) && ((paramzxs.a instanceof FeedCloudMeta.StTagInfo)))
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramyif.a);
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramzxs.a);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
-      this.b.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagTotalUser.get() + alud.a(2131698390));
-      paramyif = new ArrayList();
+      this.b.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagTotalUser.get() + anni.a(2131697267));
+      paramzxs = new ArrayList();
       Iterator localIterator = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.userList.get().iterator();
       while (localIterator.hasNext()) {
-        paramyif.add(((FeedCloudMeta.StUser)localIterator.next()).id.get());
+        paramzxs.add(((FeedCloudMeta.StUser)localIterator.next()).id.get());
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramyif);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramzxs);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setTagInfo(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView
  * JD-Core Version:    0.7.0.1
  */

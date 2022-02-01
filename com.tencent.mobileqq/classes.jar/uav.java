@@ -1,37 +1,92 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Build.VERSION;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class uav
-  implements Animator.AnimatorListener
+class uav
+  implements BusinessObserver
 {
-  public uav(QCircleTransitionLayout paramQCircleTransitionLayout) {}
+  uav(uat paramuat, Intent paramIntent) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    uat.c(this.jdField_a_of_type_Uat);
+    if (paramBoolean) {}
+    for (;;)
     {
-      this.a.setBackground(null);
+      try
+      {
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = abcr.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        uat.a(this.jdField_a_of_type_Uat).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = bcwd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
       return;
-    }
-    this.a.setBackgroundColor(0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QCircleTransitionLayout.a(this.a) != null) {
-      QCircleTransitionLayout.a(this.a).b();
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uav
  * JD-Core Version:    0.7.0.1
  */

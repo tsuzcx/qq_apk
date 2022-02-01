@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aoiy;
+import aqjq;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$16
@@ -12,8 +12,8 @@ class MessageHandler$16
   {
     try
     {
-      aoiy.b(this.this$0.app, false);
-      aoiy.a(this.this$0.app, false);
+      aqjq.b(this.this$0.app, false);
+      aqjq.a(this.this$0.app, false);
       this.this$0.e(this.a);
       return;
     }
@@ -26,7 +26,7 @@ class MessageHandler$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.16
  * JD-Core Version:    0.7.0.1
  */

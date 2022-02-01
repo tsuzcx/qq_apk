@@ -11,14 +11,16 @@ class MiniAppGetAppInfoByIdServlet$1
   
   public void run()
   {
-    MiniAppInfo.saveMiniAppByIdEntity(this.val$intent.getStringExtra("key_first_path"), this.val$result.appInfo);
+    String str = this.val$intent.getStringExtra("key_first_path");
+    MiniAppInfo.saveMiniAppByIdEntity(str, this.val$result.appInfo);
     MiniAppInfo.saveMiniAppInfoEntity(this.val$result.appInfo);
     MiniAppInfo.saveMiniAppShowInfoEntity(this.val$result.appInfo);
+    MiniAppInfo.saveMiniAppInfoByIdEntity(str, this.val$result.appInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdServlet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,34 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.concurrent.ConcurrentHashMap;
 
-class oqz
-  implements View.OnClickListener
+public class oqz
 {
-  oqz(oqy paramoqy, orb paramorb, pgj parampgj, int paramInt) {}
+  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  public static Object a(int paramInt)
   {
-    this.jdField_a_of_type_Oqy.a = new sib((Activity)oqy.a(this.jdField_a_of_type_Oqy), new ora(this), this.jdField_a_of_type_Pgj.b, this.jdField_a_of_type_Pgj.a);
-    this.jdField_a_of_type_Oqy.a.b(this.jdField_a_of_type_Orb.b);
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return a.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a.remove(Integer.valueOf(paramInt));
+  }
+  
+  public static void a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    a.remove(Integer.valueOf(paramInt));
+    a.put(Integer.valueOf(paramInt), paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oqz
  * JD-Core Version:    0.7.0.1
  */

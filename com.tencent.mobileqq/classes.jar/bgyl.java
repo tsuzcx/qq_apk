@@ -1,28 +1,28 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-final class bgyl
-  implements bgyt
+public class bgyl
+  extends NativeGifImage
 {
-  bgyl(MiniAppInfo paramMiniAppInfo, bgyt parambgyt) {}
+  private int a = 1;
   
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  public bgyl(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
   {
-    if (this.jdField_a_of_type_Bgyt != null) {
-      this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
-    }
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    this.a = paramInt;
   }
   
-  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
+  public void executeNewTask()
   {
-    bgye.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    if (this.jdField_a_of_type_Bgyt != null) {
-      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(paramInt, parambgyu, paramString);
+    if (this.mCurrentLoop == this.a) {
+      return;
     }
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyl
  * JD-Core Version:    0.7.0.1
  */

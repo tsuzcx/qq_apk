@@ -1,30 +1,45 @@
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
-import java.util.List;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class apoq
-  extends alsc
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  apoq(apoo paramapoo) {}
+  public apoq(ArkAppPreDownloadMgr.3.1 param1) {}
   
-  public void a(List<CustomEmotionData> paramList)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (apoo.f(this.a) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
     }
-    apoo.g(this.a).removeObserver(apoo.a(this.a));
-    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (apoo.e(this.a) == null) {}
-    while (!paramBoolean) {
-      return;
+    paramString = (QQAppInterface)apop.a(this.a.a.this$0).get();
+    if (paramString != null)
+    {
+      paramString = (beaw)paramString.getManager(193);
+      if (paramString != null)
+      {
+        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
+          break label211;
+        }
+        long l = 0L;
+        paramAppPathInfo = new File(paramAppPathInfo.path);
+        if (paramAppPathInfo.exists()) {
+          l = paramAppPathInfo.length();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
+        }
+        paramString.a(this.a.a.a.a, l);
+      }
     }
-    this.a.b();
+    return;
+    label211:
+    paramString.a(this.a.a.a.a, -1L);
   }
 }
 

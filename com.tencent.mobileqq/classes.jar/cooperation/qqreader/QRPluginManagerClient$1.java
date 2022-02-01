@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
 import android.os.Bundle;
-import bizc;
-import bjbl;
+import blnn;
+import blpu;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
@@ -10,11 +10,11 @@ import eipc.EIPCResult;
 public class QRPluginManagerClient$1
   implements Runnable
 {
-  public QRPluginManagerClient$1(bizc parambizc) {}
+  public QRPluginManagerClient$1(blnn paramblnn) {}
   
   public void run()
   {
-    bjbl.d("QRPluginManagerClient", "launchPlugin");
+    blpu.d("QRPluginManagerClient", "launchPlugin");
     Object localObject = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "download_reader_plugin", new Bundle());
     StringBuilder localStringBuilder;
     if ((localObject == null) || (!((EIPCResult)localObject).isSuccess()))
@@ -27,15 +27,15 @@ public class QRPluginManagerClient$1
     label82:
     for (localObject = "null";; localObject = ((EIPCResult)localObject).e.toString())
     {
-      bjbl.a("QRPluginManagerClient", (String)localObject);
-      bizc.a(this.this$0, 0L);
+      blpu.a("QRPluginManagerClient", (String)localObject);
+      blnn.a(this.this$0, 0L);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.QRPluginManagerClient.1
  * JD-Core Version:    0.7.0.1
  */

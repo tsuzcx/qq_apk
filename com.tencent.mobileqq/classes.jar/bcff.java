@@ -1,11 +1,42 @@
-class bcff
-  implements beqw
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+
+public class bcff
 {
-  bcff(bcfe parambcfe) {}
-  
-  public void a(String paramString)
+  public static bcfi a(String paramString)
   {
-    this.a.a();
+    String str = paramString;
+    if (bcgg.a())
+    {
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
+      }
+    }
+    paramString = new bcfi();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
+    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
+    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
+    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
+    return paramString;
+  }
+  
+  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    String str = paramString;
+    if (bcgg.a())
+    {
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
+      }
+    }
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
+    paramString.putInt(str + "_version_k", paramInt1);
+    paramString.putInt(str + "_status_k", paramInt2);
+    paramString.putInt(str + "_last_error_k", paramInt3);
+    return paramString.commit();
   }
 }
 

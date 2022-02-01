@@ -1,28 +1,54 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bgll
-  implements Handler.Callback
+  implements ThreadExcutor.IThreadListener
 {
-  public bgll(Login paramLogin) {}
+  private int jdField_a_of_type_Int;
+  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private int b;
+  private int c;
   
-  public boolean handleMessage(Message paramMessage)
+  public bgll(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.b = 0;
+  }
+  
+  public void a()
+  {
+    if (this.b < this.jdField_a_of_type_Int)
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.setResult(0);
-      this.a.finish();
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      if (localRunnable != null)
+      {
+        this.b += 1;
+        ThreadManager.excute(localRunnable, this.c, this, false);
+      }
     }
   }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
+    a();
+  }
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
+  {
+    this.b -= 1;
+    a();
+  }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,99 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqwj
-  extends aqru
+public class aqwj
+  implements aqlb<String>
 {
-  aqwj(aqwi paramaqwi) {}
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
+  private void a()
   {
-    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo, bSuccess[" + paramBoolean + " retCode:" + paramInt1 + " downloadIp:" + paramString4 + " downloadDomain:" + paramString5 + " port:" + paramInt2 + " url:" + paramString6 + " cookie:" + paramString2);
-    aqwk localaqwk = aqwi.a(this.a, paramLong, false);
-    if (localaqwk == null)
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("QFileIPv6ConfigBean", 1, "configID:449 onParse FileIPv6Config:" + paramString);
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.toLowerCase();
+    }
+    if (TextUtils.isEmpty(str))
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo no this session");
-      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is empty, configID:449 use default value");
+      a();
       return;
-    }
-    if (!paramBoolean)
-    {
-      this.a.a.a().a(false, 50, new Object[] { localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
-      this.a.a(paramLong);
-      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
-      return;
-    }
-    if ((paramString6 != null) && (paramString6.length() > 0))
-    {
-      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo url=null");
-      this.a.a.a().a(false, 50, new Object[] { localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
-      this.a.a(paramLong);
-      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
-      return;
-    }
-    paramString6 = null;
-    if ((paramString4 != null) && (paramString4.length() > 0)) {
-      paramString1 = paramString4;
-    }
-    while ((paramString1 == null) || (paramString1.length() < 0))
-    {
-      this.a.a.a().a(false, 50, new Object[] { localaqwk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
-      this.a.a(paramLong);
-      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
-      return;
-      paramString1 = paramString6;
-      if (paramString5 != null)
-      {
-        paramString1 = paramString6;
-        if (paramString5.length() > 0) {
-          paramString1 = paramString5;
-        }
-      }
-    }
-    if ((paramString3 == null) || (paramString3.length() < 0)) {
-      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo downloadKey invaild");
-    }
-    paramString5 = "/ftn_video_pic/rkey=" + paramString3 + "&filetype=" + localaqwk.b + "&size=" + this.a.a(localaqwk.jdField_a_of_type_Int) + "&";
-    paramBoolean = false;
-    short s1 = 0;
-    if ((arbp.h(this.a.a)) && (paramBundle != null))
-    {
-      paramString4 = paramBundle.getString("strHttpsDomain");
-      if (!TextUtils.isEmpty(paramString4))
-      {
-        boolean bool = true;
-        short s2 = paramBundle.getShort("httpsPort", (short)0);
-        paramBoolean = bool;
-        paramString3 = paramString4;
-        s1 = s2;
-        if (s2 == 0)
-        {
-          s1 = 443;
-          paramString3 = paramString4;
-          paramBoolean = bool;
-        }
-      }
     }
     for (;;)
     {
-      paramString4 = "";
-      if (arsx.b(this.a.a)) {
-        paramString4 = paramBundle.getString("IPv6Dns");
+      try
+      {
+        paramString = new JSONObject(str).getJSONObject("ipv6config");
+        if (paramString == null) {
+          break label252;
+        }
+        if (paramString.has("allswitch"))
+        {
+          this.jdField_a_of_type_Boolean = paramString.getBoolean("allswitch");
+          if (!paramString.has("c2cenable")) {
+            break label214;
+          }
+          this.b = paramString.getBoolean("c2cenable");
+          if (!paramString.has("groupenable")) {
+            break label222;
+          }
+          this.c = paramString.getBoolean("groupenable");
+          if (!paramString.has("discenable")) {
+            break label230;
+          }
+          this.d = paramString.getBoolean("discenable");
+          if (!paramString.has("datalineenable")) {
+            break label238;
+          }
+          this.e = paramString.getBoolean("datalineenable");
+          if (!paramString.has("strategy")) {
+            break;
+          }
+          this.jdField_a_of_type_Int = paramString.getInt("strategy");
+          return;
+        }
       }
-      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s1, paramString4);
-      return;
-      paramString3 = null;
+      catch (JSONException paramString)
+      {
+        QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
+        return;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      continue;
+      label214:
+      this.b = false;
+      continue;
+      label222:
+      this.c = false;
+      continue;
+      label230:
+      this.d = false;
+      continue;
+      label238:
+      this.e = false;
     }
+    this.jdField_a_of_type_Int = 0;
+    return;
+    label252:
+    QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
+    a();
   }
 }
 

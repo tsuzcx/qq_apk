@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
-import aips;
+import akgm;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
@@ -8,9 +8,9 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import anux;
-import anuy;
-import azri;
+import apvc;
+import apvd;
+import bctj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -31,12 +31,12 @@ public class VideoDrawableHandler
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  anuy jdField_a_of_type_Anuy;
+  apvd jdField_a_of_type_Apvd;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
   LinkedList<VideoDrawableHandler.DecodeFrameTask> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  Vector<WeakReference<anux>> jdField_a_of_type_JavaUtilVector = new Vector();
+  Vector<WeakReference<apvc>> jdField_a_of_type_JavaUtilVector = new Vector();
   boolean jdField_a_of_type_Boolean = true;
   Bitmap b;
   private Bitmap c;
@@ -48,10 +48,10 @@ public class VideoDrawableHandler
     jdField_c_of_type_Int = 4;
   }
   
-  public VideoDrawableHandler(AppInterface paramAppInterface, anuy paramanuy)
+  public VideoDrawableHandler(AppInterface paramAppInterface, apvd paramapvd)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Anuy = paramanuy;
+    this.jdField_a_of_type_Apvd = paramapvd;
   }
   
   /* Error */
@@ -750,7 +750,7 @@ public class VideoDrawableHandler
             for (;;)
             {
               Object localObject4;
-              azri localazri;
+              bctj localbctj;
               String str;
               Object localObject2;
               if (QLog.isColorLevel()) {
@@ -798,16 +798,16 @@ public class VideoDrawableHandler
             else
             {
               localObject4 = new HashMap();
-              ((HashMap)localObject4).put("param_DeviceType", aips.a() + "");
+              ((HashMap)localObject4).put("param_DeviceType", akgm.a() + "");
               ((HashMap)localObject4).put("param_ErrorArbitary", k + "");
               ((HashMap)localObject4).put("param_ErrorKey", i + "");
-              localazri = azri.a(BaseApplicationImpl.getContext());
+              localbctj = bctj.a(BaseApplicationImpl.getContext());
               str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
               bool1 = bool2;
               if (localObject1 != null) {
                 bool1 = true;
               }
-              localazri.a(str, "CMD_EXTRACT_FRAME", bool1, j, m, (HashMap)localObject4, "");
+              localbctj.a(str, "CMD_EXTRACT_FRAME", bool1, j, m, (HashMap)localObject4, "");
               return localObject1;
             }
           }
@@ -827,7 +827,7 @@ public class VideoDrawableHandler
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilVector.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((anux)localWeakReference.get()).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        ((apvc)localWeakReference.get()).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       i += 1;
     }
@@ -847,12 +847,12 @@ public class VideoDrawableHandler
     }
   }
   
-  public void a(anux paramanux)
+  public void a(apvc paramapvc)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(paramanux)) {
-        this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramanux));
+      if (!this.jdField_a_of_type_JavaUtilVector.contains(paramapvc)) {
+        this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramapvc));
       }
       return;
     }
@@ -956,7 +956,7 @@ public class VideoDrawableHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,47 @@
-public abstract interface bcxu
+public class bcxu
+  extends bcvu
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public boolean c;
+  public int o;
+  public int p = 3;
+  
+  public bcxu()
+  {
+    this(null);
+  }
+  
+  public bcxu(String paramString)
+  {
+    super(paramString, "content");
+  }
+  
+  public String a()
+  {
+    return "Content";
+  }
+  
+  public int b()
+  {
+    return this.p;
+  }
+  
+  public int c()
+  {
+    return 2131379588;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.o != 0)) {
+      return -1;
+    }
+    return -8355712;
+  }
+  
+  public int f()
+  {
+    return 28;
+  }
 }
 
 

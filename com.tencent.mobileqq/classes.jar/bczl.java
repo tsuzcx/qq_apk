@@ -1,26 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-final class bczl
-  implements DownloadParams.DecodeHandler
+class bczl
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bczl(bczi parambczi, Context paramContext) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      return bdhj.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bdhj.c(paramBitmap, 50, 50);
+    QWalletHelper.gotoQWalletHome((Activity)this.jdField_a_of_type_AndroidContentContext);
+    akmh.a("public.tailplace.click", "", "", "2", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

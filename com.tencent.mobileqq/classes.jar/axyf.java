@@ -1,6 +1,31 @@
-class axyf
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
+
+public class axyf
+  implements axyr
 {
-  private static final axyd a = new axyd(null);
+  public axyf(NearbyMomentFragment paramNearbyMomentFragment) {}
+  
+  public void a(boolean paramBoolean1, List<axzq> paramList, boolean paramBoolean2, int paramInt)
+  {
+    NearbyMomentFragment.a(this.a, false);
+    if (paramBoolean1)
+    {
+      NearbyMomentFragment.b(this.a, paramBoolean2);
+      if (paramBoolean2) {
+        NearbyMomentFragment.a(this.a).setText(anni.a(2131705999));
+      }
+      NearbyMomentFragment.a(this.a, paramInt);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = NearbyMomentFragment.a(this.a, paramList);
+        NearbyMomentFragment.a(this.a).addAll(paramList);
+        NearbyMomentFragment.a(this.a).b(paramList);
+        NearbyMomentFragment.a(this.a, paramList);
+      }
+    }
+  }
 }
 
 

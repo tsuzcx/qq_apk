@@ -20,10 +20,13 @@ import com.tencent.viola.bridge.NativeInvokeHelper;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.module.ViolaModuleManager;
+import com.tencent.viola.nativevue.NativeVueEngine;
 import com.tencent.viola.ui.action.DOMAction;
+import com.tencent.viola.ui.action.MethodCreateBody;
 import com.tencent.viola.ui.action.MethodUpdateElement;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
+import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.context.RenderActionContextImpl;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.DomObjectCell;
@@ -95,11 +98,13 @@ public class ViolaInstance
   public long mLayoutStart = 0L;
   private ConcurrentHashMap<String, Integer> mLifeCycleMap = new ConcurrentHashMap();
   private String mMasterListRef;
+  private String mMasterVideoRef;
   private int mMatchWindowsX;
   private int mMatchWindowsY;
   private int mMaxDeepLayer;
   private int mMaxVDomDeepLayer;
   private boolean mMeasuredExactly = true;
+  public boolean mNVMeasuredExactly = true;
   private NativeInvokeHelper mNativeInvokeHelper;
   public long mPageStartTime = 0L;
   private boolean mPageVisiable = true;
@@ -111,6 +116,10 @@ public class ViolaInstance
   private String mUrl;
   private ViolaInstance.ViolaPageListener mViolaPageListener;
   private int mWidth;
+  private VComponentContainer preCreateBodyRootComp;
+  private View preCreateBodyView;
+  private volatile boolean supportNativeVue;
+  private int transformCount;
   
   static
   {
@@ -136,6 +145,17 @@ public class ViolaInstance
     init();
     ViolaEnvironment.sApplication = paramApplication;
     detectCompatMode(paramString);
+  }
+  
+  private void addRealBody(VComponentContainer paramVComponentContainer)
+  {
+    if ((paramVComponentContainer == null) || (paramVComponentContainer.getHostView() == null) || (this.mRenderContainer == null)) {
+      return;
+    }
+    if (paramVComponentContainer.getHostView().getParent() != null) {
+      ((ViewGroup)paramVComponentContainer.getHostView().getParent()).removeView(paramVComponentContainer.getHostView());
+    }
+    this.mRenderContainer.addView(paramVComponentContainer.getHostView(), 0);
   }
   
   private void destroyView(View paramView)
@@ -225,6 +245,79 @@ public class ViolaInstance
     return true;
   }
   
+  private void onRootCompCreateInNativeVueMode(VComponentContainer paramVComponentContainer, boolean paramBoolean)
+  {
+    if ((paramVComponentContainer == null) || (paramVComponentContainer.getHostView() == null)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      onRootCompCreateInNormalMode(paramVComponentContainer);
+      this.preCreateBodyView = paramVComponentContainer.getHostView();
+      this.preCreateBodyRootComp = paramVComponentContainer;
+      return;
+    }
+    addRealBody(paramVComponentContainer);
+  }
+  
+  private void onRootCompCreateInNormalMode(VComponentContainer paramVComponentContainer)
+  {
+    if ((paramVComponentContainer == null) || (paramVComponentContainer.getHostView() == null) || (this.mRenderContainer == null)) {
+      return;
+    }
+    this.mRenderContainer.removeAllViews();
+    if (paramVComponentContainer.getHostView().getParent() == null) {
+      this.mRenderContainer.addView(paramVComponentContainer.getHostView());
+    }
+    for (;;)
+    {
+      if (!this.mRendered)
+      {
+        ViolaLogUtils.e("ViolaInstance", "violaInstance pageEndMonitor end!");
+        pageEndMonitor();
+      }
+      this.mRendered = true;
+      if (!this.isResume) {
+        break;
+      }
+      this.mRootComp.onActivityResume();
+      return;
+      this.mRenderContainer.addView((View)paramVComponentContainer.getRealView().getParent());
+    }
+  }
+  
+  private void removeNativeVueView(View paramView)
+  {
+    if ((this.mRenderContainer == null) || (paramView == null)) {
+      return;
+    }
+    if (this.preCreateBodyRootComp != null)
+    {
+      this.preCreateBodyRootComp.destroyComp();
+      this.preCreateBodyRootComp = null;
+    }
+    this.mRenderContainer.removeView(paramView);
+    this.preCreateBodyView = null;
+  }
+  
+  private String tryAddNativeVue(String paramString)
+  {
+    Object localObject = paramString;
+    if (this.supportNativeVue) {}
+    try
+    {
+      localObject = new JSONObject(paramString);
+      ((JSONObject)localObject).put("isNativeVue", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      ViolaLogUtils.e("ViolaInstance", "tryAddNativeVue error: " + localJSONException.getMessage());
+    }
+    return paramString;
+  }
+  
   private void updatePageDestroy()
   {
     try
@@ -279,11 +372,23 @@ public class ViolaInstance
     return false;
   }
   
+  public void decreaseTransformCount()
+  {
+    this.transformCount -= 1;
+    try
+    {
+      if (this.transformCount == 0) {
+        updateInstance(new JSONObject().put("preCreateBodyAnimationFinish", 1).toString());
+      }
+      return;
+    }
+    catch (JSONException localJSONException) {}
+  }
+  
   public void destroy()
   {
     try
     {
-      updatePageDestroy();
       if (this.mRootComp != null)
       {
         this.mRootComp.destroy();
@@ -432,6 +537,11 @@ public class ViolaInstance
     return this.mMasterListRef;
   }
   
+  public String getMasterVideoRef()
+  {
+    return this.mMasterVideoRef;
+  }
+  
   public int getMatchWindowsX()
   {
     if (this.mMatchWindowsX < 0) {
@@ -484,6 +594,11 @@ public class ViolaInstance
     return this.mRenderContainer.getWidth();
   }
   
+  public VComponentContainer getRootComp()
+  {
+    return this.mRootComp;
+  }
+  
   public View getRootView()
   {
     if (this.mRootComp != null) {
@@ -507,6 +622,30 @@ public class ViolaInstance
     return this.mViolaPageListener;
   }
   
+  public void hidePreCreateBody()
+  {
+    removeNativeVueView(this.preCreateBodyView);
+  }
+  
+  public void increaseTransformCount()
+  {
+    this.transformCount += 1;
+  }
+  
+  public boolean initNativeVue(String paramString1, String paramString2)
+  {
+    try
+    {
+      boolean bool = ViolaSDKManager.getInstance().initNativeVue(paramString1, paramString2);
+      return bool;
+    }
+    catch (Exception paramString1)
+    {
+      ViolaLogUtils.e("ViolaInstance", "[initNativeVue] error: " + paramString1.getMessage());
+    }
+    return false;
+  }
+  
   public boolean isCompatMode()
   {
     return this.compatMode;
@@ -515,6 +654,11 @@ public class ViolaInstance
   public boolean isDestroy()
   {
     return this.isDestroy;
+  }
+  
+  public boolean isGlobalMode()
+  {
+    return this.isGlobalMode;
   }
   
   public boolean isLayerTypeEnabled()
@@ -543,6 +687,11 @@ public class ViolaInstance
   public boolean isRootMeasuredExactly()
   {
     return this.mMeasuredExactly;
+  }
+  
+  public boolean isSupportNativeVue()
+  {
+    return this.supportNativeVue;
   }
   
   public boolean onActivityBack()
@@ -596,6 +745,7 @@ public class ViolaInstance
   
   public void onActivityDestroy()
   {
+    updatePageDestroy();
     Object localObject = getComponentMap();
     if (localObject != null)
     {
@@ -603,14 +753,21 @@ public class ViolaInstance
       while (((Iterator)localObject).hasNext())
       {
         VComponent localVComponent = (VComponent)((Iterator)localObject).next();
-        if (!localVComponent.isDestroyed()) {
+        if (!localVComponent.isDestroyed())
+        {
           localVComponent.onActivityDestroy();
+          DOMActionContext localDOMActionContext = ViolaUtils.getDomActionContext(this.mInstanceId);
+          if (localDOMActionContext != null)
+          {
+            localDOMActionContext.unregisterComponent(localVComponent.getRef());
+            localDOMActionContext.unregisterDOMObject(localVComponent.getRef());
+          }
         }
       }
     }
     localObject = ViolaModuleManager.findModuleMapById(this.mInstanceId);
-    ViolaSDKManager.getInstance().postOnUiThreadDelay(new ViolaInstance.3(this, (Map)localObject), 300L);
-    destroy();
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new ViolaInstance.3(this, (Map)localObject), 3000L);
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new ViolaInstance.4(this), 3000L);
     if (this.mViolaPageListener != null) {
       this.mViolaPageListener = null;
     }
@@ -752,13 +909,13 @@ public class ViolaInstance
   
   public void onLayoutChangeCallBack(View paramView) {}
   
-  public void onRootCreated(VComponentContainer paramVComponentContainer)
+  public void onRootCreated(VComponentContainer paramVComponentContainer, boolean paramBoolean)
   {
     ViolaLogUtils.e("ViolaInstance", "violaInstance onRootCreated start!");
     if (!this.isDestroy)
     {
       ViolaLogUtils.e("ViolaInstance", "violaInstance pageEndMonitor postOnUiThread start!");
-      ViolaSDKManager.getInstance().postOnUiThread(new ViolaInstance.1(this, paramVComponentContainer));
+      ViolaSDKManager.getInstance().postOnUiThread(new ViolaInstance.1(this, paramVComponentContainer, paramBoolean));
       return;
     }
     ViolaLogUtils.e("ViolaInstance", "onRootCreated is destroy");
@@ -846,6 +1003,7 @@ public class ViolaInstance
     renderJsStartMonitor();
     jsCreateInstanceStart = System.currentTimeMillis();
     ensureRenderArchor();
+    paramString2 = tryAddNativeVue(paramString2);
     ViolaSDKManager.getInstance().createInstance(this, paramString1, null, paramString2);
     ViolaLogUtils.e("ViolaInstance", "violaInstance render end!,jsUrl=" + this.mUrl);
   }
@@ -860,6 +1018,7 @@ public class ViolaInstance
     jsCreateInstanceStart = System.currentTimeMillis();
     this.mInitData = paramString2;
     this.mCreateBodyCache = paramString3;
+    paramString2 = tryAddNativeVue(paramString2);
     ensureRenderArchor();
     ViolaSDKManager.getInstance().createInstanceJSSource(this, paramString1, paramString3, paramString2);
     ViolaLogUtils.e("ViolaInstance", "violaInstance renderJSSource end!,jsUrl=" + this.mUrl);
@@ -884,6 +1043,49 @@ public class ViolaInstance
       localIReportDelegate.addReportData(ViolaEnvironment.KEY_RENDER_JS, ViolaEnvironment.JS_START);
     }
     this.mReportDataMap.put(ViolaEnvironment.KEY_RENDER_JS, ViolaEnvironment.JS_START);
+  }
+  
+  public void renderVueDom(String paramString1, String paramString2)
+  {
+    boolean bool = true;
+    long l = System.currentTimeMillis();
+    paramString1 = ViolaUtils.getVueDomFromJsSource(paramString1, "@nativeDom");
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      NativeVueEngine.CURRENT_URL = this.mUrl;
+      paramString1 = ViolaSDKManager.getInstance().createVueDom(paramString1, paramString2);
+      ViolaUtils.reportNVCost(System.currentTimeMillis() - l);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2 = new MethodCreateBody(new JSONObject(paramString1));
+        ViolaSDKManager.getInstance().registerInstanceAndId(this);
+        paramString2.setCreateFromNativeVue(true);
+        ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstanceId, paramString2, true);
+        if (TextUtils.isEmpty(paramString1)) {
+          continue;
+        }
+        this.supportNativeVue = bool;
+      }
+      catch (Exception paramString1)
+      {
+        this.supportNativeVue = false;
+        ViolaLogUtils.e("ViolaInstance", "[renderVueDom] error: " + paramString1.getMessage());
+        continue;
+        paramString1 = "2";
+        continue;
+      }
+      if (!this.supportNativeVue) {
+        continue;
+      }
+      paramString1 = "1";
+      ViolaUtils.reportNVProcess(paramString1, NativeVueEngine.CURRENT_URL);
+      NativeVueEngine.CURRENT_URL = null;
+      return;
+      bool = false;
+    }
   }
   
   public void setBizActivity(Activity paramActivity)
@@ -920,6 +1122,11 @@ public class ViolaInstance
   public void setMasterListRef(String paramString)
   {
     this.mMasterListRef = paramString;
+  }
+  
+  public void setMasterVideoRef(String paramString)
+  {
+    this.mMasterVideoRef = paramString;
   }
   
   public void setMaxDomDeep(int paramInt)
@@ -1031,7 +1238,7 @@ public class ViolaInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaInstance
  * JD-Core Version:    0.7.0.1
  */

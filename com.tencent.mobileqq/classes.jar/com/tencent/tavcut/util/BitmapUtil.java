@@ -1,6 +1,7 @@
 package com.tencent.tavcut.util;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
@@ -125,197 +126,196 @@ public class BitmapUtil
   
   public static boolean saveBitmap(Bitmap paramBitmap, int paramInt, String paramString)
   {
-    return saveBitmap(paramBitmap, paramInt, paramString, null);
+    return saveBitmap(paramBitmap, Bitmap.CompressFormat.JPEG, paramInt, paramString, null);
   }
   
   /* Error */
-  public static boolean saveBitmap(Bitmap paramBitmap, int paramInt, String paramString, ExifInterface paramExifInterface)
+  public static boolean saveBitmap(Bitmap paramBitmap, Bitmap.CompressFormat paramCompressFormat, int paramInt, String paramString, ExifInterface paramExifInterface)
   {
     // Byte code:
     //   0: iconst_1
-    //   1: istore 6
+    //   1: istore 7
     //   3: iconst_0
-    //   4: istore 4
+    //   4: istore 5
     //   6: aload_0
     //   7: invokestatic 38	com/tencent/tavcut/util/BitmapUtil:isValidBitmap	(Landroid/graphics/Bitmap;)Z
     //   10: ifne +13 -> 23
     //   13: getstatic 16	com/tencent/tavcut/util/BitmapUtil:TAG	Ljava/lang/String;
-    //   16: ldc 160
-    //   18: invokestatic 163	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: ldc 166
+    //   18: invokestatic 169	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: iconst_0
     //   22: ireturn
     //   23: aconst_null
-    //   24: astore 8
-    //   26: new 165	java/io/FileOutputStream
+    //   24: astore 9
+    //   26: new 171	java/io/FileOutputStream
     //   29: dup
-    //   30: new 167	java/io/File
+    //   30: new 173	java/io/File
     //   33: dup
-    //   34: aload_2
-    //   35: invokespecial 168	java/io/File:<init>	(Ljava/lang/String;)V
-    //   38: invokespecial 171	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   41: astore 9
-    //   43: aload 9
-    //   45: astore 8
+    //   34: aload_3
+    //   35: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 177	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   41: astore 10
+    //   43: aload 10
+    //   45: astore 9
     //   47: aload_0
-    //   48: getstatic 177	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   51: iload_1
-    //   52: aload 9
-    //   54: invokevirtual 181	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   57: pop
-    //   58: aload 9
-    //   60: ifnull +237 -> 297
-    //   63: aload 9
-    //   65: invokevirtual 184	java/io/FileOutputStream:flush	()V
-    //   68: aload 9
-    //   70: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   73: aload_3
-    //   74: ifnull +198 -> 272
-    //   77: new 111	android/media/ExifInterface
-    //   80: dup
-    //   81: aload_2
-    //   82: invokespecial 114	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
-    //   85: astore_0
-    //   86: ldc 111
-    //   88: invokevirtual 191	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
-    //   91: astore_2
-    //   92: aload_2
-    //   93: arraylength
-    //   94: istore 5
-    //   96: iload 4
-    //   98: istore_1
-    //   99: iload_1
-    //   100: iload 5
-    //   102: if_icmpge +173 -> 275
-    //   105: aload_2
-    //   106: iload_1
-    //   107: aaload
-    //   108: astore 8
-    //   110: aload 8
-    //   112: invokevirtual 196	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   115: astore 9
-    //   117: aload 9
-    //   119: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   122: ifne +39 -> 161
-    //   125: aload 9
-    //   127: ldc 203
-    //   129: invokevirtual 209	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   132: ifeq +29 -> 161
-    //   135: aload 8
-    //   137: ldc 111
-    //   139: invokevirtual 213	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   142: invokevirtual 216	java/lang/Object:toString	()Ljava/lang/String;
-    //   145: astore 8
-    //   147: aload 8
-    //   149: ldc 116
-    //   151: invokevirtual 220	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   154: istore 7
-    //   156: iload 7
-    //   158: ifeq +85 -> 243
-    //   161: iload_1
-    //   162: iconst_1
-    //   163: iadd
-    //   164: istore_1
-    //   165: goto -66 -> 99
-    //   168: astore_0
-    //   169: aload_0
-    //   170: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   173: iconst_0
-    //   174: istore 6
-    //   176: goto -103 -> 73
-    //   179: astore 10
-    //   181: aconst_null
-    //   182: astore_0
+    //   48: aload_1
+    //   49: iload_2
+    //   50: aload 10
+    //   52: invokevirtual 181	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   55: pop
+    //   56: aload 10
+    //   58: ifnull +229 -> 287
+    //   61: aload 10
+    //   63: invokevirtual 184	java/io/FileOutputStream:flush	()V
+    //   66: aload 10
+    //   68: invokevirtual 187	java/io/FileOutputStream:close	()V
+    //   71: aload 4
+    //   73: ifnull +190 -> 263
+    //   76: new 111	android/media/ExifInterface
+    //   79: dup
+    //   80: aload_3
+    //   81: invokespecial 114	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
+    //   84: astore_0
+    //   85: ldc 111
+    //   87: invokevirtual 191	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   90: astore_1
+    //   91: aload_1
+    //   92: arraylength
+    //   93: istore 6
+    //   95: iload 5
+    //   97: istore_2
+    //   98: iload_2
+    //   99: iload 6
+    //   101: if_icmpge +165 -> 266
+    //   104: aload_1
+    //   105: iload_2
+    //   106: aaload
+    //   107: astore_3
+    //   108: aload_3
+    //   109: invokevirtual 196	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   112: astore 9
+    //   114: aload 9
+    //   116: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   119: ifne +36 -> 155
+    //   122: aload 9
+    //   124: ldc 203
+    //   126: invokevirtual 209	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   129: ifeq +26 -> 155
+    //   132: aload_3
+    //   133: ldc 111
+    //   135: invokevirtual 213	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   138: invokevirtual 216	java/lang/Object:toString	()Ljava/lang/String;
+    //   141: astore_3
+    //   142: aload_3
+    //   143: ldc 116
+    //   145: invokevirtual 220	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   148: istore 8
+    //   150: iload 8
+    //   152: ifeq +83 -> 235
+    //   155: iload_2
+    //   156: iconst_1
+    //   157: iadd
+    //   158: istore_2
+    //   159: goto -61 -> 98
+    //   162: astore_0
+    //   163: aload_0
+    //   164: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   167: iconst_0
+    //   168: istore 7
+    //   170: goto -99 -> 71
+    //   173: astore_1
+    //   174: aconst_null
+    //   175: astore_0
+    //   176: aload_0
+    //   177: astore 9
+    //   179: aload_1
+    //   180: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
     //   183: aload_0
-    //   184: astore 8
-    //   186: aload 10
-    //   188: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   184: ifnull +103 -> 287
+    //   187: aload_0
+    //   188: invokevirtual 184	java/io/FileOutputStream:flush	()V
     //   191: aload_0
-    //   192: ifnull +105 -> 297
-    //   195: aload_0
-    //   196: invokevirtual 184	java/io/FileOutputStream:flush	()V
+    //   192: invokevirtual 187	java/io/FileOutputStream:close	()V
+    //   195: goto -124 -> 71
+    //   198: astore_0
     //   199: aload_0
-    //   200: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   203: goto -130 -> 73
-    //   206: astore_0
-    //   207: aload_0
-    //   208: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   211: iconst_0
-    //   212: istore 6
-    //   214: goto -141 -> 73
-    //   217: astore_0
-    //   218: aload 8
-    //   220: astore_2
-    //   221: aload_2
-    //   222: ifnull +11 -> 233
-    //   225: aload_2
-    //   226: invokevirtual 184	java/io/FileOutputStream:flush	()V
-    //   229: aload_2
-    //   230: invokevirtual 187	java/io/FileOutputStream:close	()V
-    //   233: aload_0
-    //   234: athrow
-    //   235: astore_2
-    //   236: aload_2
-    //   237: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   240: goto -7 -> 233
-    //   243: aload_3
-    //   244: aload 8
-    //   246: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
-    //   249: astore 9
-    //   251: aload 9
-    //   253: ifnull -92 -> 161
-    //   256: aload_0
-    //   257: aload 8
-    //   259: aload 9
-    //   261: invokevirtual 227	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
-    //   264: goto -103 -> 161
-    //   267: astore_0
-    //   268: aload_0
-    //   269: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   272: iload 6
-    //   274: ireturn
-    //   275: aload_0
-    //   276: invokevirtual 230	android/media/ExifInterface:saveAttributes	()V
-    //   279: goto -7 -> 272
-    //   282: astore_0
-    //   283: aload 8
-    //   285: astore_2
-    //   286: goto -65 -> 221
-    //   289: astore 10
-    //   291: aload 9
-    //   293: astore_0
-    //   294: goto -111 -> 183
-    //   297: iconst_0
-    //   298: istore 6
-    //   300: goto -227 -> 73
+    //   200: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   203: iconst_0
+    //   204: istore 7
+    //   206: goto -135 -> 71
+    //   209: astore_0
+    //   210: aload 9
+    //   212: astore_1
+    //   213: aload_1
+    //   214: ifnull +11 -> 225
+    //   217: aload_1
+    //   218: invokevirtual 184	java/io/FileOutputStream:flush	()V
+    //   221: aload_1
+    //   222: invokevirtual 187	java/io/FileOutputStream:close	()V
+    //   225: aload_0
+    //   226: athrow
+    //   227: astore_1
+    //   228: aload_1
+    //   229: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   232: goto -7 -> 225
+    //   235: aload 4
+    //   237: aload_3
+    //   238: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   241: astore 9
+    //   243: aload 9
+    //   245: ifnull -90 -> 155
+    //   248: aload_0
+    //   249: aload_3
+    //   250: aload 9
+    //   252: invokevirtual 227	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: goto -100 -> 155
+    //   258: astore_0
+    //   259: aload_0
+    //   260: invokestatic 91	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   263: iload 7
+    //   265: ireturn
+    //   266: aload_0
+    //   267: invokevirtual 230	android/media/ExifInterface:saveAttributes	()V
+    //   270: goto -7 -> 263
+    //   273: astore_0
+    //   274: aload 9
+    //   276: astore_1
+    //   277: goto -64 -> 213
+    //   280: astore_1
+    //   281: aload 10
+    //   283: astore_0
+    //   284: goto -108 -> 176
+    //   287: iconst_0
+    //   288: istore 7
+    //   290: goto -219 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	303	0	paramBitmap	Bitmap
-    //   0	303	1	paramInt	int
-    //   0	303	2	paramString	String
-    //   0	303	3	paramExifInterface	ExifInterface
-    //   4	93	4	i	int
-    //   94	9	5	j	int
-    //   1	298	6	bool1	boolean
-    //   154	3	7	bool2	boolean
-    //   24	260	8	localObject1	Object
-    //   41	251	9	localObject2	Object
-    //   179	8	10	localIOException1	IOException
-    //   289	1	10	localIOException2	IOException
+    //   0	293	0	paramBitmap	Bitmap
+    //   0	293	1	paramCompressFormat	Bitmap.CompressFormat
+    //   0	293	2	paramInt	int
+    //   0	293	3	paramString	String
+    //   0	293	4	paramExifInterface	ExifInterface
+    //   4	92	5	i	int
+    //   93	9	6	j	int
+    //   1	288	7	bool1	boolean
+    //   148	3	8	bool2	boolean
+    //   24	251	9	localObject	Object
+    //   41	241	10	localFileOutputStream	java.io.FileOutputStream
     // Exception table:
     //   from	to	target	type
-    //   63	73	168	java/io/IOException
-    //   26	43	179	java/io/IOException
-    //   195	203	206	java/io/IOException
-    //   26	43	217	finally
-    //   225	233	235	java/io/IOException
-    //   77	96	267	java/lang/Exception
-    //   110	156	267	java/lang/Exception
-    //   243	251	267	java/lang/Exception
-    //   256	264	267	java/lang/Exception
-    //   275	279	267	java/lang/Exception
-    //   47	58	282	finally
-    //   186	191	282	finally
-    //   47	58	289	java/io/IOException
+    //   61	71	162	java/io/IOException
+    //   26	43	173	java/io/IOException
+    //   187	195	198	java/io/IOException
+    //   26	43	209	finally
+    //   217	225	227	java/io/IOException
+    //   76	95	258	java/lang/Exception
+    //   108	150	258	java/lang/Exception
+    //   235	243	258	java/lang/Exception
+    //   248	255	258	java/lang/Exception
+    //   266	270	258	java/lang/Exception
+    //   47	56	273	finally
+    //   179	183	273	finally
+    //   47	56	280	java/io/IOException
   }
   
   public static Bitmap scaleBitmap(Bitmap paramBitmap, int paramInt)
@@ -352,7 +352,7 @@ public class BitmapUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.BitmapUtil
  * JD-Core Version:    0.7.0.1
  */

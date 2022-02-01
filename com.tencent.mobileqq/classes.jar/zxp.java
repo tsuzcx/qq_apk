@@ -1,25 +1,24 @@
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import mqq.app.QQPermissionCallback;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class zxp
-  implements QQPermissionCallback
+class zxp
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public zxp(DeviceTipActivity paramDeviceTipActivity) {}
+  zxp(zxo paramzxo) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getSpanSize(int paramInt)
   {
-    bdgm.b(this.a);
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DeviceTipActivity.b(this.a);
+    paramInt = zxo.a(this.a, paramInt);
+    zxu localzxu = this.a.a(paramInt);
+    if (localzxu != null) {
+      return localzxu.getSpanCount(localzxu.getLocalPosition(paramInt));
+    }
+    return ((GridLayoutManager)zxo.a(this.a)).getSpanCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zxp
  * JD-Core Version:    0.7.0.1
  */

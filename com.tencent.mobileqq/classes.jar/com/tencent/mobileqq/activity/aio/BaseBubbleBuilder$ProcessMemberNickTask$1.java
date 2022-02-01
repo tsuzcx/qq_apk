@@ -9,13 +9,13 @@ class BaseBubbleBuilder$ProcessMemberNickTask$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131364182, this.a);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131364388, this.a);
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.this$0.jdField_a_of_type_AndroidViewView$OnLongClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ProcessMemberNickTask.1
  * JD-Core Version:    0.7.0.1
  */

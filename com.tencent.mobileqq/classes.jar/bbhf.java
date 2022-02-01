@@ -1,30 +1,26 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class bbhf
-  implements View.OnTouchListener
+public class bbhf
+  implements Manager
 {
-  bbhf(bbhe parambbhe) {}
+  public static final String a;
+  public static final String b = anni.a(2131712445);
+  public static final String c = anni.a(2131712444);
+  public static final String d = anni.a(2131712447);
+  int jdField_a_of_type_Int = -1;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    jdField_a_of_type_JavaLangString = anni.a(2131712446);
+  }
+  
+  public bbhf(QQAppInterface paramQQAppInterface) {}
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

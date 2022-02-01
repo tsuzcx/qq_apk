@@ -1,36 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
 
-class svr
-  implements rse
+public class svr
+  extends AnimatorListenerAdapter
 {
-  svr(svp paramsvp) {}
+  public svr(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (!bdin.g(svl.a(this.a.a)))
-    {
-      QQToast.a(svl.a(this.a.a), 1, svl.a(this.a.a).getString(2131718736), 0).a();
-      return false;
+    super.onAnimationCancel(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
     }
-    paramView = ors.a();
-    owy.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
-    QQToast.a(svl.a(this.a.a), -1, svl.a(this.a.a).getString(2131700054), 0).b(svl.a(this.a.a).getResources().getDimensionPixelSize(2131298914));
-    svl.a(this.a.a).dismiss();
-    if (svl.a(this.a.a) != null) {
-      svl.a(this.a.a).a(svl.a(this.a.a), svl.e(this.a.a), svl.a(this.a.a), paramArrayList);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
+    SlideActiveAnimController.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svr
  * JD-Core Version:    0.7.0.1
  */

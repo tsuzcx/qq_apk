@@ -1,17 +1,24 @@
-class xbt
-  implements xwi
+public abstract interface xbt
 {
-  xbt(xbs paramxbs) {}
+  public abstract void a();
   
-  public void a()
-  {
-    xbv localxbv = xbs.a(this.a);
-    xbs.a(this.a, xbs.a(this.a)).a(localxbv);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbt
  * JD-Core Version:    0.7.0.1
  */

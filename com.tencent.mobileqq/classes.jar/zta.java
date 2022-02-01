@@ -1,31 +1,58 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class zta
-  extends MqqHandler
+public class zta
+  implements bkhw
 {
-  zta(zsz paramzsz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zta(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMessage.what == 100)
+    if (this.a.h) {
+      return;
+    }
+    this.a.h = true;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.g();
+        if ((this.a.g & 0x1) != 0)
+        {
+          bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.h();
+            if ((this.a.g & 0x1) != 0)
+            {
+              bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.e();
+                if ((this.a.g & 0x1) != 0) {
+                  bcst.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  bcst.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
       }
-      zsz.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zta
  * JD-Core Version:    0.7.0.1
  */

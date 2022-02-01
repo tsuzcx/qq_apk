@@ -1,17 +1,8 @@
-public abstract class aqxd
+public class aqxd
 {
-  public aqlx a;
-  
-  public abstract int a();
-  
-  public void a(aqlx paramaqlx)
-  {
-    this.a = paramaqlx;
-  }
-  
-  public abstract boolean a();
-  
-  public abstract void b();
+  public int a;
+  public String a = "";
+  public String b = "";
 }
 
 

@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class bbin
-  implements Animation.AnimationListener
 {
-  public bbin(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public volatile long a;
+  public volatile String a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
-  }
+  public bbin(UniteSearchActivity paramUniteSearchActivity) {}
 }
 
 

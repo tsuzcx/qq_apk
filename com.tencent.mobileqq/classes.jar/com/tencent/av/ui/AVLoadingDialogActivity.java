@@ -1,37 +1,50 @@
 package com.tencent.av.ui;
 
+import Override;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.ref.WeakReference;
-import mec;
-import med;
+import mbe;
+import mbf;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mec(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new med(this.jdField_a_of_type_JavaLangString);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mbe(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new mbf(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    Dialog localDialog = new Dialog(this, 2131755801);
-    localDialog.setContentView(2131559437);
-    localDialog.setCancelable(false);
-    TextView localTextView = (TextView)localDialog.findViewById(2131371894);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755823);
+    localReportDialog.setContentView(2131559567);
+    localReportDialog.setCancelable(false);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131372466);
     if (localTextView != null) {
-      localTextView.setText(2131696352);
+      localTextView.setText(2131695234);
     }
-    return localDialog;
+    return localReportDialog;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -76,6 +89,13 @@ public class AVLoadingDialogActivity
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 5000L);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected Dialog onCreateDialog(int paramInt)
   {
     switch (paramInt)
@@ -93,7 +113,7 @@ public class AVLoadingDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.AVLoadingDialogActivity
  * JD-Core Version:    0.7.0.1
  */

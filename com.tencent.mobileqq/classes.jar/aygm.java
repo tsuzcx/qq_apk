@@ -1,8 +1,10 @@
-public abstract interface aygm
+import java.util.List;
+
+public class aygm
 {
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a(String paramString);
+  public List<aygk> a;
+  public boolean a;
+  public List<ayik> b;
 }
 
 

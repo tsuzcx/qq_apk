@@ -1,11 +1,22 @@
-class asij
-  implements baug
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+
+public class asij
+  implements asnl
 {
-  asij(asii paramasii) {}
+  public asij(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public void onResp(bavf parambavf) {}
+  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  {
+    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
+  }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  {
+    asme.a(ExtendFriendCampusFragment.a(this.a), false);
+    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
+  }
 }
 
 

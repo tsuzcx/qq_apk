@@ -1,10 +1,34 @@
-public abstract interface amyb
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+
+public class amyb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public amyb(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
   
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void k_(int paramInt);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(amxy.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    label42:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(amxy.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(amxy.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+  }
 }
 
 

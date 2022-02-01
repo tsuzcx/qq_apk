@@ -1,30 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.data.ContactBinded;
 
-class ajaq
-  implements EIPCResultCallback
+public class ajaq
+  extends ajax
 {
-  ajaq(ajao paramajao, ajal paramajal, DownloadParam paramDownloadParam) {}
+  public ContactBinded a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ajaq(ContactBinded paramContactBinded)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Ajal != null) {
-        this.jdField_a_of_type_Ajal.onResult(i, paramEIPCResult);
-      }
-    }
-    while (this.jdField_a_of_type_Ajal == null)
-    {
-      int i;
-      return;
-    }
-    this.jdField_a_of_type_Ajal.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
+    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
+    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
   }
 }
 

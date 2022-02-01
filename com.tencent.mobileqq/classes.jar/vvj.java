@@ -1,17 +1,20 @@
-import android.view.animation.Interpolator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-public final class vvj
-  implements Interpolator
+class vvj
+  implements DialogInterface.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  vvj(vvi paramvvi) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vvj
  * JD-Core Version:    0.7.0.1
  */

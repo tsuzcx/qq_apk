@@ -1,29 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class acfb
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public acfb(AssistantSettingActivity paramAssistantSettingActivity, SharedPreferences paramSharedPreferences, String paramString) {}
+  private static acfb jdField_a_of_type_Acfb;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static acfb a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sticker_switch_" + this.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-    if ((paramBoolean) && (EmojiStickerManager.a())) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      EmojiStickerManager.e = paramBoolean;
-      if (EmojiStickerManager.e) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.c(), "Stick", "ClickSwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      }
-      return;
+    if (jdField_a_of_type_Acfb == null) {
+      jdField_a_of_type_Acfb = new acfb();
     }
+    return jdField_a_of_type_Acfb;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
   }
 }
 

@@ -1,310 +1,313 @@
-import android.os.Environment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.1.2;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.1.4;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Executor;
 
 public class atdc
+  extends aszq
 {
-  public static String a()
-  {
-    return c() + "now_download_temp_QQ.apk";
-  }
+  final int jdField_a_of_type_Int = 1000;
+  long jdField_a_of_type_Long = 0L;
   
-  private static void a(String paramString)
+  atdc(atdb paramatdb) {}
+  
+  public void a(long paramLong1, long paramLong2)
   {
-    paramString = new File(paramString);
-    if (!paramString.exists())
+    this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)paramLong1 / (float)paramLong2);
+    this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+    paramLong1 = System.currentTimeMillis();
+    if (paramLong1 - this.jdField_a_of_type_Long >= 1000L)
     {
-      if (!paramString.getParentFile().exists()) {
-        a(paramString.getParent());
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FileManagerRSWorker<FileAssistant>", 4, "Id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "]Notify UI Progress! and send continue!");
       }
-      paramString.mkdir();
     }
   }
   
-  public static boolean a(String paramString)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    if (this.jdField_a_of_type_Atdb.a())
+    {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= ^! [CS Replay], SessionId[" + this.jdField_a_of_type_Atdb.jdField_c_of_type_Long + "], working stop!");
+      return;
     }
-    return new File(paramString).delete();
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (!"com.tencent.now".equals(paramString2)) {}
-    while (!b(b())) {
-      return false;
+    if (paramBoolean2) {}
+    for (String str1 = paramString4 + "&isthumb=0";; str1 = paramString4)
+    {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+      }
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = paramBoolean2;
+      atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+      if (atdb.a(this.jdField_a_of_type_Atdb, paramBoolean1, paramLong1, paramString1, paramInt, "=_= ^! [CS Replay]id[", "server ret error")) {
+        break;
+      }
+      this.jdField_a_of_type_Atdb.jdField_i_of_type_JavaLangString = paramString2;
+      if (paramString5 != null) {
+        this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atdb.a(this.jdField_a_of_type_Atdb.e, paramString5);
+      }
+      short s = atdb.a(this.jdField_a_of_type_Atdb, paramShort, paramBundle);
+      ArrayList localArrayList = new ArrayList();
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          String str2 = (String)paramList.next();
+          localArrayList.add(str2 + ":" + s);
+        }
+      }
+      str1 = atdb.a(this.jdField_a_of_type_Atdb, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramBundle, str1, s, localArrayList);
+      paramList = new Bundle();
+      paramList.putInt("param_V6SelectType", this.jdField_a_of_type_Atdb.jdField_c_of_type_Int);
+      paramList.putInt("param_ipAddrType", atdb.a(this.jdField_a_of_type_Atdb));
+      int i;
+      if (this.jdField_a_of_type_Atdb.jdField_c_of_type_Boolean)
+      {
+        i = 1;
+        paramList.putInt("param_ishttps", i);
+        if (str1 != null) {
+          break label769;
+        }
+        QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= ^! [CS Replay]id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] get offlinefile info Url is null, IP is null too");
+        this.jdField_a_of_type_Atdb.a(2005);
+        if ((paramLong1 == -6101L) || (paramLong1 == -7003L)) {
+          this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+        }
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 12, null, (int)paramLong1, paramString1);
+        if (paramLong1 != 0L) {
+          break label766;
+        }
+        paramLong1 = 9048L;
+      }
+      label766:
+      for (;;)
+      {
+        atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, paramLong1, String.valueOf(paramInt), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.b(this.jdField_a_of_type_Atdb), "ip url error", null, paramList);
+        atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.k, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, paramLong1, String.valueOf(paramInt), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.c(this.jdField_a_of_type_Atdb), "ip url error", null, paramList);
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        return;
+        i = 0;
+        break;
+      }
+      label769:
+      this.jdField_a_of_type_Atdb.f = str1;
+      atdb.a(this.jdField_a_of_type_Atdb, this.jdField_a_of_type_Atdb.f);
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= ^> [CS Replay]nSessionID[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "],retCode[" + String.valueOf(paramLong1) + "] mUseHttps:" + this.jdField_a_of_type_Atdb.jdField_c_of_type_Boolean + " mHttpsDomain:" + this.jdField_a_of_type_Atdb.l + " downloadPort:" + s);
+      if ((paramLong1 != 0L) && (paramString1 != null) && (paramString1.length() > 0))
+      {
+        QLog.e("FileManagerRSWorker<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] will show taost, retCode[" + String.valueOf(paramLong1) + "], retMsg:" + paramString1);
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 4, null, (int)paramLong1, paramString1);
+      }
+      if (-1L != this.jdField_a_of_type_Atdb.jdField_b_of_type_Long) {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Atdb.e, 0, this.jdField_a_of_type_Atdb.jdField_b_of_type_Long);
+      }
+      str1 = MD5.toMD5(this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString);
+      this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString = (this.jdField_a_of_type_Atdb.jdField_c_of_type_JavaLangString + str1);
+      if (!bgnt.d(BaseApplication.getContext()))
+      {
+        QLog.e("FileManagerRSWorker<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] no network! return!");
+        this.jdField_a_of_type_Atdb.a(2005);
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 1, null, 2, null);
+        atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 2L, String.valueOf(paramInt) + "&" + String.valueOf(paramLong1), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.b(this.jdField_a_of_type_Atdb), "net", null, paramList);
+        atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.k, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 2L, String.valueOf(paramInt) + "&" + String.valueOf(paramLong1), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.c(this.jdField_a_of_type_Atdb), "net", null, paramList);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "sessionId[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "], strTmp[" + this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString + "]");
+      }
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_Long = atvo.a(this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Atdb.jdField_a_of_type_Long == this.jdField_a_of_type_Atdb.jdField_d_of_type_Long)
+      {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+        this.jdField_a_of_type_Atdb.a(2003);
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 11, new Object[] { this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Atdb.jdField_d_of_type_Long), Boolean.valueOf(true), this.jdField_a_of_type_Atdb.f }, 0, null);
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName.getBytes().length > 250)
+        {
+          this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.d(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+          this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atdb.a(this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+        }
+        if (bgmg.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = atvo.b(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+        }
+        atvo.a(new File(this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString), new File(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+        QLog.e("FileManagerRSWorker<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] is exist, and filesize is right!");
+        atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_j_of_type_JavaLangString, 0L, this.jdField_a_of_type_Atdb.f, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.f, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 0L, 0L, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.c(this.jdField_a_of_type_Atdb), null, paramList);
+        return;
+      }
+      if (this.jdField_a_of_type_Atdb.jdField_d_of_type_Long > this.jdField_a_of_type_Atdb.jdField_a_of_type_Long)
+      {
+        long l = this.jdField_a_of_type_Atdb.jdField_d_of_type_Long - this.jdField_a_of_type_Atdb.jdField_a_of_type_Long;
+        if (this.jdField_a_of_type_Atdb.jdField_a_of_type_Atut.a() < l)
+        {
+          QLog.e("FileManagerRSWorker<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] not enought space! ProcessNewPath");
+          paramList = new ArrayList();
+          paramList.addAll(localArrayList);
+          atdb.a(this.jdField_a_of_type_Atdb, l, new atdd(this, paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramInt, paramString5, paramString6, paramString7, paramLong2, paramBundle));
+          return;
+        }
+      }
+      atvy.a().execute(new FileManagerRSWorker.1.2(this));
+      return;
     }
-    return true;
   }
   
-  /* Error */
-  public static boolean a(String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore_1
-    //   8: iconst_0
-    //   9: istore 5
-    //   11: ldc 60
-    //   13: aload_2
-    //   14: invokevirtual 64	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   17: ifne +5 -> 22
-    //   20: iconst_0
-    //   21: ireturn
-    //   22: aload_0
-    //   23: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
-    //   26: ifeq -6 -> 20
-    //   29: invokestatic 67	atdc:b	()Ljava/lang/String;
-    //   32: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
-    //   35: ifeq +5 -> 40
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: invokestatic 76	atdc:a	()Ljava/lang/String;
-    //   43: astore 8
-    //   45: aload 8
-    //   47: invokestatic 69	atdc:b	(Ljava/lang/String;)Z
-    //   50: ifeq +9 -> 59
-    //   53: aload 8
-    //   55: invokestatic 78	atdc:a	(Ljava/lang/String;)Z
-    //   58: pop
-    //   59: new 28	java/io/File
-    //   62: dup
-    //   63: aload_0
-    //   64: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   67: astore_0
-    //   68: new 28	java/io/File
-    //   71: dup
-    //   72: aload 8
-    //   74: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   77: astore_2
-    //   78: aload_2
-    //   79: invokevirtual 81	java/io/File:createNewFile	()Z
-    //   82: pop
-    //   83: new 83	java/io/FileInputStream
-    //   86: dup
-    //   87: aload_0
-    //   88: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   91: astore_0
-    //   92: new 88	java/io/FileOutputStream
-    //   95: dup
-    //   96: aload_2
-    //   97: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   100: astore_1
-    //   101: sipush 1024
-    //   104: newarray byte
-    //   106: astore_2
-    //   107: aload_0
-    //   108: aload_2
-    //   109: invokevirtual 95	java/io/InputStream:read	([B)I
-    //   112: istore_3
-    //   113: iload_3
-    //   114: iconst_m1
-    //   115: if_icmpeq +58 -> 173
-    //   118: aload_1
-    //   119: aload_2
-    //   120: iconst_0
-    //   121: iload_3
-    //   122: invokevirtual 101	java/io/OutputStream:write	([BII)V
-    //   125: goto -18 -> 107
-    //   128: astore_2
-    //   129: aload_1
-    //   130: astore_2
-    //   131: aload_0
-    //   132: astore_1
-    //   133: aload_2
-    //   134: astore_0
-    //   135: aload_0
-    //   136: ifnull +7 -> 143
-    //   139: aload_0
-    //   140: invokevirtual 104	java/io/OutputStream:close	()V
-    //   143: iload 5
-    //   145: istore 4
-    //   147: aload_1
-    //   148: ifnull +11 -> 159
-    //   151: aload_1
-    //   152: invokevirtual 105	java/io/InputStream:close	()V
-    //   155: iload 5
-    //   157: istore 4
-    //   159: iload 4
-    //   161: ifne +134 -> 295
-    //   164: aload 8
-    //   166: invokestatic 78	atdc:a	(Ljava/lang/String;)Z
-    //   169: pop
-    //   170: iload 4
-    //   172: ireturn
-    //   173: aload_1
-    //   174: ifnull +7 -> 181
-    //   177: aload_1
-    //   178: invokevirtual 104	java/io/OutputStream:close	()V
-    //   181: aload_0
-    //   182: ifnull +7 -> 189
-    //   185: aload_0
-    //   186: invokevirtual 105	java/io/InputStream:close	()V
-    //   189: iconst_1
-    //   190: istore 4
-    //   192: goto -33 -> 159
-    //   195: astore_0
-    //   196: aload_0
-    //   197: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   200: iconst_1
-    //   201: istore 4
-    //   203: goto -44 -> 159
-    //   206: astore_0
-    //   207: aload_0
-    //   208: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   211: iload 5
-    //   213: istore 4
-    //   215: goto -56 -> 159
-    //   218: astore_0
-    //   219: aconst_null
-    //   220: astore_0
-    //   221: aload 7
-    //   223: astore_1
-    //   224: aload_1
-    //   225: ifnull +7 -> 232
-    //   228: aload_1
-    //   229: invokevirtual 104	java/io/OutputStream:close	()V
-    //   232: iload 5
-    //   234: istore 4
-    //   236: aload_0
-    //   237: ifnull -78 -> 159
-    //   240: aload_0
-    //   241: invokevirtual 105	java/io/InputStream:close	()V
-    //   244: iload 5
-    //   246: istore 4
-    //   248: goto -89 -> 159
-    //   251: astore_0
-    //   252: aload_0
-    //   253: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   256: iload 5
-    //   258: istore 4
-    //   260: goto -101 -> 159
-    //   263: astore_1
-    //   264: aconst_null
-    //   265: astore_0
-    //   266: aload 6
-    //   268: astore_2
-    //   269: aload_2
-    //   270: ifnull +7 -> 277
-    //   273: aload_2
-    //   274: invokevirtual 104	java/io/OutputStream:close	()V
-    //   277: aload_0
-    //   278: ifnull +7 -> 285
-    //   281: aload_0
-    //   282: invokevirtual 105	java/io/InputStream:close	()V
-    //   285: aload_1
-    //   286: athrow
-    //   287: astore_0
-    //   288: aload_0
-    //   289: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   292: goto -7 -> 285
-    //   295: aload 8
-    //   297: invokestatic 67	atdc:b	()Ljava/lang/String;
-    //   300: invokestatic 110	atdc:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   303: pop
-    //   304: iload 4
-    //   306: ireturn
-    //   307: astore_0
-    //   308: iconst_0
-    //   309: ireturn
-    //   310: astore_1
-    //   311: aload 6
-    //   313: astore_2
-    //   314: goto -45 -> 269
-    //   317: astore 6
-    //   319: aload_1
-    //   320: astore_2
-    //   321: aload 6
-    //   323: astore_1
-    //   324: goto -55 -> 269
-    //   327: astore_1
-    //   328: aload 7
-    //   330: astore_1
-    //   331: goto -107 -> 224
-    //   334: astore_2
-    //   335: goto -111 -> 224
-    //   338: astore_0
-    //   339: aconst_null
-    //   340: astore_0
-    //   341: goto -206 -> 135
-    //   344: astore_1
-    //   345: aconst_null
-    //   346: astore_2
-    //   347: aload_0
-    //   348: astore_1
-    //   349: aload_2
-    //   350: astore_0
-    //   351: goto -216 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	354	0	paramString1	String
-    //   0	354	1	paramString2	String
-    //   0	354	2	paramString3	String
-    //   112	10	3	i	int
-    //   145	160	4	bool1	boolean
-    //   9	248	5	bool2	boolean
-    //   4	308	6	localObject1	Object
-    //   317	5	6	localObject2	Object
-    //   1	328	7	localObject3	Object
-    //   43	253	8	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   101	107	128	java/io/FileNotFoundException
-    //   107	113	128	java/io/FileNotFoundException
-    //   118	125	128	java/io/FileNotFoundException
-    //   177	181	195	java/io/IOException
-    //   185	189	195	java/io/IOException
-    //   139	143	206	java/io/IOException
-    //   151	155	206	java/io/IOException
-    //   83	92	218	java/io/IOException
-    //   228	232	251	java/io/IOException
-    //   240	244	251	java/io/IOException
-    //   83	92	263	finally
-    //   273	277	287	java/io/IOException
-    //   281	285	287	java/io/IOException
-    //   78	83	307	java/io/IOException
-    //   92	101	310	finally
-    //   101	107	317	finally
-    //   107	113	317	finally
-    //   118	125	317	finally
-    //   92	101	327	java/io/IOException
-    //   101	107	334	java/io/IOException
-    //   107	113	334	java/io/IOException
-    //   118	125	334	java/io/IOException
-    //   83	92	338	java/io/FileNotFoundException
-    //   92	101	344	java/io/FileNotFoundException
-  }
-  
-  public static String b()
-  {
-    return c() + "now_download_common.apk";
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    if (this.jdField_a_of_type_Atdb.a()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= v! [Disc Download Replay] id[" + this.jdField_a_of_type_Atdb.jdField_c_of_type_Long + "]OnDiscDownloadInfo, network error");
     }
-    return new File(paramString).exists();
-  }
-  
-  public static boolean b(String paramString1, String paramString2)
-  {
-    if (!b(paramString1)) {
-      return false;
+    int i;
+    String str;
+    do
+    {
+      do
+      {
+        return;
+      } while (atdb.a(this.jdField_a_of_type_Atdb, paramBoolean, paramLong1, paramString1, paramInt2, "=_= v! [Disc Download Replay]id[", "ret error"));
+      i = atdb.a(this.jdField_a_of_type_Atdb, paramInt1, paramBundle);
+      str = "";
+      if (paramBundle != null) {
+        str = paramBundle.getString("IPv6Dns", "");
+      }
+      str = atdb.a(this.jdField_a_of_type_Atdb, paramString3, paramString4, i, str, null);
+    } while (atdb.a(this.jdField_a_of_type_Atdb, paramLong1, paramString1, paramInt2, str));
+    this.jdField_a_of_type_Atdb.f = str;
+    atdb.a(this.jdField_a_of_type_Atdb, this.jdField_a_of_type_Atdb.f);
+    QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= v [Disc Download Replay]nSessionID[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "],retCode[" + String.valueOf(paramLong1) + "]downLoadUrl[" + String.valueOf(this.jdField_a_of_type_Atdb.f) + "] mUseHttps:" + this.jdField_a_of_type_Atdb.jdField_c_of_type_Boolean + " mHttpsDomain:" + this.jdField_a_of_type_Atdb.l + " downloadPort:" + i);
+    if ((paramString1 != null) && (paramString1.length() > 0))
+    {
+      QLog.e("FileManagerRSWorker<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "] will show taost, retCode[" + String.valueOf(paramLong1) + "], retMsg:" + paramString1);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 4, null, (int)paramLong1, paramString1);
     }
-    return new File(paramString1).renameTo(new File(paramString2));
+    if ((paramString2 != null) && (paramString2.length() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "nSeseeId[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "]renamed[" + String.valueOf(paramString2) + "]");
+      }
+      this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atdb.a(this.jdField_a_of_type_Atdb.e, paramString2);
+    }
+    if (this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 1) {
+      this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = atvo.b(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString = (this.jdField_a_of_type_Atdb.jdField_c_of_type_JavaLangString + "dsc-" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid.replace("/", "")));
+    if (!bgnt.d(BaseApplication.getContext()))
+    {
+      this.jdField_a_of_type_Atdb.a(2005);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 1, null, 2, null);
+      QLog.e("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "], NetWork Error, notify UI!");
+      atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 2L, String.valueOf(paramInt2) + "&" + String.valueOf(paramLong1), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.b(this.jdField_a_of_type_Atdb), "net", null);
+      atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.k, this.jdField_a_of_type_Atdb.jdField_g_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 2L, String.valueOf(paramInt2) + "&" + String.valueOf(paramLong1), this.jdField_a_of_type_Atdb.jdField_i_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_Long, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.a(this.jdField_a_of_type_Atdb), "", atdb.c(this.jdField_a_of_type_Atdb), "net", null);
+      return;
+    }
+    this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "sessionId[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "], strTmp[" + this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString + "]");
+    }
+    this.jdField_a_of_type_Atdb.jdField_a_of_type_Long = atvo.a(this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Atdb.jdField_a_of_type_Long == this.jdField_a_of_type_Atdb.jdField_d_of_type_Long)
+    {
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.jdField_a_of_type_Atdb.a(2003);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_b_of_type_Long, this.jdField_a_of_type_Atdb.jdField_c_of_type_Long, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_Int, 11, new Object[] { this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Atdb.jdField_d_of_type_Long), Boolean.valueOf(true), this.jdField_a_of_type_Atdb.f }, 0, null);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName.getBytes().length > 250)
+      {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.d(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+        this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atdb.a(this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      }
+      if (bgmg.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString = atvo.b(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+      }
+      atvo.a(new File(this.jdField_a_of_type_Atdb.jdField_d_of_type_JavaLangString), new File(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString));
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.a(this.jdField_a_of_type_Atdb.jdField_b_of_type_JavaLangString);
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + String.valueOf(this.jdField_a_of_type_Atdb.jdField_c_of_type_Long) + "], fileExisted, notify UI!");
+      atvo.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atdb.jdField_j_of_type_JavaLangString, 0L, this.jdField_a_of_type_Atdb.f, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.f, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 0L, 0L, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, atdb.c(this.jdField_a_of_type_Atdb), null);
+      return;
+    }
+    if (this.jdField_a_of_type_Atdb.jdField_d_of_type_Long > this.jdField_a_of_type_Atdb.jdField_a_of_type_Long)
+    {
+      long l = this.jdField_a_of_type_Atdb.jdField_d_of_type_Long - this.jdField_a_of_type_Atdb.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_Atdb.jdField_a_of_type_Atut.a() < l)
+      {
+        atdb.a(this.jdField_a_of_type_Atdb, l, new atde(this, paramBoolean, paramLong1, paramString1, paramString2, paramString3, paramInt1, paramString4, paramString5, paramInt2, paramLong2, paramBundle));
+        return;
+      }
+    }
+    atvy.a().execute(new FileManagerRSWorker.1.4(this, paramString5));
   }
   
-  private static String c()
+  public void aF_()
   {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/now/";
-    a(str);
-    return str;
+    this.jdField_a_of_type_Atdb.j();
+  }
+  
+  protected void b(boolean paramBoolean, aszn paramaszn, anqe paramanqe)
+  {
+    super.b(paramBoolean, paramaszn, paramanqe);
+    QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] id[" + this.jdField_a_of_type_Atdb.jdField_c_of_type_Long + "]onDownloadFileSuc");
+    if ((paramBoolean) && ((paramaszn.jdField_c_of_type_Int == 2) || (paramaszn.jdField_c_of_type_Int == 0)) && (!this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend))
+    {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramaszn.jdField_a_of_type_Int + "],retMsg[" + paramaszn.jdField_a_of_type_JavaLangString + "],retStat[" + paramaszn.jdField_c_of_type_Int + "]. need to send file receipt");
+      if (this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strSrcName != null)
+      {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strSrcName, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq);
+        return;
+      }
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_Atdb.jdField_d_of_type_Long, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq);
+      return;
+    }
+    QLog.i("FileManagerRSWorker<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramaszn.jdField_a_of_type_Int + "],retMsg[" + paramaszn.jdField_a_of_type_JavaLangString + "],retStat[" + paramaszn.jdField_c_of_type_Int + "]. don't need to send file receipt");
+  }
+  
+  protected void b(boolean paramBoolean, aszn paramaszn, anqe paramanqe, List<String> paramList)
+  {
+    if ((paramaszn.jdField_a_of_type_Int == 0) && (!this.jdField_a_of_type_Atdb.jdField_b_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_Atdb.jdField_a_of_type_Atuh != null) {
+        this.jdField_a_of_type_Atdb.jdField_a_of_type_Atuh.a();
+      }
+      this.jdField_a_of_type_Atdb.b();
+      if ((paramaszn.jdField_a_of_type_ArrayOfByte == null) || (paramaszn.jdField_a_of_type_ArrayOfByte.length <= 0)) {
+        break label272;
+      }
+      this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString = new String(paramaszn.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = this.jdField_a_of_type_Atdb.jdField_g_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Atdb.jdField_j_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Atdb.h = System.currentTimeMillis();
+      atvo.b(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 5, this.jdField_a_of_type_Atdb.f);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Atdb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atdb.e, this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, atdb.a(this.jdField_a_of_type_Atdb));
+      paramaszn = new atvn();
+      paramaszn.jdField_b_of_type_JavaLangString = "send_file_suc";
+      paramaszn.jdField_a_of_type_Int = 1;
+      atvm.a(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramaszn);
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Atdb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return;
+      label272:
+      QLog.e("FileManagerRSWorker<FileAssistant>", 1, "!!!!!Server Return the UUID is null!!!!!");
+    }
   }
 }
 

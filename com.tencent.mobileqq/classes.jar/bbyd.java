@@ -1,30 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbyd
+class bbyd
+  extends Handler
 {
-  protected ImageView a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected RedDotAnimateView a;
-  protected WeakReference<BaseActivity> a;
+  bbyd(bbyc parambbyc) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 0)
+    {
+      bbyc.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      }
+    }
+  }
 }
 
 

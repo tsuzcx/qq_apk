@@ -1,71 +1,322 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
 public class qba
-  extends qay
 {
-  public qba(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  JSONObject a = new JSONObject();
   
-  public pxl a()
+  public qba A(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).g().q().l().n();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("layoutComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBigImageVideo)))
-    {
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout2.setLayoutParams(localLayoutParams);
-      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Pxk);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-        localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      }
-      localLinearLayout2.setOnClickListener(new qbb(this));
-      localLinearLayout1.addView(localLinearLayout2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
+    qcd.O(paramBaseArticleInfo, this.a);
     return this;
   }
   
-  public pxl g()
+  public qba B(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Pxk = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    qcd.a(this.a, paramBaseArticleInfo);
+    return this;
+  }
+  
+  public qba C(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.Q(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba D(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mChannelID == 0L)) {
+      return this;
+    }
+    qcd.a(this.a);
+    return this;
+  }
+  
+  public qba E(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.v(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba F(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.R(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba G(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.S(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba H(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.U(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba I(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.V(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba J(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.W(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba K(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.T(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba L(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.z(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba M(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.A(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba N(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.L(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba O(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.ac(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba P(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.ai(paramBaseArticleInfo, this.a);
+    qcd.ad(paramBaseArticleInfo, this.a);
+    qcd.ae(paramBaseArticleInfo, this.a);
+    qcd.af(paramBaseArticleInfo, this.a);
+    qcd.ag(paramBaseArticleInfo, this.a);
+    qcd.ah(paramBaseArticleInfo, this.a);
+    qcd.ak(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public JSONObject a()
+  {
+    return this.a;
+  }
+  
+  public qba a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    I(paramBaseArticleInfo);
+    J(paramBaseArticleInfo);
+    return this;
+  }
+  
+  public qba a(BaseArticleInfo paramBaseArticleInfo, long paramLong)
+  {
+    qcd.a(paramBaseArticleInfo, this.a, Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public qba a(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    qcd.b(paramBaseArticleInfo, this.a, paramString);
+    return this;
+  }
+  
+  public qba a(String paramString)
+  {
+    this.a.put("style_ID", paramString);
+    return this;
+  }
+  
+  public qba a(String paramString, Object paramObject)
+  {
+    this.a.put(paramString, paramObject);
+    return this;
+  }
+  
+  public qba b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.p(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba b(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    qcd.a(paramBaseArticleInfo, this.a, paramString);
+    return this;
+  }
+  
+  public qba c(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.x(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba c(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    qcd.c(paramBaseArticleInfo, this.a, paramString);
+    return this;
+  }
+  
+  public qba d(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.q(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba d(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    qcd.d(paramBaseArticleInfo, this.a, paramString);
+    return this;
+  }
+  
+  public qba e(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.r(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba f(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.s(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba g(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.t(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba h(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.P(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba i(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.a(paramBaseArticleInfo, this.a, "id_dislike_button");
+    return this;
+  }
+  
+  public qba j(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.j(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba k(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.k(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba l(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.G(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba m(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.E(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba n(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.H(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba o(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.I(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba p(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.F(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba q(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.l(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba r(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.m(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba s(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.n(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba t(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.o(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba u(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.C(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba v(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.D(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba w(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.J(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba x(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.K(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba y(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.M(paramBaseArticleInfo, this.a);
+    return this;
+  }
+  
+  public qba z(BaseArticleInfo paramBaseArticleInfo)
+  {
+    qcd.N(paramBaseArticleInfo, this.a);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qba
  * JD-Core Version:    0.7.0.1
  */

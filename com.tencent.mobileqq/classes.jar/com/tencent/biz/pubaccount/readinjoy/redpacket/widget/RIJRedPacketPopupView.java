@@ -36,10 +36,10 @@ public class RIJRedPacketPopupView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131562526, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369587));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375565));
-    this.b = ((ImageView)findViewById(2131375556));
+    LayoutInflater.from(getContext()).inflate(2131562764, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369982));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376290));
+    this.b = ((ImageView)findViewById(2131376283));
   }
   
   public void a(boolean paramBoolean)

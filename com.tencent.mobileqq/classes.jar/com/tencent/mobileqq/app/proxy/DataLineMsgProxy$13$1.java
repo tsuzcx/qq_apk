@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amns;
-import amnt;
+import aonc;
+import aond;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
 import java.util.Iterator;
@@ -19,14 +19,14 @@ class DataLineMsgProxy$13$1
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       i = j;
-      if (amns.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
+      if (aonc.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!amns.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
+          if (!aonc.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
             break label107;
           }
           i += 1;
@@ -46,7 +46,7 @@ class DataLineMsgProxy$13$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.13.1
  * JD-Core Version:    0.7.0.1
  */

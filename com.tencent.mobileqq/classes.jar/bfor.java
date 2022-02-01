@@ -1,15 +1,21 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract interface bfor
+class bfor
 {
-  public abstract void a(int paramInt, String paramString);
+  public long a;
+  public ArrayList<bfoo> a;
+  public ArrayList<bfoo> b;
   
-  public abstract void a(List<DownloadInfo> paramList);
+  public bfor(long paramLong, ArrayList<bfoo> paramArrayList1, ArrayList<bfoo> paramArrayList2)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+    this.b = paramArrayList2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfor
  * JD-Core Version:    0.7.0.1
  */

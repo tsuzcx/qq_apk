@@ -1,8 +1,6 @@
-import cooperation.weiyun.sdk.download.DownloadType;
-
 public abstract interface bklg
 {
-  public abstract void a(bkkl parambkkl, DownloadType paramDownloadType, bkld parambkld);
+  public abstract void a();
 }
 
 

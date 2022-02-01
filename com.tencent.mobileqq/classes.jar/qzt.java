@@ -1,30 +1,23 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qzt
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  qzt(qzs paramqzs) {}
+  qzt(qzs paramqzs, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if ((qzs.a(this.a) != null) && (qzs.a(this.a).getStatus() == 1) && ((qzs.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)qzs.a(this.a).getCurrDrawable();
-      qzs.a(this.a, paramURLDrawable.getBitmap());
-    }
+    String str = String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    pha.a(paramView.getContext(), str);
+    this.jdField_a_of_type_Qzs.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzt
  * JD-Core Version:    0.7.0.1
  */

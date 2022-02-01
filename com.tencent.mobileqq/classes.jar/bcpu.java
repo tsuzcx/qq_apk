@@ -1,14 +1,11 @@
-import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
 
-class bcpu
+public final class bcpu
+  implements RecentRoute.TimeFormatterUtils.Proxy
 {
-  String jdField_a_of_type_JavaLangString;
-  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
-  
-  public bcpu(bcpt parambcpt, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
+  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
+    return bgsu.a(paramStringBuffer, paramLong, paramBoolean, paramString);
   }
 }
 

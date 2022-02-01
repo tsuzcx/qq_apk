@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class agio
-  implements DialogInterface.OnClickListener
+public class agio
 {
-  agio(aghx paramaghx) {}
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agio(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    if (this.a.a != null) {
-      this.a.a.o();
-    }
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

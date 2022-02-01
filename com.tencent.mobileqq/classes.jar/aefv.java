@@ -1,29 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aefv
   implements View.OnClickListener
 {
-  aefv(aefu paramaefu) {}
+  aefv(aeft paramaeft) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131368624));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Aegv != null) {
-      this.a.a.jdField_a_of_type_Aegv.a();
-    }
+    aeft.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

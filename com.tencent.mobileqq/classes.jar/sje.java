@@ -1,25 +1,83 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.superplayer.api.ISPlayerPreDownloader;
+import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sje
-  implements TypeEvaluator<Rect>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerPreloader;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader$Listener;", "preloader", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader;", "(Lcom/tencent/superplayer/api/ISPlayerPreDownloader;)V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "destory", "", "isVideoCached", "", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "onPrepareDownloadProgressUpdate", "p0", "p1", "p2", "p3", "", "p4", "onPrepareError", "onPrepareSuccess", "setPreDownloadListener", "startPreDownload", "videoDurationMs", "preloadDurationMs", "stopPreDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sje
+  implements ISPlayerPreDownloader.Listener, sis
 {
-  public sje(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  private final ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+  private siu jdField_a_of_type_Siu;
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public sje(@Nullable ISPlayerPreDownloader paramISPlayerPreDownloader)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
   }
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public int a(@NotNull sja paramsja)
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    Intrinsics.checkParameterIsNotNull(paramsja, "videoInfo");
+    return 0;
+  }
+  
+  public void a()
+  {
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.stopAllPreDownload();
+    }
+  }
+  
+  public void a(@Nullable siu paramsiu)
+  {
+    this.jdField_a_of_type_Siu = paramsiu;
+    paramsiu = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (paramsiu != null) {
+      paramsiu.setOnPreDownloadListener((ISPlayerPreDownloader.Listener)this);
+    }
+  }
+  
+  public void a(@NotNull sja paramsja, long paramLong1, long paramLong2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramsja, "videoInfo");
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.startPreDownload(sjb.a(paramsja), paramLong1, paramLong2);
+    }
+  }
+  
+  public void b()
+  {
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.destory();
+    }
+  }
+  
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
+  
+  public void onPrepareError(int paramInt)
+  {
+    siu localsiu = this.jdField_a_of_type_Siu;
+    if (localsiu != null) {
+      localsiu.a();
+    }
+  }
+  
+  public void onPrepareSuccess(int paramInt)
+  {
+    siu localsiu = this.jdField_a_of_type_Siu;
+    if (localsiu != null) {
+      localsiu.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sje
  * JD-Core Version:    0.7.0.1
  */

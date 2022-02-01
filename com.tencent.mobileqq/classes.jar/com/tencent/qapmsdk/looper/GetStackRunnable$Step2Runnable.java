@@ -31,7 +31,7 @@ class GetStackRunnable$Step2Runnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable.Step2Runnable
  * JD-Core Version:    0.7.0.1
  */

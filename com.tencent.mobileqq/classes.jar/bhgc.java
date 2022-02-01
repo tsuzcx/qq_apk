@@ -1,25 +1,16 @@
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer.6;
-import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
 
 public class bhgc
-  implements ValueCallback<String>
+  extends VasWebviewUiPlugin
 {
-  public bhgc(PageWebviewContainer.6 param6) {}
-  
-  public void a(String paramString)
+  public long getPluginBusiness()
   {
-    QMLog.d("PageWebviewContainer", "openFileReader callback  : " + paramString);
-    if ((paramString != null) && (paramString.startsWith("http"))) {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).downloadQQBrowser("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
-    }
+    return 1048576L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgc
  * JD-Core Version:    0.7.0.1
  */

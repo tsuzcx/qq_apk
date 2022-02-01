@@ -1,24 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class pdt
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdt
+  implements Parcelable.Creator<FirstCommentCreateData>
 {
-  private pdt(pdj parampdj) {}
-  
-  public void handleMessage(Message paramMessage)
+  @NotNull
+  public FirstCommentCreateData a(@NotNull Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    pdr.a((pdr)paramMessage.obj, paramMessage.arg1);
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new FirstCommentCreateData(paramParcel);
+  }
+  
+  @NotNull
+  public FirstCommentCreateData[] a(int paramInt)
+  {
+    return new FirstCommentCreateData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdt
  * JD-Core Version:    0.7.0.1
  */

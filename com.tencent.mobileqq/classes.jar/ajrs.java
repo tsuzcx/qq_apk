@@ -1,24 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class ajrs
-  implements ValueAnimator.AnimatorUpdateListener
+  extends atxe
 {
-  public ajrs(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  public ajrs(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(View paramView)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).getLayoutParams();
-    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
-    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
-    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
-    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).setLayoutParams(paramValueAnimator);
+    bcst.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 

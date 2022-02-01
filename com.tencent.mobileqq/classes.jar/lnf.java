@@ -1,23 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteLockActivity;
 
 public class lnf
+  implements DialogInterface.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString = "";
-  List<lnl> jdField_a_of_type_JavaUtilList = new ArrayList();
-  lng jdField_a_of_type_Lng = new lng(this);
-  lnh jdField_a_of_type_Lnh = new lnh(this);
-  lni jdField_a_of_type_Lni = new lni(this);
-  lnj jdField_a_of_type_Lnj = new lnj(this);
-  lnk jdField_a_of_type_Lnk = new lnk(this);
-  boolean jdField_a_of_type_Boolean = true;
-  String b = "";
+  public lnf(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public lnf(lnd paramlnd) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mqw.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lnf
  * JD-Core Version:    0.7.0.1
  */

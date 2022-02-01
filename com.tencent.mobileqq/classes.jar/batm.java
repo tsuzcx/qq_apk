@@ -1,27 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-class batm
-  extends alwx
+public class batm
 {
-  batm(batj parambatj) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
   
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
-  {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramalwy);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramalwy != null) {
-      this.a.v = paramalwy.d;
-    }
-    this.a.d();
-  }
+  public batm(batl parambatl) {}
 }
 
 

@@ -3,7 +3,8 @@ package com.tencent.mobileqq.mini.widget.media.live;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import bjue;
+import android.view.Surface;
+import bmio;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -63,6 +64,7 @@ public class TXLivePlayerJSAdapter
   private boolean mBackgroundMute = true;
   private Context mContext;
   private boolean mDebug;
+  private boolean mEnableMetaData;
   private boolean mEnableRecvMessage;
   private boolean mInited;
   private float mMaxCache = 3.0F;
@@ -79,6 +81,7 @@ public class TXLivePlayerJSAdapter
   private String mPlayerUrl = "";
   private boolean mPlayingBeforeEnterBackground;
   private String mSoundMode = "speaker";
+  private Surface mSurface;
   private Object txCloudVideoView;
   private Object txLivePlayConfig;
   private Object txLivePlayer;
@@ -86,12 +89,12 @@ public class TXLivePlayerJSAdapter
   public TXLivePlayerJSAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.txLivePlayConfig = bjue.a("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
-    this.txLivePlayer = bjue.a("com.tencent.rtmp.WXLivePlayer", bjue.a(new Class[] { Context.class }), new Object[] { this.mContext });
+    this.txLivePlayConfig = bmio.a("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
+    this.txLivePlayer = bmio.a("com.tencent.rtmp.WXLivePlayer", bmio.a(new Class[] { Context.class }), new Object[] { this.mContext });
     txLivePlayer_enableHardwareDecode(Boolean.valueOf(true));
     try
     {
-      bjue.a(this.txLivePlayer, "setConfig", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
+      bmio.a(this.txLivePlayer, "setConfig", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
       paramContext = Class.forName("com.tencent.rtmp.ITXLivePlayListener");
       Object localObject = new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this);
       txLivePlayer_setPlayListener(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { paramContext }, (InvocationHandler)localObject));
@@ -141,7 +144,7 @@ public class TXLivePlayerJSAdapter
       if ((paramBoolean) || (!str.equalsIgnoreCase(this.mOrientation)))
       {
         if (!str.equalsIgnoreCase("horizontal")) {
-          break label492;
+          break label518;
         }
         txLivePlayer_setRenderRotation(270);
       }
@@ -151,7 +154,7 @@ public class TXLivePlayerJSAdapter
       if ((paramBoolean) || (!str.equalsIgnoreCase(this.mObjectFit)))
       {
         if (!str.equalsIgnoreCase("fillCrop")) {
-          break label510;
+          break label536;
         }
         txLivePlayer_setRenderMode(0);
       }
@@ -161,7 +164,7 @@ public class TXLivePlayerJSAdapter
       {
         this.mSoundMode = paramBundle.getString("soundMode", this.mSoundMode);
         if (!this.mSoundMode.equalsIgnoreCase("speaker")) {
-          break label528;
+          break label554;
         }
         txLivePlayer_setAudioRoute(0);
       }
@@ -170,8 +173,10 @@ public class TXLivePlayerJSAdapter
     {
       this.mMinCache = paramBundle.getFloat("minCache", this.mMinCache);
       this.mMaxCache = paramBundle.getFloat("maxCache", this.mMaxCache);
+      this.mEnableMetaData = paramBundle.getBoolean("enableMetadata", this.mEnableMetaData);
       txLivePlayConfig_setAutoAdjustCacheTime(Boolean.valueOf(true));
       txLivePlayConfig_setCacheTime(this.mMinCache);
+      txLivePlayConfig_setEnableMetaData(Boolean.valueOf(this.mEnableMetaData));
       txLivePlayConfig_setMinAutoAdjustCacheTime(this.mMinCache);
       txLivePlayConfig_setMaxAutoAdjustCacheTime(this.mMaxCache);
       this.mEnableRecvMessage = paramBundle.getBoolean("enableRecvMessage", this.mEnableRecvMessage);
@@ -200,19 +205,19 @@ public class TXLivePlayerJSAdapter
       }
       bool = paramBundle.getBoolean("muted");
       break;
-      label492:
+      label518:
       if (!str.equalsIgnoreCase("vertical")) {
         break label148;
       }
       txLivePlayer_setRenderRotation(0);
       break label148;
-      label510:
+      label536:
       if (!str.equalsIgnoreCase("contain")) {
         break label199;
       }
       txLivePlayer_setRenderMode(1);
       break label199;
-      label528:
+      label554:
       if (this.mSoundMode.equalsIgnoreCase("ear")) {
         txLivePlayer_setAudioRoute(1);
       }
@@ -233,7 +238,7 @@ public class TXLivePlayerJSAdapter
           paramString = paramString + "\n" + str + " = " + paramBundle.getInt(str);
         } else if ((str.equalsIgnoreCase("minCache")) || (str.equalsIgnoreCase("maxCache"))) {
           paramString = paramString + "\n" + str + " = " + paramBundle.getFloat(str);
-        } else if ((str.equalsIgnoreCase("hide")) || (str.equalsIgnoreCase("autoplay")) || (str.equalsIgnoreCase("muted")) || (str.equalsIgnoreCase("muteAudio")) || (str.equalsIgnoreCase("muteVideo")) || (str.equalsIgnoreCase("backgroundMute")) || (str.equalsIgnoreCase("needEvent")) || (str.equalsIgnoreCase("needAudioVolume")) || (str.equalsIgnoreCase("enableRecvMessage")) || (str.equalsIgnoreCase("debug"))) {
+        } else if ((str.equalsIgnoreCase("hide")) || (str.equalsIgnoreCase("autoplay")) || (str.equalsIgnoreCase("muted")) || (str.equalsIgnoreCase("enableMetadata")) || (str.equalsIgnoreCase("muteAudio")) || (str.equalsIgnoreCase("muteVideo")) || (str.equalsIgnoreCase("backgroundMute")) || (str.equalsIgnoreCase("needEvent")) || (str.equalsIgnoreCase("needAudioVolume")) || (str.equalsIgnoreCase("enableRecvMessage")) || (str.equalsIgnoreCase("debug"))) {
           paramString = paramString + "\n" + str + " = " + paramBundle.getBoolean(str);
         }
       }
@@ -252,39 +257,44 @@ public class TXLivePlayerJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean)
   {
-    bjue.a(this.txCloudVideoView, "disableLog", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txCloudVideoView, "disableLog", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txCloudVideoView_showLog(Boolean paramBoolean)
   {
-    bjue.a(this.txCloudVideoView, "showLog", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txCloudVideoView, "showLog", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setAutoAdjustCacheTime(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setCacheTime(float paramFloat)
   {
-    bjue.a(this.txLivePlayConfig, "setCacheTime", false, bjue.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bmio.a(this.txLivePlayConfig, "setCacheTime", false, bmio.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+  }
+  
+  private void txLivePlayConfig_setEnableMetaData(Boolean paramBoolean)
+  {
+    bmio.a(this.txLivePlayConfig, "setEnableMetaData", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setMaxAutoAdjustCacheTime(float paramFloat)
   {
-    bjue.a(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, bjue.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bmio.a(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, bmio.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlayConfig_setMinAutoAdjustCacheTime(float paramFloat)
   {
-    bjue.a(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, bjue.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bmio.a(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, bmio.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlay_snapshot(Object paramObject)
   {
     try
     {
-      bjue.a(this.txLivePlayer, "snapshot", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
+      bmio.a(this.txLivePlayer, "snapshot", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -295,17 +305,17 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_enableAudioVolumeEvaluation(int paramInt)
   {
-    bjue.a(this.txLivePlayer, "enableAudioVolumeEvaluation", false, bjue.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bmio.a(this.txLivePlayer, "enableAudioVolumeEvaluation", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_enableHardwareDecode(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayer, "enableHardwareDecode", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayer, "enableHardwareDecode", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private boolean txLivePlayer_isPlaying()
   {
-    Object localObject = bjue.a(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
+    Object localObject = bmio.a(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
     if (localObject != null) {
       return ((Boolean)localObject).booleanValue();
     }
@@ -314,34 +324,34 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_muteAudio(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayer, "muteAudio", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayer, "muteAudio", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_muteVideo(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayer, "muteVideo", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayer, "muteVideo", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_pause()
   {
-    bjue.a(this.txLivePlayer, "pause", false, null, new Object[0]);
+    bmio.a(this.txLivePlayer, "pause", false, null, new Object[0]);
   }
   
   private void txLivePlayer_resume()
   {
-    bjue.a(this.txLivePlayer, "resume", false, null, new Object[0]);
+    bmio.a(this.txLivePlayer, "resume", false, null, new Object[0]);
   }
   
   private void txLivePlayer_setAudioRoute(int paramInt)
   {
-    bjue.a(this.txLivePlayer, "setAudioRoute", false, bjue.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bmio.a(this.txLivePlayer, "setAudioRoute", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setAudioVolumeEvaluationListener(Object paramObject)
   {
     try
     {
-      bjue.a(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
+      bmio.a(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -354,7 +364,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bjue.a(this.txLivePlayer, "setConfig", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
+      bmio.a(this.txLivePlayer, "setConfig", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -367,7 +377,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bjue.a(this.txLivePlayer, "setPlayListener", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
+      bmio.a(this.txLivePlayer, "setPlayListener", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -380,7 +390,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bjue.a(this.txLivePlayer, "setPlayerView", false, bjue.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
+      bmio.a(this.txLivePlayer, "setPlayerView", false, bmio.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -391,22 +401,32 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_setRenderMode(int paramInt)
   {
-    bjue.a(this.txLivePlayer, "setRenderMode", false, bjue.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bmio.a(this.txLivePlayer, "setRenderMode", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setRenderRotation(int paramInt)
   {
-    bjue.a(this.txLivePlayer, "setRenderRotation", false, bjue.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bmio.a(this.txLivePlayer, "setRenderRotation", false, bmio.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  private void txLivePlayer_setSurface(Surface paramSurface)
+  {
+    bmio.a(this.txLivePlayer, "setSurface", false, bmio.a(new Class[] { Surface.class }), new Object[] { paramSurface });
+  }
+  
+  private void txLivePlayer_setSurfaceSize(int paramInt1, int paramInt2)
+  {
+    bmio.a(this.txLivePlayer, "setSurfaceSize", false, bmio.a(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
   private void txLivePlayer_showDebugLog(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayer, "showDebugLog", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayer, "showDebugLog", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private int txLivePlayer_startPlay(String paramString, int paramInt)
   {
-    paramString = bjue.a(this.txLivePlayer, "startPlay", false, bjue.a(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
+    paramString = bmio.a(this.txLivePlayer, "startPlay", false, bmio.a(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
     if (paramString != null) {
       return ((Integer)paramString).intValue();
     }
@@ -415,7 +435,7 @@ public class TXLivePlayerJSAdapter
   
   private int txLivePlayer_stopPlay(Boolean paramBoolean)
   {
-    paramBoolean = bjue.a(this.txLivePlayer, "stopPlay", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    paramBoolean = bmio.a(this.txLivePlayer, "stopPlay", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
     if (paramBoolean != null) {
       return ((Integer)paramBoolean).intValue();
     }
@@ -424,7 +444,7 @@ public class TXLivePlayerJSAdapter
   
   private void txPlayConfig_setEnableMessage(Boolean paramBoolean)
   {
-    bjue.a(this.txLivePlayConfig, "setEnableMessage", false, bjue.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bmio.a(this.txLivePlayConfig, "setEnableMessage", false, bmio.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   public Bundle createBundleFromJsonObject(JSONObject paramJSONObject)
@@ -447,7 +467,7 @@ public class TXLivePlayerJSAdapter
       }
       i += 1;
     }
-    arrayOfString = new String[10];
+    arrayOfString = new String[11];
     arrayOfString[0] = "muted";
     arrayOfString[1] = "muteAudio";
     arrayOfString[2] = "muteVideo";
@@ -458,6 +478,7 @@ public class TXLivePlayerJSAdapter
     arrayOfString[7] = "autoPauseIfNavigate";
     arrayOfString[8] = "autoPauseIfOpenNative";
     arrayOfString[9] = "debug";
+    arrayOfString[10] = "enableMetadata";
     k = arrayOfString.length;
     i = 0;
     while (i < k)
@@ -520,6 +541,28 @@ public class TXLivePlayerJSAdapter
     if (this.mPlayingBeforeEnterBackground) {
       return operateLivePlayer("resume", null);
     }
+    return new TXJSAdapterError();
+  }
+  
+  public TXJSAdapterError initEmbeddedLivePlayer(JSONObject paramJSONObject)
+  {
+    paramJSONObject = createBundleFromJsonObject(paramJSONObject);
+    if (paramJSONObject == null) {
+      return new TXJSAdapterError(-1, "invalid params");
+    }
+    printJSParams("initLivePlayer", paramJSONObject);
+    this.txCloudVideoView = null;
+    txLivePlayer_setPlayerView(null);
+    this.mPlayerUrl = paramJSONObject.getString("playUrl", this.mPlayerUrl);
+    this.mPlayType = getPlayType(paramJSONObject);
+    parseAndApplyParams(paramJSONObject, true);
+    this.mAutoPlay = paramJSONObject.getBoolean("autoplay", this.mAutoPlay);
+    if ((this.mAutoPlay) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.isEmpty()))
+    {
+      QLog.d("TXLivePlayerJSAdapter", 4, "initLivePlayer: startPlay");
+      txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+    }
+    this.mInited = true;
     return new TXJSAdapterError();
   }
   
@@ -626,6 +669,19 @@ public class TXLivePlayerJSAdapter
     this.iTXSnapshotListener = paramISnapshotOuterListener;
   }
   
+  public TXJSAdapterError setSurface(Surface paramSurface)
+  {
+    this.mSurface = paramSurface;
+    txLivePlayer_setSurface(paramSurface);
+    return new TXJSAdapterError();
+  }
+  
+  public TXJSAdapterError setSurfaceSize(int paramInt1, int paramInt2)
+  {
+    txLivePlayer_setSurfaceSize(paramInt1, paramInt2);
+    return new TXJSAdapterError();
+  }
+  
   public void takePhoto(boolean paramBoolean)
   {
     if (this.txLivePlayer != null) {}
@@ -698,7 +754,7 @@ public class TXLivePlayerJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.live.TXLivePlayerJSAdapter
  * JD-Core Version:    0.7.0.1
  */

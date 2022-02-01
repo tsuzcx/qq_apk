@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
 
-class aqay
-  implements DialogInterface.OnClickListener
+public class aqay
+  implements Camera.AutoFocusCallback
 {
-  aqay(aqax paramaqax) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqap jdField_a_of_type_Aqap;
+  private final aqav jdField_a_of_type_Aqav;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
   }
 }
 

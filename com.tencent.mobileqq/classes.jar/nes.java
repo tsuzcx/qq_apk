@@ -1,33 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameJoinRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nes
-  implements nbs
+  implements View.OnClickListener
 {
-  public nes(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public nes(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nes
  * JD-Core Version:    0.7.0.1
  */

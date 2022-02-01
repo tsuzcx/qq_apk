@@ -6,7 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -40,7 +40,7 @@ public class BatchGetUserInfoServlet
         if (paramFromServiceMsg.isSuccess())
         {
           Object localObject1 = new PROTOCAL.StQWebRsp();
-          ((PROTOCAL.StQWebRsp)localObject1).mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
+          ((PROTOCAL.StQWebRsp)localObject1).mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
           localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject1).Seq.get());
           if (((PROTOCAL.StQWebRsp)localObject1).retCode.get() == 0L)
           {
@@ -109,14 +109,14 @@ public class BatchGetUserInfoServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.BatchGetUserInfo");
-    paramPacket.putSendData(bdpd.a(arrayOfByte1));
+    paramPacket.putSendData(bguc.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet
  * JD-Core Version:    0.7.0.1
  */

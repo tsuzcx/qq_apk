@@ -1,92 +1,76 @@
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.ExpiredPushBanner;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class ayve
+  extends OGAbstractDao
 {
-  public static ayve a;
-  public long a;
-  public Map<Long, WeakReference<Object>> a;
-  
-  static
+  public ayve()
   {
-    jdField_a_of_type_Ayve = new ayve();
+    this.columnLen = 3;
   }
   
-  private ayve()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public static ayve a()
-  {
-    return jdField_a_of_type_Ayve;
-  }
-  
-  public long a(Object paramObject)
-  {
-    long l;
-    if (paramObject == null) {
-      l = -9223372036854775808L;
+    paramEntity = (ExpiredPushBanner)paramEntity;
+    if (paramNoColumnErrorHandler == null)
+    {
+      paramEntity.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
+      paramEntity.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
+      paramEntity.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("cid");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cid", Long.TYPE));
+      i = paramCursor.getColumnIndex("md5");
+      if (i != -1) {
+        break label187;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("md5", String.class));
     }
     for (;;)
     {
-      return l;
-      try
-      {
-        l = this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_Long = (1L + l);
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new WeakReference(paramObject));
+      i = paramCursor.getColumnIndex("endtime");
+      if (i != -1) {
+        break label202;
       }
-      finally {}
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("endtime", Long.TYPE));
+      return paramEntity;
+      paramEntity.cid = paramCursor.getLong(i);
+      break;
+      label187:
+      paramEntity.md5 = paramCursor.getString(i);
     }
+    label202:
+    paramEntity.endtime = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  /* Error */
-  public Object a(long paramLong)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	ayve:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   6: lload_1
-    //   7: invokestatic 35	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   10: invokeinterface 51 2 0
-    //   15: checkcast 37	java/lang/ref/WeakReference
-    //   18: astore_3
-    //   19: aload_3
-    //   20: ifnull +12 -> 32
-    //   23: aload_3
-    //   24: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   27: astore_3
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_3
-    //   31: areturn
-    //   32: aconst_null
-    //   33: astore_3
-    //   34: goto -6 -> 28
-    //   37: astore_3
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	ayve
-    //   0	42	1	paramLong	long
-    //   18	16	3	localObject1	Object
-    //   37	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	37	finally
-    //   23	28	37	finally
+    paramEntity = (ExpiredPushBanner)paramEntity;
+    paramContentValues.put("cid", Long.valueOf(paramEntity.cid));
+    paramContentValues.put("md5", paramEntity.md5);
+    paramContentValues.put("endtime", Long.valueOf(paramEntity.endtime));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayve
  * JD-Core Version:    0.7.0.1
  */

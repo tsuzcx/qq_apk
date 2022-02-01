@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import beac;
+import bhhd;
 
 class ThemeJsPlugin$4
-  implements beac
+  implements bhhd
 {
   ThemeJsPlugin$4(ThemeJsPlugin paramThemeJsPlugin, String paramString1, String paramString2, boolean paramBoolean, String paramString3) {}
   
@@ -23,7 +23,7 @@ class ThemeJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

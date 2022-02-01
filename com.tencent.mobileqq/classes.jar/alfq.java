@@ -1,27 +1,74 @@
+import android.content.Intent;
+import android.os.Build;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.RegisterGuideView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
-class alfq
-  implements aled
+public class alfq
 {
-  alfq(alfe paramalfe, int paramInt, File paramFile, String paramString) {}
+  public static final String[] a = { "H60-L02", "H60-L01" };
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  private static int a(Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    boolean bool1 = paramIntent.getBooleanExtra("from_register_guide", false);
+    boolean bool2 = paramIntent.getBooleanExtra("isActionSend", false);
+    boolean bool3 = paramIntent.getBooleanExtra("from_register_choose", false);
+    if ((!bool1) && (!bool2) && (!bool3))
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + alud.a(2131700874));
-        return;
+      paramIntent = BaseApplicationImpl.sApplication.getAllAccounts();
+      if ((paramIntent == null) || (paramIntent.isEmpty())) {
+        return 101;
       }
-      this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + alud.a(2131700873));
-      return;
     }
-    this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + alud.a(2131700895));
+    return 102;
+  }
+  
+  public static GuideBaseFragment a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
+  {
+    switch (a(paramBaseActivity.getIntent()))
+    {
+    default: 
+      return new LoginView(paramQQAppInterface);
+    case 102: 
+      return new LoginView(paramQQAppInterface);
+    }
+    return new RegisterGuideView(paramQQAppInterface);
+  }
+  
+  public static boolean a(String[] paramArrayOfString)
+  {
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    if (QLog.isColorLevel()) {
+      QLog.d("GuideHandler", 2, "isKeyBoardBlackList model=" + str);
+    }
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (str != null)
+    {
+      j = paramArrayOfString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        if (str.equals(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 

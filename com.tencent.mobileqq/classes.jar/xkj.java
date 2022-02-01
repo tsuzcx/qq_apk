@@ -1,16 +1,23 @@
-public abstract interface xkj
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class xkj
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  xkj(xkf paramxkf) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xkj
  * JD-Core Version:    0.7.0.1
  */

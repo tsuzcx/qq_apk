@@ -1,23 +1,23 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import bhdw;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.request.ProtoBufRequest;
 import org.json.JSONObject;
 
 class ChannelProxyDefault$4
   implements MiniAppProxy.SenderListener
 {
-  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bhdw parambhdw, AsyncResult paramAsyncResult) {}
+  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult) {}
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    QMLog.w("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
+    QMLog.w("ChannelProxyDefault", "useHttpDirectly recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {
-        paramArrayOfByte = this.val$request.a(paramArrayOfByte);
+        paramArrayOfByte = this.val$request.getResponse(paramArrayOfByte);
         if (paramArrayOfByte == null) {
           break label99;
         }
@@ -43,7 +43,7 @@ class ChannelProxyDefault$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,4 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class bczd
-  implements DownloadParams.DecodeHandler
-{
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return bcyz.a(paramBitmap);
-  }
-}
+class bczd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

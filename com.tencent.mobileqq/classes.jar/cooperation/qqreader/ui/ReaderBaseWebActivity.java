@@ -1,19 +1,23 @@
 package cooperation.qqreader.ui;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.Window;
-import bizv;
-import bjaa;
-import bjae;
-import bjat;
-import bjbl;
-import bjbq;
+import blog;
+import blol;
+import blop;
+import blpe;
+import blpu;
+import blpz;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qqreader.host.ChannelIdHelper;
 import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
 
@@ -21,49 +25,49 @@ public class ReaderBaseWebActivity
   extends QQBrowserActivity
 {
   private static boolean jdField_a_of_type_Boolean;
-  private bjae jdField_a_of_type_Bjae;
+  private blop jdField_a_of_type_Blop;
   
   private void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      bjbq.a(this);
+      blpz.a(this);
       ChannelIdHelper.initChannelId(getIntent());
-      if ((!bjbq.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
+      if ((!blpz.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
       {
-        bjbl.d("WebLog_QQBrowserActivity", "HardAcc true");
+        blpu.d("WebLog_QQBrowserActivity", "HardAcc true");
         getWindow().addFlags(16777216);
       }
       if (QRDebugEnvUrlUtils.isDebugEnv()) {
         QRDebugEnvUrlUtils.initTestEnv(this);
       }
-      bjbq.a(this);
+      blpz.a(this);
     }
   }
   
   @Nullable
-  public bjae a(TouchWebView paramTouchWebView)
+  public blop a(TouchWebView paramTouchWebView)
   {
-    if ((this.jdField_a_of_type_Bjae == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
+    if ((this.jdField_a_of_type_Blop == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
     {
       paramTouchWebView = paramTouchWebView.getPluginEngine();
       if (paramTouchWebView != null)
       {
         paramTouchWebView = paramTouchWebView.a(207, true);
-        if ((paramTouchWebView instanceof bjae)) {
-          this.jdField_a_of_type_Bjae = ((bjae)paramTouchWebView);
+        if ((paramTouchWebView instanceof blop)) {
+          this.jdField_a_of_type_Blop = ((blop)paramTouchWebView);
         }
       }
     }
-    return this.jdField_a_of_type_Bjae;
+    return this.jdField_a_of_type_Blop;
   }
   
   protected void a(Intent paramIntent)
   {
     if (paramIntent == null)
     {
-      bjbl.a("WebLog_QQBrowserActivity", "[putReaderExtra] intent = null");
+      blpu.a("WebLog_QQBrowserActivity", "[putReaderExtra] intent = null");
       return;
     }
     paramIntent.putExtra("fragmentStyle", 4);
@@ -73,11 +77,19 @@ public class ReaderBaseWebActivity
     paramIntent.putExtra("isScreenOrientationPortrait", true);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     g();
     a();
-    if (!bizv.a())
+    if (!blog.a())
     {
       paramBundle = new Intent(this, ForceUserUpdateActivity.class);
       paramBundle.putExtra("origin_intent", getIntent());
@@ -87,20 +99,27 @@ public class ReaderBaseWebActivity
       return true;
     }
     super.doOnCreate(paramBundle);
-    new bjaa(this).a();
+    new blol(this).a();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     a(getIntent());
-    bjat.a(this, true);
+    blpe.a(this, true);
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderBaseWebActivity
  * JD-Core Version:    0.7.0.1
  */

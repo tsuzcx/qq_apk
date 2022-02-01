@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.qphone.base.util.QLog;
 
-final class atqy
-  implements DialogInterface.OnClickListener
+class atqy
+  implements awjk
 {
-  atqy(BaseActivity paramBaseActivity) {}
+  atqy(atqu paramatqu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    bext.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      } while (atqu.a(this.a));
+      atqu.b(this.a);
+      return;
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    } while (!atqu.a(this.a));
+    atqu.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqy
  * JD-Core Version:    0.7.0.1
  */

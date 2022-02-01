@@ -1,22 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
 public class tkz
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public tkz(OuterInterceptManager.1 param1) {}
+  public tkz(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
+    CommonSuspensionGestureLayout.a(this.a).c();
+    CommonSuspensionGestureLayout.a(this.a).a();
+    CommonSuspensionGestureLayout.b(this.a);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    CommonSuspensionGestureLayout.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tkz
  * JD-Core Version:    0.7.0.1
  */

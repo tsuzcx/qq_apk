@@ -1,98 +1,60 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
-class aruh
-  implements arui
+public class aruh
+  extends Handler
 {
-  aruh(arug paramarug) {}
+  protected Bundle a;
+  private WeakReference<MessengerService> a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public aruh(MessengerService paramMessengerService)
   {
-    this.a.b(paramInt);
-    if ((arug.a(this.a) != null) && (paramInt - this.a.g() > 0))
-    {
-      this.a.a(paramInt);
-      arug.a(this.a).b(paramInt, paramBundle);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    arug.a(this.a);
-    this.a.c(5);
-    if (arug.a(this.a) != null) {
-      arug.a(this.a).a(paramInt, paramString, paramBundle);
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    arug.a(this.a);
-    this.a.c(4);
-    if (bdhb.a(this.a.e)) {
-      this.a.e = arrr.b(this.a.e);
-    }
-    QLog.i(arug.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
-    int i = 1;
-    long l2;
-    long l1;
-    if (paramBundle != null)
-    {
-      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
-      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
-      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
-    }
-    for (;;)
-    {
-      if (!bdhb.b(new File(this.a.f), new File(this.a.e)))
-      {
-        QLog.e(arug.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
-        this.a.c(5);
-        paramString = artu.a(7);
-        QQAppInterface localQQAppInterface = araj.a().a();
-        if (localQQAppInterface != null)
-        {
-          arrr.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          arrr.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          azrh.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-          if (arug.a(this.a) != null) {
-            arug.a(this.a).a(7, paramString, paramBundle);
-          }
-        }
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
       }
-      for (;;)
+    }
+    MessengerService localMessengerService;
+    int i;
+    do
+    {
+      do
       {
         return;
-        QLog.w(arug.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
+        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localMessengerService != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
+      return;
+      i = paramMessage.what;
+    } while (i != 4);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("qwallet.type", i);
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      localBundle.putBoolean("qwallet.isSuccess", bool);
+      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
         break;
-        artm.a().a(this.a.jdField_c_of_type_JavaLangString);
-        paramString = araj.a().a();
-        if (paramString != null)
-        {
-          arrr.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          arrr.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          azrh.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_1");
-        }
-        while (arug.a(this.a) != null)
-        {
-          l1 = paramLong;
-          if (this.a.b > 0L)
-          {
-            l1 = paramLong;
-            if (paramLong <= 0L) {
-              l1 = this.a.b;
-            }
-          }
-          arug.a(this.a).a(this.a.e, l1, paramBundle);
-          return;
-          QLog.i(arug.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
-        }
       }
-      l1 = paramLong;
-      l2 = paramLong;
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool = false;
     }
   }
 }

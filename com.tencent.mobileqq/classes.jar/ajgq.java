@@ -1,24 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 class ajgq
-  implements View.OnClickListener
+  implements Comparator<ajgs>
 {
-  ajgq(ajgb paramajgb) {}
+  ajgq(ajgp paramajgp) {}
   
-  public void onClick(View paramView)
+  public int a(ajgs paramajgs1, ajgs paramajgs2)
   {
-    if (amqe.a().a() == 4) {
-      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amqd.b(), amqe.b(), amqe.a(), "0");
-    }
-    for (;;)
+    if ((paramajgs1 == null) && (paramajgs2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      this.a.a(12, 0);
-      this.a.a(-1, null);
-      return;
-      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amqd.b(), amqe.b(), amqe.a(), "0");
-    }
+      do
+      {
+        return 0;
+        if ((paramajgs1 == null) && (paramajgs2 != null)) {
+          return -1;
+        }
+        if ((paramajgs1 != null) && (paramajgs2 == null)) {
+          return 1;
+        }
+        paramajgs1 = paramajgs1.b;
+        paramajgs2 = paramajgs2.b;
+      } while ((paramajgs1 == null) && (paramajgs2 == null));
+      if ((paramajgs1 == null) && (paramajgs2 != null)) {
+        return -1;
+      }
+      if ((paramajgs1 != null) && (paramajgs2 == null)) {
+        return 1;
+      }
+      j = paramajgs1.length();
+      k = paramajgs2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramajgs1.charAt(i);
+        char c2 = paramajgs2.charAt(i);
+        if (c1 != c2)
+        {
+          paramajgs1 = ChnToSpell.a(c1);
+          paramajgs2 = ChnToSpell.a(c2);
+          if (paramajgs1.jdField_a_of_type_Int == paramajgs2.jdField_a_of_type_Int) {
+            return paramajgs1.jdField_a_of_type_JavaLangString.compareTo(paramajgs2.jdField_a_of_type_JavaLangString);
+          }
+          return paramajgs1.jdField_a_of_type_Int - paramajgs2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

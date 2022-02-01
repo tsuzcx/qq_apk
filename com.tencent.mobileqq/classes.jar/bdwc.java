@@ -1,140 +1,294 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
-import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.animation.AnimationUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import mqq.os.MqqHandler;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Iterator;
+import java.util.List;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.scheme.SocketFactory;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.cookie.CookieSpec;
+import org.apache.http.cookie.CookieSpecRegistry;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 public class bdwc
-  implements bdup<String>
+  extends ProtocolDownloader.Adapter
 {
-  private static IdleGetDynamic a;
-  private static final Drawable b;
-  public int a;
-  public long a;
-  public Drawable a;
-  public String a;
-  public WeakReference<VasAvatar> a;
-  public boolean a;
-  public int b;
-  public String b;
+  private DefaultHttpClient a;
   
-  static
+  public bdwc()
   {
-    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
-    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
-  }
-  
-  public bdwc(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public bdwc(String paramString1, int paramInt, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(VasAvatar paramVasAvatar)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
-      }
-      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
-      a(true);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (paramString == null)
-        {
-          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
-          return;
-        }
-      } while ((this.jdField_b_of_type_Int == -1) && (bdom.a()));
-      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bdwc != this));
+    SchemeRegistry localSchemeRegistry = new SchemeRegistry();
+    localSchemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
     try
     {
-      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseApngImage = true;
-      localURLDrawableOptions.mUseMemoryCache = true;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
-      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
-      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
-      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
-      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      Object localObject = SSLSocketFactory.getSocketFactory();
+      ((SSLSocketFactory)localObject).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+      localSchemeRegistry.register(new Scheme("https", (SocketFactory)localObject, 443));
+      label60:
+      localObject = new BasicHttpParams();
+      ConnManagerParams.setTimeout((HttpParams)localObject, 3000L);
+      HttpConnectionParams.setConnectionTimeout((HttpParams)localObject, 30000);
+      HttpConnectionParams.setSoTimeout((HttpParams)localObject, 30000);
+      this.a = new DefaultHttpClient(new ThreadSafeClientConnManager(new BasicHttpParams(), localSchemeRegistry), null);
       return;
     }
-    catch (Exception paramObject)
+    catch (Exception localException)
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+      break label60;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static String a(String paramString)
   {
-    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bdwc != this)) {}
-    Object localObject2;
-    do
+    paramString = Utils.Crc64String(paramString);
+    paramString = InitUrlDrawable.a.a(paramString);
+    if (paramString.exists()) {
+      return paramString.getAbsolutePath();
+    }
+    return null;
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    SharedPreferences.Editor localEditor = biip.a().a().getSharedPreferences("http_lastmodify", 0).edit();
+    localEditor.putString(paramString1, paramString2);
+    localEditor.commit();
+  }
+  
+  private String b(String paramString)
+  {
+    return biip.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject1 = paramDownloadParams.urlStr;
+    String str = Utils.Crc64String((String)localObject1);
+    Object localObject2 = InitUrlDrawable.a.a(str);
+    if ((localObject2 != null) && (((File)localObject2).exists())) {}
+    for (int i = 1;; i = 0)
     {
-      do
+      str = ((String)localObject1).replace("gamead", "http");
+      localObject1 = new HttpGet(str);
+      Object localObject3;
+      if (paramDownloadParams.cookies != null)
       {
-        return;
-        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      } while (!(localObject1 instanceof QQAppInterface));
-      localObject2 = (QQAppInterface)localObject1;
-      localObject1 = ((bduj)((QQAppInterface)localObject2).getManager(235)).a;
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
-        return;
+        localObject3 = this.a.getCookieSpecs().getCookieSpec("best-match").formatCookies(paramDownloadParams.cookies.getCookies()).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((HttpGet)localObject1).addHeader((Header)((Iterator)localObject3).next());
+        }
       }
-      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
-      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
+      int j;
+      if ((paramDownloadParams.headers != null) && (paramDownloadParams.headers.length > 0))
       {
-        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        return;
+        localObject3 = paramDownloadParams.headers;
+        int k = localObject3.length;
+        j = 0;
+        while (j < k)
+        {
+          ((HttpGet)localObject1).addHeader(localObject3[j]);
+          j += 1;
+        }
       }
-    } while (((ExtensionInfo)localObject2).faceId <= 0);
-    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
+      if (i != 0) {
+        ((HttpGet)localObject1).addHeader("If-Modified-Since", b(Utils.Crc64String(str)));
+      }
+      try
+      {
+        localObject3 = this.a.execute((HttpUriRequest)localObject1);
+        j = ((HttpResponse)localObject3).getStatusLine().getStatusCode();
+        if (QLog.isColorLevel()) {
+          QLog.d("LastModifySupportDownloader", 2, "-->status code: " + j);
+        }
+        if ((j != 200) && (j != 304)) {
+          throw new IOException(paramDownloadParams.url + " response error! response code: " + j + " . reason: " + ((HttpResponse)localObject3).getStatusLine().getReasonPhrase());
+        }
+      }
+      finally
+      {
+        ((HttpGet)localObject1).abort();
+      }
+      HttpEntity localHttpEntity = ((HttpResponse)localObject3).getEntity();
+      if (j == 200)
+      {
+        if (i != 0) {
+          ((File)localObject2).delete();
+        }
+        paramDownloadParams = new BufferedInputStream(localHttpEntity.getContent(), 4096);
+        long l1 = 0L;
+        try
+        {
+          localObject2 = new byte[4096];
+          for (;;)
+          {
+            i = paramDownloadParams.read((byte[])localObject2);
+            if (i == -1) {
+              break;
+            }
+            paramOutputStream.write((byte[])localObject2, 0, i);
+            long l2 = l1 + i;
+            l1 = l2;
+            if (AnimationUtils.currentAnimationTimeMillis() - 0L > 100L)
+            {
+              paramURLDrawableHandler.publishProgress((int)((float)l2 / (float)localHttpEntity.getContentLength() * 9500.0F));
+              l1 = l2;
+            }
+          }
+          if (!((HttpResponse)localObject3).containsHeader("Last-Modified")) {
+            break label522;
+          }
+        }
+        finally
+        {
+          paramDownloadParams.close();
+        }
+        paramOutputStream = ((HttpResponse)localObject3).getFirstHeader("Last-Modified").getValue();
+        a(Utils.Crc64String(str), paramOutputStream);
+        label522:
+        paramDownloadParams.close();
+      }
+      for (;;)
+      {
+        ((HttpGet)localObject1).abort();
+        return null;
+        if ((j != 304) && (paramURLDrawableHandler != null)) {
+          paramURLDrawableHandler.publishProgress(10000);
+        }
+      }
+    }
+  }
+  
+  /* Error */
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 152	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   4: invokestatic 86	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
+    //   7: astore_3
+    //   8: getstatic 91	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lbdua;
+    //   11: aload_3
+    //   12: invokevirtual 357	bdua:a	(Ljava/lang/String;)Lbdub;
+    //   15: astore 5
+    //   17: new 359	java/io/FileOutputStream
+    //   20: dup
+    //   21: aload 5
+    //   23: getfield 364	bdub:a	Ljava/io/File;
+    //   26: iconst_0
+    //   27: invokespecial 367	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   30: astore 4
+    //   32: aload 4
+    //   34: astore_3
+    //   35: aload_0
+    //   36: aload 4
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokevirtual 369	bdwc:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   43: pop
+    //   44: aload 4
+    //   46: astore_3
+    //   47: aload 5
+    //   49: invokevirtual 372	bdub:a	()Ljava/io/File;
+    //   52: astore_1
+    //   53: aload 4
+    //   55: ifnull +8 -> 63
+    //   58: aload 4
+    //   60: invokevirtual 373	java/io/OutputStream:close	()V
+    //   63: aload_1
+    //   64: areturn
+    //   65: astore_2
+    //   66: aconst_null
+    //   67: astore_1
+    //   68: aload 5
+    //   70: ifnull +11 -> 81
+    //   73: aload_1
+    //   74: astore_3
+    //   75: aload 5
+    //   77: iconst_0
+    //   78: invokevirtual 376	bdub:a	(Z)V
+    //   81: aload_1
+    //   82: astore_3
+    //   83: invokestatic 245	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   86: ifeq +15 -> 101
+    //   89: aload_1
+    //   90: astore_3
+    //   91: ldc 247
+    //   93: iconst_2
+    //   94: ldc_w 378
+    //   97: aload_2
+    //   98: invokestatic 381	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   101: aload_1
+    //   102: astore_3
+    //   103: aload_2
+    //   104: athrow
+    //   105: astore_1
+    //   106: aload_3
+    //   107: ifnull +7 -> 114
+    //   110: aload_3
+    //   111: invokevirtual 373	java/io/OutputStream:close	()V
+    //   114: aload_1
+    //   115: athrow
+    //   116: astore_2
+    //   117: aload_1
+    //   118: areturn
+    //   119: astore_2
+    //   120: goto -6 -> 114
+    //   123: astore_1
+    //   124: aconst_null
+    //   125: astore_3
+    //   126: goto -20 -> 106
+    //   129: astore_2
+    //   130: aload 4
+    //   132: astore_1
+    //   133: goto -65 -> 68
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	bdwc
+    //   0	136	1	paramDownloadParams	DownloadParams
+    //   0	136	2	paramURLDrawableHandler	URLDrawableHandler
+    //   7	119	3	localObject	Object
+    //   30	101	4	localFileOutputStream	java.io.FileOutputStream
+    //   15	61	5	localbdub	bdub
+    // Exception table:
+    //   from	to	target	type
+    //   17	32	65	java/lang/Exception
+    //   35	44	105	finally
+    //   47	53	105	finally
+    //   75	81	105	finally
+    //   83	89	105	finally
+    //   91	101	105	finally
+    //   103	105	105	finally
+    //   58	63	116	java/io/IOException
+    //   110	114	119	java/io/IOException
+    //   17	32	123	finally
+    //   35	44	129	java/lang/Exception
+    //   47	53	129	java/lang/Exception
   }
 }
 

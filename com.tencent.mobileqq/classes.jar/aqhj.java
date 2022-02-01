@@ -1,49 +1,36 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
 
 class aqhj
-  extends aqbl
+  implements URLDrawable.URLDrawableListener
 {
-  aqhj(aqhi paramaqhi) {}
+  aqhj(aqhh paramaqhh, RoundImageView paramRoundImageView, arev paramarev, String paramString) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramObject == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
     {
-      do
-      {
-        Object[] arrayOfObject;
-        do
-        {
-          String str;
-          do
-          {
-            return;
-            arrayOfObject = (Object[])paramObject;
-            str = (String)arrayOfObject[0];
-            if (QLog.isColorLevel()) {
-              QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-            }
-            if (!paramBoolean) {
-              break;
-            }
-            paramObject = (String)arrayOfObject[1];
-          } while (aqhi.a(this.a) == null);
-          aqhi.a(this.a).a(str, paramObject);
-          return;
-        } while (paramObject == null);
-        int i = ((Integer)arrayOfObject[1]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendSendMsgHelper", 2, String.format("onGetSigBy0xb4cCode resetCode=%s", new Object[] { Integer.valueOf(i) }));
-        }
-        if (i != 20) {
-          break;
-        }
-      } while (aqhi.a(this.a) == null);
-      aqhi.a(this.a).a();
-      return;
-    } while (aqhi.a(this.a) == null);
-    aqhi.a(this.a).a(2131720551);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Arev.c(true);
+    }
   }
 }
 

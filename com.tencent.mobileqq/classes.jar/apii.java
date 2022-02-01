@@ -1,26 +1,127 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
 public class apii
-  extends apiq
 {
-  public apii(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
-  
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  public static int a(String paramString1, String paramString2, String paramString3)
   {
-    if (paramBoolean)
+    return BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, 0);
+  }
+  
+  public static ArrayList<String> a(String paramString)
+  {
+    int i = 0;
+    ArrayList localArrayList = new ArrayList();
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getString("key_ark_authority_app_list_" + paramString, "");
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
+      paramString = paramString.split(";");
+      if ((paramString != null) && (paramString.length > 0))
       {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+        int j = paramString.length;
+        while (i < j)
+        {
+          CharSequence localCharSequence = paramString[i];
+          if (!TextUtils.isEmpty(localCharSequence)) {
+            localArrayList.add(localCharSequence);
+          }
+          i += 1;
+        }
       }
     }
+    return localArrayList;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    ArrayList localArrayList = a(paramString2);
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int j = 0;
+    int n = 0;
+    int m;
+    for (int i = 0; j < localArrayList.size(); i = m)
+    {
+      String str = (String)localArrayList.get(j);
+      int k = n;
+      m = i;
+      if (!TextUtils.isEmpty(str))
+      {
+        if (n > 0) {
+          localStringBuilder.append(";");
+        }
+        localStringBuilder.append(str);
+        n += 1;
+        k = n;
+        m = i;
+        if (str.equals(paramString1))
+        {
+          m = 1;
+          k = n;
+        }
+      }
+      j += 1;
+      n = k;
+    }
+    if (i == 0)
+    {
+      if (n > 0) {
+        localStringBuilder.append(";");
+      }
+      localStringBuilder.append(paramString1);
+    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putString("key_ark_authority_app_list_" + paramString2, localStringBuilder.toString()).commit();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, paramInt).commit();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, apim paramapim)
+  {
+    Object localObject2 = ArkAppCacheMgr.getApplicationDesc(paramString2);
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = paramString2;
+    }
+    localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
+    String str = "key_ark_authority_show_dialog" + "_" + (String)localObject1 + "_" + paramString3 + "_" + paramString1;
+    boolean bool = ((SharedPreferences)localObject2).getBoolean(str, false);
+    if (TextUtils.isEmpty(paramString1)) {
+      if (paramapim != null) {
+        paramapim.a();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if ((!bool) && (apih.a))
+        {
+          ArkAppCenter.a().postToMainThread(new ArkAppModuleBase.APIAuthority.1((String)localObject1, paramString4, paramString2, paramapim, paramString3, paramString1));
+          ((SharedPreferences)localObject2).edit().putBoolean(str, true).apply();
+          a((String)localObject1, paramString1);
+          return;
+        }
+        if (1 != a((String)localObject1, paramString3, paramString1)) {
+          break;
+        }
+      } while (paramapim == null);
+      paramapim.a();
+      return;
+    } while (paramapim == null);
+    paramapim.b();
   }
 }
 

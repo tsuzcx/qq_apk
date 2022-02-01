@@ -1,26 +1,27 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
 public class actb
+  implements TextWatcher
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
-  private final String c;
+  public actb(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public actb(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
+    {
+      acqy.d("GdtFormItemTextBoxView", "afterTextChanged error");
+      return;
+    }
+    acqy.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
+    this.a.a().content.text = paramEditable.toString();
   }
   
-  public void a()
-  {
-    actc localactc = new actc(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, alud.a(2131702985), alud.a(2131702989), localactc, localactc);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

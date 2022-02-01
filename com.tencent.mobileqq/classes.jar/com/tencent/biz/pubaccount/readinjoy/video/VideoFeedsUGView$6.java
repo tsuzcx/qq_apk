@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
-import nsx;
+import ocb;
 
 class VideoFeedsUGView$6
   implements Runnable
@@ -19,13 +19,13 @@ class VideoFeedsUGView$6
     while (localIterator.hasNext())
     {
       DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-      if ((this.this$0.jdField_a_of_type_Nsx != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Nsx.f)) && (this.this$0.jdField_a_of_type_Nsx.f.equals(localDownloadInfo.d)))
+      if ((this.this$0.jdField_a_of_type_Ocb != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Ocb.f)) && (this.this$0.jdField_a_of_type_Ocb.f.equals(localDownloadInfo.d)))
       {
         this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.this$0.b.setVisibility(8);
         if ((localDownloadInfo.f >= 0) && (localDownloadInfo.f <= 100))
         {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_Nsx.k + localDownloadInfo.f + "%");
+          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_Ocb.k + localDownloadInfo.f + "%");
           this.this$0.jdField_a_of_type_Int = localDownloadInfo.f;
         }
       }

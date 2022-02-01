@@ -1,39 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.ThemeImageView;
 
-public final class albu
-  implements EIPCResultCallback
+public class albu
+  extends alcf
 {
-  public albu(alkp paramalkp) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    if (paramEIPCResult == null)
-    {
-      this.a.a(1);
-      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
-      return;
-    }
-    aliu.au = paramEIPCResult.getString("sApolloBaseScriptId");
-    aknx.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
-    aliu.av = aliu.a + "/script/" + aliu.au + "/";
-    if (alko.a()) {
-      this.a.a(0);
-    }
-    for (;;)
-    {
-      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
-      return;
-      alko.b(this.a);
-      alko.a(this.a);
-      alko.a("sdk");
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public ThemeImageView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

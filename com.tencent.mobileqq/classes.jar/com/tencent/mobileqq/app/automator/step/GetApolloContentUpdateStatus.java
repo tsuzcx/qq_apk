@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aknt;
-import aknx;
-import akuf;
-import alko;
-import amqn;
+import amgz;
+import amhd;
+import amnl;
+import amzq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import arso;
-import bdug;
+import andw;
+import aoph;
+import atwl;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.microapp.apkg.UsedAppListManager;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -25,44 +26,49 @@ public class GetApolloContentUpdateStatus
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "[GetApolloContentUpdateStatus]system time" + System.currentTimeMillis() + ",last update time:");
     }
-    aknx localaknx = (aknx)this.a.app.getManager(153);
+    amhd localamhd = (amhd)this.a.app.getManager(153);
     SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("last_pull_apollo_content_update_time", 0L);
-    amqn localamqn = (amqn)this.a.app.a(115);
+    if (amzq.a(this.a.app.c(), this.a.app) == 0)
+    {
+      ((VasExtensionHandler)this.a.app.a(71)).a(this.a.app.c(), 1073741824, "cmshow asyncStep");
+      QLog.i("QQInitHandler", 1, "sava doStep cmshow asyncStep getUserApolloInfo RECOMMEND_ACTION");
+    }
+    aoph localaoph = (aoph)this.a.app.a(115);
     if ((System.currentTimeMillis() - l > 21600000L) || (System.currentTimeMillis() < l)) {
-      if (localamqn != null)
+      if (localaoph != null)
       {
-        localamqn.a(null);
+        localaoph.a(null);
         localSharedPreferences.edit().putLong("last_pull_apollo_content_update_time", System.currentTimeMillis()).commit();
       }
     }
     for (;;)
     {
-      aknt.b();
-      ((aknt)this.a.app.getManager(211)).e();
+      amgz.b();
+      ((amgz)this.a.app.getManager(211)).e();
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "get game list on login.");
       }
-      if (localaknx.j()) {
+      if (localamhd.j()) {
         ((UsedAppListManager)this.a.app.getManager(288)).getUsedAppList();
       }
-      alko.a("login");
-      aknx.a = this.a.app.getCurrentAccountUin();
-      akuf.a(this.a.app);
-      if (localaknx.c(this.a.app.getCurrentAccountUin())) {
-        ((bdug)this.a.app.a(71)).b();
+      andw.a("login");
+      amhd.a = this.a.app.getCurrentAccountUin();
+      amnl.a(this.a.app);
+      if (localamhd.c(this.a.app.getCurrentAccountUin())) {
+        ((VasExtensionHandler)this.a.app.a(71)).b();
       }
-      if (aknx.a(this.a.app.getApp())) {
-        localaknx.n();
+      if (amhd.a(this.a.app.getApp())) {
+        localamhd.n();
       }
       return 7;
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "system time" + System.currentTimeMillis() + ",last update time:" + l);
       }
-      if (aknx.a(this.a.app.getApp())) {
-        localaknx.a(false, "login check file", 1);
-      } else if (arso.a(ApolloUtil.a)) {
-        aknx.a(this.a.app);
+      if (amhd.b(this.a.app.getApp())) {
+        localamhd.a(false, "login check file", 1);
+      } else if (atwl.a(ApolloUtil.a)) {
+        amhd.a(this.a.app);
       }
     }
   }

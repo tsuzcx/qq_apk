@@ -1,41 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tns
-  extends tnn
+  implements qpu
 {
-  public tns(tmj paramtmj)
-  {
-    super(paramtmj);
-  }
+  public tns(BridgeModule paramBridgeModule, String paramString) {}
   
-  public List<tmv> a(ArrayList paramArrayList)
+  public void a(int paramInt1, int paramInt2)
   {
-    return tms.a().a(paramArrayList);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    tlo.d("comment", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
-    if ((paramViewHolder instanceof tnj))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramViewHolder = new ygc(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
-      umc.a().dispatch(paramViewHolder);
+      localJSONObject.put("button", paramInt1);
+      localJSONObject.put("result", paramInt2);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      return;
     }
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    tms.a().a(2, paramBoolean1, paramBoolean2, null, null, this);
-    return true;
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tns
  * JD-Core Version:    0.7.0.1
  */

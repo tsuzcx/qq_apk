@@ -1,9 +1,10 @@
 package com.tencent.av;
 
-import lgn;
+import android.os.Build;
+import ldh;
 
 public class VideoConstants
-  extends lgn
+  extends ldh
 {
   public static int a;
   public static String a;
@@ -13,18 +14,19 @@ public class VideoConstants
   public static boolean b;
   public static int c;
   public static String c;
+  public static final boolean c;
   public static int d;
   public static String d;
   public static int e;
   public static String e;
   public static int f;
   public static String f;
-  public static String g = "qav_peer_sdk_version";
-  public static String h = "qav_ip";
-  public static String i = "qav_business_type";
-  public static String j = "qav_business_flag";
-  public static String k = "qav_touin";
-  public static String l = "qav_commited";
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
   
   static
   {
@@ -41,11 +43,18 @@ public class VideoConstants
     jdField_d_of_type_JavaLangString = "qav_score_begintime";
     jdField_e_of_type_JavaLangString = "qav_score_endtime";
     jdField_f_of_type_JavaLangString = "qav_sdk_version";
+    g = "qav_peer_sdk_version";
+    h = "qav_ip";
+    i = "qav_business_type";
+    j = "qav_business_flag";
+    k = "qav_touin";
+    l = "qav_commited";
+    jdField_c_of_type_Boolean = Build.MODEL.equalsIgnoreCase("OXF-AN10");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoConstants
  * JD-Core Version:    0.7.0.1
  */

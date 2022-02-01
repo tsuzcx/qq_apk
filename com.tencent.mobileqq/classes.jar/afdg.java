@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class afdg
-  implements View.OnClickListener
+class afdg
+  implements DialogInterface.OnClickListener
 {
-  public afdg(AIOLongShotHelper paramAIOLongShotHelper) {}
+  afdg(afdc paramafdc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOLongShotHelper.a(this.a).performClick();
+    this.a.b = true;
+    afdc.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

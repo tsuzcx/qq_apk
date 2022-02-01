@@ -30,7 +30,7 @@ public final class hy
       if (fz.a(localgf.a("sdkVersion"), "4.0.9.1") < 0) {
         localgf.a(new String[] { "mapConfigIndoorVersion", "mapPoiIcon3dIndoorVersion" });
       }
-      i = fz.a("4.2.8.1", localgf.a("sdkVersion"));
+      i = fz.a("4.2.8.2", localgf.a("sdkVersion"));
       gd.a(paramContext, paramString, "mapconfig.dat", "mapconfig.dat");
       gd.a(paramContext, paramString, "poi_icon@2x.png", "poi_icon@2x.png");
       gd.a(paramContext, paramString, "poi_icon_nav@2x.png", "poi_icon_nav@2x.png");
@@ -43,12 +43,12 @@ public final class hy
       gd.a(paramContext, paramString, "blockicon.png", "blockicon.png");
       gd.a(paramContext, paramString, "escalator.dat", "escalator.dat");
     } while (i <= 0);
-    localgf.a("sdkVersion", "4.2.8.1");
+    localgf.a("sdkVersion", "4.2.8.2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.sdk.a.hy
  * JD-Core Version:    0.7.0.1
  */

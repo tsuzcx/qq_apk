@@ -6,8 +6,8 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
-import aoag;
-import aoah;
+import aqal;
+import aqam;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.QLog;
 
@@ -87,8 +87,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new aoag(this));
-    setOnTouchListener(new aoah(this));
+    addTextChangedListener(new aqal(this));
+    setOnTouchListener(new aqam(this));
   }
   
   public String a()
@@ -153,7 +153,7 @@ public class ClearEllipsisEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText
  * JD-Core Version:    0.7.0.1
  */

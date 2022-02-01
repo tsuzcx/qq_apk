@@ -1,32 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
+import android.view.View;
 
-public class banl
-  implements alpg
+final class banl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected void a(boolean paramBoolean, List<String> paramList) {}
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  banl(int paramInt, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 1) {
-      try
-      {
-        if ((paramObject instanceof List))
-        {
-          a(paramBoolean, (List)paramObject);
-          return;
-        }
-        if (!paramBoolean)
-        {
-          a(false, null);
-          return;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

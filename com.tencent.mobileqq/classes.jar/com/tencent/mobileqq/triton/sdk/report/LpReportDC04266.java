@@ -193,12 +193,8 @@ public class LpReportDC04266
     eventNameSparseArray.put(639, "storage_usage");
     eventNameSparseArray.put(640, "http_download");
     eventNameSparseArray.put(641, "http_upload");
-    eventNameSparseArray.put(1001, "minigamebaselibloadso");
-    eventNameSparseArray.put(1002, "minigamebaselibloadsoend");
     eventNameSparseArray.put(1003, "minigamebaselibloadjar");
     eventNameSparseArray.put(1004, "minigamebaselibloadjarend");
-    eventNameSparseArray.put(1005, "minigamebaselibloadjs");
-    eventNameSparseArray.put(1006, "minigamebaselibloadjsend");
     eventNameSparseArray.put(1007, "minigameloadmainpkg");
     eventNameSparseArray.put(1008, "minigameloadmainpkgend");
     eventNameSparseArray.put(1009, "minigameloadsubpkg");
@@ -233,7 +229,7 @@ public class LpReportDC04266
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.report.LpReportDC04266
  * JD-Core Version:    0.7.0.1
  */

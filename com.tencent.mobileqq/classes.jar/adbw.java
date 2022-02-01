@@ -1,6 +1,8 @@
 public abstract interface adbw
 {
-  public abstract void a(adbx paramadbx);
+  public abstract void a(int paramInt, abez paramabez);
+  
+  public abstract void a(long paramLong);
 }
 
 

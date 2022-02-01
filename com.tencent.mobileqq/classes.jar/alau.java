@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
-class alau
-  implements aljj
+public class alau
+  extends albt
 {
-  alau(alas paramalas, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
-  
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
   {
-    alas.a(this.jdField_a_of_type_Alas, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+    paramObject = new View(paramContext);
+    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
+    paramObject.setMinimumHeight(bggq.a(paramContext, 20.0F));
+    paramObject.setMinimumWidth((int)bgln.g());
+    return paramObject;
   }
 }
 

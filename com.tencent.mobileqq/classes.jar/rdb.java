@@ -1,31 +1,48 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 class rdb
-  implements DialogInterface.OnClickListener
+  extends niv
 {
-  rdb(rcz paramrcz, boolean paramBoolean) {}
+  rdb(rda paramrda) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!rcz.a(this.jdField_a_of_type_Rcz)) {}
-    }
-    while (!(rcz.a(this.jdField_a_of_type_Rcz) instanceof Activity))
+    boolean bool = true;
+    paramBundle = new oidb_0x5bd.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      return;
-      this.jdField_a_of_type_Rcz.b();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
+      }
+      int i = paramBundle.uint32_source.get();
+      paramArrayOfByte = this.a;
+      if (paramInt == 0) {}
+      for (;;)
+      {
+        paramArrayOfByte.notifyUI(1, bool, new Object[] { paramBundle.msg_now_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get(), Integer.valueOf(i) });
+        return;
+        bool = false;
+      }
       return;
     }
-    oee.b(rcz.a(this.jdField_a_of_type_Rcz));
-    odv.a(rcz.a(this.jdField_a_of_type_Rcz), rcz.a(this.jdField_a_of_type_Rcz).o, rcz.a(this.jdField_a_of_type_Rcz).p, "");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdb
  * JD-Core Version:    0.7.0.1
  */

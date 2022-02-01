@@ -2,7 +2,7 @@ package com.etrump.mixlayout;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import gj;
+import go;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
@@ -14,17 +14,17 @@ public final class VasShieldFont$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VasShieldFont", 2, "loadDefaultFont: type=" + gj.a);
+      QLog.d("VasShieldFont", 2, "loadDefaultFont: type=" + go.a);
     }
-    if (!gj.a().get())
+    if (!go.a().get())
     {
-      if (gj.b() == null)
+      if (go.b() == null)
       {
-        if (!gj.a()) {
+        if (!go.a()) {
           break label135;
         }
-        gj.c();
-        gj.b();
+        go.c();
+        go.b();
       }
       if (this.jdField_a_of_type_MqqOsMqqHandler != null)
       {
@@ -36,7 +36,7 @@ public final class VasShieldFont$1
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("loadDefaultFont: typeface=");
-      if (gj.b() == null) {
+      if (go.b() == null) {
         break label145;
       }
     }
@@ -45,16 +45,16 @@ public final class VasShieldFont$1
     for (boolean bool = true;; bool = false)
     {
       QLog.d("VasShieldFont", 2, bool);
-      gj.b().set(false);
+      go.b().set(false);
       return;
-      gj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      go.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.etrump.mixlayout.VasShieldFont.1
  * JD-Core Version:    0.7.0.1
  */

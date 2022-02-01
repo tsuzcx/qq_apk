@@ -1,43 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
 
 public class azqf
-  implements DialogInterface.OnClickListener
+  extends azpu
 {
-  public azqf(LocalCrashCollector.3 param3, SessionInfo paramSessionInfo) {}
+  private boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azqf(azlw paramazlw, azfe paramazfe)
   {
-    try
+    super(paramazlw, paramazfe);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderV5Component";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      if (LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0) > 0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-          break label106;
-        }
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).delete(0, LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).length());
-        paramDialogInterface.dismiss();
-        return;
-        label106:
-        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
-      }
-      return;
+      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
+      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
+      localVasProfileQVipV5View.setClickListener(this);
+      localVasProfileQVipV5View.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+  }
+  
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  {
+    Intent localIntent = paramBaseActivity.getIntent();
+    if (localIntent != null) {
+      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
     }
+    super.a(paramBaseActivity, paramBundle);
   }
 }
 

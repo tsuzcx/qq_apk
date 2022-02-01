@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bmus;
-import bmvp;
+import bply;
+import bpmv;
 import com.tencent.qphone.base.util.QLog;
 
 class DoodleTextureView$2
@@ -14,9 +14,9 @@ class DoodleTextureView$2
     if (this.this$0.a != null)
     {
       this.this$0.a.g();
-      bmvp localbmvp = (bmvp)this.this$0.a.a(102);
-      if (localbmvp != null) {
-        localbmvp.b();
+      bpmv localbpmv = (bpmv)this.this$0.a.a(102);
+      if (localbpmv != null) {
+        localbpmv.b();
       }
       this.this$0.a = null;
     }
@@ -27,7 +27,7 @@ class DoodleTextureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import azcv;
-import azkt;
+import bcdu;
+import bcls;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 class PtvTemplateManager$12
   implements Runnable
 {
-  PtvTemplateManager$12(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean1, azcv paramazcv, boolean paramBoolean2) {}
+  PtvTemplateManager$12(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean1, bcdu parambcdu, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -50,10 +50,10 @@ class PtvTemplateManager$12
     synchronized (this.this$0.jdField_d_of_type_JavaLangObject)
     {
       this.this$0.a = ((PtvTemplateManager.PtvTemplateInfo)localObject1);
-      if (this.jdField_a_of_type_Azcv != null) {
-        this.jdField_a_of_type_Azcv.a();
+      if (this.jdField_a_of_type_Bcdu != null) {
+        this.jdField_a_of_type_Bcdu.a();
       }
-      if ((this.b) && (azkt.c())) {
+      if ((this.b) && (bcls.a())) {
         this.this$0.b();
       }
       PtvTemplateManager.a(this.this$0);
@@ -63,7 +63,7 @@ class PtvTemplateManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.12
  * JD-Core Version:    0.7.0.1
  */

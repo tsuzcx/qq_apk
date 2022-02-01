@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agon
-  implements DialogInterface.OnClickListener
+  extends anmu
 {
-  agon(agoe paramagoe) {}
+  agon(agol paramagol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    {
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (agol.a(this.a) != null)) {
+        agol.a(this.a).setImageBitmap(paramString);
+      }
+    }
+  }
 }
 
 

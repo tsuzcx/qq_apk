@@ -3,7 +3,7 @@ package com.tencent.mobileqq.service.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azav;
+import bcbu;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class QZoneTitleTabManager$TabInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TabInfo> CREATOR = new azav();
+  public static final Parcelable.Creator<TabInfo> CREATOR = new bcbu();
   public int a;
   public String a;
   public boolean a;
@@ -108,7 +108,7 @@ public class QZoneTitleTabManager$TabInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="troopuin,memberuin")
 public class TroopMemberInfo
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final long VALUE_DISTANCE_TO_SELF_EXPIRED = -1000L;
   public static final long VALUE_DISTANCE_TO_SELF_UNKOWN = -100L;
   public static final long VALUE_MEMBER_CLOSE_SHARE_LBS = -1001L;
   public long active_point;
-  @awhp
+  @notColumn
   public int addState;
   public byte age;
   public String alias;
@@ -24,7 +24,7 @@ public class TroopMemberInfo
   public int commonFrdCnt = -2147483648;
   public long credit_level;
   public long datetime;
-  @awhp
+  @notColumn
   public String displayedNamePinyinFirst;
   public int distance;
   public double distanceToSelf = -100.0D;
@@ -56,6 +56,7 @@ public class TroopMemberInfo
   public int mVipType;
   public String memberuin;
   public long msgseq = -100L;
+  public int newRealLevel;
   public String pyAll_autoremark;
   public String pyAll_friendnick;
   public String pyAll_troopnick;
@@ -103,6 +104,7 @@ public class TroopMemberInfo
     this.superVipInfo = paramCursor.getInt(paramCursor.getColumnIndex("superVipInfo"));
     this.level = paramCursor.getInt(paramCursor.getColumnIndex("level"));
     this.realLevel = paramCursor.getInt(paramCursor.getColumnIndex("realLevel"));
+    this.newRealLevel = paramCursor.getInt(paramCursor.getColumnIndex("newRealLevel"));
     this.join_time = paramCursor.getLong(paramCursor.getColumnIndex("join_time"));
     this.last_active_time = paramCursor.getLong(paramCursor.getColumnIndex("last_active_time"));
     this.active_point = paramCursor.getLong(paramCursor.getColumnIndex("active_point"));
@@ -170,6 +172,7 @@ public class TroopMemberInfo
     localStringBuilder.append(", superQqInfo=").append(this.superQqInfo);
     localStringBuilder.append(", superVipInfo=").append(this.superVipInfo);
     localStringBuilder.append(", level=").append(this.level);
+    localStringBuilder.append(", newRealLevel").append(this.newRealLevel);
     localStringBuilder.append(", join_time=").append(this.join_time);
     localStringBuilder.append(", last_active_time=").append(this.last_active_time);
     localStringBuilder.append(", active_point=").append(this.active_point);

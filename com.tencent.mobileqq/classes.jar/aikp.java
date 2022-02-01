@@ -1,13 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class aikp
-  implements DialogInterface.OnClickListener
+  implements aiko
 {
-  public aikp(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean)
+  {
+    int i;
+    if (paramMessageForStructing.isSend()) {
+      if (paramBoolean) {
+        i = 2130849994;
+      }
+    }
+    for (;;)
+    {
+      afur.a(paramafwr.a, i);
+      return;
+      i = 2130849995;
+      continue;
+      if (paramBoolean) {
+        i = 2130849818;
+      } else {
+        i = 2130849819;
+      }
+    }
+  }
 }
 
 

@@ -143,7 +143,7 @@ public abstract class a<T extends IInterface>
       {
         this.mThreadlock.notifyAll();
         aa.a(this.mServiceName + "BaseIPCClient onServiceConnected");
-        ??? = new StringBuilder().append("onServiceConnected,clientKey:").append(this.mClientKey).append(",mServiceInterface:").append(this.mServiceInterface).append(",IBinder:").append(paramIBinder).append("\nthreadId:").append(Thread.currentThread().getId()).append("\ntime:").append(System.currentTimeMillis()).append("ms").append("\nis main thread:");
+        ??? = new StringBuilder().append("onServiceConnected,clientKey:").append(this.mClientKey).append(",mServiceInterface:").append(this.mServiceInterface).append(",IBinder:").append(paramIBinder).append("\nthreadId:").append(Thread.currentThread().getId()).append("\ntime:").append(System.currentTimeMillis()).append("ms\nis main thread:");
         if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
         {
           bool = true;
@@ -163,17 +163,17 @@ public abstract class a<T extends IInterface>
     //   0: new 87	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   7: ldc 231
+    //   7: ldc 229
     //   9: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   12: aload_0
     //   13: getfield 50	com/tencent/tmdownloader/a:mClientKey	Ljava/lang/String;
     //   16: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc 210
+    //   19: ldc 231
     //   21: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: astore_1
     //   25: invokestatic 76	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   28: invokevirtual 73	java/lang/Thread:getId	()J
-    //   31: invokestatic 211	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   31: invokestatic 209	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   34: invokevirtual 67	android/os/Looper:getThread	()Ljava/lang/Thread;
     //   37: invokevirtual 73	java/lang/Thread:getId	()J
     //   40: lcmp
@@ -216,12 +216,12 @@ public abstract class a<T extends IInterface>
     //   106: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   112: invokestatic 181	com/tencent/tmassistantbase/util/aa:a	(Ljava/lang/String;)V
-    //   115: invokestatic 216	com/tencent/tmassistantbase/util/k:a	()Landroid/os/Handler;
+    //   115: invokestatic 214	com/tencent/tmassistantbase/util/k:a	()Landroid/os/Handler;
     //   118: new 235	com/tencent/tmdownloader/b
     //   121: dup
     //   122: aload_0
     //   123: invokespecial 236	com/tencent/tmdownloader/b:<init>	(Lcom/tencent/tmdownloader/a;)V
-    //   126: invokevirtual 227	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   126: invokevirtual 225	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   129: pop
     //   130: return
     //   131: iconst_0
@@ -263,7 +263,7 @@ public abstract class a<T extends IInterface>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.a
  * JD-Core Version:    0.7.0.1
  */

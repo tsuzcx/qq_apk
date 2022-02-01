@@ -1,28 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahoj
-  implements View.OnClickListener
+public class ahoj
+  implements ahor
 {
-  ahoj(ahoi paramahoi) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahok localahok = (ahok)paramView.getTag();
-    if ((localahok == null) || (!(localahok instanceof ahok))) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).d();
-    }
-    ahoi.a(this.a, localahok.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(ahoi.a(this.a).remove(this.a.getCount() - localahok.b - 1));
-    this.a.notifyDataSetChanged();
+    paramagup.b(paramMessageRecord, paramagwc);
   }
 }
 

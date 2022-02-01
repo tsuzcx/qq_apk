@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import QC.UniSetRsp;
 
-public class bcnf
-  implements aqxn
+class bcnf
+  implements anil
 {
-  public bcnf(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  bcnf(bcnd parambcnd, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    aqxi.a(new arjc(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
+    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.jdField_a_of_type_Bcnd.a(paramBoolean, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.c, true);
+      return;
+    }
   }
 }
 

@@ -10,14 +10,13 @@ import android.util.SparseArray;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.AppInfo;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
 import com.tencent.mobileqq.microapp.apkg.UsedAppListManager;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.app.AppBrandTaskPreloadReceiver;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
-import com.tencent.mobileqq.microapp.b.a;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -124,7 +123,7 @@ public class MiniAppController
     localIntent.putExtra("CONFIG", paramMiniAppConfig);
     localIntent.putExtra("receiver", paramResultReceiver);
     paramActivity.startActivity(localIntent);
-    a.a(paramActivity);
+    c.a(paramActivity);
     preDownApkgResources(paramMiniAppConfig);
     UsedAppListManager.recordAppStart(new AppInfo(2, paramMiniAppConfig.config.mini_appid, paramMiniAppConfig.config.icon_url, paramMiniAppConfig.config.app_name));
   }
@@ -287,7 +286,7 @@ public class MiniAppController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppController
  * JD-Core Version:    0.7.0.1
  */

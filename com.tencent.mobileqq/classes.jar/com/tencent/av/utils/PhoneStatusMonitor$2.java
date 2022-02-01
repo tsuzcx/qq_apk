@@ -2,22 +2,27 @@ package com.tencent.av.utils;
 
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import muv;
-import muz;
+import java.util.concurrent.atomic.AtomicBoolean;
+import msb;
+import msf;
 
 public class PhoneStatusMonitor$2
   implements Runnable
 {
-  public PhoneStatusMonitor$2(muv parammuv) {}
+  public PhoneStatusMonitor$2(msb parammsb) {}
   
   public void run()
   {
+    boolean bool = msf.d(msb.a(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run");
+      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + msb.a(this.this$0) + "], cur[" + bool + "]");
     }
-    if ((this.this$0.jdField_a_of_type_AndroidContentContext != null) && (!muz.d(this.this$0.jdField_a_of_type_AndroidContentContext)) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new PhoneStatusMonitor.2.1(this));
+    msb.a(this.this$0, bool);
+    Handler localHandler = msb.a(this.this$0);
+    if ((localHandler != null) && (msb.a(this.this$0).get())) {
+      localHandler.postDelayed(msb.a(this.this$0), 10000L);
     }
+    msb.b(this.this$0).set(false);
   }
 }
 

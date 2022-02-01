@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.QCirclePublishPictureTagInfo;
+import java.util.HashMap;
 
-final class blzn
-  implements ValueAnimator.AnimatorUpdateListener
+public final class blzn
+  implements Parcelable.Creator<QCirclePublishPictureTagInfo>
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
-  
-  blzn(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public QCirclePublishPictureTagInfo a(Parcel paramParcel)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    QCirclePublishPictureTagInfo localQCirclePublishPictureTagInfo = new QCirclePublishPictureTagInfo();
+    localQCirclePublishPictureTagInfo.picId = paramParcel.readString();
+    localQCirclePublishPictureTagInfo.picTags = paramParcel.readArrayList(String.class.getClassLoader());
+    localQCirclePublishPictureTagInfo.materialId = paramParcel.readString();
+    localQCirclePublishPictureTagInfo.filterId = paramParcel.readString();
+    localQCirclePublishPictureTagInfo.exif = ((HashMap)paramParcel.readSerializable());
+    return localQCirclePublishPictureTagInfo;
+  }
+  
+  public QCirclePublishPictureTagInfo[] a(int paramInt)
+  {
+    return new QCirclePublishPictureTagInfo[paramInt];
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appId,entryPath")
 public class MiniAppByIdEntity
-  extends awge
+  extends Entity
 {
   public String appId;
   public String entryPath;
@@ -27,7 +27,7 @@ public class MiniAppByIdEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity
  * JD-Core Version:    0.7.0.1
  */

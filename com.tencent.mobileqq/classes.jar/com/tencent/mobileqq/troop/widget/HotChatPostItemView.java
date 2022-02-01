@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import alud;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,7 +21,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcrc;
+import anni;
+import bfvu;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -244,22 +244,22 @@ public class HotChatPostItemView
     Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long);
     paramLong = this.jdField_a_of_type_Long - paramLong;
     if (paramLong <= 59L) {
-      return alud.a(2131705971);
+      return anni.a(2131704372);
     }
     if (paramLong <= 60L) {
       return "1分钟前";
     }
     if (paramLong < 3600L) {
-      return (int)Math.floor(paramLong / 60L) + alud.a(2131705963);
+      return (int)Math.floor(paramLong / 60L) + anni.a(2131704364);
     }
     if (paramLong < 86400L) {
-      return (int)Math.floor(paramLong / 3600L) + alud.a(2131705959);
+      return (int)Math.floor(paramLong / 3600L) + anni.a(2131704360);
     }
     if ((paramLong >= 86400L) && (paramLong < 172800L)) {
-      return alud.a(2131705980);
+      return anni.a(2131704381);
     }
     if (paramLong < 2592000L) {
-      return (int)Math.ceil(paramLong / 86400L) + alud.a(2131705970);
+      return (int)Math.ceil(paramLong / 86400L) + anni.a(2131704371);
     }
     if ((paramLong >= 2592000L) && (paramLong < 31104000L)) {
       return new SimpleDateFormat("MM-dd").format(localDate);
@@ -307,7 +307,7 @@ public class HotChatPostItemView
         localURLDrawable = URLDrawable.getDrawable(paramString);
       }
       paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new bcrc(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
+      localURLDrawable.setURLDrawableListener(new bfvu(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
       return;
     }
     catch (OutOfMemoryError paramImageView)
@@ -346,19 +346,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559792, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559930, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371160));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377938));
-    this.d = ((TextView)localView.findViewById(2131364771));
-    this.e = ((TextView)localView.findViewById(2131364582));
-    this.f = ((TextView)localView.findViewById(2131375237));
-    this.c = ((TextView)localView.findViewById(2131377875));
-    this.g = ((TextView)localView.findViewById(2131380388));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367544));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364893));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371719));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378776));
+    this.d = ((TextView)localView.findViewById(2131364999));
+    this.e = ((TextView)localView.findViewById(2131364797));
+    this.f = ((TextView)localView.findViewById(2131375967));
+    this.c = ((TextView)localView.findViewById(2131378714));
+    this.g = ((TextView)localView.findViewById(2131381395));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367855));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365127));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130841984);
+    setBackgroundResource(2130842293);
     return this;
   }
   
@@ -640,7 +640,7 @@ public class HotChatPostItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView
  * JD-Core Version:    0.7.0.1
  */

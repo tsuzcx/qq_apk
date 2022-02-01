@@ -1,56 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
-
-class ayup
-  implements Comparator<aynq>
+public class ayup
 {
-  ayup(ayuo paramayuo) {}
+  public static final String a;
+  public static final String[] a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public int c;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public int a(aynq paramaynq1, aynq paramaynq2)
+  static
   {
-    int i = -1;
-    Object localObject = (aufv)this.a.a.getManager(11);
-    paramaynq1 = ((aufv)localObject).c(((aymm)paramaynq1).e());
-    paramaynq2 = ((aufv)localObject).c(((aymm)paramaynq2).e());
-    if ((paramaynq1 == null) || (paramaynq2 == null)) {
-      if ((paramaynq1 == null) && (paramaynq2 == null)) {
-        i = 0;
-      }
-    }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return i;
-        if (paramaynq2 == null) {}
-        for (i = -1;; i = 1) {
-          return i;
-        }
-        if ((paramaynq1.uin.equals("0")) && (paramaynq2.uin.equals("0"))) {
-          break;
-        }
-        if ((!paramaynq1.uin.equals("0")) && (!paramaynq2.uin.equals("0"))) {
-          return 0;
-        }
-      } while (!paramaynq2.uin.equals("0"));
-      return 1;
-      if (!paramaynq1.uin.equals("0")) {
-        break;
-      }
-      localObject = (alto)this.a.a.getManager(51);
-      boolean bool1 = ((alto)localObject).a(paramaynq1.unifiedCode, true);
-      bool2 = ((alto)localObject).a(paramaynq2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return 0;
+    jdField_a_of_type_JavaLangString = anni.a(2131705419);
+    jdField_b_of_type_JavaLangString = anni.a(2131705418);
+    jdField_c_of_type_JavaLangString = anni.a(2131705417);
+    d = anni.a(2131705421);
+    e = anni.a(2131705420);
+    f = anni.a(2131705422);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
+  }
+  
+  private ayup() {}
+  
+  public ayup(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, long paramLong, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
+  {
+    this.g = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.h = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.i = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramString4;
+    this.k = paramString5;
+    this.jdField_c_of_type_Int = paramInt3;
+  }
+  
+  public Object[] a()
+  {
+    return new Object[] { this.g, Integer.valueOf(this.jdField_a_of_type_Int), this.h, Integer.valueOf(this.jdField_b_of_type_Int), this.i, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.j, this.k, Integer.valueOf(this.jdField_c_of_type_Int) };
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append(this.g).append("; ");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("; ");
+    localStringBuilder.append(this.h).append("; ");
+    localStringBuilder.append(this.i).append("; ");
+    localStringBuilder.append(this.jdField_a_of_type_Long).append(";");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean).append("; ");
+    localStringBuilder.append(this.j).append("; ");
+    localStringBuilder.append(this.k).append("; ");
+    localStringBuilder.append(this.jdField_c_of_type_Int).append(". ");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,16 +1,14 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-final class ayth
-  implements Comparator<aynq>
+class ayth
+  extends View.AccessibilityDelegate
 {
-  public int a(aynq paramaynq1, aynq paramaynq2)
+  ayth(aytf paramaytf) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    int j = Long.signum(paramaynq2.b() - paramaynq1.b());
-    int i = j;
-    if (j == 0) {
-      i = aytg.a(paramaynq1, paramaynq2);
-    }
-    return i;
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

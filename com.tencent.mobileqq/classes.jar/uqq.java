@@ -1,22 +1,25 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uqq
+class uqq
+  implements View.OnClickListener
 {
-  public static void a(SparseIntArray paramSparseIntArray)
-  {
-    urj.a(paramSparseIntArray);
-  }
+  uqq(uqp paramuqp) {}
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    urj.a(paramMSFServlet, paramIntent, paramBoolean);
+    if (uqp.a(this.a).getActivity() != null) {
+      uqp.a(this.a).getActivity().doOnBackPressed();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqq
  * JD-Core Version:    0.7.0.1
  */

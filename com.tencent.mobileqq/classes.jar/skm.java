@@ -1,25 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class skm
-  implements ValueAnimator.AnimatorUpdateListener
+  extends skd
 {
-  skm(skl paramskl, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  skm(ske paramske) {}
   
-  int a(int paramInt1, int paramInt2, float paramFloat)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
+    {
+      ske.a(this.a).a(paramBaseArticleInfo.qzoneShareUrl);
+      return;
+    }
+    ske.a(this.a).a(paramString + "&sourcefrom=6");
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int c()
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    this.jdField_a_of_type_Skl.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skm
  * JD-Core Version:    0.7.0.1
  */

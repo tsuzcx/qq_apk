@@ -1,33 +1,33 @@
 package dov.com.qq.im.ae.play;
 
-import blab;
-import blft;
-import blig;
+import bnpf;
+import bnvb;
+import bnxt;
 import mqq.util.WeakReference;
 
 public class PlayDownloadManagerWrap$2
   implements Runnable
 {
-  public PlayDownloadManagerWrap$2(blig paramblig, blab paramblab) {}
+  public PlayDownloadManagerWrap$2(bnxt parambnxt, bnpf parambnpf) {}
   
   public void run()
   {
-    if (this.a.f == 0) {
-      if ((blig.a(this.this$0) != null) && (blig.a(this.this$0).get() != null))
+    if (this.a.g == 0) {
+      if ((bnxt.a(this.this$0) != null) && (bnxt.a(this.this$0).get() != null))
       {
-        blfz.b = this.a;
-        ((blft)blig.a(this.this$0).get()).a(393218, new Object[] { this.a });
+        bnvh.b = this.a;
+        ((bnvb)bnxt.a(this.this$0).get()).a(393218, new Object[] { this.a });
       }
     }
-    while (((this.a.f != 4) && (this.a.f != 5) && (this.a.f != 6) && (this.a.f != 7)) || (blig.a(this.this$0) == null) || (blig.a(this.this$0).get() == null)) {
+    while (((this.a.g != 4) && (this.a.g != 5) && (this.a.g != 6) && (this.a.g != 7)) || (bnxt.a(this.this$0) == null) || (bnxt.a(this.this$0).get() == null)) {
       return;
     }
-    ((blft)blig.a(this.this$0).get()).a(655361, new Object[] { this.a });
+    ((bnvb)bnxt.a(this.this$0).get()).a(655361, new Object[] { this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayDownloadManagerWrap.2
  * JD-Core Version:    0.7.0.1
  */

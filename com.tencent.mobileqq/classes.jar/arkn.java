@@ -1,6 +1,27 @@
-public abstract interface arkn
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
+
+public class arkn
+  extends anmu
 {
-  public abstract void a(String paramString1, String paramString2);
+  public arkn(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
+  }
 }
 
 

@@ -1,86 +1,102 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.XPanelContainer;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class apwc
-  extends apwd
-  implements View.OnClickListener
+  implements Manager
 {
-  protected int f;
+  private QQAppInterface a;
   
-  public apwc(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, apuc paramapuc, int paramInt4)
+  public apwc(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramInt4);
-    this.b = false;
-    this.f = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296845));
+    this.a = paramQQAppInterface;
+    ThreadManagerV2.executeOnFileThread(new RockDownloaderManager.1(this));
   }
   
-  public View a(aptf paramaptf, int paramInt, View paramView, ViewGroup paramViewGroup)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt);
-    }
-    this.jdField_a_of_type_Apwe = ((apwe)paramaptf);
-    if (paramView == null)
+    long l = System.currentTimeMillis();
+    Object localObject1 = apvz.a().query(RockDownloadInfo.class);
+    RockDownloadInfo localRockDownloadInfo;
+    int i;
+    if (localObject1 != null)
     {
-      paramaptf = apxa.a().a(this.c);
-      paramView = new AbsListView.LayoutParams(-1, this.f);
-      if (paramaptf == null)
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
-        }
-        paramaptf = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561704, null);
-        paramaptf.setLayoutParams(paramView);
-        this.jdField_a_of_type_Apwe.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramaptf.findViewById(2131364881));
-        this.jdField_a_of_type_Apwe.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramaptf.findViewById(2131364972));
-        this.jdField_a_of_type_Apwe.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramaptf.findViewById(2131364970));
-        a(this.c, paramaptf);
-        paramaptf.setTag(this.jdField_a_of_type_Apwe);
-      }
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_Apwe);
-      paramInt = XPanelContainer.a - (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296845);
-      if (paramInt != this.f)
-      {
-        this.f = paramInt;
-        paramView = (AbsListView.LayoutParams)paramaptf.getLayoutParams();
-        if (paramView != null)
+        localRockDownloadInfo = (RockDownloadInfo)((Iterator)localObject1).next();
+        Object localObject2;
+        if (localRockDownloadInfo.endTime + 604800L < l / 1000L)
         {
-          paramView.height = this.f;
-          paramaptf.setLayoutParams(paramView);
+          localObject2 = new VFSFile(localRockDownloadInfo.localPath);
+          if (((VFSFile)localObject2).exists()) {
+            ((VFSFile)localObject2).delete();
+          }
+          apvz.a().remove(localRockDownloadInfo);
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localRockDownloadInfo });
+          }
+        }
+        else
+        {
+          localObject2 = bgnw.d(this.a.getApp(), localRockDownloadInfo.getPackageName());
+          try
+          {
+            i = Integer.parseInt((String)localObject2);
+            if ((localRockDownloadInfo.realVersionCode <= 0) || (i < localRockDownloadInfo.realVersionCode)) {
+              continue;
+            }
+            localObject2 = new VFSFile(localRockDownloadInfo.localPath);
+            if (((VFSFile)localObject2).exists()) {
+              ((VFSFile)localObject2).delete();
+            }
+            apvz.a().remove(localRockDownloadInfo);
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has install", localRockDownloadInfo });
+          }
+          catch (NumberFormatException localNumberFormatException) {}
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderManager", 2, new Object[] { "get install info error", localRockDownloadInfo, " error=", localNumberFormatException.getMessage() });
+          }
         }
       }
-      return paramaptf;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form cache");
+    }
+    localObject1 = new VFSFile(apvz.a());
+    if (((VFSFile)localObject1).exists())
+    {
+      localObject1 = ((VFSFile)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          localRockDownloadInfo = localObject1[i];
+          if (localRockDownloadInfo.lastModified() + 604800000L < l)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("RockDownloaderManager", 2, new Object[] { "remove file", localRockDownloadInfo.getAbsolutePath() });
+            }
+            localRockDownloadInfo.delete();
+          }
+          i += 1;
+        }
       }
-      break;
-      paramaptf = paramView;
     }
   }
   
-  public EmoticonPackage a()
+  public void onDestroy()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  }
-  
-  public int getCount()
-  {
-    return 1;
+    this.a = null;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aepi;
+import afur;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bayu;
+import bdzx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -44,19 +44,19 @@ public class TroopAIOImageEmptyFragment
     {
       paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = aepi.a(321.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = aepi.a(200.0F, paramLayoutInflater);
-      paramViewGroup.mLoadingDrawable = bayu.a;
-      paramViewGroup.mFailedDrawable = bayu.a;
+      paramViewGroup.mRequestWidth = afur.a(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = afur.a(200.0F, paramLayoutInflater);
+      paramViewGroup.mLoadingDrawable = bdzx.a;
+      paramViewGroup.mFailedDrawable = bdzx.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131377824)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131378665)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131377620)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131378459)).setText(this.c);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560418;
+    return 2131560573;
   }
   
   public void init(Bundle paramBundle)
@@ -69,7 +69,7 @@ public class TroopAIOImageEmptyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageEmptyFragment
  * JD-Core Version:    0.7.0.1
  */

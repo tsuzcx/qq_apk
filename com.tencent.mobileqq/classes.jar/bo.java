@@ -1,23 +1,30 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.widget.ListView;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bo
-  implements bhzf
+  implements DialogInterface.OnClickListener
 {
-  public bo(LiteActivity paramLiteActivity) {}
+  public bo(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView) {}
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
-    return true;
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

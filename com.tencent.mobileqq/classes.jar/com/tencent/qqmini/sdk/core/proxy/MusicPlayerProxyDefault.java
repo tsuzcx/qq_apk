@@ -1,14 +1,18 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
 import android.media.MediaPlayer;
-import com.tencent.qqmini.sdk.core.model.SongInfo;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.model.SongInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerListener;
 import java.io.IOException;
 
+@ProxyService(proxy=MusicPlayerProxy.class)
 public class MusicPlayerProxyDefault
   implements MusicPlayerProxy
 {
-  private MusicPlayerProxy.MusicPlayerListener mListener;
-  private MediaPlayer player;
+  private MusicPlayerProxy.MusicPlayerListener mListener = null;
+  private MediaPlayer player = null;
   
   public SongInfo getCurrentSong()
   {
@@ -31,7 +35,7 @@ public class MusicPlayerProxyDefault
     return 0;
   }
   
-  public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener)
+  public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener, String paramString1, String paramString2)
   {
     this.mListener = paramMusicPlayerListener;
     if (this.player != null)
@@ -90,7 +94,7 @@ public class MusicPlayerProxyDefault
     }
     try
     {
-      this.player.setDataSource(paramArrayOfSongInfo.b);
+      this.player.setDataSource(paramArrayOfSongInfo.url);
       this.player.prepareAsync();
       this.player.setOnPreparedListener(new MusicPlayerProxyDefault.1(this));
       return;
@@ -117,7 +121,7 @@ public class MusicPlayerProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxyDefault
  * JD-Core Version:    0.7.0.1
  */

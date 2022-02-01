@@ -1,12 +1,21 @@
-public abstract interface bmgq
+public class bmgq
 {
-  public abstract void i();
+  public int a;
+  public long a;
+  public bmgo a;
+  public boolean a;
+  public int b;
+  public bmgo b;
   
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
+  bmgq(bmgp parambmgp)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bmgo = null;
+    this.jdField_b_of_type_Bmgo = null;
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

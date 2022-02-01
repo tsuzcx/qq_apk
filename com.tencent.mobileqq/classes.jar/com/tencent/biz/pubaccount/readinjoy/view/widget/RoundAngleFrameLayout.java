@@ -113,7 +113,7 @@ public class RoundAngleFrameLayout
     paramCanvas.restore();
   }
   
-  public void setRaduis(int paramInt)
+  public void setRadius(int paramInt)
   {
     this.jdField_a_of_type_Float = paramInt;
     this.jdField_b_of_type_Float = paramInt;
@@ -121,7 +121,7 @@ public class RoundAngleFrameLayout
     this.d = paramInt;
   }
   
-  public void setRaduis(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void setRadius(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Float = paramInt1;
     this.jdField_b_of_type_Float = paramInt2;
@@ -131,7 +131,7 @@ public class RoundAngleFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout
  * JD-Core Version:    0.7.0.1
  */

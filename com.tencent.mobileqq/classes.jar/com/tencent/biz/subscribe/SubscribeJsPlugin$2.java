@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe;
 
+import aaab;
 import android.graphics.Bitmap;
-import ansn;
+import apss;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ybq;
 
 public class SubscribeJsPlugin$2
   implements Runnable
 {
-  public SubscribeJsPlugin$2(ybq paramybq, JSONArray paramJSONArray) {}
+  public SubscribeJsPlugin$2(aaab paramaaab, JSONArray paramJSONArray) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class SubscribeJsPlugin$2
           try
           {
             String str = this.a.getJSONObject(i).getString("uin");
-            Bitmap localBitmap = ybq.a(this.this$0).a(str, true, null);
+            Bitmap localBitmap = aaab.a(this.this$0).a(str, true, null);
             QLog.i(this.this$0.TAG, 4, "handleGetAvatar  uin: " + str);
-            ybq.a(this.this$0, str, localBitmap);
+            aaab.a(this.this$0, str, localBitmap);
             i += 1;
           }
           catch (JSONException localJSONException)
@@ -43,7 +43,7 @@ public class SubscribeJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

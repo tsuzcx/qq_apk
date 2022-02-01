@@ -1,9 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class azxb
+class azxb
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public View b;
+  azxb(azxa paramazxa, bgpa parambgpa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bgpa.dismiss();
+  }
 }
 
 

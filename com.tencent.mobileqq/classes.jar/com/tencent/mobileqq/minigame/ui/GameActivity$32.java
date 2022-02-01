@@ -1,40 +1,45 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
-import com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.report.MiniReportManager;
-import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 class GameActivity$32
   implements Runnable
 {
-  GameActivity$32(GameActivity paramGameActivity) {}
+  GameActivity$32(GameActivity paramGameActivity, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    GameActivity.access$3802(this.this$0, System.currentTimeMillis());
-    QLog.e("[minigame] GameActivity", 1, "start launchGame, execJS");
-    GameActivity.access$000(this.this$0).recordInitialMemory();
-    MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load", null);
-    MiniAppReportManager2.reportPageView("2load", null, null, this.this$0.mGameAppConfig);
-    GameActivity.access$3700(this.this$0, 1);
-    MiniReportManager.reportEventType(this.this$0.mGameAppConfig, 1007, "1");
-    IGameLauncher localIGameLauncher = GameActivity.access$1300(this.this$0).getGameEngine().getGameLauncher();
-    if (localIGameLauncher != null)
-    {
-      localIGameLauncher.launchGame();
-      return;
+    int i = 0;
+    GameActivity.access$4600(this.this$0);
+    if ((GameActivity.access$4700(this.this$0) != null) && (!TextUtils.isEmpty(this.val$debuggerTxt))) {
+      GameActivity.access$4700(this.this$0).setText(this.val$debuggerTxt);
     }
-    QLog.e("[minigame] GameActivity", 1, "launchGame execJS fail");
+    if (!TextUtils.isEmpty(this.val$debuggerToast)) {
+      Toast.makeText(this.this$0, this.val$debuggerToast, 0).show();
+    }
+    View localView;
+    if (GameActivity.access$4800(this.this$0) != null)
+    {
+      localView = GameActivity.access$4800(this.this$0);
+      if (!this.val$showBreakPoint) {
+        break label99;
+      }
+    }
+    for (;;)
+    {
+      localView.setVisibility(i);
+      return;
+      label99:
+      i = 8;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.32
  * JD-Core Version:    0.7.0.1
  */

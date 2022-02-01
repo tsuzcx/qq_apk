@@ -1,6 +1,17 @@
-class blit
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
+public class blit
+  implements DialogInterface.OnClickListener
 {
-  public static blis a = new blis();
+  public blit(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

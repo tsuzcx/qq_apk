@@ -1,54 +1,35 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.2.1;
-import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class lvc
-  implements mur
+  implements bihh
 {
-  public lvc(RandomController paramRandomController) {}
+  public lvc(RedPacketShareFragment.3.1 param1) {}
   
-  public void a(String paramString, mus parammus)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + parammus.b + ", gender:" + parammus.a);
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
     }
-    if (paramString.equals(RandomController.a(this.a).getAccount()))
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      if (parammus.a != -1) {
-        RandomController.a(this.a).a(parammus.a);
-      }
-      if (RandomController.a(this.a).a())
-      {
-        if (!RandomController.a(this.a)) {
-          break label209;
-        }
-        RandomController.b(this.a, false);
-        RandomController.a(this.a).set(0);
-        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
     }
     for (;;)
     {
-      RandomController.a(this.a).a().post(new RandomController.2.1(this));
+      WXShareHelper.a().b(this);
       return;
-      label209:
-      if (RandomController.b(this.a))
-      {
-        RandomController.c(this.a, false);
-        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvc
  * JD-Core Version:    0.7.0.1
  */

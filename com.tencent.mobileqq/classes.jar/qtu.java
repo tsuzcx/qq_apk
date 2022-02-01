@@ -1,23 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
 
-public abstract interface qtu
+public class qtu
+  extends qtm
 {
-  @Nullable
-  public abstract ColumnInfo a();
+  public qtu(Context paramContext, aobu paramaobu, snh paramsnh)
+  {
+    super(paramContext, paramaobu, paramsnh);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(@NotNull ColumnInfo paramColumnInfo);
-  
-  public abstract void a(@NotNull ColumnInfo paramColumnInfo, qts paramqts);
-  
-  public abstract void b(@NotNull ColumnInfo paramColumnInfo, qts paramqts);
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtu
  * JD-Core Version:    0.7.0.1
  */

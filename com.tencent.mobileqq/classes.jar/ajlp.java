@@ -1,8 +1,11 @@
-import android.view.View;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public abstract interface ajlp
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a(List<MayKnowRecommend> paramList);
+  
+  public abstract boolean a();
 }
 
 

@@ -23,7 +23,7 @@ final class b$2
       x.c(">>> %s onCreated <<<", new Object[] { paramBundle });
       paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
     } while (paramActivity == null);
-    paramActivity.E.add(b.a(paramBundle, "onCreated"));
+    paramActivity.D.add(b.a(paramBundle, "onCreated"));
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
@@ -39,7 +39,7 @@ final class b$2
       x.c(">>> %s onDestroyed <<<", new Object[] { str });
       paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
     } while (paramActivity == null);
-    paramActivity.E.add(b.a(str, "onDestroyed"));
+    paramActivity.D.add(b.a(str, "onDestroyed"));
   }
   
   public final void onActivityPaused(Activity paramActivity)
@@ -56,7 +56,7 @@ final class b$2
       x.c(">>> %s onPaused <<<", new Object[] { str });
       locala = com.tencent.bugly.crashreport.common.info.a.b();
     } while (locala == null);
-    locala.E.add(b.a(str, "onPaused"));
+    locala.D.add(b.a(str, "onPaused"));
     locala.a(false);
     locala.u = System.currentTimeMillis();
     locala.v = (locala.u - locala.t);
@@ -91,7 +91,7 @@ final class b$2
           paramActivity = com.tencent.bugly.crashreport.common.info.a.b();
           if (paramActivity != null)
           {
-            paramActivity.E.add(b.a(str, "onResumed"));
+            paramActivity.D.add(b.a(str, "onResumed"));
             paramActivity.a(true);
             paramActivity.s = str;
             paramActivity.t = System.currentTimeMillis();

@@ -4,81 +4,41 @@ import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Set;
 
-public final class c
+public class c
 {
-  private static HashMap<String, byte[]> e = null;
-  public final RequestPacket a = new RequestPacket();
-  private HashMap<String, byte[]> b = new HashMap();
-  private a c = new a();
-  private String d = "GBK";
+  static HashMap<String, byte[]> a;
+  public HashMap<String, byte[]> b = new HashMap();
+  a c = new a();
+  public String d = "GBK";
+  public final RequestPacket e = new RequestPacket();
   
-  private static byte[] a(ByteBuffer paramByteBuffer)
+  private Object a(byte[] paramArrayOfByte, Object paramObject)
+  {
+    this.c.a(paramArrayOfByte);
+    this.c.a(this.d);
+    return this.c.a(paramObject, 0, true);
+  }
+  
+  private byte[] a(ByteBuffer paramByteBuffer)
   {
     byte[] arrayOfByte = new byte[paramByteBuffer.position()];
     System.arraycopy(paramByteBuffer.array(), 0, arrayOfByte, 0, arrayOfByte.length);
     return arrayOfByte;
   }
   
-  public final <T> void a(String paramString, T paramT)
+  private void b()
   {
-    if (paramT == null) {
-      throw new IllegalArgumentException("put value can not is null");
-    }
-    if ((paramT instanceof Set)) {
-      throw new IllegalArgumentException("can not support Set");
-    }
-    b localb = new b();
-    localb.a(this.d);
-    localb.a(paramT, 0);
-    paramT = a(localb.a());
-    this.b.put(paramString, paramT);
-  }
-  
-  public final void a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
+    a locala = new a(this.e.sBuffer);
+    locala.a(this.d);
+    if (a == null)
     {
-      paramArrayOfByte = new a(paramArrayOfByte, (byte)0);
-      paramArrayOfByte.a(this.d);
-      this.a.readFrom(paramArrayOfByte);
-      paramArrayOfByte = new a(this.a.sBuffer);
-      paramArrayOfByte.a(this.d);
-      if (e == null)
-      {
-        HashMap localHashMap = new HashMap();
-        e = localHashMap;
-        localHashMap.put("", new byte[0]);
-      }
-      this.b = paramArrayOfByte.a(e, 0, false);
-      return;
+      a = new HashMap();
+      a.put("", new byte[0]);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    this.b = locala.a(a, 0, false);
   }
   
-  public final byte[] a()
-  {
-    Object localObject = new b(0);
-    ((b)localObject).a(this.d);
-    ((b)localObject).a(this.b, 0);
-    this.a.iVersion = 3;
-    this.a.sBuffer = a(((b)localObject).a());
-    localObject = new b(0);
-    ((b)localObject).a(this.d);
-    this.a.writeTo((b)localObject);
-    localObject = a(((b)localObject).a());
-    int i = localObject.length;
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-    localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-    return localByteBuffer.array();
-  }
-  
-  public final <T> T b(String paramString, T paramT)
+  public <T> T a(String paramString, T paramT)
   {
     if (!this.b.containsKey(paramString)) {
       return null;
@@ -86,9 +46,7 @@ public final class c
     paramString = (byte[])this.b.get(paramString);
     try
     {
-      this.c.a(paramString);
-      this.c.a(this.d);
-      paramString = this.c.a(paramT, 0, true);
+      paramString = a(paramString, paramT);
       return paramString;
     }
     catch (Exception paramString)
@@ -96,10 +54,84 @@ public final class c
       throw new Exception(paramString);
     }
   }
+  
+  public void a(int paramInt)
+  {
+    this.e.iRequestId = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.e.sFuncName = paramString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length >= 4) {
+      try
+      {
+        paramArrayOfByte = new a(paramArrayOfByte, 4);
+        paramArrayOfByte.a(this.d);
+        this.e.readFrom(paramArrayOfByte);
+        b();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
+    }
+    throw new IllegalArgumentException("decode package must include size head");
+  }
+  
+  public byte[] a()
+  {
+    Object localObject1 = new b(0);
+    ((b)localObject1).a(this.d);
+    ((b)localObject1).a(this.b, 0);
+    Object localObject2 = this.e;
+    ((RequestPacket)localObject2).iVersion = 3;
+    ((RequestPacket)localObject2).sBuffer = a(((b)localObject1).a());
+    localObject1 = new b(0);
+    ((b)localObject1).a(this.d);
+    this.e.writeTo((b)localObject1);
+    localObject1 = a(((b)localObject1).a());
+    int i = localObject1.length + 4;
+    localObject2 = ByteBuffer.allocate(i);
+    ((ByteBuffer)localObject2).putInt(i).put((byte[])localObject1).flip();
+    return ((ByteBuffer)localObject2).array();
+  }
+  
+  public void b(String paramString)
+  {
+    this.e.sServantName = paramString;
+  }
+  
+  public <T> void b(String paramString, T paramT)
+  {
+    if (paramString != null)
+    {
+      if (paramT != null)
+      {
+        if (!(paramT instanceof Set))
+        {
+          b localb = new b();
+          localb.a(this.d);
+          localb.a(paramT, 0);
+          paramT = a(localb.a());
+          this.b.put(paramString, paramT);
+          return;
+        }
+        throw new IllegalArgumentException("can not support Set");
+      }
+      throw new IllegalArgumentException("put value can not is null");
+    }
+    throw new IllegalArgumentException("put key can not is null");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.wup.c
  * JD-Core Version:    0.7.0.1
  */

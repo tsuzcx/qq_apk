@@ -1,21 +1,24 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class aszk
+final class aszk
+  extends Handler
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
-  
-  public aszk(aszh paramaszh)
+  aszk(Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((aszq)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aszk
  * JD-Core Version:    0.7.0.1
  */

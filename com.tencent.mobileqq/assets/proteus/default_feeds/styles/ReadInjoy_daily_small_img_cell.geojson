@@ -191,10 +191,10 @@
                 {
                     "view_type": "container",
                     "layout_type": "layout_relative",
-                    "margin_top": "10",
+                    "margin_top": "4",
                     "height": {
-                        "type": "absolutely",
-                        "value": "16"
+                        "type": "relative",
+                        "value": "30"
                     },
                     "width": {
                         "type": "match_parent"
@@ -214,6 +214,7 @@
                                 {
                                     "view_type": "UILabel",
                                     "view_id": "id_chioceness_label",
+                                    "align_parent_center_vertical": "YES",
                                     "margin_right": "6",
                                     "height": {
                                         "type": "absolutely",
@@ -232,6 +233,7 @@
                                 {
                                     "view_type": "UIView",
                                     "layout_type": "layout_relative",
+                                    "align_parent_center_vertical": "YES",
                                     "view_id": "id_recommend_wrapper",
                                     "visible_depend_on_children": "YES",
                                     "margin_right": "6",
@@ -270,6 +272,7 @@
                                 {
                                     "view_type": "UILabel",
                                     "view_id": "id_sub_article_title",
+                                    "align_parent_center_vertical": "YES",
                                     "margin_right": "6",
                                     "height": {
                                         "type": "absolutely",
@@ -288,6 +291,7 @@
                                 {
                                     "view_type": "UILabel",
                                     "view_id": "id_info_title",
+                                    "align_parent_center_vertical": "YES",
                                     "margin_right": "6",
                                     "height": {
                                         "type": "absolutely",
@@ -306,26 +310,41 @@
                             ]
                         },
                         {
-                            "view_type":"UIButton",
-                            "view_id":"id_dislike_button",
-                            "default_visible":"YES",
-                            "align_parent_right":"YES",
+                            "view_type": "UIView",
+                            "layout_type": "layout_relative",
+                            "view_id": "id_dislike_button",
+                            "default_visible": "YES",
+                            "margin_right": "-8",
+                            "align_parent_right": "YES",
                             "align_parent_center_vertical": "YES",
-                            "margin_right":"-11",
-                            "event_type":"cmd_dislike_click",
-                            "height":{
-                                "type":"relative",
-                                "value":"30"
+                            "event_type": "cmd_dislike_click",
+                            "height": {
+                                "type": "relative",
+                                "value": "30"
                             },
-                            "width":{
-                                "type":"relative",
-                                "value":"40"
+                            "width": {
+                                "type": "relative",
+                                "value": "40"
                             },
-
-                            "attributes":{
-                                "setImage:":"feeds_dislike"
-
-                            }
+                            "subviews": [
+                                {
+                                    "view_type": "UIImageView",
+                                    "view_id": "id_dislike_img",
+                                    "default_visible": "YES",
+                                    "align_parent_center": "YES",
+                                    "height": {
+                                        "type": "relative",
+                                        "value": "12"
+                                    },
+                                    "width": {
+                                        "type": "relative",
+                                        "value": "12"
+                                    },
+                                    "attributes": {
+                                        "loadImageWithPath:": "feeds_dislike"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }

@@ -1,53 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
-import java.util.List;
-
-class ukp
-  extends Handler
+public class ukp
 {
-  public ukp(ukl paramukl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public long g;
+  public String g;
+  public long h;
+  public String h;
+  public long i;
+  public String i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
-    } while ((ukl.a(this.a) != 1) || (ukl.a(this.a) == null));
-    Object localObject = ukl.a(this.a);
-    int i = ukl.a(this.a, (List)localObject, ukl.c(this.a));
-    int j = ukl.a(this.a, (List)localObject, i + 1);
-    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
-    {
-      ukl.b(this.a);
-      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
-      return;
-    }
-    ukl.a(this.a, j);
-    paramMessage = (uja)((List)localObject).get(i);
-    localObject = (uja)((List)localObject).get(j);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ukl.a(this.a));
-    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((uja)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ukl.a(this.a));
-    paramMessage = AnimationUtils.loadAnimation(ukl.a(this.a), 2130772235);
-    paramMessage.setAnimationListener(new ukq(this));
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
-    wxe.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
+    return "WSPlayerReportData{mPlayScene='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mVideoId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mVideoFormat='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mVideoFileSize=" + this.jdField_a_of_type_Long + ", mActualWidth=" + this.jdField_a_of_type_Int + ", mActualHeight=" + this.jdField_b_of_type_Int + ", mVideoBitRate=" + this.jdField_b_of_type_Long + ", mIsHitCache=" + this.jdField_a_of_type_Boolean + ", mIsPreDownloadHit=" + this.jdField_b_of_type_Boolean + ", mPreloadStatus=" + this.jdField_c_of_type_Int + ", mSecondBufferTime=" + this.jdField_c_of_type_Long + ", mSecondBufferCount=" + this.jdField_d_of_type_Int + ", mListSpeedKbs='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mMaxSpeedKbs=" + this.jdField_d_of_type_Long + ", mMinSpeedKbs=" + this.jdField_e_of_type_Long + ", mAverageSpeedKbs=" + this.jdField_f_of_type_Long + ", mDownloadedDuration=" + this.jdField_g_of_type_Long + ", mHttpDNSTime=" + this.jdField_h_of_type_Long + ", mHttpRedirectTime=" + this.jdField_i_of_type_Long + ", mHttpFirstReceiveTime=" + this.j + ", mHttpConnectTime=" + this.k + ", mMp4HeaderParseTime=" + this.l + ", mCacheFrameTime=" + this.m + ", mVideoPrepareTime=" + this.n + ", mPreparePerformanceJson='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mSkipFramesTotalCount=" + this.jdField_e_of_type_Int + ", mErrorCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mErrorDetailInfo='" + this.jdField_g_of_type_JavaLangString + '\'' + ", mHWCodecErrorCode='" + this.jdField_h_of_type_JavaLangString + '\'' + ", mIsChangeHWBackup=" + this.jdField_c_of_type_Boolean + ", mHttpConnectQualityJson=" + this.jdField_i_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukp
  * JD-Core Version:    0.7.0.1
  */

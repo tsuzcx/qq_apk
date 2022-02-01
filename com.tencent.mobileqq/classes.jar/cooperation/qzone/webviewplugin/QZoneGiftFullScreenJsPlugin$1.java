@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import atyp;
-import bjqu;
-import bjqw;
-import bjwr;
+import awfy;
+import bmfd;
+import bmfg;
+import bmlb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QZoneGiftFullScreenJsPlugin$1
   implements Runnable
 {
-  public QZoneGiftFullScreenJsPlugin$1(bjwr parambjwr, String[] paramArrayOfString) {}
+  public QZoneGiftFullScreenJsPlugin$1(bmlb parambmlb, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class QZoneGiftFullScreenJsPlugin$1
         localObject6 = localJSONObject.getJSONObject("giftZipUrl");
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (atyp.a().equals("sbig"))
+        if (awfy.a().equals("sbig"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -56,11 +56,11 @@ public class QZoneGiftFullScreenJsPlugin$1
       }
       try
       {
-        bjwr.a(this.this$0, localJSONObject.getString("callback"));
+        bmlb.a(this.this$0, localJSONObject.getString("callback"));
         localObject6 = localObject3;
         localObject3 = localObject2;
         localObject5 = localObject1;
-        if ((!TextUtils.isEmpty((CharSequence)localObject6)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!TextUtils.isEmpty(bjwr.a(this.this$0)))) {
+        if ((!TextUtils.isEmpty((CharSequence)localObject6)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!TextUtils.isEmpty(bmlb.a(this.this$0)))) {
           break;
         }
         return;
@@ -77,7 +77,7 @@ public class QZoneGiftFullScreenJsPlugin$1
       }
       localObject2 = localObject3;
       localObject1 = localObject5;
-      if (atyp.a().equals("xbig"))
+      if (awfy.a().equals("xbig"))
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
@@ -92,7 +92,7 @@ public class QZoneGiftFullScreenJsPlugin$1
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (atyp.a().equals("small"))
+        if (awfy.a().equals("small"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -120,12 +120,12 @@ public class QZoneGiftFullScreenJsPlugin$1
         }
       }
     }
-    bjqu.a().a().b((String)localObject6, localObject4, (String)localObject5);
+    bmfd.a().a().b((String)localObject6, localObject4, (String)localObject5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

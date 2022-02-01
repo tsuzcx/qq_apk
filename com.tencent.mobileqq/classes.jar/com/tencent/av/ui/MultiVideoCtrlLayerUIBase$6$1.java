@@ -9,7 +9,7 @@ class MultiVideoCtrlLayerUIBase$6$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$6.this$0.g()) {
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$6.this$0.h()) {
       return;
     }
     this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$6.this$0.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$6.a, this.jdField_a_of_type_JavaUtilArrayList);
@@ -17,7 +17,7 @@ class MultiVideoCtrlLayerUIBase$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.6.1
  * JD-Core Version:    0.7.0.1
  */

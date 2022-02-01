@@ -1,40 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.View;
 
-public class bkrt
-  implements Animator.AnimatorListener
+public abstract interface bkrt
 {
-  public bkrt(AECropperImageView paramAECropperImageView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationCancel(paramAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationEnd(paramAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AECropperImageView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.onAnimationStart(paramAnimator);
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

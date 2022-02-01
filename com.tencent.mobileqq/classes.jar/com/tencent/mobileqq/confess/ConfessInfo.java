@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import bdeu;
+import bgjw;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -59,7 +59,7 @@ public class ConfessInfo
     {
       return false;
       paramObject = (ConfessInfo)paramObject;
-    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bdeu.a(this.confessorNick, paramObject.confessorNick)) || (!bdeu.a(this.topic, paramObject.topic)));
+    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bgjw.a(this.confessorNick, paramObject.confessorNick)) || (!bgjw.a(this.topic, paramObject.topic)));
     return true;
   }
   
@@ -129,7 +129,7 @@ public class ConfessInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class acxd
-  implements View.OnClickListener
+  implements acxc
 {
-  public acxd(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  private acwu<acxb> a = new acwv();
   
-  public void onClick(View paramView)
+  public List<acxb> a()
   {
-    if (this.a.app != null)
-    {
-      paramView = new Intent();
-      paramView.putExtras(this.a.getIntent().getExtras());
-      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
-      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-    }
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends acxb> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

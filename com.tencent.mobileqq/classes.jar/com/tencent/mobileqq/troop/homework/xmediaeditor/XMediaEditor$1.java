@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor;
 
 import android.widget.EditText;
-import bceh;
-import bcfm;
+import bfev;
+import bfga;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 class XMediaEditor$1
   implements Runnable
 {
-  XMediaEditor$1(XMediaEditor paramXMediaEditor, bcfm parambcfm) {}
+  XMediaEditor$1(XMediaEditor paramXMediaEditor, bfga parambfga) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ class XMediaEditor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.1
  * JD-Core Version:    0.7.0.1
  */

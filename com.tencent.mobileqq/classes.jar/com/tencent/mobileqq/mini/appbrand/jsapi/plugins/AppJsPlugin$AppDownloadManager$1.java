@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bfrz;
-import bfse;
-import bfsk;
-import bkik;
+import bize;
+import bizj;
+import bizo;
+import bmxe;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 class AppJsPlugin$AppDownloadManager$1
-  implements bkik
+  implements bmxe
 {
   AppJsPlugin$AppDownloadManager$1(AppJsPlugin.AppDownloadManager paramAppDownloadManager) {}
   
@@ -70,7 +70,7 @@ class AppJsPlugin$AppDownloadManager$1
   public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
     if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams == null)) {
-      bfrz.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
+      bize.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
     }
     String str;
     int i;
@@ -87,8 +87,8 @@ class AppJsPlugin$AppDownloadManager$1
             return;
             localObject = paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams;
             str = ((WadlParams)localObject).a;
-            i = bfsk.a(paramWadlResult.jdField_b_of_type_Int);
-            bfse.b(((WadlParams)localObject).a);
+            i = bizo.a(paramWadlResult.jdField_b_of_type_Int);
+            bizj.b(((WadlParams)localObject).a);
             QLog.i("AppJsPlugin_AppDownloadManager", 1, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
             switch (i)
             {
@@ -112,8 +112,8 @@ class AppJsPlugin$AppDownloadManager$1
         } while (localObject == null);
         ((AppJsPlugin.IWaldlCallback)localObject).onResult(true, paramWadlResult);
         return;
-        i = bfsk.b(paramWadlResult.c);
-        bfsk.a(i);
+        i = bizo.b(paramWadlResult.c);
+        bizo.a(i);
         AppJsPlugin.AppDownloadManager.access$200(this.this$1).remove(str);
         if ((AppJsPlugin.AppDownloadManager.access$300(this.this$1) != null) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).containsKey(str)) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str) != null)) {
           ((AppJsPlugin.IDownloadListener)AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str)).onDownloadFailed(i, i, "failed");
@@ -133,7 +133,7 @@ class AppJsPlugin$AppDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppJsPlugin.AppDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

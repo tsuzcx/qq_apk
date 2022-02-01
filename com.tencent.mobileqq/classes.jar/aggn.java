@@ -1,22 +1,21 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class aggn
+  implements agij
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  public aggn(DoodlePanel paramDoodlePanel) {}
   
-  private aggn()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      bgjb.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
   }
 }
 

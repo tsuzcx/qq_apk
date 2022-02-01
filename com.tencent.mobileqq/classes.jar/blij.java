@@ -1,12 +1,24 @@
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-public abstract interface blij
+public class blij
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(NodeItem paramNodeItem);
+  public blij(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (QlinkShareJumpActivity.a(this.a))
+    {
+      QlinkShareJumpActivity.a(this.a, false);
+      this.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blij
  * JD-Core Version:    0.7.0.1
  */

@@ -1,120 +1,161 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.internal.TencentExtraKeys;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.3.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class aooy
+public final class aooy
+  implements TencentLocationListener
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  
-  public static aooy a(aoko[] paramArrayOfaoko)
+  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
-    aooy localaooy = new aooy();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    if (paramTencentLocation == null) {}
+    int j;
+    do
     {
+      return;
+      j = paramTencentLocation.getExtra().getInt("qq_level");
+    } while (SosoInterface.a(paramTencentLocation, paramInt, j));
+    SosoInterface.a().removeMessages(1001);
+    long l;
+    Object localObject2;
+    boolean bool1;
+    boolean bool2;
+    Object localObject3;
+    label154:
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      i = 1;
+      SosoInterface.a(paramInt);
+      l = SystemClock.elapsedRealtime() - SosoInterface.a() - SosoInterface.a();
+      SosoInterface.a(SystemClock.elapsedRealtime());
+      SosoInterface.b(SosoInterface.a);
+      localObject2 = paramTencentLocation.getExtra().getString("qq_caller");
+      String str = paramTencentLocation.getExtra().getString("qq_caller_route");
+      bool1 = paramTencentLocation.getExtra().getBoolean("qq_goonListener");
+      bool2 = paramTencentLocation.getExtra().getBoolean("qq_reqLocation");
+      localObject3 = TencentExtraKeys.getRawData(paramTencentLocation);
+      SosoInterface.a(paramInt);
+      if (bool2)
+      {
+        if (i == 0) {
+          break label497;
+        }
+        SosoInterface.c(0);
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("onLocationChanged() err=").append(paramInt);
+        if ((paramString != null) && (paramString.length() != 0)) {
+          break label504;
+        }
+        localObject1 = "";
+        label193:
+        localObject1 = localStringBuilder.append((String)localObject1).append(" caller=").append((String)localObject2).append(" level=").append(j).append(" reqLocation=").append(bool2).append(" consume=").append(l).append(" rawData=");
+        if (localObject3 != null) {
+          break label528;
+        }
+        i = 0;
+        label255:
+        localObject1 = ((StringBuilder)localObject1).append(i).append(" isGoonCallback=").append(bool1).append(" failInt=").append(SosoInterface.c()).append(" caller rote: ").append(str).append(" verify key length:");
+        if (paramTencentLocation.getVerifyKey() != null) {
+          break label536;
+        }
+      }
+    }
+    label528:
+    label536:
+    for (int i = 0;; i = paramTencentLocation.getVerifyKey().length())
+    {
+      QLog.d("SOSO.LBS", 2, i + " source:" + paramTencentLocation.getSourceProvider() + " adcode :" + paramTencentLocation.getCityCode() + " lon*lat :" + (int)(paramTencentLocation.getLongitude() * paramTencentLocation.getLatitude()));
+      bool1 = false;
+      localObject1 = SosoInterface.a();
+      if ((paramInt != 0) || (bool2)) {}
       try
       {
-        if (i >= paramArrayOfaoko.length) {
-          break label221;
+        SosoInterface.a(j, paramTencentLocation, (String)localObject2);
+        if ((localObject3 != null) && (localObject3.length > 0)) {
+          SosoInterface.a(paramTencentLocation.getProvider(), (byte[])localObject3);
         }
-        String str = paramArrayOfaoko[i].a;
-        if (TextUtils.isEmpty(str))
-        {
-          QLog.d("OpenSdkConfProcessor", 1, "parse, content empty");
+        SosoInterface.a(paramTencentLocation, paramInt, paramString, l);
+        paramTencentLocation = SosoInterface.a();
+        paramString = SosoInterface.b();
+        localObject2 = SosoInterface.c();
+        localObject3 = SosoInterface.d();
+        if (paramTencentLocation != null) {
+          bool1 = true;
         }
-        else
-        {
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_third_app_share_for_backend"))
-          {
-            if (localJSONObject.optInt("enable_third_app_share_for_backend", 0) == 1)
-            {
-              bool = true;
-              localaooy.jdField_a_of_type_Boolean = bool;
-            }
-          }
-          else
-          {
-            if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
-            {
-              if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) != 1) {
-                break label211;
-              }
-              bool = true;
-              localaooy.b = bool;
-            }
-            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
-              localaooy.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
-            }
-            if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
-            {
-              if (localJSONObject.optInt("sdk_login_use_third_transform_pkg_name", 0) != 1) {
-                break label216;
-              }
-              bool = true;
-              localaooy.c = bool;
-            }
-            localStringBuilder.append("config: ").append(str).append(",");
-          }
+        if (SosoInterface.a().size() != 0) {
+          break label556;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d("SOSO.LBS", 4, "listener is empty.");
+        }
+        SosoInterface.d();
+        return;
       }
-      catch (Exception paramArrayOfaoko)
-      {
-        QLog.e("OpenSdkConfProcessor", 1, "parse, failed!", paramArrayOfaoko);
-        return null;
-      }
-      boolean bool = false;
-      continue;
-      label211:
-      bool = false;
-      continue;
-      label216:
-      bool = false;
-      continue;
-      label221:
-      QLog.d("OpenSdkConfProcessor", 1, "parse, content:" + localStringBuilder.toString());
-      return localaooy;
-      i += 1;
+      finally {}
+      i = 0;
+      break;
+      label497:
+      SosoInterface.b();
+      break label154;
+      label504:
+      localObject1 = " reason=" + paramString;
+      break label193;
+      i = localObject3.length;
+      break label255;
     }
+    label556:
+    SosoInterface.a(bool1, paramTencentLocation, paramString, (aopa)localObject2, (aopa)localObject3);
   }
   
-  public long a()
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("serverShareEntryEnable:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("serverShareImageEnable:").append(this.b);
-    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("useThirdTransformPkgName:").append(this.c);
-    return super.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("SOSO.LBS", 2, "onStatusUpdate name: " + paramString1 + " status: " + paramInt + " desc: " + paramString2);
+    }
+    for (;;)
+    {
+      int i;
+      aopa localaopa;
+      synchronized (SosoInterface.a())
+      {
+        if (SosoInterface.a().isEmpty()) {
+          return;
+        }
+        i = SosoInterface.a().size() - 1;
+        if (i < 0) {
+          break label154;
+        }
+        localaopa = (aopa)SosoInterface.a().get(i);
+        if (localaopa == null) {
+          break label158;
+        }
+        if (localaopa.uiThread) {
+          ThreadManager.getUIHandler().post(new SosoInterface.3.1(this, localaopa, paramString1, paramInt, paramString2));
+        }
+      }
+      localaopa.onStatusUpdate(paramString1, paramInt, paramString2);
+      break label158;
+      label154:
+      return;
+      label158:
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooy
  * JD-Core Version:    0.7.0.1
  */

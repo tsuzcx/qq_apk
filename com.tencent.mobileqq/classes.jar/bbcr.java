@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-
-class bbcr
-  implements ValueAnimator.AnimatorUpdateListener
+public class bbcr
 {
-  bbcr(bbco parambbco) {}
+  public long a;
+  public bbcs a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bbcr()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), i, 0, 0);
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public bbcr(long paramLong, bbcs parambbcs)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Bbcs = parambbcs;
   }
 }
 

@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import alrd;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import android.text.TextUtils;
-import apao;
-import bdmm;
+import ankm;
+import bgro;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -30,161 +27,119 @@ class DeviceProfileManager$2
     ConfigurationService.Config localConfig = (ConfigurationService.Config)this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$RespGetConfig.config_list.get(0);
     Object localObject1 = localConfig.content_list;
     QLog.i("DeviceProfileManager", 1, "onDPCResponse is called, version=" + localConfig.version.get());
-    boolean bool2 = false;
     if (localObject1 != null) {}
     boolean bool1;
     int i;
-    Iterator localIterator;
     SharedPreferences.Editor localEditor2;
     SharedPreferences localSharedPreferences;
     SharedPreferences.Editor localEditor3;
     HashMap localHashMap;
-    label339:
-    break label933;
-    label340:
-    Object localObject9;
-    alrd localalrd;
-    label430:
-    Object localObject7;
+    label262:
     Object localObject8;
+    ankm localankm;
+    Object localObject7;
     SharedPreferences.Editor localEditor1;
-    label713:
-    do
+    Object localObject6;
+    label465:
+    boolean bool2;
+    for (;;)
     {
-      do
+      try
       {
-        do
+        if (((PBRepeatField)localObject1).size() != 0)
         {
-          try
-          {
-            if (((PBRepeatField)localObject1).size() != 0)
-            {
-              bool1 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-              if (!bool1) {}
-            }
-            else
-            {
-              QLog.i("DeviceProfileManager", 1, "onDPCResponse finally， hasChanged=" + false);
-              this.this$0.a(4);
-              localObject1 = new Intent("com.tentcent.mobileqq.dpc.broadcast");
-              ??? = new Bundle();
-              ((Bundle)???).putSerializable("featureMapLV2", DeviceProfileManager.a(this.this$0));
-              if (DeviceProfileManager.a() != null) {
-                ((Bundle)???).putSerializable("featureAccountMapLV2", DeviceProfileManager.a().jdField_a_of_type_JavaUtilHashMap);
-              }
-              ((Intent)localObject1).putExtras((Bundle)???);
-              BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
-              DeviceProfileManager.a(false);
-              return;
-            }
-            ??? = new HashMap();
-            i = 0;
-            if (i < ((PBRepeatField)localObject1).size())
-            {
-              if (this.this$0.a((String)((PBRepeatField)localObject1).get(i), (HashMap)???)) {
-                break label1387;
-              }
-              QLog.e("DeviceProfileManager", 1, "onDPCResponse parseDPCXML error, so return");
-              break label1387;
-            }
-            localIterator = ((HashMap)???).entrySet().iterator();
-            localEditor2 = bdmm.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
-            localSharedPreferences = bdmm.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
-            localEditor3 = localSharedPreferences.edit();
-            localObject1 = null;
-            Intent localIntent1;
-            QLog.i("DeviceProfileManager", 1, "onDPCResponse finally， hasChanged=" + bool1);
-          }
-          catch (Exception localException1) {}finally
-          {
-            bool1 = bool2;
-          }
-          this.this$0.a(4);
-          ??? = new Intent("com.tentcent.mobileqq.dpc.broadcast");
-          localObject7 = new Bundle();
-          ((Bundle)localObject7).putSerializable("featureMapLV2", DeviceProfileManager.a(this.this$0));
-          if (DeviceProfileManager.a() != null) {
-            ((Bundle)localObject7).putSerializable("featureAccountMapLV2", DeviceProfileManager.a().jdField_a_of_type_JavaUtilHashMap);
-          }
-          ((Intent)???).putExtras((Bundle)localObject7);
-          BaseApplicationImpl.getApplication().sendBroadcast((Intent)???, "com.tencent.msg.permission.pushnotify");
-          DeviceProfileManager.a(bool1);
-          throw localObject3;
-          localObject8 = DeviceProfileManager.a().b;
-          bool1 = true;
-          ??? = DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a(), (String)localObject9);
-          localEditor1 = localEditor3;
-          localObject7 = localObject3;
-          if (QLog.isColorLevel()) {
-            QLog.d("DeviceProfileManager", 2, "onDPCResponse DPCXmlHandler.tempMap: key=" + (String)localObject9 + ", value=" + localalrd.toString() + ", isAccountName=" + bool1);
-          }
-        } while (localObject7 == null);
-        DeviceProfileManager.DPCConfigInfo localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject7).get(???);
-        bool1 = false;
-        localObject9 = localDPCConfigInfo;
-        if (localDPCConfigInfo != null) {
-          break label824;
+          bool1 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+          if (!bool1) {}
         }
-        bool1 = true;
-        localObject8 = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject8).get(???);
-      } while (localObject8 == null);
-      localObject9 = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)localObject8).clone();
-    } while (localObject9 == null);
-    label824:
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DeviceProfileManager", 4, "onDPCResponse tempFeatureMap old value: key=" + (String)??? + " " + localObject9 + ", isAddConfig=" + bool1);
-    }
-    boolean bool3 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject9, localalrd.b.toString().trim());
-    if (bool1) {
-      ((HashMap)localObject7).put(???, localObject9);
+        else
+        {
+          return;
+        }
+        ??? = new HashMap();
+        i = 0;
+        if (i < ((PBRepeatField)localObject1).size())
+        {
+          if (this.this$0.a((String)((PBRepeatField)localObject1).get(i), (HashMap)???)) {
+            break label843;
+          }
+          QLog.e("DeviceProfileManager", 1, "onDPCResponse parseDPCXML error, so return");
+          break label843;
+        }
+        Iterator localIterator = ((HashMap)???).entrySet().iterator();
+        localEditor2 = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig").edit();
+        localSharedPreferences = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+        localEditor3 = localSharedPreferences.edit();
+        localObject1 = null;
+        localObject7 = DeviceProfileManager.a().b;
+      }
+      catch (Exception localException) {}finally
+      {
+        QLog.i("DeviceProfileManager", 1, "onDPCResponse finally， hasChanged=" + false);
+        DeviceProfileManager.a(this.this$0, false);
+      }
+      bool1 = true;
+      ??? = DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a(), (String)localObject8);
+      localEditor1 = localEditor3;
+      localObject6 = localObject3;
+      DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 1, new Object[] { localObject8, localankm.toString(), Boolean.valueOf(bool1) });
+      if (localObject6 != null)
+      {
+        DeviceProfileManager.DPCConfigInfo localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject6).get(???);
+        bool1 = false;
+        localObject8 = localDPCConfigInfo;
+        if (localDPCConfigInfo == null)
+        {
+          bool1 = true;
+          localObject7 = (DeviceProfileManager.DPCConfigInfo)((HashMap)localObject7).get(???);
+          if ((localObject7 != null) && (((DeviceProfileManager.DPCConfigInfo)localObject7).clone() != null)) {
+            localObject8 = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)localObject7).clone();
+          }
+        }
+        else
+        {
+          DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 3, new Object[] { ???, localObject8, Boolean.valueOf(bool1) });
+          bool2 = DeviceProfileManager.a((DeviceProfileManager.DPCConfigInfo)localObject8, localankm.b.toString().trim());
+          if (!bool1) {
+            break label850;
+          }
+          ((HashMap)localObject6).put(???, localObject8);
+          break label850;
+        }
+      }
     }
     for (;;)
     {
-      localEditor1.putString((String)???, localalrd.b);
-      label933:
-      if (!QLog.isColorLevel()) {
-        break label340;
-      }
-      QLog.d("DeviceProfileManager", 2, "onDPCResponse tempFeatureMap new value: key=" + (String)??? + " " + localObject9 + ", isAddConfig=" + bool1 + ", hasUpdate=" + bool3);
-      break label340;
-      localObject8 = DeviceProfileManager.b(this.this$0);
-      bool1 = false;
-      localObject7 = localHashMap;
-      localEditor1 = localEditor2;
-      ??? = localObject9;
-      break label713;
-      int j;
-      Intent localIntent2;
-      synchronized (this.this$0)
+      label631:
+      localEditor1.putString((String)???, localankm.b);
+      label843:
+      label850:
+      do
       {
-        DeviceProfileManager.a(this.this$0, localHashMap);
-        if ((DeviceProfileManager.a() != null) && (DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()))) {
-          DeviceProfileManager.a().jdField_a_of_type_JavaUtilHashMap = localObject3;
-        }
-        if (DeviceProfileManager.a() != null)
+        DeviceProfileManager.a(this.this$0, QLog.isColorLevel(), 4, new Object[] { ???, localObject8, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        break label262;
+        localObject7 = DeviceProfileManager.b(this.this$0);
+        bool1 = false;
+        localObject6 = localHashMap;
+        localEditor1 = localEditor2;
+        ??? = localObject8;
+        break label465;
+        synchronized (this.this$0)
         {
-          localEditor3.putLong(DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface, "last_update_time"), System.currentTimeMillis());
-          localEditor3.putInt(DeviceProfileManager.AccountDpcManager.a(DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface, "server_version"), localConfig.version.get());
+          DeviceProfileManager.a(this.this$0, localHashMap);
+          if ((DeviceProfileManager.a() != null) && (DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(DeviceProfileManager.a().jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()))) {
+            DeviceProfileManager.a().jdField_a_of_type_JavaUtilHashMap = localObject3;
+          }
+          bool1 = DeviceProfileManager.a(this.this$0, localConfig, localEditor2, localSharedPreferences, localEditor3);
+          QLog.i("DeviceProfileManager", 1, "onDPCResponse finally， hasChanged=" + bool1);
+          DeviceProfileManager.a(this.this$0, bool1);
+          return;
         }
-        i = localSharedPreferences.getInt("key_versioncode", 0);
-        j = apao.a(BaseApplicationImpl.getApplication());
-        if (i < j) {
-          localEditor3.putInt("key_versioncode", j);
+        i += 1;
+        break;
+        if (bool1) {
+          break label631;
         }
-        localEditor2.commit();
-        localEditor3.commit();
-        bool1 = true;
-        bool2 = true;
-      }
-      break label430;
-      label1387:
-      i += 1;
-      break;
-      if (!bool1) {
-        if (!bool3) {
-          break label339;
-        }
-      }
+      } while (!bool2);
     }
   }
 }

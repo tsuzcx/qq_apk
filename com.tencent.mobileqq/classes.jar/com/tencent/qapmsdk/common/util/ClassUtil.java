@@ -17,6 +17,13 @@ public final class ClassUtil
   }
   
   @JvmStatic
+  @NotNull
+  public static final String getClassName(@NotNull Object paramObject, @Nullable Integer paramInteger)
+  {
+    return Companion.getClassName(paramObject, paramInteger);
+  }
+  
+  @JvmStatic
   public static final boolean objectIsInstanceClass(@Nullable Object paramObject, @NotNull String paramString)
   {
     return Companion.objectIsInstanceClass(paramObject, paramString);
@@ -24,7 +31,7 @@ public final class ClassUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.ClassUtil
  * JD-Core Version:    0.7.0.1
  */

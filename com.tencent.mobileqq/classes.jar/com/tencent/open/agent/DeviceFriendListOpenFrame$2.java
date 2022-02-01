@@ -3,7 +3,7 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
-import bfeb;
+import bilf;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 
 class DeviceFriendListOpenFrame$2
@@ -19,9 +19,9 @@ class DeviceFriendListOpenFrame$2
     {
       if (i < j)
       {
-        bfeb localbfeb = (bfeb)this.this$0.a.getChildAt(i).getTag();
-        if ((localbfeb != null) && (this.jdField_a_of_type_JavaLangString.equals(localbfeb.b))) {
-          localbfeb.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        bilf localbilf = (bilf)this.this$0.a.getChildAt(i).getTag();
+        if ((localbilf != null) && (this.jdField_a_of_type_JavaLangString.equals(localbilf.b))) {
+          localbilf.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
       else
@@ -34,7 +34,7 @@ class DeviceFriendListOpenFrame$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.DeviceFriendListOpenFrame.2
  * JD-Core Version:    0.7.0.1
  */

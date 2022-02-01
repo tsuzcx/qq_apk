@@ -1,23 +1,21 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
 
-class aggd
-  implements afkw
+public class aggd
+  implements agha
 {
-  aggd(aggc paramaggc) {}
+  public aggd(DoodleLayout paramDoodleLayout) {}
   
   public void a()
   {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
-        UnlimitedBladeWorks.a(this.a.a, 0);
-      }
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
     }
   }
 }

@@ -1,107 +1,114 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-public class areu
-  extends arfb
+public abstract class areu<DATA, CONFIG extends arfh>
+  extends aren<DATA, CONFIG>
 {
-  long jdField_a_of_type_Long = 0L;
-  ExcitingTransferUploadResultRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
-  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.ExtfGroupRP<FileAssistant>";
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
-  long c;
+  private float[] a;
+  private float d;
+  private float e = -1.0F;
+  private float f;
   
-  public areu(QQAppInterface paramQQAppInterface)
+  public areu(arew paramarew)
   {
-    super(paramQQAppInterface);
+    super(paramarew);
   }
   
-  protected int a()
+  public float a()
   {
-    return 2;
+    return -this.f;
   }
   
-  protected String a(boolean paramBoolean)
+  protected float a(long paramLong)
   {
-    return "actGroupXTFUpload";
+    long l = this.jdField_a_of_type_Long;
+    return f() - (float)(paramLong - l) * this.f;
   }
   
-  protected HashMap<String, String> a()
+  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    HashMap localHashMap = super.a();
-    localHashMap.put("param_IsFlashFile", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("param_TotalCostTime", String.valueOf(this.c));
-    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.b));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    if (!a(paramLong1))
     {
-      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nResult));
-      localHashMap.put("param_IsXTFValid", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_bIsXTFValid));
-      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64HttpTime));
-      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nSrvReturCode));
-      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSpeed));
-      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSize));
-      localHashMap.put("param_StartSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize));
-      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strServerIp));
-      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wServerPort));
-      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strFileUrl));
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uMaxUploadingFtnNum));
-      localHashMap.put("param_RetryCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount));
-      localHashMap.put("param_IpChangeCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount));
-      localHashMap.put("param_RollBackCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRollBackCount));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uQueryHoleCount));
-      localHashMap.put("param_RangDiffCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRangDiffCount));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uDelayTotoalCount));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpCnnCode));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpSocketCode));
-      localHashMap.put("param_HttpsSupport", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wHttpsSupport));
+      argp.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
+      this.d = a(paramLong2);
+      if (!c())
+      {
+        this.e = paramFloat2;
+        a(true);
+      }
+      return;
     }
-    for (;;)
-    {
-      QLog.i("ExcitingTransfer.ExtfGroupRP<FileAssistant>", 1, "Id[" + this.d + "] >>> GroupSendDataReport:act=" + a(false) + localHashMap.toString());
-      return localHashMap;
-      localHashMap.put("param_IsXTFValid", String.valueOf(false));
-      localHashMap.put("param_HttpTime", String.valueOf(0));
-      localHashMap.put("param_SrvReturCode", String.valueOf(0));
-      localHashMap.put("param_TransferSpeed", String.valueOf(0));
-      localHashMap.put("param_TransferSize", String.valueOf(0));
-      localHashMap.put("param_StartSize", String.valueOf(0));
-      localHashMap.put("param_ServerIp", "");
-      localHashMap.put("param_ServerPort", String.valueOf(0));
-      localHashMap.put("param_FileUrl", "");
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(0));
-      localHashMap.put("param_RetryCount", String.valueOf(0));
-      localHashMap.put("param_IpChangeCount", String.valueOf(0));
-      localHashMap.put("param_RollBackCount", String.valueOf(0));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(0));
-      localHashMap.put("param_RangDiffCount", String.valueOf(0));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(0));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(0));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(0));
-      localHashMap.put("param_HttpsSupport", String.valueOf(0));
-    }
+    a(false);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = a(paramLong);
   }
   
-  public void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  public float[] a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+    if (!b()) {
+      return null;
+    }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - arew.a().b());
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
-  public void b(long paramLong)
+  public float b()
   {
-    this.c = paramLong;
+    return this.d;
   }
   
-  public void c(boolean paramBoolean)
+  public float[] b(long paramLong)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (!b()) {
+      return null;
+    }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float c()
+  {
+    return this.e;
+  }
+  
+  public float d()
+  {
+    return this.d + this.jdField_a_of_type_Float;
+  }
+  
+  public float e()
+  {
+    return this.e + this.b;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Argf.a());
+  }
+  
+  public void g(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
+  
+  public void h(float paramFloat)
+  {
+    this.e = paramFloat;
   }
 }
 

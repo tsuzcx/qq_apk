@@ -1,27 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.support.annotation.NonNull;
 
 public class bnlo
-  extends Handler
 {
-  public bnlo(BeautyBar paramBeautyBar) {}
+  public String a;
+  public String b = "null";
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    return this.a + ", value=" + this.b;
   }
 }
 

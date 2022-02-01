@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troopshare;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bcxl;
+import bgbw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.troopinfo.TroopInfoData;
 public class TroopShareUtility$9
   implements Runnable
 {
-  public TroopShareUtility$9(bcxl parambcxl, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
+  public TroopShareUtility$9(bgbw parambgbw, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class TroopShareUtility$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.9
  * JD-Core Version:    0.7.0.1
  */

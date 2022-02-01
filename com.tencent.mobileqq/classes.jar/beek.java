@@ -1,26 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.2;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 
-class beek
-  implements DownloadListener
+public class beek
+  implements ISuperPlayer.OnInfoListener
 {
-  beek(beej parambeej) {}
+  public beek(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
+    switch (paramInt)
+    {
     }
-    String str = this.a.mWebview.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    aqvk.a(this.a.mInActivity, paramString1, localBundle);
+    for (;;)
+    {
+      return false;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
+      continue;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.2(this));
+    }
   }
 }
 

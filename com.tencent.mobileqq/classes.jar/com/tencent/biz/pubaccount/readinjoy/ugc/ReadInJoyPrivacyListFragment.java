@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import alud;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -11,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bdep;
+import anni;
+import bgjq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -20,23 +20,23 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.List;
-import owy;
-import oxb;
-import oxe;
-import qpt;
-import qpv;
-import qpx;
+import pmh;
+import pmk;
+import pmn;
+import rkq;
+import rks;
+import rku;
 
 public class ReadInJoyPrivacyListFragment
   extends IphoneTitleBarFragment
-  implements qpx
+  implements rku
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ReadInJoyPrivacyListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private oxe jdField_a_of_type_Oxe = new qpv(this);
-  private qpt jdField_a_of_type_Qpt;
+  private pmn jdField_a_of_type_Pmn = new rks(this);
+  private rkq jdField_a_of_type_Rkq;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
   
@@ -57,7 +57,7 @@ public class ReadInJoyPrivacyListFragment
       if (!ThemeUtil.isInNightMode(localFragmentActivity.app)) {
         break label166;
       }
-      if ((bdep.b()) || (bdep.d())) {
+      if ((bgjq.b()) || (bgjq.d())) {
         break label146;
       }
       localFragmentActivity.mSystemBarComp.setStatusBarColor(-7829368);
@@ -65,7 +65,7 @@ public class ReadInJoyPrivacyListFragment
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848998);
+      this.leftView.setBackgroundResource(2130849526);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -76,12 +76,12 @@ public class ReadInJoyPrivacyListFragment
       localFragmentActivity.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label166:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.b()) && (!bgjq.d()))
       {
         localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bdep.d())
+      else if (!bgjq.d())
       {
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -95,40 +95,40 @@ public class ReadInJoyPrivacyListFragment
   
   public void b()
   {
-    owy.a().a(this.jdField_a_of_type_Long, this.b, 30);
+    pmh.a().a(this.jdField_a_of_type_Long, this.b, 30);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView = ((ReadInJoyPrivacyListView)this.mContentView.findViewById(2131369570));
-    this.jdField_a_of_type_Qpt = new qpt(getActivity(), this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView.setAdapter(this.jdField_a_of_type_Qpt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView = ((ReadInJoyPrivacyListView)this.mContentView.findViewById(2131369965));
+    this.jdField_a_of_type_Rkq = new rkq(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView.setAdapter(this.jdField_a_of_type_Rkq);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyPrivacyListView.setLoadMoreCallback(this);
-    setTitle(alud.a(2131713219));
+    setTitle(anni.a(2131711598));
     if (this.leftView != null) {
-      this.leftView.setText(alud.a(2131713303));
+      this.leftView.setText(anni.a(2131711682));
     }
     a();
-    oxb.a().a(this.jdField_a_of_type_Oxe);
+    pmk.a().a(this.jdField_a_of_type_Pmn);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560089;
+    return 2131560232;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = getActivity().getIntent().getLongExtra("feeds_id", 0L);
-    owy.a().a(this.jdField_a_of_type_Long, this.b, 30);
+    pmh.a().a(this.jdField_a_of_type_Long, this.b, 30);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    oxb.a().b(this.jdField_a_of_type_Oxe);
+    pmk.a().b(this.jdField_a_of_type_Pmn);
   }
 }
 

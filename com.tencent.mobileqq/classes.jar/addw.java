@@ -1,47 +1,10 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class addw
-  extends altm
+public final class addw
+  extends RecyclablePool.Recyclable
 {
-  public addw(GroupManagerActivity paramGroupManagerActivity) {}
-  
-  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
-  }
+  public int a;
+  public long a;
 }
 
 

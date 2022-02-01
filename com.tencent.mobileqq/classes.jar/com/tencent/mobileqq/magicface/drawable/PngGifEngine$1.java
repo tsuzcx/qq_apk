@@ -5,14 +5,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import atxv;
-import atxw;
+import awfe;
+import awff;
 import com.tencent.qphone.base.util.QLog;
 
 public class PngGifEngine$1
   implements Runnable
 {
-  public PngGifEngine$1(atxv paramatxv) {}
+  public PngGifEngine$1(awfe paramawfe) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class PngGifEngine$1
       return;
     }
     long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = atxv.a((String)localObject1);
+    Object localObject2 = awfe.a((String)localObject1);
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
     }
@@ -38,7 +38,7 @@ public class PngGifEngine$1
         if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null))
         {
           l1 = SystemClock.uptimeMillis();
-          l2 += this.this$0.jdField_a_of_type_Atxw.b;
+          l2 += this.this$0.jdField_a_of_type_Awff.b;
           localObject2 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
           if (l1 > l2) {
             this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
@@ -56,7 +56,7 @@ public class PngGifEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngGifEngine.1
  * JD-Core Version:    0.7.0.1
  */

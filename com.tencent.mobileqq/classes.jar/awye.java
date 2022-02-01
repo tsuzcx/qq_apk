@@ -1,22 +1,26 @@
-public class awye
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+
+public final class awye
+  implements awjk
 {
-  public int a;
-  public final awyj a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public awye(int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Awyj = new awyj();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awyj.jdField_a_of_type_Int = -2147483648;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
+      return;
+    }
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awye
  * JD-Core Version:    0.7.0.1
  */

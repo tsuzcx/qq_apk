@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.4.2;
 
 public class bmgd
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bmgd(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmgd(QZoneShareActivity.4.2 param2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
-    }
-    this.a.jdField_a_of_type_Bmgo.d = 1;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
-    }
+    QLog.e("QZoneShare", 1, "dialog click ");
+    this.a.a.a.finish();
   }
 }
 

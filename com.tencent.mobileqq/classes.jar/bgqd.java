@@ -1,48 +1,21 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask.SerialExecutor.1;
-import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
-public class bgqd
-  implements Executor
+class bgqd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  final ArrayDeque<Runnable> jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  bgqd(bgpw parambgpw) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void execute(Runnable paramRunnable)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.offer(new AsyncTask.SerialExecutor.1(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqd
  * JD-Core Version:    0.7.0.1
  */

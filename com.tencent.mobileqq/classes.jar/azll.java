@@ -1,36 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-public class azll
+class azll
+  extends bkfi
 {
-  public static int a;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static boolean jdField_a_of_type_Boolean;
+  azll(azlk paramazlk) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_Int = -4;
+    if (azlk.a(this.a) != null)
+    {
+      if (paramAnimation == azlk.b(this.a)) {
+        azlk.a(this.a, 1);
+      }
+      azlk.a(this.a).clearAnimation();
+      azlk.a(this.a).clearAnimation();
+    }
   }
   
-  public static boolean a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    boolean bool = false;
-    if (jdField_a_of_type_Boolean) {
-      return true;
-    }
-    String str = azkt.e(BaseApplicationImpl.getContext());
-    if (str == null) {
-      return false;
-    }
-    if (!bdhb.a(str + "libObjectTracker.so")) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
-      }
-      jdField_a_of_type_Boolean = bool;
-      return jdField_a_of_type_Boolean;
-      bool = true;
+    if ((azlk.a(this.a) != null) && (paramAnimation == azlk.a(this.a))) {
+      azlk.a(this.a, 0);
     }
   }
 }

@@ -1,33 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
 
-public class awvu
-  implements Animation.AnimationListener
+class awvu
+  extends RecyclerView.ViewHolder
 {
-  public awvu(ProfileTagView paramProfileTagView, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public awvu(awvo paramawvo, View paramView)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
-    paramAnimation.i -= 1;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b();
-    }
-    ((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a).l();
+    super(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvu
  * JD-Core Version:    0.7.0.1
  */

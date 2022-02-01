@@ -1,21 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import mqq.app.QQPermissionCallback;
 
 public class bg
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
   public bg(LiteActivity paramLiteActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdgm.b(this.a);
+    paramDialogInterface.dismiss();
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bg
  * JD-Core Version:    0.7.0.1
  */

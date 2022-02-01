@@ -1,48 +1,72 @@
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.12.1;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class auso
+  implements auvb
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public auso(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public auso()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.contains("icon");
+    QLog.d("QQGamePubAccountFragment", 4, "mFeedsAdapter.onPageSelected position=" + paramInt);
+    Object localObject;
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size())
+    {
+      localObject = Message.obtain();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).arg1 = paramInt;
+      QQGamePubAccountFragment.a(this.a).removeMessages(1);
+      QQGamePubAccountFragment.a(this.a).sendMessageDelayed((Message)localObject, 200L);
     }
-    return false;
+    try
+    {
+      com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController.a = 0;
+      if (paramInt < QQGamePubAccountFragment.a(this.a).size())
+      {
+        localObject = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);
+        List localList = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
+        FeedsItemData.TopCardInfo localTopCardInfo = (FeedsItemData.TopCardInfo)QQGamePubAccountFragment.b(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
+        String str = (String)QQGamePubAccountFragment.c(this.a).get(Long.valueOf(((MessageRecord)localObject).uniseq));
+        QQGamePubAccountFragment.a(this.a).a(localList, localTopCardInfo);
+        QQGamePubAccountFragment.a(this.a, localTopCardInfo);
+        if ((localList == null) || (localList.size() == 0)) {
+          this.a.b(false);
+        }
+        QQGamePubAccountFragment.a(QQGamePubAccountFragment.a(this.a), paramInt);
+        this.a.d();
+        if (QQGamePubAccountFragment.d(this.a).containsKey(Long.valueOf(((MessageRecord)localObject).uniseq))) {}
+        aceh.a(ampj.a(), "769", "205017", this.a.a(paramInt), "76901", "1", "160", new String[] { auud.a((MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt)), "" + paramInt, "8" });
+        ((VasExtensionHandler)QQGamePubAccountFragment.a(this.a).a(71)).a(2, ((MessageRecord)QQGamePubAccountFragment.a(this.a).get(0)).getExtInfoFromExtStr("pa_msgId"), "");
+        return;
+      }
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new QQGamePubAccountFragment.12.1(this), 200L);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("QQGamePubAccountFragment", 4, "-->onPageSelected decode feed fail :" + localThrowable.getMessage());
+    }
   }
   
-  @NonNull
-  public String toString()
+  public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GrayTipHighlightItemInfo{");
-    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
-    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
-    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    QLog.d("QQGamePubAccountFragment", 4, "mFeedsAdapter.onPageScrolled position=" + paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auso
  * JD-Core Version:    0.7.0.1
  */

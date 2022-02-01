@@ -1,24 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-
-public class aiak
-  extends aiac
+class aiak
+  implements afum
 {
-  public static final int[] a = { 2131690787 };
-  public static final int[] b = { 2131364158 };
+  aiak(ahzy paramahzy) {}
   
-  public aiak(FragmentActivity paramFragmentActivity)
+  public void a(aimh paramaimh)
   {
-    super(paramFragmentActivity);
+    ((avwi)this.a.a(32)).a(1, paramaimh);
+    ((agnm)this.a.a(43)).b(1, paramaimh);
   }
   
-  protected int[] a()
+  public void b(aimh paramaimh)
   {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    ((avwi)this.a.a(32)).b(1, paramaimh);
+    ((agnm)this.a.a(43)).a(1, paramaimh);
   }
 }
 

@@ -1,48 +1,18 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCompletionListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.2;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.graphics.Point;
 
-public class bgte
-  implements VideoPlayerProxy.OnCompletionListener
+final class bgte
+  implements bgth<Point>
 {
-  public bgte(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void onCompletion(VideoPlayerProxy paramVideoPlayerProxy)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    if (this.a.c) {
-      ThreadManager.c().post(new MiniAppVideoPlayer.8.1(this));
-    }
-    if (!this.a.jdField_a_of_type_Bglu.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "ended");
-    }
-    for (;;)
-    {
-      ThreadManager.c().post(new MiniAppVideoPlayer.8.2(this));
-      return;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_Bglu.a("onVideoEnded", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoEnded = " + paramVideoPlayerProxy.toString());
-      }
-      catch (Exception paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgte
  * JD-Core Version:    0.7.0.1
  */

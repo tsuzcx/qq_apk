@@ -1,62 +1,29 @@
 package com.tencent.mobileqq.vas;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Proxy;
-import android.os.Build.VERSION;
-import arsx;
-import azri;
-import bazo;
-import bbaa;
-import bbab;
-import bbac;
-import bdto;
-import bdts;
-import bdug;
-import bdwi;
-import bdws;
-import com.tencent.common.app.AppInterface;
+import androidx.annotation.Keep;
+import bgyr;
+import bgyv;
+import bhbw;
+import bhcg;
+import bhdf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.SoLoadUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.open.base.BspatchUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import ndd;
 
 public class VasQuickUpdateEngine
+  implements bhdf
 {
   public static final String ENGINE_CONFIG_PATH = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "quickupdate";
-  public static final int LOAD_SO_MAX_RETRY_TIME = 2;
   private static final String TAG = "VasQuickUpdateEngine";
   private static final String TAG_NATIVE = "VasQuickUpdateEngine_Native";
-  public static AtomicBoolean hasSoLoaded = new AtomicBoolean(false);
-  public static AtomicBoolean isSoLoadFail = new AtomicBoolean(false);
-  public static int loadSoRetryTime;
   private static VasQuickUpdateEngine mInstance;
-  AtomicBoolean engineReady = new AtomicBoolean(false);
-  public long mUpdateManagerInstance;
-  public WeakReference<bdug> mWeakHandler;
+  public WeakReference<VasExtensionHandler> mWeakHandler;
   ArrayList<VasQuickUpdateEngine.PendingTask> pendingTasks = new ArrayList();
   
-  private VasQuickUpdateEngine()
-  {
-    loadSo();
-  }
-  
+  @Keep
   public static void QuickUpdateLog(int paramInt, byte[] paramArrayOfByte)
   {
     do
@@ -105,15 +72,7 @@ public class VasQuickUpdateEngine
     return null;
   }
   
-  private boolean bsPatch(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "bsPatch: srcFile = " + paramString1 + " patchFile = " + paramString2);
-    }
-    return BspatchUtil.a(paramString1, paramString2, paramString1);
-  }
-  
-  private QQAppInterface getApp()
+  private static QQAppInterface getApp()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null) {}
@@ -135,125 +94,20 @@ public class VasQuickUpdateEngine
     finally {}
   }
   
-  private int getNetType()
+  public static VasQuickUpdateEngine.TagItemInfo getItemInfo(long paramLong, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "getNetType");
+      QLog.d("VasQuickUpdateEngine", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString);
     }
-    int j = ndd.a();
-    int i = j;
-    if (j == 5) {
-      i = 1;
-    }
-    return i + 1;
-  }
-  
-  private boolean initEngine(String paramString)
-  {
-    this.mUpdateManagerInstance = nativeCreateManager(paramString, Proxy.getDefaultHost(), Proxy.getDefaultPort());
-    QLog.d("VasQuickUpdateEngine", 1, "initEngine: createManager");
-    if (this.mUpdateManagerInstance != 0L)
-    {
-      nativeSetLocalInfo(this.mUpdateManagerInstance, "2", "8.3.5.4555", ThemeUtil.getThemeDensity(BaseApplicationImpl.getApplication()));
-      this.engineReady.set(true);
-      nativeupdateAllItem(this.mUpdateManagerInstance);
-      runPendingTasks();
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean isFileExists(long paramLong, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "isFileExists bid = " + paramLong + " scid = " + paramString);
-    }
-    bdwi localbdwi = bdws.a(paramLong);
+    bhbw localbhbw = bhcg.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
-      QLog.e("VasQuickUpdateEngine", 1, "isFileExists: get null app " + paramString);
+      QLog.e("VasQuickUpdateEngine", 1, "getItemInfo: get null app " + paramString);
     }
-    return (localbdwi != null) && (localbdwi.isFileExists(localQQAppInterface, paramLong, paramString));
-  }
-  
-  private void loadSo()
-  {
-    ThreadManagerV2.excute(new VasQuickUpdateEngine.1(this), 64, null, true);
-  }
-  
-  private void onPreloadDownloadComplete(String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VasQuickUpdateEngine", 2, "onPreloadDownloadComplete url = " + paramString + " fileSize = " + paramLong);
+    if (localbhbw == null) {
+      return null;
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      ((bbaa)((QQAppInterface)localAppRuntime).getManager(193)).a(paramString, paramLong);
-      return;
-    }
-    QLog.e("VasQuickUpdateEngine", 1, "onPreloadDownloadComplete app is not QQAppInterface");
-  }
-  
-  private void onPreloadDownloadStart(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VasQuickUpdateEngine", 2, "onPreloadDownloadStart");
-    }
-    paramString4 = new VasQuickUpdateEngine.2(this, paramString1, paramString2, paramString3, paramLong, paramString4);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      localObject = (bbaa)localQQAppInterface.getManager(193);
-      paramString4 = new bbab(localQQAppInterface, paramString1, paramString4, 4000L);
-      ((bbaa)localObject).a(10019, "vas", paramString1, ((Integer)bbac.c.get(Integer.valueOf(10019))).intValue(), paramString2, paramString3, 2, 0, true, paramString4);
-      return;
-    }
-    QLog.e("VasQuickUpdateEngine", 1, "onPreloadDownloadStart app is not QQAppInterface");
-    paramString4.run();
-  }
-  
-  private void recordFlowBytes(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "recordFlowBytes nBytes = " + paramInt1 + " netType = " + paramInt2);
-    }
-    int i = paramInt2 - 1;
-    paramInt2 = i;
-    if (i == 5) {
-      paramInt2 = 0;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-    String str = localAppRuntime.getAccount();
-    if ((localAppRuntime instanceof AppInterface)) {
-      ((AppInterface)localAppRuntime).sendAppDataIncerment(str, false, paramInt2, 0, 8999, paramInt1);
-    }
-  }
-  
-  private void reportDLEvent(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
-  {
-    VasWebviewUtil.reportQuickUpdateDownload(paramInt1, paramLong, paramString1, paramString2, paramBoolean, paramInt2, paramInt3, paramInt4, paramString3, paramString4, paramString5);
-    if ((int)(Math.random() * 10000.0D) == 1)
-    {
-      paramString3 = new HashMap();
-      paramString3.put("from", String.valueOf(paramInt1));
-      paramString3.put("bid", String.valueOf(paramLong));
-      paramString3.put("scid", String.valueOf(paramString1));
-      paramString3.put("md5", String.valueOf(paramString2));
-      paramString3.put("eventCode", String.valueOf(paramInt2));
-      paramString3.put("httpCode", String.valueOf(paramInt3));
-      paramString3.put("retry", String.valueOf(paramInt4));
-      azri.a(BaseApplication.getContext()).a("", "qqvas_updatemgr_complete", false, 0L, -1L, paramString3, "", true);
-    }
-  }
-  
-  private void reportSTEvent(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "reportSTEvent:");
-    }
-    VasWebviewUtil.reportQuickUpdateST(paramLong, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramString3, paramString4, paramString5);
+    return localbhbw.getItemInfo(localQQAppInterface, paramLong, paramString);
   }
   
   public static boolean safeDeleteFile(File paramFile)
@@ -284,57 +138,19 @@ public class VasQuickUpdateEngine
     return paramString.delete();
   }
   
-  private boolean sendPbMsg(String paramString, byte[] paramArrayOfByte)
-  {
-    Object localObject = null;
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-        if (paramArrayOfByte == null)
-        {
-          QLog.e("VasQuickUpdateEngine", 1, "sendPbMsg null buff");
-          return false;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("VasQuickUpdateEngine", 1, "sendPbMsg failed", paramArrayOfByte);
-        paramArrayOfByte = (byte[])localObject;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("VasQuickUpdateEngine", 2, "sendPbMsg: cmd = " + paramString + " buff = " + paramArrayOfByte);
-        }
-        localObject = this.mWeakHandler;
-        if (localObject != null)
-        {
-          localObject = (bdug)((WeakReference)localObject).get();
-          if (localObject != null) {
-            return ((bdug)localObject).a(paramString, paramArrayOfByte);
-          }
-        }
-        QLog.e("VasQuickUpdateEngine", 1, "sendPbMsg: error VasExtensionHandler = null");
-        return false;
-      }
-      paramArrayOfByte = null;
-    }
-  }
-  
   /* Error */
-  private static String unZipFile(File paramFile, String paramString)
+  public static String unZipFile(File paramFile, String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 455	com/tencent/commonsdk/zip/QZipFile
+    //   2: new 185	com/tencent/commonsdk/zip/QZipFile
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 458	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
+    //   7: invokespecial 188	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   10: astore 6
     //   12: aload 6
-    //   14: invokevirtual 462	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   14: invokevirtual 192	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   17: astore 10
     //   19: sipush 8192
     //   22: newarray byte
@@ -350,8 +166,8 @@ public class VasQuickUpdateEngine
     //   40: aload 5
     //   42: astore 7
     //   44: aload 10
-    //   46: invokeinterface 467 1 0
-    //   51: ifeq +533 -> 584
+    //   46: invokeinterface 197 1 0
+    //   51: ifeq +526 -> 577
     //   54: aload 6
     //   56: astore 9
     //   58: aload 4
@@ -359,8 +175,8 @@ public class VasQuickUpdateEngine
     //   62: aload 5
     //   64: astore 7
     //   66: aload 10
-    //   68: invokeinterface 470 1 0
-    //   73: checkcast 472	java/util/zip/ZipEntry
+    //   68: invokeinterface 201 1 0
+    //   73: checkcast 203	java/util/zip/ZipEntry
     //   76: astore 12
     //   78: aload 6
     //   80: astore 9
@@ -369,753 +185,588 @@ public class VasQuickUpdateEngine
     //   86: aload 5
     //   88: astore 7
     //   90: aload 12
-    //   92: invokevirtual 475	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   95: ldc_w 477
-    //   98: invokevirtual 481	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   101: ifne -69 -> 32
-    //   104: aload 6
-    //   106: astore 9
-    //   108: aload 4
-    //   110: astore 8
-    //   112: aload 5
-    //   114: astore 7
-    //   116: aload 12
-    //   118: invokevirtual 482	java/util/zip/ZipEntry:isDirectory	()Z
-    //   121: ifeq +201 -> 322
-    //   124: aload 6
-    //   126: astore 9
-    //   128: aload 4
-    //   130: astore 8
-    //   132: aload 5
-    //   134: astore 7
-    //   136: invokestatic 485	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   139: ifeq +46 -> 185
-    //   142: aload 6
-    //   144: astore 9
-    //   146: aload 4
-    //   148: astore 8
-    //   150: aload 5
-    //   152: astore 7
-    //   154: ldc_w 487
-    //   157: iconst_4
-    //   158: new 34	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   165: ldc_w 489
-    //   168: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: aload 12
-    //   173: invokevirtual 475	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   176: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: aload 6
-    //   187: astore 9
-    //   189: aload 4
-    //   191: astore 8
-    //   193: aload 5
-    //   195: astore 7
-    //   197: new 94	java/lang/String
-    //   200: dup
-    //   201: new 34	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   208: aload_1
-    //   209: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: aload 12
-    //   214: invokevirtual 475	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   217: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   223: ldc_w 491
-    //   226: invokevirtual 495	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   229: ldc_w 497
-    //   232: invokespecial 99	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   235: astore_0
-    //   236: aload 6
-    //   238: astore 9
-    //   240: aload 4
-    //   242: astore 8
-    //   244: aload 5
-    //   246: astore 7
-    //   248: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   251: ifeq +42 -> 293
-    //   254: aload 6
-    //   256: astore 9
-    //   258: aload 4
-    //   260: astore 8
-    //   262: aload 5
-    //   264: astore 7
-    //   266: ldc_w 487
-    //   269: iconst_2
-    //   270: new 34	java/lang/StringBuilder
-    //   273: dup
-    //   274: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   277: ldc_w 499
-    //   280: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: aload_0
-    //   284: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   287: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   290: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   293: aload 6
-    //   295: astore 9
-    //   297: aload 4
-    //   299: astore 8
-    //   301: aload 5
-    //   303: astore 7
-    //   305: new 49	java/io/File
-    //   308: dup
-    //   309: aload_0
-    //   310: invokespecial 420	java/io/File:<init>	(Ljava/lang/String;)V
-    //   313: invokevirtual 502	java/io/File:mkdir	()Z
-    //   316: pop
-    //   317: aload_0
-    //   318: astore_3
-    //   319: goto -287 -> 32
-    //   322: aload 6
-    //   324: astore 9
-    //   326: aload 4
-    //   328: astore 8
-    //   330: aload 5
-    //   332: astore 7
-    //   334: aload 12
-    //   336: invokevirtual 475	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   339: astore_0
-    //   340: aload 6
-    //   342: astore 9
-    //   344: aload 4
-    //   346: astore 8
-    //   348: aload 5
-    //   350: astore 7
-    //   352: new 49	java/io/File
-    //   355: dup
-    //   356: new 34	java/lang/StringBuilder
-    //   359: dup
-    //   360: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   363: aload_1
-    //   364: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: aload 12
-    //   369: invokevirtual 475	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   372: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   375: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   378: invokespecial 420	java/io/File:<init>	(Ljava/lang/String;)V
-    //   381: astore_3
-    //   382: aload 6
-    //   384: astore 9
-    //   386: aload 4
-    //   388: astore 8
-    //   390: aload 5
-    //   392: astore 7
-    //   394: aload_3
-    //   395: invokevirtual 505	java/io/File:getParentFile	()Ljava/io/File;
-    //   398: invokevirtual 508	java/io/File:mkdirs	()Z
-    //   401: pop
-    //   402: aload 6
-    //   404: astore 9
-    //   406: aload 4
-    //   408: astore 8
-    //   410: aload 5
-    //   412: astore 7
-    //   414: aload_3
-    //   415: invokevirtual 401	java/io/File:exists	()Z
-    //   418: ifeq +20 -> 438
-    //   421: aload 6
-    //   423: astore 9
-    //   425: aload 4
-    //   427: astore 8
-    //   429: aload 5
-    //   431: astore 7
-    //   433: aload_3
-    //   434: invokevirtual 426	java/io/File:delete	()Z
-    //   437: pop
-    //   438: aload 6
-    //   440: astore 9
-    //   442: aload 4
-    //   444: astore 8
-    //   446: aload 5
-    //   448: astore 7
-    //   450: new 510	java/io/BufferedOutputStream
-    //   453: dup
-    //   454: new 512	java/io/FileOutputStream
-    //   457: dup
-    //   458: aload_3
-    //   459: invokespecial 513	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   462: invokespecial 516	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   465: astore_3
-    //   466: aload 6
-    //   468: aload 12
-    //   470: invokevirtual 520	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   473: astore 5
-    //   475: aload 5
-    //   477: aload 11
-    //   479: iconst_0
-    //   480: sipush 8192
-    //   483: invokevirtual 526	java/io/InputStream:read	([BII)I
-    //   486: istore_2
-    //   487: iload_2
-    //   488: iconst_m1
-    //   489: if_icmpeq +74 -> 563
-    //   492: aload_3
-    //   493: aload 11
-    //   495: iconst_0
-    //   496: iload_2
-    //   497: invokevirtual 532	java/io/OutputStream:write	([BII)V
-    //   500: goto -25 -> 475
-    //   503: astore_1
-    //   504: aload 5
-    //   506: astore 4
-    //   508: aload 6
-    //   510: astore 9
-    //   512: aload 4
-    //   514: astore 8
-    //   516: aload_3
-    //   517: astore 7
-    //   519: ldc 12
-    //   521: iconst_1
-    //   522: ldc_w 534
-    //   525: aload_1
-    //   526: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   529: aload_3
-    //   530: ifnull +7 -> 537
-    //   533: aload_3
-    //   534: invokevirtual 537	java/io/OutputStream:close	()V
-    //   537: aload 4
-    //   539: ifnull +8 -> 547
-    //   542: aload 4
-    //   544: invokevirtual 538	java/io/InputStream:close	()V
-    //   547: aload_0
-    //   548: astore_1
-    //   549: aload 6
-    //   551: ifnull +10 -> 561
-    //   554: aload 6
-    //   556: invokevirtual 539	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   559: aload_0
-    //   560: astore_1
-    //   561: aload_1
-    //   562: areturn
-    //   563: aload 5
-    //   565: invokevirtual 538	java/io/InputStream:close	()V
-    //   568: aload_3
-    //   569: invokevirtual 537	java/io/OutputStream:close	()V
-    //   572: aload 5
-    //   574: astore 4
-    //   576: aload_3
-    //   577: astore 5
-    //   579: aload_0
-    //   580: astore_3
-    //   581: goto -549 -> 32
-    //   584: aload 6
-    //   586: astore 9
-    //   588: aload 4
-    //   590: astore 8
-    //   592: aload 5
-    //   594: astore 7
-    //   596: aload 6
-    //   598: invokevirtual 539	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   601: aload 5
-    //   603: ifnull +8 -> 611
-    //   606: aload 5
-    //   608: invokevirtual 537	java/io/OutputStream:close	()V
-    //   611: aload 4
-    //   613: ifnull +8 -> 621
-    //   616: aload 4
-    //   618: invokevirtual 538	java/io/InputStream:close	()V
-    //   621: aload 6
-    //   623: ifnull +402 -> 1025
-    //   626: aload 6
-    //   628: invokevirtual 539	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   631: aload_3
-    //   632: areturn
-    //   633: astore_0
-    //   634: ldc 12
-    //   636: iconst_1
-    //   637: ldc_w 541
-    //   640: aload_0
-    //   641: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   644: goto -33 -> 611
-    //   647: astore_0
-    //   648: ldc 12
-    //   650: iconst_1
-    //   651: ldc_w 541
-    //   654: aload_0
-    //   655: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   658: goto -37 -> 621
-    //   661: astore_0
-    //   662: ldc 12
-    //   664: iconst_1
-    //   665: ldc_w 541
-    //   668: aload_0
-    //   669: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   672: aload_3
-    //   673: areturn
-    //   674: astore_1
-    //   675: ldc 12
-    //   677: iconst_1
-    //   678: ldc_w 541
-    //   681: aload_1
-    //   682: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   685: goto -148 -> 537
-    //   688: astore_1
-    //   689: ldc 12
-    //   691: iconst_1
-    //   692: ldc_w 541
-    //   695: aload_1
-    //   696: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   699: goto -152 -> 547
-    //   702: astore_1
-    //   703: ldc 12
-    //   705: iconst_1
-    //   706: ldc_w 541
-    //   709: aload_1
-    //   710: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   713: aload_0
-    //   714: areturn
-    //   715: astore_1
-    //   716: aconst_null
-    //   717: astore 6
-    //   719: aconst_null
-    //   720: astore 4
-    //   722: aconst_null
-    //   723: astore_3
-    //   724: aconst_null
-    //   725: astore_0
-    //   726: aload 6
-    //   728: astore 9
-    //   730: aload 4
-    //   732: astore 8
-    //   734: aload_3
-    //   735: astore 7
-    //   737: ldc 12
-    //   739: iconst_1
-    //   740: ldc_w 543
-    //   743: aload_1
-    //   744: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   747: aload_3
-    //   748: ifnull +7 -> 755
-    //   751: aload_3
-    //   752: invokevirtual 537	java/io/OutputStream:close	()V
-    //   755: aload 4
-    //   757: ifnull +8 -> 765
-    //   760: aload 4
-    //   762: invokevirtual 538	java/io/InputStream:close	()V
-    //   765: aload_0
-    //   766: astore_1
-    //   767: aload 6
-    //   769: ifnull -208 -> 561
-    //   772: aload 6
-    //   774: invokevirtual 539	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   777: aload_0
-    //   778: areturn
-    //   779: astore_1
-    //   780: ldc 12
-    //   782: iconst_1
-    //   783: ldc_w 541
-    //   786: aload_1
-    //   787: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   790: aload_0
-    //   791: areturn
-    //   792: astore_1
-    //   793: ldc 12
-    //   795: iconst_1
-    //   796: ldc_w 541
-    //   799: aload_1
-    //   800: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   803: goto -48 -> 755
-    //   806: astore_1
-    //   807: ldc 12
-    //   809: iconst_1
-    //   810: ldc_w 541
-    //   813: aload_1
-    //   814: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   817: goto -52 -> 765
-    //   820: astore_0
-    //   821: aconst_null
-    //   822: astore 6
-    //   824: aconst_null
-    //   825: astore 4
-    //   827: aconst_null
-    //   828: astore_1
-    //   829: aload_1
-    //   830: ifnull +7 -> 837
-    //   833: aload_1
-    //   834: invokevirtual 537	java/io/OutputStream:close	()V
-    //   837: aload 4
-    //   839: ifnull +8 -> 847
-    //   842: aload 4
-    //   844: invokevirtual 538	java/io/InputStream:close	()V
-    //   847: aload 6
-    //   849: ifnull +8 -> 857
-    //   852: aload 6
-    //   854: invokevirtual 539	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   857: aload_0
-    //   858: athrow
-    //   859: astore_1
-    //   860: ldc 12
-    //   862: iconst_1
-    //   863: ldc_w 541
-    //   866: aload_1
-    //   867: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   870: goto -33 -> 837
-    //   873: astore_1
-    //   874: ldc 12
-    //   876: iconst_1
-    //   877: ldc_w 541
-    //   880: aload_1
-    //   881: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   884: goto -37 -> 847
-    //   887: astore_1
-    //   888: ldc 12
-    //   890: iconst_1
-    //   891: ldc_w 541
-    //   894: aload_1
-    //   895: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   898: goto -41 -> 857
-    //   901: astore_0
-    //   902: aconst_null
-    //   903: astore 4
-    //   905: aconst_null
-    //   906: astore_1
-    //   907: goto -78 -> 829
-    //   910: astore_0
-    //   911: aload 5
-    //   913: astore 4
-    //   915: aload_3
-    //   916: astore_1
-    //   917: goto -88 -> 829
-    //   920: astore_0
-    //   921: aload 9
-    //   923: astore 6
-    //   925: aload 8
-    //   927: astore 4
-    //   929: aload 7
-    //   931: astore_1
-    //   932: goto -103 -> 829
-    //   935: astore_0
-    //   936: aload_3
-    //   937: astore_1
-    //   938: goto -109 -> 829
-    //   941: astore_1
-    //   942: aconst_null
-    //   943: astore 4
-    //   945: aconst_null
-    //   946: astore_3
-    //   947: aconst_null
-    //   948: astore_0
-    //   949: goto -223 -> 726
-    //   952: astore_1
-    //   953: aload 5
-    //   955: astore 4
-    //   957: goto -231 -> 726
-    //   960: astore_1
-    //   961: aload_3
-    //   962: astore_0
+    //   92: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   95: ldc 208
+    //   97: invokevirtual 212	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   100: ifne -68 -> 32
+    //   103: aload 6
+    //   105: astore 9
+    //   107: aload 4
+    //   109: astore 8
+    //   111: aload 5
+    //   113: astore 7
+    //   115: aload 12
+    //   117: invokevirtual 213	java/util/zip/ZipEntry:isDirectory	()Z
+    //   120: ifeq +195 -> 315
+    //   123: aload 6
+    //   125: astore 9
+    //   127: aload 4
+    //   129: astore 8
+    //   131: aload 5
+    //   133: astore 7
+    //   135: invokestatic 216	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   138: ifeq +44 -> 182
+    //   141: aload 6
+    //   143: astore 9
+    //   145: aload 4
+    //   147: astore 8
+    //   149: aload 5
+    //   151: astore 7
+    //   153: ldc 218
+    //   155: iconst_4
+    //   156: new 26	java/lang/StringBuilder
+    //   159: dup
+    //   160: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   163: ldc 220
+    //   165: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: aload 12
+    //   170: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   173: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   182: aload 6
+    //   184: astore 9
+    //   186: aload 4
+    //   188: astore 8
+    //   190: aload 5
+    //   192: astore 7
+    //   194: new 73	java/lang/String
+    //   197: dup
+    //   198: new 26	java/lang/StringBuilder
+    //   201: dup
+    //   202: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   205: aload_1
+    //   206: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: aload 12
+    //   211: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   214: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: ldc 222
+    //   222: invokevirtual 226	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   225: ldc 228
+    //   227: invokespecial 78	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   230: astore_0
+    //   231: aload 6
+    //   233: astore 9
+    //   235: aload 4
+    //   237: astore 8
+    //   239: aload 5
+    //   241: astore 7
+    //   243: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   246: ifeq +40 -> 286
+    //   249: aload 6
+    //   251: astore 9
+    //   253: aload 4
+    //   255: astore 8
+    //   257: aload 5
+    //   259: astore 7
+    //   261: ldc 218
+    //   263: iconst_2
+    //   264: new 26	java/lang/StringBuilder
+    //   267: dup
+    //   268: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   271: ldc 230
+    //   273: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: aload_0
+    //   277: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   283: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   286: aload 6
+    //   288: astore 9
+    //   290: aload 4
+    //   292: astore 8
+    //   294: aload 5
+    //   296: astore 7
+    //   298: new 41	java/io/File
+    //   301: dup
+    //   302: aload_0
+    //   303: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
+    //   306: invokevirtual 233	java/io/File:mkdir	()Z
+    //   309: pop
+    //   310: aload_0
+    //   311: astore_3
+    //   312: goto -280 -> 32
+    //   315: aload 6
+    //   317: astore 9
+    //   319: aload 4
+    //   321: astore 8
+    //   323: aload 5
+    //   325: astore 7
+    //   327: aload 12
+    //   329: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   332: astore_0
+    //   333: aload 6
+    //   335: astore 9
+    //   337: aload 4
+    //   339: astore 8
+    //   341: aload 5
+    //   343: astore 7
+    //   345: new 41	java/io/File
+    //   348: dup
+    //   349: new 26	java/lang/StringBuilder
+    //   352: dup
+    //   353: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   356: aload_1
+    //   357: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: aload 12
+    //   362: invokevirtual 206	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   365: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   368: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   371: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
+    //   374: astore_3
+    //   375: aload 6
+    //   377: astore 9
+    //   379: aload 4
+    //   381: astore 8
+    //   383: aload 5
+    //   385: astore 7
+    //   387: aload_3
+    //   388: invokevirtual 236	java/io/File:getParentFile	()Ljava/io/File;
+    //   391: invokevirtual 239	java/io/File:mkdirs	()Z
+    //   394: pop
+    //   395: aload 6
+    //   397: astore 9
+    //   399: aload 4
+    //   401: astore 8
+    //   403: aload 5
+    //   405: astore 7
+    //   407: aload_3
+    //   408: invokevirtual 154	java/io/File:exists	()Z
+    //   411: ifeq +20 -> 431
+    //   414: aload 6
+    //   416: astore 9
+    //   418: aload 4
+    //   420: astore 8
+    //   422: aload 5
+    //   424: astore 7
+    //   426: aload_3
+    //   427: invokevirtual 179	java/io/File:delete	()Z
+    //   430: pop
+    //   431: aload 6
+    //   433: astore 9
+    //   435: aload 4
+    //   437: astore 8
+    //   439: aload 5
+    //   441: astore 7
+    //   443: new 241	java/io/BufferedOutputStream
+    //   446: dup
+    //   447: new 243	java/io/FileOutputStream
+    //   450: dup
+    //   451: aload_3
+    //   452: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   455: invokespecial 247	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   458: astore_3
+    //   459: aload 6
+    //   461: aload 12
+    //   463: invokevirtual 251	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   466: astore 5
+    //   468: aload 5
+    //   470: aload 11
+    //   472: iconst_0
+    //   473: sipush 8192
+    //   476: invokevirtual 257	java/io/InputStream:read	([BII)I
+    //   479: istore_2
+    //   480: iload_2
+    //   481: iconst_m1
+    //   482: if_icmpeq +74 -> 556
+    //   485: aload_3
+    //   486: aload 11
+    //   488: iconst_0
+    //   489: iload_2
+    //   490: invokevirtual 263	java/io/OutputStream:write	([BII)V
+    //   493: goto -25 -> 468
+    //   496: astore_1
+    //   497: aload 5
+    //   499: astore 4
+    //   501: aload 6
+    //   503: astore 9
+    //   505: aload 4
+    //   507: astore 8
+    //   509: aload_3
+    //   510: astore 7
+    //   512: ldc 11
+    //   514: iconst_1
+    //   515: ldc_w 265
+    //   518: aload_1
+    //   519: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   522: aload_3
+    //   523: ifnull +7 -> 530
+    //   526: aload_3
+    //   527: invokevirtual 268	java/io/OutputStream:close	()V
+    //   530: aload 4
+    //   532: ifnull +8 -> 540
+    //   535: aload 4
+    //   537: invokevirtual 269	java/io/InputStream:close	()V
+    //   540: aload_0
+    //   541: astore_1
+    //   542: aload 6
+    //   544: ifnull +10 -> 554
+    //   547: aload 6
+    //   549: invokevirtual 270	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   552: aload_0
+    //   553: astore_1
+    //   554: aload_1
+    //   555: areturn
+    //   556: aload 5
+    //   558: invokevirtual 269	java/io/InputStream:close	()V
+    //   561: aload_3
+    //   562: invokevirtual 268	java/io/OutputStream:close	()V
+    //   565: aload 5
+    //   567: astore 4
+    //   569: aload_3
+    //   570: astore 5
+    //   572: aload_0
+    //   573: astore_3
+    //   574: goto -542 -> 32
+    //   577: aload 6
+    //   579: astore 9
+    //   581: aload 4
+    //   583: astore 8
+    //   585: aload 5
+    //   587: astore 7
+    //   589: aload 6
+    //   591: invokevirtual 270	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   594: aload 5
+    //   596: ifnull +8 -> 604
+    //   599: aload 5
+    //   601: invokevirtual 268	java/io/OutputStream:close	()V
+    //   604: aload 4
+    //   606: ifnull +8 -> 614
+    //   609: aload 4
+    //   611: invokevirtual 269	java/io/InputStream:close	()V
+    //   614: aload 6
+    //   616: ifnull +402 -> 1018
+    //   619: aload 6
+    //   621: invokevirtual 270	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   624: aload_3
+    //   625: areturn
+    //   626: astore_0
+    //   627: ldc 11
+    //   629: iconst_1
+    //   630: ldc_w 272
+    //   633: aload_0
+    //   634: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   637: goto -33 -> 604
+    //   640: astore_0
+    //   641: ldc 11
+    //   643: iconst_1
+    //   644: ldc_w 272
+    //   647: aload_0
+    //   648: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   651: goto -37 -> 614
+    //   654: astore_0
+    //   655: ldc 11
+    //   657: iconst_1
+    //   658: ldc_w 272
+    //   661: aload_0
+    //   662: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   665: aload_3
+    //   666: areturn
+    //   667: astore_1
+    //   668: ldc 11
+    //   670: iconst_1
+    //   671: ldc_w 272
+    //   674: aload_1
+    //   675: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   678: goto -148 -> 530
+    //   681: astore_1
+    //   682: ldc 11
+    //   684: iconst_1
+    //   685: ldc_w 272
+    //   688: aload_1
+    //   689: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   692: goto -152 -> 540
+    //   695: astore_1
+    //   696: ldc 11
+    //   698: iconst_1
+    //   699: ldc_w 272
+    //   702: aload_1
+    //   703: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   706: aload_0
+    //   707: areturn
+    //   708: astore_1
+    //   709: aconst_null
+    //   710: astore 6
+    //   712: aconst_null
+    //   713: astore 4
+    //   715: aconst_null
+    //   716: astore_3
+    //   717: aconst_null
+    //   718: astore_0
+    //   719: aload 6
+    //   721: astore 9
+    //   723: aload 4
+    //   725: astore 8
+    //   727: aload_3
+    //   728: astore 7
+    //   730: ldc 11
+    //   732: iconst_1
+    //   733: ldc_w 274
+    //   736: aload_1
+    //   737: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   740: aload_3
+    //   741: ifnull +7 -> 748
+    //   744: aload_3
+    //   745: invokevirtual 268	java/io/OutputStream:close	()V
+    //   748: aload 4
+    //   750: ifnull +8 -> 758
+    //   753: aload 4
+    //   755: invokevirtual 269	java/io/InputStream:close	()V
+    //   758: aload_0
+    //   759: astore_1
+    //   760: aload 6
+    //   762: ifnull -208 -> 554
+    //   765: aload 6
+    //   767: invokevirtual 270	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   770: aload_0
+    //   771: areturn
+    //   772: astore_1
+    //   773: ldc 11
+    //   775: iconst_1
+    //   776: ldc_w 272
+    //   779: aload_1
+    //   780: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   783: aload_0
+    //   784: areturn
+    //   785: astore_1
+    //   786: ldc 11
+    //   788: iconst_1
+    //   789: ldc_w 272
+    //   792: aload_1
+    //   793: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   796: goto -48 -> 748
+    //   799: astore_1
+    //   800: ldc 11
+    //   802: iconst_1
+    //   803: ldc_w 272
+    //   806: aload_1
+    //   807: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   810: goto -52 -> 758
+    //   813: astore_0
+    //   814: aconst_null
+    //   815: astore 6
+    //   817: aconst_null
+    //   818: astore 4
+    //   820: aconst_null
+    //   821: astore_1
+    //   822: aload_1
+    //   823: ifnull +7 -> 830
+    //   826: aload_1
+    //   827: invokevirtual 268	java/io/OutputStream:close	()V
+    //   830: aload 4
+    //   832: ifnull +8 -> 840
+    //   835: aload 4
+    //   837: invokevirtual 269	java/io/InputStream:close	()V
+    //   840: aload 6
+    //   842: ifnull +8 -> 850
+    //   845: aload 6
+    //   847: invokevirtual 270	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   850: aload_0
+    //   851: athrow
+    //   852: astore_1
+    //   853: ldc 11
+    //   855: iconst_1
+    //   856: ldc_w 272
+    //   859: aload_1
+    //   860: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   863: goto -33 -> 830
+    //   866: astore_1
+    //   867: ldc 11
+    //   869: iconst_1
+    //   870: ldc_w 272
+    //   873: aload_1
+    //   874: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   877: goto -37 -> 840
+    //   880: astore_1
+    //   881: ldc 11
+    //   883: iconst_1
+    //   884: ldc_w 272
+    //   887: aload_1
+    //   888: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   891: goto -41 -> 850
+    //   894: astore_0
+    //   895: aconst_null
+    //   896: astore 4
+    //   898: aconst_null
+    //   899: astore_1
+    //   900: goto -78 -> 822
+    //   903: astore_0
+    //   904: aload 5
+    //   906: astore 4
+    //   908: aload_3
+    //   909: astore_1
+    //   910: goto -88 -> 822
+    //   913: astore_0
+    //   914: aload 9
+    //   916: astore 6
+    //   918: aload 8
+    //   920: astore 4
+    //   922: aload 7
+    //   924: astore_1
+    //   925: goto -103 -> 822
+    //   928: astore_0
+    //   929: aload_3
+    //   930: astore_1
+    //   931: goto -109 -> 822
+    //   934: astore_1
+    //   935: aconst_null
+    //   936: astore 4
+    //   938: aconst_null
+    //   939: astore_3
+    //   940: aconst_null
+    //   941: astore_0
+    //   942: goto -223 -> 719
+    //   945: astore_1
+    //   946: aload 5
+    //   948: astore 4
+    //   950: goto -231 -> 719
+    //   953: astore_1
+    //   954: aload_3
+    //   955: astore_0
+    //   956: aload 5
+    //   958: astore_3
+    //   959: goto -240 -> 719
+    //   962: astore_1
     //   963: aload 5
     //   965: astore_3
-    //   966: goto -240 -> 726
+    //   966: goto -247 -> 719
     //   969: astore_1
-    //   970: aload 5
-    //   972: astore_3
-    //   973: goto -247 -> 726
-    //   976: astore_1
-    //   977: goto -251 -> 726
-    //   980: astore_1
-    //   981: aconst_null
-    //   982: astore 6
-    //   984: aconst_null
-    //   985: astore 4
-    //   987: aconst_null
-    //   988: astore_3
-    //   989: aconst_null
-    //   990: astore_0
-    //   991: goto -483 -> 508
-    //   994: astore_1
-    //   995: aconst_null
-    //   996: astore 4
-    //   998: aconst_null
-    //   999: astore_3
-    //   1000: aconst_null
-    //   1001: astore_0
-    //   1002: goto -494 -> 508
-    //   1005: astore_1
-    //   1006: aload_3
-    //   1007: astore_0
+    //   970: goto -251 -> 719
+    //   973: astore_1
+    //   974: aconst_null
+    //   975: astore 6
+    //   977: aconst_null
+    //   978: astore 4
+    //   980: aconst_null
+    //   981: astore_3
+    //   982: aconst_null
+    //   983: astore_0
+    //   984: goto -483 -> 501
+    //   987: astore_1
+    //   988: aconst_null
+    //   989: astore 4
+    //   991: aconst_null
+    //   992: astore_3
+    //   993: aconst_null
+    //   994: astore_0
+    //   995: goto -494 -> 501
+    //   998: astore_1
+    //   999: aload_3
+    //   1000: astore_0
+    //   1001: aload 5
+    //   1003: astore_3
+    //   1004: goto -503 -> 501
+    //   1007: astore_1
     //   1008: aload 5
     //   1010: astore_3
-    //   1011: goto -503 -> 508
+    //   1011: goto -510 -> 501
     //   1014: astore_1
-    //   1015: aload 5
-    //   1017: astore_3
-    //   1018: goto -510 -> 508
-    //   1021: astore_1
-    //   1022: goto -514 -> 508
-    //   1025: aload_3
-    //   1026: areturn
+    //   1015: goto -514 -> 501
+    //   1018: aload_3
+    //   1019: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1027	0	paramFile	File
-    //   0	1027	1	paramString	String
-    //   486	11	2	i	int
-    //   1	1025	3	localObject1	Object
-    //   27	970	4	localObject2	Object
-    //   30	986	5	localObject3	Object
-    //   10	973	6	localObject4	Object
-    //   42	888	7	localObject5	Object
-    //   38	888	8	localObject6	Object
-    //   34	888	9	localObject7	Object
+    //   0	1020	0	paramFile	File
+    //   0	1020	1	paramString	String
+    //   479	11	2	i	int
+    //   1	1018	3	localObject1	Object
+    //   27	963	4	localObject2	Object
+    //   30	979	5	localObject3	Object
+    //   10	966	6	localObject4	Object
+    //   42	881	7	localObject5	Object
+    //   38	881	8	localObject6	Object
+    //   34	881	9	localObject7	Object
     //   17	50	10	localEnumeration	java.util.Enumeration
-    //   24	470	11	arrayOfByte	byte[]
-    //   76	393	12	localZipEntry	java.util.zip.ZipEntry
+    //   24	463	11	arrayOfByte	byte[]
+    //   76	386	12	localZipEntry	java.util.zip.ZipEntry
     // Exception table:
     //   from	to	target	type
-    //   475	487	503	java/lang/Exception
-    //   492	500	503	java/lang/Exception
-    //   563	572	503	java/lang/Exception
-    //   606	611	633	java/lang/Exception
-    //   616	621	647	java/lang/Exception
-    //   626	631	661	java/lang/Exception
-    //   533	537	674	java/lang/Exception
-    //   542	547	688	java/lang/Exception
-    //   554	559	702	java/lang/Exception
-    //   2	12	715	java/lang/OutOfMemoryError
-    //   772	777	779	java/lang/Exception
-    //   751	755	792	java/lang/Exception
-    //   760	765	806	java/lang/Exception
-    //   2	12	820	finally
-    //   833	837	859	java/lang/Exception
-    //   842	847	873	java/lang/Exception
-    //   852	857	887	java/lang/Exception
-    //   12	26	901	finally
-    //   475	487	910	finally
-    //   492	500	910	finally
-    //   563	572	910	finally
-    //   44	54	920	finally
-    //   66	78	920	finally
-    //   90	104	920	finally
-    //   116	124	920	finally
-    //   136	142	920	finally
-    //   154	185	920	finally
-    //   197	236	920	finally
-    //   248	254	920	finally
-    //   266	293	920	finally
-    //   305	317	920	finally
-    //   334	340	920	finally
-    //   352	382	920	finally
-    //   394	402	920	finally
-    //   414	421	920	finally
-    //   433	438	920	finally
-    //   450	466	920	finally
-    //   519	529	920	finally
-    //   596	601	920	finally
-    //   737	747	920	finally
-    //   466	475	935	finally
-    //   12	26	941	java/lang/OutOfMemoryError
-    //   475	487	952	java/lang/OutOfMemoryError
-    //   492	500	952	java/lang/OutOfMemoryError
-    //   563	572	952	java/lang/OutOfMemoryError
-    //   44	54	960	java/lang/OutOfMemoryError
-    //   66	78	960	java/lang/OutOfMemoryError
-    //   90	104	960	java/lang/OutOfMemoryError
-    //   116	124	960	java/lang/OutOfMemoryError
-    //   136	142	960	java/lang/OutOfMemoryError
-    //   154	185	960	java/lang/OutOfMemoryError
-    //   197	236	960	java/lang/OutOfMemoryError
-    //   248	254	960	java/lang/OutOfMemoryError
-    //   266	293	960	java/lang/OutOfMemoryError
-    //   305	317	960	java/lang/OutOfMemoryError
-    //   334	340	960	java/lang/OutOfMemoryError
-    //   596	601	960	java/lang/OutOfMemoryError
-    //   352	382	969	java/lang/OutOfMemoryError
-    //   394	402	969	java/lang/OutOfMemoryError
-    //   414	421	969	java/lang/OutOfMemoryError
-    //   433	438	969	java/lang/OutOfMemoryError
-    //   450	466	969	java/lang/OutOfMemoryError
-    //   466	475	976	java/lang/OutOfMemoryError
-    //   2	12	980	java/lang/Exception
-    //   12	26	994	java/lang/Exception
-    //   44	54	1005	java/lang/Exception
-    //   66	78	1005	java/lang/Exception
-    //   90	104	1005	java/lang/Exception
-    //   116	124	1005	java/lang/Exception
-    //   136	142	1005	java/lang/Exception
-    //   154	185	1005	java/lang/Exception
-    //   197	236	1005	java/lang/Exception
-    //   248	254	1005	java/lang/Exception
-    //   266	293	1005	java/lang/Exception
-    //   305	317	1005	java/lang/Exception
-    //   334	340	1005	java/lang/Exception
-    //   596	601	1005	java/lang/Exception
-    //   352	382	1014	java/lang/Exception
-    //   394	402	1014	java/lang/Exception
-    //   414	421	1014	java/lang/Exception
-    //   433	438	1014	java/lang/Exception
-    //   450	466	1014	java/lang/Exception
-    //   466	475	1021	java/lang/Exception
+    //   468	480	496	java/lang/Exception
+    //   485	493	496	java/lang/Exception
+    //   556	565	496	java/lang/Exception
+    //   599	604	626	java/lang/Exception
+    //   609	614	640	java/lang/Exception
+    //   619	624	654	java/lang/Exception
+    //   526	530	667	java/lang/Exception
+    //   535	540	681	java/lang/Exception
+    //   547	552	695	java/lang/Exception
+    //   2	12	708	java/lang/OutOfMemoryError
+    //   765	770	772	java/lang/Exception
+    //   744	748	785	java/lang/Exception
+    //   753	758	799	java/lang/Exception
+    //   2	12	813	finally
+    //   826	830	852	java/lang/Exception
+    //   835	840	866	java/lang/Exception
+    //   845	850	880	java/lang/Exception
+    //   12	26	894	finally
+    //   468	480	903	finally
+    //   485	493	903	finally
+    //   556	565	903	finally
+    //   44	54	913	finally
+    //   66	78	913	finally
+    //   90	103	913	finally
+    //   115	123	913	finally
+    //   135	141	913	finally
+    //   153	182	913	finally
+    //   194	231	913	finally
+    //   243	249	913	finally
+    //   261	286	913	finally
+    //   298	310	913	finally
+    //   327	333	913	finally
+    //   345	375	913	finally
+    //   387	395	913	finally
+    //   407	414	913	finally
+    //   426	431	913	finally
+    //   443	459	913	finally
+    //   512	522	913	finally
+    //   589	594	913	finally
+    //   730	740	913	finally
+    //   459	468	928	finally
+    //   12	26	934	java/lang/OutOfMemoryError
+    //   468	480	945	java/lang/OutOfMemoryError
+    //   485	493	945	java/lang/OutOfMemoryError
+    //   556	565	945	java/lang/OutOfMemoryError
+    //   44	54	953	java/lang/OutOfMemoryError
+    //   66	78	953	java/lang/OutOfMemoryError
+    //   90	103	953	java/lang/OutOfMemoryError
+    //   115	123	953	java/lang/OutOfMemoryError
+    //   135	141	953	java/lang/OutOfMemoryError
+    //   153	182	953	java/lang/OutOfMemoryError
+    //   194	231	953	java/lang/OutOfMemoryError
+    //   243	249	953	java/lang/OutOfMemoryError
+    //   261	286	953	java/lang/OutOfMemoryError
+    //   298	310	953	java/lang/OutOfMemoryError
+    //   327	333	953	java/lang/OutOfMemoryError
+    //   589	594	953	java/lang/OutOfMemoryError
+    //   345	375	962	java/lang/OutOfMemoryError
+    //   387	395	962	java/lang/OutOfMemoryError
+    //   407	414	962	java/lang/OutOfMemoryError
+    //   426	431	962	java/lang/OutOfMemoryError
+    //   443	459	962	java/lang/OutOfMemoryError
+    //   459	468	969	java/lang/OutOfMemoryError
+    //   2	12	973	java/lang/Exception
+    //   12	26	987	java/lang/Exception
+    //   44	54	998	java/lang/Exception
+    //   66	78	998	java/lang/Exception
+    //   90	103	998	java/lang/Exception
+    //   115	123	998	java/lang/Exception
+    //   135	141	998	java/lang/Exception
+    //   153	182	998	java/lang/Exception
+    //   194	231	998	java/lang/Exception
+    //   243	249	998	java/lang/Exception
+    //   261	286	998	java/lang/Exception
+    //   298	310	998	java/lang/Exception
+    //   327	333	998	java/lang/Exception
+    //   589	594	998	java/lang/Exception
+    //   345	375	1007	java/lang/Exception
+    //   387	395	1007	java/lang/Exception
+    //   407	414	1007	java/lang/Exception
+    //   426	431	1007	java/lang/Exception
+    //   443	459	1007	java/lang/Exception
+    //   459	468	1014	java/lang/Exception
   }
   
-  private String uncompressZip(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "uncompressZip: bZip0 = " + paramBoolean + " srcFile = " + paramString);
-    }
-    Object localObject = new File(paramString);
-    paramString = ((File)localObject).getParent() + File.separator;
-    try
-    {
-      localObject = unZipFile((File)localObject, paramString);
-      if (localObject != null)
-      {
-        paramString = paramString + (String)localObject;
-        if (!QLog.isColorLevel()) {
-          return paramString;
-        }
-        QLog.d("VasQuickUpdateEngine", 2, "uncompressZip result = " + paramString);
-        return paramString;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("VasQuickUpdateEngine", 2, "uncompressZip fail");
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VasQuickUpdateEngine", 2, "uncompressZip error : ", paramString);
-        }
-      }
-    }
-    return null;
-    return paramString;
-  }
-  
-  public void DBdeleteItem(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBdeleteItem: table = " + paramInt + " itemId = " + paramString);
-    }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0).edit();
-    localEditor.remove(paramString);
-    if (!localEditor.commit()) {
-      QLog.e("VasQuickUpdateEngine", 1, "DBdeleteItem table = " + paramInt + " itemId = " + paramString + " fail");
-    }
-  }
-  
-  public ArrayList<VasQuickUpdateEngine.TagItemRecord> DBselectAllItems(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBselectAllItems: table = " + paramInt);
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0);
-    if (localObject1 == null) {}
-    do
-    {
-      return null;
-      localObject2 = ((SharedPreferences)localObject1).getAll();
-    } while ((localObject2 == null) || (((Map)localObject2).size() <= 0));
-    localObject1 = new ArrayList();
-    Object localObject2 = ((Map)localObject2).entrySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      VasQuickUpdateEngine.TagItemRecord localTagItemRecord = new VasQuickUpdateEngine.TagItemRecord(this);
-      localTagItemRecord.itemId = ((String)localEntry.getKey());
-      localTagItemRecord.content = ((String)localEntry.getValue());
-      ((ArrayList)localObject1).add(localTagItemRecord);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasQuickUpdateEngine", 2, "DBselectAllItems table = " + paramInt + " itemId = " + localTagItemRecord.itemId + " content = " + localTagItemRecord.content);
-      }
-    }
-    return localObject1;
-  }
-  
-  public String DBselectItem(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBselectItem: table = " + paramInt + " itemId = " + paramString);
-    }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0).getString(paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBselectItem result = " + paramString);
-    }
-    return paramString;
-  }
-  
-  public ArrayList<VasQuickUpdateEngine.TagItemVersion> DBselectOldItems(int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBselectOldItems bids = " + paramArrayOfInt);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfInt.length)
-    {
-      int j = paramArrayOfInt[i];
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void DBupdateItem(int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "DBupdateItem: table = " + paramInt + " itemId = " + paramString1 + " content = " + paramString2);
-    }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0).edit();
-    localEditor.putString(paramString1, paramString2);
-    if (!localEditor.commit()) {
-      QLog.e("VasQuickUpdateEngine", 1, "DBupdateItem table = " + paramInt + " itemId = " + paramString1 + " content = " + paramString2 + " fail");
-    }
-  }
-  
-  void addPendingTask(VasQuickUpdateEngine.PendingTask paramPendingTask)
-  {
-    synchronized (this.pendingTasks)
-    {
-      this.pendingTasks.add(paramPendingTask);
-      if (this.engineReady.get()) {
-        runPendingTasks();
-      }
-      return;
-    }
-  }
-  
-  public boolean canUpdate(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "canUpdate bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
-    }
-    bdwi localbdwi = bdws.a(paramLong);
-    QQAppInterface localQQAppInterface = getApp();
-    if (localQQAppInterface == null) {
-      QLog.e("VasQuickUpdateEngine", 1, "canUpdate: get null app " + paramString1);
-    }
-    return (localbdwi != null) && (localbdwi.canUpdate(localQQAppInterface, paramLong, paramString1, paramString2));
-  }
-  
-  public void cancelDwonloadItem(long paramLong, String paramString)
-  {
-    if (isSoLoadFail.get())
-    {
-      if (loadSoRetryTime < 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VasQuickUpdateEngine", 2, "downloadItem so load fail, retry " + (loadSoRetryTime + 1) + "time");
-        }
-        loadSo();
-        loadSoRetryTime += 1;
-        removePendingTask(new VasQuickUpdateEngine.DownloadTask(paramLong, paramString, null));
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.e("VasQuickUpdateEngine", 2, "downloadItem so load fail, has retried 2 times");
-      return;
-    }
-    if (!this.engineReady.get())
-    {
-      removePendingTask(new VasQuickUpdateEngine.DownloadTask(paramLong, paramString, null));
-      return;
-    }
-    nativeCancelDownload(this.mUpdateManagerInstance, paramLong, paramString);
-  }
+  public void cancelDwonloadItem(long paramLong, String paramString) {}
   
   public void cancelQuery(VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
   {
@@ -1127,52 +778,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "deleteFiles bid = " + paramLong + " scid = " + paramString);
     }
-    bdwi localbdwi = bdws.a(paramLong);
+    bhbw localbhbw = bhcg.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "deleteFiles: get null app " + paramString);
     }
-    return (localbdwi != null) && (localbdwi.deleteFiles(localQQAppInterface, paramLong, paramString));
-  }
-  
-  public void doLoad()
-  {
-    if ((!hasSoLoaded.get()) || (isSoLoadFail.get())) {}
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT < 18) {
-          SoLoadUtil.a(BaseApplicationImpl.getApplication(), "c++_shared", 0, false);
-        }
-        if (!SoLoadUtil.a(BaseApplicationImpl.getApplication(), "xplatform", 0, false)) {
-          continue;
-        }
-        boolean bool = SoLoadUtil.a(BaseApplicationImpl.getApplication(), "vasscupdate", 0, false);
-        if (!bool) {
-          continue;
-        }
-        i = 1;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("VasQuickUpdateEngine", 1, "load lib fail: ", localThrowable);
-        isSoLoadFail.set(true);
-        int i = 0;
-        continue;
-      }
-      hasSoLoaded.set(true);
-      if (i != 0)
-      {
-        isSoLoadFail.set(false);
-        initEngine(ENGINE_CONFIG_PATH);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasQuickUpdateEngine", 2, "async loadso");
-      }
-      return;
-      i = 0;
-    }
+    return (localbhbw != null) && (localbhbw.deleteFiles(localQQAppInterface, paramLong, paramString));
   }
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
@@ -1180,142 +791,45 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " scidList = " + paramArrayOfString + " from = " + paramString2);
     }
-    if (this.mUpdateManagerInstance != 0L) {
-      nativeDownloadGatherItem(this.mUpdateManagerInstance, paramLong, paramString1, paramArrayOfString, paramString2);
-    }
   }
   
-  public void downloadItem(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
-    }
-    if (isSoLoadFail.get())
-    {
-      if (loadSoRetryTime < 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VasQuickUpdateEngine", 2, "downloadItem so load fail, retry " + (loadSoRetryTime + 1) + "time");
-        }
-        loadSo();
-        loadSoRetryTime += 1;
-        addPendingTask(new VasQuickUpdateEngine.DownloadTask(paramLong, paramString1, paramString2));
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.e("VasQuickUpdateEngine", 2, "downloadItem so load fail, has retried 2 times");
-      return;
-    }
-    if (!this.engineReady.get())
-    {
-      addPendingTask(new VasQuickUpdateEngine.DownloadTask(paramLong, paramString1, paramString2));
-      return;
-    }
-    nativeDownloadItem(this.mUpdateManagerInstance, paramLong, paramString1, paramString2);
-  }
-  
-  public ArrayList<String> getDirectConnectIpsByHost(String paramString)
-  {
-    boolean bool = arsx.a();
-    Object localObject = bazo.a();
-    if (bool) {}
-    for (int i = 28;; i = 1)
-    {
-      localObject = ((bazo)localObject).a(paramString, 1014, true, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasQuickUpdateEngine", 2, "getDirectConnectIpsByHost host = " + paramString + " isIPv6 = " + bool + " ip = " + localObject);
-      }
-      return localObject;
-    }
-  }
-  
-  public VasQuickUpdateEngine.TagItemInfo getItemInfo(long paramLong, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString);
-    }
-    bdwi localbdwi = bdws.a(paramLong);
-    QQAppInterface localQQAppInterface = getApp();
-    if (localQQAppInterface == null) {
-      QLog.e("VasQuickUpdateEngine", 1, "getItemInfo: get null app " + paramString);
-    }
-    if (localbdwi == null) {
-      return null;
-    }
-    return localbdwi.getItemInfo(localQQAppInterface, paramLong, paramString);
-  }
-  
-  public native void nativeCancelDownload(long paramLong1, long paramLong2, String paramString);
-  
-  public native long nativeCreateManager(String paramString1, String paramString2, int paramInt);
-  
-  public native void nativeDestroyManager(long paramLong);
-  
-  public native void nativeDownloadGatherItem(long paramLong1, long paramLong2, String paramString1, String[] paramArrayOfString, String paramString2);
-  
-  public native void nativeDownloadItem(long paramLong1, long paramLong2, String paramString1, String paramString2);
-  
-  public native void nativeOnPbMsgRecv(long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public native void nativeRegisterUpdateItem(long paramLong1, long paramLong2, String paramString);
-  
-  public native void nativeSetLocalInfo(long paramLong, String paramString1, String paramString2, String paramString3);
-  
-  public native void nativeStartPreloadDownload(long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2, String paramString4);
-  
-  public native void nativeUnregisterUpdateItem(long paramLong1, long paramLong2, String paramString);
-  
-  public native void nativequeryItemVer(long paramLong, int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback);
-  
-  public native void nativeupdateAllItem(long paramLong);
+  public void downloadItem(long paramLong, String paramString1, String paramString2) {}
   
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("VasQuickUpdateEngine", 1, "onCompleted bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString3 + " dlFrom = " + paramInt1 + " errorCode = " + paramInt2 + " httpCode = " + paramInt3);
-    bdwi localbdwi = bdws.a(paramLong);
-    if (localbdwi != null)
+    bhbw localbhbw = bhcg.a(paramLong);
+    if (localbhbw != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onCompleted: get null app " + paramString1);
       }
-      localbdwi.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
+      localbhbw.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
     }
   }
   
-  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.mUpdateManagerInstance != 0L) {
-      nativeOnPbMsgRecv(this.mUpdateManagerInstance, paramInt, paramString1, paramString2);
-    }
-  }
+  public void onDestory() {}
+  
+  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2) {}
   
   public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "onProgress bid = " + paramLong1 + " scid = " + paramString1 + " cfgScid = " + paramString2 + "dwProgress = " + paramLong2 + " dwProgressMax = " + paramLong3);
     }
-    bdwi localbdwi = bdws.a(paramLong1);
-    if (localbdwi != null)
+    bhbw localbhbw = bhcg.a(paramLong1);
+    if (localbhbw != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onProgress: get null app " + paramString1);
       }
-      localbdwi.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localbhbw.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
-  {
-    if (this.engineReady.get())
-    {
-      nativequeryItemVer(this.mUpdateManagerInstance, paramInt, paramString, paramBoolean, paramQueryItemVersionCallback);
-      return;
-    }
-    addPendingTask(new VasQuickUpdateEngine.QueryTask(paramInt, paramString, paramBoolean, paramQueryItemVersionCallback));
-  }
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback) {}
   
   void removePendingTask(VasQuickUpdateEngine.PendingTask paramPendingTask)
   {
@@ -1341,26 +855,16 @@ public class VasQuickUpdateEngine
     }
   }
   
-  void runPendingTasks()
+  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
   {
-    ArrayList localArrayList = this.pendingTasks;
-    int i = 0;
-    try
-    {
-      while (i < this.pendingTasks.size())
-      {
-        ((VasQuickUpdateEngine.PendingTask)this.pendingTasks.get(i)).run(this);
-        i += 1;
-      }
-      this.pendingTasks.clear();
-      return;
-    }
-    finally {}
+    this.mWeakHandler = paramWeakReference;
   }
+  
+  public void startUpdateAllItem() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine
  * JD-Core Version:    0.7.0.1
  */

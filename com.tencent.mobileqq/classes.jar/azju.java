@@ -1,81 +1,54 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
 
-class azju
-  extends QIPCModule
+public class azju
+  implements bkin
 {
-  azju(azjt paramazjt, String paramString)
-  {
-    super(paramString);
-  }
+  public azju(QzonePhotoView paramQzonePhotoView) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public AdapterView a(Context paramContext, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
+    do
     {
-      paramString = new Bundle();
-      paramString.putString("VALUE_USER_NICK_NAME", bdgc.b(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
-    {
-      paramString = localQQAppInterface.getCurrentNickname();
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
-    {
-      paramString = localQQAppInterface.a(1, localQQAppInterface.c(), 200);
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
-    {
-      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-      paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
-      if (paramBundle != null)
+      try
       {
-        azjh.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
-        VideoRedbagData.updateRewardStat(paramBundle);
+        paramContext = new GridView(paramContext);
+        ViewPager.LayoutParams localLayoutParams;
+        Context localContext = paramContext;
       }
-      return EIPCResult.createSuccessResult(new Bundle());
-    }
-    if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
-    {
-      boolean bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
-      paramString = new Bundle();
-      paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    if ("CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString))
-    {
-      blap.a().a(blao.c, null, false);
-      bljn.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-      return EIPCResult.createSuccessResult(new Bundle());
-    }
-    if ("CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString))
-    {
-      blap.a().a(blao.b, null, false);
-      bljn.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-      return EIPCResult.createSuccessResult(new Bundle());
-    }
-    if ("CMD_QUERY_STATUS_PTU_RES".equals(paramString))
-    {
-      paramInt = blap.a().a(blao.c);
-      bljn.b("VideoPlayIPCServer", "query additional_package");
-      paramString = new Bundle();
-      paramString.putInt("VALUE_MSG_PTU_RES_STATUS", paramInt);
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    return null;
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        try
+        {
+          paramContext.setNumColumns(4);
+          paramContext.setFadingEdgeLength(0);
+          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setStretchMode(2);
+          paramContext.setScrollingCacheEnabled(false);
+          paramContext.setSelector(2131167224);
+          localLayoutParams = new ViewPager.LayoutParams();
+          localLayoutParams.gravity = 17;
+          localLayoutParams.height = -2;
+          localLayoutParams.width = -1;
+          paramContext.setLayoutParams(localLayoutParams);
+          localContext = paramContext;
+          return localContext;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          continue;
+        }
+        localOutOfMemoryError1 = localOutOfMemoryError1;
+        paramContext = null;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
+    return paramContext;
   }
 }
 

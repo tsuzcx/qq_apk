@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import pge;
+import pxl;
 
 public class InterestLabelInfoModule$1
   implements Runnable
 {
-  public InterestLabelInfoModule$1(pge parampge) {}
+  public InterestLabelInfoModule$1(pxl parampxl) {}
   
   public void run()
   {
-    List localList = this.this$0.a.a(InterestLabelInfo.class, true, null, null, null, null, null, null);
+    List localList = this.this$0.a.query(InterestLabelInfo.class, true, null, null, null, null, null, null);
     this.this$0.a(localList);
   }
 }

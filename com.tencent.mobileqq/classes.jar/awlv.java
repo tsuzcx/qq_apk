@@ -1,57 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import java.util.Map;
 
-public class awlv
-  extends aokh<awlw>
+class awlv
+  extends awls<awlu>
 {
-  public int a()
+  public awlv(awlu paramawlu)
   {
-    return 495;
+    super(paramawlu);
   }
   
-  @NonNull
-  public awlw a(int paramInt)
+  public void a(awlu paramawlu, boolean paramBoolean, awlp paramawlp)
   {
-    return new awlw();
-  }
-  
-  @Nullable
-  public awlw a(aoko[] paramArrayOfaoko)
-  {
-    awlw localawlw = new awlw();
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null)) {
-      awlw.a(localawlw, paramArrayOfaoko[0].a);
+    if (paramawlu == null) {
+      return;
     }
-    return localawlw;
-  }
-  
-  public Class<awlw> a()
-  {
-    return awlw.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(awlw paramawlw) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (paramBoolean)
+    {
+      awlu.a(paramawlu, (awlm)awlu.a(paramawlu).get(paramawlp.h));
+      return;
+    }
+    awlu.a(paramawlu, paramawlp.jdField_a_of_type_JavaLangString, paramawlp.jdField_a_of_type_Int, 1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awlv
  * JD-Core Version:    0.7.0.1
  */

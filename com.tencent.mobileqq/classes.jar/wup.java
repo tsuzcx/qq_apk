@@ -1,20 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class wup
-  implements beqw
+public class wup
+  extends DataSetObserver
 {
-  wup(wub paramwub, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  wup(wui paramwui) {}
   
-  public void a(String paramString)
+  public void onChanged()
   {
-    wxe.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    uoy.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wup
  * JD-Core Version:    0.7.0.1
  */

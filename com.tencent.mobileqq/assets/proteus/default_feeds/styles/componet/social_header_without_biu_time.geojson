@@ -108,24 +108,6 @@
           "attributes": {
             "setImage:": "-1"
           }
-        },
-        {
-          "view_type": "UIButton",
-          "view_id": "id_social_header_fold_button",
-          "event_type": "cmd_social_header_folder_click",
-          "margin_right": "-12",
-          "margin_top": "17",
-          "height": {
-            "type": "absolutely",
-            "value": "30"
-          },
-          "width": {
-            "type": "absolutely",
-            "value": "42"
-          },
-          "attributes": {
-            "setImage:": "social_header_fold"
-          }
         }
       ]
     },

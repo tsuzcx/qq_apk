@@ -1,56 +1,29 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
 public class tgb
-  extends tfj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private TextView a;
+  private tgb(GestureCropImageView paramGestureCropImageView) {}
   
-  private tgb(ViewGroup paramViewGroup, tby paramtby)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramViewGroup, paramtby, 2131560226);
-  }
-  
-  public static tgb a(ViewGroup paramViewGroup, tby paramtby)
-  {
-    return new tgb(paramViewGroup, paramtby);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(2).findViewById(2131379847));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
+    if (GestureCropImageView.a(this.a)) {
+      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
     }
-    TextView localTextView = this.a;
-    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
-    for (int i = 8;; i = 0)
-    {
-      localTextView.setVisibility(i);
-      this.a.setText(paramstSimpleMetaFeed.feed_desc);
-      a(1, paramstSimpleMetaFeed);
-      a(2, 2, paramstSimpleMetaFeed);
-      return;
-    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.a.a(-paramFloat1, -paramFloat2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgb
  * JD-Core Version:    0.7.0.1
  */

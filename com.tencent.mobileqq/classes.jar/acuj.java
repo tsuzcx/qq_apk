@@ -1,70 +1,84 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 public class acuj
-  implements CompoundButton.OnCheckedChangeListener
+  extends acuc
 {
-  public acuj(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public acuj(GdtVideoImaxFragment paramGdtVideoImaxFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (AppSetting.c)
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    acqy.b("AbsWebView", "onPageFinished:" + paramString);
+    GdtVideoImaxFragment.a(this.a, true);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    acqy.b("AbsWebView", "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    GdtVideoImaxFragment.a(this.a, false);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acqy.b("AbsWebView", "onReceivedTitle: " + paramString);
+    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    acqy.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    for (;;)
     {
-      paramCompoundButton = this.a.getString(2131691932);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
-    }
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
-    int i = paramCompoundButton.flag;
-    label171:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
-      if (i != paramCompoundButton.flag)
+      return true;
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        byte b = (byte)(paramCompoundButton.flag & 0x1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
         }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
-        if (!paramBoolean) {
-          break label341;
+      }
+      localObject = AdUriUtil.parse(paramString);
+      if (localObject != null) {}
+      for (paramString = ((Uri)localObject).getScheme(); nhe.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
         }
-        paramCompoundButton = "msg_open";
-        bdes.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), bdes.a(this.a.app, this.a.a) });
+        catch (ActivityNotFoundException paramWebView)
+        {
+          acqy.d("AbsWebView", paramWebView.toString());
+          return true;
+        }
       }
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label347;
-      }
-      paramCompoundButton = "1";
-      label231:
-      azqs.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label353;
-      }
-    }
-    label341:
-    label347:
-    label353:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
-      azqs.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
-      return;
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
-      break;
-      paramCompoundButton = "msg_close";
-      break label171;
-      paramCompoundButton = "0";
-      break label231;
     }
   }
 }

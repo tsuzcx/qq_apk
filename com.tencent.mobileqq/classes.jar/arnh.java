@@ -1,32 +1,68 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 
-class arnh
-  implements AudioManager.OnAudioFocusChangeListener
+public class arnh
+  extends BitmapDrawable
 {
-  arnh(arnb paramarnb) {}
+  private float jdField_a_of_type_Float = 1920.0F;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int b;
+  private int c;
   
-  public void onAudioFocusChange(int paramInt)
+  public arnh(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt == -2) {
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-        arnb.a(this.a);
-      }
-    }
-    do
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.c >>> 24 != 0)
     {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
-      arnb.b(this.a);
-      return;
-    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
-    arnb.a(this.a);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    super.draw(paramCanvas);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    if (this.b > 0) {
+      return this.b;
+    }
+    return super.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicWidth();
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
+  }
+  
+  public void setTargetDensity(int paramInt)
+  {
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 

@@ -1,66 +1,39 @@
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class bfmv
+  implements Animation.AnimationListener
 {
-  protected static bfmv a;
-  protected ArrayList<bfmu> a;
+  public bfmv(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public static bfmv a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      if (jdField_a_of_type_Bfmv == null)
-      {
-        jdField_a_of_type_Bfmv = new bfmv();
-        jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bfmv localbfmv = jdField_a_of_type_Bfmv;
-      return localbfmv;
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      return;
     }
-    finally {}
-  }
-  
-  public ArrayList<bfmu> a()
-  {
-    return jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bfmu parambfmu)
-  {
-    int j = jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bfmu)jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfmu) {
-        return;
-      }
-      i += 1;
+    if (paramAnimation == this.a.b) {
+      VisitorTroopCardFragment.a(this.a, false);
     }
-    jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.add(parambfmu);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
   }
   
-  public void b(bfmu parambfmu)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    int j = jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bfmu)jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfmu) {
-          jdField_a_of_type_Bfmv.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
+      VisitorTroopCardFragment.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfmv
  * JD-Core Version:    0.7.0.1
  */

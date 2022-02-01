@@ -1,30 +1,33 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
 
 class aqwo
-  extends MqqHandler
+  implements aqvn
 {
-  aqwo(aqwn paramaqwn, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aqwo(aqwl paramaqwl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Context paramContext)
   {
-    switch (paramMessage.what)
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    if (Build.VERSION.SDK_INT >= 9)
     {
-    default: 
+      localIntent.setAction(aqwl.a(this.a));
+      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
+    }
+    for (;;)
+    {
+      paramContext.startActivity(localIntent);
       return;
+      if (Build.VERSION.SDK_INT <= 8)
+      {
+        localIntent.setAction("android.intent.action.VIEW");
+        localIntent.setClassName("com.android.settings", aqwl.a(this.a));
+        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
-    }
-    this.a.a.a().a(true);
-    this.a.a.a().b(-1);
-    aqxi.a(-1);
   }
 }
 

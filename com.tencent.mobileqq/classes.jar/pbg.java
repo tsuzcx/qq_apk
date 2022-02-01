@@ -1,54 +1,27 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.1;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.2;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class pbg
-  implements srk
+class pbg
+  extends pcm
 {
-  public pbg(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
-  
-  public void a()
+  pbg(pbe parampbe, int paramInt)
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.2(this), 200L);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage success!");
-    }
+    super(parampbe, null);
   }
   
-  public void a(int paramInt)
+  void a(pcp parampcp)
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.1(this), 1000L);
+    if (this.jdField_a_of_type_Int == 1) {
+      parampcp.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyViolaChannelFragment", 2, "reloadPage error,error code=" + paramInt);
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((1 == paramInt) && (otb.a())) {
-      oxb.a().m();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage process,process code=" + paramInt);
-    }
+    parampcp.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbg
  * JD-Core Version:    0.7.0.1
  */

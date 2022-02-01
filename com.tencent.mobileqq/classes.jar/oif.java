@@ -1,51 +1,53 @@
-import android.content.Context;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-import java.util.ArrayList;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class oif
-  extends BaseAdapter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public oif(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public oif(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (paramView = new oig(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; paramView = (oig)paramView.getTag())
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
+    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
+    int i = j - localRect.height();
+    if (i > 100) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramView.a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
-      return paramView.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
+      }
+      if (bool != this.a.k)
+      {
+        if (i > this.a.e) {
+          this.a.e = i;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
+        }
+        i = bgtn.b(this.a.f);
+        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
+        int k = j - i;
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
+      }
+      this.a.k = bool;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oif
  * JD-Core Version:    0.7.0.1
  */

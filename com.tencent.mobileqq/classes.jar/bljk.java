@@ -1,30 +1,18 @@
-class bljk
-  implements baug
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
+
+public final class bljk
+  implements Parcelable.Creator<MessageRecordParcel>
 {
-  private bljj jdField_a_of_type_Bljj;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  bljk(String paramString1, String paramString2, bljj parambljj)
+  public MessageRecordParcel a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Bljj = parambljj;
+    return MessageRecordParcel.a(paramParcel);
   }
   
-  public void onResp(bavf parambavf)
+  public MessageRecordParcel[] a(int paramInt)
   {
-    bljn.b("AEDownloader", "onResp url: " + this.jdField_a_of_type_JavaLangString + " resultcode: " + parambavf.a);
-    if (this.jdField_a_of_type_Bljj != null) {
-      this.jdField_a_of_type_Bljj.a(parambavf);
-    }
-  }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bljj != null) {
-      this.jdField_a_of_type_Bljj.a((int)((float)paramLong1 / (float)paramLong2) * 100);
-    }
+    return new MessageRecordParcel[paramInt];
   }
 }
 

@@ -1,59 +1,123 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class bchb
+  implements Handler.Callback
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private long b;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  public HandlerThread a;
+  private bchc jdField_a_of_type_Bchc;
+  private int b;
+  private int c;
   
-  public bchb(QQAppInterface paramQQAppInterface)
+  public bchb(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    this.jdField_a_of_type_Int = (1000 / paramInt1);
+    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
+    this.c = 0;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
   
-  private boolean a(TroopInfo paramTroopInfo)
+  private boolean a(Message paramMessage)
   {
-    if (paramTroopInfo == null) {}
-    long l;
-    do
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (bcje.a)
     {
-      do
+      paramMessage = RMVideoStateMgr.a();
+      if (!paramMessage.b) {
+        break label179;
+      }
+      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
+      if (paramMessage.jdField_a_of_type_Double >= bcjb.c) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (QLog.isColorLevel())
       {
-        return true;
-        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
-          return false;
+        bool2 = bool1;
+        if (bool1)
+        {
+          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
+          bool2 = bool1;
         }
-        l = System.currentTimeMillis();
-        if (paramTroopInfo.wMemberNum > 500) {
-          break;
-        }
-      } while (l - this.b < 180000L);
-      return false;
-    } while (l - this.b < 1800000L);
-    return false;
-  }
-  
-  public void a(String paramString)
-  {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-    amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((localamdu != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localamdu.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
-      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
-      this.b = System.currentTimeMillis();
+      if (bool2) {
+        this.c = this.b;
+      }
+      int i = this.c;
+      int j = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Bchc != null) {
+        this.jdField_a_of_type_Bchc.a(this.jdField_a_of_type_Bchc, bool2, i * j, this.c);
+      }
+      this.c += 1;
+      return true;
+      label179:
+      if (this.c >= this.b) {
+        bool2 = true;
+      }
     }
   }
   
-  public boolean a(String paramString)
+  public int a()
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(bchc parambchc)
+  {
+    this.jdField_a_of_type_Bchc = parambchc;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = (paramInt / this.jdField_a_of_type_Int);
+  }
+  
+  public void c()
+  {
+    this.c = 0;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+    }
+    return a(paramMessage);
   }
 }
 

@@ -1,10 +1,36 @@
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public abstract interface apou
+public class apou
 {
-  public abstract void a(float paramFloat, List<Integer> paramList);
+  java.lang.ref.WeakReference<QQAppInterface> a;
   
-  public abstract void a(List<Integer> paramList);
+  public apou(QQAppInterface paramQQAppInterface)
+  {
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, anil paramanil)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
+    }
+    return ((apon)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramanil);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, anil paramanil)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((apon)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramanil);
+  }
 }
 
 

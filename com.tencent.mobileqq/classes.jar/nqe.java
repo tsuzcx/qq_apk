@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.util.Pair;
+import java.net.URL;
 
-class nqe
-  implements View.OnClickListener
+public class nqe
 {
-  nqe(nqd paramnqd) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void onClick(View paramView)
+  public static nqe a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    RIJRedPacketManager.a().a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 5, PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.a.jdField_a_of_type_JavaLangString, new nqf(this), false, null);
-    paramView = new orz();
-    orz localorz = paramView.a("rowkey", this.a.jdField_a_of_type_JavaLangString).a("content_type", Integer.valueOf(2));
-    if (bdin.h(BaseApplicationImpl.getContext())) {}
-    for (int i = 2;; i = 1)
-    {
-      localorz.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", ors.f());
-      nrt.a("0X800ABBA", paramView.a());
-      return;
-    }
+    nqe localnqe = new nqe();
+    localnqe.jdField_a_of_type_JavaNetURL = paramURL;
+    localnqe.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localnqe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqe
  * JD-Core Version:    0.7.0.1
  */

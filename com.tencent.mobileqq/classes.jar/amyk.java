@@ -1,517 +1,357 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class amyk
-  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = -1;
-  public amya a;
-  public amyb a;
-  private amyc jdField_a_of_type_Amyc;
-  public amyd a;
-  public amzg a;
-  public amzj a;
-  public amzp a;
-  public amzs a;
-  private amzv jdField_a_of_type_Amzv = new amyp(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ServiceConnection a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RemoteArConfigManager");
-  public ARCommonConfigInfo a;
-  public ArConfigInfo a;
-  public ArEffectConfig a;
-  public boolean a;
-  volatile boolean b = false;
-  boolean c = false;
+  private static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public amyk()
+  public static InputStream a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new amyl(this);
-    this.jdField_a_of_type_Amzs = new amym(this);
-    this.jdField_a_of_type_Amzj = new amyn(this);
-    this.jdField_a_of_type_Amzp = new amyo(this);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-  }
-  
-  public ARCommonConfigInfo a()
-  {
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-    }
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = null;
-      } while (this.jdField_a_of_type_Amzg == null);
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Amzg.a();
-        localObject2 = localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
-        }
-      }
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject2 }));
-    return localObject2;
-  }
-  
-  public ArConfigInfo a()
-  {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-    }
-    for (;;)
-    {
-      return localObject2;
-      localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_Amzg != null) {}
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Amzg.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
-        {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject2;
-          }
-        }
-      }
-    }
-  }
-  
-  public ArEffectConfig a()
-  {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-    }
-    for (;;)
-    {
-      return localObject2;
-      Object localObject3 = null;
-      localObject2 = null;
-      if (this.jdField_a_of_type_Amzg == null) {
-        continue;
-      }
-      try
-      {
-        localObject1 = this.jdField_a_of_type_Amzg.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|info=" + localObject1);
-        return localObject1;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        for (;;)
-        {
-          Object localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject3;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      b();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if ((!this.b) || (this.jdField_a_of_type_AndroidContentContext != null)) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.b = false;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_Amya = null;
-      this.jdField_a_of_type_Amyb = null;
-      this.jdField_a_of_type_Amyc = null;
-      this.jdField_a_of_type_Amyd = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Amzg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources type " + paramInt);
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
     try
     {
-      this.jdField_a_of_type_Amzg.a(paramInt);
-      return;
+      paramString = new BufferedInputStream(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+      return paramString;
     }
-    catch (RemoteException localRemoteException)
+    catch (Throwable paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources|RemoteException e= " + localRemoteException);
+      QLog.e("apollo_client_ApolloClientUtil", 2, "toInputStream error:" + paramString.getMessage());
     }
+    return null;
   }
   
-  public void a(Context paramContext, amya paramamya, amyd paramamyd)
+  public static String a()
   {
-    a(paramContext, false, paramamya, null, null, paramamyd);
+    File localFile = new File(ancb.a + "/webview/");
+    localFile.mkdirs();
+    return new File(localFile, "apolloWebviewConfig.txt").getAbsolutePath();
   }
   
-  public void a(Context paramContext, boolean paramBoolean, amya paramamya, amyb paramamyb, amyc paramamyc, amyd paramamyd)
+  public static String a(File paramFile)
   {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramBoolean;
-    paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, ArConfigService.class);
-    this.jdField_a_of_type_AndroidContentContext.bindService(paramContext, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    this.b = true;
-    if (paramamya != null) {
-      this.jdField_a_of_type_Amya = paramamya;
-    }
-    if (paramamyb != null) {
-      this.jdField_a_of_type_Amyb = paramamyb;
-    }
-    this.jdField_a_of_type_Amyc = paramamyc;
-    this.jdField_a_of_type_Amyd = paramamyd;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Amzg != null) {}
     try
     {
-      bool1 = this.jdField_a_of_type_Amzg.a();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady " + bool1);
-        bool2 = bool1;
-      }
-      return bool2;
+      paramFile = bgmg.b(paramFile);
+      return paramFile;
     }
-    catch (RemoteException localRemoteException)
+    catch (IOException paramFile)
     {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
-        }
-      }
+      QLog.e("apollo_client_ApolloClientUtil", 1, "readFileSafety ", paramFile);
+      return "";
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      label17:
+      break label17;
     }
   }
   
-  public void b()
+  public static String a(String paramString)
   {
-    if (this.jdField_a_of_type_Amzg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Amzg.b();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onToolScannerActivityStateChanged state:" + paramInt + "  mConfigManager:" + this.jdField_a_of_type_Amzg);
-    }
-    if (this.jdField_a_of_type_Amzg != null) {
-      try
-      {
-        this.jdField_a_of_type_Amzg.c(paramInt);
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        localRemoteException.printStackTrace();
-        return;
-      }
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Amzg != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Amzg.c();
-      return bool1;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Amzg != null) {}
-    try
-    {
-      this.jdField_a_of_type_Amzg.c();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_Amzg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource type " + paramInt);
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Amzg.b(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_Amzg != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Amzg.b();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady " + bool1);
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
-        }
-      }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    String str1 = "text/html";
+    String str2 = Uri.parse(paramString).getPath();
+    if (str2.contains(".css")) {
+      paramString = "text/css";
     }
     do
     {
-      do
+      return paramString;
+      if (str2.contains(".js")) {
+        return "application/x-javascript";
+      }
+      if ((str2.contains(".jpg")) || (str2.contains(".gif")) || (str2.contains(".png"))) {
+        break;
+      }
+      paramString = str1;
+    } while (!str2.contains(".jpeg"));
+    return "image/*";
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder;
+    int j;
+    int i;
+    String str1;
+    String str2;
+    int m;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localStringBuilder = new StringBuilder(paramString1);
+      j = localStringBuilder.lastIndexOf("/");
+      i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      str1 = "&" + paramString2 + "=";
+      str2 = "?" + paramString2 + "=";
+      m = str1.length();
+    }
+    for (;;)
+    {
+      try
       {
-        do
+        int k = localStringBuilder.indexOf(str1, i);
+        j = k;
+        if (-1 == k) {
+          j = localStringBuilder.indexOf(str2, i);
+        }
+        if (j <= 0) {
+          break;
+        }
+        k = localStringBuilder.indexOf("&", j + m);
+        if (k > 0)
         {
-          do
+          localStringBuilder.replace(j + 1, k + 1, "");
+          continue;
+          return paramString1;
+        }
+      }
+      catch (Throwable paramString2)
+      {
+        QLog.e("apollo_client_ApolloClientUtil", 2, "addSonicUrlParam error:" + paramString2.getMessage());
+      }
+      localStringBuilder.replace(j, localStringBuilder.length(), "");
+    }
+    if (-1 != localStringBuilder.indexOf("?")) {
+      localStringBuilder.append("&").append(paramString2).append("=").append(paramString3);
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append("?").append(paramString2).append("=").append(paramString3);
+    }
+  }
+  
+  private static String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = paramArrayOfByte[i];
+      localStringBuilder.append(a[((k & 0xF0) >>> 4)]);
+      localStringBuilder.append(a[(k & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    paramString1 = new File(paramString1);
+    if (!paramString1.exists()) {}
+    for (;;)
+    {
+      try
+      {
+        paramString1.createNewFile();
+        bool1 = true;
+        try
+        {
+          paramString1.close();
+          throw paramString2;
+        }
+        catch (IOException paramString1)
+        {
+          for (;;)
           {
-            do
+            QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
+          }
+        }
+      }
+      catch (IOException localIOException)
+      {
+        try
+        {
+          paramString1 = new FileOutputStream(paramString1, false);
+          if (paramString1 != null) {}
+          for (;;)
+          {
+            try
             {
-              do
+              paramString1.write(paramString2.getBytes());
+              paramString1.flush();
+            }
+            catch (IOException paramString2)
+            {
+              QLog.e("apollo_client_ApolloClientUtil", 1, paramString2.getMessage());
+              bool1 = bool2;
+              if (paramString1 == null) {
+                continue;
+              }
+              try
               {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            for (;;)
-                            {
-                              return false;
-                              if (this.jdField_a_of_type_Amya != null)
-                              {
-                                this.jdField_a_of_type_Amya.a();
-                                return false;
-                                if (this.jdField_a_of_type_Amya != null)
-                                {
-                                  paramMessage = paramMessage.obj;
-                                  if ((paramMessage instanceof ArConfigInfo))
-                                  {
-                                    this.jdField_a_of_type_Amya.a((ArConfigInfo)paramMessage);
-                                    return false;
-                                    if (this.jdField_a_of_type_Amya != null)
-                                    {
-                                      paramMessage = paramMessage.obj;
-                                      if ((paramMessage instanceof ArEffectConfig))
-                                      {
-                                        this.jdField_a_of_type_Amya.a((ArEffectConfig)paramMessage);
-                                        return false;
-                                        if (this.jdField_a_of_type_Amya != null) {
-                                          try
-                                          {
-                                            if ((paramMessage.obj instanceof ARCommonConfigInfo))
-                                            {
-                                              this.jdField_a_of_type_Amya.a((ARCommonConfigInfo)paramMessage.obj);
-                                              return false;
-                                            }
-                                          }
-                                          catch (Exception paramMessage)
-                                          {
-                                            QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
-                                            return false;
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          } while (this.jdField_a_of_type_Amya == null);
-                          this.jdField_a_of_type_Amya.b();
-                          this.jdField_a_of_type_Boolean = false;
-                          return false;
-                        } while (this.jdField_a_of_type_Amya == null);
-                        i = paramMessage.arg1;
-                        j = paramMessage.arg2;
-                        this.jdField_a_of_type_Amya.a(i, j);
-                        return false;
-                      } while ((this.jdField_a_of_type_Amya == null) || (!(paramMessage.obj instanceof Integer)));
-                      this.jdField_a_of_type_Amya.a(((Integer)paramMessage.obj).intValue());
-                      this.jdField_a_of_type_Boolean = false;
-                      return false;
-                    } while (this.jdField_a_of_type_Amyb == null);
-                    i = paramMessage.arg1;
-                    this.jdField_a_of_type_Amyb.k_(i);
-                    return false;
-                  } while (this.jdField_a_of_type_Amyb == null);
-                  i = paramMessage.arg1;
-                  j = paramMessage.arg2;
-                  this.jdField_a_of_type_Amyb.a(i, j);
-                  return false;
-                } while (this.jdField_a_of_type_Amyb == null);
-                i = paramMessage.arg1;
-                j = paramMessage.arg2;
-                this.jdField_a_of_type_Amyb.b(i, j);
+                paramString1.close();
                 return false;
-              } while (this.jdField_a_of_type_Amyc == null);
-              this.jdField_a_of_type_Amyc.c();
+              }
+              catch (IOException paramString1)
+              {
+                QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
+                return false;
+              }
+            }
+            finally
+            {
+              if (paramString1 == null) {
+                break label155;
+              }
+            }
+            try
+            {
+              paramString1.close();
+              return bool1;
+            }
+            catch (IOException paramString1)
+            {
+              QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
               return false;
-            } while (this.jdField_a_of_type_Amyc == null);
-            this.jdField_a_of_type_Amyc.d();
-            return false;
-          } while (this.jdField_a_of_type_Amyc == null);
-          this.jdField_a_of_type_Amyc.b(paramMessage.arg1);
-          return false;
-        } while (this.jdField_a_of_type_Amyd == null);
-        i = paramMessage.arg1;
-        this.jdField_a_of_type_Amyd.a(i);
-        return false;
-      } while (this.jdField_a_of_type_Amyd == null);
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      this.jdField_a_of_type_Amyd.a(i, j);
-      return false;
-    } while (this.jdField_a_of_type_Amyd == null);
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    this.jdField_a_of_type_Amyd.b(i, j);
+            }
+          }
+          localIOException = localIOException;
+          QLog.e("apollo_client_ApolloClientUtil", 1, localIOException.getMessage());
+          bool1 = false;
+          continue;
+        }
+        catch (FileNotFoundException paramString1)
+        {
+          QLog.e("apollo_client_ApolloClientUtil", 1, paramString1.getMessage());
+          bool1 = false;
+          paramString1 = null;
+          continue;
+        }
+      }
+      label155:
+      boolean bool1 = true;
+    }
+  }
+  
+  public static boolean a(String paramString, List<String> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      try
+      {
+        String[] arrayOfString = new String[paramList.size()];
+        paramList.toArray(arrayOfString);
+        paramList = new HashMap(1);
+        paramList.put(paramString, arrayOfString);
+        CookieManager.getInstance().setCookies(paramList);
+        return true;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("apollo_client_ApolloClientUtil", 1, "setCookies error:" + paramString.getMessage());
+      }
+    }
     return false;
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramString.getBytes(), 0, paramString.getBytes().length);
+      paramString = a(localMessageDigest.digest());
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static String c(String paramString)
+  {
+    return SwiftBrowserCookieMonster.c(paramString);
+  }
+  
+  public static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = ancb.a + "/";
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    str = str + "webview/";
+    localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    str = str + paramString + "/";
+    localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str + paramString + ".txt";
+  }
+  
+  public static String e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    int i = paramString.indexOf("?");
+    String str = paramString;
+    if (i != -1) {
+      str = paramString.substring(0, i);
+    }
+    try
+    {
+      paramString = MessageDigest.getInstance("MD5");
+      paramString.update(str.getBytes(), 0, str.getBytes().length);
+      paramString = a(paramString.digest());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("apollo_client_ApolloClientUtil", 1, paramString.getMessage());
+    }
+    return String.valueOf(str.hashCode());
+  }
+  
+  public static String f(String paramString)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return "";
+      }
+      String str = Uri.parse(paramString).getHost();
+      int i = paramString.indexOf(str);
+      if (i >= 0)
+      {
+        paramString = paramString.substring(0, str.length() + i);
+        return paramString;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("apollo_client_ApolloClientUtil", 2, "getOrigin error:" + paramString.getMessage());
+    }
+    return "";
   }
 }
 

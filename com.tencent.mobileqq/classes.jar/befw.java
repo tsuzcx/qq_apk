@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class befw
-  implements View.OnClickListener
+public abstract interface befw
 {
-  befw(beft parambeft) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false, 0, 0);
-  }
+  public abstract void a(befy parambefy);
 }
 
 

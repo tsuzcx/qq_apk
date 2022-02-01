@@ -1,26 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import java.nio.channels.SocketChannel;
 
-class amlu
-  implements abso
+public class amlu
 {
-  amlu(amlp paramamlp, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  public int a;
+  public long a;
+  public String a;
+  public SocketChannel a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public ToServiceMsg a()
+  public amlu(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
   {
-    ToServiceMsg localToServiceMsg = amlp.a(this.jdField_a_of_type_Amlp).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
+    this.jdField_c_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlu
  * JD-Core Version:    0.7.0.1
  */

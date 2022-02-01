@@ -1,33 +1,39 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class nke
-  implements bhuk
+class nke
+  extends Handler
 {
-  public nke(AccountDetailActivity paramAccountDetailActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  nke(nkd paramnkd, Looper paramLooper)
   {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     }
-    for (;;)
+    do
     {
-      this.a.a.dismiss();
       return;
-      this.a.q();
-      continue;
-      this.a.E();
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
     }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nke
  * JD-Core Version:    0.7.0.1
  */

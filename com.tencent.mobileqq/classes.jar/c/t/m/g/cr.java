@@ -14,10 +14,8 @@ public final class cr
 {
   private final StringBuilder c = new StringBuilder();
   private final File d;
-  private volatile long e = 0L;
-  private volatile long f = 0L;
-  private final long[] g = new long[2];
-  private final int[] h = new int[2];
+  private long e = 0L;
+  private final long[] f = new long[2];
   
   public cr(File paramFile)
   {
@@ -29,169 +27,121 @@ public final class cr
     if (co.c(paramString)) {}
     do
     {
-      for (;;)
+      return;
+      try
       {
-        return;
-        try
-        {
-          Object localObject = paramString.getBytes("UTF-8");
-          paramString = cw.a((byte[])localObject, 3);
-          if (co.e()) {
-            co.a("srcBytes.len=" + localObject.length + ",encBytes.len=" + paramString.length);
-          }
-          localObject = "utr_" + co.b(cq.class.getName(), "SHA-256").substring(0, 8) + "_" + dq.b("yyyyMMdd");
-          localObject = new File(this.d, (String)localObject);
-          co.a((File)localObject, paramString, true);
-          if (((File)localObject).length() > 51200L)
-          {
-            ((File)localObject).renameTo(new File(((File)localObject).getParent(), ((File)localObject).getName() + "_" + dq.b("HHmmss")));
-            return;
-          }
+        paramString = paramString.getBytes("UTF-8");
+        byte[] arrayOfByte = cw.a(paramString, 3);
+        if (co.e()) {
+          co.a("srcBytes.len=" + paramString.length + ",encBytes.len=" + arrayOfByte.length);
         }
-        catch (Throwable paramString) {}
+        a(i(), arrayOfByte, new cr.1(this, arrayOfByte));
+        return;
       }
+      catch (Throwable paramString) {}
     } while (!co.e());
-    co.a("writeStrToFile error.", paramString);
+    co.a("uploadUT error.", paramString);
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, de paramde)
+  {
+    if (co.b(paramArrayOfByte)) {
+      return;
+    }
+    ds.a("th_loc_task_t_consume", new cr.3(this, paramString, paramArrayOfByte, paramde));
   }
   
   private void g()
   {
-    this.f = System.currentTimeMillis();
+    this.e = System.currentTimeMillis();
     this.c.setLength(0);
-    Arrays.fill(this.h, 0);
-    Arrays.fill(this.g, 0L);
   }
   
   private void h()
   {
-    long l1 = System.currentTimeMillis();
-    if (l1 - this.e < 60000L) {
-      if (co.e()) {
-        co.a("last upload time: < 1min");
-      }
-    }
-    for (;;)
-    {
-      return;
-      this.e = l1;
-      dv.a locala = dv.a(dp.a());
-      boolean bool;
-      if (locala == dv.a.a) {
-        bool = false;
-      }
-      label167:
-      while (bool)
-      {
-        i();
-        return;
-        if (locala == dv.a.b)
-        {
-          bool = cu.f;
-          if ((cu.f) || (!cu.g)) {
-            break label167;
-          }
-          long l2 = ((Long)dy.b("LocationSDK", "log_utr_up_in_m", Long.valueOf(l1))).longValue();
-          if (l1 - l2 <= 86400000L) {
-            break label167;
-          }
-          dy.a("LocationSDK", "log_utr_up_in_m", Long.valueOf(l1));
-          if (co.e()) {
-            co.a("upload in mobile once today. lastUpT=" + l2 + ",curT=" + l1);
-          }
-        }
-        bool = true;
-      }
-    }
-  }
-  
-  private void i()
-  {
-    int j = 0;
+    int k = 0;
     File[] arrayOfFile;
+    int i;
     if ((this.d != null) && (this.d.exists()))
     {
       arrayOfFile = this.d.listFiles();
       if ((arrayOfFile != null) && (arrayOfFile.length != 0)) {
         break label52;
       }
-    }
-    label52:
-    for (int i = 1;; i = 0)
-    {
+      i = 1;
+      label41:
       if (i == 0) {
         break label57;
       }
+    }
+    label288:
+    for (;;)
+    {
       return;
       arrayOfFile = null;
       break;
-    }
-    label57:
-    long l = System.currentTimeMillis();
-    dv.a locala = dv.a(dp.a());
-    String str2 = dq.b("yyyyMMdd");
-    i = 0;
-    label79:
-    Object localObject;
-    String str1;
-    int k;
-    if (i < arrayOfFile.length)
-    {
-      localObject = arrayOfFile[i];
-      str1 = ((File)localObject).getName();
-      k = j;
-      if (((File)localObject).exists())
+      label52:
+      i = 0;
+      break label41;
+      label57:
+      long l = System.currentTimeMillis();
+      dv.a locala = dv.a(dp.a());
+      int j = 0;
+      i = k;
+      for (;;)
       {
+        if (i >= arrayOfFile.length) {
+          break label288;
+        }
+        File localFile = arrayOfFile[i];
+        Object localObject = localFile.getName();
         k = j;
-        if (((File)localObject).isFile())
+        if (localFile.exists())
         {
           k = j;
-          if (str1.startsWith("utr_"))
+          if (localFile.isFile())
           {
             k = j;
-            if (!str1.contains(str2))
+            if (((String)localObject).startsWith("utr_"))
             {
-              if (l - ((File)localObject).lastModified() <= 1296000000L) {
-                break label204;
+              if (l - localFile.lastModified() > 1728000000L)
+              {
+                if (co.e()) {
+                  co.a("del file:" + localFile.getName());
+                }
+                localFile.delete();
               }
+              localObject = co.a(localFile);
+              k = j + localObject.length;
               if (co.e()) {
-                co.a("del file:" + ((File)localObject).getName());
+                co.a("upload file:" + localFile.getName() + ",len=" + localObject.length + ",sum=" + k + ",netType=" + locala);
               }
-              ((File)localObject).delete();
-              k = j;
+              a(i(), (byte[])localObject, new cr.2(this, localFile));
+              if ((locala != dv.a.c) || (k >= 102400)) {
+                break;
+              }
             }
           }
         }
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      j = k;
-      break label79;
-      break;
-      label204:
-      byte[] arrayOfByte = co.a((File)localObject);
-      k = arrayOfByte.length + j;
-      if (co.e()) {
-        co.a("upload file:" + ((File)localObject).getName() + ",len=" + arrayOfByte.length + ",sum=" + k + ",netType=" + locala);
-      }
-      boolean bool = cu.h;
-      str1 = "https://analytics.map.qq.com/tr?utr";
-      if (!cu.e) {
-        str1 = "https://analytics.map.qq.com/tr?utr".replace("https:", "http:");
-      }
-      localObject = new cr.1(this, (File)localObject);
-      if (!co.b(arrayOfByte)) {
-        ds.a("th_loc_task_t_consume", new cr.2(this, str1, arrayOfByte, (de)localObject));
-      }
-      if ((locala == dv.a.b) || (k >= 409600)) {
-        break;
+        i += 1;
+        j = k;
       }
     }
   }
   
+  private static String i()
+  {
+    boolean bool = cu.h;
+    String str = "https://analytics.map.qq.com/tr?utr";
+    if (!cu.e) {
+      str = "https://analytics.map.qq.com/tr?utr".replace("https:", "http:");
+    }
+    return str;
+  }
+  
   public final int a()
   {
+    Arrays.fill(this.f, 0L);
     a(1001, 0L);
     return 0;
   }
@@ -205,13 +155,11 @@ public final class cr
         return;
       }
       l = System.currentTimeMillis();
-      if (l - this.g[0] < 900L) {
+      if (l - this.f[0] < 900L) {
         return;
       }
     }
-    this.g[0] = l;
-    Object localObject = this.h;
-    localObject[0] += 1;
+    this.f[0] = l;
     if (paramLocation != null) {}
     for (;;)
     {
@@ -229,7 +177,7 @@ public final class cr
             return;
           }
         }
-        localObject = String.format(Locale.ENGLISH, "%d,G,%d,0,%.6f,%.6f,%.1f,%.1f,%.1f,%.1f", new Object[] { Long.valueOf(l), Long.valueOf(paramLocation.getTime()), Double.valueOf(paramLocation.getLatitude()), Double.valueOf(paramLocation.getLongitude()), Double.valueOf(paramLocation.getAltitude()), Float.valueOf(paramLocation.getAccuracy()), Float.valueOf(paramLocation.getSpeed()), Float.valueOf(paramLocation.getBearing()) });
+        String str = String.format(Locale.ENGLISH, "%d,G,%d,0,%.6f,%.6f,%.1f,%.1f,%.1f,%.1f", new Object[] { Long.valueOf(l), Long.valueOf(paramLocation.getTime()), Double.valueOf(paramLocation.getLatitude()), Double.valueOf(paramLocation.getLongitude()), Double.valueOf(paramLocation.getAltitude()), Float.valueOf(paramLocation.getAccuracy()), Float.valueOf(paramLocation.getSpeed()), Float.valueOf(paramLocation.getBearing()) });
         localHandler = e();
         if (localHandler != null)
         {
@@ -240,7 +188,7 @@ public final class cr
           paramLocation.what = 1003;
           paramLocation.arg1 = 0;
           paramLocation.arg2 = 0;
-          paramLocation.obj = localObject;
+          paramLocation.obj = str;
           co.a(localHandler, paramLocation, 0L);
         }
       }
@@ -280,23 +228,20 @@ public final class cr
         localStringBuilder2 = new StringBuilder();
         localStringBuilder3 = localStringBuilder2.append("SYSTEM,").append(System.currentTimeMillis()).append(',').append(dz.c()).append(',');
         if (cu.i != null) {
-          break label438;
+          break label416;
         }
       }
       for (paramMessage = "";; paramMessage = dt.a(cu.i.c))
       {
         localStringBuilder3.append(paramMessage).append(',').append(str2).append(',').append(str3).append(',').append(Build.VERSION.SDK_INT).append(',').append(cx.a()).append(',').append(cx.c()).append(',').append(cx.d().replaceAll(":", "").toLowerCase()).append(',').append(cx.b());
         localStringBuilder1.append(localStringBuilder2.toString());
-        this.f = l;
+        this.e = l;
         this.c.append('$').append(str1);
-        if ((this.c.length() < 15360L) && ((this.f == 0L) || (l - this.f < 600000L))) {
+        if ((this.c.length() < 15360L) && ((this.e == 0L) || (l - this.e < 300000L))) {
           break;
         }
-        if (this.h[0] + this.h[1] >= 3) {
-          a(this.c.toString());
-        }
+        a(this.c.toString());
         this.c.setLength(0);
-        Arrays.fill(this.h, 0);
         return;
       }
     case 1002: 
@@ -304,27 +249,23 @@ public final class cr
       if (paramMessage != null) {
         paramMessage.removeCallbacksAndMessages(null);
       }
-      if (this.h[0] + this.h[1] >= 3) {
-        a(this.c.toString());
-      }
+      a(this.c.toString());
       g();
-      this.e = 0L;
-      h();
       return;
     case 1001: 
-      label438:
+      label416:
       g();
-      this.e = (System.currentTimeMillis() - 40000L);
-      a(1004, 300000L);
+      a(1004, 600000L);
       return;
     }
-    a(1004, 1800000L);
+    a(1004, 1200000L);
     h();
   }
   
   public final void b()
   {
     a(1002, 0L);
+    Arrays.fill(this.f, 0L);
   }
   
   public final String c()

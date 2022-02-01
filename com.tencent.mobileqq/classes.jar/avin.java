@@ -1,15 +1,42 @@
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginProcessService;
+import com.tencent.shadow.dynamic.host.PpsController;
+import java.util.concurrent.CountDownLatch;
 
-public class avin
+class avin
+  implements ServiceConnection
 {
-  public float a;
-  public float[] a;
+  avin(avil paramavil, CountDownLatch paramCountDownLatch) {}
   
-  private avin(MetaballView paramMetaballView) {}
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
+    avil.a(this.jdField_a_of_type_Avil).unbindService(this);
+    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
+    try
+    {
+      paramComponentName.exit();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,108 +1,87 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
-import java.util.HashMap;
-import java.util.regex.Pattern;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class yhf
+  extends nit
 {
-  public static String a;
-  public static HashMap<Integer, Bitmap> a;
-  public static final Pattern a;
-  public static final short[] a;
-  public static String b;
+  public yhf(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  static
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = "http://qzonestyle.gtimg.cn/qzone/em/";
-    b = ".gif";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ArrayOfShort = new short[] { 13, 12, 56, 73, 88, 87, 97, 59, 33, 5, 9, 82, 51, 53, 106, 72, 92, 112, 74, 2, 6, 4, 54, 14, 11, 10, 55, 96, 36, 116, 75, 76, 50, 0, 81, 8, 109, 57, 27, 85, 1, 108, 79, 3, 103, 62, 101, 21, 105, 83, 58, 111, 46, 47, 71, 95, 118, 34, 64, 38, 32, 113, 117, 119, 124, 122, 63, 89, 45, 16, 93, 25, 121, 120, 37, 42, 39, 29, 86, 129, 91, 77, 78, 80, 84, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 23, 26, 125, 196, 127, 128, 130, 131, 132, 133, 134, 7 };
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b", 2);
-  }
-  
-  public static Drawable a(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
-  {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
-    {
-      paramInt = yhp.jdField_b_of_type_ArrayOfInt[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
+    int j = -1;
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, SpannableStringBuilder paramSpannableStringBuilder)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramSpannableStringBuilder)) {
-        return;
-      }
-      float f = paramContext.getResources().getDisplayMetrics().density;
-      String str = paramSpannableStringBuilder.toString();
-      int i = 0;
-      while (i < yhp.jdField_b_of_type_ArrayOfJavaLangString.length)
+      int m;
+      int k;
+      try
       {
-        for (int j = str.indexOf(yhp.jdField_b_of_type_ArrayOfJavaLangString[i]); j >= 0; j = str.indexOf(yhp.jdField_b_of_type_ArrayOfJavaLangString[i], j + yhp.jdField_b_of_type_ArrayOfJavaLangString[i].length())) {
-          paramSpannableStringBuilder.setSpan(new VerticalCenterImageSpan(a(i, f, paramContext, null), 0), j, yhp.jdField_b_of_type_ArrayOfJavaLangString[i].length() + j, 33);
+        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
+        if (!localRspDelOneMessage.errinfo.error_code.has()) {
+          break label239;
         }
-        i += 1;
+        i = localRspDelOneMessage.errinfo.error_code.get();
+        j = i;
+        if (j == 0) {
+          i = 1;
+        }
       }
-      return;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        m = 0;
+        k = j;
+      }
+      try
+      {
+        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
+        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
+        }
+        if (i == 0) {
+          QQToast.a(this.a.getApplicationContext(), 1, anni.a(2131713223), 0).a();
+        }
+        return paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          k = j;
+          m = i;
+        }
+      }
+      int i = 0;
+      continue;
+      j = k;
+      i = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
+        j = k;
+        i = m;
+        continue;
+        label239:
+        i = 0;
+      }
     }
-    catch (OutOfMemoryError paramContext) {}
-  }
-  
-  public static Drawable b(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
-  {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
-    {
-      paramInt = yhp.a[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Drawable c(int paramInt, float paramFloat, Context paramContext, Drawable.Callback paramCallback)
-  {
-    int i = (int)(22.0D * paramFloat + 0.5D);
-    try
-    {
-      paramInt = bkav.c[paramInt];
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      paramContext.setBounds(0, 0, i, i);
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package dov.com.qq.im;
 
-import bknm;
+import bnbz;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$11
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$11(bknm parambknm) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$11(bnbz parambnbz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QIMEmojiRedPacketCameraCaptureUnit$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.11
  * JD-Core Version:    0.7.0.1
  */

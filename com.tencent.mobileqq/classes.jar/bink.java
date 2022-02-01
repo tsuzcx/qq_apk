@@ -1,37 +1,56 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import eipc.EIPCResult;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class bink
-  extends VasQuickUpdateManager.CallBacker
+public class bink
+  implements bitu
 {
-  int jdField_a_of_type_Int;
+  protected bink(binj parambinj) {}
   
-  bink(binj parambinj, int paramInt)
+  public void a(Exception paramException)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    bisy.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
   }
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(JSONObject paramJSONObject)
   {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
+    try
     {
-      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
       {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_Binj.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = biyn.a(biip.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
+        }
       }
+      else
+      {
+        bisy.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      bisy.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bink
  * JD-Core Version:    0.7.0.1
  */

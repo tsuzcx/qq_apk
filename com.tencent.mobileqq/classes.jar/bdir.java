@@ -1,33 +1,55 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class bdir
-  implements View.OnClickListener
+  implements WtTicketPromise
 {
-  bdir(bdio parambdio, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  bdir(bdiq parambdiq, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
   
-  public void onClick(View paramView)
+  public void Done(Ticket paramTicket)
   {
-    bflp.b("NewUpgradeDialog", bfiq.a(10010, bdio.a(), 2, 200));
-    bfio.a().a(17, bfiq.a(10010, bdio.a(), 2, 200));
-    if (bdio.a() == 2) {
-      azqs.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
+    int i;
+    if (paramTicket == null) {
+      i = 1;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdio, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
+      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
+      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_Bdiq.mApp.getCurrentAccountUin(), "docs.qq.com");
+      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
       {
-        bfok.a().b(bdio.a(this.jdField_a_of_type_Bdio));
-        this.jdField_a_of_type_Bdio.dismiss();
+        bdiq.a(this.jdField_a_of_type_Bdiq, 0);
+        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
       }
-      bdio.a(this.jdField_a_of_type_Bdio, true);
+      bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
       return;
-      azqs.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
+      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
+        i = 2;
+      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
+        i = 3;
+      } else {
+        i = 0;
+      }
     }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
+    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
   }
 }
 

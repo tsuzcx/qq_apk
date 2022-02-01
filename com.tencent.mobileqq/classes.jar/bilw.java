@@ -1,55 +1,27 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bilw
-  implements OnPluginInstallListener
+class bilw
+  implements View.OnClickListener
 {
-  public bilw(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  bilw(bilv parambilv, int paramInt, String paramString) {}
   
-  public IBinder asBinder()
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131695370, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
-    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
-    if (bool)
-    {
-      BuscardPluginInstallActivity.a(this.a);
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131695370, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("group_index", this.jdField_a_of_type_Int);
+    localBundle.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bilv.a.a.a(1, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bilw
  * JD-Core Version:    0.7.0.1
  */

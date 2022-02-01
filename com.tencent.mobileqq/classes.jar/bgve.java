@@ -1,39 +1,167 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import dalvik.system.PathClassLoader;
+import android.os.IBinder;
+import android.telephony.TelephonyManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.reflect.Method;
 
 public class bgve
-  extends PathClassLoader
 {
-  private ClassLoader a;
+  public static int a;
+  private static bgve jdField_a_of_type_Bgve;
+  public static String a;
+  public static String b;
+  public static String c = "1";
+  private Object jdField_a_of_type_JavaLangObject;
+  private TelephonyManager[] jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager;
+  private y[] jdField_a_of_type_ArrayOfY;
+  private Object b;
   
-  public bgve(String paramString1, String paramString2, ClassLoader paramClassLoader)
+  static
   {
-    super(paramString1, paramString2, paramClassLoader.getParent());
-    this.a = paramClassLoader;
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_JavaLangString = "0";
   }
   
-  public Class<?> findClass(String paramString)
+  private bgve()
   {
     try
     {
-      Class localClass = super.findClass(paramString);
-      return localClass;
+      a();
+      return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (Throwable localThrowable)
     {
-      QMLog.w("MiniAppClassloader", "ClassNotFoundException, load class from old loader: " + paramString);
-      return this.a.loadClass(paramString);
+      localThrowable.printStackTrace();
     }
-    catch (InternalError localInternalError)
+  }
+  
+  public static bgve a()
+  {
+    if (jdField_a_of_type_Bgve == null) {}
+    try
     {
-      QMLog.w("MiniAppClassloader", "InternalError, load class from old loader: " + paramString);
+      jdField_a_of_type_Bgve = new bgve();
+      return jdField_a_of_type_Bgve;
     }
-    return this.a.loadClass(paramString);
+    finally {}
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ArrayOfY = new y[2];
+    switch (jdField_a_of_type_Int)
+    {
+    case 0: 
+    case 1: 
+    case 4: 
+    default: 
+    case 2: 
+    case 3: 
+      for (;;)
+      {
+        return;
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject = bgvk.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
+          this.jdField_b_of_type_JavaLangObject = bgvk.a("android.telephony.MSimSmsManager", "getDefault", null, null);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+          return;
+        }
+        try
+        {
+          this.jdField_a_of_type_ArrayOfY[0] = z.a(bgvl.a("isms"));
+          this.jdField_a_of_type_ArrayOfY[1] = z.a(bgvl.a("isms2"));
+          if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null)
+          {
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = new TelephonyManager[2];
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[0] = ((TelephonyManager)bgvk.a("android.telephony.TelephonyManager", "getDefault"));
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[1] = ((TelephonyManager)bgvk.a("android.telephony.TelephonyManager", "getSecondary"));
+            return;
+          }
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          return;
+        }
+        catch (Error localError)
+        {
+          localError.printStackTrace();
+          return;
+        }
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaLangObject = BaseApplicationImpl.getContext().getSystemService("phone");
+      y localy = z.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isms" }));
+      this.jdField_a_of_type_ArrayOfY[0] = localy;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    switch (jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return 0;
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        continue;
+      }
+      try
+      {
+        paramInt = ((Integer)bgvk.a(this.jdField_a_of_type_JavaLangObject, "getSimState", new Object[] { Integer.valueOf(paramInt) })).intValue();
+        return paramInt;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+      continue;
+      if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null) {
+        continue;
+      }
+      return this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[paramInt].getSimState();
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        continue;
+      }
+      try
+      {
+        Object localObject = this.jdField_a_of_type_JavaLangObject;
+        if (paramInt == 0) {}
+        for (paramInt = i;; paramInt = 5)
+        {
+          paramInt = ((Integer)bgvk.a(localObject, "getIccState", new Object[] { Integer.valueOf(paramInt) })).intValue();
+          return paramInt;
+        }
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt) == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgve
  * JD-Core Version:    0.7.0.1
  */

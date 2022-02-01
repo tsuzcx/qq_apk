@@ -1,26 +1,27 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class aczl
-  implements bhuo
+  extends aczg
 {
-  public aczl(FriendProfileCardActivity paramFriendProfileCardActivity, bhuf parambhuf, int paramInt) {}
-  
-  public void a()
+  public int a()
   {
-    View localView1 = this.jdField_a_of_type_Bhuf.a.findViewById(this.jdField_a_of_type_Int);
-    if (localView1 == null) {}
-    for (localView1 = null;; localView1 = localView1.findViewById(2131361915))
-    {
-      View localView2 = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView1, 5, 5, 7, 5);
-      if (localView1 != null) {
-        new RedTouch(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localView2).a(53).a().a(bddf.a());
-      }
-      this.jdField_a_of_type_Bhuf.a(null);
-      return;
-    }
+    return super.a() + 1;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    aqkl.a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get()) && (3 == paramElem.common_elem.uint32_business_type.get());
   }
 }
 

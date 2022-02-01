@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 class tny
-  implements View.OnClickListener
+  implements rqa
 {
-  tny(tnx paramtnx) {}
+  tny(tnw paramtnw, UgcVideo paramUgcVideo, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    BridgeModule.access$1700(this.jdField_a_of_type_Tnw.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.columnId, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tny
  * JD-Core Version:    0.7.0.1
  */

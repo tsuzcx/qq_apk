@@ -9,17 +9,19 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.videoplatform.VideoPlayerInnerCallback;
 import com.tencent.mobileqq.videoplatform.VideoPlayerProxy;
 import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
 import com.tencent.mobileqq.videoplatform.api.PlayerState;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 import com.tencent.mobileqq.videoplatform.util.UIUtil;
 
 public class BaseVideoView
   extends FrameLayout
-  implements IBaseVideoView, VideoPlayerCallback
+  implements VideoPlayerInnerCallback, IBaseVideoView
 {
   private static final boolean DEBUG = false;
   Context mContext;
@@ -32,19 +34,20 @@ public class BaseVideoView
   boolean mScaleFullScreen;
   VideoPlayerProxy mVPProxy;
   
-  public BaseVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView, VideoPlayerCallback paramVideoPlayerCallback)
+  public BaseVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView, VideoPlayerInnerCallback paramVideoPlayerInnerCallback)
   {
-    this(paramContext, paramLong, paramVideoPlayParam, paramImageView, paramVideoPlayerCallback, false);
+    this(paramContext, paramLong, paramVideoPlayParam, paramImageView, paramVideoPlayerInnerCallback, false);
   }
   
-  public BaseVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView, VideoPlayerCallback paramVideoPlayerCallback, boolean paramBoolean)
+  public BaseVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView, VideoPlayerInnerCallback paramVideoPlayerInnerCallback, boolean paramBoolean)
   {
     super(paramContext);
     this.mContext = paramContext;
     this.mID = paramLong;
     this.mScaleFullScreen = paramBoolean;
-    if (paramVideoPlayerCallback == null) {}
-    for (this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, this, this.mScaleFullScreen);; this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, paramVideoPlayerCallback, this.mScaleFullScreen))
+    this.mParams = paramVideoPlayParam;
+    if (paramVideoPlayerInnerCallback == null) {}
+    for (this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, this, this.mScaleFullScreen);; this.mVPProxy = new VideoPlayerProxy(paramContext, paramLong, paramVideoPlayParam, paramVideoPlayerInnerCallback, this.mScaleFullScreen))
     {
       this.mCoverImage = paramImageView;
       addVideoView();
@@ -57,13 +60,6 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379892) != null)
-      {
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "addCoverImageView, imageView is exist");
-        }
-        removeView(findViewById(2131379892));
-      }
       if (this.mCoverImage == null) {
         this.mCoverImage = new ImageView(this.mContext);
       }
@@ -77,7 +73,6 @@ public class BaseVideoView
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         this.mCoverImage.setLayoutParams(localLayoutParams);
-        this.mCoverImage.setId(2131379892);
         this.mCoverImage.setVisibility(0);
         addView(this.mCoverImage, 1);
         return;
@@ -95,15 +90,15 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379893) != null)
+      if (findViewById(2131380850) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addDebugView, debugTextView is exist");
         }
-        removeView(findViewById(2131379893));
+        removeView(findViewById(2131380850));
       }
       this.mDebugTextView = new TextView(this.mContext);
-      this.mDebugTextView.setId(2131379893);
+      this.mDebugTextView.setId(2131380850);
       this.mDebugTextView.setText(String.valueOf(this.mID));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = UIUtil.dp2px(6.0F, this.mContext.getResources());
@@ -125,29 +120,27 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131379894) != null)
+      if (findViewById(2131380851) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131379894));
+        removeView(findViewById(2131380851));
       }
-      View localView2 = this.mVPProxy.getVideoView();
-      View localView1 = localView2;
-      if (localView2 == null)
+      View localView = this.mVPProxy.getVideoView();
+      if (localView == null)
       {
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "addVideoView, videoView == null， set fake view");
-        }
-        localView1 = new View(this.mContext);
+        LogUtil.e(getLogTag(), 1, "addVideoView, videoView == null");
+        return;
       }
-      localView1.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView1.setId(2131379894);
-      addView(localView1, 0);
-      if (LogUtil.isColorLevel()) {
+      localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+      localView.setId(2131380851);
+      addView(localView, 0);
+      if (LogUtil.isColorLevel())
+      {
         LogUtil.d(getLogTag(), 2, "addVideoView. ");
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -247,6 +240,14 @@ public class BaseVideoView
     return true;
   }
   
+  public boolean isMute()
+  {
+    if (this.mVPProxy != null) {
+      this.mVPProxy.isMute();
+    }
+    return false;
+  }
+  
   public boolean isPlaying()
   {
     return this.mVPProxy.isPlaying();
@@ -271,6 +272,17 @@ public class BaseVideoView
     if ((this.mParams != null) && (this.mParams.mCallback != null)) {
       this.mParams.mCallback.onDownloadProgress(paramLong1, paramLong2);
     }
+  }
+  
+  public void onFirstFrameRendered(long paramLong)
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "onFirstFrameRendered , id = " + paramLong);
+    }
+    if ((this.mParams != null) && (this.mParams.mCallback != null)) {
+      this.mParams.mCallback.onFirstFrameRendered(paramLong);
+    }
+    ThreadUtil.postOnUIThread(new BaseVideoView.1(this));
   }
   
   public void onLoopBack(long paramLong1, long paramLong2)
@@ -308,13 +320,18 @@ public class BaseVideoView
     do
     {
       return;
-      setCoverInVisible();
-      return;
       setCoverVisible();
       return;
-      addVideoView();
     } while (!this.mIsPlayVideo);
     play();
+  }
+  
+  public void onSurfaceDestroy(long paramLong)
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "onSurfaceDestroy , id = " + paramLong);
+    }
+    ThreadUtil.postOnUIThread(new BaseVideoView.2(this));
   }
   
   public void pause()
@@ -393,7 +410,15 @@ public class BaseVideoView
   public void setID(long paramLong)
   {
     this.mID = paramLong;
+    this.mVPProxy.setID(this.mID);
     updateDebugView();
+  }
+  
+  public void setMute(boolean paramBoolean)
+  {
+    if (this.mVPProxy != null) {
+      this.mVPProxy.setMute(paramBoolean);
+    }
   }
   
   public void setVideoParam(VideoPlayParam paramVideoPlayParam)
@@ -438,7 +463,7 @@ public class BaseVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.BaseVideoView
  * JD-Core Version:    0.7.0.1
  */

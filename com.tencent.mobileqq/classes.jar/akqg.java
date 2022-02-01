@@ -1,83 +1,37 @@
-import com.tencent.open.base.BspatchUtil;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class akqg
-  extends bead
+public class akqg
+  implements aklz
 {
-  akqg(akqf paramakqf, File paramFile, akqi paramakqi) {}
+  public akqg(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onDone(beae parambeae)
+  public void a()
   {
-    super.onDone(parambeae);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch task.getStatus:" + parambeae.a());
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
     }
-    if (3 == parambeae.a())
+    do
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        String str = this.jdField_a_of_type_Akqi.e();
-        parambeae = this.jdField_a_of_type_Akqi.c();
-        if (BspatchUtil.a(str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), parambeae))
-        {
-          try
-          {
-            str = bflr.a(parambeae);
-            if (QLog.isColorLevel()) {
-              QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadZipAndPatch onDone dstMd5:" + str + " result.mMd5:" + this.jdField_a_of_type_Akqi.d);
-            }
-            if (akqf.a(this.jdField_a_of_type_Akqi, str))
-            {
-              if (akqf.a(this.jdField_a_of_type_Akqi))
-              {
-                ndr.a(new File(parambeae), this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-                if (QLog.isColorLevel()) {
-                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " dstpath:" + parambeae);
-                }
-              }
-              for (;;)
-              {
-                akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi.jdField_e_of_type_Int, this.jdField_a_of_type_Akqi);
-                return;
-                boolean bool = bdhb.d(parambeae, this.jdField_a_of_type_Akqi.b() + this.jdField_a_of_type_Akqi.jdField_e_of_type_JavaLangString);
-                QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch no need unzip copy:" + bool);
-              }
-            }
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambeae.getMessage());
-          }
-          catch (Exception parambeae)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambeae.getMessage());
-            return;
-            QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-            akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
-            return;
-          }
-          catch (OutOfMemoryError parambeae)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-          }
-        }
-        else
-        {
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
-        }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
       }
-      else
-      {
-        akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
-        QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile no exist path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambeae.a());
-      }
+    } while (!(paramObject instanceof Drawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
     }
-    else {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambeae.a());
-    }
+    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

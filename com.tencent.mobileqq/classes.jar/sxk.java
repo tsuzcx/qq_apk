@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class sxk
-  implements View.OnClickListener
+public class sxk
+  implements aqga
 {
-  sxk(sxe paramsxe, int paramInt1, int paramInt2, String paramString) {}
+  public sxk(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    this.jdField_a_of_type_Sxe.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Sxe.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Sxe.a.dismiss();
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.c(this.a);
+    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
+    }
+    QLog.d("FastWebActivity", 2, "mColorNoteController ：onColorNoteAnimFinish");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxk
  * JD-Core Version:    0.7.0.1
  */

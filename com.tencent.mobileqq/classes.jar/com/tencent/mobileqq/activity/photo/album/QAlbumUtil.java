@@ -28,6 +28,8 @@ public class QAlbumUtil
   public static final int MEDIA_TYPE_NONE = -1;
   public static final int MEDIA_TYPE_VIDEO = 1;
   public static final long PHOTO_SLOT_TIME = 60000L;
+  public static final String PROTOCOL_ALBUM_THUMB = "albumthumb";
+  public static final String PROTOCOL_VIDEO_COVER = "videocover";
   public static SimpleDateFormat sDateFormatForHour;
   public static SimpleDateFormat sDateFormatForMinute = new SimpleDateFormat("yyyy年MM月dd HH点mm分");
   public static String sLastAlbumId;
@@ -221,7 +223,7 @@ public class QAlbumUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QAlbumUtil
  * JD-Core Version:    0.7.0.1
  */

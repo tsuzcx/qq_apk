@@ -1,17 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class puo
-  extends RecyclerView.ViewHolder
+class puo
+  implements Animation.AnimationListener
 {
-  public puo(pug parampug, View paramView)
+  puo(pun parampun, ImageView paramImageView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(pun.a(this.jdField_a_of_type_Pun, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     puo
  * JD-Core Version:    0.7.0.1
  */

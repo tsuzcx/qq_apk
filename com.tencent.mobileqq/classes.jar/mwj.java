@@ -1,79 +1,40 @@
-import android.annotation.TargetApi;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import java.io.InputStream;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mwj
-  extends BitmapDrawable
+class mwj
+  implements DialogInterface.OnClickListener
 {
-  private ColorStateList a;
+  mwj(mwd parammwd, String paramString1, Activity paramActivity, int paramInt1, String paramString2, int paramInt2) {}
   
-  public mwj(Resources paramResources, Bitmap paramBitmap, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramResources, paramBitmap);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
-  public mwj(Resources paramResources, InputStream paramInputStream, int paramInt)
-  {
-    super(paramResources, paramInputStream);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
-  public static mwj a(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    return new mwj(paramResources, paramResources.openRawResource(paramInt1), paramInt2);
-  }
-  
-  public static mwj a(Resources paramResources, Bitmap paramBitmap, int paramInt)
-  {
-    return new mwj(paramResources, paramBitmap, paramInt);
-  }
-  
-  @TargetApi(16)
-  public static void a(View paramView, int paramInt1, int paramInt2)
-  {
-    if (paramView == null) {
+    try
+    {
+      if (mwd.a(this.jdField_a_of_type_Mwd) != null) {
+        mwd.a(this.jdField_a_of_type_Mwd).removeObserver(mwd.a(this.jdField_a_of_type_Mwd));
+      }
+      mwd.a(this.jdField_a_of_type_Mwd, new mwk(this));
+      mwd.a(this.jdField_a_of_type_Mwd).addObserver(mwd.a(this.jdField_a_of_type_Mwd));
+      bcst.b(null, "dc00898", "", "", "0X800B078", "0X800B078", 0, 0, "", "", "", "");
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=avgame");
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "showRealNameDialog click confirm. roomId: " + this.jdField_a_of_type_JavaLangString);
+      }
       return;
     }
-    mwj localmwj = a(paramView.getResources(), paramInt1, paramInt2);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(localmwj);
-      return;
-    }
-    paramView.setBackgroundDrawable(localmwj);
-  }
-  
-  public boolean isStateful()
-  {
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    int i = this.a.getColorForState(paramArrayOfInt, 0);
-    if (i != 0) {
-      setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return super.onStateChange(paramArrayOfInt);
-      clearColorFilter();
-    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwj
  * JD-Core Version:    0.7.0.1
  */

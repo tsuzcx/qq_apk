@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bjdt;
+import blsb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -12,13 +12,13 @@ public final class QZoneHelper$10
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      bjdt.a((QQAppInterface)localAppRuntime, "QQPublicAccount");
+      blsb.a((QQAppInterface)localAppRuntime, "QQPublicAccount");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.10
  * JD-Core Version:    0.7.0.1
  */

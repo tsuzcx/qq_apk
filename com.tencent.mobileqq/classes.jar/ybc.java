@@ -1,14 +1,26 @@
-public abstract interface ybc
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ybc
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public abstract void a(ybe paramybe);
+  public ybc(VideoEncodeActivity paramVideoEncodeActivity) {}
   
-  public abstract void b(ybe paramybe);
-  
-  public abstract void c(ybe paramybe);
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    RadioButton localRadioButton = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)localRadioButton.getTag());
+    yqp.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybc
  * JD-Core Version:    0.7.0.1
  */

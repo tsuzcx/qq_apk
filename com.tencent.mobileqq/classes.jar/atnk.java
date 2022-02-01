@@ -1,29 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class atnk
-  implements View.OnTouchListener
+  extends atni
 {
-  float jdField_a_of_type_Float = 0.0F;
-  
-  public atnk(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public atnk(atmn paramatmn)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
-    }
-    for (;;)
-    {
+    super(paramatmn);
+  }
+  
+  public boolean a(String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
       return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
     }
+    return true;
   }
 }
 

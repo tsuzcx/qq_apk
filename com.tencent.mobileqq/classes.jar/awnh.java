@@ -1,46 +1,41 @@
-import android.graphics.Bitmap;
-
 public class awnh
+  implements anil
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public int c;
-  public Bitmap c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
+  public void a(boolean paramBoolean) {}
   
-  public awnh() {}
+  public void a(boolean paramBoolean, awol paramawol) {}
   
-  public awnh(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_e_of_type_JavaLangString = paramString1;
-    this.jdField_f_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_f_of_type_Int = paramInt5;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (awol)paramObject);
+      return;
+    }
+    b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnh
  * JD-Core Version:    0.7.0.1
  */

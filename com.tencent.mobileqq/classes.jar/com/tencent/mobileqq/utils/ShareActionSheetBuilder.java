@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import alvw;
+import aaiz;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -24,12 +24,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdmv;
-import bdmw;
-import bdmz;
-import beys;
-import bhuf;
-import bhus;
+import anpe;
+import bgrx;
+import bgry;
+import bgsb;
+import bifr;
+import bkho;
+import bkif;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
@@ -39,7 +40,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ylw;
 
 public class ShareActionSheetBuilder
   implements ShareActionSheet
@@ -47,12 +47,12 @@ public class ShareActionSheetBuilder
   public int a;
   protected Context a;
   protected View a;
-  public AdapterView.OnItemClickListener a;
-  public GridView a;
+  protected AdapterView.OnItemClickListener a;
+  protected GridView a;
   public LinearLayout a;
   protected TextView a;
-  protected bdmz a;
-  public bhuf a;
+  protected bgsb a;
+  public bkho a;
   public ElasticHorScrView a;
   private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
   protected CharSequence a;
@@ -96,13 +96,13 @@ public class ShareActionSheetBuilder
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bhuf = ((bhuf)bhus.b(this.jdField_a_of_type_AndroidContentContext, null));
+      this.jdField_a_of_type_Bkho = ((bkho)bkif.b(this.jdField_a_of_type_AndroidContentContext, null));
       paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-      this.jdField_c_of_type_Int = paramContext.getDimensionPixelSize(2131296685);
+      this.jdField_c_of_type_Int = paramContext.getDimensionPixelSize(2131296728);
       this.e = this.jdField_c_of_type_Int;
-      this.f = paramContext.getDimensionPixelOffset(2131296687);
-      this.g = paramContext.getDimensionPixelOffset(2131296688);
-      this.jdField_a_of_type_Bdmz = new bdmz();
+      this.f = paramContext.getDimensionPixelOffset(2131296730);
+      this.g = paramContext.getDimensionPixelOffset(2131296731);
+      this.jdField_a_of_type_Bgsb = new bgsb();
       paramInt = paramContext.getDisplayMetrics().widthPixels;
       int i = paramContext.getDisplayMetrics().heightPixels;
       if (paramInt <= i) {
@@ -117,7 +117,7 @@ public class ShareActionSheetBuilder
       setIconMarginLeftRight(paramInt);
       setRowMarginLeftRight((int)(paramInt * 6 / 5.5F));
       return;
-      this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this.jdField_a_of_type_AndroidContentContext, null));
+      this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this.jdField_a_of_type_AndroidContentContext, null));
       break;
     }
   }
@@ -157,7 +157,7 @@ public class ShareActionSheetBuilder
       {
         return paramString;
         i = a(paramTextPaint, paramString, paramFloat);
-        if (!alvw.a()) {
+        if (!anpe.a()) {
           break;
         }
         paramInt = Math.min(paramInt, i);
@@ -209,11 +209,11 @@ public class ShareActionSheetBuilder
     if (((Iterator)localObject).hasNext())
     {
       if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject).next()).visibility != 0) {
-        break label193;
+        break label187;
       }
       i += 1;
     }
-    label193:
+    label187:
     for (;;)
     {
       break;
@@ -221,7 +221,7 @@ public class ShareActionSheetBuilder
       paramGridView.setColumnWidth(j);
       paramGridView.setNumColumns(i);
       localObject = paramGridView.getLayoutParams();
-      paramGridView.setPadding(this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
+      paramGridView.setPadding(this.h, paramGridView.getPaddingTop(), this.h, paramGridView.getPaddingBottom());
       ((ViewGroup.LayoutParams)localObject).width = (j * i + this.h + this.h);
       ((ViewGroup.LayoutParams)localObject).height = (this.jdField_c_of_type_Int + this.f + paramStaticLayout.getHeight() + paramInt);
       paramGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -234,7 +234,7 @@ public class ShareActionSheetBuilder
   
   private void b(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367309));
+    this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367615));
     this.jdField_b_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
     a(this.jdField_b_of_type_AndroidWidgetGridView, paramList, paramStaticLayout, paramInt);
     this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams().width;
@@ -242,16 +242,16 @@ public class ShareActionSheetBuilder
   
   protected int a()
   {
-    return 2131558864;
+    return 2131558937;
   }
   
   @TargetApi(9)
   protected View a()
   {
     View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, a(), null);
-    this.jdField_a_of_type_Bdmz.a((RelativeLayout)localView.findViewById(2131362143));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131361922));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361920));
+    this.jdField_a_of_type_Bgsb.a((RelativeLayout)localView.findViewById(2131362205));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131361977));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361975));
     Object localObject2;
     Object localObject1;
     if (this.jdField_b_of_type_Boolean)
@@ -260,8 +260,8 @@ public class ShareActionSheetBuilder
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376210));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376212));
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376981));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376982));
       localObject2 = a();
       if (localObject2.length <= 0) {
         break label439;
@@ -288,22 +288,22 @@ public class ShareActionSheetBuilder
       for (int j = 0;; j = 1)
       {
         Object localObject4 = new TextPaint();
-        ((TextPaint)localObject4).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298843));
+        ((TextPaint)localObject4).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298926));
         Object localObject3 = new StaticLayout(a((TextPaint)localObject4, this.e, a((List)localObject1), 5), (TextPaint)localObject4, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
         localObject4 = new StaticLayout(a((TextPaint)localObject4, this.e, a((List)localObject2), 5), (TextPaint)localObject4, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
         if (((StaticLayout)localObject3).getHeight() >= ((StaticLayout)localObject4).getHeight()) {}
         for (;;)
         {
-          int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296684);
+          int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296727);
           if (i != 0) {
             a(localView, (List)localObject1, (StaticLayout)localObject3, k);
           }
           if (j != 0) {
             b(localView, (List)localObject2, (StaticLayout)localObject3, k);
           }
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361912));
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131692991);
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bdmv(this));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361967));
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131692516);
+          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bgrx(this));
           if (i == 0) {
             this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
           }
@@ -324,9 +324,9 @@ public class ShareActionSheetBuilder
     }
   }
   
-  protected bdmw a(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  protected bgry a(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    return new bdmw(paramContext, paramList);
+    return new bgry(paramContext, paramList);
   }
   
   protected String a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
@@ -352,7 +352,7 @@ public class ShareActionSheetBuilder
   
   protected void a(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367308));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramView.findViewById(2131367614));
     a(this.jdField_a_of_type_AndroidWidgetGridView, paramList, paramStaticLayout, paramInt);
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width;
   }
@@ -403,7 +403,7 @@ public class ShareActionSheetBuilder
     } while (!isShowing());
     try
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
+      this.jdField_a_of_type_Bkho.dismiss();
       this.jdField_a_of_type_AndroidViewView = null;
       return;
     }
@@ -425,19 +425,27 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.findViewById(paramInt);
     }
-    Window localWindow = this.jdField_a_of_type_Bhuf.getWindow();
+    Window localWindow = this.jdField_a_of_type_Bkho.getWindow();
     if (localWindow != null) {
       return localWindow.findViewById(paramInt);
     }
     return null;
   }
   
-  public bhuf getActionSheet()
+  public bkho getActionSheet()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getActionSheet();
     }
-    return this.jdField_a_of_type_Bhuf;
+    return this.jdField_a_of_type_Bkho;
+  }
+  
+  public int getActionSheetPanelViewHeight()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getActionSheetPanelViewHeight();
+    }
+    return 0;
   }
   
   public int getIconMarginLeftRight()
@@ -466,7 +474,7 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.getWindow();
     }
-    return this.jdField_a_of_type_Bhuf.getWindow();
+    return this.jdField_a_of_type_Bkho.getWindow();
   }
   
   public void hideTitle()
@@ -487,7 +495,7 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing();
     }
-    return this.jdField_a_of_type_Bhuf.isShowing();
+    return this.jdField_a_of_type_Bkho.isShowing();
   }
   
   public void onConfigurationChanged()
@@ -556,7 +564,7 @@ public class ShareActionSheetBuilder
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setAdvBgColor(paramInt);
       return;
     }
-    this.jdField_a_of_type_Bdmz.a(paramInt);
+    this.jdField_a_of_type_Bgsb.a(paramInt);
   }
   
   public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
@@ -566,13 +574,13 @@ public class ShareActionSheetBuilder
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setAdvView(paramView, paramLayoutParams);
       return;
     }
-    this.jdField_a_of_type_Bdmz.a(paramView, paramLayoutParams);
+    this.jdField_a_of_type_Bgsb.a(paramView, paramLayoutParams);
   }
   
-  public void setBottomBarInterface(beys parambeys)
+  public void setBottomBarInterface(bifr parambifr)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setBottomBarInterface(parambeys);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setBottomBarInterface(parambifr);
     }
   }
   
@@ -583,7 +591,7 @@ public class ShareActionSheetBuilder
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setCancelListener(paramOnCancelListener);
       return;
     }
-    this.jdField_a_of_type_Bhuf.setOnCancelListener(paramOnCancelListener);
+    this.jdField_a_of_type_Bkho.setOnCancelListener(paramOnCancelListener);
   }
   
   public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
@@ -652,10 +660,10 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnDismissListener(paramOnDismissListener);
     }
-    while (this.jdField_a_of_type_Bhuf == null) {
+    while (this.jdField_a_of_type_Bkho == null) {
       return;
     }
-    this.jdField_a_of_type_Bhuf.setOnDismissListener(paramOnDismissListener);
+    this.jdField_a_of_type_Bkho.setOnDismissListener(paramOnDismissListener);
   }
   
   public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
@@ -665,7 +673,7 @@ public class ShareActionSheetBuilder
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setOnShowListener(paramOnShowListener);
       return;
     }
-    this.jdField_a_of_type_Bhuf.setOnShowListener(paramOnShowListener);
+    this.jdField_a_of_type_Bkho.setOnShowListener(paramOnShowListener);
   }
   
   public void setOpenSource(String paramString)
@@ -715,19 +723,19 @@ public class ShareActionSheetBuilder
         if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Boolean)) {
           this.jdField_a_of_type_AndroidViewView = a();
         }
-        this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidViewView, null);
+        this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidViewView, null);
         try
         {
           if (!isShowing())
           {
             if (this.jdField_c_of_type_Boolean) {
-              ylw.b(getWindow());
+              aaiz.b(getWindow());
             }
-            this.jdField_a_of_type_Bhuf.show();
+            this.jdField_a_of_type_Bkho.show();
             if (this.jdField_c_of_type_Boolean)
             {
-              ylw.a(getWindow());
-              ylw.c(getWindow());
+              aaiz.a(getWindow());
+              aaiz.c(getWindow());
               return;
             }
           }
@@ -743,11 +751,11 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.updateUI();
     }
-    while (!this.jdField_a_of_type_Bhuf.isShowing()) {
+    while (!this.jdField_a_of_type_Bkho.isShowing()) {
       return;
     }
     this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidViewView, null);
+    this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidViewView, null);
   }
   
   public void updateUIIfShowing()
@@ -755,16 +763,16 @@ public class ShareActionSheetBuilder
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.updateUIIfShowing();
     }
-    while (!this.jdField_a_of_type_Bhuf.isShowing()) {
+    while (!this.jdField_a_of_type_Bkho.isShowing()) {
       return;
     }
     this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidViewView, null);
+    this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidViewView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareActionSheetBuilder
  * JD-Core Version:    0.7.0.1
  */

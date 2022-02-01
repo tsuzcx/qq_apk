@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class akin
-  implements Comparator<awge>
+  implements DialogInterface.OnClickListener
 {
-  akin(akim paramakim, HashMap paramHashMap) {}
+  akin(akif paramakif) {}
   
-  public int a(awge paramawge1, awge paramawge2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    if (l1 > l2) {
-      return 1;
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akin
  * JD-Core Version:    0.7.0.1
  */

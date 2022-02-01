@@ -1,23 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atmz
-  implements DialogInterface.OnDismissListener
+  implements aqck
 {
-  public atmz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atnw paramatnw) {}
+  private String a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public atmz(String paramString)
   {
-    this.jdField_a_of_type_Atnw.b(false);
-    this.jdField_a_of_type_Atnw.d = false;
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    this.a = paramString;
+    if (bgmg.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
     }
-    if (this.jdField_a_of_type_Atnw.e) {
-      this.jdField_a_of_type_Atnw.f();
+  }
+  
+  private String a()
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (!bgmg.b(this.a))
+    {
+      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
+    }
+    aqcs localaqcs = new aqcs();
+    localaqcs.a(17039360);
+    String str = atwt.b(5, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaqcs.a(str);
+    str = atvo.a(this.a);
+    localaqcs.b(str);
+    localaqcs.c(atwl.a(atvo.a(this.a)));
+    int i = atvo.a(atvo.a(str));
+    localaqcs.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqcs.a(str.getBytes());
+    }
+    return localaqcs.a();
   }
 }
 

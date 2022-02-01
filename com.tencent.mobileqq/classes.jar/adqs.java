@@ -1,39 +1,50 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.Calendar;
 
-public class adqs
-  implements bhuk
+class adqs
+  implements aqiw
 {
-  public adqs(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bhuf parambhuf) {}
+  final int jdField_a_of_type_Int;
   
-  public void OnClick(View paramView, int paramInt)
+  public adqs(adqp paramadqp, int paramInt)
   {
-    acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      acjm.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.jdField_a_of_type_Int;
+    case 1: 
+      return 12;
     }
-    catch (RuntimeException paramView)
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, adqp.a(this.jdField_a_of_type_Adqp) + adqp.d(this.jdField_a_of_type_Adqp));
+    localCalendar.set(2, adqp.b(this.jdField_a_of_type_Adqp));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
-      }
+    default: 
+      return "";
+    case 0: 
+      return adqp.d(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698829);
+    case 1: 
+      return adqp.e(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698826);
     }
+    return adqp.f(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698827);
   }
 }
 

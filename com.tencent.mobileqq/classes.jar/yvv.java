@@ -1,37 +1,79 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import java.math.BigDecimal;
 
 public class yvv
-  extends bcoc
 {
-  public yvv(TroopGiftPanel paramTroopGiftPanel) {}
+  public float a;
+  private float b;
+  private float c;
   
-  public void a(int paramInt)
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, alud.a(2131715818), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, alud.a(2131715785), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-    TroopGiftPanel.a(true);
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((i == 1) && (paramBoolean)) {
+      switch (j)
+      {
+      }
+    }
+    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
+    {
+      do
+      {
+        return false;
+        this.c = this.a;
+        return false;
+        if (paramMotionEvent.getY() >= this.a)
+        {
+          this.c = this.a;
+          return false;
+        }
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+      } while (i == 0);
+      bcig.a().b(i);
+      this.c = paramMotionEvent.getY();
+      return false;
+    }
+    yqp.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
+    float f4;
+    float f2;
+    float f3;
+    if (i == 2)
+    {
+      f4 = paramMotionEvent.getX(0);
+      f2 = paramMotionEvent.getY(0);
+      f3 = paramMotionEvent.getX(1);
+    }
+    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
+      switch (j)
+      {
+      case 6: 
+      case 3: 
+      case 4: 
+      default: 
+        return false;
+      case 2: 
+        f1 = ywa.a(f4, f2, f3, f1);
+        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+        if (i != 0)
+        {
+          yqp.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
+          bcig.a().b(i);
+          this.b = f1;
+        }
+        return true;
+        f4 = paramMotionEvent.getX(1);
+        f2 = paramMotionEvent.getY(1);
+        f3 = paramMotionEvent.getX(2);
+      }
+    }
+    this.b = ywa.a(f4, f2, f3, f1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvv
  * JD-Core Version:    0.7.0.1
  */

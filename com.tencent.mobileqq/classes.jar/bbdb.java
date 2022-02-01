@@ -1,21 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
-public class bbdb
-  implements View.OnTouchListener
+public abstract interface bbdb
 {
-  public bbdb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    return false;
-  }
+  public abstract void a(String paramString);
 }
 
 

@@ -1,35 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.regex.Pattern;
 
 public class qow
-  implements sjr
+  implements IPTSNavigateTo
 {
-  public qow(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt)
+  public void navigateTo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
     {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      nrt.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", ors.e(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qow
  * JD-Core Version:    0.7.0.1
  */

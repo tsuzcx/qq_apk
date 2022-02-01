@@ -1,58 +1,58 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-public class avib
-  implements GestureDetector.OnDoubleTapListener
+class avib
+  implements avhp
 {
-  avib(avhf paramavhf) {}
+  avib(avhx paramavhx) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(List<avij> paramList)
   {
-    if (System.currentTimeMillis() - avhf.a(this.a) >= 500L)
+    if (avhx.a(this.a) == null) {}
+    do
     {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
-        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369428)).a(i, j);
-      }
-      if (!avhf.a(this.a)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      avhf.a(this.a, System.currentTimeMillis());
-      return true;
-      label98:
-      if ((!avhf.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369428).getVisibility() == 0))
+      return;
+      Object localObject = new HashMap(avhx.a(this.a).a().d);
+      ansp localansp = avhx.a(this.a).a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        avhf.a(this.a, false);
-        this.a.c(null);
-        new aveg().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (auul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+        avij localavij = (avij)paramList.next();
+        long[] arrayOfLong = new long[localavij.jdField_a_of_type_JavaUtilList.size()];
+        int i = 0;
+        while (i < arrayOfLong.length)
+        {
+          arrayOfLong[i] = ((Long)localavij.jdField_a_of_type_JavaUtilList.get(i)).longValue();
+          i += 1;
+        }
+        ((bfus)avhx.a(this.a).getManager(164)).a(localavij.jdField_a_of_type_Long);
+        localansp.a(1, String.valueOf(localavij.jdField_a_of_type_Long), localavij.jdField_a_of_type_Int, arrayOfLong, 14, localavij.c, localavij.d, localavij.e);
+        ((Map)localObject).remove(String.valueOf(localavij.jdField_a_of_type_Long));
       }
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+      paramList = ((Map)localObject).entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (Map.Entry)paramList.next();
+        if (((Integer)((Map.Entry)localObject).getValue()).intValue() == 14) {
+          localansp.a(1, (String)((Map.Entry)localObject).getKey(), 0, null, 14, 0, 0, -1);
+        }
+      }
+      paramList = avhx.a(this.a).getHandler(Conversation.class);
+    } while (paramList == null);
+    paramList.sendEmptyMessage(1009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avib
  * JD-Core Version:    0.7.0.1
  */

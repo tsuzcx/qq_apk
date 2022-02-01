@@ -1,56 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class blsz
-  implements View.OnClickListener
+  extends QzoneExternalRequest
 {
-  protected int a;
-  protected View a;
-  protected bkms a;
-  protected CaptureModeController a;
-  protected boolean a;
+  public JceStruct a;
   
-  public blsz(CaptureModeController paramCaptureModeController)
+  public blsz(long paramLong1, long paramLong2, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
-    this.jdField_a_of_type_Bkms = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bkms;
+    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
+    localmobile_sub_get_cover_req.uin = paramLong1;
+    localmobile_sub_get_cover_req.flag = paramInt;
+    this.a = localmobile_sub_get_cover_req;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
   }
   
-  public int a()
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return decode(paramArrayOfByte, "getCover");
   }
   
-  public void a(View paramView)
+  public String getCmdString()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return "QzoneNewService.getCover";
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  public JceStruct getReq()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
-  public boolean b()
+  public String uniKey()
   {
-    return true;
+    return "getCover";
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView) {}
 }
 
 

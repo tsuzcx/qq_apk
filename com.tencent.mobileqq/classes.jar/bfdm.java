@@ -1,16 +1,13 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
-
 public class bfdm
-  implements bfhx
 {
-  public bfdm(BragActivity paramBragActivity) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
-  {
-    this.a.a.setImageBitmap(paramBitmap);
-  }
+  @bghq(a="type")
+  public int a;
+  @bghq(a="title")
+  public String a;
+  @bghq(a="content_text")
+  public String b;
+  @bghq(a="kid")
+  public String c;
 }
 
 

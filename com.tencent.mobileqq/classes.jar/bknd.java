@@ -1,29 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public class bknd
-  implements Animation.AnimationListener
+public abstract interface bknd
 {
-  public bknd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
-    }
-    this.a.v = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.v = true;
-  }
+  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
 }
 
 

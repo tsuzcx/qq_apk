@@ -1,50 +1,28 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
-public abstract interface vwa
+class vwa
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  vwa(vvz paramvvz) {}
   
-  public abstract long a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.clearAnimation();
+    this.a.a.c = false;
+  }
   
-  public abstract View a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract vwn a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(vwb paramvwb);
-  
-  public abstract void a(vwc paramvwc);
-  
-  public abstract void a(vwd paramvwd);
-  
-  public abstract void a(vwe paramvwe);
-  
-  public abstract void a(vwf paramvwf);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.c = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwa
  * JD-Core Version:    0.7.0.1
  */

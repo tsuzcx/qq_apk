@@ -1,23 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class qqz
-  implements qrk
+class qqz
+  implements PopupWindow.OnDismissListener
 {
-  public qqz(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  qqz(qqt paramqqt, bklj parambklj) {}
   
-  public void a(String paramString)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+    this.jdField_a_of_type_Bklj.a(1.0F);
+    if (this.jdField_a_of_type_Qqt.a.b)
+    {
+      seu localseu = this.jdField_a_of_type_Qqt.a.a();
+      if (localseu != null)
+      {
+        localseu.c();
+        this.jdField_a_of_type_Qqt.a.b = false;
+      }
     }
-    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqz
  * JD-Core Version:    0.7.0.1
  */

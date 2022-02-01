@@ -1,7 +1,19 @@
-public class barn
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class barn
+  extends Handler
 {
-  public byte a;
-  public String a;
+  barn(barm parambarm, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 

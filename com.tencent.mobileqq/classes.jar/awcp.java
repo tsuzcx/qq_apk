@@ -1,21 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import com.tencent.qphone.base.util.QLog;
 
-public class awcp
-  implements ValueAnimator.AnimatorUpdateListener
+class awcp
+  extends ConnectivityManager.NetworkCallback
 {
-  public awcp(ScanIconAnimateView paramScanIconAnimateView) {}
+  awcp(awco paramawco) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAvailable(Network paramNetwork)
   {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    QLog.d("GateWayVerifyManager", 1, "switch network success");
+    if ((awco.a(this.a) == null) || (!awco.a(this.a).equals(paramNetwork)))
+    {
+      awco.a(this.a, paramNetwork);
+      if (awco.a(this.a) != null) {
+        awco.a(this.a).a(paramNetwork);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.utils;
 
-import bgvi;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.manager.ApkgManager;
 
 public class EnvUtils
 {
@@ -10,7 +10,7 @@ public class EnvUtils
     if (paramMiniAppInfo == null) {
       return false;
     }
-    return bgvi.a(paramMiniAppInfo);
+    return ApkgManager.pkgExists(paramMiniAppInfo);
   }
   
   public static boolean isX5Enabled(MiniAppInfo paramMiniAppInfo)
@@ -21,7 +21,7 @@ public class EnvUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.EnvUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agos;
+import ahyy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ConfessChatPie$4
   implements Runnable
 {
-  public ConfessChatPie$4(agos paramagos) {}
+  public ConfessChatPie$4(ahyy paramahyy) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ConfessChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.4
  * JD-Core Version:    0.7.0.1
  */

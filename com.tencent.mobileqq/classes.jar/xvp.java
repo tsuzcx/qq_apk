@@ -1,192 +1,81 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract class xvp<T>
+public class xvp
+  extends xsr
 {
-  protected Context a;
-  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  private xvm jdField_a_of_type_Xvm;
-  protected boolean a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private wrb jdField_a_of_type_Wrb;
+  private xne jdField_a_of_type_Xne;
+  private boolean c;
   
-  public xvp(Context paramContext)
+  private void a(QQUserUIItem paramQQUserUIItem, xss paramxss)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramxss.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramxss.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    String str = paramQQUserUIItem.headUrl;
+    paramQQUserUIItem = paramQQUserUIItem.nickName;
+    paramxss.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    paramxss.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Xso.b().getString(2131698345, new Object[] { paramQQUserUIItem }));
+    paramxss.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
+    paramxss.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    xso.a(str, paramxss.jdField_a_of_type_AndroidWidgetImageView, paramxss.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramxss.jdField_a_of_type_Int, paramxss.jdField_a_of_type_Int);
+    yqp.a("VipForwardVideoInfoController", "updateUI, nickName:%s,  avatarURL:%s", paramQQUserUIItem, str);
   }
   
-  public void W_() {}
-  
-  protected void Y_() {}
-  
-  public abstract int a();
-  
-  protected int a(int paramInt)
+  public boolean a(View paramView)
   {
-    return 0;
-  }
-  
-  public abstract View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup);
-  
-  protected SegmentList a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  }
-  
-  public abstract String a();
-  
-  public wtq a(int paramInt)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null)
-    {
-      xqq.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-      return null;
+    if ((this.jdField_a_of_type_Wrb == null) || (this.jdField_a_of_type_Wrb.jdField_a_of_type_Int != 5) || (this.jdField_a_of_type_Wrb.jdField_a_of_type_Wrc == null)) {
+      this.jdField_a_of_type_Xso.k();
     }
-    int i = 0;
-    if (i < localSegmentList.getChildCount())
-    {
-      wtq localwtq = (wtq)localSegmentList.getChildAt(i).getTag();
-      if (localwtq == null) {}
-      while ((!localwtq.a.equals(a())) || (localwtq.b != paramInt))
-      {
-        i += 1;
-        break;
-      }
-      return localwtq;
-    }
-    return null;
-  }
-  
-  public abstract wtq a(int paramInt, ViewGroup paramViewGroup);
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(xvm paramxvm, SegmentList paramSegmentList)
-  {
-    this.jdField_a_of_type_Xvm = paramxvm;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(wtq paramwtq)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null) {
-      xqq.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-    }
-    int i;
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramwtq == null);
-      i = localSegmentList.getFirstVisiblePosition();
-      j = localSegmentList.getLastVisiblePosition();
-      k = paramwtq.c;
-    } while ((k < i) || (k > j));
-    return true;
-  }
-  
-  public void a_(wtq paramwtq) {}
-  
-  protected boolean a_(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "";
-  }
-  
-  protected void b() {}
-  
-  public void b_(wtq paramwtq) {}
-  
-  protected void c() {}
-  
-  public void c(wtq paramwtq) {}
-  
-  public final void c(boolean paramBoolean)
-  {
-    
-    if (this.jdField_a_of_type_Xvm != null)
-    {
-      this.jdField_a_of_type_Xvm.a(a(), paramBoolean);
-      this.jdField_a_of_type_Xvm.notifyDataSetChanged();
-    }
-    wrk.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return a();
-    }
-    return 0;
-  }
-  
-  protected void d() {}
-  
-  public void d(int paramInt)
-  {
-    paramInt = this.jdField_a_of_type_Xvm.a(this, paramInt);
-    a().setSelection(paramInt);
-  }
-  
-  protected boolean d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
+    while (!super.a(paramView)) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
+    xho.a(this.jdField_a_of_type_Xso.b(), this.jdField_a_of_type_Wrb.jdField_a_of_type_Wrc.c, this.jdField_a_of_type_Wrb.jdField_a_of_type_Wrc.b, 1010);
+    yqu.a("play_video", "clk_transmit", 0, 0, new String[0]);
     return true;
   }
   
-  protected void e() {}
-  
-  public void e_(boolean paramBoolean)
+  public void b(xss paramxss, xne paramxne)
   {
-    if (paramBoolean != this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-    }
-  }
-  
-  protected int f_()
-  {
-    return 1;
-  }
-  
-  public void i_(int paramInt) {}
-  
-  public void k() {}
-  
-  protected void m()
-  {
-    if (this.jdField_a_of_type_Xvm == null) {
+    yqp.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramxne.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Xne = paramxne;
+    Object localObject = paramxne.a().getVideoLinkInfo();
+    if ((localObject == null) || (((wrb)localObject).jdField_a_of_type_Int != 5) || (((wrb)localObject).jdField_a_of_type_Wrc == null))
+    {
+      yqp.b("VipForwardVideoInfoController", "something error, hide()");
+      this.jdField_a_of_type_Xso.k();
       return;
     }
-    this.jdField_a_of_type_Xvm.notifyDataSetChanged();
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramxne.jdField_a_of_type_JavaLangString)) {
+      this.c = false;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Wrb = ((wrb)localObject);
+      paramxne = (wpy)wpm.a(2);
+      localObject = paramxne.b(this.jdField_a_of_type_Wrb.jdField_a_of_type_Wrc.jdField_a_of_type_JavaLangString);
+      if ((localObject == null) || (TextUtils.isEmpty(((QQUserUIItem)localObject).nickName))) {
+        break;
+      }
+      this.jdField_a_of_type_Xso.j();
+      a((QQUserUIItem)localObject, paramxss);
+      return;
+      this.c = true;
+      this.jdField_a_of_type_JavaLangString = paramxne.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_Xso.k();
+    paramxne.a(this.jdField_a_of_type_Wrb.jdField_a_of_type_Wrc.jdField_a_of_type_JavaLangString, new xvq(this, paramxss));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvp
  * JD-Core Version:    0.7.0.1
  */

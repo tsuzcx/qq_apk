@@ -1,22 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afpp
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public afpp(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public afpp(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

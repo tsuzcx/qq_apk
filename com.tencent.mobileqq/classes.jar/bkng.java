@@ -1,21 +1,17 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import android.widget.BaseExpandableListAdapter;
 
-public class bkng
-  implements CosFunHelper.CountDownListener
+public abstract class bkng
+  extends BaseExpandableListAdapter
 {
-  public bkng(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onCountDownEnd()
+  public boolean a()
   {
-    QIMEffectCameraCaptureUnit.a(this.a);
+    return false;
   }
   
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
-  {
-    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
-  }
+  public abstract int c_();
 }
 
 

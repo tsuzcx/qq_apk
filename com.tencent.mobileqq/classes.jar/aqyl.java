@@ -1,68 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
-class aqyl
-  extends aqru
+public class aqyl
+  extends aqwr<aqyk>
 {
-  aqyl(aqyj paramaqyj) {}
-  
-  protected void a(long paramLong)
+  @NonNull
+  public aqyk a()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    aqyp localaqyp;
-    do
-    {
-      return;
-      localaqyp = this.a.a(paramLong);
-      if (localaqyp == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localaqyp.h();
-    } while (!localaqyp.c());
-    this.a.c(paramLong);
+    return new aqyk();
   }
   
-  protected void b(long paramLong)
+  @NonNull
+  public aqyk a(@NonNull aqlg[] paramArrayOfaqlg)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    aqyp localaqyp;
-    do
-    {
-      return;
-      localaqyp = this.a.a(paramLong);
-      if (localaqyp == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localaqyp.j();
-    } while (!localaqyp.c());
-    this.a.c(paramLong);
+    return aqyk.a(paramArrayOfaqlg[0].a);
   }
   
-  protected void c(long paramLong)
+  @NonNull
+  public aqyk b()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    aqyp localaqyp;
-    do
-    {
-      return;
-      localaqyp = this.a.a(paramLong);
-      if (localaqyp == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localaqyp.l();
-    } while (!localaqyp.c());
-    this.a.c(paramLong);
+    return new aqyk();
+  }
+  
+  public Class<aqyk> clazz()
+  {
+    return aqyk.class;
+  }
+  
+  public int type()
+  {
+    return 662;
   }
 }
 

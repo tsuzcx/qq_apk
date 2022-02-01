@@ -1,14 +1,31 @@
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface bhtv
+class bhtv
+  extends Handler
 {
-  public abstract void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3);
+  bhtv(bhtu parambhtu, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void onScrollStateChanged(AbsListView paramAbsListView, int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((bhte)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).notifyUI(3, true, Integer.valueOf(i));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhtv
  * JD-Core Version:    0.7.0.1
  */

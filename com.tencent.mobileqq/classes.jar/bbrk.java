@@ -1,23 +1,45 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
-
-final class bbrk
-  extends altm
+public class bbrk
 {
-  WeakReference<bbrh> a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  private bbrk(bbrh parambbrh)
+  public bbrk(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a = new WeakReference(parambbrh);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString3;
+    this.c = paramString2;
+    this.d = paramString4;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.e = paramString5;
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public int a()
   {
-    bbrh localbbrh = (bbrh)this.a.get();
-    if ((localbbrh != null) && (paramBoolean) && (paramString != null) && (localbbrh.a != null) && (localbbrh.a.size() > 0) && (paramString.equals(((TroopInfo)localbbrh.a.get(0)).troopuin))) {
-      localbbrh.c();
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.b;
   }
 }
 

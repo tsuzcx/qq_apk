@@ -1,8 +1,19 @@
-import android.support.annotation.IntRange;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bbfz
+class bbfz
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, @IntRange(from=1L, to=4L) int paramInt);
+  bbfz(bbfs parambbfs) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bbfs.a(this.a) != null) {
+      bbfs.a(this.a, this.a.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,14 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import alof;
-import bhtk;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
 public final class ReadInJoyUtils$25
   implements Runnable
 {
   public void run()
   {
-    bhtk.a().b(alof.Q);
+    QQNotificationManager.getInstance().cancel("ReadInJoyUtils", 526);
   }
 }
 

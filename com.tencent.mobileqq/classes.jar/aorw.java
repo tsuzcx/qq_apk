@@ -1,78 +1,180 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aorw
-  extends aokh<aorx>
+  implements SoundPool.OnLoadCompleteListener
 {
-  public int a()
+  private SoundPool jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
+  private Map<String, aorx> jdField_a_of_type_JavaUtilMap = new HashMap(10);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public aorw()
   {
-    return 535;
+    this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(this);
   }
   
-  @NonNull
-  public aorx a(int paramInt)
+  private void b()
   {
-    return new aorx();
-  }
-  
-  @Nullable
-  public aorx a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    try
     {
-      aorx localaorx = aorx.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        aorx localaorx = (aorx)((Map.Entry)localIterator.next()).getValue();
+        if ((localaorx != null) && (localaorx.c()))
+        {
+          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localaorx.a);
+          localaorx.c = 2;
+        }
       }
-      return localaorx;
+      return;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("ARPromotionSoundPlayer", 2, "stopSound exception", localException);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ARPromotionSoundPlayer.1(this), 8, null, true);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    int i = -1;
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound resPath: " + paramString);
     }
-    return null;
+    this.b = false;
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ARPromotionSoundPlayer", 2, "playSound resPath is empty!");
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (new File(paramString).exists()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ARPromotionSoundPlayer", 2, "playSound file not exist");
+        return;
+      } while (this.b);
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        break;
+      }
+      b();
+      paramString = (aorx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    } while (paramString == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound contains resPath, state: " + paramString.c);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (paramString.b())
+      {
+        localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+        j = paramString.b;
+        if (paramBoolean) {
+          paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        }
+      }
+      while (!paramString.c()) {
+        for (;;)
+        {
+          paramString.c = 3;
+          return;
+          i = 0;
+        }
+      }
+      SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+      int j = paramString.b;
+      if (paramBoolean) {}
+      for (;;)
+      {
+        paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        break;
+        i = 0;
+      }
+    }
+    paramString.c = 4;
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound not contains resPath, load");
+    }
+    i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, new aorx(this, i, 3));
   }
   
-  public Class<aorx> a()
-  {
-    return aorx.class;
-  }
-  
-  public void a(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+      QLog.i("ARPromotionSoundPlayer", 2, "onLoadComplete sampleId:" + paramInt1 + ", status:" + paramInt2);
     }
-  }
-  
-  public void a(aorx paramaorx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramaorx.toString());
+    if (paramInt2 == 0) {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            localaorx = (aorx)((Map.Entry)localIterator.next()).getValue();
+            if ((localaorx != null) && (localaorx.b == paramInt1))
+            {
+              if (localaorx.a())
+              {
+                localaorx.c = 2;
+                return;
+              }
+              if (localaorx.c()) {
+                if (!this.jdField_a_of_type_Boolean)
+                {
+                  localaorx.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
+                  return;
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramSoundPool)
+      {
+        aorx localaorx;
+        paramSoundPool.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          QLog.e("ARPromotionSoundPlayer", 2, "onLoadComplete exception", paramSoundPool);
+          return;
+          localaorx.c = 4;
+        }
+      }
     }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorw
  * JD-Core Version:    0.7.0.1
  */

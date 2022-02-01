@@ -1,69 +1,124 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.PageLoadManager.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.2;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.4;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class qoi<T>
+public class qoi
 {
-  private int jdField_a_of_type_Int;
-  private qoj<T> jdField_a_of_type_Qoj;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 100;
-  private boolean jdField_b_of_type_Boolean;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile qoi jdField_a_of_type_Qoi;
+  public final boolean a;
+  private final String jdField_b_of_type_JavaLangString = nku.a("3980") + "3980";
+  private volatile boolean jdField_b_of_type_Boolean;
+  private final String c = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_engine";
+  
+  private qoi()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public static qoi a()
+  {
+    if (jdField_a_of_type_Qoi == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qoi == null) {
+        jdField_a_of_type_Qoi = new qoi();
+      }
+      return jdField_a_of_type_Qoi;
+    }
+    finally {}
+  }
+  
+  private boolean b()
+  {
+    Object localObject = this.c + "/" + "libpts.so";
+    String str = this.c + "/" + "pts_config.json";
+    boolean bool1 = bgmg.a((String)localObject);
+    boolean bool2 = qom.a(str);
+    jdField_a_of_type_JavaLangString = qom.b(str);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[checkInnerPTSEngineIsValid]").append("\n").append(", ptsEngineVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
+    QLog.i("PTSEngineLoader", 1, ((StringBuilder)localObject).toString());
+    return (bool1) && (bool2);
+  }
+  
+  private void c()
+  {
+    ThreadManager.excute(new PTSEngineLoader.3(this), 128, null, true);
+  }
+  
+  private boolean c()
+  {
+    return false;
+  }
+  
+  private void d()
+  {
+    ThreadManager.excute(new PTSEngineLoader.4(this), 64, null, false);
+  }
+  
+  private void e()
+  {
+    if (c()) {
+      return;
+    }
+    if (a())
+    {
+      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts engine is ready, do not load again.");
+      return;
+    }
+    if (b())
+    {
+      PTSEngineLoader.5 local5 = new PTSEngineLoader.5(this);
+      qok.a().a(local5);
+      return;
+    }
+    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], inner dir is not valid, load pts engine failed.");
+    d();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
   
   public void a()
   {
-    qoj localqoj = this.jdField_a_of_type_Qoj;
-    if (localqoj == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PageLoadManager", 2, "mQueryProvider is not registered, can't query data...");
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("PageLoadManager", 2, "requestNextPage cancel for mHasMore is false");
-    return;
-    this.jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("PageLoadManager", 2, "requestNextPage mOffset:" + this.jdField_a_of_type_Int + " mPageSize:$mPageSize");
-    }
-    ThreadManager.executeOnSubThread(new PageLoadManager.1(this, localqoj));
+    PTSEngineLoader.1 local1 = new PTSEngineLoader.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PageLoadManager", 2, "onPositionShow return for mHasMore is false");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("PageLoadManager", 2, "query is doing...");
-      return;
-    } while (paramInt < (this.jdField_a_of_type_Int + (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int)) / 2);
-    a();
+    return this.jdField_b_of_type_Boolean;
   }
   
-  public void a(qoj<T> paramqoj)
+  public void b()
   {
-    this.jdField_a_of_type_Qoj = paramqoj;
+    try
+    {
+      this.jdField_b_of_type_Boolean = false;
+      PTSEngineLoader.2 local2 = new PTSEngineLoader.2(this);
+      ThreadManager.getFileThreadHandler().post(local2);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoi
  * JD-Core Version:    0.7.0.1
  */

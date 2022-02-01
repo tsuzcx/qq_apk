@@ -1,222 +1,206 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.Html;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem.MsgInfo;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager.6;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager.8;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
 
 public class bfle
-  extends Handler
+  extends Observable
+  implements Manager
 {
-  protected Notification a;
-  protected NoticeParam a;
+  private bfkt jdField_a_of_type_Bfkt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private HashMap<Long, ImportantMsgItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bfle()
+  public bfle(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_Bfkt = new bflf(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bfkt);
   }
   
-  public bfle(Looper paramLooper)
+  private void a(long paramLong)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
-  }
-  
-  protected String a(int paramInt)
-  {
-    return bfbm.a().a().getString(paramInt);
-  }
-  
-  protected String a(int paramInt, Object... paramVarArgs)
-  {
-    return bfbm.a().a().getString(paramInt, paramVarArgs);
-  }
-  
-  protected void a(Notification paramNotification, PendingIntent paramPendingIntent, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    ImportantMsgItem localImportantMsgItem = (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    if (localImportantMsgItem != null)
     {
-      if (Build.VERSION.SDK_INT > 10)
-      {
-        paramNotification.contentView.setOnClickPendingIntent(2131371286, paramPendingIntent);
-        return;
-      }
-      paramNotification.contentIntent = paramPendingIntent;
+      setChanged();
+      notifyObservers(localImportantMsgItem);
+    }
+  }
+  
+  private void a(long paramLong, ArrayList<Long> paramArrayList)
+  {
+    a(paramLong, paramArrayList, 2);
+  }
+  
+  private void a(long paramLong, ArrayList<ImportantMsgItem.MsgInfo> paramArrayList, List<Long> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      QLog.i("ImportantMsgManager", 1, "handlerRspImportantMsg mImportantDataMap notcontains troopUin:" + paramLong);
       return;
     }
-    paramNotification.contentIntent = paramPendingIntent;
+    paramList = (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
+      paramList.addMsgInfos(paramArrayList);
+    }
+    paramList.updateMaxMsgSeq();
+    QLog.i("ImportantMsgManager", 1, "handlerRspImportantMsg reciveMaxSeq:" + paramList.maxImportantMsgSeq + " registerProxy lastSeq:" + a(paramLong));
+    a(paramList.clone());
+    a(paramLong);
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
   {
-    super.handleMessage(paramMessage);
-    Object localObject1 = paramMessage.getData();
-    Object localObject2 = ((Bundle)localObject1).getString(bfoh.jdField_a_of_type_JavaLangString);
-    bflp.a("NoticeHintHandler", "+++++what:" + paramMessage.what + "+++++" + localObject1);
-    localObject2 = bfkr.a().a((String)localObject2);
-    if (localObject2 != null)
-    {
-      if (((DownloadInfo)localObject2).i == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE) {
-        bflp.c("NoticeHintHandler", "notification isShowNotification=" + ((DownloadInfo)localObject2).i);
-      }
-    }
-    else {
+    if (!paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString = ((DownloadInfo)localObject2).c;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_JavaLangString = ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d = ((DownloadInfo)localObject2).e;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString = ((DownloadInfo)localObject2).g;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_AndroidContentIntent = ((DownloadInfo)localObject2).jdField_a_of_type_AndroidContentIntent;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Long = ((DownloadInfo)localObject2).jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.g = ((DownloadInfo)localObject2).h;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.e = ((DownloadInfo)localObject2).d;
-    for (;;)
+    a(paramLong, paramList, paramList1);
+  }
+  
+  private void a(HashMap<Long, Integer> paramHashMap)
+  {
+    setChanged();
+    notifyObservers(paramHashMap);
+  }
+  
+  private boolean a(Entity paramEntity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidAppNotification == null)
-        {
-          this.jdField_a_of_type_AndroidAppNotification = bfpw.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
-          if (this.jdField_a_of_type_AndroidAppNotification == null) {
-            break;
-          }
-        }
-        switch (paramMessage.what)
-        {
-        default: 
-          int i = bfpw.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          long l = bfpw.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidAppNotification.when = l;
-          bfpw.a().a(i, this.jdField_a_of_type_AndroidAppNotification);
-          bflp.c("NoticeHintHandler", "notify key=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString + " type=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int + "appid=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          return;
-          localObject1 = new RemoteViews(bfbm.a().a().getPackageName(), 2131559517);
-          bfpw.a().a((RemoteViews)localObject1);
-          ((RemoteViews)localObject1).setInt(2131371286, "setBackgroundColor", -1);
-          ((RemoteViews)localObject1).setInt(2131371288, "setTextColor", -16777216);
-          ((RemoteViews)localObject1).setInt(2131371282, "setTextColor", -12303292);
-          ((RemoteViews)localObject1).setInt(2131371278, "setTextColor", -12303292);
-          this.jdField_a_of_type_AndroidAppNotification.contentView = ((RemoteViews)localObject1);
-          continue;
-        }
+      if (paramEntity.getStatus() != 1000) {
+        break label48;
       }
-      catch (Exception localException)
-      {
-        bflp.c("NoticeHintHandler", "init Notification>>>", localException);
-        continue;
-        bflp.b("NoticeHintHandler", ">>downloading:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-        bflp.c("NoticeHintHandler", "size = " + ((DownloadInfo)localObject2).jdField_f_of_type_Int + " content = ");
-        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694891, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371274, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371282, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setProgressBar(2131371273, 100, ((DownloadInfo)localObject2).jdField_f_of_type_Int, false);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371282, ((DownloadInfo)localObject2).jdField_f_of_type_Int * 100 / 100 + "%");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371279, 2130843976);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371288, bflv.a(a(2131694893, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
-        a(this.jdField_a_of_type_AndroidAppNotification, bfqa.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-        if (!TextUtils.isEmpty(""))
-        {
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 0);
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371278, Html.fromHtml(""));
-          this.jdField_a_of_type_AndroidAppNotification.flags = 32;
-          paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-          paramMessage.flags |= 0x2;
-          continue;
-        }
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 8);
-        continue;
-        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694891, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371274, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371282, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371288, bflv.a(a(2131694893, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371278, a(2131691992));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371279, 2130843976);
-        a(this.jdField_a_of_type_AndroidAppNotification, bfqa.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-        this.jdField_a_of_type_AndroidAppNotification.flags = 32;
-        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-        paramMessage.flags |= 0x2;
-        bfpw.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-        continue;
-        bflp.b("NoticeHintHandler", ">>complete:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 3;
-        this.jdField_a_of_type_AndroidAppNotification = bfpw.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      bool1 = bool2;
+      if (paramEntity.getStatus() == 1001) {
+        bool1 = true;
       }
-      if (this.jdField_a_of_type_AndroidAppNotification == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694889);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371274, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371282, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371278, a(2131694873));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371288, bflv.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      a(this.jdField_a_of_type_AndroidAppNotification, bfqa.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), false);
-      paramMessage = bfln.a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      if (paramMessage != null) {
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewBitmap(2131371279, paramMessage);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-        paramMessage.flags &= 0xFFFFFFFD;
-        bfpw.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-        break;
-        bflp.b("NoticeHintHandler", ">>download icon fail,so we use default notification icon");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371279, 2130843976);
-      }
-      bflp.b("NoticeHintHandler", ">>pause:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694875);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371274, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371282, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371279, 2130843979);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371288, bflv.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371278, a(2131694875));
-      a(this.jdField_a_of_type_AndroidAppNotification, bfqa.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-      paramMessage.flags &= 0xFFFFFFFD;
-      bfpw.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-      continue;
-      bflp.b("NoticeHintHandler", ">>error:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371278, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371274, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371282, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371279, 2130843977);
-      String str = (String)paramMessage.obj;
-      paramMessage = str;
-      if (TextUtils.isEmpty(str)) {
-        paramMessage = a(2131691984);
-      }
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694890, new Object[] { paramMessage });
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371278, a(2131694874, new Object[] { paramMessage }));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371288, bflv.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      a(this.jdField_a_of_type_AndroidAppNotification, bfqa.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-      paramMessage.flags &= 0xFFFFFFFD;
-      bfpw.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
     }
-    bfpw.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
+    label48:
+    do
+    {
+      return bool1;
+      if (paramEntity.getStatus() == 1001) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramEntity.getStatus() != 1002);
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+  }
+  
+  private void b(long paramLong, ArrayList<ImportantMsgItem.MsgInfo> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+      return;
+    }
+    a(paramLong, new bflh(this, paramArrayList));
+  }
+  
+  public int a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).intValue();
+    }
+    return 0;
+  }
+  
+  public ImportantMsgItem a(long paramLong)
+  {
+    ImportantMsgItem localImportantMsgItem = new ImportantMsgItem();
+    try
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(ImportantMsgItem.class, false, "troopUin=?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (ImportantMsgItem)((List)localObject).get(0);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ImportantMsgManager", 1, "readEntity exception + " + localException.getMessage(), localException);
+      localImportantMsgItem.troopUin = paramLong;
+    }
+    return localImportantMsgItem;
+  }
+  
+  public void a(long paramLong, bfli parambfli)
+  {
+    if (parambfli == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      parambfli.a(paramLong, (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      return;
+    }
+    ThreadManager.post(new ImportantMsgManager.6(this, paramLong, parambfli), 5, null, false);
+  }
+  
+  public void a(long paramLong, ArrayList<Long> paramArrayList, int paramInt)
+  {
+    ((bfle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(375)).a(paramLong, new bflg(this, paramArrayList, paramInt));
+  }
+  
+  public void a(long paramLong, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        oidb_0xea3.BackMsg localBackMsg = (oidb_0xea3.BackMsg)paramList.next();
+        ArrayList localArrayList2 = new ArrayList();
+        bflj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBackMsg, localArrayList2);
+        if (!localArrayList2.isEmpty()) {
+          localArrayList1.add(localArrayList2.get(0));
+        }
+      }
+    }
+    a(paramLong, bflj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, localArrayList1, true), paramList1);
+  }
+  
+  protected void a(Entity paramEntity)
+  {
+    ThreadManager.post(new ImportantMsgManager.8(this, paramEntity), 5, null, false);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Bfkt != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bfkt);
+      this.jdField_a_of_type_Bfkt = null;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfle
  * JD-Core Version:    0.7.0.1
  */

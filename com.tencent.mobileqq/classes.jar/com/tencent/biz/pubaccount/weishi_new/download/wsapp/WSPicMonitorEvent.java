@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.download.wsapp;
 
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class WSPicMonitorEvent<T>
   extends SimpleBaseEvent
@@ -33,7 +33,7 @@ public class WSPicMonitorEvent<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSPicMonitorEvent
  * JD-Core Version:    0.7.0.1
  */

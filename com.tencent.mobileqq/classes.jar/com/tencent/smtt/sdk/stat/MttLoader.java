@@ -29,10 +29,6 @@ import java.util.Set;
 
 public class MttLoader
 {
-  private static final int BROWSER_MTT = 2;
-  private static final int BROWSER_NONE = -1;
-  private static final int BROWSER_QBX = 0;
-  private static final int BROWSER_QBX5 = 1;
   public static final String CHANNEL_ID = "ChannelID";
   public static final String ENTRY_ID = "entryId";
   @Deprecated
@@ -43,30 +39,16 @@ public class MttLoader
   @Deprecated
   public static final String KEY_PACKAGE = "KEY_PKG";
   public static final String KEY_PID = "KEY_PID";
-  private static final String LOGIN_TYPE_KEY = "loginType";
-  private static final String LOGIN_TYPE_KEY_ANCHOR_POINT = "AnchorPoint";
-  private static final String LOGIN_TYPE_KEY_CONTENT_SIZE = "ContentSize";
-  private static final int LOGIN_TYPE_VALUE_MM = 24;
-  private static final int LOGIN_TYPE_VALUE_OTHERS = 26;
-  private static final int LOGIN_TYPE_VALUE_QQ = 13;
-  private static final int LOGIN_TYPE_VALUE_QQMICROBLOG = 15;
-  private static final int LOGIN_TYPE_VALUE_QZONE = 14;
   public static final String MTT_ACTION = "com.tencent.QQBrowser.action.VIEW";
   public static final String MTT_ACTION_SP = "com.tencent.QQBrowser.action.VIEWSP";
-  private static final String MTT_PACKAGE_MTT = "com.tencent.mtt";
-  private static final String MTT_PACKAGE_MTT_X86 = "com.tencent.mtt.x86";
-  private static final String MTT_PACKAGE_QBX = "com.tencent.qbx";
-  private static final String MTT_PACKAGE_QBX5 = "com.tencent.qbx5";
-  private static final String MTT_SIG = "3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a";
   public static final String PID_ARTICLE_NEWS = "21272";
   public static final String PID_MOBILE_QQ = "50079";
   public static final String PID_QQPIM = "50190";
   public static final String PID_QZONE = "10494";
   public static final String PID_WECHAT = "10318";
   public static final String POS_ID = "PosID";
-  public static final String QQBROWSER_DIRECT_DOWNLOAD_URL = "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=50079";
-  public static final String QQBROWSER_DOWNLOAD_URL = "http://mdc.html5.qq.com/mh?channel_id=50079&u=";
-  private static final String QQBROWSER_PARAMS_ENCODE = ",encoded=1";
+  public static final String QQBROWSER_DIRECT_DOWNLOAD_URL = "https://mdc.html5.qq.com/d/directdown.jsp?channel_id=50079";
+  public static final String QQBROWSER_DOWNLOAD_URL = "https://mdc.html5.qq.com/mh?channel_id=50079&u=";
   public static final String QQBROWSER_PARAMS_FROME = ",from=";
   public static final String QQBROWSER_PARAMS_PACKAGENAME = ",packagename=";
   public static final String QQBROWSER_PARAMS_PD = ",product=";
@@ -79,13 +61,62 @@ public class MttLoader
   public static final int RESULT_QQBROWSER_LOW = 5;
   public static final int RESULT_UNKNOWN = 1;
   public static final String STAT_KEY = "StatKey";
-  private static final int SUPPORT_3RD_PARTY_CALL_VERSION = 33;
-  private static final int SUPPORT_QB_SCHEME_VERSION = 42;
-  private static final int VERSION_420 = 420000;
-  private static final int VERSION_580 = 580000;
-  private static final int VERSION_601 = 601000;
   
-  private static String certToCharsString(Certificate paramCertificate)
+  private static int a(Context paramContext)
+  {
+    int i = 26;
+    paramContext = paramContext.getApplicationInfo().processName;
+    if (paramContext.equals("com.tencent.mobileqq")) {
+      i = 13;
+    }
+    do
+    {
+      return i;
+      if (paramContext.equals("com.qzone")) {
+        return 14;
+      }
+      if (paramContext.equals("com.tencent.WBlog")) {
+        return 15;
+      }
+    } while (!paramContext.equals("com.tencent.mm"));
+    return 24;
+  }
+  
+  private static Uri a(Context paramContext, String paramString)
+  {
+    return FileProvider.a(paramContext, paramString);
+  }
+  
+  private static MttLoader.a a(Context paramContext, Uri paramUri)
+  {
+    Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
+    ((Intent)localObject).setData(paramUri);
+    paramUri = paramContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
+    if (paramUri.size() <= 0) {
+      return null;
+    }
+    paramContext = new MttLoader.a(null);
+    paramUri = paramUri.iterator();
+    while (paramUri.hasNext())
+    {
+      localObject = (ResolveInfo)paramUri.next();
+      String str = ((ResolveInfo)localObject).activityInfo.packageName;
+      if (str.contains("com.tencent.mtt"))
+      {
+        paramContext.a = ((ResolveInfo)localObject).activityInfo.name;
+        paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
+        return paramContext;
+      }
+      if (str.contains("com.tencent.qbx"))
+      {
+        paramContext.a = ((ResolveInfo)localObject).activityInfo.name;
+        paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
+      }
+    }
+    return paramContext;
+  }
+  
+  private static String a(Certificate paramCertificate)
   {
     paramCertificate = paramCertificate.getEncoded();
     int k = paramCertificate.length;
@@ -120,33 +151,19 @@ public class MttLoader
     return new String(arrayOfChar);
   }
   
-  private static MttLoader.BrowserPackageInfo chooseClassName(Context paramContext, Uri paramUri)
+  private static boolean a(String paramString)
   {
-    Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
-    ((Intent)localObject).setData(paramUri);
-    paramUri = paramContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
-    if (paramUri.size() <= 0) {
-      return null;
-    }
-    paramContext = new MttLoader.BrowserPackageInfo(null);
-    paramUri = paramUri.iterator();
-    while (paramUri.hasNext())
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    int i;
+    int j;
+    do
     {
-      localObject = (ResolveInfo)paramUri.next();
-      String str = ((ResolveInfo)localObject).activityInfo.packageName;
-      if (str.contains("com.tencent.mtt"))
-      {
-        paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.packagename = ((ResolveInfo)localObject).activityInfo.packageName;
-        return paramContext;
-      }
-      if (str.contains("com.tencent.qbx"))
-      {
-        paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.packagename = ((ResolveInfo)localObject).activityInfo.packageName;
-      }
-    }
-    return paramContext;
+      return false;
+      paramString = paramString.trim();
+      i = paramString.toLowerCase().indexOf("://");
+      j = paramString.toLowerCase().indexOf('.');
+    } while ((i > 0) && (j > 0) && (i > j));
+    return paramString.toLowerCase().contains("://");
   }
   
   public static MttLoader.BrowserInfo getBrowserInfo(Context paramContext)
@@ -259,20 +276,20 @@ public class MttLoader
               Object localObject5 = localObject2;
               try
               {
-                localObject6 = chooseClassName(paramContext, Uri.parse("http://mdc.html5.qq.com/mh?channel_id=50079&u="));
+                localObject6 = a(paramContext, Uri.parse("https://mdc.html5.qq.com/mh?channel_id=50079&u="));
                 paramContext = localObject2;
                 if (localObject6 == null) {
                   continue;
                 }
                 paramContext = localObject2;
                 localObject5 = localObject2;
-                if (TextUtils.isEmpty(((MttLoader.BrowserPackageInfo)localObject6).packagename)) {
+                if (TextUtils.isEmpty(((MttLoader.a)localObject6).b)) {
                   continue;
                 }
                 localObject5 = localObject2;
-                paramContext = localPackageManager.getPackageInfo(((MttLoader.BrowserPackageInfo)localObject6).packagename, 0);
+                paramContext = localPackageManager.getPackageInfo(((MttLoader.a)localObject6).b, 0);
                 localObject5 = paramContext;
-                localBrowserInfo.packageName = ((MttLoader.BrowserPackageInfo)localObject6).packagename;
+                localBrowserInfo.packageName = ((MttLoader.a)localObject6).b;
                 localObject5 = paramContext;
                 localBrowserInfo.browserType = 2;
                 localObject5 = paramContext;
@@ -300,39 +317,14 @@ public class MttLoader
   {
     try
     {
-      paramString = "http://mdc.html5.qq.com/mh?channel_id=50079&u=" + URLEncoder.encode(paramString, "UTF-8");
+      paramString = "https://mdc.html5.qq.com/mh?channel_id=50079&u=" + URLEncoder.encode(paramString, "UTF-8");
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
       paramString.printStackTrace();
     }
-    return "http://mdc.html5.qq.com/mh?channel_id=50079&u=";
-  }
-  
-  private static Uri getFilePathUri(Context paramContext, String paramString)
-  {
-    return FileProvider.convertFilePathToUri(paramContext, paramString);
-  }
-  
-  private static int getLoginType(Context paramContext)
-  {
-    int i = 26;
-    paramContext = paramContext.getApplicationInfo().processName;
-    if (paramContext.equals("com.tencent.mobileqq")) {
-      i = 13;
-    }
-    do
-    {
-      return i;
-      if (paramContext.equals("com.qzone")) {
-        return 14;
-      }
-      if (paramContext.equals("com.tencent.WBlog")) {
-        return 15;
-      }
-    } while (!paramContext.equals("com.tencent.mm"));
-    return 24;
+    return "https://mdc.html5.qq.com/mh?channel_id=50079&u=";
   }
   
   public static String getValidQBUrl(Context paramContext, String paramString)
@@ -358,21 +350,6 @@ public class MttLoader
         i = 0;
       }
     }
-  }
-  
-  private static boolean hasValidProtocal(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    int i;
-    int j;
-    do
-    {
-      return false;
-      paramString = paramString.trim();
-      i = paramString.toLowerCase().indexOf("://");
-      j = paramString.toLowerCase().indexOf('.');
-    } while ((i > 0) && (j > 0) && (i > j));
-    return paramString.toLowerCase().contains("://");
   }
   
   public static boolean isBrowserInstalled(Context paramContext)
@@ -450,7 +427,7 @@ public class MttLoader
       return 3;
     }
     Object localObject1 = paramString;
-    if (!hasValidProtocal(paramString)) {
+    if (!a(paramString)) {
       localObject1 = "http://" + paramString;
     }
     try
@@ -477,7 +454,7 @@ public class MttLoader
         paramString.setClassName("com.tencent.mtt", "com.tencent.mtt.MainActivity");
       }
     }
-    label606:
+    label611:
     for (;;)
     {
       paramString.setData((Uri)localObject1);
@@ -503,12 +480,12 @@ public class MttLoader
                   break;
                 }
                 if (((MttLoader.BrowserInfo)localObject2).ver < 46) {
-                  break label606;
+                  break label611;
                 }
                 paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
-                localObject2 = chooseClassName(paramContext, (Uri)localObject1);
-                if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.BrowserPackageInfo)localObject2).classname))) {
-                  paramString.setClassName(((MttLoader.BrowserPackageInfo)localObject2).packagename, ((MttLoader.BrowserPackageInfo)localObject2).classname);
+                localObject2 = a(paramContext, (Uri)localObject1);
+                if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.a)localObject2).a))) {
+                  paramString.setClassName(((MttLoader.a)localObject2).b, ((MttLoader.a)localObject2).a);
                 }
                 break;
                 if (((MttLoader.BrowserInfo)localObject2).browserType == 1)
@@ -519,7 +496,7 @@ public class MttLoader
                     break;
                   }
                   if (((MttLoader.BrowserInfo)localObject2).ver != 2) {
-                    break label606;
+                    break label611;
                   }
                   paramString.setClassName("com.tencent.qbx5", "com.tencent.qbx5.SplashActivity");
                   break;
@@ -532,19 +509,19 @@ public class MttLoader
                     break;
                   }
                   if (((MttLoader.BrowserInfo)localObject2).ver <= 6) {
-                    break label606;
+                    break label611;
                   }
                   paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
-                  localObject2 = chooseClassName(paramContext, (Uri)localObject1);
-                  if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.BrowserPackageInfo)localObject2).classname))) {
-                    paramString.setClassName(((MttLoader.BrowserPackageInfo)localObject2).packagename, ((MttLoader.BrowserPackageInfo)localObject2).classname);
+                  localObject2 = a(paramContext, (Uri)localObject1);
+                  if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.a)localObject2).a))) {
+                    paramString.setClassName(((MttLoader.a)localObject2).b, ((MttLoader.a)localObject2).a);
                   }
                   break;
                 }
                 paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
-                localObject2 = chooseClassName(paramContext, (Uri)localObject1);
-                if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.BrowserPackageInfo)localObject2).classname))) {
-                  paramString.setClassName(((MttLoader.BrowserPackageInfo)localObject2).packagename, ((MttLoader.BrowserPackageInfo)localObject2).classname);
+                localObject2 = a(paramContext, (Uri)localObject1);
+                if ((localObject2 != null) && (!TextUtils.isEmpty(((MttLoader.a)localObject2).a))) {
+                  paramString.setClassName(((MttLoader.a)localObject2).b, ((MttLoader.a)localObject2).a);
                 }
                 break;
               }
@@ -554,7 +531,7 @@ public class MttLoader
       }
       try
       {
-        paramString.putExtra("loginType", getLoginType(paramContext));
+        paramString.putExtra("loginType", a(paramContext));
         paramString.addFlags(268435456);
         if (paramWebView != null)
         {
@@ -618,17 +595,12 @@ public class MttLoader
     if (i != 0)
     {
       localObject = ",encoded=1";
-      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("4.3.0.1203").append((String)localObject);
+      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("4.3.0.36").append((String)localObject);
       return loadUrl(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
     }
   }
   
-  public static boolean openDocWithQb(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap)
-  {
-    return openDocWithQb(paramContext, paramString1, paramInt, paramString2, paramHashMap, null);
-  }
-  
-  public static boolean openDocWithQb(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap, Bundle paramBundle)
+  public static boolean openDocWithQb(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, HashMap<String, String> paramHashMap, Bundle paramBundle)
   {
     Intent localIntent;
     try
@@ -659,6 +631,9 @@ public class MttLoader
     }
     localIntent.putExtra("key_reader_sdk_id", 3);
     localIntent.putExtra("key_reader_sdk_type", paramInt);
+    if (!TextUtils.isEmpty(paramString3)) {
+      localIntent.putExtra("big_brother_source_key", paramString3);
+    }
     if (paramInt == 0) {
       localIntent.putExtra("key_reader_sdk_path", paramString1);
     }
@@ -668,7 +643,8 @@ public class MttLoader
       if ((paramContext != null) && (paramContext.getApplicationInfo().targetSdkVersion >= 24) && (Build.VERSION.SDK_INT >= 24)) {
         localIntent.addFlags(1);
       }
-      paramString1 = getFilePathUri(paramContext, paramString1);
+      localIntent.addFlags(268435456);
+      paramString1 = a(paramContext, paramString1);
       if (paramString1 != null) {
         break;
       }
@@ -678,12 +654,22 @@ public class MttLoader
       }
     }
     localIntent.setDataAndType(paramString1, "mtt/" + paramString2);
-    localIntent.putExtra("loginType", getLoginType(paramContext.getApplicationContext()));
+    localIntent.putExtra("loginType", a(paramContext.getApplicationContext()));
     if (paramBundle != null) {
       localIntent.putExtra("key_reader_sdk_extrals", paramBundle);
     }
     paramContext.startActivity(localIntent);
     return true;
+  }
+  
+  public static boolean openDocWithQb(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap)
+  {
+    return openDocWithQb(paramContext, paramString1, paramInt, paramString2, paramHashMap, null);
+  }
+  
+  public static boolean openDocWithQb(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap, Bundle paramBundle)
+  {
+    return openDocWithQb(paramContext, paramString1, paramInt, paramString2, "", paramHashMap, null);
   }
   
   public static boolean openVideoWithQb(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
@@ -710,7 +696,7 @@ public class MttLoader
     }
     try
     {
-      paramString.putExtra("loginType", getLoginType(paramContext));
+      paramString.putExtra("loginType", a(paramContext));
       paramString.setComponent(new ComponentName("com.tencent.mtt", "com.tencent.mtt.browser.video.H5VideoThrdcallActivity"));
       paramContext.startActivity(paramString);
       i = 1;
@@ -748,60 +734,60 @@ public class MttLoader
     //   3: astore 4
     //   5: aconst_null
     //   6: astore 5
-    //   8: new 577	java/util/jar/JarFile
+    //   8: new 543	java/util/jar/JarFile
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 580	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   13: invokespecial 546	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
     //   16: astore_0
     //   17: aload 4
     //   19: astore_3
     //   20: aload_0
-    //   21: ldc_w 582
-    //   24: invokevirtual 586	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   27: astore 6
-    //   29: aload 6
+    //   21: ldc_w 548
+    //   24: invokevirtual 552	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
+    //   27: astore 5
+    //   29: aload 5
     //   31: ifnonnull +25 -> 56
     //   34: iconst_0
     //   35: ifeq +11 -> 46
-    //   38: new 588	java/lang/NullPointerException
+    //   38: new 554	java/lang/NullPointerException
     //   41: dup
-    //   42: invokespecial 589	java/lang/NullPointerException:<init>	()V
+    //   42: invokespecial 555	java/lang/NullPointerException:<init>	()V
     //   45: athrow
     //   46: aload_0
     //   47: ifnull +7 -> 54
     //   50: aload_0
-    //   51: invokevirtual 592	java/util/jar/JarFile:close	()V
+    //   51: invokevirtual 558	java/util/jar/JarFile:close	()V
     //   54: iconst_0
     //   55: ireturn
     //   56: aload 4
     //   58: astore_3
     //   59: sipush 8192
     //   62: newarray byte
-    //   64: astore 5
+    //   64: astore 6
     //   66: aload 4
     //   68: astore_3
     //   69: aload_0
-    //   70: aload 6
-    //   72: invokevirtual 596	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   70: aload 5
+    //   72: invokevirtual 562	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   75: astore 4
     //   77: aload 4
     //   79: astore_3
     //   80: aload 4
-    //   82: aload 5
+    //   82: aload 6
     //   84: iconst_0
-    //   85: aload 5
+    //   85: aload 6
     //   87: arraylength
-    //   88: invokevirtual 602	java/io/InputStream:read	([BII)I
+    //   88: invokevirtual 568	java/io/InputStream:read	([BII)I
     //   91: iconst_m1
     //   92: if_icmpne -15 -> 77
     //   95: aload 4
     //   97: astore_3
     //   98: aload 4
-    //   100: invokevirtual 603	java/io/InputStream:close	()V
+    //   100: invokevirtual 569	java/io/InputStream:close	()V
     //   103: aload 4
     //   105: astore_3
-    //   106: aload 6
-    //   108: invokevirtual 609	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
+    //   106: aload 5
+    //   108: invokevirtual 575	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
     //   111: astore 5
     //   113: aload 4
     //   115: astore_3
@@ -814,11 +800,11 @@ public class MttLoader
     //   125: aload 4
     //   127: ifnull +8 -> 135
     //   130: aload 4
-    //   132: invokevirtual 603	java/io/InputStream:close	()V
+    //   132: invokevirtual 569	java/io/InputStream:close	()V
     //   135: aload_0
     //   136: ifnull -82 -> 54
     //   139: aload_0
-    //   140: invokevirtual 592	java/util/jar/JarFile:close	()V
+    //   140: invokevirtual 558	java/util/jar/JarFile:close	()V
     //   143: iconst_0
     //   144: ireturn
     //   145: astore_0
@@ -829,161 +815,161 @@ public class MttLoader
     //   151: aload 5
     //   153: iconst_0
     //   154: aaload
-    //   155: invokestatic 611	com/tencent/smtt/sdk/stat/MttLoader:certToCharsString	(Ljava/security/cert/Certificate;)Ljava/lang/String;
+    //   155: invokestatic 577	com/tencent/smtt/sdk/stat/MttLoader:a	(Ljava/security/cert/Certificate;)Ljava/lang/String;
     //   158: astore 5
     //   160: aload 5
-    //   162: ifnull +38 -> 200
+    //   162: ifnull +39 -> 201
     //   165: aload 4
     //   167: astore_3
     //   168: aload 5
-    //   170: ldc 74
-    //   172: invokevirtual 356	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   175: istore_2
-    //   176: iload_2
-    //   177: ifeq +23 -> 200
-    //   180: aload 4
-    //   182: ifnull +8 -> 190
-    //   185: aload 4
-    //   187: invokevirtual 603	java/io/InputStream:close	()V
-    //   190: aload_0
-    //   191: ifnull +7 -> 198
-    //   194: aload_0
-    //   195: invokevirtual 592	java/util/jar/JarFile:close	()V
-    //   198: iconst_1
-    //   199: ireturn
-    //   200: aload 4
-    //   202: ifnull +8 -> 210
-    //   205: aload 4
-    //   207: invokevirtual 603	java/io/InputStream:close	()V
-    //   210: aload_0
-    //   211: ifnull -157 -> 54
-    //   214: aload_0
-    //   215: invokevirtual 592	java/util/jar/JarFile:close	()V
-    //   218: iconst_0
-    //   219: ireturn
-    //   220: astore_0
-    //   221: iconst_0
-    //   222: ireturn
-    //   223: astore_0
-    //   224: aconst_null
-    //   225: astore_3
-    //   226: aload 5
-    //   228: astore_0
-    //   229: aload_3
-    //   230: ifnull +7 -> 237
-    //   233: aload_3
-    //   234: invokevirtual 603	java/io/InputStream:close	()V
-    //   237: aload_0
-    //   238: ifnull -184 -> 54
-    //   241: aload_0
-    //   242: invokevirtual 592	java/util/jar/JarFile:close	()V
-    //   245: iconst_0
-    //   246: ireturn
-    //   247: astore_0
-    //   248: iconst_0
-    //   249: ireturn
-    //   250: astore 4
-    //   252: aconst_null
-    //   253: astore_0
-    //   254: aload_3
-    //   255: ifnull +7 -> 262
-    //   258: aload_3
-    //   259: invokevirtual 603	java/io/InputStream:close	()V
-    //   262: aload_0
-    //   263: ifnull +7 -> 270
-    //   266: aload_0
-    //   267: invokevirtual 592	java/util/jar/JarFile:close	()V
-    //   270: aload 4
-    //   272: athrow
-    //   273: astore_3
-    //   274: goto -228 -> 46
-    //   277: astore_0
-    //   278: iconst_0
-    //   279: ireturn
-    //   280: astore_3
-    //   281: goto -146 -> 135
-    //   284: astore_3
-    //   285: goto -95 -> 190
-    //   288: astore_0
-    //   289: goto -91 -> 198
-    //   292: astore_3
-    //   293: goto -83 -> 210
-    //   296: astore_3
-    //   297: goto -60 -> 237
-    //   300: astore_3
-    //   301: goto -39 -> 262
-    //   304: astore_0
-    //   305: goto -35 -> 270
-    //   308: astore 4
-    //   310: goto -56 -> 254
-    //   313: astore_3
-    //   314: aconst_null
-    //   315: astore_3
-    //   316: goto -87 -> 229
-    //   319: astore_3
-    //   320: aload 4
-    //   322: astore_3
-    //   323: goto -94 -> 229
+    //   170: ldc_w 579
+    //   173: invokevirtual 112	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   176: istore_2
+    //   177: iload_2
+    //   178: ifeq +23 -> 201
+    //   181: aload 4
+    //   183: ifnull +8 -> 191
+    //   186: aload 4
+    //   188: invokevirtual 569	java/io/InputStream:close	()V
+    //   191: aload_0
+    //   192: ifnull +7 -> 199
+    //   195: aload_0
+    //   196: invokevirtual 558	java/util/jar/JarFile:close	()V
+    //   199: iconst_1
+    //   200: ireturn
+    //   201: aload 4
+    //   203: ifnull +8 -> 211
+    //   206: aload 4
+    //   208: invokevirtual 569	java/io/InputStream:close	()V
+    //   211: aload_0
+    //   212: ifnull -158 -> 54
+    //   215: aload_0
+    //   216: invokevirtual 558	java/util/jar/JarFile:close	()V
+    //   219: iconst_0
+    //   220: ireturn
+    //   221: astore_0
+    //   222: iconst_0
+    //   223: ireturn
+    //   224: astore_0
+    //   225: aconst_null
+    //   226: astore_3
+    //   227: aload 5
+    //   229: astore_0
+    //   230: aload_3
+    //   231: ifnull +7 -> 238
+    //   234: aload_3
+    //   235: invokevirtual 569	java/io/InputStream:close	()V
+    //   238: aload_0
+    //   239: ifnull -185 -> 54
+    //   242: aload_0
+    //   243: invokevirtual 558	java/util/jar/JarFile:close	()V
+    //   246: iconst_0
+    //   247: ireturn
+    //   248: astore_0
+    //   249: iconst_0
+    //   250: ireturn
+    //   251: astore 4
+    //   253: aconst_null
+    //   254: astore_0
+    //   255: aload_3
+    //   256: ifnull +7 -> 263
+    //   259: aload_3
+    //   260: invokevirtual 569	java/io/InputStream:close	()V
+    //   263: aload_0
+    //   264: ifnull +7 -> 271
+    //   267: aload_0
+    //   268: invokevirtual 558	java/util/jar/JarFile:close	()V
+    //   271: aload 4
+    //   273: athrow
+    //   274: astore_3
+    //   275: goto -229 -> 46
+    //   278: astore_0
+    //   279: iconst_0
+    //   280: ireturn
+    //   281: astore_3
+    //   282: goto -147 -> 135
+    //   285: astore_3
+    //   286: goto -95 -> 191
+    //   289: astore_0
+    //   290: goto -91 -> 199
+    //   293: astore_3
+    //   294: goto -83 -> 211
+    //   297: astore_3
+    //   298: goto -60 -> 238
+    //   301: astore_3
+    //   302: goto -39 -> 263
+    //   305: astore_0
+    //   306: goto -35 -> 271
+    //   309: astore 4
+    //   311: goto -56 -> 255
+    //   314: astore_3
+    //   315: aconst_null
+    //   316: astore_3
+    //   317: goto -87 -> 230
+    //   320: astore_3
+    //   321: aload 4
+    //   323: astore_3
+    //   324: goto -94 -> 230
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	326	0	paramFile	File
+    //   0	327	0	paramFile	File
     //   119	4	1	i	int
-    //   175	2	2	bool	boolean
-    //   1	258	3	localObject1	Object
-    //   273	1	3	localIOException1	java.io.IOException
-    //   280	1	3	localIOException2	java.io.IOException
-    //   284	1	3	localIOException3	java.io.IOException
-    //   292	1	3	localIOException4	java.io.IOException
-    //   296	1	3	localIOException5	java.io.IOException
-    //   300	1	3	localIOException6	java.io.IOException
-    //   313	1	3	localThrowable1	Throwable
-    //   315	1	3	localObject2	Object
-    //   319	1	3	localThrowable2	Throwable
-    //   322	1	3	localObject3	Object
-    //   3	203	4	localInputStream	java.io.InputStream
-    //   250	21	4	localObject4	Object
-    //   308	13	4	localObject5	Object
-    //   6	221	5	localObject6	Object
-    //   27	80	6	localJarEntry	java.util.jar.JarEntry
+    //   176	2	2	bool	boolean
+    //   1	259	3	localObject1	Object
+    //   274	1	3	localIOException1	java.io.IOException
+    //   281	1	3	localIOException2	java.io.IOException
+    //   285	1	3	localIOException3	java.io.IOException
+    //   293	1	3	localIOException4	java.io.IOException
+    //   297	1	3	localIOException5	java.io.IOException
+    //   301	1	3	localIOException6	java.io.IOException
+    //   314	1	3	localThrowable1	Throwable
+    //   316	1	3	localObject2	Object
+    //   320	1	3	localThrowable2	Throwable
+    //   323	1	3	localObject3	Object
+    //   3	204	4	localInputStream	java.io.InputStream
+    //   251	21	4	localObject4	Object
+    //   309	13	4	localObject5	Object
+    //   6	222	5	localObject6	Object
+    //   64	22	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   139	143	145	java/io/IOException
-    //   214	218	220	java/io/IOException
-    //   8	17	223	java/lang/Throwable
-    //   241	245	247	java/io/IOException
-    //   8	17	250	finally
-    //   38	46	273	java/io/IOException
-    //   50	54	277	java/io/IOException
-    //   130	135	280	java/io/IOException
-    //   185	190	284	java/io/IOException
-    //   194	198	288	java/io/IOException
-    //   205	210	292	java/io/IOException
-    //   233	237	296	java/io/IOException
-    //   258	262	300	java/io/IOException
-    //   266	270	304	java/io/IOException
-    //   20	29	308	finally
-    //   59	66	308	finally
-    //   69	77	308	finally
-    //   80	95	308	finally
-    //   98	103	308	finally
-    //   106	113	308	finally
-    //   116	120	308	finally
-    //   151	160	308	finally
-    //   168	176	308	finally
-    //   20	29	313	java/lang/Throwable
-    //   59	66	313	java/lang/Throwable
-    //   69	77	313	java/lang/Throwable
-    //   80	95	319	java/lang/Throwable
-    //   98	103	319	java/lang/Throwable
-    //   106	113	319	java/lang/Throwable
-    //   116	120	319	java/lang/Throwable
-    //   151	160	319	java/lang/Throwable
-    //   168	176	319	java/lang/Throwable
+    //   215	219	221	java/io/IOException
+    //   8	17	224	java/lang/Throwable
+    //   242	246	248	java/io/IOException
+    //   8	17	251	finally
+    //   38	46	274	java/io/IOException
+    //   50	54	278	java/io/IOException
+    //   130	135	281	java/io/IOException
+    //   186	191	285	java/io/IOException
+    //   195	199	289	java/io/IOException
+    //   206	211	293	java/io/IOException
+    //   234	238	297	java/io/IOException
+    //   259	263	301	java/io/IOException
+    //   267	271	305	java/io/IOException
+    //   20	29	309	finally
+    //   59	66	309	finally
+    //   69	77	309	finally
+    //   80	95	309	finally
+    //   98	103	309	finally
+    //   106	113	309	finally
+    //   116	120	309	finally
+    //   151	160	309	finally
+    //   168	177	309	finally
+    //   20	29	314	java/lang/Throwable
+    //   59	66	314	java/lang/Throwable
+    //   69	77	314	java/lang/Throwable
+    //   80	95	320	java/lang/Throwable
+    //   98	103	320	java/lang/Throwable
+    //   106	113	320	java/lang/Throwable
+    //   116	120	320	java/lang/Throwable
+    //   151	160	320	java/lang/Throwable
+    //   168	177	320	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.MttLoader
  * JD-Core Version:    0.7.0.1
  */

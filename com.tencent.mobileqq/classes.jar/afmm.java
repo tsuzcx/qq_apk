@@ -1,24 +1,41 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class afmm
-  extends aeqi
+  implements View.OnClickListener
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public afmm(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
   
-  public afmm(afmf paramafmf)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
+    Object localObject = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.a(20);
+    String str;
+    if (localObject != null)
+    {
+      ((anwd)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label152;
+      }
+    }
+    label152:
+    for (localObject = "0";; localObject = "1")
+    {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, (String)localObject, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

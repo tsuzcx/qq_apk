@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adkd
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adkd(NotificationActivity paramNotificationActivity) {}
+  public adkd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      AddFriendVerifyActivity.c(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkd
  * JD-Core Version:    0.7.0.1
  */

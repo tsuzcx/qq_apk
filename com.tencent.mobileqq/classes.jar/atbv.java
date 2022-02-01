@@ -1,19 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.os.Bundle;
 
-class atbv
-  implements View.OnClickListener
+public abstract interface atbv
 {
-  atbv(atbu paramatbu) {}
+  public abstract void a(long paramLong, int paramInt, String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.c = "download";
-    atbp.a(this.a.a).opType("huiyin").opName("plugin_download_click").d1(String.valueOf(bdin.a(atbp.a(this.a.a).getApplicationContext()))).report();
-    atbp.a(this.a.a, false);
-  }
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

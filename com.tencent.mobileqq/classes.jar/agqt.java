@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 
-class agqt
-  implements DialogInterface.OnClickListener
+public class agqt
+  extends GestureDetector.SimpleOnGestureListener
 {
-  agqt(agqq paramagqq, boolean paramBoolean) {}
+  public agqt(ArkAppRootLayout paramArkAppRootLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Agqq.aa = true;
-    agqq.c(this.jdField_a_of_type_Agqq, this.jdField_a_of_type_Boolean);
+    if (ArkAppRootLayout.a(this.a) != null) {
+      ArkAppRootLayout.a(this.a).a();
+    }
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

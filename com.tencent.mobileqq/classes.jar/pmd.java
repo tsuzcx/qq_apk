@@ -1,71 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class pmd
-  implements poa
+  implements pyb
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public pmd(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (paramInt == 103) {
-      return pjz.a(paramBaseArticleInfo);
-    }
-    if (paramInt == 102) {
-      return pjx.a(paramBaseArticleInfo);
-    }
-    return pjy.a(paramBaseArticleInfo);
-  }
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
   
-  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject = (pqg)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject != null)
+    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
+    if (localQQAppInterface == null) {}
+    QQMessageFacade localQQMessageFacade;
+    MessageRecord localMessageRecord;
+    do
     {
-      ((pqg)localObject).a(parampgd, false);
-      parampgd = parampgd.a();
-      localObject = (NativeAvatarView)((pqg)localObject).getNativeView();
-      if ((ors.b(parampgd)) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845909));
-      }
+      return;
+      localQQMessageFacade = localQQAppInterface.a();
+      localMessageRecord = localQQMessageFacade.b(anhk.aQ, 1008);
+    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
+    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+    localMessageRecord.createMessageUniseq();
+    localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
+    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
+    if (paramReadInJoyUserInfo != null) {
+      paramReadInJoyUserInfo.sendEmptyMessage(1009);
     }
-    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
-    parampgd = localViewBase.findViewBaseByName("id_view_nickname");
-    if ((paramContainer != null) && (parampgd != null))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      parampgd = parampgd.getNativeView();
-      if ((paramContainer != null) && (parampgd != null)) {
-        parampgd.post(new GalleryProteusItem.1(this, parampgd, paramContainer));
-      }
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
-  {
-    return false;
+    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmd
  * JD-Core Version:    0.7.0.1
  */

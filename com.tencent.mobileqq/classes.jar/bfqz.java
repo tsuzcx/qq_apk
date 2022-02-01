@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
-public final class bfqz
-  implements Parcelable.Creator<GetVirtualListResult>
+public class bfqz
 {
-  public GetVirtualListResult a(Parcel paramParcel)
-  {
-    return new GetVirtualListResult(paramParcel);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public long b;
   
-  public GetVirtualListResult[] a(int paramInt)
+  public bfqz(TroopBatchAddFriendMgr paramTroopBatchAddFriendMgr, String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    return new GetVirtualListResult[paramInt];
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfqz
  * JD-Core Version:    0.7.0.1
  */

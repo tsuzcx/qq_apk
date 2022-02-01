@@ -1,39 +1,35 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewStub;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-public abstract class tck<T>
-  extends tcj<T>
+public class tck
+  extends Handler
 {
-  protected int c = 1;
-  
-  public tck(Context paramContext)
+  public tck(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    super(paramContext);
+    super(paramLooper);
   }
   
-  protected View a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a != null) {
-      return this.a.findViewById(paramInt);
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
+      return;
     }
-    return null;
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    oat.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
-  
-  public void a(ViewStub paramViewStub)
-  {
-    paramViewStub.setLayoutResource(b());
-    this.a = paramViewStub.inflate();
-    e();
-  }
-  
-  protected abstract int b();
-  
-  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.hardcoder;
 
-import abwo;
+import addu;
 
 public class HCPerfManager$1
   implements Runnable
 {
-  public HCPerfManager$1(abwo paramabwo) {}
+  public HCPerfManager$1(addu paramaddu) {}
   
   public void run()
   {
-    abwo.a(this.this$0);
+    addu.a(this.this$0);
   }
 }
 

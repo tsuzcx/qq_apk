@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.ar.view;
 
-import amup;
-import amva;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import ange;
+import aotg;
+import aotr;
+import apev;
 import com.tencent.mobileqq.ar.ARArguments;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
@@ -27,33 +28,33 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = amva.a();
+    boolean bool = aotr.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
-        amup.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        aotg.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
-      ange localange = this.jdField_a_of_type_Ange;
-      if (localange != null) {
-        localange.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      apev localapev = this.jdField_a_of_type_Apev;
+      if (localapev != null) {
+        localapev.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = amva.a();
+    boolean bool = aotr.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      ange localange = this.jdField_a_of_type_Ange;
-      if (localange != null) {
-        localange.a(null);
+      apev localapev = this.jdField_a_of_type_Apev;
+      if (localapev != null) {
+        localapev.a(null);
       }
-      amup.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      aotg.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
       }
@@ -69,7 +70,9 @@ public class ScanGLRenderEnvFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     c();
-    return this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -93,7 +96,7 @@ public class ScanGLRenderEnvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderEnvFragment
  * JD-Core Version:    0.7.0.1
  */

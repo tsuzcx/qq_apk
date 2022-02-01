@@ -1,55 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.RspBody;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class qtz
-  extends nac
+  implements View.OnClickListener
 {
-  qtz(qty paramqty, qts paramqts, int paramInt) {}
+  qtz(qtx paramqtx, ArticleInfo paramArticleInfo, rii paramrii) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new oidb_0xe33.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.topic_info_set_rsp.has())
-        {
-          paramArrayOfByte = paramBundle.topic_info_set_rsp;
-          this.jdField_a_of_type_Qts.a(paramInt, paramArrayOfByte.err_msg.get(), Integer.toString(paramArrayOfByte.ret_code.get()), paramArrayOfByte.topic_id.get());
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel())
-        {
-          if (this.jdField_a_of_type_Int != 1) {
-            break label131;
-          }
-          QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel createColumn failed." + paramArrayOfByte.toString());
-        }
-      }
-    }
-    for (;;)
+    pha.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    pha.a(this.jdField_a_of_type_Qtx.a, this.jdField_a_of_type_Rii.b.b);
+    try
     {
-      this.jdField_a_of_type_Qts.a(paramInt, "", "", 0);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("folder_status", pha.d);
+      localJSONObject.put("kandian_mode", "" + pha.e());
+      localJSONObject.put("tab_source", "" + pha.d());
+      oat.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label131:
-      if (this.jdField_a_of_type_Int == 2) {
-        QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel editColumn failed." + paramArrayOfByte.toString());
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtz
  * JD-Core Version:    0.7.0.1
  */

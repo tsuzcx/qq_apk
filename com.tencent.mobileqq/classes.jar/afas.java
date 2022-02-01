@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class afas
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public afas(LoadDataJob paramLoadDataJob) {}
+  public afas(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramObject1 = (afbe)paramObject1;
-    paramObject2 = (afbe)paramObject2;
-    return paramObject1.a - paramObject2.a;
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, true);
+    RegisterChooseLoginActivity.a(this.a, true);
+    bcst.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    bcst.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
+    bcst.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 

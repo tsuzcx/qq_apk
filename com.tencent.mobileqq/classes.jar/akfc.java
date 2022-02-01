@@ -1,34 +1,35 @@
+import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class akfc
-  extends Handler
+  extends aniz
 {
-  public akfc(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public akfc(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
+    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
     {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      QQToast.a(BaseApplication.getContext(), 1, 2131694768, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_Bety == null) {
-        this.a.jdField_a_of_type_Bety = new bety(this.a, this.a.getTitleBarHeight());
+      this.a.a.removeMessages(1003);
+      this.a.c();
+      if (!paramBoolean)
+      {
+        paramString = this.a.getIntent();
+        paramString.putExtra("key_from_sdk_set_avatar_result", false);
+        this.a.setResult(-1, paramString);
+        this.a.finish();
       }
-      this.a.jdField_a_of_type_Bety.c(2131699860);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bety.isShowing()));
-    this.a.jdField_a_of_type_Bety.show();
+    }
+    else
+    {
+      return;
+    }
+    bcst.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
+    paramString = this.a.getIntent();
+    paramString.putExtra("key_from_sdk_set_avatar_result", true);
+    this.a.setResult(-1, paramString);
+    this.a.finish();
   }
 }
 

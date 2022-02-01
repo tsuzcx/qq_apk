@@ -1,59 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aprq
-  extends bead
+  implements View.OnClickListener
 {
-  aprq(apro paramapro, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  aprq(aprp paramaprp, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
-  public void onDone(beae parambeae)
+  public void onClick(View paramView)
   {
-    super.onDone(parambeae);
-    Object localObject = parambeae.a();
-    int j = ((Bundle)localObject).getInt(parambeae.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + parambeae + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
-    }
-    int i = 0;
-    if (parambeae.a() != 3)
-    {
-      i = apmq.a(parambeae.a);
-      if (apro.a(j)) {
-        apro.jdField_a_of_type_Aprn.a((EmoticonPackage)localObject, j, -1, i);
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
       }
-      apro.jdField_a_of_type_Aprn.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     for (;;)
     {
-      long l1 = parambeae.h;
-      long l2 = parambeae.g;
-      this.a.a((EmoticonPackage)localObject, i, l1 - l2, parambeae.d);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      apro.jdField_a_of_type_Aprn.a((EmoticonPackage)localObject, j, 0, 0);
+      if (i == 1)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+      }
+      else if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        continue;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+          } else if (i == 1) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+          } else if (i == 2) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        }
+      }
     }
-  }
-  
-  public void onDoneFile(beae parambeae)
-  {
-    Object localObject = parambeae.a();
-    int i = ((Bundle)localObject).getInt(parambeae.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + parambeae);
-    }
-    if (apro.a(i)) {
-      apro.jdField_a_of_type_Aprn.a((EmoticonPackage)localObject, i, 0, 0);
-    }
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    return super.onStart(parambeae);
   }
 }
 

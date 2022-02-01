@@ -1,29 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
-class bmqm
-  extends AnimatorListenerAdapter
+public class bmqm
 {
-  bmqm(bmqk parambmqk) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    wxe.b(bmqg.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wxe.b(bmqg.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.b.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    wxe.b(bmqg.a, "scaleAnimator start!");
-    this.a.j = true;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public long e;
+  public long f;
+  public long g;
 }
 
 

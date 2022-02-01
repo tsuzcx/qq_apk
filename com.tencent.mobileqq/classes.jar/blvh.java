@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 
 public final class blvh
-  implements Parcelable.Creator<InteractPasterParcelData>
+  implements Parcelable.Creator<QZoneCountUserInfo>
 {
-  public InteractPasterParcelData a(Parcel paramParcel)
+  public QZoneCountUserInfo a(Parcel paramParcel)
   {
-    return new InteractPasterParcelData(paramParcel);
+    return new QZoneCountUserInfo(paramParcel);
   }
   
-  public InteractPasterParcelData[] a(int paramInt)
+  public QZoneCountUserInfo[] a(int paramInt)
   {
-    return new InteractPasterParcelData[paramInt];
+    return new QZoneCountUserInfo[paramInt];
   }
 }
 

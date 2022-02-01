@@ -3,14 +3,12 @@ package com.google.android.filament;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Size;
-import com.google.android.filament.proguard.UsedByReflection;
 
 public class IndirectLight
 {
   long mNativeObject;
   
-  @UsedByReflection("KtxLoader.java")
-  IndirectLight(long paramLong)
+  public IndirectLight(long paramLong)
   {
     this.mNativeObject = paramLong;
   }
@@ -131,7 +129,7 @@ public class IndirectLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.IndirectLight
  * JD-Core Version:    0.7.0.1
  */

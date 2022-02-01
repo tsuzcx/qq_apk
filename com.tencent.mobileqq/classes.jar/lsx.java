@@ -1,39 +1,71 @@
-import android.opengl.GLES20;
-import javax.microedition.khronos.opengles.GL11;
+import android.text.TextUtils;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizer;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerListener;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerResult;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecordState;
+import com.tencent.qphone.base.util.QLog;
 
-public class lsx
-  implements lsy
+class lsx
+  implements VoiceRecognizerListener
 {
-  public int a()
+  lsx(lsv paramlsv) {}
+  
+  public void onGetError(int paramInt)
   {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = 0;
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    lux.a();
-    return arrayOfInt[0];
+    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
   }
   
-  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
   {
-    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lux.a();
+    if ((!lsv.a(this.a)) || (lsv.b(this.a))) {
+      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
+    }
+    label162:
+    for (;;)
+    {
+      return;
+      if (paramVoiceRecognizerResult.isHalf)
+      {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
+        return;
+      }
+      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
+      }
+      for (;;)
+      {
+        if (!paramVoiceRecognizerResult.isEnd) {
+          break label162;
+        }
+        int i = VoiceRecognizer.shareInstance().startReceiving();
+        if (i >= 0) {
+          break;
+        }
+        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
+        return;
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
+        if (lsv.a(this.a) != null) {
+          lsv.a(this.a).a(paramVoiceRecognizerResult.text);
+        }
+      }
+    }
   }
   
-  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
   {
-    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
-    lux.a();
+    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
   }
   
-  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onVolumeChanged(int paramInt)
   {
-    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lux.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsx
  * JD-Core Version:    0.7.0.1
  */

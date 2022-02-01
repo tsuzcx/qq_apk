@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class aqbc
-  extends WtloginObserver
+@TargetApi(14)
+public class aqbc
+  implements Camera.FaceDetectionListener
 {
-  aqbc(aqba paramaqba) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqar jdField_a_of_type_Aqar;
+  private final aqav jdField_a_of_type_Aqav;
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      aqba.c(this.a, true);
-      if (aqba.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)aqba.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (aqbd.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        aqba.a(this.a, false);
-        aqba.b(this.a, false);
-      }
-      return;
-    }
-    aqba.a(this.a, false);
-    aqba.c(this.a, false);
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 

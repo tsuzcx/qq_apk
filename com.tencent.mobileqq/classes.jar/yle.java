@@ -1,20 +1,14 @@
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.2;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class yle
-  implements Comparator<File>
+public abstract interface yle<T>
 {
-  public yle(AnimationDrawableFactory.2 param2) {}
+  public abstract void a(ErrorMessage paramErrorMessage);
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
-  }
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yle
  * JD-Core Version:    0.7.0.1
  */

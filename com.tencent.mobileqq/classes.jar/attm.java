@@ -1,26 +1,30 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
 class attm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  attm(attl paramattl) {}
+  attm(attk paramattk, List paramList, attj paramattj) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
-    if (localCameraPosition != null) {
-      MapWidget.a(this.a.a).a(localCameraPosition.target);
+    if (paramInt == 1)
+    {
+      attk.a(this.jdField_a_of_type_Attk, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Attj != null) {
+        this.jdField_a_of_type_Attj.a(1, 0);
+      }
     }
+    while (this.jdField_a_of_type_Attj == null) {
+      return;
+    }
+    this.jdField_a_of_type_Attj.a(1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attm
  * JD-Core Version:    0.7.0.1
  */

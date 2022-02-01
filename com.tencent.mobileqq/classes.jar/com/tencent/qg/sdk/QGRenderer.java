@@ -1,5 +1,6 @@
 package com.tencent.qg.sdk;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -8,6 +9,7 @@ import android.opengl.GLES20;
 import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.qg.sdk.audio.MediaPlayerPool;
+import com.tencent.qg.sdk.deubgger.Debugger;
 import java.nio.ByteBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -22,6 +24,7 @@ public class QGRenderer
   private QGRenderer.QGEventListener QGEventListener = null;
   Bitmap inBitmap;
   private Context mContext;
+  private Debugger mDebugger;
   ByteBuffer mPixelBuf;
   private QGGLSurfaceView parent;
   private int screen_height;
@@ -37,6 +40,9 @@ public class QGRenderer
       this.mContext = paramContext;
       this.screen_width = paramInt1;
       this.screen_height = paramInt2;
+      if ((Debugger.isJsDebugMode(this.mContext)) && ((this.mContext instanceof Activity))) {
+        this.mDebugger = new Debugger((Activity)this.mContext);
+      }
       return;
     }
   }
@@ -81,6 +87,11 @@ public class QGRenderer
   }
   
   public native void clearCache();
+  
+  public Debugger getDebugger()
+  {
+    return this.mDebugger;
+  }
   
   public native void nativeAddJavaScriptFile(String paramString);
   
@@ -135,6 +146,9 @@ public class QGRenderer
   {
     nativeCreated(this.mContext, assetManager, dataBundle, this.screen_width, this.screen_height);
     onCanvasCreated();
+    if (this.mDebugger != null) {
+      this.mDebugger.init();
+    }
   }
   
   public void onSurfaceDestroy(GL10 paramGL10)
@@ -177,7 +191,7 @@ public class QGRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGRenderer
  * JD-Core Version:    0.7.0.1
  */

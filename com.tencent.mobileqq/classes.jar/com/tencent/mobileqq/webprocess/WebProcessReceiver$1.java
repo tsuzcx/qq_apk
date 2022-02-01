@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import akwd;
+import ampj;
 
 class WebProcessReceiver$1
   implements Runnable
@@ -9,12 +9,12 @@ class WebProcessReceiver$1
   
   public void run()
   {
-    akwd.a();
+    ampj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiver.1
  * JD-Core Version:    0.7.0.1
  */

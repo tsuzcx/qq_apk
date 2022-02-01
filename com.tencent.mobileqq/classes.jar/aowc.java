@@ -1,91 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aowc
-  extends aokh<aowb>
+  extends beat
 {
-  public int a()
+  aovz jdField_a_of_type_Aovz;
+  aowb jdField_a_of_type_Aowb;
+  
+  public aowc(QQAppInterface paramQQAppInterface, aowb paramaowb, aovz paramaovz)
   {
-    return 460;
+    super(paramQQAppInterface, paramaowb.b);
+    this.jdField_a_of_type_Aowb = paramaowb;
+    this.jdField_a_of_type_Aovz = paramaovz;
   }
   
-  @NonNull
-  public aowb a(int paramInt)
+  protected void realCancel()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
-    return new aowb();
   }
   
-  @Nullable
-  public aowb a(aoko[] paramArrayOfaoko)
+  protected void realStart()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
     }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
-      }
-      return aowb.a(paramArrayOfaoko[0]);
-    }
-    return null;
+    aovz.a(this.jdField_a_of_type_Aovz, this.jdField_a_of_type_Aowb);
   }
   
-  public Class<aowb> a()
+  public String toString()
   {
-    return aowb.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aowb paramaowb)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaowb == null) {
-        break label58;
-      }
-    }
-    label58:
-    for (String str = paramaowb.toString();; str = " empty")
-    {
-      QLog.d("TroopRobotConfProcessor", 2, str);
-      if (paramaowb != null) {
-        bclg.a(paramaowb.a(), paramaowb.a());
-      }
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Aowb + ", mDownloader=" + this.jdField_a_of_type_Aovz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowc
  * JD-Core Version:    0.7.0.1
  */

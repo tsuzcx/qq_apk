@@ -118,7 +118,7 @@ public final class cv
         paramList1 = paramList1 + "_" + dt.a(Build.MODEL).replaceAll("[| _]", "");
         localObject1 = new StringBuilder();
         Object localObject2 = dq.a("yyyy-MM-dd HH:mm:ss");
-        localObject2 = ((StringBuilder)localObject1).append("[").append(((SimpleDateFormat)localObject2).format(new Date())).append("]:1.5.7|").append(a).append("|").append(dt.a(paramdt.c)).append("|");
+        localObject2 = ((StringBuilder)localObject1).append("[").append(((SimpleDateFormat)localObject2).format(new Date())).append("]:1.5.4|").append(a).append("|").append(dt.a(paramdt.c)).append("|");
         if (cu.d)
         {
           paramdt = cx.a();

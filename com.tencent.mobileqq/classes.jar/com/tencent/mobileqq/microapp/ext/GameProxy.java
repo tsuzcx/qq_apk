@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import aepi;
-import ajem;
-import aknx;
+import afur;
+import akwm;
+import amhd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class GameProxy
   {
     try
     {
-      paramQQAppInterface = (aknx)paramQQAppInterface.getManager(153);
+      paramQQAppInterface = (amhd)paramQQAppInterface.getManager(153);
       if (paramQQAppInterface != null)
       {
         if (!paramQQAppInterface.j()) {
@@ -125,7 +125,7 @@ public class GameProxy
         paramString.putString("gameName", str6);
         paramString.putInt("src", k);
         paramString.putInt("enter", 3);
-        paramJSONObject = aepi.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
+        paramJSONObject = afur.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
         paramJSONObject.putExtras(paramString);
         paramActivity.startActivity(paramJSONObject);
         if (QLog.isColorLevel()) {
@@ -146,7 +146,7 @@ public class GameProxy
         if (paramActivity.src == 318) {
           paramActivity.disableMinGame = true;
         }
-        ajem.a(paramActivity);
+        akwm.a(paramActivity);
         return true;
       }
       return false;
@@ -155,7 +155,7 @@ public class GameProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.ext.GameProxy
  * JD-Core Version:    0.7.0.1
  */

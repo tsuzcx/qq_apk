@@ -1,37 +1,53 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.content.Context;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
 public class anig
-  implements anih
+  extends TbsLogClient
 {
-  private anig(anif paramanif) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public anig(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-      return false;
+    super(paramContext);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
     }
-    for (;;)
-    {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
-      {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
-        }
-      }
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void showLog(String paramString)
+  {
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
     }
   }
 }

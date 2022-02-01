@@ -1,45 +1,64 @@
-import android.text.Spanned;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportManager.ReportTask.1;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
-class blys
-  extends bmsw
+public class blys
 {
-  blys(blyr paramblyr, int paramInt)
-  {
-    super(paramInt);
-  }
+  private final HashMap<blyq, ArrayList<ItemInfo>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public int a(CharSequence paramCharSequence)
+  protected void a(blyq paramblyq, ItemInfo paramItemInfo)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
+    do
     {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
-    }
-    label92:
-    for (;;)
-    {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        return paramCharSequence;
-        i = 0;
-        break;
+        ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramblyq);
+        ArrayList localArrayList1 = localArrayList2;
+        if (localArrayList2 == null) {
+          localArrayList1 = new ArrayList();
+        }
+        localArrayList1.add(paramItemInfo);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramblyq, localArrayList1);
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("MobileReport.Manager", 4, "start report!!!");
+          }
+          ThreadManager.post(new MobileReportManager.ReportTask.1(this), 2, null, true);
+          return;
+        }
       }
-      return paramSpanned;
+    } while (!QLog.isDevelopLevel());
+    QLog.d("MobileReport.Manager", 4, "wait to report...");
+  }
+  
+  public void a(HashMap<blyq, ArrayList<ItemInfo>> paramHashMap)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    ArrayList localArrayList = new ArrayList();
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramHashMap.next();
+      blyu localblyu = new blyu(null);
+      localblyu.a((blyq)((Map.Entry)localObject).getKey());
+      localObject = ((ArrayList)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localblyu.a((ItemInfo)((Iterator)localObject).next());
+      }
+      localArrayList.add(localblyu.a());
     }
+    bccr.a(localAppRuntime, new blyv(null).a(localAppRuntime.getLongAccountUin()).a(bmvl.c()).a(), localArrayList);
   }
 }
 

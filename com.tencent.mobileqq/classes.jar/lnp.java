@@ -1,108 +1,77 @@
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.mobileqq.pb.CodedInputStreamMicro;
-import com.tencent.mobileqq.pb.WireFormatMicro;
-import java.io.IOException;
+import android.app.Notification;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
 public abstract class lnp
+  extends Binder
+  implements lno
 {
-  private VcControllerImpl a;
-  
-  public static byte a(byte[] paramArrayOfByte)
+  public static lno a(IBinder paramIBinder)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
-      return -1;
+    if (paramIBinder == null) {
+      return null;
     }
-    return paramArrayOfByte[2];
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof lno))) {
+      return (lno)localIInterface;
+    }
+    return new lnq(paramIBinder);
   }
   
-  public static boolean a(byte[] paramArrayOfByte)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
-    try
+    switch (paramInt1)
     {
-      for (;;)
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(lvw.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      boolean bool;
+      if (paramParcel1.readInt() != 0)
       {
-        int i = paramArrayOfByte.readTag();
-        if (i == 0) {
-          break;
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label168;
         }
-        if (WireFormatMicro.getTagFieldNumber(i) == 2) {
-          return true;
-        }
-        paramArrayOfByte.skipField(i);
       }
-      return false;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public final byte a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharp(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+        bool = false;
+        break;
       }
+    case 4: 
+      label168:
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
-    return 1;
+    paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    a();
+    return true;
   }
-  
-  public final void a(VcControllerImpl paramVcControllerImpl)
-  {
-    this.a = paramVcControllerImpl;
-  }
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong);
-  
-  public final byte b(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharpC2SACK(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
-      }
-    }
-    return 1;
-  }
-  
-  public abstract void b(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class bkbw
+public final class bkbw
+  implements bkaz
 {
-  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
+  public void a()
   {
-    if (paramBundle == null) {
-      return false;
+    if (QSecFramework.a()) {
+      return;
     }
-    paramAppInterface = new Intent();
-    paramAppInterface.putExtra("share_data", paramBundle);
-    paramAppInterface.putExtra("readinjoy_launch_style", 2);
-    paramAppInterface.putExtra("readinjoy_launch_source", 11);
-    paramAppInterface.putExtra("channel_id", 9999);
-    azqs.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
-    bkbq.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
-    return true;
+    try
+    {
+      if (!QSecFramework.b()) {
+        System.loadLibrary("QSec");
+      }
+      QSecFramework.a(true);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when load native so.");
+    }
+    bjzz.a(1, 1);
   }
 }
 

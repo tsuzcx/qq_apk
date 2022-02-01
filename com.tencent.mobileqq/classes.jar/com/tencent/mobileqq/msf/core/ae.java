@@ -1,45 +1,39 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.hardware.SensorManager;
 import com.tencent.qphone.base.util.QLog;
 
-final class ae
-  extends BroadcastReceiver
+class ae
+  extends Thread
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  ae(ab paramab) {}
+  
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.ACTION_SHUTDOWN")) {}
-    do
+    ab.b(this.a, true);
+    int i = 0;
+    while (i < ab.b(this.a).h)
     {
-      do
+      i += 1;
+      if (ab.c(this.a))
       {
-        do
+        if (QLog.isColorLevel()) {
+          QLog.d("QQWiFiScanManager", 2, "accScan, launch count=" + i);
+        }
+        try
         {
-          try
-          {
-            y.a(y.Q);
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            while (!QLog.isColorLevel()) {}
-            QLog.e("health_manager", 2, "setTodayOffSet Exception:" + paramContext.toString());
-            return;
-          }
-        } while (!paramIntent.getAction().equals("MSF_Action_Refresh_Steps"));
-        QLog.i("health_manager", 1, "AlarmManager 23:59 action received:" + y.M);
-      } while ((!y.M) || (y.L == null) || (y.al == null));
-      try
-      {
-        y.L.flush(y.al);
-        return;
+          Thread.sleep(ab.b(this.a).i);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
       }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("health_manager", 2, "Exception:" + paramContext.toString());
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("QQWiFiScanManager", 2, "accScan, count=" + i + ", stopped");
+      }
+    }
+    ab.b(this.a, false);
   }
 }
 

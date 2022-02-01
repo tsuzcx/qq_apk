@@ -1,8 +1,10 @@
 package io.flutter.plugin.editing;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
 import android.text.Editable;
 import android.text.Editable.Factory;
 import android.text.Selection;
@@ -11,6 +13,9 @@ import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel.Configuration;
@@ -38,6 +43,7 @@ public class TextInputPlugin
   private final View mView;
   @NonNull
   private PlatformViewsController platformViewsController;
+  private final boolean restartAlwaysRequired;
   @NonNull
   private final TextInputChannel textInputChannel;
   
@@ -47,8 +53,10 @@ public class TextInputPlugin
     this.mImm = ((InputMethodManager)paramView.getContext().getSystemService("input_method"));
     this.textInputChannel = new TextInputChannel(paramDartExecutor);
     this.textInputChannel.setTextInputMethodHandler(new TextInputPlugin.1(this));
+    this.textInputChannel.requestExistingInputState();
     this.platformViewsController = paramPlatformViewsController;
     this.platformViewsController.attachTextInputPlugin(this);
+    this.restartAlwaysRequired = isRestartAlwaysRequired();
   }
   
   private void applyStateToSelection(TextInputChannel.TextEditState paramTextEditState)
@@ -77,30 +85,30 @@ public class TextInputPlugin
     this.mImm.hideSoftInputFromWindow(paramView.getApplicationWindowToken(), 0);
   }
   
-  private static int inputTypeFromTextInputType(TextInputChannel.InputType paramInputType, boolean paramBoolean1, boolean paramBoolean2, TextInputChannel.TextCapitalization paramTextCapitalization)
+  private static int inputTypeFromTextInputType(TextInputChannel.InputType paramInputType, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, TextInputChannel.TextCapitalization paramTextCapitalization)
   {
-    int i;
-    if (paramInputType.type == TextInputChannel.TextInputType.DATETIME) {
-      i = 4;
-    }
     int j;
-    label169:
-    label187:
+    if (paramInputType.type == TextInputChannel.TextInputType.DATETIME) {
+      j = 4;
+    }
+    int i;
+    label170:
+    label203:
     do
     {
       do
       {
-        return i;
+        return j;
         if (paramInputType.type != TextInputChannel.TextInputType.NUMBER) {
           break;
         }
-        j = 2;
+        i = 2;
         if (paramInputType.isSigned) {
-          j = 4098;
+          i = 4098;
         }
-        i = j;
+        j = i;
       } while (!paramInputType.isDecimal);
-      return j | 0x2000;
+      return i | 0x2000;
       if (paramInputType.type == TextInputChannel.TextInputType.PHONE) {
         return 3;
       }
@@ -109,16 +117,16 @@ public class TextInputPlugin
       {
         i = 131073;
         if (!paramBoolean1) {
-          break label169;
+          break label170;
         }
-        j = i | 0x80000 | 0x80;
+        i = i | 0x80000 | 0x80;
       }
       for (;;)
       {
         if (paramTextCapitalization != TextInputChannel.TextCapitalization.CHARACTERS) {
-          break label187;
+          break label203;
         }
-        return j | 0x1000;
+        return i | 0x1000;
         if (paramInputType.type == TextInputChannel.TextInputType.EMAIL_ADDRESS)
         {
           i = 33;
@@ -138,13 +146,26 @@ public class TextInputPlugin
         if (paramBoolean2) {
           j = i | 0x8000;
         }
+        i = j;
+        if (!paramBoolean3) {
+          i = j | 0x80000;
+        }
       }
       if (paramTextCapitalization == TextInputChannel.TextCapitalization.WORDS) {
-        return j | 0x2000;
+        return i | 0x2000;
       }
-      i = j;
+      j = i;
     } while (paramTextCapitalization != TextInputChannel.TextCapitalization.SENTENCES);
-    return j | 0x4000;
+    return i | 0x4000;
+  }
+  
+  @SuppressLint({"NewApi"})
+  private boolean isRestartAlwaysRequired()
+  {
+    if ((this.mImm.getCurrentInputMethodSubtype() == null) || (Build.VERSION.SDK_INT < 21) || (!Build.MANUFACTURER.equals("samsung"))) {
+      return false;
+    }
+    return Settings.Secure.getString(this.mView.getContext().getContentResolver(), "default_input_method").contains("Samsung");
   }
   
   private void setPlatformViewTextInputClient(int paramInt)
@@ -152,29 +173,6 @@ public class TextInputPlugin
     this.mView.requestFocus();
     this.inputTarget = new TextInputPlugin.InputTarget(TextInputPlugin.InputTarget.Type.PLATFORM_VIEW, paramInt);
     this.mImm.restartInput(this.mView);
-    this.mRestartInputPending = false;
-  }
-  
-  private void setTextInputClient(int paramInt, TextInputChannel.Configuration paramConfiguration)
-  {
-    this.inputTarget = new TextInputPlugin.InputTarget(TextInputPlugin.InputTarget.Type.FRAMEWORK_CLIENT, paramInt);
-    this.configuration = paramConfiguration;
-    this.mEditable = Editable.Factory.getInstance().newEditable("");
-    this.mRestartInputPending = true;
-    unlockPlatformViewInputConnection();
-  }
-  
-  private void setTextInputEditingState(View paramView, TextInputChannel.TextEditState paramTextEditState)
-  {
-    if ((!this.mRestartInputPending) && (paramTextEditState.text.equals(this.mEditable.toString())))
-    {
-      applyStateToSelection(paramTextEditState);
-      this.mImm.updateSelection(this.mView, Math.max(Selection.getSelectionStart(this.mEditable), 0), Math.max(Selection.getSelectionEnd(this.mEditable), 0), BaseInputConnection.getComposingSpanStart(this.mEditable), BaseInputConnection.getComposingSpanEnd(this.mEditable));
-      return;
-    }
-    this.mEditable.replace(0, this.mEditable.length(), paramTextEditState.text);
-    applyStateToSelection(paramTextEditState);
-    this.mImm.restartInput(paramView);
     this.mRestartInputPending = false;
   }
   
@@ -210,7 +208,7 @@ public class TextInputPlugin
       this.lastInputConnection = this.platformViewsController.getPlatformViewById(Integer.valueOf(this.inputTarget.id)).onCreateInputConnection(paramEditorInfo);
       return this.lastInputConnection;
     }
-    paramEditorInfo.inputType = inputTypeFromTextInputType(this.configuration.inputType, this.configuration.obscureText, this.configuration.autocorrect, this.configuration.textCapitalization);
+    paramEditorInfo.inputType = inputTypeFromTextInputType(this.configuration.inputType, this.configuration.obscureText, this.configuration.autocorrect, this.configuration.enableSuggestions, this.configuration.textCapitalization);
     paramEditorInfo.imeOptions = 33554432;
     int i;
     if (this.configuration.inputAction == null) {
@@ -261,6 +259,31 @@ public class TextInputPlugin
     }
   }
   
+  @VisibleForTesting
+  void setTextInputClient(int paramInt, TextInputChannel.Configuration paramConfiguration)
+  {
+    this.inputTarget = new TextInputPlugin.InputTarget(TextInputPlugin.InputTarget.Type.FRAMEWORK_CLIENT, paramInt);
+    this.configuration = paramConfiguration;
+    this.mEditable = Editable.Factory.getInstance().newEditable("");
+    this.mRestartInputPending = true;
+    unlockPlatformViewInputConnection();
+  }
+  
+  @VisibleForTesting
+  void setTextInputEditingState(View paramView, TextInputChannel.TextEditState paramTextEditState)
+  {
+    if ((!this.restartAlwaysRequired) && (!this.mRestartInputPending) && (paramTextEditState.text.equals(this.mEditable.toString())))
+    {
+      applyStateToSelection(paramTextEditState);
+      this.mImm.updateSelection(this.mView, Math.max(Selection.getSelectionStart(this.mEditable), 0), Math.max(Selection.getSelectionEnd(this.mEditable), 0), BaseInputConnection.getComposingSpanStart(this.mEditable), BaseInputConnection.getComposingSpanEnd(this.mEditable));
+      return;
+    }
+    this.mEditable.replace(0, this.mEditable.length(), paramTextEditState.text);
+    applyStateToSelection(paramTextEditState);
+    this.mImm.restartInput(paramView);
+    this.mRestartInputPending = false;
+  }
+  
   public void unlockPlatformViewInputConnection()
   {
     this.isInputConnectionLocked = false;
@@ -268,7 +291,7 @@ public class TextInputPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.TextInputPlugin
  * JD-Core Version:    0.7.0.1
  */

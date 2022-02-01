@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import awqt;
+import azfe;
 
 class QidianProfileCardActivity$3
   implements Runnable
@@ -29,7 +29,7 @@ class QidianProfileCardActivity$3
         if (this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null)
         {
           i = j;
-          if (this.this$0.jdField_a_of_type_Awqt.a != null) {}
+          if (this.this$0.jdField_a_of_type_Azfe.a != null) {}
         }
         else
         {
@@ -50,7 +50,7 @@ class QidianProfileCardActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.3
  * JD-Core Version:    0.7.0.1
  */

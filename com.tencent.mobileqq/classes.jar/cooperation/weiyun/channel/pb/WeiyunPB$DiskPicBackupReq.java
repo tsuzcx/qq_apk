@@ -50,7 +50,7 @@ public final class WeiyunPB$DiskPicBackupReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupReq
  * JD-Core Version:    0.7.0.1
  */

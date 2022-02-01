@@ -1,23 +1,37 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class arfn
-  extends BroadcastReceiver
+public abstract class arfn<D extends aren>
 {
-  public arfn(FileBrowserActivity paramFileBrowserActivity) {}
+  private ArrayList<arfs> a;
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void c(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    if (this.a != null)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((arfs)localIterator.next()).a(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
+      }
     }
   }
+  
+  public abstract argl a(D paramD);
+  
+  public void a() {}
+  
+  public final void a(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2)
+  {
+    b(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramarew, paramFloat1, paramFloat2);
+  }
+  
+  public void a(D paramD) {}
+  
+  public abstract boolean a(aren paramaren);
+  
+  public abstract void b(Canvas paramCanvas, D paramD, arew paramarew, float paramFloat1, float paramFloat2);
 }
 
 

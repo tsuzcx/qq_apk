@@ -10,7 +10,7 @@ class ReadInJoyUgcSearchTopicFragment$9
   
   public void run()
   {
-    QQToast.a(this.this$0.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.this$0.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getResources().getDimensionPixelSize(2131298998));
   }
 }
 

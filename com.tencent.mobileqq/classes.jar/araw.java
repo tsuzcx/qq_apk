@@ -1,30 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class araw
-  implements bkkj<WeiyunPB.DiskFileDocDownloadAbsMsgRsp>
+public class araw
+  extends aqkz<arav>
 {
-  araw(arau paramarau) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
+  public static arav a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onFailed,errCode[" + paramInt + "],errMsg[" + paramString + "]");
-    }
-    arau.a(this.a).a().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
+    return (arav)aqlk.a().a(377);
   }
   
-  public void a(WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
+  @NonNull
+  public arav a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onSucceed");
+    return new arav();
+  }
+  
+  @Nullable
+  public arav a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arav.a(paramArrayOfaqlg);
     }
-    String str = bkmh.a(paramDiskFileDocDownloadAbsMsgRsp.downloadkey.get());
-    arau.a(this.a).a().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
+    return null;
+  }
+  
+  public void a(arav paramarav) {}
+  
+  public Class<arav> clazz()
+  {
+    return arav.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 377;
   }
 }
 

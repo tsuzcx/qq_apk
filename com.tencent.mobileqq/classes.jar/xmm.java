@@ -1,10 +1,17 @@
-public abstract interface xmm
+class xmm
+  implements bhlk
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  xmm(xml paramxml) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    yqp.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
+    this.a.a = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xmm
  * JD-Core Version:    0.7.0.1
  */

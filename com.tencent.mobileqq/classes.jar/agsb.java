@@ -1,25 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class agsb
-  implements nbs
+  implements DialogInterface.OnClickListener
 {
-  agsb(agrn paramagrn) {}
+  agsb(agrz paramagrz, ApolloGameData paramApolloGameData) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      agrn.b(paramString, bool);
-      return;
-    }
+    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
+    Intent localIntent = new Intent(this.jdField_a_of_type_Agrz.a, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Agrz.a, paramDialogInterface, -1L, localIntent, false, -1);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

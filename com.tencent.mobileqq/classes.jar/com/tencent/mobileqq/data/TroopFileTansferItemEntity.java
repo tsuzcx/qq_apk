@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
-import bbsb;
+import besm;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.util.UUID;
 
 public class TroopFileTansferItemEntity
-  extends awge
+  extends Entity
 {
   public int BusId;
   public int ErrorCode;
@@ -37,10 +37,13 @@ public class TroopFileTansferItemEntity
   public int UploadTime;
   public String _sId;
   public String _sStatus;
+  public String apkSafeDetailUrl;
+  public int apkSafeLevel;
+  public String apkSafeMsg;
   public int duration;
   public long entrySessionID;
   public int height;
-  @awhp
+  @notColumn
   public boolean isCheckPrivateDir;
   public boolean isFromAIO;
   public boolean isZipInnerFile;
@@ -52,12 +55,15 @@ public class TroopFileTansferItemEntity
   public String strQRUrl;
   public long troopuin;
   public int width;
+  public String yybApkIconUrl;
+  public String yybApkName;
+  public String yybApkPackageName;
   public int zipBusId;
   public String zipFilePath;
   public String zipInnerPath;
   public int zipType;
   
-  public Class<? extends awge> getClassForTable()
+  public Class<? extends Entity> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
@@ -69,7 +75,7 @@ public class TroopFileTansferItemEntity
   
   public void postRead()
   {
-    this.Status = bbsb.a(this._sStatus);
+    this.Status = besm.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
@@ -82,13 +88,13 @@ public class TroopFileTansferItemEntity
   
   public void prewrite()
   {
-    this._sStatus = bbsb.a(this.Status);
+    this._sStatus = besm.a(this.Status);
     this._sId = this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileTansferItemEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import akxb;
+import amqf;
 
 public class CmGameAvHandler$4
   implements Runnable
 {
-  public CmGameAvHandler$4(akxb paramakxb) {}
+  public CmGameAvHandler$4(amqf paramamqf) {}
   
   public void run()
   {
-    akxb.a(this.this$0, false);
+    amqf.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.4
  * JD-Core Version:    0.7.0.1
  */

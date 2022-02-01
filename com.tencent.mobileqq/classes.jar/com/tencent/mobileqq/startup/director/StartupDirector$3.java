@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.director;
 
-import aznp;
+import bcow;
 import com.tencent.mobileqq.splashad.SplashADView;
 
 public class StartupDirector$3
   implements Runnable
 {
-  public StartupDirector$3(aznp paramaznp, SplashADView paramSplashADView) {}
+  public StartupDirector$3(bcow parambcow, SplashADView paramSplashADView) {}
   
   public void run()
   {

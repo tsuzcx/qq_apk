@@ -1,89 +1,28 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
 
-public class aixp
+class aixp
+  implements bkhe
 {
-  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
+  aixp(aixj paramaixj) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
-      return i;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramInt;
+    aixj.a(this.a, paramInt1 + paramInt2 - 1);
   }
   
-  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    String str = paramString;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
+    if (paramInt != 0) {
+      return;
     }
-    try
+    if (aixj.b(this.a) >= this.a.getCount() - 2)
     {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
-      return str;
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      aixj.a(this.a).b(4, aixj.a(this.a), paramAbsListView);
     }
-    catch (Throwable paramJSONObject) {}
-    return paramString;
-  }
-  
-  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONArray localJSONArray = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONArray;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONObject localJSONObject = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONObject;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
+    this.a.d();
   }
 }
 

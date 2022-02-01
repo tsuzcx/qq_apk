@@ -1,12 +1,7 @@
-public abstract class bipm
-{
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-}
+public abstract interface bipm {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bipm
  * JD-Core Version:    0.7.0.1
  */

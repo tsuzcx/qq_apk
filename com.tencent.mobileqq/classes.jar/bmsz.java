@@ -1,34 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-final class bmsz
-  implements Animator.AnimatorListener
+class bmsz
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  bmsz(bmta parambmta, ValueAnimator paramValueAnimator) {}
+  bmsz(bmsv parambmsv) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Bmta != null) {
-      this.jdField_a_of_type_Bmta.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bmsv.a(this.a) != null) {
+      bmsv.a(this.a).a("onActionScale", new float[] { f });
     }
+    return true;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Bmta != null) {
-      this.jdField_a_of_type_Bmta.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    return true;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Bmta != null) {
-      this.jdField_a_of_type_Bmta.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

@@ -6,7 +6,7 @@ import java.util.Map;
 public class DurationUtil
 {
   private static final String TAG = DurationUtil.class.getSimpleName();
-  public static boolean enableLog = true;
+  public static boolean enableLog = false;
   private static Map<String, Long> timeMap = new HashMap();
   
   public static void end(String paramString)
@@ -27,7 +27,7 @@ public class DurationUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.DurationUtil
  * JD-Core Version:    0.7.0.1
  */

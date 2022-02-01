@@ -1,11 +1,10 @@
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
-public abstract interface aezx
+public class aezx
+  extends Handler
 {
-  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
-  
-  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
+  public aezx(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

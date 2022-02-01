@@ -1,28 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class avhs
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  avhs(avhr paramavhr) {}
+  avhs(avhq paramavhq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!bdin.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    int k;
+    int i;
+    if (paramContext.equals(avip.a("com.tencent.od")))
     {
-      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, alud.a(2131708649), 0).a();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
+      }
+      paramContext = avig.a;
+      k = paramContext.length;
+      i = 0;
     }
-    ((avrb)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.e, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j, new avht(this));
+    for (;;)
+    {
+      if ((i >= k) || ((j == paramContext[i]) && (avhq.a(this.a).isShowing()))) {}
+      try
+      {
+        avhq.a(this.a).dismiss();
+        label105:
+        i += 1;
+        continue;
+        return;
+      }
+      catch (Throwable paramIntent)
+      {
+        break label105;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhs
  * JD-Core Version:    0.7.0.1
  */

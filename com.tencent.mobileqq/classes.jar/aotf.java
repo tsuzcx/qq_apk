@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
-
 public abstract interface aotf
 {
-  public abstract long a();
+  public abstract void a(long paramLong);
   
-  public abstract ExcitingTransferUploadChnConfigInfo a();
+  public abstract void a(aott paramaott);
   
   public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aotf
  * JD-Core Version:    0.7.0.1
  */

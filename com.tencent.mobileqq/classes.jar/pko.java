@@ -1,50 +1,111 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class pko
-  implements poa
+public abstract class pko<K, D>
+  extends RecyclerView.Adapter<bkrv>
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  protected int a;
+  protected Context a;
+  protected VafContext a;
+  protected RecyclerViewWithHeaderFooter a;
+  protected List<D> a;
+  protected Map<Integer, String> a;
+  protected ConcurrentHashMap<K, D> a;
+  
+  public pko(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qmv();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a());
+    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
+  }
+  
+  public VafContext a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  }
+  
+  protected D a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
     return null;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  protected String a()
   {
-    return pjr.a(paramBaseArticleInfo);
+    return "dynamic_feeds_" + this.jdField_a_of_type_Int;
   }
   
-  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  public ConcurrentHashMap<K, D> a()
   {
-    paramContainer = paramContainer.getVirtualView();
-    if ((parampgd != null) && (parampgd.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampgd.a())))
-    {
-      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof oft)))
-      {
-        localObject = (oft)localObject;
-        ((oft)localObject).a(paramInt1);
-        ((oft)localObject).a(parampgd, true);
-      }
-      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
-      if ((paramContainer != null) && ((paramContainer instanceof ogr))) {
-        ((ogr)paramContainer).a(parampgd);
-      }
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
+      localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    }
+    return localConcurrentHashMap;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
   
-  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  public void a(K paramK, D paramD)
   {
-    return false;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramK, paramD);
+    }
+  }
+  
+  public void a(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void b(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyItemRangeInserted(i, paramList.size());
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pko
  * JD-Core Version:    0.7.0.1
  */

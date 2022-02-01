@@ -1,32 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class acmg
-  extends alwx
+class acmg
+  implements aclw
 {
-  public acmg(ChatHistory paramChatHistory) {}
+  acmg(acme paramacme) {}
   
-  protected void b(boolean paramBoolean)
+  public void a(aclt paramaclt)
   {
-    this.a.r();
-    if (!paramBoolean)
-    {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
-    }
+    acqy.b("GdtInterstitialPreDownloader", String.format("onPreDownloaded appName:%s view:%s minVersion:%s", new Object[] { paramaclt.a, paramaclt.b, paramaclt.c }));
+    acrl.a(BaseApplicationImpl.getApplication(), acme.a(acme.a()), 0, -2147483648);
   }
   
-  protected void c(boolean paramBoolean)
+  public void a(aclt paramaclt, int paramInt)
   {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
-      return;
-    }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
+    acqy.b("GdtInterstitialPreDownloader", String.format("onStatusChanged appName:%s view:%s minVersion:%s status:%d", new Object[] { paramaclt.a, paramaclt.b, paramaclt.c, Integer.valueOf(paramInt) }));
+  }
+  
+  public void a(aclt paramaclt, int paramInt1, int paramInt2)
+  {
+    acqy.d("GdtInterstitialPreDownloader", String.format("onFailedToPreDownload appName:%s view:%s minVersion:%s error:%d arkError:%d", new Object[] { paramaclt.a, paramaclt.b, paramaclt.c, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    acrl.a(BaseApplicationImpl.getApplication(), acme.a(acme.a()), paramInt1, paramInt2);
   }
 }
 

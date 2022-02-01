@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar;
 
-import amxd;
-import ando;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
+import aovu;
+import apcf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = amxd.a("ArMapEngine836", needCheckMd5);
+    boolean bool3 = aovu.a("ArMapEngine836", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = amxd.a("ArMapEngine836");
+        int i = aovu.a("ArMapEngine836");
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      ando.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      apcf.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }
@@ -387,7 +387,7 @@ public class ARNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

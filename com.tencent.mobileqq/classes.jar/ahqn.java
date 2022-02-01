@@ -1,26 +1,30 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ahqn
-  extends alpa
+class ahqn
+  implements View.OnTouchListener
 {
-  public ahqn(TroopView paramTroopView) {}
+  ahqn(ahqj paramahqj) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    while (this.a.a()) {
-      return;
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131695087);
-    }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 

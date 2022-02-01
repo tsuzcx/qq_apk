@@ -1,28 +1,15 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import org.json.JSONObject;
 
-public final class ackl
-  implements DialogInterface.OnClickListener
+public class ackl
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public ackl(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, acln paramacln, Bundle paramBundle, boolean paramBoolean2) {}
+  public ackl(GdtPreLoader.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = false;
-    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acln, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    if (!this.b) {
-      bool = true;
-    }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    acqy.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

@@ -1,29 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmak
-  implements blty
+  implements DialogInterface.OnClickListener
 {
-  public bmak(MusicProviderView paramMusicProviderView) {}
+  public bmak(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
-    }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
-    }
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
+    this.a.resumePlay();
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 

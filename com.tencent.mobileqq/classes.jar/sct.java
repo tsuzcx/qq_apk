@@ -1,51 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sct
+class sct
+  extends skd
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private scu jdField_a_of_type_Scu;
-  private List<BaseData> b = new ArrayList();
+  sct(sce paramsce) {}
   
-  public sct(String paramString, scu paramscu)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.jdField_a_of_type_Scu = paramscu;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void a()
-  {
-    try
+    sce.a(this.a).a(sce.b(this.a));
+    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
     {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Scu != null)) {
-        this.jdField_a_of_type_Scu.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
-      }
+      this.a.a.a(paramVideoInfo.n);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.a.a(paramString + "&sourcefrom=6");
   }
   
-  public void a(List<BaseData> paramList)
+  public int c()
   {
-    this.b = paramList;
-    a();
-  }
-  
-  public void b(List<BaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    a();
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sct
  * JD-Core Version:    0.7.0.1
  */

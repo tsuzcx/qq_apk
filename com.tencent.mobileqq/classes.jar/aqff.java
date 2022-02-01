@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class aqff
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aqff(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aqff(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2F", "0X8009E2F", 0, 0, "", "", "", "");
-    if (this.a.jdField_a_of_type_Aqeb != null)
+    aqfh.d(BaseApplicationImpl.getContext());
+    if (this.a.getActivity() != null)
     {
-      aqhg.a().b(3);
-      this.a.jdField_a_of_type_Aqeb.a();
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
+    bcst.b(null, "dc00898", "", "", "0X800AB3C", "0X800AB3C", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,20 +1,39 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
-class avdp
-  extends nab
+public class avdp
+  implements TVK_SDKMgr.InstallListener
 {
-  avdp(avdj paramavdj, avdq paramavdq) {}
+  avdp(avdh paramavdh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_Avdq != null) {
-      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
+    avdh.a = false;
+    this.a.a(anni.a(2131707170));
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    avdh.a = false;
+    if (!this.a.c)
+    {
+      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdp
  * JD-Core Version:    0.7.0.1
  */

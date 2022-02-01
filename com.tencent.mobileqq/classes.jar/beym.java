@@ -1,28 +1,42 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class beym
-  implements MediaPlayer.OnPreparedListener
+  extends anxg
 {
-  public beym(VideoTextureView paramVideoTextureView) {}
+  public beym(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  protected void b(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    if (VideoTextureView.a(this.a) != null)
+    super.b(paramBoolean, paramLong1, paramInt1, paramList, paramLong2, paramInt2, paramString);
+    if ((this.a.b) || (!TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, String.valueOf(paramLong1))) || (paramInt1 != 2)) {}
+    do
     {
-      VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
-    }
-    if (VideoTextureView.a() != null)
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+      } while ((paramList == null) || (paramList.isEmpty()) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.a(paramList);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopMoreDetailFragment", 2, "onOIDB0X899_0_Ret, result = " + paramInt2 + "strErrorMsg = " + paramString);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null))
     {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-      VideoTextureView.a().onVideoProgressUpdate(0);
-      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
-    }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags = TroopInfo.getTags(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.setTroopInfoData(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.b();
     }
   }
 }

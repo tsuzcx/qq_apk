@@ -1,5 +1,7 @@
 package com.tencent.tmdownloader.internal.remote;
 
+import com.tencent.tmassistant.appinfo.aidl.IGetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetailReqParam;
 import com.tencent.tmassistant.st.SDKReportManager2;
 import com.tencent.tmassistantbase.util.Settings;
 import com.tencent.tmassistantbase.util.ab;
@@ -9,6 +11,11 @@ import com.tencent.tmdownloader.internal.a.a;
 public class d
   extends b
 {
+  public int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback)
+  {
+    return com.tencent.tmassistant.appinfo.a.b.a().a(paramAppDetailReqParam, paramIGetAppInfoCallback);
+  }
+  
   public void a()
   {
     SDKReportManager2.getInstance();
@@ -88,7 +95,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.d
  * JD-Core Version:    0.7.0.1
  */

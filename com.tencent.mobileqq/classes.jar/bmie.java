@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
-import mqq.os.MqqHandler;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
-public class bmie
-  implements nbs
+class bmie
+  implements ModuleDownloadListener
 {
-  bmie(bmhu parambmhu) {}
+  bmie(bmic parambmic) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    if ((paramInt == 0) && (paramString == null) && (bmhu.a(this.a, bmhu.a(this.a).d))) {
-      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
+    if (!paramString.equals("pictureMarkerSo.zip")) {}
+    do
+    {
+      return;
+      localObject = bmic.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    } while (!paramString.exists());
+    Object localObject = new File((String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
+    bmij.b(paramString, (File)localObject);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

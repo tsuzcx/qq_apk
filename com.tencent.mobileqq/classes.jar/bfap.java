@@ -1,19 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
-final class bfap
-  extends BroadcastReceiver
+public class bfap
+  implements bfpo
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bfap(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0) {
+        this.a.j();
+      }
+    }
+    else
+    {
       return;
     }
-    bfam.a(paramIntent.getStringExtra("account"));
-    bfam.b(bfam.a());
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131696717, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131696777, 0).a();
   }
 }
 

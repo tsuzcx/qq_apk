@@ -1,33 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.22.1;
+import com.tencent.mobileqq.activity.Conversation.22.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class adzb
-  implements CompoundButton.OnCheckedChangeListener
+  implements GLSurfaceView.Renderer
 {
-  public adzb(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adzb(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
+    Conversation.a(this.a, paramGL10.glGetString(7937));
+    if (Conversation.a(this.a) != null) {
+      ThreadManager.post(new Conversation.22.1(this), 5, null, true);
     }
-    for (;;)
-    {
-      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + Conversation.a(this.a));
     }
+    this.a.a(new Conversation.22.2(this));
   }
 }
 

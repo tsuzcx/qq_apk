@@ -1,69 +1,49 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiyl
+  extends aiyi
+  implements View.OnClickListener
 {
-  private SendHbActivity a;
-  
-  public aiyl(SendHbActivity paramSendHbActivity)
+  public aiyl(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    this.a = paramSendHbActivity;
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
   }
   
-  public void a()
+  public View a(int paramInt, View paramView)
   {
-    Map localMap = this.a.a();
-    localMap.put("channel", this.a.jdField_a_of_type_Int + "");
-    localMap.put("bus_type", "1");
-    localMap.put("type", "1");
-    a(localMap);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    try
+    View localView;
+    if (paramView != null)
     {
-      localJSONObject.put("userId", paramString2);
-      localJSONObject.put("viewTag", "qrcodeHb");
-      localJSONObject.put("comeForm", 1);
-      paramString2 = new JSONObject();
-      if (!TextUtils.isEmpty(paramString1)) {
-        paramString2.putOpt("qrToken", paramString1);
-      }
-      paramString2.putOpt("comeFrom", Integer.valueOf(1));
-      localJSONObject.put("extra_data", paramString2.toString());
-      paramString1 = new Bundle();
-      paramString1.putString("json", localJSONObject.toString());
-      paramString1.putString("callbackSn", "0");
-      paramString1.putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
-      PayBridgeActivity.a(this.a, 5, paramString1);
-      return;
+      localView = paramView;
+      if ((paramView.getTag() instanceof aiym)) {}
     }
-    catch (JSONException paramString1)
+    else
     {
-      paramString1.printStackTrace();
+      localView = LayoutInflater.from(this.a).inflate(2131561566, null);
     }
+    localView.setOnClickListener(this);
+    localView.setTag(new aiym());
+    return localView;
   }
   
-  public void a(Map<String, String> paramMap)
+  public void onClick(View paramView)
   {
-    Object localObject = new JSONObject(paramMap);
-    paramMap = this.a.b();
-    paramMap.put("extra_data", ((JSONObject)localObject).toString());
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("json", new JSONObject(paramMap).toString());
-    ((Bundle)localObject).putString("callbackSn", "0");
-    ((Bundle)localObject).putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
-    PayBridgeActivity.a(this.a, 5, (Bundle)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
+    }
+    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
+    localIntent.putExtra("kSrouce", 15);
+    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

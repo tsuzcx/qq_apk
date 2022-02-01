@@ -1,39 +1,39 @@
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
-@RequiresApi(api=18)
 public class asxx
-  implements asxf
+  extends atwn
 {
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private xml jdField_a_of_type_Xml;
+  public asxx(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("identification_yuv", 2, "uninit..");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
-      }
-      return;
-    }
-    finally {}
+    this.a.a.a().b();
   }
   
-  public void a(xmp paramxmp)
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Xml != null) {
-      this.jdField_a_of_type_Xml.a(paramxmp);
-    }
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

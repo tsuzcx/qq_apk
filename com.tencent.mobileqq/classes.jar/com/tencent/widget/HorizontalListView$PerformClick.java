@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bhxv;
+import bklh;
 
 class HorizontalListView$PerformClick
-  extends bhxv
+  extends bklh
   implements Runnable
 {
   int a;
@@ -40,7 +40,7 @@ class HorizontalListView$PerformClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.PerformClick
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,23 @@
-import MConch.SCPullConchs;
-import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class bfae
+  implements bfbl
 {
-  public SCPullConchs a;
-  public SCGet3rdCloudCheck a;
+  public bfae(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    long l = bfbh.a(this.a.a, paramInt1, paramInt2, paramInt3) / 1000L;
+    if (!PublishHomeWorkFragment.a(this.a, l))
+    {
+      bfbh.a(this.a.a, (bfbh)this.a.a.a());
+      return;
+    }
+    this.a.c = l;
+    this.a.a.b();
+    this.a.b.setRightText(this.a.a(l));
+  }
 }
 
 

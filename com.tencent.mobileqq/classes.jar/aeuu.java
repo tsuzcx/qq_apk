@@ -1,14 +1,16 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class aeuu
+  implements DialogInterface.OnClickListener
 {
-  public int a = -1;
-  public aeuv a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b = -1;
-  public ArrayList<aeuw> b;
-  public int c = -1;
+  public aeuu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ProfileLabelEditorActivity.a(this.a);
+  }
 }
 
 

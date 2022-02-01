@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.content.Context;
+import NS_COMM.COMM.StCommonExt;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
@@ -18,69 +18,77 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import bgxl;
-import bhbm;
-import bhcn;
-import bhmc;
-import bhmd;
-import bhme;
-import bhmf;
-import bhmi;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.MiniSDK;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.R.drawable;
+import com.tencent.qqmini.sdk.R.id;
+import com.tencent.qqmini.sdk.R.layout;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
+import com.tencent.qqmini.sdk.manager.LoginManager;
+import com.tencent.qqmini.sdk.monitor.service.TaskMonitorManager;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
+import com.tencent.qqmini.sdk.utils.WnsUtil;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
+@MiniKeep
 public class MainPageFragment
   extends MiniBaseFragment
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
-  private static final String jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/mini/files/";
-  private int jdField_a_of_type_Int;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bhme(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private Switch jdField_a_of_type_AndroidWidgetSwitch;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhmf jdField_a_of_type_Bhmf;
-  private MiniAppProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private View jdField_d_of_type_AndroidViewView;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View e;
+  private static final String LIKE_NUM_POSTFIX = "个赞";
+  private static final String MINI_FILE_SUB_PATH = "/tencent/mini/files/";
+  private static final String MINI_LOG_PATH = Environment.getExternalStorageDirectory().getPath() + "/tencent/mini/files/";
+  public static final String TAG = "MainPageFragment";
+  private boolean isLike;
+  private boolean isMiniGame = false;
+  private ImageView mAppIcon;
+  private TextView mAppName;
+  private TextView mBackTextView;
+  private ImageView mBackView;
+  private ChannelProxy mChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+  private View mComplainCallbackContainer;
+  private Button mEnterMiniAppBtn;
+  private TextView mIntroduction;
+  private ImageView mLikeBtn;
+  private View mLikeContainer;
+  private COMM.StCommonExt mLikeExtInfo;
+  private TextView mLikeNum;
+  private int mLikeNumber = 0;
+  private View.OnLongClickListener mLongClickListener = new MainPageFragment.1(this);
+  private MiniAppDialog mMiniAppDialog;
+  private MiniAppInfo mMiniAppInfo;
+  private MiniAppProxy mMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+  private ImageView mMoreView;
+  private Button mRecommendMiniAppBtn;
+  private View mRelativePublicAccountContainer;
+  private View mSeparator;
+  private View mSetTopContainer;
+  private Switch mSetTopSwitch;
+  private TextView mSetTopText;
+  private COMM.StCommonExt mTopExtInfo;
   
-  private Drawable a(String paramString)
+  private Drawable getIconDrawable(String paramString)
   {
     int i = DisplayUtil.dip2px(getActivity(), 70.0F);
     Drawable localDrawable = null;
     try
     {
       if (Build.VERSION.SDK_INT >= 21) {
-        localDrawable = getActivity().getDrawable(2130840898);
+        localDrawable = getActivity().getDrawable(R.drawable.mini_sdk_icon_loading_default);
       }
-      return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getDrawable(getActivity(), paramString, i, i, localDrawable);
+      return this.mMiniAppProxy.getDrawable(getActivity(), paramString, i, i, localDrawable);
     }
     catch (Exception localException)
     {
@@ -93,153 +101,138 @@ public class MainPageFragment
     }
   }
   
-  private void a()
+  private void handleMoreButtonEvent()
+  {
+    this.mMiniAppDialog = new MiniAppDialog(getActivity());
+    this.mMiniAppDialog.setContentView(LayoutInflater.from(getActivity()).inflate(R.layout.mini_sdk_main_page_dialog_layout, null));
+    TextView localTextView = (TextView)this.mMiniAppDialog.findViewById(R.id.miniapp_seting);
+    localTextView.setText("设置");
+    localTextView.setOnClickListener(this);
+    localTextView = (TextView)this.mMiniAppDialog.findViewById(R.id.miniapp_more_information);
+    localTextView.setText("更多资料");
+    localTextView.setOnClickListener(this);
+    ((TextView)this.mMiniAppDialog.findViewById(R.id.miniapp_dialog_cancel)).setOnClickListener(this);
+    this.mMiniAppDialog.show();
+  }
+  
+  private void initData()
   {
     Bundle localBundle = getArguments();
     if (localBundle != null)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = ((MiniAppInfo)localBundle.getParcelable("mini_app_info"));
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isEngineTypeMiniGame();
+      this.mMiniAppInfo = ((MiniAppInfo)localBundle.getParcelable("mini_app_info"));
+      this.isMiniGame = this.mMiniAppInfo.isEngineTypeMiniGame();
     }
   }
   
-  private void a(int paramInt)
+  private void initUI()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText("为小游戏点赞");
+    if (this.mMiniAppInfo != null)
+    {
+      if (!TextUtils.isEmpty(this.mMiniAppInfo.iconUrl)) {
+        this.mAppIcon.setImageDrawable(getIconDrawable(this.mMiniAppInfo.iconUrl));
       }
-    }
-    while (paramInt <= 0)
-    {
-      return;
-      this.jdField_c_of_type_AndroidWidgetTextView.setText("为小程序点赞");
-      return;
-    }
-    if (paramInt > 9999)
-    {
-      float f = paramInt / 10000.0F;
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format("%.2f", new Object[] { Float.valueOf(f) }) + "万" + "个赞");
-      return;
-    }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramInt + "个赞");
-  }
-  
-  public static void a(Context paramContext, MiniAppInfo paramMiniAppInfo, int paramInt)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtra("mini_app_info", paramMiniAppInfo);
-    localIntent.putExtra("versionType", paramInt);
-    bhmi.a(paramContext, localIntent, MiniFragmentActivity.class, MainPageFragment.class);
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-    {
-      QMLog.e("MainPageFragment", "startMoreInformation, miniAppInfo = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      return;
-    }
-    Object localObject = "https://q.qq.com/os/store/details-more?appid=" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId;
-    MiniAppProxy localMiniAppProxy;
-    if (!TextUtils.isEmpty(paramString)) {
-      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    }
-    for (paramString = (String)localObject + "&token=" + paramString + "&uin=" + localMiniAppProxy.getAccount();; paramString = (String)localObject)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("url", paramString);
-      ((Intent)localObject).putExtra("title", "更多资料");
-      new Bundle().putBoolean("hide_more_button", true);
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject);
-      return;
-    }
-  }
-  
-  private void a(boolean paramBoolean) {}
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
-    {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl)) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.desc);
-      boolean bool = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isAppStoreMiniApp();
-      if ((bool) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isInternalApp()))
+      this.mAppName.setText(this.mMiniAppInfo.name);
+      this.mIntroduction.setText(this.mMiniAppInfo.desc);
+      boolean bool = this.mMiniAppInfo.isAppStoreMiniApp();
+      if ((bool) || (this.mMiniAppInfo.isInternalApp()))
       {
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+        this.mSetTopContainer.setVisibility(8);
         if (bool)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-          if (this.e != null) {
-            this.e.setVisibility(8);
+          this.mRecommendMiniAppBtn.setVisibility(8);
+          if (this.mSeparator != null) {
+            this.mSeparator.setVisibility(8);
           }
         }
       }
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.isMiniGame)
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText("添加至我的小程序");
-      this.jdField_a_of_type_AndroidWidgetButton.setText("推荐小游戏");
-      this.jdField_b_of_type_AndroidWidgetButton.setText("进入小游戏");
-      this.jdField_c_of_type_AndroidWidgetTextView.setText("为小游戏点赞");
+      this.mSetTopText.setText("置顶");
+      this.mRecommendMiniAppBtn.setText("推荐小游戏");
+      this.mEnterMiniAppBtn.setText("进入小游戏");
+      this.mLikeNum.setText("为小游戏点赞");
     }
     for (;;)
     {
-      if (!QUAUtil.isQQApp())
+      if ((!QUAUtil.isQQApp()) && (!QUAUtil.isDemoApp()))
       {
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.mSetTopContainer.setVisibility(8);
+        this.mLikeContainer.setVisibility(8);
+      }
+      if (QUAUtil.isQQBrowseApp()) {
+        this.mEnterMiniAppBtn.setVisibility(8);
       }
       return;
-      this.jdField_c_of_type_AndroidWidgetTextView.setText("为小程序点赞");
+      if (WnsUtil.needShowMiniAppFullScreen()) {
+        this.mSetTopText.setText("置顶");
+      }
+      this.mLikeNum.setText("为小程序点赞");
     }
   }
   
-  private void b(MiniAppInfo paramMiniAppInfo)
+  private void reportClick(String paramString)
   {
-    if (paramMiniAppInfo.topType == 0)
+    SDKMiniProgramLpReportDC04239.reportUserClick(this.mMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.mMiniAppInfo), null, "user_click", "more_about", paramString);
+  }
+  
+  private void sendGetUserAppInfoRequest()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.mMiniAppInfo.appId);
+    update(this.mMiniAppInfo);
+    this.mChannelProxy.getUserAppInfo(null, localArrayList, new MainPageFragment.4(this));
+  }
+  
+  private void sendSetUserAppLikeRequest(boolean paramBoolean)
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).setUserAppLike(paramBoolean, this.mLikeExtInfo, this.mMiniAppInfo.appId, new MainPageFragment.6(this));
+  }
+  
+  private void setLikeNum()
+  {
+    if (this.isLike)
     {
-      this.jdField_a_of_type_AndroidWidgetSwitch.setChecked(false);
+      this.isLike = false;
+      this.mLikeNumber -= 1;
+      updateLikeNum(this.mLikeNumber);
+      updateLikeState(this.isLike);
+      sendSetUserAppLikeRequest(this.isLike);
+      if (!this.isLike) {
+        break label81;
+      }
+    }
+    label81:
+    for (String str = "like_on";; str = "like_off")
+    {
+      reportClick(str);
+      return;
+      this.isLike = true;
+      this.mLikeNumber += 1;
+      break;
+    }
+  }
+  
+  private void setMiniAppTop(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null)
+    {
+      QMLog.e("MainPageFragment", "setMiniAppTop, miniAppInfo = null");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetSwitch.setChecked(true);
+    this.mChannelProxy.setUserAppTop(paramMiniAppInfo, new MainPageFragment.5(this));
   }
   
-  private void b(String paramString)
-  {
-    bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "user_click", "more_about", paramString);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840899);
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840926);
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.launchParam.scene = 1024;
-    MiniSDK.startMiniApp(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-  }
-  
-  private void c(MiniAppInfo paramMiniAppInfo)
+  private void setTopType(MiniAppInfo paramMiniAppInfo)
   {
     int i;
     if (paramMiniAppInfo.topType == 0)
     {
       i = 1;
       paramMiniAppInfo.topType = i;
-      b(paramMiniAppInfo);
-      a(paramMiniAppInfo);
+      updateTopTypeState(paramMiniAppInfo);
+      sendSetUserAppTopRequest(paramMiniAppInfo);
       if (paramMiniAppInfo.topType != 0) {
         break label46;
       }
@@ -247,58 +240,18 @@ public class MainPageFragment
     label46:
     for (paramMiniAppInfo = "settop_off";; paramMiniAppInfo = "settop_on")
     {
-      b(paramMiniAppInfo);
+      reportClick(paramMiniAppInfo);
       return;
       i = 0;
       break;
     }
   }
   
-  private void d() {}
-  
-  private void e()
+  private void startComplainAndCallback()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mMiniAppInfo == null)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int -= 1;
-      a(this.jdField_a_of_type_Int);
-      b(this.jdField_a_of_type_Boolean);
-      a(this.jdField_a_of_type_Boolean);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label81;
-      }
-    }
-    label81:
-    for (String str = "like_on";; str = "like_off")
-    {
-      b(str);
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int += 1;
-      break;
-    }
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Bhmf = new bhmf(getActivity());
-    this.jdField_a_of_type_Bhmf.setContentView(LayoutInflater.from(getActivity()).inflate(2131559351, null));
-    TextView localTextView = (TextView)this.jdField_a_of_type_Bhmf.findViewById(2131370642);
-    localTextView.setText("设置");
-    localTextView.setOnClickListener(this);
-    localTextView = (TextView)this.jdField_a_of_type_Bhmf.findViewById(2131370636);
-    localTextView.setText("更多资料");
-    localTextView.setOnClickListener(this);
-    ((TextView)this.jdField_a_of_type_Bhmf.findViewById(2131370618)).setOnClickListener(this);
-    this.jdField_a_of_type_Bhmf.show();
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-    {
-      QMLog.e("MainPageFragment", "startComplainAndCallback, mApkgConfig = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      QMLog.e("MainPageFragment", "startComplainAndCallback, mApkgConfig = " + this.mMiniAppInfo);
       return;
     }
     Object localObject1 = "";
@@ -316,10 +269,10 @@ public class MainPageFragment
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    localObject2 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId + "&openid=" + a() + "&avatar=" + (String)localObject1 + "&nickname=游客";
+    localObject2 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + this.mMiniAppInfo.appId + "&openid=" + getUin() + "&avatar=" + (String)localObject1 + "&nickname=游客";
     localObject1 = localObject2;
     if (!QUAUtil.isQQApp()) {
-      localObject1 = (String)localObject2 + "&customInfo=-" + this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPlatformId();
+      localObject1 = (String)localObject2 + "&customInfo=-" + this.mMiniAppProxy.getPlatformId();
     }
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("url", (String)localObject1);
@@ -327,99 +280,181 @@ public class MainPageFragment
     localObject1 = new Bundle();
     ((Bundle)localObject1).putBoolean("hide_more_button", true);
     ((Intent)localObject2).putExtras((Bundle)localObject1);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject2);
-    b("feedback");
+    this.mMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject2);
+    reportClick("feedback");
     QMLog.d("MainPageFragment", "feedback, prepare to upload log ");
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).uploadUserLog(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).uploadUserLog(this.mMiniAppInfo.appId);
   }
   
-  private void h() {}
-  
-  public String a()
+  private void startMiniApp()
   {
-    return bgxl.a().a();
+    this.mMiniAppInfo.launchParam.scene = 1024;
+    MiniSDK.startMiniApp(getActivity(), this.mMiniAppInfo);
   }
   
-  public void a(MiniAppInfo paramMiniAppInfo) {}
+  private void startMoreInformation(String paramString)
+  {
+    if (this.mMiniAppInfo == null)
+    {
+      QMLog.e("MainPageFragment", "startMoreInformation, miniAppInfo = " + this.mMiniAppInfo);
+      return;
+    }
+    Object localObject = "https://q.qq.com/os/store/details-more?appid=" + this.mMiniAppInfo.appId;
+    MiniAppProxy localMiniAppProxy;
+    if (!TextUtils.isEmpty(paramString)) {
+      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    }
+    for (paramString = (String)localObject + "&token=" + paramString + "&uin=" + localMiniAppProxy.getAccount() + "&pid=" + localMiniAppProxy.getPlatformId();; paramString = (String)localObject)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("url", paramString);
+      ((Intent)localObject).putExtra("title", "更多资料");
+      new Bundle().putBoolean("hide_more_button", true);
+      this.mMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject);
+      return;
+    }
+  }
+  
+  private void startRecommendMiniApp() {}
+  
+  private void update(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return;
+    }
+    if (!TextUtils.isEmpty(this.mMiniAppInfo.name)) {
+      this.mAppName.setText(this.mMiniAppInfo.name);
+    }
+    if (!TextUtils.isEmpty(this.mMiniAppInfo.desc)) {
+      this.mIntroduction.setText(this.mMiniAppInfo.desc);
+    }
+    updateTopTypeState(paramMiniAppInfo);
+  }
+  
+  private void updateLikeNum(int paramInt)
+  {
+    if (!this.isLike) {
+      if (this.isMiniGame) {
+        this.mLikeNum.setText("为小游戏点赞");
+      }
+    }
+    while (paramInt <= 0)
+    {
+      return;
+      this.mLikeNum.setText("为小程序点赞");
+      return;
+    }
+    if (paramInt > 9999)
+    {
+      float f = paramInt / 10000.0F;
+      this.mLikeNum.setText(String.format("%.2f", new Object[] { Float.valueOf(f) }) + "万" + "个赞");
+      return;
+    }
+    this.mLikeNum.setText(paramInt + "个赞");
+  }
+  
+  private void updateLikeState(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mLikeBtn.setImageResource(R.drawable.mini_sdk_like_button);
+      return;
+    }
+    this.mLikeBtn.setImageResource(R.drawable.mini_sdk_not_like_button);
+  }
+  
+  private void updateTopTypeState(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo.topType == 0)
+    {
+      this.mSetTopSwitch.setChecked(false);
+      return;
+    }
+    this.mSetTopSwitch.setChecked(true);
+  }
+  
+  public String getUin()
+  {
+    return LoginManager.getInstance().getAccount();
+  }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131370621)
+    if (i == R.id.miniapp_enter_miniapp_btn)
     {
-      c();
-      b("launch");
+      startMiniApp();
+      reportClick("launch");
     }
-    do
+    for (;;)
     {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (i == R.id.miniapp_like_container)
       {
-        do
+        setLikeNum();
+      }
+      else if (i == R.id.miniapp_set_top_switch)
+      {
+        setTopType(this.mMiniAppInfo);
+      }
+      else if (i == R.id.miniapp_recommend_miniapp_btn)
+      {
+        startRecommendMiniApp();
+        reportClick("share");
+      }
+      else if (i != R.id.miniapp_relative_public_account_container)
+      {
+        if (i == R.id.miniapp_complain_callback_container)
         {
-          return;
-          if (i == 2131370628)
-          {
-            e();
-            return;
-          }
-          if (i == 2131370641)
-          {
-            c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-            return;
-          }
-          if (i == 2131370639)
-          {
-            h();
-            b("share");
-            return;
-          }
-        } while (i == 2131370640);
-        if (i == 2131370615)
-        {
-          g();
-          return;
+          startComplainAndCallback();
         }
-        if (i == 2131370645)
+        else if (i == R.id.miniapp_title_back)
         {
           getActivity().finish();
-          return;
         }
-        if (i == 2131370646)
+        else if (i == R.id.miniapp_title_more)
         {
-          f();
-          return;
+          handleMoreButtonEvent();
         }
-        if (i != 2131370642) {
-          break;
-        }
-      } while ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId)));
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
-      this.jdField_a_of_type_Bhmf.dismiss();
-      b("set");
-      return;
-      if (i == 2131370636)
-      {
-        if (QUAUtil.isQQApp()) {
-          a(null);
-        }
-        for (;;)
+        else if (i == R.id.miniapp_seting)
         {
-          this.jdField_a_of_type_Bhmf.dismiss();
-          b("profile");
-          return;
-          paramView = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-          if (paramView != null) {
-            paramView.getSDKOpenKeyToken(null, new bhmd(this));
+          if ((this.mMiniAppInfo != null) && (!TextUtils.isEmpty(this.mMiniAppInfo.appId)))
+          {
+            ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name);
+            this.mMiniAppDialog.dismiss();
+            reportClick("set");
+          }
+        }
+        else
+        {
+          if (i == R.id.miniapp_more_information)
+          {
+            if (QUAUtil.isQQApp()) {
+              startMoreInformation(null);
+            }
+            for (;;)
+            {
+              this.mMiniAppDialog.dismiss();
+              reportClick("profile");
+              break;
+              ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+              if (localChannelProxy != null) {
+                localChannelProxy.getSDKOpenKeyToken(null, new MainPageFragment.3(this));
+              }
+            }
+          }
+          if (i == R.id.miniapp_dialog_cancel) {
+            this.mMiniAppDialog.dismiss();
           }
         }
       }
-    } while (i != 2131370618);
-    this.jdField_a_of_type_Bhmf.dismiss();
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559352, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(R.layout.mini_sdk_main_page_layout, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getActivity().getWindow().clearFlags(67108864);
@@ -432,52 +467,60 @@ public class MainPageFragment
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, DisplayUtil.getStatusBarHeight(getActivity()), 0, 0);
     }
-    a();
+    initData();
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onResume()
   {
     super.onResume();
-    bhbm.a().a(getClass().getSimpleName(), true);
+    TaskMonitorManager.g().switchPerfmPage(getClass().getSimpleName(), true);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370631));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370637));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370617));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370630));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370629));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131376507);
-    this.jdField_a_of_type_AndroidWidgetSwitch = ((Switch)paramView.findViewById(2131370641));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370639));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370621));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370640);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370615);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370628);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370645));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370646));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376508));
-    this.e = paramView.findViewById(2131368570);
-    this.jdField_a_of_type_AndroidWidgetSwitch.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView.setOnLongClickListener(new bhmc(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    b();
-    d();
+    this.mAppIcon = ((ImageView)paramView.findViewById(R.id.miniapp_logo));
+    this.mAppIcon.setOnLongClickListener(this.mLongClickListener);
+    this.mAppName = ((TextView)paramView.findViewById(R.id.miniapp_name));
+    this.mIntroduction = ((TextView)paramView.findViewById(R.id.miniapp_desc));
+    this.mLikeNum = ((TextView)paramView.findViewById(R.id.miniapp_like_num_text));
+    this.mLikeBtn = ((ImageView)paramView.findViewById(R.id.miniapp_like_image));
+    this.mSetTopContainer = paramView.findViewById(R.id.set_top_layout);
+    this.mSetTopSwitch = ((Switch)paramView.findViewById(R.id.miniapp_set_top_switch));
+    this.mRecommendMiniAppBtn = ((Button)paramView.findViewById(R.id.miniapp_recommend_miniapp_btn));
+    this.mEnterMiniAppBtn = ((Button)paramView.findViewById(R.id.miniapp_enter_miniapp_btn));
+    this.mRelativePublicAccountContainer = paramView.findViewById(R.id.miniapp_relative_public_account_container);
+    this.mComplainCallbackContainer = paramView.findViewById(R.id.miniapp_complain_callback_container);
+    this.mLikeContainer = paramView.findViewById(R.id.miniapp_like_container);
+    this.mBackView = ((ImageView)paramView.findViewById(R.id.miniapp_title_back));
+    this.mMoreView = ((ImageView)paramView.findViewById(R.id.miniapp_title_more));
+    this.mSetTopText = ((TextView)paramView.findViewById(R.id.set_top_text));
+    this.mSeparator = paramView.findViewById(R.id.item_separator);
+    this.mSetTopSwitch.setOnClickListener(this);
+    this.mRecommendMiniAppBtn.setOnClickListener(this);
+    this.mEnterMiniAppBtn.setOnClickListener(this);
+    this.mRelativePublicAccountContainer.setOnClickListener(this);
+    this.mComplainCallbackContainer.setOnClickListener(this);
+    this.mComplainCallbackContainer.setOnLongClickListener(new MainPageFragment.2(this));
+    this.mBackView.setOnClickListener(this);
+    this.mMoreView.setOnClickListener(this);
+    this.mLikeContainer.setOnClickListener(this);
+    initUI();
+    sendGetUserAppInfoRequest();
+  }
+  
+  public void sendSetUserAppTopRequest(MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramMiniAppInfo == null) && (QMLog.isColorLevel())) {
+      QMLog.e("MainPageFragment", "sendSetUserAppTopRequest, miniAppInfo = " + this.mMiniAppInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MainPageFragment
  * JD-Core Version:    0.7.0.1
  */

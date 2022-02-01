@@ -1,27 +1,14 @@
-import android.view.ViewGroup;
-
-public abstract class tgd<T>
-  extends biej<T>
+public abstract interface tgd
 {
-  public thf a;
-  public thl a;
-  public thp a;
+  public abstract void a();
   
-  public tgd(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, paramInt);
-  }
+  public abstract void a(float paramFloat);
   
-  public abstract ViewGroup a();
-  
-  public boolean a()
-  {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.b());
-  }
+  public abstract void b(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgd
  * JD-Core Version:    0.7.0.1
  */

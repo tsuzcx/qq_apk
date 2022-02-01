@@ -1,107 +1,183 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.view.Surface;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoto
-  extends aokh<aotn>
+  implements Handler.Callback
 {
-  public int a()
-  {
-    return 556;
-  }
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private aotp jdField_a_of_type_Aotp;
+  private VideoEncoderCore jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
   
-  @NonNull
-  public aotn a(int paramInt)
+  private void b()
   {
-    return new aotn();
-  }
-  
-  @Nullable
-  public aotn a(aoko[] paramArrayOfaoko)
-  {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaoko != null) {
-      try
-      {
-        if (paramArrayOfaoko.length > 0)
-        {
-          paramArrayOfaoko = (aotn)aolc.a(paramArrayOfaoko[0].a, aotn.class);
-          return paramArrayOfaoko;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaoko)
-      {
-        QLog.e("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaoko.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  public Class<aotn> a()
-  {
-    return aotn.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aotn paramaotn)
-  {
-    if (paramaotn != null)
+    QLog.d("VideoEncoder", 2, "handleStopRecording");
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
-    }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = null;
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
       {
-        if (TextUtils.isEmpty(paramaotn.a)) {
-          paramaotn.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingdownload", paramaotn.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-C2C-Download config [" + paramaotn.a + "]");
-        localObject = (aqud)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqud)localObject).a(paramaotn);
-        }
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      }
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_AndroidOsHandler = null;
+      }
+      if (this.jdField_a_of_type_Aotp != null)
+      {
+        this.jdField_a_of_type_Aotp.c();
+        this.jdField_a_of_type_Aotp = null;
       }
       return;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("VideoEncoder", 1, "handleStopRecording stop encoder fail.", localException);
+        if (this.jdField_a_of_type_Aotp != null) {
+          this.jdField_a_of_type_Aotp.a(2);
+        }
+      }
+    }
   }
   
-  public int b()
+  private void b(long paramLong)
   {
-    return 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleVideoFrameAvailable encode video fail.", localException);
+      } while (this.jdField_a_of_type_Aotp == null);
+      this.jdField_a_of_type_Aotp.a(4);
+    }
   }
   
-  public boolean b()
+  private void b(byte[] paramArrayOfByte, long paramLong)
   {
-    return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramArrayOfByte, paramLong);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleAudioFrameAvailable encode audio fail.", paramArrayOfByte);
+      } while (this.jdField_a_of_type_Aotp == null);
+      this.jdField_a_of_type_Aotp.a(3);
+    }
   }
   
-  public boolean c()
+  public Surface a()
   {
+    Surface localSurface = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {
+      localSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+    }
+    return localSurface;
+  }
+  
+  public void a()
+  {
+    QLog.d("VideoEncoder", 2, "stopRecording");
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      QLog.d("VideoEncoder", 2, String.format("videoFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, Long.valueOf(paramLong)).sendToTarget();
+    }
+  }
+  
+  public void a(batj parambatj, aotp paramaotp)
+  {
+    QLog.d("VideoEncoder", 2, "startRecording");
+    this.jdField_a_of_type_Aotp = paramaotp;
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("EncodeThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = new VideoEncoderCore();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(parambatj, paramaotp);
+      if (this.jdField_a_of_type_Aotp != null) {
+        this.jdField_a_of_type_Aotp.a();
+      }
+      return;
+    }
+    catch (Exception parambatj)
+    {
+      for (;;)
+      {
+        QLog.e("VideoEncoder", 1, "startRecording start encoder fail.", parambatj);
+        if (this.jdField_a_of_type_Aotp != null) {
+          this.jdField_a_of_type_Aotp.a(1);
+        }
+      }
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      QLog.d("VideoEncoder", 2, String.format("audioFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 2: 
+      b();
+      return true;
+    case 3: 
+      paramMessage = (Object[])paramMessage.obj;
+      b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return true;
+    }
+    b(((Long)paramMessage.obj).longValue());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoto
  * JD-Core Version:    0.7.0.1
  */

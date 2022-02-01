@@ -9,16 +9,13 @@ import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 
 public class PTSImageView
   extends ImageView
-  implements IView<PTSNodeImage>
+  implements IView
 {
-  private PTSNodeImage mNode;
-  private PTSViewDecorationUtil.RoundedCorner mRoundedCorner;
+  private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
   public PTSImageView(PTSNodeImage paramPTSNodeImage)
   {
     super(paramPTSNodeImage.getContext());
-    this.mNode = paramPTSNodeImage;
-    this.mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.mNode);
     setScaleType(ImageView.ScaleType.FIT_XY);
   }
   
@@ -28,11 +25,7 @@ public class PTSImageView
     this.mRoundedCorner.clipPath(paramCanvas);
     super.draw(paramCanvas);
     this.mRoundedCorner.drawCorner(paramCanvas, i);
-  }
-  
-  public PTSNodeImage getNode()
-  {
-    return this.mNode;
+    this.mRoundedCorner.drawBorder(paramCanvas);
   }
   
   public void onBindNodeInfo(PTSNodeInfo paramPTSNodeInfo)
@@ -42,7 +35,7 @@ public class PTSImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSImageView
  * JD-Core Version:    0.7.0.1
  */

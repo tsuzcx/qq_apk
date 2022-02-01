@@ -1,15 +1,19 @@
 package com.tencent.biz.qrcode.activity;
 
+import Override;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import xzt;
+import ztl;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -18,14 +22,22 @@ public abstract class QRLoginBaseActivity
   
   protected abstract void a();
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131369342));
-    this.b.setContentDescription(getText(2131690623));
-    this.b.setOnClickListener(new xzt(this));
+    this.b = ((ImageView)super.findViewById(2131369733));
+    this.b.setContentDescription(getText(2131690563));
+    this.b.setOnClickListener(new ztl(this));
     return true;
   }
   
@@ -46,6 +58,13 @@ public abstract class QRLoginBaseActivity
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void setImmersiveStatus()
   {
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
@@ -53,14 +72,14 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131166959);
+        int i = getResources().getColor(2131167042);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label103;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838592));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838758));
         }
       }
     }
@@ -77,7 +96,7 @@ public abstract class QRLoginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

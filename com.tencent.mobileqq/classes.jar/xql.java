@@ -1,50 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class xql
-  extends wos<wpn>
+  implements xrw
 {
-  public xql(@Nullable wow paramwow)
-  {
-    super(paramwow);
-  }
+  public xql(TrimTextureVideoView paramTrimTextureVideoView) {}
   
-  protected JobSegment<wov, wpn> a()
+  public boolean a(xrt paramxrt, int paramInt1, int paramInt2)
   {
-    return new wpi();
-  }
-  
-  protected JobSegment<Integer, wov> a(wou paramwou)
-  {
-    return new xqm(paramwou);
-  }
-  
-  protected wpn a()
-  {
-    woy localwoy = (woy)uwa.a(11);
-    List localList = localwoy.b();
-    wpn localwpn = new wpn(new ErrorMessage());
-    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
-    localwpn.jdField_b_of_type_Boolean = true;
-    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localwpn;
-  }
-  
-  protected wpn a(ErrorMessage paramErrorMessage)
-  {
-    return new wpn(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((woy)uwa.a(11)).b(paramList, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xql
  * JD-Core Version:    0.7.0.1
  */

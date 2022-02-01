@@ -8,16 +8,16 @@ import java.util.Iterator;
 class PAGView$2
   extends AnimatorListenerAdapter
 {
-  PAGView$2(PAGView paramPAGView1, PAGView paramPAGView2) {}
+  PAGView$2(PAGView paramPAGView) {}
   
   public void onAnimationCancel(Animator arg1)
   {
     super.onAnimationCancel(???);
-    synchronized (this.val$pagView)
+    synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$300(this.this$0).iterator();
+      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(this.val$pagView);
+        ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(this.this$0);
       }
     }
   }
@@ -25,11 +25,11 @@ class PAGView$2
   public void onAnimationEnd(Animator arg1)
   {
     super.onAnimationEnd(???);
-    synchronized (this.val$pagView)
+    synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$300(this.this$0).iterator();
+      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(this.val$pagView);
+        ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(this.this$0);
       }
     }
   }
@@ -37,11 +37,11 @@ class PAGView$2
   public void onAnimationRepeat(Animator arg1)
   {
     super.onAnimationRepeat(???);
-    synchronized (this.val$pagView)
+    synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$300(this.this$0).iterator();
+      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(this.val$pagView);
+        ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(this.this$0);
       }
     }
   }
@@ -49,18 +49,18 @@ class PAGView$2
   public void onAnimationStart(Animator arg1)
   {
     super.onAnimationStart(???);
-    synchronized (this.val$pagView)
+    synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$300(this.this$0).iterator();
+      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(this.val$pagView);
+        ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(this.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGView.2
  * JD-Core Version:    0.7.0.1
  */

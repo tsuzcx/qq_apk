@@ -1,25 +1,18 @@
-public class azng
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class azng
+  implements View.OnClickListener
 {
-  public aoko[] a = new aoko[0];
+  azng(azne paramazne, TextView paramTextView, int paramInt) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
-    {
-      aoko[] arrayOfaoko = this.a;
-      int j = arrayOfaoko.length;
-      int i = 0;
-      while (i < j)
-      {
-        aoko localaoko = arrayOfaoko[i];
-        if (localaoko != null) {
-          localStringBuilder.append("confItem ").append(localaoko.jdField_a_of_type_Int).append(":").append(localaoko.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    bgzo.a(paramView.getContext(), bgzk.b(this.jdField_a_of_type_Int), bgzk.c(this.jdField_a_of_type_Int), 3, false, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

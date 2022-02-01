@@ -1,124 +1,109 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.KeyEvent;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.richmediabrowser.core.IBrowserBuilder;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class axxw
-  implements IBrowserBuilder
+  extends BaseAdapter
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private axyi jdField_a_of_type_Axyi;
-  private axyq jdField_a_of_type_Axyq;
-  private axzo jdField_a_of_type_Axzo;
+  private int jdField_a_of_type_Int;
+  private axxy jdField_a_of_type_Axxy;
+  private List<axzo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public axxw(Activity paramActivity)
+  public void a(axxy paramaxxy)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Axxy = paramaxxy;
   }
   
-  public axyq a()
+  public void a(List<axzo> paramList)
   {
-    return this.jdField_a_of_type_Axyq;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a()
+  public int getCount()
   {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onWindowFocusChanged();
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 0;
+    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561305, paramViewGroup, false);
+    axzo localaxzo = (axzo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = localaxzo.a;
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onActivityResult(paramInt1, paramInt2, paramIntent);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject1);
+    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
+    localObject2 = localaxzo.b;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localSpannableStringBuilder.append(" 回复 ");
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
+      }
+      localSpannableStringBuilder.append((CharSequence)localObject1);
+      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - ((String)localObject1).length(), localSpannableStringBuilder.length(), 33);
     }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onConfigurationChanged(paramConfiguration);
+    localSpannableStringBuilder.append("：").append(localaxzo.c);
+    localObject1 = localTextView.getPaint();
+    localObject2 = new ArrayList();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = (zlx.a(localTextView.getContext()) - zlx.a(localTextView.getContext(), 85.0F));
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      return this.jdField_a_of_type_Axyq.onBackEvent();
+    int i = 0;
+    while (i < localSpannableStringBuilder.length())
+    {
+      int k = j;
+      if (((TextPaint)localObject1).measureText(localSpannableStringBuilder.subSequence(j, i).toString()) > this.jdField_a_of_type_Int)
+      {
+        ((List)localObject2).add(Integer.valueOf(i - 1));
+        k = i;
+      }
+      i += 1;
+      j = k;
     }
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      return this.jdField_a_of_type_Axyq.onKeyDown(paramInt, paramKeyEvent);
+    localObject1 = ((List)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      if (((Integer)localObject2).intValue() < localSpannableStringBuilder.length() - 1) {
+        localSpannableStringBuilder.insert(((Integer)localObject2).intValue(), "\n");
+      }
     }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onStart();
-    }
-  }
-  
-  public void buildComplete()
-  {
-    this.jdField_a_of_type_Axyq.buildComplete();
-    this.jdField_a_of_type_Axzo.buildComplete();
-    this.jdField_a_of_type_Axyi.buildComplete();
-  }
-  
-  public void buildModel()
-  {
-    this.jdField_a_of_type_Axyi.buildModel();
-  }
-  
-  public void buildParams(Intent paramIntent)
-  {
-    this.jdField_a_of_type_Axyq.buildParams(paramIntent);
-    this.jdField_a_of_type_Axzo.buildParams(paramIntent);
-    this.jdField_a_of_type_Axyi.buildParams(paramIntent);
-  }
-  
-  public void buildPresenter()
-  {
-    this.jdField_a_of_type_Axyq = new axyq();
-    this.jdField_a_of_type_Axzo = new axzo(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Axyq);
-    this.jdField_a_of_type_Axyq.a(this.jdField_a_of_type_Axzo);
-    this.jdField_a_of_type_Axyi = new axyi(this.jdField_a_of_type_Axyq);
-    this.jdField_a_of_type_Axyq.a(this.jdField_a_of_type_Axyi);
-  }
-  
-  public void buildView(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Axzo.buildView(paramViewGroup);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onResume();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onPause();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Axyq != null) {
-      this.jdField_a_of_type_Axyq.onDestroy();
-    }
+    localTextView.setText(localSpannableStringBuilder);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    localTextView.setOnClickListener(new axxx(this, paramViewGroup));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localTextView;
   }
 }
 

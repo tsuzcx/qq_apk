@@ -1,36 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import adzt;
-import adzv;
-import adzw;
-import adzx;
-import adzy;
-import aepi;
-import alud;
-import alwx;
-import amdg;
+import Override;
+import afge;
+import afgg;
+import afgh;
+import afgi;
+import afgj;
+import afur;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bact;
-import bacu;
-import badd;
-import bdgc;
-import bdhj;
-import bhuf;
-import bhus;
-import bibv;
+import anni;
+import anqd;
+import anvp;
+import bddx;
+import bddy;
+import bdeh;
+import bglf;
+import bgmo;
+import bkho;
+import bkif;
+import bkpg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.Pair;
 import com.tencent.widget.ThemeImageView;
 import java.util.ArrayList;
@@ -43,10 +47,10 @@ public class SubAccountUgActivity
   extends SubAccountBaseActivity
   implements View.OnClickListener, Observer
 {
-  alwx jdField_a_of_type_Alwx = new adzx(this);
-  amdg jdField_a_of_type_Amdg = new adzt(this);
+  anqd jdField_a_of_type_Anqd = new afgi(this);
+  anvp jdField_a_of_type_Anvp = new afge(this);
   public String a;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adzw(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new afgh(this);
   boolean jdField_a_of_type_Boolean;
   public boolean b;
   boolean c = false;
@@ -56,25 +60,25 @@ public class SubAccountUgActivity
     this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private void a(bacu parambacu, String paramString)
+  private void a(bddy parambddy, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("SUB_ACCOUNT", 2, "showUnbindDialog() subUin=" + paramString);
     }
-    if ((parambacu == null) || (paramString == null) || (paramString.length() <= 4)) {}
+    if ((parambddy == null) || (paramString == null) || (paramString.length() <= 4)) {}
     for (;;)
     {
       return;
-      if ((isResume()) && (bacu.a(this.app, paramString)))
+      if ((isResume()) && (bddy.a(this.app, paramString)))
       {
         e();
-        paramString = parambacu.a(paramString);
+        paramString = parambddy.a(paramString);
         int j = paramString.size();
         int i = 0;
         while (i < j)
         {
           Pair localPair = (Pair)paramString.get(i);
-          parambacu.a(this.app, this, localPair, new adzv(this, parambacu, localPair));
+          parambddy.a(this.app, this, localPair, new afgg(this, parambddy, localPair));
           i += 1;
         }
       }
@@ -83,12 +87,12 @@ public class SubAccountUgActivity
   
   private void a(boolean paramBoolean)
   {
-    View localView = findViewById(2131377210);
+    View localView = findViewById(2131378021);
     if (localView != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       if (paramBoolean) {
-        localView.setPadding(localView.getPaddingLeft(), aepi.a(260.0F, getResources()), localView.getPaddingRight(), localView.getPaddingBottom());
+        localView.setPadding(localView.getPaddingLeft(), afur.a(260.0F, getResources()), localView.getPaddingRight(), localView.getPaddingBottom());
       }
     }
     else
@@ -101,15 +105,15 @@ public class SubAccountUgActivity
   public void a()
   {
     this.jdField_a_of_type_Boolean = false;
-    View localView = findViewById(2131377210);
-    TextView localTextView1 = (TextView)findViewById(2131377214);
-    TextView localTextView2 = (TextView)findViewById(2131377215);
-    ImageView localImageView = (ImageView)findViewById(2131377213);
-    ((Button)findViewById(2131377211)).setText(2131720454);
+    View localView = findViewById(2131378021);
+    TextView localTextView1 = (TextView)findViewById(2131378025);
+    TextView localTextView2 = (TextView)findViewById(2131378026);
+    ImageView localImageView = (ImageView)findViewById(2131378024);
+    ((Button)findViewById(2131378022)).setText(2131718308);
     localView.setVisibility(8);
-    localTextView1.setText(2131720466);
+    localTextView1.setText(2131718316);
     localTextView2.setVisibility(8);
-    localImageView.setImageResource(2130849879);
+    localImageView.setImageResource(2130850467);
   }
   
   void b()
@@ -118,7 +122,7 @@ public class SubAccountUgActivity
     if ((this.leftView != null) && (!this.c))
     {
       Object localObject = this.app.a();
-      localStringBuilder = new StringBuilder(alud.a(2131715015)).append(getString(2131720582));
+      localStringBuilder = new StringBuilder(anni.a(2131713316)).append(getString(2131718387));
       if (localObject == null) {
         break label164;
       }
@@ -152,15 +156,23 @@ public class SubAccountUgActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("subAccount");
     this.c = getIntent().getBooleanExtra("from_associated_activity", false);
-    badd localbadd = (badd)this.app.getManager(61);
-    this.jdField_a_of_type_Boolean = localbadd.a(this.jdField_a_of_type_JavaLangString);
+    bdeh localbdeh = (bdeh)this.app.getManager(61);
+    this.jdField_a_of_type_Boolean = localbdeh.a(this.jdField_a_of_type_JavaLangString);
     boolean bool1 = false;
-    paramBundle = bacu.a(this.app, this.jdField_a_of_type_JavaLangString);
+    paramBundle = bddy.a(this.app, this.jdField_a_of_type_JavaLangString);
     boolean bool2;
     if (paramBundle != null)
     {
@@ -171,37 +183,37 @@ public class SubAccountUgActivity
     {
       if (bool1)
       {
-        bact.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+        bddx.a(this.app, this, this.jdField_a_of_type_JavaLangString);
         finish();
         return false;
       }
-      super.setContentView(2131562697);
-      setTitle(2131720399);
-      findViewById(2131376034).setOnClickListener(this);
-      ImageView localImageView2 = (ImageView)findViewById(2131377212);
-      ImageView localImageView1 = (ImageView)findViewById(2131377213);
-      ((ThemeImageView)findViewById(2131377209)).setMaskShape(bibv.c);
-      TextView localTextView1 = (TextView)findViewById(2131377214);
-      TextView localTextView2 = (TextView)findViewById(2131377215);
-      Button localButton = (Button)findViewById(2131377211);
-      View localView = findViewById(2131377210);
+      super.setContentView(2131562936);
+      setTitle(2131718272);
+      findViewById(2131376788).setOnClickListener(this);
+      ImageView localImageView2 = (ImageView)findViewById(2131378023);
+      ImageView localImageView1 = (ImageView)findViewById(2131378024);
+      ((ThemeImageView)findViewById(2131378020)).setMaskShape(bkpg.c);
+      TextView localTextView1 = (TextView)findViewById(2131378025);
+      TextView localTextView2 = (TextView)findViewById(2131378026);
+      Button localButton = (Button)findViewById(2131378022);
+      View localView = findViewById(2131378021);
       Object localObject = this.app.a(this.app.getAccount(), false);
       paramBundle = (Bundle)localObject;
       if (localObject == null) {
-        paramBundle = bdhj.a();
+        paramBundle = bgmo.a();
       }
       localImageView2.setImageBitmap(paramBundle);
-      localTextView1.setTextColor(getResources().getColor(2131166903));
+      localTextView1.setTextColor(getResources().getColor(2131166986));
       localTextView2.setVisibility(8);
       int i;
       if (this.jdField_a_of_type_Boolean)
       {
         if (!bool2) {
-          break label673;
+          break label677;
         }
-        paramBundle = localbadd.a(this.jdField_a_of_type_JavaLangString);
+        paramBundle = localbdeh.a(this.jdField_a_of_type_JavaLangString);
         if (paramBundle == null) {
-          break label668;
+          break label672;
         }
         i = ((Integer)paramBundle.first).intValue();
         if (i != 0) {
@@ -216,14 +228,14 @@ public class SubAccountUgActivity
       {
         int j = i;
         if (i == 0) {
-          j = 2131720464;
+          j = 2131718314;
         }
-        localTextView1.setTextColor(getResources().getColor(2131166903));
+        localTextView1.setTextColor(getResources().getColor(2131166986));
         paramBundle = this.app.a(this.jdField_a_of_type_JavaLangString, false);
         if (paramBundle != null) {
           localImageView1.setImageBitmap(paramBundle);
         }
-        localObject = bdgc.c(this.app, this.jdField_a_of_type_JavaLangString, true);
+        localObject = bglf.c(this.app, this.jdField_a_of_type_JavaLangString, true);
         if (localObject != null)
         {
           paramBundle = (Bundle)localObject;
@@ -234,20 +246,20 @@ public class SubAccountUgActivity
           paramBundle = this.jdField_a_of_type_JavaLangString;
         }
         localTextView1.setText(getString(j, new Object[] { paramBundle }));
-        if (j == 2131720464)
+        if (j == 2131718314)
         {
           localTextView2.setVisibility(0);
-          label496:
-          localButton.setText(2131720453);
+          label500:
+          localButton.setText(2131718307);
           localView.setVisibility(0);
-          ((Button)localView.findViewById(2131377204)).setOnClickListener(this);
-          ((Button)localView.findViewById(2131377203)).setOnClickListener(this);
+          ((Button)localView.findViewById(2131378015)).setOnClickListener(this);
+          ((Button)localView.findViewById(2131378014)).setOnClickListener(this);
         }
         for (;;)
         {
           localButton.setOnClickListener(this);
-          addObserver(this.jdField_a_of_type_Amdg);
-          addObserver(this.jdField_a_of_type_Alwx);
+          addObserver(this.jdField_a_of_type_Anvp);
+          addObserver(this.jdField_a_of_type_Anqd);
           b();
           this.app.a().addObserver(this);
           this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
@@ -255,26 +267,26 @@ public class SubAccountUgActivity
             a(true);
           }
           return true;
-          i = 2131720459;
+          i = 2131718311;
           break;
-          i = 2131720460;
+          i = 2131718312;
           break;
-          i = 2131720457;
+          i = 2131718310;
           break;
-          i = 2131720459;
+          i = 2131718311;
           break;
-          i = 2131720459;
+          i = 2131718311;
           break;
-          i = 2131720464;
+          i = 2131718314;
           break;
           localTextView2.setVisibility(8);
-          break label496;
-          localImageView1.setImageResource(2130849879);
+          break label500;
+          localImageView1.setImageResource(2130850467);
         }
-        label668:
+        label672:
         i = 0;
         break;
-        label673:
+        label677:
         i = 0;
       }
       bool2 = false;
@@ -284,8 +296,8 @@ public class SubAccountUgActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Amdg);
-    removeObserver(this.jdField_a_of_type_Alwx);
+    removeObserver(this.jdField_a_of_type_Anvp);
+    removeObserver(this.jdField_a_of_type_Anqd);
     this.app.removeHandler(getClass());
     this.app.a().deleteObserver(this);
   }
@@ -304,42 +316,52 @@ public class SubAccountUgActivity
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131377211: 
-      localObject = new Intent();
+      Object localObject1 = new Intent();
       if (this.jdField_a_of_type_Boolean)
       {
-        ((Intent)localObject).putExtra("is_need_bind", false);
-        ((Intent)localObject).putExtra("subuin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).setClass(this, SubLoginActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", this.b);
-        startActivity((Intent)localObject);
-        return;
+        ((Intent)localObject1).putExtra("is_need_bind", false);
+        ((Intent)localObject1).putExtra("subuin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject1).setClass(this, SubLoginActivity.class);
+        ((Intent)localObject1).putExtra("fromWhere", this.b);
+        startActivity((Intent)localObject1);
       }
-      ((Intent)localObject).setClass(paramView.getContext(), SubAccountBindActivity.class);
-      ((Intent)localObject).putExtra("fromWhere", this.b);
-      startActivity((Intent)localObject);
-      return;
-    case 2131377204: 
-      paramView = (bhuf)bhus.a(getActivity(), null);
-      paramView.a(2131720455);
-      paramView.a(getResources().getString(2131721189), 3);
-      paramView.c(2131690648);
-      paramView.a(new adzy(this, paramView));
-      paramView.show();
-      return;
+      else
+      {
+        ((Intent)localObject1).setClass(paramView.getContext(), SubAccountBindActivity.class);
+        ((Intent)localObject1).putExtra("fromWhere", this.b);
+        startActivity((Intent)localObject1);
+        continue;
+        localObject1 = (bkho)bkif.a(getActivity(), null);
+        ((bkho)localObject1).a(2131718309);
+        ((bkho)localObject1).a(getResources().getString(2131718921), 3);
+        ((bkho)localObject1).c(2131690582);
+        ((bkho)localObject1).a(new afgj(this, (bkho)localObject1));
+        ((bkho)localObject1).show();
+        continue;
+        Object localObject2 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = "https://ti.qq.com/safe/forgetpw?source_id=2756";
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", localObject2 });
+        }
+        localObject2 = new Intent(this, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject2).putExtra("reqType", 3);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        startActivity((Intent)localObject2);
+      }
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756";
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", localObject });
-    }
-    localObject = new Intent(this, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("reqType", 3);
-    ((Intent)localObject).putExtra("url", paramView);
-    startActivity((Intent)localObject);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onMultiWindowModeChanged(boolean paramBoolean)
@@ -357,7 +379,7 @@ public class SubAccountUgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity
  * JD-Core Version:    0.7.0.1
  */

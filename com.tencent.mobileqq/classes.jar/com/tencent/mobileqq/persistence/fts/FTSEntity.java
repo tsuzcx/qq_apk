@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence.fts;
 
 import android.text.TextUtils;
-import bdpr;
+import bguq;
 
 public abstract class FTSEntity
 {
@@ -127,8 +127,8 @@ public abstract class FTSEntity
     {
       doSerialize();
       return;
-      this.mContentIndex = bdpr.a(this.mContent);
-      this.mSegmentCount += bdpr.a(this.mContentIndex);
+      this.mContentIndex = bguq.a(this.mContent);
+      this.mSegmentCount += bguq.a(this.mContentIndex);
     }
   }
   
@@ -139,8 +139,8 @@ public abstract class FTSEntity
       this.mContentIndex = null;
       return;
     }
-    this.mContentIndex = bdpr.a(this.mContent);
-    this.mSegmentCount += bdpr.a(this.mContentIndex);
+    this.mContentIndex = bguq.a(this.mContent);
+    this.mSegmentCount += bguq.a(this.mContentIndex);
   }
   
   public void preWriteTwo()
@@ -157,7 +157,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.fts.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nqs
-  implements DialogInterface.OnClickListener
+final class nqs
+  implements BusinessObserver
 {
-  public nqs(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  nqs(QQAppInterface paramQQAppInterface, boolean paramBoolean, anry paramanry) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = nqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    {
+      if (this.jdField_a_of_type_Anry != null) {
+        this.jdField_a_of_type_Anry.onDynamicListGet(paramBoolean, paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqs
  * JD-Core Version:    0.7.0.1
  */

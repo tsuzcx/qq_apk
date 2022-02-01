@@ -1,50 +1,33 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class bdgi
-  implements ThreadExcutor.IThreadListener
+  extends bdek
 {
-  private int jdField_a_of_type_Int;
-  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private int b;
-  private int c;
+  protected bder a;
+  protected SpriteNativeView a;
   
-  public bdgi(int paramInt1, int paramInt2)
+  public bdgi()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.b = 0;
+    this.jdField_a_of_type_Bder = new bder(0.0F, 0.0F);
   }
   
-  public void a()
+  public bdeq<bdgi> a()
   {
-    if (this.b < this.jdField_a_of_type_Int)
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      if (localRunnable != null)
-      {
-        this.b += 1;
-        ThreadManager.excute(localRunnable, this.c, this, false);
-      }
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
   }
   
-  public void a(Runnable paramRunnable)
+  public void b() {}
+  
+  public void c() {}
+  
+  public boolean c()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
-    a();
+    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
+    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
+    return b();
   }
   
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    this.b -= 1;
-    a();
-  }
-  
-  public void onPreRun() {}
+  public void d() {}
 }
 
 

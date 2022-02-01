@@ -1,44 +1,24 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qrl
-  extends bieg<qrw, qrm>
+class qrl
+  implements View.OnClickListener
 {
-  public qrl(Context paramContext, List<qrw> paramList)
-  {
-    super(paramContext, paramList);
-  }
+  qrl(qrf paramqrf) {}
   
-  public int a(int paramInt)
+  public void onClick(View paramView)
   {
-    return 0;
-  }
-  
-  public qrm a(ViewGroup paramViewGroup, int paramInt)
-  {
-    ImageView localImageView = new ImageView(this.a);
-    paramInt = paramViewGroup.getLayoutParams().height;
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt, paramInt));
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return new qrm(this, localImageView);
-  }
-  
-  public void a(qrm paramqrm, int paramInt)
-  {
-    Bitmap localBitmap = ((qrw)a(paramInt)).a();
-    if (localBitmap != null) {
-      ((ImageView)paramqrm.itemView).setImageBitmap(localBitmap);
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qrl
  * JD-Core Version:    0.7.0.1
  */

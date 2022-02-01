@@ -12,8 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bdee;
-import bdeh;
+import bgjf;
+import bgji;
 
 public class SquareRoundFrameLayout
   extends FrameLayout
@@ -49,7 +49,7 @@ public class SquareRoundFrameLayout
   private void b()
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = new bdeh(getResources().getColor(2131165327), getWidth(), getHeight());
+    Object localObject = new bgji(getResources().getColor(2131165363), getWidth(), getHeight());
     localStateListDrawable.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
     localObject = new ColorDrawable(0);
     localStateListDrawable.addState(new int[0], (Drawable)localObject);
@@ -76,13 +76,13 @@ public class SquareRoundFrameLayout
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.a = bdee.a(paramInt1, paramInt2);
+      this.a = bgjf.a(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.SquareRoundFrameLayout
  * JD-Core Version:    0.7.0.1
  */

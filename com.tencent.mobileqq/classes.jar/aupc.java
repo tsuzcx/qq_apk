@@ -1,61 +1,39 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aupc
-  implements awkh
+public class aupc
+  implements View.OnClickListener
 {
-  aupc(aupa paramaupa, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  public aupc(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public void a(awki paramawki) {}
-  
-  public void b(awki paramawki)
-  {
-    try
-    {
-      if (paramawki.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - aupa.a(this.jdField_a_of_type_Aupa)) + ",mResid:" + paramawki.c);
-        }
-        AbsShareMsg localAbsShareMsg = acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramawki.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        localMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramawki.c);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramawki.b + ",result.errStr=" + paramawki.jdField_a_of_type_JavaLangString);
-      }
-      aupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      return;
+    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1) {
+      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
     }
-    catch (Exception paramawki)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramawki);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get())) {
+        QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
+      } else {
+        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new aupd(this));
       }
-      aupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupc
  * JD-Core Version:    0.7.0.1
  */

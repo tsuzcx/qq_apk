@@ -1,22 +1,32 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atji
-  implements View.OnClickListener
+public abstract interface atji
 {
-  public atji(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    if (!TextUtils.isEmpty(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
-    }
-  }
+  public abstract long a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a(Object paramObject, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void aE_();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

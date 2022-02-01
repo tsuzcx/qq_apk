@@ -1,69 +1,86 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForSplitLineTips;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ThemeImageView;
 
 public class ahmn
-  extends ahln
-  implements View.OnClickListener
+  extends afuu
 {
-  public ahmn(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
+  public ahmn(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    super(paramContext, paramQQAppInterface, paramakln, paramavun);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public View a(int paramInt, View paramView)
+  protected afuv a()
   {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahmo)))
+    return new ahmo(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, afuv paramafuv, View paramView, LinearLayout paramLinearLayout, afzq paramafzq)
+  {
+    if (paramView == null)
     {
-      paramView = new ahmo();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561120, null);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914) - bdoo.a(80.0F));
-      paramView.a = ((Button)localView.findViewById(2131367385));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        paramView.a.setBackgroundResource(2130839130);
+      paramafuv = (ahmo)paramafuv;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558892, null);
+      paramLinearLayout = (TextView)paramView.findViewById(2131367600);
+      paramafzq = (TextView)paramView.findViewById(2131367944);
+      TextView localTextView = (TextView)paramView.findViewById(2131367945);
+      paramLinearLayout.setMovementMethod(null);
+      paramLinearLayout.setGravity(17);
+      paramafuv.b = paramLinearLayout;
+      paramafuv.c = paramafzq;
+      paramafuv.d = localTextView;
+      paramView.setTag(paramafuv);
+      label92:
+      if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        break label208;
       }
-      localObject = (ThemeImageView)localView.findViewById(2131367382);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bibv.b);
-      localView.setTag(paramView);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
-      localObject = paramView;
+      paramafuv.c.setBackgroundResource(2130842497);
+      paramafuv.d.setBackgroundResource(2130842497);
+      label120:
+      if ((paramMessageRecord.istroop != 1) || (!njo.a().a(paramMessageRecord.senderuin))) {
+        break label229;
+      }
+      paramafuv.b.setTextColor(njo.d);
     }
     for (;;)
     {
-      ((ahmo)localObject).a.setOnClickListener(this);
-      return localView;
-      localObject = (ahmo)paramView.getTag();
-      localView = paramView;
+      if ((paramMessageRecord instanceof MessageForSplitLineTips)) {
+        paramMessageRecord = (MessageForSplitLineTips)paramMessageRecord;
+      }
+      switch (paramMessageRecord.subType)
+      {
+      default: 
+        paramafuv.b.setText(paramMessageRecord.msgContent);
+        return paramView;
+        paramafuv = (ahmo)paramView.getTag();
+        break label92;
+        label208:
+        paramafuv.c.setBackgroundResource(2130842496);
+        paramafuv.d.setBackgroundResource(2130842496);
+        break label120;
+        label229:
+        paramafuv.b.setTextColor(paramView.getResources().getColorStateList(2131165537));
+      }
     }
+    paramafuv.b.setText(anni.a(2131714150));
+    return paramView;
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bguj[] a(View paramView)
   {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (bdin.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (ahuf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-      if (paramView != null) {
-        paramView.b(true);
-      }
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692398), 0).a();
+    return null;
   }
 }
 

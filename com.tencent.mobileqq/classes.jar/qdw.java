@@ -1,34 +1,71 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class qdw
-  implements phj
+  implements qft
 {
-  public qdw(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramInt == 103) {
+      return qbk.a(paramBaseArticleInfo);
     }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
-      return;
+    if (paramInt == 102) {
+      return qbi.a(paramBaseArticleInfo);
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-    if (paramBoolean)
+    return qbj.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject = (qij)localViewBase.findViewBaseByName("id_info_avator");
+    if (localObject != null)
     {
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
-      return;
+      ((qij)localObject).a(parampxk, false);
+      parampxk = parampxk.a();
+      localObject = (NativeAvatarView)((qij)localObject).getNativeView();
+      if ((pha.b(parampxk)) && (parampxk.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampxk.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846348));
+      }
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 1);
+    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
+    parampxk = localViewBase.findViewBaseByName("id_view_nickname");
+    if ((paramContainer != null) && (parampxk != null))
+    {
+      paramContainer = (NativeTextImp)paramContainer.getNativeView();
+      parampxk = parampxk.getNativeView();
+      if ((paramContainer != null) && (parampxk != null)) {
+        parampxk.post(new GalleryProteusItem.1(this, parampxk, paramContainer));
+      }
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdw
  * JD-Core Version:    0.7.0.1
  */

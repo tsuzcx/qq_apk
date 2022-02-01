@@ -1,15 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import common.config.service.QzoneConfig;
 
-class bkzd
-  implements View.OnClickListener
+public class bkzd
 {
-  bkzd(bkyz parambkyz, bkzh parambkzh, WMEditItem paramWMEditItem) {}
+  private static volatile bkzd jdField_a_of_type_Bkzd;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onClick(View paramView)
+  public static bkzd a()
   {
-    bkyz.a(this.jdField_a_of_type_Bkyz, this.jdField_a_of_type_Bkzh.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    if (jdField_a_of_type_Bkzd == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bkzd == null) {
+        jdField_a_of_type_Bkzd = new bkzd();
+      }
+      return jdField_a_of_type_Bkzd;
+    }
+  }
+  
+  public int a()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "POICacheDistance", 1000);
   }
 }
 

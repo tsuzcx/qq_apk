@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 class GameNoticeCenter$4
   implements Runnable
 {
@@ -9,14 +7,12 @@ class GameNoticeCenter$4
   
   public void run()
   {
-    GameNoticeCenter.a(this.this$0);
-    GameNoticeCenter.b(this.this$0);
-    GameNoticeCenter.a(this.this$0).set(false);
+    GameNoticeCenter.a(this.this$0).initData();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameNoticeCenter.4
  * JD-Core Version:    0.7.0.1
  */

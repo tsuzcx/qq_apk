@@ -10,13 +10,13 @@ class AppBrandRuntime$11
   
   public void run()
   {
-    this.this$0.pageContainer.navigateTo(this.val$url);
+    this.this$0.pageContainer.redirectTo(this.val$url);
     this.this$0.jsPluginEngine.callbackJsEventOK(this.this$0.serviceRuntime, this.val$eventName, null, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.11
  * JD-Core Version:    0.7.0.1
  */

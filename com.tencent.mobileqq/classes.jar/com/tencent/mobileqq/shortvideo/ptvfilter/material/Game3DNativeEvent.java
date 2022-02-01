@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import aziy;
+import bcjy;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class Game3DNativeEvent
-  implements aziy
+  implements bcjy
 {
   public void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
@@ -56,7 +56,7 @@ class Game3DNativeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.material.Game3DNativeEvent
  * JD-Core Version:    0.7.0.1
  */

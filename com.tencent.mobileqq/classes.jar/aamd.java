@@ -1,80 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Adapter;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aamd
-  implements AdIPCManager.Adapter
+public class aamd
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
+  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  
+  public aamd(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
   {
-    boolean bool = false;
-    AdIPCManager.Result localResult2 = new AdIPCManager.Result();
-    AdIPCManager.Result localResult1;
-    if (TextUtils.isEmpty(paramString)) {
-      localResult1 = localResult2;
-    }
-    for (;;)
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379779));
+    this.b = ((TextView)paramView.findViewById(2131379808));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363851));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
+  {
+    String str;
+    if (paramStQQGroup != null)
     {
-      if (localResult1 != null) {
-        bool = localResult1.success;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
+      this.b.setText(paramStQQGroup.memberNum.get() + anni.a(2131712145));
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      if (paramStQQGroup.joinState.get() != 1) {
+        break label143;
       }
-      aase.b("GdtIPCAdapter", String.format("receive action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult1;
-      Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-      localResult1 = localResult2;
-      if (localBoolean != null)
+      str = anni.a(2131712141);
+      localButton.setText(str);
+      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
       {
-        localResult1 = localResult2;
-        if (localBoolean.booleanValue())
-        {
-          localResult1 = localResult2;
-          if (QIPCClientHelper.getInstance() != null)
-          {
-            localResult1 = localResult2;
-            if (QIPCClientHelper.getInstance().getClient() != null) {
-              localResult1 = AdIPCManager.INSTANCE.receive(paramString, paramParams);
-            }
-          }
+        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
+        if (paramStQQGroup.joinState.get() != 1) {
+          break label152;
         }
       }
+    }
+    label143:
+    label152:
+    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
+    {
+      aaxb.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
+      return;
+      str = anni.a(2131712140);
+      break;
     }
   }
   
-  public AdIPCManager.Result send(String paramString, AdIPCManager.Params paramParams)
+  public void onClick(View paramView)
   {
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    if (TextUtils.isEmpty(paramString)) {
-      if (localResult == null) {
-        break label148;
-      }
-    }
-    label148:
-    for (boolean bool = localResult.success;; bool = false)
+    Object localObject;
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
     {
-      aase.b("GdtIPCAdapter", String.format("send action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult;
-      Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
-      if ((localObject == null) || (((Boolean)localObject).booleanValue()) || (QIPCClientHelper.getInstance() == null) || (QIPCClientHelper.getInstance().getClient() == null)) {
-        break;
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() != 1) {
+        break label117;
       }
-      localObject = QIPCClientHelper.getInstance().getClient();
-      if (paramParams != null) {}
-      for (paramParams = paramParams.bundle;; paramParams = null)
-      {
-        paramParams = ((EIPCClient)localObject).callServer("gdt_ipc", paramString, paramParams);
-        if (paramParams == null) {
-          break;
-        }
-        localResult.success = paramParams.isSuccess();
-        localResult.bundle = paramParams.data;
-        break;
-      }
+      localObject = afur.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
+      ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
+      ((Intent)localObject).putExtra("uintype", 1);
+      ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
+      paramView.getContext().startActivity((Intent)localObject);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label117:
+      localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
+      ((Bundle)localObject).putInt("t_s_f", 1001);
+      bfup.a(paramView.getContext(), (Bundle)localObject, 2);
     }
   }
 }

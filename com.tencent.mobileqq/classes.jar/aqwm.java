@@ -1,21 +1,14 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aqwm
-  extends BroadcastReceiver
+class aqwm
+  implements aqvn
 {
-  public aqwm(FileManagerDataCenter.1 param1) {}
+  aqwm(aqwl paramaqwl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(Context paramContext)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
-    {
-      paramContext = paramIntent.getBundleExtra("extraBundle");
-      aqwl.a(this.a.this$0, paramContext);
-    }
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aqwl.a(this.a), -1L, null, false, 0);
   }
 }
 

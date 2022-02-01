@@ -1,23 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.widget.TextView;
 
-class agtn
-  implements Animator.AnimatorListener
+public class agtn
+  extends afuv
 {
-  agtn(agti paramagti) {}
+  TextView b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.removeHeaderView(agti.a(this.a));
-    agti.a(this.a, true);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  agtn(agtm paramagtm) {}
 }
 
 

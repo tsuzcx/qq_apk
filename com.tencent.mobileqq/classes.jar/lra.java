@@ -1,662 +1,279 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.graphics.Rect;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.WeakHashMap;
 
-public class lra
+public abstract class lra
 {
-  private static String jdField_a_of_type_JavaLangString = "hwcodec_new2";
-  private static String b = "sharp/hwcodec_new/";
-  private static String c = "sharp/hwcodec_new2/";
-  private static String d = "avc_decoder/";
-  private static String e = "avc_encoder/";
-  private static String f = "hevc_decoder/";
-  private static String g = "hevc_encoder/";
-  private static String h = "test/";
-  private static String i = "white_list/";
-  private static String j = "black_list/";
-  private static String k = "min_sdk";
-  private static String l = "min_version";
-  private static String m = "max_w";
-  private static String n = "max_h";
-  private static String o = "model";
-  private static String p = "product";
-  private static String q = "fingerprint";
-  private static String r = "sdk";
-  private static String s = "version";
-  private static String t = "codec";
-  private static String u = "disable_sdk";
-  private static String v = "async/";
-  private static String w = "min_sdk";
-  private static String x = "codec";
-  private static String y = "async_min_sdk";
-  private String A;
-  private String B;
-  private String C;
-  private String D;
-  private String E;
-  private String F;
-  private String G;
-  private String H;
-  private String I;
-  private String J;
-  private String K;
-  private String L;
-  private String M;
-  private String N;
-  private String O;
-  private String P;
-  private String Q;
-  private String R;
-  private String S;
-  private String T;
-  private String U;
-  private String V;
-  private String W;
-  private String X;
-  private String Y;
-  private String Z;
-  private int jdField_a_of_type_Int = 1;
-  private lnc jdField_a_of_type_Lnc;
-  private String aa;
-  private String ab;
-  private String ac;
-  private String ad;
-  private String ae;
-  private String af;
-  private String ag;
-  private String ah;
-  private String ai;
-  private String aj;
-  private String ak;
-  private String al;
-  private String am;
-  private String an;
-  private String ao;
-  private String ap;
-  private String aq = b;
-  private String z;
+  private static ThreadLocal<Class<lra>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
+  private static WeakHashMap<lra, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  protected int a;
+  protected lpx a;
+  protected int[] a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e = -1;
+  protected int f = -1;
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j;
   
-  public lra(lnc paramlnc)
+  protected lra()
   {
-    if ((paramlnc != null) && (!paramlnc.a()) && (paramlnc.a().contains(jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Int = 2;
-    }
-    this.jdField_a_of_type_Lnc = paramlnc;
-    if (this.jdField_a_of_type_Int == 2) {}
-    for (paramlnc = c;; paramlnc = b)
+    this(null, 0);
+  }
+  
+  protected lra(lpx arg1, int paramInt)
+  {
+    a(???);
+    this.b = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
-      this.aq = paramlnc;
-      QLog.i("CodecConfigParser", 1, "ver = " + this.jdField_a_of_type_Int + ", root = " + this.aq);
-      this.z = (this.aq + h + k);
-      this.A = (this.aq + h + u);
-      this.B = (this.aq + h + t);
-      this.C = (this.aq + h + y);
-      this.D = (this.aq + h + l);
-      this.E = (this.aq + d + i + k);
-      this.F = (this.aq + d + i + l);
-      this.G = (this.aq + d + j + o);
-      this.H = (this.aq + d + j + p);
-      this.I = (this.aq + d + j + q);
-      this.J = (this.aq + d + j + r);
-      this.K = (this.aq + d + j + s);
-      this.L = (this.aq + d + i + m);
-      this.M = (this.aq + d + i + n);
-      this.N = (this.aq + e + i + k);
-      this.O = (this.aq + e + i + l);
-      this.P = (this.aq + e + j + o);
-      this.Q = (this.aq + e + j + p);
-      this.R = (this.aq + e + j + q);
-      this.S = (this.aq + e + j + r);
-      this.T = (this.aq + e + j + s);
-      this.U = (this.aq + e + i + m);
-      this.V = (this.aq + e + i + n);
-      this.W = (this.aq + f + i + k);
-      this.X = (this.aq + f + i + l);
-      this.Y = (this.aq + f + j + o);
-      this.Z = (this.aq + f + j + p);
-      this.aa = (this.aq + f + j + q);
-      this.ab = (this.aq + f + j + r);
-      this.ac = (this.aq + f + j + s);
-      this.ad = (this.aq + f + i + m);
-      this.ae = (this.aq + f + i + n);
-      this.af = (this.aq + g + i + k);
-      this.ag = (this.aq + g + i + l);
-      this.ah = (this.aq + g + j + o);
-      this.ai = (this.aq + g + j + p);
-      this.aj = (this.aq + g + j + q);
-      this.ak = (this.aq + g + j + r);
-      this.al = (this.aq + g + j + s);
-      this.am = (this.aq + g + i + m);
-      this.an = (this.aq + g + i + n);
-      this.ao = (this.aq + v + w);
-      this.ap = (this.aq + v + x);
+      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
       return;
     }
   }
   
-  public static int a(les paramles)
+  public static void c()
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    while ((paramles == null) || (Build.VERSION.SDK_INT < paramles.c) || (!a(paramles.jdField_a_of_type_JavaLangString, null)) || (mtj.a(paramles.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
-      return 0;
-    }
-    if ((paramles.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramles.d)) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  static boolean a(String paramString, String[] paramArrayOfString)
-  {
-    int i2 = mww.b();
-    if (mww.a(paramString) > i2) {
-      return false;
-    }
-    if ((paramArrayOfString != null) && (paramArrayOfString != null))
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
-      int i3 = paramArrayOfString.length;
-      int i1 = 0;
-      for (;;)
-      {
-        if (i1 >= i3) {
-          break label51;
-        }
-        if (mww.a(paramArrayOfString[i1]) == i2) {
-          break;
-        }
-        i1 += 1;
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext()) {
+        ((lra)localIterator.next()).b();
       }
     }
-    label51:
-    return true;
   }
   
-  public lqw a()
+  public static void d()
   {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lnc == null) {}
-    for (;;)
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
     {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext())
       {
-        lqw locallqw = new lqw(4, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lnc, this.W);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lnc, this.X, this.ac)))
-          {
-            localObject = a(this.jdField_a_of_type_Lnc, this.ab);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lnc, this.Y);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lnc, this.Z);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lnc, this.aa);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lnc, this.ad);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lnc, this.ae);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.c = localObject[0];
-            }
-            return locallqw;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
+        lra locallra = (lra)localIterator.next();
+        locallra.b = 0;
+        locallra.a(null);
       }
     }
-    return null;
   }
   
-  public boolean a(int paramInt)
+  public static boolean d()
   {
-    if (this.jdField_a_of_type_Lnc == null) {}
-    for (;;)
+    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
+  }
+  
+  private void e()
+  {
+    lpx locallpx = this.jdField_a_of_type_Lpx;
+    if ((locallpx != null) && (this.jdField_a_of_type_ArrayOfInt != null))
     {
-      return false;
-      try
-      {
-        int[] arrayOfInt = a(this.jdField_a_of_type_Lnc, this.ao);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-        {
-          arrayOfInt = a(this.jdField_a_of_type_Lnc, this.ap);
-          if (arrayOfInt != null)
-          {
-            boolean bool = mtj.a(arrayOfInt, paramInt);
-            if (bool) {
-              return true;
-            }
-          }
-        }
-      }
-      catch (Exception localException) {}
+      locallpx.a(this);
+      this.jdField_a_of_type_ArrayOfInt = null;
     }
+    this.b = 0;
+    a(null);
+  }
+  
+  public int a()
+  {
+    return this.i;
+  }
+  
+  public Rect a()
+  {
+    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
+  }
+  
+  protected TextureProgram a()
+  {
+    return lqw.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    e();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.i = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.g = paramInt1;
+    this.h = paramInt2;
+    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
+      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
+    }
+    if (this.e == -1)
+    {
+      this.e = paramInt1;
+      this.f = paramInt2;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
+  
+  protected void a(lpx paramlpx)
+  {
+    this.jdField_a_of_type_Lpx = paramlpx;
+  }
+  
+  public void a(lpx paramlpx, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramlpx.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean a()
+  {
     return false;
   }
   
-  boolean a(lnc paramlnc, String paramString1, String paramString2)
+  public abstract boolean a(lpx paramlpx);
+  
+  public byte[] a()
   {
-    if (this.jdField_a_of_type_Int != 2) {}
-    for (;;)
+    return null;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(lpx paramlpx)
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public lqy[] a(lpx paramlpx)
+  {
+    int k = 0;
+    TextureProgram localTextureProgram = a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    lrz.a();
+    if ((!b()) || (paramlpx.a() < 0.95F)) {}
+    for (boolean bool = true;; bool = false)
     {
-      return true;
-      int i2 = mww.b();
-      if (mww.a(paramlnc.a(paramString1, "")) > i2) {
-        return false;
+      lpy.a(bool);
+      if (!a(paramlpx)) {
+        break;
       }
-      if (paramString2 != null)
+      int[] arrayOfInt = a();
+      while (k < arrayOfInt.length)
       {
-        paramlnc = paramlnc.a(paramString2);
-        if (paramlnc != null)
-        {
-          int i3 = paramlnc.length;
-          int i1 = 0;
-          while (i1 < i3)
-          {
-            if (mww.a(paramlnc[i1]) == i2) {
-              return false;
-            }
-            i1 += 1;
-          }
-        }
+        GLES20.glActiveTexture(33984 + k);
+        lrz.a();
+        GLES20.glBindTexture(g(), arrayOfInt[k]);
+        lrz.a();
+        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
+        lrz.a();
+        k += 1;
       }
     }
+    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramlpx.a());
+    lrz.a();
+    return localTextureProgram.a();
   }
   
-  int[] a(lnc paramlnc, String paramString)
+  public int b()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlnc.a(paramString);
+    return this.j;
   }
   
-  String[] a(lnc paramlnc, String paramString)
+  public void b()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
-    }
-    return paramlnc.a(paramString);
+    e();
   }
   
-  public lqw b()
+  public void b(int paramInt)
   {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lnc == null) {
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < 19.");
-      return null;
-    }
-    lqw locallqw = new lqw(8, true);
+    this.j = paramInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  public abstract boolean b();
+  
+  public byte[] b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.e;
+  }
+  
+  public boolean c()
+  {
+    return this.b == 1;
+  }
+  
+  public int d()
+  {
+    return this.f;
+  }
+  
+  public int e()
+  {
+    return this.g;
+  }
+  
+  public int f()
+  {
+    return this.h;
+  }
+  
+  protected void finalize()
+  {
     try
     {
-      localObject = a(this.jdField_a_of_type_Lnc, this.af);
-      if (localObject == null)
-      {
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. minsdk == null.");
-        return null;
-      }
+      jdField_a_of_type_JavaLangThreadLocal.set(lra.class);
+      a();
+      jdField_a_of_type_JavaLangThreadLocal.set(null);
+      return;
     }
-    catch (Exception localException)
+    finally
     {
-      localException.printStackTrace();
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. err msg = " + localException.getMessage());
-      return null;
-    }
-    if (Build.VERSION.SDK_INT < localObject[0])
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < minsdk[0]. minsdk[0] = " + localObject[0]);
-      return null;
-    }
-    if (!a(this.jdField_a_of_type_Lnc, this.ag, this.al))
-    {
-      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. checkQQVer failed.");
-      return null;
-    }
-    Object localObject = a(this.jdField_a_of_type_Lnc, this.ak);
-    int i1;
-    if (localObject != null)
-    {
-      i1 = 0;
-      if (i1 < localObject.length)
-      {
-        if (Build.VERSION.SDK_INT != localObject[i1]) {
-          break label453;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT == disablesdk[i].");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lnc, this.ah);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label248:
-      if (i1 < localObject.length)
-      {
-        if (!Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-          break label460;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.MODEL.equalsIgnoreCase(models[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lnc, this.ai);
-    if (localObject != null)
-    {
-      i1 = 0;
-      label300:
-      if (i1 < localObject.length)
-      {
-        if (!Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-          break label467;
-        }
-        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(products[i]).");
-        return null;
-      }
-    }
-    localObject = a(this.jdField_a_of_type_Lnc, this.aj);
-    if (localObject != null) {
-      i1 = i2;
-    }
-    for (;;)
-    {
-      if (i1 < localObject.length)
-      {
-        if (Build.PRODUCT.equalsIgnoreCase(localObject[i1]))
-        {
-          QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(fingerprints[i].");
-          return null;
-        }
-      }
-      else
-      {
-        localObject = a(this.jdField_a_of_type_Lnc, this.am);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.b = localObject[0];
-        }
-        localObject = a(this.jdField_a_of_type_Lnc, this.an);
-        if ((localObject != null) && (localObject[0] > 0)) {
-          localException.c = localObject[0];
-        }
-        return localException;
-        label453:
-        i1 += 1;
-        break;
-        label460:
-        i1 += 1;
-        break label248;
-        label467:
-        i1 += 1;
-        break label300;
-      }
-      i1 += 1;
+      super.finalize();
     }
   }
   
-  public lqw c()
+  public abstract int g();
+  
+  public int h()
   {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lnc == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        lqw locallqw = new lqw(1, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lnc, this.E);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lnc, this.F, this.K)))
-          {
-            localObject = a(this.jdField_a_of_type_Lnc, this.J);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lnc, this.G);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lnc, this.H);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lnc, this.I);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lnc, this.L);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lnc, this.M);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.c = localObject[0];
-            }
-            return locallqw;
-          }
-        }
-        catch (Exception localException) {}
-      }
-    }
-    return null;
+    return 0;
   }
   
-  public lqw d()
+  public int i()
   {
-    int i2 = 0;
-    if (this.jdField_a_of_type_Lnc == null) {}
-    for (;;)
-    {
-      return null;
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        lqw locallqw = new lqw(2, true);
-        try
-        {
-          Object localObject = a(this.jdField_a_of_type_Lnc, this.N);
-          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lnc, this.O, this.T)))
-          {
-            localObject = a(this.jdField_a_of_type_Lnc, this.S);
-            int i1;
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label122;
-                }
-                if (Build.VERSION.SDK_INT == localObject[i1]) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label122:
-            localObject = a(this.jdField_a_of_type_Lnc, this.P);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label170;
-                }
-                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label170:
-            localObject = a(this.jdField_a_of_type_Lnc, this.Q);
-            if (localObject != null)
-            {
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label218;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label218:
-            localObject = a(this.jdField_a_of_type_Lnc, this.R);
-            if (localObject != null)
-            {
-              i1 = i2;
-              for (;;)
-              {
-                if (i1 >= localObject.length) {
-                  break label266;
-                }
-                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
-                  break;
-                }
-                i1 += 1;
-              }
-            }
-            label266:
-            localObject = a(this.jdField_a_of_type_Lnc, this.U);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.b = localObject[0];
-            }
-            localObject = a(this.jdField_a_of_type_Lnc, this.V);
-            if ((localObject != null) && (localObject[0] > 0)) {
-              locallqw.c = localObject[0];
-            }
-            return locallqw;
-          }
-        }
-        catch (Exception localException) {}
-      }
-    }
-    return null;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lra
  * JD-Core Version:    0.7.0.1
  */

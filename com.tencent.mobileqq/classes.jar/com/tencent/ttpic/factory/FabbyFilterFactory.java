@@ -1,6 +1,8 @@
 package com.tencent.ttpic.factory;
 
 import com.tencent.filter.BaseFilter;
+import com.tencent.filter.ttpic.GPUImageLookupFilter;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal;
 
 public class FabbyFilterFactory
@@ -37,10 +39,27 @@ public class FabbyFilterFactory
       i += 1;
     }
   }
+  
+  public static BaseFilter createFilter(String paramString, float paramFloat)
+  {
+    Object localObject = null;
+    if (FileUtils.exists(paramString))
+    {
+      BaseFilter localBaseFilter = TTPicFilterFactoryLocal.creatFilterById(289);
+      localObject = localBaseFilter;
+      if (localBaseFilter != null)
+      {
+        ((GPUImageLookupFilter)localBaseFilter).updateLut(paramString);
+        localBaseFilter.setAdjustParam((float)(1.0D - paramFloat));
+        localObject = localBaseFilter;
+      }
+    }
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.factory.FabbyFilterFactory
  * JD-Core Version:    0.7.0.1
  */

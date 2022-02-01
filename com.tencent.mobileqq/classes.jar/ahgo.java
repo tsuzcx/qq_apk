@@ -1,25 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahgo
-  implements DialogInterface.OnClickListener
+final class ahgo
+  extends bcfr
 {
-  public ahgo(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ahgo(MessageForShortVideo paramMessageForShortVideo, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, bcfj parambcfj)
   {
-    switch (paramInt)
+    if (parambcfj.jdField_a_of_type_Int == 0)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      parambcfj = (ayxd)parambcfj.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = parambcfj.b;
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
+      ahgl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
       return;
     }
-    paramDialogInterface.dismiss();
+    QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
   }
 }
 

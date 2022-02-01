@@ -1,20 +1,50 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import PUSHAPI.PushRsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public abstract interface blsr
+public class blsr
+  extends QzoneExternalRequest
 {
-  public abstract void a();
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
   
-  public abstract void a(bmrr parambmrr, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public blsr(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
+  {
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    super.setRefer(paramString1);
+    this.jdField_a_of_type_Long = paramLong2;
+    this.b = paramLong3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.needCompress = false;
+  }
   
-  public abstract void a(bmvz parambmvz, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
+  public String getCmdString()
+  {
+    return "wns.pushrsp";
+  }
   
-  public abstract void a(bmwd parambmwd, float paramFloat1, float paramFloat2, float paramFloat3);
+  public byte[] getEncodedUniParameter()
+  {
+    PushRsp localPushRsp = new PushRsp();
+    localPushRsp.ptime = this.jdField_a_of_type_Long;
+    localPushRsp.is_bgd = 0;
+    localPushRsp.sUID = "<JIEHEBAN>";
+    localPushRsp.flag = this.b;
+    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
+    return bkze.a(localPushRsp);
+  }
   
-  public abstract void a(bmwd parambmwd, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
+  public JceStruct getReq()
+  {
+    return null;
+  }
   
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(bmrr parambmrr, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public String uniKey()
+  {
+    return "wns.pushrsp";
+  }
 }
 
 

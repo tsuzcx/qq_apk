@@ -1,91 +1,115 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import com.tencent.av.VideoConstants.EmShareOps;
-import com.tencent.av.VideoConstants.EmShareOpsRet;
 import com.tencent.av.VideoController;
-import com.tencent.av.screenshare.ScreenShareCtrl;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.1;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
 
 public class lyj
-  implements lrv, mlt
 {
-  private final lyk jdField_a_of_type_Lyk = new lyk();
-  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
+  private static volatile lyj jdField_a_of_type_Lyj;
+  VideoController jdField_a_of_type_ComTencentAvVideoController;
+  public VideoAppInterface a;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b = true;
   
-  public lyj(ScreenShareCtrl paramScreenShareCtrl)
+  private lyj(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  @TargetApi(21)
-  public void a(int paramInt)
+  public static lyj a(VideoAppInterface paramVideoAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
-    }
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    while (paramInt != 2) {
-      return;
-    }
-    if (localScreenShareCtrl.a(VideoConstants.EmShareOps.STOP) == VideoConstants.EmShareOpsRet.SUC) {}
-    for (paramInt = 2;; paramInt = 3)
+    if (jdField_a_of_type_Lyj == null) {}
+    try
     {
-      ScreenShareCtrl.a(paramInt);
-      return;
-    }
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(Bitmap paramBitmap, lyh paramlyh)
-  {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramBitmap, paramlyh);
-    }
-  }
-  
-  @TargetApi(21)
-  public void a(lyh paramlyh, int paramInt1, int paramInt2)
-  {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    do
-    {
-      return;
-      localScreenShareCtrl.a(paramlyh, paramInt1, paramInt2);
-      if (localScreenShareCtrl.a(VideoConstants.EmShareOps.START) == VideoConstants.EmShareOpsRet.SUC)
-      {
-        ScreenShareCtrl.a(4);
-        return;
+      if (jdField_a_of_type_Lyj == null) {
+        jdField_a_of_type_Lyj = new lyj(paramVideoAppInterface);
       }
-      ScreenShareCtrl.a(6);
-      paramlyh = VideoController.a().a();
-    } while (paramlyh == null);
-    paramlyh.a(1);
+      return jdField_a_of_type_Lyj;
+    }
+    finally {}
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lyh paramlyh)
+  public void a()
   {
-    this.jdField_a_of_type_Lyk.a(1, paramArrayOfByte, paramInt1, paramInt2, paramlyh);
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramlyh);
+    if (lyu.f()) {
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public void b(int paramInt)
+  public void a(long paramLong, boolean paramBoolean)
   {
+    boolean bool1 = true;
+    boolean bool2 = VideoController.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    if ((QLog.isColorLevel()) || (!bool2) || (paramBoolean)) {
+      QLog.w("SmallScreenActivityPlugin", 1, "onPauseRender, isQuit[" + paramBoolean + "], isScreenOn[" + bool2 + "], seq[" + paramLong + "]");
+    }
+    ley localley;
+    if (!paramBoolean)
+    {
+      if (!lyu.f()) {
+        break label170;
+      }
+      localley = this.jdField_a_of_type_ComTencentAvVideoController.a();
+      int i = localley.d;
+      paramBoolean = bool1;
+      if (i != 2) {
+        if (i != 4) {
+          break label165;
+        }
+      }
+    }
+    label165:
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      ThreadManager.excute(new SmallScreenActivityPlugin.2(this, paramLong, bool2, this.jdField_a_of_type_ComTencentAvVideoController.a().c(), paramBoolean), 16, null, false);
+      lyu.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), localley);
+      return;
+    }
+    label170:
+    lyu.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (lyu.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) || (!lyu.f());
+  }
+  
+  public void b()
+  {
+    long l = AudioHelper.b();
     if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
+      QLog.w("SmallScreenActivityPlugin", 1, "onResume, seq[" + l + "]");
     }
+    if (lyu.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = true;
+      ThreadManager.excute(new SmallScreenActivityPlugin.1(this, l), 16, null, false);
+    }
+    lyu.a(l, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lyj
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,25 @@ public final class EventRecord
   public long packageSize = 0L;
   public String srcIp = "";
   
-  public final void readFrom(a parama)
+  protected Object clone()
   {
-    this.apn = parama.b(0, true);
-    this.srcIp = parama.b(1, true);
-    this.eventName = parama.b(2, true);
-    this.eventResult = parama.a(3, true);
+    return super.clone();
+  }
+  
+  public void readFrom(a parama)
+  {
+    this.apn = parama.a(0, true);
+    this.srcIp = parama.a(1, true);
+    this.eventName = parama.a(2, true);
+    this.eventResult = parama.a(this.eventResult, 3, true);
     this.packageSize = parama.a(this.packageSize, 4, true);
     this.cosumeTime = parama.a(this.cosumeTime, 5, true);
-    this.eventValue = parama.b(6, true);
+    this.eventValue = parama.a(6, true);
     this.eventTime = parama.a(this.eventTime, 7, true);
     this.eventType = parama.a(this.eventType, 8, false);
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.apn, 0);
     paramb.a(this.srcIp, 1);
@@ -46,7 +51,7 @@ public final class EventRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.event.EventRecord
  * JD-Core Version:    0.7.0.1
  */

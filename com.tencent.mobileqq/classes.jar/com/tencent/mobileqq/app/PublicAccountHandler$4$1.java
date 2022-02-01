@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import alzm;
+import anrt;
 
 public class PublicAccountHandler$4$1
   implements Runnable
 {
-  public PublicAccountHandler$4$1(alzm paramalzm) {}
+  public PublicAccountHandler$4$1(anrt paramanrt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class PublicAccountHandler$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

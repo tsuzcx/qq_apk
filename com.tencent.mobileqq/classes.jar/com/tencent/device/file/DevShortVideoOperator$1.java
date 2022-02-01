@@ -1,29 +1,29 @@
 package com.tencent.device.file;
 
-import awiw;
-import azen;
+import abrt;
+import abrv;
+import abux;
+import ayxi;
+import bcfn;
 import com.tencent.device.msg.data.MessageForDevShortVideo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import zuv;
-import zux;
-import zxz;
 
 public class DevShortVideoOperator$1
   implements Runnable
 {
-  public DevShortVideoOperator$1(zuv paramzuv, azen paramazen) {}
+  public DevShortVideoOperator$1(abrt paramabrt, bcfn parambcfn) {}
   
   public void run()
   {
-    azen localazen = this.a;
+    bcfn localbcfn = this.a;
     Object localObject = null;
     int i;
-    if (localazen.g == 0)
+    if (localbcfn.g == 0)
     {
-      localObject = this.this$0.a(localazen);
+      localObject = this.this$0.a(localbcfn);
       i = 1;
     }
     for (;;)
@@ -31,9 +31,9 @@ public class DevShortVideoOperator$1
       if (localObject == null)
       {
         return;
-        if (localazen.g == 1)
+        if (localbcfn.g == 1)
         {
-          localObject = (MessageForShortVideo)localazen.a;
+          localObject = (MessageForShortVideo)localbcfn.a;
           i = 0;
         }
       }
@@ -47,8 +47,8 @@ public class DevShortVideoOperator$1
         if (i != 0) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         }
-        ((zxz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(zxz.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
-        awiw.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        ((abux)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(abux.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
+        ayxi.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
         return;
       }
       i = 0;
@@ -57,7 +57,7 @@ public class DevShortVideoOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.file.DevShortVideoOperator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class TaskManager$13
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
     String str = (String)paramArrayOfObject[0];
-    QLog.d("kandianreport.taskmanager", 1, "call reportToServer: " + str + " " + (String)paramArrayOfObject[1]);
+    QLog.d("kandianreport.taskmanager", 1, "call reportToServer: " + str + " " + paramArrayOfObject[1]);
     TaskManager.access$800(this.this$0, paramJSContext, (String)paramArrayOfObject[0], (String)paramArrayOfObject[1]);
     return Integer.valueOf(0);
   }

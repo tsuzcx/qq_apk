@@ -1,30 +1,16 @@
-import android.widget.TextView;
+import java.util.Comparator;
 
-class tdr
-  implements tdm
+final class tdr
+  implements Comparator<byte[]>
 {
-  tdr(tdn paramtdn) {}
-  
-  public void a()
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    tdn.a(this.a, null);
-    if (tdn.a(this.a) != null)
-    {
-      tdn.a(this.a).b(null);
-      if ((tdn.c(this.a)) && (tdn.a(this.a) != null)) {
-        tdn.a(this.a).setText(tdn.a(this.a).a());
-      }
-    }
-    if ((tdn.d(this.a)) && (tdn.a(this.a) != 0L))
-    {
-      tdn.b(this.a);
-      tdn.b(this.a, false);
-    }
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdr
  * JD-Core Version:    0.7.0.1
  */

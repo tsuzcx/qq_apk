@@ -1,176 +1,119 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.1;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.2;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class alaw
-  implements akrb
 {
-  private alba jdField_a_of_type_Alba;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SpriteBackgroundManager.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private volatile boolean jdField_a_of_type_Boolean;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SpriteBackgroundManager.2(this);
-  private volatile boolean jdField_b_of_type_Boolean;
+  public int a;
+  public tAdvDesc a;
+  public SparseArray<alax> a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  private int d;
   
-  public alaw(alba paramalba, ApolloTextureView paramApolloTextureView)
+  public alaw(tAdvDesc paramtAdvDesc)
   {
-    this.jdField_a_of_type_Alba = paramalba;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-  }
-  
-  private void a(int paramInt)
-  {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "[execAction], ready to play, actionId:", Integer.valueOf(paramInt) });
-    }
-    String[] arrayOfString = algj.a(paramInt);
-    this.jdField_a_of_type_JavaLangString = arrayOfString[1];
-    localApolloTextureView.getRenderImpl().a(1, null, paramInt, 0, arrayOfString[0], arrayOfString[1]);
-  }
-  
-  private void b(int paramInt)
-  {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localApolloTextureView != null) && (localApolloTextureView.getVisibility() != paramInt)) {
-      ThreadManager.getUIHandler().post(new SpriteBackgroundManager.3(this, localApolloTextureView, paramInt));
-    }
-  }
-  
-  public void a()
-  {
-    if (((ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_JavaLangString == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",actionName:", this.jdField_a_of_type_JavaLangString });
-      }
-      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onCompleteRender]");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()))
-    {
-      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      if (paramString != null) {
-        a(paramString.intValue());
-      }
-    }
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    b(8);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onStartRender]");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    b(0);
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Boolean) {
-          a();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.addAll(paramList);
-      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty());
-      paramList = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    } while (paramList == null);
-    a(paramList.intValue());
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Alba == null) || (this.jdField_a_of_type_Alba.a() == null)) {}
-    albf localalbf;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onSurfaceReady]");
-      }
-      this.jdField_a_of_type_Alba.d(true);
-      localalbf = (albf)this.jdField_a_of_type_Alba.a().getManager(249);
-    } while ((!this.jdField_a_of_type_Alba.c()) || (localalbf.a().b(null)));
-    e();
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    ApolloTextureView localApolloTextureView;
-    do
-    {
-      return;
-      this.jdField_b_of_type_Boolean = true;
-      localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localApolloTextureView == null);
-    localApolloTextureView.queueEvent(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView != null) {
-      localApolloTextureView.queueEvent(this.jdField_b_of_type_JavaLangRunnable);
-    }
-  }
-  
-  public void e()
-  {
-    b(8);
+    this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc = paramtAdvDesc;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     a();
   }
   
-  public void f()
+  public static alaw a(tAdvDesc paramtAdvDesc)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    if ((paramtAdvDesc == null) || (TextUtils.isEmpty(paramtAdvDesc.res_data))) {
+      return null;
     }
-    Object localObject = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject != null)
+    switch (paramtAdvDesc.pattern_id)
     {
-      localObject = ((ApolloTextureView)localObject).getRenderImpl();
-      if (localObject != null) {
-        ((akpl)localObject).c();
-      }
+    default: 
+      return null;
+    case 1012: 
+      return new alaw(paramtAdvDesc);
+    case 1108: 
+      return new bmva(paramtAdvDesc);
     }
-    this.jdField_a_of_type_Alba = null;
+    return new bmvc(paramtAdvDesc);
+  }
+  
+  public alba a()
+  {
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data))) {
+      return null;
+    }
+    switch (this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.pattern_id)
+    {
+    default: 
+      return null;
+    case 1012: 
+      return new alba();
+    case 1108: 
+      return new bmvb();
+    }
+    return new bmvf();
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str1 = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
+    try
+    {
+      Object localObject = new JSONObject(str1);
+      int i = ((JSONObject)localObject).optInt("res_type");
+      String str2 = ((JSONObject)localObject).optString("res_url");
+      String str3 = ((JSONObject)localObject).optString("res_url_md5");
+      int j = ((JSONObject)localObject).optInt("jump_type");
+      String str4 = ((JSONObject)localObject).optString("jump_url");
+      int k = ((JSONObject)localObject).optInt("WebViewPreloadFlag");
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossADBannerManager", 2, "webViewPreloadFlag: " + k);
+      }
+      this.jdField_a_of_type_Int = i;
+      this.jdField_b_of_type_Int = j;
+      this.jdField_a_of_type_JavaLangString = str4;
+      this.d = k;
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_traceinfo;
+      this.c = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id;
+      localObject = new alax();
+      ((alax)localObject).jdField_a_of_type_JavaLangString = str2;
+      ((alax)localObject).jdField_b_of_type_JavaLangString = str3;
+      ((alax)localObject).c = alay.a().a(str2);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(1, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bmev.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "json parseError exception = " + localException.getMessage() + " json string = " + str1);
+    }
+  }
+  
+  boolean a()
+  {
+    return this.d == 1;
+  }
+  
+  public boolean b()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      alax localalax = (alax)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localalax == null) || (TextUtils.isEmpty(localalax.c)) || (!localalax.a())) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
 }
 

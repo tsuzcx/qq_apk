@@ -1,22 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class ssv
-  implements yds
+  implements bdfl
 {
-  public ssv(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  public ssv(ReadInJoySkinGuideView.1 param1) {}
   
-  public void a()
+  public void a(bdeo parambdeo)
   {
-    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()) && (FolderFollowTabFragment.a(this.a) != null)) {
-      FolderFollowTabFragment.a(this.a).a(true);
-    }
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambdeo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssv
  * JD-Core Version:    0.7.0.1
  */

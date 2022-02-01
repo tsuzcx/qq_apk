@@ -1,28 +1,50 @@
-import android.media.MediaCodec.BufferInfo;
+import java.util.Calendar;
 
 class axwd
+  implements aqiw
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final int b;
-  private final int c;
+  axwd(axvz paramaxvz) {}
   
-  private axwd(int paramInt1, int paramInt2, MediaCodec.BufferInfo paramBufferInfo)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramBufferInfo.presentationTimeUs;
-    this.c = paramBufferInfo.flags;
+    return 3;
   }
   
-  private void a(MediaCodec.BufferInfo paramBufferInfo, int paramInt)
+  public int a(int paramInt)
   {
-    paramBufferInfo.set(paramInt, this.b, this.jdField_a_of_type_Long, this.c);
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + anni.a(2131706085);
+    case 1: 
+      return paramInt2 + 1 + anni.a(2131706077);
+    }
+    return paramInt2 + 1 + anni.a(2131706065);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwd
  * JD-Core Version:    0.7.0.1
  */

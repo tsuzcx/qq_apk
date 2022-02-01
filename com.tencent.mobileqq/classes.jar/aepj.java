@@ -1,9 +1,15 @@
-final class aepj
-  extends ThreadLocal<char[]>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
+
+public class aepj
+  implements DialogInterface.OnDismissListener
 {
-  protected char[] a()
+  public aepj(MainFragment paramMainFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new char[1024];
+    this.a.e();
   }
 }
 

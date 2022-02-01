@@ -1,4 +1,4 @@
-public abstract interface anxr
+public abstract class anxr
 {
   public abstract void a();
 }

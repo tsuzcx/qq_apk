@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import abti;
-import acjt;
-import aepi;
+import abdn;
+import acwh;
+import adrt;
 import android.text.TextUtils;
-import azah;
-import bamp;
-import bciq;
-import bdex;
-import bdrv;
-import bfam;
+import bdnt;
+import bfmd;
+import bgjz;
+import bgwv;
+import bihn;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
@@ -20,22 +19,18 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
-import ndt;
-import ndv;
+import nmn;
+import nmp;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import syb;
-import zgu;
+import tzo;
 
 public class MessageForText
   extends RecommendCommonMessage
@@ -46,10 +41,6 @@ public class MessageForText
   public static final int SPAN_TYPE_SYS_EMOTCATION = 2;
   private static final String TAG = "MessageForText";
   public String action;
-  public String latitude;
-  public String location;
-  public URL locationUrl;
-  public String longitude;
   public boolean mIsMsgSignalOpen;
   public long mMsgSendTime;
   public int mMsgSignalCount;
@@ -61,7 +52,6 @@ public class MessageForText
   public int msgVia;
   public CharSequence sb;
   public CharSequence sb2;
-  public String url;
   
   public static ArrayList<MessageForText.AtTroopMemberInfo> getTroopMemberInfoFromExtrJson(String paramString)
   {
@@ -196,169 +186,122 @@ public class MessageForText
       }
       localObject = new CopyOnWriteArrayList();
       ((List)localObject).add(this);
-      bfam.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
+      bihn.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
       return;
     }
   }
   
   protected void doParse(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = null;
-    boolean bool = false;
-    Object localObject3 = this.msg;
-    Object localObject1 = localObject3;
+    paramBoolean = false;
+    Object localObject2 = this.msg;
+    Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bdex.a((String)localObject3);
+      localObject1 = bgjz.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
-    localObject3 = localObject1;
+    localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject3 = "";
+      localObject2 = "";
     }
-    int i;
-    if (!paramBoolean)
+    if (this.istroop == 1008)
     {
-      i = ((String)localObject3).indexOf("http://maps.google.com/maps?q=");
-      if (i != -1)
-      {
-        this.url = ((String)localObject3).substring(i);
-        localObject1 = azah.a(this.url);
-        this.latitude = localObject1[0];
-        this.longitude = localObject1[1];
-        this.location = localObject1[2];
-        if ((TextUtils.isEmpty(this.latitude)) || (TextUtils.isEmpty(this.longitude))) {
-          break label913;
-        }
-      }
+      this.sb = new abdn((CharSequence)localObject2, 13);
+      ((abdn)this.sb).a = this.selfuin;
+      ((abdn)this.sb).b = this.frienduin;
+      ((abdn)this.sb).a(tzo.b(this.frienduin));
     }
     for (;;)
     {
-      try
-      {
-        Float.parseFloat(this.latitude);
-        Float.parseFloat(this.longitude);
-        i = 1;
+      if ((this.sb instanceof bdnt)) {
+        ((bdnt)this.sb).a("biz_src_jc_aio");
       }
-      catch (Exception localException1)
+      return;
+      if ((this.istroop == 1024) && (!isSendFromLocal()))
       {
-        try
+        localObject1 = null;
+        for (;;)
         {
-          i = aepi.a(200.0F, BaseApplication.getContext().getResources());
-          int j = aepi.a(100.0F, BaseApplication.getContext().getResources());
-          localObject1 = new StringBuilder("http://st.map.soso.com/api");
-          ((StringBuilder)localObject1).append("?size=").append(i).append("*").append(j);
-          ((StringBuilder)localObject1).append("&center=").append(this.longitude).append(",").append(this.latitude);
-          ((StringBuilder)localObject1).append("&zoom=14");
-          ((StringBuilder)localObject1).append("&markers=").append(this.longitude).append(",").append(this.latitude).append(",").append("red");
-          this.locationUrl = new URL(((StringBuilder)localObject1).toString());
-          if (this.istroop != 1008) {
+          try
+          {
+            localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin);
+            localObject1 = localAppRuntime;
+            if (!QQAppInterface.class.isInstance(localAppRuntime)) {
+              continue;
+            }
+            localObject1 = localAppRuntime;
+            boolean bool = nmp.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
+            paramBoolean = bool;
+          }
+          catch (AccountNotMatchException localAccountNotMatchException)
+          {
+            AppRuntime localAppRuntime;
+            localAccountNotMatchException.printStackTrace();
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("MessageForText", 2, String.format("User %s don't match current accound", new Object[] { this.selfuin }));
+            localObject3 = localObject1;
+            continue;
+            this.sb = new bdnt((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this);
             continue;
           }
-          this.sb = new zgu((CharSequence)localObject3, 13);
-          ((zgu)this.sb).a = this.selfuin;
-          ((zgu)this.sb).b = this.frienduin;
-          ((zgu)this.sb).a(syb.b(this.frienduin));
-          if ((this.sb instanceof bamp)) {
-            ((bamp)this.sb).a("biz_src_jc_aio");
-          }
-          return;
-          localException1 = localException1;
-          i = 0;
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          this.locationUrl = null;
-          localMalformedURLException.printStackTrace();
-          continue;
-        }
-        this.locationUrl = null;
-        continue;
-        if ((this.istroop != 1024) || (isSendFromLocal())) {
-          continue;
-        }
-        Object localObject2 = localAppRuntime;
-        try
-        {
-          localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin);
-          localObject2 = localAppRuntime;
-          if (!QQAppInterface.class.isInstance(localAppRuntime)) {
+          if (!paramBoolean) {
             continue;
           }
-          localObject2 = localAppRuntime;
-          paramBoolean = ndv.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
-        }
-        catch (AccountNotMatchException localAccountNotMatchException)
-        {
-          localAccountNotMatchException.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
+          this.sb = new nmn((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
+          ((bdnt)this.sb).a("biz_src_jc_aio");
+          break;
+          localObject1 = localAppRuntime;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = localAppRuntime;
+            QLog.d("MessageForText", 2, "We get error AppRuntime");
           }
-          QLog.e("MessageForText", 2, String.format("User %s don't match current accound", new Object[] { this.selfuin }));
-          paramBoolean = bool;
-          localObject4 = localObject2;
-          continue;
-          this.sb = new bamp((CharSequence)localObject3, 13, ChatTextSizeSettingActivity.a(), this);
-          continue;
+          paramBoolean = false;
         }
-        if (!paramBoolean) {
-          continue;
-        }
-        this.sb = new ndt((CharSequence)localObject3, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
-        ((bamp)this.sb).a("biz_src_jc_aio");
-        continue;
-        localObject2 = localAppRuntime;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject2 = localAppRuntime;
-        QLog.d("MessageForText", 2, "We get error AppRuntime");
-        paramBoolean = false;
-        continue;
-        Object localObject4;
-        if ((this.istroop != 1037) && (this.istroop != 1045) && (this.istroop != 1044)) {
-          continue;
-        }
-        this.sb = new bamp((CharSequence)localObject3, 5, ChatTextSizeSettingActivity.a(), this);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MessageForText", 2, "limit chat, dont parse url:" + this.uniseq);
-        continue;
-        this.sb = bdrv.a((String)localObject3, this, ChatTextSizeSettingActivity.a(), 13);
-        localObject2 = getExtInfoFromExtStr("disc_at_info_list");
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          continue;
-        }
-        localObject3 = new StringBuilder((String)localObject3);
-        try
-        {
-          localObject4 = BaseApplicationImpl.sApplication.getRuntime();
-          if (!QQAppInterface.class.isInstance(localObject4)) {
-            continue;
-          }
-          this.msg2 = bciq.a((QQAppInterface)localObject4, (StringBuilder)localObject3, (String)localObject2, this.frienduin, isSend()).toString();
-          this.sb2 = bdrv.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
-          if (!(this.sb2 instanceof bamp)) {
-            continue;
-          }
-          ((bamp)this.sb2).a("biz_src_jc_aio");
-        }
-        catch (Exception localException2)
-        {
-          QLog.e("MessageForText", 1, "replaceAtMsgByMarkName", localException2);
-        }
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MessageForText", 2, "We get error AppRuntime");
-        continue;
       }
-      if (i != 0) {}
-      label913:
-      i = 0;
+      Object localObject3;
+      if ((this.istroop == 1037) || (this.istroop == 1045) || (this.istroop == 1044))
+      {
+        this.sb = new bdnt((CharSequence)localObject2, 5, ChatTextSizeSettingActivity.a(), this);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessageForText", 2, "limit chat, dont parse url:" + this.uniseq);
+        }
+      }
+      else
+      {
+        this.sb = bgwv.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
+        localObject1 = getExtInfoFromExtStr("disc_at_info_list");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject2 = new StringBuilder((String)localObject2);
+          try
+          {
+            localObject3 = BaseApplicationImpl.sApplication.getRuntime();
+            if (!QQAppInterface.class.isInstance(localObject3)) {
+              break label580;
+            }
+            this.msg2 = bfmd.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
+            this.sb2 = bgwv.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
+            if (!(this.sb2 instanceof bdnt)) {
+              continue;
+            }
+            ((bdnt)this.sb2).a("biz_src_jc_aio");
+          }
+          catch (Exception localException)
+          {
+            QLog.e("MessageForText", 1, "replaceAtMsgByMarkName", localException);
+          }
+          continue;
+          label580:
+          if (QLog.isColorLevel()) {
+            QLog.d("MessageForText", 2, "We get error AppRuntime");
+          }
+        }
+      }
     }
   }
   
@@ -372,7 +315,7 @@ public class MessageForText
   
   public boolean isSupportFTS()
   {
-    return abti.x(this.istroop);
+    return acwh.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -397,23 +340,23 @@ public class MessageForText
     this.msgData = str1.getBytes();
   }
   
-  public void setSendMsgParams(acjt paramacjt)
+  public void setSendMsgParams(adrt paramadrt)
   {
-    this.mMsgSignalSum = paramacjt.jdField_a_of_type_Int;
-    this.mMsgSignalCount = paramacjt.b;
-    this.mIsMsgSignalOpen = paramacjt.jdField_c_of_type_Boolean;
-    this.mMsgSignalNetType = paramacjt.jdField_c_of_type_Int;
-    this.mMsgSendTime = paramacjt.jdField_a_of_type_Long;
-    this.mPasswdRedBagFlag = paramacjt.f;
-    this.mPasswdRedBagSender = paramacjt.d;
+    this.mMsgSignalSum = paramadrt.jdField_a_of_type_Int;
+    this.mMsgSignalCount = paramadrt.b;
+    this.mIsMsgSignalOpen = paramadrt.jdField_c_of_type_Boolean;
+    this.mMsgSignalNetType = paramadrt.jdField_c_of_type_Int;
+    this.mMsgSendTime = paramadrt.jdField_a_of_type_Long;
+    this.mPasswdRedBagFlag = paramadrt.f;
+    this.mPasswdRedBagSender = paramadrt.d;
     if ((this instanceof MessageForFoldMsg)) {
-      ((MessageForFoldMsg)this).foldFlagTemp = paramacjt.e;
+      ((MessageForFoldMsg)this).foldFlagTemp = paramadrt.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText
  * JD-Core Version:    0.7.0.1
  */

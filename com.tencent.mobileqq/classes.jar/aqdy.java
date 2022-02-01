@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aqdy
-  extends ambp
+class aqdy
+  implements View.OnTouchListener
 {
-  public aqdy(ExtendFriendFragment paramExtendFriendFragment) {}
+  aqdy(aqdv paramaqdv) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    ExtendFriendFragment.a(this.a);
+    return aqdv.a(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 

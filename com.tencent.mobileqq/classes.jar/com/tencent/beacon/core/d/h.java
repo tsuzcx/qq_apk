@@ -1,15 +1,23 @@
 package com.tencent.beacon.core.d;
 
-public final class h
+import com.tencent.beacon.core.b.b;
+import com.tencent.beacon.core.e.d;
+
+class h
+  implements b<String>
 {
-  public static boolean a(String paramString)
+  h(i parami) {}
+  
+  public void a(Exception paramException)
   {
-    return (paramString == null) || (paramString.equals(""));
+    d.d("[upload error] upload fail! exception: %s", new Object[] { paramException.getMessage() });
   }
+  
+  public void a(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.d.h
  * JD-Core Version:    0.7.0.1
  */

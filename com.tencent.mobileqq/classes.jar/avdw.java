@@ -1,36 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
-final class avdw
-  implements URLDrawable.URLDrawableListener
+class avdw
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  avdw(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, aved paramaved) {}
+  avdw(avdv paramavdv) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    wxe.c("ShortVideoShareUtil", "onLoadCanceled --");
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    avdr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Aved);
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
   {
-    wxe.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = avdr.a(paramURLDrawable);
-    avdr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Aved);
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdw
  * JD-Core Version:    0.7.0.1
  */

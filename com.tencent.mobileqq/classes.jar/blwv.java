@@ -1,66 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgPhotoView;
 
 public class blwv
+  implements View.OnClickListener
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i = 2;
+  public blwv(MsgPhotoView paramMsgPhotoView) {}
   
-  public blwv()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public int a(float paramFloat)
-  {
-    return aepi.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public int a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    while (j < paramInt)
+    if (MsgPhotoView.a(this.a) != null)
     {
-      localStringBuilder.append("我");
-      j += 1;
+      if (paramView != MsgPhotoView.a(this.a)) {
+        break label50;
+      }
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
     }
-    TextPaint localTextPaint = new TextPaint();
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      localTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    }
-    localTextPaint.setShadowLayer(a(3.0F), a(5.0F), a(5.0F), -1);
-    paramInt = aepi.a(100.0F, BaseApplicationImpl.getApplication().getResources());
     for (;;)
     {
-      localTextPaint.setTextSize(paramInt);
-      StaticLayout localStaticLayout = blyu.a(localStringBuilder, 0, localStringBuilder.length(), localTextPaint, this.c, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 1);
-      if (localTextPaint.measureText(localStringBuilder.toString()) > this.c)
-      {
-        paramInt -= 1;
-      }
-      else
-      {
-        if (localStaticLayout.getHeight() <= this.d) {
-          break;
-        }
-        paramInt -= 1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label50:
+      if (paramView == MsgPhotoView.b(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
+      } else if (paramView == MsgPhotoView.c(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
+      } else if (paramView == MsgPhotoView.d(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
+      } else {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
       }
     }
-    return paramInt;
   }
 }
 

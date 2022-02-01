@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class awyv
-  implements awzb
+class awyv
+  extends BroadcastReceiver
 {
-  awyv(awyu paramawyu) {}
+  awyv(awys paramawys) {}
   
-  public void a(List<PushDialogTemplate> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      awys.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyv
  * JD-Core Version:    0.7.0.1
  */

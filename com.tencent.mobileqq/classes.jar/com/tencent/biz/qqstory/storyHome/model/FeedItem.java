@@ -8,17 +8,17 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import ulj;
-import uxd;
-import uxe;
-import woy;
-import wqn;
-import wxe;
-import xqq;
+import wev;
+import wqp;
+import wqq;
+import yij;
+import yjy;
+import yqp;
+import zkb;
 
-public abstract class FeedItem<T extends wqn, E extends uxe>
+public abstract class FeedItem<T extends yjy, E extends wqq>
   extends BaseUIItem
-  implements ulj
+  implements wev
 {
   public static final int BANNER_FEED_ITEM = 5;
   public static final String FAKE_START = "fake-";
@@ -42,7 +42,7 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
     {
     case 4: 
     default: 
-      wxe.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
+      yqp.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
       return null;
     case 1: 
       return new GeneralFeedItem();
@@ -65,7 +65,7 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
   
   public abstract int assignType();
   
-  public abstract void convertFromFeedFeature(uxd paramuxd);
+  public abstract void convertFromFeedFeature(wqp paramwqp);
   
   public void copy(Object paramObject)
   {
@@ -86,7 +86,7 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
     }
     for (;;)
     {
-      xqq.a(bool, "type类型不对应");
+      zkb.a(bool, "type类型不对应");
       this.feedId = paramFeedEntry.feedId;
       setDate(paramFeedEntry.date);
       this.ownerId = paramFeedEntry.ownerId;
@@ -103,7 +103,7 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
       {
         for (;;)
         {
-          wxe.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
+          yqp.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
         }
       }
     }
@@ -143,9 +143,9 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
   
   public T generateAndPackageHomeFeedFromDB()
   {
-    wqn localwqn = generateHomeFeed();
-    localwqn.b();
-    return localwqn;
+    yjy localyjy = generateHomeFeed();
+    localyjy.b();
+    return localyjy;
   }
   
   @NonNull
@@ -178,17 +178,17 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = woy.a().format(new Date());
+      str = yij.a().format(new Date());
     }
     this.date = str;
     try
     {
-      this.dateTimeMillis = woy.a().parse(str).getTime();
+      this.dateTimeMillis = yij.a().parse(str).getTime();
       return;
     }
     catch (ParseException paramString)
     {
-      wxe.c("Q.qqstory.home", "parse date", paramString);
+      yqp.c("Q.qqstory.home", "parse date", paramString);
     }
   }
   
@@ -201,7 +201,7 @@ public abstract class FeedItem<T extends wqn, E extends uxe>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedItem
  * JD-Core Version:    0.7.0.1
  */

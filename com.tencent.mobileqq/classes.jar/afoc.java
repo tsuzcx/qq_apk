@@ -1,30 +1,17 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afoc
-  extends ClickableSpan
+public class afoc
+  implements View.OnClickListener
 {
-  afoc(afnq paramafnq) {}
+  public afoc(TroopRequestActivity paramTroopRequestActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = bhuf.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131720910);
-      paramView.c(2131690648);
-      paramView.a(new afod(this));
-      paramView.a(new afoe(this, paramView));
-      paramView.show();
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    this.a.f();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

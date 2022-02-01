@@ -1,63 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 
-public class sog
-  implements INetInfoHandler
+class sog
+  implements sow
 {
-  public sog(BridgeModule paramBridgeModule, String paramString) {}
+  sog(snh paramsnh) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    paramView = (articlesummary.ChannelInfo)paramView.getTag();
+    if (paramView != null)
+    {
+      if ((!paramView.bytes_channel_url.has()) || (paramView.bytes_channel_url.get() == null)) {
+        break label69;
+      }
+      if (!TextUtils.isEmpty(paramView.bytes_channel_url.get().toStringUtf8())) {
+        pha.a(this.a.a, paramView.bytes_channel_url.get().toStringUtf8());
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+    return;
+    label69:
+    ohp.b(this.a.a, paramView.uint32_channel_id.get(), pha.a(paramView), paramView.uint32_channel_type.get(), 6, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sog
  * JD-Core Version:    0.7.0.1
  */

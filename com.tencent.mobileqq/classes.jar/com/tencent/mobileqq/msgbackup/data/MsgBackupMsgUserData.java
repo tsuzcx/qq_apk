@@ -3,6 +3,7 @@ package com.tencent.mobileqq.msgbackup.data;
 import android.content.Context;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class MsgBackupMsgUserData
   extends RecentBaseData
@@ -12,36 +13,43 @@ public class MsgBackupMsgUserData
   public String uin;
   public int uinType;
   
-  public int a()
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  public long getLastDraftTime()
+  {
+    return 0L;
+  }
+  
+  public long getLastMsgTime()
+  {
+    return 0L;
+  }
+  
+  public int getRecentUserType()
   {
     return this.uinType;
   }
   
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public String a()
+  public String getRecentUserUin()
   {
     return this.uin;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public long b()
-  {
-    return 0L;
   }
   
   public String toString()
   {
     return this.uin + "_" + this.uinType;
   }
+  
+  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupMsgUserData
  * JD-Core Version:    0.7.0.1
  */

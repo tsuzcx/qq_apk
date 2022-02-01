@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdgg;
+import bglj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ChatSettingForTroop$27
@@ -10,13 +10,13 @@ class ChatSettingForTroop$27
   
   public void run()
   {
-    bdgg.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.a, 0);
-    bdgg.a(this.this$0.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.a, this.this$0.j);
+    bglj.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.a, 0);
+    bglj.a(this.this$0.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.a, this.this$0.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.27
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emotionintegrate;
 
 import android.text.TextUtils;
-import baqn;
-import bayu;
-import bdhb;
+import bdsh;
+import bdzx;
+import bgmg;
 import com.tencent.mobileqq.data.MessageForPic;
 import java.net.URL;
 
@@ -14,19 +14,19 @@ class SearchEmoticonFragment$2
   
   public void run()
   {
-    Object localObject = bayu.a(this.a, 1, null);
-    if ((localObject != null) && (baqn.a(((URL)localObject).toString()) == null))
+    Object localObject = bdzx.a(this.a, 1, null);
+    if ((localObject != null) && (bdsh.a(((URL)localObject).toString()) == null))
     {
-      localObject = baqn.d(((URL)localObject).toString());
+      localObject = bdsh.d(((URL)localObject).toString());
       if ((!TextUtils.isEmpty(this.a.path)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        bdhb.d(this.a.path, (String)localObject);
+        bgmg.d(this.a.path, (String)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment.2
  * JD-Core Version:    0.7.0.1
  */

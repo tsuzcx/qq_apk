@@ -1,19 +1,39 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 
-class bnfk
-  implements Handler.Callback
+public class bnfk
+  extends RecyclerView.ViewHolder
 {
-  bnfk(bnfj parambnfj) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bnfj a;
+  public URLDrawable a;
+  public NumberCheckBox a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
   
-  public boolean handleMessage(Message paramMessage)
+  public bnfk(bnff parambnff, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    super(paramView);
+    this.b = ((ImageView)paramView.findViewById(2131372468));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372429));
+    this.c = ((ImageView)paramView.findViewById(2131368844));
+    this.d = ((ImageView)paramView.findViewById(2131372473));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372470);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131372471));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372474));
+    this.e = ((ImageView)paramView.findViewById(2131372399));
+    if (this.e != null) {
+      this.e.setVisibility(8);
     }
-    bnfj.a(this.a, false, null, paramMessage.what);
-    return false;
   }
 }
 

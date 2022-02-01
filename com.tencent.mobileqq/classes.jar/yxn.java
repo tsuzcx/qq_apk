@@ -1,26 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.PopupWindow;
+import android.graphics.PointF;
 
-class yxn
-  implements View.OnTouchListener
+public abstract interface yxn
 {
-  yxn(yxm paramyxm) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  
+  public abstract boolean a(yxo paramyxo);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxn
  * JD-Core Version:    0.7.0.1
  */

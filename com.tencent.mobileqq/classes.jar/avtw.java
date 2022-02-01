@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class avtw
-  implements View.OnClickListener
+public class avtw
+  implements DialogInterface.OnDismissListener
 {
-  avtw(avtv paramavtv) {}
+  public avtw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, avuv paramavuv) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (((paramView.getTag() instanceof avtx)) && (this.a.a != null))
-    {
-      avtx localavtx = (avtx)paramView.getTag();
-      this.a.a.a(this.a, paramView, localavtx);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
+    this.jdField_a_of_type_Avuv.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
+    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtw
  * JD-Core Version:    0.7.0.1
  */

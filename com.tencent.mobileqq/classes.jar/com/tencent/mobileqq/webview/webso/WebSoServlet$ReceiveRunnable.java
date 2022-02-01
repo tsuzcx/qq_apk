@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Bundle;
-import beko;
+import bhrs;
 
 class WebSoServlet$ReceiveRunnable
   implements Runnable
@@ -19,12 +19,12 @@ class WebSoServlet$ReceiveRunnable
   
   public void run()
   {
-    beko.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    bhrs.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet.ReceiveRunnable
  * JD-Core Version:    0.7.0.1
  */

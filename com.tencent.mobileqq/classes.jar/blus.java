@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.data.FlowMusic;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-class blus
-  implements blrq
+public class blus
+  implements View.OnClickListener
 {
-  blus(blur paramblur, String paramString) {}
+  public blus(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {}
-    do
+    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
     {
-      return;
-      paramObject = (FlowMusic)paramObject;
-      blur.a(this.jdField_a_of_type_Blur, blur.a(this.jdField_a_of_type_Blur, paramObject, this.jdField_a_of_type_JavaLangString));
-    } while (!blur.a(this.jdField_a_of_type_Blur).equals(blur.a(this.jdField_a_of_type_Blur).getClass()));
-    this.jdField_a_of_type_Blur.d();
+      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
+      QzoneVerticalVideoDownloadActivity.access$400(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

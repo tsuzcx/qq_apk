@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adsh
-  implements aybu
+public final class adsh
+  implements View.OnClickListener
 {
-  public adsh(QQSettingMe paramQQSettingMe) {}
+  public adsh(Toast paramToast) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (this.a.c)
-    {
-      if (paramInt != 100) {
-        this.a.a(2131690719);
-      }
-      this.a.z();
-    }
+    this.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bgvc;
 import com.tencent.qqmini.sdk.launcher.annotation.JsonORM;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.annotation.JsonORM.Column;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -20,15 +20,15 @@ public class BaseLibInfo
   public static final String KEY_4 = "key4";
   public static final String KEY_5 = "key5";
   public static final String LOG_TAG = "BaseLibInfo";
-  @bgvc(a="key4")
+  @JsonORM.Column(key="key4")
   public String baseLibDesc;
-  @bgvc(a="key2")
+  @JsonORM.Column(key="key2")
   public String baseLibKey;
-  @bgvc(a="key5")
+  @JsonORM.Column(key="key5")
   public int baseLibType;
-  @bgvc(a="key1")
+  @JsonORM.Column(key="key1")
   public String baseLibUrl;
-  @bgvc(a="key3")
+  @JsonORM.Column(key="key3")
   public String baseLibVersion;
   
   public BaseLibInfo() {}
@@ -57,7 +57,7 @@ public class BaseLibInfo
     if (paramJSONObject != null) {
       try
       {
-        paramJSONObject = (BaseLibInfo)JsonORM.a(paramJSONObject, BaseLibInfo.class);
+        paramJSONObject = (BaseLibInfo)JsonORM.parseFrom(paramJSONObject, BaseLibInfo.class);
         return paramJSONObject;
       }
       catch (Exception paramJSONObject)
@@ -154,7 +154,7 @@ public class BaseLibInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.BaseLibInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,54 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wsf
-  extends uro
+  extends JobSegment<List<xfb>, List<xfb>>
 {
-  public List<String> a = new ArrayList();
-  public int b;
+  private final xfa a;
   
-  public wsf(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
+  public wsf()
   {
-    super(paramRspGetPhotographyGuide.result);
-    Object localObject = paramRspGetPhotographyGuide.word.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
-        this.a.add(localByteStringMicro.toStringUtf8());
-      }
-    }
-    this.b = paramRspGetPhotographyGuide.seqno.get();
+    this(new wsg());
   }
   
-  public String toString()
+  public wsf(xfa paramxfa)
   {
-    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
+    this.a = paramxfa;
+  }
+  
+  protected void a(JobContext paramJobContext, List<xfb> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
+      }
+      notifyResult(paramList);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+    }
+    paramJobContext = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      paramJobContext.add(((xfb)localIterator.next()).b);
+    }
+    paramJobContext = new xev(paramJobContext);
+    if (this.a != null) {
+      paramJobContext.a = this.a;
+    }
+    paramJobContext.a(new wsh(this, paramList));
+    paramJobContext.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wsf
  * JD-Core Version:    0.7.0.1
  */

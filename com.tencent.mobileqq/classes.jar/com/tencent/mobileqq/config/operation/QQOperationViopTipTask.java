@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.operation;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskid")
 public class QQOperationViopTipTask
-  extends awge
+  extends Entity
 {
   public String adwords;
   public String begin;
@@ -25,7 +25,7 @@ public class QQOperationViopTipTask
   public int limitTotalAIOCount;
   public int limitTotalShowCount;
   public int linkOffset;
-  @awhs
+  @unique
   public int taskid;
   public int tipType;
   public int uinType;

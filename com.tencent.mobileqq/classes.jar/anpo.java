@@ -1,29 +1,32 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class anpo
-  implements View.OnClickListener
+  implements awna
 {
-  anpo(anpn paramanpn) {}
+  anpo(anpk paramanpk) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((anpn.a(this.a) == 0) && (!TextUtils.isEmpty(anpn.a(this.a))))
-    {
-      anpn.a(this.a).put(anpn.b(this.a), Integer.valueOf(1));
-      paramView = this.a.mRuntime.a();
-      if (paramView != null) {
-        paramView.a.loadUrl(anpn.a(this.a));
-      }
-      anpn.a(this.a, null);
+    boolean bool1 = anpk.b(this.a);
+    anpk.a(this.a, false);
+    boolean bool2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
     }
-    anpn.a(this.a).dismiss();
+    if (bool1 != bool2) {
+      ((FriendListHandler)anpk.a(this.a).a(1)).notifyUI(92, true, null);
+    }
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

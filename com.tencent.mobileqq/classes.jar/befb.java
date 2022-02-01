@@ -1,34 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
-class befb
-  implements nae
+public class befb
+  implements View.OnTouchListener
 {
-  befb(beez parambeez) {}
+  public befb(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-    if (paramBoolean) {
-      if (this.a.a)
-      {
-        if ((localObject != null) && ((localObject instanceof bels))) {
-          ((bels)localObject).a(true, 1, 2131691532);
-        }
-      }
-      else {
-        beez.a(this.a);
-      }
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.getActivity().finish();
     }
-    while ((localObject == null) || (!(localObject instanceof bels))) {
-      for (;;)
-      {
-        return;
-        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691532, 1);
-        ((QQToast)localObject).b(((QQToast)localObject).c());
-      }
-    }
-    ((bels)localObject).a(false, 0, 0);
+    return true;
   }
 }
 

@@ -1,281 +1,136 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.data.ComboLockManager.2;
-import dov.com.qq.im.capture.data.FilterCategory;
-import dov.com.qq.im.capture.data.LockedCategory;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import com.tencent.component.network.utils.NetworkUtils;
+import cooperation.qzone.util.NetworkState;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
+import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 
 public class blsj
-  implements IEventReceiver
 {
-  public static final String a;
-  int jdField_a_of_type_Int = -1;
-  alpq jdField_a_of_type_Alpq = new blsl(this);
-  blsm jdField_a_of_type_Blsm;
-  bnhc jdField_a_of_type_Bnhc;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = blqh.a();
-  LockedCategory jdField_a_of_type_DovComQqImCaptureDataLockedCategory;
-  public QIMFilterCategoryItem a;
-  HashMap<String, LockedCategory> jdField_a_of_type_JavaUtilHashMap;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  boolean b;
-  public boolean c;
+  public static final int a = "https://".length();
   
-  static
+  private static String a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = ajrx.jdField_a_of_type_JavaLangString + "/tencent/qim/share/";
-  }
-  
-  public blsj()
-  {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Blsm == null)
-    {
-      this.jdField_a_of_type_Blsm = new blsm(this);
-      if (QLog.isColorLevel()) {
-        QLog.i("ComboLockManager", 2, "registerStoryReceiver");
-      }
-      umc.a().registerSubscriber(this.jdField_a_of_type_Blsm);
+    String str = paramString.trim().replace(" ", "");
+    int i = str.indexOf('#');
+    paramString = str;
+    if (i > 0) {
+      paramString = str.substring(0, i);
     }
+    return paramString;
   }
   
-  public LockedCategory a(String paramString)
+  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity)
   {
-    return (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return a(paramContext, paramString, paramHttpEntity, null);
   }
   
-  public void a()
+  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity, blsk paramblsk)
   {
-    if (this.jdField_a_of_type_Blsm != null)
+    return a(false).execute(a(paramContext, paramString, paramHttpEntity, paramblsk));
+  }
+  
+  public static HttpClient a(boolean paramBoolean)
+  {
+    Object localObject2 = new BasicHttpParams();
+    HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject2, false);
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 20000);
+    HttpConnectionParams.setTcpNoDelay((HttpParams)localObject2, true);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 45000);
+    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
+    HttpProtocolParams.setVersion((HttpParams)localObject2, HttpVersion.HTTP_1_1);
+    HttpProtocolParams.setUserAgent((HttpParams)localObject2, "android-qzone");
+    Object localObject1 = new SchemeRegistry();
+    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+    try
     {
-      this.jdField_a_of_type_Blsm = new blsm(this);
-      if (QLog.isColorLevel()) {
-        QLog.i("ComboLockManager", 2, "unregisterStoryReceiver");
-      }
-      umc.a().unRegisterSubscriber(this.jdField_a_of_type_Blsm);
-      this.jdField_a_of_type_Blsm = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bnhc parambnhc)
-  {
-    if (this.jdField_a_of_type_Bnhc == parambnhc) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ComboLockManager", 2, "same data");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ComboLockManager", 2, "updateConfigData isfrist " + this.jdField_b_of_type_Boolean + " sendStory " + this.jdField_a_of_type_Boolean);
-      }
-      if (this.jdField_b_of_type_Boolean)
+      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+      label98:
+      if (paramBoolean) {}
+      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
       {
-        this.jdField_b_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("ComboLockManager", 2, "updateConfigData first card.snedSrory " + this.jdField_a_of_type_Boolean);
-        }
+        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+        return localObject2;
       }
-      this.jdField_a_of_type_JavaUtilHashMap = parambnhc.jdField_a_of_type_JavaUtilHashMap;
-      this.jdField_a_of_type_Bnhc = parambnhc;
-      parambnhc = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (parambnhc.hasNext())
-      {
-        Object localObject = (String)parambnhc.next();
-        localObject = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-        ((LockedCategory)localObject).jdField_a_of_type_Boolean = a(((LockedCategory)localObject).jdField_a_of_type_JavaLangString);
-        if ((((LockedCategory)localObject).jdField_a_of_type_Boolean) && (((LockedCategory)localObject).jdField_a_of_type_Int == 2))
-        {
-          this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory = ((LockedCategory)localObject);
-          c();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("ComboLockManager", 2, "updateConfigData " + localObject + " lock " + ((LockedCategory)localObject).jdField_a_of_type_Boolean);
-        }
-      }
+    }
+    catch (Exception localException)
+    {
+      break label98;
     }
   }
   
-  public void a(String paramString)
+  public static HttpPost a(Context paramContext, String paramString, HttpEntity paramHttpEntity, blsk paramblsk)
   {
-    paramString = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {
-      paramString.jdField_a_of_type_Boolean = false;
+    Object localObject = a(paramString);
+    paramString = b((String)localObject);
+    localObject = new HttpPost((String)localObject);
+    ((HttpPost)localObject).addHeader("Host", paramString);
+    ((HttpPost)localObject).addHeader("x-online-host", paramString);
+    if ((paramHttpEntity instanceof ByteArrayEntity)) {
+      ((HttpPost)localObject).addHeader("Content-Type", "application/octet-stream");
     }
+    ((HttpPost)localObject).setEntity(paramHttpEntity);
+    a(paramContext, (HttpRequest)localObject, paramblsk);
+    return localObject;
   }
   
-  public boolean a(String paramString)
+  private static void a(Context paramContext, HttpRequest paramHttpRequest, blsk paramblsk)
   {
-    boolean bool2 = false;
-    int i = 0;
     boolean bool1;
-    LockedCategory localLockedCategory;
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    if (paramblsk != null)
     {
-      bool1 = false;
-      i = -1;
-      localLockedCategory = null;
+      bool1 = paramblsk.a;
+      if (paramblsk == null) {
+        break label89;
+      }
     }
-    for (;;)
+    label89:
+    for (boolean bool2 = paramblsk.b;; bool2 = false)
     {
-      if (QLog.isColorLevel())
+      if ((bool1) && (NetworkState.isMobile()))
       {
-        QLog.i("ComboLockManager", 2, "is locke " + paramString + " code" + i);
-        if (i == 3) {
-          QLog.i("ComboLockManager", 2, "islock result" + bool1 + " type " + localLockedCategory.jdField_a_of_type_Int + " mHaveSendStory " + this.jdField_a_of_type_Boolean);
-        }
-      }
-      return bool1;
-      localLockedCategory = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localLockedCategory == null)
-      {
-        bool1 = false;
-      }
-      else if (!localLockedCategory.jdField_a_of_type_Boolean)
-      {
-        bool1 = false;
-        i = 1;
-      }
-      else if (localLockedCategory.a())
-      {
-        bool1 = false;
-        i = 2;
-      }
-      else if (localLockedCategory.jdField_a_of_type_Int == 2)
-      {
-        if (this.jdField_a_of_type_Boolean)
+        paramContext = NetworkUtils.getProxy(paramContext, bool2);
+        if (paramContext != null)
         {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null)
+          paramContext = (InetSocketAddress)paramContext.address();
+          if (paramContext != null)
           {
-            bool1 = bool2;
-            if (!this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString.equals(paramString)) {}
-          }
-        }
-        else
-        {
-          bool1 = true;
-        }
-        i = 3;
-      }
-      else if (localLockedCategory.jdField_a_of_type_Int == 1)
-      {
-        if (!localLockedCategory.jdField_b_of_type_Boolean)
-        {
-          localLockedCategory.jdField_a_of_type_Boolean = bdne.z(BaseApplicationImpl.getApplication(), paramString);
-          localLockedCategory.jdField_b_of_type_Boolean = true;
-        }
-        bool1 = localLockedCategory.jdField_a_of_type_Boolean;
-        i = 3;
-      }
-      else
-      {
-        bool1 = false;
-        i = 3;
-      }
-    }
-  }
-  
-  public boolean a(String paramString, Context paramContext)
-  {
-    boolean bool = false;
-    if (a(paramString))
-    {
-      Object localObject2 = a(paramString).jdField_b_of_type_JavaLangString;
-      Object localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        QLog.e("ComboLockManager", 1, "empty jump url");
-        localObject1 = "https://ti.qq.com/unlocked/index.html?_wv=536870912&id=" + paramString;
-      }
-      localObject2 = new Intent(paramContext, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("k_f_id", paramString);
-      paramContext.startActivity((Intent)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i("ComboLockManager", 2, "handleLockItemClick id " + paramString);
-      }
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ComboLockManager", 2, "handleSendStory");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Blsm);
-    Object localObject = (alpk)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Alpq, true);
-    if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
-    {
-      localObject = BaseApplicationImpl.getContext();
-      blsk localblsk = new blsk(this, (Context)localObject);
-      ThreadManager.getUIHandler().postDelayed(new ComboLockManager.2(this, (Context)localObject, localblsk), 1000L);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject1 = this.jdField_a_of_type_Bnhc.a(this.jdField_a_of_type_Int).a;
-    if (localObject1 != null)
-    {
-      localObject1 = ((ArrayList)localObject1).iterator();
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label101;
-        }
-        Object localObject2 = (FilterCategory)((Iterator)localObject1).next();
-        if (((FilterCategory)localObject2).a != null)
-        {
-          localObject2 = ((FilterCategory)localObject2).a.iterator();
-          if (((Iterator)localObject2).hasNext())
-          {
-            QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject2).next();
-            if (!paramString.equals(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString)) {
-              break;
-            }
-            this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem = localQIMFilterCategoryItem;
+            paramContext = new HttpHost(paramContext.getHostName(), paramContext.getPort());
+            paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramContext);
           }
         }
       }
-    }
-    label101:
-    if (QLog.isColorLevel()) {
-      QLog.i("ComboLockManager", 2, "setLockingItem " + paramString + " result " + this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
+      return;
+      bool1 = true;
+      break;
     }
   }
   
-  public boolean isValidate()
+  private static String b(String paramString)
   {
-    return true;
+    return new URL(paramString).getAuthority();
   }
 }
 

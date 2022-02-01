@@ -1,6 +1,12 @@
-public abstract interface apph
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class apph
 {
-  public abstract float a(float paramFloat, long paramLong);
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
 }
 
 

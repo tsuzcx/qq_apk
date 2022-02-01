@@ -1,19 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class advp
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public advp(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public advp(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.getActivity() != null)
+    if (this.a.a != null)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      this.a.a.b = false;
+      this.a.a.a(false);
     }
   }
 }

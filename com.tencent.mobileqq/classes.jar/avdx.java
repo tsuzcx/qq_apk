@@ -1,34 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-final class avdx
-  implements bfah
+public class avdx
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  avdx(String paramString, aved paramaved) {}
+  avdx(avdv paramavdv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Aved != null) {
-        this.jdField_a_of_type_Aved.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Aved == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aved.a(false);
+    avdv.a(this.a).post(new VideoBaseItem.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleChatBoxHelper;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vue
-  implements View.OnClickListener
+  implements vqv
 {
-  public vue(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public vue(QCircleMessageNoticeViewModel.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(List<String> paramList, int paramInt)
   {
-    if (!bdin.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    if (this.a.a != null) {
+      QLog.d("QCircleMessageNoticeViewModel", 1, "getChatUnReadInfo currentTime:" + System.currentTimeMillis());
+    }
+    for (Pair localPair = QCircleChatBoxHelper.getInstance().getUnReadInfo();; localPair = null)
     {
-      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694766, 0).a();
+      if (localPair != null)
+      {
+        QLog.d("QCircleMessageNoticeViewModel", 1, "chatUnReadInfo not null currentTime:" + System.currentTimeMillis());
+        vud.a(this.a.this$0, paramList, paramInt, (List)localPair.second, ((Integer)localPair.first).intValue());
+        return;
+      }
+      QLog.d("QCircleMessageNoticeViewModel", 1, "chatUnReadInfo is null currentTime:" + System.currentTimeMillis());
+      vud.a(this.a.this$0, paramList, paramInt, new ArrayList(), 0);
       return;
     }
-    VideoViewVideoHolder.a(this.a, 2);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vue
  * JD-Core Version:    0.7.0.1
  */

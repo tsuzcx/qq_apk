@@ -24,7 +24,8 @@ public abstract class ShellCode
   {
     byte[] arrayOfByte = new byte[sizeOfCallOrigin()];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, sizeOfDirectJump());
-    System.arraycopy(createDirectJump(toPC(sizeOfDirectJump() + paramLong)), 0, arrayOfByte, sizeOfDirectJump(), sizeOfDirectJump());
+    paramArrayOfByte = createDirectJump(toPC(sizeOfDirectJump() + paramLong));
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, sizeOfDirectJump(), paramArrayOfByte.length);
     return arrayOfByte;
   }
   
@@ -47,7 +48,7 @@ public abstract class ShellCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.arch.ShellCode
  * JD-Core Version:    0.7.0.1
  */

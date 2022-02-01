@@ -1,28 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vtn
-  implements vss
+  implements Interpolator
 {
-  public vtn(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
+  public vtn(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public float getInterpolation(float paramFloat)
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtn
  * JD-Core Version:    0.7.0.1
  */

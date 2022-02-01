@@ -1,40 +1,15 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-
 class aapj
-  implements Application.ActivityLifecycleCallbacks
+  extends aapy
 {
-  aapj(aape paramaape) {}
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public aapj(aapa paramaapa, aapz paramaapz, String paramString)
   {
-    if (paramActivity == aape.a(this.a)) {
-      aape.a(this.a).g();
-    }
+    super(paramaapa, paramaapz, paramString);
   }
   
-  public void onActivityPaused(Activity paramActivity)
+  public void a()
   {
-    if (paramActivity == aape.a(this.a)) {
-      aape.a(this.a).e();
-    }
+    this.jdField_a_of_type_Aapz.b(this);
   }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (paramActivity == aape.a(this.a)) {
-      aape.a(this.a).f();
-    }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

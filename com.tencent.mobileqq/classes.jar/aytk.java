@@ -1,38 +1,19 @@
-public class aytk
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$1$1"}, k=3, mv={1, 1, 16})
+final class aytk
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean;
+  aytk(aytj paramaytj) {}
   
-  public aytk(aytg paramaytg, boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.dismiss();
+    this.a.a().a(1040);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

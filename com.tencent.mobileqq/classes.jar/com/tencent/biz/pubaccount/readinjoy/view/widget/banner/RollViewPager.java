@@ -12,22 +12,22 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
-import bcpr;
+import bfui;
 import com.tencent.mobileqq.R.styleable;
-import slf;
-import slg;
-import slh;
+import tjw;
+import tjx;
+import tjy;
 
 public class RollViewPager
   extends ViewPager
 {
+  private static String jdField_a_of_type_JavaLangString = "BannerAdapter";
   protected float a;
   protected int a;
   private ViewPager.PageTransformer jdField_a_of_type_AndroidSupportV4ViewViewPager$PageTransformer;
-  private String jdField_a_of_type_JavaLangString = "BannerAdapter";
-  protected slf a;
-  private slg jdField_a_of_type_Slg;
-  private slh jdField_a_of_type_Slh;
+  protected tjw a;
+  private tjx jdField_a_of_type_Tjx;
+  private tjy jdField_a_of_type_Tjy;
   protected float b;
   private int b;
   protected float c;
@@ -84,14 +84,14 @@ public class RollViewPager
       return bool2;
     case 0: 
     case 261: 
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Slf.a();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Tjw.a();
       requestDisallowInterceptTouchEvent(true);
       this.c = f1;
       this.jdField_a_of_type_Float = f1;
       this.d = f2;
       this.jdField_b_of_type_Float = f2;
-      if (this.jdField_a_of_type_Slg != null) {
-        this.jdField_a_of_type_Slg.a(0);
+      if (this.jdField_a_of_type_Tjx != null) {
+        this.jdField_a_of_type_Tjx.a(0);
       }
       return super.dispatchTouchEvent(paramMotionEvent);
     case 2: 
@@ -132,13 +132,13 @@ public class RollViewPager
     for (;;)
     {
       bool2 = bool1;
-      if (this.jdField_a_of_type_Slg == null) {
+      if (this.jdField_a_of_type_Tjx == null) {
         break;
       }
-      this.jdField_a_of_type_Slg.a(1);
+      this.jdField_a_of_type_Tjx.a(1);
       return bool1;
-      if (this.jdField_a_of_type_Slh != null) {
-        this.jdField_a_of_type_Slh.c();
+      if (this.jdField_a_of_type_Tjy != null) {
+        this.jdField_a_of_type_Tjy.c();
       }
       bool1 = bool2;
     }
@@ -153,7 +153,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcpr.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bfui.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -187,7 +187,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bcpr.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bfui.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -196,17 +196,17 @@ public class RollViewPager
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     super.setAdapter(paramPagerAdapter);
-    this.jdField_a_of_type_Slf = ((slf)paramPagerAdapter);
+    this.jdField_a_of_type_Tjw = ((tjw)paramPagerAdapter);
   }
   
-  public void setOnTouchStateChangeListener(slg paramslg)
+  public void setOnTouchStateChangeListener(tjx paramtjx)
   {
-    this.jdField_a_of_type_Slg = paramslg;
+    this.jdField_a_of_type_Tjx = paramtjx;
   }
   
-  public void setOnUserFling(slh paramslh)
+  public void setOnUserFling(tjy paramtjy)
   {
-    this.jdField_a_of_type_Slh = paramslh;
+    this.jdField_a_of_type_Tjy = paramtjy;
   }
   
   public void setPageTransformer(boolean paramBoolean, ViewPager.PageTransformer paramPageTransformer)
@@ -217,7 +217,7 @@ public class RollViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager
  * JD-Core Version:    0.7.0.1
  */

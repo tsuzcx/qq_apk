@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bdns;
+import bgsu;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemPullActivePush
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public long time;
   
@@ -17,12 +17,12 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bdns.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bgsu.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush
  * JD-Core Version:    0.7.0.1
  */

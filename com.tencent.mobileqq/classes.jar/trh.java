@@ -1,36 +1,40 @@
-import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleDitto.StSinglePicBanner;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class trh
-  implements uec
+public class trh
+  implements VComponentAdapter.OnVideoViewMethodListener
 {
-  trh(trg paramtrg) {}
+  public trh(VVideo paramVVideo) {}
   
-  public void a()
+  public void OnMethodError(String paramString, JSONObject paramJSONObject)
   {
-    QLog.d("QCircleInviteBannerAdapter", 1, "clickBanner actionType" + trg.a(this.a).actionType.get() + "   actionUrl" + trg.a(this.a).actionUrl.get());
-    if (trg.a(this.a).actionType.get() == 1)
+    try
     {
-      tqs.a(trg.a(this.a), trg.a(this.a).actionUrl.get());
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramString);
+      localJSONObject.put("extra", paramJSONObject);
+      this.a.videoFireEvent("error", localJSONObject);
       return;
     }
-    QLog.d("QCircleInviteBannerAdapter", 1, "unDefined banner jump action:" + trg.a(this.a).actionType.get());
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void b()
+  public void OnMethodSuccess(String paramString, Object paramObject)
   {
-    tpz.a().f();
-    yiw.a().a(new QCircleCloseBannerEvent());
-    this.a.a(false);
-    QLog.d("QCircleInviteBannerAdapter", 1, "clickClose");
+    if (!TextUtils.isEmpty(paramString)) {
+      VVideo.access$000(this.a, paramString, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class atmx
-  implements DialogInterface.OnDismissListener
+  implements aqck
 {
-  public atmx(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atnw paramatnw) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ColorNote getColorNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Atnw.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    aqcs localaqcs = new aqcs();
+    localaqcs.a(17039360);
+    String str = atwt.b(-1, "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
+    localaqcs.a(str);
+    localaqcs.b("default_file");
+    localaqcs.c("0MB");
+    localaqcs.d("resdrawable://2130844375");
+    return localaqcs.a();
   }
 }
 

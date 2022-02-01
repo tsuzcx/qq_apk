@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -28,6 +29,7 @@ import com.tencent.thumbplayer.utils.TPGlobalEventNofication.OnGlobalEventChange
 import com.tencent.thumbplayer.utils.TPHashMapBuilder;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import com.tencent.thumbplayer.utils.TPProperties;
+import com.tencent.thumbplayer.utils.TPThreadUtil;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,7 +67,7 @@ public class TPReportManager
   private TPReportManager.EventHandler mEventHandler;
   private final Object mExitLock = new Object();
   private String mFlowId = "";
-  private TPGlobalEventNofication.OnGlobalEventChangeListener mGlobalEventListener = new TPReportManager.2(this);
+  private TPGlobalEventNofication.OnGlobalEventChangeListener mGlobalEventListener = new TPReportManager.3(this);
   private boolean mIsBuffering = false;
   private boolean mIsExit = false;
   private boolean mIsPlayDone = true;
@@ -89,7 +91,7 @@ public class TPReportManager
   private int mSeekBufferingCount = 0;
   private int mSeekBufferingDuration = 0;
   private int mSignalStrength = 0;
-  private PhoneStateListener myListener = new TPReportManager.1(this);
+  private PhoneStateListener myListener;
   
   public TPReportManager(Context paramContext)
   {
@@ -261,7 +263,7 @@ public class TPReportManager
     this.mEventHandler = new TPReportManager.EventHandler(this, this.mReportThread.getLooper());
     this.mReportParams = new TPReportParams();
     signalStrengthRegister();
-    TPGlobalEventNofication.getInstance().addEventListener(this.mGlobalEventListener);
+    TPGlobalEventNofication.addEventListener(this.mGlobalEventListener);
     try
     {
       if (mCache == null) {
@@ -274,6 +276,13 @@ public class TPReportManager
       return;
     }
     finally {}
+  }
+  
+  private void initPhoneStateListener()
+  {
+    if (this.myListener == null) {
+      this.myListener = new TPReportManager.1(this);
+    }
   }
   
   private void on302Redirect(Map<String, Object> paramMap)
@@ -972,51 +981,40 @@ public class TPReportManager
   {
     TPLogUtil.i("TPReportManager", "release: ");
     signalStrengthUnRegister();
-    TPGlobalEventNofication.getInstance().removeEventListener(this.mGlobalEventListener);
+    TPGlobalEventNofication.removeEventListener(this.mGlobalEventListener);
     if (this.mReportThread != null)
     {
       if (Build.VERSION.SDK_INT < 18) {
-        break label66;
+        break label56;
       }
       this.mReportThread.quitSafely();
     }
-    try
+    for (;;)
     {
-      for (;;)
+      this.mReportThread = null;
+      TPLogUtil.i("TPReportManager", "release: end!");
+      return;
+      label56:
+      synchronized (this.mExitLock)
       {
-        this.mReportThread.join();
-        this.mReportThread = null;
-        TPLogUtil.i("TPReportManager", "release: end!");
-        return;
-        label66:
-        synchronized (this.mExitLock)
+        this.mIsExit = false;
+        this.mEventHandler.sendEmptyMessage(100);
+        for (;;)
         {
-          this.mIsExit = false;
-          this.mEventHandler.sendEmptyMessage(100);
-          for (;;)
-          {
-            boolean bool = this.mIsExit;
-            if (!bool) {
-              try
-              {
-                this.mExitLock.wait(5000L, 0);
-              }
-              catch (InterruptedException localInterruptedException2)
-              {
-                TPLogUtil.e("TPReportManager", localInterruptedException2);
-              }
+          boolean bool = this.mIsExit;
+          if (!bool) {
+            try
+            {
+              this.mExitLock.wait(5000L, 0);
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              TPLogUtil.e("TPReportManager", localInterruptedException);
             }
           }
         }
-        this.mReportThread.quit();
       }
-    }
-    catch (InterruptedException localInterruptedException1)
-    {
-      for (;;)
-      {
-        TPLogUtil.e("TPReportManager", localInterruptedException1);
-      }
+      this.mReportThread.quit();
     }
   }
   
@@ -1048,12 +1046,18 @@ public class TPReportManager
       TPLogUtil.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
       return;
     }
-    localTelephonyManager.listen(this.myListener, 256);
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      initPhoneStateListener();
+      localTelephonyManager.listen(this.myListener, 256);
+      return;
+    }
+    TPThreadUtil.postRunnableOnMainThread(new TPReportManager.2(this, localTelephonyManager));
   }
   
   private void signalStrengthUnRegister()
   {
-    if (this.mContext == null) {
+    if ((this.mContext == null) || (this.myListener == null)) {
       return;
     }
     TelephonyManager localTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
@@ -1080,7 +1084,7 @@ public class TPReportManager
     localCommonParams.deviceResolutionString = getDeviceResolution();
     localCommonParams.osVersionString = getOsVersion();
     localCommonParams.p2pVersionString = TPDownloadProxyHelper.getNativeLibVersion();
-    localCommonParams.playerVersionString = "1.3.0.1023";
+    localCommonParams.playerVersionString = "2.5.0.1084";
     localCommonParams.playerTypeInt = this.mPlayerType;
     label270:
     Iterator localIterator;
@@ -1253,7 +1257,7 @@ public class TPReportManager
     {
       localLiveExParam.prePlayLengthInt = this.mParamRecord.playDurationMs;
       this.mParamRecord.playDurationMs = 0;
-      localLiveExParam.playerVersionString = "1.3.0.1023";
+      localLiveExParam.playerVersionString = "2.5.0.1084";
       localLiveExParam.deviceTypeInt = getDeviceType();
       localLiveExParam.networkTypeInt = getNetWorkType();
       localLiveExParam.maxSpeedInt = this.mParamRecord.maxSpeed;
@@ -1440,7 +1444,7 @@ public class TPReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager
  * JD-Core Version:    0.7.0.1
  */

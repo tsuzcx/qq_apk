@@ -1,20 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
-public class axwi
-  extends axwg
+class axwi
+  implements DialogInterface.OnClickListener
 {
-  private static String a = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230752);
+  axwi(axwf paramaxwf, bgpa parambgpa) {}
   
-  public axwi()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", a);
-    this.mFilterType = 7;
+    this.jdField_a_of_type_Bgpa.dismiss();
+    this.jdField_a_of_type_Axwf.a.e();
+    paramDialogInterface = new Intent("tribe_profile_edit_finish");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwi
  * JD-Core Version:    0.7.0.1
  */

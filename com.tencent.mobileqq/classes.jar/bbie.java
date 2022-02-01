@@ -1,20 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class bbie
-  implements bhux
+  extends Handler
 {
-  public bbie(TroopAvatarWallPreviewActivity.2.1 param1) {}
+  public bbie(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
+    switch (paramMessage.what)
+    {
     }
-    return true;
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      UniteSearchActivity.a(this.a, 3);
+      this.a.h();
+    }
   }
 }
 

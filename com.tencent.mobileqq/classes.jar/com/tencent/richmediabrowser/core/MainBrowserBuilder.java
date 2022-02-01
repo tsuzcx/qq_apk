@@ -37,6 +37,7 @@ public class MainBrowserBuilder
   
   public void buildParams(Intent paramIntent)
   {
+    RichMediaBrowserManager.getInstance().setApplicationContext(this.mActivity.getApplicationContext());
     this.presenter.buildParams(paramIntent);
     this.scene.buildParams(paramIntent);
     this.model.buildParams(paramIntent);
@@ -135,7 +136,7 @@ public class MainBrowserBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.MainBrowserBuilder
  * JD-Core Version:    0.7.0.1
  */

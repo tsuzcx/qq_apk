@@ -2,8 +2,8 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import aubw;
-import auca;
+import awjg;
+import awjk;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
@@ -21,9 +21,9 @@ public class IVFloatingScreenManagerInterfaceImpl
     return sInstance;
   }
   
-  int abandonMediaFocus(auca paramauca)
+  int abandonMediaFocus(awjk paramawjk)
   {
-    return aubw.a().a(paramauca);
+    return awjg.a().a(paramawjk);
   }
   
   int enterFloatingScreen(Context paramContext, View paramView)
@@ -37,9 +37,9 @@ public class IVFloatingScreenManagerInterfaceImpl
     FloatingScreenManager.getInstance().quitFloatingScreen();
   }
   
-  int requestMediaFocus(int paramInt, auca paramauca)
+  int requestMediaFocus(int paramInt, awjk paramawjk)
   {
-    return aubw.a().a(paramInt, paramauca);
+    return awjg.a().a(paramInt, paramawjk);
   }
   
   IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
@@ -54,7 +54,7 @@ public class IVFloatingScreenManagerInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVFloatingScreenManagerInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

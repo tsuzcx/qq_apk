@@ -1,31 +1,35 @@
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class swv
-  extends FilterOutputStream
+public class swv
+  implements qyx
 {
-  int jdField_a_of_type_Int = 0;
+  public swv(FastWebActivity paramFastWebActivity) {}
   
-  public swv(swu paramswu, OutputStream paramOutputStream)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramOutputStream);
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    FastWebActivity.e(this.a, paramBoolean);
+    if (paramBoolean)
+    {
+      FastWebActivity.c(this.a, paramString);
+      if (FastWebActivity.a(this.a).getVisibility() == 0) {
+        break label55;
+      }
+      FastWebActivity.a(this.a).setImageResource(2130849435);
+    }
+    for (;;)
+    {
+      FastWebActivity.h(this.a);
+      return;
+      label55:
+      FastWebActivity.a(this.a).setImageResource(2130849519);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swv
  * JD-Core Version:    0.7.0.1
  */

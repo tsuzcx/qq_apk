@@ -1,28 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class blsm
-  extends QQUIEventReceiver<blsj, uow>
+  implements URLDrawable.URLDrawableListener
 {
-  boolean a = false;
+  public blsm(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public blsm(@NonNull blsj paramblsj)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramblsj);
+    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
   }
   
-  public void a(@NonNull blsj paramblsj, @NonNull uow paramuow)
-  {
-    if (!this.a)
-    {
-      paramblsj.b();
-      this.a = true;
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return uow.class;
+    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

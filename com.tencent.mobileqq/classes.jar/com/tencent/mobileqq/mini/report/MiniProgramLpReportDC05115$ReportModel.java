@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
-import bfbm;
-import bgpk;
-import bjdm;
+import bgnt;
+import biip;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -23,12 +23,12 @@ import org.jetbrains.annotations.NotNull;
 public class MiniProgramLpReportDC05115$ReportModel
 {
   private String androidID;
-  private String clientVersion = "8.3.5.4555";
+  private String clientVersion = "8.4.1.4680";
   private int cpuAVG;
   private long crashErrorNum;
   private String deviceManufacturer = Build.MANUFACTURER;
   private String deviceModel = Build.MODEL;
-  private String devicePlatform = "Android";
+  private String devicePlatform = "android";
   private String deviceVersion = Build.VERSION.RELEASE;
   private long downloadRequestCost;
   private List<Long> downloadRequestCostList = new ArrayList();
@@ -60,7 +60,7 @@ public class MiniProgramLpReportDC05115$ReportModel
   private String openID = "null";
   private long pkgDownloadCost;
   private String pkgDownloadResult;
-  private String qua = bjdm.a();
+  private String qua = blru.a();
   private long relaunchCost;
   private String x5Version = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));
   
@@ -77,10 +77,10 @@ public class MiniProgramLpReportDC05115$ReportModel
     try
     {
       if (this.networkSSID == null) {
-        this.networkSSID = bgpk.b(bfbm.a().a());
+        this.networkSSID = bgnt.b(biip.a().a());
       }
       if (this.androidID == null) {
-        this.androidID = Settings.Secure.getString(bfbm.a().a().getContentResolver(), "android_id");
+        this.androidID = Settings.Secure.getString(biip.a().a().getContentResolver(), "android_id");
       }
     }
     catch (Throwable localThrowable)
@@ -379,7 +379,7 @@ public class MiniProgramLpReportDC05115$ReportModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05115.ReportModel
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.ad.tangram.canvas.views.a;
+import com.tencent.ad.tangram.util.AdUIUtils;
 
 class b$b
   implements View.OnTouchListener
@@ -17,7 +17,7 @@ class b$b
   public b$b(Runnable paramRunnable, Resources paramResources)
   {
     this.clickRunnable = paramRunnable;
-    this.ALLOW_CLICK_MOVE = a.dp2px(3.0F, paramResources);
+    this.ALLOW_CLICK_MOVE = AdUIUtils.dp2px(3.0F, paramResources);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -43,7 +43,7 @@ class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.picture.b.b
  * JD-Core Version:    0.7.0.1
  */

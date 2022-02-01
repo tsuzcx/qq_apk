@@ -1,35 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.widget.AbsListView;
 
-public class amel
+class amel
+  implements bkhe
 {
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", aouq.c().a(paramString2, paramString1));
-    localIntent.putExtra("hide_operation_bar", true);
-    paramContext.startActivity(localIntent);
-  }
+  amel(ameh paramameh) {}
   
-  public static boolean a(int paramInt)
-  {
-    return paramInt != 0;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static boolean b(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
+    if (paramInt != 0) {
+      return;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class adco
-  implements bhuk
+class adco
+  extends adcl
 {
-  public adco(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public HookMethodCallback a()
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    switch (paramInt)
+    return BatteryMonitor.getInstance().getWakeLockHook();
+  }
+  
+  public void a()
+  {
+    try
     {
-    default: 
-      return;
-    case 0: 
-      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
-      return;
-    case 1: 
-      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
-      return;
-    case 2: 
-      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
-      return;
-    case 3: 
-      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
+      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
       return;
     }
-    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
+    }
   }
 }
 

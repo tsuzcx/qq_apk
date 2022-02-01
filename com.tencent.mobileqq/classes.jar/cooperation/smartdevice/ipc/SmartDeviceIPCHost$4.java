@@ -2,15 +2,15 @@ package cooperation.smartdevice.ipc;
 
 import android.os.Bundle;
 import android.os.RemoteException;
-import bkch;
-import bkck;
+import bmqr;
+import bmqu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class SmartDeviceIPCHost$4
   implements Runnable
 {
-  public SmartDeviceIPCHost$4(bkck parambkck) {}
+  public SmartDeviceIPCHost$4(bmqu parambmqu) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class SmartDeviceIPCHost$4
         if (QLog.isColorLevel()) {
           QLog.d("SmartDeviceIPCHost", 2, "qq->plugin post to main thread doPostCachedMsg strNotifyCmd:" + str + " thread:" + Thread.currentThread());
         }
-        this.this$0.jdField_a_of_type_Bkch.a("com.qqsmartdevice.action.notify", localBundle);
+        this.this$0.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", localBundle);
       }
       catch (RemoteException localRemoteException)
       {
@@ -47,7 +47,7 @@ public class SmartDeviceIPCHost$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.4
  * JD-Core Version:    0.7.0.1
  */

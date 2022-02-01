@@ -1,34 +1,43 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-final class argc
-  implements View.OnClickListener
+public class argc<T>
 {
-  argc(FileManagerEntity paramFileManagerEntity, Activity paramActivity, arhw paramarhw) {}
+  private LruCache<String, T> a = new argd(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  public void onClick(View paramView)
+  private static int a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return 0;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  private int b(T paramT)
+  {
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
+    }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
+  }
+  
+  protected int a(T paramT)
+  {
+    return 0;
+  }
+  
+  public void a(int paramInt)
   {
     try
     {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      arrq localarrq = new arrq();
-      localarrq.b = "file_forward";
-      localarrq.jdField_a_of_type_Int = 71;
-      localarrq.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      localarrq.c = arso.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localarrq.d = arrr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
-      arrp.a(paramView.getCurrentAccountUin(), localarrq);
-      arsx.b(paramView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (this.jdField_a_of_type_Arhw != null) {
-        this.jdField_a_of_type_Arhw.a(2);
-      }
+      this.a.trimToSize(paramInt);
       return;
     }
-    catch (Exception paramView) {}
+    finally {}
   }
 }
 

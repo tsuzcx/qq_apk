@@ -1,12 +1,6 @@
-class blqq
-  implements blwe
+public abstract interface blqq
 {
-  blqq(blqk paramblqk) {}
-  
-  public void aY_()
-  {
-    blqk.a(this.a).e();
-  }
+  public abstract void a(int paramInt, String... paramVarArgs);
 }
 
 

@@ -1,33 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aenh
-  implements View.OnClickListener
+  extends ayes
 {
-  public aenh(ActivateFriendView paramActivateFriendView) {}
+  public aenh(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    paramView = (ActivateFriendViewItem)paramView;
-    if (paramView.a)
-    {
-      ActivateFriendView.a(this.a);
-      if (paramView.a) {
-        break label75;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
     }
-    label75:
-    for (boolean bool = true;; bool = false)
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
     {
-      paramView.setChecked(bool);
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
-      }
-      return;
-      ActivateFriendView.b(this.a);
-      break;
+      List localList = ajvi.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
     }
   }
 }

@@ -1,107 +1,105 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wqw
-  implements wqx
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  protected final int a;
-  public Bitmap a;
-  private String jdField_a_of_type_JavaLangString;
-  public Map<String, Bitmap> a;
-  protected final int b;
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  public wqw(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
+  private wqw(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_JavaLangString = wrm.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
+    int k;
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
+    }
   }
   
-  public Bitmap a(Bitmap paramBitmap)
+  public static wqw a(@Nullable String paramString)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        float f1 = paramBitmap.getWidth();
-        float f2 = paramBitmap.getHeight();
-        float f3 = f2 / f1;
-        int m = (int)f2;
-        int k = (int)f1;
-        int j;
-        int i;
-        if (f3 > this.jdField_a_of_type_Float)
-        {
-          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
-          j = (paramBitmap.getHeight() - m) / 2;
-          i = 0;
-          if (this.jdField_a_of_type_JavaUtilMap == null) {
-            break label422;
-          }
-          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
-          if ((localBitmap == null) || (localBitmap.isRecycled()))
-          {
-            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
-            localBitmap = paramBitmap;
-            if (this.jdField_a_of_type_JavaUtilMap != null)
-            {
-              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
-              localBitmap = paramBitmap;
-            }
-            Paint localPaint = new Paint();
-            localPaint.setAntiAlias(true);
-            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-              break label414;
-            }
-            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            paramBitmap.eraseColor(0);
-            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
-            return paramBitmap;
-          }
-        }
-        else
-        {
-          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
-          i = (paramBitmap.getWidth() - k) / 2;
-          j = 0;
-          continue;
-        }
-        localBitmap.eraseColor(0);
-        wrl.a(paramBitmap, localBitmap, i, j, k, m, null, false);
-        continue;
-        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      }
-      catch (Exception paramBitmap)
-      {
-        wxe.e("RoundedTransformation", "occur error:" + paramBitmap);
-        return null;
-      }
-      label414:
-      continue;
-      label422:
-      Bitmap localBitmap = null;
+      paramString = a(new JSONObject(paramString));
+      return paramString;
     }
+    catch (JSONException paramString)
+    {
+      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static wqw a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new wqw(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
   }
   
   public String a()
   {
     return this.jdField_a_of_type_JavaLangString;
   }
+  
+  public String toString()
+  {
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqw
  * JD-Core Version:    0.7.0.1
  */

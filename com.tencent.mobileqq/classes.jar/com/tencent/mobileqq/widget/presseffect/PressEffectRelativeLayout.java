@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bexd;
+import bieb;
 
 public class PressEffectRelativeLayout
   extends RelativeLayout
@@ -25,16 +25,16 @@ public class PressEffectRelativeLayout
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bexd.a(this);
+      bieb.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bexd.b(this);
+      bieb.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

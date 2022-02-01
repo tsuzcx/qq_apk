@@ -1,45 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
 class agdr
-  extends bead
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agdr(agdo paramagdo, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  agdr(agdq paramagdq) {}
   
-  public void onCancel(beae parambeae)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambeae);
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (agdq.a(this.a) != null) {
+      agdq.a(this.a).setAlpha((float)d);
     }
-  }
-  
-  public void onDone(beae parambeae)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambeae);
+    if (agdq.a(this.a) != null) {
+      agdq.a(this.a).setAlpha((float)d * 2.0F);
     }
-    if (parambeae.b()) {}
-    do
-    {
-      return;
-      parambeae.a().getInt("type");
-    } while (parambeae.a() == -1);
-    parambeae = new Message();
-    parambeae.what = agdo.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambeae);
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambeae);
-    }
-    return true;
   }
 }
 

@@ -1,46 +1,63 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import cooperation.qzone.util.QZLog;
 
 public class bmbz
-  implements View.OnClickListener
 {
-  public bmbz(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
-  
-  public void onClick(View paramView)
+  public static int a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    long l1 = 0L;
-    bmcb localbmcb;
-    long l2;
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
     {
-      paramView = VideoSegmentPickerProviderView.a(this.a).a();
-      VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
-      VideoSegmentPickerProviderView.a(this.a).a.addSegment(paramView);
-      if (VideoSegmentPickerProviderView.a(this.a) != null)
-      {
-        localbmcb = (bmcb)VideoSegmentPickerProviderView.a(this.a).get();
-        if (localbmcb != null)
-        {
-          if ((paramView == null) || (paramView.size() <= 0)) {
-            break label145;
-          }
-          l2 = ((Long)((Pair)paramView.get(0)).first).longValue();
-          l1 = ((Long)((Pair)paramView.get(0)).second).longValue();
-        }
-      }
+      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
+      return 0;
+    }
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      return 0;
+    }
+    GLES20.glBindTexture(3553, arrayOfInt[0]);
+    if (paramBoolean)
+    {
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9728);
     }
     for (;;)
     {
-      localbmcb.a(l2, l1);
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      GLES20.glGenerateMipmap(3553);
+      GLES20.glBindTexture(3553, 0);
+      return arrayOfInt[0];
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9729);
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    GLES20.glFinish();
+  }
+  
+  public static void a(bmbu parambmbu)
+  {
+    if (parambmbu == null) {}
+    for (;;)
+    {
       return;
-      label145:
-      l2 = 0L;
+      int i = 0;
+      while (i < parambmbu.size())
+      {
+        bmbv localbmbv = (bmbv)parambmbu.valueAt(i);
+        if (localbmbv != null) {
+          localbmbv.b();
+        }
+        i += 1;
+      }
     }
   }
 }

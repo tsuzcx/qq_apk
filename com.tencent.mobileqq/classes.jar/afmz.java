@@ -1,24 +1,29 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afmz
-  extends LruCache<Long, MessageForPoke>
+  implements View.OnClickListener
 {
-  afmz(afmy paramafmy, int paramInt)
-  {
-    super(paramInt);
-  }
+  afmz(afmy paramafmy) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void onClick(View paramView)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
-    {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691679);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131368947));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Afnc != null) {
+      this.a.a.jdField_a_of_type_Afnc.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

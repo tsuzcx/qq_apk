@@ -1,54 +1,89 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdjy
-  extends bdjz
+  extends bdix
 {
-  private int jdField_a_of_type_Int = 2131558930;
-  bdpi jdField_a_of_type_Bdpi;
+  public bdjy(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public bdjy(Context paramContext, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    super(paramContext, paramInt);
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      atvf.a(anni.a(2131713495));
+    }
+    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if ((0 == 0) && (QLog.isDevelopLevel())) {
+      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    if (0 != 0) {
+      throw new NullPointerException();
+    }
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+      TeamWorkAuthorizeSettingFragment.a(this.a);
+      TeamWorkAuthorizeSettingFragment.a(this.a, true);
+      return;
+      this.a.b = 2;
+    }
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      atvf.a(anni.a(2131713483));
+    }
+    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    paramString = paramList.iterator();
+    while (paramString.hasNext())
+    {
+      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
+      bdhm localbdhm = new bdhm();
+      localbdhm.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
+      localbdhm.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
+      this.a.jdField_a_of_type_Bdhk.a(localbdhm);
+    }
+    this.a.b = paramInt;
+    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+    TeamWorkAuthorizeSettingFragment.a(this.a);
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
   }
   
-  public void a(bdpi parambdpi, DialogInterface.OnClickListener paramOnClickListener)
+  public void b(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (parambdpi == null) {}
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
+    this.a.getRightTextView().setEnabled(true);
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      atvf.a(anni.a(2131713438));
+    }
+    Intent localIntent;
     do
     {
       return;
-      this.jdField_a_of_type_Bdpi = parambdpi;
-      String[] arrayOfString = new String[parambdpi.a()];
-      int i = 0;
-      while (i < parambdpi.a())
-      {
-        arrayOfString[i] = parambdpi.a(i).a();
-        i += 1;
-      }
-      setItems(arrayOfString, paramOnClickListener);
-      parambdpi = parambdpi.a();
-    } while (parambdpi == null);
-    setTitle(parambdpi);
-  }
-  
-  protected int customWhichToCallBack(int paramInt)
-  {
-    bdpk localbdpk = this.jdField_a_of_type_Bdpi.a(paramInt);
-    if (localbdpk != null) {
-      return localbdpk.a();
-    }
-    return -1;
-  }
-  
-  protected int getDialogListItemLayout()
-  {
-    return this.jdField_a_of_type_Int;
+      atvf.b(anni.a(2131713440));
+      this.a.stopTitleProgress();
+      localIntent = new Intent();
+      localIntent.putExtra("url", paramString);
+      localIntent.putExtra("type", paramInt);
+    } while (!this.a.isAdded());
+    this.a.getActivity().setResult(1122, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

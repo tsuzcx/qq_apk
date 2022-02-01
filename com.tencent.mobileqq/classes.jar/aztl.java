@@ -1,22 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class aztl
-  implements EIPCResultCallback
 {
-  aztl(aztk paramaztk) {}
+  public long a;
+  public bktt a;
+  public boolean a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public aztl(bktt parambktt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitor", 2, new Object[] { "eipcResult=", Integer.valueOf(paramEIPCResult.code), paramEIPCResult.data });
-    }
+    this.jdField_a_of_type_Bktt = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Bktt = parambktt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aztl
  * JD-Core Version:    0.7.0.1
  */

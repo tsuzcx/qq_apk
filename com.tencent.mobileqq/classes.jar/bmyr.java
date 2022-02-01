@@ -1,79 +1,135 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.utils.Singleton;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class bmyr
-  extends bmym<bmyp>
+public final class bmyr
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367796);
-  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367797);
-  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370657);
-  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370658);
+  private static Singleton<bmyr, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new bmys();
+  private long jdField_a_of_type_Long = 1L;
+  private ConcurrentHashMap<Integer, bmyt> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  private bmyr(bmyp parambmyp, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public static bmyr a()
   {
-    super(paramContext, paramViewGroup);
+    return (bmyr)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  private void a(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561591, paramViewGroup, false);
-  }
-  
-  void a(ImageView paramImageView, char paramChar)
-  {
-    switch (paramChar)
+    if ((paramString == null) || (paramString.length() == 0))
     {
-    default: 
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130846235);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130846236);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130846237);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130846238);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130846239);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130846240);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130846241);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130846242);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130846243);
+      QLog.e("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd is empty");
       return;
     }
-    paramImageView.setImageResource(2130846244);
+    if (QLog.isColorLevel()) {
+      QLog.d("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd[" + paramString + "]");
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String[] arrayOfString;
+    if (paramString.contains(".")) {
+      arrayOfString = paramString.split("\\.");
+    }
+    for (int i = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);; i = Integer.parseInt(paramString))
+    {
+      paramArrayOfByte = new bmyp(i, paramArrayOfByte);
+      paramString = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), paramString);
+      paramString.setTimeout(Math.min(60000L, (30000.0D * Math.pow(this.jdField_a_of_type_Long, 0.15D))));
+      paramString.setEnableFastResend(true);
+      paramString.putWupBuffer(bmyq.a(paramArrayOfByte));
+      paramString.extraData.putInt("sequence", paramInt);
+      paramString.extraData.putLong("sendtimekey", System.currentTimeMillis());
+      paramArrayOfByte = new NewIntent(localAppRuntime.getApplication(), bmyu.class);
+      paramArrayOfByte.putExtra(ToServiceMsg.class.getSimpleName(), paramString);
+      localAppRuntime.startServlet(paramArrayOfByte);
+      return;
+    }
   }
   
-  public void a(bmyp parambmyp, int paramInt)
+  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    super.a(parambmyp, paramInt);
-    parambmyp = new SimpleDateFormat("HH:mm");
-    ((bmyp)this.jdField_a_of_type_Bmyl).c = parambmyp.format(new Date());
-    wxe.b("TimeFilterData", "TimeFilterData time:" + ((bmyp)this.jdField_a_of_type_Bmyl).c);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(0));
-    a(this.b, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(1));
-    a(this.c, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(3));
-    a(this.d, ((bmyp)this.jdField_a_of_type_Bmyl).c.charAt(4));
-    paramInt = xsm.d(this.jdField_a_of_type_AndroidViewView.getContext());
-    this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt / 3 * 2, 0, 0);
+    Object localObject = null;
+    int k = paramToServiceMsg.extraData.getInt("sequence");
+    int i;
+    label40:
+    bmyp localbmyp;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = 0;
+      if (i != 1002) {
+        break label148;
+      }
+      this.jdField_a_of_type_Long += 1L;
+      if (i != 0) {
+        break label156;
+      }
+      localbmyp = bmyq.a(paramFromServiceMsg.getWupBuffer());
+      label53:
+      paramFromServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
+      paramToServiceMsg = paramFromServiceMsg;
+      if (i == 1002) {
+        paramToServiceMsg = "(1002)" + paramFromServiceMsg;
+      }
+      if (i != 0) {
+        break label205;
+      }
+      if (localbmyp != null) {
+        break label162;
+      }
+      i = 1810023;
+    }
+    label148:
+    label156:
+    label162:
+    label196:
+    label205:
+    for (;;)
+    {
+      label99:
+      bmyt localbmyt = (bmyt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(k));
+      if (localbmyt != null) {
+        if (localbmyp != null) {
+          break label196;
+        }
+      }
+      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localbmyp.a())
+      {
+        localbmyt.a(i, paramToServiceMsg, paramFromServiceMsg);
+        return;
+        i = paramFromServiceMsg.getResultCode();
+        break;
+        this.jdField_a_of_type_Long = 1L;
+        break label40;
+        localbmyp = null;
+        break label53;
+        paramFromServiceMsg = localbmyp.a();
+        int j = paramFromServiceMsg.retcode.get();
+        if (j == 0) {
+          break label205;
+        }
+        paramToServiceMsg = paramFromServiceMsg.retmsg.get();
+        i = j;
+        break label99;
+      }
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, bmyt parambmyt)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    if (parambmyt != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), parambmyt);
+    }
+    a(i, paramString, paramArrayOfByte);
   }
 }
 

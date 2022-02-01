@@ -1,57 +1,38 @@
-import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class avzi
+  implements View.OnHoverListener
 {
-  public int a;
-  public Rect a;
-  public int b;
-  public Rect b = new Rect();
-  public int c;
-  public Rect c;
-  public int d;
-  public int e;
-  public int f;
+  public avzi(LocationPickFragment paramLocationPickFragment) {}
   
-  public avzi()
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
-    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
     {
-      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        break label182;
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
       }
-      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
-      label95:
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
-      if (this.b == null) {
-        break label188;
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
       }
+      bcst.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
-    label182:
-    label188:
-    for (String str = this.b.toShortString();; str = "")
-    {
-      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
-      return localStringBuilder1.toString();
-      str = "";
-      break;
-      str = "";
-      break label95;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzi
  * JD-Core Version:    0.7.0.1
  */

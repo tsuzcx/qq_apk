@@ -1,39 +1,54 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avcc
-  implements avfn
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public avcc(StoryPlayController paramStoryPlayController, avfw paramavfw, VideoData paramVideoData) {}
+  avdg a;
+  public ImageView d;
   
-  public void a(int paramInt1, int paramInt2)
+  public avcc(HotPicPageView paramHotPicPageView, View paramView, avdg paramavdg)
   {
-    if (this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369428).setVisibility(0);
+    super(paramView);
+    if (paramavdg != null)
+    {
+      this.a = paramavdg;
+      this.d = ((ImageView)paramView.findViewById(2131368097));
+      this.d.setTag("HotPicControlTag");
+      this.itemView.setOnClickListener(this);
+      this.itemView.setOnLongClickListener(this);
+      this.itemView.setOnTouchListener(paramavdg);
     }
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.c();
   }
   
-  public void a(String paramString, View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369428).setVisibility(8);
+    if (this.a != null) {
+      this.a.a(paramView, getPosition());
     }
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.jdField_a_of_type_Avfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new avcd(this));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool = false;
+    if (this.a != null)
+    {
+      this.a.b(paramView, getPosition());
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avcc
  * JD-Core Version:    0.7.0.1
  */

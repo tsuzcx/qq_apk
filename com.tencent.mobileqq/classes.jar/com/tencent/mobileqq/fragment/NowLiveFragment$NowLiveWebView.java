@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import ashu;
-import auwq;
-import auwz;
-import beej;
-import belw;
+import auoj;
+import axdz;
+import axei;
+import bhll;
+import bhta;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.AppInterface;
@@ -23,10 +23,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import myl;
+import nhe;
 
 public final class NowLiveFragment$NowLiveWebView
-  extends beej
+  extends bhll
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
@@ -49,8 +49,8 @@ public final class NowLiveFragment$NowLiveWebView
     for (long l = System.currentTimeMillis();; l = 0L)
     {
       this.jdField_a_of_type_Boolean = true;
-      myl.a();
-      this.mUrl = (NearbyActivity.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString + "&_t=" + System.currentTimeMillis() + auwq.a(auwq.b()));
+      nhe.a();
+      this.mUrl = (NearbyActivity.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString + "&_t=" + System.currentTimeMillis() + axdz.a(axdz.b()));
       this.mWebview = new TouchWebView(this.mContext);
       this.mWebview.getSettings().setMediaPlaybackRequiresUserGesture(false);
       buildBaseWebView(this.mInterface);
@@ -62,17 +62,17 @@ public final class NowLiveFragment$NowLiveWebView
       this.mWebview.setOnScrollChangedListener(this);
       setmTimeBeforeLoadUrl(System.currentTimeMillis());
       if (QLog.isDevelopLevel()) {
-        auwz.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
+        axei.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
       }
       this.mWebview.loadUrl(this.mUrl);
       if (QLog.isColorLevel()) {
-        auwz.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
+        axei.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f == 0L))
       {
         this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f = (System.currentTimeMillis() - l);
         if (QLog.isDevelopLevel()) {
-          auwz.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f) });
+          axei.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f) });
         }
       }
       if (NowLiveFragment.b()) {
@@ -96,7 +96,7 @@ public final class NowLiveFragment$NowLiveWebView
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
     if (paramArrayList != null) {
-      paramArrayList.add(new belw());
+      paramArrayList.add(new bhta());
     }
   }
   
@@ -112,20 +112,20 @@ public final class NowLiveFragment$NowLiveWebView
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.a();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj.b(false).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj.a();
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.a();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj.b(true).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Auoj.a();
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.getVisibility() != 8)) {
       this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.setVisibility(8);
@@ -153,7 +153,7 @@ public final class NowLiveFragment$NowLiveWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView
  * JD-Core Version:    0.7.0.1
  */

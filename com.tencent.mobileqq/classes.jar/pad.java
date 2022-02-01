@@ -1,57 +1,196 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-class pad
-  implements View.OnClickListener
+public class pad
 {
-  pad(pac parampac, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  private CommentInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  public void onClick(View paramView)
+  public pad(ArticleInfo paramArticleInfo, CommentInfo paramCommentInfo)
   {
-    paramView = this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
-    if (!TextUtils.isEmpty(paramView))
-    {
-      ors.a(this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidContentContext, paramView);
-      paramView = opn.a(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 16, this.jdField_a_of_type_Pac.a(), (ArticleInfo)this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo = paramCommentInfo;
+  }
+  
+  private pad e(int paramInt)
+  {
+    int j = 1;
+    int i = 1;
+    if (paramInt == 1) {}
     try
     {
-      paramView.put("card_type", 8);
-      opp localopp = new opp(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      localopp.e = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-      localopp.f = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-      localopp.g = paramView.toString();
-      localopp.a = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.publishUin);
-      localopp.b = "0X8008E2F";
-      localopp.c = "0X8008E2F";
-      opn.a(localopp);
-      ReadInJoyPicWaterFallFragment.a((ArticleInfo)this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 1008);
-      this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.c);
-      owy.a().a(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID, System.currentTimeMillis());
-      return;
+      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
+      return this;
     }
-    catch (JSONException paramView)
+    catch (JSONException localJSONException)
+    {
+      JSONObject localJSONObject1;
+      localJSONException.printStackTrace();
+      return this;
+    }
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      localJSONObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = i;; paramInt = 2)
+      {
+        localJSONObject1.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = j;; paramInt = 2)
+      {
+        localJSONObject2.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    return this;
+  }
+  
+  public String a()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
+        }
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
+        {
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level != 1) {
+            continue;
+          }
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
+        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("source", pha.d());
+        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", pha.e());
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+      }
+      return this.jdField_a_of_type_OrgJsonJSONObject.toString();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level == 2) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
+      }
+    }
+  }
+  
+  public pad a()
+  {
+    int i = 1;
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorSelection == 1) {}
+        while (i > 0)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_type", i);
+          return this;
+          i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.awesome;
+          if (i == 1) {
+            i = 2;
+          } else {
+            i = 3;
+          }
+        }
+      }
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public pad a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", paramInt);
+      return e(paramInt);
+    }
+    catch (JSONException localJSONException)
     {
       for (;;)
       {
-        paramView.printStackTrace();
+        localJSONException.printStackTrace();
       }
     }
+  }
+  
+  public pad a(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("to_uin", paramString);
+      return this;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return this;
+  }
+  
+  public pad b(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("area", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public pad c(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_level", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public pad d(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_icon_choose", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pad
  * JD-Core Version:    0.7.0.1
  */

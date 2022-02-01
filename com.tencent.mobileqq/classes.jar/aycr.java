@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
 
 public class aycr
-  implements DialogInterface.OnClickListener
 {
-  public aycr(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(FragmentActivity paramFragmentActivity, RecyclerView.ViewHolder paramViewHolder)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().finish();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramViewHolder = (aycs)paramViewHolder;
+    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(aydf.a());
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView.setImageDrawable(aydf.a(paramFragmentActivity));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(paramFragmentActivity);
+    localLinearLayoutManager.setOrientation(0);
+    paramViewHolder.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    paramFragmentActivity = new aycv(paramFragmentActivity, aydd.a().a());
+    paramViewHolder.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(paramFragmentActivity);
   }
 }
 

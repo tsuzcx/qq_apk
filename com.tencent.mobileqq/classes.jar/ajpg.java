@@ -1,18 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ajpg
-  implements ValueAnimator.AnimatorUpdateListener
+class ajpg
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public ajpg(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  ajpg(ajpf paramajpf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Anqg.a())
+    {
+      i = ((aywe)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.f = true;
+      }
+    }
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        amuf.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
+      }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Anqg.a()))
+      {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+      }
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.b.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Biau != null) && (this.a.a.jdField_a_of_type_Biau.isShowing())) {
+      this.a.a.jdField_a_of_type_Biau.dismiss();
+    }
+    if ((this.a.a.f) && (this.a.a.e))
+    {
+      this.a.a.e = false;
+      this.a.a.jdField_a_of_type_Anqg.d();
+    }
   }
 }
 

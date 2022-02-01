@@ -1,74 +1,35 @@
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
 
 public class apik
-  extends apio
+  implements DialogInterface.OnClickListener
 {
-  public apik(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public apik(ArkAppModuleBase.APIAuthority.1 param1, bgpa parambgpa, Activity paramActivity) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apim != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apim.b();
     }
-    for (;;)
+    if (this.jdField_a_of_type_Bgpa.isShowing()) {}
+    try
     {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
+      this.jdField_a_of_type_Bgpa.dismiss();
+      label39:
+      apii.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 2);
+      paramDialogInterface = bglp.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131690096), 2131718062, 2131718062, new bgmc(), null);
+      try
       {
-        this.a.a();
+        paramDialogInterface.show();
         return;
-        if (this.a.app.a().isInMsgBoxRecentList(alof.al, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(alof.al, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, alof.al, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ajlb.b(this.a.app, alof.al, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(alof.al, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
       }
+      catch (Exception paramDialogInterface) {}
     }
-  }
-  
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
-  {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
+    catch (Exception paramDialogInterface)
     {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(alof.am, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(alof.am, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, alof.am, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ajlb.b(this.a.app, alof.am, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(alof.am, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
+      break label39;
     }
   }
 }

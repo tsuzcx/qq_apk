@@ -1,37 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class wel
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vck>
+class wel
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public wel(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  wel(wef paramwef) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vck paramvck)
+  public void onGlobalLayout()
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramvck.jdField_a_of_type_JavaLangString)) {}
-    while ((paramvck.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
-      return;
+    int i = wef.a(this.a).getHeight();
+    if (i != wef.b(this.a)) {
+      wef.a(this.a, i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramvck.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramvck.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvck);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vck.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wel
  * JD-Core Version:    0.7.0.1
  */

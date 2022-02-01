@@ -1,36 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class bluo
-  implements blun
+class bluo
 {
-  private float jdField_a_of_type_Float;
-  private File jdField_a_of_type_JavaIoFile;
+  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
+  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("OriginalBgmRecognizer", 2, "recognize: invoked. info: audioFile not exist. mTargetAudioFile = " + this.jdField_a_of_type_JavaIoFile);
-      }
-      return;
-    }
-    blur localblur = (blur)blqr.a().c(10);
-    localblur.a(this.jdField_a_of_type_Float);
-    localblur.a(this.jdField_a_of_type_JavaIoFile);
-    localblur.c();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(File paramFile)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
+  bluo(blum paramblum) {}
 }
 
 

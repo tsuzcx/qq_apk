@@ -1,48 +1,29 @@
-import android.app.Activity;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ajqk
 {
-  public double a;
-  public int a;
-  public ajpz a;
-  public Activity a;
-  public QzoneVerticalVideoTopicInfo a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public double b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public int m;
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
+  
+  ajqk(ajqf paramajqf, View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368913);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369898));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369904));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378868));
+    this.b = ((TextView)paramView.findViewById(2131365242));
+    this.c = ((TextView)paramView.findViewById(2131371718));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365362));
+  }
 }
 
 

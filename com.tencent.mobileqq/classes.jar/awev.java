@@ -1,47 +1,61 @@
-import mqq.app.AppRuntime.Status;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.qphone.base.util.QLog;
 
-public class awev
+final class awev
+  extends Drawable.ConstantState
 {
-  public int a;
-  public long a;
-  public String a;
-  public AppRuntime.Status a;
-  public int b;
-  public String b;
+  int jdField_a_of_type_Int;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+  Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
+  boolean jdField_a_of_type_Boolean;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  int jdField_b_of_type_Int;
+  Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
+  String[] jdField_b_of_type_ArrayOfJavaLangString;
+  int c = 119;
+  int d = 160;
   
-  public awev(long paramLong, String paramString1, String paramString2)
+  public awev(awfg paramawfg)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if (paramawfg == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PngFrameDrawable", 2, "【ramdom magic】 png frame param is null.");
+      }
+      throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramawfg.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_b_of_type_ArrayOfJavaLangString = paramawfg.jdField_b_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_Int = paramawfg.c;
+    this.jdField_b_of_type_Int = paramawfg.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Boolean = paramawfg.jdField_a_of_type_Boolean;
   }
   
-  public awev(AppRuntime.Status paramStatus)
+  public int getChangingConfigurations()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = awer.a(paramStatus);
-    this.jdField_a_of_type_JavaLangString = awer.a(paramStatus);
+    return 0;
   }
   
-  public static String a(AppRuntime.Status paramStatus, long paramLong)
+  public Drawable newDrawable()
   {
-    return paramStatus.getValue() + paramLong + "";
+    return new awet(this, null, null);
   }
   
-  public static boolean a(long paramLong)
+  public Drawable newDrawable(Resources paramResources)
   {
-    return paramLong == 1000L;
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func newDrawable");
+    }
+    return new awet(this, paramResources, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awev
  * JD-Core Version:    0.7.0.1
  */

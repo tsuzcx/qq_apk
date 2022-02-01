@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.app.Activity;
 
 public class adfa
-  implements View.OnClickListener
+  extends adek
 {
-  public adfa(JoinDiscussionActivity paramJoinDiscussionActivity) {}
-  
-  public void onClick(View paramView)
+  public adfa(Activity paramActivity, int paramInt, String paramString)
   {
-    this.a.a();
+    super(paramActivity, paramInt, paramString);
   }
 }
 

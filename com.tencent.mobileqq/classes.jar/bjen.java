@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.image.URLDrawableHandler;
 
-public final class bjen
-  implements DialogInterface.OnDismissListener
+class bjen
+  implements URLDrawableHandler
 {
-  public bjen(FragmentActivity paramFragmentActivity) {}
+  bjen(bjem parambjem) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    this.a.finish();
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjen
  * JD-Core Version:    0.7.0.1
  */

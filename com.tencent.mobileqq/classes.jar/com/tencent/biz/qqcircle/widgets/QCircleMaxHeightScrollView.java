@@ -35,10 +35,15 @@ public class QCircleMaxHeightScrollView
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.a, -2147483648));
   }
+  
+  public void setMaxHeight(int paramInt)
+  {
+    this.a = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleMaxHeightScrollView
  * JD-Core Version:    0.7.0.1
  */

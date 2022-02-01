@@ -1,54 +1,86 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqst
-  implements aqsa
+public class aqst
+  extends aqkz<aqsq>
 {
-  aqst(aqss paramaqss, String paramString, aqtc paramaqtc) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public static aqsq a()
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    aqsq localaqsq2 = (aqsq)aqlk.a().a(630);
+    aqsq localaqsq1 = localaqsq2;
+    if (localaqsq2 == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqss.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
+        QLog.d("QrCodeDisplay.ConfProcessor", 2, "loadConfig(): bean is null then new QrCodeConfBean()");
       }
-      this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Aqss.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
+      localaqsq1 = new aqsq();
+    }
+    return localaqsq1;
+  }
+  
+  @NonNull
+  public aqsq a(int paramInt)
+  {
+    return new aqsq();
+  }
+  
+  @Nullable
+  public aqsq a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0))
+    {
+      QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
+      return null;
+    }
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "QrCodeDisplayConfProcessor onParsed, content:" + paramArrayOfaqlg);
+    }
+    return aqsq.a(paramArrayOfaqlg);
+  }
+  
+  public void a(aqsq paramaqsq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "onUpdate " + paramaqsq.toString());
     }
   }
   
-  public void a(String paramString)
+  public Class<aqsq> clazz()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqss.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqss.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqss.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqss.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqss.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
+    return aqsq.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
     if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqss.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "migrateOldVersion");
     }
-    this.jdField_a_of_type_Aqtc.a(paramString, localBundle);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 630;
   }
 }
 

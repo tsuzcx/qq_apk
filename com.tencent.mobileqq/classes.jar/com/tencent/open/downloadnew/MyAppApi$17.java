@@ -1,33 +1,33 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bdne;
-import bflk;
-import bflp;
-import bfoc;
-import bfox;
-import bfpi;
+import bgsg;
+import bist;
+import bisy;
+import bivk;
+import biwe;
+import biwp;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class MyAppApi$17
   implements Runnable
 {
-  public MyAppApi$17(bfox parambfox, Activity paramActivity, String paramString) {}
+  public MyAppApi$17(biwe parambiwe, Activity paramActivity, String paramString) {}
   
   public void run()
   {
-    bflp.c("MyAppApi", "---isAutoInstall:" + bfoc.c() + " url:" + bfoc.a() + " interval:" + bfoc.a());
-    if ((bflk.b(this.jdField_a_of_type_AndroidAppActivity)) && (bflk.c(this.jdField_a_of_type_AndroidAppActivity)))
+    bisy.c("MyAppApi", "---isAutoInstall:" + bivk.c() + " url:" + bivk.a() + " interval:" + bivk.a());
+    if ((bist.b(this.jdField_a_of_type_AndroidAppActivity)) && (bist.c(this.jdField_a_of_type_AndroidAppActivity)))
     {
-      boolean bool1 = bfoc.b();
-      boolean bool2 = bfoc.j();
-      String str = bdne.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
+      boolean bool1 = bivk.b();
+      boolean bool2 = bivk.j();
+      String str = bgsg.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
       if ((!this.this$0.b()) && (bool1) && (bool2) && ("true".equals(str)))
       {
         ThreadManager.getUIHandler().post(new MyAppApi.17.1(this));
-        bflp.c("MyAppApi", "---startDownloadYYB---");
-        this.this$0.a = new bfpi(this.this$0);
+        bisy.c("MyAppApi", "---startDownloadYYB---");
+        this.this$0.a = new biwp(this.this$0);
         this.this$0.a.jdField_a_of_type_Boolean = true;
         this.this$0.a.b = false;
         this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
@@ -40,7 +40,7 @@ public class MyAppApi$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.17
  * JD-Core Version:    0.7.0.1
  */

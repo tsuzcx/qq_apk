@@ -102,11 +102,6 @@ public class PTHairSegmenter
     HAIR_SEGMENT.destroy();
   }
   
-  public boolean reInit()
-  {
-    return HAIR_SEGMENT.init();
-  }
-  
   public boolean reloadModel()
   {
     return HAIR_SEGMENT.reloadModel();
@@ -116,7 +111,7 @@ public class PTHairSegmenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,53 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class bdkh
-  implements View.OnClickListener
+public class bdkh
+  implements bdkj
 {
-  bdkh(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  public bdkh(AIOMessageSpreadManager.1 param1, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(List<String> paramList)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdjz, 1);
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_Bdjz.isShowing()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bdjz.dismiss();
+    if ((paramList == null) || (paramList.size() == 0)) {
+      if (QLog.isDebugVersion())
+      {
+        if (paramList != null) {
+          break label34;
+        }
+        paramList = "lst is null";
+        QLog.i("AIOMessageSpreadManager", 1, paramList);
       }
-      return;
     }
-    catch (Exception paramView) {}
+    label34:
+    float f1;
+    float f2;
+    do
+    {
+      return;
+      while (!paramList.hasNext())
+      {
+        paramList = "lst.size() = 0";
+        break;
+        f1 = (float)arbr.a().a();
+        paramList = paramList.iterator();
+      }
+      str = (String)paramList.next();
+      f2 = bdkg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
+      }
+    } while (f2 - f1 <= 0.0F);
+    String str = arbr.a().a();
+    paramList = arbr.a().b();
+    str = str + "。" + paramList;
+    bdkg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkh
  * JD-Core Version:    0.7.0.1
  */

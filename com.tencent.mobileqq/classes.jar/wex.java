@@ -1,53 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class wex
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vep>
+class wex
+  extends LruCache<KEY, VALUE>
 {
-  public wex(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  wex(wew paramwew, int paramInt)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramInt);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vep paramvep)
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {}
-    wfk localwfk;
-    Object localObject1;
-    do
-    {
-      return;
-      Object localObject2 = null;
-      localwfk = paramQQStoryShareGroupProfileActivity.a.a;
-      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
-      do
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (HotSortVideoEntry)localIterator.next();
-      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramvep.a));
-    } while (localObject1 == null);
-    ((HotSortVideoEntry)localObject1).viewCount += 1;
-    ((uvh)uwa.a(25)).a((HotSortVideoEntry)localObject1);
-    localwfk.a((HotSortVideoEntry)localObject1);
-    paramQQStoryShareGroupProfileActivity.d = true;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vep.class;
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wex
  * JD-Core Version:    0.7.0.1
  */

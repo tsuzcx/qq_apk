@@ -1,20 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akks
-  extends akit
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  akks(akkq paramakkq) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    akkp.a(this.a.a).dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akks
  * JD-Core Version:    0.7.0.1
  */

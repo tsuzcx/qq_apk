@@ -1,11 +1,22 @@
+import com.tencent.qphone.base.util.BaseApplication;
+
 class agnl
-  extends amny
+  implements arzx
 {
-  agnl(agnj paramagnj) {}
+  agnl(agnk paramagnk) {}
   
-  public void b()
+  public void a(int paramInt)
   {
-    this.a.b(false, false);
+    if (paramInt == 8) {
+      agnk.a(this.a).b();
+    }
+    while ((paramInt != 0) || (agnk.a(this.a) == 0L)) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = agnk.a(this.a);
+    bctj.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    agnk.a(this.a, 0L);
   }
 }
 

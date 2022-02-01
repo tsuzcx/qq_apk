@@ -1,145 +1,181 @@
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bgqu
-  extends Dialog
+  extends ReportDialog
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  View jdField_a_of_type_AndroidViewView;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bgqv(this);
+  Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ListView jdField_a_of_type_AndroidWidgetListView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  TextView b;
   TextView c;
   TextView d;
   TextView e;
   TextView f;
+  TextView g;
   
-  public bgqu(Context paramContext)
+  public bgqu(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131755760);
-    a(paramContext);
+    super(paramContext, paramInt);
   }
   
-  private void a(Context paramContext)
+  protected int a(int paramInt)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559331, null);
-    setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370493));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370506));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362916));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379439));
-    this.c = ((TextView)paramContext.findViewById(2131379467));
-    this.d = ((TextView)paramContext.findViewById(2131362906));
-    this.e = ((TextView)paramContext.findViewById(2131369356));
-    this.f = ((TextView)paramContext.findViewById(2131375805));
-    setCanceledOnTouchOutside(true);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setGravity(80);
-    }
+    return paramInt;
   }
   
-  public Bundle a()
+  public bgqu a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
+    this.b.setText(paramInt);
+    this.b.setContentDescription(getContext().getString(paramInt));
+    this.b.setVisibility(0);
+    return this;
   }
   
-  public void a(Drawable paramDrawable1, String paramString1, String paramString2, Drawable paramDrawable2, String paramString3, String paramString4, String paramString5, View.OnClickListener paramOnClickListener1, String paramString6, View.OnClickListener paramOnClickListener2)
+  public bgqu a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
-    if (paramDrawable2 == null)
+    if (paramOnClickListener == null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label141;
-      }
-      this.c.setVisibility(8);
-      label65:
-      if (!TextUtils.isEmpty(paramString5)) {
-        break label161;
-      }
-      this.e.setVisibility(8);
-      label82:
-      if (!TextUtils.isEmpty(paramString6)) {
-        break label190;
-      }
-      this.f.setVisibility(8);
-      label99:
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label219;
-      }
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      return this;
+    }
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bgqx(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  public bgqu a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
       this.d.setVisibility(8);
+      return this;
     }
-    for (;;)
+    this.d.setText(paramInt);
+    this.d.setContentDescription(getContext().getString(paramInt));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bgqy(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  public bgqu a(String paramString)
+  {
+    if (paramString != null)
     {
-      show();
-      return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable2);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      break;
-      label141:
-      this.c.setText(paramString3);
-      this.c.setVisibility(0);
-      break label65;
-      label161:
-      this.e.setText(paramString5);
-      this.e.setOnClickListener(paramOnClickListener1);
-      this.e.setVisibility(0);
-      break label82;
-      label190:
-      this.f.setText(paramString6);
-      this.f.setOnClickListener(paramOnClickListener2);
-      this.f.setVisibility(0);
-      break label99;
-      label219:
-      this.d.setVisibility(0);
-      this.d.setText(paramString4);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(new bdnt(paramString, 5, 24));
+      this.b.setContentDescription(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
+      return this;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
   }
   
-  public void a(Bundle paramBundle)
+  public bgqu a(String paramString, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.b.setText(new bdnt(paramString, 5, 20));
+      this.b.setContentDescription(paramString);
+      this.b.setVisibility(0);
+      return this;
+    }
+    this.b.setVisibility(8);
+    return this;
   }
   
-  public void a(boolean paramBoolean)
+  public bgqu a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(new bdnt(paramString, 5, 20));
+    this.d.setContentDescription(paramString);
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bgqw(this, paramOnClickListener));
+    a();
+    return this;
   }
   
-  public boolean a()
+  protected void a() {}
+  
+  public bgqu b(String paramString)
   {
-    return this.jdField_b_of_type_Boolean;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.b.setText(paramString);
+      this.b.setContentDescription(paramString);
+      this.b.setVisibility(0);
+      return this;
+    }
+    this.b.setVisibility(8);
+    return this;
   }
   
-  public void b(boolean paramBoolean)
+  public void dismiss()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
   }
   
-  public boolean b()
+  public void setContentView(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365479));
+    this.b = ((TextView)findViewById(2131365475));
+    this.c = ((TextView)findViewById(2131365453));
+    this.e = ((TextView)findViewById(2131365454));
+    this.g = ((TextView)findViewById(2131365740));
+    this.f = ((TextView)findViewById(2131372836));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367087));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367086);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365464));
+    this.d = ((TextView)findViewById(2131365470));
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.d.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363543));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369914));
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.b.setContentDescription(getContext().getString(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqu
  * JD-Core Version:    0.7.0.1
  */

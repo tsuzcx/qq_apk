@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@color/al3" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="75.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#ff141414" android:id="@id/mtw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="登录" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:id="@id/mtu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发表一个内容可以获得5个赞" android:layout_below="@id/mtw" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mtt" android:layout_width="70.0dip" android:layout_height="41.0dip" android:text="已完成" android:layout_alignParentRight="true" />
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/mw" android:layout_alignLeft="@id/mwb" android:layout_alignTop="@id/mwb" android:layout_alignRight="@id/mwb" android:layout_alignBottom="@id/mwb" />
+    <com.tencent.mobileqq.now.widget.NiceImageView android:id="@id/mwb" android:clickable="false" android:layout_width="fill_parent" android:layout_height="195.0dip" android:scaleType="fitXY" app:corner_radius_value="@dimen/mw" />
 </RelativeLayout>

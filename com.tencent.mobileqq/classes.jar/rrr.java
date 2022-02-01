@@ -1,38 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-public class rrr
-  implements rrp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "<anonymous parameter 0>", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "position", "", "<anonymous parameter 3>", "", "onItemClick"}, k=3, mv={1, 1, 16})
+public final class rrr
+  implements AdapterView.OnItemClickListener
 {
-  public rrr(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  public rrr(BaseSelectView paramBaseSelectView) {}
   
-  public void a()
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (ork.a(ork.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!szp.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
+    Object localObject = this.a.a();
+    if (localObject != null) {
+      localObject = (Unit)((Function1)localObject).invoke(this.a.a().a().get(paramInt));
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((szp.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrr
  * JD-Core Version:    0.7.0.1
  */

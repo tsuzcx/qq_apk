@@ -1,25 +1,57 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
 
 public class adur
-  implements View.OnTouchListener
+  implements awxg
 {
-  public adur(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public adur(ChatHistoryFileActivity paramChatHistoryFileActivity, awwz paramawwz, awxi paramawxi, List paramList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_Awwz.a(new adus(this));
+    this.jdField_a_of_type_Awwz.show();
+  }
+  
+  public void a(awxe paramawxe)
+  {
+    if ((paramawxe != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
+      switch (paramawxe.a)
+      {
+      }
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.7F);
+      if (this.jdField_a_of_type_Awwz.isShowing()) {
+        this.jdField_a_of_type_Awwz.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+      this.jdField_a_of_type_Awxi.b();
+      return;
+      awxf.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
       continue;
-      paramView.setAlpha(1.0F);
+      awxf.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      continue;
+      awxf.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
     }
+  }
+  
+  public void a(awxe paramawxe, int paramInt)
+  {
+    this.jdField_a_of_type_Awwz.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Awwz.isShowing()) {
+      this.jdField_a_of_type_Awwz.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    this.jdField_a_of_type_Awxi.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

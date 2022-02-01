@@ -3,13 +3,15 @@ package com.tencent.mobileqq.microapp.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import azhf;
-import bdal;
-import bdnn;
+import bcif;
+import bggl;
+import bgsp;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONException;
@@ -51,10 +53,10 @@ final class e
       {
         return;
       }
-      localObject1 = bdal.a(this.a, 0, this.a.length);
+      localObject1 = bggl.a(this.a, 0, this.a.length);
       localObject2 = new Matrix();
       f = 90.0F;
-      if (azhf.d(azhf.g)) {
+      if (bcif.d(bcif.g)) {
         f = 90.0F + 180.0F;
       }
       ((Matrix)localObject2).postRotate(f);
@@ -66,9 +68,9 @@ final class e
       localObject2 = new File(b.a().a("jpg"));
       ((File)localObject2).getParentFile().mkdirs();
       localObject1 = MiniAppCamera.a((Bitmap)localObject1, (File)localObject2, this.b.a);
-      if (bdnn.a((String)localObject1))
+      if (bgsp.a((String)localObject1))
       {
-        localObject1 = com.tencent.mobileqq.microapp.b.a.b(this.b.b, null);
+        localObject1 = c.b(this.b.b, null);
         if (localObject1 != null)
         {
           localObject1 = ((JSONObject)localObject1).toString();
@@ -81,7 +83,7 @@ final class e
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("tempImagePath", b.a().c((String)localObject1));
+        ((JSONObject)localObject2).put("tempImagePath", b.a().b((String)localObject1));
         this.b.c.appBrandRuntime.i.evaluateCallbackJs(this.b.d, ((JSONObject)localObject2).toString());
         return;
       }
@@ -102,7 +104,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.e
  * JD-Core Version:    0.7.0.1
  */

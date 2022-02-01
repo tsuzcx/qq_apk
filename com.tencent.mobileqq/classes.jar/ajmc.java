@@ -1,64 +1,28 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.widget.SimpleTextView;
 
 public class ajmc
-  extends ajlr
+  extends bkov
 {
-  public ajmc(Context paramContext)
+  public ajmc(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131693014);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbpe == null) {
-        this.jdField_a_of_type_Bbpe = new bbpe();
-      }
-      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
+    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
+    if ((parambkou instanceof SimpleTextView)) {
+      parambkou.setTag(paramObject);
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    return parambkou;
   }
   
-  public byte[] a()
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
   {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.a.a(paramInt, paramArrayOfbkou, paramObject);
   }
 }
 

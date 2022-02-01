@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -107,7 +108,9 @@ public class AppActivity
     if (sActivityDispatchCallback != null) {
       sActivityDispatchCallback.disaptchTouchEventCallback(this, paramMotionEvent);
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   protected boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -256,6 +259,7 @@ public class AppActivity
       doOnConfigurationChanged(paramConfiguration);
     }
     super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   @Deprecated
@@ -718,6 +722,11 @@ public class AppActivity
   public void superFinish()
   {
     super.finish();
+  }
+  
+  public void superSetRequestedOrientation(int paramInt)
+  {
+    super.setRequestedOrientation(paramInt);
   }
   
   public final void superStartActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)

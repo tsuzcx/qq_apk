@@ -1,12 +1,28 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class pvi
 {
-  private static pvi jdField_a_of_type_Pvi;
-  private final List<pvj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static pvi a;
+  private long jdField_a_of_type_Long;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public pvj a;
+  public pvk a;
+  public boolean a;
+  
+  private pvi()
+  {
+    this.jdField_a_of_type_Pvj = new pvj();
+    this.jdField_a_of_type_Pvk = new pvk();
+    if (a(BaseApplicationImpl.getApplication().getRuntime()))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a(BaseApplicationImpl.getApplication().getRuntime(), false);
+    }
+  }
   
   public static pvi a()
   {
@@ -21,54 +37,43 @@ public class pvi
     finally {}
   }
   
-  public void a()
+  private void a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
       return;
-    }
+      localObject = bmqa.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
+    bmqa.a((SharedPreferences.Editor)localObject, true);
   }
   
-  public void a(int paramInt, List<Long> paramList, long paramLong)
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((pvj)localIterator.next()).a(paramInt, paramList, paramLong);
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((pvj)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
-      }
-    }
-  }
-  
-  public void a(pvj parampvj)
-  {
-    if (parampvj == null) {
+    paramAppRuntime = bmqa.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parampvj)) {
-        this.jdField_a_of_type_JavaUtilList.add(parampvj);
-      }
-      return;
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
+    bmqa.a(paramAppRuntime, true);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = bmqa.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return false;
     }
+    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvi
  * JD-Core Version:    0.7.0.1
  */

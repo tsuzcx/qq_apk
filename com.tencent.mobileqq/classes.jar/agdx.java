@@ -1,28 +1,34 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class agdx
-  extends bead
+class agdx
+  implements Animator.AnimatorListener
 {
-  public agdx(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, agea paramagea, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  agdx(agdw paramagdw) {}
   
-  public void onDone(beae parambeae)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    String str = parambeae.a().getString("filePath");
-    if (parambeae.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
-      }
-      this.jdField_a_of_type_Agea.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopEggLottieAnimView", 2, "onAnimationEnd");
     }
+    agdw.a(this.a).remove();
+    if (agdw.a(this.a).isEmpty()) {
+      this.a.a();
+    }
+    while (agdw.a(this.a)) {
+      return;
+    }
+    agdw.a(this.a).clear();
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

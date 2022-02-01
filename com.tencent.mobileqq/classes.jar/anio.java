@@ -1,23 +1,39 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3.3.1;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
 public class anio
-  implements anjx
+  implements anil
 {
-  public anio(ArkAppDeviceModule.ObserverMethod.3.3.1 param1) {}
+  protected void a() {}
   
-  public void a(long paramLong)
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData) {}
+  
+  protected void a(boolean paramBoolean, int paramInt) {}
+  
+  protected void b(int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Anii.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
+      return;
+    case 2: 
+      a(((Integer)paramObject).intValue());
+      return;
+    case 3: 
+      b(((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a();
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    anif.a(this.a.a.a.jdField_a_of_type_Anii.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    a(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

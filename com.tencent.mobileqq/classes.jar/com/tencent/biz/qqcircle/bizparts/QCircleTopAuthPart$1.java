@@ -1,20 +1,20 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import tuc;
+import vee;
 
 public class QCircleTopAuthPart$1
   implements Runnable
 {
-  public QCircleTopAuthPart$1(tuc paramtuc) {}
+  public QCircleTopAuthPart$1(vee paramvee) {}
   
   public void run()
   {
-    tuc.a(this.this$0, false);
+    vee.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.bizparts.QCircleTopAuthPart.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,66 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bfks
-  implements bfoa
+  extends BroadcastReceiver
 {
   bfks(bfkr parambfkr) {}
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bflp.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("PackageName", paramString1);
-    localBundle.putString("Code", paramString2);
-    localBundle.putInt("VersionCode", paramInt);
-    localBundle.putBoolean("IsSuccess", paramBoolean);
-    localBundle.putAll(paramBundle);
-    bfkr.a(this.a, localBundle);
+    String str;
+    if ("com.tencent.mobileqq.addgroupapplication".equals(paramIntent.getAction()))
+    {
+      str = paramIntent.getStringExtra("groupUin");
+      paramContext = paramIntent.getStringExtra("appId");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramContext))) {
+        break label57;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive Failed");
+      }
+    }
+    label57:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive troopUin:" + str + "appId: " + paramContext);
+      }
+      paramContext = null;
+      try
+      {
+        long l = Long.parseLong(str);
+        paramContext = Long.valueOf(l);
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          QLog.e("TroopShortcutBarManager", 1, "parseLong troopUin exception");
+        }
+      }
+      paramContext = this.a.a(paramContext);
+      if (paramContext != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive info is not null");
+        }
+        paramContext.d(0);
+        paramContext.a(0L);
+        paramContext.c(0);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive info is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfks
  * JD-Core Version:    0.7.0.1
  */

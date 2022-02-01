@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class afsc
-  implements afug
+class afsc
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  afsc(afrz paramafrz, afrw paramafrw) {}
+  
+  public void onClick(View paramView)
   {
-    return aqvw.a(paramQQAppInterface, paramChatMessage);
+    this.jdField_a_of_type_Afrz.a.a(this.jdField_a_of_type_Afrw);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

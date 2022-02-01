@@ -1,89 +1,40 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResultCallback;
-import java.util.Iterator;
-import java.util.Vector;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bimn
+  implements bina
 {
-  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bimo();
-  static Vector<bimp> jdField_a_of_type_JavaUtilVector;
-  static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  public bimn(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaUtilVector = new Vector();
+    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
+    localIntent.putExtra("key_req_src", 1);
+    localIntent.putExtra("is_first_login", true);
+    localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
+    OpenAuthorityFragment.a(this.a, null);
+    this.a.getActivity().startActivityForResult(localIntent, 1);
   }
   
-  public static int a(String paramString, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    return jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
+    this.a.a(paramString, paramBoolean);
   }
   
-  public static void a()
+  public void b()
   {
-    Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getComicConfig", localBundle, jdField_a_of_type_EipcEIPCResultCallback);
-  }
-  
-  public static void a(bimp parambimp)
-  {
-    if (parambimp != null) {
-      jdField_a_of_type_JavaUtilVector.add(parambimp);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("VipComicCommonConfig");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          i = 0;
-          if (i < paramString.length())
-          {
-            Object localObject = paramString.optJSONObject(i);
-            if ((localObject == null) || (!beka.a((JSONObject)localObject, "VipComicCommonConfig"))) {
-              break label118;
-            }
-            jdField_a_of_type_OrgJsonJSONObject = (JSONObject)localObject;
-            paramString = jdField_a_of_type_JavaUtilVector.iterator();
-            if (paramString.hasNext())
-            {
-              localObject = (bimp)paramString.next();
-              if (localObject == null) {
-                continue;
-              }
-              ((bimp)localObject).a(jdField_a_of_type_OrgJsonJSONObject);
-              continue;
-            }
-          }
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.d("VipComicConfigHelper", 2, "parse config json file failed.", paramString);
-      }
-      label118:
-      i += 1;
+    this.a.c(OpenAuthorityFragment.b(this.a));
+    if (OpenAuthorityFragment.a(this.a) != null) {
+      OpenAuthorityFragment.a(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimn
  * JD-Core Version:    0.7.0.1
  */

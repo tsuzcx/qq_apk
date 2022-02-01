@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import phd;
-import suv;
+import pyn;
+import twi;
 
 public class SubscriptionInfoModule$2
   implements Runnable
 {
-  public SubscriptionInfoModule$2(phd paramphd) {}
+  public SubscriptionInfoModule$2(pyn parampyn) {}
   
   public void run()
   {
-    suv localsuv = suv.a();
-    phd.a(this.this$0, localsuv.b((QQAppInterface)this.this$0.a));
-    this.this$0.a(phd.a(this.this$0));
+    twi localtwi = twi.a();
+    pyn.a(this.this$0, localtwi.b((QQAppInterface)this.this$0.a));
+    this.this$0.a(pyn.a(this.this$0));
   }
 }
 

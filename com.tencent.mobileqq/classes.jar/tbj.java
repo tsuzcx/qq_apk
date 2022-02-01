@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class tbj
-  implements toc
+public abstract interface tbj
 {
-  public tbj(WSHomeFragment paramWSHomeFragment) {}
-  
-  public void a() {}
+  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tbj
  * JD-Core Version:    0.7.0.1
  */

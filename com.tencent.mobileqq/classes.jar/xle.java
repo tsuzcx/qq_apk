@@ -1,215 +1,131 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tribe.async.async.JobContext;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(10)
 public class xle
-  extends xlo<xlb, xlb>
+  extends zpa
+  implements View.OnClickListener
 {
-  private final String a;
-  public WeakReference<wxs> a;
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private xko jdField_a_of_type_Xko;
+  private ycb jdField_a_of_type_Ycb;
+  private ynb jdField_a_of_type_Ynb;
   
-  public xle()
+  public xle(Context paramContext)
   {
-    this(null);
+    super(paramContext);
   }
   
-  public xle(String paramString)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private Bitmap a(xlb paramxlb, Bitmap paramBitmap)
-  {
-    Object localObject = null;
-    if (paramBitmap == null) {
-      return null;
-    }
-    axwf localaxwf = new axwf();
-    localaxwf.a(paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramxlb = (xlb)localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (paramBoolean)
     {
-      paramxlb = (xlb)localObject;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {}
-    }
-    try
-    {
-      paramxlb = ((wxs)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(0);
-      localObject = paramBitmap;
-      if (paramxlb != null)
-      {
-        localObject = (axwj)axwe.a(106);
-        ((axwj)localObject).a(paramxlb);
-        ((axwj)localObject).init();
-        paramxlb = localaxwf.a(paramBitmap, (GPUBaseFilter)localObject);
-        wxe.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, mosaicThumbBitmap = %s", paramxlb);
-        if (paramxlb != null) {
-          paramBitmap = paramxlb;
-        }
-        ((axwj)localObject).destroy();
-        localObject = paramBitmap;
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130846459);
       }
-      localaxwf.a();
-      return localObject;
-    }
-    catch (Exception paramxlb)
-    {
       for (;;)
       {
-        wxe.e("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, read mosaic bitmap " + paramxlb.toString());
-        paramxlb = (xlb)localObject;
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166461));
+        return;
+        paramTextView.setBackgroundResource(2130846458);
       }
     }
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
+    {
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166474));
+      return;
+    }
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166462));
   }
   
-  protected void a(JobContext paramJobContext, xlb paramxlb)
+  public int a()
   {
-    String str1;
-    if (((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || ((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)))
-    {
-      str1 = this.jdField_a_of_type_JavaLangString;
-      if (str1 != null) {
-        break label481;
-      }
-      str1 = xlr.a(paramxlb.jdField_a_of_type_Int, paramxlb.b, ".jpg");
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ycb != null) && (this.jdField_a_of_type_Ycb.b())) {
+      return 1;
     }
-    label407:
-    label414:
-    label429:
-    label473:
-    label478:
-    label481:
+    return 0;
+  }
+  
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramynb.a(2131377883);
+    TextView localTextView = (TextView)paramynb.a(2131377882);
+    if (QQStoryContext.a())
+    {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166472));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166472));
+      paramynb.a(2131374439).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166474));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
+    }
     for (;;)
     {
-      long l2 = 0L;
-      if ((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
-        l2 = ((EditLocalVideoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int;
-      }
-      String str2 = paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      paramJobContext = null;
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      for (;;)
-      {
-        try
-        {
-          localMediaMetadataRetriever.setDataSource(str2);
-          if (!paramxlb.jdField_a_of_type_Xlh.a) {
-            continue;
-          }
-          l1 = 0L;
-          if ((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
-          {
-            int i = ((EditLocalVideoSource)paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b;
-            l1 = i;
-          }
-        }
-        catch (IllegalArgumentException paramJobContext)
-        {
-          long l1;
-          Object localObject;
-          boolean bool;
-          wxe.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "Video Source is Invalid ! " + str2, paramJobContext);
-          if (localMediaMetadataRetriever == null) {
-            break label473;
-          }
-          localMediaMetadataRetriever.release();
-          paramJobContext = null;
-          continue;
-        }
-        finally
-        {
-          if (localMediaMetadataRetriever == null) {
-            continue;
-          }
-          localMediaMetadataRetriever.release();
-        }
-        try
-        {
-          paramJobContext = localMediaMetadataRetriever.getFrameAtTime(l1 * 1000L);
-          if (localMediaMetadataRetriever == null) {
-            break label478;
-          }
-          localMediaMetadataRetriever.release();
-          localObject = paramJobContext;
-          if (paramJobContext != null)
-          {
-            localObject = paramJobContext;
-            if (paramxlb.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate) {
-              localObject = xsm.a(paramJobContext, 90.0F);
-            }
-          }
-          paramJobContext = (JobContext)localObject;
-          if ((paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-            paramJobContext = a(paramxlb, (Bitmap)localObject);
-          }
-          if (paramJobContext == null) {
-            break label429;
-          }
-          bool = xqw.a(paramJobContext, Bitmap.CompressFormat.JPEG, 80, str1);
-          paramJobContext.recycle();
-          if (!bool) {
-            break label407;
-          }
-          paramJobContext = new File(str1);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile())) {
-            break label414;
-          }
-          wxe.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "success : %s", str1);
-          paramxlb.jdField_a_of_type_JavaLangString = str1;
-          super.notifyResult(paramxlb);
-          return;
-          paramJobContext = localMediaMetadataRetriever.extractMetadata(9);
-          if (paramJobContext == null) {
-            continue;
-          }
-          l1 = Long.valueOf(paramJobContext).longValue();
-          continue;
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          wxe.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime endTime * 1000L oom", paramJobContext);
-          paramJobContext = null;
-          continue;
-        }
-        try
-        {
-          localObject = localMediaMetadataRetriever.getFrameAtTime(1000L * l2);
-          paramJobContext = (JobContext)localObject;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          wxe.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime startTime * 1000L oom", localOutOfMemoryError);
-        }
-        continue;
-        wxe.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "compressToFile error");
-        for (;;)
-        {
-          notifyError(new ErrorMessage(-1, "GenerateLocalVideoSegment error"));
-          return;
-          wxe.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime error : startTime = %s", new Object[] { Long.valueOf(l2) });
-          continue;
-          wxe.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "parameters error : %s", new Object[] { paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
-        }
-        paramJobContext = null;
-      }
+      return paramynb.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Ynb = new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561657, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Ynb.a(2131377883);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Ynb.a(2131377882);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Ynb;
+  }
+  
+  public void a(xko paramxko)
+  {
+    this.jdField_a_of_type_Xko = paramxko;
+  }
+  
+  public void a(ycb paramycb)
+  {
+    this.jdField_a_of_type_Ycb = paramycb;
+    if (this.jdField_a_of_type_Ycb.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Xko.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Xko.a(1);
+      yqu.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", yqu.a(4444), this.jdField_a_of_type_Ycb.a.feedId });
+      continue;
+      this.jdField_a_of_type_Xko.a(2);
+      yqu.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", yqu.a(4444), this.jdField_a_of_type_Ycb.a.feedId });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xle
  * JD-Core Version:    0.7.0.1
  */

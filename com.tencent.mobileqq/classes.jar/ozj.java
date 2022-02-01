@@ -1,28 +1,35 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.widget.AbsListView;
 
 public class ozj
-  implements benh
+  implements bkhe
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  public ozj(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public ozj(ozh paramozh) {}
-  
-  public int a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bdaq.a(ozh.a(this.jdField_a_of_type_Ozh), 10.0F);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (!ReadInJoyCommentListFragment.a(this.a).a().a().a()) {
+      ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    }
+    for (;;)
+    {
+      if ((ReadInJoyCommentListFragment.a(this.a) != null) && (ReadInJoyCommentListFragment.a(this.a).a() != null)) {
+        ReadInJoyCommentListFragment.a(this.a).a().a(ReadInJoyCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.a(this.a).getLastVisiblePosition());
+      }
+      return;
+      ((ReadInJoyCommentListView)paramAbsListView).d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozj
  * JD-Core Version:    0.7.0.1
  */

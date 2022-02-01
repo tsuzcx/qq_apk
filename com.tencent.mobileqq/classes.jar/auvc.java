@@ -1,38 +1,148 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.GameArkView;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class auvc
-  extends BroadcastReceiver
 {
-  public auvc(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static auuq a(MessageRecord paramMessageRecord, Activity paramActivity)
   {
-    int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
-    switch (i)
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
+      if ((paramMessageRecord instanceof MessageForArkApp)) {
+        return new GameArkView(paramActivity, null);
+      }
+      if (!(paramMessageRecord instanceof MessageForStructing)) {}
     }
-    do
+    for (;;)
     {
-      do
+      int n;
+      int i1;
+      try
       {
-        return;
-      } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
-      this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
-      NearbyJsInterface.a(this.a, "");
-      return;
-    } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
-    this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
+        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
+        if (paramMessageRecord != null) {
+          break label268;
+        }
+        return null;
+      }
+      catch (Throwable paramMessageRecord)
+      {
+        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
+        return null;
+      }
+      if (n < paramMessageRecord.size())
+      {
+        if (!(paramMessageRecord.get(n) instanceof bcvt)) {
+          break label290;
+        }
+        ArrayList localArrayList = ((bcvt)paramMessageRecord.get(n)).a;
+        k = i;
+        i = j;
+        i1 = 0;
+        j = k;
+        k = j;
+        m = i;
+        if (i1 >= localArrayList.size()) {
+          break label296;
+        }
+        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
+        {
+          k = 1;
+          if ((k != 0) && (j != 0))
+          {
+            paramMessageRecord = new ImgHeaderView(paramActivity);
+            return paramMessageRecord;
+          }
+        }
+        else
+        {
+          k = i;
+          if (!(localArrayList.get(i1) instanceof bcxv)) {
+            continue;
+          }
+          j = 1;
+          k = i;
+          continue;
+        }
+      }
+      else
+      {
+        if (paramMessageRecord.size() != 2) {
+          continue;
+        }
+        paramMessageRecord = new TextHeaderView(paramActivity);
+        return paramMessageRecord;
+        if ((paramMessageRecord instanceof MessageForPubAccount)) {
+          return new ImgHeaderView(paramActivity);
+        }
+        return new MoreMsgHeaderView(paramActivity);
+        QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
+        return null;
+        label268:
+        n = 0;
+        i = 0;
+        j = 0;
+        continue;
+      }
+      i1 += 1;
+      int i = k;
+      continue;
+      label290:
+      int m = j;
+      int k = i;
+      label296:
+      n += 1;
+      int j = m;
+      i = k;
+    }
+  }
+  
+  public static auuq a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  {
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    {
+      if (paramQQGameMsgInfo == null) {}
+      try
+      {
+        return new MoreMsgHeaderView(paramActivity);
+      }
+      catch (Throwable paramQQGameMsgInfo)
+      {
+        QLog.d("QQGamePubHeaderFactory", 4, "decode header(web) faile:" + paramQQGameMsgInfo.getMessage());
+        return null;
+      }
+      if (paramQQGameMsgInfo.msgType == 1)
+      {
+        paramQQGameMsgInfo = new GameArkView(paramActivity, null);
+        return paramQQGameMsgInfo;
+      }
+      if (paramQQGameMsgInfo.msgType == 2) {
+        return new ImgHeaderView(paramActivity);
+      }
+      if (paramQQGameMsgInfo.msgType == 3) {
+        return new TextHeaderView(paramActivity);
+      }
+      paramQQGameMsgInfo = new MoreMsgHeaderView(paramActivity);
+      return paramQQGameMsgInfo;
+    }
+    QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvc
  * JD-Core Version:    0.7.0.1
  */

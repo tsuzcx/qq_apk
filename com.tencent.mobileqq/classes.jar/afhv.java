@@ -1,32 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class afhv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public afhv(ApolloItemBuilder paramApolloItemBuilder) {}
+  public afhv(TranslucentTRansferFragment paramTranslucentTRansferFragment, bgpa parambgpa) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aknx.a(this.a.a.getApplication()))
-    {
-      ApolloUtil.a(paramView.getContext(), null, "aio", aliu.ah, null);
-      return;
-    }
-    if (!aknx.b(this.a.a.getApplication())) {}
-    for (String str = aliu.U;; str = aliu.V + bimq.b)
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
-      return;
-    }
+    this.jdField_a_of_type_Bgpa.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
+    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
+    bcst.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
   }
 }
 

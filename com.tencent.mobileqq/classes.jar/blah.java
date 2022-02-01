@@ -1,48 +1,28 @@
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleLogListener;
+import org.jetbrains.annotations.NotNull;
 
-public class blah
-  extends blab
+final class blah
+  implements WebBundleLogListener
 {
-  public String o;
-  public String p;
-  
-  public String a()
+  public void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    File localFile = new File(this.p);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.p + File.separator + this.f;
-  }
-  
-  public String b()
-  {
-    File localFile = new File(this.p);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.p + File.separator;
-  }
-  
-  public String c()
-  {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator + this.f;
-  }
-  
-  public boolean d()
-  {
-    Object localObject = new File(a());
-    if (!((File)localObject).exists()) {}
-    do
+    if (QLog.isColorLevel()) {}
+    switch (paramInt)
     {
-      return false;
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length <= 0));
-    return true;
+    default: 
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.w(paramString1, 2, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 2, paramString2);
   }
 }
 

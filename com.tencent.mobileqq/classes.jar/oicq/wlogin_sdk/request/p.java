@@ -22,7 +22,7 @@ public class p
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int j = t.x;
     async_context localasync_context = t.b(this.x.h);
     tlv_t104 localtlv_t104 = localasync_context._t104;
     if (localtlv_t104 == null) {
@@ -41,7 +41,7 @@ public class p
         localObject2 = new tlv_t403();
       }
       localasync_context._dpwd = util.get_mpasswd().getBytes();
-      localasync_context._G = c(t.A, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
+      localasync_context._G = c(t.B, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
       if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
         localasync_context._sec_guid_flag = true;
       }
@@ -73,7 +73,7 @@ public class p
     tlv_t104 localtlv_t104 = new tlv_t104();
     tlv_t116 localtlv_t116 = new tlv_t116();
     Object localObject2 = new tlv_t401();
-    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.v, 0);
     paramArrayOfByte1 = localtlv_t104.get_tlv_104(paramArrayOfByte1);
     paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
     paramArrayOfByte2 = ((tlv_t401)localObject2).get_tlv_401(paramArrayOfByte2);

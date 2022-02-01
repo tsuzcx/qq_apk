@@ -1,24 +1,18 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-class ayhp
-  implements GifDrawable.OnGIFPlayOnceListener
+public final class ayhp
+  implements Parcelable.Creator<OcrRecogResult>
 {
-  ayhp(ayho paramayho, AbstractGifImage paramAbstractGifImage) {}
-  
-  public void onPlayOnce()
+  public OcrRecogResult a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
-    AbstractGifImage.pauseAll();
-    if (this.jdField_a_of_type_Ayho.jdField_a_of_type_Ayhq != null) {
-      this.jdField_a_of_type_Ayho.jdField_a_of_type_Ayhq.b();
-    }
-    if (this.jdField_a_of_type_Ayho.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
-      return;
-    }
-    ((URLImageView)this.jdField_a_of_type_Ayho.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
+    return new OcrRecogResult(paramParcel);
+  }
+  
+  public OcrRecogResult[] a(int paramInt)
+  {
+    return new OcrRecogResult[paramInt];
   }
 }
 

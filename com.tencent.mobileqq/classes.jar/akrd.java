@@ -1,10 +1,21 @@
-public abstract interface akrd
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+
+class akrd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onNotifyLongTouch(String paramString);
+  akrd(akrc paramakrc, akqw paramakqw) {}
   
-  public abstract void onNotifyStatusChanged(int paramInt, String paramString);
-  
-  public abstract void onSurfaceReady(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.jdField_a_of_type_Akqw.a.pop_dialog.left_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      blqo.a(akqz.a(this.jdField_a_of_type_Akrc.a), paramDialogInterface);
+    }
+  }
 }
 
 

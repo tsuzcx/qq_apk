@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhm;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.defaultzero;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class EmoticonPackage
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
@@ -54,7 +54,7 @@ public class EmoticonPackage
   public String diversionName;
   public int downloadCount;
   public long endTime;
-  @awhs
+  @unique
   public String epId;
   public long expiretime;
   public int extraFlags;
@@ -76,7 +76,7 @@ public class EmoticonPackage
   public boolean isMagicFaceDownloading;
   public boolean isRecommendation;
   public int jobType;
-  @awhm
+  @defaultzero
   public int jsonVersion;
   public String jumpUrl;
   public boolean kandian;

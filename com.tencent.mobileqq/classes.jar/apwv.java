@@ -1,43 +1,1218 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import android.util.Pair;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ListAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.2;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.4;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.8;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.9;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import org.jetbrains.annotations.Nullable;
 
+@TargetApi(11)
 public class apwv
+  extends agax
 {
-  public int a;
-  public EmoticonPackage a;
+  public Handler a;
+  public BubbleManager a;
+  public String a;
+  public List<View> a;
+  public ConcurrentHashMap<Long, apxc> a;
   public int b;
+  public List<AnimatorSet> b;
+  public ConcurrentHashMap<String, Bitmap> b;
+  public int c;
+  public int d;
   
-  public apwv(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
+  public apwv(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+    super(paramInt, paramAIOAnimationConatiner, paramListView);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_AndroidOsHandler = new apww(this, Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = afur.a(12.0F, paramListView.getContext().getResources());
+    this.c = afur.a(50.0F, paramListView.getContext().getResources());
+    this.jdField_d_of_type_Int = afur.a(45.0F, paramListView.getContext().getResources());
   }
   
-  public boolean equals(Object paramObject)
+  public static long a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (this == paramObject) {}
+    String str = a(paramMessageRecord, paramSessionInfo, null);
+    BubbleManager localBubbleManager = (BubbleManager)paramQQAppInterface.getManager(44);
+    apwq localapwq1 = localBubbleManager.a((int)paramMessageRecord.vipBubbleID, false);
+    if (a(localapwq1)) {
+      return -1L;
+    }
+    long l1 = -1L;
+    long l2 = -1L;
+    long l3;
+    long l4;
+    int j;
+    Object localObject;
+    long l6;
+    long l5;
+    if (!TextUtils.isEmpty(str))
+    {
+      int i = 0;
+      l3 = l1;
+      l4 = l2;
+      if (paramAIOAnimationConatiner.a() != null)
+      {
+        l3 = l1;
+        l4 = l2;
+        if (paramAIOAnimationConatiner.a().getAdapter() != null)
+        {
+          ListAdapter localListAdapter = paramAIOAnimationConatiner.a().getAdapter();
+          int k = paramAIOAnimationConatiner.a().getFirstVisiblePosition();
+          j = paramAIOAnimationConatiner.a().getLastVisiblePosition();
+          l3 = l1;
+          l4 = l2;
+          if (j >= k)
+          {
+            localObject = localListAdapter.getItem(j);
+            l6 = l1;
+            l5 = l2;
+            if (!(localObject instanceof ChatMessage)) {
+              break label447;
+            }
+            paramQQAppInterface = afur.a(afur.a(paramAIOAnimationConatiner.a(), j));
+            if ((paramQQAppInterface instanceof afwr))
+            {
+              paramQQAppInterface = (afwr)paramQQAppInterface;
+              label192:
+              localObject = (ChatMessage)localObject;
+              if (i != 0) {
+                break label242;
+              }
+              l6 = l1;
+              l5 = l2;
+              if (((ChatMessage)localObject).uniseq != paramMessageRecord.uniseq) {
+                break label447;
+              }
+              i = 1;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      j -= 1;
+      break;
+      paramQQAppInterface = null;
+      break label192;
+      label242:
+      l6 = l1;
+      l5 = l2;
+      if (paramQQAppInterface != null)
+      {
+        l6 = l1;
+        l5 = l2;
+        if (paramQQAppInterface.jdField_a_of_type_Apwt != null)
+        {
+          paramQQAppInterface = a((MessageRecord)localObject);
+          apwq localapwq2 = localBubbleManager.a((int)((ChatMessage)localObject).vipBubbleID, false);
+          if (a((ChatMessage)localObject, localapwq2)) {
+            continue;
+          }
+          boolean bool = a(paramSessionInfo, localapwq1, localapwq2);
+          l3 = l1;
+          l4 = l2;
+          if (!TextUtils.isEmpty(paramQQAppInterface))
+          {
+            l3 = l1;
+            l4 = l2;
+            if (!str.equals(paramQQAppInterface))
+            {
+              l3 = l1;
+              l4 = l2;
+              if (bool)
+              {
+                l3 = l1;
+                if (l1 == -1L) {
+                  l3 = ((ChatMessage)localObject).uniseq;
+                }
+                l4 = a(paramMessageRecord, paramSessionInfo, l3, l2, (ChatMessage)localObject, paramQQAppInterface);
+              }
+            }
+          }
+          l6 = l3;
+          l5 = l4;
+          if (l3 != -1L)
+          {
+            l6 = l3;
+            l5 = l4;
+            if (l4 != -1L)
+            {
+              paramQQAppInterface = a(paramAIOAnimationConatiner, l3, l4);
+              if (paramQQAppInterface != null) {
+                return paramQQAppInterface.longValue();
+              }
+              return -1L;
+            }
+          }
+        }
+      }
+      label447:
+      l1 = l6;
+      l2 = l5;
+    }
+  }
+  
+  private static long a(MessageRecord paramMessageRecord, long paramLong1, long paramLong2, ChatMessage paramChatMessage, String paramString)
+  {
+    if ((paramMessageRecord.atInfoTempList != null) && (paramMessageRecord.atInfoTempList.size() > 0))
+    {
+      paramMessageRecord = paramMessageRecord.atInfoTempList.iterator();
+      for (;;)
+      {
+        paramLong1 = paramLong2;
+        if (!paramMessageRecord.hasNext()) {
+          break;
+        }
+        if (paramString.equals(String.valueOf(((MessageForText.AtTroopMemberInfo)paramMessageRecord.next()).uin))) {
+          paramLong2 = paramChatMessage.uniseq;
+        }
+      }
+    }
+    if ((paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
+    {
+      paramMessageRecord = paramMessageRecord.atInfoList.iterator();
+      for (;;)
+      {
+        paramLong1 = paramLong2;
+        if (!paramMessageRecord.hasNext()) {
+          break;
+        }
+        if (paramString.equals(String.valueOf(((MessageForText.AtTroopMemberInfo)paramMessageRecord.next()).uin))) {
+          paramLong2 = paramChatMessage.uniseq;
+        }
+      }
+    }
+    return paramLong1;
+  }
+  
+  private static long a(MessageRecord paramMessageRecord, SessionInfo paramSessionInfo, long paramLong1, long paramLong2, ChatMessage paramChatMessage, String paramString)
+  {
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      return paramLong1;
+    }
+    return a(paramMessageRecord, paramLong1, paramLong2, paramChatMessage, paramString);
+  }
+  
+  @Nullable
+  private static Long a(AIOAnimationConatiner paramAIOAnimationConatiner, long paramLong1, long paramLong2)
+  {
+    if ((paramLong2 != -1L) && (a(paramAIOAnimationConatiner, paramLong2))) {
+      return Long.valueOf(paramLong2);
+    }
+    if ((paramLong1 != -1L) && (a(paramAIOAnimationConatiner, paramLong1))) {
+      return Long.valueOf(paramLong1);
+    }
+    return null;
+  }
+  
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord.isSend()) {
+      return paramMessageRecord.selfuin;
+    }
+    if ((paramMessageRecord.istroop == 1000) || (paramMessageRecord.istroop == 1020) || (paramMessageRecord.istroop == 1004)) {
+      return paramMessageRecord.frienduin;
+    }
+    return paramMessageRecord.senderuin;
+  }
+  
+  private static String a(MessageRecord paramMessageRecord, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+      paramString = a(paramMessageRecord);
+    }
+    return paramString;
+  }
+  
+  private static boolean a(apwq paramapwq)
+  {
+    if ((paramapwq == null) || (paramapwq.b == null)) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "bubble config mInterActivePackageID: " + paramapwq.f + ", bubble mInterActiveType: " + paramapwq.g);
+    }
+    return false;
+  }
+  
+  private static boolean a(apwq paramapwq1, apwq paramapwq2, boolean paramBoolean)
+  {
+    if (paramapwq1.g == 3) {
+      if ((paramapwq2.g != 2) || (paramapwq2.f == paramapwq1.f)) {}
+    }
     do
     {
-      return true;
-      if (!(paramObject instanceof apwv)) {
-        return false;
-      }
-      paramObject = (apwv)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
-    return false;
+      do
+      {
+        return true;
+      } while (paramapwq2.g == 3);
+      do
+      {
+        return paramBoolean;
+        if (paramapwq1.g == 1)
+        {
+          if ((paramapwq1.f == paramapwq2.f) && (paramapwq1.g == paramapwq2.g)) {
+            break;
+          }
+          return false;
+        }
+      } while ((paramapwq1.g != 2) || ((paramapwq2.g != 2) && (paramapwq2.g != 3)));
+    } while (paramapwq2.f != paramapwq1.f);
     return false;
   }
   
-  public String toString()
+  private static boolean a(SessionInfo paramSessionInfo, apwq paramapwq1, apwq paramapwq2)
   {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      bool1 = true;
     }
-    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramapwq1.f == -1);
+      bool1 = bool2;
+    } while (paramapwq2.f == -1);
+    return a(paramapwq1, paramapwq2, false);
+  }
+  
+  public static boolean a(AIOAnimationConatiner paramAIOAnimationConatiner, long paramLong)
+  {
+    boolean bool2 = false;
+    ListAdapter localListAdapter = paramAIOAnimationConatiner.a().getAdapter();
+    int j;
+    int i;
+    if (paramAIOAnimationConatiner.a().getChildCount() > 0) {
+      if ((localListAdapter instanceof bkky))
+      {
+        j = paramAIOAnimationConatiner.a().getFirstVisiblePosition();
+        i = paramAIOAnimationConatiner.a().getLastVisiblePosition();
+        if ((j < 0) || (j >= localListAdapter.getCount())) {
+          break label167;
+        }
+        label64:
+        if ((i < 0) || (i >= localListAdapter.getCount())) {
+          break label173;
+        }
+      }
+    }
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i >= j)
+      {
+        paramAIOAnimationConatiner = localListAdapter.getItem(i);
+        if (((paramAIOAnimationConatiner instanceof MessageRecord)) && (((MessageRecord)paramAIOAnimationConatiner).uniseq == paramLong)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+        if (!(localListAdapter instanceof afwy)) {
+          break label185;
+        }
+        j = paramAIOAnimationConatiner.a().getFirstVisiblePosition() - paramAIOAnimationConatiner.a().getHeaderViewsCount();
+        i = paramAIOAnimationConatiner.a().getLastVisiblePosition() - paramAIOAnimationConatiner.a().getFooterViewsCount();
+        break;
+        label167:
+        j = 0;
+        break label64;
+        label173:
+        i = 0;
+        continue;
+      }
+      i -= 1;
+      continue;
+      label185:
+      i = 0;
+      j = 0;
+      break;
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  private static boolean a(ChatMessage paramChatMessage, apwq paramapwq)
+  {
+    if ((paramapwq == null) || (paramapwq.b == null))
+    {
+      QLog.e("BubbleInterActiveAnim", 1, "get bubbleConfig is null: " + (int)paramChatMessage.vipBubbleID);
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "record seq: " + paramChatMessage.uniseq + ", other bubble config mInterActivePackageID: " + paramapwq.f + ", other bubble config mInterActiveType: " + paramapwq.g);
+    }
+    return false;
+  }
+  
+  public ObjectAnimator a(apxc paramapxc)
+  {
+    apxq localapxq = (apxq)paramapxc.jdField_a_of_type_JavaUtilHashMap.get("animation_start");
+    ObjectAnimator localObjectAnimator = a(paramapxc, paramapxc.jdField_a_of_type_AndroidGraphicsRect, localapxq);
+    localObjectAnimator.setRepeatCount(localapxq.jdField_a_of_type_Int - 1);
+    Object localObject1;
+    long l;
+    if (((apxq)paramapxc.jdField_a_of_type_JavaUtilHashMap.get("animation_running")).jdField_b_of_type_Boolean)
+    {
+      Object localObject2 = (apxq)paramapxc.jdField_a_of_type_JavaUtilHashMap.get("animation_end");
+      localObject1 = a(paramapxc.jdField_a_of_type_AndroidGraphicsRect, localapxq.jdField_a_of_type_AndroidGraphicsRect, localapxq.jdField_c_of_type_JavaLangString, paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      localObject2 = a(paramapxc.jdField_b_of_type_AndroidGraphicsRect, ((apxq)localObject2).jdField_a_of_type_AndroidGraphicsRect, ((apxq)localObject2).jdField_c_of_type_JavaLangString, paramapxc.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      int i = ((Integer)((Pair)localObject1).first).intValue();
+      int j = ((Integer)((Pair)localObject1).second).intValue();
+      int k = ((Integer)((Pair)localObject2).first).intValue();
+      double d1 = Math.abs(((Integer)((Pair)localObject2).second).intValue() - j);
+      double d2 = Math.abs(k - i);
+      float f2 = 0.0F;
+      double d3 = Math.pow(d1, 2.0D);
+      d2 = Math.sqrt(Math.pow(d2, 2.0D) + d3);
+      float f1 = f2;
+      if (d2 != 0.0D)
+      {
+        f1 = f2;
+        if (d1 != 0.0D)
+        {
+          f2 = (float)Math.toDegrees(Math.asin(d1 / d2));
+          f1 = f2;
+          if (!paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+            f1 = -f2;
+          }
+        }
+      }
+      localObject1 = ObjectAnimator.ofFloat(paramapxc.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, f1 });
+      i = localapxq.jdField_a_of_type_Int - 1;
+      if (i > 0)
+      {
+        l = i * localObjectAnimator.getDuration();
+        ((ObjectAnimator)localObject1).setDuration(l);
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleInterActiveAnim", 2, "start animation, rotate view: " + f1 + ", duration: " + l);
+        }
+      }
+    }
+    for (;;)
+    {
+      localObjectAnimator.addListener(new apwy(this, (ObjectAnimator)localObject1, paramapxc));
+      return localObjectAnimator;
+      l = localObjectAnimator.getDuration();
+      break;
+      localObject1 = null;
+    }
+  }
+  
+  public ObjectAnimator a(apxc paramapxc, Rect paramRect, apxq paramapxq)
+  {
+    File localFile = null;
+    if (paramapxq == null) {
+      return null;
+    }
+    Object localObject = localFile;
+    boolean bool;
+    if (paramRect != null)
+    {
+      localObject = localFile;
+      if (paramapxq.jdField_e_of_type_Int == -1)
+      {
+        if (paramRect != paramapxc.jdField_a_of_type_AndroidGraphicsRect) {
+          break label326;
+        }
+        bool = paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
+        paramRect = a(paramRect, paramapxq.jdField_a_of_type_AndroidGraphicsRect, paramapxq.jdField_c_of_type_JavaLangString, bool);
+        localObject = new apyf(-1, ((Integer)paramRect.first).intValue(), ((Integer)paramRect.second).intValue());
+      }
+    }
+    localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramapxq.jdField_d_of_type_Int, false), paramapxq.jdField_d_of_type_JavaLangString);
+    paramRect = new ArrayList();
+    int i = 0;
+    label130:
+    if (i < paramapxq.jdField_b_of_type_Int)
+    {
+      String str = localFile.getAbsolutePath() + File.separatorChar + paramapxq.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+      apxb localapxb = new apxb();
+      localapxb.jdField_b_of_type_JavaLangString = str;
+      localapxb.jdField_a_of_type_JavaLangString = (paramapxq.jdField_a_of_type_JavaLangString + str);
+      localapxb.jdField_a_of_type_Apxc = paramapxc;
+      localapxb.jdField_a_of_type_AndroidGraphicsRect = paramapxq.jdField_a_of_type_AndroidGraphicsRect;
+      if (paramapxq.jdField_a_of_type_Boolean) {
+        if (paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+          break label338;
+        }
+      }
+      label326:
+      label338:
+      for (bool = true;; bool = false)
+      {
+        localapxb.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+        localapxb.jdField_a_of_type_Boolean = paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
+        if (paramapxq.jdField_e_of_type_Int == -1) {
+          localapxb.jdField_a_of_type_Apyf = ((apyf)localObject);
+        }
+        paramRect.add(localapxb);
+        i += 1;
+        break label130;
+        bool = paramapxc.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend();
+        break;
+      }
+    }
+    paramapxc = new Keyframe[paramRect.size() + 1];
+    float f = 1.0F / paramRect.size();
+    paramapxc[0] = Keyframe.ofObject(0.0F, paramRect.get(0));
+    i = 0;
+    if (i < paramRect.size())
+    {
+      if (i != paramRect.size() - 1) {
+        paramapxc[(i + 1)] = Keyframe.ofObject((i + 1) * f, paramRect.get(i));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        paramapxc[(i + 1)] = Keyframe.ofObject(1.0F, paramRect.get(i));
+      }
+    }
+    paramapxc = PropertyValuesHolder.ofKeyframe("bitmapData", paramapxc);
+    paramapxc.setEvaluator(new apxd(this));
+    return ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { paramapxc }).setDuration(paramRect.size() * paramapxq.jdField_a_of_type_Long);
+  }
+  
+  public ObjectAnimator a(apxc paramapxc, apxq paramapxq)
+  {
+    if ((!TextUtils.isEmpty(paramapxq.jdField_e_of_type_JavaLangString)) && (paramapxq.jdField_c_of_type_AndroidGraphicsRect != null))
+    {
+      localObject1 = a(paramapxc.jdField_a_of_type_AndroidGraphicsRect, paramapxq.jdField_c_of_type_AndroidGraphicsRect, paramapxq.jdField_e_of_type_JavaLangString, paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      if ((TextUtils.isEmpty(paramapxq.f)) || (paramapxq.jdField_d_of_type_AndroidGraphicsRect == null)) {
+        break label151;
+      }
+    }
+    for (Object localObject2 = a(paramapxc.jdField_b_of_type_AndroidGraphicsRect, paramapxq.jdField_d_of_type_AndroidGraphicsRect, paramapxq.f, paramapxc.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());; localObject2 = null)
+    {
+      if ((localObject1 != null) && (localObject2 != null)) {
+        break label206;
+      }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "start align: " + paramapxq.jdField_e_of_type_JavaLangString + ", startRect: " + paramapxq.jdField_c_of_type_AndroidGraphicsRect);
+      }
+      localObject1 = null;
+      break;
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "end align " + paramapxq.f + ", endRect: " + paramapxq.jdField_d_of_type_AndroidGraphicsRect);
+      }
+    }
+    label206:
+    int j = ((Integer)((Pair)localObject1).first).intValue();
+    int k = ((Integer)((Pair)localObject1).second).intValue();
+    int m = ((Integer)((Pair)localObject2).first).intValue();
+    int n = ((Integer)((Pair)localObject2).second).intValue();
+    Object localObject1 = new ArrayList();
+    ((ArrayList)localObject1).add(apyf.b(j, k));
+    ((ArrayList)localObject1).add(apyf.a(m, n));
+    localObject2 = new apxe();
+    apxb[] arrayOfapxb = new apxb[((ArrayList)localObject1).size()];
+    int i = 0;
+    if (i < arrayOfapxb.length)
+    {
+      apxb localapxb = new apxb();
+      localapxb.jdField_a_of_type_Apxc = paramapxc;
+      localapxb.jdField_a_of_type_Apyf = ((apyf)((ArrayList)localObject1).get(i));
+      if (paramapxq.jdField_a_of_type_Boolean) {
+        if (paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+          break label427;
+        }
+      }
+      label427:
+      for (boolean bool = true;; bool = false)
+      {
+        localapxb.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+        localapxb.jdField_a_of_type_Boolean = paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
+        localapxb.jdField_b_of_type_Boolean = paramapxq.jdField_b_of_type_Boolean;
+        localapxb.jdField_a_of_type_AndroidGraphicsRect = paramapxq.jdField_a_of_type_AndroidGraphicsRect;
+        arrayOfapxb[i] = localapxb;
+        i += 1;
+        break;
+      }
+    }
+    paramapxc = ObjectAnimator.ofObject(this, "pathLocation", (TypeEvaluator)localObject2, arrayOfapxb);
+    paramapxc.setDuration(((Math.abs(j - m) + Math.abs(k - n)) * 1.0F / this.c * (float)paramapxq.jdField_a_of_type_Long));
+    return paramapxc;
+  }
+  
+  public Rect a(afwr paramafwr, long paramLong, ListView paramListView)
+  {
+    int i = paramafwr.jdField_a_of_type_Apwt.jdField_a_of_type_Int;
+    paramListView = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(i, false);
+    if (paramListView == null) {
+      return null;
+    }
+    if ((apxp)paramListView.b.get("animation_start") == null)
+    {
+      paramListView = paramListView.b.values().iterator();
+      while ((paramListView.hasNext()) && ((apxp)paramListView.next() == null)) {}
+    }
+    paramListView = paramafwr.jdField_a_of_type_AndroidViewView;
+    int j = paramListView.getLeft();
+    i = paramListView.getTop();
+    paramafwr = (View)paramListView.getParent();
+    for (;;)
+    {
+      if ((paramafwr == null) || ((paramafwr instanceof BaseChatItemLayout)))
+      {
+        paramafwr = new Rect();
+        paramafwr.left = (BaseChatItemLayout.j + j);
+        paramafwr.right = (paramListView.getRight() - paramListView.getLeft() + j - BaseChatItemLayout.j);
+        paramafwr.top = (BaseChatItemLayout.h + i);
+        paramafwr.bottom = (paramListView.getBottom() - paramListView.getTop() + i - BaseChatItemLayout.i);
+        return paramafwr;
+      }
+      j += paramafwr.getLeft();
+      i += paramafwr.getTop();
+      paramafwr = paramafwr.getParent();
+      if ((paramafwr instanceof View)) {
+        paramafwr = (View)paramafwr;
+      } else {
+        paramafwr = null;
+      }
+    }
+  }
+  
+  public Pair<Integer, Integer> a(Rect paramRect1, Rect paramRect2, String paramString, boolean paramBoolean)
+  {
+    int i = 0;
+    int j;
+    int k;
+    int m;
+    switch (paramString.charAt(0))
+    {
+    default: 
+      j = 0;
+      k = paramRect2.top;
+      m = paramString.charAt(1);
+      if (paramBoolean) {
+        switch (m)
+        {
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      return new Pair(Integer.valueOf(i + paramRect2.left), Integer.valueOf(j + k));
+      j = paramRect1.top;
+      break;
+      j = (paramRect1.bottom - paramRect1.top) / 2;
+      break;
+      j = paramRect1.bottom;
+      break;
+      i = paramRect1.left;
+      continue;
+      i = (paramRect1.right - paramRect1.left) / 2;
+      continue;
+      i = paramRect1.right;
+      continue;
+      int n = paramRect2.left + paramRect2.right;
+      switch (m)
+      {
+      default: 
+        break;
+      case 67: 
+        i = (paramRect1.right - paramRect1.left) / 2 - n - paramRect2.left;
+        break;
+      case 76: 
+        i = paramRect1.right - n - paramRect2.left;
+        break;
+      case 82: 
+        i = paramRect1.left - n - paramRect2.left;
+      }
+    }
+  }
+  
+  public apxc a(long paramLong1, long paramLong2)
+  {
+    Object localObject1 = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, afur.a(paramLong1, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter())));
+    if ((localObject1 instanceof afwr)) {}
+    for (localObject1 = (afwr)localObject1;; localObject1 = null)
+    {
+      Object localObject2 = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, afur.a(paramLong2, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter())));
+      if ((localObject2 instanceof afwr)) {}
+      for (localObject2 = (afwr)localObject2;; localObject2 = null)
+      {
+        if ((localObject1 == null) || (localObject2 == null) || (((afwr)localObject1).jdField_a_of_type_Apwt == null) || (((afwr)localObject2).jdField_a_of_type_Apwt == null)) {}
+        apwq localapwq;
+        do
+        {
+          return null;
+          i = ((afwr)localObject1).jdField_a_of_type_Apwt.jdField_a_of_type_Int;
+          int j = ((afwr)localObject2).jdField_a_of_type_Apwt.jdField_a_of_type_Int;
+          localapwq = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(i, false);
+          localObject3 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(j, false);
+        } while ((localapwq == null) || (localObject3 == null) || (localapwq.b == null) || (((apwq)localObject3).b == null));
+        apxp localapxp1 = (apxp)localapwq.b.get("animation_start");
+        apxp localapxp2 = (apxp)((apwq)localObject3).b.get("passive_animation");
+        if (localapxp1 == null)
+        {
+          QLog.e("BubbleInterActiveAnim", 1, "can't find mInterActiveAnims from bubbleId: " + i);
+          return null;
+        }
+        Object localObject3 = new apxc();
+        ((apxc)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((afwr)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        ((apxc)localObject3).jdField_b_of_type_ComTencentMobileqqDataMessageRecord = ((afwr)localObject2).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        ((apxc)localObject3).jdField_a_of_type_JavaUtilHashMap = new HashMap(localapwq.b);
+        ((apxc)localObject3).jdField_a_of_type_JavaUtilHashMap.put("passive_animation", localapxp2);
+        ((apxc)localObject3).jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+        ((apxc)localObject3).jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        ((apxc)localObject3).jdField_a_of_type_AndroidWidgetImageView.layout(0, 0, localapxp1.jdField_a_of_type_AndroidGraphicsRect.right, localapxp1.jdField_a_of_type_AndroidGraphicsRect.bottom);
+        ((apxc)localObject3).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        ((apxc)localObject3).jdField_a_of_type_AndroidGraphicsRect = a((afwr)localObject1, paramLong1, this.jdField_a_of_type_ComTencentWidgetListView);
+        ((apxc)localObject3).jdField_b_of_type_AndroidGraphicsRect = a((afwr)localObject2, paramLong2, this.jdField_a_of_type_ComTencentWidgetListView);
+        localObject2 = (View)((afwr)localObject2).jdField_a_of_type_AndroidViewView.getParent();
+        int i = ((View)((afwr)localObject1).jdField_a_of_type_AndroidViewView.getParent()).getTop() - ((View)localObject2).getTop();
+        localObject2 = ((apxc)localObject3).jdField_b_of_type_AndroidGraphicsRect;
+        ((Rect)localObject2).top -= i;
+        localObject2 = ((apxc)localObject3).jdField_b_of_type_AndroidGraphicsRect;
+        ((Rect)localObject2).bottom -= i;
+        ((apxc)localObject3).jdField_a_of_type_AndroidViewView = ((afwr)localObject1).jdField_a_of_type_AndroidViewView;
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localObject3);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addView(((apxc)localObject3).jdField_a_of_type_AndroidWidgetImageView);
+        ((apxc)localObject3).jdField_a_of_type_Long = paramLong1;
+        ((apxc)localObject3).jdField_b_of_type_Long = paramLong2;
+        return localObject3;
+      }
+    }
+  }
+  
+  protected void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      apxc localapxc = (apxc)localIterator.next();
+      if ((localapxc != null) && (localapxc.jdField_a_of_type_AndroidWidgetImageView != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleInterActiveAnim", 2, "add delta " + paramInt + " for seq: " + localapxc.jdField_a_of_type_Long);
+        }
+        localapxc.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(localapxc.jdField_a_of_type_AndroidWidgetImageView.getTranslationY() + paramInt);
+      }
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    ThreadManager.post(new BubbleInterActiveAnim.2(this, paramLong1, paramLong2), 5, null, true);
+  }
+  
+  public void a(apxc paramapxc)
+  {
+    paramapxc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeView(paramapxc.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramapxc.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) {
+      d();
+    }
+  }
+  
+  public void a(apxp paramapxp, int paramInt)
+  {
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt, false), paramapxp.jdField_d_of_type_JavaLangString);
+    paramInt = 0;
+    if (paramInt < paramapxp.jdField_b_of_type_Int)
+    {
+      Object localObject1 = localFile.getAbsolutePath() + File.separatorChar + paramapxp.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(paramInt + 1) });
+      String str = paramapxp.jdField_a_of_type_JavaLangString + (String)localObject1;
+      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+      {
+        Object localObject3 = BaseApplicationImpl.sImageCache.get(str);
+        if ((localObject3 != null) && ((localObject3 instanceof Bitmap))) {
+          localObject1 = (Bitmap)localObject3;
+        }
+      }
+      for (;;)
+      {
+        if (localObject1 != null)
+        {
+          BaseApplicationImpl.sImageCache.put(str, localObject1);
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
+        }
+        paramInt += 1;
+        break;
+        try
+        {
+          localObject1 = BubbleManager.a((String)localObject1, null);
+        }
+        catch (Exception localException)
+        {
+          QLog.e("BubbleNewAIOAnim", 1, "decode error!", localException);
+          Object localObject2 = null;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          QLog.e("BubbleNewAIOAnim", 1, "decode error!", localOutOfMemoryError);
+          localBitmap = null;
+        }
+        continue;
+        Bitmap localBitmap = (Bitmap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      }
+    }
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      apxc localapxc = (apxc)localIterator.next();
+      if ((localapxc != null) && (localapxc.jdField_a_of_type_AndroidViewView != null))
+      {
+        paramInt1 = afur.a(localapxc.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
+        paramInt2 = afur.a(localapxc.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
+        Object localObject2 = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, paramInt1));
+        Object localObject1 = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, paramInt2));
+        if ((localObject2 != null) && ((localObject2 instanceof afwr)))
+        {
+          localObject2 = (afwr)localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.i("BubbleInterActiveAnim", 2, "refresh seq " + localapxc.jdField_a_of_type_Long + " 's bubbleView");
+          }
+          localapxc.jdField_a_of_type_AndroidViewView = ((afwr)localObject2).jdField_a_of_type_AndroidViewView;
+          localapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((afwr)localObject2).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        }
+        for (;;)
+        {
+          if ((localObject1 == null) || (!(localObject1 instanceof afwr))) {
+            break label314;
+          }
+          localObject1 = (afwr)localObject1;
+          if (QLog.isColorLevel()) {
+            QLog.i("BubbleInterActiveAnim", 2, "refresh seq " + localapxc.jdField_b_of_type_Long + " 's bubbleView");
+          }
+          localapxc.jdField_b_of_type_ComTencentMobileqqDataMessageRecord = ((afwr)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.w("BubbleInterActiveAnim", 2, "stop current bubble animation! " + localapxc.jdField_a_of_type_Long);
+          }
+          localapxc.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+        }
+        label314:
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleInterActiveAnim", 2, "stop current bubble animation! " + localapxc.jdField_b_of_type_Long);
+        }
+        localapxc.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      }
+    }
+    return false;
+  }
+  
+  protected boolean a(Object... paramVarArgs)
+  {
+    if ((paramVarArgs[0] instanceof Integer))
+    {
+      if (((Integer)paramVarArgs[0]).intValue() != 8) {
+        return false;
+      }
+    }
+    else {
+      return false;
+    }
+    long l1 = ((Long)paramVarArgs[1]).longValue();
+    int i;
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() != null) && (l1 > 0L))
+    {
+      ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
+      i = localListAdapter.getCount() - 1;
+      if (i < 0) {
+        break label287;
+      }
+      localObject = localListAdapter.getItem(i);
+      if ((localObject instanceof ChatMessage))
+      {
+        localObject = (ChatMessage)localObject;
+        if (((ChatMessage)localObject).uniseq != l1) {}
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        localObject = EmojiStickerManager.a().a((MessageRecord)localObject);
+        if ((localObject != null) && (!((List)localObject).isEmpty()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("BubbleInterActiveAnim", 2, " contain sticker ,so stop bubble animation!");
+          }
+          return false;
+          i -= 1;
+          break;
+        }
+      }
+      long l2 = ((Long)paramVarArgs[2]).longValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("BubbleInterActiveAnim", 1, "start InterActive Anim, originalSeq：" + l1 + ", targetSeq: " + l2);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager == null)
+      {
+        paramVarArgs = BaseApplicationImpl.getApplication().getRuntime();
+        if ((paramVarArgs instanceof QQAppInterface)) {}
+        for (paramVarArgs = (QQAppInterface)paramVarArgs; paramVarArgs == null; paramVarArgs = null) {
+          return false;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = ((BubbleManager)paramVarArgs.getManager(44));
+      }
+      a(l1, l2);
+      return true;
+      label287:
+      localObject = null;
+    }
+  }
+  
+  public ObjectAnimator b(apxc paramapxc)
+  {
+    Object localObject1 = (apxp)paramapxc.jdField_a_of_type_JavaUtilHashMap.get("animation_running");
+    if (!(localObject1 instanceof apxq)) {
+      return null;
+    }
+    Object localObject2 = (apxq)localObject1;
+    if (((apxq)localObject2).jdField_e_of_type_Int == -1) {
+      return null;
+    }
+    if (((apxq)localObject2).jdField_e_of_type_Int == 0) {}
+    for (localObject1 = a(paramapxc, (apxq)localObject2);; localObject1 = b(paramapxc, (apxq)localObject2))
+    {
+      localObject2 = a(paramapxc, paramapxc.jdField_a_of_type_AndroidGraphicsRect, (apxq)localObject2);
+      if ((localObject1 != null) && (localObject2 != null)) {
+        break;
+      }
+      return null;
+    }
+    ((ObjectAnimator)localObject2).setDuration(((ObjectAnimator)localObject2).getDuration() / 2L);
+    ((ObjectAnimator)localObject2).setRepeatCount(-1);
+    ((ObjectAnimator)localObject1).addListener(new apwz(this, paramapxc, (ObjectAnimator)localObject2));
+    return localObject1;
+  }
+  
+  public ObjectAnimator b(apxc paramapxc, apxq paramapxq)
+  {
+    float f4 = 0.0F;
+    Object localObject1;
+    if ((!TextUtils.isEmpty(paramapxq.jdField_e_of_type_JavaLangString)) && (paramapxq.jdField_c_of_type_AndroidGraphicsRect != null))
+    {
+      localObject1 = a(paramapxc.jdField_a_of_type_AndroidGraphicsRect, paramapxq.jdField_c_of_type_AndroidGraphicsRect, paramapxq.jdField_e_of_type_JavaLangString, paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      if ((TextUtils.isEmpty(paramapxq.f)) || (paramapxq.jdField_d_of_type_AndroidGraphicsRect == null)) {
+        break label154;
+      }
+    }
+    for (Object localObject2 = a(paramapxc.jdField_b_of_type_AndroidGraphicsRect, paramapxq.jdField_d_of_type_AndroidGraphicsRect, paramapxq.f, paramapxc.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());; localObject2 = null)
+    {
+      if ((localObject1 != null) && (localObject2 != null)) {
+        break label209;
+      }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "start align: " + paramapxq.jdField_e_of_type_JavaLangString + ", startRect: " + paramapxq.jdField_c_of_type_AndroidGraphicsRect);
+      }
+      localObject1 = null;
+      break;
+      label154:
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "end align " + paramapxq.f + ", endRect: " + paramapxq.jdField_d_of_type_AndroidGraphicsRect);
+      }
+    }
+    label209:
+    int j = ((Integer)((Pair)localObject1).first).intValue();
+    int k = ((Integer)((Pair)localObject1).second).intValue();
+    int m = ((Integer)((Pair)localObject2).first).intValue();
+    int n = ((Integer)((Pair)localObject2).second).intValue();
+    float f1;
+    float f2;
+    float f3;
+    if (paramapxq.jdField_e_of_type_Int == 1)
+    {
+      f1 = (m - j) * 0.25F + j;
+      f2 = (n - k) * 0.1F + k;
+      f3 = (m - j) * 0.25F + j;
+      f4 = (n - k) * 1.0F + k;
+    }
+    for (;;)
+    {
+      localObject1 = new ArrayList();
+      ((ArrayList)localObject1).add(apyf.b(j, k));
+      ((ArrayList)localObject1).add(apyf.a(f1, f2, f3, f4, m, n));
+      localObject2 = new apxb[((ArrayList)localObject1).size()];
+      int i = 0;
+      label389:
+      if (i < localObject2.length)
+      {
+        apxb localapxb = new apxb();
+        localapxb.jdField_a_of_type_Apxc = paramapxc;
+        localapxb.jdField_a_of_type_Apyf = ((apyf)((ArrayList)localObject1).get(i));
+        if (paramapxq.jdField_a_of_type_Boolean) {
+          if (paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+            break label575;
+          }
+        }
+        label575:
+        for (boolean bool = true;; bool = false)
+        {
+          localapxb.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+          localapxb.jdField_a_of_type_Boolean = paramapxc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
+          localapxb.jdField_a_of_type_AndroidGraphicsRect = paramapxq.jdField_a_of_type_AndroidGraphicsRect;
+          localapxb.jdField_b_of_type_Boolean = paramapxq.jdField_b_of_type_Boolean;
+          localObject2[i] = localapxb;
+          i += 1;
+          break label389;
+          if (paramapxq.jdField_e_of_type_Int != 2) {
+            break label647;
+          }
+          f1 = (m - j) * 0.1F + j;
+          f2 = (n - k) * 0.25F + k;
+          f3 = (m - j) * 1.0F + j;
+          f4 = (n - k) * 0.25F + k;
+          break;
+        }
+      }
+      paramapxc = ObjectAnimator.ofObject(this, "pathLocation", new apxe(), (Object[])localObject2);
+      paramapxc.setDuration(((Math.abs(j - m) + Math.abs(k - n)) * 1.0F / this.c * (float)paramapxq.jdField_a_of_type_Long * 3.141592653589793D * 0.6000000238418579D));
+      return paramapxc;
+      label647:
+      f3 = 0.0F;
+      f2 = 0.0F;
+      f1 = 0.0F;
+    }
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    apxc localapxc = a(paramLong1, paramLong2);
+    ObjectAnimator localObjectAnimator1;
+    if (localapxc != null)
+    {
+      localObjectAnimator1 = a(localapxc);
+      if (localObjectAnimator1 == null) {
+        QLog.e("BubbleInterActiveAnim", 1, "startAnimator is null");
+      }
+    }
+    else
+    {
+      return;
+    }
+    ObjectAnimator localObjectAnimator2 = b(localapxc);
+    if (localObjectAnimator2 == null)
+    {
+      QLog.e("BubbleInterActiveAnim", 1, "runningAnimator is null");
+      return;
+    }
+    Object localObject = (apxq)localapxc.jdField_a_of_type_JavaUtilHashMap.get("animation_end");
+    ObjectAnimator localObjectAnimator3 = a(localapxc, localapxc.jdField_b_of_type_AndroidGraphicsRect, (apxq)localObject);
+    if (localObjectAnimator3 == null)
+    {
+      QLog.e("BubbleInterActiveAnim", 1, "endAnimator is null");
+      return;
+    }
+    localObjectAnimator3.setRepeatCount(((apxq)localObject).jdField_a_of_type_Int - 1);
+    localObject = c(localapxc);
+    if (localObject == null)
+    {
+      QLog.e("BubbleInterActiveAnim", 1, "passiveAnimator is null");
+      return;
+    }
+    localapxc.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObject });
+    localapxc.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new apwx(this, localapxc));
+    this.jdField_a_of_type_AndroidOsHandler.post(new BubbleInterActiveAnim.4(this, localapxc));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localapxc);
+  }
+  
+  public ObjectAnimator c(apxc paramapxc)
+  {
+    apxq localapxq = (apxq)paramapxc.jdField_a_of_type_JavaUtilHashMap.get("passive_animation");
+    ObjectAnimator localObjectAnimator = a(paramapxc, paramapxc.jdField_b_of_type_AndroidGraphicsRect, localapxq);
+    if (localObjectAnimator == null)
+    {
+      QLog.e("BubbleInterActiveAnim", 1, "passiveAnimator is null");
+      return null;
+    }
+    localObjectAnimator.setRepeatCount(localapxq.jdField_a_of_type_Int - 1);
+    localObjectAnimator.addListener(new apxa(this, paramapxc));
+    return localObjectAnimator;
+  }
+  
+  protected void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      apxc localapxc = (apxc)localIterator.next();
+      if ((localapxc != null) && (localapxc.jdField_a_of_type_AndroidWidgetImageView != null)) {
+        localapxc.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      }
+    }
+  }
+  
+  public void setBitmapData(apxb paramapxb)
+  {
+    if ((paramapxb == null) || (paramapxb.jdField_a_of_type_Apxc == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramapxb.jdField_a_of_type_Apyf != null) && (paramapxb.jdField_a_of_type_Apyf.jdField_a_of_type_Int == -1)) {
+          setPathLocation(paramapxb);
+        }
+        float f = paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.getTranslationY();
+        if ((f < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()) || (f > this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int))
+        {
+          QLog.w("BubbleInterActiveAnim", 1, String.format("setBitmapData: now scroll over screen, stop bubble animator set!, y: %d, up: %d, download: %d", new Object[] { Integer.valueOf((int)f), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int) }));
+          this.jdField_a_of_type_AndroidOsHandler.post(new BubbleInterActiveAnim.8(this, paramapxb));
+          return;
+        }
+      } while (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramapxb.jdField_a_of_type_JavaLangString));
+      if (paramapxb.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        localObject = new apwp(paramapxb.jdField_a_of_type_AndroidGraphicsBitmap);
+        ((apwp)localObject).jdField_a_of_type_Boolean = paramapxb.jdField_a_of_type_JavaLangBoolean.booleanValue();
+        paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        this.jdField_a_of_type_JavaLangString = paramapxb.jdField_a_of_type_JavaLangString;
+        paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.invalidate();
+        return;
+      }
+      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramapxb.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      localObject = (Bitmap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramapxb.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    Object localObject = new apwp((Bitmap)localObject);
+    ((apwp)localObject).jdField_a_of_type_Boolean = paramapxb.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+    this.jdField_a_of_type_JavaLangString = paramapxb.jdField_a_of_type_JavaLangString;
+    paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.invalidate();
+    return;
+    QLog.e("BubbleInterActiveAnim", 1, "can't find bitmap, path: " + paramapxb.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void setPathLocation(apxb paramapxb)
+  {
+    if ((paramapxb == null) || (paramapxb.jdField_a_of_type_Apxc == null) || (paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView == null)) {
+      return;
+    }
+    if ((paramapxb.jdField_a_of_type_AndroidGraphicsRect != null) && (paramapxb.jdField_a_of_type_AndroidGraphicsRect.right != 0) && (paramapxb.jdField_a_of_type_AndroidGraphicsRect.bottom != 0) && ((paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.getWidth() != paramapxb.jdField_a_of_type_AndroidGraphicsRect.right) || (paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.getHeight() != paramapxb.jdField_a_of_type_AndroidGraphicsRect.bottom)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "change anim view size:  to " + paramapxb.jdField_a_of_type_AndroidGraphicsRect.right + "-" + paramapxb.jdField_a_of_type_AndroidGraphicsRect.bottom + ", view width-height: " + paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.getWidth() + "-" + paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.getHeight());
+      }
+      paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.layout(0, 0, paramapxb.jdField_a_of_type_AndroidGraphicsRect.right, paramapxb.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    }
+    if (paramapxb.jdField_a_of_type_Apyf.jdField_a_of_type_Int != -1)
+    {
+      if (paramapxb.jdField_a_of_type_Apyf.c != 360.0F) {
+        break label459;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleInterActiveAnim", 2, "reset animView rotate to 0!");
+      }
+      paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setRotation(0.0F);
+    }
+    int i;
+    int j;
+    float f1;
+    float f3;
+    float f2;
+    for (;;)
+    {
+      localObject = (View)paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidViewView.getParent();
+      i = 0;
+      j = 0;
+      if ((localObject != null) && (((View)localObject).getParent() != this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getParent())) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth();
+      f1 = paramapxb.jdField_a_of_type_Apyf.jdField_a_of_type_Float;
+      f3 = paramapxb.jdField_a_of_type_Apyf.b;
+      float f4 = this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
+      f2 = i;
+      f3 = j + (f3 - f4);
+      if ((f3 >= this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()) && (f3 <= this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int)) {
+        break label589;
+      }
+      QLog.w("BubbleInterActiveAnim", 1, String.format("setPathLocation: now scroll over screen, stop bubble animator set!, y: %d, up: %d, down: %d", new Object[] { Integer.valueOf((int)f3), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int) }));
+      this.jdField_a_of_type_AndroidOsHandler.post(new BubbleInterActiveAnim.9(this, paramapxb));
+      return;
+      label459:
+      if (paramapxb.jdField_a_of_type_Apyf.c != 0.0F)
+      {
+        paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setRotation(paramapxb.jdField_a_of_type_Apyf.c);
+        if (QLog.isColorLevel()) {
+          QLog.i("BubbleInterActiveAnim", 2, "set animView rotate to " + paramapxb.jdField_a_of_type_Apyf.c);
+        }
+      }
+    }
+    int k = ((View)localObject).getLeft();
+    int m = ((View)localObject).getTop();
+    Object localObject = ((View)localObject).getParent();
+    if ((localObject instanceof View)) {}
+    for (localObject = (View)localObject;; localObject = null)
+    {
+      j = m + j;
+      i = k + i;
+      break;
+    }
+    label589:
+    paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(f2 + f1);
+    paramapxb.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(f3);
   }
 }
 

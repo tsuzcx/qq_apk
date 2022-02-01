@@ -1,36 +1,57 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import java.util.ArrayList;
 
-public class bcey
-  extends bceu<bcez, bceb>
+class bcey
+  implements bcfg
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  bcey(bcew parambcew, bcfh parambcfh) {}
   
-  public bcey(XMediaEditor paramXMediaEditor, Context paramContext)
+  public void a(int paramInt1, int paramInt2)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult] - BEGIN -, result=" + paramInt1 + ", serverError=" + paramInt2);
+    if ((paramInt1 == 1) || (paramInt1 == 0)) {
+      if (paramInt2 != 0)
+      {
+        bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], serverError");
+        bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+        bcew.a(this.jdField_a_of_type_Bcew);
+        if (this.jdField_a_of_type_Bcfh != null) {
+          this.jdField_a_of_type_Bcfh.b(paramInt1, paramInt2);
+        }
+      }
+    }
+    for (;;)
+    {
+      bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult] - END -, result=" + paramInt1 + ", serverError=" + paramInt2);
+      return;
+      ArrayList localArrayList = new ArrayList(1);
+      if (ShortVideoResourceManager.a(bcew.a(this.jdField_a_of_type_Bcew), localArrayList) == 0)
+      {
+        bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList valid");
+        bcew.a(this.jdField_a_of_type_Bcew).a();
+        if (this.jdField_a_of_type_Bcfh != null) {
+          this.jdField_a_of_type_Bcfh.b(paramInt1, paramInt2);
+        }
+      }
+      else
+      {
+        bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList invalid");
+        bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+        bcew.a(this.jdField_a_of_type_Bcew);
+        if (this.jdField_a_of_type_Bcfh != null)
+        {
+          this.jdField_a_of_type_Bcfh.b(paramInt1, paramInt2);
+          continue;
+          bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], result invalid");
+          bnzb.b(bcew.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+          bcew.a(this.jdField_a_of_type_Bcew);
+          if (this.jdField_a_of_type_Bcfh != null) {
+            this.jdField_a_of_type_Bcfh.b(paramInt1, paramInt2);
+          }
+        }
+      }
+    }
   }
-  
-  public bcez a(ViewGroup paramViewGroup)
-  {
-    return new bcez(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(View paramView, bcez parambcez) {}
-  
-  public void a(bcez parambcez, bceb parambceb, int paramInt) {}
 }
 
 

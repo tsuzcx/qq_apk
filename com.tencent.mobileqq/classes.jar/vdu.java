@@ -1,20 +1,20 @@
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class vdu
-  implements urr<vgn, vhy>
+class vdu
+  implements Observer<vup<FeedCloudMeta.StTagInfo>>
 {
-  public void a(@NonNull vgn paramvgn, @Nullable vhy paramvhy, @NonNull ErrorMessage paramErrorMessage)
+  vdu(vdt paramvdt) {}
+  
+  public void a(@Nullable vup<FeedCloudMeta.StTagInfo> paramvup)
   {
-    paramvgn = new vdv(this, paramErrorMessage, paramvgn.b, paramvgn.jdField_c_of_type_JavaLangString, paramvgn.jdField_c_of_type_Int);
-    umc.a().dispatch(paramvgn);
+    vdt.a(this.a, paramvup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdu
  * JD-Core Version:    0.7.0.1
  */

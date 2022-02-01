@@ -1,25 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class axyu
-  extends MqqHandler
+final class axyu
+  implements axkr
 {
-  axyu(axyt paramaxyt) {}
+  axyu(axzb paramaxzb, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a.mContext, 2131720109, 0).a();
-      return;
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Axzb != null) {
+      this.jdField_a_of_type_Axzb.a(false, null, true, this.jdField_a_of_type_Int);
     }
-    paramMessage = (String)paramMessage.obj;
-    bdhj.a(this.a.a.mContext, paramMessage);
-    QQToast.a(this.a.a.mContext, 2, alud.a(2131700410), 0).a();
   }
 }
 

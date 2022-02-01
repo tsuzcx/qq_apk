@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.QQHeadInfo;
-import alrz;
-import azri;
-import bdin;
+import aocq;
+import bctj;
+import bgnt;
+import com.tencent.mobileqq.app.face.FaceDownloader;
+import com.tencent.mobileqq.app.face.FaceInfo;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ class NearByFaceDownloader$HeadCostStatRunnable
 {
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
+  FaceInfo jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo;
   String jdField_a_of_type_JavaLangString;
   int b;
   int c;
@@ -29,26 +30,26 @@ class NearByFaceDownloader$HeadCostStatRunnable
     this.jdField_a_of_type_JavaLangString = paramString;
     this.d = paramInt4;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo = paramFaceInfo;
   }
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-    this.this$0.jdField_a_of_type_Alrz.a(str1, false);
-    if (bdin.d(BaseApplication.getContext())) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
+    this.this$0.jdField_a_of_type_Aocq.a(str1, false);
+    if (bgnt.d(BaseApplication.getContext())) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
         break label770;
       }
     }
     label770:
-    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l];; l1 = 0L)
+    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] - this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l];; l1 = 0L)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m]) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] > 0L)) {}
-      for (long l2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m];; l2 = 0L)
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m]) && (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] > 0L)) {}
+      for (long l2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] - this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m];; l2 = 0L)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] > 0L) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > 0L)) {}
-        for (long l3 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n];; l3 = 0L)
+        if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] > 0L) && (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > 0L)) {}
+        for (long l3 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] - this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n];; l3 = 0L)
         {
           Object localObject1 = new HashMap();
           ((HashMap)localObject1).put("key", str1);
@@ -62,23 +63,23 @@ class NearByFaceDownloader$HeadCostStatRunnable
           ((HashMap)localObject1).put("download_url", this.jdField_a_of_type_JavaLangString);
           ((HashMap)localObject1).put("param_FailCode", Integer.toString(this.jdField_a_of_type_Int));
           ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
-          ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.e));
+          ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.e));
           Object localObject2 = FaceDownloader.a(32);
-          Object localObject3 = azri.a(BaseApplication.getContext());
+          Object localObject3 = bctj.a(BaseApplication.getContext());
           String str2 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
           boolean bool;
           if (this.jdField_a_of_type_Int == 0)
           {
             bool = true;
-            ((azri)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            localObject2 = azri.a(BaseApplication.getContext());
+            ((bctj)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
+            localObject2 = bctj.a(BaseApplication.getContext());
             localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
             if (this.jdField_a_of_type_Int != 0) {
               break label747;
             }
             bool = true;
             label528:
-            ((azri)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
+            ((bctj)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
             if ((QLog.isColorLevel()) || (this.jdField_a_of_type_Long > 3000L))
             {
               localObject1 = new StringBuffer(200);
@@ -114,7 +115,7 @@ class NearByFaceDownloader$HeadCostStatRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.HeadCostStatRunnable
  * JD-Core Version:    0.7.0.1
  */

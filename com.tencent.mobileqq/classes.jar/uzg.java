@@ -1,63 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.common.config.AppSetting;
 
 public class uzg
-  extends urt
 {
-  public static String a = uqn.a("StorySvc.check_activity");
-  public String b;
-  public final String c;
+  public String a = "android";
+  public String b = AppSetting.f();
+  public String c = "1";
+  public String d = "KQQ";
+  public String e = "2400002";
+  public String f;
+  public String g;
+  public String h;
+  public String i = "0";
+  public String j;
   
-  public uzg(String paramString)
+  public uze a()
   {
-    this.c = paramString;
+    return new uze(this, null);
   }
   
-  public String a()
+  public uzg a(String paramString)
   {
-    return a;
+    this.f = paramString;
+    return this;
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public uzg b(String paramString)
   {
-    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
-    try
-    {
-      localRspCheckActivity.mergeFrom(paramArrayOfByte);
-      return new uzh(localRspCheckActivity);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    this.g = paramString;
+    return this;
   }
   
-  protected byte[] a()
+  public uzg c(String paramString)
   {
-    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
-    if (!TextUtils.isEmpty(this.c)) {
-      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
-    }
-    wxe.a("MsgTabCheckActiveRequest", "client version=%s", "8.3.5");
-    localReqCheckActivity.version.set("8.3.5");
-    return localReqCheckActivity.toByteArray();
+    this.h = paramString;
+    return this;
   }
   
-  public String toString()
+  public uzg d(String paramString)
   {
-    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
+    this.j = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzg
  * JD-Core Version:    0.7.0.1
  */

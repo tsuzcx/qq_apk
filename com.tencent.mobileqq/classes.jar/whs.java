@@ -1,101 +1,104 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.ViewParent;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+@TargetApi(14)
 public class whs
-  implements TextWatcher
+  extends who
 {
-  public int a;
-  public Context a;
-  public BubbleTextView a;
-  public String a;
-  public woy a;
-  public boolean a;
-  private int b;
-  public String b;
-  private int c;
+  protected int a;
+  protected int b;
   
-  public whs(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public whs(@NonNull String[] paramArrayOfString)
   {
-    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
-      throw new IllegalArgumentException("illegal textWatcher source");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
+    super(paramArrayOfString);
+    paramArrayOfString = (wpf)wpm.a(10);
+    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
+    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
   }
   
-  public static void a(EditText paramEditText, Intent paramIntent)
+  protected void a(String[] paramArrayOfString, whp paramwhp)
   {
-    if (paramIntent == null) {}
-    do
+    int m = paramArrayOfString.length;
+    int i = 0;
+    String str;
+    int j;
+    if (i < m)
     {
-      return;
-      paramIntent = paramIntent.getStringExtra("at_video_text");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
-      }
-    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
-    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (this.c > 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
+      str = paramArrayOfString[i];
+      if (paramwhp.a)
       {
-        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
-        ViewParent localViewParent1 = localViewParent2;
-        if (localViewParent2 != null)
+        j = 50;
+        label31:
+        if (!a(str, j)) {
+          break label60;
+        }
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break;
+      j = this.a;
+      break label31;
+      label60:
+      File localFile = new File(str);
+      double d = a(localFile);
+      File[] arrayOfFile = localFile.listFiles();
+      ArrayList localArrayList = new ArrayList();
+      int k = arrayOfFile.length;
+      j = 0;
+      while (j < k)
+      {
+        localArrayList.add(new wht(this, arrayOfFile[j]));
+        j += 1;
+      }
+      Collections.sort(localArrayList);
+      int n = localArrayList.size();
+      k = 0;
+      j = 0;
+      while (j < n)
+      {
+        if (j % 150 == 0) {}
+        try
         {
-          localViewParent1 = localViewParent2;
-          if (!(localViewParent2 instanceof RelativeLayout)) {
-            localViewParent1 = localViewParent2.getParent();
+          Thread.sleep(100L);
+          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
+            return;
           }
         }
-        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
-      }
-      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
-      {
-        wxj.a("home_page", "send_at", 0, 0, new String[0]);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
-        }
-        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
-          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Woy.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+          a(((wht)localArrayList.get(j)).a);
+          k += 1;
+          j += 1;
         }
       }
+      paramwhp.jdField_b_of_type_Double = (d - a(localFile) + paramwhp.jdField_b_of_type_Double);
+      paramwhp.jdField_b_of_type_Int += k;
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    paramString = new File(paramString).listFiles();
+    if (paramString == null) {}
+    while (paramString.length <= paramInt) {
+      return true;
+    }
+    return false;
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whs
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.XFlutterView;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportAndroidXFragment;
+import d;
 import io.flutter.embedding.android.FlutterEngineConfigurator;
 import io.flutter.embedding.android.FlutterView.RenderMode;
 import io.flutter.embedding.android.FlutterView.TransparencyMode;
@@ -25,7 +27,7 @@ import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.Map;
 
 public class FlutterFragment
-  extends Fragment
+  extends ReportAndroidXFragment
   implements FlutterActivityAndFragmentDelegate.Host
 {
   protected static final String ARG_APP_BUNDLE_PATH = "app_bundle_path";
@@ -67,6 +69,8 @@ public class FlutterFragment
   {
     return new FlutterFragment.NewEngineFragmentBuilder();
   }
+  
+  public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
   
   public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
   {
@@ -142,7 +146,9 @@ public class FlutterFragment
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    return this.delegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.delegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -157,6 +163,17 @@ public class FlutterFragment
     this.delegate.onDetach();
     this.delegate.release();
     this.delegate = null;
+  }
+  
+  public void onHiddenChanged(boolean paramBoolean)
+  {
+    super.onHiddenChanged(paramBoolean);
+    if (paramBoolean)
+    {
+      this.delegate.onPause();
+      return;
+    }
+    this.delegate.onResume();
   }
   
   public void onLowMemory()
@@ -174,7 +191,9 @@ public class FlutterFragment
   public void onPause()
   {
     super.onPause();
-    this.delegate.onPause();
+    if (!isHidden()) {
+      this.delegate.onPause();
+    }
   }
   
   @FlutterFragment.ActivityCallThrough
@@ -192,19 +211,25 @@ public class FlutterFragment
   public void onResume()
   {
     super.onResume();
-    this.delegate.onResume();
+    if (!isHidden()) {
+      this.delegate.onResume();
+    }
   }
   
   public void onStart()
   {
     super.onStart();
-    this.delegate.onStart();
+    if (!isHidden()) {
+      this.delegate.onStart();
+    }
   }
   
   public void onStop()
   {
     super.onStop();
-    this.delegate.onStop();
+    if (!isHidden()) {
+      this.delegate.onStop();
+    }
   }
   
   @FlutterFragment.ActivityCallThrough
@@ -251,7 +276,7 @@ public class FlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterFragment
  * JD-Core Version:    0.7.0.1
  */

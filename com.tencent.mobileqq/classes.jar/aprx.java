@@ -1,23 +1,10 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import org.json.JSONObject;
 
-public class aprx
+public abstract interface aprx
 {
-  public double a;
-  public float a = 1.0F;
-  public int a;
-  public Drawable a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Drawable b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract boolean needProcess(JSONObject paramJSONObject);
+  
+  public abstract void process(JSONObject paramJSONObject, apry paramapry, Object paramObject);
 }
 
 

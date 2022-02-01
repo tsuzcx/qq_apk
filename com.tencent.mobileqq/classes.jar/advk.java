@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
-
-public class advk
-  implements DialogInterface.OnClickListener
+class advk
+  extends asyw
 {
-  public advk(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  advk(adve paramadve) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.a.a(this.a.a);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aykt
-  extends amfd
+class aykt
+  implements View.OnClickListener
 {
-  public aykt(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  aykt(ayko paramayko, ayld paramayld) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
-    }
-  }
-  
-  public void a(int paramInt, List<BusinessGroupWord> paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
-    }
+    ayko.a(this.jdField_a_of_type_Ayko).removeMessages(101);
+    ayko.a(this.jdField_a_of_type_Ayko).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Ayld.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xxy
-  implements ValueAnimator.AnimatorUpdateListener
+public class xxy
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wxy>
 {
-  xxy(xxx paramxxx, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public xxy(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    paramValueAnimator = (xya)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wxy paramwxy)
+  {
+    if (paramwxy.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramwxy);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wxy.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxy
  * JD-Core Version:    0.7.0.1
  */

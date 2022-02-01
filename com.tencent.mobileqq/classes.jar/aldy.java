@@ -1,69 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-final class aldy
-  extends bead
+public class aldy
+  extends AbsRecentStatus
 {
-  aldy(File paramFile, aknx paramaknx, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, aled paramaled, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
+  private static int a = 15;
   
-  public void onDone(beae parambeae)
+  public int[] declareStatus()
   {
-    boolean bool = true;
-    super.onDone(parambeae);
-    if (3 == parambeae.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    for (;;)
+    return new int[] { 8 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    String str;
+    do
     {
-      try
+      do
       {
-        ndr.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-        aldv.a(this.jdField_a_of_type_Aknx, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
-          break label421;
+        return false;
+        paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+        str = paramRecentBaseData.getRecentUserUin();
+        paramRecentBaseData.mStatus = 0;
+        if (paramRecentBaseData.getRecentUserType() != 1) {
+          break;
         }
-        if (this.jdField_a_of_type_Aled != null)
-        {
-          parambeae = this.jdField_a_of_type_Aled;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-            bool = false;
-          }
-          parambeae.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          }
-        }
-        this.jdField_a_of_type_JavaIoFile.delete();
-        return;
-      }
-      catch (Exception parambeae)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
-        continue;
-      }
-      catch (OutOfMemoryError parambeae)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
-        continue;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambeae.a());
-      continue;
-      label421:
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      }
-    }
+      } while (!awbi.b(paramIMCoreAppRuntime, str));
+      paramRecentBaseData.mStatus = 8;
+      return false;
+    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!awbi.a(paramIMCoreAppRuntime, str)));
+    paramRecentBaseData.mStatus = 8;
+    return false;
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

@@ -1,35 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qws
-  implements qwj<qnz>
+public class qws
+  implements View.OnClickListener
 {
-  qws(qwp paramqwp) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public boolean a(qnz paramqnz)
+  private qws(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void onClick(View paramView)
   {
-    try
+    switch (paramView.getId())
     {
-      paramqnz = new File(paramqnz.b);
-      if (paramqnz.isFile())
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ComponentContentRecommendFollowList localComponentContentRecommendFollowList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
       {
-        boolean bool = paramqnz.exists();
-        if (bool) {
-          return true;
-        }
+        localComponentContentRecommendFollowList.a(localRecommendFollowInfo, bool);
+        break;
       }
-      return false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
     }
-    catch (Throwable paramqnz)
-    {
-      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramqnz);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajyg
-  implements bers
+class ajyg
+  implements View.OnClickListener
 {
-  public ajyg(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
+  ajyg(ajye paramajye) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
-  }
-  
-  public void a(String paramString)
-  {
-    banj.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    banj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    banj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewPresent;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import java.io.File;
 
-class akkw
-  implements DialogInterface.OnClickListener
+public class akkw
+  extends BasePreviewAdapter
 {
-  akkw(akkv paramakkv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akkw(PhotoPreviewLogicBase paramPhotoPreviewLogicBase)
   {
-    paramDialogInterface.dismiss();
+    super(paramPhotoPreviewLogicBase);
+  }
+  
+  public BasePreviewPresent generatePreviewPresent(PreviewBean paramPreviewBean)
+  {
+    if ((this.mPhotoPreviewData.canUseURL) && (bgkc.isNetUrl(paramPreviewBean.getPath()))) {
+      return new akky(paramPreviewBean);
+    }
+    String str = paramPreviewBean.getPath();
+    if ((str != null) && (new File(str).exists()) && (paramPreviewBean.mMediaType == 1)) {
+      return new akkx(paramPreviewBean);
+    }
+    return super.generatePreviewPresent(paramPreviewBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkw
  * JD-Core Version:    0.7.0.1
  */

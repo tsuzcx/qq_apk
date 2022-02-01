@@ -1,23 +1,94 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.Window;
+import android.widget.Toast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AuthorizationItem;
+import java.util.Iterator;
+import java.util.List;
 
 public class acsf
-  extends ambs
 {
-  public acsf(Conversation paramConversation) {}
+  private acsi a(String paramString1, String paramString2, String paramString3, List<bkiu> paramList)
+  {
+    if (paramList.contains(AuthorizationItem.a))
+    {
+      if (!paramList.contains(AuthorizationItem.b)) {
+        break label57;
+      }
+      label26:
+      if (!paramList.contains(AuthorizationItem.c)) {
+        break label63;
+      }
+    }
+    for (;;)
+    {
+      return new acsi(paramString1, paramString2, paramString3, null);
+      paramString1 = "";
+      break;
+      label57:
+      paramString2 = "";
+      break label26;
+      label63:
+      paramString3 = "";
+    }
+  }
   
-  protected void a(int paramInt)
+  private void a(Activity paramActivity, boolean paramBoolean, acsi paramacsi, acsh paramacsh, List<bkiu> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult: entity -> " + paramacsi);
     }
-    if (paramInt == 1)
+    if (paramBoolean)
     {
-      this.a.a.a(27, 2);
-      this.a.a.a(-1, null);
+      if (a(paramActivity, paramList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult has authorized, return info direct ");
+        }
+        if (paramacsh != null)
+        {
+          paramacsi.a = 0;
+          paramacsh.a(paramacsi);
+        }
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult show authorize dialog to authorize user info");
+      }
+      paramActivity = new bkit(paramActivity, paramacsi, paramacsh, paramList);
+      paramacsi = paramActivity.getWindow();
+      if (paramacsi != null) {
+        paramacsi.setWindowAnimations(2131755013);
+      }
+      paramActivity.show();
       return;
     }
-    this.a.a.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult get result fail");
+    }
+    if (paramacsh != null) {
+      paramacsh.a(acsi.a());
+    }
+    Toast.makeText(paramActivity, paramActivity.getString(2131690174), 0).show();
+  }
+  
+  private boolean a(Context paramContext, List<bkiu> paramList)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext.getApplicationContext());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (!paramContext.getBoolean(((bkiu)paramList.next()).b, false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtUserInfoAuthorizationHelper", 2, "checkAuthorize user phone not authorize");
+        }
+        return false;
+      }
+    }
+    return true;
   }
 }
 

@@ -1,6 +1,13 @@
-public abstract interface bckv
+public class bckv
 {
-  public abstract void a(int paramInt);
+  public float a = 1.0F;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

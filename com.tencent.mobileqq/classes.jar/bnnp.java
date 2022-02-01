@@ -1,15 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AECompoundButton;
 
-public class bnnp
-  implements MediaPlayer.OnPreparedListener
+class bnnp
+  implements Observer<Boolean>
 {
-  public bnnp(AudioDecoder.BgmAudioPlayRunnable paramBgmAudioPlayRunnable) {}
+  bnnp(bnnl parambnnl) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a.e();
+    if (paramBoolean == null) {
+      return;
+    }
+    bnnl.g(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 

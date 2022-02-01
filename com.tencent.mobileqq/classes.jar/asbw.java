@@ -1,97 +1,64 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Pair;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.os.MqqHandler;
 
-public class asbw
-  extends RecyclerView.Adapter<asbz>
+final class asbw
+  implements awnc<EmoticonPackage>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bdbb jdField_a_of_type_Bdbb;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
+  asbw(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, arup paramarup, SessionInfo paramSessionInfo) {}
   
-  public asbw(QQAppInterface paramQQAppInterface, Context paramContext, bdbb parambdbb)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bdbb = parambdbb;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public asbz a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == asbs.b)
-    {
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296992)));
-      return new asbz(paramViewGroup);
+    boolean bool;
+    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
+      if (paramEmoticonPackage.jobType == 4)
+      {
+        bool = true;
+        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
+      }
     }
-    return new asby(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559109, paramViewGroup, false));
-  }
-  
-  public void a(asbz paramasbz, int paramInt)
-  {
-    if (paramasbz.a == asbs.b) {}
-    Pair localPair;
+    label194:
     do
     {
       do
       {
         return;
-      } while (paramasbz.a != asbs.a);
-      paramInt -= 1;
-      if (paramInt < 0) {
-        QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
-      }
-      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while (!(paramasbz instanceof asby));
-    ((asby)paramasbz).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Bdbb);
-  }
-  
-  public void a(List<Pair<String, String>> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+        bool = false;
+        break;
+        if (!this.jdField_a_of_type_Arup.c()) {
+          break label237;
+        }
+        if (!this.jdField_a_of_type_Arup.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
+          break label194;
+        }
+        if (this.jdField_a_of_type_Arup.b())
+        {
+          asbq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "MbFasong", "MbZidongBofang", 0, 0, "", "", "", "");
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PicEmoticonInfo", 2, "not support h5magic ");
       return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
-      return asbs.b;
-    }
-    return asbs.a;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new asbx(this));
-    }
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689909, 0);
+      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramEmoticonPackage == null);
+    paramEmoticonPackage.obtainMessage(10).sendToTarget();
+    paramEmoticonPackage.obtainMessage(21).sendToTarget();
+    return;
+    label237:
+    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689925);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,73 +1,36 @@
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneExternalRequest;
-import wns_proxy.HttpReq;
-import wns_proxy.HttpRsp;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 
 public class beks
-  extends QzoneExternalRequest
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private String jdField_a_of_type_JavaLangString;
-  private String b;
   
-  public beks() {}
-  
-  public beks(String paramString1, long paramLong, HttpReq paramHttpReq, String paramString2)
+  public beks(Activity paramActivity, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    super.setRefer(paramString2);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.needCompress = false;
-    this.b = a(paramString1);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.w("WebSoRequest", 1, "cmd is EMPTY OR NULL !!!");
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = "0")
     {
-      return null;
-      paramString = paramString.split("\\.");
-    } while ((paramString == null) || (paramString.length <= 0));
-    return paramString[(paramString.length - 1)];
-  }
-  
-  public static HttpRsp a(byte[] paramArrayOfByte, String paramString)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+      this.jdField_a_of_type_JavaLangString = paramBundle;
+      this.jdField_a_of_type_AndroidContentSharedPreferences = paramActivity.getSharedPreferences("tribeInvokeFrom", 0);
+      return;
     }
-    try
-    {
-      paramArrayOfByte = (HttpRsp)decode(paramArrayOfByte, paramString);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      QLog.e("WebSoRequest", 1, "onResponse error:", paramArrayOfByte);
-    }
-    return null;
   }
   
-  public String getCmdString()
+  public Boolean a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_JavaLangString, false));
   }
   
-  public JceStruct getReq()
+  public void a()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return this.b;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
 }
 

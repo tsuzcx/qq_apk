@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.viewpager;
 
-import aavq;
+import acuo;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -22,12 +22,12 @@ public class GdtVerticalViewPager
   
   private void a()
   {
-    setPageTransformer(true, new aavq(null));
+    setPageTransformer(true, new acuo(null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.viewpager.GdtVerticalViewPager
  * JD-Core Version:    0.7.0.1
  */

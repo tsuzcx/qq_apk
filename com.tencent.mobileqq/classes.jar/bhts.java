@@ -1,16 +1,34 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
 
-@SuppressLint({"NewApi"})
-public abstract interface bhts
-  extends ActionMode.Callback
+public class bhts
+  implements anil
 {
-  public abstract void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean);
+  public void a(int paramInt) {}
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a((submsgtype0xdd.MsgBody)paramObject);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+      return;
+    }
+    a(((Integer)paramObject).intValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhts
  * JD-Core Version:    0.7.0.1
  */

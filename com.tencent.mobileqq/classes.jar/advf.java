@@ -1,23 +1,47 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-public class advf
-  implements Handler.Callback
+class advf
+  implements Comparator<Object>
 {
-  public advf(RewardNoticeActivity paramRewardNoticeActivity) {}
+  advf(adve paramadve) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramObject1 instanceof FileManagerEntity)) {
+      if ((paramObject2 instanceof FileManagerEntity)) {
+        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
+      }
     }
-    for (;;)
+    do
     {
-      return true;
-      paramMessage = new advg(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+      do
+      {
+        do
+        {
+          return -1;
+          return 1;
+          if (!(paramObject2 instanceof TencentDocData)) {
+            break;
+          }
+        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
+        return 1;
+        if (!(paramObject1 instanceof TencentDocData)) {
+          break label124;
+        }
+        if (!(paramObject2 instanceof FileManagerEntity)) {
+          break;
+        }
+      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
+      return 1;
+      if (!(paramObject2 instanceof TencentDocData)) {
+        break;
+      }
+    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
+    return 1;
+    label124:
+    return 0;
   }
 }
 

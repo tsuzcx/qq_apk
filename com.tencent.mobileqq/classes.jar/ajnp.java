@@ -1,53 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import java.util.ArrayList;
 
-public class ajnp
-  implements TextWatcher
+class ajnp
+  implements DialogInterface.OnClickListener
 {
-  public ajnp(LoginView paramLoginView) {}
+  ajnp(ajnk paramajnk, ArrayList paramArrayList, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginView.a(this.a, null);
-    LoginView.c(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    LoginView.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    ajnk.a(this.jdField_a_of_type_Ajnk, true);
+    ajnk.a(this.jdField_a_of_type_Ajnk).a(1);
+    ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    if (bgnt.d(BaseApplicationImpl.getContext()))
     {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
-      }
-      LoginView.a(this.a, null);
-      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
-      do
-      {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
-        {
-          BaseApplicationImpl.sApplication.refreAccountList();
-          return;
-        }
-        if ((!paramCharSequence.substring(0, LoginView.a(this.a).length()).equals(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
-          break;
-        }
-        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
-      LoginView.c(this.a);
+      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
+      ajnk.a(this.jdField_a_of_type_Ajnk).b(paramInt);
     }
-    LoginView.a(this.a, null);
+    ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

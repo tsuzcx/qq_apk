@@ -4,7 +4,7 @@ public abstract interface bkqc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkqc
  * JD-Core Version:    0.7.0.1
  */

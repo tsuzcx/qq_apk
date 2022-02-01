@@ -1,31 +1,43 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class aqij
-  implements Animator.AnimatorListener
+  implements bkmq
 {
-  public aqij(ExtendFriendSearchBarView paramExtendFriendSearchBarView, View paramView) {}
+  public aqij(SearchResultActivity paramSearchResultActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (bgnt.d(this.a)) {
+      SearchResultActivity.c(this.a);
+    }
+    for (;;)
+    {
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

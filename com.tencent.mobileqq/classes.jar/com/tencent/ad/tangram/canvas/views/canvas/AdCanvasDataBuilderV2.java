@@ -1,20 +1,24 @@
 package com.tencent.ad.tangram.canvas.views.canvas;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.Keep;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.canvasJson.AdCanvasJsonManager;
+import com.tencent.ad.tangram.canvas.AdCanvasJsonManager;
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentData;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,6 +26,7 @@ import org.json.JSONObject;
 public class AdCanvasDataBuilderV2
 {
   private static final String TAG = "AdCanvasDataBuilderV2";
+  private static com.tencent.ad.tangram.canvas.views.a imageLoadParams;
   
   public static AdCanvasData build(Context paramContext, Ad paramAd)
   {
@@ -79,11 +84,11 @@ public class AdCanvasDataBuilderV2
   
   private static com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c getAppButtonComponent(Context paramContext, JSONObject paramJSONObject, int paramInt)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getAppButtonComponent error");
-      paramJSONObject = null;
-      return paramJSONObject;
+      paramContext = null;
+      return paramContext;
     }
     JSONObject localJSONObject = paramJSONObject.getJSONObject("config");
     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c localc = new com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c();
@@ -92,10 +97,10 @@ public class AdCanvasDataBuilderV2
     paramJSONObject = localJSONObject.getJSONObject("style");
     localc.button.text.color = getColor(paramJSONObject.getString("color"));
     localc.button.backgroundColor = getColor(paramJSONObject.getString("backgroundColor"));
-    localc.button.borderCornerRadius = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("borderRadius"));
-    localc.button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("fontSize"));
+    localc.button.borderCornerRadius = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("borderRadius"));
+    localc.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("fontSize"));
     int i = paramJSONObject.getInt("width");
-    localc.height = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("lineHeight"));
+    localc.height = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("lineHeight"));
     paramJSONObject = localJSONObject.getJSONObject("wrapper");
     String str = paramJSONObject.getString("textAlign");
     if (TextUtils.equals(str, "center")) {
@@ -103,19 +108,24 @@ public class AdCanvasDataBuilderV2
     }
     for (;;)
     {
-      localc.paddingLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginLeft"));
-      localc.paddingRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginRight"));
-      localc.width = (i * (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - localc.paddingLeft - localc.paddingRight) / 100);
-      localc.paddingTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginTop"));
-      localc.paddingBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginBottom"));
+      localc.paddingLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginLeft"));
+      localc.paddingRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginRight"));
+      localc.width = (i * (AdUIUtils.getPhysicalScreenWidth(paramContext) - localc.paddingLeft - localc.paddingRight) / 100);
+      localc.paddingTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginTop"));
+      localc.paddingBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("marginBottom"));
       localc.isFixed = localJSONObject.getBoolean("isFixed");
-      paramJSONObject = localc;
-      if (!localc.isFixed) {
+      if (localc.isFixed)
+      {
+        paramJSONObject = localJSONObject.getJSONObject("position");
+        localc.toBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("toBottom"));
+        localc.whiteSpace = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("whiteSpace"));
+      }
+      paramContext = localc;
+      if (imageLoadParams == null) {
         break;
       }
-      paramJSONObject = localJSONObject.getJSONObject("position");
-      localc.toBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("toBottom"));
-      localc.whiteSpace = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, paramJSONObject.getInt("whiteSpace"));
+      paramContext = imageLoadParams;
+      paramContext.currentLength += localc.paddingBottom + localc.paddingTop + localc.height;
       return localc;
       if (TextUtils.equals(str, "left"))
       {
@@ -124,21 +134,22 @@ public class AdCanvasDataBuilderV2
       else
       {
         if (!TextUtils.equals(str, "right")) {
-          break label404;
+          break label443;
         }
         localc.gravity = 5;
       }
     }
-    label404:
+    label443:
     throw new Exception("unknow button align");
   }
   
   private static AdCanvasComponentData getAppIconComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getAppIconComponent error");
-      return null;
+      paramContext = null;
+      return paramContext;
     }
     com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.a locala = new com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.a();
     initComponent(paramJSONObject, paramAdCanvasData.basicWidth, locala);
@@ -146,35 +157,74 @@ public class AdCanvasDataBuilderV2
     paramJSONObject = localJSONObject.getJSONObject("appInfo");
     localJSONObject = localJSONObject.getJSONObject("wrapper");
     int i = paramAdCanvasData.basicWidth;
-    locala.logoWidth = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 64);
-    locala.logoHeight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 64);
+    locala.logoWidth = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 64);
+    locala.logoHeight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 64);
     locala.logoUrl = paramJSONObject.getString("logoUrl");
     locala.name = paramJSONObject.getString("name");
-    locala.downloadCount = paramJSONObject.getLong("downloadCount");
+    locala.downloadCount = paramJSONObject.optLong("downloadCount");
     locala.fileSize = paramJSONObject.getLong("fileSize");
-    locala.starCount = paramJSONObject.getInt("starCount");
-    locala.marginLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginLeft"));
-    locala.marginTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginTop"));
-    locala.marginRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginRight"));
-    locala.marginBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginBottom"));
-    paramJSONObject = new com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c();
-    paramJSONObject.id = ("XJAppIcon_AppBtn_" + locala.logoUrl.hashCode());
-    paramJSONObject.width = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 71);
-    paramJSONObject.height = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 36);
-    paramJSONObject.fontColor = -1;
-    paramJSONObject.gravity = 17;
-    paramJSONObject.button.borderCornerRadius = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 17);
-    paramJSONObject.button.text.text = "下载";
-    paramJSONObject.button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, i, 16);
-    paramJSONObject.button.text.color = -1;
-    paramJSONObject.button.backgroundColor = getColor("#20A0FF");
-    locala.adCanvasAppBtnComponentData = paramJSONObject;
+    if (paramJSONObject.isNull("starCount")) {}
+    for (locala.starCount = 4;; locala.starCount = paramJSONObject.getInt("starCount"))
+    {
+      locala.marginLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginLeft"));
+      locala.marginTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginTop"));
+      locala.marginRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginRight"));
+      locala.marginBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, localJSONObject.getInt("marginBottom"));
+      paramJSONObject = new com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c();
+      paramJSONObject.id = ("XJAppIcon_AppBtn_" + locala.logoUrl.hashCode());
+      paramJSONObject.width = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 71);
+      paramJSONObject.height = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 36);
+      paramJSONObject.fontColor = -1;
+      paramJSONObject.gravity = 17;
+      paramJSONObject.button.borderCornerRadius = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 17);
+      paramJSONObject.button.text.text = "下载";
+      paramJSONObject.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, 16);
+      paramJSONObject.button.text.color = -1;
+      paramJSONObject.button.backgroundColor = getColor("#20A0FF");
+      locala.adCanvasAppBtnComponentData = paramJSONObject;
+      paramContext = locala;
+      if (imageLoadParams == null) {
+        break;
+      }
+      paramContext = imageLoadParams;
+      paramContext.currentLength += locala.logoHeight + locala.marginBottom + locala.marginTop;
+      return locala;
+    }
+  }
+  
+  private static com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a getAppInfoButtonComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
+  {
+    if (JSONObject.NULL.equals(paramJSONObject))
+    {
+      AdLog.e("AdCanvasDataBuilderV2", "getAppInfoButtonComponent error");
+      return null;
+    }
+    com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a locala = new com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a();
+    initComponent(paramJSONObject, paramAdCanvasData.basicWidth, locala);
+    paramJSONObject = paramJSONObject.getJSONObject("config");
+    JSONObject localJSONObject1 = paramJSONObject.getJSONObject("appInfo");
+    JSONObject localJSONObject2 = paramJSONObject.getJSONObject("style");
+    JSONObject localJSONObject3 = paramJSONObject.getJSONObject("content");
+    int i = paramAdCanvasData.basicWidth;
+    locala.downloadCount = localJSONObject1.optLong("downloadCount");
+    locala.logoUrl = localJSONObject1.getString("logoUrl");
+    locala.appName = localJSONObject1.getString("name");
+    locala.fileSize = localJSONObject1.getLong("fileSize");
+    locala.desc = unescapeHtml(localJSONObject3.getString("text"));
+    locala.backgroundColor = getColor(paramJSONObject.getString("backgroundColor"));
+    locala.button.backgroundColor = getColor(localJSONObject2.getString("backgroundColor"));
+    locala.button.text.text = "立即下载";
+    locala.button.text.color = getColor(localJSONObject2.getString("color"));
+    locala.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, AdUIUtils.getPxFromString(localJSONObject2.getString("fontSize"), "appInfo button fontSize"));
+    locala.button.borderCornerRadius = AdUIUtils.getPxFromString(localJSONObject2.getString("borderRadius"), "appInfo button borderRadius");
+    locala.width = (AdUIUtils.getPhysicalScreenWidth(paramContext) * AdUIUtils.getPercentageFromString(localJSONObject2.getString("width"), "appInfo button width") / 100);
+    locala.height = AdUIUtils.dp2px(AdUIUtils.getPxFromString(localJSONObject2.getString("height"), "appInfo button height"), paramContext.getResources());
     return locala;
   }
   
   private static AdCanvasComponentData getArkFormComponent(JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getArkFormComponent error");
       return null;
@@ -187,10 +237,13 @@ public class AdCanvasDataBuilderV2
   private static List<AdCanvasComponentData> getCanvasComponents(Context paramContext, Ad paramAd, JSONArray paramJSONArray, AdCanvasData paramAdCanvasData)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramJSONArray == null) || (paramJSONArray == JSONObject.NULL))
+    if ((paramJSONArray == null) || (JSONObject.NULL.equals(paramJSONArray)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getCanvasComponents error");
       return localArrayList;
+    }
+    if (paramAd.isHitFirstLoadImageExp()) {
+      imageLoadParams = new com.tencent.ad.tangram.canvas.views.a(0, false, new AtomicInteger(0));
     }
     int i = 0;
     if (i < paramJSONArray.length())
@@ -199,7 +252,7 @@ public class AdCanvasDataBuilderV2
       if (localAdCanvasComponentData != null)
       {
         if (!(localAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)) {
-          break label92;
+          break label124;
         }
         paramAdCanvasData.fixedButtonComponentDataList.add((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localAdCanvasComponentData);
       }
@@ -207,7 +260,7 @@ public class AdCanvasDataBuilderV2
       {
         i += 1;
         break;
-        label92:
+        label124:
         if ((localAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.button.a))
         {
           if (((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localAdCanvasComponentData).isFixed) {
@@ -241,7 +294,7 @@ public class AdCanvasDataBuilderV2
   
   private static AdCanvasData getCanvasData(Context paramContext, Ad paramAd, JSONObject paramJSONObject)
   {
-    if ((paramAd == null) || (paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
+    if ((paramAd == null) || (paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
       AdLog.e("AdCanvasDataBuilderV2", "getCanvasData error");
     }
     AdCanvasData localAdCanvasData;
@@ -252,11 +305,11 @@ public class AdCanvasDataBuilderV2
       localAdCanvasData = new AdCanvasData();
       localAdCanvasData.ad = paramAd;
       localJSONObject = paramJSONObject.optJSONObject("content");
-      if ((localJSONObject != null) && (localJSONObject != JSONObject.NULL)) {
+      if ((localJSONObject != null) && (!JSONObject.NULL.equals(localJSONObject))) {
         break;
       }
       paramJSONObject = paramJSONObject.getString("canvas_json_key");
-      paramJSONObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramAd, paramJSONObject);
+      paramJSONObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramAd, paramJSONObject, true);
     } while (TextUtils.isEmpty(paramJSONObject));
     getPageList(paramContext, paramAd, localAdCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
     for (;;)
@@ -268,7 +321,7 @@ public class AdCanvasDataBuilderV2
   
   private static AdCanvasData getCanvasData(Context paramContext, Ad paramAd, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    if ((paramAd == null) || (paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
+    if ((paramAd == null) || (paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
       AdLog.e("AdCanvasDataBuilderV2", "getCanvasData error");
     }
     AdCanvasData localAdCanvasData;
@@ -280,11 +333,11 @@ public class AdCanvasDataBuilderV2
       localAdCanvasData.ad = paramAd;
       localAdCanvasData.setAutodownload(paramBoolean);
       localJSONObject = paramJSONObject.optJSONObject("content");
-      if ((localJSONObject != null) && (localJSONObject != JSONObject.NULL)) {
+      if ((localJSONObject != null) && (!JSONObject.NULL.equals(localJSONObject))) {
         break;
       }
       paramJSONObject = paramJSONObject.getString("canvas_json_key");
-      paramJSONObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramAd, paramJSONObject);
+      paramJSONObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramAd, paramJSONObject, true);
     } while (TextUtils.isEmpty(paramJSONObject));
     getPageList(paramContext, paramAd, localAdCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
     for (;;)
@@ -299,17 +352,18 @@ public class AdCanvasDataBuilderV2
     if (paramString.indexOf("rgb") >= 0) {
       return getRgbColor(paramString);
     }
-    return Color.parseColor(paramString);
+    String str = paramString;
+    if (paramString.length() == 4) {
+      str = paramString + paramString.substring(1, 4);
+    }
+    return Color.parseColor(str);
   }
   
   private static AdCanvasComponentData getComponent(Context paramContext, Ad paramAd, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
+    Object localObject = null;
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
       AdLog.e("AdCanvasDataBuilderV2", "getComponent error");
-      localObject1 = localObject2;
     }
     String str;
     do
@@ -318,57 +372,68 @@ public class AdCanvasDataBuilderV2
       {
         do
         {
-          return localObject1;
+          return localObject;
           str = paramJSONObject.getString("type");
-          localObject1 = localObject2;
         } while (TextUtils.isEmpty(str));
-        if (str.equals("XJAPPH5Images")) {
-          return getMulitiPictureComponent(paramContext, paramJSONObject, paramAdCanvasData);
-        }
-        if (str.equals("XJAppH5Button")) {
-          return getAppButtonComponent(paramContext, paramJSONObject, paramAdCanvasData.basicWidth);
-        }
-        if (!str.equals("XJFixedButton")) {
+        if (!str.equals("XJAPPH5Images")) {
           break;
         }
-        paramContext = getFixedButtonComponent(paramContext, paramAd, paramJSONObject, paramAdCanvasData.basicWidth);
-        localObject1 = paramContext;
+        paramContext = getMulitiPictureComponent(paramContext, paramJSONObject, paramAdCanvasData);
+        localObject = paramContext;
       } while (paramContext == null);
-      paramAdCanvasData.hasFixedButtonData = true;
+      paramAdCanvasData.hasMultiPictureData = true;
       return paramContext;
-      if (str.equals("XJWebForm")) {
-        return getArkFormComponent(paramJSONObject, paramAdCanvasData);
+      if (str.equals("XJAppH5Button")) {
+        return getAppButtonComponent(paramContext, paramJSONObject, paramAdCanvasData.basicWidth);
       }
-      if (str.equals("XJWebsiteH5Button")) {
-        return getWebButtonComponent(paramContext, paramJSONObject, paramAdCanvasData);
+      if (!str.equals("XJFixedButton")) {
+        break;
       }
-      if (str.equals("XJText")) {
-        return getTextComponent(paramContext, paramAd, paramJSONObject, paramAdCanvasData.basicWidth);
-      }
-      if (str.equals("XJImages")) {
-        return getWebMulitiPictureComponent(paramContext, paramJSONObject, paramAdCanvasData);
-      }
-      if (str.equals("XJDEFAULTImagesCarousel")) {
-        return getImagesCarouselComponent(paramContext, paramJSONObject, paramAdCanvasData);
-      }
-      if (str.equals("XJAPPIcon")) {
-        return getAppIconComponent(paramContext, paramJSONObject, paramAdCanvasData);
-      }
-      localObject1 = localObject2;
-    } while (str.equals("XJAPPTitle"));
+      paramContext = getFixedButtonComponent(paramContext, paramAd, paramJSONObject, paramAdCanvasData.basicWidth);
+      localObject = paramContext;
+    } while (paramContext == null);
+    paramAdCanvasData.hasFixedButtonData = true;
+    return paramContext;
+    if (str.equals("XJWebForm")) {
+      return getArkFormComponent(paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJWebsiteH5Button")) {
+      return getWebButtonComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJText")) {
+      return getTextComponent(paramContext, paramAd, paramJSONObject, paramAdCanvasData.basicWidth);
+    }
+    if (str.equals("XJImages")) {
+      return getWebMulitiPictureComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJDEFAULTImagesCarousel")) {
+      return getImagesCarouselComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJAPPIcon")) {
+      return getAppIconComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJAPPTitle")) {
+      return getTitleComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJLayerCard")) {
+      return getLayerCardComponent(paramContext, paramAd, paramJSONObject, paramAdCanvasData);
+    }
+    if (str.equals("XJAPPInfoButton")) {
+      return getAppInfoButtonComponent(paramContext, paramJSONObject, paramAdCanvasData);
+    }
     throw new Exception("unknow type exception");
   }
   
   private static com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a getFixedButtonComponent(Context paramContext, Ad paramAd, JSONObject paramJSONObject, int paramInt)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getFixedButtonComponent error");
       paramAd = null;
     }
     com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a locala;
     int i;
-    label488:
+    label493:
     do
     {
       return paramAd;
@@ -391,28 +456,28 @@ public class AdCanvasDataBuilderV2
       {
         if (locala.buttonStyle.equals("fixedBtn-1"))
         {
-          locala.button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, 13);
+          locala.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, 13);
           locala.button.text.text = "下载";
-          locala.width = com.tencent.ad.tangram.canvas.views.a.dp2px(81.0F, paramContext.getResources());
+          locala.width = AdUIUtils.dp2px(81.0F, paramContext.getResources());
         }
-        for (locala.height = com.tencent.ad.tangram.canvas.views.a.dp2px(40.0F, paramContext.getResources());; locala.height = com.tencent.ad.tangram.canvas.views.a.dp2px(40.0F, paramContext.getResources()))
+        for (locala.height = AdUIUtils.dp2px(40.0F, paramContext.getResources());; locala.height = AdUIUtils.dp2px(40.0F, paramContext.getResources()))
         {
           if ((!TextUtils.isEmpty(locala.position)) && ((locala.position.toLowerCase().equals("top")) || (locala.position.toLowerCase().equals("bottom")))) {
-            break label488;
+            break label493;
           }
           throw new Exception("unKnow button position");
           if (!locala.buttonStyle.equals("fixedBtn-2")) {
             break;
           }
-          locala.button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, 19);
+          locala.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, 19);
           locala.gravity = 17;
-          i = com.tencent.ad.tangram.canvas.views.a.dp2px(5.0F, paramContext.getResources());
+          i = AdUIUtils.dp2px(5.0F, paramContext.getResources());
           locala.paddingTop = i;
           locala.paddingBottom = i;
-          i = com.tencent.ad.tangram.canvas.views.a.dp2px(7.5F, paramContext.getResources());
+          i = AdUIUtils.dp2px(7.5F, paramContext.getResources());
           locala.paddingRight = i;
           locala.paddingLeft = i;
-          locala.width = (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - locala.paddingLeft * 2);
+          locala.width = (AdUIUtils.getPhysicalScreenWidth(paramContext) - locala.paddingLeft * 2);
         }
         throw new Exception("unKnow button style");
       }
@@ -421,13 +486,13 @@ public class AdCanvasDataBuilderV2
       j = paramAd.optInt("topWhiteSpace");
       if (locala.position.toLowerCase().equals("top"))
       {
-        locala.topWhiteSpace += com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, j);
+        locala.topWhiteSpace += AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, j);
         return locala;
       }
       paramAd = locala;
     } while (!locala.position.toLowerCase().equals("bottom"));
     int j = locala.bottomWhiteSpace;
-    locala.bottomWhiteSpace = (com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, i) + j);
+    locala.bottomWhiteSpace = (AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, i) + j);
     return locala;
   }
   
@@ -437,7 +502,7 @@ public class AdCanvasDataBuilderV2
     do
     {
       return null;
-      paramInt = com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext);
+      paramInt = AdUIUtils.getPhysicalScreenWidth(paramContext);
       paramContext = new com.tencent.ad.tangram.canvas.views.canvas.components.pictures.c();
       paramString = paramJSONObject.getJSONObject(paramString);
     } while (paramString == null);
@@ -461,50 +526,141 @@ public class AdCanvasDataBuilderV2
   private static AdCanvasComponentData getImagesCarouselComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
     int i = 0;
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getImagesCarouselComponent error");
       return null;
     }
     com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a locala = new com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a();
-    initComponent(paramJSONObject, paramAdCanvasData.basicWidth, locala);
-    ArrayList localArrayList = new ArrayList();
-    JSONObject localJSONObject1 = paramJSONObject.getJSONObject("config");
-    paramJSONObject = localJSONObject1.getJSONArray("images");
-    JSONObject localJSONObject2 = localJSONObject1.getJSONObject("wrapper");
-    locala.displaySpeed = ((Integer)localJSONObject1.get("displaySpeed")).intValue();
     int m = paramAdCanvasData.basicWidth;
-    locala.marginLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject2.getInt("marginLeft"));
-    locala.marginTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject2.getInt("marginTop"));
-    locala.marginRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject2.getInt("marginRight"));
-    locala.marginBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject2.getInt("marginBottom"));
+    initComponent(paramJSONObject, m, locala);
+    paramAdCanvasData = new ArrayList();
+    Object localObject = paramJSONObject.getJSONObject("config");
+    paramJSONObject = ((JSONObject)localObject).getJSONArray("images");
+    JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("wrapper");
+    locala.displaySpeed = ((Integer)((JSONObject)localObject).get("displaySpeed")).intValue();
+    locala.pageLimit = 2;
+    locala.pageMargin = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, 10);
+    locala.enableImageRoundRectBackground = true;
+    locala.imageRadius = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, 8);
+    locala.imageBorderWidth = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, 1);
+    locala.imageBorderColor = "#E3E3E3";
+    locala.marginLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("marginLeft"));
+    locala.marginTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("marginTop"));
+    locala.marginRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("marginRight"));
+    locala.marginBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("marginBottom"));
     int j = 0;
     int k = 0;
     while (i < paramJSONObject.length())
     {
-      paramAdCanvasData = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
-      localJSONObject1 = ((JSONObject)paramJSONObject.get(i)).getJSONObject("image");
-      k = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject1.getInt("width"));
-      j = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, m, localJSONObject1.getInt("height"));
-      paramAdCanvasData.width = k;
-      paramAdCanvasData.height = j;
-      paramAdCanvasData.url = localJSONObject1.getString("url");
-      validateUrl(paramAdCanvasData.url);
-      paramAdCanvasData.id = ("" + paramAdCanvasData.url.hashCode());
-      localArrayList.add(paramAdCanvasData);
+      localObject = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
+      localJSONObject = ((JSONObject)paramJSONObject.get(i)).getJSONObject("image");
+      k = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("width"));
+      j = AdUIUtils.getValueDependsOnScreenWidth(paramContext, m, localJSONObject.getInt("height"));
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).width = k;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).height = j;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).url = localJSONObject.getString("url");
+      validateUrl(((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).url);
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).id = ("" + ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject).url.hashCode());
+      paramAdCanvasData.add(localObject);
+      if (imageLoadParams != null) {
+        setImageInfo((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject, paramContext);
+      }
       i += 1;
     }
     locala.imageWidth = k;
     locala.imageHeight = j;
-    locala.imageList = localArrayList;
+    locala.imageList = paramAdCanvasData;
     locala.width = (k * 2);
     locala.height = j;
+    if (imageLoadParams != null)
+    {
+      paramContext = imageLoadParams;
+      i = paramContext.currentLength;
+      paramContext.currentLength = (j + locala.marginBottom + locala.marginTop + i);
+    }
     return locala;
+  }
+  
+  private static AdCanvasComponentData getLayerCardComponent(Context paramContext, Ad paramAd, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
+  {
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
+    {
+      AdLog.e("AdCanvasDataBuilderV2", "getLayerCardComponent error");
+      return null;
+    }
+    paramAd = new com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.a();
+    int j = paramAdCanvasData.basicWidth;
+    initComponent(paramJSONObject, j, paramAd);
+    int k = AdUIUtils.getScreenWidth(paramContext);
+    int i = AdUIUtils.getScreenHeight(paramContext);
+    paramAd.width = k;
+    paramAd.height = i;
+    paramJSONObject = paramJSONObject.getJSONObject("config");
+    paramAdCanvasData = new ArrayList();
+    Object localObject = new com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a();
+    ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).id = ("XJLayerCard_ImageCarousel_" + paramAd.id.hashCode());
+    JSONArray localJSONArray = paramJSONObject.getJSONArray("images");
+    i = 0;
+    while (i < localJSONArray.length())
+    {
+      com.tencent.ad.tangram.canvas.views.canvas.components.picture.a locala = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
+      JSONObject localJSONObject = ((JSONObject)localJSONArray.get(i)).getJSONObject("image");
+      locala.width = k;
+      locala.height = Double.valueOf(k * (1.0D * localJSONObject.getInt("height") / localJSONObject.getInt("width"))).intValue();
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).width = locala.width;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).height = locala.height;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).imageWidth = locala.width;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).imageHeight = locala.height;
+      locala.gaussianUrl = localJSONObject.getString("guassianUrl");
+      locala.url = localJSONObject.getString("url");
+      locala.id = ("" + locala.url.hashCode());
+      paramAdCanvasData.add(locala);
+      if (imageLoadParams != null) {
+        setImageInfo(locala, paramContext);
+      }
+      i += 1;
+    }
+    ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).imageList = paramAdCanvasData;
+    ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).displaySpeed = 3;
+    ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject).pageLimit = 1;
+    paramAd.adCanvasImagesCarouselComponentData = ((com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a)localObject);
+    paramAdCanvasData = paramJSONObject.getJSONObject("appInfo");
+    paramAd.logoUrl = paramAdCanvasData.getString("logoUrl");
+    i = AdUIUtils.getValueDependsOnScreenWidth(paramContext, j, 70);
+    paramAd.logoHeight = i;
+    paramAd.logoWidth = i;
+    paramAd.appName = unescapeHtml(paramAdCanvasData.getString("name"));
+    paramAd.appDesc = unescapeHtml(paramAdCanvasData.getString("description"));
+    paramAd.downloadCount = paramAdCanvasData.optLong("downloadCount");
+    if (paramAdCanvasData.isNull("starCount")) {}
+    for (paramAd.starCount = 4;; paramAd.starCount = paramAdCanvasData.getInt("starCount"))
+    {
+      paramJSONObject = paramJSONObject.getJSONObject("button");
+      paramAdCanvasData = paramJSONObject.getJSONObject("style");
+      localObject = new com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c();
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).id = ("XJLayerCard_AppBtn_" + paramAd.logoUrl.hashCode());
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).width = AdUIUtils.getValueDependsOnScreenWidth(paramContext, j, 287);
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).height = AdUIUtils.getValueDependsOnScreenWidth(paramContext, j, 40);
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).gravity = 17;
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).button.borderCornerRadius = AdUIUtils.getValueDependsOnScreenWidth(paramContext, j, 3);
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, j, 14);
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).button.text.text = unescapeHtml(paramJSONObject.getString("text"));
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).button.text.color = getColor(paramAdCanvasData.getString("color"));
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).button.backgroundColor = getColor(paramAdCanvasData.getString("backgroundColor"));
+      paramAd.adCanvasAppBtnComponentData = ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject);
+      if (imageLoadParams != null)
+      {
+        paramContext = imageLoadParams;
+        paramContext.currentLength += paramAd.height;
+      }
+      return paramAd;
+    }
   }
   
   private static com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a getMulitiPictureComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getMulitiPictureComponent error");
       return null;
@@ -519,10 +675,10 @@ public class AdCanvasDataBuilderV2
       com.tencent.ad.tangram.canvas.views.canvas.components.picture.a locala1 = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
       Object localObject = (JSONObject)paramJSONObject.get(i);
       JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("padding");
-      locala1.paddingLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("left"));
-      locala1.paddingTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("top"));
-      locala1.paddingRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("right"));
-      locala1.paddingBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("bottom"));
+      locala1.paddingLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("left"));
+      locala1.paddingTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("top"));
+      locala1.paddingRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("right"));
+      locala1.paddingBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("bottom"));
       locala1.floatingBarTextColor = -1;
       locala1.floatingBarBackgroundColor = Color.parseColor("#1890ff");
       localJSONObject = ((JSONObject)localObject).getJSONObject("progressBar");
@@ -531,12 +687,12 @@ public class AdCanvasDataBuilderV2
       localJSONObject = ((JSONObject)localObject).getJSONObject("image");
       int j = localJSONObject.getInt("width");
       int k = localJSONObject.getInt("height");
-      locala1.width = (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - locala1.paddingLeft - locala1.paddingRight);
+      locala1.width = (AdUIUtils.getPhysicalScreenWidth(paramContext) - locala1.paddingLeft - locala1.paddingRight);
       float f = locala1.width;
       locala1.height = ((int)(k * f / j));
       locala1.url = localJSONObject.getString("url");
       validateUrl(locala1.url);
-      locala1.guassianUrl = localJSONObject.optString("guassianUrl");
+      locala1.gaussianUrl = localJSONObject.optString("guassianUrl");
       locala1.id = ("" + locala1.url.hashCode());
       localJSONObject = ((JSONObject)localObject).getJSONObject("hotArea");
       if (localJSONObject.getBoolean("isSet"))
@@ -566,6 +722,13 @@ public class AdCanvasDataBuilderV2
         if ((TextUtils.isEmpty(paramAdCanvasData.firstPictureComponentIdWithHotArea)) && (locala1.isHotAreaValild())) {
           paramAdCanvasData.firstPictureComponentIdWithHotArea = locala1.id;
         }
+        if (imageLoadParams != null)
+        {
+          setImageInfo(locala1, paramContext);
+          localObject = imageLoadParams;
+          j = ((com.tencent.ad.tangram.canvas.views.a)localObject).currentLength;
+          ((com.tencent.ad.tangram.canvas.views.a)localObject).currentLength = (locala1.height + j);
+        }
         i += 1;
         break;
       }
@@ -576,7 +739,7 @@ public class AdCanvasDataBuilderV2
   
   private static com.tencent.ad.tangram.canvas.views.canvas.framework.a getPage(Context paramContext, Ad paramAd, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getPage error");
       return null;
@@ -598,7 +761,7 @@ public class AdCanvasDataBuilderV2
   private static List<com.tencent.ad.tangram.canvas.views.canvas.framework.a> getPageList(Context paramContext, Ad paramAd, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getPageList error");
       return localArrayList;
@@ -608,13 +771,17 @@ public class AdCanvasDataBuilderV2
       throw new Exception("getPageList error");
     }
     paramContext.hasFixedButtonData = paramAdCanvasData.hasFixedButtonData;
+    paramContext.hasMultiPictureData = paramAdCanvasData.hasMultiPictureData;
+    paramContext.imageLoadParams = imageLoadParams;
     localArrayList.add(paramContext);
     return localArrayList;
   }
   
   private static void getPageList(Context paramContext, Ad paramAd, AdCanvasData paramAdCanvasData, JSONObject paramJSONObject)
   {
+    imageLoadParams = null;
     JSONObject localJSONObject = paramJSONObject.getJSONObject("pageConfig");
+    paramAdCanvasData.pageTitle = localJSONObject.getJSONObject("config").getString("pageTitle");
     paramAdCanvasData.ad.setActionSetId(localJSONObject.getLong("actionSetId"));
     paramAdCanvasData.pageType = localJSONObject.getString("type");
     paramAdCanvasData.commonPageId = localJSONObject.getString("commonPageId");
@@ -640,7 +807,7 @@ public class AdCanvasDataBuilderV2
   
   private static AdCanvasComponentData getTextComponent(Context paramContext, Ad paramAd, JSONObject paramJSONObject, int paramInt)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getTextComponent error");
       return null;
@@ -654,10 +821,10 @@ public class AdCanvasDataBuilderV2
       localObject1 = ((JSONObject)localObject1).getJSONObject("style");
       paramAd.content = paramJSONObject.getString("text").replace("\\n", "\n");
       paramAd.fontSize = ((JSONObject)localObject1).getInt("fontSize");
-      paramAd.marginLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginLeft"));
-      paramAd.marginTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginTop"));
-      paramAd.marginRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginRight"));
-      paramAd.marginBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginBottom"));
+      paramAd.marginLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginLeft"));
+      paramAd.marginTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginTop"));
+      paramAd.marginRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginRight"));
+      paramAd.marginBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject1).getInt("marginBottom"));
       return paramAd;
     }
     paramAd = new com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a();
@@ -665,32 +832,66 @@ public class AdCanvasDataBuilderV2
     initComponent(paramJSONObject, paramInt, paramAd);
     paramJSONObject = paramJSONObject.getJSONObject("config");
     Object localObject2 = paramJSONObject.getJSONObject("style");
-    paramAd.paddingTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject2).getInt("marginTop"));
-    paramAd.paddingBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject2).getInt("marginBottom"));
+    paramAd.paddingTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject2).getInt("marginTop"));
+    paramAd.paddingBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramInt, ((JSONObject)localObject2).getInt("marginBottom"));
     paramJSONObject = paramJSONObject.getJSONArray("images");
     paramInt = 0;
     while (paramInt < paramJSONObject.length())
     {
       localObject2 = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
-      JSONObject localJSONObject = (JSONObject)paramJSONObject.get(paramInt);
-      int i = localJSONObject.getInt("width");
-      int j = localJSONObject.getInt("height");
-      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).width = (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).paddingLeft - ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).paddingRight);
+      Object localObject3 = (JSONObject)paramJSONObject.get(paramInt);
+      int i = ((JSONObject)localObject3).getInt("width");
+      int j = ((JSONObject)localObject3).getInt("height");
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).width = (AdUIUtils.getPhysicalScreenWidth(paramContext) - ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).paddingLeft - ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).paddingRight);
       float f = ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).width;
       ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).height = ((int)(j * f / i));
-      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).url = localJSONObject.getString("url");
+      ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).url = ((JSONObject)localObject3).getString("url");
       validateUrl(((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).url);
       ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).id = ("" + ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).url.hashCode());
       ((ArrayList)localObject1).add(localObject2);
+      if (imageLoadParams != null)
+      {
+        setImageInfo((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2, paramContext);
+        localObject3 = imageLoadParams;
+        i = ((com.tencent.ad.tangram.canvas.views.a)localObject3).currentLength;
+        ((com.tencent.ad.tangram.canvas.views.a)localObject3).currentLength = (((com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)localObject2).height + i);
+      }
       paramInt += 1;
     }
     paramAd.imageList = ((ArrayList)localObject1);
     return paramAd;
   }
   
+  private static com.tencent.ad.tangram.canvas.views.canvas.components.title.a getTitleComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
+  {
+    if (JSONObject.NULL.equals(paramJSONObject))
+    {
+      AdLog.e("AdCanvasDataBuilderV2", "getTitleComponent error");
+      return null;
+    }
+    com.tencent.ad.tangram.canvas.views.canvas.components.title.a locala = new com.tencent.ad.tangram.canvas.views.canvas.components.title.a();
+    initComponent(paramJSONObject, paramAdCanvasData.basicWidth, locala);
+    paramJSONObject = paramJSONObject.getJSONObject("config");
+    int i = paramAdCanvasData.basicWidth;
+    locala.adTextData.text = unescapeHtml(paramJSONObject.getJSONObject("content").getString("text"));
+    locala.adTextData.color = getColor(paramJSONObject.getJSONObject("style").getString("color"));
+    locala.adTextData.size = paramJSONObject.getJSONObject("style").getInt("fontSize");
+    locala.adTextData.weight = paramJSONObject.getJSONObject("style").getString("fontWeight");
+    locala.decoration = getColor(paramJSONObject.getString("decoration"));
+    locala.textAlignGravity = AdUIUtils.formatStringToGravity(paramJSONObject.getJSONObject("wrapper").getString("textAlign"), "title text align");
+    locala.marginBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, paramJSONObject.getJSONObject("wrapper").getInt("marginBottom"));
+    locala.marginTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, paramJSONObject.getJSONObject("wrapper").getInt("marginTop"));
+    locala.marginLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, paramJSONObject.getJSONObject("wrapper").getInt("marginLeft"));
+    locala.marginRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, i, paramJSONObject.getJSONObject("wrapper").getInt("marginRight"));
+    locala.titleDecorationType = paramJSONObject.getString("className");
+    locala.backgroundColor = getColor(paramJSONObject.getJSONObject("wrapper").getString("backgroundColor"));
+    locala.justifyContent = AdUIUtils.formatStringToRelativeLayoutRule(paramJSONObject.getJSONObject("wrapper").getString("justifyContent"), "title justifyContent");
+    return locala;
+  }
+  
   private static AdCanvasComponentData getWebButtonComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if (paramJSONObject == JSONObject.NULL)
+    if (JSONObject.NULL.equals(paramJSONObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getWebButtonComponent error");
       paramJSONObject = null;
@@ -711,29 +912,29 @@ public class AdCanvasDataBuilderV2
       locala.formIndex = ((JSONObject)localObject).getInt("formId");
       locala.formModId = ((JSONObject)localObject).getString("formModId");
     }
-    locala.paddingLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginLeft"));
-    locala.paddingTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginTop"));
-    locala.paddingRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginRight"));
-    locala.paddingBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginBottom"));
+    locala.paddingLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginLeft"));
+    locala.paddingTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginTop"));
+    locala.paddingRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginRight"));
+    locala.paddingBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject2.getInt("marginBottom"));
     localObject = localJSONObject2.getString("textAlign");
     if ("center".equals(localObject)) {
       locala.gravity = 17;
     }
     for (;;)
     {
-      locala.button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, paramJSONObject.getInt("fontSize"));
+      locala.button.text.size = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, paramJSONObject.getInt("fontSize"));
       locala.button.text.color = getColor(paramJSONObject.getString("color"));
       locala.button.backgroundColor = getColor(paramJSONObject.getString("backgroundColor"));
       locala.button.borderCornerRadius = paramJSONObject.getInt("borderRadius");
-      locala.width = (paramJSONObject.getInt("width") * (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - locala.paddingLeft - locala.paddingRight) / 100);
-      locala.height = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, paramJSONObject.getInt("lineHeight"));
+      locala.width = (paramJSONObject.getInt("width") * (AdUIUtils.getPhysicalScreenWidth(paramContext) - locala.paddingLeft - locala.paddingRight) / 100);
+      locala.height = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, paramJSONObject.getInt("lineHeight"));
       locala.isFixed = localJSONObject1.optBoolean("isFixed");
       paramJSONObject = locala;
       if (!locala.isFixed) {
         break;
       }
-      locala.toBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject1.getInt("toBottom"));
-      int i = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject1.getInt("whiteSpace"));
+      locala.toBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject1.getInt("toBottom"));
+      int i = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject1.getInt("whiteSpace"));
       paramJSONObject = locala;
       if (i <= 0) {
         break;
@@ -748,9 +949,10 @@ public class AdCanvasDataBuilderV2
     }
   }
   
+  @Deprecated
   private static AdCanvasComponentData getWebMulitiPictureComponent(Context paramContext, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getMulitiPictureComponent error");
       return null;
@@ -765,21 +967,21 @@ public class AdCanvasDataBuilderV2
       com.tencent.ad.tangram.canvas.views.canvas.components.picture.a locala1 = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.a();
       Object localObject = (JSONObject)paramJSONObject.get(i);
       JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("padding");
-      locala1.paddingLeft = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("left"));
-      locala1.paddingTop = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("top"));
-      locala1.paddingRight = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("right"));
-      locala1.paddingBottom = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("bottom"));
+      locala1.paddingLeft = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("left"));
+      locala1.paddingTop = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("top"));
+      locala1.paddingRight = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("right"));
+      locala1.paddingBottom = AdUIUtils.getValueDependsOnScreenWidth(paramContext, paramAdCanvasData.basicWidth, localJSONObject.getInt("bottom"));
       locala1.floatingBarTextColor = -1;
       locala1.floatingBarBackgroundColor = Color.parseColor("#1890ff");
       localJSONObject = ((JSONObject)localObject).getJSONObject("image");
       int j = localJSONObject.getInt("width");
       int k = localJSONObject.getInt("height");
-      locala1.width = (com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(paramContext) - locala1.paddingLeft - locala1.paddingRight);
+      locala1.width = (AdUIUtils.getPhysicalScreenWidth(paramContext) - locala1.paddingLeft - locala1.paddingRight);
       float f = locala1.width;
       locala1.height = ((int)(k * f / j));
       locala1.url = localJSONObject.getString("url");
       validateUrl(locala1.url);
-      locala1.guassianUrl = localJSONObject.optString("guassianUrl");
+      locala1.gaussianUrl = localJSONObject.optString("guassianUrl");
       locala1.id = ("" + locala1.url.hashCode());
       localJSONObject = ((JSONObject)localObject).getJSONObject("hotArea");
       if (localJSONObject.getBoolean("isSet"))
@@ -819,7 +1021,7 @@ public class AdCanvasDataBuilderV2
   
   private static void initComponent(JSONObject paramJSONObject, int paramInt, AdCanvasComponentData paramAdCanvasComponentData)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL) || (paramAdCanvasComponentData == null))
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)) || (paramAdCanvasComponentData == null))
     {
       AdLog.e("AdCanvasDataBuilderV2", "initComponent error");
       throw new Exception("initComponent error");
@@ -829,11 +1031,10 @@ public class AdCanvasDataBuilderV2
   
   private static void setActiveAppBtnView(AdCanvasData paramAdCanvasData)
   {
-    int i = 0;
-    List localList;
+    Object localObject;
     if (paramAdCanvasData != null)
     {
-      localList = ((com.tencent.ad.tangram.canvas.views.canvas.framework.a)paramAdCanvasData.pages.get(0)).components;
+      localObject = ((com.tencent.ad.tangram.canvas.views.canvas.framework.a)paramAdCanvasData.pages.get(0)).components;
       ArrayList localArrayList = paramAdCanvasData.fixedButtonComponentDataList;
       paramAdCanvasData = paramAdCanvasData.appFixedButtonComponentDataList;
       if ((localArrayList != null) && (localArrayList.size() > 0)) {
@@ -844,7 +1045,7 @@ public class AdCanvasDataBuilderV2
         ((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)paramAdCanvasData.next()).canShowProgress = true;
         continue;
         if ((paramAdCanvasData == null) || (paramAdCanvasData.size() <= 0)) {
-          break label116;
+          break label114;
         }
         if (paramAdCanvasData.get(0) != null) {
           ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)paramAdCanvasData.get(0)).canShowProgress = true;
@@ -854,17 +1055,20 @@ public class AdCanvasDataBuilderV2
     for (;;)
     {
       return;
-      label116:
-      if ((localList != null) && (localList.size() > 0)) {
-        while (i < localList.size())
+      label114:
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        paramAdCanvasData = ((List)localObject).iterator();
+        while (paramAdCanvasData.hasNext())
         {
-          paramAdCanvasData = (AdCanvasComponentData)localList.get(i);
-          if ((paramAdCanvasData != null) && ((paramAdCanvasData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)))
-          {
-            ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)paramAdCanvasData).canShowProgress = true;
-            return;
+          localObject = (AdCanvasComponentData)paramAdCanvasData.next();
+          if ((localObject instanceof com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a)) {
+            ((com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a)localObject).canShowProgress = true;
+          } else if ((localObject instanceof com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.a)) {
+            ((com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.a)localObject).adCanvasAppBtnComponentData.canShowProgress = true;
+          } else if ((localObject instanceof com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)) {
+            ((com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c)localObject).canShowProgress = true;
           }
-          i += 1;
         }
       }
     }
@@ -895,6 +1099,19 @@ public class AdCanvasDataBuilderV2
     }
   }
   
+  private static void setImageInfo(com.tencent.ad.tangram.canvas.views.canvas.components.picture.a parama, Context paramContext)
+  {
+    parama.hitLoadImageExp = true;
+    if ((imageLoadParams.currentLength <= paramContext.getResources().getDisplayMetrics().heightPixels) || (!imageLoadParams.hasLoadedImage) || (TextUtils.isEmpty(parama.gaussianUrl)))
+    {
+      parama.isLoadFirst = true;
+      imageLoadParams.hasLoadedFirstImages.incrementAndGet();
+      imageLoadParams.hasLoadedImage = true;
+      return;
+    }
+    parama.isLoadFirst = false;
+  }
+  
   private static String unescapeHtml(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
@@ -917,7 +1134,7 @@ public class AdCanvasDataBuilderV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2
  * JD-Core Version:    0.7.0.1
  */

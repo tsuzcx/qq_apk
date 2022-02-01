@@ -1,200 +1,211 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.ProteusCDNUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.ProteusCDNUtils.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.5;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.util.HashMap;
 
 public class sgl
+  implements sff
 {
-  public static String a(String paramString)
+  private static final String jdField_a_of_type_JavaLangString = sgl.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private sfd jdField_a_of_type_Sfd;
+  private sgo jdField_a_of_type_Sgo;
+  
+  public sgl()
   {
-    return "sp_key_readinjoy_cdn_url_" + paramString;
+    c();
   }
   
-  public static void a(String paramString1, String paramString2)
+  private void a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
-    QLog.i("ProteusCDNUtils", 1, "[updateCDNUrl], bid = " + paramString1 + ", cdn url = " + paramString2);
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      bkbq.a(a(paramString1), paramString2);
+    if (paramInt1 == 2) {
+      slm.a().a(paramString1, new sgm(this, paramString1, paramInt2, paramLong));
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    QLog.i("ProteusCDNUtils", 1, "[checkUpdate], bid = " + paramString1 + ", retStr = " + paramString2 + ", retCode = " + paramInt);
-    try
+    do
     {
-      if (a(paramString2)) {
-        b(paramString1);
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("ProteusCDNUtils", 1, "[checkUpdate], e = " + paramString1);
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    bool2 = false;
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("ProteusCDNUtils", 1, "[shouldDownloadByCDN], retStr is null, no need download by CDN.");
-      return false;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString).optJSONArray("data");
-      bool1 = bool2;
-      if (paramString != null)
+      do
       {
-        bool1 = bool2;
-        if (paramString.length() > 0)
+        return;
+        if (!a(paramString2, paramString1, paramInt2))
         {
-          paramString = paramString.optJSONObject(0);
-          bool1 = bool2;
-          if (paramString != null)
-          {
-            int i = paramString.optInt("code");
-            if (i < 10)
-            {
-              bool1 = bool2;
-              if (i > 0) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
+          a(paramString2, paramString1, paramLong, paramInt2);
+          return;
         }
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("ProteusCDNUtils", 1, "[shouldDownloadByCDN] parse json exception, e = " + paramString);
-        bool1 = bool2;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("ProteusCDNUtils", 1, "[shouldDownloadByCDN], e = " + paramString);
-        boolean bool1 = bool2;
-      }
-    }
-    QLog.i("ProteusCDNUtils", 1, "[shouldDownloadByCDN], ret = " + bool1);
-    return bool1;
+      } while (this.jdField_a_of_type_Sgo == null);
+      paramString2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    } while (TextUtils.isEmpty(paramString2));
+    this.jdField_a_of_type_Sgo.a(paramString1, 1, paramString2);
   }
   
-  private static String b(String paramString)
+  private void a(String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    String str = (String)bkbq.a(a(paramString), "");
-    QLog.i("ProteusCDNUtils", 1, "[getCDNUrl], bid = " + paramString + ", cdnUrl = " + str);
-    return str;
-  }
-  
-  private static void b(String paramString)
-  {
-    if (!b(paramString))
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null)
     {
-      QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], no need to download by cdn, bid = " + paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() start preload ERROR cacheMgr == null!");
+      }
       return;
     }
-    String str1 = bdzf.a(alof.cE + paramString + ".7z");
-    String str2 = b(paramString);
-    QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + paramString + ", localPath = " + str1 + ", cdnUrl = " + str2);
-    ThreadManager.excute(new ProteusCDNUtils.1(str1, paramString, str2), 128, null, false);
-    c("0X800ABFE", paramString);
+    Object localObject = paramString2;
+    if (paramString1 != null) {
+      if (paramString2 != null)
+      {
+        localObject = paramString2;
+        if (!paramString1.equals(paramString2)) {}
+      }
+      else
+      {
+        localObject = nxw.a(paramString1);
+      }
+    }
+    paramString2 = new TVK_UserInfo("", "");
+    localObject = new TVK_PlayerVideoInfo(2, (String)localObject, "");
+    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", String.valueOf(paramInt));
+    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_servers_type", sfa.jdField_a_of_type_JavaLangString);
+    if (paramLong > 0L) {
+      ((TVK_PlayerVideoInfo)localObject).setConfigMap("duration", String.valueOf(paramLong));
+    }
+    ((TVK_PlayerVideoInfo)localObject).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String str = sfa.a();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      localTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, paramString2, (TVK_PlayerVideoInfo)localObject, str);
+      return;
+    }
+    localTVK_ICacheMgr.preLoadVideoByUrl(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, (TVK_PlayerVideoInfo)localObject);
   }
   
-  private static boolean b(String paramString)
+  private boolean a(String paramString1, String paramString2, int paramInt)
   {
-    long l2 = 0L;
-    Object localObject = b(paramString);
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.equals("0", (CharSequence)localObject)))
-    {
-      QLog.i("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], cdn url is null or 0.");
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null) {
       return false;
     }
-    for (;;)
+    String str1 = paramString2;
+    if (paramString1 != null) {
+      if (paramString2 != null)
+      {
+        str1 = paramString2;
+        if (!paramString1.equals(paramString2)) {}
+      }
+      else
+      {
+        str1 = nxw.a(paramString1);
+      }
+    }
+    paramString2 = new TVK_UserInfo("", "");
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, str1, "");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(paramInt));
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", sfa.jdField_a_of_type_JavaLangString);
+    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    paramInt = 0;
+    int k = arrayOfString.length;
+    int i = 0;
+    while (i < k)
     {
+      String str2 = arrayOfString[i];
       try
       {
-        localObject = ((String)localObject).split("/");
-        if (localObject.length > 0)
-        {
-          localObject = Pattern.compile("\\d+").matcher(localObject[(localObject.length - 1)]);
-          if (((Matcher)localObject).find())
-          {
-            localObject = ((Matcher)localObject).group();
-            try
-            {
-              l1 = Long.valueOf((String)localObject).longValue();
-              paramString = nbv.a(paramString);
-              if (paramString != null) {
-                l2 = paramString.optLong("version", 0L);
-              }
-              QLog.i("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], urlVersion = " + l1 + ", localVersion = " + l2);
-              if (l1 <= l2) {
-                break label216;
-              }
-              return true;
-            }
-            catch (NumberFormatException localNumberFormatException)
-            {
-              QLog.e("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], e = " + localNumberFormatException);
-            }
-          }
-        }
+        int j = localTVK_ICacheMgr.isVideoCached(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, localTVK_PlayerVideoInfo, str2);
+        paramInt = j;
       }
       catch (Exception localException)
       {
-        long l1;
-        QLog.e("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], e = " + localException);
-        continue;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached() cacheMgr.isVideoCached Exception = " + localException.getMessage());
+          }
+        }
+        i += 1;
       }
-      l1 = 0L;
+      if ((paramInt == 2) || (paramInt == 1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached(), definition = " + str2 + ", cacheStatus = " + paramInt + ", return TRUE");
+        }
+        return true;
+      }
     }
-    label216:
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached() return FALSE");
+    }
     return false;
   }
   
-  private static void c(String paramString)
+  private void c()
   {
-    ThreadManager.excute(new ProteusCDNUtils.2(paramString), 64, null, false);
-  }
-  
-  private static void c(String paramString1, String paramString2)
-  {
-    QLog.i("ProteusCDNUtils", 1, "[reportData], eventType = " + paramString1 + ", bid = " + paramString2);
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_Sfd = new sfd();
+    this.jdField_a_of_type_Sfd.a(this);
+    if (!this.jdField_a_of_type_Sfd.a())
     {
-      localJSONObject.put("bid", paramString2);
-      nrt.a(null, "", paramString1, paramString1, 0, 0, "", "", "", localJSONObject.toString(), false);
+      this.jdField_a_of_type_Sfd.a();
       return;
     }
-    catch (JSONException paramString2)
-    {
-      for (;;)
-      {
-        QLog.e("ProteusCDNUtils", 1, "[reportData], e = " + paramString2);
-      }
+    d();
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
     }
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new sgn(this));
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new VideoWebPreDownload.2(this), 5, null, true);
+  }
+  
+  public void a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString3);
+    ThreadManager.post(new VideoWebPreDownload.1(this, paramString1, paramInt1, paramLong, paramInt2, paramString2), 5, null, true);
+  }
+  
+  public void a(sgo paramsgo)
+  {
+    this.jdField_a_of_type_Sgo = paramsgo;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Sgo = null;
+    ThreadManager.post(new VideoWebPreDownload.5(this), 5, null, true);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgl
  * JD-Core Version:    0.7.0.1
  */

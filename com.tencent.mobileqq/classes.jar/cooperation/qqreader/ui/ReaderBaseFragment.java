@@ -13,10 +13,10 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bejh;
-import bizw;
-import bjae;
-import bjbo;
+import bhql;
+import bloh;
+import blop;
+import blpx;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -34,16 +34,16 @@ public abstract class ReaderBaseFragment
   protected boolean a;
   protected boolean b;
   
-  private void j()
+  private void b()
   {
-    if (this.jdField_a_of_type_Bejh.a != null) {
-      this.jdField_a_of_type_Bejh.a.setVisibility(8);
+    if (this.mUIStyleHandler.a != null) {
+      this.mUIStyleHandler.a.setVisibility(8);
     }
   }
   
-  private void k()
+  private void c()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent().getParent();
+    ViewGroup localViewGroup = (ViewGroup)this.webView.getParent().getParent();
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(-1);
@@ -51,22 +51,16 @@ public abstract class ReaderBaseFragment
     localViewGroup.addView(this.jdField_a_of_type_AndroidWidgetImageView, 0, localLayoutParams);
   }
   
-  public TouchWebView a()
+  public void a()
   {
-    return new ReaderWebView(getActivity());
-  }
-  
-  public String a()
-  {
-    return "QQReader";
-  }
-  
-  public void a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    super.a(paramInt, paramKeyEvent);
-    if (paramInt == 4) {
-      i();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.webView != null) {
+        this.webView.stopLoading();
+      }
+      return;
     }
+    doOnBackEvent();
   }
   
   protected void a(Handler paramHandler)
@@ -74,43 +68,19 @@ public abstract class ReaderBaseFragment
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  protected boolean a()
   {
-    super.a(paramWebView, paramInt, paramString1, paramString2);
-    bizw.a().a();
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    super.a(paramWebView, paramString);
-    this.jdField_a_of_type_Boolean = false;
-    bizw.a().a();
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.a(paramWebView, paramString, paramBitmap);
-    j();
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      k();
+    if (this.webView != null)
+    {
+      WebViewPluginEngine localWebViewPluginEngine = this.webView.getPluginEngine();
+      if (localWebViewPluginEngine != null)
+      {
+        HashMap localHashMap = new HashMap(1);
+        localHashMap.put("target", Integer.valueOf(3));
+        return localWebViewPluginEngine.a(this.webView.getUrl(), 8589934601L, localHashMap);
+      }
     }
-    bizw.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public boolean a()
-  {
-    this.b = true;
-    this.jdField_a_of_type_Bejh.b = false;
-    return super.a();
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidContentIntent != null) {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("key_is_init_sonic_session", false);
-    }
-    return super.a(paramBundle);
+    return false;
   }
   
   protected boolean a(Message paramMessage)
@@ -123,81 +93,111 @@ public abstract class ReaderBaseFragment
     if (((Boolean)paramMessage.obj).booleanValue())
     {
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-        k();
+        c();
       }
-      bizw.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bloh.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bizw.a().a();
+      bloh.a().a();
     }
   }
   
-  public void c(String paramString, int paramInt)
+  public TouchWebView createCustomWebView()
   {
-    super.c(paramString, paramInt);
-    bjbo.b(getActivity(), paramInt, paramString);
+    return new ReaderWebView(getActivity());
   }
   
-  public int d(Bundle paramBundle)
+  public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
-    int i = super.d(paramBundle);
-    j();
+    int i = super.doCreateLoopStep_InitUIContent(paramBundle);
+    b();
     return i;
   }
   
-  public void e()
+  public void doOnBackEvent()
   {
-    super.e();
-    Object localObject = getActivity();
-    if ((localObject instanceof ReaderBaseWebActivity))
-    {
-      localObject = ((ReaderBaseWebActivity)localObject).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bjae)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setVerticalScrollBarEnabled(false);
-  }
-  
-  public void f()
-  {
-    if (!g()) {
+    if (!a()) {
       super.getActivity().finish();
     }
   }
   
-  protected boolean g()
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
-    {
-      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-      if (localWebViewPluginEngine != null)
-      {
-        HashMap localHashMap = new HashMap(1);
-        localHashMap.put("target", Integer.valueOf(3));
-        return localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 8589934601L, localHashMap);
-      }
+    if (this.intent != null) {
+      this.intent.putExtra("key_is_init_sonic_session", false);
     }
-    return false;
+    return super.doOnCreate(paramBundle);
   }
   
-  public void i()
+  public void doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-      }
-      return;
+    super.doOnKeyDown(paramInt, paramKeyEvent);
+    if (paramInt == 4) {
+      a();
     }
-    f();
+  }
+  
+  public String getUAMark()
+  {
+    return "QQReader";
+  }
+  
+  public void initWebView()
+  {
+    super.initWebView();
+    Object localObject = getActivity();
+    if ((localObject instanceof ReaderBaseWebActivity))
+    {
+      localObject = ((ReaderBaseWebActivity)localObject).a(this.webView);
+      if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
+        ((blop)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+      }
+    }
+    this.webView.getView().setVerticalScrollBarEnabled(false);
+  }
+  
+  public void onDetectedBlankScreen(String paramString, int paramInt)
+  {
+    super.onDetectedBlankScreen(paramString, paramInt);
+    blpx.b(getActivity(), paramInt, paramString);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_Boolean = false;
+    bloh.a().a();
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    b();
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      c();
+    }
+    bloh.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    bloh.a().a();
+  }
+  
+  public boolean showPreview()
+  {
+    this.b = true;
+    this.mUIStyleHandler.b = false;
+    return super.showPreview();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderBaseFragment
  * JD-Core Version:    0.7.0.1
  */

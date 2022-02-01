@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.data.NewFriendSubTitle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
 
 public class avuq
-  extends avun
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public NewFriendSubTitle a;
+  public avuq(FloatIconLayout paramFloatIconLayout) {}
   
-  public avuq(NewFriendSubTitle paramNewFriendSubTitle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramNewFriendSubTitle;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setRotation(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuq
  * JD-Core Version:    0.7.0.1
  */

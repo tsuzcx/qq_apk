@@ -1,6 +1,7 @@
 public abstract interface apig
+  extends apie
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

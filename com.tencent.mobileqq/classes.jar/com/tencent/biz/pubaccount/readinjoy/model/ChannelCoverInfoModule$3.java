@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import pfg;
+import pwl;
 
 public class ChannelCoverInfoModule$3
   implements Runnable
 {
-  public ChannelCoverInfoModule$3(pfg parampfg, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverInfoModule$3(pwl parampwl, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {

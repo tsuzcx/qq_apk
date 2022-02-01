@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.sdk;
 
 import android.app.Activity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
-import com.tencent.mobileqq.microapp.b.a;
+import com.tencent.mobileqq.microapp.a.c;
 import java.util.Set;
 import org.json.JSONObject;
 
@@ -27,7 +27,7 @@ public abstract class OutBaseJsPlugin
   
   protected String gernerateStateResultParams(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    return a.a(paramJSONObject, "errMsg", paramString1 + ":" + paramString2).toString();
+    return c.a(paramJSONObject, "errMsg", paramString1 + ":" + paramString2).toString();
   }
   
   public abstract Set getEventMap();
@@ -49,7 +49,7 @@ public abstract class OutBaseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.OutBaseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

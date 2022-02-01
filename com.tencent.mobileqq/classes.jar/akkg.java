@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class akkg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  akkg(akkd paramakkd, QQAppInterface paramQQAppInterface) {}
+  akkg(akkc paramakkc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    akkd.a(this.jdField_a_of_type_Akkd);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkg
  * JD-Core Version:    0.7.0.1
  */

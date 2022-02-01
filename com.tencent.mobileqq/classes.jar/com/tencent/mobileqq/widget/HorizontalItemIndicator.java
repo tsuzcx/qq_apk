@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
-import beqk;
+import bhxs;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.widget.AbsSpinner;
 
@@ -25,7 +25,7 @@ public class HorizontalItemIndicator
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private beqk jdField_a_of_type_Beqk;
+  private bhxs jdField_a_of_type_Bhxs;
   private int b;
   private int c;
   private int d;
@@ -104,8 +104,8 @@ public class HorizontalItemIndicator
     int k = getChildAt(paramInt).getLeft();
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Beqk != null) {
-      this.jdField_a_of_type_Beqk.a(paramInt);
+    if (this.jdField_a_of_type_Bhxs != null) {
+      this.jdField_a_of_type_Bhxs.a(paramInt);
     }
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, j + k - i, 0);
     requestLayout();
@@ -258,8 +258,8 @@ public class HorizontalItemIndicator
     }
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Beqk != null) {
-      this.jdField_a_of_type_Beqk.a(paramInt);
+    if (this.jdField_a_of_type_Bhxs != null) {
+      this.jdField_a_of_type_Bhxs.a(paramInt);
     }
     requestLayout();
   }
@@ -273,9 +273,9 @@ public class HorizontalItemIndicator
     setCurrItem(i);
   }
   
-  public void setOnItemChanged(beqk parambeqk)
+  public void setOnItemChanged(bhxs parambhxs)
   {
-    this.jdField_a_of_type_Beqk = parambeqk;
+    this.jdField_a_of_type_Bhxs = parambhxs;
   }
   
   public void setPrevItem()
@@ -289,7 +289,7 @@ public class HorizontalItemIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalItemIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.auth.l;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.msf.service.j;
+import com.tencent.mobileqq.msf.service.k;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -1467,7 +1467,7 @@ public class a
   
   public static CopyOnWriteArrayList az()
   {
-    Object localObject = t.e();
+    Object localObject = w.e();
     CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
     if (localObject == null) {
       return null;
@@ -1947,7 +1947,7 @@ public class a
   
   public static int bw()
   {
-    int i1 = j.j;
+    int i1 = k.j;
     try
     {
       if (r.containsKey("jobscheduler_enable")) {

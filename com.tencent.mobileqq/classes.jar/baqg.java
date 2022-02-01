@@ -1,28 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class baqg
+public class baqg
   implements View.OnClickListener
 {
-  baqg(baqe parambaqe) {}
+  public baqg(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    switch (((bapp)paramView.getTag()).b)
-    {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      return;
-      this.a.d();
-      continue;
-      this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

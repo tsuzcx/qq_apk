@@ -1,31 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rfj
-  implements TopGestureLayout.OnGestureListener
 {
-  public rfj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
-  
-  public void flingLToR()
-  {
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a, true);
-    this.a.e();
-  }
-  
-  public void flingRToL()
-  {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsPlayActivity.a(this.a).b();
-    }
-  }
+  public String a;
+  public List<RecommendFollowInfo> a = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rfj
  * JD-Core Version:    0.7.0.1
  */

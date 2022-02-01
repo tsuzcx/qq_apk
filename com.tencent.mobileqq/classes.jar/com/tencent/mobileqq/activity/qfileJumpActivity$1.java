@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import alud;
 import android.content.Intent;
 import android.os.Bundle;
-import azrh;
+import anni;
+import bcti;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
@@ -15,7 +15,7 @@ class qfileJumpActivity$1
   
   public void run()
   {
-    azrh.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_my_pc");
+    bcti.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_my_pc");
     Intent localIntent = this.this$0.getIntent();
     Object localObject1 = null;
     try
@@ -35,7 +35,7 @@ class qfileJumpActivity$1
     if (localObject1 == null) {
       localObject2 = new Bundle();
     }
-    ((Bundle)localObject2).putString("leftBackText", alud.a(2131710059));
+    ((Bundle)localObject2).putString("leftBackText", anni.a(2131708435));
     ((Bundle)localObject2).putBoolean("isBack2Root", true);
     localObject1 = new Intent(this.this$0, LiteActivity.class);
     ((Intent)localObject1).addFlags(268435456);
@@ -46,6 +46,11 @@ class qfileJumpActivity$1
     ((Intent)localObject1).putExtras(localIntent);
     ((Intent)localObject1).setAction(localIntent.getAction());
     ((Intent)localObject1).setType(localIntent.getType());
+    if (localIntent.getAction() == "android.intent.action.SEND_MULTIPLE")
+    {
+      ((Intent)localObject1).setAction("android.intent.action.MAIN");
+      ((Intent)localObject1).putExtra("system_share_multi_send", true);
+    }
     this.this$0.startActivity((Intent)localObject1);
     this.this$0.finish();
   }

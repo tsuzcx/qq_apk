@@ -1,10 +1,31 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface aksj
+class aksj
+  implements EIPCResultCallback
 {
-  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  aksj(aksh paramaksh, akse paramakse, DownloadParam paramDownloadParam) {}
   
-  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    {
+      i = paramEIPCResult.data.getInt("result_code");
+      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
+      if (this.jdField_a_of_type_Akse != null) {
+        this.jdField_a_of_type_Akse.onResult(i, paramEIPCResult);
+      }
+    }
+    while (this.jdField_a_of_type_Akse == null)
+    {
+      int i;
+      return;
+    }
+    this.jdField_a_of_type_Akse.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
+  }
 }
 
 

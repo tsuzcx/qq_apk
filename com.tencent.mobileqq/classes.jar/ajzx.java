@@ -1,52 +1,46 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.BaseRecentUser;
 import java.util.Comparator;
 
-public class ajzx
-  implements Comparator<ResultRecord>
+class ajzx
+  implements Comparator<RecentBaseData>
 {
-  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  ajzx(ajzw paramajzw) {}
+  
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    int j = -1;
+    int j = 0;
+    int i = j;
     long l1;
     long l2;
-    label17:
-    int i;
-    if (paramResultRecord1 == null)
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
     {
-      l1 = 0L;
-      if (paramResultRecord2 != null) {
-        break label38;
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      {
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
+        }
+        i = -1;
       }
-      l2 = 0L;
-      if (l1 != l2) {
-        break label47;
-      }
-      i = 0;
     }
-    label38:
-    label47:
+    label83:
     do
     {
-      do
-      {
-        return i;
-        l1 = paramResultRecord1.a;
-        break;
-        l2 = paramResultRecord2.a;
-        break label17;
-        i = j;
-      } while (l1 == 0L);
-      if (l2 == 0L) {
-        return 1;
-      }
+      return i;
       i = j;
-    } while (l1 < l2);
+    } while (l1 >= l2);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzx
  * JD-Core Version:    0.7.0.1
  */

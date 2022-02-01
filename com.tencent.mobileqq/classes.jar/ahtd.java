@@ -1,27 +1,13 @@
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import java.util.ArrayList;
-
 public class ahtd
-  extends zto
 {
-  public ahtd(DeviceFragment paramDeviceFragment) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  boolean f = false;
   
-  protected void a(ArrayList<DeviceInfo> paramArrayList)
-  {
-    if (this.a.e)
-    {
-      this.a.e = false;
-      if (this.a.jdField_a_of_type_Ahsy != null) {
-        this.a.jdField_a_of_type_Ahsy.a(this.a.b(), true, null);
-      }
-    }
-    if (this.a.jdField_a_of_type_Ahrp == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Ahrp.a = ((ArrayList)paramArrayList.clone());
-    this.a.jdField_a_of_type_Ahrp.notifyDataSetChanged();
-  }
+  public ahtd(ahsd paramahsd) {}
 }
 
 

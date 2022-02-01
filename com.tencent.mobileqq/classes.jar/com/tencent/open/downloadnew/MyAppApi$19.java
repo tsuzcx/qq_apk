@@ -1,24 +1,24 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bflp;
-import bfoc;
-import bfox;
-import bfpi;
+import bisy;
+import bivk;
+import biwe;
+import biwp;
 
 public class MyAppApi$19
   implements Runnable
 {
-  public MyAppApi$19(bfox parambfox, boolean paramBoolean, Activity paramActivity, String paramString) {}
+  public MyAppApi$19(biwe parambiwe, boolean paramBoolean, Activity paramActivity, String paramString) {}
   
   public void run()
   {
-    bflp.c("MyAppApi", "---isAutoInstall:" + bfoc.c() + " url:" + bfoc.a() + " interval:" + bfoc.a());
-    boolean bool = bfoc.b();
+    bisy.c("MyAppApi", "---isAutoInstall:" + bivk.c() + " url:" + bivk.a() + " interval:" + bivk.a());
+    boolean bool = bivk.b();
     if ((!this.this$0.b()) && (bool))
     {
-      bflp.c("MyAppApi", "---startDownloadYYB---");
-      this.this$0.a = new bfpi(this.this$0);
+      bisy.c("MyAppApi", "---startDownloadYYB---");
+      this.this$0.a = new biwp(this.this$0);
       this.this$0.a.jdField_a_of_type_Boolean = true;
       this.this$0.a.b = false;
       this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
@@ -37,7 +37,7 @@ public class MyAppApi$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.19
  * JD-Core Version:    0.7.0.1
  */

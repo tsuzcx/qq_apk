@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import xwj;
+import zpu;
 
 public class RateWidget$1
   implements Runnable
 {
-  public RateWidget$1(xwj paramxwj) {}
+  public RateWidget$1(zpu paramzpu) {}
   
   public void run()
   {
-    xwj localxwj = this.this$0;
-    if (!xwj.a(this.this$0)) {}
+    zpu localzpu = this.this$0;
+    if (!zpu.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      xwj.a(localxwj, bool);
-      this.this$0.c(xwj.a(this.this$0));
+      zpu.a(localzpu, bool);
+      this.this$0.c(zpu.a(this.this$0));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.RateWidget.1
  * JD-Core Version:    0.7.0.1
  */

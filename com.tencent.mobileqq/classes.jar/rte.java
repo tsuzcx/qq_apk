@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class rte
-  extends pdi
+public abstract interface rte
 {
-  public rte(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  public void a(pdc parampdc)
-  {
-    parampdc.b();
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(rtd<String> paramrtd);
+  
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rte
  * JD-Core Version:    0.7.0.1
  */

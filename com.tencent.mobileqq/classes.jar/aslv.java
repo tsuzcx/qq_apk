@@ -1,18 +1,9 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public abstract class aslv
-  extends RecyclerView.ViewHolder
+public abstract interface aslv<V extends View>
 {
-  public aslv(Context paramContext, View paramView, ViewGroup paramViewGroup)
-  {
-    super(paramView);
-  }
-  
-  public abstract void a(FeedsItemData paramFeedsItemData);
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 

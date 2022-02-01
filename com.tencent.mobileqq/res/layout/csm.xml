@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/nf3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/mw_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/gzs" android:layout_alignRight="@id/nf0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/nf0" android:background="@drawable/e87" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/mw_">
+            <TextView android:textSize="16.0dip" android:textColor="#ff613610" android:gravity="center" android:id="@id/nf4" android:paddingLeft="4.0dip" android:paddingTop="4.0dip" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="abcdefgh" android:maxLines="1" android:includeFontPadding="false" android:drawableLeft="@drawable/gzt" android:drawablePadding="6.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/nex" android:padding="4.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/gzo" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

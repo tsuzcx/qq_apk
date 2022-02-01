@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.widget.TextView;
+import java.util.List;
 
-class bbvf
-  implements aqxn
+public abstract interface bbvf
+  extends bbvh
 {
-  bbvf(bbvc parambbvc, TroopFileTransferManager.Item paramItem) {}
+  public abstract TextView a();
   
-  public void a() {}
+  public abstract List<bbvg> a();
   
-  public void b()
-  {
-    aqxi.a(new arjc(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(bbvc.e(this.jdField_a_of_type_Bbvc))));
-  }
+  public abstract TextView b();
 }
 
 

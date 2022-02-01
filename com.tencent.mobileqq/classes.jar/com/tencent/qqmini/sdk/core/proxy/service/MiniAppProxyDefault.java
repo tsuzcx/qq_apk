@@ -1,28 +1,41 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.ResultReceiver;
-import android.util.Log;
-import bhmm;
-import bhmq;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
+import com.tencent.qqmini.sdk.R.drawable;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.core.manager.HttpServer;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IChoosePhotoListner;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.AppState;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.ui.MoreItem;
+import com.tencent.qqmini.sdk.launcher.ui.MoreItem;
+import com.tencent.qqmini.sdk.launcher.ui.MoreItemList.Builder;
+import com.tencent.qqmini.sdk.launcher.ui.OnAppCloseAction;
+import com.tencent.qqmini.sdk.launcher.ui.OnMoreItemSelectedListener;
+import com.tencent.qqmini.sdk.ui.DefaultMoreItemSelectedListener;
+import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
+@ProxyService(proxy=MiniAppProxy.class)
 public class MiniAppProxyDefault
   extends MiniAppProxy
 {
   private static final String TAG = "MiniAppProxyDefault";
+  
+  public boolean VerifyFile(int paramInt, String paramString)
+  {
+    return true;
+  }
   
   public boolean addShortcut(Context paramContext, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult)
   {
@@ -44,9 +57,19 @@ public class MiniAppProxyDefault
     return false;
   }
   
+  public String getA2()
+  {
+    return "";
+  }
+  
   public String getAccount()
   {
     return "10000";
+  }
+  
+  public String getAmsAppId()
+  {
+    return "";
   }
   
   public String getAppId()
@@ -89,20 +112,25 @@ public class MiniAppProxyDefault
     return 0;
   }
   
-  public bhmq getMoreItemSelectedListener()
+  public OnMoreItemSelectedListener getMoreItemSelectedListener()
   {
     return new DefaultMoreItemSelectedListener();
   }
   
-  public ArrayList<MoreItem> getMoreItems(bhmm parambhmm)
+  public ArrayList<MoreItem> getMoreItems(MoreItemList.Builder paramBuilder)
   {
-    parambhmm.a("QQ", 2130840839).b("QQ空间", 2130840840).c("微信好友", 2130840841).d("微信朋友圈", 2130840842).e("关于", 2130840805).f("举报", 2130840838).g("调试", 2130840805).h("性能", 2130840805);
-    return parambhmm.a();
+    paramBuilder.addShareQQ("QQ", R.drawable.mini_sdk_channel_qq).addShareQzone("QQ空间", R.drawable.mini_sdk_channel_qzone).addShareWxFriends("微信好友", R.drawable.mini_sdk_channel_wx_friend).addShareWxMoments("微信朋友圈", R.drawable.mini_sdk_channel_wx_moment).addAbout("关于", R.drawable.mini_sdk_about).addComplaint("举报", R.drawable.mini_sdk_browser_report).addDebug("调试", R.drawable.mini_sdk_about).addMonitor("性能", R.drawable.mini_sdk_about);
+    return paramBuilder.build();
   }
   
   public String getNickName()
   {
     return null;
+  }
+  
+  public String getPayAccessToken()
+  {
+    return "ABC";
   }
   
   public String getPayOpenId()
@@ -140,63 +168,32 @@ public class MiniAppProxyDefault
     return false;
   }
   
-  public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (paramThrowable == null)
-      {
-        Log.v(paramString1, paramString2);
-        return;
-      }
-      break;
-    case 2: 
-      if (paramThrowable == null)
-      {
-        Log.d(paramString1, paramString2);
-        return;
-      }
-      Log.d(paramString1, paramString2, paramThrowable);
-      return;
-    case 3: 
-      if (paramThrowable == null)
-      {
-        Log.i(paramString1, paramString2);
-        return;
-      }
-      Log.i(paramString1, paramString2, paramThrowable);
-      return;
-    case 4: 
-      if (paramThrowable == null)
-      {
-        Log.w(paramString1, paramString2);
-        return;
-      }
-      Log.w(paramString1, paramString2, paramThrowable);
-      return;
-    case 5: 
-      if (paramThrowable == null)
-      {
-        Log.e(paramString1, paramString2);
-        return;
-      }
-      Log.e(paramString1, paramString2, paramThrowable);
-      return;
-    }
-    Log.v(paramString1, paramString2, paramThrowable);
-  }
-  
   public void muteAudioFocus(Context paramContext, boolean paramBoolean) {}
   
   public void notifyMiniAppInfo(int paramInt, MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean onCapsuleButtonCloseClick(IMiniRuntime paramIMiniRuntime)
+  public OnAppCloseAction onAppClose(MiniAppInfo paramMiniAppInfo, Closeable paramCloseable)
+  {
+    return null;
+  }
+  
+  public void onAppStateChange(MiniAppInfo paramMiniAppInfo, @AppState int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      QMLog.e("MiniAppProxyDefault", paramMiniAppInfo.name + "," + paramMiniAppInfo.appId + ",unknown AppState " + paramInt);
+      return;
+    }
+    QMLog.d("MiniAppProxyDefault", paramMiniAppInfo.name + "," + paramMiniAppInfo.appId + ",onAppStateChange " + paramInt);
+  }
+  
+  public boolean onCapsuleButtonCloseClick(IMiniAppContext paramIMiniAppContext, DialogInterface.OnClickListener paramOnClickListener)
   {
     return false;
   }
   
-  public boolean onCapsuleButtonMoreClick(IMiniRuntime paramIMiniRuntime)
+  public boolean onCapsuleButtonMoreClick(IMiniAppContext paramIMiniAppContext)
   {
     QMLog.d("MiniAppProxyDefault", "onCapsuleButtonMoreClick");
     return true;
@@ -217,14 +214,14 @@ public class MiniAppProxyDefault
     return false;
   }
   
-  public boolean openSchema(Context paramContext, String paramString, ResultReceiver paramResultReceiver)
+  public boolean openSchema(Context paramContext, String paramString, int paramInt, ResultReceiver paramResultReceiver)
   {
     return false;
   }
   
   public void sendData(byte[] paramArrayOfByte, MiniAppProxy.SenderListener paramSenderListener)
   {
-    FakeServer.sendData(paramArrayOfByte, paramSenderListener);
+    HttpServer.sendData(paramArrayOfByte, paramSenderListener);
   }
   
   public void setDrawableCallback(Drawable paramDrawable, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack) {}
@@ -236,7 +233,7 @@ public class MiniAppProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

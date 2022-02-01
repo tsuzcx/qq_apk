@@ -1,11 +1,23 @@
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aqed
+class aqed
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  aqed(aqdv paramaqdv) {}
   
-  protected aqed(aqec paramaqec) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (aqdv.a(this.a) != null) {
+      aqdv.a(this.a).b();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

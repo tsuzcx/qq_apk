@@ -1,22 +1,24 @@
-import android.support.annotation.Nullable;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-class ulz
-  extends FutureListener.SimpleFutureListener<Progress, Result>
+public class ulz
+  extends uly<ulp, WSPushStrategyInfo>
 {
-  ulz(uly paramuly, Worker paramWorker) {}
-  
-  public void onFutureDone(@Nullable Result paramResult)
+  public ulz(ulp paramulp)
   {
-    umc.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    super(paramulp);
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    WSHomeFragment.a(paramContext, 0, false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ulz
  * JD-Core Version:    0.7.0.1
  */

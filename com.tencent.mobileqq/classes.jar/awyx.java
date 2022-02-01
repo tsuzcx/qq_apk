@@ -1,27 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import android.text.TextUtils;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-class awyx
-  implements DialogInterface.OnClickListener
+public class awyx
 {
-  awyx(awyu paramawyu, String paramString, PushDialogTemplate paramPushDialogTemplate) {}
+  public static String a = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a()
   {
-    new awyz(awyu.a(this.jdField_a_of_type_Awyu).jdField_a_of_type_AndroidContentContext, awyu.a(this.jdField_a_of_type_Awyu).a()).a(this.jdField_a_of_type_JavaLangString).a(awyu.a(this.jdField_a_of_type_Awyu).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(awyu.a(this.jdField_a_of_type_Awyu)).a();
-    if (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.isFriendBanned())
+    if (TextUtils.isEmpty(a)) {}
+    try
     {
-      azqs.b(awyu.a(this.jdField_a_of_type_Awyu).a(), "dc00898", "", "", "0X800A4BE", "0X800A4BE", 0, 0, "", "", "", "");
-      return;
+      a = QQPlayerService.a(6, "MusicPendantUtil");
+      return a;
     }
-    azqs.b(awyu.a(this.jdField_a_of_type_Awyu).a(), "dc00898", "", "", "0X800A4BC", "0X800A4BC", 0, 0, "", "", "", "");
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyx
  * JD-Core Version:    0.7.0.1
  */

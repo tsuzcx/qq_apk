@@ -1,32 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.HashMap;
 
-class bcpn
-  extends nac
+public class bcpn
+  implements JpegExifReader.JpegExifReaderInterface
 {
-  bcpn(bcpg parambcpg, bcpo parambcpo) {}
+  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean readEnableFromDPC()
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bcpo.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length >= 9)
+        {
+          int i = Integer.parseInt(localObject[8]);
+          if (i != 1) {
+            break label81;
+          }
         }
       }
     }
+    catch (Exception localException)
+    {
+      label81:
+      while (!QLog.isColorLevel()) {}
+      QLog.e("JpegExifReader", 2, "read dpc", localException);
+    }
+    return true;
+    return false;
+    return true;
   }
 }
 

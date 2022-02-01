@@ -1,33 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
 public class asuz
-  extends MSFServlet
+  implements Comparator<Long>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      asub.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
-  }
+  public asuz(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (paramIntent == null)
-    {
-      QLog.e("HotPicServlet", 1, "onSend : req is null");
-      return;
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

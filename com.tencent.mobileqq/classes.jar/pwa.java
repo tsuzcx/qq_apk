@@ -1,113 +1,122 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.4;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import java.io.File;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabFeeds;
 
-public class pwa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/AritcleInfoModuleUtils$FollowChannelDataHandler;", "", "()V", "handleFollowedTopicData", "", "topicData", "Lcom/tencent/mobileqq/pb/PBUInt32Field;", "handleLastReadIndex", "lastReadIndex", "articleList", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "handleRefreshCookie", "cookie", "Lcom/tencent/mobileqq/pb/PBBytesField;", "handleTopicRedNumUpdate", "redNum", "handleTopicUpdateInfo", "needRefreshTopicInfo", "topicUpdateInfo", "Ltencent/im/oidb/articlesummary/articlesummary$TopicRecommendFeedsInfo;", "parseArticleList", "model", "Lcom/tencent/biz/pubaccount/readinjoy/model/ArticleInfoModule;", "pbData", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspGetFollowTabFeeds;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pwa
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile pwa jdField_a_of_type_Pwa;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String b = "4044";
-  private final String c = "readinjoy_pts_jsc";
-  private final String d = "libjsc.so";
-  private final String e = "pts_jsc_config.json";
-  private final String f = ncb.a("4044") + "4044";
-  private final String g = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_jsc";
+  public static final pwa a = new pwa();
   
-  public static pwa a()
+  @Nullable
+  public final List<ArticleInfo> a(@NotNull pwb parampwb, @NotNull PBRepeatMessageField<oidb_cmd0x68b.RspGetFollowTabFeeds> paramPBRepeatMessageField)
   {
-    if (jdField_a_of_type_Pwa == null) {}
-    try
+    Intrinsics.checkParameterIsNotNull(parampwb, "model");
+    Intrinsics.checkParameterIsNotNull(paramPBRepeatMessageField, "pbData");
+    List localList = (List)null;
+    if (!paramPBRepeatMessageField.has()) {
+      parampwb = localList;
+    }
+    do
     {
-      if (jdField_a_of_type_Pwa == null) {
-        jdField_a_of_type_Pwa = new pwa();
+      return parampwb;
+      localList = (List)qnc.a(paramPBRepeatMessageField.get());
+      parampwb.a(localList, 70);
+      parampwb = localList;
+    } while (!pgn.a());
+    pgn.a().a(70, paramPBRepeatMessageField.get(), localList);
+    return localList;
+  }
+  
+  public final void a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "cookie");
+    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null))
+    {
+      paramPBBytesField = bgku.encodeToString(qnb.a(paramPBBytesField), 0);
+      pmh.a().f(paramPBBytesField);
+      QLog.d("ArticleInfoModule", 2, "getFollowTabData : lastRefreshCookie " + paramPBBytesField);
+    }
+  }
+  
+  public final void a(@NotNull PBUInt32Field paramPBUInt32Field)
+  {
+    boolean bool = true;
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "topicData");
+    pmh localpmh;
+    if (paramPBUInt32Field.has())
+    {
+      localpmh = pmh.a();
+      if (paramPBUInt32Field.get() != 1) {
+        break label33;
       }
-      return jdField_a_of_type_Pwa;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    ThreadManager.a(new PTSJSCLoader.3(this), 128, null, true);
-  }
-  
-  private boolean b()
-  {
-    Object localObject = this.g + "/" + "pts_jsc_config.json";
-    boolean bool1 = bdhb.a(this.g + "/" + "libjsc.so");
-    boolean bool2 = pwc.a((String)localObject);
-    jdField_a_of_type_JavaLangString = pwc.b((String)localObject);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[checkInnerPTSJSCIsValid]").append("\n").append(", ptsJSCVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isJSCSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
-    QLog.i("PTSJSCLoader", 1, ((StringBuilder)localObject).toString());
-    return (bool1) && (bool2);
-  }
-  
-  private void c()
-  {
-    try
+    for (;;)
     {
-      ThreadManager.a(new PTSJSCLoader.4(this), 64, null, false);
+      localpmh.d(bool);
+      return;
+      label33:
+      bool = false;
+    }
+  }
+  
+  public final void a(@NotNull PBUInt32Field paramPBUInt32Field, @Nullable List<? extends ArticleInfo> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "lastReadIndex");
+    if (paramList == null) {}
+    while (!paramPBUInt32Field.has()) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    int i = paramPBUInt32Field.get() - 1;
+    if ((i > 0) && (i < paramList.size())) {
+      ((ArticleInfo)paramList.get(i)).hintFlag = true;
     }
+    QLog.d("ArticleInfoModule", 2, "getFollowTabData : hint " + i);
   }
   
-  public void a()
+  public final void a(@NotNull PBUInt32Field paramPBUInt32Field, @NotNull articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
   {
-    try
+    int i = 1;
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "needRefreshTopicInfo");
+    Intrinsics.checkParameterIsNotNull(paramTopicRecommendFeedsInfo, "topicUpdateInfo");
+    if (qnb.a(paramPBUInt32Field, 0) == 1) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      PTSJSCLoader.1 local1 = new PTSJSCLoader.1(this);
-      ThreadManager.a().postDelayed(local1, 10000L);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (a())
-    {
-      QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
-      if (paramRunnable != null) {
-        ThreadManager.b().post(paramRunnable);
+      if (i != 0)
+      {
+        if ((!paramTopicRecommendFeedsInfo.has()) || (paramTopicRecommendFeedsInfo.get() == null)) {
+          break;
+        }
+        paramPBUInt32Field = paramTopicRecommendFeedsInfo.get();
+        Intrinsics.checkExpressionValueIsNotNull(paramPBUInt32Field, "topicUpdateInfo.get()");
+        paramPBUInt32Field = rii.a((articlesummary.TopicRecommendFeedsInfo)paramPBUInt32Field);
+        pmh.a().a(paramPBUInt32Field);
       }
       return;
+      i = 0;
     }
-    if (b())
-    {
-      paramRunnable = new PTSJSCLoader.2(this, paramRunnable);
-      ThreadManager.b().post(paramRunnable);
-      return;
-    }
-    QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], pts jsc is not valid, load jsc so failed.");
-    c();
+    pmh.a().a(null);
   }
   
-  public boolean a()
+  public final void b(@NotNull PBUInt32Field paramPBUInt32Field)
   {
-    return this.jdField_a_of_type_Boolean;
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "redNum");
+    if (paramPBUInt32Field.has()) {
+      pmh.a().f(paramPBUInt32Field.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.data.Friends;
-
-class bbni
+public class bbni
 {
   public int a;
-  public Friends a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public int b;
+  public CharSequence b;
+  public String b;
+  public int c;
+  public CharSequence c;
+  public String c;
+  public int d;
   
-  public bbni(Friends paramFriends, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public bbni(bbnh parambbnh) {}
 }
 
 

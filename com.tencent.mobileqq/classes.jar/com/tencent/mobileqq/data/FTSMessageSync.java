@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awhp;
 import com.tencent.mobileqq.persistence.fts.FTSOptSync;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
 
@@ -10,7 +10,7 @@ public class FTSMessageSync
 {
   public static final String MSG_SYNC_LOG_TABLE = "msg_sync_log";
   public int istroop;
-  @awhp
+  @notColumn
   public FTSMessageCodec.MsgExts msgExts;
   public byte[] msgExtsData;
   public int msgtype;

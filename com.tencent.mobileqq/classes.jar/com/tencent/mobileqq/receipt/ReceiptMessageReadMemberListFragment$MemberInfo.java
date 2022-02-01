@@ -3,12 +3,12 @@ package com.tencent.mobileqq.receipt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axli;
+import bahq;
 
 public class ReceiptMessageReadMemberListFragment$MemberInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MemberInfo> CREATOR = new axli();
+  public static final Parcelable.Creator<MemberInfo> CREATOR = new bahq();
   public long a;
   public String a;
   public String b;
@@ -41,7 +41,7 @@ public class ReceiptMessageReadMemberListFragment$MemberInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

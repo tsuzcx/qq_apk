@@ -1,55 +1,122 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.PageParams;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tre
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private List<trx> jdField_a_of_type_JavaUtilList;
-  private ydl jdField_a_of_type_Ydl;
-  
-  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  private static Map<String, Object> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
-  }
-  
-  public void a(List<trx> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(ydl paramydl)
-  {
-    this.jdField_a_of_type_Ydl = paramydl;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    HashMap localHashMap = new HashMap();
+    if (paramString == null) {
+      return localHashMap;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && ((this.jdField_a_of_type_Ydl instanceof trw))) {
-      ((trf)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (trw)this.jdField_a_of_type_Ydl);
+    paramString = paramString.split("[&]");
+    int j = paramString.length;
+    int i = 0;
+    label26:
+    String[] arrayOfString;
+    if (i < j)
+    {
+      arrayOfString = paramString[i].split("[=]");
+      if (arrayOfString.length <= 1) {
+        break label70;
+      }
+      localHashMap.put(arrayOfString[0], arrayOfString[1]);
+    }
+    for (;;)
+    {
+      i += 1;
+      break label26;
+      break;
+      label70:
+      if (arrayOfString.length == 1) {
+        localHashMap.put(arrayOfString[0], "");
+      }
     }
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public static void a(View paramView, Object paramObject)
   {
-    return new trf(new QCircleFeedCommentWidget(paramViewGroup.getContext()));
+    if ((paramView == null) || (paramObject == null)) {}
+    do
+    {
+      return;
+      paramObject = b(paramObject.toString());
+      if (paramObject.containsKey("dt_pgid")) {
+        VideoReport.setPageId(paramView, (String)paramObject.get("dt_pgid"));
+      }
+      if (paramObject.containsKey("dt_pg_params")) {
+        a(paramView, a((String)paramObject.get("dt_pg_params")));
+      }
+      if (paramObject.containsKey("dt_eid")) {
+        VideoReport.setElementId(paramView, (String)paramObject.get("dt_eid"));
+      }
+    } while (!paramObject.containsKey("dt_params"));
+    VideoReport.setElementParams(paramView, a((String)paramObject.get("dt_params")));
+  }
+  
+  public static void a(Object paramObject1, Object paramObject2)
+  {
+    if ((paramObject1 == null) || (paramObject2 == null)) {
+      return;
+    }
+    a("clck", b(paramObject2.toString()), paramObject1);
+  }
+  
+  private static void a(Object paramObject, Map<String, Object> paramMap)
+  {
+    if ((paramObject == null) || (paramMap == null) || (paramMap.size() == 0)) {
+      return;
+    }
+    VideoReport.setPageParams(paramObject, new PageParams(paramMap));
+  }
+  
+  public static void a(String paramString, Object paramObject1, Object paramObject2)
+  {
+    if (paramObject1 == null) {
+      return;
+    }
+    a(paramString, b(paramObject1.toString()), paramObject2);
+  }
+  
+  public static void a(String paramString, Map<String, String> paramMap, Object paramObject)
+  {
+    VideoReport.reportEvent(paramString, paramObject, paramMap);
+  }
+  
+  private static Map<String, String> b(String paramString)
+  {
+    localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString)) {
+      return localHashMap;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localHashMap.put(str, paramString.optString(str));
+      }
+      return localHashMap;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("ViolaDatongReportUtils", 1, "transJsonToStringMap error: " + paramString.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tre
  * JD-Core Version:    0.7.0.1
  */

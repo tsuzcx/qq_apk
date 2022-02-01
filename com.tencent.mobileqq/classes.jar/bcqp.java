@@ -1,42 +1,22 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
 public class bcqp
-  extends Scroller
+  implements Comparator<File>
 {
-  public bcqp(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public bcqp(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public void a()
+  public int a(File paramFile1, File paramFile2)
   {
-    try
-    {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (l == 0L) {
+      return 0;
     }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
+    return -1;
   }
 }
 

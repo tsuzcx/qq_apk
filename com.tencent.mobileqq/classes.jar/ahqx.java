@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class ahqx
-  extends ameq
+  implements View.OnLongClickListener
 {
-  public ahqx(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  public ahqx(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public boolean onLongClick(View paramView)
   {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1018);
+    paramView = ((agju)this.a.a.a(62)).a;
+    if (paramView != null) {
+      paramView.a(1);
     }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1016);
-    }
+    return true;
   }
 }
 

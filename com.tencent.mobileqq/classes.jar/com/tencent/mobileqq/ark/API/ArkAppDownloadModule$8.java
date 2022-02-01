@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import aniz;
+import aphi;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ArkAppDownloadModule$8
   implements Runnable
 {
-  public ArkAppDownloadModule$8(aniz paramaniz, String paramString) {}
+  public ArkAppDownloadModule$8(aphi paramaphi, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ArkAppDownloadModule$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppDownloadModule.8
  * JD-Core Version:    0.7.0.1
  */

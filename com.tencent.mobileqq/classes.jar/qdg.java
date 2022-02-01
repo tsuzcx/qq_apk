@@ -1,31 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qdg
-  implements phj
+class qdg
+  implements ViewBase.OnClickListener
 {
-  public qdg(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qdg(qda paramqda, rfu paramrfu, ArticleInfo paramArticleInfo) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    boolean bool = true;
+    int i;
+    ArticleInfo localArticleInfo;
+    if (this.jdField_a_of_type_Rfu.a)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
-      return;
+      i = 2;
+      qda.a(this.jdField_a_of_type_Qda, this.jdField_a_of_type_Rfu, i);
+      paramViewBase = this.jdField_a_of_type_Qda;
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      if (this.jdField_a_of_type_Rfu.a) {
+        break label60;
+      }
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131718961, 0).a();
+    for (;;)
+    {
+      qda.a(paramViewBase, localArticleInfo, bool);
+      return;
+      i = 1;
+      break;
+      label60:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdg
  * JD-Core Version:    0.7.0.1
  */

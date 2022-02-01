@@ -1,23 +1,17 @@
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bhga
-  implements bhfz
+public final class bhga
+  implements FilenameFilter
 {
-  public bhga(PageWebviewContainer paramPageWebviewContainer) {}
-  
-  public void a(int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    NativeViewContainer localNativeViewContainer = PageWebviewContainer.a(this.a);
-    if (PageWebviewContainer.a(this.a)) {
-      paramInt = 0;
-    }
-    localNativeViewContainer.scrollTo(0, paramInt);
+    return (paramString.endsWith(".hy")) || (paramString.endsWith(".fz")) || (paramString.endsWith(".hy3")) || (paramString.endsWith(".fz4"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhga
  * JD-Core Version:    0.7.0.1
  */

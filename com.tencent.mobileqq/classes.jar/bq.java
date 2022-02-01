@@ -1,17 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.widget.XEditTextEx;
 
 public class bq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
   public bq(LiteActivity paramLiteActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    LiteActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

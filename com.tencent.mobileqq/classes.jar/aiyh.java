@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class aiyh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aiyh(QzoneHbFragment paramQzoneHbFragment) {}
+  private WeakReference<NewFriendActivity> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiyh(NewFriendActivity paramNewFriendActivity)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 

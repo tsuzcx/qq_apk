@@ -1,33 +1,24 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adpf
+  implements DialogInterface.OnClickListener
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public adpf(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  public adpf(PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
 }
 

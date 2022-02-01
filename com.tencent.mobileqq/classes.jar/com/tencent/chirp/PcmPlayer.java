@@ -1,27 +1,27 @@
 package com.tencent.chirp;
 
+import aben;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
 import com.tencent.qphone.base.util.QLog;
-import zhs;
 
 public class PcmPlayer
 {
   private int jdField_a_of_type_Int = 44100;
+  private aben jdField_a_of_type_Aben;
   private Context jdField_a_of_type_AndroidContentContext;
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private PcmPlayer.PlayThread jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
   private String jdField_a_of_type_JavaLangString;
-  private zhs jdField_a_of_type_Zhs;
   private int b;
   private int c = 2;
   private int d = 2;
   
-  public PcmPlayer(Context paramContext, zhs paramzhs, int paramInt, String paramString)
+  public PcmPlayer(Context paramContext, aben paramaben, int paramInt, String paramString)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Zhs = paramzhs;
+    this.jdField_a_of_type_Aben = paramaben;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -40,9 +40,9 @@ public class PcmPlayer
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_Zhs != null)
+        if (this.jdField_a_of_type_Aben != null)
         {
-          this.jdField_a_of_type_Zhs.j();
+          this.jdField_a_of_type_Aben.l();
           return;
         }
       }
@@ -63,7 +63,7 @@ public class PcmPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.chirp.PcmPlayer
  * JD-Core Version:    0.7.0.1
  */

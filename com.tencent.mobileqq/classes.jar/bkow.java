@@ -1,17 +1,17 @@
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.Switch;
 
 public class bkow
+  implements View.OnClickListener
 {
-  public static final String a = bkpi.a + File.separator + "aiscene";
-  public static final String b = a + File.separator + "res";
-  public static final String c = a + File.separator + "res_zip_download";
-  public static final String d = b + File.separator + "AISceneGuide";
-  public static final String e = b + File.separator + "AISceneLoading";
-  public static final String f = b + File.separator + "AutoAISceneAni";
+  public bkow(Switch paramSwitch) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkow
  * JD-Core Version:    0.7.0.1
  */

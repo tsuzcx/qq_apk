@@ -8,7 +8,7 @@ import org.json.JSONObject;
 class SimpleVersionChecker
   implements VersionChecker
 {
-  private static String a = "http://dldir1.qq.com/huayang/Android/$TYPE$_StableBackupUrl_1_4.zip";
+  private static String a = "https://dldir1.qq.com/huayang/Android/$TYPE$_StableBackupUrl_1_4.zip";
   
   private static TargetDownloadInfo a(JSONObject paramJSONObject)
   {
@@ -554,7 +554,7 @@ class SimpleVersionChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.SimpleVersionChecker
  * JD-Core Version:    0.7.0.1
  */

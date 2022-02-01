@@ -1,62 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class aetj
-  implements View.OnClickListener
+  extends anxg
 {
-  private long a;
-  public SessionInfo a;
+  public aetj(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    Object localObject;
-    MessageForPic localMessageForPic;
-    URLDrawable localURLDrawable;
-    do
+    TextView localTextView;
+    if (paramBoolean1)
     {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Long = l;
-          localObject = (URLImageView)paramView;
-          localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364187);
-          localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
-        } while (localURLDrawable == null);
-        switch (localURLDrawable.getStatus())
-        {
-        default: 
-          return;
-        }
-      } while (localURLDrawable.isDownloadStarted());
-      localURLDrawable.startDownload();
-      return;
-      localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
-      if (localObject != null)
-      {
-        QQToast.a(paramView.getContext(), (CharSequence)localObject, 0).a();
-        return;
+      this.a.f.a().setChecked(paramBoolean2);
+      localTextView = this.a.a;
+      if (!paramBoolean2) {
+        break label59;
       }
-    } while (!bdhb.a(paramView.getContext()));
-    localURLDrawable.restartDownload();
-    return;
-    if (afwu.a(localMessageForPic))
+    }
+    label59:
+    for (int i = 2131692795;; i = 2131692796)
     {
-      AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, zjc.a(paramView));
+      localTextView.setText(i);
+      bgsg.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
       return;
     }
-    localMessageForPic.isInMixedMsg = true;
-    afwu.a(vls.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, anni.a(2131706688), 0).a();
+      Switch localSwitch = this.a.f.a();
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    bgsg.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

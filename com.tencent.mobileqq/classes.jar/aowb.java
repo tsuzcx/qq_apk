@@ -1,70 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aowb
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  
-  public static aowb a()
-  {
-    return (aowb)aoks.a().a(460);
-  }
-  
-  public static aowb a(aoko paramaoko)
-  {
-    aowb localaowb = new aowb();
-    if (paramaoko != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramaoko.jdField_a_of_type_Int + " content->" + paramaoko.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      paramaoko = new JSONObject(paramaoko.jdField_a_of_type_JavaLangString);
-      int i = paramaoko.optInt("robotswitch", 0);
-      paramaoko = paramaoko.optString("c2cwarning", "");
-      localaowb.a(i);
-      localaowb.a(paramaoko);
-      return localaowb;
-    }
-    catch (JSONException paramaoko)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramaoko.toString());
-    }
-    return localaowb;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  bdvs jdField_a_of_type_Bdvs;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
+  String c;
   
   public String toString()
   {
-    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowb
  * JD-Core Version:    0.7.0.1
  */

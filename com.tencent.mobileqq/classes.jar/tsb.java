@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.pb.MessageMicro;
-
-public class tsb
+public abstract interface tsb
 {
-  public long a;
-  public MessageMicro a;
-  public String a;
-  public boolean a;
+  public abstract void a();
   
-  public tsb(long paramLong, String paramString, MessageMicro paramMessageMicro, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsb
  * JD-Core Version:    0.7.0.1
  */

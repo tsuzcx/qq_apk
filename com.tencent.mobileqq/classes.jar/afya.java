@@ -1,15 +1,44 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class afya
-  extends aeqi
+  implements afxo
 {
-  public ImageView a;
-  public TextView a;
-  public CircleFileStateView a;
+  public akpd a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public afya(afxy paramafxy) {}
+  public afya(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Akpd = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Akpd = ((akpd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahxe paramahxe)
+  {
+    if ((paramRedPacketInfo != null) && ((paramahxe instanceof ahxl)))
+    {
+      paramahxe = (ahxl)paramahxe;
+      paramRedPacketInfo.icon = paramahxe.a;
+      paramRedPacketInfo.resPath = paramahxe.b;
+    }
+  }
 }
 
 

@@ -1,19 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.graphics.Matrix;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.view.Gravity;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
 
-class ayjw
-  implements View.OnClickListener
+public class ayjw
 {
-  ayjw(ayjv paramayjv, String paramString) {}
+  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final Rect b = new Rect();
   
-  public void onClick(View paramView)
+  public static void a(Matrix paramMatrix, Settings paramSettings, Rect paramRect)
   {
-    paramView = new Intent(this.jdField_a_of_type_Ayjv.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ayjv.a.startActivity(paramView);
+    jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramSettings.e(), paramSettings.f());
+    paramMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+    int i = Math.round(jdField_a_of_type_AndroidGraphicsRectF.width());
+    int j = Math.round(jdField_a_of_type_AndroidGraphicsRectF.height());
+    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
+    Gravity.apply(paramSettings.g(), i, j, jdField_a_of_type_AndroidGraphicsRect, paramRect);
+  }
+  
+  public static void a(ayju paramayju, Settings paramSettings, Rect paramRect)
+  {
+    paramayju.a(jdField_a_of_type_AndroidGraphicsMatrix);
+    a(jdField_a_of_type_AndroidGraphicsMatrix, paramSettings, paramRect);
+  }
+  
+  public static void a(Settings paramSettings, Point paramPoint)
+  {
+    a(paramSettings, b);
+    Gravity.apply(paramSettings.g(), 0, 0, b, jdField_a_of_type_AndroidGraphicsRect);
+    paramPoint.set(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+  }
+  
+  public static void a(Settings paramSettings, Rect paramRect)
+  {
+    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
+    Gravity.apply(paramSettings.g(), paramSettings.c(), paramSettings.d(), jdField_a_of_type_AndroidGraphicsRect, paramRect);
   }
 }
 

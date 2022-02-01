@@ -1,97 +1,96 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class bebb
-  extends bkfr
+class bebb
+  implements bggu
 {
-  private String a;
+  bebb(beba parambeba) {}
   
-  public bebb(String paramString1, View paramView, String paramString2)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    ((TemplateLikeView)paramView).a(1);
-  }
-  
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -2;
-    this.b = a(paramJSONObject.optString("height"));
-    paramLayoutParams.width = -2;
-    paramLayoutParams.height = -2;
-    int i = xsm.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
-    int j = xsm.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
-    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
-    return paramLayoutParams;
-  }
-  
-  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (!beba.a(this.a)) {
+      return;
     }
-    String str = paramString;
-    if (!paramString.startsWith("http"))
+    if (!beba.b(this.a))
     {
-      str = paramString;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label114;
+      beba.a(this.a, paramLong);
+      beba.a(this.a, paramDouble);
+      beba.b(this.a, anro.a.a);
+      if (beba.a(this.a) > beba.b(this.a))
+      {
+        if (!beba.c(this.a))
+        {
+          beba.a(this.a);
+          if (beba.b(this.a) >= beba.c(this.a))
+          {
+            beba.a(this.a, true);
+            beba.b(this.a, 0L);
+          }
+        }
+        if (beba.c(this.a) >= beba.d(this.a)) {
+          break label502;
+        }
+        if (!beba.d(this.a))
+        {
+          beba.d(this.a);
+          if (beba.e(this.a) >= beba.c(this.a))
+          {
+            beba.b(this.a, true);
+            beba.c(this.a, 0L);
+          }
         }
       }
     }
-    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
+    for (;;)
     {
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mLoadingDrawable = bayu.a;
-      paramString.mFailedDrawable = bayu.a;
-      paramString.mPlayGifImage = false;
-      if (paramDecodeHandler != null) {
-        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
+      Object localObject;
+      if (((!beba.d(this.a)) || (!beba.c(this.a))) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder("[system info]:");
+        ((StringBuilder)localObject).append(",mCurFPSTime=").append(beba.f(this.a));
+        ((StringBuilder)localObject).append(",mCurFPS=").append(beba.a(this.a));
+        ((StringBuilder)localObject).append(",mCurCPU=").append(beba.c(this.a));
+        ((StringBuilder)localObject).append(",mFPSReadyCount=").append(beba.b(this.a));
+        ((StringBuilder)localObject).append(",mCPUReadyCount=").append(beba.e(this.a));
+        ((StringBuilder)localObject).append(",mFPSReady=").append(beba.c(this.a));
+        ((StringBuilder)localObject).append(",mCPUReady=").append(beba.d(this.a));
+        QLog.d("PreDownloadScheduler", 2, ((StringBuilder)localObject).toString());
       }
-      paramString = URLDrawable.getDrawable(str, paramString);
-      paramString.setDecodeHandler(paramDecodeHandler);
-      return paramString;
-      label114:
-      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("bg".equals(paramString1)) {
-      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
-        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
-      }
-    }
-    do
-    {
+      beba.a(this.a).sendEmptyMessage(1005);
       return;
-      if (!"style".equals(paramString1)) {
-        break;
+      Bundle localBundle;
+      if ((beba.d(this.a)) && (beba.c(this.a)))
+      {
+        localObject = new Message();
+        ((Message)localObject).what = 1007;
+        localBundle = new Bundle();
+        localBundle.putDouble("FPS", beba.a(this.a));
+        localBundle.putDouble("CPU", beba.c(this.a));
+        ((Message)localObject).obj = localBundle;
+        beba.a(this.a).sendMessage((Message)localObject);
       }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
-    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
-    if ("1".equals(paramString2)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramString1.a(i);
-      return;
+      beba.a(this.a, false);
+      beba.b(this.a, 0L);
+      break;
+      label502:
+      if ((beba.d(this.a)) && (beba.c(this.a)))
+      {
+        localObject = new Message();
+        ((Message)localObject).what = 1007;
+        localBundle = new Bundle();
+        localBundle.putDouble("FPS", beba.a(this.a));
+        localBundle.putDouble("CPU", beba.c(this.a));
+        ((Message)localObject).obj = localBundle;
+        beba.a(this.a).sendMessage((Message)localObject);
+      }
+      beba.b(this.a, false);
+      beba.c(this.a, 0L);
+      continue;
+      beba.b(this.a, true);
+      beba.a(this.a, true);
     }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void c()
-  {
-    super.c();
   }
 }
 

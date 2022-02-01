@@ -1,35 +1,33 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class avtg
-  implements bhuy
+public class avtg
+  extends anmu
 {
-  private avtg(avtc paramavtc) {}
+  public avtg(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    bhuy localbhuy = this.a.jdField_a_of_type_Avtb.a();
-    if (localbhuy != null) {
-      localbhuy.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView)
-  {
-    bhuy localbhuy = this.a.jdField_a_of_type_Avtb.a();
-    if (localbhuy != null) {
-      localbhuy.onNothingSelected(paramAdapterView);
+      String str = avtq.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        avst.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtg
  * JD-Core Version:    0.7.0.1
  */

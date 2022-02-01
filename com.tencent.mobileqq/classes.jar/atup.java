@@ -1,31 +1,20 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.app.Activity;
 
 class atup
-  implements INetInfoHandler
+  implements bhhd
 {
-  atup(atun paramatun) {}
+  atup(atul paramatul, Activity paramActivity, int paramInt) {}
   
-  public void onNetMobile2None()
+  public void callback(int paramInt)
   {
-    atun.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    atun.a(this.a);
+    if ((paramInt == 1) || (paramInt == 2)) {
+      atul.a(this.jdField_a_of_type_Atul, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atup
  * JD-Core Version:    0.7.0.1
  */

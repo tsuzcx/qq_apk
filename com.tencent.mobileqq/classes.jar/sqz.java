@@ -1,29 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.17.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 public class sqz
-  implements srg
+  extends pue
 {
-  public sqz(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
-  
-  public void a() {}
-  
-  public void a(String paramString)
+  public sqz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isColorLevel()) {
-      ThreadManager.post(new ViolaBaseView.17.1(this, paramString), 8, null, true);
-    }
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,72 @@
-import Wallet.RedPackGrapInfo;
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
+import android.support.annotation.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aixh
-  implements IRedPacket.OnGetAvailableListListener
 {
-  public aixh(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  public static aixh a(aixh paramaixh)
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
+    aixh localaixh = new aixh();
+    if (paramaixh != null)
     {
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
-      {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-        TroopUnAccalimedRedPacketList.a(this.a).setText(alud.a(2131716191));
-      }
+      localaixh.jdField_a_of_type_Int = paramaixh.jdField_a_of_type_Int;
+      localaixh.jdField_a_of_type_JavaLangString = paramaixh.jdField_a_of_type_JavaLangString;
+      localaixh.jdField_b_of_type_Int = paramaixh.jdField_b_of_type_Int;
+      localaixh.jdField_b_of_type_JavaLangString = paramaixh.jdField_b_of_type_JavaLangString;
+      localaixh.c = paramaixh.c;
     }
-    do
+    return localaixh;
+  }
+  
+  public static aixh a(JSONObject paramJSONObject)
+  {
+    aixh localaixh = new aixh();
+    if (paramJSONObject != null)
     {
-      return;
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
-      }
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+      localaixh.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
+      localaixh.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
+      localaixh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
+      localaixh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
+      localaixh.c = paramJSONObject.optString("icon_url_unselect");
+    }
+    return localaixh;
+  }
+  
+  public static JSONObject a(aixh paramaixh)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramaixh != null) {}
+    try
+    {
+      localJSONObject.put("tab_id", paramaixh.jdField_a_of_type_Int);
+      localJSONObject.put("recommend_count", paramaixh.jdField_b_of_type_Int);
+      localJSONObject.put("tab_name", paramaixh.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("icon_url_select", paramaixh.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("icon_url_unselect", paramaixh.c);
+      return localJSONObject;
+    }
+    catch (JSONException paramaixh) {}
+    return localJSONObject;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof aixh)) {
+      return this.jdField_a_of_type_Int == ((aixh)paramObject).jdField_a_of_type_Int;
+    }
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 

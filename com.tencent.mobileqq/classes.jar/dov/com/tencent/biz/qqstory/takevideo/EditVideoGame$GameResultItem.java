@@ -3,12 +3,12 @@ package dov.com.tencent.biz.qqstory.takevideo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmmr;
+import bpdx;
 
 public final class EditVideoGame$GameResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameResultItem> CREATOR = new bmmr();
+  public static final Parcelable.Creator<GameResultItem> CREATOR = new bpdx();
   public int a;
   public String a;
   public int b;
@@ -63,7 +63,7 @@ public final class EditVideoGame$GameResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem
  * JD-Core Version:    0.7.0.1
  */

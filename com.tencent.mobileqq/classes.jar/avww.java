@@ -1,30 +1,44 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class avww
-  extends OrientationEventListener
+  extends anxg
 {
-  avww(avwv paramavwv, Context paramContext)
+  avww(avwv paramavwv) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramContext);
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+      }
+      avzs.a(this.a.app, 1, paramString);
+    }
   }
   
-  public void onOrientationChanged(int paramInt)
+  protected void b(String paramString, int paramInt)
   {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
+    super.b(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        QQToast.a(localBaseActivity, 2131692847, 1).a();
+      }
+      avzs.a(this.a.app, 1, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avww
  * JD-Core Version:    0.7.0.1
  */

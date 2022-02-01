@@ -1,17 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import rjn;
+import rui;
+import rum;
+import sfb;
 
 public class VideoPlayerWrapper$2
   implements Runnable
 {
-  public VideoPlayerWrapper$2(rjn paramrjn, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoPlayerWrapper$2(sfb paramsfb) {}
   
   public void run()
   {
-    this.a.stop();
-    this.a.release();
+    if (sfb.a(this.this$0) != null) {
+      sfb.a(this.this$0).a(sfb.a(this.this$0).a());
+    }
   }
 }
 

@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
 class qct
-  implements View.OnClickListener
+  implements qvp
 {
-  qct(qcr paramqcr, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qct(qco paramqco, pxk parampxk, Container paramContainer, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = this.jdField_a_of_type_Qcr.a;
-    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.a(localRecommendFollowInfo, bool);
+    Object localObject = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rhn)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
       return;
     }
+    localObject = (rho)((rhn)localObject).a.get(paramInt);
+    qco.a(this.jdField_a_of_type_Qco, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk.a(), (int)((rho)localObject).a, this.jdField_a_of_type_Pxk.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pxk.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qct
  * JD-Core Version:    0.7.0.1
  */

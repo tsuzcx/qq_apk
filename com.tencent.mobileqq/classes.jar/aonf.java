@@ -1,110 +1,118 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ContentValues;
+import android.os.Handler;
+import android.os.Looper;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.1;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.2;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.3;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy.4;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aonf
-  extends aokh<aong>
+  extends aomz
 {
-  public static boolean a;
-  private static boolean b;
+  List<MpfileTaskRecord> a;
   
-  public static boolean e()
+  public aonf(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = f();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
-    }
-    return a;
+    super(paramQQAppInterface, paramProxyManager);
+    this.jdField_a_of_type_JavaUtilList = null;
   }
   
-  private static boolean f()
+  private String a(long paramLong, int paramInt)
   {
-    aong localaong2 = (aong)aoks.a().a(531);
-    aong localaong1 = localaong2;
-    if (localaong2 == null)
+    String str = MpfileTaskRecord.tableName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select * ").append("from " + str + " ");
+    if (paramLong != -1L) {
+      localStringBuilder.append("where " + str + ".msgId < ? ");
+    }
+    localStringBuilder.append("limit " + paramInt + " ");
+    return localStringBuilder.toString();
+  }
+  
+  public long a(MpfileTaskRecord paramMpfileTaskRecord)
+  {
+    fb localfb = new fb(false, false);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
     {
-      localaong2 = new aong();
-      localaong1 = localaong2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localaong1 = localaong2;
-      }
+      a(paramMpfileTaskRecord, null);
+      return 0L;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localaong1);
-    }
-    return localaong1.a();
+    new Handler(localLooper).post(new MpfileTaskProxy.4(this, paramMpfileTaskRecord, localfb));
+    localfb.a(-1L);
+    return 0L;
   }
   
-  public int a()
+  public List<MpfileTaskRecord> a()
   {
-    return 531;
-  }
-  
-  @NonNull
-  public aong a(int paramInt)
-  {
-    return new aong();
-  }
-  
-  @Nullable
-  public aong a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaoko[0].a);
+      Object localObject = MpfileTaskRecord.tableName();
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+      localEntityManager.execSQL("create index if not exists " + (String)localObject + "_index ON " + (String)localObject + "(fileId, msgId)");
+      List localList = localEntityManager.rawQuery(MpfileTaskRecord.class, a(-1L, 15), null);
+      localObject = localList;
+      if (localList == null) {
+        localObject = new ArrayList();
       }
-      return aong.a(paramArrayOfaoko[0].a);
+      this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+      localEntityManager.close();
     }
-    return new aong();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public Class<aong> a()
-  {
-    return aong.class;
-  }
+  protected void a() {}
   
-  public void a(int paramInt) {}
-  
-  public void a(aong paramaong)
+  public void a(Entity paramEntity, ProxyListener paramProxyListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramaong);
+    fb localfb = new fb(false, false);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      paramEntity = ((MpfileTaskRecord)paramEntity).clone();
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, MpfileTaskRecord.tableName(), paramEntity, 0, paramProxyListener);
+      return;
     }
-    if (paramaong != null) {
-      a = paramaong.a();
+    new Handler(localLooper).post(new MpfileTaskProxy.1(this, paramEntity, paramProxyListener, localfb));
+    localfb.a(-1L);
+  }
+  
+  public void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
+      return;
     }
+    new Handler(localLooper).post(new MpfileTaskProxy.2(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
   }
   
-  public boolean a()
+  public void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
   {
-    return false;
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
+      return;
+    }
+    new Handler(localLooper).post(new MpfileTaskProxy.3(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
   }
   
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aonf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,63 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
 public class ote
-  extends SimpleConfigHandler
+  implements INetInfoHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  protected WeakReference<ono> a;
+  
+  public ote(ono paramono)
   {
-    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bkbq.a("daily_header_proteus_bid", paramString);
-    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
-    return bool;
+    this.a = new WeakReference(paramono);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ono)this.a.get()).c();
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ono)this.a.get()).i();
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ono)this.a.get()).g();
+      ((ono)this.a.get()).i();
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ono)this.a.get()).i();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ono)this.a.get()).h();
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ono)this.a.get()).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ote
  * JD-Core Version:    0.7.0.1
  */

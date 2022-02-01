@@ -3,17 +3,17 @@ package com.tencent.mobileqq.hotpic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asts;
-import awge;
+import avbb;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="url,tag,picIndex")
 public class HotPicData
-  extends awge
+  extends Entity
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<HotPicData> CREATOR = new asts();
+  public static final Parcelable.Creator<HotPicData> CREATOR = new avbb();
   public static final int DATA_GIF = 1;
   public static final int DATA_VIDEO = 2;
   public static final String HOT_PIC_HAS_EXTRA = "HOT_PIC_HAS_EXTRA";
@@ -117,7 +117,7 @@ public class HotPicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicData
  * JD-Core Version:    0.7.0.1
  */

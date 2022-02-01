@@ -1,152 +1,53 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public final class awxp
+class awxp
+  implements ayxc
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, awxq> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  awxp(awxi paramawxi, awxd paramawxd) {}
   
-  private static void a(awxq paramawxq, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((paramawxq != null) && (paramawxq.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
+    if (this.jdField_a_of_type_Awxd.a != null)
     {
-      File localFile;
-      if (paramawxq.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      String str = this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd.a.a);
+      awxe localawxe = this.jdField_a_of_type_Awxi.a(str);
+      if ((localawxe != null) && (!localawxe.a))
       {
-        if (paramawxq.jdField_a_of_type_JavaIoFile == null)
-        {
-          localFile = new File(paramawxq.jdField_a_of_type_JavaLangString + "~tmp");
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramawxq.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-          paramawxq.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramawxq.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramawxq.jdField_a_of_type_JavaIoFileOutputStream);
+        localawxe.c = (paramInt / 100);
+        this.jdField_a_of_type_Awxi.a(str, localawxe);
+        awxi.a(this.jdField_a_of_type_Awxi, localawxe, paramInt / 100);
       }
-      if (paramBoolean)
+    }
+  }
+  
+  public void a(ayxd paramayxd)
+  {
+    int i = 0;
+    String str = "";
+    int k;
+    if (paramayxd != null)
+    {
+      k = paramayxd.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
+      }
+      j = k;
+      if (paramayxd.jdField_a_of_type_Ayxt != null)
       {
-        if (paramawxq.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramawxq.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramawxq.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramawxq.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        if (paramawxq.jdField_a_of_type_JavaIoFile != null)
-        {
-          localFile = new File(paramawxq.jdField_a_of_type_JavaLangString);
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          if (!paramawxq.jdField_a_of_type_JavaIoFile.renameTo(localFile))
-          {
-            bdhb.a(paramawxq.jdField_a_of_type_JavaIoFile, localFile);
-            paramawxq.jdField_a_of_type_JavaIoFile.delete();
-          }
-          paramawxq.jdField_a_of_type_JavaIoFile = null;
-        }
+        i = paramayxd.jdField_a_of_type_Ayxt.jdField_a_of_type_Int;
+        str = paramayxd.jdField_a_of_type_Ayxt.b;
       }
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    a(paramString, true);
-  }
-  
-  private static void a(String paramString, boolean paramBoolean)
-  {
-    awxq localawxq = (awxq)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localawxq == null) || (localawxq.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
+    for (int j = k;; j = 0)
     {
-      localawxq.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localawxq.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localawxq.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localawxq.jdField_a_of_type_JavaIoFileOutputStream = null;
-        if ((paramBoolean) && (localawxq.jdField_a_of_type_JavaIoFile != null))
-        {
-          localawxq.jdField_a_of_type_JavaIoFile.delete();
-          localawxq.jdField_a_of_type_JavaIoFile = null;
-        }
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        break label45;
-      }
-    }
-    catch (Exception localException2)
-    {
-      break label31;
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((awxq)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      awxq localawxq = new awxq();
-      localawxq.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localawxq);
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (awxq)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
-    {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    awxq localawxq = (awxq)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localawxq != null) && (localawxq.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localawxq, true);
-      label29:
-      localawxq.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      a(paramString, true);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
+      this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd, j, i, str);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxp
  * JD-Core Version:    0.7.0.1
  */

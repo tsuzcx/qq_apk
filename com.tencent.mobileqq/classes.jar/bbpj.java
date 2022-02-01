@@ -1,37 +1,25 @@
-public final class bbpj
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bbpj
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
+  bbpj(bbph parambbph, bbmy parambbmy) {}
   
-  public static bbpj a(int paramInt1, long paramLong, int paramInt2)
+  public void onClick(View paramView)
   {
-    bbpj localbbpj = new bbpj();
-    localbbpj.jdField_a_of_type_Int = bbpi.jdField_a_of_type_Int;
-    if ((paramInt1 == 1) || (paramInt1 == 22) || (paramInt1 == 17) || (paramInt1 == 100) || (paramInt1 == 11) || (paramInt1 == 10)) {
-      localbbpj.jdField_a_of_type_Long = paramLong;
-    }
-    for (;;)
+    Object localObject = paramView.getContext();
+    String str = this.jdField_a_of_type_Bbmy.b();
+    if ((localObject instanceof BaseActivity))
     {
-      localbbpj.c = paramInt1;
-      localbbpj.d = paramInt2;
-      return localbbpj;
-      localbbpj.b = paramLong;
+      bbup.a("all_result", "clk_result_join", new String[0]);
+      localObject = (BaseActivity)localObject;
+      bbph.a(this.jdField_a_of_type_Bbph, (Activity)localObject, str);
     }
-  }
-  
-  public long a()
-  {
-    if ((this.c == 1) || (this.c == 22) || (this.c == 17) || (this.c == 100) || (this.c == 11)) {
-      return this.jdField_a_of_type_Long;
-    }
-    return this.b;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

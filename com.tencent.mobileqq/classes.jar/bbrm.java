@@ -1,45 +1,29 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bbrm
-  extends bbro
+final class bbrm
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  protected WeakReference<bbrl> a;
+  
+  public bbrm(bbrl parambbrl)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 18;
-    try
+    this.a = new WeakReference(parambbrl);
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    bbrl localbbrl = (bbrl)this.a.get();
+    if (localbbrl == null)
     {
-      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + alud.a(2131715701) + paramJSONObject.getString("photo_num") + alud.a(2131715703));
-      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          if (localJSONObject.getInt("type") == 3) {
-            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
-          }
-        }
-        else
-        {
-          return localTroopFeedItem;
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
       }
-      return null;
+      return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
+    localbbrl.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
   }
 }
 

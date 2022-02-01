@@ -1,48 +1,58 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bixl
-  extends OnPluginInstallListener.Stub
+  implements bivy
 {
-  public bixl(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  public bixl(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    String str = String.valueOf(paramInt);
-    paramString = alud.a(2131710782);
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = alud.a(2131710775);
-    }
-    for (;;)
-    {
-      biqn.a(str, paramString);
-      int i = bdin.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      azqs.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = alud.a(2131710776);
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = alud.a(2131710779);
-      }
-    }
+    bisy.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
   }
   
-  public void onInstallFinish(String paramString)
+  public void a(List<DownloadInfo> paramList)
   {
-    this.a.b();
+    bisy.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bisy.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixl
  * JD-Core Version:    0.7.0.1
  */

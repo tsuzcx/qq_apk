@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class qcp
-  implements View.OnClickListener
+class qcp
+  implements ViewBase.OnClickListener
 {
-  public qcp(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  qcp(qco paramqco, Container paramContainer, pxk parampxk, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    ComponentContentNoteCard.a(this.a);
+    qco.a(this.jdField_a_of_type_Qco, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pxk.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qcp
  * JD-Core Version:    0.7.0.1
  */

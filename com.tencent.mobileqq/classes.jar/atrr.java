@@ -1,33 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
 class atrr
-  implements atrn
+  implements DialogInterface.OnDismissListener
 {
   atrr(atro paramatro) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      atro.b(this.a);
-      return;
-    case 1: 
-      atro.c(this.a);
-      return;
-    case 2: 
-      atro.a(this.a);
-      return;
-    case 3: 
-      atro.d(this.a);
-      return;
-    }
-    atro.e(this.a);
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrr
  * JD-Core Version:    0.7.0.1
  */

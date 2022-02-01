@@ -1,21 +1,10 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahcl
-  implements MediaPlayer.OnCompletionListener
+final class ahcl
+  implements DialogInterface.OnClickListener
 {
-  public ahcl(BlessActivity paramBlessActivity) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
-    }
-    BlessActivity.a(this.a, true);
-    azqs.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

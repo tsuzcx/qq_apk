@@ -1,121 +1,48 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 import com.tencent.qphone.base.util.QLog;
 
 public class nte
+  implements obd<OACProfilePb.ProfileDataRsp>
 {
-  private static Bitmap a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    try
-    {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localBitmap = paramBitmap;
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
-      }
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      for (;;)
-      {
-        System.gc();
-        paramBitmap.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
-        }
-        localBitmap = null;
-      }
-    }
-    catch (Exception paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
-        }
-        Bitmap localBitmap = null;
-      }
-    }
-    return localBitmap;
-  }
+  public nte(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean, String paramString4, syx paramsyx)
+  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
   {
-    int k = 0;
-    int j = 0;
-    if (paramString1 == null) {}
-    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = this.a;
+    paramBundle.jdField_c_of_type_Int -= 1;
+    if (this.a.jdField_c_of_type_Int == 0) {
+      this.a.M();
+    }
+    if (!paramBoolean)
     {
-      if (paramString2 == null) {}
-      for (paramString1 = "";; paramString1 = paramString2)
+      if (this.a.jdField_c_of_type_Boolean)
       {
-        int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131721491;
-        }
-        for (;;)
+        if (this.a.jdField_a_of_type_Npm != null)
         {
-          if (i != -1) {
-            ybk.a(0, i);
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean);
-            }
-            return;
-            if (WXShareHelper.a().b()) {
-              break label274;
-            }
-            i = 2131721492;
-            break;
-            paramString2 = String.valueOf(System.currentTimeMillis());
-            paramsyx = new ntf(paramString2, paramsyx);
-            WXShareHelper.a().a(paramsyx);
-            if ((!paramBoolean) || (TextUtils.isEmpty(paramString4))) {
-              break label178;
-            }
-            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
-          }
-          label178:
-          if (bkbq.t(ors.a()) == 1)
-          {
-            paramString4 = WXShareHelper.a();
-            paramBitmap = a(paramBitmap);
-            if (paramBoolean) {}
-            for (i = j;; i = 1)
-            {
-              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-              break;
-            }
-          }
-          paramString4 = WxShareHelperFromReadInjoy.a();
-          paramBitmap = a(paramBitmap);
-          if (paramBoolean) {}
-          for (i = k;; i = 1)
-          {
-            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-            break;
-          }
-          label274:
-          i = -1;
+          this.a.jdField_a_of_type_Npm.b(false);
+          this.a.jdField_a_of_type_Npm.notifyDataSetChanged();
         }
       }
+      else {
+        return;
+      }
+      this.a.d(2131694617);
+      return;
     }
+    paramBundle = new AccountDetail(paramProfileDataRsp);
+    nzz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, paramProfileDataRsp.menu_rsp);
+    this.a.a(paramBundle, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nte
  * JD-Core Version:    0.7.0.1
  */

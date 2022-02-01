@@ -1,16 +1,13 @@
-import android.graphics.RectF;
+import java.io.File;
 
-public abstract interface bndm
+public class bndm
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
-  
-  public abstract void a(int paramInt, RectF paramRectF);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public static final String a = bndv.a + File.separator + "camera";
+  public static final String b = bndv.a + File.separator + "sv_config_resources" + File.separator;
+  public static final String c = a + File.separator + "capture";
+  public static final String d = a + File.separator + "material_zip_download";
+  public static final String e = a + File.separator + "material_usable";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

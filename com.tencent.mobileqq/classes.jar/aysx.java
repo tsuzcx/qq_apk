@@ -1,14 +1,25 @@
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
 
 class aysx
+  implements bfpo
 {
-  int jdField_a_of_type_Int = -1;
-  WeakReference<ayso> jdField_a_of_type_JavaLangRefWeakReference;
+  aysx(aysw paramaysw, double paramDouble1, double paramDouble2, long paramLong) {}
   
-  public aysx(int paramInt, ayso paramayso)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayso);
+    if (aysw.a(this.jdField_a_of_type_Aysw).get() != null) {
+      ((aysy)aysw.a(this.jdField_a_of_type_Aysw).get()).a(paramJSONObject, paramInt, this.jdField_a_of_type_Double, this.b, aysw.a(this.jdField_a_of_type_Aysw), aysw.a(this.jdField_a_of_type_Aysw));
+    }
+    long l = System.currentTimeMillis();
+    paramBundle = new HashMap();
+    paramBundle.put("cost", String.valueOf(l - this.jdField_a_of_type_Long));
+    paramBundle.put("result", String.valueOf(paramJSONObject));
+    paramBundle.put("type", String.valueOf(aysw.a(this.jdField_a_of_type_Aysw)));
+    bctj.a(BaseApplicationImpl.getContext()).a(null, "actOnlineStatusCgi", true, 0L, 0L, paramBundle, "");
   }
 }
 

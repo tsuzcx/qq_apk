@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ukn
-  implements DialogInterface.OnClickListener
+public class ukn
 {
-  ukn(ukl paramukl) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ukn(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (ukl.a(this.a) == null);
-    ukl.a(this.a).b(ukl.a(this.a));
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukn
  * JD-Core Version:    0.7.0.1
  */

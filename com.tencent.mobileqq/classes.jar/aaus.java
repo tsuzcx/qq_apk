@@ -1,34 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.view.View;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
 public class aaus
-  extends BroadcastReceiver
+  implements bkmq
 {
-  private aaus(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public aaus(RefreshView paramRefreshView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    int i;
-    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    if (this.a.jdField_a_of_type_Int == 2)
     {
-      i = paramIntent.getIntExtra("state", 0);
-      if (i != 1) {
-        break label42;
-      }
-      aase.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET on");
+      this.a.jdField_a_of_type_Aaul.aq_();
+      return;
     }
-    label42:
-    do
+    this.a.jdField_a_of_type_Aaul.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
     {
-      do
-      {
-        return;
-      } while (i != 0);
-      aase.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
-    } while (!this.a.a);
-    GdtVideoCommonView.d(this.a);
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Aaul.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Aaul.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.a();
   }
 }
 

@@ -1,37 +1,80 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-
 public class auyg
-  implements bemh<oidb_0x8e4.RspBody>
 {
-  public auyg(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
+  public final auyi a = new auyi();
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public static auyg a()
   {
-    GameRoomInviteActivity localGameRoomInviteActivity;
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
-        break label94;
-      }
-    }
-    label94:
-    for (boolean bool = true;; bool = false)
-    {
-      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-    }
+    return auyj.a();
+  }
+  
+  public String a()
+  {
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.a.d.a();
+  }
+  
+  public String b()
+  {
+    return this.a.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.a.c.a();
+  }
+  
+  public boolean c()
+  {
+    return this.a.jdField_a_of_type_Auyk.a();
+  }
+  
+  public boolean d()
+  {
+    return this.a.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean f()
+  {
+    return this.a.e.a();
+  }
+  
+  public boolean g()
+  {
+    return this.a.g.a();
+  }
+  
+  public boolean h()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean i()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean j()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean k()
+  {
+    return this.a.j.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyg
  * JD-Core Version:    0.7.0.1
  */

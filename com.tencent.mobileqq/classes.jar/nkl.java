@@ -1,18 +1,12 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-
-public class nkl
-  implements nhm
+public abstract interface nkl
 {
-  public nkl(AccountDetailActivity paramAccountDetailActivity) {}
+  public abstract void loaded(String paramString, int paramInt);
   
-  public void a()
-  {
-    this.a.a(this.a.a);
-  }
+  public abstract void progress(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkl
  * JD-Core Version:    0.7.0.1
  */

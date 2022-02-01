@@ -6,13 +6,13 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import aysz;
+import bbsc;
 
 public class RichNodeRootLayout
   extends LinearLayout
 {
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private aysz jdField_a_of_type_Aysz;
+  private bbsc jdField_a_of_type_Bbsc;
   private boolean jdField_a_of_type_Boolean;
   
   public RichNodeRootLayout(Context paramContext)
@@ -46,8 +46,8 @@ public class RichNodeRootLayout
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Aysz != null) {
-      this.jdField_a_of_type_Aysz.a();
+    if (this.jdField_a_of_type_Bbsc != null) {
+      this.jdField_a_of_type_Bbsc.a();
     }
   }
   
@@ -77,14 +77,14 @@ public class RichNodeRootLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setEventHandler(aysz paramaysz)
+  public void setEventHandler(bbsc parambbsc)
   {
-    this.jdField_a_of_type_Aysz = paramaysz;
+    this.jdField_a_of_type_Bbsc = parambbsc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeRootLayout
  * JD-Core Version:    0.7.0.1
  */

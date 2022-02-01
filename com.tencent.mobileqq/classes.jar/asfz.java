@@ -1,80 +1,28 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class asfz
-  extends auge
+class asfz
+  implements asmh
 {
-  public asfz(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  asfz(asfu paramasfu) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, asgr paramasgr)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
-    }
-    for (;;)
+    if (asfu.a(this.a) == null)
     {
-      super.a(paramBoolean);
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
       return;
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
     }
-  }
-  
-  public void a(boolean paramBoolean, auhi paramauhi)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, paramauhi);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
     }
-    for (;;)
+    if (this.a.k())
     {
-      super.a(paramBoolean, paramauhi);
+      ((asfs)asfu.a(this.a).a(127)).a(paramasgr);
+      QLog.i("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc:" + paramBoolean);
       return;
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
     }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof auhc)))
-    {
-      MsgBackupSettingFragment.a = (auhc)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
-    }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, (augy)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.b(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
-    }
+    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
   }
 }
 

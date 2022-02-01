@@ -1,38 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class aenc
-  implements View.OnClickListener
 {
-  public aenc(ActivateFriendGrid paramActivateFriendGrid) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (ActivateFriendGridItem)paramView;
-    if (paramView.jdField_a_of_type_Boolean)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (paramView.jdField_a_of_type_Boolean) {
-        break label101;
-      }
-    }
-    label101:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
-      }
-      return;
-      ActivateFriendGrid.b(this.a);
-      break;
-    }
-  }
+  public int a;
+  public View a;
+  public arcs a;
+  public baif a;
+  public BusinessInfoCheckUpdate.AppInfo a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
 }
 
 

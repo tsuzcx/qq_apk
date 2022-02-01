@@ -1,424 +1,251 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.2;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.3;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bajc
-  implements Manager
 {
+  public static final long[] a;
+  public double a;
+  public float a;
+  public int a;
   public long a;
-  private baje jdField_a_of_type_Baje;
-  private bajk jdField_a_of_type_Bajk;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "https://docs.qq.com/scenario/createpad.html?";
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long b;
+  public float b;
+  public int b;
+  public long[] b;
+  public int c = 15;
+  public int d = 2;
+  public int e = 3;
+  public int f = 3;
+  public int g = 10;
+  public int h = 1;
+  public int i = 21;
+  public int j = 3;
+  public int k = 5;
+  public int l = 1;
+  public int m = 1;
+  public int n = 5;
+  public int o = 1;
+  public int p = 10;
+  public int q = 1;
+  public int r;
+  public int s = 200;
+  public int t = 24;
+  public int u = 48;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
+  }
   
   public bajc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bajk = new bajk(paramQQAppInterface);
+    this.jdField_a_of_type_Double = 3.0D;
+    this.jdField_b_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 100;
+    this.jdField_a_of_type_Long = 1514736000L;
+    this.jdField_a_of_type_Float = 0.01F;
+    this.jdField_b_of_type_Float = 0.5F;
+    a(bgsg.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), "batch_add_friend_for_troop_config"));
   }
   
-  private float a(String paramString1, String paramString2)
+  public int a(int paramInt)
   {
-    Object localObject3 = a(paramString1);
-    Object localObject2 = a(paramString2);
-    Object localObject1 = new LinkedHashSet();
-    paramString1 = new ArrayList();
-    paramString2 = new LinkedHashMap();
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localObject3 = ((List)localObject3).iterator();
-    Object localObject4;
-    label148:
-    while (((Iterator)localObject3).hasNext())
+    switch (paramInt)
     {
-      localObject4 = (String)((Iterator)localObject3).next();
-      if (paramString2.containsKey(localObject4))
-      {
-        Float localFloat = (Float)paramString2.get(localObject4);
-        localFloat.floatValue();
-        paramString2.put(localObject4, localFloat);
-      }
-      for (;;)
-      {
-        if (!((LinkedHashSet)localObject1).add(localObject4)) {
-          break label148;
-        }
-        paramString1.add(localObject4);
-        break;
-        paramString2.put(localObject4, Float.valueOf(1.0F));
-      }
+    default: 
+      return 10;
+    case 2: 
+      return this.g;
+    case 3: 
+      return this.k;
+    case 4: 
+      return this.n;
     }
-    localObject2 = ((List)localObject2).iterator();
-    label254:
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (String)((Iterator)localObject2).next();
-      if (localLinkedHashMap.containsKey(localObject3))
-      {
-        localObject4 = (Float)localLinkedHashMap.get(localObject3);
-        ((Float)localObject4).floatValue();
-        localLinkedHashMap.put(localObject3, localObject4);
-      }
-      for (;;)
-      {
-        if (!((LinkedHashSet)localObject1).add(localObject3)) {
-          break label254;
-        }
-        paramString1.add(localObject3);
-        break;
-        localLinkedHashMap.put(localObject3, Float.valueOf(1.0F));
-      }
-    }
-    localObject1 = new ArrayList();
-    localObject2 = new ArrayList();
-    int i = 0;
-    if (i < paramString1.size())
-    {
-      localObject3 = (String)paramString1.get(i);
-      if (paramString2.containsKey(localObject3))
-      {
-        ((List)localObject1).add(Float.valueOf(((Float)paramString2.get(localObject3)).floatValue()));
-        label333:
-        if (!localLinkedHashMap.containsKey(localObject3)) {
-          break label391;
-        }
-        ((List)localObject2).add(Float.valueOf(((Float)localLinkedHashMap.get(localObject3)).floatValue()));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((List)localObject1).add(Float.valueOf(0.0F));
-        break label333;
-        label391:
-        ((List)localObject2).add(Float.valueOf(0.0F));
-      }
-    }
-    if (((List)localObject1).size() != ((List)localObject2).size()) {
-      return 0.0F;
-    }
-    if (((List)localObject1).size() == 0) {
-      return 0.0F;
-    }
-    float f3 = 0.0F;
-    float f2 = 0.0F;
-    float f1 = 0.0F;
-    i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      float f4 = ((Float)((List)localObject1).get(i)).floatValue();
-      f3 += ((Float)((List)localObject2).get(i)).floatValue() * f4;
-      f4 = ((Float)((List)localObject1).get(i)).floatValue();
-      f2 += ((Float)((List)localObject1).get(i)).floatValue() * f4;
-      f4 = ((Float)((List)localObject2).get(i)).floatValue();
-      f1 += ((Float)((List)localObject2).get(i)).floatValue() * f4;
-      i += 1;
-    }
-    return f3 / ((float)Math.pow(f2, 0.5D) * (float)Math.pow(f1, 0.5D));
+    return this.r;
   }
   
-  private List<String> a(String paramString)
+  public void a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 4, "update content is null!");
+      }
+    }
     for (;;)
     {
-      return localArrayList;
-      int j = paramString.length();
-      int i = 0;
-      while (i < j) {
-        if (i + 1 < j)
-        {
-          if (a(paramString.charAt(i), paramString.charAt(i + 1)))
-          {
-            localArrayList.add(new String(new char[] { paramString.charAt(i), paramString.charAt(i + 1) }));
-            i += 2;
-          }
-          else
-          {
-            localArrayList.add(String.valueOf(paramString.charAt(i)));
-            i += 1;
-          }
-        }
-        else
-        {
-          localArrayList.add(String.valueOf(paramString.charAt(i)));
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void a(ChatMessage paramChatMessage, String paramString1, String paramString2, String paramString3, aoyq paramaoyq)
-  {
-    if ((!this.jdField_a_of_type_Bajk.a()) && (QLog.isColorLevel()))
-    {
-      QLog.i("AIOMessageSpreadManager", 1, "last insert time less");
       return;
-    }
-    if (QLog.isDebugVersion()) {
-      QLog.i("AIOMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
-    }
-    this.jdField_a_of_type_Bajk.a(paramChatMessage);
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new AIOMessageSpreadManager.2(this, paramChatMessage, paramString1, paramaoyq, paramString2, paramString3), 1000L);
-  }
-  
-  static boolean a(char paramChar)
-  {
-    return (paramChar >= 55296) && (paramChar < 56320);
-  }
-  
-  private boolean a(char paramChar1, char paramChar2)
-  {
-    return (a(paramChar1)) && (b(paramChar2));
-  }
-  
-  private boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    int i = this.jdField_a_of_type_Bajk.a();
-    int j = aoyr.a().a();
-    boolean bool1;
-    if (j == 0)
-    {
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("AIOMessageSpreadManager", 1, "config is max: 0, return");
-        bool1 = bool2;
-      }
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (i <= j) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.i("AIOMessageSpreadManager", 1, "file count over[" + i + "], return");
-      return false;
-      if (!(paramChatMessage instanceof MessageForText)) {
-        break;
-      }
-      bool2 = aoyr.a().a();
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.i("AIOMessageSpreadManager", 1, " is Text Switch On:" + bool2);
-    return bool2;
-    return true;
-  }
-  
-  static boolean b(char paramChar)
-  {
-    return (paramChar >= 56320) && (paramChar < 57344);
-  }
-  
-  public void a(aoyo paramaoyo)
-  {
-    this.jdField_a_of_type_Bajk.a(paramaoyo);
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    if (QLog.isDebugVersion())
-    {
-      QLog.i("AIOMessageSpreadManager", 4, "ready to post to SubThread Process， msgUid[" + paramChatMessage.msgUid + "], hashCode:" + paramChatMessage.hashCode());
-      if (paramChatMessage.msgUid == 0L) {
-        arrr.a();
-      }
-    }
-    if ((this.b == paramChatMessage.uniseq) && ((paramChatMessage instanceof MessageForText))) {
-      return;
-    }
-    if ((paramChatMessage instanceof MessageForText)) {
-      this.b = paramChatMessage.uniseq;
-    }
-    ThreadManager.executeOnSubThread(new AIOMessageSpreadManager.1(this, paramChatMessage));
-  }
-  
-  public void a(ChatMessage paramChatMessage, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    Object localObject1 = paramChatMessage.getExtInfoFromExtStr("tim_aio_file_msg_uiniseq");
-    Object localObject3;
-    Object localObject2;
-    do
-    {
       try
       {
-        l = Long.parseLong((String)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramChatMessage.frienduin, paramChatMessage.istroop, l);
-        if (localObject1 == null)
+        paramString = new JSONObject(paramString);
+        if (paramString.has("switchOn")) {
+          this.jdField_a_of_type_Int = paramString.getInt("switchOn");
+        }
+        if (paramString.has("troopMemberNumLimit")) {
+          this.jdField_b_of_type_Int = paramString.getInt("troopMemberNumLimit");
+        }
+        if (paramString.has("troopJoinDayLimit")) {
+          this.c = paramString.getInt("troopJoinDayLimit");
+        }
+        if (paramString.has("commonFriendProportionLimit")) {
+          this.jdField_a_of_type_Float = ((float)paramString.getDouble("commonFriendProportionLimit"));
+        }
+        Object localObject;
+        if (paramString.has("troopJoinLine")) {
+          localObject = paramString.getString("troopJoinLine");
+        }
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("AIOMessageSpreadManager", 1, "garyTips not find fileMsg");
+          this.jdField_a_of_type_Long = (new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse((String)localObject).getTime() / 1000L);
+          if (paramString.has("nonFriendProportionLimit")) {
+            this.jdField_b_of_type_Float = ((float)paramString.getDouble("nonFriendProportionLimit"));
           }
-          return;
-        }
-      }
-      catch (Exception localException1)
-      {
-        long l;
-        for (;;)
-        {
-          QLog.e("AIOMessageSpreadManager", 1, localException1.toString());
-          l = 0L;
-        }
-        localObject3 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_type");
-        if (((String)localObject3).equalsIgnoreCase("keyword")) {
-          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009078", "0X8009078", 0, 0, "", "", "", "");
-        }
-        while ((localException1 instanceof MessageForFile))
-        {
-          paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l, paramChatMessage.frienduin, paramChatMessage.istroop);
-          if (paramChatMessage == null)
+          if (paramString.has("tipsTotalCountForTroopEveryday")) {
+            this.e = paramString.getInt("tipsTotalCountForTroopEveryday");
+          }
+          if (paramString.has("tipsTotalCountForUin")) {
+            this.f = paramString.getInt("tipsTotalCountForUin");
+          }
+          if (paramString.has("activeUser"))
           {
-            QLog.e("AIOMessageSpreadManager", 1, "query Entity is nyll!!!, uniseq[" + l + "]");
-            return;
-            if (((String)localObject3).equalsIgnoreCase("precent")) {
-              azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800907B", "0X800907B", 0, 0, "", "", "", "");
-            } else if (((String)localObject3).equalsIgnoreCase("text_keyword")) {
-              azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009072", "0X800907B", 0, 0, "", "", "", "");
+            localObject = paramString.getJSONObject("activeUser");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("totalCommonFriends")) {
+                this.g = ((JSONObject)localObject).getInt("totalCommonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.h = ((JSONObject)localObject).getInt("switchOn");
+              }
             }
           }
-          else
+          if (paramString.has("highFreqInteract"))
           {
-            bagk.a(paramChatMessage, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
-            return;
+            localObject = paramString.getJSONObject("highFreqInteract");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("interactDuration")) {
+                this.i = ((JSONObject)localObject).getInt("interactDuration");
+              }
+              if (((JSONObject)localObject).has("interactRounds")) {
+                this.j = ((JSONObject)localObject).getInt("interactRounds");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.k = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.l = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("newMember"))
+          {
+            localObject = paramString.getJSONObject("newMember");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("newMemberIndex")) {
+                this.m = ((JSONObject)localObject).getInt("newMemberIndex");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.n = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.o = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("atMeOrReplyMe"))
+          {
+            localObject = paramString.getJSONObject("atMeOrReplyMe");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("maxDateLenth")) {
+                this.jdField_a_of_type_Double = ((JSONObject)localObject).getDouble("maxDateLenth");
+              }
+              if (((JSONObject)localObject).has("maxMsgCount")) {
+                this.p = ((JSONObject)localObject).getInt("maxMsgCount");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.q = ((JSONObject)localObject).getInt("switchOn");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.r = ((JSONObject)localObject).getInt("commonFriends");
+              }
+            }
+          }
+          if (paramString.has("troopMemberCount_ahn")) {
+            this.s = paramString.getInt("troopMemberCount_ahn");
+          }
+          if (!paramString.has("troopType_ahn")) {
+            break label991;
+          }
+          localObject = paramString.getJSONArray("troopType_ahn");
+          this.jdField_b_of_type_ArrayOfLong = new long[((JSONArray)localObject).length()];
+          int i1 = 0;
+          while (i1 < this.jdField_b_of_type_ArrayOfLong.length)
+          {
+            this.jdField_b_of_type_ArrayOfLong[i1] = ((JSONArray)localObject).optInt(i1);
+            i1 += 1;
           }
         }
-      }
-      if ((localException1 instanceof MessageForTroopFile))
-      {
-        paramChatMessage = (MessageForTroopFile)localException1;
-        localObject2 = bcnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-        localObject3 = new TeamWorkFileImportInfo();
-        ((TeamWorkFileImportInfo)localObject3).c = ((bbtn)localObject2).jdField_a_of_type_JavaLangString;
-        ((TeamWorkFileImportInfo)localObject3).jdField_b_of_type_JavaLangString = ((bbtn)localObject2).g;
-        ((TeamWorkFileImportInfo)localObject3).j = arrr.a(((bbtn)localObject2).g);
-        ((TeamWorkFileImportInfo)localObject3).jdField_b_of_type_Boolean = true;
-        ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_Int = 1;
-        ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_Long = paramChatMessage.fileSize;
-        ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_JavaLangString = ((bbtn)localObject2).jdField_e_of_type_JavaLangString;
-        ((TeamWorkFileImportInfo)localObject3).jdField_b_of_type_Int = ((bbtn)localObject2).h;
-        ((TeamWorkFileImportInfo)localObject3).jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
-        ((TeamWorkFileImportInfo)localObject3).jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-        if (((bbtn)localObject2).jdField_b_of_type_Int != 12) {
-          ((TeamWorkFileImportInfo)localObject3).jdField_a_of_type_Boolean = true;
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            localThrowable.printStackTrace();
+          }
         }
-        ((TeamWorkFileImportInfo)localObject3).jdField_a_of_type_Int = 1;
-        bagk.a((TeamWorkFileImportInfo)localObject3, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_Int);
-        return;
+        if (!QLog.isColorLevel()) {}
       }
-      if (!(localObject2 instanceof MessageForText)) {
-        break;
-      }
-      localObject2 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_template_id");
-      localObject3 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_template_type");
-      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_keyword");
-    } while (TextUtils.isEmpty((CharSequence)localObject2));
-    Bundle localBundle = new Bundle();
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    try
-    {
-      if (Integer.parseInt((String)localObject3) == 0) {}
-      for (localTeamWorkFileImportInfo.jdField_e_of_type_Int = 3;; localTeamWorkFileImportInfo.jdField_e_of_type_Int = 6)
+      catch (Exception paramString)
       {
-        localBundle.putString("url", this.jdField_a_of_type_JavaLangString + "type=" + (String)localObject3 + "&template_id=" + (String)localObject2 + "&title=" + paramChatMessage);
-        localBundle.putBoolean("doc_from_aio", true);
-        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = true;
-        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 1;
-        localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-        localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-        localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
-        localTeamWorkFileImportInfo.f = true;
-        localBundle.putParcelable("key_team_work_file_import_info", localTeamWorkFileImportInfo);
-        localBundle.putString("tdsourcetag", "s_qq_aio_grey");
-        TeamWorkDocEditBrowserActivity.a(paramContext, localBundle, false);
-        return;
+        if (QLog.isColorLevel())
+        {
+          paramString.printStackTrace();
+          QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update exception ", paramString);
+        }
       }
     }
-    catch (Exception localException2)
+    for (;;)
     {
-      for (;;)
+      QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, String.format(Locale.getDefault(), "update {switchOn: %s, troopMemberNumLimit: %s, troopJoinDayLimit: %s, commonFriendProportionLimit:%s, troopJoinLine: %s, insertGrayTipLimit: %s, nonFriendProportionLimit: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Float.valueOf(this.jdField_a_of_type_Float), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.d), Float.valueOf(this.jdField_b_of_type_Float) }));
+      QLog.d("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update tipsTotalCountForTroopEveryday = " + this.e + ",tipsTotalCountForUin = " + this.f + ",au_totalCommonFriends = " + this.g + ",au_switchOn = " + this.h + ",hfi_interactDuration = " + this.i + ",hfi_interactRounds = " + this.j + ",hfi_commonFriends = " + this.k + ",nm_newMemberIndex = " + this.m + ",nm_commonFriends = " + this.n + ",nm_switchOn = " + this.o + ",aor_maxDateLength = " + this.jdField_a_of_type_Double + ",aor_maxMsgCount = " + this.p + ",aor_switchOn = " + this.q + ",aor_commonFriends = " + this.r + ",troopMemberCount_ahn = " + this.s + ",troopType_ahn = " + Arrays.toString(this.jdField_b_of_type_ArrayOfLong) + ",cacheTimeCmnFrdCntData = " + this.t + ",cacheTimeRemarkData = " + this.u);
+      return;
+      label991:
+      if (paramString.has("cacheTimeCmnFrdCntData")) {
+        this.t = paramString.getInt("cacheTimeCmnFrdCntData");
+      }
+      if (paramString.has("cacheTimeRemarkData")) {
+        this.u = paramString.getInt("cacheTimeRemarkData");
+      }
+    }
+  }
+  
+  public boolean a(TroopInfo paramTroopInfo, long[] paramArrayOfLong)
+  {
+    if (paramTroopInfo == null) {}
+    for (;;)
+    {
+      return false;
+      int i2 = paramArrayOfLong.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        QLog.e("AIOMessageSpreadManager", 2, localException2.getMessage());
+        long l1 = paramArrayOfLong[i1];
+        if (paramTroopInfo.dwGroupClassExt == l1) {
+          return true;
+        }
+        i1 += 1;
       }
     }
-    QLog.e("AIOMessageSpreadManager", 1, "unknow msg type!");
   }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null)
-    {
-      QLog.e("AIOMessageSpreadManager", 1, arrr.a());
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
-    }
-    ThreadManager.getUIHandler().postDelayed(new AIOMessageSpreadManager.3(this), 1000L);
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.jdField_a_of_type_Long + "],lstCache size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    String str = paramMessageRecord.getExtInfoFromExtStr("tim_aio_gary_uniseq");
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOMessageSpreadManager", 1, "del garyTips id[" + str + "],targetId[" + paramMessageRecord.msgUid + "], hashCode:" + paramMessageRecord.hashCode());
-    }
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      long l = Long.parseLong(str);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, l, true);
-      return;
-    }
-    catch (Exception paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-      QLog.e("AIOMessageSpreadManager", 1, paramMessageRecord.toString());
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

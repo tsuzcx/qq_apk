@@ -1,63 +1,188 @@
-import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.DeadObjectException;
+import android.os.Looper;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
-import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment.OffscreenCaptureRunnable;
-import java.util.ArrayList;
-import java.util.List;
+import cooperation.qappcenter.QAppCenterPluginProxyService;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy.2;
+import cooperation.qappcenter.remote.RemoteServiceProxy.3;
+import cooperation.qappcenter.remote.SendMsg;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class blhd
-  extends AsyncTask<Void, Void, Void>
 {
-  public blhd(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  protected static ConcurrentHashMap<String, blhd> a;
+  protected volatile long a;
+  protected ServiceConnection a;
+  private blgw jdField_a_of_type_Blgw;
+  public volatile blgz a;
+  protected Object a;
+  private String jdField_a_of_type_JavaLangString;
+  public ConcurrentLinkedQueue<SendMsg> a;
+  private String b;
   
-  protected Void a(Void... paramVarArgs)
+  static
   {
-    long l1 = System.currentTimeMillis();
-    AEVideoShelfEditFragment.a(this.a);
-    long l2 = System.currentTimeMillis();
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground1---cost: ", Long.valueOf(l2 - l1) });
-    }
-    AEVideoShelfEditFragment.b(this.a);
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground2---cost: ", Long.valueOf(System.currentTimeMillis() - l2) });
-    }
-    return null;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  protected void a(Void paramVoid)
+  public blhd(String paramString1, String paramString2)
   {
-    AEVideoShelfEditFragment.c(this.a);
-    if (AEVideoShelfEditFragment.a(this.a).isEmpty())
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_AndroidContentServiceConnection = new blhe(this);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public static blhd a(String paramString)
+  {
+    try
     {
-      bljn.c("AEVideoShelfEditFrag", "init NodeGroup Error!");
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) == null) {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, new blhd(null, paramString));
+      }
+      paramString = (blhd)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return paramString;
+    }
+    finally {}
+  }
+  
+  public RecvMsg a(SendMsg paramSendMsg, String paramString)
+  {
+    paramSendMsg = new RecvMsg(paramSendMsg.a(), paramSendMsg.a());
+    paramSendMsg.a(1002, paramString);
+    return paramSendMsg;
+  }
+  
+  protected void a()
+  {
+    RemoteServiceProxy.2 local2 = new RemoteServiceProxy.2(this);
+    local2.setName("handleWaitSendProxyMsgThread");
+    local2.start();
+  }
+  
+  public void a(SendMsg paramSendMsg)
+  {
+    if (Looper.getMainLooper().getThread() == Thread.currentThread())
+    {
+      ThreadManager.post(new RemoteServiceProxy.3(this, paramSendMsg), 10, null, false);
       return;
     }
-    paramVoid = new ArrayList();
-    int i = 0;
-    while (i < AEVideoShelfEditFragment.a(this.a).size())
-    {
-      ShelfNode localShelfNode = new ShelfNode();
-      localShelfNode.setCoverUri(((NodeGroup)AEVideoShelfEditFragment.a(this.a).get(i)).nodeCoverImage);
-      paramVoid.add(localShelfNode);
-      i += 1;
-    }
-    AEVideoShelfEditFragment.a(this.a, new blil(this.a.getActivity(), paramVoid, AEVideoShelfEditFragment.a(this.a).getVideoWidth(), AEVideoShelfEditFragment.a(this.a).getVideoHeight()));
-    AEVideoShelfEditFragment.a(this.a).a(AEVideoShelfEditFragment.a(this.a).getMaterialPath());
-    AEVideoShelfEditFragment.a(this.a).setAdapter(AEVideoShelfEditFragment.a(this.a));
-    AEVideoShelfEditFragment.d(this.a);
-    AEVideoShelfEditFragment.e(this.a);
-    AEVideoShelfEditFragment.a(this.a, 0);
-    new AEVideoShelfEditFragment.OffscreenCaptureRunnable(this.a, null).run();
+    this.jdField_a_of_type_Blgz.a(paramSendMsg);
   }
   
-  protected void onPreExecute()
+  public void a(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
   {
-    AEVideoShelfEditFragment.a(this.a, null);
+    try
+    {
+      if (paramSendMsg.a() != null)
+      {
+        paramSendMsg.a().a(paramRecvMsg);
+        return;
+      }
+      if (this.jdField_a_of_type_Blgw != null)
+      {
+        this.jdField_a_of_type_Blgw.a(paramRecvMsg);
+        return;
+      }
+    }
+    catch (RemoteException paramSendMsg)
+    {
+      paramSendMsg.printStackTrace();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_Blgz != null;
+  }
+  
+  public void b()
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 1000L))
+    {
+      this.jdField_a_of_type_Long = l;
+      c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RemoteServiceProxy", 2, "wait start " + this.jdField_a_of_type_JavaLangString + " service result, skiped...");
+  }
+  
+  public void b(SendMsg paramSendMsg)
+  {
+    try
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (a())
+        {
+          a(paramSendMsg);
+          return;
+        }
+        c(paramSendMsg);
+        b();
+      }
+      return;
+    }
+    catch (DeadObjectException localDeadObjectException)
+    {
+      c(paramSendMsg);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (this.jdField_a_of_type_Blgz == null)
+      {
+        c(paramSendMsg);
+        return;
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  void c()
+  {
+    try
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), QAppCenterPluginProxyService.class);
+      blfq localblfq = new blfq(1);
+      localblfq.b = "qappcenter_plugin.apk";
+      localblfq.d = anni.a(2131712164);
+      localblfq.jdField_a_of_type_JavaLangString = this.b;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+      for (localblfq.e = "com.tencent.plugin.qappcenter.remote.RemoteService";; localblfq.e = this.jdField_a_of_type_JavaLangString)
+      {
+        localblfq.jdField_a_of_type_AndroidContentIntent = localIntent;
+        localblfq.jdField_a_of_type_AndroidContentServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+        blfh.c(BaseApplicationImpl.getApplication(), localblfq);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("RemoteServiceProxy", 2, " start service finish");
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  protected void c(SendMsg paramSendMsg)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramSendMsg);
   }
 }
 

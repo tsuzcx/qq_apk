@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.like;
 
-import awsr;
-import awss;
+import azhm;
+import azhn;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -46,7 +46,7 @@ public class PraiseManager$LoadCallback
         {
           ??? = arrayOfWeakReference[i];
           if ((??? != null) && (???.get() != null)) {
-            ((awss)???.get()).a(this.jdField_a_of_type_Int, (awsr)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+            ((azhn)???.get()).a(this.jdField_a_of_type_Int, (azhm)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
           }
           i += 1;
           continue;
@@ -67,7 +67,7 @@ public class PraiseManager$LoadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.LoadCallback
  * JD-Core Version:    0.7.0.1
  */

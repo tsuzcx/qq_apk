@@ -1,21 +1,24 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
-class tul
-  implements ykh<Object>
+public class tul
+  extends BroadcastReceiver
 {
-  tul(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed) {}
+  private tul(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void a(Object... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      tuk.a(this.jdField_a_of_type_Tuk, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
+      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tul
  * JD-Core Version:    0.7.0.1
  */

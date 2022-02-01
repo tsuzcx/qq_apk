@@ -60,7 +60,7 @@ public class RedTouchExtendButton
       int i = a() - a(2);
       if (this.d == 0)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849801);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, this.c + i, this.c + j);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
@@ -82,7 +82,7 @@ public class RedTouchExtendButton
         localRect.right = (m + j);
         float f1 = a(0) + k;
         float f2 = ((Paint.FontMetrics)localObject2).top;
-        localObject2 = getResources().getDrawable(2130849801);
+        localObject2 = getResources().getDrawable(2130850388);
         ((Drawable)localObject2).getBounds();
         ((Drawable)localObject2).setBounds(j, k, localRect.right, localRect.bottom);
         ((Drawable)localObject2).draw(paramCanvas);
@@ -91,7 +91,7 @@ public class RedTouchExtendButton
       }
       if (this.d == 3)
       {
-        localObject1 = getResources().getDrawable(2130848007);
+        localObject1 = getResources().getDrawable(2130848483);
         i += a(2);
         j = getHeight() / 2 - ((Drawable)localObject1).getIntrinsicHeight() / 2;
         ((Drawable)localObject1).setBounds(i, j, ((Drawable)localObject1).getIntrinsicWidth() + i, ((Drawable)localObject1).getIntrinsicHeight() + j);
@@ -288,7 +288,7 @@ public class RedTouchExtendButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.RedTouchExtendButton
  * JD-Core Version:    0.7.0.1
  */

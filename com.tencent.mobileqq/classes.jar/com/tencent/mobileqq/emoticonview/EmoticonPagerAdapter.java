@@ -3,8 +3,8 @@ package com.tencent.mobileqq.emoticonview;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import apvq;
-import apvz;
+import aryx;
+import arzg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class EmoticonPagerAdapter
   extends PagerAdapter
 {
-  private List<apvz> jdField_a_of_type_JavaUtilList;
+  private List<arzg> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = true;
   
   public void a()
@@ -21,19 +21,19 @@ public class EmoticonPagerAdapter
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((apvz)localIterator.next()).a();
+        ((arzg)localIterator.next()).a();
       }
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    apvq.b();
+    aryx.b();
   }
   
-  public void a(List<apvz> paramList)
+  public void a(List<arzg> paramList)
   {
     a(paramList, true);
   }
   
-  public void a(List<apvz> paramList, boolean paramBoolean)
+  public void a(List<arzg> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -56,14 +56,14 @@ public class EmoticonPagerAdapter
       int i;
       for (int j = 0; paramView.hasNext(); j = i)
       {
-        paramObject = (apvz)paramView.next();
+        paramObject = (arzg)paramView.next();
         i = j;
         if (paramObject != null)
         {
           i = j;
-          if ((paramObject instanceof apvq))
+          if ((paramObject instanceof aryx))
           {
-            paramObject = (apvq)paramObject;
+            paramObject = (aryx)paramObject;
             int k = paramObject.b();
             j += k;
             i = j;
@@ -97,9 +97,9 @@ public class EmoticonPagerAdapter
       i = 0;
       j = i;
     } while (!localIterator.hasNext());
-    apvz localapvz = (apvz)localIterator.next();
-    if ((localapvz != null) && ((localapvz instanceof apvq))) {
-      i += ((apvq)localapvz).b();
+    arzg localarzg = (arzg)localIterator.next();
+    if ((localarzg != null) && ((localarzg instanceof aryx))) {
+      i += ((aryx)localarzg).b();
     }
     for (;;)
     {
@@ -122,22 +122,22 @@ public class EmoticonPagerAdapter
     int k;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (apvz)((Iterator)localObject1).next();
+      localObject2 = (arzg)((Iterator)localObject1).next();
       i = j;
       if (localObject2 != null)
       {
         i = j;
-        if ((localObject2 instanceof apvq))
+        if ((localObject2 instanceof aryx))
         {
-          localObject2 = (apvq)localObject2;
-          k = ((apvq)localObject2).b();
+          localObject2 = (aryx)localObject2;
+          k = ((aryx)localObject2).b();
           j += k;
           i = j;
           if (paramInt + 1 > j) {}
         }
       }
     }
-    for (localObject1 = ((apvq)localObject2).b(k - (j - paramInt));; localObject1 = null)
+    for (localObject1 = ((aryx)localObject2).b(k - (j - paramInt));; localObject1 = null)
     {
       if ((localObject1 != null) && (((View)localObject1).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject1);
@@ -158,7 +158,7 @@ public class EmoticonPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.open.downloadnew.DownloadInfo;
-import nsx;
+import ocb;
 
 class VideoFeedsUGView$5
   implements Runnable
@@ -13,7 +13,7 @@ class VideoFeedsUGView$5
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Nsx != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Nsx.f)) && (this.this$0.jdField_a_of_type_Nsx.f.equals(this.a.d)))
+    if ((this.this$0.jdField_a_of_type_Ocb != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Ocb.f)) && (this.this$0.jdField_a_of_type_Ocb.f.equals(this.a.d)))
     {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.this$0.b.setVisibility(0);

@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-class yhh
-  implements View.OnClickListener
+public class yhh
+  implements DialogInterface.OnClickListener
 {
-  yhh(yhg paramyhg, int paramInt) {}
+  public yhh(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Yhg.a.a(this.jdField_a_of_type_Int, yhg.a(this.jdField_a_of_type_Yhg));
+    this.a.f();
+    paramDialogInterface.dismiss();
+    yqu.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhh
  * JD-Core Version:    0.7.0.1
  */

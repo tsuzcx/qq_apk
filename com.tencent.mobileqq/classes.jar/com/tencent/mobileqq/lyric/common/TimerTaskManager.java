@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.lyric.common;
 
-import alud;
 import android.util.Log;
-import atwi;
-import atwj;
+import anni;
+import awdr;
+import awds;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TimerTaskManager
 {
-  private Map<String, atwj> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, awds> jdField_a_of_type_JavaUtilMap = new HashMap();
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
   
   public TimerTaskManager()
@@ -22,7 +22,7 @@ public class TimerTaskManager
   private void a()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = new atwi(this, 1);
+      this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = new awdr(this, 1);
     }
   }
   
@@ -36,7 +36,7 @@ public class TimerTaskManager
     //   3: getfield 17	com/tencent/mobileqq/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   6: aload_1
     //   7: invokeinterface 34 2 0
-    //   12: checkcast 36	atwj
+    //   12: checkcast 36	awds
     //   15: astore_3
     //   16: aload_3
     //   17: ifnull +128 -> 145
@@ -52,17 +52,17 @@ public class TimerTaskManager
     //   35: invokestatic 52	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   38: pop
     //   39: aload_3
-    //   40: invokestatic 55	atwj:a	(Latwj;)Ljava/util/concurrent/ScheduledFuture;
+    //   40: invokestatic 55	awds:a	(Lawds;)Ljava/util/concurrent/ScheduledFuture;
     //   43: ifnull +14 -> 57
     //   46: aload_3
-    //   47: invokestatic 55	atwj:a	(Latwj;)Ljava/util/concurrent/ScheduledFuture;
+    //   47: invokestatic 55	awds:a	(Lawds;)Ljava/util/concurrent/ScheduledFuture;
     //   50: iconst_1
     //   51: invokeinterface 61 2 0
     //   56: pop
     //   57: aload_0
     //   58: getfield 22	com/tencent/mobileqq/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor	Ljava/util/concurrent/ScheduledThreadPoolExecutor;
     //   61: aload_3
-    //   62: invokestatic 64	atwj:a	(Latwj;)Ljava/lang/Runnable;
+    //   62: invokestatic 64	awds:a	(Lawds;)Ljava/lang/Runnable;
     //   65: invokevirtual 70	java/util/concurrent/ScheduledThreadPoolExecutor:remove	(Ljava/lang/Runnable;)Z
     //   68: istore_2
     //   69: aload_0
@@ -86,13 +86,13 @@ public class TimerTaskManager
     //   112: invokestatic 95	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   115: pop
     //   116: aload_3
-    //   117: invokestatic 98	atwj:a	(Latwj;)Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;
+    //   117: invokestatic 98	awds:a	(Lawds;)Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;
     //   120: iconst_0
     //   121: invokestatic 103	com/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable:a	(Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;Z)Z
     //   124: pop
     //   125: aload_3
     //   126: aconst_null
-    //   127: invokestatic 106	atwj:a	(Latwj;Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;)Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;
+    //   127: invokestatic 106	awds:a	(Lawds;Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;)Lcom/tencent/mobileqq/lyric/common/TimerTaskManager$TimerTaskRunnable;
     //   130: pop
     //   131: aload_0
     //   132: getfield 17	com/tencent/mobileqq/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
@@ -124,7 +124,7 @@ public class TimerTaskManager
     //   0	172	0	this	TimerTaskManager
     //   0	172	1	paramString	String
     //   68	23	2	bool	boolean
-    //   15	111	3	localatwj	atwj
+    //   15	111	3	localawds	awds
     // Exception table:
     //   from	to	target	type
     //   2	16	167	finally
@@ -139,15 +139,15 @@ public class TimerTaskManager
     {
       Log.i("LyricTimerTaskManager", String.format("schedule begin [%s].", new Object[] { paramString }));
       if (paramString == null) {
-        throw new IllegalArgumentException(alud.a(2131715370));
+        throw new IllegalArgumentException(anni.a(2131713669));
       }
     }
     finally {}
     if ((paramLong1 < 0L) || (paramLong2 <= 0L)) {
-      throw new IllegalArgumentException(alud.a(2131715368));
+      throw new IllegalArgumentException(anni.a(2131713667));
     }
     if (paramTimerTaskRunnable == null) {
-      throw new IllegalArgumentException(alud.a(2131715369));
+      throw new IllegalArgumentException(anni.a(2131713668));
     }
     a();
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
@@ -156,17 +156,17 @@ public class TimerTaskManager
       a(paramString);
     }
     Log.i("LyricTimerTaskManager", String.format("schedule -> create new Task [%s][period : %d].", new Object[] { paramString, Long.valueOf(paramLong2) }));
-    paramTimerTaskRunnable = atwj.a(paramTimerTaskRunnable);
-    atwj.a(paramTimerTaskRunnable, paramLong2);
-    atwj.a(paramTimerTaskRunnable, paramString);
-    atwj.a(paramTimerTaskRunnable, this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.scheduleWithFixedDelay(atwj.a(paramTimerTaskRunnable), paramLong1, paramLong2, TimeUnit.MILLISECONDS));
+    paramTimerTaskRunnable = awds.a(paramTimerTaskRunnable);
+    awds.a(paramTimerTaskRunnable, paramLong2);
+    awds.a(paramTimerTaskRunnable, paramString);
+    awds.a(paramTimerTaskRunnable, this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.scheduleWithFixedDelay(awds.a(paramTimerTaskRunnable), paramLong1, paramLong2, TimeUnit.MILLISECONDS));
     this.jdField_a_of_type_JavaUtilMap.put(paramString, paramTimerTaskRunnable);
     Log.i("LyricTimerTaskManager", String.format("schedule end [%s].", new Object[] { paramString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager
  * JD-Core Version:    0.7.0.1
  */

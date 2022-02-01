@@ -42,7 +42,7 @@ public class PreCacheManager$PreCacheDescData
     this.scene = paramMiniAppConfig.launchParam.scene;
     this.path = paramMiniAppConfig.launchParam.entryPath;
     int i = PreCacheManager.getCacheType(paramString);
-    if ((paramMiniAppConfig != null) || (paramMiniAppConfig.config != null) || (paramMiniAppConfig.config.preCacheList != null))
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (paramMiniAppConfig.config.preCacheList != null))
     {
       paramMiniAppConfig = paramMiniAppConfig.config.preCacheList.iterator();
       while (paramMiniAppConfig.hasNext())
@@ -60,12 +60,17 @@ public class PreCacheManager$PreCacheDescData
     return 0;
   }
   
-  public String getCacheKey()
+  public String getCacheKey(String paramString)
   {
+    if ("periodic".equals(paramString))
+    {
+      paramString = this.appid + "_" + this.url;
+      return "" + paramString.hashCode();
+    }
     if (TextUtils.isEmpty(this.cacheKey))
     {
-      String str = this.appid + "_" + this.url + "_" + this.scene + "_" + this.path;
-      this.cacheKey = ("" + str.hashCode());
+      paramString = this.appid + "_" + this.url + "_" + this.scene + "_" + this.path;
+      this.cacheKey = ("" + paramString.hashCode());
     }
     return this.cacheKey;
   }
@@ -93,7 +98,7 @@ public class PreCacheManager$PreCacheDescData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.PreCacheManager.PreCacheDescData
  * JD-Core Version:    0.7.0.1
  */

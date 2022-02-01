@@ -1,53 +1,37 @@
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.util.List;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import mqq.app.AppRuntime.Status;
 
-public class ayni
-  implements aynt
+class ayni
+  extends ClickableSpan
 {
-  protected int a;
-  private String a;
-  public List<aynu> a;
+  ayni(aymu paramaymu, AppRuntime.Status paramStatus, long paramLong) {}
   
-  public ayni(List<aynu> paramList, String paramString, int paramInt)
+  public void onClick(@NonNull View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    paramView = new Intent();
+    paramView.putExtra("KEY_ONLINE_STATUS", this.jdField_a_of_type_MqqAppAppRuntime$Status);
+    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.jdField_a_of_type_Long);
+    PublicFragmentActivity.a(aymu.a(this.jdField_a_of_type_Aymu), paramView, AccountOnlineStateActivity.class, 234);
+    if ((aymu.a(this.jdField_a_of_type_Aymu) != null) && (aymu.a(this.jdField_a_of_type_Aymu).isShowing()))
+    {
+      aymu.a(this.jdField_a_of_type_Aymu).dismiss();
+      aymu.a(this.jdField_a_of_type_Aymu, null);
+    }
+    bcst.b(aymu.a(this.jdField_a_of_type_Aymu), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
   }
   
-  public int a()
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return alud.a(2131705780);
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    aysc.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = ayvm.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = ayvm.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
   }
 }
 

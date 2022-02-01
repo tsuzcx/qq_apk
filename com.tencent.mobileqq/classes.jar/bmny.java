@@ -1,31 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
-class bmny
-  implements View.OnClickListener
+public class bmny
+  extends bmmk
 {
-  bmny(bmnx parambmnx) {}
+  public static String a;
+  public static String b = "setPGCNavViewSetting";
   
-  public void onClick(View paramView)
+  static
   {
-    if (bmnx.a(this.a) != null)
-    {
-      if ((bmnx.a(this.a).b() != 1) || (bmnx.a(this.a) != 1)) {
-        break label64;
-      }
-      bmnx.a(this.a);
-      bmnx.a(this.a).setImageResource(2130847216);
-      bmnx.a(this.a, 2);
+    jdField_a_of_type_JavaLangString = "Qzone";
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (!b.equals(paramString3))) {
+      return false;
     }
-    label64:
-    while ((bmnx.a(this.a).b() != 2) || (bmnx.a(this.a) != 2)) {
-      return;
+    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
+    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
+    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
     }
-    bmnx.b(this.a);
-    bmnx.a(this.a).setImageResource(2130847217);
-    bmnx.a(this.a, 1);
+    return true;
   }
 }
 

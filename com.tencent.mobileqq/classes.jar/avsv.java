@@ -1,46 +1,75 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class avsv
 {
-  public static final SparseIntArray a = new SparseIntArray(4);
-  public static final SparseIntArray b = new SparseIntArray(4);
+  public static final String a;
+  public int a;
+  public long a;
+  public ankk a;
+  public int b = 0;
   
   static
   {
-    a.put(1, 0);
-    a.put(2, 5);
-    a.put(3, 3);
-    a.put(4, 4);
-    b.put(0, 1);
-    b.put(5, 2);
-    b.put(3, 3);
-    b.put(4, 4);
+    jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.ltcfg.name();
   }
   
-  public static int a(int paramInt)
+  private avsv()
   {
-    if ((paramInt >= 1) && (paramInt <= 4)) {
-      return a.get(paramInt);
+    this.jdField_a_of_type_Int = 50;
+    this.jdField_a_of_type_Long = 3000L;
+    this.jdField_a_of_type_Ankk = new avsw(this);
+    a();
+    DeviceProfileManager.a(this.jdField_a_of_type_Ankk);
+  }
+  
+  public static avsv a()
+  {
+    return avsx.a();
+  }
+  
+  private void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    try
+    {
+      if (!TextUtils.isEmpty(str))
+      {
+        String[] arrayOfString = str.split("\\|");
+        if (arrayOfString.length >= 4)
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+          this.b = Integer.valueOf(arrayOfString[1]).intValue();
+          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
+      }
+      return;
     }
-    return a.get(1);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
+        this.jdField_a_of_type_Int = 50;
+        this.b = 0;
+        this.jdField_a_of_type_Long = 3000L;
+      }
+    }
   }
   
-  public static void a(RedTouchItem paramRedTouchItem1, RedTouchItem paramRedTouchItem2)
+  public String toString()
   {
-    paramRedTouchItem1.count = paramRedTouchItem2.count;
-    paramRedTouchItem1.receiveTime = paramRedTouchItem2.receiveTime;
-    paramRedTouchItem1.redtouchType = paramRedTouchItem2.redtouchType;
-    paramRedTouchItem1.curSeq = paramRedTouchItem2.curSeq;
-    paramRedTouchItem1.icon = paramRedTouchItem2.icon;
-    paramRedTouchItem1.unReadFlag = paramRedTouchItem2.unReadFlag;
-    paramRedTouchItem1.validTimeRemained = paramRedTouchItem2.validTimeRemained;
-    paramRedTouchItem1.isClosed = paramRedTouchItem2.isClosed;
+    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsv
  * JD-Core Version:    0.7.0.1
  */

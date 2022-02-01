@@ -1,20 +1,87 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract interface wuv
+public class wuv
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a(String paramString, CommentEntry paramCommentEntry);
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public abstract void b();
+  static
+  {
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+  }
   
-  public abstract void c();
+  public wuv(Context paramContext)
+  {
+    this.jdField_a_of_type_Int = afur.a(5.0F, paramContext.getResources());
+    this.b = afur.a(16.0F, paramContext.getResources());
+    this.c = afur.a(8.5F, paramContext.getResources());
+    this.d = afur.a(3.0F, paramContext.getResources());
+    this.e = afur.a(3.0F, paramContext.getResources());
+  }
   
-  public abstract void d();
-  
-  public abstract void e();
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
+    }
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
+    {
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
+    }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuv
  * JD-Core Version:    0.7.0.1
  */

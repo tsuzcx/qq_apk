@@ -25,6 +25,7 @@ class ImageJsPlugin$4
         this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, "chooseImage", null, "cancel", this.val$callbackId);
       }
       this.val$imageFile.deleteOnExit();
+      MiniAppController.getInstance().removeActivityResultListener(this);
       return true;
     }
     paramIntent = new ArrayList();
@@ -36,7 +37,7 @@ class ImageJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ImageJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

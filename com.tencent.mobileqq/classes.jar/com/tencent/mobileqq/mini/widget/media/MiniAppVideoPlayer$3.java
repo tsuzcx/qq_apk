@@ -29,7 +29,7 @@ class MiniAppVideoPlayer$3
         MiniAppVideoPlayer.access$500(this.this$0).setAttributes(MiniAppVideoPlayer.access$600(this.this$0));
       }
       MiniAppVideoPlayer.access$700(this.this$0).setProgress((int)(paramFloat1 * 100.0F));
-      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840774);
+      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840982);
       MiniAppVideoPlayer.access$700(this.this$0).show();
       return;
       if (paramFloat2 > 1.0F) {
@@ -82,7 +82,7 @@ class MiniAppVideoPlayer$3
     paramFloat1 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
     if (paramFloat1 > 0.0F)
     {
-      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840775);
+      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840983);
       paramMotionEvent1 = this.this$0;
       paramFloat2 = MiniAppVideoPlayer.access$1300(this.this$0);
       MiniAppVideoPlayer.access$1202(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.access$300(this.this$0).getWidth() * 100.0F + paramFloat2));
@@ -97,7 +97,7 @@ class MiniAppVideoPlayer$3
       int i = (int)MiniAppVideoPlayer.access$1100(this.this$0).getDuration() * MiniAppVideoPlayer.access$1200(this.this$0) / 100;
       MiniAppVideoPlayer.access$1100(this.this$0).seekTo(i);
       return;
-      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840776);
+      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840984);
       paramMotionEvent1 = this.this$0;
       paramFloat2 = MiniAppVideoPlayer.access$1300(this.this$0);
       MiniAppVideoPlayer.access$1202(paramMotionEvent1, (int)(paramFloat1 / MiniAppVideoPlayer.access$300(this.this$0).getWidth() * 100.0F + paramFloat2));
@@ -134,7 +134,7 @@ class MiniAppVideoPlayer$3
     }
     i = (int)(i / Float.valueOf(MiniAppVideoPlayer.access$800(this.this$0)).floatValue() * 100.0F);
     if (i >= 50) {
-      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840778);
+      MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840986);
     }
     for (;;)
     {
@@ -142,16 +142,16 @@ class MiniAppVideoPlayer$3
       MiniAppVideoPlayer.access$700(this.this$0).show();
       return;
       if (i > 0) {
-        MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840779);
+        MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840987);
       } else {
-        MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840780);
+        MiniAppVideoPlayer.access$700(this.this$0).setImageResource(2130840988);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

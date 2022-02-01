@@ -33,7 +33,7 @@ class p
       }
       localObject2 = new OutputStreamWriter(((Socket)localObject1).getOutputStream());
       Object localObject3 = new StringBuffer();
-      ((StringBuffer)localObject3).append("GET http://3gimg.qq.com/qq_product_operations/nettest/index.html?mType=connCheck HTTP/1.1\r\n");
+      ((StringBuffer)localObject3).append("GET https://3gimg.qq.com/qq_product_operations/nettest/index.html?mType=connCheck HTTP/1.1\r\n");
       ((StringBuffer)localObject3).append("Host: 3gimg.qq.com \r\n");
       ((StringBuffer)localObject3).append("Connection: close\r\n");
       ((StringBuffer)localObject3).append("\r\n");

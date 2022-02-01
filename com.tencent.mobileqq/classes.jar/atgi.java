@@ -1,87 +1,91 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahook.BadTokenHooker.2;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
-public class atgi
+class atgi
+  extends atfi
 {
-  private static atgk a = new atgk(null);
-  
-  public static void a()
+  public atgi(atfe paramatfe)
   {
-    try
+    super(paramatfe);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadingWhenChangeToOff";
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      localClass1 = Class.forName("android.view.ViewRootImpl");
-      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new atgj(localClass1) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          localClass1 = Class.forName("android.view.WindowManagerImpl");
-          if (Build.VERSION.SDK_INT > 16) {
-            break;
-          }
-        }
-        catch (ClassNotFoundException localClassNotFoundException2)
-        {
-          Class localClass1;
-          Class localClass2;
-          bdeu.a(localClassNotFoundException2);
-          return;
-        }
-        try
-        {
-          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
-          if (localClass2 != null) {
-            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
-          }
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
-          bdeu.a(localNoSuchMethodException2);
-          return;
-        }
-        catch (ClassNotFoundException localClassNotFoundException3)
-        {
-          bdeu.a(localClassNotFoundException3);
-          return;
-        }
-        localNoSuchMethodException1 = localNoSuchMethodException1;
-        bdeu.a(localNoSuchMethodException1);
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException1)
-    {
-      for (;;)
-      {
-        bdeu.a(localClassNotFoundException1);
-      }
-    }
-    try
-    {
-      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException3)
-    {
-      bdeu.a(localNoSuchMethodException3);
-    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 12);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 12);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateExcepInvalidWhenChangeToOff");
+    this.jdField_a_of_type_Atfi = new atfr(this.jdField_a_of_type_Atfe);
   }
   
-  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  protected void a(long paramLong)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
+    b(paramLong);
   }
+  
+  protected boolean a()
+  {
+    if (a("onRecvOnLineFile")) {
+      return false;
+    }
+    atfe.a(this.jdField_a_of_type_Atfe, 9, 11);
+    atfe.a(this.jdField_a_of_type_Atfe, 9, 14, false);
+    a("StateUploadingWhenRecv");
+    this.jdField_a_of_type_Atfi = new atgk(this.jdField_a_of_type_Atfe);
+    return true;
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((atvo.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 13);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 13);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadoneWhenChangeToOff)");
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Atfi = new atgl(this.jdField_a_of_type_Atfe);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 9);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Atfi = new atfl(this.jdField_a_of_type_Atfe);
+  }
+  
+  protected void j() {}
 }
 
 

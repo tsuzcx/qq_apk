@@ -7,7 +7,7 @@ import android.opengl.GLUtils;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bael;
+import bdfp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class GLTextureView
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
   private GLTextureView.RenderThreadRunnable jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<bael> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<bdfp> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
   private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
@@ -208,9 +208,9 @@ public class GLTextureView
     ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable, 10, null, true);
   }
   
-  public void a(bael parambael)
+  public void a(bdfp parambdfp)
   {
-    this.jdField_a_of_type_JavaUtilList.add(parambael);
+    this.jdField_a_of_type_JavaUtilList.add(parambdfp);
   }
   
   public void a(Runnable paramRunnable)
@@ -222,9 +222,9 @@ public class GLTextureView
     }
   }
   
-  public void b(bael parambael)
+  public void b(bdfp parambdfp)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(parambael);
+    this.jdField_a_of_type_JavaUtilList.remove(parambdfp);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -271,7 +271,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

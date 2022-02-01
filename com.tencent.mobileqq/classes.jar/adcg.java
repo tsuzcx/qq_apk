@@ -1,40 +1,106 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.config.APMConfig;
+import com.tencent.mfsdk.config.APMModuleConfig;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class adcg
-  extends alpp
+public abstract class adcg
+  implements adbu
 {
-  public adcg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  APMModuleConfig jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig = null;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
+  private DefaultPluginConfig a()
   {
-    if (paramInt != 0)
+    return (DefaultPluginConfig)APMConfig.sPluginToQapmPluginConfigMap.get(c());
+  }
+  
+  protected APMModuleConfig a()
+  {
+    APMModuleConfig localAPMModuleConfig = new APMModuleConfig();
+    localAPMModuleConfig.userRatio = 0.0F;
+    localAPMModuleConfig.evenRatio = 0.0F;
+    localAPMModuleConfig.threshold = 100;
+    localAPMModuleConfig.maxReport = 0;
+    return localAPMModuleConfig;
+  }
+  
+  protected void a(APMModuleConfig paramAPMModuleConfig) {}
+  
+  public final boolean a()
+  {
+    boolean bool = b();
+    QLog.i("MagnifierSDK.QAPM", 1, "lifecycle " + c() + " canStart " + bool);
+    if (bool)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+      adch.a();
+      DefaultPluginConfig localDefaultPluginConfig = a();
+      b();
+      APMModuleConfig localAPMModuleConfig = b();
+      localDefaultPluginConfig.eventSampleRatio = localAPMModuleConfig.evenRatio;
+      localDefaultPluginConfig.threshold = localAPMModuleConfig.threshold;
+      localDefaultPluginConfig.maxReportNum = localAPMModuleConfig.maxReport;
+      localDefaultPluginConfig.stackDepth = localAPMModuleConfig.stackDepth;
+      QAPM.beginScene("SCENE_ALL", localDefaultPluginConfig.mode);
+      this.jdField_a_of_type_Boolean = true;
+      c();
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public APMModuleConfig b()
+  {
+    if (this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig == null)
+    {
+      APMConfig localAPMConfig = MagnifierSDK.a().a();
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig = localAPMConfig.getSampleConfig(c());
+      if (this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig == null) {
+        this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig = a();
       }
-      return;
+      if ((localAPMConfig.runVip) && (UnifiedMonitor.c()) && ((!QLog.isColorLevel()) || ((!"dropframe".equals(c())) && (!"leak".equals(c()))))) {
+        break label137;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
-    }
-    FriendProfileMoreInfoActivity.a(this.a).clear();
-    paramInt = 0;
-    while (paramInt < paramList.size())
+    for (;;)
     {
-      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
-      paramInt += 1;
+      a(this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig);
+      QLog.i("MagnifierSDK.QAPM", 1, "getMyConfig " + c() + " " + this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig);
+      return this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig;
+      label137:
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig.evenRatio = 1.0F;
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig.threshold = a().threshold;
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig.userRatio = 1.0F;
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig.maxReport = 2147483647;
+      this.jdField_a_of_type_ComTencentMfsdkConfigAPMModuleConfig.stackDepth = 6;
     }
-    this.a.a.sendEmptyMessage(1003);
+  }
+  
+  protected abstract void b();
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_JavaLangBoolean == null) {
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(d());
+    }
+    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
+  }
+  
+  public abstract String c();
+  
+  protected void c() {}
+  
+  protected boolean d()
+  {
+    return b().canOpenPlugin();
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

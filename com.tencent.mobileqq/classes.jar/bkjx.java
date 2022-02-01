@@ -1,7 +1,4 @@
-public abstract interface bkjx
-{
-  public abstract void a(int paramInt);
-}
+public abstract interface bkjx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

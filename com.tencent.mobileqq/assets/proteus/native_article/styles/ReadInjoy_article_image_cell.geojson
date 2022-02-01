@@ -28,7 +28,7 @@
 				"setGifUrl:": "$articleImageUrl",
 				"setHeightString:": "$imageHeight",
 				"setWidthString:": "$imageWidth",
-				"setScaleType:": "1",
+				"setScaleType:": "6",
 				"setSupportGifEnable:": "1"
 			}
 		}]

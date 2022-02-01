@@ -44,9 +44,8 @@ public class PTSItemViewManager
     PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
     if (localPTSAppInstance2 == null)
     {
-      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.activity).withRootView(paramPTSItemView).withRootNodeType(1).withPTSJSBridge(this.jsBridge).withItemData(paramPTSItemData).withAppName(paramPTSItemData.getAppName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withPageJs(paramPTSItemData.getPageJs()).build();
+      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.activity).withRootView(paramPTSItemView).withRootNodeType(1).withPTSJSBridge(this.jsBridge).withItemData(paramPTSItemData).withPageName(paramPTSItemData.getPageName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withPageJs(paramPTSItemData.getPageJs()).build();
       this.mItemIDToAppInstanceMap.put(str, localPTSAppInstance1);
-      paramPTSItemView.bindData(localPTSAppInstance1);
     }
     paramPTSItemView.bindData(localPTSAppInstance1);
     PTSThreadUtil.runOnSubThread(new PTSItemViewManager.1(this, paramPTSItemData, localPTSAppInstance1));
@@ -89,7 +88,7 @@ public class PTSItemViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemViewManager
  * JD-Core Version:    0.7.0.1
  */

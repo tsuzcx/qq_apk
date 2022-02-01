@@ -1,21 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.CaughtQZonePluginException;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneStartupMonitor.2.1;
+import cooperation.qzone.QzonePluginProxyActivity;
 
-class bltg
-  implements View.OnClickListener
+public class bltg
+  extends Handler
 {
-  bltg(bltd parambltd) {}
-  
-  public void onClick(View paramView)
+  bltg(blte paramblte, Looper paramLooper)
   {
-    if (bltd.a(this.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int j = 1;
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.a.a.y();
+    default: 
+      break;
+    }
+    do
+    {
+      return;
+    } while (blte.a(this.a));
+    if (QzonePluginProxyActivity.a())
+    {
+      QLog.i("QZoneStartupMonitor", 1, "超时，但是qzone 进程存在");
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131714086), 0).a();
+    QLog.e("QZoneStartupMonitor", 1, "启动超时认为启动失败，校验odex，并上报");
+    paramMessage = blte.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
+    int i;
+    if (paramMessage != null)
+    {
+      i = ((Integer)paramMessage.first).intValue();
+      paramMessage = (Throwable)paramMessage.second;
+    }
+    for (;;)
+    {
+      int k = LocalMultiProcConfig.getInt("key_recovery_count", 0);
+      blte.a(this.a, i, blte.a(this.a), k);
+      StringBuilder localStringBuilder = new StringBuilder("qzone进程启动失败,elf valid errorcode: ").append(i).append(",recoveryCount:").append(k);
+      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "exception_report_rdm", 0) == 1) {}
+      for (;;)
+      {
+        if (j != 0) {
+          bmjj.a(new CaughtQZonePluginException("start failed. " + paramMessage.getMessage()), localStringBuilder.toString());
+        }
+        if (i == 0) {
+          break;
+        }
+        ThreadManager.postImmediately(new QZoneStartupMonitor.2.1(this, k), null, false);
+        return;
+        j = 0;
+      }
+      paramMessage = null;
+      i = 0;
+    }
   }
 }
 

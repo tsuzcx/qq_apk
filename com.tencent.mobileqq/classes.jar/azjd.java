@@ -1,186 +1,121 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-public class azjd
+public abstract class azjd
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  private static long[] a;
-  public static int b;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static long[] jdField_b_of_type_ArrayOfLong;
-  private static int jdField_c_of_type_Int;
-  private static boolean jdField_c_of_type_Boolean;
-  private static long[] jdField_c_of_type_ArrayOfLong;
-  private static int jdField_d_of_type_Int;
-  private static long[] jdField_d_of_type_ArrayOfLong;
-  private static int jdField_e_of_type_Int;
-  private static long[] jdField_e_of_type_ArrayOfLong;
-  private static int jdField_f_of_type_Int;
-  private static long[] jdField_f_of_type_ArrayOfLong;
-  private static int g;
-  private static int h;
+  protected int a;
+  public long a;
+  protected AbstractUploadTask a;
+  protected IUploadTaskCallback a;
+  protected Object a;
+  public Map<String, String> a;
+  public byte[] a;
+  public int b;
+  protected IUploadTaskCallback b;
+  protected String b;
+  protected byte[] b;
+  public int c;
+  protected String c;
+  public int d;
+  public String d;
+  protected int e;
+  public String e;
+  protected volatile int f = -10001;
+  public String f;
+  protected String g;
+  protected String h;
   
-  static
+  public azjd(long paramLong, String paramString, byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_ArrayOfLong = new long[20];
-    jdField_b_of_type_ArrayOfLong = new long[20];
-    jdField_c_of_type_ArrayOfLong = new long[20];
-    jdField_d_of_type_ArrayOfLong = new long[20];
-    jdField_e_of_type_ArrayOfLong = new long[20];
-    jdField_f_of_type_ArrayOfLong = new long[20];
-    jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 6;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_e_of_type_JavaLangString = "mqq";
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new azje(this);
+    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramString;
+    this.h = azjb.a(paramString);
+    this.jdField_e_of_type_Int = a();
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
   }
   
-  public static void a()
+  protected int a()
   {
-    if (!jdField_b_of_type_Boolean) {
-      h += 1;
-    }
-    if (h >= 5) {
-      jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    if ((jdField_b_of_type_Boolean) && (jdField_d_of_type_Int < 20))
-    {
-      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
-      int i = jdField_d_of_type_Int;
-      jdField_d_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+    if (this.g == null) {}
+    for (String str = "";; str = this.g) {
+      return (str + System.currentTimeMillis()).hashCode();
     }
   }
   
-  public static void a(String paramString, long paramLong)
+  public final Object a()
   {
-    if (!jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      jdField_e_of_type_Int = 0;
-      jdField_a_of_type_JavaLangString = paramString;
-    }
-    if ((jdField_b_of_type_Boolean) && (jdField_e_of_type_Int < 20))
-    {
-      paramString = jdField_d_of_type_ArrayOfLong;
-      int i = jdField_e_of_type_Int;
-      jdField_e_of_type_Int = i + 1;
-      paramString[i] = paramLong;
-    }
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public static void b()
+  public final String a()
   {
-    long l2 = 0L;
-    int j = 0;
-    if ((g > 5) && (!jdField_c_of_type_Boolean))
-    {
-      jdField_c_of_type_Boolean = true;
-      int i;
-      long l1;
-      double d1;
-      if (jdField_c_of_type_Int > 0)
-      {
-        i = 0;
-        l1 = 0L;
-        while (i < jdField_c_of_type_Int)
-        {
-          l1 += jdField_b_of_type_ArrayOfLong[i];
-          i += 1;
-        }
-        d1 = l1 / 1000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterTimeStatistics", 2, "FilterProcessRender_showPreview[FaceTotalTime=" + d1 + "ms] avg=" + d1 / jdField_c_of_type_Int);
-        }
-        azjc.a("sv_filter_face_track", d1 / jdField_c_of_type_Int);
-      }
-      if (jdField_d_of_type_Int > 0)
-      {
-        i = 0;
-        l1 = 0L;
-        while (i < jdField_d_of_type_Int)
-        {
-          l1 += jdField_c_of_type_ArrayOfLong[i];
-          i += 1;
-        }
-        d1 = l1 / 1000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterTimeStatistics", 2, "FilterProcessRender_showPreview[FilterTotalTime=" + d1 + "ms] avg=" + d1 / jdField_d_of_type_Int);
-        }
-        azjc.a("sv_filter_draw_frame", d1 / jdField_d_of_type_Int);
-      }
-      if (jdField_e_of_type_Int > 0)
-      {
-        i = 0;
-        l1 = 0L;
-        while (i < jdField_e_of_type_Int)
-        {
-          l1 += jdField_d_of_type_ArrayOfLong[i];
-          i += 1;
-        }
-        d1 = l1 / 1000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterTimeStatistics", 2, "FilterProcessRender_showPreview[ShowTotalDrawTime=" + d1 + "ms] avg=" + d1 / jdField_e_of_type_Int);
-        }
-        azjc.a("sv_filter_total_draw", d1 / jdField_e_of_type_Int);
-      }
-      if (jdField_f_of_type_Int > 0)
-      {
-        i = 0;
-        l1 = 0L;
-        while (i < jdField_f_of_type_Int)
-        {
-          l1 += jdField_e_of_type_ArrayOfLong[i];
-          i += 1;
-        }
-        d1 = l1 / 1000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterTimeStatistics", 2, "FilterProcessRender_showPreview[ShowNoFilterTotalDrawTime=" + d1 + "ms] avg=" + d1 / jdField_f_of_type_Int);
-        }
-        azjc.a("sv_filter_no_filter_total_draw", d1 / jdField_f_of_type_Int);
-      }
-      if (g > 0)
-      {
-        l1 = l2;
-        i = j;
-        while (i < g)
-        {
-          l1 += jdField_f_of_type_ArrayOfLong[i];
-          i += 1;
-        }
-        d1 = l1 / 1000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterTimeStatistics", 2, "FilterProcessRender_showPreview[ShowTotalTime=" + d1 + "ms] avg=" + d1 / g);
-        }
-        azjc.a("sv_filter_total_process_frame", d1 / g);
-      }
-      if (jdField_b_of_type_Int == 0) {
-        jdField_b_of_type_Int = 1;
-      }
-      azjc.a("sv_filter_track_ratio", jdField_a_of_type_Int * 1000 / jdField_b_of_type_Int);
-    }
+    return this.jdField_c_of_type_JavaLangString;
   }
   
-  public static void b(long paramLong)
+  protected void a()
   {
-    if ((jdField_b_of_type_Boolean) && (jdField_f_of_type_Int < 20))
-    {
-      long[] arrayOfLong = jdField_e_of_type_ArrayOfLong;
-      int i = jdField_f_of_type_Int;
-      jdField_f_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+    if (this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask == null) {
+      throw new NullPointerException("Are you forget call buildTask()?");
     }
+    if (!a()) {
+      return;
+    }
+    b();
+    b();
   }
   
-  public static void c(long paramLong)
+  protected abstract void a(int paramInt, Object... paramVarArgs);
+  
+  protected boolean a()
   {
-    if ((jdField_b_of_type_Boolean) && (g < 20))
+    if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0))
     {
-      long[] arrayOfLong = jdField_f_of_type_ArrayOfLong;
-      int i = g;
-      g = i + 1;
-      arrayOfLong[i] = paramLong;
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -3, "invalid login data");
+      return false;
     }
+    return true;
+  }
+  
+  protected void b()
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localHashMap.put("task_state", this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer)) {
+      localHashMap.put("business_refer", this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer);
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData = localHashMap;
+  }
+  
+  protected boolean b()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -1, "no file path!");
+      return false;
+    }
+    File localFile = new File(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath);
+    if ((localFile == null) || (!localFile.exists()) || (localFile.length() == 0L) || (localFile.isDirectory()))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -2, "file is not exist or empty!");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData.put("task_state", "running_task");
+    return UploadServiceBuilder.getInstance().upload(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask);
   }
 }
 

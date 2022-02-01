@@ -1,10 +1,24 @@
-public abstract interface rrp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class rrp
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public rrp(BaseSelectView paramBaseSelectView) {}
+  
+  public final void onClick(View paramView)
+  {
+    BaseSelectView.a(this.a).b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrp
  * JD-Core Version:    0.7.0.1
  */

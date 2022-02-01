@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager;
-
-class rnp
-  implements rnb<rne>
+public abstract interface rnp<T extends rno>
 {
-  rnp(rnn paramrnn) {}
+  public abstract void a(T paramT);
   
-  public void a(rne paramrne)
-  {
-    rnn.a(this.a).b(paramrne.a());
-  }
+  public abstract void a(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void c(T paramT, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rnp
  * JD-Core Version:    0.7.0.1
  */

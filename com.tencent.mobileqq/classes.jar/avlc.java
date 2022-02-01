@@ -1,116 +1,88 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.qqinterface.CommonCallback;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class avlc
-  implements BusinessObserver
+public class avlc
+  extends anii
 {
-  avlc(avkt paramavkt) {}
+  private Map<Integer, CommonCallback> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public avlc(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = 0;
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NowChannerHandler", 2, "handleLiveFeedNearbyAnchor req == null || res == null");
+      }
+      return;
+    }
+    CommonCallback localCommonCallback = (CommonCallback)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("BUFFER", (byte[])paramObject);
+    localBundle.putInt("BIZCODE", 0);
+    localBundle.putString("ERRMSG", paramFromServiceMsg.getBusinessFailMsg());
+    if (paramFromServiceMsg.getResultCode() == 1000) {}
+    for (;;)
+    {
+      localBundle.putInt("CHANNELCODE", i);
+      localBundle.putString("serviceCmd", (String)paramToServiceMsg.getAttribute("serviceCmd"));
+      if (localCommonCallback == null) {
+        break;
+      }
+      localCommonCallback.onResult(localBundle);
+      return;
+      i = -1;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, byte[] paramArrayOfByte, CommonCallback<Bundle> paramCommonCallback)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayPanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+      QLog.w("NowChannerHandler", 2, "send serviceName = " + paramString1 + " to SSO Service");
     }
-    Object localObject;
-    if (paramBoolean)
-    {
-      try
-      {
-        ((auul)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label602;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayPanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label302;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
-        {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        QQToast.a(this.a.a, 1, alud.a(2131707648), 1).a();
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, alud.a(2131707751), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label647;
-        }
-      }
-      QLog.e("NearbyProfileDisplayPanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (avkt.a(this.a)) {
-          break label648;
-        }
-      }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("serviceCmd", paramString2);
+    anjf.a();
+    anjf.a(paramString2, new int[] { 145 });
+    paramString1 = new ToServiceMsg(paramString1, getCurrentAccountUin(), paramString2);
+    paramString1.putWupBuffer(paramArrayOfByte);
+    paramString1.setAttributes(localHashMap);
+    paramString1.setTimeout(15000L);
+    sendPbReq(paramString1);
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramString1.setRequestSsoSeq(i);
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCommonCallback);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return avlb.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("NowChannerHandler", 2, "onReceive-----serviceName = " + paramToServiceMsg.getServiceName() + ", serviceCmd = " + paramToServiceMsg.getServiceCmd());
     }
-    label647:
-    label648:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      avkt.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (avkt.a(this.a)) {}
-      for (paramBundle = alud.a(2131707757);; paramBundle = alud.a(2131707657))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        ((avbr)this.a.a.app.a(119)).notifyUI(1000, true, new Object[] { Boolean.valueOf(avkt.a(this.a)), avkt.a(this.a).uin });
-        avkt.a(this.a, 1, 60);
-        if ((!avkt.a(this.a)) && (avkt.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)avkt.a(this.a).getChildAt(1).findViewById(2131379107);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131166934));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845122));
-        }
-        if (!avkt.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)avkt.a(this.a).getChildAt(1).findViewById(2131379107);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131166936));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845123));
-        return;
-      }
-      label602:
-      QQToast.a(this.a.a, 1, alud.a(2131707642), 1).a();
-      return;
-      QQToast.a(this.a.a, 1, alud.a(2131707740), 1).a();
-      return;
-    }
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avlc
  * JD-Core Version:    0.7.0.1
  */

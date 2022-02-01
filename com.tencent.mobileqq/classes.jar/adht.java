@@ -1,48 +1,38 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class adht
-  extends avvc
+  implements View.OnTouchListener
 {
-  public adht(LoginInfoActivity paramLoginInfoActivity) {}
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new adhu(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
-    LoginInfoActivity.a(this.a).setVisibility(4);
-  }
+  public adht(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(oidb_0x5e1.RspBody paramRspBody)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LoginInfoActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    TextView localTextView = LoginInfoActivity.c(this.a);
-    if (i == 1)
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
+    }
+    if (i == 0)
     {
-      paramRspBody = this.a.getString(2131692354);
-      localTextView.setText(paramRspBody);
-      LoginInfoActivity.a(this.a).setVisibility(4);
-      LoginInfoActivity.c(this.a).setVisibility(0);
-      if (i != 1) {
-        break label122;
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
       }
     }
-    label122:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      azqs.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131692361);
-      break;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
     }
+    return false;
   }
 }
 

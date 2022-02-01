@@ -2,49 +2,49 @@ package com.tencent.mobileqq.location.net;
 
 import android.os.Handler;
 import android.util.Pair;
-import atpo;
-import atqg;
-import atqh;
+import avwn;
+import avxf;
+import avxg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReportLocationHandler$1
   implements Runnable
 {
-  public ReportLocationHandler$1(atqg paramatqg) {}
+  public ReportLocationHandler$1(avxf paramavxf) {}
   
   public void run()
   {
-    if ((!QLog.isColorLevel()) || ((atqg.a(this.this$0) != null) && (atqg.a(this.this$0).a() != null)))
+    if ((!QLog.isColorLevel()) || ((avxf.a(this.this$0) != null) && (avxf.a(this.this$0).a() != null)))
     {
-      atqg.a(this.this$0, ((Integer)atqg.a(this.this$0).a().first).intValue());
-      atqg.a(this.this$0, Long.valueOf(Long.parseLong((String)atqg.a(this.this$0).a().second)));
-      atpo localatpo = atqg.a(this.this$0).a();
+      avxf.a(this.this$0, ((Integer)avxf.a(this.this$0).a().first).intValue());
+      avxf.a(this.this$0, Long.valueOf(Long.parseLong((String)avxf.a(this.this$0).a().second)));
+      avwn localavwn = avxf.a(this.this$0).a();
       if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", "uinType = [" + atqg.a(this.this$0) + "], sessionUin = [" + atqg.a(this.this$0) + "], locationItem = [" + localatpo + "]" });
+        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", "uinType = [" + avxf.a(this.this$0) + "], sessionUin = [" + avxf.a(this.this$0) + "], locationItem = [" + localavwn + "]" });
       }
-      if (atqg.a(this.this$0).get())
+      if (avxf.a(this.this$0).get())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. stop old heartbeat ", " uinType: ", Integer.valueOf(atqg.a(this.this$0)), " sessionUin: ", atqg.a(this.this$0), " locationItem: ", localatpo });
+          QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. stop old heartbeat ", " uinType: ", Integer.valueOf(avxf.a(this.this$0)), " sessionUin: ", avxf.a(this.this$0), " locationItem: ", localavwn });
         }
         return;
       }
-      this.this$0.a(atqg.a(this.this$0), atqg.a(this.this$0).longValue(), localatpo);
+      this.this$0.a(avxf.a(this.this$0), avxf.a(this.this$0).longValue(), localavwn);
     }
     for (;;)
     {
-      atqg.a(this.this$0).postDelayed(this, atqg.b());
+      avxf.a(this.this$0).postDelayed(this, avxf.b());
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", atqg.a(this.this$0) });
+        QLog.d("ReportLocationHandler", 2, new Object[] { "report run: invoked. ", " check null: mLocationCallback: ", avxf.a(this.this$0) });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.ReportLocationHandler.1
  * JD-Core Version:    0.7.0.1
  */

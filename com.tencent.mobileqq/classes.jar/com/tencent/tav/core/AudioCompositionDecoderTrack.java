@@ -299,7 +299,7 @@ public class AudioCompositionDecoderTrack
       Logger.d("AudioCompositionDecoder", "asyncReadNextSample: " + ???);
     }
     if (AudioCompositionDecoderTrack.DecoderThread.access$100(this.decoderThread) == null) {
-      synchronized (this.decoderThread)
+      synchronized (AudioCompositionDecoderTrack.DecoderThread.access$000(this.decoderThread))
       {
         if (AudioCompositionDecoderTrack.DecoderThread.access$100(this.decoderThread) == null) {
           this.decoderThread.action();
@@ -563,7 +563,7 @@ public class AudioCompositionDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositionDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

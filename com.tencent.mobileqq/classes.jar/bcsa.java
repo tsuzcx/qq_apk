@@ -1,103 +1,262 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class bcsa
-  implements URLDrawableDownListener
+public class bcsa
 {
-  bcsa(bcrz parambcrz, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  private static volatile int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static volatile int jdField_b_of_type_Int;
+  private static boolean jdField_b_of_type_Boolean;
+  private static volatile int jdField_c_of_type_Int;
+  private static boolean jdField_c_of_type_Boolean = true;
+  private static volatile int d;
+  private static volatile int e;
+  private static volatile int f;
+  private static volatile int g;
+  private static volatile int h;
+  private static volatile int i;
+  private static volatile int j;
+  private static volatile int k;
+  private static volatile int l;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private static long a(int paramInt1, String paramString, int paramInt2, long paramLong)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    paramString = a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramInt1, paramString, paramInt2);
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      paramLong = ((Long)jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
     }
-    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
-    azqs.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+    return paramLong;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private static String a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    return String.format("%d_%s_%d_%s", new Object[] { Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString1 });
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {
+      c();
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      azqs.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+    if (!jdField_b_of_type_Boolean) {}
+    while (System.currentTimeMillis() - jdField_a_of_type_Long <= 86400000L) {
       return;
     }
+    if (jdField_c_of_type_Boolean) {
+      QLog.d("FightMsgReporter", 1, "report.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
+    }
+    bcst.a(null, "dc00898", "", "", "0X800A95A", "0X800A95A", 0, jdField_b_of_type_Int, "", "", "", "");
+    bcst.a(null, "dc00898", "", "", "0X800A95A", "0X800A95A", 0, jdField_a_of_type_Int, "", "", "", "");
+    bcst.a(null, "dc00898", "", "", "0X800A95A", "0X800A95B", 0, h, "" + k, "", "", "");
+    bcst.a(null, "dc00898", "", "", "0X800A95A", "0X800A95B", 0, g, "" + j, "", "", "");
+    jdField_b_of_type_Int = 0;
+    jdField_a_of_type_Int = 0;
+    jdField_c_of_type_Int = 0;
+    e = 0;
+    d = 0;
+    f = 0;
+    h = 0;
+    g = 0;
+    i = 0;
+    k = 0;
+    j = 0;
+    l = 0;
+    b();
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  private static void a(int paramInt1, int paramInt2)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    switch (paramInt1)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      azqs.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+    default: 
+      return;
+    case 0: 
+      jdField_b_of_type_Int += paramInt2;
+      return;
+    case 1: 
+      jdField_a_of_type_Int += paramInt2;
       return;
     }
+    jdField_c_of_type_Int += paramInt2;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    if ((!jdField_b_of_type_Boolean) || (!jdField_a_of_type_Boolean)) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_Bcrz.a != null) && (this.jdField_a_of_type_Bcrz.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bcrz.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Bcrz.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    int m;
+    switch (paramInt3)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+    default: 
+      m = 2;
+      label39:
+      if (paramInt1 == 0)
+      {
+        if (paramInt2 == 0) {
+          b(m, paramInt4);
+        }
+      }
+      else {
+        label53:
+        if (paramInt1 == 1)
+        {
+          if (paramInt2 != 0) {
+            break label135;
+          }
+          d(m, paramInt4);
+        }
+      }
+      break;
+    }
+    while (jdField_c_of_type_Boolean)
+    {
+      QLog.d("FightMsgReporter", 1, "add count = " + paramInt4 + ",uinType = " + paramInt3);
+      return;
+      m = 0;
+      break label39;
+      m = 1;
+      break label39;
+      if (paramInt2 != 1) {
+        break label53;
+      }
+      a(m, paramInt4);
+      break label53;
+      label135:
+      if (paramInt2 == 1) {
+        c(m, paramInt4);
       }
     }
-    if ((this.jdField_a_of_type_Bcrz.a != null) && (this.jdField_a_of_type_Bcrz.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bcrz.a.get()).setVisibility(8);
+  }
+  
+  private static void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    paramString = a(str, paramInt1, paramString, paramInt2);
+    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramLong));
+    bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, paramString, Long.valueOf(paramLong));
+  }
+  
+  public static void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if (!jdField_b_of_type_Boolean) {}
+    long l1;
+    int m;
+    do
+    {
+      return;
+      if (!jdField_a_of_type_Boolean) {
+        c();
+      }
+      l1 = a(0, paramString, 1, paramLong2);
+      m = (int)(paramLong1 - Math.max(l1, paramLong2));
+      a(0, 1, 1, m);
+      a(0, paramString, 1, paramLong1);
+    } while (!jdField_c_of_type_Boolean);
+    QLog.d("FightMsgReporter", 1, "computeTroopMsgNew.value:" + String.format("%s_%d_%d_%d_%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l1), Integer.valueOf(m) }));
+  }
+  
+  public static void b()
+  {
+    if ((!jdField_b_of_type_Boolean) || (!jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_friend", Integer.valueOf(jdField_b_of_type_Int));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_troop", Integer.valueOf(jdField_a_of_type_Int));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_other", Integer.valueOf(jdField_c_of_type_Int));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_friend_aio", Integer.valueOf(e));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_troop_aio", Integer.valueOf(d));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_other_aio", Integer.valueOf(f));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_friend", Integer.valueOf(h));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_troop", Integer.valueOf(g));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_other", Integer.valueOf(i));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_friend_aio", Integer.valueOf(k));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_troop_aio", Integer.valueOf(j));
+      bgsg.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_other_aio", Integer.valueOf(l));
+    } while (!jdField_c_of_type_Boolean);
+    QLog.d("FightMsgReporter", 1, "saveToSp.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
+  }
+  
+  private static void b(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      e += paramInt2;
+      return;
+    case 1: 
+      d += paramInt2;
+      return;
     }
-    this.jdField_a_of_type_Bcrz.a = null;
-    this.jdField_a_of_type_Bcrz.c = false;
-    azqs.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    f += paramInt2;
+  }
+  
+  private static void c()
+  {
+    bcsk localbcsk = (bcsk)aqlk.a().a(577);
+    if (localbcsk != null) {
+      jdField_b_of_type_Boolean = localbcsk.jdField_a_of_type_Boolean;
+    }
+    jdField_b_of_type_Int = ((Integer)bgsg.a("key_msg_funnel_report_new_friend", Integer.valueOf(0))).intValue();
+    jdField_a_of_type_Int = ((Integer)bgsg.a("key_msg_funnel_report_new_troop", Integer.valueOf(0))).intValue();
+    jdField_c_of_type_Int = ((Integer)bgsg.a("key_msg_funnel_report_new_other", Integer.valueOf(0))).intValue();
+    e = ((Integer)bgsg.a("key_msg_funnel_report_new_friend_aio", Integer.valueOf(0))).intValue();
+    d = ((Integer)bgsg.a("key_msg_funnel_report_new_troop_aio", Integer.valueOf(0))).intValue();
+    f = ((Integer)bgsg.a("key_msg_funnel_report_new_other_aio", Integer.valueOf(0))).intValue();
+    h = ((Integer)bgsg.a("key_msg_funnel_report_readed_friend", Integer.valueOf(0))).intValue();
+    g = ((Integer)bgsg.a("key_msg_funnel_report_readed_troop", Integer.valueOf(0))).intValue();
+    i = ((Integer)bgsg.a("key_msg_funnel_report_readed_other", Integer.valueOf(0))).intValue();
+    k = ((Integer)bgsg.a("key_msg_funnel_report_readed_friend_aio", Integer.valueOf(0))).intValue();
+    j = ((Integer)bgsg.a("key_msg_funnel_report_readed_troop_aio", Integer.valueOf(0))).intValue();
+    l = ((Integer)bgsg.a("key_msg_funnel_report_readed_other_aio", Integer.valueOf(0))).intValue();
+    jdField_a_of_type_Long = ((Long)bgsg.a("key_msg_report_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+    if (jdField_c_of_type_Boolean) {
+      QLog.d("FightMsgReporter", 1, "init.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
+    }
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  private static void c(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      h += paramInt2;
+      return;
+    case 1: 
+      g += paramInt2;
+      return;
+    }
+    i += paramInt2;
+  }
+  
+  private static void d(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      k += paramInt2;
+      return;
+    case 1: 
+      j += paramInt2;
+      return;
+    }
+    l += paramInt2;
   }
 }
 

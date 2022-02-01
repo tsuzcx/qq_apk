@@ -317,26 +317,20 @@ public class VFSFile
   
   public boolean isDirectory()
   {
-    Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    FileSystemManager.Resolution localResolution = resolve();
+    if (!localResolution.valid()) {
       return false;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.stat(((FileSystemManager.Resolution)localObject).path);
-    } while ((localObject == null) || (!((FileSystem.FileEntry)localObject).isDirectory));
-    return true;
+    }
+    return new File(localResolution.fileSystem.realPath(localResolution.path, false)).isDirectory();
   }
   
   public boolean isFile()
   {
-    Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    FileSystemManager.Resolution localResolution = resolve();
+    if (!localResolution.valid()) {
       return false;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.stat(((FileSystemManager.Resolution)localObject).path);
-    } while ((localObject == null) || (((FileSystem.FileEntry)localObject).isDirectory));
-    return true;
+    }
+    return new File(localResolution.fileSystem.realPath(localResolution.path, false)).isFile();
   }
   
   public boolean isHidden()
@@ -361,14 +355,11 @@ public class VFSFile
   
   public long length()
   {
-    Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    FileSystemManager.Resolution localResolution = resolve();
+    if (!localResolution.valid()) {
       return 0L;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.stat(((FileSystemManager.Resolution)localObject).path);
-    } while (localObject == null);
-    return ((FileSystem.FileEntry)localObject).size;
+    }
+    return new File(localResolution.fileSystem.realPath(localResolution.path, false)).length();
   }
   
   public String[] list()

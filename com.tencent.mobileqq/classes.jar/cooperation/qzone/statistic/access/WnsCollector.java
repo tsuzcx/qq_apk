@@ -1,15 +1,15 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import bill;
-import bjsn;
-import bjso;
-import bjss;
-import bjst;
-import bjsu;
-import bjsv;
-import bjtc;
-import bjtd;
+import bkyx;
+import bmgx;
+import bmgy;
+import bmhc;
+import bmhd;
+import bmhe;
+import bmhf;
+import bmhm;
+import bmhn;
 import cooperation.qzone.statistic.access.concept.Collector;
 import cooperation.qzone.statistic.access.concept.Key;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -28,17 +28,17 @@ public class WnsCollector
   public WnsCollector()
   {
     this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    bjsv localbjsv = new bjsv(bill.d(), bill.c(), true);
-    bjst localbjst = new bjst(bill.a());
-    bjsn localbjsn = new bjsn();
-    localbjsn.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    bjsu localbjsu = new bjsu("https://wspeed.qq.com/w.cgi");
-    localbjsu.a(true);
-    localbjsu.a().a(true);
-    a(localbjsv);
-    a(localbjst);
-    a(localbjsn);
-    a(localbjsu);
+    bmhf localbmhf = new bmhf(bkyx.d(), bkyx.c(), true);
+    bmhd localbmhd = new bmhd(bkyx.a());
+    bmgx localbmgx = new bmgx();
+    localbmgx.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
+    bmhe localbmhe = new bmhe("https://wspeed.qq.com/w.cgi");
+    localbmhe.a(true);
+    localbmhe.a().a(true);
+    a(localbmhf);
+    a(localbmhd);
+    a(localbmgx);
+    a(localbmhe);
   }
   
   public static WnsCollector a()
@@ -66,7 +66,7 @@ public class WnsCollector
   
   public void a(Context paramContext)
   {
-    bjtc.a(paramContext);
+    bmhm.a(paramContext);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -78,7 +78,7 @@ public class WnsCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsCollector
  * JD-Core Version:    0.7.0.1
  */

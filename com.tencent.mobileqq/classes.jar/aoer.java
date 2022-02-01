@@ -1,132 +1,112 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aoer
 {
-  private aobx jdField_a_of_type_Aobx = new aobx();
-  private aocd jdField_a_of_type_Aocd;
-  private aocf jdField_a_of_type_Aocf;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public aoer()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Aobx.a(new aobz());
-    this.jdField_a_of_type_Aocd = new aocd();
-    this.jdField_a_of_type_Aocd.a(this.jdField_a_of_type_Aobx);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 16908289) || (paramInt == 16908292);
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Aobx != null) && (this.jdField_a_of_type_Aocf != null))
+    int k = 0;
+    int m = 0;
+    int j = 1;
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
+    if (localTroopInfo == null)
     {
-      localColorNote = this.jdField_a_of_type_Aocf.getColorNote();
-      if (localColorNote != null)
-      {
-        this.jdField_a_of_type_Aobx.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
-        localColorNote = aocr.a(localColorNote);
-        this.jdField_a_of_type_Aobx.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+      localTroopInfo = new TroopInfo();
+      localTroopInfo.cmdUinFlagEx2 = paramInt;
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRankConfig", 2, "decodeSinglePbMsg_GroupDis, groupMemberFlagEx2=" + paramInt + ", troopUin=" + paramLong + ", hummer message cmdUinFlagEx2=" + localTroopInfo.cmdUinFlagEx2);
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
+      if (localTroopInfo.cmdUinFlagEx2 != paramInt)
       {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
-  }
-  
-  public void a(aobx paramaobx)
-  {
-    this.jdField_a_of_type_Aobx = paramaobx;
-  }
-  
-  public void a(aobz paramaobz)
-  {
-    if (this.jdField_a_of_type_Aobx != null) {
-      this.jdField_a_of_type_Aobx.a(paramaobz);
-    }
-  }
-  
-  public void a(aocf paramaocf)
-  {
-    this.jdField_a_of_type_Aocf = paramaocf;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Aobx != null) && (this.jdField_a_of_type_Aocf != null))
-    {
-      localColorNote = this.jdField_a_of_type_Aocf.getColorNote();
-      if (localColorNote != null)
-      {
-        this.jdField_a_of_type_Aobx.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
-        localColorNote = aocr.a(localColorNote);
-        this.jdField_a_of_type_Aobx.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        i = m;
+        if (TroopInfo.isCmdUinFlagEx2Open(localTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramInt, 512)) {
+          i = 1;
+        }
+        localTroopInfo.cmdUinFlagEx2 = paramInt;
+        paramInt = j;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    Object localObject;
-    if ((this.jdField_a_of_type_Aocf != null) && (this.jdField_a_of_type_Aobx != null) && (this.jdField_a_of_type_Aocd != null)) {
-      localObject = null;
-    }
-    try
-    {
-      ColorNote localColorNote = this.jdField_a_of_type_Aocf.getColorNote();
-      localObject = localColorNote;
-    }
-    catch (Exception localException)
-    {
       for (;;)
       {
-        QLog.e("ColorNoteStateNotice", 1, localException, new Object[0]);
-        continue;
-        int i = 0;
+        if (paramInt != 0)
+        {
+          localTroopManager.b(localTroopInfo);
+          if (i != 0) {
+            a(paramQQAppInterface, localTroopInfo);
+          }
+        }
+        return;
+        paramInt = i;
+        i = k;
       }
     }
-    if ((localObject != null) && (a(localObject.getServiceType())))
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
+  {
+    if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512)) {}
+    for (int i = 1;; i = 0)
     {
-      i = 1;
-      if ((localObject != null) && (i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Aobx.a(localObject.getServiceType(), localObject.getSubType())))
-      {
-        aocr.a(localObject);
-        this.jdField_a_of_type_Aocd.a(localObject);
-      }
+      FriendsStatusUtil.a(paramQQAppInterface, paramTroopInfo.troopuin, 1, i);
       return;
     }
   }
   
-  public void c()
+  public static void a(QQAppInterface paramQQAppInterface, Map<String, Boolean> paramMap)
   {
-    b(true);
+    paramMap = paramMap.entrySet().iterator();
+    if (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {}
+      for (int i = 1;; i = 0)
+      {
+        FriendsStatusUtil.a(paramQQAppInterface, (String)localEntry.getKey(), 1, i);
+        break;
+      }
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    int i = 0;
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
+    }
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
+    TroopInfo localTroopInfo1 = localTroopInfo2;
+    if (localTroopInfo2 == null)
+    {
+      localTroopInfo1 = new TroopInfo();
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = 1;
+    }
+    if (localTroopInfo1.udwCmdUinRingtoneID != paramInt)
+    {
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = j;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        localTroopManager.b(localTroopInfo1);
+        aqbp.a(paramQQAppInterface).a(paramInt);
+      }
+      return;
+    }
   }
 }
 

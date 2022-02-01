@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bdhb;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 import org.json.JSONArray;
-import pfg;
+import pwl;
 
 public class ChannelCoverInfoModule$10
   implements Runnable
 {
-  public ChannelCoverInfoModule$10(pfg parampfg, JSONArray paramJSONArray) {}
+  public ChannelCoverInfoModule$10(pwl parampwl, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    bdhb.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
+    bgmg.a(BaseApplicationImpl.getApplication().getDir("readinjoy", 0).getAbsolutePath() + "/channel_section_data", this.a.toString());
   }
 }
 

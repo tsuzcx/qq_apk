@@ -1,57 +1,33 @@
-import QC.BubbleRecommendRsp;
-import QC.CommonRsp;
-import QC.FontRecommendRsp;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Random;
 
 public class asrt
-  extends amcd
+  implements View.OnClickListener
 {
-  public asrt(FontBubblePanelView paramFontBubblePanelView) {}
+  public asrt(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
+  public void onClick(View paramView)
   {
-    if (FontBubblePanelView.a(this.a) == 4)
+    this.a.startTitleProgress();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131694296);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_Athl != null)
     {
-      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
-      }
+      athl localathl = this.a.jdField_a_of_type_Athl;
+      localathl.a += 1;
     }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
-    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
-  }
-  
-  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
-  {
-    if (FontBubblePanelView.a(this.a) == 3)
-    {
-      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
-      }
-    }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
-    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

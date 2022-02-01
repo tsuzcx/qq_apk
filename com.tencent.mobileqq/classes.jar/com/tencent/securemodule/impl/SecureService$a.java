@@ -2,7 +2,7 @@ package com.tencent.securemodule.impl;
 
 import android.os.Binder;
 import com.tencent.securemodule.ac;
-import com.tencent.securemodule.ax;
+import com.tencent.securemodule.az;
 import com.tencent.securemodule.service.ICallback;
 import com.tencent.securemodule.service.IControlService;
 
@@ -14,7 +14,7 @@ public class SecureService$a
   
   public void doRemoteTask(String paramString, ICallback paramICallback)
   {
-    if (!ax.a(this.a.getApplicationContext(), "sm_mq")) {
+    if (!az.a(this.a.getApplicationContext(), "sm_mq")) {
       return;
     }
     try
@@ -37,7 +37,7 @@ public class SecureService$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureService.a
  * JD-Core Version:    0.7.0.1
  */

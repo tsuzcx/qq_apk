@@ -1,20 +1,18 @@
-import com.tencent.av.gaudio.GaInviteDialogActivity;
+import javax.microedition.khronos.opengles.GL11;
 
-public class lqa
-  implements aclm
+public abstract interface lqa
 {
-  public lqa(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  public abstract int a();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.g = paramInt1;
-    this.a.h = paramInt2;
-    GaInviteDialogActivity.a(this.a);
-  }
+  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lqa
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class PreConnectManager
       return;
       QDLog.i("downloader", "pre-connect:" + paramString);
       long l = System.currentTimeMillis();
-      localBuilder = new Request.Builder().url(paramString).addHeader("Connection", "keep-alive").head();
+      localBuilder = new Request.Builder().url(paramString).addHeader("Connection", "keep-alive");
       paramString = new PreConnectManager.1(paramString, l);
     } while (paramOkHttpClient == null);
     paramOkHttpClient.newCall(localBuilder.build()).enqueue(paramString);
@@ -43,7 +43,7 @@ public class PreConnectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.PreConnectManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
+import android.content.Context;
+import android.view.View;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.pts.core.lite.PTSLiteItemViewManager;
 
-public final class qnw
-  implements Parcelable.Creator<VisibleSetParam>
+@Deprecated
+public class qnw
 {
-  public VisibleSetParam a(Parcel paramParcel)
+  private PTSLiteItemViewManager a;
+  
+  public qnw(Context paramContext)
   {
-    return new VisibleSetParam(paramParcel);
+    this.a = new PTSLiteItemViewManager(paramContext);
   }
   
-  public VisibleSetParam[] a(int paramInt)
+  public View a(View paramView, PTSItemData paramPTSItemData)
   {
-    return new VisibleSetParam[paramInt];
+    Object localObject = paramView;
+    if (this.a != null) {
+      localObject = this.a.getView(paramView, paramPTSItemData);
+    }
+    return localObject;
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a.destroy();
+    }
+  }
+  
+  public void a(IPTSLiteEventListener paramIPTSLiteEventListener)
+  {
+    if (this.a != null) {
+      this.a.setLiteEventListener(paramIPTSLiteEventListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnw
  * JD-Core Version:    0.7.0.1
  */

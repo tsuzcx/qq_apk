@@ -1,10 +1,23 @@
-public abstract interface aeoi
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+
+public class aeoi
+  extends ayeu
 {
-  public abstract void a();
+  public aeoi(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public abstract void b(int paramInt, String paramString);
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  {
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
+  }
   
-  public abstract void c(int paramInt, String paramString);
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+  }
 }
 
 

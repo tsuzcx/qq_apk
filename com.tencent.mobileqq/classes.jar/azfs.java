@@ -1,7 +1,10 @@
 public class azfs
 {
-  public int a = -1;
-  public azfp a;
+  public long a;
+  public azfq a;
+  public String a = "";
+  public long b;
+  public azfq b;
 }
 
 

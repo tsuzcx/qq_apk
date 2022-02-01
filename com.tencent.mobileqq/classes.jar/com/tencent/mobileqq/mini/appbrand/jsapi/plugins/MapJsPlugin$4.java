@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ampt;
 import android.util.Log;
+import aopa;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.mini.util.ApiUtil.OnLocationFinish;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class MapJsPlugin$4
-  extends ampt
+  extends aopa
 {
-  MapJsPlugin$4(MapJsPlugin paramMapJsPlugin, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, boolean paramBoolean5, boolean paramBoolean6, ApiUtil.OnLocationFinish paramOnLocationFinish, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
+  MapJsPlugin$4(MapJsPlugin paramMapJsPlugin, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, boolean paramBoolean5, boolean paramBoolean6, MapJsPlugin.OnLocationFinish paramOnLocationFinish, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
   {
     super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
   }
@@ -73,7 +72,7 @@ class MapJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.MapJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

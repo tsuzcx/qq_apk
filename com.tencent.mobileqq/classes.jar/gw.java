@@ -1,73 +1,58 @@
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class gw
 {
-  private static gs a(hg paramhg, int paramInt1, int paramInt2, int paramInt3)
+  private final gu jdField_a_of_type_Gu;
+  private final List<gv> jdField_a_of_type_JavaUtilList;
+  
+  public gw(gu paramgu)
   {
-    paramhg = paramhg.a();
-    if (paramhg == null) {
-      throw new IllegalStateException();
+    if (!gu.jdField_a_of_type_Gu.equals(paramgu)) {
+      throw new IllegalArgumentException("Only QR Code is supported at this time");
     }
-    int k = paramhg.b();
-    int m = paramhg.a();
-    int i = (paramInt3 << 1) + k;
-    int j = (paramInt3 << 1) + m;
-    paramInt1 = Math.max(paramInt1, i);
-    paramInt3 = Math.max(paramInt2, j);
-    int n = Math.min(paramInt1 / i, paramInt3 / j);
-    j = (paramInt1 - k * n) / 2;
-    paramInt2 = (paramInt3 - m * n) / 2;
-    gs localgs = new gs(paramInt1, paramInt3);
-    paramInt1 = 0;
-    while (paramInt1 < m)
-    {
-      i = 0;
-      paramInt3 = j;
-      while (i < k)
-      {
-        if (paramhg.a(i, paramInt1) == 1) {
-          localgs.a(paramInt3, paramInt2, n, n);
-        }
-        i += 1;
-        paramInt3 += n;
-      }
-      paramInt2 += n;
-      paramInt1 += 1;
-    }
-    return localgs;
+    this.jdField_a_of_type_Gu = paramgu;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new gv(paramgu, new int[] { 1 }));
   }
   
-  public gs a(String paramString, int paramInt1, int paramInt2, Map<EncodeHintType, ?> paramMap)
+  private gv a(int paramInt)
   {
-    if (paramString.length() == 0) {
-      throw new IllegalArgumentException("Found empty contents");
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IllegalArgumentException("Requested dimensions are too small: " + paramInt1 + 'x' + paramInt2);
-    }
-    Object localObject1 = ErrorCorrectionLevel.L;
-    Object localObject2 = localObject1;
-    int i;
-    if (paramMap != null)
+    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject2 = (ErrorCorrectionLevel)paramMap.get(EncodeHintType.ERROR_CORRECTION);
-      if (localObject2 != null) {
-        localObject1 = localObject2;
-      }
-      Integer localInteger = (Integer)paramMap.get(EncodeHintType.MARGIN);
-      localObject2 = localObject1;
-      if (localInteger != null) {
-        i = localInteger.intValue();
+      gv localgv = (gv)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      while (i <= paramInt)
+      {
+        localgv = localgv.b(new gv(this.jdField_a_of_type_Gu, new int[] { 1, this.jdField_a_of_type_Gu.a(i - 1) }));
+        this.jdField_a_of_type_JavaUtilList.add(localgv);
+        i += 1;
       }
     }
-    for (;;)
-    {
-      return a(hc.a(paramString, (ErrorCorrectionLevel)localObject1, paramMap), paramInt1, paramInt2, i);
-      i = 4;
-      localObject1 = localObject2;
+    return (gv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(int[] paramArrayOfInt, int paramInt)
+  {
+    if (paramInt == 0) {
+      throw new IllegalArgumentException("No error correction bytes");
     }
+    int i = paramArrayOfInt.length - paramInt;
+    if (i <= 0) {
+      throw new IllegalArgumentException("No data bytes provided");
+    }
+    Object localObject = a(paramInt);
+    int[] arrayOfInt = new int[i];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i);
+    localObject = new gv(this.jdField_a_of_type_Gu, arrayOfInt).a(paramInt, 1).a(localObject)[1].a();
+    int j = paramInt - localObject.length;
+    paramInt = 0;
+    while (paramInt < j)
+    {
+      paramArrayOfInt[(i + paramInt)] = 0;
+      paramInt += 1;
+    }
+    System.arraycopy(localObject, 0, paramArrayOfInt, i + j, localObject.length);
   }
 }
 

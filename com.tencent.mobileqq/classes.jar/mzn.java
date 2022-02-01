@@ -1,181 +1,259 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.ArrayList;
+import android.annotation.SuppressLint;
+import com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.2;
+import com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class mzn
-  extends BaseAdapter
 {
-  public int a;
-  protected TextView a;
-  public ArrayList<mzm> a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public QQAppInterface a;
+  private ConcurrentHashMap<String, mzq> a;
   
-  public mzn(PoiMapActivity paramPoiMapActivity)
+  public mzn(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public mzm a(int paramInt)
+  @SuppressLint({"HandlerLeak"})
+  private bdzm a()
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    if ((i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (i < 0)) {
-      return null;
-    }
-    return (mzm)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+    return new mzo(this, ThreadManagerV2.getFileThreadLooper());
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  private String a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {}
-    mzm localmzm;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramInt == this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = paramInt;
-        notifyDataSetChanged();
-      } while ((paramInt == -1) || (!paramBoolean));
-      localmzm = a(paramInt);
-    } while (localmzm == null);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.l = localmzm.a;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = localmzm.jdField_b_of_type_JavaLangString;
-    PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity, localmzm.f);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_JavaLangString = localmzm.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.j = localmzm.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.k = localmzm.jdField_c_of_type_Int;
-    com.tencent.mobileqq.widget.QQMapView.jdField_b_of_type_Boolean = true;
-    PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).animateCamera(CameraUpdateFactory.newLatLng(new LatLng(localmzm.jdField_b_of_type_Int / 1000000.0D, localmzm.jdField_c_of_type_Int / 1000000.0D)));
+    bdzi localbdzi = paramQQAppInterface.a();
+    Object localObject = a();
+    localbdzi.a((bdzm)localObject);
+    ((bdzm)localObject).addFilter(new Class[] { bdsp.class });
+    localObject = new bdzn();
+    ((bdzn)localObject).jdField_a_of_type_Boolean = true;
+    ((bdzn)localObject).jdField_c_of_type_Int = 78;
+    ((bdzn)localObject).i = paramString2;
+    ((bdzn)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+    ((bdzn)localObject).jdField_c_of_type_JavaLangString = ("" + paramInt);
+    ((bdzn)localObject).jdField_b_of_type_JavaLangString = paramQQAppInterface.c();
+    ((bdzn)localObject).jdField_b_of_type_Int = 24;
+    ((bdzn)localObject).jdField_b_of_type_JavaLangObject = paramString1;
+    paramQQAppInterface = new Bdh_extinfo.CommFileExtReq();
+    paramQQAppInterface.uint32_action_type.set(0);
+    paramQQAppInterface.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
+    ((bdzn)localObject).jdField_a_of_type_ArrayOfByte = paramQQAppInterface.toByteArray();
+    localbdzi.a((bdzn)localObject);
+    return paramString1;
   }
   
+  /* Error */
   public void a(String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 18	mzn:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   6: aload_1
+    //   7: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   10: ifne +31 -> 41
+    //   13: ldc 168
+    //   15: iconst_1
+    //   16: new 87	java/lang/StringBuilder
+    //   19: dup
+    //   20: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   23: aload_1
+    //   24: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 170
+    //   29: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokestatic 176	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: return
+    //   41: new 178	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote$3
+    //   44: dup
+    //   45: aload_0
+    //   46: aload_0
+    //   47: getfield 18	mzn:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   50: aload_1
+    //   51: invokevirtual 182	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   54: checkcast 184	mzq
+    //   57: aload_1
+    //   58: invokespecial 187	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote$3:<init>	(Lmzn;Lmzq;Ljava/lang/String;)V
+    //   61: bipush 16
+    //   63: aconst_null
+    //   64: iconst_0
+    //   65: invokestatic 191	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   68: goto -30 -> 38
+    //   71: astore_1
+    //   72: aload_0
+    //   73: monitorexit
+    //   74: aload_1
+    //   75: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	76	0	this	mzn
+    //   0	76	1	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	38	71	finally
+    //   41	68	71	finally
   }
   
-  public void a(ArrayList<mzm> paramArrayList, boolean paramBoolean, int paramInt)
+  /* Error */
+  public void a(String paramString, int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 168
+    //   4: iconst_1
+    //   5: new 87	java/lang/StringBuilder
+    //   8: dup
+    //   9: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   12: aload_1
+    //   13: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: ldc 194
+    //   18: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: aload_0
+    //   28: getfield 18	mzn:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   31: astore_3
+    //   32: aload_3
+    //   33: monitorenter
+    //   34: aload_0
+    //   35: getfield 18	mzn:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   38: aload_1
+    //   39: invokevirtual 166	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   42: ifne +8 -> 50
+    //   45: aload_3
+    //   46: monitorexit
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: return
+    //   50: aload_0
+    //   51: getfield 18	mzn:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   54: aload_1
+    //   55: invokevirtual 200	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   58: pop
+    //   59: aload_3
+    //   60: monitorexit
+    //   61: goto -14 -> 47
+    //   64: astore_1
+    //   65: aload_3
+    //   66: monitorexit
+    //   67: aload_1
+    //   68: athrow
+    //   69: astore_1
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: aload_1
+    //   73: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	74	0	this	mzn
+    //   0	74	1	paramString	String
+    //   0	74	2	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   34	47	64	finally
+    //   50	61	64	finally
+    //   65	67	64	finally
+    //   2	34	69	finally
+    //   67	69	69	finally
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_b_of_type_Int += 1;
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    int j = 1;
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_b_of_type_Boolean) {}
-      for (;;)
+      mzq localmzq;
+      try
       {
-        return i + (j - 1);
-        i = 0;
+        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1);
+        if (!bool) {
+          return;
+        }
+        localmzq = (mzq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+        localmzq.jdField_a_of_type_Mzp.a(paramString1, paramInt, paramString2);
+        if (paramInt == 0)
+        {
+          localmzq.jdField_a_of_type_Boolean = false;
+          continue;
+        }
+        if (paramInt != 1) {
+          continue;
+        }
+      }
+      finally {}
+      localmzq.jdField_b_of_type_Boolean = false;
+      if (localmzq.c) {
+        b(paramString1);
       }
     }
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (this.jdField_b_of_type_Boolean) {}
-    for (i = j;; i = 0) {
-      return i + k;
-    }
   }
   
-  public long getItemId(int paramInt)
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, mzp parammzp)
   {
-    return 0L;
+    try
+    {
+      if (QLog.isDebugVersion()) {
+        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, "recv avgame upload request playId:" + paramString1);
+      }
+      mzq localmzq = new mzq(this, null);
+      localmzq.jdField_a_of_type_JavaLangString = paramString2;
+      localmzq.jdField_b_of_type_JavaLangString = paramString3;
+      localmzq.jdField_a_of_type_Mzp = parammzp;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localmzq);
+      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.2(this, localmzq, paramQQAppInterface, paramString1, paramString2), 16, null, false);
+      return true;
+    }
+    finally {}
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void b(String paramString)
   {
-    if (paramView == null)
+    for (;;)
     {
-      paramViewGroup = new mzo(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559822, null);
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376557);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376556));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370990));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362135));
-      paramViewGroup.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131376350);
-      paramViewGroup.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370746);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365152);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376555));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378540));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373975));
-      paramView.setTag(paramViewGroup);
-    }
-    while ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) || ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
-    {
-      paramViewGroup.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return paramView;
-      paramViewGroup = (mzo)paramView.getTag();
-    }
-    Object localObject = a(paramInt);
-    if ((paramInt == 0) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup.jdField_b_of_type_AndroidWidgetTextView;
-    }
-    if (localObject == null) {
-      return null;
-    }
-    paramViewGroup.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ComTencentBizPoiMapActivity.d);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((mzm)localObject).a);
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((mzm)localObject).jdField_b_of_type_JavaLangString);
-    localObject = ((mzm)localObject).a + ((mzm)localObject).jdField_b_of_type_JavaLangString;
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-      paramViewGroup.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131695390);; paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131695391))
-    {
-      paramView.setContentDescription(paramViewGroup);
-      return paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_Int);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_Int);
-      paramViewGroup.jdField_c_of_type_AndroidViewView.setVisibility(4);
+      try
+      {
+        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+        if (!bool) {
+          return;
+        }
+        localObject = (mzq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if ((((mzq)localObject).jdField_b_of_type_Boolean) || (((mzq)localObject).jdField_a_of_type_Boolean))
+        {
+          ((mzq)localObject).c = true;
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("视频正在上传[%b], 图片正在上传[%b],需要延迟清理", new Object[] { Boolean.valueOf(((mzq)localObject).jdField_b_of_type_Boolean), Boolean.valueOf(((mzq)localObject).jdField_a_of_type_Boolean) }));
+          continue;
+        }
+        str = ((mzq)localObject).jdField_a_of_type_JavaLangString;
+      }
+      finally {}
+      String str;
+      Object localObject = ((mzq)localObject).jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("清理资源[%s]", new Object[] { paramString }));
+      }
+      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.4(this, str, (String)localObject), 16, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mzn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibc
-  implements bhzf
+class aibc
+  implements DialogInterface.OnClickListener
 {
-  public aibc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aibc(aiay paramaiay) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.a(l);
-      if (!bdin.g(this.a.getActivity())) {
-        break;
-      }
-      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
-      return true;
-    }
-    ChatHistoryTroopFileFragment.a(this.a, 1);
-    bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

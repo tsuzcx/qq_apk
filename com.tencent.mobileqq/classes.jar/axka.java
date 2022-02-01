@@ -1,38 +1,21 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
-
-final class axka
-  implements Downloader.DownloadListener
+public class axka
 {
-  axka(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onDownloadCanceled(String paramString)
+  public axka() {}
+  
+  public axka(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.onResult(false);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(false);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(true);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axka
  * JD-Core Version:    0.7.0.1
  */

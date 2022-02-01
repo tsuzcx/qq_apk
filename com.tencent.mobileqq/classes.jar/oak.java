@@ -1,29 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.1;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class oak
-  implements DialogInterface.OnCancelListener
+class oak
+  implements BusinessObserver
 {
-  public oak(ReadInJoyUploadAvatarActivity.1 param1) {}
+  oak(nzz paramnzz, NewIntent paramNewIntent) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", alud.a(2131713482));
-    paramDialogInterface.putExtra("Bundle", localBundle);
-    this.a.this$0.setResult(-1, paramDialogInterface);
-    this.a.this$0.finish();
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
+      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
+      boolean bool = paramBoolean;
+      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
+      {
+        bool = paramBoolean;
+        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
+      return;
+    }
+    finally
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oak
  * JD-Core Version:    0.7.0.1
  */

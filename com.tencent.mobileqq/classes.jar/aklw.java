@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface aklw
+public class aklw
+  extends bhhe
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  aklw(aklv paramaklv) {}
   
-  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
+  public void onDone(bhhf parambhhf)
+  {
+    super.onDone(parambhhf);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambhhf));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklw
  * JD-Core Version:    0.7.0.1
  */

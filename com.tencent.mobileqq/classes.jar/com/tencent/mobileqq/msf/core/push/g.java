@@ -45,19 +45,23 @@ import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.ab;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.f;
 import com.tencent.mobileqq.msf.core.c.f.a;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.msf.sdk.y;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.MsfService;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -93,32 +97,32 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class g
   extends BroadcastReceiver
 {
-  static int J = 10101;
-  static int K = 10102;
-  public static int L = 10103;
-  public static int M = 10104;
-  public static final String R = "com.tencent.mobileqq.msf.receiveofflinepush";
-  public static final String S = "com.tencent.mobileqq.msf.offlinepushclearall";
-  public static final String T = "com.tencent.mobileqq.msf.devlockquickloginpush";
-  public static final String U = "com.tencent.mobileqq.msf.devlockquickloginpushclear";
-  public static final String V = "com.tencent.mobileqq.action.QQWiFi";
-  public static final String W = "com.tencent.mobileqq.msf.qqwifi.settings";
-  public static final String X = "com.tencent.mobileqq.msf.qqwifi.redtouch";
-  public static final String Y = "com.tencent.mobileqq.msf.qqwifi.autoconnect";
+  static int G = 10101;
+  static int H = 10102;
+  public static int I = 10103;
+  public static int J = 10104;
+  public static final String O = "com.tencent.mobileqq.msf.receiveofflinepush";
+  public static final String P = "com.tencent.mobileqq.msf.offlinepushclearall";
+  public static final String Q = "com.tencent.mobileqq.msf.devlockquickloginpush";
+  public static final String R = "com.tencent.mobileqq.msf.devlockquickloginpushclear";
+  public static final String S = "com.tencent.mobileqq.action.QQWiFi";
+  public static final String T = "com.tencent.mobileqq.msf.qqwifi.settings";
+  public static final String U = "com.tencent.mobileqq.msf.qqwifi.redtouch";
+  public static final String V = "com.tencent.mobileqq.msf.qqwifi.autoconnect";
+  public static final String X = "com.tencent.mobileqq.msf.receiveofflinepushav";
+  public static final String Y = "com.tencent.mobileqq.msf.offlinepushclearallav";
   public static final String a = "app_push_info_";
-  private static final long[] aF = { 100L, 200L, 200L, 100L };
-  private static final String aG = "com.tencent.mobileqq.broadcast.pcactiveQQ";
-  public static final String aa = "com.tencent.mobileqq.msf.receiveofflinepushav";
-  public static final String ab = "com.tencent.mobileqq.msf.offlinepushclearallav";
-  static final int ad = 20140416;
-  public static final int am = 0;
-  public static final int an = 1;
-  public static final int ao = 2;
-  public static final int ap = 3;
-  public static final int aq = -56;
-  public static final int ar = -55;
-  private static final int[] aw = { 1, 1, 1, 5, 5, 10, 10, 30, 30, 60, 60, 900, 900 };
-  private static int ax = 0;
+  private static final long[] aC = { 100L, 200L, 200L, 100L };
+  private static final String aD = "com.tencent.mobileqq.broadcast.pcactiveQQ";
+  static final int aa = 20140416;
+  public static final int aj = 0;
+  public static final int ak = 1;
+  public static final int al = 2;
+  public static final int am = 3;
+  public static final int an = -56;
+  public static final int ao = -55;
+  private static final int[] at = { 1, 1, 1, 5, 5, 10, 10, 30, 30, 60, 60, 900, 900 };
+  private static int au = 0;
   public static final String b = "com.tencent.mobileqq";
   static final String f = "MSF.C.PushManager";
   static final String g = "PCActivePush";
@@ -134,45 +138,42 @@ public class g
   long A = 0L;
   final long B = 300000L;
   long C = 0L;
-  long D = 0L;
-  final long E = 600000L;
-  long F = 0L;
-  public long G = 0L;
-  public long H = 0L;
-  public long I = 0L;
-  ArrayList N = new ArrayList();
-  ArrayList O = new ArrayList();
-  boolean P = false;
-  boolean Q = false;
-  public QQNotificationManager Z;
-  private c aA;
-  private Handler aB = new h(this);
-  private boolean aC = false;
-  private long aD = 0L;
-  private long aE = 0L;
-  private AtomicBoolean aH = new AtomicBoolean(false);
-  private String aI = "0";
-  private int aJ = -1;
-  private PendingIntent aK = null;
-  private BroadcastReceiver aL = new l(this);
-  private int aM;
-  private boolean aN = false;
-  private Object aO = new Object();
-  public MediaPlayer ac;
-  Handler ae = new m(this);
-  String af = Environment.getExternalStorageDirectory().getAbsolutePath();
-  String ag = this.af + "/Tencent/MobileQQ/";
-  String ah = "head/";
-  String ai = this.ag + this.ah + "_hd/";
-  String aj = this.ag + this.ah + "_thd/";
-  String ak = this.ah + "_hd/";
-  String al = this.ag + ".billd_urldrawable/";
-  String as = "message.ring.switch";
-  String at = "message.vibrate.switch";
-  String au = "message.ring.care";
-  public ToServiceMsg av;
-  private final int ay = 1;
-  private PendingIntent az;
+  public long D = 0L;
+  public long E = 0L;
+  public long F = 0L;
+  ArrayList K = new ArrayList();
+  ArrayList L = new ArrayList();
+  boolean M = false;
+  boolean N = false;
+  public QQNotificationManager W;
+  public MediaPlayer Z;
+  private long aA = 0L;
+  private long aB = 0L;
+  private AtomicBoolean aE = new AtomicBoolean(false);
+  private String aF = "0";
+  private int aG = -1;
+  private PendingIntent aH = null;
+  private BroadcastReceiver aI = new l(this);
+  private int aJ;
+  private boolean aK = false;
+  private Object aL = new Object();
+  Handler ab = new m(this);
+  String ac = Environment.getExternalStorageDirectory().getAbsolutePath();
+  String ad = this.ac + "/Tencent/MobileQQ/";
+  String ae = "head/";
+  String af = this.ad + this.ae + "_hd/";
+  String ag = this.ad + this.ae + "_thd/";
+  String ah = this.ae + "_hd/";
+  String ai = this.ad + ".billd_urldrawable/";
+  String ap = "message.ring.switch";
+  String aq = "message.vibrate.switch";
+  String ar = "message.ring.care";
+  public ToServiceMsg as;
+  private final int av = 1;
+  private PendingIntent aw;
+  private c ax;
+  private Handler ay = new h(this);
+  private boolean az = false;
   MsfCore c;
   String d = "";
   String e = "";
@@ -192,13 +193,8 @@ public class g
     this.c = paramMsfCore;
     this.j = new e(this);
     this.n.setName("MsfCorePushManager");
-    this.aA = new c(paramMsfCore);
+    this.ax = new c(paramMsfCore);
     this.q = CommonBadgeUtilImpl.isMIUI6();
-  }
-  
-  private boolean A()
-  {
-    return (com.tencent.qphone.base.util.a.d()) || ((com.tencent.qphone.base.util.a.b()) && (com.tencent.qphone.base.util.a.c()));
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -401,7 +397,7 @@ public class g
   
   private void a(MediaPlayer paramMediaPlayer)
   {
-    paramMediaPlayer.setAudioStreamType(t());
+    paramMediaPlayer.setAudioStreamType(r());
   }
   
   private void a(String paramString, int paramInt)
@@ -411,7 +407,7 @@ public class g
       QLog.d("PCActivePush", 1, "stop tryActiveQQ by mainProcessReady");
       try
       {
-        BaseApplication.getContext().unregisterReceiver(this.aL);
+        BaseApplication.getContext().unregisterReceiver(this.aI);
         HashMap localHashMap1 = new HashMap();
         localHashMap1.put("account", paramString);
         localHashMap1.put("retryIndex", String.valueOf(paramInt));
@@ -419,7 +415,7 @@ public class g
         if (this.c.getStatReporter() != null) {
           this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", true, 0L, 0L, localHashMap1, false, false);
         }
-        this.aH.set(false);
+        this.aE.set(false);
         return;
       }
       catch (Exception localException1)
@@ -435,7 +431,7 @@ public class g
       QLog.d("PCActivePush", 1, "stop tryActiveQQ index: " + paramInt);
       try
       {
-        BaseApplication.getContext().unregisterReceiver(this.aL);
+        BaseApplication.getContext().unregisterReceiver(this.aI);
         HashMap localHashMap2 = new HashMap();
         localHashMap2.put("account", paramString);
         localHashMap2.put("retryIndex", String.valueOf(paramInt));
@@ -443,7 +439,7 @@ public class g
         if (this.c.getStatReporter() != null) {
           this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", false, 0L, 0L, localHashMap2, false, false);
         }
-        this.aH.set(false);
+        this.aE.set(false);
         return;
       }
       catch (Exception localException2)
@@ -461,13 +457,13 @@ public class g
     localIntent.putExtra("k_pcactive_retryIndex", paramInt);
     localIntent.setPackage(BaseApplication.getContext().getPackageName());
     BaseApplication.getContext().sendBroadcast(localIntent);
-    this.aI = paramString;
-    this.aJ = paramInt;
+    this.aF = paramString;
+    this.aG = paramInt;
     localIntent = new Intent("com.tencent.mobileqq.broadcast.pcactiveQQ");
     localIntent.putExtra("uin", paramString);
     localIntent.putExtra("retryIndex", paramInt + 1);
-    this.aK = PendingIntent.getBroadcast(BaseApplication.getContext(), 0, localIntent, 134217728);
-    this.m.set(0, System.currentTimeMillis() + 300000, this.aK);
+    this.aH = PendingIntent.getBroadcast(BaseApplication.getContext(), 0, localIntent, 134217728);
+    this.m.set(0, System.currentTimeMillis() + 300000, this.aH);
   }
   
   public static boolean a(Context paramContext, long paramLong)
@@ -495,9 +491,9 @@ public class g
   {
     try
     {
-      if ((this.N != null) && (this.N.size() > 0))
+      if ((this.K != null) && (this.K.size() > 0))
       {
-        offlinepush.PbPushOffMsg localPbPushOffMsg = ((g.a)this.N.get(this.N.size() - 1)).a;
+        offlinepush.PbPushOffMsg localPbPushOffMsg = ((g.a)this.K.get(this.K.size() - 1)).a;
         boolean bool = paramSharedPreferences.contains("special_sound_type" + localPbPushOffMsg.to_uin.get() + localPbPushOffMsg.from_uin.get());
         return bool;
       }
@@ -875,10 +871,10 @@ public class g
     String str2;
     String str3;
     long l1;
-    if ((this.N.size() == 1) && (!paramBoolean))
+    if ((this.K.size() == 1) && (!paramBoolean))
     {
       arrayOfObject = new Object[4];
-      localObject = b(((g.a)this.N.get(0)).a);
+      localObject = b(((g.a)this.K.get(0)).a);
       if (localObject == null) {
         return null;
       }
@@ -906,10 +902,10 @@ public class g
         arrayOfObject[3] = localObject[3];
         return arrayOfObject;
       }
-      if (!((g.a)this.N.get(0)).a.msg_flag.has()) {
+      if (!((g.a)this.K.get(0)).a.msg_flag.has()) {
         break label1810;
       }
-      l1 = ((g.a)this.N.get(0)).a.msg_flag.get();
+      l1 = ((g.a)this.K.get(0)).a.msg_flag.get();
       if ((0x2 & l1) == 2L) {
         str1 = "[有人@我]";
       }
@@ -928,10 +924,10 @@ public class g
       {
         str1 = "[特别关注]";
         continue;
-        int i1 = v();
+        int i1 = t();
         if ((i1 == 1) && (!paramBoolean))
         {
-          arrayOfObject = b(((g.a)this.N.get(this.N.size() - 1)).a);
+          arrayOfObject = b(((g.a)this.K.get(this.K.size() - 1)).a);
           if (arrayOfObject == null) {
             return null;
           }
@@ -943,7 +939,7 @@ public class g
           case 0: 
           case 2: 
             str1 = "[离线消息]" + arrayOfObject[2] + ":" + arrayOfObject[1];
-            str2 = arrayOfObject[2] + "[" + this.N.size() + "条离线消息]";
+            str2 = arrayOfObject[2] + "[" + this.K.size() + "条离线消息]";
             str3 = (String)arrayOfObject[1];
             localObject[0] = str1;
             localObject[1] = str2;
@@ -951,12 +947,12 @@ public class g
             localObject[3] = arrayOfObject[3];
             return localObject;
           case 1: 
-            int i2 = w();
+            int i2 = u();
             if (i2 == 1) {}
             for (i1 = 1; i1 != 0; i1 = 0)
             {
               str1 = "[离线消息]" + arrayOfObject[2] + "(" + arrayOfObject[4] + "):" + arrayOfObject[1];
-              str2 = arrayOfObject[4] + "[" + this.N.size() + "条离线消息]";
+              str2 = arrayOfObject[4] + "[" + this.K.size() + "条离线消息]";
               str3 = arrayOfObject[2] + ":" + arrayOfObject[1];
               localObject[0] = str1;
               localObject[1] = str2;
@@ -964,16 +960,16 @@ public class g
               localObject[3] = arrayOfObject[3];
               return localObject;
             }
-            localObject[2] = ("有" + i2 + "个联系人给你发来" + this.N.size() + "条离线消息");
+            localObject[2] = ("有" + i2 + "个联系人给你发来" + this.K.size() + "条离线消息");
             localObject[3] = arrayOfObject[3];
             localObject[1] = "QQ[离线消息]";
             localObject[0] = ("[离线消息]" + arrayOfObject[2] + "(" + arrayOfObject[4] + "):" + arrayOfObject[1]);
             return localObject;
           }
-          if (!((g.a)this.N.get(0)).a.msg_flag.has()) {
+          if (!((g.a)this.K.get(0)).a.msg_flag.has()) {
             break label1803;
           }
-          l1 = ((g.a)this.N.get(this.N.size() - 1)).a.msg_flag.get();
+          l1 = ((g.a)this.K.get(this.K.size() - 1)).a.msg_flag.get();
           if ((0x2 & l1) == 2L) {
             str1 = "[有人@我]";
           }
@@ -981,7 +977,7 @@ public class g
         for (;;)
         {
           str2 = "[离线消息]" + str1 + arrayOfObject[2] + ":" + arrayOfObject[1];
-          str3 = arrayOfObject[5] + "[" + this.N.size() + "条离线消息]";
+          str3 = arrayOfObject[5] + "[" + this.K.size() + "条离线消息]";
           str1 = str1 + arrayOfObject[2] + ":" + arrayOfObject[1];
           localObject[0] = str2;
           localObject[1] = str3;
@@ -992,7 +988,7 @@ public class g
           {
             str1 = "[特别关注]";
             continue;
-            arrayOfObject = b(((g.a)this.N.get(this.N.size() - 1)).a);
+            arrayOfObject = b(((g.a)this.K.get(this.K.size() - 1)).a);
             if (arrayOfObject == null) {
               return null;
             }
@@ -1002,24 +998,24 @@ public class g
               break;
             case 0: 
             case 2: 
-              str1 = "有" + i1 + "个联系人给你发来" + this.N.size() + "条离线消息";
+              str1 = "有" + i1 + "个联系人给你发来" + this.K.size() + "条离线消息";
               localObject = arrayOfObject[3];
               return new Object[] { "[离线消息]" + arrayOfObject[2] + ":" + arrayOfObject[1], "QQ[离线消息]", str1, localObject };
             case 1: 
-              str1 = "有" + i1 + "个联系人给你发来" + this.N.size() + "条离线消息";
+              str1 = "有" + i1 + "个联系人给你发来" + this.K.size() + "条离线消息";
               localObject = arrayOfObject[3];
               return new Object[] { "[离线消息]" + arrayOfObject[2] + "(" + arrayOfObject[4] + "):" + arrayOfObject[1], "QQ[离线消息]", str1, localObject };
             case 3: 
-              if (((g.a)this.N.get(0)).a.msg_flag.has())
+              if (((g.a)this.K.get(0)).a.msg_flag.has())
               {
-                l1 = ((g.a)this.N.get(this.N.size() - 1)).a.msg_flag.get();
+                l1 = ((g.a)this.K.get(this.K.size() - 1)).a.msg_flag.get();
                 if ((0x2 & l1) == 2L) {
                   str1 = "[有人@我]";
                 }
               }
               for (;;)
               {
-                return new Object[] { "[离线消息]" + str1 + arrayOfObject[2] + ":" + arrayOfObject[1], "QQ[离线消息]", "有" + i1 + "个联系人给你发来" + this.N.size() + "条离线消息", arrayOfObject[3] };
+                return new Object[] { "[离线消息]" + str1 + arrayOfObject[2] + ":" + arrayOfObject[1], "QQ[离线消息]", "有" + i1 + "个联系人给你发来" + this.K.size() + "条离线消息", arrayOfObject[3] };
                 if ((l1 & 1L) == 1L) {
                   str1 = "[特别关注]";
                 } else {
@@ -1045,9 +1041,9 @@ public class g
     offlinepush.PbPushOffMsg localPbPushOffMsg;
     BaseApplication localBaseApplication;
     Object localObject1;
-    if (this.N.size() > 0)
+    if (this.K.size() > 0)
     {
-      localPbPushOffMsg = ((g.a)this.N.get(0)).a;
+      localPbPushOffMsg = ((g.a)this.K.get(0)).a;
       localBaseApplication = BaseApplication.getContext();
       localObject1 = b(paramBoolean);
       if (localObject1 != null) {
@@ -1060,10 +1056,10 @@ public class g
     for (;;)
     {
       return;
-      if (this.Z == null) {
-        this.Z = QQNotificationManager.getInstance();
+      if (this.W == null) {
+        this.W = QQNotificationManager.getInstance();
       }
-      this.Z.cancel("MSF.C.PushManager", 478);
+      this.W.cancel("MSF.C.PushManager", 478);
       return;
       label86:
       Object localObject4 = (String)localObject1[0];
@@ -1102,10 +1098,10 @@ public class g
         ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getBroadcast(localBaseApplication, 0, (Intent)localObject1, 0));
         ((NotificationCompat.Builder)localObject2).setDeleteIntent(PendingIntent.getBroadcast(localBaseApplication, 0, new Intent("com.tencent.mobileqq.msf.offlinepushclearall"), 0));
         localObject1 = ((NotificationCompat.Builder)localObject2).build();
-        localObject2 = this.Z;
+        localObject2 = this.W;
         QQNotificationManager.addChannelIfNeed((Notification)localObject1, "CHANNEL_ID_SHOW_BADGE");
-        if (this.Z != null) {
-          this.Z.cancel("MSF.C.PushManager", 478);
+        if (this.W != null) {
+          this.W.cancel("MSF.C.PushManager", 478);
         }
         if (!this.q) {}
       }
@@ -1114,24 +1110,24 @@ public class g
         localObject2 = BaseApplication.getContext().getSharedPreferences("unreadcount", 4);
         i1 = ((SharedPreferences)localObject2).getInt("unread", -1);
         if (QLog.isColorLevel()) {
-          QLog.i("BadgeUtilImpl", 2, "NOTIFICATION_ID_PUSH_MSG mIsPushOffAVShow " + this.Q + "count=" + i1);
+          QLog.i("BadgeUtilImpl", 2, "NOTIFICATION_ID_PUSH_MSG mIsPushOffAVShow " + this.N + "count=" + i1);
         }
-        if (this.Q)
+        if (this.N)
         {
-          i1 = this.N.size();
+          i1 = this.K.size();
           label501:
           if (QLog.isColorLevel()) {
             QLog.i("BadgeUtilImpl", 2, "NOTIFICATION_ID_PUSH_MSG changeMI6Badge count=" + i1);
           }
           i2 = i1;
-          if (this.Q)
+          if (this.N)
           {
             i2 = i1;
-            if (this.P) {
+            if (this.M) {
               i2 = i1 + ((SharedPreferences)localObject2).getInt("unread", -1);
             }
           }
-          this.P = true;
+          this.M = true;
           BadgeUtilImpl.changeMI6Badge(BaseApplication.getContext(), i2, (Notification)localObject1);
           label580:
           localObject2 = String.valueOf(localPbPushOffMsg.to_uin.get());
@@ -1140,7 +1136,7 @@ public class g
             QLog.d("MSF.C.PushManager", 2, new Object[] { "fireNotifition: invoked. ", " msgNotificationEnabled: ", Boolean.valueOf(paramBoolean), " toUin: ", localObject2 });
           }
           if (paramBoolean) {
-            this.Z.notify("MSF.C.PushManager", 478, (Notification)localObject1);
+            this.W.notify("MSF.C.PushManager", 478, (Notification)localObject1);
           }
           localObject1 = PreferenceManager.getDefaultSharedPreferences(localBaseApplication);
           localObject2 = localBaseApplication.getSharedPreferences("com.tencent.mobileqq_preferences", 4);
@@ -1152,7 +1148,7 @@ public class g
           }
           i1 = 1;
           label726:
-          if ((b(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) == 1) && (A()))
+          if ((b(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) == 1) && (y()))
           {
             localObject4 = (Vibrator)localBaseApplication.getSystemService("vibrator");
             if (!a((SharedPreferences)localObject2)) {
@@ -1161,7 +1157,7 @@ public class g
             ((Vibrator)localObject4).vibrate(1000L);
           }
           label784:
-          if ((i1 != 0) && (z()))
+          if ((i1 != 0) && (x()))
           {
             if (QLog.isColorLevel()) {
               QLog.i("PushManager", 2, "-->isSpecialCareSound:" + a((SharedPreferences)localObject2));
@@ -1169,7 +1165,7 @@ public class g
             if (a((SharedPreferences)localObject2))
             {
               i1 = ((SharedPreferences)localObject1).getInt("sound_type" + localPbPushOffMsg.to_uin.get(), BaseApplication.defaultNotifSoundResourceId);
-              i1 = ((SharedPreferences)localObject2).getInt("special_sound_type" + ((g.a)this.N.get(this.N.size() - 1)).a.to_uin.get() + ((g.a)this.N.get(this.N.size() - 1)).a.from_uin.get(), i1);
+              i1 = ((SharedPreferences)localObject2).getInt("special_sound_type" + ((g.a)this.K.get(this.K.size() - 1)).a.to_uin.get() + ((g.a)this.K.get(this.K.size() - 1)).a.from_uin.get(), i1);
               if (i1 != 1) {
                 break label1197;
               }
@@ -1187,7 +1183,7 @@ public class g
           label1149:
           do
           {
-            if ((a(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) != 1) || (!z())) {
+            if ((a(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) != 1) || (!x())) {
               break;
             }
             a(((SharedPreferences)localObject1).getInt("sound_type" + localPbPushOffMsg.to_uin.get(), BaseApplication.defaultNotifSoundResourceId), false);
@@ -1195,7 +1191,7 @@ public class g
             ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapFactory.decodeResource(localBaseApplication.getResources(), BaseApplication.qqlaunchicon));
             break label200;
             break label269;
-            i2 = this.N.size();
+            i2 = this.K.size();
             i1 += i2;
             break label501;
             localThrowable = localThrowable;
@@ -1210,7 +1206,7 @@ public class g
             for (i1 = 1;; i1 = 0) {
               break;
             }
-            ((Vibrator)localObject4).vibrate(aF, -1);
+            ((Vibrator)localObject4).vibrate(aC, -1);
             break label784;
             localObject3 = localThrowable.getString("special_sound_url" + i1, "");
           } while (TextUtils.isEmpty((CharSequence)localObject3));
@@ -1259,17 +1255,17 @@ public class g
     MsfStore.getNativeConfigStore().setConfig("app_push_info_" + paramString, HexUtil.bytes2HexStr(localJceOutputStream.toByteArray()));
   }
   
-  private void u()
+  private void s()
   {
     Intent localIntent = new Intent("com.tencent.mobileqq.msf.wakeup");
     localIntent.setPackage(BaseApplication.getContext().getPackageName());
     BaseApplication.getContext().sendBroadcast(localIntent);
   }
   
-  private int v()
+  private int t()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = this.N.iterator();
+    Iterator localIterator1 = this.K.iterator();
     label106:
     for (;;)
     {
@@ -1297,10 +1293,10 @@ public class g
     }
   }
   
-  private int w()
+  private int u()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = this.N.iterator();
+    Iterator localIterator1 = this.K.iterator();
     label178:
     for (;;)
     {
@@ -1342,17 +1338,17 @@ public class g
     }
   }
   
-  private Object[] x()
+  private Object[] v()
   {
     Object[] arrayOfObject1;
     Object[] arrayOfObject2;
     Object localObject;
     String str2;
     String str1;
-    if (this.O.size() == 1)
+    if (this.L.size() == 1)
     {
       arrayOfObject1 = new Object[4];
-      arrayOfObject2 = b(((g.a)this.O.get(0)).a);
+      arrayOfObject2 = b(((g.a)this.L.get(0)).a);
       if (arrayOfObject2 == null) {
         return null;
       }
@@ -1396,7 +1392,7 @@ public class g
       arrayOfObject1[3] = arrayOfObject2[3];
       return arrayOfObject1;
       localObject = new Object[4];
-      str1 = "收到" + this.O.size() + "个未接来电";
+      str1 = "收到" + this.L.size() + "个未接来电";
       localObject[2] = str1;
       localObject[1] = "QQ[离线消息]";
       localObject[0] = ("[离线消息]QQ " + str1);
@@ -1405,15 +1401,15 @@ public class g
     }
   }
   
-  private void y()
+  private void w()
   {
     offlinepush.PbPushOffMsg localPbPushOffMsg;
     BaseApplication localBaseApplication;
-    if (this.O.size() > 0)
+    if (this.L.size() > 0)
     {
-      localPbPushOffMsg = ((g.a)this.O.get(0)).a;
+      localPbPushOffMsg = ((g.a)this.L.get(0)).a;
       localBaseApplication = BaseApplication.getContext();
-      localObject1 = x();
+      localObject1 = v();
       if (localObject1 == null) {
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.PushManager", 2, "Decode Message error, exit now");
@@ -1422,10 +1418,10 @@ public class g
     }
     else
     {
-      if (this.Z == null) {
-        this.Z = QQNotificationManager.getInstance();
+      if (this.W == null) {
+        this.W = QQNotificationManager.getInstance();
       }
-      this.Z.cancel("MSF.C.PushManager", 479);
+      this.W.cancel("MSF.C.PushManager", 479);
       return;
     }
     String str1 = (String)localObject1[0];
@@ -1436,8 +1432,8 @@ public class g
     if (localObject2 != null) {
       localObject1 = a((Bitmap)localObject2, 50, 50);
     }
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
     }
     localObject2 = new NotificationCompat.Builder(localBaseApplication).setContentTitle(str2).setContentText(str3).setAutoCancel(true).setSmallIcon(BaseApplication.appnewavmsgicon).setTicker(str1).setWhen(System.currentTimeMillis());
     label203:
@@ -1464,7 +1460,7 @@ public class g
       ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getBroadcast(localBaseApplication, 0, (Intent)localObject1, 0));
       ((NotificationCompat.Builder)localObject2).setDeleteIntent(PendingIntent.getBroadcast(localBaseApplication, 0, new Intent("com.tencent.mobileqq.msf.offlinepushclearallav"), 0));
       localObject1 = ((NotificationCompat.Builder)localObject2).build();
-      this.Z.cancel("MSF.C.PushManager", 479);
+      this.W.cancel("MSF.C.PushManager", 479);
       if (!this.q) {}
     }
     for (;;)
@@ -1472,14 +1468,14 @@ public class g
       try
       {
         i1 = BaseApplication.getContext().getSharedPreferences("unreadcount", 4).getInt("unread", -1);
-        if (!this.P) {
+        if (!this.M) {
           continue;
         }
-        i1 = this.O.size();
+        i1 = this.L.size();
         if (QLog.isColorLevel()) {
           QLog.i("BadgeUtilImpl", 2, "NOTIFICATION_ID_PUSH_AVMSG changeMI6Badge count=" + i1);
         }
-        this.Q = true;
+        this.N = true;
         BadgeUtilImpl.changeMI6Badge(BaseApplication.getContext(), i1, (Notification)localObject1);
       }
       catch (Throwable localThrowable)
@@ -1491,27 +1487,32 @@ public class g
         QLog.i("BadgeUtilImpl", 2, "NOTIFICATION_ID_PUSH_AVMSG exception ex=" + localThrowable);
         continue;
       }
-      localObject2 = this.Z;
+      localObject2 = this.W;
       QQNotificationManager.addChannelIfNeed((Notification)localObject1, "CHANNEL_ID_SHOW_BADGE");
-      this.Z.notify("MSF.C.PushManager", 479, (Notification)localObject1);
-      if ((a(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) == 1) && (z())) {
+      this.W.notify("MSF.C.PushManager", 479, (Notification)localObject1);
+      if ((a(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) == 1) && (x())) {
         a(PreferenceManager.getDefaultSharedPreferences(localBaseApplication).getInt("sound_type" + localPbPushOffMsg.to_uin.get(), BaseApplication.defaultNotifSoundResourceId), false);
       }
-      if ((b(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) != 1) || (!A())) {
+      if ((b(String.valueOf(localPbPushOffMsg.to_uin.get()), localBaseApplication) != 1) || (!y())) {
         break;
       }
-      ((Vibrator)localBaseApplication.getSystemService("vibrator")).vibrate(aF, -1);
+      ((Vibrator)localBaseApplication.getSystemService("vibrator")).vibrate(aC, -1);
       return;
       ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapFactory.decodeResource(localBaseApplication.getResources(), BaseApplication.qqlaunchicon));
       break label203;
-      i2 = this.O.size();
+      i2 = this.L.size();
       i1 += i2;
     }
   }
   
-  private boolean z()
+  private boolean x()
   {
     return com.tencent.qphone.base.util.a.b();
+  }
+  
+  private boolean y()
+  {
+    return (com.tencent.qphone.base.util.a.d()) || ((com.tencent.qphone.base.util.a.b()) && (com.tencent.qphone.base.util.a.c()));
   }
   
   public int a(String paramString)
@@ -1537,7 +1538,7 @@ public class g
     if (paramString == null) {
       return 1;
     }
-    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.as, String.valueOf(1));
+    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.ap, String.valueOf(1));
     try
     {
       int i1 = Integer.parseInt(paramString);
@@ -1556,7 +1557,7 @@ public class g
     StringBuilder localStringBuilder = new StringBuilder(256);
     if (Environment.getExternalStorageState().equals("mounted"))
     {
-      localStringBuilder.append(this.ai);
+      localStringBuilder.append(this.af);
       localObject = b(paramInt, paramString);
       switch (((Integer)localObject[0]).intValue())
       {
@@ -1569,7 +1570,7 @@ public class g
       localStringBuilder.append(MD5.toMD5((String)localObject + paramString));
       localStringBuilder.append(".png");
       return localStringBuilder.toString();
-      localStringBuilder.append((String)localObject + this.ak);
+      localStringBuilder.append((String)localObject + this.ah);
       break;
       localStringBuilder.append("troop_sys_");
       paramString = (String)localObject[1];
@@ -1608,11 +1609,11 @@ public class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   3: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   6: ifnull +30 -> 36
     //   9: aload_0
-    //   10: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   13: invokevirtual 1513	android/media/MediaPlayer:isPlaying	()Z
+    //   10: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   13: invokevirtual 1502	android/media/MediaPlayer:isPlaying	()Z
     //   16: istore_3
     //   17: iload_3
     //   18: ifeq +6 -> 24
@@ -1620,42 +1621,42 @@ public class g
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   28: invokevirtual 1516	android/media/MediaPlayer:release	()V
+    //   25: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   28: invokevirtual 1505	android/media/MediaPlayer:release	()V
     //   31: aload_0
     //   32: aconst_null
-    //   33: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   33: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   36: iload_1
     //   37: sipush 1000
     //   40: if_icmpeq +72 -> 112
     //   43: aload_0
     //   44: aload_0
-    //   45: invokestatic 519	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   45: invokestatic 500	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   48: iload_1
-    //   49: invokespecial 1518	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/content/Context;I)Landroid/media/MediaPlayer;
-    //   52: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   49: invokespecial 1507	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/content/Context;I)Landroid/media/MediaPlayer;
+    //   52: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   55: aload_0
-    //   56: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   56: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   59: ifnull -38 -> 21
     //   62: aload_0
-    //   63: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   66: new 1520	com/tencent/mobileqq/msf/core/push/k
+    //   63: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   66: new 1509	com/tencent/mobileqq/msf/core/push/k
     //   69: dup
     //   70: aload_0
-    //   71: invokespecial 1521	com/tencent/mobileqq/msf/core/push/k:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
-    //   74: invokevirtual 1525	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   71: invokespecial 1510	com/tencent/mobileqq/msf/core/push/k:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
+    //   74: invokevirtual 1514	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   77: aload_0
-    //   78: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   81: invokevirtual 1526	android/media/MediaPlayer:start	()V
+    //   78: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   81: invokevirtual 1515	android/media/MediaPlayer:start	()V
     //   84: aload_0
-    //   85: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   85: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   88: iload_2
-    //   89: invokevirtual 1529	android/media/MediaPlayer:setLooping	(Z)V
+    //   89: invokevirtual 1518	android/media/MediaPlayer:setLooping	(Z)V
     //   92: goto -71 -> 21
     //   95: astore 4
     //   97: aload_0
     //   98: aconst_null
-    //   99: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   99: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   102: aload 4
     //   104: athrow
     //   105: astore 4
@@ -1665,15 +1666,15 @@ public class g
     //   111: athrow
     //   112: aload_0
     //   113: aload_0
-    //   114: invokestatic 519	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   117: getstatic 1535	android/provider/Settings$System:DEFAULT_NOTIFICATION_URI	Landroid/net/Uri;
-    //   120: invokespecial 1537	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/content/Context;Landroid/net/Uri;)Landroid/media/MediaPlayer;
-    //   123: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   114: invokestatic 500	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   117: getstatic 1524	android/provider/Settings$System:DEFAULT_NOTIFICATION_URI	Landroid/net/Uri;
+    //   120: invokespecial 1526	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/content/Context;Landroid/net/Uri;)Landroid/media/MediaPlayer;
+    //   123: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   126: goto -71 -> 55
     //   129: astore 4
     //   131: aload_0
     //   132: aconst_null
-    //   133: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   133: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   136: goto -100 -> 36
     //   139: astore 4
     //   141: goto -120 -> 21
@@ -1719,12 +1720,12 @@ public class g
     label324:
     for (long l1 = 30000L;; l1 = 30000L)
     {
-      if (this.az != null) {
+      if (this.aw != null) {
         a(BaseApplication.getContext());
       }
       Object localObject = new Intent(this.e);
       ((Intent)localObject).setAction(this.e);
-      this.az = PendingIntent.getBroadcast(BaseApplication.getContext(), 0, (Intent)localObject, 0);
+      this.aw = PendingIntent.getBroadcast(BaseApplication.getContext(), 0, (Intent)localObject, 0);
       this.m = ((AlarmManager)BaseApplication.getContext().getSystemService("alarm"));
       paramLong = System.currentTimeMillis() + l1;
       if ((Build.VERSION.SDK_INT >= 23) && (com.tencent.mobileqq.msf.core.a.a.bs())) {}
@@ -1734,7 +1735,7 @@ public class g
         {
           localObject = AlarmManager.class.getDeclaredMethod("setAndAllowWhileIdle", new Class[] { Integer.TYPE, Long.TYPE, PendingIntent.class });
           ((Method)localObject).setAccessible(true);
-          ((Method)localObject).invoke(this.m, new Object[] { Integer.valueOf(0), Long.valueOf(paramLong), this.az });
+          ((Method)localObject).invoke(this.m, new Object[] { Integer.valueOf(0), Long.valueOf(paramLong), this.aw });
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.PushManager", 2, "MSF_Alive_Log register " + this.e + " alarm alive send at " + h.format(Long.valueOf(paramLong)));
           }
@@ -1754,30 +1755,30 @@ public class g
         catch (Exception localException)
         {
           QLog.e("MSF.C.PushManager", 1, "MSF_Alive_Log doRegistertAlarm excep!", localException);
-          this.m.set(0, paramLong, this.az);
+          this.m.set(0, paramLong, this.aw);
           continue;
         }
-        this.m.set(0, paramLong, this.az);
+        this.m.set(0, paramLong, this.aw);
       }
     }
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    this.aD = paramLong1;
-    e(paramLong2);
+    this.aA = paramLong1;
+    c(paramLong2);
   }
   
   public void a(Context paramContext)
   {
-    if (this.az != null) {
-      this.m.cancel(this.az);
+    if (this.aw != null) {
+      this.m.cancel(this.aw);
     }
   }
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    this.Z = QQNotificationManager.getInstance();
+    this.W = QQNotificationManager.getInstance();
     this.d = (Build.MODEL + "|" + Build.VERSION.RELEASE);
     this.e = (MsfSdkUtils.getProcessName(paramContext) + "_" + getClass().hashCode());
     paramContext = new IntentFilter();
@@ -1806,7 +1807,7 @@ public class g
   {
     try
     {
-      String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
+      String str = u.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " appCmdCallbacker " + paramCommandCallbackerInfo);
       }
@@ -1814,7 +1815,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -1828,7 +1829,7 @@ public class g
     String str;
     try
     {
-      str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
+      str = u.b(paramToServiceMsg);
       if (!a(str, BaseApplication.getContext().getPackageName())) {
         break label322;
       }
@@ -1870,11 +1871,11 @@ public class g
     }
   }
   
-  public void a(com.tencent.mobileqq.msf.sdk.y paramy, ToServiceMsg paramToServiceMsg)
+  public void a(y paramy, ToServiceMsg paramToServiceMsg)
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + " registerProcess" + paramy.b + " callbacker=" + paramy.e + " appid=" + paramy.a + " ProxyRegisterInfo=" + paramy);
+      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + u.b(paramToServiceMsg) + " registerProcess" + paramy.b + " callbacker=" + paramy.e + " appid=" + paramy.a + " ProxyRegisterInfo=" + paramy);
       if (!this.i.containsKey(paramy.b)) {
         this.i.putIfAbsent(paramy.b, new a(paramy.b));
       }
@@ -1882,7 +1883,7 @@ public class g
       ((a)localObject).a = paramy.a;
       ((a)localObject).m = paramy.e;
       ((a)localObject).l = paramy.d;
-      localObject = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
+      localObject = w.a(paramToServiceMsg);
       ((FromServiceMsg)localObject).setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, (FromServiceMsg)localObject);
       f(paramy.b);
@@ -1925,15 +1926,15 @@ public class g
         ((NotificationCompat.Builder)localObject1).setContentIntent((PendingIntent)localObject4);
         ((NotificationCompat.Builder)localObject1).setDeleteIntent(PendingIntent.getBroadcast(localBaseApplication, 0, new Intent("com.tencent.mobileqq.msf.devlockquickloginpushclear"), 0));
         paramPbPushOffMsg = ((NotificationCompat.Builder)localObject1).build();
-        if (this.Z == null) {
-          this.Z = QQNotificationManager.getInstance();
+        if (this.W == null) {
+          this.W = QQNotificationManager.getInstance();
         }
-        this.Z.cancel("MSF.C.PushManager", 480);
-        localObject1 = this.Z;
+        this.W.cancel("MSF.C.PushManager", 480);
+        localObject1 = this.W;
         QQNotificationManager.addChannelIfNeed(paramPbPushOffMsg, "CHANNEL_ID_OTHER");
-        this.Z.notify("MSF.C.PushManager", 480, paramPbPushOffMsg);
-        this.ae.removeMessages(20140416);
-        this.ae.sendEmptyMessageDelayed(20140416, 120000L);
+        this.W.notify("MSF.C.PushManager", 480, paramPbPushOffMsg);
+        this.ab.removeMessages(20140416);
+        this.ab.sendEmptyMessageDelayed(20140416, 120000L);
       }
     }
     catch (Exception localException)
@@ -1968,19 +1969,19 @@ public class g
       parama = (com.tencent.qphone.base.a)localObject;
       bool1 = bool2;
       l1 = l2;
-      if (this.G > 0L)
+      if (this.D > 0L)
       {
         i1 = i2;
         parama = (com.tencent.qphone.base.a)localObject;
         bool1 = bool2;
         l1 = l2;
-        if (this.aE > 0L)
+        if (this.aB > 0L)
         {
-          if (this.G <= this.aE) {
+          if (this.D <= this.aB) {
             break label383;
           }
           bool1 = true;
-          l1 = l3 - this.G;
+          l1 = l3 - this.D;
         }
       }
     }
@@ -1999,19 +2000,19 @@ public class g
     localObject = parama;
     bool2 = bool1;
     l2 = l1;
-    if (this.H > 0L)
+    if (this.E > 0L)
     {
       i2 = i1;
       localObject = parama;
       bool2 = bool1;
       l2 = l1;
-      if (this.aE > 0L)
+      if (this.aB > 0L)
       {
-        if (this.H <= this.aE) {
+        if (this.E <= this.aB) {
           break label393;
         }
         bool1 = true;
-        l1 = l3 - this.H;
+        l1 = l3 - this.E;
         break label422;
       }
     }
@@ -2019,20 +2020,20 @@ public class g
     {
       if (i2 != 0)
       {
-        QLog.d("MSF.C.PushManager", 1, "t1:" + this.G + ",t2:" + this.H + ",t3:" + this.aE + ",t4:" + l3);
+        QLog.d("MSF.C.PushManager", 1, "t1:" + this.D + ",t2:" + this.E + ",t3:" + this.aB + ",t4:" + l3);
         parama = MsfService.getCore().getAccountCenter().i();
         if (this.c.getStatReporter() != null) {
-          this.c.getStatReporter().a((String)localObject, parama, bool2, l2, this.G, this.H, this.I, this.aE, l3);
+          this.c.getStatReporter().a((String)localObject, parama, bool2, l2, this.D, this.E, this.F, this.aB, l3);
         }
       }
       u = false;
       this.j.g = false;
       this.C = 0L;
-      this.aD = 0L;
-      this.aE = 0L;
-      this.G = 0L;
-      this.H = 0L;
-      this.I = 0L;
+      this.aA = 0L;
+      this.aB = 0L;
+      this.D = 0L;
+      this.E = 0L;
+      this.F = 0L;
       l = 0L;
       parama = new i(this);
       parama.setName("onConnClosedPushThread");
@@ -2128,7 +2129,7 @@ public class g
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
+    String str = u.b(paramToServiceMsg);
     a locala = (a)this.i.get(str);
     if (locala != null)
     {
@@ -2149,14 +2150,14 @@ public class g
   
   public void a(ToServiceMsg paramToServiceMsg, RegPushReason paramRegPushReason)
   {
-    if (this.aB.hasMessages(1))
+    if (this.ay.hasMessages(1))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "remove message handler mLoadPushInfoHandler");
       }
-      this.aB.removeMessages(1);
+      this.ay.removeMessages(1);
     }
-    String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
+    String str = u.b(paramToServiceMsg);
     if (a(str, BaseApplication.getContext().getPackageName()))
     {
       if (!this.i.containsKey(str)) {
@@ -2172,13 +2173,13 @@ public class g
         if (QLog.isColorLevel()) {
           QLog.e("MSF.C.PushManager", 2, "handlerPush also register Push " + MD5.toMD5(localPushRegisterInfo.uin) + "iStatus:" + localPushRegisterInfo.iStatus + " extStatus:" + localPushRegisterInfo.extStatus);
         }
-        paramRegPushReason = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
+        paramRegPushReason = u.a(paramToServiceMsg);
         paramRegPushReason.setMsgSuccess();
         this.c.addRespToQuque(paramToServiceMsg, paramRegPushReason);
         if ((localPushRegisterInfo.iStatus != 95) && (localPushRegisterInfo.iStatus != 21))
         {
           this.c.stopPCActivePolling("regPush");
-          MsfService.core.pushManager.o();
+          MsfService.core.pushManager.m();
         }
       }
     }
@@ -2223,9 +2224,9 @@ public class g
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv processName:" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
+      QLog.d("MSF.C.PushManager", 1, "recv processName:" + u.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
       this.i.remove(paramString);
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
+      FromServiceMsg localFromServiceMsg = w.a(paramToServiceMsg);
       localFromServiceMsg.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, localFromServiceMsg);
       MsfStore.getNativeConfigStore().removeConfig("app_push_info_" + paramString);
@@ -2245,11 +2246,11 @@ public class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   3: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   6: ifnull +30 -> 36
     //   9: aload_0
-    //   10: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   13: invokevirtual 1513	android/media/MediaPlayer:isPlaying	()Z
+    //   10: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   13: invokevirtual 1502	android/media/MediaPlayer:isPlaying	()Z
     //   16: istore_3
     //   17: iload_3
     //   18: ifeq +6 -> 24
@@ -2257,55 +2258,55 @@ public class g
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   28: invokevirtual 1516	android/media/MediaPlayer:release	()V
+    //   25: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   28: invokevirtual 1505	android/media/MediaPlayer:release	()V
     //   31: aload_0
     //   32: aconst_null
-    //   33: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   33: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   36: aload_0
-    //   37: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   37: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   40: ifnonnull +14 -> 54
     //   43: aload_0
-    //   44: new 554	android/media/MediaPlayer
+    //   44: new 535	android/media/MediaPlayer
     //   47: dup
-    //   48: invokespecial 555	android/media/MediaPlayer:<init>	()V
-    //   51: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   48: invokespecial 536	android/media/MediaPlayer:<init>	()V
+    //   51: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   54: aload_0
-    //   55: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   58: invokevirtual 1941	android/media/MediaPlayer:reset	()V
+    //   55: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   58: invokevirtual 1930	android/media/MediaPlayer:reset	()V
     //   61: aload_0
-    //   62: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   65: new 1943	java/io/FileInputStream
+    //   62: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   65: new 1932	java/io/FileInputStream
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 1944	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   73: invokevirtual 1947	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   76: invokevirtual 1950	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   70: invokespecial 1933	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   73: invokevirtual 1936	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   76: invokevirtual 1939	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
     //   79: aload_0
     //   80: aload_0
-    //   81: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   84: invokespecial 558	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/media/MediaPlayer;)V
+    //   81: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   84: invokespecial 539	com/tencent/mobileqq/msf/core/push/g:a	(Landroid/media/MediaPlayer;)V
     //   87: aload_0
-    //   88: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   91: invokevirtual 581	android/media/MediaPlayer:prepare	()V
+    //   88: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   91: invokevirtual 562	android/media/MediaPlayer:prepare	()V
     //   94: aload_0
-    //   95: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   98: new 1952	com/tencent/mobileqq/msf/core/push/j
+    //   95: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   98: new 1941	com/tencent/mobileqq/msf/core/push/j
     //   101: dup
     //   102: aload_0
-    //   103: invokespecial 1953	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
-    //   106: invokevirtual 1525	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   103: invokespecial 1942	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
+    //   106: invokevirtual 1514	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   109: aload_0
-    //   110: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
-    //   113: invokevirtual 1526	android/media/MediaPlayer:start	()V
+    //   110: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
+    //   113: invokevirtual 1515	android/media/MediaPlayer:start	()V
     //   116: aload_0
-    //   117: getfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   117: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   120: iload_2
-    //   121: invokevirtual 1529	android/media/MediaPlayer:setLooping	(Z)V
+    //   121: invokevirtual 1518	android/media/MediaPlayer:setLooping	(Z)V
     //   124: goto -103 -> 21
     //   127: astore_1
     //   128: aload_1
-    //   129: invokevirtual 817	java/lang/Exception:printStackTrace	()V
+    //   129: invokevirtual 798	java/lang/Exception:printStackTrace	()V
     //   132: goto -111 -> 21
     //   135: astore_1
     //   136: aload_0
@@ -2315,13 +2316,13 @@ public class g
     //   140: astore_1
     //   141: aload_0
     //   142: aconst_null
-    //   143: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   143: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   146: aload_1
     //   147: athrow
     //   148: astore 4
     //   150: aload_0
     //   151: aconst_null
-    //   152: putfield 1510	com/tencent/mobileqq/msf/core/push/g:ac	Landroid/media/MediaPlayer;
+    //   152: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   155: goto -119 -> 36
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2360,14 +2361,14 @@ public class g
     int i2;
     label157:
     Object localObject2;
-    if ((true == paramBoolean) && (arrayOfString == null) && (ax < aw.length))
+    if ((true == paramBoolean) && (arrayOfString == null) && (au < at.length))
     {
-      QLog.d("MSF.C.PushManager", 1, "loop to loadAppPushInfo with time " + aw[ax] + " seconds");
-      localObject1 = this.aB.obtainMessage();
+      QLog.d("MSF.C.PushManager", 1, "loop to loadAppPushInfo with time " + at[au] + " seconds");
+      localObject1 = this.ay.obtainMessage();
       ((Message)localObject1).what = 1;
       ((Message)localObject1).obj = Boolean.valueOf(paramBoolean);
-      this.aB.sendMessageDelayed((Message)localObject1, aw[ax] * 1000);
-      ax += 1;
+      this.ay.sendMessageDelayed((Message)localObject1, at[au] * 1000);
+      au += 1;
       i3 = com.tencent.mobileqq.msf.core.c.e(BaseApplication.getContext());
       int i4 = arrayOfString.length;
       i2 = 0;
@@ -2400,7 +2401,7 @@ public class g
       if (arrayOfString == null)
       {
         bool = false;
-        l1 = ax;
+        l1 = au;
         if (true != paramBoolean) {
           break label350;
         }
@@ -2514,7 +2515,7 @@ public class g
     if (paramString == null) {
       return 1;
     }
-    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.at, String.valueOf(1));
+    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.aq, String.valueOf(1));
     try
     {
       int i1 = Integer.parseInt(paramString);
@@ -2556,7 +2557,7 @@ public class g
   {
     try
     {
-      String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
+      String str = u.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv unRegisterCmdCall ");
       }
@@ -2564,7 +2565,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -2606,7 +2607,7 @@ public class g
         if (QLog.isDevelopLevel()) {
           QLog.d("MSF.C.PushManager", 4, "onRecvPushReaded C2C uin:" + l2);
         }
-        localIterator = this.N.iterator();
+        localIterator = this.K.iterator();
         while (localIterator.hasNext())
         {
           locala = (g.a)localIterator.next();
@@ -2627,7 +2628,7 @@ public class g
     if (QLog.isDevelopLevel()) {
       QLog.d("MSF.C.PushManager", 4, "onRecvPushReaded remove" + ((List)localObject1).size() + " message");
     }
-    this.N.removeAll((Collection)localObject1);
+    this.K.removeAll((Collection)localObject1);
     label333:
     if ((i1 & 0x4) != 0)
     {
@@ -2639,7 +2640,7 @@ public class g
         if (QLog.isDevelopLevel()) {
           QLog.d("MSF.C.PushManager", 4, "onRecvPushReaded Discuss uin:" + l2);
         }
-        localIterator = this.N.iterator();
+        localIterator = this.K.iterator();
         while (localIterator.hasNext())
         {
           locala = (g.a)localIterator.next();
@@ -2652,12 +2653,12 @@ public class g
       if (QLog.isDevelopLevel()) {
         QLog.d("MSF.C.PushManager", 4, "onRecvPushReaded remove" + ((List)localObject1).size() + " message");
       }
-      this.N.removeAll((Collection)localObject1);
+      this.K.removeAll((Collection)localObject1);
     }
     for (;;)
     {
       i1 = BaseApplication.getContext().getSharedPreferences("unreadcount", 4).getInt("unread", -1);
-      int i2 = this.N.size();
+      int i2 = this.K.size();
       BadgeUtilImpl.setBadge(BaseApplication.getContext(), i1 + i2);
       c(true);
       a(l1, paramFromServiceMsg.getRequestSsoSeq(), localPbPushOffReadedNotify.svr_ip.get());
@@ -2689,7 +2690,7 @@ public class g
     if (paramString == null) {
       return 1;
     }
-    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.au, String.valueOf(1));
+    paramString = paramContext.getSharedPreferences(paramString, 4).getString(this.ar, String.valueOf(1));
     try
     {
       int i1 = Integer.parseInt(paramString);
@@ -2713,9 +2714,13 @@ public class g
   
   public void c(long paramLong)
   {
-    if ((this.D != paramLong) && (paramLong > 0L)) {
-      this.D = (1000L * paramLong);
+    if ((this.c != null) && (this.c.sender != null) && (this.c.sender.b.b())) {
+      this.aB = paramLong;
     }
+    while ((this.c == null) || (this.c.sender == null)) {
+      return;
+    }
+    QLog.i("MSF.C.PushManager", 1, "not need to update lastRecvTimeForSG, isConned:" + this.c.sender.b.b());
   }
   
   public void c(FromServiceMsg paramFromServiceMsg)
@@ -2742,7 +2747,7 @@ public class g
         } while (!QLog.isDevelopLevel());
         QLog.d("MSF.C.PushManager", 4, "onRecvPbPushOffMsg mobileqq is running drop now");
         return;
-        localObject = this.N.iterator();
+        localObject = this.K.iterator();
         do
         {
           if (!((Iterator)localObject).hasNext()) {
@@ -2753,7 +2758,7 @@ public class g
       } while (!QLog.isColorLevel());
       QLog.d("MSF.C.PushManager", 2, "onRecvPbPushOffMsg get duplicate msg drop now.");
       return;
-      localObject = this.O.iterator();
+      localObject = this.L.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
@@ -2780,12 +2785,12 @@ public class g
         if (!c(localPbPushOffMsg)) {
           break label436;
         }
-        this.O.add(localObject);
-        y();
+        this.L.add(localObject);
+        w();
         a(localPbPushOffMsg.to_uin.get(), paramFromServiceMsg.getRequestSsoSeq(), localPbPushOffMsg.svr_ip.get());
         i1 = BaseApplication.getContext().getSharedPreferences("unreadcount", 4).getInt("unread", -5);
-        int i2 = this.N.size();
-        int i3 = this.O.size();
+        int i2 = this.K.size();
+        int i3 = this.L.size();
         BadgeUtilImpl.setBadge(BaseApplication.getContext(), i1 + (i2 + i3));
         return;
       }
@@ -2802,15 +2807,10 @@ public class g
       }
       else
       {
-        this.N.add(localObject);
+        this.K.add(localObject);
         c(false);
       }
     }
-  }
-  
-  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    this.j.c(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public void c(String paramString)
@@ -2841,12 +2841,7 @@ public class g
   public void d()
   {
     u = false;
-    h();
-  }
-  
-  public void d(long paramLong)
-  {
-    this.F = paramLong;
+    f();
   }
   
   public void d(FromServiceMsg paramFromServiceMsg)
@@ -2864,7 +2859,7 @@ public class g
         localToServiceMsg.setNeedCallback(false);
         localToServiceMsg.setTimeout(30000L);
         localToServiceMsg.setRequestSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
-        this.av = localToServiceMsg;
+        this.as = localToServiceMsg;
       }
       catch (Exception paramFromServiceMsg)
       {
@@ -2893,15 +2888,15 @@ public class g
   public void d(String paramString)
   {
     QLog.d("PCActivePush", 1, "onPCActive");
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
     }
-    this.Z.cancel("MSF.C.PushManager", 478);
-    this.N.clear();
-    this.aH.set(true);
-    BaseApplication.getContext().registerReceiver(this.aL, new IntentFilter("com.tencent.mobileqq.broadcast.pcactiveQQ"));
-    this.aJ = 0;
-    this.aI = paramString;
+    this.W.cancel("MSF.C.PushManager", 478);
+    this.K.clear();
+    this.aE.set(true);
+    BaseApplication.getContext().registerReceiver(this.aI, new IntentFilter("com.tencent.mobileqq.broadcast.pcactiveQQ"));
+    this.aG = 0;
+    this.aF = paramString;
     a(paramString, 0);
   }
   
@@ -2913,17 +2908,6 @@ public class g
     return this.C;
   }
   
-  public void e(long paramLong)
-  {
-    if ((this.c != null) && (this.c.sender != null) && (this.c.sender.b.b())) {
-      this.aE = paramLong;
-    }
-    while ((this.c == null) || (this.c.sender == null)) {
-      return;
-    }
-    QLog.i("MSF.C.PushManager", 1, "not need to update lastRecvTimeForSG, isConned:" + this.c.sender.b.b());
-  }
-  
   public void e(String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -2932,20 +2916,7 @@ public class g
     BaseApplication.getContext().startActivity(new Intent(paramString));
   }
   
-  public long f()
-  {
-    if (this.D == 0L) {
-      return 600000L;
-    }
-    return this.D;
-  }
-  
-  public long g()
-  {
-    return this.F;
-  }
-  
-  void h()
+  void f()
   {
     Iterator localIterator = this.i.keySet().iterator();
     while (localIterator.hasNext())
@@ -2992,78 +2963,78 @@ public class g
     }
   }
   
-  public long i()
+  public long g()
   {
-    return this.aD;
+    return this.aA;
   }
   
-  public long j()
+  public long h()
   {
-    return this.aE;
+    return this.aB;
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.PushManager", 2, "onNotificationClearAll");
+    }
+    this.K.clear();
+  }
+  
+  public void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.PushManager", 2, "onNotificationClearAllAV");
+    }
+    this.L.clear();
   }
   
   public void k()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.PushManager", 2, "onNotificationClearAll");
+      QLog.d("MSF.C.PushManager", 2, "clearOfflinePushNotification");
     }
-    this.N.clear();
+    ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(478);
+    this.K.clear();
+    this.M = false;
   }
   
   public void l()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.PushManager", 2, "onNotificationClearAllAV");
+      QLog.d("MSF.C.PushManager", 2, "clearOfflinePushNotificationAV");
     }
-    this.O.clear();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
+    }
+    this.W.cancel("MSF.C.PushManager", 479);
+    this.L.clear();
+    this.N = false;
   }
   
   public void m()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.PushManager", 2, "clearOfflinePushNotification");
-    }
-    ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(478);
-    this.N.clear();
-    this.P = false;
-  }
-  
-  public void n()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.PushManager", 2, "clearOfflinePushNotificationAV");
-    }
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
-    }
-    this.Z.cancel("MSF.C.PushManager", 479);
-    this.O.clear();
-    this.Q = false;
-  }
-  
-  public void o()
-  {
-    if (this.aH.get()) {
+    if (this.aE.get()) {
       QLog.d("PCActivePush", 1, "stop tryActiveQQ by regPush");
     }
     try
     {
-      BaseApplication.getContext().unregisterReceiver(this.aL);
+      BaseApplication.getContext().unregisterReceiver(this.aI);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("account", this.aI);
-      localHashMap.put("retryIndex", String.valueOf(this.aJ));
+      localHashMap.put("account", this.aF);
+      localHashMap.put("retryIndex", String.valueOf(this.aG));
       localHashMap.put("reason", "regpush");
       if (this.c.getStatReporter() != null) {
         this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", true, 0L, 0L, localHashMap, false, false);
       }
-      if ((this.aK == null) || (this.m == null)) {}
+      if ((this.aH == null) || (this.m == null)) {}
     }
     catch (Exception localException1)
     {
       try
       {
-        this.m.cancel(this.aK);
-        this.aH.set(false);
+        this.m.cancel(this.aH);
+        this.aE.set(false);
         return;
         localException1 = localException1;
         localException1.printStackTrace();
@@ -3078,65 +3049,17 @@ public class g
     }
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.PushManager", 2, "MSF_Alive_Log alarm receive " + paramIntent);
-    }
-    if (this.p > 0L)
-    {
-      long l1 = System.currentTimeMillis() - this.p;
-      if ((l1 > 0L) && (this.c.statReporter.X != null)) {
-        this.c.statReporter.X.d = l1;
-      }
-      this.p = 0L;
-    }
-    for (;;)
-    {
-      boolean bool;
-      synchronized (this.y)
-      {
-        this.y.notify();
-        if (this.aC) {
-          com.tencent.mobileqq.msf.core.y.a().e();
-        }
-        if (QLog.isColorLevel())
-        {
-          this.c.netFlowStore.a(paramContext, paramIntent);
-          if (this.aC) {
-            break label210;
-          }
-          bool = true;
-          this.aC = bool;
-          if (this.c.getStandyModeManager() != null) {
-            this.c.getStandyModeManager().a();
-          }
-          com.tencent.mobileqq.msf.core.h.b();
-          u();
-          return;
-        }
-      }
-      if (this.aC)
-      {
-        this.c.netFlowStore.a(paramContext, paramIntent);
-        continue;
-        label210:
-        bool = false;
-      }
-    }
-  }
-  
-  public void p()
+  public void n()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.PushManager", 2, "onNotificationBroadcast");
     }
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
     }
-    this.Z.cancel("MSF.C.PushManager", 478);
-    this.N.clear();
+    this.W.cancel("MSF.C.PushManager", 478);
+    this.K.clear();
     try
     {
       if (b())
@@ -3162,17 +3085,17 @@ public class g
     }
   }
   
-  public void q()
+  public void o()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.PushManager", 2, "onAVNotificationBroadcast");
     }
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
     }
-    this.Z.cancel("MSF.C.PushManager", 479);
-    this.O.clear();
+    this.W.cancel("MSF.C.PushManager", 479);
+    this.L.clear();
     try
     {
       Intent localIntent = new Intent("com.tencent.mobileqq.action.MAINACTIVITY");
@@ -3187,23 +3110,71 @@ public class g
     }
   }
   
-  public void r()
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.PushManager", 2, "MSF_Alive_Log alarm receive " + paramIntent);
+    }
+    if (this.p > 0L)
+    {
+      long l1 = System.currentTimeMillis() - this.p;
+      if ((l1 > 0L) && (this.c.statReporter.Y != null)) {
+        this.c.statReporter.Y.d = l1;
+      }
+      this.p = 0L;
+    }
+    for (;;)
+    {
+      boolean bool;
+      synchronized (this.y)
+      {
+        this.y.notify();
+        if (this.az) {
+          ab.a().e();
+        }
+        if (QLog.isColorLevel())
+        {
+          this.c.netFlowStore.a(paramContext, paramIntent);
+          if (this.az) {
+            break label210;
+          }
+          bool = true;
+          this.az = bool;
+          if (this.c.getStandyModeManager() != null) {
+            this.c.getStandyModeManager().a();
+          }
+          com.tencent.mobileqq.msf.core.i.b();
+          s();
+          return;
+        }
+      }
+      if (this.az)
+      {
+        this.c.netFlowStore.a(paramContext, paramIntent);
+        continue;
+        label210:
+        bool = false;
+      }
+    }
+  }
+  
+  public void p()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.PushManager", 2, "clearDevlockQuickloginNotification");
     }
-    if (this.Z == null) {
-      this.Z = QQNotificationManager.getInstance();
+    if (this.W == null) {
+      this.W = QQNotificationManager.getInstance();
     }
-    this.Z.cancel("MSF.C.PushManager", 480);
+    this.W.cancel("MSF.C.PushManager", 480);
   }
   
-  public c s()
+  public c q()
   {
-    return this.aA;
+    return this.ax;
   }
   
-  public int t()
+  public int r()
   {
     return 3;
   }

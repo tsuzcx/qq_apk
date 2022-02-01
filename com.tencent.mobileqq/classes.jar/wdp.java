@@ -1,53 +1,184 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
-class wdp
-  implements wdo
+public class wdp
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<wdo> jdField_a_of_type_JavaLangRefWeakReference;
+  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
   
-  public wdp(@NonNull wdo paramwdo)
+  public static String a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramwdo);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwdo);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull wdm paramwdm)
-  {
-    wdo localwdo = (wdo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localwdo != null) {
-      localwdo.a(paramwdm);
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d5 = 90.0D;
+    double d3 = -90.0D;
+    double d2 = 0.0D;
+    double d6 = 180.0D;
+    double d4 = -180.0D;
+    double d1 = 0.0D;
+    int i = 1;
+    int k = 0;
+    while (k < paramInt)
+    {
+      int m = 0;
+      int n = 0;
+      int j = i;
+      i = n;
+      if (m < 5)
+      {
+        double d8;
+        double d7;
+        if (j != 0)
+        {
+          i <<= 1;
+          if (paramDouble2 >= d1)
+          {
+            d8 = (d6 + d1) / 2.0D;
+            i += 1;
+            d4 = d6;
+            d7 = d2;
+            d2 = d3;
+            d6 = d5;
+            d5 = d7;
+            d3 = d1;
+            d1 = d8;
+            label131:
+            if (j != 0) {
+              break label309;
+            }
+          }
+        }
+        label309:
+        for (j = 1;; j = 0)
+        {
+          m += 1;
+          d7 = d6;
+          d8 = d2;
+          d2 = d5;
+          d6 = d4;
+          d4 = d3;
+          d3 = d8;
+          d5 = d7;
+          break;
+          d8 = (d1 + d4) / 2.0D;
+          d6 = d3;
+          d7 = d5;
+          d3 = d4;
+          d4 = d1;
+          d1 = d8;
+          d5 = d2;
+          d2 = d6;
+          d6 = d7;
+          break label131;
+          i <<= 1;
+          if (paramDouble1 >= d2)
+          {
+            d3 = (d5 + d2) / 2.0D;
+            i += 1;
+            d7 = d5;
+            d5 = d3;
+            d3 = d4;
+            d4 = d6;
+            d6 = d7;
+            break label131;
+          }
+          d5 = (d2 + d3) / 2.0D;
+          d7 = d2;
+          d2 = d3;
+          d3 = d4;
+          d4 = d6;
+          d6 = d7;
+          break label131;
+        }
+      }
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      k += 1;
+      i = j;
     }
+    return localStringBuilder.toString();
   }
   
-  public void b(@NonNull wdm paramwdm)
+  public static List<wdq> a(String paramString)
   {
-    wdo localwdo = (wdo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localwdo != null) {
-      localwdo.b(paramwdm);
+    if ((paramString == null) || (paramString.length() == 0)) {
+      throw new Error("Invalid geoHash");
     }
+    paramString = paramString.toLowerCase();
+    int i = 1;
+    double d3 = -90.0D;
+    double d4 = 90.0D;
+    double d1 = -180.0D;
+    double d2 = 180.0D;
+    int j = 0;
+    while (j < paramString.length())
+    {
+      int k = paramString.charAt(j);
+      int m = jdField_a_of_type_JavaLangString.indexOf(k);
+      if (m == -1) {
+        throw new Error("Invalid geoHash");
+      }
+      k = 4;
+      if (k >= 0)
+      {
+        double d6 = m >> k & 0x1;
+        double d5;
+        if (i != 0)
+        {
+          d5 = (d1 + d2) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d1 = d5;
+            label135:
+            if (i != 0) {
+              break label190;
+            }
+          }
+        }
+        label190:
+        for (i = 1;; i = 0)
+        {
+          k -= 1;
+          break;
+          d2 = d5;
+          break label135;
+          d5 = (d3 + d4) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d3 = d5;
+            break label135;
+          }
+          d4 = d5;
+          break label135;
+        }
+      }
+      j += 1;
+    }
+    paramString = new wdq(d3, d1);
+    wdq localwdq = new wdq(d4, d2);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(localwdq);
+    return localArrayList;
   }
   
-  public boolean equals(Object paramObject)
+  public static wdq a(String paramString)
   {
-    return ((paramObject instanceof wdp)) && (((wdp)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    Object localObject = a(paramString);
+    wdq localwdq = (wdq)((List)localObject).get(0);
+    localObject = (wdq)((List)localObject).get(1);
+    double d3 = wdq.a(localwdq);
+    double d1 = wdq.b(localwdq);
+    double d4 = wdq.a((wdq)localObject);
+    double d2 = wdq.b((wdq)localObject);
+    d3 = (d3 + d4) / 2.0D;
+    d1 = (d2 + d1) / 2.0D;
+    localwdq = new wdq(d3, d1);
+    yqp.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
+    return localwdq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wdp
  * JD-Core Version:    0.7.0.1
  */

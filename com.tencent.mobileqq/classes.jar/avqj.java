@@ -1,35 +1,34 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class avqj
+  extends BroadcastReceiver
 {
-  public Activity a;
-  public View a;
-  public ImageView a;
-  public ListView a;
-  public TextView a;
-  public avqm a;
-  public avsg a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public avqj(UiApiPlugin paramUiApiPlugin) {}
   
-  public avqj(avqc paramavqc) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
+    {
+      Iterator localIterator = UiApiPlugin.a.iterator();
+      while (localIterator.hasNext())
+      {
+        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localUiApiPlugin != null) {
+          localUiApiPlugin.a(paramContext, paramIntent);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import qyz;
-import rfs;
-import rfu;
+import com.tencent.qphone.base.util.QLog;
+import sfb;
 
 class VideoFeedsPlayManager$4
   implements Runnable
@@ -13,17 +10,18 @@ class VideoFeedsPlayManager$4
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.this$0) != null) && (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_AndroidViewView != null))
+    if (VideoFeedsPlayManager.a(this.this$0) != null)
     {
-      if (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qyz != null) {
-        VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qyz.a(VideoFeedsPlayManager.b(this.this$0));
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsPlayManager.preplay", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
       }
-      if (VideoFeedsPlayManager.a(this.this$0) != null)
+      VideoFeedsPlayManager.a(this.this$0).d();
+      if ((!VideoFeedsPlayManager.b(this.this$0)) && (VideoFeedsPlayManager.a(this.this$0) != null))
       {
-        Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
-        while (localIterator.hasNext()) {
-          ((rfu)localIterator.next()).b(VideoFeedsPlayManager.b(this.this$0));
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFeedsPlayManager.preplay", 2, "activity become onPause after videoPlayer.start()， so we need to pause it");
         }
+        VideoFeedsPlayManager.a(this.this$0).f();
       }
     }
   }

@@ -2,63 +2,42 @@ import com.tencent.qphone.base.util.QLog;
 
 public class amsf
 {
-  private static amsf a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public static amsf a()
+  public String a()
   {
-    if (a == null) {
-      a = new amsf();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
     }
-    return a;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
     }
   }
   
-  public void b(long paramLong1, long paramLong2)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void d(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void e(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

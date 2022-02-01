@@ -1,11 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class afby
-  extends afcd
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public ImageView a;
+  public afby(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.c);
+  }
 }
 
 

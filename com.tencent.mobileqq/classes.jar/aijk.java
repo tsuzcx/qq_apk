@@ -1,88 +1,166 @@
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
-import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
-import com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
+import java.util.HashMap;
 
 public class aijk
-  implements ShareActionSheet.OnItemClickListener
+  extends ProtocolDownloader.Adapter
 {
-  public aijk(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  public static final String a;
+  public Handler a;
+  public EntityManager a;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  static
   {
-    int i = paramActionSheetItem.action;
-    int j = paramActionSheetItem.uinType;
-    paramActionSheetItem = paramActionSheetItem.uin;
-    switch (i)
-    {
-    default: 
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
-    case 2: 
-    case 73: 
-    case 3: 
-    case 9: 
-    case 10: 
-    case 70: 
-    case 82: 
-    case 76: 
-    case 77: 
-    case 14: 
-    case 78: 
-      do
-      {
-        return;
-        MiniMsgTabFragment.a(this.a, 1, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 5, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 6, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 7, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 13, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 8, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 10, null);
-        return;
-      } while (MiniMsgTabFragment.a(this.a) == -1);
-      if (MiniMsgTabFragment.a(this.a))
-      {
-        MainPageFragment.launchForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
-        return;
-      }
-      MainPageFragment.launch(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
-      return;
-    case 11: 
-      MiniMsgTabFragment.a(this.a, 11, null);
-      return;
-    case 74: 
-    case 75: 
-      MiniMsgTabFragment.a(this.a, 2, null);
-      return;
-    case 79: 
-    case 80: 
-      MiniMsgTabFragment.a(this.a, 3, null);
-      return;
-    case 72: 
-      MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
-      return;
-    case 81: 
-      MiniMsgTabFragment.a(this.a, 9, null);
-      return;
-    case 83: 
-      if (this.a.getActivity() != null)
-      {
-        PermissionSettingFragment.launchForResult(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
-        return;
-      }
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
-      return;
+    jdField_a_of_type_JavaLangString = bhgg.a(anhk.ba + "keyword_emotion/");
+  }
+  
+  public aijk()
+  {
+    if (BaseApplicationImpl.sProcessId == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().createEntityManager();
     }
-    MiniMsgTabFragment.a(this.a, 14, null);
+    Looper localLooper = ThreadManager.getFileThreadLooper();
+    if (localLooper != null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+    }
+  }
+  
+  public static String a(aiit paramaiit)
+  {
+    String str = null;
+    if (!TextUtils.isEmpty(paramaiit.b())) {
+      str = paramaiit.b();
+    }
+    while (TextUtils.isEmpty(paramaiit.a())) {
+      return str;
+    }
+    return paramaiit.a();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return aijp.a(paramString).exists();
+  }
+  
+  public File a(String paramString, File paramFile, URLDrawableHandler paramURLDrawableHandler)
+  {
+    long l = System.currentTimeMillis();
+    DownloadParams localDownloadParams = new DownloadParams();
+    localDownloadParams.url = new URL(paramString);
+    localDownloadParams.urlStr = paramString;
+    String str1 = paramFile.getPath();
+    String str2;
+    if (bgnt.g(BaseApplicationImpl.getContext()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecDrawableDownLoader", 2, "keyword emotion download: " + paramString + " -> " + str1);
+      }
+      str2 = str1 + ".tmp";
+      localObject = new File(str2);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      paramURLDrawableHandler.publishProgress(0);
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new FileOutputStream(str2);
+        if (paramURLDrawableHandler == null) {
+          break label276;
+        }
+      }
+      catch (Exception paramURLDrawableHandler)
+      {
+        try
+        {
+          new bdvl().a((OutputStream)localObject, localDownloadParams, paramURLDrawableHandler);
+          ((FileOutputStream)localObject).close();
+          paramURLDrawableHandler = new File(str2);
+          if (!paramURLDrawableHandler.renameTo(paramFile))
+          {
+            bgmg.a(paramURLDrawableHandler, paramFile);
+            paramURLDrawableHandler.delete();
+          }
+          l = System.currentTimeMillis() - l;
+          paramURLDrawableHandler = new HashMap();
+          paramURLDrawableHandler.put("sticker_url", paramString);
+          if ((!paramFile.exists()) || (paramFile.length() <= 0L)) {
+            break;
+          }
+          bctj.a(BaseApplication.getContext()).a(null, "StickerRecImgDownload", true, l, 0L, paramURLDrawableHandler, "");
+          return paramFile;
+        }
+        catch (Exception paramURLDrawableHandler)
+        {
+          for (;;)
+          {
+            paramURLDrawableHandler = (URLDrawableHandler)localObject;
+          }
+        }
+        paramURLDrawableHandler = paramURLDrawableHandler;
+        paramURLDrawableHandler = null;
+      }
+      paramURLDrawableHandler.close();
+      label276:
+      new File(str2).delete();
+    }
+    bctj.a(BaseApplication.getContext()).a(null, "StickerRecImgDownload", false, l, 0L, null, "");
+    paramFile.delete();
+    QLog.e("StickerRecDrawableDownLoader", 1, "downloadImage|file not exist or empty. filepath=" + str1);
+    throw new IOException("File not Found. url: " + localDownloadParams.url);
+  }
+  
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    try
+    {
+      paramDownloadParams = a((aijj)paramDownloadParams.mExtraInfo);
+      return a(paramDownloadParams);
+    }
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+    }
+    return false;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = a((aiit)paramDownloadParams.mExtraInfo);
+    QLog.d("StickerRecDrawableDownLoader", 1, "loadImageFile");
+    File localFile1 = aijp.a(paramDownloadParams);
+    if ((localFile1.exists()) && (localFile1.length() > 0L))
+    {
+      QLog.d("StickerRecDrawableDownLoader", 1, "loadImageFile file.exists()");
+      return localFile1;
+    }
+    localFile1.getParentFile().mkdirs();
+    if ((bgjw.a()) && (bgjw.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bgjw.b());
+    }
+    File localFile2 = new File(jdField_a_of_type_JavaLangString);
+    if (!localFile2.exists()) {
+      localFile2.mkdir();
+    }
+    return a(paramDownloadParams, localFile1, paramURLDrawableHandler);
   }
 }
 

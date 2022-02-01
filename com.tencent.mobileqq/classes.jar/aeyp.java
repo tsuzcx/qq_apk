@@ -1,20 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.concurrent.atomic.AtomicInteger;
+import MQQ.PayRuleCfg;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeyp
-  implements View.OnClickListener
+  extends bdzy
 {
-  public aeyp(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyp(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
-      QQToast.a(this.a.getContext(), alud.a(2131717251), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298914));
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
     }
   }
 }

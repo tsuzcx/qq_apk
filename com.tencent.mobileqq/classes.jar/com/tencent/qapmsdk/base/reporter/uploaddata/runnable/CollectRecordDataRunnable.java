@@ -232,64 +232,66 @@ public final class CollectRecordDataRunnable
   private final void scanFile()
   {
     Iterator localIterator = getSearchFileList().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      Object localObject1 = (File)localIterator.next();
-      if (((File)localObject1).exists())
+      if (localIterator.hasNext())
       {
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "file");
-        if (((File)localObject1).isDirectory())
+        Object localObject1 = (File)localIterator.next();
+        if (((File)localObject1).exists())
         {
-          localObject1 = ((File)localObject1).listFiles();
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "file.listFiles()");
-          Object localObject2 = (Collection)new ArrayList();
-          int k = localObject1.length;
-          int i = 0;
-          Object localObject3;
-          if (i < k)
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "file");
+          if (((File)localObject1).isDirectory())
           {
-            localObject3 = localObject1[i];
-            Intrinsics.checkExpressionValueIsNotNull(localObject3, "it");
-            String str = ((File)localObject3).getPath();
-            Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
-            if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".txt", false, 2, null))
+            localObject1 = ((File)localObject1).listFiles();
+            if (localObject1 != null)
             {
-              str = ((File)localObject3).getPath();
-              Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
-              if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".zip", false, 2, null)) {
-                break label200;
-              }
-            }
-            label200:
-            for (int j = 1;; j = 0)
-            {
-              if (j != 0) {
-                ((Collection)localObject2).add(localObject3);
-              }
-              i += 1;
-              break;
-            }
-          }
-          localObject1 = ((Iterable)localObject2).iterator();
-          for (;;)
-          {
-            if (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (File)((Iterator)localObject1).next();
-              try
+              Object localObject2 = (Collection)new ArrayList();
+              int k = localObject1.length;
+              int i = 0;
+              Object localObject3;
+              if (i < k)
               {
-                localObject3 = this.fileQueue;
-                Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
-                ((Queue)localObject3).add(((File)localObject2).getPath());
-              }
-              catch (Exception localException)
-              {
-                for (;;)
+                localObject3 = localObject1[i];
+                Intrinsics.checkExpressionValueIsNotNull(localObject3, "it");
+                String str = ((File)localObject3).getPath();
+                Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
+                if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".txt", false, 2, null))
                 {
-                  localObject3 = Logger.INSTANCE;
-                  StringBuilder localStringBuilder = new StringBuilder().append(localException).append(": add file path: ");
+                  str = ((File)localObject3).getPath();
+                  Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
+                  if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".zip", false, 2, null)) {
+                    break label197;
+                  }
+                }
+                label197:
+                for (int j = 1;; j = 0)
+                {
+                  if (j != 0) {
+                    ((Collection)localObject2).add(localObject3);
+                  }
+                  i += 1;
+                  break;
+                }
+              }
+              localObject1 = ((Iterable)localObject2).iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                localObject2 = (File)((Iterator)localObject1).next();
+                try
+                {
+                  localObject3 = this.fileQueue;
                   Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
-                  ((Logger)localObject3).e(new String[] { "QAPM_base_CollectRecordDataRunnable", ((File)localObject2).getPath() + " error. " });
+                  ((Queue)localObject3).add(((File)localObject2).getPath());
+                }
+                catch (Exception localException)
+                {
+                  for (;;)
+                  {
+                    localObject3 = Logger.INSTANCE;
+                    StringBuilder localStringBuilder = new StringBuilder().append(localException).append(": add file path: ");
+                    Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
+                    ((Logger)localObject3).e(new String[] { "QAPM_base_CollectRecordDataRunnable", ((File)localObject2).getPath() + " error. " });
+                  }
                 }
               }
             }
@@ -363,7 +365,7 @@ public final class CollectRecordDataRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.CollectRecordDataRunnable
  * JD-Core Version:    0.7.0.1
  */

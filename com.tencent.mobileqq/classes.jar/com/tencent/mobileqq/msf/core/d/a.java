@@ -11,7 +11,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.c.k.c;
 import com.tencent.mobileqq.msf.core.net.n;
@@ -177,7 +177,7 @@ public class a
     if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
     {
       com.tencent.mobileqq.a.a.a.a().a(n());
-      MsfCore.sCore.quicksender.a(true);
+      MsfCore.sCore.quicksender.b(true);
     }
   }
   
@@ -197,7 +197,7 @@ public class a
       if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
       {
         com.tencent.mobileqq.a.a.a.a().d();
-        MsfCore.sCore.quicksender.g();
+        MsfCore.sCore.quicksender.h();
       }
       return;
       QLog.d("StandbyModeManager", 1, "stop try start standby by lockScreenMsg ON when screenoff");
@@ -397,22 +397,22 @@ public class a
       return;
       paramContext = paramIntent.getAction();
       QLog.d("StandbyModeManager", 1, "onReceive action: " + paramContext);
-      if ((this.i.getStatReporter() != null) && (this.i.statReporter.X == null)) {
-        this.i.statReporter.X = new k.c();
+      if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y == null)) {
+        this.i.statReporter.Y = new k.c();
       }
       if ("android.intent.action.SCREEN_ON".equals(paramContext))
       {
-        if ((this.i.getStatReporter() != null) && (this.i.statReporter.X != null)) {
-          this.i.statReporter.X.e = 0L;
+        if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null)) {
+          this.i.statReporter.Y.e = 0L;
         }
         k();
         return;
       }
     } while (!"android.intent.action.SCREEN_OFF".equals(paramContext));
-    if ((this.i.getStatReporter() != null) && (this.i.statReporter.X != null))
+    if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y != null))
     {
-      this.i.statReporter.X.e = System.currentTimeMillis();
-      this.i.statReporter.X.f = 0L;
+      this.i.statReporter.Y.e = System.currentTimeMillis();
+      this.i.statReporter.Y.f = 0L;
     }
     l();
   }

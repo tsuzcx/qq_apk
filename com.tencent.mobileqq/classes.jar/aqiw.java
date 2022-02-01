@@ -1,19 +1,10 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
-
-public class aqiw
-  extends AnimatorListenerAdapter
+public abstract interface aqiw
 {
-  public aqiw(MatchingView paramMatchingView) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (MatchingView.a(this.a)) {
-      MatchingView.a(this.a).start();
-    }
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

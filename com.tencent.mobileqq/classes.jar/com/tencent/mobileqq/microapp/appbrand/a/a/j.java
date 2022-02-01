@@ -1,35 +1,45 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
-import android.text.TextUtils;
-import bdhb;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
+import com.tencent.mobileqq.microapp.sdk.MiniAppController;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
-import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
-final class j
-  implements f.a
+public final class j
+  extends a
 {
-  j(f paramf, String paramString1, BaseAppBrandWebview paramBaseAppBrandWebview, String paramString2, int paramInt) {}
+  private Set b = new HashSet();
   
-  public String a()
+  public j()
   {
-    if (b.a().g(this.a) != 2) {
-      return f.a(this.e, this.b, this.c, null, "permission denied, open " + this.a, this.d);
-    }
-    String str = b.a().d(this.a);
-    if (TextUtils.isEmpty(str)) {
-      return f.a(this.e, this.b, this.c, null, "no such file or directory, open " + this.a, this.d);
-    }
-    if (new File(str).isDirectory()) {
-      return f.a(this.e, this.b, this.c, null, "operation not permitted, unlink " + this.a, this.d);
-    }
-    bdhb.a(str, false);
-    return f.a(this.e, this.b, this.c, null, this.d);
+    this.b.add("requestPayment");
+    this.b.add("getLocation");
+    this.b.add("openLocation");
+    this.b.add("chooseLocation");
+    this.b.add("chooseVideo");
+    this.b.add("saveVideoToPhotosAlbum");
+    this.b.add("chooseImage");
+    this.b.add("previewImage");
+    this.b.add("getImageInfo");
+    this.b.add("saveImageToPhotosAlbum");
+    this.b.add("openSetting");
+    this.b.add("getSetting");
+    this.b.add("scanCode");
+  }
+  
+  public String a(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
+  {
+    return MiniAppController.getInstance().handleNativeRequest(this.a.a.d, this.a.a.a, paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
+  }
+  
+  public Set a()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.j
  * JD-Core Version:    0.7.0.1
  */

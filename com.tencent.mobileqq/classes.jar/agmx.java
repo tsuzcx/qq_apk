@@ -1,55 +1,33 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class agmx
-  extends aglx
+  implements View.OnClickListener
 {
-  aiul a;
+  agmx(agmv paramagmv) {}
   
-  public agmx(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
-    this.jdField_a_of_type_Aiul = ((aiul)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
-    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
+    try
     {
-      this.j = 2130846779;
+      bcst.b(agmv.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
+      agmv.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
+      this.a.a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Agmp.b.setVisibility(0);
-    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Agmp.b.setText("QQ语音口令红包");
-    return true;
-  }
-  
-  public void i()
-  {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    aiuk localaiuk2 = this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId);
-    aiuk localaiuk1 = localaiuk2;
-    if (localaiuk2 == null)
+    catch (Throwable localThrowable)
     {
-      localaiuk1 = new aiuk(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 1);
-      this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 1);
+      for (;;)
+      {
+        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + localThrowable);
+      }
     }
-    if (!a(localaiuk1))
-    {
-      this.jdField_a_of_type_Agmp.d.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_Agmp.d.setVisibility(0);
   }
 }
 

@@ -1,23 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-class aexf
-  implements ValueAnimator.AnimatorUpdateListener
+public class aexf
+  extends aexi
 {
-  aexf(aexe paramaexe) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (aexe.a(this.a) != null) {
-      aexe.a(this.a).setAlpha((float)d);
-    }
-    if (aexe.a(this.a) != null) {
-      aexe.a(this.a).setAlpha((float)d * 2.0F);
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 

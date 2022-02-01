@@ -1,14 +1,47 @@
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
-public abstract interface apkv
+public class apkv
+  implements apld
 {
-  public abstract void a(XmlData paramXmlData);
+  private void a(String paramString, apky paramapky)
+  {
+    QQAppInterface localQQAppInterface = apkf.a();
+    TicketManager localTicketManager = (TicketManager)localQQAppInterface.getManager(2);
+    String str = localTicketManager.getPskey(localQQAppInterface.getCurrentAccountUin(), paramString);
+    if (!TextUtils.isEmpty(str))
+    {
+      if (paramapky != null) {
+        paramapky.a(str);
+      }
+      return;
+    }
+    str = localQQAppInterface.getCurrentAccountUin();
+    paramapky = new apkx(this, localTicketManager, localQQAppInterface, paramString, paramapky);
+    localTicketManager.GetPskey(str, 16L, new String[] { paramString }, paramapky);
+  }
   
-  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
-  
-  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
-  
-  public abstract void b(XmlData paramXmlData);
+  public void a(Bundle paramBundle, aplf paramaplf)
+  {
+    if (apkf.a() == null)
+    {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, app interface is null");
+      paramaplf.a(EIPCResult.createResult(-102, new Bundle()));
+      return;
+    }
+    paramBundle = paramBundle.getString("domain", "");
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, domain is empty");
+      paramaplf.a(EIPCResult.createResult(0, new Bundle()));
+      return;
+    }
+    a(paramBundle, new apkw(this, paramaplf));
+  }
 }
 
 

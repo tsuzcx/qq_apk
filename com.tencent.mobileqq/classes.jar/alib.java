@@ -1,114 +1,41 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.ArrayList;
 
 public class alib
-  implements alif
+  implements View.OnClickListener
 {
-  public QQAppInterface a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        return (QQAppInterface)localAppRuntime;
-      }
-    }
-    return null;
-  }
+  public alib(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
   
-  public List<TraceData> a()
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return localQQAppInterface.getEntityManagerFactory().createEntityManager().a(TraceData.class);
-  }
-  
-  public boolean a(List<TraceData> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    awgh localawgh;
-    TraceData localTraceData;
-    try
+    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
     {
-      localObject = a();
-      if (localObject == null) {
-        return false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
+      alio.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, localArrayList);
+      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
+      if (alin.a != 1) {
+        break label127;
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localawgh = ((awgf)localObject).a();
-      localawgh.a();
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (paramList.hasNext())
-        {
-          localTraceData = (TraceData)paramList.next();
-          if (localTraceData.getStatus() == 1000)
-          {
-            ((awgf)localObject).b(localTraceData);
-            continue;
-            return true;
-          }
-        }
-      }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
+      alio.b("", "0X8005F5C", "0");
     }
     for (;;)
     {
-      ((awgf)localObject).a(localTraceData);
-      break;
-      localawgh.c();
-      localawgh.b();
-      ((awgf)localObject).a();
-    }
-  }
-  
-  public boolean b(List<TraceData> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    awgh localawgh;
-    try
-    {
-      localObject = a();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localawgh = ((awgf)localObject).a();
-      localawgh.a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ((awgf)localObject).b((TraceData)paramList.next());
-        continue;
-        return true;
-      }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      localawgh.c();
-      localawgh.b();
-      ((awgf)localObject).a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label127:
+      alio.b("", "0X8005F5C", "1");
     }
   }
 }

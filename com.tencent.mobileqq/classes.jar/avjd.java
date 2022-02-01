@@ -1,37 +1,81 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
 
 public class avjd
-  extends zje
+  implements DownloaderTaskListener
 {
-  public avjd(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  private avjf a;
   
-  public zil a(Activity paramActivity, zir paramzir)
+  public avjd(avjf paramavjf)
   {
-    return new avjf(paramActivity, paramzir);
+    this.a = paramavjf;
   }
   
-  public zin a(Activity paramActivity, zir paramzir)
+  public void a()
   {
-    return new avjj((PicBrowserActivity)paramActivity, paramzir);
+    this.a = null;
   }
   
-  public zir a(Activity paramActivity)
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
   {
-    paramActivity = new avjp(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
+    }
   }
   
-  public zis a(Activity paramActivity, zir paramzir)
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
   {
-    return null;
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
+    }
   }
+  
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
+  }
+  
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjd
  * JD-Core Version:    0.7.0.1
  */

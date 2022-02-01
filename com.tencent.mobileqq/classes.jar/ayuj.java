@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
-import java.util.Observable;
-import java.util.Observer;
-
-public class ayuj
-  implements Observer
+public final class ayuj
 {
-  public ayuj(MessageSearchEngine.1 param1) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    this.a.a.a(ayui.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public long d;
 }
 
 

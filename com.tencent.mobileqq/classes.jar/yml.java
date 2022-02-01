@@ -1,27 +1,12 @@
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class yml
-  extends alzr
+public abstract interface yml
 {
-  WeakReference<ymm> a;
-  
-  public yml(ymm paramymm)
-  {
-    this.a = new WeakReference(paramymm);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    ymm localymm = (ymm)this.a.get();
-    if (localymm != null) {
-      localymm.a(paramBoolean, paramString, false);
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpt
-  extends MqqHandler
+  implements ahor
 {
-  public ahpt(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Ahot == null);
-      this.a.jdField_a_of_type_Ahot.a = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_Ahot.notifyDataSetChanged();
-      this.a.jdField_a_of_type_Ambh.c = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    case 1014: 
-      this.a.j();
-      return;
-    }
-    paramMessage = paramMessage.obj;
-    try
-    {
-      this.a.a((List)paramMessage);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
-    }
+    paramagup.c(paramagwc.b, paramMessageRecord);
   }
 }
 

@@ -1,20 +1,105 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azhm
 {
-  public Handler a;
-  public azhn a;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public Bitmap c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public azhm(Handler paramHandler, azhn paramazhn)
+  public azhm(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Azhn = paramazhn;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  public static azhm a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = a(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PraiseInfo", 2, "content:" + paramString);
+        }
+        paramString = new JSONObject(paramString);
+        azhm localazhm = new azhm(paramInt);
+        localazhm.jdField_a_of_type_JavaLangString = paramString.optString("name");
+        localazhm.jdField_b_of_type_JavaLangString = paramString.optString("text");
+        if (paramString.has("color"))
+        {
+          String str = paramString.optString("color").trim();
+          paramString = str;
+          if (str.startsWith("0x")) {
+            paramString = str.substring(2);
+          }
+        }
+        try
+        {
+          localazhm.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
+          return localazhm;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PraiseInfo", 2, "color invalid");
+            }
+          }
+        }
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      }
+    }
+  }
+  
+  private static String a(String paramString)
+  {
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramString = bgmg.b(localFile);
+        return paramString;
+      }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    return null;
   }
 }
 

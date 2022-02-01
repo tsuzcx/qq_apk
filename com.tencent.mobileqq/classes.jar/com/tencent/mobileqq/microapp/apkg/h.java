@@ -1,41 +1,51 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ajao;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.microapp.sdk.BaseLibInfo;
+import akse;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 final class h
-  extends g.a
+  implements akse
 {
-  h(g paramg, int paramInt, MiniAppConfig paramMiniAppConfig)
-  {
-    super(paramInt);
-  }
+  h(g paramg, c paramc, String paramString, g.a parama) {}
   
-  public void a(g.d paramd)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((this.a != null) && (!TextUtils.isEmpty(this.a.baseLibInfo.baseLibUrl)) && (!TextUtils.isEmpty(this.a.baseLibInfo.baseLibKey)))
+    if (QLog.isColorLevel()) {
+      QLog.d("ApkgManager", 1, "downloadSubPack | getResPath : resCode=" + paramInt + "pathRes=" + paramPathResult);
+    }
+    if (paramInt == 0)
     {
+      str = g.a(this.a.f.config);
+      bool = c.a(new File(paramPathResult.filePath).getAbsolutePath(), str, this.b);
       if (QLog.isColorLevel()) {
-        QLog.d("ApkgManager", 2, "initApkgByConfig - base lib is not ready");
+        QLog.d("ApkgManager", 1, "downloadSubPack | getResPath :hasUnpack=" + bool + "folderPath=" + str + "subRoot=" + this.b);
       }
-      long l = System.currentTimeMillis();
-      ajao localajao = ajao.a(BaseApplicationImpl.getApplication().getRuntime());
-      DownloadParam localDownloadParam = new DownloadParam();
-      localDownloadParam.filePos = 1;
-      localDownloadParam.url = this.a.baseLibInfo.baseLibUrl;
-      localajao.a(localDownloadParam, new i(this, paramd, l));
+      if (bool) {
+        if (this.c != null) {
+          this.c.onInitApkgInfo$76ec3a73(0, this.a);
+        }
+      }
+    }
+    while (this.c == null)
+    {
+      String str;
+      boolean bool;
+      do
+      {
+        return;
+      } while (this.c == null);
+      this.c.onInitApkgInfo$76ec3a73(1, null);
       return;
     }
-    g.a(this.b, paramd, 1, null, "miniConfig not valid");
+    this.c.onInitApkgInfo$76ec3a73(1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.h
  * JD-Core Version:    0.7.0.1
  */

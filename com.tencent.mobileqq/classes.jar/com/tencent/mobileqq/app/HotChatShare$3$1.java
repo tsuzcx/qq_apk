@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aluw;
+import anoc;
 
 class HotChatShare$3$1
   implements Runnable
@@ -10,12 +10,12 @@ class HotChatShare$3$1
   public void run()
   {
     this.a.this$0.c();
-    aluw.a(this.a.this$0);
+    anoc.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatShare.3.1
  * JD-Core Version:    0.7.0.1
  */

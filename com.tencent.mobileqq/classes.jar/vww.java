@@ -1,21 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
 
 public class vww
-  implements vym
+  implements DialogInterface.OnClickListener
 {
-  public vww(TextureVideoView paramTextureVideoView) {}
+  public vww(QCircleFollowTagView paramQCircleFollowTagView) {}
   
-  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramvyi, paramInt1, paramInt2);
+    this.a.a(false);
+    if (QCircleFollowTagView.a(this.a) != null) {
+      QCircleFollowTagView.a(this.a).a();
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vww
  * JD-Core Version:    0.7.0.1
  */

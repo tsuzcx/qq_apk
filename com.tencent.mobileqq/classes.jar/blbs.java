@@ -1,37 +1,13 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.content.Context;
+import java.util.Observable;
 
 public class blbs
+  extends Observable
 {
-  public static final Integer a;
-  private blbz jdField_a_of_type_Blbz = new blbz();
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  static
+  public void a(Context paramContext)
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(480);
-  }
-  
-  public Frame a(Frame paramFrame)
-  {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Blbz.a(paramFrame, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    return localFrame;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Blbz.apply();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Blbz.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    setChanged();
+    notifyObservers(paramContext);
   }
 }
 

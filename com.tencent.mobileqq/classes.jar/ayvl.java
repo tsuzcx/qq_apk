@@ -1,63 +1,23 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.persistence.EntityDaoRegister;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class ayvl
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static ayvl a = new ayvl();
   
-  public static int a(int paramInt)
+  public static ayvl a()
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localInteger == null) {
-      return 0;
-    }
-    return localInteger.intValue();
+    return a;
   }
   
-  public static String a()
+  public OGAbstractDao a(Class paramClass)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_JavaUtilMap.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        jdField_a_of_type_Int += 1;
-        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
-      }
-      finally {}
-    }
+    return EntityDaoRegister.a(paramClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayvl
  * JD-Core Version:    0.7.0.1
  */

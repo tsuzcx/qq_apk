@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
-final class afqo
-  implements afug
+public class afqo
+  extends Handler
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (ajet.a((MessageForQQWalletMsg)paramChatMessage)) {
-      return 32;
-    }
-    return 90;
-  }
+  public afqo(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

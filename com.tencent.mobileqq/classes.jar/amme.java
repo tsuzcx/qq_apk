@@ -1,37 +1,24 @@
-import java.util.Comparator;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class amme
-  implements Comparator<ammf>
+  implements AdapterView.OnItemClickListener
 {
-  private int a;
+  public amme(CmGameDebugView paramCmGameDebugView) {}
   
-  public amme(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramInt;
-  }
-  
-  public int a(ammf paramammf1, ammf paramammf2)
-  {
-    if (this.a == 2) {
-      if (paramammf1.b <= paramammf2.b) {}
-    }
-    while (paramammf1.a > paramammf2.a)
-    {
-      return -1;
-      if (paramammf1.b < paramammf2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramammf1.a < paramammf2.a) {
-      return 1;
-    }
-    return 0;
+    CmGameDebugView.a(this.a, paramInt);
+    this.a.a(paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amme
  * JD-Core Version:    0.7.0.1
  */

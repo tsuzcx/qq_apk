@@ -1,47 +1,155 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.13;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import android.support.annotation.Nullable;
 import java.io.File;
-import java.io.IOException;
 
 public class bnpf
-  implements baug
 {
-  public bnpf(PtvTemplateManager.13 param13) {}
+  public static bnpf a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c = 0;
+  public String c;
+  public boolean c;
+  public int d = 0;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g = 0;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
   
-  public void onResp(bavf parambavf)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + parambavf.c);
+    jdField_a_of_type_Bnpf = a();
+  }
+  
+  private static bnpf a()
+  {
+    bnpf localbnpf = new bnpf();
+    localbnpf.jdField_a_of_type_JavaLangString = "0";
+    localbnpf.jdField_a_of_type_Int = 0;
+    return localbnpf;
+  }
+  
+  public static boolean a(bnpf parambnpf)
+  {
+    if (parambnpf == null) {}
+    while ((parambnpf.jdField_a_of_type_JavaLangString != null) && (!parambnpf.jdField_a_of_type_JavaLangString.equals("0"))) {
+      return false;
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.this$0.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
-    try
+    return true;
+  }
+  
+  public static boolean b(@Nullable bnpf parambnpf)
+  {
+    return (parambnpf != null) && ((parambnpf.g == 0) || (parambnpf.g == 4) || (parambnpf.g == 5) || (parambnpf.g == 6) || (parambnpf.g == 7));
+  }
+  
+  public int a()
+  {
+    switch (this.d)
     {
-      ndr.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (parambavf.jdField_a_of_type_Int == 0)
-      {
-        bbaa localbbaa = (bbaa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-        if (localbbaa.a()) {
-          localbbaa.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, parambavf.jdField_a_of_type_Long);
-        }
-      }
-      return;
+    default: 
+      return -1;
+    case 1: 
+      return 2130844578;
+    case 2: 
+      return 2130844579;
+    case 3: 
+      return 2130844581;
     }
-    catch (IOException localIOException)
+    return 2130844580;
+  }
+  
+  public String a()
+  {
+    File localFile = new File(bndm.e);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return new File(localFile.getPath(), this.jdField_a_of_type_JavaLangString).getPath() + File.separator;
+  }
+  
+  public void a(bnpf parambnpf)
+  {
+    if (!equals(jdField_a_of_type_Bnpf))
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
+      this.e = parambnpf.e;
+      this.f = parambnpf.f;
+      this.jdField_a_of_type_Boolean = parambnpf.jdField_a_of_type_Boolean;
     }
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public boolean a()
+  {
+    return this.c == 12;
+  }
+  
+  public String b()
+  {
+    File localFile = new File(bndm.e);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile.getPath() + File.separator;
+  }
+  
+  public boolean b()
+  {
+    return this.d != 0;
+  }
+  
+  public String c()
+  {
+    return new File(bnpc.b(), this.jdField_a_of_type_JavaLangString).getPath();
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals("0"));
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof bnpf));
+      paramObject = (bnpf)paramObject;
+      if ((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString == null)) {
+        return true;
+      }
+    } while (((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString != null)) || ((paramObject.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString == null)));
+    return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (int i1 = 0;; i1 = this.jdField_a_of_type_JavaLangString.hashCode()) {
+      return i1 + 31;
+    }
+  }
 }
 
 

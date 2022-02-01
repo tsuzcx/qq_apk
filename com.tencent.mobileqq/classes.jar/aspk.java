@@ -1,12 +1,22 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aspk
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  public aspk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public aspk(aspf paramaspf, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
+    localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
+    this.a.startActivityForResult(localIntent, 100);
+    bcst.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

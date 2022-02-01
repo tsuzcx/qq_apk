@@ -1,54 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbtd
-  extends aqxd
+  extends bbti
 {
-  long jdField_a_of_type_Long;
-  alpa jdField_a_of_type_Alpa = null;
-  bbtn jdField_a_of_type_Bbtn;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bbtd(QQAppInterface paramQQAppInterface, long paramLong, bbtn parambbtn)
+  public bbtd(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bbtn = parambbtn;
-    this.jdField_a_of_type_Long = paramLong;
-    a();
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
   }
   
-  private void a()
+  public bbmx a(List<bbmy> paramList, String paramString)
   {
-    this.jdField_a_of_type_Alpa = new bbte(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alpa);
+    return null;
   }
   
-  public int a()
+  public List<bbmx> a(bbtx parambbtx)
   {
-    return 3;
-  }
-  
-  public boolean a()
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      return false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    if (parambbtx.jdField_a_of_type_AndroidOsBundle == null) {
+      parambbtx.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    if (this.jdField_a_of_type_Bbtn.a != null) {
-      localTroopFileTransferManager.e(this.jdField_a_of_type_Bbtn.a);
-    }
-    for (;;)
-    {
-      return true;
-      localTroopFileTransferManager.a(this.jdField_a_of_type_Bbtn.e, this.jdField_a_of_type_Bbtn.g, this.jdField_a_of_type_Bbtn.h);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Alpa != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alpa);
-    }
+    ArrayList localArrayList = new ArrayList();
+    parambbtx = new bbmn(parambbtx.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new bbmf(parambbtx));
+    localArrayList.add(parambbtx);
+    bbuo.a(0);
+    return localArrayList;
   }
 }
 

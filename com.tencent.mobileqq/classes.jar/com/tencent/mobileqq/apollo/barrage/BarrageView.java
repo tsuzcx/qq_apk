@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.barrage;
 
-import akry;
-import aksa;
-import aksc;
-import aksd;
-import akse;
+import amle;
+import amlg;
+import amli;
+import amlj;
+import amlk;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler.Callback;
@@ -12,7 +12,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-import bhtd;
+import bkgm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -20,13 +20,13 @@ import mqq.os.MqqHandler;
 
 public class BarrageView
   extends View
-  implements aksd, Handler.Callback
+  implements amlj, Handler.Callback
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private akry jdField_a_of_type_Akry;
-  private akse jdField_a_of_type_Akse;
-  private bhtd jdField_a_of_type_Bhtd;
+  private amle jdField_a_of_type_Amle;
+  private amlk jdField_a_of_type_Amlk;
+  private bkgm jdField_a_of_type_Bkgm;
   private boolean jdField_a_of_type_Boolean;
   
   public BarrageView(Context paramContext)
@@ -43,15 +43,15 @@ public class BarrageView
   
   private void c()
   {
-    this.jdField_a_of_type_Akry = new aksa();
-    this.jdField_a_of_type_Akse = new akse();
-    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Amle = new amlg();
+    this.jdField_a_of_type_Amlk = new amlk();
+    this.jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Bhtd.removeMessages(259);
-    this.jdField_a_of_type_Bhtd.sendEmptyMessage(259);
+    this.jdField_a_of_type_Bkgm.removeMessages(259);
+    this.jdField_a_of_type_Bkgm.sendEmptyMessage(259);
   }
   
   public int a()
@@ -59,18 +59,18 @@ public class BarrageView
     return super.getWidth();
   }
   
-  public akry a()
+  public amle a()
   {
-    return this.jdField_a_of_type_Akry;
+    return this.jdField_a_of_type_Amle;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Akse.a(true);
+    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Amlk.a(true);
   }
   
-  public void a(List<aksc> paramList, boolean paramBoolean)
+  public void a(List<amli> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
@@ -80,10 +80,10 @@ public class BarrageView
   
   public void a(boolean paramBoolean)
   {
-    bhtd localbhtd;
-    if (this.jdField_a_of_type_Akse.a())
+    bkgm localbkgm;
+    if (this.jdField_a_of_type_Amlk.a())
     {
-      localbhtd = this.jdField_a_of_type_Bhtd;
+      localbkgm = this.jdField_a_of_type_Bkgm;
       if (!paramBoolean) {
         break label34;
       }
@@ -91,7 +91,7 @@ public class BarrageView
     label34:
     for (int i = 1;; i = 0)
     {
-      localbhtd.obtainMessage(258, i, 0).sendToTarget();
+      localbkgm.obtainMessage(258, i, 0).sendToTarget();
       return;
     }
   }
@@ -103,7 +103,7 @@ public class BarrageView
   
   public void b()
   {
-    this.jdField_a_of_type_Bhtd.removeMessages(259);
+    this.jdField_a_of_type_Bkgm.removeMessages(259);
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -116,17 +116,17 @@ public class BarrageView
     case 256: 
       List localList = (List)paramMessage.obj;
       if (paramMessage.arg1 > 0) {
-        this.jdField_a_of_type_Akse.a(false);
+        this.jdField_a_of_type_Amlk.a(false);
       }
-      this.jdField_a_of_type_Akse.a(localList);
+      this.jdField_a_of_type_Amlk.a(localList);
       this.jdField_a_of_type_Int = 0;
       super.setVisibility(0);
       d();
       this.jdField_a_of_type_Boolean = false;
       return false;
     case 257: 
-      paramMessage = (aksc)paramMessage.obj;
-      this.jdField_a_of_type_Akse.a(paramMessage);
+      paramMessage = (amli)paramMessage.obj;
+      this.jdField_a_of_type_Amlk.a(paramMessage);
       this.jdField_a_of_type_Int = 0;
       d();
       this.jdField_a_of_type_Boolean = false;
@@ -141,11 +141,11 @@ public class BarrageView
         d();
         this.jdField_a_of_type_Boolean = false;
         return false;
-        this.jdField_a_of_type_Akse.a(false);
+        this.jdField_a_of_type_Amlk.a(false);
         super.setVisibility(8);
       }
     }
-    this.jdField_a_of_type_Bhtd.removeMessages(259);
+    this.jdField_a_of_type_Bkgm.removeMessages(259);
     invalidate();
     this.jdField_a_of_type_Boolean = false;
     return false;
@@ -165,7 +165,7 @@ public class BarrageView
     }
     else
     {
-      if (!this.jdField_a_of_type_Akse.a(paramCanvas, f)) {
+      if (!this.jdField_a_of_type_Amlk.a(paramCanvas, f)) {
         break label94;
       }
       if (!this.jdField_a_of_type_Boolean) {
@@ -177,8 +177,8 @@ public class BarrageView
     {
       return;
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Akse.a(false);
-      this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(259, 20L);
+      this.jdField_a_of_type_Amlk.a(false);
+      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(259, 20L);
       return;
       super.setVisibility(8);
     } while (!QLog.isColorLevel());
@@ -187,7 +187,7 @@ public class BarrageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.BarrageView
  * JD-Core Version:    0.7.0.1
  */

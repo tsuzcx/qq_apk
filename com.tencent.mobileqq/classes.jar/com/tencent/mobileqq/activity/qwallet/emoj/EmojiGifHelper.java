@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ajem;
+import akwm;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public class EmojiGifHelper
       getInstance().compositeAndTransToGifInner(paramConvertParam, paramOnConvertListener);
       return;
     }
-    ajem.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
+    akwm.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
   }
   
   public static EmojiGifHelper getInstance()
@@ -58,7 +58,7 @@ public class EmojiGifHelper
       getInstance().removeTaskInner(paramInt);
       return;
     }
-    ajem.a(paramInt);
+    akwm.a(paramInt);
   }
   
   private void sendPicToAIO(EmojiGifHelper.EmojiInfo paramEmojiInfo)
@@ -178,7 +178,7 @@ public class EmojiGifHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper
  * JD-Core Version:    0.7.0.1
  */

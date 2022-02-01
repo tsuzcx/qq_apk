@@ -1,24 +1,10 @@
-import java.util.List;
-
-class arpo
-  implements bezx
+public class arpo
 {
-  arpo(arpn paramarpn, List paramList, arpm paramarpm) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2)
-    {
-      arpn.a(this.jdField_a_of_type_Arpn, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Arpm != null) {
-        this.jdField_a_of_type_Arpm.a(1, 0);
-      }
-    }
-    while (this.jdField_a_of_type_Arpm == null) {
-      return;
-    }
-    this.jdField_a_of_type_Arpm.a(1, 1);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

@@ -1,50 +1,17 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
-public class appm
+class appm
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private int jdField_a_of_type_Int;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  appm(appj paramappj, String paramString, Context paramContext) {}
   
-  public appm(DragSortListView paramDragSortListView, int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
-    if (i != paramInt2)
-    {
-      if (i != -1) {
-        break label77;
-      }
-      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
-      return;
-      label77:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new appn(this));
     }
   }
 }

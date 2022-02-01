@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import adbt;
-import adbx;
-import awgf;
-import awgg;
+import aehr;
+import aehv;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class FriendProfileImageAvatar$1
   implements Runnable
 {
-  public FriendProfileImageAvatar$1(adbt paramadbt, adbx paramadbx) {}
+  public FriendProfileImageAvatar$1(aehr paramaehr, aehv paramaehv) {}
   
   public void run()
   {
-    localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (localawgf != null) {}
+    localEntityManager = this.this$0.a.a().createEntityManager();
+    if (localEntityManager != null) {}
     try
     {
-      Setting localSetting = (Setting)localawgf.a(Setting.class, this.a.d);
+      Setting localSetting = (Setting)localEntityManager.find(Setting.class, this.a.d);
       if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
       {
         localSetting.headImgTimestamp = 0L;
         localSetting.updateTimestamp = 0L;
-        localawgf.a(localSetting);
+        localEntityManager.update(localSetting);
         this.this$0.a.a(localSetting);
       }
     }
@@ -31,19 +31,19 @@ public class FriendProfileImageAvatar$1
     {
       for (;;)
       {
-        localawgf.a();
+        localEntityManager.close();
       }
     }
     finally
     {
-      localawgf.a();
+      localEntityManager.close();
     }
     this.this$0.a.e(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.1
  * JD-Core Version:    0.7.0.1
  */

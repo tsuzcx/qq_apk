@@ -1,18 +1,41 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
-import java.io.File;
-import java.io.FilenameFilter;
+import QC.UniSetRsp;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bcne
-  implements FilenameFilter
+class bcne
+  implements anil
 {
-  public bcne(TroopFileTransferManager.1 param1) {}
+  bcne(bcnd parambcnd) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramString == null) {
-      return false;
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
+    {
+      paramBoolean = true;
+      paramObject = this.a;
+      if (bcnd.a(this.a).get() != 1) {
+        break label91;
+      }
+      bool1 = true;
+      label48:
+      paramInt = bcnd.b(this.a).get();
+      if (bcnd.c(this.a).get() != 1) {
+        break label97;
+      }
     }
-    return paramString.startsWith("[Thumb]");
+    for (;;)
+    {
+      paramObject.a(paramBoolean, bool1, paramInt, bool2, false, false);
+      return;
+      paramBoolean = false;
+      break;
+      label91:
+      bool1 = false;
+      break label48;
+      label97:
+      bool2 = false;
+    }
   }
 }
 

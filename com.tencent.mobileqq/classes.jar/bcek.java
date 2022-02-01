@@ -1,103 +1,124 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcek
-  extends JobSegment<bced, bced>
 {
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public bcek(XMediaEditor paramXMediaEditor)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getInt("short_video_msg_config_version", 0);
   }
   
-  protected void a(JobContext paramJobContext, bced parambced)
+  public static String a(Context paramContext, int paramInt)
   {
-    bcej localbcej = (bcej)parambced;
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localbcej.jdField_g_of_type_Int) });
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_jumping_url_" + paramInt, "");
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+    paramContext.putInt("short_video_msg_config_version", paramInt);
+    paramContext.apply();
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    Object localObject = a(paramContext, paramInt);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramString = ((String)localObject).replace("$GCODE$", paramString);
+      localObject = new Intent(paramContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramString);
+      paramContext.startActivity((Intent)localObject);
+      return;
     }
-    String str = bced.b();
-    XMediaEditor localXMediaEditor;
-    int i;
+    QLog.i("ShortVideoMsgTailHelper", 1, "jumpUrl is empty");
+  }
+  
+  public static void a(Context paramContext, List<String> paramList)
+  {
+    if (paramList == null) {}
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label300;
+      }
+      QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, configs == null");
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      QLog.e("ShortVideoMsgTailHelper", 1, paramContext.toString(), paramContext);
+      return;
+    }
+    paramList = paramList.iterator();
     for (;;)
     {
-      try
+      Object localObject;
+      int j;
+      SharedPreferences.Editor localEditor;
+      int i;
+      if (paramList.hasNext())
       {
-        localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localXMediaEditor == null) {
-          continue;
-        }
+        localObject = (String)paramList.next();
         if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localbcej.f });
+          QLog.i("ShortVideoMsgTailHelper", 2, "updateShortVideoMsgTailConfig, config=" + (String)localObject);
         }
-        str = bdzf.a(str + localbcej.f.substring(localbcej.f.lastIndexOf("/") + 1, localbcej.f.lastIndexOf(".")) + System.currentTimeMillis() + arso.a(localbcej.f));
-        i = bkcy.a(localXMediaEditor.getContext(), localbcej.f, str);
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
-        }
-        if (i != 1) {
-          break label414;
-        }
-        str = localbcej.f;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        label217:
-        QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
-        URLDrawable.clearMemoryCache();
-        System.gc();
-        if (this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, parambced);
-        return;
-        notifyError(new Error("-200"));
-        return;
-        notifyError(new Error("0"));
-        return;
-        notifyError(new Error("-1"));
-        return;
-      }
-      if (arso.b(str))
-      {
-        if (arso.a(str) > 104857600L)
+        localObject = new JSONArray((String)localObject);
+        j = ((JSONArray)localObject).length();
+        if (j > 0)
         {
-          notifyError(new Error("200"));
-          return;
+          localEditor = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+          i = 0;
         }
-        localbcej.jdField_g_of_type_JavaLangString = str;
-        ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localbcej, localXMediaEditor));
-        if (isCanceled()) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localbcej.jdField_g_of_type_JavaLangString, ", info status=", Integer.valueOf(localbcej.jdField_g_of_type_Int) });
-        }
-        notifyResult(localbcej);
-        return;
       }
-      label414:
-      if (i != 0) {
-        if (i != 1) {
-          break label217;
+      else
+      {
+        while (i < j)
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          int k = localJSONObject.getInt("type");
+          if (k != 0) {
+            if (!"1".equals(localJSONObject.optString("isShow"))) {
+              break label294;
+            }
+          }
+          label294:
+          for (boolean bool = true;; bool = false)
+          {
+            localEditor.putBoolean("short_video_msg_tail_is_show_" + k, bool);
+            localEditor.putString("short_video_msg_tail_wording_" + k, localJSONObject.optString("wording"));
+            localEditor.putString("short_video_msg_tail_jumping_url_" + k, localJSONObject.optString("jumpUrl"));
+            localEditor.apply();
+            break;
+            QLog.i("ShortVideoMsgTailHelper", 1, "type == 0");
+            break;
+          }
+          label300:
+          return;
+          i += 1;
         }
       }
     }
   }
   
-  public void onCancel()
+  public static boolean a(Context paramContext, int paramInt)
   {
-    notifyError(new Error("c_2001"));
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getBoolean("short_video_msg_tail_is_show_" + paramInt, false);
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getString("short_video_msg_tail_wording_" + paramInt, "");
   }
 }
 

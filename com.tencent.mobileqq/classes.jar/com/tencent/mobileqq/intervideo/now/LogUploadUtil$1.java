@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import atcw;
-import atcx;
+import avjj;
+import avjk;
 import java.io.IOException;
 
 public final class LogUploadUtil$1
@@ -15,9 +15,9 @@ public final class LogUploadUtil$1
     try
     {
       long l = System.currentTimeMillis();
-      atcx.a(atcx.a(), atcx.b());
+      avjk.a(avjk.a(), avjk.b());
       Log.i("FileUtil", "compress time " + (System.currentTimeMillis() - l));
-      atcw.a(this.a, atcx.b());
+      avjj.a(this.a, avjk.b());
       return;
     }
     catch (IOException localIOException)
@@ -28,7 +28,7 @@ public final class LogUploadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.LogUploadUtil.1
  * JD-Core Version:    0.7.0.1
  */

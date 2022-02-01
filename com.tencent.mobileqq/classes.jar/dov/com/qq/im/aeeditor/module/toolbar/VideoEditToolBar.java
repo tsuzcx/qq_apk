@@ -6,14 +6,16 @@ import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import blpr;
-import blps;
-import blpt;
+import bnzc;
+import boir;
+import bois;
+import boit;
 
 public class VideoEditToolBar
   extends AEEditorToolBar
 {
   private boolean a;
+  private boolean b;
   
   public VideoEditToolBar(Context paramContext)
   {
@@ -32,25 +34,26 @@ public class VideoEditToolBar
   
   protected void a()
   {
-    a(0, "clip", 2130837649);
-    a(1, "text", 2130837650);
-    a(2, "music", 2130837669);
+    this.b = bnzc.a();
+    a(0, "clip", 2130837696, 2130837646);
+    a(1, "text", 2130837701, 2130837646);
+    a(2, "music", 2130837741, 2130837646);
   }
   
   void a(String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Blpp != null)
+    if (this.jdField_a_of_type_Boip != null)
     {
       localObject1 = localObject2;
-      if ((this.jdField_a_of_type_Blpp instanceof blpt)) {
-        localObject1 = (blpt)this.jdField_a_of_type_Blpp;
+      if ((this.jdField_a_of_type_Boip instanceof boit)) {
+        localObject1 = (boit)this.jdField_a_of_type_Boip;
       }
     }
     if (paramString.equals("clip")) {
       if (localObject1 != null) {
-        ((blpt)localObject1).l();
+        ((boit)localObject1).q();
       }
     }
     do
@@ -62,21 +65,22 @@ public class VideoEditToolBar
           break;
         }
       } while (localObject1 == null);
-      ((blpt)localObject1).q();
+      ((boit)localObject1).v();
       return;
     } while ((!paramString.equals("music")) || (localObject1 == null));
-    ((blpt)localObject1).r();
+    ((boit)localObject1).w();
   }
   
   public void a(boolean paramBoolean)
   {
+    this.b = bnzc.a();
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      a("music", 2130837668);
+      a("music", 2130837742);
       return;
     }
-    a("music", 2130837669);
+    a("music", 2130837741);
   }
   
   public void d()
@@ -85,8 +89,8 @@ public class VideoEditToolBar
     AnimationSet localAnimationSet = new AnimationSet(true);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(350L);
-    localAnimationSet.setAnimationListener(new blpr(this));
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setAnimationListener(new boir(this));
     startAnimation(localAnimationSet);
   }
   
@@ -96,14 +100,14 @@ public class VideoEditToolBar
     AnimationSet localAnimationSet = new AnimationSet(true);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(350L);
-    localAnimationSet.setAnimationListener(new blps(this));
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setAnimationListener(new bois(this));
     startAnimation(localAnimationSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar
  * JD-Core Version:    0.7.0.1
  */

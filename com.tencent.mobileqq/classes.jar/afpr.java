@@ -1,26 +1,19 @@
-import android.animation.ValueAnimator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afpr
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public Scroller a;
-  public boolean a;
-  public float b;
-  public int b;
-  public Scroller b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public afpr(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public afpr(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

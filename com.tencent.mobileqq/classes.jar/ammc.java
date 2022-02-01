@@ -1,37 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
+import com.tencent.widget.HorizontalListView;
 
-class ammc
-  implements abso
+public class ammc
+  implements Animation.AnimationListener
 {
-  ammc(ammb paramammb, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
+  public ammc(CmGameDebugView paramCmGameDebugView) {}
   
-  public ToServiceMsg a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = ammb.a(this.jdField_a_of_type_Ammb).createToServiceMsg("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(ayzs.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
+    if (CmGameDebugView.a(this.a))
     {
-      int i = azah.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
+      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
+      CmGameDebugView.a(this.a, false);
     }
-    return localToServiceMsg;
+    if (CmGameDebugView.b(this.a)) {
+      CmGameDebugView.b(this.a, 0);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammc
  * JD-Core Version:    0.7.0.1
  */

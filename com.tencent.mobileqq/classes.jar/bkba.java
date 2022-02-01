@@ -1,18 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
+import java.lang.reflect.Field;
 
-public final class bkba
-  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
+public class bkba
 {
-  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
+  public static Object a(Object paramObject, String paramString)
   {
-    return new RedTouchExtendButton.RedInfo(paramParcel);
+    try
+    {
+      paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalAccessException paramObject) {}
+    return null;
   }
   
-  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  public static Object b(Object paramObject, String paramString)
   {
-    return new RedTouchExtendButton.RedInfo[paramInt];
+    try
+    {
+      String[] arrayOfString = paramString.split("\\.");
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
+      {
+        paramString = paramObject;
+        if (i >= j) {
+          break;
+        }
+        paramString = arrayOfString[i];
+        paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+        i += 1;
+      }
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramString = null;
+      return paramString;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (NoSuchFieldException paramObject) {}
   }
 }
 

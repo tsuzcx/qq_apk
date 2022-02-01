@@ -1,64 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
 class agqb
-  extends bfzo
+  implements DialogInterface.OnClickListener
 {
-  agqb(agps paramagps) {}
+  agqb(agpz paramagpz, MessageForArkApp paramMessageForArkApp) {}
   
-  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698551), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698550), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
-      {
-        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (paramHashMap != null)
-        {
-          agps.a(this.a, true);
-          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          agps.a(this.a).setOnClickListener(null);
-          agps.b(this.a).setOnClickListener(null);
-          this.a.h = paramHashMap;
-          this.a.a(paramHashMap);
-          if (acjl.S) {
-            this.a.f.setContentDescription(paramHashMap);
-          }
-          agps.a(this.a, true);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
+    if (aujb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_Agpz.jdField_a_of_type_AndroidContentContext)) {}
+    Object localObject;
+    do
     {
       do
       {
-        return;
-        agps.b(this.a, false);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
-    }
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
+        do
+        {
+          do
+          {
+            return;
+            paramDialogInterface = (MessageForArkApp)bbzh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+            if (paramDialogInterface.msgData == null)
+            {
+              if (paramDialogInterface.ark_app_message == null)
+              {
+                ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+                return;
+              }
+              paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+            }
+          } while (this.jdField_a_of_type_Agpz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
+          paramInt = paramDialogInterface.getProcessState();
+          this.jdField_a_of_type_Agpz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Agpz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agpz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+          if ((paramInt == 1002) || (paramInt == 0)) {
+            break;
+          }
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject instanceof QQAppInterface));
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ((aprz)localObject).a(paramDialogInterface);
+    return;
+    this.jdField_a_of_type_Agpz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 

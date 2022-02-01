@@ -1,30 +1,67 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.intimate_relation.intimate_relation.IntimateBuddy;
+import tencent.intimate_relation.intimate_relation.IntimateInfo;
+import tencent.intimate_relation.intimate_relation.IntimateLadybro;
+import tencent.intimate_relation.intimate_relation.IntimateLover;
+import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
 
-class afyh
-  implements View.OnClickListener
+public class afyh
 {
-  long jdField_a_of_type_Long = 0L;
+  public int a;
   
-  afyh(afyg paramafyg) {}
-  
-  public void onClick(View paramView)
+  public static afyh a(byte[] paramArrayOfByte)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    paramView = (MessageForQQStoryComment)((aeqi)aepi.a(paramView)).a;
-    if (xpq.a(paramView.vid))
+    intimate_relation.IntimateInfo localIntimateInfo = null;
+    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
+    for (;;)
     {
-      vod.a(this.jdField_a_of_type_Afyg.a, paramView.vid, "CommentItemBuilder_Feed_Id", 1004);
-      wxj.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      return;
+      try
+      {
+        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localIntimateInfo;
+        if (localSnsRelationInfo.intimate_list.has())
+        {
+          paramArrayOfByte = localIntimateInfo;
+          if (localSnsRelationInfo.intimate_list.size() > 0)
+          {
+            paramArrayOfByte = new afyh();
+            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
+            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
+              break label173;
+            }
+            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
+        }
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
+        return null;
+      }
+      label173:
+      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
+      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
+      }
     }
-    vod.b((Activity)this.jdField_a_of_type_Afyg.a, paramView.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsIntimatePushInfo{");
+    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

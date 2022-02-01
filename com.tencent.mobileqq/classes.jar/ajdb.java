@@ -1,16 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajdb
+class ajdb
   implements View.OnClickListener
 {
-  public ajdb(DrawHbFragment paramDrawHbFragment) {}
+  ajdb(ajcz paramajcz, ajdf paramajdf) {}
   
   public void onClick(View paramView)
   {
-    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
+    if (this.jdField_a_of_type_Ajcz.a != null)
+    {
+      int i = this.jdField_a_of_type_Ajdf.getAdapterPosition();
+      this.jdField_a_of_type_Ajcz.a.a(paramView, this.jdField_a_of_type_Ajdf, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

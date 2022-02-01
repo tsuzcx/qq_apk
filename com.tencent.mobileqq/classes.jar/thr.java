@@ -1,42 +1,21 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.widget.PopupWindow.OnDismissListener;
 
 class thr
-  implements Handler.Callback
+  implements PopupWindow.OnDismissListener
 {
-  thr(thq paramthq) {}
+  thr(thn paramthn) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDismiss()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          thq.a(this.a, false);
-          thq.a(this.a).removeMessages(0);
-        } while (thq.a(this.a) == null);
-        thq.a(this.a).a(true);
-        return true;
-        thq.a(this.a, false);
-        thq.a(this.a).removeMessages(1);
-      } while (thq.a(this.a) == null);
-      thq.a(this.a).a(false);
-      return true;
+    this.a.a(1.0F);
+    if (thn.a(this.a)) {
+      thn.a(this.a, "0X80095D4", 8);
     }
-    thq.a(this.a, true);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thr
  * JD-Core Version:    0.7.0.1
  */

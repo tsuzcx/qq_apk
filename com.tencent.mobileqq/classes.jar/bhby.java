@@ -1,52 +1,87 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.1;
-import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.2;
-import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class bhby
+public class bhby<E>
 {
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    bhch.a().a().post(new MiniProgramLpReportDC04266.1(paramInt1, paramMiniAppInfo, paramInt2, paramString2, paramLong2, paramLong1, paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10));
-  }
+  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
   
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public List<E> a(String paramString)
   {
-    bhch.a().a().post(new MiniProgramLpReportDC04266.2(paramMiniAppInfo, paramString1, paramString2, paramInt, paramLong1, paramLong2, paramString3, paramString4, paramString5, paramString6, paramString7));
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    return (paramInt == 20) || (paramInt == 22) || (paramInt == 605) || (paramInt == 1011) || (paramInt == 1024) || (paramInt == 1028);
-  }
-  
-  private static int c()
-  {
-    return 3;
-  }
-  
-  private static int d()
-  {
-    return 14;
-  }
-  
-  private static int e()
-  {
-    return 13;
-  }
-  
-  private static int f()
-  {
-    if (QUAUtil.isQQApp()) {
-      return c();
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
     }
-    return e();
+    finally {}
+  }
+  
+  public void a(String paramString, E paramE)
+  {
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
+      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
+      if (localCopyOnWriteArrayList2 == null)
+      {
+        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
+        this.a.put(paramString, localCopyOnWriteArrayList1);
+      }
+      localCopyOnWriteArrayList1.add(paramE);
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    try
+    {
+      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
+      if (paramString != null)
+      {
+        if (paramBoolean)
+        {
+          Iterator localIterator = paramString.iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject1 = localIterator.next();
+            Object localObject2 = ((WeakReference)localObject1).get();
+            if ((localObject2 == null) || (localObject2 == paramObject)) {
+              paramString.remove(localObject1);
+            }
+          }
+        }
+        paramString.remove(paramObject);
+      }
+    }
+    finally {}
+  }
+  
+  public List<E> b(String paramString)
+  {
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhby
  * JD-Core Version:    0.7.0.1
  */

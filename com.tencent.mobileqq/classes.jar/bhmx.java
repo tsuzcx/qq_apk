@@ -1,59 +1,26 @@
-public class bhmx
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+
+class bhmx
+  implements TouchWebView.OnScrollChangedListener
 {
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean;
+  bhmx(bhmv parambhmv) {}
   
-  public bhmx()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    a();
-  }
-  
-  private void a()
-  {
-    a(",");
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    this.a.b = paramInt2;
+    this.a.a(this.a.b, this.a.f);
+    paramView = this.a.a.a();
+    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
+      paramView.callJs(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
     }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public bhmx a()
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public bhmx a(int paramInt)
-  {
-    return a(String.format("%d", new Object[] { Integer.valueOf(paramInt) }));
-  }
-  
-  public bhmx a(String paramString)
-  {
-    a();
-    paramString = paramString.replace(',', ';');
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
-    return this;
-  }
-  
-  public bhmx a(byte[] paramArrayOfByte)
-  {
-    return a(bdhe.a(paramArrayOfByte));
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmx
  * JD-Core Version:    0.7.0.1
  */

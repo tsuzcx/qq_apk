@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class nzi
-  implements View.OnClickListener
+  implements bhow
 {
-  public nzi(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
+  public nzi(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void onClick(View paramView)
+  public Object a(int paramInt)
   {
-    this.a.onBackEvent();
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new nzl(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzi
  * JD-Core Version:    0.7.0.1
  */

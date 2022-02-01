@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
-import bazg;
+import beai;
 import java.net.URL;
 
 public class AppVideoDecoder
-  implements bazg
+  implements beai
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;
@@ -25,7 +25,7 @@ public class AppVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.AppVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

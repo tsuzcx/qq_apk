@@ -1,25 +1,19 @@
-import android.provider.Settings.System;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adyx
   implements View.OnClickListener
 {
-  public adyx(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adyx(Conversation paramConversation) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
-    }
+    this.a.a.b.performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzo
-  implements qjq
+  extends BroadcastReceiver
 {
-  public nzo(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nzo(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
   
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzo
  * JD-Core Version:    0.7.0.1
  */

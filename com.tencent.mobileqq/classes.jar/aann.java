@@ -1,18 +1,16 @@
-import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-class aann
-  implements aaso
+public class aann
 {
-  aann(aanj paramaanj) {}
-  
-  public void reportImpression(View paramView)
-  {
-    paramView = paramView.getTag(2131379969);
-    if ((paramView != null) && ((paramView instanceof GdtAd))) {
-      aasq.a(((GdtAd)paramView).getUrlForImpression());
-    }
-  }
+  private int jdField_a_of_type_Int = 0;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
 }
 
 

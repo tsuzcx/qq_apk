@@ -12,8 +12,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import vvy;
-import vvz;
+import xpj;
+import xpk;
 
 public class ExploreAnimalView
   extends RelativeLayout
@@ -38,9 +38,9 @@ public class ExploreAnimalView
   public ExploreAnimalView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    RelativeLayout.inflate(getContext(), 2131561639, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373837));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131379844));
+    RelativeLayout.inflate(getContext(), 2131561873, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374539));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131380803));
   }
   
   public void a()
@@ -57,8 +57,8 @@ public class ExploreAnimalView
     this.b = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
     this.b.setDuration(300L);
     this.b.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new vvy(this));
-    this.b.setAnimationListener(new vvz(this));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new xpj(this));
+    this.b.setAnimationListener(new xpk(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
   
@@ -128,7 +128,7 @@ public class ExploreAnimalView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView
  * JD-Core Version:    0.7.0.1
  */

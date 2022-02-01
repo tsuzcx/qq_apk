@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afgn;
-import afgo;
-import agnj;
+import agnt;
+import agnu;
+import ahxp;
 
 public class TroopRobotHelper$1$1
   implements Runnable
 {
-  public TroopRobotHelper$1$1(afgo paramafgo) {}
+  public TroopRobotHelper$1$1(agnu paramagnu) {}
   
   public void run()
   {
-    if ((afgn.a(this.a.a) instanceof agnj))
+    if ((agnt.a(this.a.a) instanceof ahxp))
     {
-      ((agnj)afgn.a(this.a.a)).X = false;
+      ((ahxp)agnt.a(this.a.a)).W = false;
       this.a.a.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

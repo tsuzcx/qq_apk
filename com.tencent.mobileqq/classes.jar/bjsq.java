@@ -1,19 +1,26 @@
-public abstract class bjsq
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
+
+public class bjsq
+  implements TextView.OnEditorActionListener
 {
-  public static bjsq a = new bjsr();
+  public bjsq(Login paramLogin) {}
   
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public String toString()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return a() + ':' + a();
+    if (paramInt == 6)
+    {
+      this.a.b();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjsq
  * JD-Core Version:    0.7.0.1
  */

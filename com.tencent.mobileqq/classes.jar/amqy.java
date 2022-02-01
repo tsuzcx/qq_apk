@@ -1,110 +1,115 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class amqy
+class amqy
+  implements adea
 {
-  private static final Map<String, Integer> a = new HashMap();
+  amqy(amqt paramamqt, String paramString, long paramLong) {}
   
-  public static int a(String arg0, String paramString2)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2))
-      {
-        i = ((Integer)a.get(paramString2)).intValue();
-        return i;
-      }
-      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
-      a.put(paramString2, Integer.valueOf(i));
-    }
+    amqt.a(this.jdField_a_of_type_Amqt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public static String a(String paramString)
+  public void onPermission(int paramInt)
   {
-    String str = paramString;
-    if (paramString.length() > 4)
-    {
-      str = paramString.substring(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
-      }
-    }
-    return str;
+    amqt.a(this.jdField_a_of_type_Amqt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public static void a(String arg0, String paramString2, int paramInt)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    int i = -1;
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2)) {
-        i = ((Integer)a.get(paramString2)).intValue();
-      }
-      if (i != paramInt)
-      {
-        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
-        a.put(paramString2, Integer.valueOf(paramInt));
-      }
-      return;
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    Object localObject1 = new File(paramString1);
-    int i;
-    if (((File)localObject1).exists())
-    {
-      if (!((File)localObject1).isFile()) {
-        break label75;
-      }
-      i = bdhb.a(paramString1, paramString2);
-      if (i != 0) {
-        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
-      }
-    }
     for (;;)
     {
-      bdhb.a(paramString1);
-      return;
-      label75:
-      if (((File)localObject1).isDirectory())
+      JSONObject localJSONObject1;
+      Object localObject1;
+      Object localObject2;
+      try
       {
-        localObject1 = b((File)localObject1);
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
+        localJSONObject1 = new JSONObject();
+        localJSONObject1.put("ret", 0);
+        if ("cs.get_user_info.local".equals(this.jdField_a_of_type_JavaLangString))
         {
-          Object localObject2 = localObject1[i];
-          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
-          i += 1;
+          localObject1 = ampj.a(amqt.a(this.jdField_a_of_type_Amqt));
+          if (localObject1 == null)
+          {
+            QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[getUserInfo], launcher is null, mGameId:" + amqt.a(this.jdField_a_of_type_Amqt));
+            return;
+          }
+          localObject1 = ((amrk)localObject1).a();
+          localObject2 = new amnv(paramJSONObject.optString("avatarUrl"), paramJSONObject.optString("nickName"), ((CmGameInitParams)localObject1).openId);
+          amqt.a(this.jdField_a_of_type_Amqt).put(((CmGameInitParams)localObject1).openId, localObject2);
+          localJSONObject1.put("gender", paramJSONObject.optString("gender", ""));
+          localJSONObject1.put("city", paramJSONObject.optString("city", ""));
+          localJSONObject1.put("province", paramJSONObject.optString("province", ""));
+          localJSONObject1.put("country", paramJSONObject.optString("country", ""));
+          localJSONObject1.put("openid", ((CmGameInitParams)localObject1).openId);
+          if (QLog.isColorLevel()) {}
+          paramJSONObject = ampj.a();
+          if (paramJSONObject == null) {
+            break;
+          }
+          paramJSONObject.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localJSONObject1.toString());
+          return;
         }
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+        return;
+      }
+      if ("cs.get_app_friends.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("appfriends");
+        if ((paramJSONObject != null) && (paramJSONObject.length() != 0))
+        {
+          localObject1 = new JSONArray();
+          int j = paramJSONObject.length();
+          int i = 0;
+          while (i < j)
+          {
+            localObject2 = paramJSONObject.getJSONObject(i);
+            JSONObject localJSONObject2 = new JSONObject();
+            localJSONObject2.put("openid", ((JSONObject)localObject2).optString("openid"));
+            Object localObject3 = ((JSONObject)localObject2).optString("openid");
+            localObject3 = new amnv(((JSONObject)localObject2).optString("avatarUrl"), ((JSONObject)localObject2).optString("nickName"), (String)localObject3);
+            amqt.a(this.jdField_a_of_type_Amqt).put(((JSONObject)localObject2).optString("openid"), localObject3);
+            ((JSONArray)localObject1).put(localJSONObject2);
+            i += 1;
+          }
+          localJSONObject1.put("friendsInfo", localObject1);
+        }
+      }
+      else if ("cs.get_city.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        localJSONObject1.put("nation", paramJSONObject.optString("nation", ""));
+        localJSONObject1.put("province", paramJSONObject.optString("province", ""));
+        localJSONObject1.put("city", paramJSONObject.optString("city", ""));
+        localJSONObject1.put("district", paramJSONObject.optString("district", ""));
+      }
+      else if ("cs.get_location.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        localJSONObject1.put("latitude", paramJSONObject.optString("latitude", ""));
+        localJSONObject1.put("longitude", paramJSONObject.optString("longitude", ""));
+        localJSONObject1.put("speed", paramJSONObject.optString("speed", ""));
+        localJSONObject1.put("accuracy", paramJSONObject.optString("accuracy", ""));
+        localJSONObject1.put("altitude", paramJSONObject.optString("altitude", ""));
+        localJSONObject1.put("verticalAccuracy", paramJSONObject.optString("verticalAccuracy", ""));
+        localJSONObject1.put("horizontalAccuracy", paramJSONObject.optString("horizontalAccuracy", ""));
       }
     }
   }
   
-  private static File[] b(File paramFile)
-  {
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = arrayOfFile;
-    if (arrayOfFile == null)
-    {
-      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
-      paramFile = new File[0];
-    }
-    return paramFile;
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqy
  * JD-Core Version:    0.7.0.1
  */

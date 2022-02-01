@@ -1,22 +1,32 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.HistorySearchEntryModel.2.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class bbfo
-  implements InputFilter
+  implements View.OnClickListener
 {
-  public bbfo(AbsPublishActivity paramAbsPublishActivity) {}
+  bbfo(bbfm parambbfm) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    if (paramCharSequence != null)
+    long l = ((Long)paramView.getTag(-1)).longValue();
+    int i = bbfm.a(this.a, this.a.a, l);
+    if (i == -1) {}
+    for (;;)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if (bcmc.a(paramCharSequence, '\n') + bcmc.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      SearchHistory localSearchHistory = (SearchHistory)((bbgl)this.a.a.get(i)).a();
+      if (localSearchHistory != null)
+      {
+        bbup.a("home_page", "del_history", new String[] { "" + i });
+        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, localSearchHistory, l), null, true);
       }
     }
-    return null;
   }
 }
 

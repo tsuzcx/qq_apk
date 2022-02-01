@@ -1,72 +1,50 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.LayerDrawable;
+import android.os.Handler;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
 
 public class azkj
+  extends LayerDrawable
 {
-  public static final List<String> a = Arrays.asList(new String[] { "VIVO X7", "VIVO XPLAY5A", "VIVO X6SPLUS", "VIVO X6S A", "REDMI NOTE 3", "REDMI NOTE 4X", "MI 5", "MI-4C", "CAM-AL00", "MLA-AL10", "CAZ-AL10", "VNS-AL00" });
-  
-  public static boolean a()
+  public azkj(int paramInt, Resources paramResources)
   {
-    boolean bool2 = false;
-    String str1 = Build.MANUFACTURER + ";" + Build.MODEL;
-    String[] arrayOfString = "Meizu;PRO 6 Plus|samsung;SM-G9250|samsung;SM-G955FD|HUAWEI;CAM-TL00|OPPO;OPPO A37m|OPPO;OPPO A59s|samsung;SM-G9280|samsung;SM-G9200|samsung;SM-G955F|Meizu;Meizu S6".split("\\|");
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (arrayOfString != null)
-    {
-      bool1 = bool2;
-      if (arrayOfString.length > 0)
-      {
-        j = arrayOfString.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str2 = arrayOfString[i];
-        if ((str2 != null) && (str2.equals(str1)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MediaCodecUtil", 2, "isFollowBlackPhone true: " + str1);
-          }
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
+    super(azkk.a(paramInt, paramResources, a(paramResources)));
   }
   
-  public static boolean b()
+  public static Bitmap a(Resources paramResources)
   {
-    int i = Build.VERSION.SDK_INT;
-    if ((i == 22) || (i == 23) || (i == 24))
-    {
-      String str = Build.MODEL.toUpperCase();
-      Iterator localIterator = a.iterator();
-      while (localIterator.hasNext()) {
-        if (str.contains((String)localIterator.next())) {
-          return true;
-        }
-      }
-    }
-    return false;
+    Paint localPaint = new Paint();
+    localPaint.setColor(paramResources.getColor(2131166563));
+    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
+    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
+    paramResources = new Canvas(localBitmap);
+    paramResources.rotate(45.0F);
+    paramResources.translate(0.0F, -88.0F);
+    paramResources.drawRect(56, 56, 126, 126, localPaint);
+    paramResources.drawCircle(56, 91, 35, localPaint);
+    paramResources.drawCircle(91, 56, 35, localPaint);
+    return localBitmap;
   }
   
-  public static boolean c()
+  public void a(Handler paramHandler, int paramInt1, int paramInt2)
   {
-    return (Build.MANUFACTURER.toLowerCase().contains("samsung")) && (Build.VERSION.SDK_INT == 18);
+    int i = 0;
+    if (i < getNumberOfLayers())
+    {
+      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
+      if (i % 2 == 0) {}
+      for (long l = i * 200;; l = i * 130)
+      {
+        paramHandler.postDelayed(local1, l);
+        i += 1;
+        break;
+      }
+    }
   }
 }
 

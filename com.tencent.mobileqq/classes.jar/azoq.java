@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azoq
+class azoq
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  azoq(azol paramazol, View paramView) {}
   
-  private azoq(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    azfy.a().c(azol.k(this.jdField_a_of_type_Azol));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -12,7 +12,7 @@ class TVKVideoInfoRequest$2
   
   public void OnVkeyFailure(String paramString1, String paramString2, int paramInt)
   {
-    TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), paramString2, paramInt, null);
+    TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), 103, paramString2, paramInt, null);
   }
   
   public void OnVkeySuccess(String paramString1, String paramString2, Document paramDocument)
@@ -21,7 +21,7 @@ class TVKVideoInfoRequest$2
     if (TVKVideoInfoRequest.access$300(this.this$0).getEm() > 0)
     {
       int i = TVKVideoInfoRequest.access$300(this.this$0).getEm() + 1300200;
-      TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), String.format("%d;%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(i), Integer.valueOf(TVKVideoInfoRequest.access$300(this.this$0).getExem()) }), i, null);
+      TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), 103, String.format("%d;%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(i), Integer.valueOf(TVKVideoInfoRequest.access$300(this.this$0).getExem()) }), i, null);
       return;
     }
     if (TVKVideoInfoRequest.access$300(this.this$0).getClipCount() == TVKVideoInfoRequest.access$300(this.this$0).getVkeyCount())
@@ -37,7 +37,7 @@ class TVKVideoInfoRequest$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoRequest.2
  * JD-Core Version:    0.7.0.1
  */

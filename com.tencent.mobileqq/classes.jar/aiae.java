@@ -1,58 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiae
-  implements auqa
+class aiae
+  extends aupb
 {
-  public aiae(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aupt paramaupt, auqc paramauqc, List paramList) {}
+  aiae(ahzy paramahzy) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Aupt.a(new aiaf(this));
-    this.jdField_a_of_type_Aupt.show();
-  }
-  
-  public void a(aupy paramaupy)
-  {
-    if ((paramaupy != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
-      switch (paramaupy.a)
-      {
-      }
-    }
-    for (;;)
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      if (this.jdField_a_of_type_Aupt.isShowing()) {
-        this.jdField_a_of_type_Aupt.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBandIntimateRelationship");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
-      this.jdField_a_of_type_Auqc.b();
-      return;
-      aupz.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      aupz.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      aupz.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      this.a.F();
     }
   }
   
-  public void a(aupy paramaupy, int paramInt)
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Aupt.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aupt.isShowing()) {
-      this.jdField_a_of_type_Aupt.dismiss();
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateIntimateRelationship");
+      }
+      this.a.F();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
-    this.jdField_a_of_type_Auqc.b();
   }
   
-  public void c()
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDisbandIntimateRelationship");
+      }
+      this.a.F();
+    }
   }
 }
 

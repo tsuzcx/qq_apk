@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ayix
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public ayix(BaseSearchActivity paramBaseSearchActivity) {}
+  public ayix(ScanOcrView paramScanOcrView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    BaseSearchActivity.b = 1;
-    this.a.a.setText("");
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
+      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    }
   }
 }
 

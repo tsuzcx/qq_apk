@@ -1,51 +1,42 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
 
 public class bfvz
+  implements View.OnTouchListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qav_sdk_thread_sub");
-  private static Handler b = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public bfvz(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-  }
-  
-  public static Handler a()
-  {
-    return jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public static void a(Runnable paramRunnable)
-  {
-    b.post(paramRunnable);
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    b.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public static Handler b()
-  {
-    return b;
-  }
-  
-  public static void b(Runnable paramRunnable)
-  {
-    b.removeCallbacks(paramRunnable);
-  }
-  
-  public static void c(Runnable paramRunnable)
-  {
-    jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.b(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvz
  * JD-Core Version:    0.7.0.1
  */

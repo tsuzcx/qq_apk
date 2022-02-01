@@ -232,7 +232,7 @@ public class WtloginMsfListener
   public int SendData(byte[] paramArrayOfByte, int paramInt)
   {
     Object localObject;
-    if (!t.aw)
+    if (!t.ax)
     {
       localObject = t.m();
       util.LOGI("mqq process: " + (String)localObject, "");

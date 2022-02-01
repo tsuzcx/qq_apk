@@ -1,69 +1,41 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-class aojs
-  extends aeqi
+public abstract class aojs
+  extends bgmp
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
-  private TextView b;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  
-  public void a(TroopConfessMsg paramTroopConfessMsg)
+  public aojs(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramTroopConfessMsg == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
-      }
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public void a(String paramString)
+  {
+    HashMap localHashMap = new HashMap(1);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    do
-    {
-      return;
-      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
-    return;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
-    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
-    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
-    float f = aojh.a(str2);
-    int i;
-    if (f > 8.0F)
-    {
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.1F);
-      str1 = str2;
-      if (f <= 12.0F)
-      {
-        str1 = str2;
-        if (aojh.a(str2)) {
-          i = (int)(f * 0.7D);
-        }
-      }
+    if (this.a == null) {
+      this.a = "";
     }
-    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
-    {
-      this.b.setText(str1);
-      if (paramTroopConfessMsg.totalCount > 1) {
-        break;
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.0F);
+    if (this.b == null) {
+      this.b = "";
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(alud.a(2131715670), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append(str).append("source:").append(this.a).append("server_name:").append(this.b).append("action_name:").append(this.c);
+    localHashMap.put("keyJumpParserUtilDoActionErrorInfo", paramString.toString());
+    bctj.a(BaseApplicationImpl.getApplication()).a("", "keyJumpParserUtil", true, 0L, 0L, localHashMap, "", false);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

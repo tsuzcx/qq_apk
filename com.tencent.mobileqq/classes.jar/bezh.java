@@ -1,120 +1,48 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.mobileqq.widget.share.Validator.1;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class bezh
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
-  private boolean jdField_a_of_type_Boolean = false;
+  private bezh(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public bezh(ShareActionSheetV2 paramShareActionSheetV2)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
-  }
-  
-  private void a(String paramString)
-  {
-    new Handler(Looper.getMainLooper()).post(new Validator.1(this, paramString));
-  }
-  
-  private boolean b()
-  {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
+    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
+    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
     {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidCreate()) {
-          return false;
-        }
+      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
+        break label323;
       }
-      i += 1;
-    }
-    return true;
-  }
-  
-  private boolean c()
-  {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
-    {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidLabel()) {
-          return false;
-        }
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  private boolean d()
-  {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
-    {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidIcon()) {
-          return false;
-        }
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  private boolean e()
-  {
-    Context localContext = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a;
-    if ((localContext instanceof Activity)) {
-      return !TextUtils.isEmpty(((Activity)localContext).getIntent().getStringExtra("big_brother_source_key"));
-    }
-    return false;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (!e())
-    {
-      a("share component no biz id");
-      bool1 = false;
-    }
-    if (!d())
-    {
-      a("share component icon invalid");
-      bool1 = false;
-    }
-    if (!c())
-    {
-      a("share component label invalid");
-      bool1 = false;
-    }
-    if (!b())
-    {
-      a("share component item invalid");
-      bool1 = bool2;
+      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
     }
     for (;;)
     {
-      return bool1;
+      yqp.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
+      this.a.invalidate();
+      return true;
+      if (this.a.b(0.0F) >= 0.0F)
+      {
+        this.a.b = 0.0F;
+        break;
+      }
+      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
+        break;
+      }
+      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      break;
+      label323:
+      if (this.a.a(0.0F) >= 0.0F) {
+        this.a.jdField_a_of_type_Float = 0.0F;
+      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
+        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      }
     }
   }
 }

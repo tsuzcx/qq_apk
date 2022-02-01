@@ -1,20 +1,19 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class akux
+  implements akug
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public String b;
+  public akux(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public akux(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368540).setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368540).setVisibility(0);
   }
 }
 

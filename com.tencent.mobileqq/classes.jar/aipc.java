@@ -1,68 +1,60 @@
-import android.app.Activity;
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class aipc
-  implements abwu
+  extends BroadcastReceiver
 {
-  aipc(aipa paramaipa, String paramString) {}
+  aipc(aipb paramaipb) {}
   
-  public void onComplete()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onComplete");
+    String str1 = paramIntent.getStringExtra("callback");
+    int i = paramIntent.getIntExtra("bless_type", 0);
+    int j = paramIntent.getIntExtra("bless_num", 0);
+    paramContext = new JSONObject();
+    try
+    {
+      paramContext.put("bless_type", i);
+      paramContext.put("bless_num", j);
+      if (QLog.isColorLevel()) {
+        QLog.i("BlessJsApiPlugin", 2, String.format("call blessWebView, blesstype:%d, member:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+      }
+      if (i != 2) {}
     }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-    if ((aipa.a(this.jdField_a_of_type_Aipa).isFinishing()) || (this.jdField_a_of_type_Aipa.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Aipa.d();
-    if (aipa.a(this.jdField_a_of_type_Aipa) != null) {
-      aipa.a(this.jdField_a_of_type_Aipa).removeCallbacks(aipa.a(this.jdField_a_of_type_Aipa));
-    }
-    this.jdField_a_of_type_Aipa.a(alud.a(2131713982), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((aipa.a(this.jdField_a_of_type_Aipa).isFinishing()) || (this.jdField_a_of_type_Aipa.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Aipa.d();
-    if (aipa.a(this.jdField_a_of_type_Aipa) != null) {
-      aipa.a(this.jdField_a_of_type_Aipa).removeCallbacks(aipa.a(this.jdField_a_of_type_Aipa));
-    }
-    this.jdField_a_of_type_Aipa.a(alud.a(2131713986), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
-    }
-    if ((aipa.a(this.jdField_a_of_type_Aipa).isFinishing()) || (this.jdField_a_of_type_Aipa.b)) {
-      return;
-    }
-    if (aipa.a(this.jdField_a_of_type_Aipa) != null) {
-      aipa.a(this.jdField_a_of_type_Aipa).removeCallbacks(aipa.a(this.jdField_a_of_type_Aipa));
-    }
-    aipa.a(this.jdField_a_of_type_Aipa);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onTrigger");
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        str1 = paramIntent.getStringExtra("bless_ptv_url");
+        String str2 = paramIntent.getStringExtra("bless_ptv_uuid");
+        String str3 = paramIntent.getStringExtra("bless_ptv_md5");
+        paramIntent = paramIntent.getStringExtra("bless_ptv_nick");
+        paramContext.put("bless_ptv_url", str1);
+        paramContext.put("bless_ptv_uuid", str2);
+        paramContext.put("bless_ptv_md5", str3);
+        paramContext.put("bless_ptv_nick", paramIntent);
+        this.a.callJs(aipb.a(), new String[] { paramContext.toString() });
+        return;
+        localJSONException = localJSONException;
+        localJSONException.printStackTrace();
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
+        {
+          paramIntent.printStackTrace();
+        }
+      }
+      if (i == 3)
+      {
+        this.a.callJs(aipb.a(), new String[] { paramContext.toString() });
+        return;
+      }
+      this.a.callJs(str1, new String[] { paramContext.toString() });
     }
   }
 }

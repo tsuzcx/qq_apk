@@ -1,228 +1,100 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Layout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdft
+  extends bdfu
+  implements bdeo<bdfu>, bdfv
 {
-  public static boolean a;
+  public List<bdek> b = new ArrayList();
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdpi parambdpi, View.OnClickListener paramOnClickListener)
+  public bdft(SpriteGLView paramSpriteGLView)
   {
-    return a(paramBubblePopupWindow, paramContext, parambdpi, paramOnClickListener, false);
+    this.a = paramSpriteGLView;
   }
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdpi parambdpi, View.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    int i;
-    int n;
-    int j;
-    label21:
-    int k;
-    if (paramBoolean)
-    {
-      i = 8;
-      int m = 1;
-      n = parambdpi.a();
-      j = 0;
-      k = m;
-      if (j < n)
-      {
-        if (parambdpi.a(j).b() != 0) {
-          break label182;
-        }
-        k = 0;
-      }
-      if (!paramBoolean) {
-        break label191;
-      }
-      if (QQCustomMenuNoIconLayout.jdField_a_of_type_Int == 0)
-      {
-        localObject = paramContext.getResources();
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuNoIconLayout.c = aepi.a(QQCustomMenuNoIconLayout.c, (Resources)localObject);
-        QQCustomMenuNoIconLayout.f = aepi.a(QQCustomMenuNoIconLayout.f, (Resources)localObject);
-      }
-    }
-    for (;;)
-    {
-      if ((paramBoolean) || (k == 0) || (QQCustomMenuImageLayout.jdField_a_of_type_Int < 480)) {
-        break label281;
-      }
-      paramContext = new QQCustomMenuImageLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(QQCustomMenuImageLayout.c, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambdpi);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-      i = 6;
-      break;
-      label182:
-      j += 1;
-      break label21;
-      label191:
-      if (QQCustomMenuImageLayout.jdField_a_of_type_Int == 0)
-      {
-        localObject = paramContext.getResources();
-        QQCustomMenuImageLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuImageLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuImageLayout.c = aepi.a(QQCustomMenuImageLayout.c, (Resources)localObject);
-        QQCustomMenuImageLayout.d = aepi.a(QQCustomMenuImageLayout.d, (Resources)localObject);
-        QQCustomMenuImageLayout.e = aepi.a(QQCustomMenuImageLayout.e, (Resources)localObject);
-        QQCustomMenuImageLayout.f = (QQCustomMenuImageLayout.jdField_a_of_type_Int - aepi.a(36.0F, (Resources)localObject)) / i;
-      }
-    }
-    label281:
-    if (paramBoolean)
-    {
-      paramContext = new QQCustomMenuNoIconLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(0, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambdpi);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-    }
-    Object localObject = new QQCustomMenuLayout(paramContext);
-    ((QQCustomMenuLayout)localObject).setGravity(17);
-    a(paramBubblePopupWindow, paramContext, parambdpi, paramOnClickListener, (QQCustomMenuLayout)localObject, n);
-    return localObject;
-  }
-  
-  private static QQCustomMenuLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdpi parambdpi, View.OnClickListener paramOnClickListener, QQCustomMenuLayout paramQQCustomMenuLayout, int paramInt)
+  public <N extends bdek> N a(String paramString)
   {
     int i = 0;
-    while (i < paramInt)
+    while (i < this.b.size())
     {
-      Object localObject = parambdpi.a(i);
-      bdfu localbdfu = new bdfu(paramContext, paramBubblePopupWindow);
-      localbdfu.setText(((bdpk)localObject).a());
-      localbdfu.setTextSize(13.0F);
-      Resources localResources = paramContext.getResources();
-      TextPaint localTextPaint = new TextPaint(1);
-      localTextPaint.density = localResources.getDisplayMetrics().density;
-      int k = (int)Layout.getDesiredWidth(((bdpk)localObject).a(), localTextPaint);
-      int j = 5;
-      if (localTextPaint.density >= 2.0F) {
-        j = 10;
+      bdfu localbdfu = (bdfu)this.b.get(i);
+      if (paramString.equals(localbdfu.jdField_a_of_type_JavaLangString)) {
+        return localbdfu;
       }
-      j = (int)(j * localTextPaint.density);
-      localbdfu.setMinimumWidth(j * 2 + k);
-      localbdfu.setPadding(j, 0, j, 0);
-      localbdfu.setContentDescription(((bdpk)localObject).a());
-      localbdfu.setId(((bdpk)localObject).a());
-      localbdfu.setTextColor(-1);
-      localbdfu.setBackgroundDrawable(null);
-      localbdfu.setIncludeFontPadding(true);
-      localbdfu.setOnClickListener(paramOnClickListener);
-      localbdfu.setGravity(17);
-      paramQQCustomMenuLayout.addView(localbdfu, new LinearLayout.LayoutParams(-2, -2, 1.0F));
-      if (i != paramInt - 1)
-      {
-        localObject = new ImageView(paramContext);
-        ((ImageView)localObject).setBackgroundResource(2130838664);
-        paramQQCustomMenuLayout.addView((View)localObject, -2, -2);
+      if ((localbdfu instanceof bdft)) {
+        return ((bdft)localbdfu).a(paramString);
       }
       i += 1;
     }
-    paramQQCustomMenuLayout.a();
-    return paramQQCustomMenuLayout;
+    return null;
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, bdpi parambdpi, View.OnClickListener paramOnClickListener)
+  public List<bdek> a()
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(false);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.e(false);
-    localBubblePopupWindow.g(paramInt3);
-    localBubblePopupWindow.a(0);
-    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
+    return this.b;
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi)
+  public void a()
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, null));
-    localBubblePopupWindow.a(null);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(false);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
+    super.a();
+    int i = 0;
+    while (i < this.b.size())
+    {
+      ((bdfu)this.b.get(i)).a();
+      i += 1;
+    }
+    this.b.clear();
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, View.OnClickListener paramOnClickListener)
+  public void a(bdfu parambdfu)
   {
-    return a(paramView, paramInt1, paramInt2, parambdpi, paramOnClickListener, false);
+    if (parambdfu.jdField_a_of_type_Bdeo == null)
+    {
+      this.b.add(parambdfu);
+      parambdfu.jdField_a_of_type_Bdeo = this;
+      return;
+    }
+    new RuntimeException("the node had another parent");
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, View.OnClickListener paramOnClickListener, bhvm parambhvm)
+  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, paramOnClickListener));
-    localBubblePopupWindow.a(parambhvm);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
+    Object[] arrayOfObject = this.b.toArray();
+    int i = arrayOfObject.length - 1;
+    while (i >= 0)
+    {
+      if (((arrayOfObject[i] instanceof bdfv)) && (((bdfv)arrayOfObject[i]).a(paramMotionEvent, paramInt1, paramInt2))) {
+        return true;
+      }
+      i -= 1;
+    }
+    return false;
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdpi parambdpi, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  protected void aK_()
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, paramOnClickListener, paramBoolean));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, paramBoolean);
-    return localBubblePopupWindow;
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      bdek localbdek = (bdek)localIterator.next();
+      if ((localbdek instanceof bdfw)) {
+        ((bdfw)localbdek).aK_();
+      }
+    }
   }
   
-  public static BubblePopupWindow a(View paramView, bdpi parambdpi, View.OnClickListener paramOnClickListener)
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, bdpi parambdpi, View.OnClickListener paramOnClickListener, bhvm parambhvm)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdpi, paramOnClickListener));
-    localBubblePopupWindow.a(parambhvm);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
+    super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+    int i = 0;
+    while (i < this.b.size())
+    {
+      ((bdfu)this.b.get(i)).c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
+      i += 1;
+    }
   }
 }
 

@@ -62,10 +62,11 @@ class AgeDetector$DetectAgeRunnable
   public void run()
   {
     if ((!AgeDetector.access$400()) || (this.detectInfos == null)) {}
+    label356:
     do
     {
       return;
-      AgeDetector.access$102(this.this$0, true);
+      this.this$0.updateDetectStatus(true);
       if (this.detectData.length != 0)
       {
         AgeDetector.access$502(this.this$0, Bitmap.createBitmap(this.widthData, this.heightData, Bitmap.Config.ARGB_8888));
@@ -88,22 +89,31 @@ class AgeDetector$DetectAgeRunnable
             this.faceAttr = new YTFaceAttr.FaceAttr();
           }
           this.faceAttr.ageRes = AgeType.DEFAULT.value;
+          AgeDetector.AgeResultInfo localAgeResultInfo1;
           if (this.ytFaceAttr1.predictFaceAttrBitmap(AgeDetector.access$500(this.this$0), localAgeDetectInfo.points, 0, this.faceAttr) == 0)
           {
             localAgeDetectInfo.ageType = this.faceAttr.ageRes;
-            AgeDetector.AgeResultInfo localAgeResultInfo1 = localAgeResultInfo2;
+            localAgeResultInfo1 = localAgeResultInfo2;
             if (localAgeResultInfo2 == null) {
               localAgeResultInfo1 = new AgeDetector.AgeResultInfo(this.this$0, localAgeDetectInfo.faceID);
             }
-            localAgeResultInfo1.updateAge(localAgeDetectInfo.ageType);
+            if (!AgeDetector.access$600(this.this$0)) {
+              break label356;
+            }
+            localAgeResultInfo1.setAgeResult(localAgeDetectInfo.ageType);
+          }
+          for (;;)
+          {
             this.mValueHashMap.put(Long.valueOf(localAgeDetectInfo.faceID), localAgeResultInfo1);
             Log.i("AgeDetector", "faceID:" + localAgeDetectInfo.faceID + ",detected age:" + localAgeDetectInfo.ageType);
+            localAgeDetectInfo.points = null;
+            break;
+            localAgeResultInfo1.updateAge(localAgeDetectInfo.ageType);
           }
-          localAgeDetectInfo.points = null;
         }
       }
       this.detectInfos.clear();
-      AgeDetector.access$102(this.this$0, false);
+      this.this$0.updateDetectStatus(false);
       if (AgeDetector.access$200(this.this$0)) {
         clear();
       }
@@ -145,7 +155,7 @@ class AgeDetector$DetectAgeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector.DetectAgeRunnable
  * JD-Core Version:    0.7.0.1
  */

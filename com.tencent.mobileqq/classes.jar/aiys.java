@@ -1,26 +1,19 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class aiys
-  implements aivb
+class aiys
+  implements Comparator<ajax>
 {
-  public aiys(ThemeHbFragment paramThemeHbFragment) {}
+  aiys(aiyr paramaiyr) {}
   
-  public void a()
+  public int a(ajax paramajax1, ajax paramajax2)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    if ((!paramajax1.a()) && (paramajax2.a())) {
+      return -1;
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    if ((paramajax1.a()) && (!paramajax2.a())) {
+      return 1;
     }
+    return (int)(paramajax2.a - paramajax1.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apty;
+import arwz;
 
 public class CommonUsedSystemEmojiManager$1
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$1(apty paramapty) {}
+  public CommonUsedSystemEmojiManager$1(arwz paramarwz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class CommonUsedSystemEmojiManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager.1
  * JD-Core Version:    0.7.0.1
  */

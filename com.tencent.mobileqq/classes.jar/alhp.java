@@ -1,90 +1,59 @@
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
+
 public class alhp
+  extends Handler
 {
-  public static void a(int paramInt)
+  private WeakReference<EditLocalVideoActivity> a;
+  
+  public alhp(EditLocalVideoActivity paramEditLocalVideoActivity)
   {
-    a(paramInt, "");
+    this.a = new WeakReference(paramEditLocalVideoActivity);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, null);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if ((this.a == null) || (this.a.get() == null)) {}
+    EditLocalVideoActivity localEditLocalVideoActivity;
+    do
     {
-      localStringBuilder.append(paramVarArgs[i]);
-      i += 1;
-    }
-    alhw.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    alhw.a(paramInt, paramString1, paramString2);
-  }
-  
-  public static void a(int paramInt, String paramString, int... paramVarArgs)
-  {
-    alhw.a(paramInt, paramString, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    alhw.a(paramInt, paramBoolean);
-  }
-  
-  public static void a(alhq paramalhq)
-  {
-    alhw.a(paramalhq);
-  }
-  
-  public static void b(int paramInt)
-  {
-    b(paramInt, null);
-  }
-  
-  public static void b(int paramInt, String paramString)
-  {
-    alhw.a(paramInt, paramString);
+      return;
+      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
+      switch (paramMessage.what)
+      {
+      case 1000: 
+      default: 
+        return;
+      case 1001: 
+        EditLocalVideoActivity.b(localEditLocalVideoActivity);
+        return;
+      case 1103: 
+        EditLocalVideoActivity.a(localEditLocalVideoActivity);
+        return;
+      case 1102: 
+        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
+        return;
+      }
+    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
+    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
+    return;
+    EditLocalVideoActivity.c(localEditLocalVideoActivity);
+    return;
+    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), anni.a(2131702444), 1).show();
+    EditLocalVideoActivity.d(localEditLocalVideoActivity);
+    return;
+    localEditLocalVideoActivity.a("608", "3", "1", true);
+    LpReportInfo_pf00064.allReport(664, 3, 4);
+    paramMessage = (String)paramMessage.obj;
+    return;
+    localEditLocalVideoActivity.a("608", "3", "2", true);
+    return;
+    EditLocalVideoActivity.e(localEditLocalVideoActivity);
   }
 }
 

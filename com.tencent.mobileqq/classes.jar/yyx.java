@@ -1,55 +1,33 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class yyx
+class yyx
+  implements View.OnClickListener
 {
-  private String a = yyw.b;
-  private String b = "1";
-  private String c = yyw.a;
+  yyx(yys paramyys) {}
   
-  public static yyx a(String paramString)
+  public void onClick(View paramView)
   {
-    if (paramString == null) {
-      return null;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
+    this.a.jdField_a_of_type_Yyb.a = this.a.d;
+    this.a.jdField_a_of_type_Yyb.d = this.a.e;
+    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 3);
     }
-    try
-    {
-      yyx localyyx = new yyx();
-      paramString = new JSONObject(paramString);
-      localyyx.a = paramString.optString("mine_videostory_entrance", yyw.b);
-      localyyx.b = paramString.optString("enable_click_take_picture", "1");
-      localyyx.c = paramString.optString("mine_videostory_drawer_entrance", yyw.a);
-      return localyyx;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
+    yqv.a("0X80076C5");
+    yqv.b("0X80075D9");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yyx
  * JD-Core Version:    0.7.0.1
  */

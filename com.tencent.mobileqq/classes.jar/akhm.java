@@ -1,26 +1,119 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.GridView;
+import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class akhm
+  extends AlbumListAdapter
 {
-  public int a;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  long jdField_a_of_type_Long;
+  private QQAlbumInfo jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo;
   
-  public akhm(akhf paramakhf) {}
+  public akhm(AlbumListFragment paramAlbumListFragment)
+  {
+    super(paramAlbumListFragment);
+  }
+  
+  private static void c(akhn paramakhn, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  {
+    String str = paramQQAlbumInfo.name;
+    if (paramString.contains("/qq_collection/"))
+    {
+      paramakhn.f += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if ((str.equals("qq_images")) || (paramString.contains("/mobileqq/photo")) || (paramString.contains("/mobileqq/diskcache")))
+    {
+      paramakhn.g += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (str.equals("qqfile_recv"))
+    {
+      paramakhn.h += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (str.equals("qq_favorite"))
+    {
+      paramakhn.j += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (paramString.contains("/zebra/cache"))
+    {
+      paramakhn.i += 1;
+      return;
+    }
+    if ((str.equals("weixin")) || (str.equals("wechat")) || (str.equals("micromsg")))
+    {
+      paramakhn.k += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (akgm.a(paramString))
+    {
+      paramakhn.d += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    paramakhn.e += paramQQAlbumInfo.mMediaFileCount;
+  }
+  
+  private static void d(akhn paramakhn, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  {
+    String str = paramQQAlbumInfo.name;
+    if (str.equals("qq_screenshot"))
+    {
+      paramakhn.b += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if ((paramString.contains("screenshot")) || (paramString.contains("截屏")) || (paramString.contains("截图")) || (paramString.equals("screen_cap")) || (paramString.equals("ScreenCapture")))
+    {
+      paramakhn.c += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if ((str.contains("camera")) || (str.equals("dcim")) || (str.equals("100MEDIA")) || (str.equals("100ANDRO")) || (str.contains("相机")) || (str.contains("照片")) || (str.contains("相片")))
+    {
+      paramakhn.a += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (akgm.a(paramString))
+    {
+      paramakhn.d += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    paramakhn.e += paramQQAlbumInfo.mMediaFileCount;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
+    localQQAlbumInfo._id = "qzone_album";
+    localQQAlbumInfo.name = "空间相册";
+    localQQAlbumInfo.mMediaFileCount = ((int)this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListAdapter", 1, "setQzoneAlbumNum " + paramLong);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo = localQQAlbumInfo;
+  }
+  
+  public List<QQAlbumInfo> getDefaultAlbums()
+  {
+    List localList = super.getDefaultAlbums();
+    if ((localList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo != null)) {
+      localList.add(0, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    }
+    return localList;
+  }
+  
+  public void setData()
+  {
+    super.setData();
+    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
+  }
 }
 
 

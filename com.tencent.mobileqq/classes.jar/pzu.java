@@ -1,66 +1,35 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pzu
-  extends pxl
+class pzu
+  implements aaob
 {
-  public pzu(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  pzu(pzs parampzs, String paramString) {}
   
-  public pxl a()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)) && (ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a()))) {
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
-        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
-      }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      }
-      a(localLinearLayout);
-      return this;
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
+      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
     }
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    return this;
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
+      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pzu
  * JD-Core Version:    0.7.0.1
  */

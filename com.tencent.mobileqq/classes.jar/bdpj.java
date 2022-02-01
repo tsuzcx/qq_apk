@@ -1,22 +1,36 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdpj
-  extends TextView
+  implements bgyv
 {
-  public bdpj(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
+  bdpj(bdpg parambdpg) {}
+  
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    super(paramContext);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = bhbz.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
+      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (bdpg.a(this.a) != null))
+      {
+        bdpg.a(this.a, true);
+        this.a.a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString);
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
+        }
+      }
+    }
   }
   
-  public boolean performClick()
-  {
-    boolean bool = super.performClick();
-    QQCustomMenuImageLayout.a(this.a).b();
-    return bool;
-  }
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

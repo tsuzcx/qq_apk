@@ -1,18 +1,18 @@
 package com.tencent.qidian.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class QidianPAForWpa
-  extends awge
+  extends Entity
 {
   public String kfuin = "";
-  @awhs
+  @unique
   public String puin = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.data.QidianPAForWpa
  * JD-Core Version:    0.7.0.1
  */

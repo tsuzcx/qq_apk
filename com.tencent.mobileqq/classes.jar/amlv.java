@@ -1,37 +1,17 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
-
-class amlv
-  implements bavp
+public class amlv
 {
-  amlv(amlp paramamlp, long paramLong1, long paramLong2, long paramLong3) {}
+  public int a;
+  public int b;
   
-  public void a(bavr parambavr, bavq parambavq)
+  public amlv(int paramInt1, int paramInt2)
   {
-    try
-    {
-      parambavr = parambavr.a.getWupBuffer();
-      parambavq = new structmsg.RspSystemMsgRead();
-      parambavq.mergeFrom(parambavr);
-      int i = parambavq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
-      return;
-    }
-    catch (Exception parambavr)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambavr);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlv
  * JD-Core Version:    0.7.0.1
  */

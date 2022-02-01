@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adsz;
+import aezj;
 import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,7 +39,7 @@ public class QQSettingMe$WebPreloadTask
         if (ApolloUtil.a(localQQSettingMe.a, QQSettingMe.a(localQQSettingMe).a))
         {
           i = 100;
-          localWebProcessManager.a(i, new adsz(this, localQQSettingMe));
+          localWebProcessManager.a(i, new aezj(this, localQQSettingMe));
           return;
         }
       }
@@ -54,7 +54,7 @@ public class QQSettingMe$WebPreloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class ojt
-  implements ViewBase.OnClickListener
+public class ojt
+  implements bkhy
 {
-  ojt(ojn paramojn) {}
+  public ojt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onDismiss()
   {
-    if (this.a.jdField_a_of_type_Omt.a != null)
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
     {
-      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), paramViewBase.getEventAttachedData());
-      if (this.a.jdField_a_of_type_Omg.a() != null) {
-        this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
-      }
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojt
  * JD-Core Version:    0.7.0.1
  */

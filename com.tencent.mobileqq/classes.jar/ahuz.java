@@ -1,18 +1,92 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.manager.Manager;
+
 public class ahuz
+  implements Manager
 {
-  public long a;
-  public boolean a;
+  public int a;
+  public Set<String> a;
+  boolean a;
+  public int b;
   
   public ahuz()
   {
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 300000L;
   }
   
-  public String toString()
+  public static int a(Context paramContext, String paramString)
   {
-    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
+    return paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).getInt("k_version", 0);
   }
+  
+  public static ahuz a(QQAppInterface paramQQAppInterface)
+  {
+    ahuz localahuz = (ahuz)paramQQAppInterface.getManager(215);
+    localahuz.a(paramQQAppInterface);
+    return localahuz;
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).edit().putInt("k_version", paramInt).apply();
+  }
+  
+  @TargetApi(14)
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0);
+        this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
+        this.b = paramQQAppInterface.getInt("k_w", 0);
+        this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
+        paramQQAppInterface = new StringBuilder("init ");
+        paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(this.jdField_a_of_type_JavaUtilSet);
+        QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+      }
+      return;
+    }
+    finally
+    {
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
+    }
+  }
+  
+  @TargetApi(14)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
+      paramQQAppInterface = new StringBuilder("updateConfig ");
+      paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(paramSet);
+      QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+      return;
+    }
+    finally
+    {
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

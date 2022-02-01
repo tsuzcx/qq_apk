@@ -1,39 +1,15 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class akqq
-  implements akqt
 {
-  private int jdField_a_of_type_Int = 12440;
+  public long a;
+  public List<String> a;
   
-  private akqq(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public akqq()
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
-    {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      akqv.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

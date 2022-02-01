@@ -1,19 +1,19 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akza
-  implements Comparator<akzb>
+  implements View.OnClickListener
 {
-  akza(akyz paramakyz) {}
+  akza(akyh paramakyh) {}
   
-  public int a(akzb paramakzb1, akzb paramakzb2)
+  public void onClick(View paramView)
   {
-    if (paramakzb1.a == paramakzb2.a) {
-      return 0;
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
     }
-    if (paramakzb1.a > paramakzb2.a) {
-      return -1;
-    }
-    return 1;
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

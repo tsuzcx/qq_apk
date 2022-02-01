@@ -1,23 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.avgame.ui.AVGameActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class nen
-  implements yrb
+  implements bggu
 {
-  public nen(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public nen(AVGameActivity paramAVGameActivity) {}
   
-  public void callback(Bundle paramBundle)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    if (paramBundle != null)
-    {
-      paramBundle = paramBundle.getString("music");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameActivity", 2, String.format("fps=%.1f", new Object[] { Double.valueOf(paramDouble) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nen
  * JD-Core Version:    0.7.0.1
  */

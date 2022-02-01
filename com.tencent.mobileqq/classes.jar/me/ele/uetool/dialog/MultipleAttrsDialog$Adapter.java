@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.uetool.base.Element;
@@ -89,22 +90,24 @@ public class MultipleAttrsDialog$Adapter
     if (paramViewHolder.getClass() == MultipleAttrsDialog.Adapter.EditTextViewHolder.class) {
       ((MultipleAttrsDialog.Adapter.EditTextViewHolder)paramViewHolder).bindView((EditTextItem)getItem(paramInt));
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
       if (paramViewHolder.getClass() == MultipleAttrsDialog.Adapter.SwitchViewHolder.class)
       {
         ((MultipleAttrsDialog.Adapter.SwitchViewHolder)paramViewHolder).bindView((SwitchItem)getItem(paramInt));
-        return;
       }
-      if (paramViewHolder.getClass() == MultipleAttrsDialog.Adapter.AddMinusEditViewHolder.class)
+      else if (paramViewHolder.getClass() == MultipleAttrsDialog.Adapter.AddMinusEditViewHolder.class)
       {
         ((MultipleAttrsDialog.Adapter.AddMinusEditViewHolder)paramViewHolder).bindView((AddMinusEditItem)getItem(paramInt));
         ((MultipleAttrsDialog.Adapter.AddMinusEditViewHolder)paramViewHolder).setAddMin(((AddMinusEditItem)getItem(paramInt)).getAddMin());
-        return;
       }
-    } while (paramViewHolder.getClass() != MultipleAttrsDialog.BriefDescViewHolder.class);
-    ((MultipleAttrsDialog.BriefDescViewHolder)paramViewHolder).bindView((BriefDescItem)getItem(paramInt));
+      else if (paramViewHolder.getClass() == MultipleAttrsDialog.BriefDescViewHolder.class)
+      {
+        ((MultipleAttrsDialog.BriefDescViewHolder)paramViewHolder).bindView((BriefDescItem)getItem(paramInt));
+      }
+    }
   }
   
   @NonNull
@@ -141,7 +144,7 @@ public class MultipleAttrsDialog$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.dialog.MultipleAttrsDialog.Adapter
  * JD-Core Version:    0.7.0.1
  */

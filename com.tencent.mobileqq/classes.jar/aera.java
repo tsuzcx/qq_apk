@@ -1,16 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public abstract interface aera
+class aera
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
+  aera(aeqz paramaeqz) {}
   
-  public abstract bdpk[] a(View paramView);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aera
  * JD-Core Version:    0.7.0.1
  */

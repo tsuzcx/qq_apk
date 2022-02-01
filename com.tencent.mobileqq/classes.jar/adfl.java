@@ -1,23 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.os.Bundle;
 
 class adfl
-  implements beei
+  extends adeh
 {
-  adfl(adfk paramadfk, JumpActivity paramJumpActivity) {}
+  adfl(adfk paramadfk, adea paramadea) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.a();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("extra_key_jump_src", 1);
-    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
+    if (paramBundle != null)
+    {
+      adhh.a(this.jdField_a_of_type_Adea, adec.a(paramBundle));
+      return;
+    }
+    adhh.a(this.jdField_a_of_type_Adea, 1, "get user info error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfl
  * JD-Core Version:    0.7.0.1
  */

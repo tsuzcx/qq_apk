@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import io.flutter.plugin.common.MethodChannel.Result;
 
-public final class aueo
-  implements Parcelable.Creator<MiniAppOptions>
+class aueo
+  extends auep
 {
-  public MiniAppOptions a(Parcel paramParcel)
-  {
-    return new MiniAppOptions(paramParcel);
-  }
+  aueo(auen paramauen) {}
   
-  public MiniAppOptions[] a(int paramInt)
+  protected void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
-    return new MiniAppOptions[paramInt];
+    auen.a(this.a, paramRequestPacket, paramResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aueo
  * JD-Core Version:    0.7.0.1
  */

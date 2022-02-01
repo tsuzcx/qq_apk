@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-
-public class vwz
-  implements vyj
+public abstract interface vwz
 {
-  public vwz(TextureVideoView paramTextureVideoView) {}
+  public abstract void a();
   
-  public void a(vyi paramvyi, int paramInt)
-  {
-    this.a.f = paramInt;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,38 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
 
-class trf
-  extends RecyclerView.ViewHolder
+public abstract interface trf
+  extends trq
 {
-  public trf(BaseWidgetView paramBaseWidgetView)
-  {
-    super(paramBaseWidgetView);
-  }
+  public abstract ViewGroup a();
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trw paramtrw)
-  {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramtrw);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(VideoPlayManager paramVideoPlayManager);
+  
+  public abstract void a(trp paramtrp);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setControlType(int paramInt);
+  
+  public abstract void setEndWithLastFrame(boolean paramBoolean);
+  
+  public abstract void setEventListener(trg paramtrg);
+  
+  public abstract void setFullScreenDisable(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trf
  * JD-Core Version:    0.7.0.1
  */

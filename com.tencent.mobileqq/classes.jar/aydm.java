@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
 public class aydm
-  implements bhum
+  extends agpp
 {
-  public aydm(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public void doOnEvent(int paramInt) {}
   
-  public void onDismiss()
+  public void e()
   {
-    SignatureHistoryFragment.a(this.a, null);
-    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+    this.a = false;
+    super.doOnEvent(2);
   }
 }
 

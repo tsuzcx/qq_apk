@@ -1,187 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelReport.ReqBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.Proto.EchoRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Map;
+import java.util.Comparator;
 
-public class anoh
-  extends alpd
+class anoh
+  implements Comparator<anok>
 {
-  private static final int[] a = { 95 };
+  anoh(anog paramanog) {}
   
-  public anoh(QQAppInterface paramQQAppInterface)
+  public int a(anok paramanok1, anok paramanok2)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    try
+    if ((paramanok1 == null) || (paramanok2 == null)) {}
+    do
     {
-      paramToServiceMsg = new String((byte[])paramObject, "UTF-8");
-      paramFromServiceMsg = paramToServiceMsg;
-      if (paramToServiceMsg == null) {
-        paramFromServiceMsg = "";
+      return 0;
+      if (paramanok1.a > paramanok2.a) {
+        return 1;
       }
-      return paramFromServiceMsg;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      for (;;)
-      {
-        ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive_AppMsg, fail convert data to string", new Object[0]));
-        paramToServiceMsg = null;
-      }
-    }
-  }
-  
-  private void a(String paramString, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt1, int paramInt2, alpg paramalpg)
-  {
-    paramalpg = super.createToServiceMsg(paramString, paramalpg);
-    paramalpg.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramalpg.addAttribute("IsGenericCmd", Boolean.valueOf(paramBoolean));
-    paramalpg.addAttribute("IsPanelRequest", Boolean.valueOf(false));
-    paramalpg.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    paramalpg.putWupBuffer(paramArrayOfByte);
-    if (paramInt1 > 0) {
-      paramalpg.setTimeout(paramInt1);
-    }
-    if (!alpw.a().containsKey(paramString)) {
-      alpw.a(paramString, a);
-    }
-    super.sendPbReq(paramalpg);
-  }
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = (Proto.EchoRsp)new Proto.EchoRsp().mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg == null) {
-          return null;
-        }
-        if (paramToServiceMsg.msg.has())
-        {
-          paramToServiceMsg = paramToServiceMsg.msg.get();
-          paramFromServiceMsg = paramToServiceMsg;
-          if (paramToServiceMsg == null) {
-            paramFromServiceMsg = "";
-          }
-          return paramFromServiceMsg;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
-      paramToServiceMsg = null;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    ArkAppPanelReport.ReqBody localReqBody = new ArkAppPanelReport.ReqBody();
-    localReqBody.bytes_app_name.set(ByteStringMicro.copyFromUtf8(paramString));
-    ArkAppCenter.a("ArkApp.BusinessHandler", String.format("reportArkAppPanelIconClick appName=%s", new Object[] { paramString }));
-    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "ArkAppPanel.Report");
-    paramString.putWupBuffer(localReqBody.toByteArray());
-    paramString.setNeedCallback(false);
-    sendPbReq(paramString);
-    return true;
-  }
-  
-  public boolean a(String paramString, int paramInt1, int paramInt2, alpg paramalpg)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramalpg == null)) {
-      return false;
-    }
-    paramalpg = super.createToServiceMsg(paramString, paramalpg);
-    paramalpg.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramalpg.addAttribute("IsGenericCmd", Boolean.valueOf(true));
-    paramalpg.addAttribute("IsPanelRequest", Boolean.valueOf(true));
-    paramalpg.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    if (paramInt1 > 0) {
-      paramalpg.setTimeout(paramInt1);
-    }
-    if (!alpw.a().containsKey(paramString)) {
-      alpw.a(paramString, a);
-    }
-    super.sendPbReq(paramalpg);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, alpg paramalpg)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (paramalpg == null)) {
-      return false;
-    }
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "";
-    }
-    try
-    {
-      paramString2 = str.getBytes("UTF-8");
-      a(paramString1, true, paramString2, paramInt1, paramInt2, paramalpg);
-      return true;
-    }
-    catch (Exception paramString2)
-    {
-      ArkAppCenter.c("ArkApp.BusinessHandler", String.format("sendAppMsg, fail convert content to bytes array, cmd=%s, content=%s", new Object[] { paramString1, str }));
-    }
-    return false;
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    long l1 = ((Long)paramToServiceMsg.getAttribute("SendTime")).longValue();
-    long l2 = System.currentTimeMillis();
-    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("IsGenericCmd")).booleanValue();
-    boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("IsPanelRequest")).booleanValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("NotifyType")).intValue();
-    String str = paramFromServiceMsg.getServiceCmd();
-    ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive, cmd=%s, app-msg=%s, panelRequest=%s, suc=%s, delay=%d, ", new Object[] { str, Boolean.toString(bool2), Boolean.toString(bool3), Boolean.toString(bool1), Long.valueOf(l2 - l1) }));
-    if (bool1) {
-      if (bool2) {
-        if (!bool3) {}
-      }
-    }
-    for (;;)
-    {
-      if (paramObject != null)
-      {
-        super.notifyUI(paramToServiceMsg, i, true, paramObject);
-        return;
-        paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        continue;
-        if (str.equalsIgnoreCase("ArkAppSvc.Echo")) {
-          paramObject = b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-      }
-      else
-      {
-        super.notifyUI(paramToServiceMsg, i, false, null);
-        return;
-      }
-      paramObject = null;
-    }
+    } while (paramanok1.a >= paramanok2.a);
+    return -1;
   }
 }
 

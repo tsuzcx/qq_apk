@@ -1,25 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qfy
-  extends oxe
+  implements View.OnClickListener
 {
-  private qfy(qfw paramqfw) {}
+  qfy(qfx paramqfx, pxk parampxk, Context paramContext, int paramInt) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (qfw.a(this.a) != null) && (qfw.a(this.a).getVisibility() == 0))
-    {
-      qfw.a(this.a, new qhj(qfw.a(this.a).getContext()));
-      qfw.a(this.a).a(paramString);
-      qfw.a(this.a).a(RIJRedPacketManager.a().d());
-      qfw.a(this.a).showAsDropDown(qfw.a(this.a), 0, bdoo.a(6.0F));
-    }
+    qhk.a(this.jdField_a_of_type_Pxk.a(), this.jdField_a_of_type_AndroidContentContext);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
+    String str1 = String.valueOf(pha.a(this.jdField_a_of_type_Pxk.a(), this.jdField_a_of_type_Int));
+    String str2 = pha.a(localArticleInfo.mAlgorithmID, pha.a(localArticleInfo), 70, 0, 0, bgnt.h(this.jdField_a_of_type_AndroidContentContext), str1, null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+    oat.a(null, str1, "0X8009355", "0X8009355", 0, 0, localArticleInfo.mFeedId + "", String.valueOf(localArticleInfo.businessId), String.valueOf(localArticleInfo.mAlgorithmID), str2, false);
+    ube.a(localArticleInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfy
  * JD-Core Version:    0.7.0.1
  */

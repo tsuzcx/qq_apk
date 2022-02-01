@@ -1,44 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
-class bidp
-  extends Handler
+public abstract interface bidp
 {
-  bidp(bido parambido) {}
+  public abstract CalendarDay a();
   
-  bidp(bido parambido, Handler paramHandler)
-  {
-    super(paramHandler.getLooper());
-  }
+  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-    }
-    do
-    {
-      return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
-  }
+  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
+  
+  public abstract CalendarDay b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidp
  * JD-Core Version:    0.7.0.1
  */

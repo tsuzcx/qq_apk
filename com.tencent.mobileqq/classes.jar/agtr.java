@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class agtr
-  implements View.OnClickListener
+public class agtr
+  extends afwr
 {
-  agtr(agti paramagti) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
-    }
-    this.a.x();
-  }
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public FlashPicItemBuilder.FlashPicAIOThumbView a;
+  public BubbleImageView a;
+  public boolean a;
+  public boolean b;
 }
 
 

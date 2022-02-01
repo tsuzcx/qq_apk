@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.provider.Settings.System;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -24,8 +25,9 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bdnn;
-import bdoo;
+import bgsp;
+import bgtn;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -43,6 +45,7 @@ import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.ColorUtil;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.ImageUtil;
+import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.widget.CanvasView;
 import com.tencent.mobileqq.mini.widget.CanvasView.DrawActionCommand;
 import com.tencent.mobileqq.mini.widget.CoverImageView;
@@ -76,6 +79,7 @@ public class WebviewContainer
   extends FrameLayout
   implements Handler.Callback, SwipeRefreshLayout.OnRefreshListener
 {
+  public static final int ACCELEROMETER_ROTATION_OPENED = 1;
   private static final int AUDIO_TYPE = 3;
   private static final String CONFIG_SPLIT = ",";
   private static final int MSG_WHAT_HIDE_CTR_VIEW = 942301;
@@ -93,6 +97,7 @@ public class WebviewContainer
   private boolean enableRefresh;
   private ProgressWebView innerWebView;
   private SparseArray<CoverView> mCoverViewSparseArray = new SparseArray();
+  private WebviewContainer.RotationObserver mObserver;
   public int mScrollY;
   private SparseArray<MapContext> mapContextArray;
   private boolean needSeetPadding = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcovertextviewpadding", true);
@@ -113,11 +118,13 @@ public class WebviewContainer
     addView(this.swipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
     getNeedCookieAppIdList();
     getNeedCookieHostList();
+    this.mObserver = new WebviewContainer.RotationObserver(this);
+    this.mObserver.registerObserver();
   }
   
   private String getActualColor(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -131,7 +138,7 @@ public class WebviewContainer
     {
       if (needCookieAppIdList == null)
       {
-        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppCookieWhiteList", "1108164955,1108291530,1109544007");
+        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppCookieWhiteAppIdList", "1108164955,1108291530,1109544007");
         if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
         {
           QLog.i("WebViewContainer", 1, "Default white appid:" + str1);
@@ -169,7 +176,7 @@ public class WebviewContainer
   {
     if (needCookieHostList == null)
     {
-      String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcovertextviewpadding", "https://open.mp.qq.com");
+      String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppCookieWhiteHostList", "https://open.mp.qq.com");
       if ((str1 != null) && (!str1.equals(mWhiteHostConfig)))
       {
         QLog.i("WebViewContainer", 1, "Default white host:" + str1);
@@ -283,25 +290,30 @@ public class WebviewContainer
   
   private void setCookie(String paramString)
   {
-    Object localObject = SwiftBrowserCookieMonster.c(paramString).replace(" ", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      if (Build.VERSION.SDK_INT < 21) {
-        CookieSyncManager.createInstance(this.appBrandRuntime.activity);
-      }
-      CookieManager localCookieManager = CookieManager.getInstance();
-      localCookieManager.setAcceptCookie(true);
-      localObject = ((String)localObject).split(";");
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject[i];
-        localCookieManager.setCookie(Uri.parse(paramString).getHost(), str);
-        i += 1;
-      }
-      CookieSyncManager.getInstance().sync();
+    Object localObject1 = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
+    if (!TextUtils.isEmpty(MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), (String)localObject1))) {
+      QLog.e("WebViewContainer", 1, "setCookie: forbidToken non-null");
     }
+    do
+    {
+      return;
+      localObject2 = SwiftBrowserCookieMonster.c(paramString).replace(" ", "");
+    } while (TextUtils.isEmpty((CharSequence)localObject2));
+    if (Build.VERSION.SDK_INT < 21) {
+      CookieSyncManager.createInstance(this.appBrandRuntime.activity);
+    }
+    localObject1 = CookieManager.getInstance();
+    ((CookieManager)localObject1).setAcceptCookie(true);
+    Object localObject2 = ((String)localObject2).split(";");
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = localObject2[i];
+      ((CookieManager)localObject1).setCookie(Uri.parse(paramString).getHost(), str);
+      i += 1;
+    }
+    CookieSyncManager.getInstance().sync();
   }
   
   private void updateScrollView(JSONObject paramJSONObject, CoverScrollView paramCoverScrollView)
@@ -442,7 +454,7 @@ public class WebviewContainer
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!bdnn.a(paramJSONObject.optString("color")))
+          if (!bgsp.a(paramJSONObject.optString("color")))
           {
             localObject1 = getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -459,7 +471,7 @@ public class WebviewContainer
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!bdnn.a((String)localObject1)) {
+          if (!bgsp.a((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -631,6 +643,9 @@ public class WebviewContainer
         this.appBrandRuntime.webviewPool.recycleWebview(this.innerWebView, getContext());
       }
       this.componentLayout.removeAllViews();
+      if (this.mObserver != null) {
+        this.mObserver.unregisterObserver();
+      }
     }
   }
   
@@ -743,18 +758,18 @@ public class WebviewContainer
   {
     this.pageInfo = this.apkgInfo.mAppConfigInfo.getPageInfo(paramString);
     paramString = this.pageInfo.windowInfo.enablePullDownRefresh;
-    boolean bool;
-    label60:
-    int i;
     if (paramString == null)
     {
       bool = this.enableRefresh;
       this.enableRefresh = bool;
       paramString = this.pageInfo.windowInfo.disableScroll;
       if (paramString != null) {
-        break label241;
+        break label207;
       }
-      bool = this.disableScroll;
+    }
+    label207:
+    for (boolean bool = this.disableScroll;; bool = paramString.booleanValue())
+    {
       this.disableScroll = bool;
       paramString = this.pageInfo.windowInfo.pageOrientation;
       if (!TextUtils.isEmpty(paramString)) {
@@ -764,30 +779,12 @@ public class WebviewContainer
         QLog.d("WebViewContainer", 2, "init enableRefresh " + this.enableRefresh + "; disableScroll : " + this.disableScroll + "; pageOrientation : " + this.pageOrientation);
       }
       this.swipeRefreshLayout.setEnabled(this.enableRefresh);
-      if ((this.appBrandRuntime != null) && (this.appBrandRuntime.activity != null) && (!this.appBrandRuntime.activity.isFinishing()))
-      {
-        i = 1;
-        if (!WindowInfo.ORIENTATION_AUTO.equals(this.pageOrientation)) {
-          break label249;
-        }
-        i = 4;
-      }
-    }
-    for (;;)
-    {
-      if (this.appBrandRuntime.activity.getRequestedOrientation() != i) {
-        this.appBrandRuntime.activity.setRequestedOrientation(i);
+      if ((this.appBrandRuntime != null) && (this.appBrandRuntime.activity != null)) {
+        setRequestedOrientation(Settings.System.getInt(this.appBrandRuntime.activity.getContentResolver(), "accelerometer_rotation", 0));
       }
       return;
       bool = paramString.booleanValue();
       break;
-      label241:
-      bool = paramString.booleanValue();
-      break label60;
-      label249:
-      if (WindowInfo.ORIENTATION_LANDSCAPE.equals(this.pageOrientation)) {
-        i = 0;
-      }
     }
   }
   
@@ -895,7 +892,7 @@ public class WebviewContainer
             paramInt2 = paramInt4;
             if (this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().getNavbarStyle().equals("custom"))
             {
-              paramInt2 = paramInt4 - (bdoo.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+              paramInt2 = paramInt4 - (bgtn.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
               this.appBrandRuntime.pageContainer.getCurrentPage().updateViewStyle("default");
               this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().setBarStyle("default");
             }
@@ -906,7 +903,7 @@ public class WebviewContainer
     if ((this.appBrandRuntime != null) && (this.appBrandRuntime.activity != null))
     {
       QLog.d("WebViewContainer", 1, "create ProgressWebView with activity");
-      this.innerWebView = new ProgressWebView(this.appBrandRuntime.activity);
+      this.innerWebView = new ProgressWebView(this.appBrandRuntime.activity, this.appBrandRuntime.appId);
       this.innerWebView.htmlId = paramInt1;
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, paramInt2);
       localLayoutParams.leftMargin = paramInt5;
@@ -996,7 +993,7 @@ public class WebviewContainer
           ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
         }
         ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-        if ((bdnn.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+        if ((bgsp.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
         {
           try
           {
@@ -1041,7 +1038,7 @@ public class WebviewContainer
           i = j;
           continue;
           paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-          if (!bdnn.a(paramJSONObject1)) {
+          if (!bgsp.a(paramJSONObject1)) {
             try
             {
               paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -1763,6 +1760,7 @@ public class WebviewContainer
     for (;;)
     {
       this.mCoverViewSparseArray.remove(paramInt);
+      ((CoverLiveView)localCoverView).release();
       return;
       if (localCoverView.isFixed()) {
         removeView(localCoverView);
@@ -1788,6 +1786,7 @@ public class WebviewContainer
     for (;;)
     {
       this.mCoverViewSparseArray.remove(paramInt);
+      ((CoverPusherView)localCoverView).release();
       return;
       if (localCoverView.isFixed()) {
         removeView(localCoverView);
@@ -1977,6 +1976,30 @@ public class WebviewContainer
     this.swipeRefreshLayout.addView(paramPageWebview, new ViewGroup.LayoutParams(-1, -1));
   }
   
+  public void setRequestedOrientation(int paramInt)
+  {
+    int i = 1;
+    if ((this.appBrandRuntime != null) && (this.appBrandRuntime.activity != null) && (!this.appBrandRuntime.activity.isFinishing()))
+    {
+      if ((!WindowInfo.ORIENTATION_AUTO.equals(this.pageOrientation)) || (1 != paramInt)) {
+        break label78;
+      }
+      paramInt = 4;
+    }
+    for (;;)
+    {
+      if (this.appBrandRuntime.activity.getRequestedOrientation() != paramInt) {
+        this.appBrandRuntime.activity.setRequestedOrientation(paramInt);
+      }
+      return;
+      label78:
+      paramInt = i;
+      if (WindowInfo.ORIENTATION_LANDSCAPE.equals(this.pageOrientation)) {
+        paramInt = 0;
+      }
+    }
+  }
+  
   public void showLoading(String paramString)
   {
     AppBrandTask.runTaskOnUiThread(new WebviewContainer.5(this, paramString));
@@ -2124,7 +2147,7 @@ public class WebviewContainer
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if ((!bdnn.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
+      if ((!bgsp.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
         break label405;
       }
     }
@@ -2158,7 +2181,7 @@ public class WebviewContainer
       return;
       label405:
       paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-      if (!bdnn.a(paramJSONObject1)) {
+      if (!bgsp.a(paramJSONObject1)) {
         try
         {
           paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2184,8 +2207,8 @@ public class WebviewContainer
       {
         return;
         localObject = (CoverLiveView)localObject;
+        ((CoverLiveView)localObject).updateLivePlayerSettings(paramJSONObject);
       } while (((CoverLiveView)localObject).isFullScreen());
-      ((CoverLiveView)localObject).updateLivePlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optJSONObject("position");
     } while (paramJSONObject == null);
     int j = paramJSONObject.optInt("left");
@@ -2277,7 +2300,7 @@ public class WebviewContainer
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bdnn.a(paramJSONObject)) {
+      if (!bgsp.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
@@ -2285,7 +2308,7 @@ public class WebviewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.WebviewContainer
  * JD-Core Version:    0.7.0.1
  */

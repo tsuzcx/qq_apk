@@ -8,6 +8,8 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_APPCENTER_END = 477;
   public static final int NOTIFY_ID_ARK_GROUP_UP_MSG = 239;
   public static final int NOTIFY_ID_ARK_NEARBY_LIKE = 240;
+  public static final int NOTIFY_ID_AUTO_STATUS = 3000530;
+  public static final int NOTIFY_ID_AVGAME_PLAYING = 3000531;
   public static final int NOTIFY_ID_DATE_UNREAD = 272;
   public static final int NOTIFY_ID_DEBUG_NOTICE = 523;
   public static final int NOTIFY_ID_DINGDONG_SCHEDULE = 273;
@@ -18,7 +20,9 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_LBS_FRIEND_UNREAD = 268;
   public static final int NOTIFY_ID_LIMIT_CHAT_UNREAD = 266;
   public static final int NOTIFY_ID_LOCSHARING = 525;
-  public static final int NOTIFY_ID_MAX = 527;
+  public static final int NOTIFY_ID_MAX = 3000536;
+  public static final int NOTIFY_ID_MODULE_PUSH_END = 3000528;
+  public static final int NOTIFY_ID_MODULE_PUSH_START = 528;
   public static final int NOTIFY_ID_MSF_PUSH_AVMSG = 479;
   public static final int NOTIFY_ID_MSF_PUSH_DEVLOCK_QUICKLOGIN_MSG = 480;
   public static final int NOTIFY_ID_MSF_PUSH_OFFLINE = 478;
@@ -34,6 +38,11 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_PUSH_SCHEMA = 243;
   public static final int NOTIFY_ID_PUSH_SPECIAL = 244;
   public static final int NOTIFY_ID_QAV = 235;
+  public static final int NOTIFY_ID_QCIRCIE_LIKE = 3000533;
+  public static final int NOTIFY_ID_QCIRCLE_COM = 3000532;
+  public static final int NOTIFY_ID_QCIRCLE_COMMEN = 3000536;
+  public static final int NOTIFY_ID_QCIRCLE_PUSH = 3000535;
+  public static final int NOTIFY_ID_QCIRCLE_SECRET = 3000534;
   public static final int NOTIFY_ID_QQGAME_MSG = 527;
   public static final int NOTIFY_ID_QQREADER_DOWNLOAD = 234;
   public static final int NOTIFY_ID_QZONE_SPECIAL2 = 242;
@@ -62,6 +71,7 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_UNREAD_QC = 241;
   public static final int NOTIFY_ID_UNREAD_QQ = 265;
   public static final int NOTIFY_ID_UNREAD_SEC_MSG = 274;
+  public static final int NOTIFY_ID_UPCOMING_MSG = 3000529;
   public static final int NOTIFY_ID_UPGRADE_TABLE = 262;
   public static final int NOTIFY_ID_VIPCOMIC_DOWNLOADING = 232;
   public static final int NOTIFY_ID_VIPCOMIC_PAUSE = 233;

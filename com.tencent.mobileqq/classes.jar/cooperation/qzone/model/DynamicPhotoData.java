@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjku;
+import blzd;
 
 public class DynamicPhotoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new bjku();
+  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new blzd();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -56,7 +56,7 @@ public class DynamicPhotoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.DynamicPhotoData
  * JD-Core Version:    0.7.0.1
  */

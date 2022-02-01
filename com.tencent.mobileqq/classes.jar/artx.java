@@ -1,18 +1,77 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface artx
+class artx
+  extends anry
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  artx(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    int i = 1;
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    try
+    {
+      Object localObject = new Bundle();
+      if (paramBoolean) {}
+      for (;;)
+      {
+        ((Bundle)localObject).putInt("retCode", i);
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+        }
+        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+        ((Intent)localObject).putExtra("action", "follow");
+        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+        ((Intent)localObject).putExtra("uin", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+        zwp.a().a(new FollowUpdateEvent(1, paramString));
+        return;
+        i = 0;
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
+  }
   
-  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
-  
-  public abstract void b(int paramInt, Bundle paramBundle);
-  
-  public abstract void c(int paramInt, Bundle paramBundle);
-  
-  public abstract void d(int paramInt, Bundle paramBundle);
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    int i = 0;
+    super.onUnfollowPublicAccount(paramBoolean, paramString);
+    try
+    {
+      Object localObject = new Bundle();
+      if (paramBoolean) {
+        i = 1;
+      }
+      ((Bundle)localObject).putInt("retCode", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+      }
+      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+      ((Intent)localObject).putExtra("action", "unFollow");
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+      zwp.a().a(new FollowUpdateEvent(0, paramString));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
+  }
 }
 
 

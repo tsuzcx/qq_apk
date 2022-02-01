@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" />
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/mr0" android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mjh" android:layout_below="@id/jt2" />
-    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/mjh" android:background="@color/dw" android:layout_width="fill_parent" android:layout_height="181.0dip" android:layout_alignParentBottom="true" />
+<RelativeLayout android:gravity="center" android:background="#66000000" android:paddingBottom="@dimen/b90" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="22.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginBottom="5.0dip" android:text="@string/map" android:layout_centerHorizontal="true" />
 </RelativeLayout>

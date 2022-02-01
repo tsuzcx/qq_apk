@@ -1,44 +1,48 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import bacu;
-import bdgm;
-import bdin;
-import bdjz;
-import bety;
+import android.view.MotionEvent;
+import bddy;
+import bglp;
+import bgnt;
+import bgpa;
+import biau;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bdjz jdField_a_of_type_Bdjz;
-  private bety jdField_a_of_type_Bety;
+  private bgpa jdField_a_of_type_Bgpa;
+  private biau jdField_a_of_type_Biau;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bety == null)
+    if (this.jdField_a_of_type_Biau == null)
     {
-      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bety.c(true);
+      this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
+      this.jdField_a_of_type_Biau.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Bety.c(paramInt);
+      this.jdField_a_of_type_Biau.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bety != null) && (!this.jdField_a_of_type_Bety.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bety.show();
+      if ((this.jdField_a_of_type_Biau != null) && (!this.jdField_a_of_type_Biau.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Biau.show();
       }
       return;
-      this.jdField_a_of_type_Bety.c(2131695090);
+      this.jdField_a_of_type_Biau.c(2131694158);
     }
   }
   
@@ -49,11 +53,11 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdjz.setCancelable(false);
-    this.jdField_a_of_type_Bdjz.show();
+    this.jdField_a_of_type_Bgpa = bglp.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bgpa.setNegativeButton(2131690582, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bgpa.setCancelable(false);
+    this.jdField_a_of_type_Bgpa.show();
   }
   
   public void b(String paramString)
@@ -68,15 +72,15 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bdjz.setCancelable(false);
-    this.jdField_a_of_type_Bdjz.show();
+    this.jdField_a_of_type_Bgpa = bglp.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bgpa.setCancelable(false);
+    this.jdField_a_of_type_Bgpa.show();
   }
   
   public boolean b()
   {
-    return bdin.d(BaseApplication.getContext());
+    return bgnt.d(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -88,8 +92,16 @@ public class SubAccountBaseActivity
   {
     boolean bool = b();
     if (!bool) {
-      b(getString(2131692398));
+      b(getString(2131691985));
     }
+    return bool;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
     return bool;
   }
   
@@ -103,18 +115,18 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bacu localbacu = (bacu)this.app.getManager(62);
-    if (localbacu != null) {
-      localbacu.a(this);
+    bddy localbddy = (bddy)this.app.getManager(62);
+    if (localbddy != null) {
+      localbddy.a(this);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Biau.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -122,12 +134,12 @@ public class SubAccountBaseActivity
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
+    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bdjz.dismiss();
+      this.jdField_a_of_type_Bgpa.dismiss();
       label24:
-      this.jdField_a_of_type_Bdjz = null;
+      this.jdField_a_of_type_Bgpa = null;
       return;
     }
     catch (Exception localException)
@@ -157,10 +169,17 @@ public class SubAccountBaseActivity
     }
     g();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBaseActivity
  * JD-Core Version:    0.7.0.1
  */

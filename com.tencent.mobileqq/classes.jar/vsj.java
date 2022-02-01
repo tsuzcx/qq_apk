@@ -1,88 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.biz.qqcircle.events.QCircleTimeLineCreateTimeEvent;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vsj
-  extends vsi
+  extends vrw
 {
-  protected Map<String, vsi> a = new HashMap();
-  
-  public vsj(@NonNull ViewGroup paramViewGroup)
+  private void a(View paramView)
   {
-    super(paramViewGroup);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561598, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt, vpn paramvpn, @NonNull ArrayList<vtt> paramArrayList)
-  {
-    super.a(paramInt, paramvpn, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vsi)localIterator.next()).a(paramInt, paramvpn, paramArrayList);
+    if ((paramView instanceof QCircleTimeLineFeedItemView))
+    {
+      paramView = (QCircleTimeLineFeedItemView)paramView;
+      if ((paramView.a() instanceof FeedCloudMeta.StFeed))
+      {
+        paramView = (FeedCloudMeta.StFeed)paramView.a();
+        QLog.d("QCircleTimeLineAndGridScroller", 1, "sendFirstItemViewData feedId:" + paramView.id.get() + "   createTime:" + paramView.createTime.get());
+        zwp.a().a(new QCircleTimeLineCreateTimeEvent(paramView.createTime.get()));
+      }
     }
   }
   
-  public void a(@NonNull vsi paramvsi)
+  public void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.a.put(paramvsi.getClass().getName(), paramvsi);
-  }
-  
-  public void a(vsj paramvsj)
-  {
-    super.a(paramvsj);
-    paramvsj = this.a.values().iterator();
-    while (paramvsj.hasNext()) {
-      ((vsi)paramvsj.next()).a(this);
+    try
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof GridLayoutManager))
+      {
+        paramRecyclerView = (GridLayoutManager)paramRecyclerView;
+        if (paramRecyclerView.getSpanCount() == 1) {
+          a(paramRecyclerView.findViewByPosition(paramRecyclerView.findFirstVisibleItemPosition()));
+        }
+      }
+      return;
     }
-  }
-  
-  public void a(vth paramvth)
-  {
-    super.a(paramvth);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vsi)localIterator.next()).a(paramvth);
-    }
-  }
-  
-  @Nullable
-  public vsi b(Class<? extends vsi> paramClass)
-  {
-    return (vsi)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vsi)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vsi)localIterator.next()).c();
+    catch (Exception paramRecyclerView)
+    {
+      QLog.d("QCircleTimeLineAndGridScroller", 1, paramRecyclerView.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsj
  * JD-Core Version:    0.7.0.1
  */

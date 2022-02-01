@@ -1,98 +1,111 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import cooperation.qzone.util.NetworkState;
 import org.json.JSONObject;
 
 public class qcj
-  implements View.OnClickListener
+  implements qft
 {
-  public qcj(ComponentContentHotQuestion paramComponentContentHotQuestion) {}
-  
-  public void onClick(View paramView)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    pgd localpgd = this.a.jdField_a_of_type_Qbs.a();
-    ArticleInfo localArticleInfo = localpgd.a();
-    Object localObject1 = (qlk)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-    Object localObject2;
-    if ((localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12) && (((qlk)localObject1).jdField_a_of_type_Qlm != null))
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qbm.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    if ((NetworkState.isWifiConn()) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
     {
-      localObject2 = new Intent((Activity)this.a.jdField_a_of_type_AndroidContentContext, ReadInJoyDeliverUGCActivity.class);
-      ((Intent)localObject2).putExtra("arg_topic_id", String.valueOf(String.valueOf(((qlk)localObject1).jdField_a_of_type_Qlm.jdField_b_of_type_Int)));
-      ((Intent)localObject2).putExtra("support_topic", true);
-      ((Intent)localObject2).putExtra("support_linkify", true);
-    }
-    try
-    {
-      paramView = new String(bdfr.decode(((qlk)localObject1).jdField_a_of_type_Qlm.jdField_b_of_type_JavaLangString, 0));
-      ((Intent)localObject2).putExtra("is_from_poly_topic", true);
-      if (localpgd.e() == 70)
-      {
-        bool = true;
-        ((Intent)localObject2).putExtra("is_from_dian_dian", bool);
-        ((Intent)localObject2).putExtra("arg_topic_name", paramView);
-        ((Intent)localObject2).putExtra("arg_ad_tag", ((qlk)localObject1).jdField_a_of_type_Qlm.c);
-        this.a.getContext().startActivity((Intent)localObject2);
-        localObject2 = new JSONObject();
+      localObject = localViewBase.findViewBaseByName("id_large_video_icon");
+      if (localObject != null) {
+        ((ViewBase)localObject).setVisibility(0);
       }
-      try
-      {
-        ((JSONObject)localObject2).put("channel_id", localpgd.e());
-        if (((qlk)localObject1).jdField_a_of_type_Qll == null) {
-          break label388;
-        }
-        paramView = ((qlk)localObject1).jdField_a_of_type_Qll.a;
-        ((JSONObject)localObject2).put("rowkey", paramView);
-        if (((qlk)localObject1).jdField_a_of_type_Qlm == null) {
-          break label396;
-        }
-        i = ((qlk)localObject1).jdField_a_of_type_Qlm.jdField_b_of_type_Int;
-        ((JSONObject)localObject2).put("topicid", i);
+      localObject = localViewBase.findViewBaseByName("id_video_bg");
+      if (localObject != null) {
+        ((ViewBase)localObject).setVisibility(8);
       }
-      catch (Exception paramView)
+      pgk.a(false, localViewBase, null);
+      if (parampxk != null)
       {
-        for (;;)
-        {
-          int i;
-          paramView.printStackTrace();
-          continue;
-          paramView = "2";
+        localObject = parampxk.a();
+        if ((localObject != null) && (((BaseArticleInfo)localObject).isAccountShown)) {
+          qhv.a(paramContainer, parampxk);
         }
       }
-      localObject1 = localArticleInfo.mFeedId + "";
-      if (ors.o(localArticleInfo))
-      {
-        paramView = "1";
-        nrt.a(null, "CliOper", "", "", "0X800982C", "0X800982C", 0, 0, (String)localObject1, paramView, localArticleInfo.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
-        return;
-      }
+      sia.a(parampxk.a(), paramContainer.getContext());
+      return;
     }
-    catch (Exception paramView)
+    Object localObject = localViewBase.findViewBaseByName("id_large_video_icon");
+    if (localObject != null) {
+      ((ViewBase)localObject).setVisibility(8);
+    }
+    localObject = localViewBase.findViewBaseByName("id_video_bg");
+    if (localObject != null) {
+      ((ViewBase)localObject).setVisibility(0);
+    }
+    NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
+    String str;
+    if (localNativeText != null)
     {
-      for (;;)
+      str = anni.a(2131699908);
+      if (bhhb.a() == 1)
       {
-        paramView.printStackTrace();
-        paramView = "";
-        continue;
-        boolean bool = false;
-        continue;
-        label388:
-        paramView = Integer.valueOf(0);
-        continue;
-        label396:
-        i = 0;
+        localObject = anni.a(2131699909);
+        label199:
+        localNativeText.setText((CharSequence)localObject);
       }
     }
+    else
+    {
+      if (parampxk == null) {
+        break label292;
+      }
+    }
+    label292:
+    for (localObject = parampxk.a();; localObject = null)
+    {
+      pgk.a(localViewBase, (BaseArticleInfo)localObject);
+      break;
+      localObject = str;
+      if (parampxk == null) {
+        break label199;
+      }
+      localObject = str;
+      if (parampxk.a().mXGFileSize <= 0L) {
+        break label199;
+      }
+      localObject = ryx.b(parampxk.a().mXGFileSize) + anni.a(2131699907);
+      break label199;
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    paramContainer = parampxk.a();
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return false;
+    }
+    paramViewBase.setOnClickListener(new qck(this, paramContainer, parampxk, paramViewBase));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qcj
  * JD-Core Version:    0.7.0.1
  */

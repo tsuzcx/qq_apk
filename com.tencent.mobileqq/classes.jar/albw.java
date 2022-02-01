@@ -1,14 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-public final class albw
-  implements EIPCResultCallback
+public class albw
+  extends alcf
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
-  }
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public SingleLineTextView b;
 }
 
 

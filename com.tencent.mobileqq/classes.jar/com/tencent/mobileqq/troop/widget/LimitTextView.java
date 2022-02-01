@@ -8,8 +8,8 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bamd;
-import bamp;
+import bdnh;
+import bdnt;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -95,7 +95,7 @@ public class LimitTextView
       localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
       paramInt2 = ((String)localObject).codePointAt(paramInt1 - 2);
       paramInt3 = ((String)localObject).codePointAt(paramInt1 - 1);
-      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= bamd.a)) && (paramInt2 <= 65535)) {
+      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= bdnh.a)) && (paramInt2 <= 65535)) {
         break label164;
       }
       str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 2) + "…";
@@ -123,12 +123,12 @@ public class LimitTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    super.setText(new bamp(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
+    super.setText(new bdnt(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.LimitTextView
  * JD-Core Version:    0.7.0.1
  */

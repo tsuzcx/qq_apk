@@ -1,43 +1,21 @@
-import com.tencent.YTFace.model.FaceStatus;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class anbo
 {
-  public int a;
+  public long a;
   public String a;
-  public ArrayList<anbp> a;
-  public FaceStatus[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public long b;
   
-  public static boolean a(anbo paramanbo)
+  public anbo(String paramString, long paramLong1, long paramLong2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramanbo != null)
-    {
-      bool1 = bool2;
-      if (paramanbo.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramanbo.jdField_b_of_type_Int == 0) {
-          bool1 = true;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
-    }
-    return bool1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
   public String toString()
   {
-    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
   }
 }
 

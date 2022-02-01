@@ -1,7 +1,7 @@
 package com.idlefish.flutterboost;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.idlefish.flutterboost.interfaces.INativeRouter;
 import io.flutter.embedding.android.FlutterView.RenderMode;
 
@@ -14,7 +14,6 @@ public class FlutterBoost$ConfigBuilder
   public static final String DEFAULT_INITIAL_ROUTE = "/";
   public static int FLUTTER_ACTIVITY_CREATED = 2;
   public static int IMMEDIATELY;
-  private FlutterBoost.BoostPluginsRegister boostPluginsRegister;
   private String dartEntrypoint = "main";
   private String initialRoute = "/";
   private boolean isDebug = false;
@@ -35,7 +34,6 @@ public class FlutterBoost$ConfigBuilder
   {
     FlutterBoost.ConfigBuilder.1 local1 = new FlutterBoost.ConfigBuilder.1(this);
     local1.lifecycleListener = this.lifecycleListener;
-    local1.pluginsRegister = this.boostPluginsRegister;
     return local1;
   }
   
@@ -63,12 +61,6 @@ public class FlutterBoost$ConfigBuilder
     return this;
   }
   
-  public ConfigBuilder pluginsRegister(FlutterBoost.BoostPluginsRegister paramBoostPluginsRegister)
-  {
-    this.boostPluginsRegister = paramBoostPluginsRegister;
-    return this;
-  }
-  
   public ConfigBuilder renderMode(FlutterView.RenderMode paramRenderMode)
   {
     this.renderMode = paramRenderMode;
@@ -83,7 +75,7 @@ public class FlutterBoost$ConfigBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.FlutterBoost.ConfigBuilder
  * JD-Core Version:    0.7.0.1
  */

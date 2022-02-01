@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
 import QQService.EVIPSPEC;
-import ajjn;
-import alto;
+import albw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import bdov;
-import bdow;
-import bdox;
+import anmw;
+import bgtu;
+import bgtv;
+import bgtw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -23,13 +23,13 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
   private WeakReference<View> jdField_a_of_type_MqqUtilWeakReference;
   private boolean jdField_a_of_type_Boolean = true;
   private WeakReference<Context> b;
-  private WeakReference<ajjn> c;
+  private WeakReference<albw> c;
   
-  VipUtils$UpdateRecentEfficientVipIconTask(View paramView, Context paramContext, String paramString, ajjn paramajjn)
+  VipUtils$UpdateRecentEfficientVipIconTask(View paramView, Context paramContext, String paramString, albw paramalbw)
   {
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramView);
     this.b = new WeakReference(paramContext);
-    this.c = new WeakReference(paramajjn);
+    this.c = new WeakReference(paramalbw);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -38,25 +38,25 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
     return (View)this.jdField_a_of_type_MqqUtilWeakReference.get();
   }
   
-  static void a(Context paramContext, String paramString, ajjn paramajjn)
+  static void a(Context paramContext, String paramString, albw paramalbw)
   {
     QQAppInterface localQQAppInterface = ((BaseActivity)paramContext).app;
-    Object localObject = (alto)localQQAppInterface.getManager(51);
-    boolean bool = ((alto)localObject).c;
-    localObject = ((alto)localObject).e(paramString);
+    Object localObject = (anmw)localQQAppInterface.getManager(51);
+    boolean bool = ((anmw)localObject).c;
+    localObject = ((anmw)localObject).e(paramString);
     int i;
     label111:
     int j;
-    if ((localObject != null) && (bdow.a(((Friends)localObject).nameplateVipType)))
+    if ((localObject != null) && (bgtv.a(((Friends)localObject).nameplateVipType)))
     {
       i = 1;
       if (i != 0)
       {
-        if (bdow.b(((Friends)localObject).grayNameplateFlag)) {
+        if (bgtv.b(((Friends)localObject).grayNameplateFlag)) {
           break label221;
         }
-        String str = bdow.a(localQQAppInterface, ((Friends)localObject).uin, bdox.a(((Friends)localObject).nameplateVipType), false);
-        VipUtils.a(paramajjn.a, paramContext, str, bdow.a(bdox.a(((Friends)localObject).nameplateVipType)));
+        String str = bgtv.a(localQQAppInterface, ((Friends)localObject).uin, bgtw.a(((Friends)localObject).nameplateVipType), false);
+        VipUtils.a(paramalbw.a, paramContext, str, bgtv.a(bgtw.a(((Friends)localObject).nameplateVipType)));
       }
       j = VipUtils.a(localQQAppInterface, paramString);
       if (QLog.isColorLevel()) {
@@ -65,17 +65,17 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
       if (j >> 8 != 3) {
         break label308;
       }
-      paramString = bdow.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
+      paramString = bgtv.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
       if ((j & 0xF) != 1) {
         break label252;
       }
       if (!bool) {
         break label233;
       }
-      paramajjn.a.setTextColor(paramContext.getResources().getColor(2131167039));
+      paramalbw.a.setTextColor(paramContext.getResources().getColor(2131167123));
       label200:
       if (i == 0) {
-        VipUtils.a(paramajjn.a, paramContext, paramString, 2130846612);
+        VipUtils.a(paramalbw.a, paramContext, paramString, 2130847054);
       }
     }
     for (;;)
@@ -84,76 +84,76 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
       i = 0;
       break;
       label221:
-      paramajjn.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+      paramalbw.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
       break label111;
       label233:
-      paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
+      paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
       break label200;
       label252:
       if (bool) {
-        paramajjn.a.setTextColor(paramContext.getResources().getColor(2131167039));
+        paramalbw.a.setTextColor(paramContext.getResources().getColor(2131167123));
       }
       while (i == 0)
       {
-        VipUtils.a(paramajjn.a, paramContext, paramString, 2130846610);
+        VipUtils.a(paramalbw.a, paramContext, paramString, 2130847052);
         return;
-        paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
+        paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
       }
       continue;
       label308:
       if (j >> 8 == 1)
       {
         if (bool) {
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131167039));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131167123));
         }
         for (;;)
         {
-          paramString = bdow.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_QQVIP);
+          paramString = bgtv.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_QQVIP);
           if (i != 0) {
             break;
           }
-          VipUtils.a(paramajjn.a, paramContext, paramString, 2130846611);
+          VipUtils.a(paramalbw.a, paramContext, paramString, 2130847053);
           return;
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
         }
       }
       if (j >> 8 != 2) {
         break label523;
       }
-      paramString = bdow.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
+      paramString = bgtv.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
       if ((j & 0xF) == 1)
       {
         if (bool) {
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131167039));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131167123));
         }
         while (i == 0)
         {
-          VipUtils.a(paramajjn.a, paramContext, paramString, 2130846612);
+          VipUtils.a(paramalbw.a, paramContext, paramString, 2130847054);
           return;
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
         }
       }
       else
       {
         if (bool) {
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131167039));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131167123));
         }
         while (i == 0)
         {
-          VipUtils.a(paramajjn.a, paramContext, paramString, 2130846610);
+          VipUtils.a(paramalbw.a, paramContext, paramString, 2130847052);
           return;
-          paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
+          paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
         }
       }
     }
     label523:
-    paramajjn.a.setTextColor(paramContext.getResources().getColor(2131166910));
-    paramajjn.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+    paramalbw.a.setTextColor(paramContext.getResources().getColor(2131166993));
+    paramalbw.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
   }
   
   public void run()
   {
-    bdov.b(this);
+    bgtu.b(this);
     if (!this.jdField_a_of_type_Boolean) {
       if (QLog.isColorLevel()) {
         QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - not Valid");
@@ -163,9 +163,9 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
     {
       return;
       Context localContext = (Context)this.b.get();
-      ajjn localajjn = (ajjn)this.c.get();
-      if ((localContext != null) && (localajjn != null)) {
-        a(localContext, this.jdField_a_of_type_JavaLangString, localajjn);
+      albw localalbw = (albw)this.c.get();
+      if ((localContext != null) && (localalbw != null)) {
+        a(localContext, this.jdField_a_of_type_JavaLangString, localalbw);
       }
     } while (!QLog.isColorLevel());
     QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - sucess : " + this.jdField_a_of_type_JavaLangString);
@@ -173,7 +173,7 @@ public class VipUtils$UpdateRecentEfficientVipIconTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask
  * JD-Core Version:    0.7.0.1
  */

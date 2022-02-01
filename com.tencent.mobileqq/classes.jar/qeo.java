@@ -1,61 +1,40 @@
-import android.os.Looper;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class qeo
-  extends oxe
+class qeo
+  implements ViewBase.OnClickListener
 {
-  public qeo(ComponentHeaderUgc paramComponentHeaderUgc) {}
+  qeo(qel paramqel, Container paramContainer) {}
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void onClick(ViewBase paramViewBase)
   {
+    paramViewBase = BaseApplicationImpl.getContext();
     int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
       }
-      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = this.a.jdField_a_of_type_Qbs.a.a();
-    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702679));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-      localArticleInfo.mSocialFeedInfo.h = 2;
-      localArticleInfo.isNeedShowBtnWhenFollowed = true;
     }
     for (;;)
     {
-      oxb.a().b();
+      if ((i == 0) && (pzo.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        qel.a(this.jdField_a_of_type_Qel, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
       return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131702684));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-      localArticleInfo.mSocialFeedInfo.h = 1;
+      i = 0;
+      continue;
+      i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qeo
  * JD-Core Version:    0.7.0.1
  */

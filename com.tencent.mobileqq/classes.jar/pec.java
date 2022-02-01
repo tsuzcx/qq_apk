@@ -1,30 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pec
+  implements ViewBase.IBuilder
 {
-  public static void a(List<ArticleInfo> paramList)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
-          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
-        }
-      }
-    }
+    return new peb(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pec
  * JD-Core Version:    0.7.0.1
  */

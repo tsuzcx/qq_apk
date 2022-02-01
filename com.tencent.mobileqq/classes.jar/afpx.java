@@ -1,6 +1,10 @@
-abstract interface afpx
+import android.widget.TextView;
+
+public class afpx
+  extends amcl
 {
-  public abstract void a();
+  public afpv a;
+  public TextView a;
 }
 
 

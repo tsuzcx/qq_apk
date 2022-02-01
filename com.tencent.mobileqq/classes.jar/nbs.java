@@ -1,12 +1,27 @@
-public abstract interface nbs
+import com.tencent.avgame.gameroom.stage.StageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
+
+public class nbs
+  implements mzy
 {
-  public abstract void loaded(String paramString, int paramInt);
+  public nbs(StageView paramStageView) {}
   
-  public abstract void progress(int paramInt);
+  public void a(LottieDrawable paramLottieDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
+    }
+    if (paramLottieDrawable != null)
+    {
+      this.a.a = paramLottieDrawable;
+      StageView.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbs
  * JD-Core Version:    0.7.0.1
  */

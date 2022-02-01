@@ -1,30 +1,34 @@
-import android.animation.TypeEvaluator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class xyb
-  implements TypeEvaluator<xya>
+public class xyb
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xmf>
 {
-  private xya a;
-  
-  public xya a(float paramFloat, xya paramxya1, xya paramxya2)
+  public xyb(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    float f1 = paramxya1.a + (paramxya2.a - paramxya1.a) * paramFloat;
-    float f2 = paramxya1.b + (paramxya2.b - paramxya1.b) * paramFloat;
-    paramFloat = paramxya1.c + (paramxya2.c - paramxya1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new xya(f1, f2, paramFloat);
-    }
-    for (;;)
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xmf paramxmf)
+  {
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramxmf.jdField_a_of_type_JavaLangString)) && ((paramxmf.jdField_a_of_type_Xix instanceof xji)))
     {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
+      paramxmf = ((xji)paramxmf.jdField_a_of_type_Xix).a;
+      if (paramxmf != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramxmf.jdField_a_of_type_JavaLangString);
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xmf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyb
  * JD-Core Version:    0.7.0.1
  */

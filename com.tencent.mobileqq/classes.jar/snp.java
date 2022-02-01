@@ -1,29 +1,46 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 class snp
-  implements snq
+  implements sow
 {
-  snp(sno paramsno) {}
+  snp(snh paramsnh) {}
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    sno.a(this.a).b(paramString, paramOnClickListener);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    sno.a(this.a).c(paramBoolean);
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    sno.a(this.a).a(paramString, paramOnClickListener);
+    boolean bool = true;
+    ArticleInfo localArticleInfo1;
+    String str;
+    ArticleInfo localArticleInfo2;
+    snh localsnh;
+    if (paramView.getId() == 2131369765)
+    {
+      localArticleInfo1 = (ArticleInfo)((pul)paramView.getTag()).a;
+      str = ((pul)paramView.getTag()).b.innerUniqueID;
+      localArticleInfo2 = localArticleInfo1;
+      localsnh = this.a;
+      if (paramView.getId() != 2131369765) {
+        break label124;
+      }
+    }
+    for (;;)
+    {
+      localsnh.a(bool, localArticleInfo2, localArticleInfo1, str);
+      return;
+      localArticleInfo2 = (ArticleInfo)((pul)paramView.getTag()).b;
+      str = ((pul)paramView.getTag()).a.innerUniqueID;
+      localArticleInfo1 = (ArticleInfo)((pul)paramView.getTag()).a;
+      localArticleInfo2.isTwoItem = true;
+      break;
+      label124:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snp
  * JD-Core Version:    0.7.0.1
  */

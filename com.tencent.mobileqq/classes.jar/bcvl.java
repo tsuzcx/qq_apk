@@ -1,13 +1,20 @@
-class bcvl
-  implements badp
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class bcvl
 {
-  bcvl(bcvk parambcvk) {}
+  private static HashMap<String, bcvk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a()
+  public static HashMap<String, bcvk> a()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    return jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public static List<String> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
   }
 }
 

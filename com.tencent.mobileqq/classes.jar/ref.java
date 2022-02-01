@@ -1,12 +1,16 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 
-public abstract interface ref
+public class ref
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  public int a;
+  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
+  public List<ArticleInfo> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ref
  * JD-Core Version:    0.7.0.1
  */

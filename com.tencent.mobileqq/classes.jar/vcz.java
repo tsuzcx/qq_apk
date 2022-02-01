@@ -1,19 +1,43 @@
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class vcz
-  extends uli
+class vcz
+  extends BroadcastReceiver
 {
-  public List<String> a;
-  public List<vgd> b;
+  private vcz(vcw paramvcw) {}
   
-  public String toString()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
+    int i;
+    int j;
+    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("type", 1);
+      j = paramIntent.getIntExtra("status", 0);
+      paramContext = paramIntent.getStringExtra("tagName");
+      if (i != 2) {
+        break label59;
+      }
+      i = uxx.a(j);
+      uxx.a(uxc.a(), i, paramContext);
+    }
+    for (;;)
+    {
+      uxc.c();
+      return;
+      label59:
+      if (i == 3)
+      {
+        i = uxx.a(j);
+        uxx.a(uxc.b(), i, paramContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcz
  * JD-Core Version:    0.7.0.1
  */

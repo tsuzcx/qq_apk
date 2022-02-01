@@ -1,16 +1,39 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class aswo
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends atwn
 {
-  aswo(aswm paramaswm) {}
+  public aswo(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    aswm.a(this.a).post(new VideoBaseItem.2.1(this));
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().k();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().D();
   }
 }
 

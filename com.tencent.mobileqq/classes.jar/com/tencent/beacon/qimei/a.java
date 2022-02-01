@@ -1,16 +1,17 @@
 package com.tencent.beacon.qimei;
 
 import android.content.Context;
-import com.tencent.beacon.core.b.c;
-import com.tencent.beacon.core.d.b;
-import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.core.e.d;
+import com.tencent.beacon.core.e.j;
+import com.tencent.beacon.core.info.c;
+import com.tencent.beacon.core.info.e;
+import java.util.Map;
 
-public final class a
+public class a
 {
-  private static a k;
-  private String a = "";
+  private static a a;
   private String b = "";
-  private String c = "";
+  private Qimei c;
   private String d = "";
   private String e = "";
   private String f = "";
@@ -18,34 +19,59 @@ public final class a
   private String h = "";
   private String i = "";
   private String j = "";
+  private String k = "";
+  private String l = "";
+  private boolean m = false;
+  private String n = "";
+  private String o = "";
+  private String p = "";
+  private String q = "";
+  private String r = "";
+  private String s = "";
+  private String t = "";
+  private String u = "";
+  private String v = "";
   
   private a(Context paramContext)
   {
-    this.b = c.a(paramContext).a();
-    com.tencent.beacon.core.b.d.a(paramContext);
-    this.c = com.tencent.beacon.core.b.d.e(paramContext);
-    this.d = com.tencent.beacon.core.b.d.c(paramContext);
-    this.e = com.tencent.beacon.core.b.d.d(paramContext);
-    if ("".equals(this.c)) {
-      com.tencent.beacon.core.b.d.d();
+    this.d = c.a(paramContext).c();
+    Object localObject = e.d(paramContext);
+    this.e = ((e)localObject).i(paramContext);
+    this.f = ((e)localObject).h(paramContext);
+    this.g = ((e)localObject).b(paramContext);
+    if ("".equals(this.e)) {
+      this.h = ((e)localObject).e(paramContext);
     }
-    this.f = UserAction.getQQ();
-    this.g = com.tencent.beacon.core.b.d.b();
-    this.h = com.tencent.beacon.core.b.d.e();
-    this.i = com.tencent.beacon.core.b.d.a();
-    this.j = com.tencent.beacon.core.b.d.h();
-    com.tencent.beacon.core.b.d.j(paramContext);
+    this.i = c.a(paramContext).k();
+    this.j = ((e)localObject).h();
+    this.k = ((e)localObject).d();
+    this.l = ((e)localObject).n();
+    this.n = ((e)localObject).l();
+    this.o = ((e)localObject).k(paramContext);
     try
     {
-      paramContext = d.a(paramContext);
-      if ((paramContext != null) && (!"".equals(paramContext))) {
-        this.a = paramContext;
+      this.c = new Qimei();
+      localObject = i.c(paramContext);
+      if (!j.c((String)localObject)) {
+        this.b = ((String)localObject);
+      }
+      localObject = new StringBuilder();
+      d.a("[qimei] final request qimeiJson: " + this.b, new Object[0]);
+      localObject = i.a(this.b);
+      if (localObject != null)
+      {
+        Qimei localQimei = this.c;
+        localQimei.setQimeiOld((String)((Map)localObject).get("A3"));
+        localQimei = this.c;
+        localQimei.setQimeiNew((String)((Map)localObject).get("A153"));
+        this.c.setQimeiMap((Map)localObject);
+        i.b(paramContext, this.c.toString());
       }
       return;
     }
     catch (Exception paramContext)
     {
-      b.d("load qimei error ", new Object[] { paramContext });
+      d.b("load qimei error ", new Object[] { paramContext.getMessage() });
     }
   }
   
@@ -53,78 +79,105 @@ public final class a
   {
     try
     {
-      if (k == null) {
-        k = new a(paramContext);
+      if (a == null) {
+        a = new a(paramContext);
       }
-      paramContext = k;
+      paramContext = a;
       return paramContext;
     }
     finally {}
   }
   
-  public final String a()
-  {
-    return this.a;
-  }
-  
-  public final void a(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public final String b()
-  {
-    return this.a;
-  }
-  
-  public final String c()
+  public String a()
   {
     return this.b;
   }
   
-  public final String d()
+  public void a(Qimei paramQimei)
+  {
+    this.c = paramQimei;
+  }
+  
+  public Qimei b()
   {
     return this.c;
   }
   
-  public final String e()
+  public String c()
   {
-    return this.d;
+    return this.b;
   }
   
-  public final String f()
+  public QimeiPackage d()
   {
-    return this.e;
-  }
-  
-  public final String g()
-  {
-    return this.i;
-  }
-  
-  public final String h()
-  {
-    return this.f;
-  }
-  
-  public final String i()
-  {
-    return this.g;
-  }
-  
-  public final String j()
-  {
-    return this.h;
-  }
-  
-  public final String k()
-  {
-    return this.j;
+    QimeiPackage localQimeiPackage = new QimeiPackage();
+    String str2 = this.d;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.imei = str1;
+    str2 = this.f;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.imsi = str1;
+    str2 = this.e;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.mac = str1;
+    str2 = this.g;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.androidId = str1;
+    str2 = this.b;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.qimei = str1;
+    str2 = this.j;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.model = str1;
+    str2 = this.k;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.brand = str1;
+    str2 = this.l;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.osVersion = str1;
+    localQimeiPackage.broot = this.m;
+    str2 = this.i;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.qq = str1;
+    str2 = this.n;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.cid = str1;
+    return localQimeiPackage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.qimei.a
  * JD-Core Version:    0.7.0.1
  */

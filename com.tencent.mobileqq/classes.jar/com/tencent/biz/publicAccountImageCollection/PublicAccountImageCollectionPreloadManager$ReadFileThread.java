@@ -1,11 +1,11 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import alof;
 import android.support.v4.util.MQLruCache;
+import anhk;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
-import tpr;
+import uwr;
 
 class PublicAccountImageCollectionPreloadManager$ReadFileThread
   implements Runnable
@@ -23,7 +23,7 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
     {
       try
       {
-        localFileInputStream = new FileInputStream(alof.cN + this.a);
+        localFileInputStream = new FileInputStream(anhk.cQ + this.a);
         localObject1 = null;
       }
       catch (Exception localException1)
@@ -60,15 +60,15 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
       ((ArticleComment.GetPhotoCollectionInfoResponse)localObject2).mergeFrom((byte[])localObject1);
       localObject1 = PublicAccountImageCollectionPreloadManager.a(this.this$0, (ArticleComment.GetPhotoCollectionInfoResponse)localObject2, this.a);
       this.this$0.a.put(this.a, localObject1);
-      this.this$0.a((tpr)localObject1);
-      this.this$0.b((tpr)localObject1);
+      this.this$0.a((uwr)localObject1);
+      this.this$0.b((uwr)localObject1);
     }
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.ReadFileThread
  * JD-Core Version:    0.7.0.1
  */

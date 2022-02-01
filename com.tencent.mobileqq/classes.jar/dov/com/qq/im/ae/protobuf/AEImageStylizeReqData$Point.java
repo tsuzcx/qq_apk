@@ -14,7 +14,7 @@ public final class AEImageStylizeReqData$Point
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.protobuf.AEImageStylizeReqData.Point
  * JD-Core Version:    0.7.0.1
  */

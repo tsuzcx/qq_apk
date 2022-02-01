@@ -1,82 +1,66 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdqk
+public class bdqk
+  implements agma
 {
-  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
+  private int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  bdqs jdField_a_of_type_Bdqs;
+  public BaseChatPie a;
+  public QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bdqk(BaseChatPie paramBaseChatPie)
   {
-    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-    paramString.setAccessible(true);
-    return paramString.invoke(paramObject, paramArrayOfObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   }
   
-  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
+  public void a(int paramInt)
   {
-    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
-  }
-  
-  public static Object a(String paramString1, Object paramObject, String paramString2)
-  {
-    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
-    paramString1.setAccessible(true);
-    return paramString1.get(paramObject);
-  }
-  
-  public static Object a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, (Object[])null);
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
-  {
-    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
-  {
-    paramString1 = Class.forName(paramString1);
-    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
-  }
-  
-  private static Class<?>[] a(Object[] paramArrayOfObject)
-  {
-    Object localObject = (Class[])null;
-    if (paramArrayOfObject != null)
+    switch (paramInt)
     {
-      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-      int i = 0;
-      int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
-      {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
-          }
-        }
-      }
     }
-    return localObject;
+    do
+    {
+      return;
+      ThreadManager.executeOnSubThread(new AIOTofuMsgHelper.1(this));
+      return;
+      QLog.i("Tofu_AIOTofuMsgHelper", 1, "onMoveToState show_first.");
+      if (this.jdField_a_of_type_Bdqs == null) {
+        this.jdField_a_of_type_Bdqs = ((bdqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(368));
+      }
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!((anmw)localObject).b(this.jdField_a_of_type_JavaLangString)));
+    boolean bool = ((aiyr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Bdqs;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (bool) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      ((bdqs)localObject).a(str, paramInt);
+      return;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 7 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdqk
  * JD-Core Version:    0.7.0.1
  */

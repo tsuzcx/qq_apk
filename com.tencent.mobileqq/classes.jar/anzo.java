@@ -1,24 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class anzo
-  implements bhuw
+  implements Comparator<File>
 {
-  public anzo(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public anzo(CleanCache paramCleanCache) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.overridePendingTransition(0, 2130772345);
-      this.a.finish();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzo
  * JD-Core Version:    0.7.0.1
  */

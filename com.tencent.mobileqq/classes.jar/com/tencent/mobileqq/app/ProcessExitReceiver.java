@@ -15,7 +15,12 @@ import mqq.app.MobileQQ;
 public class ProcessExitReceiver
   extends BroadcastReceiver
 {
-  private AppInterface a;
+  protected AppInterface a;
+  
+  public ProcessExitReceiver(AppInterface paramAppInterface)
+  {
+    this.a = paramAppInterface;
+  }
   
   protected String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
@@ -90,7 +95,7 @@ public class ProcessExitReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ProcessExitReceiver
  * JD-Core Version:    0.7.0.1
  */

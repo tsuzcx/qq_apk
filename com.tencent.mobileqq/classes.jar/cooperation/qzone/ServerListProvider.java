@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Process;
-import bjih;
+import blwp;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerListProvider
 {
-  private static String SERVER_DIR = bjih.l;
+  private static String SERVER_DIR = blwp.l;
   private static final String TAG = "ServerListProvider";
   public static final int VALUE_DB2 = 13;
   public static final int VALUE_DB3 = 86;
@@ -91,7 +91,7 @@ public class ServerListProvider
   {
     try
     {
-      File localFile = new File(bjih.m);
+      File localFile = new File(blwp.m);
       if ((localFile != null) && (localFile.exists())) {
         localFile.delete();
       }
@@ -133,7 +133,7 @@ public class ServerListProvider
     //   33: pop
     //   34: new 170	java/io/File
     //   37: dup
-    //   38: getstatic 173	bjih:m	Ljava/lang/String;
+    //   38: getstatic 173	blwp:m	Ljava/lang/String;
     //   41: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore_0
     //   45: aload_0
@@ -309,7 +309,7 @@ public class ServerListProvider
     boolean bool2 = false;
     try
     {
-      File localFile = new File(bjih.m);
+      File localFile = new File(blwp.m);
       boolean bool1 = bool2;
       if (localFile.exists())
       {
@@ -380,7 +380,7 @@ public class ServerListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.ServerListProvider
  * JD-Core Version:    0.7.0.1
  */

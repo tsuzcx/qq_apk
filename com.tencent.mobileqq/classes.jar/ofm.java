@@ -1,25 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ofm
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  ofm(ofi paramofi) {}
+  ofm(ofk paramofk, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ofi.b(this.a);
+    if ((ofk.a(this.jdField_a_of_type_Ofk) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      pha.a(ofk.a(this.jdField_a_of_type_Ofk).getContext(), this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ofm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class vry
-  implements Parcelable.Creator<AnimationParam>
+public class vry
+  extends voy
 {
-  public AnimationParam a(Parcel paramParcel)
-  {
-    return new AnimationParam(paramParcel);
-  }
+  public vry(QCircleFeedPicPreloadScroller.1 param1) {}
   
-  public AnimationParam[] a(int paramInt)
+  public void a(int paramInt, vou paramvou)
   {
-    return new AnimationParam[paramInt];
+    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c))
+    {
+      vrx.a(this.a.this$0).put(paramvou.b(), Boolean.valueOf(true));
+      QLog.d(vrx.a, 4, "preload time lin video success");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vry
  * JD-Core Version:    0.7.0.1
  */

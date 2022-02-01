@@ -1,18 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class aldf
-  extends apmh
+class aldf
+  extends albw
 {
-  public aldf(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

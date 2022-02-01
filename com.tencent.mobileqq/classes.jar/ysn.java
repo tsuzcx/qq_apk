@@ -1,41 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
 class ysn
-  implements ysj
+  implements yuq
 {
-  ysn(ysm paramysm, ysl paramysl) {}
+  ysn(ysm paramysm) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
     {
-      if (this.jdField_a_of_type_Ysl.a)
-      {
-        this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysm);
-        return;
-      }
-      if (this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Ysm.jdField_a_of_type_Ysb.a(paramString1, this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString, new yso(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Ysm.a(localFile, this.jdField_a_of_type_Ysm.b, new ysq(this, l));
+      this.a.a.setLocation(paramTroopBarPOI.a());
       return;
     }
-    this.jdField_a_of_type_Ysm.d = paramString2;
-    this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysm);
+    this.a.a.setLocation("None for test!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysn
  * JD-Core Version:    0.7.0.1
  */

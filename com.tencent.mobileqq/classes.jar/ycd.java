@@ -1,20 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-
 public class ycd
-  implements View.OnClickListener
 {
-  public ycd(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public ycd(String paramString, boolean paramBoolean)
   {
-    FollowedRecommendBannerView.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public ycd(String paramString, boolean paramBoolean, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ycg localycg = new ycg();
+    localycg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localycg.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Int != -1) {
+      localycg.c = this.jdField_a_of_type_Int;
+    }
+    wlb.a().a(localycg, new yce(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycd
  * JD-Core Version:    0.7.0.1
  */

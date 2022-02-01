@@ -1,18 +1,52 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class bcsj
-  extends bcsk
+public class bcsj
+  extends aqkz<bcsk>
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  bcsj(bcsi parambcsi)
+  @NonNull
+  public bcsk a(int paramInt)
   {
-    super(parambcsi.a);
+    return new bcsk();
+  }
+  
+  @Nullable
+  public bcsk a(aqlg[] paramArrayOfaqlg)
+  {
+    bcsk localbcsk = new bcsk();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      bcsk.a(localbcsk, paramArrayOfaqlg[0].a);
+    }
+    return localbcsk;
+  }
+  
+  public void a(bcsk parambcsk) {}
+  
+  public Class<bcsk> clazz()
+  {
+    return bcsk.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 577;
   }
 }
 

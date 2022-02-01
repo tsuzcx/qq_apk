@@ -1,23 +1,8 @@
-import android.os.Bundle;
-
-class arqe
-  implements arpw
+public abstract interface arqe
 {
-  arqe(arqd paramarqd) {}
+  public abstract arpe a();
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
-    }
-  }
+  public abstract void h();
 }
 
 

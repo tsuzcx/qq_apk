@@ -1,26 +1,12 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asmn
-  implements bexc
+final class asmn
+  implements DialogInterface.OnClickListener
 {
-  public asmn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
+    paramDialogInterface.dismiss();
   }
 }
 

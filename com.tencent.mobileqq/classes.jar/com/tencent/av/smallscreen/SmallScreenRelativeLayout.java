@@ -17,13 +17,13 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import azqs;
-import bdne;
+import bcst;
+import bgsg;
 import com.tencent.qphone.base.util.QLog;
-import lek;
-import mbo;
-import mbp;
-import mbt;
+import lbc;
+import lyo;
+import lyp;
+import lyu;
 
 public class SmallScreenRelativeLayout
   extends RelativeLayout
@@ -32,8 +32,8 @@ public class SmallScreenRelativeLayout
   final int jdField_a_of_type_Int;
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   Display jdField_a_of_type_AndroidViewDisplay;
-  mbo jdField_a_of_type_Mbo;
-  mbp jdField_a_of_type_Mbp = null;
+  lyo jdField_a_of_type_Lyo;
+  lyp jdField_a_of_type_Lyp = null;
   boolean jdField_a_of_type_Boolean = false;
   final int jdField_b_of_type_Int;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -75,11 +75,11 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "SmallScreenRelativeLayout");
     }
     this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.e = getResources().getDimensionPixelSize(2131297757);
-    this.f = getResources().getDimensionPixelSize(2131297758);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131297765);
-    this.g = getResources().getDimensionPixelSize(2131298914);
-    this.h = getResources().getDimensionPixelSize(2131297755);
+    this.e = getResources().getDimensionPixelSize(2131297838);
+    this.f = getResources().getDimensionPixelSize(2131297839);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131297846);
+    this.g = getResources().getDimensionPixelSize(2131298998);
+    this.h = getResources().getDimensionPixelSize(2131297834);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
@@ -90,7 +90,7 @@ public class SmallScreenRelativeLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     this.p = b();
-    this.jdField_a_of_type_Mbp = new mbp(this, getContext(), 2);
+    this.jdField_a_of_type_Lyp = new lyp(this, getContext(), 2);
   }
   
   private int b()
@@ -102,7 +102,7 @@ public class SmallScreenRelativeLayout
     }
     catch (Exception localException)
     {
-      lek.e("SmallScreenRelativeLayout", localException.getMessage());
+      lbc.e("SmallScreenRelativeLayout", localException.getMessage());
     }
     return 0;
   }
@@ -112,12 +112,12 @@ public class SmallScreenRelativeLayout
     int i2;
     if ((this.q != 0) && (this.r != 0))
     {
-      if (this.jdField_a_of_type_Mbo == null) {
+      if (this.jdField_a_of_type_Lyo == null) {
         break label60;
       }
-      i2 = this.jdField_a_of_type_Mbo.a(this);
+      i2 = this.jdField_a_of_type_Lyo.a(this);
     }
-    for (int i1 = this.jdField_a_of_type_Mbo.b(this);; i1 = getTop())
+    for (int i1 = this.jdField_a_of_type_Lyo.b(this);; i1 = getTop())
     {
       this.s = a(i2, i1, i2, i1);
       return this.s;
@@ -173,7 +173,7 @@ public class SmallScreenRelativeLayout
       }
       else
       {
-        SharedPreferences localSharedPreferences = bdne.a(getContext());
+        SharedPreferences localSharedPreferences = bgsg.a(getContext());
         localEditor = localSharedPreferences.edit();
         if (i1 == 0) {
           break label99;
@@ -200,7 +200,7 @@ public class SmallScreenRelativeLayout
     }
   }
   
-  Point a(int paramInt)
+  public Point a(int paramInt)
   {
     Rect localRect = a();
     Point localPoint = new Point();
@@ -336,7 +336,7 @@ public class SmallScreenRelativeLayout
     try
     {
       getWindowVisibleDisplayFrame(localRect);
-      boolean bool = mbt.i();
+      boolean bool = lyu.i();
       int i4 = localRect.width();
       int i2 = localRect.height();
       i1 = i2;
@@ -358,13 +358,13 @@ public class SmallScreenRelativeLayout
         this.q = i4;
         this.r = i1;
         setCurPosition(this.s);
-        if (this.jdField_a_of_type_Mbo == null) {
+        if (this.jdField_a_of_type_Lyo == null) {
           break label386;
         }
-        i1 = this.jdField_a_of_type_Mbo.a(this);
+        i1 = this.jdField_a_of_type_Lyo.a(this);
         this.m = i1;
         this.i = i1;
-        i1 = this.jdField_a_of_type_Mbo.b(this);
+        i1 = this.jdField_a_of_type_Lyo.b(this);
         this.n = i1;
         this.j = i1;
         if (!this.jdField_d_of_type_Boolean) {
@@ -426,9 +426,9 @@ public class SmallScreenRelativeLayout
           }
           for (;;)
           {
-            if (this.jdField_a_of_type_Mbo != null)
+            if (this.jdField_a_of_type_Lyo != null)
             {
-              this.jdField_a_of_type_Mbo.a(this, i2, paramInt1, i1 + i2, paramInt1 + paramInt2);
+              this.jdField_a_of_type_Lyo.a(this, i2, paramInt1, i1 + i2, paramInt1 + paramInt2);
               return;
               i1 = this.jdField_d_of_type_Int;
               paramInt2 = this.jdField_c_of_type_Int;
@@ -455,8 +455,8 @@ public class SmallScreenRelativeLayout
     for (int i1 = 0;; i1 = 8)
     {
       setVisibility(i1);
-      if ((!paramBoolean) && (this.jdField_a_of_type_Mbo != null)) {
-        this.jdField_a_of_type_Mbo.a(this);
+      if ((!paramBoolean) && (this.jdField_a_of_type_Lyo != null)) {
+        this.jdField_a_of_type_Lyo.a(this);
       }
       return;
     }
@@ -473,7 +473,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onCreate");
     }
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Mbp.enable();
+    this.jdField_a_of_type_Lyp.enable();
   }
   
   public void c()
@@ -481,8 +481,8 @@ public class SmallScreenRelativeLayout
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenRelativeLayout", 2, "onDestroy");
     }
-    this.jdField_a_of_type_Mbo = null;
-    this.jdField_a_of_type_Mbp.disable();
+    this.jdField_a_of_type_Lyo = null;
+    this.jdField_a_of_type_Lyp.disable();
   }
   
   public void d()
@@ -506,10 +506,10 @@ public class SmallScreenRelativeLayout
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
         this.k = i1;
         this.l = i2;
-        if (this.jdField_a_of_type_Mbo != null) {
-          this.i = this.jdField_a_of_type_Mbo.a(this);
+        if (this.jdField_a_of_type_Lyo != null) {
+          this.i = this.jdField_a_of_type_Lyo.a(this);
         }
-        for (this.j = this.jdField_a_of_type_Mbo.b(this);; this.j = getTop())
+        for (this.j = this.jdField_a_of_type_Lyo.b(this);; this.j = getTop())
         {
           this.jdField_c_of_type_Boolean = false;
           return true;
@@ -528,19 +528,19 @@ public class SmallScreenRelativeLayout
       {
         a(i1, i2);
         label195:
-        if (this.jdField_a_of_type_Mbo == null) {
+        if (this.jdField_a_of_type_Lyo == null) {
           break label266;
         }
-        this.m = this.jdField_a_of_type_Mbo.a(this);
+        this.m = this.jdField_a_of_type_Lyo.a(this);
       }
-      for (this.n = this.jdField_a_of_type_Mbo.b(this); !bool; this.n = getTop())
+      for (this.n = this.jdField_a_of_type_Lyo.b(this); !bool; this.n = getTop())
       {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
         return true;
-        if (this.jdField_a_of_type_Mbo == null) {
+        if (this.jdField_a_of_type_Lyo == null) {
           break label195;
         }
-        bool = this.jdField_a_of_type_Mbo.a(this);
+        bool = this.jdField_a_of_type_Lyo.a(this);
         break label195;
         label266:
         this.m = getLeft();
@@ -549,10 +549,10 @@ public class SmallScreenRelativeLayout
     if (this.jdField_c_of_type_Boolean) {
       a(i1, i2);
     }
-    if (this.jdField_a_of_type_Mbo != null) {
-      this.m = this.jdField_a_of_type_Mbo.a(this);
+    if (this.jdField_a_of_type_Lyo != null) {
+      this.m = this.jdField_a_of_type_Lyo.a(this);
     }
-    for (this.n = this.jdField_a_of_type_Mbo.b(this);; this.n = getTop())
+    for (this.n = this.jdField_a_of_type_Lyo.b(this);; this.n = getTop())
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return true;
@@ -577,9 +577,9 @@ public class SmallScreenRelativeLayout
       }
       i1 = this.jdField_c_of_type_Int;
     }
-    for (int i2 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Mbo != null; i2 = this.jdField_c_of_type_Int)
+    for (int i2 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Lyo != null; i2 = this.jdField_c_of_type_Int)
     {
-      this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
+      this.jdField_a_of_type_Lyo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
       return;
       label87:
       i1 = this.jdField_d_of_type_Int;
@@ -606,15 +606,15 @@ public class SmallScreenRelativeLayout
           i1 = this.jdField_c_of_type_Int;
           i2 = this.jdField_d_of_type_Int;
           label92:
-          if (this.jdField_a_of_type_Mbo == null) {
+          if (this.jdField_a_of_type_Lyo == null) {
             break label221;
           }
-          this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
+          this.jdField_a_of_type_Lyo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
           label133:
           this.jdField_d_of_type_Boolean = false;
           this.s = this.o;
           if (paramAnimator != null) {
-            azqs.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
+            bcst.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
           }
         }
         break;
@@ -644,8 +644,8 @@ public class SmallScreenRelativeLayout
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenRelativeLayout", 2, "onAnimationEnd setVisibility(GONE)");
       }
-    } while (this.jdField_a_of_type_Mbo == null);
-    this.jdField_a_of_type_Mbo.a(this);
+    } while (this.jdField_a_of_type_Lyo == null);
+    this.jdField_a_of_type_Lyo.a(this);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -679,10 +679,10 @@ public class SmallScreenRelativeLayout
       {
         i1 = this.jdField_c_of_type_Int;
         i2 = this.jdField_d_of_type_Int;
-        if (this.jdField_a_of_type_Mbo == null) {
+        if (this.jdField_a_of_type_Lyo == null) {
           break label147;
         }
-        this.jdField_a_of_type_Mbo.a(this, i3, i4, i1 + i3, i4 + i2);
+        this.jdField_a_of_type_Lyo.a(this, i3, i4, i1 + i3, i4 + i2);
       }
     }
     label147:
@@ -742,9 +742,9 @@ public class SmallScreenRelativeLayout
       }
       paramInt = this.jdField_c_of_type_Int;
     }
-    for (int i1 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Mbo != null; i1 = this.jdField_c_of_type_Int)
+    for (int i1 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Lyo != null; i1 = this.jdField_c_of_type_Int)
     {
-      this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, paramInt + localPoint.x, localPoint.y + i1);
+      this.jdField_a_of_type_Lyo.a(this, localPoint.x, localPoint.y, paramInt + localPoint.x, localPoint.y + i1);
       return;
       label179:
       paramInt = this.jdField_d_of_type_Int;
@@ -752,9 +752,9 @@ public class SmallScreenRelativeLayout
     layout(localPoint.x, localPoint.y, localPoint.x + paramInt, i1 + localPoint.y);
   }
   
-  public void setFloatListener(mbo parammbo)
+  public void setFloatListener(lyo paramlyo)
   {
-    this.jdField_a_of_type_Mbo = parammbo;
+    this.jdField_a_of_type_Lyo = paramlyo;
   }
   
   public void setIsRotateSize(boolean paramBoolean)
@@ -775,7 +775,7 @@ public class SmallScreenRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

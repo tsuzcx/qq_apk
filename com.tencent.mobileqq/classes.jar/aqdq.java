@@ -1,44 +1,81 @@
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aqdq
-  extends bayj
+  extends RecyclerView.Adapter<aqdu>
 {
-  public aqdq(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private aqdt jdField_a_of_type_Aqdt;
+  private aqeh jdField_a_of_type_Aqeh;
+  private List<ColorNote> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void handleMessage(Message paramMessage)
+  public aqdu a(ViewGroup paramViewGroup, int paramInt)
   {
-    bass localbass = (bass)paramMessage.obj;
-    switch (paramMessage.what)
+    return new aqdu(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558913, paramViewGroup, false));
+  }
+  
+  public void a(aqdt paramaqdt)
+  {
+    this.jdField_a_of_type_Aqdt = paramaqdt;
+  }
+  
+  public void a(aqdu paramaqdu, int paramInt)
+  {
+    ColorNote localColorNote = (ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    aqcb.a(localColorNote).a(paramaqdu, paramInt, this.jdField_a_of_type_Boolean);
+    int j;
+    int i;
+    if (aqda.d(localColorNote))
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      if (localbass.b == 23)
-      {
-        ExtendFriendEditFragment.a(this.a, ((bavb)localbass.a).o);
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
-        }
-        if (this.a.a != null)
-        {
-          this.a.a.a(ExtendFriendEditFragment.a(this.a));
-          ExtendFriendEditFragment.a(this.a, this.a.a.a());
-        }
+      UpComingMsgModel localUpComingMsgModel = aini.a(localColorNote);
+      j = bggq.a(paramaqdu.a.getContext(), 200.0F);
+      i = 0;
+      if (aqda.c(localColorNote)) {
+        i = bggq.a(paramaqdu.a.getContext(), 27.0F);
       }
-      aqhg.a().d(true, 0);
+      if (localUpComingMsgModel.uniseq.size() <= 1) {
+        break label140;
+      }
+      paramaqdu.a.setMaxWidth(j);
+      bdol.a(paramaqdu.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.MIDDLE, "的", i);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaqdu, paramInt, getItemId(paramInt));
       return;
+      label140:
+      bdol.a(paramaqdu.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.END, null, i);
     }
-    if ((localbass.b == 23) && (QLog.isColorLevel())) {
-      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+  }
+  
+  public void a(aqeh paramaqeh)
+  {
+    this.jdField_a_of_type_Aqeh = paramaqeh;
+  }
+  
+  void a(List<ColorNote> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    ExtendFriendEditFragment.a(this.a).dismiss();
-    QQToast.a(ExtendFriendEditFragment.a(this.a), alud.a(2131704665), 0).a();
-    aqhg.a().d(false, 0);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

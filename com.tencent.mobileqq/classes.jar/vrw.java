@@ -1,115 +1,138 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.Iterator;
+import java.util.List;
 
-public class vrw
-  implements vrm
+public abstract class vrw
 {
-  private vrw(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  protected int a;
+  protected Context a;
+  protected RecyclerView a;
+  protected QCircleFakeAdapter a;
+  protected ExtraTypeInfo a;
+  protected vsg a;
   
-  public void a()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean) {}
+  
+  public void a(Context paramContext, RecyclerView paramRecyclerView, QCircleFakeAdapter paramQCircleFakeAdapter, vsg paramvsg)
   {
-    this.a.p();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = paramQCircleFakeAdapter;
+    this.jdField_a_of_type_Vsg = paramvsg;
   }
   
-  public void a(@NonNull wiq paramwiq, ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public void a(RecyclerView.ViewHolder paramViewHolder) {}
+  
+  public void a(RecyclerView paramRecyclerView)
   {
-    Object localObject;
-    if (paramErrorMessage.isSuccess())
+    if ((paramRecyclerView.getAdapter() instanceof zxo))
     {
-      localObject = "suc";
-      wxe.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramwiq);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (vrp)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((vrp)localObject).a(paramwiq);
-      }
-      localObject = (vrt)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((vrt)localObject).a(paramwiq);
-      }
-      localObject = (vro)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
+      paramRecyclerView = ((zxo)paramRecyclerView.getAdapter()).getDataList().iterator();
+      while (paramRecyclerView.hasNext())
       {
-        ((vro)localObject).a(paramwiq);
-        if (!paramBoolean) {
-          break label183;
+        zxu localzxu = (zxu)paramRecyclerView.next();
+        if ((localzxu instanceof QCircleFakeAdapter)) {
+          this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = ((QCircleFakeAdapter)localzxu);
         }
-        ((vro)localObject).a(true);
       }
-      label118:
-      localObject = this.a;
-      if (paramwiq.a(bool)) {
-        break label192;
-      }
-    }
-    label183:
-    label192:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
-      this.a.p();
-      if (StoryPlayerCommentListView.a(this.a) != null) {
-        StoryPlayerCommentListView.a(this.a).a(paramwiq, paramErrorMessage);
-      }
-      return;
-      localObject = "fail";
-      break;
-      ((vro)localObject).a(false);
-      break label118;
     }
   }
   
-  public void a(@NonNull wiq paramwiq, boolean paramBoolean)
+  public void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  
+  public void a(RecyclerView paramRecyclerView, int paramInt1, RecyclerView.LayoutManager paramLayoutManager, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
   {
-    Object localObject;
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+  }
+  
+  public boolean a()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getInteractor() instanceof uzb)) && (((uzb)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getInteractor()).a() == this.jdField_a_of_type_Int))
     {
-      localObject = "suc";
-      wxe.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramwiq);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (vrp)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((vrp)localObject).a(paramwiq);
-      }
-      localObject = (vrt)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((vrt)localObject).a(paramwiq);
-      }
-      localObject = (vro)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((vro)localObject).a(paramwiq);
-        ((vro)localObject).a(false);
-      }
-      if (!paramBoolean) {
-        break label159;
-      }
-      localObject = this.a;
-      if (paramwiq.a(bool)) {
-        break label154;
-      }
-      paramBoolean = true;
-      label130:
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+      QLog.d(vsg.a, 4, hashCode() + ":isCurrentPage :" + true);
+      return true;
     }
-    for (;;)
+    QLog.d(vsg.a, 4, hashCode() + ":isCurrentPage :" + false);
+    return false;
+  }
+  
+  protected boolean a(View paramView)
+  {
+    Rect localRect;
+    int j;
+    if (paramView != null)
     {
-      this.a.p();
-      return;
-      localObject = "fail";
-      break;
-      label154:
-      paramBoolean = false;
-      break label130;
-      label159:
-      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
+      localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+      paramView.getGlobalVisibleRect(localRect);
+      j = paramView.getHeight();
+      if (localRect.bottom <= 0) {
+        break label147;
+      }
+      if (localRect.bottom > bclx.b) {
+        localRect.bottom = bclx.b;
+      }
+    }
+    label147:
+    for (int i = localRect.bottom - localRect.top;; i = 0)
+    {
+      float f = i / j;
+      QLog.d(vsg.a, 4, f + "  " + localRect.bottom + "  " + localRect.top);
+      return (f >= 0.5D) && (a());
     }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder) {}
+  
+  public boolean b(View paramView)
+  {
+    boolean bool2 = false;
+    int i = ImmersiveUtils.b() / 2;
+    boolean bool1 = bool2;
+    if (paramView != null)
+    {
+      Rect localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+      paramView.getGlobalVisibleRect(localRect);
+      bool1 = bool2;
+      if (localRect.bottom > i)
+      {
+        bool1 = bool2;
+        if (localRect.top < i) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vrw
  * JD-Core Version:    0.7.0.1
  */

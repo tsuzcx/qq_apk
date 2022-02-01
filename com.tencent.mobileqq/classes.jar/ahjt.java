@@ -1,30 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 
-public class ahjt
-  extends ampt
+class ahjt
+  implements BusinessObserver
 {
-  public ahjt(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ahjt(ahjs paramahjs, String paramString) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
-    }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
-      if (ahjr.a(this.a.this$0) != null) {
-        ahjr.a(this.a.this$0).b();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
+          localSubscribeResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            i = 1;
+            paramInt = 1;
+          }
+        }
       }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      try
+      {
+        StructingMsgItemBuilder.a(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahjs.jdField_a_of_type_AndroidAppActivity);
+        bcst.b(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramInt = i;
+        }
+      }
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahjs.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahjs.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahjs.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Ahjs.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Ahjs.jdField_a_of_type_AndroidAppActivity);
+      label236:
+      paramInt = 0;
     }
-    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
-      return;
-    }
-    ahjr.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
   }
 }
 

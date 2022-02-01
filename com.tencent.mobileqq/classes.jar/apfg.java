@@ -1,58 +1,53 @@
-import com.tencent.mobileqq.data.MessageForTroopFee;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class apfg
-  extends DefaultHandler
+public final class apfg
 {
-  MessageForTroopFee a;
-  public String a;
-  
-  public apfg()
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
-    this.jdField_a_of_type_JavaLangString = "";
+    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
   }
   
-  public MessageForTroopFee a()
+  public static void a(Context paramContext, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
-    }
-    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString3.equals("msg"))
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
+      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      paramContext.topMargin = i;
+      paramView.setLayoutParams(paramContext);
     }
-    do
+  }
+  
+  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams;
+    int i;
+    if (bclx.a(paramContext))
+    {
+      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      i = paramInt;
+      if (paramBoolean) {
+        i = paramInt + bclx.d(paramContext);
+      }
+      if (localMarginLayoutParams.bottomMargin != i) {}
+    }
+    else
     {
       return;
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-      if (paramString3.equals("summary"))
-      {
-        this.jdField_a_of_type_JavaLangString = "summary";
-        return;
-      }
-    } while (!paramString3.equals("source"));
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+    }
+    localMarginLayoutParams.bottomMargin = i;
+    paramView.setLayoutParams(localMarginLayoutParams);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
   }
 }
 

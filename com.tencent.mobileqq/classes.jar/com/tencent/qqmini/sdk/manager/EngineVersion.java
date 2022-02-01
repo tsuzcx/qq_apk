@@ -3,40 +3,42 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgwk;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.utils.DebugUtil;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 public class EngineVersion
   implements Parcelable, Comparable<EngineVersion>
 {
-  public static final Parcelable.Creator<EngineVersion> CREATOR = new bgwk();
-  public String a;
-  public String b;
+  public static final Parcelable.Creator<EngineVersion> CREATOR = new EngineVersion.1();
+  public static final String LOG_TAG = "EngineVersion";
+  public static final String SEP = "_";
+  public String mMajor;
+  public String mMinor;
   
   public EngineVersion() {}
   
   public EngineVersion(String paramString)
   {
     if (QUAUtil.isQQApp()) {}
-    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.3.1")
+    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.6.0")
     {
-      this.a = str;
-      this.b = paramString;
+      this.mMajor = str;
+      this.mMinor = paramString;
       return;
     }
   }
   
   public EngineVersion(String paramString1, String paramString2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.mMajor = paramString1;
+    this.mMinor = paramString2;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public static int compareVersion(String paramString1, String paramString2)
   {
     int i = 0;
     paramString1 = paramString1.split("\\.");
@@ -64,28 +66,31 @@ public class EngineVersion
     return paramString1.length - paramString2.length;
   }
   
-  public static EngineVersion a(String paramString)
+  public static EngineVersion fromFolderName(String paramString)
   {
-    paramString = paramString.split("_");
-    if (paramString.length > 1) {
-      return new EngineVersion(paramString[0], paramString[1]);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length > 1) {
+        return new EngineVersion(paramString[0], paramString[1]);
+      }
     }
     return null;
   }
   
-  public static String a(EngineVersion paramEngineVersion)
+  public static String toFolderName(EngineVersion paramEngineVersion)
   {
-    return paramEngineVersion.a + "_" + paramEngineVersion.b;
+    return paramEngineVersion.mMajor + "_" + paramEngineVersion.mMinor;
   }
   
-  public int a(EngineVersion paramEngineVersion)
+  public int compareTo(EngineVersion paramEngineVersion)
   {
     try
     {
-      int j = a(this.a, paramEngineVersion.a);
+      int j = compareVersion(this.mMajor, paramEngineVersion.mMajor);
       int i = j;
       if (j == 0) {
-        i = a(this.b, paramEngineVersion.b);
+        i = compareVersion(this.mMinor, paramEngineVersion.mMinor);
       }
       return i;
     }
@@ -94,11 +99,6 @@ public class EngineVersion
       QMLog.e("EngineVersion", "[MiniEng] compare error " + DebugUtil.getPrintableStackTrace(paramEngineVersion));
     }
     return 0;
-  }
-  
-  public String a()
-  {
-    return a(this);
   }
   
   public int describeContents()
@@ -126,29 +126,34 @@ public class EngineVersion
       } while (getClass() != paramObject.getClass());
       paramObject = (EngineVersion)paramObject;
       bool1 = bool2;
-    } while (!this.a.equals(paramObject.a));
-    return this.b.equals(paramObject.b);
+    } while (!this.mMajor.equals(paramObject.mMajor));
+    return this.mMinor.equals(paramObject.mMinor);
   }
   
   public int hashCode()
   {
-    return this.a.hashCode() * 31 + this.b.hashCode();
+    return this.mMajor.hashCode() * 31 + this.mMinor.hashCode();
+  }
+  
+  public String toFolderName()
+  {
+    return toFolderName(this);
   }
   
   public String toString()
   {
-    return "EngineVersion{mMajor=" + this.a + ",mMinor=" + this.b + "}";
+    return "EngineVersion{mMajor=" + this.mMajor + ",mMinor=" + this.mMinor + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.mMajor);
+    paramParcel.writeString(this.mMinor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineVersion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,101 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class atjp
-  extends bead
 {
-  public atjp(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  int a;
+  protected long a;
+  protected atjk a;
+  protected final QQAppInterface a;
+  protected ExcitingTransferOneSlotComplete a;
+  int b;
+  int c = 0;
   
-  public void onDone(beae parambeae)
+  public atjp(QQAppInterface paramQQAppInterface)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  protected String a()
+  {
+    return "actGroupPDSlot";
+  }
+  
+  public void a()
+  {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Atjk == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
+    {
+      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
       return;
     }
-    if (parambeae.a == 0)
+    HashMap localHashMap = this.jdField_a_of_type_Atjk.a();
+    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
+    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
+    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
+    localHashMap.put("param_ishttps", String.valueOf(this.c));
+    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
+    bctj localbctj = bctj.a(BaseApplication.getContext());
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str2 = a();
+    if (this.jdField_a_of_type_Atjk.jdField_b_of_type_Long == 0L) {}
+    for (;;)
     {
-      parambeae = baqn.d(this.jdField_a_of_type_JavaLangString);
-      if (new File(parambeae).exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambeae, 0);
-        return;
-      }
+      localbctj.a(str1, str2, bool, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_Atjk = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
+      return;
+      bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_Atjk = new atjk();
+    this.jdField_a_of_type_Atjk.jdField_a_of_type_Long = paramInt;
+    this.jdField_a_of_type_Atjk.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Atjk.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Atjk.d = paramLong2;
+    this.jdField_a_of_type_Atjk.c = paramLong3;
+    this.jdField_a_of_type_Atjk.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Atjk.jdField_b_of_type_Int = 1;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.c = i;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
   }
 }
 

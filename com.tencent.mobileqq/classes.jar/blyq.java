@@ -1,27 +1,104 @@
-import android.text.Spanned;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import org.json.JSONObject;
 
-class blyq
-  extends bmsw
+public class blyq
 {
-  blyq(blyp paramblyp, int paramInt)
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  final int jdField_b_of_type_Int;
+  final String jdField_b_of_type_JavaLangString;
+  final String c;
+  final String d;
+  
+  public blyq(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    super(paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public int a(CharSequence paramCharSequence)
+  public static blyq a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    if (this.jdField_a_of_type_Blyp.b() == 0) {
-      return super.a(paramCharSequence);
+    int j = 0;
+    Object localObject1 = "0";
+    Object localObject2 = "0";
+    Object localObject4 = paramAppInfo.buffer.get();
+    Object localObject3;
+    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+      localObject3 = localObject1;
     }
-    return 0;
+    for (;;)
+    {
+      try
+      {
+        localObject4 = new JSONObject((String)localObject4);
+        localObject3 = localObject1;
+        localObject1 = ((JSONObject)localObject4).getString("trace_id");
+        localObject3 = localObject1;
+        i = ((JSONObject)localObject4).getInt("trace_num");
+        i += 1;
+        int k;
+        paramAppInfo.printStackTrace();
+      }
+      catch (Exception paramAppInfo)
+      {
+        try
+        {
+          localObject3 = ((JSONObject)localObject4).getString("ad_id");
+          localObject2 = localObject3;
+          k = paramAppInfo.uiAppId.get();
+          j = k;
+          localObject2 = localObject3;
+          return new blyq((String)localObject1, i, (String)localObject2, j, "vab_red", "vab_red");
+        }
+        catch (Exception paramAppInfo)
+        {
+          break label123;
+        }
+        paramAppInfo = paramAppInfo;
+        i = 0;
+        localObject1 = localObject3;
+      }
+      label123:
+      continue;
+      int i = 0;
+    }
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public String a()
   {
-    if (this.jdField_a_of_type_Blyp.b() == 0) {}
-    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    }
+    return "trace_detail_ad_id=" + this.jdField_b_of_type_JavaLangString + "&trace_detail_app_id=" + this.jdField_b_of_type_Int;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (blyq)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.c.equals(paramObject.c)) && (this.d.equals(paramObject.d)));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "ReportKey{traceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", traceNum=" + this.jdField_a_of_type_Int + ", adId=" + this.jdField_b_of_type_JavaLangString + ", appId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -1,77 +1,31 @@
-import Wallet.SkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-public class aize
+class aize
+  extends bkov
 {
-  public static boolean a;
-  public static int c = 0;
-  public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
-  public String a;
-  public int b;
-  public String b = "";
-  
-  public aize(SkinInfo paramSkinInfo)
+  aize(aizc paramaizc, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public aize(String paramString)
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<aize> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    paramInt = 0;
+    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
+    for (;;)
     {
-      aize localaize = (aize)paramList.next();
-      if (c == localaize.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localaize.jdField_a_of_type_WalletSkinInfo.skin_id;
+      return;
+      if (paramArrayOfbkou.length < 0)
+      {
+        paramArrayOfbkou[0].b = 0;
+        paramArrayOfbkou[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbkou.length)
+      {
+        paramArrayOfbkou[paramInt].b = -1;
+        paramArrayOfbkou[paramInt].a = -1;
+        paramInt += 1;
       }
     }
-    return -1;
-  }
-  
-  public static void a(List<aize> paramList)
-  {
-    Collections.sort(paramList, new aizf());
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof aize)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((aize)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
-    return false;
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("");
-    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
-    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
-    return localStringBuffer.toString();
   }
 }
 

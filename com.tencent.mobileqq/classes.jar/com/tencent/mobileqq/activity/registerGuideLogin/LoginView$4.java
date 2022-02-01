@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import ajnx;
+import algn;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -21,13 +21,13 @@ public class LoginView$4
     localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
     localTranslateAnimation.setDuration(500L);
     localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new ajnx(this));
+    localTranslateAnimation.setAnimationListener(new algn(this));
     this.this$0.c.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4
  * JD-Core Version:    0.7.0.1
  */

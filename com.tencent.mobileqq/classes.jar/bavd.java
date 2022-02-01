@@ -1,51 +1,38 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import mqq.manager.Manager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class bavd
-  implements Manager
+class bavd
+  implements bavi
 {
-  public baue a;
-  public baue b;
+  bavd(bavc parambavc) {}
   
-  public baue a(bdpy parambdpy)
+  public void a(long paramLong)
   {
-    if (this.b == null) {}
-    try
+    Iterator localIterator = bavc.a(this.a).iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      parambdpy = new HttpCommunicator(parambdpy, 32);
-      parambdpy.a();
-      this.b = new bavh(parambdpy, true);
-      return this.b;
-    }
-    finally {}
-  }
-  
-  public baue a(AppInterface paramAppInterface, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (this.a == null) {}
-      try
-      {
-        if (this.a == null) {
-          this.a = new bavh(paramAppInterface.getHttpCommunicatort(), false);
-        }
-        return this.a;
+      baux localbaux = (baux)localIterator.next();
+      if ((paramLong != localbaux.jdField_a_of_type_Long) || (!bavc.a(this.a).a(localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
+        break label114;
       }
-      finally {}
+      this.a.a(paramLong);
+      bool = true;
     }
-    return null;
+    label114:
+    for (;;)
+    {
+      break;
+      QLog.d(bavc.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
+      return;
+    }
   }
   
-  public void onDestroy()
+  public void a(long paramLong, int paramInt)
   {
-    if (this.a != null) {
-      ((bavh)this.a).a();
-    }
-    if (this.b != null) {
-      ((bavh)this.b).a();
-    }
+    QLog.d(bavc.a, 1, new Object[] { "notifyError uniseq:", Long.valueOf(paramLong), ", errCode:", Integer.valueOf(paramInt) });
+    this.a.a(paramLong);
   }
 }
 

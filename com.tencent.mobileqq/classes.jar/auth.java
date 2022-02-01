@@ -1,154 +1,127 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class auth
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<auti> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  
-  public auth()
+  public static auth a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 999;
+    return autj.a;
   }
   
-  public static auth a(JSONObject paramJSONObject)
+  private boolean a(ConversationInfo paramConversationInfo)
   {
-    int i = 0;
-    if (paramJSONObject == null) {
-      return null;
-    }
-    localauth = new auth();
-    try
+    if (TextUtils.isEmpty(paramConversationInfo.extString))
     {
-      localauth.jdField_a_of_type_Long = paramJSONObject.optLong("type");
-      localauth.jdField_a_of_type_JavaLangString = paramJSONObject.optString("cluster");
-      localauth.jdField_b_of_type_JavaLangString = paramJSONObject.optString("ruleUrl");
-      if (paramJSONObject.has("disableLocalResource")) {
-        if (paramJSONObject.optInt("disableLocalResource") != 1) {
-          break label145;
-        }
-      }
-      label145:
-      for (boolean bool = true;; bool = false)
-      {
-        localauth.jdField_b_of_type_Boolean = bool;
-        if (!paramJSONObject.has("typeItem")) {
-          break;
-        }
-        paramJSONObject = paramJSONObject.optJSONArray("typeItem");
-        localauth.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        while (i < paramJSONObject.length())
-        {
-          auti localauti = auti.a(paramJSONObject.getJSONObject(i));
-          if (localauti != null)
-          {
-            localauth.jdField_a_of_type_JavaUtilArrayList.add(localauti);
-            localauti.jdField_a_of_type_Auth = localauth;
-          }
-          i += 1;
-        }
-      }
-      return localauth;
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+      return false;
     }
-    catch (Exception paramJSONObject)
+    if ((paramConversationInfo.tinyInfo == null) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.fromRoleId)) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.toRoleId)))
     {
-      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
-      return null;
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+      return false;
     }
+    return true;
   }
   
-  public long a(long paramLong)
+  @Nullable
+  public ConversationInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    long l2 = -1L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (paramQQAppInterface == null)
     {
-      l1 = l2;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      paramQQAppInterface = null;
+      return paramQQAppInterface;
+    }
+    ConversationInfo localConversationInfo = paramQQAppInterface.a().a(paramString, paramInt);
+    if (localConversationInfo != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.a(10007).a(paramString, paramInt);
+      if (paramQQAppInterface == null) {
+        break label116;
+      }
+      paramString = paramQQAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info");
+      if (!TextUtils.isEmpty(paramString))
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        l1 = -1L;
-        if (localIterator.hasNext())
-        {
-          auti localauti = (auti)localIterator.next();
-          if ((localauti == null) || (!localauti.jdField_a_of_type_Boolean) || (localauti.jdField_b_of_type_Long > paramLong)) {
-            break label97;
-          }
-          l1 = localauti.jdField_b_of_type_Long;
-        }
+        localConversationInfo.tinyInfo = new TinyInfo(paramString, paramQQAppInterface.isSend());
+        localConversationInfo.extString = paramString;
       }
     }
-    label97:
     for (;;)
     {
-      break;
-      return l1;
+      paramQQAppInterface = localConversationInfo;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfo info = " + localConversationInfo);
+      return localConversationInfo;
+      label116:
+      if (!TextUtils.isEmpty(localConversationInfo.extString)) {
+        localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
+      }
     }
   }
   
-  public auti a(long paramLong)
+  public List<ConversationInfo> a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = paramQQAppInterface.a().a();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((Set)localObject).iterator();
+    label241:
+    while (((Iterator)localObject).hasNext())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject).next();
+      if (localConversationInfo.type == 10007)
       {
-        auti localauti = (auti)localIterator.next();
-        if ((localauti != null) && (localauti.jdField_b_of_type_Long == paramLong)) {
-          return localauti;
+        MessageRecord localMessageRecord = paramQQAppInterface.a(10007).a(localConversationInfo.uin, localConversationInfo.type);
+        if (localMessageRecord != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList item = " + localMessageRecord.getBaseInfoString());
+          }
+          String str = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
+          if (!TextUtils.isEmpty(str))
+          {
+            localConversationInfo.extString = str;
+            localConversationInfo.tinyInfo = new TinyInfo(str, localMessageRecord.isSend());
+          }
+        }
+        for (;;)
+        {
+          if (!a(localConversationInfo)) {
+            break label241;
+          }
+          localArrayList.add(localConversationInfo);
+          break;
+          if (!TextUtils.isEmpty(localConversationInfo.extString))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList info = " + localConversationInfo);
+            }
+            localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
+          }
         }
       }
     }
-    return null;
-  }
-  
-  public String a(long paramLong)
-  {
-    auti localauti = a(paramLong);
-    if (localauti != null) {
-      return localauti.jdField_b_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList mock before = " + localArrayList);
     }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        auti localauti = (auti)localIterator.next();
-        if ((localauti != null) && (localauti.jdField_a_of_type_Boolean)) {
-          return true;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList size = " + localArrayList.size());
     }
-    return false;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    auti localauti = a(paramLong);
-    if (localauti != null) {
-      return localauti.jdField_a_of_type_Boolean;
-    }
-    return false;
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class StoryEntry
-  extends awge
+  extends Entity
 {
   public String coverUrl;
   public long dbTime = System.currentTimeMillis();
@@ -12,7 +12,7 @@ public class StoryEntry
   public String extra2;
   public String extra3;
   public int hasUnWatchVideo;
-  @awhs
+  @unique
   public String key;
   public String mDoodleText;
   public int seq;
@@ -50,7 +50,7 @@ public class StoryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryEntry
  * JD-Core Version:    0.7.0.1
  */

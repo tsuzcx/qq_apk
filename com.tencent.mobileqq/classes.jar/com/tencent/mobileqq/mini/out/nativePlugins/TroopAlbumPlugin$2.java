@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bjqx;
+import bmfh;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 
 class TroopAlbumPlugin$2
-  implements bjqx
+  implements bmfh
 {
   TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString, NativePlugin.JSContext paramJSContext) {}
   
@@ -33,7 +33,7 @@ class TroopAlbumPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin.2
  * JD-Core Version:    0.7.0.1
  */

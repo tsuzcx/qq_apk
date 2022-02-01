@@ -1,114 +1,83 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
 
-public class bfnc
-  implements bfml
+class bfnc
+  implements akgw
 {
-  protected Context a;
-  protected final WebView a;
-  protected final String a;
-  protected boolean a;
-  protected final String b;
-  protected final String c;
+  bfnc(bfmz parambfmz) {}
   
-  public bfnc(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-    this.b = paramString3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.c = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(Exception paramException)
-  {
-    bflp.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
-    if ((!this.jdField_a_of_type_Boolean) && (bfms.a(this.jdField_a_of_type_AndroidContentContext))) {
-      bfmz.b(this.jdField_a_of_type_AndroidContentContext);
+    if ((bfmz.a(this.a) == null) || (bfmz.a(this.a) == null) || (bfmz.a(this.a) == null)) {
+      return;
     }
-    if (TextUtils.isEmpty(this.b)) {}
-    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
-      try
-      {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
-        return;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    Intent localIntent = new Intent();
+    localIntent.setClass(bfmz.a(this.a), TroopAvatarWallEditActivity.class);
+    localBundle.putInt("index", 0);
+    localBundle.putString("troop_uin", bfmz.a(this.a).troopUin);
+    localBundle.putLong("troop_flag_ext", bfmz.a(this.a).dwGroupFlagExt);
+    localBundle.putBoolean("isUseClassAvatar", bfmz.a(this.a).isUseClassAvatar);
+    boolean bool = localBundle.getBoolean("IS_EDIT");
+    int i;
+    if (!localBundle.getBoolean("IS_COVER"))
+    {
+      i = 1;
+      if (i == 0) {
+        break label232;
       }
-      catch (Exception paramException) {}
+      paramBundle = (ArrayList)bfmz.a(this.a);
+      label165:
+      if (!bool) {
+        break label246;
+      }
+      localBundle.putInt("vistor_type", 1);
+      label177:
+      localBundle.putParcelableArrayList("PHOTO_LIST", paramBundle);
+      if (i == 0) {
+        break label264;
+      }
+      if (!bool) {
+        break label257;
+      }
+      i = 260;
     }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    bflp.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
-    paramJSONObject = new JSONObject();
     for (;;)
     {
-      try
-      {
-        paramJSONObject.put("guid", this.c);
-        paramJSONObject.put("content", localJSONObject.toString());
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
-          paramJSONObject = (JSONObject)localObject;
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            paramJSONObject = (JSONObject)localObject;
-            if (bfms.a(this.jdField_a_of_type_AndroidContentContext))
-            {
-              if (localJSONObject.optInt("code", -1) != 0) {
-                continue;
-              }
-              bfmz.a(this.jdField_a_of_type_AndroidContentContext);
-              paramJSONObject = (JSONObject)localObject;
-            }
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        Object localObject;
-        if (TextUtils.isEmpty(this.b))
-        {
-          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
-          continue;
-        }
-        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
-        continue;
-      }
-      try
-      {
-        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-        if (localObject == null) {}
-      }
-      catch (Exception paramJSONObject)
-      {
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
-        return;
-      }
-      catch (Exception paramJSONObject) {}
-      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      localIntent.putExtras(localBundle);
+      localIntent.addFlags(603979776);
+      bfmz.a(this.a).startActivityForResult(localIntent, i);
+      return;
+      i = 0;
+      break;
+      label232:
+      paramBundle = (ArrayList)bfmz.b(this.a);
+      break label165;
+      label246:
+      localBundle.putInt("vistor_type", 2);
+      break label177;
+      label257:
+      i = 261;
       continue;
-      bfmz.b(this.jdField_a_of_type_AndroidContentContext);
-      paramJSONObject = (JSONObject)localObject;
+      label264:
+      if (bool) {
+        i = 258;
+      } else {
+        i = 259;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfnc
  * JD-Core Version:    0.7.0.1
  */

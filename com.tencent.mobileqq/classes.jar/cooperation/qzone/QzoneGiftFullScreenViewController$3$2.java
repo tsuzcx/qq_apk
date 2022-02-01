@@ -1,35 +1,35 @@
 package cooperation.qzone;
 
 import android.view.View;
-import bjfm;
-import bjfo;
-import bjfp;
-import bjfq;
+import blts;
+import bltu;
+import bltv;
+import bltw;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
 public class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bjfo parambjfo) {}
+  public QzoneGiftFullScreenViewController$3$2(bltu parambltu) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Bjfm.a).setBackgroundColor(0);
-    bjfm.a(this.a.jdField_a_of_type_Bjfm);
-    this.a.jdField_a_of_type_Bjfp.a();
-    if (bjfm.a(this.a.jdField_a_of_type_Bjfm).size() > 0)
+    ((View)this.a.jdField_a_of_type_Blts.a).setBackgroundColor(0);
+    blts.a(this.a.jdField_a_of_type_Blts);
+    this.a.jdField_a_of_type_Bltv.a();
+    if (blts.a(this.a.jdField_a_of_type_Blts).size() > 0)
     {
-      bjfq localbjfq = (bjfq)bjfm.a(this.a.jdField_a_of_type_Bjfm).get(0);
-      this.a.jdField_a_of_type_Bjfm.a(localbjfq.jdField_a_of_type_JavaLangString, localbjfq.b, localbjfq.jdField_a_of_type_Boolean, localbjfq.jdField_a_of_type_Bjfp);
-      bjfm.a(this.a.jdField_a_of_type_Bjfm).remove(localbjfq);
+      bltw localbltw = (bltw)blts.a(this.a.jdField_a_of_type_Blts).get(0);
+      this.a.jdField_a_of_type_Blts.a(localbltw.jdField_a_of_type_JavaLangString, localbltw.b, localbltw.jdField_a_of_type_Boolean, localbltw.jdField_a_of_type_Bltv);
+      blts.a(this.a.jdField_a_of_type_Blts).remove(localbltw);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController.3.2
  * JD-Core Version:    0.7.0.1
  */

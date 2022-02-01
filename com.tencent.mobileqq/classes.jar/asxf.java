@@ -1,6 +1,18 @@
-public abstract interface asxf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class asxf
+  implements View.OnClickListener
 {
-  public abstract void a(xmp paramxmp);
+  public asxf(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  
+  public void onClick(View paramView)
+  {
+    QfileLocalFilePicTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

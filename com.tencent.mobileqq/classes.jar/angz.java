@@ -1,17 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.AbsListView;
 
-public class angz
-  implements DialogInterface.OnDismissListener
+class angz
+  implements bkhe
 {
-  public angz(ARScanEntryView paramARScanEntryView) {}
+  angz(angy paramangy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      paramInt = paramAbsListView.getFirstVisiblePosition();
+      if (paramInt > angy.a(this.a)) {
+        paramInt = 0;
+      }
+      break;
+    }
+    while ((paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "slideupdown", "", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.a.d, new String[] { String.valueOf(paramInt) });
+      return;
+      if (angy.a(this.a) > paramInt)
+      {
+        paramInt = 1;
+        continue;
+        angy.a(this.a, paramAbsListView.getFirstVisiblePosition());
+      }
+      else
+      {
+        paramInt = -1;
+      }
+    }
   }
 }
 

@@ -1,34 +1,47 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import feedcloud.FeedCloudTagcategorysvr.StTagCategoryRecomRsp;
 
 class bjfu
-  implements zac<FeedCloudTagcategorysvr.StTagCategoryRecomRsp>
+  extends aopa
 {
-  bjfu(bjfr parambjfr, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudTagcategorysvr.StTagCategoryRecomRsp paramStTagCategoryRecomRsp)
+  bjfu(bjft parambjft, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
   {
-    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "ACTION_QCIRCLE_PULISH_FEED onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStTagCategoryRecomRsp != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("key_return_code", paramLong);
-      localBundle.putString("key_error_msg", paramString);
-      localBundle.putByteArray("key_qcircle_tag_list_rsp", paramStTagCategoryRecomRsp.toByteArray());
-      this.jdField_a_of_type_Bjfr.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
-      return;
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    double d2 = 0.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
     }
-    paramStTagCategoryRecomRsp = new Bundle();
-    paramStTagCategoryRecomRsp.putLong("key_return_code", paramLong);
-    paramStTagCategoryRecomRsp.putString("key_error_msg", paramString);
-    this.jdField_a_of_type_Bjfr.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, paramStTagCategoryRecomRsp));
+    String str;
+    double d1;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null)
+      {
+        str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.jdField_b_of_type_Double + ", address=" + str);
+        }
+        d1 = paramSosoLbsInfo.a.a;
+        d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjft.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      return;
+      str = "";
+      break;
+      d1 = 0.0D;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjfu
  * JD-Core Version:    0.7.0.1
  */

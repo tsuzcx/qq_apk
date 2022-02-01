@@ -1,16 +1,42 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class agbp
-  implements ValueAnimator.AnimatorUpdateListener
+class agbp
+  extends View
 {
-  public agbp(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agbp(agbk paramagbk, Context paramContext)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
+    }
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
+    {
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
+    }
   }
 }
 

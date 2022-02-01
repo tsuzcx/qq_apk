@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import blxm;
+import boqq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONArray;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextMap> CREATOR = new blxm();
+  public static final Parcelable.Creator<TextMap> CREATOR = new boqq();
   private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
@@ -204,7 +204,7 @@ public class DynamicTextItem$TextMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem.TextMap
  * JD-Core Version:    0.7.0.1
  */

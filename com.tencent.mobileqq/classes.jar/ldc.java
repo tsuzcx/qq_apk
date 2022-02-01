@@ -1,22 +1,110 @@
-public class ldc
-  extends lcv
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+class ldc
+  extends anmu
 {
-  private String jdField_a_of_type_JavaLangString = "qqi_android";
-  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
+  ldc(ldb paramldb) {}
   
-  public String a()
+  protected void onAddFriend(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super.onAddFriend(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onAddFriend 进入好友列表" + paramString);
+    }
+    ldb.a(this.a, paramString, 4);
+    this.a.a(paramString);
   }
   
-  public String b()
+  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    return a(this.jdField_a_of_type_ArrayOfByte, a());
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onGetAutoInfo  isSuccess= " + paramBoolean + ",uin=" + paramString1 + ",remark=" + paramString2 + ",groupId" + paramInt);
+    }
+  }
+  
+  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 147)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onQueryUinSafetyFlag isSuccess=" + paramBoolean + ",status=" + paramInt2 + ",uin=" + paramLong);
+      }
+      if ((!paramBoolean) || (paramInt2 == 0)) {
+        ldb.a(this.a, String.valueOf(paramLong));
+      }
+    }
+    else
+    {
+      return;
+    }
+    ldb.a(this.a, String.valueOf(paramLong), 3, paramInt2);
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    super.onUpdateAddFriend(paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramBundle);
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriend 请求加好友回调  isSuccess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + ",reqestUin=" + paramString + ",friendSetting" + i);
+    }
+    if ((paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(paramString)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  protected void onUpdateAddFriendSetting(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = paramBundle.getString("uin");
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriendSetting  isSuccess= " + paramBoolean + ",uin" + str + ",friendSetting=" + i);
+    }
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(str)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
+    }
+    do
+    {
+      return;
+      localFriendListHandler.a(str, null, i, (byte)0, "", this.a.jdField_a_of_type_Int, 0, true, null, true, "", "");
+    } while (!paramBoolean);
+    if (this.a.a(str) == 2) {
+      this.a.c(str);
+    }
+    for (;;)
+    {
+      paramBundle.getStringArrayList("user_question");
+      paramBundle.getBoolean("contact_bothway");
+      return;
+      ldb.a(this.a, str, 1);
+      this.a.a(str);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "好友onUpdateCustomHead success = " + paramBoolean + ", uin = " + paramString);
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf((Long)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onUpdateDelFriend 删除好友" + paramObject);
+    }
+    ldb.a(this.a, paramObject, 0);
+    this.a.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ldc
  * JD-Core Version:    0.7.0.1
  */

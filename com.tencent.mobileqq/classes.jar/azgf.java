@@ -1,8 +1,16 @@
-public abstract interface azgf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+
+public class azgf
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  public azgf(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.e();
+  }
 }
 
 

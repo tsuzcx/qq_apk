@@ -15,9 +15,10 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import blij;
-import bliu;
-import bljo;
+import bnxw;
+import bnyh;
+import bnzd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 import java.lang.reflect.Field;
@@ -33,7 +34,7 @@ public class ScaleMoveImageViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private blij jdField_a_of_type_Blij;
+  private bnxw jdField_a_of_type_Bnxw;
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
@@ -66,9 +67,9 @@ public class ScaleMoveImageViewer
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     setOnClickListener(this);
     c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837599));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368000);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837602);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837658));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368325);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837661);
   }
   
   private float a()
@@ -140,8 +141,8 @@ public class ScaleMoveImageViewer
       if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null) {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap, 0, 0, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getWidth() - 1, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getHeight() - 1);
       }
-      if (this.jdField_a_of_type_Blij != null) {
-        this.jdField_a_of_type_Blij.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+      if (this.jdField_a_of_type_Bnxw != null) {
+        this.jdField_a_of_type_Bnxw.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
       }
     }
     for (;;)
@@ -154,13 +155,20 @@ public class ScaleMoveImageViewer
       try
       {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap, k, m, n, i1);
-        if (this.jdField_a_of_type_Blij == null) {
+        if (this.jdField_a_of_type_Bnxw == null) {
           continue;
         }
-        this.jdField_a_of_type_Blij.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Bnxw.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
         for (;;)
         {
@@ -243,12 +251,15 @@ public class ScaleMoveImageViewer
   
   public void onClick(View paramView)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      b();
+      bnyh.a().h();
+      bnzd.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
     }
-    b();
-    bliu.a().h();
-    bljo.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -336,9 +347,9 @@ public class ScaleMoveImageViewer
           this.jdField_a_of_type_Int = 0;
           if ((Math.abs(this.h - this.f) > 10.0F) || (Math.abs(this.g - this.i) > 10.0F))
           {
-            if (this.jdField_a_of_type_Blij != null)
+            if (this.jdField_a_of_type_Bnxw != null)
             {
-              this.jdField_a_of_type_Blij.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+              this.jdField_a_of_type_Bnxw.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
               return true;
             }
           }
@@ -388,8 +399,8 @@ public class ScaleMoveImageViewer
   {
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramBitmap;
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = true;
-    if (this.jdField_a_of_type_Blij != null) {
-      this.jdField_a_of_type_Blij.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Bnxw != null) {
+      this.jdField_a_of_type_Bnxw.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -405,14 +416,14 @@ public class ScaleMoveImageViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.type = paramNodeItem.type;
   }
   
-  public void setOnSaveScrollInfoListener(blij paramblij)
+  public void setOnSaveScrollInfoListener(bnxw parambnxw)
   {
-    this.jdField_a_of_type_Blij = paramblij;
+    this.jdField_a_of_type_Bnxw = parambnxw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.ScaleMoveImageViewer
  * JD-Core Version:    0.7.0.1
  */

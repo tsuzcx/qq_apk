@@ -1,82 +1,33 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.fts.entity.FTSEntity;
+import java.util.Arrays;
 
 public class aupm
 {
   public int a;
-  public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
+  public Class<? extends FTSEntity> a;
+  public String a;
   public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
+  public aupo[] a;
+  public String b;
   
-  public int a()
+  public aupm(Class<? extends FTSEntity> paramClass, aupo[] paramArrayOfaupo, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
-    }
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ArrayOfAupo = paramArrayOfaupo;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public String a()
+  public String toString()
   {
-    return String.valueOf(hashCode());
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a)
-    {
-      this.h ^= paramInt;
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      if (paramInt1 == 0) {
-        paramInt2 = 0;
-      }
-      this.i = (j + paramInt2);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      return j;
-    }
+    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAupo) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupm
  * JD-Core Version:    0.7.0.1
  */

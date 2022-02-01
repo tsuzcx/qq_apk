@@ -1,33 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nnj
-  implements behz
+  implements SoundPool.OnLoadCompleteListener
 {
-  public nnj(CustomWebView paramCustomWebView, nnk paramnnk) {}
+  public nnj(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void a(String paramString, Bundle paramBundle, long paramLong)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    switch (this.jdField_a_of_type_Nnk.a)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nnk.c, this.jdField_a_of_type_Nnk.d);
-      return;
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nnk.b, this.jdField_a_of_type_Nnk.c, this.jdField_a_of_type_Nnk.d, this.jdField_a_of_type_Nnk.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnj
  * JD-Core Version:    0.7.0.1
  */

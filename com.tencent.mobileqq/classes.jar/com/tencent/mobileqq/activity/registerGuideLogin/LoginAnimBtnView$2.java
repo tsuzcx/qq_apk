@@ -20,10 +20,10 @@ public class LoginAnimBtnView$2
     //   18: return
     //   19: new 37	com/tencent/mobileqq/dinifly/LottieComposition$Factory$ListenerAdapter
     //   22: dup
-    //   23: new 39	ajnd
+    //   23: new 39	alft
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 42	ajnd:<init>	(Lcom/tencent/mobileqq/activity/registerGuideLogin/LoginAnimBtnView$2;)V
+    //   28: invokespecial 42	alft:<init>	(Lcom/tencent/mobileqq/activity/registerGuideLogin/LoginAnimBtnView$2;)V
     //   31: invokespecial 45	com/tencent/mobileqq/dinifly/LottieComposition$Factory$ListenerAdapter:<init>	(Lcom/tencent/mobileqq/dinifly/OnCompositionLoadedListener;)V
     //   34: astore_2
     //   35: aload_0
@@ -115,7 +115,7 @@ public class LoginAnimBtnView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2
  * JD-Core Version:    0.7.0.1
  */

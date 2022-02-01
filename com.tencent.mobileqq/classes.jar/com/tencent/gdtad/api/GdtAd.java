@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api;
 
-import aamt;
-import aamu;
-import aamv;
-import aanc;
-import aand;
-import aane;
-import aanf;
-import aase;
+import ackd;
+import acke;
+import ackf;
+import ackm;
+import ackn;
+import acko;
+import ackp;
+import acqy;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -21,22 +21,22 @@ public abstract class GdtAd
 {
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<aane> listener;
-  private aamu loadListener = new aanc(this);
+  private WeakReference<acko> listener;
+  private acke loadListener = new ackm(this);
   private long loadedTimeMillis = -2147483648L;
-  private aamt loader;
+  private ackd loader;
   private int status = 0;
   
-  public GdtAd(aanf paramaanf)
+  public GdtAd(ackp paramackp)
   {
-    if (paramaanf == null)
+    if (paramackp == null)
     {
-      aase.d("GdtAd", "constructor");
+      acqy.d("GdtAd", "constructor");
       return;
     }
-    aamv localaamv = new aamv();
-    localaamv.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramaanf.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new aamt(localaamv, new WeakReference(this.loadListener));
+    ackf localackf = new ackf();
+    localackf.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramackp.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+    this.loader = new ackd(localackf, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -45,10 +45,10 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(aand paramaand)
+  private void a(ackn paramackn)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramaand));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramackn));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
@@ -96,12 +96,22 @@ public abstract class GdtAd
     return 0;
   }
   
-  public aamt getGdtAdLoader()
+  public ackd getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract aanf getParams();
+  public abstract ackp getParams();
+  
+  protected void init()
+  {
+    if (getParams() == null) {}
+    while ((getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params == null) || (getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a == null) || (!getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.isValid())) {
+      return;
+    }
+    this.status = 2;
+    this.loadedTimeMillis = System.currentTimeMillis();
+  }
   
   public boolean isInvalidated()
   {
@@ -115,7 +125,7 @@ public abstract class GdtAd
   
   public boolean isValid()
   {
-    return (getParams() != null) && (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null) && (getParams().a());
+    return (getParams() != null) && (getParams().a());
   }
   
   public boolean load(Context paramContext)
@@ -123,23 +133,23 @@ public abstract class GdtAd
     if (paramContext == null) {}
     for (;;)
     {
-      aase.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+      acqy.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
       return false;
-      if ((isValid()) && ((this.status == 0) || (this.status == 3)))
+      if ((isValid()) && (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null) && ((this.status == 0) || (this.status == 3)))
       {
         if ((jdField_a_of_type_Long == -2147483648L) || (SystemClock.elapsedRealtime() - jdField_a_of_type_Long > 60000L)) {
           break;
         }
         if (jdField_a_of_type_Int < 30) {
-          break label114;
+          break label124;
         }
         this.status = 3;
-        a(new aand(2));
+        a(new ackn(2));
       }
     }
     jdField_a_of_type_Int = 0;
     jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    label114:
+    label124:
     this.status = 1;
     jdField_a_of_type_Int += 1;
     this.loader.a(new WeakReference(paramContext));
@@ -152,7 +162,7 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.4(this, localWeakReference));
   }
   
-  protected void notifyClosed()
+  public void notifyClosed()
   {
     WeakReference localWeakReference = new WeakReference(this);
     AdThreadManager.INSTANCE.post(new GdtAd.5(this, localWeakReference), 0);
@@ -164,14 +174,14 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<aane> paramWeakReference)
+  public void setListener(WeakReference<acko> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd
  * JD-Core Version:    0.7.0.1
  */

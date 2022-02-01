@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import pew;
+import pwb;
 
 public class ArticleInfoModule$25
   implements Runnable
 {
-  public ArticleInfoModule$25(pew parampew, ArticleInfo paramArticleInfo) {}
+  public ArticleInfoModule$25(pwb parampwb, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    if (!this.this$0.a.b(this.a)) {
+    if (!this.this$0.a.remove(this.a)) {
       QLog.d("ArticleInfoModule", 2, "delete article fail ! title : " + this.a.mTitle + " , articleID : " + this.a.mArticleID);
     }
   }

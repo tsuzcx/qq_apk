@@ -1,52 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class avgf
-  implements TVK_SDKMgr.OnLogListener
+public class avgf
+  extends aqkz<avgg>
 {
-  public int d(String paramString1, String paramString2)
+  @NonNull
+  public avgg a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    return new avgg();
+  }
+  
+  @Nullable
+  public avgg a(aqlg[] paramArrayOfaqlg)
+  {
+    avgg localavgg = new avgg();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      avgg.a(localavgg, paramArrayOfaqlg[0].a);
     }
+    return localavgg;
+  }
+  
+  public void a(avgg paramavgg) {}
+  
+  public Class<avgg> clazz()
+  {
+    return avgg.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
     return 0;
   }
   
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public void onReqFailed(int paramInt) {}
   
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public void onReqNoReceive() {}
   
-  public int v(String paramString1, String paramString2)
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    return 445;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgf
  * JD-Core Version:    0.7.0.1
  */

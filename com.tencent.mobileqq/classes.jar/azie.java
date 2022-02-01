@@ -1,14 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+
 public class azie
+  implements DialogInterface.OnClickListener
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public azie(StickyNotePublishFragment paramStickyNotePublishFragment, azib paramazib) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Azib).sendToTarget();
+    bcst.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
   }
 }
 

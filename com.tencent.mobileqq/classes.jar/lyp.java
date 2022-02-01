@@ -1,23 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVPbInfo;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-public final class lyp
-  implements Parcelable.Creator<AVPbInfo>
+public class lyp
+  extends OrientationEventListener
 {
-  public AVPbInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int = -1;
+  
+  public lyp(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    return new AVPbInfo(paramParcel);
+    super(paramContext, paramInt);
   }
   
-  public AVPbInfo[] a(int paramInt)
+  public void onOrientationChanged(int paramInt)
   {
-    return new AVPbInfo[paramInt];
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = paramInt + 360;
+    }
+    if ((i > 314) || (i < 45)) {
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      if (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+      }
+      return;
+      if (i < 135) {
+        paramInt = 90;
+      } else if (i < 225) {
+        paramInt = 180;
+      } else {
+        paramInt = 270;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lyp
  * JD-Core Version:    0.7.0.1
  */

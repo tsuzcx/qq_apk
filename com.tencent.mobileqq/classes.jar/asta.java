@@ -1,29 +1,19 @@
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+
 public class asta
-  extends astc
+  implements bkhy
 {
-  public String a = "";
+  public asta(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public asta(String paramString1, String paramString2, String paramString3)
+  public void onDismiss()
   {
-    super("plugin", paramString1, paramString2);
-    this.a = paramString3;
-  }
-  
-  @Deprecated
-  public void a()
-  {
-    super.a();
-  }
-  
-  @Deprecated
-  public void b()
-  {
-    super.b();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asta
  * JD-Core Version:    0.7.0.1
  */

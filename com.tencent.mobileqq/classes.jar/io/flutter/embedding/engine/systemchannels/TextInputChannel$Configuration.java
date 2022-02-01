@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,6 +10,7 @@ public class TextInputChannel$Configuration
   @Nullable
   public final String actionLabel;
   public final boolean autocorrect;
+  public final boolean enableSuggestions;
   @Nullable
   public final Integer inputAction;
   @NonNull
@@ -18,10 +19,11 @@ public class TextInputChannel$Configuration
   @NonNull
   public final TextInputChannel.TextCapitalization textCapitalization;
   
-  public TextInputChannel$Configuration(boolean paramBoolean1, boolean paramBoolean2, @NonNull TextInputChannel.TextCapitalization paramTextCapitalization, @NonNull TextInputChannel.InputType paramInputType, @Nullable Integer paramInteger, @Nullable String paramString)
+  public TextInputChannel$Configuration(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, @NonNull TextInputChannel.TextCapitalization paramTextCapitalization, @NonNull TextInputChannel.InputType paramInputType, @Nullable Integer paramInteger, @Nullable String paramString)
   {
     this.obscureText = paramBoolean1;
     this.autocorrect = paramBoolean2;
+    this.enableSuggestions = paramBoolean3;
     this.textCapitalization = paramTextCapitalization;
     this.inputType = paramInputType;
     this.inputAction = paramInteger;
@@ -36,11 +38,12 @@ public class TextInputChannel$Configuration
       localObject = inputActionFromTextInputAction((String)localObject);
       boolean bool1 = paramJSONObject.optBoolean("obscureText");
       boolean bool2 = paramJSONObject.optBoolean("autocorrect", true);
+      boolean bool3 = paramJSONObject.optBoolean("enableSuggestions");
       TextInputChannel.TextCapitalization localTextCapitalization = TextInputChannel.TextCapitalization.fromValue(paramJSONObject.getString("textCapitalization"));
       TextInputChannel.InputType localInputType = TextInputChannel.InputType.fromJson(paramJSONObject.getJSONObject("inputType"));
       if (paramJSONObject.isNull("actionLabel")) {}
       for (paramJSONObject = null;; paramJSONObject = paramJSONObject.getString("actionLabel")) {
-        return new Configuration(bool1, bool2, localTextCapitalization, localInputType, (Integer)localObject, paramJSONObject);
+        return new Configuration(bool1, bool2, bool3, localTextCapitalization, localInputType, (Integer)localObject, paramJSONObject);
       }
     }
     throw new JSONException("Configuration JSON missing 'inputAction' property.");
@@ -121,7 +124,7 @@ public class TextInputChannel$Configuration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.TextInputChannel.Configuration
  * JD-Core Version:    0.7.0.1
  */

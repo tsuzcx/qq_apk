@@ -1,23 +1,41 @@
-class blqp
-  implements blwi
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+final class blqp
+  implements WtTicketPromise
 {
-  blqp(blqk paramblqk) {}
+  blqp(blqq paramblqq, String paramString) {}
   
-  public void aX_()
+  public void Done(Ticket paramTicket)
   {
-    blqk.a(this.a).d();
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
+    }
+    if (this.jdField_a_of_type_Blqq != null) {
+      this.jdField_a_of_type_Blqq.a(0, new String[] { blqo.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
   }
   
-  public void b()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    blqk.a(this.a).d();
-    blqk.a(this.a).a();
-    blqk.a(this.a).a(blqk.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Blqq != null) {
+      this.jdField_a_of_type_Blqq.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
   
-  public void c()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    blqk.a(this.a).d();
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Blqq != null) {
+      this.jdField_a_of_type_Blqq.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 

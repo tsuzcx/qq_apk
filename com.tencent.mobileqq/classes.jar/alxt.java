@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alxt
-  implements Comparator<SysSuspiciousMsg>
+public class alxt
+  implements alya
 {
-  alxt(alxr paramalxr) {}
+  public alxt(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  public void a(boolean paramBoolean)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
-    return 0;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QQSpecialFriendSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxt
  * JD-Core Version:    0.7.0.1
  */

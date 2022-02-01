@@ -1,20 +1,20 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class adcu
-  implements TopGestureLayout.InterceptTouchEventListener
+final class adcu
+  implements Comparator
 {
-  public adcu(GeneralSettingActivity paramGeneralSettingActivity) {}
-  
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
     }
-    return true;
+    if (i < j) {
+      return 2;
+    }
+    return -1;
   }
 }
 

@@ -1,45 +1,271 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.content.Context;
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager.1;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-final class bezn
-  extends bezy
+public class bezn
 {
-  bezn(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, amfx paramamfx) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void a(int paramInt)
+  public bezn(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amfx);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    int i = j;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      if (!TextUtils.isEmpty(this.c)) {
+        break label71;
+      }
+      i = j;
+    }
+    while (i != 0)
+    {
+      throw new IllegalArgumentException("args error");
+      label71:
+      i = j;
+      if (a(this.jdField_a_of_type_JavaLangString)) {
+        i = 0;
+      }
     }
   }
   
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  private static File a()
+  {
+    return new File(anhk.ba + "homework_troop");
+  }
+  
+  private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    ThreadManager.postImmediately(new BeginnerGuideDownloadManager.1(this, paramHandler, paramInt, paramBoolean), null, true);
+    paramHandler.sendEmptyMessage(1111);
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    label162:
+    label193:
+    for (;;)
+    {
+      TroopManager localTroopManager;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig");
+        }
+        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        paramString = bezp.a(paramString, "config.cfg");
+        if (!paramBoolean) {
+          break label162;
+        }
+        switch (paramInt)
+        {
+        case 5: 
+        case 6: 
+          if (QLog.isColorLevel()) {
+            QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Publish not match");
+          }
+          label86:
+          return;
+        }
+      }
+      finally {}
+      localTroopManager.a.a = paramString;
+      continue;
+      localTroopManager.a.b = paramString;
+      continue;
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label193;
+        }
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Submit not match");
+        break label86;
+        localTroopManager.a.c = paramString;
+        break label86;
+        localTroopManager.a.d = paramString;
+        break label86;
+        break;
+        switch (paramInt)
+        {
+        }
+      }
+    }
+  }
+  
+  private boolean a(String paramString)
+  {
+    try
+    {
+      new URL(paramString);
+      return true;
+    }
+    catch (MalformedURLException paramString) {}
+    return false;
+  }
+  
+  private static String b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break;
+        }
+        try
+        {
+          String str2 = bkcx.a(paramString);
+          paramString = str2;
+          if (str2 == null) {
+            paramString = "";
+          }
+        }
+        catch (IOException paramString)
+        {
+          paramString = "";
+        }
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = "";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, new Object[] { "BeginnerGuideDownloadManager$calcMD5", " md5:" + paramString + ", cost:" + (System.currentTimeMillis() - l) });
+    }
+    return paramString;
+  }
+  
+  private boolean b(Handler paramHandler, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload");
     }
-    if (paramSCGet3rdCloudCheck != null)
+    File localFile1 = a();
+    File localFile2 = new File(localFile1, this.b);
+    Object localObject = this.b.substring(0, this.b.lastIndexOf("."));
+    localFile1 = new File(localFile1, (String)localObject + "_src");
+    if ((!localFile1.exists()) && (!localFile1.mkdirs()))
     {
-      if (paramSCGet3rdCloudCheck.delayHour > 24) {
-        bfac.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
-      }
+      paramHandler.sendEmptyMessage(1120);
+      return false;
+    }
+    localObject = new ArrayList();
+    String[] arrayOfString = localFile1.list();
+    String str = localFile1.getAbsolutePath();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1110;
+    localMessage.arg1 = paramInt;
+    localMessage.obj = str;
+    try
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload begin unzip");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      ((ArrayList)localObject).addAll(nmk.a(localFile2));
+      if (Arrays.asList(arrayOfString).containsAll((Collection)localObject))
       {
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        Message localMessage = localMqqHandler.obtainMessage(1134063);
-        localMessage.obj = paramSCGet3rdCloudCheck;
-        localMqqHandler.sendMessage(localMessage);
-        bezm.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file already unzip");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      nmk.b(localFile2.getAbsolutePath(), localFile1.getAbsolutePath());
+      if (Arrays.asList(localFile1.list()).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip success");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      throw new Exception("trigger catch");
+    }
+    catch (Exception localException)
+    {
+      paramHandler.sendEmptyMessage(1120);
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip error ", localException);
+      }
+      paramHandler = ((ArrayList)localObject).iterator();
+      while (paramHandler.hasNext())
+      {
+        File localFile3 = new File(localFile1, (String)paramHandler.next());
+        if ((localFile3.exists()) && (!localFile3.delete()) && (QLog.isColorLevel())) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip del error");
+        }
       }
     }
+    return false;
+  }
+  
+  public boolean a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload");
+    }
+    File localFile = a();
+    if ((!localFile.exists()) && (!localFile.mkdirs())) {
+      return false;
+    }
+    localFile = new File(localFile, this.b);
+    if ((localFile.exists()) && (this.c.equalsIgnoreCase(b(localFile.getAbsolutePath()))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload: file exists, no need to start download again");
+      }
+      a(paramHandler, paramInt, paramBoolean);
+      return true;
+    }
+    bdvu localbdvu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    bdvs localbdvs = new bdvs();
+    localbdvs.jdField_a_of_type_Boolean = true;
+    localbdvs.e = true;
+    localbdvs.jdField_a_of_type_Bdvw = new bezo(this, paramHandler, paramInt, paramBoolean);
+    localbdvs.jdField_a_of_type_Int = 0;
+    localbdvs.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbdvs.c = localFile.getAbsolutePath();
+    localbdvs.d = 0;
+    localbdvu.a(localbdvs);
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload sendReq success");
+    }
+    return true;
   }
 }
 

@@ -1,12 +1,8 @@
-import com.tencent.weiyun.utils.Singleton;
-
-final class bkkt
-  extends Singleton<bkks, Void>
+public abstract interface bkkt
 {
-  protected bkks a(Void paramVoid)
-  {
-    return new bkks(null);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

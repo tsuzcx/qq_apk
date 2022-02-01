@@ -1,54 +1,54 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleDitto.StCircleDittoDataNew;
 
-public class uyt
-  extends JobSegment<List<vlp>, List<vlp>>
+class uyt
+  implements Observer<FeedCloudMeta.StFeed>
 {
-  private final vlo a;
+  uyt(uys paramuys) {}
   
-  public uyt()
+  public void a(@Nullable FeedCloudMeta.StFeed paramStFeed)
   {
-    this(new uyu());
-  }
-  
-  public uyt(vlo paramvlo)
-  {
-    this.a = paramvlo;
-  }
-  
-  protected void a(JobContext paramJobContext, List<vlp> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
+    boolean bool = true;
+    if (paramStFeed == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
-      }
-      notifyResult(paramList);
+      this.a.a(false);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+    uys.a(this.a, paramStFeed);
+    uys.a(this.a, new QQCircleDitto.StCircleDittoDataNew());
+    vrf.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 1, 0, uys.a(this.a));
+    for (;;)
+    {
+      try
+      {
+        uys.a(this.a).mergeFrom(paramStFeed.dittoFeed.dittoDataNew.get().toByteArray());
+        paramStFeed = this.a;
+        if (uys.a(this.a).multiItemContainter.size() > 0)
+        {
+          paramStFeed.a(bool);
+          return;
+        }
+      }
+      catch (Exception paramStFeed)
+      {
+        paramStFeed.printStackTrace();
+        return;
+      }
+      bool = false;
     }
-    paramJobContext = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      paramJobContext.add(((vlp)localIterator.next()).b);
-    }
-    paramJobContext = new vlj(paramJobContext);
-    if (this.a != null) {
-      paramJobContext.a = this.a;
-    }
-    paramJobContext.a(new uyv(this, paramList));
-    paramJobContext.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyt
  * JD-Core Version:    0.7.0.1
  */

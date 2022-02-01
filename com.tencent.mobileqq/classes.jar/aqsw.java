@@ -1,48 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqsw
-  extends aqtd
+public class aqsw
 {
-  protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected String a;
-  private long b;
-  protected String b;
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
   
-  public aqsw(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public aqsw()
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaqsf = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqsf);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  public static aqsw a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = area.a(arrr.d(this.jdField_b_of_type_JavaLangString));
-    String str2 = area.a(arrr.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = arrr.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    aqsw localaqsw = new aqsw();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localaqsw.jdField_a_of_type_JavaLangString = localJSONObject.optString("kQQPASearchDiscoverPageUrl");
+      localaqsw.b = localJSONObject.optString("kQQPASearchListTitleIconUrl");
+      localaqsw.c = localJSONObject.optString("kQQPAClickAssociationalWordWebUrl");
+      localaqsw.jdField_a_of_type_Int = localJSONObject.optInt("kQQPAClickAssociationalWordToWebSearch", 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, new Object[] { "loadConfig292Data json = ", paramString });
+      }
+      localaqsw.d = localJSONObject.optString("kQQPASearchJumpUrl", "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). readinjoy_search_jump_url=" + localaqsw.d + ", discoveryPageUrl = " + localaqsw.jdField_a_of_type_JavaLangString);
+      }
     }
-    aqsf.a(this.jdField_a_of_type_Aqsf).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aqsf.a(this.jdField_a_of_type_Aqsf).getCurrentAccountUin(), new aqsx(this, paramaqtc, str2));
+    catch (Exception paramString)
+    {
+      do
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInjoySearchJumpurlConfBean", 2, "loadPublicAccountCenterUrlConfig error", paramString);
+        }
+        localaqsw.d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+      } while (!QLog.isColorLevel());
+      QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). use the default url. exception=" + paramString.getStackTrace());
+    }
+    return localaqsw;
+    return localaqsw;
+  }
+  
+  public String toString()
+  {
+    return "kQQPASearchDiscoverPageUrl = " + this.jdField_a_of_type_JavaLangString + "kQQPASearchListTitleIconUrl = " + this.b + "kQQPAClickAssociationalWordWebUrl = " + this.c + "kQQPAClickAssociationalWordToWebSearch = " + this.jdField_a_of_type_Int + "kQQPASearchJumpUrl = " + this.d;
   }
 }
 

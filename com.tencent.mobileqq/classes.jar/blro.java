@@ -1,81 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import dov.com.qq.im.capture.control.CaptureAsyncStepFactory;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class blro
-  implements azga
+public final class blro
+  implements Parcelable.Creator<LbsDataV2.GpsInfo>
 {
-  public static String a;
-  public static boolean a;
-  public static String b;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  private CaptureAsyncAutomator a;
-  
-  static
+  public LbsDataV2.GpsInfo a(Parcel paramParcel)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    c = true;
-    jdField_a_of_type_JavaLangString = "{1001,1004,1003,1005,1006,1007}";
-  }
-  
-  public blro()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator = new CaptureAsyncAutomator(null);
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    if (!c) {}
-    return false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.onDestroy();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, String.valueOf(paramInt)));
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
+    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
+    if (paramParcel != null)
     {
-    default: 
-      return;
+      localGpsInfo.lat = paramParcel.readInt();
+      localGpsInfo.lon = paramParcel.readInt();
+      localGpsInfo.alt = paramParcel.readInt();
+      localGpsInfo.gpsType = paramParcel.readInt();
+      localGpsInfo.accuracy = paramParcel.readInt();
     }
-    d = true;
-    if (!(paramVarArgs[0] instanceof String)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e = bool;
-      if (!e) {
-        jdField_b_of_type_JavaLangString = (String)paramVarArgs[0];
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CaptureAsyncControl", 2, new Object[] { "pre open camera, result: ", Boolean.valueOf(e) });
-      return;
-    }
+    return localGpsInfo;
   }
   
-  public void a(String paramString)
+  public LbsDataV2.GpsInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, paramString));
-  }
-  
-  public void a(String paramString, Object[] paramArrayOfObject)
-  {
-    paramString = CaptureAsyncStepFactory.a(this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator, paramString);
-    paramString.a = paramArrayOfObject;
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncAutomator.a(paramString);
+    return null;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beii;
-import beil;
+import bhpm;
+import bhpp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SwiftBrowserOfflineHandler$3
   implements Runnable
 {
-  public SwiftBrowserOfflineHandler$3(beii parambeii) {}
+  public SwiftBrowserOfflineHandler$3(bhpm parambhpm) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class SwiftBrowserOfflineHandler$3
     }
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((beil)localIterator.next()).onCheckOfflineFinish(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      ((bhpp)localIterator.next()).onCheckOfflineFinish(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.3
  * JD-Core Version:    0.7.0.1
  */

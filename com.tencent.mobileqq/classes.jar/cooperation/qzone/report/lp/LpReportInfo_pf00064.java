@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bjdl;
-import bjdm;
+import blrt;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -321,8 +321,8 @@ public class LpReportInfo_pf00064
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bjdm.a());
-    localHashMap.put("device_info", bjdl.a().c());
+    localHashMap.put("qua", blru.a());
+    localHashMap.put("device_info", blrt.a().c());
     if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
       localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     }
@@ -421,7 +421,7 @@ public class LpReportInfo_pf00064
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00064
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bhua;
+import bkhj;
 
 class AbsListView$PerformClick
-  extends bhua
+  extends bkhj
   implements Runnable
 {
   int a;

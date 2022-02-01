@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aech
-  extends lpr
+  implements View.OnClickListener
 {
-  public aech(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aech(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.c();
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

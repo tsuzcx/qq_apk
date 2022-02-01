@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajeu;
+import akww;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadConfig$1
@@ -14,7 +14,7 @@ class PreloadConfig$1
     {
       if (this.this$0.isModulesChange(this.this$0.mLastModules))
       {
-        ajeu.a(this.this$0, this.this$0.mSavePath);
+        akww.a(this.this$0, this.this$0.mSavePath);
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "really save:" + this.this$0);
         }
@@ -26,7 +26,7 @@ class PreloadConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig.1
  * JD-Core Version:    0.7.0.1
  */

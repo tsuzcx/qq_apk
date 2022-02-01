@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ajds;
+import akvn;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -17,17 +17,17 @@ class LineLayer$LoadTempFileJob
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<ajds> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<akvn> jdField_a_of_type_JavaLangRefWeakReference;
   private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int b = -1;
   
-  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, ajds paramajds)
+  public LineLayer$LoadTempFileJob(int paramInt1, Map<Integer, String> paramMap, int paramInt2, akvn paramakvn)
   {
     Object localObject;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     this.jdField_a_of_type_Int = paramMap;
     this.jdField_a_of_type_JavaUtilMap.putAll(paramInt2);
-    this.b = paramajds;
+    this.b = paramakvn;
   }
   
   public void run()
@@ -100,7 +100,7 @@ class LineLayer$LoadTempFileJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.LineLayer.LoadTempFileJob
  * JD-Core Version:    0.7.0.1
  */

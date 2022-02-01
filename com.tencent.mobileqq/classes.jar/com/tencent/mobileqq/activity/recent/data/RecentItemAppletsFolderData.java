@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import ajfv;
-import ajkl;
-import ajlh;
+import acvy;
+import akxz;
+import alcu;
 import android.content.Context;
 import android.text.TextUtils;
-import bdgc;
+import bglf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemAppletsFolderData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   private static final String TAG = "RecentItemAppletsFolderData";
   public String iconUrl;
@@ -28,7 +28,7 @@ public class RecentItemAppletsFolderData
     this.mUnreadFlag = 1;
   }
   
-  private void f()
+  private void a()
   {
     StringBuilder localStringBuilder1;
     StringBuilder localStringBuilder2;
@@ -49,11 +49,6 @@ public class RecentItemAppletsFolderData
     }
   }
   
-  public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    super.a(paramMessage, paramInt, paramQQAppInterface, paramContext, paramMsgSummary);
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     if ((paramQQAppInterface == null) || (paramContext == null)) {
@@ -61,20 +56,20 @@ public class RecentItemAppletsFolderData
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = bdgc.j(paramQQAppInterface, this.mUser.uin);
+      this.mTitleName = bglf.j(paramQQAppInterface, this.mUser.uin);
     }
     QQMessageFacade.Message localMessage = null;
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {
       localMessage = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());
     }
-    localObject1 = (ajfv)paramQQAppInterface.getManager(315);
-    if (ajkl.a(paramQQAppInterface)) {}
+    localObject1 = (akxz)paramQQAppInterface.getManager(315);
+    if (alcu.a(paramQQAppInterface)) {}
     try
     {
-      ((ajfv)localObject1).a();
+      ((akxz)localObject1).a();
       label97:
-      Object localObject2 = ((ajfv)localObject1).a(this.mUser.uin);
+      Object localObject2 = ((akxz)localObject1).a(this.mUser.uin);
       if (localObject2 != null)
       {
         QLog.d("RecentItemAppletsFolderData", 2, "account not null nick:" + ((AppletsAccountInfo)localObject2).nick);
@@ -88,22 +83,22 @@ public class RecentItemAppletsFolderData
         if (localObject2 == null) {
           break label305;
         }
-        this.mUnreadNum = ((abta)localObject2).a(localMessage.frienduin, this.mUser.getType());
+        this.mUnreadNum = ((acvy)localObject2).a(localMessage.frienduin, this.mUser.getType());
         label207:
-        if (((ajfv)localObject1).a(localMessage, this.mUser) != 2) {
+        if (((akxz)localObject1).a(localMessage, this.mUser) != 2) {
           break label313;
         }
         this.mUnreadFlag = 1;
         label226:
-        this.mDisplayTime = a();
+        this.mDisplayTime = getLastMsgTime();
       }
       for (;;)
       {
-        localObject1 = a();
+        localObject1 = getMsgSummaryTemp();
         a(localMessage, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject1);
-        this.mShowTime = ajlh.a().a(this.mUser.uin, this.mUser.lastmsgtime);
+        this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(this.mUser.uin, this.mUser.lastmsgtime);
         this.mLastMsg = ((MsgSummary)localObject1).strContent;
-        f();
+        a();
         return;
         QLog.d("RecentItemAppletsFolderData", 2, "account is null");
         break;
@@ -126,7 +121,7 @@ public class RecentItemAppletsFolderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData
  * JD-Core Version:    0.7.0.1
  */

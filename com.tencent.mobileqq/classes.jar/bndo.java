@@ -1,27 +1,8 @@
-import android.util.Property;
+import java.io.File;
 
-class bndo
-  extends Property<bndn, Float>
+public class bndo
 {
-  bndo(bndn parambndn, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bndn parambndn)
-  {
-    if (parambndn != null) {
-      return Float.valueOf(bndn.a(parambndn));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bndn parambndn, Float paramFloat)
-  {
-    if (parambndn != null) {
-      bndn.a(parambndn, paramFloat.floatValue());
-    }
-  }
+  public static final String a = bndq.f + File.separator + "camera_emo_default_template.json";
 }
 
 

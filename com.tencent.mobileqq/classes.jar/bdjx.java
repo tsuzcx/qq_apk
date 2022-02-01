@@ -1,30 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class bdjx
+  extends anmu
 {
-  public float a;
-  public SessionInfo a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e = "";
+  public bdjx(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public bdjx(Bundle paramBundle)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
-    this.b = paramBundle.getString("appView");
-    this.c = paramBundle.getString("appMinVersion");
-    this.d = paramBundle.getString("metaData");
-    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    paramBundle = paramBundle.getString("troopUin");
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
-    }
+    this.a.a.a(paramString);
   }
 }
 

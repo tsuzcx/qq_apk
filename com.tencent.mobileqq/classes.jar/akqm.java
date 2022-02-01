@@ -1,41 +1,26 @@
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class akqm
-  extends bdul
+  implements View.OnFocusChangeListener
 {
-  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
+  public akqm(WordChainHbFragment paramWordChainHbFragment) {}
   
-  public akqm(FriendCardApolloViewController paramFriendCardApolloViewController)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
-  }
-  
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
-        }
-        paramObject = new JSONObject((String)paramObject);
-        if (paramObject.optInt("entry_id", -1) != 2) {
-          return;
-        }
-        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
-        if (localFriendCardApolloViewController == null) {
-          return;
-        }
-        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
-        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
-        return;
-      }
-      catch (Exception paramObject) {}
-    } else if (QLog.isColorLevel()) {
-      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Niw = new niw(this.a.jdField_a_of_type_AndroidViewView, new akqn(this), ImmersiveUtils.getStatusBarHeight(this.a.getActivity()) + 160);
+      WordChainHbFragment.a(this.a, 8);
     }
+    do
+    {
+      return;
+      WordChainHbFragment.a(this.a, 0);
+    } while (this.a.jdField_a_of_type_Niw == null);
+    this.a.jdField_a_of_type_Niw.a();
   }
 }
 

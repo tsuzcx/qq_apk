@@ -1,34 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtb
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ajtc jdField_a_of_type_Ajtc;
+  public ajtb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ajtb(VideoFilterViewPager paramVideoFilterViewPager, ajtc paramajtc, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ajtc = paramajtc;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.jdField_a_of_type_Ajtc != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_Ajtc.a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
-      }
+    if (this.a.jdField_d_of_type_Int == 11) {
+      bcst.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
+    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

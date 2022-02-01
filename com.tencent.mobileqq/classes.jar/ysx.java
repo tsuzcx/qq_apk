@@ -1,24 +1,17 @@
-class ysx
-  extends ysz
+public class ysx
 {
-  public ysx(ysb paramysb, yta paramyta, String paramString)
-  {
-    super(paramysb, paramyta, paramString);
-  }
+  public final String a;
+  public final yuq a;
   
-  public void a()
+  public ysx(yuq paramyuq, String paramString)
   {
-    this.jdField_a_of_type_Ysb.a.a();
-    ysl localysl = a();
-    this.jdField_a_of_type_Ysb.a.a(localysl.e, localysl.jdField_a_of_type_JavaLangString, localysl.jdField_a_of_type_Int, new ysy(this));
-    this.jdField_a_of_type_Yta.b(this);
-    this.jdField_a_of_type_Ysz = new ysk(this.jdField_a_of_type_Ysb, this.jdField_a_of_type_Yta, this.c);
-    b();
+    this.jdField_a_of_type_Yuq = paramyuq;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,20 @@
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
+
 public class bmrq
+  implements QQPermissionCallback
 {
-  private int jdField_a_of_type_Int;
-  private bmrl jdField_a_of_type_Bmrl = new bmrk();
-  private int b;
+  public bmrq(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
   
-  public bmro a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new bmro(this, null);
+    bglp.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public bmrq a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-    return this;
-  }
-  
-  public bmrq a(bmrl parambmrl)
-  {
-    if (parambmrl != null) {
-      this.jdField_a_of_type_Bmrl = parambmrl;
-    }
-    return this;
-  }
-  
-  public bmrq b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,15 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class asfp
-  implements bhuk
+class asfp
+  extends anmu
 {
-  public asfp(LangSettingFragment paramLangSettingFragment, int paramInt) {}
+  asfp(asfo paramasfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<amgn> paramArrayList)
   {
-    if (paramInt == 0) {
-      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      asfr.a().a(paramArrayList);
+    }
+    for (;;)
+    {
+      asfo.a(this.a, false);
+      asfo.b(this.a, false);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
+      }
     }
   }
 }

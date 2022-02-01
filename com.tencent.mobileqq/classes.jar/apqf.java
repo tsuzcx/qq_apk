@@ -1,68 +1,27 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apqf
-  implements aybu
+  implements View.OnClickListener
 {
-  public apqf(MessengerService paramMessengerService) {}
+  public apqf(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
-      {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
-        {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
-        }
-      }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
+    bkho localbkho = (bkho)bkif.a(BaseActivity.sTopActivity, null);
+    localbkho.a(BaseActivity.sTopActivity.getString(2131690102));
+    localbkho.a(2131690101, 3);
+    localbkho.c(2131690103);
+    localbkho.setOnDismissListener(new apqg(this, localbkho));
+    localbkho.a(new apqh(this, localbkho));
+    if (!localbkho.isShowing()) {
+      localbkho.show();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
-      }
-    }
-    while (this.a.c == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
-  }
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

@@ -1,170 +1,127 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1;
-import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.kwstudio.office.preview.TdsReaderView;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class auau
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  private static auau jdField_a_of_type_Auau;
+  private int jdField_a_of_type_Int = -1;
+  private TdsReaderView jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+  
+  public static auau a()
   {
-    if (paramQQAppInterface == null) {}
+    if (jdField_a_of_type_Auau == null) {
+      jdField_a_of_type_Auau = new auau();
+    }
+    return jdField_a_of_type_Auau;
+  }
+  
+  private static boolean a(TdsReaderView paramTdsReaderView, String paramString)
+  {
+    String str = atwl.a(paramString);
+    paramString = str;
+    if (str.startsWith(".")) {
+      paramString = str.replaceFirst(".", "");
+    }
+    return paramTdsReaderView.preOpen(paramString);
+  }
+  
+  public TdsReaderView a(Activity paramActivity, String paramString, auaw paramauaw)
+  {
+    TdsReaderView localTdsReaderView = null;
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
+      localTdsReaderView = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+    }
     do
     {
-      do
+      return localTdsReaderView;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
       {
-        return 0;
-        if (a(paramQQAppInterface)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
-      return 0;
-      if (a(paramQQAppInterface, "matchchat_redpoint_show")) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      }
+    } while (!atwl.b(paramString));
+    if (!TdsReaderGlobal.a())
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds disable for filePath=" + paramString);
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: new TdsReaderView");
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = TdsReaderView.newInstance(new auax(paramActivity, false, paramauaw, null));
+    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: TbsReaderView openFile");
+      if (a(this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView, paramString))
+      {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.openFile(paramString, ".pdf");
+        this.jdField_a_of_type_Int = paramActivity.hashCode();
+        return this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+      }
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds instance failed for filePath=" + paramString);
+    return null;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int i = paramActivity.hashCode();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TdsReaderView_LocalTdsViewManager", 4, "destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
+    }
+    if (this.jdField_a_of_type_Int != i) {}
+    while (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+  }
+  
+  public boolean a(Activity paramActivity, String paramString, auaw paramauaw, boolean paramBoolean)
+  {
+    boolean bool = false;
+    paramBoolean = bool;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!TdsReaderGlobal.a())
+      {
+        QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds disable for filePath=" + paramString);
+        paramBoolean = bool;
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      if (!paramBoolean) {
+        break label150;
+      }
+    }
+    label150:
+    for (paramActivity = "pre open file true! wait callback!";; paramActivity = "pre open file false! strPath=" + paramString)
+    {
+      QLog.i("TdsReaderView_LocalTdsViewManager", 1, paramActivity);
+      if (paramauaw != null) {
+        paramauaw.a(paramBoolean);
+      }
+      return paramBoolean;
+      paramActivity = TdsReaderView.newInstance(new auax(paramActivity, true, null, null));
+      if (paramActivity != null)
+      {
+        paramBoolean = a(paramActivity, paramString);
+        paramActivity.onStop();
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MatchChatMsgUtil", 2, "isRedPointShow false");
-    return 0;
-    Object localObject = paramQQAppInterface.a(1044).a(alof.aU, 1044);
-    if (localObject == null)
-    {
-      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
-      return 0;
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds instance failed for filePath=" + paramString);
+      paramBoolean = bool;
+      break;
     }
-    localObject = ((List)localObject).iterator();
-    String str;
-    int j;
-    for (int i = 0; ((Iterator)localObject).hasNext(); i = paramQQAppInterface.a().a(str, j) + i)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      str = localMessageRecord.senderuin;
-      j = localMessageRecord.istroop;
-    }
-    return i;
-  }
-  
-  public static Intent a(Context paramContext)
-  {
-    paramContext = new Intent(paramContext, PublicFragmentActivity.class);
-    paramContext.putExtra("uintype", 1044);
-    paramContext.putExtra("uin", alof.aU);
-    paramContext.putExtra("public_fragment_class", MatchChatMsgListFragment.class.getName());
-    paramContext.addFlags(268435456);
-    return paramContext;
-  }
-  
-  public static Intent a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = new Intent(paramContext, ChatActivity.class);
-    paramContext.putExtra("uin", paramString);
-    paramContext.putExtra("uintype", 1044);
-    paramContext.putExtra("entrance", paramInt);
-    paramContext.addFlags(268435456);
-    return paramContext;
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = a(paramQQAppInterface);
-    QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointAppInfo num = " + i);
-    paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
-    paramQQAppInterface.path.set(paramString);
-    paramQQAppInterface.num.set(i);
-    paramQQAppInterface.type.set(2);
-    paramQQAppInterface.iNewFlag.set(1);
-    return paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject = paramQQAppInterface.a(1044).a(alof.aU, 1044);
-      if (localObject == null)
-      {
-        QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
-        return;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox, delete uin = " + localMessageRecord.senderuin);
-        }
-        String str = localMessageRecord.senderuin;
-        int i = localMessageRecord.istroop;
-        paramQQAppInterface.a().a(str, i);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentMatchChatListItem paramRecentMatchChatListItem, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (paramRecentMatchChatListItem == null)) {}
-    int i;
-    do
-    {
-      return;
-      i = paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a());
-      if (paramBoolean) {
-        paramQQAppInterface.a().a(alof.aU, 1044, paramRecentMatchChatListItem.a(), paramQQAppInterface.getCurrentAccountUin());
-      }
-    } while (i <= 0);
-    paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a(), true, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatMsgUtil", 2, "saveRedPointShow key =" + paramString + " value =" + paramString);
-    }
-    bdne.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").edit().putBoolean(paramString, paramBoolean).apply();
-  }
-  
-  public static void a(RedTouch paramRedTouch, QQAppInterface paramQQAppInterface)
-  {
-    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramQQAppInterface, paramRedTouch), 16, null, false);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return bdne.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").getBoolean(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bmlv
-  implements View.OnTouchListener
+final class bmlv
+  implements DialogInterface.OnClickListener
 {
-  bmlv(bmlp parambmlp) {}
+  bmlv(bgpa parambgpa) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.a(paramMotionEvent);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 

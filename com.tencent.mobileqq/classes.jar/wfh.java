@@ -1,18 +1,25 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface wfh
+class wfh
+  extends SimpleJob<Object>
 {
-  public abstract void a();
+  wfh(wfg paramwfg, String paramString, boolean paramBoolean)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
-  
-  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Wfg.b(this.jdField_a_of_type_Boolean);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wfh
  * JD-Core Version:    0.7.0.1
  */

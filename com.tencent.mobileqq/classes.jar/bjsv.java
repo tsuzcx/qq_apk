@@ -1,82 +1,49 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class bjsv
-  extends bjsy
+  extends MqqHandler
 {
-  protected int a;
-  protected long a;
-  protected boolean a;
+  public bjsv(Login paramLogin) {}
   
-  public bjsv(long paramLong, int paramInt, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = 30000L;
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Boolean = true;
-    a(paramLong);
-    a(paramInt);
-    a(paramBoolean);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(Collector paramCollector)
-  {
-    int i;
-    int j;
-    label30:
-    int k;
-    if (paramCollector.a().a() > 0)
+    Bundle localBundle = paramMessage.getData();
+    this.a.d();
+    switch (paramMessage.what)
     {
-      i = 1;
-      if (System.currentTimeMillis() - paramCollector.a() <= this.jdField_a_of_type_Long) {
-        break label89;
-      }
-      j = 1;
-      if (paramCollector.a().a() < this.jdField_a_of_type_Int) {
-        break label94;
-      }
-      k = 1;
-      label47:
-      if ((!this.jdField_a_of_type_Boolean) || (!paramCollector.a())) {
-        break label100;
-      }
     }
-    label89:
-    label94:
-    label100:
-    for (int m = 1;; m = 0)
+    do
     {
-      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
-        break label106;
+      return;
+      this.a.a(String.format(this.a.getResources().getString(2131695788), new Object[] { this.a.getResources().getString(2131694142), Integer.valueOf(3100) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3100");
+      bctj.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      return;
+      localBundle.getInt("ret");
+      int i = localBundle.getInt("code");
+      paramMessage = localBundle.getString("OTHER_ERROR");
+      if (localBundle.getBoolean("pwdblank", false)) {
+        this.a.b.setText("");
       }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label30;
-      k = 0;
-      break label47;
-    }
-    label106:
-    return false;
+      this.a.a(String.format(this.a.getResources().getString(2131695788), new Object[] { paramMessage, Integer.valueOf(i) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3101");
+      bctj.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      return;
+    } while (this.a.isFinishing());
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjsv
  * JD-Core Version:    0.7.0.1
  */

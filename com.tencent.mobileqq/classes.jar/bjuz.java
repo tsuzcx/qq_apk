@@ -1,47 +1,24 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-
-public class bjuz
+public final class bjuz
 {
-  private static Field a;
+  private static int jdField_a_of_type_Int;
+  private bjvl jdField_a_of_type_Bjvl;
   
-  private static void a(Throwable paramThrowable)
+  private bjuz(bjvl parambjvl)
   {
-    try
-    {
-      if (a == null) {
-        a = Throwable.class.getDeclaredField("detailMessage");
-      }
-      a.setAccessible(true);
-      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
-      return;
-    }
-    catch (Throwable paramThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
-    }
+    this.jdField_a_of_type_Bjvl = parambjvl;
   }
   
-  public static final void a(Throwable paramThrowable, String paramString)
+  private String a()
   {
-    if (paramThrowable == null) {
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = Log.getStackTraceString(paramThrowable);
-    }
-    a(paramThrowable);
-    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
-    azpo.a(paramThrowable, str);
+    StringBuilder localStringBuilder = new StringBuilder().append("AD_PROXY_ACTION_MOTIVE_BROWSING_END#index#");
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjuz
  * JD-Core Version:    0.7.0.1
  */

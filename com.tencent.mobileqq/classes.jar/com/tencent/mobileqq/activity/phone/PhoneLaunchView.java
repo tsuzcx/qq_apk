@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.phone;
 
-import alud;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,10 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import bdgc;
+import anni;
+import bcst;
+import bglf;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 @SuppressLint({"ViewConstructor"})
 public class PhoneLaunchView
@@ -26,10 +27,10 @@ public class PhoneLaunchView
   public PhoneLaunchView(Activity paramActivity, int paramInt)
   {
     super(paramActivity, paramInt);
-    a(2131559425);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131371761));
+    a(2131559554);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131372333));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131371763));
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131372335));
   }
   
   private void j()
@@ -38,14 +39,14 @@ public class PhoneLaunchView
     localIntent.putExtra("key_is_modal_pop", true);
     localIntent.putExtra("kSrouce", this.jdField_b_of_type_Int);
     a(localIntent, 1);
-    a(2130772293, 2130771990);
+    a(2130772302, 2130771990);
   }
   
   protected void a()
   {
     super.a();
     if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131708403));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706780));
     }
     for (;;)
     {
@@ -54,7 +55,7 @@ public class PhoneLaunchView
         j();
       }
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131708395));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706772));
     }
   }
   
@@ -98,7 +99,7 @@ public class PhoneLaunchView
     }
     super.a(paramIntent, paramPhoneInnerFrame);
     if (this.jdField_a_of_type_Int == 3) {
-      ((TextView)a(2131371764)).setText(2131689727);
+      ((TextView)a(2131372336)).setText(2131689634);
     }
   }
   
@@ -107,30 +108,34 @@ public class PhoneLaunchView
     int i;
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
-      if ((i == 1) || (i == 2) || (i == 3) || (i == 4))
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
+      if ((i != 1) && (i != 2) && (i != 3) && (i != 4)) {
+        break label80;
+      }
+      bglf.a(6);
+      j();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label80:
+      if (i == 5)
       {
-        bdgc.a(6);
-        j();
+        a(new Intent(getContext(), BindNumberFromPcActivity.class), 1);
+        a(2130772302, 2130771990);
+      }
+      else
+      {
+        a(anni.a(2131706782), anni.a(2131706778));
       }
     }
-    else
-    {
-      return;
-    }
-    if (i == 5)
-    {
-      a(new Intent(getContext(), BindNumberFromPcActivity.class), 1);
-      a(2130772293, 2130771990);
-      return;
-    }
-    a(alud.a(2131708405), alud.a(2131708401));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchView
  * JD-Core Version:    0.7.0.1
  */

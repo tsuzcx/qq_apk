@@ -1,519 +1,348 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bedn
-  implements Manager
 {
-  public static String a;
-  public static HashMap<String, bedr> a;
-  public static String[] a;
-  bead jdField_a_of_type_Bead = new bedo(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  static
+  private static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaLangString = alof.aX + "voiceChange/";
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { null, null, null };
-  }
-  
-  public bedn(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  /* Error */
-  public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: iload_0
-    //   4: i2d
-    //   5: dstore 5
-    //   7: dload 5
-    //   9: invokestatic 71	com/tencent/mobileqq/utils/QQRecorder:a	(D)I
-    //   12: istore_0
-    //   13: getstatic 24	bedn:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   16: aload_1
-    //   17: invokevirtual 75	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   20: checkcast 77	bedr
-    //   23: astore 7
-    //   25: aload 7
-    //   27: ifnull +88 -> 115
-    //   30: aload 7
-    //   32: getfield 80	bedr:jdField_a_of_type_Beds	Lbeds;
-    //   35: ifnull +84 -> 119
-    //   38: aload_1
-    //   39: aload_2
-    //   40: iload_3
-    //   41: invokestatic 85	bedt:a	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   44: aload 7
-    //   46: getfield 80	bedr:jdField_a_of_type_Beds	Lbeds;
-    //   49: aload_1
-    //   50: iload 4
-    //   52: iload_0
-    //   53: invokeinterface 90 4 0
-    //   58: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   61: ifeq +46 -> 107
-    //   64: ldc 98
-    //   66: iconst_2
-    //   67: new 26	java/lang/StringBuilder
-    //   70: dup
-    //   71: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   74: ldc 100
-    //   76: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload_1
-    //   80: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc 102
-    //   85: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: iload_0
-    //   89: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: ldc 107
-    //   94: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: iload_3
-    //   98: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   101: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   107: getstatic 24	bedn:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   110: aload_1
-    //   111: invokevirtual 114	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   114: pop
-    //   115: ldc 2
-    //   117: monitorexit
-    //   118: return
-    //   119: aload 7
-    //   121: iconst_1
-    //   122: putfield 117	bedr:jdField_a_of_type_Boolean	Z
-    //   125: aload 7
-    //   127: iload_0
-    //   128: putfield 120	bedr:jdField_a_of_type_Int	I
-    //   131: goto -16 -> 115
-    //   134: astore_1
-    //   135: ldc 2
-    //   137: monitorexit
-    //   138: aload_1
-    //   139: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	paramInt1	int
-    //   0	140	1	paramString1	String
-    //   0	140	2	paramString2	String
-    //   0	140	3	paramInt2	int
-    //   0	140	4	paramInt3	int
-    //   5	3	5	d	double
-    //   23	103	7	localbedr	bedr
-    // Exception table:
-    //   from	to	target	type
-    //   7	25	134	finally
-    //   30	107	134	finally
-    //   107	115	134	finally
-    //   119	131	134	finally
-  }
-  
-  public static void a(Context paramContext, bedk parambedk, String paramString, bedj parambedj)
-  {
-    if ((bedr)jdField_a_of_type_JavaUtilHashMap.get(parambedk.jdField_a_of_type_JavaLangString) == null) {
-      b(paramContext, parambedk, paramString, parambedj);
+    int j = 0;
+    Object localObject = null;
+    QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
+    acvy localacvy = paramQQAppInterface.a();
+    paramQQAppInterface = localObject;
+    if (localQQMessageFacade != null) {
+      paramQQAppInterface = localQQMessageFacade.a(paramMessageRecord.senderuin, paramMessageRecord.istroop);
     }
-    ((bedr)jdField_a_of_type_JavaUtilHashMap.get(parambedk.jdField_a_of_type_JavaLangString)).jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.c();
-  }
-  
-  public static void a(Context paramContext, bedk parambedk, String paramString, bedj parambedj, bedp parambedp)
-  {
-    bedr localbedr = (bedr)jdField_a_of_type_JavaUtilHashMap.get(parambedk.jdField_a_of_type_JavaLangString);
-    if (localbedr != null) {
-      localbedr.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
-    }
-    localbedr = new bedr();
-    localbedr.jdField_a_of_type_Bedk = parambedk;
-    localbedr.jdField_a_of_type_Bedp = parambedp;
-    localbedr.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread = new QQVoiceChangerThread(paramContext, parambedk, parambedp, paramString, parambedj);
-    jdField_a_of_type_JavaUtilHashMap.put(parambedk.jdField_a_of_type_JavaLangString, localbedr);
-    localbedr.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.start();
-  }
-  
-  public static void a(bedk parambedk)
-  {
-    bedr localbedr = (bedr)jdField_a_of_type_JavaUtilHashMap.get(parambedk.jdField_a_of_type_JavaLangString);
-    if (localbedr != null)
+    int i = j;
+    if (paramQQAppInterface != null)
     {
-      localbedr.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.d();
-      jdField_a_of_type_JavaUtilHashMap.remove(parambedk.jdField_a_of_type_JavaLangString);
+      i = j;
+      if (localacvy != null) {
+        i = localacvy.a(paramQQAppInterface.frienduin, paramQQAppInterface.istroop);
+      }
     }
+    return i;
   }
   
-  public static boolean a(String paramString, beds parambeds)
+  private static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
+    Object localObject = paramQQAppInterface.a(1001).a(anhk.aj, 1001);
+    if (localObject == null)
+    {
+      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, no tribe say hi info");
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+      if (localMessageRecord.istroop == 10002) {
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
     for (;;)
     {
+      if (paramInt1 < paramInt2) {}
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "queryStateByPath called path=" + paramString);
-        }
-        bedr localbedr = (bedr)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (localbedr == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VoiceChangeManager", 2, "no task path=" + paramString);
-          }
-          bool = false;
-          return bool;
-        }
-        if (localbedr.jdField_a_of_type_Boolean)
-        {
-          bedt.a(paramString, localbedr.jdField_a_of_type_Bedk.jdField_a_of_type_JavaLangString, localbedr.jdField_a_of_type_Bedk.f);
-          jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-          parambeds.a(paramString, localbedr.jdField_a_of_type_Bedk.e, localbedr.jdField_a_of_type_Int);
-          if (QLog.isColorLevel()) {
-            QLog.d("VoiceChangeManager", 2, "queryStateByPath onCompressFinished filePath=" + paramString + " time=" + localbedr.jdField_a_of_type_Int + " voiceType=" + localbedr.jdField_a_of_type_Bedk.e);
-          }
-        }
-        else
-        {
-          localbedr.jdField_a_of_type_Beds = parambeds;
-        }
+        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
+        paramInt1 += 1;
       }
-      finally {}
-      boolean bool = true;
+      catch (JSONException paramContext)
+      {
+        QLog.e("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages Exception:", paramContext);
+      }
     }
-  }
-  
-  public static void b(Context paramContext, bedk parambedk, String paramString, bedj parambedj)
-  {
-    a(paramContext, parambedk, paramString, parambedj, bedp.a());
-  }
-  
-  public static void b(bedk parambedk)
-  {
-    bedr localbedr = (bedr)jdField_a_of_type_JavaUtilHashMap.get(parambedk.jdField_a_of_type_JavaLangString);
-    if (localbedr != null)
+    localJSONObject.put("msgArray", localJSONArray);
+    if (paramInt2 < localArrayList.size()) {
+      localJSONObject.put("isEnd", 0);
+    }
+    while (QLog.isColorLevel())
     {
-      localbedr.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_JavaUtilHashMap.remove(parambedk.jdField_a_of_type_JavaLangString);
+      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, jsonResult = " + localJSONObject.toString());
+      break;
+      localJSONObject.put("isEnd", 1);
     }
+    return localJSONObject;
   }
   
-  public boolean a(ArrayList<bedl> paramArrayList, JSONObject paramJSONObject)
+  public static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = becr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), "VoiceChangeManager", false);
-    if (!bool)
+    if (((paramInt2 != 1) && (paramInt2 != 2)) || (paramInt1 < 0) || (paramInt3 < 1))
     {
-      jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir().getAbsolutePath() + File.separator + "voiceChange" + File.separator;
-      QLog.d("VoiceChangeManager", 2, "preCheckData start haveSDCard:" + bool + ", path=" + jdField_a_of_type_JavaLangString);
-    }
-    Object localObject1 = new File(jdField_a_of_type_JavaLangString);
-    if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory())) {
-      ((File)localObject1).mkdirs();
+      QLog.e("SayHiMessageHelper", 1, "getTribeSayHelloInfo, invalid parameters viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
+      return null;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VoiceChangeManager", 2, "preCheckData start");
+      QLog.i("SayHiMessageHelper", 1, "getTribeSayHelloInfo, viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
     }
-    localObject1 = paramJSONObject;
-    if (paramJSONObject == null) {
-      localObject1 = VasQuickUpdateManager.getJSONFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "changeVoice_json", false, null);
-    }
-    int[] arrayOfInt = ListenChangeVoicePanel.a;
-    if (localObject1 == null)
+    switch (paramInt2)
     {
-      QLog.e("VoiceChangeManager", 1, "preCheckData null == xydata");
-      return false;
+    default: 
+      return null;
+    case 1: 
+      return b(paramContext, paramQQAppInterface, paramInt1, paramInt3);
     }
-    long l1;
-    int k;
-    Object localObject3;
-    label339:
-    Object localObject2;
+    return a(paramContext, paramQQAppInterface, paramInt1, paramInt3);
+  }
+  
+  private static JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    paramMessageRecord = new RecentSayHelloListItem(paramMessageRecord);
+    paramMessageRecord.a(paramQQAppInterface, paramContext);
     try
     {
-      l1 = ((JSONObject)localObject1).optLong("timestamp", 0L);
-      long l2 = System.currentTimeMillis() / 1000L;
-      JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("VoiceChangeModels");
-      k = 0;
-      if (k >= localJSONArray.length()) {
-        break label1129;
-      }
-      localObject3 = localJSONArray.getJSONObject(k);
-      if ((localObject3 == null) || (((JSONObject)localObject3).getJSONArray("baseInfo") == null) || (((JSONObject)localObject3).getJSONArray("baseInfo").getJSONObject(0) == null) || (((JSONObject)localObject3).getJSONArray("operationInfo") == null))
-      {
-        QLog.e("VoiceChangeManager", 1, "preCheckData JsonErr:i=" + k + ", timestamp:" + l1);
-        break label1363;
-      }
-      localObject4 = ((JSONObject)localObject3).getJSONArray("operationInfo");
-      paramJSONObject = null;
-      i = 0;
-      if (i < ((JSONArray)localObject4).length())
-      {
-        localObject2 = ((JSONObject)localObject3).getJSONArray("operationInfo").getJSONObject(i);
-        if ((localObject2 == null) || (!((JSONObject)localObject2).has("platformId"))) {
-          break label1381;
-        }
-        j = ((JSONObject)localObject2).getInt("platformId");
-        label388:
-        paramJSONObject = (JSONObject)localObject2;
-        if (j == 0) {
-          break label1374;
-        }
-        paramJSONObject = (JSONObject)localObject2;
-        if (j == 2) {
-          break label1374;
-        }
-        if (!QLog.isColorLevel()) {
-          break label1372;
-        }
-        QLog.d("VoiceChangeManager", 2, "preCheckData continue platformId=" + j + ", i=" + k + ", timestamp:" + l1 + ", o=" + i);
-        break label1372;
-      }
-      if (paramJSONObject != null) {
-        break label1357;
-      }
-      localObject2 = new JSONObject();
-      if (!QLog.isColorLevel()) {
-        break label1387;
-      }
-      QLog.d("VoiceChangeManager", 2, "preCheckData continue null == itemJsonOpera, i=" + k + ", timestamp:" + l1);
+      localJSONObject.put("uin", paramMessageRecord.getRecentUserUin());
+      localJSONObject.put("content", paramMessageRecord.mLastMsg);
+      localJSONObject.put("time", paramMessageRecord.mShowTime);
+      localJSONObject.put("nickName", paramMessageRecord.mTitleName);
+      localJSONObject.put("redPointCount", paramMessageRecord.getUnreadNum());
+      return localJSONObject;
     }
-    catch (Exception paramArrayList)
+    catch (JSONException paramContext)
     {
-      label533:
-      QLog.e("VoiceChangeManager", 1, "preCheckData jsonEx:" + paramArrayList.getMessage());
+      QLog.e("SayHiMessageHelper", 1, "getNormalTribeSayHiMsg Exception:", paramContext);
     }
-    Object localObject4 = ((JSONObject)localObject3).getJSONArray("baseInfo").getJSONObject(0);
-    int j = ((JSONObject)localObject4).getInt("voiceID");
-    int i = 6;
+    return localJSONObject;
+  }
+  
+  private static final void a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject1 = paramQQAppInterface.a(1001).a(anhk.aj, 1001);
+    if (localObject1 == null) {
+      QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, no tribe say hi info");
+    }
     for (;;)
     {
-      if (i < arrayOfInt.length)
+      return;
+      Object localObject2 = new ArrayList();
+      Iterator localIterator = ((List)localObject1).iterator();
+      while (localIterator.hasNext())
       {
-        if (arrayOfInt[i] == j)
-        {
-          label576:
-          if (i < 0)
-          {
-            if (!QLog.isColorLevel()) {
-              break label1363;
-            }
-            QLog.d("VoiceChangeManager", 2, "preCheckData not in VOICE_TYPES[] out:i=" + k + ", timestamp:" + l1);
-            break label1363;
-            this.jdField_a_of_type_Bead.onDone(null);
-            return true;
-          }
-        }
-        else
-        {
-          label657:
-          i += 1;
-          continue;
-        }
-        if (paramArrayList == null) {
-          break label1390;
-        }
-        paramJSONObject = (bedl)paramArrayList.get(i);
-        label687:
-        if (paramJSONObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break label1363;
-          }
-          QLog.d("VoiceChangeManager", 2, "preCheckData null == voiceChangeData out:i=" + k + ", timestamp:" + l1);
-          break label1363;
-        }
-        if (!((JSONObject)localObject2).has("isShow")) {
-          break label1395;
-        }
-        j = ((JSONObject)localObject2).getInt("isShow");
-        label759:
-        i = j;
-        if (j != 0)
-        {
-          i = j;
-          if (((JSONObject)localObject2).has("QQVersion"))
-          {
-            i = j;
-            if (bdtd.a(((JSONObject)localObject2).getString("QQVersion"), "8.3.5"))
-            {
-              j = 0;
-              i = j;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("VoiceChangeManager", 2, "preCheckData Version out:i=" + k + ", timestamp:" + l1);
-                i = j;
-              }
-            }
-          }
-        }
-        if (i == 0)
-        {
-          paramJSONObject.jdField_b_of_type_Int = i;
-          break label1363;
-        }
-        if (!((JSONObject)localObject2).has("isEnable")) {
-          break label1406;
-        }
-        if (((JSONObject)localObject2).getInt("isEnable") != 1) {
-          break label1401;
-        }
-        i = 2;
-        label891:
-        localObject3 = ((JSONObject)localObject4).getString("icon");
-        if (TextUtils.isEmpty((CharSequence)localObject3))
-        {
-          QLog.e("VoiceChangeManager", 1, "preCheckData url Error null:");
-          label918:
-          paramJSONObject.jdField_b_of_type_Int = i;
-          if (1 != i) {
-            break label1050;
-          }
-          paramJSONObject.d = 1;
-          paramJSONObject.c = 0;
-          if (!TextUtils.isEmpty(((JSONObject)localObject4).getString("name"))) {
-            break label1103;
-          }
-          localObject2 = paramJSONObject.jdField_a_of_type_JavaLangString;
-          label958:
-          paramJSONObject.jdField_a_of_type_JavaLangString = ((String)localObject2);
-          if (!TextUtils.isEmpty(((JSONObject)localObject4).getString("description"))) {
-            break label1116;
-          }
-        }
-        label1050:
-        label1070:
-        label1095:
-        label1103:
-        label1116:
-        for (localObject2 = paramJSONObject.jdField_b_of_type_JavaLangString;; localObject2 = ((JSONObject)localObject4).getString("description"))
-        {
-          paramJSONObject.jdField_b_of_type_JavaLangString = ((String)localObject2);
-          paramJSONObject.jdField_a_of_type_Bedm.jdField_a_of_type_JavaLangString = ((String)localObject3);
-          break label1363;
-          localObject3 = bdrh.jdField_a_of_type_JavaLangString + (String)localObject3;
-          if (this.jdField_a_of_type_JavaUtilArrayList.contains(localObject3)) {
-            break label1409;
-          }
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-          break label1409;
-          if (!((JSONObject)localObject2).has("feeType")) {
-            break label1412;
-          }
-          i = ((JSONObject)localObject2).getInt("feeType");
-          paramJSONObject.d = i;
-          if (!((JSONObject)localObject2).has("tag")) {
-            break label1417;
-          }
-          i = ((JSONObject)localObject2).getInt("tag");
-          paramJSONObject.c = i;
-          break;
-          localObject2 = ((JSONObject)localObject4).getString("name");
-          break label958;
-        }
-        label1129:
-        if ((TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[0])) || (TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[1])) || (TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[2])))
-        {
-          paramArrayList = ((JSONObject)localObject1).getJSONArray("commmonData");
-          if (paramArrayList == null) {
-            break label1429;
-          }
+        MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+        if (localMessageRecord.istroop == 10002) {
+          ((ArrayList)localObject2).add(localMessageRecord.senderuin);
         }
       }
-    }
-    label1409:
-    label1412:
-    label1417:
-    label1429:
-    for (paramArrayList = paramArrayList.getJSONObject(0);; paramArrayList = null)
-    {
-      if (paramArrayList != null)
+      if (((List)localObject1).size() == ((ArrayList)localObject2).size())
       {
-        paramJSONObject = new String[3];
-        paramJSONObject[0] = "vipIcon";
-        paramJSONObject[1] = "svipIcon";
-        paramJSONObject[2] = "activityIcon";
-        i = 0;
+        if (QLog.isColorLevel()) {
+          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete total box");
+        }
+        paramQQAppInterface.a().a(anhk.H, 1001, anhk.aj, paramQQAppInterface.getCurrentAccountUin());
+        return;
       }
-      for (;;)
+      localObject1 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        if (i < paramJSONObject.length)
-        {
-          localObject1 = paramArrayList.getJSONObject(paramJSONObject[i]);
-          if (localObject1 != null)
-          {
-            localObject1 = ((JSONObject)localObject1).getString("src");
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              QLog.e("VoiceChangeManager", 1, "preCheckData common url Error null:" + paramJSONObject[i]);
-            }
-            else
-            {
-              localObject1 = bdrh.jdField_a_of_type_JavaLangString + (String)localObject1;
-              if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject1)) {
-                this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-              }
-              jdField_a_of_type_ArrayOfJavaLangString[i] = localObject1;
-            }
-          }
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (QLog.isColorLevel()) {
+          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete uin = " + (String)localObject2);
         }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            break label657;
-          }
-          QLog.d("VoiceChangeManager", 2, "preCheckData run ok");
-          break label657;
-          i = -1;
-          break label576;
-          label1357:
-          localObject2 = paramJSONObject;
-          break label533;
-          label1363:
-          k += 1;
-          break;
-          label1372:
-          paramJSONObject = null;
-          label1374:
-          i += 1;
-          break label339;
-          label1381:
-          j = -1;
-          break label388;
-          label1387:
-          break label533;
-          label1390:
-          paramJSONObject = null;
-          break label687;
-          label1395:
-          j = 2;
-          break label759;
-          label1401:
-          i = 1;
-          break label891;
-          label1406:
-          break label891;
-          break label918;
-          i = 1;
-          break label1070;
-          i = 0;
-          break label1095;
-        }
-        i += 1;
+        paramQQAppInterface.a().a(anhk.aj, 1001, (String)localObject2, paramQQAppInterface.getCurrentAccountUin());
       }
     }
   }
   
-  public void onDestroy() {}
+  private static final void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface.a().c(paramString, 1001);
+  }
+  
+  public static final void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  {
+    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2))) {
+      QLog.e("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, invalid parameters viewIndex =" + paramInt2 + " clearType = " + paramInt1 + " clearUin = " + paramString);
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, viewIndex =" + paramInt2 + " clearUin = " + paramString + " clearType = " + paramInt1);
+      }
+    } while (paramInt1 != 1);
+    switch (paramInt2)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramQQAppInterface, paramString);
+      return;
+    }
+    a(paramQQAppInterface, paramString);
+  }
+  
+  private static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    paramQQAppInterface.a().a(paramString2, 1001, paramString1, paramQQAppInterface.getCurrentAccountUin());
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
+  {
+    Object localObject = paramQQAppInterface.a(1001).a(anhk.aj, 1001);
+    paramQQAppInterface = paramQQAppInterface.a();
+    int i;
+    int j;
+    label47:
+    int m;
+    int k;
+    if (localObject == null)
+    {
+      i = 0;
+      if (i <= 0) {
+        break label127;
+      }
+      localObject = ((List)localObject).iterator();
+      j = 0;
+      i = 0;
+      m = j;
+      k = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break label133;
+      }
+      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+      if (localMessageRecord.istroop != 10002) {
+        break label167;
+      }
+      j = i + paramQQAppInterface.a(localMessageRecord.senderuin, localMessageRecord.istroop);
+      i = 1;
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      break label47;
+      i = ((List)localObject).size();
+      break;
+      label127:
+      m = 0;
+      k = 0;
+      label133:
+      if (m != 0) {}
+      try
+      {
+        paramJSONObject.put("redPointCount", k);
+        paramJSONObject.put("status", 1);
+        return;
+      }
+      catch (JSONException paramQQAppInterface)
+      {
+        QLog.e("SayHiMessageHelper", 1, "handleTribeSayHiBox Exception:", paramQQAppInterface);
+        return;
+      }
+      label167:
+      k = i;
+      i = j;
+      j = k;
+    }
+  }
+  
+  private static final JSONObject b(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    Object localObject = paramQQAppInterface.a(1001).a(anhk.H, 1001);
+    if (localObject == null)
+    {
+      QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, no tribe say hi info");
+      return null;
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    try
+    {
+      localJSONObject2.put("redPointCount", 0);
+      localJSONObject2.put("status", 0);
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+        if (anhk.aj.equals(localMessageRecord.senderuin))
+        {
+          a(paramQQAppInterface, localJSONObject2);
+          break label402;
+        }
+        if ((!anhk.al.equals(localMessageRecord.senderuin)) && (!anhk.am.equals(localMessageRecord.senderuin)) && (!anhk.an.equals(localMessageRecord.senderuin)) && (!anhk.ao.equals(localMessageRecord.senderuin)) && (!anhk.ap.equals(localMessageRecord.senderuin)))
+        {
+          localArrayList.add(localMessageRecord);
+          i = a(paramQQAppInterface, localMessageRecord) + i;
+          break label402;
+        }
+      }
+      paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
+      while (paramInt1 < paramInt2)
+      {
+        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
+        paramInt1 += 1;
+      }
+      localJSONObject1.put("greetingNodeInfo", localJSONObject2);
+      localJSONObject1.put("msgArray", localJSONArray);
+      localJSONObject1.put("redPointCount", i);
+      if (paramInt2 < localArrayList.size()) {
+        localJSONObject1.put("isEnd", 0);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, jsonResult = " + localJSONObject1.toString());
+        break;
+        localJSONObject1.put("isEnd", 1);
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      label402:
+      for (;;)
+      {
+        QLog.e("SayHiMessageHelper", 1, "getNewSayHiMessages Exception:", paramContext);
+        break;
+      }
+    }
+    return localJSONObject1;
+  }
+  
+  public static final void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  {
+    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2)))
+    {
+      QLog.e("SayHiMessageHelper", 1, "deleteTribeSayHiNode, invalid parameters msgType =" + paramInt2 + " deleteType = " + paramInt1 + " deleteUin = " + paramString);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("SayHiMessageHelper", 1, "deleteTribeSayHiNode, msgType =" + paramInt2 + " deleteUin = " + paramString + " deleteType = " + paramInt1);
+    }
+    if (paramInt1 == 1)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        return;
+      case 1: 
+        a(paramQQAppInterface, paramString, anhk.H);
+        return;
+      }
+      a(paramQQAppInterface, paramString, anhk.aj);
+      return;
+    }
+    a(paramQQAppInterface);
+  }
 }
 
 

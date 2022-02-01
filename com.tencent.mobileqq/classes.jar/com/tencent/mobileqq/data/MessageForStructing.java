@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import amjc;
+import acwh;
 import android.text.TextUtils;
-import awhp;
-import azvd;
+import aodi;
+import bcwd;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 public class MessageForStructing
   extends MessageForRichText
 {
-  @awhp
+  @notColumn
   public boolean bDynicMsg;
   public AbsStructMsg structingMsg;
   
@@ -79,13 +79,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = azvd.a(this.msgData);
+    this.structingMsg = bcwd.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = azvd.a(this.msgData);
+      this.structingMsg = bcwd.a(this.msgData);
     }
   }
   
@@ -100,7 +100,7 @@ public class MessageForStructing
     String str1 = str2;
     if (this.structingMsg != null)
     {
-      boolean bool = amjc.a(String.valueOf(this.structingMsg.mMsgServiceID));
+      boolean bool = aodi.a(String.valueOf(this.structingMsg.mMsgServiceID));
       str1 = str2;
       if ((this.structingMsg instanceof AbsShareMsg))
       {
@@ -144,7 +144,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return abti.x(this.istroop);
+    return acwh.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -175,7 +175,7 @@ public class MessageForStructing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForStructing
  * JD-Core Version:    0.7.0.1
  */

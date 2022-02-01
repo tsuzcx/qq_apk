@@ -1,21 +1,6 @@
-import com.tencent.common.app.AppInterface;
-
-class bkyy
-  extends bkzv
+public abstract interface bkyy
 {
-  bkyy(bkyw parambkyw, AppInterface paramAppInterface) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean) {
-      synchronized (bkyw.a(this.jdField_a_of_type_Bkyw))
-      {
-        bkyw.a(this.jdField_a_of_type_Bkyw, paramInt);
-        return;
-      }
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

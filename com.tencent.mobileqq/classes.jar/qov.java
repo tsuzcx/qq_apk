@@ -1,27 +1,26 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.List;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
+import com.tencent.qphone.base.util.QLog;
 
 public class qov
-  implements AdapterView.OnItemLongClickListener
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  public qov(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
-    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
-      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
+    try
+    {
+      pmh.a().a(paramLong1, System.currentTimeMillis());
+      return;
     }
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    return true;
+    catch (Exception localException)
+    {
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qov
  * JD-Core Version:    0.7.0.1
  */

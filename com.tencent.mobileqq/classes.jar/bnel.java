@@ -1,59 +1,31 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import dov.com.qq.im.ae.AEPituCameraUnit.30;
 
-class bnel
+public class bnel
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public bnel(AEPituCameraUnit.30 param30) {}
   
-  public bnel(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377427));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377449));
-    this.b = ((TextView)paramView.findViewById(2131377418));
-    this.c = ((TextView)paramView.findViewById(2131377417));
-    this.d = ((TextView)paramView.findViewById(2131377451));
-  }
-  
-  private void a(TextView paramTextView, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    bnzb.b("AEPituCameraUnit", "PermissionDialog--onClick which=" + paramInt);
+    Activity localActivity = bndy.a(this.a.this$0).a();
+    if (paramInt == 1)
     {
-      paramTextView.setVisibility(8);
-      return;
-    }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
-  }
-  
-  public void a(xoe paramxoe1, xoe paramxoe2)
-  {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramxoe1.jdField_a_of_type_Xof.jdField_a_of_type_JavaLangString);
-    a(this.b, paramxoe1.jdField_a_of_type_Xof.b);
-    if (paramxoe1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
+      localActivity.startActivity(localIntent);
     }
     for (;;)
     {
-      a(this.d, paramxoe1.jdField_a_of_type_JavaLangString);
-      if (!paramxoe1.equals(paramxoe2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846393);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#12B7F5"));
+      paramDialogInterface.dismiss();
       return;
-      a(this.c, paramxoe1.jdField_a_of_type_Int + alud.a(2131711455));
+      localActivity.finish();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846397);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 

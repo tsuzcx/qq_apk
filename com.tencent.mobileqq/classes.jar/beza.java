@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-
 public class beza
-  implements DialogInterface.OnShowListener
 {
-  public beza(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    ShareActionSheetV2.a(this.a, false);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onShow(paramDialogInterface);
-    }
-    ShareActionSheetV2.c(this.a);
-  }
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
 }
 
 

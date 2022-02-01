@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
 
 class bhug
-  implements View.OnClickListener
+  extends Handler
 {
-  bhug(bhuf parambhuf) {}
+  bhug(bhuf parambhuf, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onClick(View paramView) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - bhuf.a(this.a).getHeight(), true);
+    }
+    super.handleMessage(paramMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhug
  * JD-Core Version:    0.7.0.1
  */

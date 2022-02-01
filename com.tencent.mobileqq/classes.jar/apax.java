@@ -1,26 +1,25 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.XEditTextEx;
+import java.util.ArrayList;
 
-class apax
-  implements View.OnClickListener
+public class apax
+  extends apbj
 {
-  apax(apau paramapau, String paramString) {}
+  public long a;
+  public ArrayList<aowg> a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public apax()
   {
-    apau.a(this.jdField_a_of_type_Apau).removeCallbacks(apau.a(this.jdField_a_of_type_Apau));
-    apau.a(this.jdField_a_of_type_Apau).run();
-    int i = apau.a(this.jdField_a_of_type_Apau).getSelectionStart();
-    paramView = apau.a(this.jdField_a_of_type_Apau).getEditableText();
-    if ((i < 0) || (i >= paramView.length()))
-    {
-      paramView.append(this.jdField_a_of_type_JavaLangString);
-      return;
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
     }
-    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
   }
 }
 

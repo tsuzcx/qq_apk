@@ -1,34 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import mqq.app.Foreground;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alzk
+  implements View.OnClickListener
 {
-  public static String a()
+  public alzk(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void onClick(View paramView)
   {
-    Activity localActivity = Foreground.getTopActivity();
-    String str;
-    if (localActivity != null)
-    {
-      str = localActivity.getClass().getName();
-      if ((localActivity instanceof SplashActivity))
-      {
-        if (SplashActivity.a == 1) {
-          return str + "_" + ((SplashActivity)localActivity).a();
-        }
-        return str + "_ChatFragment";
-      }
-    }
-    else
-    {
-      return "Null";
-    }
-    return str;
+    Object localObject = anni.a(2131712608);
+    localObject = bglp.a(SessionClearFragment.a(this.a), 230, anni.a(2131712610), (String)localObject, 2131693977, 2131719210, new alzl(this), new alzm(this));
+    SessionClearFragment.a(this.a, (Dialog)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzk
  * JD-Core Version:    0.7.0.1
  */

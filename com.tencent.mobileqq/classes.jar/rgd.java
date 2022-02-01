@@ -1,24 +1,57 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class rgd
-  extends oxe
+public final class rgd
+  implements Parcelable.Creator<RecommendFollowInfo>
 {
-  private rgd(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void j()
+  public RecommendFollowInfo a(Parcel paramParcel)
   {
-    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
+    boolean bool2 = true;
+    RecommendFollowInfo localRecommendFollowInfo = new RecommendFollowInfo();
+    localRecommendFollowInfo.uin = paramParcel.readLong();
+    localRecommendFollowInfo.type = paramParcel.readInt();
+    localRecommendFollowInfo.recommendReason = paramParcel.readString();
+    localRecommendFollowInfo.nickName = paramParcel.readString();
+    localRecommendFollowInfo.headUrl = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      ((VideoFeedsPlayActivity)this.a.getActivity()).e();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      bool1 = true;
+      localRecommendFollowInfo.isVip = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label139;
+      }
+      bool1 = true;
+      label82:
+      localRecommendFollowInfo.isStar = bool1;
+      localRecommendFollowInfo.algorithmId = paramParcel.readLong();
+      localRecommendFollowInfo.strategyId = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label144;
+      }
     }
+    label139:
+    label144:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localRecommendFollowInfo.isFollowed = bool1;
+      localRecommendFollowInfo.className = paramParcel.readString();
+      return localRecommendFollowInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label82;
+    }
+  }
+  
+  public RecommendFollowInfo[] a(int paramInt)
+  {
+    return new RecommendFollowInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgd
  * JD-Core Version:    0.7.0.1
  */

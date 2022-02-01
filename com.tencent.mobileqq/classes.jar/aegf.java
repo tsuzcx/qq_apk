@@ -1,38 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.Map;
 
 public class aegf
-  implements View.OnClickListener
+  extends anmu
 {
-  public aegf(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  public aegf(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = (amdu)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.a(20);
-    String str;
-    if (paramView != null)
-    {
-      paramView.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label145;
-      }
+    if (paramBoolean1) {
+      this.a.a();
     }
-    label145:
-    for (paramView = "0";; paramView = "1")
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, paramView, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      return;
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.a();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

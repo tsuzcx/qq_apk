@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import azqx;
+import bcsy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -20,17 +20,17 @@ public class RecentDarenAssistantItem
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = BaseApplicationImpl.getContext().getString(2131694557);
+    this.mTitleName = BaseApplicationImpl.getContext().getString(2131693823);
     if (!this.mIsHasReportExp)
     {
       this.mIsHasReportExp = true;
-      new azqx(null).a("dc00899").b("grp_lbs").c("vip_tips").d("exp").a();
+      new bcsy(null).a("dc00899").b("grp_lbs").c("vip_tips").d("exp").a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentDarenAssistantItem
  * JD-Core Version:    0.7.0.1
  */

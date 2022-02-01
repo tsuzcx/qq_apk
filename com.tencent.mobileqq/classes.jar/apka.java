@@ -1,53 +1,19 @@
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class apka
-  extends bead
+public class apka
+  implements DialogInterface.OnClickListener
 {
-  apka(apjy paramapjy, String paramString1, String paramString2, String paramString3) {}
+  public apka(ArkAppYYBDownloadModule.7 param7) {}
   
-  public void onDone(beae parambeae)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool;
-    int i;
-    if (parambeae.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
-      }
-      parambeae = apjy.a(this.jdField_a_of_type_Apjy, this.b);
-      if (this.c.equalsIgnoreCase(parambeae))
-      {
-        apjy.a(this.jdField_a_of_type_Apjy, this.b);
-        apjy.a(this.jdField_a_of_type_Apjy, apjy.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
-        bdne.d(BaseApplication.getContext(), false);
-        DuiButtonImageView.a();
-        bool = true;
-        i = 0;
-      }
+    if (this.a.a != null) {
+      apjw.a(this.a.this$0, this.a.a, this.a.a.g);
     }
-    for (;;)
-    {
-      parambeae = new HashMap();
-      parambeae.put("param_FailCode", String.valueOf(i));
-      azri.a(BaseApplication.getContext()).a(null, "doutuResDownload", bool, 0L, 0L, parambeae, "");
-      apjy.jdField_a_of_type_Boolean = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
-      }
-      i = 80704;
-      bdhb.d(this.b);
-      bool = false;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambeae.b + " code=" + parambeae.a);
-      }
-      i = parambeae.a;
-      bool = false;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

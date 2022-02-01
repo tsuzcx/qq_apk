@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class aejn
-  implements Comparator<aejp>
+  implements DialogInterface.OnDismissListener
 {
-  private aejn(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejn(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public int a(aejp paramaejp1, aejp paramaejp2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return paramaejp1.f.compareToIgnoreCase(paramaejp2.f);
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
+    }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    bctj.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

@@ -1,74 +1,36 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils.1;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class auxa
-  implements BusinessObserver
+class auxa
+  extends View.AccessibilityDelegate
 {
-  public auxa(NearbyUtils.1 param1) {}
+  auxa(auwx paramauwx, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramInt = localWebSsoResponseBody.ret.get();
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          if (paramInt != 0)
-          {
-            paramBundle = paramBundle.optString("msg");
-            if (!TextUtils.isEmpty(paramBundle)) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
-            }
-          }
-          else
-          {
-            paramBundle = paramBundle.optString("signature");
-            if (QLog.isColorLevel()) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
-            }
-            try
-            {
-              if (TextUtils.isEmpty(paramBundle)) {
-                return;
-              }
-              if (this.a.jdField_a_of_type_Int != 0) {
-                break label283;
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, bdfr.decode(paramBundle, 0));
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-            }
-            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
-            return;
-          }
-        }
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
       }
-      catch (Exception paramBundle)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel())
+        Object localObject = (MessageForGrayTips.HightlightItem)localIterator.next();
+        if (localObject != null)
         {
-          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
-          return;
-          label283:
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, bdfr.decode(paramBundle, 0));
+          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HightlightItem)localObject).start, ((MessageForGrayTips.HightlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
+          if (localObject.length > 0) {
+            localObject[0].onClick(paramView);
+          }
         }
       }
     }
@@ -76,7 +38,7 @@ public class auxa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxa
  * JD-Core Version:    0.7.0.1
  */

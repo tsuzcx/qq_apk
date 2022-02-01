@@ -1,19 +1,19 @@
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class azqy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static void a(String paramString1, String paramString2)
+  public azqy(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    paramString1 = new Exception(paramString1);
-    if (paramString2 == null)
-    {
-      azpo.a(paramString1);
-      return;
-    }
-    azpo.a(paramString1, paramString2);
+    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramValueAnimator.x, paramValueAnimator.y);
   }
 }
 

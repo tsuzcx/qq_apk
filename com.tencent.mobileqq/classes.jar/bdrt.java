@@ -1,39 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.HorizontalListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bdrt
-  extends RecyclerView.ViewHolder
-  implements AdapterView.OnItemClickListener
+class bdrt
+  implements Animation.AnimationListener
 {
-  bdrm jdField_a_of_type_Bdrm;
-  bdrr jdField_a_of_type_Bdrr;
-  bdrs jdField_a_of_type_Bdrs;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  bdrt(bdrs parambdrs) {}
   
-  public bdrt(View paramView, bdrr parambdrr, bdrs parambdrs, bdrm parambdrm)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364458));
-    this.jdField_a_of_type_Bdrs = parambdrs;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bdrs);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Bdrr = parambdrr;
-    this.jdField_a_of_type_Bdrm = parambdrm;
+    this.a.a.e();
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_Bdrs.a(paramInt);
-    this.jdField_a_of_type_Bdrm.a(-1);
-    if (this.jdField_a_of_type_Bdrr != null)
-    {
-      paramAdapterView = new bdro(2, null, ((Integer)this.jdField_a_of_type_Bdrs.getItem(paramInt)).intValue(), null);
-      this.jdField_a_of_type_Bdrr.a(paramAdapterView);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

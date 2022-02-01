@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.olympic.TorchInfo;
 
-class aykb
-  implements View.OnClickListener
+public abstract interface aykb
 {
-  aykb(ayjz paramayjz) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
-  }
+  public abstract void a(TorchInfo paramTorchInfo);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

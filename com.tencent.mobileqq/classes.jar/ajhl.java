@@ -1,51 +1,72 @@
-import android.content.Intent;
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
 import mqq.os.MqqHandler;
 
 class ajhl
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  ajhl(ajgb paramajgb, int paramInt1, String paramString, int paramInt2) {}
+  ajhl(ajhk paramajhk) {}
   
-  public void onClick(View paramView)
+  private void a()
   {
-    Intent localIntent = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), QQBrowserActivity.class);
-    localIntent.putExtra("individuation_url_type", 40100);
-    paramView = bdtg.a(ajgb.a(this.jdField_a_of_type_Ajgb), "theme", "mvip.gongneng.android.theme.index_dynamic_tab");
-    Object localObject = new StringBuilder().append(paramView);
-    if (paramView.contains("?"))
+    if (ajhk.a(this.a) != null) {
+      ajhk.a(this.a).setRefreshing(false);
+    }
+    if (ajhk.a(this.a) != null) {
+      ajhk.a(this.a).setRefresh(false);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramView = "&";
-      paramView = paramView;
-      localObject = paramView + "dialog_source=other&authresult=" + this.jdField_a_of_type_Int;
-      paramView = (View)localObject;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!((String)localObject).contains("id=[id]")) {
-          break label266;
+    default: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+      label146:
+      do
+      {
+        return false;
+        QQToast.a(this.a.a(), 1, 2131718227, 0).b(ajhk.a(this.a));
+        a();
+        return false;
+        int i = paramMessage.arg1;
+        if (paramMessage.arg2 == 1) {}
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label146;
+          }
+          ajhk.a(this.a);
+          if (ajhk.a(this.a) == null) {
+            break;
+          }
+          ajhk.a(this.a).a(0);
+          this.a.a.sendEmptyMessageDelayed(5, 800L);
+          return false;
         }
-      }
+        a();
+        QQToast.a(this.a.a(), 1, 2131718227, 0).b(ajhk.a(this.a));
+        return false;
+        a();
+        return false;
+        ajhk.a(this.a, true, true);
+        return false;
+      } while ((ajhk.a(this.a) == null) || (ajhk.a(this.a) == null));
+      ajhk.a(this.a).a(ajhk.a(this.a).getScrollY(), ajhk.a(this.a).a());
+      return false;
     }
-    label266:
-    for (paramView = ((String)localObject).replace("[id]", this.jdField_a_of_type_JavaLangString);; paramView = (String)localObject + "&id=" + this.jdField_a_of_type_JavaLangString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "theme market url: " + paramView);
-      }
-      VasWebviewUtil.openQQBrowserWithoutAD(ajgb.a(this.jdField_a_of_type_Ajgb), paramView, 32L, localIntent, true, -1);
-      azqs.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.b), "", "", "");
-      ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(16).sendToTarget();
-      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
-      return;
-      paramView = "?";
-      break;
-    }
+    this.a.f();
+    return false;
   }
 }
 

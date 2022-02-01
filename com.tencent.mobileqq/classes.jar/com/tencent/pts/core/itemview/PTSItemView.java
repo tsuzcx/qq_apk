@@ -90,6 +90,11 @@ public class PTSItemView
       PTSLog.e("PTSItemView", "[bindData], appInstance is null.");
       return;
     }
+    if (paramPTSAppInstance.getRootNode() == null)
+    {
+      PTSLog.e("PTSItemView", "[bindData], appInstance.getRootNode is null.");
+      return;
+    }
     updateAppInstance(paramPTSAppInstance);
     PTSNodeInfo localPTSNodeInfo = paramPTSAppInstance.getRootNode().getRootNodeInfo();
     if (localPTSNodeInfo == null)
@@ -107,7 +112,7 @@ public class PTSItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemView
  * JD-Core Version:    0.7.0.1
  */

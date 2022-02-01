@@ -1,48 +1,39 @@
-import com.tencent.biz.qqcircle.download.QCircleResourceDownloadManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Set;
+import java.util.Map;
 
 public class twf
-  implements baug
 {
-  public twf(QCircleResourceDownloadManager.2 param2) {}
-  
-  public void onResp(bavf parambavf)
+  public static String a(String paramString)
   {
-    twe.a(this.a.this$0).remove(this.a.a);
-    QLog.i(twe.a, 1, "download  onResp url:  resultcode: " + parambavf.c);
-    QLog.i(twe.a, 1, "downloadFinish downloadSavePath" + this.a.b);
-    if (twe.a(this.a.this$0, this.a.a)) {
+    String str1;
+    if ((paramString != null) && (paramString.length() < 5)) {
+      str1 = (String)tur.a.get(paramString);
+    }
+    for (;;)
+    {
+      String str3 = str1;
+      if (str1 == null) {
+        str3 = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
+      }
+      return str3;
       try
       {
-        parambavf = this.a.this$0.a(this.a.a);
-        File localFile = new File(this.a.b);
-        QLog.d(twe.a, 4, "start unzip file to folderPath:" + parambavf);
-        ndr.a(localFile, parambavf);
-        bdhb.a(localFile);
-        QLog.i(twe.a, 1, "unzip success");
-        twe.a(this.a.this$0, this.a.a, this.a.c);
-        twe.a(this.a.this$0, this.a.a, true, parambavf);
-        return;
+        int i = Integer.parseInt(paramString);
+        str1 = String.valueOf(i);
       }
-      catch (Exception parambavf)
+      catch (Exception localException)
       {
-        twe.a(this.a.this$0, this.a.a, false, "");
-        QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambavf);
-        return;
+        String str2 = (String)tur.a.get(paramString);
       }
     }
-    QLog.i(twe.a, 1, "is not zip file, not need upzip");
-    twe.a(this.a.this$0, this.a.a, this.a.c);
-    twe.a(this.a.this$0, this.a.a, true, this.a.b);
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     twf
  * JD-Core Version:    0.7.0.1
  */

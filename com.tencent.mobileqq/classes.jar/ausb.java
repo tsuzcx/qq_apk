@@ -1,25 +1,22 @@
-public class ausb
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+
+public abstract class ausb
+  extends RecyclerView.ViewHolder
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  
-  public ausb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public ausb(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    super(paramView);
   }
+  
+  public abstract void a(FeedsItemData paramFeedsItemData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausb
  * JD-Core Version:    0.7.0.1
  */

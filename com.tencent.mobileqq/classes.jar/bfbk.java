@@ -1,13 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public class bfbk
+class bfbk
+  implements bkia
 {
-  public static void a()
+  bfbk(bfbi parambfbi) {}
+  
+  public void ak_()
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "doPtloginCancel");
-    QIPCClientHelper.getInstance().callServer("open_sdk_qipc_module", "action_ptlogin_cancel", new Bundle());
+    if (bfbi.a(this.a) != null) {
+      bfbi.a(this.a).a();
+    }
   }
 }
 

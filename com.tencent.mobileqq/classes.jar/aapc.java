@@ -1,139 +1,47 @@
-import android.annotation.SuppressLint;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aapc
-  implements View.OnTouchListener
+  extends aapz
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aapd jdField_a_of_type_Aapd;
-  private List<WeakReference<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c;
-  private int d;
-  
-  String a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  public aapc(VideoCombineHelper.3 param3)
   {
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = System.currentTimeMillis();
-    long l4 = this.jdField_b_of_type_Long;
-    long l5 = System.currentTimeMillis();
-    long l6 = this.jdField_a_of_type_Long;
-    int i;
-    int j;
-    int k;
-    Object localObject;
-    if (paramBoolean1)
+    super(param3.this$0);
+  }
+  
+  public void a(aapy paramaapy)
+  {
+    do
     {
-      i = 1;
-      j = azkz.b(BaseApplicationImpl.getContext());
-      k = azkz.a(BaseApplicationImpl.getContext());
-      localObject = new JSONObject();
-    }
-    for (;;)
-    {
-      try
+      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
       {
-        ((JSONObject)localObject).put("g", String.valueOf(l1 - l2));
-        ((JSONObject)localObject).put("sc", String.valueOf(l3 - l4));
-        ((JSONObject)localObject).put("ec", String.valueOf(l5 - l6));
-        ((JSONObject)localObject).put("aa", String.valueOf(this.jdField_a_of_type_Int));
-        ((JSONObject)localObject).put("ab", String.valueOf(this.jdField_b_of_type_Int));
-        ((JSONObject)localObject).put("ba", String.valueOf(this.c));
-        ((JSONObject)localObject).put("bb", String.valueOf(this.d));
-        ((JSONObject)localObject).put("d", String.valueOf(0));
-        ((JSONObject)localObject).put("p", String.valueOf(paramLong));
-        ((JSONObject)localObject).put("f", String.valueOf(0));
-        ((JSONObject)localObject).put("x", String.valueOf(i));
-        ((JSONObject)localObject).put("sz", String.valueOf(-999));
-        ((JSONObject)localObject).put("da", String.valueOf(k));
-        ((JSONObject)localObject).put("db", String.valueOf(j));
-        if (!paramBoolean2) {
-          continue;
-        }
-        i = 2;
-        ((JSONObject)localObject).put("vca", String.valueOf(i));
-      }
-      catch (Exception localException)
-      {
-        String str;
-        aase.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", localException);
-        continue;
-        paramString = "?";
-        continue;
-      }
-      str = ((JSONObject)localObject).toString();
-      localObject = paramString;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject = paramString;
-        if (!paramString.contains("&s={"))
+        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramaapy.c);
+        if ((paramaapy instanceof aapt))
         {
-          localObject = new StringBuilder().append(paramString);
-          if (!paramString.contains("?")) {
-            continue;
-          }
-          paramString = "&";
-          localObject = paramString + "s=" + str;
-          aase.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString click url result : " + (String)localObject);
+          this.a.jdField_a_of_type_Aapi.a("", false, "download failed! msg = " + paramaapy.d);
+          return;
         }
       }
-      return localObject;
-      i = 0;
-      break;
-      i = 1;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aapd = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      View localView = (View)((WeakReference)localIterator.next()).get();
-      if (localView != null) {
-        localView.setOnTouchListener(null);
+      if ((paramaapy instanceof aapl))
+      {
+        this.a.jdField_a_of_type_Aapi.a("", false, "combine failed! msg = " + paramaapy.d);
+        return;
       }
-    }
+    } while (!(paramaapy instanceof aapw));
+    this.a.jdField_a_of_type_Aapi.a("", false, "sending failed! msg = " + paramaapy.d);
   }
   
-  void a(View paramView)
+  public void b(aapy paramaapy)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramView));
-    paramView.setOnTouchListener(this);
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
+    aapk localaapk = paramaapy.a();
+    if (((paramaapy instanceof aapl)) || (localaapk.b)) {}
+    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
-      continue;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.c = ((int)paramMotionEvent.getRawX());
-      this.d = ((int)paramMotionEvent.getRawY());
-      if (this.jdField_a_of_type_Aapd != null) {
-        this.jdField_a_of_type_Aapd.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
-      }
+      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramaapy.c);
+      this.a.jdField_a_of_type_Aapi.a(localaapk.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
     }
   }
 }

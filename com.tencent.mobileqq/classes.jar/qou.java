@@ -1,22 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class qou
-  implements qpr
+class qou
+  extends qnn
 {
-  public qou(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  qou(qot paramqot) {}
   
-  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, true);
-    ReadInJoyDeliverUGCActivity.a(this.a, ((Integer)paramView.getTag()).intValue());
-    return false;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = pmh.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
+    {
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
+      }
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
+    }
+    localObject = new Object[1];
+    localObject[0] = qor.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
+    }
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qou
  * JD-Core Version:    0.7.0.1
  */

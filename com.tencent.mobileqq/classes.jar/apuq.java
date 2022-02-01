@@ -1,34 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
 
-class apuq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class apuq
+  implements DialogInterface.OnClickListener
 {
-  apuq(apuo paramapuo, ImageView paramImageView) {}
+  public apuq(DynamicAvatarRecordActivity.11 param11) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_Apuo.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() != 0)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        localLayoutParams.height = ((int)(this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() * 0.6F));
-        localLayoutParams.width = ((int)(localLayoutParams.height * 1.3F));
-        localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_Apuo.a.a.getMeasuredHeight() * 0.08F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      }
-      return;
-      this.jdField_a_of_type_Apuo.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    this.a.this$0.finish();
   }
 }
 

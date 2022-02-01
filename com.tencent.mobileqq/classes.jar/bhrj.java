@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhrj
-  implements LowLightResource
+class bhrj
+  implements View.OnClickListener
 {
-  public String getLowLightDir()
+  bhrj(bhri parambhri) {}
+  
+  public void onClick(View paramView)
   {
-    return alof.aX;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrj
  * JD-Core Version:    0.7.0.1
  */

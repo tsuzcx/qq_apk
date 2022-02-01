@@ -20,7 +20,7 @@ public final class oidb_cmd0xbe4$MsgContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgContent
  * JD-Core Version:    0.7.0.1
  */

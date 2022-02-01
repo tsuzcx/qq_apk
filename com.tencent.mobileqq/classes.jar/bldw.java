@@ -1,95 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveLaunchFragment;
 
-class bldw
-  implements TextWatcher
+public class bldw
+  implements LoadSoCallback
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public bldw(IliveLaunchFragment paramIliveLaunchFragment, long paramLong) {}
   
-  bldw(blds paramblds) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onLoad(boolean paramBoolean)
   {
-    int j;
-    int i;
-    int m;
-    int k;
-    if (paramEditable.length() > 0)
+    QLog.e("IliveLaunchActivity", 1, "initVideoSDK loadSo = " + paramBoolean);
+    blet.b("IliveLaunch initVideoSDK");
+    if (paramBoolean)
     {
-      blds.a(this.jdField_a_of_type_Blds).setVisibility(0);
-      j = 1;
-      i = 0;
-      m = 0;
-      k = 0;
-    }
-    char c;
-    label55:
-    int n;
-    for (;;)
-    {
-      if (i < paramEditable.length())
-      {
-        c = paramEditable.charAt(i);
-        if (c == '\n')
-        {
-          return;
-          blds.a(this.jdField_a_of_type_Blds).setVisibility(4);
-          j = 1;
-          i = 0;
-          m = 0;
-          k = 0;
-        }
-        else
-        {
-          n = j;
-          if (c == ' ')
-          {
-            if (j == 0) {
-              break label244;
-            }
-            n = 0;
-            m = i;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      k += blds.a(this.jdField_a_of_type_Blds, c);
-      if ((k > 16) && (!this.jdField_a_of_type_Boolean))
-      {
-        blds.a(this.jdField_a_of_type_Blds).removeTextChangedListener(this);
-        if (n == 0) {
-          blds.a(this.jdField_a_of_type_Blds).setText(paramEditable.insert(m, "\r\n"));
-        }
-        for (;;)
-        {
-          blds.a(this.jdField_a_of_type_Blds).setSelection(paramEditable.length());
-          this.jdField_a_of_type_Boolean = true;
-          blds.a(this.jdField_a_of_type_Blds).addTextChangedListener(this);
-          return;
-          blds.a(this.jdField_a_of_type_Blds).setText(paramEditable.insert(i, "\r\n"));
-        }
-      }
-      i += 1;
-      j = n;
-      break;
-      if (k > 16) {
-        break label55;
-      }
-      this.jdField_a_of_type_Boolean = false;
+      blet.a("IliveLaunch initSDKAsync");
+      azwq.a(BaseApplicationImpl.getApplication(), new bldx(this));
       return;
-      label244:
-      m = i;
-      n = j;
     }
+    this.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

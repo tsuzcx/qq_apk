@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import aeze;
+import Override;
+import agfq;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -13,6 +16,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ConfessHalfScreenActivity
   extends QQBrowserActivity
@@ -31,13 +35,21 @@ public class ConfessHalfScreenActivity
     BaseApplicationImpl.getContext().sendBroadcast(localIntent);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167140);
-    paramBundle = findViewById(2131363457);
+    getWindow().setBackgroundDrawableResource(2131167224);
+    paramBundle = findViewById(2131363653);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167140);
+      paramBundle.setBackgroundResource(2131167224);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -48,7 +60,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aeze(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agfq(this);
     }
     try
     {
@@ -93,10 +105,17 @@ public class ConfessHalfScreenActivity
     ThreadManager.executeOnSubThread(new ConfessHalfScreenActivity.2(this));
     new Handler().postDelayed(new ConfessHalfScreenActivity.3(this), 200L);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

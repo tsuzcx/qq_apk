@@ -1,77 +1,53 @@
+import android.content.Intent;
+import android.view.View;
 import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
-public class mdg
-  extends mdh
+class mdg
+  implements View.OnClickListener
 {
-  WeakReference<View.OnClickListener> a = null;
-  int f = 0;
-  int g = 0;
-  int h = -1;
-  int i = -1;
-  int j = -1;
+  mdg(mdf parammdf) {}
   
-  public mdg(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.f = paramInt5;
-    this.g = paramInt6;
-    if (paramOnClickListener != null) {
-      this.a = new WeakReference(paramOnClickListener);
-    }
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public View.OnClickListener a()
-  {
-    if ((this.a == null) || (this.a.isEnqueued())) {
-      return null;
-    }
-    return (View.OnClickListener)this.a.get();
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null)
+    int i = 0;
+    mdi localmdi = (mdi)paramView.getTag();
+    if (mdf.a(this.a) == null)
     {
-      this.a = new WeakReference(paramOnClickListener);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a = null;
-  }
-  
-  public int f()
-  {
-    return this.f;
-  }
-  
-  public int g()
-  {
-    return this.g;
-  }
-  
-  public int h()
-  {
-    return this.h;
-  }
-  
-  public int i()
-  {
-    return this.i;
-  }
-  
-  public int j()
-  {
-    return this.j;
+    bcst.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(localmdi.jdField_a_of_type_Long));
+    }
+    mdf.a(this.a).getCurrentAccountUin();
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
+    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
+    localIntent.putExtra("memberUin", String.valueOf(localmdi.jdField_a_of_type_Long));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      i = 1000;
+    }
+    for (;;)
+    {
+      localIntent.putExtra("uinType", i);
+      localIntent.setPackage(mdf.a(this.a).getApplication().getPackageName());
+      mdf.a(this.a).getApp().sendBroadcast(localIntent);
+      break;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        i = 1004;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdg
  * JD-Core Version:    0.7.0.1
  */

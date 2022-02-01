@@ -1,35 +1,33 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public class bniu
+class bniu
+  implements Animator.AnimatorListener
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
+  bniu(bniq parambniq) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      if (bnit.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        bnit.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          bnit.b = false;
-        }
-        return localByteBuffer2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    if (bniq.a(this.a) != null)
     {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
+      bniq.a(this.a).setAlpha(1.0F);
+      bniq.a(this.a).setVisibility(4);
+      bniq.a(this.a).b().postValue(Boolean.valueOf(false));
     }
+    bniq.d(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,467 +1,654 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.media.MediaPlayer;
 import android.text.TextUtils;
+import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.map.geolocation.internal.TencentExtraKeys;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.3.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.3.2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
-public final class ampr
-  implements TencentLocationListener
+public class ampr
+  implements amqs
 {
-  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
+  public static List<ampr> a;
+  private int jdField_a_of_type_Int;
+  private ampy jdField_a_of_type_Ampy;
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new ampx(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  
+  static
   {
-    if (paramTencentLocation == null) {}
-    int k;
-    do
+    jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  }
+  
+  public ampr(int paramInt1, int paramInt2, String arg3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    amrk localamrk = ampj.a(paramInt2);
+    if (localamrk != null) {
+      localamrk.b(0);
+    }
+    if ("effect".equals(???)) {
+      if (localamrk != null) {
+        this.jdField_a_of_type_Ampy = new ampy(paramInt2);
+      }
+    }
+    for (;;)
+    {
+      if (jdField_a_of_type_JavaUtilList != null) {}
+      synchronized (jdField_a_of_type_JavaUtilList)
+      {
+        jdField_a_of_type_JavaUtilList.add(this);
+        this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+        return;
+        QLog.e("CmGameAudioPlayer", 1, "can not create pool");
+        continue;
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+        a(1);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new amps(this));
+      }
+    }
+  }
+  
+  private void a(amqr paramamqr, JSONObject paramJSONObject)
+  {
+    if (paramamqr != null) {
+      paramamqr.a(paramJSONObject);
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {}
+    for (;;)
     {
       return;
-      k = paramTencentLocation.getExtra().getInt("qq_level");
-      if ((3 != k) || (paramInt != 0)) {
-        break label202;
-      }
-      if (!TextUtils.isEmpty(paramTencentLocation.getCityCode())) {
-        break;
-      }
-      SosoInterface.a(SosoInterface.a() + 1);
-      if (SosoInterface.a() >= 12)
+      if (paramBoolean) {}
+      for (int i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2); QLog.isColorLevel(); i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener))
       {
-        paramTencentLocation = new HashMap();
-        paramTencentLocation.put("level_3_no_citycode", String.valueOf(SosoInterface.a()));
-        paramString = apks.a();
-        azri.a(BaseApplicationImpl.getContext()).a(paramString, "actSoSoNoCityCodeTimeout", true, 0L, 0L, paramTencentLocation, "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null");
-    return;
-    Object localObject1;
-    Object localObject2;
-    if (SosoInterface.a() > 0)
-    {
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("level_3_no_citycode", String.valueOf(SosoInterface.a()));
-      localObject2 = apks.a();
-      azri.a(BaseApplicationImpl.getContext()).a((String)localObject2, "actSoSoNoCityCode", true, 0L, 0L, (HashMap)localObject1, "");
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null, count : " + SosoInterface.a());
+        QLog.d("CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
+        return;
       }
     }
-    label202:
-    SosoInterface.a(0);
-    SosoInterface.a().removeMessages(1001);
-    boolean bool2;
-    long l;
-    String str;
-    boolean bool1;
-    boolean bool3;
-    boolean bool4;
-    Object localObject5;
-    label346:
-    Object localObject3;
-    label385:
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public int a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(paramInt);
+  }
+  
+  public String a()
+  {
+    try
+    {
+      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+      if (localMediaPlayer != null) {}
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        if (this.jdField_a_of_type_Ampy != null)
+        {
+          this.jdField_a_of_type_Ampy.c();
+          this.jdField_a_of_type_Ampy = null;
+          return null;
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          QLog.e("CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
+        }
+      }
+      return null;
+    }
+    catch (Throwable localThrowable2)
+    {
+      QLog.e("CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
+    }
+  }
+  
+  public JSONObject a(float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (a() != 9) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat1, paramFloat2);
+      }
+    }
+    else {
+      return paramJSONObject;
+    }
+    QLog.e("CmGameAudioPlayer", 1, " volume in  state " + a());
+    return paramJSONObject;
+  }
+  
+  public JSONObject a(int paramInt, JSONObject paramJSONObject, amqr paramamqr)
+  {
     int i;
-    label447:
-    label504:
-    int m;
-    TencentLocation localTencentLocation;
-    Object localObject8;
-    Object localObject6;
-    Object localObject7;
-    Object localObject4;
-    Object localObject9;
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
     {
-      bool2 = true;
-      SosoInterface.b(paramInt);
-      l = SystemClock.elapsedRealtime() - SosoInterface.a() - SosoInterface.b();
-      SosoInterface.a(SystemClock.elapsedRealtime());
-      SosoInterface.c(SosoInterface.a);
-      str = paramTencentLocation.getExtra().getString("qq_caller");
-      localObject2 = paramTencentLocation.getExtra().getString("qq_caller_route");
-      bool1 = paramTencentLocation.getExtra().getBoolean("qq_goonListener");
-      bool3 = paramTencentLocation.getExtra().getBoolean("qq_reqLocation");
-      bool4 = paramTencentLocation.getExtra().getBoolean("qq_allowGps");
-      localObject5 = TencentExtraKeys.getRawData(paramTencentLocation);
-      SosoInterface.a(paramInt);
-      if (bool3)
-      {
-        if (!bool2) {
-          break label934;
-        }
-        SosoInterface.d(0);
+      i = a();
+      if ((i != 3) && (i != 5) && (i != 7) && (i != 10)) {
+        break label66;
       }
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder().append("onLocationChanged() err=").append(paramInt);
-        if ((paramString != null) && (paramString.length() != 0)) {
-          break label941;
-        }
-        localObject1 = "";
-        localObject1 = ((StringBuilder)localObject3).append((String)localObject1).append(" caller=").append(str).append(" level=").append(k).append(" reqLocation=").append(bool3).append(" consume=").append(l).append(" rawData=");
-        if (localObject5 != null) {
-          break label966;
-        }
-        i = 0;
-        localObject1 = ((StringBuilder)localObject1).append(i).append(" isGoonCallback=").append(bool1).append(" failInt=").append(SosoInterface.d()).append(" caller rote: ").append((String)localObject2).append(" verify key length:");
-        if (paramTencentLocation.getVerifyKey() != null) {
-          break label974;
-        }
-        i = 0;
-        QLog.d("SOSO.LBS", 2, i + " source:" + paramTencentLocation.getSourceProvider() + " adcode :" + paramTencentLocation.getCityCode() + " lon*lat :" + (int)(paramTencentLocation.getLongitude() * paramTencentLocation.getLatitude()));
-      }
-      m = 0;
-      bool1 = false;
-      localTencentLocation = null;
-      localObject8 = null;
-      localObject6 = null;
-      localObject1 = null;
-      localObject7 = null;
-      localObject3 = null;
-      localObject4 = null;
-      localObject2 = null;
-      localObject9 = SosoInterface.a();
-      if ((paramInt == 0) && (!bool3)) {}
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new ampt(this, paramJSONObject, paramamqr));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
     }
-    int j;
+    for (;;)
+    {
+      return null;
+      label66:
+      QLog.e("CmGameAudioPlayer", 1, " seek in  state " + i);
+    }
+  }
+  
+  public JSONObject a(amqr paramamqr, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      try
+      {
+        if (paramJSONObject.optInt("N_R_OBJ") == this.jdField_a_of_type_Int)
+        {
+          String str = paramJSONObject.optString("N_R_CMD");
+          if ("cs.audio_play.local".equals(str)) {
+            return b(paramJSONObject, paramamqr);
+          }
+          if ("cs.audio_autoplay.local".equals(str)) {
+            return b(paramJSONObject.optBoolean("autoplay"), paramJSONObject);
+          }
+          if ("cs.audio_load.local".equals(str)) {
+            return c(paramJSONObject, paramamqr);
+          }
+          if ("cs.audio_loop.local".equals(str)) {
+            return a(paramJSONObject.optBoolean("loop"), paramJSONObject);
+          }
+          if ("cs.audio_muted.local".equals(str)) {
+            return a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
+          }
+          if ("cs.audio_pause.local".equals(str)) {
+            return b(paramJSONObject);
+          }
+          if ("cs.audio_seek.local".equals(str)) {
+            return a(paramJSONObject.optInt("seek"), paramJSONObject, paramamqr);
+          }
+          if ("cs.audio_src.local".equals(str)) {
+            return a(paramJSONObject.optString("src"), paramJSONObject, paramamqr);
+          }
+          if ("cs.audio_preload.local".equals(str)) {
+            return c(paramJSONObject.optBoolean("preloaded"), paramJSONObject);
+          }
+          if ("cs.audio_volume.local".equals(str)) {
+            return a((float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
+          }
+          if ("cs.audio_destroy.local".equals(str)) {
+            return b(paramamqr, paramJSONObject);
+          }
+          if ("cs.audio_onend.local".equals(str)) {
+            return e(paramJSONObject, paramamqr);
+          }
+          if ("cs.audio_ontimeupdate.local".equals(str)) {
+            return d(paramJSONObject);
+          }
+          if ("cs.audio_duration.local".equals(str)) {
+            return c(paramJSONObject);
+          }
+          if ("cs.audio_effect_resume.local".equals(str)) {
+            return f(paramJSONObject);
+          }
+          if ("cs.audio_stop.local".equals(str)) {
+            return e(paramJSONObject);
+          }
+          if ("cs.audio_attribute_get.local".equals(str)) {
+            return a(paramJSONObject);
+          }
+          if ("cs.audio_attribute_set.local".equals(str))
+          {
+            paramamqr = a(paramJSONObject, paramamqr);
+            return paramamqr;
+          }
+        }
+      }
+      catch (Throwable paramamqr)
+      {
+        QLog.e("CmGameAudioPlayer", 1, "audio failed", paramamqr);
+      }
+    }
+    return null;
+  }
+  
+  public JSONObject a(String paramString, JSONObject paramJSONObject, amqr paramamqr)
+  {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 6) && (a() != 9))
+    {
+      try
+      {
+        this.c = 0;
+        amrk localamrk = ampj.a();
+        if (localamrk != null)
+        {
+          String str2 = "";
+          String str1 = str2;
+          if (paramString != null)
+          {
+            str1 = str2;
+            if (paramString.startsWith("GameSandBox://")) {
+              str1 = "sandbox";
+            }
+          }
+          if (URLUtil.isNetworkUrl(paramString)) {}
+          for (;;)
+          {
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+            a(1);
+            if (TextUtils.isEmpty(paramString)) {
+              break;
+            }
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+            a(2);
+            return paramJSONObject;
+            paramString = amnl.a(paramString, localamrk.a(), str1, false);
+          }
+        }
+        paramJSONObject.put("code", 2);
+        paramJSONObject.put("message", "src not exist " + paramString);
+        return paramJSONObject;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
+        if (paramJSONObject == null) {
+          return paramJSONObject;
+        }
+      }
+      try
+      {
+        paramJSONObject.put("code", 1);
+        paramJSONObject.put("message", "src error " + paramString.getMessage());
+        a(paramamqr, paramJSONObject);
+        return paramJSONObject;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
+        return paramJSONObject;
+      }
+    }
+    QLog.e("CmGameAudioPlayer", 1, " src in  state " + a());
+    return paramJSONObject;
+  }
+  
+  public JSONObject a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+      {
+        if (paramJSONObject.has("duration")) {
+          paramJSONObject.put("duration", this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
+        }
+        if (paramJSONObject.has("currentTime")) {
+          paramJSONObject.put("currentTime", this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
+        }
+        if (paramJSONObject.has("paused")) {
+          if (a() != 7) {
+            break label89;
+          }
+        }
+      }
+      label89:
+      for (boolean bool = true;; bool = false)
+      {
+        paramJSONObject.put("paused", bool);
+        return paramJSONObject;
+      }
+      return paramJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public JSONObject a(JSONObject paramJSONObject, amqr paramamqr)
+  {
+    try
+    {
+      if (paramJSONObject.has("src")) {
+        a(paramJSONObject.optString("src"), paramJSONObject, paramamqr);
+      }
+      if (paramJSONObject.has("loop")) {
+        a(paramJSONObject.optBoolean("loop"), paramJSONObject);
+      }
+      if (paramJSONObject.has("autoPlay")) {
+        b(paramJSONObject.optBoolean("autoPlay"), paramJSONObject);
+      }
+      if (paramJSONObject.has("volume")) {
+        a((float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
+      }
+      if (paramJSONObject.has("muted")) {
+        a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
+      }
+      if (paramJSONObject.has("currentTime")) {
+        d(paramJSONObject, paramamqr);
+      }
+      return paramJSONObject;
+    }
+    catch (Throwable paramamqr)
+    {
+      QLog.e("CmGameAudioPlayer", 1, paramamqr, new Object[0]);
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject a(boolean paramBoolean, float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      if (paramBoolean) {
+        localObject = a(0.0F, 0.0F, paramJSONObject);
+      }
+    }
+    do
+    {
+      return localObject;
+      return a(paramFloat1, paramFloat2, paramJSONObject);
+      localObject = paramJSONObject;
+    } while (this.jdField_a_of_type_Ampy == null);
+    Object localObject = this.jdField_a_of_type_Ampy;
+    if ((paramBoolean) || ((Float.compare(paramFloat1, 0.0F) == 0) && (Float.compare(paramFloat2, 0.0F) == 0))) {}
+    for (int i = 0;; i = 1)
+    {
+      ((ampy)localObject).a(i, BaseActivity.sTopActivity.getAppInterface());
+      return paramJSONObject;
+    }
+  }
+  
+  public JSONObject a(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      i = a();
+      if ((i == 1) || (i == 2) || (i == 6) || (i == 3) || (i == 5) || (i == 7) || (i == 10)) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
+      }
+    }
+    else
+    {
+      return paramJSONObject;
+    }
+    QLog.e("CmGameAudioPlayer", 1, " loop in  state " + i);
+    return paramJSONObject;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public JSONObject b(amqr arg1, JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      }
+      if (this.jdField_a_of_type_Ampy != null) {
+        this.jdField_a_of_type_Ampy.c();
+      }
+      a(8);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.jdField_a_of_type_Ampy = null;
+      if (??? != null) {
+        ???.b(this);
+      }
+      if (jdField_a_of_type_JavaUtilList != null) {
+        synchronized (jdField_a_of_type_JavaUtilList)
+        {
+          jdField_a_of_type_JavaUtilList.remove(this);
+          return paramJSONObject;
+        }
+      }
+      return paramJSONObject;
+    }
+    catch (Throwable ???)
+    {
+      QLog.e("CmGameAudioPlayer", 1, "destroy failed", ???);
+    }
+  }
+  
+  public JSONObject b(JSONObject paramJSONObject)
+  {
     for (;;)
     {
       try
       {
-        SosoInterface.a(k, paramTencentLocation, str);
-        if ((localObject5 != null) && (localObject5.length > 0)) {
-          SosoInterface.a(paramTencentLocation.getProvider(), (byte[])localObject5);
-        }
-        if (SosoInterface.a().size() <= 0) {
-          break label1411;
-        }
-        if (bool3)
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
         {
-          localObject5 = SosoInterface.a(k, true);
-          j = SosoInterface.a().size() - 1;
-          paramTencentLocation = localObject8;
-          localObject4 = localObject2;
-          localObject7 = localObject3;
-          localObject6 = localObject1;
-          localTencentLocation = paramTencentLocation;
-          m = bool1;
-          if (j < 0) {
-            break label1411;
-          }
-          localObject4 = (ampt)SosoInterface.a().get(j);
-          if ((((ampt)localObject4).reqLocation == bool3) && ((!((ampt)localObject4).reqLocation) || (((ampt)localObject4).level <= k)))
+          i = a();
+          if ((i == 5) || (i == 7) || (i == 10))
           {
-            if (!((ampt)localObject4).uiThread) {
-              continue;
-            }
-            SosoInterface.a((ampt)localObject4, paramInt, (SosoInterface.SosoLbsInfo)localObject5);
-            if (!TextUtils.isEmpty(str)) {
-              break label1014;
-            }
-            i = 0;
-            label774:
-            if (i == 0) {
-              break label1033;
-            }
-            SosoInterface.a(bool2, bool3, l, paramInt, str, paramString, bool4, k, true);
-            if (!((ampt)localObject4).goonListener) {
-              break label1054;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((ampt)localObject4).tag + " goon...");
-            }
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
+            a(7);
+            a(false);
+            return paramJSONObject;
           }
-          if (ampt.access$1500((ampt)localObject4)) {
-            break label1820;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          if (!((ampt)localObject4).goonListener) {
-            break label1135;
-          }
-          if (localObject3 != null) {
-            break label1115;
-          }
-          localObject3 = localObject4;
-          label872:
-          if (!ampt.access$1600((ampt)localObject4)) {
-            break label1814;
-          }
-          localObject2 = localObject4;
-          label884:
-          if (SosoInterface.d() <= 0) {
-            break label1801;
-          }
-          ((ampt)localObject4).onConsecutiveFailure(paramInt, SosoInterface.d());
-          localObject4 = localObject1;
-          localObject1 = paramTencentLocation;
-          paramTencentLocation = (TencentLocation)localObject4;
-          label909:
-          j -= 1;
-          localObject4 = localObject1;
-          localObject1 = paramTencentLocation;
-          paramTencentLocation = (TencentLocation)localObject4;
+          QLog.e("CmGameAudioPlayer", 1, " pause in  state " + a());
           continue;
-          bool2 = false;
-          break;
-          label934:
-          SosoInterface.c();
-          break label346;
-          label941:
-          localObject1 = " reason=" + paramString;
-          break label385;
-          label966:
-          i = localObject5.length;
-          break label447;
-          label974:
-          i = paramTencentLocation.getVerifyKey().length();
-          break label504;
         }
-        localObject5 = SosoInterface.a(true);
-        continue;
-        ((ampt)localObject4).onLocationFinish(paramInt, (SosoInterface.SosoLbsInfo)localObject5);
-        continue;
-        if (str.equals(((ampt)localObject4).tag)) {
-          break label1833;
-        }
-      }
-      finally {}
-      label1014:
-      i = 1;
-      continue;
-      label1033:
-      SosoInterface.a(bool2, bool3, l, paramInt, str, paramString, bool4, k, false);
-      continue;
-      label1054:
-      SosoInterface.a().remove(j);
-      ampt.access$1502((ampt)localObject4, true);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((ampt)localObject4).tag + " removed normally.");
-        continue;
-        label1115:
-        if (((ampt)localObject3).level >= ((ampt)localObject4).level) {
-          break label1817;
-        }
-        localObject3 = localObject4;
-      }
-    }
-    label1135:
-    if (SystemClock.elapsedRealtime() - ((ampt)localObject4).sTime > 30000L)
-    {
-      SosoInterface.a().remove(j);
-      ampt.access$1502((ampt)localObject4, true);
-      if (((ampt)localObject4).reqLocation)
-      {
-        localObject6 = SosoInterface.a(((ampt)localObject4).level, true);
-        break label1839;
-        ((ampt)localObject4).onLocationFinish(i, (SosoInterface.SosoLbsInfo)localObject6);
-        if (!QLog.isColorLevel()) {
-          break label1852;
-        }
-        QLog.d("SOSO.LBS", 2, "lis=" + ((ampt)localObject4).tag + " err_timeout.reqRaw=" + ((ampt)localObject4).reqLocation + ". Force 2 remove it.");
-        break label1852;
-      }
-      else
-      {
-        localObject6 = SosoInterface.a(true);
-      }
-    }
-    else if (((ampt)localObject4).reqLocation)
-    {
-      if (localObject1 == null)
-      {
-        localObject6 = localObject4;
-        localObject1 = paramTencentLocation;
-        paramTencentLocation = (TencentLocation)localObject6;
-      }
-    }
-    for (;;)
-    {
-      label1189:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((ampt)localObject4).tag + " goon=" + ((ampt)localObject4).goonListener + " reqLocation=" + ((ampt)localObject4).reqLocation + " hasReqRaw=" + bool1);
-        break label1871;
-        if (((ampt)localObject1).level < ((ampt)localObject4).level)
-        {
-          localObject1 = localObject4;
-          localObject6 = paramTencentLocation;
-          paramTencentLocation = (TencentLocation)localObject1;
-          localObject1 = localObject6;
+        if (this.jdField_a_of_type_Ampy == null) {
           continue;
-          if (paramTencentLocation == null) {
-            break label1874;
-          }
-          if (!((ampt)localObject4).askGPS) {
-            break label1877;
-          }
-          break label1874;
-          if (SosoInterface.a().size() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SOSO.LBS", 4, "listener is empty.");
-            }
-            SosoInterface.d();
-            return;
-          }
-          if (m != 0)
-          {
-            if (QLog.isColorLevel())
-            {
-              paramString = new StringBuilder().append("onLocationChanged()");
-              if (localObject7 != null) {
-                break label1544;
-              }
-            }
-            for (paramTencentLocation = "";; paramTencentLocation = " goonLis been truncated:" + localObject7.tag)
-            {
-              QLog.d("SOSO.LBS", 2, paramTencentLocation + " start:reqRawData");
-              if (localObject4 != null) {
-                ampt.access$1602((ampt)localObject4, false);
-              }
-              if (localTencentLocation != null)
-              {
-                SosoInterface.a().tag = localTencentLocation.tag;
-                SosoInterface.a().askGPS = localTencentLocation.askGPS;
-              }
-              SosoInterface.d();
-              SosoInterface.a(SosoInterface.a());
-              return;
-            }
-          }
-          if (localObject6 != null)
-          {
-            if (QLog.isColorLevel())
-            {
-              paramString = new StringBuilder().append("onLocationChanged()");
-              if (localObject7 != null) {
-                break label1660;
-              }
-            }
-            label1660:
-            for (paramTencentLocation = "";; paramTencentLocation = " goonLis been truncated:" + localObject7.tag)
-            {
-              QLog.d("SOSO.LBS", 2, paramTencentLocation + " start:" + ((ampt)localObject6).tag);
-              if (localObject4 != null) {
-                ampt.access$1602((ampt)localObject4, false);
-              }
-              SosoInterface.d();
-              ((ampt)localObject6).maxCacheInterval = 0L;
-              SosoInterface.a((ampt)localObject6);
-              return;
-            }
-          }
-          if (localObject7 == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("SOSO.LBS", 2, "onLocationChanged() goonLis goon after 1000ms:" + localObject7.tag);
-          }
-          if ((localObject4 != null) && (localObject4 != localObject7)) {
-            ampt.access$1602((ampt)localObject4, false);
-          }
-          if ((ampt.access$1600(localObject7)) || (ampt.access$1500(localObject7))) {
-            break;
-          }
-          SosoInterface.d();
-          ThreadManager.getSubThreadHandler().postDelayed(new SosoInterface.3.2(this, localObject7), 2000L);
-          return;
         }
-        localObject6 = paramTencentLocation;
-        paramTencentLocation = (TencentLocation)localObject1;
-        localObject1 = localObject6;
-        continue;
-        localObject4 = paramTencentLocation;
-        paramTencentLocation = (TencentLocation)localObject1;
-        localObject1 = localObject4;
-        break label909;
-        break label884;
-        break label872;
-        localObject4 = paramTencentLocation;
-        paramTencentLocation = (TencentLocation)localObject1;
-        localObject1 = localObject4;
-        break label909;
-        label1833:
-        i = 0;
-        break label774;
-        label1839:
-        if (localObject6 == null)
-        {
-          i = -10000;
-          break label1189;
-          label1852:
-          localObject4 = paramTencentLocation;
-          paramTencentLocation = (TencentLocation)localObject1;
-          localObject1 = localObject4;
-          break label909;
-        }
-        i = 0;
-        break label1189;
       }
-      label1411:
-      label1544:
-      label1801:
-      label1814:
-      label1817:
-      label1820:
-      label1871:
-      break label909;
-      label1874:
-      paramTencentLocation = (TencentLocation)localObject4;
-      label1877:
-      localObject6 = paramTencentLocation;
-      bool1 = true;
-      paramTencentLocation = (TencentLocation)localObject1;
-      localObject1 = localObject6;
+      catch (Throwable localThrowable)
+      {
+        QLog.e("CmGameAudioPlayer", 1, "pause failed", localThrowable);
+        return paramJSONObject;
+      }
+      int i = paramJSONObject.optInt("id");
+      if (paramJSONObject.optBoolean("auto", true)) {
+        this.jdField_a_of_type_Ampy.a();
+      } else {
+        this.jdField_a_of_type_Ampy.a(i, null);
+      }
     }
   }
   
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  public JSONObject b(JSONObject paramJSONObject, amqr paramamqr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SOSO.LBS", 2, "onStatusUpdate name: " + paramString1 + " status: " + paramInt + " desc: " + paramString2);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
     {
-      int i;
-      ampt localampt;
-      synchronized (SosoInterface.a())
+      i = a();
+      if ((i == 3) || (i == 5) || (i == 7) || (i == 10))
       {
-        if (SosoInterface.a().isEmpty()) {
-          return;
+        a(true);
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {}
+      }
+    }
+    while (this.jdField_a_of_type_Ampy == null) {
+      for (;;)
+      {
+        int i;
+        try
+        {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+          a(5);
+          if (this.c != 0) {
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.c);
+          }
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ampu(this));
         }
-        i = SosoInterface.a().size() - 1;
-        if (i < 0) {
-          break label157;
+        catch (Throwable paramJSONObject)
+        {
+          QLog.e("CmGameAudioPlayer", 1, "audio play failed", paramJSONObject);
+          continue;
         }
-        localampt = (ampt)SosoInterface.a().get(i);
-        if (localampt == null) {
-          break label161;
-        }
-        if (localampt.uiThread) {
-          ThreadManager.getUIHandler().post(new SosoInterface.3.1(this, localampt, paramString1, paramInt, paramString2));
+        return null;
+        QLog.e("CmGameAudioPlayer", 1, " play in  state " + i);
+      }
+    }
+    a(true);
+    return this.jdField_a_of_type_Ampy.a(paramamqr, paramJSONObject);
+  }
+  
+  public JSONObject b(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return paramJSONObject;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public JSONObject c(JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if ((a() == 1) && (a() == 2) && (a() == 9)) {
+        break label69;
+      }
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+      if (paramJSONObject == null) {}
+    }
+    try
+    {
+      paramJSONObject.put("duration", i);
+      return paramJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+      return paramJSONObject;
+    }
+    label69:
+    QLog.e("CmGameAudioPlayer", 1, " duration in  state " + a());
+    return paramJSONObject;
+  }
+  
+  public JSONObject c(JSONObject paramJSONObject, amqr paramamqr)
+  {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((a() == 2) || (a() == 6)))
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new ampv(this, paramJSONObject, paramamqr));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+    }
+    return null;
+  }
+  
+  public JSONObject c(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return paramJSONObject;
+  }
+  
+  public JSONObject d(JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+    }
+    try
+    {
+      paramJSONObject.put("currentTime", i);
+      return paramJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject d(JSONObject paramJSONObject, amqr paramamqr)
+  {
+    int i;
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 9))
+    {
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+      if (paramJSONObject != null) {
+        if (paramJSONObject.has("currentTime")) {
+          this.c = paramJSONObject.optInt("currentTime");
         }
       }
-      localampt.onStatusUpdate(paramString1, paramInt, paramString2);
-      break label161;
-      label157:
-      return;
-      label161:
-      i -= 1;
     }
+    try
+    {
+      paramJSONObject.put("currentTime", i);
+      return paramJSONObject;
+    }
+    catch (Throwable paramamqr)
+    {
+      QLog.e("CmGameAudioPlayer", 1, paramamqr, new Object[0]);
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject e(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_Ampy != null)
+    {
+      this.jdField_a_of_type_Ampy.c(paramJSONObject.optInt("id"), null);
+      this.jdField_a_of_type_Ampy.a(paramJSONObject);
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject e(JSONObject paramJSONObject, amqr paramamqr)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ampw(this, paramamqr, paramJSONObject));
+    }
+    return null;
+  }
+  
+  public JSONObject f(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_Ampy != null)
+    {
+      if (paramJSONObject.optBoolean("audo", true)) {
+        this.jdField_a_of_type_Ampy.b();
+      }
+    }
+    else {
+      return paramJSONObject;
+    }
+    this.jdField_a_of_type_Ampy.b(paramJSONObject.optInt("id"), null);
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampr
  * JD-Core Version:    0.7.0.1
  */

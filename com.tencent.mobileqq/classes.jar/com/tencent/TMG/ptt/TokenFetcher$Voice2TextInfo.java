@@ -13,7 +13,7 @@ public class TokenFetcher$Voice2TextInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.TMG.ptt.TokenFetcher.Voice2TextInfo
  * JD-Core Version:    0.7.0.1
  */

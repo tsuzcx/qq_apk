@@ -2,7 +2,7 @@
 <RelativeLayout android:orientation="vertical" android:id="@id/c3q" android:background="@drawable/skin_background_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/is" />
-    <com.tencent.mobileqq.activity.contacts.view.HeaderScrollView android:orientation="vertical" android:id="@id/d50" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/rlCommenTitle">
+    <com.tencent.mobileqq.activity.contacts.base.HeaderScrollView android:orientation="vertical" android:id="@id/d50" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/rlCommenTitle">
         <LinearLayout android:orientation="vertical" android:id="@id/gks" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:layout_weight="1.0">
                 <EditText android:textSize="15.0sp" android:textColor="@color/skin_input" android:ellipsize="none" android:id="@id/et_search_keyword" android:background="@drawable/skin_searchbar_input_theme_version2" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" android:layout_centerVertical="true" android:inputType="textNoSuggestions" android:contentDescription="@string/h_b" />
@@ -14,8 +14,10 @@
                 <com.tencent.mobileqq.widget.TabBarView2 android:id="@id/j9z" android:layout_width="fill_parent" android:layout_height="56.0dip" />
             </HorizontalScrollView>
         </LinearLayout>
-        <com.qqfav.widget.QfavSwipListView android:id="@id/c3r" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/transparent" />
-    </com.tencent.mobileqq.activity.contacts.view.HeaderScrollView>
+        <RelativeLayout android:id="@id/j_1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qqfav.widget.QfavSwipListView android:id="@id/c3r" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/transparent" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.activity.contacts.base.HeaderScrollView>
     <ViewStub android:id="@id/j5f" android:layout="@layout/aku" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
     <ViewStub android:id="@id/j5c" android:layout="@layout/aki" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
     <ViewStub android:id="@id/j5m" android:layout="@layout/akn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignBottom="@id/c3r" />

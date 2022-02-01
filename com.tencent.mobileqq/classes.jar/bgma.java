@@ -1,13 +1,23 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bgma
+final class bgma
+  implements View.OnClickListener
 {
-  public abstract void a(Context paramContext, MiniAppInfo paramMiniAppInfo);
+  bgma(bgpa parambgpa) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgma
  * JD-Core Version:    0.7.0.1
  */

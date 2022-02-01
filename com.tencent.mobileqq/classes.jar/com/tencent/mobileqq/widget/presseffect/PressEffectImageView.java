@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import bexd;
+import bieb;
 
 public class PressEffectImageView
   extends ImageView
@@ -33,10 +33,10 @@ public class PressEffectImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bexd.a(this);
+      bieb.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bexd.b(this);
+      bieb.b(this);
     }
   }
   
@@ -47,7 +47,7 @@ public class PressEffectImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectImageView
  * JD-Core Version:    0.7.0.1
  */

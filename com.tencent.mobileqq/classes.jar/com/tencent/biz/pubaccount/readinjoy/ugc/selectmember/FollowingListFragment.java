@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import bhuw;
+import bkij;
 import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -19,63 +20,63 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import owy;
-import oxb;
-import oxe;
-import qkw;
-import qsm;
-import qvd;
-import qve;
-import qvf;
-import qvz;
+import pmh;
+import pmk;
+import pmn;
+import rfi;
+import rnp;
+import rqi;
+import rqj;
+import rqk;
+import rre;
 
 public class FollowingListFragment
   extends Fragment
-  implements bhuw, qsm<ObservableArrayList<ResultRecord>>
+  implements bkij, rnp<ObservableArrayList<ResultRecord>>
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList;
   private List<HashMap<String, Object>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private oxe jdField_a_of_type_Oxe = new qvd(this);
-  private qve jdField_a_of_type_Qve;
-  private qvz jdField_a_of_type_Qvz;
+  private pmn jdField_a_of_type_Pmn = new rqi(this);
+  private rqj jdField_a_of_type_Rqj;
+  private rre jdField_a_of_type_Rre;
   
   private void a()
   {
-    a(owy.a().c());
+    a(pmh.a().c());
     String[] arrayOfString = new String[3];
     arrayOfString[0] = "key_checked";
     arrayOfString[1] = "key_head_url";
     arrayOfString[2] = "key_name";
     int[] arrayOfInt = new int[3];
     int[] tmp35_34 = arrayOfInt;
-    tmp35_34[0] = 2131364256;
+    tmp35_34[0] = 2131364466;
     int[] tmp40_35 = tmp35_34;
-    tmp40_35[1] = 2131367819;
+    tmp40_35[1] = 2131368138;
     int[] tmp45_40 = tmp40_35;
-    tmp45_40[2] = 2131370977;
+    tmp45_40[2] = 2131371539;
     tmp45_40;
-    if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_Qvz.a() == 1))
+    if ((this.jdField_a_of_type_Rre != null) && (this.jdField_a_of_type_Rre.a() == 1))
     {
-      this.jdField_a_of_type_Qve = new qvf(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560104, arrayOfString, arrayOfInt);
+      this.jdField_a_of_type_Rqj = new rqk(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560246, arrayOfString, arrayOfInt);
       return;
     }
-    this.jdField_a_of_type_Qve = new qve(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560104, arrayOfString, arrayOfInt);
+    this.jdField_a_of_type_Rqj = new rqj(this, getActivity(), this.jdField_a_of_type_JavaUtilList, 2131560246, arrayOfString, arrayOfInt);
   }
   
-  private void a(List<qkw> paramList)
+  private void a(List<rfi> paramList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      qkw localqkw = (qkw)paramList.next();
+      rfi localrfi = (rfi)paramList.next();
       HashMap localHashMap = new HashMap();
-      String str = localqkw.a().toString();
+      String str = localrfi.a().toString();
       localHashMap.put("key_uin", str);
-      localHashMap.put("key_name", localqkw.a());
-      localHashMap.put("key_head_url", localqkw.b());
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.contains(ResultRecord.a(str, localqkw.a())))) {
+      localHashMap.put("key_name", localrfi.a());
+      localHashMap.put("key_head_url", localrfi.b());
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.contains(ResultRecord.a(str, localrfi.a())))) {
         localHashMap.put("key_checked", Boolean.valueOf(true));
       }
       this.jdField_a_of_type_JavaUtilList.add(localHashMap);
@@ -97,50 +98,51 @@ public class FollowingListFragment
   
   public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(qvz paramqvz)
+  public void a(rre paramrre)
   {
-    this.jdField_a_of_type_Qvz = paramqvz;
+    this.jdField_a_of_type_Rre = paramrre;
   }
   
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList) {}
   
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Qve != null) {
-      this.jdField_a_of_type_Qve.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Rqj != null) {
+      this.jdField_a_of_type_Rqj.notifyDataSetChanged();
     }
   }
   
   public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Qve != null) {
-      this.jdField_a_of_type_Qve.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Rqj != null) {
+      this.jdField_a_of_type_Rqj.notifyDataSetChanged();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560103, paramViewGroup, false);
-    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131369573);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560245, paramViewGroup, false);
+    paramViewGroup = (ListView)paramLayoutInflater.findViewById(2131369968);
     a();
-    paramViewGroup.setAdapter(this.jdField_a_of_type_Qve);
+    paramViewGroup.setAdapter(this.jdField_a_of_type_Rqj);
     paramViewGroup.setOnItemClickListener(this);
-    paramViewGroup.setSelector(2131167140);
+    paramViewGroup.setSelector(2131167224);
     paramViewGroup.setOverScrollMode(0);
-    oxb.a().a(this.jdField_a_of_type_Oxe);
+    pmk.a().a(this.jdField_a_of_type_Pmn);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    oxb.a().b(this.jdField_a_of_type_Oxe);
+    pmk.a().b(this.jdField_a_of_type_Pmn);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     boolean bool = true;
-    Object localObject = (CheckBox)paramView.findViewById(2131364256);
+    Object localObject = (CheckBox)paramView.findViewById(2131364466);
     if (((CheckBox)localObject).isEnabled()) {
       if (!((CheckBox)localObject).isChecked())
       {
@@ -166,15 +168,15 @@ public class FollowingListFragment
       label142:
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(localObject);
       continue;
-      if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_Qvz.a() == 1))
+      if ((this.jdField_a_of_type_Rre != null) && (this.jdField_a_of_type_Rre.a() == 1))
       {
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qvz.b()))
+        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Rre.b()))
         {
-          paramAdapterView = getActivity().getResources().getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
+          paramAdapterView = getActivity().getResources().getString(2131717150, new Object[] { String.valueOf(this.jdField_a_of_type_Rre.c()) });
           QQToast.a(getActivity(), paramAdapterView, 0).a();
           return;
         }
-        QQToast.a(getActivity(), getActivity().getResources().getString(2131719020), 0).a();
+        QQToast.a(getActivity(), getActivity().getResources().getString(2131717144), 0).a();
       }
     }
   }

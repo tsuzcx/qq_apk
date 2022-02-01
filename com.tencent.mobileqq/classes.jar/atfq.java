@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class atfq
-  implements EIPCResultCallback
+class atfq
+  extends atfi
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  atfq(atfe paramatfe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
-    }
-    if (paramEIPCResult.code != 0) {}
+    super(paramatfe);
+    this.a = true;
+    this.b = true;
+  }
+  
+  protected String a()
+  {
+    return "StateEnd";
   }
 }
 

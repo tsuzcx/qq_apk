@@ -1,16 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class asbz
-  extends RecyclerView.ViewHolder
+public abstract interface asbz
 {
-  public int a = asbs.b;
-  
-  public asbz(View paramView)
-  {
-    super(paramView);
-    paramView.setTag(this);
-  }
+  public abstract void a(int paramInt);
 }
 
 

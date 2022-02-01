@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mediafocus;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aucb;
+import awjl;
 
 public class MediaFocusStackItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new aucb();
+  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new awjl();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -65,7 +65,7 @@ public class MediaFocusStackItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusStackItem
  * JD-Core Version:    0.7.0.1
  */

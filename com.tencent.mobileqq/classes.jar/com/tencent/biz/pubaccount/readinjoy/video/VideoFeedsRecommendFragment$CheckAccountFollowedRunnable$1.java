@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import raw;
+import rwy;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -34,7 +34,7 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
       }
     }
     if ((i != 0) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0) != null)) {
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0).a(VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable).j);
+      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0).b(VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable).j);
     }
   }
 }

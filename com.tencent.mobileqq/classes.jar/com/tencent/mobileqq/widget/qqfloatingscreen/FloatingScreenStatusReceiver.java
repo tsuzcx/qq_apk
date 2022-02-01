@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bexx;
+import biev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ public class FloatingScreenStatusReceiver
 {
   private static int jdField_a_of_type_Int = BaseApplicationImpl.sProcessId;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bexx jdField_a_of_type_Bexx;
+  private biev jdField_a_of_type_Biev;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -43,10 +43,10 @@ public class FloatingScreenStatusReceiver
     this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unregisterReceiver(this);
   }
   
-  public void a(int paramInt, bexx parambexx)
+  public void a(int paramInt, biev parambiev)
   {
     this.b = paramInt;
-    this.jdField_a_of_type_Bexx = parambexx;
+    this.jdField_a_of_type_Biev = parambiev;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -89,15 +89,15 @@ public class FloatingScreenStatusReceiver
               default: 
                 return;
               case 102: 
-                this.jdField_a_of_type_Bexx.b();
+                this.jdField_a_of_type_Biev.b();
                 this.jdField_a_of_type_Boolean = true;
                 return;
               case 103: 
-                this.jdField_a_of_type_Bexx.a(true);
+                this.jdField_a_of_type_Biev.a(true);
                 this.jdField_a_of_type_Boolean = false;
                 return;
               }
-              this.jdField_a_of_type_Bexx.c();
+              this.jdField_a_of_type_Biev.c();
             }
           }
         }
@@ -105,12 +105,12 @@ public class FloatingScreenStatusReceiver
         {
           if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
           {
-            this.jdField_a_of_type_Bexx.a();
+            this.jdField_a_of_type_Biev.a();
             return;
           }
           if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
           {
-            this.jdField_a_of_type_Bexx.b();
+            this.jdField_a_of_type_Biev.b();
             return;
           }
           if (!"mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction())) {
@@ -120,7 +120,7 @@ public class FloatingScreenStatusReceiver
           if ((paramContext != null) && (paramContext.contains("openSdk"))) {}
           while ((i == 0) && (!this.jdField_a_of_type_Boolean))
           {
-            this.jdField_a_of_type_Bexx.a(false);
+            this.jdField_a_of_type_Biev.a(false);
             return;
             i = 0;
           }
@@ -131,12 +131,12 @@ public class FloatingScreenStatusReceiver
     if (QLog.isColorLevel()) {
       QLog.d("FSReceiver", 2, "cnrType=" + i + " action=" + paramIntent.getAction());
     }
-    this.jdField_a_of_type_Bexx.c();
+    this.jdField_a_of_type_Biev.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

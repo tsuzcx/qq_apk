@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotpic;
 
-import asvy;
-import aswg;
+import avdh;
+import avdp;
 
 public class PresenceInterfaceImpl$9$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$9$1(aswg paramaswg) {}
+  public PresenceInterfaceImpl$9$1(avdp paramavdp) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PresenceInterfaceImpl$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1
  * JD-Core Version:    0.7.0.1
  */

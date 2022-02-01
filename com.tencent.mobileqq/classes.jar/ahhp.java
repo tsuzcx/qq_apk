@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface ahhp
+class ahhp
+  implements bhye
 {
-  public abstract void a();
+  ahhp(ahhm paramahhm, ahhx paramahhx) {}
   
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    }
+  }
 }
 
 

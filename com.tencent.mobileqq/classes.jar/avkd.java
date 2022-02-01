@@ -1,28 +1,30 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class avkd
-  extends aluu
+class avkd
+  implements ActionCallback
 {
-  public avkd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avkd(avju paramavju, avkm paramavkm) {}
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onResult(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
-    }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
+    try
     {
-      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Avkm.a(i, "");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import amiy;
-import ayui;
+import aode;
+import bbtl;
 
 public class MessageSearchEngine$4
   implements Runnable
 {
-  public MessageSearchEngine$4(ayui paramayui, String paramString) {}
+  public MessageSearchEngine$4(bbtl parambbtl, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MessageSearchEngine$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

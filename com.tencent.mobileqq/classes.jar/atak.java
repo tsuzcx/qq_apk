@@ -1,7 +1,8 @@
-class atak
+public abstract interface atak
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

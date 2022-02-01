@@ -1,8 +1,17 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
 
-public abstract interface bcpo
+public class bcpo
+  implements QEffectEngine.JsonConvert
 {
-  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
+  public <T> T parseArray(String paramString, Class paramClass)
+  {
+    return avnn.a(paramString, new bcpp(this).getClass().getGenericSuperclass());
+  }
+  
+  public <T> T parseObject(String paramString, Class paramClass)
+  {
+    return avnn.a(paramString, paramClass);
+  }
 }
 
 

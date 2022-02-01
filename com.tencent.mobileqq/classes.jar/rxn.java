@@ -1,40 +1,18 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rxn
-  extends RecyclerView.RecycledViewPool
+public abstract interface rxn
 {
-  public rxn(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
+  public abstract void a(long paramLong);
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
-  {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bifb)))
-    {
-      localObject = (bifb)localObject;
-      if (((bifb)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bifb)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
-    }
-    return localViewHolder;
-  }
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(rxy paramrxy);
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxn
  * JD-Core Version:    0.7.0.1
  */

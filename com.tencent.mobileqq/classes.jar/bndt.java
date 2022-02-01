@@ -1,27 +1,12 @@
-import android.util.Property;
+import java.io.File;
 
-class bndt
-  extends Property<bnds, Integer>
+public class bndt
 {
-  bndt(bnds parambnds, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bnds parambnds)
-  {
-    if (parambnds != null) {
-      return Integer.valueOf(bnds.a(parambnds));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bnds parambnds, Integer paramInteger)
-  {
-    if (parambnds != null) {
-      bnds.a(parambnds, paramInteger.intValue());
-    }
-  }
+  public static final String a = bndv.a + File.separator + "playshow";
+  public static final String b = bndm.e;
+  public static final String c = a + File.separator + "material_config";
+  public static final String d = a + File.separator + "thumbs";
+  public static final String e = a + File.separator + "videos";
 }
 
 

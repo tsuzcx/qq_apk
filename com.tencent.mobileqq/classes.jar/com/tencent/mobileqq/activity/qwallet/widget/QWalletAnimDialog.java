@@ -10,10 +10,11 @@ import android.view.Window;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.widget.AnimationView;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QWalletAnimDialog
-  extends Dialog
+  extends ReportDialog
 {
   public static final String ACTION_FACE_TO_FACE = "qwallet.facetoface";
   protected Activity mActivity;
@@ -39,14 +40,14 @@ public class QWalletAnimDialog
   {
     super.requestWindowFeature(1);
     Object localObject = getWindow();
-    setContentView(2131561874);
+    setContentView(2131562107);
     ((Window)localObject).setLayout(-1, -1);
     ((Window)localObject).setBackgroundDrawable(new ColorDrawable(0));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ((Window)localObject).addFlags(67108864);
     }
     setCanceledOnTouchOutside(false);
-    this.mAnimationView = ((AnimationView)findViewById(2131364054));
+    this.mAnimationView = ((AnimationView)findViewById(2131364258));
     this.mAnimationView.setAnimationFromInfo(this.mAnimInfo);
     this.mAnimationView.setAnimationListener(new QWalletAnimDialog.1(this));
     localObject = new IntentFilter();
@@ -85,7 +86,7 @@ public class QWalletAnimDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.QWalletAnimDialog
  * JD-Core Version:    0.7.0.1
  */

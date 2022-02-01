@@ -1,6 +1,6 @@
 public abstract interface bnql
 {
-  public abstract int a(bnql parambnql, boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract void a(bnrb parambnrb);
 }
 
 

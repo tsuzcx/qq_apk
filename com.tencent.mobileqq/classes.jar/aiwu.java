@@ -1,16 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class aiwu
-  implements DialogInterface.OnClickListener
+class aiwu
+  extends aniz
 {
-  aiwu(Activity paramActivity, List paramList1, List paramList2) {}
+  aiwu(aiwt paramaiwt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
   {
-    aiwp.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    }
+    aiwt.a(this.a, aiwt.a(this.a, paramInt));
+    if ((aiwt.a(this.a)) && (aiwt.a(this.a) != null)) {
+      this.a.b(aiwt.a(this.a).c());
+    }
   }
 }
 

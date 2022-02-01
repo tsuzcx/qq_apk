@@ -26,25 +26,25 @@ public class TPCapability
   public static TPVCodecCapabilityForGet getThumbPlayerVCodecMaxCapability(int paramInt)
   {
     if (!TPPlayerMgr.isThumbPlayerEnable()) {
-      return new TPVCodecCapabilityForGet(0, 0, 0);
+      return new TPVCodecCapabilityForGet(0, 0, 0, 30);
     }
     TPCodecCapability.TPVCodecMaxCapability localTPVCodecMaxCapability = TPThumbplayerCapabilityHelper.getVCodecMaxCapability(TPEnumUtils.convertCodecType2Inner(paramInt));
     if (localTPVCodecMaxCapability == null) {
-      return new TPVCodecCapabilityForGet(0, 0, 0);
+      return new TPVCodecCapabilityForGet(0, 0, 0, 30);
     }
-    return new TPVCodecCapabilityForGet(localTPVCodecMaxCapability.maxLumaSamples, localTPVCodecMaxCapability.maxProfile, localTPVCodecMaxCapability.maxLevel);
+    return new TPVCodecCapabilityForGet(localTPVCodecMaxCapability.maxLumaSamples, localTPVCodecMaxCapability.maxProfile, localTPVCodecMaxCapability.maxLevel, localTPVCodecMaxCapability.maxFramerateFormaxLumaSamples);
   }
   
   public static TPVCodecCapabilityForGet getThumbPlayerVCodecTypeMaxCapability(int paramInt1, int paramInt2)
   {
     if (!TPNativeLibraryLoader.isLibLoaded()) {
-      return new TPVCodecCapabilityForGet(0, 0, 0);
+      return new TPVCodecCapabilityForGet(0, 0, 0, 30);
     }
     HashMap localHashMap = TPThumbplayerCapabilityHelper.getVCodecDecoderMaxCapabilityMap(TPEnumUtils.convertDecType2Inner(paramInt2));
     if ((localHashMap == null) || (localHashMap.isEmpty()) || (localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1))) == null)) {
-      return new TPVCodecCapabilityForGet(0, 0, 0);
+      return new TPVCodecCapabilityForGet(0, 0, 0, 30);
     }
-    return new TPVCodecCapabilityForGet(((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxLumaSamples, ((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxProfile, ((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxLevel);
+    return new TPVCodecCapabilityForGet(((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxLumaSamples, ((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxProfile, ((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxLevel, ((TPCodecCapability.TPVCodecMaxCapability)localHashMap.get(Integer.valueOf(TPEnumUtils.convertCodecType2Inner(paramInt1)))).maxFramerateFormaxLumaSamples);
   }
   
   public static boolean isDDPlusSupported()
@@ -88,10 +88,18 @@ public class TPCapability
     }
     return TPThumbplayerCapabilityHelper.isHDRsupport(TPEnumUtils.convertHDRType2Inner(paramInt1), paramInt2, paramInt3);
   }
+  
+  public static boolean isVCodecCapabilityCanSupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (!TPPlayerMgr.isThumbPlayerEnable()) {
+      return false;
+    }
+    return TPThumbplayerCapabilityHelper.isVCodecCapabilityCanSupport(paramInt1, paramInt2, paramInt3, 0, 0, paramInt6);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.capability.TPCapability
  * JD-Core Version:    0.7.0.1
  */

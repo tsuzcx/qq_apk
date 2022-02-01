@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aihd
-  implements View.OnClickListener
+public class aihd
+  implements bfrk
 {
-  aihd(aiha paramaiha) {}
+  public String a;
   
-  public void onClick(View paramView)
+  public aihd(String paramString)
   {
-    this.a.a = null;
-    this.a.dismiss();
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

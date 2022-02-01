@@ -1,50 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajbm
+  implements Comparator<PhoneContact>
 {
-  public static int a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    paramInt2 = paramInt1;
-    if (localSharedPreferences != null)
-    {
-      paramInt2 = paramInt1;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
-      }
-    }
-    return paramInt2;
-  }
+  public ajbm(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  private static SharedPreferences a(int paramInt)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
-      }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    return null;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
     }
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
     }
+    return i;
   }
 }
 

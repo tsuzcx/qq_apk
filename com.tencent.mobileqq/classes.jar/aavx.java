@@ -1,16 +1,29 @@
-class aavx
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import java.lang.ref.WeakReference;
+
+public class aavx
+  extends Handler
 {
-  public int a;
-  public long a;
-  public aawe a;
-  public String a;
+  private WeakReference<SquareRoundImageView> a;
   
-  public aavx(aavw paramaavw, int paramInt, long paramLong, String paramString, aawe paramaawe)
+  private aavx(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aawe = paramaawe;
+    super(paramLooper);
+    this.a = new WeakReference(paramSquareRoundImageView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      paramMessage = (SquareRoundImageView)this.a.get();
+      if (paramMessage != null) {
+        SquareRoundImageView.a(paramMessage);
+      }
+    }
   }
 }
 

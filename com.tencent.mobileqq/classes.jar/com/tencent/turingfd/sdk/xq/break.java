@@ -1,20 +1,25 @@
 package com.tencent.turingfd.sdk.xq;
 
+import android.content.Context;
+
 public final class break
+  extends Thread
 {
-  static
-  {
-    new String(for.c("414553"));
-  }
+  public break(else paramelse, Context paramContext) {}
   
-  public static byte[] e(byte[] paramArrayOfByte)
+  public void run()
   {
-    return for.c(paramArrayOfByte).getBytes();
+    else localelse = this.uj;
+    if (localelse != null)
+    {
+      Serpens localSerpens = UrsaMajor.zg.b(this.Hg, false);
+      ((Date)localelse).Mh.onResult(TuringFdService.a(localSerpens));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.break
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qwo
-  extends qrn
+  implements pyu
 {
-  public qwo(SelectVideoFragment paramSelectVideoFragment) {}
+  public qwo(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  @Nullable
-  public qro a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bdaq.a(SelectVideoFragment.a(this.a), 8.0F));
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131717086, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwo
  * JD-Core Version:    0.7.0.1
  */

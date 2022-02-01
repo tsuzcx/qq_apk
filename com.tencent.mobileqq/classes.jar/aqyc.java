@@ -1,60 +1,53 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqyc
-  extends aqxd
 {
-  aqru jdField_a_of_type_Aqru = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b = "OfflinePreviewController<FileAssistant>";
+  private static String jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/official?_wv=16778247&_wwv=68&_nav_alpha=0&pay_src=10&_wvx=10&_proxy=1";
+  private boolean jdField_a_of_type_Boolean;
   
-  public aqyc(QQAppInterface paramQQAppInterface, String paramString)
+  @NonNull
+  public static aqyc a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e(this.b, 1, " init OfflinePreviewController error,uuid is null,stack:" + arrr.a());
-    }
-    a();
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aqru = new aqyd(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    aqyc localaqyc = new aqyc();
+    if (TextUtils.isEmpty(paramString))
     {
-      QLog.e(this.b, 1, " init OfflinePreviewController error,uuid is null,stack:" + arrr.a());
-      if (this.jdField_a_of_type_Aqlx != null) {
-        this.jdField_a_of_type_Aqlx.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
-      }
-      return false;
+      localaqyc.jdField_a_of_type_Boolean = false;
+      return localaqyc;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
-    return true;
+    a(paramString);
+    localaqyc.jdField_a_of_type_Boolean = true;
+    return localaqyc;
   }
   
-  public void b()
+  public static String a()
   {
-    if (this.jdField_a_of_type_Aqru != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  private static void a(String paramString)
+  {
+    try
+    {
+      jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("qqvip_vip_account");
+      return;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public Boolean a()
+  {
+    return Boolean.valueOf(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyc
  * JD-Core Version:    0.7.0.1
  */

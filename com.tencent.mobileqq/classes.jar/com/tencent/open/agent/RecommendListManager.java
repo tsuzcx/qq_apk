@@ -12,27 +12,28 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfhr;
-import bfhv;
-import bfhx;
-import bfhy;
-import bflp;
+import bipa;
+import bipe;
+import bipg;
+import biph;
+import bisy;
 import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 
 public class RecommendListManager
   extends LinearLayout
-  implements View.OnClickListener, ViewStub.OnInflateListener, bfhx
+  implements View.OnClickListener, ViewStub.OnInflateListener, bipg
 {
   protected Handler a;
-  protected bfhr a;
+  protected bipa a;
   protected FriendChooser a;
   protected HashMap<String, View> a;
   
   public RecommendListManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Bfhr = bfhr.a();
+    this.jdField_a_of_type_Bipa = bipa.a();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -48,7 +49,7 @@ public class RecommendListManager
       localViewStub.setOnClickListener(this);
       i += 1;
     }
-    bflp.c("RecommendListManager", "-->onCreate()");
+    bisy.c("RecommendListManager", "-->onCreate()");
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
@@ -58,8 +59,8 @@ public class RecommendListManager
   
   public void b()
   {
-    int j = this.jdField_a_of_type_Bfhr.a();
-    bflp.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
+    int j = this.jdField_a_of_type_Bipa.a();
+    bisy.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
     int i = j;
     if (j > 5) {
       i = 5;
@@ -75,9 +76,9 @@ public class RecommendListManager
       {
         j += 1;
         break;
-        localObject = (CheckBox)((View)localObject).findViewById(2131364256);
-        Friend localFriend = this.jdField_a_of_type_Bfhr.a(j);
-        if (this.jdField_a_of_type_Bfhr.a(localFriend.a)) {
+        localObject = (CheckBox)((View)localObject).findViewById(2131364466);
+        Friend localFriend = this.jdField_a_of_type_Bipa.a(j);
+        if (this.jdField_a_of_type_Bipa.a(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
         } else {
           ((CheckBox)localObject).setChecked(false);
@@ -89,36 +90,41 @@ public class RecommendListManager
   public void onClick(View paramView)
   {
     int i;
+    CheckBox localCheckBox;
     switch (paramView.getId())
     {
     default: 
       i = -1;
+      bisy.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
+      if ((i != -1) && (i < this.jdField_a_of_type_Bipa.a()))
+      {
+        localCheckBox = (CheckBox)paramView.findViewById(2131364466);
+        Friend localFriend = this.jdField_a_of_type_Bipa.a(i);
+        this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
+        if (!this.jdField_a_of_type_Bipa.a(localFriend.a)) {
+          break label176;
+        }
+        localCheckBox.setChecked(true);
+      }
+      break;
     }
     for (;;)
     {
-      bflp.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
-      if ((i != -1) && (i < this.jdField_a_of_type_Bfhr.a()))
-      {
-        paramView = (CheckBox)paramView.findViewById(2131364256);
-        Friend localFriend = this.jdField_a_of_type_Bfhr.a(i);
-        this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-        if (!this.jdField_a_of_type_Bfhr.a(localFriend.a)) {
-          break;
-        }
-        paramView.setChecked(true);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 0;
-      continue;
+      break;
       i = 1;
-      continue;
+      break;
       i = 2;
-      continue;
+      break;
       i = 3;
-      continue;
+      break;
       i = 4;
+      break;
+      label176:
+      localCheckBox.setChecked(false);
     }
-    paramView.setChecked(false);
   }
   
   public void onInflate(ViewStub paramViewStub, View paramView)
@@ -129,26 +135,26 @@ public class RecommendListManager
     switch (paramView.getId())
     {
     default: 
-      bflp.c("RecommendListManager", "-->onInflate() position = " + i);
+      bisy.c("RecommendListManager", "-->onInflate() position = " + i);
       paramView.setOnClickListener(this);
-      paramViewStub = this.jdField_a_of_type_Bfhr.a(i);
+      paramViewStub = this.jdField_a_of_type_Bipa.a(i);
       if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-        paramViewStub.d = bfhy.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+        paramViewStub.d = biph.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-      localObject = (CheckBox)paramView.findViewById(2131364256);
-      localImageView = (ImageView)paramView.findViewById(2131367819);
-      paramView = (TextView)paramView.findViewById(2131370977);
-      if (this.jdField_a_of_type_Bfhr.a(paramViewStub.a))
+      localObject = (CheckBox)paramView.findViewById(2131364466);
+      localImageView = (ImageView)paramView.findViewById(2131368138);
+      paramView = (TextView)paramView.findViewById(2131371539);
+      if (this.jdField_a_of_type_Bipa.a(paramViewStub.a))
       {
         ((CheckBox)localObject).setChecked(true);
         label180:
-        localObject = bfhv.a().a(paramViewStub.d);
+        localObject = bipe.a().a(paramViewStub.d);
         if (localObject != null) {
           break label277;
         }
-        localImageView.setImageResource(2130840085);
-        bfhv.a().a(paramViewStub.d, this);
+        localImageView.setImageResource(2130840264);
+        bipe.a().a(paramViewStub.d, this);
       }
       break;
     }
@@ -185,7 +191,7 @@ public class RecommendListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.RecommendListManager
  * JD-Core Version:    0.7.0.1
  */

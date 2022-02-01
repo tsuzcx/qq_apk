@@ -1,6 +1,14 @@
-public abstract interface afjk
+import android.widget.Button;
+import android.widget.TextView;
+
+class afjk
+  extends amcl
 {
-  public abstract void a();
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  private afjk(afjj paramafjj) {}
 }
 
 

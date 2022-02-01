@@ -1,23 +1,14 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-final class artf
-  extends da
+public class artf
+  extends alyx
 {
-  artf(Context paramContext) {}
+  public artf(MessengerService paramMessengerService) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    try
-    {
-      cx.a(this.a, paramAsyncTask, paramInt, new artg(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    this.a.a(paramBundle);
   }
 }
 

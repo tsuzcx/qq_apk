@@ -23,6 +23,9 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("qWalletBridge", "com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin"));
     initQQPublicAccountPlugin();
     pluginList.add(new NativePluginManager.PluginInfo("tim_space", "com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("invokeGameBuddyAio", "com.tencent.mobileqq.mini.out.nativePlugins.GameBuddyPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("checkGameBuddyType", "com.tencent.mobileqq.mini.out.nativePlugins.GameBuddyPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("getGUID", "com.tencent.mobileqq.mini.out.nativePlugins.DeviceInfoPlugin"));
   }
   
   public static Set<NativePluginManager.PluginInfo> getPluginInfo()
@@ -53,7 +56,7 @@ public class NativePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePluginManager
  * JD-Core Version:    0.7.0.1
  */

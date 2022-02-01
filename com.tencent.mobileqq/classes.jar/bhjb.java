@@ -1,229 +1,165 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.ColorDrawable;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.DatePicker;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import com.tencent.qqmini.sdk.utils.ColorUtils;
-import java.lang.reflect.Field;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView;
+import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoPayFailLayoutView;
+import java.util.List;
 
 public class bhjb
-  extends Dialog
-  implements DialogInterface.OnCancelListener, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private DatePicker jdField_a_of_type_AndroidWidgetDatePicker;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhjd jdField_a_of_type_Bhjd;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bhix jdField_a_of_type_Bhix;
+  private bhje jdField_a_of_type_Bhje;
+  private bhjg jdField_a_of_type_Bhjg;
+  private bhjn jdField_a_of_type_Bhjn;
+  private bhjp jdField_a_of_type_Bhjp;
+  private RegisterLiangHaoChoiceLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
+  private RegisterLiangHaoPayFailLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
+  private String jdField_a_of_type_JavaLangString;
+  private bhjp b;
   
-  public bhjb(Context paramContext)
+  public bhjb(Context paramContext, bhix parambhix)
   {
-    super(paramContext, 2131755367);
-    a(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhix = parambhix;
   }
   
-  private void a(Context paramContext)
+  private boolean a()
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559342, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    if (localObject != null)
-    {
-      ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      ((Window)localObject).setAttributes(localLayoutParams);
-      ((Window)localObject).setGravity(80);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterByNicknameAndPwdActivity)) {
+      return ((RegisterByNicknameAndPwdActivity)this.jdField_a_of_type_AndroidContentContext).a();
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131371992);
-    this.jdField_a_of_type_AndroidWidgetDatePicker = new DatePicker(new ContextThemeWrapper(getContext(), 16973934));
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setCalendarViewShown(false);
-    ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetDatePicker);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378686));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378721));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetDatePicker);
-    setOnCancelListener(this);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterPersonalInfoActivity)) {
+      return ((RegisterPersonalInfoActivity)this.jdField_a_of_type_AndroidContentContext).a();
+    }
+    return false;
   }
   
-  private void a(DatePicker paramDatePicker)
+  private void c()
   {
-    paramDatePicker = (LinearLayout)((LinearLayout)paramDatePicker.getChildAt(0)).getChildAt(0);
-    int i = 0;
-    if (i < paramDatePicker.getChildCount())
-    {
-      NumberPicker localNumberPicker = (NumberPicker)paramDatePicker.getChildAt(i);
-      Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
-      int k = arrayOfField.length;
-      int j = 0;
-      for (;;)
-      {
-        for (;;)
-        {
-          Field localField;
-          if (j < k)
-          {
-            localField = arrayOfField[j];
-            if (localField.getName().equals("mSelectionDivider")) {
-              localField.setAccessible(true);
-            }
-          }
-          else
-          {
-            try
-            {
-              localField.set(localNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
-              i += 1;
-            }
-            catch (IllegalArgumentException localIllegalArgumentException)
-            {
-              for (;;)
-              {
-                localIllegalArgumentException.printStackTrace();
-              }
-            }
-            catch (Resources.NotFoundException localNotFoundException)
-            {
-              for (;;)
-              {
-                localNotFoundException.printStackTrace();
-              }
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              for (;;)
-              {
-                localIllegalAccessException.printStackTrace();
-              }
-            }
-          }
-        }
-        j += 1;
-      }
+    if ((this.jdField_a_of_type_Bhjg == null) || (this.jdField_a_of_type_Bhjg.a == null)) {
+      return;
     }
+    a().a(this.jdField_a_of_type_Bhjg);
+    int i = this.jdField_a_of_type_Bhjg.a.size();
+    if (i > 4)
+    {
+      this.jdField_a_of_type_Bhjg.a = this.jdField_a_of_type_Bhjg.a.subList(4, i);
+      return;
+    }
+    this.jdField_a_of_type_Bhjg.a.clear();
+  }
+  
+  public RegisterLiangHaoChoiceLayoutView a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView = new RegisterLiangHaoChoiceLayoutView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView.setLiangHaoHelper(this);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
+  }
+  
+  public RegisterLiangHaoPayFailLayoutView a(bhjf parambhjf)
+  {
+    if (parambhjf == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView = new RegisterLiangHaoPayFailLayoutView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setUin(parambhjf.a);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setLiangHaoHelper(this);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
   }
   
   public void a()
   {
-    try
+    if ((this.jdField_a_of_type_Bhjg != null) && (this.jdField_a_of_type_Bhjg.a != null) && (this.jdField_a_of_type_Bhjg.a.size() >= 4))
     {
-      if (isShowing()) {
-        dismiss();
-      }
+      c();
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(0).setVisibility(paramInt);
+    if (this.b == null) {
+      this.b = new bhjd(this);
     }
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    new bhjo(str, i, this.b).a();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(bhji parambhji)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetDatePicker.updateDate(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, bhjd parambhjd)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.init(paramInt1, paramInt2, paramInt3, new bhjc(this));
-    this.jdField_a_of_type_Bhjd = parambhjd;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setMinDate(paramLong);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(1).setVisibility(paramInt);
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setMaxDate(paramLong);
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.jdField_a_of_type_AndroidWidgetDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(paramInt);
-    }
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Bhjd != null) {
-      this.jdField_a_of_type_Bhjd.onDateCancel();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131378686)
-    {
-      if (this.jdField_a_of_type_Bhjd != null) {
-        this.jdField_a_of_type_Bhjd.onDateCancel();
-      }
-      a();
-    }
-    while (paramView.getId() != 2131378721) {
+    if ((this.jdField_a_of_type_Bhix == null) || (!a())) {
       return;
     }
-    int i;
-    if (this.jdField_a_of_type_Bhjd != null)
+    this.jdField_a_of_type_Bhix.c();
+    LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bhix.a(), parambhji);
+  }
+  
+  public void a(String paramString, bhje parambhje)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bhje = parambhje;
+    if (this.jdField_a_of_type_Bhjp == null) {
+      this.jdField_a_of_type_Bhjp = new bhjc(this);
+    }
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    new bhjo(paramString, i, this.jdField_a_of_type_Bhjp).a();
+  }
+  
+  public void a(String paramString, bhjn parambhjn)
+  {
+    this.jdField_a_of_type_Bhjn = parambhjn;
+    new bhjm(paramString, parambhjn).a();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bhix == null) || (!a())) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Bhjg != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bhjg.b)))
     {
-      i = this.jdField_b_of_type_Int + 1;
-      if (i >= 10) {
-        break label133;
-      }
-      paramView = "0" + i;
-      i = this.c;
-      if (i >= 10) {
-        break label141;
+      str = this.jdField_a_of_type_Bhjg.b;
+      if (str.indexOf("?") >= 0) {
+        break label146;
       }
     }
-    label133:
-    label141:
-    for (String str = "0" + i;; str = String.valueOf(i))
+    label146:
+    for (String str = str + "?phone=" + this.jdField_a_of_type_JavaLangString;; str = str + "&phone=" + this.jdField_a_of_type_JavaLangString)
     {
-      this.jdField_a_of_type_Bhjd.onDateConfirm(String.valueOf(this.jdField_a_of_type_Int), paramView, str);
-      a();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtras(this.jdField_a_of_type_Bhix.a());
+      localIntent.putExtra("lh_reg_from", 1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
-      paramView = String.valueOf(i);
+      str = "https://haoma.qq.com/m/clientReg/index.html";
       break;
     }
+  }
+  
+  public void b(bhji parambhji)
+  {
+    if (this.jdField_a_of_type_Bhix == null) {
+      return;
+    }
+    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bhix.a(), parambhji);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjb
  * JD-Core Version:    0.7.0.1
  */

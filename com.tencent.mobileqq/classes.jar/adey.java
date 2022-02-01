@@ -1,107 +1,102 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JobSelectionActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
-public class adey
-  extends BaseAdapter
+class adey
+  extends niv
 {
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private String[] b;
+  adey(adex paramadex, awlp paramawlp) {}
   
-  private adey(JobSelectionActivity paramJobSelectionActivity)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity))
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Awlp.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Awlp.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      paramJobSelectionActivity = alpy.d;
-      this.jdField_a_of_type_ArrayOfJavaLangString = paramJobSelectionActivity;
-      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-        break label74;
+      adex.a(this.jdField_a_of_type_Adex, new AppInfoError(6, "jobApiPermission req error"));
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label513;
       }
-      paramJobSelectionActivity = alpy.e;
-      label42:
-      this.b = paramJobSelectionActivity;
-      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-        break label81;
-      }
-    }
-    label74:
-    label81:
-    for (paramJobSelectionActivity = alpy.jdField_a_of_type_ArrayOfInt;; paramJobSelectionActivity = bdda.b)
-    {
-      this.jdField_a_of_type_ArrayOfInt = paramJobSelectionActivity;
-      return;
-      paramJobSelectionActivity = bdda.d;
-      break;
-      paramJobSelectionActivity = bdda.e;
-      break label42;
-    }
-  }
-  
-  public int getCount()
-  {
-    if (JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length - 2;
-    }
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length - 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getLayoutInflater().inflate(2131560999, paramViewGroup, false);
-      paramView = new adez(null);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131377403));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370977));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364251));
-      localView.setTag(paramView);
-    }
-    paramView = (adez)localView.getTag();
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[paramInt]);
-    ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.app, paramViewGroup);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setText(this.b[paramInt]);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setBackgroundDrawable(paramViewGroup);
-    int i = aepi.a(4.0F, JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity).getResources());
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setPadding(i, 0, i, 0);
-    if (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(0);
     }
     for (;;)
     {
-      if ((JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) && (paramInt == 0)) {
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
+      Object localObject;
+      try
+      {
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte);
+          return;
+        }
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity) != paramInt) {
-        break;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
       }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return localView;
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
+          break label297;
+        }
+        adex.b(this.jdField_a_of_type_Adex, new AppInfoError(6, "jobApiPermission rsp invalid"));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        adex.c(this.jdField_a_of_type_Adex, new AppInfoError(6, "jobApiPermission parse rsp error"));
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
+        return;
+        label297:
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+        }
+        paramArrayOfByte = adep.a();
+        paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Awlp.jdField_a_of_type_JavaUtilSet);
+        if (paramBundle.get_privilege_rsp.api_names.size() > 0)
+        {
+          localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str = (String)((Iterator)localObject).next();
+            if (adep.a(paramArrayOfByte, str)) {
+              this.jdField_a_of_type_Awlp.jdField_a_of_type_JavaUtilSet.add(str);
+            }
+          }
+        }
+        this.jdField_a_of_type_Awlp.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
+        awlu.a().a(this.jdField_a_of_type_Awlp);
+        adex.a(this.jdField_a_of_type_Adex, this.jdField_a_of_type_Awlp);
+        return;
+        label513:
+        paramBundle = "";
+      }
     }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    return localView;
   }
 }
 

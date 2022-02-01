@@ -1,35 +1,17 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class stl
-  implements View.OnFocusChangeListener
+class stl
 {
-  public stl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
-    }
-  }
+  private stl(stj paramstj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     stl
  * JD-Core Version:    0.7.0.1
  */

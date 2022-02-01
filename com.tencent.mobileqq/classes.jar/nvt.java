@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class nvt
-  implements View.OnClickListener
+public class nvt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  nvt(nvp paramnvp) {}
+  public nvt(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
-    nvp.a(this.a, 5);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.setRotation(90.0F * f1);
+    float f2 = VideoCoverView.c(this.a) * 1.0F / VideoCoverView.d(this.a);
+    this.a.setScaleX((f2 - 1.0F) * f1 + 1.0F);
+    this.a.setScaleY(f1 * 0.7774618F + 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvt
  * JD-Core Version:    0.7.0.1
  */

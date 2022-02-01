@@ -1,74 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class yze
-  extends aokh<yzd>
+class yze
+  implements View.OnTouchListener
 {
-  public int a()
-  {
-    return 595;
-  }
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public Class<yzd> a()
-  {
-    return yzd.class;
-  }
+  yze(yzc paramyzc) {}
   
-  @NonNull
-  public yzd a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new yzd();
-  }
-  
-  @Nullable
-  public yzd a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
     {
-      yzd localyzd = yzd.a(paramArrayOfaoko[0].a);
-      a(localyzd);
-      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      return localyzd;
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(yzd paramyzd)
-  {
-    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
-    if (paramyzd != null)
-    {
-      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramyzd.toString());
-      yyw.a().a("sticky_note_publish_entrance_config", paramyzd.a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yze
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import adic;
-import ajmz;
+import aeos;
+import alfp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,12 +9,13 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public class GuideBaseFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
-  protected adic a;
-  protected ajmz a;
+  protected aeos a;
+  protected alfp a;
   public BaseActivity a;
   public QQAppInterface a;
   public String a;
@@ -25,7 +26,7 @@ public class GuideBaseFragment
   public GuideBaseFragment(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Adic = new adic();
+    this.jdField_a_of_type_Aeos = new aeos();
   }
   
   public Dialog a(int paramInt)
@@ -40,9 +41,9 @@ public class GuideBaseFragment
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(ajmz paramajmz)
+  public void a(alfp paramalfp)
   {
-    this.jdField_a_of_type_Ajmz = paramajmz;
+    this.jdField_a_of_type_Alfp = paramalfp;
   }
   
   public void a(Intent paramIntent) {}
@@ -62,7 +63,7 @@ public class GuideBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment
  * JD-Core Version:    0.7.0.1
  */

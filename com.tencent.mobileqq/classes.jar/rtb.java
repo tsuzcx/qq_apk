@@ -1,22 +1,16 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import org.jetbrains.annotations.NotNull;
 
-public class rtb
-  extends pdi
+public abstract interface rtb
 {
-  public rtb(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super(paramString);
-  }
+  public abstract void a(float paramFloat);
   
-  public void a(pdc parampdc)
-  {
-    parampdc.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
-  }
+  public abstract void a(int paramInt, @NotNull String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtb
  * JD-Core Version:    0.7.0.1
  */

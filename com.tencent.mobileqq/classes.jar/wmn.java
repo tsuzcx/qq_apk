@@ -1,10 +1,31 @@
-public abstract interface wmn
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+
+class wmn
+  extends xbu
 {
-  public abstract void a(boolean paramBoolean);
+  wmn(wmm paramwmm) {}
+  
+  public void a()
+  {
+    super.a();
+    wml.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    yqu.a("home_page", "suc_share", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    yqu.a("home_page", "share_chanel", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmn
  * JD-Core Version:    0.7.0.1
  */

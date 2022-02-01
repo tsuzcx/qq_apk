@@ -1,56 +1,86 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahwn
-  extends Drawable
+class ahwn
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Drawable> jdField_a_of_type_JavaUtilList;
-  private int b;
+  ahwn(ahwl paramahwl) {}
   
-  public ahwn(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(List<Drawable> paramList, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = (paramInt * 2);
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramView.getTag() == null) {}
+    for (;;)
     {
-      Drawable localDrawable = (Drawable)localIterator.next();
-      localDrawable = ((bduj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(localDrawable, this.jdField_a_of_type_Int);
-      if (localDrawable != null)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Akos != null) {
+        this.a.jdField_a_of_type_Akos.a(9);
+      }
+      long l = System.currentTimeMillis();
+      if (akwv.a(ahwl.jdField_a_of_type_Long, l))
       {
-        localDrawable.setBounds(0, 0, this.b, this.b);
-        localDrawable.draw(paramCanvas);
-        paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
+        ahwl.jdField_a_of_type_Long = l;
+        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
+        Object localObject1 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+        aklj localaklj = (aklj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+        if (njo.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          localaklj.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 9);
+          if (QLog.isColorLevel()) {
+            QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+          }
+        }
+        else
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+          {
+            localObject2 = (bfsk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
+            boolean bool = ((bfsk)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            localObject2 = ((bfsk)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
+            if ((bool) || ((localObject2 != null) && (((bfsq)localObject2).jdField_a_of_type_Boolean)))
+            {
+              localaklj.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 9);
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
+              continue;
+            }
+          }
+          Object localObject2 = localaklj.a(((QQWalletRedPacketMsg)localObject1).redPacketId);
+          l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+          if ((localObject2 != null) && ((((akli)localObject2).jdField_a_of_type_Boolean) || (((akli)localObject2).b) || (((akli)localObject2).c) || (((akli)localObject2).jdField_a_of_type_Long < l)))
+          {
+            localaklj.a(((QQWalletRedPacketMsg)localObject1).redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+            l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=19", 0, null);
+            localObject1 = akxm.b(localMessageForQQWalletMsg);
+            Bundle localBundle = new Bundle();
+            localBundle.putString("feedsid", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId);
+            localaklj.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (akli)localObject2, l, 262144, (String)localObject1, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, localBundle);
+            if (QLog.isColorLevel()) {
+              QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((akli)localObject2).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((akli)localObject2).b + ",isPasswdRedBagOverDue=" + ((akli)localObject2).c);
+            }
+          }
+          else
+          {
+            RedPacketEmojiFragment.a(paramView.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localMessageForQQWalletMsg);
+          }
+        }
       }
     }
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

@@ -347,6 +347,11 @@ public class FromServiceMsg
     this.errorMsg = paramString;
   }
   
+  public void setFlag(int paramInt)
+  {
+    this.flag = paramInt;
+  }
+  
   public void setFromVersion(byte paramByte)
   {
     this.fromVersion = paramByte;

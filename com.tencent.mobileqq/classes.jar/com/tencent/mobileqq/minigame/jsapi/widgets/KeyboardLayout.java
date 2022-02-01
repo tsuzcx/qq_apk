@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.minigame.jsapi.widgets;
 
-import alud;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import anni;
 import com.tencent.mobileqq.minigame.utils.DpUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import org.json.JSONException;
@@ -38,18 +38,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DpUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DpUtil.dip2px(getContext(), 2.0F);
-    this.mConfirmBT.setText(alud.a(2131706335));
+    this.mConfirmBT.setText(anni.a(2131704736));
     this.mConfirmBT.setTextColor(-1);
-    this.mConfirmBT.setBackgroundResource(2130840786);
+    this.mConfirmBT.setBackgroundResource(2130840997);
     this.mConfirmBT.setMinHeight(0);
     this.mConfirmBT.setMinimumHeight(0);
     this.mConfirmBT.setPadding(DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F), DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F));
     addView(this.mConfirmBT, localLayoutParams);
-    this.mConfirmBT.setId(2131370583);
+    this.mConfirmBT.setId(2131371091);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.mConfirmBT.getId());
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
-    this.mInputET.setBackgroundResource(2130840789);
+    this.mInputET.setBackgroundResource(2130841000);
     addView(this.mInputET, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DpUtil.dip2px(getContext(), 5.0F), 0, DpUtil.dip2px(getContext(), 2.0F));
@@ -91,11 +91,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = alud.a(2131706334);
+          paramString = anni.a(2131704735);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = alud.a(2131706333);
+            paramString = anni.a(2131704734);
             this.mInputET.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -116,20 +116,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = alud.a(2131706336);
+              paramString = anni.a(2131704737);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = alud.a(2131706332);
+              paramString = anni.a(2131704733);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = alud.a(2131706331);
+            paramString = anni.a(2131704732);
             continue;
           }
           this.mInputET.setFilters(new InputFilter[0]);
@@ -148,7 +148,7 @@ public class KeyboardLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout
  * JD-Core Version:    0.7.0.1
  */

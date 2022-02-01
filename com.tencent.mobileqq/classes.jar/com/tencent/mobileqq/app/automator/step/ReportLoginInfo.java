@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
-import azqs;
+import bcst;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -43,7 +43,7 @@ public class ReportLoginInfo
     return "";
   }
   
-  private void b()
+  private void a()
   {
     try
     {
@@ -54,7 +54,7 @@ public class ReportLoginInfo
       }
       str2 = a(str1);
       long l = this.a.app.getApplication().getSharedPreferences(this.b + str2, 0).getLong(this.c, 0L);
-      azqs.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
+      bcst.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
       if (QLog.isColorLevel()) {
         QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID) + " reportID： " + l);
       }
@@ -68,7 +68,7 @@ public class ReportLoginInfo
   
   public int a()
   {
-    b();
+    a();
     return 7;
   }
 }

@@ -1,36 +1,71 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
-final class auum
-  implements DialogInterface.OnClickListener
+public class auum
+  extends BroadcastReceiver
 {
-  auum(String paramString, int paramInt, Activity paramActivity) {}
+  private auum(GameSessionView paramGameSessionView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
+    String str1 = paramIntent.getAction();
+    if (QLog.isColorLevel())
+    {
+      String str2 = GameSessionView.a;
+      if ("[onRecevier] action:" + str1 + ",data:" + paramIntent.getExtras() != null)
+      {
+        paramContext = paramIntent.getExtras().toString();
+        QLog.d(str2, 0, paramContext);
+      }
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      azqs.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+    else
+    {
+      if (str1 != null) {
+        break label78;
+      }
     }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    azqs.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+    label78:
+    int i;
+    label163:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramContext = null;
+            break;
+            if (!"action_qgame_messgae_change".equals(str1)) {
+              break label163;
+            }
+            paramContext = paramIntent.getExtras();
+          } while (paramContext == null);
+          paramIntent = (GameCenterSessionInfo)paramContext.getParcelable("key_game_msg");
+          i = paramContext.getInt("key_msg_change_type");
+          if (QLog.isColorLevel()) {
+            QLog.d(GameSessionView.a, 0, "[onReceive] type:" + i + ",info:" + paramIntent);
+          }
+          this.a.a();
+          return;
+        } while (!"action_qgame_unread_change".equals(str1));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("key_msg_unread_cnt");
+    } while (!QLog.isColorLevel());
+    QLog.d(GameSessionView.a, 0, "[onReceive] cnt:" + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auum
  * JD-Core Version:    0.7.0.1
  */

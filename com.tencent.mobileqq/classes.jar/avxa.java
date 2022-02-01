@@ -1,20 +1,28 @@
-public abstract interface avxa
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+class avxa
+  implements avxg
 {
-  public abstract void a();
+  avxa(avwv paramavwv, int paramInt, String paramString) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public Pair<Integer, String> a()
+  {
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public avwn a()
+  {
+    if (avwv.a(this.jdField_a_of_type_Avwv) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
+    }
+    return new avwn(this.jdField_a_of_type_Avwv.app.c(), avwv.a(this.jdField_a_of_type_Avwv), avwv.a(this.jdField_a_of_type_Avwv));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxa
  * JD-Core Version:    0.7.0.1
  */

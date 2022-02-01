@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/b8q" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+  xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:id="@id/elu" android:padding="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
             <ImageView android:id="@id/icon" android:layout_width="50.0dip" android:layout_height="50.0dip" />
@@ -41,8 +40,8 @@
                 <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/mer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/vqi" />
             </LinearLayout>
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
-                <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/wms" android:layout_weight="1.0" style="@style/ao" />
-                <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/mxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/wms" />
+                <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x6p" android:layout_weight="1.0" style="@style/ao" />
+                <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/nxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/x6p" />
             </LinearLayout>
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i20" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:layout_marginTop="20.0dip">
                 <TextView android:layout_gravity="center_vertical" android:id="@id/i23" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@null" android:layout_weight="1.0" style="@style/ao" />
@@ -55,6 +54,10 @@
                 <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gv7" android:layout_weight="1.0" style="@style/ap" />
                 <ImageView android:id="@id/f1m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
             </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x3f" android:layout_weight="1.0" style="@style/ao" />
+                <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/mii" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/x3f" />
+            </LinearLayout>
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:layout_marginTop="20.0dip">
                 <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gxm" android:layout_weight="1.0" style="@style/ao" />
                 <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/it5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/gxm" />
@@ -63,6 +66,26 @@
             <LinearLayout android:orientation="horizontal" android:id="@id/cli" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/pw6" />
                 <EditText android:id="@id/clj" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="0.025" android:inputType="numberDecimal" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ry" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x2f" android:layout_weight="1.0" style="@style/ap" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mki" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x45" android:layout_weight="1.0" style="@style/ap" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n4g" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x4r" android:layout_weight="1.0" style="@style/ap" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mjl" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x3r" android:layout_weight="1.0" style="@style/ap" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ktr" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
+                <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x2l" android:layout_weight="1.0" style="@style/ao" />
+                <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/ks_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/x2l" />
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:id="@id/iyj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
                 <Button android:id="@id/iyi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/pu7" />

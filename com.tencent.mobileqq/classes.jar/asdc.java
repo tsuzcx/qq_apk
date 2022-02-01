@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
 
-class asdc
-  implements arzp
+public abstract interface asdc
 {
-  asdc(asdb paramasdb) {}
-  
-  public void a()
-  {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((asdm)this.a.a.getManager(350)).a().a(null);
-    this.a.x();
-    this.a.a();
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 

@@ -1,22 +1,32 @@
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
 
 public class ayga
-  implements OnApplyWindowInsetsListener
+  extends ayjm
 {
-  public ayga(ScreenShotFragment paramScreenShotFragment) {}
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  public ayga(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onApplyWindowInsets current is liuhai style!");
+    super.a(paramMotionEvent);
+    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
+      ayfi.a("0X800AC97", 0);
     }
-    ScreenShotFragment.b(this.a);
-    return ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
+  }
+  
+  public void a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.b = true;
+    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
 }
 

@@ -1,17 +1,27 @@
-class mxd<Data>
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class mxd
+  implements DialogInterface.OnDismissListener
 {
-  final mxc jdField_a_of_type_Mxc;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  mxd(mxb parammxb, Activity paramActivity) {}
   
-  mxd(mxc parammxc, Data... paramVarArgs)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Mxc = parammxc;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    if (!this.jdField_a_of_type_Mxb.c)
+    {
+      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Mxb.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxd
  * JD-Core Version:    0.7.0.1
  */

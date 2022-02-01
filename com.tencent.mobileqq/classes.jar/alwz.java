@@ -1,14 +1,14 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface alwz
+public final class alwz
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = apmq.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
-  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwz
  * JD-Core Version:    0.7.0.1
  */

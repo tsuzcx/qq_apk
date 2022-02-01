@@ -1,20 +1,9 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 
-class afzq
-{
-  int jdField_a_of_type_Int;
-  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  
-  public afzq(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-}
+public abstract interface afzq
+  extends View.OnLongClickListener, View.OnTouchListener
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

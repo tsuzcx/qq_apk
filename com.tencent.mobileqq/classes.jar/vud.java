@@ -1,28 +1,60 @@
-import android.util.SparseArray;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class vud
-  extends SparseArray<int[]>
+public class vud
+  extends zxg
 {
-  public vud()
+  private MutableLiveData<uzl> a = new MutableLiveData();
+  
+  private void a(List<String> paramList1, int paramInt1, List<String> paramList2, int paramInt2)
   {
-    put(0, new int[] { 1, 7 });
-    put(1, new int[] { 0, 2 });
-    put(2, new int[] { 0, 3 });
-    put(3, new int[] { 0, 4 });
-    put(4, new int[] { 0, 5 });
-    put(5, new int[] { 0, 6 });
-    put(6, new int[] { 0, 7 });
-    put(7, new int[] { 0, 8 });
-    put(8, new int[] { 0, 9 });
-    put(9, new int[] { 0, 10, 12 });
-    put(10, new int[] { 0, 11, 12 });
-    put(11, new int[] { 0, 9, 12 });
-    put(12, new int[] { 0, 7 });
+    Object localObject = new StringBuilder().append("setNoticeTipValue ");
+    int i;
+    StringBuilder localStringBuilder;
+    if (paramList1 == null)
+    {
+      i = 0;
+      localStringBuilder = ((StringBuilder)localObject).append(i).append(", messageUnRead:").append(paramInt1).append(" chatUinList");
+      if (paramList2 != null) {
+        break label103;
+      }
+    }
+    label103:
+    for (localObject = Integer.valueOf(0);; localObject = paramList2.size() + ", chatUnReadNum:" + paramInt2)
+    {
+      QLog.d("QCircleMessageNoticeViewModel", 1, localObject);
+      paramList1 = new uzl(paramList1, paramInt1, paramList2, paramInt2);
+      this.a.postValue(paramList1);
+      return;
+      i = paramList1.size();
+      break;
+    }
+  }
+  
+  public MutableLiveData<uzl> a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return "QCircleMessageNoticeViewModel";
+  }
+  
+  public void a(Context paramContext)
+  {
+    QLog.i("QCircleMessageNoticeViewModel", 1, "pullLastestInfo");
+    ThreadManager.getSubThreadHandler().post(new QCircleMessageNoticeViewModel.1(this, paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vud
  * JD-Core Version:    0.7.0.1
  */

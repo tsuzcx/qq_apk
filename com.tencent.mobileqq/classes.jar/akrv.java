@@ -1,189 +1,74 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class akrv
-  implements akrq, Handler.Callback
+  extends bhhe
 {
-  protected bhtd a;
-  WeakReference<Activity> a;
-  private WeakReference<QQAppInterface> b;
+  public akrv(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, akse paramakse, WeakReference paramWeakReference) {}
   
-  public akrv(Activity paramActivity, QQAppInterface paramQQAppInterface)
+  public void onDoneFile(bhhf parambhhf)
   {
-    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 100;
-  }
-  
-  public akrw a(long paramLong, String paramString1, String paramString2)
-  {
-    if (this.b == null) {
-      return null;
+    super.onDoneFile(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambhhf.jdField_a_of_type_Int + "|" + parambhhf.jdField_a_of_type_JavaLangString + "|" + ((File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString)).getAbsolutePath());
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    if ("general_cmd_ui_show_toast".equals(paramString1)) {
-      return a(paramString2);
-    }
-    if ("cs.get_dress_path.local".equals(paramString1))
+    Object localObject2;
+    Object localObject1;
+    if ((parambhhf.jdField_a_of_type_Int == 0) && (parambhhf.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambhhf.jdField_a_of_type_JavaLangString)))
     {
-      alje.a(paramLong, localQQAppInterface, paramString1, paramString2);
-      return new akrw();
-    }
-    if ("cs.report_data_2_compass.local".equals(paramString1))
-    {
-      alje.a(localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.report_data_2_backstage.local".equals(paramString1))
-    {
-      alje.b(localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.report_flow_data.local".equals(paramString1))
-    {
-      alje.c(localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.encrypt_data.local".equals(paramString1))
-    {
-      alje.a(paramLong, localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.decrypt_data.local".equals(paramString1))
-    {
-      alje.b(paramLong, localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.get_server_ip_port.local".equals(paramString1))
-    {
-      alje.b(paramLong, localQQAppInterface, paramString1, paramString2);
-      return new akrw();
-    }
-    if ("cs.save_recommend_ip.local".equals(paramString1))
-    {
-      alje.a(localQQAppInterface, paramString2);
-      return new akrw();
-    }
-    if ("cs.apolloGameWebMessage.local".equals(paramString1))
-    {
-      alje.a(paramString2);
-      return new akrw();
-    }
-    if ("cs.openFloatTransparentView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      localObject2 = (File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString);
+      if (localObject2 == null)
       {
-        alje.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new akrw();
-      }
-    }
-    else if ("cs.openWebView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        alje.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new akrw();
-      }
-    }
-    else
-    {
-      if ("cs.script_get_nickname.local".equals(paramString1))
-      {
-        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-        int j = -1;
-        String str = "";
-        paramString1 = str;
-        int i = j;
-        if (localQQMessageFacade != null)
-        {
-          paramString1 = str;
-          i = j;
-          if (localQQMessageFacade.a())
-          {
-            paramString1 = str;
-            i = j;
-            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
-            {
-              paramString1 = localQQMessageFacade.a();
-              i = localQQMessageFacade.a();
-            }
-          }
+        localObject1 = "";
+        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
+        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
+          break label242;
         }
-        return albi.a(paramString2, localQQAppInterface, i, paramString1);
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
+          break label224;
+        }
+        if (this.jdField_a_of_type_Akse != null) {
+          this.jdField_a_of_type_Akse.onResult(2, PreloadManager.PathResult.getFailRes(parambhhf.jdField_a_of_type_JavaLangString));
+        }
+        PreloadManager.a(parambhhf.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
       }
-      if ("cs.script_get_action_data.local".equals(paramString1))
-      {
-        ApolloGameUtil.a(paramLong, localQQAppInterface, paramString2);
-        return null;
-      }
     }
-    return null;
-  }
-  
-  public akrw a(String paramString)
-  {
-    akrw localakrw = new akrw();
-    String str = ApolloUtil.a(paramString, "tips");
-    int i = ApolloUtil.a(paramString, "length");
-    if (TextUtils.isEmpty(str)) {
-      return localakrw;
-    }
-    paramString = this.jdField_a_of_type_Bhtd.obtainMessage(255);
-    paramString.obj = str;
-    paramString.arg1 = i;
-    paramString.sendToTarget();
-    return localakrw;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
-  }
-  
-  public boolean a(Activity paramActivity)
-  {
-    return true;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i = 1;
-    switch (paramMessage.what)
-    {
-    }
+    label224:
+    label242:
     do
     {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      QQToast.a(localBaseApplication, localCharSequence, i).a();
-      return false;
-      i = 0;
-    }
+      do
+      {
+        do
+        {
+          return;
+          localObject1 = ((File)localObject2).getAbsolutePath();
+          break;
+          aktg.a(parambhhf.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        } while (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+        if (parambhhf.jdField_a_of_type_Int != 0) {
+          break label339;
+        }
+        localObject1 = aktg.a(parambhhf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        localObject2 = new PreloadManager.PathResult();
+        ((PreloadManager.PathResult)localObject2).url = parambhhf.jdField_a_of_type_JavaLangString;
+        ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
+        ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
+      } while (this.jdField_a_of_type_Akse == null);
+      this.jdField_a_of_type_Akse.onResult(0, (PreloadManager.PathResult)localObject2);
+      return;
+    } while (this.jdField_a_of_type_Akse == null);
+    label339:
+    this.jdField_a_of_type_Akse.onResult(1, PreloadManager.PathResult.getFailRes(parambhhf.jdField_a_of_type_JavaLangString, parambhhf.jdField_a_of_type_Int));
   }
 }
 

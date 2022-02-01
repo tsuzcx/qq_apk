@@ -1,76 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aowz
+public final class aowz
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static aowz a(aoko[] paramArrayOfaoko)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
-    }
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0))
-    {
-      paramArrayOfaoko = null;
-      return paramArrayOfaoko;
-    }
-    aowz localaowz = new aowz();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[0].jdField_a_of_type_JavaLangString);
-        paramArrayOfaoko = localaowz;
-        if (!localJSONObject.has("tencentDocAioSendEntry")) {
-          break;
-        }
-        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
-        if (localJSONObject.has("aioSendDocSwitch"))
-        {
-          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
-            localaowz.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          paramArrayOfaoko = localaowz;
-          if (!localJSONObject.has("webDocSelectorUrl")) {
-            break;
-          }
-          localaowz.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
-          return localaowz;
-        }
-      }
-      catch (JSONException paramArrayOfaoko)
-      {
-        paramArrayOfaoko.printStackTrace();
-        return localaowz;
-      }
-      bool = false;
-    }
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public static final int A = bgtn.a(45.0F);
+  public static final int B = bgtn.a(48.0F);
+  public static final int C = bgtn.a(60.0F);
+  public static final int D = bgtn.a(64.0F);
+  public static final int E = bgtn.a(74.0F);
+  public static final int F = bgtn.a(76.0F);
+  public static final int G = bgtn.a(77.5F);
+  public static final int H = bgtn.a(87.5F);
+  public static final int I = bgtn.a(92.5F);
+  public static final int J = bgtn.a(93.0F);
+  public static final int K = bgtn.a(100.0F);
+  public static final int L = bgtn.a(105.5F);
+  public static final int M = bgtn.a(120.0F);
+  public static final int a = bgtn.a(0.5F);
+  public static final int b = bgtn.a(1.0F);
+  public static final int c = bgtn.a(1.5F);
+  public static final int d = bgtn.a(1.75F);
+  public static final int e = bgtn.a(2.0F);
+  public static final int f = bgtn.a(3.0F);
+  public static final int g = bgtn.a(4.0F);
+  public static final int h = bgtn.a(5.0F);
+  public static final int i = bgtn.a(6.0F);
+  public static final int j = bgtn.a(8.0F);
+  public static final int k = bgtn.a(10.0F);
+  public static final int l = bgtn.a(11.0F);
+  public static final int m = bgtn.a(12.0F);
+  public static final int n = bgtn.a(14.0F);
+  public static final int o = bgtn.a(15.0F);
+  public static final int p = bgtn.a(16.0F);
+  public static final int q = bgtn.a(16.5F);
+  public static final int r = bgtn.a(18.0F);
+  public static final int s = bgtn.a(20.0F);
+  public static final int t = bgtn.a(25.0F);
+  public static final int u = bgtn.a(30.0F);
+  public static final int v = bgtn.a(34.0F);
+  public static final int w = bgtn.a(35.0F);
+  public static final int x = bgtn.a(36.0F);
+  public static final int y = bgtn.a(38.0F);
+  public static final int z = bgtn.a(40.0F);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowz
  * JD-Core Version:    0.7.0.1
  */

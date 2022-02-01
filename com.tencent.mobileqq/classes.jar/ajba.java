@@ -1,19 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
 
-class ajba
-  implements ajam
+public class ajba
+  extends ajax
 {
-  ajba(ajaz paramajaz, int paramInt) {}
+  public NewFriendSubTitle a;
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public ajba(NewFriendSubTitle paramNewFriendSubTitle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramHashMap);
-    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    this.a = paramNewFriendSubTitle;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

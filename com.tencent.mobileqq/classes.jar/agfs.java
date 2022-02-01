@@ -1,64 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
 public class agfs
-  extends aepl
+  extends bhql
 {
-  public agfs(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
+  agfs(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  protected aepm a()
+  public void a()
   {
-    return new agft(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
-  {
-    paramaepm = (agft)paramaepm;
-    paramaepm = paramView;
-    if (paramView == null)
+    WebView localWebView;
+    if (this.jdField_a_of_type_Bhov.a() != null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558820, null);
-      paramaepm = (TextView)paramView.findViewById(2131367292);
-      paramaepm.setMovementMethod(null);
-      paramaepm.setGravity(17);
-      paramaepm = paramView;
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        paramaepm = (TextView)paramView.findViewById(2131367637);
-        paramLinearLayout = (TextView)paramView.findViewById(2131367638);
-        paramaepm.setBackgroundColor(2130842187);
-        paramLinearLayout.setBackgroundColor(2130842187);
-        paramaepm = paramView;
+      localWebView = this.jdField_a_of_type_Bhov.a();
+      localWebView.setId(2131381152);
+      if (this.b != -1) {
+        localWebView.setBackgroundColor(this.b);
       }
+      Object localObject = (Activity)localWebView.getContext();
+      if ((localObject instanceof ConfessHalfScreenActivity))
+      {
+        localObject = (ConfessHalfScreenActivity)localObject;
+        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      }
+      if (!(this.c instanceof RelativeLayout)) {
+        break label171;
+      }
+      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
     }
-    paramView = (TextView)paramaepm.findViewById(2131367292);
-    if ((paramMessageRecord.istroop == 1) && (nav.a().a(paramMessageRecord.senderuin)))
+    for (;;)
     {
-      paramView.setTextColor(nav.d);
-      return paramaepm;
+      this.c.setOnClickListener(new agft(this));
+      return;
+      label171:
+      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
     }
-    paramView.setTextColor(paramaepm.getResources().getColorStateList(2131165500));
-    return paramaepm;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bdpk[] a(View paramView)
-  {
-    return null;
   }
 }
 

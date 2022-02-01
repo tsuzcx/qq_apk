@@ -1,107 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import android.view.View;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aahe
-  implements INetEventHandler
+  implements aacv
 {
-  public static int a;
-  private static aahe jdField_a_of_type_Aahe;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  public static boolean a;
-  public static boolean b;
-  boolean c = false;
-  boolean d = false;
+  public aahe(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
   
-  static
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    jdField_a_of_type_Int = 100;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterBroadcastReceiver", 2, "registerReceiver");
-    }
-    if (jdField_a_of_type_Aahe == null) {
-      jdField_a_of_type_Aahe = new aahe();
-    }
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new aahf();
-    }
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getApplication(), jdField_a_of_type_Aahe);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
-      localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
-      localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    }
-  }
-  
-  public static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterBroadcastReceiver", 2, "unRegisterReceiver");
-    }
-    if (jdField_a_of_type_Aahe != null)
-    {
-      AppNetConnInfo.unregisterNetEventHandler(jdField_a_of_type_Aahe);
-      jdField_a_of_type_Aahe = null;
-    }
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
-      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameCenterBroadcastReceiver", 2, "no net");
+    if (paramStFeed != null) {
+      if (!paramStFeed.id.get().startsWith("fakeid_")) {
+        break label40;
       }
     }
+    label40:
     do
     {
-      return;
-      if (!AppNetConnInfo.isMobileConn()) {
-        break;
-      }
-    } while (this.d);
-    if (QLog.isColorLevel()) {
-      bfrz.c("GameCenterBroadcastReceiver", "mobile connect");
-    }
-    for (;;)
-    {
-      this.c = false;
-      return;
-      if (AppNetConnInfo.isWifiConn())
+      QQToast.a(this.a.getActivity(), anni.a(2131713338), 0).a();
+      do
       {
-        if (this.c) {
-          break;
-        }
-        this.c = true;
-        if (QLog.isColorLevel()) {
-          bfrz.c("GameCenterBroadcastReceiver", "wifi connect");
-        }
-        GameCenterCheck.b();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        bfrz.c("GameCenterBroadcastReceiver", "no connect");
-      }
-    }
+        return;
+      } while (!(paramView instanceof RelativeFeedItemView));
+      paramView = (RelativeFeedItemView)paramView;
+    } while (paramView.a == null);
+    aaae.a(this.a.getActivity(), paramStFeed, 0, aaid.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
   }
 }
 

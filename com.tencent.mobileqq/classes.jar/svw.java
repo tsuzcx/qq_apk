@@ -1,10 +1,20 @@
-public abstract interface svw
+public abstract class svw
 {
-  public abstract void a();
+  private static int a = 7;
+  
+  public static int a()
+  {
+    return a;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svw
  * JD-Core Version:    0.7.0.1
  */

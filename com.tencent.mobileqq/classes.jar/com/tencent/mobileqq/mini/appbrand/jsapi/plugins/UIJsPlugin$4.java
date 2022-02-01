@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bgrm;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.ToastView;
@@ -20,9 +19,7 @@ class UIJsPlugin$4
         if (UIJsPlugin.access$000(this.this$0) != null) {
           UIJsPlugin.access$000(this.this$0).hide();
         }
-        if (UIJsPlugin.access$100(this.this$0) != null)
-        {
-          UIJsPlugin.access$100(this.this$0).a();
+        if (UIJsPlugin.access$100(this.this$0) != null) {
           UIJsPlugin.access$102(this.this$0, null);
         }
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
@@ -47,7 +44,7 @@ class UIJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class aebm
-  implements DialogInterface.OnDismissListener
+  extends BroadcastReceiver
 {
-  public aebm(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  public aebm(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.getActivity().finish();
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bggo.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

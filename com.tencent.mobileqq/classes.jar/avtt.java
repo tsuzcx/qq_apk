@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class avtt
-  implements View.OnClickListener
+public abstract interface avtt
 {
-  avtt(avtr paramavtr, avtm paramavtm) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Avtr.dismiss();
-    if (this.jdField_a_of_type_Avtm.a != null) {
-      this.jdField_a_of_type_Avtm.a.onClick(paramView);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtt
  * JD-Core Version:    0.7.0.1
  */

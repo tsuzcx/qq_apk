@@ -1,21 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.os.Handler;
 
-public class awcj
-  implements ValueAnimator.AnimatorUpdateListener
+final class awcj
+  implements bguz
 {
-  public awcj(ScanIconAnimateView paramScanIconAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bgux parambgux1, bgux parambgux2)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    awch.a().sendEmptyMessage(10000001);
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(bgux parambgux1, bgux parambgux2, int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(bgux parambgux1, bgux parambgux2)
+  {
+    awch.a = false;
+    awch.a().sendEmptyMessage(10000001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcj
  * JD-Core Version:    0.7.0.1
  */

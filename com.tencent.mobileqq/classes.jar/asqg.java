@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class asqg
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  asqg(asqf paramasqf) {}
+  asqg(asqe paramasqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

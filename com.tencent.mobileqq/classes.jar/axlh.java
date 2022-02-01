@@ -1,38 +1,34 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class axlh
-  extends RecyclerView.OnScrollListener
+final class axlh
+  implements bihh
 {
-  axlh(axlg paramaxlg) {}
+  axlh(String paramString, axlm paramaxlm) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    axlg.a(this.a, paramInt);
-    if (axlg.a(this.a) == 0)
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      if (axlg.a(this.a).a()) {
-        axlg.a(this.a).b();
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
       }
-      int i = axlg.a(this.a).getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramRecyclerView = axlg.a(this.a).getChildAt(paramInt);
-        paramRecyclerView = (axlj)axlg.a(this.a).getChildViewHolder(paramRecyclerView);
-        axlj.a(paramRecyclerView).setImageBitmap(axlg.a(this.a, axlj.a(paramRecyclerView)));
-        paramInt += 1;
+      if (this.jdField_a_of_type_Axlm != null) {
+        this.jdField_a_of_type_Axlm.a(true);
       }
     }
-    axlg.a(this.a).a();
-    axlg.a(this.a).c();
+    label50:
+    while (this.jdField_a_of_type_Axlm == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axlm.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import tdf;
-import tdg;
+import ufh;
+import ufi;
 
 public class WsCommentInputPopupWindow$1$1
   implements Runnable
 {
-  public WsCommentInputPopupWindow$1$1(tdg paramtdg) {}
+  public WsCommentInputPopupWindow$1$1(ufi paramufi) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class WsCommentInputPopupWindow$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,34 @@
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
-import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
 public class apkz
-  extends apld
+  implements aplg
 {
-  public apkz(QQAppInterface paramQQAppInterface)
+  public EIPCResult a(Bundle paramBundle)
   {
-    super("qq.android.appleemoji", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10001;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return AppleEmojiData.class;
-  }
-  
-  public String a()
-  {
-    return "AppleMojiHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    Object localObject = apkf.a();
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    paramBundle = paramBundle.getString("Domain", "");
+    localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getPskey(((QQAppInterface)localObject).getCurrentAccountUin(), paramBundle);
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, pskey is empty, domain=" + paramBundle);
+      localBundle.putString("PSKey", "");
+    }
+    for (;;)
+    {
+      return EIPCResult.createResult(0, localBundle);
+      localBundle.putString("PSKey", (String)localObject);
+    }
   }
 }
 

@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class afiu
-  implements DialogInterface.OnClickListener
+public class afiu
+  extends anqd
 {
-  afiu(afir paramafir) {}
+  public afiu(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
+  }
 }
 
 

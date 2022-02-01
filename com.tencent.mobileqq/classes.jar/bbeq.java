@@ -1,44 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbeq
-  extends upy
+  implements Comparable<bbeq>
 {
-  public String a;
-  public upc a;
+  public int a;
+  public MessageForScribble a;
   
-  public bbeq(String paramString)
+  bbeq(MessageForScribble paramMessageForScribble, int paramInt)
   {
-    this.jdField_a_of_type_Upc = new upc();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void c()
-  {
-    bayk localbayk = new bayk();
-    localbayk.jdField_a_of_type_Awkh = new bber(this);
-    localbayk.i = this.jdField_a_of_type_JavaLangString;
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.jdField_b_of_type_Int = 327681;
-    QQStoryContext.a();
-    localbayk.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbayk.c = "";
-    localbayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    QQStoryContext.a();
-    QQStoryContext.a().a().a(localbayk);
-  }
-  
-  protected void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!xrg.c(this.jdField_a_of_type_JavaLangString)))
+    this.jdField_a_of_type_Int = 200;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
+    if (paramInt >= 200)
     {
-      wxe.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
+      this.jdField_a_of_type_Int = paramInt;
       return;
     }
-    c();
+    QLog.e("ScribbleDownloadInfo", 1, "err priority");
+  }
+  
+  public int a(bbeq parambbeq)
+  {
+    if (this.jdField_a_of_type_Int < parambbeq.jdField_a_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Int > parambbeq.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
   }
 }
 

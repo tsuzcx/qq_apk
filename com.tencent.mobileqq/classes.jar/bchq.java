@@ -1,14 +1,34 @@
-import android.text.Editable;
-import java.util.Comparator;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.atomic.AtomicReference;
 
-final class bchq
-  implements Comparator
+public class bchq
 {
-  bchq(Editable paramEditable) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  public AtomicReference<SVHwEncoder> a;
+  private long b;
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public bchq()
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.b = paramLong1;
+    if (((this.b - this.jdField_a_of_type_Long) / bchp.jdField_a_of_type_Int == this.jdField_a_of_type_Int + 1) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null))
+    {
+      float f = (float)(paramLong2 * 1000.0D / paramLong1);
+      ((SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(f, -1);
+      this.jdField_a_of_type_Int += 1;
+    }
   }
 }
 

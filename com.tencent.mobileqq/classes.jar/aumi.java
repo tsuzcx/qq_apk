@@ -1,48 +1,40 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aumi
-  implements View.OnClickListener
+final class aumi
+  extends nis
 {
-  public aumi(TabPageIndicator paramTabPageIndicator) {}
+  aumi(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      axdz.b(this.a.getCurrentAccountUin(), false);
     }
-    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    paramView = paramView.getTag();
-    if ((paramView instanceof auml)) {}
-    for (paramView = (auml)paramView;; paramView = null)
+    for (boolean bool1 = false;; bool1 = axdz.b(this.a.getCurrentAccountUin()))
     {
-      if (paramView == null) {}
-      int j;
-      do
-      {
-        return;
-        int i = TabPageIndicator.a(this.a).a();
-        j = paramView.jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        TabPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
-          TabPageIndicator.a(this.a).a(j);
-        }
-      } while (TabPageIndicator.a(this.a) == null);
-      TabPageIndicator.a(this.a).a(j);
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = bctj.a(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumi
  * JD-Core Version:    0.7.0.1
  */

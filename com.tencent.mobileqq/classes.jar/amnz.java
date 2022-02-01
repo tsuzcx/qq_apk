@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-
-public class amnz
-  extends RecentUserCache
+public abstract interface amnz
 {
-  public amnz(QQAppInterface paramQQAppInterface, amgv paramamgv)
-  {
-    super(paramQQAppInterface, paramamgv);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnz
  * JD-Core Version:    0.7.0.1
  */

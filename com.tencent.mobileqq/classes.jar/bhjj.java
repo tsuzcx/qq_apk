@@ -1,25 +1,22 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhjj
-  implements bgnl
+public class bhjj
+  implements View.OnClickListener
 {
-  bhjj(bhje parambhje) {}
+  public bhjj(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 2019)
-    {
-      this.a.a.a(paramInt1, paramInt2, paramIntent);
-      bgnk.a().b(this);
-      return true;
-    }
-    return false;
+    LiangHaoBuyFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjj
  * JD-Core Version:    0.7.0.1
  */

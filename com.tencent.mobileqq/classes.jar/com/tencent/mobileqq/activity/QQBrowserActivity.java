@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import abvb;
-import adpw;
-import adpx;
-import adpy;
+import Override;
+import abcr;
+import aewe;
+import aewf;
+import aewg;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,6 +21,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -28,26 +30,25 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import aobw;
-import aocf;
-import aocl;
-import aocr;
-import aofm;
-import azla;
-import bazo;
-import befg;
-import beft;
-import begc;
-import begs;
-import behm;
-import beho;
-import beht;
-import beih;
-import bejk;
-import bejx;
-import bejz;
-import beka;
-import bioq;
+import aqcb;
+import aqck;
+import aqcs;
+import aqda;
+import aqfv;
+import bcly;
+import bhmi;
+import bhmv;
+import bhne;
+import bhnw;
+import bhoq;
+import bhos;
+import bhox;
+import bhpl;
+import bhqo;
+import bhrb;
+import bhrd;
+import bhre;
+import blcf;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.lightGame.CmGameFragment;
@@ -55,11 +56,13 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
@@ -73,19 +76,18 @@ import mqq.app.IBrowserThirdAppReport;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zfy;
 
 public class QQBrowserActivity
   extends FragmentActivity
-  implements aocf, begc, beht, IBrowserThirdAppReport
+  implements aqck, bhne, bhox, IBrowserThirdAppReport
 {
   public static final HashSet<String> a;
   public static int c;
   public static long d;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  protected aobw a;
-  public final beho a;
+  protected aqcb a;
+  public final bhos a;
   private ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
   public Class<? extends WebViewFragment> a;
   public ArrayList<WebViewTabBarData> a;
@@ -100,7 +102,7 @@ public class QQBrowserActivity
   
   public QQBrowserActivity()
   {
-    this.jdField_a_of_type_Beho = a();
+    this.jdField_a_of_type_Bhos = a();
   }
   
   public static WebViewFragment a(int paramInt, QQBrowserActivity paramQQBrowserActivity)
@@ -110,7 +112,7 @@ public class QQBrowserActivity
     FragmentTransaction localFragmentTransaction = paramQQBrowserActivity.getSupportFragmentManager().beginTransaction();
     paramQQBrowserActivity.a(localFragmentTransaction);
     if (!localWebViewFragment.isAdded()) {
-      localFragmentTransaction.add(2131364785, localWebViewFragment, localWebViewTabBarData.tag);
+      localFragmentTransaction.add(2131365013, localWebViewFragment, localWebViewTabBarData.tag);
     }
     for (;;)
     {
@@ -126,33 +128,33 @@ public class QQBrowserActivity
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "finish");
     }
-    Object localObject = b();
+    Object localObject = a();
     if (localObject != null) {
-      ((WebViewFragment)localObject).d();
+      ((WebViewFragment)localObject).activityFinish();
     }
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     if ((localInputMethodManager != null) && (a(this) != null)) {
       localInputMethodManager.hideSoftInputFromWindow(b(this).getWindowToken(), 0);
     }
     super.finish();
-    if ((this.jdField_a_of_type_Aobw != null) && ((this.jdField_a_of_type_Aobw.c()) || (this.jdField_a_of_type_Aobw.d()))) {
+    if ((this.jdField_a_of_type_Aqcb != null) && ((this.jdField_a_of_type_Aqcb.c()) || (this.jdField_a_of_type_Aqcb.d()))) {
       overridePendingTransition(0, 0);
     }
     if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
       overridePendingTransition(0, 2130771978);
     }
     if (getIntent().getBooleanExtra("finish_animation_out_to_right", false)) {
-      overridePendingTransition(0, 2130772202);
+      overridePendingTransition(0, 2130772206);
     }
     if (getIntent().getBooleanExtra("finish_animation_out_to_top", false)) {
-      overridePendingTransition(0, 2130772297);
+      overridePendingTransition(0, 2130772306);
     }
     if (getIntent().getBooleanExtra("finish_animation_none", false)) {
       overridePendingTransition(0, 0);
     }
-    if ((localObject != null) && (((WebViewFragment)localObject).jdField_a_of_type_Bejk != null))
+    if ((localObject != null) && (((WebViewFragment)localObject).mUIStyle != null))
     {
-      if ((((WebViewFragment)localObject).jdField_a_of_type_Bejk.jdField_d_of_type_Long & 0x100) == 0L) {
+      if ((((WebViewFragment)localObject).mUIStyle.jdField_d_of_type_Long & 0x100) == 0L) {
         break label257;
       }
       overridePendingTransition(0, 0);
@@ -168,7 +170,7 @@ public class QQBrowserActivity
       }
       return;
       label257:
-      if ((((WebViewFragment)localObject).jdField_a_of_type_Bejk.jdField_d_of_type_Long & 0x200) != 0L) {
+      if ((((WebViewFragment)localObject).mUIStyle.jdField_d_of_type_Long & 0x200) != 0L) {
         overridePendingTransition(0, 2130772001);
       }
     }
@@ -189,7 +191,7 @@ public class QQBrowserActivity
   
   private void a(Intent paramIntent)
   {
-    String str = beka.a(paramIntent);
+    String str = bhre.a(paramIntent);
     WebAccelerateHelper.getInstance().preGetKey(str, paramIntent, null);
     WebAccelerateHelper.getInstance().preCheckOffline(str);
     WebAccelerateHelper.getInstance().preFetchResource(str);
@@ -232,29 +234,40 @@ public class QQBrowserActivity
     return false;
   }
   
-  public Activity a()
-  {
-    return this;
-  }
-  
   public View a()
   {
     return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public aobw a()
+  public aqcb a()
   {
-    return this.jdField_a_of_type_Aobw;
+    return this.jdField_a_of_type_Aqcb;
   }
   
-  public beho a()
+  public bhos a()
   {
-    return new beho(this, 1, null);
+    return new bhos(this, 1, null);
   }
   
   public WebViewFragment a()
   {
-    return b();
+    Object localObject = super.getSupportFragmentManager();
+    if (localObject != null)
+    {
+      localObject = ((FragmentManager)localObject).getFragments();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Fragment localFragment = (Fragment)((Iterator)localObject).next();
+          if (((localFragment instanceof WebViewFragment)) && (localFragment.isVisible())) {
+            return (WebViewFragment)localFragment;
+          }
+        }
+      }
+    }
+    return null;
   }
   
   public WebViewFragment a(Intent paramIntent)
@@ -357,21 +370,13 @@ public class QQBrowserActivity
         if (!TextUtils.isEmpty(((Intent)localObject2).getStringExtra("fragment_class"))) {
           ((Intent)localObject2).removeExtra("fragment_class");
         }
-        localObject1 = begs.a(this, paramWebViewTabBarData, localIntent);
+        localObject1 = bhnw.a(this, paramWebViewTabBarData, localIntent);
         a(localIntent);
         ((Intent)localObject2).removeExtra("startOpenPageTime");
         ((Intent)localObject2).removeExtra("qqBrowserActivityCreateTime");
         ((Intent)localObject2).removeExtra("reportSourceFrom");
       }
       return localObject1;
-    }
-    return null;
-  }
-  
-  public WebView a()
-  {
-    if (a() != null) {
-      return a().a();
     }
     return null;
   }
@@ -411,10 +416,10 @@ public class QQBrowserActivity
     if (!BaseApplicationImpl.getApplication().getRuntime().isLogin()) {
       j = 0;
     }
-    if (aocr.d(getOriginalUrl())) {
+    if (aqda.d(getOriginalUrl())) {
       i = 0;
     }
-    if ((aocr.a(getOriginalUrl())) || (TextUtils.isEmpty(getOriginalUrl()))) {
+    if ((aqda.a(getOriginalUrl())) || (TextUtils.isEmpty(getOriginalUrl()))) {
       i = 0;
     }
     if (j != 0) {
@@ -423,14 +428,14 @@ public class QQBrowserActivity
       }
     }
     label162:
-    for (this.jdField_a_of_type_Aobw = new aobw(this, true, false, paramSwipePostTableLayout, true, true, false, 2131165479);; this.jdField_a_of_type_Aobw = new aobw(this, false, true, paramSwipePostTableLayout, true, true, false, 2131165479))
+    for (this.jdField_a_of_type_Aqcb = new aqcb(this, true, false, paramSwipePostTableLayout, true, true, false, 2131165516);; this.jdField_a_of_type_Aqcb = new aqcb(this, false, true, paramSwipePostTableLayout, true, true, false, 2131165516))
     {
-      this.jdField_a_of_type_Aobw.a(this);
-      this.jdField_a_of_type_Aobw.a(this);
+      this.jdField_a_of_type_Aqcb.a(this);
+      this.jdField_a_of_type_Aqcb.a(this);
       this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = getColorNote();
-      this.jdField_a_of_type_Aobw.a(new adpw(this));
-      this.jdField_a_of_type_Aobw.a(new adpx(this));
-      this.jdField_a_of_type_Aobw.a(getOriginalUrl());
+      this.jdField_a_of_type_Aqcb.a(new aewe(this));
+      this.jdField_a_of_type_Aqcb.a(new aewf(this));
+      this.jdField_a_of_type_Aqcb.a(getOriginalUrl());
       return;
     }
   }
@@ -472,30 +477,17 @@ public class QQBrowserActivity
     }
   }
   
-  public WebViewFragment b()
-  {
-    Object localObject = super.getSupportFragmentManager();
-    if (localObject != null)
-    {
-      localObject = ((FragmentManager)localObject).getFragments();
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Fragment localFragment = (Fragment)((Iterator)localObject).next();
-          if (((localFragment instanceof WebViewFragment)) && (localFragment.isVisible())) {
-            return (WebViewFragment)localFragment;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
   protected void b(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -511,9 +503,9 @@ public class QQBrowserActivity
     }
     for (;;)
     {
-      WebViewFragment localWebViewFragment = b();
+      WebViewFragment localWebViewFragment = a();
       if (localWebViewFragment != null) {
-        localWebViewFragment.a(paramInt1, paramInt2, paramIntent);
+        localWebViewFragment.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       }
       return;
       if ((paramInt2 == -1) && (paramInt1 == 1))
@@ -521,14 +513,14 @@ public class QQBrowserActivity
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_QQBrowserActivity", 2, "upload shotphoto request");
         }
-        azla.a(this);
+        bcly.a(this);
       }
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    beiy.B = SystemClock.elapsedRealtime();
+    bhqc.B = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "doOnCreate start");
     }
@@ -538,8 +530,8 @@ public class QQBrowserActivity
     getWindow().setFormat(-3);
     getWindow().setBackgroundDrawable(null);
     this.mNeedStatusTrans = false;
-    bejz.a = 0L;
-    bejz.b();
+    bhrd.a = 0L;
+    bhrd.b();
     Object localObject1 = new FrameLayout(this);
     super.doOnCreate(paramBundle);
     super.setContentView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
@@ -548,9 +540,6 @@ public class QQBrowserActivity
     }
     ImmersiveUtils.a(getWindow(), true);
     paramBundle = super.getIntent();
-    if (!paramBundle.hasExtra("big_brother_source_key")) {
-      paramBundle.putExtra("big_brother_source_key", "biz_src_general_url");
-    }
     Object localObject2 = paramBundle.getSerializableExtra("tabConfigData");
     if ((localObject2 instanceof ArrayList)) {
       this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
@@ -570,12 +559,12 @@ public class QQBrowserActivity
       localObject2 = paramBundle.getExtras();
       if (localObject2 != null)
       {
-        if (!b(beka.a(paramBundle))) {
-          break label484;
+        if (!b(bhre.a(paramBundle))) {
+          break label463;
         }
         this.jdField_a_of_type_JavaLangClass = CmGameFragment.class;
       }
-      label326:
+      label305:
       this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localObject1);
       if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (!(((FrameLayout)localObject1).getParent() instanceof FrameLayout)))
       {
@@ -583,15 +572,15 @@ public class QQBrowserActivity
         ((FrameLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, new FrameLayout.LayoutParams(-1, -1));
         QLog.i("WebLog_QQBrowserActivity", 1, "doOnCreate warning:content is not an instance of FrameLayout.");
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131364785);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131365013);
       int i = paramBundle.getIntExtra("tabDefaultIndex", 0);
       localObject1 = (WebViewTabBarData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       paramBundle.removeExtra("tabDefaultIndex");
       paramBundle = a((WebViewTabBarData)localObject1);
       if (paramBundle.isAdded()) {
-        break label511;
+        break label490;
       }
-      super.getSupportFragmentManager().beginTransaction().add(2131364785, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
+      super.getSupportFragmentManager().beginTransaction().add(2131365013, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
     }
     for (;;)
     {
@@ -601,14 +590,14 @@ public class QQBrowserActivity
       return true;
       paramBundle.removeExtra("tabConfigData");
       break;
-      label484:
+      label463:
       localObject2 = (Class)((Bundle)localObject2).getSerializable("fragmentClass");
       if (localObject2 == null) {
-        break label326;
+        break label305;
       }
       this.jdField_a_of_type_JavaLangClass = ((Class)localObject2);
-      break label326;
-      label511:
+      break label305;
+      label490:
       super.getSupportFragmentManager().beginTransaction().show(paramBundle).commitAllowingStateLoss();
     }
   }
@@ -624,10 +613,8 @@ public class QQBrowserActivity
       }
       this.jdField_a_of_type_AndroidViewView = null;
     }
-    abvb.a(this);
-    abvb.c(this);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aobw != null)) {
-      this.jdField_a_of_type_Aobw.c();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqcb != null)) {
+      this.jdField_a_of_type_Aqcb.c();
     }
     try
     {
@@ -642,9 +629,9 @@ public class QQBrowserActivity
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.a(paramInt, paramKeyEvent);
+      localWebViewFragment.doOnKeyDown(paramInt, paramKeyEvent);
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
@@ -652,25 +639,25 @@ public class QQBrowserActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.a(paramIntent);
+      localWebViewFragment.doOnNewIntent(paramIntent);
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aobw != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqcb != null))
     {
-      this.jdField_a_of_type_Aobw.b();
+      this.jdField_a_of_type_Aqcb.b();
       if (getIntent().getBooleanExtra("isFromFavourite", false)) {
-        this.jdField_a_of_type_Aobw.q();
+        this.jdField_a_of_type_Aqcb.p();
       }
     }
-    if (aocr.b(getOriginalUrl()))
+    if (aqda.b(getOriginalUrl()))
     {
-      aofm.a(this, 2, true);
+      aqfv.a(this, 2, true);
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_QQBrowserActivity", 2, "color note small screen visible by doOnPause");
       }
@@ -680,12 +667,12 @@ public class QQBrowserActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aobw != null)) {
-      this.jdField_a_of_type_Aobw.a();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqcb != null)) {
+      this.jdField_a_of_type_Aqcb.a();
     }
-    if (aocr.b(getOriginalUrl()))
+    if (aqda.b(getOriginalUrl()))
     {
-      aofm.a(this, 2, false);
+      aqfv.a(this, 2, false);
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_QQBrowserActivity", 2, "color note small screen invisible by doOnResume");
       }
@@ -728,9 +715,9 @@ public class QQBrowserActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aobw != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqcb != null))
     {
-      this.jdField_a_of_type_Aobw.d();
+      this.jdField_a_of_type_Aqcb.d();
       return;
     }
     a();
@@ -745,21 +732,21 @@ public class QQBrowserActivity
   {
     Object localObject4 = null;
     Object localObject8 = super.getIntent();
-    Object localObject5 = b();
+    Object localObject5 = a();
     Object localObject3 = "";
     Object localObject1;
     if (localObject5 != null)
     {
-      localObject4 = ((WebViewFragment)localObject5).a();
-      if (!TextUtils.isEmpty(((zfy)localObject4).b()))
+      localObject4 = ((WebViewFragment)localObject5).getShare();
+      if (!TextUtils.isEmpty(((abcr)localObject4).b()))
       {
-        localObject1 = ((zfy)localObject4).b();
-        localObject3 = ((zfy)localObject4).c();
-        localObject5 = ((zfy)localObject4).d();
+        localObject1 = ((abcr)localObject4).b();
+        localObject3 = ((abcr)localObject4).c();
+        localObject5 = ((abcr)localObject4).d();
         if (!TextUtils.isEmpty((CharSequence)localObject5)) {
           break label640;
         }
-        localObject4 = aocr.a(getOriginalUrl());
+        localObject4 = aqda.a(getOriginalUrl());
         localObject5 = localObject3;
         localObject3 = localObject1;
         localObject1 = localObject5;
@@ -783,12 +770,12 @@ public class QQBrowserActivity
         }
         return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
         localObject1 = localObject3;
-        if (((WebViewFragment)localObject5).jdField_a_of_type_Beft == null) {
+        if (((WebViewFragment)localObject5).mSwiftTitleUI == null) {
           break;
         }
         try
         {
-          localObject1 = ((WebViewFragment)localObject5).jdField_a_of_type_Beft.a();
+          localObject1 = ((WebViewFragment)localObject5).mSwiftTitleUI.a();
         }
         catch (Exception localException1)
         {
@@ -798,7 +785,7 @@ public class QQBrowserActivity
       }
       break;
       label211:
-      localObject5 = a();
+      localObject5 = getHostWebView();
       JSONObject localJSONObject = new JSONObject();
       if (localObject5 != null) {}
       for (;;)
@@ -849,11 +836,11 @@ public class QQBrowserActivity
               localObject7 = localObject2;
             }
             localObject8 = getOriginalUrl();
-            if (!bioq.a((String)localObject8)) {
+            if (!blcf.a((String)localObject8)) {
               break label634;
             }
             j = 16908292;
-            localObject6 = bioq.b(bioq.a(bioq.b((String)localObject8, "from", "1041001"), "from", "1041001"), "openFromColorTab", "1");
+            localObject6 = blcf.b(blcf.a(blcf.b((String)localObject8, "from", "1041001"), "from", "1041001"), "openFromColorTab", "1");
             i = j;
             localObject5 = localObject6;
             if (QLog.isColorLevel())
@@ -863,10 +850,10 @@ public class QQBrowserActivity
               i = j;
             }
             a(i);
-            if (this.jdField_a_of_type_Aobw == null) {
+            if (this.jdField_a_of_type_Aqcb == null) {
               continue;
             }
-            localObject2 = this.jdField_a_of_type_Aobw.a(i, (String)localObject5, (String)localObject3, (String)localObject2, (String)localObject4, localJSONObject.toString().getBytes());
+            localObject2 = this.jdField_a_of_type_Aqcb.a(i, (String)localObject5, (String)localObject3, (String)localObject2, (String)localObject4, localJSONObject.toString().getBytes());
             this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = ((ColorNote)localObject2);
             return localObject2;
           }
@@ -881,7 +868,7 @@ public class QQBrowserActivity
           Object localObject7;
           localObject2 = localObject7;
           continue;
-          localObject2 = new aocl().a(i).a(localJSONException).b((String)localObject3).c((String)localObject2).d((String)localObject4).a(localJSONObject.toString().getBytes()).a();
+          localObject2 = new aqcs().a(i).a(localJSONException).b((String)localObject3).c((String)localObject2).d((String)localObject4).a(localJSONObject.toString().getBytes()).a();
           this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = ((ColorNote)localObject2);
           return localObject2;
         }
@@ -903,7 +890,7 @@ public class QQBrowserActivity
   {
     try
     {
-      Object localObject = a();
+      Object localObject = getHostWebView();
       if (localObject != null)
       {
         localObject = ((WebView)localObject).getUrl();
@@ -911,6 +898,24 @@ public class QQBrowserActivity
       }
     }
     catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  public Activity getHostActivity()
+  {
+    return this;
+  }
+  
+  public WebViewFragment getHostFragment()
+  {
+    return a();
+  }
+  
+  public WebView getHostWebView()
+  {
+    if (getHostFragment() != null) {
+      return getHostFragment().getHostWebView();
+    }
     return null;
   }
   
@@ -938,8 +943,8 @@ public class QQBrowserActivity
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidViewView = behm.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new adpy(this));
-      this.jdField_a_of_type_AndroidViewView.setId(2131377349);
+      this.jdField_a_of_type_AndroidViewView = bhoq.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new aewg(this));
+      this.jdField_a_of_type_AndroidViewView.setId(2131378175);
       Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout.getParent();
       if (!(localObject instanceof FrameLayout)) {
         break label154;
@@ -968,9 +973,9 @@ public class QQBrowserActivity
   
   public boolean onBackEvent()
   {
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.f();
+      localWebViewFragment.doOnBackEvent();
     }
     return true;
   }
@@ -978,10 +983,11 @@ public class QQBrowserActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.a(paramConfiguration);
+      localWebViewFragment.doOnConfigurationChanged(paramConfiguration);
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -991,17 +997,17 @@ public class QQBrowserActivity
     }
     c += 1;
     Intent localIntent = super.getIntent();
-    beih localbeih = (beih)this.jdField_a_of_type_Beho.a(1);
-    if (localbeih != null)
+    Object localObject = (bhpl)this.jdField_a_of_type_Bhos.a(1);
+    if (localObject != null)
     {
-      if (!localbeih.a(localIntent))
+      if (!((bhpl)localObject).a(localIntent))
       {
         QLog.e("WebLog_QQBrowserActivity", 1, "navigate to another activity!");
         super.onCreate(paramBundle);
         super.getActivity().finish();
         return;
       }
-      if ((!localbeih.b(localIntent)) && (QLog.isColorLevel())) {
+      if ((!((bhpl)localObject).b(localIntent)) && (QLog.isColorLevel())) {
         QLog.i("WebLog_QQBrowserActivity", 2, "switch to different fragment.");
       }
     }
@@ -1017,36 +1023,45 @@ public class QQBrowserActivity
     }
     localIntent.putExtra("qqBrowserActivityCreateTime", System.currentTimeMillis());
     QLog.d("WebLog_QQBrowserActivity", 1, "onCreate createTime = " + System.currentTimeMillis());
-    bejx.a().a();
-    bejx.b();
+    bhrb.a().a();
+    bhrb.b();
     if (!WebAccelerateHelper.isWebViewCache)
     {
       ThreadManager.postImmediately(new QQBrowserActivity.1(this), null, false);
-      if (bazo.b() == null) {
+      if (InnerDns.queryInstance() == null) {
         ThreadManager.postImmediately(new QQBrowserActivity.2(this), null, false);
       }
-      if (!befg.a().jdField_a_of_type_Boolean) {
+      if (!bhmi.a().jdField_a_of_type_Boolean) {
         ThreadManager.postImmediately(new QQBrowserActivity.3(this), null, false);
       }
     }
-    super.onCreate(paramBundle);
+    localObject = paramBundle;
+    if (getIntent().getBooleanExtra("isFromFavourite", false))
+    {
+      localObject = paramBundle;
+      if (paramBundle == null) {
+        localObject = new Bundle();
+      }
+      ((Bundle)localObject).putAll(localIntent.getExtras());
+    }
+    super.onCreate((Bundle)localObject);
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.h();
+      localWebViewFragment.onPostThemeChanged();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.b(paramBoolean);
+      localWebViewFragment.doOnWindowFocusChanged(paramBoolean);
     }
   }
   
@@ -1067,16 +1082,16 @@ public class QQBrowserActivity
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.d(paramCharSequence.toString());
+      localWebViewFragment.setTitle(paramCharSequence.toString());
     }
     super.setTitle(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

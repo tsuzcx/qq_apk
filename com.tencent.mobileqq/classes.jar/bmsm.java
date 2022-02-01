@@ -1,14 +1,18 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class bmsm
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  bmsm(bmsi parambmsi) {}
+  bmsm(bmsl parambmsl) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(false);
+    if (paramMotionEvent.getAction() == 1) {
+      bmsl.a(this.a);
+    }
+    return true;
   }
 }
 

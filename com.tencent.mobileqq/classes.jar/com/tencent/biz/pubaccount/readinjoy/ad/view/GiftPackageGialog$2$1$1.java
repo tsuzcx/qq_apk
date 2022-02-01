@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import alud;
 import android.widget.TextView;
-import oev;
-import oex;
+import anni;
+import oro;
+import orq;
 
 class GiftPackageGialog$2$1$1
   implements Runnable
@@ -12,7 +12,7 @@ class GiftPackageGialog$2$1$1
   
   public void run()
   {
-    oev.c(this.a.a.a).setText(alud.a(2131705661));
+    oro.c(this.a.a.a).setText(anni.a(2131704056));
   }
 }
 

@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.app;
 
-import alzl;
+import anrs;
 import mqq.util.WeakReference;
-import owy;
-import ssp;
-import suv;
+import pmh;
+import tue;
+import twi;
 
 class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<alzl> b;
+  private final WeakReference<anrs> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, alzl paramalzl)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, anrs paramanrs)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramalzl);
+    this.b = new WeakReference(paramanrs);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    alzl localalzl = (alzl)this.b.get();
-    if ((localObject != null) && (localalzl != null))
+    anrs localanrs = (anrs)this.b.get();
+    if ((localObject != null) && (localanrs != null))
     {
-      suv.a().a((QQAppInterface)localObject, localalzl.a());
-      ssp.a().c((QQAppInterface)localObject);
-      suv.a().g((QQAppInterface)localObject);
-      localObject = owy.a();
+      twi.a().a((QQAppInterface)localObject, localanrs.a());
+      tue.a().c((QQAppInterface)localObject);
+      twi.a().g((QQAppInterface)localObject);
+      localObject = pmh.a();
       if (localObject != null) {
-        ((owy)localObject).e();
+        ((pmh)localObject).e();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler.FolderRefreshRunnable
  * JD-Core Version:    0.7.0.1
  */

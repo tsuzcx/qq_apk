@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import avvi;
+import ayfa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class OCRManager$3
   implements Runnable
 {
-  public OCRManager$3(avvi paramavvi, boolean paramBoolean) {}
+  public OCRManager$3(ayfa paramayfa, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class OCRManager$3
       QLog.d("Q.ocr.manager", 2, "onGetOCRConfig ,excute runnable");
     }
     if ((this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null)) {
-      synchronized (avvi.a(this.this$0))
+      synchronized (ayfa.a(this.this$0))
       {
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.saveToFile(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -28,7 +28,7 @@ public class OCRManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRManager.3
  * JD-Core Version:    0.7.0.1
  */

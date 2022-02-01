@@ -1,101 +1,87 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.CustomImgView;
+import java.util.ArrayList;
+import java.util.List;
 
-class aldm
-  extends bdul
+public class aldm
+  extends BaseAdapter
 {
-  aldm(aldl paramaldl) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  public aldm(aldl paramaldl, Context paramContext, int paramInt1, int paramInt2)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private void a(List<MessageRecord> paramList)
+  {
+    if (paramList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "ApolloDressChange uin=" + paramObject);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      int j = i;
+      if (i > this.jdField_a_of_type_Int) {
+        j = this.jdField_a_of_type_Int;
       }
-      if (aldl.a(this.a) != null) {
-        aldl.a(this.a).e();
-      }
-      this.a.c();
+      return j;
     }
   }
   
-  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetZanCount(boolean paramBoolean, Object paramObject)
+  public Object getItem(int paramInt)
   {
-    if ((!paramBoolean) || (paramObject == null) || (aldl.a(this.a) == null)) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0; (paramInt > 0) && (paramInt < i); i = this.jdField_a_of_type_JavaUtilList.size()) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "get zanCount = " + paramObject);
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-    int i = ((SharedPreferences)localObject).getInt("apollo_zan_count" + aldl.a(this.a), 0);
-    ((SharedPreferences)localObject).edit().putInt("apollo_zan_count" + aldl.a(this.a), ((Integer)paramObject).intValue()).commit();
-    if (((Integer)paramObject).intValue() > 99999) {
-      paramObject = Integer.valueOf(99999);
-    }
-    for (;;)
-    {
-      localObject = String.valueOf(paramObject);
-      if (((Integer)paramObject).intValue() >= 99999)
-      {
-        paramObject = Integer.valueOf(99999);
-        localObject = paramObject + "+";
-      }
-      for (;;)
-      {
-        aldl.a(this.a).a((String)localObject, i, ((Integer)paramObject).intValue());
-        return;
-      }
-    }
+    return null;
   }
   
-  protected void onSetZanCount(boolean paramBoolean, Object paramObject)
+  public long getItemId(int paramInt)
   {
-    if ((paramObject == null) || (aldl.a(this.a) == null) || (aldl.a(this.a) == null)) {
-      return;
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561118, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "set zanCount = " + paramObject);
-    }
-    if (paramBoolean) {}
-    label378:
     for (;;)
     {
-      try
+      CustomImgView localCustomImgView = (CustomImgView)paramView;
+      MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.senderuin)))
       {
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-        Calendar localCalendar = Calendar.getInstance();
-        ((SharedPreferences)localObject).edit().putBoolean(aldl.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + aldl.a(this.a) + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
-        if (((Integer)paramObject).intValue() <= 99999) {
-          break label378;
-        }
-        paramObject = Integer.valueOf(99999);
-        aldl.a(this.a).b(((Integer)paramObject).intValue());
-        return;
+        localCustomImgView.setImageDrawable(this.jdField_a_of_type_Aldl.a.a(localMessageRecord.istroop, localMessageRecord.senderuin));
+        paramView.setTag(-1, localMessageRecord.senderuin);
       }
-      catch (Exception paramObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("ApolloGuestsPresenter", 2, "set zanCount error= " + paramObject.toString());
-      return;
-      if (((Long)paramObject).longValue() != -501010L) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "today has vote to " + aldl.a(this.a));
-      }
-      paramObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-      Object localObject = Calendar.getInstance();
-      paramObject.edit().putBoolean(aldl.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + aldl.a(this.a) + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), true).commit();
-      return;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
 }

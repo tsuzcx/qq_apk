@@ -15,8 +15,7 @@
                 "layout_type":"layout_relative",
                 "margin_top": "12",
                 "height": {
-                    "type": "relative",
-                    "value": "35"
+                    "type": "wrap_content"
                 },
                 "width": {
                     "type": "relative",
@@ -29,29 +28,32 @@
                         "align_parent_left":"YES",
                         "align_parent_top":"YES",
                         "event_type":"cmd_avatar_click",
-                        "margin_top":"-3.5",
                         "margin_left":"12",
                         "height":{
                             "type":"relative",
-                            "value":"37"
+                            "value":"50"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"37"
+                            "value":"50"
                         },
                         "attributes":{
+                            "setRingUrl:": "$ringUrl",
+                            "setLiveStatusUrl:": "$liveStatusUrl",
                             "loadAvatarByUin:": "$avatar_uin",
                             "setFrameString:": "-1"
                         }
                     },
                     {
-                        "view_type": "container",
+                        "view_type": "UIView",
+                        "view_id": "id_info_detail_view",
                         "layout_type":"layout_relative",
-                        "margin_left": "12",
+                        "default_visible": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left": "6.5",
                         "right_of_view":"id_info_avator",
                         "height": {
-                            "type": "absolutely",
-                            "value": "43"
+                            "type": "wrap_content"
                         },
                         "width": {
                             "type": "wrap_content"
@@ -71,8 +73,8 @@
                                 "attributes": {
                                     "setFrameString:": "-1",
                                     "setText:": "$nickname_text",
-                                    "setTextColorString:": "#000000",
-                                    "setFontSizeString:": "13",
+                                    "setTextColorString:": "#262626",
+                                    "setFontSizeString:": "16",
                                     "setNumberOfLinesString:": "1"
                                 }
                             },
@@ -80,7 +82,7 @@
                                 "view_type": "UILabel",
                                 "view_id": "id_timestamp",
                                 "below_of_view":"id_nickname",
-                                "margin_top": "3",
+                                "margin_top": "4",
                                 "height": {
                                     "type": "wrap_content"
                                 },
@@ -90,8 +92,8 @@
                                 "attributes": {
                                     "setFrameString:": "-1",
                                     "setText:": "$timestamp_text",
-                                    "setTextColorString:": "#8C000000",
-                                    "setFontSizeString:": "11",
+                                    "setTextColorString:": "#737373",
+                                    "setFontSizeString:": "12",
                                     "setNumberOfLinesString:": "1"
                                 }
                             },
@@ -100,8 +102,8 @@
                                 "view_id": "id_read_amount",
                                 "right_of_view": "id_timestamp",
                                 "below_of_view":"id_nickname",
-                                "margin_left": "12",
-                                "margin_top": "3",
+                                "margin_left": "4",
+                                "margin_top": "4",
                                 "height": {
                                     "type": "wrap_content"
                                 },
@@ -111,8 +113,8 @@
                                 "attributes": {
                                     "setFrameString:": "-1",
                                     "setText:": "$read_amount_text",
-                                    "setTextColorString:": "#8C000000",
-                                    "setFontSizeString:": "11",
+                                    "setTextColorString:": "#737373",
+                                    "setFontSizeString:": "12",
                                     "setNumberOfLinesString:": "1"
                                 }
                             }

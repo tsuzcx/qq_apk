@@ -1,66 +1,23 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bign
-  implements bigl
+final class bign
+  implements anyp
 {
-  private IBinder a;
+  bign(QQAppInterface paramQQAppInterface, anyo paramanyo) {}
   
-  bign(IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    this.a = paramIBinder;
-  }
-  
-  public String a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      String str = localParcel2.readString();
-      return str;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyo);
     }
   }
   
-  public boolean a()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bign
  * JD-Core Version:    0.7.0.1
  */

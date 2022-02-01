@@ -1,21 +1,23 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 
 public class auva
+  extends RadioButton
 {
-  public int a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public URLImageView b;
-  public URLImageView c;
+  public auva(QQGameIndicator paramQQGameIndicator, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auva
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public final class sws
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+public class sws
+  implements InvocationHandler
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
-  {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
-  }
+  public sws(FastWebActivity.3 param3) {}
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sws
  * JD-Core Version:    0.7.0.1
  */

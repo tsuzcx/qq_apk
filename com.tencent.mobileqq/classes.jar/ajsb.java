@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class ajsb
-  implements azcw
+  extends bfrl
 {
-  ajsb(ajry paramajry) {}
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public ajsb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bfrk parambfrk, QQAppInterface paramQQAppInterface)
   {
-    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
+    super(paramContext, parambfrk, paramQQAppInterface);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  protected void b(Object paramObject)
   {
-    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      ajpy.a("", "0X80075BB", "", "", "", "");
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
     }
   }
 }

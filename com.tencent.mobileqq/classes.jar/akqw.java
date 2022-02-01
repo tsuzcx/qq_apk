@@ -1,188 +1,77 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView.GLThread;
+import Wallet.SkinInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class akqw
 {
-  private static String jdField_a_of_type_JavaLangString = "GLThreadManager";
-  private int jdField_a_of_type_Int;
-  private GLTextureView.GLThread jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
+  public static boolean a;
+  public static int c = 0;
+  public int a;
+  public SkinInfo a;
+  public RedPacketInfoBase a;
+  public String a;
+  public int b;
+  public String b = "";
   
-  private void a()
+  public akqw(SkinInfo paramSkinInfo)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
+    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
+  }
+  
+  public akqw(String paramString)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static int a(List<akqw> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.jdField_a_of_type_Int = GLTextureView.access$1600();
-      if (this.jdField_a_of_type_Int >= 131072) {
-        this.c = true;
+      akqw localakqw = (akqw)paramList.next();
+      if (c == localakqw.jdField_a_of_type_WalletSkinInfo.skin_id) {
+        return localakqw.jdField_a_of_type_WalletSkinInfo.skin_id;
       }
-      this.jdField_a_of_type_Boolean = true;
     }
+    return -1;
   }
   
-  public void a(GLTextureView.GLThread paramGLThread)
+  public static void a(List<akqw> paramList)
   {
-    try
-    {
-      GLTextureView.GLThread.b(paramGLThread, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread == paramGLThread) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread = null;
-      }
-      notifyAll();
-      return;
-    }
-    finally {}
+    Collections.sort(paramList, new akqx());
   }
   
-  /* Error */
-  public void a(javax.microedition.khronos.opengles.GL10 paramGL10)
+  public boolean equals(Object paramObject)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 51	akqw:b	Z
-    //   8: ifne +65 -> 73
-    //   11: aload_0
-    //   12: invokespecial 53	akqw:a	()V
-    //   15: aload_1
-    //   16: sipush 7937
-    //   19: invokeinterface 59 2 0
-    //   24: astore_1
-    //   25: aload_0
-    //   26: getfield 34	akqw:jdField_a_of_type_Int	I
-    //   29: ldc 35
-    //   31: if_icmpge +23 -> 54
-    //   34: aload_1
-    //   35: ldc 61
-    //   37: invokevirtual 67	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   40: ifne +36 -> 76
-    //   43: iconst_1
-    //   44: istore_2
-    //   45: aload_0
-    //   46: iload_2
-    //   47: putfield 37	akqw:c	Z
-    //   50: aload_0
-    //   51: invokevirtual 48	java/lang/Object:notifyAll	()V
-    //   54: aload_0
-    //   55: getfield 37	akqw:c	Z
-    //   58: ifne +23 -> 81
-    //   61: iload_3
-    //   62: istore_2
-    //   63: aload_0
-    //   64: iload_2
-    //   65: putfield 69	akqw:d	Z
-    //   68: aload_0
-    //   69: iconst_1
-    //   70: putfield 51	akqw:b	Z
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: return
-    //   76: iconst_0
-    //   77: istore_2
-    //   78: goto -33 -> 45
-    //   81: iconst_0
-    //   82: istore_2
-    //   83: goto -20 -> 63
-    //   86: astore_1
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_1
-    //   90: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	91	0	this	akqw
-    //   0	91	1	paramGL10	javax.microedition.khronos.opengles.GL10
-    //   44	39	2	bool1	boolean
-    //   1	61	3	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	43	86	finally
-    //   45	54	86	finally
-    //   54	61	86	finally
-    //   63	73	86	finally
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.d;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a(GLTextureView.GLThread paramGLThread)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread == paramGLThread) || (this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread == null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread = paramGLThread;
-      notifyAll();
-    }
+    if (this == paramObject) {}
     do
     {
       return true;
-      a();
-    } while (this.c);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread.g();
-    }
+      if (!(paramObject instanceof akqw)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((akqw)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
     return false;
+    return super.equals(paramObject);
   }
   
-  public void b(GLTextureView.GLThread paramGLThread)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread == paramGLThread) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView$GLThread = null;
-    }
-    notifyAll();
-  }
-  
-  /* Error */
-  public boolean b()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 53	akqw:a	()V
-    //   6: aload_0
-    //   7: getfield 37	akqw:c	Z
-    //   10: istore_1
-    //   11: iload_1
-    //   12: ifne +9 -> 21
-    //   15: iconst_1
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: iconst_0
-    //   22: istore_1
-    //   23: goto -6 -> 17
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	akqw
-    //   10	13	1	bool	boolean
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	26	finally
+    StringBuffer localStringBuffer = new StringBuffer("");
+    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
+    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
+    return localStringBuffer.toString();
   }
 }
 

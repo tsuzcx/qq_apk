@@ -1,26 +1,39 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import android.util.Log;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhkj
-  implements MediaRecorder.OnInfoListener
+class bhkj
+  implements nkl
 {
-  public bhkj(MiniAppCamera paramMiniAppCamera, bgok parambgok) {}
+  bhkj(bhkg parambhkg, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void loaded(String paramString, int paramInt)
   {
-    Log.i("MiniAppCamera", "onInfo: " + paramInt1);
-    QMLog.i("MiniAppCamera", "setOnInfoListener|reson: " + paramInt1);
-    if (paramInt1 == 800) {
-      this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera.b(this.jdField_a_of_type_Bgok);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
+      this.jdField_a_of_type_Bhkg.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    }
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
+      if (this.jdField_a_of_type_Bhkg.a(2L, this.jdField_b_of_type_Long)) {
+        this.jdField_a_of_type_Bhkg.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
+      }
+    }
+    while ((!this.jdField_a_of_type_Bhkg.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Bhkg.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhkj
  * JD-Core Version:    0.7.0.1
  */

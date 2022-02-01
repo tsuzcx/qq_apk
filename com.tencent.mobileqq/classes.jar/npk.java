@@ -1,28 +1,23 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class npk
-  implements arrh
+  implements View.OnClickListener
 {
-  public npk(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public npk(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, nyl paramnyl) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    aase.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npk
  * JD-Core Version:    0.7.0.1
  */

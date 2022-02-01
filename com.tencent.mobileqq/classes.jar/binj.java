@@ -1,171 +1,154 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
-import eipc.EIPCResult;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
 
 public class binj
-  extends QIPCModule
 {
-  private static binj jdField_a_of_type_Binj;
-  bink jdField_a_of_type_Bink;
-  
-  public binj(String paramString)
-  {
-    super(paramString);
-  }
+  protected static binj a;
+  protected long a;
+  protected Bundle a;
+  protected binl a;
+  protected bitt a;
+  protected bivb a;
+  public String a;
+  protected String b;
+  protected String c;
+  public String d;
   
   public static binj a()
   {
-    if (jdField_a_of_type_Binj == null) {}
     try
     {
       if (jdField_a_of_type_Binj == null) {
-        jdField_a_of_type_Binj = new binj("QQComicIPCModule");
+        jdField_a_of_type_Binj = new binj();
       }
-      return jdField_a_of_type_Binj;
+      binj localbinj = jdField_a_of_type_Binj;
+      return localbinj;
     }
     finally {}
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public ArrayList<bipb> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicIPCModule", 2, "action = " + paramString);
+    int i = 0;
+    if (this.jdField_a_of_type_Bivb == null) {
+      return new ArrayList(0);
     }
-    if (paramBundle == null)
+    int j = this.jdField_a_of_type_Bivb.a();
+    ArrayList localArrayList = new ArrayList(j);
+    while (i < j)
     {
-      QLog.d("QQComicIPCModule", 2, "QQComicIPCModule Err params = null, action = " + paramString);
-      paramString = null;
-      return paramString;
+      localArrayList.add((bipb)this.jdField_a_of_type_Bivb.a(i));
+      i += 1;
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface))
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Binl = null;
+    if (this.jdField_a_of_type_Bitt != null) {
+      this.jdField_a_of_type_Bitt.a();
+    }
+  }
+  
+  public void a(Bundle paramBundle, binm parambinm, String paramString)
+  {
+    if ((paramBundle == null) || (parambinm == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicIPCModule", 2, "onRemoteInvoke cannot get QQAppInterface");
+      bisy.e("OpenSdkFriendService", "getFriendListAsync params error. params=" + paramBundle + "; listener=" + parambinm);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.d = paramString;
+    if ("action_invite".equals(paramString))
+    {
+      paramString = biyo.a().a("https://fusion.qq.com/cgi-bin/qzapps/mappinvite_getqqlist.cgi");
+      paramBundle.putString("md5str", biyn.a(biip.a().a(), "invite_friend_list_md5").getString(this.b, ""));
+    }
+    for (;;)
+    {
+      this.c = paramString;
+      this.jdField_a_of_type_Bitt = new bitt(paramString, "GET", new binn(this, parambinm));
+      this.jdField_a_of_type_Bitt.a(paramBundle);
+      return;
+      if ("action_story".equals(paramString))
+      {
+        paramString = biyo.a().a("https://fusion.qq.com/cgi-bin/appstage/mapp_getqqlist.cgi");
+        paramBundle.putString("needhttpcache", "nothing");
       }
-      return null;
-    }
-    localObject = (QQAppInterface)localObject;
-    if ("isLebaItemOpen".equals(paramString))
-    {
-      paramInt = paramBundle.getInt("appId", -1);
-      paramString = ((axlx)((QQAppInterface)localObject).getManager(36)).a().iterator();
-      do
+      else if ("action_voice".equals(paramString))
       {
-        if (!paramString.hasNext()) {
-          break;
-        }
-        paramBundle = (BusinessInfoCheckUpdate.AppSetting)paramString.next();
-      } while (paramBundle.appid.get() != paramInt);
-    }
-    for (boolean bool = paramBundle.setting.get();; bool = false)
-    {
-      paramString = new Bundle();
-      paramString.putBoolean("isLebaItemOpen", bool);
-      return EIPCResult.createResult(0, paramString);
-      if ("getRedTouchInfo".equals(paramString))
+        paramString = biyo.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
+      }
+      else if ("action_reactive".equals(paramString))
       {
-        paramString = (axlx)((QQAppInterface)localObject).getManager(36);
-        localObject = paramBundle.getStringArrayList("pathList");
-        if ((paramString != null) && (localObject != null))
-        {
-          paramBundle = new ArrayList();
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
-            if (localAppInfo != null) {
-              paramBundle.add(axmc.a(localAppInfo));
-            }
-          }
-          paramString = new Bundle();
-          paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
-          return EIPCResult.createResult(0, paramString);
-        }
+        paramString = biyo.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
       }
       else
       {
-        if (!"reportRedTouchClick".equals(paramString)) {
-          break label410;
-        }
-        paramString = (axlx)((QQAppInterface)localObject).getManager(36);
-        paramBundle = paramBundle.getString("path");
-        if ((paramString != null) && (paramBundle != null)) {
-          paramString.b(paramBundle);
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("service_type", 2);
-          ((JSONObject)localObject).put("act_id", 1002);
-          paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
-          return null;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          continue;
-        }
-        label410:
-        if ("initPluginBeforeEnter".equals(paramString))
-        {
-          VipComicJumpActivity.a((AppInterface)localObject, paramBundle.getBoolean("doLoadModule"));
-        }
-        else
-        {
-          if ("getComicConfig".equals(paramString))
-          {
-            paramString = (VasQuickUpdateManager)((QQAppInterface)localObject).getManager(184);
-            if ((paramInt > 0) && (paramString != null))
-            {
-              if (this.jdField_a_of_type_Bink == null) {
-                this.jdField_a_of_type_Bink = new bink(this, paramInt);
-              }
-              paramString.addCallBacker(this.jdField_a_of_type_Bink);
-            }
-            paramString = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject, "vipComic_config_v2.json", true, null);
-            if (paramString == null) {
-              continue;
-            }
-            paramBundle = new Bundle();
-            paramBundle.putString("config_json", paramString.toString());
-            paramBundle = EIPCResult.createResult(0, paramBundle);
-            paramString = paramBundle;
-            if (paramInt <= 0) {
-              break;
-            }
-            callbackResult(paramInt, paramBundle);
-            continue;
-          }
-          if ("getPlayerSo".equals(paramString)) {
-            bine.a((QQAppInterface)localObject);
-          }
-        }
+        paramString = biyo.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
       }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    if ("action_invite".equals(this.d))
+    {
+      SharedPreferences.Editor localEditor = biyn.a(biip.a().a(), "invite_friend_list_md5").edit();
+      localEditor.putString(this.b, paramString);
+      localEditor.commit();
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle, binl parambinl)
+  {
+    this.jdField_a_of_type_Binl = parambinl;
+    paramBundle.putString("time", biyn.a(biip.a().a(), "prefer_last_avatar_update_time").getString(this.b, "0"));
+    new bitt(paramString, "GET", new bink(this)).a(paramBundle);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    for (;;)
+    {
+      try
+      {
+        bisy.e("OpenSdkFriendService", "initData error. appid=" + paramString1 + "; openid=" + paramString2);
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_Long = Long.parseLong(biyn.a(biip.a().a(), "uin_openid_store").getString(paramString2, ""));
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.b = paramString2;
+      try
+      {
+        this.jdField_a_of_type_Bivb = biuw.a().a(bipb.class, this.jdField_a_of_type_Long, "invite_friend_list_" + this.b);
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(List<bipb> paramList)
+  {
+    if (this.jdField_a_of_type_Bivb == null) {
+      return;
+    }
+    bipb[] arrayOfbipb = new bipb[paramList.size()];
+    paramList.toArray(arrayOfbipb);
+    this.jdField_a_of_type_Bivb.a(arrayOfbipb, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     binj
  * JD-Core Version:    0.7.0.1
  */

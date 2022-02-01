@@ -1,21 +1,124 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class almr
-  implements View.OnClickListener
+class almr
+  implements INetInfoHandler
 {
-  public almr(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
+  almr(almq paramalmq) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null)
+    boolean bool = true;
+    synchronized (this.a)
     {
-      paramView = new allz();
-      paramView.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a, paramView);
-      aknx.a(124, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    almq localalmq2 = this.a;
+    if (!almq.a(this.a).c) {}
+    for (;;)
+    {
+      localalmq2.a(bool, true);
+      return;
+      bool = false;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(almq.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    almq.a(this.a);
+  }
+  
+  public void onNetNone2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(almq.a(), 2, "onNetNone2Mobile ");
+    }
+    synchronized (this.a)
+    {
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    almq.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(almq.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    almq.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(almq.a(), 2, "onNetWifi2Mobile, need restore:  ");
+    }
+    synchronized (this.a)
+    {
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    almq.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (almq.a(this.a) == null) {
+        return;
+      }
+      if (almq.a(this.a).a == null) {
+        return;
+      }
+    }
+    almq localalmq2 = this.a;
+    if (!almq.a(this.a).c) {}
+    for (;;)
+    {
+      localalmq2.a(bool, true);
+      return;
+      bool = false;
     }
   }
 }

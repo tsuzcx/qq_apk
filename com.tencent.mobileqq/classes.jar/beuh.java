@@ -1,36 +1,19 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class beuh
+class beuh
+  implements Comparator<MessageRecord>
 {
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private WeakReference<beuf> jdField_a_of_type_JavaLangRefWeakReference;
+  beuh(beug parambeug) {}
   
-  public beuh(QQToast paramQQToast, beuf parambeuf)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambeuf);
-  }
-  
-  private boolean a()
-  {
-    beuf localbeuf = (beuf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localbeuf != null) && (localbeuf.a());
-  }
-  
-  @Nullable
-  QQToast a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-    }
-    return null;
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuh
  * JD-Core Version:    0.7.0.1
  */

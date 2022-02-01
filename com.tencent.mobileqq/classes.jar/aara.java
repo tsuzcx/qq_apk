@@ -1,123 +1,50 @@
-public class aara
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+
+public abstract class aara
+  extends niv
 {
-  private static volatile aara jdField_a_of_type_Aara;
-  aarc jdField_a_of_type_Aarc;
-  aarh jdField_a_of_type_Aarh;
-  aari jdField_a_of_type_Aari;
-  aarj jdField_a_of_type_Aarj;
-  aark jdField_a_of_type_Aark;
-  aarl jdField_a_of_type_Aarl;
-  aarn jdField_a_of_type_Aarn;
-  aaro jdField_a_of_type_Aaro;
-  aart jdField_a_of_type_Aart;
-  aarv jdField_a_of_type_Aarv;
-  aarx jdField_a_of_type_Aarx;
-  aary jdField_a_of_type_Aary;
-  aarz jdField_a_of_type_Aarz;
-  aasa jdField_a_of_type_Aasa;
-  aasb jdField_a_of_type_Aasb;
-  aasc jdField_a_of_type_Aasc;
-  
-  public static aara a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Aara == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aara == null) {
-        jdField_a_of_type_Aara = new aara();
-      }
-      return jdField_a_of_type_Aara;
-    }
-    finally {}
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public aaru a(int paramInt)
+  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 6: 
-    default: 
-      return null;
-    case 16: 
-      if (this.jdField_a_of_type_Aasb == null) {
-        this.jdField_a_of_type_Aasb = new aasb();
-      }
-      return this.jdField_a_of_type_Aasb;
-    case 17: 
-      if (this.jdField_a_of_type_Aarl == null) {
-        this.jdField_a_of_type_Aarl = new aarl();
-      }
-      return this.jdField_a_of_type_Aarl;
-    case 4: 
-      if (this.jdField_a_of_type_Aarx == null) {
-        this.jdField_a_of_type_Aarx = new aarx();
-      }
-      return this.jdField_a_of_type_Aarx;
-    case 5: 
-      if (this.jdField_a_of_type_Aarv == null) {
-        this.jdField_a_of_type_Aarv = new aarv();
-      }
-      return this.jdField_a_of_type_Aarv;
-    case 15: 
-      if (this.jdField_a_of_type_Aarh == null) {
-        this.jdField_a_of_type_Aarh = new aarh();
-      }
-      return this.jdField_a_of_type_Aarh;
-    case 7: 
-      if (this.jdField_a_of_type_Aarj == null) {
-        this.jdField_a_of_type_Aarj = new aarj();
-      }
-      return this.jdField_a_of_type_Aarj;
-    case 8: 
-      if (this.jdField_a_of_type_Aary == null) {
-        this.jdField_a_of_type_Aary = new aary();
-      }
-      return this.jdField_a_of_type_Aary;
-    case 9: 
-      if (this.jdField_a_of_type_Aari == null) {
-        this.jdField_a_of_type_Aari = new aari();
-      }
-      return this.jdField_a_of_type_Aari;
-    case 10: 
-      if (this.jdField_a_of_type_Aarz == null) {
-        this.jdField_a_of_type_Aarz = new aarz();
-      }
-      return this.jdField_a_of_type_Aarz;
-    case 11: 
-      if (this.jdField_a_of_type_Aasa == null) {
-        this.jdField_a_of_type_Aasa = new aasa();
-      }
-      return this.jdField_a_of_type_Aasa;
-    case 12: 
-      if (this.jdField_a_of_type_Aarn == null) {
-        this.jdField_a_of_type_Aarn = new aarn();
-      }
-      return this.jdField_a_of_type_Aarn;
-    case 13: 
-      if (this.jdField_a_of_type_Aarc == null) {
-        this.jdField_a_of_type_Aarc = new aarc();
-      }
-      return this.jdField_a_of_type_Aarc;
-    case 14: 
-      if (this.jdField_a_of_type_Aark == null) {
-        this.jdField_a_of_type_Aark = new aark();
-      }
-      return this.jdField_a_of_type_Aark;
-    case 18: 
-      if (this.jdField_a_of_type_Aasc == null) {
-        this.jdField_a_of_type_Aasc = new aasc();
-      }
-      return this.jdField_a_of_type_Aasc;
-    case 19: 
-      if (this.jdField_a_of_type_Aart == null) {
-        this.jdField_a_of_type_Aart = new aart();
-      }
-      return this.jdField_a_of_type_Aart;
+      a(false, paramInt, paramBundle, "", anni.a(2131714046));
+      return;
     }
-    if (this.jdField_a_of_type_Aaro == null) {
-      this.jdField_a_of_type_Aaro = new aaro();
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label133;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+        return;
+      }
     }
-    return this.jdField_a_of_type_Aaro;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, paramBundle, "", anni.a(2131714042));
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+    return;
+    label133:
+    a(false, -1, paramBundle, "", anni.a(2131714050));
   }
 }
 

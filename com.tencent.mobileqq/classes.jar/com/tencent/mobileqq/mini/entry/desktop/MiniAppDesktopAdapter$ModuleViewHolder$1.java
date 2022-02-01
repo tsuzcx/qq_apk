@@ -8,6 +8,7 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 class MiniAppDesktopAdapter$ModuleViewHolder$1
@@ -17,34 +18,41 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
   
   public void onClick(View paramView)
   {
-    paramView = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2600(this.this$0).get();
+    Activity localActivity = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2600(this.this$0).get();
     LaunchParam localLaunchParam;
-    if ((paramView != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0) != null))
+    int i;
+    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0) != null))
     {
       localLaunchParam = new LaunchParam();
       if (this.val$moduleType != 1) {
-        break label66;
+        break label76;
       }
+      i = 3005;
     }
-    for (int i = 3005;; i = 3004)
+    for (;;)
     {
       localLaunchParam.scene = i;
       try
       {
-        MiniAppController.launchMiniAppByAppInfo(paramView, MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0), localLaunchParam);
+        MiniAppController.launchMiniAppByAppInfo(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0), localLaunchParam);
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
+        label76:
+        i = 3004;
       }
-      catch (MiniAppException paramView)
+      catch (MiniAppException localMiniAppException)
       {
-        label66:
-        QLog.e("MiniAppDesktopAdapter", 1, "desktop start app store exception: " + Log.getStackTraceString(paramView));
+        for (;;)
+        {
+          QLog.e("MiniAppDesktopAdapter", 1, "desktop start app store exception: " + Log.getStackTraceString(localMiniAppException));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

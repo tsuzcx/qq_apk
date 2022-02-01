@@ -1,17 +1,19 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axvl
+class axvl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
+  axvl(axvh paramaxvh, bgpa parambgpa) {}
   
-  public axvl(axvk paramaxvk) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bgpa.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,27 @@
 package com.tencent.mobileqq.mini.launch;
 
-import alud;
-import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
+import android.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
 
 class AppBrandLaunchManager$13
-  implements BaseLibManager.UpdateListener
+  implements Runnable
 {
-  AppBrandLaunchManager$13(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  AppBrandLaunchManager$13(AppBrandLaunchManager paramAppBrandLaunchManager, String paramString1, String paramString2) {}
   
-  public void onUpdateResult(int paramInt)
+  public void run()
   {
-    QLog.w("miniapp-process_AppBrandLaunchManager", 1, "updateBaseLib ret=" + paramInt);
-    if (paramInt == 0) {
-      return;
-    }
-    if (paramInt == 1)
+    AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppBrandLaunchManager.MiniAppSubProcessorInfo)AppBrandLaunchManager.access$600(this.this$0).get(this.val$processName);
+    if (localMiniAppSubProcessorInfo != null)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, alud.a(2131700979));
-      return;
-    }
-    String str = alud.a(2131700976);
-    if (paramInt == 1100) {
-      str = alud.a(2131700982);
-    }
-    for (;;)
-    {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
-      return;
-      if (paramInt == 1101) {
-        str = alud.a(2131700985);
-      }
+      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "set preloadGameBaseLibVersion:" + this.val$gameBaseLibVersion + " to " + localMiniAppSubProcessorInfo);
+      localMiniAppSubProcessorInfo.preloadGameBaseLibVersion = this.val$gameBaseLibVersion;
+      AppBrandLaunchManager.access$600(this.this$0).put(this.val$processName, localMiniAppSubProcessorInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.13
  * JD-Core Version:    0.7.0.1
  */

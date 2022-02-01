@@ -1,18 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class begw
+class begw
+  implements DialogInterface.OnDismissListener
 {
-  public static final WebAccelerateHelper.CommonJsPluginFactory a = new begx();
+  begw(begt parambegt) {}
   
-  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramIntent.getIntExtra("web_view_module_from", -1))
-    {
-    default: 
-      return null;
-    }
-    return a;
+    begt.a(this.a);
   }
 }
 

@@ -1,27 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
 public class wut
-  extends QQUIEventReceiver<wub, vdl>
+  implements View.OnClickListener
 {
-  public wut(@NonNull wub paramwub)
-  {
-    super(paramwub);
-  }
+  public wut(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
   
-  public void a(@NonNull wub paramwub, @NonNull vdl paramvdl)
-  {
-    paramwub.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdl.class;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wut
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-
-public final class arce
-  implements Parcelable.Creator<OfflineFileInfo>
+public class arce
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
-  
-  public OfflineFileInfo[] a(int paramInt)
-  {
-    return new OfflineFileInfo[paramInt];
-  }
+  public int a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arce
  * JD-Core Version:    0.7.0.1
  */

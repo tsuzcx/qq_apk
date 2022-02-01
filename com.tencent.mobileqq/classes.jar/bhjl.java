@@ -1,60 +1,38 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
-import com.tencent.smtt.export.external.interfaces.WebResourceError;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhjl
-  extends WebViewClient
+  implements bhiw
 {
-  public bhjl(InnerWebView paramInnerWebView) {}
+  public bhjl(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean)
+  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    QMLog.d("ProgressWebView", "doUpdateVisitedHistory " + paramString);
-    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
-      InnerWebView.a(this.a).a(new bhjm(this, paramString));
-    }
-    super.doUpdateVisitedHistory(paramWebView, paramString, paramBoolean);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    QMLog.d("ProgressWebView", "onPageFinished " + paramString);
-    this.a.evaluateJavascript(InnerWebView.a(this.a), new bhjn(this));
-    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
-      InnerWebView.a(this.a).a(new bhjo(this, paramString));
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    QMLog.d("ProgressWebView", "onPageStarted " + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
-  {
-    super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
-    paramWebResourceRequest = paramWebView.getUrl();
-    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedError ").append(paramWebResourceRequest).append("; webResourceError : ");
-    if (paramWebResourceError != null) {}
-    for (paramWebView = paramWebResourceError.getDescription() + " " + paramWebResourceError.getErrorCode();; paramWebView = null)
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      QMLog.d("ProgressWebView", paramWebView);
-      if ((InnerWebView.a(this.a) != null) && (paramWebResourceRequest != null) && (!paramWebResourceRequest.equals("about:blank"))) {
-        InnerWebView.a(this.a).a(new bhjp(this, paramWebResourceRequest));
+      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
+      if (paramArrayOfByte == null) {
+        break label89;
       }
+    }
+    label89:
+    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
+    {
+      QLog.i("LiangHaoBuyFragment", 4, str);
+      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjl
  * JD-Core Version:    0.7.0.1
  */

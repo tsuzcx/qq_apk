@@ -1,48 +1,56 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import awge;
-import awhp;
-import awhs;
+import anni;
+import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.pb.oac.OACProfilePb.BaseData;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import npn;
-import npo;
+import nyk;
+import nyl;
 import org.json.JSONObject;
 
 public class AccountDetail
-  extends awge
+  extends Entity
 {
+  @notColumn
+  public static final int ANCIENT = 0;
+  @notColumn
+  public static final int VERSION_839 = 1;
   public byte[] accountData;
   public int accountFlag;
   public long accountFlag2;
-  @awhp
+  @notColumn
   public int cardStyle = 0;
   public String certifiedDescription = "";
-  @awhp
+  @notColumn
   public String certifiedEnterprise = "";
   public int certifiedGrade;
-  @awhp
+  @notColumn
   public String certifiedWeixin = "";
   public String configBackgroundColor = "3d7fe3";
-  @awhp
+  @notColumn
   public String configBackgroundImg = "";
-  @awhp
-  public List<npn> customConfigAttrs;
+  @notColumn
+  public List<nyk> customConfigAttrs;
   public String displayNumber = "";
   public int followType;
-  @awhp
-  public List<npn> fullscreenConfigAttrs;
+  @notColumn
+  public List<nyk> fullscreenConfigAttrs;
   public int groupId;
   public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isAgreeSyncLbs;
@@ -55,16 +63,21 @@ public class AccountDetail
   public boolean isSyncLbsSelected;
   public String lastHistoryMsg;
   public int mShowMsgFlag = -1;
-  public String name = alud.a(2131700121);
+  @notColumn
+  public mobileqq_mp.GetPublicAccountMenuResponse menuButtonResp;
+  public String name = anni.a(2131698547);
   public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
-  @awhp
-  public List<npn> paConfigAttrs;
+  @notColumn
+  public List<nyk> paConfigAttrs;
+  public byte[] protocol839Data;
+  public int protocolVersion = 0;
   public int seqno;
+  public int sharedFollowerCount;
   public int showFlag;
-  public String summary = alud.a(2131700124);
-  @awhs
+  public String summary = anni.a(2131698550);
+  @unique
   public String uin;
-  @awhp
+  @notColumn
   public String unifiedDesrpition;
   
   public AccountDetail() {}
@@ -101,10 +114,38 @@ public class AccountDetail
     {
       initShowMsgFlag_v5_9();
       initLbsItem_v5_9();
-      return;
     }
-    initShowMsgFlag(paramGetPublicAccountDetailInfoResponse);
-    initLbsItem(paramGetPublicAccountDetailInfoResponse);
+    for (;;)
+    {
+      this.protocolVersion = 0;
+      return;
+      initShowMsgFlag(paramGetPublicAccountDetailInfoResponse);
+      initLbsItem(paramGetPublicAccountDetailInfoResponse);
+    }
+  }
+  
+  public AccountDetail(OACProfilePb.ProfileDataRsp paramProfileDataRsp)
+  {
+    this.uin = ("" + paramProfileDataRsp.base_data.puin.get());
+    this.name = paramProfileDataRsp.base_data.name.get();
+    this.summary = paramProfileDataRsp.base_data.summary.get();
+    this.isRecvMsg = paramProfileDataRsp.base_data.is_recv_msg.get();
+    this.isShowFollowButton = paramProfileDataRsp.base_data.is_show_follow_button.get();
+    this.followType = paramProfileDataRsp.base_data.follow_type.get();
+    this.isRecvPush = paramProfileDataRsp.base_data.is_recv_push.get();
+    this.accountFlag = paramProfileDataRsp.base_data.account_flag.get();
+    this.accountFlag2 = paramProfileDataRsp.base_data.account_flag2.get();
+    this.displayNumber = paramProfileDataRsp.base_data.display_number.get();
+    if (paramProfileDataRsp.base_data.unified_account_descrpition.has()) {
+      this.unifiedDesrpition = paramProfileDataRsp.base_data.unified_account_descrpition.get();
+    }
+    parser();
+    this.mShowMsgFlag = -1;
+    this.menuButtonResp = paramProfileDataRsp.menu_rsp;
+    this.protocolVersion = 1;
+    this.protocol839Data = paramProfileDataRsp.toByteArray();
+    this.sharedFollowerCount = paramProfileDataRsp.common_follower_count.get();
+    this.showFlag = 1;
   }
   
   public void clone(AccountDetail paramAccountDetail)
@@ -138,6 +179,31 @@ public class AccountDetail
     this.customConfigAttrs = paramAccountDetail.customConfigAttrs;
     this.fullscreenConfigAttrs = paramAccountDetail.fullscreenConfigAttrs;
     this.cardStyle = paramAccountDetail.cardStyle;
+    this.menuButtonResp = paramAccountDetail.menuButtonResp;
+    this.protocolVersion = paramAccountDetail.protocolVersion;
+    this.protocol839Data = paramAccountDetail.protocol839Data;
+    this.sharedFollowerCount = paramAccountDetail.sharedFollowerCount;
+  }
+  
+  public List<mobileqq_mp.ButtonInfo> getButtonInfo()
+  {
+    Object localObject = null;
+    if (this.menuButtonResp != null) {
+      localObject = this.menuButtonResp.button_info.get();
+    }
+    while (this.protocol839Data == null) {
+      return localObject;
+    }
+    localObject = new OACProfilePb.ProfileDataRsp();
+    try
+    {
+      ((OACProfilePb.ProfileDataRsp)localObject).mergeFrom(this.protocol839Data);
+      this.menuButtonResp = ((OACProfilePb.ProfileDataRsp)localObject).menu_rsp;
+      localObject = this.menuButtonResp.button_info.get();
+      return localObject;
+    }
+    catch (Throwable localThrowable) {}
+    return null;
   }
   
   void initLbsItem(mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse)
@@ -242,29 +308,29 @@ public class AccountDetail
     int j;
     while (localIterator.hasNext())
     {
-      Object localObject = (npn)localIterator.next();
-      if ((((npn)localObject).jdField_a_of_type_Int != 1) && (((npn)localObject).jdField_a_of_type_JavaUtilList != null))
+      Object localObject = (nyk)localIterator.next();
+      if ((((nyk)localObject).jdField_a_of_type_Int != 1) && (((nyk)localObject).jdField_a_of_type_JavaUtilList != null))
       {
-        localObject = ((npn)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        localObject = ((nyk)localObject).jdField_a_of_type_JavaUtilList.iterator();
         j = i;
         for (;;)
         {
           if (((Iterator)localObject).hasNext())
           {
-            npo localnpo = (npo)((Iterator)localObject).next();
+            nyl localnyl = (nyl)((Iterator)localObject).next();
             i = j;
-            if (localnpo.jdField_a_of_type_Int == 2)
+            if (localnyl.jdField_a_of_type_Int == 2)
             {
               i = j;
-              if (localnpo.e == 3) {
+              if (localnyl.e == 3) {
                 this.isSyncLbs = true;
               }
             }
-            switch (localnpo.d)
+            switch (localnyl.d)
             {
             default: 
               if (QLog.isColorLevel()) {
-                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localnpo.d);
+                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localnyl.d);
               }
               i = 1;
               label191:
@@ -324,17 +390,17 @@ public class AccountDetail
       int i = 0;
       while (localIterator.hasNext())
       {
-        Object localObject = (npn)localIterator.next();
-        if ((((npn)localObject).jdField_a_of_type_Int != 1) && (((npn)localObject).jdField_a_of_type_JavaUtilList != null))
+        Object localObject = (nyk)localIterator.next();
+        if ((((nyk)localObject).jdField_a_of_type_Int != 1) && (((nyk)localObject).jdField_a_of_type_JavaUtilList != null))
         {
-          localObject = ((npn)localObject).jdField_a_of_type_JavaUtilList.iterator();
+          localObject = ((nyk)localObject).jdField_a_of_type_JavaUtilList.iterator();
           for (;;)
           {
             if (((Iterator)localObject).hasNext())
             {
-              npo localnpo = (npo)((Iterator)localObject).next();
-              if (localnpo.e == 5) {
-                if (localnpo.d == 1)
+              nyl localnyl = (nyl)((Iterator)localObject).next();
+              if (localnyl.e == 5) {
+                if (localnyl.d == 1)
                 {
                   i = 1;
                   this.mShowMsgFlag = i;
@@ -370,9 +436,9 @@ public class AccountDetail
       this.configBackgroundColor = localJSONObject.optString("background_color");
       this.certifiedEnterprise = localJSONObject.optString("certified_enterprise");
       this.certifiedWeixin = localJSONObject.optString("certified_weixin");
-      this.paConfigAttrs = npn.a(localJSONObject.optJSONArray("config_arr"));
-      this.customConfigAttrs = npn.a(localJSONObject.optJSONArray("custom_arr"));
-      this.fullscreenConfigAttrs = npn.a(localJSONObject.optJSONArray("fullscreen_arr"));
+      this.paConfigAttrs = nyk.a(localJSONObject.optJSONArray("config_arr"));
+      this.customConfigAttrs = nyk.a(localJSONObject.optJSONArray("custom_arr"));
+      this.fullscreenConfigAttrs = nyk.a(localJSONObject.optJSONArray("fullscreen_arr"));
       this.cardStyle = localJSONObject.optInt("card_style");
       return;
     }
@@ -429,7 +495,7 @@ public class AccountDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AccountDetail
  * JD-Core Version:    0.7.0.1
  */

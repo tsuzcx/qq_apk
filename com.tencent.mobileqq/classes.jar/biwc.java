@@ -1,87 +1,49 @@
 import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
-public class biwc
-  extends RemoteCommand
+class biwc
+  extends QIPCModule
 {
-  private SparseArray<List<biwd>> a = new SparseArray();
-  
-  public biwc(AppRuntime paramAppRuntime)
+  biwc(biwb parambiwb, String paramString)
   {
-    super("com.tencent.qqfav.favoritesremotecommand");
-    a(0, new biwe());
+    super(paramString);
   }
   
-  public boolean a(int paramInt, biwd parambiwd)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
+    bisy.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject = biwb.a(this.a);
+    if (localObject == null) {
+      bisy.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
     }
-    if (!((List)localObject).contains(parambiwd)) {
-      return ((List)localObject).add(parambiwd);
-    }
-    return false;
-  }
-  
-  public boolean b(int paramInt, biwd parambiwd)
-  {
-    List localList = (List)this.a.get(paramInt);
-    if ((localList != null) && (localList.contains(parambiwd))) {
-      return localList.remove(parambiwd);
-    }
-    return false;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("com.tencent.qqfav.favoritesremotecommand.id", -1);
-    if (-1 != i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FavoritesRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
-      }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((biwd)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
+    String str;
+    int i;
     do
     {
-      while (!paramOnInvokeFinishLinstener.hasNext())
+      do
       {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      }
-    } while (!((biwd)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+        return null;
+      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
+      str = paramBundle.getString("PackageName");
+      i = paramBundle.getInt("VersionCode");
+      bisy.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
+    } while (str == null);
+    ((QQAppInterface)localObject).a(biwb.a(this.a));
+    paramString = (anjo)((QQAppInterface)localObject).a(4);
+    localObject = str + "_" + i;
+    paramBundle.putInt("CallbackId", paramInt);
+    paramBundle = new Bundle(paramBundle);
+    biwb.a(this.a).put(localObject, paramBundle);
+    paramString.a(str, i, (String)localObject);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwc
  * JD-Core Version:    0.7.0.1
  */

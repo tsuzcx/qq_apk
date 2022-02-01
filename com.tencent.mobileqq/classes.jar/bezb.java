@@ -1,18 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
+import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
 
 public class bezb
-  implements DialogInterface.OnCancelListener
+  extends wlf
 {
-  public bezb(ShareActionSheetV2 paramShareActionSheetV2) {}
+  beza jdField_a_of_type_Beza;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public bezb(beza parambeza, String paramString)
   {
-    ShareActionSheetV2.b(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
+    this.jdField_a_of_type_Beza = parambeza;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return "HwSvc.check_homework";
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
+    try
+    {
+      localErrorInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new wla(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
+      return paramArrayOfByte;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
+    }
+    return new wla(-99, "decodeResponse error:" + paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
+    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
+    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Beza.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
+    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Beza.jdField_b_of_type_JavaLangString));
+    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Beza.jdField_a_of_type_Long);
+    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Beza.jdField_b_of_type_Long);
+    localReqCheckHomework.uin.set(this.jdField_a_of_type_Beza.c);
+    localReqCheckHomework.pics.add(localYoutuPicInfo);
+    return localReqCheckHomework.toByteArray();
   }
 }
 

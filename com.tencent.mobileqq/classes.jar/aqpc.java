@@ -1,22 +1,41 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewStub;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqpc
-  extends AnimatorListenerAdapter
 {
-  public aqpc(FileAssistantActivity paramFileAssistantActivity) {}
+  private boolean a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static aqpc a(String paramString)
   {
-    super.onAnimationEnd(paramAnimator);
-    FileAssistantActivity.a(this.a).setVisibility(8);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqpc localaqpc = new aqpc();
+        localaqpc.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+        return localaqpc;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "needSeparate:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpc
  * JD-Core Version:    0.7.0.1
  */

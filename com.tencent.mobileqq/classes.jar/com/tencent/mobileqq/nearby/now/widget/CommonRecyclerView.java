@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.view.View;
-import aviy;
-import avja;
+import axqi;
+import axqk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,13 +35,13 @@ public class CommonRecyclerView
   }
   
   @Nullable
-  public avja a()
+  public axqk a()
   {
     if (getAdapter() == null) {
       return null;
     }
-    if ((((aviy)getAdapter()).a() instanceof avja)) {
-      return (avja)((aviy)getAdapter()).a();
+    if ((((axqi)getAdapter()).a() instanceof axqk)) {
+      return (axqk)((axqi)getAdapter()).a();
     }
     return null;
   }
@@ -56,10 +56,10 @@ public class CommonRecyclerView
       return;
       if ((a() == null) || (paramAdapter != a()))
       {
-        if (!(paramAdapter instanceof avja)) {
+        if (!(paramAdapter instanceof axqk)) {
           throw new IllegalArgumentException("adapter must extends CommonAdapter");
         }
-        super.setAdapter(new aviy(paramAdapter));
+        super.setAdapter(new axqi(paramAdapter));
         View localView;
         if (this.jdField_a_of_type_JavaUtilList.size() > 0)
         {
@@ -67,7 +67,7 @@ public class CommonRecyclerView
           while (paramAdapter.hasNext())
           {
             localView = (View)paramAdapter.next();
-            ((aviy)getAdapter()).a(localView);
+            ((axqi)getAdapter()).a(localView);
           }
         }
         if (this.b.size() <= 0) {
@@ -77,7 +77,7 @@ public class CommonRecyclerView
         while (paramAdapter.hasNext())
         {
           localView = (View)paramAdapter.next();
-          ((aviy)getAdapter()).b(localView);
+          ((axqi)getAdapter()).b(localView);
         }
       }
     }
@@ -85,7 +85,7 @@ public class CommonRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView
  * JD-Core Version:    0.7.0.1
  */

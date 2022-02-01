@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import amyr;
+import aoxi;
 
 class QRScanEntryView$9
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$9
   public void run()
   {
     if (!QRScanEntryView.b(this.this$0)) {
-      if (this.a > amyr.a().c) {
+      if (this.a > aoxi.a().c) {
         break label54;
       }
     }
@@ -28,7 +28,7 @@ class QRScanEntryView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.9
  * JD-Core Version:    0.7.0.1
  */

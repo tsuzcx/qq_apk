@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.DrawerPushItem;
+import java.util.Comparator;
 
-public class amhh
-  implements alrb
+class amhh
+  implements Comparator<DrawerPushItem>
 {
-  public void a(boolean paramBoolean)
+  amhh(amhd paramamhd) {}
+  
+  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
   {
-    if (paramBoolean) {
-      paramBoolean = azri.a(3);
+    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
+      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
     }
-    for (;;)
-    {
-      try
-      {
-        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
-        if (paramBoolean) {
-          continue;
-        }
-        bdhb.d(ambz.a);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
-        continue;
-      }
-      DeviceProfileManager.b(this);
-      return;
-      bdhb.a(ambz.a);
-    }
+    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amhh
  * JD-Core Version:    0.7.0.1
  */

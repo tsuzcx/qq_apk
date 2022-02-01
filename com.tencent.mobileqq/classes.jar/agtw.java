@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class agtw
-  implements DialogInterface.OnDismissListener
+public abstract interface agtw
 {
-  agtw(agti paramagti) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.ah = false;
-    azqs.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

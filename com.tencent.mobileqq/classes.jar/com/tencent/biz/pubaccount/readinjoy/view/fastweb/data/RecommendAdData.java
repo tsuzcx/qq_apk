@@ -5,11 +5,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import noy;
+import nxw;
+import oqk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfq;
-import swu;
+import teh;
+import tyc;
 
 public class RecommendAdData
   extends AdData
@@ -75,7 +76,7 @@ public class RecommendAdData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = swu.a(this.l, 4);
+        localObject = tyc.a(this.l, 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("image_url", ((URL)localObject).toString());
         localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
@@ -97,7 +98,7 @@ public class RecommendAdData
         if (!TextUtils.isEmpty(this.p))
         {
           localObject = new JSONObject();
-          if (!noy.a(BaseApplicationImpl.getContext(), this.p)) {
+          if (!nxw.a(BaseApplicationImpl.getContext(), this.p)) {
             break label353;
           }
           ((JSONObject)localObject).put("text", "打开APP");
@@ -138,10 +139,10 @@ public class RecommendAdData
     this.c = a();
     try
     {
-      sfq localsfq = sfq.a("native_article", true);
+      teh localteh = teh.a("native_article", true);
       localObject1 = localObject3;
-      if (localsfq != null) {
-        localObject1 = localsfq.getTemplateBean(this.c);
+      if (localteh != null) {
+        localObject1 = localteh.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -162,12 +163,13 @@ public class RecommendAdData
   {
     super.a(paramJSONObject, paramInt);
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = oqk.a(this);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData
  * JD-Core Version:    0.7.0.1
  */

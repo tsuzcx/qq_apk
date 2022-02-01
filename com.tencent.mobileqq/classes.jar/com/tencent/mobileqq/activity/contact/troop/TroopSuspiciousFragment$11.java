@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import amlp;
+import aogd;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -18,7 +18,7 @@ class TroopSuspiciousFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment.11
  * JD-Core Version:    0.7.0.1
  */

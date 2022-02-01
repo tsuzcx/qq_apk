@@ -1,8 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aiza
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
+  public aiza(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bfci
-  implements DialogInterface.OnClickListener
+public class bfci
+  implements View.OnClickListener
 {
-  bfci(bfcf parambfcf) {}
+  public bfci(ReciteFragment paramReciteFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    this.a.m();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

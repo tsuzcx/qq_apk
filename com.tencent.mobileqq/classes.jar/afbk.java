@@ -1,30 +1,56 @@
+import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+
 public class afbk
+  extends AccountObserver
 {
-  public float a;
-  public long a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public afbk(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  afbk()
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(afbk paramafbk)
-  {
-    this.jdField_a_of_type_Float = paramafbk.jdField_a_of_type_Float;
-    this.b = paramafbk.b;
-    this.c = paramafbk.c;
-    this.jdField_a_of_type_Long = paramafbk.jdField_a_of_type_Long;
+    RegisterSendUpSms.c(this.a, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    }
+    if (paramInt1 == 4) {}
+    for (;;)
+    {
+      RegisterSendUpSms.a(this.a, 0);
+      return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
+      {
+        RegisterSendUpSms.a(this.a).setText(anni.a(2131712136));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
+      }
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131715775);
+        }
+        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
+    }
   }
 }
 

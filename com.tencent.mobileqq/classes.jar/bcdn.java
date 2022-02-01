@@ -1,28 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
-class bcdn
-  extends bead
+public class bcdn
+  extends Handler
 {
-  bcdn(bcdk parambcdk, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onDone(beae parambeae)
+  public bcdn(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambeae.c + " code = " + parambeae.jdField_a_of_type_Int);
-    }
-    boolean bool = bcdk.a(this.jdField_a_of_type_Bcdk, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    bcdk.b(this.jdField_a_of_type_Bcdk);
+    super(paramLooper);
   }
   
-  public void onProgress(beae parambeae)
+  public void handleMessage(Message paramMessage)
   {
-    int i = (int)(parambeae.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
-    }
+    this.a.a(paramMessage);
   }
 }
 

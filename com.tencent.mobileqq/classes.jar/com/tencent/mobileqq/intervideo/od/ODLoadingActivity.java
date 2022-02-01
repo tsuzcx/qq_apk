@@ -1,49 +1,64 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import alud;
-import amdp;
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import atbh;
-import atbp;
-import ater;
-import bety;
+import anni;
+import anvy;
+import avjb;
+import avlh;
+import biau;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
 import java.util.concurrent.ExecutorService;
 
 public class ODLoadingActivity
   extends Activity
 {
+  private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private atbp jdField_a_of_type_Atbp;
-  private bety jdField_a_of_type_Bety;
+  private biau jdField_a_of_type_Biau;
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bety == null)
+    if (this.jdField_a_of_type_Biau == null)
     {
-      this.jdField_a_of_type_Bety = new bety(this, 40);
-      this.jdField_a_of_type_Bety.a(alud.a(2131708220));
+      this.jdField_a_of_type_Biau = new biau(this, 40);
+      this.jdField_a_of_type_Biau.a(anni.a(2131706597));
     }
-    this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau.show();
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bety != null) {
-      this.jdField_a_of_type_Bety.dismiss();
+    this.b = true;
+    if (this.jdField_a_of_type_Biau != null) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -58,9 +73,16 @@ public class ODLoadingActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
-      atbh.b("33669910");
+      avjb.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -69,13 +91,6 @@ public class ODLoadingActivity
       setTheme(16973840);
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("is_start_huiyin", false);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Atbp = new atbp(this);
-      this.jdField_a_of_type_Atbp.a(paramBundle);
-      return;
-    }
     paramBundle = new Bundle(getIntent().getExtras());
     String str = paramBundle.getString("fromId");
     long l = 0L;
@@ -86,18 +101,19 @@ public class ODLoadingActivity
       for (;;)
       {
         str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.3.5");
+        paramBundle.putString("qqVersion", "8.4.1");
         paramBundle.putBoolean("isGooglePlayVersion", false);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        atbh.b("33669907");
+        avjb.b("33669907");
         this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
         findViewById(16908290).setVisibility(8);
-        a();
-        ExecutorService localExecutorService = amdp.a(192);
-        localExecutorService.submit(new ODLoadingActivity.2(this, localExecutorService.submit(new ater(this, str)), l, paramBundle));
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
+        ExecutorService localExecutorService = anvy.a(192);
+        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new avlh(this, str)), l, paramBundle));
         return;
         QLog.e("ODLoadingActivity", 2, "not have fromId");
       }
@@ -115,26 +131,20 @@ public class ODLoadingActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Atbp.b();
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    try
     {
+      Field localField = View.class.getDeclaredField("mParent");
+      localField.setAccessible(true);
+      localField.set(this.jdField_a_of_type_AndroidViewView, null);
+      label34:
+      b();
       IVCommonInterfaceImpl.getInstance().onHostActivityDestroy();
       return;
-      if (this.jdField_a_of_type_AndroidViewView != null) {}
-      try
-      {
-        Field localField = View.class.getDeclaredField("mParent");
-        localField.setAccessible(true);
-        localField.set(this.jdField_a_of_type_AndroidViewView, null);
-        label55:
-        b();
-      }
-      catch (Throwable localThrowable)
-      {
-        break label55;
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label34;
     }
   }
   
@@ -170,7 +180,7 @@ public class ODLoadingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -30,7 +30,7 @@ public final class ArMapUtil$2
     {
       localHashMap.put("isFelxMapClick", str);
       localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
-      azri.a(BaseApplicationImpl.getContext()).a("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
+      bctj.a(BaseApplicationImpl.getContext()).a("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
       return;
       str = "0";
       break;
@@ -41,7 +41,7 @@ public final class ArMapUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil.2
  * JD-Core Version:    0.7.0.1
  */

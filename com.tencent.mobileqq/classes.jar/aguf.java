@@ -1,48 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class aguf
-  implements BusinessObserver
+class aguf
+  implements agsm
 {
-  aguf(agti paramagti) {}
+  aguf(agtx paramagtx, aguj paramaguj, MessageForPoke paramMessageForPoke) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Aguj.b == agtx.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agtx.a instanceof ChatHistoryActivity)) && (!agtx.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Aguj.c.setVisibility(0);
     }
-    if (!paramBoolean) {}
     for (;;)
     {
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
       return;
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = syb.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
-      }
-      catch (Exception paramBundle) {}
+      this.jdField_a_of_type_Aguj.c.setVisibility(8);
     }
   }
 }

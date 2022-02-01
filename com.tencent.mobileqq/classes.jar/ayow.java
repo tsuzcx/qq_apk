@@ -1,11 +1,22 @@
-public class ayow
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+
+class ayow
+  implements mzy
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
+  ayow(ayov paramayov) {}
   
-  public ayow(ayot paramayot) {}
+  public void a(LottieDrawable paramLottieDrawable)
+  {
+    ayov.a(this.a, paramLottieDrawable);
+    ayov.a(this.a).setImageDrawable(ayov.a(this.a));
+    if (ayov.a(this.a))
+    {
+      this.a.b();
+      return;
+    }
+    this.a.a();
+  }
 }
 
 

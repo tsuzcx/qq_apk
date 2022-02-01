@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alud;
 import android.widget.Toast;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ApkgBaseInfo$1
@@ -11,12 +11,12 @@ class ApkgBaseInfo$1
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + alud.a(2131700667) + this.val$lowCaseUrl, 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + anni.a(2131699093) + this.val$lowCaseUrl, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgBaseInfo.1
  * JD-Core Version:    0.7.0.1
  */

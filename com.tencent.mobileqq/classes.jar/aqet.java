@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import java.util.Comparator;
 
 public class aqet
-  implements aqie
+  implements Comparator<ColorNote>
 {
-  public aqet(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public aqet(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
   
-  public void a(String paramString, int paramInt)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
   }
 }
 

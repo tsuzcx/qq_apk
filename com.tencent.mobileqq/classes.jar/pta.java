@@ -1,34 +1,32 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 
 public class pta
-  extends ClickableSpan
+  implements Animator.AnimatorListener
 {
-  public pta(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
+  public pta(VideoView paramVideoView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (NativeAwesomeCommentView.a(this.a) != null)
-    {
-      long l = NativeAwesomeCommentView.a(this.a).a;
-      NativeAwesomeCommentView.a(this.a, true);
-      olt.a(l + "", this.a.getContext());
+    if (VideoView.access$2800(this.a) != null) {
+      VideoView.access$2800(this.a).setVisibility(4);
+    }
+    if (VideoView.access$2900(this.a) != null) {
+      VideoView.access$2900(this.a).setVisibility(4);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pta
  * JD-Core Version:    0.7.0.1
  */

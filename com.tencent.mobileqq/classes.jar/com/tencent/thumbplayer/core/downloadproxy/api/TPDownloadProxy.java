@@ -16,8 +16,8 @@ public class TPDownloadProxy
   implements ITPDownloadProxy
 {
   private static final String FILE_NAME = "TPDownloadProxy";
-  private boolean IsInit = false;
   private String mCurrentStoragePath = "";
+  private boolean mIsInit = false;
   private int mServiceType;
   
   public TPDownloadProxy(int paramInt)
@@ -30,6 +30,7 @@ public class TPDownloadProxy
     if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
       try
       {
+        this.mIsInit = false;
         int i = TPDownloadProxyNative.getInstance().deInitService(this.mServiceType);
         return i;
       }
@@ -41,7 +42,7 @@ public class TPDownloadProxy
     return -1;
   }
   
-  public String getClipPlayUrl(int paramInt1, int paramInt2)
+  public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
   {
     Object localObject1 = TPProxyAdapterManager.getInstance().getProxyClipUrl(paramInt1, paramInt2);
     Object localObject2 = localObject1;
@@ -52,7 +53,7 @@ public class TPDownloadProxy
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2, 1));
+      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2, paramInt3));
       localObject1 = localObject2;
       TPDownloadProxyNative.getInstance().startDownload(paramInt1);
       return localObject2;
@@ -80,9 +81,9 @@ public class TPDownloadProxy
     return "";
   }
   
-  public String getPlayUrl(int paramInt)
+  public String getPlayUrl(int paramInt1, int paramInt2)
   {
-    Object localObject1 = TPProxyAdapterManager.getInstance().getProxyClipUrl(paramInt, 1);
+    Object localObject1 = TPProxyAdapterManager.getInstance().getProxyClipUrl(paramInt1, 1);
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -91,9 +92,9 @@ public class TPDownloadProxy
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt, 1, 1));
+      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, 1, paramInt2));
       localObject1 = localObject2;
-      TPDownloadProxyNative.getInstance().startDownload(paramInt);
+      TPDownloadProxyNative.getInstance().startDownload(paramInt1);
       return localObject2;
     }
     catch (Throwable localThrowable)
@@ -111,7 +112,7 @@ public class TPDownloadProxy
       String str1;
       try
       {
-        if (this.IsInit)
+        if (this.mIsInit)
         {
           TPDLProxyLog.i("TPDownloadProxy", 0, "tpdlnative", "download already init");
           return i;
@@ -176,7 +177,7 @@ public class TPDownloadProxy
           if (j != 0) {
             continue;
           }
-          this.IsInit = true;
+          this.mIsInit = true;
           i = j;
           continue;
           i = -1;
@@ -259,6 +260,20 @@ public class TPDownloadProxy
       TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "resumeDownload failed, error:" + localThrowable.toString());
     }
     return -1;
+  }
+  
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {}
+    try
+    {
+      TPDownloadProxyNative.getInstance().setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "setBusinessDownloadStrategy failed, error:" + localThrowable.toString());
+    }
   }
   
   public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParam paramTPDownloadParam)
@@ -639,7 +654,7 @@ public class TPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

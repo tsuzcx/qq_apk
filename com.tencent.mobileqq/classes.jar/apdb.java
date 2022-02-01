@@ -1,99 +1,71 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class apdb
+class apdb
+  implements aowu
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  protected final View a;
+  private int jdField_a_of_type_Int;
   
-  public apdb(View paramView)
-  {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  private apdb(apcy paramapcy) {}
   
-  private View a(View paramView, float paramFloat1, float paramFloat2)
+  public void a(int paramInt)
   {
-    RectF localRectF = new RectF();
-    int i = 0;
-    Object localObject = null;
-    Iterator localIterator = paramView.getTouchables().iterator();
-    View localView;
-    float f1;
-    if (localIterator.hasNext())
+    switch (paramInt)
     {
-      localView = (View)localIterator.next();
-      f1 = localView.getX();
-      float f2 = localView.getY();
-      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
-      if (!localRectF.contains(paramFloat1, paramFloat2)) {
-        break label160;
-      }
-      if (localView.equals(paramView)) {
-        i = 1;
-      }
     }
-    label160:
     for (;;)
     {
-      break;
-      localObject = localView;
-      if ((localView instanceof ViewGroup))
-      {
-        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
-        continue;
-        if ((i != 0) && (localObject == null)) {
-          localObject = paramView;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadSuccess type=%d", new Object[] { Integer.valueOf(paramInt) }));
       }
-      else
-      {
-        return localObject;
-      }
-      return localObject;
+      this.jdField_a_of_type_Apcy.a();
+      return;
+      apcy.c(this.jdField_a_of_type_Apcy, true);
+      continue;
+      apcy.d(this.jdField_a_of_type_Apcy, true);
+      continue;
+      apcy.e(this.jdField_a_of_type_Apcy, true);
+      this.jdField_a_of_type_Int = 100;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-  }
-  
-  public View a(apdn paramapdn)
-  {
-    return a(this.jdField_a_of_type_AndroidViewView, paramapdn.a(), paramapdn.b());
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
+    switch (paramInt1)
+    {
+    }
+    while (paramInt1 == 0)
+    {
+      Iterator localIterator = apcy.a(this.jdField_a_of_type_Apcy).iterator();
+      while (localIterator.hasNext())
+      {
+        apdc localapdc = (apdc)((WeakReference)localIterator.next()).get();
+        if (localapdc != null) {
+          localapdc.a(this.jdField_a_of_type_Int);
+        }
+      }
+      this.jdField_a_of_type_Int = paramInt2;
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
-    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadError type=%d error=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
+    if (paramInt1 == 0)
+    {
+      Iterator localIterator = apcy.a(this.jdField_a_of_type_Apcy).iterator();
+      while (localIterator.hasNext())
+      {
+        apdc localapdc = (apdc)((WeakReference)localIterator.next()).get();
+        if (localapdc != null) {
+          localapdc.b(paramInt2);
+        }
+      }
+    }
   }
 }
 

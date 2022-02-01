@@ -1,315 +1,362 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.tools.util;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 public class ayyy
 {
-  protected static boolean a;
-  protected static String b;
-  protected Handler a;
-  protected String a;
-  protected HashMap<String, String> a;
-  protected NewIntent a;
-  protected Handler b;
-  protected boolean b;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int;
+  boolean jdField_c_of_type_Boolean = false;
   
-  static
+  public ayyy(int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / this.jdField_b_of_type_Int);
+    this.jdField_c_of_type_Int = paramInt3;
+    if ((paramInt3 != 0) && (paramInt3 % 90 == 0)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
   
-  public ayyy()
+  private boolean a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static int a(String paramString)
-  {
-    int j = 0;
-    if (paramString.contains("$OPID$")) {
-      j = 1;
-    }
-    int i = j;
-    if (paramString.contains("$AT$")) {
-      i = j | 0x2;
-    }
-    j = i;
-    if (paramString.contains("$PT$")) {
-      j = i | 0x4;
-    }
-    i = j;
-    if (paramString.contains("$PF$")) {
-      i = j | 0x40;
-    }
-    j = i;
-    if (paramString.contains("$ESK$")) {
-      j = i | 0x80;
-    }
-    return j;
-  }
-  
-  public static Bundle a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (b(paramBitmap))
     {
-      return localBundle;
-      paramString = paramString.split("&");
-    } while (paramString == null);
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = paramString[i];
-      int k = localObject.indexOf('=');
-      if (k != -1) {}
-      try
-      {
-        localBundle.putString(localObject.substring(0, k), localObject.substring(k + 1));
-        i += 1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.d("AppLaucherHelper", 2, localException.getMessage(), localException);
-        }
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      if ((i > this.jdField_a_of_type_Int) || (j > this.jdField_a_of_type_Int)) {
+        return true;
       }
     }
+    return false;
   }
   
-  public static void a()
+  /* Error */
+  private Bitmap b(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    jdField_b_of_type_JavaLangString = "";
+    // Byte code:
+    //   0: aload_1
+    //   1: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
+    //   4: istore 5
+    //   6: aload_1
+    //   7: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
+    //   10: istore 6
+    //   12: new 47	android/graphics/Matrix
+    //   15: dup
+    //   16: invokespecial 48	android/graphics/Matrix:<init>	()V
+    //   19: astore 8
+    //   21: aload_1
+    //   22: astore 7
+    //   24: aload_0
+    //   25: getfield 29	ayyy:jdField_a_of_type_Boolean	Z
+    //   28: ifeq +67 -> 95
+    //   31: aload 8
+    //   33: aload_0
+    //   34: getfield 27	ayyy:jdField_c_of_type_Int	I
+    //   37: i2f
+    //   38: iload 5
+    //   40: iconst_1
+    //   41: ishr
+    //   42: i2f
+    //   43: iload 6
+    //   45: iconst_1
+    //   46: ishr
+    //   47: i2f
+    //   48: invokevirtual 52	android/graphics/Matrix:postRotate	(FFF)Z
+    //   51: pop
+    //   52: iload 5
+    //   54: aload_1
+    //   55: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
+    //   58: if_icmple +198 -> 256
+    //   61: aload_1
+    //   62: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
+    //   65: istore_2
+    //   66: iload 6
+    //   68: aload_1
+    //   69: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
+    //   72: if_icmple +177 -> 249
+    //   75: aload_1
+    //   76: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
+    //   79: istore 4
+    //   81: aload_1
+    //   82: iconst_0
+    //   83: iconst_0
+    //   84: iload_2
+    //   85: iload 4
+    //   87: aload 8
+    //   89: iconst_1
+    //   90: invokestatic 56	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   93: astore 7
+    //   95: aload_0
+    //   96: iconst_1
+    //   97: putfield 17	ayyy:jdField_b_of_type_Boolean	Z
+    //   100: iload_3
+    //   101: i2f
+    //   102: aload_0
+    //   103: getfield 25	ayyy:jdField_a_of_type_Float	F
+    //   106: fmul
+    //   107: f2i
+    //   108: istore 4
+    //   110: iload 5
+    //   112: iload 6
+    //   114: if_icmple +88 -> 202
+    //   117: iload 4
+    //   119: istore_2
+    //   120: aload_0
+    //   121: getfield 27	ayyy:jdField_c_of_type_Int	I
+    //   124: bipush 90
+    //   126: idiv
+    //   127: iconst_2
+    //   128: irem
+    //   129: ifeq +109 -> 238
+    //   132: iload_3
+    //   133: istore 4
+    //   135: iload_3
+    //   136: aload 7
+    //   138: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
+    //   141: if_icmple +10 -> 151
+    //   144: aload 7
+    //   146: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
+    //   149: istore 4
+    //   151: iload_2
+    //   152: istore_3
+    //   153: iload_2
+    //   154: aload 7
+    //   156: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
+    //   159: if_icmple +9 -> 168
+    //   162: aload 7
+    //   164: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
+    //   167: istore_3
+    //   168: aload 7
+    //   170: iconst_0
+    //   171: iconst_0
+    //   172: iload 4
+    //   174: iload_3
+    //   175: invokestatic 59	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   178: astore_1
+    //   179: aload_1
+    //   180: areturn
+    //   181: astore 7
+    //   183: aload_1
+    //   184: invokevirtual 62	android/graphics/Bitmap:recycle	()V
+    //   187: aload 7
+    //   189: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   192: aload_0
+    //   193: ldc 67
+    //   195: ldc 69
+    //   197: invokevirtual 72	ayyy:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   200: aconst_null
+    //   201: areturn
+    //   202: iload_3
+    //   203: istore_2
+    //   204: iload 4
+    //   206: istore_3
+    //   207: goto -87 -> 120
+    //   210: astore_1
+    //   211: aload 7
+    //   213: invokevirtual 76	android/graphics/Bitmap:isRecycled	()Z
+    //   216: ifne +8 -> 224
+    //   219: aload 7
+    //   221: invokevirtual 62	android/graphics/Bitmap:recycle	()V
+    //   224: aload_1
+    //   225: invokevirtual 65	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   228: aload_0
+    //   229: ldc 78
+    //   231: ldc 69
+    //   233: invokevirtual 72	ayyy:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   236: aconst_null
+    //   237: areturn
+    //   238: iload_2
+    //   239: istore 4
+    //   241: iload_3
+    //   242: istore_2
+    //   243: iload 4
+    //   245: istore_3
+    //   246: goto -114 -> 132
+    //   249: iload 6
+    //   251: istore 4
+    //   253: goto -172 -> 81
+    //   256: iload 5
+    //   258: istore_2
+    //   259: goto -193 -> 66
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	262	0	this	ayyy
+    //   0	262	1	paramBitmap	Bitmap
+    //   0	262	2	paramInt1	int
+    //   0	262	3	paramInt2	int
+    //   79	173	4	i	int
+    //   4	253	5	j	int
+    //   10	240	6	k	int
+    //   22	147	7	localBitmap	Bitmap
+    //   181	39	7	localOutOfMemoryError	OutOfMemoryError
+    //   19	69	8	localMatrix	Matrix
+    // Exception table:
+    //   from	to	target	type
+    //   52	66	181	java/lang/OutOfMemoryError
+    //   66	81	181	java/lang/OutOfMemoryError
+    //   81	95	181	java/lang/OutOfMemoryError
+    //   120	132	210	java/lang/OutOfMemoryError
+    //   135	151	210	java/lang/OutOfMemoryError
+    //   153	168	210	java/lang/OutOfMemoryError
+    //   168	179	210	java/lang/OutOfMemoryError
   }
   
-  private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  private boolean b(Bitmap paramBitmap)
   {
-    localayzc = new ayzc(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
-    if (this.jdField_a_of_type_MqqAppNewIntent == null) {
-      this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, mzx.class);
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    return (i > j * this.jdField_a_of_type_Float) || (j > i * this.jdField_a_of_type_Float);
+  }
+  
+  private Bitmap c(Bitmap paramBitmap)
+  {
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    Bitmap localBitmap = paramBitmap;
+    int i;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localMatrix.postRotate(this.jdField_c_of_type_Int, j >> 1, k >> 1);
+      i = j;
     }
-    localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
-    long l1 = 0L;
     try
     {
-      l2 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
-      l1 = l2;
+      if (j > paramBitmap.getWidth()) {
+        i = paramBitmap.getWidth();
+      }
+      j = k;
+      if (k > paramBitmap.getHeight()) {
+        j = paramBitmap.getHeight();
+      }
+      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+      return localBitmap;
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      long l2;
-      label64:
-      break label64;
+      paramBitmap.recycle();
+      localOutOfMemoryError.printStackTrace();
+      a("keepSide", "createBitmap OutOfMemoryError");
     }
-    localAuthorizeRequest.uin.set(l1);
-    l1 = 0L;
-    try
-    {
-      l2 = Long.parseLong(paramString1);
-      l1 = l2;
+    return null;
+  }
+  
+  public Bitmap a(Bitmap paramBitmap)
+  {
+    if (a(paramBitmap)) {
+      paramBitmap = b(paramBitmap);
     }
-    catch (Exception paramString1)
-    {
-      label87:
-      int i;
-      break label87;
-    }
-    localAuthorizeRequest.client_id.set(l1);
-    localAuthorizeRequest.pf.set("");
-    paramString1 = bfms.a(paramContext);
-    localAuthorizeRequest.qqv.set(paramString1);
-    localAuthorizeRequest.sdkp.set("a");
-    paramString1 = Build.DISPLAY;
-    localAuthorizeRequest.os.set(paramString1);
-    localAuthorizeRequest.skey.set(paramString4);
-    i = a(paramString2);
-    if (i == 0)
-    {
-      bfms.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
-      jdField_a_of_type_Boolean = false;
-      return;
-    }
-    localAuthorizeRequest.flags.set(i);
-    paramString2 = "";
-    paramString1 = paramString2;
     for (;;)
     {
-      try
+      if (paramBitmap == null) {
+        return paramBitmap;
+      }
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      int k;
+      if (i > j)
       {
-        arrayOfSignature = paramContext.getPackageManager().getPackageInfo(paramString3, 64).signatures;
-        paramString1 = paramString2;
-        if (arrayOfSignature != null)
-        {
-          paramString4 = paramString2;
-          paramString1 = paramString2;
-        }
+        k = j;
+        j = i;
       }
-      catch (Exception paramString2)
+      while (b(paramBitmap))
       {
-        Signature[] arrayOfSignature;
-        MessageDigest localMessageDigest;
-        label302:
-        continue;
-        localAuthorizeRequest.apk_sign.set(paramString1);
-        this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
-        try
-        {
-          this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
-          this.jdField_a_of_type_MqqAppNewIntent.setObserver(localayzc);
-          paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
-          return;
-        }
-        catch (Exception paramAppInterface)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(getClass().getSimpleName(), 2, paramAppInterface.getMessage());
-          jdField_a_of_type_Boolean = false;
-          return;
-        }
+        return b(paramBitmap, j, k);
+        k = i;
       }
-      try
-      {
-        localMessageDigest = MessageDigest.getInstance("MD5");
-        paramString4 = paramString2;
-        paramString1 = paramString2;
-        localMessageDigest.update(arrayOfSignature[0].toByteArray());
-        paramString4 = paramString2;
-        paramString1 = paramString2;
-        paramString2 = bdhe.a(localMessageDigest.digest());
+      if (j > this.jdField_a_of_type_Int) {
+        return a(paramBitmap, j, k);
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
-      {
-        paramString2 = paramString4;
-        paramString1 = paramString2;
-        localNoSuchAlgorithmException1.printStackTrace();
-        paramString1 = paramString2;
-      }
-    }
-    try
-    {
-      paramString1 = paramString2.toLowerCase();
-      paramString2 = paramString1;
-      paramString4 = paramString2;
-      paramString1 = paramString2;
-      localMessageDigest.reset();
-      paramString1 = paramString2;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1 = paramString2;
-      break label302;
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-    {
-      break label356;
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "no sign");
-      }
-      jdField_a_of_type_Boolean = false;
-      bfms.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
-      return;
+      return c(paramBitmap);
     }
   }
   
-  public boolean a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Boolean) {
-      return false;
+    paramInt2 = paramBitmap.getWidth();
+    int i = paramBitmap.getHeight();
+    Object localObject = new Matrix();
+    this.jdField_c_of_type_Boolean = true;
+    float f = this.jdField_a_of_type_Int / (paramInt1 * 1.0F);
+    if (this.jdField_a_of_type_Boolean) {
+      ((Matrix)localObject).postRotate(this.jdField_c_of_type_Int, paramInt2 >> 1, i >> 1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "lauchApp");
-    }
-    jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new ayzb(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
-    }
-    if (paramString2.startsWith("?")) {}
-    for (this.jdField_a_of_type_JavaLangString = paramString2.substring(1);; this.jdField_a_of_type_JavaLangString = paramString2)
-    {
-      a(paramAppInterface, paramContext, paramString1, paramString2, paramString3, ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount()), paramInt);
-      return true;
-    }
-  }
-  
-  public boolean a(String paramString1, Context paramContext, String paramString2, AppInterface paramAppInterface, String paramString3, String paramString4, int paramInt, String paramString5)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "launchAppWithWlogin");
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (!myl.a().h(paramString2))) {
-      return false;
-    }
-    jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_AndroidOsHandler == null) {
-      this.jdField_b_of_type_AndroidOsHandler = new ayyz(this);
-    }
-    Long localLong = Long.valueOf(0L);
+    ((Matrix)localObject).postScale(f, f);
+    paramInt1 = paramInt2;
     try
     {
-      paramString2 = Long.valueOf(paramString3);
-      long l1 = 1L;
+      if (paramInt2 > paramBitmap.getWidth()) {
+        paramInt1 = paramBitmap.getWidth();
+      }
+      paramInt2 = i;
+      if (i > paramBitmap.getHeight()) {
+        paramInt2 = paramBitmap.getHeight();
+      }
+      localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramInt1, paramInt2, (Matrix)localObject, true);
+      return localObject;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      paramBitmap.recycle();
+      localOutOfMemoryError.printStackTrace();
+      a("clipLongSide", "createBitmap OutOfMemoryError");
+    }
+    return null;
+  }
+  
+  void a(String paramString1, String paramString2)
+  {
+    ayxi.b("ClipStrategy", paramString1, paramString2);
+  }
+  
+  Bitmap b(Bitmap paramBitmap)
+  {
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    int i;
+    int j;
+    if (k > m)
+    {
+      i = m;
+      j = (int)(i * this.jdField_a_of_type_Float);
+      if (k <= m) {
+        break label90;
+      }
+    }
+    for (;;)
+    {
+      k = j;
       try
       {
-        long l2 = Long.valueOf(paramString5).longValue();
-        l1 = l2;
-      }
-      catch (Exception paramString3)
-      {
-        label99:
-        break label99;
-      }
-      paramString3 = new WtloginHelper(paramAppInterface.getApplication().getApplicationContext());
-      paramString5 = util.getPkgSigFromApkName(paramContext, paramString4);
-      paramString3.GetA1WithA1(paramAppInterface.getAccount(), 16L, 16L, paramString4.getBytes(), 1L, paramString2.longValue(), l1, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
-      paramString3.SetListener(new ayza(this, paramString1, paramString3, paramInt, paramContext));
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
-      return true;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2 = localLong;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("appcenter", 2, "parse appid error = " + paramString3);
-          paramString2 = localLong;
+        if (j > paramBitmap.getWidth()) {
+          k = paramBitmap.getWidth();
         }
+        j = i;
+        if (i > paramBitmap.getHeight()) {
+          j = paramBitmap.getHeight();
+        }
+        Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, j);
+        return localBitmap;
       }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        paramBitmap.recycle();
+        localOutOfMemoryError.printStackTrace();
+        a("clipBigImg", "createBitmap OutOfMemoryError");
+      }
+      i = k;
+      break;
+      label90:
+      k = i;
+      i = j;
+      j = k;
     }
+    return null;
   }
 }
 

@@ -1,88 +1,28 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
-final class bgys
-  implements bgyr, bgyt
+public class bgys
+  implements bgyq
 {
-  private int jdField_a_of_type_Int;
-  private final bgyt jdField_a_of_type_Bgyt;
-  private bgyu jdField_a_of_type_Bgyu;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public bgys(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
   
-  bgys(bgyt parambgyt)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bgyt = parambgyt;
-  }
-  
-  private void a()
-  {
-    bgyt localbgyt;
-    bgyu localbgyu;
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      if (!this.c)
-      {
-        localbgyt = this.jdField_a_of_type_Bgyt;
-        localbgyu = this.jdField_a_of_type_Bgyu;
-        if (this.jdField_a_of_type_JavaLangThrowable == null) {
-          break label79;
-        }
-      }
-    }
-    label79:
-    for (String str = this.jdField_a_of_type_JavaLangThrowable.getMessage();; str = "download plugin fail")
-    {
-      localbgyt.onInitGpkgInfo(2022, localbgyu, str);
-      this.jdField_a_of_type_Bgyt.onInitGpkgInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bgyu, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    try
-    {
-      this.b = true;
-      this.c = paramBoolean;
-      this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-      a();
-      return;
-    }
-    finally
-    {
-      paramThrowable = finally;
-      throw paramThrowable;
-    }
-  }
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
-  {
-    this.jdField_a_of_type_Bgyt.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
-  }
-  
-  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bgyu = parambgyu;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a();
-      return;
-    }
-    finally
-    {
-      parambgyu = finally;
-      throw parambgyu;
-    }
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgys
  * JD-Core Version:    0.7.0.1
  */

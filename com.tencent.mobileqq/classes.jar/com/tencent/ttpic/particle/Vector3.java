@@ -1,5 +1,7 @@
 package com.tencent.ttpic.particle;
 
+import android.support.annotation.NonNull;
+
 public class Vector3
 {
   public float x;
@@ -22,6 +24,12 @@ public class Vector3
     this.z = paramVector3.z;
   }
   
+  @NonNull
+  public String toString()
+  {
+    return "(" + this.x + ", " + this.y + ", " + this.z + ")";
+  }
+  
   public Vector2 xy()
   {
     return new Vector2(this.x, this.y);
@@ -29,7 +37,7 @@ public class Vector3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particle.Vector3
  * JD-Core Version:    0.7.0.1
  */

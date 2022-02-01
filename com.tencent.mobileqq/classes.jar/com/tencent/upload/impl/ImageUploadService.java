@@ -90,6 +90,7 @@ public class ImageUploadService
       if (localUploadImageSize == null) {
         break;
       }
+      paramAbstractUploadTask.mTargetSize = localUploadImageSize;
       paramAbstractUploadTask.md5 = FileUtils.getMd5ByFile_REAL(new File((String)localObject));
       localObject = paramAbstractUploadTask.getUploadTaskType();
       int j;
@@ -98,10 +99,10 @@ public class ImageUploadService
         j = 1;
         localObject = UploadGlobalConfig.getConfig();
         if ((j == 0) || (!Utility.needCompress2Webp(((IUploadConfig)localObject).getCompressToWebpFlag(), i))) {
-          break label221;
+          break label227;
         }
       }
-      label221:
+      label227:
       for (boolean bool2 = true;; bool2 = false)
       {
         if ((paramAbstractUploadTask instanceof ImageUploadTask)) {
@@ -264,41 +265,50 @@ public class ImageUploadService
       return false;
     }
     paramAbstractUploadTask.onUploadProcessStart();
-    int i;
+    boolean bool;
     if ((paramAbstractUploadTask instanceof ImageUploadTask)) {
       if (((ImageUploadTask)paramAbstractUploadTask).iUploadType != 3)
       {
-        i = 1;
+        bool = true;
         paramAbstractUploadTask.keepTmpFile(UploadGlobalConfig.needKeepImageTmpFile());
       }
     }
     for (;;)
     {
       SparseArray localSparseArray = this.mCompressingTasks;
-      if (i != 0) {
-        try
+      if (bool) {
+        for (;;)
         {
-          if (UploadConfiguration.isPictureNeedToCompress(paramAbstractUploadTask.getFilePath()))
+          try
           {
-            if (compressUploadTask(paramAbstractUploadTask)) {
-              this.mCompressingTasks.append(paramAbstractUploadTask.flowId, paramAbstractUploadTask);
+            if (!UploadConfiguration.isPictureNeedToCompress(paramAbstractUploadTask.getFilePath())) {
+              break;
             }
-            return true;
+            if (compressUploadTask(paramAbstractUploadTask))
+            {
+              paramAbstractUploadTask.needCompress = true;
+              this.mCompressingTasks.append(paramAbstractUploadTask.flowId, paramAbstractUploadTask);
+              return true;
+            }
           }
+          finally {}
+          paramAbstractUploadTask.needCompress = false;
+          UploadLog.w("ImageUploadService", "upload task: " + paramAbstractUploadTask.flowId + " compressUploadTask == false");
         }
-        finally {}
       }
+      paramAbstractUploadTask.needCompress = false;
+      UploadLog.w("ImageUploadService", "upload task: " + paramAbstractUploadTask.flowId + " is not need compress | needCompress:" + bool);
       sendTask(paramAbstractUploadTask);
       return true;
-      i = 0;
+      bool = false;
       break;
-      i = 0;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.ImageUploadService
  * JD-Core Version:    0.7.0.1
  */

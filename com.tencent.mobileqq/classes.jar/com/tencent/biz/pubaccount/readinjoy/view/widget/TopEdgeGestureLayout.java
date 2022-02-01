@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import bdaq;
+import bggq;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class TopEdgeGestureLayout
@@ -33,7 +33,7 @@ public class TopEdgeGestureLayout
   
   private void a()
   {
-    this.jdField_a_of_type_Int = bdaq.a(getContext(), 25.0F);
+    this.jdField_a_of_type_Int = bggq.a(getContext(), 25.0F);
     this.jdField_b_of_type_Int = ViewConfiguration.getTouchSlop();
   }
   
@@ -56,7 +56,7 @@ public class TopEdgeGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.TopEdgeGestureLayout
  * JD-Core Version:    0.7.0.1
  */

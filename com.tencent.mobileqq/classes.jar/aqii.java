@@ -1,23 +1,33 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
 
 public class aqii
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public aqii(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  public aqii(SearchResultActivity paramSearchResultActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = (int)(-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView) * f);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    for (;;)
+    {
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      QQToast.a(this.a, 2131693948, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

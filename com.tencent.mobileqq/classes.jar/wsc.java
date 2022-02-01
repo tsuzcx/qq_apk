@@ -1,40 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tribe.async.reactive.StreamFunction;
 
-public class wsc
+class wsc
+  extends StreamFunction<wrs, wrs>
 {
-  public int a;
-  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
-  public String a;
-  public final ArrayList<String> a;
-  public uxd a;
-  public boolean a;
+  int jdField_a_of_type_Int = 0;
   
-  public wsc()
-  {
-    this(0, null);
-  }
+  wsc(wrx paramwrx) {}
   
-  public wsc(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
+  protected void a(wrs paramwrs)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Uxd = new uxd();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
-  }
-  
-  public static wsc a(String paramString)
-  {
-    wsc localwsc = new wsc();
-    localwsc.jdField_a_of_type_JavaLangString = paramString;
-    return localwsc;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    yqp.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramwrs.a);
+    notifyResult(paramwrs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wsc
  * JD-Core Version:    0.7.0.1
  */

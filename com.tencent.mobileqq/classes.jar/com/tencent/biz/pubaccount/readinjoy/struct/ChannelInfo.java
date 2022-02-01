@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class ChannelInfo
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final int GIF_CHANNEL_TYPE = 4;

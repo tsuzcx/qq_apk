@@ -1,41 +1,40 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aaly
-  implements AdCanvasAdapter
+public class aaly
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public int getQueueLength(WeakReference<Context> paramWeakReference)
-  {
-    return AdSettingsUtil.getQueueLength(paramWeakReference);
-  }
+  public aaly(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public AdError show(AdCanvasAdapter.Params paramParams)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      aase.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
     }
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    localObject = AdCanvasDataBuilderV2.build(((Activity)paramParams.activity.get()).getApplicationContext(), (Ad)localObject, paramParams.autoDownload);
-    if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt)
     {
-      aase.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
     }
-    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, (AdCanvasData)localObject, paramParams.extrasForIntent);
-    return new AdError(0);
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = aoqb.a(this.a.getContext());; bool = true)
+    {
+      if (!bool)
+      {
+        bglp.b((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        break;
+      }
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
+      break;
+    }
   }
 }
 

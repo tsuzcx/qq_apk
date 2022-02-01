@@ -1,13 +1,17 @@
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+
 public class aivn
+  implements ajif
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c = 0;
-  public long c;
+  public aivn(TroopView paramTroopView) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == SimpleCheckableSlidingIndicator.a) {
+      TroopView.a(this.a);
+    }
+  }
 }
 
 

@@ -1,22 +1,28 @@
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class adwn
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public adwn(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public adwn(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Looper.myQueue().addIdleHandler(new adwo(this));
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwn
  * JD-Core Version:    0.7.0.1
  */

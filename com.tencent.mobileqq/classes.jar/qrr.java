@@ -1,21 +1,24 @@
-import android.graphics.Bitmap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 class qrr
-  implements qry
+  implements View.OnTouchListener
 {
-  qrr(qrq paramqrq, qrd paramqrd) {}
+  qrr(qro paramqro, LinearLayout paramLinearLayout) {}
   
-  public void a() {}
-  
-  public void a(Bitmap paramBitmap, qrw paramqrw)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Qrd.a(paramBitmap);
-    qrq.a(this.jdField_a_of_type_Qrq, paramBitmap, paramqrw.c);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qrr
  * JD-Core Version:    0.7.0.1
  */

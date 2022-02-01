@@ -1,36 +1,46 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class nyb
-  extends bejh
 {
-  nyb(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
-  
-  public void a()
+  private static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    super.a();
-    if ((this.jdField_a_of_type_Behr.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.c != null))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841333);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.c.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView);
-      if (IPluginAdapterProxy.getProxy().isNightMode())
+    if ((paramJSONObject1 != null) && (paramJSONObject2 != null)) {
+      try
       {
-        this.c.setBackgroundColor(-6710887);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841334);
+        Iterator localIterator = paramJSONObject2.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          paramJSONObject1.put(str, paramJSONObject2.get(str));
+        }
+        return paramJSONObject1;
       }
+      catch (Exception paramJSONObject2) {}
     }
+    while (paramJSONObject1 != null) {}
+    if (paramJSONObject2 != null) {
+      return paramJSONObject2;
+    }
+    return new JSONObject();
+  }
+  
+  public static JSONObject a(JSONObject... paramVarArgs)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    new JSONObject();
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      localJSONObject = a(localJSONObject, paramVarArgs[i]);
+      i += 1;
+    }
+    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nyb
  * JD-Core Version:    0.7.0.1
  */

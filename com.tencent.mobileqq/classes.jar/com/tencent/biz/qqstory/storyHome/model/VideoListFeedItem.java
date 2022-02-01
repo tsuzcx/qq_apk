@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import uxe;
-import wqn;
+import wqq;
+import yjy;
 
-public abstract class VideoListFeedItem<T extends wqn, E extends uxe>
+public abstract class VideoListFeedItem<T extends yjy, E extends wqq>
   extends CommentLikeFeedItem<T, E>
 {
   public static final String TAG = "VideoListFeedItem";
@@ -216,7 +216,7 @@ public abstract class VideoListFeedItem<T extends wqn, E extends uxe>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,6 @@
-import java.util.List;
-
-class arlb
-  implements yuf
+public abstract interface arlb
 {
-  arlb(arla paramarla, boolean paramBoolean, String paramString, short paramShort) {}
-  
-  public void a(List<arnw> paramList)
-  {
-    if (this.jdField_a_of_type_Arla.a.jdField_a_of_type_Arkp != null) {
-      this.jdField_a_of_type_Arla.a.jdField_a_of_type_Arkp.a(paramList, this.jdField_a_of_type_Arla.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arla.a.b, this.jdField_a_of_type_Arla.a.c, this.jdField_a_of_type_Arla.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

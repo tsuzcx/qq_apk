@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
-public class xyp
-  implements DialogInterface.OnClickListener
+public abstract class xyp
 {
-  public xyp(QRCardActivity paramQRCardActivity) {}
+  public int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyp
  * JD-Core Version:    0.7.0.1
  */

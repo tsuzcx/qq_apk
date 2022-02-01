@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
-public final class anfs
-  implements Parcelable.Creator<ArWebInfo>
+public class anfs
+  implements DialogInterface.OnClickListener
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
+  public anfs(ApolloPanel paramApolloPanel) {}
   
-  public ArWebInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ArWebInfo[paramInt];
+    this.a.n();
   }
 }
 

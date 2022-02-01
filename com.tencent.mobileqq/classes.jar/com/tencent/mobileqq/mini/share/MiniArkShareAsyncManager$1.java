@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.share;
 
-import awge;
-import awgf;
-import awgg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniArkShareAsyncManager$1
@@ -17,27 +17,27 @@ final class MiniArkShareAsyncManager$1
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      localObject = ((QQAppInterface)localObject).a().createEntityManager();
       if (localObject != null)
       {
-        awge localawge = ((awgf)localObject).a(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
-        if (localawge != null)
+        Entity localEntity = ((EntityManager)localObject).find(MiniProgramArkShareLocalImageEntity.class, "localPath = ?", new String[] { this.val$filePath });
+        if (localEntity != null)
         {
-          if (!((awgf)localObject).b(localawge)) {
+          if (!((EntityManager)localObject).remove(localEntity)) {
             break label90;
           }
-          QLog.d("MiniArkShareAsyncManage", 2, "removeArkShareLocalImageDatabaseEntity: remove record for " + this.val$filePath);
+          QLog.d("MiniArkShareAsyncManage [miniappArkShare]", 2, "removeArkShareLocalImageDatabaseEntity: remove record for " + this.val$filePath);
         }
       }
     }
     return;
     label90:
-    QLog.e("MiniArkShareAsyncManage", 2, new Object[] { "removeArkShareLocalImageDatabaseEntity", " remove error for " + this.val$filePath });
+    QLog.e("MiniArkShareAsyncManage [miniappArkShare]", 2, new Object[] { "removeArkShareLocalImageDatabaseEntity", " remove error for " + this.val$filePath });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,80 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop.activity.troopactivity.ActSSORsp;
+import tencent.im.troop.activity.troopactivity.GroupInfoCardResp;
 
 public class bfxr
-  extends QQUIEventReceiver<bfxp, auee>
+  implements BusinessObserver
 {
-  public bfxr(@NonNull bfxp parambfxp)
+  private final WeakReference<TroopMoreDetailView> a;
+  
+  public bfxr(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    super(parambfxp);
+    this.a = new WeakReference(paramTroopMoreDetailView);
   }
   
-  public void a(@NonNull bfxp parambfxp, @NonNull auee paramauee)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!TextUtils.equals(paramauee.jdField_a_of_type_JavaLangString, "QGameApp")) {}
-    String str;
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    label99:
     do
     {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (!paramBoolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: !isSuccess || mTroopInfoData == null");
+            }
+          }
+          else {
+            try
+            {
+              paramBundle = paramBundle.getByteArray("data");
+              if (paramBundle != null) {
+                break label99;
+              }
+              if (QLog.isColorLevel())
+              {
+                QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: data == null");
+                return;
+              }
+            }
+            catch (InvalidProtocolBufferMicroException paramBundle) {}
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: InvalidProtocolBufferMicroException:" + paramBundle.getMessage());
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QGameApp", 2, "receive event:" + paramauee.toString());
+      localObject = new troopactivity.ActSSORsp();
+      ((troopactivity.ActSSORsp)localObject).mergeFrom(paramBundle);
+      if (((troopactivity.ActSSORsp)localObject).err_code.get() == 10000) {
+        break;
       }
-      str = (String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[0];
-      switch (paramauee.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      }
-    } while (!TextUtils.equals(str, "ak:3214"));
-    if (paramauee.jdField_a_of_type_Boolean)
-    {
-      str = (String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[3];
-      if (TextUtils.isEmpty(str))
-      {
-        bfxp.a(parambfxp, 1002);
-        return;
-      }
-      switch (((Integer)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        bfxp.a(parambfxp, true, str);
-        return;
-      case 2: 
-        bfxp.jdField_a_of_type_Boolean = false;
-        return;
-      }
-      bfxp.a(parambfxp, false, str);
-      return;
-    }
-    bfxp.a(parambfxp, 1002);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return auee.class;
+    } while (!QLog.isColorLevel());
+    QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: errorcode:" + ((troopactivity.ActSSORsp)localObject).err_code.get() + ", msg:" + ((troopactivity.ActSSORsp)localObject).err_msg.get());
+    return;
+    paramBundle = ((troopactivity.ActSSORsp)localObject).body.get().toByteArray();
+    Object localObject = new troopactivity.GroupInfoCardResp();
+    ((troopactivity.GroupInfoCardResp)localObject).mergeFrom(paramBundle);
+    TroopMoreDetailView.a(localTroopMoreDetailView, (troopactivity.GroupInfoCardResp)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfxr
  * JD-Core Version:    0.7.0.1
  */

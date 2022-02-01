@@ -72,12 +72,12 @@ public class MultiViewerFilter
     this.videoFilterList.updateFaceParams(paramAIAttr, paramPTFaceAttr, paramFrame.width);
     paramFrame = this.videoFilterList.updateAndRenderStaticStickersBeforeTransform(paramFrame, paramPTFaceAttr);
     paramFrame = this.videoFilterList.processTransformRelatedFilters(paramFrame, paramPTFaceAttr);
-    paramFrame = this.videoFilterList.renderCustomEffectFilter(paramFrame, 1);
+    paramFrame = this.videoFilterList.renderCustomEffectFilter(paramFrame, 100);
     paramFrame = this.videoFilterList.updateAndRenderDynamicStickers(paramFrame, paramPTFaceAttr, paramAIAttr);
     BenchUtil.benchEnd(TAG + " videoFilterList.process");
     BenchUtil.benchStart(TAG + " videoFilterList.updateAndRenderStaticStickers");
     paramFrame = this.videoFilterList.updateAndRenderStaticStickers(paramFrame, paramPTFaceAttr);
-    paramFrame = this.videoFilterList.renderCustomEffectFilter(paramFrame, 2);
+    paramFrame = this.videoFilterList.renderCustomEffectFilter(paramFrame, 101);
     BenchUtil.benchEnd(TAG + " videoFilterList.updateAndRenderStaticStickers");
     return paramFrame;
   }
@@ -140,6 +140,14 @@ public class MultiViewerFilter
   {
     if (this.videoFilterList != null) {
       return this.videoFilterList.hasFreezeSetting();
+    }
+    return false;
+  }
+  
+  public boolean hasHand(PTHandAttr paramPTHandAttr)
+  {
+    if (this.videoFilterList != null) {
+      return this.videoFilterList.hasHands(paramPTHandAttr);
     }
     return false;
   }
@@ -237,43 +245,54 @@ public class MultiViewerFilter
       {
         paramFrame1 = this.videoFilterList.updateAndRenderBeforeEffectTriggerFilters(paramFrame1, paramPTFaceAttr);
         paramFrame1 = this.videoFilterList.updateAndRenderBeforeComicEffectFilters(paramFrame1, paramPTFaceAttr);
-        paramFrame1 = this.videoFilterList.updateAndRenderRapidNet(paramFrame1, paramPTFaceAttr);
-        if (this.videoFilterList.getFastFaceStickerFilter() == null) {
-          break label325;
+        localFrame1 = this.videoFilterList.updateAndRenderStylyFilters(1, paramFrame1);
+        if (paramFrame1 == localFrame1) {
+          break label411;
         }
-        if (i != 0) {
-          break label306;
-        }
-        this.videoFilterList.setMultiViewerSrcTexture(paramFrame1.getTextureId());
-        this.videoFilterList.setMultiViewerOutFrame(paramFrame2);
+        i = 1;
+        paramFrame1 = localFrame1;
       }
     }
+    label411:
     for (;;)
     {
-      localFrame1 = renderStickers(paramFrame1, paramAIAttr, paramPTFaceAttr);
-      paramFrame1 = this.videoFilterList.updateAndRenderHairCos(localFrame1, paramPTFaceAttr, paramPTHairAttr);
-      paramFrame1 = this.videoFilterList.blurAfterRender(paramFrame1, paramPTFaceAttr, paramPTSegAttr);
-      paramFrame1 = this.videoFilterList.undateAndRenderMaskSticker(paramFrame1, paramPTFaceAttr);
-      return this.videoFilterList.zoomFrame(paramFrame1);
-      this.emptyFrame.bindFrame(-1, paramFrame2.width, paramFrame2.height, 0.0D);
-      FrameUtil.clearFrame(this.emptyFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame2.width, paramFrame2.height);
-      localFrame1 = this.emptyFrame;
-      i = 1;
-      localFrame2 = paramFrame1;
-      break;
-      label306:
-      this.videoFilterList.setMultiViewerSrcTexture(0);
-      this.videoFilterList.setMultiViewerOutFrame(paramFrame1);
-    }
-    label325:
-    if (i == 0) {
-      copyFrame(localFrame2, paramFrame2);
-    }
-    for (;;)
-    {
-      localFrame1 = renderStickers(paramFrame2, paramAIAttr, paramPTFaceAttr);
-      break;
-      paramFrame2 = paramFrame1;
+      if (this.videoFilterList.getFastFaceStickerFilter() != null)
+      {
+        if (i == 0)
+        {
+          this.videoFilterList.setMultiViewerSrcTexture(paramFrame1.getTextureId());
+          this.videoFilterList.setMultiViewerOutFrame(paramFrame2);
+        }
+        for (;;)
+        {
+          localFrame1 = renderStickers(paramFrame1, paramAIAttr, paramPTFaceAttr);
+          paramFrame1 = this.videoFilterList.updateAndRenderRapidNet(localFrame1, paramPTFaceAttr);
+          paramFrame1 = this.videoFilterList.updateAndRenderStyleChild(paramFrame1, paramPTFaceAttr);
+          paramFrame1 = this.videoFilterList.updateAndRenderStyleChildWarp(paramFrame1, paramPTFaceAttr);
+          paramFrame1 = this.videoFilterList.updateAndRenderHairCos(paramFrame1, paramPTFaceAttr, paramPTHairAttr);
+          paramFrame1 = this.videoFilterList.blurAfterRender(paramFrame1, paramPTFaceAttr, paramPTSegAttr);
+          paramFrame1 = this.videoFilterList.undateAndRenderMaskSticker(paramFrame1, paramPTFaceAttr, paramAIAttr);
+          paramFrame1 = this.videoFilterList.updateAndRenderStylyFilters(2, paramFrame1);
+          return this.videoFilterList.zoomFrame(paramFrame1);
+          this.emptyFrame.bindFrame(-1, paramFrame2.width, paramFrame2.height, 0.0D);
+          FrameUtil.clearFrame(this.emptyFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame2.width, paramFrame2.height);
+          localFrame1 = this.emptyFrame;
+          i = 1;
+          localFrame2 = paramFrame1;
+          break;
+          this.videoFilterList.setMultiViewerSrcTexture(0);
+          this.videoFilterList.setMultiViewerOutFrame(paramFrame1);
+        }
+      }
+      if (i == 0) {
+        copyFrame(localFrame2, paramFrame2);
+      }
+      for (;;)
+      {
+        localFrame1 = renderStickers(paramFrame2, paramAIAttr, paramPTFaceAttr);
+        break;
+        paramFrame2 = paramFrame1;
+      }
     }
   }
   
@@ -321,6 +340,15 @@ public class MultiViewerFilter
     Frame localFrame = paramFrame;
     if (this.videoFilterList != null) {
       localFrame = this.videoFilterList.renderCustomEffectFilter(paramFrame, paramInt);
+    }
+    return localFrame;
+  }
+  
+  public Frame renderCustomGroup(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.videoFilterList != null) {
+      localFrame = this.videoFilterList.renderCustomGroup(paramFrame);
     }
     return localFrame;
   }
@@ -379,11 +407,11 @@ public class MultiViewerFilter
     return localFrame;
   }
   
-  public Frame renderMaskSticker(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  public Frame renderMaskSticker(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
   {
     Frame localFrame = paramFrame;
     if (this.videoFilterList != null) {
-      localFrame = this.videoFilterList.undateAndRenderMaskSticker(paramFrame, paramPTFaceAttr);
+      localFrame = this.videoFilterList.undateAndRenderMaskSticker(paramFrame, paramPTFaceAttr, paramAIAttr);
     }
     return localFrame;
   }
@@ -414,8 +442,10 @@ public class MultiViewerFilter
   public Frame renderRapidNet(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
   {
     Frame localFrame = paramFrame;
-    if (this.videoFilterList != null) {
-      localFrame = this.videoFilterList.updateAndRenderRapidNet(paramFrame, paramPTFaceAttr);
+    if (this.videoFilterList != null)
+    {
+      paramFrame = this.videoFilterList.updateAndRenderRapidNet(paramFrame, paramPTFaceAttr);
+      localFrame = this.videoFilterList.updateAndRenderStyleChild(paramFrame, paramPTFaceAttr);
     }
     return localFrame;
   }
@@ -434,6 +464,15 @@ public class MultiViewerFilter
     Frame localFrame = paramFrame;
     if (this.videoFilterList != null) {
       localFrame = this.videoFilterList.updateAndRenderStaticStickers(paramFrame, paramPTFaceAttr);
+    }
+    return localFrame;
+  }
+  
+  public Frame renderStyleChild(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    Frame localFrame = paramFrame;
+    if (this.videoFilterList != null) {
+      localFrame = this.videoFilterList.updateAndRenderStyleChild(paramFrame, paramPTFaceAttr);
     }
     return localFrame;
   }
@@ -570,7 +609,7 @@ public class MultiViewerFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.MultiViewerFilter
  * JD-Core Version:    0.7.0.1
  */

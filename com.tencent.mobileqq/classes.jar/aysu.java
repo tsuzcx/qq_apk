@@ -1,88 +1,76 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
+import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
 public class aysu
+  implements avym
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  private long jdField_a_of_type_Long;
   
-  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public aysu(OnlineStatusLocationFragment paramOnlineStatusLocationFragment) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList) {}
+  
+  public void a(LatLng paramLatLng, List<String> paramList)
   {
-    int i = 1;
-    try
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("entry", paramInt);
-      if (paramBoolean1)
+      return;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusLocationFragment", 2, "onMapStable onClick: invoked. center: " + paramLatLng);
+      }
+      OnlineStatusLocationFragment.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment, paramLatLng);
+      if (paramList != null)
       {
-        paramInt = 1;
-        localJSONObject.put("match", paramInt);
-        localJSONObject.put("keyword", paramString);
-        if (!paramBoolean2) {
-          break label74;
+        paramLatLng = paramList.iterator();
+        while (paramLatLng.hasNext())
+        {
+          paramList = (String)paramLatLng.next();
+          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a(paramList);
+          if (localBitmap != null)
+          {
+            localBitmap = bgmo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+            OnlineStatusLocationFragment.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment).a(paramList, localBitmap);
+          }
         }
       }
-      label74:
-      for (paramInt = i;; paramInt = 0)
-      {
-        localJSONObject.put("nightmode", paramInt);
-        paramString = localJSONObject.toString();
-        return paramString;
-        paramInt = 0;
-        break;
-      }
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
     }
   }
   
-  public String a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
-      localJSONObject2.put("state", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject2.put("extradata", new JSONObject(this.b));
-      }
-      localJSONObject1.put("data", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
-      }
-    }
-    return localJSONObject1.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, Point paramPoint)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = 1;
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setClickable(false);
+      if (bkpg.a()) {
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840541));
+      }
     }
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
+    Rect localRect;
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840540));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setClickable(true);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840542));
   }
 }
 

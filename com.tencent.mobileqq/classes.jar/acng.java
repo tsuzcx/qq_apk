@@ -1,56 +1,28 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import rx.Subscription;
+import rx.functions.Action1;
 
-public class acng
-  implements bevu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Long;)V"}, k=3, mv={1, 1, 16})
+final class acng<T>
+  implements Action1<Long>
 {
-  public acng(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  acng(acnd paramacnd) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public final void a(Long paramLong)
   {
-    if (paramInt1 == paramInt2) {
-      return;
+    paramLong = this.a;
+    acnd.a(paramLong, acnd.a(paramLong) - 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtMotiveBrowsingViewModel", 2, "onCountDown subscribe value : " + acnd.a(this.a));
     }
-    acoj localacoj = null;
-    switch (paramInt2)
+    if (acnd.a(this.a) <= 0)
     {
+      acnd.a(this.a, acnd.a(this.a));
+      acnd.b(this.a, (Subscription)null);
     }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Acoj != null)
-      {
-        this.a.jdField_a_of_type_Acoj.c();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_Acoj.a());
-      }
-      if (localacoj == null) {
-        break;
-      }
-      localacoj.a(ChatHistoryFileActivity.a(this.a));
-      localacoj.b();
-      this.a.jdField_a_of_type_Acoj = localacoj;
-      this.a.jdField_a_of_type_Acoj.a = this.a;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_Acoj.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label326;
-      }
-      this.a.jdField_a_of_type_Acoj.e();
-      return;
-      localacoj = ChatHistoryFileActivity.a(this.a, 0);
-      continue;
-      localacoj = ChatHistoryFileActivity.a(this.a, 4);
-      continue;
-      localacoj = ChatHistoryFileActivity.a(this.a, 1);
-      azqs.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
-      continue;
-      localacoj = ChatHistoryFileActivity.a(this.a, 2);
-      azqs.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
-      continue;
-      localacoj = ChatHistoryFileActivity.a(this.a, 3);
-      azqs.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
-    }
-    label326:
-    this.a.jdField_a_of_type_Acoj.f();
+    this.a.a().setValue(new acnh(1, null, acnd.a(this.a), 2, null));
   }
 }
 

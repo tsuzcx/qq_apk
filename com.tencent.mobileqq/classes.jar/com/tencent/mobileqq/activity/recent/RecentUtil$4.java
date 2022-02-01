@@ -5,7 +5,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import suv;
+import twi;
 
 public final class RecentUtil$4
   implements Runnable
@@ -14,7 +14,7 @@ public final class RecentUtil$4
   
   public void run()
   {
-    List localList = suv.a().a(this.a);
+    List localList = twi.a().a(this.a);
     int i;
     int j;
     label19:
@@ -40,14 +40,14 @@ public final class RecentUtil$4
       label58:
       localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
       if (localObject != null) {
-        suv.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+        twi.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.4
  * JD-Core Version:    0.7.0.1
  */

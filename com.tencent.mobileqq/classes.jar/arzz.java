@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class arzz
-  implements View.OnClickListener
+  extends arvf
 {
-  arzz(arzx paramarzx) {}
+  arzz(arzy paramarzy) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.D();
-    arzx.a(this.a);
+    this.a.a(paramInt);
   }
 }
 

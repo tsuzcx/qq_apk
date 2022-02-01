@@ -1,23 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.43.1;
+import com.tencent.mobileqq.activity.Conversation.43.2;
+import com.tencent.mobileqq.activity.Conversation.43.3;
+import com.tencent.mobileqq.activity.Conversation.43.4;
+import com.tencent.mobileqq.activity.Conversation.43.5;
+import com.tencent.mobileqq.activity.Conversation.43.6;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class adzo
-  implements DialogInterface.OnClickListener
+public class adzo
+  extends lmo
 {
-  adzo(adzn paramadzn, bade parambade) {}
+  public adzo(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt, long paramLong)
   {
-    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bade.c)))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_Adzn.a, SubLoginActivity.class);
-      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_Bade.c);
-      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Adzn.a.b);
-      this.jdField_a_of_type_Adzn.a.startActivity(paramDialogInterface);
+    paramInt = mue.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    paramInt = mue.c(paramInt);
+    this.a.a(8, Long.toString(paramLong1), paramInt);
+    this.a.b(paramLong1);
+    this.a.a(new Conversation.43.1(this, paramLong1));
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, paramInt);
+    this.a.a(new Conversation.43.4(this));
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    this.a.a(new Conversation.43.6(this));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!this.a.f) {
+      return;
+    }
+    this.a.a(new Conversation.43.5(this));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    paramInt = mue.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.43.2(this, paramLong1));
+    }
+  }
+  
+  protected void c(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.43.3(this, paramLong1));
     }
   }
 }

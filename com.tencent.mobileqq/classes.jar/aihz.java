@@ -1,16 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aihz
-  implements View.OnTouchListener
+final class aihz
+  implements Animation.AnimationListener
 {
-  aihz(aihy paramaihy) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aihy.a(this.a, paramView);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
+    }
   }
 }
 

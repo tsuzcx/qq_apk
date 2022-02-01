@@ -6,7 +6,7 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import bdpd;
+import bguc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.mini.util.AdUtils;
@@ -55,7 +55,7 @@ public class MiniAppGetUserAppListServletV2
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -126,7 +126,7 @@ public class MiniAppGetUserAppListServletV2
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetDropdownAppList");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
     }
@@ -134,7 +134,7 @@ public class MiniAppGetUserAppListServletV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServletV2
  * JD-Core Version:    0.7.0.1
  */

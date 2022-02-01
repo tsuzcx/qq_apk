@@ -1,39 +1,31 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class sav
-  implements sai
+  implements qyw
 {
-  public static final String a;
-  private static String b = "WebFastLikeDislikeCreator";
-  private saw a;
+  public sav(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, VideoInfo paramVideoInfo, int paramInt) {}
   
-  static
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131717276);
-  }
-  
-  public int a(BaseData paramBaseData)
-  {
-    return 19;
-  }
-  
-  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Saw = new saw(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560014, null), paramBaseData);
-    return this.jdField_a_of_type_Saw;
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.s == 21;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.l = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.x = paramString;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.n = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.o = paramInt;
+    if (((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) instanceof rxv)) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c == this.jdField_a_of_type_Int)) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramInt != 0)) {
+        ((rxu)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sav
  * JD-Core Version:    0.7.0.1
  */

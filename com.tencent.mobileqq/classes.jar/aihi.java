@@ -1,18 +1,14 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aihi
-  implements bhux
+  implements Comparator<MessageRecord>
 {
-  aihi(aiha paramaiha) {}
+  aihi(aihe paramaihe) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    return true;
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

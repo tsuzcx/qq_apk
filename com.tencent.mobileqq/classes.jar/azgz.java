@@ -1,18 +1,30 @@
-public abstract interface azgz
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.lifeachivement.LayerImageView;
+import com.tencent.widget.AlphaClickableRelativeLayout;
+import com.tencent.widget.AlphaClickableTextView;
+
+class azgz
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public TextView a;
+  public LayerImageView a;
+  public AlphaClickableRelativeLayout a;
+  public AlphaClickableTextView a;
+  public TextView b;
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
+  public azgz(View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131368365));
+    this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLayerImageView = ((LayerImageView)paramView.findViewById(2131361931));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361932));
+    this.b = ((TextView)paramView.findViewById(2131361930));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView = ((AlphaClickableTextView)paramView.findViewById(2131361933));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.a(false);
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView.setEnabled(true);
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesd;
+import afyo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ForwardUtils$SectionBase
   implements Parcelable
 {
-  public static final Parcelable.Creator<SectionBase> CREATOR = new aesd();
+  public static final Parcelable.Creator<SectionBase> CREATOR = new afyo();
   public int a;
   
   protected ForwardUtils$SectionBase() {}
@@ -30,7 +30,7 @@ public class ForwardUtils$SectionBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase
  * JD-Core Version:    0.7.0.1
  */

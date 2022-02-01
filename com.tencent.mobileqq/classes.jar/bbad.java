@@ -1,25 +1,12 @@
-public class bbad
+import com.tencent.mobileqq.richstatus.RichStatus;
+
+public abstract interface bbad
 {
-  public int a;
-  public long a;
-  public bazx a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
+  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, boolean paramBoolean);
 }
 
 

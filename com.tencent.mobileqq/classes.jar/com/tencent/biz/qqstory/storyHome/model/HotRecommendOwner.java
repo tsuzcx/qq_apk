@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import alud;
+import anni;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import uxe;
+import wqq;
 
 public class HotRecommendOwner
   extends BaseUIItem
-  implements uxe
+  implements wqq
 {
-  public String mName = alud.a(2131706004);
+  public String mName = anni.a(2131704405);
   public long mRecommendId;
   
   public String getName()
@@ -58,7 +58,7 @@ public class HotRecommendOwner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HotRecommendOwner
  * JD-Core Version:    0.7.0.1
  */

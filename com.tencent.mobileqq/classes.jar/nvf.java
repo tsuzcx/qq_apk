@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 import com.tencent.qphone.base.util.QLog;
 
 public class nvf
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nvf(CustomTabView paramCustomTabView) {}
+  public nvf(AdControlView paramAdControlView) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvf
  * JD-Core Version:    0.7.0.1
  */

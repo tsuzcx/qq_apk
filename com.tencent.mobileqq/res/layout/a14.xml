@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout android:id="@id/cby" android:paddingBottom="7.0dip" android:clickable="true" android:layout_width="60.0dip" android:layout_height="67.0dip" app:background_color="#ff03a9f4" app:corner_radius="6.0dip" app:direction="abp" app:triangle_round_radius="2.0dip">
+    <com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout android:id="@id/cby" android:paddingBottom="7.0dip" android:clickable="true" android:layout_width="60.0dip" android:layout_height="67.0dip" app:background_color="#ff03a9f4" app:corner_radius="6.0dip" app:direction="abp" app:triangle_round_radius="2.0dip">
         <ImageView android:id="@id/fwz" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="7.5dip" android:src="@drawable/com" android:layout_centerHorizontal="true" />
         <TextView android:textSize="12.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@id/fx0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/fwz" android:layout_centerHorizontal="true" />
-    </com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout>
+    </com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout>
 </LinearLayout>

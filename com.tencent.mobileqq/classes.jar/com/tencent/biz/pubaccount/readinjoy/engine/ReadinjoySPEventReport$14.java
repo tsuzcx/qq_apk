@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
-import bkbq;
+import bmqa;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -14,17 +14,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import ors;
-import oxp;
-import syb;
+import pha;
+import pmy;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public final class ReadinjoySPEventReport$14
   implements Runnable
 {
   public void run()
   {
-    if (oxp.b(24))
+    if (pmy.b(24))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = BaseActivity.sTopActivity;
@@ -71,7 +71,7 @@ public final class ReadinjoySPEventReport$14
           localObject1 = String.valueOf(1);
           localPBStringField.set((String)localObject1);
           localArrayList.add(localAttributeList);
-          if (bkbq.k())
+          if (bmqa.j())
           {
             localObject1 = ((MainFragment)localObject2).a(MainFragment.d);
             if (localObject1 != null)
@@ -92,10 +92,10 @@ public final class ReadinjoySPEventReport$14
           localObject1 = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(5);
           ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("tab");
-          i = oxp.b(((MainFragment)localObject2).a());
+          i = pmy.b(((MainFragment)localObject2).a());
           ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + i);
           localArrayList.add(localObject1);
-          localObject1 = ors.d(1008);
+          localObject1 = pha.d(1008);
           if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
             localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -113,7 +113,7 @@ public final class ReadinjoySPEventReport$14
           QLog.d("ReadinjoySPEventReport", 2, "reportTabExposure_ERROR : ", localException);
           continue;
         }
-        syb.a(24, localArrayList);
+        tzo.a(24, localArrayList);
         return;
         localObject1 = String.valueOf(0);
         continue;

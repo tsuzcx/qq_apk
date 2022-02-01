@@ -16,9 +16,9 @@ public abstract class WebChromeClient$FileChooserParams
   {
     try
     {
-      X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-      if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-        return localX5CoreEngine.wizard().parseFileChooserResult(paramInt, paramIntent);
+      v localv = v.a();
+      if ((localv != null) && (localv.b())) {
+        return localv.c().a(paramInt, paramIntent);
       }
       if (Build.VERSION.SDK_INT >= 21)
       {
@@ -47,7 +47,7 @@ public abstract class WebChromeClient$FileChooserParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebChromeClient.FileChooserParams
  * JD-Core Version:    0.7.0.1
  */

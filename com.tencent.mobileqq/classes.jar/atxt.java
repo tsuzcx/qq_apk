@@ -1,19 +1,20 @@
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+
 public class atxt
+  implements atve
 {
-  public int a;
-  public long a;
-  public afvu a;
-  public atxr a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  public atxt(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public atxt(atxn paramatxn) {}
+  public void a()
+  {
+    QfileEditBottomBar.a(this.a);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxt
  * JD-Core Version:    0.7.0.1
  */

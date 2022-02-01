@@ -1,45 +1,148 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
-import java.util.List;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class aylm
-  extends ayll
 {
-  private int a;
+  static final String jdField_a_of_type_JavaLangString = aost.jdField_a_of_type_JavaLangString + "_Guide";
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aylp jdField_a_of_type_Aylp;
+  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public aylm(List<aynu> paramList, String paramString, int paramInt)
+  public aylm(Activity paramActivity)
   {
-    super(paramList, paramString);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381273));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381274));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381272));
   }
   
-  public int a()
+  private boolean a()
   {
-    return ayhw.a("fts_native_chathistory_maxnum", 3);
+    return (this.jdField_a_of_type_Aylp == null) || ((this.jdField_a_of_type_Aylp != null) && (!this.jdField_a_of_type_Aylp.a()));
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return alud.a(2131705343);
-  }
-  
-  public void a(View paramView)
-  {
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
-    if ((paramView.getContext() instanceof UniteSearchActivity))
+    int i = 1;
+    if (a())
     {
-      ayvm.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
-      aysc.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, isDestroyed, textIndex[" + paramInt + "]");
+      return;
     }
-    bdps.d = -1;
-    bdps.f = 0;
-    bdps.g = -1;
-    bdps.h = -1;
-    bdps.i = -1;
-    bdps.j = -1;
-    bdpr.a(paramView);
-    FTSEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, 1);
+    if (this.jdField_a_of_type_Aylp == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, mPromotionRes为null, textIndex[" + paramInt + "]");
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Aylp.a();
+    if (localObject != null)
+    {
+      localObject = ((aosj)localObject).a(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      }
+    }
+    for (paramInt = i;; paramInt = 0)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (paramInt != 0) {}
+      for (i = 0;; i = 8)
+      {
+        ((TextView)localObject).setVisibility(i);
+        if (paramInt == 0) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
+      return;
+    }
+  }
+  
+  public void a(aosj paramaosj)
+  {
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "loadRes, hadLoad[" + this.jdField_a_of_type_Boolean + "]");
+    if (a()) {}
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getResources();
+    int i = ((Resources)localObject).getDisplayMetrics().densityDpi;
+    int j = ((Resources)localObject).getDisplayMetrics().densityDpi;
+    localObject = aosp.b(paramaosj);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, path is null");
+      return;
+    }
+    if (!new File((String)localObject).exists())
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, file not exist");
+      return;
+    }
+    paramaosj = (String)localObject + "guide.json";
+    localObject = new ayln(this, (String)localObject, i, j);
+    try
+    {
+      LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidAppActivity, new FileInputStream(paramaosj), (OnCompositionLoadedListener)localObject);
+      return;
+    }
+    catch (Exception paramaosj)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadWorldCupGuideAnimation failed. err = " + paramaosj.getMessage());
+    }
+  }
+  
+  public void a(aylp paramaylp)
+  {
+    this.jdField_a_of_type_Aylp = paramaylp;
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      if (!paramBoolean) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetTextView.getVisibility());
   }
 }
 

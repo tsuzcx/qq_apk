@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bgsm
-  implements View.OnClickListener
+public abstract interface bgsm
 {
-  bgsm(bgsi parambgsi) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    if (bgsi.a(this.a) != null) {
-      bgsi.a(this.a).onDismiss();
-    }
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgsm
  * JD-Core Version:    0.7.0.1
  */

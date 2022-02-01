@@ -15,17 +15,17 @@ final class QQFriendsJsPlugin$2
   {
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      i = paramJSONObject.optInt("authState", -1);
+      int i = paramJSONObject.optInt("authState", -1);
       paramJSONObject = paramJSONObject.optString("settingItem", "");
       if ((i != 1) || (!"setting.addFriend".equals(paramJSONObject))) {}
     }
-    while (this.val$addFriendCallBack == null)
+    String str;
+    do
     {
       do
       {
         try
         {
-          int i;
           AddFriendLogicActivity.a = this.val$openId;
           paramJSONObject = AddFriendLogicActivity.a(this.val$context, 3, this.val$openId, this.val$appId, 3024, Integer.parseInt(this.val$appId), null, null, null, "", null);
           this.val$context.startActivity(paramJSONObject);
@@ -45,14 +45,18 @@ final class QQFriendsJsPlugin$2
       QLog.e("QQFriendsJsPlugin", 1, "getSettingByOpenId failed");
       this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "auth deny");
       return;
-    }
+      str = "getUserSettingByOpenId failed!";
+      if (paramJSONObject != null) {
+        str = paramJSONObject.optString("errMsg", "");
+      }
+    } while (this.val$addFriendCallBack == null);
     QLog.e("QQFriendsJsPlugin", 1, "getUserSetting failed");
-    this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "network err");
+    this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.QQFriendsJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

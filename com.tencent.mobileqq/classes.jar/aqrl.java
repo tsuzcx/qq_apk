@@ -1,22 +1,72 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqrl
-  implements bhuk
+public class aqrl
+  extends aqkz<aqrk>
 {
-  aqrl(aqrk paramaqrk, int paramInt, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public aqrk a(int paramInt)
   {
-    azqs.b(this.jdField_a_of_type_Aqrk.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    this.jdField_a_of_type_Aqrk.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_Aqrk.a();
+    return new aqrk();
+  }
+  
+  @Nullable
+  public aqrk a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    {
+      aqrk localaqrk = aqrk.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqrk;
+    }
+    return null;
+  }
+  
+  public void a(aqrk paramaqrk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaqrk.toString());
+    }
+  }
+  
+  public Class<aqrk> clazz()
+  {
+    return aqrk.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 488;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrl
  * JD-Core Version:    0.7.0.1
  */

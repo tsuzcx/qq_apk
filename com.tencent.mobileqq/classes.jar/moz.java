@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import com.tencent.av.app.VideoAppInterface;
 
 class moz
-  implements View.OnClickListener
+  extends lfe
 {
-  moz(mov parammov) {}
+  moz(moy parammoy) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong)
   {
-    if ((mov.a(this.a) != null) && (mov.a(this.a).isShown()))
-    {
-      this.a.e();
-      return;
-    }
-    mov.c(this.a);
+    this.a.a("onConnected_init_when_not_support");
+    moy.a(this.a).b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     moz
  * JD-Core Version:    0.7.0.1
  */

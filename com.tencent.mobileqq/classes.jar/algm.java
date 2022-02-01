@@ -1,38 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 import com.tencent.qphone.base.util.QLog;
 
 public class algm
-  implements MediaPlayer.OnCompletionListener
+  extends BroadcastReceiver
 {
-  public algm(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
+  public algm(LoginView paramLoginView) {}
   
-  public void onCompletion(MediaPlayer arg1)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
-    }
-    int i = this.jdField_a_of_type_Int - 1;
-    if (i == 0) {}
-    do
-    {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
-      {
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
-        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
-          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
-        }
-        return;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
-      {
-        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
+    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
+    LoginView.a(this.a, true);
   }
 }
 

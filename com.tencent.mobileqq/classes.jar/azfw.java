@@ -1,75 +1,79 @@
-import android.annotation.TargetApi;
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.text.TextUtils;
 
-@TargetApi(21)
 public class azfw
-  extends CameraCaptureSession.CaptureCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
   
-  public azfw(Camera2Control paramCamera2Control)
+  private String b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
-  }
-  
-  private void a(CaptureResult paramCaptureResult)
-  {
-    switch (this.jdField_a_of_type_Int)
+    switch (this.jdField_c_of_type_Int)
     {
+    default: 
+      return "";
+    case 4: 
+      return anni.a(2131712335);
+    case 5: 
+      return anni.a(2131712333);
+    case 6: 
+      return anni.a(2131712331);
+    case 7: 
+      return anni.a(2131712332);
+    case 8: 
+      return anni.a(2131712336);
     }
-    do
+    return anni.a(2131712334);
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_b_of_type_Int == 3)
     {
-      do
+      if (this.jdField_d_of_type_Int > 0) {
+        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
+      }
+      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
       {
-        Integer localInteger;
-        do
-        {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            azfu.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
-          break;
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append("   ");
         }
-        this.jdField_a_of_type_Int = 4;
-        azfu.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-      return;
-      azfu.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+      }
+      if (this.jdField_c_of_type_Int > 0)
+      {
+        String str = b();
+        if (!TextUtils.isEmpty(str))
+        {
+          if (localStringBuilder.length() > 0) {
+            localStringBuilder.append("   ");
+          }
+          localStringBuilder.append(str);
+        }
+      }
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      if (this.jdField_d_of_type_Int > 0) {
+        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
+      }
+    }
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult);
+    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
   }
 }
 

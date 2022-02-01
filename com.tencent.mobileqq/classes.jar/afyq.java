@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-public class afyq
-  implements DialogInterface.OnClickListener
+public final class afyq
+  implements Parcelable.Creator<ForwardUtils.Section_Text>
 {
-  public afyq(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
+  {
+    return new ForwardUtils.Section_Text(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ForwardUtils.Section_Text[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Text[paramInt];
+  }
 }
 
 

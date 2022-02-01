@@ -12,10 +12,11 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import bdoo;
+import bgtn;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class MiniAppDialog
-  extends Dialog
+  extends ReportDialog
 {
   private static final int mAnimationDuration = 200;
   private View mContentView;
@@ -24,7 +25,7 @@ public class MiniAppDialog
   
   public MiniAppDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755054);
+    super(paramContext, 2131755055);
   }
   
   private void animateDown()
@@ -75,8 +76,8 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = bdoo.a();
-    int j = bdoo.b();
+    int i = bgtn.a();
+    int j = bgtn.b();
     if (i < j) {}
     for (;;)
     {
@@ -117,7 +118,7 @@ public class MiniAppDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MiniAppDialog
  * JD-Core Version:    0.7.0.1
  */

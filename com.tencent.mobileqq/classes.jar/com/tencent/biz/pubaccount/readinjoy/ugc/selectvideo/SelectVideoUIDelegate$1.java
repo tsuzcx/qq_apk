@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
-import qnz;
-import qwy;
-import rod;
+import riw;
+import rsw;
+import sik;
 
 public class SelectVideoUIDelegate$1
   implements Runnable
 {
-  public SelectVideoUIDelegate$1(qwy paramqwy, qnz paramqnz) {}
+  public SelectVideoUIDelegate$1(rsw paramrsw, riw paramriw) {}
   
   public void run()
   {
-    qwy.b(this.this$0);
-    qwy.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
+    rsw.b(this.this$0);
+    rsw.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
   }
 }
 

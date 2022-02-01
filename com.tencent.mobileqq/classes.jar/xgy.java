@@ -1,13 +1,22 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+
 public class xgy
+  extends AnimatorListenerAdapter
 {
-  public static boolean a(int paramInt)
+  public xgy(StoryPlayerActivity paramStoryPlayerActivity) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgy
  * JD-Core Version:    0.7.0.1
  */

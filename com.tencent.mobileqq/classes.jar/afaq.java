@@ -1,33 +1,31 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class afaq
-  implements afat
+  implements View.OnFocusChangeListener
 {
-  public afaq(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
+  public afaq(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void a(int paramInt, afbe paramafbe)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramafbe);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
       }
-      return;
-      paramafbe = finally;
-      throw paramafbe;
     }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 

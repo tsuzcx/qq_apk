@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aasd;
+import acqx;
 import android.text.TextUtils;
-import bdoo;
+import bgtn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -76,7 +76,7 @@ public class BannerAdPlugin
       if (i == 0)
       {
         localJSONObject = localJSONObject.getJSONArray("ads_info").getJSONObject(0);
-        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
+        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
       }
       if (paramJsRuntime != null)
       {
@@ -148,9 +148,9 @@ public class BannerAdPlugin
         if (!localJSONObject.has("width")) {
           break label521;
         }
-        float f = bdoo.a();
-        j = bdoo.a();
-        i = bdoo.b();
+        float f = bgtn.a();
+        j = bgtn.a();
+        i = bgtn.b();
         if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
           break label513;
         }
@@ -294,14 +294,14 @@ public class BannerAdPlugin
         String str3 = this.jsPluginEngine.activityContext.getCurrentAccountUin();
         localObject1 = null;
         int k = 0;
-        float f = bdoo.a();
-        int j = bdoo.a();
-        i = bdoo.a();
+        float f = bgtn.a();
+        int j = bgtn.a();
+        i = bgtn.b();
         if ((this.jsPluginEngine.activityContext instanceof GameActivity))
         {
           localObject1 = ((GameActivity)this.jsPluginEngine.activityContext).getMiniGameAppId();
           if (!((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape()) {
-            break label1158;
+            break label1159;
           }
           i = 90;
           f = ((GameActivity)this.jsPluginEngine.activityContext).getGameDensity();
@@ -374,7 +374,7 @@ public class BannerAdPlugin
             }
           }
         }
-        localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.valueOf(str3).longValue(), localBannerAdPosInfo.mAdUnitId, (String)localObject1, 53, 0, k, str4, (String)localObject2, (String)localObject4, (String)localObject3, (String)localObject5);
+        localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.valueOf(str3).longValue(), localBannerAdPosInfo.mAdUnitId, (String)localObject1, 53, 0, k, str4, (String)localObject2, (String)localObject4, (String)localObject3, (String)localObject5, 1);
         MiniAppCmdUtil.getInstance().getRewardedVideoADInfo((MiniAppAd.StGetAdReq)localObject1, new BannerAdPlugin.2(this, paramJsRuntime, localBannerAdPosInfo));
         return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
       }
@@ -407,7 +407,7 @@ public class BannerAdPlugin
           localObject1 = new JSONObject(paramString2).getString("type");
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd type = " + (String)localObject1);
           if (!"show".equals(localObject1)) {
-            break label972;
+            break label973;
           }
           if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
             continue;
@@ -419,7 +419,7 @@ public class BannerAdPlugin
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd parse json error", localJSONException);
         }
         continue;
-        label972:
+        label973:
         if ("hide".equals(localJSONException))
         {
           if ((this.jsPluginEngine.activityContext instanceof GameActivity)) {
@@ -446,7 +446,7 @@ public class BannerAdPlugin
         }
         updateBannerSize(paramJsRuntime, paramString2);
         continue;
-        label1158:
+        label1159:
         i = 0;
       }
     }
@@ -459,7 +459,7 @@ public class BannerAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

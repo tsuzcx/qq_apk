@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import amwn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aove;
 
 public class ARScanAR
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanAR> CREATOR = new amwn();
+  public static final Parcelable.Creator<ARScanAR> CREATOR = new aove();
   public int a;
   public long a;
   public String a;
@@ -108,7 +108,7 @@ public class ARScanAR
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARScanAR
  * JD-Core Version:    0.7.0.1
  */

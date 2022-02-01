@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-
-class whp
-  implements View.OnClickListener
+public class whp
 {
-  whp(whn paramwhn) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-    this.a.a.i();
-  }
+  public double a;
+  public int a;
+  public long a;
+  public boolean a;
+  public double b;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whp
  * JD-Core Version:    0.7.0.1
  */

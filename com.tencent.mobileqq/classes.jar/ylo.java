@@ -1,39 +1,66 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class ylo
-  implements zac<CertifiedAccountWrite.StDoTipOffRsp>
+public class ylo
+  extends ymd
+  implements wld<ylp, ylq>
 {
-  ylo(yln paramyln) {}
+  private boolean a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
+  public String a()
   {
-    paramBoolean = true;
-    if (paramLong == 0L)
+    return "GetPhotographyGuideInfoStep";
+  }
+  
+  public void a()
+  {
+    yqp.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
+    ylp localylp = new ylp();
+    wlb.a().a(localylp, this);
+  }
+  
+  public void a(@NonNull ylp paramylp, @Nullable ylq paramylq, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isSuccess()) && (paramylq != null))
     {
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
-      if (this.a.a != null)
+      yqp.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
+      paramylp = (wpf)wpm.a(10);
+      paramylq = paramylq.a;
+      if ((paramylq != null) && (paramylq.size() > 0)) {
+        paramylp.b("StorySvc.get_photography_guide.word", paramylq.get(0));
+      }
+      for (;;)
       {
-        paramString = this.a.a;
-        if (paramLong != 0L) {
-          break label78;
-        }
+        d();
+        return;
+        paramylp.b("StorySvc.get_photography_guide.word", anni.a(2131704050));
       }
     }
-    for (;;)
+    yqp.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramylp });
+    b(paramErrorMessage);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    try
     {
-      paramString.a(paramBoolean);
+      this.a = true;
       return;
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
-      break;
-      label78:
-      paramBoolean = false;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylo
  * JD-Core Version:    0.7.0.1
  */

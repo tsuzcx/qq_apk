@@ -1,62 +1,55 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-final class alvy
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public class alvy
+  implements TVK_SDKMgr.InstallListener
 {
-  public void onThreadMonitorEnd(int paramInt)
+  public alvy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (paramInt == 0)
-    {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    this.a.a(this.a.a.getResources().getString(2131697009));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
     }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("MagnifierSDK_QAPM", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    bctj.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    if (this.a.b.get() != null) {
+      ((MqqHandler)this.a.b.get()).post(new ShortVideoPlayActivity.13.1(this));
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    bctj.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alvy
  * JD-Core Version:    0.7.0.1
  */

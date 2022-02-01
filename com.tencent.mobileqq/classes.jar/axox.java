@@ -1,28 +1,19 @@
-public class axox
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class axox
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e = "";
-  public String f;
+  axox(axop paramaxop) {}
   
-  public axox()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axox
  * JD-Core Version:    0.7.0.1
  */

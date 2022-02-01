@@ -1,19 +1,14 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class anpp
-  implements View.OnClickListener
+  implements bdci
 {
-  anpp(anpn paramanpn) {}
+  anpp(anpk paramanpk) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((anpn.a(this.a) == 0) && (!TextUtils.isEmpty(anpn.b(this.a)))) {
-      anpn.a(this.a, null);
-    }
-    anpn.a(this.a).dismiss();
+    ((FriendListHandler)anpk.a(this.a).a(1)).notifyUI(108, true, null);
   }
 }
 

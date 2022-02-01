@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
-import pew;
+import pwb;
 
 public class ArticleInfoModule$28
   implements Runnable
 {
-  public ArticleInfoModule$28(pew parampew, ChannelTopCookie paramChannelTopCookie) {}
+  public ArticleInfoModule$28(pwb parampwb, ChannelTopCookie paramChannelTopCookie) {}
   
   public void run()
   {

@@ -1,49 +1,86 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ocr
+  extends aqkz<ocq>
 {
-  public static HashSet<String> a = new HashSet();
-  
-  public static void a()
+  @NonNull
+  public ocq a(int paramInt)
   {
-    a.clear();
-  }
-  
-  public static void a(int paramInt, rjg paramrjg)
-  {
-    if (paramrjg == null) {}
-    rjk localrjk;
-    AdvertisementInfo localAdvertisementInfo;
-    do
+    if (paramInt == 0)
     {
-      do
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
       {
-        return;
-        localrjk = paramrjg.a();
-        paramrjg = paramrjg.a();
-      } while ((paramrjg == null) || (localrjk == null) || (!(localrjk.a instanceof AdvertisementInfo)));
-      localAdvertisementInfo = (AdvertisementInfo)localrjk.a;
-    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
-    a(paramrjg, localAdvertisementInfo, localrjk);
+        localObject = (QQAppInterface)localObject;
+        tyg.a((QQAppInterface)localObject, tyg.a((QQAppInterface)localObject));
+        return ocq.a();
+      }
+    }
+    return new ocq();
   }
   
-  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, rjk paramrjk)
+  @Nullable
+  public ocq a(aqlg[] paramArrayOfaqlg)
   {
-    if ((paramrjk == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
-    while ((!(paramrjk.a instanceof AdvertisementInfo)) || (!paramrjk.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
     }
-    noy.a(new obk().a(paramActivity).a(noy.E).b(noy.L).a(paramAdvertisementInfo).a());
-    a.add(paramAdvertisementInfo.mAdTraceId);
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return ocq.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(ocq paramocq)
+  {
+    paramocq.a();
+    paramocq.b();
+  }
+  
+  public Class<ocq> clazz()
+  {
+    return ocq.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return tyg.b((QQAppInterface)localAppRuntime);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 70;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ocr
  * JD-Core Version:    0.7.0.1
  */

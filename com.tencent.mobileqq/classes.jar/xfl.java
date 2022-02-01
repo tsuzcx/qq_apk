@@ -1,32 +1,42 @@
-import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class xfl
-  implements xon
+final class xfl
+  implements bkhw
 {
-  xfl(xfh paramxfh) {}
+  xfl(StoryVideoItem paramStoryVideoItem, bkho parambkho) {}
   
-  public void a(@NonNull xou paramxou)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramxou.a)
+    switch (paramInt)
     {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((wpy)wpm.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new wxi().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      }
+      break;
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
-      int i = paramxou.b;
-      this.a.jdField_a_of_type_Xeq.a = i;
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
-      wxk.b("0X80075D8");
-    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
-    LpReportInfo_pf00064.allReport(615, 3, 2);
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      yqp.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfl
  * JD-Core Version:    0.7.0.1
  */

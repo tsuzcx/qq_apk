@@ -1,35 +1,25 @@
-import android.content.Intent;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aefi
   implements View.OnClickListener
 {
-  public aefi(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aefi(ForwardRecentActivity paramForwardRecentActivity) {}
   
   public void onClick(View paramView)
   {
-    xqq.a(this.a.a);
-    xqq.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((aegt)this.a.a.a.get(i)).a);
-      i += 1;
+    if (!this.a.isFinishing()) {
+      ForwardRecentActivity.a(this.a).dismiss();
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefi
  * JD-Core Version:    0.7.0.1
  */

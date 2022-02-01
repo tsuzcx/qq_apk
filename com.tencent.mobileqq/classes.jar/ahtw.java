@@ -1,24 +1,49 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahtw
-  extends alog
+  implements atea
 {
-  public ahtw(TroopFragment paramTroopFragment) {}
+  public ahtw(AIOImageProviderService paramAIOImageProviderService, atnh paramatnh, long paramLong) {}
   
-  protected void a(int paramInt)
+  public void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    switch (paramInt)
+    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localahuo == null)
     {
-    }
-    do
-    {
+      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: callback = null , ctxId[" + this.jdField_a_of_type_Atnh.a() + "] ");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
+    }
+    paramInt1 = (int)((float)paramLong1 / (float)paramLong2 * 10000.0F);
+    localahuo.a(this.jdField_a_of_type_Long, 0, 269484035, paramInt1, paramLong2, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localahuo == null)
+    {
+      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: error, ctxId[" + this.jdField_a_of_type_Long + "] ");
+      return;
+    }
+    if ((paramInt2 == -7003) || (paramInt2 == -6101)) {}
+    for (paramInt1 = 16;; paramInt1 = 0)
+    {
+      localahuo.a(this.jdField_a_of_type_Long, paramInt1, 269484034, 2, paramString, false);
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    ahuo localahuo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localahuo == null)
+    {
+      QLog.i("AIOImageProviderServiceXOXO", 2, "onDownloadFinish callback = null , ctxId[" + this.jdField_a_of_type_Long + "] ");
+      return;
+    }
+    QLog.i("AIOImageProviderService", 1, "-----------> notify download finish:" + this.jdField_a_of_type_Long);
+    localahuo.a(this.jdField_a_of_type_Long, 1, 269484034, 1, paramString, false);
   }
 }
 

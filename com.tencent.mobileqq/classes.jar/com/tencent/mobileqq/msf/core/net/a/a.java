@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.core.net.a;
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.service.MsfService;

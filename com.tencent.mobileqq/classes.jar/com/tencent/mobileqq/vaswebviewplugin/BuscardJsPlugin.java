@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alud;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,8 +15,9 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import begz;
-import bhtd;
+import anni;
+import bhod;
+import bkgm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
@@ -27,7 +27,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.buscard.BuscardHelper;
 import cooperation.buscard.BuscardProxyService;
-import myl;
+import nhe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ public class BuscardJsPlugin
   public static final int MSG_UNINIT = 4;
   public static final String NAME_SPACE = "nfc";
   private static final String TAG = "BuscardJsPlugin";
-  private Handler mHandler = new bhtd(this);
+  private Handler mHandler = new bkgm(this);
   private Messenger mMessenger = new Messenger(this.mHandler);
   private Messenger mService;
   ResultReceiver resultReceiver = new BuscardJsPlugin.1(this, this.mHandler);
@@ -130,7 +130,7 @@ public class BuscardJsPlugin
           localObject1 = ((Bundle)localObject1).getString("callback");
           localObject2 = this.mRuntime.a();
         } while (localObject2 == null);
-        localObject2 = ((WebViewFragment)localObject2).b();
+        localObject2 = ((WebViewFragment)localObject2).getCurrentUrl();
         if (QLog.isColorLevel()) {
           QLog.i("BuscardJsPlugin", 2, "callJs. callbackUrl:" + str + ",currentUrl:" + (String)localObject2);
         }
@@ -199,7 +199,7 @@ public class BuscardJsPlugin
                 }
                 localObject = new JSONObject();
                 ((JSONObject)localObject).put("retcode", -8);
-                ((JSONObject)localObject).put("retmsg", alud.a(2131701621));
+                ((JSONObject)localObject).put("retmsg", anni.a(2131700045));
                 callJs(paramBundle, new String[] { ((JSONObject)localObject).toString() });
                 return;
               }
@@ -249,7 +249,7 @@ public class BuscardJsPlugin
     ((Intent)localObject).putExtra("result", this.resultReceiver);
     ((Intent)localObject).putExtra("params", paramJSONObject.toString());
     if (this.mRuntime.a() != null) {}
-    for (paramJSONObject = this.mRuntime.a().b();; paramJSONObject = "")
+    for (paramJSONObject = this.mRuntime.a().getCurrentUrl();; paramJSONObject = "")
     {
       ((Intent)localObject).putExtra("webfrom", paramJSONObject);
       localActivity.startActivity((Intent)localObject);
@@ -269,11 +269,11 @@ public class BuscardJsPlugin
       if (localObject2 == null) {
         break label282;
       }
-      localObject2 = ((WebViewFragment)localObject2).b();
+      localObject2 = ((WebViewFragment)localObject2).getCurrentUrl();
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label282;
       }
-      bool = myl.a().a((String)localObject2, "nfc.nfcInit");
+      bool = nhe.a().a((String)localObject2, "nfc.nfcInit");
       localObject2 = Uri.parse((String)localObject2);
       if (!((Uri)localObject2).isHierarchical()) {
         break label276;
@@ -377,7 +377,7 @@ public class BuscardJsPlugin
           Object localObject = this.mRuntime.a();
           if (localObject != null)
           {
-            localObject = ((WebViewFragment)localObject).b();
+            localObject = ((WebViewFragment)localObject).getCurrentUrl();
             if (paramBundle != null)
             {
               if (QLog.isColorLevel()) {
@@ -409,7 +409,7 @@ public class BuscardJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BuscardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

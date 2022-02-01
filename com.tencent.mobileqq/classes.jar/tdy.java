@@ -1,28 +1,58 @@
-import NS_KING_SOCIALIZE_META.stMetaReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class tdy
-  implements View.OnClickListener
+public class tdy
+  extends BroadcastReceiver
 {
-  tdy(tdu paramtdu, stMetaReply paramstMetaReply) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  private tdy(tdx paramtdx) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = (ClipboardManager)tdn.a(this.jdField_a_of_type_Tdu.a).getSystemService("clipboard");
-    if (paramView != null)
-    {
-      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.wording));
-      tdn.a(this.jdField_a_of_type_Tdu.a).dismiss();
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=" + tdx.a(this.jdField_a_of_type_Tdx));
+      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = " + tdx.a(this.jdField_a_of_type_Tdx));
+            }
+          } while (tdx.a(this.jdField_a_of_type_Tdx) != 2);
+          this.jdField_a_of_type_Tdx.a();
+          this.jdField_a_of_type_Tdx.c();
+          return;
+        } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_USER_PRESENT app status=" + tdx.a(this.jdField_a_of_type_Tdx));
+        }
+      } while ((tdx.a(this.jdField_a_of_type_Tdx) != 2) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)));
+      paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramContext == null);
+    this.jdField_a_of_type_Tdx.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdy
  * JD-Core Version:    0.7.0.1
  */

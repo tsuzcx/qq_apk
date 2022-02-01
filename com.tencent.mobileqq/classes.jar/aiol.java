@@ -1,21 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import java.util.List;
 
 public class aiol
-  implements View.OnClickListener
 {
-  public aiol(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  @bghr(a=String.class)
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    paramView = this.a.getIntent();
-    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bddf.a());
-    azqs.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bkdr.a(this.b) + '\'' + '}';
   }
 }
 

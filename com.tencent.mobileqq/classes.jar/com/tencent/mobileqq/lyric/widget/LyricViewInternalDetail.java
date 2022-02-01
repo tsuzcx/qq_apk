@@ -6,9 +6,9 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
-import atwl;
-import atwn;
-import atwq;
+import awdu;
+import awdw;
+import awdz;
 import java.util.ArrayList;
 
 public class LyricViewInternalDetail
@@ -23,13 +23,13 @@ public class LyricViewInternalDetail
   private int c(int paramInt)
   {
     int m;
-    if ((this.jdField_a_of_type_Atwl == null) || (this.jdField_a_of_type_Atwl.a()))
+    if ((this.jdField_a_of_type_Awdu == null) || (this.jdField_a_of_type_Awdu.a()))
     {
       Log.e("LyricViewInternalDetail", "computeHilightWhileScrolling -> mLineLyric == null");
       m = 0;
       return m;
     }
-    int i = this.jdField_a_of_type_Atwl.a();
+    int i = this.jdField_a_of_type_Awdu.a();
     int j;
     if (this.jdField_b_of_type_Boolean)
     {
@@ -47,12 +47,12 @@ public class LyricViewInternalDetail
       if (k > i) {
         break;
       }
-      m = ((atwn)this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
+      m = ((awdw)this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
       int n = this.jdField_b_of_type_Int;
       j += (m - 1) * this.jdField_d_of_type_Int + n * m + this.c;
-      if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Atwl != null) && (this.jdField_b_of_type_Atwl.a() == this.jdField_a_of_type_Atwl.a()))
+      if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Awdu != null) && (this.jdField_b_of_type_Awdu.a() == this.jdField_a_of_type_Awdu.a()))
       {
-        m = ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
+        m = ((awdw)this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
         n = this.jdField_b_of_type_Int;
         j = (m - 1) * this.jdField_d_of_type_Int + n * m + this.c + j;
       }
@@ -87,7 +87,7 @@ public class LyricViewInternalDetail
     }
     for (;;)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList;
       int i = localArrayList.size();
       int k;
       if (this.jdField_b_of_type_Boolean)
@@ -104,8 +104,8 @@ public class LyricViewInternalDetail
         i = m;
         if (k < j)
         {
-          i += ((atwn)localArrayList.get(k)).a();
-          if ((!this.jdField_f_of_type_Boolean) || (this.jdField_b_of_type_Atwl == null) || (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList == null) || (k >= this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.size())) {
+          i += ((awdw)localArrayList.get(k)).a();
+          if ((!this.jdField_f_of_type_Boolean) || (this.jdField_b_of_type_Awdu == null) || (this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList == null) || (k >= this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.size())) {
             break label230;
           }
           if (k >= 0) {}
@@ -115,7 +115,7 @@ public class LyricViewInternalDetail
         {
           k += 1;
           break;
-          i = ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a() + i;
+          i = ((awdw)this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.get(k)).a() + i;
           continue;
           if (this.w >= 0)
           {
@@ -134,7 +134,7 @@ public class LyricViewInternalDetail
   protected void a(Canvas paramCanvas, int paramInt)
   {
     int n = this.jdField_b_of_type_Int + this.c;
-    ArrayList localArrayList = this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList;
     int k = localArrayList.size();
     int j = this.r;
     int i = j;
@@ -162,25 +162,25 @@ public class LyricViewInternalDetail
       label97:
       if (m <= k)
       {
-        atwn localatwn = (atwn)localArrayList.get(m);
+        awdw localawdw = (awdw)localArrayList.get(m);
         paramInt = Math.abs(m - j);
         if (paramInt == 0) {
-          if ((this.g) && (this.jdField_a_of_type_Atwl.jdField_a_of_type_Int == 2) && (this.jdField_i_of_type_Boolean))
+          if ((this.g) && (this.jdField_a_of_type_Awdu.jdField_a_of_type_Int == 2) && (this.jdField_i_of_type_Boolean))
           {
-            a(localatwn, paramCanvas, i1, i);
-            paramInt = i + localatwn.a() * n;
+            a(localawdw, paramCanvas, i1, i);
+            paramInt = i + localawdw.a() * n;
             a(paramCanvas, i1, paramInt, true, m, null);
             i = paramInt;
             if (this.jdField_f_of_type_Boolean)
             {
               i = paramInt;
-              if (this.jdField_b_of_type_Atwl != null)
+              if (this.jdField_b_of_type_Awdu != null)
               {
                 i = paramInt;
-                if (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList != null)
+                if (this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null)
                 {
                   i = paramInt;
-                  if (m < this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.size()) {
+                  if (m < this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.size()) {
                     if (m >= 0) {
                       break label353;
                     }
@@ -190,23 +190,23 @@ public class LyricViewInternalDetail
             }
           }
         }
-        for (i = paramInt;; i = paramInt + ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(m)).a() * n)
+        for (i = paramInt;; i = paramInt + ((awdw)this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.get(m)).a() * n)
         {
           m += 1;
           break label97;
           j = i;
           break;
-          a(localatwn, paramCanvas, i1, i, this.jdField_i_of_type_Boolean);
-          paramInt = i + localatwn.a() * n;
+          a(localawdw, paramCanvas, i1, i, this.jdField_i_of_type_Boolean);
+          paramInt = i + localawdw.a() * n;
           break label175;
           if ((paramInt > 0) && (paramInt <= this.v))
           {
-            a(localatwn, paramCanvas, i1, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-            paramInt = i + localatwn.a() * n;
+            a(localawdw, paramCanvas, i1, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+            paramInt = i + localawdw.a() * n;
             a(paramCanvas, i1, paramInt, false, m, this.jdField_a_of_type_AndroidGraphicsPaint);
             break label187;
           }
-          paramInt = i + localatwn.a() * n;
+          paramInt = i + localawdw.a() * n;
           break label187;
         }
       }
@@ -223,9 +223,9 @@ public class LyricViewInternalDetail
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, Paint paramPaint)
   {
-    if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Atwl != null) && (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Awdu != null) && (this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null))
     {
-      paramPaint = this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
+      paramPaint = this.jdField_b_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList;
       if ((paramInt3 < paramPaint.size()) && (paramInt3 >= 0)) {}
     }
     else
@@ -234,10 +234,10 @@ public class LyricViewInternalDetail
     }
     if ((paramBoolean) && (!this.jdField_d_of_type_Boolean))
     {
-      a((atwn)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2);
+      a((awdw)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2);
       return;
     }
-    a((atwn)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_i_of_type_AndroidGraphicsPaint);
+    a((awdw)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_i_of_type_AndroidGraphicsPaint);
   }
   
   public void a(boolean paramBoolean)
@@ -248,12 +248,12 @@ public class LyricViewInternalDetail
     }
     this.jdField_f_of_type_Boolean = paramBoolean;
     this.e = false;
-    atwq.a().post(new LyricViewInternalDetail.1(this));
+    awdz.a().post(new LyricViewInternalDetail.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewInternalDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class pza
-  implements View.OnClickListener
+public abstract interface pza<B>
 {
-  pza(pyz parampyz) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-  }
+  public abstract void a(boolean paramBoolean, List<B> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pza
  * JD-Core Version:    0.7.0.1
  */

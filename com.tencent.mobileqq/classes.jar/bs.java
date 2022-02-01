@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
 public class bs
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
   public bs(LiteActivity paramLiteActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LiteActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    LiteActivity.a(this.a).requestLayout();
+    this.a.finish();
   }
 }
 

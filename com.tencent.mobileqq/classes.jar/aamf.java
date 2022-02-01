@@ -1,15 +1,29 @@
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aamf
-  implements aauo
+public class aamf
+  implements View.OnClickListener
 {
-  aamf(aame paramaame, AdImageViewAdapter.Params paramParams) {}
+  public aamf(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      aaae.a(ServiceFolderFollowPBHeadView.a(this.a));
+    }
+    for (;;)
+    {
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      bcst.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+    }
   }
 }
 

@@ -1,59 +1,94 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class lmh
-  extends BroadcastReceiver
+  extends MqqHandler
 {
-  public lmh(CameraUtils paramCameraUtils) {}
+  WeakReference<AVNotifyCenter> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lmh(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
   {
-    if (paramIntent == null) {
+    super(paramLooper);
+    this.a = new WeakReference(paramAVNotifyCenter);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
+    if (localAVNotifyCenter == null) {}
+    while (!localAVNotifyCenter.i()) {
       return;
     }
-    paramContext = paramIntent.getStringExtra("camera_id");
-    int i = paramIntent.getIntExtra("availability", 1);
-    long l = mwd.a(paramIntent);
-    CameraUtils.a(this.a).put(paramContext, Integer.valueOf(i));
-    if ((i == 1) && (this.a.b(l)))
+    if (QLog.isColorLevel()) {
+      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
+    }
+    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
     {
-      paramContext = CameraUtils.a(this.a).entrySet().iterator();
-      do
-      {
-        if (!paramContext.hasNext()) {
-          break;
-        }
-      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 35);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
     }
-    for (boolean bool = false;; bool = true)
+    switch (paramMessage.what)
     {
-      if (AudioHelper.e()) {
-        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, sendReopenCameraMsg, result[" + bool + "], seq[" + l + "]");
-      }
-      if (!bool) {
-        break;
-      }
-      CameraUtils.a(this.a).a("CameraAvailabilityReceiver", l, -1, -1);
+    case 10006: 
+    case 10007: 
+    case 10008: 
+    case 10009: 
+    default: 
       return;
-      if (AudioHelper.e()) {
-        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, removeReopenCameraMsg, seq[" + i + "]");
-      }
-      CameraUtils.a(this.a).a(l);
+    case 10002: 
+      localAVNotifyCenter.b();
+      return;
+    case 10003: 
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 26);
+      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
+      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10004: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 24);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10005: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 31);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10010: 
+      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
       return;
     }
+    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
+    localIntent.putExtra("type", 34);
+    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
+    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmh
  * JD-Core Version:    0.7.0.1
  */

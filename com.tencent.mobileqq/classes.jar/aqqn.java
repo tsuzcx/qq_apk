@@ -1,48 +1,69 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqqn
-  implements View.OnClickListener
+public class aqqn
 {
-  aqqn(aqqm paramaqqm, View paramView) {}
+  private boolean a;
   
-  public void onClick(View paramView)
+  public static aqqn a(aqlg[] paramArrayOfaqlg)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof aqnh))
+    aqqn localaqqn = new aqqn();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      localObject = (FileManagerEntity)((aqnh)localObject).a;
-      if (paramView.getId() != 2131365065) {
-        break label114;
-      }
-      paramView = (bhuf)bhus.a(this.jdField_a_of_type_Aqqm.a.a, null);
-      paramView.a(alud.a(2131710015));
-      paramView.a(alud.a(2131710019), 3);
-      paramView.d(alud.a(2131710017));
-      paramView.a(new aqqo(this, (FileManagerEntity)localObject, paramView));
-      paramView.show();
-    }
-    label114:
-    do
-    {
-      return;
-      localObject = (FileManagerEntity)((aqqz)localObject).a;
-      break;
-      if (paramView.getId() == 2131366762)
+      try
       {
-        this.jdField_a_of_type_Aqqm.a.c((FileManagerEntity)localObject);
-        return;
+        int j = paramArrayOfaqlg.length;
+        int i = 0;
+        if (i < j)
+        {
+          String str = paramArrayOfaqlg[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_d55"))
+          {
+            if (localJSONObject.optInt("enable_d55", 0) == 1)
+            {
+              bool = true;
+              localaqqn.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
+          return localaqqn;
+        }
       }
-    } while (paramView.getId() != 2131376412);
-    ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Aqqm.a));
+      catch (JSONException paramArrayOfaqlg)
+      {
+        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaqlg);
+        return null;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("isSwitchOpen:").append(this.a);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqn
  * JD-Core Version:    0.7.0.1
  */

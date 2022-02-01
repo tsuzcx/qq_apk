@@ -1,45 +1,39 @@
-import android.content.Context;
-import com.tencent.ad.tangram.canvas.report.AdDMPReportUtil;
-import com.tencent.ad.tangram.canvas.views.form.AdFormData;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormCommitListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
 public class aatx
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public static void a(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData, WeakReference<AdFormCommitListener> paramWeakReference)
-  {
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((AdFormCommitListener)paramWeakReference.get()).beforeCommit();
-    }
-    ThreadManager.post(new GdtFormCommitUtil.1(paramContext, paramGdtAd, paramAdFormData, paramWeakReference), 5, null, true);
-  }
+  public aatx(PluginJumpManager paramPluginJumpManager, aaty paramaaty, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, aatz paramaatz, String paramString4) {}
   
-  private static AdFormError b(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    Object localObject;
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramAdFormData == null) || (!paramAdFormData.isValid()))
-    {
-      aase.d("GdtFormCommitUtil", "commit error");
-      localObject = new AdFormError(4, -1, null);
-    }
-    AdFormError localAdFormError;
-    do
-    {
-      do
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Aaty.b);
+    int i;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
       {
-        return localObject;
-        aaty.a(paramContext, paramGdtAd, paramAdFormData);
-        localAdFormError = aaue.a(paramAdFormData);
-        localObject = localAdFormError;
-      } while (localAdFormError == null);
-      localObject = localAdFormError;
-    } while (localAdFormError.type != 1);
-    AdDMPReportUtil.reportUpload(paramContext, paramGdtAd, paramAdFormData);
-    return localAdFormError;
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aaty.b, this.jdField_a_of_type_Aaty.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Aatz.b, this.jdField_a_of_type_Aatz.a);
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
+      }
+      return;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Aatz.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Aaty.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Aatz.b, null, null);
+      i = 0;
+    }
   }
 }
 

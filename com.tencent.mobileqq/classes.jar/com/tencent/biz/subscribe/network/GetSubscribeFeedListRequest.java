@@ -4,7 +4,8 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
 import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import aajc;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -13,7 +14,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import ylz;
 
 public class GetSubscribeFeedListRequest
   extends VSBaseRequest
@@ -30,7 +30,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = ylz.a().a();
+    paramStCommonExt = aajc.a().a();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -39,6 +39,29 @@ public class GetSubscribeFeedListRequest
     }
     if (paramString != null) {
       this.req.adAttchInfo.set(paramString);
+    }
+  }
+  
+  public GetSubscribeFeedListRequest(int paramInt, COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  {
+    this.req = new CertifiedAccountRead.StGetFeedListReq();
+    this.req.from.set(0);
+    this.req.source.set(paramInt);
+    if (paramString2 != null) {
+      this.req.livePageInfo.set(paramString2);
+    }
+    if (paramStCommonExt != null) {
+      this.req.extInfo.set(paramStCommonExt.get());
+    }
+    paramStCommonExt = aajc.a().a();
+    if (paramStCommonExt != null)
+    {
+      paramString2 = new vac_adv_get.VacFeedsAdvMetaReq();
+      paramString2.device_info.set(paramStCommonExt);
+      this.req.adres.set(ByteStringMicro.copyFrom(paramString2.toByteArray()));
+    }
+    if (paramString1 != null) {
+      this.req.adAttchInfo.set(paramString1);
     }
   }
   
@@ -57,7 +80,7 @@ public class GetSubscribeFeedListRequest
       if (paramStCommonExt != null) {
         this.req.extInfo.set(paramStCommonExt.get());
       }
-      paramStFeed = ylz.a().a();
+      paramStFeed = aajc.a().a();
       if (paramStFeed != null)
       {
         paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -92,7 +115,7 @@ public class GetSubscribeFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

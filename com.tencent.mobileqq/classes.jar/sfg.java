@@ -1,100 +1,48 @@
-import android.graphics.Bitmap.Config;
-import java.net.URL;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class sfg
+  implements siv
 {
-  public int a;
-  public long a;
-  public Bitmap.Config a;
-  public String a;
-  public URL a;
-  public volatile boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 0;
-  public long c;
-  public int d = 0;
-  public long d;
-  public int e;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
+  private Handler a;
   
-  public sfg()
+  public sfg(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    this.a = paramHandler;
   }
   
-  public String a()
+  private void a(boolean paramBoolean, int paramInt)
   {
-    return "kandian_zimage_image_req_" + hashCode();
+    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramObject == null);
-              bool1 = bool3;
-            } while (getClass() != paramObject.getClass());
-            paramObject = (sfg)paramObject;
-            bool1 = bool3;
-          } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-          bool1 = bool3;
-        } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-        bool1 = bool3;
-      } while (this.c != paramObject.c);
-      if (this.jdField_a_of_type_JavaNetURL == null) {
-        break;
-      }
-      bool1 = bool3;
-    } while (!this.jdField_a_of_type_JavaNetURL.equals(paramObject.jdField_a_of_type_JavaNetURL));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap$Config == paramObject.jdField_a_of_type_AndroidGraphicsBitmap$Config) {}
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return bool1;
-      if (paramObject.jdField_a_of_type_JavaNetURL == null) {
-        break;
-      }
-      return false;
+    a(true, 0);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
     }
   }
   
-  public int hashCode()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaNetURL != null) {}
-    for (int i = this.jdField_a_of_type_JavaNetURL.hashCode();; i = 0) {
-      return (((i * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_a_of_type_AndroidGraphicsBitmap$Config.hashCode()) * 31 + this.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
     }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaNetURL + " " + this.jdField_a_of_type_Int + "x" + this.jdField_b_of_type_Int + " isPreload:" + this.jdField_b_of_type_Boolean + " isCancel:" + this.jdField_a_of_type_Boolean;
+    a(false, paramInt);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfg
  * JD-Core Version:    0.7.0.1
  */

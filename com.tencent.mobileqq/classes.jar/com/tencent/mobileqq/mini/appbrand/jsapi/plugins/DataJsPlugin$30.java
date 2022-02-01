@@ -1,26 +1,35 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
-import android.content.Context;
-import bety;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class DataJsPlugin$30
-  implements Runnable
+  implements MiniAppController.ActivityResultListener
 {
-  DataJsPlugin$30(DataJsPlugin paramDataJsPlugin, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  DataJsPlugin$30(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
-  public void run()
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    bety localbety = new bety(this.val$context);
-    localbety.a(alud.a(2131703126));
-    localbety.show();
-    ThreadManager.excute(new DataJsPlugin.30.1(this, localbety), 128, null, true);
+    if (paramInt1 == 9)
+    {
+      if (paramInt2 == 0) {
+        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+      for (;;)
+      {
+        MiniAppController.getInstance().removeActivityResultListener(this);
+        return true;
+        this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.30
  * JD-Core Version:    0.7.0.1
  */

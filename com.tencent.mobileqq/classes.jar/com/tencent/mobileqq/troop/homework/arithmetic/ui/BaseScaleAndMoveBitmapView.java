@@ -10,18 +10,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import bbyv;
-import bbyw;
-import wxe;
-import xqq;
+import bezg;
+import bezh;
+import yqp;
+import zkb;
 
 public class BaseScaleAndMoveBitmapView
   extends View
 {
   public float a;
   public Bitmap a;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bbyv(this, null));
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new bbyw(this, null));
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bezg(this, null));
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new bezh(this, null));
   private boolean jdField_a_of_type_Boolean;
   public float b;
   private boolean b;
@@ -48,7 +48,7 @@ public class BaseScaleAndMoveBitmapView
   {
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      xqq.a("call resize when bitmap is invalid", new Object[0]);
+      zkb.a("call resize when bitmap is invalid", new Object[0]);
       return;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -63,7 +63,7 @@ public class BaseScaleAndMoveBitmapView
     for (;;)
     {
       setScaleRange(1.0F, 4.0F);
-      wxe.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap mScaleFactor=" + this.c + ",mPosX=" + this.jdField_a_of_type_Float + ",mPosY=" + this.jdField_b_of_type_Float);
+      yqp.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap mScaleFactor=" + this.c + ",mPosX=" + this.jdField_a_of_type_Float + ",mPosY=" + this.jdField_b_of_type_Float);
       return;
       this.jdField_b_of_type_Float = 0.0F;
       this.jdField_a_of_type_Float = ((int)((getWidth() - getHeight() / f2) / 2.0F / this.c));
@@ -105,7 +105,7 @@ public class BaseScaleAndMoveBitmapView
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
       if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1)) {
-        wxe.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "when on touch the mBitmap is null");
+        yqp.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "when on touch the mBitmap is null");
       }
       return false;
     }
@@ -130,7 +130,7 @@ public class BaseScaleAndMoveBitmapView
   
   public void setImageBitmap(@NonNull Bitmap paramBitmap)
   {
-    wxe.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap bitmap w=" + paramBitmap.getWidth() + ",h=" + paramBitmap.getHeight());
+    yqp.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap bitmap w=" + paramBitmap.getWidth() + ",h=" + paramBitmap.getHeight());
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap.copy(paramBitmap.getConfig(), false);
     if ((getWidth() <= 0) || (getHeight() <= 0))
     {
@@ -149,7 +149,7 @@ public class BaseScaleAndMoveBitmapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView
  * JD-Core Version:    0.7.0.1
  */

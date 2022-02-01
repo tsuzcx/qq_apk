@@ -1,46 +1,63 @@
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class amxg
-  implements andm
+final class amxg
+  extends bhhe
 {
-  amxg(amxf paramamxf, String paramString, andm paramandm) {}
+  amxg(File paramFile) {}
   
-  public void a()
+  public void onDone(bhhf parambhhf)
   {
-    if (this.jdField_a_of_type_Andm != null) {
-      this.jdField_a_of_type_Andm.a();
+    super.onDone(parambhhf);
+    if ((3 == parambhhf.a()) && (this.a.exists())) {}
+    try
+    {
+      nmk.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Andm != null) {
-      this.jdField_a_of_type_Andm.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, andn paramandn)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramandn.d + ", filename = " + paramandn.c + ", url = " + paramandn.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
+    catch (Exception parambhhf)
+    {
+      parambhhf = parambhhf;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambhhf.getMessage());
+      }
+      try
       {
-        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambhhf)
+      {
+        return;
       }
     }
-    while (this.jdField_a_of_type_Andm == null)
+    catch (OutOfMemoryError parambhhf)
     {
-      return;
-      if ((!paramandn.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) != 0)) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambhhf.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambhhf)
+      {
+        return;
+      }
     }
-    this.jdField_a_of_type_Andm.a(paramBoolean, paramandn);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Andm != null) {
-      this.jdField_a_of_type_Andm.b();
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw parambhhf;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
     }
   }
 }

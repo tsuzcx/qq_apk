@@ -1,32 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajrt
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public ajrt(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
+  public ajrt(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
+    switch (paramView.getId())
     {
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (ChatHistoryTroopFileFragment.a(this.a) != null) {
+        ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

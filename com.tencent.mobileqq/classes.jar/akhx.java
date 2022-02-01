@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akhx
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<akhs> a;
+  akhx(akhu paramakhu, Runnable paramRunnable) {}
   
-  public akhx(akhs paramakhs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramakhs);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    akhs localakhs = (akhs)this.a.get();
-    if (localakhs != null) {
-      return localakhs.onLongClick(paramView);
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhx
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import kotlin.Unit;
 import kotlin.jvm.JvmStatic;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/thread/ThreadManager$Companion;", "", "()V", "BATTERY_LOOPER", "Landroid/os/Looper;", "LOG_LOOPER", "MONITOR_LOOPER", "REPORTER_LOOPER", "STACK_LOOPER", "getBatteryThreadLooper", "getLogThreadLooper", "getMonitorThreadLooper", "getReporterThreadLooper", "getStackThreadLooper", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/thread/ThreadManager$Companion;", "", "()V", "BATTERY_LOOPER", "Landroid/os/Looper;", "LOG_LOOPER", "MONITOR_LOOPER", "REPORTER_LOOPER", "STACK_LOOPER", "USER_BEHAVIOR_LOOPER", "getBatteryThreadLooper", "getLogThreadLooper", "getMonitorThreadLooper", "getReporterThreadLooper", "getStackThreadLooper", "getUserBehaviorLooper", "common_release"}, k=1, mv={1, 1, 15})
 public final class ThreadManager$Companion
 {
   @JvmStatic
@@ -104,10 +104,29 @@ public final class ThreadManager$Companion
     }
     finally {}
   }
+  
+  @JvmStatic
+  @Nullable
+  public final Looper getUserBehaviorLooper()
+  {
+    if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null) {}
+    try
+    {
+      if (ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp() == null)
+      {
+        localObject1 = new HandlerThread("QAPM_User_Behavior");
+        ((HandlerThread)localObject1).start();
+        ThreadManager.access$setUSER_BEHAVIOR_LOOPER$cp(((HandlerThread)localObject1).getLooper());
+      }
+      Object localObject1 = Unit.INSTANCE;
+      return ThreadManager.access$getUSER_BEHAVIOR_LOOPER$cp();
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.thread.ThreadManager.Companion
  * JD-Core Version:    0.7.0.1
  */

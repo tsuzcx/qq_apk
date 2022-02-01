@@ -1,171 +1,120 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetailActivity.9.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class ntm
-  implements aokj<String>
+  extends aoqo
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private String c = "";
+  public ntm(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public static ntm a()
+  public int a()
   {
-    ntm localntm = new ntm();
-    localntm.jdField_a_of_type_JavaLangString = swy.jdField_a_of_type_JavaLangString;
-    localntm.jdField_b_of_type_JavaLangString = swy.jdField_b_of_type_JavaLangString;
-    localntm.c = swy.c;
-    localntm.jdField_a_of_type_Boolean = swy.d;
-    return localntm;
+    return 4;
   }
   
-  private ntm a(ntm paramntm, String paramString)
+  public void a(Object paramObject)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      return this;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("pacenter_url")) {
-          this.jdField_a_of_type_JavaLangString = paramntm.jdField_a_of_type_JavaLangString;
-        }
-        if (paramString.has("pacategory_url")) {
-          this.jdField_b_of_type_JavaLangString = paramntm.jdField_b_of_type_JavaLangString;
-        }
-        if (paramString.has("readinjoy_search_url")) {
-          this.c = paramntm.c;
-        }
-        if (paramString.has("image_collection_comment")) {
-          this.jdField_a_of_type_Boolean = paramntm.jdField_a_of_type_Boolean;
-        }
-        if (paramntm.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = true;
-          return this;
-        }
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
-      catch (Exception paramntm)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramntm);
-        }
-        paramntm.printStackTrace();
-      }
+      paramObject = new JSONObject();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {}
     }
-    return this;
-  }
-  
-  public static ntm a(aoko[] paramArrayOfaoko)
-  {
-    Object localObject = new ntm();
-    int i = 0;
-    String str;
-    for (;;)
+    try
     {
-      if (i >= paramArrayOfaoko.length) {
-        return localObject;
-      }
-      str = paramArrayOfaoko[i].jdField_a_of_type_JavaLangString;
-      try
+      paramObject.put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramObject.put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
+      paramObject.put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
+      paramObject.put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedGrade);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      avob.a("follow", paramObject, localArrayList, null);
+      if (this.a.f)
       {
-        ntm localntm = ((ntm)localObject).a((ntm)aolc.a(str, ntm.class), str);
-        localObject = localntm;
-      }
-      catch (QStorageInstantiateException localQStorageInstantiateException)
-      {
-        for (;;)
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
         {
-          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
+          paramObject = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
+          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "mp_msg_sys_12", "scan_via", 0, 0, paramObject, "", "", this.a.jdField_g_of_type_JavaLangString);
         }
       }
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    swy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    swy.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    swy.c = this.c;
-    swy.d = this.jdField_a_of_type_Boolean;
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool3 = true;
-    for (;;)
-    {
-      boolean bool2;
-      try
+      else
       {
-        paramString = new JSONObject(paramString);
-        String str1 = paramString.getString("pacenter_url");
-        String str2 = paramString.getString("pacategory_url");
-        if (!swy.a(str1)) {
-          break label156;
-        }
-        this.jdField_a_of_type_JavaLangString = str1;
-        bool1 = true;
-        if (swy.a(str2))
+        this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
+        this.a.jdField_b_of_type_AndroidViewView.setEnabled(false);
+        this.a.I();
+        this.a.i();
+        this.a.z();
+        AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_AndroidContentIntent);
+        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
         {
-          this.jdField_b_of_type_JavaLangString = str2;
-          bool1 = true;
-        }
-        bool2 = bool1;
-        if (paramString.has("readinjoy_search_url"))
-        {
-          str1 = paramString.getString("readinjoy_search_url");
-          bool2 = bool1;
-          if (swy.a(str1))
-          {
-            this.c = str1;
-            bool2 = true;
+          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.e);
+          if (QLog.isColorLevel()) {
+            QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
           }
         }
-        if (paramString.has("image_collection_comment"))
+        if (this.a.jdField_g_of_type_Int == 50) {
+          AccountDetailActivity.a(this.a, 1);
+        }
+        if ((this.a.h == 115) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+          ((odu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134247140, this.a.e, null, null, null, 0L, false);
+        }
+        if (this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("report_business_tvalue"))
         {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
-          bool1 = bool3;
-          this.jdField_b_of_type_Boolean = bool1;
-          return;
+          int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("report_business_tvalue", -1);
+          paramObject = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("strp1");
+          if (i != -1) {
+            ((odu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(i, this.a.e, paramObject, null, null, 0L, false);
+          }
         }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
-        }
-        paramString.printStackTrace();
-        this.jdField_b_of_type_Boolean = false;
         return;
       }
-      boolean bool1 = bool2;
-      continue;
-      label156:
-      bool1 = false;
+    }
+    catch (JSONException paramObject)
+    {
+      for (;;)
+      {
+        paramObject.printStackTrace();
+        continue;
+        paramObject = "";
+      }
     }
   }
   
-  public void b()
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      swy.c((QQAppInterface)localAppRuntime);
+    this.a.d(2131694617);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.jdField_c_of_type_Int -= 1;
+    if (this.a.jdField_c_of_type_Int == 0) {
+      this.a.M();
     }
+    this.a.jdField_b_of_type_AndroidViewView.postDelayed(new AccountDetailActivity.9.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntm
  * JD-Core Version:    0.7.0.1
  */

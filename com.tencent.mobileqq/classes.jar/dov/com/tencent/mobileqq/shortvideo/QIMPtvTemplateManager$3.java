@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import azkt;
-import bdin;
-import bnpl;
+import bcls;
+import bgnt;
+import bqgc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QIMPtvTemplateManager$3
   implements Runnable
 {
-  public QIMPtvTemplateManager$3(bnpl parambnpl) {}
+  public QIMPtvTemplateManager$3(bqgc parambqgc) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = azkt.c();
-    boolean bool2 = bdin.d(BaseApplication.getContext());
+    boolean bool1 = bcls.a();
+    boolean bool2 = bgnt.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }
@@ -26,7 +26,7 @@ public class QIMPtvTemplateManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.3
  * JD-Core Version:    0.7.0.1
  */

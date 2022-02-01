@@ -1,12 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfdb
-  extends akit
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public TroopInfo a;
-  public TextView b;
+  public bfdb(ReciteRecordLayout paramReciteRecordLayout) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,6 +1,15 @@
-public abstract interface asnp
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
+
+public class asnp
 {
-  public abstract void d();
+  public int a;
+  public String a;
+  
+  public asnp(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

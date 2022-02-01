@@ -1,28 +1,20 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aemg
-  extends bhry
+  extends ResourcePluginListener
 {
-  public aemg(VisitorsActivity paramVisitorsActivity) {}
+  public aemg(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(byte paramByte)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 

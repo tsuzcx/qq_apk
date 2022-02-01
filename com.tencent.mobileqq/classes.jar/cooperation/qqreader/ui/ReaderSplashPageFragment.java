@@ -10,14 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bizo;
-import bjbl;
+import blnz;
+import blpu;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class ReaderSplashPageFragment
   extends WebViewFragment
 {
-  private bizo a;
+  private blnz a;
   
   private ViewGroup a(Context paramContext)
   {
@@ -36,7 +37,7 @@ public class ReaderSplashPageFragment
     return localReaderSplashPageFragment;
   }
   
-  public void f()
+  public void doOnBackEvent()
   {
     getActivity().finish();
   }
@@ -44,10 +45,10 @@ public class ReaderSplashPageFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bjbl.e("ReaderSplashPageFragment", "onCreate");
+    blpu.e("ReaderSplashPageFragment", "onCreate");
     paramBundle = getActivity();
-    this.a = new bizo(paramBundle);
-    Intent localIntent = a();
+    this.a = new blnz(paramBundle);
+    Intent localIntent = getIntent();
     if ((localIntent != null) && (localIntent.getExtras() != null))
     {
       this.a.a(localIntent.getExtras());
@@ -56,7 +57,7 @@ public class ReaderSplashPageFragment
       return;
     }
     paramBundle.finish();
-    bjbl.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
+    blpu.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -65,12 +66,13 @@ public class ReaderSplashPageFragment
     if (this.a != null) {
       paramLayoutInflater = this.a.a();
     }
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    bjbl.e("ReaderSplashPageFragment", "onDestroy");
+    blpu.e("ReaderSplashPageFragment", "onDestroy");
     if (this.a != null) {
       this.a.b();
     }
@@ -79,7 +81,7 @@ public class ReaderSplashPageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderSplashPageFragment
  * JD-Core Version:    0.7.0.1
  */

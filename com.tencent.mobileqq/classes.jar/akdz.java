@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
 
 public class akdz
-  implements arrh
+  implements akdi
 {
-  public akdz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public akdz(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void a()
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if ((!paramBoolean) && (paramContext != null))
+    {
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", 2);
+      paramContext.startActivity(localIntent);
+    }
   }
-  
-  public void b() {}
 }
 
 

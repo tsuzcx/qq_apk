@@ -1,39 +1,16 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.session.callback.StickerOperationCallback;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.toolbar.AEEditorToolBar;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class blnj
-  implements StickerOperationCallback
+class blnj
+  extends blpb
 {
-  public blnj(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  blnj(blni paramblni) {}
   
-  public void onDeleteButtonClick(String paramString) {}
-  
-  public void onStickerClick(TextEditorData paramTextEditorData)
+  public void a(@NonNull blpa paramblpa)
   {
-    onTextEditButtonClick(paramTextEditorData);
-  }
-  
-  public void onStickerMoving(String paramString) {}
-  
-  public void onStickerTouchEnd(String paramString)
-  {
-    this.a.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.c();
-    this.a.jdField_a_of_type_Bdgf.removeMessages(0);
-    this.a.jdField_a_of_type_Bdgf.sendEmptyMessageDelayed(0, 2000L);
-  }
-  
-  public void onStickerTouchStart(String paramString)
-  {
-    this.a.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.b();
-    this.a.jdField_a_of_type_Bdgf.removeMessages(0);
-  }
-  
-  public void onTextEditButtonClick(TextEditorData paramTextEditorData)
-  {
-    this.a.jdField_a_of_type_Blpi.a(this.a.getActivity(), paramTextEditorData, AEEditorVideoEditFragment.a(this.a));
-    AEEditorVideoEditFragment.b(this.a, false);
+    paramblpa = paramblpa.a();
+    blni.a(this.a, paramblpa);
+    blpy.a(BaseApplicationImpl.getContext(), paramblpa);
   }
 }
 

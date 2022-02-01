@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import aiqe;
+import aanz;
+import aaob;
+import akgy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,14 +18,14 @@ import android.hardware.Camera;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import athy;
-import athz;
-import awkj;
-import bdfr;
-import begz;
-import belf;
-import bety;
-import beua;
+import avor;
+import avos;
+import ayyz;
+import bgku;
+import bhod;
+import bhsj;
+import biau;
+import biaw;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -48,17 +50,15 @@ import mqq.app.BaseActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yqz;
-import yrb;
 
 public class MediaApiPlugin
   extends WebViewPlugin
-  implements beua, yrb
+  implements aaob, biaw
 {
   public static final String a;
-  bety jdField_a_of_type_Bety;
+  aanz jdField_a_of_type_Aanz;
+  biau jdField_a_of_type_Biau;
   Thread jdField_a_of_type_JavaLangThread;
-  yqz jdField_a_of_type_Yqz;
   
   static
   {
@@ -73,7 +73,7 @@ public class MediaApiPlugin
   public static String a(String paramString, int paramInt)
   {
     paramString = new CompressInfo(paramString, paramInt, 1035);
-    awkj.a(paramString);
+    ayyz.a(paramString);
     return paramString.e;
   }
   
@@ -115,7 +115,7 @@ public class MediaApiPlugin
     for (;;)
     {
       ((Bitmap)localObject2).recycle();
-      ((StringBuilder)localObject1).append(bdfr.encodeToString(((ByteArrayOutputStream)localObject3).toByteArray(), 2));
+      ((StringBuilder)localObject1).append(bgku.encodeToString(((ByteArrayOutputStream)localObject3).toByteArray(), 2));
       localJSONObject.put("match", 0);
       localJSONObject.put("data", localObject1);
       localJSONObject.put("imageID", paramString);
@@ -238,7 +238,7 @@ public class MediaApiPlugin
     //   202: i2b
     //   203: bastore
     //   204: iconst_2
-    //   205: invokestatic 185	bdfr:encodeToString	([BI)Ljava/lang/String;
+    //   205: invokestatic 185	bgku:encodeToString	([BI)Ljava/lang/String;
     //   208: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   211: pop
     //   212: sipush 30720
@@ -324,14 +324,14 @@ public class MediaApiPlugin
     //   381: aload 8
     //   383: aload 12
     //   385: iconst_2
-    //   386: invokestatic 185	bdfr:encodeToString	([BI)Ljava/lang/String;
+    //   386: invokestatic 185	bgku:encodeToString	([BI)Ljava/lang/String;
     //   389: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: pop
     //   393: goto -174 -> 219
     //   396: aload 8
     //   398: aload 11
     //   400: iconst_2
-    //   401: invokestatic 185	bdfr:encodeToString	([BI)Ljava/lang/String;
+    //   401: invokestatic 185	bgku:encodeToString	([BI)Ljava/lang/String;
     //   404: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   407: pop
     //   408: goto -189 -> 219
@@ -490,7 +490,7 @@ public class MediaApiPlugin
     //   735: aload 11
     //   737: invokevirtual 179	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   740: iconst_2
-    //   741: invokestatic 185	bdfr:encodeToString	([BI)Ljava/lang/String;
+    //   741: invokestatic 185	bgku:encodeToString	([BI)Ljava/lang/String;
     //   744: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   747: pop
     //   748: aload 10
@@ -690,7 +690,7 @@ public class MediaApiPlugin
     //   1: astore 4
     //   3: new 64	java/io/File
     //   6: dup
-    //   7: getstatic 388	alof:bd	Ljava/lang/String;
+    //   7: getstatic 388	anhk:bg	Ljava/lang/String;
     //   10: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
@@ -741,7 +741,7 @@ public class MediaApiPlugin
     //   105: new 103	java/lang/StringBuilder
     //   108: dup
     //   109: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   112: getstatic 388	alof:bd	Ljava/lang/String;
+    //   112: getstatic 388	anhk:bg	Ljava/lang/String;
     //   115: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: ldc_w 412
     //   121: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -844,7 +844,7 @@ public class MediaApiPlugin
     //   330: new 103	java/lang/StringBuilder
     //   333: dup
     //   334: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   337: getstatic 388	alof:bd	Ljava/lang/String;
+    //   337: getstatic 388	anhk:bg	Ljava/lang/String;
     //   340: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   343: ldc_w 412
     //   346: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -974,7 +974,7 @@ public class MediaApiPlugin
       ((Bitmap)localObject).compress(Bitmap.CompressFormat.JPEG, 80, localByteArrayOutputStream);
       ((Bitmap)localObject).recycle();
     }
-    localStringBuilder.append(bdfr.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
+    localStringBuilder.append(bgku.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
     localObject = new JSONObject();
     for (;;)
     {
@@ -1047,13 +1047,13 @@ public class MediaApiPlugin
     if ((paramActivity instanceof AppActivity))
     {
       paramActivity = (AppActivity)paramActivity;
-      paramActivity.requestPermissions(new athy(this, paramJSONObject, paramBoolean, paramActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+      paramActivity.requestPermissions(new avor(this, paramJSONObject, paramBoolean, paramActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
     }
     while (!(paramActivity instanceof BaseActivity)) {
       return;
     }
     paramActivity = (BaseActivity)paramActivity;
-    paramActivity.requestPermissions(new athz(this, paramJSONObject, paramBoolean, paramActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+    paramActivity.requestPermissions(new avos(this, paramJSONObject, paramBoolean, paramActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
   }
   
   public void a(JSONObject paramJSONObject, boolean paramBoolean)
@@ -1069,28 +1069,28 @@ public class MediaApiPlugin
     Activity localActivity = this.mRuntime.a();
     String str = this.mRuntime.a().getAccount();
     boolean bool2 = localActivity instanceof AbsBaseWebViewActivity;
-    boolean bool3 = localActivity instanceof belf;
+    boolean bool3 = localActivity instanceof bhsj;
     Intent localIntent = new Intent();
-    if ((bool3) && (((belf)localActivity).c()))
+    if ((bool3) && (((bhsj)localActivity).b()))
     {
       localIntent.setClass(a(), NewPhotoListActivity.class);
       localIntent.putExtra("PhotoConst.IS_CALL_IN_PLUGIN", true);
-      localIntent.putExtra("PhotoConst.PLUGIN_APK", ((belf)localActivity).e());
-      localIntent.putExtra("PhotoConst.PLUGIN_NAME", ((belf)localActivity).d());
+      localIntent.putExtra("PhotoConst.PLUGIN_APK", ((bhsj)localActivity).c());
+      localIntent.putExtra("PhotoConst.PLUGIN_NAME", ((bhsj)localActivity).b());
       localIntent.putExtra("PhotoConst.UIN", this.mRuntime.a().getCurrentAccountUin());
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", localActivity.getClass().getName());
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
       localIntent.putExtra("PeakConstants.showGifTypeIcon", true);
       if (bool1)
       {
-        Point localPoint = aiqe.a(localActivity, 103);
+        Point localPoint = akgy.a(localActivity, 103);
         localIntent.putExtra("PhotoConst.CLIP_WIDTH", localPoint.x);
         localIntent.putExtra("PhotoConst.CLIP_HEIGHT", localPoint.y);
         localIntent.putExtra("PhotoConst.TARGET_WIDTH", 640);
         localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 640);
         localIntent.putExtra("Business_Origin", 103);
         localIntent.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-        localIntent.putExtra("PhotoConst.TARGET_PATH", aiqe.a());
+        localIntent.putExtra("PhotoConst.TARGET_PATH", akgy.a());
       }
       if (j != 0) {
         break label529;
@@ -1116,11 +1116,11 @@ public class MediaApiPlugin
       label490:
       if (bool3)
       {
-        ((belf)localActivity).a(this, localIntent, (byte)2);
+        ((bhsj)localActivity).a(this, localIntent, (byte)2);
       }
       else
       {
-        this.mRuntime.a().a(this, localIntent, (byte)2);
+        this.mRuntime.a().gotoSelectPicture(this, localIntent, (byte)2);
         continue;
         if (j == 1)
         {
@@ -1130,7 +1130,7 @@ public class MediaApiPlugin
           if (bool2) {
             ((AbsBaseWebViewActivity)localActivity).a(this, localIntent, (byte)3);
           } else {
-            ((belf)localActivity).a(this, localIntent, (byte)3);
+            ((bhsj)localActivity).a(this, localIntent, (byte)3);
           }
         }
         else if (j == 2)
@@ -1147,7 +1147,7 @@ public class MediaApiPlugin
           if (bool2) {
             ((AbsBaseWebViewActivity)localActivity).a(this, localIntent, (byte)3);
           } else {
-            ((belf)localActivity).a(this, localIntent, (byte)3);
+            ((bhsj)localActivity).a(this, localIntent, (byte)3);
           }
         }
       }
@@ -1170,19 +1170,19 @@ public class MediaApiPlugin
     //   9: aload_1
     //   10: ifnull +1975 -> 1985
     //   13: aload_1
-    //   14: getfield 690	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	Z
+    //   14: getfield 692	com/tencent/mobileqq/webview/swift/JsBridgeListener:a	Z
     //   17: ifeq +1968 -> 1985
     //   20: iconst_1
     //   21: istore 8
     //   23: aload_0
     //   24: aload 4
     //   26: aload_1
-    //   27: invokevirtual 694	com/tencent/mobileqq/jsp/MediaApiPlugin:addOpenApiListenerIfNeeded	(Ljava/lang/String;Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;)V
-    //   30: ldc_w 696
+    //   27: invokevirtual 696	com/tencent/mobileqq/jsp/MediaApiPlugin:addOpenApiListenerIfNeeded	(Ljava/lang/String;Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;)V
+    //   30: ldc_w 698
     //   33: aload 4
     //   35: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   38: ifne +14 -> 52
-    //   41: ldc_w 698
+    //   41: ldc_w 700
     //   44: aload 4
     //   46: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   49: ifeq +794 -> 843
@@ -1195,26 +1195,26 @@ public class MediaApiPlugin
     //   63: aload 5
     //   65: iconst_0
     //   66: aaload
-    //   67: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   67: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   70: astore_1
     //   71: aload_1
-    //   72: ldc_w 701
+    //   72: ldc_w 703
     //   75: aload 4
     //   77: invokevirtual 195	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   80: pop
     //   81: aload_1
-    //   82: ldc_w 702
-    //   85: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   82: ldc_w 704
+    //   85: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   88: astore_2
     //   89: aload_2
-    //   90: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   90: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   93: ifeq +10 -> 103
     //   96: iload 8
     //   98: ifne +5 -> 103
     //   101: iconst_1
     //   102: ireturn
     //   103: aload_1
-    //   104: ldc_w 714
+    //   104: ldc_w 716
     //   107: iconst_0
     //   108: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   111: istore 6
@@ -1223,8 +1223,8 @@ public class MediaApiPlugin
     //   117: iload 6
     //   119: ifne +205 -> 324
     //   122: aload_0
-    //   123: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   126: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   123: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   126: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   129: astore_3
     //   130: aload_3
     //   131: instanceof 555
@@ -1237,21 +1237,21 @@ public class MediaApiPlugin
     //   147: iload 10
     //   149: ifne +13 -> 162
     //   152: aload_0
-    //   153: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   156: invokevirtual 656	begz:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   153: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   156: invokevirtual 656	bhod:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   159: ifnull +26 -> 185
     //   162: aload_0
-    //   163: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   166: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   163: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   166: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   169: ifnull +16 -> 185
     //   172: aload_0
-    //   173: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   176: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   173: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   176: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   179: instanceof 487
     //   182: ifne +16 -> 198
     //   185: aload_0
-    //   186: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   189: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   186: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   189: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   192: instanceof 500
     //   195: ifeq +64 -> 259
     //   198: iconst_0
@@ -1264,10 +1264,10 @@ public class MediaApiPlugin
     //   213: iload 7
     //   215: istore 6
     //   217: aload_0
-    //   218: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   221: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   218: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   221: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   224: ldc_w 494
-    //   227: invokevirtual 715	android/app/Activity:checkSelfPermission	(Ljava/lang/String;)I
+    //   227: invokevirtual 717	android/app/Activity:checkSelfPermission	(Ljava/lang/String;)I
     //   230: ifeq +14 -> 244
     //   233: iconst_1
     //   234: istore 6
@@ -1275,21 +1275,21 @@ public class MediaApiPlugin
     //   237: aload_3
     //   238: iload 8
     //   240: aload_1
-    //   241: invokevirtual 717	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Landroid/app/Activity;ZLorg/json/JSONObject;)V
+    //   241: invokevirtual 719	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Landroid/app/Activity;ZLorg/json/JSONObject;)V
     //   244: iload 6
     //   246: ifne +1745 -> 1991
     //   249: aload_0
     //   250: aload_1
     //   251: iload 8
-    //   253: invokevirtual 719	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Lorg/json/JSONObject;Z)V
+    //   253: invokevirtual 721	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Lorg/json/JSONObject;Z)V
     //   256: goto +1735 -> 1991
     //   259: iload 8
     //   261: ifeq +16 -> 277
     //   264: aload_0
     //   265: aload 4
     //   267: iconst_0
-    //   268: ldc_w 721
-    //   271: invokevirtual 724	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
+    //   268: ldc_w 723
+    //   271: invokevirtual 726	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
     //   274: goto +1719 -> 1993
     //   277: aload_0
     //   278: aload_2
@@ -1297,20 +1297,20 @@ public class MediaApiPlugin
     //   280: anewarray 145	java/lang/String
     //   283: dup
     //   284: iconst_0
-    //   285: ldc_w 726
+    //   285: ldc_w 728
     //   288: aastore
     //   289: dup
     //   290: iconst_1
-    //   291: ldc_w 721
+    //   291: ldc_w 723
     //   294: aastore
-    //   295: invokevirtual 730	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   295: invokevirtual 732	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   298: goto +1695 -> 1993
     //   301: astore_1
     //   302: getstatic 25	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   305: iconst_1
-    //   306: ldc_w 732
+    //   306: ldc_w 734
     //   309: aload_1
-    //   310: invokestatic 735	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   310: invokestatic 737	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   313: goto +1678 -> 1991
     //   316: astore_1
     //   317: aload_1
@@ -1320,16 +1320,16 @@ public class MediaApiPlugin
     //   326: iconst_1
     //   327: if_icmpne +1664 -> 1991
     //   330: invokestatic 343	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   333: invokestatic 740	lmm:b	(Landroid/content/Context;)Z
+    //   333: invokestatic 742	ljj:b	(Landroid/content/Context;)Z
     //   336: ifeq +5 -> 341
     //   339: iconst_1
     //   340: ireturn
     //   341: new 103	java/lang/StringBuilder
     //   344: dup
     //   345: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   348: getstatic 743	alof:aX	Ljava/lang/String;
+    //   348: getstatic 745	anhk:ba	Ljava/lang/String;
     //   351: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   354: ldc_w 745
+    //   354: ldc_w 747
     //   357: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   360: invokestatic 59	java/lang/System:currentTimeMillis	()J
     //   363: invokevirtual 120	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -1347,35 +1347,35 @@ public class MediaApiPlugin
     //   393: aload 5
     //   395: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
     //   398: aload 15
-    //   400: invokestatic 751	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:setSystemCapture	(Landroid/content/Context;Ljava/io/File;Landroid/content/Intent;)Landroid/net/Uri;
+    //   400: invokestatic 753	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:setSystemCapture	(Landroid/content/Context;Ljava/io/File;Landroid/content/Intent;)Landroid/net/Uri;
     //   403: pop
     //   404: aload_1
-    //   405: ldc_w 753
+    //   405: ldc_w 755
     //   408: iconst_0
     //   409: invokevirtual 513	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
     //   412: ifeq +13 -> 425
     //   415: aload 15
-    //   417: ldc_w 755
+    //   417: ldc_w 757
     //   420: iconst_1
     //   421: invokevirtual 603	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   424: pop
     //   425: iconst_0
     //   426: istore 7
     //   428: aload_0
-    //   429: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
+    //   429: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
     //   432: ifnull +184 -> 616
     //   435: aload_0
-    //   436: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   439: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   436: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   439: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   442: ifnull +174 -> 616
     //   445: aload_0
-    //   446: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   449: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   446: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   449: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   452: instanceof 487
     //   455: ifeq +161 -> 616
     //   458: aload_0
-    //   459: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   462: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   459: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   462: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   465: checkcast 487	mqq/app/AppActivity
     //   468: astore 16
     //   470: iload 7
@@ -1387,10 +1387,10 @@ public class MediaApiPlugin
     //   484: istore 6
     //   486: aload 16
     //   488: ldc_w 350
-    //   491: invokevirtual 756	mqq/app/AppActivity:checkSelfPermission	(Ljava/lang/String;)I
+    //   491: invokevirtual 758	mqq/app/AppActivity:checkSelfPermission	(Ljava/lang/String;)I
     //   494: ifeq +40 -> 534
     //   497: aload 16
-    //   499: new 758	athw
+    //   499: new 760	avop
     //   502: dup
     //   503: aload_0
     //   504: aload 15
@@ -1399,7 +1399,7 @@ public class MediaApiPlugin
     //   509: aload_1
     //   510: iload 8
     //   512: aload 16
-    //   514: invokespecial 761	athw:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Landroid/content/Intent;Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;ZLmqq/app/AppActivity;)V
+    //   514: invokespecial 763	avop:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Landroid/content/Intent;Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;ZLmqq/app/AppActivity;)V
     //   517: iconst_1
     //   518: iconst_1
     //   519: anewarray 145	java/lang/String
@@ -1416,9 +1416,9 @@ public class MediaApiPlugin
     //   543: new 103	java/lang/StringBuilder
     //   546: dup
     //   547: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   550: getstatic 743	alof:aX	Ljava/lang/String;
+    //   550: getstatic 745	anhk:ba	Ljava/lang/String;
     //   553: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   556: ldc_w 745
+    //   556: ldc_w 747
     //   559: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   562: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   565: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
@@ -1430,40 +1430,40 @@ public class MediaApiPlugin
     //   580: invokevirtual 391	java/io/File:mkdirs	()Z
     //   583: ifne +175 -> 758
     //   586: aload_3
-    //   587: ldc_w 762
+    //   587: ldc_w 764
     //   590: iconst_0
-    //   591: invokestatic 767	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
-    //   594: invokevirtual 770	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   591: invokestatic 769	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
+    //   594: invokevirtual 772	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   597: pop
     //   598: iload 8
     //   600: ifeq +134 -> 734
     //   603: aload_0
     //   604: aload 4
     //   606: iconst_0
-    //   607: ldc_w 721
-    //   610: invokevirtual 724	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
+    //   607: ldc_w 723
+    //   610: invokevirtual 726	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
     //   613: goto +1388 -> 2001
     //   616: iload 7
     //   618: istore 6
     //   620: aload_0
-    //   621: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
+    //   621: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
     //   624: ifnull -90 -> 534
     //   627: iload 7
     //   629: istore 6
     //   631: aload_0
-    //   632: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   635: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   632: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   635: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   638: ifnull -104 -> 534
     //   641: iload 7
     //   643: istore 6
     //   645: aload_0
-    //   646: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   649: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   646: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   649: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   652: instanceof 379
     //   655: ifeq -121 -> 534
     //   658: aload_0
-    //   659: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   662: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   659: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   662: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   665: checkcast 379	com/tencent/mobileqq/pluginsdk/BasePluginActivity
     //   668: astore 16
     //   670: iload 7
@@ -1475,10 +1475,10 @@ public class MediaApiPlugin
     //   684: istore 6
     //   686: aload 16
     //   688: ldc_w 350
-    //   691: invokevirtual 771	com/tencent/mobileqq/pluginsdk/BasePluginActivity:checkSelfPermission	(Ljava/lang/String;)I
+    //   691: invokevirtual 773	com/tencent/mobileqq/pluginsdk/BasePluginActivity:checkSelfPermission	(Ljava/lang/String;)I
     //   694: ifeq -160 -> 534
     //   697: aload 16
-    //   699: new 773	athx
+    //   699: new 775	avoq
     //   702: dup
     //   703: aload_0
     //   704: aload 15
@@ -1487,7 +1487,7 @@ public class MediaApiPlugin
     //   709: aload_1
     //   710: iload 8
     //   712: aload 16
-    //   714: invokespecial 776	athx:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Landroid/content/Intent;Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;ZLcom/tencent/mobileqq/pluginsdk/BasePluginActivity;)V
+    //   714: invokespecial 778	avoq:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Landroid/content/Intent;Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;ZLcom/tencent/mobileqq/pluginsdk/BasePluginActivity;)V
     //   717: iconst_1
     //   718: iconst_1
     //   719: anewarray 145	java/lang/String
@@ -1495,7 +1495,7 @@ public class MediaApiPlugin
     //   723: iconst_0
     //   724: ldc_w 350
     //   727: aastore
-    //   728: invokevirtual 777	com/tencent/mobileqq/pluginsdk/BasePluginActivity:requestPermissions	(Ljava/lang/Object;I[Ljava/lang/String;)V
+    //   728: invokevirtual 779	com/tencent/mobileqq/pluginsdk/BasePluginActivity:requestPermissions	(Ljava/lang/Object;I[Ljava/lang/String;)V
     //   731: goto +1264 -> 1995
     //   734: aload_0
     //   735: aload_2
@@ -1503,22 +1503,22 @@ public class MediaApiPlugin
     //   737: anewarray 145	java/lang/String
     //   740: dup
     //   741: iconst_0
-    //   742: ldc_w 726
+    //   742: ldc_w 728
     //   745: aastore
     //   746: dup
     //   747: iconst_1
-    //   748: ldc_w 721
+    //   748: ldc_w 723
     //   751: aastore
-    //   752: invokevirtual 730	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   752: invokevirtual 732	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   755: goto +1246 -> 2001
     //   758: aload_0
     //   759: aload 15
     //   761: iconst_1
-    //   762: invokevirtual 781	com/tencent/mobileqq/jsp/MediaApiPlugin:startActivityForResult	(Landroid/content/Intent;B)V
+    //   762: invokevirtual 783	com/tencent/mobileqq/jsp/MediaApiPlugin:startActivityForResult	(Landroid/content/Intent;B)V
     //   765: aload_3
     //   766: invokestatic 38	com/tencent/mobileqq/jsp/MediaApiPlugin:b	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   769: invokeinterface 634 1 0
-    //   774: ldc_w 783
+    //   774: ldc_w 785
     //   777: aload 5
     //   779: invokeinterface 643 3 0
     //   784: ldc_w 636
@@ -1537,19 +1537,19 @@ public class MediaApiPlugin
     //   820: aload_1
     //   821: iconst_0
     //   822: anewarray 308	java/lang/Object
-    //   825: invokestatic 786	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   825: invokestatic 788	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   828: aload_3
-    //   829: ldc_w 787
+    //   829: ldc_w 789
     //   832: iconst_0
-    //   833: invokestatic 767	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
-    //   836: invokevirtual 770	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   833: invokestatic 769	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
+    //   836: invokevirtual 772	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   839: pop
     //   840: goto +1151 -> 1991
-    //   843: ldc_w 789
+    //   843: ldc_w 791
     //   846: aload 4
     //   848: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   851: ifne +14 -> 865
-    //   854: ldc_w 791
+    //   854: ldc_w 793
     //   857: aload 4
     //   859: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   862: ifeq +230 -> 1092
@@ -1562,106 +1562,106 @@ public class MediaApiPlugin
     //   876: aload 5
     //   878: iconst_0
     //   879: aaload
-    //   880: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   880: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   883: astore_1
     //   884: aload_1
-    //   885: ldc_w 702
-    //   888: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   885: ldc_w 704
+    //   888: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   891: astore_2
     //   892: aload_1
     //   893: ldc 197
-    //   895: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   895: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   898: astore_3
     //   899: aload_2
-    //   900: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   900: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   903: ifne +1100 -> 2003
     //   906: aload_3
-    //   907: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   907: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   910: ifeq +6 -> 916
     //   913: goto +1090 -> 2003
     //   916: aload_0
-    //   917: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   917: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   920: ifnonnull +54 -> 974
     //   923: aload_0
-    //   924: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   927: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   924: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   927: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   930: astore 5
     //   932: aload_0
-    //   933: new 795	bety
+    //   933: new 797	biau
     //   936: dup
     //   937: aload 5
     //   939: aload 5
-    //   941: invokevirtual 799	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   944: ldc_w 800
-    //   947: invokevirtual 806	android/content/res/Resources:getDimensionPixelSize	(I)I
-    //   950: invokespecial 809	bety:<init>	(Landroid/content/Context;I)V
-    //   953: putfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   941: invokevirtual 801	android/app/Activity:getResources	()Landroid/content/res/Resources;
+    //   944: ldc_w 802
+    //   947: invokevirtual 808	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   950: invokespecial 811	biau:<init>	(Landroid/content/Context;I)V
+    //   953: putfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   956: aload_0
-    //   957: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   960: ldc_w 810
-    //   963: invokevirtual 812	bety:c	(I)V
+    //   957: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   960: ldc_w 812
+    //   963: invokevirtual 814	biau:c	(I)V
     //   966: aload_0
-    //   967: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   967: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   970: aload_0
-    //   971: invokevirtual 815	bety:a	(Lbeua;)V
+    //   971: invokevirtual 817	biau:a	(Lbiaw;)V
     //   974: aload_0
-    //   975: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   978: invokevirtual 818	bety:isShowing	()Z
+    //   975: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   978: invokevirtual 820	biau:isShowing	()Z
     //   981: ifne +10 -> 991
     //   984: aload_0
-    //   985: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   988: invokevirtual 821	bety:show	()V
-    //   991: ldc_w 791
+    //   985: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   988: invokevirtual 823	biau:show	()V
+    //   991: ldc_w 793
     //   994: aload 4
     //   996: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   999: ifeq +38 -> 1037
-    //   1002: new 823	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThreadV2
+    //   1002: new 825	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThreadV2
     //   1005: dup
     //   1006: aload_0
     //   1007: aload_2
     //   1008: aload_1
-    //   1009: ldc_w 825
+    //   1009: ldc_w 827
     //   1012: iconst_0
     //   1013: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1016: aload_3
-    //   1017: invokespecial 828	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThreadV2:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;ILjava/lang/String;)V
+    //   1017: invokespecial 830	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThreadV2:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;ILjava/lang/String;)V
     //   1020: iconst_5
     //   1021: aconst_null
     //   1022: iconst_1
-    //   1023: invokestatic 834	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1023: invokestatic 836	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   1026: goto +965 -> 1991
     //   1029: astore_1
     //   1030: aload_1
     //   1031: invokevirtual 479	org/json/JSONException:printStackTrace	()V
     //   1034: goto +957 -> 1991
-    //   1037: new 836	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThread
+    //   1037: new 838	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThread
     //   1040: dup
     //   1041: aload_0
     //   1042: aload_2
     //   1043: aload_1
-    //   1044: ldc_w 838
+    //   1044: ldc_w 840
     //   1047: sipush 1280
     //   1050: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1053: aload_1
-    //   1054: ldc_w 840
+    //   1054: ldc_w 842
     //   1057: sipush 1280
     //   1060: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1063: aload_1
-    //   1064: ldc_w 842
+    //   1064: ldc_w 844
     //   1067: iconst_1
     //   1068: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1071: aload_1
-    //   1072: ldc_w 844
+    //   1072: ldc_w 846
     //   1075: iconst_1
     //   1076: invokevirtual 519	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1079: aload_3
-    //   1080: invokespecial 847	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThread:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;IIIILjava/lang/String;)V
+    //   1080: invokespecial 849	com/tencent/mobileqq/jsp/MediaApiPlugin$PrepareSinglePictureAndCallbackThread:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;IIIILjava/lang/String;)V
     //   1083: iconst_5
     //   1084: aconst_null
     //   1085: iconst_1
-    //   1086: invokestatic 834	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1086: invokestatic 836	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   1089: goto +902 -> 1991
-    //   1092: ldc_w 849
+    //   1092: ldc_w 851
     //   1095: aload 4
     //   1097: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1100: ifeq +474 -> 1574
@@ -1671,10 +1671,10 @@ public class MediaApiPlugin
     //   1107: if_icmpne +467 -> 1574
     //   1110: aconst_null
     //   1111: astore_2
-    //   1112: new 851	java/util/concurrent/atomic/AtomicBoolean
+    //   1112: new 853	java/util/concurrent/atomic/AtomicBoolean
     //   1115: dup
     //   1116: iconst_0
-    //   1117: invokespecial 854	java/util/concurrent/atomic/AtomicBoolean:<init>	(Z)V
+    //   1117: invokespecial 856	java/util/concurrent/atomic/AtomicBoolean:<init>	(Z)V
     //   1120: astore_3
     //   1121: aload_2
     //   1122: astore_1
@@ -1683,24 +1683,24 @@ public class MediaApiPlugin
     //   1127: aload 5
     //   1129: iconst_0
     //   1130: aaload
-    //   1131: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1131: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   1134: astore 4
     //   1136: aload_2
     //   1137: astore_1
     //   1138: aload 4
-    //   1140: ldc_w 702
-    //   1143: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1140: ldc_w 704
+    //   1143: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1146: astore_2
     //   1147: aload_2
     //   1148: astore_1
     //   1149: aload 4
-    //   1151: ldc_w 856
-    //   1154: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1151: ldc_w 858
+    //   1154: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1157: astore 5
     //   1159: aload_2
     //   1160: astore_1
     //   1161: aload 5
-    //   1163: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1163: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1166: ifne +182 -> 1348
     //   1169: aload_2
     //   1170: astore_1
@@ -1713,67 +1713,67 @@ public class MediaApiPlugin
     //   1186: aload_2
     //   1187: astore_1
     //   1188: aload_0
-    //   1189: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   1192: invokevirtual 548	begz:a	()Lcom/tencent/common/app/AppInterface;
-    //   1195: invokevirtual 860	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   1189: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   1192: invokevirtual 548	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   1195: invokevirtual 862	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   1198: iconst_1
-    //   1199: ldc_w 861
-    //   1202: invokestatic 866	alud:a	(I)Ljava/lang/String;
+    //   1199: ldc_w 863
+    //   1202: invokestatic 868	anni:a	(I)Ljava/lang/String;
     //   1205: iconst_0
-    //   1206: invokestatic 869	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;ILjava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1209: invokevirtual 770	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1206: invokestatic 871	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;ILjava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1209: invokevirtual 772	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   1212: pop
     //   1213: goto +792 -> 2005
     //   1216: aload_2
     //   1217: astore_1
-    //   1218: new 871	com/tencent/mobileqq/jsp/MediaApiPlugin$3
+    //   1218: new 873	com/tencent/mobileqq/jsp/MediaApiPlugin$3
     //   1221: dup
     //   1222: aload_0
     //   1223: aload 5
     //   1225: aload_2
     //   1226: aload_3
-    //   1227: invokespecial 874	com/tencent/mobileqq/jsp/MediaApiPlugin$3:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
+    //   1227: invokespecial 876	com/tencent/mobileqq/jsp/MediaApiPlugin$3:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
     //   1230: bipush 8
     //   1232: aconst_null
     //   1233: iconst_1
-    //   1234: invokestatic 834	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1234: invokestatic 836	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   1237: goto +768 -> 2005
     //   1240: astore_2
-    //   1241: invokestatic 877	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1241: invokestatic 879	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1244: ifeq +30 -> 1274
     //   1247: getstatic 25	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1250: iconst_4
     //   1251: new 103	java/lang/StringBuilder
     //   1254: dup
     //   1255: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   1258: ldc_w 879
+    //   1258: ldc_w 881
     //   1261: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1264: aload_2
-    //   1265: invokevirtual 882	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1265: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1268: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1271: invokestatic 127	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1274: aload_1
-    //   1275: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1275: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1278: ifne +713 -> 1991
     //   1281: aload_3
     //   1282: iconst_0
     //   1283: iconst_1
-    //   1284: invokevirtual 886	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   1284: invokevirtual 888	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   1287: ifeq +704 -> 1991
     //   1290: new 61	org/json/JSONObject
     //   1293: dup
     //   1294: invokespecial 62	org/json/JSONObject:<init>	()V
     //   1297: astore_2
     //   1298: aload_2
-    //   1299: ldc_w 888
+    //   1299: ldc_w 890
     //   1302: iconst_m1
     //   1303: invokevirtual 190	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   1306: pop
     //   1307: aload_2
-    //   1308: ldc_w 890
+    //   1308: ldc_w 892
     //   1311: invokestatic 343	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1314: ldc_w 891
-    //   1317: invokevirtual 894	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1314: ldc_w 893
+    //   1317: invokevirtual 896	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
     //   1320: invokevirtual 195	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   1323: pop
     //   1324: iload 8
@@ -1787,122 +1787,122 @@ public class MediaApiPlugin
     //   1337: aload_2
     //   1338: invokevirtual 637	org/json/JSONObject:toString	()Ljava/lang/String;
     //   1341: aastore
-    //   1342: invokevirtual 730	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   1342: invokevirtual 732	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   1345: goto +646 -> 1991
     //   1348: aload_2
     //   1349: astore_1
     //   1350: aload 4
-    //   1352: ldc_w 896
-    //   1355: invokevirtual 898	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1352: ldc_w 898
+    //   1355: invokevirtual 900	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   1358: astore 4
     //   1360: aload_2
     //   1361: astore_1
     //   1362: aload 4
-    //   1364: ldc_w 900
-    //   1367: invokevirtual 903	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1364: ldc_w 902
+    //   1367: invokevirtual 905	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1370: ifne +16 -> 1386
     //   1373: aload_2
     //   1374: astore_1
     //   1375: aload 4
-    //   1377: ldc_w 905
-    //   1380: invokevirtual 903	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1377: ldc_w 907
+    //   1380: invokevirtual 905	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1383: ifeq +152 -> 1535
     //   1386: aload_2
     //   1387: astore_1
     //   1388: aload_0
-    //   1389: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   1389: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   1392: ifnonnull +62 -> 1454
     //   1395: aload_2
     //   1396: astore_1
     //   1397: aload_0
-    //   1398: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   1401: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   1398: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   1401: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   1404: astore 5
     //   1406: aload_2
     //   1407: astore_1
     //   1408: aload_0
-    //   1409: new 795	bety
+    //   1409: new 797	biau
     //   1412: dup
     //   1413: aload 5
     //   1415: aload 5
-    //   1417: invokevirtual 799	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   1420: ldc_w 800
-    //   1423: invokevirtual 806	android/content/res/Resources:getDimensionPixelSize	(I)I
-    //   1426: invokespecial 809	bety:<init>	(Landroid/content/Context;I)V
-    //   1429: putfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   1417: invokevirtual 801	android/app/Activity:getResources	()Landroid/content/res/Resources;
+    //   1420: ldc_w 802
+    //   1423: invokevirtual 808	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   1426: invokespecial 811	biau:<init>	(Landroid/content/Context;I)V
+    //   1429: putfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   1432: aload_2
     //   1433: astore_1
     //   1434: aload_0
-    //   1435: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   1438: ldc_w 810
-    //   1441: invokevirtual 812	bety:c	(I)V
+    //   1435: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   1438: ldc_w 812
+    //   1441: invokevirtual 814	biau:c	(I)V
     //   1444: aload_2
     //   1445: astore_1
     //   1446: aload_0
-    //   1447: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
+    //   1447: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
     //   1450: aload_0
-    //   1451: invokevirtual 815	bety:a	(Lbeua;)V
+    //   1451: invokevirtual 817	biau:a	(Lbiaw;)V
     //   1454: aload_2
     //   1455: astore_1
     //   1456: aload_0
-    //   1457: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   1460: invokevirtual 818	bety:isShowing	()Z
+    //   1457: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   1460: invokevirtual 820	biau:isShowing	()Z
     //   1463: ifne +12 -> 1475
     //   1466: aload_2
     //   1467: astore_1
     //   1468: aload_0
-    //   1469: getfield 793	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Bety	Lbety;
-    //   1472: invokevirtual 821	bety:show	()V
+    //   1469: getfield 795	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_Biau	Lbiau;
+    //   1472: invokevirtual 823	biau:show	()V
     //   1475: aload_2
     //   1476: astore_1
-    //   1477: new 907	com/tencent/mobileqq/jsp/MediaApiPlugin$4
+    //   1477: new 909	com/tencent/mobileqq/jsp/MediaApiPlugin$4
     //   1480: dup
     //   1481: aload_0
     //   1482: aload 4
     //   1484: aload_2
     //   1485: aload_3
-    //   1486: invokespecial 908	com/tencent/mobileqq/jsp/MediaApiPlugin$4:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
+    //   1486: invokespecial 910	com/tencent/mobileqq/jsp/MediaApiPlugin$4:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
     //   1489: iconst_5
     //   1490: aconst_null
     //   1491: iconst_1
-    //   1492: invokestatic 834	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1492: invokestatic 836	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   1495: goto +496 -> 1991
     //   1498: astore_1
-    //   1499: invokestatic 877	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1499: invokestatic 879	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1502: ifeq +489 -> 1991
     //   1505: getstatic 25	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1508: iconst_4
     //   1509: new 103	java/lang/StringBuilder
     //   1512: dup
     //   1513: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   1516: ldc_w 879
+    //   1516: ldc_w 881
     //   1519: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1522: aload_1
-    //   1523: invokevirtual 882	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1523: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1526: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1529: invokestatic 127	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1532: goto +459 -> 1991
     //   1535: aload_2
     //   1536: astore_1
-    //   1537: invokestatic 912	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   1540: new 914	com/tencent/mobileqq/jsp/MediaApiPlugin$5
+    //   1537: invokestatic 914	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   1540: new 916	com/tencent/mobileqq/jsp/MediaApiPlugin$5
     //   1543: dup
     //   1544: aload_0
     //   1545: aload 4
     //   1547: aload_2
     //   1548: aload_3
-    //   1549: invokespecial 915	com/tencent/mobileqq/jsp/MediaApiPlugin$5:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
-    //   1552: invokevirtual 920	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   1549: invokespecial 917	com/tencent/mobileqq/jsp/MediaApiPlugin$5:<init>	(Lcom/tencent/mobileqq/jsp/MediaApiPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicBoolean;)V
+    //   1552: invokevirtual 922	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   1555: pop
     //   1556: goto +435 -> 1991
     //   1559: aload_0
-    //   1560: ldc_w 849
+    //   1560: ldc_w 851
     //   1563: iconst_0
     //   1564: aload_2
     //   1565: invokevirtual 637	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1568: invokevirtual 724	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1568: invokevirtual 726	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
     //   1571: goto +420 -> 1991
-    //   1574: ldc_w 922
+    //   1574: ldc_w 924
     //   1577: aload 4
     //   1579: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1582: ifeq +120 -> 1702
@@ -1915,51 +1915,51 @@ public class MediaApiPlugin
     //   1596: aload 5
     //   1598: iconst_0
     //   1599: aaload
-    //   1600: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1600: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   1603: astore_1
     //   1604: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1607: ifeq +30 -> 1637
-    //   1610: ldc_w 924
+    //   1610: ldc_w 926
     //   1613: iconst_2
     //   1614: new 103	java/lang/StringBuilder
     //   1617: dup
     //   1618: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   1621: ldc_w 926
+    //   1621: ldc_w 928
     //   1624: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1627: aload_1
-    //   1628: invokevirtual 882	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1628: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1631: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1634: invokestatic 127	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1637: aload_1
-    //   1638: ldc_w 928
-    //   1641: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1638: ldc_w 930
+    //   1641: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1644: astore_2
     //   1645: aload_1
-    //   1646: ldc_w 930
-    //   1649: invokevirtual 933	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   1646: ldc_w 932
+    //   1649: invokevirtual 935	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   1652: lstore 11
     //   1654: aload_1
-    //   1655: ldc_w 935
-    //   1658: invokevirtual 933	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   1655: ldc_w 937
+    //   1658: invokevirtual 935	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   1661: lstore 13
     //   1663: aload_0
-    //   1664: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbegz;
-    //   1667: invokevirtual 377	begz:a	()Landroid/app/Activity;
+    //   1664: getfield 372	com/tencent/mobileqq/jsp/MediaApiPlugin:mRuntime	Lbhod;
+    //   1667: invokevirtual 377	bhod:a	()Landroid/app/Activity;
     //   1670: aload_2
     //   1671: lload 11
     //   1673: lload 13
-    //   1675: invokestatic 937	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Landroid/content/Context;Ljava/lang/String;JJ)V
+    //   1675: invokestatic 939	com/tencent/mobileqq/jsp/MediaApiPlugin:a	(Landroid/content/Context;Ljava/lang/String;JJ)V
     //   1678: goto +313 -> 1991
     //   1681: astore_1
     //   1682: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1685: ifeq +306 -> 1991
-    //   1688: ldc_w 924
+    //   1688: ldc_w 926
     //   1691: iconst_2
-    //   1692: ldc_w 939
+    //   1692: ldc_w 941
     //   1695: aload_1
-    //   1696: invokestatic 942	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1696: invokestatic 944	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1699: goto +292 -> 1991
-    //   1702: ldc_w 944
+    //   1702: ldc_w 946
     //   1705: aload 4
     //   1707: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1710: ifeq +173 -> 1883
@@ -1972,11 +1972,11 @@ public class MediaApiPlugin
     //   1724: aload 5
     //   1726: iconst_0
     //   1727: aaload
-    //   1728: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1728: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   1731: astore_1
     //   1732: aload_1
-    //   1733: ldc_w 702
-    //   1736: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1733: ldc_w 704
+    //   1736: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1739: astore_2
     //   1740: invokestatic 343	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   1743: astore_3
@@ -1984,10 +1984,10 @@ public class MediaApiPlugin
     //   1745: new 286	android/content/Intent
     //   1748: dup
     //   1749: aload_3
-    //   1750: ldc_w 946
+    //   1750: ldc_w 948
     //   1753: invokespecial 291	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   1756: iconst_5
-    //   1757: invokevirtual 781	com/tencent/mobileqq/jsp/MediaApiPlugin:startActivityForResult	(Landroid/content/Intent;B)V
+    //   1757: invokevirtual 783	com/tencent/mobileqq/jsp/MediaApiPlugin:startActivityForResult	(Landroid/content/Intent;B)V
     //   1760: aload_3
     //   1761: invokestatic 38	com/tencent/mobileqq/jsp/MediaApiPlugin:b	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   1764: invokeinterface 634 1 0
@@ -2002,40 +2002,40 @@ public class MediaApiPlugin
     //   1796: pop
     //   1797: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1800: ifeq +191 -> 1991
-    //   1803: ldc_w 924
+    //   1803: ldc_w 926
     //   1806: iconst_2
     //   1807: new 103	java/lang/StringBuilder
     //   1810: dup
     //   1811: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   1814: ldc_w 948
+    //   1814: ldc_w 950
     //   1817: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1820: aload 5
     //   1822: iconst_0
     //   1823: aaload
     //   1824: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1827: ldc_w 950
+    //   1827: ldc_w 952
     //   1830: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1833: aload_2
     //   1834: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1837: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1840: invokestatic 952	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1840: invokestatic 954	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   1843: goto +148 -> 1991
     //   1846: astore_1
     //   1847: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1850: ifeq +141 -> 1991
-    //   1853: ldc_w 924
+    //   1853: ldc_w 926
     //   1856: iconst_2
     //   1857: new 103	java/lang/StringBuilder
     //   1860: dup
     //   1861: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   1864: ldc_w 954
+    //   1864: ldc_w 956
     //   1867: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1870: aload_1
-    //   1871: invokevirtual 882	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1871: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1874: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1877: invokestatic 952	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1877: invokestatic 954	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   1880: goto +111 -> 1991
-    //   1883: ldc_w 956
+    //   1883: ldc_w 958
     //   1886: aload 4
     //   1888: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1891: ifeq +100 -> 1991
@@ -2044,22 +2044,22 @@ public class MediaApiPlugin
     //   1898: aload 5
     //   1900: iconst_0
     //   1901: aaload
-    //   1902: invokespecial 699	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1905: ldc_w 702
-    //   1908: invokevirtual 706	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1902: invokespecial 701	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1905: ldc_w 704
+    //   1908: invokevirtual 708	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1911: astore_1
     //   1912: aload_1
-    //   1913: invokestatic 712	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1913: invokestatic 714	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1916: ifne +75 -> 1991
     //   1919: new 61	org/json/JSONObject
     //   1922: dup
     //   1923: invokespecial 62	org/json/JSONObject:<init>	()V
     //   1926: astore_2
     //   1927: aload_2
-    //   1928: ldc_w 958
+    //   1928: ldc_w 960
     //   1931: aload_0
-    //   1932: invokespecial 960	com/tencent/mobileqq/jsp/MediaApiPlugin:a	()Z
-    //   1935: invokevirtual 963	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   1932: invokespecial 962	com/tencent/mobileqq/jsp/MediaApiPlugin:a	()Z
+    //   1935: invokevirtual 965	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   1938: pop
     //   1939: aload_0
     //   1940: aload_1
@@ -2070,16 +2070,16 @@ public class MediaApiPlugin
     //   1947: aload_2
     //   1948: invokevirtual 637	org/json/JSONObject:toString	()Ljava/lang/String;
     //   1951: aastore
-    //   1952: invokevirtual 730	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   1952: invokevirtual 732	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   1955: goto +36 -> 1991
     //   1958: astore_1
     //   1959: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1962: ifeq +29 -> 1991
     //   1965: getstatic 25	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1968: iconst_2
-    //   1969: ldc_w 965
+    //   1969: ldc_w 967
     //   1972: aload_1
-    //   1973: invokestatic 942	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1973: invokestatic 944	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1976: goto +15 -> 1991
     //   1979: iconst_0
     //   1980: ireturn
@@ -2260,7 +2260,7 @@ public class MediaApiPlugin
                 ((Intent)localObject2).putExtra("keyAction", "actionSelectPicture");
                 ((Intent)localObject2).putExtra("requestCode", paramInt);
                 ((Intent)localObject2).putExtra("savedParam", (String)localObject1);
-                aiqe.a((Activity)a(), (Intent)localObject2, paramIntent[0], 103);
+                akgy.a((Activity)a(), (Intent)localObject2, paramIntent[0], 103);
                 return;
               }
             }
@@ -2322,18 +2322,18 @@ public class MediaApiPlugin
               return;
             }
           }
-          if (this.jdField_a_of_type_Bety == null)
+          if (this.jdField_a_of_type_Biau == null)
           {
             localObject1 = this.mRuntime.a();
-            this.jdField_a_of_type_Bety = new bety((Context)localObject1, ((Activity)localObject1).getResources().getDimensionPixelSize(2131298914));
-            this.jdField_a_of_type_Bety.c(2131694219);
-            this.jdField_a_of_type_Bety.a(this);
+            this.jdField_a_of_type_Biau = new biau((Context)localObject1, ((Activity)localObject1).getResources().getDimensionPixelSize(2131298998));
+            this.jdField_a_of_type_Biau.c(2131693478);
+            this.jdField_a_of_type_Biau.a(this);
           }
           if (this.jdField_a_of_type_JavaLangThread != null) {
             this.jdField_a_of_type_JavaLangThread.interrupt();
           }
-          if (!this.jdField_a_of_type_Bety.isShowing()) {
-            this.jdField_a_of_type_Bety.show();
+          if (!this.jdField_a_of_type_Biau.isShowing()) {
+            this.jdField_a_of_type_Biau.show();
           }
           if ("getPictureV2".equals(str)) {}
           for (this.jdField_a_of_type_JavaLangThread = new MediaApiPlugin.PreparePicturesAndCallbackThreadV2(this, (String)localObject2, localJSONObject.optInt("scaleMode", 0), paramIntent);; this.jdField_a_of_type_JavaLangThread = new MediaApiPlugin.PreparePicturesAndCallbackThread(this, (String)localObject2, bool1, str, localJSONObject.optInt("outMaxWidth", 1280), localJSONObject.optInt("outMaxHeight", 1280), localJSONObject.optInt("inMinWidth", 1), localJSONObject.optInt("inMinHeight", 1), paramIntent))
@@ -2445,18 +2445,18 @@ public class MediaApiPlugin
     if (this.jdField_a_of_type_JavaLangThread != null) {
       this.jdField_a_of_type_JavaLangThread.interrupt();
     }
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
-    if (this.jdField_a_of_type_Yqz != null) {
-      this.jdField_a_of_type_Yqz.b();
+    if (this.jdField_a_of_type_Aanz != null) {
+      this.jdField_a_of_type_Aanz.b();
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin
  * JD-Core Version:    0.7.0.1
  */

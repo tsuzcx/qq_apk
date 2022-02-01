@@ -1,20 +1,20 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment.6;
 
-final class bimo
-  implements EIPCResultCallback
+public class bimo
+  implements DialogInterface.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bimo(OpenAuthorityFragment.6 param6) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEIPCResult.isSuccess()) {
-      bimn.a(paramEIPCResult.data.getString("config_json"));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimo
  * JD-Core Version:    0.7.0.1
  */

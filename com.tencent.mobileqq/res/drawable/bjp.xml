@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="40" android:drawable="@drawable/bu7" />
-    <item android:duration="40" android:drawable="@drawable/bu8" />
-    <item android:duration="40" android:drawable="@drawable/bu9" />
-    <item android:duration="40" android:drawable="@drawable/bu_" />
-    <item android:duration="40" android:drawable="@drawable/bua" />
-    <item android:duration="40" android:drawable="@drawable/bub" />
-    <item android:duration="40" android:drawable="@drawable/buc" />
-    <item android:duration="40" android:drawable="@drawable/bud" />
-    <item android:duration="40" android:drawable="@drawable/bue" />
-    <item android:duration="40" android:drawable="@drawable/buf" />
-    <item android:duration="40" android:drawable="@drawable/bug" />
-    <item android:duration="40" android:drawable="@drawable/buh" />
-    <item android:duration="40" android:drawable="@drawable/bui" />
-</animation-list>
+    <solid android:color="@color/al3" />
+    <corners android:radius="10.0px" />
+</shape>

@@ -1,26 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
 
 public class anpw
-  implements anrs
+  extends anmu
 {
-  public boolean needProcess(JSONObject paramJSONObject)
+  public anpw(MessageHandler paramMessageHandler) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3) && (!TextUtils.isEmpty(paramString))) {
+      this.a.app.a().k();
     }
-    return true;
   }
   
-  public void process(JSONObject paramJSONObject, anrt paramanrt, Object paramObject)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateAnswerAddedFriend isSuccess = " + paramBoolean + ", uin = " + paramString + ", flag = " + paramInt);
     }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramanrt, paramObject), 20000L);
+    if (paramBoolean) {
+      this.a.app.a().k();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateFriendList isSuccess = " + paramBoolean1 + ", isComplete = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.app.a().k();
+    }
   }
 }
 

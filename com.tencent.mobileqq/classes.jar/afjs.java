@@ -1,8 +1,18 @@
-public abstract interface afjs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+
+public class afjs
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public afjs(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

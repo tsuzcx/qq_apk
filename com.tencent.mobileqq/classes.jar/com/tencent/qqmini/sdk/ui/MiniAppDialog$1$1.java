@@ -1,18 +1,15 @@
 package com.tencent.qqmini.sdk.ui;
 
-import bhmf;
-import bhmg;
-
-public class MiniAppDialog$1$1
+class MiniAppDialog$1$1
   implements Runnable
 {
-  public MiniAppDialog$1$1(bhmg parambhmg) {}
+  MiniAppDialog$1$1(MiniAppDialog.1 param1) {}
   
   public void run()
   {
     try
     {
-      bhmf.a(this.a.a);
+      MiniAppDialog.access$101(this.this$1.this$0);
       return;
     }
     catch (Exception localException) {}
@@ -20,7 +17,7 @@ public class MiniAppDialog$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppDialog.1.1
  * JD-Core Version:    0.7.0.1
  */

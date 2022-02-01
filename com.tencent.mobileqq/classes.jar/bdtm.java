@@ -1,22 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-
-public class bdtm
-  implements Sizeable
+class bdtm
+  extends anqd
 {
-  public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
+  bdtm(bdtl parambdtl) {}
   
-  public int getByteSize()
+  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
   {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramanqe);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

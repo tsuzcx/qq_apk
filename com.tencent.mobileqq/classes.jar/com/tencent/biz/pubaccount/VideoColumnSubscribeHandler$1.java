@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import nsi;
+import obm;
 
 public class VideoColumnSubscribeHandler$1
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$1(nsi paramnsi, int paramInt) {}
+  public VideoColumnSubscribeHandler$1(obm paramobm, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    nsi.a(this.this$0, this.a);
+    obm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

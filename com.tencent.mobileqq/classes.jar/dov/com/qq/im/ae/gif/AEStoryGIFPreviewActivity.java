@@ -1,11 +1,16 @@
 package dov.com.qq.im.ae.gif;
 
+import Override;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import blda;
-import bldk;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import bnsi;
+import bnss;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.BaseVMPeakActivity;
 import dov.com.qq.im.ae.SessionWrap;
 
@@ -16,6 +21,14 @@ public class AEStoryGIFPreviewActivity
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b = "";
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
   
   public boolean isWrapContent()
   {
@@ -32,13 +45,20 @@ public class AEStoryGIFPreviewActivity
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    setContentView(2131558542);
+    setContentView(2131558569);
     paramBundle = getIntent().getStringExtra("KEY_PREVIEW_SOURCE_PATH");
-    int i = getIntent().getIntExtra("AECAMERA_MODE", 200);
+    getIntent().getIntExtra("AECAMERA_MODE", 200);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("KEY_MATERIAL_APPLIED", false);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("ARG_GIF_MATERIAL_ID");
     this.b = getIntent().getStringExtra("KEY_AVAILABLE_SAVENAME");
@@ -46,20 +66,20 @@ public class AEStoryGIFPreviewActivity
     boolean bool = getIntent().getBooleanExtra("ARG_GIF_SEND_TO_AIO", false);
     long l = getIntent().getLongExtra("KEY_AVAILABLE_EMO_COUNT", 9223372036854775807L);
     FragmentManager localFragmentManager = getFragmentManager();
-    if (i == 202) {
-      if (localFragmentManager.findFragmentByTag(blda.class.getSimpleName()) == null) {
-        localFragmentManager.beginTransaction().add(2131366799, blda.a(paramBundle, l), blda.class.getSimpleName()).commit();
+    if ((!this.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if (localFragmentManager.findFragmentByTag(bnsi.class.getSimpleName()) == null) {
+        localFragmentManager.beginTransaction().add(2131367067, bnsi.a(paramBundle, l), bnsi.class.getSimpleName()).commit();
       }
     }
-    while (localFragmentManager.findFragmentByTag(bldk.class.getSimpleName()) != null) {
+    while (localFragmentManager.findFragmentByTag(bnss.class.getSimpleName()) != null) {
       return;
     }
-    localFragmentManager.beginTransaction().add(2131366799, bldk.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bldk.class.getSimpleName()).commit();
+    localFragmentManager.beginTransaction().add(2131367067, bnss.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bnss.class.getSimpleName()).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.AEStoryGIFPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

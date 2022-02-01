@@ -1,67 +1,201 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qphone.base.util.QLog;
 
 public class azvl
-  implements View.OnClickListener
 {
-  public azvl(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
-  
-  public void onClick(View paramView)
+  public static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    int k;
-    int m;
-    try
+    Object localObject3 = null;
+    Object localObject1 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserFaceBitmap phoneNumber = " + paramString);
+    Object localObject2 = localObject1;
+    if (paramQQAppInterface != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362578);
-      if (localViewGroup == null) {
-        return;
+      localObject2 = localObject1;
+      if (paramString != null)
+      {
+        if (paramString.startsWith("+")) {
+          break label55;
+        }
+        localObject2 = localObject1;
       }
     }
-    catch (Exception localException)
+    label55:
+    do
     {
+      return localObject2;
+      localObject1 = localObject3;
+      if (a(paramQQAppInterface, paramString)) {
+        localObject1 = paramQQAppInterface.a(11, paramString, (byte)3, true, 0);
+      }
+      localObject2 = localObject1;
+    } while (localObject1 != null);
+    return bgmo.a();
+  }
+  
+  public static Drawable a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject1 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserFaceBitmap phoneNumber = " + paramString);
+    Object localObject2 = localObject1;
+    if (paramQQAppInterface != null)
+    {
+      localObject2 = localObject1;
+      if (paramString != null)
+      {
+        if (paramString.startsWith("+")) {
+          break label55;
+        }
+        localObject2 = localObject1;
+      }
+    }
+    label55:
+    do
+    {
+      return localObject2;
+      localObject1 = localObject3;
+      if (a(paramQQAppInterface, paramString)) {
+        localObject1 = aoch.b(paramQQAppInterface, paramString, (byte)3);
+      }
+      localObject2 = localObject1;
+    } while (localObject1 != null);
+    return bgmo.b();
+  }
+  
+  public static PhoneContact a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    awmz localawmz = (awmz)paramQQAppInterface.getManager(11);
+    if (localawmz != null)
+    {
+      PhoneContact localPhoneContact = localawmz.c(paramString);
+      aywf localaywf = aywg.a(paramString);
+      paramQQAppInterface = localPhoneContact;
+      if (localPhoneContact == null) {
+        paramQQAppInterface = localawmz.b(localaywf.c);
+      }
+      paramString = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramString = localawmz.b("+" + localaywf.a + localaywf.c);
+      }
+      paramQQAppInterface = paramString;
+      if (paramString == null) {
+        paramQQAppInterface = localawmz.b(localaywf.a + localaywf.c);
+      }
+      paramString = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramString = localawmz.b("00" + localaywf.a + localaywf.c);
+      }
+      if (paramString == null) {
+        return localawmz.b(localaywf.a + "-" + localaywf.c);
+      }
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject4 = null;
+    Object localObject3 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName phoneNumber = " + paramString);
+    if ((paramQQAppInterface == null) || (paramString == null) || (!paramString.startsWith("+")))
+    {
+      paramQQAppInterface = "";
+      return paramQQAppInterface;
+    }
+    Object localObject2 = a(paramQQAppInterface, paramString);
+    Object localObject1;
+    if (localObject2 != null) {
+      localObject1 = ((PhoneContact)localObject2).name;
+    }
+    for (String str = ((PhoneContact)localObject2).uin;; str = null)
+    {
+      QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName contactName = " + (String)localObject1 + "uin = " + str);
+      localObject2 = localObject4;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject2 = localObject4;
+        if (!str.equals("0"))
+        {
+          localObject2 = ((anmw)paramQQAppInterface.getManager(51)).e(str);
+          paramQQAppInterface = localObject3;
+          if (localObject2 != null)
+          {
+            if ((((Friends)localObject2).remark == null) || (((Friends)localObject2).remark.length() <= 0)) {
+              break label225;
+            }
+            paramQQAppInterface = ((Friends)localObject2).remark;
+          }
+          label177:
+          QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName FriendDisplayName = " + paramQQAppInterface);
+          localObject2 = paramQQAppInterface;
+        }
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {}
       for (;;)
       {
-        arrayOfInt1 = null;
+        paramQQAppInterface = (QQAppInterface)localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
+        }
+        return a(paramString);
+        label225:
+        paramQQAppInterface = localObject3;
+        if (((Friends)localObject2).name == null) {
+          break label177;
+        }
+        paramQQAppInterface = localObject3;
+        if (((Friends)localObject2).name.length() <= 0) {
+          break label177;
+        }
+        paramQQAppInterface = ((Friends)localObject2).name;
+        break label177;
+        localObject1 = localObject2;
       }
-      int[] arrayOfInt2 = new int[2];
-      arrayOfInt1.getLocationOnScreen(arrayOfInt2);
-      int i = arrayOfInt2[1];
-      int j = arrayOfInt1.getHeight();
-      int[] arrayOfInt1 = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt1);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = arrayOfInt1[0];
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = arrayOfInt1[1];
-      k = aepi.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
-      m = paramView.getHeight();
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
-        break label257;
-      }
+      localObject1 = null;
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846647));
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
-    for (;;)
-    {
-      ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramView.alpha = 0.5F;
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new azvm(this));
+  }
+  
+  public static String a(String paramString)
+  {
+    aywf localaywf = aywg.a(paramString);
+    if (localaywf.a.equals("86")) {
+      paramString = localaywf.c;
+    }
+    return paramString;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    QLog.d("OpenSDKUtils", 2, "enterActionSheet phoneNumber = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      label257:
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846646));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
+    }
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 1;
+    bkho localbkho = bkho.a(paramContext);
+    localbkho.a(2131689514);
+    arrayOfInt[0] = 1;
+    localbkho.b(2131690575);
+    localbkho.c(2131690582);
+    localbkho.a(new azvm());
+    localbkho.a(new azvn(localbkho, arrayOfInt, paramString, paramContext, paramQQAppInterface));
+    localbkho.show();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (awmz)paramQQAppInterface.getManager(11);
+    if (paramQQAppInterface != null) {}
+    for (paramQQAppInterface = paramQQAppInterface.c(paramString);; paramQQAppInterface = null) {
+      return (paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.uin));
     }
   }
 }

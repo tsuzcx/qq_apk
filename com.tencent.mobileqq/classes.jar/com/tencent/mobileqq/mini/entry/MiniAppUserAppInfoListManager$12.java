@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUserAppInfoListManager$12
@@ -30,7 +30,7 @@ class MiniAppUserAppInfoListManager$12
       localRecommendMiniAppEntity = new RecommendMiniAppEntity(this.val$appInfo.appId, this.val$appInfo.name, this.val$appInfo.recommend);
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    if (MiniAppUserAppInfoListManager.access$1100(this.this$0, (awgf)localObject, localRecommendMiniAppEntity))
+    if (MiniAppUserAppInfoListManager.access$1100(this.this$0, (EntityManager)localObject, localRecommendMiniAppEntity))
     {
       QLog.d("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, success to delete recommend appInfo: " + localRecommendMiniAppEntity);
       return;
@@ -40,7 +40,7 @@ class MiniAppUserAppInfoListManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.12
  * JD-Core Version:    0.7.0.1
  */

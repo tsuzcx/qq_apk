@@ -1,18 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-
 public class allf
-  implements bexc
 {
-  public allf(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
-    }
-  }
+  public static final String a = anni.a(2131711147) + wes.a + anni.a(2131711148);
 }
 
 

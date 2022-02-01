@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.DestQQHeadInfo;
-import altk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anms;
 
 public class FriendListHandler$QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new altk();
+  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new anms();
   public byte a;
   public int a;
   public long a;
@@ -66,7 +66,7 @@ public class FriendListHandler$QQHeadDetails
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails
  * JD-Core Version:    0.7.0.1
  */

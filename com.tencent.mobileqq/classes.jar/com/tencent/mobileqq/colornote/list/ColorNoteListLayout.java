@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aodw;
+import aqeh;
 
 public class ColorNoteListLayout
   extends LinearLayout
@@ -20,7 +20,7 @@ public class ColorNoteListLayout
   private int jdField_a_of_type_Int;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
-  private aodw jdField_a_of_type_Aodw;
+  private aqeh jdField_a_of_type_Aqeh;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int b;
   private int c = -1;
@@ -50,7 +50,7 @@ public class ColorNoteListLayout
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364470);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364676);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramContext);
   }
@@ -64,8 +64,8 @@ public class ColorNoteListLayout
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Aodw != null)) {
-        this.jdField_a_of_type_Aodw.a();
+      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Aqeh != null)) {
+        this.jdField_a_of_type_Aqeh.b();
       }
       return true;
     }
@@ -136,14 +136,14 @@ public class ColorNoteListLayout
     this.b = paramInt2;
   }
   
-  public void setHideListener(aodw paramaodw)
+  public void setHideListener(aqeh paramaqeh)
   {
-    this.jdField_a_of_type_Aodw = paramaodw;
+    this.jdField_a_of_type_Aqeh = paramaqeh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListLayout
  * JD-Core Version:    0.7.0.1
  */

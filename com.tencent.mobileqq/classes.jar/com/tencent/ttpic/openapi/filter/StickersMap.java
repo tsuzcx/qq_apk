@@ -6,6 +6,7 @@ import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.filter.MultiViewerFilter;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
@@ -35,41 +36,45 @@ public class StickersMap
   private void setDefaultOrder()
   {
     this.mStickerOrderList.clear();
-    this.mStickerOrderList.add("blurEffectBefore");
-    this.mStickerOrderList.add("mesh");
     this.mStickerOrderList.add("fabbyStroke");
-    this.mStickerOrderList.add("particle");
-    this.mStickerOrderList.add("faceHeadCrop");
-    this.mStickerOrderList.add("background");
+    this.mStickerOrderList.add("blurEffectBefore");
+    this.mStickerOrderList.add("styleChange");
+    this.mStickerOrderList.add("triggerLutBefore");
+    this.mStickerOrderList.add("comicBefore");
     this.mStickerOrderList.add("lutBefore");
     this.mStickerOrderList.add("hairCos");
     this.mStickerOrderList.add("skySegment");
-    this.mStickerOrderList.add("triggerLutBefore");
-    this.mStickerOrderList.add("comicBefore");
     this.mStickerOrderList.add("stickerBefore");
-    this.mStickerOrderList.add("blingbling");
-    this.mStickerOrderList.add("3d");
-    this.mStickerOrderList.add("filament");
-    this.mStickerOrderList.add("styleChange");
+    this.mStickerOrderList.add("faceoff");
     this.mStickerOrderList.add("customBefore");
     this.mStickerOrderList.add("dynamic");
+    this.mStickerOrderList.add("styleFilterBefore");
     this.mStickerOrderList.add("faceSwap");
     this.mStickerOrderList.add("faceAverage");
+    this.mStickerOrderList.add("faceHeadCrop");
+    this.mStickerOrderList.add("mesh");
+    this.mStickerOrderList.add("filament");
     this.mStickerOrderList.add("phantom");
-    this.mStickerOrderList.add("tdParticle");
-    this.mStickerOrderList.add("comicAfter");
-    this.mStickerOrderList.add("triggerLutAfter");
-    this.mStickerOrderList.add("multiview");
-    this.mStickerOrderList.add("filamentParticle");
-    this.mStickerOrderList.add("stickerAfter");
     this.mStickerOrderList.add("customAfter");
+    this.mStickerOrderList.add("customGroup");
+    this.mStickerOrderList.add("styleFilterAfter");
+    this.mStickerOrderList.add("stickerAfter");
+    this.mStickerOrderList.add("particle");
     this.mStickerOrderList.add("lutAfter");
     this.mStickerOrderList.add("expression");
+    this.mStickerOrderList.add("blingbling");
+    this.mStickerOrderList.add("tdParticle");
+    this.mStickerOrderList.add("filamentParticle");
+    this.mStickerOrderList.add("comicAfter");
+    this.mStickerOrderList.add("triggerLutAfter");
     this.mStickerOrderList.add("zoom");
-    this.mStickerOrderList.add("mv");
     this.mStickerOrderList.add("blurEffectAfter");
     this.mStickerOrderList.add("mask");
     this.mStickerOrderList.add("crazyFace");
+    this.mStickerOrderList.add("multiview");
+    this.mStickerOrderList.add("background");
+    this.mStickerOrderList.add("mv");
+    this.mStickerOrderList.add("styleChangeWarp");
   }
   
   public Frame chainStickerFilters(AESticker paramAESticker, Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr, AIAttr paramAIAttr)
@@ -109,20 +114,25 @@ public class StickersMap
       }
       for (;;)
       {
-        localObject3 = ((PTDetectInfo.Builder)localObject1).build();
-        TouchTriggerManager.getInstance().updateTouchTriggerState((PTDetectInfo)localObject3);
-        TriggerStateManager.getInstance().setPTDetectInfo((PTDetectInfo)localObject3);
+        PTDetectInfo localPTDetectInfo = ((PTDetectInfo.Builder)localObject1).build();
+        TouchTriggerManager.getInstance().updateTouchTriggerState(localPTDetectInfo);
+        TriggerStateManager.getInstance().setPTDetectInfo(localPTDetectInfo);
         TriggerStateManager.getInstance().updateAllTriggerState();
         HashMap localHashMap = new HashMap();
+        if (paramAESticker == null) {
+          return paramFrame;
+        }
         Iterator localIterator = this.mStickerOrderList.iterator();
+        localObject3 = paramFrame;
         localObject1 = paramFrame;
+        paramFrame = (Frame)localObject3;
         while (localIterator.hasNext())
         {
-          String str = (String)localIterator.next();
-          switch (str.hashCode())
+          localObject3 = (String)localIterator.next();
+          switch (((String)localObject3).hashCode())
           {
           default: 
-            label600:
+            label652:
             i = -1;
           }
           for (;;)
@@ -132,322 +142,266 @@ public class StickersMap
             default: 
               break;
             case 0: 
-              if (paramAESticker == null) {
-                break;
-              }
-              localObject1 = paramAESticker.renderBlurBefore((Frame)localObject1, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
+              paramFrame = paramAESticker.renderBlurBefore(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
               break;
-              if (!str.equals("blurEffectBefore")) {
-                break label600;
+              if (!((String)localObject3).equals("blurEffectBefore")) {
+                break label652;
               }
               i = 0;
               continue;
-              if (!str.equals("mesh")) {
-                break label600;
+              if (!((String)localObject3).equals("mesh")) {
+                break label652;
               }
               i = 1;
               continue;
-              if (!str.equals("fabbyStroke")) {
-                break label600;
+              if (!((String)localObject3).equals("fabbyStroke")) {
+                break label652;
               }
               i = 2;
               continue;
-              if (!str.equals("particle")) {
-                break label600;
+              if (!((String)localObject3).equals("particle")) {
+                break label652;
               }
               i = 3;
               continue;
-              if (!str.equals("faceHeadCrop")) {
-                break label600;
+              if (!((String)localObject3).equals("faceHeadCrop")) {
+                break label652;
               }
               i = 4;
               continue;
-              if (!str.equals("background")) {
-                break label600;
+              if (!((String)localObject3).equals("background")) {
+                break label652;
               }
               i = 5;
               continue;
-              if (!str.equals("lutBefore")) {
-                break label600;
+              if (!((String)localObject3).equals("lutBefore")) {
+                break label652;
               }
               i = 6;
               continue;
-              if (!str.equals("hairCos")) {
-                break label600;
+              if (!((String)localObject3).equals("hairCos")) {
+                break label652;
               }
               i = 7;
               continue;
-              if (!str.equals("skySegment")) {
-                break label600;
+              if (!((String)localObject3).equals("skySegment")) {
+                break label652;
               }
               i = 8;
               continue;
-              if (!str.equals("comicBefore")) {
-                break label600;
+              if (!((String)localObject3).equals("comicBefore")) {
+                break label652;
               }
               i = 9;
               continue;
-              if (!str.equals("triggerLutBefore")) {
-                break label600;
+              if (!((String)localObject3).equals("styleFilterBefore")) {
+                break label652;
               }
               i = 10;
               continue;
-              if (!str.equals("stickerBefore")) {
-                break label600;
+              if (!((String)localObject3).equals("styleFilterAfter")) {
+                break label652;
               }
               i = 11;
               continue;
-              if (!str.equals("blingbling")) {
-                break label600;
+              if (!((String)localObject3).equals("triggerLutBefore")) {
+                break label652;
               }
               i = 12;
               continue;
-              if (!str.equals("filament")) {
-                break label600;
+              if (!((String)localObject3).equals("stickerBefore")) {
+                break label652;
               }
               i = 13;
               continue;
-              if (!str.equals("styleChange")) {
-                break label600;
+              if (!((String)localObject3).equals("blingbling")) {
+                break label652;
               }
               i = 14;
               continue;
-              if (!str.equals("dynamic")) {
-                break label600;
+              if (!((String)localObject3).equals("filament")) {
+                break label652;
               }
               i = 15;
               continue;
-              if (!str.equals("faceSwap")) {
-                break label600;
+              if (!((String)localObject3).equals("styleChange")) {
+                break label652;
               }
               i = 16;
               continue;
-              if (!str.equals("faceAverage")) {
-                break label600;
+              if (!((String)localObject3).equals("styleChangeWarp")) {
+                break label652;
               }
               i = 17;
               continue;
-              if (!str.equals("phantom")) {
-                break label600;
+              if (!((String)localObject3).equals("dynamic")) {
+                break label652;
               }
               i = 18;
               continue;
-              if (!str.equals("tdParticle")) {
-                break label600;
+              if (!((String)localObject3).equals("faceSwap")) {
+                break label652;
               }
               i = 19;
               continue;
-              if (!str.equals("comicAfter")) {
-                break label600;
+              if (!((String)localObject3).equals("faceAverage")) {
+                break label652;
               }
               i = 20;
               continue;
-              if (!str.equals("triggerLutAfter")) {
-                break label600;
+              if (!((String)localObject3).equals("phantom")) {
+                break label652;
               }
               i = 21;
               continue;
-              if (!str.equals("multiview")) {
-                break label600;
+              if (!((String)localObject3).equals("tdParticle")) {
+                break label652;
               }
               i = 22;
               continue;
-              if (!str.equals("filamentParticle")) {
-                break label600;
+              if (!((String)localObject3).equals("comicAfter")) {
+                break label652;
               }
               i = 23;
               continue;
-              if (!str.equals("stickerAfter")) {
-                break label600;
+              if (!((String)localObject3).equals("triggerLutAfter")) {
+                break label652;
               }
               i = 24;
               continue;
-              if (!str.equals("lutAfter")) {
-                break label600;
+              if (!((String)localObject3).equals("multiview")) {
+                break label652;
               }
               i = 25;
               continue;
-              if (!str.equals("expression")) {
-                break label600;
+              if (!((String)localObject3).equals("filamentParticle")) {
+                break label652;
               }
               i = 26;
               continue;
-              if (!str.equals("zoom")) {
-                break label600;
+              if (!((String)localObject3).equals("stickerAfter")) {
+                break label652;
               }
               i = 27;
               continue;
-              if (!str.equals("mv")) {
-                break label600;
+              if (!((String)localObject3).equals("lutAfter")) {
+                break label652;
               }
               i = 28;
               continue;
-              if (!str.equals("blurEffectAfter")) {
-                break label600;
+              if (!((String)localObject3).equals("expression")) {
+                break label652;
               }
               i = 29;
               continue;
-              if (!str.equals("crazyFace")) {
-                break label600;
+              if (!((String)localObject3).equals("zoom")) {
+                break label652;
               }
               i = 30;
-            }
-          }
-          if (paramAESticker != null)
-          {
-            localObject1 = paramAESticker.processTransformRelatedFiltersPluggable(paramAESticker.renderFaceTransform((Frame)localObject1), paramPTFaceAttr, paramAIAttr, localSet);
-            continue;
-            if (paramAESticker != null)
-            {
-              localObject1 = paramAESticker.renderFabbyStrokeShake((Frame)localObject1, paramPTFaceAttr, paramPTSegAttr);
               continue;
-              if (paramAESticker != null)
-              {
-                paramAESticker.renderARFilter((Frame)localObject1);
-                continue;
-                if (paramAESticker != null)
-                {
-                  localObject1 = paramAESticker.renderHeadCropFilter((Frame)localObject1, paramPTFaceAttr);
-                  continue;
-                  if (paramAESticker != null)
-                  {
-                    localObject1 = paramAESticker.renderBgFilter((Frame)localObject1, paramPTFaceAttr);
-                    continue;
-                    if (paramAESticker != null)
-                    {
-                      localObject1 = paramAESticker.renderEffectFilterBefore((Frame)localObject1);
-                      continue;
-                      if (paramAESticker != null)
-                      {
-                        localObject1 = paramAESticker.renderHairCos((Frame)localObject1, paramPTFaceAttr, paramAIAttr);
-                        continue;
-                        if (paramAESticker != null)
-                        {
-                          localObject1 = paramAESticker.renderSkyFilter((Frame)localObject1, paramPTFaceAttr, paramAIAttr);
-                          continue;
-                          if (paramAESticker != null)
-                          {
-                            localObject1 = paramAESticker.renderComicEffectBefore((Frame)localObject1, paramPTFaceAttr);
-                            continue;
-                            if (paramAESticker != null)
-                            {
-                              localObject1 = paramAESticker.renderEffectTriggerBefore((Frame)localObject1, paramPTFaceAttr);
-                              continue;
-                              if (paramAESticker != null)
-                              {
-                                localObject1 = paramAESticker.renderStickerBefore((Frame)localObject1, paramPTFaceAttr);
-                                continue;
-                                if (paramAESticker != null)
-                                {
-                                  localObject1 = paramAESticker.renderBlingFilter((Frame)localObject1, paramPTFaceAttr, (PTDetectInfo)localObject3, localList3);
-                                  continue;
-                                  if (paramAESticker != null)
-                                  {
-                                    localObject1 = paramAESticker.renderFilament((Frame)localObject1, paramPTFaceAttr);
-                                    continue;
-                                    if (paramAESticker != null)
-                                    {
-                                      localObject1 = paramAESticker.renderRapidNet((Frame)localObject1, paramPTFaceAttr);
-                                      continue;
-                                      if (paramAESticker != null)
-                                      {
-                                        localObject1 = paramAESticker.renderDynamicFilter((Frame)localObject1, paramPTFaceAttr, paramAIAttr);
-                                        continue;
-                                        if (paramAESticker != null)
-                                        {
-                                          localObject1 = paramAESticker.renderFaceSwitchFilter((Frame)localObject1, localList1, localSet);
-                                          continue;
-                                          if (paramAESticker != null)
-                                          {
-                                            localObject1 = paramAESticker.renderCrazyFaceFilter((Frame)localObject1, localList1, localList2);
-                                            continue;
-                                            if (paramAESticker != null)
-                                            {
-                                              localObject1 = paramAESticker.renderPhantomFilter((Frame)localObject1, paramPTFaceAttr);
-                                              continue;
-                                              if (paramAESticker != null)
-                                              {
-                                                localObject1 = paramAESticker.renderParticleStatic((Frame)localObject1, (PTDetectInfo)localObject3, (List)localObject2);
-                                                continue;
-                                                if (paramAESticker != null)
-                                                {
-                                                  localObject1 = paramAESticker.renderComicEffectAfter((Frame)localObject1, paramPTFaceAttr);
-                                                  continue;
-                                                  if (paramAESticker != null)
-                                                  {
-                                                    localObject1 = paramAESticker.renderEffectTriggerAfter((Frame)localObject1, paramPTFaceAttr);
-                                                    continue;
-                                                    if (paramAESticker != null)
-                                                    {
-                                                      paramAESticker.renderMultiViewer((Frame)localObject1, paramPTFaceAttr, paramAIAttr, paramPTSegAttr, localHashMap);
-                                                      continue;
-                                                      if (paramAESticker != null)
-                                                      {
-                                                        localObject1 = paramAESticker.renderFilamentParticle((Frame)localObject1, paramPTFaceAttr);
-                                                        continue;
-                                                        if (paramAESticker != null)
-                                                        {
-                                                          localObject1 = paramAESticker.renderStickerAfter((Frame)localObject1, paramPTFaceAttr);
-                                                          continue;
-                                                          if (paramAESticker != null)
-                                                          {
-                                                            localObject1 = paramAESticker.renderEffectFilterAfter((Frame)localObject1);
-                                                            continue;
-                                                            if (paramAESticker != null)
-                                                            {
-                                                              localObject1 = paramAESticker.renderActFilter((Frame)localObject1, localList1, localList2, j, paramPTFaceAttr);
-                                                              continue;
-                                                              if (paramAESticker != null)
-                                                              {
-                                                                localObject1 = paramAESticker.renderZoomFilter((Frame)localObject1, localHashMap);
-                                                                continue;
-                                                                if (paramAESticker != null)
-                                                                {
-                                                                  localObject1 = paramAESticker.renderFabbyMVFilter(paramFrame, paramAIAttr, localHashMap, localSet, paramPTFaceAttr);
-                                                                  continue;
-                                                                  if (paramAESticker != null)
-                                                                  {
-                                                                    localObject1 = paramAESticker.renderAfterBlur((Frame)localObject1, paramPTFaceAttr, paramPTSegAttr);
-                                                                    continue;
-                                                                    if (paramAESticker != null) {
-                                                                      localObject1 = paramAESticker.renderCosFun((Frame)localObject1, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+              if (!((String)localObject3).equals("mv")) {
+                break label652;
               }
+              i = 31;
+              continue;
+              if (!((String)localObject3).equals("blurEffectAfter")) {
+                break label652;
+              }
+              i = 32;
+              continue;
+              if (!((String)localObject3).equals("crazyFace")) {
+                break label652;
+              }
+              i = 33;
+              continue;
+              if (!((String)localObject3).equals("faceoff")) {
+                break label652;
+              }
+              i = 34;
+              continue;
+              if (!((String)localObject3).equals("customGroup")) {
+                break label652;
+              }
+              i = 35;
             }
           }
+          localObject1 = paramAESticker.processTransformRelatedFiltersPluggable(paramAESticker.renderFaceTransform(paramFrame), paramPTFaceAttr, paramAIAttr, localSet);
+          paramFrame = (Frame)localObject1;
+          continue;
+          paramFrame = paramAESticker.renderFabbyStrokeShake(paramFrame, paramPTFaceAttr, paramPTSegAttr);
+          continue;
+          paramAESticker.renderARFilter(paramFrame);
+          continue;
+          paramFrame = paramAESticker.renderHeadCropFilter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderBgFilter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderEffectFilterBefore(paramFrame);
+          continue;
+          paramFrame = paramAESticker.renderHairCos(paramFrame, paramPTFaceAttr, paramAIAttr);
+          continue;
+          paramFrame = paramAESticker.renderSkyFilter(paramFrame, paramPTFaceAttr, paramAIAttr);
+          continue;
+          paramFrame = paramAESticker.renderComicEffectBefore(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderStyleFilter(1, paramFrame);
+          continue;
+          paramFrame = paramAESticker.renderStyleFilter(2, paramFrame);
+          continue;
+          paramFrame = paramAESticker.renderEffectTriggerBefore(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderStickerBefore(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderBlingFilter(paramFrame, paramPTFaceAttr, localPTDetectInfo, localList3);
+          continue;
+          paramFrame = paramAESticker.renderFilament(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderRapidNet(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderStyleWarp(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderDynamicFilter(paramFrame, paramPTFaceAttr, paramAIAttr);
+          continue;
+          paramFrame = paramAESticker.renderFaceSwitchFilter(paramFrame, localList1, localSet);
+          continue;
+          paramFrame = paramAESticker.renderCrazyFaceFilter(paramFrame, localList1, localList2);
+          continue;
+          paramFrame = paramAESticker.renderPhantomFilter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderParticleStatic(paramFrame, localPTDetectInfo, (List)localObject2);
+          continue;
+          paramFrame = paramAESticker.renderComicEffectAfter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderEffectTriggerAfter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramAESticker.renderMultiViewer(paramFrame, paramPTFaceAttr, paramAIAttr, paramPTSegAttr, localHashMap);
+          continue;
+          paramFrame = paramAESticker.renderFilamentParticle(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderStickerAfter(paramFrame, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderEffectFilterAfter(paramFrame);
+          continue;
+          paramFrame = paramAESticker.renderActFilter(paramFrame, localList1, localList2, j, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderZoomFilter(paramFrame, localHashMap);
+          continue;
+          if (localHashMap.isEmpty()) {
+            localHashMap.put(Integer.valueOf(0), paramFrame);
+          }
+          paramFrame = paramAESticker.renderFabbyMVFilter((Frame)localObject1, paramAIAttr, localHashMap, localSet, paramPTFaceAttr);
+          continue;
+          paramFrame = paramAESticker.renderAfterBlur(paramFrame, paramPTFaceAttr, paramPTSegAttr);
+          continue;
+          paramFrame = paramAESticker.renderCosFun(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
+          continue;
+          paramFrame = paramAESticker.renderFaceOff(paramFrame, paramPTFaceAttr, paramAIAttr);
+          continue;
+          paramFrame = paramAESticker.renderCustomGroup(paramFrame);
         }
-        if (paramAESticker != null)
-        {
-          paramAESticker.clearTouchPoint();
-          paramAESticker.unclockHairMaskFrame();
-        }
-        return localObject1;
+        paramAESticker.clearTouchPoint();
+        paramAESticker.unclockHairMaskFrame();
+        return paramFrame;
       }
     }
   }
@@ -482,7 +436,7 @@ public class StickersMap
         localObject1 = paramFrame2;
         paramFrame2 = (Frame)localObject2;
         if (!localIterator.hasNext()) {
-          break label1129;
+          break label1175;
         }
         localObject2 = (String)localIterator.next();
         paramMultiViewerFilter.setFastStickerConfig(paramFrame2, (Frame)localObject1, paramFrame1);
@@ -490,9 +444,9 @@ public class StickersMap
         switch (((String)localObject2).hashCode())
         {
         default: 
-          label400:
+          label408:
           i = -1;
-          label403:
+          label411:
           switch (i)
           {
           }
@@ -505,100 +459,105 @@ public class StickersMap
         localObject1 = null;
         break;
         if (!((String)localObject2).equals("blurEffectBefore")) {
-          break label400;
+          break label408;
         }
         i = 0;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("mesh")) {
-          break label400;
+          break label408;
         }
         i = 1;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("lutBefore")) {
-          break label400;
+          break label408;
         }
         i = 2;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("hairCos")) {
-          break label400;
+          break label408;
         }
         i = 3;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("comicBefore")) {
-          break label400;
+          break label408;
         }
         i = 4;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("triggerLutBefore")) {
-          break label400;
+          break label408;
         }
         i = 5;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("stickerBefore")) {
-          break label400;
+          break label408;
         }
         i = 6;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("styleChange")) {
-          break label400;
+          break label408;
         }
         i = 7;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("customBefore")) {
-          break label400;
+          break label408;
         }
         i = 8;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("dynamic")) {
-          break label400;
+          break label408;
         }
         i = 9;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("faceSwap")) {
-          break label400;
+          break label408;
         }
         i = 10;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("faceAverage")) {
-          break label400;
+          break label408;
         }
         i = 11;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("phantom")) {
-          break label400;
+          break label408;
         }
         i = 12;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("tdParticle")) {
-          break label400;
+          break label408;
         }
         i = 13;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("stickerAfter")) {
-          break label400;
+          break label408;
         }
         i = 14;
-        break label403;
+        break label411;
         if (!((String)localObject2).equals("customAfter")) {
-          break label400;
+          break label408;
         }
         i = 15;
-        break label403;
-        if (!((String)localObject2).equals("zoom")) {
-          break label400;
+        break label411;
+        if (!((String)localObject2).equals("customGroup")) {
+          break label408;
         }
         i = 16;
-        break label403;
-        if (!((String)localObject2).equals("blurEffectAfter")) {
-          break label400;
+        break label411;
+        if (!((String)localObject2).equals("zoom")) {
+          break label408;
         }
         i = 17;
-        break label403;
-        if (!((String)localObject2).equals("mask")) {
-          break label400;
+        break label411;
+        if (!((String)localObject2).equals("blurEffectAfter")) {
+          break label408;
         }
         i = 18;
-        break label403;
+        break label411;
+        if (!((String)localObject2).equals("mask")) {
+          break label408;
+        }
+        i = 19;
+        break label411;
         if (paramMultiViewerFilter != null)
         {
           paramFrame2 = paramMultiViewerFilter.renderBlurBefore(paramFrame1, (Frame)localObject1, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
@@ -633,7 +592,7 @@ public class StickersMap
                         continue;
                         if (paramMultiViewerFilter != null)
                         {
-                          paramFrame2 = paramMultiViewerFilter.renderCustomFilter(paramFrame2, 1);
+                          paramFrame2 = paramMultiViewerFilter.renderCustomFilter(paramFrame2, 100);
                           continue;
                           if (paramMultiViewerFilter != null)
                           {
@@ -661,18 +620,23 @@ public class StickersMap
                                       continue;
                                       if (paramMultiViewerFilter != null)
                                       {
-                                        paramFrame2 = paramMultiViewerFilter.renderCustomFilter(paramFrame2, 2);
+                                        paramFrame2 = paramMultiViewerFilter.renderCustomFilter(paramFrame2, 101);
                                         continue;
                                         if (paramMultiViewerFilter != null)
                                         {
-                                          paramFrame2 = paramMultiViewerFilter.renderZoomFilter(paramFrame2);
+                                          paramFrame2 = paramMultiViewerFilter.renderCustomGroup(paramFrame2);
                                           continue;
                                           if (paramMultiViewerFilter != null)
                                           {
-                                            paramFrame2 = paramMultiViewerFilter.renderBlurAfter(paramFrame2, paramPTFaceAttr, paramPTSegAttr);
+                                            paramFrame2 = paramMultiViewerFilter.renderZoomFilter(paramFrame2);
                                             continue;
-                                            if (paramMultiViewerFilter != null) {
-                                              paramFrame2 = paramMultiViewerFilter.renderMaskSticker(paramFrame2, paramPTFaceAttr);
+                                            if (paramMultiViewerFilter != null)
+                                            {
+                                              paramFrame2 = paramMultiViewerFilter.renderBlurAfter(paramFrame2, paramPTFaceAttr, paramPTSegAttr);
+                                              continue;
+                                              if (paramMultiViewerFilter != null) {
+                                                paramFrame2 = paramMultiViewerFilter.renderMaskSticker(paramFrame2, paramPTFaceAttr, paramAIAttr);
+                                              }
                                             }
                                           }
                                         }
@@ -693,7 +657,7 @@ public class StickersMap
           }
         }
       }
-      label1129:
+      label1175:
       return paramFrame2;
       localList1 = null;
     }
@@ -727,14 +691,18 @@ public class StickersMap
         else
         {
           j = this.mStickerOrderList.indexOf(str);
-          if (j > i)
-          {
+          if (j > i) {
             i = j;
-          }
-          else if (j < i)
-          {
-            this.mStickerOrderList.remove(j);
-            this.mStickerOrderList.add(i, str);
+          } else if (j < i) {
+            if (j >= 0)
+            {
+              this.mStickerOrderList.remove(j);
+              this.mStickerOrderList.add(i, str);
+            }
+            else
+            {
+              LogUtils.e("StickersMap", "ERROR: setRenderOrder index < 0");
+            }
           }
         }
       }
@@ -743,7 +711,7 @@ public class StickersMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StickersMap
  * JD-Core Version:    0.7.0.1
  */

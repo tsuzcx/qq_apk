@@ -1,29 +1,87 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bbuh
-  implements View.OnTouchListener
+public class bbuh
 {
-  bbuh(bbuf parambbuf, String paramString, bbuo parambbuo) {}
+  public static bbuh a;
+  public long a;
+  public Map<Long, WeakReference<Object>> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_Bbuf.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bdtg.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bbuf.b);
-      this.jdField_a_of_type_Bbuf.a.getContext().startActivity(paramView);
-      bbuq.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bbuf.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bbuo.a), "");
+    jdField_a_of_type_Bbuh = new bbuh();
+  }
+  
+  private bbuh()
+  {
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  }
+  
+  public static bbuh a()
+  {
+    return jdField_a_of_type_Bbuh;
+  }
+  
+  public long a(Object paramObject)
+  {
+    long l;
+    if (paramObject == null) {
+      l = -9223372036854775808L;
     }
-    return true;
+    for (;;)
+    {
+      return l;
+      try
+      {
+        l = this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Long = (1L + l);
+        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new WeakReference(paramObject));
+      }
+      finally {}
+    }
+  }
+  
+  /* Error */
+  public Object a(long paramLong)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	bbuh:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   6: lload_1
+    //   7: invokestatic 35	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   10: invokeinterface 51 2 0
+    //   15: checkcast 37	java/lang/ref/WeakReference
+    //   18: astore_3
+    //   19: aload_3
+    //   20: ifnull +12 -> 32
+    //   23: aload_3
+    //   24: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   27: astore_3
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_3
+    //   31: areturn
+    //   32: aconst_null
+    //   33: astore_3
+    //   34: goto -6 -> 28
+    //   37: astore_3
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: aload_3
+    //   41: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	42	0	this	bbuh
+    //   0	42	1	paramLong	long
+    //   18	16	3	localObject1	Object
+    //   37	4	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	37	finally
+    //   23	28	37	finally
   }
 }
 

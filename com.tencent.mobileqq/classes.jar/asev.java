@@ -1,43 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
+import java.util.List;
 
-class asev
-  extends asew
+public abstract class asev
 {
-  public ImageView a;
-  public TextView a;
+  public abstract int a();
   
-  public asev(View paramView)
+  public abstract List<ases> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(asew paramasew, ases paramases, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = asep.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368180));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379199));
-    paramView.setTag(this);
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramasew, paramases), 64, null, true);
   }
   
-  public void a(String paramString1, String paramString2, bdbb parambdbb)
-  {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bamp((CharSequence)localObject, 2));
-    localObject = parambdbb.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
-    {
-      localObject = bdhj.a();
-      paramString2 = (String)localObject;
-      if (!parambdbb.a())
-      {
-        parambdbb.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
-  }
+  public abstract boolean a();
 }
 
 

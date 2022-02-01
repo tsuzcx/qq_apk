@@ -1,22 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bekz
-  implements bela
+  implements QQPermissionCallback
 {
-  public bekz(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  public bekz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bekm.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.f();
   }
 }
 

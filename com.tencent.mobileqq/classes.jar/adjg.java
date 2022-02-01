@@ -1,23 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adjg
-  implements DialogInterface.OnClickListener
+public class adjg
+  implements View.OnClickListener
 {
-  adjg(adjf paramadjf) {}
+  public adjg(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (bdin.d(BaseApplication.getContext())) {
-      asfu.a(this.a.a.a);
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    new azqx(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    libsafeedit.clearPassBuffer();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

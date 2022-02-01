@@ -1,42 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.MessageForFuDai;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class asjo
-  implements affa, Handler.Callback
+  implements asno
 {
-  private BaseChatPie a;
+  public asjo(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
   
-  public asjo(BaseChatPie paramBaseChatPie)
+  public void a(String paramString, int paramInt)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 12: 
-    case 13: 
-      asjp.e();
-      return;
-    }
-    asjp.f();
-  }
-  
-  void a(MessageForFuDai paramMessageForFuDai) {}
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11, 12, 13, 14 };
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
+    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
+    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
+    ExtendFriendSearchBaseFragment.a(this.a, paramString);
   }
 }
 

@@ -12,9 +12,9 @@ import com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager;
 public class YTPoseDetectInterface
 {
   private static final String TAG = "YoutuFaceDetect";
-  public static final String VERSION = "3.4.2.2";
+  public static final String VERSION = "3.4.5";
   private static YTPoseDetectInterface.PoseDetectResult mCheckResult;
-  private static boolean mInitModel = false;
+  private static int mInitModel = 0;
   private static boolean mIsStarted = false;
   public static int mModelRetainCount = 0;
   private static PoseDetectProcessManager mPoseDetectProcessManager;
@@ -72,11 +72,6 @@ public class YTPoseDetectInterface
     return localYTPoseImage;
   }
   
-  public static int getFrameNum()
-  {
-    return YTPoseDetectJNIInterface.getFrameNum();
-  }
-  
   public static YTPoseImage getMouthImage(int paramInt)
   {
     YTPoseImage localYTPoseImage = new YTPoseImage();
@@ -94,7 +89,7 @@ public class YTPoseDetectInterface
   
   public static String getVersion()
   {
-    return "jar3.4.2.2_native" + YTPoseDetectJNIInterface.getVersion();
+    return "jar3.4.5_native" + YTPoseDetectJNIInterface.getVersion();
   }
   
   public static int initModel()
@@ -103,9 +98,10 @@ public class YTPoseDetectInterface
     try
     {
       YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.initModel] ---");
-      if (mInitModel)
+      if (mInitModel > 0)
       {
         YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.initModel] has already inited.");
+        mInitModel += 1;
         return 0;
       }
       i = YTPoseDetectJNIInterface.initModel("");
@@ -113,7 +109,7 @@ public class YTPoseDetectInterface
       {
         mPoseDetectProcessManager = new PoseDetectProcessManager();
         mPoseDetectProcessManager.initAll();
-        mInitModel = true;
+        mInitModel += 1;
         return 0;
       }
     }
@@ -150,7 +146,7 @@ public class YTPoseDetectInterface
   
   public static void poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt, byte[] paramArrayOfByte, Camera paramCamera, float paramFloat1, float paramFloat2, float paramFloat3, YTPoseDetectInterface.PoseDetectOnFrame paramPoseDetectOnFrame)
   {
-    if (!mInitModel) {
+    if (mInitModel <= 0) {
       paramPoseDetectOnFrame.onFailed(2, "Not init model on poseDetect.", "Call YTPoseDetectInterface.initModel() before.");
     }
     do
@@ -174,20 +170,18 @@ public class YTPoseDetectInterface
   public static void releaseModel()
   {
     YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.finalize] ---");
-    if (mInitModel)
+    mInitModel -= 1;
+    if (mInitModel <= 0)
     {
-      mPoseDetectProcessManager.clearAll();
+      if (mPoseDetectProcessManager != null) {
+        mPoseDetectProcessManager.clearAll();
+      }
       YTPoseDetectJNIInterface.releaseAll();
-      mInitModel = false;
+      mInitModel = 0;
     }
   }
   
   public static void reset() {}
-  
-  public static void setFrameNum(int paramInt)
-  {
-    YTPoseDetectJNIInterface.setFrameNum(paramInt);
-  }
   
   public static void setSafetyLevel(int paramInt)
   {
@@ -203,7 +197,7 @@ public class YTPoseDetectInterface
       return -1;
     }
     mCheckResult = paramPoseDetectResult;
-    if (mInitModel) {
+    if (mInitModel > 0) {
       mPoseDetectProcessManager.start(paramContext, paramCamera, paramInt, new YTPoseDetectInterface.1());
     }
     for (;;)
@@ -224,7 +218,7 @@ public class YTPoseDetectInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.YTPoseDetectInterface
  * JD-Core Version:    0.7.0.1
  */

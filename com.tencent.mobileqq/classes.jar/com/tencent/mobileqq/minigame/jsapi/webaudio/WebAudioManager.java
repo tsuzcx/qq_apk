@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import android.support.annotation.RequiresApi;
-import bdgk;
+import bgln;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.triton.audio.AudioHandleThread;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import java.util.ArrayList;
@@ -13,13 +13,14 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class WebAudioManager
 {
   public static int SCRIPT_PROCESSOR_AUDIO_NODE_TYPE = 5;
   private static WebAudioManager mInstance;
-  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(bdgk.b(), bdgk.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(bgln.b(), bgln.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
   private ArrayList<Integer> audioBufferList = new ArrayList();
   private AudioContext audioContext;
   private HashMap<Integer, AudioContext> audioContextHashMap = new HashMap();
@@ -44,7 +45,7 @@ public class WebAudioManager
       return;
     }
     paramJsRuntime = new WebAudioManager.3(this, paramInt1, paramInt2, paramJsRuntime);
-    AudioHandleThread.getInstance().post(paramJsRuntime);
+    ThreadManager.getSubThreadHandler().post(paramJsRuntime);
   }
   
   public void closeAudioContext(int paramInt)
@@ -287,16 +288,16 @@ public class WebAudioManager
     long l1 = paramInt3 * 1000 - l2;
     if (l1 > 0L)
     {
-      AudioHandleThread.getInstance().postDelayed(new WebAudioManager.1(this, paramInt2, paramInt4, paramJsRuntime, paramInt1), l1);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebAudioManager.1(this, paramInt2, paramInt4, paramJsRuntime, paramInt1), l1);
       if (l1 <= 0L) {
-        break label159;
+        break label161;
       }
     }
-    label159:
+    label161:
     for (l1 = paramInt3 * 1000;; l1 = l2)
     {
       if (paramInt5 > 0) {
-        AudioHandleThread.getInstance().postDelayed(new WebAudioManager.2(this, paramInt2), l1 - l2 + paramInt5 * 1000);
+        ThreadManager.getSubThreadHandler().postDelayed(new WebAudioManager.2(this, paramInt2), l1 - l2 + paramInt5 * 1000);
       }
       return new JSONObject();
       this.mAudioNativeManager.play(paramInt2, paramInt4);
@@ -317,7 +318,7 @@ public class WebAudioManager
     long l = localAudioContext.getCurrentTime();
     l = paramInt3 * 1000 - l;
     if (l > 0L) {
-      AudioHandleThread.getInstance().postDelayed(new WebAudioManager.4(this, paramInt2), l);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebAudioManager.4(this, paramInt2), l);
     }
     for (;;)
     {
@@ -332,7 +333,7 @@ public class WebAudioManager
       return;
     }
     paramJsRuntime = new WebAudioManager.6(this, paramJsRuntime, ((Integer)this.scriptProcessNodeSizeMap.get(Integer.valueOf(paramInt))).intValue() * 2 * 60 / 44100);
-    AudioHandleThread.getInstance().post(paramJsRuntime);
+    ThreadManager.getSubThreadHandler().post(paramJsRuntime);
   }
   
   public void suspendAudioContext(ITTEngine paramITTEngine)
@@ -346,7 +347,7 @@ public class WebAudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager
  * JD-Core Version:    0.7.0.1
  */

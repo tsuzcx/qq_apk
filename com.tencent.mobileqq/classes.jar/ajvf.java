@@ -1,17 +1,15 @@
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-class ajvf
-  implements Comparator<axow>
+public class ajvf
 {
-  ajvf(ajve paramajve) {}
-  
-  public int a(axow paramaxow1, axow paramaxow2)
-  {
-    if ((paramaxow1 != null) && (paramaxow2 != null)) {
-      return paramaxow1.b - paramaxow2.b;
-    }
-    return -1;
-  }
+  public int a;
+  public long a;
+  public Context a;
+  public QQAppInterface a;
+  public RedTouch a;
+  public String a;
 }
 
 

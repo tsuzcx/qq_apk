@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.service;
 
 import android.os.Bundle;
-import aohc;
-import ayyb;
+import aqhm;
+import bbxe;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MobileQQServiceBase$1
   implements Runnable
 {
-  public MobileQQServiceBase$1(ayyb paramayyb, ToServiceMsg paramToServiceMsg, aohc paramaohc, Class paramClass) {}
+  public MobileQQServiceBase$1(bbxe parambbxe, ToServiceMsg paramToServiceMsg, aqhm paramaqhm, Class paramClass) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class MobileQQServiceBase$1
       }
       try
       {
-        this.this$0.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Aohc, this.jdField_a_of_type_JavaLangClass);
+        this.this$0.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Aqhm, this.jdField_a_of_type_JavaLangClass);
         return;
       }
       catch (Exception localException)

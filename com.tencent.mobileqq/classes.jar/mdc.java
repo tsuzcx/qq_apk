@@ -1,24 +1,30 @@
-public abstract interface mdc
+import com.tencent.av.ui.EffectToolbar;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
+
+public class mdc
+  implements Observer
 {
-  public abstract void a();
+  private WeakReference<EffectToolbar> a;
   
-  public abstract boolean a();
+  public mdc(EffectToolbar paramEffectToolbar)
+  {
+    this.a = new WeakReference(paramEffectToolbar);
+  }
   
-  public abstract boolean a(mdf parammdf);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(mdf parammdf);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
+      return;
+    }
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdc
  * JD-Core Version:    0.7.0.1
  */

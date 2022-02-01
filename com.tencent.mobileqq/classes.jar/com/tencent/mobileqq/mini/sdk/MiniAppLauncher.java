@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import aoom;
+import aqpv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -23,10 +23,9 @@ public class MiniAppLauncher
   private static final String URL_PREFIX_HTTP_MINIAPP_AD_REAL_HEAD_SCHEME_V3 = "mqqapi://miniapp/adopen";
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_SCHEME_V1 = "mqqapi://microapp/open?";
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_SCHEME_V2 = "mqqapi://miniapp/open?";
-  private static final String URL_PREFIX_MINIAPP_HTTP = "http://imgcache.qq.com/channel/mini_app/upgrade.html";
   private static final String URL_PREFIX_MINIAPP_HTTPS = "https://imgcache.qq.com/channel/mini_app/upgrade.html";
   private static final String URL_PREFIX_MINIAPP_URL = "https://m.q.qq.com/a/";
-  private static final String URL_PREFIX_MINIAPP_URL_HTTP = "http://m.q.qq.com/a/";
+  private static final String URL_PREFIX_MINIAPP_URL_HTTP = "https://m.q.qq.com/a/";
   private static final String URL_PREFIX_WX_MINIAPP_HTTPS = "https://mp.weixin.qq.com/a/";
   static long mLastGameTime;
   
@@ -78,7 +77,7 @@ public class MiniAppLauncher
   public static boolean isFakeUrl(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("http://m.q.qq.com/a/"))) {
+    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("https://m.q.qq.com/a/"))) {
       return false;
     }
     return true;
@@ -203,8 +202,9 @@ public class MiniAppLauncher
         if (TextUtils.isEmpty(str1)) {
           paramEntryModel = (String)paramHashMap.get("mini_appid");
         }
+        QLog.i("MiniAppLauncher", 1, "launchMiniAppByScheme appid:" + paramEntryModel + ", param:" + localLaunchParam);
         if (verifyAppid_Scence_Fakeurl_Model(paramEntryModel, localLaunchParam.scene, localLaunchParam.fakeUrl)) {
-          break label476;
+          break label511;
         }
         QLog.e("MiniAppLauncher", 1, "Appid is： " + paramEntryModel + ",scence:" + localLaunchParam.scene + ",fakeurl:" + localLaunchParam.fakeUrl + " is forbidden!!!");
         AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.4());
@@ -253,16 +253,14 @@ public class MiniAppLauncher
         }
       }
     }
-    label476:
+    label511:
     return openMiniApp(paramContext, localLaunchParam, paramMiniAppLaunchListener);
   }
   
   private static boolean openMiniApp(Context paramContext, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
     int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppLauncher", 2, "launchMiniApp openMiniApp :" + paramLaunchParam);
-    }
+    QLog.i("MiniAppLauncher", 2, "launchMiniApp openMiniApp :" + paramLaunchParam);
     long l = System.currentTimeMillis();
     if (l - mLastGameTime <= 1000L) {
       return false;
@@ -289,7 +287,7 @@ public class MiniAppLauncher
   public static boolean startMiniApp(Context paramContext, String paramString, int paramInt, EntryModel paramEntryModel, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
     int i = 2054;
-    QLog.d("MiniAppLauncher", 1, "startMiniApp scene:" + paramInt + " url:" + paramString);
+    QLog.i("MiniAppLauncher", 1, "startMiniApp scene:" + paramInt + " url:" + paramString);
     if (BaseActivity.sTopActivity != null) {
       QLog.d("MiniAppLauncher", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
     }
@@ -453,7 +451,8 @@ public class MiniAppLauncher
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
-    String str1 = aoom.a("mini_app_outsite_black_list", "");
+    String str1 = aqpv.a("mini_app_outsite_black_list", "");
+    QLog.i("MiniAppLauncher", 1, "verifyAppid_Scence_Fakeurl_Model appid:" + paramString1 + ", scene:" + paramInt + ", fakeUrl:" + paramString2 + ", blackList:" + str1);
     for (;;)
     {
       int i;
@@ -467,7 +466,7 @@ public class MiniAppLauncher
         {
           String[] arrayOfString = localObject[i].split("\\|");
           if (arrayOfString.length < 3) {
-            break label188;
+            break label245;
           }
           String str2 = arrayOfString[0];
           String str3 = arrayOfString[1];
@@ -476,16 +475,16 @@ public class MiniAppLauncher
             str1 = arrayOfString[3];
           }
           if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (!str2.equals(paramString1)) || (Integer.valueOf(arrayOfString[1]).intValue() != paramInt)) {
-            break label188;
+            break label245;
           }
           if (!TextUtils.isEmpty(str1))
           {
             if (TextUtils.isEmpty(str1)) {
-              break label188;
+              break label245;
             }
             boolean bool = str1.equals(paramString2);
             if (!bool) {
-              break label188;
+              break label245;
             }
           }
           return false;
@@ -496,14 +495,14 @@ public class MiniAppLauncher
         QLog.e("MiniAppLauncher", 1, "verify appidWhiteList failed: " + paramString1);
       }
       return true;
-      label188:
+      label245:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

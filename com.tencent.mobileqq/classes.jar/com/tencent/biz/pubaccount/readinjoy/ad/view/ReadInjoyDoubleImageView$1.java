@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import ogr;
+import otn;
 
 public class ReadInjoyDoubleImageView$1
   implements Runnable
 {
-  public ReadInjoyDoubleImageView$1(ogr paramogr) {}
+  public ReadInjoyDoubleImageView$1(otn paramotn) {}
   
   public void run()
   {
-    ogr.a(this.this$0);
+    otn.a(this.this$0);
   }
 }
 

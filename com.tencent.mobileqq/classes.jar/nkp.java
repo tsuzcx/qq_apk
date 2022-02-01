@@ -1,23 +1,18 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-
-public class nkp
-  implements View.OnClickListener
+final class nkp
+  implements nkl
 {
-  public nkp(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(paramView);
+    if ((paramInt == 0) && (nko.a.a())) {
+      nko.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkp
  * JD-Core Version:    0.7.0.1
  */

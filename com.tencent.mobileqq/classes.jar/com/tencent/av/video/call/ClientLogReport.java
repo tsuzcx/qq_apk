@@ -3,7 +3,7 @@ package com.tencent.av.video.call;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import bdin;
+import bgnt;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import len;
-import lgb;
-import mqg;
+import lbf;
+import lcv;
+import mnl;
 
 public class ClientLogReport
 {
@@ -285,7 +285,7 @@ public class ClientLogReport
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord mInit is false.");
       return;
     }
-    if (!bdin.g(this.mContext))
+    if (!bgnt.g(this.mContext))
     {
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord network is invalid.");
       return;
@@ -313,7 +313,7 @@ public class ClientLogReport
         if (!bool1) {
           break label173;
         }
-        lgb.a(bool2);
+        lcv.a(bool2);
       }
     }
     for (;;)
@@ -328,7 +328,7 @@ public class ClientLogReport
           paramFromServiceMsg.mkdirs();
         }
         paramIntent.writeToFile(new File(REPORT_FAIL_LOG_DIR, String.valueOf(paramIntent.mTimestamp)));
-        lgb.c();
+        lcv.c();
       }
     }
   }
@@ -340,7 +340,7 @@ public class ClientLogReport
       this.mContext = paramContext;
       this.mAppId = paramInt;
       this.mMsfSub = MsfServiceSdk.get();
-      if (mqg.a().q != 1) {
+      if (mnl.a().q != 1) {
         break label73;
       }
     }
@@ -361,7 +361,7 @@ public class ClientLogReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.video.call.ClientLogReport
  * JD-Core Version:    0.7.0.1
  */

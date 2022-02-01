@@ -1,26 +1,69 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import mqq.app.AppRuntime;
+import android.graphics.Rect;
+import android.view.View;
+import java.util.ArrayList;
 
-public class asgx
-  implements CompoundButton.OnCheckedChangeListener
+class asgx
+  implements asox
 {
-  public asgx(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  asgx(asgw paramasgw, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a()
   {
-    int i = 1;
-    bhsb.a(true, paramBoolean);
-    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      azqs.b(null, "CliOper", "", paramCompoundButton, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
-      return;
-      i = 0;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Rect a(int paramInt)
+  {
+    Rect localRect = new Rect(0, 0, 0, 0);
+    int i = a();
+    if (i > 1) {
+      if (paramInt == 0)
+      {
+        localRect.right = this.b;
+        localRect.left = (this.b * 2);
+      }
     }
+    while (i != 1)
+    {
+      return localRect;
+      if (paramInt == i - 1)
+      {
+        localRect.left = this.b;
+        localRect.right = (this.b * 2);
+        return localRect;
+      }
+      paramInt = this.b;
+      localRect.right = paramInt;
+      localRect.left = paramInt;
+      return localRect;
+    }
+    paramInt = this.b * 2;
+    localRect.right = paramInt;
+    localRect.left = paramInt;
+    return localRect;
+  }
+  
+  public View a(int paramInt)
+  {
+    int j = a();
+    if (j <= b()) {}
+    for (int i = 2131561150;; i = 2131561151)
+    {
+      View localView = View.inflate(this.jdField_a_of_type_Asgw.itemView.getContext(), i, null);
+      asgw.a(this.jdField_a_of_type_Asgw, localView, (asgv)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
+      asgw.a(this.jdField_a_of_type_Asgw, (asgv)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
+      return localView;
+    }
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

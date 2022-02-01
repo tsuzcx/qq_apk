@@ -1,85 +1,119 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.LbsDataV2.GpsInfo;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bmko
-  extends bmnh
-  implements IEventReceiver
+class bmko
+  extends aoou
+  implements bmki
 {
-  private bmkp a;
+  private static long jdField_a_of_type_Long;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static ConcurrentHashMap<String, bmko> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bmko(@NonNull bmnj parambmnj)
+  private bmko(String paramString)
   {
-    super(parambmnj);
-    this.jdField_a_of_type_Bmkp = new bmkp(this.jdField_a_of_type_Bmnj);
+    super(paramString, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public static bmko a(String paramString)
   {
-    bmjs localbmjs = (bmjs)a(bmjs.class);
-    if (localbmjs != null) {
-      localbmjs.d();
+    Object localObject1 = (bmko)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject1 == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        bmko localbmko = (bmko)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject1 = localbmko;
+        if (localbmko == null)
+        {
+          localObject1 = new bmko(paramString);
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+        }
+        return localObject1;
+      }
+    }
+    return localObject1;
+  }
+  
+  public static LbsDataV2.GpsInfo a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation == null) {
+      return null;
+    }
+    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
+    localGpsInfo.accuracy = ((int)paramSosoLocation.jdField_a_of_type_Float);
+    localGpsInfo.alt = ((int)paramSosoLocation.jdField_e_of_type_Double);
+    if ((paramSosoLocation.d == 0.0D) && (paramSosoLocation.c == 0.0D))
+    {
+      localGpsInfo.gpsType = 1;
+      localGpsInfo.lat = ((int)(paramSosoLocation.jdField_a_of_type_Double * 1000000.0D));
+      localGpsInfo.lon = ((int)(paramSosoLocation.b * 1000000.0D));
+      return localGpsInfo;
+    }
+    localGpsInfo.gpsType = 0;
+    localGpsInfo.lat = ((int)(paramSosoLocation.c * 1000000.0D));
+    localGpsInfo.lon = ((int)(paramSosoLocation.d * 1000000.0D));
+    return localGpsInfo;
+  }
+  
+  public void a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    try
+    {
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      aoor.a(this);
+      return;
+    }
+    catch (Exception paramHandler)
+    {
+      QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]exception ", paramHandler);
     }
   }
   
-  protected boolean a(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    switch (paramMessage.what)
+    QZLog.i("QzoneNewLiveInitLocation.NewLbsInterface", 1, "[QZLIVE_LBS_MODULE]----Info");
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    bmfi.a(paramInt, this.jdField_a_of_type_JavaLangString, l1 - l2);
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_initlocation_success", false);
+    if (paramInt == 0)
     {
+      SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
+      paramSosoLbsInfo = a(paramSosoLbsInfo.a);
+      if ((localSosoLocation != null) && (paramSosoLbsInfo != null) && (!TextUtils.isEmpty(localSosoLocation.jdField_e_of_type_JavaLangString)) && (!localSosoLocation.jdField_e_of_type_JavaLangString.equalsIgnoreCase("unknown")))
+      {
+        localBundle.putBoolean("key_initlocation_success", true);
+        localBundle.putString("key_select_poi_name", localSosoLocation.jdField_e_of_type_JavaLangString.trim());
+        localBundle.putString("key_select_poi_default_name", localSosoLocation.jdField_a_of_type_JavaLangString);
+        localBundle.putInt("key_select_latitude", paramSosoLbsInfo.lat);
+        localBundle.putInt("key_select_longtitude", paramSosoLbsInfo.lon);
+        localBundle.putInt("key_select_altitude", paramSosoLbsInfo.alt);
+        localBundle.putInt("key_select_gpstype", paramSosoLbsInfo.gpsType);
+        QLog.i("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]#onGetDeviceData succeed! just location--->" + paramSosoLbsInfo);
+      }
     }
     for (;;)
     {
-      return super.a(paramMessage);
-      int i;
-      DynamicTextConfigManager localDynamicTextConfigManager;
-      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "handle message MESSAGE_DOODLE_LAYOUT_LOADED");
-        }
-        Object localObject = (EditVideoParams)this.jdField_a_of_type_Bmor.getActivity().getIntent().getParcelableExtra(EditVideoParams.class.getName());
-        i = ((EditVideoParams)localObject).a("extra_slide_sticker_id", -1);
-        localObject = ((EditVideoParams)localObject).a("extra_slide_sticker_str");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (i == -1)) {
-          continue;
-        }
-        localDynamicTextConfigManager = (DynamicTextConfigManager)blqr.a(7);
-        if (!localDynamicTextConfigManager.a()) {
-          localDynamicTextConfigManager.c();
-        }
-        localDynamicTextConfigBean = localDynamicTextConfigManager.a(i + "");
-        if (localDynamicTextConfigBean == null) {
-          continue;
-        }
-        if (!localDynamicTextConfigManager.a(localDynamicTextConfigBean)) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "isDynamicTextUsable, addSticker : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bmnj.a(i, (String)localObject);
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("EditVideoAblumList", 2, bhsw.a(localException));
-        continue;
-        label226:
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "configBean has not downloaded, start download : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bmkp.a(i);
-        this.jdField_a_of_type_Bmkp.a(localException);
-        localDynamicTextConfigManager.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bmkp);
-      }
+      localMessage.obj = localBundle;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+      QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]location failed: error in force gps info update..");
     }
   }
 }

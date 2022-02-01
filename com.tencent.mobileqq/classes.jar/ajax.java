@@ -1,32 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajax
-  implements EIPCOnGetConnectionListener
+public abstract class ajax
 {
-  ajax(ajaw paramajaw) {}
+  public long a;
+  public String a;
+  public boolean b;
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public String a()
   {
-    if (paramEIPCConnection != null) {
-      ajaw.a(this.a, paramEIPCConnection.procName);
-    }
-    ajaw.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
+    return "";
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public String a(QQAppInterface paramQQAppInterface)
   {
-    if (paramEIPCConnection != null) {
-      ajaw.a(this.a, paramEIPCConnection.procName);
-    }
-    ajaw.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
+    return this.a;
+  }
+  
+  public abstract boolean a();
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
   }
 }
 

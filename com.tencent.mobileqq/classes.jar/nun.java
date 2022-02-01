@@ -1,161 +1,454 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool.1;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.MsgCommonData;
 
 public class nun
 {
-  public static final String a;
-  public awgf a;
-  public ShopWebViewFragment a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new EcshopCacheTool.1(this);
-  public Map<String, Friends> a;
-  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new nuo(this);
-  public nup a;
+  public int a;
+  public String a;
   public boolean a;
-  Map<String, Bitmap> b;
-  public Map<String, Integer> c;
-  public Map<String, String> d;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public String m = "";
+  public String n = "";
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
+  public String x;
   
-  static
+  private nun()
   {
-    jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "shop_assit_banner_json.txt";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
+    this.jdField_k_of_type_JavaLangString = "";
+    this.jdField_l_of_type_JavaLangString = "";
   }
   
-  public nun(AppInterface paramAppInterface, ShopWebViewFragment paramShopWebViewFragment)
+  public nun(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = paramShopWebViewFragment;
-    this.c = new ConcurrentHashMap();
-    this.d = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
-    this.jdField_a_of_type_Awgf = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Nup = ((nup)paramAppInterface.getBusinessHandler(0));
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    synchronized (this.b)
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
+    this.jdField_k_of_type_JavaLangString = "";
+    this.jdField_l_of_type_JavaLangString = "";
+    try
     {
-      paramString = (Bitmap)this.b.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return "";
-    }
-    paramString = (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.getFriendNick();
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = null;
-    this.jdField_a_of_type_Nup = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.c != null) {
-      this.c.clear();
-    }
-    if (this.d != null) {
-      this.d.clear();
-    }
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent("action_get_PA_head");
-    localIntent.putExtra("uin", paramString);
-    paramContext.sendBroadcast(localIntent);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    synchronized (this.b)
-    {
-      this.b.put(paramString, paramBitmap);
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("paUin", "");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("paName", "");
+      this.jdField_c_of_type_JavaLangString = paramString.optString("adId", "");
+      this.jdField_d_of_type_JavaLangString = paramString.optString("adPosId", "");
+      this.jdField_b_of_type_Boolean = paramString.optBoolean("bannerShow", false);
+      this.jdField_c_of_type_Int = paramString.optInt("bannertype", 0);
+      this.jdField_d_of_type_Int = paramString.optInt("jumpType", 0);
+      this.n = paramString.optString("jumpUrl", "");
+      this.jdField_k_of_type_JavaLangString = paramString.optString("appId", "");
+      this.jdField_l_of_type_JavaLangString = paramString.optString("packagename", "");
+      this.jdField_i_of_type_JavaLangString = paramString.optString("androidDownloadUrl", "");
+      this.jdField_f_of_type_JavaLangString = paramString.optString("bannerImgUrl", "");
+      this.jdField_g_of_type_JavaLangString = paramString.optString("bannerText", "");
+      this.jdField_h_of_type_JavaLangString = paramString.optString("bannerButtonText", "");
+      this.jdField_c_of_type_Boolean = paramString.optBoolean("silentDownload", false);
+      this.m = paramString.optString("appName", "");
+      this.jdField_e_of_type_JavaLangString = paramString.optString("reportLink", "");
+      this.jdField_a_of_type_Boolean = paramString.optBoolean("horizontalVideo", false);
+      this.jdField_a_of_type_Int = paramString.optInt("audioFadeinDuration", 5);
+      this.jdField_b_of_type_Int = paramString.optInt("audioSwitchType", 0);
+      this.jdField_e_of_type_Int = paramString.optInt("preDownloadType", 0);
+      this.jdField_e_of_type_Int = PAAdPreloadTask.checkNetworkType(this.jdField_e_of_type_Int);
+      if ((!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!this.jdField_e_of_type_JavaLangString.contains("https"))) {
+        this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replace("http", "https");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("AdvertisementRecentUserManager", 2, "reportLink :" + this.jdField_e_of_type_JavaLangString);
+      }
+      this.o = paramString.optString("str_openJumpUrlGuide", "");
+      this.jdField_j_of_type_JavaLangString = paramString.optString("str_myappDownloadUrl", "");
+      this.p = paramString.optString("jumpTypeParams");
+      this.jdField_h_of_type_Int = paramString.optInt("canScorll");
+      if (this.jdField_h_of_type_Int == 1) {}
+      for (;;)
+      {
+        this.jdField_d_of_type_Boolean = bool;
+        this.jdField_i_of_type_Int = paramString.optInt("controlVariable");
+        this.jdField_j_of_type_Int = paramString.optInt("uint32_control_plugin_time");
+        this.jdField_k_of_type_Int = paramString.optInt("uint32_autoJump");
+        this.jdField_g_of_type_Int = paramString.optInt("dDCategoryId", -1);
+        this.q = paramString.optString("dDCategoryName", "");
+        this.jdField_f_of_type_Int = paramString.optInt("dDItemID", -1);
+        this.r = paramString.optString("str_clickLink", "");
+        this.jdField_l_of_type_Int = paramString.optInt("uint32_monitorType", 0);
+        this.s = paramString.getString("str_share_nick");
+        this.t = paramString.getString("str_share_ad_head_url");
+        this.u = paramString.getString("str_share_ad_brief");
+        this.v = paramString.getString("str_share_ad_txt");
+        this.w = paramString.getString("str_share_ad_icon_url");
+        this.x = paramString.getString("str_share_jump_url");
+        return;
+        bool = false;
+      }
       return;
     }
-  }
-  
-  public void a(AppRuntime paramAppRuntime, int paramInt)
-  {
-    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
-    localSQQSHPClientReq.msglistlen.set(paramInt);
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atkg.class);
-    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetFolderInfo");
-    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
-    localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
-  
-  public void a(AppRuntime paramAppRuntime, List<Long> paramList, double paramDouble1, double paramDouble2)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), atkg.class);
-    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
-    localSQQSHPClientReq.puinlist.addAll(paramList);
-    if ((!TextUtils.isEmpty(paramAppRuntime.getAccount())) && (paramDouble1 != 0.0D) && (paramDouble2 != 0.0D))
+    catch (JSONException paramString)
     {
-      localSQQSHPClientReq.latitude.set(paramDouble2);
-      localSQQSHPClientReq.longitude.set(paramDouble1);
-      QLog.i("EcshopCacheTool", 2, "lat:" + paramDouble2 + ",lon:" + paramDouble1);
+      paramString.printStackTrace();
     }
-    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetShopBindUin");
-    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
-    localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    paramAppRuntime.startServlet(localNewIntent);
   }
   
-  public boolean a(String paramString)
+  public static nun a(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
-      return false;
+    boolean bool = true;
+    nun localnun = new nun();
+    localnun.jdField_a_of_type_JavaLangString = paramString2;
+    localnun.jdField_b_of_type_JavaLangString = paramString3;
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new JSONObject(paramString1);
+        localnun.jdField_c_of_type_JavaLangString = paramString1.optString("str_adId", "");
+        localnun.jdField_d_of_type_JavaLangString = paramString1.optString("str_adPosId", "");
+        localnun.jdField_b_of_type_Boolean = paramString1.optBoolean("bool_bannerShow", false);
+        localnun.jdField_c_of_type_Int = paramString1.optInt("uint32_bannertype", 0);
+        localnun.jdField_d_of_type_Int = paramString1.optInt("uint32_jumpType", 0);
+        localnun.n = paramString1.optString("str_jumpUrl", "");
+        localnun.jdField_k_of_type_JavaLangString = paramString1.optString("str_appId", "");
+        localnun.jdField_l_of_type_JavaLangString = paramString1.optString("str_packagename", "");
+        localnun.jdField_i_of_type_JavaLangString = paramString1.optString("str_androidDownloadUrl", "");
+        localnun.jdField_f_of_type_JavaLangString = paramString1.optString("str_bannerImgUrl", "");
+        localnun.jdField_g_of_type_JavaLangString = paramString1.optString("str_bannerText", "");
+        localnun.jdField_h_of_type_JavaLangString = paramString1.optString("str_bannerButtonText", "");
+        localnun.jdField_c_of_type_Boolean = paramString1.optBoolean("bool_silentDownload", false);
+        localnun.m = paramString1.optString("str_appName", "");
+        localnun.jdField_e_of_type_JavaLangString = paramString1.optString("str_reportLink", "");
+        if ((!TextUtils.isEmpty(localnun.jdField_e_of_type_JavaLangString)) && (!localnun.jdField_e_of_type_JavaLangString.contains("https"))) {
+          localnun.jdField_e_of_type_JavaLangString = localnun.jdField_e_of_type_JavaLangString.replace("http", "https");
+        }
+        localnun.jdField_a_of_type_Boolean = paramString1.optBoolean("bool_horizontalVideo", false);
+        localnun.jdField_a_of_type_Int = paramString1.optInt("uint32_audioFadeinDuration", 5);
+        localnun.jdField_b_of_type_Int = paramString1.optInt("uint32_audioSwitchType", 0);
+        localnun.jdField_e_of_type_Int = paramString1.optInt("uint32_preDownloadType", 0);
+        localnun.jdField_e_of_type_Int = PAAdPreloadTask.checkNetworkType(localnun.jdField_e_of_type_Int);
+        localnun.o = paramString1.optString("str_openJumpUrlGuide", "");
+        localnun.jdField_j_of_type_JavaLangString = paramString1.optString("str_myappDownloadUrl", "");
+        localnun.p = paramString1.optString("str_jumpTypeParams", "");
+        localnun.jdField_h_of_type_Int = paramString1.optInt("uint32_scrollUpToJump", 0);
+        if (localnun.jdField_h_of_type_Int == 1)
+        {
+          localnun.jdField_d_of_type_Boolean = bool;
+          localnun.jdField_i_of_type_Int = paramString1.optInt("uint32_controlVariable", 0);
+          localnun.jdField_j_of_type_Int = paramString1.optInt("uint32_control_plugin_time", 0);
+          localnun.jdField_k_of_type_Int = paramString1.optInt("uint32_autoJump", 0);
+          if (localnun.jdField_d_of_type_Int >= 3)
+          {
+            bool = TextUtils.isEmpty(localnun.p);
+            if (bool) {}
+          }
+          try
+          {
+            paramString2 = new JSONObject(localnun.p);
+            localnun.jdField_g_of_type_Int = paramString2.optInt("class_id", -1);
+            localnun.q = paramString2.optString("class_name", "");
+            localnun.jdField_f_of_type_Int = paramString2.optInt("pendant_id", -1);
+            localnun.r = paramString1.optString("str_clickLink", "");
+            localnun.jdField_l_of_type_Int = paramString1.optInt("uint32_monitorType", 0);
+            localnun.s = paramString1.optString("str_share_nick", "");
+            localnun.t = paramString1.optString("str_share_ad_head_url", "");
+            localnun.u = paramString1.optString("str_share_ad_brief", "");
+            localnun.v = paramString1.optString("str_share_ad_txt", "");
+            localnun.w = paramString1.optString("str_share_ad_icon_url", "");
+            localnun.x = paramString1.optString("str_share_jump_url", "");
+            return localnun;
+          }
+          catch (JSONException paramString2)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.w("AdvertisementRecentUserManager", 2, "parse jumpTypeParams fail" + paramString2.getMessage());
+            continue;
+          }
+        }
+        bool = false;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+        return null;
+      }
     }
-    return (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString) != null;
   }
   
-  public void b(Context paramContext, String paramString)
+  public static nun a(submsgtype0xf9.MsgCommonData paramMsgCommonData, String paramString1, String paramString2)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    paramContext.startActivity(localIntent);
+    boolean bool = true;
+    nun localnun = new nun();
+    localnun.jdField_a_of_type_JavaLangString = paramString1;
+    localnun.jdField_b_of_type_JavaLangString = paramString2;
+    if (paramMsgCommonData.str_adId.has()) {
+      localnun.jdField_c_of_type_JavaLangString = paramMsgCommonData.str_adId.get();
+    }
+    if (paramMsgCommonData.str_adPosId.has()) {
+      localnun.jdField_d_of_type_JavaLangString = paramMsgCommonData.str_adPosId.get();
+    }
+    if (paramMsgCommonData.bool_bannerShow.has()) {
+      localnun.jdField_b_of_type_Boolean = paramMsgCommonData.bool_bannerShow.get();
+    }
+    if (paramMsgCommonData.uint32_bannertype.has()) {
+      localnun.jdField_c_of_type_Int = paramMsgCommonData.uint32_bannertype.get();
+    }
+    if (paramMsgCommonData.uint32_jumpType.has()) {
+      localnun.jdField_d_of_type_Int = paramMsgCommonData.uint32_jumpType.get();
+    }
+    if (paramMsgCommonData.str_jumpUrl.has()) {
+      localnun.n = paramMsgCommonData.str_jumpUrl.get();
+    }
+    if (paramMsgCommonData.str_appId.has()) {
+      localnun.jdField_k_of_type_JavaLangString = paramMsgCommonData.str_appId.get();
+    }
+    if (paramMsgCommonData.str_packagename.has()) {
+      localnun.jdField_l_of_type_JavaLangString = paramMsgCommonData.str_packagename.get();
+    }
+    if (paramMsgCommonData.str_androidDownloadUrl.has()) {
+      localnun.jdField_i_of_type_JavaLangString = paramMsgCommonData.str_androidDownloadUrl.get();
+    }
+    if (paramMsgCommonData.str_bannerImgUrl.has()) {
+      localnun.jdField_f_of_type_JavaLangString = paramMsgCommonData.str_bannerImgUrl.get();
+    }
+    if (paramMsgCommonData.str_bannerText.has()) {
+      localnun.jdField_g_of_type_JavaLangString = paramMsgCommonData.str_bannerText.get();
+    }
+    if (paramMsgCommonData.str_bannerButtonText.has()) {
+      localnun.jdField_h_of_type_JavaLangString = paramMsgCommonData.str_bannerButtonText.get();
+    }
+    if (paramMsgCommonData.bool_silentDownload.has()) {
+      localnun.jdField_c_of_type_Boolean = paramMsgCommonData.bool_silentDownload.get();
+    }
+    if (paramMsgCommonData.str_appName.has()) {
+      localnun.m = paramMsgCommonData.str_appName.get();
+    }
+    if (paramMsgCommonData.str_reportLink.has())
+    {
+      localnun.jdField_e_of_type_JavaLangString = paramMsgCommonData.str_reportLink.get();
+      if ((!TextUtils.isEmpty(localnun.jdField_e_of_type_JavaLangString)) && (!localnun.jdField_e_of_type_JavaLangString.contains("https"))) {
+        localnun.jdField_e_of_type_JavaLangString = localnun.jdField_e_of_type_JavaLangString.replace("http", "https");
+      }
+    }
+    if (paramMsgCommonData.bool_horizontalVideo.has()) {
+      localnun.jdField_a_of_type_Boolean = paramMsgCommonData.bool_horizontalVideo.get();
+    }
+    if (paramMsgCommonData.uint32_audioFadeinDuration.has()) {
+      localnun.jdField_a_of_type_Int = paramMsgCommonData.uint32_audioFadeinDuration.get();
+    }
+    if (paramMsgCommonData.uint32_audioSwitchType.has()) {
+      localnun.jdField_b_of_type_Int = paramMsgCommonData.uint32_audioSwitchType.get();
+    }
+    if (paramMsgCommonData.uint32_preDownloadType.has())
+    {
+      localnun.jdField_e_of_type_Int = paramMsgCommonData.uint32_preDownloadType.get();
+      localnun.jdField_e_of_type_Int = PAAdPreloadTask.checkNetworkType(localnun.jdField_e_of_type_Int);
+    }
+    if (paramMsgCommonData.str_openJumpUrlGuide.has()) {
+      localnun.o = paramMsgCommonData.str_openJumpUrlGuide.get();
+    }
+    if (paramMsgCommonData.str_myappDownloadUrl.has()) {
+      localnun.jdField_j_of_type_JavaLangString = paramMsgCommonData.str_myappDownloadUrl.get();
+    }
+    if (paramMsgCommonData.str_jumpTypeParams.has()) {
+      localnun.p = paramMsgCommonData.str_jumpTypeParams.get();
+    }
+    if (paramMsgCommonData.uint32_scrollUpToJump.has())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("AdvertisementRecentUserManager", 2, "uint32_scrollUpToJump :" + paramMsgCommonData.uint32_scrollUpToJump.get());
+      }
+      localnun.jdField_h_of_type_Int = paramMsgCommonData.uint32_scrollUpToJump.get();
+      if (localnun.jdField_h_of_type_Int != 1) {
+        break label1112;
+      }
+    }
+    for (;;)
+    {
+      localnun.jdField_d_of_type_Boolean = bool;
+      if (paramMsgCommonData.uint32_controlVariable.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementRecentUserManager", 2, "uint32_controlVariable :" + paramMsgCommonData.uint32_controlVariable.get());
+        }
+        localnun.jdField_i_of_type_Int = paramMsgCommonData.uint32_controlVariable.get();
+      }
+      if (paramMsgCommonData.uint32_control_plugin_time.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementRecentUserManager", 2, "uint32_control_plugin_time :" + paramMsgCommonData.uint32_control_plugin_time.get());
+        }
+        localnun.jdField_j_of_type_Int = paramMsgCommonData.uint32_control_plugin_time.get();
+      }
+      if (paramMsgCommonData.uint32_autoJump.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementRecentUserManager", 2, "uint32_autoJump :" + paramMsgCommonData.uint32_autoJump.get());
+        }
+        localnun.jdField_k_of_type_Int = paramMsgCommonData.uint32_autoJump.get();
+      }
+      if ((localnun.jdField_d_of_type_Int >= 3) && (!TextUtils.isEmpty(localnun.p))) {}
+      try
+      {
+        paramString1 = new JSONObject(localnun.p);
+        localnun.jdField_g_of_type_Int = paramString1.optInt("class_id", -1);
+        localnun.q = paramString1.optString("class_name", "");
+        localnun.jdField_f_of_type_Int = paramString1.optInt("pendant_id", -1);
+        if (paramMsgCommonData.str_clickLink.has())
+        {
+          localnun.r = paramMsgCommonData.str_clickLink.get();
+          if ((!TextUtils.isEmpty(localnun.r)) && (!localnun.r.startsWith("https://"))) {
+            localnun.r = localnun.r.replace("http://", "https://");
+          }
+        }
+        if (paramMsgCommonData.uint32_monitorType.has()) {
+          localnun.jdField_l_of_type_Int = paramMsgCommonData.uint32_monitorType.get();
+        }
+        if (paramMsgCommonData.str_share_nick.has()) {
+          localnun.s = paramMsgCommonData.str_share_nick.get();
+        }
+        if (paramMsgCommonData.str_share_ad_head_url.has()) {
+          localnun.t = paramMsgCommonData.str_share_ad_head_url.get();
+        }
+        if (paramMsgCommonData.str_share_ad_brief.has()) {
+          localnun.u = paramMsgCommonData.str_share_ad_brief.get();
+        }
+        if (paramMsgCommonData.str_share_ad_txt.has()) {
+          localnun.v = paramMsgCommonData.str_share_ad_txt.get();
+        }
+        if (paramMsgCommonData.str_share_ad_icon_url.has()) {
+          localnun.w = paramMsgCommonData.str_share_ad_icon_url.get();
+        }
+        if (paramMsgCommonData.str_share_jump_url.has()) {
+          localnun.x = paramMsgCommonData.str_share_jump_url.get();
+        }
+        return localnun;
+        label1112:
+        bool = false;
+      }
+      catch (JSONException paramString1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("AdvertisementRecentUserManager", 2, "parse jumpTypeParams fail" + paramString1.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("paUin", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("paName", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("bannerShow", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("bannertype", this.jdField_c_of_type_Int);
+      localJSONObject.put("jumpType", this.jdField_d_of_type_Int);
+      localJSONObject.put("jumpUrl", this.n);
+      localJSONObject.put("appId", this.jdField_k_of_type_JavaLangString);
+      localJSONObject.put("packagename", this.jdField_l_of_type_JavaLangString);
+      localJSONObject.put("androidDownloadUrl", this.jdField_i_of_type_JavaLangString);
+      localJSONObject.put("bannerImgUrl", this.jdField_f_of_type_JavaLangString);
+      localJSONObject.put("bannerText", this.jdField_g_of_type_JavaLangString);
+      localJSONObject.put("bannerButtonText", this.jdField_h_of_type_JavaLangString);
+      localJSONObject.put("silentDownload", this.jdField_c_of_type_Boolean);
+      localJSONObject.put("adId", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("adPosId", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("appName", this.m);
+      localJSONObject.put("reportLink", this.jdField_e_of_type_JavaLangString);
+      localJSONObject.put("horizontalVideo", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("audioFadeinDuration", this.jdField_a_of_type_Int);
+      localJSONObject.put("audioSwitchType", this.jdField_b_of_type_Int);
+      localJSONObject.put("preDownloadType", this.jdField_e_of_type_Int);
+      localJSONObject.put("str_openJumpUrlGuide", this.o);
+      localJSONObject.put("str_myappDownloadUrl", this.jdField_j_of_type_JavaLangString);
+      localJSONObject.put("jumpTypeParams", this.p);
+      localJSONObject.put("canScorll", this.jdField_h_of_type_Int);
+      localJSONObject.put("controlVariable", this.jdField_i_of_type_Int);
+      localJSONObject.put("uint32_control_plugin_time", this.jdField_j_of_type_Int);
+      localJSONObject.put("uint32_autoJump", this.jdField_k_of_type_Int);
+      localJSONObject.put("dDCategoryId", this.jdField_g_of_type_Int);
+      localJSONObject.put("dDCategoryName", this.q);
+      localJSONObject.put("dDItemID", this.jdField_f_of_type_Int);
+      localJSONObject.put("str_clickLink", this.r);
+      localJSONObject.put("uint32_monitorType", this.jdField_l_of_type_Int);
+      localJSONObject.put("str_share_nick", this.s);
+      localJSONObject.put("str_share_ad_head_url", this.t);
+      localJSONObject.put("str_share_ad_brief", this.u);
+      localJSONObject.put("str_share_ad_txt", this.v);
+      localJSONObject.put("str_share_ad_icon_url", this.w);
+      localJSONObject.put("str_share_jump_url", this.x);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    return "VideoDownloadItem{mTrueUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNickName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", adId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", adPosId='" + this.jdField_d_of_type_JavaLangString + '\'' + ", reportLink='" + this.jdField_e_of_type_JavaLangString + '\'' + ", audioFadeinDuration=" + this.jdField_a_of_type_Int + ", horizontalVideo=" + this.jdField_a_of_type_Boolean + ", audioMode=" + this.jdField_b_of_type_Int + ", bannerShow=" + this.jdField_b_of_type_Boolean + ", bannertype=" + this.jdField_c_of_type_Int + ", bannerImgUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", bannerText='" + this.jdField_g_of_type_JavaLangString + '\'' + ", bannerButtonText='" + this.jdField_h_of_type_JavaLangString + '\'' + ", jumpType=" + this.jdField_d_of_type_Int + ", downloadUrl='" + this.jdField_i_of_type_JavaLangString + '\'' + ", myappDownloadUrl='" + this.jdField_j_of_type_JavaLangString + '\'' + ", appId='" + this.jdField_k_of_type_JavaLangString + '\'' + ", packagename='" + this.jdField_l_of_type_JavaLangString + '\'' + ", appName='" + this.m + '\'' + ", silentDownload=" + this.jdField_c_of_type_Boolean + ", downloadType=" + this.jdField_e_of_type_Int + ", jumpUrl='" + this.n + '\'' + ", openJumpUrlGuide='" + this.o + '\'' + ", jumpTypeParams='" + this.p + '\'' + ", dDItemID=" + this.jdField_f_of_type_Int + ", dDCategoryName='" + this.q + '\'' + ", dDCategoryId=" + this.jdField_g_of_type_Int + ", canScorll=" + this.jdField_h_of_type_Int + ", controlVariable=" + this.jdField_i_of_type_Int + ", plugin_time=" + this.jdField_j_of_type_Int + ", scrollUpToJump=" + this.jdField_d_of_type_Boolean + ", uint32_autoJump=" + this.jdField_k_of_type_Int + ", mClickReportLink='" + this.r + '\'' + ", mReportPlatType=" + this.jdField_l_of_type_Int + ", mShareNickname='" + this.s + '\'' + ", mShareHeaderUrl='" + this.t + '\'' + ", mShareBrief='" + this.u + '\'' + ", mShareTxt='" + this.v + '\'' + ", mShareIconUrl='" + this.w + '\'' + ", mShareJumpUrl='" + this.x + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nun
  * JD-Core Version:    0.7.0.1
  */

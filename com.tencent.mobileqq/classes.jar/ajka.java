@@ -1,172 +1,192 @@
-import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.ThemeImageView;
 
 public class ajka
-  extends ajju
+  extends ajhd
 {
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ajkb(this);
-  protected String a;
-  private WeakReference<akjt> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  ajka()
+  public ajka(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentMayKnowFriendItemBuilder", 0, "RecentMayKnowFriendItemBuilder constructed");
-    }
+    super(paramQQAppInterface, paramContext, paramEntity);
   }
   
-  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
+  public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    paramOnLongClickListener = null;
-    paramViewGroup = paramOnLongClickListener;
-    if (paramView != null)
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+    PhoneContact localPhoneContact;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ajkb)))
     {
-      paramViewGroup = paramOnLongClickListener;
-      if ((paramView.getTag() instanceof ajkc)) {
-        paramViewGroup = (ajkc)paramView.getTag();
-      }
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558957, paramViewGroup, false);
+      paramOnClickListener = new ajkb();
+      paramOnClickListener.d = ((ImageView)paramViewGroup.findViewById(2131368138));
+      paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131378446));
+      paramOnClickListener.c = ((SingleLineTextView)paramViewGroup.findViewById(2131379800));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369312));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131376443));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376453));
+      paramViewGroup.setTag(paramOnClickListener);
+      a(paramViewGroup.findViewById(2131368138));
+      localPhoneContact = (PhoneContact)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+      paramOnClickListener.jdField_a_of_type_JavaLangObject = localPhoneContact;
+      paramOnClickListener.jdField_a_of_type_JavaLangString = localPhoneContact.mobileCode;
+      paramInt2 = bglf.a(localPhoneContact.detalStatusFlag, localPhoneContact.iTermType);
+      paramView = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+      paramInt1 = localPhoneContact.netTypeIconId;
     }
-    if (paramViewGroup == null)
+    label309:
+    Object localObject;
+    switch (paramInt2)
     {
-      paramViewGroup = (RecentItemMayKnowFriendData)paramObject;
-      paramView = new ajkc();
-      paramView.jdField_a_of_type_JavaLangString = paramViewGroup.curUin;
-      paramViewGroup = a(paramContext, 2131558906, paramView);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131375477));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramViewGroup.findViewById(2131370124));
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(aepi.a(9.0F, paramContext.getResources()));
-      paramOnLongClickListener = new akjt((Activity)paramContext, paramajjp.a(), paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    case 5: 
+    default: 
+      paramView = paramView.a(localPhoneContactManagerImp.a(localPhoneContact.unifiedCode));
+      if (paramView == null) {
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131718210);
+      }
+      break;
+    case 1: 
+    case 2: 
+    case 7: 
+    case 3: 
+    case 6: 
+    case 4: 
+    case 8: 
+      for (;;)
       {
-        paramajlm = (akjt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramajlm != null) {
-          paramajlm.d();
+        if ((paramInt2 == 0) || (paramInt2 == 6))
+        {
+          paramInt2 = 1;
+          if ((localPhoneContactManagerImp.f & 0x8) != 8L)
+          {
+            localObject = a();
+            ImageView localImageView = paramOnClickListener.d;
+            if (paramInt2 == 0) {
+              break label705;
+            }
+            label342:
+            localImageView.setImageDrawable((Drawable)localObject);
+          }
+          if ((localPhoneContactManagerImp.f & 0x4) != 4L) {
+            break label711;
+          }
+          paramInt2 = 1;
+          label367:
+          if (paramInt2 == 0) {
+            break label716;
+          }
+          paramOnClickListener.c.setVisibility(8);
+          label381:
+          paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131166993));
+          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localPhoneContact.name);
+          localObject = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+          if ((TextUtils.isEmpty(localPhoneContact.uin)) || (localPhoneContact.uin.equals("0"))) {
+            break label780;
+          }
+          paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700024));
+          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(anni.a(2131700027));
+          label504:
+          if (AppSetting.c)
+          {
+            paramOnClickListener = paramOnClickListener.jdField_a_of_type_JavaLangStringBuilder;
+            if (paramOnClickListener != null) {
+              break label903;
+            }
+            paramOnClickListener = new StringBuilder(24);
+            paramOnClickListener.append(localPhoneContact.name).append(".").append(paramView).append(".");
+            paramOnClickListener.append(bglf.b(paramInt1));
+            paramViewGroup.setContentDescription(paramOnClickListener);
+          }
+          label533:
+          return paramViewGroup;
+          paramOnClickListener = (ajkb)paramView.getTag();
+          paramViewGroup = paramView;
+          break;
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131718201);
+          continue;
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131718203);
+          continue;
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131718207);
+          continue;
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131718212);
+          continue;
+          paramView = "";
+          continue;
+          if ((paramInt2 != 8) || ((localPhoneContact.abilityBits & 1L) != 0L)) {
+            break label921;
+          }
+          if (localPhoneContact.netTypeIconIdIphoneOrWphoneNoWifi != 0) {
+            paramInt1 = localPhoneContact.netTypeIconIdIphoneOrWphoneNoWifi;
+          }
         }
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnLongClickListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramOnLongClickListener);
-      paramViewGroup.setTag(paramView);
-      paramOnLongClickListener = paramView;
-      paramView = paramViewGroup;
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.c) {
-        paramView.setContentDescription(null);
-      }
-      if ((paramOnLongClickListener == null) || (!(paramObject instanceof RecentBaseData))) {
-        break label379;
-      }
-      a(paramView, (RecentBaseData)paramObject, paramContext, paramajjp.a());
     }
+    label780:
+    label921:
     for (;;)
     {
-      a(paramContext, paramView, paramInt, paramObject, paramOnLongClickListener, paramOnClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      paramOnLongClickListener.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ThemeUtil.curThemeId)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        paramOnLongClickListener = (akjt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramOnLongClickListener != null) {
-          paramOnLongClickListener.notifyDataSetChanged();
-        }
-      }
-      paramOnLongClickListener = paramViewGroup;
+      paramView = bglf.a(paramInt1);
       break;
-      label379:
-      if (paramOnLongClickListener == null) {}
+      paramInt1 = localPhoneContact.netTypeIconId;
+      continue;
+      paramInt2 = 0;
+      break label309;
+      label705:
+      localObject = null;
+      break label342;
+      label711:
+      paramInt2 = 0;
+      break label367;
+      label716:
+      if (!TextUtils.isEmpty(paramView))
+      {
+        paramOnClickListener.c.setText("[" + paramView + "]");
+        paramOnClickListener.c.setVisibility(0);
+        break label381;
+      }
+      paramOnClickListener.c.setVisibility(8);
+      break label381;
+      if (((anmw)localObject).a(localPhoneContact.unifiedCode, true))
+      {
+        paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700026));
+        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(anni.a(2131700028));
+        break label504;
+      }
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131689550));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setTag(localPhoneContact);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setContentDescription(anni.a(2131689550));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label504;
+      paramOnClickListener.delete(0, paramOnClickListener.length());
+      break label533;
+      break;
     }
   }
   
-  public void a()
+  protected void a(View paramView)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("destroy : ");
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        break label84;
-      }
-    }
-    label84:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, bool);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject = (akjt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((akjt)localObject).d();
-        }
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      }
-      return;
-    }
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramView == null) || (paramRecentBaseData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|param invalidate");
-      }
-      return;
-    }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof ajkc)) {}
-    for (paramView = (ajkc)localObject;; paramView = null)
-    {
-      if (paramView == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|holder is null, tag = " + localObject);
-        return;
-      }
-      if (!(paramRecentBaseData instanceof RecentItemMayKnowFriendData)) {
-        break;
-      }
-      paramRecentBaseData = (RecentItemMayKnowFriendData)paramRecentBaseData;
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView");
-      }
-      if ((TextUtils.isEmpty(paramRecentBaseData.curUin)) || (paramRecentBaseData.curUin.equals(paramView.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-      paramContext = new akjt((Activity)paramContext, paramQQAppInterface, paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramQQAppInterface = (akjt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.d();
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramContext);
-      paramView.jdField_a_of_type_JavaLangString = paramRecentBaseData.curUin;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView1");
-      return;
+    if ((paramView instanceof ThemeImageView)) {
+      ((ThemeImageView)paramView).setSupportMaskView(false);
     }
   }
 }

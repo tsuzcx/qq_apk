@@ -1,38 +1,23 @@
-import android.graphics.Matrix;
-import android.view.ViewDebug.ExportedProperty;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhxj
+  implements View.OnClickListener
 {
-  @ViewDebug.ExportedProperty
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  @ViewDebug.ExportedProperty
-  public float b;
-  private boolean b;
-  @ViewDebug.ExportedProperty
-  public float c = 0.0F;
-  @ViewDebug.ExportedProperty
-  public float d = 1.0F;
-  @ViewDebug.ExportedProperty
-  public float e = 1.0F;
-  @ViewDebug.ExportedProperty
-  public float f = 0.0F;
-  @ViewDebug.ExportedProperty
-  public float g = 0.0F;
+  public bhxj(GridListView paramGridListView) {}
   
-  public bhxj()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    int i = ((Integer)paramView.getTag(2131361809)).intValue();
+    this.a.a.onItemClick(this.a, paramView, i, 0L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxj
  * JD-Core Version:    0.7.0.1
  */

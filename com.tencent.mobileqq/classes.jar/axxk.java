@@ -1,70 +1,133 @@
+import android.content.Context;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyLabelInfo;
+import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
 
 public class axxk
-  implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<Long, axxp> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private LabelContainer jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
   
-  public axxk(QQAppInterface paramQQAppInterface)
+  public View a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (paramInt1 < 16777216) {
+      i = paramInt1 - 16777216;
+    }
+    paramInt1 = paramInt2;
+    if (paramInt2 < 16777216) {
+      paramInt1 = paramInt2 - 16777216;
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(0);
+    localLinearLayout.setGravity(16);
+    try
+    {
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-7829368);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable;
+      localObject = URLDrawable.getDrawable(paramString1, (URLDrawable.URLDrawableOptions)localObject);
+      paramString1 = (String)localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        if (QLog.isColorLevel()) {
+          QLog.w("TopicLabelCtrl", 2, "getDrawable exception, exp=" + localException + ", url=" + paramString1);
+        }
+        paramString1 = new ColorDrawable(-7829368);
+      }
+    }
+    localObject = new View(this.jdField_a_of_type_AndroidContentContext);
+    ((View)localObject).setBackgroundDrawable(paramString1);
+    localLinearLayout.addView((View)localObject, zby.b(this.jdField_a_of_type_AndroidContentContext, 18.0F), zby.b(this.jdField_a_of_type_AndroidContentContext, 15.0F));
+    ((LinearLayout.LayoutParams)((View)localObject).getLayoutParams()).leftMargin = zby.b(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+    paramString1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    paramString1.setText(paramString2);
+    paramString1.setTextSize(14.0F);
+    paramString1.setTextColor(i);
+    localLinearLayout.addView(paramString1);
+    paramString1 = (LinearLayout.LayoutParams)paramString1.getLayoutParams();
+    paramString1.rightMargin = zby.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    paramString1.leftMargin = zby.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+    localLinearLayout.setBackgroundResource(2130845553);
+    paramString1 = localLinearLayout.getBackground();
+    if (paramString1 != null)
+    {
+      paramString1.setColorFilter(new LightingColorFilter(-16777216, paramInt1));
+      paramString1.invalidateSelf();
+    }
+    localLinearLayout.setOnClickListener(new axxl(this));
+    return localLinearLayout;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, View paramView, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378875);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer = ((LabelContainer)paramView.findViewById(2131369687));
+    this.b = paramView.findViewById(2131369878);
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
   }
   
-  public static axxk a(QQAppInterface paramQQAppInterface)
+  public void a(cmd0xac5.NearbyNowData paramNearbyNowData)
   {
-    return (axxk)paramQQAppInterface.getManager(294);
-  }
-  
-  public axxp a(long paramLong, int paramInt)
-  {
-    try
-    {
-      axxp localaxxp2 = (axxp)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      axxp localaxxp1 = localaxxp2;
-      if (localaxxp2 == null)
-      {
-        localaxxp1 = new axxp(paramLong);
-        localaxxp1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localaxxp1.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localaxxp1);
-      }
-      return localaxxp1;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.getChildCount() > 0) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.removeAllViews();
     }
-    finally {}
-  }
-  
-  public void a(axxp paramaxxp)
-  {
-    try
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setSpace(zby.b(this.jdField_a_of_type_AndroidContentContext, 6.0F), zby.b(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    if (paramNearbyNowData != null) {}
+    for (paramNearbyNowData = paramNearbyNowData.label_info.get();; paramNearbyNowData = null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramaxxp.jdField_a_of_type_Long));
+      if ((paramNearbyNowData != null) && (paramNearbyNowData.size() > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TopicLabelCtrl", 2, "updateData, nearbyLabelInfoList.size=" + paramNearbyNowData.size());
+        }
+        int i = 0;
+        while (i < paramNearbyNowData.size())
+        {
+          Object localObject = (cmd0xac5.NearbyLabelInfo)paramNearbyNowData.get(i);
+          localObject = a(((cmd0xac5.NearbyLabelInfo)localObject).label_pic.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).label_name.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).font_colour.get(), ((cmd0xac5.NearbyLabelInfo)localObject).label_colour.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.addView((View)localObject, -2, zby.b(this.jdField_a_of_type_AndroidContentContext, 24.0F));
+          i += 1;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(0);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(8);
       return;
     }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((axxp)localIterator.next()).b();
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    finally {}
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxk
  * JD-Core Version:    0.7.0.1
  */

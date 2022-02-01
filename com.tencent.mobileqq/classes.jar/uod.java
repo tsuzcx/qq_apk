@@ -1,15 +1,10 @@
-public class uod
+public abstract interface uod
 {
-  public double a;
-  public int a;
-  public long a;
-  public boolean a;
-  public double b;
-  public int b;
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uod
  * JD-Core Version:    0.7.0.1
  */

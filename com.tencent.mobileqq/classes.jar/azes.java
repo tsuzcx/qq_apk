@@ -1,11 +1,6 @@
-public abstract class azes
-  implements azeq
+public abstract interface azes
 {
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, azej paramazej) {}
-  
-  public void b(int paramInt, azej paramazej) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

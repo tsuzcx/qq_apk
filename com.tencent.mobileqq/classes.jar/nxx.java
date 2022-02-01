@@ -1,30 +1,34 @@
 import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nxx
-  implements MessageQueue.IdleHandler
+final class nxx
+  implements BusinessObserver
 {
-  public nxx(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
-  
-  public boolean queueIdle()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!aprh.a().a())
+    if (paramBoolean) {}
+    try
     {
-      aprh.a().a().doBindService(BaseApplicationImpl.getApplication());
-      aprh.a().a(new nxy(this));
-      return false;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
     }
-    Bundle localBundle = apml.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    aprh.a().a(localBundle);
-    return false;
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxx
  * JD-Core Version:    0.7.0.1
  */

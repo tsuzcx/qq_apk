@@ -1,13 +1,16 @@
-public final class aljt
-  implements alke
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+
+public class aljt
+  implements DialogInterface.OnClickListener
 {
-  public aljt(alkd paramalkd) {}
+  public aljt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
+    yqu.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

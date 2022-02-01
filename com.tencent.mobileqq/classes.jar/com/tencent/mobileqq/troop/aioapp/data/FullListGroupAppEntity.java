@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import awge;
-import awhp;
-import bbmp;
+import bend;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FullListGroupAppEntity
-  extends awge
+  extends Entity
 {
   private static final String TAG = "FullListGroupAppEntity";
-  @awhp
+  @notColumn
   public List<TroopAIOAppInfo> troopAIOAppInfos = new ArrayList(20);
   public byte[] troopAIOAppInfosData;
   
   public void postRead()
   {
     super.postRead();
-    Object localObject = bbmp.a(this.troopAIOAppInfosData);
+    Object localObject = bend.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -36,12 +36,12 @@ public class FullListGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = bbmp.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = bend.a(this.troopAIOAppInfos);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity
  * JD-Core Version:    0.7.0.1
  */

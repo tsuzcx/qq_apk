@@ -15,7 +15,7 @@ public class InjectException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.luan.ioc.InjectException
  * JD-Core Version:    0.7.0.1
  */

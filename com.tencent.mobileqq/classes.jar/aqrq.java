@@ -1,40 +1,102 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import org.json.JSONObject;
 
-class aqrq
-  implements View.OnClickListener
+public class aqrq
 {
-  aqrq(aqrp paramaqrp) {}
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
   
-  public void onClick(View paramView)
+  public static aqrq a(String paramString)
   {
-    aeqi localaeqi = (aeqi)aepi.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localaeqi != null)
-    {
-      i = -1;
-      localChatMessage = arrr.a(localaeqi.a);
-      if (!this.a.a(localChatMessage)) {
-        break label50;
-      }
-      i = 0;
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      this.a.a(paramView, localaeqi, localChatMessage, i);
-      return;
-      label50:
-      if (this.a.b(localChatMessage)) {
-        i = 1;
+      aqrq localaqrq = new aqrq();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
+      {
+        bool1 = true;
+        localaqrq.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
+        }
+        bool1 = true;
+        label56:
+        localaqrq.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localaqrq.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
+        }
       }
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        localaqrq.d = bool1;
+        localaqrq.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localaqrq.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localaqrq;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
+      }
+      return null;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public String toString()
+  {
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrq
  * JD-Core Version:    0.7.0.1
  */

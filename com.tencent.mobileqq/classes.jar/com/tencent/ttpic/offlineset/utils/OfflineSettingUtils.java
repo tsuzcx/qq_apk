@@ -16,7 +16,7 @@ public class OfflineSettingUtils
   private static final String CONFIG_NAME = "config.json";
   private static final int REQUEST_CHECK_CODE = 1;
   private static final int REQUEST_DOWNLOAD_ZIP_CODE = 2;
-  private static String REQUEST_URL_PRE = "http://offline.qq.com/offline/check?";
+  private static String REQUEST_URL_PRE = "https://offline.qq.com/offline/check?";
   private static final String TAG = "OfflineSettingUtils";
   private static ArrayList<OfflineSettingUtils.IDownloadedListener> sDownloadedListeners;
   private static IHttpClient sHttpClient;
@@ -175,7 +175,7 @@ public class OfflineSettingUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.offlineset.utils.OfflineSettingUtils
  * JD-Core Version:    0.7.0.1
  */

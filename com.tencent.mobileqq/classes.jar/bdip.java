@@ -1,24 +1,38 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import java.lang.ref.WeakReference;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
+import com.tencent.qphone.base.util.QLog;
 
-class bdip
-  implements DialogInterface.OnKeyListener
+public class bdip
+  implements URLDrawableHandler
 {
-  bdip(bdio parambdio) {}
+  public bdip(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (paramInt == 4)
-    {
-      this.a.dismiss();
-      ((Activity)this.a.a.get()).finish();
-      return true;
-    }
     return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

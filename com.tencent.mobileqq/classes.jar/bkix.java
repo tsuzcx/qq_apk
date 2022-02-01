@@ -1,67 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import android.view.View;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.widget.BubblePopupWindow;
+import java.lang.ref.WeakReference;
 
 public class bkix
-  extends QIPCModule
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public static bkix a;
+  public bkix(BubblePopupWindow paramBubblePopupWindow) {}
   
-  private bkix()
+  public void onScrollChanged()
   {
-    super("WadlQIPCModule");
-  }
-  
-  public static bkix a()
-  {
-    if (a == null) {}
-    try
+    if (BubblePopupWindow.a(this.a) != null) {}
+    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
     {
-      if (a == null) {
-        a = new bkix();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {
-      return null;
-    }
-    paramBundle = (QQAppInterface)paramBundle;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if ("action.getSkey".equals(paramString))
-    {
-      paramString = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
-      paramBundle = new Bundle();
-      if (paramString != null) {}
-      for (;;)
+      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
       {
-        paramBundle.putString("skey", paramString);
-        return EIPCResult.createSuccessResult(paramBundle);
-        paramString = "";
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
+        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
+        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
       }
+      return;
     }
-    if ("action.getUin".equals(paramString))
-    {
-      paramString = new Bundle();
-      paramString.putLong("uin", paramBundle.getLongAccountUin());
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    return null;
   }
 }
 

@@ -1,8 +1,17 @@
-class aymh
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+
+public class aymh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  long jdField_a_of_type_Long;
-  aymi jdField_a_of_type_Aymi;
-  String jdField_a_of_type_JavaLangString;
+  public aymh(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

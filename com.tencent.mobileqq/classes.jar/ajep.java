@@ -1,6 +1,7 @@
-class ajep
+public class ajep
 {
-  public static final ajeo a = new ajeo(null);
+  public int a;
+  public long a;
 }
 
 

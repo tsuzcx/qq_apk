@@ -1,23 +1,12 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-
-class sbu
-  implements View.OnLongClickListener
+public abstract interface sbu
 {
-  sbu(sbr paramsbr, View paramView, ProteusItemData paramProteusItemData) {}
+  public abstract void a(String paramString, long paramLong);
   
-  public boolean onLongClick(View paramView)
-  {
-    paramView = new bdpi();
-    paramView.a(0, alud.a(2131717275));
-    bdft.a(this.jdField_a_of_type_AndroidViewView, paramView, new sbv(this), new sbw(this));
-    return true;
-  }
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbu
  * JD-Core Version:    0.7.0.1
  */

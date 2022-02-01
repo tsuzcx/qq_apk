@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/n7d" android:layout="@layout/cpl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/mji" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/n7d" />
+    <ViewStub android:id="@id/n8_" android:layout="@layout/cnh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

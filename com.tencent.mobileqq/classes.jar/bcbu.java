@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
 
-public class bcbu
-  implements View.OnClickListener
+public final class bcbu
+  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
 {
-  public bcbu(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
+  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
   {
-    this.a.m();
+    return new QZoneTitleTabManager.TabInfo(paramParcel);
+  }
+  
+  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
+  {
+    return new QZoneTitleTabManager.TabInfo[paramInt];
   }
 }
 

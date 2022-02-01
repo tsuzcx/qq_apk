@@ -1,15 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.util.Printer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
-class bmia
-  extends AnimatorListenerAdapter
+public class bmia
+  implements Printer
 {
-  bmia(bmhu parambmhu) {}
+  public bmia(QzoneThreadMonitor paramQzoneThreadMonitor) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void println(String paramString)
   {
-    bmhu.a(this.a).setVisibility(8);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneThreadMonitor", 4, paramString);
+    }
   }
 }
 

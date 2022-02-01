@@ -1,27 +1,36 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-class azrv
-  extends FileObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileTitleHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileTitleItem", "Landroid/widget/TextView;", "getProfileTitleItem", "()Landroid/widget/TextView;", "setProfileTitleItem", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azrv
+  extends RecyclerView.ViewHolder
 {
-  public azrv(String paramString, int paramInt)
+  @NotNull
+  private TextView a;
+  
+  public azrv(@NotNull View paramView)
   {
-    super(paramString, paramInt);
+    super(paramView);
+    paramView = paramView.findViewById(2131372920);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+    }
+    this.a = ((TextView)paramView);
   }
   
-  public void onEvent(int paramInt, String arg2)
+  @NotNull
+  public final TextView a()
   {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (azru.a())
-    {
-      notifyAll();
-      return;
-    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrv
  * JD-Core Version:    0.7.0.1
  */

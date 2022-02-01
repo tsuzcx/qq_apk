@@ -9,6 +9,8 @@ public abstract interface IBaseService
   
   public abstract int getMsfConnectedNetType();
   
+  public abstract int onKillProcess();
+  
   public abstract int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString);
   
   public abstract FromServiceMsg sendSyncToServiceMsg(ToServiceMsg paramToServiceMsg);

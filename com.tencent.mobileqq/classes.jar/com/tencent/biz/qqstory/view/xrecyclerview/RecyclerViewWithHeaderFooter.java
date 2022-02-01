@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xwy;
-import xxc;
+import zqj;
+import zqn;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xxc jdField_a_of_type_Xxc;
+  private zqn jdField_a_of_type_Zqn;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new xwy(paramAdapter);
+      localObject = new zqj(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((xwy)localObject).a((View)paramAdapter.next());
+        ((zqj)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((xwy)localObject).b((View)paramAdapter.next());
+        ((zqj)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Xxc != null) {
-        ((xwy)localObject).a(this.jdField_a_of_type_Xxc);
+      if (this.jdField_a_of_type_Zqn != null) {
+        ((zqj)localObject).a(this.jdField_a_of_type_Zqn);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -91,7 +91,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,45 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aicn
+class aicn
   implements View.OnClickListener
 {
-  public aicn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicn(aicl paramaicl) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      azqs.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    if (!aicl.c(this.a)) {
+      if (aicl.a(this.a) == null)
+      {
+        aicl.d(this.a);
+        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo IS null");
+      }
     }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((!aicl.a(this.a).enableQQCall) && (aicl.a(this.a).tagID != 10000))
+      {
+        aicl.d(this.a);
+        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo enableQQCall false" + aicl.a(this.a).tagID);
+      }
+      else
+      {
+        afur.n = true;
+        agaa.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+        if (aicl.a(this.a) != null) {
+          if (aicl.a(this.a).tagID == 1) {
+            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
+          } else {
+            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", aicl.a(this.a).tagName, "");
+          }
+        }
+      }
+    }
   }
 }
 

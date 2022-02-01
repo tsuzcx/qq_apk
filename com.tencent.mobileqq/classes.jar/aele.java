@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.QQPermissionCallback;
 
 public class aele
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public aele(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aele(JumpActivity paramJumpActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!this.a.b) {
-      this.a.a();
-    }
+    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
+    bglp.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new aelf(this));
+    paramArrayOfString = new HashMap();
+    bctj.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("JumpAction", 1, "system share.doShare user grant");
+    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
+    paramArrayOfString = new HashMap();
+    bctj.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
   }
 }
 

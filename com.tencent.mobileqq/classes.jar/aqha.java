@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
-
-final class aqha
-  implements View.OnClickListener
+public class aqha
 {
-  aqha(DialogFromBottom paramDialogFromBottom) {}
+  public String a = "";
+  public String b = "";
   
-  public void onClick(View paramView)
+  public aqha() {}
+  
+  public aqha(String paramString1, String paramString2)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      azqs.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 2, 0, "", "", "", "");
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

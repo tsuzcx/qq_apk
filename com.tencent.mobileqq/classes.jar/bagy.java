@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.view.View;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public final class bagy
-  implements Parcelable.Creator<TeamWorkFileImportInfo>
+class bagy
+  implements bkhw
 {
-  public TeamWorkFileImportInfo a(Parcel paramParcel)
-  {
-    return new TeamWorkFileImportInfo(paramParcel);
-  }
+  bagy(bagx parambagx, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, bkho parambkho) {}
   
-  public TeamWorkFileImportInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new TeamWorkFileImportInfo[paramInt];
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

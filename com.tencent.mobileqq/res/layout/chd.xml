@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/idg" android:background="@color/l1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/lnm" android:padding="10.0dip" android:visibility="gone" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mcb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka4" />
-    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/mse" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:text="@string/wgj" />
-    <ImageView android:id="@id/lo2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/nlp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:background="@drawable/bl3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.48">
+        <FrameLayout android:id="@id/mvq" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title" />
+        <View android:background="#ffececec" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_above="@id/mvq" />
+        <ImageView android:id="@id/a43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="18.0dip" android:src="@drawable/ew4" android:layout_alignParentLeft="true" />
+        <TextView android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="18.0dip" android:maxLines="1" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </LinearLayout>

@@ -1,47 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class usk
-  extends uuc
+class usk
+  implements AdExposureChecker.ExposureCallback
 {
-  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
-  uud jdField_a_of_type_Uud;
+  usk(usg paramusg) {}
   
-  public usk(qqstory_service.RspDelFeedComment paramRspDelFeedComment, uud paramuud)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    super(paramRspDelFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
-    this.jdField_a_of_type_Uud = paramuud;
-  }
-  
-  public usk(uud paramuud)
-  {
-    this.jdField_a_of_type_Uud = paramuud;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Uud.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Uud.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Uud.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Uud.a(paramBoolean, paramBundle);
+    FLog.e("AdExposureChecker", "onExposure");
+    urv.a(BaseApplicationImpl.getContext(), usg.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     usk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adot
-  extends altm
+  implements View.OnTouchListener
 {
-  public adot(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adot(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean) {
-      this.a.c();
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
     }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

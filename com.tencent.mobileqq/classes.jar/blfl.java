@@ -1,54 +1,16 @@
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.widget.ImageView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.qq.im.ae.mode.AECaptureModeSelectPager;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-class blfl
-  implements bmeo<blfi>
+final class blfl
+  implements blfo
 {
-  blfl(blfj paramblfj) {}
-  
-  public void a(@Nullable blfi paramblfi)
+  public void a(boolean paramBoolean, Context paramContext, blfq paramblfq)
   {
-    boolean bool = false;
-    if (paramblfi == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
     }
-    paramblfi = paramblfi.a;
-    blfj.a(this.a, paramblfi);
-    if (paramblfi != AECaptureMode.NORMAL) {
-      blfj.a(this.a).a(196616, new Object[0]);
-    }
-    int i;
-    if (blfj.a(this.a) != null)
-    {
-      i = 0;
-      if (i < blfj.a(this.a).length) {
-        if (paramblfi != blfj.a(this.a)[i]) {}
-      }
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        blfj.a(this.a).setCurrentItem(i, true);
-      }
-      blfj localblfj = this.a;
-      if (paramblfi == AECaptureMode.GIF) {
-        bool = true;
-      }
-      blfj.a(localblfj, bool);
-      blfj.a(this.a).notifyDataSetChanged();
-      paramblfi = blfj.a(this.a);
-      if (blfj.a(this.a)) {}
-      for (i = 2130837595;; i = 2130837596)
-      {
-        paramblfi.setImageResource(i);
-        return;
-        i += 1;
-        break;
-      }
-      i = -1;
+    if (paramBoolean) {
+      blfh.e(paramContext, paramblfq);
     }
   }
 }

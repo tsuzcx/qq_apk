@@ -37,6 +37,7 @@ public class af
     try
     {
       paramString = new URL(paramString);
+      ax.b("HttpUtil", "network type == " + this.d);
       if (this.d == af.a.b) {}
       for (this.a = ((HttpURLConnection)paramString.openConnection(new java.net.Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(a(paramContext), b(paramContext)))));; this.a = ((HttpURLConnection)paramString.openConnection()))
       {
@@ -48,31 +49,37 @@ public class af
     }
     catch (MalformedURLException paramContext)
     {
+      ax.a("HttpUtil", "url error: " + paramContext.getMessage());
       paramContext.printStackTrace();
       return -1053;
     }
     catch (IllegalArgumentException paramContext)
     {
+      ax.a("HttpUtil", "arg error: " + paramContext.getMessage());
       paramContext.printStackTrace();
       return -1057;
     }
     catch (SecurityException paramContext)
     {
+      ax.a("HttpUtil", "security error: " + paramContext.getMessage());
       paramContext.printStackTrace();
       return -1058;
     }
     catch (UnsupportedOperationException paramContext)
     {
+      ax.a("HttpUtil", "unsupported operation error: " + paramContext.getMessage());
       paramContext.printStackTrace();
       return -1059;
     }
     catch (IOException paramContext)
     {
+      ax.a("HttpUtil", "io error: " + paramContext.getMessage());
       paramContext.printStackTrace();
       return -1056;
     }
     catch (Exception paramContext)
     {
+      ax.a("HttpUtil", "init error: " + paramContext.getMessage());
       paramContext.printStackTrace();
     }
   }
@@ -158,6 +165,7 @@ public class af
       paramContext.write(paramArrayOfByte);
       paramContext.close();
       i = this.a.getResponseCode();
+      ax.b("HttpUtil", "responseCode == " + i);
       if (i == 200)
       {
         this.b = true;
@@ -166,6 +174,7 @@ public class af
     }
     catch (IllegalAccessError paramContext)
     {
+      ax.a("HttpUtil", "illegal access error:" + paramContext.getMessage());
       paramContext.printStackTrace();
       return -2060;
       if (i == -1) {
@@ -175,21 +184,25 @@ public class af
     }
     catch (IllegalStateException paramContext)
     {
+      ax.a("HttpUtil", "illegal state error:" + paramContext.getMessage());
       paramContext.printStackTrace();
       return -2061;
     }
     catch (ProtocolException paramContext)
     {
+      ax.a("HttpUtil", "protocol error:" + paramContext.getMessage());
       paramContext.printStackTrace();
       return -2051;
     }
     catch (IOException paramContext)
     {
+      ax.a("HttpUtil", "post io error:" + paramContext.getMessage());
       paramContext.printStackTrace();
       return -2056;
     }
     catch (Exception paramContext)
     {
+      ax.a("HttpUtil", "post error:" + paramContext.getMessage());
       paramContext.printStackTrace();
     }
     return -2000;
@@ -203,11 +216,14 @@ public class af
       j = -4000;
       return j;
     }
-    if (paramBoolean) {}
     for (;;)
     {
       try
       {
+        ax.b("HttpUtil", this.a.getURL());
+        if (!paramBoolean) {
+          continue;
+        }
         localObject1 = new InflaterInputStream(this.a.getInputStream());
         localObject1 = a((InputStream)localObject1);
         i = 0;
@@ -215,6 +231,7 @@ public class af
       catch (IOException localIOException)
       {
         Object localObject1;
+        ax.a("HttpUtil", "response io error");
         localIOException.printStackTrace();
         i = -4056;
         Object localObject2 = null;
@@ -222,6 +239,7 @@ public class af
       }
       catch (Exception localException)
       {
+        ax.a("HttpUtil", "response error");
         localException.printStackTrace();
         int i = -4000;
         Object localObject3 = null;
@@ -241,7 +259,7 @@ public class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.af
  * JD-Core Version:    0.7.0.1
  */

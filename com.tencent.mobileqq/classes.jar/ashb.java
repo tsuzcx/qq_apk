@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
 public class ashb
-  extends amcd
+  extends asht
 {
-  public ashb(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  public ExtendFriendCampusVerifyTipsView.TipsType a;
   
-  public void a(String paramString, int paramInt)
+  public ashb()
   {
-    QQSettingChatOperationFragment.a(this.a);
+    this.mType = 7;
   }
 }
 

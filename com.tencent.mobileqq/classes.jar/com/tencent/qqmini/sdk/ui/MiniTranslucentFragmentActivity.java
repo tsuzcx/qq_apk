@@ -1,37 +1,37 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import Override;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.Window;
-import bhmi;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 
 public class MiniTranslucentFragmentActivity
   extends MiniFragmentActivity
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass, int paramInt)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    bhmi.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramContext, MiniTranslucentFragmentActivity.class);
-    localIntent.putExtra("public_fragment_class", paramClass.getName());
-    paramContext.startActivity(localIntent);
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
     getWindow().addFlags(67108864);
     DisplayUtil.setActivityTransparent(this);
+    setRequestedOrientation(1);
     super.onCreate(paramBundle);
   }
   
@@ -42,7 +42,7 @@ public class MiniTranslucentFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

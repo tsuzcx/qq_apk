@@ -4,8 +4,8 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import mdd;
+import ley;
+import maf;
 
 class DoubleVideoCtrlUI$2
   implements Runnable
@@ -14,7 +14,7 @@ class DoubleVideoCtrlUI$2
   
   public void run()
   {
-    if (this.this$0.g()) {}
+    if (this.this$0.h()) {}
     do
     {
       return;
@@ -26,7 +26,7 @@ class DoubleVideoCtrlUI$2
         }
         this.this$0.j(l);
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
-        mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
+        maf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
       }
       this.this$0.f(l, 65535);
     } while (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g);
@@ -35,7 +35,7 @@ class DoubleVideoCtrlUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.2
  * JD-Core Version:    0.7.0.1
  */

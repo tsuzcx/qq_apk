@@ -1,17 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajza
-  extends Handler
+class ajza
+  implements View.OnClickListener
 {
-  public ajza(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  ajza(ajyx paramajyx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

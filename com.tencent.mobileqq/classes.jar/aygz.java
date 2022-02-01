@@ -1,75 +1,20 @@
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class aygz
-  extends ayhr
+  implements ayjd
 {
-  private SearchHistory a;
+  public aygz(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
   
-  public aygz(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
+  public void a(int paramInt, ayje paramayje)
   {
-    this.a = paramSearchHistory;
-  }
-  
-  public Drawable a()
-  {
-    return null;
-  }
-  
-  public SearchHistory a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.extralInfo;
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    switch (this.a.type)
+    if ((paramayje != null) && (!TextUtils.isEmpty(paramayje.b)))
     {
-    default: 
-    case 3000: 
-    case 1: 
-    case 1006: 
-    case 56938: 
-    case 1008: 
-      do
-      {
-        return 1;
-        return 101;
-        return 4;
-        return 11;
-      } while (!TextUtils.equals(this.a.uin, alof.az));
-      return 110;
+      if (!this.jdField_a_of_type_Ayfk.b.equalsIgnoreCase(paramayje.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramayje.b, this.jdField_a_of_type_Ayfk.b(paramayje.b));
+      }
+      ayfi.a("0X800AD30", ayfi.a(paramayje.b));
     }
-    return 111;
-  }
-  
-  public String c()
-  {
-    return this.a.displayName;
-  }
-  
-  public String d()
-  {
-    return this.a.uin;
   }
 }
 

@@ -5,13 +5,11 @@ import android.content.Context;
 import com.idlefish.flutterboost.interfaces.IContainerRecord;
 import com.idlefish.flutterboost.interfaces.IFlutterViewContainer;
 import io.flutter.embedding.android.FlutterView.RenderMode;
-import io.flutter.plugin.common.PluginRegistry;
 import java.util.Map;
 
 public abstract class Platform
 {
   public FlutterBoost.BoostLifecycleListener lifecycleListener;
-  public FlutterBoost.BoostPluginsRegister pluginsRegister;
   
   public void closeContainer(IContainerRecord paramIContainerRecord, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
@@ -29,23 +27,13 @@ public abstract class Platform
   
   public abstract void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2);
   
-  public void registerPlugins(PluginRegistry paramPluginRegistry)
-  {
-    if (this.pluginsRegister != null) {
-      this.pluginsRegister.registerPlugins(paramPluginRegistry);
-    }
-    if (this.lifecycleListener != null) {
-      this.lifecycleListener.onPluginsRegistered();
-    }
-  }
-  
   public abstract FlutterView.RenderMode renderMode();
   
   public abstract int whenEngineStart();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.Platform
  * JD-Core Version:    0.7.0.1
  */

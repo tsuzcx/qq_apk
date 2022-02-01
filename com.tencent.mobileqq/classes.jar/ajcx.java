@@ -1,6 +1,10 @@
-public abstract interface ajcx
+public abstract interface ajcx<T>
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract int a();
+  
+  public abstract void a(ajdf paramajdf, T paramT, int paramInt);
+  
+  public abstract boolean a(T paramT, int paramInt);
 }
 
 

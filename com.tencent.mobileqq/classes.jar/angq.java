@@ -1,7 +1,10 @@
-public class angq
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+
+public abstract interface angq
 {
-  public static int a = azkz.a;
-  public static int b = azkz.b;
+  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
+  
+  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
 }
 
 

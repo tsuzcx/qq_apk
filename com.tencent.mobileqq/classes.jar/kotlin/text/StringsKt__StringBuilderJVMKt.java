@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"appendRange", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "value", "", "startIndex", "", "endIndex", "", "appendln", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "", "Ljava/lang/StringBuffer;", "", "", "", "", "", "", "", "", "clear", "deleteAt", "index", "deleteRange", "insertRange", "set", "", "setRange", "toCharArray", "destination", "destinationOffset", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/text/StringsKt")
-class StringsKt__StringBuilderJVMKt
+public class StringsKt__StringBuilderJVMKt
   extends StringsKt__RegexExtensionsKt
 {
   @ExperimentalStdlibApi
@@ -253,7 +253,7 @@ class StringsKt__StringBuilderJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.StringsKt__StringBuilderJVMKt
  * JD-Core Version:    0.7.0.1
  */

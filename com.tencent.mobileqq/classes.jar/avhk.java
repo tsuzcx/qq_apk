@@ -1,61 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-class avhk
-  implements avdq
+final class avhk
+  implements avgr
 {
-  avhk(avhf paramavhf, VideoData paramVideoData) {}
+  avhk(String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    synchronized ()
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Avhf.f(true);
-          this.jdField_a_of_type_Avhf.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = avhf.a(this.jdField_a_of_type_Avhf);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
-          avhf.b(this.jdField_a_of_type_Avhf, false);
-          avhf.b(this.jdField_a_of_type_Avhf, false);
-          ((avrb)this.jdField_a_of_type_Avhf.a.getManager(263)).a(avhf.a(this.jdField_a_of_type_Avhf), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf) + "  e:" + paramArrayOfByte);
-        return;
-      }
+      avhi.a(null);
+      QLog.i("shadow::Shadow", 2, "pluginManagerWrapper pmUpdaterCallBcak : bizType:" + this.a);
+      return;
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + avhf.a(this.jdField_a_of_type_Avhf));
-    avhf.b(this.jdField_a_of_type_Avhf, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhk
  * JD-Core Version:    0.7.0.1
  */

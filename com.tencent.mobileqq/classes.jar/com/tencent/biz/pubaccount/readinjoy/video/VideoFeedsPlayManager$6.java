@@ -1,16 +1,37 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rjn;
+import java.util.ArrayList;
+import java.util.Iterator;
+import rgb;
+import ruv;
+import sar;
+import sat;
+import sfb;
 
 class VideoFeedsPlayManager$6
   implements Runnable
 {
-  VideoFeedsPlayManager$6(VideoFeedsPlayManager paramVideoFeedsPlayManager, rjn paramrjn) {}
+  VideoFeedsPlayManager$6(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
   public void run()
   {
-    this.a.i();
-    this.a.a(null);
+    if ((VideoFeedsPlayManager.a(this.this$0) != null) && ((VideoFeedsPlayManager.a(this.this$0).b() == 5) || (VideoFeedsPlayManager.a(this.this$0).b() == 2)))
+    {
+      VideoFeedsPlayManager.a(this.this$0).e();
+      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Ruv != null) {
+        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Ruv.e(VideoFeedsPlayManager.a(this.this$0));
+      }
+      if (VideoFeedsPlayManager.a(this.this$0) != null)
+      {
+        Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
+        while (localIterator.hasNext()) {
+          ((sat)localIterator.next()).e(VideoFeedsPlayManager.a(this.this$0));
+        }
+      }
+      if (VideoFeedsPlayManager.c(this.this$0)) {
+        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rgb.f = rgb.b;
+      }
+    }
   }
 }
 

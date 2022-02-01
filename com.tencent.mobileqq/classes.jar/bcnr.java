@@ -1,50 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
-public class bcnr
+class bcnr
+  implements bcom
 {
-  public static bcnr a;
-  public alpa a;
-  public QQAppInterface a;
+  bcnr(bcnp parambcnp, String paramString, bcoc parambcoc, LoadParam.LoadItem paramLoadItem) {}
   
-  public bcnr()
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    this.jdField_a_of_type_Alpa = new bcns(this);
-  }
-  
-  public static bcnr a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Bcnr == null) {
-      b(paramQQAppInterface);
-    }
-    for (;;)
+    if (!this.jdField_a_of_type_Bcnp.a(paramSoInfo))
     {
-      return jdField_a_of_type_Bcnr;
-      if (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-      {
-        if (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
-        }
-        jdField_a_of_type_Bcnr = null;
-        b(paramQQAppInterface);
-      }
+      bcnp.a(this.jdField_a_of_type_Bcnp, 2);
+      return;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((jdField_a_of_type_Bcnr != null) && (jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
+    if ((TextUtils.equals(this.jdField_a_of_type_Bcnp.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bcoc.b()))
     {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
-      jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bcnr = null;
+      this.jdField_a_of_type_Bcnp.c = "runcrash";
+      bcnp.a(this.jdField_a_of_type_Bcnp, 8);
+      return;
     }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Bcnr = new bcnr();
-    jdField_a_of_type_Bcnr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bcnr.jdField_a_of_type_Alpa);
+    bcod.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
+    bcnp.a(this.jdField_a_of_type_Bcnp, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
   }
 }
 

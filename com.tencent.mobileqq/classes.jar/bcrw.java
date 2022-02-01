@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.text.SimpleDateFormat;
 
-public class bcrw
-  implements bcpo
+final class bcrw
+  extends ThreadLocal<SimpleDateFormat>
 {
-  public bcrw(TroopAIORobotLayout paramTroopAIORobotLayout, bcrq parambcrq) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  protected SimpleDateFormat a()
   {
-    if (paramInt == 0) {
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, alud.a(2131715564) + "", 0).a();
+    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   }
 }
 

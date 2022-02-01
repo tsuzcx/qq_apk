@@ -1,12 +1,27 @@
-public abstract interface augi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class augi
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, augu paramaugu, Object paramObject);
+  augi(aufz paramaufz) {}
   
-  public abstract void a(augu paramaugu, Object paramObject);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case -2: 
+      this.a.n();
+      return;
+    }
+    this.a.o();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     augi
  * JD-Core Version:    0.7.0.1
  */

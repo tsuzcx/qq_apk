@@ -1,34 +1,12 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import java.util.Vector;
 
-class awmo
-  implements Animator.AnimatorListener
+public abstract interface awmo
 {
-  awmo(awmf paramawmf, View paramView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Awmf.l();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Awmf.l();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Awmf.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
+  public abstract void a(boolean paramBoolean, Vector<Integer> paramVector);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmo
  * JD-Core Version:    0.7.0.1
  */

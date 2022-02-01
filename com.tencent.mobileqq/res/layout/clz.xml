@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView android:id="@id/mps" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView android:id="@id/nup" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

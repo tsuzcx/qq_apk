@@ -1,17 +1,16 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class adut
-  implements View.OnCreateContextMenuListener
+  implements advd
 {
-  public adut(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public adut(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public boolean a(boolean paramBoolean)
   {
-    paramContextMenu.clear();
+    if (paramBoolean) {
+      bmyc.a(this.a);
+    }
+    return false;
   }
 }
 

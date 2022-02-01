@@ -1,53 +1,36 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgpj
+class bgpj
+  implements View.OnClickListener
 {
-  public static final String a = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + "navigateback_appid";
+  bgpj(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static void a(String paramString)
+  public void onClick(View paramView)
   {
-    Object localObject = new File(b);
-    do
-    {
-      try
-      {
-        localObject = new BufferedWriter(new FileWriter((File)localObject));
-        QMLog.e("NavigateBackUtils", "getTagAppid exception!", paramString);
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          ((BufferedWriter)localObject).write(paramString);
-          ((BufferedWriter)localObject).close();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          continue;
-        }
-        paramString = paramString;
-        localObject = null;
-      }
-    } while (localObject == null);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgpa, 0);
+    }
     try
     {
-      ((BufferedWriter)localObject).close();
+      if (this.jdField_a_of_type_Bgpa.isShowing()) {
+        this.jdField_a_of_type_Bgpa.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception paramString) {}
+    catch (Exception localException)
+    {
+      break label38;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpj
  * JD-Core Version:    0.7.0.1
  */

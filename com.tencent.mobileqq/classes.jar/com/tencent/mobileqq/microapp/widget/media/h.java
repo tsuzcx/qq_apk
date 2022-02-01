@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.microapp.widget.media;
 
 import android.graphics.Bitmap;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import java.io.File;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ final class h
           return;
         }
         MiniAppCamera.a(localBitmap, (File)localObject, "");
-        if (bdnn.a(MiniAppCamera.g()))
+        if (bgsp.a(MiniAppCamera.g()))
         {
           MiniAppCamera.a(this.d, this.a, this.b, this.c);
           return;
@@ -43,8 +43,8 @@ final class h
         return;
       }
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("tempThumbPath", b.a().c(localException));
-      ((JSONObject)localObject).put("tempVideoPath", b.a().c(MiniAppCamera.g()));
+      ((JSONObject)localObject).put("tempThumbPath", b.a().b(localException));
+      ((JSONObject)localObject).put("tempVideoPath", b.a().b(MiniAppCamera.g()));
       this.b.appBrandRuntime.i.evaluateCallbackJs(this.c, ((JSONObject)localObject).toString());
       MiniAppCamera.b(false);
     }
@@ -52,7 +52,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.h
  * JD-Core Version:    0.7.0.1
  */

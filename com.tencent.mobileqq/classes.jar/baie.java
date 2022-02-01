@@ -1,25 +1,37 @@
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
-import eipc.EIPCResult;
+import android.text.TextUtils;
+import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
 
 public class baie
-  extends QIPCModule
+  implements Application.ActivityLifecycleCallbacks
 {
-  public baie()
+  public baie(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
   {
-    super("Module_TDFileChangeNameQIPCModule");
+    if (paramActivity.getComponentName() != null)
+    {
+      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
+      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
+        RedTouchLifeTimeManager.a(this.a);
+      }
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    bflp.c(baic.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    if (paramString.equals("Action_url_2_fmdb")) {
-      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
-    }
-    return null;
-  }
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

@@ -1,72 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alff
-  implements aled
+public class alff
+  extends alej
+  implements Cloneable
 {
-  alff(alfe paramalfe, JSONArray paramJSONArray, File paramFile, AppInterface paramAppInterface, String paramString1, int[] paramArrayOfInt, String paramString2) {}
+  private String d;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public alff(Context paramContext)
   {
-    QLog.d("ApolloPluginRscLoader", 1, new Object[] { "getCombination onDownLoadFinish sucess:", Boolean.valueOf(paramBoolean) });
-    label75:
-    int i;
-    if (paramInt1 > 0)
+    this.jdField_a_of_type_JavaLangString = anni.a(2131698419);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof alff))
     {
-      paramString = this.jdField_a_of_type_Alfe;
-      if (ApolloUtil.d(paramInt1))
+      paramObject = (alff)paramObject;
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
+    }
+    paramObject = new alff(BaseApplication.getContext());
+    paramObject.a(paramMessageRecord.senderuin);
+    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    return paramObject;
+  }
+  
+  public void a(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Beps.a(this.c);
+      }
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Beps != null) {
+        this.c = this.jdField_a_of_type_Beps.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramInt2 = 0;
-        paramString = alfe.a(paramString, 1, String.valueOf(paramInt1), paramInt2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
+        localJSONException.printStackTrace();
       }
     }
-    else
-    {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-        break label147;
-      }
-      paramInt1 = 0;
-      if (paramInt1 >= paramArrayOfInt.length) {
-        break label147;
-      }
-      paramString = this.jdField_a_of_type_Alfe;
-      i = paramArrayOfInt[paramInt1];
-      if (!ApolloUtil.c(paramArrayOfInt[paramInt1])) {
-        break label141;
-      }
-    }
-    label141:
-    for (paramInt2 = 0;; paramInt2 = 2)
-    {
-      paramString = alfe.a(paramString, 2, String.valueOf(i), paramInt2);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      paramInt1 += 1;
-      break label75;
-      paramInt2 = 2;
-      break;
-    }
-    label147:
-    if ((this.jdField_a_of_type_JavaIoFile != null) && (!this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      aldv.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, new alfg(this));
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString = alfe.a(this.jdField_a_of_type_Alfe, 6, this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-    }
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length <= 0))
-    {
-      this.jdField_a_of_type_Alfe.a(this.b, alud.a(2131700870), this.jdField_a_of_type_OrgJsonJSONArray);
-      return;
-    }
-    alfe.a(this.jdField_a_of_type_Alfe, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
+    return localJSONObject.toString().getBytes();
   }
 }
 

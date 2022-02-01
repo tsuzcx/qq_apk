@@ -1,58 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
-
-class atks
-  implements Handler.Callback
+public final class atks
 {
-  atks(atkr paramatkr) {}
+  private final Class jdField_a_of_type_JavaLangClass;
+  private final Object jdField_a_of_type_JavaLangObject;
   
-  private void a()
+  public atks(Object paramObject, Class paramClass)
   {
-    if (atkr.a(this.a) != null) {
-      atkr.a(this.a).setRefreshing(false);
-    }
-    if (atkr.a(this.a) != null) {
-      atkr.a(this.a).setRefresh(false);
-    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public Class a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131720337, 0).b(atkr.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        atkr.a(this.a);
-        if (atkr.a(this.a) == null) {
-          break;
-        }
-        atkr.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131720337, 0).b(atkr.a(this.a));
-      return false;
-    }
-    a();
-    return false;
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
   }
 }
 

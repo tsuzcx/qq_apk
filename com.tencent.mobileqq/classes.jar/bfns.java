@@ -1,207 +1,183 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
-import java.util.HashMap;
-import java.util.HashSet;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewCompat;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bfns
-  extends SQLiteOpenHelper
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  protected static HashMap<Long, bfns> a;
-  protected int a;
-  protected Context a;
-  protected String a;
-  protected HashSet<Integer> a;
-  protected volatile boolean a;
-  protected boolean b = true;
+  public ArrayList<String> a;
+  public boolean a;
   
-  static
+  public bfns(BulkSendMessageFragment paramBulkSendMessageFragment)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected bfns(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
+  public int getCount()
   {
-    super(paramContext, paramString, paramCursorFactory, paramInt);
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0) {
+      return i + j;
+    }
   }
   
-  public static bfns a(Context paramContext, long paramLong)
+  public Object getItem(int paramInt)
   {
-    try
+    return Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size());
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    bfnt localbfnt;
+    TextView localTextView;
+    ImageView localImageView;
+    Object localObject3;
+    String str;
+    Object localObject2;
+    Object localObject1;
+    if (paramView == null)
     {
-      bfns localbfns2 = (bfns)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      bfns localbfns1 = localbfns2;
-      if (localbfns2 == null)
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity()).inflate(2131558869, null);
+      localbfnt = new bfnt(localView);
+      localbfnt.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368138));
+      localbfnt.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371539));
+      localView.setTag(localbfnt);
+      localView.setVisibility(0);
+      localView.setFocusable(false);
+      localTextView = localbfnt.jdField_a_of_type_AndroidWidgetTextView;
+      localImageView = localbfnt.jdField_a_of_type_AndroidWidgetImageView;
+      localObject3 = (anmw)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label430;
+      }
+      localImageView.setImageResource(2130844949);
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColor(2131167074));
+      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) + "";
+      localbfnt.jdField_a_of_type_JavaLangString = str;
+      localObject2 = bglf.h(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, str);
+      if (!TextUtils.isEmpty(str)) {
+        break label310;
+      }
+      if (localObject2 != null) {
+        break label303;
+      }
+      localObject1 = "";
+      label224:
+      localTextView.setText((CharSequence)localObject1);
+      localImageView.setImageDrawable(bgmo.b());
+      label239:
+      localbfnt.jdField_a_of_type_AndroidViewView.setTag(2131378241, null);
+      localbfnt.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+    }
+    for (;;)
+    {
+      if (AppSetting.c) {
+        ViewCompat.setImportantForAccessibility(localImageView, 2);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localbfnt = (bfnt)paramView.getTag();
+      localView = paramView;
+      break;
+      label303:
+      localObject1 = localObject2;
+      break label224;
+      label310:
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localbfns1 = new bfns(paramContext, bflr.b(String.valueOf(paramLong) + "_opensdk"), null, 74);
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbfns1);
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((anmw)localObject3).e(str);
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject1 = localObject2;
+            if (((Friends)localObject3).isFriend()) {
+              localObject1 = bglf.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+            }
+          }
+        }
       }
-      return localbfns1;
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = anni.a(2131700038);
+      }
+      localTextView.setText((CharSequence)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.a(localbfnt, null, true);
+      localImageView.setTag(2131378267, str);
+      localImageView.setTag(null);
+      break label239;
+      label430:
+      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getString(2131689550));
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColorStateList(2131166450));
+      localImageView.setBackgroundDrawable(null);
+      localImageView.setImageResource(2130839178);
+      localImageView.setEnabled(true);
+      localImageView.setTag(Integer.valueOf(0));
+      localbfnt.jdField_a_of_type_AndroidViewView.setTag(2131378241, Integer.valueOf(0));
+      localbfnt.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
-    finally {}
   }
   
-  public void a()
+  public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_AndroidContentContext.deleteDatabase(this.jdField_a_of_type_JavaLangString);
+    super.notifyDataSetChanged();
   }
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    Object localObject = (Integer)paramView.getTag(2131378241);
+    if (localObject == null) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt))) {
-        this.jdField_a_of_type_Int += 1;
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (((Integer)localObject).intValue() == 0)
+      {
+        localObject = TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, 20);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((Intent)localObject).putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Bfns.jdField_a_of_type_JavaUtilArrayList);
+        ((Intent)localObject).putStringArrayListExtra("param_hide_filter_member_list", localArrayList);
+        ((Intent)localObject).putExtra("param_pick_max_num", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("param_pick_max_num_exceeds_wording", 2131696860);
+        ((Intent)localObject).putExtra("param_pick_title_string", anni.a(2131700031));
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.startActivityForResult((Intent)localObject, 1);
+        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity().overridePendingTransition(2130772302, 2130771990);
+      }
     }
-    finally {}
-  }
-  
-  /* Error */
-  public SQLiteDatabase getWritableDatabase()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: aload_0
-    //   5: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: astore_1
-    //   11: aload_1
-    //   12: astore_2
-    //   13: aload_0
-    //   14: getfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   17: ifeq +29 -> 46
-    //   20: aload_1
-    //   21: ifnull +7 -> 28
-    //   24: aload_1
-    //   25: invokevirtual 108	android/database/sqlite/SQLiteDatabase:close	()V
-    //   28: aload_0
-    //   29: invokevirtual 110	bfns:a	()V
-    //   32: aload_0
-    //   33: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   36: astore_2
-    //   37: aload_2
-    //   38: astore_1
-    //   39: aload_0
-    //   40: iconst_0
-    //   41: putfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   44: aload_1
-    //   45: astore_2
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_2
-    //   49: areturn
-    //   50: astore_2
-    //   51: aload_0
-    //   52: invokevirtual 110	bfns:a	()V
-    //   55: aload_0
-    //   56: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   59: astore_2
-    //   60: aload_2
-    //   61: astore_1
-    //   62: aload_1
-    //   63: astore_2
-    //   64: aload_0
-    //   65: getfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   68: ifeq -22 -> 46
-    //   71: aload_0
-    //   72: iconst_0
-    //   73: putfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   76: aload_1
-    //   77: astore_2
-    //   78: goto -32 -> 46
-    //   81: astore_1
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: athrow
-    //   86: astore_2
-    //   87: aload_0
-    //   88: getfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   91: ifeq +29 -> 120
-    //   94: iconst_0
-    //   95: ifeq +11 -> 106
-    //   98: new 112	java/lang/NullPointerException
-    //   101: dup
-    //   102: invokespecial 113	java/lang/NullPointerException:<init>	()V
-    //   105: athrow
-    //   106: aload_0
-    //   107: invokevirtual 110	bfns:a	()V
-    //   110: aload_0
-    //   111: invokespecial 101	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   114: pop
-    //   115: aload_0
-    //   116: iconst_0
-    //   117: putfield 103	bfns:jdField_a_of_type_Boolean	Z
-    //   120: aload_2
-    //   121: athrow
-    //   122: astore_2
-    //   123: goto -84 -> 39
-    //   126: astore_2
-    //   127: goto -65 -> 62
-    //   130: astore_1
-    //   131: goto -16 -> 115
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	134	0	this	bfns
-    //   3	74	1	localObject1	Object
-    //   81	4	1	localObject2	Object
-    //   130	1	1	localThrowable1	java.lang.Throwable
-    //   8	41	2	localObject3	Object
-    //   50	1	2	localThrowable2	java.lang.Throwable
-    //   59	19	2	localObject4	Object
-    //   86	35	2	localObject5	Object
-    //   122	1	2	localThrowable3	java.lang.Throwable
-    //   126	1	2	localThrowable4	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   4	9	50	java/lang/Throwable
-    //   13	20	81	finally
-    //   24	28	81	finally
-    //   28	32	81	finally
-    //   32	37	81	finally
-    //   39	44	81	finally
-    //   46	48	81	finally
-    //   64	76	81	finally
-    //   82	84	81	finally
-    //   87	94	81	finally
-    //   98	106	81	finally
-    //   106	110	81	finally
-    //   110	115	81	finally
-    //   115	120	81	finally
-    //   120	122	81	finally
-    //   4	9	86	finally
-    //   51	55	86	finally
-    //   55	60	86	finally
-    //   32	37	122	java/lang/Throwable
-    //   55	60	126	java/lang/Throwable
-    //   110	115	130	java/lang/Throwable
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfns
  * JD-Core Version:    0.7.0.1
  */

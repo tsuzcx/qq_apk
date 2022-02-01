@@ -1,81 +1,63 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
-class ook
-  implements BusinessObserver
+public class ook
+  extends anii
 {
-  ook(ooi paramooi, BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2) {}
+  public static long a = 1800L;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ook(QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
-    if (paramBoolean) {}
-    for (;;)
+    super(paramQQAppInterface);
+  }
+  
+  public void a()
+  {
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
+    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
+    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
+      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
+    }
+    try
     {
-      try
+      localAdReqInfo.int32_req_type.set(3);
+      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
+      localReqAdvertisePara.msg_phone_info.set(opp.a());
+      localReqBody.req_advertise_para.set(localReqAdvertisePara);
+      nir.a(this.app, new ool(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label234;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
         if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "commentLike ret=" + paramBundle);
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
         }
-        if (paramInt != 0) {
-          break label234;
-        }
-        paramInt = i;
-        paramBundle.printStackTrace();
-      }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          if (ooi.a(this.jdField_a_of_type_Ooi) != null)
-          {
-            ooi.a(this.jdField_a_of_type_Ooi).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
-            paramInt = i;
-          }
-          i = paramInt;
-          if ((i == 0) && (ooi.a(this.jdField_a_of_type_Ooi) != null)) {
-            ooi.a(this.jdField_a_of_type_Ooi).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
-          }
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          for (;;)
-          {
-            paramInt = 1;
-          }
-        }
-        paramBundle = paramBundle;
-        paramInt = 0;
-      }
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label234:
-        paramInt = 0;
       }
     }
   }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return oom.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ook
  * JD-Core Version:    0.7.0.1
  */

@@ -252,13 +252,13 @@ public class QuickSendProgressView
     this.h = a(2.0F, getResources());
     this.jdField_g_of_type_Int = a(3.0F, getResources());
     this.i = a(1.0F, getResources());
-    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692840);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845691);
+    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692396);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846101);
     this.jdField_c_of_type_Int = Color.parseColor("#19BAFF");
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845693);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846103);
     this.jdField_e_of_type_Int = Color.parseColor("#3300CAFC");
     this.jdField_f_of_type_Int = Color.parseColor("#33FF596A");
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845689);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846099);
     this.jdField_d_of_type_Int = Color.parseColor("#FF596A");
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.h);
@@ -269,14 +269,14 @@ public class QuickSendProgressView
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(a(14.0F, getResources()));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165535));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165572));
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845692);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845695);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845690);
-    setContentDescription(getResources().getString(2131690797));
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846102);
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846105);
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846100);
+    setContentDescription(getResources().getString(2131690671));
   }
   
   protected void drawableStateChanged()
@@ -441,7 +441,7 @@ public class QuickSendProgressView
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_Int == 0)
     {
-      setContentDescription(getResources().getString(2131690797));
+      setContentDescription(getResources().getString(2131690671));
       label42:
       c();
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView$RefreshProgressRunnable != null)
@@ -472,12 +472,12 @@ public class QuickSendProgressView
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        setContentDescription(getResources().getString(2131690759));
+        setContentDescription(getResources().getString(2131690640));
         break label42;
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        setContentDescription(getResources().getString(2131719246));
+        setContentDescription(getResources().getString(2131717334));
         break label42;
       }
       if (this.jdField_a_of_type_JavaLangString == null) {
@@ -523,7 +523,7 @@ public class QuickSendProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QuickSendProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aqiq
-  implements Animation.AnimationListener
+public class aqiq
+  implements View.OnClickListener
 {
-  aqiq(aqip paramaqip) {}
+  public aqiq(IphonePickerView paramIphonePickerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.c();
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

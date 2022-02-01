@@ -1,48 +1,60 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.ArrayList;
 
-class wii
-  implements urr<wiv, wiw>
+public final class wii
+  extends weu
 {
-  wii(wih paramwih, JobContext paramJobContext, String paramString) {}
+  public StoryVideoItem a;
+  public GeneralFeedItem a;
+  public ArrayList<wih> a;
+  public final boolean a;
+  public StoryVideoItem b;
+  public boolean b;
+  public boolean c;
   
-  public void a(@NonNull wiv paramwiv, @Nullable wiw paramwiw, @NonNull ErrorMessage paramErrorMessage)
+  public wii(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == bdza.a(940017)) || (paramInt == bdza.a(9042)) || (paramInt == bdza.a(9070)) || (paramInt == bdza.a(9071)) || (paramInt / 100 == bdza.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 941001) || (paramInt == 941002);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return false;
     }
-    if ((paramwiw == null) || (paramErrorMessage.isFail()))
-    {
-      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      wih.a(this.jdField_a_of_type_Wih, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Wih.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((uvm)uwa.a(15)).a(paramwiw.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramwiv = new wid(bool, paramwiw.a, paramwiw.b, paramwiw.c);
-      try
-      {
-        wih.a(this.jdField_a_of_type_Wih, paramwiv);
-        return;
-      }
-      catch (NullPointerException paramwiv)
-      {
-        wxe.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramwiv);
-        wih.b(this.jdField_a_of_type_Wih, new ErrorMessage());
-        return;
-      }
-    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
+  }
+  
+  public String toString()
+  {
+    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wii
  * JD-Core Version:    0.7.0.1
  */

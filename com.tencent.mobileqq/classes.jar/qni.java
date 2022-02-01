@@ -1,35 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.struct.LebaKDCellInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qni
 {
+  public int a;
+  public long a;
+  public Bundle a;
+  public SelectPositionModule.PositionData a;
+  public LebaKDCellInfo a;
   public String a;
+  public List<Long> a;
+  public qqp a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
   public String b;
+  public List<Long> b;
+  public boolean b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public List<plx> c;
+  public boolean c;
+  public int d;
+  public long d;
+  public List<qnh> d;
+  public boolean d;
+  public int e = 1;
+  public long e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i = 1;
+  public boolean i;
+  public int j;
   
-  public static qni a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  public qni()
   {
-    qni localqni = new qni();
-    localqni.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
-    localqni.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
-    return localqni;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
   }
   
-  public oidb_cmd0xbc9.MoreChannelItem a()
+  public static int a(plx paramplx)
   {
-    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
-    if (!TextUtils.isEmpty(this.a))
-    {
-      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
-      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (paramplx.a == 13) {
+      return 11;
     }
-    return localMoreChannelItem;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qni
  * JD-Core Version:    0.7.0.1
  */

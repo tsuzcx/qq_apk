@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aheq;
-import awge;
-import awhp;
-import awhs;
+import ajjm;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
 public class PhoneContact
-  extends awge
+  extends Entity
   implements Serializable, Cloneable
 {
   public int ability;
@@ -34,7 +34,7 @@ public class PhoneContact
   public String md5;
   @Deprecated
   public String mobileCode;
-  @awhs
+  @unique
   public String mobileNo;
   public String name;
   @Deprecated
@@ -45,12 +45,12 @@ public class PhoneContact
   @Deprecated
   public long originBinder;
   public String pinyinAll;
-  @awhp
+  @notColumn
   public String pinyinFirst;
   public String pinyinInitial;
   public String remark;
   public byte[] richBuffer;
-  @awhp
+  @notColumn
   private RichStatus richStatus;
   public long richTime;
   public int samFriend;
@@ -92,16 +92,17 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    aheq localaheq;
+    ajjm localajjm;
     do
     {
       return i;
       return 3;
       return 4;
+      return 5;
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localaheq = aheq.a();
+      localajjm = ajjm.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -109,8 +110,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localaheq.a(this.iTermType, 1));
-    if (1 != localaheq.a(this.iTermType, 1)) {
+    } while (1 != localajjm.a(this.iTermType, 1));
+    if (1 != localajjm.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)
@@ -122,8 +123,10 @@ public class PhoneContact
       return 1;
     case 3: 
       return 3;
+    case 4: 
+      return 4;
     }
-    return 4;
+    return 5;
   }
   
   public RichStatus getRichStatus()
@@ -152,7 +155,7 @@ public class PhoneContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PhoneContact
  * JD-Core Version:    0.7.0.1
  */

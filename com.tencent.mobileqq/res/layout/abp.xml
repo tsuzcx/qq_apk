@@ -34,5 +34,5 @@
     <SeekBar android:layout_gravity="bottom" android:id="@id/fg5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/a1l" android:thumb="@color/ajr" />
     <ViewStub android:layout_gravity="top" android:id="@id/bp1" android:layout="@layout/abm" android:layout_width="fill_parent" android:layout_height="44.0dip" />
     <ViewStub android:id="@id/bp2" android:layout="@layout/abn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView android:id="@id/mk1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView android:id="@id/n4o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout>

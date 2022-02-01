@@ -1,27 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Context;
 import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class asty
-  implements Animator.AnimatorListener
+  implements View.OnLongClickListener
 {
-  public asty(HotPicMainPanel paramHotPicMainPanel) {}
+  public asty(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onLongClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
     }
-    this.a.b.setVisibility(8);
+    paramView.setSelected(true);
+    bguh localbguh = new bguh();
+    localbguh.a(2131365302, paramView.getContext().getString(2131691320));
+    this.a.a = bgkw.a(paramView, localbguh, new astz(this, paramView), new asua(this, paramView));
+    return true;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

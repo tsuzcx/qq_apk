@@ -1,60 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class aplm
-  extends apld
+public abstract class aplm
+  implements aple
 {
-  public aplm(QQAppInterface paramQQAppInterface)
+  private final String a;
+  
+  public aplm(String paramString)
   {
-    super("qq.android.early.precover", paramQQAppInterface);
+    this.a = paramString;
   }
   
-  public int a()
+  public Bundle a()
   {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a)) {
+      localBundle.putString("Uin", this.a);
+    }
+    return localBundle;
   }
   
   public String a()
   {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    return "QQ.GetNickname";
   }
 }
 

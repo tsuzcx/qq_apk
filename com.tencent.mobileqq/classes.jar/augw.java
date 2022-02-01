@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.net.Uri;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
 public class augw
+  implements auyc
 {
-  public String a;
-  public boolean a;
+  public augw(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public String a(augj paramaugj, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return paramaugj.a(paramMessageRecord, paramMsgBackupResEntity);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void a(Uri paramUri) {}
   
-  public boolean a()
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augw
  * JD-Core Version:    0.7.0.1
  */

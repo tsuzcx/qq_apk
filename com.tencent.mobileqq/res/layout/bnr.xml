@@ -13,6 +13,6 @@
             </RelativeLayout>
             <ImageView android:gravity="center" android:id="@id/dpg" android:background="@android:color/transparent" android:paddingLeft="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g0f" android:scaleType="fitCenter" android:layout_toRightOf="@id/dpe" android:layout_alignTop="@id/dpe" />
         </RelativeLayout>
-        <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_navigator_black_color" android:id="@id/dq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/qzone_skin_navigator_black_color" android:id="@id/dq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
     </LinearLayout>
 </FrameLayout>

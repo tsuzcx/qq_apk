@@ -1,22 +1,23 @@
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.List;
 
-public class auyy
+public abstract interface auyy<T>
 {
-  public int a;
-  public View a;
-  public ImageButton a;
-  public ImageView a;
-  public TextView a;
+  public abstract int a();
   
-  private auyy(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public abstract String a(Context paramContext);
+  
+  public abstract String a(FontBubble paramFontBubble);
+  
+  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
+  
+  public abstract void a(anuk paramanuk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyy
  * JD-Core Version:    0.7.0.1
  */

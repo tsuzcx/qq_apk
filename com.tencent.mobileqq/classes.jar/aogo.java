@@ -1,12 +1,16 @@
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aogo
+  extends acvr
 {
-  public String a = "";
-  
-  public aogo() {}
-  
-  public aogo(String paramString)
+  public aogo(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, acwe paramacwe)
   {
-    this.a = paramString;
+    super(paramQQAppInterface, paramQQMessageFacade, paramacwe);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramacwe + "]");
+    }
   }
 }
 

@@ -1,40 +1,49 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
 public class blrj
+  extends QzoneExternalRequest
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
-  boolean jdField_a_of_type_Boolean = false;
+  mobile_get_qzone_public_msg_req a;
   
-  public void a(boolean paramBoolean)
+  public blrj(long paramLong, Map<String, String> paramMap)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
-    {
-      if (!paramBoolean) {
-        break label45;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844039);
-      }
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
+  }
+  
+  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    else
+    do
     {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844072);
-    return;
-    label45:
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844069);
+      return paramArrayOfByte;
+      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
+      paramArrayOfByte = paramArrayOfInt;
+    } while (paramArrayOfInt != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getQzonePublicMsg";
   }
 }
 

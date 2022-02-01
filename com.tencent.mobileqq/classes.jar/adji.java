@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.3;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class adji
-  implements atcp
+  implements biaw
 {
-  public adji(NearbyActivity.3 param3) {}
+  public adji(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    this.a.this$0.d = paramInt;
-    NearbyActivity.a(this.a.this$0.b, this.a.this$0.d);
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

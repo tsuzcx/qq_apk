@@ -1,42 +1,32 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axww
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  alwx jdField_a_of_type_Alwx;
-  axwz jdField_a_of_type_Axwz;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public axww(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return (this.a != null) && (this.b == 1);
-  }
-  
-  public boolean b()
-  {
-    return (this.a != null) && (this.b >= 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.a != null) && (this.c == 3);
-  }
-  
-  public boolean d()
-  {
-    return (this.a != null) && (this.c >= 4);
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(localIntent);
+    NearbyProfileFragment.a(this.a, null);
+    ThreadManager.post(new NearbyProfileFragment.4.1(this), 5, null, false);
+    bcst.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axww
  * JD-Core Version:    0.7.0.1
  */

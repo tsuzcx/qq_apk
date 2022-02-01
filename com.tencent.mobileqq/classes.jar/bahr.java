@@ -1,50 +1,20 @@
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bahr
-  extends MiniMsgUser
+  extends RecyclerView.ViewHolder
 {
-  int jdField_a_of_type_Int = -1;
-  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bahr(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
+  private bahr(View paramView)
   {
-    super(paramBaseActivity, paramMiniMsgUserParam);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.b = paramString2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
-    int i;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
-      }
-      paramView = this.jdField_a_of_type_JavaLangString;
-      i = this.jdField_a_of_type_Int;
-    } while ((i == -1) || (TextUtils.isEmpty(paramView)));
-    MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, paramView, this.b);
-    hideUnread();
-  }
-  
-  public void updateUnreadCountSync(int paramInt)
-  {
-    super.updateUnreadCountSync(0);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379779));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369143));
   }
 }
 

@@ -12,7 +12,7 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
 {
   private TVKPlayerWrapperCGIModel$CGICombineCallback(TVKPlayerWrapperCGIModel paramTVKPlayerWrapperCGIModel) {}
   
-  private void handleOnFailure(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  private void handleOnFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
     TVKPlayerWrapperCGIModel.CGIRequest localCGIRequest = TVKPlayerWrapperCGIModel.access$700(this.this$0, paramInt1);
     if (processVideoInfoIsRequestExpired(localCGIRequest))
@@ -22,7 +22,7 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
     }
     localCGIRequest.reqState = 3;
     TVKPlayerWrapperCGIModel.access$800(this.this$0, paramInt1);
-    TVKPlayerWrapperCGIModel.access$900(this.this$0).onGetVodInfoFailed(localCGIRequest.reqType, localCGIRequest.requestInfo, paramString1, paramInt2, paramString2);
+    TVKPlayerWrapperCGIModel.access$900(this.this$0).onGetVodInfoFailed(localCGIRequest.reqType, localCGIRequest.requestInfo, paramInt2, paramString1, paramInt3, paramString2);
   }
   
   private void handleOnGetLiveInfoFailed(int paramInt, TVKLiveVideoInfo paramTVKLiveVideoInfo)
@@ -121,9 +121,9 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
     TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.2(this, paramInt, paramTVKVideoInfo));
   }
   
-  public void onFailure(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public void onFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
-    TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.1(this, paramInt1, paramString1, paramInt2, paramString2));
+    TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.1(this, paramInt1, paramInt2, paramString1, paramInt3, paramString2));
   }
   
   public void onGetLiveInfoFailed(int paramInt, TVKLiveVideoInfo paramTVKLiveVideoInfo)
@@ -138,7 +138,7 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel.CGICombineCallback
  * JD-Core Version:    0.7.0.1
  */

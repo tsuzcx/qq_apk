@@ -1,19 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import aloq;
-import alor;
-import alsg;
-import alsk;
-import alsl;
-import alua;
-import alub;
-import aluc;
-import alvu;
-import alvv;
-import alyv;
-import amke;
-import amkf;
-import amos;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -28,15 +14,27 @@ import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apao;
-import assz;
-import azqs;
-import azri;
-import azrq;
-import azsj;
-import banm;
-import bdne;
-import bdns;
+import anhv;
+import anhw;
+import anlm;
+import anls;
+import anlt;
+import annf;
+import anng;
+import annh;
+import anpc;
+import anpd;
+import anrc;
+import aonz;
+import ardl;
+import avai;
+import bcst;
+import bctj;
+import bcts;
+import bcuh;
+import bdoq;
+import bgsg;
+import bgsu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.startup.step.StartService;
@@ -50,7 +48,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import mqq.app.AppRuntime;
@@ -68,13 +69,14 @@ public class GuardManager
   public static int e = 15;
   public int a;
   public long a;
-  private aluc jdField_a_of_type_Aluc;
   private Application jdField_a_of_type_AndroidAppApplication;
   private volatile BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private annh jdField_a_of_type_Annh;
   public volatile String a;
+  private final Map<String, String> jdField_a_of_type_JavaUtilMap;
   Random jdField_a_of_type_JavaUtilRandom;
-  aluc[] jdField_a_of_type_ArrayOfAluc = new aluc[9];
+  annh[] jdField_a_of_type_ArrayOfAnnh = new annh[9];
   public long[][] a;
   public int b;
   long b;
@@ -98,20 +100,46 @@ public class GuardManager
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_a_of_type_AndroidAppApplication = paramApplication;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     a(paramInt, null);
     paramApplication = new IntentFilter("com.tencent.process.stopping");
     paramApplication.addAction("com.tencent.process.starting");
     try
     {
       this.jdField_a_of_type_AndroidAppApplication.registerReceiver(this, paramApplication);
-      label120:
+      label131:
       Foreground.setReady();
       return;
     }
     catch (Throwable paramApplication)
     {
-      break label120;
+      break label131;
     }
+  }
+  
+  private static Map<String, String> a(Map<String, String> paramMap)
+  {
+    Object localObject = BaseApplication.context;
+    HashMap localHashMap = new HashMap();
+    localObject = ((ActivityManager)((Context)localObject).getSystemService("activity")).getRunningAppProcesses();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+        Iterator localIterator = paramMap.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)((Map.Entry)localIterator.next()).getKey();
+          if ((str != null) && (str.equals(localRunningAppProcessInfo.processName)) && (localRunningAppProcessInfo.importance == 100)) {
+            localHashMap.put(str, "");
+          }
+        }
+      }
+    }
+    QLog.d("GuardManager", 1, new Object[] { "[process] filterRealForegroundProcMap: invoked. ", " realProcMap: ", localHashMap });
+    return localHashMap;
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
@@ -128,11 +156,11 @@ public class GuardManager
     for (;;)
     {
       return;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bdne.a(paramContext)));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bgsg.a(paramContext)));
       break;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bdne.m(paramContext, paramString)));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bgsg.m(paramContext, paramString)));
       break;
-      long l2 = bdns.a(l1);
+      long l2 = bgsu.a(l1);
       jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l2));
       switch (paramInt)
       {
@@ -141,14 +169,14 @@ public class GuardManager
       {
         QLog.d("GuardManager", 2, "Daily Report info key=" + paramString + " timeMillisInTodayZero=" + l2 + " nowTime=" + l1);
         return;
-        bdne.a(paramContext, l2);
-        azqs.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "start_up", "front", "device_cnt", "", 1, "");
+        bgsg.a(paramContext, l2);
+        bcst.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "start_up", "front", "device_cnt", "", 1, "");
         continue;
-        bdne.k(paramContext, paramString, l2);
-        azqs.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "front", "login", "", 1, "");
+        bgsg.k(paramContext, paramString, l2);
+        bcst.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "front", "login", "", 1, "");
         continue;
-        bdne.k(paramContext, paramString, l2);
-        azqs.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "msf", "login", "", 1, "");
+        bgsg.k(paramContext, paramString, l2);
+        bcst.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "msf", "login", "", 1, "");
       }
     }
   }
@@ -201,7 +229,7 @@ public class GuardManager
           localHashMap.put("countLevel_1", str1);
           localHashMap.put("countLevel_2", str2);
           localHashMap.put("countLevel_3", str3);
-          azri.a(BaseApplicationImpl.getApplication()).a(localQQAppInterface.c(), "maxThreadManagerJobWait", true, i, 1L, localHashMap, "", false);
+          bctj.a(BaseApplicationImpl.getApplication()).a(localQQAppInterface.c(), "maxThreadManagerJobWait", true, i, 1L, localHashMap, "", false);
           return;
         }
       }
@@ -223,39 +251,58 @@ public class GuardManager
     return JobReporter.ramdomReport(10000);
   }
   
-  aluc a(int paramInt)
+  annh a(int paramInt)
   {
-    aluc localaluc = this.jdField_a_of_type_ArrayOfAluc[paramInt];
-    Object localObject = localaluc;
-    if (localaluc == null) {
+    annh localannh = this.jdField_a_of_type_ArrayOfAnnh[paramInt];
+    Object localObject = localannh;
+    if (localannh == null) {
       switch (paramInt)
       {
       default: 
         throw new RuntimeException("WTF");
       case 2: 
-        localObject = new alsk();
+        localObject = new anls();
       }
     }
     for (;;)
     {
-      ((aluc)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
-      ((aluc)localObject).jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ArrayOfAluc[paramInt] = localObject;
+      ((annh)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
+      ((annh)localObject).jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ArrayOfAnnh[paramInt] = localObject;
       return localObject;
-      localObject = new alsl();
+      localObject = new anlt();
       continue;
-      localObject = new aloq();
+      localObject = new anhv();
       continue;
-      localObject = new alor();
+      localObject = new anhw();
       continue;
-      localObject = new alvv();
+      localObject = new anpd();
       continue;
-      localObject = new aluc();
+      localObject = new annh();
       continue;
-      localObject = new alvu();
+      localObject = new anpc();
       continue;
-      localObject = new alyv();
+      localObject = new anrc();
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Map<String, String> a()
+  {
+    try
+    {
+      Map localMap = a(this.jdField_a_of_type_JavaUtilMap);
+      return localMap;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("GuardManager", 1, "realForegroundProcessMap: failed. ", localThrowable);
+    }
+    return this.jdField_a_of_type_JavaUtilMap;
   }
   
   public void a()
@@ -338,7 +385,7 @@ public class GuardManager
     if (Looper.myLooper() == ThreadManager.getFileThreadLooper())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "nextState: " + aluc.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + aluc.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
+        QLog.d("GuardManager", 2, "nextState: " + annh.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + annh.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
       }
       if (this.f == 8) {
         return;
@@ -347,15 +394,15 @@ public class GuardManager
       {
         Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, this.f, paramInt);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-        this.jdField_a_of_type_Aluc = a(paramInt);
+        this.jdField_a_of_type_Annh = a(paramInt);
         this.f = paramInt;
       }
       for (;;)
       {
-        this.jdField_a_of_type_Aluc.a(5, paramObject);
+        this.jdField_a_of_type_Annh.a(5, paramObject);
         return;
         if (paramInt == 0) {
-          this.jdField_a_of_type_Aluc = a(paramInt);
+          this.jdField_a_of_type_Annh = a(paramInt);
         }
       }
     }
@@ -387,9 +434,9 @@ public class GuardManager
   
   public void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    azri localazri = azri.a(BaseApplication.getContext());
-    paramHashMap.put("config", alua.a().jdField_a_of_type_JavaLangString);
-    localazri.a("", paramString, true, 0L, 0L, paramHashMap, "");
+    bctj localbctj = bctj.a(BaseApplication.getContext());
+    paramHashMap.put("config", annf.a().jdField_a_of_type_JavaLangString);
+    localbctj.a("", paramString, true, 0L, 0L, paramHashMap, "");
   }
   
   public void a(boolean paramBoolean)
@@ -414,7 +461,7 @@ public class GuardManager
       {
         Object localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
         localObject = new SimpleDateFormat("yyyyMMdd", Locale.US).format((Date)localObject);
-        azqs.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "CliOper", "", "", "Online_time", "Fe_time", 0, i, 0, (String)localObject, "", "", "");
+        bcst.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "CliOper", "", "", "Online_time", "Fe_time", 0, i, 0, (String)localObject, "", "", "");
       }
       if (!paramBoolean) {
         break;
@@ -427,7 +474,7 @@ public class GuardManager
   
   public void a(boolean paramBoolean, String paramString)
   {
-    assz.b(paramString);
+    avai.b(paramString);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     Intent localIntent = new Intent("com.tencent.process.exit");
@@ -437,7 +484,7 @@ public class GuardManager
     localIntent.putExtra("verify", BaseApplicationImpl.getLocalVerify(localArrayList, false));
     this.jdField_a_of_type_AndroidAppApplication.sendBroadcast(localIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + apao.a(BaseApplicationImpl.getContext()) + ", toExitTargetProcess=" + paramString + " isForeground=" + paramBoolean);
+      QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + ardl.a(BaseApplicationImpl.getContext()) + ", toExitTargetProcess=" + paramString + " isForeground=" + paramBoolean);
     }
   }
   
@@ -446,7 +493,6 @@ public class GuardManager
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
     Object localObject1 = (ActivityManager)this.jdField_a_of_type_AndroidAppApplication.getSystemService("activity");
     try
     {
@@ -457,18 +503,18 @@ public class GuardManager
         for (;;)
         {
           if (!((Iterator)localObject1).hasNext()) {
-            break label360;
+            break label318;
           }
-          Object localObject3 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-          str1 = ((ActivityManager.RunningAppProcessInfo)localObject3).processName;
-          int k = ((ActivityManager.RunningAppProcessInfo)localObject3).pid;
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+          str1 = localRunningAppProcessInfo.processName;
+          i = localRunningAppProcessInfo.pid;
           if ((str1.startsWith("com.tencent.mobileqq")) && (str1.indexOf(':') != -1) && (!str1.endsWith(":MSF"))) {
             if (paramVarArgs != null)
             {
-              int m = paramVarArgs.length;
-              i = 0;
+              int k = paramVarArgs.length;
               j = 0;
-              if (j < m)
+              i = 0;
+              if (j < k)
               {
                 String str2 = paramVarArgs[j];
                 if ((TextUtils.isEmpty(str2)) || (!str1.endsWith(str2))) {
@@ -476,7 +522,7 @@ public class GuardManager
                 }
                 i = 1;
                 if (i == 0) {
-                  break label340;
+                  break label298;
                 }
                 localArrayList3.add(str1);
               }
@@ -484,17 +530,13 @@ public class GuardManager
             }
             else
             {
-              if ((((ActivityManager.RunningAppProcessInfo)localObject3).importance == 100) || ((((ActivityManager.RunningAppProcessInfo)localObject3).importance == 200) && ((((ActivityManager.RunningAppProcessInfo)localObject3).importance != 200) || (((ActivityManager.RunningAppProcessInfo)localObject3).importanceReasonCode == 0)))) {
-                break label349;
+              if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0)))) {
+                break label307;
               }
               localArrayList1.add(str1);
-              localObject3 = new amkf();
-              ((amkf)localObject3).jdField_a_of_type_Int = k;
-              ((amkf)localObject3).jdField_a_of_type_JavaLangString = str1;
-              localArrayList4.add(localObject3);
-              assz.b(str1);
+              avai.b(str1);
               if (str1.endsWith(":qzone")) {
-                azrq.a().d(azrq.a());
+                bcts.a().d(bcts.a());
               }
             }
           }
@@ -514,16 +556,15 @@ public class GuardManager
         continue;
         int i = 0;
         continue;
-        label340:
+        label298:
         j += 1;
         continue;
-        label349:
+        label307:
         localArrayList2.add(str1);
       }
-      label360:
-      amke.a().a(localArrayList2);
+      label318:
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + apao.a(BaseApplicationImpl.getContext()) + ", toExitProcess=" + localArrayList1 + ", forgroundProcess=" + localArrayList2 + ", exceptions:" + localArrayList3);
+        QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + ardl.a(BaseApplicationImpl.getContext()) + ", toExitProcess=" + localArrayList1 + ", forgroundProcess=" + localArrayList2 + ", exceptions:" + localArrayList3);
       }
       if (localArrayList1.size() > 0)
       {
@@ -567,13 +608,13 @@ public class GuardManager
       jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_AndroidAppApplication, "daily_boot_report", 0);
       a(this.jdField_a_of_type_AndroidAppApplication, jdField_a_of_type_Boolean);
-      banm.a(null);
-      amos.a(1);
+      bdoq.a(null);
+      aonz.a(1);
       continue;
       jdField_a_of_type_Boolean = false;
       a(this.jdField_a_of_type_AndroidAppApplication, "daily_boot_report", 0);
       a(this.jdField_a_of_type_AndroidAppApplication, jdField_a_of_type_Boolean);
-      amos.a(2);
+      aonz.a(2);
     }
   }
   
@@ -608,7 +649,7 @@ public class GuardManager
     localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
     localHashMap.put("resumeCount", String.valueOf(k * 1.0D / 15.0D));
     localHashMap.put("msgCount", String.valueOf(j * 1.0D / 15.0D));
-    localHashMap.put("activeLevel", String.valueOf(alua.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
+    localHashMap.put("activeLevel", String.valueOf(annf.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
     if (paramBoolean) {}
     for (String str = "actLiteActive";; str = "actFullActive")
     {
@@ -619,11 +660,11 @@ public class GuardManager
   
   public void d(boolean paramBoolean)
   {
-    alua localalua = alua.a();
+    annf localannf = annf.a();
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    int i = localalua.jdField_a_of_type_Int;
-    long l = localalua.jdField_b_of_type_Int | i << 8;
-    int j = alua.a().jdField_c_of_type_Int;
+    int i = localannf.jdField_a_of_type_Int;
+    long l = localannf.jdField_b_of_type_Int | i << 8;
+    int j = annf.a().jdField_c_of_type_Int;
     if (paramBoolean) {}
     for (i = 1;; i = 0)
     {
@@ -665,18 +706,11 @@ public class GuardManager
         paramMessage.putExtra("key_plugin_state", 0);
         BaseApplicationImpl.getApplication().sendBroadcast(paramMessage);
         paramMessage = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        if (paramMessage.isRunning()) {
-          paramMessage.a(BaseApplicationImpl.sApplication);
+        if (!paramMessage.isRunning()) {
+          continue;
         }
-        try
-        {
-          amke.a().a();
-          return true;
-        }
-        catch (Throwable paramMessage)
-        {
-          return true;
-        }
+        paramMessage.a(BaseApplicationImpl.sApplication);
+        return true;
         localObject1 = this.jdField_a_of_type_JavaLangString;
         this.jdField_a_of_type_JavaLangString = ((String)paramMessage.obj);
         Object localObject2;
@@ -686,7 +720,7 @@ public class GuardManager
           a((QQAppInterface)localObject1);
           if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
           {
-            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new alub(this);
+            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anng(this);
             localObject2 = new IntentFilter();
             ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_OFF");
             ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_ON");
@@ -695,7 +729,7 @@ public class GuardManager
         try
         {
           this.jdField_a_of_type_AndroidAppApplication.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject2);
-          label288:
+          label279:
           localObject2 = new Intent("com.tencent.plugin.state.change");
           ((Intent)localObject2).putExtra("key_plugin_state", 1);
           BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2);
@@ -711,8 +745,8 @@ public class GuardManager
             }
             if (((paramMessage.arg1 == 2) || (paramMessage.arg1 == 3) || (paramMessage.arg1 == 0)) && ((paramMessage.arg2 == 4) || (paramMessage.arg2 == 6)))
             {
-              QQAppInterface.a().c();
-              alsg.a().a();
+              QQAppInterface.a().b();
+              anlm.a().a();
             }
             if (this.jdField_a_of_type_JavaUtilRandom == null) {
               this.jdField_a_of_type_JavaUtilRandom = new Random();
@@ -721,8 +755,8 @@ public class GuardManager
               continue;
             }
             localObject1 = new HashMap();
-            ((HashMap)localObject1).put("before", aluc.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
-            ((HashMap)localObject1).put("after", aluc.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
+            ((HashMap)localObject1).put("before", annh.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
+            ((HashMap)localObject1).put("after", annh.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
             a("GM_guardChangeS", (HashMap)localObject1);
             return true;
           }
@@ -734,10 +768,10 @@ public class GuardManager
           if (paramMessage.arg1 < 3) {
             a(i);
           }
-          this.jdField_a_of_type_Aluc.a(i, paramMessage.obj);
+          this.jdField_a_of_type_Annh.a(i, paramMessage.obj);
           return true;
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 12000L);
-          this.jdField_a_of_type_Aluc.a();
+          this.jdField_a_of_type_Annh.a();
           return true;
           if (!b()) {
             continue;
@@ -749,7 +783,7 @@ public class GuardManager
         }
         catch (Throwable localThrowable2)
         {
-          break label288;
+          break label279;
         }
       }
       catch (Throwable localThrowable1)
@@ -761,36 +795,78 @@ public class GuardManager
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    for (;;)
     {
-      paramContext = paramIntent.getAction();
-      String str = paramIntent.getStringExtra("runningProcessName");
-      long l = paramIntent.getLongExtra("runningtime", 0L);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, paramContext + " received with " + str + " at " + l + ", when " + this.jdField_d_of_type_Long + ", " + this.jdField_c_of_type_Long);
-      }
-      if ((str != null) && ((str.equals("com.tencent.mobileqq")) || (str.startsWith("com.tencent.mobileqq:")))) {
-        if ("com.tencent.process.stopping".equals(paramContext))
+      try
+      {
+        String str = paramIntent.getAction();
+        paramContext = paramIntent.getStringExtra("runningProcessName");
+        l = paramIntent.getLongExtra("runningtime", 0L);
+        if (QLog.isColorLevel()) {
+          QLog.d("GuardManager", 2, str + " received with " + paramContext + " at " + l + ", when " + this.jdField_d_of_type_Long + ", " + this.jdField_c_of_type_Long);
+        }
+        if ((paramContext == null) || ((!paramContext.equals("com.tencent.mobileqq")) && (!paramContext.startsWith("com.tencent.mobileqq:")))) {
+          break label424;
+        }
+        if ("com.tencent.process.stopping".equals(str))
         {
-          if ((l >= this.jdField_d_of_type_Long) || (l < this.jdField_d_of_type_Long - 1000000L) || (l < 0L))
+          if ((l >= this.jdField_d_of_type_Long) || (l < this.jdField_d_of_type_Long - 1000000L)) {
+            break label418;
+          }
+          if (l >= 0L) {
+            break label425;
+          }
+          break label418;
+          if (bool)
           {
             this.jdField_d_of_type_Long = l;
-            paramContext = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, str);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramContext, 50L);
+            paramIntent = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramContext);
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramIntent, 50L);
+            this.jdField_a_of_type_JavaUtilMap.remove(paramContext);
+            QLog.d("GuardManager", 1, new Object[] { "[process][remove] onReceive: invoked. ", " process: ", paramContext });
           }
-        }
-        else if (("com.tencent.process.starting".equals(paramContext)) && ((l >= this.jdField_c_of_type_Long) || (l < this.jdField_d_of_type_Long - 1000000L) || (l < 0L)))
-        {
-          this.jdField_c_of_type_Long = l;
-          paramContext = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, str);
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramContext);
+          QLog.d("GuardManager", 1, new Object[] { "[process][ACTION_PLUGIN_BG] onReceive: invoked. ", " runningTimeAllowed: ", Boolean.valueOf(bool) });
           return;
         }
+        if (!"com.tencent.process.starting".equals(str)) {
+          break label424;
+        }
+        if ((l >= this.jdField_c_of_type_Long) || (l < this.jdField_d_of_type_Long - 1000000L)) {
+          break label431;
+        }
+        if (l >= 0L) {
+          break label412;
+        }
       }
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.d("GuardManager", 1, "", paramContext);
+      catch (Throwable paramContext)
+      {
+        long l;
+        QLog.d("GuardManager", 1, "", paramContext);
+        return;
+      }
+      if (bool)
+      {
+        this.jdField_c_of_type_Long = l;
+        paramIntent = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramContext);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramIntent);
+        this.jdField_a_of_type_JavaUtilMap.put(paramContext, "");
+        QLog.d("GuardManager", 1, new Object[] { "[process][put] onReceive: invoked. ", " process: ", paramContext });
+      }
+      QLog.d("GuardManager", 1, new Object[] { "[process][ACTION_PLUGIN_FG] onReceive: invoked. ", " runningTimeAllowed: ", Boolean.valueOf(bool) });
+      return;
+      label412:
+      boolean bool = false;
+      continue;
+      label418:
+      bool = true;
+      continue;
+      label424:
+      return;
+      label425:
+      bool = false;
+      continue;
+      label431:
+      bool = true;
     }
   }
 }

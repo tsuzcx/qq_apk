@@ -1,29 +1,60 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ycg
-  implements ValueAnimator.AnimatorUpdateListener
+  extends wlf<xat>
 {
-  private View jdField_a_of_type_AndroidViewView;
+  public String a;
+  public boolean a;
+  public int c = -1;
   
-  private ycg(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return wjz.a("StorySvc.feed_like_list_715");
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public wla a(byte[] paramArrayOfByte)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
+    {
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new ych(localRspFeedLikeList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      if (this.c != -1) {
+        localReqFeedLikeList.type.set(this.c);
+      }
+      return localReqFeedLikeList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycg
  * JD-Core Version:    0.7.0.1
  */

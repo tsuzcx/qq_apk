@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aase;
+import acqy;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class GdtMvAppBtnData
         paramJSONObject = null;
       }
     }
-    aase.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
+    acqy.d("GdtMvDownloadBtnPresenter", "parseJsonForMv Error", localException1);
     localException1.printStackTrace();
     return paramJSONObject;
   }
@@ -42,7 +42,7 @@ public class GdtMvAppBtnData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvAppBtnData
  * JD-Core Version:    0.7.0.1
  */

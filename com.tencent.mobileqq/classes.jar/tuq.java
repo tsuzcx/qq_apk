@@ -1,43 +1,58 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLike;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudWrite.StDoReplyRsp;
-import java.util.Map;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.ArrayList;
+import java.util.List;
 
-class tuq
-  implements zac<FeedCloudWrite.StDoReplyRsp>
+public class tuq
+  extends zyu
 {
-  tuq(tuk paramtuk, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
+  public FolderRecommendTabFragment.FolderRecommendHeadItemView a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoReplyRsp paramStDoReplyRsp)
+  public tuq(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoReplyRsp == null))
+    super(paramBundle);
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(paramViewGroup.getContext());
+    if (FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment) != null) {
+      FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView);
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+  }
+  
+  public void a(List<bdri> paramList)
+  {
+    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView).a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      QLog.e(tuk.a(), 1, "addCommentReply error:" + paramLong + "  errorMsg:" + paramString);
+      FolderRecommendTabFragment.a("227", "227", ((bdri)paramList.get(0)).a.iAdId + "", 101, 1);
+      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true);
       return;
     }
-    QLog.d(tuk.a(), 1, "addCommentReply Success");
-    String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get();
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.set(paramStDoReplyRsp.reply.id.get());
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.createTime.set(paramStDoReplyRsp.reply.createTime.get());
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.set(paramStDoReplyRsp.reply.likeInfo.get());
-    paramStDoReplyRsp.reply.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-    tuk.a(this.jdField_a_of_type_Tuk).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) + 1));
-    QCircleCommentUpdateEvent localQCircleCommentUpdateEvent = new QCircleCommentUpdateEvent(3, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()));
-    localQCircleCommentUpdateEvent.mFakeReplyId = str;
-    yiw.a().a(localQCircleCommentUpdateEvent);
-    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, str, Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false);
   }
+  
+  public void loadData(zxz paramzxz)
+  {
+    paramzxz = new ArrayList();
+    bmvg localbmvg = new bmvg();
+    localbmvg.a = 476;
+    localbmvg.b = 6;
+    paramzxz.add(localbmvg);
+    bmvi.a().a(paramzxz, FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment));
+  }
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tuq
  * JD-Core Version:    0.7.0.1
  */

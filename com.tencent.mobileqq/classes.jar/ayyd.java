@@ -1,487 +1,835 @@
-import android.os.Bundle;
-import android.os.Looper;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.service.PeakJceServiceBase.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.manager.Manager;
 
-public abstract class ayyd
+public class ayyd
+  implements Manager
 {
-  public static volatile int a;
-  public static HashMap<String, UniPacket> a;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private ConcurrentHashMap<String, zhu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private static final int jdField_a_of_type_Int;
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final String[][] jdField_a_of_type_Array2dOfJavaLangString;
+  private static final List<String> jdField_b_of_type_JavaUtilList;
+  private static final String[][] jdField_b_of_type_Array2dOfJavaLangString;
+  private static final List<String> jdField_c_of_type_JavaUtilList;
+  private static final String[][] jdField_c_of_type_Array2dOfJavaLangString;
+  private static final List<String> jdField_d_of_type_JavaUtilList;
+  private static final String[][] jdField_d_of_type_Array2dOfJavaLangString;
+  private static final List<String> e;
+  private static final List<String> f;
+  private static final List<String> g;
+  private static final List<String> h;
+  private static final List<String> i;
+  private static final List<String> j;
+  private static final List<String> k;
+  private static final List<String> l;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Set<String> jdField_a_of_type_JavaUtilSet;
+  private Set<String> jdField_b_of_type_JavaUtilSet;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilList.add("PicStatisticsManagerSendPicTotalSize");
+    jdField_a_of_type_JavaUtilList.add("PicStatisticsManagerForwardPicTotalSize");
+    jdField_a_of_type_JavaUtilList.add("PicStatisticsManagerSendPicCount");
+    jdField_a_of_type_JavaUtilList.add("PicStatisticsManagerForwardPicCount");
+    jdField_b_of_type_JavaUtilList = new ArrayList();
+    jdField_b_of_type_JavaUtilList.add("PicStatisticsManagerThumbPicTotalSize");
+    jdField_b_of_type_JavaUtilList.add("PicStatisticsManagerBigPicTotalSize");
+    jdField_b_of_type_JavaUtilList.add("PicStatisticsManagerDownloadThumbPicCount");
+    jdField_b_of_type_JavaUtilList.add("PicStatisticsManagerDownloadBigPicCount");
+    jdField_c_of_type_JavaUtilList = new ArrayList();
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeSmallC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeMiddleC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeLargeC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeExtraLargeC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeLongC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeSmallC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeMiddleC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeLargeC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicPreivewSizeExtraLargeC2C");
+    jdField_c_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeLongC2C");
+    jdField_d_of_type_JavaUtilList = new ArrayList();
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeSmallGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeMiddleGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeLargeGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeExtraLargeGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicDownloadSizeLongGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeSmallGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeMiddleGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeLargeGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicPreivewSizeExtraLargeGroup");
+    jdField_d_of_type_JavaUtilList.add("PicStatisticsManagerPicPreviewSizeLongGroup");
+    e = new ArrayList();
+    e.add("PicStatisticsManagerPicDownloadSizeSmallC2CDynamic");
+    e.add("PicStatisticsManagerPicDownloadSizeMiddleC2CDynamic");
+    e.add("PicStatisticsManagerPicDownloadSizeLargeC2CDynamic");
+    e.add("PicStatisticsManagerPicDownloadSizeExtraLargeC2CDynamic");
+    e.add("PicStatisticsManagerPicDownloadSizeLongC2CDynamic");
+    e.add("PicStatisticsManagerPicPreviewSizeSmallC2CDynamic");
+    e.add("PicStatisticsManagerPicPreviewSizeMiddleC2CDynamic");
+    e.add("PicStatisticsManagerPicPreviewSizeLargeC2CDynamic");
+    e.add("PicStatisticsManagerPicPreivewSizeExtraLargeC2CDynamic");
+    e.add("PicStatisticsManagerPicPreviewSizeLongC2CDynamic");
+    f = new ArrayList();
+    f.add("PicStatisticsManagerPicDownloadSizeSmallGroupDynamic");
+    f.add("PicStatisticsManagerPicDownloadSizeMiddleGroupDynamic");
+    f.add("PicStatisticsManagerPicDownloadSizeLargeGroupDynamic");
+    f.add("PicStatisticsManagerPicDownloadSizeExtraLargeGroupDynamic");
+    f.add("PicStatisticsManagerPicDownloadSizeLongGroupDynamic");
+    f.add("PicStatisticsManagerPicPreviewSizeSmallGroupDynamic");
+    f.add("PicStatisticsManagerPicPreviewSizeMiddleGroupDynamic");
+    f.add("PicStatisticsManagerPicPreviewSizeLargeGroupDynamic");
+    f.add("PicStatisticsManagerPicPreivewSizeExtraLargeGroupDynamic");
+    f.add("PicStatisticsManagerPicPreviewSizeLongGroupDynamic");
+    g = new ArrayList();
+    g.add("PicStatisticsManagerMissPriorityHandlingWifi");
+    g.add("PicStatisticsManagerMissPriorityAIOWifi");
+    g.add("PicStatisticsManagerMissPriorityC2CWifi");
+    g.add("PicStatisticsManagerMissPriorityDiscussionWifi");
+    g.add("PicStatisticsManagerMissPriorityGroupWifi");
+    g.add("PicStatisticsManagerMissPriorityWaitingWifi");
+    g.add("PicStatisticsManagerMissPriorityUnknownWifi");
+    h = new ArrayList();
+    h.add("PicStatisticsManagerMissPriorityHandlingXG");
+    h.add("PicStatisticsManagerMissPriorityAIOXG");
+    h.add("PicStatisticsManagerMissPriorityC2CXG");
+    h.add("PicStatisticsManagerMissPriorityDiscussionXG");
+    h.add("PicStatisticsManagerMissPriorityGroupXG");
+    h.add("PicStatisticsManagerMissPriorityWaitingXG");
+    h.add("PicStatisticsManagerMissPriorityUnknownXG");
+    String[] arrayOfString1 = { "4GC2CBigPicCount", "4GDiscussionBigPicCount", "4GGroupBigPicCount", "4GDigitalGroupBigPicCount" };
+    String[] arrayOfString2 = { "XGC2CBigPicCount", "XGDiscussionBigPicCount", "XGGroupBigPicCount", "XGDigitalGroupBigPicCount" };
+    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "WifiC2CBigPicCount", "WifiDiscussionBigPicCount", "WifiGroupBigPicCount", "WifiDigitalGroupBigPicCount" }, arrayOfString1, arrayOfString2 };
+    arrayOfString1 = new String[] { "4GC2CBigPicHitCount", "4GDiscussionBigPicHitCount", "4GGroupBigPicHitCount", "4GDigitalGroupBigPicHitCount" };
+    jdField_b_of_type_Array2dOfJavaLangString = new String[][] { { "WifiC2CBigPicHitCount", "WifiDiscussionBigPicHitCount", "WifiGroupBigPicHitCount", "WifiDigitalGroupBigPicHitCount" }, arrayOfString1, { "XGC2CBigPicHitCount", "XGDiscussionBigPicHitCount", "XGGroupBigPicHitCount", "XGDigitalGroupBigPicHitCount" } };
+    jdField_c_of_type_Array2dOfJavaLangString = new String[][] { { "WifiC2CBigPicMissCount", "WifiDiscussionBigPicMissCount", "WifiGroupBigPicMissCount", "WifiDigitalGroupBigPicMissCount" }, { "4GC2CBigPicMissCount", "4GDiscussionBigPicMissCount", "4GGroupBigPicMissCount", "4GDigitalGroupBigPicMissCount" }, { "XGC2CBigPicMissCount", "XGDiscussionBigPicMissCount", "XGGroupBigPicMissCount", "XGDigitalGroupBigPicMissCount" } };
+    arrayOfString1 = new String[] { "4GC2CBigPicNotSupportCount", "4GDiscussionBigPicNotSupportCount", "4GGroupBigPicNotSupportCount", "4GDigitalGroupBigPicNotSupportCount" };
+    arrayOfString2 = new String[] { "XGC2CBigPicNotSupportCount", "XGDiscussionBigPicNotSupportCount", "XGGroupBigPicNotSupportCount", "XGDigitalGroupBigPicNotSupportCount" };
+    jdField_d_of_type_Array2dOfJavaLangString = new String[][] { { "WifiC2CBigPicNotSupportCount", "WifiDiscussionBigPicNotSupportCount", "WifiGroupBigPicNotSupportCount", "WifiDigitalGroupBigPicNotSupportCount" }, arrayOfString1, arrayOfString2 };
+    jdField_a_of_type_Int = jdField_a_of_type_Array2dOfJavaLangString[0].length;
+    i = new ArrayList();
+    j = new ArrayList();
+    k = new ArrayList();
+    int m = 0;
+    while (m < jdField_a_of_type_Int)
+    {
+      i.add(jdField_a_of_type_Array2dOfJavaLangString[0][m]);
+      i.add(jdField_b_of_type_Array2dOfJavaLangString[0][m]);
+      i.add(jdField_c_of_type_Array2dOfJavaLangString[0][m]);
+      i.add(jdField_d_of_type_Array2dOfJavaLangString[0][m]);
+      j.add(jdField_a_of_type_Array2dOfJavaLangString[1][m]);
+      j.add(jdField_b_of_type_Array2dOfJavaLangString[1][m]);
+      j.add(jdField_c_of_type_Array2dOfJavaLangString[1][m]);
+      j.add(jdField_d_of_type_Array2dOfJavaLangString[1][m]);
+      k.add(jdField_a_of_type_Array2dOfJavaLangString[2][m]);
+      k.add(jdField_b_of_type_Array2dOfJavaLangString[2][m]);
+      k.add(jdField_c_of_type_Array2dOfJavaLangString[2][m]);
+      k.add(jdField_d_of_type_Array2dOfJavaLangString[2][m]);
+      m += 1;
+    }
+    j.add("4G_C2C_FLOAT_HIT_COUNT");
+    k.add("XG_C2C_FLOAT_HIT_COUNT");
+    l = new ArrayList();
+    l.add("PicStatisticsManagerPreDownloadThumbPicCount");
+    l.add("PicStatisticsManagerPreDownloadThumbPicHitCount");
+    l.add("PicStatisticsManagerPreDownloadThumbPicMissCount");
   }
   
-  public UniPacket a(ToServiceMsg paramToServiceMsg)
+  @TargetApi(9)
+  public ayyd(QQAppInterface paramQQAppInterface)
   {
-    if ("StreamSvr.UploadStreamMsg".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_b_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      String str = paramToServiceMsg.extraData.getString("filepath");
-      UniPacket localUniPacket = (UniPacket)jdField_a_of_type_JavaUtilHashMap.get(str);
-      Object localObject;
-      if (localUniPacket == null)
+    default: 
+      return "PicStatisticsManagerMissPriorityUnknownWifi";
+    case 6: 
+      return "PicStatisticsManagerMissPriorityHandlingWifi";
+    case 5: 
+      return "PicStatisticsManagerMissPriorityAIOWifi";
+    case 4: 
+      return "PicStatisticsManagerMissPriorityC2CWifi";
+    case 3: 
+      return "PicStatisticsManagerMissPriorityDiscussionWifi";
+    }
+    return "PicStatisticsManagerMissPriorityGroupWifi";
+  }
+  
+  private HashMap<String, String> a(List<String> paramList)
+  {
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      long l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, 0L);
+      long l1;
+      if (l2 >= 0L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PeakJceServiceBase", 2, "no saved packet, new one " + str);
+        l1 = l2;
+        if (l2 <= 10000L) {}
+      }
+      else
+      {
+        l1 = 0L;
+      }
+      localHashMap.put(str, String.valueOf(l1));
+    }
+    return localHashMap;
+  }
+  
+  @TargetApi(9)
+  private void a(int paramInt1, int paramInt2, String[][] paramArrayOfString, boolean paramBoolean)
+  {
+    long l1;
+    String str1;
+    String str2;
+    if (paramInt1 == 0) {
+      if (paramBoolean)
+      {
+        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCountWifi", 0L);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPredownloadCountWifi", l1 + 1L);
+        paramInt1 = 0;
+        str1 = "WIFI";
+        if (paramInt2 != 3) {
+          break label376;
         }
-        localObject = new ayye(true);
-        jdField_a_of_type_JavaUtilHashMap.clear();
-        jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+        paramInt2 = 0;
+        str2 = "C2C";
+        label60:
+        if (QLog.isColorLevel()) {
+          QLog.d("PicStatisticsManager", 2, "addCount(): networkType=" + str1 + " uin=" + str2);
+        }
+        paramArrayOfString = paramArrayOfString[paramInt1][paramInt2];
+        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramArrayOfString, 0L) + 1L;
+        if (Build.VERSION.SDK_INT < 9) {
+          break label437;
+        }
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramArrayOfString, l1).apply();
+      }
+    }
+    label376:
+    do
+    {
+      return;
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCountWifi", 0L);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreviewCountWifi", l1 + 1L);
+      paramInt1 = 0;
+      str1 = "WIFI";
+      break;
+      if (paramInt1 == 0)
+      {
+        if (paramBoolean)
+        {
+          l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCount4G", 0L);
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPredownloadCount4G", l1 + 1L);
+          paramInt1 = 1;
+          str1 = "4G";
+          break;
+        }
+        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCount4G", 0L);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreviewCount4G", l1 + 1L);
+        paramInt1 = 1;
+        str1 = "4G";
+        break;
+      }
+      if (paramBoolean)
+      {
+        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCountXG", 0L);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPredownloadCountXG", l1 + 1L);
+        paramInt1 = 2;
+        str1 = "XG";
+        break;
+      }
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCountXG", 0L);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreviewCountXG", l1 + 1L);
+      paramInt1 = 2;
+      str1 = "XG";
+      break;
+      if (paramInt2 == 2)
+      {
+        paramInt2 = 1;
+        str2 = "Discussion";
+        break label60;
+      }
+      if (paramInt2 == 0)
+      {
+        paramInt2 = 2;
+        str2 = "Group";
+        break label60;
+      }
+      if (paramInt2 == 1)
+      {
+        paramInt2 = 3;
+        str2 = "Digital Group";
+        break label60;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("PicStatisticsManager", 2, "addCount(): Error! Unknown uin type");
+    return;
+    label437:
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramArrayOfString, l1).commit();
+  }
+  
+  private String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "PicStatisticsManagerMissPriorityUnknownXG";
+    case 6: 
+      return "PicStatisticsManagerMissPriorityHandlingXG";
+    case 5: 
+      return "PicStatisticsManagerMissPriorityAIOXG";
+    case 4: 
+      return "PicStatisticsManagerMissPriorityC2CXG";
+    case 3: 
+      return "PicStatisticsManagerMissPriorityDiscussionXG";
+    }
+    return "PicStatisticsManagerMissPriorityGroupXG";
+  }
+  
+  @TargetApi(9)
+  private void b()
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    String str;
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = g.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = h.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = i.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = k.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    localIterator = l.iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, 0L);
+    }
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+  }
+  
+  @TargetApi(9)
+  public void a()
+  {
+    if (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("PicStatisticsManagerFirstUsed", false))
+    {
+      if (Build.VERSION.SDK_INT >= 9) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean("PicStatisticsManagerFirstUsed", true).apply();
       }
       for (;;)
       {
-        paramToServiceMsg = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
-        int i = azuj.b(str);
-        if (paramToServiceMsg.shortValue() <= i)
-        {
-          jdField_a_of_type_JavaUtilHashMap.remove(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("PeakJceServiceBase", 2, "last stream, remove " + i + ", " + paramToServiceMsg);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.i("PicStatisticsManager", 2, "dataReport(): Not need to data report!");
         }
-        return localObject;
-        localObject = localUniPacket;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PeakJceServiceBase", 2, "got last packet, reuse it " + str);
-          localObject = localUniPacket;
-        }
+        return;
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean("PicStatisticsManagerFirstUsed", true).commit();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakJceServiceBase", 2, "not stream ptt");
-    }
-    return new UniPacket(true);
-  }
-  
-  public abstract AppInterface a();
-  
-  public zhu a(String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    int i;
-    try
+    String str;
+    label115:
+    long l1;
+    long l2;
+    HashMap localHashMap1;
+    label170:
+    HashMap localHashMap2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        a();
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreDownloadThumbPicCount", 0L) > 0L) {
+        break label280;
       }
-      i = paramString.indexOf('.');
-      if (i <= 1) {
-        return null;
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerSendPicCount", 0L);
+      l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerForwardPicCount", 0L);
+      localHashMap1 = a(jdField_a_of_type_JavaUtilList);
+      if (l1 + l2 > 0L) {
+        break label693;
       }
-    }
-    finally {}
-    paramString = paramString.substring(0, i);
-    return (zhu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      localHashMap1.put("PicStatisticsManagerIsUploadPicActive", "FALSE");
+      bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerUploadPic", false, 0L, 0L, localHashMap1, "");
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerDownloadThumbPicCount", 0L);
+      l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerDownloadBigPicCount", 0L);
+      localHashMap2 = a(jdField_b_of_type_JavaUtilList);
+      if (l1 + l2 > 0L) {
+        break label708;
       }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void a(FromServiceMsg paramFromServiceMsg) {}
-  
-  protected void a(ToServiceMsg paramToServiceMsg, aohc paramaohc, Class<? extends MSFServlet> paramClass)
-  {
-    if (paramToServiceMsg == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakJceServiceBase", 2, "handleRequest request is null. ");
-      }
-      return;
-    }
-    paramToServiceMsg = new PeakJceServiceBase.1(this, paramToServiceMsg, paramaohc, paramClass);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      ThreadManager.post(paramToServiceMsg, 10, null, false);
-      return;
-    }
-    paramToServiceMsg.run();
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
-  {
-    // Byte code:
-    //   0: aload_2
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_0
-    //   6: invokevirtual 204	ayyd:a	()Lcom/tencent/common/app/AppInterface;
-    //   9: astore 8
-    //   11: invokestatic 210	java/lang/System:currentTimeMillis	()J
-    //   14: aload_2
-    //   15: getfield 51	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   18: ldc 212
-    //   20: invokevirtual 216	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   23: lsub
-    //   24: l2f
-    //   25: ldc 217
-    //   27: fdiv
-    //   28: fstore 5
-    //   30: iload_1
-    //   31: ifeq +220 -> 251
-    //   34: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   37: ifeq +66 -> 103
-    //   40: ldc 73
-    //   42: iconst_2
-    //   43: new 75	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   50: ldc 219
-    //   52: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload_3
-    //   56: invokevirtual 222	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   59: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 224
-    //   64: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: aload_3
-    //   68: invokevirtual 228	com/tencent/qphone/base/remote/FromServiceMsg:getAppSeq	()I
-    //   71: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   74: ldc 230
-    //   76: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload_0
-    //   80: getfield 32	ayyd:jdField_a_of_type_JavaTextDecimalFormat	Ljava/text/DecimalFormat;
-    //   83: fload 5
-    //   85: f2d
-    //   86: invokevirtual 234	java/text/DecimalFormat:format	(D)Ljava/lang/String;
-    //   89: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: ldc 236
-    //   94: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   103: aload_2
-    //   104: ldc 238
-    //   106: invokevirtual 242	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
-    //   109: checkcast 244	com/tencent/qphone/base/remote/IBaseActionListener
-    //   112: astore 4
-    //   114: aload 4
-    //   116: ifnull +9 -> 125
-    //   119: aload_2
-    //   120: aload 4
-    //   122: putfield 248	com/tencent/qphone/base/remote/ToServiceMsg:actionListener	Lcom/tencent/qphone/base/remote/IBaseActionListener;
-    //   125: aload_0
-    //   126: aload_3
-    //   127: invokevirtual 222	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   130: invokevirtual 250	ayyd:a	(Ljava/lang/String;)Lzhu;
-    //   133: astore 9
-    //   135: iload_1
-    //   136: ifeq +323 -> 459
-    //   139: aload 9
-    //   141: ifnull +273 -> 414
-    //   144: aload 9
-    //   146: aload_2
-    //   147: aload_3
-    //   148: invokevirtual 253	zhu:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
-    //   151: aload 9
-    //   153: aload_2
-    //   154: aload_3
-    //   155: invokevirtual 256	zhu:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)Ljava/lang/Object;
-    //   158: astore 4
-    //   160: aload_0
-    //   161: aload_3
-    //   162: invokevirtual 258	ayyd:a	(Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
-    //   165: aload 9
-    //   167: ifnull -163 -> 4
-    //   170: invokestatic 263	alpw:b	()Ljava/util/Map;
-    //   173: aload_3
-    //   174: invokevirtual 222	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   177: invokeinterface 266 2 0
-    //   182: checkcast 268	[I
-    //   185: astore 9
-    //   187: aload 9
-    //   189: ifnull -185 -> 4
-    //   192: aload 9
-    //   194: arraylength
-    //   195: ifle -191 -> 4
-    //   198: aload 9
-    //   200: arraylength
-    //   201: istore 7
-    //   203: iconst_0
-    //   204: istore 6
-    //   206: iload 6
-    //   208: iload 7
-    //   210: if_icmpge -206 -> 4
-    //   213: aload 8
-    //   215: aload 9
-    //   217: iload 6
-    //   219: iaload
-    //   220: invokevirtual 274	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
-    //   223: checkcast 276	alpd
-    //   226: astore 10
-    //   228: aload 10
-    //   230: ifnull +12 -> 242
-    //   233: aload 10
-    //   235: aload_2
-    //   236: aload_3
-    //   237: aload 4
-    //   239: invokevirtual 280	alpd:onReceive	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)V
-    //   242: iload 6
-    //   244: iconst_1
-    //   245: iadd
-    //   246: istore 6
-    //   248: goto -42 -> 206
-    //   251: aload 4
-    //   253: ifnull +88 -> 341
-    //   256: new 282	java/io/ByteArrayOutputStream
-    //   259: dup
-    //   260: invokespecial 283	java/io/ByteArrayOutputStream:<init>	()V
-    //   263: astore 9
-    //   265: aload 4
-    //   267: new 285	java/io/PrintStream
-    //   270: dup
-    //   271: aload 9
-    //   273: invokespecial 288	java/io/PrintStream:<init>	(Ljava/io/OutputStream;)V
-    //   276: invokevirtual 292	java/lang/Exception:printStackTrace	(Ljava/io/PrintStream;)V
-    //   279: new 43	java/lang/String
-    //   282: dup
-    //   283: aload 9
-    //   285: invokevirtual 296	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   288: invokespecial 299	java/lang/String:<init>	([B)V
-    //   291: astore 4
-    //   293: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   296: ifeq -193 -> 103
-    //   299: ldc 73
-    //   301: iconst_2
-    //   302: new 75	java/lang/StringBuilder
-    //   305: dup
-    //   306: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   309: ldc_w 301
-    //   312: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: aload_3
-    //   316: invokevirtual 222	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   319: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: ldc 132
-    //   324: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: aload 4
-    //   329: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   338: goto -235 -> 103
-    //   341: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   344: ifeq -241 -> 103
-    //   347: ldc 73
-    //   349: iconst_2
-    //   350: new 75	java/lang/StringBuilder
-    //   353: dup
-    //   354: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   357: ldc 219
-    //   359: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: aload_3
-    //   363: invokevirtual 222	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   366: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   369: ldc_w 303
-    //   372: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   375: aload_3
-    //   376: invokevirtual 306	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   379: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   382: ldc 230
-    //   384: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: aload_0
-    //   388: getfield 32	ayyd:jdField_a_of_type_JavaTextDecimalFormat	Ljava/text/DecimalFormat;
-    //   391: fload 5
-    //   393: f2d
-    //   394: invokevirtual 234	java/text/DecimalFormat:format	(D)Ljava/lang/String;
-    //   397: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   400: ldc 236
-    //   402: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   408: invokestatic 309	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   411: goto -308 -> 103
-    //   414: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   417: ifeq +12 -> 429
-    //   420: ldc 73
-    //   422: iconst_2
-    //   423: ldc_w 311
-    //   426: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   429: aconst_null
-    //   430: astore 4
-    //   432: goto -272 -> 160
-    //   435: astore 4
-    //   437: aload 4
-    //   439: invokevirtual 313	java/lang/Exception:printStackTrace	()V
-    //   442: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   445: ifeq +14 -> 459
-    //   448: ldc 73
-    //   450: iconst_2
-    //   451: ldc_w 315
-    //   454: aload 4
-    //   456: invokestatic 318	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   459: aconst_null
-    //   460: astore 4
-    //   462: goto -302 -> 160
-    //   465: astore 11
-    //   467: aload 11
-    //   469: invokevirtual 313	java/lang/Exception:printStackTrace	()V
-    //   472: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   475: ifeq -233 -> 242
-    //   478: ldc 73
-    //   480: iconst_2
-    //   481: new 75	java/lang/StringBuilder
-    //   484: dup
-    //   485: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   488: aload 10
-    //   490: invokevirtual 322	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   493: invokevirtual 327	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   496: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   499: ldc_w 329
-    //   502: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: aload 11
-    //   510: invokestatic 331	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   513: goto -271 -> 242
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	516	0	this	ayyd
-    //   0	516	1	paramBoolean	boolean
-    //   0	516	2	paramToServiceMsg	ToServiceMsg
-    //   0	516	3	paramFromServiceMsg	FromServiceMsg
-    //   0	516	4	paramException	Exception
-    //   28	364	5	f	float
-    //   204	43	6	i	int
-    //   201	10	7	j	int
-    //   9	205	8	localAppInterface	AppInterface
-    //   133	151	9	localObject	Object
-    //   226	263	10	localalpd	alpd
-    //   465	44	11	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   144	160	435	java/lang/Exception
-    //   414	429	435	java/lang/Exception
-    //   233	242	465	java/lang/Exception
-  }
-  
-  protected boolean a(zhu paramzhu)
-  {
-    int i = 0;
-    String[] arrayOfString = paramzhu.a();
-    if ((arrayOfString == null) || (arrayOfString.length == 0)) {
-      return false;
-    }
-    while (i < arrayOfString.length)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(arrayOfString[i], paramzhu);
-      i += 1;
-    }
-    return true;
-  }
-  
-  protected void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, aohc paramaohc, Class<? extends MSFServlet> paramClass)
-  {
-    int i = 1;
-    AppInterface localAppInterface = a();
-    Object localObject1 = paramToServiceMsg.getServiceCmd();
-    zhu localzhu = a((String)localObject1);
-    Object localObject2;
-    int j;
-    if (localzhu != null)
-    {
-      localObject2 = a(paramToServiceMsg);
-      ((UniPacket)localObject2).setEncodeName("utf-8");
-      j = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = j + 1;
-      ((UniPacket)localObject2).setRequestId(j);
-      if (localzhu.a())
-      {
-        localObject2 = localzhu.a(paramToServiceMsg);
-        if (localObject2 == null) {
-          break label314;
-        }
-        paramToServiceMsg.putWupBuffer((byte[])localObject2);
-      }
+      localHashMap1.put("PicStatisticsManagerIsDownloadPicActive", "FALSE");
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        paramToServiceMsg.actionListener = paramaohc;
-        paramaohc = new NewIntent(localAppInterface.getApplication(), paramClass);
-        paramaohc.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-        localAppInterface.startServlet(paramaohc);
-        long l = System.currentTimeMillis();
-        paramToServiceMsg.extraData.putLong("sendtimekey", l);
+      bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerDownloadPic", false, 0L, 0L, localHashMap2, "");
+      b();
+      return;
+      str = null;
+      break;
+      label280:
+      bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadThumbPic", false, 0L, 0L, a(l), "");
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCountWifi", 0L);
+      l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCountXG", 0L);
+      long l3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPredownloadCount4G", 0L);
+      long l4 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCountWifi", 0L);
+      long l5 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCountXG", 0L);
+      long l6 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCount4G", 0L);
+      if (l1 + l4 > 0L) {
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadDataWifi", false, 0L, 0L, a(i), "");
       }
-      do
+      if (l3 + l6 > 0L) {
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadData4g", false, 0L, 0L, a(j), "");
+      }
+      if (l2 + l5 > 0L) {
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadDataXg", false, 0L, 0L, a(k), "");
+      }
+      if (l4 + l5 > 0L)
+      {
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerDiffSizePicPreviewC2C", false, 0L, 0L, a(jdField_c_of_type_JavaUtilList), "");
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerDiffSizePicPreviewGroup", false, 0L, 0L, a(jdField_d_of_type_JavaUtilList), "");
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerDiffSizePicPreviewC2CDynamic", false, 0L, 0L, a(e), "");
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerDiffSizePicPreviewGroupDynamic", false, 0L, 0L, a(f), "");
+      }
+      if (l4 > 0L) {
+        bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadMissPriorityWifi", false, 0L, 0L, a(g), "");
+      }
+      if (l5 <= 0L) {
+        break label115;
+      }
+      bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadMissPriorityXG", false, 0L, 0L, a(h), "");
+      break label115;
+      label693:
+      localHashMap1.put("PicStatisticsManagerIsUploadPicActive", "TRUE");
+      break label170;
+      label708:
+      localHashMap1.put("PicStatisticsManagerIsDownloadPicActive", "TRUE");
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    HashMap localHashMap;
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = null)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("PredownloadMissReason", String.valueOf(paramInt2));
+      if (paramInt1 != 0) {
+        break;
+      }
+      bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadMissReasonGrayForWifi", false, 0L, 0L, localHashMap, "");
+      return;
+    }
+    bctj.a(BaseApplication.getContext()).a(str, "PicStatisticsManagerPredownloadMissReasonGrayForXG", false, 0L, 0L, localHashMap, "");
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicStatisticsManager", 2, "addPreDownloadBigPicHitCount(): networkType=" + paramInt1 + " uin=" + paramInt2 + " preDownloadState=" + paramInt3);
+    }
+    if (paramInt3 == 1)
+    {
+      long l1;
+      long l2;
+      if (paramInt1 == 2)
+      {
+        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("XG_C2C_FLOAT_HIT_COUNT", 0L);
+        l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCountXG", 0L);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreviewCountXG", l2 + 1L);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("XG_C2C_FLOAT_HIT_COUNT", l1 + 1L);
+        if (Build.VERSION.SDK_INT >= 9) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+        }
+      }
+      else
       {
         do
         {
           return;
-          if (!localzhu.a(paramToServiceMsg, (UniPacket)localObject2)) {
-            break label314;
-          }
-          paramToServiceMsg.putWupBuffer(((UniPacket)localObject2).encode());
-          break;
-        } while (localzhu == null);
-        paramaohc = new FromServiceMsg(localAppInterface.getCurrentAccountUin(), (String)localObject1);
-        paramClass = (int[])alpw.a().get(localObject1);
-      } while ((paramClass == null) || (paramClass.length <= 0));
-      j = paramClass.length;
-      i = 0;
-      while (i < j)
-      {
-        localObject1 = (alpd)localAppInterface.getBusinessHandler(paramClass[i]);
-        if (localObject1 != null) {}
-        try
-        {
-          ((alpd)localObject1).onReceive(paramToServiceMsg, paramaohc, null);
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
+          if (paramInt1 == 1)
           {
-            localException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.w("PeakJceServiceBase", 2, localObject1.getClass().getSimpleName() + " onReceive error,", localException);
-            }
+            l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("4G_C2C_FLOAT_HIT_COUNT", 0L);
+            l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreviewCount4G", 0L);
+            this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreviewCount4G", l2 + 1L);
+            this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("4G_C2C_FLOAT_HIT_COUNT", l1 + 1L);
+            break;
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("PicStatisticsManager", 2, "addPreDownloadBigPicHitCount(): Error, not 3G or 4G, Float hit");
+        return;
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      return;
+    }
+    a(paramInt1, paramInt2, jdField_b_of_type_Array2dOfJavaLangString, false);
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt, long paramLong)
+  {
+    String str3;
+    String str2;
+    String str1;
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e("PicStatisticsManager", 2, "addPicData(): Unknown picture type!");
+      }
+      return;
+    case 13057: 
+      str3 = "SendPic";
+      str2 = "PicStatisticsManagerSendPicTotalSize";
+      str1 = "PicStatisticsManagerSendPicCount";
+    }
+    long l1;
+    long l2;
+    for (;;)
+    {
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str2, 0L) + paramLong;
+      l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str1, 0L) + 1L;
+      if (QLog.isColorLevel()) {
+        QLog.i("PicStatisticsManager", 2, "addPictureData(): type=" + str3 + " Adding Size=" + paramLong + " Total Size=" + l1 + " Count=" + l2);
+      }
+      if (Build.VERSION.SDK_INT < 9) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l1).putLong(str1, l2).apply();
+      return;
+      str3 = "ForwardPic";
+      str2 = "PicStatisticsManagerForwardPicTotalSize";
+      str1 = "PicStatisticsManagerForwardPicCount";
+      continue;
+      str3 = "DownloadThumbPic";
+      str2 = "PicStatisticsManagerThumbPicTotalSize";
+      str1 = "PicStatisticsManagerDownloadThumbPicCount";
+      continue;
+      str3 = "DownloadBigPic";
+      str2 = "PicStatisticsManagerBigPicTotalSize";
+      str1 = "PicStatisticsManagerDownloadBigPicCount";
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l1).putLong(str1, l2).commit();
+  }
+  
+  @TargetApi(9)
+  public void a(MessageForPic paramMessageForPic)
+  {
+    for (;;)
+    {
+      try
+      {
+        String str = paramMessageForPic.md5;
+        if (QLog.isColorLevel()) {
+          QLog.d("PicStatisticsManager", 2, "addPreDownloadThumbPic(): Uniseq=" + paramMessageForPic.uniseq + " MD5=" + paramMessageForPic.md5);
+        }
+        boolean bool = this.jdField_a_of_type_JavaUtilSet.contains(str);
+        if (bool) {
+          return;
+        }
+        this.jdField_a_of_type_JavaUtilSet.add(paramMessageForPic.md5);
+        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PicStatisticsManagerPreDownloadThumbPicCount", 0L) + 1L;
+        if (Build.VERSION.SDK_INT >= 9)
+        {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreDownloadThumbPicCount", l1).apply();
+          if (QLog.isColorLevel()) {
+            QLog.i("PicStatisticsManager", 2, "addPreDownloadThumbPic(): PreDownloadThumbPicCount=" + l1);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("PicStatisticsManagerPreDownloadThumbPicCount", l1).commit();
         }
       }
-      label314:
-      i = 0;
+      finally {}
     }
   }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicStatisticsManager", 2, "addPreDowonloadBigPicCount(): networkType=" + paramInt1 + " uin=" + paramInt2);
+    }
+    a(paramInt1, paramInt2, jdField_a_of_type_Array2dOfJavaLangString, true);
+  }
+  
+  @TargetApi(9)
+  public void b(MessageForPic paramMessageForPic)
+  {
+    if (paramMessageForPic == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("PicStatisticsManager", 2, "addDownloadBigPicSize(): pic is null");
+      }
+    }
+    long l1;
+    long l2;
+    do
+    {
+      return;
+      l1 = paramMessageForPic.width;
+      l2 = paramMessageForPic.height;
+      if ((l1 > 0L) && (l2 > 0L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PicStatisticsManager", 2, "addDownloadBigPicSize(): Width=" + l1 + " Height=" + l2 + ", invalid!");
+    return;
+    int m;
+    int n;
+    String str1;
+    if (ayxu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin) == 3)
+    {
+      m = 1;
+      n = baro.a(l1, l2);
+      if (n != 0) {
+        break label299;
+      }
+      if (m == 0) {
+        break label292;
+      }
+      str1 = "PicStatisticsManagerPicDownloadSizeLongC2C";
+    }
+    String str2;
+    long l3;
+    for (;;)
+    {
+      str2 = str1;
+      if (bley.a(paramMessageForPic.imageType)) {
+        str2 = str1 + "Dynamic";
+      }
+      l3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str2, 0L) + 1L;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicStatisticsManager", 2, "addDownloadBigPicSize(): " + str2 + ", Width=" + l1 + " Height=" + l2 + " Count=" + l3);
+      }
+      if (Build.VERSION.SDK_INT < 9) {
+        break label386;
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l3).apply();
+      return;
+      m = 0;
+      break;
+      label292:
+      str1 = "PicStatisticsManagerPicDownloadSizeLongGroup";
+      continue;
+      label299:
+      if (n == 1)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicDownloadSizeSmallC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicDownloadSizeSmallGroup";
+        }
+      }
+      else if (n == 2)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicDownloadSizeMiddleC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicDownloadSizeMiddleGroup";
+        }
+      }
+      else if (n == 3)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicDownloadSizeLargeC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicDownloadSizeLargeGroup";
+        }
+      }
+      else if (m != 0) {
+        str1 = "PicStatisticsManagerPicDownloadSizeExtraLargeC2C";
+      } else {
+        str1 = "PicStatisticsManagerPicDownloadSizeExtraLargeGroup";
+      }
+    }
+    label386:
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l3).commit();
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicStatisticsManager", 2, "addPreDownloadBigPicMissCount(): networkType=" + paramInt1 + " uin=" + paramInt2);
+    }
+    a(paramInt1, paramInt2, jdField_c_of_type_Array2dOfJavaLangString, false);
+  }
+  
+  @TargetApi(9)
+  public void c(MessageForPic paramMessageForPic)
+  {
+    if (paramMessageForPic == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("PicStatisticsManager", 2, "addPreviewBigPicSize(): pic is null");
+      }
+    }
+    long l1;
+    long l2;
+    do
+    {
+      return;
+      l1 = paramMessageForPic.width;
+      l2 = paramMessageForPic.height;
+      if ((l1 > 0L) && (l2 > 0L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PicStatisticsManager", 2, "addPreviewBigPicSize(): Width=" + l1 + " Height=" + l2 + ", invalid!");
+    return;
+    int m;
+    int n;
+    String str1;
+    if (ayxu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin) == 3)
+    {
+      m = 1;
+      n = baro.a(l1, l2);
+      if (n != 0) {
+        break label299;
+      }
+      if (m == 0) {
+        break label292;
+      }
+      str1 = "PicStatisticsManagerPicPreviewSizeLongC2C";
+    }
+    String str2;
+    long l3;
+    for (;;)
+    {
+      str2 = str1;
+      if (bley.a(paramMessageForPic.imageType)) {
+        str2 = str1 + "Dynamic";
+      }
+      l3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str2, 0L) + 1L;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicStatisticsManager", 2, "addPreviewBigPicSize(): " + str2 + ", Width=" + l1 + " Height=" + l2 + " Count=" + l3);
+      }
+      if (Build.VERSION.SDK_INT < 9) {
+        break label386;
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l3).apply();
+      return;
+      m = 0;
+      break;
+      label292:
+      str1 = "PicStatisticsManagerPicPreviewSizeLongGroup";
+      continue;
+      label299:
+      if (n == 1)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicPreviewSizeSmallC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicPreviewSizeSmallGroup";
+        }
+      }
+      else if (n == 2)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicPreviewSizeMiddleC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicPreviewSizeMiddleGroup";
+        }
+      }
+      else if (n == 3)
+      {
+        if (m != 0) {
+          str1 = "PicStatisticsManagerPicPreviewSizeLargeC2C";
+        } else {
+          str1 = "PicStatisticsManagerPicPreviewSizeLargeGroup";
+        }
+      }
+      else if (m != 0) {
+        str1 = "PicStatisticsManagerPicPreivewSizeExtraLargeC2C";
+      } else {
+        str1 = "PicStatisticsManagerPicPreivewSizeExtraLargeGroup";
+      }
+    }
+    label386:
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str2, l3).commit();
+  }
+  
+  public void d(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicStatisticsManager", 2, "addPreDownloadNotSupportCount(): networkType=" + paramInt1 + " uin=" + paramInt2);
+    }
+    a(paramInt1, paramInt2, jdField_d_of_type_Array2dOfJavaLangString, false);
+  }
+  
+  @TargetApi(9)
+  public void e(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0) {}
+    long l1;
+    for (String str = a(paramInt2);; str = b(paramInt2))
+    {
+      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, 0L) + 1L;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicStatisticsManager", 2, "addPredownloadMissPriority(): " + str + ", Count=" + l1);
+      }
+      if (Build.VERSION.SDK_INT < 9) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, l1).apply();
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, l1).commit();
+  }
+  
+  public void onDestroy() {}
 }
 
 

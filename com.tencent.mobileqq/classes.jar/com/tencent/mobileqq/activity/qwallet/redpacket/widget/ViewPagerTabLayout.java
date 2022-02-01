@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.widget;
 
-import ajee;
-import ajef;
+import akvz;
+import akwa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -34,7 +34,7 @@ public class ViewPagerTabLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private ajef jdField_a_of_type_Ajef;
+  private akwa jdField_a_of_type_Akwa;
   private Context jdField_a_of_type_AndroidContentContext;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
@@ -82,7 +82,7 @@ public class ViewPagerTabLayout
     if ((localTextView != null) && (paramString != null)) {
       localTextView.setText(paramString);
     }
-    paramView.setOnClickListener(new ajee(this));
+    paramView.setOnClickListener(new akvz(this));
     if (this.jdField_a_of_type_Boolean) {}
     for (paramString = new LinearLayout.LayoutParams(0, -1, 1.0F);; paramString = new LinearLayout.LayoutParams(-2, -1))
     {
@@ -401,9 +401,9 @@ public class ViewPagerTabLayout
     invalidate();
   }
   
-  public void setOnTabSelectListener(ajef paramajef)
+  public void setOnTabSelectListener(akwa paramakwa)
   {
-    this.jdField_a_of_type_Ajef = paramajef;
+    this.jdField_a_of_type_Akwa = paramakwa;
   }
   
   public void setScrollOnTabClick(boolean paramBoolean)
@@ -429,7 +429,7 @@ public class ViewPagerTabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout
  * JD-Core Version:    0.7.0.1
  */

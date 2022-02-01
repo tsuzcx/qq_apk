@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.content.Context;
 import android.text.TextUtils;
+import anni;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import org.json.JSONObject;
@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = alud.a(2131715222);
-  public String sourceName = alud.a(2131715218);
-  public String summary = alud.a(2131715226);
+  public String sourceAction = anni.a(2131713522);
+  public String sourceName = anni.a(2131713518);
+  public String summary = anni.a(2131713526);
   public String title;
   public String url;
   
@@ -86,7 +86,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131692779, new Object[] { getTitle() });
+    return paramContext.getString(2131692346, new Object[] { getTitle() });
   }
   
   public String getTitle()
@@ -131,7 +131,7 @@ public class TencentDocData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TencentDocData
  * JD-Core Version:    0.7.0.1
  */

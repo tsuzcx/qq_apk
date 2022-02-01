@@ -1,31 +1,22 @@
-import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-final class zbv
-  implements zac<WEISHI.stGetPersonalPageRsp>
+public class zbv
+  extends yzn
 {
-  private final WeakReference<zbr> a;
+  public zbv(ElasticImageView paramElasticImageView) {}
   
-  public zbv(zbr paramzbr)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramzbr);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
-  {
-    paramString = (zbr)this.a.get();
-    if (paramString == null) {}
-    do
-    {
-      return;
-      paramString.a(paramstGetPersonalPageRsp, false);
-    } while (paramstGetPersonalPageRsp == null);
-    zbr.a(paramString, paramstGetPersonalPageRsp.toByteArray());
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    yqp.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbv
  * JD-Core Version:    0.7.0.1
  */

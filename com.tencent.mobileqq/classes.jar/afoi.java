@@ -1,29 +1,218 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class afoi
-  implements View.OnClickListener
+public class afoi
+  implements aqiv
 {
-  afoi(afnq paramafnq, MessageRecord paramMessageRecord, int paramInt) {}
+  bkho jdField_a_of_type_Bkho;
+  public TroopRobotPickerActivity.RobotPickerData a;
+  IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   
-  public void onClick(View paramView)
+  public afoi(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData, IphonePickerView paramIphonePickerView, bkho parambkho)
   {
-    Object localObject = mww.a(this.jdField_a_of_type_Afnq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
-    azqs.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + (String)localObject));
-      paramView.getContext().startActivity((Intent)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = paramIphonePickerView;
+    this.jdField_a_of_type_Bkho = parambkho;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 > this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 != 0)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.getResources().getString(2131690892), 0).a();
+    }
+    while ((this.jdField_a_of_type_Bkho == null) || (!this.jdField_a_of_type_Bkho.isShowing())) {
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2131696176, 0).a();
+    this.jdField_a_of_type_Bkho.dismiss();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData == null) {}
+    do
+    {
+      do
+      {
+        ArrayList localArrayList2;
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d(TroopRobotPickerActivity.a, 2, "onItemSelected|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt1 + ", row : " + paramInt2);
+              }
+              if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
+              {
+                int i;
+                if (paramInt2 >= 0)
+                {
+                  i = paramInt2;
+                  if (paramInt2 < anjh.b.length) {}
+                }
+                else
+                {
+                  i = 0;
+                }
+                switch (paramInt1)
+                {
+                }
+                while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 <= this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 == 0))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2;
+                  return;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 = i;
+                  continue;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 = i;
+                }
+              }
+              else
+              {
+                if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
+                {
+                  if (paramInt2 >= 0)
+                  {
+                    paramInt1 = paramInt2;
+                    if (paramInt2 < anjh.c.length) {}
+                  }
+                  else
+                  {
+                    paramInt1 = 0;
+                  }
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex = paramInt1;
+                  return;
+                }
+                switch (paramInt1)
+                {
+                default: 
+                  return;
+                case 0: 
+                  if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0] != null) && (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size() > 0))
+                  {
+                    if (paramInt2 >= 0)
+                    {
+                      paramInt1 = paramInt2;
+                      if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size()) {}
+                    }
+                    else
+                    {
+                      paramInt1 = 0;
+                    }
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[0] = paramInt1;
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).get(paramInt1));
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[0] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].code;
+                    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].getDataList();
+                    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 1)
+                    {
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] = localArrayList1;
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = 0;
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = new AddressData.NO_LIMIT_ADDRESS(2);
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = "0";
+                      try
+                      {
+                        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
+                        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, 0);
+                        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 2)
+                        {
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = null;
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+                          try
+                          {
+                            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+                            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+                            return;
+                          }
+                          catch (Exception localException1)
+                          {
+                            if (QLog.isColorLevel()) {
+                              QLog.d(TroopRobotPickerActivity.a, 2, localException1, new Object[0]);
+                            }
+                          }
+                          if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing()))
+                          {
+                            this.jdField_a_of_type_Bkho.dismiss();
+                            return;
+                          }
+                        }
+                      }
+                      catch (Exception localException2)
+                      {
+                        for (;;)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d(TroopRobotPickerActivity.a, 2, localException2, new Object[0]);
+                          }
+                          if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing())) {
+                            this.jdField_a_of_type_Bkho.dismiss();
+                          }
+                        }
+                      }
+                    }
+                  }
+                  break;
+                }
+              }
+            }
+          } while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] == null) || (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size() <= 0));
+          if (paramInt2 >= 0)
+          {
+            paramInt1 = paramInt2;
+            if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size()) {}
+          }
+          else
+          {
+            paramInt1 = 0;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = paramInt1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).get(paramInt1));
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].code;
+          localArrayList2 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].getDataList();
+        } while (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount <= 2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = localArrayList2;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+          return;
+        }
+        catch (Exception localException3)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopRobotPickerActivity.a, 2, localException3, new Object[0]);
+          }
+        }
+      } while ((this.jdField_a_of_type_Bkho == null) || (!this.jdField_a_of_type_Bkho.isShowing()));
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] == null) || (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size() <= 0));
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size()) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).get(paramInt1));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2].code;
   }
 }
 

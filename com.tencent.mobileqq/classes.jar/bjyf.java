@@ -1,27 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnInfoListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener;
 
 class bjyf
-  implements bjjr
+  implements IMediaPlayer.OnInfoListener
 {
-  bjyf(bjye parambjye) {}
+  bjyf(bjxx parambjxx, ReliableVideoPlayer.OnInfoListener paramOnInfoListener) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener != null) {
+      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjxx, paramInt1, paramInt2);
     }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      bjye.a(this.a, paramString2, -2, "font download failed.");
-      return;
-    }
-    bjye.a(this.a, paramString2, 0, "success");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyf
  * JD-Core Version:    0.7.0.1
  */

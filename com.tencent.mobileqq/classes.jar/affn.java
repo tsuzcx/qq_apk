@@ -1,8 +1,18 @@
-import android.content.Intent;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-public abstract interface affn
+public class affn
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  
+  public affn(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

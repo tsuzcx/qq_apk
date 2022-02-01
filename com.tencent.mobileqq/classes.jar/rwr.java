@@ -1,47 +1,26 @@
-import android.os.Handler;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.23.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-public class rwr
-  extends oxe
+class rwr
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public rwr(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rwr(rwp paramrwp) {}
   
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+      QLog.d(rwp.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
     }
-    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (RIJRedPacketManager.a().e())) {
-      ReadinjoyTabFrame.a(this.a).setVisibility(0);
+    if (rwp.a(this.a) != null) {
+      rwp.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
     }
-  }
-  
-  public void k()
-  {
-    super.k();
-    if (ReadinjoyTabFrame.a(this.a) != null) {
-      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.23.1(this));
-    }
-  }
-  
-  public void l()
-  {
-    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwr
  * JD-Core Version:    0.7.0.1
  */

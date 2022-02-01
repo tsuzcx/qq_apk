@@ -1,25 +1,27 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Map;
+import java.util.UUID;
 
-@TargetApi(21)
-public class bexf
-  extends ViewOutlineProvider
+class bexf
+  extends aarj
 {
-  private float a;
+  bexf(bexe parambexe) {}
   
-  public bexf(float paramFloat)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    this.a = paramFloat;
-  }
-  
-  public void getOutline(View paramView, Outline paramOutline)
-  {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    do
+    {
+      do
+      {
+        return;
+        paramBundle = paramBundle.getString("itemKey");
+      } while (paramBundle == null);
+      paramBundle = UUID.fromString(paramBundle);
+      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    } while (paramBundle == null);
+    bexe.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

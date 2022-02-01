@@ -1,24 +1,56 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhq
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adhq(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, String paramString) {}
+  public adhq(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
-    LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = null;
+      if ((paramView.getTag() instanceof String)) {
+        localObject = String.valueOf(paramView.getTag());
+      }
+      if ("0X8004001".equals(localObject))
+      {
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountUgActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+      }
+      else if ("0X8004456".equals(localObject))
+      {
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountBindActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+        bglj.a().a(this.a.app.getCurrentAccountUin(), true);
+        continue;
+        localObject = new Intent();
+        ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        paramView.getContext().startActivity((Intent)localObject);
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+        bcst.b(this.a.app, "dc00898", "", "", "0X800AC39", "0X800AC39", 0, 0, "", "", "", "");
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

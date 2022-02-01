@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -20,6 +21,8 @@ public class PicMessageExtraData
   public int from;
   public String iconUrl;
   public int imageBizType;
+  public String mAdEmoDescStr;
+  public String mAdEmoJumpUrl;
   public String mTemplateId;
   public String mTemplateName;
   public String packageName;
@@ -48,6 +51,8 @@ public class PicMessageExtraData
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
     this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
+    this.mAdEmoJumpUrl = paramResvAttr.string_ad_emo_jump_url.get();
+    this.mAdEmoDescStr = paramResvAttr.string_ad_emo_desc_str.get();
   }
   
   public PicMessageExtraData(NotOnlineImageExtPb.ResvAttr paramResvAttr)
@@ -67,6 +72,8 @@ public class PicMessageExtraData
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
     this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
+    this.mAdEmoJumpUrl = paramResvAttr.string_ad_emo_jump_url.get();
+    this.mAdEmoDescStr = paramResvAttr.string_ad_emo_desc_str.get();
   }
   
   public CustomFaceExtPb.ResvAttr getCustomFaceResvAttr()
@@ -116,6 +123,12 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateName)) {
       localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
     }
+    if (!TextUtils.isEmpty(this.mAdEmoJumpUrl)) {
+      localResvAttr.string_ad_emo_jump_url.set(this.mAdEmoJumpUrl);
+    }
+    if (!TextUtils.isEmpty(this.mAdEmoDescStr)) {
+      localResvAttr.string_ad_emo_desc_str.set(this.mAdEmoDescStr);
+    }
     return localResvAttr;
   }
   
@@ -163,6 +176,12 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateName)) {
       localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
     }
+    if (!TextUtils.isEmpty(this.mAdEmoJumpUrl)) {
+      localResvAttr.string_ad_emo_jump_url.set(this.mAdEmoJumpUrl);
+    }
+    if (!TextUtils.isEmpty(this.mAdEmoDescStr)) {
+      localResvAttr.string_ad_emo_desc_str.set(this.mAdEmoDescStr);
+    }
     return localResvAttr;
   }
   
@@ -176,14 +195,34 @@ public class PicMessageExtraData
     return (isCustomFace()) && (2 == this.customFaceType);
   }
   
+  public boolean isDoutu()
+  {
+    return this.imageBizType == 3;
+  }
+  
+  public boolean isEmotion()
+  {
+    return (isCustomFace()) || (isStickerPics()) || (isStickerAdPic()) || (isDiyDouTu()) || (isHotPics()) || (isZhitu()) || (isSelfieFace()) || (isDoutu()) || (isRelatedEmo());
+  }
+  
   public boolean isHotPics()
   {
     return this.imageBizType == 2;
   }
   
+  public boolean isRelatedEmo()
+  {
+    return this.imageBizType == 10;
+  }
+  
   public boolean isSelfieFace()
   {
     return this.imageBizType == 8;
+  }
+  
+  public boolean isStickerAdPic()
+  {
+    return this.imageBizType == 9;
   }
   
   public boolean isStickerPics()
@@ -195,10 +234,26 @@ public class PicMessageExtraData
   {
     return this.imageBizType == 4;
   }
+  
+  public void setAdEmoDescStr(String paramString)
+  {
+    this.mAdEmoDescStr = paramString;
+    if ((QLog.isColorLevel()) && (paramString != null)) {
+      QLog.d("PicMessageExtraData", 0, "adEmoDescStr, length = " + paramString.length());
+    }
+  }
+  
+  public void setAdEmoJumpUrl(String paramString)
+  {
+    this.mAdEmoJumpUrl = paramString;
+    if ((QLog.isColorLevel()) && (paramString != null)) {
+      QLog.d("PicMessageExtraData", 0, "setAdEmoJumpUrl, length = " + paramString.length());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

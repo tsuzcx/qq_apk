@@ -1,114 +1,55 @@
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator.HttpCommunicatorHandler.1;
-import java.net.HttpURLConnection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bdpv
+class bdpv
   extends Handler
 {
-  public int a;
-  public bdpx a;
-  public AtomicBoolean a;
-  public AtomicBoolean b = new AtomicBoolean();
-  
-  public bdpv(HttpCommunicator paramHttpCommunicator, Looper paramLooper)
+  bdpv(bdpu parambdpu, Looper paramLooper)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    Activity localActivity;
+    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
     {
-      if (this.jdField_a_of_type_Bdpx != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_Bdpx, "requeustInterupt", "msgId:" + this.jdField_a_of_type_Bdpx.jdField_a_of_type_JavaLangString + " thread id:" + this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Bdpx.b.set(true);
-        if (this.jdField_a_of_type_Bdpx.jdField_a_of_type_JavaNetHttpURLConnection != null)
-        {
-          this.jdField_a_of_type_Bdpx.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-          getLooper().getThread().interrupt();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this);
-        this.jdField_a_of_type_Bdpx.a(9361, 0, "preempted by higher msg");
-        this.jdField_a_of_type_Bdpx.a().b(this.jdField_a_of_type_Bdpx, this.jdField_a_of_type_Bdpx);
-        this.jdField_a_of_type_Bdpx = null;
+      localActivity = null;
+      if (localActivity != null) {
+        break label75;
       }
+      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    }
+    label75:
+    do
+    {
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(bdpx parambdpx)
-  {
-    sendMessage(obtainMessage(0, parambdpx));
-  }
-  
-  public void handleMessage(Message arg1)
-  {
-    if (???.what == 0)
-    {
-      if ((HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator) != null) && (HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator) != null)) {
-        HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator).removeCallbacks(HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator));
-      }
-      if ((???.obj != null) && ((???.obj instanceof bdpx)))
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      break;
+      switch (paramMessage.what)
       {
-        localbdpx = (bdpx)???.obj;
-        if (localbdpx.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break label274;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(localbdpx, this, false);
-        if (localbdpx.jdField_a_of_type_JavaLangObject != null) {
-          localbdpx.c.set(true);
-        }
+      default: 
+        return;
       }
-    }
-    label274:
-    while (???.what != 1)
-    {
-      synchronized (localbdpx.jdField_a_of_type_JavaLangObject)
-      {
-        bdpx localbdpx;
-        localbdpx.jdField_a_of_type_JavaLangObject.notify();
-        if (this.b.get())
-        {
-          getLooper().quit();
-          return;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_Bdpx = null;
-      for (???.obj = null;; ???.obj = null)
-      {
-        synchronized (HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator))
-        {
-          HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a("handleMsgFin thread index:" + this.jdField_a_of_type_Int);
-          if ((!HttpCommunicator.c(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator, false)) || (HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator) == null)) {
-            break;
-          }
-          HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator, new HttpCommunicator.HttpCommunicatorHandler.1(this));
-          HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator).postDelayed(HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator), 2000L);
-          return;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        this.jdField_a_of_type_Bdpx = null;
-      }
-    }
-    getLooper().quit();
+    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())));
+    this.a.jdField_a_of_type_Biau = new biau(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
+    this.a.jdField_a_of_type_Biau.setCancelable(true);
+    this.a.jdField_a_of_type_Biau.c(2131718365);
+    this.a.jdField_a_of_type_Biau.show();
+    return;
+    this.a.c();
+    QQToast.a(localActivity, anni.a(2131713617), 4000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdpv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,112 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
-class asym
-  implements URLDrawable.URLDrawableListener
+public class asym
+  extends asyr
 {
-  asym(asyl paramasyl, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public asym(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected ImageView a(afwr paramafwr)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
+    if (paramafwr == null) {}
+    while (!(paramafwr instanceof ahfe)) {
+      return null;
+    }
+    return ((ahfe)paramafwr).a;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void a(afwr paramafwr, ImageView paramImageView)
   {
-    paramURLDrawable = avdr.a(paramURLDrawable);
-    asyl.a(this.jdField_a_of_type_Asyl, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    if (paramafwr == null) {}
+    while (!(paramafwr instanceof ahfe)) {
+      return;
+    }
+    ((ahfe)paramafwr).a = paramImageView;
+  }
+  
+  protected void a(View paramView, afwr paramafwr, ChatMessage paramChatMessage, int paramInt)
+  {
+    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
+        paramView = (MessageForFile)paramChatMessage;
+        paramafwr = atvo.a(this.a, paramView);
+      } while (paramafwr == null);
+      if (paramView.istroop == 3000) {}
+      for (i = 3; paramInt == 0; i = 1)
+      {
+        bcst.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
+        this.a.a().a(paramafwr.nSessionId);
+        return;
+      }
+    } while (paramInt != 1);
+    bcst.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
+    a(new asyn(this, i, paramafwr));
+  }
+  
+  protected boolean a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = atvo.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
+    return true;
+  }
+  
+  protected boolean b(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = atvo.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
+    return true;
   }
 }
 

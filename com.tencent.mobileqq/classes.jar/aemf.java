@@ -1,16 +1,22 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemf
-  extends bhry
+  implements View.OnClickListener
 {
-  public aemf(VisitorsActivity paramVisitorsActivity) {}
+  public aemf(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    axdz.a(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

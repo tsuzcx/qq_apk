@@ -1,56 +1,49 @@
-import android.app.Activity;
-import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bljp
+final class bljp
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  private static final String jdField_a_of_type_JavaLangString = bljp.class.getSimpleName();
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bdjz jdField_a_of_type_Bdjz;
+  bljp(Runnable paramRunnable) {}
   
-  public bljp(Activity paramActivity)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private void b(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_Bdjz != null) {
-      return;
-    }
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131699726);
-    this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131694207), new bljq(this, paramRunnable));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bdjz != null) {
-      this.jdField_a_of_type_Bdjz.hide();
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
+    if (paramPluginManagerClient == null) {}
     try
     {
-      b(paramRunnable);
-      if (!this.jdField_a_of_type_Bdjz.isShowing())
-      {
-        this.jdField_a_of_type_Bdjz.setCancelable(false);
-        this.jdField_a_of_type_Bdjz.show();
-      }
+      ThreadManager.post(this.a, 5, null, false);
       return;
     }
-    catch (WindowManager.BadTokenException paramRunnable)
+    catch (Exception paramPluginManagerClient) {}
+    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "", paramRunnable);
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+      }
+      bljn.a().set(true);
+      try
+      {
+        ThreadManager.post(this.a, 5, null, false);
+        return;
+      }
+      catch (Exception paramPluginManagerClient)
+      {
+        return;
+      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    }
+    paramPluginManagerClient.installPlugin("qqfav.apk", new bljq(this));
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bljp
  * JD-Core Version:    0.7.0.1
  */

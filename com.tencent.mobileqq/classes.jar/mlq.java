@@ -1,74 +1,52 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.av.ui.beauty.BeautySeekView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mlq
-  extends mll
+  implements SeekBar.OnSeekBarChangeListener
 {
-  protected mlq(Context paramContext, VideoAppInterface paramVideoAppInterface)
-  {
-    super(paramContext, paramVideoAppInterface);
-  }
+  public mlq(BeautySeekView paramBeautySeekView) {}
   
-  private void a(mgp parammgp1, mgp parammgp2, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    int i = paramInt >> 1;
-    int j = mlm.b(paramInt);
-    parammgp1.a(0, 0, 0, 0);
-    parammgp1.b(i, 0, paramInt, j);
-    parammgp1.d(-15197410);
-    parammgp2.a(0, 0, 0, 0);
-    parammgp2.b(0, 0, i, j);
-    parammgp2.d(-15197410);
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmgp[1].a(0)))
+    if (BeautySeekView.a(this.a) != paramInt)
     {
-      bool = true;
-      lek.c("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
-      }
+      BeautySeekView.a(this.a, paramInt);
       if (paramBoolean) {
-        break label94;
+        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
       }
-      paramBoolean = true;
+      BeautySeekView.a(this.a, paramInt);
+      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
     }
-    label94:
-    label112:
-    for (;;)
-    {
-      if (paramBoolean)
-      {
-        a(paramArrayOfmgp[0], paramArrayOfmgp[1], paramInt1);
-        return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
-      }
-      a(paramArrayOfmgp[1], paramArrayOfmgp[0], paramInt1);
-      return;
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
     }
   }
   
-  public boolean a()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    return false;
+    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
+    BeautySeekView.a(this.a).setVisibility(0);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mlq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiba
-  extends alpa
+class aiba
+  implements DialogInterface.OnClickListener
 {
-  public aiba(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  aiba(aiay paramaiay) {}
   
-  protected void a(Object paramObject)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

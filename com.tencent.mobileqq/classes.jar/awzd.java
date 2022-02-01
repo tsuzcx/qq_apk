@@ -1,43 +1,25 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 
 public class awzd
+  implements awyo
 {
-  private static String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return null;
-      switch (paramInt2)
-      {
-      default: 
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
-    }
-    return "0X8009E09";
-    return "0X8009E06";
-    return "0X8009E07";
-    return "0X8009E08";
-    return "0X8009E0A";
-    return "0X8009E0B";
-  }
+  public awzd(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    String str = a(paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(str)) {
-      azqs.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-    }
+    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
+    Bundle localBundle = new Bundle();
+    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
+    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
+    paramString.setData(localBundle);
+    paramString.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzd
  * JD-Core Version:    0.7.0.1
  */

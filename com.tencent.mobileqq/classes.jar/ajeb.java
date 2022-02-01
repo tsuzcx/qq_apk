@@ -1,29 +1,53 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
-class ajeb
-  implements baej
+public class ajeb
+  extends anxg
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public ajeb(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  ajeb(ajea paramajea, baej parambaej) {}
-  
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
-    }
-    if ((this.jdField_a_of_type_Boolean) || (ajea.a(this.jdField_a_of_type_Ajea))) {}
-    do
+    this.a.b = false;
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
     {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (ajea.a(this.jdField_a_of_type_Ajea) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(ajea.a(this.jdField_a_of_type_Ajea));
+      this.a.jdField_a_of_type_Int = 0;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        ShowExternalTroopListActivity.a(this.a);
       }
-    } while (this.jdField_a_of_type_Baej == null);
-    this.jdField_a_of_type_Baej.a();
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        paramList = new ArrayList();
+        this.a.jdField_a_of_type_Amex.a(paramList);
+        paramInt = this.a.getTitleBarHeight();
+        QQToast.a(this.a, 1, this.a.getString(2131695477), 0).b(paramInt);
+        return;
+      }
+      this.a.a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      ShowExternalTroopListActivity.a(this.a);
+    }
+    this.a.c.setVisibility(0);
+    if (this.a.jdField_a_of_type_Amex != null)
+    {
+      this.a.jdField_a_of_type_Int = paramList.size();
+      this.a.jdField_a_of_type_Amex.a(paramList);
+    }
+    this.a.a(paramList1, true);
   }
 }
 

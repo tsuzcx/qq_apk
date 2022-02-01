@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nyg;
+import oib;
 
 public class ReadInJoyBaseDeliverActivity$13$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$13$1(nyg paramnyg) {}
+  public ReadInJoyBaseDeliverActivity$13$1(oib paramoib) {}
   
   public void run()
   {

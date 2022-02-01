@@ -1,9 +1,12 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class ajvz
+class ajvz
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public Bitmap a;
+  ajvz(ajvx paramajvx) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

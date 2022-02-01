@@ -1,20 +1,6 @@
-import com.tencent.common.app.AppInterface;
-
-class blbc
-  extends bkzv
+public abstract interface blbc
 {
-  blbc(blbb paramblbb, AppInterface paramAppInterface) {}
-  
-  public void a(boolean paramBoolean, blbt paramblbt)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean)
-    {
-      blbb.a(this.jdField_a_of_type_Blbb).a(paramblbt);
-      return;
-    }
-    blbb.a(this.jdField_a_of_type_Blbb).a(new blbt());
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

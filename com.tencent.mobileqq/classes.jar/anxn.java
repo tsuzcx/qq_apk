@@ -1,7 +1,13 @@
-public class anxn
-  extends anxk
+class anxn
 {
-  public String e = "";
+  public long a;
+  public String a;
+  
+  anxn(anxi paramanxi, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

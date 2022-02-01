@@ -1,24 +1,20 @@
-class vwi
-  implements vwd
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+
+public class vwi
+  implements aagf
 {
-  public vwd a;
+  public vwi(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  private vwi(vwg paramvwg) {}
-  
-  public boolean a(vwa paramvwa, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a()
   {
-    if (vwg.a(this.jdField_a_of_type_Vwg) != null) {
-      vwg.a(this.jdField_a_of_type_Vwg).c(vwg.a(this.jdField_a_of_type_Vwg));
-    }
-    if (this.jdField_a_of_type_Vwd != null) {
-      return this.jdField_a_of_type_Vwd.a(paramvwa, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    QCircleFeedCommentWidget.b(this.a, 0);
   }
+  
+  public void a(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwi
  * JD-Core Version:    0.7.0.1
  */

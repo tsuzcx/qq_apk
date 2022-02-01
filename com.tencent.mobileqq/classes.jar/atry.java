@@ -1,26 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atry
+class atry
   implements View.OnClickListener
 {
-  public atry(LocationPickFragment paramLocationPickFragment) {}
+  atry(atrw paramatrw) {}
   
   public void onClick(View paramView)
   {
-    if (LocationPickFragment.a(this.a).b())
-    {
-      LocationPickFragment.a(this.a).b();
-      return;
-    }
-    LocationPickFragment.a(this.a).a();
+    atvo.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atoo.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atry
  * JD-Core Version:    0.7.0.1
  */

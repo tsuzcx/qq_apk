@@ -9,70 +9,71 @@ import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import orc;
-import pwq;
-import sfd;
-import sfg;
+import pgk;
+import tdt;
+import tdw;
 
 public class PTSImageView
   extends KandianUrlImageView
-  implements IView<pwq>
+  implements IView
 {
-  private PTSViewDecorationUtil.RoundedCorner jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner;
-  private final String jdField_a_of_type_JavaLangString = "PTSImageView";
-  private URL jdField_a_of_type_JavaNetURL;
-  private pwq jdField_a_of_type_Pwq;
-  private String b;
+  private static final String TAG = "PTSImageView";
+  private String mPath;
+  private URL mPathUrl;
+  private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
-  public PTSImageView(pwq parampwq)
+  public PTSImageView(PTSNodeImage paramPTSNodeImage)
   {
-    super(parampwq.getContext());
-    this.jdField_a_of_type_Pwq = parampwq;
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.jdField_a_of_type_Pwq);
+    super(paramPTSNodeImage.getContext());
     setScaleType(ImageView.ScaleType.FIT_XY);
-  }
-  
-  public pwq a()
-  {
-    return this.jdField_a_of_type_Pwq;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int i = this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner.getSaveCount(paramCanvas);
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner.clipPath(paramCanvas);
+    int i = this.mRoundedCorner.getSaveCount(paramCanvas);
+    this.mRoundedCorner.clipPath(paramCanvas);
     super.draw(paramCanvas);
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner.drawCorner(paramCanvas, i);
+    this.mRoundedCorner.drawCorner(paramCanvas, i);
+    this.mRoundedCorner.drawBorder(paramCanvas);
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    sfg localsfg = this.jdField_a_of_type_Sfd.a();
-    if ((localsfg == null) || (localsfg.a)) {
-      setImageSrc(this.b);
+    tdw localtdw = this.mController.a();
+    if ((localtdw == null) || (localtdw.a)) {
+      setImageSrc(this.mPath);
     }
   }
   
   public void onBindNodeInfo(PTSNodeInfo paramPTSNodeInfo)
   {
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner.onBindNodeInfo(paramPTSNodeInfo);
+    this.mRoundedCorner.onBindNodeInfo(paramPTSNodeInfo);
+  }
+  
+  public void onFinishTemporaryDetach()
+  {
+    super.onFinishTemporaryDetach();
+    tdw localtdw = this.mController.a();
+    if ((localtdw == null) || (localtdw.a)) {
+      setImageSrc(this.mPath);
+    }
   }
   
   public void setImageSrc(String paramString)
   {
     try
     {
-      if ((this.b == null) || (!this.b.equalsIgnoreCase(paramString)) || (this.jdField_a_of_type_JavaNetURL == null))
+      if ((this.mPath == null) || (!this.mPath.equalsIgnoreCase(paramString)) || (this.mPathUrl == null))
       {
-        this.b = paramString;
-        this.jdField_a_of_type_JavaNetURL = new URL(this.b);
+        this.mPath = paramString;
+        this.mPathUrl = new URL(this.mPath);
         QLog.d("PTSImageView", 2, "[setImageSrc], current path changed ");
       }
       for (;;)
       {
-        QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.jdField_a_of_type_JavaNetURL);
-        orc.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+        QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.mPathUrl);
+        pgk.a(this, this.mPathUrl, getContext());
         return;
         QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
       }
@@ -80,7 +81,7 @@ public class PTSImageView
     }
     catch (MalformedURLException paramString)
     {
-      this.jdField_a_of_type_JavaNetURL = null;
+      this.mPathUrl = null;
     }
   }
 }

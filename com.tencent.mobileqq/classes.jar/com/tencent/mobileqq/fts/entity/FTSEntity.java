@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.fts.entity;
 
 import android.text.TextUtils;
-import asja;
-import asjb;
-import asjm;
-import asjn;
+import aupr;
+import aups;
+import auqd;
+import auqe;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,9 +16,9 @@ public abstract class FTSEntity
   public String ext1;
   public String ext2;
   public String ext3;
-  @asjb
+  @aups
   public byte[] exts;
-  @asja
+  @aupr
   public Map<String, String> indexContentMap = new HashMap();
   
   protected void doDeserialize() {}
@@ -46,7 +46,7 @@ public abstract class FTSEntity
   {
     try
     {
-      Iterator localIterator = asjm.a(getClass()).iterator();
+      Iterator localIterator = auqd.a(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -55,7 +55,7 @@ public abstract class FTSEntity
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = asjn.a(str);
+            str = auqe.a(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }
@@ -70,7 +70,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.entity.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

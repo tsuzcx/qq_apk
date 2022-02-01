@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 
-class tvp
-  implements DialogInterface.OnClickListener
+public class tvp
 {
-  tvp(tvl paramtvl) {}
+  public int a;
+  public long a;
+  public ReadInJoyArticle a;
+  public String a;
+  public String b = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public tvp()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tvp
  * JD-Core Version:    0.7.0.1
  */

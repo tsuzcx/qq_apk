@@ -1,56 +1,136 @@
-import android.content.Context;
-import android.view.View;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.UUID;
+import mqq.app.AppRuntime;
 
 public class aapt
-  extends aapz
+  extends aapy
 {
-  protected aapt(Context paramContext)
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, File> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public aapt(aapa paramaapa, aapz paramaapz, String paramString)
   {
-    super(paramContext);
+    super(paramaapa, paramaapz, paramString);
+    paramaapa = a();
+    int i = 0;
+    while (i < paramaapa.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      paramaapz = (String)paramaapa.jdField_a_of_type_JavaUtilArrayList.get(i);
+      paramString = a(paramaapz, ".mp4");
+      paramaapa.jdField_b_of_type_JavaUtilArrayList.add(paramString);
+      if ((!new File(paramString).exists()) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaapz)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramaapz);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramaapz, new File(paramString));
+      }
+      i += 1;
+    }
+    if (!TextUtils.isEmpty(paramaapa.jdField_b_of_type_JavaLangString))
+    {
+      paramaapz = new File(a(paramaapa.jdField_b_of_type_JavaLangString, ".m4a"));
+      if (!paramaapz.exists())
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramaapa.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramaapa.jdField_b_of_type_JavaLangString, new File(paramaapz.getAbsolutePath()));
+      }
+      paramaapa.d = paramaapz.getAbsolutePath();
+    }
   }
   
-  public void a(int paramInt)
+  private String a(String paramString1, String paramString2)
   {
-    super.a(paramInt);
-    aase.b("GdtMotiveVideoAd", "185V doAnimation " + this.jdField_a_of_type_Aapr + " targetMode " + paramInt);
-    aapp localaapp;
-    if (this.jdField_a_of_type_Aapr != null)
+    paramString1 = UUID.nameUUIDFromBytes(paramString1.getBytes());
+    paramString1 = b().getAbsolutePath() + File.separator + "v_" + paramString1.toString() + paramString2;
+    paramString2 = new File(paramString1);
+    if (!paramString2.getParentFile().exists()) {
+      paramString2.mkdirs();
+    }
+    return paramString1;
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = new Bundle();
+    aapk localaapk = a();
+    if (localaapk.jdField_b_of_type_Boolean)
     {
-      localaapp = (aapp)this.jdField_a_of_type_Aapr;
-      a();
-      if (paramInt == 1)
-      {
-        a(localaapp.jdField_a_of_type_AndroidViewView, localaapp.jdField_a_of_type_Int, 0);
-        a(localaapp.f, localaapp.j, localaapp.k);
+      this.jdField_a_of_type_Aapz.b(this);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2;
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      localObject2 = new bhhf(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      ((bhhf)localObject2).b = 3;
+      this.jdField_a_of_type_Aapa.a().a((bhhf)localObject2, new aapu(this, localaapk, localArrayList, l), (Bundle)localObject1);
+      label111:
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.VideoCombineHelper", 2, "start Download key = " + this.c);
       }
     }
     else
     {
-      return;
+      try
+      {
+        localObject1 = localaapk.jdField_b_of_type_JavaUtilArrayList.iterator();
+        int i = 1;
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          File localFile = new File(a() + File.separator + "v_" + i + ".mp4");
+          localArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            zkr.a(new File((String)localObject2), localFile);
+            i += 1;
+          }
+        }
+        b();
+      }
+      catch (IOException localIOException)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, localIOException, new Object[0]);
+        this.jdField_a_of_type_Aapz.a(this);
+        localaapk.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+        this.jdField_a_of_type_Aapz.b(this);
+        this.jdField_a_of_type_Aapy = new aapl(this.jdField_a_of_type_Aapa, this.jdField_a_of_type_Aapz, this.c, localaapk.jdField_b_of_type_JavaUtilArrayList, localaapk.d, localaapk.c);
+        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
     }
-    a(localaapp.jdField_a_of_type_AndroidViewView, -localaapp.jdField_a_of_type_Int, 0);
-    a(localaapp.f, -localaapp.j, -localaapp.k);
-  }
-  
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4)
-  {
-    aapp localaapp = new aapp();
-    localaapp.jdField_a_of_type_AndroidViewView = paramView1;
-    localaapp.f = paramView2;
-    localaapp.g = paramView3;
-    localaapp.jdField_a_of_type_Int = aatp.a(-306, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapp.j = aatp.a(-406, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapp.k = aatp.a(125, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = aatp.a(400, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
+    for (;;)
     {
-      localaapp.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / aatp.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localaapp.b = localaapp.jdField_a_of_type_Float;
+      QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - l));
+      break label111;
+      break;
+      if (localaapk.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aapz.b(this.jdField_a_of_type_Aapy);
+      }
+      else
+      {
+        this.jdField_a_of_type_Aapy.d = "lib not ready";
+        this.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapy);
+      }
     }
-    localaapp.l = aatp.a(50, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    localaapp.m = aatp.a(-100, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    a(localaapp, paramView4);
-    this.jdField_a_of_type_Aapr = localaapp;
   }
 }
 

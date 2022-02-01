@@ -1,36 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class vlh
-  implements Parcelable.Creator
+class vlh
+  implements View.OnClickListener
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  vlh(vlg paramvlg) {}
   
-  public StoryPushMsg[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new StoryPushMsg[paramInt];
+    vlg.a(this.a, false);
+    this.a.b();
+    if (vlg.a(this.a) != null) {
+      vlg.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlh
  * JD-Core Version:    0.7.0.1
  */

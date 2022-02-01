@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import alud;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
@@ -10,8 +9,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.PersistableBundle;
-import bdng;
-import bflz;
+import anni;
+import bgsi;
+import biti;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -26,27 +26,25 @@ final class ShortcutUtils$3
   
   public void run()
   {
-    for (;;)
+    boolean bool = false;
+    try
     {
-      try
+      if (Build.VERSION.SDK_INT < 26) {
+        break label347;
+      }
+      ShortcutManager localShortcutManager = (ShortcutManager)this.val$activity.getSystemService("shortcut");
+      if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localShortcutManager))
       {
-        if (Build.VERSION.SDK_INT < 26) {
-          break label302;
-        }
-        ShortcutManager localShortcutManager = (ShortcutManager)this.val$activity.getSystemService("shortcut");
-        if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localShortcutManager))
-        {
-          QLog.i("Shortcut", 1, "Shortcut has created before!");
-          bflz.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
-          if (this.val$callback == null) {
-            break;
-          }
-          this.val$callback.onAddResult(0, alud.a(2131714409));
+        QLog.i("Shortcut", 1, "Shortcut has created before!");
+        biti.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+        if (this.val$callback == null) {
           return;
         }
-        if (!localShortcutManager.isRequestPinShortcutSupported()) {
-          break label597;
-        }
+        this.val$callback.onAddResult(0, anni.a(2131712779));
+        return;
+      }
+      if (localShortcutManager.isRequestPinShortcutSupported())
+      {
         Object localObject1 = ShortcutUtils.access$000(this.val$activity, this.val$apkgInfo);
         Object localObject2 = ShortcutUtils.access$100(this.val$activity, this.val$apkgInfo);
         PersistableBundle localPersistableBundle = new PersistableBundle();
@@ -54,67 +52,72 @@ final class ShortcutUtils$3
         localObject2 = new Intent("com.tencent.mini.CreateShortcutSucceedReceiver");
         ((Intent)localObject2).putExtra("CONFIG_APPNAME", this.val$apkgInfo.apkgName);
         bool = localShortcutManager.requestPinShortcut((ShortcutInfo)localObject1, PendingIntent.getBroadcast(this.val$activity, 0, (Intent)localObject2, 134217728).getIntentSender());
-        if (!bool)
-        {
-          ShortcutUtils.access$200(this.val$activity);
-          if (this.val$callback == null) {
-            break;
-          }
-          this.val$callback.onAddResult(1, alud.a(2131714405));
+      }
+      if (!bool)
+      {
+        ShortcutUtils.access$200(this.val$activity);
+        if (this.val$callback == null) {
           return;
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("Shortcut", 1, "doAddShortcut exception!", localThrowable);
+        this.val$callback.onAddResult(1, anni.a(2131712775));
         return;
       }
-      if (this.val$callback == null) {
-        break;
-      }
-      this.val$callback.onAddResult(0, alud.a(2131714400));
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("Shortcut", 1, "doAddShortcut exception!", localThrowable);
       return;
-      label302:
-      if (bdng.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+    }
+    Thread.sleep(1000L);
+    if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localThrowable))
+    {
+      if (this.val$callback != null) {
+        this.val$callback.onAddResult(0, anni.a(2131712770));
+      }
+    }
+    else if (this.val$callback != null)
+    {
+      this.val$callback.onAddResult(1, anni.a(2131712775));
+      return;
+      label347:
+      if (bgsi.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bflz.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
-        if (this.val$callback == null) {
-          break;
+        biti.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+        if (this.val$callback != null) {
+          this.val$callback.onAddResult(0, anni.a(2131712767));
         }
-        this.val$callback.onAddResult(0, alud.a(2131714397));
-        return;
       }
-      Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-      localIntent.putExtra("android.intent.extra.shortcut.NAME", this.val$apkgInfo.apkgName);
-      localIntent.putExtra("duplicate", false);
-      localIntent.putExtra("android.intent.extra.shortcut.ICON", ShortcutUtils.access$100(this.val$activity, this.val$apkgInfo));
-      localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$apkgInfo));
-      this.val$activity.sendBroadcast(localIntent);
-      Thread.sleep(1000L);
-      if (bdng.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+      else
       {
-        bflz.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
-        if (this.val$callback == null) {
-          break;
+        Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+        localIntent.putExtra("android.intent.extra.shortcut.NAME", this.val$apkgInfo.apkgName);
+        localIntent.putExtra("duplicate", false);
+        localIntent.putExtra("android.intent.extra.shortcut.ICON", ShortcutUtils.access$100(this.val$activity, this.val$apkgInfo));
+        localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$apkgInfo));
+        this.val$activity.sendBroadcast(localIntent);
+        Thread.sleep(1000L);
+        if (bgsi.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+        {
+          biti.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
+          if (this.val$callback != null) {
+            this.val$callback.onAddResult(0, anni.a(2131712769));
+          }
         }
-        this.val$callback.onAddResult(0, alud.a(2131714399));
-        return;
+        else
+        {
+          ShortcutUtils.access$200(this.val$activity);
+          if (this.val$callback != null) {
+            this.val$callback.onAddResult(1, anni.a(2131712778));
+          }
+        }
       }
-      ShortcutUtils.access$200(this.val$activity);
-      if (this.val$callback == null) {
-        break;
-      }
-      this.val$callback.onAddResult(1, alud.a(2131714408));
-      return;
-      label597:
-      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils.3
  * JD-Core Version:    0.7.0.1
  */

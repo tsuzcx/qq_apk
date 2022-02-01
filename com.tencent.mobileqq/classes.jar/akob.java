@@ -1,17 +1,56 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import java.util.Comparator;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class akob
-  implements Comparator<DrawerPushItem>
+final class akob
+  implements DialogInterface.OnClickListener
 {
-  akob(aknx paramaknx) {}
+  akob(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    if ((paramDialogInterface instanceof bgqn)) {
+      switch (paramInt)
+      {
+      }
     }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    do
+    {
+      return;
+      aknz.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (bgqn)paramDialogInterface);
+    } while ((aknz.a == null) || (aknz.a.vecRec == null) || (aknz.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
+    }
+    for (;;)
+    {
+      paramDialogInterface = str;
+      if (i < aknz.a.vecRec.size())
+      {
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)aknz.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
+        }
+      }
+      else
+      {
+        bcst.b(akww.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
+    }
   }
 }
 

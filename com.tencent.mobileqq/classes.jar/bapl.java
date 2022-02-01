@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class bapl
-  implements DialogInterface.OnClickListener
+public abstract interface bapl
 {
-  bapl(baph parambaph) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void a_(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

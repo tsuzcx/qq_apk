@@ -1,21 +1,25 @@
 package cooperation.qwallet.open;
 
+import Override;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bdfr;
-import bdgk;
-import bjck;
+import android.view.MotionEvent;
+import bgku;
+import bgln;
+import blqt;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,36 +58,36 @@ public class AppPayActivity
       return;
     }
     long l = VACDReportUtil.a(null, "qqwallet", "pay-open-app", "payinvoke", null, 0, null);
-    Object localObject = new bjck();
+    Object localObject = new blqt();
     try
     {
-      ((bjck)localObject).a(paramIntent.getExtras());
-      boolean bool = ((bjck)localObject).a();
-      paramIntent = ((bjck)localObject).toString();
+      ((blqt)localObject).a(paramIntent.getExtras());
+      boolean bool = ((blqt)localObject).a();
+      paramIntent = ((blqt)localObject).toString();
       paramIntent = paramIntent + "&check=" + bool;
       if (QLog.isColorLevel()) {
         QLog.i("Q.qwallet.pay", 2, "" + System.currentTimeMillis() + " AppPayActivity.doOpenPay data:" + paramIntent);
       }
       if (bool)
       {
-        VACDReportUtil.a(l, ((bjck)localObject).i, "parseurl", paramIntent, 0, null);
+        VACDReportUtil.a(l, ((blqt)localObject).i, "parseurl", paramIntent, 0, null);
         paramIntent = new Bundle();
         paramIntent.putInt("extra.key.pay.type", 1);
         paramIntent.putInt("extra.key.pay.from", 2);
         paramIntent.putInt("extra.key.pay.platform", 1);
         paramIntent.putInt("extra.key.app.type", 1);
         paramIntent.putLong("vacreport_key_seq", l);
-        paramIntent.putString("appId", ((bjck)localObject).jdField_a_of_type_JavaLangString);
-        paramIntent.putString("callbackSn", ((bjck)localObject).e);
-        paramIntent.putString("nonce", ((bjck)localObject).j);
-        paramIntent.putLong("timeStamp", ((bjck)localObject).jdField_a_of_type_Long);
-        paramIntent.putString("sig", ((bjck)localObject).m);
-        paramIntent.putString("sigType", ((bjck)localObject).l);
-        paramIntent.putString("tokenId", ((bjck)localObject).i);
-        paramIntent.putString("bargainorId", ((bjck)localObject).k);
-        paramIntent.putString("qVersion", bdgk.a(this));
-        paramIntent.putString("packageName", ((bjck)localObject).n);
-        paramIntent.putString("callbackScheme", ((bjck)localObject).f);
+        paramIntent.putString("appId", ((blqt)localObject).jdField_a_of_type_JavaLangString);
+        paramIntent.putString("callbackSn", ((blqt)localObject).e);
+        paramIntent.putString("nonce", ((blqt)localObject).j);
+        paramIntent.putLong("timeStamp", ((blqt)localObject).jdField_a_of_type_Long);
+        paramIntent.putString("sig", ((blqt)localObject).m);
+        paramIntent.putString("sigType", ((blqt)localObject).l);
+        paramIntent.putString("tokenId", ((blqt)localObject).i);
+        paramIntent.putString("bargainorId", ((blqt)localObject).k);
+        paramIntent.putString("qVersion", bgln.a(this));
+        paramIntent.putString("packageName", ((blqt)localObject).n);
+        paramIntent.putString("callbackScheme", ((blqt)localObject).f);
         localObject = new Intent(this, OpenPayActivity.class);
         ((Intent)localObject).putExtras(paramIntent);
         ((Intent)localObject).addFlags(67108864);
@@ -109,40 +113,40 @@ public class AppPayActivity
       return;
     }
     long l = VACDReportUtil.a(null, "qqwallet", "pay-app", "payinvoke", null, 0, null);
-    Object localObject = new bjck();
-    ((bjck)localObject).a(paramString);
-    boolean bool = ((bjck)localObject).a();
-    paramString = ((bjck)localObject).toString();
+    Object localObject = new blqt();
+    ((blqt)localObject).a(paramString);
+    boolean bool = ((blqt)localObject).a();
+    paramString = ((blqt)localObject).toString();
     paramString = paramString + "&check=" + bool;
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay", 2, "" + System.currentTimeMillis() + " AppPayActivity.doBrowserPay data:" + paramString);
     }
     if (bool)
     {
-      if (!a(((bjck)localObject).n))
+      if (!a(((blqt)localObject).n))
       {
         VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "app died.");
         super.finish();
         return;
       }
-      VACDReportUtil.a(l, ((bjck)localObject).i, "parseurl", paramString, 0, null);
+      VACDReportUtil.a(l, ((blqt)localObject).i, "parseurl", paramString, 0, null);
       paramString = new Bundle();
       paramString.putInt("extra.key.pay.type", 1);
       paramString.putInt("extra.key.pay.from", 2);
       paramString.putInt("extra.key.pay.platform", 1);
       paramString.putInt("extra.key.app.type", 2);
       paramString.putLong("vacreport_key_seq", l);
-      paramString.putString("appId", ((bjck)localObject).jdField_a_of_type_JavaLangString);
-      paramString.putString("callbackSn", ((bjck)localObject).e);
-      paramString.putString("nonce", ((bjck)localObject).j);
-      paramString.putLong("timeStamp", ((bjck)localObject).jdField_a_of_type_Long);
-      paramString.putString("sig", ((bjck)localObject).m);
-      paramString.putString("sigType", ((bjck)localObject).l);
-      paramString.putString("tokenId", ((bjck)localObject).i);
-      paramString.putString("bargainorId", ((bjck)localObject).k);
-      paramString.putString("qVersion", bdgk.a(this));
-      paramString.putString("packageName", ((bjck)localObject).n);
-      paramString.putString("callbackScheme", ((bjck)localObject).f);
+      paramString.putString("appId", ((blqt)localObject).jdField_a_of_type_JavaLangString);
+      paramString.putString("callbackSn", ((blqt)localObject).e);
+      paramString.putString("nonce", ((blqt)localObject).j);
+      paramString.putLong("timeStamp", ((blqt)localObject).jdField_a_of_type_Long);
+      paramString.putString("sig", ((blqt)localObject).m);
+      paramString.putString("sigType", ((blqt)localObject).l);
+      paramString.putString("tokenId", ((blqt)localObject).i);
+      paramString.putString("bargainorId", ((blqt)localObject).k);
+      paramString.putString("qVersion", bgln.a(this));
+      paramString.putString("packageName", ((blqt)localObject).n);
+      paramString.putString("callbackScheme", ((blqt)localObject).f);
       localObject = new Intent(this, OpenPayActivity.class);
       ((Intent)localObject).putExtras(paramString);
       ((Intent)localObject).addFlags(67108864);
@@ -220,7 +224,7 @@ public class AppPayActivity
           localObject3 = str.substring(i + "mqqwallet://".length());
           try
           {
-            localObject3 = new String(bdfr.decode((String)localObject3, 0));
+            localObject3 = new String(bgku.decode((String)localObject3, 0));
             localObject2 = localObject3;
           }
           catch (Exception localException2)
@@ -306,6 +310,14 @@ public class AppPayActivity
     return true;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -371,6 +383,13 @@ public class AppPayActivity
       this.a = false;
       a();
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void requestWindowFeature(Intent paramIntent)

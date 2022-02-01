@@ -1,54 +1,30 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit.10;
+import mqq.app.AppRuntime;
 
 public class bnbg
-  extends bnbp<bnaz, bnaz>
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  private int a;
-  public WeakReference<Activity> a;
+  public bnbg(QIMCameraCaptureUnit.10 param10) {}
   
-  public bnbg(@NonNull Activity paramActivity, int paramInt)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, bnaz parambnaz)
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    if (!paramBoolean)
     {
-      wxe.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      this.a.this$0.a(101);
       return;
     }
-    Object localObject = parambnaz.jdField_a_of_type_Bnbf.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!parambnaz.jdField_a_of_type_Bnbf.c)
+    bnbf.a(this.a.this$0, false);
+    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
     {
-      paramJobContext = (JobContext)localObject;
-      if (parambnaz.jdField_a_of_type_Bnbf.jdField_b_of_type_Boolean) {
-        paramJobContext = parambnaz.jdField_a_of_type_Bnbf.jdField_b_of_type_JavaLangString;
-      }
-    }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      parambnaz.jdField_a_of_type_Bnbh = new bnbh(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      parambnaz.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(parambnaz);
+      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
       return;
     }
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    this.a.this$0.e = true;
   }
 }
 

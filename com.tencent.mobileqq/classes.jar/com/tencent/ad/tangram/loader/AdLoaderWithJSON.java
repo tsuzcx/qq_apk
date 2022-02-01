@@ -89,13 +89,13 @@ public final class AdLoaderWithJSON
         AdLog.e("AdLoaderWithJSON", "load", paramSession);
       }
       break;
-      localParams.setUrl("https://mi.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
+      localParams.setUrl("https://v6mi.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.loader.AdLoaderWithJSON
  * JD-Core Version:    0.7.0.1
  */

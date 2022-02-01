@@ -1,53 +1,84 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpInterfaceForTVK;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.security.InvalidParameterException;
+import java.util.HashMap;
 
 public class bdvp
-  extends Dialog
+  extends HttpInterfaceForTVK
 {
-  private static int jdField_a_of_type_Int = 150;
-  private static int b = 56;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bdvq(this);
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bdvr jdField_a_of_type_Bdvr;
+  public int a;
+  private bdvr jdField_a_of_type_Bdvr = new bdvr(this, null);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
   
-  public bdvp(Context paramContext)
+  public int a(String arg1, String paramString2)
   {
-    super(paramContext, 2131755172);
-  }
-  
-  public void a(bdvr parambdvr)
-  {
-    this.jdField_a_of_type_Bdvr = parambdvr;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131561847);
-    findViewById(2131374187).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374188).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374189).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374190));
-    paramBundle = new ColorDrawable(15856629);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    float f = localResources.getDisplayMetrics().density;
-    localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
-    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
-    localURLDrawableOptions.mFailedDrawable = paramBundle;
-    localURLDrawableOptions.mLoadingDrawable = paramBundle;
-    paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+    this.jdField_a_of_type_Boolean = false;
+    if ((??? == null) || (paramString2 == null)) {
+      return -1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpInterfaceForTVKImp", 0, "downLoadSync, url = " + ??? + ", filePath = " + paramString2);
+    }
+    bdvs localbdvs;
+    try
+    {
+      localbdvs = new bdvs();
+      localbdvs.jdField_a_of_type_Bdvw = this.jdField_a_of_type_Bdvr;
+      localbdvs.jdField_a_of_type_JavaLangString = ???;
+      localbdvs.jdField_a_of_type_Int = 0;
+      localbdvs.c = paramString2;
+      localbdvs.e = String.valueOf(System.currentTimeMillis());
+      ??? = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(??? instanceof QQAppInterface)) {
+        throw new InvalidParameterException("can't get AppInterface");
+      }
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        try
+        {
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(600000L);
+            continue;
+          }
+          ???.put("param_isSuccess", "1");
+        }
+        catch (InterruptedException paramString2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 2", paramString2);
+          }
+          ??? = new HashMap();
+          if (this.b != 0) {
+            break label289;
+          }
+        }
+        ???.put("param_ErrorCode", String.valueOf(this.c));
+        ???.put("param_ErrDesc", this.jdField_a_of_type_JavaLangString);
+        ???.put("param_HttpCode", String.valueOf(this.jdField_a_of_type_Int));
+        bctj.a(BaseApplication.getContext()).a(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
+        return this.b;
+        ((QQAppInterface)???).getNetEngine(0).a(localbdvs);
+      }
+      label289:
+      ???.put("param_isSuccess", "0");
+    }
   }
 }
 

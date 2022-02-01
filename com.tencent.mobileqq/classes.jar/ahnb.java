@@ -1,10 +1,20 @@
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-public class ahnb
-  extends ahlp
+class ahnb
+  implements ahnd
 {
-  public long a;
-  public structmsg.StructMsg a;
+  ahnb(ahmy paramahmy, String paramString, ahne paramahne) {}
+  
+  public void a(int paramInt)
+  {
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Ahne.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Ahne.f.setVisibility(8);
+    }
+  }
 }
 
 

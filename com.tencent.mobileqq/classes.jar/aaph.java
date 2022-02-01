@@ -1,18 +1,27 @@
-import android.app.Activity;
-import android.app.Application;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aaph
-  implements DialogInterface.OnDismissListener
+  extends aapv
 {
-  aaph(aape paramaape) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  aaph(aapa paramaapa, aapi paramaapi, String paramString1, String paramString2)
   {
-    aape.a(this.a).setIntent(aape.a(this.a));
-    aape.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(aape.a(this.a));
-    aape.a(this.a).i();
+    super(paramaapa);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapa.a));
+      this.jdField_a_of_type_Aapa.a = System.currentTimeMillis();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aapi.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_Aapi.a(this.b, false, "cmobine auido video done.");
   }
 }
 

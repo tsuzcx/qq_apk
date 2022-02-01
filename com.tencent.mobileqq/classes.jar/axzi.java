@@ -1,45 +1,12 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class axzi
+public abstract class axzi
+  extends axxm
 {
-  private static int a;
-  public ConcurrentHashMap<Long, axzl> a;
-  
-  static
+  public axzi(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = 900000;
-  }
-  
-  private axzi()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final axzi a()
-  {
-    return axzk.a();
-  }
-  
-  public axzl a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (axzl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new axzl(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    super(paramContext, paramQQAppInterface);
   }
 }
 

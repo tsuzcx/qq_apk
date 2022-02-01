@@ -1,90 +1,38 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class amzt
-  extends Binder
-  implements amzs
+public class amzt
+  implements MediaPlayer.OnCompletionListener
 {
-  public amzt()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-  }
+  public amzt(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
   
-  public static amzs a(IBinder paramIBinder)
+  public void onCompletion(MediaPlayer arg1)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof amzs))) {
-      return (amzs)localIInterface;
-    }
-    return new amzu(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    int i = this.jdField_a_of_type_Int - 1;
+    if (i == 0) {}
+    do
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a(paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-    ArConfigInfo localArConfigInfo;
-    ArEffectConfig localArEffectConfig;
-    if (paramParcel1.readInt() != 0)
-    {
-      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
-      if (paramParcel1.readInt() == 0) {
-        break label219;
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
+      {
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
+        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
+          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
+        }
+        return;
       }
-      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
-      label178:
-      if (paramParcel1.readInt() == 0) {
-        break label225;
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
+      {
+        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
+        return;
       }
-    }
-    label219:
-    label225:
-    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(localArConfigInfo, localArEffectConfig, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-      localArConfigInfo = null;
-      break;
-      localArEffectConfig = null;
-      break label178;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
   }
 }
 

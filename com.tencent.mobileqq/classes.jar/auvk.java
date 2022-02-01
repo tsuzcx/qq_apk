@@ -1,55 +1,46 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvk
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public auvk(NearbyJsInterface paramNearbyJsInterface, String paramString, int paramInt) {}
+  public auvk(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      aceh.a(ampj.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bmxq.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    }
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramBundle.optInt("retcode") == 0)
-        {
-          paramBundle = paramBundle.optString(this.jdField_a_of_type_JavaLangString);
-          localObject = bdne.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, this.jdField_a_of_type_JavaLangString);
-          paramBundle = (String)localObject + "&uid=" + paramBundle + "&from=" + this.jdField_a_of_type_Int;
-          localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("url", paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a.startActivity((Intent)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyJsInterface", 2, "openProfileCard web url:" + paramBundle);
-          }
-        }
-      }
+      auue.a(118, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception paramBundle)
+    catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NearbyJsInterface", 2, "openProfileCard, exception");
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvk
  * JD-Core Version:    0.7.0.1
  */

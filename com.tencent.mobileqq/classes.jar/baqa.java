@@ -1,54 +1,41 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import java.util.Iterator;
 import java.util.List;
 
-class baqa
-  implements Animation.AnimationListener
+public class baqa
+  implements Animator.AnimatorListener
 {
-  baqa(bapx parambapx, AnimatorSet paramAnimatorSet) {}
+  public baqa(ProviderContainerView paramProviderContainerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = 0;
-    while (i < 3)
-    {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Bapx.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Bapx.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Bapx.b.get(i);
-        Drawable localDrawable = bdhj.a(true);
-        localObject1 = bdbk.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof bdbk))) {
-          ((bdbk)localObject2).a();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
+    this.a.c.setVisibility(8);
+    paramAnimator = ProviderContainerView.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.a();
     }
-    this.jdField_a_of_type_Bapx.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Bapx.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_Bapx.c.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new baqb(this));
-    this.jdField_a_of_type_Bapx.d.startAnimation(paramAnimation);
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      paramAnimator = ProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((baqc)paramAnimator.next()).a();
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).b();
+    }
+  }
 }
 
 

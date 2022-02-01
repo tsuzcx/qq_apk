@@ -1,42 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
 
-final class vly
-  implements bhuk
+public class vly
+  extends RecyclerView.OnScrollListener
 {
-  vly(CommentEntry paramCommentEntry, bhuf parambhuf) {}
+  public vly(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    switch (paramInt)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new vdw().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
+      adcd.a().a("qcircle_follow_tab_page", false);
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wxe.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
     }
+    adcd.a().a("qcircle_follow_tab_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vly
  * JD-Core Version:    0.7.0.1
  */

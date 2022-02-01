@@ -1,22 +1,60 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wwd
-  implements wsy
+  extends wnn
 {
-  wwd(wvq paramwvq) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public wwd(wwc paramwwc, boolean paramBoolean)
   {
-    wxe.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String a()
+  {
+    return wjz.a("StoryGroupSvc.get_hot_rank_video_list");
+  }
+  
+  public wno a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
+    try
+    {
+      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
+      return new wwe(this.jdField_a_of_type_Wwc, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
+    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(wwc.a(this.jdField_a_of_type_Wwc)));
+    localReqGetGroupHotRankVideo.size.set(10);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetGroupHotRankVideo.seq.set(wwc.a(this.jdField_a_of_type_Wwc));
+      if (!TextUtils.isEmpty(wwc.b(this.jdField_a_of_type_Wwc))) {
+        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(wwc.b(this.jdField_a_of_type_Wwc)));
+      }
+    }
+    return localReqGetGroupHotRankVideo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwd
  * JD-Core Version:    0.7.0.1
  */

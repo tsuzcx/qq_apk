@@ -1,59 +1,31 @@
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adng
-  implements bhuk
+  implements View.OnClickListener
 {
-  public adng(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, String paramString1, String paramString2, bhuf parambhuf) {}
+  public adng(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = paramView.getContext();
-    switch (paramInt)
+    if (paramView.getParent() == null) {}
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 0: 
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC8", "0X8009EC8", 0, 0, "", "", "", "");
-      if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
+      View localView = (View)paramView.getParent().getParent();
+      if ((localView != null) && (localView.getTag() != null))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getString(2131692398), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
-        return;
+        bcst.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+        if ((localView.getTag() instanceof SimpleAccount)) {
+          this.a.a((SimpleAccount)localView.getTag());
+        }
       }
-      paramView = (amci)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app.a(34);
-      if (paramView != null) {
-        paramView.a(3, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-      PhoneUnityBindInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131719785, 1000L, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
-      return;
-    case 1: 
-      if (!bdin.d(paramView))
-      {
-        PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131694831);
-        return;
-      }
-      paramView = new Intent(paramView, BindNumberActivity.class);
-      paramView.putExtra("cmd_param_is_from_uni", true);
-      paramView.putExtra("cmd_param_is_from_change_bind", true);
-      paramView.putExtra("kNeedUnbind", true);
-      paramView.putExtra("kUnityOther", true);
-      paramView.putExtra("kSrouce", this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.startActivityForResult(paramView, 1004);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009EC9", "0X8009EC9", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bhuf.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = false;
-      return;
     }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X8009ECA", "0X8009ECA", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhuf.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
   }
 }
 

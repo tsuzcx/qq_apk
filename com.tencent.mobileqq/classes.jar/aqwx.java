@@ -1,41 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-class aqwx
-  implements arqw
+public class aqwx
+  extends aqwr<aqwu>
 {
-  aqwx(aqwt paramaqwt) {}
-  
-  public void a()
+  @NonNull
+  public static aqwu c()
   {
-    this.a.b();
+    aqwu localaqwu2 = (aqwu)aqlk.a().a(541);
+    aqwu localaqwu1 = localaqwu2;
+    if (localaqwu2 == null) {
+      localaqwu1 = aqwu.a();
+    }
+    return localaqwu1;
   }
   
-  public void a(int paramInt)
+  @NonNull
+  public aqwu a()
   {
-    this.a.a(2005);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
-    arrr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_i_of_type_JavaLangString, this.a.jdField_g_of_type_Long, aqwt.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, aqwt.a(this.a), "", aqwt.a(this.a), "sdcard full", null);
-    arrr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, aqwt.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, aqwt.a(this.a), "", aqwt.b(this.a), "sdcard full", null);
+    return aqwu.a();
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString1, String paramString2)
+  @NonNull
+  public aqwu a(@NonNull aqlg[] paramArrayOfaqlg)
   {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      this.a.jdField_d_of_type_JavaLangString = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaqlg[0].a);
     }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      return;
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
+    return aqwu.a(paramArrayOfaqlg[0].a);
+  }
+  
+  @NonNull
+  public aqwu b()
+  {
+    return aqwu.a();
+  }
+  
+  public Class<aqwu> clazz()
+  {
+    return aqwu.class;
+  }
+  
+  public int type()
+  {
+    return 541;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwx
  * JD-Core Version:    0.7.0.1
  */

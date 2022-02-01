@@ -1,21 +1,101 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.util.ArrayMap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class tew
-  implements DialogInterface.OnClickListener
+public class tew
+  extends teh
 {
-  tew(int paramInt1, int paramInt2) {}
+  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
+  private Map<String, tex> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tew()
   {
-    paramDialogInterface.dismiss();
-    tju.b(112, 2, 0);
-    tjr.a(117, this.a, this.b, null);
+    this.nameTemplateMap = new ConcurrentHashMap();
+  }
+  
+  public static tew a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
+    }
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
+  }
+  
+  public static void b()
+  {
+    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
+  }
+  
+  public Map<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      tex localtex = (tex)localIterator.next();
+      localHashMap.put(localtex.a, localtex.b);
+    }
+    return localHashMap;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    paramString2 = new tex(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  public boolean a(TemplateBean paramTemplateBean)
+  {
+    if (paramTemplateBean == null) {}
+    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d(String paramString)
+  {
+    paramString = (tex)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
+      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
+    }
+  }
+  
+  public Map<String, TemplateBean> getNameTemplateMap()
+  {
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.putAll(this.nameTemplateMap);
+    return localArrayMap;
+  }
+  
+  public TemplateBean getTemplate(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.clone()) {
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tew
  * JD-Core Version:    0.7.0.1
  */

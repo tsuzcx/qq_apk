@@ -135,15 +135,14 @@
                         }
                       },
                       {
-                        "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                        "view_type": "ReadInJoyAdDownloadView",
                         "view_id": "id_view_AdDownloadView",
                         "height": {
                           "type": "relative",
                           "value": "30"
                         },
                         "width": {
-                          "type": "relative",
-                          "value": "82"
+                          "type": "wrap_content"
                         },
                         "align_parent_center_vertical": "YES",
                         "left_of_view": "id_dislike_button",
@@ -167,7 +166,7 @@
                           "progressStyle:": {
                             "style": "1",
                             "showProgress": "1",
-                            "width": "82",
+                            "width": "50",
                             "height": "20",
                             "textColor": "#ffffff",
                             "textSize": "12",

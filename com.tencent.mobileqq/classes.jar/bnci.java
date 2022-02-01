@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.Intent;
 
 class bnci
-  implements ansr
+  extends bncw
 {
-  bnci(bnce parambnce) {}
+  bnci(bnch parambnch, Activity paramActivity, Intent paramIntent) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a()
   {
-    if (bnce.a(this.a) != null) {
-      bnce.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
-    }
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

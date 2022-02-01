@@ -1,18 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
-class agil
-  implements betp
+public abstract class agil
 {
-  agil(aghx paramaghx) {}
+  private boolean a;
   
-  public void a(betn parambetn)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
-    }
+    this.a = paramBoolean;
   }
   
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
+  public boolean a()
+  {
+    return this.a;
+  }
 }
 
 

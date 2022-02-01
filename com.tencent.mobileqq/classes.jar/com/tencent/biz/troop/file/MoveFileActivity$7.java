@@ -1,7 +1,7 @@
 package com.tencent.biz.troop.file;
 
 import android.widget.EditText;
-import bhsj;
+import bkft;
 
 class MoveFileActivity$7
   implements Runnable
@@ -10,12 +10,12 @@ class MoveFileActivity$7
   
   public void run()
   {
-    bhsj.a(this.a);
+    bkft.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

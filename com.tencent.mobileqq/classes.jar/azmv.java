@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class azmv
-  implements azmw
+public class azmv
+  implements View.OnClickListener
 {
-  azmv(azmu paramazmu, int paramInt, azms paramazms, azmw paramazmw) {}
+  public azmv(AbsProfileHeaderView paramAbsProfileHeaderView, azfe paramazfe) {}
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onClick(View paramView)
   {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, azmu.a(this.jdField_a_of_type_Azmu));
-    azmu.a(this.jdField_a_of_type_Azmu, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Azms.a.size() - 1) {
-        if (this.jdField_a_of_type_Azmw != null) {
-          this.jdField_a_of_type_Azmw.a(paramInt, paramLoadExtResult);
-        }
-      }
-    }
-    do
-    {
-      return;
-      azmu.a(this.jdField_a_of_type_Azmu, this.jdField_a_of_type_Azms, this.jdField_a_of_type_Azmw, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Azmw == null);
-    this.jdField_a_of_type_Azmw.a(paramInt, paramLoadExtResult);
+    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azfe);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

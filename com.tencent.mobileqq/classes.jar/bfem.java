@@ -1,15 +1,38 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import org.json.JSONObject;
 
-public class bfem
+public abstract class bfem
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  protected JSONObject a;
+  protected boolean b = true;
+  public int c;
+  
+  public abstract int a();
+  
+  public JSONObject a()
+  {
+    return this.a;
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public abstract int b();
+  
+  public String toString()
+  {
+    if (this.a != null) {
+      return this.a.toString();
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfem
  * JD-Core Version:    0.7.0.1
  */

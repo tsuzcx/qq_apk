@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.c.f;
 import com.tencent.mobileqq.msf.core.c.f.a;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
@@ -34,7 +33,7 @@ public class e
   static ConcurrentHashMap c = new ConcurrentHashMap();
   static b d = new b();
   static MsfCore e;
-  static u f = null;
+  static v f = null;
   
   public static c a(String paramString)
   {
@@ -90,7 +89,7 @@ public class e
   {
     e = paramMsfCore;
     d.setName("MsfServiceAppMsgHandler");
-    f = new u(paramMsfCore);
+    f = new v(paramMsfCore);
     d.start();
     a(paramContext);
   }
@@ -111,7 +110,7 @@ public class e
         QLog.e("MSF.S.AppProcessManager", 2, "find null processName msg to app " + paramToServiceMsg + " " + paramFromServiceMsg);
       }
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 7);
+        com.tencent.mobileqq.msf.core.c.f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 7);
       }
       return;
     }
@@ -152,7 +151,7 @@ public class e
       d.a();
       return;
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 8);
+        com.tencent.mobileqq.msf.core.c.f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 8);
       }
       QLog.e("MSF.S.AppProcessManager", 1, "can not find " + paramString + " to receive msg to:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
       break;
@@ -165,7 +164,7 @@ public class e
     c localc = (c)c.get(paramString);
     if (localc != null)
     {
-      localc.d();
+      localc.a(localc.c());
       if (BaseApplication.getContext().getPackageName().equals(paramString)) {
         localc.a(100, 0L, 0L);
       }
@@ -175,13 +174,13 @@ public class e
       {
         paramBoolean = new StringBuilder().append("unregister process :").append(paramString).append(" ");
         if (localc != null) {
-          break label135;
+          break label139;
         }
         paramString = "failed";
         QLog.d("MSF.S.AppProcessManager", 2, paramString);
       }
     }
-    label135:
+    label139:
     do
     {
       return;
@@ -242,7 +241,7 @@ public class e
         QLog.d("MSF.S.AppProcessManager", 2, "add process :" + paramString1);
       }
       d.a();
-      h.b();
+      f.a().c();
       return;
     }
     catch (Exception localException)

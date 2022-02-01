@@ -1,90 +1,73 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
-public class arca
+public final class arca
+  extends aqkz<arbz>
 {
-  public int a;
-  public long a;
-  public final String a;
-  public boolean a;
-  public long b;
-  public final String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  String m = null;
-  
-  public arca(String paramString)
+  public static void a()
   {
-    this.jdField_a_of_type_JavaLangString = "FilePreviewDataReporter<FileAssistant>";
-    this.jdField_b_of_type_JavaLangString = "actFilePreview";
-    this.m = paramString;
+    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
+    arbz.a(false, (arbz)aqlk.a().a(501));
   }
   
-  private HashMap<String, String> a()
+  @NonNull
+  public arbz a(int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    if (!bdin.d(BaseApplication.getContext()))
-    {
-      this.jdField_e_of_type_JavaLangString = String.valueOf(9004);
-      this.i += "_NotNetWork";
-    }
-    localHashMap.put("param_serverip", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_e_of_type_JavaLangString));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_f_of_type_JavaLangString));
-    localHashMap.put("param_key", String.valueOf(this.g));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.i));
-    localHashMap.put("param_fileName", String.valueOf(this.h));
-    localHashMap.put("param_fileExt", String.valueOf(this.j));
-    localHashMap.put("param_source", String.valueOf(this.k));
-    localHashMap.put("param_stage", String.valueOf(this.l));
-    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
-    this.i = "";
-    return localHashMap;
+    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new arbz();
   }
   
-  public void a()
+  @Nullable
+  public arbz a(aqlg[] paramArrayOfaqlg)
   {
-    HashMap localHashMap = a();
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
-      localStringBuilder.append("strReportUin[" + this.m + "],");
-      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
-      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
-      }
-      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
-    }
-    azri.a(BaseApplication.getContext()).a(this.m, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
+    return arbz.a(paramArrayOfaqlg);
+  }
+  
+  public void a(arbz paramarbz)
+  {
+    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
+    arbz.a(true, paramarbz);
+  }
+  
+  public Class<arbz> clazz()
+  {
+    return arbz.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 501;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arca
  * JD-Core Version:    0.7.0.1
  */

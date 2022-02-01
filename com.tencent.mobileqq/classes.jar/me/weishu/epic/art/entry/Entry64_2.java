@@ -1,9 +1,9 @@
 package me.weishu.epic.art.entry;
 
-import com.qq.android.dexposed.DexposedBridge;
-import com.qq.android.dexposed.XposedHelpers;
-import com.qq.android.dexposed.utility.Debug;
-import com.qq.android.dexposed.utility.Logger;
+import com.taobao.android.dexposed.DexposedBridge;
+import com.taobao.android.dexposed.utility.Debug;
+import com.taobao.android.dexposed.utility.Logger;
+import de.robv.android.xposed.XposedHelpers;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -33,18 +33,14 @@ public class Entry64_2
     arrayOfClass[6] = Float.TYPE;
     arrayOfClass[7] = Double.TYPE;
     int j = arrayOfClass.length;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j)
-      {
-        bridgeMethodMap.put(Void.TYPE, "voidBridge");
-        bridgeMethodMap.put(Object.class, "referenceBridge");
-        return;
-      }
       Class localClass = arrayOfClass[i];
       bridgeMethodMap.put(localClass, localClass.getName() + "Bridge");
       i += 1;
     }
+    bridgeMethodMap.put(Void.TYPE, "voidBridge");
+    bridgeMethodMap.put(Object.class, "referenceBridge");
   }
   
   private static boolean booleanBridge(long paramLong1, long paramLong2)
@@ -210,31 +206,31 @@ public class Entry64_2
         if (paramMethodInfo.isStatic)
         {
           i = paramMethodInfo.paramNumber;
-          break label149;
+          break label152;
           arrayOfClass = new Class[j];
           i = 0;
-          if (i >= j)
+          if (i < j)
           {
-            Map localMap = bridgeMethodMap;
-            if (!localClass.isPrimitive()) {
-              continue;
-            }
-            paramMethodInfo = localClass;
-            paramMethodInfo = (String)localMap.get(paramMethodInfo);
-            Logger.d("Entry64", "bridge method:" + paramMethodInfo + ", map:" + bridgeMethodMap);
-            paramMethodInfo = Entry64_2.class.getDeclaredMethod(paramMethodInfo, arrayOfClass);
-            paramMethodInfo.setAccessible(true);
-            return paramMethodInfo;
+            arrayOfClass[i] = Long.TYPE;
+            i += 1;
+            continue;
           }
         }
         else
         {
           i = paramMethodInfo.paramNumber + 1;
-          break label149;
+          break label152;
         }
-        arrayOfClass[i] = Long.TYPE;
-        i += 1;
-        continue;
+        Map localMap = bridgeMethodMap;
+        if (localClass.isPrimitive())
+        {
+          paramMethodInfo = localClass;
+          paramMethodInfo = (String)localMap.get(paramMethodInfo);
+          Logger.d("Entry64", "bridge method:" + paramMethodInfo + ", map:" + bridgeMethodMap);
+          paramMethodInfo = Entry64_2.class.getDeclaredMethod(paramMethodInfo, arrayOfClass);
+          paramMethodInfo.setAccessible(true);
+          return paramMethodInfo;
+        }
         paramMethodInfo = Object.class;
         continue;
         j = i;
@@ -243,7 +239,7 @@ public class Entry64_2
       {
         throw new RuntimeException("can not found bridge.", paramMethodInfo);
       }
-      label149:
+      label152:
       if (i <= 2) {
         j = 2;
       }
@@ -312,47 +308,84 @@ public class Entry64_2
   
   private static boolean onHookBoolean(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Boolean)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).booleanValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return false;
+    }
+    return ((Boolean)paramObject1).booleanValue();
   }
   
   private static byte onHookByte(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Byte)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).byteValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0;
+    }
+    return ((Byte)paramObject1).byteValue();
   }
   
   private static char onHookChar(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Character)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).charValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return '\000';
+    }
+    return ((Character)paramObject1).charValue();
   }
   
   private static double onHookDouble(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Double)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).doubleValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0.0D;
+    }
+    return ((Double)paramObject1).doubleValue();
   }
   
   private static float onHookFloat(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Float)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).floatValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0.0F;
+    }
+    return ((Float)paramObject1).floatValue();
   }
   
   private static int onHookInt(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Integer)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).intValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0;
+    }
+    return ((Integer)paramObject1).intValue();
   }
   
   private static long onHookLong(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Long)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).longValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0L;
+    }
+    return ((Long)paramObject1).longValue();
   }
   
   private static Object onHookObject(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    paramObject2 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    paramObject1 = paramObject2;
+    if (paramObject2 == null) {
+      paramObject1 = new Object();
+    }
+    return paramObject1;
   }
   
   private static short onHookShort(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    return ((Short)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).shortValue();
+    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
+    if (paramObject1 == null) {
+      return 0;
+    }
+    return ((Short)paramObject1).shortValue();
   }
   
   private static void onHookVoid(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
@@ -634,10 +667,10 @@ public class Entry64_2
       }
       if (paramClass == Boolean.TYPE)
       {
-        if (paramArrayOfByte.getInt() == 0) {
-          return Boolean.valueOf(true);
+        if (paramArrayOfByte.getInt() == 0) {}
+        for (boolean bool = true;; bool = false) {
+          return Boolean.valueOf(bool);
         }
-        return Boolean.valueOf(false);
       }
       throw new RuntimeException("unknown type:" + paramClass);
     }
@@ -646,7 +679,7 @@ public class Entry64_2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.entry.Entry64_2
  * JD-Core Version:    0.7.0.1
  */

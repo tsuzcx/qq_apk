@@ -1,41 +1,30 @@
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class asci
-  extends ascf
+class asci
+  implements awnc<EmoticonPackage>
 {
-  private String h;
-  private String i;
+  asci(asch paramasch, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
   
-  public asci(Intent paramIntent)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    super(paramIntent);
-    this.h = paramIntent.getStringExtra("uin");
-    this.i = paramIntent.getStringExtra("uinname");
-  }
-  
-  private View a(String paramString, Drawable paramDrawable)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558941, null);
-    TextView localTextView = (TextView)localView.findViewById(2131379198);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368180);
-    localTextView.setText(paramString);
-    localImageView.setImageDrawable(paramDrawable);
-    return localView;
-  }
-  
-  protected View a()
-  {
-    return a(String.format("[%s]%s", new Object[] { alud.a(2131705173), this.i }), bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
-  }
-  
-  protected boolean h()
-  {
-    return true;
+    char[] arrayOfChar1 = arpm.a(this.jdField_a_of_type_Int, this.b);
+    char[] arrayOfChar2 = new char[5];
+    arrayOfChar2[0] = '\024';
+    arrayOfChar2[1] = arrayOfChar1[3];
+    arrayOfChar2[2] = arrayOfChar1[2];
+    arrayOfChar2[3] = arrayOfChar1[1];
+    arrayOfChar2[4] = arrayOfChar1[0];
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      arrayOfChar2[1] = 'ǿ';
+    }
+    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
+    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
   }
 }
 

@@ -1,26 +1,19 @@
-public abstract interface amvh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+
+public final class amvh
+  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
+  {
+    return new CmShowRenderView.PlayActionConfig(paramParcel);
+  }
   
-  public abstract void a(amvp paramamvp);
-  
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
+  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
+  {
+    return new CmShowRenderView.PlayActionConfig[paramInt];
+  }
 }
 
 

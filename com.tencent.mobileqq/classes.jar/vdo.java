@@ -1,103 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import feedcloud.FeedCloudWrite.StDelFeedRsp;
 
-public class vdo
-  implements urr<vgl, vhw>
+class vdo
+  implements zxa<FeedCloudWrite.StDelFeedRsp>
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Queue<uyg> jdField_a_of_type_JavaUtilQueue;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicBoolean b = new AtomicBoolean(false);
+  vdo(vdn paramvdn, String paramString) {}
   
-  public vdo(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
-  }
-  
-  private void a(vgl paramvgl, vhw paramvhw)
-  {
-    umd localumd = (umd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
-    List localList = paramvhw.a();
-    localumd.a(paramvhw.a());
-    if (paramvgl.a() == 3)
+    if ((!paramBoolean) || (paramLong != 0L))
     {
-      paramvgl = localList.iterator();
-      while (paramvgl.hasNext())
-      {
-        paramvhw = (uyg)paramvgl.next();
-        localumd.b(paramvhw);
-        localumd.c(paramvhw);
-        localumd.d(paramvhw);
-      }
-    }
-    localumd.a(localList);
-    localumd.a(localList, true);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  }
-  
-  private void c()
-  {
-    Object localObject = (umd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
-    if (!this.b.get()) {}
-    for (;;)
-    {
-      uyg localuyg = (uyg)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localuyg == null)
-      {
-        localObject = new vdp(true);
-        umc.a().dispatch((Dispatcher.Dispatchable)localObject);
-        return;
-      }
-      ((umd)localObject).a(localuyg);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void a(@NonNull vgl paramvgl, @Nullable vhw paramvhw, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (a()) {}
-    do
-    {
+      QLog.e("QCircleSharePart", 1, "deleteFeed  error");
       return;
-      this.b.set(true);
-      if ((paramvhw != null) && (!paramErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
-    return;
-    a(paramvgl, paramvhw);
-    this.b.set(false);
-    c();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    QLog.d("QCircleSharePart", 1, "deleteFeed  success");
+    zwp.a().a(new QCircleFeedEvent(this.jdField_a_of_type_JavaLangString, 3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdo
  * JD-Core Version:    0.7.0.1
  */

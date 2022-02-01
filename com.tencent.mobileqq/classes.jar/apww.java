@@ -1,10 +1,27 @@
-public abstract interface apww
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
+
+class apww
+  extends Handler
 {
-  public abstract boolean c();
+  apww(apwv paramapwv, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void m();
-  
-  public abstract void n();
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
+  }
 }
 
 

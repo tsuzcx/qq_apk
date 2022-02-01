@@ -1,236 +1,80 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class ajvx
-  implements ajvv
+class ajvx
+  extends Handler
 {
-  public static final boolean a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ajvu jdField_a_of_type_Ajvu;
-  private ajvw jdField_a_of_type_Ajvw;
-  private ajwa jdField_a_of_type_Ajwa;
-  private ajwb jdField_a_of_type_Ajwb;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new ajvy(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int;
-  private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  
-  static
+  ajvx(ajvr paramajvr, Looper paramLooper)
   {
-    if (Build.VERSION.SDK_INT >= 10) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    super(paramLooper);
   }
   
-  public ajvx(ajvw paramajvw, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Ajvw = paramajvw;
-    this.jdField_b_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat2;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.i = paramInt3;
-    this.f = (1.0F * paramInt1 / paramInt4 * paramFloat1);
-    this.g = Math.max(this.f - paramInt2 * paramFloat1, 0.0F);
-    this.h = 0.0F;
-    if (QLog.isColorLevel()) {
-      QLog.d("FramesProcessor", 2, "mTotalRange=" + this.f + ", mMaxMovedDistance=" + this.g);
-    }
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt3, (int)this.jdField_c_of_type_Float, Bitmap.Config.RGB_565);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(new ColorMatrixColorFilter(this.jdField_a_of_type_ArrayOfFloat));
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)paramFloat3, (int)this.jdField_c_of_type_Float);
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect((int)(Math.min(1.0F * paramInt1 / paramInt4 * paramFloat1, paramInt2 * paramFloat1) + paramFloat3), 0, paramInt3, (int)this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(this.jdField_a_of_type_Ajvw.getContext());
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_Ajvw.getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
-    this.jdField_a_of_type_Ajvu = new ajvu(this);
-    this.jdField_b_of_type_Int = ((int)Math.ceil(1.0F * paramInt3 / this.jdField_b_of_type_Float));
-    this.jdField_b_of_type_Int = Math.min(this.jdField_b_of_type_Int, paramInt2);
-    this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = 0;
-    if (jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Ajwb = new VideoFramesRetriever(paramString, paramFloat1);; this.jdField_a_of_type_Ajwb = new VideoFramesFetcher())
-    {
-      this.jdField_a_of_type_Ajwb.a(paramInt4, paramInt1, this.jdField_a_of_type_Ajvu);
-      this.jdField_a_of_type_Ajwb.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      return;
-    }
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_a_of_type_Ajvu == null) || (this.jdField_a_of_type_Ajvu.a())) {}
-    int j;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
     do
     {
-      return;
-      j = (int)(this.jdField_d_of_type_Float / this.jdField_b_of_type_Float);
-      this.jdField_a_of_type_Int = Math.max(j, 0);
-    } while (this.jdField_c_of_type_Int < 6);
-    this.jdField_b_of_type_Int = Math.min(j + this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-16777216);
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
-    {
-      this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      if (this.jdField_d_of_type_Float < this.h)
+      do
       {
-        this.jdField_d_of_type_Float = this.h;
-        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
-      }
-      if (this.jdField_d_of_type_Float > this.g)
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 0: 
+          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+          this.a.a(35, paramMessage);
+          return;
+        case 28929: 
+          paramMessage = paramMessage.getData();
+        }
+      } while (paramMessage == null);
+      int i = paramMessage.getInt("result");
+      if ((i == -1) || (i == -2))
       {
-        this.jdField_d_of_type_Float = this.g;
-        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+        if (i == -1) {
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131717595);
+        }
+        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131717594);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131717596))
+        {
+          try
+          {
+            if (this.a.jdField_a_of_type_Bgpa != null)
+            {
+              if (this.a.jdField_a_of_type_Bgpa.isShowing()) {
+                this.a.jdField_a_of_type_Bgpa.dismiss();
+              }
+              this.a.jdField_a_of_type_Bgpa = null;
+            }
+            this.a.jdField_a_of_type_Bgpa = bglp.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new ajvy(this), null);
+            this.a.jdField_a_of_type_Bgpa.setOnCancelListener(new ajvz(this));
+            this.a.jdField_a_of_type_Bgpa.setOnDismissListener(new ajwa(this));
+            this.a.jdField_a_of_type_Bgpa.show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          paramMessage.printStackTrace();
+          return;
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131717597);
+        }
       }
-      c();
-      if (this.jdField_a_of_type_Ajvw != null) {
-        this.jdField_a_of_type_Ajvw.invalidate();
-      }
-      float f1 = this.jdField_d_of_type_Float;
-      float f2 = this.e;
-      this.e = this.jdField_d_of_type_Float;
-      if (!a(f1 - f2, 0.0F)) {
-        break label157;
-      }
-    }
-    label157:
-    while (this.jdField_a_of_type_Ajwa == null)
-    {
-      return;
-      this.jdField_a_of_type_Ajwb.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      break;
-    }
-    this.jdField_a_of_type_Ajwa.a(this.jdField_d_of_type_Float, -this.jdField_d_of_type_Float, this.f - this.jdField_d_of_type_Float);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ajvw.postInvalidate();
-  }
-  
-  public void a(int paramInt)
-  {
-    int j = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    float f1 = this.h;
-    this.h = (j - paramInt + f1);
-    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt;
-    this.jdField_a_of_type_Ajvw.invalidate();
-  }
-  
-  public void a(ajwa paramajwa)
-  {
-    this.jdField_a_of_type_Ajwa = paramajwa;
-    if (this.jdField_a_of_type_Ajwa != null) {
-      this.jdField_a_of_type_Ajwa.a(this.jdField_d_of_type_Float, -this.jdField_d_of_type_Float, this.f - this.jdField_d_of_type_Float);
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Ajvu == null) {
-      return;
-    }
-    d();
-    int j = Math.max(this.jdField_a_of_type_Int - 1, 0);
-    float f1 = j;
-    f1 = this.jdField_b_of_type_Float * f1;
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(f1 - this.jdField_d_of_type_Float + this.jdField_a_of_type_Float, 0.0F);
-    int m = Math.min(this.jdField_b_of_type_Int + 3, this.jdField_d_of_type_Int);
-    int k = (int)this.jdField_b_of_type_Float;
-    while (j < m)
-    {
-      ajvz localajvz = this.jdField_a_of_type_Ajvu.a(j);
-      if (localajvz != null)
-      {
-        k = (int)Math.min(this.f - f1, this.jdField_b_of_type_Float);
-        this.jdField_c_of_type_AndroidGraphicsRect.set(0, 0, k, (int)this.jdField_c_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(localajvz.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_a_of_type_AndroidGraphicsCanvas.translate(k, 0.0F);
-      f1 += k;
-      j += 1;
-    }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-f1 + this.jdField_d_of_type_Float - this.jdField_a_of_type_Float, 0.0F);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    }
-  }
-  
-  public boolean a()
-  {
-    return !a(this.jdField_d_of_type_Float, 0.0F);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Ajwa = null;
-    if (this.jdField_a_of_type_Ajwb != null) {
-      this.jdField_a_of_type_Ajwb.a();
-    }
-    if (this.jdField_a_of_type_Ajvu != null) {
-      this.jdField_a_of_type_Ajvu.a();
-    }
-    this.jdField_a_of_type_Ajvu = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    int j = this.jdField_b_of_type_AndroidGraphicsRect.left;
-    float f1 = this.g;
-    this.g = (j - paramInt + f1);
-    this.jdField_b_of_type_AndroidGraphicsRect.left = paramInt;
-    this.jdField_a_of_type_Ajvw.invalidate();
+    } while (this.a.jdField_a_of_type_Bgpa == null);
+    this.a.jdField_a_of_type_Bgpa.dismiss();
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(34, paramMessage);
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(33, paramMessage);
   }
 }
 

@@ -1,42 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.capture.view.CountDownView;
-import java.lang.ref.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiShareDataInfo;
 
 public final class blzy
-  extends Handler
+  implements Parcelable.Creator<WeishiShareDataInfo>
 {
-  private WeakReference<CountDownView> a;
-  
-  public blzy(CountDownView paramCountDownView)
+  public WeishiShareDataInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramCountDownView);
+    return new WeishiShareDataInfo(paramParcel);
   }
   
-  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
+  public WeishiShareDataInfo[] a(int paramInt)
   {
-    if (paramMessage.what == 1) {
-      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.get() == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    try
-    {
-      a((CountDownView)this.a.get(), paramMessage);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    return new WeishiShareDataInfo[paramInt];
   }
 }
 

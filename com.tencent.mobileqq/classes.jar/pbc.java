@@ -1,25 +1,41 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import org.jetbrains.annotations.NotNull;
 
-public class pbc
+class pbc
+  extends ClickableSpan
 {
-  public RelativeLayout a;
-  public URLImageView a;
-  public DragTextView a;
-  public DragTextView b;
+  pbc(pay parampay, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
   
-  public pbc(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
+  public void onClick(@NotNull View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
-    this.b = paramDragTextView2;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
+      paa.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
+    }
+    for (;;)
+    {
+      oat.a(null, paa.a(this.jdField_a_of_type_Pay.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.a.mAlgorithmID), this.jdField_a_of_type_Pay.a.innerUniqueID, this.b, false);
+      return;
+      paa.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
+    }
+  }
+  
+  public void updateDrawState(@NotNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#376099"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbc
  * JD-Core Version:    0.7.0.1
  */

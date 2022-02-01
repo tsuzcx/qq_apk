@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import alud;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import anni;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -170,12 +168,12 @@ public final class AppBrandRuntimeContainer
   
   public void disableBreak()
   {
-    new Handler(Looper.getMainLooper()).post(new AppBrandRuntimeContainer.2(this));
+    new Handler(Looper.getMainLooper()).post(new AppBrandRuntimeContainer.3(this));
   }
   
   public void enableBreak()
   {
-    new Handler(Looper.getMainLooper()).post(new AppBrandRuntimeContainer.1(this));
+    new Handler(Looper.getMainLooper()).post(new AppBrandRuntimeContainer.2(this));
   }
   
   public void finish()
@@ -339,7 +337,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(alud.a(2131700977));
+        this.mDebugText.setText(anni.a(2131699402));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }
@@ -364,15 +362,7 @@ public final class AppBrandRuntimeContainer
     if (this.mDebugLayout != null) {
       return;
     }
-    this.mDebugLayout = new DebugLayout(BaseApplicationImpl.getContext());
-    this.mDebugLayout.setBackgroundColor(-822083584);
-    this.mDebugText = new TextView(BaseApplicationImpl.getContext());
-    this.mDebugText.setTextColor(-1);
-    this.mDebugText.setTextSize(30.0F);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    localLayoutParams.gravity = 17;
-    this.mDebugLayout.addView(this.mDebugText, localLayoutParams);
-    this.mDebugLayout.setVisibility(4);
+    new Handler(Looper.getMainLooper()).post(new AppBrandRuntimeContainer.1(this));
   }
   
   public final AppBrandRuntime peek()
@@ -432,7 +422,7 @@ public final class AppBrandRuntimeContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer
  * JD-Core Version:    0.7.0.1
  */

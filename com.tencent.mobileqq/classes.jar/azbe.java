@@ -1,48 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public class azbe
-  extends MSFServlet
+class azbe
+  implements Animator.AnimatorListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  azbe(azav paramazav, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
+    this.jdField_a_of_type_Azav.l();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
-      }
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
+    this.jdField_a_of_type_Azav.l();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Azav.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

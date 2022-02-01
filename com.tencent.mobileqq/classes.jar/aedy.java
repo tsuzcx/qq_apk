@@ -1,50 +1,31 @@
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class aedy
-  implements ahpq
+  implements arsl
 {
-  public aedy(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  public aedy(EmosmActivity paramEmosmActivity) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
-    for (int i = 1; i != 0; i = 0)
+    if (paramInt1 != paramInt2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      aruo.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      bcst.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        bcst.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
       }
-      ahpp.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
-      ahpp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-        this.a.jdField_a_of_type_Bety.dismiss();
-      }
+    }
+    else
+    {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-    }
-    TroopInviteStatusFragment.a(this.a, 2);
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-      this.a.jdField_a_of_type_Bety.dismiss();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
-    }
-    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131690073;; paramInt1 = 2131690072)
-    {
-      QQToast.a(paramString1, paramInt1, 1).a();
-      return;
-    }
+    bcst.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 

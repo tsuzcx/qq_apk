@@ -1,27 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aivi
-  extends BroadcastReceiver
+  extends aoou
 {
-  public aivi(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aivi(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
   {
-    if (paramIntent == null) {}
-    do
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0)
     {
-      return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
+      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
+    }
   }
 }
 

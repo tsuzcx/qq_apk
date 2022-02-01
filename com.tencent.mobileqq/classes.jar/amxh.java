@@ -1,53 +1,57 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class amxh
-  implements andm
+final class amxh
+  extends bhhe
 {
-  amxh(amxf paramamxf, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  amxh(String paramString, File paramFile, amxn paramamxn) {}
   
-  public void a()
+  public void onDone(bhhf parambhhf)
   {
-    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localandm != null) {
-      localandm.a();
+    super.onDone(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambhhf.a());
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localandm != null) {
-      localandm.a(paramLong1, paramLong2);
+    if (3 == parambhhf.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-  }
-  
-  public void a(boolean paramBoolean, andn paramandn)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramandn.c + ", url = " + paramandn.a);
-    if (paramBoolean) {
-      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
-      {
-        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    andm localandm;
-    do
+    while (this.jdField_a_of_type_Amxn == null)
     {
+      do
+      {
+        try
+        {
+          nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          if (this.jdField_a_of_type_Amxn != null) {
+            this.jdField_a_of_type_Amxn.a(true, 0);
+          }
+          return;
+        }
+        catch (Exception parambhhf)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambhhf.getMessage());
+            }
+          }
+        }
+        catch (OutOfMemoryError parambhhf)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambhhf.getMessage());
+            }
+          }
+        }
+      } while (this.jdField_a_of_type_Amxn == null);
+      this.jdField_a_of_type_Amxn.a(false, 0);
       return;
-      if (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) == 0) {}
-      localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localandm == null);
-    localandm.a(paramBoolean, paramandn);
-  }
-  
-  public void b()
-  {
-    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localandm != null) {
-      localandm.b();
     }
+    this.jdField_a_of_type_Amxn.a(false, 0);
   }
 }
 

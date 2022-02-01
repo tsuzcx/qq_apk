@@ -1,20 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qjh
-  extends qip
+public class qjh
+  implements ViewBase.IBuilder
 {
-  qjh(qja paramqja, AppInterface paramAppInterface) {}
-  
-  public Drawable a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
+    return new qjg(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjh
  * JD-Core Version:    0.7.0.1
  */

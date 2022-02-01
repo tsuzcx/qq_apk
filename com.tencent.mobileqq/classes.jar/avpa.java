@@ -1,44 +1,92 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class avpa
-  extends bayj
+  implements BusinessObserver
 {
-  avpa(avop paramavop) {}
+  avpa(avow paramavow, Intent paramIntent) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bass localbass = (bass)paramMessage.obj;
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Avow.a.dismiss();
+    if (paramBoolean) {}
+    for (;;)
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+      try
       {
-        do
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
         {
-          return;
-        } while (localbass.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bavb.a);
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = abcr.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
         }
-      } while (avop.a(this.a) == null);
-      avop.a(this.a).a = bavb.a;
-      avop.a(this.a);
+      }
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QQApi", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        this.jdField_a_of_type_Avow.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = bcwd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQApi", 2, "build struct msg fail");
+      }
       return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b(alud.a(2131707707));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
+import eipc.EIPCResult;
 
-final class bdji
-  extends ameq
+public class bdji
+  extends QIPCModule
 {
-  bdji(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
+  public bdji()
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      return;
+    super("Module_TDFileChangeNameQIPCModule");
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    bisy.c(bdjg.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    if (paramString.equals("Action_url_2_fmdb")) {
+      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      bdjk.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    return null;
   }
 }
 

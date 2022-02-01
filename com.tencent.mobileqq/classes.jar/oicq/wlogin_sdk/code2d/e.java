@@ -109,7 +109,7 @@ public class e
     byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 13 + (paramArrayOfByte2.length + 11 + 2)];
     util.int16_to_buf(arrayOfByte, 0, 5);
     util.int8_to_buf(arrayOfByte, 2, 1);
-    util.int32_to_buf(arrayOfByte, 3, t.az);
+    util.int32_to_buf(arrayOfByte, 3, t.aA);
     util.int64_to_buf32(arrayOfByte, 7, paramLong2);
     int i = fill_staff(arrayOfByte, paramArrayOfByte1, 11);
     util.int64_to_buf(arrayOfByte, i, paramLong1);

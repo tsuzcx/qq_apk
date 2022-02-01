@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
 import android.graphics.Bitmap;
-import bdnl;
+import bgsn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ShowExternalTroopListActivity$2
@@ -15,7 +15,7 @@ class ShowExternalTroopListActivity$2
     if (localBitmap != null) {}
     try
     {
-      bdnl.a(localBitmap, 10);
+      bgsn.a(localBitmap, 10);
       this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, localBitmap));
       return;
     }
@@ -30,7 +30,7 @@ class ShowExternalTroopListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.2
  * JD-Core Version:    0.7.0.1
  */

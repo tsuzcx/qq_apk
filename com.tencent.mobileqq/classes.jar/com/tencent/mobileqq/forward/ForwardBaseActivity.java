@@ -1,12 +1,31 @@
 package com.tencent.mobileqq.forward;
 
-import arzm;
+import Override;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import augo;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ForwardBaseActivity
   extends IphoneTitleBarActivity
-  implements arzm
-{}
+  implements augo
+{
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

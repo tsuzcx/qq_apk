@@ -1,54 +1,50 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.text.TextUtils;
-import bgvs;
-import bgvt;
-import bgwe;
-import bgxk;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
-public class BaseLibManager$1$1$1
+class BaseLibManager$1$1$1
   implements Runnable
 {
-  public BaseLibManager$1$1$1(bgvt parambgvt, JSONObject paramJSONObject) {}
+  BaseLibManager$1$1$1(BaseLibManager.1.1 param1, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(2)));
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(3));
+    BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.val$obj.optJSONObject(BaseLibInfo.getKey(2)));
+    JSONObject localJSONObject = this.val$obj.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(localJSONObject);
     QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject);
-    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.14.0.00225".equals(this.jdField_a_of_type_Bgvt.a)))
+    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.17.0.00206".equals(this.this$2.val$baseLibVersion)))
     {
-      if (bgxk.a().b()) {
+      if (LocalGameEngine.g().isWnsConfigModel()) {
         break label131;
       }
       if (localBaseLibInfo2 != null) {
-        bgwe.a().a(localBaseLibInfo2, null);
+        EngineManager.g().installBaseLib(localBaseLibInfo2, null);
       }
     }
     for (;;)
     {
       if (localBaseLibInfo1 != null) {
-        bgwe.a().a(localBaseLibInfo1, null);
+        EngineManager.g().installBaseLib(localBaseLibInfo1, null);
       }
       return;
       label131:
-      localBaseLibInfo2 = bgvs.a();
+      localBaseLibInfo2 = BaseLibManager.getGameBaseLibInfo();
       QMLog.i("miniapp-process_BaseLibManager", "[MiniEng]MiniEng QQSpeed gameEngineLib " + localBaseLibInfo2);
       if ((localBaseLibInfo2 != null) && (localBaseLibInfo2.baseLibType == 2)) {
-        bgwe.a().a(localBaseLibInfo2, null);
+        EngineManager.g().installBaseLib(localBaseLibInfo2, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.1.1.1
  * JD-Core Version:    0.7.0.1
  */

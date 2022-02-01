@@ -1,44 +1,44 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import aytg;
-import aytn;
-import ayuh;
-import ayuu;
-import ayuv;
+import bbsj;
+import bbsq;
+import bbtk;
+import bbtx;
+import bbty;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(aytg paramaytg, ayuu paramayuu) {}
+  public ContactSearchEngine$4(bbsj parambbsj, bbtx parambbtx) {}
   
   public void run()
   {
-    List localList1 = aytg.a(this.this$0, this.a);
-    ayuh localayuh = aytg.a(this.this$0);
-    ayuv localayuv;
-    if ((localayuh != null) && (localList1 != null))
+    List localList1 = bbsj.a(this.this$0, this.a);
+    bbtk localbbtk = bbsj.a(this.this$0);
+    bbty localbbty;
+    if ((localbbtk != null) && (localList1 != null))
     {
-      localayuv = new ayuv(this.a.a, 1);
-      if (aytg.a(this.this$0) == null) {
-        localayuh.a(localList1, localayuv);
+      localbbty = new bbty(this.a.a, 1);
+      if (bbsj.a(this.this$0) == null) {
+        localbbtk.a(localList1, localbbty);
       }
     }
     else
     {
       return;
     }
-    localayuh.a(localList1);
-    List localList2 = aytg.a(this.this$0).a(this.a);
+    localbbtk.a(localList1);
+    List localList2 = bbsj.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localayuh.a(localList1, localayuv);
+    localbbtk.a(localList1, localbbty);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.ContactSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

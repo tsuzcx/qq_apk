@@ -1,70 +1,30 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
-
 public class becz
-  extends Handler
+  extends becx
 {
-  public becz(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 0;
+  
+  public becz()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    BitmapDrawable localBitmapDrawable;
-    do
-    {
-      RelativeLayout localRelativeLayout;
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-          {
-            if (this.a.jdField_a_of_type_Boolean)
-            {
-              if ((this.a.g instanceof Button)) {
-                ((Button)this.a.g).setText(alud.a(2131717129));
-              }
-              this.a.g.setEnabled(false);
-              return;
-            }
-            this.a.g.setEnabled(true);
-            return;
-          }
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.g.setVisibility(0);
-            this.a.g.setEnabled(true);
-            if ((this.a.g instanceof Button)) {
-              ((Button)this.a.g).setText(alud.a(2131717123));
-            }
-            this.a.g.setEnabled(false);
-            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-            this.a.f.setVisibility(8);
-            return;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
-        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131380027);
-        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
-      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
-      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
-    } while (paramMessage.arg1 != 1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" fileId:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" videoAttr:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" videoKandianType:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

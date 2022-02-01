@@ -1,95 +1,50 @@
+import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class auld
+class auld
+  implements aobv
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
+  auld(aulb paramaulb) {}
   
-  public auld()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static auld a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (aulb.a(this.a) == null) {}
+    while (aulb.a(this.a).a()) {
+      return;
     }
-    try
-    {
-      auld localauld = new auld();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("mainswitch", 0) == 1) {}
-      for (;;)
+    paramInt2 = aulb.a(this.a).findFirstVisibleItemPosition();
+    int i = aulb.a(this.a).getChildCount();
+    paramInt1 = 1;
+    label74:
+    if (paramInt1 < i) {
+      if (((String)((Pair)aulb.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
       {
-        localauld.jdField_a_of_type_Boolean = bool;
-        localauld.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
-        paramString = a(paramString.optJSONArray("black"));
-        localauld.jdField_a_of_type_JavaUtilList.addAll(paramString);
-        return localauld;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
-    }
-  }
-  
-  private static List<String> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
-    {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(paramJSONArray.getString(i).trim());
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
-            }
-          }
+        auli localauli = (auli)aulb.a(this.a).getChildViewHolder(aulb.a(this.a).getChildAt(paramInt1));
+        if (!(localauli instanceof aulh)) {
+          break label170;
         }
+        ((aulh)localauli).a.setImageBitmap(paramBitmap);
       }
     }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    for (;;)
+    {
+      paramInt1 += 1;
+      break label74;
+      break;
+      label170:
+      QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auld
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,50 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
 import java.util.List;
 
 public class yiz
+  extends yid<yiy>
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
-  public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public yiz(@Nullable yih paramyih)
+  {
+    super(paramyih);
+  }
+  
+  protected JobSegment<yig, yiy> a()
+  {
+    return new yit();
+  }
+  
+  protected JobSegment<Integer, yig> a(yif paramyif)
+  {
+    return new yja(paramyif, this.a);
+  }
+  
+  protected yiy a()
+  {
+    yij localyij = (yij)wpm.a(11);
+    List localList = localyij.a();
+    yiy localyiy = new yiy(new ErrorMessage());
+    localyiy.jdField_b_of_type_JavaUtilList = localyij.b(localList);
+    localyiy.jdField_b_of_type_Boolean = true;
+    localyiy.a = localyiy.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localyiy;
+  }
+  
+  protected yiy a(ErrorMessage paramErrorMessage)
+  {
+    return new yiy(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((yij)wpm.a(11)).a(paramList, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yiz
  * JD-Core Version:    0.7.0.1
  */

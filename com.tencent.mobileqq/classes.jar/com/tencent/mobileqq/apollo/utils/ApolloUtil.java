@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aknx;
-import aksr;
-import aktq;
-import albi;
-import alhp;
-import alit;
-import aliu;
-import aliw;
-import alkq;
-import alkr;
-import alks;
-import alkt;
-import alud;
+import amhd;
+import amhq;
+import amlx;
+import ammw;
+import amug;
+import amuo;
+import anaw;
+import anca;
+import ancb;
+import ancd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,26 +30,32 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apsp;
-import apzf;
-import arso;
-import aspy;
-import aspz;
-import awkr;
-import ayzl;
-import bamp;
-import bamw;
-import banh;
-import bdgk;
-import bdhb;
-import bdhj;
-import bdns;
-import bdpi;
-import beae;
-import beag;
-import bflr;
-import bhsz;
-import bjfh;
+import andy;
+import andz;
+import anea;
+import aneb;
+import anni;
+import arvq;
+import asdb;
+import atwl;
+import auxc;
+import auxd;
+import ayzh;
+import bbyp;
+import bdnt;
+import bdoa;
+import bdol;
+import bgln;
+import bgmg;
+import bgmo;
+import bgnw;
+import bgsu;
+import bguh;
+import bhhf;
+import bhhh;
+import bita;
+import bkgj;
+import bltn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
@@ -118,7 +121,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import ndr;
+import nmk;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -126,7 +129,7 @@ public class ApolloUtil
 {
   private static int jdField_a_of_type_Int;
   public static long a;
-  public static alkt a;
+  public static aneb a;
   public static final String a;
   public static Comparator<File> a;
   private static boolean jdField_a_of_type_Boolean;
@@ -141,10 +144,10 @@ public class ApolloUtil
   
   static
   {
-    jdField_a_of_type_JavaLangString = aliu.jdField_d_of_type_JavaLangString + "action_v730.json";
-    jdField_b_of_type_JavaLangString = aliu.jdField_a_of_type_JavaLangString + "/apollo_report_config.json";
+    jdField_a_of_type_JavaLangString = ancb.jdField_d_of_type_JavaLangString + "action_v730.json";
+    jdField_b_of_type_JavaLangString = ancb.jdField_a_of_type_JavaLangString + "/apollo_report_config.json";
     jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaUtilComparator = new alkr();
+    jdField_a_of_type_JavaUtilComparator = new andz();
     jdField_b_of_type_Long = 100L;
     jdField_a_of_type_Int = -2147483648;
     jdField_a_of_type_ArrayOfInt = new int[] { 308, 309, 310, 318, 319, 320 };
@@ -152,7 +155,7 @@ public class ApolloUtil
   
   public static float a(float paramFloat)
   {
-    long l = bdgk.j();
+    long l = bgln.j();
     if (Float.compare(0.0F, paramFloat) == 0) {
       return (float)(l / 5L) / 368.0F;
     }
@@ -225,7 +228,7 @@ public class ApolloUtil
   private static int a(float paramFloat, String paramString, int paramInt1, int paramInt2)
   {
     Object localObject = new TextView(BaseApplicationImpl.getContext());
-    ((TextView)localObject).setTextSize(paramInt1 * 3 / bdgk.jdField_a_of_type_Float);
+    ((TextView)localObject).setTextSize(paramInt1 * 3 / bgln.jdField_a_of_type_Float);
     ((TextView)localObject).setText(paramString);
     localObject = ((TextView)localObject).getPaint();
     paramString = paramString.replaceAll("\r", "").split("\n");
@@ -278,7 +281,7 @@ public class ApolloUtil
     }
     if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile()))
     {
-      localObject = bdhb.a((File)localObject);
+      localObject = bgmg.a((File)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
@@ -304,6 +307,31 @@ public class ApolloUtil
       }
     }
     return 0;
+  }
+  
+  public static int a(amug paramamug, MessageForApollo paramMessageForApollo)
+  {
+    if ((paramMessageForApollo == null) || (paramMessageForApollo.mApolloMessage == null)) {
+      throw new IllegalArgumentException("getPlayActionId, apolloMsg null");
+    }
+    int j = paramMessageForApollo.mApolloMessage.id;
+    int i = j;
+    if (paramMessageForApollo.mApollo3DMessage != null)
+    {
+      i = j;
+      if (ApolloActionData.isAction3DModel(paramMessageForApollo.mApollo3DMessage.actionID_3D)) {
+        if (!amhd.a(paramamug.a()))
+        {
+          i = j;
+          if (!paramamug.g()) {}
+        }
+        else
+        {
+          i = paramMessageForApollo.mApollo3DMessage.actionID_3D;
+        }
+      }
+    }
+    return i;
   }
   
   public static int a(SessionInfo paramSessionInfo, AppInterface paramAppInterface)
@@ -337,27 +365,6 @@ public class ApolloUtil
     return 1;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo)
-  {
-    if ((paramMessageForApollo == null) || (paramMessageForApollo.mApolloMessage == null)) {
-      throw new IllegalArgumentException("getPlayActionId, apolloMsg null");
-    }
-    int j = paramMessageForApollo.mApolloMessage.id;
-    int i = j;
-    if (paramMessageForApollo.mApollo3DMessage != null)
-    {
-      i = j;
-      if (ApolloActionData.isAction3DModel(paramMessageForApollo.mApollo3DMessage.actionID_3D))
-      {
-        i = j;
-        if (aknx.a(paramQQAppInterface)) {
-          i = paramMessageForApollo.mApollo3DMessage.actionID_3D;
-        }
-      }
-    }
-    return i;
-  }
-  
   public static int a(QQAppInterface paramQQAppInterface, MessageForArkApp paramMessageForArkApp)
   {
     int j;
@@ -389,11 +396,11 @@ public class ApolloUtil
       {
         try
         {
-          if (i <= aliu.jdField_a_of_type_Int) {
+          if (i <= ancb.jdField_a_of_type_Int) {
             break;
           }
           j = i;
-          if (aknx.a(paramQQAppInterface)) {
+          if (amhd.a(paramQQAppInterface)) {
             break;
           }
           if (QLog.isColorLevel()) {
@@ -421,10 +428,10 @@ public class ApolloUtil
     do
     {
       return 0;
-      i = aknx.a(paramQQAppInterface);
+      i = amhd.a(paramQQAppInterface);
     } while (i == 0);
-    int j = aknx.a(paramQQAppInterface, paramMessageRecord.senderuin);
-    if (((j == 2) && (aknx.a(paramQQAppInterface))) || ((j == 0) && (i == 2))) {
+    int j = amhd.a(paramQQAppInterface, paramMessageRecord.senderuin);
+    if (((j == 2) && (amhd.a(paramQQAppInterface))) || ((j == 0) && (i == 2))) {
       return 2;
     }
     return 1;
@@ -503,31 +510,11 @@ public class ApolloUtil
     return 0L;
   }
   
-  public static aknx a()
+  public static amhd a()
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      return (aknx)localQQAppInterface.getManager(153);
-    }
-    return null;
-  }
-  
-  public static alkt a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Alkt == null) {
-        jdField_a_of_type_Alkt = new alkt();
-      }
-      jdField_a_of_type_Alkt.d = Runtime.getRuntime().freeMemory();
-      jdField_a_of_type_Alkt.jdField_b_of_type_Long = Runtime.getRuntime().maxMemory();
-      jdField_a_of_type_Alkt.c = Runtime.getRuntime().totalMemory();
-      alkt localalkt = jdField_a_of_type_Alkt;
-      return localalkt;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloUtil", 1, "getHardwareInfo e:", localException);
+      return (amhd)localQQAppInterface.getManager(153);
     }
     return null;
   }
@@ -543,7 +530,7 @@ public class ApolloUtil
   
   public static Bitmap a()
   {
-    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838400);
+    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838499);
     if ((localDrawable instanceof BitmapDrawable)) {
       return ((BitmapDrawable)localDrawable).getBitmap();
     }
@@ -560,20 +547,20 @@ public class ApolloUtil
     {
       Object localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = String.format(Locale.getDefault(), "http://i.hudongcdn.com/%1$d/sp_main_1_1.png", new Object[] { Integer.valueOf(paramStartCheckParam.gameId) });
+        localObject2 = String.format(Locale.getDefault(), "https://i.hudongcdn.com/%1$d/sp_main_1_1.png", new Object[] { Integer.valueOf(paramStartCheckParam.gameId) });
       }
-      localObject1 = new File(aliu.s + paramStartCheckParam.gameId + File.separator + aliu.v);
+      localObject1 = new File(ancb.s + paramStartCheckParam.gameId + File.separator + ancb.v);
       if (!((File)localObject1).exists())
       {
         ((File)localObject1).getParentFile().mkdir();
-        localObject2 = new beae((String)localObject2, (File)localObject1);
-        ((beae)localObject2).p = false;
-        ((beae)localObject2).n = true;
-        ((beae)localObject2).f = "apollo_res";
-        ((beae)localObject2).jdField_b_of_type_Int = 1;
-        ((beae)localObject2).q = true;
-        ((beae)localObject2).r = true;
-        int i = beag.a((beae)localObject2, paramAppInterface);
+        localObject2 = new bhhf((String)localObject2, (File)localObject1);
+        ((bhhf)localObject2).p = false;
+        ((bhhf)localObject2).n = true;
+        ((bhhf)localObject2).f = "apollo_res";
+        ((bhhf)localObject2).jdField_b_of_type_Int = 1;
+        ((bhhf)localObject2).q = true;
+        ((bhhf)localObject2).r = true;
+        int i = bhhh.a((bhhf)localObject2, paramAppInterface);
         QLog.i("ApolloUtil", 1, "getGameIcon onDone gameId:" + paramStartCheckParam.gameId + " result:" + i);
         if (i != 0) {
           break;
@@ -585,6 +572,137 @@ public class ApolloUtil
       }
       return BitmapFactory.decodeFile(((File)localObject1).getAbsolutePath());
     }
+  }
+  
+  public static anea a(float paramFloat1, float paramFloat2, List<amlx> paramList)
+  {
+    anea localanea = new anea();
+    localanea.jdField_a_of_type_Int = -1;
+    localanea.jdField_a_of_type_JavaLangString = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloSkeletonBounding", 2, new Object[] { "all bounding:", paramList });
+    }
+    Object localObject1 = paramList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (amlx)((Iterator)localObject1).next();
+      if ((((amlx)localObject2).l > 0.0F) && (((amlx)localObject2).k > 0.0F) && (paramFloat1 >= ((amlx)localObject2).i) && (paramFloat1 <= ((amlx)localObject2).i + ((amlx)localObject2).k) && (paramFloat2 >= ((amlx)localObject2).j) && (paramFloat2 <= ((amlx)localObject2).j + ((amlx)localObject2).l))
+      {
+        localanea.jdField_a_of_type_Int = 2;
+        if (TextUtils.isEmpty(((amlx)localObject2).jdField_b_of_type_JavaLangString)) {}
+        for (paramList = ((amlx)localObject2).jdField_a_of_type_JavaLangString;; paramList = ((amlx)localObject2).jdField_b_of_type_JavaLangString)
+        {
+          localanea.jdField_a_of_type_JavaLangString = paramList;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloSkeletonBounding", 2, "gift mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+          }
+          return localanea;
+        }
+      }
+    }
+    localObject1 = new ArrayList();
+    Object localObject2 = paramList.iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      amlx localamlx = (amlx)((Iterator)localObject2).next();
+      if (localamlx.jdField_a_of_type_Int != -1001)
+      {
+        if (((localamlx.s > 0.0F) && (localamlx.t > 0.0F) && (paramFloat1 >= localamlx.q) && (paramFloat1 <= localamlx.q + localamlx.s) && (paramFloat2 >= localamlx.r) && (paramFloat2 <= localamlx.r + localamlx.t)) || ((localamlx.o > 0.0F) && (localamlx.p > 0.0F) && (paramFloat1 >= localamlx.m) && (paramFloat1 <= localamlx.m + localamlx.o) && (paramFloat2 >= localamlx.n) && (paramFloat2 <= localamlx.n + localamlx.p)))
+        {
+          localanea.jdField_a_of_type_Int = 3;
+          if (TextUtils.isEmpty(localamlx.jdField_b_of_type_JavaLangString)) {}
+          for (paramList = localamlx.jdField_a_of_type_JavaLangString;; paramList = localamlx.jdField_b_of_type_JavaLangString)
+          {
+            localanea.jdField_a_of_type_JavaLangString = paramList;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloSkeletonBounding", 2, "sprite brand, mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+            }
+            return localanea;
+          }
+        }
+      }
+      else {
+        ((List)localObject1).add(localamlx);
+      }
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (amlx)((Iterator)localObject1).next();
+      if ((((amlx)localObject2).jdField_a_of_type_Int == -1001) && (((amlx)localObject2).o > 0.0F) && (((amlx)localObject2).p > 0.0F) && (paramFloat1 >= ((amlx)localObject2).m) && (paramFloat1 <= ((amlx)localObject2).m + ((amlx)localObject2).o) && (paramFloat2 >= ((amlx)localObject2).n) && (paramFloat2 <= ((amlx)localObject2).n + ((amlx)localObject2).p))
+      {
+        localanea.jdField_a_of_type_Int = 4;
+        if (TextUtils.isEmpty(((amlx)localObject2).jdField_b_of_type_JavaLangString)) {}
+        for (paramList = ((amlx)localObject2).jdField_a_of_type_JavaLangString;; paramList = ((amlx)localObject2).jdField_b_of_type_JavaLangString)
+        {
+          localanea.jdField_a_of_type_JavaLangString = paramList;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloSkeletonBounding", 2, "pet brand, mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+          }
+          return localanea;
+        }
+      }
+    }
+    localObject1 = paramList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (amlx)((Iterator)localObject1).next();
+      if ((((amlx)localObject2).g > 0.0F) && (((amlx)localObject2).h > 0.0F) && (paramFloat1 >= ((amlx)localObject2).e) && (paramFloat1 <= ((amlx)localObject2).e + ((amlx)localObject2).g) && (paramFloat2 >= ((amlx)localObject2).f) && (paramFloat2 <= ((amlx)localObject2).f + ((amlx)localObject2).h))
+      {
+        localanea.jdField_a_of_type_Int = 1000;
+        if (TextUtils.isEmpty(((amlx)localObject2).jdField_b_of_type_JavaLangString)) {}
+        for (paramList = ((amlx)localObject2).jdField_a_of_type_JavaLangString;; paramList = ((amlx)localObject2).jdField_b_of_type_JavaLangString)
+        {
+          localanea.jdField_a_of_type_JavaLangString = paramList;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloSkeletonBounding", 2, "bubble, mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+          }
+          return localanea;
+        }
+      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject1 = (amlx)paramList.next();
+      if ((paramFloat1 >= ((amlx)localObject1).jdField_a_of_type_Float) && (paramFloat1 <= ((amlx)localObject1).jdField_a_of_type_Float + ((amlx)localObject1).c) && (paramFloat2 >= ((amlx)localObject1).jdField_b_of_type_Float) && (paramFloat2 <= ((amlx)localObject1).jdField_b_of_type_Float + ((amlx)localObject1).d))
+      {
+        localanea.jdField_a_of_type_Int = 1;
+        if (TextUtils.isEmpty(((amlx)localObject1).jdField_b_of_type_JavaLangString)) {}
+        for (paramList = ((amlx)localObject1).jdField_a_of_type_JavaLangString;; paramList = ((amlx)localObject1).jdField_b_of_type_JavaLangString)
+        {
+          localanea.jdField_a_of_type_JavaLangString = paramList;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloSkeletonBounding", 2, "other cmshow area, mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+          }
+          return localanea;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloSkeletonBounding", 2, "not cmshow area, mNode:" + localanea.jdField_a_of_type_Int + ",mApolloId=" + localanea.jdField_a_of_type_JavaLangString);
+    }
+    return localanea;
+  }
+  
+  public static aneb a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Aneb == null) {
+        jdField_a_of_type_Aneb = new aneb();
+      }
+      jdField_a_of_type_Aneb.d = Runtime.getRuntime().freeMemory();
+      jdField_a_of_type_Aneb.jdField_b_of_type_Long = Runtime.getRuntime().maxMemory();
+      jdField_a_of_type_Aneb.c = Runtime.getRuntime().totalMemory();
+      aneb localaneb = jdField_a_of_type_Aneb;
+      return localaneb;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloUtil", 1, "getHardwareInfo e:", localException);
+    }
+    return null;
   }
   
   public static ApolloCmdChannel a()
@@ -723,12 +841,12 @@ public class ApolloUtil
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     if ((paramInt == 1) || (paramInt == 2)) {
-      localStringBuilder.append(aliu.s).append(paramInt).append(File.separator).append("main.lua");
+      localStringBuilder.append(ancb.s).append(paramInt).append(File.separator).append("main.lua");
     }
     for (;;)
     {
       return localStringBuilder.toString();
-      localStringBuilder.append(aliu.s).append(paramInt).append(File.separator).append("main.js");
+      localStringBuilder.append(ancb.s).append(paramInt).append(File.separator).append("main.js");
     }
   }
   
@@ -807,7 +925,7 @@ public class ApolloUtil
   {
     Object localObject;
     if (paramMessageForApollo == null) {
-      localObject = alud.a(2131700932);
+      localObject = anni.a(2131699357);
     }
     String str2;
     do
@@ -817,8 +935,8 @@ public class ApolloUtil
       {
         return localObject;
         localObject = c(paramQQAppInterface, paramMessageForApollo);
-        str1 = alud.a(2131700933) + (String)localObject;
-        str2 = alud.a(2131700930);
+        str1 = anni.a(2131699358) + (String)localObject;
+        str2 = anni.a(2131699355);
         localObject = str1;
       } while (!ApolloGameUtil.a(paramMessageForApollo.msgType));
       localObject = str1;
@@ -828,13 +946,13 @@ public class ApolloUtil
     }
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = ((aliw)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.gameId);
+      paramQQAppInterface = ((ancd)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.gameId);
       if (paramQQAppInterface != null) {
         return str2 + paramQQAppInterface.name;
       }
-      return str2 + alud.a(2131700926);
+      return str2 + anni.a(2131699351);
     }
-    return str2 + alud.a(2131700914);
+    return str2 + anni.a(2131699339);
   }
   
   public static String a(ApolloActionData paramApolloActionData, int paramInt)
@@ -849,23 +967,23 @@ public class ApolloUtil
     for (;;)
     {
       return localStringBuilder.toString();
-      localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("panelView.png");
+      localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("panelView.png");
       continue;
       localStringBuilder.append("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_").append(paramApolloActionData.actionId).append("/preview.png");
       continue;
-      localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("panelGif.gif");
+      localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("panelGif.gif");
       continue;
       localStringBuilder.append("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_").append(paramApolloActionData.actionId).append("/preview.gif");
       continue;
-      localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("actionRes.zip");
+      localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("actionRes.zip");
       continue;
       localStringBuilder.append("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_").append(paramApolloActionData.actionId).append("/d.zip");
       continue;
-      localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator);
+      localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator);
       continue;
-      localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("config.json");
+      localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramApolloActionData.actionId).append(File.separator).append("config.json");
       continue;
-      localStringBuilder.append(aliu.q).append(paramApolloActionData.actionId);
+      localStringBuilder.append(ancb.q).append(paramApolloActionData.actionId);
       continue;
       localStringBuilder.append("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_drawerAction_").append(paramApolloActionData.actionId).append("/d.zip");
     }
@@ -877,7 +995,7 @@ public class ApolloUtil
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(aliu.n).append(paramApolloActionPackage.packageId).append(File.separator).append("tab.png");
+    localStringBuilder.append(ancb.n).append(paramApolloActionPackage.packageId).append(File.separator).append("tab.png");
     return localStringBuilder.toString();
   }
   
@@ -901,7 +1019,7 @@ public class ApolloUtil
         }
       }
     }
-    return alud.a(2131700939);
+    return anni.a(2131699364);
   }
   
   public static String a(String paramString)
@@ -1073,7 +1191,7 @@ public class ApolloUtil
   
   public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
-    bjfh.a(paramActivity, paramString1, paramString2);
+    bltn.a(paramActivity, paramString1, paramString2);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
@@ -1093,12 +1211,12 @@ public class ApolloUtil
       }
       else
       {
-        str = bdhj.a(paramActivity, paramString1);
+        str = bgmo.a(paramActivity, paramString1);
       }
       try
       {
-        if ((awkr.b()) && (bdhj.b(paramString1))) {
-          awkr.b(paramString1, str, true, "", 0);
+        if ((ayzh.b()) && (bgmo.b(paramString1))) {
+          ayzh.b(paramString1, str, true, "", 0);
         }
         while ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
         {
@@ -1112,7 +1230,7 @@ public class ApolloUtil
           localIntent.putExtras(localBundle);
           paramActivity.startActivityForResult(localIntent, 103);
           return;
-          awkr.a(paramString1, str, true, "", 0);
+          ayzh.a(paramString1, str, true, "", 0);
         }
       }
       catch (Exception paramString2)
@@ -1129,7 +1247,7 @@ public class ApolloUtil
   {
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-    VasWebviewUtil.openQQBrowserActivity(paramContext, aliu.ak, -1L, localIntent, false, -1);
+    VasWebviewUtil.openQQBrowserActivity(paramContext, ancb.ak, -1L, localIntent, false, -1);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2)
@@ -1139,7 +1257,7 @@ public class ApolloUtil
   
   public static void a(Context paramContext, int paramInt, Intent paramIntent)
   {
-    a(paramContext, paramIntent, null, aliu.am + "&adSrc=" + paramInt, null);
+    a(paramContext, paramIntent, null, ancb.am + "&adSrc=" + paramInt, null);
   }
   
   public static void a(Context paramContext, Intent paramIntent, String paramString1, String paramString2, AppInterface paramAppInterface)
@@ -1172,14 +1290,14 @@ public class ApolloUtil
       {
         localObject = localIntent;
         if ((paramAppInterface instanceof QQAppInterface)) {
-          localObject = (aknx)((QQAppInterface)paramAppInterface).getManager(153);
+          localObject = (amhd)((QQAppInterface)paramAppInterface).getManager(153);
         }
       }
-      if (!aknx.b(paramContext))
+      if (!amhd.c(paramContext))
       {
         paramIntent = new Intent(paramContext, QQBrowserActivity.class);
         paramIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-        VasWebviewUtil.openQQBrowserActivity(paramContext, aliu.U, -1L, paramIntent, false, -1);
+        VasWebviewUtil.openQQBrowserActivity(paramContext, ancb.U, -1L, paramIntent, false, -1);
         return;
         if ((localObject instanceof ToolAppRuntime))
         {
@@ -1191,18 +1309,18 @@ public class ApolloUtil
       }
       else
       {
-        if ((1 != aknx.a(paramAppInterface)) || ((paramAppInterface != null) && ((paramAppInterface instanceof QQAppInterface)) && (!ApolloGameUtil.a((QQAppInterface)paramAppInterface))))
+        if ((1 != amhd.a(paramAppInterface)) || ((paramAppInterface != null) && ((paramAppInterface instanceof QQAppInterface)) && (!ApolloGameUtil.a((QQAppInterface)paramAppInterface))))
         {
           paramIntent = new Intent(paramContext, QQBrowserActivity.class);
           paramIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-          VasWebviewUtil.openQQBrowserActivity(paramContext, aliu.V + "0", -1L, paramIntent, false, -1);
+          VasWebviewUtil.openQQBrowserActivity(paramContext, ancb.V + "0", -1L, paramIntent, false, -1);
           return;
         }
         localIntent = paramIntent;
         if (paramIntent == null) {
           localIntent = new Intent();
         }
-        if ((paramAppInterface != null) && ((paramAppInterface instanceof QQAppInterface)) && (aknx.a((QQAppInterface)paramAppInterface))) {}
+        if ((paramAppInterface != null) && ((paramAppInterface instanceof QQAppInterface)) && (amhd.a((QQAppInterface)paramAppInterface))) {}
         for (int i = 1;; i = 0)
         {
           paramIntent = paramString2;
@@ -1213,26 +1331,26 @@ public class ApolloUtil
             {
               paramIntent = paramString2;
               if (i == 0) {
-                paramIntent = aliu.ai;
+                paramIntent = ancb.ai;
               }
             }
           }
           paramString2 = paramIntent;
-          if (!TextUtils.isEmpty(aliu.ai))
+          if (!TextUtils.isEmpty(ancb.ai))
           {
             paramString2 = paramIntent;
-            if (aliu.ai.equals(paramIntent))
+            if (ancb.ai.equals(paramIntent))
             {
               paramString2 = paramIntent;
               if (i != 0) {
-                paramString2 = aliu.aq;
+                paramString2 = ancb.aq;
               }
             }
           }
           if (localIntent.getIntExtra("key_box_type", 0) != 3) {
             break;
           }
-          paramIntent = aliu.ad;
+          paramIntent = ancb.ad;
           paramString1 = new Intent(paramContext, QQBrowserActivity.class);
           localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
           VasWebviewUtil.openQQBrowserActivity(paramContext, paramIntent, -1L, paramString1, false, -1);
@@ -1243,6 +1361,8 @@ public class ApolloUtil
           paramIntent = paramAppInterface.getCurrentNickname();
           paramAppInterface.getLongAccountUin();
         }
+        label897:
+        label1027:
         for (;;)
         {
           localIntent.putExtra("extra_key_nickname", paramIntent);
@@ -1252,131 +1372,139 @@ public class ApolloUtil
           localIntent.putExtra("extra_key_click_time", System.currentTimeMillis());
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           if (QLog.isColorLevel()) {
-            QLog.d("ApolloUtil", 2, "apollo_client, clickTime:" + bdns.a(System.currentTimeMillis(), "dd-MMM-yyyy HH:mm:ss:SSS") + ",url:" + paramString2);
+            QLog.d("ApolloUtil", 2, "apollo_client, clickTime:" + bgsu.a(System.currentTimeMillis(), "dd-MMM-yyyy HH:mm:ss:SSS") + ",url:" + paramString2);
           }
           if (!TextUtils.isEmpty(paramString2))
           {
             paramString1 = paramString2.replace("_bid=2423&", "");
             paramIntent = paramString1;
-            if (aktq.jdField_d_of_type_Boolean)
-            {
-              if (TextUtils.isEmpty(aktq.c))
-              {
-                paramIntent = bhsz.a(paramString1, "wording", aktq.jdField_a_of_type_JavaLangString);
-                paramIntent = bhsz.a(bhsz.a(paramIntent, "bubble_id", aktq.jdField_d_of_type_JavaLangString), "tip_url", aktq.jdField_b_of_type_JavaLangString);
-              }
+            if (!ammw.jdField_d_of_type_Boolean) {
+              break label1091;
             }
-            else
+            if (!TextUtils.isEmpty(ammw.c))
             {
-              if (localObject == null) {
-                break label1053;
+              paramIntent = bkgj.a(paramString1, "wording", ammw.c);
+              paramString1 = paramIntent;
+              if (!TextUtils.isEmpty(ammw.jdField_d_of_type_JavaLangString)) {
+                paramString1 = bkgj.a(paramIntent, "bubble_id", ammw.jdField_d_of_type_JavaLangString);
               }
-              if (!((aknx)localObject).jdField_d_of_type_Boolean) {
-                break label821;
+              paramIntent = paramString1;
+              if (TextUtils.isEmpty(ammw.jdField_b_of_type_JavaLangString)) {
+                break label1091;
               }
-              paramString1 = "1";
-              label624:
-              paramString1 = bhsz.a(paramIntent, "is_new_store_user", paramString1);
-              if (i == 0) {
-                break label828;
-              }
-              paramIntent = "1";
-              label642:
-              paramIntent = bhsz.a(paramString1, "is_3d_available", paramIntent);
+              paramIntent = bkgj.a(paramString1, "tip_url", ammw.jdField_b_of_type_JavaLangString);
             }
           }
-          label907:
-          label1041:
-          label1048:
-          label1053:
+          label648:
+          label666:
+          label924:
+          label942:
+          label1076:
+          label1083:
+          label1091:
           for (;;)
           {
-            if (localIntent.getBooleanExtra("extra_key_open_box", false)) {
-              if (aknx.d()) {
-                localIntent.putExtra("extra_key_open_box", false);
+            if (localObject != null) {
+              if (((amhd)localObject).jdField_d_of_type_Boolean)
+              {
+                paramString1 = "1";
+                paramString1 = bkgj.a(paramIntent, "is_new_store_user", paramString1);
+                if (i == 0) {
+                  break label863;
+                }
+                paramIntent = "1";
+                paramIntent = bkgj.a(paramString1, "is_3d_available", paramIntent);
               }
             }
-            for (paramIntent = bhsz.a(paramIntent, "boxReady", "1");; paramIntent = bhsz.a(paramIntent, "boxReady", "0"))
-            {
-              localIntent.putExtra("url", paramIntent);
-              localIntent.putExtra("url", paramIntent);
-              if ((!paramIntent.contains("webviewCheckType=1")) && (!paramIntent.contains("webviewCheckType=2"))) {
-                break label1013;
-              }
-              localIntent.setClass(paramContext, ApolloStoreActivity.class);
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloUtil", 2, "apollo_client, ApolloStoreActivity");
-              }
-              label755:
-              if (!(paramContext instanceof Activity)) {
-                localIntent.addFlags(268435456);
-              }
-              localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-              if ((!(paramContext instanceof Activity)) || (paramInt <= 0)) {
-                break label1041;
-              }
-              ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-              return;
-              paramIntent = bhsz.a(paramString1, "wording", aktq.c);
-              break;
-              label821:
-              paramString1 = "0";
-              break label624;
-              label828:
-              paramIntent = "0";
-              break label642;
-            }
-            if (!TextUtils.isEmpty(aliu.ah))
-            {
-              paramIntent = aliu.ah;
-              label862:
-              paramString1 = paramIntent.replace("_bid=2423&", "");
-              if (localObject == null) {
-                break label1048;
-              }
-              if (!((aknx)localObject).jdField_d_of_type_Boolean) {
-                break label985;
-              }
-              paramIntent = "1";
-              label889:
-              paramString1 = bhsz.a(paramString1, "is_new_store_user", paramIntent);
-              if (i == 0) {
-                break label992;
-              }
-              paramIntent = "1";
-            }
-            for (paramIntent = bhsz.a(paramString1, "is_3d_available", paramIntent);; paramIntent = paramString1)
+            for (;;)
             {
               if (localIntent.getBooleanExtra("extra_key_open_box", false)) {
-                if (aknx.d()) {
+                if (amhd.d()) {
                   localIntent.putExtra("extra_key_open_box", false);
                 }
               }
-              for (paramIntent = bhsz.a(paramIntent, "boxReady", "1");; paramIntent = bhsz.a(paramIntent, "boxReady", "0"))
+              for (paramIntent = bkgj.a(paramIntent, "boxReady", "1");; paramIntent = bkgj.a(paramIntent, "boxReady", "0"))
               {
                 localIntent.putExtra("url", paramIntent);
                 localIntent.putExtra("url", paramIntent);
+                if ((!paramIntent.contains("webviewCheckType=1")) && (!paramIntent.contains("webviewCheckType=2"))) {
+                  break label1048;
+                }
+                localIntent.setClass(paramContext, ApolloStoreActivity.class);
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloUtil", 2, "apollo_client, ApolloStoreActivity");
+                }
+                if (!(paramContext instanceof Activity)) {
+                  localIntent.addFlags(268435456);
+                }
+                localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+                if ((!(paramContext instanceof Activity)) || (paramInt <= 0)) {
+                  break label1076;
+                }
+                ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
+                return;
+                paramIntent = paramString1;
+                if (TextUtils.isEmpty(ammw.jdField_a_of_type_JavaLangString)) {
+                  break;
+                }
+                paramIntent = bkgj.a(paramString1, "wording", ammw.jdField_a_of_type_JavaLangString);
                 break;
-                paramIntent = aliu.W;
-                break label862;
-                label985:
+                paramString1 = "0";
+                break label648;
+                label863:
                 paramIntent = "0";
-                break label889;
-                label992:
-                paramIntent = "0";
-                break label907;
+                break label666;
               }
-              label1013:
-              localIntent.setClass(paramContext, ApolloStoreActivity.class);
-              if (!QLog.isColorLevel()) {
-                break label755;
+              if (!TextUtils.isEmpty(ancb.ah))
+              {
+                paramIntent = ancb.ah;
+                paramString1 = paramIntent.replace("_bid=2423&", "");
+                if (localObject == null) {
+                  break label1083;
+                }
+                if (!((amhd)localObject).jdField_d_of_type_Boolean) {
+                  break label1020;
+                }
+                paramIntent = "1";
+                paramString1 = bkgj.a(paramString1, "is_new_store_user", paramIntent);
+                if (i == 0) {
+                  break label1027;
+                }
+                paramIntent = "1";
               }
-              QLog.d("ApolloUtil", 2, "apollo_client, ApolloStoreActivity");
-              break label755;
-              paramContext.startActivity(localIntent);
-              return;
+              for (paramIntent = bkgj.a(paramString1, "is_3d_available", paramIntent);; paramIntent = paramString1)
+              {
+                if (localIntent.getBooleanExtra("extra_key_open_box", false)) {
+                  if (amhd.d()) {
+                    localIntent.putExtra("extra_key_open_box", false);
+                  }
+                }
+                for (paramIntent = bkgj.a(paramIntent, "boxReady", "1");; paramIntent = bkgj.a(paramIntent, "boxReady", "0"))
+                {
+                  localIntent.putExtra("url", paramIntent);
+                  localIntent.putExtra("url", paramIntent);
+                  break;
+                  paramIntent = ancb.W;
+                  break label897;
+                  label1020:
+                  paramIntent = "0";
+                  break label924;
+                  paramIntent = "0";
+                  break label942;
+                }
+                localIntent.setClass(paramContext, ApolloStoreActivity.class);
+                if (!QLog.isColorLevel()) {
+                  break label779;
+                }
+                QLog.d("ApolloUtil", 2, "apollo_client, ApolloStoreActivity");
+                break label779;
+                paramContext.startActivity(localIntent);
+                return;
+              }
             }
           }
+          label779:
+          label1048:
           paramIntent = "";
         }
       }
@@ -1393,7 +1521,7 @@ public class ApolloUtil
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(aliu.ab).append(paramString1).append("&adtag=").append(paramString2);
+    localStringBuilder.append(ancb.ab).append(paramString1).append("&adtag=").append(paramString2);
     paramString1 = new Intent(paramContext, QQBrowserActivity.class);
     paramString1.putExtra("big_brother_source_key", "biz_src_zf_lmx");
     VasWebviewUtil.openQQBrowserActivity(paramContext, localStringBuilder.toString(), -1L, paramString1, false, -1);
@@ -1415,7 +1543,7 @@ public class ApolloUtil
     catch (Exception paramView) {}catch (OutOfMemoryError paramView) {}
   }
   
-  public static void a(View paramView, QQAppInterface paramQQAppInterface, bdpi parambdpi) {}
+  public static void a(View paramView, QQAppInterface paramQQAppInterface, bguh parambguh) {}
   
   public static void a(View paramView, FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
@@ -1424,30 +1552,30 @@ public class ApolloUtil
     if (paramImageView == null) {
       return;
     }
-    paramImageView.setImageResource(2130838503);
+    paramImageView.setImageResource(2130838610);
   }
   
   public static void a(ImageView paramImageView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramImageView.setImageResource(2130838462);
+    paramImageView.setImageResource(2130838569);
   }
   
-  public static void a(bdpi parambdpi, String paramString) {}
+  public static void a(bguh parambguh, String paramString) {}
   
-  public static void a(beae parambeae)
+  public static void a(bhhf parambhhf)
   {
-    if ((parambeae != null) && (parambeae.a != null))
+    if ((parambhhf != null) && (parambhhf.a != null))
     {
       int i = 0;
-      if (i < parambeae.a.size())
+      if (i < parambhhf.a.size())
       {
-        String str = (String)parambeae.a.get(i);
+        String str = (String)parambhhf.a.get(i);
         if (!TextUtils.isEmpty(str))
         {
           if (!str.contains("http://cmshow.qq.com")) {
             break label85;
           }
-          parambeae.a.set(i, str.replace("http://cmshow.qq.com", "https://cmshow.qq.com"));
+          parambhhf.a.set(i, str.replace("http://cmshow.qq.com", "https://cmshow.qq.com"));
         }
         for (;;)
         {
@@ -1455,7 +1583,7 @@ public class ApolloUtil
           break;
           label85:
           if (str.contains("http://cmshow.gtimg.com")) {
-            parambeae.a.set(i, str.replace("http://cmshow.gtimg.com", "https://cmshow.gtimg.com"));
+            parambhhf.a.set(i, str.replace("http://cmshow.gtimg.com", "https://cmshow.gtimg.com"));
           }
         }
       }
@@ -1480,7 +1608,7 @@ public class ApolloUtil
         if (localSessionInfo != null)
         {
           boolean bool = ApolloGameUtil.a(paramBaseChatPie.a());
-          if (aknx.c("gameSwitch") == 1) {}
+          if (amhd.c("gameSwitch") == 1) {}
           for (int i = 1; (!bool) && (i != 0) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramBaseChatPie.jdField_a_of_type_AndroidContentContext != null); i = 0)
           {
             str2 = localSessionInfo.jdField_a_of_type_JavaLangString;
@@ -1513,19 +1641,19 @@ public class ApolloUtil
           }
         }
       }
-    } while ((!((Boolean)localObject1).booleanValue()) || ((paramInt != 1) && ((paramInt != 0) || (!localSharedPreferences.getBoolean(str1, true)))) || ((aknx)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153) == null));
-    long l = ayzl.a();
-    Object localObject2 = alud.a(2131700917);
-    paramInt = ((String)localObject2).indexOf(alud.a(2131700920));
+    } while ((!((Boolean)localObject1).booleanValue()) || ((paramInt != 1) && ((paramInt != 0) || (!localSharedPreferences.getBoolean(str1, true)))) || ((amhd)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153) == null));
+    long l = bbyp.a();
+    Object localObject2 = anni.a(2131699342);
+    paramInt = ((String)localObject2).indexOf(anni.a(2131699345));
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("key_action", 1);
     ((Bundle)localObject1).putString("textColor", "#40A0FF");
-    ((Bundle)localObject1).putString("key_action_DATA", aliu.V + "&adTag=gametips");
-    localObject2 = new aspy(str2, str3, (String)localObject2, localSessionInfo.jdField_a_of_type_Int, -5040, 2359298, l);
-    ((aspy)localObject2).a(paramInt, paramInt + 7, (Bundle)localObject1);
+    ((Bundle)localObject1).putString("key_action_DATA", ancb.V + "&adTag=gametips");
+    localObject2 = new auxc(str2, str3, (String)localObject2, localSessionInfo.jdField_a_of_type_Int, -5040, 2359298, l);
+    ((auxc)localObject2).a(paramInt, paramInt + 7, (Bundle)localObject1);
     localObject1 = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aspy)localObject2);
-    aspz.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
+    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (auxc)localObject2);
+    auxd.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, "send apollo gray tip");
     }
@@ -1548,11 +1676,11 @@ public class ApolloUtil
       str1 = "apollo_white_face_unsupport_gray_tip" + str2;
       localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
     } while (!localSharedPreferences.getBoolean(str1, true));
-    long l = ayzl.a();
-    paramSessionInfo = new aspy((String)localObject, str2, alud.a(2131700919), paramSessionInfo.jdField_a_of_type_Int, -5040, 2359299, l);
+    long l = bbyp.a();
+    paramSessionInfo = new auxc((String)localObject, str2, anni.a(2131699344), paramSessionInfo.jdField_a_of_type_Int, -5040, 2359299, l);
     Object localObject = new MessageForUniteGrayTip();
     ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramSessionInfo);
-    aspz.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+    auxd.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, "addWhiteFaceUnSupportTips send white face unsupport gray tip");
     }
@@ -1622,11 +1750,11 @@ public class ApolloUtil
         if (paramInt1 != paramInt2 - 1) {
           break;
         }
-        if (aknx.c("whiteFace3D") != 1) {
+        if (amhd.c("whiteFace3D") != 1) {
           break label442;
         }
         paramBoolean = true;
-        if ((aknx)paramQQAppInterface.getManager(153) == null) {
+        if ((amhd)paramQQAppInterface.getManager(153) == null) {
           break;
         }
         paramInt1 = a(paramQQAppInterface, paramChatMessage);
@@ -1636,13 +1764,13 @@ public class ApolloUtil
         if (QLog.isColorLevel()) {
           QLog.d("ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] apollo status open, grab action playModel:", Integer.valueOf(paramInt1), ",is3DWhiteFaceOpen:", Boolean.valueOf(paramBoolean) });
         }
-        localObject1 = (aliw)paramQQAppInterface.getManager(155);
+        localObject1 = (ancd)paramQQAppInterface.getManager(155);
         paramAnimationTextView = paramAnimationTextView.getText();
-        if ((paramAnimationTextView == null) || (!(paramAnimationTextView instanceof bamp))) {
+        if ((paramAnimationTextView == null) || (!(paramAnimationTextView instanceof bdnt))) {
           break;
         }
         paramChatMessage.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
-        ThreadManager.post(new ApolloUtil.3(paramInt1, paramBoolean, paramAnimationTextView, (aliw)localObject1, paramQQAppInterface, paramSessionInfo, paramChatMessage), 5, null, false);
+        ThreadManager.post(new ApolloUtil.3(paramInt1, paramBoolean, paramAnimationTextView, (ancd)localObject1, paramQQAppInterface, paramSessionInfo, paramChatMessage), 5, null, false);
         return;
       }
       catch (Exception localException)
@@ -1697,20 +1825,18 @@ public class ApolloUtil
     }
   }
   
-  public static void a(String paramString1, String paramString2, alks paramalks) {}
-  
   public static void a(boolean paramBoolean)
   {
     try
     {
-      File localFile = new File(aliu.jdField_a_of_type_JavaLangString);
+      File localFile = new File(ancb.jdField_a_of_type_JavaLangString);
       if (!localFile.exists()) {
         return;
       }
       if (!localFile.isDirectory())
       {
         QLog.e("ApolloUtil", 1, "deleteApolloResource .apollo is not directory");
-        bdhb.a(aliu.jdField_a_of_type_JavaLangString, false);
+        bgmg.a(ancb.jdField_a_of_type_JavaLangString, false);
         return;
       }
     }
@@ -1721,14 +1847,14 @@ public class ApolloUtil
     }
     if (paramBoolean)
     {
-      bdhb.a(aliu.jdField_a_of_type_JavaLangString, false);
+      bgmg.a(ancb.jdField_a_of_type_JavaLangString, false);
       return;
     }
-    bdhb.a(aliu.g, false);
-    bdhb.a(aliu.f, false);
-    bdhb.a(aliu.jdField_d_of_type_JavaLangString, false);
-    bdhb.a(aliu.av, false);
-    aknx.e = null;
+    bgmg.a(ancb.g, false);
+    bgmg.a(ancb.f, false);
+    bgmg.a(ancb.jdField_d_of_type_JavaLangString, false);
+    bgmg.a(ancb.av, false);
+    amhd.e = null;
   }
   
   public static boolean a()
@@ -1742,7 +1868,7 @@ public class ApolloUtil
   public static boolean a(int paramInt)
   {
     String str = a(paramInt);
-    return (!TextUtils.isEmpty(str)) && (bdhb.a(str));
+    return (!TextUtils.isEmpty(str)) && (bgmg.a(str));
   }
   
   public static boolean a(int paramInt1, int paramInt2)
@@ -1750,9 +1876,9 @@ public class ApolloUtil
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, "[isActionResDone], actionId:" + paramInt1 + ",personNum:" + paramInt2);
     }
-    File localFile = new File(aliu.jdField_d_of_type_JavaLangString + paramInt1);
+    File localFile = new File(ancb.jdField_d_of_type_JavaLangString + paramInt1);
     if (paramInt1 < 21) {
-      localFile = new File(aliu.c, "/def/basic/action/" + paramInt1);
+      localFile = new File(ancb.c, "/def/basic/action/" + paramInt1);
     }
     if (!localFile.exists()) {
       if (QLog.isColorLevel()) {
@@ -1765,21 +1891,21 @@ public class ApolloUtil
       for (;;)
       {
         return false;
-        if (paramInt1 >= aliu.jdField_a_of_type_Int)
+        if (paramInt1 >= ancb.jdField_a_of_type_Int)
         {
-          if (c(localFile.getAbsolutePath() + "/action/" + aliu.R))
+          if (c(localFile.getAbsolutePath() + "/action/" + ancb.R))
           {
             if (paramInt2 == 0) {
               return true;
             }
             if (paramInt2 == 1) {
-              return c(localFile.getAbsolutePath() + "/action_peer/" + aliu.R);
+              return c(localFile.getAbsolutePath() + "/action_peer/" + ancb.R);
             }
           }
         }
         else
         {
-          if ((c(localFile.getAbsolutePath() + "/" + aliu.x)) && (c(localFile.getAbsolutePath() + "/" + aliu.y)) && (c(localFile.getAbsolutePath() + "/" + aliu.w))) {}
+          if ((c(localFile.getAbsolutePath() + "/" + ancb.x)) && (c(localFile.getAbsolutePath() + "/" + ancb.y)) && (c(localFile.getAbsolutePath() + "/" + ancb.w))) {}
           for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
           {
             if (paramInt2 != 0) {
@@ -1790,7 +1916,7 @@ public class ApolloUtil
         }
       }
     } while (paramInt2 != 1);
-    if ((c(localFile.getAbsolutePath() + "/" + aliu.A)) && (c(localFile.getAbsolutePath() + "/" + aliu.B)) && (c(localFile.getAbsolutePath() + "/" + aliu.z))) {}
+    if ((c(localFile.getAbsolutePath() + "/" + ancb.A)) && (c(localFile.getAbsolutePath() + "/" + ancb.B)) && (c(localFile.getAbsolutePath() + "/" + ancb.z))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -1801,7 +1927,7 @@ public class ApolloUtil
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, new Object[] { "[isWhiteFaceActionRscDone], actionId:", Integer.valueOf(paramInt1), ",subType:", Integer.valueOf(paramInt2), ",personNum:", Integer.valueOf(paramInt3), ",isGroup:", Boolean.valueOf(paramBoolean) });
     }
-    Object localObject1 = new File(aliu.jdField_d_of_type_JavaLangString + paramInt1 + "/action");
+    Object localObject1 = new File(ancb.jdField_d_of_type_JavaLangString + paramInt1 + "/action");
     if (!((File)localObject1).exists()) {
       if (QLog.isColorLevel()) {
         QLog.d("ApolloUtil", 2, "dir NOT exist." + ((File)localObject1).getPath());
@@ -1823,9 +1949,9 @@ public class ApolloUtil
         }
         for (;;)
         {
-          if (paramInt1 >= aliu.jdField_a_of_type_Int)
+          if (paramInt1 >= ancb.jdField_a_of_type_Int)
           {
-            if (!c((String)localObject1 + "action/" + aliu.R)) {
+            if (!c((String)localObject1 + "action/" + ancb.R)) {
               break;
             }
             if (paramInt3 == 0)
@@ -1848,11 +1974,11 @@ public class ApolloUtil
               if (paramInt3 != 1) {
                 break;
               }
-              return c((String)localObject1 + "action_peer/" + aliu.R);
+              return c((String)localObject1 + "action_peer/" + ancb.R);
             }
           }
         }
-        if ((c((String)localObject1 + aliu.x)) && (c((String)localObject1 + aliu.y)) && (c((String)localObject1 + aliu.w))) {}
+        if ((c((String)localObject1 + ancb.x)) && (c((String)localObject1 + ancb.y)) && (c((String)localObject1 + ancb.w))) {}
         for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
         {
           if (paramInt3 != 0) {
@@ -1862,7 +1988,7 @@ public class ApolloUtil
         }
       }
     } while (paramInt3 != 1);
-    if ((c((String)localObject1 + aliu.A)) && (c((String)localObject1 + aliu.B)) && (c((String)localObject1 + aliu.z))) {}
+    if ((c((String)localObject1 + ancb.A)) && (c((String)localObject1 + ancb.B)) && (c((String)localObject1 + ancb.z))) {}
     for (paramBoolean = true;; paramBoolean = false) {
       return paramBoolean;
     }
@@ -1871,7 +1997,7 @@ public class ApolloUtil
   public static boolean a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
     boolean bool = true;
-    Object localObject = new StringBuilder(aliu.jdField_d_of_type_JavaLangString + paramInt1);
+    Object localObject = new StringBuilder(ancb.jdField_d_of_type_JavaLangString + paramInt1);
     ((StringBuilder)localObject).append(File.separator);
     if (paramBoolean1) {
       ((StringBuilder)localObject).append("action_peer");
@@ -1897,6 +2023,19 @@ public class ApolloUtil
     }
   }
   
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    return bgnw.a(paramContext, c());
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    return (a(paramContext)) || ((amhd.a(paramQQAppInterface)) && (amhq.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(amhq.jdField_b_of_type_JavaLangString)));
+  }
+  
   public static boolean a(QQAppInterface paramQQAppInterface, View paramView)
   {
     boolean bool2 = true;
@@ -1914,7 +2053,7 @@ public class ApolloUtil
     if (paramQQAppInterface == null) {
       return false;
     }
-    if ((aknx.a(paramQQAppInterface, "drawer", null) > 0) && (aknx.a(BaseApplicationImpl.getContext(), Boolean.valueOf(false)))) {}
+    if ((amhd.a(paramQQAppInterface, "drawer", null) > 0) && (amhd.a(BaseApplicationImpl.getContext(), Boolean.valueOf(false)))) {}
     for (bool1 = bool2;; bool1 = false)
     {
       bool2 = bool1;
@@ -1937,7 +2076,7 @@ public class ApolloUtil
     {
       localObject = paramMessageRecord.msg;
       j = a(paramQQAppInterface, paramMessageRecord);
-      if (aknx.c("whiteFace3D") != 1) {
+      if (amhd.c("whiteFace3D") != 1) {
         break label250;
       }
       i = 1;
@@ -1952,21 +2091,21 @@ public class ApolloUtil
       if (j == 0) {
         QLog.w("ApolloUtil", 1, "getActionListFormMessage err user status");
       }
-      paramMessageRecord = (aliw)paramQQAppInterface.getManager(155);
-      localObject = new bamp((CharSequence)localObject, 2);
-      bamw[] arrayOfbamw = (bamw[])((bamp)localObject).getSpans(0, ((bamp)localObject).length(), bamw.class);
-      if ((arrayOfbamw != null) && (arrayOfbamw.length > 0) && (i != 0))
+      paramMessageRecord = (ancd)paramQQAppInterface.getManager(155);
+      localObject = new bdnt((CharSequence)localObject, 2);
+      bdoa[] arrayOfbdoa = (bdoa[])((bdnt)localObject).getSpans(0, ((bdnt)localObject).length(), bdoa.class);
+      if ((arrayOfbdoa != null) && (arrayOfbdoa.length > 0) && (i != 0))
       {
-        int k = arrayOfbamw.length;
+        int k = arrayOfbdoa.length;
         i = 0;
         for (;;)
         {
           if (i < k)
           {
-            int m = arrayOfbamw[i].a();
-            if (banh.a(m))
+            int m = arrayOfbdoa[i].a();
+            if (bdol.a(m))
             {
-              m = apsp.a(m);
+              m = arvq.a(m);
               if (m >= 0)
               {
                 m = b(paramMessageRecord, m, j);
@@ -1991,8 +2130,8 @@ public class ApolloUtil
           }
         }
       }
-      if ((paramList.size() == 0) && (1 == aknx.a(paramQQAppInterface))) {
-        b(paramQQAppInterface, paramSessionInfo, (bamp)localObject, paramList);
+      if ((paramList.size() == 0) && (1 == amhd.a(paramQQAppInterface))) {
+        b(paramQQAppInterface, paramSessionInfo, (bdnt)localObject, paramList);
       }
       for (boolean bool = true;; bool = false) {
         return bool;
@@ -2006,11 +2145,11 @@ public class ApolloUtil
     if ((paramMessageForApollo == null) || (paramQQAppInterface == null)) {
       return false;
     }
-    Object localObject1 = (aliw)paramQQAppInterface.getManager(155);
+    Object localObject1 = (ancd)paramQQAppInterface.getManager(155);
     if (ApolloGameUtil.a(paramMessageForApollo.msgType)) {}
-    for (localObject1 = ((aliw)localObject1).a(paramMessageForApollo.gameId);; localObject1 = null)
+    for (localObject1 = ((ancd)localObject1).a(paramMessageForApollo.gameId);; localObject1 = null)
     {
-      if ((aknx.c("gameSwitch") != 1) || ((localObject1 != null) && (!alit.a("8.3.5", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer))))
+      if ((amhd.c("gameSwitch") != 1) || ((localObject1 != null) && (!anca.a("8.4.1", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer))))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ApolloUtil", 2, "play apollo game msg but switch is 0 or version is incorrect");
@@ -2018,7 +2157,7 @@ public class ApolloUtil
         return false;
       }
       if (paramQQAppInterface.getApp() == null) {}
-      for (paramQQAppInterface = localObject2; (aknx.a(paramQQAppInterface)) && (paramMessageForApollo.istroop == 3000) && (aknx.c("discuss") == 0); paramQQAppInterface = paramQQAppInterface.getApp().getApplicationContext()) {
+      for (paramQQAppInterface = localObject2; (amhd.a(paramQQAppInterface)) && (paramMessageForApollo.istroop == 3000) && (amhd.c("discuss") == 0); paramQQAppInterface = paramQQAppInterface.getApp().getApplicationContext()) {
         return false;
       }
       return true;
@@ -2033,7 +2172,7 @@ public class ApolloUtil
     {
       return false;
       bool = true;
-      if (!arso.a(a(paramApolloActionData, 0))) {
+      if (!atwl.a(a(paramApolloActionData, 0))) {
         bool = false;
       }
     } while (!a(paramApolloActionData.actionId, paramApolloActionData.personNum));
@@ -2063,7 +2202,7 @@ public class ApolloUtil
     for (;;)
     {
       return false;
-      if ((c(paramString.getAbsolutePath() + "/" + aliu.x)) && (c(paramString.getAbsolutePath() + "/" + aliu.y)) && (c(paramString.getAbsolutePath() + "/" + aliu.w))) {}
+      if ((c(paramString.getAbsolutePath() + "/" + ancb.x)) && (c(paramString.getAbsolutePath() + "/" + ancb.y)) && (c(paramString.getAbsolutePath() + "/" + ancb.w))) {}
       for (int i = 1; i != 0; i = 0) {
         return true;
       }
@@ -2109,7 +2248,7 @@ public class ApolloUtil
   {
     try
     {
-      byte[] arrayOfByte = alud.a(2131700923).getBytes();
+      byte[] arrayOfByte = anni.a(2131699348).getBytes();
       return arrayOfByte;
     }
     catch (UnsupportedCharsetException localUnsupportedCharsetException)
@@ -2123,73 +2262,6 @@ public class ApolloUtil
       {
         QLog.e("ApolloUtil", 1, localThrowable.getMessage());
       }
-    }
-  }
-  
-  public static String[] a(float paramFloat1, float paramFloat2, List<aksr> paramList)
-  {
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "-1";
-    arrayOfString[1] = "";
-    Object localObject = paramList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      aksr localaksr = (aksr)((Iterator)localObject).next();
-      if ((localaksr.l > 0.0F) && (localaksr.k > 0.0F) && (paramFloat1 >= localaksr.i) && (paramFloat1 <= localaksr.i + localaksr.k) && (paramFloat2 >= localaksr.j) && (paramFloat2 <= localaksr.j + localaksr.l))
-      {
-        arrayOfString[0] = "2";
-        if (TextUtils.isEmpty(localaksr.jdField_b_of_type_JavaLangString)) {}
-        for (paramList = localaksr.jdField_a_of_type_JavaLangString;; paramList = localaksr.jdField_b_of_type_JavaLangString)
-        {
-          arrayOfString[1] = paramList;
-          return arrayOfString;
-        }
-      }
-    }
-    paramList = paramList.iterator();
-    label450:
-    do
-    {
-      if (paramList.hasNext())
-      {
-        localObject = (aksr)paramList.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSkeletonBounding", 2, "x:" + ((aksr)localObject).jdField_a_of_type_Float + ",y = " + ((aksr)localObject).jdField_b_of_type_Float + ",width = " + ((aksr)localObject).c + ",heigth = " + ((aksr)localObject).d);
-        }
-        if ((paramFloat1 < ((aksr)localObject).jdField_a_of_type_Float) || (paramFloat1 > ((aksr)localObject).jdField_a_of_type_Float + ((aksr)localObject).c) || (paramFloat2 < ((aksr)localObject).jdField_b_of_type_Float) || (paramFloat2 > ((aksr)localObject).jdField_b_of_type_Float + ((aksr)localObject).d)) {
-          continue;
-        }
-        arrayOfString[0] = "1";
-        if (!TextUtils.isEmpty(((aksr)localObject).jdField_b_of_type_JavaLangString)) {
-          break label450;
-        }
-      }
-      for (paramList = ((aksr)localObject).jdField_a_of_type_JavaLangString;; paramList = ((aksr)localObject).jdField_b_of_type_JavaLangString)
-      {
-        arrayOfString[1] = paramList;
-        if ((paramFloat1 >= ((aksr)localObject).e) && (paramFloat1 <= ((aksr)localObject).e + ((aksr)localObject).g) && (paramFloat2 >= ((aksr)localObject).f))
-        {
-          paramFloat1 = ((aksr)localObject).f;
-          if (paramFloat2 <= ((aksr)localObject).h + paramFloat1) {
-            arrayOfString[0] = "1000";
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSkeletonBounding", 2, "mNode:" + arrayOfString[0] + ",mApolloId = " + arrayOfString[1]);
-        }
-        return arrayOfString;
-      }
-    } while ((paramFloat1 < ((aksr)localObject).e) || (paramFloat1 > ((aksr)localObject).e + ((aksr)localObject).g) || (paramFloat2 < ((aksr)localObject).f) || (paramFloat2 > ((aksr)localObject).f + ((aksr)localObject).h));
-    arrayOfString[0] = "1000";
-    if (TextUtils.isEmpty(((aksr)localObject).jdField_b_of_type_JavaLangString)) {}
-    for (paramList = ((aksr)localObject).jdField_a_of_type_JavaLangString;; paramList = ((aksr)localObject).jdField_b_of_type_JavaLangString)
-    {
-      arrayOfString[1] = paramList;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ApolloSkeletonBounding", 2, "mNode:" + arrayOfString[0] + ",mApolloId = " + arrayOfString[1]);
-      break;
     }
   }
   
@@ -2221,7 +2293,7 @@ public class ApolloUtil
   private static int b(float paramFloat, String paramString, int paramInt1, int paramInt2)
   {
     Object localObject = new TextView(BaseApplicationImpl.getContext());
-    ((TextView)localObject).setTextSize(paramInt1 * 3 / bdgk.jdField_a_of_type_Float);
+    ((TextView)localObject).setTextSize(paramInt1 * 3 / bgln.jdField_a_of_type_Float);
     ((TextView)localObject).setText(paramString);
     localObject = ((TextView)localObject).getPaint();
     paramString = paramString.replaceAll("\r", "").split("\n");
@@ -2279,15 +2351,7 @@ public class ApolloUtil
     return 2;
   }
   
-  private static int b(aliw paramaliw, int paramInt1, int paramInt2)
-  {
-    if (((paramaliw.f == null) || (paramaliw.f.size() == 0)) && (paramInt2 == 1)) {
-      return i(paramInt1);
-    }
-    return paramaliw.a(paramInt1, paramInt2);
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo)
+  public static int b(amug paramamug, MessageForApollo paramMessageForApollo)
   {
     if ((paramMessageForApollo == null) || (paramMessageForApollo.mApolloMessage == null)) {
       throw new IllegalArgumentException("getPlayActionType, apolloMsg null");
@@ -2295,15 +2359,23 @@ public class ApolloUtil
     int i = paramMessageForApollo.actionType;
     if ((paramMessageForApollo.mApollo3DMessage != null) && (ApolloActionData.isAction3DModel(paramMessageForApollo.mApollo3DMessage.actionID_3D)))
     {
-      if (aknx.a(paramQQAppInterface)) {
+      if ((amhd.a(paramamug.a())) || (paramamug.g())) {
         return paramMessageForApollo.mApollo3DMessage.actionType_3D;
       }
-      paramQQAppInterface = ((aliw)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.mApolloMessage.id);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.actionType;
+      paramamug = ((ancd)paramamug.a().getManager(155)).a(paramMessageForApollo.mApolloMessage.id);
+      if (paramamug != null) {
+        return paramamug.actionType;
       }
     }
     return i;
+  }
+  
+  private static int b(ancd paramancd, int paramInt1, int paramInt2)
+  {
+    if (((paramancd.f == null) || (paramancd.f.size() == 0)) && (paramInt2 == 1)) {
+      return i(paramInt1);
+    }
+    return paramancd.a(paramInt1, paramInt2);
   }
   
   public static int b(String paramString)
@@ -2331,7 +2403,7 @@ public class ApolloUtil
     }
     String str = paramString;
     if (paramString.contains("def/role/0/")) {
-      str = f(paramString);
+      str = g(paramString);
     }
     paramString = new StringBuilder(8);
     int j = 0;
@@ -2373,7 +2445,7 @@ public class ApolloUtil
   public static String b(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(aliu.s).append(paramInt);
+    localStringBuilder.append(ancb.s).append(paramInt);
     return localStringBuilder.toString();
   }
   
@@ -2473,7 +2545,7 @@ public class ApolloUtil
     if (!TextUtils.isEmpty(paramMessageForApollo.gameName)) {
       return paramMessageForApollo.gameName;
     }
-    paramQQAppInterface = ((aliw)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.gameId);
+    paramQQAppInterface = ((ancd)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.gameId);
     if (paramQQAppInterface != null) {
       return paramQQAppInterface.name;
     }
@@ -2523,7 +2595,7 @@ public class ApolloUtil
   public static void b()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0);
-    String str = d();
+    String str = e();
     if (!TextUtils.isEmpty(str)) {
       localSharedPreferences.edit().putBoolean(str, true).apply();
     }
@@ -2535,16 +2607,16 @@ public class ApolloUtil
     if (!f(paramInt)) {
       return;
     }
-    if (apzf.a.containsKey("8.3.5"))
+    if (asdb.a.containsKey("8.4.1"))
     {
-      Object localObject = (List)apzf.a.get("8.3.5");
+      Object localObject = (List)asdb.a.get("8.4.1");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         jdField_c_of_type_Int += 1;
         if (jdField_c_of_type_Int >= ((List)localObject).size())
         {
           localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0);
-          String str = c();
+          String str = d();
           if (!jdField_b_of_type_Boolean)
           {
             if (!TextUtils.isEmpty(str)) {
@@ -2563,11 +2635,16 @@ public class ApolloUtil
     VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "cmshow", "Apollo", "expresstab_reddot_view", 0, 0, new String[] { String.valueOf(paramInt) });
   }
   
-  public static void b(beae parambeae) {}
-  
-  private static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, bamp parambamp, List<Integer> paramList)
+  public static void b(Activity paramActivity, String paramString1, String paramString2)
   {
-    if ((paramQQAppInterface == null) || (parambamp == null)) {}
+    bltn.b(paramActivity, paramString1, paramString2);
+  }
+  
+  public static void b(bhhf parambhhf) {}
+  
+  private static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, bdnt parambdnt, List<Integer> paramList)
+  {
+    if ((paramQQAppInterface == null) || (parambdnt == null)) {}
     long l1;
     Object localObject;
     HashMap localHashMap;
@@ -2576,19 +2653,19 @@ public class ApolloUtil
       do
       {
         return;
-      } while (!aknx.e());
+      } while (!amhd.e());
       l1 = System.currentTimeMillis();
-      parambamp = parambamp.c();
-      localObject = (aliw)paramQQAppInterface.getManager(155);
-      localHashMap = ((aliw)localObject).a();
+      parambdnt = parambdnt.c();
+      localObject = (ancd)paramQQAppInterface.getManager(155);
+      localHashMap = ((ancd)localObject).a();
     } while ((localHashMap == null) || (localHashMap.size() == 0));
-    int i1 = ((aliw)localObject).a();
+    int i1 = ((ancd)localObject).a();
     int i = 0;
     int k;
     for (int j = 0;; j = k)
     {
       int m;
-      if (i < parambamp.length()) {
+      if (i < parambdnt.length()) {
         m = i1;
       }
       int n;
@@ -2598,9 +2675,9 @@ public class ApolloUtil
         k = j;
         if (m > 0)
         {
-          if (i + m <= parambamp.length())
+          if (i + m <= parambdnt.length())
           {
-            localObject = parambamp.substring(i, i + m);
+            localObject = parambdnt.substring(i, i + m);
             if (localHashMap.containsKey(localObject))
             {
               paramList.add(localHashMap.get(localObject));
@@ -2641,8 +2718,8 @@ public class ApolloUtil
     do
     {
       return false;
-      if (!TextUtils.isEmpty(alit.jdField_a_of_type_JavaLangString)) {
-        return alit.jdField_a_of_type_JavaLangString.contains(str);
+      if (!TextUtils.isEmpty(anca.jdField_a_of_type_JavaLangString)) {
+        return anca.jdField_a_of_type_JavaLangString.contains(str);
       }
     } while (!str.contains("SM-G8870"));
     return true;
@@ -2654,7 +2731,7 @@ public class ApolloUtil
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, new Object[] { "[isWhiteFaceActionRscDone], actionId:", Integer.valueOf(paramInt) });
     }
-    Object localObject = new File(aliu.jdField_d_of_type_JavaLangString + paramInt + "/action");
+    Object localObject = new File(ancb.jdField_d_of_type_JavaLangString + paramInt + "/action");
     int j;
     if (!((File)localObject).exists())
     {
@@ -2670,25 +2747,25 @@ public class ApolloUtil
       {
         return j;
         localObject = ((File)localObject).getAbsolutePath();
-        if (paramInt < aliu.jdField_a_of_type_Int) {
+        if (paramInt < ancb.jdField_a_of_type_Int) {
           break;
         }
-        k = c((String)localObject + "/main/action/" + aliu.R);
+        k = c((String)localObject + "/main/action/" + ancb.R);
         j = k;
       } while (k == 0);
-      k &= c((String)localObject + "/pre/action/" + aliu.R);
+      k &= c((String)localObject + "/pre/action/" + ancb.R);
       j = k;
     } while (k == 0);
-    return k & c((String)localObject + "/post/action/" + aliu.R);
+    return k & c((String)localObject + "/post/action/" + ancb.R);
     int m;
-    if ((c((String)localObject + "/pre/" + aliu.x)) && (c((String)localObject + "/pre/" + aliu.y)) && (c((String)localObject + "/pre/" + aliu.w)))
+    if ((c((String)localObject + "/pre/" + ancb.x)) && (c((String)localObject + "/pre/" + ancb.y)) && (c((String)localObject + "/pre/" + ancb.w)))
     {
       j = 1;
       m = j;
       if (j == 0) {
         return m;
       }
-      if ((!c((String)localObject + "/main/" + aliu.x)) || (!c((String)localObject + "/main/" + aliu.y)) || (!c((String)localObject + "/main/" + aliu.w))) {
+      if ((!c((String)localObject + "/main/" + ancb.x)) || (!c((String)localObject + "/main/" + ancb.y)) || (!c((String)localObject + "/main/" + ancb.w))) {
         break label565;
       }
       paramInt = 1;
@@ -2698,7 +2775,7 @@ public class ApolloUtil
       if (j == 0) {
         return m;
       }
-      if ((!c((String)localObject + "/post/" + aliu.x)) || (!c((String)localObject + "/post/" + aliu.y)) || (!c((String)localObject + "/post/" + aliu.w))) {
+      if ((!c((String)localObject + "/post/" + ancb.x)) || (!c((String)localObject + "/post/" + ancb.y)) || (!c((String)localObject + "/post/" + ancb.w))) {
         break label570;
       }
     }
@@ -2740,7 +2817,7 @@ public class ApolloUtil
       }
       return false;
     }
-    return c(paramString.getAbsolutePath() + "/action/" + aliu.R);
+    return c(paramString.getAbsolutePath() + "/action/" + ancb.R);
   }
   
   public static int c(int paramInt)
@@ -2790,49 +2867,37 @@ public class ApolloUtil
     return 18;
   }
   
-  private static String c()
+  public static String c()
   {
-    if (apzf.a.containsKey("8.3.5"))
-    {
-      Object localObject = (List)apzf.a.get("8.3.5");
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("new_icon_show_times_").append(str);
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          int i = ((Integer)((Iterator)localObject).next()).intValue();
-          localStringBuilder.append("_").append(i);
-        }
-        return localStringBuilder.toString();
-      }
+    String str2 = amhq.jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "com.tencent.kapu";
     }
-    return null;
+    return str1;
   }
   
   public static String c(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append(aliu.m).append(paramInt);
+    localStringBuilder.append(ancb.m).append(paramInt);
     return localStringBuilder.toString();
   }
   
   public static String c(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo)
   {
     Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     if (paramQQAppInterface != null)
     {
-      localObject2 = localObject1;
+      localObject1 = localObject2;
       if (paramMessageForApollo != null)
       {
         if (paramMessageForApollo.mApolloMessage != null) {
           break label28;
         }
-        localObject2 = localObject1;
+        localObject1 = localObject2;
       }
     }
     label28:
@@ -2840,19 +2905,15 @@ public class ApolloUtil
     {
       do
       {
-        do
-        {
-          return localObject2;
-          localObject1 = localObject3;
-          if (paramMessageForApollo.mApolloMessage.name != null) {
-            localObject1 = new String(paramMessageForApollo.mApolloMessage.name);
-          }
-          localObject2 = localObject1;
-        } while (paramMessageForApollo.mApollo3DMessage == null);
-        localObject2 = localObject1;
-      } while (!ApolloActionData.isAction3DModel(paramMessageForApollo.mApollo3DMessage.actionID_3D));
-      localObject2 = localObject1;
-    } while (!aknx.a(paramQQAppInterface));
+        return localObject1;
+        paramQQAppInterface = localObject3;
+        if (paramMessageForApollo.mApolloMessage.name != null) {
+          paramQQAppInterface = new String(paramMessageForApollo.mApolloMessage.name);
+        }
+        localObject1 = paramQQAppInterface;
+      } while (paramMessageForApollo.mApollo3DMessage == null);
+      localObject1 = paramQQAppInterface;
+    } while (!ApolloActionData.isAction3DModel(paramMessageForApollo.mApollo3DMessage.actionID_3D));
     return paramMessageForApollo.mApollo3DMessage.actionName_3D;
   }
   
@@ -2863,43 +2924,43 @@ public class ApolloUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: invokestatic 85	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   5: invokevirtual 1877	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
+    //   5: invokevirtual 1913	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
     //   8: aload_0
-    //   9: invokevirtual 1883	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   9: invokevirtual 1919	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   12: astore_0
     //   13: aload_0
     //   14: ifnull +37 -> 51
     //   17: aload_0
     //   18: aload_0
-    //   19: invokevirtual 1888	java/io/InputStream:available	()I
+    //   19: invokevirtual 1924	java/io/InputStream:available	()I
     //   22: i2l
-    //   23: invokestatic 1894	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   26: invokestatic 1900	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   23: invokestatic 1930	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   26: invokestatic 1936	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   29: astore_1
     //   30: aload_1
     //   31: astore_2
     //   32: aload_0
     //   33: ifnull +9 -> 42
     //   36: aload_0
-    //   37: invokevirtual 1903	java/io/InputStream:close	()V
+    //   37: invokevirtual 1939	java/io/InputStream:close	()V
     //   40: aload_1
     //   41: astore_2
     //   42: aload_2
     //   43: areturn
     //   44: astore_0
     //   45: aload_0
-    //   46: invokevirtual 1906	java/io/IOException:printStackTrace	()V
+    //   46: invokevirtual 1942	java/io/IOException:printStackTrace	()V
     //   49: aload_1
     //   50: areturn
     //   51: aload_0
     //   52: ifnull -10 -> 42
     //   55: aload_0
-    //   56: invokevirtual 1903	java/io/InputStream:close	()V
+    //   56: invokevirtual 1939	java/io/InputStream:close	()V
     //   59: aconst_null
     //   60: areturn
     //   61: astore_0
     //   62: aload_0
-    //   63: invokevirtual 1906	java/io/IOException:printStackTrace	()V
+    //   63: invokevirtual 1942	java/io/IOException:printStackTrace	()V
     //   66: aconst_null
     //   67: areturn
     //   68: astore_0
@@ -2908,12 +2969,12 @@ public class ApolloUtil
     //   71: aload_0
     //   72: ifnull -30 -> 42
     //   75: aload_0
-    //   76: invokevirtual 1903	java/io/InputStream:close	()V
+    //   76: invokevirtual 1939	java/io/InputStream:close	()V
     //   79: aconst_null
     //   80: areturn
     //   81: astore_0
     //   82: aload_0
-    //   83: invokevirtual 1906	java/io/IOException:printStackTrace	()V
+    //   83: invokevirtual 1942	java/io/IOException:printStackTrace	()V
     //   86: aconst_null
     //   87: areturn
     //   88: astore_1
@@ -2922,12 +2983,12 @@ public class ApolloUtil
     //   91: aload_0
     //   92: ifnull +7 -> 99
     //   95: aload_0
-    //   96: invokevirtual 1903	java/io/InputStream:close	()V
+    //   96: invokevirtual 1939	java/io/InputStream:close	()V
     //   99: aload_1
     //   100: athrow
     //   101: astore_0
     //   102: aload_0
-    //   103: invokevirtual 1906	java/io/IOException:printStackTrace	()V
+    //   103: invokevirtual 1942	java/io/IOException:printStackTrace	()V
     //   106: goto -7 -> 99
     //   109: astore_1
     //   110: goto -19 -> 91
@@ -2967,7 +3028,7 @@ public class ApolloUtil
   public static void c(int paramInt)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0);
-    String str = c();
+    String str = d();
     if (!TextUtils.isEmpty(str))
     {
       jdField_b_of_type_Int = 3;
@@ -2986,9 +3047,9 @@ public class ApolloUtil
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (apzf.a.containsKey("8.3.5"))
+    if (asdb.a.containsKey("8.4.1"))
     {
-      List localList = (List)apzf.a.get("8.3.5");
+      List localList = (List)asdb.a.get("8.4.1");
       bool1 = bool2;
       if (localList != null)
       {
@@ -2997,7 +3058,7 @@ public class ApolloUtil
         {
           if (!jdField_c_of_type_Boolean)
           {
-            jdField_d_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getBoolean(d(), false);
+            jdField_d_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getBoolean(e(), false);
             jdField_c_of_type_Boolean = true;
           }
           if (jdField_d_of_type_Boolean) {
@@ -3017,9 +3078,9 @@ public class ApolloUtil
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, "[checkDressRes], dressId:" + paramInt);
     }
-    File localFile = new File(aliu.f + paramInt);
+    File localFile = new File(ancb.f + paramInt);
     if (paramInt < 21) {
-      localFile = new File(aliu.c, "/def/basic/dress/" + paramInt);
+      localFile = new File(ancb.c, "/def/basic/dress/" + paramInt);
     }
     if (!localFile.exists())
     {
@@ -3028,10 +3089,10 @@ public class ApolloUtil
       }
       return false;
     }
-    if (paramInt >= aliu.jdField_a_of_type_Int) {
-      return c(localFile.getAbsolutePath() + "/" + aliu.Q);
+    if (paramInt >= ancb.jdField_a_of_type_Int) {
+      return c(localFile.getAbsolutePath() + "/" + ancb.Q);
     }
-    if ((c(localFile.getAbsolutePath() + "/" + aliu.D)) && (c(localFile.getAbsolutePath() + "/" + aliu.E)) && (c(localFile.getAbsolutePath() + "/" + aliu.C))) {}
+    if ((c(localFile.getAbsolutePath() + "/" + ancb.D)) && (c(localFile.getAbsolutePath() + "/" + ancb.E)) && (c(localFile.getAbsolutePath() + "/" + ancb.C))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -3041,7 +3102,7 @@ public class ApolloUtil
   {
     String str = "";
     int i;
-    if (paramInt2 > aliu.jdField_a_of_type_Int)
+    if (paramInt2 > ancb.jdField_a_of_type_Int)
     {
       i = 1;
       switch (paramInt1)
@@ -3073,14 +3134,14 @@ public class ApolloUtil
       if (localFile.exists()) {
         break;
       }
-      e(paramString + alud.a(2131700929));
+      e(paramString + anni.a(2131699354));
     } while (!QLog.isColorLevel());
     QLog.d("ApolloUtil", 2, "ErrorInfo-> " + paramString + " NOT exist.");
     return false;
     if (localFile.length() == 0L)
     {
-      e(paramString + alud.a(2131700925));
-      albi.a(0, new Object[] { "ErrorInfo-> ", paramString, ",lenght is 0." });
+      e(paramString + anni.a(2131699350));
+      amuo.a(0, new Object[] { "ErrorInfo-> ", paramString, ",lenght is 0." });
       if (QLog.isColorLevel()) {
         QLog.d("ApolloUtil", 2, "ErrorInfo-> " + paramString + ",lenght is 0.");
       }
@@ -3102,14 +3163,14 @@ public class ApolloUtil
   
   private static String d()
   {
-    if (apzf.a.containsKey("8.3.5"))
+    if (asdb.a.containsKey("8.4.1"))
     {
-      Object localObject = (List)apzf.a.get("8.3.5");
+      Object localObject = (List)asdb.a.get("8.4.1");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("new_emoticon_popup_").append(str);
+        localStringBuilder.append("new_icon_show_times_").append(str);
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -3149,7 +3210,7 @@ public class ApolloUtil
       if (i == 17) {
         l = 1L;
       }
-      alhp.a(30, paramString, 300, -100, 0L, i, l, new Object[0]);
+      anaw.a(30, paramString, 300, -100, 0L, i, l, new Object[0]);
     }
   }
   
@@ -3161,7 +3222,7 @@ public class ApolloUtil
     File localFile1;
     if (paramInt == 0)
     {
-      localFile1 = new File(aliu.c, "/def/basic/skeleton/" + paramInt);
+      localFile1 = new File(ancb.c, "/def/basic/skeleton/" + paramInt);
       if (localFile1.exists()) {
         break label142;
       }
@@ -3174,22 +3235,22 @@ public class ApolloUtil
     do
     {
       return false;
-      localFile1 = new File(aliu.g + paramInt);
+      localFile1 = new File(ancb.g + paramInt);
       break;
-      localFile2 = new File(localFile1, aliu.O);
+      localFile2 = new File(localFile1, ancb.O);
       if ((paramInt == 0) || (localFile2.exists())) {
         break label252;
       }
-      e(localFile2.getPath() + alud.a(2131700931));
-      albi.a(0, new Object[] { "ROLE_FILE_CONFIG_NAME NOT exist.", localFile2.getPath() });
+      e(localFile2.getPath() + anni.a(2131699356));
+      amuo.a(0, new Object[] { "ROLE_FILE_CONFIG_NAME NOT exist.", localFile2.getPath() });
     } while (!QLog.isColorLevel());
     QLog.d("ApolloUtil", 2, "ROLE_FILE_CONFIG_NAME NOT exist." + localFile2.getPath());
     return false;
     label252:
-    if (paramInt >= aliu.jdField_a_of_type_Int) {
-      return c(localFile1.getAbsolutePath() + "/" + aliu.P);
+    if (paramInt >= ancb.jdField_a_of_type_Int) {
+      return c(localFile1.getAbsolutePath() + "/" + ancb.P);
     }
-    if ((c(localFile1.getAbsolutePath() + "/" + aliu.M)) && (c(localFile1.getAbsolutePath() + "/" + aliu.N)) && (c(localFile1.getAbsolutePath() + "/" + aliu.L))) {}
+    if ((c(localFile1.getAbsolutePath() + "/" + ancb.M)) && (c(localFile1.getAbsolutePath() + "/" + ancb.N)) && (c(localFile1.getAbsolutePath() + "/" + ancb.L))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -3210,10 +3271,10 @@ public class ApolloUtil
     do
     {
       return true;
-      paramString = bflr.d(paramString);
-      paramString = new File(aliu.j + paramString + File.separator + paramString + ".zip");
+      paramString = bita.d(paramString);
+      paramString = new File(ancb.j + paramString + File.separator + paramString + ".zip");
     } while (paramString.exists());
-    e(paramString + alud.a(2131700911));
+    e(paramString + anni.a(2131699336));
     if (QLog.isColorLevel()) {
       QLog.d("ApolloUtil", 2, "ErrorInfo-> " + paramString + " NOT exist.");
     }
@@ -3237,14 +3298,36 @@ public class ApolloUtil
     return 2;
   }
   
+  private static String e()
+  {
+    if (asdb.a.containsKey("8.4.1"))
+    {
+      Object localObject = (List)asdb.a.get("8.4.1");
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("new_emoticon_popup_").append(str);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          int i = ((Integer)((Iterator)localObject).next()).intValue();
+          localStringBuilder.append("_").append(i);
+        }
+        return localStringBuilder.toString();
+      }
+    }
+    return null;
+  }
+  
   public static String e(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return aliu.jdField_a_of_type_JavaLangString;
+      return ancb.jdField_a_of_type_JavaLangString;
     case 1: 
-      return aliu.c;
+      return ancb.c;
     }
     return BaseApplicationImpl.getApplication().getFilesDir() + "";
   }
@@ -3274,7 +3357,7 @@ public class ApolloUtil
     if (!jdField_b_of_type_Boolean)
     {
       SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0);
-      String str = c();
+      String str = d();
       if (!TextUtils.isEmpty(str)) {
         jdField_b_of_type_Int = localSharedPreferences.getInt(str, 0);
       }
@@ -3294,9 +3377,9 @@ public class ApolloUtil
       QLog.d("ApolloUtil", 2, "[isBubbleRscExist], roleId:" + paramInt1 + ",bubbleId:" + paramInt2);
     }
     if (paramInt1 == 0) {}
-    for (File localFile1 = new File(aliu.c, "/def/role/" + paramInt1);; localFile1 = new File(aliu.g + paramInt1))
+    for (File localFile1 = new File(ancb.c, "/def/role/" + paramInt1);; localFile1 = new File(ancb.g + paramInt1))
     {
-      localFile1 = new File(localFile1, aliu.F + "/" + paramInt2);
+      localFile1 = new File(localFile1, ancb.F + "/" + paramInt2);
       if (localFile1.exists()) {
         break;
       }
@@ -3305,7 +3388,7 @@ public class ApolloUtil
       }
       return false;
     }
-    File localFile2 = new File(localFile1, aliu.D);
+    File localFile2 = new File(localFile1, ancb.D);
     if (!localFile2.exists())
     {
       if (QLog.isColorLevel()) {
@@ -3321,7 +3404,7 @@ public class ApolloUtil
       localFile2.delete();
       return false;
     }
-    localFile2 = new File(localFile1, aliu.E);
+    localFile2 = new File(localFile1, ancb.E);
     if (!localFile2.exists())
     {
       if (QLog.isColorLevel()) {
@@ -3337,7 +3420,7 @@ public class ApolloUtil
       localFile2.delete();
       return false;
     }
-    localFile1 = new File(localFile1, aliu.C);
+    localFile1 = new File(localFile1, ancb.C);
     if (!localFile1.exists())
     {
       if (QLog.isColorLevel()) {
@@ -3384,18 +3467,28 @@ public class ApolloUtil
     return "me";
   }
   
-  private static String f(String paramString)
+  public static String f(String paramString)
   {
-    Matcher localMatcher = Pattern.compile("/\\d+/").matcher(paramString);
-    for (paramString = ""; localMatcher.find(); paramString = localMatcher.group()) {}
-    return paramString;
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String str = paramString;
+      if (paramString.endsWith("_pet")) {
+        str = paramString.substring(0, paramString.indexOf("_"));
+      }
+      localObject = str;
+      if (str.endsWith("#")) {
+        localObject = str.substring(0, str.indexOf("#"));
+      }
+    }
+    return localObject;
   }
   
   public static void f(String paramString)
   {
     if ((TextUtils.isEmpty(paramString)) || (!new File(paramString).exists()))
     {
-      QQToast.a(BaseActivity.sTopActivity, alud.a(2131700921), 1).a();
+      QQToast.a(BaseActivity.sTopActivity, anni.a(2131699346), 1).a();
       return;
     }
     QLog.d("ApolloUtil", 1, new Object[] { "replaceCmshow3dResource, filePath=", paramString });
@@ -3408,12 +3501,12 @@ public class ApolloUtil
     Object localObject3;
     try
     {
-      localObject2 = aliu.jdField_a_of_type_JavaLangString + "/tempReplace/";
+      localObject2 = ancb.jdField_a_of_type_JavaLangString + "/tempReplace/";
       localObject1 = new File((String)localObject2);
       if (((File)localObject1).exists()) {
-        arso.a((File)localObject1);
+        atwl.a((File)localObject1);
       }
-      ndr.a(new File(paramString), (String)localObject2);
+      nmk.a(new File(paramString), (String)localObject2);
       j = 0;
       i = 0;
       l1 = -1L;
@@ -3438,7 +3531,7 @@ public class ApolloUtil
       if ((((File)localObject2).isFile()) && (((File)localObject2).getName().equals("skeleton.bin")))
       {
         k = 1;
-        bdhb.a((File)localObject2, new File(aliu.g + 3100045L + "/skeleton.bin"));
+        bgmg.a((File)localObject2, new File(ancb.g + 3100045L + "/skeleton.bin"));
         l2 = l1;
       }
       else if ((((File)localObject2).isDirectory()) && (((File)localObject2).getName().equals("action")))
@@ -3448,7 +3541,7 @@ public class ApolloUtil
         if (((File)localObject3).exists()) {
           ((File)localObject3).delete();
         }
-        bdhb.a((File)localObject2, (File)localObject3);
+        bgmg.a((File)localObject2, (File)localObject3);
         l2 = l1;
         k = i;
       }
@@ -3456,7 +3549,7 @@ public class ApolloUtil
     catch (Exception paramString)
     {
       QLog.e("ApolloUtil", 1, "replaceCmshow3dResource, error=", paramString);
-      QQToast.a(BaseActivity.sTopActivity, alud.a(2131700924), 0).a();
+      QQToast.a(BaseActivity.sTopActivity, anni.a(2131699349), 0).a();
       return;
     }
     long l2 = l1;
@@ -3496,7 +3589,7 @@ public class ApolloUtil
               if (!((File)localObject3).getName().equals("face.zip")) {
                 break label1108;
               }
-              ndr.a((File)localObject3, aliu.g + 3100045L + "/");
+              nmk.a((File)localObject3, ancb.g + 3100045L + "/");
               l2 = l1;
               break label1095;
             }
@@ -3506,14 +3599,14 @@ public class ApolloUtil
     }
     for (;;)
     {
-      ndr.a((File)localObject3, aliu.f + l1 + "/");
+      nmk.a((File)localObject3, ancb.f + l1 + "/");
       l2 = l1;
       break label1095;
       label575:
-      arso.a((File)localObject1);
+      atwl.a((File)localObject1);
       if (k == 0)
       {
-        QQToast.a(BaseActivity.sTopActivity, alud.a(2131700922), 0).a();
+        QQToast.a(BaseActivity.sTopActivity, anni.a(2131699347), 0).a();
         return;
       }
       Object localObject4;
@@ -3522,9 +3615,9 @@ public class ApolloUtil
       {
         QLog.d("ApolloUtil", 1, new Object[] { "replaceCmshow3dResource, dressEndId=", Long.valueOf(l2) });
         paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localObject1 = (aknx)paramString.getManager(153);
+        localObject1 = (amhd)paramString.getManager(153);
         localObject4 = paramString.getCurrentAccountUin();
-        localObject2 = ((aknx)localObject1).b((String)localObject4);
+        localObject2 = ((amhd)localObject1).b((String)localObject4);
         if (localObject2 == null) {
           break;
         }
@@ -3547,7 +3640,7 @@ public class ApolloUtil
       {
         if (l3 != 0L)
         {
-          bdhb.a(new File(aliu.g + l3 + "/config.json"), new File(aliu.g + 3100045L + "/config.json"));
+          bgmg.a(new File(ancb.g + l3 + "/config.json"), new File(ancb.g + 3100045L + "/config.json"));
           localObject3 = new JSONObject();
           l3 = System.currentTimeMillis() / 1000L;
           ((JSONObject)localObject3).put("uin", Long.parseLong((String)localObject4));
@@ -3565,15 +3658,15 @@ public class ApolloUtil
             localJSONObject.put("ts", l1);
             ((JSONArray)localObject4).put(localJSONObject);
           }
-          QQToast.a(BaseActivity.sTopActivity, alud.a(2131700918), 0).a();
+          QQToast.a(BaseActivity.sTopActivity, anni.a(2131699343), 0).a();
           return;
         }
-        QQToast.a(BaseActivity.sTopActivity, alud.a(2131700928), 0).a();
+        QQToast.a(BaseActivity.sTopActivity, anni.a(2131699353), 0).a();
         return;
         ((JSONObject)localObject3).put("dresslist", localObject4);
         ((ApolloBaseInfo)localObject2).setApolloDress3D(paramString, (JSONObject)localObject3);
-        ((aknx)localObject1).a((ApolloBaseInfo)localObject2);
-        QQToast.a(BaseActivity.sTopActivity, alud.a(2131700936), 0).a();
+        ((amhd)localObject1).a((ApolloBaseInfo)localObject2);
+        QQToast.a(BaseActivity.sTopActivity, anni.a(2131699361), 0).a();
         return;
       }
       j += 1;
@@ -3595,9 +3688,9 @@ public class ApolloUtil
   
   public static boolean f(int paramInt)
   {
-    if (apzf.a.containsKey("8.3.5"))
+    if (asdb.a.containsKey("8.4.1"))
     {
-      Object localObject = (List)apzf.a.get("8.3.5");
+      Object localObject = (List)asdb.a.get("8.4.1");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -3645,19 +3738,19 @@ public class ApolloUtil
   public static String g(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(aliu.jdField_d_of_type_JavaLangString).append(paramInt).append(File.separator).append("action/").append("music.amr");
+    localStringBuilder.append(ancb.jdField_d_of_type_JavaLangString).append(paramInt).append(File.separator).append("action/").append("music.amr");
     String str = localStringBuilder.toString();
     Object localObject = str;
-    if (!bdhb.a(str))
+    if (!bgmg.a(str))
     {
       int i = str.length();
       localStringBuilder.delete(str.length() - "music.amr".length(), i);
       localStringBuilder.append("music/");
       localObject = localStringBuilder.toString();
-      if (!bdhb.a((String)localObject)) {
+      if (!bgmg.a((String)localObject)) {
         break label281;
       }
-      localObject = new File((String)localObject).list(new alkq());
+      localObject = new File((String)localObject).list(new andy());
       if (localObject == null) {
         break label266;
       }
@@ -3698,6 +3791,13 @@ public class ApolloUtil
     }
   }
   
+  private static String g(String paramString)
+  {
+    Matcher localMatcher = Pattern.compile("/\\d+/").matcher(paramString);
+    for (paramString = ""; localMatcher.find(); paramString = localMatcher.group()) {}
+    return paramString;
+  }
+  
   public static boolean g(int paramInt)
   {
     boolean bool2 = false;
@@ -3734,7 +3834,7 @@ public class ApolloUtil
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    alhp.a(20);
+    anaw.a(20);
     int i;
     if (paramBoolean)
     {
@@ -3749,7 +3849,7 @@ public class ApolloUtil
     for (;;)
     {
       localStringBuilder.append("crashType=").append(paramString1).append(", crashStack=").append(paramString2);
-      alhp.a(20, 1, i, new Object[] { localStringBuilder.toString() });
+      anaw.a(20, 1, i, new Object[] { localStringBuilder.toString() });
       return;
       i = 30;
       if (paramString1.contains("NullPointerException")) {
@@ -3768,7 +3868,7 @@ public class ApolloUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,38 @@
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.1;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class asbs
-  extends asbm
+class asbs
+  implements awnc<EmoticonPackage>
 {
-  public static int a;
-  public static int b = 1;
-  private ameq jdField_a_of_type_Ameq = new asbt(this);
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new asbv(this);
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private asbw jdField_a_of_type_Asbw;
-  private bdbb jdField_a_of_type_Bdbb;
-  private bdbc jdField_a_of_type_Bdbc = new asbu(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
+  asbs(asbq paramasbq, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public asbs(bdjz parambdjz)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    super(parambdjz);
-  }
-  
-  private void b(String paramString)
-  {
-    ThreadManager.getFileThreadHandler().post(new ForwardPreviewTroopMemberController.1(this, paramString));
-  }
-  
-  protected int a()
-  {
-    return 380;
-  }
-  
-  protected View a()
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null)
+    int i = awfd.a(this.jdField_a_of_type_Asbq.a.magicValue);
+    if ((-1 != i) && (paramEmoticonPackage != null))
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      int i = aepi.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.rightMargin = i;
-      localLayoutParams.leftMargin = i;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+      paramEmoticonPackage.rscType = i;
+      ((awmr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramEmoticonPackage);
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    QLog.i("Forward.Preview.Dialog", 1, "bindData title: " + paramString1 + " uin: " + paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramQQAppInterface = "";
+    paramEmoticonPackage = "rscType?" + i + ";value=" + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Asbq.a.magicValue = paramEmoticonPackage;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + paramEmoticonPackage);
     }
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface;
-    a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ameq);
-    this.jdField_a_of_type_Bdbb = new bdbb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Bdbb.a(this.jdField_a_of_type_Bdbc);
-    this.jdField_a_of_type_Asbw = new asbw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bdbb);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Asbw);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    d();
-    if (paramInt == 1) {
-      ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).o(this.jdField_a_of_type_JavaLangString);
-    }
-    while (paramInt != 3000) {
+    awfj localawfj = awgb.a(this.jdField_a_of_type_Asbq.a, 0);
+    if ((localawfj != null) && (!localawfj.c))
+    {
+      adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asbq.a);
       return;
     }
-    b(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c()
-  {
-    QLog.i("Forward.Preview.Dialog", 1, "onDestroy.");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ameq);
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
-    }
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_Asbq.a, new asbt(this, paramEmoticonPackage));
   }
 }
 

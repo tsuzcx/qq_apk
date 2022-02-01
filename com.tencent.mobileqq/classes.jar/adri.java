@@ -1,98 +1,26 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adri
-  extends BroadcastReceiver
+final class adri
+  implements DialogInterface.OnClickListener
 {
-  public adri(QQMapActivity paramQQMapActivity) {}
+  adri(QQAppInterface paramQQAppInterface, adsy paramadsy, long paramLong, Context paramContext, adsx paramadsx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Adsy.jdField_a_of_type_Int, this.jdField_a_of_type_Adsy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adsy.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Adsy.jdField_a_of_type_Boolean) {
+      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
-    {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
-        try
-        {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            paramContext.printStackTrace();
-          }
-          this.a.a(null, null);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
-      }
-      this.a.a(null);
+    this.jdField_a_of_type_Adsy.b = false;
+    this.jdField_a_of_type_Adsy.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Adsy.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_Adsy);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

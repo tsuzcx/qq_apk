@@ -1,22 +1,53 @@
-public abstract interface slk
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+
+public class slk
+  extends AbsThirdDataSourceAdapter
 {
-  public abstract void a(String paramString);
+  int jdField_a_of_type_Int = 2;
+  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b = 0;
+  private int c = 0;
   
-  public abstract boolean b();
+  public slk(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract String c();
+  public int getPlayType()
+  {
+    return this.c;
+  }
   
-  public abstract boolean c();
+  public int getStaus()
+  {
+    return this.b;
+  }
   
-  public abstract String d();
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract boolean d();
-  
-  public abstract String e();
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    this.b = 1;
+    paramOnPreparedCallback = slm.a();
+    sll localsll = new sll(this);
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
+      paramOnPreparedCallback.a(paramString, localsll);
+    }
+    while (this.jdField_a_of_type_Int != 4) {
+      return;
+    }
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localsll);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     slk
  * JD-Core Version:    0.7.0.1
  */

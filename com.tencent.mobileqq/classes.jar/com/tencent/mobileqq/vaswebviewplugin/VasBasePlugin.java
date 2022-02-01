@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import begz;
+import bhod;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract class VasBasePlugin
@@ -34,7 +34,7 @@ public abstract class VasBasePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBasePlugin
  * JD-Core Version:    0.7.0.1
  */

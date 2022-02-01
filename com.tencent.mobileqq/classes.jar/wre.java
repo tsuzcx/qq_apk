@@ -1,35 +1,63 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class wre
-  implements URLDrawable.URLDrawableListener
 {
-  public wre(AutoPlayImageView paramAutoPlayImageView) {}
+  public final int a;
+  public final int b;
+  public final int c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public wre(int paramInt1, int paramInt2)
   {
-    if (AutoPlayImageView.a(this.a) == 2) {
-      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
+  }
+  
+  public wre(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public static wre a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation != null) {
+      return new wre((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
+    }
+    return new wre(0, 0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-      return;
-    }
-    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
+      paramObject = (wre)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 31 + this.b;
+  }
+  
+  public String toString()
+  {
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wre
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,17 @@
+import android.content.Context;
+
 public class bmhm
-  extends uli
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  public static Context a;
   
-  public bmhm(int paramInt, boolean paramBoolean)
+  public static Context a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return a;
   }
   
-  public int a()
+  public static void a(Context paramContext)
   {
-    return this.jdField_a_of_type_Int;
+    a = paramContext;
   }
 }
 

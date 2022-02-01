@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class nsn
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+class nsn
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.DownloadBarInfo[paramInt];
-  }
+  nsn(nsm paramnsm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsn
  * JD-Core Version:    0.7.0.1
  */

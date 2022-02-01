@@ -1,18 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class wtp
-  implements wsy
+public class wtp
+  implements bhye
 {
-  wtp(wtd paramwtd) {}
+  public wtp(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void a(String paramString)
   {
-    wxe.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    this.a.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtp
  * JD-Core Version:    0.7.0.1
  */

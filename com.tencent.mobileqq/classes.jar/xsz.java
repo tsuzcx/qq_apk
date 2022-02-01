@@ -1,34 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
 class xsz
-  implements Cloneable
+  implements DialogInterface.OnDismissListener
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b = -1;
-  public String b;
-  public int c = -1;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "0";
+  xsz(xsw paramxsw, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xsz(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Double = -1.0D;
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public xsz a()
-  {
-    return (xsz)super.clone();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsz
  * JD-Core Version:    0.7.0.1
  */

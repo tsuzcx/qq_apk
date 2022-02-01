@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.ark.ark.VariantWrapper;
 
 class apgy
-  implements DialogInterface.OnClickListener
+  implements apid
 {
-  apgy(apgx paramapgx) {}
+  apgy(apgx paramapgx, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    aphn.a().b(this.a.jdField_a_of_type_Apgp);
-    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apgx.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    apgu.a(this.jdField_a_of_type_Apgx.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

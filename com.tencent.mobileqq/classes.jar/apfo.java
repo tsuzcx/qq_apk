@@ -1,37 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class apfo
-  extends MSFServlet
+  implements DialogInterface.OnDismissListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent == null) {}
-    while (!(paramIntent instanceof QzoneCommonIntent)) {
-      return;
-    }
-    paramIntent = (QzoneCommonIntent)paramIntent;
-    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
-  }
+  public apfo(ARScanEntryView paramARScanEntryView) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramIntent instanceof QzoneCommonIntent))
-    {
-      bjdo localbjdo = ((QzoneCommonIntent)paramIntent).getRequest();
-      byte[] arrayOfByte = localbjdo.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localbjdo.uniKey());
-      paramPacket.putSendData(paramIntent);
-    }
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

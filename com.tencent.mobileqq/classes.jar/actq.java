@@ -1,15 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.qphone.base.util.QLog;
 
 public class actq
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public actq(DialogActivity paramDialogActivity) {}
+  private actq(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.cancel();
+    int i;
+    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    {
+      i = paramIntent.getIntExtra("state", 0);
+      if (i != 1) {
+        break label43;
+      }
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
+    }
+    label43:
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 0);
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
+    } while (!this.a.a);
+    GdtVideoCommonView.d(this.a);
   }
 }
 

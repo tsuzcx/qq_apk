@@ -26,18 +26,23 @@ import com.tencent.mobileqq.sveffects.libsveffects.BuildConfig;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.facedetect.FaceStatus;
+import com.tencent.ttpic.openai.ttpicmodule.AEGenderDetector;
 import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.PTFaceDetector;
+import com.tencent.ttpic.openapi.PTGenderAttr;
+import com.tencent.ttpic.openapi.PTGenderAttr.GenderInfo;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.FACE_DETECT_MODE;
+import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.filter.VideoFilterListExtension;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.model.StarParam;
 import com.tencent.ttpic.openapi.plugin.AICtrl;
 import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
-import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
@@ -161,23 +166,75 @@ public class QQFilterRenderManager
     localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
     localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
     localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "scale", Float.valueOf((float)getWindowScale()));
+    if (this.aiAttr != null)
+    {
+      localObject2 = (PTFaceAttr)this.aiAttr.getFaceAttr();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = PTFaceAttr.EmptyFaceAttr;
+      }
+      localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "faceInfoList", localObject1);
+      localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "resetGender", Boolean.valueOf(false));
+    }
     localAIParam.setSurfaceTime(System.currentTimeMillis() * 1000000L);
-    AICtrl localAICtrl = new AICtrl();
-    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
-    localAICtrl.switchModule(AEDetectorType.EMOTION.value, this.needEmotionDetect);
-    localAICtrl.switchModule(AEDetectorType.HAND.value, this.needHandDetect);
-    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, this.needSegment);
-    this.aeDetector.getFaceDetector().setGenderDetectable(this.needGenderDetect);
-    AIInput localAIInput = new AIInput();
-    localAIInput.setInputTexture(paramFrame.getTextureId());
-    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
+    Object localObject1 = new AICtrl();
+    ((AICtrl)localObject1).switchModule(AEDetectorType.FACE.value, true);
+    ((AICtrl)localObject1).switchModule(AEDetectorType.EMOTION.value, this.needEmotionDetect);
+    ((AICtrl)localObject1).switchModule(AEDetectorType.HAND.value, this.needHandDetect);
+    ((AICtrl)localObject1).switchModule(AEDetectorType.SEGMENT.value, this.needSegment);
+    ((AICtrl)localObject1).switchModule(AEDetectorType.GENDER_DETECT.value, this.needGenderDetect);
+    Object localObject2 = new AIInput();
+    ((AIInput)localObject2).setInputTexture(paramFrame.getTextureId());
+    this.aiAttr = this.aeDetector.detectFrame((AIInput)localObject2, localAIParam, (AICtrl)localObject1);
     this.aiAttr.getOutTexture();
     this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
-    this.mDetectedFace = this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
-    this.mEndTime = SystemClock.elapsedRealtimeNanos();
-    long l = (this.mEndTime - this.mBeginTime) / 1000L;
-    if (SLog.isEnable()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us]");
+    if (this.mFaceAttr == null) {
+      this.mFaceAttr = PTFaceAttr.EmptyFaceAttr;
+    }
+    paramFrame = this.mFaceAttr.getFaceInfoList();
+    localObject1 = this.mFaceAttr.getFaceStatusList();
+    localObject2 = (PTGenderAttr)this.aiAttr.getAvailableData(AEDetectorType.GENDER_DETECT.value);
+    if (localObject2 != null)
+    {
+      localObject2 = ((PTGenderAttr)localObject2).getGenderInfos();
+      if ((paramFrame != null) && (localObject2 != null) && (paramFrame.size() == ((List)localObject2).size()))
+      {
+        i = 0;
+        if (i < paramFrame.size())
+        {
+          j = 0;
+          label507:
+          if (j >= ((List)localObject2).size()) {
+            break label739;
+          }
+          if (((FaceInfo)paramFrame.get(i)).faceId == ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).faceId)
+          {
+            ((FaceInfo)paramFrame.get(i)).gender = ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).gender;
+            ((FaceStatus)((List)localObject1).get(i)).gender = ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).gender;
+          }
+        }
+      }
+    }
+    label739:
+    for (int j = 1;; j = 0)
+    {
+      if (j == 0)
+      {
+        ((FaceInfo)paramFrame.get(i)).gender = 0;
+        ((FaceStatus)((List)localObject1).get(i)).gender = 0;
+      }
+      i += 1;
+      break;
+      j += 1;
+      break label507;
+      this.mDetectedFace = this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
+      this.mEndTime = SystemClock.elapsedRealtimeNanos();
+      long l = (this.mEndTime - this.mBeginTime) / 1000L;
+      if (SLog.isEnable()) {
+        SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us]");
+      }
+      return;
     }
   }
   
@@ -507,10 +564,10 @@ public class QQFilterRenderManager
       int i = this.aeDetector.init();
       this.aiAttr = null;
       if (i != 0) {
-        break label138;
+        break label154;
       }
     }
-    label138:
+    label154:
     for (boolean bool = true;; bool = false)
     {
       this.isAEDetectorInited = bool;
@@ -520,12 +577,15 @@ public class QQFilterRenderManager
         AIManager.installDetector(AEHandDetector.class, str1, str1);
       }
       if (this.needSegment) {
-        AIManager.installDetector(PTSegmenter.class, str2, str1);
+        AIManager.installDetector(PTHumanSegmenter.class, str2, str1);
       }
-      if (!this.needEmotionDetect) {
+      if (this.needEmotionDetect) {
+        AIManager.installDetector(PTEmotionDetector.class, str1, str1);
+      }
+      if (!this.needGenderDetect) {
         break;
       }
-      AIManager.installDetector(PTEmotionDetector.class, str1, str1);
+      AIManager.installDetector(AEGenderDetector.class, str1, str1);
       return;
     }
   }
@@ -784,7 +844,7 @@ public class QQFilterRenderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager
  * JD-Core Version:    0.7.0.1
  */

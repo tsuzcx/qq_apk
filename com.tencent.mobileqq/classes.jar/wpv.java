@@ -1,62 +1,38 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wpv
-  extends umf<wpr, whz>
+  extends anxg
 {
-  public wpv(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  wpv(wpu paramwpu) {}
   
-  public void a(@NonNull wpr paramwpr, @NonNull whz paramwhz)
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    int i = 1;
-    if (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      localObject = paramwpr.a(paramwhz.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramwhz.jdField_a_of_type_JavaLangString });
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
       }
     }
-    else
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
     {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
       return;
-    }
-    if (!(localObject instanceof woi))
-    {
-      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramwhz.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = (woi)localObject;
-    ((woi)localObject).a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.c);
-    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((woi)localObject).a;
-    if (paramwhz.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localCommentLikeFeedItem.mCommentIsEnd = i;
-      ((CommentLikeFeedItem)((woi)localObject).a).mCommentLastCookie = paramwhz.jdField_b_of_type_JavaLangString;
-      ((CommentLikeFeedItem)((woi)localObject).a).mCommentCount = paramwhz.jdField_b_of_type_Int;
-      ((woy)uwa.a(11)).a(((woi)localObject).a);
-      wpr.a(paramwpr).b(paramwhz.jdField_a_of_type_JavaLangString);
-      wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramwhz.jdField_a_of_type_JavaLangString, Integer.valueOf(((woi)localObject).b().size()), Boolean.valueOf(paramwhz.jdField_a_of_type_Boolean), paramwhz.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return whz.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull whz paramwhz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpv
  * JD-Core Version:    0.7.0.1
  */

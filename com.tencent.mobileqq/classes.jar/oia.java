@@ -1,28 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class oia
-  implements View.OnClickListener
+  implements bkhw
 {
-  public oia(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public oia(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
-    {
-      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
+    if (this.a.a) {
       return;
     }
-    nrt.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    this.a.finish();
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
+    this.a.a = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      this.a.j();
+      this.a.finish();
+      continue;
+      this.a.k();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oia
  * JD-Core Version:    0.7.0.1
  */

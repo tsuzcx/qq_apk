@@ -43,7 +43,7 @@ class PreloadManager$ReadFileThread
     //   51: dup
     //   52: new 57	java/io/File
     //   55: dup
-    //   56: getstatic 62	alof:cH	Ljava/lang/String;
+    //   56: getstatic 62	anhk:cK	Ljava/lang/String;
     //   59: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
     //   62: aload 4
     //   64: invokespecial 68	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -403,7 +403,7 @@ class PreloadManager$ReadFileThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.ReadFileThread
  * JD-Core Version:    0.7.0.1
  */

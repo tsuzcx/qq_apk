@@ -1,59 +1,26 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class oxq
-  implements Comparable<oxq>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentHideButtonClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxq
+  implements owp
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  
-  private oxq(oxp paramoxp)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_b_of_type_JavaLangString = "nil";
-  }
-  
-  public int a(oxq paramoxq)
-  {
-    if (paramoxq.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
-      return 1;
-    }
-    if (paramoxq.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    int j = 1;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      localStringBuilder = localStringBuilder.append(i).append("_");
-      if (!this.jdField_b_of_type_Boolean) {
-        break label128;
-      }
-    }
-    label128:
-    for (int i = j;; i = 0)
-    {
-      return i + "_" + this.jdField_b_of_type_JavaLangString;
-      i = 0;
-      break;
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxr(parampan, parampay));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxq
  * JD-Core Version:    0.7.0.1
  */

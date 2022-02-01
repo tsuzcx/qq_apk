@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class EntryDebugFragment
   extends IphoneTitleBarFragment
@@ -37,19 +38,19 @@ public class EntryDebugFragment
     this.mContentView.setBackgroundColor(-1);
     paramLayoutInflater = new int[7];
     LayoutInflater tmp21_20 = paramLayoutInflater;
-    tmp21_20[0] = 2131372465;
+    tmp21_20[0] = 2131373065;
     LayoutInflater tmp26_21 = tmp21_20;
-    tmp26_21[1] = 2131377220;
+    tmp26_21[1] = 2131378031;
     LayoutInflater tmp31_26 = tmp26_21;
-    tmp31_26[2] = 2131377218;
+    tmp31_26[2] = 2131378029;
     LayoutInflater tmp36_31 = tmp31_26;
-    tmp36_31[3] = 2131377221;
+    tmp36_31[3] = 2131378032;
     LayoutInflater tmp41_36 = tmp36_31;
-    tmp41_36[4] = 2131363176;
+    tmp41_36[4] = 2131363364;
     LayoutInflater tmp46_41 = tmp41_36;
-    tmp46_41[5] = 2131363781;
+    tmp46_41[5] = 2131363987;
     LayoutInflater tmp51_46 = tmp46_41;
-    tmp51_46[6] = 2131375760;
+    tmp51_46[6] = 2131376488;
     tmp51_46;
     int j = paramLayoutInflater.length;
     int i = 0;
@@ -65,39 +66,36 @@ public class EntryDebugFragment
   
   public int getContentLayoutId()
   {
-    return 2131560452;
+    return 2131560607;
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131372465: 
-      PublishHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), null);
-      return;
-    case 2131363781: 
-      BulkSendMessageFragment.a(getActivity(), getActivity().getIntent().getExtras());
-      return;
-    case 2131377220: 
-      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416265328L);
-      return;
-    case 2131377218: 
-      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416243152L);
-      return;
-    case 2131377221: 
-      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416294178L);
-      return;
-    case 2131375760: 
-      return;
     }
-    BeginnerGuideFragment.a(getActivity(), getActivity().getIntent().getExtras(), 7);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      PublishHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), null);
+      continue;
+      BulkSendMessageFragment.a(getActivity(), getActivity().getIntent().getExtras());
+      continue;
+      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416265328L);
+      continue;
+      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416243152L);
+      continue;
+      SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416294178L);
+      continue;
+      continue;
+      BeginnerGuideFragment.a(getActivity(), getActivity().getIntent().getExtras(), 7);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.EntryDebugFragment
  * JD-Core Version:    0.7.0.1
  */

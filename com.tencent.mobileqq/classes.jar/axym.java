@@ -1,20 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-
 class axym
-  implements arsr
+  implements axzc
 {
-  axym(axyk paramaxyk, AIOFileVideoData paramAIOFileVideoData, aiqi paramaiqi, View paramView) {}
+  axym(axyl paramaxyl, String paramString) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h = false;
-      this.jdField_a_of_type_Aiqi.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Axyk.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData, false));
+    if (paramBoolean) {
+      this.jdField_a_of_type_Axyl.a(this.jdField_a_of_type_JavaLangString, paramInt);
     }
-    this.jdField_a_of_type_Aiqi.b();
-    this.jdField_a_of_type_Aiqi.f();
   }
 }
 

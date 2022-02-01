@@ -1,20 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
 class bmnn
-  extends SimpleJob<Object>
 {
-  bmnn(bmnj parambmnj, String paramString)
-  {
-    super(paramString);
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public bmnn(bmnm parambmnm, int paramInt)
   {
-    wxk.a("0X80076BC");
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

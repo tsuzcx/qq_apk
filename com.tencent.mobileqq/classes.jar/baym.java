@@ -1,14 +1,21 @@
-public class baym
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+
+class baym
+  implements MessageQueue.IdleHandler
 {
-  public long a;
-  public String a;
+  baym(bayi parambayi) {}
   
-  public String toString()
+  public boolean queueIdle()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mAppShareID:" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mShareUrl:" + this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    AIOPictureData localAIOPictureData = this.a.a();
+    bawu localbawu = new bawu();
+    if ((localAIOPictureData != null) && (localbawu.a(localAIOPictureData, 4)) && (localbawu.a(localAIOPictureData, 4) == null))
+    {
+      this.a.f(true);
+      this.a.updateUI();
+    }
+    return false;
   }
 }
 

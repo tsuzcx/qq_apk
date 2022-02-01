@@ -1,31 +1,38 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import java.util.Iterator;
+import java.util.List;
 
-public class bnqr
+class bnqr
+  implements Observer<bnpn>
 {
-  public static int a;
-  public static boolean a;
+  bnqr(bnqm parambnqm) {}
   
-  static
+  public void a(@Nullable bnpn parambnpn)
   {
-    jdField_a_of_type_Int = 1500;
-  }
-  
-  public static boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    if (parambnpn == null) {
+      return;
     }
-    boolean bool = azhf.a(azhf.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+    bnpk localbnpk;
+    do
+    {
+      Iterator localIterator;
+      do
+      {
+        localIterator = bnqm.a(this.a).iterator();
+      } while (!localIterator.hasNext());
+      localbnpk = (bnpk)localIterator.next();
+      if (!localbnpk.jdField_a_of_type_JavaLangString.equals(parambnpn.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
+        break;
       }
-    }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
+      if (localbnpk.jdField_a_of_type_Int != parambnpn.jdField_a_of_type_Int)
+      {
+        localbnpk.jdField_a_of_type_Int = parambnpn.jdField_a_of_type_Int;
+        bnqm.a(this.a).notifyItemChanged(bnqm.a(this.a).indexOf(localbnpk) + 1);
+      }
+    } while ((localbnpk.jdField_a_of_type_Int != 2) || (!localbnpk.jdField_a_of_type_JavaLangString.equals(bnqm.a(this.a))));
+    bnqm.a(this.a).b(localbnpk);
   }
 }
 

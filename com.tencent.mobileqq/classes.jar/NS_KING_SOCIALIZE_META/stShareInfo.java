@@ -17,12 +17,14 @@ public final class stShareInfo
   public String background_title_color = "";
   public String background_url = "";
   public Map<Integer, stShareBody> body_map;
+  public String feed_cover_updtime = "";
   public Map<Integer, stShareBody> haibao_body_map;
   public String haibao_desc = "";
   public String haibao_jump_url = "";
   public String jump_url = "";
   public String share_icon_title = "";
   public String share_icon_url = "";
+  public int share_num;
   public stSqArk sq_ark_info;
   public stWxMiniProg wx_mini_program;
   
@@ -39,7 +41,7 @@ public final class stShareInfo
   
   public stShareInfo() {}
   
-  public stShareInfo(String paramString1, Map<Integer, stShareBody> paramMap1, stWxMiniProg paramstWxMiniProg, stSqArk paramstSqArk, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, Map<Integer, stShareBody> paramMap2, String paramString6, String paramString7)
+  public stShareInfo(String paramString1, Map<Integer, stShareBody> paramMap1, stWxMiniProg paramstWxMiniProg, stSqArk paramstSqArk, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, Map<Integer, stShareBody> paramMap2, String paramString6, String paramString7, int paramInt2, String paramString8)
   {
     this.jump_url = paramString1;
     this.body_map = paramMap1;
@@ -48,11 +50,13 @@ public final class stShareInfo
     this.share_icon_url = paramString2;
     this.share_icon_title = paramString3;
     this.background_url = paramString4;
-    this.activity_type = paramInt;
+    this.activity_type = paramInt1;
     this.haibao_jump_url = paramString5;
     this.haibao_body_map = paramMap2;
     this.background_title_color = paramString6;
     this.haibao_desc = paramString7;
+    this.share_num = paramInt2;
+    this.feed_cover_updtime = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -69,6 +73,8 @@ public final class stShareInfo
     this.haibao_body_map = ((Map)paramJceInputStream.read(cache_haibao_body_map, 9, false));
     this.background_title_color = paramJceInputStream.readString(10, false);
     this.haibao_desc = paramJceInputStream.readString(11, false);
+    this.share_num = paramJceInputStream.read(this.share_num, 12, false);
+    this.feed_cover_updtime = paramJceInputStream.readString(13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -106,6 +112,10 @@ public final class stShareInfo
     }
     if (this.haibao_desc != null) {
       paramJceOutputStream.write(this.haibao_desc, 11);
+    }
+    paramJceOutputStream.write(this.share_num, 12);
+    if (this.feed_cover_updtime != null) {
+      paramJceOutputStream.write(this.feed_cover_updtime, 13);
     }
   }
 }

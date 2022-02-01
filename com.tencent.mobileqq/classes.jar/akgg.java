@@ -1,29 +1,21 @@
 import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akgg
-  implements amml
+final class akgg
+  implements DialogInterface.OnClickListener
 {
-  public akgg(SessionClearFragment paramSessionClearFragment) {}
+  akgg(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
+    switch (paramInt)
     {
-      QLog.d("SessionClearFragment", 2, "onLoadStart");
-      this.a.a();
+    default: 
+      return;
     }
-  }
-  
-  public void a(List<ammf> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SessionClearFragment", 2, "onLoadFinish");
-    }
-    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
+    akgc.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

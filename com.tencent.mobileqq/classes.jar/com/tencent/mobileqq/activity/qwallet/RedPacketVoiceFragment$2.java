@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajfh;
+import akxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -13,13 +13,13 @@ class RedPacketVoiceFragment$2
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface != null) {
-      ajfh.a().a(localQQAppInterface);
+      akxl.a().a(localQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment.2
  * JD-Core Version:    0.7.0.1
  */

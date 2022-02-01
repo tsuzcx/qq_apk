@@ -1,10 +1,28 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public abstract interface aqak
+final class aqak
+  implements URLDrawableDownListener
 {
-  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
+  aqak(URLImageView paramURLImageView) {}
   
-  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.setVisibility(0);
+  }
 }
 
 

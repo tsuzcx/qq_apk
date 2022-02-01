@@ -1,61 +1,52 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.RoamSetting;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.1;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.2;
 
 public class awgz
-  extends awgq
+  extends ClickableSpan
 {
-  public awgz()
+  public final int a;
+  final Context jdField_a_of_type_AndroidContentContext;
+  final String jdField_a_of_type_JavaLangString;
+  final int jdField_b_of_type_Int;
+  final String jdField_b_of_type_JavaLangString;
+  
+  public awgz(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    this.a = 2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Int = Color.parseColor("#00a5e0");
+    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.1(this), 5, null, false);
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public void onClick(View paramView)
   {
-    paramawge = (RoamSetting)paramawge;
-    if (paramawgp == null)
-    {
-      paramawge.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
-      paramawge.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
-      return paramawge;
-    }
-    int i = paramCursor.getColumnIndex("path");
-    if (i == -1) {
-      paramawgp.a(new NoColumnError("path", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("value");
-      if (i != -1) {
-        break;
-      }
-      paramawgp.a(new NoColumnError("value", String.class));
-      return paramawge;
-      paramawge.path = paramCursor.getString(i);
-    }
-    paramawge.value = paramCursor.getString(i);
-    return paramawge;
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.jdField_b_of_type_JavaLangString);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.2(this), 5, null, false);
   }
   
-  public String a(String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(awge paramawge, ContentValues paramContentValues)
-  {
-    paramawge = (RoamSetting)paramawge;
-    paramContentValues.put("path", paramawge.path);
-    paramContentValues.put("value", paramawge.value);
+    paramTextPaint.setColor(this.jdField_b_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awgz
  * JD-Core Version:    0.7.0.1
  */

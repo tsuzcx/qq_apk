@@ -1,130 +1,81 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.5;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-class bbez
-  extends BaseAdapter
+public class bbez
+  implements bdvw
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bbex jdField_a_of_type_Bbex;
-  private List<bbfa> jdField_a_of_type_JavaUtilList;
-  private List<bbfa> b;
+  public bbez(ScribbleResMgr.5 param5) {}
   
-  public bbez(Context paramContext)
+  public void onResp(bdwt parambdwt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b = new ArrayList();
-    this.jdField_a_of_type_Bbex = new bbex(this);
-  }
-  
-  private void a()
-  {
-    this.b.clear();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int j = 2;
+    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + parambdwt.a);
+    int i = j;
+    Object localObject;
+    String str1;
+    String str2;
+    if (parambdwt.a == 0)
     {
-      if (this.jdField_a_of_type_Int != i) {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.get(i));
+      localObject = "";
+      str1 = "";
+      if (this.a.a == 3)
+      {
+        localObject = ScribbleResMgr.a(this.a.this$0);
+        str1 = ScribbleResMgr.b(this.a.this$0);
       }
-      i += 1;
+      if (this.a.a == 4)
+      {
+        localObject = ScribbleResMgr.c(this.a.this$0);
+        str1 = ScribbleResMgr.d(this.a.this$0);
+      }
+      str2 = bgmg.c((String)localObject);
+      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
+        break label259;
+      }
+      str1 = ScribbleResMgr.a;
+      i = nmk.a((String)localObject, str1);
+      if (i == 0) {
+        break label334;
+      }
+      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-    notifyDataSetChanged();
-  }
-  
-  private void a(View paramView)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(bdoo.a(17.0F));
-    localGradientDrawable.setColor(Color.parseColor("#FBFBFB"));
-    localGradientDrawable.setStroke(1, Color.parseColor("#E7E7EE"));
-    paramView.setBackgroundDrawable(localGradientDrawable);
-  }
-  
-  public void a(bbey parambbey)
-  {
-    if (this.jdField_a_of_type_Bbex != null) {
-      this.jdField_a_of_type_Bbex.a(parambbey);
-    }
-  }
-  
-  public void a(List<bbfa> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d(bbev.a(), 2, new Object[] { "mPrefixList size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    }
-    this.jdField_a_of_type_Int = 0;
-    a();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    label259:
+    label334:
+    for (i = 0;; i = 1)
     {
-      Object localObject = new bbfb(null);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559772, paramViewGroup, false);
-      ((bbfb)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372229));
-      ((bbfb)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372231));
-      paramView.setTag(localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      localObject = (bbfa)this.b.get(paramInt);
-      if (localObject != null) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((bbfa)localObject).a + ((bbfa)localObject).b + ((bbfa)localObject).c);
+      if (i != 0) {
+        i = 1;
       }
-      a(paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break label178;
+      for (;;)
+      {
+        if (parambdwt.a == 3) {
+          i = 4;
+        }
+        parambdwt = new ScribbleResMgr.ResInfo();
+        parambdwt.resType = this.a.a;
+        parambdwt.sourceId = 0;
+        ScribbleResMgr.a(this.a.this$0, parambdwt, i);
+        return;
+        if (str2 == null) {}
+        for (localObject = "";; localObject = str2)
+        {
+          str2 = str1;
+          if (str1 == null) {
+            str2 = "";
+          }
+          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
+          i = j;
+          break;
+        }
+        i = 2;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_Bbex);
-      return paramView;
-      paramViewGroup = (bbfb)paramView.getTag();
-      break;
-      label178:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt + 1));
     }
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

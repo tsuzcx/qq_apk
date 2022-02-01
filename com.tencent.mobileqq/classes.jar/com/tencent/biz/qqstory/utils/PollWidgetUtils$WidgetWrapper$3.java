@@ -1,25 +1,25 @@
 package com.tencent.biz.qqstory.utils;
 
-import xry;
-import xsc;
+import zlj;
+import zln;
 
 public class PollWidgetUtils$WidgetWrapper$3
   implements Runnable
 {
-  public PollWidgetUtils$WidgetWrapper$3(xsc paramxsc) {}
+  public PollWidgetUtils$WidgetWrapper$3(zln paramzln) {}
   
   public void run()
   {
-    if (xsc.a(this.this$0))
+    if (zln.a(this.this$0))
     {
-      xsc.a(this.this$0, false);
+      zln.a(this.this$0, false);
       this.this$0.a.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper.3
  * JD-Core Version:    0.7.0.1
  */

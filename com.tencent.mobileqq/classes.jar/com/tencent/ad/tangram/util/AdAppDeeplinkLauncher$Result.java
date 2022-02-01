@@ -27,7 +27,7 @@ public final class AdAppDeeplinkLauncher$Result
     return new AdError(1);
   }
   
-  int getErrorCode()
+  public int getErrorCode()
   {
     return getError().getErrorCode();
   }
@@ -39,7 +39,7 @@ public final class AdAppDeeplinkLauncher$Result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Result
  * JD-Core Version:    0.7.0.1
  */

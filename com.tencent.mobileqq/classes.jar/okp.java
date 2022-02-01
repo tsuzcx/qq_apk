@@ -1,23 +1,22 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class okp
-  extends Editable.Factory
+  implements TopGestureLayout.OnGestureListener
 {
-  public okp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public okp(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void flingLToR()
   {
-    if ((paramCharSequence instanceof ohr)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ohr(paramCharSequence, 3, 20);
+    ReadInJoyVideoSubChannelActivity.a(this.a, true);
+    this.a.finish();
   }
+  
+  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     okp
  * JD-Core Version:    0.7.0.1
  */

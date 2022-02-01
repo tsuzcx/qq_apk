@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agsc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agsc(agrn paramagrn, String paramString) {}
+  agsc(agrz paramagrz) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ((HotChatManager)this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Agrn.jdField_a_of_type_Aluw.a(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

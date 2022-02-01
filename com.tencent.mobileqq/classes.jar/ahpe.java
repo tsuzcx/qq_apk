@@ -1,37 +1,13 @@
 import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpe
-  extends ahkz
+  implements ahor
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ShaderAnimLayout a;
-  public String a;
-  public structmsg.StructMsg a;
-  public int b;
-  public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
-  public long c;
-  public TextView c;
-  public TextView d;
-  
-  public ahpe(Context paramContext, View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    super(paramContext, paramView);
+    paramagup.a(paramMessageRecord, paramagwc.b);
   }
 }
 

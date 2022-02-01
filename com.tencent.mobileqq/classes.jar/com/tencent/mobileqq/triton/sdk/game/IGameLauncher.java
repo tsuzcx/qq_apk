@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.triton.sdk.game;
 
 import androidx.annotation.NonNull;
+import com.tencent.mobileqq.triton.sdk.statics.ScriptLoadResult;
 
 public abstract interface IGameLauncher
 {
   public abstract MiniGameInfo getCurrentGame();
   
-  public abstract GamePluginInfo getGamePluginInfo(@NonNull String paramString);
+  public abstract void launchGame(@NonNull GameLaunchParam paramGameLaunchParam);
   
-  public abstract int launchGame();
-  
-  public abstract boolean launchSubpackage(@NonNull String paramString);
-  
-  public abstract void setCurrentGame(MiniGameInfo paramMiniGameInfo);
+  public abstract ScriptLoadResult launchSubpackage(@NonNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.game.IGameLauncher
  * JD-Core Version:    0.7.0.1
  */

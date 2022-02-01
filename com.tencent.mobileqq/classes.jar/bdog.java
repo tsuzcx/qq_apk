@@ -1,13 +1,17 @@
-import android.graphics.PointF;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
 final class bdog
-  implements bdoi<PointF>
+  extends Editable.Factory
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  bdog(int paramInt) {}
+  
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    if ((paramCharSequence instanceof bdod)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bdod(paramCharSequence, 3, this.a);
   }
 }
 

@@ -1,42 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class aguz
-  implements BusinessObserver
+  extends ClickableSpan
 {
-  aguz(aguy paramaguy) {}
+  aguz(agup paramagup) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bkho.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131718646);
+      paramView.c(2131690582);
+      paramView.a(new agva(this));
+      paramView.a(new agvb(this, paramView));
+      paramView.show();
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
     }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.a.ap = true;
-          this.a.a.bH();
-          this.a.a.bs();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.a.B(2131695729);
-    this.a.a.bs();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

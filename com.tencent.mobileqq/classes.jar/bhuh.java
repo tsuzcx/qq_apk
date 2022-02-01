@@ -1,16 +1,14 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.widget.ActionSheet.3;
 
-public class bhuh
+class bhuh
   implements Animation.AnimationListener
 {
-  public bhuh(ActionSheet.3 param3) {}
+  bhuh(bhuf parambhuf) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.this$0.e();
-    bhuf.a(this.a.this$0, true);
+    bhuf.a(this.a, true);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +17,7 @@ public class bhuh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhuh
  * JD-Core Version:    0.7.0.1
  */

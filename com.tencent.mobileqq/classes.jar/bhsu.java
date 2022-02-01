@@ -1,23 +1,15 @@
-public class bhsu
+public abstract interface bhsu
+  extends bhni
 {
-  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  public abstract String getMsgid();
   
-  public static StringBuilder a()
-  {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (localStringBuilder == null)
-    {
-      localStringBuilder = new StringBuilder();
-      a.set(localStringBuilder);
-      return localStringBuilder;
-    }
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
-  }
+  public abstract String getPublicUin();
+  
+  public abstract String getSourcePuin();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhsu
  * JD-Core Version:    0.7.0.1
  */

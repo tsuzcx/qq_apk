@@ -19,6 +19,7 @@ import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.msf.sdk.y;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -57,13 +58,13 @@ public class MsfCore
   AtomicBoolean coreInitFinished = new AtomicBoolean();
   public AtomicLong delayIpRace = new AtomicLong(100L);
   public AtomicBoolean isReconnectSso = new AtomicBoolean();
-  public f lightSender;
-  public g lightTcpSender;
+  public g lightSender;
+  public h lightTcpSender;
   private com.tencent.mobileqq.msf.core.net.c.a mDeepSleepDetector;
   public int mLocaleId;
   public MsfMonitorCallback mMsfMonitorCallback = null;
   public AtomicBoolean mbIsInfoLoginGetted = new AtomicBoolean();
-  r msfAlarmer;
+  u msfAlarmer;
   private int msfAppid = -1;
   private MsfExitReceiver msfExitReceiver;
   LinkedBlockingQueue msfMessagePairs = new LinkedBlockingQueue();
@@ -73,9 +74,9 @@ public class MsfCore
   public volatile String nowSocketConnAdd;
   public com.tencent.mobileqq.msf.core.push.g pushManager;
   public com.tencent.mobileqq.msf.core.quicksend.b quicksender;
-  public ag sender;
+  public aj sender;
   com.tencent.mobileqq.msf.core.a.c ssoListManager;
-  private ah ssoRespHandler;
+  private ak ssoRespHandler;
   com.tencent.mobileqq.msf.core.d.a standbyModeManager;
   public k statReporter;
   MsfStore store;
@@ -329,7 +330,7 @@ public class MsfCore
     return str;
   }
   
-  public r getMsfAlarmer()
+  public u getMsfAlarmer()
   {
     return this.msfAlarmer;
   }
@@ -351,7 +352,7 @@ public class MsfCore
   
   public HandlerThread getNetworkHandlerThread()
   {
-    return u.c();
+    return x.c();
   }
   
   public void getPluginConfig(ToServiceMsg paramToServiceMsg)
@@ -364,7 +365,7 @@ public class MsfCore
     return this.ssoListManager;
   }
   
-  public ah getSsoRespHandler()
+  public ak getSsoRespHandler()
   {
     return this.ssoRespHandler;
   }
@@ -556,10 +557,10 @@ public class MsfCore
         }
       }
     }
-    com.tencent.mobileqq.msf.service.j.t = bool1;
-    t.c();
+    com.tencent.mobileqq.msf.service.k.t = bool1;
+    w.c();
     if (Build.VERSION.SDK_INT >= 26) {
-      this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(u.f());
+      this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(x.f());
     }
     QLog.d("MSF.C.MsfCore", 1, "init deviceInfo cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
@@ -584,7 +585,7 @@ public class MsfCore
     {
       try
       {
-        this.msfAlarmer = new r(this);
+        this.msfAlarmer = new u(this);
         this.msfAlarmer.a();
         QLog.d("MSF.C.MsfCore", 1, "init msfAlarm cost=" + (SystemClock.elapsedRealtime() - l2));
         l2 = SystemClock.elapsedRealtime();
@@ -617,7 +618,7 @@ public class MsfCore
                 l2 = SystemClock.elapsedRealtime();
                 try
                 {
-                  this.sender = new ag(this);
+                  this.sender = new aj(this);
                   if (this.sender.a(paramContext)) {
                     break;
                   }
@@ -662,12 +663,12 @@ public class MsfCore
     this.accountCenter.a(true);
     QLog.d("MSF.C.MsfCore", 2, "init accountCenter cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
-    this.ssoRespHandler = new ah(this);
+    this.ssoRespHandler = new ak(this);
     try
     {
-      this.lightSender = new f(this, paramContext);
-      if (com.tencent.mobileqq.msf.core.quicksend.b.f()) {
-        this.lightTcpSender = new g(this, paramContext);
+      this.lightSender = new g(this, paramContext);
+      if (com.tencent.mobileqq.msf.core.quicksend.b.g()) {
+        this.lightTcpSender = new h(this, paramContext);
       }
       this.accountCenter.a();
       QLog.d("MSF.C.MsfCore", 1, "init sender&light cost=" + (SystemClock.elapsedRealtime() - l2));
@@ -703,7 +704,7 @@ public class MsfCore
                 this.accountCenter.g.b();
                 QLog.d("MSF.C.MsfCore", 1, "init standby&quickSender cost=" + (SystemClock.elapsedRealtime() - l2));
                 SystemClock.elapsedRealtime();
-                new s(this, localk, bool1, j, k).start();
+                new v(this, localk, bool1, j, k).start();
                 this.coreInitFinished.set(true);
                 initLocaleId();
                 QLog.d("MSF.C.MsfCore", 1, "MsfCore init finished. cost=" + (SystemClock.elapsedRealtime() - l1));
@@ -768,10 +769,10 @@ public class MsfCore
   public void openUinPCActive(String paramString1, String paramString2, boolean paramBoolean)
   {
     QLog.d("msfCore", 1, "openUinPCActive by " + paramString2 + " opened: " + paramBoolean);
-    this.pushManager.s().a(paramString1, paramBoolean);
+    this.pushManager.q().a(paramString1, paramBoolean);
   }
   
-  public void proxyRegister(com.tencent.mobileqq.msf.sdk.y paramy, ToServiceMsg paramToServiceMsg)
+  public void proxyRegister(y paramy, ToServiceMsg paramToServiceMsg)
   {
     this.pushManager.a(paramy, paramToServiceMsg);
   }
@@ -873,14 +874,14 @@ public class MsfCore
     {
       if ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))
       {
-        ak.b(this, paramToServiceMsg);
+        an.b(this, paramToServiceMsg);
         com.tencent.mobileqq.a.a.a.a().b(paramToServiceMsg);
       }
       for (;;)
       {
         return paramToServiceMsg.getRequestSsoSeq();
         if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())) {
-          ak.a(this, paramToServiceMsg);
+          an.a(this, paramToServiceMsg);
         }
       }
     }
@@ -908,8 +909,8 @@ public class MsfCore
     QLog.d("msfCore", 1, "startPCActivePolling by " + paramString2);
     try
     {
-      y.a().a(true);
-      this.pushManager.s().a(paramString1);
+      ab.a().a(true);
+      this.pushManager.q().a(paramString1);
       if (this.statReporter != null)
       {
         HashMap localHashMap = new HashMap();
@@ -936,8 +937,8 @@ public class MsfCore
     QLog.d("msfCore", 1, "stopPCActivePolling by " + paramString);
     try
     {
-      y.a().a(false);
-      this.pushManager.s().a();
+      ab.a().a(false);
+      this.pushManager.q().a();
       return;
     }
     catch (Throwable paramString)

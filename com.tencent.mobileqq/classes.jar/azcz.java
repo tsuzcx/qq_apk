@@ -1,104 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class azcz
-  extends aokh<azcy>
+  extends RecyclerView.ViewHolder
 {
-  private String a()
+  public azcz(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-  }
-  
-  public int a()
-  {
-    return 325;
-  }
-  
-  @NonNull
-  public azcy a(int paramInt)
-  {
-    return new azcy();
-  }
-  
-  @Nullable
-  public azcy a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      azcy localazcy = azcy.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localazcy;
-    }
-    return null;
-  }
-  
-  public Class<azcy> a()
-  {
-    return azcy.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(azcy paramazcy)
-  {
-    boolean bool2 = true;
-    int i = paramazcy.a;
-    int j = paramazcy.b;
-    int k = paramazcy.c;
-    int m = paramazcy.d;
-    paramazcy = a();
-    if (ShortVideoUtils.c(paramazcy) != j)
-    {
-      ShortVideoUtils.b(paramazcy, j);
-      if (i == 1)
-      {
-        bool1 = true;
-        ShortVideoUtils.c(paramazcy, bool1);
-        ShortVideoUtils.f = false;
-      }
-    }
-    else if (ShortVideoUtils.b(paramazcy) != m)
-    {
-      ShortVideoUtils.a(paramazcy, m);
-      if (k != 1) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ShortVideoUtils.b(paramazcy, bool1);
-      ShortVideoUtils.e = false;
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public int b()
-  {
-    return ShortVideoUtils.a(a());
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super(paramView);
+    this.itemView.setTag(this);
+    this.itemView.findViewById(2131361953).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361962).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361948).setOnClickListener(paramCustomCoverFragment);
+    CustomCoverFragment.a(paramCustomCoverFragment, this.itemView.findViewById(2131369565));
+    CustomCoverFragment.a(paramCustomCoverFragment).setVisibility(8);
+    CustomCoverFragment.a(paramCustomCoverFragment, (ImageView)this.itemView.findViewById(2131369072));
+    CustomCoverFragment.a(paramCustomCoverFragment).setOnClickListener(paramCustomCoverFragment.a);
+    afur.a(CustomCoverFragment.a(paramCustomCoverFragment), 0, 0, (int)(CustomCoverFragment.a(paramCustomCoverFragment) * 20.0F + 0.5F), (int)(CustomCoverFragment.b(paramCustomCoverFragment) * 20.0F + 0.5F));
   }
 }
 

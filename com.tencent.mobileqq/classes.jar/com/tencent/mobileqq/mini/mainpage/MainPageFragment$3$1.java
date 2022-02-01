@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import alud;
-import aoom;
+import anni;
+import aqpv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -17,17 +17,17 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (aoom.g())
+    if (aqpv.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131706825) + aoom.c() + alud.a(2131706821), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131705216) + aqpv.a() + anni.a(2131705212), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131694435), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131693705), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

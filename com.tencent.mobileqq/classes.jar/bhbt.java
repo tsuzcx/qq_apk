@@ -1,130 +1,158 @@
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.media.MediaCodecInfo;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.1;
+import java.io.File;
+import java.util.ArrayList;
+import kotlin.Pair;
+import kotlin.jvm.functions.Function0;
 
 public class bhbt
 {
-  public static boolean b;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
+  private static bhbq jdField_a_of_type_Bhbq;
+  private static bhbt jdField_a_of_type_Bhbt = new bhbt();
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  public bhbt()
+  static
   {
-    this.jdField_d_of_type_Int = 0;
+    jdField_a_of_type_Bhbq = new bhbk();
+    jdField_a_of_type_Boolean = aqyj.c().a(Build.VERSION.SDK_INT);
+    b = true;
+    ThreadManagerV2.executeOnSubThread(new GLDrawableWraper.1());
   }
   
-  public String a()
+  private bhbt()
   {
-    try
+    Object localObject1;
+    if ((bhak.a()) && (Build.VERSION.SDK_INT >= 16))
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("appid", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("engineType", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("reportType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("verType", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("launchId", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("clickTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("loadTime", this.jdField_b_of_type_Long);
-      ((JSONObject)localObject).put("launchTime", this.jdField_c_of_type_Long);
-      ((JSONObject)localObject).put("launchResult", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("activeTime", this.jdField_d_of_type_Long);
-      ((JSONObject)localObject).put("showTime", this.e);
-      ((JSONObject)localObject).put("hideTime", this.f);
-      ((JSONObject)localObject).put("jsError", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("needReportLaunchResult", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject).put("hasPkg", this.jdField_c_of_type_Boolean);
-      ((JSONObject)localObject).put("flutterMode", this.jdField_d_of_type_Boolean);
-      ((JSONObject)localObject).put("loadEndTime", this.g);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0L;
-    this.f = 0L;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.g = 0L;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-      this.jdField_a_of_type_Int = paramString.getInt("engineType");
-      this.jdField_b_of_type_Int = paramString.getInt("reportType");
-      this.jdField_c_of_type_Int = paramString.getInt("verType");
-      this.jdField_b_of_type_JavaLangString = paramString.getString("launchId");
-      this.jdField_a_of_type_Long = paramString.getLong("clickTime");
-      this.jdField_b_of_type_Long = paramString.getLong("loadTime");
-      this.jdField_c_of_type_Long = paramString.getLong("launchTime");
-      this.jdField_d_of_type_Int = paramString.getInt("launchResult");
-      this.jdField_d_of_type_Long = paramString.getLong("activeTime");
-      this.e = paramString.getLong("showTime");
-      this.f = paramString.getLong("hideTime");
-      this.jdField_c_of_type_JavaLangString = paramString.getString("jsError");
-      this.jdField_a_of_type_Boolean = paramString.getBoolean("needReportLaunchResult");
-      this.jdField_c_of_type_Boolean = paramString.getBoolean("hasPkg");
-      this.jdField_d_of_type_Boolean = paramString.optBoolean("flutterMode");
-      this.g = paramString.optLong("loadEndTime");
-      return;
-    }
-    catch (Throwable paramString) {}
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("SDK_");
-    if (jdField_b_of_type_Boolean)
-    {
-      str = "hasX5";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label53;
+      localObject1 = bhbv.a("video/avc");
+      if (((ArrayList)localObject1).size() <= 0) {
+        break label140;
+      }
+      localObject1 = ((MediaCodecInfo)((ArrayList)localObject1).get(0)).getName();
+      localObject2 = bhbv.a("video/hevc");
+      if (((ArrayList)localObject2).size() <= 0) {
+        break label146;
       }
     }
-    label53:
-    for (String str = "_hasPkg";; str = "")
+    label140:
+    label146:
+    for (Object localObject2 = ((MediaCodecInfo)((ArrayList)localObject2).get(0)).getName();; localObject2 = "")
     {
-      return str;
-      str = "";
+      bhak.a("gldrawable_video_codec", new Pair[] { new Pair("avc", localObject1), new Pair("hevc", localObject2), new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("level", String.valueOf(bgln.f())) });
+      return;
+      localObject1 = "";
       break;
     }
   }
   
-  public String toString()
+  public static bhbq a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.jdField_b_of_type_JavaLangString).append(", appId: ").append(0);
-    return localStringBuilder.toString();
+    return jdField_a_of_type_Bhbq;
+  }
+  
+  public static bhbt a()
+  {
+    return jdField_a_of_type_Bhbt;
+  }
+  
+  private void a()
+  {
+    if ((!bhbn.a()) && (!bhbn.b()) && (!jdField_a_of_type_Bhbq.a()) && (!jdField_a_of_type_Bhbq.b())) {
+      jdField_a_of_type_Bhbq.a();
+    }
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(Drawable paramDrawable)
+  {
+    if (d(paramDrawable)) {
+      return true;
+    }
+    return bhbn.a(paramDrawable);
+  }
+  
+  public static boolean b()
+  {
+    return b;
+  }
+  
+  public static boolean b(Drawable paramDrawable)
+  {
+    return bhbn.a(paramDrawable);
+  }
+  
+  public static boolean c(Drawable paramDrawable)
+  {
+    return bhbn.b(paramDrawable);
+  }
+  
+  private static boolean d(Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof URLDrawable))
+    {
+      paramDrawable = ((URLDrawable)paramDrawable).getExtraInfo();
+      if ((paramDrawable instanceof Bundle)) {
+        return ((Bundle)paramDrawable).getBoolean("key_use_gldrawable", false);
+      }
+    }
+    return false;
+  }
+  
+  public Drawable a(File paramFile, boolean paramBoolean)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    a();
+    return bhbn.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean);
+  }
+  
+  public Drawable a(String paramString, Handler paramHandler, boolean paramBoolean)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    a();
+    return bhbn.a().a(paramString, paramHandler, paramBoolean);
+  }
+  
+  public bhbg a(File paramFile, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return null;
+    }
+    return bhbn.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean, paramFunction0);
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    bhbn.a().a(paramDrawable);
+  }
+  
+  public void a(Drawable paramDrawable, boolean paramBoolean)
+  {
+    bhbn.a().a(paramDrawable, paramBoolean);
+  }
+  
+  public boolean a(Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    return bhbn.a().a(paramDrawable, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbt
  * JD-Core Version:    0.7.0.1
  */

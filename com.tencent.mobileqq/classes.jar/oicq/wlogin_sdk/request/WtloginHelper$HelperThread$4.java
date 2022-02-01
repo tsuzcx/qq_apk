@@ -14,7 +14,8 @@ class WtloginHelper$HelperThread$4
       return;
     }
     Object localObject = t.b(this.this$1.mUserSigInfo._seqence);
-    WtloginHelper.HelperThread.access$600(this.this$1, (async_context)localObject, this.val$ret);
+    WtloginHelper.HelperThread.access$600(this.this$1, (async_context)localObject);
+    WtloginHelper.HelperThread.access$700(this.this$1, (async_context)localObject, this.val$ret);
     localObject = ((async_context)localObject)._last_err_msg;
     if (n.K)
     {

@@ -295,7 +295,7 @@ public class DownloadGlobalStrategy$StrategyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.DownloadGlobalStrategy.StrategyInfo
  * JD-Core Version:    0.7.0.1
  */

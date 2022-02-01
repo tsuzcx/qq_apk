@@ -1,26 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import java.util.ArrayList;
 
-class pyt
-  implements View.OnTouchListener
+public abstract interface pyt
+  extends pys
 {
-  pyt(pyn parampyn, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<pwk> paramArrayList, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyt
  * JD-Core Version:    0.7.0.1
  */

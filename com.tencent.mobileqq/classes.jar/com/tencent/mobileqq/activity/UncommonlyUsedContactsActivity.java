@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aeju;
-import aejv;
-import aejw;
-import aejx;
-import aejy;
-import aejz;
-import aeka;
-import aekb;
-import aekc;
-import alpq;
-import alqj;
-import altm;
-import alto;
-import alud;
+import Override;
+import afqa;
+import afqb;
+import afqc;
+import afqd;
+import afqe;
+import afqf;
+import afqg;
+import afqh;
+import afqi;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -28,23 +26,29 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awhw;
-import azqs;
-import bdgm;
-import bdjz;
-import beuj;
-import bhtv;
-import bhuf;
-import bhus;
+import aniz;
+import anjs;
+import anmu;
+import anmw;
+import anni;
+import aywi;
+import bcst;
+import bglp;
+import bgpa;
+import bibh;
+import bkhe;
+import bkho;
+import bkif;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
@@ -56,19 +60,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class UncommonlyUsedContactsActivity
   extends BaseActivity
-  implements View.OnClickListener, bhtv
+  implements View.OnClickListener, bkhe
 {
   int jdField_a_of_type_Int;
-  public aeka a;
-  alpq jdField_a_of_type_Alpq = new aejw(this);
-  altm jdField_a_of_type_Altm = new aejx(this);
+  public afqg a;
   View jdField_a_of_type_AndroidViewView;
   InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager = null;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  awhw jdField_a_of_type_Awhw = new aejv(this);
+  aniz jdField_a_of_type_Aniz = new afqc(this);
+  anmu jdField_a_of_type_Anmu = new afqd(this);
+  aywi jdField_a_of_type_Aywi = new afqb(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
-  public ArrayList<aekc> a;
+  public ArrayList<afqi> a;
   private TextView b;
   private TextView c;
   private TextView d;
@@ -81,22 +85,22 @@ public class UncommonlyUsedContactsActivity
   @TargetApi(14)
   private void a()
   {
-    super.setContentView(2131560905);
+    super.setContentView(2131561110);
     getWindow().setBackgroundDrawable(null);
     c();
     b();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376034));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376788));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298961);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378502));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131380348));
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299045);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379357));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131381353));
     LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_Aeka = new aeka(this, this, this.app, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 1, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Aeka);
+    this.jdField_a_of_type_Afqg = new afqg(this, this, this.app, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 1, true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Afqg);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(this);
   }
   
@@ -115,13 +119,13 @@ public class UncommonlyUsedContactsActivity
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
         return;
       }
-      localObject1 = this.jdField_a_of_type_Aeka.getItem(paramInt);
-    } while (!(localObject1 instanceof aekc));
-    Object localObject1 = ((aekc)localObject1).jdField_a_of_type_JavaLangString;
+      localObject1 = this.jdField_a_of_type_Afqg.getItem(paramInt);
+    } while (!(localObject1 instanceof afqi));
+    Object localObject1 = ((afqi)localObject1).jdField_a_of_type_JavaLangString;
     Object localObject2;
-    if (paramInt + 1 < this.jdField_a_of_type_Aeka.getCount())
+    if (paramInt + 1 < this.jdField_a_of_type_Afqg.getCount())
     {
-      if (((aekc)this.jdField_a_of_type_Aeka.getItem(paramInt + 1)).jdField_a_of_type_Int != 0) {
+      if (((afqi)this.jdField_a_of_type_Afqg.getItem(paramInt + 1)).jdField_a_of_type_Int != 0) {
         break label217;
       }
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getChildAt(0);
@@ -163,32 +167,32 @@ public class UncommonlyUsedContactsActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377957);
-    this.b = ((TextView)findViewById(2131368670));
-    this.b.setText(getString(2131699407));
-    this.c = ((TextView)findViewById(2131368624));
-    this.d = ((TextView)findViewById(2131368655));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378796);
+    this.b = ((TextView)findViewById(2131368994));
+    this.b.setText(getString(2131698017));
+    this.c = ((TextView)findViewById(2131368947));
+    this.d = ((TextView)findViewById(2131368979));
     this.c.setOnClickListener(this);
     this.d.setVisibility(0);
-    this.d.setText(2131719882);
+    this.d.setText(2131717832);
     if (AppSetting.c)
     {
-      this.b.setContentDescription(getString(2131699407));
-      this.d.setContentDescription(getString(2131719882) + alud.a(2131716272));
-      this.c.setContentDescription(getString(2131690623) + alud.a(2131716267));
+      this.b.setContentDescription(getString(2131698017));
+      this.d.setContentDescription(getString(2131717832) + anni.a(2131714549));
+      this.c.setContentDescription(getString(2131690563) + anni.a(2131714544));
     }
     this.d.setOnClickListener(this);
   }
   
   private void c()
   {
-    Object localObject4 = (alto)this.app.getManager(51);
+    Object localObject4 = (anmw)this.app.getManager(51);
     ArrayList localArrayList1 = new ArrayList();
     Object localObject1;
     ArrayList localArrayList2;
     if (localObject4 != null)
     {
-      ConcurrentHashMap localConcurrentHashMap = ((alto)localObject4).a();
+      ConcurrentHashMap localConcurrentHashMap = ((anmw)localObject4).a();
       localObject1 = localConcurrentHashMap.keySet();
       if ((localObject1 != null) && (((Set)localObject1).size() > 0))
       {
@@ -208,7 +212,7 @@ public class UncommonlyUsedContactsActivity
     {
       try
       {
-        Collections.sort(localArrayList2, alqj.a);
+        Collections.sort(localArrayList2, anjs.a);
         i = 0;
         if (i >= localArrayList2.size()) {
           break;
@@ -217,7 +221,7 @@ public class UncommonlyUsedContactsActivity
         Object localObject2 = localObject1;
         if (i == 0)
         {
-          Object localObject5 = ((alto)localObject4).b();
+          Object localObject5 = ((anmw)localObject4).b();
           localObject2 = localObject1;
           if (localObject5 != null)
           {
@@ -244,11 +248,11 @@ public class UncommonlyUsedContactsActivity
         Friends localFriends;
         QLog.d("qqBaseActivity", 1, "", localThrowable);
         continue;
-        localObject1 = new aekc(this, 0, null);
-        ((aekc)localObject1).a(localThrowable);
+        localObject1 = new afqi(this, 0, null);
+        ((afqi)localObject1).a(localThrowable);
         localArrayList1.add(localObject1);
-        localObject1 = new aekc(this, 1, localFriends);
-        ((aekc)localObject1).a(localThrowable);
+        localObject1 = new afqi(this, 1, localFriends);
+        ((afqi)localObject1).a(localThrowable);
         localArrayList1.add(localObject1);
         i += 1;
         localObject1 = localThrowable;
@@ -256,20 +260,20 @@ public class UncommonlyUsedContactsActivity
       }
       localObject1 = (PhoneContactManagerImp)this.app.getManager(11);
       int i = ((PhoneContactManagerImp)localObject1).d();
-      if ((((PhoneContactManagerImp)localObject1).c()) || (i == 8))
+      if ((((PhoneContactManagerImp)localObject1).d()) || (i == 8))
       {
         Object localObject3 = ((PhoneContactManagerImp)localObject1).a(true);
         if (((List)localObject3).size() > 0)
         {
-          localObject1 = getString(2131695188) + "(" + ((List)localObject3).size() + ")";
-          localObject4 = new aekc(this, 0, null);
-          ((aekc)localObject4).a((String)localObject1);
+          localObject1 = getString(2131694226) + "(" + ((List)localObject3).size() + ")";
+          localObject4 = new afqi(this, 0, null);
+          ((afqi)localObject4).a((String)localObject1);
           localArrayList1.add(localObject4);
           localObject3 = ((List)localObject3).iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            localObject4 = new aekc(this, 1, (PhoneContact)((Iterator)localObject3).next());
-            ((aekc)localObject4).a((String)localObject1);
+            localObject4 = new afqi(this, 1, (PhoneContact)((Iterator)localObject3).next());
+            ((afqi)localObject4).a((String)localObject1);
             localArrayList1.add(localObject4);
           }
         }
@@ -281,38 +285,46 @@ public class UncommonlyUsedContactsActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new beuj(getActivity()).a(paramInt1, this.jdField_a_of_type_AndroidViewView.getHeight(), 0, paramInt2);
+    new bibh(getActivity()).a(paramInt1, this.jdField_a_of_type_AndroidViewView.getHeight(), 0, paramInt2);
   }
   
-  void a(aekc paramaekc)
+  void a(afqi paramafqi)
   {
-    if (paramaekc.jdField_a_of_type_Awge == null) {
+    if (paramafqi.jdField_a_of_type_ComTencentMobileqqPersistenceEntity == null) {
       return;
     }
-    bhuf localbhuf = (bhuf)bhus.a(this, null);
-    localbhuf.a(getString(2131719767), 0);
-    localbhuf.a(getString(2131699397), 0);
-    if ((paramaekc.jdField_a_of_type_Awge instanceof Friends))
+    bkho localbkho = (bkho)bkif.a(this, null);
+    localbkho.a(getString(2131717756), 0);
+    localbkho.a(getString(2131698012), 0);
+    if ((paramafqi.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof Friends))
     {
-      localbhuf.a(getString(2131699402), 0);
-      localbhuf.a(getString(2131699389), 3);
+      localbkho.a(getString(2131698014), 0);
+      localbkho.a(getString(2131698010), 3);
     }
     for (;;)
     {
-      localbhuf.a(new aeju(this, paramaekc, localbhuf));
-      localbhuf.c(2131690648);
-      localbhuf.show();
+      localbkho.a(new afqa(this, paramafqi, localbkho));
+      localbkho.c(2131690582);
+      localbkho.show();
       return;
-      if (!(paramaekc.jdField_a_of_type_Awge instanceof PhoneContact)) {
+      if (!(paramafqi.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof PhoneContact)) {
         break;
       }
-      localbhuf.a(getString(2131699403), 0);
+      localbkho.a(getString(2131698015), 0);
     }
   }
   
   public void a(String paramString)
   {
-    bdgm.a(getActivity(), 230).setTitle(getString(2131691571)).setMessage(getString(2131690510)).setPositiveButton(2131692822, new aejz(this, paramString)).setNegativeButton(2131690624, new aejy(this)).show();
+    bglp.a(getActivity(), 230).setTitle(getString(2131691329)).setMessage(getString(2131690493)).setPositiveButton(2131692385, new afqf(this, paramString)).setNegativeButton(2131690564, new afqe(this)).show();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -329,27 +341,27 @@ public class UncommonlyUsedContactsActivity
     paramIntent = new ProfileActivity.AllInOne(paramIntent.getStringExtra("contactSearchResultUin"), 1);
     paramIntent.h = 60;
     ProfileActivity.b(getActivity(), paramIntent);
-    azqs.b(this.app, "CliOper", "", "", "0X8004C58", "0X8004C58", 3, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "0X8004C58", "0X8004C58", 3, 0, "", "", "", "");
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    addObserver(this.jdField_a_of_type_Altm);
-    addObserver(this.jdField_a_of_type_Alpq);
-    this.app.registObserver(this.jdField_a_of_type_Awhw);
+    addObserver(this.jdField_a_of_type_Anmu);
+    addObserver(this.jdField_a_of_type_Aniz);
+    this.app.registObserver(this.jdField_a_of_type_Aywi);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Altm);
-    removeObserver(this.jdField_a_of_type_Alpq);
-    this.app.unRegistObserver(this.jdField_a_of_type_Awhw);
-    if (this.jdField_a_of_type_Aeka != null) {
-      this.jdField_a_of_type_Aeka.c();
+    removeObserver(this.jdField_a_of_type_Anmu);
+    removeObserver(this.jdField_a_of_type_Aniz);
+    this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
+    if (this.jdField_a_of_type_Afqg != null) {
+      this.jdField_a_of_type_Afqg.c();
     }
   }
   
@@ -367,38 +379,49 @@ public class UncommonlyUsedContactsActivity
   
   public void onClick(View paramView)
   {
+    Object localObject;
     switch (paramView.getId())
     {
     default: 
-      paramView = (aekb)paramView.getTag();
+      localObject = (afqh)paramView.getTag();
     }
     try
     {
-      paramView = (aekc)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int);
-      if (paramView == null)
-      {
-        return;
-        startActivity(new Intent(this, SettingUncommUsedContactsActivity.class));
-        azqs.b(this.app, "CliOper", "", "", "0X8004C55", "0X8004C55", 0, 0, "", "", "", "");
-        return;
-        finish();
-        return;
+      localObject = (afqi)this.jdField_a_of_type_JavaUtilArrayList.get(((afqh)localObject).jdField_a_of_type_Int);
+      if (localObject == null) {
+        for (;;)
+        {
+          EventCollector.getInstance().onViewClicked(paramView);
+          return;
+          startActivity(new Intent(this, SettingUncommUsedContactsActivity.class));
+          bcst.b(this.app, "CliOper", "", "", "0X8004C55", "0X8004C55", 0, 0, "", "", "", "");
+          continue;
+          finish();
+        }
       }
     }
-    catch (Exception paramView)
+    catch (Exception localException)
     {
       for (;;)
       {
-        paramView = null;
+        afqi localafqi = null;
+        continue;
+        a(localafqi);
+        bcst.b(this.app, "CliOper", "", "", "0X8004C50", "0X8004C50", 0, 0, "", "", "", "");
       }
-      a(paramView);
-      azqs.b(this.app, "CliOper", "", "", "0X8004C50", "0X8004C50", 0, 0, "", "", "", "");
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Aeka != null) {
+    if (this.jdField_a_of_type_Afqg != null) {
       a(paramInt1);
     }
   }
@@ -412,7 +435,7 @@ public class UncommonlyUsedContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity
  * JD-Core Version:    0.7.0.1
  */

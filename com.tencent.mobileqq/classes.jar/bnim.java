@@ -1,25 +1,16 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class bnim
-  implements Comparable<bnim>
+public abstract class bnim
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public bnim(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public static bnim a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+    if (paramInt > 0) {
+      return new bnin();
+    }
+    return new bnio();
   }
   
-  public int a(bnim parambnim)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambnim.jdField_a_of_type_Long);
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

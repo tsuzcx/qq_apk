@@ -1,30 +1,22 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aead
-  implements bequ
+  extends aypl
 {
-  public aead(SubLoginActivity paramSubLoginActivity) {}
+  public aead(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
+    if (this.a.a != null)
     {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
       }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
+      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
     }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
   }
 }
 

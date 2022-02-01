@@ -1,29 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ydt
-  extends RecyclerView.ViewHolder
+public class ydt
+  extends QQUIEventReceiver<ydh, wwx>
 {
-  public ydt(ydp paramydp, View paramView)
+  public ydt(@NonNull ydh paramydh)
   {
-    super(paramView);
+    super(paramydh);
   }
   
-  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  public void a(@NonNull ydh paramydh, @NonNull wwx paramwwx)
   {
-    if ((this.itemView instanceof BlankRecommendItemView))
+    if (ydh.a(paramydh) == null)
     {
-      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
-      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.getExtraTypeInfo());
-      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
+      yqp.b(this.TAG, "ignore this user info event. %s.", paramwwx.toString());
+      return;
     }
+    yqp.a(this.TAG, "receive user info event. %s.", paramwwx.toString());
+    ydh.a(paramydh).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydt
  * JD-Core Version:    0.7.0.1
  */

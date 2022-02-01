@@ -1,56 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lmg
-  extends Handler
 {
-  public lmg(CameraUtils paramCameraUtils, Looper paramLooper)
+  public int a;
+  public long a;
+  final String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public boolean d = false;
+  public boolean e = false;
+  
+  public lmg(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + paramLong);
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    boolean bool = true;
-    long l = mwd.a(paramMessage.obj);
-    if (AudioHelper.e()) {
-      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      CameraUtils.a(this.a, l);
-      return;
-    case 2: 
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        CameraUtils.a(this.a, l, bool);
-        return;
-        bool = false;
-      }
-    case 3: 
-      i = paramMessage.arg1;
-      int j = paramMessage.arg2;
-      CameraUtils.a(this.a, l, i, j);
-      return;
-    case 4: 
-      CameraUtils.b(this.a, l);
-      return;
-    }
-    int i = paramMessage.arg1;
-    CameraUtils.a(this.a, l, i);
+    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmg
  * JD-Core Version:    0.7.0.1
  */

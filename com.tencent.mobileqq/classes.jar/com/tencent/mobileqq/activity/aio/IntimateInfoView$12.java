@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesh;
-import aesk;
+import afys;
+import afyw;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import mqq.os.MqqHandler;
 public class IntimateInfoView$12
   implements Runnable
 {
-  public IntimateInfoView$12(aesk paramaesk, URLDrawable paramURLDrawable) {}
+  public IntimateInfoView$12(afyw paramafyw, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -21,13 +21,13 @@ public class IntimateInfoView$12
     Canvas localCanvas = new Canvas(localBitmap);
     this.a.setBounds(0, 0, 750, 1272);
     this.a.draw(localCanvas);
-    aesk.a(this.this$0, new aesh(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aesk.a(this.this$0), aesk.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), aesk.a(this.this$0, this.this$0.jdField_a_of_type_JavaLangString), localBitmap));
+    afyw.a(this.this$0, new afys(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afyw.a(this.this$0), afyw.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), afyw.a(this.this$0, this.this$0.jdField_a_of_type_JavaLangString), localBitmap));
     ThreadManager.getUIHandler().post(new IntimateInfoView.12.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.12
  * JD-Core Version:    0.7.0.1
  */

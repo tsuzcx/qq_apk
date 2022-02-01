@@ -1,121 +1,236 @@
+import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class aorl
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private int jdField_a_of_type_Int;
+  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
+  private boolean e;
   
-  public aorl() {}
-  
-  public aorl(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public aorl(int paramInt, String... paramVarArgs)
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-  }
-  
-  public static aorl a(String paramString)
-  {
-    boolean bool5 = false;
-    if (paramString == null) {
-      return null;
-    }
-    boolean bool1;
     try
     {
-      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-      localNodeList = paramString.getElementsByTagName("bdh_ipv6_switch");
-      if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-        break label405;
-      }
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-        break label380;
-      }
-      bool1 = true;
-    }
-    catch (Exception paramString)
-    {
-      NodeList localNodeList;
-      label152:
-      QLog.e("RichmediaIpv6ConifgProcessor", 1, "onParsed failed" + paramString);
-      return null;
-    }
-    localNodeList = paramString.getElementsByTagName("bdh_dual_ipv6_switch");
-    if ((localNodeList != null) && (localNodeList.getLength() > 0)) {
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() > 0)
+      this.e = true;
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
+      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aorp(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aorq(this));
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        bool1 = true;
-        break label415;
-        localNodeList = paramString.getElementsByTagName("richmedia_down_ipv6_switch");
-        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label395;
+        int j = paramVarArgs.length;
+        paramInt = i;
+        while (paramInt < j)
+        {
+          String str = paramVarArgs[paramInt];
+          if (!TextUtils.isEmpty(str))
+          {
+            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
+            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+            if (QLog.isColorLevel()) {
+              QLog.d("ARMusicController", 2, "load file:" + str + ", id=" + i);
+            }
+          }
+          paramInt += 1;
         }
-        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-          break label390;
-        }
-        bool1 = true;
-        break label420;
       }
+      return;
     }
-    label390:
-    label395:
-    label405:
-    label410:
-    label415:
-    label420:
+    catch (Exception paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
+  }
+  
+  public aorl(String paramString1, String paramString2)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aorm(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aorn(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new aoro(this));
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+        return;
+      }
+      catch (IOException paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    int i;
     for (;;)
     {
-      paramString = paramString.getElementsByTagName("richmedia_down_dual_ipv6_switch");
-      boolean bool4 = bool5;
-      if (paramString != null)
+      try
       {
-        bool4 = bool5;
-        if (paramString.getLength() > 0)
+        if (!this.e) {
+          return;
+        }
+        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
         {
-          bool4 = bool5;
-          if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() > 0) {
-            bool4 = true;
+          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+          if (QLog.isColorLevel()) {
+            QLog.d("ARMusicController", 2, "playSound path=" + paramString + ", id=" + i);
           }
+          if (i == -1) {
+            return;
+          }
+          if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i))) {
+            break;
+          }
+          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
+          return;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "parse, bdh_ipv6_switch = " + bool2 + ", bdh_dual_ipv6_switch = " + bool3 + ", richmedia_down_ipv6_switch = " + bool1 + ", richmedia_down_dual_ipv6_switch = " + bool4);
+      catch (Exception paramString)
+      {
+        QLog.e("ARMusicController", 2, paramString, new Object[0]);
+        return;
       }
-      paramString = new aorl(bool2, bool3, bool1, bool4);
-      return paramString;
-      label380:
-      bool1 = false;
-      break label410;
-      bool1 = false;
-      break label415;
-      bool1 = false;
-      break label420;
-      bool1 = false;
-      continue;
-      boolean bool3 = false;
-      break label152;
-      boolean bool2 = false;
-      break;
-      bool2 = bool1;
-      break;
-      bool3 = bool1;
-      break label152;
+      i = -1;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (!new File(paramString).exists())
+        {
+          QLog.d("ARMusicController", 2, "playBgMusic file not exist" + paramString);
+          return;
+        }
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        }
+        this.jdField_a_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+        this.d = paramBoolean2;
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("ARMusicController", 2, "playBgMusic exception", paramString);
+        return;
+      }
+      QLog.d("ARMusicController", 1, "playBgMusic exception" + paramString.getMessage());
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    try
+    {
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("ARMusicController", 2, "playBgMusic : " + this.jdField_a_of_type_JavaLangString);
+        return;
+        this.d = true;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "stopAllMusic");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      this.jdField_a_of_type_AndroidMediaSoundPool.release();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.jdField_a_of_type_JavaUtilHashSet = null;
+      this.jdField_b_of_type_JavaUtilHashSet = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorl
  * JD-Core Version:    0.7.0.1
  */

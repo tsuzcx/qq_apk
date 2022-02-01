@@ -1,14 +1,21 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
 
-public abstract interface bixq
-  extends IInterface
+public class bixq
+  extends bixz
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public bixq(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  
+  public void a()
+  {
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixq
  * JD-Core Version:    0.7.0.1
  */

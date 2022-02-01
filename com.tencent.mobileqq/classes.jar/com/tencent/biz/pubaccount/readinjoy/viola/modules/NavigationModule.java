@@ -22,7 +22,7 @@ public class NavigationModule
     Fragment localFragment = getViolaInstance().getFragment();
     if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
     {
-      ((ViolaFragment)localFragment).p();
+      ((ViolaFragment)localFragment).q();
       ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), getModuleName(), "callback", paramString, "", true);
     }
   }
@@ -61,14 +61,14 @@ public class NavigationModule
     Fragment localFragment = getViolaInstance().getFragment();
     if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
     {
-      ((ViolaFragment)localFragment).q();
+      ((ViolaFragment)localFragment).r();
       ViolaBridgeManager.getInstance().callbackJavascript(getViolaInstance().getInstanceId(), getModuleName(), "callback", paramString, "", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.NavigationModule
  * JD-Core Version:    0.7.0.1
  */

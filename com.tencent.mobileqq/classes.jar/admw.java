@@ -1,45 +1,100 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class admw
-  extends BroadcastReceiver
+  extends anqd
 {
-  public admw(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public admw(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, String paramString, bdei parambdei)
   {
-    if (paramIntent == null) {}
+    if (AssociatedAccountActivity.a(this.a, paramString, parambdei)) {}
     do
     {
-      do
-      {
-        return;
-        localObject = paramIntent.getAction();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.equals((CharSequence)localObject, "mqq.intent.action.DEVLOCK_ROAM")));
-      if (paramContext != null) {
-        paramContext.unregisterReceiver(this);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
       }
-      Object localObject = aqax.a();
-      if (paramIntent.getIntExtra("guardphone_state", aqax.d) == aqax.c)
+    } while (!paramBoolean);
+    AssociatedAccountActivity.b(this.a, false);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, bdej parambdej)
+  {
+    if (AssociatedAccountActivity.a(this.a, paramString, parambdej)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + parambdej);
+      }
+      if (this.a.jdField_b_of_type_Boolean)
       {
-        paramIntent = paramIntent.getStringExtra("guardphone_mask");
-        paramContext = paramIntent;
-        if (paramIntent == null) {
-          paramContext = "";
-        }
-        ((aqax)localObject).a(this.a, paramContext);
+        AssociatedAccountActivity.a(this.a, paramBoolean, false);
         return;
       }
-      this.a.jdField_a_of_type_Alys.a = true;
-      paramContext = (amci)this.a.app.a(34);
-    } while (paramContext == null);
-    this.a.app.addObserver(this.a.jdField_a_of_type_Amcj);
-    PhoneUnityBindInfoActivity.a(this.a, this.a.c, 2, 1);
-    paramContext.a(4, 31, null, null);
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+    } while (!paramBoolean);
+    AssociatedAccountActivity.a(this.a, parambdej);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (paramBoolean) {
+        break label157;
+      }
+    }
+    label157:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
+      if (!"sub.account.switchAccount".equals(paramString2)) {
+        break;
+      }
+      paramString1 = this.a;
+      paramString1.jdField_b_of_type_Int -= 1;
+      if (this.a.jdField_b_of_type_Int <= 0) {
+        AssociatedAccountActivity.b(this.a, false, this.a.jdField_a_of_type_JavaLangString);
+      }
+      if (this.a.jdField_b_of_type_Int >= 0) {
+        break;
+      }
+      this.a.jdField_b_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, bdei parambdei)
+  {
+    if (AssociatedAccountActivity.a(this.a, paramString, parambdei)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        AssociatedAccountActivity.a(this.a, paramBoolean, true);
+        return;
+      }
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+      if ((paramBoolean) && (parambdei.c))
+      {
+        this.a.c();
+        return;
+      }
+    } while (!paramBoolean);
+    this.a.a();
   }
 }
 

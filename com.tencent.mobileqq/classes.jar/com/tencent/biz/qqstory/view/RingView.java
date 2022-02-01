@@ -9,13 +9,13 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xuq;
+import zob;
 
 public class RingView
   extends View
 {
   protected RectF a;
-  protected List<xuq> a;
+  protected List<zob> a;
   
   public RingView(Context paramContext)
   {
@@ -36,16 +36,16 @@ public class RingView
     }
   }
   
-  public void a(xuq paramxuq)
+  public void a(zob paramzob)
   {
     
-    if (paramxuq == null) {
+    if (paramzob == null) {
       throw new NullPointerException("drawInfo should not be NULL");
     }
     if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()) {
-      paramxuq.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      paramzob.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramxuq);
+    this.jdField_a_of_type_JavaUtilList.add(paramzob);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -55,9 +55,9 @@ public class RingView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      xuq localxuq = (xuq)localIterator.next();
-      localxuq.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
-      localxuq.a(paramCanvas);
+      zob localzob = (zob)localIterator.next();
+      localzob.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      localzob.a(paramCanvas);
     }
     paramCanvas.restore();
   }
@@ -80,13 +80,13 @@ public class RingView
     this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt2 + paramInt1);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((xuq)localIterator.next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      ((zob)localIterator.next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.RingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.util;
 
-import alof;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,14 +7,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import azri;
-import bazo;
-import bflr;
+import anhk;
+import bctj;
+import bita;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -42,12 +42,12 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import mqq.app.AppRuntime;
-import ndd;
+import nlw;
 import org.json.JSONArray;
 import org.json.JSONException;
-import swo;
-import swp;
-import swy;
+import txw;
+import txx;
+import tyg;
 
 public class PreloadManager
 {
@@ -56,8 +56,8 @@ public class PreloadManager
   private MQLruCache<String, byte[]> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(30);
   public Object a;
   public final String a;
-  ArrayList<swo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile HashMap<String, ArrayList<swo>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ArrayList<txw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private volatile HashMap<String, ArrayList<txw>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   volatile boolean jdField_a_of_type_Boolean;
   Object jdField_b_of_type_JavaLangObject = new Object();
@@ -73,10 +73,10 @@ public class PreloadManager
   
   static int a(String paramString)
   {
-    Object localObject = bflr.d(paramString);
+    Object localObject = bita.d(paramString);
     paramString = (String)localObject + ".temp";
-    localObject = new File(alof.cI, (String)localObject);
-    paramString = new File(alof.cI, paramString);
+    localObject = new File(anhk.cL, (String)localObject);
+    paramString = new File(anhk.cL, paramString);
     if (((File)localObject).exists()) {
       return 2;
     }
@@ -129,7 +129,7 @@ public class PreloadManager
     return "http:" + paramString;
   }
   
-  private ArrayList<swo> a(String paramString, boolean paramBoolean)
+  private ArrayList<txw> a(String paramString, boolean paramBoolean)
   {
     String str = null;
     if (TextUtils.isEmpty(paramString)) {
@@ -176,16 +176,16 @@ public class PreloadManager
           List localList = a(str, false, paramBoolean);
           int i = ((List)localObject).size();
           int j = localList.size();
-          swo localswo;
+          txw localtxw;
           if ((j == 0) || (j < i) || (j > i))
           {
             i = 0;
             while (i < ((List)localObject).size())
             {
-              localswo = new swo();
-              localswo.jdField_a_of_type_JavaLangString = ((String)((List)localObject).get(i));
-              localswo.jdField_a_of_type_Int = 0;
-              localArrayList.add(localswo);
+              localtxw = new txw();
+              localtxw.jdField_a_of_type_JavaLangString = ((String)((List)localObject).get(i));
+              localtxw.jdField_a_of_type_Int = 0;
+              localArrayList.add(localtxw);
               i += 1;
             }
             break;
@@ -193,24 +193,24 @@ public class PreloadManager
           i = 0;
           while (i < ((List)localObject).size())
           {
-            localswo = new swo();
-            localswo.jdField_a_of_type_JavaLangString = ((String)((List)localObject).get(i));
+            localtxw = new txw();
+            localtxw.jdField_a_of_type_JavaLangString = ((String)((List)localObject).get(i));
             try
             {
-              localswo.jdField_a_of_type_Int = Integer.parseInt((String)localList.get(i));
+              localtxw.jdField_a_of_type_Int = Integer.parseInt((String)localList.get(i));
             }
             catch (NumberFormatException localNumberFormatException)
             {
               for (;;)
               {
-                localswo.jdField_a_of_type_Int = 0;
+                localtxw.jdField_a_of_type_Int = 0;
                 localNumberFormatException.printStackTrace();
-                localArrayList.add(localswo);
+                localArrayList.add(localtxw);
               }
             }
             finally
             {
-              localArrayList.add(localswo);
+              localArrayList.add(localtxw);
             }
             i += 1;
             continue;
@@ -229,7 +229,7 @@ public class PreloadManager
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_dataSource", "1");
-    if (swy.m) {}
+    if (tyg.m) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("param_enableIpConnect", str);
@@ -239,7 +239,7 @@ public class PreloadManager
       localHashMap.put("param_ipConnResult", paramString3);
       localHashMap.put("param_hostConnResult", paramString4);
       paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-      azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyIpConnect", paramBoolean, paramLong, 0L, localHashMap, "");
+      bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actReadInJoyIpConnect", paramBoolean, paramLong, 0L, localHashMap, "");
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -360,9 +360,9 @@ public class PreloadManager
   private String b(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithCondition:" + swy.m);
+      QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithCondition:" + tyg.m);
     }
-    if (swy.m) {
+    if (tyg.m) {
       return c(paramString);
     }
     long l;
@@ -382,7 +382,7 @@ public class PreloadManager
             l = NetConnInfoCenter.getServerTimeMillis();
             try
             {
-              paramString = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+              paramString = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
               a(true, l, 0, str1, str3, "-1", "0");
               return paramString;
             }
@@ -406,7 +406,7 @@ public class PreloadManager
         }
       }
     }
-    return ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+    return nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
   }
   
   /* Error */
@@ -449,7 +449,7 @@ public class PreloadManager
     //   66: new 81	java/lang/StringBuilder
     //   69: dup
     //   70: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   73: getstatic 460	alof:cH	Ljava/lang/String;
+    //   73: getstatic 460	anhk:cK	Ljava/lang/String;
     //   76: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 11
     //   81: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -479,7 +479,7 @@ public class PreloadManager
     //   141: aload 9
     //   143: astore 8
     //   145: aload 10
-    //   147: invokestatic 473	bdhb:b	(Ljava/lang/String;)Z
+    //   147: invokestatic 473	bgmg:b	(Ljava/lang/String;)Z
     //   150: ifeq +55 -> 205
     //   153: aload 9
     //   155: astore 8
@@ -624,7 +624,7 @@ public class PreloadManager
     //   439: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   442: ldc_w 500
     //   445: ldc_w 292
-    //   448: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   448: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   451: iconst_0
     //   452: ifeq -415 -> 37
     //   455: new 451	java/lang/NullPointerException
@@ -673,7 +673,7 @@ public class PreloadManager
     //   540: aload_1
     //   541: invokevirtual 442	java/io/IOException:getMessage	()Ljava/lang/String;
     //   544: ldc_w 292
-    //   547: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   547: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   550: aload 7
     //   552: ifnull -515 -> 37
     //   555: aload 7
@@ -778,7 +778,7 @@ public class PreloadManager
     //   755: astore 8
     //   757: new 94	java/io/File
     //   760: dup
-    //   761: getstatic 460	alof:cH	Ljava/lang/String;
+    //   761: getstatic 460	anhk:cK	Ljava/lang/String;
     //   764: invokespecial 519	java/io/File:<init>	(Ljava/lang/String;)V
     //   767: astore_1
     //   768: aload 9
@@ -854,7 +854,7 @@ public class PreloadManager
     //   918: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   921: ldc_w 500
     //   924: ldc_w 292
-    //   927: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   927: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   930: lload 5
     //   932: lstore_3
     //   933: aload_1
@@ -878,7 +878,7 @@ public class PreloadManager
     //   966: new 81	java/lang/StringBuilder
     //   969: dup
     //   970: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   973: getstatic 460	alof:cH	Ljava/lang/String;
+    //   973: getstatic 460	anhk:cK	Ljava/lang/String;
     //   976: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   979: aload 11
     //   981: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -917,7 +917,7 @@ public class PreloadManager
     //   1055: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1058: ldc_w 500
     //   1061: ldc_w 292
-    //   1064: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1064: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1067: aload_1
     //   1068: ifnull -1031 -> 37
     //   1071: aload_1
@@ -929,61 +929,55 @@ public class PreloadManager
     //   1081: return
     //   1082: astore_1
     //   1083: aload 8
-    //   1085: astore 7
-    //   1087: aload 7
-    //   1089: ifnull +8 -> 1097
-    //   1092: aload 7
-    //   1094: invokevirtual 510	java/io/FileOutputStream:close	()V
-    //   1097: aload_1
-    //   1098: athrow
-    //   1099: astore 7
-    //   1101: aload 7
-    //   1103: invokevirtual 453	java/io/IOException:printStackTrace	()V
-    //   1106: goto -9 -> 1097
-    //   1109: astore 8
-    //   1111: aload_1
-    //   1112: astore 7
-    //   1114: aload 8
+    //   1085: ifnull +8 -> 1093
+    //   1088: aload 8
+    //   1090: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   1093: aload_1
+    //   1094: athrow
+    //   1095: astore 7
+    //   1097: aload 7
+    //   1099: invokevirtual 453	java/io/IOException:printStackTrace	()V
+    //   1102: goto -9 -> 1093
+    //   1105: astore 7
+    //   1107: aload_1
+    //   1108: astore 8
+    //   1110: aload 7
+    //   1112: astore_1
+    //   1113: goto -30 -> 1083
     //   1116: astore_1
-    //   1117: goto -30 -> 1087
-    //   1120: astore_1
-    //   1121: goto -640 -> 481
-    //   1124: astore 7
-    //   1126: aload_1
-    //   1127: astore 8
-    //   1129: aload 7
-    //   1131: astore_1
-    //   1132: aload 8
+    //   1117: goto -636 -> 481
+    //   1120: astore 8
+    //   1122: aload_1
+    //   1123: astore 7
+    //   1125: aload 8
+    //   1127: astore_1
+    //   1128: goto -647 -> 481
+    //   1131: astore 8
+    //   1133: aload_1
     //   1134: astore 7
-    //   1136: goto -655 -> 481
-    //   1139: astore 8
-    //   1141: aload_1
-    //   1142: astore 7
-    //   1144: aload 8
-    //   1146: astore_1
-    //   1147: goto -666 -> 481
+    //   1136: aload 8
+    //   1138: astore_1
+    //   1139: goto -658 -> 481
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1150	0	this	PreloadManager
-    //   0	1150	1	paramString	String
+    //   0	1142	0	this	PreloadManager
+    //   0	1142	1	paramString	String
     //   787	2	2	bool	boolean
     //   9	1014	3	l1	long
     //   396	655	5	l2	long
-    //   4	1089	7	localObject1	Object
-    //   1099	3	7	localIOException1	IOException
-    //   1112	1	7	str1	String
-    //   1124	6	7	localIOException2	IOException
-    //   1134	9	7	localObject2	Object
-    //   12	1072	8	localObject3	Object
-    //   1109	6	8	localObject4	Object
-    //   1127	6	8	str2	String
-    //   1139	6	8	localIOException3	IOException
-    //   1	810	9	localObject5	Object
-    //   87	59	10	str3	String
-    //   469	532	10	str4	String
-    //   18	962	11	str5	String
-    //   60	894	12	localObject6	Object
-    //   214	407	13	str6	String
+    //   4	552	7	localObject1	Object
+    //   1095	3	7	localIOException1	IOException
+    //   1105	6	7	localObject2	Object
+    //   1123	12	7	str1	String
+    //   12	1097	8	localObject3	Object
+    //   1120	6	8	localIOException2	IOException
+    //   1131	6	8	localIOException3	IOException
+    //   1	810	9	localObject4	Object
+    //   87	59	10	str2	String
+    //   469	532	10	str3	String
+    //   18	962	11	str4	String
+    //   60	894	12	localObject5	Object
+    //   214	407	13	str5	String
     // Exception table:
     //   from	to	target	type
     //   29	37	38	java/io/IOException
@@ -1070,20 +1064,20 @@ public class PreloadManager
     //   772	779	1082	finally
     //   783	788	1082	finally
     //   814	851	1082	finally
-    //   1092	1097	1099	java/io/IOException
-    //   856	871	1109	finally
-    //   871	876	1109	finally
-    //   885	930	1109	finally
-    //   933	937	1109	finally
-    //   952	1014	1109	finally
-    //   1023	1067	1109	finally
-    //   407	451	1120	java/io/IOException
-    //   856	871	1124	java/io/IOException
-    //   871	876	1124	java/io/IOException
-    //   952	1014	1124	java/io/IOException
-    //   885	930	1139	java/io/IOException
-    //   933	937	1139	java/io/IOException
-    //   1023	1067	1139	java/io/IOException
+    //   1088	1093	1095	java/io/IOException
+    //   856	871	1105	finally
+    //   871	876	1105	finally
+    //   885	930	1105	finally
+    //   933	937	1105	finally
+    //   952	1014	1105	finally
+    //   1023	1067	1105	finally
+    //   407	451	1116	java/io/IOException
+    //   856	871	1120	java/io/IOException
+    //   871	876	1120	java/io/IOException
+    //   952	1014	1120	java/io/IOException
+    //   885	930	1131	java/io/IOException
+    //   933	937	1131	java/io/IOException
+    //   1023	1067	1131	java/io/IOException
   }
   
   /* Error */
@@ -1189,7 +1183,7 @@ public class PreloadManager
     try
     {
       str3 = new URL(paramString).getHost();
-      String str1 = bazo.a().a(str3, 1008);
+      String str1 = InnerDns.getInstance().reqDns(str3, 1008);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect host:" + str3 + ", ip:" + str1);
       }
@@ -1207,7 +1201,7 @@ public class PreloadManager
               if (QLog.isColorLevel()) {
                 QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect direct download html with host:" + paramString);
               }
-              String str4 = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+              String str4 = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
               a(true, l, 0, str3, str1, "-1", "0");
               return str4;
             }
@@ -1245,7 +1239,7 @@ public class PreloadManager
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect download html with ip:" + str5);
       }
-      str5 = ndd.a(BaseApplication.getContext(), str5, "GET", null, (Bundle)localObject, str3);
+      str5 = nlw.a(BaseApplication.getContext(), str5, "GET", null, (Bundle)localObject, str3);
       a(true, l, 2, str3, localMalformedURLException, "0", "-1");
       return str5;
     }
@@ -1260,8 +1254,8 @@ public class PreloadManager
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadHtmlWithIpConnect retry direct download html with host:" + paramString);
         }
-        localObject = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
-        bazo.a().a(str3, localMalformedURLException, 1008);
+        localObject = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+        InnerDns.getInstance().reportBadIp(str3, localMalformedURLException, 1008);
         a(true, l, 3, str3, localMalformedURLException, localIOException2.getMessage(), "0");
         return localObject;
       }
@@ -1282,7 +1276,7 @@ public class PreloadManager
     boolean bool2 = false;
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     boolean bool1 = bool2;
-    switch (swy.b)
+    switch (tyg.b)
     {
     default: 
       bool1 = bool2;
@@ -1299,10 +1293,10 @@ public class PreloadManager
       if (!TextUtils.isEmpty(str))
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(swy.i))
+        if (!TextUtils.isEmpty(tyg.i))
         {
           bool1 = bool2;
-          if (str.endsWith(swy.i)) {
+          if (str.endsWith(tyg.i)) {
             bool1 = true;
           }
         }
@@ -1313,9 +1307,9 @@ public class PreloadManager
   private byte[] c(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithCondition:" + swy.m);
+      QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithCondition:" + tyg.m);
     }
-    if (swy.m) {
+    if (tyg.m) {
       return d(paramString);
     }
     long l;
@@ -1335,7 +1329,7 @@ public class PreloadManager
             l = NetConnInfoCenter.getServerTimeMillis();
             try
             {
-              paramString = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+              paramString = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
               a(true, l, 0, str1, str3, "-1", "0");
               return paramString;
             }
@@ -1359,7 +1353,7 @@ public class PreloadManager
         }
       }
     }
-    return ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+    return nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
   }
   
   private byte[] d(String paramString)
@@ -1379,7 +1373,7 @@ public class PreloadManager
     try
     {
       str3 = new URL(paramString).getHost();
-      String str1 = bazo.a().a(str3, 1009);
+      String str1 = InnerDns.getInstance().reqDns(str3, 1009);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect host:" + str3 + ", ip:" + str1);
       }
@@ -1397,7 +1391,7 @@ public class PreloadManager
               if (QLog.isColorLevel()) {
                 QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect direct download image with host:" + paramString);
               }
-              byte[] arrayOfByte = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+              byte[] arrayOfByte = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
               a(true, l, 0, str3, str1, "-1", "0");
               return arrayOfByte;
             }
@@ -1435,7 +1429,7 @@ public class PreloadManager
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect download image with ip:" + (String)localObject1);
       }
-      localObject1 = ndd.a(BaseApplication.getContext(), (String)localObject1, "GET", null, (Bundle)localObject2, str3);
+      localObject1 = nlw.a(BaseApplication.getContext(), (String)localObject1, "GET", null, (Bundle)localObject2, str3);
       a(true, l, 2, str3, localMalformedURLException, "0", "-1");
       return localObject1;
     }
@@ -1450,8 +1444,8 @@ public class PreloadManager
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyArticleDetailPreloadManager", 2, "downloadImageWithIpConnect retry direct download image with host:" + paramString);
         }
-        localObject2 = ndd.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
-        bazo.a().a(str3, localMalformedURLException, 1009);
+        localObject2 = nlw.a(BaseApplication.getContext(), paramString, "GET", null, null, null);
+        InnerDns.getInstance().reportBadIp(str3, localMalformedURLException, 1009);
         a(true, l, 3, str3, localMalformedURLException, localIOException2.getMessage(), "0");
         return localObject2;
       }
@@ -1467,7 +1461,7 @@ public class PreloadManager
     }
   }
   
-  public ArrayList<swo> a(String paramString)
+  public ArrayList<txw> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -1476,13 +1470,13 @@ public class PreloadManager
       if (paramString == null) {
         break label97;
       }
-      Collections.sort(paramString, new swp());
+      Collections.sort(paramString, new txx());
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
-        swo localswo = (swo)paramString.next();
-        if (a(localswo.jdField_a_of_type_JavaLangString) == 0) {
-          localArrayList.add(localswo);
+        txw localtxw = (txw)paramString.next();
+        if (a(localtxw.jdField_a_of_type_JavaLangString) == 0) {
+          localArrayList.add(localtxw);
         }
       }
     }
@@ -1630,17 +1624,17 @@ public class PreloadManager
     //   0: invokestatic 447	java/lang/System:currentTimeMillis	()J
     //   3: lstore_2
     //   4: aload_1
-    //   5: invokestatic 79	bflr:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   8: astore 10
+    //   5: invokestatic 79	bita:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   8: astore 11
     //   10: new 94	java/io/File
     //   13: dup
-    //   14: getstatic 99	alof:cI	Ljava/lang/String;
+    //   14: getstatic 99	anhk:cL	Ljava/lang/String;
     //   17: invokespecial 519	java/io/File:<init>	(Ljava/lang/String;)V
-    //   20: astore 9
-    //   22: aload 9
+    //   20: astore 10
+    //   22: aload 10
     //   24: invokevirtual 106	java/io/File:exists	()Z
     //   27: ifne +41 -> 68
-    //   30: aload 9
+    //   30: aload 10
     //   32: invokevirtual 522	java/io/File:mkdirs	()Z
     //   35: istore 6
     //   37: iload 6
@@ -1661,11 +1655,11 @@ public class PreloadManager
     //   65: goto -11 -> 54
     //   68: new 94	java/io/File
     //   71: dup
-    //   72: aload 9
+    //   72: aload 10
     //   74: new 81	java/lang/StringBuilder
     //   77: dup
     //   78: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   81: aload 10
+    //   81: aload 11
     //   83: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: ldc 88
     //   88: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1681,9 +1675,9 @@ public class PreloadManager
     //   112: astore 8
     //   114: aload_0
     //   115: aload_1
-    //   116: invokespecial 758	com/tencent/biz/pubaccount/util/PreloadManager:c	(Ljava/lang/String;)[B
-    //   119: astore 11
-    //   121: aload 11
+    //   116: invokespecial 760	com/tencent/biz/pubaccount/util/PreloadManager:c	(Ljava/lang/String;)[B
+    //   119: astore 9
+    //   121: aload 9
     //   123: ifnull +175 -> 298
     //   126: aload 7
     //   128: astore 8
@@ -1696,11 +1690,11 @@ public class PreloadManager
     //   143: new 81	java/lang/StringBuilder
     //   146: dup
     //   147: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   150: ldc_w 760
+    //   150: ldc_w 762
     //   153: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: aload_1
     //   157: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: ldc_w 762
+    //   160: ldc_w 764
     //   163: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: invokestatic 447	java/lang/System:currentTimeMillis	()J
     //   169: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -1709,15 +1703,15 @@ public class PreloadManager
     //   178: aload 7
     //   180: astore 8
     //   182: aload 7
-    //   184: aload 11
+    //   184: aload 9
     //   186: invokevirtual 535	java/io/FileOutputStream:write	([B)V
     //   189: aload 7
     //   191: astore 8
     //   193: aload 12
     //   195: new 94	java/io/File
     //   198: dup
-    //   199: aload 9
-    //   201: aload 10
+    //   199: aload 10
+    //   201: aload 11
     //   203: invokespecial 527	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   206: invokevirtual 539	java/io/File:renameTo	(Ljava/io/File;)Z
     //   209: pop
@@ -1735,8 +1729,8 @@ public class PreloadManager
     //   231: lstore_2
     //   232: aconst_null
     //   233: ldc_w 292
-    //   236: ldc_w 764
-    //   239: ldc_w 764
+    //   236: ldc_w 766
+    //   239: ldc_w 766
     //   242: iconst_0
     //   243: iconst_0
     //   244: ldc 232
@@ -1750,7 +1744,7 @@ public class PreloadManager
     //   264: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   267: ldc_w 500
     //   270: ldc_w 325
-    //   273: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   273: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   276: iconst_1
     //   277: istore 6
     //   279: aload 7
@@ -1772,7 +1766,7 @@ public class PreloadManager
     //   310: astore 8
     //   312: ldc 26
     //   314: iconst_2
-    //   315: ldc_w 766
+    //   315: ldc_w 768
     //   318: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   321: aload 7
     //   323: astore 8
@@ -1788,8 +1782,8 @@ public class PreloadManager
     //   342: lstore_2
     //   343: aconst_null
     //   344: ldc_w 292
-    //   347: ldc_w 764
-    //   350: ldc_w 764
+    //   347: ldc_w 766
+    //   350: ldc_w 766
     //   353: iconst_0
     //   354: iconst_0
     //   355: ldc_w 325
@@ -1803,7 +1797,7 @@ public class PreloadManager
     //   376: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   379: ldc_w 500
     //   382: ldc_w 325
-    //   385: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   385: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   388: aload 7
     //   390: ifnull +8 -> 398
     //   393: aload 7
@@ -1825,8 +1819,8 @@ public class PreloadManager
     //   423: astore 8
     //   425: aconst_null
     //   426: ldc_w 292
-    //   429: ldc_w 764
-    //   432: ldc_w 764
+    //   429: ldc_w 766
+    //   432: ldc_w 766
     //   435: iconst_0
     //   436: iconst_0
     //   437: ldc_w 325
@@ -1843,7 +1837,7 @@ public class PreloadManager
     //   463: aload_1
     //   464: invokevirtual 442	java/io/IOException:getMessage	()Ljava/lang/String;
     //   467: ldc_w 325
-    //   470: invokestatic 505	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   470: invokestatic 505	oat:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   473: aload 7
     //   475: ifnull +8 -> 483
     //   478: aload 7
@@ -1872,7 +1866,7 @@ public class PreloadManager
     //   522: aload 7
     //   524: astore 8
     //   526: aload_1
-    //   527: invokevirtual 767	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   527: invokevirtual 769	java/lang/IllegalArgumentException:printStackTrace	()V
     //   530: aload 7
     //   532: ifnull -49 -> 483
     //   535: aload 7
@@ -1915,9 +1909,9 @@ public class PreloadManager
     //   108	428	7	localFileOutputStream1	java.io.FileOutputStream
     //   567	3	7	localIOException	IOException
     //   112	449	8	localFileOutputStream2	java.io.FileOutputStream
-    //   20	180	9	localFile1	File
-    //   8	194	10	str	String
-    //   119	66	11	arrayOfByte	byte[]
+    //   119	66	9	arrayOfByte	byte[]
+    //   20	180	10	localFile1	File
+    //   8	194	11	str	String
     //   97	97	12	localFile2	File
     // Exception table:
     //   from	to	target	type
@@ -2023,7 +2017,7 @@ public class PreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager
  * JD-Core Version:    0.7.0.1
  */

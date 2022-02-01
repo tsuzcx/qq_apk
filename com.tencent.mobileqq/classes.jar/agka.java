@@ -1,28 +1,15 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class agka
-  extends FrameLayout
+public final class agka
+  implements bkhw
 {
-  public agka(agjx paramagjx, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public agka(Activity paramActivity, bkho parambkho, String paramString, agkf paramagkf) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = agjx.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
-    }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(agjx.a(this.a).getMeasuredWidth() - agjx.a(this.a).getPaddingLeft() - agjx.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bkho, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agkf);
   }
 }
 

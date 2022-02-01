@@ -1,392 +1,193 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class ahhh
-  extends WebViewPlugin
-  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener
+  extends BaseBubbleBuilder
 {
-  private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  private View.OnClickListener a;
+  private long c = -1L;
   
-  public ahhh()
+  public ahhh(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    this.mPluginNameSpace = "newLogin";
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahhi(this);
   }
   
-  private void a(String paramString)
+  public int a(ChatMessage paramChatMessage)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    return 1;
+  }
+  
+  public afwr a()
+  {
+    return new ahhl(this);
+  }
+  
+  public View a(ChatMessage paramChatMessage, afwr paramafwr, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afzq paramafzq)
+  {
+    paramBaseChatItemLayout = paramBaseChatItemLayout.getContext();
+    ahhl localahhl = (ahhl)paramafwr;
+    paramafwr = paramView;
+    if (paramView == null)
+    {
+      paramafwr = new LinearLayout(paramBaseChatItemLayout);
+      paramafwr.setOrientation(0);
+      paramView = new ImageView(paramBaseChatItemLayout);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      Object localObject = new LinearLayout.LayoutParams(-2, -2);
+      ((LinearLayout.LayoutParams)localObject).gravity = 16;
+      paramafwr.addView(paramView, (ViewGroup.LayoutParams)localObject);
+      localObject = new TextView(paramBaseChatItemLayout);
+      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131167004));
+      ((TextView)localObject).setMaxWidth(BaseChatItemLayout.f);
+      ((TextView)localObject).setId(2131364382);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 16;
+      paramafwr.addView((View)localObject, localLayoutParams);
+      localahhl.jdField_a_of_type_AndroidWidgetImageView = paramView;
+      localahhl.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
     }
-    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:"));
-    localIntent.putExtra("sms_body", paramString);
-    this.mRuntime.a().startActivity(localIntent);
-  }
-  
-  private List<ShareActionSheetBuilder.ActionSheetItem>[] a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696893);
-    localActionSheetItem.icon = 2130838921;
-    localActionSheetItem.action = 9;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696876);
-    localActionSheetItem.icon = 2130838915;
-    localActionSheetItem.action = 10;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = alud.a(2131706221);
-    localActionSheetItem.icon = 2130838913;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 1;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696865);
-    localActionSheetItem.icon = 2130838913;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 1;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    QLog.d("InvitationFriend", 1, "CheckPermission user denied = sms");
-    QQToast.a(this.mRuntime.a(), alud.a(2131706219), 1).a();
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    QLog.d("InvitationFriend", 1, "CheckPermission user grant = sms");
-    if (!TextUtils.isEmpty(this.c)) {
-      a(this.c);
+    localahhl.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+    int k = BaseChatItemLayout.o;
+    int j = BaseChatItemLayout.p;
+    int i = BaseChatItemLayout.o;
+    localahhl.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844833);
+    if (paramChatMessage.isSend())
+    {
+      k = BaseChatItemLayout.p;
+      j = BaseChatItemLayout.o;
+      i = BaseChatItemLayout.p;
+      localahhl.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844834);
     }
-  }
-  
-  /* Error */
-  public boolean handleJsRequest(com.tencent.mobileqq.webview.swift.JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    // Byte code:
-    //   0: invokestatic 166	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +57 -> 60
-    //   6: ldc 129
-    //   8: iconst_2
-    //   9: new 168	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 169	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 171
-    //   18: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_2
-    //   22: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc 177
-    //   27: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload 4
-    //   32: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 179
-    //   37: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_3
-    //   41: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: ldc 181
-    //   46: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload 5
-    //   51: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 191	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   60: ldc 19
-    //   62: aload_3
-    //   63: invokevirtual 196	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   66: ifne +5 -> 71
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: ldc 198
-    //   73: aload 4
-    //   75: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   78: ifeq +121 -> 199
-    //   81: aload 5
-    //   83: ifnull +10 -> 93
-    //   86: aload 5
-    //   88: arraylength
-    //   89: iconst_1
-    //   90: if_icmpeq +5 -> 95
-    //   93: iconst_0
-    //   94: ireturn
-    //   95: aload 5
-    //   97: iconst_0
-    //   98: aaload
-    //   99: astore_1
-    //   100: new 204	org/json/JSONObject
-    //   103: dup
-    //   104: aload_1
-    //   105: invokespecial 206	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   108: astore_1
-    //   109: aload_1
-    //   110: ldc 208
-    //   112: invokevirtual 211	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   115: astore_2
-    //   116: aload_0
-    //   117: aload_1
-    //   118: ldc 213
-    //   120: invokevirtual 211	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   123: putfield 215	ahhh:b	Ljava/lang/String;
-    //   126: getstatic 220	android/os/Build$VERSION:SDK_INT	I
-    //   129: bipush 23
-    //   131: if_icmplt +60 -> 191
-    //   134: aload_0
-    //   135: getfield 55	ahhh:mRuntime	Lbegz;
-    //   138: invokevirtual 60	begz:a	()Landroid/app/Activity;
-    //   141: ldc 222
-    //   143: invokevirtual 226	android/app/Activity:checkSelfPermission	(Ljava/lang/String;)I
-    //   146: ifeq +37 -> 183
-    //   149: aload_0
-    //   150: aload_2
-    //   151: putfield 154	ahhh:c	Ljava/lang/String;
-    //   154: aload_0
-    //   155: getfield 55	ahhh:mRuntime	Lbegz;
-    //   158: invokevirtual 60	begz:a	()Landroid/app/Activity;
-    //   161: checkcast 228	mqq/app/AppActivity
-    //   164: aload_0
-    //   165: iconst_1
-    //   166: iconst_1
-    //   167: anewarray 193	java/lang/String
-    //   170: dup
-    //   171: iconst_0
-    //   172: ldc 222
-    //   174: aastore
-    //   175: invokevirtual 232	mqq/app/AppActivity:requestPermissions	(Ljava/lang/Object;I[Ljava/lang/String;)V
-    //   178: iconst_1
-    //   179: ireturn
-    //   180: astore_1
-    //   181: iconst_0
-    //   182: ireturn
-    //   183: aload_0
-    //   184: aload_2
-    //   185: invokespecial 156	ahhh:a	(Ljava/lang/String;)V
-    //   188: goto -10 -> 178
-    //   191: aload_0
-    //   192: aload_2
-    //   193: invokespecial 156	ahhh:a	(Ljava/lang/String;)V
-    //   196: goto -18 -> 178
-    //   199: ldc 234
-    //   201: aload 4
-    //   203: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   206: ifeq +189 -> 395
-    //   209: aload 5
-    //   211: ifnull +10 -> 221
-    //   214: aload 5
-    //   216: arraylength
-    //   217: iconst_1
-    //   218: if_icmpeq +5 -> 223
-    //   221: iconst_0
-    //   222: ireturn
-    //   223: aload 5
-    //   225: iconst_0
-    //   226: aaload
-    //   227: astore_1
-    //   228: aload_0
-    //   229: new 204	org/json/JSONObject
-    //   232: dup
-    //   233: aload_1
-    //   234: invokespecial 206	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   237: ldc 213
-    //   239: invokevirtual 211	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   242: putfield 236	ahhh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   245: aload_0
-    //   246: getfield 55	ahhh:mRuntime	Lbegz;
-    //   249: invokevirtual 60	begz:a	()Landroid/app/Activity;
-    //   252: astore_1
-    //   253: aload_0
-    //   254: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   257: ifnonnull +15 -> 272
-    //   260: aload_0
-    //   261: new 240	com/tencent/mobileqq/utils/ShareActionSheetBuilder
-    //   264: dup
-    //   265: aload_1
-    //   266: invokespecial 243	com/tencent/mobileqq/utils/ShareActionSheetBuilder:<init>	(Landroid/content/Context;)V
-    //   269: putfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   272: aload_0
-    //   273: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   276: ldc 244
-    //   278: invokestatic 111	alud:a	(I)Ljava/lang/String;
-    //   281: invokevirtual 248	com/tencent/mobileqq/utils/ShareActionSheetBuilder:setActionSheetTitle	(Ljava/lang/CharSequence;)V
-    //   284: aload_0
-    //   285: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   288: aload_0
-    //   289: invokespecial 250	ahhh:a	()[Ljava/util/List;
-    //   292: invokevirtual 254	com/tencent/mobileqq/utils/ShareActionSheetBuilder:setActionSheetItems	([Ljava/util/List;)V
-    //   295: aload_0
-    //   296: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   299: aload_0
-    //   300: invokevirtual 258	com/tencent/mobileqq/utils/ShareActionSheetBuilder:setItemClickListener	(Landroid/widget/AdapterView$OnItemClickListener;)V
-    //   303: aload_0
-    //   304: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   307: aload_0
-    //   308: invokevirtual 262	com/tencent/mobileqq/utils/ShareActionSheetBuilder:setOnDismissListener	(Landroid/content/DialogInterface$OnDismissListener;)V
-    //   311: aload_1
-    //   312: invokevirtual 265	android/app/Activity:isFinishing	()Z
-    //   315: ifne +78 -> 393
-    //   318: aload_0
-    //   319: getfield 238	ahhh:jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
-    //   322: invokevirtual 268	com/tencent/mobileqq/utils/ShareActionSheetBuilder:show	()V
-    //   325: aconst_null
-    //   326: ldc_w 270
-    //   329: ldc 97
-    //   331: ldc 97
-    //   333: ldc_w 272
-    //   336: ldc_w 272
-    //   339: iconst_0
-    //   340: iconst_0
-    //   341: ldc 97
-    //   343: ldc 97
-    //   345: ldc 97
-    //   347: ldc 97
-    //   349: invokestatic 277	azqs:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   352: iconst_1
-    //   353: ireturn
-    //   354: astore_1
-    //   355: iconst_0
-    //   356: ireturn
-    //   357: astore_1
-    //   358: invokestatic 166	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   361: ifeq -9 -> 352
-    //   364: ldc 129
-    //   366: iconst_2
-    //   367: new 168	java/lang/StringBuilder
-    //   370: dup
-    //   371: invokespecial 169	java/lang/StringBuilder:<init>	()V
-    //   374: ldc_w 279
-    //   377: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   380: aload_1
-    //   381: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   384: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   387: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   390: goto -38 -> 352
-    //   393: iconst_0
-    //   394: ireturn
-    //   395: ldc_w 281
-    //   398: aload 4
-    //   400: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   403: ifeq -225 -> 178
-    //   406: invokestatic 166	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   409: ifeq +12 -> 421
-    //   412: ldc 129
-    //   414: iconst_2
-    //   415: ldc_w 283
-    //   418: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   421: aload_0
-    //   422: getfield 55	ahhh:mRuntime	Lbegz;
-    //   425: ifnull +87 -> 512
-    //   428: aload_0
-    //   429: getfield 55	ahhh:mRuntime	Lbegz;
-    //   432: invokevirtual 60	begz:a	()Landroid/app/Activity;
-    //   435: ifnull +77 -> 512
-    //   438: new 32	android/content/Intent
-    //   441: dup
-    //   442: invokespecial 284	android/content/Intent:<init>	()V
-    //   445: astore_1
-    //   446: aload_1
-    //   447: ldc_w 286
-    //   450: invokevirtual 290	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
-    //   453: pop
-    //   454: aload_1
-    //   455: invokestatic 296	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   458: invokevirtual 301	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
-    //   461: invokevirtual 304	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
-    //   464: pop
-    //   465: aload_0
-    //   466: getfield 55	ahhh:mRuntime	Lbegz;
-    //   469: invokevirtual 60	begz:a	()Landroid/app/Activity;
-    //   472: aload_1
-    //   473: invokevirtual 307	android/app/Activity:sendBroadcast	(Landroid/content/Intent;)V
-    //   476: goto -298 -> 178
-    //   479: astore_1
-    //   480: ldc 129
-    //   482: iconst_1
-    //   483: new 168	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 169	java/lang/StringBuilder:<init>	()V
-    //   490: ldc_w 309
-    //   493: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: aload_1
-    //   497: invokevirtual 312	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   500: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   506: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   509: goto -331 -> 178
-    //   512: ldc 129
-    //   514: iconst_1
-    //   515: ldc_w 317
-    //   518: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   521: goto -343 -> 178
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	524	0	this	ahhh
-    //   0	524	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
-    //   0	524	2	paramString1	String
-    //   0	524	3	paramString2	String
-    //   0	524	4	paramString3	String
-    //   0	524	5	paramVarArgs	String[]
-    // Exception table:
-    //   from	to	target	type
-    //   100	126	180	org/json/JSONException
-    //   228	245	354	org/json/JSONException
-    //   318	352	357	java/lang/Exception
-    //   406	421	479	java/lang/Exception
-    //   421	476	479	java/lang/Exception
-    //   512	521	479	java/lang/Exception
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramInt) });
-    paramAdapterView = "";
-    if (paramInt == 0) {
-      paramAdapterView = "0X80096FA";
+    localahhl.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, 0, 0);
+    localahhl.jdField_a_of_type_AndroidWidgetTextView.setPadding(k, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
+    localahhl.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.getResources().getString(2131717859));
+    paramafwr.setOnTouchListener(paramafzq);
+    paramafwr.setOnLongClickListener(paramafzq);
+    paramafwr.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (e)
+    {
+      if ((localahhl.b != null) && (localahhl.b.length() > 0)) {
+        localahhl.b.setLength(0);
+      }
+      paramView = new StringBuilder();
+      if (paramChatMessage.time > 0L) {
+        paramView.append(bgsu.a(paramBaseChatItemLayout, 3, paramChatMessage.time * 1000L)).append(" ");
+      }
+      if (!paramChatMessage.isSend()) {
+        break label417;
+      }
+      paramView.append("我抖了").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("一下");
     }
     for (;;)
     {
-      if (!"".equals(paramAdapterView)) {
-        azqs.b(null, "dc00898", "", "", paramAdapterView, paramAdapterView, 0, 0, "", "", "", "");
-      }
+      paramafwr.setContentDescription(paramView.toString());
+      return paramafwr;
+      label417:
+      paramView.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("抖了你一下");
+    }
+  }
+  
+  public String a(ChatMessage paramChatMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramChatMessage.time > 0L) {
+      localStringBuilder.append(bgsu.a(this.jdField_a_of_type_AndroidContentContext, 3, paramChatMessage.time * 1000L)).append(" ");
+    }
+    if (paramChatMessage.isSend()) {
+      localStringBuilder.append("我抖了").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("一下");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d).append("抖了你一下");
+    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
-      if (paramInt == 1) {
-        paramAdapterView = "0X80096FB";
-      } else if (paramInt == 2) {
-        paramAdapterView = "0X80096FC";
-      } else if (paramInt == 3) {
-        paramAdapterView = "0X80096FD";
+    case 2131365308: 
+      adrm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      return;
+    }
+    super.d(paramChatMessage);
+  }
+  
+  public void a(afwr paramafwr, View paramView, ChatMessage paramChatMessage, apwt paramapwt)
+  {
+    ahhl localahhl = (ahhl)paramafwr;
+    if ((paramapwt.a == 0) || (!paramapwt.a()))
+    {
+      paramView = paramView.getResources();
+      if (paramChatMessage.isSend())
+      {
+        paramafwr = paramView.getColorStateList(2131167008);
+        if (paramafwr != null) {
+          localahhl.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramafwr);
+        }
+        if (!paramChatMessage.isSend()) {
+          break label88;
+        }
+      }
+      label88:
+      for (paramafwr = paramView.getColorStateList(2131167007);; paramafwr = paramView.getColorStateList(2131167006))
+      {
+        localahhl.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramafwr);
+        return;
+        paramafwr = paramView.getColorStateList(2131167004);
+        break;
       }
     }
+    if (paramapwt.b == 0) {
+      localahhl.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    }
+    while (paramapwt.c == 0)
+    {
+      localahhl.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131167006));
+      return;
+      localahhl.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramapwt.b);
+    }
+    localahhl.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramapwt.c);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    paramView = (MessageForShakeWindow)afur.a(paramView);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689926);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131689927);
+    if (paramView.isSendFromLocal()) {
+      bglp.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new ahhj(this, paramView), new ahhk(this)).show();
+    }
+  }
+  
+  public bguj[] a(View paramView)
+  {
+    paramView = new bguh();
+    adrm.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
+    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
+    return paramView.a();
   }
 }
 

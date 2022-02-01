@@ -1,40 +1,43 @@
 package com.tencent.mobileqq.activity;
 
-import acrh;
-import bdiv;
+import adyo;
+import android.os.Message;
+import bgsg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class Conversation$1$6
   implements Runnable
 {
-  public Conversation$1$6(acrh paramacrh) {}
+  public Conversation$1$6(adyo paramadyo) {}
   
   public void run()
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
-    }
-    if (!localUpgradeTIMWrapper.a()) {
-      this.a.a.a(1134058, 0L, true);
-    }
-    do
+    long l = bgsg.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
+    if (System.currentTimeMillis() - l >= 86400000L)
     {
-      return;
-      if (bdiv.a(this.a.a.a.getApp(), "com.tencent.tim"))
+      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
+      if (localUpgradeTIMWrapper != null)
       {
-        this.a.a.a(1134058, 0L, true);
-        return;
+        localMessage = this.a.a.b.obtainMessage(1134045);
+        localMessage.obj = localUpgradeTIMWrapper;
+        this.a.a.a(new Conversation.1.6.1(this, localMessage));
       }
-    } while ((UpgradeTIMWrapper.b()) || (Conversation.a(this.a.a) != null));
-    this.a.a.a(new Conversation.1.6.1(this, localUpgradeTIMWrapper));
+    }
+    while (!QLog.isColorLevel())
+    {
+      UpgradeTIMWrapper localUpgradeTIMWrapper;
+      Message localMessage;
+      return;
+    }
+    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.1.6
  * JD-Core Version:    0.7.0.1
  */

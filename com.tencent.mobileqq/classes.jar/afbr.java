@@ -1,29 +1,27 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+
 public class afbr
-  extends afbz
+  extends anhu
 {
-  public int a;
-  public int b;
-  public int c;
+  public afbr(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public afbr(int paramInt1, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof afbr));
-      paramObject = (afbr)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
-    return true;
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
+      this.a.finish();
+      return;
+    }
+    QQToast.a(this.a.app.getApp(), 1, anni.a(2131712216), 0).a();
   }
 }
 

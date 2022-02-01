@@ -14,17 +14,16 @@ import com.tencent.ditto.annoations.DittoField;
 import com.tencent.ditto.annoations.DittoOnClick;
 import com.tencent.ditto.annoations.DittoOnLongClick;
 import com.tencent.ditto.area.DittoArea;
-import com.tencent.ditto.area.DittoArea.ClickListener;
-import com.tencent.ditto.area.DittoArea.LongClickListener;
 import com.tencent.ditto.area.DittoAreaGroup;
 import com.tencent.ditto.area.DittoHost;
+import com.tencent.ditto.func.DittoIdFuncPoly;
+import com.tencent.ditto.func.DittoIdFuncPolyInf;
 import com.tencent.ditto.reflect.DittoValue;
 import com.tencent.ditto.shell.DittoUIEngine;
 import com.tencent.ditto.shell.LayoutAttrSet;
 import com.tencent.ditto.utils.DittoLog;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,8 +39,8 @@ public class DittoAreaView
   extends View
   implements DittoHost
 {
-  static final Map<Class, ArrayMap<String, Field>> fieldCache = new ConcurrentHashMap();
-  static final Map<Class, ArrayMap<String, Method>[]> methodCache = new ConcurrentHashMap();
+  private static final Map<Class<? extends DittoAreaView>, DittoIdFuncPolyInf> REFLECT_FUNC_POLY_MAP = new ConcurrentHashMap();
+  public static volatile Map<Class<? extends DittoAreaView>, DittoIdFuncPolyInf> sAptIdFuncPolyMap;
   protected final Set<DittoArea> exposureReportingAreas = new HashSet();
   private boolean hardwareAccelerationTurned = false;
   protected DittoArea mDittoArea;
@@ -60,7 +59,7 @@ public class DittoAreaView
     super(paramContext, paramAttributeSet);
   }
   
-  private void classFieldList(Class paramClass, ArrayList<Field> paramArrayList)
+  private static void classFieldList(Class paramClass, ArrayList<Field> paramArrayList)
   {
     if (paramClass == DittoAreaView.class) {
       return;
@@ -69,7 +68,7 @@ public class DittoAreaView
     classFieldList(paramClass.getSuperclass(), paramArrayList);
   }
   
-  private void classMethodList(Class paramClass, ArrayList<Method> paramArrayList)
+  private static void classMethodList(Class paramClass, ArrayList<Method> paramArrayList)
   {
     if (paramClass == DittoAreaView.class) {
       return;
@@ -87,36 +86,27 @@ public class DittoAreaView
     requestLayout();
   }
   
-  private ArrayMap<String, Field> getFields()
+  public static ArrayMap<String, Field> getFields(Class paramClass)
   {
     ArrayMap localArrayMap = new ArrayMap();
     Object localObject = new ArrayList();
-    classFieldList(getClass(), (ArrayList)localObject);
+    classFieldList(paramClass, (ArrayList)localObject);
     Iterator localIterator = ((ArrayList)localObject).iterator();
     while (localIterator.hasNext())
     {
       Field localField = (Field)localIterator.next();
-      localObject = localField.getAnnotation(DittoField.class);
-      if ((localObject != null) && (DittoArea.class.isAssignableFrom(localField.getType())))
+      paramClass = localField.getAnnotation(DittoField.class);
+      if ((paramClass != null) && (DittoArea.class.isAssignableFrom(localField.getType())))
       {
-        String str = ((DittoField)localObject).value();
-        localObject = str;
-        if ("0".equals(str)) {
-          localObject = localField.getName();
+        localObject = ((DittoField)paramClass).value();
+        paramClass = (Class)localObject;
+        if ("0".equals(localObject)) {
+          paramClass = localField.getName();
         }
-        localArrayMap.put(localObject, localField);
+        localArrayMap.put(paramClass, localField);
       }
     }
     return localArrayMap;
-  }
-  
-  private static DittoArea.ClickListener getListener(Method paramMethod, DittoArea paramDittoArea, DittoAreaView paramDittoAreaView)
-  {
-    if (paramMethod.getParameterTypes().length != 3) {
-      throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
-    }
-    paramMethod.setAccessible(true);
-    return new DittoAreaView.2(paramDittoAreaView, paramMethod);
   }
   
   public static int[] getLocationToViewHost(DittoArea paramDittoArea)
@@ -159,30 +149,21 @@ public class DittoAreaView
     }
   }
   
-  private static DittoArea.LongClickListener getLongListener(Method paramMethod, DittoArea paramDittoArea, DittoAreaView paramDittoAreaView)
-  {
-    if (paramMethod.getParameterTypes().length != 3) {
-      throw new RuntimeException("arguments of event method must be (DittoArea, MotionEvent, Object)");
-    }
-    paramMethod.setAccessible(true);
-    return new DittoAreaView.3(paramMethod, paramDittoAreaView);
-  }
-  
-  private ArrayMap<String, Method>[] getMethods()
+  public static ArrayMap<String, Method>[] getMethods(Class paramClass)
   {
     ArrayMap[] arrayOfArrayMap = new ArrayMap[2];
     arrayOfArrayMap[0] = new ArrayMap();
     arrayOfArrayMap[1] = new ArrayMap();
     Object localObject1 = new ArrayList();
-    classMethodList(getClass(), (ArrayList)localObject1);
-    localObject1 = ((ArrayList)localObject1).iterator();
-    if (((Iterator)localObject1).hasNext())
+    classMethodList(paramClass, (ArrayList)localObject1);
+    paramClass = ((ArrayList)localObject1).iterator();
+    if (paramClass.hasNext())
     {
-      Method localMethod = (Method)((Iterator)localObject1).next();
-      Annotation[] arrayOfAnnotation = localMethod.getAnnotations();
+      localObject1 = (Method)paramClass.next();
+      Annotation[] arrayOfAnnotation = ((Method)localObject1).getAnnotations();
       int k = arrayOfAnnotation.length;
       int i = 0;
-      label89:
+      label82:
       Object localObject2;
       String[] arrayOfString;
       int m;
@@ -192,7 +173,7 @@ public class DittoAreaView
       {
         localObject2 = arrayOfAnnotation[i];
         if (!(localObject2 instanceof DittoOnClick)) {
-          break label229;
+          break label222;
         }
         localObject2 = (DittoOnClick)localObject2;
         if (((DittoOnClick)localObject2).values().length != 0)
@@ -203,20 +184,20 @@ public class DittoAreaView
           while (j < m)
           {
             str = arrayOfString[j];
-            arrayOfArrayMap[0].put(str, localMethod);
+            arrayOfArrayMap[0].put(str, localObject1);
             j += 1;
           }
         }
         if ((!((DittoOnClick)localObject2).value().equals("0")) && (!arrayOfArrayMap[0].containsKey(((DittoOnClick)localObject2).value()))) {
-          arrayOfArrayMap[0].put(((DittoOnClick)localObject2).value(), localMethod);
+          arrayOfArrayMap[0].put(((DittoOnClick)localObject2).value(), localObject1);
         }
       }
       for (;;)
       {
         i += 1;
-        break label89;
+        break label82;
         break;
-        label229:
+        label222:
         if ((localObject2 instanceof DittoOnLongClick))
         {
           localObject2 = (DittoOnLongClick)localObject2;
@@ -228,12 +209,12 @@ public class DittoAreaView
             while (j < m)
             {
               str = arrayOfString[j];
-              arrayOfArrayMap[1].put(str, localMethod);
+              arrayOfArrayMap[1].put(str, localObject1);
               j += 1;
             }
           }
           if ((!((DittoOnLongClick)localObject2).value().equals("0")) && (!arrayOfArrayMap[1].containsKey(((DittoOnLongClick)localObject2).value()))) {
-            arrayOfArrayMap[1].put(((DittoOnLongClick)localObject2).value(), localMethod);
+            arrayOfArrayMap[1].put(((DittoOnLongClick)localObject2).value(), localObject1);
           }
         }
       }
@@ -421,7 +402,7 @@ public class DittoAreaView
     }
   }
   
-  protected void reportTTTClick(int paramInt) {}
+  public void reportTTTClick(int paramInt) {}
   
   public void requestLayout()
   {
@@ -439,43 +420,25 @@ public class DittoAreaView
   public void setContentAreaForJsonFile(String paramString, boolean paramBoolean)
   {
     this.needKVCAreas.clear();
-    Object localObject2 = (ArrayMap)fieldCache.get(getClass());
-    ArrayMap[] arrayOfArrayMap = (ArrayMap[])methodCache.get(getClass());
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {}
-    try
+    Class localClass = getClass();
+    DittoIdFuncPolyInf localDittoIdFuncPolyInf = null;
+    if (sAptIdFuncPolyMap != null) {
+      localDittoIdFuncPolyInf = (DittoIdFuncPolyInf)sAptIdFuncPolyMap.get(localClass);
+    }
+    Object localObject = localDittoIdFuncPolyInf;
+    if (localDittoIdFuncPolyInf == null)
     {
-      localObject1 = getFields();
-      fieldCache.put(getClass(), localObject1);
-      localObject2 = arrayOfArrayMap;
-      if (arrayOfArrayMap == null)
+      localDittoIdFuncPolyInf = (DittoIdFuncPolyInf)REFLECT_FUNC_POLY_MAP.get(localClass);
+      localObject = localDittoIdFuncPolyInf;
+      if (localDittoIdFuncPolyInf == null)
       {
-        localObject2 = getMethods();
-        methodCache.put(getClass(), localObject2);
+        localObject = DittoIdFuncPoly.createReflectIdFuncPoly(localClass);
+        REFLECT_FUNC_POLY_MAP.put(localClass, localObject);
       }
-      arrayOfArrayMap = localObject2[0];
-      localObject2 = localObject2[1];
-      this.exposureReportingAreas.clear();
-      setCanvasArea(DittoUIEngine.g().inflateDittoArea(this, paramString, new DittoAreaView.1(this, (ArrayMap)localObject1, arrayOfArrayMap, (ArrayMap)localObject2), paramBoolean));
-      updateViewModel(getCurrentViewModel());
-      return;
     }
-    catch (NoSuchMethodException paramString)
-    {
-      DittoLog.e("DITTO_UI", paramString.getMessage(), paramString);
-      paramString.printStackTrace();
-      throw new RuntimeException(paramString.getMessage());
-    }
-    catch (IllegalAccessException paramString)
-    {
-      DittoLog.e("DITTO_UI", paramString.getMessage(), paramString);
-      throw new RuntimeException(paramString.getMessage());
-    }
-    catch (InvocationTargetException paramString)
-    {
-      DittoLog.e("DITTO_UI", paramString.getMessage(), paramString);
-      throw new RuntimeException(paramString.getMessage());
-    }
+    this.exposureReportingAreas.clear();
+    setCanvasArea(DittoUIEngine.g().inflateDittoArea(this, paramString, new DittoAreaView.1(this, (DittoIdFuncPolyInf)localObject), paramBoolean));
+    updateViewModel(getCurrentViewModel());
   }
   
   public void setHost(DittoHost paramDittoHost)
@@ -545,7 +508,7 @@ public class DittoAreaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ditto.DittoAreaView
  * JD-Core Version:    0.7.0.1
  */

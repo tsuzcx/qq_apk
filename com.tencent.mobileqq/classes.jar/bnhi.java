@@ -1,118 +1,27 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.ttpic.util.SensorUtil2;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.4.1;
 
 public class bnhi
-  implements ViewPager.OnPageChangeListener
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public int a;
-  public View a;
+  public bnhi(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public bnhi(VideoFilterViewPager paramVideoFilterViewPager) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (azki.l()) {
-      return;
-    }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.a < 400L) {}
-    for (boolean bool = true; this.jdField_a_of_type_Int == paramInt; bool = false)
+    AECameraGLSurfaceView.a(this.a, true);
+    if (!AECameraGLSurfaceView.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt + " scroll " + bool);
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.e = false;
-      return;
+      AECameraGLSurfaceView.b(this.a, true);
+      bnvd.a().a("onFrameAvailable");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageSelected 2 " + this.jdField_a_of_type_Int + ",n" + paramInt + " scroll " + bool);
+    if (AECameraGLSurfaceView.a(this.a) != null) {
+      AECameraGLSurfaceView.a(this.a).getRotation(AECameraGLSurfaceView.a(this.a));
     }
-    if ((bool) && (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager) != null)) {
-      VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).W();
-    }
-    if (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager) != null) {
-      VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt), VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt));
-    }
-    bnfi.a("", "0X8007804", "", "", "", "");
-    View localView;
-    if (bool)
-    {
-      try
-      {
-        QIMFilterCategoryItem localQIMFilterCategoryItem = VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt);
-        if (localQIMFilterCategoryItem != null)
-        {
-          if ((paramInt <= this.jdField_a_of_type_Int) || (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt % VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0)) {
-            break label503;
-          }
-          if ((paramInt != 0) && (localQIMFilterCategoryItem.c()) && (paramInt + 1 < VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).getCount()))
-          {
-            this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setCurrentItem(paramInt + 1, false);
-            return;
-          }
-        }
-      }
-      catch (Exception localException) {}
-    }
-    else
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      localView = VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected 3 " + paramInt + ",n" + paramInt + " pageItem " + localView);
-      }
-      if (localView == null) {
-        break label556;
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        localRunnable = (Runnable)this.jdField_a_of_type_AndroidViewView.getTag();
-        if (localRunnable != null) {
-          this.jdField_a_of_type_AndroidViewView.removeCallbacks(localRunnable);
-        }
-        this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      Runnable localRunnable = (Runnable)localView.getTag();
-      if (localRunnable != null)
-      {
-        localView.removeCallbacks(localRunnable);
-        localView.setTag(null);
-      }
-      VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager, localView, paramInt, bool);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView = localView;
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.e = false;
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.f = false;
-      return;
-      label503:
-      if ((!localView.c()) || (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt % VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt - 1 <= 0)) {
-        break;
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setCurrentItem(paramInt - 1, false);
-      return;
-      label556:
-      if (!VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager)) {
-        VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager, true);
-      }
-    }
+    this.a.queueEvent(new AECameraGLSurfaceView.4.1(this));
+    this.a.requestRender();
   }
 }
 

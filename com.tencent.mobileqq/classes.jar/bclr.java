@@ -1,183 +1,113 @@
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.opengl.GLES20;
 
-class bclr
+public class bclr
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  private List<TroopAIOAppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ConcurrentHashMap<Integer, TroopAIOAppInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  int b = 0;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  private int[] c = new int[1];
+  private int[] d = new int[1];
   
-  public ArrayList<TroopAIOAppInfo> a()
+  public static void a(String paramString) {}
+  
+  private void d()
   {
-    try
+    if (this.jdField_a_of_type_Boolean)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      return localArrayList;
+      GLES20.glGenRenderbuffers(1, this.c, 0);
+      a("glGenRenderbuffers:Depth");
+      GLES20.glBindRenderbuffer(36161, this.c[0]);
+      a("glBindRenderbuffer:Depth");
+      if (this.jdField_b_of_type_Boolean)
+      {
+        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        a("glRenderbufferStorage:Depth[packed]");
+        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
+        a("glFramebufferRenderbuffer:Depth[packed]");
+        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
+        a("glFramebufferRenderbuffer:Stencil[packed]");
+        this.d[0] = this.c[0];
+      }
     }
-    finally
+    else
     {
-      localObject = finally;
-      throw localObject;
+      return;
     }
+    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    a("glRenderbufferStorage:Depth");
+    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
+    a("glFramebufferRenderbuffer:Depth");
+    this.d[0] = 0;
   }
   
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
+  }
+  
+  public void a(int paramInt)
+  {
+    a();
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
+    a("glFramebufferTexture2D");
+    paramInt = GLES20.glCheckFramebufferStatus(36160);
+    if (paramInt != 36053) {
+      a("glCheckFramebufferStatus: status=" + paramInt);
     }
   }
   
-  public void a(int paramInt, TroopAIOAppInfo paramTroopAIOAppInfo)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (localTroopAIOAppInfo != null)
-    {
-      localTroopAIOAppInfo.copyFrom(paramTroopAIOAppInfo);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), paramTroopAIOAppInfo);
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramTroopAIOAppInfo);
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    GLES20.glActiveTexture(33987);
+    GLES20.glBindTexture(3553, paramInt1);
+    a("glBindTexture");
+    GLES20.glTexParameteri(3553, 10240, 9728);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10241, 9728);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    a("glTexParameteri");
+    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
+    a("glTexImage2D");
+    GLES20.glBindTexture(3553, 0);
+    a("glBindTexture");
   }
   
-  public void a(List<Integer> paramList, int paramInt)
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    for (;;)
-    {
-      int i;
-      TroopAIOAppInfo localTroopAIOAppInfo;
-      try
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break;
-        }
-        i = ((Integer)paramList.next()).intValue();
-        localTroopAIOAppInfo = (TroopAIOAppInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-        xqq.a(localTroopAIOAppInfo);
-        if (localTroopAIOAppInfo != null)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(localTroopAIOAppInfo);
-          continue;
-        }
-        localTroopAIOAppInfo = new TroopAIOAppInfo();
-      }
-      finally {}
-      localTroopAIOAppInfo.appid = i;
-      localTroopAIOAppInfo.groupType = paramInt;
-      a(i, localTroopAIOAppInfo);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    a("glIsTexture");
+    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    a("glGenFramebuffers");
+    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
+    a("glBindFramebuffer");
+    d();
+    return true;
   }
   
-  public boolean a(TroopAIOAppInfo paramTroopAIOAppInfo)
+  public void b()
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_JavaUtilList.remove(paramTroopAIOAppInfo);
-      return bool;
-    }
-    finally
-    {
-      paramTroopAIOAppInfo = finally;
-      throw paramTroopAIOAppInfo;
-    }
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  /* Error */
-  public boolean a(List<Integer> paramList)
+  public void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	bclr:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: invokeinterface 112 1 0
-    //   11: istore_2
-    //   12: aload_1
-    //   13: invokeinterface 112 1 0
-    //   18: istore_3
-    //   19: iload_2
-    //   20: iload_3
-    //   21: if_icmpeq +11 -> 32
-    //   24: iconst_1
-    //   25: istore 4
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: iload 4
-    //   31: ireturn
-    //   32: aload_0
-    //   33: getfield 34	bclr:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   36: invokeinterface 116 1 0
-    //   41: astore 5
-    //   43: aload_1
-    //   44: invokeinterface 116 1 0
-    //   49: astore_1
-    //   50: aload 5
-    //   52: invokeinterface 119 1 0
-    //   57: ifeq +59 -> 116
-    //   60: aload 5
-    //   62: invokeinterface 120 1 0
-    //   67: checkcast 59	com/tencent/mobileqq/troop/data/TroopAIOAppInfo
-    //   70: astore 6
-    //   72: aload_1
-    //   73: invokeinterface 120 1 0
-    //   78: checkcast 49	java/lang/Integer
-    //   81: astore 7
-    //   83: aload 6
-    //   85: getfield 98	com/tencent/mobileqq/troop/data/TroopAIOAppInfo:appid	I
-    //   88: aload 7
-    //   90: invokevirtual 90	java/lang/Integer:intValue	()I
-    //   93: if_icmpeq -43 -> 50
-    //   96: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   99: ifeq +11 -> 110
-    //   102: ldc 127
-    //   104: iconst_2
-    //   105: ldc 129
-    //   107: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   110: iconst_1
-    //   111: istore 4
-    //   113: goto -86 -> 27
-    //   116: iconst_0
-    //   117: istore 4
-    //   119: goto -92 -> 27
-    //   122: astore_1
-    //   123: aload_0
-    //   124: monitorexit
-    //   125: aload_1
-    //   126: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	127	0	this	bclr
-    //   0	127	1	paramList	List<Integer>
-    //   11	11	2	i	int
-    //   18	4	3	j	int
-    //   25	93	4	bool	boolean
-    //   41	20	5	localListIterator	java.util.ListIterator
-    //   70	14	6	localTroopAIOAppInfo	TroopAIOAppInfo
-    //   81	8	7	localInteger	Integer
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	122	finally
-    //   32	50	122	finally
-    //   50	110	122	finally
+    b();
+    if (this.jdField_a_of_type_Boolean) {
+      GLES20.glDeleteRenderbuffers(1, this.c, 0);
+    }
+    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    this.jdField_b_of_type_ArrayOfInt[0] = 0;
+    this.c[0] = 0;
+    this.d[0] = 0;
   }
 }
 

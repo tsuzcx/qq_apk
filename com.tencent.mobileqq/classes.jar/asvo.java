@@ -1,10 +1,33 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.ArrayList;
 
-public abstract interface asvo
+public class asvo
 {
-  public abstract void a(HotVideoData paramHotVideoData);
+  ArrayList<FavFileInfo> a = new ArrayList();
+  ArrayList<FavFileInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<FavFileInfo> c = new ArrayList();
+  ArrayList<FavFileInfo> d = new ArrayList();
+  ArrayList<FavFileInfo> e = new ArrayList();
   
-  public abstract void b(HotVideoData paramHotVideoData);
+  public asvo(asvi paramasvi) {}
+  
+  ArrayList<FavFileInfo> a(String paramString)
+  {
+    int i = atvo.a(paramString);
+    if (i == 0) {
+      return this.a;
+    }
+    if ((i == 3) || (i == 6) || (i == 7) || (i == 9) || (i == 10)) {
+      return this.jdField_b_of_type_JavaUtilArrayList;
+    }
+    if (i == 2) {
+      return this.c;
+    }
+    if (i == 5) {
+      return this.d;
+    }
+    return this.e;
+  }
 }
 
 

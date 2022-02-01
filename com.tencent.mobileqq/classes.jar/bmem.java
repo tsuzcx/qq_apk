@@ -1,63 +1,122 @@
-abstract class bmem
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import cooperation.qzone.plugin.PluginRecord;
+
+public abstract class bmem
+  extends Binder
+  implements bmel
 {
-  int jdField_a_of_type_Int = -1;
-  final bmeo<? super T> jdField_a_of_type_Bmeo;
-  boolean jdField_a_of_type_Boolean;
-  
-  bmem(bmeo<? super T> parambmeo)
+  public bmem()
   {
-    Object localObject;
-    this.jdField_a_of_type_Bmeo = localObject;
+    attachInterface(this, "cooperation.qzone.plugin.QZoneRemotePluginManager");
   }
   
-  void a() {}
-  
-  void a(boolean paramBoolean)
+  public static bmel a(IBinder paramIBinder)
   {
-    int j = 1;
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {
-      return;
+    if (paramIBinder == null) {
+      return null;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    int i;
-    label28:
-    bmej localbmej;
-    int k;
-    if (bmej.a(this.b) == 0)
-    {
-      i = 1;
-      localbmej = this.b;
-      k = bmej.a(localbmej);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
-      }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+    if ((localIInterface != null) && ((localIInterface instanceof bmel))) {
+      return (bmel)localIInterface;
     }
-    for (;;)
-    {
-      bmej.a(localbmej, j + k);
-      if ((i != 0) && (this.jdField_a_of_type_Boolean)) {
-        this.b.a();
-      }
-      if ((bmej.a(this.b) == 0) && (!this.jdField_a_of_type_Boolean)) {
-        this.b.b();
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      bmej.a(this.b, this);
-      return;
-      i = 0;
-      break label28;
-      label121:
-      j = -1;
-    }
+    return new bmen(paramIBinder);
   }
   
-  abstract boolean a();
-  
-  boolean a(bmdn parambmdn)
+  public IBinder asBinder()
   {
-    return false;
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int n = 0;
+    int i = 0;
+    boolean bool;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      bool = a();
+      paramParcel2.writeNoException();
+      paramInt1 = i;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      bool = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = j;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      bool = a(paramParcel1.readString(), bmcu.a(paramParcel1.readStrongBinder()), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramInt1 = k;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      bool = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = m;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      bool = c(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = n;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      paramParcel1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+      a(bmcr.a(paramParcel1.readStrongBinder()), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
+    a();
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

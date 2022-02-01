@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
 import android.view.ViewGroup;
-import qwy;
-import rod;
+import rsw;
+import sik;
 
 public class SelectVideoUIDelegate$2
   implements Runnable
 {
-  public SelectVideoUIDelegate$2(qwy paramqwy) {}
+  public SelectVideoUIDelegate$2(rsw paramrsw) {}
   
   public void run()
   {
-    qwy.a(this.this$0).setEnabled(true);
-    qwy.c(this.this$0);
-    qwy.a(this.this$0).a = qwy.a(this.this$0).b();
-    qwy.a(this.this$0).b = qwy.a(this.this$0).c();
+    rsw.a(this.this$0).setEnabled(true);
+    rsw.c(this.this$0);
+    rsw.a(this.this$0).a = rsw.a(this.this$0).b();
+    rsw.a(this.this$0).b = rsw.a(this.this$0).c();
   }
 }
 

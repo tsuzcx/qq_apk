@@ -3,7 +3,7 @@ package com.tencent.mobileqq.olympic;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Xml;
-import awci;
+import ayma;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -46,7 +46,7 @@ public class OlympicActConfig
     //   9: iconst_0
     //   10: ldc 67
     //   12: aastore
-    //   13: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   13: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   16: aload_1
     //   17: checkcast 75	com/tencent/common/app/AppInterface
     //   20: invokevirtual 79	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
@@ -125,7 +125,7 @@ public class OlympicActConfig
     //   184: aload 7
     //   186: invokevirtual 161	com/tencent/mobileqq/olympic/OlympicActConfig$CityImage:toString	()Ljava/lang/String;
     //   189: aastore
-    //   190: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   190: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   193: goto -101 -> 92
     //   196: astore_1
     //   197: aload_0
@@ -173,15 +173,15 @@ public class OlympicActConfig
     {
       try
       {
-        awci.b("OlympicActConfig", new Object[] { "deleteFile()" });
+        ayma.b("OlympicActConfig", new Object[] { "deleteFile()" });
         if (paramQQAppInterface == null)
         {
-          awci.b("OlympicActConfig", new Object[] { "deleteFile(), app is null" });
+          ayma.b("OlympicActConfig", new Object[] { "deleteFile(), app is null" });
           return bool;
         }
         paramQQAppInterface = paramContext.getFileStreamPath("olympic_act_cfg_" + paramQQAppInterface.getCurrentAccountUin());
         if (!paramQQAppInterface.exists()) {
-          awci.b("OlympicActConfig", new Object[] { "deleteFile, config file not exist" });
+          ayma.b("OlympicActConfig", new Object[] { "deleteFile, config file not exist" });
         } else {
           bool = paramQQAppInterface.delete();
         }
@@ -194,14 +194,14 @@ public class OlympicActConfig
   {
     if (TextUtils.isEmpty(paramString))
     {
-      awci.b("OlympicActConfig", new Object[] { "parse(), xmlContent is empty" });
+      ayma.b("OlympicActConfig", new Object[] { "parse(), xmlContent is empty" });
       return null;
     }
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     OlympicActConfig localOlympicActConfig = new OlympicActConfig();
     localObject1 = "";
     localObject4 = null;
-    awci.b("OlympicActConfig", new Object[] { "parse(), start parse" });
+    ayma.b("OlympicActConfig", new Object[] { "parse(), start parse" });
     localObject5 = localObject1;
     for (;;)
     {
@@ -274,7 +274,7 @@ public class OlympicActConfig
       try
       {
         String str = localXmlPullParser.getName();
-        awci.b("OlympicActConfig", new Object[] { "startTag=", str, ", depth=", Integer.valueOf(localXmlPullParser.getDepth()) });
+        ayma.b("OlympicActConfig", new Object[] { "startTag=", str, ", depth=", Integer.valueOf(localXmlPullParser.getDepth()) });
         if ("Olympic".equalsIgnoreCase(str))
         {
           localObject5 = localObject3;
@@ -319,7 +319,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "TorchImage, FileUrl 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "TorchImage, FileUrl 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -343,7 +343,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "TorchImage, FileMd5 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "TorchImage, FileMd5 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -373,7 +373,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "CityImage, PicId 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "CityImage, PicId 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -392,7 +392,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "CityImage, FileUrl 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "CityImage, FileUrl 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -411,7 +411,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "CityImage, FileMd5 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "CityImage, FileMd5 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -430,7 +430,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "CityImage, StarFileUrl 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "CityImage, StarFileUrl 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -468,7 +468,7 @@ public class OlympicActConfig
                 i = 2;
                 continue;
               }
-              awci.b("OlympicActConfig", new Object[] { "CityImage, StarFileMd5 错误的tag顺序!" });
+              ayma.b("OlympicActConfig", new Object[] { "CityImage, StarFileMd5 错误的tag顺序!" });
               localObject5 = localObject3;
               localObject3 = localObject2;
               localObject2 = localObject1;
@@ -497,7 +497,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "HomePageBG, Url 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "HomePageBG, Url 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -521,7 +521,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "HomePageBG, Md5 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "HomePageBG, Md5 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -540,7 +540,7 @@ public class OlympicActConfig
                 continue;
               }
               localObject5 = null;
-              awci.b("OlympicActConfig", new Object[] { "BannerId is empty" });
+              ayma.b("OlympicActConfig", new Object[] { "BannerId is empty" });
               localObject4 = localObject3;
               localObject3 = localObject2;
               localObject2 = localObject1;
@@ -557,7 +557,7 @@ public class OlympicActConfig
                   continue;
                 }
                 localObject5 = null;
-                awci.b("OlympicActConfig", new Object[] { "Text is empty" });
+                ayma.b("OlympicActConfig", new Object[] { "Text is empty" });
                 localObject4 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -566,7 +566,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "BusiBanner, Text 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "BusiBanner, Text 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -583,7 +583,7 @@ public class OlympicActConfig
                   continue;
                 }
                 localObject5 = null;
-                awci.b("OlympicActConfig", new Object[] { "RemindText is empty" });
+                ayma.b("OlympicActConfig", new Object[] { "RemindText is empty" });
                 localObject4 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -592,7 +592,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "BusiBanner, RemindText 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "BusiBanner, RemindText 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -609,7 +609,7 @@ public class OlympicActConfig
                   continue;
                 }
                 localObject5 = null;
-                awci.b("OlympicActConfig", new Object[] { "ImgUrl is empty" });
+                ayma.b("OlympicActConfig", new Object[] { "ImgUrl is empty" });
                 localObject4 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -618,7 +618,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "BusiBanner, ImgUrl 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "BusiBanner, ImgUrl 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -635,7 +635,7 @@ public class OlympicActConfig
                   continue;
                 }
                 localObject5 = null;
-                awci.b("OlympicActConfig", new Object[] { "ImgMd5 is empty" });
+                ayma.b("OlympicActConfig", new Object[] { "ImgMd5 is empty" });
                 localObject4 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -644,7 +644,7 @@ public class OlympicActConfig
               }
               else
               {
-                awci.b("OlympicActConfig", new Object[] { "BusiBanner, ImgMd5 错误的tag顺序!" });
+                ayma.b("OlympicActConfig", new Object[] { "BusiBanner, ImgMd5 错误的tag顺序!" });
                 localObject5 = localObject3;
                 localObject3 = localObject2;
                 localObject2 = localObject1;
@@ -664,14 +664,14 @@ public class OlympicActConfig
                   continue;
                 }
                 localObject4 = null;
-                awci.b("OlympicActConfig", new Object[] { "BusiBannerJump is empty" });
+                ayma.b("OlympicActConfig", new Object[] { "BusiBannerJump is empty" });
                 if (localObject4 == null) {
                   continue;
                 }
                 localOlympicActConfig.mBusiBannerMap.put(((OlympicActConfig.BusiBanner)localObject4).BannerId, localObject4);
                 continue;
               }
-              awci.b("OlympicActConfig", new Object[] { "BusiBanner, BusiBannerJump 错误的tag顺序!" });
+              ayma.b("OlympicActConfig", new Object[] { "BusiBanner, BusiBannerJump 错误的tag顺序!" });
               localObject5 = localObject3;
               localObject3 = localObject2;
               localObject2 = localObject1;
@@ -705,7 +705,7 @@ public class OlympicActConfig
     {
       for (paramAppRuntime = null;; paramAppRuntime = localOlympicActConfig)
       {
-        awci.b("OlympicActConfig", new Object[] { "parse(), end parse" });
+        ayma.b("OlympicActConfig", new Object[] { "parse(), end parse" });
         return paramAppRuntime;
         localOlympicActConfig.a(paramAppRuntime);
       }
@@ -734,7 +734,7 @@ public class OlympicActConfig
     //   14: iconst_0
     //   15: ldc_w 440
     //   18: aastore
-    //   19: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   19: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   22: aload_0
     //   23: ifnonnull +25 -> 48
     //   26: ldc 16
@@ -744,7 +744,7 @@ public class OlympicActConfig
     //   33: iconst_0
     //   34: ldc_w 442
     //   37: aastore
-    //   38: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   38: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   41: aload_2
     //   42: astore_0
     //   43: ldc 2
@@ -773,7 +773,7 @@ public class OlympicActConfig
     //   89: iconst_0
     //   90: ldc_w 444
     //   93: aastore
-    //   94: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   97: aload_2
     //   98: astore_0
     //   99: goto -56 -> 43
@@ -980,7 +980,7 @@ public class OlympicActConfig
     }
     catch (Exception localException)
     {
-      awci.b("OlympicActConfig", new Object[] { "tryParseInt, exception, str=", paramString });
+      ayma.b("OlympicActConfig", new Object[] { "tryParseInt, exception, str=", paramString });
     }
     return -1;
   }
@@ -994,7 +994,7 @@ public class OlympicActConfig
     }
     catch (Exception localException)
     {
-      awci.b("OlympicActConfig", new Object[] { "tryParseInt, exception, str=", paramString });
+      ayma.b("OlympicActConfig", new Object[] { "tryParseInt, exception, str=", paramString });
     }
     return -1L;
   }
@@ -1063,7 +1063,7 @@ public class OlympicActConfig
     //   15: iconst_0
     //   16: ldc_w 502
     //   19: aastore
-    //   20: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   20: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   23: aload_1
     //   24: ifnonnull +25 -> 49
     //   27: ldc 16
@@ -1073,7 +1073,7 @@ public class OlympicActConfig
     //   34: iconst_0
     //   35: ldc_w 504
     //   38: aastore
-    //   39: invokestatic 73	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 73	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: iload 4
     //   44: istore_3
     //   45: aload_0
@@ -1435,7 +1435,7 @@ public class OlympicActConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicActConfig
  * JD-Core Version:    0.7.0.1
  */

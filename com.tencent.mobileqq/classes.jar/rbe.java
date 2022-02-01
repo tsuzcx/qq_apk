@@ -1,30 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class rbe
-  extends GestureDetector.SimpleOnGestureListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlServer;", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface$Stub;", "()V", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "getRedPacketInterface", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbe
+  extends rba
 {
-  rbe(rbd paramrbd) {}
+  private rbf a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  @Nullable
+  public rbf a()
   {
-    if ((rbd.a(this.a) != null) && (rbd.a(this.a).a != null)) {
-      this.a.a.a(rbd.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    if (this.a == null) {
+      this.a = ((rbf)new rbr());
     }
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((rbd.a(this.a) != null) && (rbd.a(this.a).d != null)) {
-      this.a.a.onClick(rbd.a(this.a).d);
-    }
-    return true;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbe
  * JD-Core Version:    0.7.0.1
  */

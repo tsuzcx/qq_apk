@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import org.json.JSONObject;
 
 public class adfe
-  extends WtloginObserver
+  extends adee
 {
-  public adfe(JumpActivity paramJumpActivity) {}
-  
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
   {
-    if (paramDevlockInfo != null) {
-      aqax.a().a(paramDevlockInfo.TransferInfo);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 7: 
+      SosoInterface.a(new adfh(paramadea, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
     }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
     for (;;)
     {
-      paramWUserSigInfo.a(paramDevlockInfo);
-      return;
-      paramDevlockInfo = null;
+      return true;
+      SosoInterface.a(new adfg(paramadea, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfe
  * JD-Core Version:    0.7.0.1
  */

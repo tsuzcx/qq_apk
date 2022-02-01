@@ -1,59 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
+import kotlin.Metadata;
 
-public class rrw
-  implements qoh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$2"}, k=3, mv={1, 1, 16})
+public final class rrw
+  implements DialogInterface.OnDismissListener
 {
-  public rrw(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  public rrw(SelectTopicFragment paramSelectTopicFragment, int paramInt, String paramString) {}
   
-  public void a(Bundle paramBundle, float paramFloat)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
-    }
-  }
-  
-  public void a(Bundle paramBundle, int paramInt, float paramFloat)
-  {
-    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 200: 
-      this.a.jdField_a_of_type_Qoh.a(paramBundle, (int)paramFloat);
-      return;
-    case 202: 
-      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-      return;
-    }
-    qod.b(paramBundle);
-  }
-  
-  public void a(Bundle paramBundle, String paramString)
-  {
-    paramString = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-    owy.a().b(true);
-    ReadInJoyBaseListViewGroup.a(this.a, paramString);
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrw
  * JD-Core Version:    0.7.0.1
  */

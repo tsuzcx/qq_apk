@@ -1,61 +1,38 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 
-public class bnoz
+public abstract class bnoz
+  implements anil
 {
-  private static final String[] a = { "art_res_cache" };
-  private static final String[] b = { "libimage_filter_common.so", "libimage_filter_gpu.so", "libpitu_tools.so", "libimage_filter_cpu.so", "libalgo_youtu_jni.so", "libformat_convert.so" };
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).getString("pendant_sv_md5_version_soname_key", "Pendant000_0");
-    boolean bool = a(str, 2);
-    VideoEnvironment.a("PendantVersionManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Pendant000_0";
-  }
+  public void a(boolean paramBoolean, bnrb parambnrb) {}
   
-  static boolean a(String paramString, int paramInt)
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    String str = paramString.trim();
-    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = bnqc.a(str);
-    int i = paramString.a();
-    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
-    if (i == 0)
+    switch (paramInt)
     {
-      paramString = paramString.a().trim();
-      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
-      i = Integer.parseInt(paramString);
-      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
-      if (i >= paramInt) {
-        return true;
-      }
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (bnrb)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    case 3: 
+      a(paramBoolean, ((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a(paramBoolean, (GetFontDataRsp)paramObject);
+      return;
     }
-    return false;
-  }
-  
-  private static boolean b(String paramString)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < a.length)
-      {
-        if (paramString.equals(a[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
+    b(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

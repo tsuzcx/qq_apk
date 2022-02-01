@@ -1,32 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avpo
-  implements View.OnClickListener
+  implements aaob
 {
-  public avpo(NearbyProfileFragment paramNearbyProfileFragment, yva paramyva) {}
+  public avpo(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Yva != null) {}
-    for (paramView = this.jdField_a_of_type_Yva.b;; paramView = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
+    paramBundle = paramBundle.getString("sayhiinfo");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
-      azqs.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+      if (TextUtils.isEmpty(paramBundle)) {
+        localJSONObject.put("result", "fail");
+      }
+      for (;;)
+      {
+        paramBundle = localJSONObject.toString();
+        QLog.i("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback result = " + paramBundle);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+        return;
+        localJSONObject.put("result", "success");
+        localJSONObject.put("data", new JSONObject(paramBundle));
+      }
       return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.e("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback Exception:", paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpo
  * JD-Core Version:    0.7.0.1
  */

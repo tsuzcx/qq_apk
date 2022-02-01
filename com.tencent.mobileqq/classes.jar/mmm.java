@@ -1,26 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class mmm
-  implements DialogInterface.OnClickListener
+class mmm
+  implements ljr
 {
-  public mmm(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
+  private final WeakReference<mmj> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  mmm(mmj parammmj)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) || (paramInt == 1)) {
+    this.a = new WeakReference(parammmj);
+  }
+  
+  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
+  {
+    int i;
+    mmj localmmj;
+    if ((paramInt & 0x4) == 4)
+    {
+      i = 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
+      }
+      localmmj = (mmj)this.a.get();
+      if (localmmj != null) {
+        break label77;
+      }
+    }
+    label77:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (localmmj.a())
+      {
+        mmj.a(localmmj, paramChatRoomInfo);
+        return;
+      }
+    } while (i == 0);
+    mmj.a(localmmj, 0);
+  }
+  
+  public void a(ljq paramljq)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramljq + "]");
+    }
+    mmj localmmj = (mmj)this.a.get();
+    if ((paramljq == null) || (localmmj == null)) {}
+    while (!localmmj.a()) {
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, true, new mmn(this));
+    mmj.a(localmmj, paramljq.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmm
  * JD-Core Version:    0.7.0.1
  */

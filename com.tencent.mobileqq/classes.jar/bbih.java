@@ -1,22 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bbih
-  implements bhuk
+public class bbih
+  implements View.OnClickListener
 {
-  bbih(bbig parambbig, bhuf parambhuf) {}
+  public bbih(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      this.jdField_a_of_type_Bbig.a.a(this.jdField_a_of_type_Bbig.a.a);
-    }
+    UniteSearchActivity.e = 1;
+    this.a.a.setText("");
+    this.a.a();
+    bbrf.a(this.a.app, 0, this.a.c, "0X8009D2B", 0, 0, null, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

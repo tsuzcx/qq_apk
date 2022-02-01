@@ -1,28 +1,60 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.qphone.base.util.QLog;
 
-public class vdx
-  extends uli
+class vdx
+  extends RecyclerView.OnScrollListener
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  vdx(vdt paramvdt) {}
   
-  public vdx(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString3;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      adcd.a().a("qcircle_tag_page", false);
+      return;
+    }
+    adcd.a().a("qcircle_tag_page");
   }
   
-  public String toString()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    vdt.a(this.a, paramInt2);
+    if ((paramRecyclerView.getLayoutManager() instanceof zyj))
+    {
+      int[] arrayOfInt = ((zyj)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(null);
+      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+      {
+        paramInt2 = arrayOfInt[0];
+        if (!this.a.a().a().b()) {
+          break label151;
+        }
+      }
+    }
+    label151:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt2 == paramInt1)
+      {
+        QLog.i("QCircleTagPageBodyPart", 1, "onScrolled headView completeVisible");
+        vdt.a(this.a);
+      }
+      paramRecyclerView = ((zyj)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPositions(null);
+      if ((paramRecyclerView != null) && (paramRecyclerView.length > 0) && (this.a.a().a().b()) && (paramRecyclerView[0] == 0))
+      {
+        QLog.i("QCircleTagPageBodyPart", 1, "onScrolled refreshItem visible");
+        vdt.a(this.a);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdx
  * JD-Core Version:    0.7.0.1
  */

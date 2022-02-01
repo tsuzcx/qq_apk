@@ -1,65 +1,76 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class yzp
-  extends bead
+public class yzp
+  implements yxl
 {
-  yzp(yzo paramyzo, Downloader.DownloadListener paramDownloadListener, String paramString1, yzq paramyzq, String paramString2, String paramString3) {}
+  public yzp(DoodleEditView paramDoodleEditView) {}
   
-  public void onCancel(beae parambeae)
+  public void a(zcb paramzcb)
   {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
-    }
-    yzq.a(this.jdField_a_of_type_Yzq, 3);
-    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
-  }
-  
-  public void onDone(beae parambeae)
-  {
-    if (parambeae.a == 0)
+    if ((paramzcb instanceof yxo))
     {
-      boolean bool;
-      if (new File(yzo.jdField_a_of_type_JavaLangString).exists())
-      {
-        bool = bjtz.b(new File(this.jdField_a_of_type_JavaLangString), new File(yzo.jdField_a_of_type_JavaLangString + "/" + this.b));
-        if (!bool) {
-          break label158;
-        }
-        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
-        }
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        yzq.a(this.jdField_a_of_type_Yzq, 0);
-      }
-      for (;;)
-      {
-        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
-        return;
-        label158:
-        yzq.a(this.jdField_a_of_type_Yzq, 2);
+      paramzcb = (yxm)DoodleEditView.a(this.a).a("TextLayer");
+      if (paramzcb != null) {
+        paramzcb.a();
       }
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
-    }
-    yzq.a(this.jdField_a_of_type_Yzq, 2);
-    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
+    this.a.a.b();
   }
   
-  public void onProgress(beae parambeae)
+  public void a(zcb paramzcb, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+    if ((paramzcb instanceof yxo))
+    {
+      yqp.b("DoodleEditView", "click the TextItem:" + paramzcb);
+      paramzcb = (yxm)DoodleEditView.a(this.a).a("TextLayer");
+      this.a.a.b();
+      if ((paramzcb != null) && (paramzcb.a != null))
+      {
+        paramzcb.d();
+        paramzcb.a.a();
+      }
     }
-    yzq.a(this.jdField_a_of_type_Yzq, 1);
+    ywy localywy;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramzcb instanceof yxc));
+        yqp.b("DoodleEditView", "click the FaceAndTextItem:" + paramzcb);
+        paramzcb.d = false;
+        localywy = (ywy)DoodleEditView.a(this.a).a("FaceLayer");
+        yxc localyxc = (yxc)paramzcb;
+        if (localywy != null) {
+          localywy.jdField_a_of_type_JavaUtilList.add(localyxc);
+        }
+        this.a.a.b();
+        this.a.setVisibility(8);
+      } while (DoodleEditView.a(this.a) == null);
+      if (!(paramzcb instanceof ywz)) {
+        break;
+      }
+    } while ((localywy == null) || (localywy.jdField_a_of_type_Yxf == null));
+    localywy.jdField_a_of_type_Yxf.a((ywz)paramzcb);
+    return;
+    DoodleEditView.a(this.a).a(paramzcb);
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  {
+    if (DoodleEditView.a(this.a) != null) {
+      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzp
  * JD-Core Version:    0.7.0.1
  */

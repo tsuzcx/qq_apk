@@ -1,12 +1,29 @@
-public abstract interface uco
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+
+public class uco
+  implements bksw
 {
-  public abstract void a();
+  public uco(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public abstract void b();
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    this.a.a(paramXRecyclerView, paramInt);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    this.a.a(paramXRecyclerView, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uco
  * JD-Core Version:    0.7.0.1
  */

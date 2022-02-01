@@ -1,15 +1,22 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
-final class ayia
-  implements ThreadFactory
+public class ayia
+  implements TextWatcher
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  private ayia(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

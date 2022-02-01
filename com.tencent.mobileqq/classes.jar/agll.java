@@ -1,4 +1,33 @@
-public abstract interface agll {}
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+
+class agll
+  implements bkqa
+{
+  agll(aglj paramaglj) {}
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (aglj.a(this.a).a.length() > 0) {
+      bool = this.a.a(false);
+    }
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    if (aglj.a(this.a).a.length() > 0) {
+      return this.a.a(true);
+    }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return this.a.c();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

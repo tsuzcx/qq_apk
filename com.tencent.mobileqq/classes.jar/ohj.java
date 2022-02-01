@@ -1,95 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.1;
-import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.2;
-import org.jetbrains.annotations.NotNull;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
 
-public final class ohj
-  extends ohl
-  implements oho
+public class ohj
+  extends tcj
 {
-  private int jdField_a_of_type_Int;
-  private final ohl[] jdField_a_of_type_ArrayOfOhl;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  protected pmn a;
+  private sta jdField_a_of_type_Sta;
   
-  public ohj(@NotNull ohk paramohk, @NotNull ohl[] paramArrayOfohl)
+  protected void a() {}
+  
+  public void a(ListView paramListView)
   {
-    super(paramohk, false, "AsyncSteps");
-    this.jdField_a_of_type_ArrayOfOhl = paramArrayOfohl;
-    paramohk = this.jdField_a_of_type_ArrayOfOhl;
-    int j = paramohk.length;
-    while (i < j)
-    {
-      paramohk[i].a(this);
-      i += 1;
+    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+  }
+  
+  public void a(Map<Integer, rev> paramMap)
+  {
+    if (this.jdField_a_of_type_Sta != null) {
+      this.jdField_a_of_type_Sta.a(paramMap);
     }
   }
   
-  public void a()
+  public void b()
   {
-    super.a();
-    ohl[] arrayOfohl = this.jdField_a_of_type_ArrayOfOhl;
-    int j = arrayOfohl.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfohl[i].a();
-      i += 1;
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_a_of_type_Int = 0;
-    return true;
-  }
-  
-  public final void b()
-  {
-    this.jdField_a_of_type_Int += 1;
-    a("AsyncSteps onEnd: mFinishCount = " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfOhl.length) {
-      d();
-    }
-  }
-  
-  public boolean b()
-  {
-    ohl[] arrayOfohl = this.jdField_a_of_type_ArrayOfOhl;
-    int j = arrayOfohl.length;
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = arrayOfohl[i];
-      AsyncSteps.1 local1;
-      if (((ohl)localObject).a())
-      {
-        local1 = new AsyncSteps.1(this, (ohl)localObject);
-        if (((ohl)localObject).c()) {
-          local1.run();
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = a().a();
-        if (localObject != null)
-        {
-          ((ohn)localObject).a(local1);
-        }
-        else
-        {
-          new Thread(local1).start();
-          continue;
-          a().b(new AsyncSteps.2(this, (ohl)localObject));
-        }
-      }
-    }
-    return false;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    pmk.a().b(this.jdField_a_of_type_Pmn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohj
  * JD-Core Version:    0.7.0.1
  */

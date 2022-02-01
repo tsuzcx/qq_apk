@@ -18,11 +18,6 @@ public class AssetLoader
     }
   }
   
-  public static void init()
-  {
-    System.loadLibrary("gltfio-jni");
-  }
-  
   private static native long nCreateAssetFromBinary(long paramLong, Buffer paramBuffer, int paramInt);
   
   private static native long nCreateAssetFromJson(long paramLong, Buffer paramBuffer, int paramInt);
@@ -38,13 +33,21 @@ public class AssetLoader
   @Nullable
   public FilamentAsset createAssetFromBinary(@NonNull Buffer paramBuffer)
   {
-    return new FilamentAsset(nCreateAssetFromBinary(this.mNativeObject, paramBuffer, paramBuffer.remaining()));
+    long l = nCreateAssetFromBinary(this.mNativeObject, paramBuffer, paramBuffer.remaining());
+    if (l != 0L) {
+      return new FilamentAsset(l);
+    }
+    return null;
   }
   
   @Nullable
   public FilamentAsset createAssetFromJson(@NonNull Buffer paramBuffer)
   {
-    return new FilamentAsset(nCreateAssetFromJson(this.mNativeObject, paramBuffer, paramBuffer.remaining()));
+    long l = nCreateAssetFromJson(this.mNativeObject, paramBuffer, paramBuffer.remaining());
+    if (l != 0L) {
+      return new FilamentAsset(l);
+    }
+    return null;
   }
   
   public void destroy()
@@ -66,7 +69,7 @@ public class AssetLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.gltfio.AssetLoader
  * JD-Core Version:    0.7.0.1
  */

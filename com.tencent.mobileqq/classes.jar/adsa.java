@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adsa
-  implements adry
+public final class adsa
+  implements DialogInterface.OnClickListener
 {
-  public adsa(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.this$0.a.setPercent(paramInt);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,20 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bmma
-  extends QQUIEventReceiver<bmlp, bmsd>
+public abstract interface bmma
 {
-  public bmma(@NonNull bmlp parambmlp)
-  {
-    super(parambmlp);
-  }
+  public abstract String a();
   
-  public void a(@NonNull bmlp parambmlp, @NonNull bmsd parambmsd) {}
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public Class acceptEventClass()
-  {
-    return bmsd.class;
-  }
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void j();
+  
+  public abstract void setBannerHeight(int paramInt);
 }
 
 

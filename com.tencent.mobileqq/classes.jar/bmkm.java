@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public final class bmkm
-  implements Parcelable.Creator<EditTakeVideoSource>
+  implements InvocationHandler
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  public bmkm(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    return new EditTakeVideoSource[paramInt];
+    if (paramMethod.getName().equals("onFailed")) {
+      if (this.a != null) {
+        this.a.onFailed();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
+        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
+    }
   }
 }
 

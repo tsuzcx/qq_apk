@@ -1,16 +1,14 @@
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+
 class bceq
-  implements bdpc
+  implements SDKInitListener
 {
-  bceq(bcep parambcep) {}
+  bceq(bcep parambcep, bcev parambcev) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.a.b(bcep.a(this.a));
+    bcep.b(this.jdField_a_of_type_Bcep, this.jdField_a_of_type_Bcev);
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

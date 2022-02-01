@@ -1,20 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
 public class bx
-  implements TextWatcher
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public bx(LiteActivity paramLiteActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.q();
+    LiteActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    LiteActivity.a(this.a).requestLayout();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

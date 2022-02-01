@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.apollo.view;
 
-import allz;
-import almb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import anff;
+import anfh;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloPanel$20
   implements Runnable
 {
-  ApolloPanel$20(ApolloPanel paramApolloPanel, almb paramalmb) {}
+  ApolloPanel$20(ApolloPanel paramApolloPanel, anfh paramanfh) {}
   
   public void run()
   {
-    if ((this.a == null) || (this.a.jdField_a_of_type_Allz == null) || (this.this$0.a == null) || (this.this$0.a.a == null) || (this.a.jdField_a_of_type_AndroidWidgetImageView == null))
+    if ((this.a == null) || (this.a.jdField_a_of_type_Anff == null) || (this.this$0.a == null) || (this.this$0.a.a == null) || (this.a.jdField_a_of_type_AndroidWidgetImageView == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ApolloPanel", 2, "holder.apolloInfo == null");
       }
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.a.jdField_a_of_type_Allz.a(this.this$0.a.a, this.this$0.a.a.getResources().getDisplayMetrics().density));
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.a.jdField_a_of_type_Anff.a(this.this$0.a.a, this.this$0.a.a.getResources().getDisplayMetrics().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.20
  * JD-Core Version:    0.7.0.1
  */

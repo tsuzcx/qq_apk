@@ -1,36 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import java.util.HashMap;
 
-class akht
-  implements bhuk
+public class akht
+  extends PhotoListBaseData
 {
-  akht(akhs paramakhs, boolean paramBoolean, Friends paramFriends, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (!bdin.g(this.jdField_a_of_type_Akhs.a)) {
-      QQToast.a(this.jdField_a_of_type_Akhs.a, 1, 2131692398, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.e();
-      return;
-      paramView = (FriendListHandler)akhs.a(this.jdField_a_of_type_Akhs).a(1);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        azqs.b(akhs.a(this.jdField_a_of_type_Akhs), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        azqs.b(akhs.a(this.jdField_a_of_type_Akhs), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public int a;
+  public long a = -1L;
+  public SessionInfo a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public zgp a;
+  public boolean a;
+  public String b;
+  public HashMap<String, byte[]> b;
+  public boolean b;
+  public String c;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
+  public boolean c;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
 }
 
 

@@ -1,71 +1,104 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public abstract class aezm
+public class aezm
+  extends anut
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  public aezm(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public aezm(DoodleView paramDoodleView)
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+    boolean bool1;
+    if (paramObject == null)
+    {
+      bool1 = true;
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if ((paramObject instanceof ajbx)) {
+          bool2 = ((ajbx)paramObject).b;
+        }
+      }
+      paramObject = this.a.findViewById(2131374399);
+      if (paramObject != null)
+      {
+        if (!bool2) {
+          break label190;
+        }
+        paramObject.setVisibility(0);
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label138;
+        }
+        this.a.a(true);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
       return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    b();
-    return b(paramMotionEvent);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+      bool1 = false;
+      break;
+      label138:
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        this.a.a(false);
+      }
+      else
+      {
+        paramObject = (ajby)this.a.app.getManager(102);
+        QQSettingSettingActivity.a(this.a, true, paramObject.a);
+        continue;
+        label190:
+        paramObject.setVisibility(8);
+      }
     }
   }
   
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    return true;
+    boolean bool = true;
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        paramString = this.a;
+        if (paramInt == 1) {}
+        for (paramBoolean = bool;; paramBoolean = false)
+        {
+          QQSettingSettingActivity.a(paramString, paramBoolean);
+          return;
+        }
+      }
+    } while (!this.a.isResume());
+    paramString = this.a.getString(2131691844);
+    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
   }
   
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
+    }
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
+    } while (!this.a.isResume());
+    paramBundle = this.a;
+    paramBundle.jdField_a_of_type_Int -= 1;
+  }
 }
 
 

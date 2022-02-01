@@ -28,7 +28,7 @@ public class NumberCheckBox
   public NumberCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167200));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167286));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
   }
   
@@ -79,7 +79,7 @@ public class NumberCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NumberCheckBox
  * JD-Core Version:    0.7.0.1
  */

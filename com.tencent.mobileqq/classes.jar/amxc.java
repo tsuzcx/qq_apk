@@ -1,161 +1,90 @@
-import android.util.Xml;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
 
-public class amxc
+final class amxc
+  implements amxk
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature"), paramString);
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
+  amxc(int[] paramArrayOfInt, amhd paramamhd, int paramInt, AppInterface paramAppInterface, amxk paramamxk, boolean paramBoolean) {}
   
-  public static int a(String paramString1, String paramString2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int i = -5;
-    for (;;)
-    {
-      try
+    File localFile;
+    if (paramBoolean) {
+      if (BaseApplicationImpl.sProcessId == 1)
       {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        amxe.a("arfeature", "v8.0.0", "arfeature", paramString2);
+        localFile = new File(amxb.a(1, paramInt1), "dress.zip");
+        if ((localFile.exists()) && (paramInt1 == 0)) {}
+      }
+    }
+    do
+    {
+      for (;;)
+      {
         try
         {
-          amxa.a(paramString1, amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature")));
-          paramString2 = amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature")) + File.separator + "md5_config.xml";
-          localObject = new File(paramString2);
-          if (!((File)localObject).exists()) {
-            break label644;
-          }
-          new HashMap();
+          paramArrayOfInt = ancb.f;
+          localStringBuilder = new StringBuilder();
         }
-        catch (IOException paramString2)
+        catch (Exception paramArrayOfInt)
         {
-          Object localObject;
-          File localFile;
-          String str;
-          i = -6;
-          bdhb.a(amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature")), false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
+          StringBuilder localStringBuilder;
+          int[] arrayOfInt;
+          int j;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage(), paramArrayOfInt);
           continue;
         }
-      }
-      finally {}
-      try
-      {
-        paramString2 = a(bdhb.b((File)localObject));
-        if (paramString2.size() <= 0) {
-          break label614;
-        }
-        paramString2 = paramString2.entrySet().iterator();
-        if (!paramString2.hasNext()) {
-          break label685;
-        }
-        localObject = (Map.Entry)paramString2.next();
-        paramString1 = "";
-        if (((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libARFeature"))
+        catch (OutOfMemoryError paramArrayOfInt)
         {
-          paramString1 = amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
-          amxe.a("arfeature", "v8.0.0", "libARFeature", (String)((Map.Entry)localObject).getValue());
-        }
-        localFile = new File(paramString1);
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
-        if (!localFile.exists()) {
-          break label573;
-        }
-        str = awni.a(paramString1);
-        localObject = (String)((Map.Entry)localObject).getValue();
-        if (((String)localObject).equalsIgnoreCase(str)) {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage());
           continue;
+          if (this.jdField_a_of_type_Amxk == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Amxk.onDownLoadFinish(true, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+          return;
         }
-        localFile.delete();
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + paramString1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject);
-        i = -3;
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      return i;
-      label573:
-      label614:
-      QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      label644:
-      i = -2;
-      continue;
-      label685:
-      QLog.i("AREngine_ArFeatureSwepNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
-    }
-  }
-  
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArFeatureSwepNativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("libARFeature"))
-      {
-        localHashMap.put("libARFeature", localXmlPullParser.nextText());
-        while (i == 1)
+        try
         {
-          QLog.d("AREngine_ArFeatureSwepNativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
+          new File(paramArrayOfInt).mkdirs();
+          arrayOfInt = amxb.a(paramInt1);
+          j = nmk.a(localFile, paramArrayOfInt, new amxd(this, localStringBuilder, paramArrayOfInt));
+          if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+          {
+            int k = arrayOfInt.length;
+            int i = 0;
+            if (i < k)
+            {
+              int m = arrayOfInt[i];
+              amxb.a(this.jdField_a_of_type_Amhd, 2, m);
+              i += 1;
+              continue;
+              paramArrayOfInt = ancb.c + "/def/dress/";
+              continue;
+            }
+          }
+          localStringBuilder.append(", unzipRet: ").append(j);
+          QLog.d("ApolloResDownloader", 1, "downloadApolloResOrder succ roleId: " + this.jdField_a_of_type_Int + ", unzipRoleDress: " + localStringBuilder.toString() + ", uin: " + paramString);
+          if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+          {
+            amxb.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.jdField_a_of_type_Amxk, -1, this.jdField_a_of_type_ArrayOfInt, -1, -1, this.jdField_a_of_type_Boolean);
+            return;
+          }
         }
-        switch (i)
-        {
-        }
+        finally {}
       }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return new File(amxe.a("arfeature", "v8.0.0", amxe.b("arfeature", "v8.0.0", "arfeature")) + File.separator + "libARFeature" + ".so").exists();
+      if (this.jdField_a_of_type_Amxk != null) {
+        this.jdField_a_of_type_Amxk.onDownLoadFinish(false, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role fail id: " + this.jdField_a_of_type_Int + ", uin:" + paramString);
   }
 }
 

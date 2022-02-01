@@ -11,13 +11,13 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bdoo;
+import bgtn;
 
 public class PanoramaBallView
   extends View
 {
   public static final int a;
-  public static final int b = bdoo.b(32.0F);
+  public static final int b = bgtn.b(32.0F);
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private int c = jdField_a_of_type_Int;
@@ -32,7 +32,7 @@ public class PanoramaBallView
   
   static
   {
-    jdField_a_of_type_Int = bdoo.b(32.0F);
+    jdField_a_of_type_Int = bgtn.b(32.0F);
   }
   
   public PanoramaBallView(Context paramContext)
@@ -68,7 +68,7 @@ public class PanoramaBallView
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.e = paramContext.getResources().getColor(2131165320);
+    this.e = paramContext.getResources().getColor(2131165356);
   }
   
   private void a(Canvas paramCanvas)
@@ -181,7 +181,7 @@ public class PanoramaBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaBallView
  * JD-Core Version:    0.7.0.1
  */

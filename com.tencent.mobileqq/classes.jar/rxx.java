@@ -1,28 +1,27 @@
-import android.view.ViewGroup.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class rxx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends rxv
 {
-  public rxx(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
+  private ViewGroup B;
+  private ReadInJoyHeadImageView a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rxx(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setPrefix(paramView.getContext().getResources().getString(2131717234));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131380647));
+    this.B = ((ViewGroup)paramView.findViewById(2131380648));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxx
  * JD-Core Version:    0.7.0.1
  */

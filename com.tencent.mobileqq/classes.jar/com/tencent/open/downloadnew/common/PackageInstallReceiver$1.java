@@ -1,10 +1,10 @@
 package com.tencent.open.downloadnew.common;
 
 import android.text.TextUtils;
-import bflp;
-import bfoh;
-import bfok;
-import bfox;
+import bisy;
+import bivp;
+import bivr;
+import biwe;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$1
@@ -14,19 +14,19 @@ class PackageInstallReceiver$1
   
   public void run()
   {
-    bflp.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bfoh.q)))
+    bisy.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bivp.q)))
     {
-      bfok.a().a(true);
-      bfox.a().f();
+      bivr.a().a(true);
+      biwe.a().f();
     }
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bfok.a().a(9, localDownloadInfo);
+    bivr.a().a(9, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.1
  * JD-Core Version:    0.7.0.1
  */

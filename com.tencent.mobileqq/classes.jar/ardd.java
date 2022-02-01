@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import android.net.Uri;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 
-class ardd
-  implements ardn
+public class ardd
 {
-  ardd(ardc paramardc) {}
+  public static final Uri a;
+  public static final String[] a;
   
-  public void a()
+  static
   {
-    FileSelectorSearchFragment.a(this.a.a).a();
+    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
   }
 }
 

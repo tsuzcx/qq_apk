@@ -1,17 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import java.util.HashSet;
+import java.util.List;
 
 public class bbkw
-  implements bbkz
 {
-  public bbkw(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(Bitmap paramBitmap)
-  {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bfah);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
-  }
+  public int a;
+  public long a;
+  public HashSet<Long> a;
+  public List<FTSMessage> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
 }
 
 

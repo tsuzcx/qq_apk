@@ -1,10 +1,27 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class apkl
+class apkl
+  implements EIPCResultCallback
 {
-  public int a;
-  public Drawable a;
-  public int b;
+  apkl(apkf paramapkf, aple paramaple) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    boolean bool = true;
+    if (paramEIPCResult.code != 0) {
+      QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call.async, method=" + this.jdField_a_of_type_Aple.a() + " result=" + paramEIPCResult);
+    }
+    aple localaple = this.jdField_a_of_type_Aple;
+    if (paramEIPCResult.code == 0) {}
+    for (;;)
+    {
+      localaple.a(bool, paramEIPCResult.data);
+      return;
+      bool = false;
+    }
+  }
 }
 
 

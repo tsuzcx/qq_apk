@@ -1,28 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class akcy
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akcy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
-    }
-  }
+  public int a;
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContact a;
+  public String a;
+  public Button b;
+  public ImageView b;
+  public TextView b;
+  public Button c;
+  public TextView c;
 }
 
 

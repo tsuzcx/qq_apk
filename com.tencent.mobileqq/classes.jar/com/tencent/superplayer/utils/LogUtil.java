@@ -21,6 +21,13 @@ public class LogUtil
     }
   }
   
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (SuperPlayerSDKMgr.getLogListener() != null) {
+      SuperPlayerSDKMgr.getLogListener().e(paramString1, paramString2 + " ," + paramThrowable.getLocalizedMessage());
+    }
+  }
+  
   public static void e(String paramString, Throwable paramThrowable)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
@@ -51,7 +58,7 @@ public class LogUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.utils.LogUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,9 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class agvd
-  implements bcro
+  implements bkhy
 {
   agvd(agvc paramagvc) {}
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
-    {
-      paramString = (afgn)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      paramString = (afgn)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
-  }
+  public void onDismiss() {}
 }
 
 

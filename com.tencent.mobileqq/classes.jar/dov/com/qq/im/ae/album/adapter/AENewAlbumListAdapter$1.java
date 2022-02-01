@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import aips;
-import bkqd;
-import bkqe;
+import akgm;
+import bnex;
+import bney;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Locale;
 public class AENewAlbumListAdapter$1
   implements Runnable
 {
-  public AENewAlbumListAdapter$1(bkqe parambkqe) {}
+  public AENewAlbumListAdapter$1(bney parambney) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class AENewAlbumListAdapter$1
       QQAlbumInfo localQQAlbumInfo = (QQAlbumInfo)((Iterator)localObject).next();
       if ((localQQAlbumInfo != null) && (localQQAlbumInfo.mCoverInfo != null))
       {
-        String str2 = bkqd.a(localQQAlbumInfo.mCoverInfo.path);
+        String str2 = bnex.a(localQQAlbumInfo.mCoverInfo.path);
         String str1 = localQQAlbumInfo.name;
         if ((str2 != null) && (str1 != null) && (!str1.equals("最近照片")) && (!str1.equals("空间照片")))
         {
@@ -56,7 +56,7 @@ public class AENewAlbumListAdapter$1
               n += 1;
             } else if ((str1.equals("weixin")) || (str1.equals("wechat")) || (str1.equals("micromsg"))) {
               k += localQQAlbumInfo.mMediaFileCount;
-            } else if (aips.a(str2)) {
+            } else if (akgm.a(str2)) {
               j += localQQAlbumInfo.mMediaFileCount;
             } else {
               i += localQQAlbumInfo.mMediaFileCount;
@@ -68,7 +68,7 @@ public class AENewAlbumListAdapter$1
             i4 += localQQAlbumInfo.mMediaFileCount;
           } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains("相机")) || (str1.contains("照片")) || (str1.contains("相片"))) {
             i6 += localQQAlbumInfo.mMediaFileCount;
-          } else if (aips.a(str2)) {
+          } else if (akgm.a(str2)) {
             j += localQQAlbumInfo.mMediaFileCount;
           } else {
             i += localQQAlbumInfo.mMediaFileCount;
@@ -76,12 +76,12 @@ public class AENewAlbumListAdapter$1
         }
       }
     }
-    aips.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
+    akgm.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.album.adapter.AENewAlbumListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,149 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.LocationShareHelper.3;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class agmd
-  extends aglx
+  implements agma
 {
-  aiul a;
+  private static Map<Pair<Integer, String>, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ailv jdField_a_of_type_Ailv;
+  private volatile avwp jdField_a_of_type_Avwp;
+  private avwu jdField_a_of_type_Avwu = new agme(this);
+  private avwv jdField_a_of_type_Avwv;
+  private awcd jdField_a_of_type_Awcd = new agmf(this);
+  private volatile BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public agmd(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
+  agmd(BaseChatPie paramBaseChatPie)
   {
-    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
-    this.jdField_a_of_type_Aiul = ((aiul)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
-    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_Avwv = avwv.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  private String a(avwp paramavwp, String paramString)
+  {
+    String str = bglf.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 0);
+    if (paramavwp.a() == 0) {
+      str = ((anmw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(paramString).getFriendNickWithAlias();
+    }
+    while (paramavwp.a() != 1) {
+      return str;
+    }
+    return bglf.h(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramavwp.a(), paramString);
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilMap.clear();
+  }
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Avwp == null)
     {
-      this.j = 2130846776;
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareHelper", 2, "[queryLocationRoom] isSameSession: invoked. sessionType: " + paramInt + " sessionUin: " + paramString + " [mRoomKey] null ");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] isSameSession: invoked. sessionType: " + paramInt + " sessionUin: " + paramString + " [mRoomKey] sessionType: " + this.jdField_a_of_type_Avwp.a() + " [mRoomKey] sessionUin: " + this.jdField_a_of_type_Avwp.a());
+    }
+    return this.jdField_a_of_type_Avwp.a(paramInt, paramString);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Ailv = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    this.jdField_a_of_type_Avwp = new avwp(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if (awbi.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareHelper", 2, "[queryLocationRoom] requestQueryRoom: invoked. sessionUin: " + this.jdField_a_of_type_Avwp.a());
+      }
+      this.jdField_a_of_type_Avwv.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public boolean b()
+  private void c()
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Agmp.b.setVisibility(0);
-    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Agmp.b.setText("K歌红包");
-    return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    try
-    {
-      this.jdField_a_of_type_Agmp.a.setText(ajeu.a(this.jdField_a_of_type_Agmp.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agmp.a.getPaint()));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if ((this.jdField_a_of_type_Avwp != null) && (!awbi.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Avwp.a(), this.jdField_a_of_type_Avwp.a())) && (this.jdField_a_of_type_Ailv == this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a();
     }
   }
   
-  public void i()
+  private void d()
   {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    aiuk localaiuk2 = this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId);
-    aiuk localaiuk1 = localaiuk2;
-    if (localaiuk2 == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
     {
-      localaiuk1 = new aiuk(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 2);
-      this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      if (TextUtils.isEmpty(str)) {
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationShareHelper", 2, new Object[] { "processRoamMessage: invoked. empty uin, ignored. ", " friendUin: ", str });
+        }
+      }
     }
-    if (!a(localaiuk1))
+    while (!QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Agmp.d.setVisibility(8);
+      String str;
+      boolean bool;
+      do
+      {
+        int i;
+        Pair localPair;
+        do
+        {
+          return;
+          localPair = new Pair(Integer.valueOf(i), str);
+        } while (jdField_a_of_type_JavaUtilMap.containsKey(localPair));
+        bool = awbi.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, str);
+        awbh.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, str, bool);
+        jdField_a_of_type_JavaUtilMap.put(localPair, Boolean.valueOf(true));
+      } while (!QLog.isColorLevel());
+      QLog.d("LocationShareHelper", 2, new Object[] { "processRoamMessage: invoked. ", "[处理漫游消息，登录后首次进该会话aio，用资料位刷新消息字段] sessionSharingLocation: ", Boolean.valueOf(bool), " friendUin: ", str });
       return;
     }
-    this.jdField_a_of_type_Agmp.d.setVisibility(0);
+    QLog.e("LocationShareHelper", 2, new Object[] { "processRoamMessage: failed. ", "empty session. " });
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Avwv.a(this.jdField_a_of_type_Avwu);
+        awbw.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a().a(this.jdField_a_of_type_Awcd);
+        LocationShareHelper.3 local3 = new LocationShareHelper.3(this);
+        ThreadManager.getSubThreadHandler().post(local3);
+        continue;
+      }
+      finally {}
+      c();
+      continue;
+      b();
+      continue;
+      this.jdField_a_of_type_Avwv.b(this.jdField_a_of_type_Avwu);
+      awbw.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a().b(this.jdField_a_of_type_Awcd);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 5, 8, 13 };
   }
 }
 

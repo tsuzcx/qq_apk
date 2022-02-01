@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import mqq.app.QQPermissionCallback;
 
-public class bmms
-  implements DialogInterface.OnDismissListener
+class bmms
+  implements QQPermissionCallback
 {
-  public bmms(EditVideoGuide paramEditVideoGuide) {}
+  bmms(bmmr parambmmr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Bmnj.a(5);
+    bglp.b(this.a.a.mRuntime.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bmmr.a(this.a);
   }
 }
 

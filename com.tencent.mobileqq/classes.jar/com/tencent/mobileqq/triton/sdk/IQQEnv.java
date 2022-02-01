@@ -7,7 +7,6 @@ import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
 import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
 import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
 import java.io.File;
-import java.util.Set;
 
 public abstract interface IQQEnv
 {
@@ -25,8 +24,6 @@ public abstract interface IQQEnv
   
   public abstract String getAppId();
   
-  public abstract String getBaseEnginePath();
-  
   public abstract int getBenchmarkLevel();
   
   public abstract Drawable getDrawable(Context paramContext, String paramString, MiniGameInfo paramMiniGameInfo);
@@ -38,10 +35,6 @@ public abstract interface IQQEnv
   
   @NonNull
   public abstract String getGlobalConfig();
-  
-  public abstract Set<String> getLogBlackList();
-  
-  public abstract Set<String> getLogWhiteList();
   
   public abstract String getPlatformName();
   
@@ -85,7 +78,7 @@ public abstract interface IQQEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.IQQEnv
  * JD-Core Version:    0.7.0.1
  */

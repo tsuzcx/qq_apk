@@ -1,33 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class ayuc
-  extends ayuf
+class ayuc
 {
-  public ayuc(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
+  ayuc(ayub paramayub, boolean paramBoolean) {}
+  
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
+    bglp.a(ayub.a(this.jdField_a_of_type_Ayub), 2131697627, 2131697628);
   }
   
-  public aynt a(List<aynu> paramList, String paramString)
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    return null;
-  }
-  
-  public List<aynt> a(ayuu paramayuu)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    paramayuu.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
-    paramayuu.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
-    ArrayList localArrayList = new ArrayList();
-    paramayuu = this.jdField_a_of_type_Ayug.a(paramayuu);
-    if (paramayuu != null) {
-      localArrayList.addAll(paramayuu);
+    if (this.jdField_a_of_type_Boolean) {
+      ((aypj)ayub.a(this.jdField_a_of_type_Ayub).getManager(369)).a(9);
     }
-    return localArrayList;
   }
 }
 

@@ -1,51 +1,30 @@
-import android.app.Application;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
-import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
-import com.tencent.mobileqq.videoplatform.util.ReportUtil;
-import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
+import java.util.Comparator;
 
-public class axay
+final class axay
+  implements Comparator<String>
 {
-  private static volatile boolean a;
-  
-  static {}
-  
-  public static void a()
+  public int a(String paramString1, String paramString2)
   {
-    try
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
+    }
+    while (paramString1 != null)
     {
-      if (!a)
-      {
-        LogUtil.setLogImp(new axbd());
-        ThreadUtil.setThreadImp(new axbf());
-        LoadSoUtil.setLoadSoImp(new axbb());
-        ReportUtil.setReportImp(new axbe());
-        a = true;
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
       }
-      return;
+      return 1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (paramString2 != null) {
+      return 1;
     }
-  }
-  
-  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
-  {
-    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
-  }
-  
-  public static boolean a()
-  {
-    return VideoPlaySDKManager.getInstance().isSDKReady();
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axay
  * JD-Core Version:    0.7.0.1
  */

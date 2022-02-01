@@ -1,38 +1,55 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajqh
-  extends ampt
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
+  ajqh(ajqf paramajqf, String paramString, ajqk paramajqk, MessageRecord paramMessageRecord) {}
   
-  public ajqh(ajqe paramajqe, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+    Object localObject2;
+    if (!this.jdField_a_of_type_Ajqf.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localObject1 = null;
+        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
+        if (i > 0) {
+          localObject1 = this.jdField_a_of_type_JavaLangString.substring(i);
+        }
+        localObject2 = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+        if (localObject1 == null) {
+          break label188;
+        }
       }
-      ajqe.a(this.jdField_a_of_type_Ajqe, d1, d2, this.jdField_a_of_type_Int);
     }
-    do
+    label188:
+    for (Object localObject1 = (String)localObject2 + (String)localObject1;; localObject1 = localObject2)
     {
+      localObject2 = new Intent(this.jdField_a_of_type_Ajqf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_Ajqf.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      boolean bool = ajqk.a(this.jdField_a_of_type_Ajqk).isChecked();
+      ajqf.a(this.jdField_a_of_type_Ajqf).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localObject1 = ajqk.a(this.jdField_a_of_type_Ajqk);
+      if (!bool) {}
+      for (bool = true;; bool = false)
+      {
+        ((CheckBox)localObject1).setChecked(bool);
+        break;
       }
-    } while ((ajqe.a(this.jdField_a_of_type_Ajqe) == null) || (!ajqe.a(this.jdField_a_of_type_Ajqe).hasMessages(this.jdField_a_of_type_Int)));
-    ajqe.a(this.jdField_a_of_type_Ajqe, false, null, this.jdField_a_of_type_Int);
+    }
   }
 }
 

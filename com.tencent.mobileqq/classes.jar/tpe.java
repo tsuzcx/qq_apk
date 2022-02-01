@@ -1,25 +1,29 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tpe
-  implements View.OnSystemUiVisibilityChangeListener
+  extends tpg
 {
-  public tpe(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  tpe(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    if (paramInt == 4102) {}
-    while (!bhtb.e()) {
-      return;
+    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, paramString3, null, 3096, 1, this.jdField_a_of_type_OrgJsonJSONObject.optString("nick_name"), null, null, null, null);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
     }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tpe
  * JD-Core Version:    0.7.0.1
  */

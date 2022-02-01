@@ -1,6 +1,6 @@
-class blba
+public abstract interface blba
 {
-  private static blay a = new blay(null);
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

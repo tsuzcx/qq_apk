@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class asqi
-  implements DialogInterface.OnClickListener
+class asqi
+  implements Animation.AnimationListener
 {
-  public asqi(JefsClass.8 param8) {}
+  asqi(asqe paramasqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

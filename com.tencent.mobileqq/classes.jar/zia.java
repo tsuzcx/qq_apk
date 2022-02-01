@@ -1,58 +1,85 @@
-import android.util.SparseArray;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class zia
+  extends BaseAdapter
 {
-  public int a;
-  public SparseArray<zib> a;
-  public String a;
-  public boolean a;
-  public int b = 4;
+  int jdField_a_of_type_Int = -1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<zif> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public zia(String paramString)
+  public zia(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public zib a(int paramInt)
+  public void a(int paramInt)
   {
-    zib localzib2 = (zib)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    zib localzib1 = localzib2;
-    if (localzib2 == null)
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ArrayList<zif> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    zif localzif = (zif)getItem(paramInt);
+    View localView;
+    if (paramView == null)
     {
-      if (paramInt != 1) {
-        break label40;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561670, paramViewGroup, false);
+      paramView = new zib(this);
+      paramView.a = ((ImageView)localView.findViewById(2131368785));
+      paramView.b = ((ImageView)localView.findViewById(2131368892));
+      localView.setTag(paramView);
+      paramView.a.setImageDrawable(localzif.a);
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break label137;
       }
-      localzib1 = new zib(85, 5, 0.7F, 0.2F);
+      paramView.b.setVisibility(0);
     }
-    label40:
-    do
+    for (;;)
     {
-      return localzib1;
-      if (paramInt == 2) {
-        return new zib(80, 15, 0.9F, 0.4F);
-      }
-      localzib1 = localzib2;
-    } while (paramInt != 3);
-    return new zib(75, 30, 1.0F, 0.7F);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("ClearMemoryConfig{");
-    localStringBuilder.append("DpcConfigId='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", isClearEnable=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", delay=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", clearStep=").append(this.b);
-    localStringBuilder.append(", clearLevels=").append(this.jdField_a_of_type_AndroidUtilSparseArray);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      zib localzib = (zib)paramView.getTag();
+      localView = paramView;
+      paramView = localzib;
+      break;
+      label137:
+      paramView.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zia
  * JD-Core Version:    0.7.0.1
  */

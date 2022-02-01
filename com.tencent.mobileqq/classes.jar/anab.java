@@ -1,6 +1,20 @@
-public abstract interface anab
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class anab
+  extends anau
 {
-  public abstract void a(int paramInt, String paramString, anbm paramanbm);
+  anab(anaa paramanaa) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    }
+  }
 }
 
 

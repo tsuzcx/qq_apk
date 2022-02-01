@@ -1,14 +1,14 @@
 package com.tencent.mqp.app.sec;
 
-import bfam;
-import bfan;
+import bihn;
+import biho;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class MQPSensitiveMsgUtil$1$1
   implements Runnable
 {
-  public MQPSensitiveMsgUtil$1$1(bfan parambfan) {}
+  public MQPSensitiveMsgUtil$1$1(biho parambiho) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MQPSensitiveMsgUtil$1$1
     if (localMessageRecord == null) {
       return;
     }
-    bfam.a(localMessageRecord);
+    bihn.a(localMessageRecord);
     try
     {
       localMessageRecord.saveExtInfoToExtStr("sens_msg_confirmed", "1");
@@ -37,7 +37,7 @@ public class MQPSensitiveMsgUtil$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

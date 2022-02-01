@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import Override;
 import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.util.HashMap;
 
@@ -50,6 +54,14 @@ public abstract class PluginProxyFragmentActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public Intent getIntent()
   {
     Intent localIntent = super.getIntent();
@@ -74,6 +86,13 @@ public abstract class PluginProxyFragmentActivity
     if (this.mPluginActivity != null) {
       this.mPluginActivity.IOnAttachFragment(paramFragment);
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)

@@ -1,113 +1,28 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeya
-  extends Handler
+  implements View.OnClickListener
 {
-  public aeya(ListenChangeVoicePanel paramListenChangeVoicePanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aeya(QQMapActivity paramQQMapActivity) {}
   
-  public void handleMessage(Message arg1)
+  public void onClick(View paramView)
   {
-    switch (???.what)
+    if (this.a.a == null)
     {
-    case 102: 
-    default: 
-    case 101: 
-    case 103: 
-    case 104: 
-    case 105: 
-    case 106: 
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                ListenChangeVoicePanel.a(this.a, -1);
-                this.a.jdField_a_of_type_Aexx.b = 0;
-                this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView = null;
-                synchronized (this.a.b)
-                {
-                  this.a.jdField_a_of_type_Aexx.a = this.a.b;
-                  this.a.jdField_a_of_type_Aexx.notifyDataSetChanged();
-                  return;
-                }
-              } while ((???.obj == null) || (!(???.obj instanceof Bundle)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null));
-              ??? = (Bundle)???.obj;
-            } while (??? == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(???.getInt("progress"), ???.getInt("playTime"), ???.getInt("level"));
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
-          return;
-          if (ListenChangeVoicePanel.a(this.a).get() != null) {
-            QQToast.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), "播放变音error", 0);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
-        return;
-      } while ((ListenChangeVoicePanel.a(this.a).get() == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      bedn.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), ListenChangeVoicePanel.a(this.a), PressToChangeVoicePanel.a, this.a);
-      int k = (int)ListenChangeVoicePanel.a(this.a);
-      String str;
-      QQRecorder.RecorderParam localRecorderParam;
-      if (!awym.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).a((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ListenChangeVoicePanel.a(this.a)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PttPreSendManager", 2, "presend not hit, do origin logic");
-        }
-        ??? = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-        str = ListenChangeVoicePanel.a(this.a);
-        localRecorderParam = ListenChangeVoicePanel.a(this.a);
-        if (ListenChangeVoicePanel.a(this.a) <= 0) {
-          break label677;
-        }
-      }
-      label677:
-      for (int i = 1;; i = 0)
-      {
-        ???.a(str, 4, 0, localRecorderParam, i, false, 0);
-        ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).b(ListenChangeVoicePanel.a(this.a), null);
-        if (ListenChangeVoicePanel.jdField_a_of_type_Awxy != null)
-        {
-          ListenChangeVoicePanel.jdField_a_of_type_Awxy.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), ListenChangeVoicePanel.a(this.a));
-          if (ListenChangeVoicePanel.a(this.a) > 0) {
-            azqs.b((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), "CliOper", "", "", "changevoice", "0X8006F7C", 0, 0, "" + ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a, "" + ListenChangeVoicePanel.a(this.a), "", "");
-          }
-        }
-        this.a.i();
-        int j = ListenChangeVoicePanel.b(this.a);
-        i = j;
-        if (this.a.jdField_a_of_type_Boolean) {
-          i = j + 10;
-        }
-        j = ListenChangeVoicePanel.a(this.a);
-        int m = ListenChangeVoicePanel.c(this.a);
-        this.a.a(j, m, k, i);
-        return;
-      }
+      this.a.a = ((bkho)bkif.a(this.a, null));
+      this.a.a.b(2131697335);
+      this.a.a.b(2131691986);
+      this.a.a.c(2131690582);
+      this.a.a.a(new aeyb(this));
     }
-    this.a.a(???.arg1, ???.arg2, ???.obj, true);
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,42 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-class aihb
-  implements TextWatcher
+public class aihb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aihb(aiha paramaiha) {}
+  private aihb(TroopChatPie paramTroopChatPie) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onGlobalLayout()
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131367817).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Aieg.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
+      if (!this.a.aa)
+      {
+        this.a.aa = true;
+        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
+      }
       return;
+      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131367817).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,23 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.biz.pubaccount.VideoInfo;
-import rbn;
-import rdm;
-import rfs;
-import riw;
+import rxq;
+import ryx;
+import sek;
 
 public class VideoFeedsVideoUIDelegate$3
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$3(riw paramriw, rfs paramrfs, boolean paramBoolean) {}
+  public VideoFeedsVideoUIDelegate$3(sek paramsek) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Rfs != null) && (this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Rfs.a.c))
-    {
-      riw.b(this.this$0, true);
-      rdm.a(this.this$0.a.b, 8, 0);
-    }
+    ryx.a(this.this$0.a.b, 8, 0);
   }
 }
 

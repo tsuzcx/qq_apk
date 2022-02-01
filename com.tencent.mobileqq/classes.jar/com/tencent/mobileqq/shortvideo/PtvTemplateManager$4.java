@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azkt;
+import bcls;
 import java.util.ArrayList;
 
 class PtvTemplateManager$4
@@ -10,14 +10,14 @@ class PtvTemplateManager$4
   
   public void run()
   {
-    if (azkt.c()) {
+    if (bcls.a()) {
       this.this$0.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

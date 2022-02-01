@@ -1,83 +1,64 @@
-import com.tencent.biz.subscribe.preloader.lib.Worker;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import java.util.Comparator;
 
 public class ykc
+  implements Comparator<yjy>
 {
-  private static ykc jdField_a_of_type_Ykc;
-  private final ConcurrentHashMap<String, ykf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
-  
-  private <T> String a(String paramString, Worker<T> paramWorker)
+  public int a(yjy paramyjy1, yjy paramyjy2)
   {
-    if (a(paramString))
+    int k = 1;
+    int i;
+    int j;
+    if (((paramyjy1 instanceof yju)) && (((HotRecommendFeedItem)((yju)paramyjy1).a()).mIsTopLocation))
     {
-      ykb.b("preLoader ID is used, please note that remove!");
-      a(paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
-    paramWorker.a();
-    return paramString;
-  }
-  
-  public static ykc a()
-  {
-    if (jdField_a_of_type_Ykc == null) {
-      jdField_a_of_type_Ykc = new ykc();
-    }
-    return jdField_a_of_type_Ykc;
-  }
-  
-  public <T> String a(String paramString, yka<T> paramyka)
-  {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    return a(paramString, new Worker(paramString, paramyka, (ykh)null, i));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
-    try
-    {
-      ykf localykf = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localykf != null) {
-        localykf.b();
+      i = 1;
+      if ((!(paramyjy2 instanceof yju)) || (!((HotRecommendFeedItem)((yju)paramyjy2).a()).mIsTopLocation)) {
+        break label80;
+      }
+      j = 1;
+      label54:
+      if ((j ^ i) == 0) {
+        break label86;
+      }
+      j = k;
+      if (i != 0) {
+        j = -1;
       }
     }
-    catch (Exception localException)
+    label80:
+    label86:
+    do
     {
-      for (;;)
+      do
       {
-        ykb.a(localException);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  public <T> void a(String paramString, ykh<T> paramykh)
-  {
-    try
-    {
-      paramString = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramykh);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ykb.a(paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+        return j;
+        i = 0;
+        break;
+        j = 0;
+        break label54;
+        if (paramyjy1.a.dateTimeMillis != paramyjy2.a.dateTimeMillis) {
+          break label146;
+        }
+        if (((paramyjy1 instanceof yka)) && (yka.a((yka)paramyjy1))) {
+          return -1;
+        }
+        if (!(paramyjy2 instanceof yka)) {
+          break label144;
+        }
+        j = k;
+      } while (yka.a((yka)paramyjy2));
+      return 0;
+      j = k;
+    } while (paramyjy1.a.dateTimeMillis <= paramyjy2.a.dateTimeMillis);
+    label144:
+    label146:
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykc
  * JD-Core Version:    0.7.0.1
  */

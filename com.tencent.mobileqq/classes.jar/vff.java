@@ -1,49 +1,62 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
 
 public class vff
-  extends urt<vhd>
+  extends vex
 {
-  public static final String a = uqn.a("StorySvc.square_720_banner_vid_list");
-  public String b;
-  public String c;
-  
-  public String a()
+  public vff(vel paramvel, vey paramvey, vfa paramvfa)
   {
-    return a;
+    super(paramvel, paramvey, paramvfa);
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public float a()
   {
-    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
-    try
-    {
-      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new vhd(localRspBannerVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    return 0.0F;
   }
   
-  protected byte[] a()
+  public int a()
   {
-    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
-    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
-    return localReqBannerVideoList.toByteArray();
+    return 0;
+  }
+  
+  public float[] a(long paramLong)
+  {
+    return new float[4];
+  }
+  
+  public float b()
+  {
+    return 0.0F;
+  }
+  
+  protected void b() {}
+  
+  public void b(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, float paramFloat1, float paramFloat2) {}
+  
+  public float[] b(long paramLong)
+  {
+    return new float[4];
+  }
+  
+  public float c()
+  {
+    return 0.0F;
+  }
+  
+  public float d()
+  {
+    return 0.0F;
+  }
+  
+  public void d() {}
+  
+  public float e()
+  {
+    return 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,24 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class ango
-  extends angm
 {
-  public String a;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public ango(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    if (paramOnClickListener != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
+    }
   }
 }
 

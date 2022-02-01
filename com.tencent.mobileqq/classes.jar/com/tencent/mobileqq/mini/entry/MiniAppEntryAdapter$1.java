@@ -10,6 +10,7 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppEntryAdapter$1
   implements View.OnClickListener
@@ -24,9 +25,10 @@ class MiniAppEntryAdapter$1
       if (QLog.isColorLevel()) {
         QLog.i("MiniAppEntryAdapter", 2, "onClick. obj = " + localObject);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    paramView = ((MiniAppEntryAdapter.MicroAppViewHolder)((RecyclerView)paramView.getParent()).getChildViewHolder(paramView)).miniAppInfo;
+    localObject = ((MiniAppEntryAdapter.MicroAppViewHolder)((RecyclerView)paramView.getParent()).getChildViewHolder(paramView)).miniAppInfo;
     int i;
     if (MiniAppEntryAdapter.access$000(this.this$0) == 0) {
       i = 1001;
@@ -35,21 +37,20 @@ class MiniAppEntryAdapter$1
     {
       try
       {
-        QLog.i("MiniAppEntryAdapter", 1, "--- click appid:" + paramView.appId);
-        MiniAppController.launchMiniAppByAppInfo(MiniAppEntryAdapter.access$100(this.this$0), paramView, i);
-        int j = MiniAppEntryAdapter.access$200(this.this$0, paramView.appId);
-        paramView = new MiniAppConfig(paramView);
-        localObject = new LaunchParam();
-        ((LaunchParam)localObject).scene = i;
-        paramView.launchParam = ((LaunchParam)localObject);
-        MiniProgramLpReportDC04239.reportAsync(paramView, "page_view", "click_scene", null, String.valueOf(j));
-        return;
+        QLog.i("MiniAppEntryAdapter", 1, "--- click appid:" + ((MiniAppInfo)localObject).appId);
+        MiniAppController.launchMiniAppByAppInfo(MiniAppEntryAdapter.access$100(this.this$0), (MiniAppInfo)localObject, i);
+        int j = MiniAppEntryAdapter.access$200(this.this$0, ((MiniAppInfo)localObject).appId);
+        localObject = new MiniAppConfig((MiniAppInfo)localObject);
+        LaunchParam localLaunchParam = new LaunchParam();
+        localLaunchParam.scene = i;
+        ((MiniAppConfig)localObject).launchParam = localLaunchParam;
+        MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, "page_view", "click_scene", null, String.valueOf(j));
       }
-      catch (MiniAppException paramView)
+      catch (MiniAppException localMiniAppException)
       {
-        paramView.printStackTrace();
-        return;
+        localMiniAppException.printStackTrace();
       }
+      break;
       if (MiniAppEntryAdapter.access$000(this.this$0) == 1) {
         i = 2006;
       } else if (MiniAppEntryAdapter.access$000(this.this$0) == 2) {
@@ -62,7 +63,7 @@ class MiniAppEntryAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

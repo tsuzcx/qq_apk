@@ -1,15 +1,20 @@
-import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-
-class apah
+public class apah
 {
-  public static final Uri a;
-  public static final String[] a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  static
+  public apah()
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

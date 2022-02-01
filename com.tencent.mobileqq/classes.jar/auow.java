@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class auow
-  implements auoy
+class auow
+  extends niv
 {
-  QQAppInterface a;
+  auow(auov paramauov) {}
   
-  public auow(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(aupm paramaupm, HashMap<String, ArrayList<MessageRecord>> paramHashMap, auoz paramauoz) {}
-  
-  public boolean a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auow
  * JD-Core Version:    0.7.0.1
  */

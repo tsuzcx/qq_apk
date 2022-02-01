@@ -1,8 +1,8 @@
 package cooperation.photoplus;
 
 import android.text.TextUtils;
-import awni;
-import bdhb;
+import azby;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.photoplus.sticker.Sticker;
 import java.io.File;
@@ -38,7 +38,7 @@ class PhotoPlusManager$UpdateTask
     } while (!QLog.isColorLevel());
     QLog.d("PhotoPlusManager", 2, "[updateStickerResource] saved stickers = null");
     return;
-    if (!bdhb.a())
+    if (!bgmg.a())
     {
       QLog.e("PhotoPlusManager", 1, "sdcard unavailable");
       return;
@@ -81,7 +81,7 @@ class PhotoPlusManager$UpdateTask
         }
         else
         {
-          localObject1 = awni.a(str);
+          localObject1 = azby.a(str);
           if (localSticker.md5.equalsIgnoreCase((String)localObject1))
           {
             this.this$0.a(str);
@@ -91,7 +91,7 @@ class PhotoPlusManager$UpdateTask
             if (QLog.isColorLevel()) {
               QLog.d("PhotoPlusManager", 2, "[updateStickerResource] checkMd5 failed: " + str);
             }
-            bdhb.d(str);
+            bgmg.d(str);
           }
         }
       }
@@ -100,7 +100,7 @@ class PhotoPlusManager$UpdateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusManager.UpdateTask
  * JD-Core Version:    0.7.0.1
  */

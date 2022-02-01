@@ -1,33 +1,22 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebh
-  implements PopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aebh(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aebh(DialogActivity paramDialogActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 2130845229;; i = 2130845740)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
-    }
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 

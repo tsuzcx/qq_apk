@@ -1,33 +1,104 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PreloadWebService;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
+import common.config.service.QzoneConfig;
+import cooperation.ilive.IliveLaunchFragment;
+import java.lang.ref.WeakReference;
 
-class blev
-  implements bley
+public class blev
 {
-  blev(bleu parambleu, bler parambler, String[] paramArrayOfString, Semaphore paramSemaphore) {}
+  private static WeakReference<blew> a;
+  public static boolean a;
+  public static boolean b;
+  private static boolean c = true;
   
-  public void a(String paramString)
+  public static void a()
   {
-    QLog.d(bleu.a(), 4, "create pngs for material index = " + this.jdField_a_of_type_Bler.a + " end, pngDir = " + paramString);
-    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
-    String[] arrayOfString = new File(paramString).list();
-    String str = paramString + File.separator + "snapshot.png";
-    if (arrayOfString.length != 0) {
-      bkok.a(paramString + File.separator + arrayOfString[0], 320, 320, str);
+    if (jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    blew localblew;
+    do
+    {
+      return;
+      localblew = (blew)jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localblew == null);
+    localblew.onPreloadEnd();
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if (!aqyj.c().d()) {}
+    do
+    {
+      return;
+      if ((paramInt == 1) && (!a()))
+      {
+        QLog.e("IlivePreloadHelper", 1, "preloadLiveShopping checkDrawerSwitchEnable = false");
+        return;
+      }
+      QLog.e("IlivePreloadHelper", 1, "ilive start preloadLiveShopping , source = " + paramInt);
+      bhle.b(-1);
+      Intent localIntent = new Intent(paramContext, PreloadWebService.class);
+      localIntent.putExtra("isPreloadLiveShopping", true);
+      localIntent.putExtra("source", paramInt);
+      try
+      {
+        paramContext.startService(localIntent);
+        return;
+      }
+      catch (Throwable paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("IlivePreloadHelper", 2, "preDownloadIfNecessary=>" + paramContext.getMessage());
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IlivePreloadHelper", 2, "preload LiveShopping");
     }
-    bleu.a(this.jdField_a_of_type_Bleu).c.add(str);
-    bleu.a(this.jdField_a_of_type_Bleu).a.add(paramString);
-    if ((this.jdField_a_of_type_Bler.c != null) && (!this.jdField_a_of_type_Bler.c.equals(""))) {
-      bleu.a(this.jdField_a_of_type_Bleu).b.add(this.jdField_a_of_type_Bler.c);
+    if ((!c) || (b))
+    {
+      c = false;
+      QLog.e("IlivePreloadHelper", 1, "ilive has preload");
+      return;
     }
+    c = false;
+    jdField_a_of_type_Boolean = true;
+    QLog.i("IlivePreloadHelper", 1, "preload start");
+    IliveLaunchFragment localIliveLaunchFragment = new IliveLaunchFragment();
+    if (paramIntent != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("source", paramIntent.getIntExtra("source", 0));
+      localIliveLaunchFragment.setArguments(localBundle);
+    }
+    localIliveLaunchFragment.doLoading(true, BaseApplicationImpl.getApplication());
+  }
+  
+  public static void a(blew paramblew)
+  {
+    if (paramblew == null) {
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramblew);
+  }
+  
+  private static boolean a()
+  {
+    boolean bool = true;
+    int i = QzoneConfig.getInstance().getConfig("qqLive", "drawerPreloadModelLevel", 21);
+    if (Build.VERSION.SDK_INT < i) {}
+    while (!blei.a()) {
+      return false;
+    }
+    if (QzoneConfig.getInstance().getConfig("qqLive", "drawerPreloadSwitch", 1) == 1) {}
     for (;;)
     {
-      bleu.a(this.jdField_a_of_type_Bleu).d.add(Integer.valueOf(this.jdField_a_of_type_Bler.a));
-      this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
-      return;
-      bleu.a(this.jdField_a_of_type_Bleu).b.add(this.jdField_a_of_type_Bler.b);
+      return bool;
+      bool = false;
     }
   }
 }

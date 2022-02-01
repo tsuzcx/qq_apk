@@ -1,6 +1,10 @@
-public class bdsd
+public abstract interface bdsd
 {
-  public static final String a = bdzf.a(alof.aX + "rbt");
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

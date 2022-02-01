@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class rtc
-  extends pdi
+public abstract interface rtc
 {
-  public rtc(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  public void a(pdc parampdc)
-  {
-    parampdc.a();
-  }
+  public abstract void a(rtb paramrtb);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtc
  * JD-Core Version:    0.7.0.1
  */

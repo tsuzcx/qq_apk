@@ -1,69 +1,51 @@
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.GdtJsonPbUtil;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vas.qvip.util.QQVipHelper.1.1;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
-public class bhco
-  extends bhdw
+public final class bhco
+  implements BusinessObserver
 {
-  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
+  bhco(QQAppInterface paramQQAppInterface) {}
   
-  public bhco(List<String> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.appids.set(paramList);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
-    try
+    if (!paramBoolean) {}
+    for (;;)
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
+      return;
+      try
       {
-        paramArrayOfByte = GdtJsonPbUtil.pbToJson(localStGetRobotUinRsp);
-        if ((paramArrayOfByte instanceof JSONObject)) {
-          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          continue;
         }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0) {
+          paramBundle.mergeFrom(arrayOfByte);
+        }
+        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = tzo.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
+        {
+          ThreadManager.getSubThreadHandler().postDelayed(new QQVipHelper.1.1(this, paramBundle), 10L);
+          return;
+        }
+        return;
       }
-      else
-      {
-        QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
-        return null;
-      }
+      catch (Exception paramBundle) {}
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetContact";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhco
  * JD-Core Version:    0.7.0.1
  */

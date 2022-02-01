@@ -1,15 +1,15 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 
 public class LiveRoomInterface
   extends PluginRuntime
 {
-  private awgg emFactoryQQ;
+  private EntityManagerFactory emFactoryQQ;
   public AppInterface mAppInterface;
   
   public String getModuleId()
@@ -17,7 +17,7 @@ public class LiveRoomInterface
     return "LiveRoomPlugin.apk";
   }
   
-  public awgg getQQEntityManagerFactory()
+  public EntityManagerFactory getQQEntityManagerFactory()
   {
     Object localObject1 = getAccount();
     if (localObject1 == null) {
@@ -29,7 +29,7 @@ public class LiveRoomInterface
       {
         localObject1 = new QQEntityManagerFactory((String)localObject1);
         ((QQEntityManagerFactory)localObject1).verifyAuthentication();
-        this.emFactoryQQ = ((awgg)localObject1);
+        this.emFactoryQQ = ((EntityManagerFactory)localObject1);
       }
       return this.emFactoryQQ;
     }
@@ -43,7 +43,7 @@ public class LiveRoomInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterface
  * JD-Core Version:    0.7.0.1
  */

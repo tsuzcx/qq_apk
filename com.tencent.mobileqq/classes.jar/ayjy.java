@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.OlyimpicConfig;
 
-class ayjy
-  implements View.OnClickListener
+public final class ayjy
+  implements Parcelable.Creator<OlyimpicConfig>
 {
-  ayjy(ayjv paramayjv) {}
-  
-  public void onClick(View paramView)
+  public OlyimpicConfig a(Parcel paramParcel)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
+    return new OlyimpicConfig(paramParcel);
+  }
+  
+  public OlyimpicConfig[] a(int paramInt)
+  {
+    return new OlyimpicConfig[paramInt];
   }
 }
 

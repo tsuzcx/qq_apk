@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.utils;
 
-import nnv;
-import owy;
+import nwv;
+import pmh;
 
 public final class ReadInJoyPatchAdUtils$2
   implements Runnable
 {
-  public ReadInJoyPatchAdUtils$2(nnv paramnnv) {}
+  public ReadInJoyPatchAdUtils$2(nwv paramnwv) {}
   
   public void run()
   {
-    owy.a().a(56, 7, 0, 10000, this.a);
+    pmh.a().a(56, 1, 0, 10000, this.a);
   }
 }
 

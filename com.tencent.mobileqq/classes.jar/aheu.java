@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aheu
-  implements View.OnClickListener
+  implements aabv
 {
   aheu(ahes paramahes) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bcpx.a(ahes.a(this.a), paramView, this.a.b(), this.a.c());
-    this.a.a(paramView);
+    vrf.a(this.a.a.a, 45, 2, 3);
   }
 }
 

@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aiuk;
-import aiul;
-import aivt;
-import aivu;
-import aivw;
-import aivx;
-import aivy;
-import aivz;
-import aiwa;
-import aiwb;
-import aiwc;
-import aiwd;
-import aiwe;
-import aixs;
-import ajeu;
-import ajfd;
-import ajfi;
-import ajfq;
-import alud;
+import akli;
+import aklj;
+import akmx;
+import akmy;
+import akna;
+import aknb;
+import aknc;
+import aknd;
+import akne;
+import aknf;
+import akng;
+import aknh;
+import akni;
+import akpd;
+import akww;
+import akxh;
+import akxm;
+import akxu;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.content.res.Resources;
@@ -33,12 +32,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import bczz;
-import bdfi;
-import bdgc;
-import beww;
-import bewy;
+import anni;
+import bcst;
+import bgfz;
+import bgkl;
+import bglf;
+import bidu;
+import bidw;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -49,8 +49,8 @@ import com.tencent.mobileqq.activity.qwallet.voice.KSongVolumeView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.widget.AnimationView;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
@@ -63,18 +63,18 @@ import org.json.JSONObject;
 
 public class RedPacketKSongFragment
   extends RedPacketPopFragment
-  implements ajfd, ajfq
+  implements akxh, akxu
 {
   public static final String a;
   public static final String[] a;
   public static final String b;
   public long a;
-  private aiwe jdField_a_of_type_Aiwe;
-  public ajfi a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aiwc(this);
+  private akni jdField_a_of_type_Akni;
+  public akxm a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akng(this);
   public MediaPlayer a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aivt(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akmx(this);
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -85,7 +85,7 @@ public class RedPacketKSongFragment
   KSongProsBar jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar;
   public KSongView a;
   public boolean a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aivw(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new akna(this);
   public View b;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -100,9 +100,9 @@ public class RedPacketKSongFragment
   
   static
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131713685);
-    jdField_b_of_type_JavaLangString = alud.a(2131713707);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alud.a(2131713702), alud.a(2131713694), alud.a(2131713712) };
+    jdField_a_of_type_JavaLangString = anni.a(2131712064);
+    jdField_b_of_type_JavaLangString = anni.a(2131712086);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { anni.a(2131712081), anni.a(2131712073), anni.a(2131712091) };
   }
   
   public RedPacketKSongFragment()
@@ -124,20 +124,20 @@ public class RedPacketKSongFragment
     Object localObject = new StringBuilder(50);
     ((StringBuilder)localObject).append("msgType=18").append("&isOffline=").append(false);
     long l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.sendByKSong", ((StringBuilder)localObject).toString(), 0, null, SystemClock.uptimeMillis());
-    aiul localaiul = (aiul)getActivity().app.getManager(125);
-    aiuk localaiuk = localaiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-    localaiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
-    localObject = (aixs)getActivity().app.getManager(245);
+    aklj localaklj = (aklj)getActivity().app.getManager(125);
+    akli localakli = localaklj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
+    localaklj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
+    localObject = (akpd)getActivity().app.getManager(245);
     int i;
     Bundle localBundle;
     SessionInfo localSessionInfo;
     if (localObject != null)
     {
-      i = ((aixs)localObject).a("voice_pwd", 1, new String[] { "scoreSwitch" });
+      i = ((akpd)localObject).a("voice_pwd", 1, new String[] { "scoreSwitch" });
       localBundle = new Bundle();
       localBundle.putString("feedsid", a());
-      ajfi.a(a(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
-      ajeu.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+      akxm.a(a(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+      akww.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
       localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (i != 1) {
         break label339;
@@ -146,9 +146,9 @@ public class RedPacketKSongFragment
     label339:
     for (localObject = paramString;; localObject = "")
     {
-      localaiul.a(localSessionInfo, localaiuk, l, 131072, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, localBundle);
+      localaklj.a(localSessionInfo, localakli, l, 131072, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, localBundle);
       if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localaiuk.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localaiuk.jdField_b_of_type_Boolean + ",isPasswdRedBagOverDue=" + localaiuk.jdField_c_of_type_Boolean + "|scoreSwitch:" + i + "|scoreId" + paramString);
+        QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localakli.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localakli.jdField_b_of_type_Boolean + ",isPasswdRedBagOverDue=" + localakli.jdField_c_of_type_Boolean + "|scoreSwitch:" + i + "|scoreId" + paramString);
       }
       return;
       i = 1;
@@ -169,7 +169,7 @@ public class RedPacketKSongFragment
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     int i = new Random().nextInt(3);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(jdField_a_of_type_ArrayOfJavaLangString[(i + 0)]);
-    Object localObject = ((aixs)getActivity().app.getManager(245)).a("redPackPanel", "", new String[] { "panelRedPkgList" });
+    Object localObject = ((akpd)getActivity().app.getManager(245)).a("redPackPanel", "", new String[] { "panelRedPkgList" });
     for (;;)
     {
       try
@@ -189,7 +189,7 @@ public class RedPacketKSongFragment
       {
         continue;
       }
-      ((PreloadManager)getActivity().app.getManager(151)).c(this.jdField_c_of_type_JavaLangString, new aiwd(this));
+      ((PreloadManager)getActivity().app.getManager(151)).c(this.jdField_c_of_type_JavaLangString, new aknh(this));
       return;
       i += 1;
     }
@@ -236,7 +236,7 @@ public class RedPacketKSongFragment
       if (!this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846849));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130847299));
         this.jdField_c_of_type_AndroidWidgetTextView.setText(jdField_b_of_type_JavaLangString);
         d();
         this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.setVisibility(0);
@@ -249,7 +249,7 @@ public class RedPacketKSongFragment
           this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.b();
           this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
           this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846847));
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130847297));
           this.jdField_c_of_type_AndroidWidgetTextView.setText(jdField_a_of_type_JavaLangString);
           return;
         }
@@ -264,7 +264,7 @@ public class RedPacketKSongFragment
         this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(true);
         this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846849));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130847299));
         this.jdField_c_of_type_AndroidWidgetTextView.setText(jdField_b_of_type_JavaLangString);
       }
     }
@@ -283,19 +283,19 @@ public class RedPacketKSongFragment
   protected void a(View paramView)
   {
     super.a(paramView);
-    ((ViewStub)paramView.findViewById(2131377167)).inflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377924));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView = ((KSongMicView)paramView.findViewById(2131375506));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131369112));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369791));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369903);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372076));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372097));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView = ((KSongView)paramView.findViewById(2131369114));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar = ((KSongProsBar)paramView.findViewById(2131369113));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongVolumeView = ((KSongVolumeView)paramView.findViewById(2131368227));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375741);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369111));
+    ((ViewStub)paramView.findViewById(2131377974)).inflate();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378762));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView = ((KSongMicView)paramView.findViewById(2131376229));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131369498));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370228));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370345);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372647));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372668));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView = ((KSongView)paramView.findViewById(2131369500));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar = ((KSongProsBar)paramView.findViewById(2131369499));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongVolumeView = ((KSongVolumeView)paramView.findViewById(2131368555));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376468);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369497));
     a(this.jdField_b_of_type_AndroidWidgetImageView);
   }
   
@@ -306,7 +306,7 @@ public class RedPacketKSongFragment
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
-  public void a(String paramString, bewy parambewy, boolean paramBoolean)
+  public void a(String paramString, bidw parambidw, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketKSongFragment", 2, "playSong:" + paramString);
@@ -324,9 +324,9 @@ public class RedPacketKSongFragment
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
       this.f = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aivz(this, paramBoolean));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new aiwa(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.setKListener(new aiwb(this, parambewy));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aknd(this, paramBoolean));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new akne(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.setKListener(new aknf(this, parambidw));
       return;
     }
     catch (Throwable paramString)
@@ -345,32 +345,32 @@ public class RedPacketKSongFragment
     if (!super.a()) {
       return false;
     }
-    this.jdField_e_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130846823));
+    this.jdField_e_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130847272));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(ajeu.a(0.7F));
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(akww.a(0.7F));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    Object localObject = bdgc.b(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
-    localObject = ajeu.a(getActivity(), (String)localObject, 135.0F, this.jdField_d_of_type_AndroidWidgetTextView.getPaint());
+    Object localObject = bglf.b(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
+    localObject = akww.a(getActivity(), (String)localObject, 135.0F, this.jdField_d_of_type_AndroidWidgetTextView.getPaint());
     this.jdField_d_of_type_AndroidWidgetTextView.setText((String)localObject + "的K歌红包");
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.setStatusListener(this);
-    this.jdField_a_of_type_Ajfi = ajfi.a();
-    this.jdField_a_of_type_Ajfi.a(this);
+    this.jdField_a_of_type_Akxm = akxm.a();
+    this.jdField_a_of_type_Akxm.a(this);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("tencent.av.v2q.StartVideoChat");
     ((IntentFilter)localObject).addAction("android.intent.action.PHONE_STATE");
     getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(jdField_a_of_type_JavaLangString);
-    bczz.b(this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView, false);
+    bgfz.b(this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView, false);
     p();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager = MediaPlayerManager.a(getActivity().app);
-    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.show", 0, 0, "", "", "", "");
+    bcst.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.show", 0, 0, "", "", "", "");
     return true;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846847));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130847297));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(jdField_a_of_type_JavaLangString);
@@ -388,7 +388,7 @@ public class RedPacketKSongFragment
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
     }
     a(paramString);
-    this.jdField_a_of_type_Ajfi.c();
+    this.jdField_a_of_type_Akxm.c();
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.b();
     this.jdField_d_of_type_Boolean = false;
   }
@@ -408,7 +408,7 @@ public class RedPacketKSongFragment
   
   public void c()
   {
-    a(this.jdField_a_of_type_Aiwe.jdField_b_of_type_JavaLangString, new aivx(this), false);
+    a(this.jdField_a_of_type_Akni.jdField_b_of_type_JavaLangString, new aknb(this), false);
   }
   
   public boolean c()
@@ -418,22 +418,22 @@ public class RedPacketKSongFragment
   
   public void d()
   {
-    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.play", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130846849));
-    a(this.jdField_a_of_type_Aiwe.jdField_a_of_type_JavaLangString, new aivy(this), true);
+    bcst.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.play", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130847299));
+    a(this.jdField_a_of_type_Akni.jdField_a_of_type_JavaLangString, new aknc(this), true);
   }
   
   public void e()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131713717));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712096));
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
   
   public void f()
   {
     this.jdField_d_of_type_JavaLangString = (this.jdField_e_of_type_JavaLangString + "song_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.songId + ".zip");
-    ((PreloadManager)getActivity().app.getManager(151)).c(this.jdField_d_of_type_JavaLangString, new aivu(this));
+    ((PreloadManager)getActivity().app.getManager(151)).c(this.jdField_d_of_type_JavaLangString, new akmy(this));
   }
   
   public void g()
@@ -490,13 +490,13 @@ public class RedPacketKSongFragment
     if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
     }
-    if ((this.jdField_a_of_type_Ajfi != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg != null))
+    if ((this.jdField_a_of_type_Akxm != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg != null))
     {
-      this.jdField_a_of_type_Ajfi.b(this.jdField_a_of_type_Aiwe.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Ajfi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, "", false);
+      this.jdField_a_of_type_Akxm.b(this.jdField_a_of_type_Akni.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Akxm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, "", false);
       this.jdField_d_of_type_Boolean = true;
     }
-    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.start", 0, 0, "", "", "", "");
+    bcst.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.start", 0, 0, "", "", "", "");
   }
   
   public void n() {}
@@ -504,21 +504,21 @@ public class RedPacketKSongFragment
   public void o()
   {
     super.o();
-    ajfi.a().d();
+    akxm.a().d();
   }
   
   public boolean onBackEvent()
   {
-    azqs.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.close", 0, 0, "", "", "", "");
+    bcst.b(getActivity().app, "P_CliOper", "Vip_pay_mywallet", "", "210", "ksong.sing.close", 0, 0, "", "", "", "");
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bdfi.a(getActivity(), false);
-    if (this.jdField_a_of_type_Ajfi != null) {
-      this.jdField_a_of_type_Ajfi.c();
+    bgkl.a(getActivity(), false);
+    if (this.jdField_a_of_type_Akxm != null) {
+      this.jdField_a_of_type_Akxm.c();
     }
     r();
     if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
@@ -550,13 +550,13 @@ public class RedPacketKSongFragment
       QLog.d("RedPacketKSongFragment", 2, "onPause() is called :" + this.jdField_d_of_type_Boolean);
     }
     if (this.jdField_d_of_type_Boolean) {
-      b(alud.a(2131713698));
+      b(anni.a(2131712077));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,12 @@ import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
 import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
 import java.util.HashMap;
 import org.json.JSONObject;
-import snr;
+import tmq;
 
 public class KdLottieView
   extends DiniFlyAnimationView
   implements IVLottieViewProxy
 {
-  private final String a = "KdLottieView";
-  
   public KdLottieView(Context paramContext)
   {
     super(paramContext);
@@ -37,7 +35,7 @@ public class KdLottieView
     localHttpRequset.paramMap = paramString;
     paramString = ViolaSDKManager.getInstance().getHttpAdapter();
     if (paramString != null) {
-      paramString.sendRequest(localHttpRequset, new snr(this, paramIVLottieLoadListener), true);
+      paramString.sendRequest(localHttpRequset, new tmq(this, paramIVLottieLoadListener), true);
     }
   }
   
@@ -117,7 +115,7 @@ public class KdLottieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView
  * JD-Core Version:    0.7.0.1
  */

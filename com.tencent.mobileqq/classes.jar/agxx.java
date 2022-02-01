@@ -1,51 +1,18 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.util.ArrayList;
 
-public abstract class agxx
-  implements agxz
+final class agxx
+  implements ahbm
 {
-  private boolean a;
-  
-  public URLDrawable.URLDrawableOptions a()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    return URLDrawable.URLDrawableOptions.obtain();
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
+    paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
+    if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0)) {
+      return 83;
     }
-    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    this.a = true;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return 82;
   }
 }
 

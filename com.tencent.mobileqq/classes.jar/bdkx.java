@@ -1,46 +1,37 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bdkx
   implements View.OnClickListener
 {
-  bdkx(bdku parambdku, DialogInterface.OnClickListener paramOnClickListener) {}
+  bdkx(bdkw parambdkw) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdku.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    bdmc localbdmc;
+    if (bgjw.a("tag_swip_icon_menu_item", paramView.getTag()))
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdku, 1);
-      if (this.jdField_a_of_type_Bdku.c)
-      {
-        if (!this.jdField_a_of_type_Bdku.jdField_a_of_type_Boolean) {
-          break label93;
-        }
-        this.jdField_a_of_type_Bdku.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdku.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      localbdmc = (bdmc)paramView.getTag(-10);
+      if (paramView.getId() != 2131364582) {
+        break label47;
       }
+      bdkw.a(this.a, localbdmc);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdku.c = false;
-      label93:
-      try
-      {
-        if (this.jdField_a_of_type_Bdku.isShowing()) {
-          this.jdField_a_of_type_Bdku.dismiss();
-        }
-        return;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label47:
+      if (bdkw.a(this.a) != null) {
+        bdkw.a(this.a).a(paramView.getId(), localbdmc);
       }
-      catch (Exception paramView) {}
-      this.jdField_a_of_type_Bdku.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bdku.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
 class vqq
-  implements urr<vgf, vgg>
+  implements zxa<FeedCloudRead.StGetFeedListRsp>
 {
-  vqq(vqp paramvqp, vps paramvps) {}
+  vqq(vqp paramvqp, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, zzp paramzzp) {}
   
-  public void a(@NonNull vgf paramvgf, @Nullable vgg paramvgg, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    if ((paramErrorMessage.isFail()) || (paramvgg == null))
-    {
-      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
-      return;
+    QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if (this.jdField_a_of_type_Zzp != null) {
+      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedListRsp });
     }
-    this.jdField_a_of_type_Vqp.a.a(paramvgg.jdField_a_of_type_JavaUtilList, paramvgg.jdField_a_of_type_JavaLangString, paramvgg.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvgg.jdField_a_of_type_JavaUtilList), paramvgg.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqq
  * JD-Core Version:    0.7.0.1
  */

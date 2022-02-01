@@ -1,13 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfct
   implements DialogInterface.OnClickListener
 {
-  public bfct(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bfct(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.a);
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).f();
+    }
+  }
 }
 
 

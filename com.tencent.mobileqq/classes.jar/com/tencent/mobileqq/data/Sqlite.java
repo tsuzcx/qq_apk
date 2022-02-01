@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class Sqlite
-  extends awge
+  extends Entity
 {
   public String tbl_name;
   
@@ -14,7 +14,7 @@ public class Sqlite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.Sqlite
  * JD-Core Version:    0.7.0.1
  */

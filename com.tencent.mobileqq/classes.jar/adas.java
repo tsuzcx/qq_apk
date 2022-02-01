@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.RichStatusTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adas
-  implements DialogInterface.OnClickListener
+  implements acxp
 {
-  public adas(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.a.C();
+    return 1009;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.RichStatusTmp localRichStatusTmp = new msg_svc.RichStatusTmp();
+    localRichStatusTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().j(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SameStateRoutingType", 2, "sameState------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localRichStatusTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.rich_status_tmp.set(localRichStatusTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

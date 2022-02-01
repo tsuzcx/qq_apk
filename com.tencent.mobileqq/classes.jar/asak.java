@@ -1,92 +1,97 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import android.util.Log;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class asak
-  extends aryv
 {
-  public asak(Intent paramIntent)
+  public static int a;
+  private static asak jdField_a_of_type_Asak;
+  private Map<Integer, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  
+  public static asak a()
   {
-    super(paramIntent);
+    if (jdField_a_of_type_Asak == null) {}
+    try
+    {
+      if (jdField_a_of_type_Asak == null) {
+        jdField_a_of_type_Asak = new asak();
+      }
+      return jdField_a_of_type_Asak;
+    }
+    finally {}
   }
   
-  public List<RecentUser> a(List<RecentUser> paramList)
+  public View a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))))
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bdeu.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aryl.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
-        localArrayList.add(localRecentUser);
+      Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+      {
+        localObject = (View)((ArrayList)localObject).remove(0);
+        if (QLog.isColorLevel()) {
+          Log.d("EmotionPanelViewPool", "getView from pool : paneyType = " + paramInt);
+        }
+        return localObject;
       }
     }
-    return localArrayList;
+    return null;
   }
   
-  protected void a(Drawable paramDrawable, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      bayu.a((URLDrawable)paramDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
-    }
-    if (paramDrawable == null) {
-      return;
-    }
-    paramDrawable.setBounds(0, 0, (int)(264.0F * this.jdField_a_of_type_Float), (int)(138.0F * this.jdField_a_of_type_Float));
-  }
-  
-  protected void a(bdjz parambdjz)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
+      QLog.d("EmotionPanelViewPool", 2, "destory");
     }
-    a(asbe.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839434), this.jdField_a_of_type_Float), false, 0);
-  }
-  
-  protected void b()
-  {
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_location_string");
-    this.jdField_a_of_type_Bdjz.setMessage(str);
-  }
-  
-  protected boolean c()
-  {
-    boolean bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false);
-    boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromFavorites", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("forward", 2, "ForwardMapOption realForwardTo isFromFavorite=" + bool1 + "isFromFav=" + bool2);
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    if ((bool1) || (bool2))
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0))
     {
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        ArrayList localArrayList = (ArrayList)((Map.Entry)localIterator.next()).getValue();
+        if (localArrayList != null) {
+          localArrayList.clear();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (paramView == null) {}
     for (;;)
     {
-      return true;
-      if (this.f)
+      return;
+      ArrayList localArrayList;
+      if (this.jdField_a_of_type_JavaUtilMap == null)
       {
-        this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
+        this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+        localArrayList = new ArrayList();
+        localArrayList.add(paramView);
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
+        return;
       }
-      else
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
       {
-        super.c();
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if ((localArrayList != null) && (!localArrayList.contains(paramView))) {
+          localArrayList.add(0, paramView);
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelViewPool", "relase view panelType = " + paramInt);
+        return;
+        localArrayList = new ArrayList();
+        localArrayList.add(0, paramView);
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
       }
     }
   }

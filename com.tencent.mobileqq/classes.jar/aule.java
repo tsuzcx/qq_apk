@@ -1,74 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
-public class aule
-  extends aokh<auld>
+class aule
+  extends RecyclerView.OnScrollListener
 {
-  public int a()
-  {
-    return 478;
-  }
+  aule(aulb paramaulb) {}
   
-  @NonNull
-  public auld a(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return new auld();
-  }
-  
-  @Nullable
-  public auld a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfaoko[0].a);
-      }
-      return auld.a(paramArrayOfaoko[0].a);
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      aulb.a(this.a).c();
     }
-    return new auld();
-  }
-  
-  public Class<auld> a()
-  {
-    return auld.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
+    while (!aulb.a(this.a).a()) {
+      return;
     }
-  }
-  
-  public void a(auld paramauld)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramauld);
-    }
-    ((aulf)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramauld);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    aulb.a(this.a).b();
+    aulb.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aule
  * JD-Core Version:    0.7.0.1
  */

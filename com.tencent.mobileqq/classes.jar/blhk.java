@@ -1,30 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlAndQQInterface.WorkState;
 
-public class blhk
-  implements DialogInterface.OnCancelListener
+class blhk
+  extends BroadcastReceiver
 {
-  public blhk(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  blhk(blhj paramblhj) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
-    paramDialogInterface = new File(AEVideoShelfPreviewFragment.a(this.a).getOutputVideoPath());
-    if (paramDialogInterface.exists())
-    {
-      TTPTLogger.i(AEVideoShelfPreviewFragment.b(), "delete temp silent video");
-      paramDialogInterface.delete();
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+      return;
     }
-    AEVideoShelfPreviewFragment.a(this.a, true);
+    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
+    blhj.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
+    blhj.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhk
  * JD-Core Version:    0.7.0.1
  */

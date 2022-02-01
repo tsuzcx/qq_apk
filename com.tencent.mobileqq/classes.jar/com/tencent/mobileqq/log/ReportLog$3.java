@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import atvd;
+import awch;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ReportLog$3
   implements Runnable
 {
-  public ReportLog$3(atvd paramatvd, MobileQQ paramMobileQQ) {}
+  public ReportLog$3(awch paramawch, MobileQQ paramMobileQQ) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class ReportLog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.log.ReportLog.3
  * JD-Core Version:    0.7.0.1
  */

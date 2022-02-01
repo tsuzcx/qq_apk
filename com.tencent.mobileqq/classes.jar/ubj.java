@@ -1,19 +1,24 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+
 public class ubj
 {
-  public static String a(int paramInt)
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
+  
+  public ubj(int paramInt)
   {
-    int i = paramInt / 1000 / 60;
-    paramInt = paramInt / 1000 % 60;
-    if (i < 10) {}
-    for (String str = "0" + i; paramInt < 10; str = String.valueOf(i)) {
-      return String.format("%s:0%s", new Object[] { str, Integer.valueOf(paramInt) });
-    }
-    return String.format("%s:%s", new Object[] { str, Integer.valueOf(paramInt) });
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-class aaul
-  implements URLDrawable.URLDrawableListener
+public abstract interface aaul
 {
-  aaul(aauk paramaauk) {}
+  public abstract long a();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    aauk.a(this.a, paramURLDrawable);
-    aase.b("GdtDrawableLoader", "onLoadCanceled " + aauk.a(this.a));
-    aauk.a(this.a, false);
-  }
+  public abstract View a();
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aauk.a(this.a, paramURLDrawable);
-    aase.d("GdtDrawableLoader", "onLoadFialed " + aauk.a(this.a), paramThrowable);
-    if (!aauk.a(this.a)) {
-      aauk.a(this.a, false);
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    aauk.a(this.a, paramURLDrawable);
-    aase.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + aauk.a(this.a));
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    aauk.a(this.a, paramURLDrawable);
-    aase.b("GdtDrawableLoader", "onLoadSuccessed " + aauk.a(this.a));
-    aauk.a(this.a, true);
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void aq_();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void setHeaderBgColor(int paramInt);
+  
+  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
+  
+  public abstract void setHeaderBgRes(int paramInt);
+  
+  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }
 
 

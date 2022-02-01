@@ -1,58 +1,61 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-
-class bcfl
-  implements TextWatcher
+public class bcfl
 {
-  bcfl(bcfg parambcfg, bcfm parambcfm, bceh parambceh) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  bcfl(String paramString)
   {
-    int i;
-    int k;
-    if (this.jdField_a_of_type_Bcfg.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b() != 0)
-    {
-      int j = this.jdField_a_of_type_Bcfg.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
-      i = this.jdField_a_of_type_Bcfg.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
-      j -= i;
-      k = paramInt3 - paramInt2;
-      if (k > j)
-      {
-        QQToast.a(bcfg.a(this.jdField_a_of_type_Bcfg), "最多可以输入500个字", 1).a();
-        paramInt2 = j + paramInt2;
-        this.jdField_a_of_type_Bcfm.a.removeTextChangedListener(this);
-        CharSequence localCharSequence = paramCharSequence.subSequence(0, paramInt1 + paramInt2);
-        paramCharSequence = paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length());
-        paramCharSequence = localCharSequence.toString() + paramCharSequence.toString();
-        this.jdField_a_of_type_Bcfm.a.setText(paramCharSequence);
-        this.jdField_a_of_type_Bcfm.a.addTextChangedListener(this);
-        this.jdField_a_of_type_Bcfm.a.setSelection(paramInt1 + paramInt2);
-        this.jdField_a_of_type_Bcfg.jdField_a_of_type_Bcev.a(i, i + paramInt2);
-        this.jdField_a_of_type_Bceh.jdField_a_of_type_Int = (paramInt2 + paramInt1);
-        this.jdField_a_of_type_Bceh.b(paramCharSequence);
-      }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+      return -3;
     }
-    for (;;)
-    {
-      QLog.i("xmediaEditor", 1, "onTextChanged, mData.position:" + this.jdField_a_of_type_Bceh.c + ", text:" + this.jdField_a_of_type_Bceh.jdField_a_of_type_JavaLangString + ",Listener:" + toString());
-      return;
-      this.jdField_a_of_type_Bcfg.jdField_a_of_type_Bcev.a(i, i + k);
-      this.jdField_a_of_type_Bceh.jdField_a_of_type_Int = (paramInt1 + k);
-      this.jdField_a_of_type_Bceh.b(paramCharSequence.toString());
-      continue;
-      i = this.jdField_a_of_type_Bcfg.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
-      this.jdField_a_of_type_Bcfg.jdField_a_of_type_Bcev.a(i, i + paramInt3 - paramInt2);
-      this.jdField_a_of_type_Bceh.jdField_a_of_type_Int = (paramInt1 + paramInt3);
-      this.jdField_a_of_type_Bceh.b(paramCharSequence.toString());
+    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
+      return -1;
     }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
+      return -2;
+    }
+    return 0;
+  }
+  
+  int a(char paramChar)
+  {
+    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+      return -3;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
+      return -2;
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+  }
+  
+  String c()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
+  }
+  
+  String d()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
   }
 }
 

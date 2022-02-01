@@ -1,17 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.qq.taf.jce.HexUtil;
 
 public class beci
-  implements DialogInterface.OnDismissListener
+  extends becg
 {
-  public beci(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public byte[] b;
+  public int c;
+  public int d;
+  public int e;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public String toString()
   {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" fromChatType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" toChatType:").append(this.b);
+    localStringBuilder.append(" fromBusiType:").append(this.c);
+    localStringBuilder.append(" toBusiType:").append(this.d);
+    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(" format:").append(this.j);
+    localStringBuilder.append(" str_file_name:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" uint64_file_size:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" fileTime:").append(this.k);
+    localStringBuilder.append(" uuid:").append(this.f);
+    localStringBuilder.append(" fromUin:").append(this.g);
+    return localStringBuilder.toString();
   }
 }
 

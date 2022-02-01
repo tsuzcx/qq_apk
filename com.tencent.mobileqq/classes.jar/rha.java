@@ -1,124 +1,94 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsResourceLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfoUser;
 
 public class rha
+  implements Cloneable
 {
-  private static int jdField_a_of_type_Int;
-  private static LayoutInflateProcessor jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c = 1;
   
-  public rha(Context paramContext)
+  public rha(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  
+  private void a(articlesummary.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    jdField_a_of_type_Int += 1;
-    a(paramContext);
+    int j = 0;
+    long l;
+    int i;
+    label63:
+    String str;
+    if (paramSocializeFeedsInfo.msg_master_uin.has())
+    {
+      l = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint64_uin);
+      this.jdField_a_of_type_Long = l;
+      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
+        break label190;
+      }
+      i = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).enum_uin_type);
+      this.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramSocializeFeedsInfo.msg_master_uin.has()) {
+        i = pvd.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint32_star_style);
+      }
+      this.b = i;
+      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
+        break label202;
+      }
+      if (!paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.has()) {
+        break label195;
+      }
+      str = paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.get().toStringUtf8();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangString = str;
+      if ((paramSocializeFeedsInfo.msg_master_uin.has()) && (paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.has())) {
+        this.c = paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.get();
+      }
+      return;
+      l = 0L;
+      break;
+      label190:
+      i = 0;
+      break label63;
+      label195:
+      str = "";
+      continue;
+      label202:
+      str = "";
+    }
   }
   
-  public static Drawable a(Context paramContext, int paramInt)
+  public rha a()
   {
-    if (jdField_a_of_type_JavaUtilHashMap == null) {}
-    do
+    try
     {
-      return null;
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      }
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(paramInt);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
-        return paramContext;
-      }
-      catch (OutOfMemoryError paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoFeedsResourceLoader", 2, "innerGetDrawableFromCache() OutOfMemoryError e=" + paramContext.getMessage());
+      rha localrha = (rha)super.clone();
+      return localrha;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
     return null;
   }
   
-  public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
+  public boolean a()
   {
-    View localView = null;
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      localView = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(paramInt, paramBoolean, paramLayoutParams);
-    }
-    while (!paramBoolean) {
-      return localView;
-    }
-    localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(paramInt, null, false);
-    localView.setLayoutParams(paramLayoutParams);
-    return localView;
+    return this.b == 1;
   }
   
-  public static LayoutInflateProcessor a()
+  public String toString()
   {
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  }
-  
-  private rqd a()
-  {
-    return new rqd(2131560160, null, new rhb(this));
-  }
-  
-  private rqd a(int paramInt)
-  {
-    return new rqd(2131560164, paramInt, null, new rhc(this));
-  }
-  
-  private void a(Context paramContext)
-  {
-    ThreadManager.excute(new VideoFeedsResourceLoader.1(this, new WeakReference(paramContext)), 16, null, true);
-  }
-  
-  public void a()
-  {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a();
-    }
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_Int -= 1;
-    if (jdField_a_of_type_Int <= 0)
-    {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = null;
-      jdField_a_of_type_JavaUtilHashMap = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (rqd localrqd1 = new rqd(2131560187, null, null);; localrqd1 = null)
-    {
-      rqd localrqd2 = new rqd(2131559936, null, null);
-      rqd localrqd3 = new rqd(2131560102, null, null);
-      rqd localrqd4 = a(1);
-      rqd localrqd5 = a();
-      rqd localrqd6 = a(2);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(new rqd[] { localrqd1, localrqd2, localrqd3, localrqd4, localrqd5, localrqd6 });
-      return;
-    }
+    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rha
  * JD-Core Version:    0.7.0.1
  */

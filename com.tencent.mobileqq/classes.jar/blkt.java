@@ -1,21 +1,84 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.ArrayList;
 
 public class blkt
-  implements View.OnClickListener
+  extends QIPCModule
 {
-  public blkt(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  private static volatile blkt a;
   
-  public void onClick(View paramView)
+  private blkt(String paramString)
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    if (AEEditorAILoadingView.a(this.a) != null) {
-      AEEditorAILoadingView.a(this.a).a();
+    super(paramString);
+  }
+  
+  public static blkt a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new blkt("QfavMainQIPCModule");
+      }
+      return a;
     }
-    ((ViewGroup)this.a.getParent()).removeAllViews();
+    finally {}
+  }
+  
+  QQAppInterface a()
+  {
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramInt = 0;
+    Bundle localBundle = new Bundle();
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return EIPCResult.createResult(100, localBundle);
+    }
+    long l;
+    if ("getfavList".equals(paramString))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramString = paramBundle.getParcelableArrayList("favfile_list");
+      if (paramString != null) {
+        paramInt = paramString.size();
+      }
+      l = paramBundle.getLong("reqTimestamp");
+      localQQAppInterface.a().a().a(l, paramString, paramBundle);
+      QLog.d("QfavMainQIPCModule", 1, "onCall ACTION_GET_FAVLIST 收到" + paramInt + "条收藏");
+    }
+    for (;;)
+    {
+      return EIPCResult.createSuccessResult(localBundle);
+      if ("refreshFavList".equals(paramString))
+      {
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        boolean bool = paramBundle.getBoolean("refresh_list_succ", false);
+        paramBundle.putString("delete_favids", paramBundle.getString("refresh_deleted_list"));
+        localQQAppInterface.a().a().a(bool, paramBundle);
+        QLog.d("QfavMainQIPCModule", 1, "onCall ACTION_REFRESH_FAVLIST bSucc:" + bool);
+      }
+      else if ("ondownloadThumb".equals(paramString))
+      {
+        l = paramBundle.getLong("download_fav_id");
+        paramString = paramBundle.getString("fav_thumb_path");
+        paramInt = paramBundle.getInt("thumb_format");
+        localQQAppInterface.a().a().a(l, paramString, paramInt);
+      }
+      else if ("ondownloadFile".equals(paramString))
+      {
+        l = paramBundle.getLong("download_fav_id");
+        paramString = paramBundle.getString("fav_save_path");
+        localQQAppInterface.a().a().a(l, paramString);
+      }
+    }
   }
 }
 

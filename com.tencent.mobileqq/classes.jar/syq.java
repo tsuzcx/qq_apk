@@ -1,292 +1,181 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.ClipboardManager;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.util.ReadInJoyShareHelper.3;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class syq
-  implements Handler.Callback, AdapterView.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/PtsItemViewEventListener;", "Lcom/tencent/pts/core/lite/DefaultPTSLiteEventListener;", "()V", "addR5CommonParams", "", "r5Builder", "Lcom/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$ReportR5Builder;", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "onExposureTriggered", "id", "", "dataSet", "Ljava/util/HashMap;", "view", "Landroid/view/View;", "onSwiperDragTriggered", "onSwiperItemExposureTriggered", "onTapEventTriggered", "reportWithCommonParams", "reportName", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class syq
+  extends DefaultPTSLiteEventListener
 {
-  private int jdField_a_of_type_Int = -1;
-  public Activity a;
-  private bhtd jdField_a_of_type_Bhtd;
-  private biai jdField_a_of_type_Biai = new sys(this);
-  public ShareActionSheetBuilder a;
-  private rpq jdField_a_of_type_Rpq;
-  private swc jdField_a_of_type_Swc;
-  private syt jdField_a_of_type_Syt;
-  private syu jdField_a_of_type_Syu;
-  protected syv a;
-  private tac jdField_a_of_type_Tac;
+  public static final syr a = new syr(null);
   
-  public syq() {}
-  
-  public syq(Activity paramActivity, AppInterface paramAppInterface, syv paramsyv, syt paramsyt)
+  private final void a(String paramString, phi paramphi)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Syv = paramsyv;
-    if (this.jdField_a_of_type_Syv == null) {
-      this.jdField_a_of_type_Syv = new syv();
-    }
-    this.jdField_a_of_type_Syt = paramsyt;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new stb(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    this.jdField_a_of_type_Tac = new tac(paramAppInterface);
-    this.jdField_a_of_type_Bhtd = new bhtd(this);
-  }
-  
-  public static List<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList(8);
-    localArrayList.add(Integer.valueOf(1));
-    localArrayList.add(Integer.valueOf(2));
-    localArrayList.add(Integer.valueOf(3));
-    localArrayList.add(Integer.valueOf(4));
-    localArrayList.add(Integer.valueOf(5));
-    localArrayList.add(Integer.valueOf(6));
-    localArrayList.add(Integer.valueOf(7));
-    localArrayList.add(Integer.valueOf(8));
-    return localArrayList;
-  }
-  
-  private boolean a(ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, int paramInt, syy paramsyy)
-  {
-    if (paramsyy != null)
+    String str1 = null;
+    Object localObject1 = BaseActivity.sTopActivity;
+    QQAppInterface localQQAppInterface;
+    String str2;
+    Object localObject2;
+    label54:
+    label66:
+    Object localObject3;
+    if ((localObject1 instanceof FastWebActivity))
     {
-      paramsyy = paramsyy.a(Integer.valueOf(paramInt));
-      if (paramsyy != null)
-      {
-        paramArrayList.add(paramsyy);
-        return true;
+      localObject1 = ((FastWebActivity)localObject1).a;
+      a(paramphi, (BaseArticleInfo)localObject1);
+      localQQAppInterface = pha.a();
+      str2 = pha.a();
+      if (localObject1 == null) {
+        break label142;
       }
-    }
-    return false;
-  }
-  
-  public ShareActionSheetBuilder a(List<Integer>[] paramArrayOfList)
-  {
-    a(paramArrayOfList, false);
-    return this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  }
-  
-  public ShareActionSheetBuilder a(List<Integer>[] paramArrayOfList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(paramArrayOfList, this.jdField_a_of_type_Syv));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder instanceof stb)) {
-      ((stb)this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder).a(paramBoolean);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
-    return this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Swc == null) {
-      this.jdField_a_of_type_Swc = new swc(this.jdField_a_of_type_AndroidAppActivity, new syr(this));
-    }
-    this.jdField_a_of_type_Swc.a(paramString);
-  }
-  
-  public void a(syt paramsyt)
-  {
-    this.jdField_a_of_type_Syt = paramsyt;
-  }
-  
-  public void a(syu paramsyu)
-  {
-    this.jdField_a_of_type_Syu = paramsyu;
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = ((Integer)bkbq.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(2))).intValue();
-    }
-    this.jdField_a_of_type_Rpq = new rps(this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater()).a(this.jdField_a_of_type_Biai).a(this.jdField_a_of_type_Int).a().a(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView());
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Rpq != null) && (this.jdField_a_of_type_Rpq.a()))
-    {
-      this.jdField_a_of_type_Rpq.b();
-      return true;
-    }
-    return false;
-  }
-  
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a(List<Integer>[] paramArrayOfList, syy paramsyy)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    int j = paramArrayOfList.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = paramArrayOfList[i];
-      ArrayList localArrayList2 = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        a(localArrayList2, ((Integer)((Iterator)localObject).next()).intValue(), paramsyy);
+      localObject2 = Long.valueOf(((ArticleInfo)localObject1).mArticleID);
+      localObject2 = String.valueOf(localObject2);
+      if (localObject2 == null) {
+        break label148;
       }
-      localArrayList1.add(localArrayList2);
-      i += 1;
-    }
-    return (List[])localArrayList1.toArray(new ArrayList[localArrayList1.size()]);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Tac != null) {
-      this.jdField_a_of_type_Tac.a();
-    }
-    if (this.jdField_a_of_type_Rpq != null) {
-      this.jdField_a_of_type_Rpq.a();
-    }
-    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
-    a();
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.putExtra("normal", true);
-    paramString.putExtra("big_brother_source_key", ors.f(0));
-    try
-    {
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-      return;
-    }
-    catch (ActivityNotFoundException paramString)
-    {
-      ybk.a(1, 2131695733);
-    }
-  }
-  
-  public void c()
-  {
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    localView.buildDrawingCache();
-    Bitmap localBitmap1 = localView.getDrawingCache();
-    if (localBitmap1 != null)
-    {
-      Bitmap localBitmap2 = sdp.a(this.jdField_a_of_type_AndroidAppActivity.getWindow(), localBitmap1);
-      if (localBitmap2 != null)
-      {
-        QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695751, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
-        ThreadManager.executeOnFileThread(new ReadInJoyShareHelper.3(this, localBitmap2));
+      if (localObject1 == null) {
+        break label155;
       }
-      localBitmap1.recycle();
-    }
-    localView.destroyDrawingCache();
-  }
-  
-  public void c(String paramString)
-  {
-    ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString);
-    ybk.a(2, 2131691363);
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_a_of_type_Tac.a(paramString);
-  }
-  
-  public void e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      ybk.a(1, 2131695754);
-      return;
-    }
-    paramString = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+      localObject3 = Integer.valueOf(((ArticleInfo)localObject1).mStrategyId);
+      label79:
+      localObject3 = String.valueOf(localObject3);
+      if (localObject3 == null) {
+        break label161;
+      }
+      label91:
+      if (localObject1 != null) {
+        str1 = ((ArticleInfo)localObject1).innerUniqueID;
+      }
+      localObject1 = String.valueOf(str1);
+      if (localObject1 == null) {
+        break label168;
+      }
     }
     for (;;)
     {
-      return true;
-      if (paramMessage.obj != null) {
-        e((String)paramMessage.obj);
+      oat.a(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", str2, paramString, paramString, 0, 0, (String)localObject2, (String)localObject3, (String)localObject1, paramphi.a(), false);
+      return;
+      localObject1 = null;
+      break;
+      label142:
+      localObject2 = null;
+      break label54;
+      label148:
+      localObject2 = "";
+      break label66;
+      label155:
+      localObject3 = null;
+      break label79;
+      label161:
+      localObject3 = "";
+      break label91;
+      label168:
+      localObject1 = "";
+    }
+  }
+  
+  private final void a(phi paramphi, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l;
+    if (paramBaseArticleInfo != null)
+    {
+      l = paramBaseArticleInfo.mAlgorithmID;
+      paramphi = paramphi.a(l).e().f().l();
+      if (paramBaseArticleInfo == null) {
+        break label49;
+      }
+    }
+    label49:
+    for (int i = (int)paramBaseArticleInfo.mChannelID;; i = 0)
+    {
+      paramphi.a(i);
+      return;
+      l = 0L;
+      break;
+    }
+  }
+  
+  public void onExposureTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView)
+  {
+    if (paramHashMap == null) {
+      QLog.d("PtsItemViewEventListener", 1, "[onExposureTriggered] dataSet is null");
+    }
+    do
+    {
+      return;
+      paramView = (String)paramHashMap.get("exposureReportName");
+    } while (paramView == null);
+    try
+    {
+      paramString = new phi(new JSONObject((Map)paramHashMap));
+      a(paramView, paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString = new phi();
       }
     }
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onSwiperDragTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView) {}
+  
+  public void onSwiperItemExposureTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView) {}
+  
+  public void onTapEventTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView)
   {
-    paramAdapterView = paramView.getTag();
-    boolean bool;
-    if (QLog.isColorLevel())
+    String str;
+    if (paramHashMap != null)
     {
-      paramView = new StringBuilder().append("onItemClick, tag = ");
-      if (paramAdapterView != null)
+      str = (String)paramHashMap.get("jumpUrl");
+      if (str != null)
       {
-        bool = true;
-        QLog.d("ReadInJoyShareHelper", 2, bool);
+        Intrinsics.checkExpressionValueIsNotNull(str, "dataSet?.get(PTSConstant…A_SET_JUMP_URL) ?: return");
+        if (paramView == null) {
+          break label82;
+        }
+        paramString = paramView.getContext();
       }
     }
-    else
+    for (;;)
     {
-      if (paramAdapterView != null) {
-        break label59;
+      pha.a(paramString, str);
+      paramView = (String)paramHashMap.get("clickReportName");
+      if (paramView != null) {}
+      try
+      {
+        paramString = new phi(new JSONObject((Map)paramHashMap));
+        a(paramView, paramString);
+        return;
+        label82:
+        paramString = null;
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          paramString = new phi();
+        }
       }
     }
-    label59:
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-        paramAdapterView = (syw)((bdmy)paramAdapterView).a;
-        paramInt = paramAdapterView.action;
-      } while (this.jdField_a_of_type_Syt == null);
-      if (paramAdapterView.a)
-      {
-        this.jdField_a_of_type_Syt.a(Integer.valueOf(paramInt));
-        return;
-      }
-      paramAdapterView = this.jdField_a_of_type_Syv.a(paramInt);
-    } while (paramAdapterView == null);
-    this.jdField_a_of_type_Syt.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     syq
  * JD-Core Version:    0.7.0.1
  */

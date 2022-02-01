@@ -1,46 +1,37 @@
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aasx
-  extends QzoneExternalRequest
+  extends bfss
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public aasx(TroopGiftPanel paramTroopGiftPanel, aasi paramaasi) {}
   
-  public aasx(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-    long l = Long.parseLong(paramString1);
-    super.setHostUin(l);
-    super.setLoginUserId(l);
-    this.needCompress = false;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
-  {
-    JceStruct localJceStruct = null;
-    if (paramArrayOfByte != null) {
-      localJceStruct = decode(paramArrayOfByte, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    return localJceStruct;
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    {
+      anqt.a("gift_store", "fail_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
+    }
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_fail", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aasi.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public String getCmdString()
+  public void b(int paramInt)
   {
-    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult productId = " + paramInt);
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    {
+      anqt.a("gift_store", "suc_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
+    }
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_suc", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aasi.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

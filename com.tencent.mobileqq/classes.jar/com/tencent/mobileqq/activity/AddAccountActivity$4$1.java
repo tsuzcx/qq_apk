@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acbt;
+import adjb;
 import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class AddAccountActivity$4$1
   implements Runnable
 {
-  public AddAccountActivity$4$1(acbt paramacbt) {}
+  public AddAccountActivity$4$1(adjb paramadjb) {}
   
   public void run()
   {

@@ -1,55 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class anrl
-  implements View.OnClickListener
+final class anrl
+  implements DialogInterface.OnClickListener
 {
-  anrl(anrk paramanrk, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  anrl(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
-      }
+    anrj.a("1");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    do
-    {
-      do
-      {
-        return;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
-          return;
-        }
-      } while (i != 2);
-      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-      return;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-        return;
-      }
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-        return;
-      }
-    } while (i != 2);
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-    return;
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrl
  * JD-Core Version:    0.7.0.1
  */

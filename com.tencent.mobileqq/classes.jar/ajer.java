@@ -1,28 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public class ajer
+public abstract interface ajer
 {
-  public static void a(String paramString)
-  {
-    try
-    {
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if (localClassLoader == null) {
-        return;
-      }
-      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt);
+  
+  public abstract void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajer
  * JD-Core Version:    0.7.0.1
  */

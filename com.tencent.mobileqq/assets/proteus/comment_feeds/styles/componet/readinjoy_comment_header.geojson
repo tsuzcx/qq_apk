@@ -1,3 +1,4 @@
+
 {
     "view_type": "container",
     "layout_type": "layout_relative",
@@ -19,15 +20,18 @@
             "view_id": "id_comment_header_component",
             "margin_left": "13",
             "height": {
-                "type": "wrap_content"
+                "type": "absolutely",
+                "value": "49"
             },
             "width": {
-                "type": "wrap_content"
+                "type": "absolutely",
+                "value": "49"
             },
             "subviews": [
                 {
                     "view_type": "UIImageView",
                     "view_id": "id_comment_head_borders",
+                    "align_parent_center": "YES",
                     "height": {
                         "type": "absolutely",
                         "value": "43"
@@ -44,10 +48,8 @@
                     "view_type": "PTSAvatarView",
                     "view_id": "id_comment_avator",
                     "default_visible": "YES",
-                    "align_parent_left": "YES",
+                    "align_parent_center": "YES",
                     "event_type": "cmd_avatar_click",
-                    "margin_left": "3",
-                    "margin_top": "3",
                     "height": {
                         "type": "absolutely",
                         "value": "37"
@@ -62,10 +64,28 @@
                     }
                 },
                 {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_comment_head_pendant",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "49"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "49"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "$rij_comment_avatar_pendant",
+                            "-1"
+                        ]
+                    }
+                },
+                {
                     "view_type": "UIImageView",
                     "view_id": "id_comment_head_v_icon",
-                    "margin_left": "29",
-                    "margin_top": "29",
+                    "margin_left": "32",
+                    "margin_top": "32",
                     "height": {
                         "type": "absolutely",
                         "value": "14"
@@ -136,7 +156,6 @@
                         "type": "wrap_content"
                     },
                     "attributes": {
-
                         "setTitle:": "$nickname",
                         "setTitleColors:forStates:": [
                             [
@@ -154,25 +173,47 @@
                 {
                     "view_type": "UILabel",
                     "view_id": "id_comment_header_flag_one",
-                    "margin_left": "4",
+                    "margin_left": "8",
                     "align_parent_center_vertical": "YES",
                     "height": {
-                        "type": "relative",
-                        "value": "14"
+                        "type": "absolutely",
+                        "value": "15"
                     },
                     "width": {
-                        "type": "relative",
-                        "value": "25"
+                        "type": "absolutely",
+                        "value": "32"
                     },
                     "attributes": {
                         "setTextAlignmentString:": "1",
                         "setText:": "$author_header_flag_one",
-                        "setBorderColorString:": "#376099",
-                        "setBorderWidthString:": "1",
-                        "setCornerRadiusString:": "2",
-                        "setTextColorString:": "#376099",
-                        "setFontSizeString:": "9",
-                        "setNumberOfLinesString:": "1"
+                        "setCornerRadiusString:": "7.5",
+                        "setTextColorString:": "#006BFF",
+                        "setFontSizeString:": "10",
+                        "setNumberOfLinesString:": "1",
+                        "setBackgroundColorString:":"#1A006BFF"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_comment_header_follow_flag",
+                    "margin_left": "8",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "15"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "51"
+                    },
+                    "attributes": {
+                        "setTextAlignmentString:": "1",
+                        "setText:": "$author_header_follow_flag",
+                        "setCornerRadiusString:": "7.5",
+                        "setTextColorString:": "#4E525E",
+                        "setFontSizeString:": "10",
+                        "setNumberOfLinesString:": "1",
+                        "setBackgroundColorString:":"#F5F5F5"
                     }
                 },
                 {
@@ -248,21 +289,7 @@
                 }
             },
             {
-                "view_type": "QQRIJCommentEmotioinLabel",
-                "view_id": "id_first_comment_view",
-                "event_type":"cmd_comment_content_click",
-                "margin_top": "6",
-                "attributes": {
-                    "setCommentModel:": "$commentModel",
-                    "setFontSizeString:": "16"
-                },
-                "height": {
-                    "type": "wrap_content"
-                },
-                "width": {
-                    "type": "relative",
-                    "value": "294"
-                }
+                "$includeComponet": "componet/readinjoy_comment_richtext.geojson"
             }
             ]
         }

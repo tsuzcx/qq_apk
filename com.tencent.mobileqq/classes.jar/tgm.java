@@ -1,43 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import android.graphics.RectF;
 
 public class tgm
-  implements IMiniMsgUnreadCallback
 {
-  public void destroy()
+  public static RectF a(float[] paramArrayOfFloat)
   {
-    tlo.a("AIOLog", 1, "MiniMsgUser destroy");
+    RectF localRectF = new RectF((1.0F / 1.0F), (1.0F / 1.0F), (1.0F / -1.0F), (1.0F / -1.0F));
+    int i = 1;
+    if (i < paramArrayOfFloat.length)
+    {
+      float f2 = Math.round(paramArrayOfFloat[(i - 1)] * 10.0F) / 10.0F;
+      float f1 = Math.round(paramArrayOfFloat[i] * 10.0F) / 10.0F;
+      float f3;
+      if (f2 < localRectF.left)
+      {
+        f3 = f2;
+        label71:
+        localRectF.left = f3;
+        if (f1 >= localRectF.top) {
+          break label145;
+        }
+        f3 = f1;
+        label89:
+        localRectF.top = f3;
+        if (f2 <= localRectF.right) {
+          break label154;
+        }
+        label105:
+        localRectF.right = f2;
+        if (f1 <= localRectF.bottom) {
+          break label163;
+        }
+      }
+      for (;;)
+      {
+        localRectF.bottom = f1;
+        i += 2;
+        break;
+        f3 = localRectF.left;
+        break label71;
+        label145:
+        f3 = localRectF.top;
+        break label89;
+        label154:
+        f2 = localRectF.right;
+        break label105;
+        label163:
+        f1 = localRectF.bottom;
+      }
+    }
+    localRectF.sort();
+    return localRectF;
   }
   
-  public void hide()
+  public static float[] a(RectF paramRectF)
   {
-    tlo.a("AIOLog", 1, "MiniMsgUser hide");
+    return new float[] { paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.top, paramRectF.right, paramRectF.bottom, paramRectF.left, paramRectF.bottom };
   }
   
-  public void hideUnread()
+  public static float[] a(float[] paramArrayOfFloat)
   {
-    tlo.a("AIOLog", 1, "MiniMsgUser hideUnread");
+    return new float[] { (float)Math.sqrt(Math.pow(paramArrayOfFloat[0] - paramArrayOfFloat[2], 2.0D) + Math.pow(paramArrayOfFloat[1] - paramArrayOfFloat[3], 2.0D)), (float)Math.sqrt(Math.pow(paramArrayOfFloat[2] - paramArrayOfFloat[4], 2.0D) + Math.pow(paramArrayOfFloat[3] - paramArrayOfFloat[5], 2.0D)) };
   }
   
-  public boolean show(int paramInt)
+  public static float[] b(RectF paramRectF)
   {
-    tlo.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    tlo.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    tlo.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+    return new float[] { paramRectF.centerX(), paramRectF.centerY() };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgm
  * JD-Core Version:    0.7.0.1
  */

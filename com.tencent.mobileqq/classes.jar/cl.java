@@ -1,49 +1,36 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.1;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.2;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.3;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.4;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.5;
-import com.dataline.activities.LiteMutiPicViewerActivity.2.6;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
 public class cl
-  extends alqv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cl(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  public cl(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  protected void a(long paramLong)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.6(this));
-  }
-  
-  protected void a(long paramLong, float paramFloat)
-  {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.5(this));
-  }
-  
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.4(this));
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.2(this));
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.3(this));
+    boolean bool;
+    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
+    {
+      Switch localSwitch = LiteAdvanceActivity.a(this.a);
+      if (!paramBoolean)
+      {
+        bool = true;
+        localSwitch.setChecked(bool);
+        QQToast.a(this.a, 1, anni.a(2131704989), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      LiteAdvanceActivity.b(this.a, paramBoolean);
+    }
   }
 }
 

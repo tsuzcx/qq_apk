@@ -10,9 +10,9 @@ class ConfessPlugin$4
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessPlugin", 4, "mProcessShareRunable mLastShareData:" + this.this$0.jdField_a_of_type_OrgJsonJSONObject + " mHeaderLoader:" + this.this$0.jdField_a_of_type_Ansn);
+      QLog.i("ConfessPlugin", 4, "mProcessShareRunable mLastShareData:" + this.this$0.jdField_a_of_type_OrgJsonJSONObject + " mHeaderLoader:" + this.this$0.jdField_a_of_type_Apss);
     }
-    if ((this.this$0.jdField_a_of_type_OrgJsonJSONObject == null) || (this.this$0.jdField_a_of_type_Ansn == null)) {
+    if ((this.this$0.jdField_a_of_type_OrgJsonJSONObject == null) || (this.this$0.jdField_a_of_type_Apss == null)) {
       return;
     }
     ConfessPlugin.a(this.this$0, this.this$0.jdField_a_of_type_OrgJsonJSONObject);
@@ -21,7 +21,7 @@ class ConfessPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.4
  * JD-Core Version:    0.7.0.1
  */

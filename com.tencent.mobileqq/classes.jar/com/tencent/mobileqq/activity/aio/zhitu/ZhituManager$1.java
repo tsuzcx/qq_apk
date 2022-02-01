@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahbf;
+import ains;
 import android.os.Looper;
 
 public class ZhituManager$1
   implements Runnable
 {
-  public ZhituManager$1(ahbf paramahbf) {}
+  public ZhituManager$1(ains paramains) {}
   
   public void run()
   {
-    ahbf.a(this.this$0, Looper.myQueue());
+    ains.a(this.this$0, Looper.myQueue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.1
  * JD-Core Version:    0.7.0.1
  */

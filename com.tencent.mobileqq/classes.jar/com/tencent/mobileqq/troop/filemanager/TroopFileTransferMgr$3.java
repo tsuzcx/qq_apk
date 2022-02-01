@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bbvc;
+import bevn;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import java.util.UUID;
 public class TroopFileTransferMgr$3
   implements Runnable
 {
-  public TroopFileTransferMgr$3(bbvc parambbvc, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
+  public TroopFileTransferMgr$3(bevn parambevn, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class TroopFileTransferMgr$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.3
  * JD-Core Version:    0.7.0.1
  */

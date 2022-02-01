@@ -1,43 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class sfs
-  implements ComplementFileStringLoader
+class sfs
+  implements ses
 {
-  private sfz a;
+  sfs(sfq paramsfq) {}
   
-  public sfs(sfz paramsfz)
+  public List<ruh> a(List<VideoInfo> paramList)
   {
-    this.a = paramsfz;
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    try
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = rup.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(snh.a((BaseArticleInfo)localObject, true));
+          }
+        }
       }
-      return null;
     }
-    String str = sgi.a(localIOException);
-    return str;
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfs
  * JD-Core Version:    0.7.0.1
  */

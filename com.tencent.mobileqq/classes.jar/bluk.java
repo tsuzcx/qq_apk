@@ -1,31 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.QzonePluginProxyActivity.4.1;
 
 public class bluk
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public bluk(HummingActivity paramHummingActivity) {}
+  public bluk(QzonePluginProxyActivity.4.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (blud.b()) {
-      return;
+    if (this.a.this$0.a != null) {
+      this.a.this$0.a.onDismiss(paramDialogInterface);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("HUM_HummingActivity", 2, "onClick: play mHumMusicItemInfo = " + HummingActivity.a(this.a));
-    }
-    if (HummingActivity.a(this.a).b(HummingActivity.a(this.a)))
-    {
-      paramView = new Intent();
-      paramView.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-      return;
-    }
-    HummingActivity.a(this.a).a(HummingActivity.a(this.a), this.a.a);
   }
 }
 

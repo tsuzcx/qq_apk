@@ -6,7 +6,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import androidx.annotation.Nullable;
 
 public class RoundRectLinearLayout
   extends LinearLayout
@@ -26,6 +28,14 @@ public class RoundRectLinearLayout
   public RoundRectLinearLayout(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+  }
+  
+  public RoundRectLinearLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -116,7 +126,7 @@ public class RoundRectLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.RoundRectLinearLayout
  * JD-Core Version:    0.7.0.1
  */

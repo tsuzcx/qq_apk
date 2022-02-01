@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverConfig;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apfh
-  implements Parcelable.Creator<PrecoverConfig>
+public class apfh
+  implements MessageQueue.IdleHandler
 {
-  public PrecoverConfig a(Parcel paramParcel)
-  {
-    return new PrecoverConfig(paramParcel);
-  }
+  public apfh(ARScanEntryView paramARScanEntryView) {}
   
-  public PrecoverConfig[] a(int paramInt)
+  public boolean queueIdle()
   {
-    return new PrecoverConfig[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+    }
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
+    }
+    return false;
   }
 }
 

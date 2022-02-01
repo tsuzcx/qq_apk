@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Intent;
-import bkja;
+import bmxp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 class AppJsPlugin$AppDownloadManager$QueryDownloadInfoListener
-  implements bkja
+  implements bmxp
 {
   private String mAppid;
   private AppJsPlugin.IWaldlCallback mCallback;
@@ -95,7 +95,7 @@ class AppJsPlugin$AppDownloadManager$QueryDownloadInfoListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppJsPlugin.AppDownloadManager.QueryDownloadInfoListener
  * JD-Core Version:    0.7.0.1
  */

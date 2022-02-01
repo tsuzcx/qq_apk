@@ -1,63 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeha
-  extends akit
+class aeha
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TroopHonorView a;
-  public TroopMemberListSlideItem a;
-  public boolean a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public View f;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
+  aeha(aegy paramaegy) {}
   
-  public aeha(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378793));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378845));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131378442));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376827);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365069);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131365070);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368796));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378883));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378884));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131378980);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368836));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378651));
-    this.g = ((TextView)paramView.findViewById(2131363618));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375833);
-    this.h = ((TextView)paramView.findViewById(2131379323));
-    this.i = ((TextView)paramView.findViewById(2131362823));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364254));
-    this.j = ((TextView)paramView.findViewById(2131378823));
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362096);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView = ((TroopHonorView)paramView.findViewById(2131378394));
-    if (paramBoolean) {
-      this.k = ((TextView)paramView.findViewById(2131375634));
-    }
-    this.jdField_a_of_type_Boolean = false;
+    paramDialogInterface.dismiss();
   }
 }
 

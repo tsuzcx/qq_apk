@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
 
 public class bakv
-  implements Comparator<PadInfo>
 {
-  public bakv(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public ResourceGrabView a;
   
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  public static bakv a()
   {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    return bakx.a();
   }
 }
 

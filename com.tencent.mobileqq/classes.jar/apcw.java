@@ -1,21 +1,23 @@
-import android.graphics.Canvas;
-import android.view.View.OnTouchListener;
-
-public abstract interface apcw
+public class apcw
 {
-  public abstract float a();
+  public int a()
+  {
+    return 0;
+  }
   
-  public abstract Canvas a();
+  public void a() {}
   
-  public abstract void a();
+  public void a(apcx paramapcx) {}
   
-  public abstract void a(Canvas paramCanvas);
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
   
-  public abstract void a(View.OnTouchListener paramOnTouchListener);
-  
-  public abstract void a(apcx paramapcx);
-  
-  public abstract void b();
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
+  }
 }
 
 

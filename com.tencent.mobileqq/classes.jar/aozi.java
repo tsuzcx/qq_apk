@@ -1,75 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import mqq.app.QQPermissionCallback;
 
-public class aozi
-  extends aokh<aozh>
+class aozi
+  implements QQPermissionCallback
 {
-  public int a()
-  {
-    return 424;
-  }
+  aozi(aozd paramaozd) {}
   
-  @NonNull
-  public aozh a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new aozh();
-  }
-  
-  @Nullable
-  public aozh a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      paramArrayOfaoko = paramArrayOfaoko[0].a;
-      QLog.i("SafeModeProcessor", 1, "onParsed: invoked.  content: " + paramArrayOfaoko);
-      paramArrayOfaoko = aozh.a(paramArrayOfaoko);
-      if (paramArrayOfaoko != null)
-      {
-        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash_config", 4).edit().putBoolean("key_test_crash_switch", paramArrayOfaoko.a).apply();
-        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash", 0).edit().putBoolean("crash", paramArrayOfaoko.a).commit();
-      }
-      return paramArrayOfaoko;
+    paramArrayOfString = new aozl();
+    paramArrayOfString.a = 2;
+    apad.a(this.a.a.recognitions, aozd.a(this.a), paramArrayOfString);
+    if (aozd.a(this.a) != null) {
+      aozd.a(this.a).a(0, aozd.a(this.a));
     }
-    return null;
+    aozd.a(this.a, null);
   }
   
-  public Class<aozh> a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return aozh.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aozh paramaozh) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.a.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.mini.servlet;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -14,6 +16,7 @@ public class MiniAppUseUserAppServlet
 {
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_EXT = "key_ext";
+  public static final String KEY_RECOMMEND = "key_recommend";
   public static final String KEY_REFER = "key_refer";
   public static final String KEY_SOURCE = "key_source";
   public static final String KEY_VERSION_TYPE = "key_version_type";
@@ -32,6 +35,9 @@ public class MiniAppUseUserAppServlet
     if (localStUseUserAppRsp.extInfo != null)
     {
       paramBundle.putByteArray("key_ext", localStUseUserAppRsp.extInfo.toByteArray());
+      if ((!localStUseUserAppRsp.recommendModule.isEmpty()) && (localStUseUserAppRsp.recommendModule.get(0) != null)) {
+        paramBundle.putByteArray("key_recommend", ((INTERFACE.StModuleInfo)localStUseUserAppRsp.recommendModule.get(0)).toByteArray());
+      }
       notifyObserver(paramIntent, 1014, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -60,7 +66,7 @@ public class MiniAppUseUserAppServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.UseUserApp");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppSetUserAppTopServlet", 2, "onSend. intent: " + paramIntent.toString());
@@ -82,7 +88,7 @@ public class MiniAppUseUserAppServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppUseUserAppServlet
  * JD-Core Version:    0.7.0.1
  */

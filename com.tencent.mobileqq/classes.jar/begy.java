@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.widget.AdapterView;
 
 public class begy
-  implements ThreadExcutor.IThreadListener
+  implements bkij
 {
-  public begy(WebViewPlugin paramWebViewPlugin) {}
+  public begy(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.onPostPluginAsyncTask();
+    this.a.onBackPressed();
   }
-  
-  public void onPreRun() {}
 }
 
 

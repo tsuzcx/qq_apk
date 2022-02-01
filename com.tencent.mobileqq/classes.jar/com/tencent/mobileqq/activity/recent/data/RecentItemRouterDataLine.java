@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abti;
-import alud;
+import acwh;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
-import ayzl;
-import bamp;
+import anni;
+import bbyp;
+import bdnt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 public class RecentItemRouterDataLine
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public RecentItemRouterDataLine(RecentUser paramRecentUser)
   {
@@ -82,18 +82,18 @@ public class RecentItemRouterDataLine
     return paramCharSequence;
   }
   
-  public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     boolean bool2 = false;
     if (paramMessage != null)
     {
       paramInt = paramMessage.extInt;
       if (paramInt != 4) {
-        break label562;
+        break label552;
       }
     }
-    label559:
-    label562:
+    label549:
+    label552:
     for (boolean bool1 = true;; bool1 = false)
     {
       if (paramInt == 1) {
@@ -110,7 +110,7 @@ public class RecentItemRouterDataLine
       }
       for (;;)
       {
-        paramMsgSummary.strContent = a(null, bool1, bool2, new bamp(paramQQAppInterface, 1, 16), paramMsgSummary);
+        paramMsgSummary.strContent = a(null, bool1, bool2, new bdnt(paramQQAppInterface, 1, 16), paramMsgSummary);
         for (;;)
         {
           if (paramMessage != null) {
@@ -118,7 +118,7 @@ public class RecentItemRouterDataLine
           }
           return;
           if (!bool2) {
-            break label559;
+            break label549;
           }
           paramQQAppInterface = "S " + paramQQAppInterface;
           break;
@@ -133,7 +133,7 @@ public class RecentItemRouterDataLine
               paramQQAppInterface.append("");
               try
               {
-                paramMsgSummary.strContent = a(null, bool1, bool2, new bamp(paramQQAppInterface, 1, 16), paramMsgSummary);
+                paramMsgSummary.strContent = a(null, bool1, bool2, new bdnt(paramQQAppInterface, 1, 16), paramMsgSummary);
               }
               catch (Exception paramQQAppInterface)
               {
@@ -147,45 +147,25 @@ public class RecentItemRouterDataLine
           }
           if (paramMessage.msgtype == -2000)
           {
-            paramMsgSummary.strContent = a(paramContext.getString(2131719374), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131717435), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2005)
           {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692474), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692058), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2009)
           {
-            paramMsgSummary.strContent = a(paramContext.getString(2131721284), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131718999), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2335)
           {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692474), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692058), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2015)
           {
             paramMsgSummary.strContent = "";
           }
-          else if (paramMessage.msgtype == -2060)
-          {
-            paramMsgSummary.strContent = "";
-          }
-          else if (paramMessage.msgtype == -2062)
-          {
-            paramMsgSummary.strContent = "";
-          }
-          else if (paramMessage.msgtype == -2065)
-          {
-            paramMsgSummary.strContent = "";
-          }
-          else if (paramMessage.msgtype == -2066)
-          {
-            paramMsgSummary.strContent = "";
-          }
-          else if (paramMessage.msgtype == -4023)
-          {
-            paramMsgSummary.strContent = "";
-          }
-          else if (paramMessage.msgtype == -4024)
+          else if ((paramMessage.msgtype == -2060) || (paramMessage.msgtype == -2062) || (paramMessage.msgtype == -2066) || (paramMessage.msgtype == -4023) || (paramMessage.msgtype == -4024) || (paramMessage.msgtype == -7010) || (paramMessage.msgtype == -7009) || (paramMessage.msgtype == -7011) || (paramMessage.msgtype == -7012) || (paramMessage.msgtype == -7013))
           {
             paramMsgSummary.strContent = "";
             continue;
@@ -212,14 +192,14 @@ public class RecentItemRouterDataLine
     if (localObject2 == null)
     {
       localQQMessageFacade = paramQQAppInterface.a();
-      str = abti.a(this.mUser.uin, 6002);
+      str = acwh.a(this.mUser.uin, 6002);
       localObject2 = localRouterHandler.a(this.mUser.uin);
       if (localObject2 != null) {
         break label256;
       }
       localObject1 = new QQMessageFacade.Message();
       ((QQMessageFacade.Message)localObject1).extInt = 0;
-      ((QQMessageFacade.Message)localObject1).time = ayzl.a();
+      ((QQMessageFacade.Message)localObject1).time = bbyp.a();
       ((QQMessageFacade.Message)localObject1).msgtype = 0;
     }
     for (;;)
@@ -227,14 +207,14 @@ public class RecentItemRouterDataLine
       localQQMessageFacade.a.put(str, localObject1);
       this.mTitleName = localRouterHandler.a(Long.parseLong(this.mUser.uin));
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
-      localObject2 = a();
+      localObject2 = getMsgSummaryTemp();
       a((QQMessageFacade.Message)localObject1, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject2);
       a(paramQQAppInterface);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
       if (!AppSetting.c) {
         break;
       }
-      this.mContentDesc = (alud.a(2131713560) + this.mUnreadNum + alud.a(2131713563) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
+      this.mContentDesc = (anni.a(2131711939) + this.mUnreadNum + anni.a(2131711942) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
       return;
       label256:
       if (localQQMessageFacade == null) {
@@ -251,7 +231,7 @@ public class RecentItemRouterDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemRouterDataLine
  * JD-Core Version:    0.7.0.1
  */

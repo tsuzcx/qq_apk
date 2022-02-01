@@ -1,97 +1,170 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Set;
 
 class bldd
-  implements View.OnClickListener
+  extends bjsi
 {
-  bldd(blda paramblda) {}
+  bldd(bldc parambldc, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int j = 0;
-    blda.a(this.a, true);
-    Set localSet = blda.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + localSet);
-    paramView = bliy.a();
-    paramView.j();
-    int i = 0;
-    while (i < blda.a(this.a).size()) {
-      if (!localSet.contains(Integer.valueOf(i)))
-      {
-        i += 1;
-      }
-      else
-      {
-        if (((blca)blda.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
-        {
-          paramView.k(((blca)blda.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-          paramView.i("none");
-          paramView.j("none");
-        }
-        for (;;)
-        {
-          bliu.a().S();
-          break;
-          if (!((blca)blda.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
-          {
-            paramView.k("none");
-            paramView.i(((blcd)blcc.jdField_a_of_type_JavaUtilList.get(blcc.jdField_a_of_type_ArrayOfInt[(i % blcc.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
-            paramView.j(((blca)blda.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
-          }
-          else
-          {
-            paramView.k("none");
-            paramView.i("none");
-            paramView.j("none");
-          }
-        }
-      }
-    }
-    blda.a(this.a).a(false);
-    bles localbles = blda.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + localbles.a + ", texts = " + localbles.b);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    i = j;
-    if (i < localbles.a.size())
+    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      Integer localInteger = (Integer)localbles.d.get(i);
-      if (localSet.contains(localInteger))
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_exit_room");
+      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) || (paramInt == 1003)) {
+      blck.a().b(this.jdField_a_of_type_Bldc.d, this.jdField_a_of_type_Boolean, this.b);
+    }
+    while ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+    localBundle.putInt("gmesdk_event_ret", paramInt);
+    localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+    ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int i = 0;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      paramInt = 0;
+      String str;
+      Bundle localBundle;
+      while (paramInt < paramArrayOfString.length)
       {
-        if ((i != 0) || (blda.a(this.a) == null)) {
-          break label582;
+        str = paramArrayOfString[paramInt];
+        if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+        {
+          localBundle = new Bundle();
+          localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+          localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+          localBundle.putString("gmesdk_event_key_member_uin", str);
+          ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
         }
-        localArrayList1.add(blda.a(this.a).jdField_a_of_type_JavaLangString);
-        localArrayList2.add(blda.a(this.a).b);
-        localArrayList3.add(blda.a(this.a).c);
+        paramInt += 1;
       }
-      for (;;)
+      continue;
+      while (i < paramArrayOfString.length)
       {
-        String str = blda.a(this.a, localInteger.intValue());
-        StringBuilder localStringBuilder = new StringBuilder().append("gif^");
-        paramView = str;
-        if (str == null) {
-          paramView = "";
+        str = paramArrayOfString[i];
+        if (!this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.add(str);
+          if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", true);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
         }
-        paramView = paramView;
-        localArrayList4.add(paramView);
-        bljn.b("AEGIFChunkPreviewFragment", "save gif, index=" + i + ", widgetInfo=" + paramView + ", originIndex=" + localInteger);
         i += 1;
-        break;
-        label582:
-        localArrayList1.add(localbles.a.get(i));
-        localArrayList2.add(localbles.b.get(i));
-        localArrayList3.add(localbles.c.get(i));
+      }
+      continue;
+      paramInt = 0;
+      while (paramInt < paramArrayOfString.length)
+      {
+        str = paramArrayOfString[paramInt];
+        if (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.remove(str);
+          if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
+        }
+        paramInt += 1;
       }
     }
-    blda.a(this.a, localArrayList1, localArrayList2, localArrayList3, localArrayList4);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void a(String[] paramArrayOfString) {}
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_room_disconnect");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_room_disconnect_ret_msg", paramString);
+      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
   }
 }
 

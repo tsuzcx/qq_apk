@@ -1,59 +1,42 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class trn
-  extends yiu
+  implements slp
 {
-  private static final String jdField_a_of_type_JavaLangString = trn.class.getSimpleName();
-  private QCirclePersonInfoAndStatusWidget jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget;
-  private uef jdField_a_of_type_Uef;
+  public trn(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
   
-  public trn(Bundle paramBundle)
+  public void a(slr paramslr)
   {
-    super(paramBundle);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget = new QCirclePersonInfoAndStatusWidget(getContext());
-    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget;
-  }
-  
-  public void loadData(yii paramyii) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    paramViewHolder = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("personDetail has dataList");
-    if (this.mDataList != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d(paramViewHolder, 1, String.valueOf(bool));
-      if ((this.mDataList != null) && (this.mDataList.size() > 0))
-      {
-        if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget == null) {
-          break;
+    if (QLog.isColorLevel()) {
+      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramslr.jdField_b_of_type_JavaLangString + ", url=" + paramslr.jdField_a_of_type_JavaLangString + ", isH265=" + paramslr.jdField_a_of_type_Boolean + ", isHWCodec=" + paramslr.jdField_b_of_type_Boolean + ", fileBitRate=" + paramslr.c);
+    }
+    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramslr.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
+      if (TextUtils.isEmpty(paramslr.jdField_a_of_type_JavaLangString)) {
+        if (VideoPlayManager.a(this.a.this$0) != null) {
+          VideoPlayManager.a(this.a.this$0).a(null, 202, 107, 0, "vid2url failed, get null", null);
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "personDetail mHeadPersonalDetailInfoView setData i" + paramInt);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setInteractor(this.mInteractor);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setData(this.mDataList.get(paramInt));
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.setHeaderClickListener(this.jdField_a_of_type_Uef);
       }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      if (paramslr.jdField_a_of_type_Int == 1)
+      {
+        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramslr.jdField_b_of_type_JavaLangString, paramslr.jdField_a_of_type_JavaLangString, 104, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramslr.jdField_b_of_type_Boolean, true, false);
+        return;
+      }
+      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramslr.jdField_b_of_type_JavaLangString, paramslr.jdField_a_of_type_JavaLangString, 101, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramslr.jdField_b_of_type_Boolean, true, false);
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "personDetail mHeadPersonalDetailInfoView isnull");
+    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramslr.jdField_b_of_type_JavaLangString + " url:" + paramslr.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trn
  * JD-Core Version:    0.7.0.1
  */

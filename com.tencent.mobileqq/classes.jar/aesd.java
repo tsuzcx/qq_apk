@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aesd
-  implements Parcelable.Creator<ForwardUtils.SectionBase>
+public class aesd
+  implements View.OnClickListener
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
+  public aesd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

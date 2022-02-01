@@ -1,10 +1,30 @@
-public abstract interface ajcq
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+
+public class ajcq
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a();
+  public ajcq(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public abstract void a(int paramInt);
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    TroopRecommendFriendFragment.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
+        TroopRecommendFriendFragment.a(this.a);
+      }
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import amfe;
+import anxu;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -11,13 +11,13 @@ class HotWordsForSubBussFragment$1
   
   public void run()
   {
-    byte[] arrayOfByte = this.this$0.a.a(amfe.a);
+    byte[] arrayOfByte = this.this$0.a.a(anxu.a);
     ThreadManager.getUIHandler().post(new HotWordsForSubBussFragment.1.1(this, arrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment.1
  * JD-Core Version:    0.7.0.1
  */

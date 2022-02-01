@@ -1,26 +1,42 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class alxm
-  extends ampn
+public class alxm
+  implements alya
 {
-  alxm(String paramString, ToServiceMsg paramToServiceMsg)
-  {
-    super(paramString);
-  }
+  public alxm(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void a(boolean paramBoolean)
   {
-    synchronized (this.a)
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (;;)
     {
-      this.a.notify();
-      return;
+      try
+      {
+        QQSpecialCareSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxm
  * JD-Core Version:    0.7.0.1
  */

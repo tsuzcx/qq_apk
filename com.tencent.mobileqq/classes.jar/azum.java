@@ -1,98 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 
-public class azum
+class azum
+  implements DialogInterface.OnClickListener
 {
-  public bdhk a;
-  @awhs
-  public String a;
-  public short a;
-  public String b = "";
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l;
-  public String m;
-  public String n;
+  azum(azuj paramazuj, String paramString, PushDialogTemplate paramPushDialogTemplate) {}
   
-  public azum(long paramLong, String paramString, short paramShort)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-    this.c = paramString;
-    if (paramShort == 0)
+    new azuo(azuj.a(this.jdField_a_of_type_Azuj).jdField_a_of_type_AndroidContentContext, azuj.a(this.jdField_a_of_type_Azuj).a()).a(this.jdField_a_of_type_JavaLangString).a(azuj.a(this.jdField_a_of_type_Azuj).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(azuj.a(this.jdField_a_of_type_Azuj)).a();
+    if (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.isFriendBanned())
     {
-      this.jdField_a_of_type_Short = 10;
+      bcst.b(azuj.a(this.jdField_a_of_type_Azuj).a(), "dc00898", "", "", "0X800A4BE", "0X800A4BE", 0, 0, "", "", "", "");
       return;
     }
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public boolean a(String paramString)
-  {
-    try
-    {
-      String[] arrayOfString = paramString.split("&");
-      if (arrayOfString.length == 7)
-      {
-        this.e = arrayOfString[0].substring("RESPCONDITION=".length());
-        this.f = arrayOfString[1].substring("SUBJECT=".length());
-        this.g = arrayOfString[2].substring("DESC=".length());
-        this.h = arrayOfString[3].substring("RESPDESC=".length());
-        this.i = arrayOfString[4].substring("RESPCONTENTTYPES=".length());
-        this.j = bdqa.a(arrayOfString[5].substring("RESPDEST=".length()));
-        int i1;
-        String str;
-        if ((this.j != null) && (this.j.length() > 0))
-        {
-          i1 = this.j.lastIndexOf("channel_id");
-          if (i1 != -1)
-          {
-            paramString = this.j.substring(i1);
-            i1 = paramString.charAt("channel_id".length());
-            if (i1 != 37) {
-              break label244;
-            }
-            str = paramString.substring(paramString.indexOf('%') + 3);
-            paramString = str;
-            if (str.indexOf('%') > 0) {
-              paramString = str.substring(0, str.indexOf('%'));
-            }
-            this.b = paramString;
-          }
-        }
-        for (;;)
-        {
-          this.k = arrayOfString[6].substring("RESPCONTENTS=".length());
-          if (!"PLUGIN".equalsIgnoreCase(this.i)) {
-            break;
-          }
-          return true;
-          label244:
-          if (i1 == 61)
-          {
-            str = paramString.substring(paramString.indexOf('=') + 1);
-            paramString = str;
-            if (str.indexOf('&') > 0) {
-              paramString = str.substring(0, str.indexOf('&'));
-            }
-            this.b = paramString;
-          }
-        }
-        return false;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PushBanner", 2, "loadParams Exception:", paramString);
-      }
-    }
-    throw new IllegalArgumentException("PushBanner Params Count must be:7");
+    bcst.b(azuj.a(this.jdField_a_of_type_Azuj).a(), "dc00898", "", "", "0X800A4BC", "0X800A4BC", 0, 0, "", "", "", "");
   }
 }
 

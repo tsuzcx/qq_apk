@@ -1,12 +1,62 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import android.opengl.GLES20;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
-public abstract interface apdz
+public class apdz
 {
-  public abstract boolean getHasPulledSourceMsg();
+  public static final float[] a;
+  public static final short[] a;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
+  public float[] b;
+  public short[] b;
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  static
+  {
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+  }
   
-  public abstract void setPulledSourceMsg();
+  public apdz()
+  {
+    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
+    b();
+  }
+  
+  public apdz(float[] paramArrayOfFloat, short[] paramArrayOfShort)
+  {
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
+    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
+    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
+  }
+  
+  public void a()
+  {
+    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    GLES20.glEnableVertexAttribArray(paramInt1);
+    apdx.a("glEnableVertexAttribArray aPositionHandle");
+    GLES20.glEnableVertexAttribArray(paramInt2);
+    apdx.a("glEnableVertexAttribArray aTextureCoordHandle");
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
+    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+  }
 }
 
 

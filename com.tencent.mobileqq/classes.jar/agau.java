@@ -1,26 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agau
-  implements bhuk
+public class agau
 {
-  agau(agat paramagat, MessageForShortVideo paramMessageForShortVideo, agaz paramagaz, bhuf parambhuf) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  public void OnClick(View paramView, int paramInt)
+  public static void a()
   {
-    switch (paramInt)
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
     {
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_Agat.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agaz);
-      } else {
-        this.jdField_a_of_type_Agat.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agaz);
-      }
-    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 

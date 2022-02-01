@@ -1,8 +1,10 @@
-public class azai
+public final class azai
+  extends ayzn
 {
-  public int c;
-  public int d;
-  public long e;
+  protected int a()
+  {
+    return 517;
+  }
 }
 
 

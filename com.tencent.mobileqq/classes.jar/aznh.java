@@ -1,206 +1,134 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.soload.config.SoLoadConfProcessor.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.bussiness.accountinfo.view.ProfileQQLevelView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aznh
-  extends aokh<azng>
+  extends azne
 {
-  private final List<azni> a = new LinkedList();
-  
-  public static void a(int[] paramArrayOfInt, FromServiceMsg paramFromServiceMsg)
+  public aznh(azlw paramazlw, azfe paramazfe)
   {
-    int m = paramArrayOfInt.length;
-    int i = 0;
-    if (i < m)
-    {
-      Object localObject;
-      boolean bool;
-      if (paramArrayOfInt[i] == 526) {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("[notifyNetFailed] isSucc=");
-          if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
-            break label148;
-          }
-          bool = true;
-          label55:
-          localObject = ((StringBuilder)localObject).append(bool).append(", resultCode=");
-          if (paramFromServiceMsg == null) {
-            break label154;
-          }
-        }
-      }
-      label148:
-      label154:
-      for (int j = paramFromServiceMsg.getResultCode();; j = -1)
-      {
-        QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, j);
-        localObject = aoks.a().a(526);
-        if (localObject != null)
-        {
-          int k = -2;
-          j = k;
-          if (paramFromServiceMsg != null)
-          {
-            j = k;
-            if (paramFromServiceMsg.getResultCode() == 1002) {
-              j = -1;
-            }
-          }
-          ((aokh)localObject).a(j);
-        }
-        i += 1;
-        break;
-        bool = false;
-        break label55;
-      }
-    }
+    super(paramazlw, paramazfe);
   }
   
-  private void b(int paramInt)
+  private void a(Card paramCard, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[notifyListeners]:" + this.a.size());
-    }
-    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-    try
+    if (this.jdField_a_of_type_JavaLangObject != null)
     {
-      synchronized (this.a)
-      {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
-        {
-          azni localazni = (azni)localIterator.next();
-          try
-          {
-            localazni.a(paramInt);
-          }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable2, new Object[0]);
-          }
-        }
-      }
-      this.a.clear();
-    }
-    catch (Throwable localThrowable1)
-    {
+      paramBoolean = a(paramCard);
+      boolean bool = this.jdField_a_of_type_Biab.a(12);
       if (QLog.isColorLevel()) {
-        QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable1, new Object[0]);
+        QLog.d("ProfileAccountLevelHeaderComponent", 2, String.format("refreshAccountLevel showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) }));
       }
+      if ((!paramBoolean) || (!bool)) {
+        ((View)this.jdField_a_of_type_JavaLangObject).setVisibility(8);
+      }
+    }
+    else
+    {
       return;
     }
-    label162:
+    ((View)this.jdField_a_of_type_JavaLangObject).setVisibility(0);
+    paramCard = (ProfileQQLevelView)((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131374245);
+    if (paramCard != null)
+    {
+      paramCard.a((azfe)this.b, this.jdField_a_of_type_Boolean);
+      paramCard.setClickable(false);
+    }
+    a();
+    ((View)this.jdField_a_of_type_JavaLangObject).setTag(new azde(69, null));
+    ((View)this.jdField_a_of_type_JavaLangObject).setOnClickListener(this);
+    paramCard = (ImageView)((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131362936);
+    a((View)this.jdField_a_of_type_JavaLangObject, null, null, paramCard);
+  }
+  
+  private void k()
+  {
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131561384, (ViewGroup)this.jdField_a_of_type_JavaLangObject);
+    }
   }
   
   public int a()
   {
-    return 526;
+    return 1022;
   }
   
-  @NonNull
-  public azng a(int paramInt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new azng();
+    return "ProfileAccountLevelHeaderComponent";
   }
   
-  @Nullable
-  public azng a(aoko[] paramArrayOfaoko)
+  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onParsed]");
-    }
-    azng localazng = new azng();
-    localazng.a = paramArrayOfaoko;
-    return localazng;
+    super.a(paramBaseActivity, paramBundle);
+    k();
   }
   
-  public Class<azng> a()
+  public boolean a(azfe paramazfe)
   {
-    return azng.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "onReqNoReceive: type=" + a() + "curContent:" + aoks.a().a(526));
-    }
-    b(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-    b(paramInt);
-  }
-  
-  public void a(azng paramazng)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onUpdate] newConf:" + paramazng);
-    }
-    aznc.a().a(paramazng);
-    b(0);
-  }
-  
-  public void a(azni paramazni)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[getConfig]");
-    }
-    synchronized (this.a)
-    {
-      if (this.a.size() > 0)
-      {
-        this.a.add(paramazni);
-        return;
-      }
-      this.a.add(paramazni);
-      aoks.a().a(526, 0);
-      aoks.a().a(new int[] { 526 });
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new SoLoadConfProcessor.1(this), this, SystemClock.uptimeMillis() + 35000L);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[get migrateOldVersion]");
-    }
-    return 0;
-  }
-  
-  public int b(int paramInt)
-  {
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
+    a(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azfe)this.b).d);
     return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = 0;
+    int k = 1;
+    int j = 1;
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof azde)) {
+      switch (((azde)localObject).a)
+      {
+      }
+    }
+    label99:
+    label125:
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        j();
+      } while (!azmp.a((azfe)this.b));
+      if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
+      {
+        i = 1;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (i == 0) {
+          break label125;
+        }
+      }
+      for (i = j;; i = 3)
+      {
+        azni.b((QQAppInterface)localObject, i);
+        break;
+        i = 0;
+        break label99;
+      }
+      i();
+    } while (!azmp.a((azfe)this.b));
+    if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {
+      i = 1;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (i != 0) {}
+    for (i = k;; i = 3)
+    {
+      azni.a((QQAppInterface)localObject, i);
+      break;
+    }
   }
 }
 

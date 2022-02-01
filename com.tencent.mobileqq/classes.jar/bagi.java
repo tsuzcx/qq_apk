@@ -1,12 +1,34 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-public class bagi
+final class bagi
+  implements Downloader.DownloadListener
 {
-  public int a;
-  public TimDocSSOMsg.UinRightInfo a;
-  public String a;
-  public String b;
-  public String c;
+  bagi(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
+  
+  public void onDownloadCanceled(String paramString)
+  {
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(true);
+    }
+  }
 }
 
 

@@ -1,12 +1,16 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
+import Override;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import azmk;
-import blqh;
+import android.view.MotionEvent;
+import bcnj;
+import bojl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PeakActivity
   extends BaseActivity2
@@ -17,7 +21,15 @@ public class PeakActivity
   
   protected void adjustStatusBar()
   {
-    azmk.a(this.mSystemBarComp, getWindow());
+    bcnj.a(this.mSystemBarComp, getWindow());
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public String getModuleId()
@@ -25,12 +37,19 @@ public class PeakActivity
     return "peak";
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      blqh.a();
+      bojl.a();
     }
   }
   
@@ -53,7 +72,7 @@ public class PeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakActivity
  * JD-Core Version:    0.7.0.1
  */

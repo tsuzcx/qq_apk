@@ -1,6 +1,7 @@
-public abstract class apip
-  extends nac
-{}
+public abstract interface apip
+{
+  public abstract void a(boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

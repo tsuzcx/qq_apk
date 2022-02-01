@@ -1,9 +1,12 @@
-public abstract class abuj
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+
+public class abuj
 {
-  public static int a;
-  public static String a = "http://zyjc.sec.qq.com/config?b=";
-  public static String b = "http://zyjc.sec.qq.com/reportFixer.php";
-  public static String c = "/sdcard/";
+  public int a;
+  public String a;
+  public int b;
+  
+  private abuj(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
 }
 
 

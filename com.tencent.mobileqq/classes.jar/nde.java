@@ -1,23 +1,30 @@
-import org.apache.http.conn.ssl.AbstractVerifier;
+import android.content.Intent;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-final class nde
-  extends AbstractVerifier
+class nde
+  implements EIPCResultCallback
 {
-  nde(String paramString) {}
+  nde(ndd paramndd, String paramString, int paramInt) {}
   
-  public final String toString()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return "CUSTOM_COMPATIBLE";
-  }
-  
-  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
+    if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess()))
+    {
+      paramEIPCResult = new Intent("action_notify_av_game_room_changed");
+      paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
+      paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
+      ndd.a(this.jdField_a_of_type_Ndd).getApp().sendBroadcast(paramEIPCResult);
+      QLog.d("AVGameClientQIPCModule", 2, "status change with broadcast " + this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nde
  * JD-Core Version:    0.7.0.1
  */

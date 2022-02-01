@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adou
-  extends alzr
+  implements View.OnClickListener
 {
-  public adou(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adou(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.c();
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
+    {
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
+    catch (Throwable localThrowable)
+    {
+      break label46;
     }
   }
 }

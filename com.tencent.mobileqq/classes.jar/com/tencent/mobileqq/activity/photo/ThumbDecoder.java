@@ -10,18 +10,18 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import azri;
-import bayu;
-import bazg;
-import com.tencent.common.app.BaseApplicationImpl;
+import bctj;
+import bdzx;
+import beai;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.HashMap;
 
 public class ThumbDecoder
-  implements bazg
+  implements beai
 {
   private static final String TAG = "ThumbDecoder";
   private float mDensity;
@@ -96,11 +96,11 @@ public class ThumbDecoder
             {
               localObject1 = localSafeDecodeOption.getInfo();
               ((HashMap)localObject1).put("from", "ThumbDecoder");
-              localObject2 = azri.a(BaseApplicationImpl.getApplication());
+              localObject2 = bctj.a(BaseApplication.getContext());
               bool = localSafeDecodeOption.isGetBitmap;
               l = localSafeDecodeOption.runTime;
               i = localSafeDecodeOption.rawHeight;
-              ((azri)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
+              ((bctj)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
             }
             if (paramURL != null) {
               break;
@@ -124,7 +124,7 @@ public class ThumbDecoder
           localObject1 = localOutOfMemoryError2;
         }
       }
-      i = bayu.a(localLocalMediaInfo.path);
+      i = bdzx.a(localLocalMediaInfo.path);
       if ((i == 0) && (paramURL.getWidth() == localLocalMediaInfo.thumbWidth) && (paramURL.getHeight() == localLocalMediaInfo.thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
         return paramURL;
       }
@@ -160,7 +160,7 @@ public class ThumbDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

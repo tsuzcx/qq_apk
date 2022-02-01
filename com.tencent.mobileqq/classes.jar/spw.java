@@ -1,226 +1,87 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.ui.dom.style.FlexConvertUtils;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class spw
+  extends pvp
 {
-  public static String a = "ViolaBizUtils";
-  private static String b = "8.0.6";
+  public spw(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public static String a()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    int j = 1;
-    JSONObject localJSONObject = new JSONObject();
+    QLog.d("ReadInJoyFastWebBottomSocialView", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
+    if ((ReadInJoyFastWebBottomSocialView.a(this.a) == null) || (ReadInJoyFastWebBottomSocialView.a(this.a) == null))
+    {
+      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult but articleInfo is null.");
+      return;
+    }
+    QQToast localQQToast;
+    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString1)))
+    {
+      localQQToast = new QQToast(ReadInJoyFastWebBottomSocialView.a(this.a));
+      localQQToast.d(2000);
+      localQQToast.b(2);
+      localQQToast.a(QQToast.a(2));
+      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialView.b(this.a).isSelected());
+      if (paramInt != 1) {
+        break label319;
+      }
+      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialView.a(this.a).get(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
+      paramString1 = localArrayList;
+      if (localArrayList == null) {
+        paramString1 = new ArrayList();
+      }
+      paramString1.add(paramString2);
+      ReadInJoyFastWebBottomSocialView.a(this.a).put(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID, paramString1);
+      if (!ReadInJoyFastWebBottomSocialView.b(this.a).isSelected()) {
+        break label308;
+      }
+      localQQToast.a(ReadInJoyFastWebBottomSocialView.a);
+      ReadInJoyFastWebBottomSocialView.b(this.a, true);
+      localQQToast.a();
+    }
     for (;;)
     {
-      try
-      {
-        localJSONObject.put("platform", "Android");
-        localJSONObject.put("osVersion", bdgk.e());
-        localJSONObject.put("appName", bdgk.c());
-        localJSONObject.put("appVersion", "8.3.5.4555");
-        DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-        i = (int)(FlexConvertUtils.getScreenHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        int k = (int)(FlexConvertUtils.getScreenWidth(BaseApplication.getContext()) / localDisplayMetrics.density);
-        float f = localDisplayMetrics.density;
-        localJSONObject.put("deviceWidth", Math.min(k, i));
-        localJSONObject.put("deviceHeight", Math.max(k, i));
-        localJSONObject.put("dpToPxRatio", f);
-        localJSONObject.put("deviceModel", Build.MODEL);
-        localJSONObject.put("violaVersion", b);
-        localJSONObject.put("statusBarHeight", ImmersiveUtils.getStatusBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        localJSONObject.put("appID", "1");
-        localJSONObject.put("isDebug", 0);
-        localJSONObject.put("navBarHeight", DisplayUtil.getNavigationBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        localJSONObject.put("deviceBrand", Build.BRAND);
-        localJSONObject.put("appVersionId", "8.3.5");
-        bnle.a(BaseActivity.sTopActivity);
-        if (!bnle.b()) {
-          continue;
-        }
-        i = 1;
-        localJSONObject.put("isLiuHai", i);
-        if (beaa.a() != 1) {
-          continue;
-        }
-        i = j;
-        localJSONObject.put("isKindCard", i);
-        localJSONObject.put("netType", ndd.a());
-        localJSONObject.put("build", 100);
-        if (BaseActivity.sTopActivity != null) {
-          localJSONObject.put("nowNavBarHeight", CommonSuspensionGestureLayout.a(BaseActivity.sTopActivity) / localDisplayMetrics.density);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(a, 2, "env JSONException");
-        continue;
-      }
-      return localJSONObject.toString();
-      i = 0;
+      ReadInJoyFastWebBottomSocialView.a(this.a, false);
+      return;
+      label308:
+      ReadInJoyFastWebBottomSocialView.c(this.a, false);
       continue;
-      i = 0;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = Uri.parse(paramString).getQueryParameter("v_bid");
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "-1";
-    }
-    return paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    String str = ncb.a(paramString1);
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return null;
-      paramString1 = str + paramString1;
-      paramString2 = nbv.d(paramString2);
-    } while (TextUtils.isEmpty(paramString2));
-    return paramString1 + "/" + paramString2;
-  }
-  
-  public static JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("viewDidAppear", 1);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static JSONObject a(int paramInt)
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("type", paramInt);
-      localJSONObject1.put("pageRefresh", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      String str;
-      do
+      label319:
+      if (paramInt == 2)
       {
-        return false;
-        str = Uri.parse(paramString).getQueryParameter("v_bid");
-      } while (TextUtils.isEmpty(str));
-      paramString = a(str, paramString);
-    } while ((TextUtils.isEmpty(paramString)) || (!new File(paramString).exists()));
-    return true;
-  }
-  
-  public static String b()
-  {
-    long l = System.currentTimeMillis();
-    return "&time=" + String.valueOf(l).substring(0, 7);
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = Uri.parse(paramString).getQueryParameter("v_bid");
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return a(str, paramString);
-  }
-  
-  public static JSONObject b()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("viewDidDisappear", 1);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static String c(String paramString)
-  {
-    SharedPreferences localSharedPreferences;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localSharedPreferences = bkbq.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
-      if (localSharedPreferences == null) {
-        QLog.d(a, 1, "failed to getItem");
+        ReadInJoyFastWebBottomSocialView.a(this.a).remove(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
+        if (!ReadInJoyFastWebBottomSocialView.b(this.a).isSelected())
+        {
+          localQQToast.a(ReadInJoyFastWebBottomSocialView.b);
+          ReadInJoyFastWebBottomSocialView.b(this.a, false);
+          localQQToast.a();
+        }
+        else
+        {
+          ReadInJoyFastWebBottomSocialView.c(this.a, true);
+        }
       }
     }
-    else
-    {
-      return null;
-    }
-    return localSharedPreferences.getString(paramString, null);
   }
   
-  public static JSONObject c()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
   {
-    try
+    QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
+    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString)))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("pageDestroy", 1);
-      return localJSONObject;
+      ReadInJoyFastWebBottomSocialView.a(this.a).put(paramString, paramArrayList);
+      ReadInJoyFastWebBottomSocialView.b(this.a, paramBoolean2);
     }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static String d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
-      do
-      {
-        return paramString;
-      } while (!paramString.contains("v_url_base64"));
-      str = Uri.parse(paramString).getQueryParameter("v_url_base64");
-    } while (TextUtils.isEmpty(str));
-    return new String(Base64.decode(str, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spw
  * JD-Core Version:    0.7.0.1
  */

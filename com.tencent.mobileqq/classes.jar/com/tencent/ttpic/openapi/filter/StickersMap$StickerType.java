@@ -11,11 +11,13 @@ public final class StickersMap$StickerType
   public static final String COSFUN = "crazyFace";
   public static final String CUSTOMAFTER = "customAfter";
   public static final String CUSTOMBEFORE = "customBefore";
+  public static final String CUSTOM_GROUP = "customGroup";
   public static final String DYNAMIC = "dynamic";
   public static final String EXPRESSION = "expression";
   public static final String FABBYMV = "mv";
   public static final String FABBYSTROKE = "fabbyStroke";
   public static final String FACEAVERAGE = "faceAverage";
+  public static final String FACEOFF = "faceoff";
   public static final String FACESWAP = "faceSwap";
   public static final String FILAMENT = "filament";
   public static final String FILAMENTPARTICLE = "filamentParticle";
@@ -33,6 +35,9 @@ public final class StickersMap$StickerType
   public static final String SKY = "skySegment";
   public static final String STICKERAFTER = "stickerAfter";
   public static final String STICKERBEFORE = "stickerBefore";
+  public static final String STYLE_CHANGE_WARP = "styleChangeWarp";
+  public static final String STYLE_FILTER_AFTER = "styleFilterAfter";
+  public static final String STYLE_FILTER_BEFORE = "styleFilterBefore";
   public static final String TDPARTICLE = "tdParticle";
   public static final String TRIGGERLUTAFTER = "triggerLutAfter";
   public static final String TRIGGERLUTBEFORE = "triggerLutBefore";
@@ -40,7 +45,7 @@ public final class StickersMap$StickerType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StickersMap.StickerType
  * JD-Core Version:    0.7.0.1
  */

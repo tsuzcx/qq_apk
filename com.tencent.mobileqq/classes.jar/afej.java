@@ -1,57 +1,83 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.util.Pair;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
-class afej
-  implements URLDrawable.URLDrawableListener
+public class afej
+  extends aniz
 {
-  afej(afee paramafee) {}
+  public afej(ShowReactiveActivity paramShowReactiveActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    Object localObject;
+    Switch localSwitch;
+    if ((paramBoolean1) && (!this.a.isFinishing()))
     {
-      paramThrowable = this.a.a.iterator();
-      while (paramThrowable.hasNext())
-      {
-        Pair localPair = (Pair)paramThrowable.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null) && (afee.a(this.a) != null)) {
-          ((URLImageView)localPair.second).setImageDrawable(afee.a(this.a).a.getResources().getDrawable(2130843303));
-        }
+      localObject = this.a;
+      localSwitch = this.a.a.a();
+      if (paramBoolean2) {
+        break label117;
       }
+    }
+    label117:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject, localSwitch, paramBoolean1);
+      if (QLog.isColorLevel())
+      {
+        localObject = ((anmw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
+        QLog.d("interactive", 2, " ShowReactiveActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + ((Card)localObject).allowCalInteractive);
+      }
+      return;
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void onSetCalReactiveDays(boolean paramBoolean)
   {
-    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
-    if ((localDrawable instanceof RegionDrawable))
+    boolean bool2 = true;
+    Object localObject1;
+    Object localObject2;
+    boolean bool1;
+    if (!paramBoolean)
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
-      {
-        Pair localPair = (Pair)localIterator.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
-        {
-          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
-          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
-          ((URLImageView)localPair.second).setVisibility(0);
-        }
+      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131717834), 3000).b(this.a.getTitleBarHeight());
+      localObject1 = this.a;
+      localObject2 = this.a.a.a();
+      if (this.a.a.a().isChecked()) {
+        break label217;
       }
+      bool1 = true;
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject1, (CompoundButton)localObject2, bool1);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays isSuccess false= ");
+      }
+    }
+    Switch localSwitch;
+    if ((paramBoolean) && (!this.a.isFinishing()))
+    {
+      localObject1 = ((anmw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
+      localObject2 = this.a;
+      localSwitch = this.a.a.a();
+      if (((Card)localObject1).allowCalInteractive) {
+        break label222;
+      }
+    }
+    label217:
+    label222:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      ShowReactiveActivity.a((ShowReactiveActivity)localObject2, localSwitch, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays allowCalInteractive= " + ((Card)localObject1).allowCalInteractive);
+      }
+      return;
+      bool1 = false;
+      break;
     }
   }
 }

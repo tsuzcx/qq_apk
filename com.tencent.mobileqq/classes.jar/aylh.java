@@ -1,23 +1,28 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
-import com.tencent.widget.ListView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
 
 public class aylh
-  extends ayjo<aynu, aywd>
+  implements View.OnTouchListener
 {
-  public aylh(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, bdbb parambdbb)
-  {
-    super(paramListView, parambdbb);
-  }
+  public aylh(PromotionEntry paramPromotionEntry) {}
   
-  protected ayqp<aynu, aywd> a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new ayqm(FTSEntitySearchFragment.a(this.a));
-  }
-  
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ayvz(paramViewGroup, 2131562608);
+    if (PromotionEntry.a(this.a) == null) {}
+    do
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        PromotionEntry.a(this.a).setAlpha(255);
+        return false;
+      }
+    } while (paramMotionEvent.getAction() != 0);
+    PromotionEntry.a(this.a).setAlpha(100);
+    return false;
   }
 }
 

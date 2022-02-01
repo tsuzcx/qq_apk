@@ -1,39 +1,65 @@
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class awiy
-  implements bbce
+class awiy
+  implements AdapterView.OnItemClickListener
 {
-  awiy(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
+  awiy(awix paramawix) {}
   
-  public void a(bbax parambbax, bbbm parambbbm)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int j = 0;
-    if (j < parambbbm.a.size())
+    if (this.a.a.getActionSheet().isShowing()) {
+      this.a.a.getActionSheet().dismiss();
+    }
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131719199;
+      }
+    }
+    for (;;)
     {
-      parambbax = (bbbz)parambbbm.a.get(j);
-      int i = -1;
-      if ((parambbax instanceof bbbr)) {
-        i = ((bbbr)parambbax).c;
+      if (i != -1) {
+        zvc.a(1, i);
       }
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + parambbax.toString());
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+        if (WXShareHelper.a().b()) {
+          break label175;
         }
-        j += 1;
+        i = 2131719200;
         break;
-        if ((parambbax instanceof bbbo)) {
-          i = ((bbbo)parambbax).c;
+        switch ((int)paramLong)
+        {
+        default: 
+          break;
+        case 0: 
+          awix.a(this.a);
+          break;
+        case 1: 
+          awix.b(this.a);
+          break;
+        case 2: 
+          awix.c(this.a);
+          break;
+        case 3: 
+          awix.d(this.a);
         }
       }
+      label175:
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awiy
  * JD-Core Version:    0.7.0.1
  */

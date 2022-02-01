@@ -1,39 +1,43 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class mja
-  extends bdjz
+  implements QQPermissionCallback
 {
-  public mja(Context paramContext, int paramInt)
+  public mja(VideoControlUI paramVideoControlUI, String paramString, long paramLong, View paramView) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramContext, paramInt);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
-  public static bdjz a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramContext = new mja(paramContext, 2131755801);
-    paramContext.setContentView(2131558942);
-    paramContext.setTitle(paramString1);
-    paramContext.setMessage(paramString2);
-    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
-    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
-    paramContext.setCanceledOnTouchOutside(false);
-    return paramContext;
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
-    if (!paramBoolean) {
-      dismiss();
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
+    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
     }
+    do
+    {
+      return;
+      if ("android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+        return;
+      }
+    } while (!"android.permission.WRITE_EXTERNAL_STORAGE".equals(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f(this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mja
  * JD-Core Version:    0.7.0.1
  */

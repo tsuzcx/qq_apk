@@ -8,17 +8,17 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bhtv;
+import bkhe;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import rpo;
-import rpp;
+import smn;
+import smo;
 
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new rpo(this);
-  private final bhtv jdField_a_of_type_Bhtv = new rpp(this);
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new smn(this);
+  private final bkhe jdField_a_of_type_Bkhe = new smo(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
   private boolean jdField_a_of_type_Boolean;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
@@ -87,9 +87,9 @@ public class DailyTitleBarSwitcher
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
-  public bhtv a()
+  public bkhe a()
   {
-    return this.jdField_a_of_type_Bhtv;
+    return this.jdField_a_of_type_Bkhe;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -169,7 +169,7 @@ public class DailyTitleBarSwitcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher
  * JD-Core Version:    0.7.0.1
  */

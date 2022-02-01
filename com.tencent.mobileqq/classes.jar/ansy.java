@@ -1,42 +1,24 @@
-public class ansy
+import java.util.concurrent.atomic.AtomicBoolean;
+import msf.msgcomm.msg_comm.Msg;
+
+class ansy
 {
-  public int a;
-  public ansz a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
+  public long a;
+  public AtomicBoolean a;
+  public msg_comm.Msg a;
+  public long b;
   
-  public ansy()
+  public ansy(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("|_DownloadParam_start");
-    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("|").append(" endFix:").append(this.c);
-    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
-    }
-    localStringBuilder.append("|end");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ansy
  * JD-Core Version:    0.7.0.1
  */

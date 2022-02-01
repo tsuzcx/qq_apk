@@ -1,102 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class axrw
-  implements View.OnClickListener
+  extends Handler
 {
-  public axrw(ProviderContainerView paramProviderContainerView) {}
+  public axrw(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ProviderContainerView.a(this.a).a(((Integer)paramView.getTag()).intValue());
-    if (i == 102)
+    switch (paramMessage.what)
     {
-      axpl.b();
-      if (!azkt.a(this.a.getContext())) {
-        QQToast.a(this.a.getContext(), alud.a(2131708916), 0).a();
-      }
-    }
-    boolean bool;
-    do
-    {
+    default: 
+    case 101: 
+    case 100: 
       do
       {
-        return;
-        if (axpm.a == 0)
+        do
         {
-          QQToast.a(this.a.getContext(), alud.a(2131708922), 0).a();
           return;
-        }
-        if (axpm.a != -1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
+          this.a.a();
+          bkfx localbkfx = bkfx.a;
+          if ((localbkfx != null) && (localbkfx.a())) {
+            localbkfx.b(5);
+          }
+        } while (paramMessage.obj == null);
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        this.a.b = true;
+        this.a.a(paramMessage, true, false);
+        return;
+      } while (NearbyPeopleProfileActivity.a(this.a) == null);
+      NearbyPeopleProfileActivity.a(this.a).b();
       return;
-      if (axpm.a == 2)
-      {
-        bool = axpm.a(true);
-        if (QLog.isColorLevel()) {
-          QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
-        }
-        if (ProviderContainerView.a(this.a) != null) {
-          ProviderContainerView.a(this.a).y();
-        }
-      }
-      if (i != 103) {
-        break label334;
-      }
-      axpl.e();
-      axpl.b();
-      if (!azkt.a(this.a.getContext()))
-      {
-        QQToast.a(this.a.getContext(), alud.a(2131708921), 0).a();
-        return;
-      }
-      if (axpm.a == 0)
-      {
-        QQToast.a(this.a.getContext(), alud.a(2131708920), 0).a();
-        return;
-      }
-      if (axpm.a != -1) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
-    return;
-    if (axpm.a == 2)
-    {
-      bool = axpm.a(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
-      }
-      if (ProviderContainerView.a(this.a) != null) {
-        ProviderContainerView.a(this.a).y();
-      }
+    case 102: 
+      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 202: 
+      NearbyPeopleProfileActivity.a(this.a).a(true);
+      this.a.a.sendEmptyMessageDelayed(203, 1500L);
+      return;
+    case 203: 
+      NearbyPeopleProfileActivity.a(this.a).a(false);
+      return;
+    case 204: 
+      this.a.a(this.a.getString(2131693933));
+      return;
+    case 207: 
+      this.a.a(anni.a(2131706024));
+      return;
     }
-    label334:
-    if (i == 101) {
-      axpl.d();
-    }
-    if (i == 104)
-    {
-      azqs.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
-      axpl.c();
-    }
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).a();
-    }
-    ProviderContainerView.a(this.a, paramView, i);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrw
  * JD-Core Version:    0.7.0.1
  */

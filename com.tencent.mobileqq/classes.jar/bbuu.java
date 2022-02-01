@@ -1,24 +1,8 @@
-import java.util.UUID;
-
-class bbuu
-  implements amnx
+public abstract interface bbuu
 {
-  bbuu(bbur parambbur, UUID paramUUID) {}
+  public abstract void onSoftKeyboardClosed();
   
-  public void a(String paramString)
-  {
-    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    bbvl.d("TroopFileDataBaseProxy", bbvl.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
-  }
+  public abstract void onSoftKeyboardOpened(int paramInt);
 }
 
 

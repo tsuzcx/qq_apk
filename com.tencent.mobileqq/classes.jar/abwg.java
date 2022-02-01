@@ -1,22 +1,14 @@
+import android.os.Binder;
+import com.tencent.device.qfind.BluetoothLeService;
+
 public class abwg
+  extends Binder
 {
-  public double a;
-  public long a;
-  public String a;
-  public double b;
-  public long b;
-  public long c = 9223372036854775807L;
-  public long d = 9223372036854775807L;
-  public long e = 9223372036854775807L;
-  public long f;
+  public abwg(BluetoothLeService paramBluetoothLeService) {}
   
-  public abwg()
+  public BluetoothLeService a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 9223372036854775807L;
-    this.jdField_a_of_type_Double = (0.0D / 0.0D);
-    this.jdField_b_of_type_Double = (0.0D / 0.0D);
+    return this.a;
   }
 }
 

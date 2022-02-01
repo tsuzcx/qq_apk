@@ -1,15 +1,6 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
-
-public class aixy
-  extends aiym
+public abstract interface aixy
 {
-  public aixy(BaseHbUIFragment paramBaseHbUIFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    this.a.a();
-  }
+  public abstract void a(ajdm paramajdm, int paramInt);
 }
 
 

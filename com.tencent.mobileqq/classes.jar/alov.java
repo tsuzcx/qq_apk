@@ -1,35 +1,29 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class alov
-  extends amck
+  implements Comparable<alov>
 {
-  public void a()
+  public int a;
+  public long a;
+  public int b;
+  
+  public alov(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    Object localObject = BaseActivity.sTopActivity;
-    if (localObject == null) {
-      ScreenShot.a("MyShakeListener - top activity is null");
-    }
-    do
-    {
-      return;
-      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
-      {
-        ScreenShot.a("MyShakeListener - shake flag is false");
-        return;
-      }
-    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
-    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
-    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(alov paramalov)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramalov.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alov
  * JD-Core Version:    0.7.0.1
  */

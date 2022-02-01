@@ -1,16 +1,19 @@
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import mqq.app.QQPermissionCallback;
+
 public class bbeh
+  implements QQPermissionCallback
 {
-  public long a;
-  public String a;
-  public String b;
+  public bbeh(ScreenShotFragment paramScreenShotFragment) {}
   
-  public bbeh() {}
-  
-  public bbeh(long paramLong, String paramString1, String paramString2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    bglp.b(ScreenShotFragment.a(this.a), this.a.getString(2131698048));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ScreenShotFragment.a(this.a);
   }
 }
 

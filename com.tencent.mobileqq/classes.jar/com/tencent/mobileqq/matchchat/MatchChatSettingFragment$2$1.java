@@ -12,13 +12,13 @@ class MatchChatSettingFragment$2$1
   {
     FragmentActivity localFragmentActivity = this.a.this$0.getActivity();
     if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, 2131699471, 0).a();
+      QQToast.a(localFragmentActivity, 2131698057, 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatSettingFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class agnu
-  extends alpq
+public class agnu
+  implements bfwk
 {
-  agnu(agnn paramagnn) {}
+  agnu(agnt paramagnt) {}
   
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  public void a(String paramString)
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    agnn.a(this.a);
-    this.a.br();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bfyh.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!agnn.a(this.a)))
-    {
-      agnn.a(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      agnn.b(this.a);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ndv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    }
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
   }
 }
 

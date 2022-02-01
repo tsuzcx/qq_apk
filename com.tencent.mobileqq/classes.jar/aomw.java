@@ -1,21 +1,21 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aomw
+  extends aojt
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public aomw(String paramString1, String paramString2, String paramString3, String paramString4)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    paramQQAppInterface = new aomv(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wsgzh";
+    paramQQAppInterface.c = "waterfall";
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomw
  * JD-Core Version:    0.7.0.1
  */

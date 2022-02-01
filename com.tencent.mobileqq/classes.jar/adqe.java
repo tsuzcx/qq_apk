@@ -1,34 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class adqe
-  extends BroadcastReceiver
+  implements QQPermissionCallback
 {
-  public adqe(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adqe(BaseChatPie paramBaseChatPie) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        QQIdentiferActivity.a(this.a, 204, atho.a);
-        QQIdentiferActivity.a(this.a, 204, atho.a);
-        this.a.finish();
-      }
-    }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
-    {
-      int i;
-      return;
-    }
-    this.a.finish();
+    bglp.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    BaseChatPie.e(this.a);
   }
 }
 

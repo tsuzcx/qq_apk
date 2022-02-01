@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.LinkedBlockingQueue;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class arsd
+  implements arsi
 {
-  static Executor a;
+  public arsd(DragSortListView paramDragSortListView) {}
   
-  static
+  public float a(float paramFloat, long paramLong)
   {
-    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-    localThreadPoolParams.poolThreadName = "fileassistant_pool";
-    localThreadPoolParams.corePoolsize = 2;
-    localThreadPoolParams.maxPooolSize = 2;
-    localThreadPoolParams.priority = 8;
-    localThreadPoolParams.queue = new LinkedBlockingQueue();
-    localThreadPoolParams.keepAliveTime = 10;
-    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-  }
-  
-  public static Executor a()
-  {
-    return a;
+    return this.a.e * paramFloat;
   }
 }
 

@@ -1,34 +1,21 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class ayua
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/onlinestatus/view/WeatherView$initData$1", "Lcom/tencent/mobileqq/onlinestatus/weather/WeatherObserver;", "receiveReqWeather", "", "success", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayua
   extends ayuf
 {
-  public ayua(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
-  }
-  
-  public aynt a(List<aynu> paramList, String paramString)
-  {
-    return null;
-  }
-  
-  public List<aynt> a(ayuu paramayuu)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramayuu.jdField_a_of_type_AndroidOsBundle == null) {
-      paramayuu.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherView", 2, new Object[] { "receiveReqWeather: called. ", "bundle: " + paramBundle, " success: " + paramBoolean });
     }
-    ArrayList localArrayList = new ArrayList();
-    paramayuu = new aynj(paramayuu.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new aynb(paramayuu));
-    localArrayList.add(paramayuu);
-    ayvl.a(0);
-    return localArrayList;
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

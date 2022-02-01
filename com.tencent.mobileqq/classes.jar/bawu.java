@@ -1,312 +1,221 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 
 public class bawu
-  extends bara
+  extends BrowserBaseModel
 {
-  MessageForScribble a;
-  private int jdField_c_of_type_Int;
-  private ArrayList<String> jdField_c_of_type_JavaUtilArrayList;
-  String e = "";
-  private int p;
-  
-  public bawu(bayf parambayf, bayk parambayk)
+  public int a(AIOPictureData paramAIOPictureData, String paramString)
   {
-    super(parambayf, parambayk);
+    if ((paramString == null) || (paramAIOPictureData == null)) {}
+    do
+    {
+      return 0;
+      if ((paramAIOPictureData.a != null) && (paramString.contains(paramAIOPictureData.a))) {
+        return 1;
+      }
+      if ((paramAIOPictureData.b != null) && (paramString.contains(paramAIOPictureData.b))) {
+        return 2;
+      }
+    } while ((paramAIOPictureData.c == null) || (!paramString.contains(paramAIOPictureData.c)));
+    return 4;
   }
   
-  private void a(MessageForScribble paramMessageForScribble)
+  public Drawable a(AIOPictureData paramAIOPictureData)
   {
-    if (paramMessageForScribble != null)
+    URLDrawable localURLDrawable = null;
+    File localFile1 = a(paramAIOPictureData, 2);
+    File localFile2 = a(paramAIOPictureData, 4);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+    localURLDrawableOptions.mFailedDrawable = bdzx.a;
+    if ((localFile1 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOPictureData, 2)) != null)) {
+      localURLDrawable = URLDrawable.getDrawable(a(paramAIOPictureData, 2), localURLDrawableOptions);
+    }
+    do
     {
-      paramMessageForScribble.prewrite();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+      return localURLDrawable;
+      if ((localFile2 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOPictureData, 4)) != null)) {
+        return URLDrawable.getDrawable(a(paramAIOPictureData, 4), localURLDrawableOptions);
+      }
+    } while (a(paramAIOPictureData, 1) == null);
+    paramAIOPictureData = URLDrawable.getDrawable(a(paramAIOPictureData, 1), localURLDrawableOptions);
+    paramAIOPictureData.downloadImediatly();
+    return paramAIOPictureData;
+  }
+  
+  public File a(AIOPictureData paramAIOPictureData, int paramInt)
+  {
+    if (paramAIOPictureData == null) {
+      return null;
+    }
+    switch (paramInt)
+    {
+    case 3: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      paramAIOPictureData = null;
+    }
+    while ((paramAIOPictureData != null) && (!paramAIOPictureData.equals("I:N")))
+    {
+      paramAIOPictureData = new File(paramAIOPictureData);
+      if (!paramAIOPictureData.exists()) {
+        break;
+      }
+      return paramAIOPictureData;
+      paramAIOPictureData = paramAIOPictureData.a;
+      continue;
+      paramAIOPictureData = paramAIOPictureData.b;
+      continue;
+      paramAIOPictureData = paramAIOPictureData.c;
+      continue;
+      paramAIOPictureData = paramAIOPictureData.jdField_d_of_type_JavaLangString;
     }
   }
   
-  private void g()
+  public String a(AIOPictureData paramAIOPictureData, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-      return;
-    }
-    String str = aygu.a(this.jdField_a_of_type_Bayk.h);
-    if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5))
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramAIOPictureData == null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
-      }
-      int i = aygl.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-      if (i == aygl.d)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = true;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-        }
-        e();
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-      }
-      b(9303, a(new Exception("SpliteCombineFile illegal result: " + i)));
-      d();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-    }
-    b(9041, a(new Exception("SpliteCombineFile illegal md5String: " + str + "  msg.combineFileMd5:  " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-    d();
-  }
-  
-  public void aP_()
-  {
-    super.aP_();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 3;
+      localObject1 = "";
+      return localObject1;
     }
     String str;
-    if ((this.e != null) && (!this.e.startsWith("https")))
+    switch (paramInt)
     {
-      str = bazo.a(this.e);
-      this.jdField_c_of_type_JavaUtilArrayList = bazo.a().a(str, 1018);
-    }
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      str = "ipListFromInnerDns : ";
-      int i = 0;
-      while (i < this.jdField_c_of_type_JavaUtilArrayList.size())
-      {
-        str = str + " " + (String)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ScribblePicDownloadProcessor", 2, str);
-      }
-    }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
-    f();
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScribblePicDownloadProcessor", 2, "resume()");
-    }
-    if (this.k)
-    {
-      this.k = false;
-      this.o = false;
-      this.jdField_j_of_type_Int = 0;
-      this.jdField_j_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Bard.a.post(new ScribblePicDownloadProcessor.1(this));
-    }
-    return 0;
-  }
-  
-  public int c()
-  {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Bayk.toString());
-    if ((this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForScribble)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = ((MessageForScribble)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.e = this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.equals("")) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.startsWith("http")))
-    {
-      b(9302, a(new Exception("combineFileUrl illegal " + this.e)));
-      d();
-      return -1;
-    }
-    this.jdField_a_of_type_Bayk.h = aygl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Bayk.h))
-    {
-      b(9302, a(new Exception("combineFileMd5 illegal " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-      d();
-      return -1;
-    }
-    return 0;
-  }
-  
-  void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 2;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2005);
-    aygj localaygj = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localaygj != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
-      }
-      localaygj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    case 3: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      str = null;
     }
     for (;;)
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localaygj.a(null);
+      localObject1 = localObject2;
+      if (str == null) {
+        break;
+      }
+      localObject1 = localObject2;
+      if (str.equals("I:N")) {
+        break;
+      }
+      if (paramAIOPictureData.jdField_d_of_type_Int != 3) {
+        break label152;
+      }
+      paramAIOPictureData = new File(str);
+      try
+      {
+        paramAIOPictureData = paramAIOPictureData.toURI().toURL().toString();
+        return paramAIOPictureData;
+      }
+      catch (MalformedURLException paramAIOPictureData)
+      {
+        paramAIOPictureData.printStackTrace();
+        return null;
+      }
+      str = paramAIOPictureData.a;
+      continue;
+      str = paramAIOPictureData.b;
+      continue;
+      str = paramAIOPictureData.c;
+      continue;
+      str = paramAIOPictureData.jdField_d_of_type_JavaLangString;
     }
+    label152:
+    if (!str.startsWith("/")) {
+      return "file:/" + str;
+    }
+    if (str.startsWith("//")) {
+      return "file:" + str;
+    }
+    return "file:" + str;
   }
   
-  void e()
+  public void a(AIOPictureData paramAIOPictureData, int paramInt, String paramString)
   {
-    super.e();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 1;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2003);
-    aygj localaygj = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localaygj != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
+    if ("I:E".equals(paramString)) {
+      switch (paramInt)
+      {
       }
-      localaygj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
     }
-    for (;;)
+    do
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
       return;
-      label92:
-      localaygj.a(null);
-    }
+      paramAIOPictureData.e = true;
+      return;
+      paramAIOPictureData.f = true;
+      return;
+      paramAIOPictureData.jdField_d_of_type_Boolean = true;
+      return;
+      switch (paramInt)
+      {
+      case 3: 
+      case 5: 
+      case 6: 
+      case 7: 
+      default: 
+        return;
+      case 1: 
+        paramAIOPictureData.a = paramString;
+        return;
+      case 2: 
+        paramAIOPictureData.b = paramString;
+      }
+    } while ((paramAIOPictureData.j) || (!new File(paramAIOPictureData.a + "_hd").exists()));
+    paramAIOPictureData.a += "_hd";
+    return;
+    paramAIOPictureData.c = paramString;
+    return;
+    paramAIOPictureData.jdField_d_of_type_JavaLangString = paramString;
   }
   
-  public void f()
+  public boolean a(AIOPictureData paramAIOPictureData, int paramInt)
   {
-    QLog.i("ScribblePicDownloadProcessor", 2, "scribble download start ");
-    this.jdField_b_of_type_Barh.a();
-    String str1 = this.e;
-    d(2001);
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = this;
-    localbaub.jdField_a_of_type_JavaLangString = str1;
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.c = this.jdField_a_of_type_Bayk.h;
-    localbaub.e = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-    localbaub.g = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    localbaub.f = this.jdField_a_of_type_Bayk.jdField_b_of_type_Int;
-    localbaub.jdField_a_of_type_Long = 0L;
-    localbaub.k = true;
-    localbaub.l = true;
-    String str2;
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
-    {
-      str2 = (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int);
-      str2 = bazo.a(localbaub.jdField_a_of_type_JavaLangString, str2);
-      if ((str2 != null) && (!str2.equals(localbaub.jdField_a_of_type_JavaLangString))) {
-        localbaub.jdField_a_of_type_JavaLangString = str2;
-      }
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramAIOPictureData == null) {
+      bool1 = false;
     }
-    for (int i = 1;; i = 0)
+    do
     {
-      if (i != 0) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
-      }
-      for (;;)
+      do
       {
-        str2 = baws.a(str1);
-        if (QLog.isColorLevel()) {
-          QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localbaub.jdField_a_of_type_JavaLangString + " uuid:" + this.jdField_a_of_type_Bayk.e + " downOffset:" + localbaub.jdField_a_of_type_Long);
-        }
-        QLog.i("ScribblePicDownloadProcessor", 2, "index:" + this.jdField_c_of_type_Int + str1);
-        if (f()) {
-          break;
-        }
-        return;
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
-      }
-      this.jdField_a_of_type_Bave = localbaub;
-      n();
-      this.jdField_a_of_type_Baue.a(localbaub);
-      return;
-    }
-  }
-  
-  public void onResp(bavf parambavf)
-  {
-    super.onResp(parambavf);
-    this.jdField_a_of_type_Bave = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (parambavf.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      b("onHttpResp", bool);
-      localObject = this.jdField_b_of_type_Barh;
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label179;
-      }
-    }
-    label179:
-    for (boolean bool = true;; bool = false)
-    {
-      a((barh)localObject, parambavf, bool);
-      this.jdField_a_of_type_Long = parambavf.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambavf.jdField_b_of_type_Long + parambavf.jdField_a_of_type_Bave.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += parambavf.c;
-      QLog.i("ScribblePicDownloadProcessor", 2, "scribble download onResp resp.mResult = " + parambavf.jdField_a_of_type_Int);
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label184;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
-      }
-      g();
-      return;
-      bool = false;
-      break;
-    }
-    label184:
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-    }
-    if (this.p < 5)
-    {
-      this.p += 1;
-      if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
-      {
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry by changeIp");
-        m();
-        parambavf = bazo.a(this.e);
-        bazo.a().a(parambavf, (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int), 1018);
-        this.jdField_c_of_type_Int += 1;
-        f();
-        return;
-      }
-      if ((parambavf.jdField_b_of_type_Int == 9364) && (this.l < 3))
-      {
-        b("[netChg]", "failed.but net change detect.so retry");
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry");
-        this.l += 1;
-        m();
-        f();
-        return;
-      }
-    }
-    d();
+        do
+        {
+          do
+          {
+            return bool1;
+            switch (paramInt)
+            {
+            case 3: 
+            default: 
+              return false;
+            case 1: 
+              bool1 = bool2;
+            }
+          } while (!paramAIOPictureData.a.equals("I:N"));
+          return false;
+          bool1 = bool2;
+        } while (!paramAIOPictureData.b.equals("I:N"));
+        return false;
+        bool1 = bool2;
+      } while (paramAIOPictureData.jdField_d_of_type_Int == 3);
+      bool1 = bool2;
+    } while (!paramAIOPictureData.c.equals("I:N"));
+    return false;
   }
 }
 

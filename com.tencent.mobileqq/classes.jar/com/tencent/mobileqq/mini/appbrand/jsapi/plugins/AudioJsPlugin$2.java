@@ -1,162 +1,57 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.util.Log;
-import auqr;
-import auqt;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import awxz;
+import awya;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 class AudioJsPlugin$2
-  extends auqr
+  implements ServiceConnection
 {
   AudioJsPlugin$2(AudioJsPlugin paramAudioJsPlugin) {}
   
-  private int convertErrorCode(int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 5: 
-      return 10001;
-    case 7: 
-      return 10003;
-    }
-    return 10002;
-  }
-  
-  private void onMusicCanplay()
-  {
-    Log.i("[mini] AudioJsPlugin", "onMusicCanplay: " + Thread.currentThread().getId());
-    AudioJsPlugin.access$2200(this.this$0, "canplay");
-  }
-  
-  private void onMusicError()
-  {
-    QLog.i("[mini] AudioJsPlugin", 2, "onMusicError " + AudioJsPlugin.access$2900(this.this$0));
-    if (AudioJsPlugin.access$2900(this.this$0) == 5) {
-      return;
-    }
+    AudioJsPlugin.access$2202(this.this$0, awya.a(paramIBinder));
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("state", "error");
-      localJSONObject.put("errorCode", convertErrorCode(AudioJsPlugin.access$2900(this.this$0)));
-      AudioJsPlugin.access$1500(this.this$0, "onBackgroundAudioStateChange", localJSONObject.toString());
-      AudioJsPlugin.access$2300(this.this$0, false, AudioJsPlugin.access$3000(this.this$0));
+      if (AudioJsPlugin.access$2200(this.this$0) != null) {
+        AudioJsPlugin.access$2200(this.this$0).a(AudioJsPlugin.access$3200(this.this$0));
+      }
+      if (paramIBinder != null) {
+        paramIBinder.linkToDeath(new AudioJsPlugin.2.1(this, paramIBinder), 0);
+      }
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramComponentName)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      QLog.i("[mini] AudioJsPlugin", 2, "onServiceConnected " + paramComponentName);
     }
   }
   
-  private void onMusicPause()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AudioJsPlugin.access$3400(this.this$0, "onMusicPause");
-    AudioJsPlugin.access$2200(this.this$0, "pause");
-    AudioJsPlugin.access$2300(this.this$0, true, AudioJsPlugin.access$3000(this.this$0));
-  }
-  
-  private void onMusicPlay()
-  {
+    QLog.i("[mini] AudioJsPlugin", 2, "onServiceDisconnected " + paramComponentName);
     try
     {
-      Thread.sleep(500L);
-      label6:
-      localObject3 = null;
-      try
+      if (AudioJsPlugin.access$2200(this.this$0) != null)
       {
-        JSONObject localJSONObject = AudioJsPlugin.access$3300(this.this$0);
-        localObject1 = localObject3;
-        if (localJSONObject != null) {
-          localObject1 = localJSONObject.toString();
-        }
+        AudioJsPlugin.access$2200(this.this$0).b(AudioJsPlugin.access$3200(this.this$0));
+        AudioJsPlugin.access$2202(this.this$0, null);
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Log.w("[mini] AudioJsPlugin", "onMusicPlay: ", localException);
-          Object localObject2 = localObject3;
-        }
-      }
-      Log.i("[mini] AudioJsPlugin", "onMusicPlay: " + (String)localObject1);
-      AudioJsPlugin.access$1500(this.this$0, "onMusicPlay", (String)localObject1);
-      AudioJsPlugin.access$2200(this.this$0, "play");
-      AudioJsPlugin.access$2300(this.this$0, true, AudioJsPlugin.access$3000(this.this$0));
       return;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Exception paramComponentName)
     {
-      Object localObject3;
-      break label6;
+      QLog.i("[mini] AudioJsPlugin", 2, "onServiceDisconnected " + paramComponentName);
     }
-  }
-  
-  private void onMusicStop()
-  {
-    AudioJsPlugin.access$3400(this.this$0, "onMusicEnd");
-    AudioJsPlugin.access$2200(this.this$0, "stop");
-    AudioJsPlugin.access$2300(this.this$0, true, AudioJsPlugin.access$3000(this.this$0));
-  }
-  
-  private void onMusicWaiting()
-  {
-    AudioJsPlugin.access$2200(this.this$0, "waiting");
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    if (AudioJsPlugin.access$2100(this.this$0) != null) {
-      AudioJsPlugin.access$3502(this.this$0, AudioJsPlugin.access$2100(this.this$0).a());
-    }
-    onMusicStop();
-    QLog.i("[mini] AudioJsPlugin", 2, "onPlaySongChanged title:" + paramSongInfo.c + " url:" + paramSongInfo.b);
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if ((AudioJsPlugin.access$2100(this.this$0) == null) || ((AudioJsPlugin.access$2100(this.this$0).a() != null) && (!AudioJsPlugin.access$2100(this.this$0).a().equals(AudioJsPlugin.access$2400(this.this$0))))) {
-      return;
-    }
-    AudioJsPlugin.access$2902(this.this$0, paramInt);
-    switch (AudioJsPlugin.access$2900(this.this$0))
-    {
-    default: 
-      return;
-    case 1: 
-      onMusicWaiting();
-      return;
-    case 2: 
-      onMusicPlay();
-      onMusicCanplay();
-      return;
-    case 3: 
-      onMusicPause();
-      AudioJsPlugin.access$3202(this.this$0, Math.max(AudioJsPlugin.access$2100(this.this$0).g(), 0));
-      return;
-    case 4: 
-      onMusicStop();
-      return;
-    case 5: 
-    case 6: 
-    case 7: 
-      onMusicError();
-      return;
-    }
-    AudioJsPlugin.access$2200(this.this$0, "ended");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
+import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
 
 public class bbgn
-  implements DialogInterface.OnClickListener
+  extends bkii
 {
-  public bbgn(QLifeCommentActivity paramQLifeCommentActivity, bdjz parambdjz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbgn(KDSearchHistoryFlowLayout paramKDSearchHistoryFlowLayout)
   {
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      this.jdField_a_of_type_Bdjz.cancel();
-    }
-    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
-    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.z);
+    super(paramKDSearchHistoryFlowLayout);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    KDSearchHistoryFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    KDSearchHistoryFlowLayout.a(this.a);
   }
 }
 

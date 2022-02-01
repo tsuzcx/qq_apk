@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import ataq;
-import atbe;
-import atbh;
+import avik;
+import aviy;
+import avjb;
 
 public class HuayangPluginNewDownloader$2
   implements Runnable
 {
-  public HuayangPluginNewDownloader$2(atbe paramatbe) {}
+  public HuayangPluginNewDownloader$2(aviy paramaviy) {}
   
   public void run()
   {
     try
     {
-      atbe.a(this.this$0);
+      aviy.a(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
     {
-      atbh.a("3228166");
-      ataq.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
+      avjb.a("3228166");
+      avik.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
       return;
     }
     finally
     {
-      atbe.a(this.this$0).removeCallbacks(atbe.a(this.this$0));
-      atbe.a(this.this$0, false);
+      aviy.a(this.this$0).removeCallbacks(aviy.a(this.this$0));
+      aviy.a(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bdif;
-import bkqx;
-import bkqy;
+import bgnl;
+import bnfr;
+import bnfs;
 
 public class AEAlbumListLogicBase$1
   implements Runnable
 {
-  public AEAlbumListLogicBase$1(bkqy parambkqy) {}
+  public AEAlbumListLogicBase$1(bnfs parambnfs) {}
   
   public void run()
   {
-    bdif.a();
+    bgnl.a();
     this.this$0.a.a(100);
-    bdif.a("PEAK", "queryAlbumList");
+    bgnl.a("PEAK", "queryAlbumList");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.1
  * JD-Core Version:    0.7.0.1
  */

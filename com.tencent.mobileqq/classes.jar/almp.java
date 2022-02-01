@@ -1,44 +1,76 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class almp
-  implements akor
 {
-  public almp(ApolloPanel paramApolloPanel) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static int a(int paramInt)
   {
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-    if (this.a.c.getVisibility() == 0)
-    {
-      if ((!paramBoolean2) || (paramInt >= 5)) {
-        break label110;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (!paramBoolean1) {
-        break label94;
-      }
-      this.a.a.setVisibility(0);
-      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
+    if (paramInt == 1) {
+      return 1;
     }
-    label94:
-    label110:
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public static almx a(int paramInt)
+  {
+    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new almu();
+    case 2: 
+      return new alnk();
+    }
+    return new alnh();
+  }
+  
+  public static almx a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public static almx a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
+      localObject = null;
+    }
+    almx localalmx;
     do
     {
-      ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
-      do
-      {
-        return;
-      } while (paramInt <= 0);
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      return;
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    } while ((paramInt != 0) || (!paramBoolean1));
-    this.a.a.setVisibility(8);
+      return localObject;
+      localalmx = a(aggi.a(paramArrayOfByte, 0));
+      localObject = localalmx;
+    } while (localalmx == null);
+    localalmx.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
+    return localalmx;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 4);
   }
 }
 

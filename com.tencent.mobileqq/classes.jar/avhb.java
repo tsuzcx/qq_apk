@@ -1,59 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class avhb
-  implements avha
+class avhb
+  extends WtloginListener
 {
-  private int jdField_a_of_type_Int;
-  private avcf jdField_a_of_type_Avcf;
-  private aven jdField_a_of_type_Aven;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
+  avhb(avha paramavha, String paramString) {}
   
-  public avhb(aven paramaven, VideoData paramVideoData, QQAppInterface paramQQAppInterface)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    this.jdField_a_of_type_Aven = paramaven;
-    this.jdField_a_of_type_Avcf = new avcj(paramVideoData, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    b();
-  }
-  
-  public void a(Comments.Comment paramComment)
-  {
-    this.jdField_a_of_type_Avcf.a(paramComment, new avhd(this));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aven != null) {
-      this.jdField_a_of_type_Aven.a();
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("XProxy", 2, "获取Now结合版A1票据返回异常，cmd = " + paramInt + " errmsg = " + paramErrMsg.getMessage());
     }
-    this.jdField_a_of_type_Avcf.a(this.jdField_a_of_type_Int, new avhc(this));
+    avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, false, paramInt);
   }
   
-  public void b(Comments.Comment paramComment)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_Avcf.a(paramComment, new avhe(this));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Aven = null;
+    if (paramInt2 == 0)
+    {
+      this.jdField_a_of_type_Avha.jdField_a_of_type_Avhd.a = this.jdField_a_of_type_Avha.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_Avha.jdField_a_of_type_Long = System.currentTimeMillis();
+      avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, true, 0);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("XProxy", 2, "获取Now结合版A1票据返回失败，retCode = " + paramInt2);
+    }
+    avha.a(this.jdField_a_of_type_Avha, this.jdField_a_of_type_JavaLangString, false, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhb
  * JD-Core Version:    0.7.0.1
  */

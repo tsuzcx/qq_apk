@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfcw
-  implements DialogInterface.OnClickListener
+  extends CountDownTimer
 {
-  public bfcw(BindGroupActivity.4.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfcw(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
-    }
+    super(paramLong1, paramLong2);
   }
+  
+  public void onFinish()
+  {
+    ReciteRecordLayout.a(this.a);
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

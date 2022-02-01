@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import atnw;
+import avuv;
 import com.tencent.qphone.base.util.QLog;
 
 public class LyricsController$2
   implements Runnable
 {
-  public LyricsController$2(atnw paramatnw) {}
+  public LyricsController$2(avuv paramavuv) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LyricsController", 2, "mDelayUpdateLyricsFloatWindowRunnable isForeground: " + this.this$0.jdField_a_of_type_Boolean + " mFloatParams:" + this.this$0.jdField_a_of_type_Atnu);
+      QLog.i("LyricsController", 2, "mDelayUpdateLyricsFloatWindowRunnable isForeground: " + this.this$0.jdField_a_of_type_Boolean + " mFloatParams:" + this.this$0.jdField_a_of_type_Avut);
     }
-    atnw.a(this.this$0);
+    avuv.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.2
  * JD-Core Version:    0.7.0.1
  */

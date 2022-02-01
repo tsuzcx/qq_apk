@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class alle
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public alle(ApolloFavViewBinder.1.1.1 param1) {}
+  public alle(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_Almb.a = null;
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

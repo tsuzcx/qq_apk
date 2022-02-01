@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.image.URLImageView android:id="@id/v2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
     <View android:id="@id/v6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/kos" android:visibility="visible" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/n5" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/kos" android:background="@drawable/n5" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" />
     <LinearLayout android:gravity="center_vertical" android:id="@id/kot" android:background="@drawable/t0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerInParent="true">
         <ImageView android:id="@id/ksk" android:visibility="visible" android:layout_width="12.0dip" android:layout_height="13.0dip" android:src="@drawable/drd" android:layout_centerInParent="true" />
         <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/l65" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/pvm" />

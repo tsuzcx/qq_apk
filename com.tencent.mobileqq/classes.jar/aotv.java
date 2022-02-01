@@ -1,140 +1,149 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.sveffects.SLog;
+import java.nio.FloatBuffer;
 
 public class aotv
-  implements aokj<String>, aotf
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  static boolean b = true;
-  private long jdField_a_of_type_Long = 20971520L;
-  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-  public String a;
-  private boolean c;
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
+  public static float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
+  public static final float[] b;
+  protected int a;
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  protected int b;
+  private final String jdField_b_of_type_JavaLangString;
+  public int c = 3553;
+  protected int d = 101;
+  private int e;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  }
   
   public aotv()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord);\n}\n");
   }
   
-  private void a()
+  public aotv(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = 20971520L;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = 3553;
+    this.d = 101;
   }
   
-  private void a(JSONObject paramJSONObject)
+  public static void a(int paramInt, String paramString)
   {
-    try
-    {
-      this.c = paramJSONObject.getBoolean("enableaqq");
-      paramJSONObject = paramJSONObject.getJSONObject("config");
-      if (paramJSONObject != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
-      }
-      for (;;)
-      {
-        QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
-        return;
-        this.jdField_a_of_type_Long = 20971520L;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-      }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
+    if (paramInt < 0) {
+      SLog.e("GPUBaseFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
     }
   }
   
-  public long a()
+  public static void a(String paramString)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ExcitingTransferUploadChnConfigInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    int k = 0;
-    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
-      a();
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
-      {
-        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
     for (;;)
     {
-      int j = k;
-      if (i < localJSONArray.length())
-      {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
-          }
-        }
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
       }
-      else
-      {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
-        a();
-        return;
-      }
-      i += 1;
+      SLog.e("GPUBaseFilter", new RuntimeException(paramString + ": glError " + i));
     }
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.c;
+    return this.e;
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.e = GlUtil.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    if (this.e == 0) {
+      SLog.e("GPUBaseFilter", new RuntimeException("failed creating program " + getClass().getSimpleName()));
+    }
+    this.jdField_a_of_type_Boolean = true;
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    a("onDrawFrame start");
+    int m = a();
+    float[] arrayOfFloat = paramArrayOfFloat1;
+    if (paramArrayOfFloat1 == null)
+    {
+      arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+    }
+    paramArrayOfFloat1 = paramArrayOfFloat2;
+    if (paramArrayOfFloat2 == null)
+    {
+      paramArrayOfFloat1 = new float[16];
+      Matrix.setIdentityM(paramArrayOfFloat1, 0);
+    }
+    GLES20.glUseProgram(m);
+    a("glUseProgram");
+    int i = GLES20.glGetAttribLocation(m, "aPosition");
+    a(i, "aPosition");
+    int j = GLES20.glGetAttribLocation(m, "aTextureCoord");
+    a(j, "aTextureCoord");
+    int k = GLES20.glGetUniformLocation(m, "uMVPMatrix");
+    a(k, "uMVPMatrix");
+    m = GLES20.glGetUniformLocation(m, "uTextureMatrix");
+    a(m, "uTextureMatrix");
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer aPosition");
+    GLES20.glEnableVertexAttribArray(i);
+    a("glEnableVertexAttribArray mPositionHandle");
+    GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
+    a("glVertexAttribPointer mTextureHandle");
+    GLES20.glEnableVertexAttribArray(j);
+    a("glEnableVertexAttribArray mTextureHandle");
+    GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(this.c, paramInt);
+    e();
+    GLES20.glDrawArrays(5, 0, 4);
+    a("glDrawArrays");
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(this.c, 0);
+  }
+  
+  protected void b() {}
+  
+  public void c()
+  {
+    SLog.d("GPUBaseFilter", "destroy");
+    this.jdField_a_of_type_Boolean = false;
+    GLES20.glDeleteProgram(this.e);
+    this.e = 0;
+    d();
+  }
+  
+  protected void d() {}
+  
+  protected void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aotv
  * JD-Core Version:    0.7.0.1
  */

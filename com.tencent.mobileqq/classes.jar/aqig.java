@@ -1,22 +1,24 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class aqig
-  implements ValueAnimator.AnimatorUpdateListener
+  extends anot
 {
-  public aqig(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  public aqig(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
+    if (paramLBSInfo != null) {}
+    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
+    {
+      this.a.a(paramBoolean, paramLBSInfo);
       return;
     }
-    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 

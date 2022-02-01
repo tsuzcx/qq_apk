@@ -35,6 +35,8 @@ public class GPUDecoder
   private boolean released = false;
   private GPUDecoder.OutputFrame successFrame = new GPUDecoder.OutputFrame(null);
   private SurfaceTexture surfaceTexture;
+  private int targetHeight = 0;
+  private int targetWidth = 0;
   
   private static GPUDecoder Create(int paramInt)
   {
@@ -74,6 +76,24 @@ public class GPUDecoder
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  private boolean attachToGLContext(int paramInt)
+  {
+    if (this.surfaceTexture == null) {
+      return false;
+    }
+    try
+    {
+      this.surfaceTexture.detachFromGLContext();
+      this.surfaceTexture.attachToGLContext(paramInt);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
   
   private boolean awaitNewImage()
@@ -182,6 +202,8 @@ public class GPUDecoder
     do
     {
       return false;
+      this.targetWidth = paramMediaFormat.getInteger("width");
+      this.targetHeight = paramMediaFormat.getInteger("height");
       this.outputFormat = paramMediaFormat;
       try
       {
@@ -247,6 +269,8 @@ public class GPUDecoder
     try
     {
       this.decoder.flush();
+      this.bufferInfo = new MediaCodec.BufferInfo();
+      this.lastOutputBufferIndex = -1;
       return;
     }
     catch (Exception localException)
@@ -263,16 +287,6 @@ public class GPUDecoder
       return;
       this.released = true;
       releaseOutputBuffer();
-      if (this.outputSurface != null)
-      {
-        this.outputSurface.release();
-        this.outputSurface = null;
-      }
-      if (this.surfaceTexture != null)
-      {
-        this.surfaceTexture.release();
-        this.surfaceTexture = null;
-      }
       synchronized (handlerLock)
       {
         HandlerThreadCount -= 1;
@@ -283,31 +297,41 @@ public class GPUDecoder
         }
         if (this.decoder == null) {}
       }
-    }
-    try
-    {
-      this.decoder.stop();
-    }
-    catch (Exception localException1)
-    {
       try
       {
-        for (;;)
-        {
-          this.decoder.release();
-          this.decoder = null;
-          return;
-          localObject2 = finally;
-          throw localObject2;
-          localException1 = localException1;
-          localException1.printStackTrace();
-        }
+        this.decoder.stop();
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        for (;;)
+        try
         {
-          localException2.printStackTrace();
+          for (;;)
+          {
+            this.decoder.release();
+            this.decoder = null;
+            if (this.outputSurface != null)
+            {
+              this.outputSurface.release();
+              this.outputSurface = null;
+            }
+            if (this.surfaceTexture == null) {
+              break;
+            }
+            this.surfaceTexture.release();
+            this.surfaceTexture = null;
+            return;
+            localObject2 = finally;
+            throw localObject2;
+            localException1 = localException1;
+            localException1.printStackTrace();
+          }
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            localException2.printStackTrace();
+          }
         }
       }
     }
@@ -341,6 +365,11 @@ public class GPUDecoder
       return queueInputBuffer(i, 0, paramByteBuffer.limit(), paramLong, 0);
     }
     return -1;
+  }
+  
+  private long presentationTime()
+  {
+    return this.bufferInfo.presentationTimeUs;
   }
   
   private int queueInputBuffer(int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
@@ -426,36 +455,26 @@ public class GPUDecoder
     }
   }
   
-  private int videoHeight()
+  private float videoHeight()
   {
-    if (this.outputFormat.containsKey("height")) {}
-    for (int i = this.outputFormat.getInteger("height");; i = 0)
-    {
-      float[] arrayOfFloat = new float[16];
-      this.surfaceTexture.getTransformMatrix(arrayOfFloat);
-      if ((Math.abs(arrayOfFloat[0]) != 1.0F) || (Math.abs(arrayOfFloat[5]) != 1.0F)) {}
-      while ((!this.outputFormat.containsKey("crop-top")) || (!this.outputFormat.containsKey("crop-bottom"))) {
-        return i;
-      }
-      i = this.outputFormat.getInteger("crop-top");
-      return this.outputFormat.getInteger("crop-bottom") - i + 1;
+    float[] arrayOfFloat = new float[16];
+    this.surfaceTexture.getTransformMatrix(arrayOfFloat);
+    float f = Math.abs(arrayOfFloat[5]);
+    if (f > 0.0F) {
+      return this.targetHeight / f;
     }
+    return this.targetHeight;
   }
   
-  private int videoWidth()
+  private float videoWidth()
   {
-    if (this.outputFormat.containsKey("width")) {}
-    for (int i = this.outputFormat.getInteger("width");; i = 0)
-    {
-      float[] arrayOfFloat = new float[16];
-      this.surfaceTexture.getTransformMatrix(arrayOfFloat);
-      if ((Math.abs(arrayOfFloat[0]) != 1.0F) || (Math.abs(arrayOfFloat[5]) != 1.0F)) {}
-      while ((!this.outputFormat.containsKey("crop-left")) || (!this.outputFormat.containsKey("crop-right"))) {
-        return i;
-      }
-      i = this.outputFormat.getInteger("crop-left");
-      return this.outputFormat.getInteger("crop-right") - i + 1;
+    float[] arrayOfFloat = new float[16];
+    this.surfaceTexture.getTransformMatrix(arrayOfFloat);
+    float f = Math.abs(arrayOfFloat[0]);
+    if (f > 0.0F) {
+      return this.targetWidth / f;
     }
+    return this.targetWidth;
   }
   
   public void onFrameAvailable(SurfaceTexture arg1)
@@ -475,7 +494,7 @@ public class GPUDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.GPUDecoder
  * JD-Core Version:    0.7.0.1
  */

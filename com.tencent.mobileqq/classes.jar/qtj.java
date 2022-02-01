@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
 public class qtj
-  implements srx
+  extends qth
 {
-  public qtj(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
-  
-  public void a(int paramInt)
+  public qtj(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    this.a.g();
+    super(paramContext, paramaobu, paramsnh);
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public abstract interface aerd
+public class aerd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public aerd(NotificationActivity paramNotificationActivity) {}
   
-  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
-  
-  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aerd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class atht
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public abstract class atht
 {
-  atht(aths paramaths, String paramString) {}
+  public abstract int a();
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
-  {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
-    }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
-    {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Aths.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Aths.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
-  }
+  public abstract String a();
+  
+  public abstract HashMap<String, ArrayList<MessageRecord>> a();
+  
+  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
+  
+  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
+  
+  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
+  
+  public abstract String b();
 }
 
 

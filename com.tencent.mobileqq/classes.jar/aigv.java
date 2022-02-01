@@ -1,18 +1,27 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigv
-  implements View.OnTouchListener
+public class aigv
+  implements bfwg
 {
-  aigv(aigp paramaigp) {}
+  public aigv(TroopChatPie paramTroopChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      TroopChatPie.b(this.a, true);
+      paramString = (agnt)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      TroopChatPie.b(this.a, false);
+      paramString = (agnt)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

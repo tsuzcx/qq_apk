@@ -1,44 +1,78 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.NoScrollGridView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bfny
+  extends bfnx
 {
-  public static int a(String paramString, int paramInt, long paramLong)
+  protected List<bfoo> a;
+  protected int b = (((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth() - afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - afur.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 3) / 4;
+  protected boolean c = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  
+  public bfny(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Bundle paramBundle)
   {
-    return a(paramLong).getInt(paramString, paramInt);
+    super(paramContext, paramQQAppInterface, paramFragmentActivity, null, paramBundle);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static SharedPreferences a()
+  public int a()
   {
-    int i = Build.VERSION.SDK_INT;
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (i > 10) {}
-    for (i = 4;; i = 0) {
-      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
+    return 1;
+  }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new bfob();
+      paramView = new NoScrollGridView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setNumColumns(4);
+      paramView.setVerticalSpacing(afur.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setHorizontalSpacing(afur.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setPadding(afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setColumnWidth(this.b);
+      paramView.setSelector(new ColorDrawable(0));
+      paramView.setVerticalScrollBarEnabled(false);
+      paramView.setStretchMode(0);
+      paramViewGroup.a = new bfnz(this, this.b);
+      paramViewGroup.a.a(this.jdField_a_of_type_JavaUtilList);
+      paramView.setAdapter(paramViewGroup.a);
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramView.setClickable(false);
+      return paramView;
+      ((bfob)paramView.getTag()).a.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
-  public static SharedPreferences a(long paramLong)
+  public Object a()
   {
-    if (paramLong == 0L) {
-      return a();
-    }
-    String str = bflr.b(String.valueOf(paramLong)) + "_" + "preference";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public void a(Object paramObject)
   {
-    SharedPreferences.Editor localEditor = a(paramLong).edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.commit();
+    if ((paramObject instanceof ArrayList)) {
+      this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfny
  * JD-Core Version:    0.7.0.1
  */

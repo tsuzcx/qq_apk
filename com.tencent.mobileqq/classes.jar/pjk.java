@@ -1,20 +1,51 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pjk
-  implements bhyb
+public class pjk
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pjk(pjj parampjj) {}
+  public static String a = "ViolaPicDetailConfigHandler";
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    pji.a(this.a.jdField_a_of_type_Pji, this.a.jdField_a_of_type_Rvg, this.a.jdField_a_of_type_Pgd, paramInt, paramArrayList, paramObject);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = phv.a(paramString);
+    Object localObject = localMap.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)localMap.get(str1);
+        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
+          bmqa.c(Integer.parseInt(str2));
+        }
+      }
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmqa.c(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjk
  * JD-Core Version:    0.7.0.1
  */

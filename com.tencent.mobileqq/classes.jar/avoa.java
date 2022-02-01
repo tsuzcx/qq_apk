@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
 class avoa
-  implements DialogInterface.OnClickListener
+  implements armd
 {
-  avoa(avnx paramavnx, bdjz parambdjz) {}
+  avoa(avnz paramavnz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(armc paramarmc)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
-    this.jdField_a_of_type_Avnx.a.f();
+    try
+    {
+      paramarmc.dismiss();
+      this.a.mRuntime.a().finish();
+      bcst.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Throwable paramarmc)
+    {
+      for (;;)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent", paramarmc);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avoa
  * JD-Core Version:    0.7.0.1
  */

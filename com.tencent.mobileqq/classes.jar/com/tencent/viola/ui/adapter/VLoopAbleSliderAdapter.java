@@ -7,6 +7,7 @@ import com.tencent.viola.ui.action.MethodAbsAdd;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.view.IVView;
 import com.tencent.viola.ui.view.VSliderView;
 import java.util.ArrayList;
 
@@ -58,7 +59,7 @@ public class VLoopAbleSliderAdapter
   
   private void initCellScale(int paramInt, View paramView, VComponent paramVComponent)
   {
-    if (this.mSliderView == null) {}
+    if ((this.mSliderView == null) || (paramView == null) || (paramVComponent == null)) {}
     int i;
     do
     {
@@ -94,6 +95,13 @@ public class VLoopAbleSliderAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
+    if ((paramObject instanceof IVView))
+    {
+      VComponent localVComponent = ((IVView)paramObject).getComponent();
+      if (localVComponent != null) {
+        localVComponent.onRecycler();
+      }
+    }
     paramViewGroup.removeView((View)paramObject);
   }
   
@@ -195,7 +203,7 @@ public class VLoopAbleSliderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VLoopAbleSliderAdapter
  * JD-Core Version:    0.7.0.1
  */

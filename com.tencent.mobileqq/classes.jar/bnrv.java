@@ -1,34 +1,16 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnrv
+class bnrv
+  implements View.OnClickListener
 {
-  public static void a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("crashKind", "" + paramInt);
-    azri.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
-  }
+  bnrv(bnrr parambnrr) {}
   
-  public static void a(String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("time", "" + paramLong);
-    localHashMap.put("filter_id", bnrw.jdField_a_of_type_JavaLangString);
-    localHashMap.put("front_camera", String.valueOf(bnrw.jdField_a_of_type_Boolean));
-    azri.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, bnqj.c, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bnrw.jdField_a_of_type_JavaLangString + " ; front_camera = " + bnrw.jdField_a_of_type_Boolean);
-    }
+    bnrr.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

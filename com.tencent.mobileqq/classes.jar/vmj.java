@@ -1,81 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
-public final class vmj
+class vmj
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
-    paramContext.startActivity(localIntent);
-  }
+  vmj(vmh paramvmh) {}
   
-  public static void a(Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    if (a(paramContext, paramString))
+    if ((this.a.a != null) && (!TextUtils.isEmpty(this.a.a.operation.opUser.id.get())))
     {
-      b(paramContext, paramString);
-      return;
-    }
-    a(paramContext);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
-    try
-    {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      if (paramView.getId() != 2131369037) {
+        break label115;
       }
+      vrf.a(this.a.a.operation.opUser.id.get(), 17, 8);
     }
-    if (paramContext != null) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, xof paramxof)
-  {
-    if (paramxof == null) {
-      return false;
-    }
-    return a(paramContext, String.valueOf(paramxof.jdField_a_of_type_Long), String.valueOf(paramxof.jdField_a_of_type_Int));
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString != null) {
-      paramContext.startActivity(paramString);
+    for (;;)
+    {
+      uxo.a(this.a.a.operation.opUser.id.get(), this.a.a().clone().setElementIdStr("portrait"));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label115:
+      if (paramView.getId() == 2131379783) {
+        vrf.a(this.a.a.operation.opUser.id.get(), 17, 9);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,125 +1,129 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.tavcut.bean.Size;
-import java.io.File;
-import java.util.ArrayList;
+import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
 import java.util.HashMap;
+import java.util.Map;
 
-public class blpw
+public final class blpw
 {
-  public static void a(int paramInt, @Nullable Activity paramActivity, @Nullable aiqy paramaiqy, @Nullable String paramString, boolean paramBoolean)
+  private static Map<String, String> a = new HashMap();
+  
+  static
   {
-    if ((paramActivity == null) || (paramaiqy == null)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(paramaiqy.selectedPhotoList);
-    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean))
-    {
-      a(paramInt, paramaiqy.albumName, paramaiqy.albumId, paramActivity, localArrayList, paramaiqy.selectedMediaInfoHashMap, paramString);
-      return;
-    }
-    int i = blat.y.a();
-    if (blat.j(paramActivity.getIntent())) {
-      i = blat.A.a();
-    }
-    if (paramInt == 1)
-    {
-      a(paramActivity, localArrayList, paramaiqy.selectedMediaInfoHashMap, i);
-      return;
-    }
-    a(paramActivity, localArrayList, paramaiqy.selectedMediaInfoHashMap, i);
+    a.put("qqreaderMan", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderWoman", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderPublish", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderBookShelfIndex", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_index.html");
+    a.put("qqreaderBookShelfBookList", "https://cdn.vip.qq.com/club/client/read/6/rel/man.html");
+    a.put("qqreaderBookShelfFm", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_fm.html");
+    a.put("qqreaderBookShelfFollow", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_follow.html");
+    a.put("qqreaderBookShelfDelete", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_delete.html");
+    a.put("qqreaderTribe", "https://cdn.vip.qq.com/club/client/read/6/rel/tribe.html");
+    a.put("qqreaderSearchResult", "https://cdn.vip.qq.com/club/client/read/6/rel/new_search.html");
+    a.put("qqreaderAccount", "https://cdn.vip.qq.com/club/client/read/6/rel/mine_index.html");
+    a.put("qqreaderAppdown", "https://cdn.vip.qq.com/club/client/read/6/rel/appdown.html");
+    a.put("qqreaderInteract", "https://cdn.vip.qq.com/club/client/read/6/rel/interact.html");
+    a.put("qqreaderComment", "https://cdn.vip.qq.com/club/client/read/6/rel/comment.html");
+    a.put("qqreaderReadover", "https://cdn.vip.qq.com/club/client/read/6/rel/readover.html");
+    a.put("qqreaderBookFont", "https://cdn.vip.qq.com/club/client/read/6/rel/bookFont.html");
+    a.put("qqreaderBookDetails", "https://cdn.vip.qq.com/club/client/read/6/rel/bookDetails.html");
+    a.put("qqreaderOffShelf", "https://cdn.vip.qq.com/club/client/read/6/rel/book_offShelf.html");
+    a.put("qqreaderBookOutDetail", "https://cdn.vip.qq.com/club/client/read/6/rel/book_outDetail.html");
+    a.put("qqreaderQQMoreState", "https://cdn.vip.qq.com/club/client/read/6/rel/userstate.html");
   }
   
-  public static void a(int paramInt, @Nullable String paramString1, @Nullable String paramString2, @Nullable Activity paramActivity, @Nullable ArrayList<String> paramArrayList, @Nullable HashMap<String, LocalMediaInfo> paramHashMap, @Nullable String paramString3)
+  public static String a(String paramString)
   {
-    if ((paramActivity == null) || (paramArrayList == null) || (paramHashMap == null) || (paramString3 == null)) {}
-    Bundle localBundle;
-    int i;
+    return a(paramString, true);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = d(paramString);
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/index.html";
+      }
+      localObject = new StringBuilder().append(paramString);
+      if (!paramString.contains("?")) {
+        break label170;
+      }
+    }
+    label170:
+    for (paramString = "&";; paramString = "?")
+    {
+      paramString = paramString;
+      localObject = paramString + "_bid=2036&refer=qqreader";
+      paramString = (String)localObject;
+      if (!((String)localObject).contains("&ChannelID=")) {
+        paramString = (String)localObject + "&ChannelID=" + blpz.a();
+      }
+      localObject = paramString;
+      if (QRDebugEnvUrlUtils.isDebugEnv()) {
+        localObject = QRDebugEnvUrlUtils.getTestUrl(paramString);
+      }
+      blpu.e("ReaderUrlHelper", "getUrlWithBid = " + (String)localObject);
+      return localObject;
+      paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/" + paramString;
+      break;
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    String str;
+    if (paramString == null) {
+      str = a("index.html", false);
+    }
     do
     {
-      return;
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.SELECTED_PATHS", paramArrayList);
-      localBundle.putString("res_path", paramString3);
-      localBundle.putString("albumName", paramString1);
-      localBundle.putString("albumId", paramString2);
-      localBundle.putSerializable("PeakConstants.selectedMediaInfoHashMap", paramHashMap);
-      i = blat.y.a();
-      if (blat.j(paramActivity.getIntent())) {
-        i = blat.A.a();
-      }
-      if (paramInt == 0)
+      do
       {
-        bljx.a(paramActivity, 0, localBundle, i);
-        return;
+        return str;
+        str = paramString;
+      } while (paramString.toLowerCase().startsWith("http://"));
+      str = paramString;
+    } while (paramString.toLowerCase().startsWith("file://"));
+    return c(paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    if ((paramString != null) && (!paramString.equals(""))) {
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        String str = paramString;
+        if (QRDebugEnvUrlUtils.isDebugEnv()) {
+          str = QRDebugEnvUrlUtils.getTestUrl(paramString);
+        }
+        return str;
       }
-    } while (paramInt != 1);
-    bljx.a(paramActivity, 1, localBundle, i);
+    }
+    for (paramString = a(paramString, false);; paramString = a("index.html", false)) {
+      return paramString;
+    }
   }
   
-  public static void a(@Nullable Activity paramActivity, @Nullable ArrayList<String> paramArrayList, @Nullable HashMap<String, LocalMediaInfo> paramHashMap, int paramInt)
+  private static String d(String paramString)
   {
-    if ((paramActivity == null) || (paramArrayList == null) || (paramHashMap == null)) {
-      return;
+    String str2 = null;
+    String str1;
+    if ((blol.a != null) && (blol.a.size() > 0)) {
+      str1 = (String)blol.a.get(paramString);
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
-    localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", paramHashMap);
-    localIntent.putExtra("video_photo_from", paramInt);
-    bjdt.a(paramActivity, localIntent);
-  }
-  
-  public static void a(@Nullable Context paramContext, @Nullable String paramString, @Nullable LocalMediaInfo paramLocalMediaInfo, int paramInt)
-  {
-    if ((paramContext == null) || (paramString == null) || (paramLocalMediaInfo == null)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString, paramLocalMediaInfo);
-    paramString = new Intent();
-    paramString.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    paramString.putExtra("PeakConstants.selectedMediaInfoHashMap", localHashMap);
-    paramString.putExtra("video_photo_from", paramInt);
-    bjdt.a(paramContext, paramString);
-  }
-  
-  public static void a(@Nullable Context paramContext, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @Nullable Size paramSize, @Nullable ArrayList paramArrayList, int paramInt)
-  {
-    if ((paramContext == null) || (paramString2 == null) || (paramString1 == null) || (paramSize == null)) {}
-    while (!new File(paramString2).exists()) {
-      return;
-    }
-    paramString2 = blpx.a(paramSize.getHeight(), paramSize.getWidth(), paramString1, paramString2, paramString3);
-    if (paramArrayList != null) {
-      paramString2.aiTextLabel = paramArrayList;
-    }
-    a(paramContext, paramString1, paramString2, paramInt);
-  }
-  
-  public static void a(@Nullable Context paramContext, @Nullable ArrayList<String> paramArrayList, @Nullable HashMap<String, LocalMediaInfo> paramHashMap, int paramInt)
-  {
-    if ((paramContext == null) || (paramArrayList == null) || (paramHashMap == null)) {
-      return;
-    }
-    Intent localIntent1 = new Intent();
-    if ((paramContext instanceof Activity))
+    for (;;)
     {
-      Intent localIntent2 = ((Activity)paramContext).getIntent();
-      if ((localIntent2 != null) && (localIntent2.getExtras() != null)) {
-        localIntent1.putExtras(localIntent2.getExtras());
+      blpu.d("ReaderUrlHelper", "getUrl = " + str1);
+      return str1;
+      if (blol.a != null) {
+        str2 = (String)blol.a.get(paramString);
+      }
+      str1 = str2;
+      if (str2 == null) {
+        str1 = (String)a.get(paramString);
       }
     }
-    localIntent1.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
-    localIntent1.putExtra("PeakConstants.selectedMediaInfoHashMap", paramHashMap);
-    localIntent1.putExtra("video_photo_from", paramInt);
-    bjdt.a(paramContext, localIntent1);
   }
 }
 

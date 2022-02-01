@@ -1,33 +1,26 @@
-class vre
-  implements wkc
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
+
+public class vre
 {
-  vre(vrd paramvrd) {}
-  
-  public void a(int paramInt)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    if ((paramInt == 1) && (vrd.a(this.a) != null) && (vrd.a(this.a).a != null))
-    {
-      if (vrd.a(this.a).a()) {
-        break label66;
-      }
-      if (vrd.a(this.a).a(true)) {
-        vrd.a(this.a).c();
-      }
-    }
-    label66:
-    do
-    {
-      return;
-      if (vrd.a(this.a).a(false)) {
-        vrd.b(this.a).c();
-      }
-    } while (!vrd.a(this.a).a(true));
-    vrd.a(this.a).c();
+    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  {
+    vrl.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
+  }
+  
+  private static int b()
+  {
+    return 5503;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vre
  * JD-Core Version:    0.7.0.1
  */

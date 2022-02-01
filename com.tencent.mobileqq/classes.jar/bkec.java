@@ -1,18 +1,53 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.sharp.jni.TraeAudioManager;
 
-class bkec
-  implements View.OnTouchListener
+public class bkec
 {
-  bkec(bkeb parambkeb) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bkec(bkeb parambkeb) {}
+  
+  public int a()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      bkeb.a(this.a);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    while (TraeAudioManager.a(paramString) != true) {
+      return false;
     }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
     return true;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

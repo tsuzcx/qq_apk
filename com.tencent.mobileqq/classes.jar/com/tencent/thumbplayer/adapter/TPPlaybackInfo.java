@@ -11,13 +11,13 @@ public class TPPlaybackInfo
   private long audioBitRate;
   private String audioCodec;
   private int audioProfile;
-  private long bufferMs;
   private int channels;
   private String containerFormat;
   private int currentPlayClipNo;
   private long currentPositionMs;
   private long durationMs;
   private long height;
+  private long playableDurationMs;
   private long sampleRate;
   private long videoBitRate;
   private String videoCodec;
@@ -108,7 +108,7 @@ public class TPPlaybackInfo
     this.videoLevel = 0;
     this.currentPositionMs = 0L;
     this.durationMs = 0L;
-    this.bufferMs = 0L;
+    this.playableDurationMs = 0L;
     this.currentPlayClipNo = 0;
   }
   
@@ -125,11 +125,6 @@ public class TPPlaybackInfo
   public int getAudioProfile()
   {
     return this.audioProfile;
-  }
-  
-  public long getBufferMs()
-  {
-    return this.bufferMs;
   }
   
   public int getChannels()
@@ -160,6 +155,11 @@ public class TPPlaybackInfo
   public long getHeight()
   {
     return this.height;
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    return this.playableDurationMs;
   }
   
   public long getSampleRate()
@@ -212,11 +212,6 @@ public class TPPlaybackInfo
     this.audioProfile = paramInt;
   }
   
-  public void setBufferMs(long paramLong)
-  {
-    this.bufferMs = paramLong;
-  }
-  
   public void setChannels(int paramInt)
   {
     this.channels = paramInt;
@@ -245,6 +240,11 @@ public class TPPlaybackInfo
   public void setHeight(long paramLong)
   {
     this.height = paramLong;
+  }
+  
+  public void setPlayableDurationMs(long paramLong)
+  {
+    this.playableDurationMs = paramLong;
   }
   
   public void setSampleRate(long paramLong)
@@ -284,7 +284,7 @@ public class TPPlaybackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

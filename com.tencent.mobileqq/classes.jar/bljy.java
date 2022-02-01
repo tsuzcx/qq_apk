@@ -1,227 +1,83 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import java.util.HashMap;
+import ConfigPush.DomainIpChannel;
+import ConfigPush.DomainIpInfo;
+import ConfigPush.DomainIpList;
+import ConfigPush.FileStoragePushFSSvcList;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class bljy
 {
-  private static final String jdField_a_of_type_JavaLangString = bljy.class.getSimpleName();
-  private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private HashMap<Class<? extends AEEditorBaseFragment>, AEEditorBaseFragment> jdField_a_of_type_JavaUtilHashMap;
+  protected String a;
+  protected String b;
+  protected String c;
   
-  public bljy(FragmentManager paramFragmentManager)
+  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = paramFragmentManager;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  private AEEditorBaseFragment a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((AEEditorBaseFragment)localEntry.getValue()).isVisible()) {
-        return (AEEditorBaseFragment)localEntry.getValue();
+      i = 4;
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
+      if (localObject != null) {
+        break label32;
       }
     }
-    return null;
-  }
-  
-  private void a(AEEditorBaseFragment paramAEEditorBaseFragment, Class<? extends AEEditorBaseFragment> paramClass, String paramString, Bundle paramBundle, boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass)) || (this.jdField_a_of_type_JavaUtilHashMap.get(paramClass) == null)) {}
-    AEEditorBaseFragment localAEEditorBaseFragment;
-    for (;;)
+    label32:
+    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
     {
-      Map.Entry localEntry;
-      try
-      {
-        localAEEditorBaseFragment = (AEEditorBaseFragment)paramClass.newInstance();
-        localAEEditorBaseFragment.a(this);
-        if (localAEEditorBaseFragment.getArguments() != null) {
-          break label227;
-        }
-        localAEEditorBaseFragment.setArguments(paramBundle);
-        localAEEditorBaseFragment.jdField_a_of_type_JavaLangString = paramString;
-        paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-        paramString = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)localIterator.next();
-        if ((!paramBoolean) || (paramAEEditorBaseFragment == null) || (!((AEEditorBaseFragment)localEntry.getValue()).equals(paramAEEditorBaseFragment))) {
-          break label240;
-        }
-        paramString = (Class)localEntry.getKey();
-        continue;
-        localAEEditorBaseFragment = (AEEditorBaseFragment)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass);
-      }
-      catch (IllegalAccessException paramAEEditorBaseFragment)
-      {
-        bljn.d(jdField_a_of_type_JavaLangString, "replaceFragment: " + Log.getStackTraceString(paramAEEditorBaseFragment));
-        return;
-      }
-      catch (InstantiationException paramAEEditorBaseFragment)
-      {
-        bljn.d(jdField_a_of_type_JavaLangString, "replaceFragment: " + Log.getStackTraceString(paramAEEditorBaseFragment));
-        return;
-      }
-      localAEEditorBaseFragment.a(this);
-      continue;
-      label227:
-      localAEEditorBaseFragment.getArguments().putAll(paramBundle);
-      continue;
-      label240:
-      paramBundle.hide((Fragment)localEntry.getValue());
-    }
-    if ((paramBoolean) && (paramAEEditorBaseFragment != null))
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      }
-      paramBundle.remove(paramAEEditorBaseFragment);
-    }
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag(paramClass.getName()) == null) {
-      paramBundle.add(2131362207, localAEEditorBaseFragment, paramClass.getName()).commit();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass, localAEEditorBaseFragment);
       return;
-      paramBundle.show(localAEEditorBaseFragment).commit();
+      i = 0;
+      break;
     }
-  }
-  
-  private void a(Class<? extends AEEditorBaseFragment> paramClass, String paramString, Bundle paramBundle)
-  {
-    a(null, paramClass, paramString, paramBundle, false);
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    a(paramActivity, false);
-  }
-  
-  public void a(Activity paramActivity, boolean paramBoolean)
-  {
-    if (paramActivity == null) {}
-    AEEditorBaseFragment localAEEditorBaseFragment;
-    do
+    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
+    while (paramFileStoragePushFSSvcList.hasNext())
     {
-      boolean bool1;
-      do
+      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
       {
-        do
+        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
         {
-          return;
-          localAEEditorBaseFragment = a();
-        } while (localAEEditorBaseFragment == null);
-        boolean bool2 = false;
-        bool1 = bool2;
-        if (localAEEditorBaseFragment.isVisible())
-        {
-          bool1 = bool2;
-          if (paramBoolean) {
-            bool1 = false | localAEEditorBaseFragment.a();
+          i = 0;
+          while (i < localDomainIpList.vIplist.size())
+          {
+            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
+            localStringBuilder.append(bgnt.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
+            if (i < localDomainIpList.vIplist.size() - 1) {
+              localStringBuilder.append("|");
+            }
+            i += 1;
           }
         }
-      } while (bool1);
-      try
-      {
-        localAEEditorBaseFragment.a();
-        if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null) && (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorVideoEdit")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoClip")))
+      }
+      else {
+        switch (localDomainIpList.uDomain_type)
         {
-          paramActivity = new Bundle(localAEEditorBaseFragment.getArguments());
-          c(localAEEditorBaseFragment.a(), paramActivity);
-          return;
+        default: 
+          break;
+        case 4: 
+          this.a = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
+          break;
+        case 5: 
+          this.c = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
+          break;
+        case 6: 
+          this.b = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
         }
       }
-      catch (Throwable paramActivity)
-      {
-        bljn.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramActivity));
-        return;
-      }
-      if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null) && (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorImageClip")) && (localAEEditorBaseFragment.a().equals("AEEditorImageEdit")))
-      {
-        a(localAEEditorBaseFragment, null, new Bundle(localAEEditorBaseFragment.getArguments()), true);
-        return;
-      }
-      if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null) && (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorVideoClip")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
-      {
-        b(localAEEditorBaseFragment, null, new Bundle(localAEEditorBaseFragment.getArguments()), true);
-        return;
-      }
-    } while (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null);
-    bljn.b(jdField_a_of_type_JavaLangString, "goBack finish activity");
-    b(paramActivity);
-    paramActivity.finish();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "enter");
-    if (bljx.a(paramBundle))
-    {
-      a(null, paramBundle);
-      return;
     }
-    if (bljx.b(paramBundle))
-    {
-      b(null, paramBundle);
-      return;
-    }
-    throw new RuntimeException("invalid editor type");
-  }
-  
-  public void a(AEEditorBaseFragment paramAEEditorBaseFragment, String paramString, Bundle paramBundle, boolean paramBoolean)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "gotoImageClipModule from " + paramString);
-    a(paramAEEditorBaseFragment, AEEditorImageClipFragment.class, paramString, paramBundle, paramBoolean);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "gotoImageEditModule from " + paramString);
-    a(AEEditorImageEditFragment.class, paramString, paramBundle);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    paramActivity.finish();
-  }
-  
-  public void b(AEEditorBaseFragment paramAEEditorBaseFragment, String paramString, Bundle paramBundle, boolean paramBoolean)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "gotoVideoClipModule from " + paramString);
-    a(paramAEEditorBaseFragment, AEEditorVideoClipFragment.class, paramString, paramBundle, paramBoolean);
-  }
-  
-  public void b(String paramString, Bundle paramBundle)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "gotoVideoClipModule from " + paramString);
-    a(AEEditorVideoClipFragment.class, paramString, paramBundle);
-  }
-  
-  public void c(String paramString, Bundle paramBundle)
-  {
-    bljn.b(jdField_a_of_type_JavaLangString, "gotoVideoEditModule from " + paramString);
-    a(AEEditorVideoEditFragment.class, paramString, paramBundle);
+    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
+    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
   }
 }
 

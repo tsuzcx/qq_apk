@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ohl;
-import ohp;
+import ouc;
+import oug;
 
 public class SyncSteps$2
   implements Runnable
 {
-  public SyncSteps$2(ohp paramohp, ohl paramohl) {}
+  public SyncSteps$2(oug paramoug, ouc paramouc) {}
   
   public void run()
   {

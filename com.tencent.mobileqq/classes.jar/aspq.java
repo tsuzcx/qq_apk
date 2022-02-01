@@ -1,73 +1,71 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import java.io.UnsupportedEncodingException;
+
 public class aspq
+  implements TextWatcher
 {
-  aspr a;
+  public aspq(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public aspq(int paramInt)
+  private int a(String paramString)
   {
-    this.a = new aspr(paramInt);
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
+    byte[] arrayOfByte = new byte[0];
+    try
     {
-    default: 
-      return "";
-    case 1: 
-      return "graytip";
-    case 2: 
-      return "nor_text";
-    case 3: 
-      return "url";
-    case 4: 
-      return "qq";
-    case 5: 
-      return "img";
-    case 6: 
-      return "dialog";
-    case 7: 
-      return "title";
-    case 8: 
-      return "alter";
-    case 9: 
-      return "btn";
+      paramString = paramString.getBytes("utf-8");
+      if (paramString.length % 3 == 0) {
+        return paramString.length / 3;
+      }
     }
-    return "item";
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
+    catch (UnsupportedEncodingException paramString)
     {
-    default: 
-      return "";
-    case 1: 
-      return "align";
-    case 2: 
-      return "text";
-    case 3: 
-      return "size";
-    case 4: 
-      return "jump";
-    case 5: 
-      return "color";
-    case 6: 
-      return "uin";
-    case 7: 
-      return "name";
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = arrayOfByte;
+      }
     }
-    return "src";
+    return paramString.length / 3 + 1;
   }
   
-  public aspr a()
+  private String a(String paramString)
   {
-    return this.a;
+    while (a(paramString) > 32)
+    {
+      int i = paramString.length();
+      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
+        paramString = paramString.substring(0, i - 2);
+      } else {
+        paramString = paramString.substring(0, i - 1);
+      }
+    }
+    return paramString;
   }
   
-  public String toString()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return aspr.a(this.a, 0);
+    paramEditable = this.a.a.getText().toString();
+    if (a(paramEditable) > 32)
+    {
+      int i = this.a.a.getSelectionStart();
+      paramEditable = a(paramEditable);
+      this.a.a.setText(paramEditable);
+      if (i >= paramEditable.length()) {
+        this.a.a.setSelection(paramEditable.length());
+      }
+    }
+    if (this.a.h)
+    {
+      bcst.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
+      this.a.h = false;
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,15 +1,25 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-class airl
-  implements View.OnClickListener
+public class airl
+  implements View.OnTouchListener
 {
-  airl(airj paramairj) {}
+  public airl(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

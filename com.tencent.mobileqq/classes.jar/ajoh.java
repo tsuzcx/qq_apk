@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
+import android.animation.ValueAnimator;
+import android.widget.ProgressBar;
 
 public class ajoh
-  implements DialogInterface.OnClickListener
 {
-  public ajoh(CameraPreviewNew.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
+    localValueAnimator.addUpdateListener(new ajoi(paramProgressBar));
+    return localValueAnimator;
+  }
 }
 
 

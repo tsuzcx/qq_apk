@@ -1,23 +1,64 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
-public final class awpb
-  implements Parcelable.Creator<PersonalityLabel>
+public class awpb
+  implements aqiv
 {
-  public PersonalityLabel a(Parcel paramParcel)
+  public awpb(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  
+  public void a()
   {
-    return new PersonalityLabel(paramParcel);
+    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    {
+      MsgBackupDateFragment.a(this.a).dismiss();
+      MsgBackupDateFragment.b(this.a);
+      MsgBackupDateFragment.a(this.a);
+      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
+    }
   }
   
-  public PersonalityLabel[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new PersonalityLabel[paramInt];
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
+      MsgBackupDateFragment.a(this.a);
+      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        MsgBackupDateFragment.a(this.a).a(2);
+      }
+      return;
+      if (MsgBackupDateFragment.b(this.a) == 1)
+      {
+        MsgBackupDateFragment.b(this.a, paramInt2);
+      }
+      else if (MsgBackupDateFragment.b(this.a) == 2)
+      {
+        MsgBackupDateFragment.c(this.a, paramInt2);
+        continue;
+        if (MsgBackupDateFragment.b(this.a) == 1)
+        {
+          MsgBackupDateFragment.d(this.a, paramInt2);
+        }
+        else if (MsgBackupDateFragment.b(this.a) == 2)
+        {
+          MsgBackupDateFragment.e(this.a, paramInt2);
+          continue;
+          if (MsgBackupDateFragment.b(this.a) == 1) {
+            MsgBackupDateFragment.f(this.a, paramInt2);
+          } else if (MsgBackupDateFragment.b(this.a) == 2) {
+            MsgBackupDateFragment.g(this.a, paramInt2);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpb
  * JD-Core Version:    0.7.0.1
  */

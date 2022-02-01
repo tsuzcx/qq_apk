@@ -1,166 +1,72 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForInterstitial;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialManager.1;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aaoq
+public class aaoq
+  extends bdzm
 {
-  private static volatile aaoq jdField_a_of_type_Aaoq;
-  private volatile aaoi jdField_a_of_type_Aaoi;
-  private aaor jdField_a_of_type_Aaor = new aaor();
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-  private Map<String, WeakReference<GdtInterstitialFragment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public aaoq(TroopMemberApiService paramTroopMemberApiService) {}
   
-  private aaoq(aaoi paramaaoi)
+  public void handleMessage(Message paramMessage)
   {
-    AdThreadManager.INSTANCE.post(new GdtInterstitialManager.1(this), 0);
-    this.jdField_a_of_type_Aaoi = paramaaoi;
-  }
-  
-  public static aaoq a()
-  {
-    if (jdField_a_of_type_Aaoq == null) {}
-    try
+    bduk localbduk;
+    Bundle localBundle;
+    if ((TroopMemberApiService.j(this.a) instanceof QQAppInterface))
     {
-      if (jdField_a_of_type_Aaoq == null)
+      localbduk = (bduk)paramMessage.obj;
+      localBundle = new Bundle();
+      localBundle.putInt("seq", this.a.c);
+    }
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+    case 1003: 
+      do
       {
-        aaoi localaaoi = new aaoi();
-        localaaoi.a = "com.tencent.tangram.interstitial";
-        localaaoi.b = "Index";
-        localaaoi.c = "1.0.0.1";
-        jdField_a_of_type_Aaoq = new aaoq(localaaoi);
-      }
-      return jdField_a_of_type_Aaoq;
-    }
-    finally {}
-  }
-  
-  public long a(Context paramContext)
-  {
-    long l = 10000L;
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
-    for (;;)
-    {
-      aase.b("GdtInterstitialManager", String.format("getTimeoutMillis %d", new Object[] { Long.valueOf(l) }));
-      return l;
-      if (paramContext.settingsForInterstitial.timeoutMillis > 0) {
-        l = paramContext.settingsForInterstitial.timeoutMillis;
-      }
-    }
-  }
-  
-  public aaoi a()
-  {
-    return this.jdField_a_of_type_Aaoi;
-  }
-  
-  public aaor a()
-  {
-    return this.jdField_a_of_type_Aaor;
-  }
-  
-  public GdtAppReceiver a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  }
-  
-  public WeakReference<GdtInterstitialFragment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return null;
-    }
-    return (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    aase.b("GdtInterstitialManager", String.format("init %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (this.jdField_a_of_type_Boolean) {
+        do
+        {
+          return;
+          if (localbduk.jdField_b_of_type_Int != 64) {
+            break;
+          }
+          this.a.jdField_a_of_type_Int = bdwp.jdField_a_of_type_Int;
+        } while (this.a.jdField_a_of_type_Int == this.a.jdField_b_of_type_Int);
+        this.a.jdField_b_of_type_Int = this.a.jdField_a_of_type_Int;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + this.a.jdField_a_of_type_Int);
+        }
+        paramMessage = (axeq)((QQAppInterface)TroopMemberApiService.k(this.a)).a(60);
+        if (paramMessage != null) {
+          paramMessage.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, true);
+        }
+        localBundle.putInt("head_id", this.a.jdField_a_of_type_Int);
+        localBundle.putString("video_id", this.a.jdField_b_of_type_JavaLangString);
+        localBundle.putBoolean("isSuccess", true);
+        this.a.a(75, localBundle);
+        return;
+        if (localbduk.jdField_b_of_type_Int == 39)
+        {
+          this.a.jdField_b_of_type_JavaLangString = ((bdwp)localbduk.a).jdField_b_of_type_JavaLangString;
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + this.a.jdField_b_of_type_JavaLangString);
+          }
+          axek.a((QQAppInterface)TroopMemberApiService.l(this.a), this.a.jdField_a_of_type_JavaLangString);
+          return;
+        }
+        localBundle.putBoolean("isSuccess", false);
+        this.a.a(75, localBundle);
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
       return;
     }
-    synchronized (jdField_a_of_type_Aaoq)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
     }
-    this.jdField_a_of_type_Boolean = true;
-    aaqp.a().a("ipc_interstitial_close", new aaop());
-    aaqp.a().a("ipc_interstitial_predownload", new aaow());
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
-    for (boolean bool = false;; bool = paramContext.settingsForInterstitial.enablePreDownload)
-    {
-      aase.b("GdtInterstitialManager", String.format("isPreDownloadEnabled %b", new Object[] { Boolean.valueOf(bool) }));
-      return bool;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      aase.b("GdtInterstitialManager", String.format("unregister %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-      {
-        bool = false;
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        bool = true;
-      }
-    }
-  }
-  
-  public boolean a(String paramString, WeakReference<GdtInterstitialFragment> paramWeakReference)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      aase.b("GdtInterstitialManager", String.format("register %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        bool = false;
-      } else if (paramWeakReference != null)
-      {
-        if (paramWeakReference.get() == null)
-        {
-          bool = false;
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, paramWeakReference);
-          bool = true;
-        }
-      }
-      else {
-        bool = false;
-      }
-    }
+    localBundle.putBoolean("isSuccess", false);
+    this.a.a(75, localBundle);
   }
 }
 

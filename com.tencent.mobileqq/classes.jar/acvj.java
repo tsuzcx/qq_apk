@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import java.util.LinkedHashSet;
 
-public class acvj
-  implements View.OnClickListener
+class acvj
 {
-  public acvj(EditActivity paramEditActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
-    }
-    this.a.finish();
-  }
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 9223372036854775807L;
+  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
+  boolean jdField_a_of_type_Boolean = false;
+  long jdField_b_of_type_Long = 0L;
+  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  boolean jdField_b_of_type_Boolean = true;
 }
 
 

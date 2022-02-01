@@ -1,43 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class arhi
-  extends nac
+public class arhi
+  implements View.OnClickListener
 {
-  arhi(arhj paramarhj) {}
+  public arhi(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      paramBundle = new oidb_0x6e7.RspBody();
-    }
-    do
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
-        }
-        if (this.a != null) {
-          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
-      }
-    } while (this.a == null);
-    this.a.a(0, -1);
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      apok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

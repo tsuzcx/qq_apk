@@ -62,7 +62,7 @@
                         "attributes":{
                             "setTextColorString:":"#262626",
                             "setText:":"-1",
-                            "setFontSizeString:":"16",
+                            "setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
                             "setNumberOfLinesString:":"2"
                         }
                     },
@@ -136,7 +136,7 @@
                                 },
                                 "attributes":{
                                     "setImageWithURLString:lineup:":[
-                                        "http://qqpublic.qpic.cn/qq_public/0/0-3030705149-B735C794A2F2BCD2E20AF146D98BFF73/0",
+                                        "http://pub.idqqimg.com/pc/misc/files/20200609/fc8e82577f894da2a35eeb26a4e79c73.png",
                                         "1"
                                     ]
                                 }

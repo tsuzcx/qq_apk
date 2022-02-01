@@ -1,51 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
-class azmn
-  implements ajal
+public class azmn
 {
-  azmn(azml paramazml, azmt paramazmt, SoConfig.SoDetailInfo paramSoDetailInfo, DownloadParam paramDownloadParam) {}
+  public List<azmo> a = new ArrayList(1);
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] download resCode=" + paramInt + ",pathRes=" + paramPathResult);
-    }
-    VACDReportUtil.a(azml.a(this.jdField_a_of_type_Azml).a, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
-    azml.a(this.jdField_a_of_type_Azml, paramPathResult.subErrCode);
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      azml.a(this.jdField_a_of_type_Azml, true);
-      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Azmt.b).getAbsolutePath();
-      if (azml.a(this.jdField_a_of_type_Azml, paramPathResult, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, this.jdField_a_of_type_Azmt, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo, 2))
-      {
-        azml.a(this.jdField_a_of_type_Azml, paramPathResult, this.jdField_a_of_type_Azmt, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url);
-        return;
+      azmo localazmo = (azmo)localIterator.next();
+      if ((paramString != null) && (paramString.equals(localazmo.a))) {
+        return localazmo.b;
       }
-      azml.a(this.jdField_a_of_type_Azml, 10);
-      return;
     }
-    if (azml.a(this.jdField_a_of_type_Azml, this.jdField_a_of_type_Azmt))
+    return null;
+  }
+  
+  public void a(bguh parambguh)
+  {
+    if (parambguh != null)
     {
-      azml.a(this.jdField_a_of_type_Azml, 0);
-      return;
+      parambguh.a();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        parambguh.a(2131365147, ((azmo)localIterator.next()).a, 0);
+      }
     }
-    if (paramInt == 2)
-    {
-      azml.a(this.jdField_a_of_type_Azml, 4);
-      return;
-    }
-    if (paramPathResult.subErrCode == 404)
-    {
-      azml.a(this.jdField_a_of_type_Azml, 9, paramPathResult.url);
-      return;
-    }
-    azml.a(this.jdField_a_of_type_Azml, 3);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.add(new azmo(paramString1, paramString2));
+  }
+  
+  public String toString()
+  {
+    return Arrays.toString(this.a.toArray());
   }
 }
 

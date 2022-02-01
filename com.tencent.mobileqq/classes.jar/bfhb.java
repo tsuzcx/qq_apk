@@ -1,20 +1,33 @@
-import android.text.Editable;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
 
-class bfhb
-  implements Comparator<Friend>
+public class bfhb
+  implements URLDrawable.URLDrawableListener
 {
-  bfhb(bfha parambfha, Editable paramEditable) {}
+  public bfhb(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfhb
  * JD-Core Version:    0.7.0.1
  */

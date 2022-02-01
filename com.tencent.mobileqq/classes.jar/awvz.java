@@ -1,32 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class awvz
-  implements Animation.AnimationListener
+  implements anil
 {
-  public awvz(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374180) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374180).equals(Boolean.valueOf(true))))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131374180, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131374182)).longValue());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      }
+      break;
+    }
+    do
+    {
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    Map localMap = (Map)paramObject[0];
+    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvz
  * JD-Core Version:    0.7.0.1
  */

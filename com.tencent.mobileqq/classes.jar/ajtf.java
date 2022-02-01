@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtf
-  implements xkb
+  implements View.OnClickListener
 {
-  public ajtf(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public ajtf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Dialog paramDialog) {}
   
-  public void a() {}
-  
-  public void a(xkl paramxkl)
+  public void onClick(View paramView)
   {
-    this.a.b(paramxkl);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class agfw
-  implements View.OnTouchListener
+public class agfw
 {
-  agfw(agfu paramagfu, aetk paramaetk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
-    return false;
-  }
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

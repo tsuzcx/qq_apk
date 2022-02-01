@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
 public final class apei
-  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    return new IntimateInfo.CommonTroopInfo(paramParcel);
+    return new ArVideoResourceInfo(paramParcel);
   }
   
-  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  public ArVideoResourceInfo[] a(int paramInt)
   {
-    return new IntimateInfo.CommonTroopInfo[paramInt];
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

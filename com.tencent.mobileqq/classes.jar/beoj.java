@@ -1,62 +1,38 @@
-import android.graphics.Rect;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class beoj
-  extends LinkMovementMethod
+  implements TextWatcher
 {
-  private static beoj a;
+  public beoj(NewTroopContactView paramNewTroopContactView) {}
   
-  public static MovementMethod a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (a == null) {
-      a = new beoj();
-    }
-    return a;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
-      {
-        if (i == 1) {
-          localObject[0].onClick(paramTextView);
-        }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
-          {
-            Rect localRect = new Rect();
-            paramTextView.getGlobalVisibleRect(localRect);
-            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-            }
-          }
-        }
-      }
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
     }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+      }
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

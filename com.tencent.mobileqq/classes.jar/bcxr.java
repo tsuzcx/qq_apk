@@ -1,71 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
 class bcxr
-  extends bfzo
+  implements View.OnTouchListener
 {
-  bcxr(bcxl parambcxl) {}
+  bcxr(bcxp parambcxp) {}
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopShareUtility", 2, "onQidianGroupInfo start");
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null)) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      }
-    }
-    while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()) || (this.a.jdField_a_of_type_Int == -1) || (this.a.b == -1)) {
-      return;
-    }
-    if ((paramBoolean) && (paramHashMap != null))
+    if (this.a.a != null)
     {
-      String str = (String)paramHashMap.get("uin");
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin.equals(str))
-      {
-        this.a.b();
-        return;
+      afzq localafzq = (afzq)this.a.a.get();
+      if (localafzq != null) {
+        return localafzq.onTouch(paramView, paramMotionEvent);
       }
-      paramHashMap = (String)paramHashMap.get("url");
-      this.a.jdField_a_of_type_JavaLangString = paramHashMap;
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      case 0: 
-        this.a.c = bckq.a("", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 0);
-        this.a.b();
-        bcxl.d(this.a);
-        return;
-      case 3: 
-        this.a.b();
-        bcxl.b(this.a);
-        return;
-      case 2: 
-        this.a.b();
-        bcxl.c(this.a);
-        return;
-      case 1: 
-        this.a.b();
-        bcxl.e(this.a);
-        return;
-      }
-      this.a.b();
-      bcxl.f(this.a);
-      return;
     }
-    if (this.a.jdField_a_of_type_Bcxu != null) {
-      this.a.jdField_a_of_type_Bcxu.a(this.a.jdField_a_of_type_Int, false);
-    }
-    this.a.b();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693136), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    this.a.jdField_a_of_type_Int = -1;
-    this.a.b = -1;
+    return false;
   }
 }
 

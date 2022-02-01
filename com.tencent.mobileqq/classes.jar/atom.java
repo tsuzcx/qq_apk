@@ -1,14 +1,18 @@
-public abstract interface atom
+class atom
+  implements bcpg
 {
-  public abstract void a(String paramString, int paramInt);
+  atom(atoe paramatoe) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a()
+  {
+    atvo.a(this.a.a, this.a.d());
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atom
  * JD-Core Version:    0.7.0.1
  */

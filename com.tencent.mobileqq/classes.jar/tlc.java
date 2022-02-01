@@ -1,16 +1,25 @@
-public abstract interface tlc
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+
+public class tlc
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  public tlc(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
+  }
   
-  public abstract void c();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void d();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tlc
  * JD-Core Version:    0.7.0.1
  */

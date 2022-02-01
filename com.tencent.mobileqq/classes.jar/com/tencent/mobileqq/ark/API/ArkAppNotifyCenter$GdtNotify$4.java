@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark.API;
 
-import aasd;
-import aatd;
-import aate;
-import aatf;
+import acqx;
+import acrx;
+import acry;
+import acrz;
 import android.content.Context;
 import android.text.TextUtils;
-import ankv;
+import apis;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(ankv paramankv, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$4(apis paramapis, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -41,16 +41,16 @@ public class ArkAppNotifyCenter$GdtNotify$4
         for (;;)
         {
           Object localObject1;
-          aate localaate;
+          acry localacry;
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = aasd.a(localObject2.a);
+        localObject2 = acqx.a(localObject2.a);
       }
-      localaate = new aate();
-      localaate.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = aatd.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localaate);
-      if ((localObject1 == null) || (((aatf)localObject1).a == null))
+      localacry = new acry();
+      localacry.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = acrx.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localacry);
+      if ((localObject1 == null) || (((acrz)localObject1).a == null))
       {
         QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", null);
         return;
@@ -61,7 +61,7 @@ public class ArkAppNotifyCenter$GdtNotify$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.4
  * JD-Core Version:    0.7.0.1
  */

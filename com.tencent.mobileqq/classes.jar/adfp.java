@@ -1,20 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public class adfp
-  implements DialogInterface.OnDismissListener
+class adfp
+  implements BusinessObserver
 {
-  public adfp(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  adfp(adfo paramadfo, String paramString, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
       return;
     }
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
+    {
+      localObject = new SdkAuthorize.GetAuthApiListResponse();
+      try
+      {
+        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, (String)localObject);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(adfo.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
+        }
+        adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, -1, "parse auth info error");
+        return;
+      }
+      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
+      if ((!adhc.jdField_a_of_type_Boolean) && (adfo.a(this.jdField_a_of_type_Adfo, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
+      {
+        paramBundle = new adfn();
+        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
+        paramBundle.jdField_b_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
+        paramBundle.jdField_a_of_type_Long = ((SdkAuthorize.AuthorizeResponse)localObject).expires_in.get();
+        paramBundle.jdField_b_of_type_Long = (paramBundle.jdField_a_of_type_Long + System.currentTimeMillis());
+        this.jdField_a_of_type_Adfo.jdField_a_of_type_Adfk.a(paramBundle);
+        adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramBundle.a());
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        adfo.a(this.jdField_a_of_type_Adfo);
+        return;
+      }
+      paramBundle = "";
+      paramInt = 0;
+      while (paramInt < this.jdField_a_of_type_Adfo.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (bikw)this.jdField_a_of_type_Adfo.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramBundle = paramBundle + ((bikw)localObject).jdField_a_of_type_JavaLangString + "\n";
+        paramInt += 1;
+      }
+      adfo.a(this.jdField_a_of_type_Adfo, paramBundle);
+      return;
+    }
+    adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, "get auth info failure");
   }
 }
 

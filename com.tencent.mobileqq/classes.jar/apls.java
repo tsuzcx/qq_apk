@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.os.Bundle;
 
-public class apls
-  extends aplt
+public abstract class apls
+  implements aple
 {
-  public apls(QQAppInterface paramQQAppInterface)
+  private final String a;
+  
+  public apls(String paramString)
   {
-    super(e(), paramQQAppInterface);
+    this.a = paramString;
   }
   
-  public static String e()
+  public Bundle a()
   {
-    if (lnz.f() <= 2) {
-      return "qq.android.qav.so_665";
-    }
-    return "qq.android.qav.sov9_828";
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", this.a);
+    return localBundle;
   }
   
-  public Class<? extends XmlData> a()
+  public String a()
   {
-    return QavSoData.class;
-  }
-  
-  public String b()
-  {
-    return null;
+    return "QQ.GetUserInformation";
   }
 }
 

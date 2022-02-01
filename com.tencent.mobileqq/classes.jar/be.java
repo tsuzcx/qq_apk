@@ -2,7 +2,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.widget.XPanelContainer;
 
 public class be
   implements View.OnTouchListener
@@ -11,8 +10,10 @@ public class be
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.a.a.a();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      LiteActivity.a(this.a).x = paramMotionEvent.getRawX();
+      LiteActivity.a(this.a).y = paramMotionEvent.getRawY();
     }
     return false;
   }

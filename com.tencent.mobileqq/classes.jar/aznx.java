@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aznx
-  implements QQPermissionCallback
+class aznx
+  extends asgf
 {
-  public aznx(aznz paramaznz, AppActivity paramAppActivity) {}
+  aznx(aznv paramaznv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Aznz);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Aznz != null) {
-      this.jdField_a_of_type_Aznz.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((paramBoolean) && (paramInt == 2) && (aznv.a(this.a) != null)) {
+      aznv.b(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznx
  * JD-Core Version:    0.7.0.1
  */

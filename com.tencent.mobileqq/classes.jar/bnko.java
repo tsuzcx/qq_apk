@@ -1,20 +1,24 @@
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnko
-  extends bmnj
+class bnko
+  implements Animator.AnimatorListener
 {
-  public bnko(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  bnko(bnkd parambnkd) {}
   
-  protected void c()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.c();
-    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
-    {
-      azua localazua = new azua();
-      localazua.d = "0X800903D";
-      azqo.a(null, localazua);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

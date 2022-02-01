@@ -1,44 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admq
-  implements URLDrawable.URLDrawableListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public admq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public admq(AssistantSettingActivity paramAssistantSettingActivity, anmw paramanmw) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, xsm.a(this.a.app.getApp(), 47.0F), xsm.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    this.jdField_a_of_type_Anmw.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

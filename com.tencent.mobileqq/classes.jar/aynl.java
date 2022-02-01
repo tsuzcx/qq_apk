@@ -1,40 +1,32 @@
-import android.view.View;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aynl
-  implements aynt
+class aynl
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<aynu> jdField_a_of_type_JavaUtilList;
+  aynl(aymu paramaymu) {}
   
-  public aynl(List<aynu> paramList, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return alud.a(2131705779);
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    try
+    {
+      if ((aymu.a(this.a) != null) && (aymu.a(this.a).isShowing()))
+      {
+        this.a.c();
+        aymu.a(this.a).dismiss();
+        aymu.a(this.a, null);
+      }
+      label49:
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, "switch status cancel");
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label49;
+    }
   }
 }
 

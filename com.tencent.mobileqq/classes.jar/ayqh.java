@@ -1,14 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 class ayqh
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  ayqh(ayqe paramayqe) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ayqe.a(this.a).a(paramView);
+    paramContext = null;
+    if (paramIntent != null) {
+      paramContext = paramIntent.getAction();
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoStatusManager", 2, "[status][autoMgr] ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      }
+      paramContext = (aypj)BaseApplicationImpl.getApplication().getRuntime().getManager(369);
+      if (paramContext != null) {
+        paramContext.a().d("screenOff");
+      }
+    }
   }
 }
 

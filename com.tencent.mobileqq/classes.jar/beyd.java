@@ -1,21 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
+import java.util.UUID;
 
-class beyd
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface beyd
 {
-  beyd(beyb parambeyb, float paramFloat1, float paramFloat2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Beyb.a.setAlpha(f2 * (f3 - f4) + f1);
-  }
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, beyc parambeyc);
 }
 
 

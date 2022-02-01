@@ -1,9 +1,19 @@
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
 
-public class bkpa
+public final class bkpa
+  implements Parcelable.Creator<TCWDatePicker.SavedState>
 {
-  public static final String a = bkph.c + "/app_lib/qq_filter" + File.separator;
-  public static final String b = a + "final_ptu_res_file" + File.separator;
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  {
+    return new TCWDatePicker.SavedState(paramParcel, null);
+  }
+  
+  public TCWDatePicker.SavedState[] a(int paramInt)
+  {
+    return new TCWDatePicker.SavedState[paramInt];
+  }
 }
 
 

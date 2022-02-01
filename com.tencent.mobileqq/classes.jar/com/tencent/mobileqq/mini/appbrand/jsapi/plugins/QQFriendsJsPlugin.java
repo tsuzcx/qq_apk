@@ -26,7 +26,7 @@ public class QQFriendsJsPlugin
       QLog.e("QQFriendsJsPlugin", 1, "doAddFriend context is null ?!!");
       return;
     }
-    MiniAppCmdUtil.getInstance().getUserSetting(paramString1, paramString2, "setting.addFriend", new QQFriendsJsPlugin.2(paramString2, paramContext, paramString1, paramIAddFriendCallBack));
+    MiniAppCmdUtil.getInstance().getUserSetting(paramString1, paramString2, "setting.addFriend", null, new QQFriendsJsPlugin.2(paramString2, paramContext, paramString1, paramIAddFriendCallBack));
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
@@ -58,7 +58,7 @@ public class QQFriendsJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.QQFriendsJsPlugin
  * JD-Core Version:    0.7.0.1
  */

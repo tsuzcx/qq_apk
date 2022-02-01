@@ -1,462 +1,459 @@
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.qq.jce.wup.BasicClassTypeUtil;
+import android.widget.Button;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.reporter.ReporterMachine;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenAuthorityFragment.8.4;
+import com.tencent.open.agent.OpenAuthorityFragment.8.5;
+import com.tencent.open.agent.OpenAuthorityFragment.8.6;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.model.AccountManage;
+import com.tencent.open.model.AccountManage.RefreshReason;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qconn.protofile.appType.PassData;
+import com.tencent.qconn.protofile.auth.ProxyAuthResponse;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleConfig;
-import com.tencent.webbundle.sdk.WebBundleManager;
-import cooperation.comic.VipComicHelper.1;
-import cooperation.comic.VipComicHelper.2;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bimq
+  implements Handler.Callback
 {
-  public static bimu a;
-  public static String a;
-  public static AtomicLong a;
-  public static AtomicReference<String> a;
-  private static boolean a;
-  public static String b;
-  private static boolean b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
+  public bimq(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  static
+  public boolean handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference("");
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    d = "";
-    e = "";
-    f = "";
-    g = "0";
-    h = "";
-    jdField_a_of_type_Bimu = new bimu();
-    i = "";
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-    jdField_b_of_type_Boolean = true;
-  }
-  
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = BaseApplicationImpl.getApplication().getSharedPreferences("ComicGlobalConfig_" + str, 0).getString("defaultComicTab", null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ComicHelper", 2, "[ComicGlobalConfig] get default tab is " + str);
-    }
-    return str;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString1))
+    preAuth.PreAuthResponse localPreAuthResponse;
+    int i;
+    switch (paramMessage.what)
     {
-      localObject1 = localObject2;
-      if (paramString1.contains("~")) {
-        localObject1 = paramString1.substring(0, paramString1.indexOf("~"));
-      }
-    }
-    paramString1 = (String)localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString1 = "NULL_NULL_NULL_NULL_NULL";
-    }
-    localObject1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      localObject1 = "NULL_NULL_NULL_NULL_NULL";
-    }
-    paramString2 = ((String)localObject1).split("_");
-    if (paramString2.length >= 5) {}
-    for (paramString2 = paramString2[4];; paramString2 = "NULL")
-    {
-      h = paramString2;
-      return paramString1 + "~" + (String)localObject1;
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return paramString1 + "_" + paramString2 + "_" + paramString3 + "_" + paramString4 + "_" + h;
-  }
-  
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    if ((paramBaseApplicationImpl.getRuntime().getRunningModuleSize() > 0) && (binc.a.get() != 2)) {
-      binc.a.set(3);
-    }
-    try
-    {
-      Class localClass1 = Class.forName("com.qqcomic.app.VipComicPluginRuntime");
-      if (localClass1 != null) {}
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
+    case 2: 
+    case 10: 
+    default: 
+    case 0: 
       for (;;)
       {
+        return true;
+        localPreAuthResponse = (preAuth.PreAuthResponse)paramMessage.obj;
+        OpenAuthorityFragment.a(this.a, localPreAuthResponse);
+        if (localPreAuthResponse != null) {
+          break;
+        }
+        this.a.h();
+        QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "GET_API_LIST_DONE  response = null");
+      }
+      i = localPreAuthResponse.ret.get();
+      if (i != 0) {
+        QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: G_A_L_D | uin : *" + bipr.a(OpenAuthorityFragment.a(this.a).a) + " | ret : success | code : " + i);
+      }
+      break;
+    }
+    label2218:
+    label3387:
+    label3392:
+    for (;;)
+    {
+      Object localObject2;
+      Object localObject1;
+      for (;;)
+      {
+        Object localObject3;
         try
         {
-          if (!QLog.isColorLevel()) {
+          bipi.a().a(OpenAuthorityFragment.a(this.a).a, "", OpenAuthorityFragment.a(this.a), "1", "6", "" + i, false);
+          if (TextUtils.isEmpty(localPreAuthResponse.msg.get()))
+          {
+            paramMessage = String.format(this.a.getResources().getString(2131694131), new Object[] { Integer.valueOf(i) });
+            if (i == 110405)
+            {
+              this.a.a(paramMessage, new bimr(this));
+              OpenAuthorityFragment.a(this.a, i, paramMessage);
+              return true;
+            }
+          }
+          else
+          {
+            paramMessage = String.format(this.a.getResources().getString(2131695788), new Object[] { localPreAuthResponse.msg.get(), Integer.valueOf(i) });
+            continue;
+          }
+          if ((i == 110509) && (OpenAuthorityFragment.d(this.a) < 0))
+          {
+            OpenAuthorityFragment.b(this.a, 0);
+            aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+            AccountManage.a().a(OpenAuthorityFragment.b(this.a), this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, OpenAuthorityFragment.a(this.a), AccountManage.RefreshReason.forceRefreshBy110509);
+            OpenAuthorityFragment.a(this.a).a = System.currentTimeMillis();
+            return true;
+          }
+          if (i == 110513)
+          {
+            this.a.b(110513, "", "", "");
+            return true;
+          }
+          if (i == 100044)
+          {
+            localObject2 = this.a.getActivity().getIntent().getBundleExtra("key_params");
+            localObject1 = ((Bundle)localObject2).getString("packagename");
+            if (localObject1 != null) {
+              break label3392;
+            }
+            localObject1 = "";
+            localObject3 = ((Bundle)localObject2).getString("packagesign");
+            localObject2 = localObject3;
+            if (localObject3 == null) {
+              localObject2 = "";
+            }
+            localObject3 = new Bundle();
+            ((Bundle)localObject3).putString("uin", OpenAuthorityFragment.a(this.a).a);
+            ((Bundle)localObject3).putString("openid", "");
+            ((Bundle)localObject3).putString("report_type", "1");
+            ((Bundle)localObject3).putString("act_type", "7");
+            ((Bundle)localObject3).putString("via", "2");
+            ((Bundle)localObject3).putString("app_id", OpenAuthorityFragment.a(this.a));
+            ((Bundle)localObject3).putString("packagename", (String)localObject1);
+            ((Bundle)localObject3).putString("stringext_1", (String)localObject2);
+            ((Bundle)localObject3).putString("result", "0");
+            bipi.a().a((Bundle)localObject3, OpenAuthorityFragment.a(this.a), OpenAuthorityFragment.a(this.a).a, false);
+          }
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("ret", localPreAuthResponse.ret.get());
+          ((JSONObject)localObject1).put("msg", localPreAuthResponse.msg.get());
+          this.a.a(paramMessage, new bims(this, localPreAuthResponse, (JSONObject)localObject1));
+          continue;
+          OpenAuthorityFragment.c(this.a, SystemClock.elapsedRealtime());
+        }
+        catch (JSONException paramMessage) {}
+        OpenAuthorityFragment.a(this.a).a(OpenAuthorityFragment.a(this.a), OpenAuthorityFragment.e(this.a));
+        if (OpenAuthorityFragment.a(this.a).a(OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a)), localPreAuthResponse.authorized_union_text.get()))
+        {
+          QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: G_A_L_D | authorized");
+          OpenAuthorityFragment.b(this.a, true);
+          OpenAuthorityFragment.a(this.a).setTag(OpenAuthorityFragment.e(this.a));
+          if (!OpenAuthorityFragment.c(this.a)) {
+            OpenAuthorityFragment.a(this.a).setEnabled(true);
+          }
+          paramMessage = new HashMap();
+          paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+          paramMessage.put("p1", "logged");
+          paramMessage.put("p2", "auth");
+          bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_pageview", false, System.currentTimeMillis() - OpenAuthorityFragment.c(this.a), 0L, paramMessage, "");
+          this.a.b("wtl_loggednunauthorized", OpenAuthorityFragment.a(this.a).a);
+          if ((OpenAuthorityFragment.c(this.a)) && (OpenAuthorityFragment.a(this.a) != null))
+          {
+            QLog.d("SDKQQAgentPref", 1, "AutoLogin");
+            OpenAuthorityFragment.a(this.a).setEnabled(false);
+            paramMessage = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+            paramMessage.what = 1;
+            paramMessage.obj = OpenAuthorityFragment.a(this.a);
+            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramMessage);
+          }
+          if (!OpenAuthorityFragment.d(this.a)) {
+            this.a.h();
+          }
+        }
+        for (;;)
+        {
+          OpenAuthorityFragment.a(this.a);
+          break;
+          QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: G_A_L_D | not authorized");
+          OpenAuthorityFragment.b(this.a, false);
+          OpenAuthorityFragment.a(this.a).setTag(OpenAuthorityFragment.d(this.a));
+          OpenAuthorityFragment.a(this.a).setEnabled(true);
+          paramMessage = new HashMap();
+          paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+          paramMessage.put("p1", "logged");
+          paramMessage.put("p2", "uauth");
+          bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_pageview", false, System.currentTimeMillis() - OpenAuthorityFragment.c(this.a), 0L, paramMessage, "");
+          if (!OpenAuthorityFragment.e(this.a)) {
+            this.a.b("wtl_loggednauthorized", OpenAuthorityFragment.a(this.a).a);
+          }
+          this.a.h();
+        }
+        QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "handleMessage AUTHORIZE_DONE");
+        localObject1 = (bios)paramMessage.obj;
+        i = ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get();
+        if (i != 0)
+        {
+          QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "rec | cmd: A_D | uin : *" + bipr.a(OpenAuthorityFragment.a(this.a).a) + " | state : success | ret : " + i);
+          try
+          {
+            localObject2 = ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBStringField.get();
+            if (TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              paramMessage = String.format(this.a.getResources().getString(2131694131), new Object[] { Integer.valueOf(i) });
+              if (i != 110405) {
+                break label1395;
+              }
+              this.a.a(paramMessage, new bimt(this));
+            }
+            label1395:
+            do
+            {
+              OpenAuthorityFragment.a(this.a, i, paramMessage);
+              return true;
+              paramMessage = String.format(this.a.getResources().getString(2131695788), new Object[] { localObject2, Integer.valueOf(i) });
+              break;
+              if ((i == 110509) && (OpenAuthorityFragment.d(this.a) < 1))
+              {
+                OpenAuthorityFragment.b(this.a, 1);
+                QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "ret == SKEY_CHECK_ERROR && mSKeyErrorStep < AUTHORIZE_DONE");
+                aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+                AccountManage.a().a(OpenAuthorityFragment.b(this.a), this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, OpenAuthorityFragment.a(this.a), AccountManage.RefreshReason.forceRefreshBy110509);
+                OpenAuthorityFragment.a(this.a).a = System.currentTimeMillis();
+                return true;
+              }
+            } while (i != 1105030);
+            OpenAuthorityFragment.b(this.a, i, (String)localObject2);
+            paramMessage = biyz.a(OpenAuthorityFragment.a(this.a), OpenAuthorityFragment.a(this.a).a);
+            if ((paramMessage != null) && (paramMessage.length > 0))
+            {
+              localObject3 = new SdkAuthorize.AuthorizeResponse();
+              try
+              {
+                paramMessage = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject3).mergeFrom(paramMessage);
+                localObject3 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+                ((Message)localObject3).what = 1;
+                ((Message)localObject3).obj = bios.a(paramMessage);
+                this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject3);
+                return true;
+              }
+              catch (InvalidProtocolBufferMicroException paramMessage) {}
+            }
+            OpenAuthorityFragment.c(this.a, i, (String)localObject2);
+            return true;
+          }
+          catch (JSONException paramMessage) {}
+        }
+        this.a.b(((bios)localObject1).c.get());
+        this.a.a(((bios)localObject1).c.get(), ((bios)localObject1).e.get());
+        try
+        {
+          paramMessage = new JSONObject();
+          paramMessage.put("ret", ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get());
+          paramMessage.put("openid", ((bios)localObject1).c.get());
+          paramMessage.put("access_token", ((bios)localObject1).jdField_b_of_type_ComTencentMobileqqPbPBStringField.get());
+          paramMessage.put("pay_token", ((bios)localObject1).d.get());
+          paramMessage.put("expires_in", ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBInt64Field.get());
+          paramMessage.put("code", ((bios)localObject1).n.get());
+          paramMessage.put("proxy_code", ((bios)localObject1).jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.code.get());
+          paramMessage.put("proxy_expires_in", ((bios)localObject1).jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.expires_in.get());
+          paramMessage.put("pf", ((bios)localObject1).f.get());
+          paramMessage.put("pfkey", ((bios)localObject1).g.get());
+          paramMessage.put("msg", ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBStringField.get());
+          paramMessage.put("login_cost", OpenAuthorityFragment.a(this.a) - OpenAuthorityFragment.b(this.a));
+          paramMessage.put("query_authority_cost", OpenAuthorityFragment.f(this.a) - OpenAuthorityFragment.g(this.a));
+          if (OpenAuthorityFragment.h(this.a) == 0L)
+          {
+            paramMessage.put("authority_cost", 0);
+            label1896:
+            if (((bios)localObject1).jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.has()) {
+              paramMessage.put("sendinstall", ((bios)localObject1).jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.get());
+            }
+            if ((((bios)localObject1).j.has()) && (!TextUtils.isEmpty(((bios)localObject1).j.get()))) {
+              paramMessage.put("installwording", ((bios)localObject1).j.get());
+            }
+            if ((!((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.has()) || (((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.size() <= 0)) {
+              break label2218;
+            }
+            localObject2 = ((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.get().iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (appType.PassData)((Iterator)localObject2).next();
+              paramMessage.put(((appType.PassData)localObject3).key.get(), ((appType.PassData)localObject3).value.get());
+            }
+          }
+        }
+        catch (JSONException paramMessage)
+        {
+          QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "JSONException", paramMessage);
+          for (;;)
+          {
+            paramMessage = new HashMap();
+            paramMessage.put("autologin", "0");
+            if (!OpenAuthorityFragment.e(this.a)) {
+              break label2382;
+            }
+            if (!OpenAuthorityFragment.g(this.a)) {
+              break label2287;
+            }
+            paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+            paramMessage.put("p1", "notlogged");
+            paramMessage.put("p2", "auth");
+            bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_lognback", true, System.currentTimeMillis() - OpenAuthorityFragment.i(this.a), 0L, paramMessage, "");
+            this.a.b("wtl_lognback", OpenAuthorityFragment.a(this.a).a);
+            break;
+            paramMessage.put("authority_cost", OpenAuthorityFragment.h(this.a) - OpenAuthorityFragment.e(this.a));
+            break label1896;
+            if (OpenAuthorityFragment.f(this.a))
+            {
+              ForwardUtils.a(((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), OpenAuthorityFragment.a(this.a));
+              bint.a().a(OpenAuthorityFragment.a(this.a), true);
+            }
+            else
+            {
+              this.a.b(((bios)localObject1).jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), paramMessage.toString(), null, null);
+            }
+          }
+          label2287:
+          paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+          paramMessage.put("p1", "notlogged");
+          paramMessage.put("p2", "uauth");
+          bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_lognback", true, System.currentTimeMillis() - OpenAuthorityFragment.i(this.a), 0L, paramMessage, "");
+          this.a.b("wtl_lognauthorizenback", OpenAuthorityFragment.a(this.a).a);
+          break;
+          label2382:
+          if (OpenAuthorityFragment.g(this.a))
+          {
+            paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+            paramMessage.put("p1", "logged");
+            paramMessage.put("p2", "auth");
+            bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_lognback", true, System.currentTimeMillis() - OpenAuthorityFragment.i(this.a), 0L, paramMessage, "");
+            this.a.b("wtl_loggednunauthorizedback", OpenAuthorityFragment.a(this.a).a);
             break;
           }
-          QLog.d("ComicHelper", 2, "createCOMICRuntime: load class failed");
+          paramMessage.put("appid", OpenAuthorityFragment.a(this.a));
+          paramMessage.put("p1", "logged");
+          paramMessage.put("p2", "uauth");
+          bctj.a(BaseApplicationImpl.getApplication()).a(OpenAuthorityFragment.b(this.a), "connect_sso_lognback", true, System.currentTimeMillis() - OpenAuthorityFragment.i(this.a), 0L, paramMessage, "");
+          this.a.b("wtl_loggednauthorizedback", OpenAuthorityFragment.a(this.a).a);
         }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
+      }
+      break;
+      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "handleMessage GET_APP_INFO_DONE");
+      paramMessage = (aufu)paramMessage.obj;
+      if ((paramMessage != null) && (!TextUtils.isEmpty(paramMessage.c()))) {
+        OpenAuthorityFragment.a(this.a).a(paramMessage.c(), null);
+      }
+      int k;
+      int j;
+      label2668:
+      int n;
+      if ((!OpenAuthorityFragment.h(this.a)) && (paramMessage != null) && (paramMessage.jdField_a_of_type_JavaUtilList != null) && (!paramMessage.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        k = 0;
+        j = 0;
+        i = 0;
+        if (i >= paramMessage.jdField_a_of_type_JavaUtilList.size()) {
+          break label3387;
+        }
+        n = ForwardUtils.a(((abcw)paramMessage.jdField_a_of_type_JavaUtilList.get(i)).jdField_b_of_type_ComTencentMobileqqPbPBStringField.get());
+        if (n < 100) {
+          break label3022;
+        }
+      }
+      for (;;)
+      {
+        localObject1 = (abcw)paramMessage.jdField_a_of_type_JavaUtilList.get(i);
+        if (localObject1 != null) {
+          ThreadManager.executeOnNetWorkThread(new OpenAuthorityFragment.8.4(this, (abcw)localObject1));
+        }
+        if (OpenAuthorityFragment.a(this.a) != null) {
+          QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "user uin = ", bipr.a(OpenAuthorityFragment.a(this.a)) });
+        }
+        if (paramMessage != null)
         {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
+          if ((paramMessage.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads != null) && (paramMessage.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads.has()))
+          {
+            paramMessage = (GetAppInfoProto.Ads)paramMessage.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads.get();
+            if ((paramMessage.beginTime.has()) && (paramMessage.endTime.has()))
+            {
+              long l1 = paramMessage.beginTime.get();
+              long l2 = paramMessage.endTime.get();
+              long l3 = paramMessage.serverTime.get();
+              localObject1 = paramMessage.imgURL.get();
+              QLog.i("AuthorityActivity", 1, "Ads begin time = " + l1 + " endTime = " + l2 + " serverTime = " + l3 + " imgURL = " + (String)localObject1 + " adsTxt = " + paramMessage.txt.get());
+              if ((l3 >= l1) && (l3 <= l2))
+              {
+                localObject2 = new Message();
+                ((Message)localObject2).obj = paramMessage.txt.get();
+                ((Message)localObject2).what = 8;
+                this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+                ThreadManager.executeOnNetWorkThread(new OpenAuthorityFragment.8.5(this, (String)localObject1));
+                break;
+                label3022:
+                int m = k;
+                if (n > k)
+                {
+                  j = i;
+                  m = n;
+                }
+                i += 1;
+                k = m;
+                break label2668;
+              }
+              OpenAuthorityFragment.a(this.a).a = false;
+              OpenAuthorityFragment.a(this.a).a(null);
+              break;
+            }
+            OpenAuthorityFragment.a(this.a).a = false;
+            OpenAuthorityFragment.a(this.a).a(null);
+            QLog.i("AuthorityActivity", 1, "Ads begin time or endTime = null");
+            break;
+          }
+          OpenAuthorityFragment.a(this.a).a = false;
+          OpenAuthorityFragment.a(this.a).a(null);
+          QLog.i("AuthorityActivity", 1, "Ads = null");
+          break;
         }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "comic_plugin.apk");
-        Class localClass2 = localClassLoader.loadClass("com.qqcomic.app.VipComicPluginRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        continue;
-        do
-        {
-          return null;
-          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
+        OpenAuthorityFragment.a(this.a).a = false;
+        OpenAuthorityFragment.a(this.a).a(null);
+        QLog.i("AuthorityActivity", 1, "response = null");
+        break;
+        paramMessage = (Bitmap)paramMessage.obj;
+        OpenAuthorityFragment.c(this.a, true);
+        OpenAuthorityFragment.a(this.a).a("", paramMessage);
+        break;
+        OpenAuthorityFragment.a(this.a).a = true;
+        paramMessage = (String)paramMessage.obj;
+        OpenAuthorityFragment.a(this.a).a(paramMessage);
+        break;
+        paramMessage = (Bitmap)paramMessage.obj;
+        OpenAuthorityFragment.a(this.a).a(paramMessage);
+        break;
+        this.a.a();
+        break;
+        ThreadManager.postImmediately(new OpenAuthorityFragment.8.6(this), null, true);
+        break;
+        i = paramMessage.arg1;
+        paramMessage = (String)paramMessage.obj;
+        OpenAuthorityFragment.a(this.a, i, paramMessage);
+        break;
+        this.a.h();
+        localObject2 = paramMessage.getData();
+        i = ((Bundle)localObject2).getInt("error", -1);
+        paramMessage = ((Bundle)localObject2).getString("response");
+        localObject1 = ((Bundle)localObject2).getString("msg");
+        localObject2 = ((Bundle)localObject2).getString("detail");
+        this.a.b(i, paramMessage, (String)localObject1, (String)localObject2);
+        break;
+        i = j;
       }
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    d = "";
-    e = "";
-    f = "NULL_NULL_NULL_NULL_NULL~NULL_NULL_NULL_NULL_NULL";
-    g = "0";
-    h = "NULL";
-    bimu.a(jdField_a_of_type_Bimu).clear();
-    i = "";
-  }
-  
-  public static void a(int paramInt)
-  {
-    boolean bool = true;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      jdField_b_of_type_Boolean = bool;
-      if (!jdField_b_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new VipComicHelper.2());
-      }
-      QLog.d("WebBundle.Comic", 2, "handle setWebBundleOption enable = " + jdField_b_of_type_Boolean);
-      return;
-      bool = false;
-    }
-  }
-  
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    if (!bdin.g(paramQQAppInterface.getApplication()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ComicHelper", 2, "no network. skip update offline pkg. entry = " + paramInt);
-      }
-      return;
-    }
-    ThreadManager.post(new VipComicHelper.1(new WeakReference(paramQQAppInterface), paramInt), 5, null, false);
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
-  {
-    if ((paramActivity == null) || (paramIntent == null)) {
-      return;
-    }
-    a(paramIntent);
-    try
-    {
-      paramActivity.startActivityForResult(paramIntent, paramInt);
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("ComicHelper", 2, "openQQBrowserActivityForComic", paramActivity);
-    }
-  }
-  
-  public static void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      QLog.e("WebBundle.Comic", 2, "init webbundle failed because context is null.");
-    }
-    do
-    {
-      return;
-      if (!jdField_b_of_type_Boolean)
-      {
-        QLog.w("WebBundle.Comic", 2, "init webbundle failed because jsApi forbid.");
-        return;
-      }
-      localObject = (aoqo)aoks.a().a(534);
-      if ((localObject == null) || (!((aoqo)localObject).a.a()))
-      {
-        QLog.w("WebBundle.Comic", 2, "init webbundle failed because config forbid.");
-        return;
-      }
-    } while (WebBundleManager.getInstance("comic").isInit());
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("webbundle", 4);
-    if (!localSharedPreferences.getBoolean("webbundle_enable", true))
-    {
-      QLog.w("WebBundle.Comic", 2, "init webbundle failed because local config forbid.");
-      return;
-    }
-    paramContext = new bios(paramContext);
-    Object localObject = new WebBundleConfig().setCarrierActivityClass(QQBrowserActivity.class).setPreloadUrl(((aoqo)localObject).a.jdField_a_of_type_JavaLangString).setLogListener(new bimt()).setOptionListener(new bims(localSharedPreferences));
-    WebBundleManager.getInstance("comic").init(paramContext, (WebBundleConfig)localObject);
-    WebBundleManager.getInstance("comic").triggerPreload(1500L);
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    paramIntent.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserActivity"));
-    paramIntent.putExtra("fragmentStyle", 1);
-    paramIntent.putExtra("tabBarStyle", 1);
-    paramIntent.putExtra("titleBarStyle", 1);
-    paramIntent.putExtra("hide_operation_bar", true);
-    paramIntent.putExtra("hide_more_button", true);
-    paramIntent.putExtra("isScreenOrientationPortrait", true);
-    paramIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    if (!paramIntent.hasExtra("big_brother_source_key")) {
-      paramIntent.putExtra("big_brother_source_key", "biz_src_zz_bodong");
-    }
-  }
-  
-  public static void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ComicHelper", 2, "DO SAVE IMPORTANT PARAMS FOR REPORTING");
-    }
-    paramBundle.putString("fromCode", jdField_a_of_type_JavaLangString);
-    paramBundle.putString("landCode", c);
-    paramBundle.putString("landId", d);
-    paramBundle.putString("pos", e);
-    paramBundle.putString("detailPage_from", f);
-    paramBundle.putString("algoId", g);
-    paramBundle.putString("actionId", jdField_b_of_type_JavaLangString);
-    paramBundle.putString("ext8", h);
-    paramBundle.putString("extraParams", jdField_a_of_type_Bimu.toString());
-    paramBundle.putString("storyboardState", i);
-  }
-  
-  public static void a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("ComicGlobalConfig_" + (String)localObject, 0);
-    String str = ((SharedPreferences)localObject).getString("defaultComicTab", null);
-    if (TextUtils.isEmpty(paramString)) {
-      if (!TextUtils.isEmpty(str))
-      {
-        ((SharedPreferences)localObject).edit().remove("defaultComicTab").apply();
-        if (QLog.isColorLevel()) {
-          QLog.d("ComicHelper", 2, "[ComicGlobalConfig] erase default tab");
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramString.equals(str));
-      ((SharedPreferences)localObject).edit().putString("defaultComicTab", paramString).apply();
-    } while (!QLog.isColorLevel());
-    QLog.d("ComicHelper", 2, "[ComicGlobalConfig] update default tab to " + paramString);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    if ((paramAppRuntime == null) || (jdField_a_of_type_Boolean)) {
-      return;
-    }
-    MagnifierSDK.a(paramAppRuntime.getLongAccountUin());
-    try
-    {
-      QLog.i("ComicHelper", 4, "MagnifierSDK is enable, current process is QQComic");
-      ReporterMachine.a();
-      UnifiedMonitor.a().b();
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
-      {
-        QLog.e("ComicHelper", 4, "[Magnifier startMachine error]" + paramAppRuntime);
-      }
-    }
-  }
-  
-  public static boolean a(String paramString, Intent paramIntent)
-  {
-    int j = 100;
-    boolean bool3 = false;
-    Object localObject;
-    boolean bool1;
-    if (paramString != null)
-    {
-      localObject = Uri.parse(paramString);
-      if ((localObject != null) && (((Uri)localObject).isHierarchical()))
-      {
-        bool1 = "1".equals(((Uri)localObject).getQueryParameter("init_player"));
-        paramString = ((Uri)localObject).getQueryParameter("id");
-        localObject = ((Uri)localObject).getQueryParameter("type");
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        int k = Integer.parseInt((String)localObject);
-        j = k;
-      }
-      catch (Exception localException)
-      {
-        boolean bool2;
-        continue;
-      }
-      bool2 = bool3;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        bool2 = bool3;
-        if (bool1)
-        {
-          paramIntent.putExtra("key_comic_id", paramString);
-          paramIntent.putExtra("key_type", j);
-          paramIntent.putExtra("key_is_fullscreen", false);
-          paramIntent.putExtra("params_remote_connect_at_launch", true);
-          bool2 = true;
-        }
-      }
-      return bool2;
-      paramString = null;
-      bool1 = false;
-    }
-  }
-  
-  public static void b(Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComicHelper", 2, "DO RESTORE IMPORTANT PARAMS FOR REPORTING");
-      }
-      if (paramBundle.containsKey("fromCode")) {
-        jdField_a_of_type_JavaLangString = paramBundle.getString("fromCode");
-      }
-      if (paramBundle.containsKey("landCode")) {
-        c = paramBundle.getString("landCode");
-      }
-      if (paramBundle.containsKey("landId")) {
-        d = paramBundle.getString("landId");
-      }
-      if (paramBundle.containsKey("pos")) {
-        e = paramBundle.getString("pos");
-      }
-      if (paramBundle.containsKey("detailPage_from")) {
-        f = paramBundle.getString("detailPage_from");
-      }
-      if (paramBundle.containsKey("algoId")) {
-        g = paramBundle.getString("algoId");
-      }
-      if (paramBundle.containsKey("actionId")) {
-        jdField_b_of_type_JavaLangString = paramBundle.getString("actionId");
-      }
-      if (paramBundle.containsKey("ext8")) {
-        h = paramBundle.getString("ext8");
-      }
-      if (paramBundle.containsKey("extraParams")) {
-        jdField_a_of_type_Bimu.a(paramBundle.getString("extraParams"));
-      }
-    } while (!paramBundle.containsKey("storyboardState"));
-    i = paramBundle.getString("storyboardState");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimq
  * JD-Core Version:    0.7.0.1
  */

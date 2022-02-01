@@ -1,20 +1,14 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
 
-class wco
-  implements vlo
+public abstract interface wco
 {
-  wco(wcn paramwcn) {}
-  
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wco
  * JD-Core Version:    0.7.0.1
  */

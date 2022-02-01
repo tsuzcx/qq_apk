@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import mhj;
+import men;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
@@ -34,19 +34,19 @@ public class MultiMembersAudioIndicator
   
   public RadioButton a()
   {
-    mhj localmhj = new mhj(this, super.getContext());
-    localmhj.setButtonDrawable(2130841846);
-    localmhj.setGravity(17);
+    men localmen = new men(this, super.getContext());
+    localmen.setButtonDrawable(2130842153);
+    localmen.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localmhj.setLayoutParams(localLayoutParams);
-    localmhj.setClickable(false);
-    localmhj.setFocusable(false);
-    return localmhj;
+    localmen.setLayoutParams(localLayoutParams);
+    localmen.setClickable(false);
+    localmen.setFocusable(false);
+    return localmen;
   }
   
   public void a()
@@ -115,7 +115,7 @@ public class MultiMembersAudioIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersAudioIndicator
  * JD-Core Version:    0.7.0.1
  */

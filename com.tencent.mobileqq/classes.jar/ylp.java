@@ -1,19 +1,45 @@
-final class ylp
-  implements bhum
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+
+public class ylp
+  extends wlf
 {
-  ylp(yls paramyls, bhuf parambhuf) {}
+  public static final String a = wjz.a("StorySvc.get_photography_guide");
   
-  public void onDismiss()
+  public String a()
   {
-    if (this.jdField_a_of_type_Yls != null) {
-      this.jdField_a_of_type_Yls.a(false);
+    return a;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
+    {
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new ylq(localRspGetPhotographyGuide);
     }
-    this.jdField_a_of_type_Bhuf.dismiss();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideRequest{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylp
  * JD-Core Version:    0.7.0.1
  */

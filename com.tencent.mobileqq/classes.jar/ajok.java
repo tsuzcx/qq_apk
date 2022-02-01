@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-public class ajok
-  implements ajpf
+class ajok
+  extends RecyclerView.ViewHolder
 {
-  public ajok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void a() {}
-  
-  public void a(String paramString)
+  ajok(ajoj paramajoj, View paramView)
   {
-    EditLocalVideoActivity.a(this.a, paramString);
-    EditLocalVideoActivity.g(this.a);
-  }
-  
-  public void b()
-  {
-    QQToast.a(this.a, 2131695264, 1).a();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377780));
   }
 }
 

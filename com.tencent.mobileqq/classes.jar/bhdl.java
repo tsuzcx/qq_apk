@@ -1,120 +1,116 @@
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.database.Cursor;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.LocalFileMd5Entity;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.LocalUpdateEntity;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.ShouldUpdateEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhdl
-  extends bhdw
+  extends EntityManagerFactory
 {
-  private MiniProgramShare.StAdaptShareInfoReq a;
-  
-  public bhdl(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq)
+  public bhdl(String paramString)
   {
-    this.a = paramStAdaptShareInfoReq;
+    super(paramString);
   }
   
-  protected String a()
+  public static void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    return "mini_app_share";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject2 = new PROTOCAL.StQWebRsp();
-    Object localObject1 = new MiniProgramShare.StAdaptShareInfoRsp();
-    for (;;)
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    if (localCursor1 != null)
     {
-      long l;
-      boolean bool2;
-      int i;
-      try
+      while (localCursor1.moveToNext())
       {
-        ((PROTOCAL.StQWebRsp)localObject2).mergeFrom(paramArrayOfByte);
-        ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).mergeFrom(((PROTOCAL.StQWebRsp)localObject2).busiBuff.get().toByteArray());
-        if ((localObject2 == null) || (localObject1 == null)) {
-          break label306;
+        String str = SecurityUtile.decode(localCursor1.getString(0));
+        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
+        if (localCursor2 != null) {
+          for (;;)
+          {
+            try
+            {
+              if (!str.equals(LocalUpdateEntity.TABLE_NAME)) {
+                continue;
+              }
+              localObject = LocalUpdateEntity.class;
+              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
+            }
+            catch (ClassNotFoundException localClassNotFoundException)
+            {
+              Object localObject;
+              continue;
+            }
+            localCursor2.close();
+            break;
+            if (str.equals(ShouldUpdateEntity.TABLE_NAME)) {
+              localObject = ShouldUpdateEntity.class;
+            } else if (str.equals(LocalFileMd5Entity.TABLE_NAME)) {
+              localObject = LocalFileMd5Entity.class;
+            } else {
+              localObject = Class.forName(paramString + "." + str);
+            }
+          }
         }
-        l = ((PROTOCAL.StQWebRsp)localObject2).retCode.get();
-        paramArrayOfByte = ((PROTOCAL.StQWebRsp)localObject2).errMsg.get().toStringUtf8();
-        bool2 = bool3;
-        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo == null) {
-          break label347;
-        }
-        bool2 = bool3;
-        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo == null) {
-          break label347;
-        }
-        i = 0;
-        bool2 = bool1;
-        if (i >= ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.size()) {
-          break label347;
-        }
-        localObject2 = (COMM.Entry)((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.get(i);
-        if ((!"needShareCallBack".equals(((COMM.Entry)localObject2).key.get())) || (!"true".equals(((COMM.Entry)localObject2).value.get()))) {
-          break label340;
-        }
-        bool1 = true;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        label186:
-        QMLog.d("GetShareInfoRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
-      QMLog.e("GetShareInfoRequest", "onGetShareInfo isSuccess=false, retCode=" + l);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("retCode", l);
-      ((JSONObject)localObject1).put("errMsg", paramArrayOfByte);
-      ((JSONObject)localObject1).put("needShareCallBack", bool2);
-      return localObject1;
-      label306:
-      label340:
-      label347:
-      do
-      {
-        paramArrayOfByte = new JSONObject(((MiniProgramShare.StAdaptShareInfoRsp)localObject1).jsonData.get());
-        paramArrayOfByte.put("needShareCallBack", bool2);
-        return paramArrayOfByte;
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("retCode", -1);
-        paramArrayOfByte.put("errMsg", "数据解析错误");
-        QMLog.d("GetShareInfoRequest", "onResponse fail.webRsp = null");
-        return paramArrayOfByte;
-        i += 1;
-        break;
-        if (l == -100070004L) {
-          break label186;
-        }
-      } while (l != -1000710003L);
+      localCursor1.close();
     }
+    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+    paramSQLiteDatabase.beginTransaction();
+    try
+    {
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext()) {
+        paramSQLiteDatabase.execSQL((String)paramString.next());
+      }
+      paramSQLiteDatabase.setTransactionSuccessful();
+    }
+    finally
+    {
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    }
+    paramSQLiteDatabase.endTransaction();
+    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
-  protected byte[] a()
+  public SQLiteOpenHelper build(String paramString)
   {
-    return this.a.toByteArray();
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "vas_update_system_database.db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
   }
   
-  protected String b()
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    return "AdaptShareInfo";
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ShouldUpdateEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalUpdateEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalFileMd5Entity()));
+  }
+  
+  public String getPackageName()
+  {
+    return "com.tencent.mobileqq.vas.updatesystem.db";
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    QLog.i("VasUpdateEntityManagerF", 1, "[DB]|upgrade. oldVer=" + paramInt1 + ", newVer=" + paramInt2);
+    a(getPackageName(), paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdl
  * JD-Core Version:    0.7.0.1
  */

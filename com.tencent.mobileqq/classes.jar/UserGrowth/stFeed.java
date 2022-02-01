@@ -9,24 +9,31 @@ public final class stFeed
   extends JceStruct
 {
   static stSimpleMetaFeed cache_feed = new stSimpleMetaFeed();
+  static stFriendFeed cache_friendFeed = new stFriendFeed();
   static ArrayList<stSimpleMetaPerson> cache_person_meta = new ArrayList();
+  static stSplitBlock cache_recommend_splitter;
   public stSimpleMetaFeed feed;
   public int feed_type;
+  public stFriendFeed friendFeed;
   public ArrayList<stSimpleMetaPerson> person_meta;
+  public stSplitBlock recommend_splitter;
   
   static
   {
     stSimpleMetaPerson localstSimpleMetaPerson = new stSimpleMetaPerson();
     cache_person_meta.add(localstSimpleMetaPerson);
+    cache_recommend_splitter = new stSplitBlock();
   }
   
   public stFeed() {}
   
-  public stFeed(stSimpleMetaFeed paramstSimpleMetaFeed, ArrayList<stSimpleMetaPerson> paramArrayList, int paramInt)
+  public stFeed(stSimpleMetaFeed paramstSimpleMetaFeed, ArrayList<stSimpleMetaPerson> paramArrayList, int paramInt, stSplitBlock paramstSplitBlock, stFriendFeed paramstFriendFeed)
   {
     this.feed = paramstSimpleMetaFeed;
     this.person_meta = paramArrayList;
     this.feed_type = paramInt;
+    this.recommend_splitter = paramstSplitBlock;
+    this.friendFeed = paramstFriendFeed;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +41,8 @@ public final class stFeed
     this.feed = ((stSimpleMetaFeed)paramJceInputStream.read(cache_feed, 0, false));
     this.person_meta = ((ArrayList)paramJceInputStream.read(cache_person_meta, 1, false));
     this.feed_type = paramJceInputStream.read(this.feed_type, 2, false);
+    this.recommend_splitter = ((stSplitBlock)paramJceInputStream.read(cache_recommend_splitter, 3, false));
+    this.friendFeed = ((stFriendFeed)paramJceInputStream.read(cache_friendFeed, 4, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -45,6 +54,12 @@ public final class stFeed
       paramJceOutputStream.write(this.person_meta, 1);
     }
     paramJceOutputStream.write(this.feed_type, 2);
+    if (this.recommend_splitter != null) {
+      paramJceOutputStream.write(this.recommend_splitter, 3);
+    }
+    if (this.friendFeed != null) {
+      paramJceOutputStream.write(this.friendFeed, 4);
+    }
   }
 }
 

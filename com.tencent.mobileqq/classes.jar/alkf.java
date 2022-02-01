@@ -1,6 +1,19 @@
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class alkf
+  implements alox
 {
-  public void a(int paramInt, byte[] paramArrayOfByte) {}
+  public alkf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a_(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
+  }
 }
 
 

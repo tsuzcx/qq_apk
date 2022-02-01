@@ -7,7 +7,7 @@ import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.BrowserBaseModel;
 import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BaseView;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
 
 public class BrowserBuilder
   implements IBrowserBuilder
@@ -18,7 +18,7 @@ public class BrowserBuilder
   private BrowserBaseModel model;
   private BasePresenter presenter;
   private BasePresenter relyPresenter;
-  private BaseView view;
+  private BrowserBaseView view;
   
   public BrowserBuilder(Activity paramActivity, int paramInt)
   {
@@ -88,6 +88,11 @@ public class BrowserBuilder
     return this.presenter;
   }
   
+  public BrowserBaseView getView()
+  {
+    return this.view;
+  }
+  
   public void onDestroy()
   {
     if (this.presenter != null) {
@@ -130,7 +135,7 @@ public class BrowserBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.BrowserBuilder
  * JD-Core Version:    0.7.0.1
  */

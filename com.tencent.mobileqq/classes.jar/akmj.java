@@ -1,25 +1,33 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import tencent.im.qqwallet.QWalletPubAdReport.QueryReq;
 
 class akmj
-  implements Animation.AnimationListener
+  implements blqq
 {
-  akmj(akmi paramakmi, ztp paramztp, View paramView) {}
+  akmj(akmh paramakmh, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Ztp.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839217);
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletGdtAdManager", 2, "get getPskeyAsync success");
+    }
+    paramVarArgs = akmh.a(this.jdField_a_of_type_Akmh, paramVarArgs[0], this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), aklf.class);
+    localNewIntent.putExtra("cmd", "ReportSvc.Query");
+    localNewIntent.putExtra("data", bguc.a(paramVarArgs.toByteArray()));
+    localNewIntent.setObserver(new akmk(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmj
  * JD-Core Version:    0.7.0.1
  */

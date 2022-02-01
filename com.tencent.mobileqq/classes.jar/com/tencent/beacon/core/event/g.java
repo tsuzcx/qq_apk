@@ -1,18 +1,18 @@
 package com.tencent.beacon.core.event;
 
-public abstract interface g
+class g
+  implements Runnable
 {
-  public abstract void a(boolean paramBoolean);
+  g(h paramh) {}
   
-  public abstract boolean a(RDBean paramRDBean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public void run()
+  {
+    this.a.a(true, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.event.g
  * JD-Core Version:    0.7.0.1
  */

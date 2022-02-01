@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aiiq;
+import ajzj;
 import java.util.ArrayList;
 
 class MiniMultiForwardFragment$1$1
@@ -19,7 +19,7 @@ class MiniMultiForwardFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

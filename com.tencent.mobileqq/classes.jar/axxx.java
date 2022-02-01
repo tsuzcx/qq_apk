@@ -1,66 +1,19 @@
-import android.app.Activity;
-import com.tencent.richmediabrowser.core.IMvpFactory;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BaseView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axxx
-  implements IMvpFactory
+class axxx
+  implements View.OnClickListener
 {
-  public BrowserBaseModel createModel(int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new axyn();
-    case 101: 
-      new axyo();
-    case 102: 
-      return new axyj();
-    }
-    return new axyk();
-  }
+  axxx(axxw paramaxxw, ViewGroup paramViewGroup) {}
   
-  public BasePresenter createPresenter(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new axyv();
-    case 101: 
-      return new axyy();
-    case 102: 
-      return new axyr();
+    if (axxw.a(this.jdField_a_of_type_Axxw) != null) {
+      axxw.a(this.jdField_a_of_type_Axxw).a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
-    return new axyt();
-  }
-  
-  public BaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return null;
-          } while (!(paramBasePresenter instanceof axyv));
-          return new ayaa(paramActivity, (axyv)paramBasePresenter);
-        } while (!(paramBasePresenter instanceof axyy));
-        return new ayao(paramActivity, (axyy)paramBasePresenter);
-      } while (!(paramBasePresenter instanceof axyr));
-      return new axzp(paramActivity, (axyr)paramBasePresenter);
-    } while (!(paramBasePresenter instanceof axyt));
-    return new axzv(paramActivity, (axyt)paramBasePresenter);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import org.json.JSONObject;
 
-final class amqs
-  implements DialogInterface.OnClickListener
+public abstract interface amqs
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract String a();
+  
+  public abstract JSONObject a(amqr paramamqr, JSONObject paramJSONObject);
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

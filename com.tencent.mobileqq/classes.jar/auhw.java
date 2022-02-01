@@ -1,49 +1,17 @@
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-
-public class auhw
-  implements RadioGroup.OnCheckedChangeListener
+class auhw
+  implements bgsm
 {
-  public auhw(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  auhw(auhv paramauhv) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    }
-    while (MsgBackupDateFragment.a(this.a)) {
-      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a)))
-      {
-        this.a.setRightButtonEnable(true);
-        return;
-        MsgBackupDateFragment.a(this.a, false);
-        MsgBackupDateFragment.a(this.a, 0L);
-        MsgBackupDateFragment.b(this.a, 0L);
-        MsgBackupDateFragment.a(this.a).setVisibility(8);
-        continue;
-        MsgBackupDateFragment.a(this.a, true);
-        MsgBackupDateFragment.a(this.a).setVisibility(0);
-      }
-      else
-      {
-        if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
-        {
-          this.a.setRightButtonEnable(true);
-          return;
-        }
-        this.a.setRightButtonEnable(false);
-        return;
-      }
-    }
-    this.a.setRightButtonEnable(true);
+    auhv.a(this.a, bgsk.a(paramInt));
+    auhv.a(this.a).height = auhv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhw
  * JD-Core Version:    0.7.0.1
  */

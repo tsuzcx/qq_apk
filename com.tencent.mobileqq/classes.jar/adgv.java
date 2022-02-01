@@ -1,86 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.IOException;
 
-class adgv
+public class adgv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private static int jdField_a_of_type_Int;
-  private static adgv jdField_a_of_type_Adgv;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  bdbk jdField_a_of_type_Bdbk;
-  String jdField_a_of_type_JavaLangString;
-  volatile boolean jdField_a_of_type_Boolean;
-  private adgv b;
+  public adgv(TestAppFragment paramTestAppFragment) {}
   
-  static adgv a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    File localFile;
+    if (paramBoolean)
     {
-      if (jdField_a_of_type_Adgv != null)
-      {
-        adgv localadgv = jdField_a_of_type_Adgv;
-        jdField_a_of_type_Adgv = localadgv.b;
-        localadgv.b = null;
-        jdField_a_of_type_Int -= 1;
-        return localadgv;
-      }
-      return new adgv();
+      new File(this.a.a).mkdirs();
+      localFile = new File(this.a.a, this.a.b);
     }
-  }
-  
-  static adgv a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "obtain FacePlayInfo:", paramString });
-    }
-    adgv localadgv = a();
-    localadgv.jdField_a_of_type_JavaLangString = paramString;
-    bdbk localbdbk = localadgv.a();
-    if (localbdbk != null) {
-      localbdbk.a();
-    }
-    localadgv.jdField_a_of_type_Bdbk = bdbk.a(paramQQAppInterface, String.valueOf(paramString), (byte)4);
-    localadgv.jdField_a_of_type_Boolean = false;
-    return localadgv;
-  }
-  
-  bdbk a()
-  {
-    if (this.jdField_a_of_type_Bdbk == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Bdbk;
-  }
-  
-  void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.jdField_a_of_type_JavaLangString });
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ??? = a();
-    if (??? != null) {
-      ((bdbk)???).a();
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (jdField_a_of_type_Int < 3)
+      try
       {
-        this.b = jdField_a_of_type_Adgv;
-        jdField_a_of_type_Adgv = this;
+        localFile.createNewFile();
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
       }
-      return;
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+        continue;
+      }
+      new File(this.a.a, this.a.b).delete();
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  boolean a(String paramString)
-  {
-    return (!this.jdField_a_of_type_Boolean) && (paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,60 +1,36 @@
 import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Window;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adti
-  extends Dialog
+  implements View.OnClickListener
 {
-  public adti(Context paramContext)
-  {
-    super(paramContext, 2131755657);
-    setContentView(2131562045);
-    getWindow().setFlags(1024, 2048);
-  }
+  public adti(ChatHistory paramChatHistory) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    ((TextView)findViewById(2131377938)).setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    try
+    if (bgnt.d(BaseApplication.getContext()))
     {
-      super.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+      if (this.a.jdField_a_of_type_Int == 0) {
+        this.a.l();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
-    }
-  }
-  
-  public void setTitle(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (String str = null;; str = getContext().getResources().getString(paramInt))
-    {
-      a(str);
-      return;
-    }
-  }
-  
-  public void show()
-  {
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+      this.a.c.setText(this.a.getString(2131691985));
     }
   }
 }

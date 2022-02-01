@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azct;
-import baub;
-import baue;
-import bavg;
-import bdin;
+import bcds;
+import bdvs;
+import bdvu;
+import bdwu;
+import bgnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -33,20 +33,20 @@ public class PtvTemplateManager$5
       } while (!QLog.isColorLevel());
       QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
       return;
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Baug = new azct(this);
-      localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
-      localbaub.jdField_a_of_type_Int = 0;
-      localbaub.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.a.name).getPath();
-      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbaub);
+      bdvs localbdvs = new bdvs();
+      localbdvs.jdField_a_of_type_Bdvw = new bcds(this);
+      localbdvs.jdField_a_of_type_JavaLangString = this.a.resurl;
+      localbdvs.jdField_a_of_type_Int = 0;
+      localbdvs.c = new File(PtvTemplateManager.a, this.a.name).getPath();
+      localbdvs.b = bgnt.a(bdwu.a().a());
+      localQQAppInterface.getNetEngine(0).a(localbdvs);
     } while (!QLog.isColorLevel());
     QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.resurl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

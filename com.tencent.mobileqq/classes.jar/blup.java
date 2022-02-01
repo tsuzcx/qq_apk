@@ -1,37 +1,20 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
 public class blup
-  implements blun
+  implements View.OnClickListener
 {
-  private File a;
+  public blup(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.a == null) || (!this.a.exists()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VoiceBgmRecognizer", 2, "recognize: invoked. info: mTargetAudioFile = " + this.a);
-      }
-      return;
+    if (this.a.getHostActivity() != null) {
+      this.a.getHostActivity().finish();
     }
-    blur localblur = (blur)blqr.a().c(10);
-    localblur.a(this.a);
-    try
-    {
-      blud.a(this.a.getAbsolutePath(), this.a.getAbsolutePath() + "_8kHz", localblur);
-      return;
-    }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
-    {
-      QLog.d("VoiceBgmRecognizer", 1, String.format("e = %s", new Object[] { localFFmpegCommandAlreadyRunningException }));
-    }
-  }
-  
-  public void a(File paramFile)
-  {
-    this.a = paramFile;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

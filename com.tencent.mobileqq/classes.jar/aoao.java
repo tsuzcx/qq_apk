@@ -1,10 +1,7 @@
-public abstract interface aoao
-{
-  public abstract void a(byte[] paramArrayOfByte, aoaq paramaoaq);
-}
+public class aoao {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneVideoDownloadActivity$2
@@ -10,12 +10,12 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0.getApplicationContext(), alud.a(2131712919), 1).a();
+    QQToast.a(this.this$0.getApplicationContext(), anni.a(2131711298), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoDownloadActivity.2
  * JD-Core Version:    0.7.0.1
  */

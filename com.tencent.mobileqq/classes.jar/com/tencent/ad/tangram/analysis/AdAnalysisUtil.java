@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.analysis.sqlite.b;
 import com.tencent.ad.tangram.json.AdJSON;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.protocol.gdt_analysis_event;
 import com.tencent.ad.tangram.protocol.gdt_analysis_request;
@@ -70,17 +71,18 @@ public final class AdAnalysisUtil
       AdLog.e("AdAnalysisUtil", "getRequest error");
       return null;
     }
-    paramContext = new gdt_analysis_request();
-    paramContext.bid = 10001013;
-    paramContext.androidSDK = Build.VERSION.SDK_INT;
-    paramContext.androidBrand = Build.BRAND;
-    paramContext.androidManufacturer = Build.MANUFACTURER;
-    paramContext.Model = Build.MODEL;
-    paramContext.appVersion = paramString;
-    paramContext.osType = 2;
-    paramContext.osVersion = Build.VERSION.RELEASE;
-    paramContext.body = paramArrayOfgdt_analysis_event;
-    return paramContext;
+    gdt_analysis_request localgdt_analysis_request = new gdt_analysis_request();
+    localgdt_analysis_request.bid = 10001013;
+    localgdt_analysis_request.androidSDK = Build.VERSION.SDK_INT;
+    localgdt_analysis_request.androidBrand = Build.BRAND;
+    localgdt_analysis_request.androidManufacturer = Build.MANUFACTURER;
+    localgdt_analysis_request.ipType = AdNet.getIpFamily(paramContext);
+    localgdt_analysis_request.Model = Build.MODEL;
+    localgdt_analysis_request.appVersion = paramString;
+    localgdt_analysis_request.osType = 2;
+    localgdt_analysis_request.osVersion = Build.VERSION.RELEASE;
+    localgdt_analysis_request.body = paramArrayOfgdt_analysis_event;
+    return localgdt_analysis_request;
   }
   
   public static void initEvent(Context paramContext, int paramInt, gdt_analysis_event paramgdt_analysis_event)
@@ -97,7 +99,7 @@ public final class AdAnalysisUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.analysis.AdAnalysisUtil
  * JD-Core Version:    0.7.0.1
  */

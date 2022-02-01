@@ -1,17 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bnmy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  public bnmy(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnmy(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    this.a.setVisibility(0);
   }
 }
 

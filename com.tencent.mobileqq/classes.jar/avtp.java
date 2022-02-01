@@ -1,40 +1,23 @@
-import android.os.Handler;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
-import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 
-public class avtp
-  implements URLDrawable.DownloadListener
+public final class avtp
+  implements Parcelable.Creator<ListenTogetherSession>
 {
-  avtp(avto paramavto) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public ListenTogetherSession a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.2(this));
+    return new ListenTogetherSession(paramParcel, null);
   }
   
-  public void onFileDownloadStarted()
+  public ListenTogetherSession[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
-    }
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
-    }
-    this.a.a.post(new NearbyActivityDialog.2.1(this));
+    return new ListenTogetherSession[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtp
  * JD-Core Version:    0.7.0.1
  */

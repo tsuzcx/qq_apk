@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import owy;
-import pfd;
+import pmh;
+import pwi;
 
 class ReadInJoyProteusFamilyListViewGroup$6
   implements Runnable
@@ -10,15 +10,15 @@ class ReadInJoyProteusFamilyListViewGroup$6
   
   public void run()
   {
-    pfd localpfd = owy.a().a();
-    if (localpfd != null) {
-      localpfd.b(this.this$0.a);
+    pwi localpwi = pmh.a().a();
+    if (localpwi != null) {
+      localpwi.b(this.this$0.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6
  * JD-Core Version:    0.7.0.1
  */

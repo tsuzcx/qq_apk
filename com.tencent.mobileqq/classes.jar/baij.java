@@ -1,211 +1,274 @@
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 
 public class baij
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static volatile baij jdField_a_of_type_Baij;
-  public static HashMap<String, Integer> a;
-  private static List<TouchWebView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  
-  private baij()
+  public static int a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static baij a()
-  {
-    if (jdField_a_of_type_Baij == null) {}
-    try
-    {
-      if (jdField_a_of_type_Baij == null) {
-        jdField_a_of_type_Baij = new baij();
-      }
-      return jdField_a_of_type_Baij;
+    if ((paramString1 == null) && (paramString2 == null)) {
+      return 0;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static void a(String paramString, TouchWebView paramTouchWebView)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 34	baij:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: ifnonnull +13 -> 19
-    //   9: new 36	java/util/HashMap
-    //   12: dup
-    //   13: invokespecial 37	java/util/HashMap:<init>	()V
-    //   16: putstatic 34	baij:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   19: aload_0
-    //   20: ifnull +30 -> 50
-    //   23: getstatic 34	baij:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   26: aload_0
-    //   27: invokevirtual 41	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 43	java/lang/Integer
-    //   33: astore_3
-    //   34: aload_3
-    //   35: ifnonnull +24 -> 59
-    //   38: getstatic 34	baij:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   41: aload_0
-    //   42: iconst_1
-    //   43: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   46: invokevirtual 51	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   49: pop
-    //   50: aload_0
-    //   51: aload_1
-    //   52: invokestatic 55	athh:a	(Ljava/lang/String;Lcom/tencent/biz/ui/TouchWebView;)V
-    //   55: ldc 2
-    //   57: monitorexit
-    //   58: return
-    //   59: aload_3
-    //   60: invokevirtual 59	java/lang/Integer:intValue	()I
-    //   63: istore_2
-    //   64: getstatic 34	baij:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   67: aload_0
-    //   68: iload_2
-    //   69: iconst_1
-    //   70: iadd
-    //   71: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   74: invokevirtual 51	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   77: pop
-    //   78: goto -28 -> 50
-    //   81: astore_0
-    //   82: ldc 2
-    //   84: monitorexit
-    //   85: aload_0
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	paramString	String
-    //   0	87	1	paramTouchWebView	TouchWebView
-    //   63	8	2	i	int
-    //   33	27	3	localInteger	Integer
-    // Exception table:
-    //   from	to	target	type
-    //   3	19	81	finally
-    //   23	34	81	finally
-    //   38	50	81	finally
-    //   50	55	81	finally
-    //   59	78	81	finally
-  }
-  
-  public TouchWebView a(Context paramContext)
-  {
-    byte[] arrayOfByte = jdField_a_of_type_ArrayOfByte;
-    TouchWebView localTouchWebView = null;
-    try
-    {
-      QLog.e("TenDocWebViewPool", 1, "tendocpreload getWebView =  " + jdField_a_of_type_JavaUtilList.size());
-      if (jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localTouchWebView = (TouchWebView)jdField_a_of_type_JavaUtilList.get(0);
-        jdField_a_of_type_JavaUtilList.remove(0);
-        ViewGroup localViewGroup = (ViewGroup)localTouchWebView.getParent();
-        if (localViewGroup != null) {
-          localViewGroup.removeView(localTouchWebView);
-        }
-        ((MutableContextWrapper)localTouchWebView.getContext()).setBaseContext(paramContext);
-      }
-      return localTouchWebView;
+    if ((paramString1 != null) && (paramString2 == null)) {
+      return 1;
     }
-    finally {}
-  }
-  
-  public List<TouchWebView> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(TouchWebView paramTouchWebView)
-  {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload recycleWebView  ");
-    if (paramTouchWebView != null)
+    if ((paramString1 == null) && (paramString2 != null)) {
+      return -1;
+    }
+    String[] arrayOfString1 = paramString1.split("\\.");
+    String[] arrayOfString2 = paramString2.split("\\.");
+    int i = 0;
+    for (;;)
     {
-      ??? = (ViewGroup)paramTouchWebView.getParent();
-      if (??? != null) {
-        ((ViewGroup)???).removeView(paramTouchWebView);
-      }
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      int j;
+      int k;
+      try
       {
-        if ((paramTouchWebView instanceof SwiftReuseTouchWebView))
+        if ((i < arrayOfString1.length) && (i < arrayOfString2.length))
         {
-          Context localContext = paramTouchWebView.getContext();
-          if ((localContext instanceof MutableContextWrapper)) {
-            ((MutableContextWrapper)localContext).setBaseContext(BaseApplicationImpl.sApplication);
-          }
-          if (jdField_a_of_type_JavaUtilList.size() < jdField_a_of_type_Int)
-          {
-            QLog.i("TenDocWebViewPool", 1, "tendocpreload recycleWebView  ");
-            jdField_a_of_type_JavaUtilList.add(paramTouchWebView);
+          j = Integer.parseInt(arrayOfString1[i]);
+          k = Integer.parseInt(arrayOfString2[i]);
+          if (j < k) {
+            return -1;
           }
         }
         else
         {
-          return;
+          if (arrayOfString1.length > i) {
+            return 1;
+          }
+          j = arrayOfString2.length;
+          if (j <= i) {
+            break;
+          }
+          return -1;
         }
-        paramTouchWebView.destroy();
       }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localNumberFormatException.printStackTrace();
+        return paramString1.compareTo(paramString2);
+      }
+      if (j > k) {
+        return 1;
+      }
+      i += 1;
     }
   }
   
-  public void a(String paramString)
+  public static RedAppInfo a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload init" + a());
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    int j = 0;
+    if (paramAppInfo == null)
     {
-      if (!a())
+      if (QLog.isColorLevel()) {
+        QLog.d("RedTouchUtils BusinessInfo2RedAppInfo", 2, "appInfo is null ");
+      }
+      return null;
+    }
+    RedAppInfo localRedAppInfo = new RedAppInfo();
+    localRedAppInfo.a(paramAppInfo.uiAppId.get());
+    localRedAppInfo.b(paramAppInfo.iNewFlag.get());
+    localRedAppInfo.c(paramAppInfo.type.get());
+    localRedAppInfo.a(paramAppInfo.buffer.get());
+    localRedAppInfo.b(paramAppInfo.path.get());
+    localRedAppInfo.d(paramAppInfo.modify_ts.get());
+    localRedAppInfo.e(paramAppInfo.appset.get());
+    localRedAppInfo.f(paramAppInfo.num.get());
+    localRedAppInfo.c(paramAppInfo.icon_url.get());
+    localRedAppInfo.h(paramAppInfo.icon_type.get());
+    localRedAppInfo.g(paramAppInfo.icon_flag.get());
+    localRedAppInfo.i(paramAppInfo.push_red_ts.get());
+    localRedAppInfo.j(paramAppInfo.mission_level.get());
+    localRedAppInfo.k(paramAppInfo.exposure_max.get());
+    Object localObject = new ArrayList();
+    int i;
+    if ((paramAppInfo.missions.get() != null) && (paramAppInfo.missions.get().size() > 0))
+    {
+      i = 0;
+      while (i < paramAppInfo.missions.get().size())
       {
-        Object localObject = new Bundle();
-        ((Bundle)localObject).putInt("_accelerator_mode_", 3);
-        if (SwiftReuseTouchWebView.b == 0) {
-          bejx.a().a((Bundle)localObject);
+        ((ArrayList)localObject).add(paramAppInfo.missions.get().get(i));
+        i += 1;
+      }
+    }
+    localRedAppInfo.a((ArrayList)localObject);
+    localObject = new RedDisplayInfo();
+    RedTypeInfo localRedTypeInfo = new RedTypeInfo();
+    ArrayList localArrayList = new ArrayList();
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = (BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).tab_display_info.get();
+    paramAppInfo = ((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).red_type_info.get();
+    if (localRedTypeInfo1 != null)
+    {
+      localRedTypeInfo.setRedContent(localRedTypeInfo1.red_content.get());
+      localRedTypeInfo.setRedDesc(localRedTypeInfo1.red_desc.get());
+      localRedTypeInfo.setRedPriority(localRedTypeInfo1.red_priority.get());
+      localRedTypeInfo.setRedType(localRedTypeInfo1.red_type.get());
+    }
+    ((RedDisplayInfo)localObject).a(localRedTypeInfo);
+    if ((paramAppInfo != null) && (paramAppInfo.size() > 0))
+    {
+      i = j;
+      while (i < paramAppInfo.size())
+      {
+        localRedTypeInfo = new RedTypeInfo();
+        localRedTypeInfo.setRedContent(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_content.get());
+        localRedTypeInfo.setRedDesc(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_desc.get());
+        localRedTypeInfo.setRedPriority(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_priority.get());
+        localRedTypeInfo.setRedType(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_type.get());
+        localArrayList.add(localRedTypeInfo);
+        i += 1;
+      }
+    }
+    ((RedDisplayInfo)localObject).a(localArrayList);
+    localRedAppInfo.a((RedDisplayInfo)localObject);
+    return localRedAppInfo;
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(RedAppInfo paramRedAppInfo)
+  {
+    if (paramRedAppInfo == null) {
+      return null;
+    }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
+    localAppInfo.uiAppId.set(paramRedAppInfo.a());
+    localAppInfo.iNewFlag.set(paramRedAppInfo.b());
+    localAppInfo.type.set(paramRedAppInfo.c());
+    localAppInfo.buffer.set(paramRedAppInfo.a());
+    localAppInfo.path.set(paramRedAppInfo.b());
+    localAppInfo.modify_ts.set(paramRedAppInfo.d());
+    localAppInfo.missions.set(paramRedAppInfo.a());
+    localAppInfo.appset.set(paramRedAppInfo.e());
+    localAppInfo.num.set(paramRedAppInfo.f());
+    localAppInfo.icon_url.set(paramRedAppInfo.c());
+    localAppInfo.icon_flag.set(paramRedAppInfo.g());
+    localAppInfo.icon_type.set(paramRedAppInfo.h());
+    localAppInfo.push_red_ts.set(paramRedAppInfo.i());
+    localAppInfo.mission_level.set(paramRedAppInfo.j());
+    localAppInfo.exposure_max.set(paramRedAppInfo.k());
+    BusinessInfoCheckUpdate.RedDisplayInfo localRedDisplayInfo = new BusinessInfoCheckUpdate.RedDisplayInfo();
+    Object localObject = paramRedAppInfo.a();
+    paramRedAppInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    RedTypeInfo localRedTypeInfo;
+    if (localObject != null)
+    {
+      localRedTypeInfo = ((RedDisplayInfo)localObject).a();
+      paramRedAppInfo.red_content.set(localRedTypeInfo.getRedContent());
+      paramRedAppInfo.red_desc.set(localRedTypeInfo.getRedDesc());
+      paramRedAppInfo.red_priority.set(localRedTypeInfo.getRedPriority());
+      paramRedAppInfo.red_type.set(localRedTypeInfo.getRedType());
+    }
+    localRedDisplayInfo.tab_display_info.set(paramRedAppInfo);
+    paramRedAppInfo = new ArrayList();
+    if (localObject != null)
+    {
+      localObject = ((RedDisplayInfo)localObject).a();
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < ((List)localObject).size())
+        {
+          localRedTypeInfo = (RedTypeInfo)((List)localObject).get(i);
+          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = new BusinessInfoCheckUpdate.RedTypeInfo();
+          localRedTypeInfo1.red_content.set(localRedTypeInfo.getRedContent());
+          localRedTypeInfo1.red_desc.set(localRedTypeInfo.getRedDesc());
+          localRedTypeInfo1.red_priority.set(localRedTypeInfo.getRedPriority());
+          localRedTypeInfo1.red_type.set(localRedTypeInfo.getRedType());
+          paramRedAppInfo.add(localRedTypeInfo1);
+          i += 1;
         }
-        QLog.i("TenDocWebViewPool", 1, "init");
-        localObject = SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication);
-        ((TouchWebView)localObject).setWebViewClient(new bail(this));
-        ((TouchWebView)localObject).setWebChromeClient(new baik(this));
-        jdField_a_of_type_JavaUtilList.add(localObject);
       }
-      baii.a = paramString;
-      return;
     }
+    localRedDisplayInfo.red_type_info.set(paramRedAppInfo);
+    localAppInfo.red_display_info.set(localRedDisplayInfo);
+    return localAppInfo;
   }
   
-  public boolean a()
+  public static Map<String, JSONObject> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    return jdField_a_of_type_JavaUtilList.size() > 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (a())
+    if (paramAppInfo != null)
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        TouchWebView localTouchWebView = (TouchWebView)a().get(0);
-        localTouchWebView.setWebViewClient(new bail(this));
-        localTouchWebView.setWebChromeClient(new baik(this));
-        localTouchWebView.loadUrlOriginal(paramString);
-        bool1 = true;
+      Object localObject = paramAppInfo.buffer.get();
+      if (!bgsp.a((String)localObject)) {
+        try
+        {
+          paramAppInfo = new HashMap();
+          localObject = new JSONObject((String)localObject).getJSONObject("msg");
+          Iterator localIterator = ((JSONObject)localObject).keys();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (!bgsp.a(str))
+            {
+              JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject(str);
+              if (localJSONObject != null)
+              {
+                paramAppInfo.put(str, localJSONObject);
+                continue;
+                return null;
+              }
+            }
+          }
+        }
+        catch (JSONException paramAppInfo)
+        {
+          paramAppInfo.printStackTrace();
+        }
       }
     }
-    return bool1;
+    return paramAppInfo;
+  }
+  
+  public static boolean a(Submsgtype0x89.NumRedBusiInfo paramNumRedBusiInfo)
+  {
+    boolean bool = true;
+    String str = paramNumRedBusiInfo.str_client_ver_begin.get();
+    paramNumRedBusiInfo = paramNumRedBusiInfo.str_client_ver_end.get();
+    if ((str == null) && (paramNumRedBusiInfo == null)) {
+      return false;
+    }
+    int i = a(str, "8.4.1");
+    int j = a("8.4.1", paramNumRedBusiInfo);
+    if ((i == -1) || (i == 0))
+    {
+      i = 1;
+      if ((j != 1) && (j != 0) && (!paramNumRedBusiInfo.equals("0.0.0"))) {
+        break label94;
+      }
+      j = 1;
+      label79:
+      if ((i == 0) || (j == 0)) {
+        break label99;
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      i = 0;
+      break;
+      label94:
+      j = 0;
+      break label79;
+      label99:
+      bool = false;
+    }
   }
 }
 

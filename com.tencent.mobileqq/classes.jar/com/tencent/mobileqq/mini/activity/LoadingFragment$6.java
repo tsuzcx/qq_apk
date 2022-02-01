@@ -21,7 +21,7 @@ class LoadingFragment$6
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.17.0.00206");
       if ((LoadingFragment.access$000(this.this$0) != null) && (LoadingFragment.access$000(this.this$0).config != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(LoadingFragment.access$000(this.this$0).config.baselibMiniVersion, paramBundle))))
       {
         AppBrandTask.runTaskOnUiThread(new LoadingFragment.6.1(this));
@@ -37,7 +37,7 @@ class LoadingFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment.6
  * JD-Core Version:    0.7.0.1
  */

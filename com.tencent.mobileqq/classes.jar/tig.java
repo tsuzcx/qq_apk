@@ -1,82 +1,26 @@
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+
 public class tig
-  implements thm
+  implements tin
 {
-  private tbb a;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public tig(tbb paramtbb)
+  public tig(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
   {
-    this.a = paramtbb;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void a(thl paramthl) {}
-  
-  public void a(thl paramthl, int paramInt) {}
-  
-  public void a(thl paramthl, int paramInt1, int paramInt2, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramString = new StringBuilder().append("[onVideoError] video: ");
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramthl = paramthl.jdField_a_of_type_Thp.d;; paramthl = "")
-    {
-      tlo.b("WSFollowPlayerStatusListenerImpl", paramthl);
-      return;
-    }
-  }
-  
-  public void a(thl paramthl, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoStop] video: ");
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_AndroidViewView != null)) {}
-    for (String str = paramthl.jdField_a_of_type_Thp.d;; str = "")
-    {
-      tlo.b("WSFollowPlayerStatusListenerImpl", str);
-      tjt.a(paramthl, paramBoolean);
-      return;
-    }
-  }
-  
-  public void b(thl paramthl)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoStart] video: ");
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_AndroidViewView != null)) {}
-    for (String str = paramthl.jdField_a_of_type_Thp.d;; str = "")
-    {
-      tlo.b("WSFollowPlayerStatusListenerImpl", str);
-      tjt.a(paramthl);
-      if (this.a != null) {
-        this.a.a();
-      }
-      return;
-    }
-  }
-  
-  public void c(thl paramthl) {}
-  
-  public void d(thl paramthl)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoPause] video: ");
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramthl = paramthl.jdField_a_of_type_Thp.d;; paramthl = "")
-    {
-      tlo.b("WSFollowPlayerStatusListenerImpl", paramthl);
-      return;
-    }
-  }
-  
-  public void e(thl paramthl)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoRestart] video: ");
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramthl = paramthl.jdField_a_of_type_Thp.d;; paramthl = "")
-    {
-      tlo.b("WSFollowPlayerStatusListenerImpl", paramthl);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new tih(this, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tig
  * JD-Core Version:    0.7.0.1
  */

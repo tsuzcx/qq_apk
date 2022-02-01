@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 class afty
-  extends afuf
+  implements BusinessObserver
 {
-  afty(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  afty(aftv paramaftv, afua paramafua) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new agfa(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramInt == 2003) && (this.jdField_a_of_type_Afua != null)) {
+      this.jdField_a_of_type_Afua.a(paramBoolean, paramBundle);
+    }
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface bnsz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bnsz
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  bnsz(bnss parambnss) {}
+  
+  public void onClick(View paramView)
+  {
+    bnss.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,59 +1,36 @@
+import android.media.MediaPlayer;
+import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 
-class lcf
-  implements X509HostnameVerifier
+public class lcf
+  extends lcp
 {
-  private X509HostnameVerifier jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier = SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
-  
-  lcf(lce paramlce) {}
-  
-  public void verify(String paramString, X509Certificate paramX509Certificate)
+  public lcf(VideoController paramVideoController)
   {
-    String str = paramString;
-    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
-      str = "accesscontrol.windows.net";
-    }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramX509Certificate);
+    super(paramVideoController);
   }
   
-  public void verify(String paramString, SSLSocket paramSSLSocket)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    String str = paramString;
-    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
-      str = "accesscontrol.windows.net";
+    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSocket);
-  }
-  
-  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    String str = paramString;
-    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
-      str = "accesscontrol.windows.net";
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().p())
+    {
+      lbc.d(VideoController.a, "onCompletion onClose is not Closing2");
+      this.jdField_a_of_type_Long = 0L;
+      return;
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramArrayOfString1, paramArrayOfString2);
-  }
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Translator", 2, "[AsyncHttpClient] host:" + paramString);
-    }
-    String str = paramString;
-    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
-      str = "accesscontrol.windows.net";
-    }
-    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSession);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lcf
  * JD-Core Version:    0.7.0.1
  */

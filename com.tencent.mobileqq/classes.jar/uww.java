@@ -1,21 +1,37 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+
 public class uww
+  extends GestureDetector.SimpleOnGestureListener
 {
-  @xrk(a="align")
-  public int a;
-  @xrk(a="image")
-  public String a;
-  @xrk(a="picture_margin")
-  public int[] a;
-  @xrk(a="picture_width")
-  public int b;
-  @xrk(a="picture_height")
-  public int c;
-  @xrk(a="standard_width")
-  public int d;
+  private final uwx jdField_a_of_type_Uwx;
+  
+  public uww(PublicAccountImageView paramPublicAccountImageView, uwx paramuwx)
+  {
+    this.jdField_a_of_type_Uwx = paramuwx;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uww
  * JD-Core Version:    0.7.0.1
  */

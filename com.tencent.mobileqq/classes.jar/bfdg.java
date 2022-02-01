@@ -1,36 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity.8;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import com.tencent.widget.AdapterView;
 
 public class bfdg
-  implements DialogInterface.OnClickListener
+  implements bkij
 {
-  public bfdg(BindGroupConfirmActivity.8 param8) {}
+  public bfdg(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == 1)
+    if (paramInt < this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.getCount())
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    try
-    {
-      asdb.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      BindGroupConfirmActivity.a(this.a.this$0, -1);
-      BindGroupConfirmActivity.a(this.a.this$0);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
+      paramAdapterView = this.a.jdField_a_of_type_Bfdn.a(paramInt);
+      this.a.a(paramInt, paramAdapterView);
     }
   }
 }

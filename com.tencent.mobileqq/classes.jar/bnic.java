@@ -1,6 +1,16 @@
-public abstract interface bnic
+public class bnic
 {
-  public abstract void a();
+  private static bnid a;
+  
+  public static bnid a()
+  {
+    return a;
+  }
+  
+  public static void a(bnid parambnid)
+  {
+    a = parambnid;
+  }
 }
 
 

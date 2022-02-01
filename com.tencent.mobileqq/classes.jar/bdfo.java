@@ -1,15 +1,4 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-
-final class bdfo
-  implements MediaPlayer.OnCompletionListener
-{
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    bdfi.a = null;
-  }
-}
+public class bdfo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

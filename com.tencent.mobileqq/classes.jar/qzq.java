@@ -1,40 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class qzq
-  extends Handler
+public class qzq
+  extends qzn
 {
-  qzq(qzp paramqzp, Looper paramLooper)
+  public qzq(ViewGroup paramViewGroup, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, @Nullable aanz paramaanz)
   {
-    super(paramLooper);
+    super(paramViewGroup);
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(0);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+    localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200313/4892c273234b4f39833f389671c1b1fa.png", (URLDrawable.URLDrawableOptions)localObject);
+    this.a.setImageDrawable((Drawable)localObject);
+    localObject = (TextView)a(2131381087);
+    ((TextView)localObject).setOnClickListener(new qzr(this, paramBoolean, paramaanz, paramString, paramInt1, paramInt2, paramViewGroup));
+    paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+    paramString = new ColorDrawable(0);
+    paramViewGroup.mFailedDrawable = paramString;
+    paramViewGroup.mLoadingDrawable = paramString;
+    ((TextView)localObject).setBackgroundDrawable(URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/readinjoy/btn_bg_2x.png", paramViewGroup));
   }
   
-  public void handleMessage(Message paramMessage)
+  View a(ViewGroup paramViewGroup)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.a(false);
-    } while (paramMessage == null);
-    qzp.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localAdvertisementInfo != null) {
-      localAdvertisementInfo.isShowingGuide = false;
-    }
-    this.a.a(null, paramMessage);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562757, paramViewGroup, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzq
  * JD-Core Version:    0.7.0.1
  */

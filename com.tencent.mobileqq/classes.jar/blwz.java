@@ -1,58 +1,43 @@
-import android.graphics.Typeface;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.PlusMenuContainer;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class blwz
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int;
-  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  ArrayList<blwv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float = 0.0F;
-  int jdField_c_of_type_Int = 0;
-  float d = 0.0F;
+  public blwz(PlusMenuContainer paramPlusMenuContainer) {}
   
-  public blwz()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public blwx a(int paramInt, List<String> paramList)
-  {
-    blwx localblwx = new blwx(paramInt, paramList);
-    localblwx.jdField_a_of_type_JavaUtilArrayList.clear();
-    localblwx.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      localblwx.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    String str;
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
+    {
+      str = (String)paramView.getTag();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("cmd", "Schema");
+      localIntent.putExtra("schema", str);
+      blsb.a((Activity)this.a.a, blsi.a(), localIntent);
+      if (!str.equals(PlusMenuContainer.b[0])) {
+        break label101;
+      }
+      LpReportInfo_pf00064.report(133, 2);
     }
-    localblwx.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      blwx.a(localblwx, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
+    for (;;)
+    {
+      this.a.b();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label101:
+      if (str.equals(PlusMenuContainer.b[1])) {
+        LpReportInfo_pf00064.report(133, 3);
+      } else if (str.equals(PlusMenuContainer.b[2])) {
+        LpReportInfo_pf00064.report(133, 4);
+      }
     }
-    blwx.a(localblwx, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
-    if (!paramList.isEmpty()) {
-      localblwx.a(0, (String)paramList.get(0));
-    }
-    return localblwx;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-  }
-  
-  public void a(blwv paramblwv)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramblwv);
   }
 }
 

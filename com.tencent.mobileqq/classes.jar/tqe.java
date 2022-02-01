@@ -1,27 +1,10 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import kotlin.Metadata;
 
-class tqe
-  implements vwf
-{
-  tqe(tqc paramtqc, String paramString1, QCircleFeedCleanPlayView paramQCircleFeedCleanPlayView, String paramString2) {}
-  
-  public void a(vwa paramvwa)
-  {
-    Long localLong = (Long)tqc.a(this.jdField_a_of_type_Tqc).get(this.jdField_a_of_type_JavaLangString);
-    if ((localLong != null) && (localLong.longValue() > 0L))
-    {
-      paramvwa.a(localLong.longValue());
-      QLog.d("QCircleFeedPlayerHelper", 4, "playInner seekTo: " + localLong);
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCleanPlayView.c();
-    tzs.a(8, 4, tqc.a(this.jdField_a_of_type_Tqc, this.b));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/EventBridgeInvokeHandler$Companion;", "", "()V", "ADD_EVENT_LISTENER", "", "DISPATCH_EVENT", "NS_EVENT", "REMOVE_EVENT_LISTENER", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqe {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibu
-  implements View.OnClickListener
+class aibu
+  implements DialogInterface.OnClickListener
 {
-  public aibu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aibu(aiay paramaiay, bhtt parambhtt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new azqx(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    this.jdField_a_of_type_Aiay.aa = true;
+    this.jdField_a_of_type_Aiay.Z = true;
+    aiay.b(this.jdField_a_of_type_Aiay, false);
+    if ((this.jdField_a_of_type_Bhtt.a()) && (!this.jdField_a_of_type_Bhtt.b())) {
+      bcst.b(this.jdField_a_of_type_Aiay.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    }
   }
 }
 

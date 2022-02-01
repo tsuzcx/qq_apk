@@ -1,23 +1,46 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajyi
-  implements DialogInterface.OnCancelListener
+class ajyi
+  implements View.OnClickListener
 {
-  private final WeakReference<Activity> a;
+  ajyi(ajye paramajye) {}
   
-  public ajyi(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    Activity localActivity = (Activity)this.a.get();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      paramDialogInterface.dismiss();
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
+    }
+    Object localObject = this.a.jdField_a_of_type_Ajyc;
+    if (this.a.jdField_a_of_type_Ajyc == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      switch (i)
+      {
+      default: 
+        break;
+      case 2131365147: 
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((ajyc)localObject).a.msg);
+        break;
+      case 2131367027: 
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("forward_type", -1);
+        localBundle.putString("forward_text", ((ajyc)localObject).a.msg);
+        localObject = new Intent();
+        ((Intent)localObject).putExtras(localBundle);
+        aufz.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+      }
     }
   }
 }

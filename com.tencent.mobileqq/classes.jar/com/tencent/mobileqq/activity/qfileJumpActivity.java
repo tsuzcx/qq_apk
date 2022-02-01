@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import alof;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdia;
+import android.view.MotionEvent;
+import anhk;
+import bgnf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qfileJumpActivity
   extends BaseActivity
@@ -20,16 +24,16 @@ public class qfileJumpActivity
   private int a()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!alof.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!alof.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    while ((!anhk.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!anhk.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (!alof.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!anhk.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
         return -2;
       }
     }
-    else if (!alof.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!anhk.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
       return -2;
     }
     return 0;
@@ -77,6 +81,14 @@ public class qfileJumpActivity
     new Handler().postDelayed(new qfileJumpActivity.2(this), 10L);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -103,12 +115,12 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bdia.a(this, true))
+      if (!bgnf.a(this, true))
       {
         super.finish();
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = alof.z;
+      this.jdField_a_of_type_JavaLangString = anhk.z;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -119,7 +131,7 @@ public class qfileJumpActivity
         {
           QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = alof.z;
+          this.jdField_a_of_type_JavaLangString = anhk.z;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
           paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
         }
@@ -159,6 +171,13 @@ public class qfileJumpActivity
     return true;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
@@ -168,7 +187,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bdia.a(this);
+      boolean bool = bgnf.a(this);
       if (bool) {
         return true;
       }

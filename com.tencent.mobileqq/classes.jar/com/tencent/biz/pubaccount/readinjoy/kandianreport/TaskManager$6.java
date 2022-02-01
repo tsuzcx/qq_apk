@@ -36,18 +36,18 @@ class TaskManager$6
         if (!localIterator2.hasNext()) {
           continue;
         }
-        localObject2 = (Task.CONFIG_ITEM)localIterator2.next();
-        if ((TextUtils.isEmpty(((Task.CONFIG_ITEM)localObject2).value)) || (TextUtils.isEmpty(this.val$data))) {
+        localObject2 = (Task.ConfigItem)localIterator2.next();
+        if ((TextUtils.isEmpty(((Task.ConfigItem)localObject2).value)) || (TextUtils.isEmpty(this.val$data))) {
           continue;
         }
-        boolean bool = this.val$data.contains(((Task.CONFIG_ITEM)localObject2).value);
+        boolean bool = this.val$data.contains(((Task.ConfigItem)localObject2).value);
         if (!bool) {
           continue;
         }
       }
       try
       {
-        localObject2 = TaskManager.access$300(this.this$0, localTask.filter, ((Task.CONFIG_ITEM)localObject2).value);
+        localObject2 = TaskManager.access$300(this.this$0, localTask.filter, ((Task.ConfigItem)localObject2).value);
         if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
           continue;
         }

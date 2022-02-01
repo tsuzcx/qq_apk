@@ -1,13 +1,16 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class bcse
+  implements FilenameFilter
 {
-  ainn jdField_a_of_type_Ainn;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public bcse(LocalCrashCollector paramLocalCrashCollector) {}
   
-  protected bcse(bcsc parambcsc) {}
+  public boolean accept(File paramFile, String paramString)
+  {
+    return !paramString.contains("CrashInfoSummary.txt");
+  }
 }
 
 

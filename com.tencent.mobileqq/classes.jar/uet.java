@@ -1,33 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
-import feedcloud.FeedCloudMeta.StUser;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uet
-  extends ClickableSpan
+class uet
+  implements View.OnClickListener
 {
-  public uet(QCirclePushAsyncTextView paramQCirclePushAsyncTextView, FeedCloudMeta.StUser paramStUser) {}
+  uet(ueq paramueq) {}
   
-  public void onClick(@NonNull View paramView)
+  public void onClick(View paramView)
   {
-    if (QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView) != null) {
-      QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setFakeBoldText(QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView));
+    ueq.a(this.a).h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uet
  * JD-Core Version:    0.7.0.1
  */

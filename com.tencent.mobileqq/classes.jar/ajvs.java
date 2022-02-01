@@ -1,21 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.os.Bundle;
 
-public class ajvs
-  implements MediaPlayer.OnCompletionListener
+class ajvs
+  extends ayew
 {
-  public ajvs(FixedSizeVideoView paramFixedSizeVideoView) {}
+  ajvs(ajvr paramajvr) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      ajvr.a(this.a);
     }
   }
 }

@@ -1,54 +1,71 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqsi
-  implements aqsa
+public class aqsi
 {
-  aqsi(aqsh paramaqsh, String paramString, aqtc paramaqtc) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void a(int paramInt, String paramString)
+  public aqsi()
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqsh.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Aqsh.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void a(String paramString)
+  public static aqsi a(aqlg[] paramArrayOfaqlg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqsh.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqsh.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqsh.c);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqsh.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqsh.f);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqsh.jdField_a_of_type_JavaLangString + "] success");
+    localaqsi = new aqsi();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayOfaqlg.length)
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
+        if (localJSONObject.has("pubaccountSwitch"))
+        {
+          localaqsi.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localaqsi.jdField_a_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("fullPopIntervalDay"))
+        {
+          localaqsi.jdField_b_of_type_Int = localJSONObject.optInt("fullPopIntervalDay");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localaqsi.jdField_b_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("isFeedByWeb"))
+        {
+          localaqsi.c = localJSONObject.optInt("isFeedByWeb");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localaqsi.c);
+          }
+        }
+        if (localJSONObject.has("gamePubUrl"))
+        {
+          localaqsi.jdField_b_of_type_JavaLangString = localJSONObject.optString("gamePubUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed gamePubUlr=" + localaqsi.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (localJSONObject.has("feedUrl"))
+        {
+          localaqsi.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localaqsi.jdField_a_of_type_JavaLangString);
+          }
+        }
+        i += 1;
+      }
+      return localaqsi;
     }
-    this.jdField_a_of_type_Aqtc.a(paramString, localBundle);
+    catch (Throwable paramArrayOfaqlg)
+    {
+      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaqlg.toString());
+    }
   }
 }
 

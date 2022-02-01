@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
-import bdaq;
+import bggq;
 
 public class WebViewTopTabRadioButton
   extends RadioButton
@@ -14,7 +14,7 @@ public class WebViewTopTabRadioButton
   int jdField_a_of_type_Int = 0;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public volatile boolean a;
-  int jdField_b_of_type_Int = bdaq.a(super.getContext(), 2.0F);
+  int jdField_b_of_type_Int = bggq.a(super.getContext(), 2.0F);
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
   public WebViewTopTabRadioButton(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,7 +27,7 @@ public class WebViewTopTabRadioButton
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130849801);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130850388);
       return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
     catch (OutOfMemoryError paramContext)
@@ -56,16 +56,16 @@ public class WebViewTopTabRadioButton
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
     if ((this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    for (paramInt2 = bdaq.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
+    for (paramInt2 = bggq.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
     {
-      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - bdaq.a(super.getContext(), 3.0F));
+      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - bggq.a(super.getContext(), 3.0F));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabRadioButton
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -21,6 +21,7 @@ public class MiniAppGetAppInfoByIdForSDKServlet
   public static final String KEY_ENV_VERSION = "key_env_version";
   public static final String KEY_EXT = "key_ext";
   public static final String KEY_FIRST_PATH = "key_first_path";
+  public static final String KEY_FROM_APP_ID = "key_from_app_id";
   public static final int NO_REQUIRED = 0;
   public static final int REQUIRED = 1;
   public static final String TAG = "MiniAppGetAppInfoByIdForSDKServlet";
@@ -44,7 +45,7 @@ public class MiniAppGetAppInfoByIdForSDKServlet
       if (localStGetAppInfoByIdRsp.appInfo.type.get() == 3) {
         savaMiniAppInfo(paramIntent, localStGetAppInfoByIdRsp);
       }
-      paramBundle.putSerializable("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
+      paramBundle.putParcelable("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
       notifyObserver(paramIntent, 1055, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -54,9 +55,10 @@ public class MiniAppGetAppInfoByIdForSDKServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    String str = paramIntent.getStringExtra("key_app_id");
+    String str1 = paramIntent.getStringExtra("key_app_id");
     Object localObject2 = paramIntent.getStringExtra("key_first_path");
     Object localObject3 = paramIntent.getStringExtra("key_env_version");
+    String str2 = paramIntent.getStringExtra("key_from_app_id");
     int i = paramIntent.getIntExtra("key_index", -1);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -73,13 +75,13 @@ public class MiniAppGetAppInfoByIdForSDKServlet
     try
     {
       ((COMM.StCommonExt)localObject3).mergeFrom(arrayOfByte);
-      localObject2 = new GetAppInfoByIdRequest((COMM.StCommonExt)localObject3, str, 1, 0, (String)localObject1, (String)localObject2).encode(paramIntent, i, getTraceId());
+      localObject2 = new GetAppInfoByIdRequest((COMM.StCommonExt)localObject3, str1, 1, 0, (String)localObject1, (String)localObject2, str2).encode(paramIntent, i, getTraceId());
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoById");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -98,7 +100,7 @@ public class MiniAppGetAppInfoByIdForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

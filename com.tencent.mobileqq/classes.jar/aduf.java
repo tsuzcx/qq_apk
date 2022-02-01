@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterBaseActivity.2;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class aduf
-  implements DialogInterface.OnClickListener
+class aduf
+  extends ClickableSpan
 {
-  public aduf(RegisterBaseActivity.2 param2) {}
+  aduf(aduc paramaduc, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    bcst.b(this.jdField_a_of_type_Aduc.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
+    try
+    {
+      this.jdField_a_of_type_Aduc.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

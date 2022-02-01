@@ -1,23 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.widget.FadeIconImageView;
 
 public class nyx
-  implements nbs
+  implements qyx
 {
-  public nyx(ReadInJoyFeedsActivity.1 param1) {}
+  public nyx(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
+    this.a.a = paramBoolean;
+    PublicAccountBrowser.a(this.a);
+    if (paramBoolean)
+    {
+      this.a.b = paramString;
+      if ((PublicAccountBrowser.a(this.a) == null) || (PublicAccountBrowser.a(this.a).getVisibility() != 0))
+      {
+        PublicAccountBrowser.a(this.a).setImageResource(2130849435);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+        PublicAccountBrowser.a(this.a).setVisibility(8);
+      }
+      for (;;)
+      {
+        PublicAccountBrowser.b(this.a);
+        return;
+        PublicAccountBrowser.a(this.a).setImageResource(2130849520);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+      }
     }
+    PublicAccountBrowser.a(this.a).setVisibility(8);
+    PublicAccountBrowser.a(this.a).setVisibility(0);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nyx
  * JD-Core Version:    0.7.0.1
  */

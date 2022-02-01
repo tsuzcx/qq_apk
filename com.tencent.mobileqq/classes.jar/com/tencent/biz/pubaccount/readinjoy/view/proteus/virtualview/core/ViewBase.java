@@ -649,7 +649,7 @@ public abstract class ViewBase
     refresh();
   }
   
-  protected void setBackgroundColor(int paramInt)
+  public void setBackgroundColor(int paramInt)
   {
     this.mBackground = paramInt;
     View localView = getNativeView();
@@ -821,7 +821,7 @@ public abstract class ViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase
  * JD-Core Version:    0.7.0.1
  */

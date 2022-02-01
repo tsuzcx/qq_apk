@@ -19,7 +19,7 @@ public final class oidb_cmd0xdc2$BatchSendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendReq
  * JD-Core Version:    0.7.0.1
  */

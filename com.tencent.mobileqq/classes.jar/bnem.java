@@ -1,24 +1,15 @@
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.30;
 
 public class bnem
-  extends RecyclerView.OnScrollListener
+  implements DialogInterface.OnCancelListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public bnem(AEPituCameraUnit.30 param30) {}
   
-  public bnem(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 1) && (!this.jdField_a_of_type_Boolean))
-    {
-      if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity() != null)) {
-        wxj.a("video_edit_new", "swap_albumbar", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity().getIntent(), new String[0]);
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
+    bnzb.b("AEPituCameraUnit", "PermissionDialog--onCancel");
   }
 }
 

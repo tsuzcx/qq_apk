@@ -1,80 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.DrawableContainer.DrawableContainerState;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedPicPositionEvent;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
+import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vzz
-  extends vtg
+  implements ViewPager.OnPageChangeListener
 {
-  public vzz(vzl paramvzl) {}
+  public vzz(QCircleFeedItemPicPresenter paramQCircleFeedItemPicPresenter) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Vpm.equals(localObject))) {}
-    do
-    {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        wxe.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          vmg.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        uom.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131720059), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (vzl.a(this.a) != null)) {
-        vzl.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Vic == null);
-    this.a.jdField_a_of_type_Vic.a(paramInt1, paramInt2, paramIntent);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void d()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    super.d();
-    if ((bnle.a) && (!azkz.a(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (vzl.a(this.a) - xsm.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
+    QCircleFeedItemPicPresenter.a(this.a, paramInt);
+    Object localObject;
+    if ((this.a.a() != null) && (this.a.a() != null))
     {
-      Object localObject = vzl.a(this.a).getBackground();
-      if ((localObject instanceof StateListDrawable))
-      {
-        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
-        if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167198));
-        }
+      localObject = new QCircleFeedPicPositionEvent(this.a.a().id.get(), paramInt);
+      ((QCircleFeedPicPositionEvent)localObject).mHashCode = this.a.a().getContext().hashCode();
+      zwp.a().a((SimpleBaseEvent)localObject);
+    }
+    QCircleFeedItemPicPresenter.b(this.a, paramInt);
+    if (QCircleFeedItemPicPresenter.a(this.a) != null)
+    {
+      localObject = QCircleFeedItemPicPresenter.a(this.a);
+      if (paramInt != 0) {
+        break label112;
       }
     }
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (vzl.a(this.a) != null) {
-      vzl.a(this.a).a();
+    label112:
+    for (boolean bool = true;; bool = false)
+    {
+      ((QCircleBaseFragment)localObject).b(bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzz
  * JD-Core Version:    0.7.0.1
  */

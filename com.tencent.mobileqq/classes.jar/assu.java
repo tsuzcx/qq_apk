@@ -1,37 +1,35 @@
-import android.graphics.Bitmap;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class assu
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public assu(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public static assu a(HiBoomTextView paramHiBoomTextView)
+  public void onClick(View paramView)
   {
-    if (paramHiBoomTextView != null)
+    if (bgnt.d(this.a.getActivity()))
     {
-      assu localassu = new assu();
-      localassu.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
-      localassu.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
-      localassu.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
-      localassu.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
-      localassu.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
-      localassu.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
-      localassu.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
-      localassu.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
-      localassu.jdField_b_of_type_Long = System.currentTimeMillis();
-      return localassu;
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (atvo.a()) {
+        atvb.a(this.a.getActivity(), 2131692321, 2131718902, new assv(this));
+      }
     }
-    return null;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      continue;
+      atvf.a(2131692314);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

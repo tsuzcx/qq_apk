@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import afii;
+import agpq;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,15 +24,15 @@ final class ArkAppCenter$ProxyChangeNotifier
   {
     if (AppNetConnInfo.isWifiConn())
     {
-      afii.setArkHttpProxy();
+      agpq.setArkHttpProxy();
       return;
     }
-    afii.clearArkHttpProxy();
+    agpq.clearArkHttpProxy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppCenter.ProxyChangeNotifier
  * JD-Core Version:    0.7.0.1
  */

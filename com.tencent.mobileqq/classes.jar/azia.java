@@ -1,24 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
+import android.graphics.drawable.Drawable;
 
 public class azia
 {
-  public final Object a;
-  public final Runnable a;
+  public long a;
+  public Drawable a;
+  public boolean a;
   
-  azia()
+  public azia(long paramLong, boolean paramBoolean, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
-  }
-  
-  static void a(Message paramMessage)
-  {
-    if (paramMessage == null) {}
-    while (!(paramMessage.obj instanceof azia)) {
-      return;
-    }
-    ((azia)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
 }
 

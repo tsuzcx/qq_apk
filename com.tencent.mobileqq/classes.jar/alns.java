@@ -1,10 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface alns
 {
-  public abstract Bitmap a(int[] paramArrayOfInt, Bitmap paramBitmap, int paramInt1, int paramInt2);
-  
-  public abstract void a(alnt paramalnt, int paramInt);
+  public abstract boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4);
 }
 
 

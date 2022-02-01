@@ -1,45 +1,24 @@
-import android.widget.TextView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import java.util.ArrayList;
 
-public class blmk
+class blmk
+  extends bbcp
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private blmk(blmg paramblmg) {}
   
-  private String a()
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("调试信息：\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str) + "\n");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    int i = 0;
-    while (i < paramArrayOfString.length / 2)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramArrayOfString[(i * 2)], paramArrayOfString[(i * 2 + 1)]);
-      i += 1;
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
   }
 }
 

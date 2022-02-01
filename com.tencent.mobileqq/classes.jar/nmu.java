@@ -1,23 +1,63 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.nio.ByteBuffer;
 
 public class nmu
-  implements TVK_IMediaPlayer.OnErrorListener
+  extends nmw
 {
-  public nmu(VideoCoverView paramVideoCoverView) {}
+  public int a;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public byte a(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 7;
-    nly.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
-    return false;
+    paramInt = this.c + paramInt;
+    if (a(paramInt, 1)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
+    }
+    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return a(this.c - 4, true);
+  }
+  
+  public String a(int paramInt)
+  {
+    return b(this.c + paramInt * 4);
+  }
+  
+  public nmu a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      return null;
+    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
+    this.c = (paramInt + 4);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    return this;
+  }
+  
+  public nmu a(int paramInt, nmu paramnmu)
+  {
+    return paramnmu.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  public nmv a(int paramInt)
+  {
+    return a(paramInt, new nmv());
+  }
+  
+  public nmv a(int paramInt, nmv paramnmv)
+  {
+    return paramnmv.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nmu
  * JD-Core Version:    0.7.0.1
  */

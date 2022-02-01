@@ -1,26 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.List;
+import java.util.Map;
 
 class yer
-  implements ylr
+  implements bkle
 {
-  yer(yep paramyep) {}
+  yer(yeq paramyeq, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, yen paramyen) {}
   
-  public void a(boolean paramBoolean)
+  public void onScrollStateChanged(int paramInt)
   {
-    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
+    if (paramInt == 4097)
     {
-      zaj.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Yen.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      return;
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      paramInt = i;
+      if (i < 0) {
+        paramInt = 0;
+      }
+      yeq.a(this.jdField_a_of_type_Yeq).a.put("2_" + this.jdField_a_of_type_Yeq.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Yen.a.get(paramInt)).mVid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yer
  * JD-Core Version:    0.7.0.1
  */

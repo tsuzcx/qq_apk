@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeyb
-  extends VasQuickUpdateManager.CallBacker
+class aeyb
+  implements bkhw
 {
-  public aeyb(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  aeyb(aeya paramaeya) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_Bkho.dismiss();
       return;
-      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
-        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      abdo.a("share_success");
+      this.a.a.u();
+      continue;
+      if (bljl.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131298998);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131691987), 1).b(paramInt);
+        abdo.a("favorite_success");
       }
-      if (paramInt1 == 0) {
-        this.a.a(true);
-      }
-    } while (paramVasQuickUpdateManager == null);
-    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
+      bljv.a(null, 65, 7);
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+    }
   }
 }
 

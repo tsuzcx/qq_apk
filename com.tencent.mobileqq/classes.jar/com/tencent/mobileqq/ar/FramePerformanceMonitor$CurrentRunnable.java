@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import amxx;
-import amxy;
-import amxz;
+import aowo;
+import aowp;
+import aowq;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,15 +31,15 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      amxz localamxz = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localamxz);
+      aowq localaowq = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localaowq);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor.CurrentRunnable
  * JD-Core Version:    0.7.0.1
  */

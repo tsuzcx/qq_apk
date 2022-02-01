@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class afma
-  implements arrh
+public class afma
+  extends bfss
 {
-  afma(aflw paramaflw, FileManagerEntity paramFileManagerEntity) {}
+  public afma(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aflw.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
     }
-    this.jdField_a_of_type_Aflw.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
+    }
   }
   
-  public void b() {}
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
+    }
+  }
 }
 
 

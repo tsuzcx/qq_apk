@@ -1,43 +1,130 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnSocialHeaderFollowClickListener.1.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment.6.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ppi
-  implements phj
+  implements ppt
 {
-  ppi(pph parampph) {}
+  public ppi(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public BaseArticleInfo a(int paramInt)
   {
-    QLog.d("OnSocialHeaderFollowClickListener", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      String str;
-      if ((pph.a(this.a) != null) && (pph.a(this.a).mSocialFeedInfo != null))
-      {
-        owy.a().b(pph.a(pph.a(this.a)), paramInt);
-        str = ors.a(pph.a(this.a).mAlgorithmID, ors.a(pph.a(this.a)), (int)pph.a(this.a).mChannelID, 0, 0, bdin.h(pph.a(this.a)), pph.a(pph.a(this.a)) + "", null, pph.a(this.a).innerUniqueID, null, pph.a(this.a));
-        if (!szp.a(pph.a(this.a).mChannelID)) {
-          break label300;
-        }
-      }
-      label300:
-      for (paramString = "0X800941D";; paramString = "0X80080EC")
-      {
-        nrt.a(null, pph.a(pph.a(this.a)) + "", paramString, paramString, 0, 0, String.valueOf(pph.a(this.a).mFeedId), String.valueOf(pph.a(this.a).mArticleID), Integer.toString(pph.a(this.a).mStrategyId), str, false);
-        ThreadManager.getUIHandler().post(new OnSocialHeaderFollowClickListener.1.1(this));
-        return;
-      }
+    if ((this.a.jdField_a_of_type_Ppw.a.size() > 0) && (paramInt < this.a.jdField_a_of_type_Ppw.a.size())) {
+      return (BaseArticleInfo)this.a.jdField_a_of_type_Ppw.a.get(paramInt);
     }
-    QQToast.a(pph.a(this.a), alud.a(2131708238), 0).a();
+    return null;
+  }
+  
+  public List<BaseArticleInfo> a()
+  {
+    return this.a.jdField_a_of_type_Ppw.a;
+  }
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Ppw.notifyDataSetChanged();
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  {
+    ReadInJoyPicWaterFallFragment.b(this.a);
+    this.a.jdField_a_of_type_Ppw.a.remove(paramBaseArticleInfo);
+    this.a.jdField_a_of_type_Ppw.notifyItemRemoved(paramInt);
+  }
+  
+  public void a(List<BaseArticleInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Ppw.a(paramList);
+  }
+  
+  public void a(Map<Long, rev> paramMap, boolean paramBoolean)
+  {
+    Map localMap = ube.a(this.a.a());
+    String str = pha.e(this.a.a());
+    ThreadManager.post(new ReadInJoyPicWaterFallFragment.6.1(this, this.a.g(), paramMap, paramBoolean, localMap, str), 5, null, false);
+  }
+  
+  public void a(Map<Long, rev> paramMap, boolean paramBoolean, Map<Long, ubj> paramMap1, String paramString)
+  {
+    this.a.a(paramMap, paramBoolean, paramMap1, paramString);
+  }
+  
+  public void a(Set<Long> paramSet, Map<Long, rev> paramMap)
+  {
+    this.a.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.a.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a(paramBoolean, paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.a.jdField_a_of_type_Ppw.getItemCount() == 0;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a(paramBoolean1, paramBoolean2);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.d();
+  }
+  
+  public void b(List<BaseArticleInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Ppw.a.removeAll(paramList);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.b(paramBoolean);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.e();
+  }
+  
+  public void c(List<ChannelCoverInfo> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ReadInJoyFragmentWithSubChannel", 2, "refreshSubChannelData channelList size:" + paramList.size());
+      QLog.d("ReadInJoyFragmentWithSubChannel", 2, "refreshSubChannelData mClassificationListView =" + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView + ",showSub = " + this.a.jdField_a_of_type_Boolean);
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)
+    {
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramList.next();
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(new ppm(localChannelCoverInfo, localChannelCoverInfo.mChannelCoverName, String.valueOf(localChannelCoverInfo.mChannelCoverId)));
+      }
+      this.a.jdField_a_of_type_Ppw.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aepi;
-import alud;
+import afur;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
@@ -13,32 +12,33 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bkbq;
+import anni;
+import bmqa;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.widget.BorderTextView;
 import java.util.List;
-import orc;
-import pgd;
-import pxj;
-import pxt;
-import qbs;
-import qcj;
-import qlj;
-import qlk;
-import qll;
-import qlm;
+import pgk;
+import pxk;
+import qqr;
+import qrb;
+import qva;
+import qvr;
+import rfv;
+import rfw;
+import rfx;
+import rfy;
 
 public class ComponentContentHotQuestion
   extends RelativeLayout
-  implements pxj
+  implements qqr
 {
   public Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qcj(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qvr(this);
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   BorderTextView jdField_a_of_type_ComTencentWidgetBorderTextView;
-  public qbs a;
+  public qva a;
   TextView b;
   
   public ComponentContentHotQuestion(Context paramContext)
@@ -61,7 +61,7 @@ public class ComponentContentHotQuestion
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qbs = new qbs();
+    this.jdField_a_of_type_Qva = new qva();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
     a();
@@ -69,7 +69,7 @@ public class ComponentContentHotQuestion
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559948, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560095, this, true);
   }
   
   public void a() {}
@@ -81,17 +81,17 @@ public class ComponentContentHotQuestion
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367992));
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131365786));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377938));
-    this.b = ((TextView)paramView.findViewById(2131371323));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368317));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131366030));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378776));
+    this.b = ((TextView)paramView.findViewById(2131371889));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderWidth(2);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setRadius(4.0F);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702673));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anni.a(2131701093));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -102,66 +102,66 @@ public class ComponentContentHotQuestion
   {
     b();
     ArticleInfo localArticleInfo;
-    qlk localqlk;
-    if ((paramObject instanceof pgd))
+    rfw localrfw;
+    if ((paramObject instanceof pxk))
     {
-      paramObject = (pgd)paramObject;
-      this.jdField_a_of_type_Qbs.a(paramObject);
+      paramObject = (pxk)paramObject;
+      this.jdField_a_of_type_Qva.a(paramObject);
       localArticleInfo = paramObject.a();
-      localqlk = (qlk)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-      orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
-      if (!TextUtils.isEmpty(localqlk.jdField_a_of_type_JavaLangString))
+      localrfw = (rfw)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+      pgk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
+      if (!TextUtils.isEmpty(localrfw.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localqlk.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrfw.jdField_a_of_type_JavaLangString);
       }
-      if ((localqlk.jdField_a_of_type_Qll != null) && (!TextUtils.isEmpty(localqlk.jdField_a_of_type_Qll.b)))
+      if ((localrfw.jdField_a_of_type_Rfx != null) && (!TextUtils.isEmpty(localrfw.jdField_a_of_type_Rfx.b)))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localqlk.jdField_a_of_type_Qll.b);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrfw.jdField_a_of_type_Rfx.b);
       }
-      if ((localqlk.jdField_a_of_type_Qlm != null) && (localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_Int >= 0))
+      if ((localrfw.jdField_a_of_type_Rfy != null) && (localrfw.jdField_a_of_type_Rfy.jdField_a_of_type_Int >= 0))
       {
         this.b.setVisibility(0);
-        StringBuilder localStringBuilder = new StringBuilder().append(bkbq.b(localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_Int));
-        if (!TextUtils.isEmpty(localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_JavaLangString)) {
+        StringBuilder localStringBuilder = new StringBuilder().append(bmqa.b(localrfw.jdField_a_of_type_Rfy.jdField_a_of_type_Int));
+        if (!TextUtils.isEmpty(localrfw.jdField_a_of_type_Rfy.jdField_a_of_type_JavaLangString)) {
           break label240;
         }
-        paramObject = alud.a(2131702688);
+        paramObject = anni.a(2131701108);
         paramObject = paramObject;
         this.b.setText(paramObject);
       }
-      if (TextUtils.isEmpty(localqlk.h)) {
+      if (TextUtils.isEmpty(localrfw.h)) {
         break label251;
       }
-      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localqlk.h);
+      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localrfw.h);
     }
     label240:
     label251:
     do
     {
       return;
-      paramObject = localqlk.jdField_a_of_type_Qlm.jdField_a_of_type_JavaLangString;
+      paramObject = localrfw.jdField_a_of_type_Rfy.jdField_a_of_type_JavaLangString;
       break;
       if (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12)
       {
-        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702707));
+        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anni.a(2131701127));
         return;
       }
     } while (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int != 13);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(alud.a(2131702639));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anni.a(2131701059));
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.jdField_a_of_type_Qbs.a(parampxt);
+    this.jdField_a_of_type_Qva.a(paramqrb);
   }
   
   public void b()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-    localLayoutParams.width = aepi.a(150.0F, getResources());
-    localLayoutParams.height = aepi.a(150.0F, getResources());
+    localLayoutParams.width = afur.a(150.0F, getResources());
+    localLayoutParams.height = afur.a(150.0F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }

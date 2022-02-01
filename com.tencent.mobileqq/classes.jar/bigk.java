@@ -1,239 +1,365 @@
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.telephony.TelephonyManager;
-
-public class bigk
+class bigk
+  extends bigi
 {
-  public static final int a(Context paramContext)
+  private static final byte[] jdField_b_of_type_ArrayOfByte;
+  private static final byte[] jdField_c_of_type_ArrayOfByte;
+  public final boolean a;
+  int jdField_b_of_type_Int;
+  public final boolean b;
+  private int jdField_c_of_type_Int;
+  public final boolean c;
+  private final byte[] jdField_d_of_type_ArrayOfByte;
+  private final byte[] e;
+  
+  static
   {
-    Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (localObject == null) {
-      return -1;
-    }
-    localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-    if ((localObject == null) || (!((NetworkInfo)localObject).isAvailable())) {
-      return -1;
-    }
-    if (((NetworkInfo)localObject).getType() == 1) {
-      return 0;
-    }
-    switch (((TelephonyManager)paramContext.getSystemService("phone")).getNetworkType())
+    if (!bigh.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-    case 3: 
-    default: 
-      return 1;
-    case 4: 
-      return 2;
-    case 2: 
-      return 2;
+      jdField_d_of_type_Boolean = bool;
+      jdField_b_of_type_ArrayOfByte = new byte[] { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+      jdField_c_of_type_ArrayOfByte = new byte[] { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
+      return;
     }
-    return 2;
   }
   
-  /* Error */
-  public static java.lang.String a()
+  public bigk(int paramInt, byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: invokestatic 46	android/os/Process:myPid	()I
-    //   5: istore_0
-    //   6: new 48	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   13: ldc 54
-    //   15: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: iload_0
-    //   19: invokestatic 64	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   22: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc 66
-    //   27: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore_1
-    //   34: ldc 71
-    //   36: astore 4
-    //   38: new 73	java/io/FileReader
-    //   41: dup
-    //   42: aload_1
-    //   43: invokespecial 76	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   46: astore_3
-    //   47: new 78	java/io/BufferedReader
-    //   50: dup
-    //   51: aload_3
-    //   52: sipush 8192
-    //   55: invokespecial 81	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   58: astore 5
-    //   60: aload 5
-    //   62: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   65: pop
-    //   66: aload 5
-    //   68: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   71: pop
-    //   72: aload 5
-    //   74: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   77: astore_1
-    //   78: aload_1
-    //   79: astore_2
-    //   80: aload_1
-    //   81: ifnull +9 -> 90
-    //   84: aload 5
-    //   86: invokevirtual 84	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   89: astore_2
-    //   90: aload 4
-    //   92: astore_1
-    //   93: aload_2
-    //   94: ifnull +22 -> 116
-    //   97: aload_2
-    //   98: ldc 86
-    //   100: invokevirtual 90	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   103: astore_1
-    //   104: aload_1
-    //   105: arraylength
-    //   106: bipush 9
-    //   108: if_icmplt +35 -> 143
-    //   111: aload_1
-    //   112: bipush 8
-    //   114: aaload
-    //   115: astore_1
-    //   116: aload_3
-    //   117: ifnull +7 -> 124
-    //   120: aload_3
-    //   121: invokevirtual 93	java/io/FileReader:close	()V
-    //   124: aload_1
-    //   125: astore 4
-    //   127: aload 5
-    //   129: ifnull +11 -> 140
-    //   132: aload 5
-    //   134: invokevirtual 94	java/io/BufferedReader:close	()V
-    //   137: aload_1
-    //   138: astore 4
-    //   140: aload 4
-    //   142: areturn
-    //   143: ldc 96
-    //   145: astore_1
-    //   146: goto -30 -> 116
-    //   149: astore_2
-    //   150: aload_2
-    //   151: invokevirtual 99	java/io/IOException:printStackTrace	()V
-    //   154: aload_1
-    //   155: areturn
-    //   156: astore_3
-    //   157: aconst_null
-    //   158: astore_1
-    //   159: aload_3
-    //   160: invokevirtual 99	java/io/IOException:printStackTrace	()V
-    //   163: aload_2
-    //   164: ifnull +7 -> 171
-    //   167: aload_2
-    //   168: invokevirtual 93	java/io/FileReader:close	()V
-    //   171: aload_1
-    //   172: ifnull -32 -> 140
-    //   175: aload_1
-    //   176: invokevirtual 94	java/io/BufferedReader:close	()V
-    //   179: ldc 71
-    //   181: areturn
-    //   182: astore_1
-    //   183: aload_1
-    //   184: invokevirtual 99	java/io/IOException:printStackTrace	()V
-    //   187: ldc 71
-    //   189: areturn
-    //   190: astore_2
-    //   191: aconst_null
-    //   192: astore_1
-    //   193: aconst_null
-    //   194: astore_3
-    //   195: aload_3
-    //   196: ifnull +7 -> 203
-    //   199: aload_3
-    //   200: invokevirtual 93	java/io/FileReader:close	()V
-    //   203: aload_1
-    //   204: ifnull +7 -> 211
-    //   207: aload_1
-    //   208: invokevirtual 94	java/io/BufferedReader:close	()V
-    //   211: aload_2
-    //   212: athrow
-    //   213: astore_1
-    //   214: aload_1
-    //   215: invokevirtual 99	java/io/IOException:printStackTrace	()V
-    //   218: goto -7 -> 211
-    //   221: astore_2
-    //   222: aconst_null
-    //   223: astore_1
-    //   224: goto -29 -> 195
-    //   227: astore_2
-    //   228: aload 5
-    //   230: astore_1
-    //   231: goto -36 -> 195
-    //   234: astore 4
-    //   236: aload_2
-    //   237: astore_3
-    //   238: aload 4
-    //   240: astore_2
-    //   241: goto -46 -> 195
-    //   244: astore 5
-    //   246: aconst_null
-    //   247: astore_1
-    //   248: aload_3
-    //   249: astore_2
-    //   250: aload 5
-    //   252: astore_3
-    //   253: goto -94 -> 159
-    //   256: astore_1
-    //   257: aload_3
-    //   258: astore_2
-    //   259: aload_1
-    //   260: astore_3
-    //   261: aload 5
-    //   263: astore_1
-    //   264: goto -105 -> 159
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   5	14	0	i	int
-    //   33	143	1	localObject1	Object
-    //   182	2	1	localIOException1	java.io.IOException
-    //   192	16	1	localObject2	Object
-    //   213	2	1	localIOException2	java.io.IOException
-    //   223	25	1	localObject3	Object
-    //   256	4	1	localIOException3	java.io.IOException
-    //   263	1	1	localObject4	Object
-    //   1	97	2	localObject5	Object
-    //   149	19	2	localIOException4	java.io.IOException
-    //   190	22	2	localObject6	Object
-    //   221	1	2	localObject7	Object
-    //   227	10	2	localObject8	Object
-    //   240	19	2	localObject9	Object
-    //   46	75	3	localFileReader	java.io.FileReader
-    //   156	4	3	localIOException5	java.io.IOException
-    //   194	67	3	localObject10	Object
-    //   36	105	4	localObject11	Object
-    //   234	5	4	localObject12	Object
-    //   58	171	5	localBufferedReader	java.io.BufferedReader
-    //   244	18	5	localIOException6	java.io.IOException
-    // Exception table:
-    //   from	to	target	type
-    //   120	124	149	java/io/IOException
-    //   132	137	149	java/io/IOException
-    //   38	47	156	java/io/IOException
-    //   167	171	182	java/io/IOException
-    //   175	179	182	java/io/IOException
-    //   38	47	190	finally
-    //   199	203	213	java/io/IOException
-    //   207	211	213	java/io/IOException
-    //   47	60	221	finally
-    //   60	78	227	finally
-    //   84	90	227	finally
-    //   97	111	227	finally
-    //   159	163	234	finally
-    //   47	60	244	java/io/IOException
-    //   60	78	256	java/io/IOException
-    //   84	90	256	java/io/IOException
-    //   97	111	256	java/io/IOException
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    boolean bool1;
+    if ((paramInt & 0x1) == 0)
+    {
+      bool1 = true;
+      this.jdField_a_of_type_Boolean = bool1;
+      if ((paramInt & 0x2) != 0) {
+        break label101;
+      }
+      bool1 = true;
+      label33:
+      this.jdField_b_of_type_Boolean = bool1;
+      if ((paramInt & 0x4) == 0) {
+        break label106;
+      }
+      bool1 = bool2;
+      label47:
+      this.jdField_c_of_type_Boolean = bool1;
+      if ((paramInt & 0x8) != 0) {
+        break label111;
+      }
+      paramArrayOfByte = jdField_b_of_type_ArrayOfByte;
+      label63:
+      this.e = paramArrayOfByte;
+      this.jdField_d_of_type_ArrayOfByte = new byte[2];
+      this.jdField_b_of_type_Int = 0;
+      if (!this.jdField_b_of_type_Boolean) {
+        break label118;
+      }
+    }
+    label101:
+    label106:
+    label111:
+    label118:
+    for (paramInt = 19;; paramInt = -1)
+    {
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label33;
+      bool1 = false;
+      break label47;
+      paramArrayOfByte = jdField_c_of_type_ArrayOfByte;
+      break label63;
+    }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    byte[] arrayOfByte1 = this.e;
+    byte[] arrayOfByte2 = this.jdField_a_of_type_ArrayOfByte;
+    int i = 0;
+    int m = this.jdField_c_of_type_Int;
+    int i1 = paramInt2 + paramInt1;
+    int k = -1;
+    label62:
+    int j;
+    switch (this.jdField_b_of_type_Int)
+    {
+    default: 
+      paramInt2 = paramInt1;
+      paramInt1 = m;
+      j = paramInt2;
+      if (k != -1)
+      {
+        arrayOfByte2[0] = arrayOfByte1[(k >> 18 & 0x3F)];
+        arrayOfByte2[1] = arrayOfByte1[(k >> 12 & 0x3F)];
+        arrayOfByte2[2] = arrayOfByte1[(k >> 6 & 0x3F)];
+        i = 4;
+        arrayOfByte2[3] = arrayOfByte1[(k & 0x3F)];
+        k = m - 1;
+        paramInt1 = k;
+        j = paramInt2;
+        if (k == 0)
+        {
+          if (!this.jdField_c_of_type_Boolean) {
+            break label1226;
+          }
+          paramInt1 = 5;
+          arrayOfByte2[4] = 13;
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      arrayOfByte2[paramInt1] = 10;
+      j = 19;
+      paramInt1 += 1;
+      for (;;)
+      {
+        label180:
+        if (paramInt2 + 3 <= i1)
+        {
+          i = (paramArrayOfByte[paramInt2] & 0xFF) << 16 | (paramArrayOfByte[(paramInt2 + 1)] & 0xFF) << 8 | paramArrayOfByte[(paramInt2 + 2)] & 0xFF;
+          arrayOfByte2[paramInt1] = arrayOfByte1[(i >> 18 & 0x3F)];
+          arrayOfByte2[(paramInt1 + 1)] = arrayOfByte1[(i >> 12 & 0x3F)];
+          arrayOfByte2[(paramInt1 + 2)] = arrayOfByte1[(i >> 6 & 0x3F)];
+          arrayOfByte2[(paramInt1 + 3)] = arrayOfByte1[(i & 0x3F)];
+          paramInt2 += 3;
+          k = paramInt1 + 4;
+          m = j - 1;
+          paramInt1 = m;
+          i = k;
+          j = paramInt2;
+          if (m != 0) {
+            break label1210;
+          }
+          if (!this.jdField_c_of_type_Boolean) {
+            break label1204;
+          }
+          paramInt1 = k + 1;
+          arrayOfByte2[k] = 13;
+        }
+        for (;;)
+        {
+          arrayOfByte2[paramInt1] = 10;
+          j = 19;
+          paramInt1 += 1;
+          break label180;
+          paramInt2 = paramInt1;
+          break label62;
+          if (paramInt1 + 2 > i1) {
+            break;
+          }
+          j = this.jdField_d_of_type_ArrayOfByte[0];
+          paramInt2 = paramInt1 + 1;
+          k = (j & 0xFF) << 16 | (paramArrayOfByte[paramInt1] & 0xFF) << 8 | paramArrayOfByte[paramInt2] & 0xFF;
+          this.jdField_b_of_type_Int = 0;
+          paramInt2 += 1;
+          break label62;
+          if (paramInt1 + 1 > i1) {
+            break;
+          }
+          j = this.jdField_d_of_type_ArrayOfByte[0];
+          k = this.jdField_d_of_type_ArrayOfByte[1];
+          paramInt2 = paramInt1 + 1;
+          k = (j & 0xFF) << 16 | (k & 0xFF) << 8 | paramArrayOfByte[paramInt1] & 0xFF;
+          this.jdField_b_of_type_Int = 0;
+          break label62;
+          label742:
+          int n;
+          if (paramBoolean)
+          {
+            if (paramInt2 - this.jdField_b_of_type_Int == i1 - 1)
+            {
+              if (this.jdField_b_of_type_Int > 0)
+              {
+                paramArrayOfByte = this.jdField_d_of_type_ArrayOfByte;
+                i = 1;
+                k = paramArrayOfByte[0];
+              }
+              for (;;)
+              {
+                k = (k & 0xFF) << 4;
+                this.jdField_b_of_type_Int -= i;
+                m = paramInt1 + 1;
+                arrayOfByte2[paramInt1] = arrayOfByte1[(k >> 6 & 0x3F)];
+                i = m + 1;
+                arrayOfByte2[m] = arrayOfByte1[(k & 0x3F)];
+                paramInt1 = i;
+                if (this.jdField_a_of_type_Boolean)
+                {
+                  k = i + 1;
+                  arrayOfByte2[i] = 61;
+                  paramInt1 = k + 1;
+                  arrayOfByte2[k] = 61;
+                }
+                i = paramInt1;
+                if (this.jdField_b_of_type_Boolean)
+                {
+                  i = paramInt1;
+                  if (this.jdField_c_of_type_Boolean)
+                  {
+                    arrayOfByte2[paramInt1] = 13;
+                    i = paramInt1 + 1;
+                  }
+                  arrayOfByte2[i] = 10;
+                  i += 1;
+                }
+                k = paramInt2;
+                if ((jdField_d_of_type_Boolean) || (this.jdField_b_of_type_Int == 0)) {
+                  break;
+                }
+                throw new AssertionError();
+                k = paramArrayOfByte[paramInt2];
+                paramInt2 += 1;
+                i = 0;
+              }
+            }
+            if (paramInt2 - this.jdField_b_of_type_Int == i1 - 2) {
+              if (this.jdField_b_of_type_Int > 1)
+              {
+                byte[] arrayOfByte3 = this.jdField_d_of_type_ArrayOfByte;
+                m = 1;
+                k = arrayOfByte3[0];
+                i = paramInt2;
+                paramInt2 = m;
+                if (this.jdField_b_of_type_Int <= 0) {
+                  break label946;
+                }
+                m = this.jdField_d_of_type_ArrayOfByte[paramInt2];
+                n = paramInt2 + 1;
+                paramInt2 = i;
+                i = n;
+                label769:
+                k = (m & 0xFF) << 2 | (k & 0xFF) << 10;
+                this.jdField_b_of_type_Int -= i;
+                i = paramInt1 + 1;
+                arrayOfByte2[paramInt1] = arrayOfByte1[(k >> 12 & 0x3F)];
+                m = i + 1;
+                arrayOfByte2[i] = arrayOfByte1[(k >> 6 & 0x3F)];
+                paramInt1 = m + 1;
+                arrayOfByte2[m] = arrayOfByte1[(k & 0x3F)];
+                if (!this.jdField_a_of_type_Boolean) {
+                  break label1201;
+                }
+                i = paramInt1 + 1;
+                arrayOfByte2[paramInt1] = 61;
+                paramInt1 = i;
+              }
+            }
+          }
+          label1201:
+          for (;;)
+          {
+            i = paramInt1;
+            if (this.jdField_b_of_type_Boolean)
+            {
+              i = paramInt1;
+              if (this.jdField_c_of_type_Boolean)
+              {
+                arrayOfByte2[paramInt1] = 13;
+                i = paramInt1 + 1;
+              }
+              arrayOfByte2[i] = 10;
+              i += 1;
+            }
+            k = paramInt2;
+            break;
+            k = paramArrayOfByte[paramInt2];
+            i = paramInt2 + 1;
+            paramInt2 = 0;
+            break label742;
+            label946:
+            m = paramArrayOfByte[i];
+            n = i + 1;
+            i = paramInt2;
+            paramInt2 = n;
+            break label769;
+            k = paramInt2;
+            i = paramInt1;
+            if (!this.jdField_b_of_type_Boolean) {
+              break;
+            }
+            k = paramInt2;
+            i = paramInt1;
+            if (paramInt1 <= 0) {
+              break;
+            }
+            k = paramInt2;
+            i = paramInt1;
+            if (j == 19) {
+              break;
+            }
+            if (this.jdField_c_of_type_Boolean)
+            {
+              i = paramInt1 + 1;
+              arrayOfByte2[paramInt1] = 13;
+              paramInt1 = i;
+            }
+            for (;;)
+            {
+              i = paramInt1 + 1;
+              arrayOfByte2[paramInt1] = 10;
+              k = paramInt2;
+              break;
+              m = i;
+              if (!jdField_d_of_type_Boolean)
+              {
+                m = i;
+                if (k != i1)
+                {
+                  throw new AssertionError();
+                  if (paramInt2 != i1 - 1) {
+                    break label1123;
+                  }
+                  arrayOfByte1 = this.jdField_d_of_type_ArrayOfByte;
+                  i = this.jdField_b_of_type_Int;
+                  this.jdField_b_of_type_Int = (i + 1);
+                  arrayOfByte1[i] = paramArrayOfByte[paramInt2];
+                  m = paramInt1;
+                }
+              }
+              for (;;)
+              {
+                this.jdField_a_of_type_Int = m;
+                this.jdField_c_of_type_Int = j;
+                return true;
+                label1123:
+                m = paramInt1;
+                if (paramInt2 == i1 - 2)
+                {
+                  arrayOfByte1 = this.jdField_d_of_type_ArrayOfByte;
+                  i = this.jdField_b_of_type_Int;
+                  this.jdField_b_of_type_Int = (i + 1);
+                  arrayOfByte1[i] = paramArrayOfByte[paramInt2];
+                  arrayOfByte1 = this.jdField_d_of_type_ArrayOfByte;
+                  i = this.jdField_b_of_type_Int;
+                  this.jdField_b_of_type_Int = (i + 1);
+                  arrayOfByte1[i] = paramArrayOfByte[(paramInt2 + 1)];
+                  m = paramInt1;
+                }
+              }
+            }
+          }
+          label1204:
+          paramInt1 = k;
+        }
+        label1210:
+        k = paramInt1;
+        paramInt1 = i;
+        paramInt2 = j;
+        j = k;
+      }
+      label1226:
+      paramInt1 = 4;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigk
  * JD-Core Version:    0.7.0.1
  */

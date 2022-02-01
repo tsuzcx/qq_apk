@@ -1,61 +1,132 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class akdf
-  extends MqqHandler
+  extends BaseAdapter
 {
-  public akdf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<bgod> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  public void handleMessage(Message paramMessage)
+  private akdf(CountryActivity paramCountryActivity) {}
+  
+  private int a(bgod parambgod)
   {
-    switch (paramMessage.what)
-    {
+    if (parambgod.a) {
+      return 0;
     }
-    do
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
+    }
+    String str2 = parambgod.c;
+    String str3 = parambgod.b;
+    String str1 = parambgod.d;
+    parambgod = str1;
+    if (str1 != null) {
+      parambgod = str1.toLowerCase();
+    }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((parambgod != null) && (parambgod.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((parambgod != null) && (parambgod.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
+    }
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
+    }
+    int i;
+    label81:
+    bgod localbgod;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
     {
-      do
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
+      }
+      localbgod = (bgod)paramString.next();
+      k = a(localbgod);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localbgod);
+      j += 1;
+    }
+    for (;;)
+    {
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
       {
-        do
-        {
-          return;
-          QQToast.a(this.a, 2131720109, 0).a();
-          return;
-          String str = this.a.getString(2131720110);
-          paramMessage = (String)paramMessage.obj;
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          bdhj.a(this.a, paramMessage);
-          return;
-          paramMessage = bdgm.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720142), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720141), 2131720124, 2131719209, new akdg(this), new akdh(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
-          }
-        } while ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-        ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
-        }
-        if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(2);
-        }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while ((this.a.b != 0) && (this.a.b != 5));
-    ShortVideoPlayActivity.a(this.a);
+        ((ArrayList)localObject).add(i + j, localbgod);
+        i += 1;
+      }
+      else if (k == 1)
+      {
+        ((ArrayList)localObject).add(localbgod);
+      }
+    }
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
+      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
+    }
+    for (;;)
+    {
+      CountryActivity.a(paramView, (bgod)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

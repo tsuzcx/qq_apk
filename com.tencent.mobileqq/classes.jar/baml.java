@@ -1,18 +1,12 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
 
-class baml
-  extends bamo
+public class baml
 {
-  baml(String paramString)
-  {
-    super(4, paramString);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    return 0.0F;
-  }
+  public int a;
+  public bcdv a;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public ArrayList<bamk> a = new ArrayList();
 }
 
 

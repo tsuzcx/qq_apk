@@ -1,21 +1,13 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoView;
-
 public class agea
-  extends aeqi
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public TribeShortVideoItemBuilder.TribeShortVideoView a;
-  public boolean a;
-  public TextView b;
+  public int a;
+  public String a;
+  
+  private agea(agdw paramagdw, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

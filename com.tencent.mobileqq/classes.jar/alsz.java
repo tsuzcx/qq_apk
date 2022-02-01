@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alsz
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public alsz(FrameHelperActivity paramFrameHelperActivity) {}
+  public alsz(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FrameHelperActivity.a(this.a, null);
+    if (this.a.d == 27)
+    {
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
+    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsz
  * JD-Core Version:    0.7.0.1
  */

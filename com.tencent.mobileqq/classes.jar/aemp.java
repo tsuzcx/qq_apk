@@ -1,12 +1,14 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aemp
+  extends ayet
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aemp(Leba paramLeba) {}
+  
+  protected void a(Object paramObject)
+  {
+    Leba.c(this.a);
+  }
 }
 
 

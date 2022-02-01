@@ -1,23 +1,29 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
 class avmj
-  extends bcoc
+  implements IVideoInnerStatusListener
 {
-  avmj(avmf paramavmf) {}
+  avmj(avmi paramavmi) {}
   
-  public void a(long paramLong)
+  public void notifyVideoClose(int paramInt) {}
+  
+  public void notifyVideoSeek(int paramInt) {}
+  
+  public void notifyVideoStart()
   {
-    if (paramLong > 0L)
+    if (avmi.a(this.a) != null)
     {
-      avmf.c(this.a).setText(String.format(alud.a(2131707663), new Object[] { Long.valueOf(paramLong) }));
+      awjg.a().a(1, avmi.a(this.a));
       return;
     }
-    avmf.c(this.a).setText(alud.a(2131707761));
+    this.a.a(false);
   }
+  
+  public void notifyVideoStop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmj
  * JD-Core Version:    0.7.0.1
  */

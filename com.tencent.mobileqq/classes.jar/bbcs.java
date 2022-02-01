@@ -1,35 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
-
-class bbcs
-  implements Animator.AnimatorListener
+public class bbcs
 {
-  bbcs(bbco parambbco) {}
+  public String a;
+  public String b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bbcs() {}
+  
+  public bbcs(String paramString1, String paramString2)
   {
-    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), -bbco.a(this.a), 0, 0);
-    bbco.a(this.a).setVisibility(8);
-    bbco.a(this.a, false);
-    bbco.b(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), -bbco.a(this.a), 0, 0);
-    bbco.a(this.a).setVisibility(8);
-    bbco.a(this.a, false);
-    bbco.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bbco.a(this.a).setPadding(bdaq.a(bbco.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    bbco.a(this.a, true);
-    bbco.b(this.a, true);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

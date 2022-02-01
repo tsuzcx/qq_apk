@@ -1,18 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class agno
-  extends Handler
+  extends anty
 {
-  agno(agnn paramagnn) {}
+  agno(agnm paramagnm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
     }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((baif)agnm.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
+    if (this.a.b == null) {
+      this.a.b = ((ImageView)agnm.a(this.a).c.findViewById(2131376278));
+    }
+    if (this.a.b == null) {
+      return;
+    }
+    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    {
+      this.a.b.setVisibility(0);
+      return;
+    }
+    this.a.b.setVisibility(8);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
+import anjx;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class DataLineHandler$5
   implements Runnable
 {
-  public DataLineHandler$5(alqo paramalqo, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public DataLineHandler$5(anjx paramanjx, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class DataLineHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.5
  * JD-Core Version:    0.7.0.1
  */

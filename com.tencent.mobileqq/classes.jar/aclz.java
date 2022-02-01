@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 
-public class aclz
-  implements DialogInterface.OnClickListener
+class aclz
+  implements AdIPCManager.Callback
 {
-  public aclz(ChatHistory paramChatHistory) {}
+  aclz(acly paramacly) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
+  {
+    if (paramResult != null) {}
+    for (boolean bool = paramResult.success;; bool = false)
+    {
+      acqy.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
+    }
+  }
 }
 
 

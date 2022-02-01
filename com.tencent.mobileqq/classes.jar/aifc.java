@@ -1,11 +1,14 @@
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
+
 class aifc
-  extends aqbl
+  implements oej
 {
-  aifc(aiez paramaiez) {}
+  aifc(aidp paramaidp, CharSequence paramCharSequence, int paramInt) {}
   
-  protected void a(int paramInt)
+  public void a(List<ChatMessage> paramList)
   {
-    this.a.g();
+    aidp.b(this.jdField_a_of_type_Aidp, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
   }
 }
 

@@ -2,12 +2,9 @@ package com.tencent.mobileqq.triton.font;
 
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
 
-@TTNativeModule(name="FontBitmap")
 public class FontBitmap
 {
-  static final String NAME = "FontBitmap";
   @TTNativeCall
   public float ascent;
   @TTNativeCall
@@ -17,7 +14,7 @@ public class FontBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.font.FontBitmap
  * JD-Core Version:    0.7.0.1
  */

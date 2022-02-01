@@ -2,24 +2,23 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import adtk;
-import aeqn;
-import amnz;
+import aezu;
+import afwx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apdy;
-import apfo;
-import awgf;
-import awgg;
-import bjdp;
-import bjdt;
+import aong;
+import argv;
+import arii;
+import blrx;
+import blsb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
@@ -43,7 +42,7 @@ public class FeedsManager
   private static Map<String, String> showStatusUIns = new ConcurrentHashMap();
   private static Map<String, Long> tokenMap = new ConcurrentHashMap();
   private QQAppInterface app;
-  private awgf em;
+  private EntityManager em;
   Map<String, FeedInfo> feedInfoCache = new ConcurrentHashMap();
   private volatile boolean hasRequest;
   private volatile boolean inited;
@@ -52,13 +51,13 @@ public class FeedsManager
   public FeedsManager(QQAppInterface paramQQAppInterface)
   {
     this.app = paramQQAppInterface;
-    this.em = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.em = paramQQAppInterface.a().createEntityManager();
     intCache();
   }
   
-  private bjdp buildRequest(HashMap<Long, Long> paramHashMap)
+  private blrx buildRequest(HashMap<Long, Long> paramHashMap)
   {
-    return new bjdp(this.app.getLongAccountUin(), paramHashMap);
+    return new blrx(this.app.getLongAccountUin(), paramHashMap);
   }
   
   public static String convertAtStruct(String paramString)
@@ -172,7 +171,7 @@ public class FeedsManager
   
   private void intCache()
   {
-    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new apdy(this), true);
+    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new argv(this), true);
   }
   
   public static boolean isShowStatus(String paramString)
@@ -217,7 +216,7 @@ public class FeedsManager
       }
     }
     if (!this.feedInfoCache.isEmpty()) {
-      this.app.notifyObservers(adtk.class, 10000, true, null);
+      this.app.notifyObservers(aezu.class, 10000, true, null);
     }
   }
   
@@ -226,53 +225,53 @@ public class FeedsManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
-    //   4: invokevirtual 403	awgf:a	()Lawgh;
-    //   7: invokevirtual 407	awgh:a	()V
+    //   1: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   4: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   7: invokevirtual 408	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   10: aload_1
-    //   11: invokevirtual 307	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   11: invokevirtual 306	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   14: astore_1
     //   15: aload_1
-    //   16: invokeinterface 312 1 0
+    //   16: invokeinterface 311 1 0
     //   21: ifeq +52 -> 73
     //   24: aload_1
-    //   25: invokeinterface 316 1 0
-    //   30: checkcast 320	com/tencent/mobileqq/data/qzone/FeedInfo
+    //   25: invokeinterface 315 1 0
+    //   30: checkcast 319	com/tencent/mobileqq/data/qzone/FeedInfo
     //   33: astore_2
     //   34: aload_0
-    //   35: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
+    //   35: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   38: aload_2
-    //   39: invokevirtual 411	awgf:b	(Lawge;)V
+    //   39: invokevirtual 412	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   42: goto -27 -> 15
     //   45: astore_1
-    //   46: invokestatic 256	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   46: invokestatic 255	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   49: ifeq +12 -> 61
     //   52: ldc 162
     //   54: iconst_2
     //   55: ldc 164
     //   57: aload_1
-    //   58: invokestatic 413	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   58: invokestatic 414	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   61: aload_0
-    //   62: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
-    //   65: invokevirtual 403	awgf:a	()Lawgh;
-    //   68: invokevirtual 415	awgh:b	()V
+    //   62: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   65: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   68: invokevirtual 416	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   71: iconst_0
     //   72: ireturn
     //   73: aload_0
-    //   74: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
-    //   77: invokevirtual 403	awgf:a	()Lawgh;
-    //   80: invokevirtual 418	awgh:c	()V
+    //   74: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   77: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   80: invokevirtual 419	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   83: aload_0
-    //   84: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
-    //   87: invokevirtual 403	awgf:a	()Lawgh;
-    //   90: invokevirtual 415	awgh:b	()V
+    //   84: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   87: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   90: invokevirtual 416	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   93: iconst_1
     //   94: ireturn
     //   95: astore_1
     //   96: aload_0
-    //   97: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawgf;
-    //   100: invokevirtual 403	awgf:a	()Lawgh;
-    //   103: invokevirtual 415	awgh:b	()V
+    //   97: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   100: invokevirtual 403	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   103: invokevirtual 416	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   106: aload_1
     //   107: athrow
     // Local variable table:
@@ -316,7 +315,7 @@ public class FeedsManager
   {
     int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int k = bjdt.f();
+    int k = blsb.f();
     if (k <= 0)
     {
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 小于0，");
@@ -328,7 +327,7 @@ public class FeedsManager
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 大于100，取值100");
       j = 100;
     }
-    Object localObject = this.app.a().a().a(true, false);
+    Object localObject = this.app.a().a().getRecentList(true, false);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
@@ -361,7 +360,7 @@ public class FeedsManager
   public String getSummary(String paramString)
   {
     Object localObject = null;
-    if (bjdt.o())
+    if (blsb.p())
     {
       QLog.i("FeedsManager", 2, "getSummary 下发配置隐藏新动态");
       return localObject;
@@ -422,7 +421,7 @@ public class FeedsManager
       paramString.isExpose = true;
       paramString = new LpReportInfo_pf00064(722, 1, 1);
       LpReportManager.getInstance().reportToPF00064(paramString, false, false);
-      paramString = (aeqn)this.app.getManager(282);
+      paramString = (afwx)this.app.getManager(282);
       if (paramString != null) {
         paramString.a(1, 2);
       }
@@ -457,7 +456,7 @@ public class FeedsManager
   
   public void updateQzoneFeeds()
   {
-    if (bjdt.o()) {
+    if (blsb.p()) {
       QLog.i("FeedsManager", 2, "updateQzoneFeeds 下发配置隐藏新动态");
     }
     do
@@ -493,7 +492,7 @@ public class FeedsManager
           localHashMap.put(localLong, Long.valueOf(l));
         }
       }
-      localObject = new QzoneCommonIntent(this.app.getApp(), apfo.class);
+      localObject = new QzoneCommonIntent(this.app.getApp(), arii.class);
     }
     catch (Throwable localThrowable)
     {
@@ -501,11 +500,11 @@ public class FeedsManager
       return;
     }
     ((QzoneCommonIntent)localObject).setObserver(this);
-    bjdp localbjdp = buildRequest(localThrowable);
+    blrx localblrx = buildRequest(localThrowable);
     if (QLog.isColorLevel()) {
-      QLog.i("FeedsManager", 2, String.valueOf(localbjdp));
+      QLog.i("FeedsManager", 2, String.valueOf(localblrx));
     }
-    ((QzoneCommonIntent)localObject).setRequest(localbjdp);
+    ((QzoneCommonIntent)localObject).setRequest(localblrx);
     this.app.startServlet((NewIntent)localObject);
     saveLastReqTime(System.currentTimeMillis());
   }

@@ -1,25 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-final class bgvq
-  implements View.OnTouchListener
+class bgvq
 {
-  bgvq(float[] paramArrayOfFloat) {}
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
     {
-      this.a[0] = paramMotionEvent.getX();
-      this.a[1] = paramMotionEvent.getY();
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
+      }
     }
-    return false;
+    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgvq
  * JD-Core Version:    0.7.0.1
  */

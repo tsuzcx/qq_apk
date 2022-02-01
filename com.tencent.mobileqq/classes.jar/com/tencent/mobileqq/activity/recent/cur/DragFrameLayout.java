@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ajlk;
-import ajll;
-import ajlm;
-import ajlp;
+import aleb;
+import alec;
+import aled;
+import aleg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,13 +31,13 @@ import java.util.List;
 
 public class DragFrameLayout
   extends FrameLayout
-  implements ajlp
+  implements aleg
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842043, 2130842044, 2130842045, 2130842046, 2130842047 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842352, 2130842353, 2130842354, 2130842355, 2130842356 };
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int;
-  private ajlk jdField_a_of_type_Ajlk;
-  private ajll jdField_a_of_type_Ajll;
+  private aleb jdField_a_of_type_Aleb;
+  private alec jdField_a_of_type_Alec;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
@@ -46,7 +46,7 @@ public class DragFrameLayout
   private DragFrameLayout.AllBornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner;
   private DragFrameLayout.BornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner;
   private DragFrameLayout.ShakeRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner;
-  private final List<ajlm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<aled> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private final int c;
@@ -120,8 +120,8 @@ public class DragFrameLayout
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    if (this.jdField_a_of_type_Ajll != null) {
-      this.jdField_a_of_type_Ajll.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Alec != null) {
+      this.jdField_a_of_type_Alec.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -229,7 +229,12 @@ public class DragFrameLayout
     if ((localBitmap != null) && (((PointF)localObject).x > 0.0F) && (((PointF)localObject).y > 0.0F)) {
       paramCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), new RectF(((PointF)localObject).x - localBitmap.getWidth() / 2.0F, ((PointF)localObject).y - localBitmap.getHeight() / 2.0F, ((PointF)localObject).x + localBitmap.getWidth() / 2.0F, ((PointF)localObject).y + localBitmap.getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner, 40L);
+    if (DragFrameLayout.AllBornRunner.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner) == -1)
+    {
+      post(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner);
+      return;
+    }
+    postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner, 25L);
   }
   
   private void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
@@ -262,7 +267,7 @@ public class DragFrameLayout
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((ajlm)localIterator.next()).a(paramBoolean, this.f, this);
+      ((aled)localIterator.next()).onChange(paramBoolean, this.f, this);
     }
   }
   
@@ -295,32 +300,41 @@ public class DragFrameLayout
         getHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner);
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner = null;
       }
+      if (this.d != 5) {
+        break label158;
+      }
+    }
+    label158:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("DragFrameLayout", 2, new Object[] { "onPause call, mMode=" + this.d, " isDone=", Boolean.valueOf(bool) });
       a(-1);
-      a(false);
+      a(bool);
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
       this.jdField_a_of_type_AndroidViewView = null;
+      return;
     }
   }
   
-  public void a(ajlm paramajlm)
+  public void a(aled paramaled)
   {
-    if ((paramajlm != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramajlm))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajlm);
+    if ((paramaled != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramaled))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramaled);
     }
   }
   
-  public void a(ajlm paramajlm, boolean paramBoolean)
+  public void a(aled paramaled, boolean paramBoolean)
   {
-    if ((paramajlm != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramajlm)))
+    if ((paramaled != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramaled)))
     {
       if (!paramBoolean) {
-        this.jdField_a_of_type_JavaUtilList.add(paramajlm);
+        this.jdField_a_of_type_JavaUtilList.add(paramaled);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramajlm);
+    this.jdField_a_of_type_JavaUtilList.add(0, paramaled);
   }
   
   public void a(View paramView, int paramInt)
@@ -386,7 +400,7 @@ public class DragFrameLayout
     if (i < paramArrayList.size())
     {
       localView = (View)paramArrayList.get(i);
-      if (localView.getId() != 2131369215) {}
+      if (localView.getId() != 2131369606) {}
     }
     for (;;)
     {
@@ -547,19 +561,19 @@ public class DragFrameLayout
     return true;
   }
   
-  public void setDragViewProvider(ajlk paramajlk)
+  public void setDragViewProvider(aleb paramaleb)
   {
-    this.jdField_a_of_type_Ajlk = paramajlk;
+    this.jdField_a_of_type_Aleb = paramaleb;
   }
   
-  public void setOnDragListener(ajll paramajll)
+  public void setOnDragListener(alec paramalec)
   {
-    this.jdField_a_of_type_Ajll = paramajll;
+    this.jdField_a_of_type_Alec = paramalec;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

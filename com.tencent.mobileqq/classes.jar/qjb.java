@@ -1,18 +1,12 @@
-import android.graphics.drawable.Drawable;
-
-class qjb
-  extends qip
+public abstract interface qjb
 {
-  qjb(qja paramqja) {}
+  public abstract void a();
   
-  public Drawable a()
-  {
-    return a("readinjoy_diandian_icon_foreground");
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjb
  * JD-Core Version:    0.7.0.1
  */

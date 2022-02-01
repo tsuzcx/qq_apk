@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -25,7 +25,7 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -48,7 +48,7 @@ class PlatformViewsChannel$1
       }
       catch (IllegalStateException paramMethodCall)
       {
-        paramResult.error("error", paramMethodCall.getMessage(), null);
+        paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
       }
     }
   }
@@ -64,7 +64,7 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -79,7 +79,7 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -96,7 +96,7 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -119,7 +119,7 @@ class PlatformViewsChannel$1
       label226:
       break label226;
     }
-    paramResult.error("error", paramMethodCall.getMessage(), null);
+    paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
   }
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
@@ -190,7 +190,7 @@ class PlatformViewsChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.1
  * JD-Core Version:    0.7.0.1
  */

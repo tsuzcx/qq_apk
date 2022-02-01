@@ -1,42 +1,183 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class anbd
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
-  
-  public anbd()
+  public static void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
+    if (!anba.a()) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putString("featureKey", paramString);
+    localBundle.putLong("endTime", SystemClock.uptimeMillis());
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      anba.a().b(paramInt, paramString, localBundle);
+      return;
+    }
+    a("action_end_trace", localBundle);
   }
   
-  public String toString()
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
   {
-    try
-    {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    if (!anba.a()) {
+      return;
     }
-    catch (Exception localException)
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      for (;;)
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
+    }
+    paramVarArgs = new Bundle();
+    paramVarArgs.putInt("featureId", paramInt1);
+    paramVarArgs.putString("featureKey", paramString);
+    paramVarArgs.putInt("spanId", paramInt2);
+    paramVarArgs.putInt("errCode", paramInt3);
+    if (paramLong1 > 0L) {}
+    for (long l = paramLong1;; l = System.currentTimeMillis())
+    {
+      paramVarArgs.putLong("timestamp", l);
+      if ((paramInt3 == 0) || (paramInt3 == -100))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
-        }
-        String str2 = "";
+        l = paramLong1;
+        if (paramLong1 > 0L) {}
       }
+      else
+      {
+        l = SystemClock.uptimeMillis();
+      }
+      paramVarArgs.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
+      paramVarArgs.putLong("startTime", l);
+      paramVarArgs.putLong("endTime", l);
+      paramVarArgs.putString("msg", localStringBuilder.toString());
+      paramVarArgs.putInt("extKey", paramInt4);
+      paramVarArgs.putLong("extValue", paramLong2);
+      if (BaseApplicationImpl.sProcessId != 1) {
+        break;
+      }
+      anba.a().c(paramInt1, paramString, paramVarArgs);
+      return;
     }
+    a("action_report_span", paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (!anba.a()) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putString("featureKey", paramString2);
+    localBundle.putString("tuid", paramString1);
+    localBundle.putLong("timestamp", System.currentTimeMillis());
+    localBundle.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
+    localBundle.putLong("startTime", SystemClock.uptimeMillis());
+    localBundle.putLong("endTime", SystemClock.uptimeMillis());
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      anba.a().a(paramInt, paramString2, localBundle);
+      return;
+    }
+    a("action_begin_trace", localBundle);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, int... paramVarArgs)
+  {
+    int i = 0;
+    if (!anba.a()) {
+      return;
+    }
+    int j = 0;
+    int m = 0;
+    int k = 0;
+    while ((i < paramVarArgs.length) && (i < 3))
+    {
+      if (i == 0) {
+        k = paramVarArgs[i];
+      }
+      if (i == 1) {
+        m = paramVarArgs[i];
+      }
+      if (i == 2) {
+        j = paramVarArgs[i];
+      }
+      i += 1;
+    }
+    paramVarArgs = new Bundle();
+    paramVarArgs.putInt("featureId", paramInt);
+    paramVarArgs.putString("featureKey", paramString2);
+    paramVarArgs.putString("tuid", paramString1);
+    paramVarArgs.putInt("extra1", k);
+    paramVarArgs.putInt("extra2", m);
+    paramVarArgs.putInt("extra3", j);
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      anba.a().a(paramInt, paramVarArgs);
+      return;
+    }
+    a("action_update_trace", paramVarArgs);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    if (!anba.a()) {
+      return;
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      anba.a().a(paramInt, paramBoolean);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putBoolean("enable", paramBoolean);
+    a("action_enable_trace", localBundle);
+  }
+  
+  public static void a(anax paramanax)
+  {
+    if (!anba.a()) {
+      return;
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      anba.a().a(paramanax);
+      return;
+    }
+    throw new IllegalArgumentException("config should init in PROCESS_QQ");
+  }
+  
+  private static void a(String paramString, Bundle paramBundle)
+  {
+    if (BaseApplicationImpl.sProcessId == 2)
+    {
+      b(paramString, paramBundle);
+      return;
+    }
+    if (!arui.a().a())
+    {
+      b(paramString, paramBundle);
+      return;
+    }
+    paramBundle.putString("action", paramString);
+    paramString = arph.a("ipc_trace_report", "", 0, paramBundle);
+    arui.a().a(paramString);
+  }
+  
+  private static void b(String paramString, Bundle paramBundle)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("action", paramString);
+    localBundle.putBundle("bundle", paramBundle);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_cmshow_tracereport", localBundle, new anbe());
   }
 }
 

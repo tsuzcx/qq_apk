@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import bdin;
-import bjgp;
-import bjgq;
+import bgnt;
+import bluv;
+import bluw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,14 +26,14 @@ public class QzoneVideoSoDownloadModule
     super(paramString);
   }
   
-  public static ResultReceiver a(bjgp parambjgp)
+  public static ResultReceiver a(bluv parambluv)
   {
-    Object localObject = new QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver(parambjgp);
-    parambjgp = Parcel.obtain();
-    ((QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver)localObject).writeToParcel(parambjgp, 0);
-    parambjgp.setDataPosition(0);
-    localObject = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(parambjgp);
-    parambjgp.recycle();
+    Object localObject = new QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver(parambluv);
+    parambluv = Parcel.obtain();
+    ((QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver)localObject).writeToParcel(parambluv, 0);
+    parambluv.setDataPosition(0);
+    localObject = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(parambluv);
+    parambluv.recycle();
     return localObject;
   }
   
@@ -77,7 +77,7 @@ public class QzoneVideoSoDownloadModule
     if ("action_download_avcodec".equals(paramString))
     {
       QLog.i("QzoneVideoSoDownloadModule", 1, "try download libavcodec");
-      if ((bdin.g(null)) && (paramBundle != null))
+      if ((bgnt.g(null)) && (paramBundle != null))
       {
         paramString = (ResultReceiver)paramBundle.getParcelable("key_download_result_receiver");
         if (paramString == null)
@@ -85,7 +85,7 @@ public class QzoneVideoSoDownloadModule
           QLog.e("QzoneVideoSoDownloadModule", 1, "receiver == null");
           return EIPCResult.createResult(-1, null);
         }
-        ShortVideoResourceManager.b((QQAppInterface)localObject, new bjgq(this, (QQAppInterface)localObject, paramString));
+        ShortVideoResourceManager.b((QQAppInterface)localObject, new bluw(this, (QQAppInterface)localObject, paramString));
         return EIPCResult.createResult(0, new Bundle());
       }
       return EIPCResult.createResult(-1, null);
@@ -102,7 +102,7 @@ public class QzoneVideoSoDownloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule
  * JD-Core Version:    0.7.0.1
  */

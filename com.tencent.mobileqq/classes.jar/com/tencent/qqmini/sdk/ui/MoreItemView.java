@@ -6,59 +6,63 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.R.id;
+import com.tencent.qqmini.sdk.R.layout;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.ui.MoreItem;
 
 public class MoreItemView
   extends LinearLayout
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private MoreItem jdField_a_of_type_ComTencentQqminiSdkUiMoreItem;
+  private static final String TAG = "MoreItemView";
+  private MoreItem mMoreItem;
+  private ImageView mMoreItemImage;
+  private TextView mMoreItemText;
   
   public MoreItemView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    View localView = inflate(getContext(), 2131559354, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370743));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370745));
+    View localView = inflate(getContext(), R.layout.mini_sdk_more_item_view, this);
+    this.mMoreItemImage = ((ImageView)localView.findViewById(R.id.more_item_image));
+    this.mMoreItemText = ((TextView)localView.findViewById(R.id.more_item_text));
   }
   
-  public MoreItem a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItem;
-  }
-  
-  public void a(MoreItem paramMoreItem)
+  public void bind(MoreItem paramMoreItem)
   {
     if (paramMoreItem == null)
     {
       QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
-    if ((paramMoreItem.b == 0) || (paramMoreItem.jdField_a_of_type_JavaLangString == null))
+    if ((paramMoreItem.drawable == 0) || (paramMoreItem.text == null))
     {
       QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItem = paramMoreItem;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(paramMoreItem.b));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMoreItem.jdField_a_of_type_JavaLangString);
-    if (paramMoreItem.jdField_a_of_type_Boolean) {}
+    this.mMoreItem = paramMoreItem;
+    this.mMoreItemImage.setImageDrawable(getResources().getDrawable(paramMoreItem.drawable));
+    this.mMoreItemText.setText(paramMoreItem.text);
+    if (paramMoreItem.visible) {}
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
       return;
     }
   }
+  
+  public MoreItem getMoreItem()
+  {
+    return this.mMoreItem;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MoreItemView
  * JD-Core Version:    0.7.0.1
  */

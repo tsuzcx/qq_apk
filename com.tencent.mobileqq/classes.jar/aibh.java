@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aibh
-  implements arpm
+  implements View.OnTouchListener
 {
-  aibh(aibg paramaibg) {}
+  aibh(aiay paramaiay) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0)) {
-      azqs.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
-    }
+    return true;
   }
 }
 

@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import java.util.Comparator;
 
 public class auwt
-  extends bard
+  implements Comparator<MessageForGrayTips.HightlightItem>
 {
-  private NearbyAppInterface a;
+  public auwt(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
   
-  public auwt(NearbyAppInterface paramNearbyAppInterface)
+  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
   {
-    super(paramNearbyAppInterface);
-    this.a = paramNearbyAppInterface;
-  }
-  
-  public barf a(bayk parambayk)
-  {
-    if (parambayk == null) {}
-    do
-    {
-      return null;
-      if ((parambayk.b == 8) || (parambayk.b == 64) || (parambayk.b == 21)) {
-        return new bavb(this, parambayk);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.richmedia.TransFileController", 2, parambayk.toString());
-    return null;
+    return paramHightlightItem1.start - paramHightlightItem2.start;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwt
  * JD-Core Version:    0.7.0.1
  */

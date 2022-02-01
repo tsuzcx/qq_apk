@@ -1,27 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public class adyq
-  implements CompoundButton.OnCheckedChangeListener
+class adyq
+  implements View.OnLongClickListener
 {
-  public adyq(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
+  adyq(adyo paramadyo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), paramBoolean);
-    paramCompoundButton.commit();
-    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      azqs.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
-      return;
-    }
+    return this.a.a.a.b.performLongClick();
   }
 }
 

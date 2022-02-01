@@ -1,26 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
-
 public class bcwt
-  implements View.OnTouchListener
 {
-  public bcwt(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bcwt(String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    this(null, null, null, null, null, null, null, paramString);
+  }
+  
+  public bcwt(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
   }
 }
 

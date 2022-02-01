@@ -1,82 +1,18 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class bfdf
-  implements bckx
+  implements bfdk
 {
-  public bfdf(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public bfdf(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null) {
-          try
-          {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
-              {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
-                }
-                if (this.a.jdField_a_of_type_Zhe == null)
-                {
-                  this.a.jdField_a_of_type_Zhe = new zhe(this.a);
-                  this.a.jdField_a_of_type_Zhe.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690532));
-                  this.a.jdField_a_of_type_Zhe.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690531, new Object[] { this.a.e }), this.a);
-                  this.a.jdField_a_of_type_Zhe.a(this.a);
-                }
-                if (!this.a.jdField_a_of_type_Zhe.isShowing()) {
-                  this.a.jdField_a_of_type_Zhe.show();
-                }
-                azqs.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
-              }
-            }
-          }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131721028));
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131721028);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721031);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721030);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131721026);
-    }
+    paramView = this.a.jdField_a_of_type_Bfdj.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+    bgjt.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
   }
 }
 

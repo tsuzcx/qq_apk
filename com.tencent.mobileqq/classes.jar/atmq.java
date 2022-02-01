@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class atmq
-  implements Parcelable.Creator<ListenTogetherSession>
+class atmq
 {
-  public ListenTogetherSession a(Parcel paramParcel)
-  {
-    return new ListenTogetherSession(paramParcel, null);
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public ListenTogetherSession[] a(int paramInt)
-  {
-    return new ListenTogetherSession[paramInt];
-  }
+  private atmq(atmo paramatmo) {}
 }
 
 

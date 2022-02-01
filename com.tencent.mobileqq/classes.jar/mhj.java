@@ -1,23 +1,12 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.av.ui.MultiMembersAudioIndicator;
-
-public class mhj
-  extends RadioButton
+public abstract interface mhj
 {
-  public mhj(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract void a();
   
-  public boolean performClick()
-  {
-    return true;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhj
  * JD-Core Version:    0.7.0.1
  */

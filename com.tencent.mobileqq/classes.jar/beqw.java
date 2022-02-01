@@ -1,6 +1,19 @@
-public abstract interface beqw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+
+public final class beqw
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  public abstract void a(String paramString);
+  public TroopBarPOI a(Parcel paramParcel)
+  {
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

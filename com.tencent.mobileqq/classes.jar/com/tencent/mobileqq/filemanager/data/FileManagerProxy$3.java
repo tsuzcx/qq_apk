@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.content.ContentValues;
-import arby;
+import athj;
 
 public class FileManagerProxy$3
   implements Runnable
 {
-  public FileManagerProxy$3(arby paramarby, ContentValues paramContentValues, long paramLong) {}
+  public FileManagerProxy$3(athj paramathj, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class FileManagerProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.3
  * JD-Core Version:    0.7.0.1
  */

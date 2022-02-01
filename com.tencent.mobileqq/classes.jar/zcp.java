@@ -1,56 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class zcp
-  implements nbs
+public class zcp
+  extends zcd
 {
-  zcp(zcn paramzcn, QQAppInterface paramQQAppInterface) {}
+  public int c;
   
-  public void loaded(String paramString, int paramInt)
+  public zcp(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      String str;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          bdhb.a(ncb.a(this.jdField_a_of_type_Zcn.a) + this.jdField_a_of_type_Zcn.a);
-          this.jdField_a_of_type_Zcn.b();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_Zcn.a();
-        return;
-      }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_Zcn.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_Zcn.a();
-      return;
-    }
-    this.jdField_a_of_type_Zcn.a();
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
   }
   
-  public void progress(int paramInt) {}
+  @NonNull
+  public Class<? extends zce> a()
+  {
+    return zcq.class;
+  }
+  
+  @NonNull
+  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new zcq(this, paramContext, paramViewGroup);
+  }
+  
+  public void a(int paramInt)
+  {
+    yqp.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcp
  * JD-Core Version:    0.7.0.1
  */

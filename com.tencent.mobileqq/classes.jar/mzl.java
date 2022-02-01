@@ -1,21 +1,29 @@
-import com.tencent.biz.PoiMapActivity;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.avgame.gameresult.GameResultFragment;
 
 public class mzl
-  extends mzv
+  extends ClickableSpan
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public mzl(GameResultFragment paramGameResultFragment) {}
   
-  public mzl(PoiMapActivity paramPoiMapActivity)
+  public void onClick(View paramView)
   {
-    super(paramPoiMapActivity);
+    GameResultFragment.a(this.a);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mzl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,10 @@
-import android.os.Bundle;
+import android.widget.TextView;
 
 public class behq
+  extends amcl
 {
-  protected behr a;
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void b() {}
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import baev;
+import bdfz;
 import com.tencent.qphone.base.util.QLog;
 
 public class Texture$1
   implements Runnable
 {
-  public Texture$1(baev parambaev) {}
+  public Texture$1(bdfz parambdfz) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class Texture$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture.1
  * JD-Core Version:    0.7.0.1
  */

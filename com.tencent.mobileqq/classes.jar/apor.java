@@ -1,55 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 class apor
-  extends apsb
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  apor(apoo paramapoo) {}
+  apor(apop paramapop) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void beginAppload(String paramString, int paramInt)
   {
-    super.a(paramEmoticonPackage, paramInt);
-    aprn.a().b(this.a.a);
-    Object localObject = (apon)apoo.i(this.a).getManager(149);
-    aufn localaufn = (aufn)apoo.j(this.a).getManager(14);
-    List localList = ((apon)localObject).c(paramEmoticonPackage.epId);
-    if ((localList == null) || (localList.size() <= 0)) {}
-    do
-    {
-      return;
-      paramEmoticonPackage = new ArrayList();
-      int i = 0;
-      if (i < localList.size())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
-        if (localaufn.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
-        {
-          localCustomEmotionData.RomaingType = "needDel";
-          ((apon)localObject).b(localCustomEmotionData);
-          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
-            paramEmoticonPackage.add(localCustomEmotionData.resid);
-          }
-        }
-        apoo localapoo = this.a;
-        if (paramInt == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localapoo.a(localCustomEmotionData, bool);
-          i += 1;
-          break;
-        }
-      }
-      localObject = (alsb)apoo.k(this.a).a(72);
-    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
+    if (paramInt == 1) {
+      apoj.a(paramString);
     }
-    ((alsb)localObject).a(paramEmoticonPackage, false);
+  }
+  
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      apoj.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
+      }
+    }
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new apos(this, paramString));
   }
 }
 

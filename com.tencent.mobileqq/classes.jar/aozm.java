@@ -1,16 +1,29 @@
-import java.util.List;
-
-public abstract interface aozm
+public class aozm
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 0;
   
-  public abstract void a(int paramInt);
+  public aozm()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
   
-  public abstract void a(List<String> paramList);
+  public String toString()
+  {
+    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozm
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,14 @@
             "align_parent_center_vertical": "YES",
             "height": {
                 "type": "relative",
-                "value": "12"
+                "value": "11"
             },
             "width": {
                 "type": "relative",
-                "value": "11"
+                "value": "12"
             },
             "attributes": {
-                "loadImageWithPath:": "more_image_icon.png",
-                "setScaleType:": "1"
+                "loadImageWithPath:": "more_image_icon.png"
             }
         },
         {
@@ -46,7 +45,7 @@
                 "type": "wrap_content"
             },
             "attributes": {
-                "setTextColorString:": "#4799DF",
+                "setTextColorString:": "#136CE9",
                 "setFontSizeString:": "16",
                 "setText:": "$count_text"
             }

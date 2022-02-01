@@ -1,247 +1,489 @@
-import QQService.strupbuff;
-import QQService.strupbuffResp;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
-import com.tencent.mobileqq.msf.sdk.RdmReq;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.report.StrupBuff;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class azci
-  extends MSFServlet
+  implements bdvw
 {
-  public String[] getPreferSSOCommands()
+  public static bdvv a;
+  private azcg jdField_a_of_type_Azcg;
+  private bdvu jdField_a_of_type_Bdvu;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<azcf> jdField_a_of_type_JavaUtilList = new Vector();
+  private Map<String, bdvs> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  private ConcurrentHashMap<String, azcl> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public boolean a;
+  
+  static
   {
-    return new String[] { "CliLogSvc.UploadReq" };
+    jdField_a_of_type_Bdvv = new azcj();
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public azci(QQAppInterface paramQQAppInterface, azcg paramazcg)
   {
-    if ("CliLogSvc.UploadReq".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      boolean bool = paramFromServiceMsg.isSuccess();
-      if (paramIntent.getExtras().getInt("seqKey") != 0) {
-        notifyObserver(paramIntent, paramIntent.getExtras().getInt("sendType"), bool, paramIntent.getExtras(), null);
-      }
-      if (bool) {
-        paramIntent = (strupbuffResp)decodePacket(paramFromServiceMsg.getWupBuffer(), "DataResp", new strupbuffResp());
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Azcg = paramazcg;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private boolean a(PrecoverResource paramPrecoverResource)
   {
-    int i = 0;
-    switch (paramIntent.getExtras().getInt("sendType"))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-    }
-    Object localObject1;
-    label514:
-    label1174:
-    do
-    {
-      return;
-      sendToMSF(paramIntent, MsfMsgUtil.getAppDataIncermentMsg(null, paramIntent.getStringExtra("uin"), paramIntent.getStringArrayExtra("tags"), paramIntent.getLongExtra("count", 0L)));
-      return;
-      localObject1 = new StrupBuff();
-      Object localObject2 = paramIntent.getExtras().getString("tag");
-      ((StrupBuff)localObject1).prefix = "";
-      Object localObject3 = paramIntent.getExtras().getByteArray("content");
-      paramIntent = new ArrayList();
-      paramIntent.add(localObject3);
-      localObject3 = new HashMap();
-      ((HashMap)localObject3).put(localObject2, paramIntent);
-      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
-      ((StrupBuff)localObject1).encoding = 0;
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
-      paramPacket.setNoResponse();
-      return;
-      localObject1 = new StrupBuff();
-      localObject2 = paramIntent.getExtras().getString("tag");
-      ((StrupBuff)localObject1).prefix = "";
-      localObject3 = paramIntent.getExtras().getStringArrayList("content");
-      paramIntent = new ArrayList();
-      localObject3 = ((List)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
+      if (paramPrecoverResource == null)
       {
-        localObject4 = (String)((Iterator)localObject3).next();
-        try
+        localObject = "null";
+        QLog.d("PrecoverResDownloader", 2, new Object[] { "isNeedDownload, resource=", localObject });
+      }
+    }
+    else
+    {
+      if (paramPrecoverResource != null) {
+        break label57;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverResDownloader", 2, "isNeedDownload, resource == null");
+      }
+    }
+    for (;;)
+    {
+      return false;
+      localObject = paramPrecoverResource;
+      break;
+      label57:
+      if (TextUtils.isEmpty(paramPrecoverResource.businessId))
+      {
+        if (QLog.isColorLevel())
         {
-          paramIntent.add(((String)localObject4).getBytes("utf-8"));
-        }
-        catch (UnsupportedEncodingException paramIntent)
-        {
-          paramIntent.printStackTrace();
-          return;
+          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, businessId is empty");
+          return false;
         }
       }
-      localObject3 = new HashMap();
-      ((HashMap)localObject3).put(localObject2, paramIntent);
-      ((StrupBuff)localObject1).logstring = new HashMap((Map)localObject3);
-      ((StrupBuff)localObject1).encoding = 2;
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
-      paramPacket.setNoResponse();
-      return;
-      localObject2 = new StrupBuff();
-      ((StrupBuff)localObject2).prefix = "";
-      localObject3 = paramIntent.getExtras().getStringArrayList("tags");
-      Object localObject4 = paramIntent.getExtras().getStringArrayList("contents");
-      Object localObject5 = new HashMap();
-      while (i < ((List)localObject3).size())
+      else if (TextUtils.isEmpty(paramPrecoverResource.md5))
       {
-        localObject6 = (String)((List)localObject3).get(i);
-        paramIntent = (String)((List)localObject4).get(i);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, md5 is empty");
+          return false;
+        }
+      }
+      else if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramPrecoverResource.md5))
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, md5 is in set");
+          return false;
+        }
+      }
+      else {
         try
         {
-          localObject7 = paramIntent.getBytes("utf-8");
-          localObject1 = (ArrayList)((HashMap)localObject5).get(localObject6);
-          paramIntent = (Intent)localObject1;
-          if (localObject1 == null)
-          {
-            paramIntent = new ArrayList();
-            ((HashMap)localObject5).put(localObject6, paramIntent);
+          boolean bool = azcm.a(paramPrecoverResource.businessId, paramPrecoverResource.md5);
+          QLog.i("PrecoverResDownloader", 1, "isNeedDownload. file exist=" + bool + ", md5=" + paramPrecoverResource.md5 + ", businessid=" + paramPrecoverResource.businessId + ", resId=" + paramPrecoverResource.resId);
+          if (!bool) {}
+          for (bool = true;; bool = false) {
+            return bool;
           }
-          paramIntent.add(localObject7);
+          if (!QLog.isColorLevel()) {}
         }
-        catch (UnsupportedEncodingException paramIntent)
+        catch (Throwable localThrowable)
         {
-          Object localObject7;
-          long l1;
-          long l2;
-          boolean bool1;
-          boolean bool2;
-          String str;
-          break label514;
+          QLog.i("PrecoverResDownloader", 1, "isNeedDownload.exception happen.e=" + localThrowable.getMessage() + ", md5=" + paramPrecoverResource.md5 + ", businessid=" + paramPrecoverResource.businessId + ", resId=" + paramPrecoverResource.resId);
+        }
+      }
+    }
+    localThrowable.printStackTrace();
+    return false;
+  }
+  
+  private boolean b(PrecoverResource paramPrecoverResource)
+  {
+    return (this.jdField_a_of_type_Azcg != null) && (this.jdField_a_of_type_Azcg.a(paramPrecoverResource));
+  }
+  
+  public azcl a(String paramString)
+  {
+    return (azcl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(azcf paramazcf)
+  {
+    if (paramazcf == null) {}
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramazcf)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramazcf);
+  }
+  
+  public void a(azck paramazck)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "sendReqToNetEngine, task=" + paramazck + ", mNetEngine=" + this.jdField_a_of_type_Bdvu);
+    }
+    if ((paramazck == null) || (paramazck.a == null)) {
+      return;
+    }
+    if (this.jdField_a_of_type_Bdvu == null) {
+      this.jdField_a_of_type_Bdvu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    }
+    this.jdField_a_of_type_Bdvu.a(paramazck.a);
+  }
+  
+  public void a(String paramString)
+  {
+    bdvs localbdvs = (bdvs)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localbdvs != null)
+    {
+      this.jdField_a_of_type_Bdvu.b(localbdvs);
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    }
+  }
+  
+  public boolean a(PrecoverResource paramPrecoverResource, Object paramObject)
+  {
+    return a(paramPrecoverResource, paramObject, false, false);
+  }
+  
+  public boolean a(PrecoverResource paramPrecoverResource, Object paramObject, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramPrecoverResource != null) {
+        break label79;
+      }
+      localObject1 = "null";
+      if (paramObject != null) {
+        break label85;
+      }
+    }
+    label79:
+    label85:
+    for (Object localObject2 = "null";; localObject2 = paramObject)
+    {
+      QLog.d("PrecoverResDownloader", 2, new Object[] { "resource=", localObject1, ", userData=", localObject2, ", checkControl=", Boolean.valueOf(paramBoolean1) });
+      if (paramPrecoverResource != null) {
+        break label91;
+      }
+      QLog.d("PrecoverResDownloader", 1, "download, resource is null");
+      return false;
+      localObject1 = paramPrecoverResource;
+      break;
+    }
+    label91:
+    if (!paramPrecoverResource.isValid())
+    {
+      QLog.d("PrecoverResDownloader", 1, "download, resource.isValid() return false");
+      return false;
+    }
+    if (!a(paramPrecoverResource))
+    {
+      QLog.d("PrecoverResDownloader", 1, "download, isNeedDownload() return false");
+      return false;
+    }
+    if ((paramBoolean1) && (!b(paramPrecoverResource)))
+    {
+      QLog.d("PrecoverResDownloader", 1, "download, canDownload() return false");
+      return false;
+    }
+    if (this.jdField_a_of_type_Bdvu == null) {
+      this.jdField_a_of_type_Bdvu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramPrecoverResource.md5, new azcl());
+    Object localObject1 = new bdvs();
+    ((bdvs)localObject1).jdField_a_of_type_Bdvw = this;
+    ((bdvs)localObject1).jdField_a_of_type_JavaLangString = paramPrecoverResource.url;
+    ((bdvs)localObject1).jdField_a_of_type_Int = 0;
+    if ((paramBoolean2) && (!TextUtils.isEmpty(paramPrecoverResource.thirdPartDownloadPath))) {}
+    for (((bdvs)localObject1).c = paramPrecoverResource.thirdPartDownloadPath;; ((bdvs)localObject1).c = azcm.a(paramPrecoverResource.businessId, paramPrecoverResource.md5))
+    {
+      ((bdvs)localObject1).d = 2;
+      ((bdvs)localObject1).a(new Object[] { paramPrecoverResource, paramObject, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      ((bdvs)localObject1).jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
+      this.jdField_a_of_type_JavaUtilMap.put(paramPrecoverResource.md5, localObject1);
+      if (this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Bdvu.a((bdws)localObject1);
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "innerDownload, mUsePreDownScheduler==true");
+    }
+    int i;
+    switch (this.jdField_a_of_type_Azcg.a())
+    {
+    default: 
+      i = 1;
+    }
+    for (;;)
+    {
+      paramObject = new azck(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPrecoverResource, (bdvs)localObject1);
+      paramBoolean1 = ((beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193)).a(10064, "prd", paramPrecoverResource.md5, 0, paramPrecoverResource.url, ((bdvs)localObject1).c, i, 0, true, paramObject);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PrecoverResDownloader", 2, "innerDownload, PreDownloadController.ret=" + paramBoolean1);
+      break;
+      i = 3;
+      continue;
+      i = 2;
+      continue;
+      i = 4;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+  }
+  
+  public void b(azcf paramazcf)
+  {
+    if (paramazcf == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.remove(paramazcf);
+  }
+  
+  public void onResp(bdwt parambdwt)
+  {
+    int i;
+    bdvs localbdvs;
+    Object localObject1;
+    int j;
+    Object localObject4;
+    String str1;
+    label56:
+    Object localObject3;
+    Object localObject2;
+    boolean bool;
+    int k;
+    if (parambdwt.jdField_a_of_type_Int == 0)
+    {
+      i = 1;
+      localbdvs = (bdvs)parambdwt.jdField_a_of_type_Bdws;
+      localObject1 = localbdvs.a();
+      j = parambdwt.b;
+      localObject4 = new File(localbdvs.c);
+      if (parambdwt.jdField_a_of_type_JavaLangString != null) {
+        break label535;
+      }
+      str1 = "0";
+      if ((localObject1 == null) || (!(localObject1 instanceof Object[])) || (((Object[])localObject1).length < 4)) {
+        break label569;
+      }
+      localObject3 = (Object[])localObject1;
+      localObject1 = (PrecoverResource)localObject3[0];
+      localObject2 = localObject3[1];
+      bool = ((Boolean)localObject3[3]).booleanValue();
+      if (i == 0) {
+        break label544;
+      }
+      localObject3 = azby.a(((File)localObject4).getAbsolutePath());
+      if (((PrecoverResource)localObject1).md5.equalsIgnoreCase((String)localObject3)) {
+        break label842;
+      }
+      k = -6103066;
+      ((File)localObject4).delete();
+      i = 0;
+      QLog.i("PrecoverResDownloader", 1, "onResp.md5 verify fail.md5=" + ((PrecoverResource)localObject1).md5 + ",calMD5=" + (String)localObject3);
+    }
+    for (;;)
+    {
+      j = k;
+      int m = i;
+      if (i != 0)
+      {
+        j = k;
+        m = i;
+        if (!bool)
+        {
+          j = k;
+          m = i;
+          if (this.jdField_a_of_type_Azcg != null)
+          {
+            this.jdField_a_of_type_Azcg.a((PrecoverResource)localObject1);
+            m = i;
+            j = k;
+          }
+        }
+      }
+      label249:
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(((PrecoverResource)localObject1).md5)) {
+        this.jdField_a_of_type_JavaUtilMap.remove(((PrecoverResource)localObject1).md5);
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((PrecoverResource)localObject1).md5)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((PrecoverResource)localObject1).md5);
+      }
+      i = j;
+      j = m;
+      label314:
+      label342:
+      long l1;
+      if (QLog.isColorLevel())
+      {
+        String str2 = localbdvs.jdField_a_of_type_JavaLangString;
+        k = parambdwt.jdField_a_of_type_Int;
+        if (localObject1 == null)
+        {
+          localObject3 = "null";
+          QLog.d("PrecoverResDownloader", 2, new Object[] { "onResp.url=", str2, ", result=", Integer.valueOf(k), ", errCode=", Integer.valueOf(i), ", resource=", localObject3 });
+        }
+      }
+      else
+      {
+        if ((j == 0) || (!((File)localObject4).exists())) {
+          break label624;
+        }
+        l1 = ((File)localObject4).length();
+        label423:
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localObject3 = (beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+          localObject4 = localbdvs.jdField_a_of_type_JavaLangString;
+          if (j == 0) {
+            break label630;
+          }
+        }
+      }
+      label535:
+      label544:
+      label569:
+      label624:
+      label630:
+      for (long l2 = l1;; l2 = -1L)
+      {
+        ((beaw)localObject3).a((String)localObject4, l2);
+        k = 0;
+        while (k < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          localObject3 = (azcf)this.jdField_a_of_type_JavaUtilList.get(k);
+          if (localObject3 != null) {
+            ((azcf)localObject3).a(i, str1, (PrecoverResource)localObject1, localObject2);
+          }
+          k += 1;
+        }
+        i = 0;
+        break;
+        str1 = parambdwt.jdField_a_of_type_JavaLangString;
+        break label56;
+        if ((localObject4 != null) && (((File)localObject4).exists())) {
+          ((File)localObject4).delete();
+        }
+        m = i;
+        break label249;
+        if ((localObject4 != null) && (((File)localObject4).exists())) {
+          ((File)localObject4).delete();
+        }
+        QLog.i("PrecoverResDownloader", 1, "onResp objects == null || objects not instanceof Object[] || ((Object[]) objects).length < 3");
+        localObject1 = null;
+        k = i;
+        i = j;
+        localObject2 = null;
+        bool = false;
+        j = k;
+        break label314;
+        localObject3 = localObject1;
+        break label342;
+        l1 = 0L;
+        break label423;
+      }
+      if (j == 0)
+      {
+        localObject3 = new StringBuilder().append("onResp.url=").append(localbdvs.jdField_a_of_type_JavaLangString).append(", result=").append(parambdwt.jdField_a_of_type_Int).append(", errCode=").append(i).append(",md5 = ");
+        if (localObject1 == null)
+        {
+          localObject2 = "null";
+          QLog.i("PrecoverResDownloader", 1, (String)localObject2 + ", errDesc=" + str1);
+        }
+      }
+      else if (!bool)
+      {
+        if (this.jdField_a_of_type_Azcg != null) {
+          break label813;
+        }
+        localObject2 = null;
+        label745:
+        if ((localObject2 == null) || (localObject1 == null)) {
+          break label832;
+        }
+        if ((parambdwt.jdField_a_of_type_JavaUtilHashMap == null) || (!parambdwt.jdField_a_of_type_JavaUtilHashMap.containsKey("netresp_param_reason"))) {
+          break label825;
+        }
+      }
+      label813:
+      label825:
+      for (parambdwt = (String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason");; parambdwt = "0")
+      {
+        ((azch)localObject2).a((PrecoverResource)localObject1, i, str1, parambdwt, l1);
+        return;
+        localObject2 = ((PrecoverResource)localObject1).md5;
+        break;
+        localObject2 = this.jdField_a_of_type_Azcg.a();
+        break label745;
+      }
+      label832:
+      QLog.i("PrecoverResDownloader", 1, "onResp，reporter or resource is null");
+      return;
+      label842:
+      k = j;
+    }
+  }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  {
+    Object localObject1 = null;
+    if (parambdws == null)
+    {
+      QLog.d("PrecoverResDownloader", 1, "onUpdateProgeress, req is null");
+      return;
+    }
+    parambdws = parambdws.a();
+    if ((parambdws != null) && ((parambdws instanceof Object[])) && (((Object[])parambdws).length >= 2))
+    {
+      localObject1 = (Object[])parambdws;
+      parambdws = (PrecoverResource)localObject1[0];
+      localObject1 = localObject1[1];
+    }
+    for (;;)
+    {
+      if (parambdws == null)
+      {
+        QLog.d("PrecoverResDownloader", 1, "onUpdateProgeress, resource is null");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverResDownloader", 2, new Object[] { "onUpdateProgeress, resource=", parambdws, ", userData=", localObject1, ", currOffSet=", Long.valueOf(paramLong1), ", totalLen=", Long.valueOf(paramLong2) });
+      }
+      azcl localazcl = (azcl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambdws.md5);
+      Object localObject2 = localazcl;
+      if (localazcl == null) {
+        localObject2 = new azcl();
+      }
+      ((azcl)localObject2).a = paramLong2;
+      ((azcl)localObject2).b = paramLong1;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(parambdws.md5, localObject2);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject2 = (azcf)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localObject2 != null) {
+          ((azcf)localObject2).a(parambdws, localObject1, paramLong1, paramLong2);
         }
         i += 1;
       }
-      ((StrupBuff)localObject2).logstring = new HashMap((Map)localObject5);
-      ((StrupBuff)localObject2).encoding = 2;
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject2);
-      paramPacket.setNoResponse();
-      return;
-      sendToMSF(paramIntent, MsfMsgUtil.getCurrentDataCountMsg(null, paramIntent.getStringArrayExtra("tags")));
-      return;
-      paramPacket = paramIntent.getExtras().getString("tagName");
-      l1 = paramIntent.getExtras().getLong("duration");
-      l2 = paramIntent.getExtras().getLong("size");
-      bool1 = paramIntent.getExtras().getBoolean("success");
-      localObject1 = (HashMap)paramIntent.getExtras().getSerializable("Params_MAP");
-      bool2 = paramIntent.getExtras().getBoolean("realtime");
-      localObject2 = new RdmReq();
-      ((RdmReq)localObject2).eventName = paramPacket;
-      ((RdmReq)localObject2).elapse = l1;
-      ((RdmReq)localObject2).size = l2;
-      ((RdmReq)localObject2).isSucceed = Boolean.valueOf(bool1).booleanValue();
-      ((RdmReq)localObject2).isRealTime = Boolean.valueOf(bool2).booleanValue();
-      ((RdmReq)localObject2).params = ((Map)localObject1);
-      sendToMSF(paramIntent, MsfMsgUtil.getRdmReportMsg(null, (RdmReq)localObject2));
-      return;
-      localObject1 = new StrupBuff();
-      localObject2 = paramIntent.getExtras().getString("tag");
-      ((StrupBuff)localObject1).prefix = "";
-      localObject3 = paramIntent.getExtras().getString("content");
-      localObject4 = new ArrayList();
-      if (azqs.a((String)localObject2)) {}
-      for (paramIntent = "GBK";; paramIntent = "UTF-8") {
-        try
-        {
-          ((ArrayList)localObject4).add(((String)localObject3).getBytes(paramIntent));
-          paramIntent = new HashMap();
-          paramIntent.put(localObject2, localObject4);
-          ((StrupBuff)localObject1).logstring = new HashMap(paramIntent);
-          ((StrupBuff)localObject1).encoding = 0;
-          paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-          paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-          paramPacket.setFuncName("UploadReq");
-          paramPacket.addRequestPacket("Data", (JceStruct)localObject1);
-          paramPacket.setNoResponse();
-          if ((!QLog.isColorLevel()) || (!"dc02181".equals(localObject2))) {
-            break;
-          }
-          QLog.d("CaptureReport", 2, "[Capture Report Send:runtime] tag = " + (String)localObject2 + ", content = " + (String)localObject3);
-          return;
-        }
-        catch (UnsupportedEncodingException paramIntent)
-        {
-          paramIntent.printStackTrace();
-          return;
-        }
-      }
-      localObject4 = new strupbuff();
-      ((strupbuff)localObject4).prefix = "";
-      localObject5 = paramIntent.getExtras().getStringArrayList("tags");
-      Object localObject6 = paramIntent.getExtras().getStringArrayList("contents");
-      localObject7 = new HashMap();
-      i = 0;
-      localObject1 = null;
-      if (i < ((List)localObject5).size())
-      {
-        str = (String)((List)localObject5).get(i);
-        localObject3 = (String)((List)localObject6).get(i);
-        localObject2 = localObject1;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new StringBuilder("[Capture Report Send:not runtime]:\n");
-          }
-          ((StringBuilder)localObject2).append("[").append(i).append("]").append(" tag = ").append(str).append(", content = ").append((String)localObject3).append("\n");
-        }
-        if (azqs.a(str)) {}
-        for (localObject1 = "GBK";; localObject1 = "UTF-8")
-        {
-          try
-          {
-            byte[] arrayOfByte = ((String)localObject3).getBytes((String)localObject1);
-            localObject3 = (ArrayList)((HashMap)localObject7).get(str);
-            localObject1 = localObject3;
-            if (localObject3 == null)
-            {
-              localObject1 = new ArrayList();
-              ((HashMap)localObject7).put(str, localObject1);
-            }
-            ((ArrayList)localObject1).add(arrayOfByte);
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            break label1174;
-          }
-          i += 1;
-          localObject1 = localObject2;
-          break;
-        }
-      }
-      ((strupbuff)localObject4).logstring = new HashMap((Map)localObject7);
-      ((strupbuff)localObject4).encoding = 0;
-      ((strupbuff)localObject4).seqno = paramIntent.getExtras().getInt("seqKey");
-      paramPacket.setSSOCommand("CliLogSvc.UploadReq");
-      paramPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-      paramPacket.setFuncName("UploadReq");
-      paramPacket.addRequestPacket("Data", (JceStruct)localObject4);
-      paramPacket.setTimeout(30000L);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    QLog.d("CaptureReport", 2, ((StringBuilder)localObject1).toString());
+      break;
+      parambdws = null;
+    }
   }
 }
 

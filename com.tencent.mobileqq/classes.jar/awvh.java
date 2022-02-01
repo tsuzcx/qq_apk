@@ -1,30 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.os.Message;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import mqq.os.MqqHandler;
 
 public class awvh
-  implements View.OnTouchListener
+  extends MqqHandler
 {
-  public awvh(ProfileHeaderView paramProfileHeaderView) {}
+  public awvh(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramMessage.what)
     {
     }
-    for (;;)
+    do
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+      return;
+      MultiCardRecommendFragment.e(this.a);
+      sendEmptyMessageDelayed(3, 500L);
+      return;
+      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
+      MultiCardRecommendFragment.e(this.a);
+      return;
+      MultiCardRecommendFragment.d(this.a);
+      return;
+    } while (MultiCardRecommendFragment.a(this.a) == null);
+    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvh
  * JD-Core Version:    0.7.0.1
  */

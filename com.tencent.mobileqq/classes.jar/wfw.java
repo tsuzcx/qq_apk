@@ -1,90 +1,63 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.ShareGroupEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wfw
-  implements uvi
 {
-  protected HashMap<String, String> a;
-  private ulk<String, ShareGroupItem> a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
   public wfw()
   {
-    this.jdField_a_of_type_Ulk = new ulk(300);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ArrayOfByte = new byte[1];
   }
   
-  private QQStoryContext a()
+  public void a()
   {
-    return QQStoryContext.a();
-  }
-  
-  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public static boolean a(ShareGroupItem paramShareGroupItem)
-  {
-    if (paramShareGroupItem == null) {
-      return false;
-    }
-    long l = paramShareGroupItem.groupUin;
-    return auam.a().a(QQStoryContext.a(), String.valueOf(l));
-  }
-  
-  public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
-  {
-    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
-    ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
-    a().a().createEntityManager().b(localShareGroupEntry);
-    return paramShareGroupItem;
-  }
-  
-  public ShareGroupItem a(String paramString)
-  {
-    xqq.a(paramString);
-    Object localObject = (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramString);
-    if (localObject != null)
+    try
     {
-      wxe.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
-      return localObject;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.jdField_a_of_type_Long);
+      localJSONObject.put("ak", bgmj.a(this.jdField_a_of_type_ArrayOfByte));
+      ((wpf)wpm.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      yqp.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
+      return;
     }
-    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    catch (JSONException localJSONException)
     {
-      wxe.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
-      return null;
+      localJSONException.printStackTrace();
     }
-    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
-    return (ShareGroupItem)this.jdField_a_of_type_Ulk.a(paramString, (ulj)localObject);
   }
   
-  public void a() {}
-  
-  public ShareGroupItem b(String paramString)
+  public boolean a()
   {
-    ShareGroupItem localShareGroupItem2 = a(paramString);
-    ShareGroupItem localShareGroupItem1 = localShareGroupItem2;
-    if (localShareGroupItem2 == null)
+    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
     {
-      localShareGroupItem1 = new ShareGroupItem();
-      localShareGroupItem1.shareGroupId = paramString;
-      localShareGroupItem1.name = paramString;
-      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
-      localShareGroupItem1.assertItem();
-      wxe.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
+      yqp.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
+      return true;
     }
-    return localShareGroupItem1;
+    yqp.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
+    return false;
   }
   
-  public void b() {}
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+  }
+  
+  public String toString()
+  {
+    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wfw
  * JD-Core Version:    0.7.0.1
  */

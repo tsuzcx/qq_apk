@@ -1,90 +1,73 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.net.URL;
-import java.util.Map;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
 
-class rhr
-  extends qzg
+public class rhr
 {
-  rhr(rhf paramrhf) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public ShareActionSheetBuilder.ActionSheetItem a(Integer paramInteger)
+  public static rhr a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
   {
-    Object localObject;
-    if (22 == paramInteger.intValue())
+    if (paramShareWebPageInfo == null) {}
+    rhr localrhr;
+    do
     {
-      localObject = new syw();
-      ((syw)localObject).label = rhf.a(this.jdField_a_of_type_Rhf).getResources().getString(2131696894);
-      ((syw)localObject).iconNeedBg = true;
-      ((syw)localObject).icon = 2130842778;
-      ((syw)localObject).action = a(paramInteger.intValue());
-      ((syw)localObject).argus = "";
-      return localObject;
-    }
-    if (121 == paramInteger.intValue())
-    {
-      localObject = new syw();
-      ((syw)localObject).label = alud.a(2131716595);
-      ((syw)localObject).icon = 2130842283;
-      ((syw)localObject).iconNeedBg = true;
-      ((syw)localObject).action = a(paramInteger.intValue());
-      ((syw)localObject).argus = "";
-      return localObject;
-    }
-    if (24 == paramInteger.intValue())
-    {
-      syw localsyw = new syw();
-      localsyw.label = rdm.a(rhf.a(this.jdField_a_of_type_Rhf).k);
-      localsyw.iconNeedBg = false;
-      localsyw.action = 24;
-      localsyw.argus = "";
-      localObject = bdhj.b();
-      if (!TextUtils.isEmpty(rhf.a(this.jdField_a_of_type_Rhf).j)) {
-        paramInteger = bdbk.a(rhf.a(this.jdField_a_of_type_Rhf), 1, rhf.a(this.jdField_a_of_type_Rhf).j, 3, (Drawable)localObject, (Drawable)localObject);
+      return null;
+      localrhr = new rhr();
+      if (paramShareWebPageInfo.bytes_desc.has()) {
+        localrhr.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
       }
-      for (;;)
-      {
-        localsyw.iconDrawable = paramInteger;
-        return localsyw;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        try
-        {
-          if (TextUtils.isEmpty(rhf.a(this.jdField_a_of_type_Rhf).n)) {}
-          for (paramInteger = new URL("http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png");; paramInteger = new URL(rhf.a(this.jdField_a_of_type_Rhf).n))
-          {
-            paramInteger = URLDrawable.getDrawable(paramInteger, localURLDrawableOptions);
-            paramInteger.setDecodeHandler(bcyz.a);
-            break;
-          }
-        }
-        catch (Exception paramInteger)
-        {
-          paramInteger = (Integer)localObject;
-        }
+      if (paramShareWebPageInfo.bytes_pic_url.has()) {
+        localrhr.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
       }
-    }
-    return super.a(paramInteger);
+      if (paramShareWebPageInfo.bytes_title.has()) {
+        localrhr.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_source.has()) {
+        localrhr.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_web_url.has()) {
+        localrhr.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
+      }
+      if ((!TextUtils.isEmpty(localrhr.d)) && (!TextUtils.isEmpty(localrhr.a))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
+    return null;
+    return localrhr;
   }
   
-  protected void a()
+  public feeds_info.ShareWebPageInfo a()
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(45), Integer.valueOf(22));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(22), Integer.valueOf(121));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), Integer.valueOf(24));
-    super.a();
+    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
+    if (!TextUtils.isEmpty(this.a)) {
+      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    return localShareWebPageInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhr
  * JD-Core Version:    0.7.0.1
  */

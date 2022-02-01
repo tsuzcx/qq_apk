@@ -1,30 +1,37 @@
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
 public class azmq
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  
-  public String a()
+  public static void a(View paramView, int paramInt, String paramString, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
   {
-    if (azmx.a()) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    bbdu.a(paramBaseActivity, bbdu.a(paramInt, paramString), -1);
+    paramView.setVisibility(8);
+    azfy.a().b(paramQQAppInterface);
+    bcst.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "1", "0", "", "");
   }
   
-  public boolean a(azmq paramazmq)
+  public static void a(azfe paramazfe, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
   {
-    if (paramazmq == null) {}
-    while ((this.jdField_b_of_type_Boolean != paramazmq.jdField_b_of_type_Boolean) || (!ajeu.c(this.jdField_a_of_type_JavaLangString, paramazmq.jdField_a_of_type_JavaLangString)) || (!ajeu.c(this.jdField_b_of_type_JavaLangString, paramazmq.jdField_b_of_type_JavaLangString))) {
-      return false;
+    if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
+      bgtl.a(paramBaseActivity, paramQQAppInterface, 0, "signature_ziliaoka");
     }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    while (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    {
+      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8006A79", "0X8006A79", 0, 0, "", "", "", "");
+      return;
+      Intent localIntent = new Intent(paramBaseActivity, PublicFragmentActivity.class);
+      localIntent.putExtra("key_uin", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_uin_name", paramazfe.jdField_a_of_type_Bgdg.a.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_open_via", "history-kerentaiziliaoka");
+      aevv.a(paramBaseActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+    }
+    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8006A8D", "0X8006A8D", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatpieHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-public class aciw
-  implements View.OnClickListener
+class aciw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aciw(BaseChatPie paramBaseChatPie) {}
+  aciw(aciu paramaciu, AdArkAdapter.Callback paramCallback) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    aupg.a().a = 0;
-    this.a.a.a(this.a.a(), this.a.a().getIntent());
-    this.a.b(1);
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onGlobalLayout(aciu.a(this.jdField_a_of_type_Aciu));
+    }
   }
 }
 

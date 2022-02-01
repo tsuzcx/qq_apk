@@ -12,14 +12,17 @@ class MiniAppGetAppInfoByLinkServlet$1
   
   public void run()
   {
-    MiniAppInfo.saveMiniAppByLinkEntity(this.val$intent.getStringExtra("key_link"), this.val$intent.getIntExtra("key_link_type", 0), this.val$result.shareTicket.get(), this.val$result.appInfo);
+    String str = this.val$intent.getStringExtra("key_link");
+    int i = this.val$intent.getIntExtra("key_link_type", 0);
+    MiniAppInfo.saveMiniAppByLinkEntity(str, i, this.val$result.shareTicket.get(), this.val$result.appInfo);
     MiniAppInfo.saveMiniAppInfoEntity(this.val$result.appInfo);
     MiniAppInfo.saveMiniAppShowInfoEntity(this.val$result.appInfo);
+    MiniAppInfo.saveMiniAppByAppInfoLinkEntity(str, i, this.val$result.shareTicket.get(), this.val$result.appInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByLinkServlet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,122 +1,43 @@
-import android.graphics.PointF;
-import android.graphics.RectF;
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xir
+class xir
+  implements wld<wzm, wzn>
 {
-  public static double a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
-  {
-    return (paramPointF1.x - paramPointF3.x) * (paramPointF2.y - paramPointF3.y) - (paramPointF2.x - paramPointF3.x) * (paramPointF1.y - paramPointF3.y);
-  }
+  xir(xiq paramxiq, xjd paramxjd) {}
   
-  public static float a(float paramFloat1, float paramFloat2)
+  public void a(@NonNull wzm paramwzm, @Nullable wzn paramwzn, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-    if (!Float.isNaN(paramFloat1)) {
-      return paramFloat1;
-    }
-    return 1.0F;
-  }
-  
-  public static float a(MotionEvent paramMotionEvent)
-  {
-    float f1 = 1.0F;
-    if (paramMotionEvent.getPointerCount() > 1)
+    if ((paramErrorMessage.isFail()) || (paramwzn == null))
     {
-      f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
-      float f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
-      f2 = (float)Math.sqrt(f1 * f1 + f2 * f2);
-      f1 = f2;
-      if (Float.isNaN(f2)) {}
+      yqp.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Xjd.a(paramErrorMessage, null, false);
+      return;
     }
-    return f1;
-  }
-  
-  public static boolean a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
-  {
-    if (Math.max(paramPointF1.x, paramPointF2.x) < Math.min(paramPointF3.x, paramPointF4.x)) {}
-    while ((Math.max(paramPointF1.y, paramPointF2.y) < Math.min(paramPointF3.y, paramPointF4.y)) || (Math.max(paramPointF3.x, paramPointF4.x) < Math.min(paramPointF1.x, paramPointF2.x)) || (Math.max(paramPointF3.y, paramPointF4.y) < Math.min(paramPointF1.y, paramPointF2.y)) || (a(paramPointF3, paramPointF2, paramPointF1) * a(paramPointF2, paramPointF4, paramPointF1) < 0.0D) || (a(paramPointF1, paramPointF4, paramPointF3) * a(paramPointF4, paramPointF2, paramPointF3) < 0.0D)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(PointF paramPointF1, PointF paramPointF2, RectF paramRectF)
-  {
-    PointF localPointF1 = new PointF(paramRectF.left, paramRectF.top);
-    PointF localPointF2 = new PointF(paramRectF.right, paramRectF.top);
-    PointF localPointF3 = new PointF(paramRectF.right, paramRectF.bottom);
-    paramRectF = new PointF(paramRectF.left, paramRectF.bottom);
-    if (a(paramPointF1, paramPointF2, localPointF1, localPointF2)) {}
-    while ((a(paramPointF1, paramPointF2, localPointF2, localPointF3)) || (a(paramPointF1, paramPointF2, localPointF3, paramRectF)) || (a(paramPointF1, paramPointF2, paramRectF, localPointF1))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static float[] a(MotionEvent paramMotionEvent)
-  {
-    float[] arrayOfFloat = new float[2];
-    if (paramMotionEvent.getPointerCount() > 1)
+    xiq.a(this.jdField_a_of_type_Xiq);
+    this.jdField_a_of_type_Xiq.b.a(paramwzn.jdField_a_of_type_JavaUtilList, paramwzn.jdField_a_of_type_JavaLangString, paramwzn.jdField_a_of_type_Boolean);
+    ((yij)wpm.a(11)).a(paramwzn.jdField_a_of_type_JavaUtilList);
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    boolean bool = yja.a(paramwzn, localAtomicBoolean);
+    yqp.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwzn.b), Integer.valueOf(xiq.b(this.jdField_a_of_type_Xiq)), Boolean.valueOf(bool) });
+    if ((!paramwzn.jdField_a_of_type_Boolean) && (xiq.b(this.jdField_a_of_type_Xiq) < 10) && ((!paramwzn.b) || (bool)))
     {
-      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
-      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
+      yqp.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
+      paramwzm.b = this.jdField_a_of_type_Xiq.b.a();
+      wlb.a().a(paramwzm, this);
+      return;
     }
-    return arrayOfFloat;
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
-    if (!Float.isNaN(f))
-    {
-      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
-      do
-      {
-        return f;
-        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
-          return 180.0F - f;
-        }
-      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
-      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
-        return -180.0F - f;
-      }
+    if (localAtomicBoolean.getAndSet(false)) {
+      this.jdField_a_of_type_Xiq.b.c();
     }
-    return 0.0F;
-  }
-  
-  public static float b(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getPointerCount() > 1)
-    {
-      float f1 = paramMotionEvent.getX(1) - paramMotionEvent.getX(0);
-      float f2 = paramMotionEvent.getY(1) - paramMotionEvent.getY(0);
-      float f3 = (float)Math.toDegrees(Math.asin(f2 / a(paramMotionEvent)));
-      if (!Float.isNaN(f3))
-      {
-        if ((f2 >= 0.0F) && (f1 >= 0.0F)) {}
-        do
-        {
-          return f3;
-          if ((f2 >= 0.0F) && (f1 <= 0.0F)) {
-            return 180.0F - f3;
-          }
-        } while ((f2 <= 0.0F) && (f1 >= 0.0F));
-        if ((f2 <= 0.0F) && (f1 <= 0.0F)) {
-          return -180.0F - f3;
-        }
-      }
-    }
-    else
-    {
-      return 0.0F;
-    }
-    return 0.0F;
+    this.jdField_a_of_type_Xjd.a(paramErrorMessage, xil.b(paramwzn.jdField_a_of_type_JavaUtilList), paramwzn.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xir
  * JD-Core Version:    0.7.0.1
  */

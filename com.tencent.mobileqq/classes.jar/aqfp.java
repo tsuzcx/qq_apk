@@ -1,6 +1,19 @@
-public abstract interface aqfp
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+
+public class aqfp
+  extends OrientationEventListener
 {
-  public abstract void a(int paramInt, aqcl paramaqcl, String paramString1, String paramString2);
+  public aqfp(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.a();
+  }
 }
 
 

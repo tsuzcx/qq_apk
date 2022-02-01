@@ -1,16 +1,20 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import mqq.app.QQPermissionCallback;
 
 class akbd
+  implements QQPermissionCallback
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  TextView b;
-  
   akbd(akbb paramakbb) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a, 5);
+  }
 }
 
 

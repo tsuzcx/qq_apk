@@ -2,17 +2,17 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import android.util.Log;
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class DesktopCardEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "MiniAppCardEntity";
-  @awhs
+  @unique
   public String cardId;
   public byte[] data;
   public int moduleType;
@@ -54,7 +54,7 @@ public class DesktopCardEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopCardEntity
  * JD-Core Version:    0.7.0.1
  */

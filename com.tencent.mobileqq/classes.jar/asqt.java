@@ -1,30 +1,48 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
-
-class asqt
-  implements DialogInterface.OnClickListener
+public class asqt
+  extends asqw
 {
-  asqt(asqs paramasqs, InputStream paramInputStream) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asqt(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      asqs.a(this.jdField_a_of_type_Asqs).finish();
-      return;
+    super(2, paramString1);
+    this.a = paramString2;
+    this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
     }
-    catch (IOException paramDialogInterface)
+    if (this.e == null) {
+      this.e = "";
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof asqt))
     {
-      for (;;)
+      paramObject = (asqt)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
       {
-        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
+        }
       }
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return this.e + "_" + this.b;
   }
 }
 

@@ -1,15 +1,18 @@
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View.AccessibilityDelegate;
 
-public class bknk
-  implements View.OnClickListener
+class bknk
+  extends View.AccessibilityDelegate
 {
-  public bknk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  bknk(bkni parambkni) {}
   
-  public void onClick(View paramView)
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.a.g();
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

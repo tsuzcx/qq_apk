@@ -1,69 +1,71 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DocsExportFileModel.1.1;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DocsExportFileModel.1.2;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DocsExportFileModel.1.3;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class arkg
-  extends bagp
+  extends BaseAdapter
 {
-  arkg(arkf paramarkf) {}
+  public arkg(DataReportViewer paramDataReportViewer) {}
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    if ((this.a.jdField_a_of_type_Arko != null) && (paramInt <= 100)) {
-      arkf.a(this.a).post(new DocsExportFileModel.1.3(this, paramInt));
-    }
+    return this.a.a.size();
   }
   
-  public void a(String paramString1, String paramString2)
+  public Object getItem(int paramInt)
   {
-    arkf.a(this.a, paramString1, paramString2);
+    return this.a.a.get(paramInt);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public long getItemId(int paramInt)
   {
-    this.a.b = System.currentTimeMillis();
-    arkf.a(this.a).removeMessages(8001);
-    arkf.a(this.a).removeMessages(8002);
-    arkf.a(this.a).post(new DocsExportFileModel.1.1(this));
-    ((bagr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(142)).a(paramString1, paramString2, paramString3, paramString4);
+    return paramInt;
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.a.b;
-    long l3 = this.a.b;
-    long l4 = this.a.jdField_a_of_type_Long;
-    if (paramBoolean)
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      if ((this.a.jdField_a_of_type_AndroidOsBundle != null) && (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("isMiniProgram", false))) {
-        bajr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A4B3");
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559605, paramViewGroup, false);
+      paramView = new arkh(this.a, localView);
+      localView.setTag(paramView);
+      localObject = (ReportData)this.a.a.get(paramInt);
+      paramView.a.setText(((ReportData)localObject).table);
+      paramView.b.setText(((ReportData)localObject).mainAction);
+      paramView.c.setText(((ReportData)localObject).subAction);
+      paramView.d.setText(((ReportData)localObject).actionName);
+      paramView.e.setText(String.valueOf(((ReportData)localObject).opType));
+      paramView.f.setText(String.valueOf(((ReportData)localObject).result));
+      paramView.g.setText(((ReportData)localObject).r2);
+      paramView.h.setText(((ReportData)localObject).r3);
+      paramView.i.setText(((ReportData)localObject).r4);
+      paramView.j.setText(((ReportData)localObject).r5);
+      if (!((ReportData)localObject).isLightBlueBg) {
+        break label249;
       }
-      if (arkf.a(this.a) != null)
-      {
-        arkf.a(this.a).strFilePath = paramString1;
-        arkf.a(this.a).fileSize = arrr.a(paramString1);
-        paramString1 = bagq.a(arkf.a(this.a).nFileType);
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        if ((localQQAppInterface != null) && (paramString2 != null)) {
-          azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 1, l3 - l4 + "", l1 - l2 + "", paramString1, paramString2);
-        }
-      }
-      if (this.a.jdField_a_of_type_Arko != null)
-      {
-        arkf.a(this.a).removeMessages(8001);
-        arkf.a(this.a).removeMessages(8002);
-        arkf.a(this.a).post(new DocsExportFileModel.1.2(this));
-      }
-      return;
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166562));
     }
-    paramString1 = alud.a(2131703790);
-    arkf.a(this.a, paramString1, paramString2);
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (arkh)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label249:
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167279));
+    }
   }
 }
 

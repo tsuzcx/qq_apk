@@ -1,41 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stH5OpInfo;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import java.util.HashMap;
+import java.util.Map;
 
-class ums
-  implements urr<vgh, vhs>
+public class ums
 {
-  ums(umm paramumm, umv paramumv, String paramString) {}
-  
-  public void a(@NonNull vgh paramvgh, @Nullable vhs paramvhs, @NonNull ErrorMessage paramErrorMessage)
+  private static WSStatisticsReporter.Builder a(String paramString)
   {
-    wxe.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramvhs);
-    if ((paramErrorMessage.isFail()) || (paramvhs == null))
+    return new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName(paramString).setTestId("").setPushId("").setFlush(true).setImmediatelyUpload(true);
+  }
+  
+  public static void a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("event_type", "10");
+    localHashMap.put("operation_or_not", String.valueOf(paramInt));
+    a(a("").addParams(localHashMap), "gzh_action");
+  }
+  
+  public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    Map localMap = WSPublicAccReport.getInstance().getFeedsBaseParams("opcard_new", paramInt, paramstSimpleMetaFeed);
+    Object localObject3 = null;
+    HashMap localHashMap = new HashMap();
+    Object localObject2 = localHashMap;
+    Object localObject1 = localObject3;
+    if (paramstSimpleMetaFeed != null)
     {
-      wxe.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
-      this.jdField_a_of_type_Umv.a(true);
-      return;
-    }
-    paramvgh = (uvx)uwa.a(5);
-    if (paramvhs.a != null)
-    {
-      paramErrorMessage = paramvhs.a.iterator();
-      while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      localObject2 = localHashMap;
+      localObject1 = localObject3;
+      if (paramstSimpleMetaFeed.h5_op_info != null)
+      {
+        localObject1 = paramstSimpleMetaFeed.h5_op_info;
+        localObject2 = ((stH5OpInfo)localObject1).exp;
       }
     }
-    paramvhs.a = paramvgh.a(paramvhs.a);
-    ((umm)uwa.a(28)).a(paramvhs.b);
-    this.jdField_a_of_type_Umm.c(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_Umv.a(true);
+    localObject2 = a("feeds").addParams(localMap).addExtParams((Map)localObject2);
+    if (localObject1 != null) {}
+    for (paramstSimpleMetaFeed = String.valueOf(((stH5OpInfo)localObject1).id);; paramstSimpleMetaFeed = "")
+    {
+      a(((WSStatisticsReporter.Builder)localObject2).setOperationId(paramstSimpleMetaFeed), "gzh_exposure");
+      return;
+    }
+  }
+  
+  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    a(a("feeds").addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("feeds_data_new", 0, paramstSimpleMetaFeed)).addExtParams(paramMap), "gzh_exposure");
+  }
+  
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
+  {
+    paramBuilder.build(paramString).report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ums
  * JD-Core Version:    0.7.0.1
  */

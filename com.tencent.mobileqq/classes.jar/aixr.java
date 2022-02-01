@@ -1,15 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public class aixr
+class aixr
+  extends amcl
 {
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    }
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

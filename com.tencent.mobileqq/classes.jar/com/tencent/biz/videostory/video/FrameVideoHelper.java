@@ -1,58 +1,74 @@
 package com.tencent.biz.videostory.video;
 
+import aavz;
+import aaxg;
+import aaxi;
 import android.os.Build.VERSION;
+import bnzb;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import yyw;
-import zao;
-import zaq;
 
 public class FrameVideoHelper
 {
-  private int jdField_a_of_type_Int = 80;
   private final long jdField_a_of_type_Long;
+  private aaxi jdField_a_of_type_Aaxi;
   private final String jdField_a_of_type_JavaLangString;
   private ArrayList<FrameVideoHelper.FrameBuffer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private zaq jdField_a_of_type_Zaq;
   private volatile boolean jdField_a_of_type_Boolean;
-  private long b;
+  private final long b;
   private long c;
-  private long d = ((Long)yyw.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
-  private long e = ((Long)yyw.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
-  private long f;
-  private long g = ((Long)yyw.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
-  private long h;
+  private long d;
+  private long e = ((Long)aavz.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
+  private long f = ((Long)aavz.a().a("SmartCutPicCount", Long.valueOf(10L))).longValue();
+  private long g = ((Long)aavz.a().a("SmartCutPicQuality_And", Long.valueOf(80L))).longValue();
+  private long h = ((Long)aavz.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
   private long i;
+  private long j;
+  private long k;
   
   public FrameVideoHelper(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
     long l = paramLong;
     if (paramLong > 60000L) {
       l = 60000L;
     }
-    this.jdField_a_of_type_Long = l;
+    this.b = l;
+  }
+  
+  private long a(long paramLong)
+  {
+    long l2 = Math.min(this.b + paramLong, this.jdField_a_of_type_Long);
+    long l1 = l2 / this.f;
+    paramLong = l1;
+    if (l1 > 1000L) {
+      paramLong = (l2 - 1000L) / this.f;
+    }
+    return paramLong;
   }
   
   public long a()
   {
-    return this.f;
+    return this.j;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zaq != null) {
-      this.jdField_a_of_type_Zaq.a();
+    if (this.jdField_a_of_type_Aaxi != null) {
+      this.jdField_a_of_type_Aaxi.a();
     }
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
   }
   
-  public void a(long paramLong, zao paramzao)
+  public void a(long paramLong, aaxg paramaaxg)
   {
+    bnzb.b("AEEditorMusicHelper", "FrameVideoHelper.start(), BEGIN");
+    bnzb.b("AEEditorMusicHelper", "FrameVideoHelper.start(), videoStart=" + paramLong + ", videoDuration=" + this.jdField_a_of_type_Long);
     if (this.jdField_a_of_type_Boolean) {}
     do
     {
@@ -60,29 +76,30 @@ public class FrameVideoHelper
       if (Build.VERSION.SDK_INT >= 16) {
         break;
       }
-    } while (paramzao == null);
-    paramzao.a(false, null, -1L);
+    } while (paramaaxg == null);
+    paramaaxg.a(false, null, -1L);
     return;
-    this.f = 0L;
-    this.i = 0L;
-    this.h = System.currentTimeMillis();
+    this.j = 0L;
+    this.k = 0L;
+    this.i = System.currentTimeMillis();
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramzao));
+    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramaaxg));
+    bnzb.b("AEEditorMusicHelper", "FrameVideoHelper.start(), END");
   }
   
-  public void a(zao paramzao)
+  public void a(aaxg paramaaxg)
   {
-    a(0L, paramzao);
+    a(0L, paramaaxg);
   }
   
   public long b()
   {
-    return this.i / 1000L;
+    return this.k / 1000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.video.FrameVideoHelper
  * JD-Core Version:    0.7.0.1
  */

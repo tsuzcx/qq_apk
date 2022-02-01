@@ -1,18 +1,30 @@
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-class bdlu
-  implements View.OnClickListener
+public class bdlu
+  implements View.OnFocusChangeListener
 {
-  bdlu(bdls parambdls, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdlu(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdls, 1);
+    if (paramBoolean)
+    {
+      bdjg.a(this.a.app, "0X800993D");
+      paramView.clearFocus();
+      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
     }
-    this.jdField_a_of_type_Bdls.dismiss();
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidAppDialog = new bdmq(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(anni.a(2131704184));
+    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bdlv(this));
   }
 }
 

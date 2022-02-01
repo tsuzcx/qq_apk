@@ -1,77 +1,59 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgPhotoView;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQUserPersonalData;
+import cooperation.qzone.util.QZLog;
 
 public class blww
+  implements View.OnClickListener
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g = 2;
+  public blww(MsgPhotoView paramMsgPhotoView) {}
   
-  public blww()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public int a(float paramFloat)
-  {
-    return aepi.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public blwv a()
-  {
-    blwv localblwv = new blwv();
-    a(localblwv);
-    return localblwv;
-  }
-  
-  public blww a(float paramFloat1, float paramFloat2)
-  {
-    this.e = a(paramFloat1);
-    this.f = a(paramFloat2);
-    return this;
-  }
-  
-  public blww a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.c = a(paramFloat1);
-    this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public blww a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    return this;
-  }
-  
-  public blww a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    return this;
-  }
-  
-  void a(blwv paramblwv)
-  {
-    paramblwv.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramblwv.e = this.e;
-    paramblwv.f = this.f;
-    paramblwv.c = this.c;
-    paramblwv.d = this.d;
-    paramblwv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramblwv.b = this.b;
-    paramblwv.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    paramblwv.g = paramblwv.a(paramblwv.jdField_a_of_type_Int);
-    paramblwv.h = paramblwv.a(paramblwv.b);
-    paramblwv.i = this.g;
+    Object localObject = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
+    if (localObject == null)
+    {
+      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    String str = "";
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      if (QZLog.isColorLevel()) {
+        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + str);
+      }
+      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", str);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      break;
+      str = ((MQUserPersonalData)localObject).mBVJumpUrl;
+      bmsh.a(12, 2);
+      continue;
+      str = ((MQUserPersonalData)localObject).mYJumpUrl;
+      localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof Boolean)))
+      {
+        if (((Boolean)localObject).booleanValue()) {}
+        for (int i = 11;; i = 10)
+        {
+          bmsh.a(i, 2);
+          break;
+        }
+        str = ((MQUserPersonalData)localObject).mLYJumpUrl;
+        bmsh.a(13, 2);
+      }
+    }
   }
 }
 

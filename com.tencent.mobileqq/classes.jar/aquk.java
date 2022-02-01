@@ -1,56 +1,118 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aquk
-  extends aqvc
+public class aquk
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
+  public int a;
+  public String a;
+  public ArrayList<aqul> a;
   
-  aquk(aque paramaque, MessageRecord paramMessageRecord)
+  public aquk()
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqva paramaqva)
+  public static aquk a(String paramString)
   {
-    if ("1".equals(this.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    aquk localaquk = new aquk();
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter faild uuid is null");
+      int i;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        paramString = localJSONObject.optJSONArray("match");
+        if (paramString == null) {
+          break;
+        }
+        localaquk.jdField_a_of_type_Int = localJSONObject.optInt("switch");
+        localaquk.jdField_a_of_type_JavaLangString = localJSONObject.optString("blackList");
+        if (localaquk.jdField_a_of_type_JavaUtilArrayList == null)
+        {
+          localaquk.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          a(localaquk);
+          i = 0;
+          if (i < paramString.length())
+          {
+            localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject == null) {
+              break label235;
+            }
+            aqul localaqul = new aqul();
+            localaqul.jdField_a_of_type_JavaLangString = localJSONObject.optString("key");
+            localaqul.b = localJSONObject.optString("resUrl");
+            localaqul.c = localJSONObject.optString("md5");
+            localaquk.jdField_a_of_type_JavaUtilArrayList.add(localaqul);
+            break label235;
+          }
+        }
+        else
+        {
+          localaquk.jdField_a_of_type_JavaUtilArrayList.clear();
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
       }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
-      return;
+      catch (Exception paramString)
+      {
+        QLog.e("VipARConfBean", 1, "parse content exception = " + paramString.getMessage());
+        paramString.printStackTrace();
+        return null;
+      }
+      QLog.i("VipARConfBean", 2, " parseSuccess data = " + localaquk.toString());
+      label233:
+      return localaquk;
+      label235:
+      i += 1;
     }
-    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 102, new aqul(this, paramString, paramaqva));
+  }
+  
+  private static void a(aquk paramaquk)
+  {
+    if ((paramaquk == null) || (TextUtils.isEmpty(paramaquk.jdField_a_of_type_JavaLangString))) {
+      QLog.i("VipARConfBean", 1, "checkIsInBlackList return empty");
+    }
+    if (bmti.a(paramaquk.jdField_a_of_type_JavaLangString)) {
+      paramaquk.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(" switch = " + this.jdField_a_of_type_Int);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        aqul localaqul = (aqul)localIterator.next();
+        if (localaqul != null) {
+          localStringBuilder.append("\n " + localaqul.toString());
+        }
+      }
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+        localStringBuilder.append(" config list = null");
+      }
+      return localStringBuilder.toString();
+    }
+    return " switch = " + this.jdField_a_of_type_Int + " list = null";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquk
  * JD-Core Version:    0.7.0.1
  */

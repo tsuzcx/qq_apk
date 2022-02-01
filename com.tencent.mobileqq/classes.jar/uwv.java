@@ -1,24 +1,16 @@
-public class uwv
+import java.net.URL;
+
+public abstract interface uwv
 {
-  @xrk(a="id")
-  public int a;
-  @xrk(a="name")
-  public String a;
-  @xrk(a="items")
-  public uwx[] a;
+  public abstract void a(URL paramURL, int paramInt);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
-    if (this.jdField_a_of_type_ArrayOfUwx != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfUwx.length;; i = 0) {
-      return i + '}';
-    }
-  }
+  public abstract void a(URL paramURL, Throwable paramThrowable);
+  
+  public abstract void a(URL paramURL, tds paramtds);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uwv
  * JD-Core Version:    0.7.0.1
  */

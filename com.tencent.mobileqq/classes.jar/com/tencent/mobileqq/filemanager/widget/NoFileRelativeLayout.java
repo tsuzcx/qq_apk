@@ -6,20 +6,22 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arur;
-import baic;
+import atxh;
+import bdjg;
 
 public class NoFileRelativeLayout
   extends RelativeLayout
 {
   int jdField_a_of_type_Int = 0;
   Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
@@ -40,14 +42,15 @@ public class NoFileRelativeLayout
   public NoFileRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560654, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371215));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377620));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131377631));
-    baic.a(this.jdField_a_of_type_AndroidWidgetTextView, new arur(this));
+    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560854, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371779));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378459));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378470));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atxh(this);
+    bdjg.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131367944));
-    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131378183);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131368269));
+    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131379031);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -121,7 +124,7 @@ public class NoFileRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

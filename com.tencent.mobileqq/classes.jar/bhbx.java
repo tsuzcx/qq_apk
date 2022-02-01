@@ -1,109 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.net.URLEncoder;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhbx
+  extends bhbw
 {
-  private static final AtomicBoolean a = new AtomicBoolean(true);
-  
-  public static void a()
+  private void a(String paramString1, long paramLong, String paramString2)
   {
-    a.set(false);
+    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
   }
   
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt)
+  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
   {
-    if (!a.compareAndSet(false, true))
-    {
-      QMLog.w("MiniGdtReporter", "report: no need report now " + paramInt);
-      return;
-    }
-    if (paramMiniAppInfo == null)
-    {
-      QMLog.w("MiniGdtReporter", "report: null config", new Throwable());
-      return;
-    }
-    LaunchParam localLaunchParam = paramMiniAppInfo.launchParam;
-    if (localLaunchParam == null)
-    {
-      QMLog.w("MiniGdtReporter", "report: null param " + paramMiniAppInfo, new Throwable());
-      return;
-    }
-    if (localLaunchParam.scene != 1095)
-    {
-      QMLog.d("MiniGdtReporter", "report: not form ad " + localLaunchParam.scene);
-      return;
-    }
-    if (localLaunchParam.timestamp == 0L)
-    {
-      QMLog.w("MiniGdtReporter", "report: no timestamp " + paramMiniAppInfo, new Throwable());
-      return;
-    }
-    String str = null;
-    paramMiniAppInfo = str;
-    if (!TextUtils.isEmpty(localLaunchParam.navigateExtData)) {}
-    try
-    {
-      paramMiniAppInfo = new JSONObject(localLaunchParam.navigateExtData).optString("reportUrl");
-      if (TextUtils.isEmpty(paramMiniAppInfo))
-      {
-        QMLog.w("MiniGdtReporter", "report: empty url " + localLaunchParam, new Throwable());
-        return;
-      }
-    }
-    catch (JSONException paramMiniAppInfo)
-    {
-      for (;;)
-      {
-        QMLog.w("MiniGdtReporter", "report: failed to read ext data " + localLaunchParam, paramMiniAppInfo);
-        paramMiniAppInfo = str;
-      }
-    }
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(51)).replace("__PAGE_TIME__", Long.toString(System.currentTimeMillis() - localLaunchParam.timestamp));
-          paramMiniAppInfo = str;
-        }
-        catch (Exception localException1) {}
-        try
-        {
-          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.3.1", "utf-8"));
-          paramMiniAppInfo = str;
-          paramInt = 1;
-          if (paramInt == 0) {
-            break;
-          }
-          QMLog.i("MiniGdtReporter", "report: get report url " + paramMiniAppInfo + " " + localLaunchParam.timestamp);
-          bhbq.a(paramMiniAppInfo);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          label409:
-          break label409;
-        }
-      }
-      str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(52)).replace("__LANDING_ERROR_CODE__", Integer.toString(paramInt));
-      paramMiniAppInfo = str;
-      continue;
-      QMLog.w("MiniGdtReporter", "report: failed to convert report url " + paramMiniAppInfo + " " + paramInt, localException1);
-      paramInt = 0;
-    }
+    a("canUpdate", paramLong, paramString1);
+    return false;
+  }
+  
+  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("deleteFiles", paramLong, paramString);
+    return true;
+  }
+  
+  protected void doOnCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    a("_onCompleted", paramLong, paramString1);
+  }
+  
+  protected void doOnProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    a("_onProgress", paramLong1, paramString1);
+  }
+  
+  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, bgyv parambgyv, boolean paramBoolean)
+  {
+    a("download", paramLong, paramString);
+  }
+  
+  public long getBID()
+  {
+    return 0L;
+  }
+  
+  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("getItemInfo", paramLong, paramString);
+    return null;
+  }
+  
+  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("isFileExists", paramLong, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbx
  * JD-Core Version:    0.7.0.1
  */

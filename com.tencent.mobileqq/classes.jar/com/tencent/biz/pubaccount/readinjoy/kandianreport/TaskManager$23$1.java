@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import baug;
-import bave;
-import bavf;
+import bdvw;
+import bdws;
+import bdwt;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -14,20 +14,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class TaskManager$23$1
-  implements baug
+  implements bdvw
 {
   TaskManager$23$1(TaskManager.23 param23, String paramString, JSContext paramJSContext) {}
   
-  public void onResp(bavf parambavf)
+  public void onResp(bdwt parambdwt)
   {
-    if (parambavf.jdField_a_of_type_ArrayOfByte != null) {}
-    for (String str1 = new String(parambavf.jdField_a_of_type_ArrayOfByte);; str1 = "")
+    if (parambdwt.jdField_a_of_type_ArrayOfByte != null) {}
+    for (String str1 = new String(parambdwt.jdField_a_of_type_ArrayOfByte);; str1 = "")
     {
       StringBuffer localStringBuffer = new StringBuffer();
-      if (parambavf.jdField_a_of_type_JavaUtilHashMap != null)
+      if (parambdwt.jdField_a_of_type_JavaUtilHashMap != null)
       {
         localObject1 = new JSONObject();
-        Iterator localIterator = parambavf.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = parambdwt.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject2 = (Map.Entry)localIterator.next();
@@ -47,15 +47,15 @@ class TaskManager$23$1
       {
         str1 = TaskManager.compress(str1);
         localObject1 = TaskManager.compress((String)localObject1);
-        parambavf = this.val$callbackMethod + "(" + parambavf.c + ",'" + (String)localObject1 + "','" + str1 + "')";
+        parambdwt = this.val$callbackMethod + "(" + parambdwt.c + ",'" + (String)localObject1 + "','" + str1 + "')";
         if (this.val$jsContext != null)
         {
-          this.val$jsContext.evaluteStringWithException(parambavf, localStringBuffer);
+          this.val$jsContext.evaluteStringWithException(parambdwt, localStringBuffer);
           if (!TextUtils.isEmpty(localStringBuffer))
           {
             this.this$1.this$0.markTaskFail(this.this$1.val$task);
-            QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + parambavf + " " + localStringBuffer);
-            TaskException.reportException(this.this$1.val$task.id, "evaluate js exception: " + parambavf + " " + localStringBuffer);
+            QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + parambdwt + " " + localStringBuffer);
+            TaskException.reportException(this.this$1.val$task.id, "evaluate js exception: " + parambdwt + " " + localStringBuffer);
           }
         }
         return;
@@ -63,7 +63,7 @@ class TaskManager$23$1
     }
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

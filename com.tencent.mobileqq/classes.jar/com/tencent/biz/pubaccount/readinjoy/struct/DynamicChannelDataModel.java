@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
-import awge;
-import awhp;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicChannelDataModel
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   public static final String TAG = "DynamicChannelDataModel";
   public int channelID;
-  @awhp
+  @notColumn
   public TemplateBean mTemplateBean;
   public String proteusData;
   public long recommendSeq;

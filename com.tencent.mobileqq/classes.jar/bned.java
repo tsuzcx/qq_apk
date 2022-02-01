@@ -1,37 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
-
-public class bned
-  implements Animator.AnimatorListener
+class bned
+  implements bnhs
 {
-  public bned(PickerContainer paramPickerContainer) {}
+  bned(bndy parambndy) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (PickerContainer.a(this.a))
+    if (paramBoolean)
     {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
+      if (bndy.d(this.a)) {
+        bani.a(paramInt);
       }
-      PickerContainer.a(this.a, false);
+      if (bndy.a(this.a)) {
+        bndy.g(this.a);
+      }
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (PickerContainer.a(this.a))
+    else
     {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
+      return;
     }
+    bndy.b(this.a, false);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

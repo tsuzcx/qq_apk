@@ -1,96 +1,80 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Checkable;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortItemView;
-import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class appe
-  extends BaseAdapter
+  implements anil
 {
-  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  public appe(ArkMessageServerLogic.1 param1) {}
   
-  public appe(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new appf(this, paramDragSortListView));
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null)
+    if ((paramBoolean) && (paramObject != null))
     {
-      paramViewGroup = (DragSortItemView)paramView;
-      View localView1 = paramViewGroup.getChildAt(0);
-      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-      paramView = paramViewGroup;
-      if (localView2 != localView1)
+      localObject1 = new ArkAppPanelList.RespBody();
+      try
       {
-        if (localView1 != null) {
-          paramViewGroup.removeViewAt(0);
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        {
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
+          }
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
+            {
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new apoo((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
+              }
+            }
+          }
         }
-        paramViewGroup.addView(localView2);
-        paramView = paramViewGroup;
       }
-      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, paramView, true);
-      return paramView;
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
+        }
+      }
     }
-    paramViewGroup = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-    if ((paramViewGroup instanceof Checkable)) {}
-    for (paramView = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; paramView = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+    label234:
+    while (this.a.a == null)
     {
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      paramView.addView(paramViewGroup);
-      break;
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
+      return;
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
-  }
-  
-  public boolean hasStableIds()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
+    this.a.a.b(null);
   }
 }
 

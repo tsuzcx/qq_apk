@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aerk
-  implements ajal
+  implements DialogInterface.OnClickListener
 {
-  public aerk(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
+  public aerk(NotificationActivity paramNotificationActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aerk
  * JD-Core Version:    0.7.0.1
  */

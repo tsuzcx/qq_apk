@@ -1,18 +1,27 @@
-import android.widget.TextView;
+import java.util.Comparator;
 
-class wcc
-  implements upa
+final class wcc
+  implements Comparator<wcl>
 {
-  wcc(wcb paramwcb) {}
-  
-  public void a(String paramString, int paramInt)
+  public int a(wcl paramwcl1, wcl paramwcl2)
   {
-    wcb.a(this.a).setText(alud.a(2131716321) + paramInt + "%");
+    if (paramwcl1.a() > paramwcl2.a()) {}
+    do
+    {
+      return 1;
+      if (paramwcl1.a() < paramwcl2.a()) {
+        return -1;
+      }
+      if (paramwcl1.d() == paramwcl2.d()) {
+        return 0;
+      }
+    } while (paramwcl1.d() < paramwcl2.d());
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcc
  * JD-Core Version:    0.7.0.1
  */

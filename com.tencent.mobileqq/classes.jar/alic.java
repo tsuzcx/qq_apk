@@ -1,10 +1,24 @@
-public abstract interface alic
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qphone.base.util.QLog;
+
+public class alic
+  implements bcin
 {
-  public abstract String a(int paramInt);
+  public alic(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public abstract void a();
+  public void a(Exception paramException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
+  }
   
-  public abstract boolean a(int paramInt);
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
+  }
 }
 
 

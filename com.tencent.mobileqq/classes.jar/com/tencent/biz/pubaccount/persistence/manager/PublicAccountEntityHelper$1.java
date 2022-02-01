@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import nvl;
+import ofg;
 
 public class PublicAccountEntityHelper$1
   implements Runnable
 {
-  public PublicAccountEntityHelper$1(nvl paramnvl, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  public PublicAccountEntityHelper$1(ofg paramofg, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
   
   public void run()
   {

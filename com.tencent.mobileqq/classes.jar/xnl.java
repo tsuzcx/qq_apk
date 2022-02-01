@@ -1,171 +1,110 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class xnl
-  implements axvu
+public abstract class xnl
+  extends xmt
 {
-  xnl(xnk paramxnk, xno paramxno) {}
+  public int a;
+  @NonNull
+  public final View a;
+  public StoryPlayerGroupHolder a;
+  public String a;
+  public xne a;
+  protected xnm a;
+  protected boolean a;
+  public int b;
+  private final String b;
+  protected boolean b;
   
-  private boolean a()
+  public xnl(@NonNull ViewGroup paramViewGroup)
   {
-    if ((this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw != null) && (xnk.a(this.jdField_a_of_type_Xnk) > 0) && (xnk.a(this.jdField_a_of_type_Xnk) < this.jdField_a_of_type_Xno.jdField_a_of_type_Long))
-    {
-      this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.a(3553, xnk.a(this.jdField_a_of_type_Xnk), null, null, xnk.a(this.jdField_a_of_type_Xnk));
-      xnk.a(this.jdField_a_of_type_Xnk, xnk.a(this.jdField_a_of_type_Xnk) + 42000000L);
-      return true;
-    }
-    return false;
+    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
   }
   
-  public void a()
+  protected abstract View a(ViewGroup paramViewGroup);
+  
+  public xnl a(Class<? extends xnl> paramClass)
   {
-    if (this.jdField_a_of_type_Xno.d)
-    {
-      long l1 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageToVideo", 2, "onEncodeStart, taskid:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long);
-      }
-      if (!xnk.a(this.jdField_a_of_type_Xnk))
-      {
-        xnk.a(this.jdField_a_of_type_Xnk, xnk.a(this.jdField_a_of_type_Xnk, xnk.a(this.jdField_a_of_type_Xnk), this.jdField_a_of_type_Xno.jdField_a_of_type_Int, this.jdField_a_of_type_Xno.jdField_b_of_type_Int));
-        if (xnk.a(this.jdField_a_of_type_Xnk) != null)
-        {
-          xnk.a(this.jdField_a_of_type_Xnk).recycle();
-          xnk.a(this.jdField_a_of_type_Xnk, null);
-        }
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("ImageToVideo", 2, "onEncodeStart, taskid:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " run:" + this.jdField_a_of_type_Xno.d + " preProcess cost: " + (l2 - l1) + " ms mGpuBlur:" + xnk.a(this.jdField_a_of_type_Xnk));
-        }
-        this.jdField_a_of_type_Xnk.jdField_b_of_type_Long = System.currentTimeMillis();
-        a();
-      }
+    if (this.jdField_a_of_type_Xnm != null) {
+      return this.jdField_a_of_type_Xnm.b(paramClass);
     }
-    do
-    {
-      return;
-      xnk.a(this.jdField_a_of_type_Xnk, xnk.b(this.jdField_a_of_type_Xnk, xnk.a(this.jdField_a_of_type_Xnk), this.jdField_a_of_type_Xno.jdField_a_of_type_Int, this.jdField_a_of_type_Xno.jdField_b_of_type_Int));
-      break;
-      if (xnk.a(this.jdField_a_of_type_Xnk) != null)
-      {
-        xnk.a(this.jdField_a_of_type_Xnk).recycle();
-        xnk.a(this.jdField_a_of_type_Xnk, null);
-      }
-    } while (this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw == null);
-    this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.b();
+    return null;
   }
   
-  public void a(String arg1)
+  public void a(int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageToVideo", 2, "onEncodeFinish, taskid:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " run:" + this.jdField_a_of_type_Xno.d + " finish cost: " + (l1 - this.jdField_a_of_type_Xnk.jdField_b_of_type_Long) + " ms");
-    }
-    if (this.jdField_a_of_type_Xno.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageToVideo", 2, "onEncodeFinish, delete old:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-      }
-      xrg.g(this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageToVideo", 2, "onEncodeFinish, rename start:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-      }
-      if (xrg.a(???, this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Xnk.jdField_a_of_type_Int = 0;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageToVideo", 2, "onEncodeFinish, rename end:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString + " result:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_Int);
-      }
-      if (arso.a(this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString))
-      {
-        l1 = arso.a(this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("ImageToVideo", 2, "onEncodeFinish, file exist, size:" + l1 + " file:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-        }
-        label362:
-        ??? = this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.a();
-        l1 = System.currentTimeMillis();
-        long l2 = this.jdField_a_of_type_Xnk.jdField_a_of_type_Long;
-        wxj.a("actImage2VideoTime", new String[] { l1 - l2 + "" });
-        wxj.a("actImage2VideoResult", new String[] { "0" });
-        this.jdField_a_of_type_Xnk.a(this.jdField_a_of_type_Xnk.jdField_a_of_type_Int, this.jdField_a_of_type_Xno.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString, ???, null, this.jdField_a_of_type_Xno);
-        if (this.jdField_a_of_type_Xnk.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
-        {
-          this.jdField_a_of_type_Xnk.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
-          this.jdField_a_of_type_Xnk.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
-        }
-        if (this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw != null)
-        {
-          this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.c();
-          this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw = null;
-        }
-      }
-      synchronized (this.jdField_a_of_type_Xnk)
-      {
-        this.jdField_a_of_type_Xnk.notifyAll();
-        return;
-        this.jdField_a_of_type_Xnk.jdField_a_of_type_Int = 7;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break label362;
-        }
-        QLog.d("ImageToVideo", 2, "onEncodeFinish, file not exist:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString);
-        break label362;
-        wxj.a("actImage2VideoResult", new String[] { "3" });
-        xrg.g(???);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    yqp.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public void a(int paramInt1, int paramInt2, @NonNull xne paramxne, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ImageToVideo", 2, "onEncodeError, code:" + paramInt + " taskID:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long + " run:" + this.jdField_a_of_type_Xno.d);
-    }
-    synchronized (this.jdField_a_of_type_Xnk)
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Xne = paramxne;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
+  }
+  
+  void a(xnm paramxnm)
+  {
+    this.jdField_a_of_type_Xnm = paramxnm;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      this.jdField_a_of_type_Xnk.notifyAll();
-      if (this.jdField_a_of_type_Xno.d)
-      {
-        this.jdField_a_of_type_Xno.d = false;
-        this.jdField_a_of_type_Xnk.jdField_a_of_type_Int = 7;
-        this.jdField_a_of_type_Xnk.a(this.jdField_a_of_type_Xnk.jdField_a_of_type_Int, this.jdField_a_of_type_Xno.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xnk.jdField_a_of_type_JavaLangString, null, null, this.jdField_a_of_type_Xno);
-      }
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      b(this.jdField_b_of_type_Boolean);
       return;
     }
+    yqp.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
   }
   
-  public void b()
+  protected void b() {}
+  
+  protected void b(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Xno.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageToVideo", 2, "onEncodeFrame, mRun is false, tasid." + this.jdField_a_of_type_Xno.jdField_b_of_type_Long);
-      }
-      if (this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw != null) {
-        this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.b();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (a());
-      if (this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw != null) {
-        this.jdField_a_of_type_Xnk.jdField_a_of_type_Axvw.b();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ImageToVideo", 2, "onEncodeFrame, stop recoder, taskid:" + this.jdField_a_of_type_Xno.jdField_b_of_type_Long);
+    yqp.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Xne = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String toString()
+  {
+    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Xne + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xnl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,10 @@ final class LoginInfo$1
     LoginInfo.access$202(localLoginInfo, paramParcel.readString());
     LoginInfo.access$302(localLoginInfo, paramParcel.readString());
     LoginInfo.access$402(localLoginInfo, paramParcel.readString());
-    LoginInfo.access$502(localLoginInfo, paramParcel.createByteArray());
-    LoginInfo.access$602(localLoginInfo, paramParcel.readString());
+    LoginInfo.access$502(localLoginInfo, paramParcel.readString());
+    LoginInfo.access$602(localLoginInfo, paramParcel.createByteArray());
     LoginInfo.access$702(localLoginInfo, paramParcel.readString());
+    LoginInfo.access$802(localLoginInfo, paramParcel.readString());
     return localLoginInfo;
   }
   
@@ -27,7 +28,7 @@ final class LoginInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LoginInfo.1
  * JD-Core Version:    0.7.0.1
  */

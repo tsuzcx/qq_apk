@@ -1,42 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class aerq
-  implements ajal
+  implements DialogInterface.OnClickListener
 {
-  public aerq(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
+  public aerq(NotifyPCActiveActivity paramNotifyPCActiveActivity, anip paramanip) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      Object localObject = paramPathResult + File.separator;
-      localObject = (String)localObject + "aio.png";
-      localObject = SafeBitmapFactory.decodeFile((String)localObject, bdhj.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
-      if (localObject != null) {
-        this.a.a.icon = ((Bitmap)localObject);
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
-      }
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    this.jdField_a_of_type_Anip.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 

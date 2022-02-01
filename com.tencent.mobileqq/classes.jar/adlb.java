@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlb
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adlb(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public adlb(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    ajab.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), localIntent);
+    if (AddRequestActivity.a(this.a) != null) {
+      bcst.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
+    }
+    bcst.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

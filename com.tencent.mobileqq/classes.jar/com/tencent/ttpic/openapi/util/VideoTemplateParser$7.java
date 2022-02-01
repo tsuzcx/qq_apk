@@ -1,19 +1,21 @@
 package com.tencent.ttpic.openapi.util;
 
-import com.tencent.ttpic.openapi.model.StickerItem;
-import java.util.Comparator;
+import java.util.HashMap;
 
 final class VideoTemplateParser$7
-  implements Comparator<StickerItem>
+  extends HashMap<String, String>
 {
-  public int compare(StickerItem paramStickerItem1, StickerItem paramStickerItem2)
+  VideoTemplateParser$7()
   {
-    return paramStickerItem1.zIndex - paramStickerItem2.zIndex;
+    put("radius", "0.688");
+    put("positionX", "0");
+    put("positionY", "0.239");
+    put("positionZ", "-0.108");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import banm;
+import bdoq;
 
 public final class DarkModeManager$3
   implements Runnable
@@ -9,12 +9,12 @@ public final class DarkModeManager$3
   
   public void run()
   {
-    banm.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    bdoq.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.3
  * JD-Core Version:    0.7.0.1
  */

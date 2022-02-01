@@ -1,15 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adhe
-  extends avva
+class adhe
+  implements View.OnClickListener
 {
-  public adhe(LoginInfoActivity paramLoginInfoActivity) {}
+  adhe(adhc paramadhc, View.OnClickListener paramOnClickListener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+    }
   }
 }
 

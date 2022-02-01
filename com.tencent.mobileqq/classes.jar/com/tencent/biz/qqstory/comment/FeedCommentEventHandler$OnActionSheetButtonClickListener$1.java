@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.comment;
 
-import usn;
-import usq;
+import wlz;
+import wmc;
 
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener$1
   implements Runnable
 {
-  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(usq paramusq) {}
+  public FeedCommentEventHandler$OnActionSheetButtonClickListener$1(wmc paramwmc) {}
   
   public void run()
   {
-    usn.a(this.a.a, usq.a(this.a), usq.a(this.a));
+    wlz.a(this.a.a, wmc.a(this.a), wmc.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener.1
  * JD-Core Version:    0.7.0.1
  */

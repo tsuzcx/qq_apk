@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omr;
+import paw;
 
 public class AnchorData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AnchorData> CREATOR = new omr();
+  public static final Parcelable.Creator<AnchorData> CREATOR = new paw();
   public String a;
   public boolean a;
   public String b;

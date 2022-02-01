@@ -1,25 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-public class urm
+class urm
+  implements ujj
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
-  {
-    return false;
-  }
+  urm(url paramurl, ure paramure) {}
   
-  public static boolean a(String paramString)
+  public void a(uju paramuju)
   {
-    return false;
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return false;
+    url.a(this.jdField_a_of_type_Url, paramuju, this.jdField_a_of_type_Ure);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     urm
  * JD-Core Version:    0.7.0.1
  */

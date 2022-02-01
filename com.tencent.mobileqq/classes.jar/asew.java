@@ -1,16 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import java.util.List;
 
-class asew
-  extends RecyclerView.ViewHolder
+public abstract interface asew
 {
-  public int a = asep.b;
+  public abstract void a(List<ases> paramList, ases paramases);
   
-  public asew(View paramView)
-  {
-    super(paramView);
-    paramView.setTag(this);
-  }
+  public abstract void c();
 }
 
 

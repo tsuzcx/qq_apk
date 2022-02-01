@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anbw;
-import anco;
-import ancp;
-import ando;
 import android.opengl.Matrix;
-import anfx;
-import azhf;
+import apan;
+import apbf;
+import apbg;
+import apcf;
+import apeo;
+import bcif;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.FramePerformanceMonitor;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
@@ -25,7 +25,7 @@ public class ARLocalMarkerRecog
 {
   private final int jdField_a_of_type_Int = 25;
   private long jdField_a_of_type_Long;
-  private anco jdField_a_of_type_Anco;
+  private apbf jdField_a_of_type_Apbf;
   private FramePerformanceMonitor jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor;
   private ArConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
   private ARLocalMarkerRecog.ProcessWorker jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog$ProcessWorker;
@@ -39,7 +39,7 @@ public class ARLocalMarkerRecog
   private final int jdField_b_of_type_Int = 800;
   private long jdField_b_of_type_Long;
   private Object jdField_b_of_type_JavaLangObject = new Object();
-  private ArrayList<ancp> jdField_b_of_type_JavaUtilArrayList;
+  private ArrayList<apbg> jdField_b_of_type_JavaUtilArrayList;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private long jdField_c_of_type_Long;
@@ -213,7 +213,7 @@ public class ARLocalMarkerRecog
     for (long l1 = 0L;; l1 = this.jdField_d_of_type_Long / this.q)
     {
       QLog.i("AREngine_ARLocalMarkerRecog", 1, l1 + ", recog suc from start  = " + this.n);
-      ando.a().a(this.l, this.m, this.n, this.o, this.k, this.jdField_a_of_type_JavaLangString);
+      apcf.a().a(this.l, this.m, this.n, this.o, this.k, this.jdField_a_of_type_JavaLangString);
       this.q = 0;
       this.p = 0;
       this.jdField_d_of_type_Long = 0L;
@@ -257,7 +257,7 @@ public class ARLocalMarkerRecog
     return true;
   }
   
-  public boolean a(int paramInt1, int paramInt2, ArConfigInfo paramArConfigInfo, ArrayList<ArCloudConfigInfo> paramArrayList, anco paramanco)
+  public boolean a(int paramInt1, int paramInt2, ArConfigInfo paramArConfigInfo, ArrayList<ArCloudConfigInfo> paramArrayList, apbf paramapbf)
   {
     boolean bool1 = false;
     QLog.i("AREngine_ARLocalMarkerRecog", 1, "init start. imageWidth = " + paramInt1 + ", imageHeight = " + paramInt2);
@@ -273,7 +273,7 @@ public class ARLocalMarkerRecog
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Anco = paramanco;
+    this.jdField_a_of_type_Apbf = paramapbf;
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
@@ -295,15 +295,15 @@ public class ARLocalMarkerRecog
       if (!ARShell.loadNativeLibrary())
       {
         QLog.i("AREngine_ARLocalMarkerRecog", 1, "YouTuNative. initAlgorithm failed. loadNativeLibrary failed.");
-        ando.a().e(System.currentTimeMillis() - l2, false);
+        apcf.a().e(System.currentTimeMillis() - l2, false);
       }
       for (;;)
       {
         this.jdField_a_of_type_Boolean = bool1;
         QLog.i("AREngine_ARLocalMarkerRecog", 1, "init end. mIsInited = " + this.jdField_a_of_type_Boolean);
-        ando.a().d(System.currentTimeMillis() - l1, this.jdField_a_of_type_Boolean);
+        apcf.a().d(System.currentTimeMillis() - l1, this.jdField_a_of_type_Boolean);
         return this.jdField_a_of_type_Boolean;
-        ando.a().e(System.currentTimeMillis() - l2, true);
+        apcf.a().e(System.currentTimeMillis() - l2, true);
         boolean bool2 = c();
         if (!bool2) {
           d();
@@ -339,22 +339,22 @@ public class ARLocalMarkerRecog
       {
         if (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
         {
-          if (((ancp)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_JavaLangString.equals(paramString1))
+          if (((apbg)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_JavaLangString.equals(paramString1))
           {
-            ((ancp)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_JavaLangString = paramString2;
-            ((ancp)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+            ((apbg)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_JavaLangString = paramString2;
+            ((apbg)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
             return true;
           }
         }
         else
         {
-          ancp localancp = new ancp(null);
-          localancp.jdField_a_of_type_JavaLangString = paramString1;
-          localancp.jdField_b_of_type_JavaLangString = paramString2;
-          localancp.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-          localancp.jdField_a_of_type_Boolean = false;
-          localancp.jdField_b_of_type_Boolean = false;
-          this.jdField_b_of_type_JavaUtilArrayList.add(localancp);
+          apbg localapbg = new apbg(null);
+          localapbg.jdField_a_of_type_JavaLangString = paramString1;
+          localapbg.jdField_b_of_type_JavaLangString = paramString2;
+          localapbg.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+          localapbg.jdField_a_of_type_Boolean = false;
+          localapbg.jdField_b_of_type_Boolean = false;
+          this.jdField_b_of_type_JavaUtilArrayList.add(localapbg);
           this.jdField_f_of_type_Long = System.currentTimeMillis();
           return true;
         }
@@ -386,7 +386,7 @@ public class ARLocalMarkerRecog
       arrayOfFloat[8] = (f1 * arrayOfFloat[8]);
       this.jdField_a_of_type_ArrayOfFloat = arrayOfFloat;
       arrayOfFloat = new float[16];
-      if (!azhf.d(azhf.g)) {
+      if (!bcif.d(bcif.g)) {
         break label490;
       }
       Matrix.setRotateM(arrayOfFloat, 0, 90.0F, 0.0F, 0.0F, 1.0F);
@@ -441,21 +441,21 @@ public class ARLocalMarkerRecog
     int i7 = 0;
     long l1 = System.currentTimeMillis();
     QLog.i("AREngine_ARLocalMarkerRecog", 1, "YouTuNative. initAlgorithm. start = " + l1);
-    int i1 = YTCommonInterface.initAuth(BaseApplicationImpl.getApplication().getApplicationContext(), "youtusdk_mqq.licence", 0);
+    int i1 = YTCommonInterface.initAuthForQQ(BaseApplicationImpl.getApplication().getApplicationContext());
     QLog.i("AREngine_ARLocalMarkerRecog", 1, "YouTuNative. initAlgorithm. initAuth ret = " + i1);
     this.jdField_a_of_type_ComYoutuArsdkAROption = new AROption();
     this.jdField_a_of_type_ComYoutuArsdkAROption.width = this.jdField_c_of_type_Int;
     this.jdField_a_of_type_ComYoutuArsdkAROption.height = this.jdField_d_of_type_Int;
     this.jdField_a_of_type_ComYoutuArsdkAROption.cameraParamPath = "";
     this.jdField_a_of_type_ComYoutuArsdkAROption.cachePath = "";
-    if (anbw.a() == 0)
+    if (apan.a() == 0)
     {
       this.jdField_a_of_type_ComYoutuArsdkAROption.recognizeQuality = 3;
       this.jdField_a_of_type_ComYoutuArsdkAROption.trackQuality = 1;
       this.jdField_a_of_type_ComYoutuArsdkAROption.performanceQuality = 3;
     }
     int i3;
-    label626:
+    label622:
     String str3;
     int i6;
     for (;;)
@@ -483,7 +483,7 @@ public class ARLocalMarkerRecog
         i1 = i4;
         i2 = i3;
         if (i5 >= this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo.mArCloudConfigInfos.size()) {
-          break label821;
+          break label817;
         }
         ArCloudConfigInfo localArCloudConfigInfo1 = (ArCloudConfigInfo)this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo.mArCloudConfigInfos.get(i5);
         QLog.i("AREngine_ARLocalMarkerRecog", 1, "add marker for local. resource info = " + localArCloudConfigInfo1.toString());
@@ -496,7 +496,7 @@ public class ARLocalMarkerRecog
           if (localArCloudConfigInfo1.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
           {
             if (localArCloudConfigInfo1.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString != null) {
-              break label626;
+              break label622;
             }
             i2 = i3;
             i1 = i4;
@@ -540,10 +540,10 @@ public class ARLocalMarkerRecog
     }
     i1 = 0;
     int i2 = 0;
-    label821:
+    label817:
     int i4 = i1;
     int i5 = i2;
-    if (!anfx.jdField_a_of_type_Boolean)
+    if (!apeo.jdField_a_of_type_Boolean)
     {
       i4 = i1;
       i5 = i2;
@@ -634,7 +634,7 @@ public class ARLocalMarkerRecog
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Anco = null;
+    this.jdField_a_of_type_Apbf = null;
     d();
     this.jdField_a_of_type_Boolean = false;
     QLog.i("AREngine_ARLocalMarkerRecog", 1, "uninit end. mIsInited = " + this.jdField_a_of_type_Boolean);
@@ -642,7 +642,7 @@ public class ARLocalMarkerRecog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalMarkerRecog
  * JD-Core Version:    0.7.0.1
  */

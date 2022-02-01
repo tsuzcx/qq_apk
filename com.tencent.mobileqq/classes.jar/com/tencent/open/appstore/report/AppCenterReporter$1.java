@@ -1,7 +1,7 @@
 package com.tencent.open.appstore.report;
 
-import bflg;
-import bflp;
+import bisp;
+import bisy;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.DownloadStartLog;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ public final class AppCenterReporter$1
   
   public void run()
   {
-    bflp.b("AppCenterReporter", "[reportDownloadStart]");
-    bflg.a(3004, bflg.a(this.a) + "|" + bflg.b(this.a));
-    bflg.d(this.a);
+    bisy.b("AppCenterReporter", "[reportDownloadStart]");
+    bisp.a(3004, bisp.a(this.a) + "|" + bisp.b(this.a));
+    bisp.d(this.a);
     DownloadStartLog localDownloadStartLog = new DownloadStartLog();
     localDownloadStartLog.packageName = this.a.e;
     localDownloadStartLog.versionCode = this.a.b;
@@ -41,7 +41,7 @@ public final class AppCenterReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.1
  * JD-Core Version:    0.7.0.1
  */

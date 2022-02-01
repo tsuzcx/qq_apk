@@ -113,7 +113,7 @@ public class AEDownLoadingView
     {
       return;
       paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long == this.jdField_a_of_type_Long));
+    } while ((this.jdField_b_of_type_Long < 0L) || (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long));
     float f = (float)this.jdField_b_of_type_Long * 360.0F / (float)this.jdField_a_of_type_Long;
     if (this.jdField_b_of_type_Boolean)
     {
@@ -195,7 +195,7 @@ public class AEDownLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.view.AEDownLoadingView
  * JD-Core Version:    0.7.0.1
  */

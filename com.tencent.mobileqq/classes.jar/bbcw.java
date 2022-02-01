@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbcw
-  implements bhum
+  implements View.OnClickListener
 {
-  public bbcw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public bbcw(CommentsView paramCommentsView, bbct parambbct, int paramInt) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
+    if ((this.jdField_a_of_type_Bbct.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

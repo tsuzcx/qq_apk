@@ -1,51 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import java.util.Comparator;
 
-public class bbks
-  implements View.OnClickListener
+class bbks
+  implements Comparator<bbkw>
 {
-  int jdField_a_of_type_Int = 0;
-  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
-  String jdField_a_of_type_JavaLangString;
+  bbks(bbkr parambbkr) {}
   
-  public bbks(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
+  public int a(bbkw parambbkw1, bbkw parambbkw2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
-      }
-    }
-    for (;;)
+    int j = Long.signum(parambbkw1.b - parambbkw2.b);
+    int i = j;
+    if (j == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
-        continue;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
-        if (paramView != null) {
-          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-        }
+      j = Long.signum(parambbkw1.c - parambbkw2.c);
+      i = j;
+      if (j == 0) {
+        i = Long.signum(-parambbkw1.a + parambbkw2.a);
       }
     }
+    return i;
   }
 }
 

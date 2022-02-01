@@ -1,8 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.BaseVMPeakActivity;
+
 class bnsk
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b;
+  bnsk(bnsi parambnsi) {}
+  
+  public void onClick(View paramView)
+  {
+    bnsi.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId")
 public class Emoticon
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int JOB_H5_MAGIC = 4;
@@ -46,7 +46,7 @@ public class Emoticon
   public String name;
   public boolean value;
   public String voicePrint;
-  @awhp
+  @notColumn
   public List<Integer> voicePrintItems;
   public String volumeColor;
   public int width;

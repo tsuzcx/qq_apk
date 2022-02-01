@@ -1,46 +1,44 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import mqq.os.MqqHandler;
 
-public class oal
-  extends Handler
+class oal
+  extends BroadcastReceiver
 {
-  public oal(ReadInJoyUploadAvatarActivity paramReadInJoyUploadAvatarActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  oal(nzz paramnzz, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.handleMessage(paramMessage);
-    Intent localIntent = this.a.getIntent();
-    Bundle localBundle = new Bundle();
-    switch (paramMessage.what)
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-      localBundle.putString("msg", alud.a(2131713418));
-      localBundle.putInt("retCode", 3);
-      localIntent.putExtra("Bundle", localBundle);
-      this.a.setResult(-1, localIntent);
+      this.jdField_a_of_type_Nzz.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
     }
-    for (;;)
+    try
     {
-      this.a.finish();
-      return;
-      localBundle.putString("url", (String)paramMessage.obj);
-      localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", alud.a(2131713477));
-      localIntent.putExtra("Bundle", localBundle);
-      this.a.setResult(-1, localIntent);
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Nzz.a);
+        label65:
+        this.jdField_a_of_type_Nzz.a = null;
+        return;
+        this.jdField_a_of_type_Nzz.a(str, i, 11, -1, null);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oal
  * JD-Core Version:    0.7.0.1
  */

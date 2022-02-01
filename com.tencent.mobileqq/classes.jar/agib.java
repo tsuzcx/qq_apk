@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Path;
+import java.util.List;
 
-class agib
-  implements DialogInterface.OnClickListener
+public abstract interface agib
 {
-  agib(aghx paramaghx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
-    }
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<aghs> paramList);
 }
 
 

@@ -1,24 +1,22 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public class ajlg
-  extends ajjw
+class ajlg
+  extends asgf
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  ajlg(ajld paramajld) {}
+  
+  protected void b(boolean paramBoolean)
+  {
+    ajky localajky = this.a.a(2);
+    localajky.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
+    if ((localajky.c) && (paramBoolean)) {
+      ajld.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localajky.jdField_a_of_type_Int), Boolean.valueOf(localajky.c), Boolean.valueOf(paramBoolean) }));
+    }
+  }
 }
 
 

@@ -1,59 +1,49 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aunj
-  extends auma
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aunj(MultiCardFragment paramMultiCardFragment) {}
+  public aunj(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    Object localObject = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    int i;
+    if (paramBoolean)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
-          {
-            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-            MultiCardFragment.a(this.a).a();
-          }
-        } while (MultiCardFragment.a(this.a) == null);
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
-      return;
+      i = 1;
+      bcst.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
+      localObject = (anjo)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(4);
+      ((anjo)localObject).d();
+      anjo.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
+      if (!paramBoolean) {
+        break label136;
+      }
+      if (bgdt.a().a() != 4) {
+        bgdt.a().a();
+      }
+      bcst.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
+    for (;;)
+    {
+      ((anjo)localObject).a(paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+      label136:
+      bgdt.a().b();
+      bcst.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunj
  * JD-Core Version:    0.7.0.1
  */

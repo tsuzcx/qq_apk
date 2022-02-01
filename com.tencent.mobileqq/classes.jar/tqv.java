@@ -1,28 +1,34 @@
-import android.os.CountDownTimer;
-import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SensorBridgeInvokeHandler.register.1;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-class tqv
-  extends CountDownTimer
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqv
+  extends tpt
 {
-  tqv(tqt paramtqt, long paramLong1, long paramLong2)
+  public static final tqw a = new tqw(null);
+  
+  public tqv(@NotNull BridgeModule paramBridgeModule)
   {
-    super(paramLong1, paramLong2);
+    super(paramBridgeModule);
   }
   
-  public void onFinish()
+  @NotNull
+  public String a()
   {
-    if (tqt.a(this.a) != null)
-    {
-      tqt.a(this.a).dismiss();
-      tqt.a(this.a, null);
-    }
+    return "sensor";
   }
   
-  public void onTick(long paramLong) {}
+  public void a()
+  {
+    a("getLocation", (Function2)new SensorBridgeInvokeHandler.register.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqv
  * JD-Core Version:    0.7.0.1
  */

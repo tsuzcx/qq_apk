@@ -1,54 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.31.3.1;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.BsnsTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class aczu
-  implements View.OnClickListener
+  implements acxp
 {
-  aczu(aczr paramaczr) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.a.jdField_a_of_type_Awor == null) {}
-    for (;;)
+    return 1021;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
+    localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().g(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
     {
-      return;
-      if ((this.a.jdField_a_of_type_Awor.a instanceof String)) {
-        paramView = (String)this.a.jdField_a_of_type_Awor.a;
+      if (QLog.isColorLevel()) {
+        QLog.d("CircleGroupRoutingType", 2, "circleGroup------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
       }
-      while (paramView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(paramView);
-        ThreadManager.post(new FriendProfileCardActivity.31.3.1(this), 5, null, true);
-        return;
-        if ((this.a.jdField_a_of_type_Awor.a instanceof ProfileActivity.CardContactInfo))
-        {
-          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_Awor.a;
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
-            paramView = paramView.c;
-          } else {
-            paramView = paramView.a + " " + paramView.c;
-          }
-        }
-        else if ((this.a.jdField_a_of_type_Awor.a instanceof awoc))
-        {
-          if ((paramView instanceof TextView)) {
-            paramView = ((awoc)this.a.jdField_a_of_type_Awor.a).a(((TextView)paramView).getText().toString());
-          } else {
-            paramView = ((awoc)this.a.jdField_a_of_type_Awor.a).a;
-          }
-        }
-        else
-        {
-          paramView = null;
-        }
-      }
+      localBsnsTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
+    paramRoutingHead.bsns_tmp.set(localBsnsTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

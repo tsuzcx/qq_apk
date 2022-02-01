@@ -1,24 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import java.util.ArrayList;
 
-public class awuv
-  implements Animation.AnimationListener
+public abstract interface awuv
 {
-  public awuv(BreatheEffectView paramBreatheEffectView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awuv
  * JD-Core Version:    0.7.0.1
  */

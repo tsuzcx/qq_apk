@@ -1,8 +1,24 @@
-public class akvr
+import com.tencent.mobileqq.soload.LoadExtResult;
+
+class akvr
+  implements bcob
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  akvr(akvq paramakvq, akvs paramakvs) {}
+  
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  {
+    if (paramInt == 0)
+    {
+      akvq.a(this.jdField_a_of_type_Akvq, true);
+      if (this.jdField_a_of_type_Akvs != null) {
+        this.jdField_a_of_type_Akvs.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Akvs == null) {
+      return;
+    }
+    this.jdField_a_of_type_Akvs.a(false);
+  }
 }
 
 

@@ -1,37 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class mvu
-  implements bauf
+public class mvu
+  extends RecyclerView.ViewHolder
 {
-  public void a(bave parambave, bavf parambavf)
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public mvu(View paramView)
   {
-    if ((parambave == null) || (parambavf == null)) {}
-    baub localbaub;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      localbaub = (baub)parambave;
-      localbaub.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
-      localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = localbaub.jdField_a_of_type_JavaLangString;
-      if (parambavf.contains("range="))
-      {
-        parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
-        localbaub.jdField_a_of_type_JavaLangString = (parambavf + "range=" + localbaub.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", offset=" + localbaub.jdField_a_of_type_Long);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369103));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379611));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvu
  * JD-Core Version:    0.7.0.1
  */

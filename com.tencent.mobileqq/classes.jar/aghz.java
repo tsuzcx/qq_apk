@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class aghz
-  implements DialogInterface.OnCancelListener
+public abstract interface aghz
 {
-  aghz(aghx paramaghx) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.a.h) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

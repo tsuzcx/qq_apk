@@ -1,737 +1,415 @@
-import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.os.SystemClock;
+import QC.UniBusiGetOneItemWithCheckReq;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import QC.UniBusiSimpleFontItem;
+import QC.UniBusiSimpleItemDetail;
+import QC.UniBusiSimpleSigItem;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.graphics.drawable.LayerDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
-import com.tencent.aekit.api.standard.filter.AESticker;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.av.video.effect.beauty.BeautyRender;
-import com.tencent.av.video.effect.core.EffectTexture;
-import com.tencent.av.video.effect.filter.FilterRender;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.filter.BaseFilter;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.ar.FramePerformanceMonitor;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.PTFaceDetector;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector;
-import com.tencent.ttpic.openapi.manager.FeatureManager;
-import com.tencent.ttpic.openapi.model.StarParam;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
-import com.tencent.util.PhoneProperty;
-import com.tencent.ytcommon.util.YTCommonInterface;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import mqq.app.AppRuntime;
 
-@SuppressLint({"NewApi"})
 public class azir
+  extends RecyclerView.Adapter<aziz>
 {
-  private double jdField_a_of_type_Double;
-  public int a;
-  private long jdField_a_of_type_Long;
-  public aivf a;
-  private azit jdField_a_of_type_Azit = new azit(null);
-  private azlk jdField_a_of_type_Azlk = new azlk();
-  volatile AESticker jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker;
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  BeautyRender jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
-  BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  public GestureKeyInfo a;
-  private PTFaceAttr jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr;
-  PTFaceDetector jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector = null;
-  VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-  public boolean a;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private double jdField_b_of_type_Double;
-  public int b;
-  private long jdField_b_of_type_Long;
-  Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  public volatile boolean b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  Frame jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  BaseFilter jdField_c_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  public boolean c;
-  private double jdField_d_of_type_Double = 1.0D;
-  private int jdField_d_of_type_Int;
-  Frame jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  public volatile boolean d;
-  private int jdField_e_of_type_Int;
-  private Frame jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  public volatile boolean e;
-  private int f;
-  public volatile boolean f;
-  private int g;
-  public volatile boolean g;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean = PhoneProperty.instance().isCannotReuseFrameBuffer();
-  private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  private boolean m = true;
+  private int jdField_a_of_type_Int;
+  private UniBusiSimpleItemDetail jdField_a_of_type_QCUniBusiSimpleItemDetail;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private aziq jdField_a_of_type_Aziq;
+  public aziy a;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new azix(this);
+  private StickyNoteShopLayout jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+  private ArrayList<UniBusiSimpleItemDetail> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private int b = -1;
+  private int c = -1;
+  private int d;
+  private final int e = 0;
+  private final int f = 1;
   
-  public azir()
+  public azir(Context paramContext, ArrayList<UniBusiSimpleItemDetail> paramArrayList)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Aziy = new azit(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847140);
   }
   
-  private int a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  private Drawable a(String paramString1, String paramString2)
   {
-    int n = -1;
-    BeautyRender localBeautyRender = a();
-    if (localBeautyRender != null)
-    {
-      if (!paramBoolean) {
-        break label42;
-      }
-      localBeautyRender.setNeedSkinColor(false);
-    }
-    for (;;)
-    {
-      n = localBeautyRender.process(paramInt1, -1, paramInt2, paramInt3).getTextureId();
-      return n;
-      label42:
-      localBeautyRender.setNeedSkinColor(true);
-    }
-  }
-  
-  private Frame a(Frame paramFrame)
-  {
-    if (paramFrame == null) {
-      return null;
-    }
-    Frame localFrame2 = paramFrame;
-    Frame localFrame1 = paramFrame;
-    for (paramFrame = localFrame2; (paramFrame.nextFrame != null) && (paramFrame.nextFrame.getTextureId() != 0); paramFrame = localFrame2)
-    {
-      localFrame2 = paramFrame.nextFrame;
-      localFrame1 = paramFrame;
-    }
-    localFrame1.nextFrame = null;
-    return paramFrame;
-  }
-  
-  private void a(float paramFloat)
-  {
-    a().setBeautyLevel(azki.a() * paramFloat);
-    if (QLog.isColorLevel()) {
-      QLog.i("FilterBeauty", 2, "setBeautyLevel " + paramFloat + "rate : " + azki.a());
-    }
-  }
-  
-  private boolean a(FilterRender paramFilterRender)
-  {
-    if (!azki.b()) {
-      return false;
-    }
-    if (ajsv.b())
-    {
-      boolean bool2 = true;
-      boolean bool1 = bool2;
-      if (paramFilterRender != null) {
-        if (paramFilterRender.getFilterType() != 3)
-        {
-          bool1 = bool2;
-          if (!ajsv.a().c()) {}
-        }
-        else
-        {
-          bool1 = false;
-        }
-      }
-      return bool1;
-    }
-    QLog.e("filterbeauty", 2, "checkSkinColorAvailable false");
-    return false;
-  }
-  
-  private boolean b(FilterRender paramFilterRender)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFilterRender != null) {
-      if (paramFilterRender.getFilterType() != 1)
-      {
-        bool1 = bool2;
-        if (paramFilterRender.getFilterType() != 2) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private void h()
-  {
-    boolean bool = azkt.a();
-    String str;
-    if ((!this.k) && (bool))
-    {
-      YTCommonInterface.initAuth(BaseApplicationImpl.getContext(), "youtusdk_mqq.licence", 0);
-      str = azkt.c(VideoEnvironment.a());
-      if (!TextUtils.isEmpty(str)) {
-        FeatureManager.setModelDir(str);
-      }
-    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = localDrawable;
+    if (!TextUtils.isEmpty(paramString2)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector = new PTFaceDetector();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector.init();
-      this.k = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvFilterUtils", 2, "mFaceDetector path:" + str);
+      paramString1 = new URL("sig_cover", paramString2, paramString1);
+      localObject = localDrawable;
+      if (paramString1 != null)
+      {
+        paramString2 = URLDrawable.URLDrawableOptions.obtain();
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        paramString2.mFailedDrawable = ((Drawable)localObject);
+        paramString2.mLoadingDrawable = ((Drawable)localObject);
+        paramString2.mPlayGifImage = true;
+        localObject = URLDrawable.getDrawable(paramString1, paramString2);
+        ((URLDrawable)localObject).addHeader("my_uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
       }
-      return;
+      return localObject;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (MalformedURLException paramString1)
     {
       for (;;)
       {
-        VideoEnvironment.a("QQFilterRenderManager", "OutOfMemoryError:", localOutOfMemoryError);
-        axwq.a(new RuntimeException("initFaceDetector failed"));
-        this.k = false;
+        if (QLog.isColorLevel()) {
+          QLog.d("StickyNoteVasAdapter", 2, paramString1.getMessage());
+        }
+        paramString1 = null;
       }
     }
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    String str3 = anni.a(2131703463);
+    String str2 = anni.a(2131718553);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      str1 = str2;
+      if (paramString2.contains("svip")) {
+        str1 = anni.a(2131718552);
+      }
+    }
+    bglp.a(paramContext, 230, str3, paramString3, anni.a(2131703464), str1, new aziu(this, paramContext, paramString1, paramString2, paramString4), new aziv(this)).show();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 0: 
+    case 1: 
+      return true;
+    case 4: 
+      return VipUtils.c(localQQAppInterface);
+    case 5: 
+      return VipUtils.b(localQQAppInterface);
+    }
+    return false;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getLastRenderTextureId();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, FramePerformanceMonitor paramFramePerformanceMonitor, boolean paramBoolean3)
+  public int a(int paramInt)
   {
-    return a(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Boolean, paramBoolean1, true, paramBoolean2, paramFramePerformanceMonitor, paramBoolean3);
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, FramePerformanceMonitor paramFramePerformanceMonitor, boolean paramBoolean5)
-  {
-    long l1 = PtvFilterUtils.a();
-    azjd.a();
-    Object localObject = new float[16];
-    Matrix.setIdentityM((float[])localObject, 0);
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix((float[])localObject);
-    FilterRender localFilterRender = ajsv.a().a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-    azjd.jdField_a_of_type_Boolean = paramBoolean4;
-    boolean bool1 = a(localFilterRender);
-    boolean bool2 = b(localFilterRender);
-    int n;
-    if ((paramBoolean4) && (this.jdField_a_of_type_Boolean) && (bool1) && (paramBoolean1))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-      n = a(bool2, paramInt3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[BeautyTime1=" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
-      }
-      if (n != -1) {
-        this.jdField_a_of_type_ArrayOfInt[2] = n;
-      }
-      n = this.jdField_a_of_type_ArrayOfInt[2];
-      paramBoolean4 = true;
+    default: 
+      return 2130847453;
+    case 0: 
+    case 1: 
+      return 2130847452;
+    case 4: 
+      return 2130847457;
+    case 5: 
+      return 2130847456;
+    case 21: 
+      return 2130847455;
     }
-    for (;;)
+    return 2130847454;
+  }
+  
+  public Drawable a(Context paramContext, Drawable paramDrawable, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return paramDrawable;
+    }
+    return new LayerDrawable(new Drawable[] { paramDrawable, paramContext.getResources().getDrawable(2130850295) });
+  }
+  
+  public Drawable a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    int i = 14606046;
+    if (!TextUtils.isEmpty(paramString))
     {
-      h();
-      if (((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null) && (paramBoolean2)) || (this.jdField_a_of_type_Aivf != null))
-      {
-        if (paramBoolean4) {
-          break label1905;
-        }
-        if ((this.jdField_a_of_type_Boolean) && (bool1) && (paramBoolean1))
-        {
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          n = a(bool2, paramInt3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[BeautyTime1=" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
-          }
-          if (n != -1) {
-            this.jdField_a_of_type_ArrayOfInt[2] = n;
-          }
-          n = this.jdField_a_of_type_ArrayOfInt[2];
-          paramBoolean1 = true;
-        }
+      String str = paramString;
+      if (!paramString.contains("#")) {
+        str = "#" + paramString;
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-        BaseFilter localBaseFilter = this.jdField_a_of_type_ComTencentFilterBaseFilter.getmNextFilter();
-        this.jdField_a_of_type_ComTencentFilterBaseFilter.setNextFilter(null, null);
-        this.jdField_c_of_type_ComTencentFilterBaseFilter.RenderProcess(n, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Double, this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame);
-        this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[mFlipFrame=" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
-        }
-        label521:
-        label625:
-        VideoMaterial localVideoMaterial;
-        int i1;
-        label791:
-        long l2;
-        if ((this.jdField_d_of_type_Boolean) && (this.k))
-        {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr = this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector.detectFrame(this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame, 0L, 0, false, this.jdField_c_of_type_Double, 90.0F, false, new StarParam());
-          if (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getFaceCount() > 0)
-          {
-            this.jdField_b_of_type_Boolean = true;
-            if (this.jdField_e_of_type_Boolean)
-            {
-              aziu.a().c();
-              GestureMgrRecognize.getInstance().transferRGBAbuffer(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-              localObject = GestureMgrRecognize.getInstance().getGestureInfo();
-              if ((localObject != null) && (((GestureKeyInfo)localObject).vaild) && (((GestureKeyInfo)localObject).type.equalsIgnoreCase(GestureFilterManager.sGestureType)))
-              {
-                this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = ((GestureKeyInfo)localObject);
-                this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo.timeStamp = System.currentTimeMillis();
-              }
-              if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo != null) {
-                break label1647;
-              }
-              this.jdField_f_of_type_Boolean = false;
-              aziu.a().d();
-              if ((this.jdField_g_of_type_Boolean) && (this.jdField_f_of_type_Boolean))
-              {
-                aziv.a(this.jdField_f_of_type_Boolean);
-                QLog.d("GestureTestUse", 2, "we have record sucess result");
-              }
-              if ((!QLog.isColorLevel()) || (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo == null)) {}
-            }
-            n = 0;
-            localVideoMaterial = null;
-            i1 = n;
-            localObject = localVideoMaterial;
-            if (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector != null)
-            {
-              i1 = n;
-              localObject = localVideoMaterial;
-              if (this.jdField_d_of_type_Boolean)
-              {
-                i1 = n;
-                localObject = localVideoMaterial;
-                if (this.k)
-                {
-                  i1 = this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getFaceCount();
-                  localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getAllFacePoints();
-                }
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[getFaceCount faceCount=" + i1 + "]");
-            }
-            if (i1 <= 0) {
-              break label1681;
-            }
-            paramBoolean4 = true;
-            NewFlowCameraActivity.jdField_b_of_type_Boolean = paramBoolean4;
-            this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            if ((this.jdField_a_of_type_Aivf != null) && (this.jdField_c_of_type_Int != 0) && (localObject != null)) {
-              this.jdField_a_of_type_Aivf.a(i1, paramInt1, paramInt2, paramInt1 * 1.0F / this.jdField_c_of_type_Int / this.jdField_c_of_type_Double, (List)localObject);
-            }
-            this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            l2 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-            if (QLog.isColorLevel()) {
-              QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[onCameraCallBack<Qzone> steptime=" + l2 + "us]");
-            }
-            this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            int i2 = this.jdField_a_of_type_ArrayOfInt[0];
-            n = i2;
-            if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null)
-            {
-              n = i2;
-              if (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr != null) {
-                n = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.processTransformRelatedFilters(this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr, null, null).getTextureId();
-              }
-            }
-            this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            l2 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-            if (QLog.isColorLevel()) {
-              QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[RenderProcess<TempFrame> steptime=" + l2 + "us]");
-            }
-            this.jdField_c_of_type_ComTencentFilterBaseFilter.RenderProcess(n, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt[1], this.jdField_a_of_type_Double, this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame);
-            i2 = this.jdField_a_of_type_ArrayOfInt[1];
-            n = i2;
-            if (localFilterRender != null)
-            {
-              n = i2;
-              if (paramBoolean3) {
-                n = localFilterRender.process(i2, -1, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int).getTextureId();
-              }
-            }
-            this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            if (!paramBoolean5) {
-              break label1687;
-            }
-            localBaseFilter.RenderProcess(n, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, -2, this.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-          }
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentFilterBaseFilter.setNextFilter(localBaseFilter, null);
-          this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          l2 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[RenderProcess<filterDrawTexture> steptime=" + l2 + "us] faceCount=" + i1);
-          }
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[RenderProcess<DrawWindow>  afterChange=" + this.i);
-          }
-          if (paramBoolean5)
-          {
-            if (!this.i) {
-              break label1846;
-            }
-            this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2, 0, this.jdField_a_of_type_Double, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
-            this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-            this.i = false;
-            label1316:
-            paramInt3 = a();
-          }
-          this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          l2 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[RenderOperation<DrawWindow> steptime=" + l2 + "us]");
-          }
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          if (this.jdField_h_of_type_Boolean)
-          {
-            this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-            this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-            this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-          }
-          this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[ReuseFrameBuffer=" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us] cannotReuseFrameBuffer=" + this.jdField_h_of_type_Boolean);
-          }
-          l1 = (PtvFilterUtils.a() - l1) / 1000L;
-          if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker == null) || (!paramBoolean2)) {
-            break label1874;
-          }
-          localVideoMaterial = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-          localObject = "";
-          if (localVideoMaterial != null) {
-            localObject = localVideoMaterial.getId();
-          }
-          azjd.a((String)localObject, l1);
-          label1535:
-          paramInt1 = this.jdField_h_of_type_Int + 1;
-          this.jdField_h_of_type_Int = paramInt1;
-          if (paramInt1 >= 20)
-          {
-            if ((!paramBoolean1) && (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker == null) && (paramFramePerformanceMonitor != null)) {
-              paramFramePerformanceMonitor.a(l1 / 1000L);
-            }
-            if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null) {
-              break label1882;
-            }
-            paramFramePerformanceMonitor = null;
-            label1592:
-            if (ajpx.jdField_a_of_type_Int != 2) {
-              break label1894;
-            }
-            localObject = "back";
-            label1604:
-            ajrw.a((String)localObject, paramBoolean1, paramFramePerformanceMonitor, l1 / 1000L);
-          }
-          return paramInt3;
-          n = paramInt3;
-          paramBoolean1 = paramBoolean4;
-          break;
-          this.jdField_b_of_type_Boolean = false;
-          break label521;
-          this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr = null;
-          break label521;
-          label1647:
-          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo.timeStamp + 2000L >= System.currentTimeMillis())
-          {
-            this.jdField_f_of_type_Boolean = true;
-            break label625;
-          }
-          this.jdField_f_of_type_Boolean = false;
-          break label625;
-          label1681:
-          paramBoolean4 = false;
-          break label791;
-          label1687:
-          paramInt3 = n;
-        }
-        if ((localFilterRender != null) && (paramBoolean3)) {
-          n = localFilterRender.process(n, -1, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int).getTextureId();
-        }
-        for (;;)
-        {
-          NewFlowCameraActivity.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-          if (paramBoolean5) {
-            this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(n, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, -2, this.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-          }
-          for (;;)
-          {
-            this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-            l2 = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-            if (QLog.isColorLevel()) {
-              QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[RenderProcess<NofilterDrawTexture>=" + l2 + "us]");
-            }
-            azjd.a(l2);
-            paramBoolean1 = paramBoolean4;
-            break;
-            paramInt3 = n;
-          }
-          label1846:
-          this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getLastRenderTextureId(), paramInt1, paramInt2, 0, this.jdField_a_of_type_Double, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
-          break label1316;
-          label1874:
-          azjd.b(l1);
-          break label1535;
-          label1882:
-          paramFramePerformanceMonitor = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId();
-          break label1592;
-          label1894:
-          localObject = "front";
-          break label1604;
-        }
-        label1905:
-        paramBoolean1 = paramBoolean4;
-      }
-      paramBoolean4 = false;
-      n = paramInt3;
+      i = Color.parseColor(str);
     }
-  }
-  
-  public azlk a()
-  {
-    return this.jdField_a_of_type_Azlk;
-  }
-  
-  public BeautyRender a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = new BeautyRender(BaseApplicationImpl.context, len.h());
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i + 1291845632, i + -2147483648 });
+    if (!paramBoolean) {
+      return paramString;
     }
-    return this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender;
+    return new LayerDrawable(new Drawable[] { paramString, paramContext.getResources().getDrawable(2130850295) });
   }
   
-  public VideoPreviewFaceOutlineDetector a()
+  public aziz a(ViewGroup paramViewGroup, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector.getFaceDetector();
+    paramViewGroup = new aziz(this, View.inflate(paramViewGroup.getContext(), 2131561452, null));
+    if (paramInt == 1)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      return paramViewGroup;
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    return paramViewGroup;
   }
   
   public void a()
   {
-    a(null, false);
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector != null)
+    if ((this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector.destroy();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceDetector = null;
+      this.jdField_a_of_type_Boolean = false;
+      a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Aziy);
     }
-    this.k = false;
-    this.l = false;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.applyFilterChain(true, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(AESticker paramAESticker, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, int paramInt3, aziy paramaziy)
   {
-    this.i = true;
-    this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame = a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-    this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame.nextFrame = null;
-    if ((this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame != this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame) && (paramBoolean)) {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    }
-    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null)
+    if ((a(paramInt3)) && (paramaziy != null))
     {
-      GestureMgrRecognize.getInstance().stop();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = null;
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.clear();
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker = null;
-      this.jdField_g_of_type_Boolean = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("GestureTestUse", 2, "have run destroy here");
+      paramaziy.a(true, null);
+      return;
+    }
+    new bhhm("QC.UniBusinessUserInfoServer.UniBusinessUserInfoObj", "QcUniBusinessUserInfo.UniBusiGetOneItemWithCheck", "stReq", "stRsp").a("UniBusiGetOneItemWithCheck", new UniBusiGetOneItemWithCheckReq(bhhm.a(), paramInt1, paramInt2), new UniBusiGetOneItemWithCheckRsp(), new aziw(this, paramaziy), false);
+  }
+  
+  public void a(TextView paramTextView, int paramInt)
+  {
+    paramTextView.setCompoundDrawablePadding(bgtn.b(4.0F));
+    paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, a(paramInt), 0);
+  }
+  
+  public void a(aziq paramaziq)
+  {
+    this.jdField_a_of_type_Aziq = paramaziq;
+  }
+  
+  public void a(aziz paramaziz, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null))
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaziz, paramInt, getItemId(paramInt));
+      return;
+    }
+    UniBusiSimpleItemDetail localUniBusiSimpleItemDetail = (UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramaziz.jdField_a_of_type_AndroidWidgetTextView.setText(localUniBusiSimpleItemDetail.name);
+    boolean bool;
+    label72:
+    int i;
+    if (this.b == localUniBusiSimpleItemDetail.itemId)
+    {
+      bool = true;
+      if (this.c != localUniBusiSimpleItemDetail.itemId) {
+        break label308;
+      }
+      i = 1;
+      label86:
+      paramaziz.b.setVisibility(8);
+      if (i != 0)
+      {
+        i = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+        if (i == 2) {
+          paramaziz.b.setVisibility(0);
+        }
+      }
+      QLog.d("StickyNoteVasAdapter", 1, " mAppId:" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int != 9) {
+        break label313;
+      }
+      paramaziz.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramaziz.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), localUniBusiSimpleItemDetail.itemBgColor, bool));
+      i = (bclx.e(paramaziz.itemView.getContext()) - bclx.a(96.0F)) / 3;
+      Object localObject = paramaziz.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = i;
+      ((ViewGroup.LayoutParams)localObject).height = ((int)(i * 0.57F));
+      paramaziz.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramaziz.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image));
+    }
+    for (;;)
+    {
+      a(paramaziz.jdField_a_of_type_AndroidWidgetTextView, localUniBusiSimpleItemDetail.feeType);
+      paramaziz.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setOnClickListener(new azis(this, localUniBusiSimpleItemDetail));
+      break;
+      bool = false;
+      break label72;
+      label308:
+      i = 0;
+      break label86;
+      label313:
+      paramaziz.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramaziz.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image), bool));
+    }
+  }
+  
+  public void a(StickyNoteShopLayout paramStickyNoteShopLayout)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout = paramStickyNoteShopLayout;
+  }
+  
+  public void a(ArrayList<UniBusiSimpleItemDetail> paramArrayList, boolean paramBoolean)
+  {
+    int i;
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      notifyDataSetChanged();
+      if (this.d != 0) {
+        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+          i = 0;
+        }
       }
     }
-    if (paramAESticker != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker = paramAESticker;
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.updateVideoSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_d_of_type_Double);
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.setRatio((float)this.jdField_b_of_type_Double);
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.apply();
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == this.d) {
+          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, -1, this.jdField_a_of_type_Aziy);
+        }
+        this.d = 0;
+        return;
+        this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+        break;
+      }
+      i += 1;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat)
-  {
-    if (paramBoolean)
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      paramFloat = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0).getInt("beauty_level" + str, (int)(NewFlowCameraActivity.jdField_b_of_type_Float * 100.0F)) / 100.0F;
-    }
-    a(paramFloat);
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr != null) {
-      return this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getFaceCount();
-    }
-    return 0;
   }
   
   public void b()
   {
-    c();
-    this.k = false;
-    this.l = false;
-    this.jdField_a_of_type_Azlk.a();
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.setNextFilter(this.jdField_b_of_type_ComTencentFilterBaseFilter, null);
-    this.jdField_c_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_c_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
-    a(true, 0.0F);
-    n = 200;
-    i3 = 5;
-    try
+    notifyDataSetChanged();
+    if (this.jdField_a_of_type_Aziq != null)
     {
-      i1 = Integer.parseInt(PtvTemplateManager.h);
-      n = i1;
-      i2 = Integer.parseInt(PtvTemplateManager.g);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        int i2 = i3;
-        int i1 = n;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("GestureTestUse", 2, "GestureMgr.getInstance().setRecognizeMillis number exception" + n);
-          i2 = i3;
-          i1 = n;
-        }
+      if (this.jdField_a_of_type_Int != 5) {
+        break label60;
       }
+      i = 0;
+      if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem != null) {
+        i = this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem.fontType;
+      }
+      this.jdField_a_of_type_Aziq.b(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GestureTestUse", 2, "PtvTemplateManager.mGestureGapTime raw value " + PtvTemplateManager.h + ":GestureMgr.getInstance().setRecognizeMillis normal result" + i1 + ",frameRate is:" + i2);
-    }
-    GestureMgrRecognize.getInstance().setRecognizeMillis(i1);
-    GestureMgrRecognize.getInstance().setRecognizeFrameRate(i2);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    float f1 = VideoEnvironment.a.a;
-    if (Math.max(paramInt1, paramInt2) < 960) {
-      f1 = 1.0F;
-    }
-    this.jdField_a_of_type_Int = ((int)(paramInt1 * f1));
-    this.jdField_b_of_type_Int = ((int)(f1 * paramInt2));
-    this.jdField_b_of_type_Double = (paramInt1 / paramInt2);
-    this.jdField_c_of_type_Double = (FaceDetector.FACE_DETECT_WIDTH / this.jdField_a_of_type_Int);
-    this.jdField_e_of_type_Int = ((int)(this.jdField_a_of_type_Int * this.jdField_c_of_type_Double));
-    this.jdField_f_of_type_Int = ((int)(this.jdField_b_of_type_Int * this.jdField_c_of_type_Double));
-    this.jdField_g_of_type_Int = (this.jdField_e_of_type_Int * this.jdField_f_of_type_Int * 4);
-    this.jdField_d_of_type_Double = (paramInt1 / paramInt1);
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null) {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.updateVideoSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_d_of_type_Double);
-    }
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvFilterUtils", 2, "updatePreviewSize:: width=" + paramInt1 + ";height=" + paramInt2 + ";widthFilter=" + this.jdField_a_of_type_Int + ";heightFilter=" + this.jdField_b_of_type_Int + ";mFaceDetectWidth" + this.jdField_e_of_type_Int + ";mFaceDetectHeight=" + this.jdField_f_of_type_Int);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    if (this.jdField_e_of_type_Boolean)
-    {
-      GestureMgrRecognize.getInstance().start();
+    label60:
+    while (this.jdField_a_of_type_Int != 9) {
       return;
     }
-    this.jdField_f_of_type_Boolean = false;
-    GestureMgrRecognize.getInstance().stop();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_e_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
-    this.jdField_c_of_type_ComTencentFilterBaseFilter.ClearGLSL();
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender != null)
+    int j = 16777215;
+    int i = j;
+    if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem != null)
     {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
+      i = j;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor)) {
+        i = Color.parseColor(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor);
+      }
     }
-    this.jdField_a_of_type_Azlk.b();
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null)
+    this.jdField_a_of_type_Aziq.a(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+    this.c = paramInt;
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.a(false);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.b = -1;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.clear();
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker = null;
+      return;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == paramInt)
+        {
+          this.b = paramInt;
+          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          notifyDataSetChanged();
+          return;
+        }
+        i += 1;
+      }
     }
   }
   
-  public void c(int paramInt1, int paramInt2)
+  public int getItemCount()
   {
-    a(null, true);
-    b(paramInt1, paramInt2);
-    this.j = true;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker != null) {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESticker.destroyAudio();
-    }
-  }
-  
-  public void e() {}
-  
-  public void f()
-  {
-    ajsv.a().c();
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender != null)
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
+      int j = i;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int == 2)
+      {
+        StickyNoteShopLayout localStickyNoteShopLayout = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+        j = Math.min(i, 30);
+      }
+      return j;
     }
   }
   
-  public void g()
+  public int getItemViewType(int paramInt)
   {
-    h();
+    if (paramInt == getItemCount() - 1) {
+      return 1;
+    }
+    return 0;
   }
 }
 

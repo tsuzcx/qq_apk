@@ -1,23 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Pair;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-class bhov
-  implements bhol
+public abstract interface bhov
 {
-  bhov(bhou parambhou) {}
+  public abstract Activity a();
   
-  public void a(List<Pair<Integer, Byte>> paramList)
-  {
-    Message localMessage = bhou.a(this.a).obtainMessage(2);
-    localMessage.obj = paramList;
-    bhou.a(this.a).sendMessage(localMessage);
-  }
+  public abstract bhos a();
+  
+  public abstract WebViewFragment a();
+  
+  public abstract WebView a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhov
  * JD-Core Version:    0.7.0.1
  */

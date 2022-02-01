@@ -1,28 +1,41 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vcm
+class vcm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public VideoCollectionItem a;
+  vcm(vcl paramvcl) {}
   
-  public vcm(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
+    int i;
+    if (paramBoolean)
+    {
+      i = 0;
+      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(0, i);
+      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new vcn(this, paramBoolean));
+      if (!paramBoolean) {
+        break label62;
+      }
+      vrf.a("", 11, 23, 3);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 1;
+      break;
+      label62:
+      vrf.a("", 11, 23, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcm
  * JD-Core Version:    0.7.0.1
  */

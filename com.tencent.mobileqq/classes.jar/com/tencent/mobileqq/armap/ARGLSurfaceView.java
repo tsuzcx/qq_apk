@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
-import anta;
-import antb;
+import aptf;
+import aptg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements GLSurfaceView.Renderer, antb
+  implements GLSurfaceView.Renderer, aptg
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -36,8 +36,8 @@ public class ARGLSurfaceView
   private volatile boolean mIsContextDestroyed;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private antb mSensorListener;
-  public anta mSensorManager;
+  private aptg mSensorListener;
+  public aptf mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,12 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(antb paramantb, int paramInt)
+  public void initSensor(aptg paramaptg, int paramInt)
   {
     if ((this.mSensorManager == null) && (this.mCurActivity != null))
     {
-      this.mSensorManager = new anta(this.mCurActivity, paramInt);
-      this.mSensorListener = paramantb;
+      this.mSensorManager = new aptf(this.mCurActivity, paramInt);
+      this.mSensorListener = paramaptg;
     }
   }
   
@@ -458,7 +458,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

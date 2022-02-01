@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.utils;
 
 import com.tencent.mobileqq.pb.PBField;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -82,30 +82,31 @@ public class JSONUtils
   public static Object convertFrom(JSONObject paramJSONObject, Class<?> paramClass)
   {
     if ((paramJSONObject == null) || (paramClass == null)) {}
+    Object localObject3;
     for (;;)
     {
       return null;
       try
       {
         Object localObject1 = paramClass.newInstance();
-        if (localObject1 == null) {
-          continue;
-        }
-        paramClass = paramClass.getDeclaredFields();
-        int k = paramClass.length;
-        int i = 0;
-        for (;;)
+        if (localObject1 != null)
         {
-          if (i >= k) {
-            break label350;
+          paramClass = paramClass.getDeclaredFields();
+          int j = paramClass.length;
+          int i = 0;
+          for (;;)
+          {
+            if (i >= j) {
+              break label109;
+            }
+            localField = paramClass[i];
+            str = localField.getName();
+            int k = localField.getModifiers();
+            if ((!Modifier.isStatic(k)) || (!Modifier.isFinal(k))) {
+              break;
+            }
+            i += 1;
           }
-          localObject4 = paramClass[i];
-          localObject5 = localObject4.getName();
-          j = localObject4.getModifiers();
-          if ((!Modifier.isStatic(j)) || (!Modifier.isFinal(j))) {
-            break;
-          }
-          i += 1;
         }
       }
       catch (InstantiationException localInstantiationException)
@@ -117,70 +118,20 @@ public class JSONUtils
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        Object localObject3;
-        for (;;)
+        Field localField;
+        String str;
+        do
         {
-          Object localObject4;
-          Object localObject5;
-          int j;
-          localObject3 = null;
-          continue;
-          Object localObject6 = localObject4.getType().getSimpleName();
-          try
+          for (;;)
           {
-            if (!paramJSONObject.has((String)localObject5)) {
-              continue;
-            }
-            localObject4.setAccessible(true);
-            if (((String)localObject6).equals("int")) {
-              localObject4.set(localObject3, Integer.valueOf(paramJSONObject.getInt((String)localObject5)));
-            }
+            localObject3 = null;
           }
-          catch (JSONException paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-            return null;
-            if (((String)localObject6).equals("boolean")) {
-              localObject4.set(localObject3, Boolean.valueOf(paramJSONObject.getBoolean((String)localObject5)));
-            }
-          }
-          catch (IllegalAccessException paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-            return null;
-          }
-          if (((String)localObject6).equals("long"))
-          {
-            localObject4.set(localObject3, Long.valueOf(paramJSONObject.getLong((String)localObject5)));
-          }
-          else if (((String)localObject6).equals("double"))
-          {
-            localObject4.set(localObject3, Double.valueOf(paramJSONObject.getDouble((String)localObject5)));
-          }
-          else if (((String)localObject6).equals("String"))
-          {
-            localObject4.set(localObject3, paramJSONObject.getString((String)localObject5));
-          }
-          else if (((String)localObject6).equals("String[]"))
-          {
-            localObject5 = paramJSONObject.getJSONArray((String)localObject5);
-            if (((JSONArray)localObject5).length() > 0)
-            {
-              localObject6 = new String[((JSONArray)localObject5).length()];
-              j = 0;
-              while (j < ((JSONArray)localObject5).length())
-              {
-                localObject6[j] = ((JSONArray)localObject5).getString(j);
-                j += 1;
-              }
-              localObject4.set(localObject3, localObject6);
-            }
-          }
-        }
-        label350:
-        return localObject3;
+        } while (jsonToField(paramJSONObject, localObject3, localField, str));
+        return null;
       }
     }
+    label109:
+    return localObject3;
   }
   
   public static <T> T convertFromJsonObject(JSONObject paramJSONObject, Class<T> paramClass)
@@ -199,18 +150,18 @@ public class JSONUtils
       int k = arrayOfField.length;
       i = 0;
       if (i >= k) {
-        break label336;
+        break label334;
       }
       localField = arrayOfField[i];
       paramClass = localField.getName();
       if ((localField.isAnnotationPresent(JSONUtils.NotKey.class)) || (Modifier.isStatic(localField.getModifiers()))) {
-        break label339;
+        break label337;
       }
       if (localField.isAnnotationPresent(JSONUtils.FieldName.class)) {
         paramClass = ((JSONUtils.FieldName)localField.getAnnotation(JSONUtils.FieldName.class)).value();
       }
       if (!paramJSONObject.has(paramClass)) {
-        break label339;
+        break label337;
       }
       localClass2 = localField.getType();
       if (isBaseType(localClass2)) {
@@ -237,7 +188,7 @@ public class JSONUtils
       {
         localField.set(localObject, paramClass);
         if (!isBaseType(localClass1)) {
-          break label346;
+          break label344;
         }
         j = 0;
         while (j < localJSONArray.length())
@@ -255,14 +206,14 @@ public class JSONUtils
         j += 1;
         continue;
         localField.set(paramJSONObject.getJSONObject(paramClass), localClass2);
-        break label339;
-        label336:
+        break label337;
+        label334:
         return localObject;
       }
-      label339:
+      label337:
       i += 1;
       break;
-      label346:
+      label344:
       j = 0;
     }
   }
@@ -289,7 +240,7 @@ public class JSONUtils
           localField = arrayOfField[i];
           int k = localField.getModifiers();
           if ((Modifier.isStatic(k)) && (Modifier.isFinal(k))) {
-            break label246;
+            break label248;
           }
           str1 = localField.getName();
           str2 = localField.getType().getSimpleName();
@@ -322,7 +273,7 @@ public class JSONUtils
           localJSONObject.put(str1, (String)localField.get(paramObject));
         }
       }
-      label246:
+      label248:
       i += 1;
     }
   }
@@ -336,10 +287,69 @@ public class JSONUtils
   {
     return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
   }
+  
+  private static boolean jsonToField(JSONObject paramJSONObject, Object paramObject, Field paramField, String paramString)
+  {
+    String str = paramField.getType().getSimpleName();
+    try
+    {
+      if (!paramJSONObject.has(paramString)) {
+        break label222;
+      }
+      paramField.setAccessible(true);
+      if (str.equals("int"))
+      {
+        paramField.set(paramObject, Integer.valueOf(paramJSONObject.getInt(paramString)));
+        return true;
+      }
+      if (str.equals("boolean"))
+      {
+        paramField.set(paramObject, Boolean.valueOf(paramJSONObject.getBoolean(paramString)));
+        return true;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return false;
+    }
+    if (str.equals("long"))
+    {
+      paramField.set(paramObject, Long.valueOf(paramJSONObject.getLong(paramString)));
+      return true;
+    }
+    if (str.equals("double"))
+    {
+      paramField.set(paramObject, Double.valueOf(paramJSONObject.getDouble(paramString)));
+      return true;
+    }
+    if (str.equals("String"))
+    {
+      paramField.set(paramObject, paramJSONObject.getString(paramString));
+      return true;
+    }
+    if (str.equals("String[]"))
+    {
+      paramJSONObject = paramJSONObject.getJSONArray(paramString);
+      if (paramJSONObject.length() > 0)
+      {
+        paramString = new String[paramJSONObject.length()];
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          paramString[i] = paramJSONObject.getString(i);
+          i += 1;
+        }
+        paramField.set(paramObject, paramString);
+      }
+    }
+    label222:
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.JSONUtils
  * JD-Core Version:    0.7.0.1
  */

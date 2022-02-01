@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.wifisdk.ui.api.RProxy.id;
 import com.wifisdk.ui.api.RProxy.layout;
 import com.wifisdk.ui.api.RProxy.string;
@@ -232,27 +233,32 @@ public class a
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     this.uR = true;
-    paramAdapterView = (hn)this.uH.getAdapter().getItem(paramInt);
-    if ((paramAdapterView == null) || (paramAdapterView.tz != 0)) {}
-    do
+    Object localObject = (hn)this.uH.getAdapter().getItem(paramInt);
+    if ((localObject == null) || (((hn)localObject).tz != 0)) {}
+    for (;;)
     {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-      paramAdapterView = (hr)paramAdapterView;
+      localObject = (hr)localObject;
       hk.az(500623);
-    } while (paramAdapterView == null);
-    if (paramAdapterView.tI == 1)
-    {
-      a(paramAdapterView, true);
-      hk.az(500106);
-      return;
+      if (localObject != null) {
+        if (((hr)localObject).tI == 1)
+        {
+          a((hr)localObject, true);
+          hk.az(500106);
+        }
+        else
+        {
+          a((hr)localObject, false);
+          hk.az(398516);
+        }
+      }
     }
-    a(paramAdapterView, false);
-    hk.az(398516);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.wifisdk.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

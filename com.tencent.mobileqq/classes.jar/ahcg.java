@@ -1,20 +1,13 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ahcg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends afuv
 {
-  public ahcg(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
+  public ImageView a;
+  public TextView b;
   
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
-  }
+  public ahcg(ahcf paramahcf) {}
 }
 
 

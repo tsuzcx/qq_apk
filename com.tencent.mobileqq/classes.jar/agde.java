@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForText;
+import android.support.annotation.IntRange;
 
-class agde
-  implements DialogInterface.OnClickListener
+public abstract interface agde
 {
-  agde(agda paramagda, MessageForText paramMessageForText) {}
+  @IntRange(from=0L, to=3L)
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    acjm.a(this.jdField_a_of_type_Agda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agda.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agda.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
-  }
+  public abstract void a();
+  
+  public abstract void a(agdf paramagdf);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

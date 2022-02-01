@@ -1,60 +1,35 @@
-import android.content.Context;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pzw
-  extends pxl
+class pzw
+  implements aaob
 {
-  public pzw(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  pzw(pzs parampzs, String paramString) {}
   
-  public pxl a()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
     }
-    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Pxk;
-    Pair localPair;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localPair = orc.a(((pgq)this.jdField_a_of_type_JavaLangObject).f(), ((pgq)this.jdField_a_of_type_JavaLangObject).e());
-      if (!ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a())) {
-        break label105;
-      }
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
     }
-    for (;;)
+    catch (JSONException paramBundle)
     {
-      a(localComponentContentVerticalSmallVideo);
-      return this;
-      label105:
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pzw
  * JD-Core Version:    0.7.0.1
  */

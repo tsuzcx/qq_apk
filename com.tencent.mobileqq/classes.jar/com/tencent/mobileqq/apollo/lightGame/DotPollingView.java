@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import mww;
+import mue;
 
 public class DotPollingView
   extends View
@@ -53,9 +53,9 @@ public class DotPollingView
   {
     this.jdField_b_of_type_Int = -16777216;
     this.c = -16777216;
-    this.e = ((int)mww.a(this.jdField_a_of_type_AndroidContentContext, 2.5F));
-    this.f = ((int)mww.a(this.jdField_a_of_type_AndroidContentContext, 4.5F));
-    this.g = ((int)mww.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
+    this.e = ((int)mue.a(this.jdField_a_of_type_AndroidContentContext, 2.5F));
+    this.f = ((int)mue.a(this.jdField_a_of_type_AndroidContentContext, 4.5F));
+    this.g = ((int)mue.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
     this.d = 3;
     this.jdField_b_of_type_Float = 0.3F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
@@ -142,7 +142,7 @@ public class DotPollingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.lightGame.DotPollingView
  * JD-Core Version:    0.7.0.1
  */

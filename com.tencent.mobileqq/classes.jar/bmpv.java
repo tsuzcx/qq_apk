@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.drawable.Drawable;
 
-final class bmpv
-  implements Animation.AnimationListener
+public abstract interface bmpv
 {
-  bmpv(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(Drawable paramDrawable);
 }
 
 

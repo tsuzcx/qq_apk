@@ -1,11 +1,17 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract class azer
-  implements azeq
+class azer
+  implements DialogInterface.OnDismissListener
 {
-  public void a(int paramInt, ArrayList<azej> paramArrayList) {}
+  azer(azep paramazep, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void b(int paramInt, azej paramazej) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
 }
 
 

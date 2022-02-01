@@ -1,20 +1,74 @@
-import com.tencent.mobileqq.vip.KCWraperV2.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import dualsim.common.ILogPrint;
 
 public class beao
-  implements ILogPrint
 {
-  public beao(KCWraperV2.1 param1) {}
+  public static long a = -1L;
+  public static long b = -1L;
   
-  public void print(String paramString)
+  public static long a()
   {
-    String str2 = this.a.this$0.a();
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "\n";
+    if (a < 0L)
+    {
+      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
+      }
     }
-    QLog.e(str2, 1, str1);
+    return a;
+  }
+  
+  private static long a(String paramString, long paramLong)
+  {
+    long l = -1L;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong(paramString, -1L);
+    }
+    if (l < 0L) {
+      return paramLong;
+    }
+    return l;
+  }
+  
+  public static void a(long paramLong)
+  {
+    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      a = paramLong;
+    }
+  }
+  
+  private static void a(String paramString, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
+    localEditor.putLong(paramString, paramLong);
+    localEditor.commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
+    }
+  }
+  
+  public static long b()
+  {
+    if (b < 0L)
+    {
+      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
+      }
+    }
+    return b;
+  }
+  
+  public static void b(long paramLong)
+  {
+    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      b = paramLong;
+    }
   }
 }
 

@@ -1,24 +1,41 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
-
 public class yxz
 {
-  int jdField_a_of_type_Int;
-  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
+  private int jdField_a_of_type_Int;
+  private yxv jdField_a_of_type_Yxv = new yxu();
+  private int b;
   
-  yxz(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public yxx a()
   {
-    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
-    this.jdField_a_of_type_Int = paramInt;
+    return new yxx(this, null);
   }
   
-  public int a()
+  public yxz a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    return this;
+  }
+  
+  public yxz a(yxv paramyxv)
+  {
+    if (paramyxv != null) {
+      this.jdField_a_of_type_Yxv = paramyxv;
+    }
+    return this;
+  }
+  
+  public yxz b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.b = paramInt;
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxz
  * JD-Core Version:    0.7.0.1
  */

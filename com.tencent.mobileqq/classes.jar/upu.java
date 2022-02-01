@@ -1,43 +1,30 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class upu
-  implements awkh
+final class upu
+  implements URLDrawable.URLDrawableListener
 {
-  upu(upt paramupt) {}
+  upu(String paramString, RoundImageView paramRoundImageView) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return null;
+    upe.d("AvatarImageLog", "WeishiUtils loadAvatarImage onFail url:" + this.jdField_a_of_type_JavaLangString + ", imageView:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
   }
   
-  public void a(awki paramawki) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void b(awki paramawki)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramawki.jdField_b_of_type_Int == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = paramawki.jdField_b_of_type_JavaLangString;
-      this.a.b();
-      upt.a(this.a, new ErrorMessage());
-      return;
-    }
-    if ((paramawki.jdField_b_of_type_Int == baxx.a(940010)) && (this.a.a.getAndIncrement() < 2))
-    {
-      upt.a(this.a);
-      wxe.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
-      return;
-    }
-    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
-    paramawki.extraMsg = "upload";
-    upt.a(this.a, paramawki);
+    upe.b("AvatarImageLog", "WeishiUtils loadAvatarImage onSuccess url:" + this.jdField_a_of_type_JavaLangString + ", imageView:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upu
  * JD-Core Version:    0.7.0.1
  */

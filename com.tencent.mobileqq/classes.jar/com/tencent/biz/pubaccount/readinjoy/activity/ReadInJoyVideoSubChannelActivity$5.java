@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nrt;
-import ntd;
+import oat;
+import och;
 
 class ReadInJoyVideoSubChannelActivity$5
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoSubChannelActivity$5
   
   public void run()
   {
-    nrt.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", ntd.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    oat.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", och.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 

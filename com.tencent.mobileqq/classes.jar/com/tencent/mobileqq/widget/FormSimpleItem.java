@@ -17,13 +17,13 @@ import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bepw;
+import bhxa;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.MultiImageTextView;
 
 public class FormSimpleItem
   extends RelativeLayout
-  implements bepw
+  implements bhxa
 {
   protected static boolean b;
   private int jdField_a_of_type_Int;
@@ -120,7 +120,7 @@ public class FormSimpleItem
     //   110: astore 4
     //   112: aload_0
     //   113: aload_1
-    //   114: iconst_3
+    //   114: iconst_2
     //   115: aload_0
     //   116: invokevirtual 55	com/tencent/mobileqq/widget/FormSimpleItem:getResources	()Landroid/content/res/Resources;
     //   119: ldc 100
@@ -131,7 +131,7 @@ public class FormSimpleItem
     //   131: astore 4
     //   133: aload_0
     //   134: aload_1
-    //   135: iconst_2
+    //   135: iconst_1
     //   136: iload_3
     //   137: invokevirtual 105	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   140: putfield 109	com/tencent/mobileqq/widget/FormSimpleItem:j	I
@@ -139,14 +139,14 @@ public class FormSimpleItem
     //   144: astore 4
     //   146: aload_0
     //   147: aload_1
-    //   148: bipush 10
+    //   148: bipush 9
     //   150: invokevirtual 113	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
     //   153: putfield 115	com/tencent/mobileqq/widget/FormSimpleItem:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
     //   156: aload_1
     //   157: astore 4
     //   159: aload_0
     //   160: aload_1
-    //   161: bipush 11
+    //   161: bipush 10
     //   163: iconst_0
     //   164: invokevirtual 118	android/content/res/TypedArray:getInt	(II)I
     //   167: putfield 120	com/tencent/mobileqq/widget/FormSimpleItem:h	I
@@ -154,14 +154,14 @@ public class FormSimpleItem
     //   171: astore 4
     //   173: aload_0
     //   174: aload_1
-    //   175: bipush 7
+    //   175: bipush 6
     //   177: invokevirtual 121	android/content/res/TypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   180: putfield 123	com/tencent/mobileqq/widget/FormSimpleItem:jdField_c_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   183: aload_1
     //   184: astore 4
     //   186: aload_0
     //   187: aload_1
-    //   188: bipush 9
+    //   188: bipush 8
     //   190: iconst_0
     //   191: invokevirtual 105	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   194: putfield 125	com/tencent/mobileqq/widget/FormSimpleItem:jdField_a_of_type_Int	I
@@ -169,7 +169,7 @@ public class FormSimpleItem
     //   198: astore 4
     //   200: aload_0
     //   201: aload_1
-    //   202: bipush 8
+    //   202: bipush 7
     //   204: iconst_0
     //   205: invokevirtual 105	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   208: putfield 127	com/tencent/mobileqq/widget/FormSimpleItem:g	I
@@ -186,14 +186,14 @@ public class FormSimpleItem
     //   230: astore 4
     //   232: aload_0
     //   233: aload_1
-    //   234: bipush 17
+    //   234: bipush 16
     //   236: invokevirtual 113	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
     //   239: putfield 134	com/tencent/mobileqq/widget/FormSimpleItem:jdField_d_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
     //   242: aload_1
     //   243: astore 4
     //   245: aload_0
     //   246: aload_1
-    //   247: bipush 18
+    //   247: bipush 17
     //   249: iconst_3
     //   250: invokevirtual 118	android/content/res/TypedArray:getInt	(II)I
     //   253: putfield 136	com/tencent/mobileqq/widget/FormSimpleItem:m	I
@@ -201,14 +201,14 @@ public class FormSimpleItem
     //   257: astore 4
     //   259: aload_0
     //   260: aload_1
-    //   261: bipush 14
+    //   261: bipush 13
     //   263: invokevirtual 121	android/content/res/TypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   266: putfield 138	com/tencent/mobileqq/widget/FormSimpleItem:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   269: aload_1
     //   270: astore 4
     //   272: aload_0
     //   273: aload_1
-    //   274: bipush 16
+    //   274: bipush 15
     //   276: iconst_0
     //   277: invokevirtual 105	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   280: putfield 140	com/tencent/mobileqq/widget/FormSimpleItem:k	I
@@ -216,7 +216,7 @@ public class FormSimpleItem
     //   284: astore 4
     //   286: aload_0
     //   287: aload_1
-    //   288: bipush 15
+    //   288: bipush 14
     //   290: iconst_0
     //   291: invokevirtual 105	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   294: putfield 142	com/tencent/mobileqq/widget/FormSimpleItem:l	I
@@ -233,7 +233,7 @@ public class FormSimpleItem
     //   316: astore 4
     //   318: aload_0
     //   319: aload_1
-    //   320: bipush 20
+    //   320: bipush 19
     //   322: iconst_0
     //   323: invokevirtual 146	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   326: putfield 148	com/tencent/mobileqq/widget/FormSimpleItem:jdField_a_of_type_Boolean	Z
@@ -241,14 +241,14 @@ public class FormSimpleItem
     //   330: astore 4
     //   332: aload_0
     //   333: aload_1
-    //   334: iconst_1
+    //   334: iconst_0
     //   335: iconst_0
     //   336: invokevirtual 118	android/content/res/TypedArray:getInt	(II)I
     //   339: putfield 150	com/tencent/mobileqq/widget/FormSimpleItem:i	I
     //   342: aload_1
     //   343: astore 4
     //   345: aload_1
-    //   346: bipush 12
+    //   346: bipush 11
     //   348: iconst_1
     //   349: invokevirtual 146	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   352: putstatic 152	com/tencent/mobileqq/widget/FormSimpleItem:jdField_b_of_type_Boolean	Z
@@ -256,7 +256,7 @@ public class FormSimpleItem
     //   356: astore 4
     //   358: aload_0
     //   359: aload_1
-    //   360: bipush 13
+    //   360: bipush 12
     //   362: iconst_1
     //   363: invokevirtual 146	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   366: putfield 154	com/tencent/mobileqq/widget/FormSimpleItem:jdField_c_of_type_Boolean	Z
@@ -350,34 +350,34 @@ public class FormSimpleItem
     if (paramBoolean)
     {
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839254);
+        return paramResources.getDrawable(2130839432);
       }
-      return paramResources.getDrawable(2130849752);
+      return paramResources.getDrawable(2130850338);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130839254);
+      return paramResources.getDrawable(2130839432);
     case 0: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839254);
+        return paramResources.getDrawable(2130839432);
       }
-      return paramResources.getDrawable(2130849752);
+      return paramResources.getDrawable(2130850338);
     case 1: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839264);
+        return paramResources.getDrawable(2130839442);
       }
-      return paramResources.getDrawable(2130849766);
+      return paramResources.getDrawable(2130850352);
     case 2: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839264);
+        return paramResources.getDrawable(2130839442);
       }
-      return paramResources.getDrawable(2130849766);
+      return paramResources.getDrawable(2130850352);
     }
     if (jdField_b_of_type_Boolean) {
-      return paramResources.getDrawable(2130839261);
+      return paramResources.getDrawable(2130839439);
     }
-    return paramResources.getDrawable(2130849757);
+    return paramResources.getDrawable(2130850343);
   }
   
   private boolean a()
@@ -390,15 +390,15 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131166903);
+      return paramResources.getColorStateList(2131166986);
     case 0: 
-      return paramResources.getColorStateList(2131166903);
+      return paramResources.getColorStateList(2131166986);
     case 2: 
-      return paramResources.getColorStateList(2131166977);
+      return paramResources.getColorStateList(2131167060);
     case 1: 
-      return paramResources.getColorStateList(2131166911);
+      return paramResources.getColorStateList(2131166994);
     }
-    return paramResources.getColorStateList(2131166991);
+    return paramResources.getColorStateList(2131167074);
   }
   
   public static void setNeedFocusBg(boolean paramBoolean)
@@ -714,7 +714,7 @@ public class FormSimpleItem
       this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131366753);
+    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131367019);
     if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setSingleLine(true);
@@ -722,7 +722,7 @@ public class FormSimpleItem
       this.jdField_d_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
     }
     this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.h));
-    int i1 = getContext().getResources().getDimensionPixelSize(2131296653);
+    int i1 = getContext().getResources().getDimensionPixelSize(2131296696);
     this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(0, i1);
     this.jdField_d_of_type_AndroidWidgetTextView.setGravity(19);
     setLeftIcon(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.g);
@@ -739,10 +739,10 @@ public class FormSimpleItem
     this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
     addView(this.jdField_d_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView = new MultiImageTextView(getContext());
-    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131366755);
+    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131367021);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setSingleLine(true);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(a(getResources(), this.m));
-    i1 = getContext().getResources().getDimensionPixelSize(2131296662);
+    i1 = getContext().getResources().getDimensionPixelSize(2131296705);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextSize(0, i1);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setGravity(19);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -934,7 +934,7 @@ public class FormSimpleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

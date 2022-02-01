@@ -1,12 +1,19 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bfar
+  implements View.OnClickListener
 {
-  public bfal a;
-  public String a;
+  public bfar(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bfar(String paramString, bfal parambfal)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfal = parambfal;
+    bkft.b(paramView);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

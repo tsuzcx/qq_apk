@@ -1,25 +1,49 @@
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
+
 class mqb
+  extends ClickableSpan
 {
-  public String a;
-  public byte[] a;
+  mqb(mpw parammpw, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public mqb(String paramString, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    byte[] arrayOfByte = paramArrayOfByte;
-    if (paramArrayOfByte == null) {
-      arrayOfByte = new byte[0];
+    QLog.w(this.jdField_a_of_type_Mpw.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
+    this.jdField_a_of_type_Mpw.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_Mpw.a();
+    if (paramView == null) {
+      return;
     }
-    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    paramArrayOfByte = paramString;
-    if (paramString == null) {
-      paramArrayOfByte = "";
+    paramView.finish();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      mpf.a(this.jdField_a_of_type_Mpw.a, this.b);
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+    paramView = afur.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView.putExtra("uin", this.jdField_a_of_type_Mpw.a.a().a().d);
+    paramView.putExtra("uintype", 0);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Mpw.a.a().a().e);
+    paramView.putExtra("entrance", 8);
+    BaseApplicationImpl.getApplication().startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqb
  * JD-Core Version:    0.7.0.1
  */

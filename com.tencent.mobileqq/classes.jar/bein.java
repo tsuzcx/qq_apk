@@ -1,30 +1,25 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
-class bein
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bein
+  implements DialogInterface.OnClickListener
 {
-  bein(beim parambeim, View paramView) {}
+  public bein(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
+    paramDialogInterface = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int);
+    long l = Long.parseLong((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c.get(this.jdField_a_of_type_Int));
+    anip localanip = (anip)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.a(2);
+    if (localanip != null) {
+      localanip.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), paramDialogInterface, l);
     }
-    if (i > 150)
-    {
-      this.jdField_a_of_type_Beim.c = true;
-      this.jdField_a_of_type_Beim.a(false, 0);
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.isFinishing()) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.finish();
     }
-    while (!this.jdField_a_of_type_Beim.c) {
-      return;
-    }
-    this.jdField_a_of_type_Beim.c = false;
   }
 }
 

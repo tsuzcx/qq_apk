@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
-import bhtd;
-import bjua;
+import bkgm;
+import bmik;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import wxu;
-import xan;
+import yrf;
+import yty;
 
 class EditGifImage$1
   implements Runnable
@@ -18,15 +18,15 @@ class EditGifImage$1
   {
     if (!this.this$0.b)
     {
-      if ((!(this.this$0.jdField_a_of_type_Xan.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Xan.a.a).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Xan.a.a).a.size() <= 0)) {
+      if ((!(this.this$0.jdField_a_of_type_Yty.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Yty.a.a).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Yty.a.a).a.size() <= 0)) {
         break label284;
       }
-      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Xan.a.a).a;
-      if (!bjua.a().a(localArrayList, this.a)) {
+      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Yty.a.a).a;
+      if (!bmik.a().a(localArrayList, this.a)) {
         break label247;
       }
       this.this$0.c = true;
-      this.this$0.jdField_a_of_type_Bhtd.sendEmptyMessage(996);
+      this.this$0.jdField_a_of_type_Bkgm.sendEmptyMessage(996);
       if ((this.a != null) && (this.a.size() == localArrayList.size()))
       {
         localArrayList = new ArrayList();
@@ -39,8 +39,8 @@ class EditGifImage$1
           }
           i += 1;
         }
-        this.this$0.jdField_a_of_type_Wxu = new wxu(this.this$0);
-        this.this$0.jdField_a_of_type_Wxu.execute(new ArrayList[] { localArrayList });
+        this.this$0.jdField_a_of_type_Yrf = new yrf(this.this$0);
+        this.this$0.jdField_a_of_type_Yrf.execute(new ArrayList[] { localArrayList });
       }
     }
     label247:
@@ -50,12 +50,12 @@ class EditGifImage$1
       {
         return;
         this.this$0.c = false;
-        this.this$0.jdField_a_of_type_Bhtd.sendEmptyMessage(997);
+        this.this$0.jdField_a_of_type_Bkgm.sendEmptyMessage(997);
       } while (!QLog.isColorLevel());
       QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
       return;
       this.this$0.c = false;
-      this.this$0.jdField_a_of_type_Bhtd.sendEmptyMessage(997);
+      this.this$0.jdField_a_of_type_Bkgm.sendEmptyMessage(997);
     } while (!QLog.isColorLevel());
     label284:
     QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
@@ -63,7 +63,7 @@ class EditGifImage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditGifImage.1
  * JD-Core Version:    0.7.0.1
  */

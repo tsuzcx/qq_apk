@@ -1,0 +1,86 @@
+{
+    "view_id": "id_column_middle_view",
+    "view_type": "UIView",
+    "layout_type": "layout_relative",
+    "below_of_view": "id_column_video_cover_image_view",
+    "align_parent_left": "YES",
+    "margin_top": "8",
+    "height": {
+        "type": "relative",
+        "value": "23"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$column_middle_view_visibility"
+    },
+    "subviews": [
+        {
+            "view_id": "id_column_middle_Label",
+            "view_type": "UILabel",
+            "align_parent_left": "YES",
+            "align_parent_center_vertical": "YES",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$column_info_name_text",
+                "setTextColorString:": "#03081A",
+                "setFontSizeString:": "18",
+                "setNumberOfLinesString:": "1",
+                "setMaxWidth:type:": [
+                    "253",
+                    "relative"
+                ]
+            }
+        },
+        {
+            "view_id": "id_middle_subscribe_view",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "relative",
+                "value": "23"
+            },
+            "width": {
+                "type": "relative",
+                "value": "50"
+            },
+            "align_parent_right": "YES",
+            "align_parent_center_vertical": "YES",
+            "event_type": "cmd_subscription_click",
+            "default_visible": "YES",
+            "attributes": {
+                "setCornerRadiusString:": "12",
+                "setClipsToBoundsString:": "1",
+                "setBackgroundColorString:": "$subscription_background_color",
+                "setBorderColorString:": "$subscription_border_color",
+                "setBorderWidthString:": "$subscription_border_width"
+            },
+            "subviews": [
+                {
+                    "view_id": "id_middle_subscribe_label",
+                    "view_type": "UILabel",
+                    "align_parent_center": "YES",
+                    "height": {
+                        "type": "match_parent"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "attributes": {
+                        "setText:": "$subscribe_title",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1",
+                        "setTextAlignmentString:": "1",
+                        "setTextColorString:": "$subscription_title_color"
+                    }
+                }
+            ]
+        }
+    ]
+}

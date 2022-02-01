@@ -1,39 +1,29 @@
-import com.tencent.pts.core.jni.PTSJsJniHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class pwk
-  extends pvj
+public class pwk
 {
-  pwk(pwj parampwj) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void a(int paramInt, List<Long> paramList, long paramLong)
+  public pwk(long paramLong, int paramInt)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
-    paramList = owy.a().a(Integer.valueOf(paramInt), paramList);
-    if (QLog.isColorLevel())
-    {
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
-        paramInt += 1;
-      }
-      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
-    }
-    localObject = new Object[1];
-    localObject[0] = pwh.a(true, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
-    }
-    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
-    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
+    this(paramLong, paramInt, false);
+  }
+  
+  public pwk(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwk
  * JD-Core Version:    0.7.0.1
  */

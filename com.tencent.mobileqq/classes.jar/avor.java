@@ -1,23 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
-class avor
-  implements TextWatcher
+public class avor
+  implements QQPermissionCallback
 {
-  avor(avop paramavop) {}
+  public avor(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    auwz.a(this.a.f, 90);
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avor
  * JD-Core Version:    0.7.0.1
  */

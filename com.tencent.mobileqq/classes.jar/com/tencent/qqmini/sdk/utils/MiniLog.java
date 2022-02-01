@@ -3,10 +3,11 @@ package com.tencent.qqmini.sdk.utils;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bgpc;
-import bgxl;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.core.utils.FileUtils;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.MD5Utils;
+import com.tencent.qqmini.sdk.manager.LoginManager;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.util.Collection;
@@ -34,6 +35,7 @@ public class MiniLog
   static
   {
     mLastNumCache = new LruCache(5);
+    lastCheckLogSizeTime = 0L;
   }
   
   private static void addMiniLogItem(String paramString1, String paramString2)
@@ -56,7 +58,7 @@ public class MiniLog
   
   public static String getMiniLogFolderPath(String paramString)
   {
-    String str = bgxl.a().a();
+    String str = LoginManager.getInstance().getAccount();
     return MiniSDKConst.getMiniCacheFilePath() + MD5Utils.toMD5(paramString) + "/" + str + "/miniprogramLog/";
   }
   
@@ -142,7 +144,7 @@ public class MiniLog
     {
       try
       {
-        if (bgpc.a(str + "log" + localObject2).length() <= MAX_MINI_LOG_SIZE) {
+        if (FileUtils.createFile(str + "log" + localObject2).length() <= MAX_MINI_LOG_SIZE) {
           break label572;
         }
         localObject3 = localObject2;
@@ -204,7 +206,7 @@ public class MiniLog
       try
       {
         if (mWriteHandler == null) {
-          mWriteHandler = new MiniLog.WriteHandler(ThreadManager.a().getLooper(), null);
+          mWriteHandler = new MiniLog.WriteHandler(ThreadManager.getSubThreadHandler().getLooper(), null);
         }
         return;
       }
@@ -261,7 +263,7 @@ public class MiniLog
         if (localFile.exists()) {
           continue;
         }
-        bgpc.a(str);
+        FileUtils.createFile(str);
         localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
       }
       catch (Throwable localThrowable)
@@ -305,7 +307,7 @@ public class MiniLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

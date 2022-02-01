@@ -1,25 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vkn
+  implements aabv
 {
-  public int a;
-  public StoryVideoItem a;
-  public Map<String, String> a = new HashMap();
-  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
+  public vkn(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public final void a(String paramString1, String paramString2)
+  public void a()
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      this.a.put(paramString1, paramString2);
+    if (this.a.a() != null) {
+      vrg.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), QCircleContentOperationView.a(this.a), 0, QCircleContentOperationView.b(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vkn
  * JD-Core Version:    0.7.0.1
  */

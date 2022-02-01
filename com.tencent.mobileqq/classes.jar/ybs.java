@@ -1,32 +1,32 @@
-import org.json.JSONObject;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class ybs
-  extends JSONObject
+class ybs
+  extends ParallelJobSegment<String, ybo>
 {
-  public ybs(ybq paramybq, String paramString)
+  public int a;
+  
+  public ybs(ybm paramybm, int paramInt)
   {
-    super(paramString);
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int getInt(String paramString)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if (!has(paramString)) {
-      return 0;
+    ycg localycg = new ycg();
+    localycg.jdField_a_of_type_JavaLangString = paramString;
+    localycg.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localycg.c = this.jdField_a_of_type_Int;
     }
-    return super.getInt(paramString);
-  }
-  
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
+    wlb.a().a(localycg, new ybt(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybs
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,10 @@ class AppBrandPageContainer$3$1
     try
     {
       this.this$1.this$0.appBrandRuntime.webviewPool.recyclePageWebview(this.this$1.val$page.getCurrentPageWebview(), BaseApplicationImpl.sApplication);
-      if (this.this$1.val$page.getCurrentPageWebview() != null) {
+      if (this.this$1.val$page.getCurrentPageWebview() != null)
+      {
         this.this$1.val$page.getCurrentPageWebview().resetTitle();
+        this.this$1.val$page.getCurrentPageWebview().onPause(true);
       }
       this.this$1.val$page.cleanup();
       return;
@@ -29,7 +31,7 @@ class AppBrandPageContainer$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import amdp;
 import android.support.annotation.NonNull;
+import anvy;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.annotation.concurrent.GuardedBy;
 
 public class SingleThreadExecutor
-  extends amdp
+  extends anvy
 {
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")
@@ -37,7 +37,7 @@ public class SingleThreadExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

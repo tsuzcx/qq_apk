@@ -1,50 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
-class agan
-  implements auqb
+public class agan
+  extends bgzm
 {
-  agan(agai paramagai, String paramString, agas paramagas) {}
+  public agan(PokePanel paramPokePanel) {}
   
-  public void a()
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-    }
-  }
-  
-  public void a(aupy paramaupy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "dealVideoSaveUI onSaveComplete");
-    }
-    if (paramaupy != null)
-    {
-      if (paramaupy.jdField_a_of_type_Int != 0) {
-        break label112;
-      }
-      aupz.a(this.jdField_a_of_type_Agai.a);
-    }
-    for (;;)
-    {
-      paramaupy.jdField_a_of_type_Aupx.b(this);
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-        this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-      }
+    Object localObject = (Bundle)paramObject;
+    if (((Bundle)localObject).getInt("fromType") != 0) {
       return;
-      label112:
-      aupz.b(this.jdField_a_of_type_Agai.a);
+    }
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (i == 4)
+    {
+      str1 = "vip";
+      label47:
+      if (!paramBoolean) {
+        break label160;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      adrm.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
+      if (true == aheh.a) {
+        aheh.a = false;
+      }
+      label106:
+      if (!paramBoolean) {
+        break label421;
+      }
+    }
+    label160:
+    label419:
+    label421:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (i != 5) {
+        break label47;
+      }
+      str1 = "svip";
+      break label47;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.a = paramObject.getInt("id", 0);
+      String str2 = anni.a(2131707094);
+      if (l == 0L)
+      {
+        this.a.b = 1;
+        if (true != aheh.a) {
+          break;
+        }
+        aheh.a = false;
+        return;
+      }
+      if (l == 4002L)
+      {
+        this.a.b = 2;
+        paramObject = anni.a(2131707097);
+        localObject = str2;
+      }
+      for (;;)
+      {
+        if (l == 0L) {
+          break label419;
+        }
+        aheh.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
+        {
+          this.a.b = 4;
+          paramObject = anni.a(2131707096);
+          localObject = str2;
+        }
+        else
+        {
+          this.a.b = 1;
+          str2 = anni.a(2131707095);
+          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
+        }
+      }
+      break label106;
     }
   }
-  
-  public void a(aupy paramaupy, int paramInt)
-  {
-    this.jdField_a_of_type_Agai.a(this.jdField_a_of_type_Agas, paramInt, false);
-  }
-  
-  public void b(aupy paramaupy) {}
 }
 
 

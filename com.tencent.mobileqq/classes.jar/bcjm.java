@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.OpenID;
-
-class bcjm
-  extends ndm
+final class bcjm
+  extends bcjo
 {
-  bcjm(bcjl parambcjl) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public double a(int paramInt1, int paramInt2)
   {
-    if ((bcjl.a(this.a) == null) || (bcjl.a(this.a) == null) || (bcjl.a(this.a) == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((bcjl.a(this.a).isFinishing()) || (bcjl.a(this.a)));
-      bcjl.a(this.a).d();
-      if (bcjl.a(this.a) != null) {
-        bcjl.a(this.a).removeCallbacksAndMessages(null);
-      }
-    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bcjl.a(this.a))));
-    bcjl.a(this.a).b();
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
+    }
+    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 

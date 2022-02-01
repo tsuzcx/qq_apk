@@ -1,15 +1,32 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.9.1;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiky
-  extends amfb
+class aiky
+  implements View.OnClickListener
 {
-  public aiky(AvatarPendantActivity paramAvatarPendantActivity) {}
+  aiky(aikx paramaikx) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new AvatarPendantActivity.9.1(this));
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject != null)
+      {
+        localObject = ((ChatFragment)localObject).a();
+        if (localObject != null) {
+          ((BaseChatPie)localObject).b(aikx.a(this.a));
+        }
+      }
+      appj.a().a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

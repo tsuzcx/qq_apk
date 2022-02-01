@@ -7,6 +7,7 @@ public final class PTSValueConvertUtil
   private static float RPX_TO_DP_RATE = PTSDeviceUtil.getScreenWidthDp() / 750.0F;
   private static final String TAG = "PTSValueConvertUtil";
   
+  @Deprecated
   public static float dp2px(float paramFloat)
   {
     return PTSDeviceUtil.dp2px(paramFloat);
@@ -14,16 +15,17 @@ public final class PTSValueConvertUtil
   
   public static boolean getBoolean(Object paramObject)
   {
-    boolean bool;
+    boolean bool = false;
     if ((paramObject instanceof Boolean)) {
       bool = ((Boolean)paramObject).booleanValue();
     }
-    do
-    {
+    while (paramObject == null) {
       return bool;
-      bool = false;
-    } while (!(paramObject instanceof String));
-    return TextUtils.equals("true", (String)paramObject);
+    }
+    if ((!(paramObject instanceof String)) || ((!TextUtils.isEmpty((String)paramObject)) && (!TextUtils.equals("0", (String)paramObject)))) {}
+    for (bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   public static int getColor(Object paramObject)
@@ -102,6 +104,7 @@ public final class PTSValueConvertUtil
     return "";
   }
   
+  @Deprecated
   public static float px2dp(float paramFloat)
   {
     return PTSDeviceUtil.px2dp(paramFloat);
@@ -109,7 +112,7 @@ public final class PTSValueConvertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSValueConvertUtil
  * JD-Core Version:    0.7.0.1
  */

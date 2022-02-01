@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+import java.util.ArrayList;
 
 public class bhrg
-  implements GestureGameResource
 {
-  public String getGameModelPath()
-  {
-    return azgn.c();
-  }
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
   
-  public boolean isGestureGameEnable()
+  static
   {
-    return azgg.a().d();
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrg
  * JD-Core Version:    0.7.0.1
  */

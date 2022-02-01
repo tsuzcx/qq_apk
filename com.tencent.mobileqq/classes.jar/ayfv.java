@@ -1,42 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
 public class ayfv
+  implements PopupWindow.OnDismissListener
 {
-  private boolean a = true;
+  public ayfv(OCRResultActivity paramOCRResultActivity) {}
   
-  public static ayfv a(String paramString)
+  public void onDismiss()
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    this.a.b = null;
+    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
     {
-      ayfv localayfv = new ayfv();
-      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
-      for (;;)
-      {
-        localayfv.a = bool;
-        return localayfv;
-        bool = false;
-      }
-      return null;
+      Drawable localDrawable = this.a.getResources().getDrawable(2130845625);
+      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
-    catch (Exception paramString)
-    {
-      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
   }
 }
 

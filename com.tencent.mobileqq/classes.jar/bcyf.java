@@ -1,67 +1,12 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bcyf
-  extends beej
+class bcyf
+  implements View.OnClickListener
 {
-  public bcyf(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-    this.mWebview = new TouchWebView(this.mContext);
-    buildBaseWebView(paramAppInterface);
-  }
+  bcyf(bcye parambcye) {}
   
-  public void a()
-  {
-    super.doOnResume();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.doOnCreate(paramIntent);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bekd.jdField_a_of_type_Boolean)
-    {
-      beka.a(this.mWebview, bekd.jdField_a_of_type_JavaLangString);
-      bekd.jdField_a_of_type_Boolean = false;
-    }
-    this.mUrl = paramString;
-    this.mWebview.loadUrl(this.mUrl);
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new belw());
-    }
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(View paramView) {}
 }
 
 

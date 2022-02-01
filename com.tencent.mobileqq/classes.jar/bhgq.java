@@ -1,171 +1,132 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
-import io.flutter.plugin.common.BasicMessageChannel.Reply;
-import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-class bhgq
-  implements BasicMessageChannel.MessageHandler
+public class bhgq
+  extends WebViewPlugin
 {
-  bhgq(bhgo parambhgo) {}
+  protected arpd a;
+  public final String a;
+  public String b;
   
-  public void onMessage(Object paramObject, BasicMessageChannel.Reply paramReply)
+  public bhgq()
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if ((paramObject instanceof Map))
-    {
-      paramObject = (Map)paramObject;
-      if ((paramObject.containsKey("messageType")) && ("__tissue_bridge_ready_".equals((String)paramObject.get("messageType"))))
-      {
-        bhgo.a(this.a, true);
-        QMLog.w("miniapp-start-TISSUE", " tissue initialization done");
-        bhbs.a(214, "", bhgo.a(this.a).a());
-        bhgo.a(this.a);
-      }
-      if (paramObject.containsKey("method"))
-      {
-        localObject2 = paramObject.get("method").toString();
-        if (!((String)localObject2).equals("publishHandler")) {
-          break label267;
-        }
-        paramReply = (Map)paramObject.get("data");
-        String str = paramReply.get("event").toString();
-        localObject2 = (Integer)paramReply.get("pageID");
-        paramObject = localObject1;
-        if (paramReply.containsKey("dataForEvent")) {
-          paramObject = (Map)paramReply.get("dataForEvent");
-        }
-        paramReply = (BasicMessageChannel.Reply)localObject2;
-        if (localObject2 == null)
-        {
-          paramReply = (BasicMessageChannel.Reply)localObject2;
-          if (paramObject != null)
-          {
-            paramReply = (BasicMessageChannel.Reply)localObject2;
-            if (paramObject.containsKey("pageID")) {
-              paramReply = (Integer)paramObject.get("pageID");
-            }
-          }
-        }
-        localObject1 = "null";
-        if (paramObject != null) {
-          localObject1 = new JSONObject(paramObject).toString();
-        }
-        bhgo.a(this.a).a(str, (String)localObject1, paramReply.intValue());
-      }
+    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
+    this.jdField_a_of_type_Arpd = new bhgr(this);
+    this.mPluginNameSpace = "video";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
     }
-    return;
-    label267:
-    if (((String)localObject2).equals("onAppRoute"))
-    {
-      paramObject = (Map)paramObject.get("data");
-      localObject2 = paramObject.get("path").toString();
-      paramReply = (Integer)paramObject.get("pageID");
-      localObject1 = (String)paramObject.get("openType");
-      if (!paramObject.containsKey("query")) {
-        break label1076;
-      }
+    boolean bool1;
+    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
+      bool1 = false;
     }
-    label1063:
-    label1071:
-    label1076:
-    for (paramObject = (Map)paramObject.get("query");; paramObject = null)
+    label154:
+    do
     {
-      paramObject = new bhix((String)localObject2, paramObject);
-      bhgo.a(this.a).c((String)localObject1, paramObject.b(), paramReply.intValue());
-      return;
-      if (((String)localObject2).equals("onAppRouteDone"))
+      do
       {
-        paramObject = (Map)paramObject.get("data");
-        localObject2 = paramObject.get("path").toString();
-        paramReply = (Integer)paramObject.get("pageID");
-        localObject1 = (String)paramObject.get("openType");
-        if (!paramObject.containsKey("query")) {
-          break label1071;
-        }
-      }
-      for (paramObject = (Map)paramObject.get("query");; paramObject = null)
-      {
-        paramObject = new bhix((String)localObject2, paramObject);
-        bhgo.a(this.a).d((String)localObject1, paramObject.b(), paramReply.intValue());
-        return;
-        if ("viewDidAppear".equals(localObject2))
+        do
         {
-          bhgo.a(this.a).a(bgmd.a(11));
-          if ((!paramObject.containsKey("data")) || (!(paramObject.get("data") instanceof Map))) {
-            break label1063;
-          }
-          paramObject = (Map)paramObject.get("data");
-          if ((!paramObject.containsKey("pageID")) || (!(paramObject.get("pageID") instanceof Integer))) {
-            break label1063;
-          }
-        }
-        for (paramObject = (Integer)paramObject.get("pageID");; paramObject = Integer.valueOf(0))
-        {
-          QMLog.w("miniapp-start-TISSUE", "flutter page " + paramObject + " shown" + System.currentTimeMillis());
-          if (bhgo.a(this.a)) {
-            break;
-          }
-          if (bhgo.b(this.a)) {}
-          for (paramObject = "1";; paramObject = "0")
+          return bool1;
+          for (;;)
           {
-            bhbs.a(216, paramObject, bhgo.a(this.a).a());
-            bhgo.b(this.a, true);
-            return;
-          }
-          if ("invokeHandler".equals(localObject2))
-          {
-            paramReply = (Map)paramObject.get("data");
-            paramObject = (String)paramReply.get("event");
-            if ("invokeMiniProgramAPI".equals(paramObject))
+            try
             {
-              int i = ((Integer)paramReply.get("pageID")).intValue();
-              bhgo.a(this.a).a("onWebInvokeAppService", (String)paramReply.get("param"), i);
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (paramString1.has("callback"))
+              {
+                paramJsBridgeListener = paramString1.getString("callback");
+                if (!"isInstalled".equals(paramString3)) {
+                  break label154;
+                }
+                bool1 = bool2;
+                if (!arui.a().a()) {
+                  break;
+                }
+                paramString1 = new Bundle();
+                paramJsBridgeListener = arph.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Arpd.key, paramString1);
+                arui.a().a(paramJsBridgeListener);
+                return true;
+              }
             }
-            paramReply = new JSONObject(paramReply).toString();
-            bhgo.a(this.a).a(paramObject, paramReply, ((bhfa)bhgo.a(this.a)).a(), 0);
-            return;
+            catch (Exception paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+              return true;
+            }
+            paramJsBridgeListener = "";
           }
-          if ("timeCostReport".equals(localObject2))
-          {
-            localObject2 = (Map)paramObject.get("data");
-            if (localObject2 == null) {
-              break;
-            }
-            paramObject = (Integer)((Map)localObject2).get("matchTimeCost");
-            paramReply = (Integer)((Map)localObject2).get("setDataTimeCost");
-            localObject1 = (Integer)((Map)localObject2).get("renderTimeCost");
-            localObject2 = (Integer)((Map)localObject2).get("totalTimeCost");
-            if (paramObject != null) {
-              bhck.a(bhgo.a(this.a).a(), 217, "0", paramObject.intValue());
-            }
-            if (paramReply != null) {
-              bhck.a(bhgo.a(this.a).a(), 218, "0", paramReply.intValue());
-            }
-            if (localObject1 != null) {
-              bhck.a(bhgo.a(this.a).a(), 219, "0", ((Integer)localObject1).intValue());
-            }
-            if (localObject2 == null) {
-              break;
-            }
-            bhck.a(bhgo.a(this.a).a(), 220, "0", ((Integer)localObject2).intValue());
-            return;
-          }
-          if (!"getAbsolutePath".equals(localObject2)) {
+          if (!"installPlugin".equals(paramString3)) {
             break;
           }
-          paramObject = (String)((Map)paramObject.get("data")).get("filePath");
-          paramReply.reply(bgnt.a().a(paramObject));
-          return;
-        }
+          bool1 = bool2;
+        } while (!arui.a().a());
+        paramString1 = new Bundle();
+        paramJsBridgeListener = arph.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Arpd.key, paramString1);
+        arui.a().a(paramJsBridgeListener);
+        return true;
+        bool1 = bool2;
+      } while (!"playVideo".equals(paramString3));
+      paramString2 = paramString1.optString("vid", "");
+      paramString3 = paramString1.optString("format", "");
+      int i = paramString1.optInt("playType", 0);
+      paramString1 = paramString1.optString("screenOrientation", "landscape");
+      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+        this.b = paramJsBridgeListener;
       }
+      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
+      {
+        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
+        paramJsBridgeListener.putExtra("vid", paramString2);
+        paramJsBridgeListener.putExtra("videoFormat", paramString3);
+        paramJsBridgeListener.putExtra("vtype", i);
+        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
+        startActivityForResult(paramJsBridgeListener, (byte)100);
+        return true;
+      }
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(this.b));
+    callJs(this.b, new String[] { String.valueOf(4) });
+    return true;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
     }
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
+      callJs(this.b, new String[] { String.valueOf(paramInt) });
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    arui.a().a(this.jdField_a_of_type_Arpd);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    arui.a().b(this.jdField_a_of_type_Arpd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgq
  * JD-Core Version:    0.7.0.1
  */

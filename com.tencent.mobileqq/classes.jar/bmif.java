@@ -1,21 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
 class bmif
-  implements DialogInterface.OnCancelListener
+  implements ModuleDownloadListener
 {
-  bmif(bmhu parambmhu) {}
+  bmif(bmic parambmic) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    bmhu.b(this.a).R();
-    bmhu.a(this.a).setVisibility(0);
-    if (bmhu.a(this.a) != null) {
-      bmhu.a(this.a).startAnimation(bmhu.a(this.a));
+    if (!paramString.equals("libandroidndkbeauty.so")) {}
+    for (;;)
+    {
+      return;
+      String str = bmic.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+      if (paramString.exists()) {}
+      try
+      {
+        bmic.a(paramString, new File(bmic.a.getPath() + "/libandroidndkbeauty.zip"));
+        paramString = new File(str);
+        if (!paramString.exists()) {
+          paramString.mkdirs();
+        }
+        if (this.a.a(bmic.b, false)) {
+          continue;
+        }
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
+        bmij.b(new File(bmic.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
-    bmhu.c(this.a);
-    bmhu.a(this.a, true);
   }
 }
 

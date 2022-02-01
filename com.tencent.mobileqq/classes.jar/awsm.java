@@ -1,96 +1,38 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class awsm
 {
-  public static int a;
-  public static SparseArray<String> a;
-  public static String a;
-  private static AtomicBoolean a;
+  public static int a = 12;
+  public static boolean a;
   
-  static
+  public static int a(Context paramContext)
   {
-    jdField_a_of_type_Int = 50;
-    jdField_a_of_type_JavaLangString = alud.a(2131717163);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    paramContext = paramContext.getResources();
+    return paramContext.getDisplayMetrics().widthPixels - afur.a(42.0F, paramContext) * 2;
   }
   
-  public static void a(AppRuntime paramAppRuntime)
+  public static int a(Context paramContext, int paramInt)
   {
-    if (paramAppRuntime == null) {}
-    JSONObject localJSONObject;
-    JSONArray localJSONArray;
-    for (;;)
-    {
-      try
-      {
-        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
-        return;
-      }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
-        if (localJSONObject == null) {
-          break label217;
-        }
-        localJSONArray = localJSONObject.optJSONArray("fontList");
-        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-          if (jdField_a_of_type_AndroidUtilSparseArray == null)
-          {
-            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-            break label227;
-          }
-        }
-      }
+    paramInt /= 5;
+    int i = a(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
+    if (QLog.isColorLevel()) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
     }
-    for (;;)
-    {
-      if (i < localJSONArray.length())
-      {
-        paramAppRuntime = localJSONArray.optJSONObject(i);
-        int j = paramAppRuntime.optInt("id");
-        String str = paramAppRuntime.optString("imgUrl");
-        if (TextUtils.isEmpty(str)) {
-          break label232;
-        }
-        paramAppRuntime = str;
-        if (!str.startsWith("http:"))
-        {
-          paramAppRuntime = str;
-          if (!str.startsWith("https:")) {
-            paramAppRuntime = "http:" + str;
-          }
-        }
-        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
-        break label232;
-        jdField_a_of_type_AndroidUtilSparseArray.clear();
-      }
-      else
-      {
-        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
-        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
-        label217:
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        break;
-      }
-      label227:
-      int i = 0;
-      continue;
-      label232:
-      i += 1;
+    if ((f > 1.777778F) && (QLog.isColorLevel())) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
     }
+    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsm
  * JD-Core Version:    0.7.0.1
  */

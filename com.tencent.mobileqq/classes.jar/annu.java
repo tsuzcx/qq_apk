@@ -1,13 +1,15 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class annu
-  implements ArkEnvironmentManager.ThreadCreater
+final class annu
+  implements DialogInterface.OnDismissListener
 {
-  public HandlerThread createHanderThread(String paramString)
+  annu(Activity paramActivity, int paramInt) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

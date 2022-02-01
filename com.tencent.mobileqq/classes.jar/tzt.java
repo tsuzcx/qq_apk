@@ -1,26 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05502.1;
-import feedcloud.FeedCloudCommon.Entry;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class tzt
+  implements bfpo
 {
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList)
-  {
-    int i = tzy.a().a();
-    int j = tzy.a().b();
-    uab.a().a().post(new QCircleLpReportDc05502.1(paramString1, paramInt3, paramString2, paramString3, i, j, paramString4, paramString5, paramString6, paramString7, paramList, paramStFeed, paramInt1, paramInt2));
-  }
+  public tzt(PublicAccountUtil.19 param19) {}
   
-  private static int b()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return 5502;
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzt
  * JD-Core Version:    0.7.0.1
  */

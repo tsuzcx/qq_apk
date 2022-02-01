@@ -1,20 +1,6 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class arjj
-  implements arrh
+public abstract interface arjj
 {
-  arjj(arji paramarji) {}
-  
-  public void a()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt);
 }
 
 

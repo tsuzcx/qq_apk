@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
+import com.tencent.mobileqq.now.widget.RoundedRectImageView;
 
 public class aycp
-  implements DialogInterface.OnClickListener
+  extends ayco
 {
-  public aycp(SignatureEditFragment paramSignatureEditFragment) {}
+  public int a;
+  public View a;
+  public FrameLayout a;
+  public TextView a;
+  public FrameAnimationView a;
+  public CircleImageView a;
+  public RoundedRectImageView a;
+  public FrameLayout b;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aycp(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.locationText = "";
-    this.a.a(0, 0, 0, 0, null, 1);
-    SignatureEditFragment.a(this.a);
+    super(paramView);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364166));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362658));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362661));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362659));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362663));
+    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362662));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381097));
+    this.c = ((TextView)paramView.findViewById(2131376786));
+    paramView.setTag(this);
   }
 }
 

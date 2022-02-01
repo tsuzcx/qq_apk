@@ -4,9 +4,9 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.http.HttpCallBack;
-import com.tencent.mobileqq.mini.http.MiniappHttpUtil;
-import com.tencent.mobileqq.mini.http.RequestTask.Request;
+import com.tencent.mobileqq.mini.network.http.HttpCallBack;
+import com.tencent.mobileqq.mini.network.http.MiniappHttpUtil;
+import com.tencent.mobileqq.mini.network.http.RequestTask.Request;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05115;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05116;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -26,19 +26,19 @@ class RequestPlugin$2
 {
   String contentType;
   
-  RequestPlugin$2(RequestPlugin paramRequestPlugin, String paramString1, RequestTask.Request paramRequest, JsRuntime paramJsRuntime, int paramInt, String paramString2) {}
+  RequestPlugin$2(RequestPlugin paramRequestPlugin, RequestTask.Request paramRequest, String paramString1, JsRuntime paramJsRuntime, int paramInt, String paramString2) {}
   
   public void headersReceived(int paramInt, Map<String, List<String>> paramMap)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("url", this.val$url);
       localJSONObject.put("requestTaskId", this.val$request.mTaskId);
-      localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
+      localJSONObject.put("url", this.val$url);
       localJSONObject.put("errMsg", "ok");
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("state", "headersReceived");
+      localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
       if ((paramMap != null) && (paramMap.containsKey("Content-Type")))
       {
         paramMap = (List)paramMap.get("Content-Type");
@@ -51,7 +51,7 @@ class RequestPlugin$2
     }
     catch (Exception paramMap)
     {
-      QLog.e("[mini] http.RequestPlugin", 2, "headersReceived exception, url: " + this.val$request.mUrl, paramMap);
+      QLog.e("[mini] http.RequestPlugin", 2, "headersReceived exception, url: " + this.val$request.mOriginUrl, paramMap);
     }
   }
   
@@ -73,7 +73,7 @@ class RequestPlugin$2
     for (;;)
     {
       QLog.i("[mini] http.RequestPlugin", 1, (String)localObject1 + "]");
-      localObject2 = RequestPlugin.access$100(((RequestTask.Request)localObject2).mUrl);
+      localObject2 = RequestPlugin.access$100(((RequestTask.Request)localObject2).mOriginUrl);
       QLog.d("[mini] http.RequestPlugin", 2, new Object[] { "httpCallBack second level domain ", localObject2 });
       label238:
       long l1;
@@ -112,12 +112,12 @@ class RequestPlugin$2
         if ((localObject3 != null) && (paramInt > 0))
         {
           ((JSONObject)localObject2).put("requestTaskId", this.val$request.mTaskId);
-          if (paramMap != null) {
-            ((JSONObject)localObject2).put("header", JSONUtil.headerToJson(paramMap));
-          }
           ((JSONObject)localObject2).put("statusCode", paramInt);
           ((JSONObject)localObject2).put("state", "success");
           ((JSONObject)localObject2).put("errMsg", "ok");
+          if (paramMap != null) {
+            ((JSONObject)localObject2).put("header", JSONUtil.headerToJson(paramMap));
+          }
           if (paramArrayOfByte != null)
           {
             if (!"arraybuffer".equals(this.val$request.mResponseType)) {
@@ -169,9 +169,9 @@ class RequestPlugin$2
             }
             GameLog.getInstance().e("[mini] http.RequestPlugin", "url: " + this.val$request.mUrl + "--mResponseType error ---" + this.val$request.mResponseType);
             paramArrayOfByte = new JSONObject();
+            paramArrayOfByte.put("requestTaskId", this.val$request.mTaskId);
             paramArrayOfByte.put("state", "fail");
             paramArrayOfByte.put("statusCode", -1);
-            paramArrayOfByte.put("requestTaskId", this.val$request.mTaskId);
             this.val$jsRuntime.evaluateSubcribeJS("onRequestTaskStateChange", paramArrayOfByte.toString(), 0);
             continue;
             QLog.e("[mini] http.RequestPlugin", 1, "--fail--- url: " + this.val$request.mUrl + " taskId=" + this.val$request.mTaskId + " resCode=" + paramInt);
@@ -196,7 +196,7 @@ class RequestPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RequestPlugin.2
  * JD-Core Version:    0.7.0.1
  */

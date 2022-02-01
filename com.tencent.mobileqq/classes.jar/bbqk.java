@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import android.view.View;
+import android.widget.TextView;
 
-public final class bbqk
-  implements Parcelable.Creator<TroopBarMyBar>
+public class bbqk
+  implements bbps<bbmw, bbvf>
 {
-  public TroopBarMyBar a(Parcel paramParcel)
+  public void a(bbmw parambbmw, bbvf parambbvf)
   {
-    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
-  
-  public TroopBarMyBar[] a(int paramInt)
-  {
-    return null;
+    parambbmw = (bbmx)parambbmw;
+    parambbvf.b().setText(parambbmw.b());
+    parambbvf.a().setOnClickListener(new bbql(this, parambbmw));
+    if ((parambbmw instanceof bbmn)) {
+      bcst.b(null, "CliOper", "", "", "0X80061B6", "0X80061B6", 0, 0, "", "", "", "");
+    }
   }
 }
 

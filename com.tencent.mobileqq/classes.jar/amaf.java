@@ -1,40 +1,46 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class amaf
-  extends altm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amaf
 {
-  public amaf(QQAppInterface paramQQAppInterface) {}
+  private boolean a = true;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public final void a(@NotNull String paramString)
   {
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
     if (QLog.isColorLevel()) {
-      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
+      QLog.d("WeatherPreloadWebPageConfigProcessor", 2, paramString);
     }
-    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
+    try
     {
-      if ((this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
+      for (boolean bool = true;; bool = false)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
-        }
-        QQAppInterface.a(this.a, (QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.a().get(0), false);
+        this.a = bool;
+        return;
       }
-      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    catch (Throwable paramString)
+    {
+      QLog.e("WeatherPreloadWebPageConfigProcessor", 1, paramString, new Object[0]);
     }
-    this.a.removeObserver(this);
+  }
+  
+  public final boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amaf
  * JD-Core Version:    0.7.0.1
  */

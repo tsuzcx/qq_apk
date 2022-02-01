@@ -1,27 +1,79 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class akjw
-  implements Animation.AnimationListener
+public class akjw
+  extends akhu
 {
-  akjw(akjt paramakjt, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected akjw(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof akjz))) {
-      ((akjz)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
-    }
-    akjt.a(this.jdField_a_of_type_Akjt);
+    super(paramNewPhotoListActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    int i2 = PhotoUtils.b(this.a.a);
+    paramIntent = new HashMap();
+    int i1 = 0;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
+    {
+      paramArrayList = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl(paramArrayList))
+      {
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
+      }
+      else
+      {
+        int n;
+        if (((NewPhotoListActivity)this.mActivity).a(paramArrayList) == 1)
+        {
+          paramArrayList = ((NewPhotoListActivity)this.mActivity).a(paramArrayList);
+          n = j;
+          m = i;
+          if (paramArrayList != null)
+          {
+            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
+            localSendVideoInfo.fileSize = paramArrayList.fileSize;
+            localSendVideoInfo.duration = paramArrayList.mDuration;
+            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
+            m = i + 1;
+            n = j;
+          }
+        }
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
+      }
+    }
+    bcst.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
+    c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjw
  * JD-Core Version:    0.7.0.1
  */

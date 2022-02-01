@@ -1,31 +1,54 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-public class arxt
+class arxt
+  extends anio
 {
-  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
+  arxt(arxr paramarxr) {}
+  
+  protected void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoInsert");
     }
-    boolean bool = astc.a("com.tencent.mobileqq:tool");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
-    localIntent.putExtra("preload_process", bool);
-    if (paramMap != null)
+    this.a.c();
+    if ((this.a.a.a != null) && (((arqr)this.a.a.a.getManager(333)).a() > 0)) {
+      this.a.b();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnGetEmoListResult");
+    }
+    if (paramInt == 0)
     {
-      paramString = new BoostFlutterActivity.SerializableMap();
-      paramString.setMap(paramMap);
-      localIntent.putExtra("params", paramString);
+      if ((this.a.a.a != null) && (((arqr)this.a.a.a.getManager(333)).a() > 0)) {
+        this.a.b();
+      }
+      this.a.c();
     }
-    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoSend");
+    }
+    this.a.c();
+    arxr.a(this.a, paramInt);
+  }
+  
+  protected void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnDeleteEmoResult");
+    }
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
 }
 

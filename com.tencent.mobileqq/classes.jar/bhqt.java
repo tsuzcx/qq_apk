@@ -1,24 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
+import android.os.Bundle;
 
-public class bhqt
-  implements bhra
+public abstract interface bhqt
 {
-  public bhqt(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
-    }
-    TraeAudioManager.b(paramLong, null, -1L, true);
-    this.a.c(paramLong);
-  }
+  public abstract int a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqt
  * JD-Core Version:    0.7.0.1
  */

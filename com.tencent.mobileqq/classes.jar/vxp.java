@@ -1,18 +1,31 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
 
-class vxp
-  implements vyl
+public class vxp
+  extends ClickableSpan
 {
-  vxp(vxn paramvxn, vwd paramvwd, Object paramObject) {}
+  public vxp(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
   
-  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
+  public void onClick(@NonNull View paramView)
   {
-    return this.jdField_a_of_type_Vwd.a(this.jdField_a_of_type_Vxn, 0, paramInt1, this.jdField_a_of_type_Vxn.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if (QCirclePushAsyncTextView.a(this.a) != null) {
+      QCirclePushAsyncTextView.a(this.a).b();
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxp
  * JD-Core Version:    0.7.0.1
  */

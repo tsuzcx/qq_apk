@@ -70,7 +70,7 @@ public class ContentAccelerateRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ContentAccelerateRequest
  * JD-Core Version:    0.7.0.1
  */

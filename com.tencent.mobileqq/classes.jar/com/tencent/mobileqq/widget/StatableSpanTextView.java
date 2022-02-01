@@ -9,15 +9,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import ayfg;
-import benx;
+import bbdo;
+import bhvb;
 import java.util.ArrayList;
 
 public class StatableSpanTextView
   extends TextView
 {
   private long jdField_a_of_type_Long;
-  ayfg jdField_a_of_type_Ayfg;
+  bbdo jdField_a_of_type_Bbdo;
   private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -95,15 +95,15 @@ public class StatableSpanTextView
           int i2 = getScrollY();
           localObject2 = getLayout();
           j = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), j - m + i1);
-          localObject1 = (ayfg[])((Spannable)localObject1).getSpans(j, j, ayfg.class);
+          localObject1 = (bbdo[])((Spannable)localObject1).getSpans(j, j, bbdo.class);
           if (localObject1.length != 0)
           {
             localObject1 = localObject1[0];
             if (i == 1)
             {
-              ((ayfg)localObject1).a(this, false);
+              ((bbdo)localObject1).a(this, false);
               if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-                ((ayfg)localObject1).onClick(this);
+                ((bbdo)localObject1).onClick(this);
               }
             }
             for (;;)
@@ -112,17 +112,17 @@ public class StatableSpanTextView
               return super.onTouchEvent(paramMotionEvent);
               if (i == 0)
               {
-                ((ayfg)localObject1).a(this, true);
-                this.jdField_a_of_type_Ayfg = ((ayfg)localObject1);
+                ((bbdo)localObject1).a(this, true);
+                this.jdField_a_of_type_Bbdo = ((bbdo)localObject1);
               }
               else
               {
-                ((ayfg)localObject1).a(this, false);
+                ((bbdo)localObject1).a(this, false);
               }
             }
           }
-          if (this.jdField_a_of_type_Ayfg != null) {
-            this.jdField_a_of_type_Ayfg.a(this, false);
+          if (this.jdField_a_of_type_Bbdo != null) {
+            this.jdField_a_of_type_Bbdo.a(this, false);
           }
         }
       }
@@ -146,7 +146,7 @@ public class StatableSpanTextView
         while (i < j)
         {
           ImageSpan localImageSpan = arrayOfImageSpan[i];
-          if (!(localImageSpan instanceof benx)) {
+          if (!(localImageSpan instanceof bhvb)) {
             localArrayList.add(localImageSpan);
           }
           i += 1;
@@ -171,7 +171,7 @@ public class StatableSpanTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView
  * JD-Core Version:    0.7.0.1
  */

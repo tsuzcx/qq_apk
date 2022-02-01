@@ -7,6 +7,7 @@ import com.tencent.thumbplayer.config.TPPlayerConfig;
 import com.tencent.thumbplayer.core.downloadproxy.api.TPDLProxyInitParam;
 import com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadParam;
 import com.tencent.thumbplayer.utils.TPCommonUtils;
+import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,11 @@ public class TPProxyUtils
         }
         paramString = (String)localObject;
         localObject = new HashMap();
+        if (!TextUtils.isEmpty(paramTPDownloadParamData.getFlowId()))
+        {
+          TPLogUtil.i("TPProxyUtils", paramTPDownloadParamData.getFlowId());
+          ((Map)localObject).put("dl_param_play_flowid", paramTPDownloadParamData.getFlowId());
+        }
         if (!TPCommonUtils.isEmpty(paramTPDownloadParamData.getUrlHostList())) {
           ((Map)localObject).put("dl_param_url_host", paramTPDownloadParamData.getUrlHostList());
         }
@@ -125,7 +131,7 @@ public class TPProxyUtils
           ((Map)localObject).putAll(paramTPDownloadParamData.getExtInfoMap());
         }
         if (!paramTPDownloadParamData.getSelfAdaption()) {
-          break label827;
+          break label859;
         }
         ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(3));
       }
@@ -135,7 +141,7 @@ public class TPProxyUtils
         return new TPDownloadParam(paramString, TPProxyEnumUtils.dlType2Inner(paramTPDownloadParamData.getDlType()), (Map)localObject);
         paramString = paramTPDownloadParamData.getUrlCdnidList();
         break;
-        label827:
+        label859:
         ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(0));
       }
     }
@@ -151,7 +157,7 @@ public class TPProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyUtils
  * JD-Core Version:    0.7.0.1
  */

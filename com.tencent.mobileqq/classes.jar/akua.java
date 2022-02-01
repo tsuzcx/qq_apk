@@ -1,19 +1,16 @@
-import android.util.LruCache;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
-class akua
-  extends LruCache<String, akub>
+public class akua
+  implements View.OnTouchListener
 {
-  akua(aktz paramaktz, int paramInt)
-  {
-    super(paramInt);
-  }
+  public akua(ChooseItemView paramChooseItemView) {}
   
-  protected int a(String paramString, akub paramakub)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramakub == null) || (paramakub.a == null)) {
-      return 0;
-    }
-    return paramakub.a.length;
+    return true;
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.widget.calloutpopupwindow;
 
 import android.view.View;
-import bidc;
+import bkqo;
 
 public class CalloutPopupWindow$1
   implements Runnable
 {
-  public CalloutPopupWindow$1(bidc parambidc, View paramView, int paramInt1, int paramInt2) {}
+  public CalloutPopupWindow$1(bkqo parambkqo, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    bidc.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    bkqo.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

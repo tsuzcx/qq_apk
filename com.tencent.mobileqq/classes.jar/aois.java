@@ -1,83 +1,94 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class aois
-  extends ajju
+  extends aojs
 {
-  int a;
-  
-  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
+  public aois(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramOnClickListener = paramContext.getResources();
-    if (paramView == null)
-    {
-      paramajjp = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof aoit))) {
-        break label179;
-      }
-      paramajjp = (aoit)paramajjp;
-      label35:
-      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
-      if (paramInt >= 0) {
-        break label348;
-      }
-      paramInt = (int)(this.a * 1.5F);
-    }
-    label81:
-    label348:
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    Object localObject1 = null;
     for (;;)
     {
-      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
+      try
       {
-        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
-        paramViewGroup.width = -1;
-        paramViewGroup.height = paramInt;
-        paramView.setLayoutParams(paramViewGroup);
-        if ((paramObject instanceof Integer))
-        {
-          paramInt = ((Integer)paramObject).intValue();
-          if (paramInt != 16) {
-            break label294;
-          }
-          paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839229);
-          if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-            ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-          }
-          paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699014);
+        Intent localIntent = new Intent();
+        Object localObject2 = this.jdField_a_of_type_JavaLangString.split("\\?");
+        if (localObject2.length < 2) {
+          break label324;
         }
+        localIntent.putExtra("extra_key_url_append", localObject2[1]);
+        if (localObject2[1] == null) {
+          break label324;
+        }
+        if (localObject2[1].contains("tab=game_center"))
+        {
+          i = 0;
+          j = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("CMShowAction", 2, new Object[] { "apollo_store url:", localObject1 });
+          }
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            localObject2 = ancb.ah;
+          }
+          if (j != 0)
+          {
+            ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext);
+            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+              break;
+            }
+            localObject1 = (amhd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_clk", ((amhd)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()), 0, new String[] { "0" });
+            break;
+          }
+        }
+        else
+        {
+          if (localObject2[1].contains("tab=other_url&url="))
+          {
+            localObject1 = URLDecoder.decode(localObject2[1].substring(localObject2[1].indexOf("tab=other_url&url=") + "tab=other_url&url=".length()));
+            i = 1;
+            j = 0;
+            continue;
+          }
+          localObject1 = new HashMap();
+          xen.a(localObject2[1], (HashMap)localObject1);
+          localObject1 = amhd.b((String)((HashMap)localObject1).get("tab"), true);
+          i = 0;
+          j = 0;
+          continue;
+        }
+        if (i != 0)
+        {
+          ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2);
+          continue;
+        }
+        ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, localIntent, null, (String)localObject2, null);
       }
-      while (paramInt != 17)
+      catch (Exception localException)
       {
-        return paramView;
-        paramajjp = paramView.getTag();
-        break;
-        paramView = LayoutInflater.from(paramContext).inflate(2131560892, null);
-        paramajjp = new aoit();
-        paramajjp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369147));
-        paramajjp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
-        paramajjp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379107));
-        paramView.setTag(paramajjp);
-        this.a = (paramOnClickListener.getDimensionPixelSize(2131297979) + paramOnClickListener.getDimensionPixelSize(2131297981) + paramOnClickListener.getDimensionPixelSize(2131297980) * 2);
-        break label35;
-        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
-        break label81;
+        a("CMShowAction");
+        QLog.e("CMShowAction", 1, "doAction error: " + localException.getMessage());
+        return false;
       }
-      if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-      }
-      paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699013);
-      return paramView;
+      continue;
+      label324:
+      int i = 0;
+      int j = 0;
     }
+    return true;
   }
 }
 

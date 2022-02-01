@@ -1,23 +1,54 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoat
-  implements Camera.AutoFocusCallback
+  extends anmu
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aoak jdField_a_of_type_Aoak;
-  private final aoaq jdField_a_of_type_Aoaq;
+  private aoat(UpdateFriend paramUpdateFriend) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
+    if ((this.a.b == 7) || (this.a.b == 3))
+    {
+      if (paramBoolean1) {
+        break label37;
+      }
+      this.a.a(6);
+    }
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
+      return;
+    }
+    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
+    }
+    this.a.a.notifyUI(3, true, Integer.valueOf(1));
+    this.a.a(7);
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (this.a.b == 8)
+    {
+      if (paramBoolean1) {
+        break label26;
+      }
+      this.a.a(6);
+    }
+    label26:
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoat
  * JD-Core Version:    0.7.0.1
  */

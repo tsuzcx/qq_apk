@@ -1,28 +1,51 @@
-import android.content.Intent;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class ryk
-  implements MessageQueue.IdleHandler
+  extends ocg
 {
-  public ryk(FastWebActivity paramFastWebActivity) {}
+  private ryk(ryj paramryj) {}
   
-  public boolean queueIdle()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (FastWebActivity.a(this.a).c == 0) {}
-    for (String str = "";; str = FastWebActivity.a(this.a).p)
+    if (paramBundle.getBoolean("is_from_first_recommend_video"))
     {
-      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
-      scq.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, FastWebActivity.a(this.a).mChannelID);
-      return false;
+      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
+      if (localEntranceDownloadInfo == null) {
+        break label32;
+      }
+      ryj.a(this.a, localEntranceDownloadInfo);
+    }
+    for (;;)
+    {
+      return;
+      label32:
+      ryj.a(this.a, paramBundle.getString("VALUE_COOKIE"));
+      if (paramBoolean)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+        if ((paramBundle != null) && (paramBundle.size() > 0))
+        {
+          paramBundle = (VideoInfo)paramBundle.get(0);
+          ryj.a(this.a, paramBundle);
+        }
+      }
+      while (paramBundle != null)
+      {
+        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
+        return;
+        paramBundle = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryk
  * JD-Core Version:    0.7.0.1
  */

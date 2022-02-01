@@ -1,232 +1,151 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlServerRedPacketModule;", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket$Stub;", "()V", "currentTaskContentType", "", "currentTaskRowkey", "", "currentTaskTimeInMs", "hasLoadFromDB", "", "maxTaskTimePerContentInMs", "canDoTaskThisTime", "getArticleShareWording", "getCurrentContentTaskRowkey", "getCurrentContentTaskTimeInMs", "getCurrentContentType", "getGlobalCurrentTaskTimeInMs", "getGlobalTotalTaskTimeInMs", "getLastTaskContentRowkey", "getLastTaskTimeForContentInMs", "getMaxTaskTimePerContentInMs", "getMaxTaskTimeWhenArticleStationary", "getMaximumTaskTimeForArticleInMs", "getShareTipsShowDurationInMs", "getTaskTimeFromCache", "rowKey", "getTaskTimePerRoundInMs", "getTipsShowTimeInMs", "getTotalRound", "hasRead", "hasRedPacketPermission", "isHighestRedPacketAuthorityOn", "isNowInKanDianTab", "reportTaskProgress", "", "rowkey", "type", "taskTimeInMs", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IReportTaskProgressCallback;", "requestShouldDoTaskTiming", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IShouldDoTaskTimingCallback;", "saveTaskTimeToCache", "setCanDoTaskThisTime", "canDoTask", "nextRequestCanDoTaskTs", "", "setCurrentContentTaskRowkey", "setCurrentContentTaskTimeInMs", "setCurrentContentType", "setGlobalCurrentTaskTimeInMs", "curTaskTime", "setLastTaskTimeForContent", "setMaxTaskTimePerContent", "maxTaskTimeInMs", "setRead", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qij
-  extends qhy
+public class qij
+  extends ViewBase
 {
-  public static final qik a;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c = 20000;
+  private NativeAvatarView a;
   
-  static
+  public qij(VafContext paramVafContext)
   {
-    jdField_a_of_type_Qik = new qik(null);
+    super(paramVafContext);
+    this.a = new NativeAvatarView(paramVafContext.getContext());
   }
   
-  public int a()
+  private boolean a(Object paramObject)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(@NotNull String paramString, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
-    RIJRedPacketManager.a().a(paramString, paramInt);
-  }
-  
-  public void a(@Nullable String paramString, int paramInt1, int paramInt2, @Nullable qia paramqia)
-  {
-    RIJRedPacketManager.a().a(paramString, paramInt1, paramInt2, (qfs)new qim(paramqia));
-  }
-  
-  public void a(@NotNull qid paramqid)
-  {
-    Intrinsics.checkParameterIsNotNull(paramqid, "callback");
-    RIJRedPacketManager.a().a(1, (qft)new qin(paramqid));
-  }
-  
-  public void a(boolean paramBoolean, long paramLong)
-  {
-    RIJRedPacketManager.a().a(paramBoolean, paramLong);
-  }
-  
-  public boolean a()
-  {
-    return RIJRedPacketManager.a().d();
-  }
-  
-  public boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    return RIJRedPacketManager.a().a(paramString);
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  @NotNull
-  public String b()
-  {
-    Object localObject = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJRedPacketManager.getInstance()");
-    localObject = ((RIJRedPacketManager)localObject).b();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJRedPacketManager.getI…e().lastTaskContentRowkey");
-    return localObject;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    RIJRedPacketManager.a().a(paramString);
-  }
-  
-  public boolean b()
-  {
-    return RIJRedPacketManager.a().c();
-  }
-  
-  public boolean b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    boolean bool = RIJRedPacketManager.a().a(paramString);
-    if ((!bool) && (!this.jdField_a_of_type_Boolean))
+    if ((paramObject instanceof Long))
     {
-      this.jdField_a_of_type_Boolean = true;
-      RIJRedPacketManager.a().a(paramString, (qfq)new qil(this, paramString));
+      this.a.setUin(((Long)paramObject).longValue());
+      return true;
     }
-    return bool;
+    return false;
   }
   
-  public int c()
+  private boolean a(String paramString)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.i();
+    this.a.setLiveStatusUrl(paramString);
+    return true;
   }
   
-  @NotNull
-  public String c()
+  private boolean b(String paramString)
   {
-    Object localObject = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJRedPacketManager.getInstance()");
-    localObject = ((RIJRedPacketManager)localObject).c();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJRedPacketManager.getI…nce().articleShareWording");
-    return localObject;
+    this.a.setLiveRingUrl(paramString);
+    return true;
   }
   
-  public void c(int paramInt)
+  private boolean c(String paramString)
   {
-    this.c = paramInt;
+    try
+    {
+      this.a.setUin(Long.valueOf(paramString).longValue());
+      return true;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("AvatarView", 1, paramString, new Object[0]);
+    }
+    return false;
   }
   
-  public void c(@NotNull String paramString)
+  public void a(pxk parampxk)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    b(paramString);
-    RIJRedPacketManager.a().b(paramString);
+    this.a.setModel(parampxk);
   }
   
-  public boolean c()
+  public void a(pxk parampxk, boolean paramBoolean)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.e();
+    this.a.setModel(parampxk, paramBoolean);
   }
   
-  public int d()
+  public int getComMeasuredHeight()
   {
-    return h() / c();
+    return this.a.getComMeasuredHeight();
   }
   
-  public void d(int paramInt)
+  public int getComMeasuredWidth()
   {
-    RIJRedPacketManager.a().a(paramInt);
+    return this.a.getComMeasuredWidth();
   }
   
-  public boolean d()
+  public View getNativeView()
   {
-    return ReadinjoyTabFrame.c_();
+    return this.a;
   }
   
-  public int e()
+  public boolean onClick()
   {
-    return this.c;
+    super.onClick();
+    return true;
   }
   
-  public int f()
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.f();
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public int g()
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.a();
+    this.a.measureComponent(paramInt1, paramInt2);
   }
   
-  public int h()
+  public boolean setAttribute(int paramInt, Object paramObject)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.b();
+    boolean bool2 = false;
+    switch (paramInt)
+    {
+    }
+    for (boolean bool1 = false;; bool1 = a(paramObject))
+    {
+      if (!bool1)
+      {
+        bool1 = bool2;
+        if (!super.setAttribute(paramInt, paramObject)) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
   }
   
-  public int i()
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.h();
-  }
-  
-  public int j()
-  {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.c();
-  }
-  
-  public int k()
-  {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.g();
-  }
-  
-  public int l()
-  {
-    RIJRedPacketManager localRIJRedPacketManager = RIJRedPacketManager.a();
-    Intrinsics.checkExpressionValueIsNotNull(localRIJRedPacketManager, "RIJRedPacketManager.getInstance()");
-    return localRIJRedPacketManager.d();
+    boolean bool2 = false;
+    boolean bool1;
+    switch (paramInt)
+    {
+    case 1076: 
+    default: 
+      bool1 = false;
+    }
+    for (;;)
+    {
+      if (!bool1)
+      {
+        bool1 = bool2;
+        if (!super.setAttribute(paramInt, paramString)) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+      bool1 = c(paramString);
+      continue;
+      bool1 = b(paramString);
+      continue;
+      bool1 = a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qij
  * JD-Core Version:    0.7.0.1
  */

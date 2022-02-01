@@ -1,48 +1,56 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import java.util.Locale;
 
 public class afgm
-  implements affa
+  implements bkhw
 {
-  private BaseChatPie a;
+  public afgm(SubLoginActivity paramSubLoginActivity) {}
   
-  public afgm(BaseChatPie paramBaseChatPie)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    if (this.a.jdField_b_of_type_Boolean) {
+      return;
     }
-  }
-  
-  private void b()
-  {
-    if ((this.a != null) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    default: 
-      return;
-    case 4: 
-      a();
-      return;
+      paramView = null;
+      if (SubLoginActivity.a(this.a) != null) {
+        paramView = SubLoginActivity.a(this.a).getText().toString();
+      }
+      if (TextUtils.isEmpty(paramView)) {
+        break label235;
+      }
     }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 4, 9 };
+    label235:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
+      {
+        this.a.jdField_b_of_type_Boolean = true;
+        this.a.a.dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          bcst.a(this.a.app, "dc00898", "", "", "0X800AFDF", "0X800AFDF", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("isSubaccount", true);
+          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
+          paramView.putExtra("entrance", SubLoginActivity.class.getName());
+          this.a.startActivity(paramView);
+        }
+      }
+    }
   }
 }
 

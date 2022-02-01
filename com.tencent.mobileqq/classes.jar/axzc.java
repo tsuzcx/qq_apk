@@ -1,17 +1,6 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.File;
-
-final class axzc
-  implements DialogInterface.OnClickListener
+public abstract interface axzc
 {
-  axzc(Activity paramActivity, File paramFile1, File paramFile2, axze paramaxze) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axza.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Axze);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

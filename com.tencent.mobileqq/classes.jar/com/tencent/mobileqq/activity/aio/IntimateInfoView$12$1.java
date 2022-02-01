@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesh;
-import aesk;
+import afys;
+import afyw;
 
 class IntimateInfoView$12$1
   implements Runnable
@@ -10,12 +10,12 @@ class IntimateInfoView$12$1
   
   public void run()
   {
-    aesk.a(this.a.this$0).a();
+    afyw.a(this.a.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.12.1
  * JD-Core Version:    0.7.0.1
  */

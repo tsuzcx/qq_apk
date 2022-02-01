@@ -1,48 +1,42 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adac
-  implements bdvr
+  implements acxp
 {
-  public adac(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onLeftClick: ");
-    }
-    if (this.a.getIntent().hasExtra("troopUin")) {}
-    for (Object localObject = "1";; localObject = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
-      localObject = new Intent(this.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("fragmentStyle", 3);
-      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-      ((Intent)localObject).putExtra("isTransparentTitle", true);
-      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.a.startActivity((Intent)localObject);
-      return;
-    }
+    return 10009;
   }
   
-  public void b()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    return true;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(168);
+    paramQQAppInterface = paramQQAppInterface.a().e(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramQQAppInterface != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
     }
-    if (this.a.getIntent().hasExtra("troopUin")) {}
-    for (String str = "1";; str = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
-      bdun.a(this.a, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-      FriendProfileCardActivity.a(this.a).set(true);
-      return;
-    }
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8044;
   }
 }
 

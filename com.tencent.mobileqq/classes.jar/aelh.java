@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-public class aelh
-  extends awhw
+public abstract class aelh
 {
-  public aelh(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public aelh(JumpActivity paramJumpActivity) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
-    }
-    VerifyPhoneNumActivity.c(this.a);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aelh
  * JD-Core Version:    0.7.0.1
  */

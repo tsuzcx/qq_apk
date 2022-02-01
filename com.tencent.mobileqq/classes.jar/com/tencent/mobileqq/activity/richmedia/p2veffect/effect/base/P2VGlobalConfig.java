@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base;
 
-import ajrx;
+import alkn;
 import common.config.service.QzoneConfig;
 import java.io.File;
 
@@ -70,8 +70,8 @@ public class P2VGlobalConfig
   {
     MAX_P2V_RECOMMEND_INT = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_max_recommend_int", 30);
     VIDEO_CAN_UPLOAD_LIMIT_MS = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_can_upload_limit_ms_secondary_key", 15000L);
-    P2V_VIDEO_CACHE_ROOT = ajrx.a + "/tencent" + File.separator + "dynamic_video_cache" + File.separator;
-    P2V_VIDEO_ROOT = ajrx.a + "/qzone_dynamic_video" + File.separator;
+    P2V_VIDEO_CACHE_ROOT = alkn.a + "/tencent" + File.separator + "dynamic_video_cache" + File.separator;
+    P2V_VIDEO_ROOT = alkn.a + "/qzone_dynamic_video" + File.separator;
     CONCAT_FINAL_M4A = P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
     CONCAT_FINAL_MP3 = P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
     P2V_MATERIAL_ROOT = P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
@@ -81,7 +81,7 @@ public class P2VGlobalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

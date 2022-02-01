@@ -1,20 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrg
-  implements View.OnClickListener
+final class adrg
+  implements DialogInterface.OnClickListener
 {
-  public adrg(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  adrg(adsy paramadsy, adsx paramadsx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.jdField_a_of_type_Adsy.a) {
+      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    if (this.jdField_a_of_type_Adsx != null) {
+      this.jdField_a_of_type_Adsx.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

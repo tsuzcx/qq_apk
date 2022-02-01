@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class BaseChatPie$31
   implements Runnable
@@ -10,13 +12,18 @@ class BaseChatPie$31
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelection(0);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(0, 250L);
+    this.this$0.e.setText(this.this$0.a.d);
+    if (AppSetting.c)
+    {
+      String str = this.this$0.e.getText().toString();
+      this.this$0.e.setContentDescription(str);
+      this.this$0.a().setTitle(this.this$0.e.getText());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.31
  * JD-Core Version:    0.7.0.1
  */

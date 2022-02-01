@@ -1,14 +1,24 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahdv
-  implements aiem
+class ahdv
+  extends ayyr
 {
-  public ahdv(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  ahdv(ahdu paramahdu, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void a(int paramInt, ayxy paramayxy)
   {
-    this.a.a.a(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    }
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
   }
 }
 

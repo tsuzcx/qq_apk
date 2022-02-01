@@ -1,58 +1,94 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
+import org.json.JSONObject;
 
-@TargetApi(11)
 public class avon
-  implements View.OnDragListener
+  extends WebViewPlugin
 {
-  private int a;
-  
-  public avon(avnl paramavnl, int paramInt)
+  public avon()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mPluginNameSpace = "login";
   }
   
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  private Activity a()
   {
-    switch (paramDragEvent.getAction())
-    {
-    }
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
     for (;;)
     {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-      continue;
-      RelativeLayout localRelativeLayout = avnl.a(this.jdField_a_of_type_Avnl);
-      int i = this.jdField_a_of_type_Avnl.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_Avnl.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      int j;
+      int i;
+      try
       {
-        try
-        {
-          this.jdField_a_of_type_Avnl.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_Avnl.a.addView(localRelativeLayout, i);
-          avnl.e(this.jdField_a_of_type_Avnl);
+        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("countryCode");
+        paramString2 = paramJsBridgeListener.optString("uin");
+        paramString3 = paramJsBridgeListener.optString("phone");
+        j = paramJsBridgeListener.optInt("mentrance");
+        int k = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
+        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) != 1) {
+          break label260;
         }
-        catch (Exception paramView) {}
-        if (QLog.isColorLevel())
+        i = 1;
+        if (i != 0)
         {
-          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
+          paramJsBridgeListener.putExtra("phone_num", paramString3);
+          paramJsBridgeListener.putExtra("country_code", paramString1);
+          paramJsBridgeListener.putExtra("mobile_type", 0);
+          paramJsBridgeListener.putExtra("from_login", true);
+          paramJsBridgeListener.putExtra("uin", paramString2);
+          paramJsBridgeListener.putExtra("seq", k);
+          startActivityForResult(paramJsBridgeListener, (byte)12);
+          paramJsBridgeListener = "";
+          if (j == 1)
+          {
+            paramJsBridgeListener = "1";
+            bcst.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, paramJsBridgeListener, "", "", "");
+            return true;
+          }
+        }
+        else
+        {
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
           continue;
-          this.jdField_a_of_type_Avnl.a.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
+          return false;
         }
       }
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
+      }
+      if (j == 2)
+      {
+        paramJsBridgeListener = "2";
+        continue;
+        label260:
+        i = 0;
+      }
     }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avon
  * JD-Core Version:    0.7.0.1
  */

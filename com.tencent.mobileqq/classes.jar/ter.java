@@ -1,39 +1,72 @@
-import UserGrowth.stFollowRsp;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-class ter
-  implements tgt
+public class ter
+  implements teq
 {
-  ter(tep paramtep, int paramInt, String paramString) {}
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private tep jdField_a_of_type_Tep;
   
-  public void a(the paramthe)
+  public ter(Context paramContext, String paramString1, String paramString2)
   {
-    if (!(paramthe.a instanceof stFollowRsp)) {
-      if (this.jdField_a_of_type_Int == 2)
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("" + paramString1 + " : " + paramString2);
+    }
+    this.jdField_a_of_type_Tep = new tep(paramContext, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
+  }
+  
+  public InputStream a(String paramString)
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    if (((File)localObject).exists()) {
+      try
       {
-        tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 1);
-        tlo.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramthe.a);
+        localObject = new FileInputStream((File)localObject);
+        return localObject;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
       }
     }
-    do
-    {
-      return;
-      tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 2);
-      break;
-      paramthe = (stFollowRsp)paramthe.a;
-    } while (paramthe == null);
-    int i = paramthe.isFollow;
-    tlo.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
-    if (i == 1)
-    {
-      bflz.a().a(2131721483);
-      return;
+    InputStream localInputStream = this.jdField_a_of_type_Tep.a(paramString);
+    QLog.d("TemplateFactory", 1, "使用兜底 file: " + paramString);
+    return localInputStream;
+  }
+  
+  public List<String> a()
+  {
+    Object localObject2 = this.jdField_a_of_type_Tep.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
     }
-    bflz.a().a(2131721484);
+    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
+    if (localObject2 != null)
+    {
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        ((List)localObject1).add(localObject2[i]);
+        i += 1;
+      }
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ter
  * JD-Core Version:    0.7.0.1
  */

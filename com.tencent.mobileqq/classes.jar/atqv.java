@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atqv
-  implements DialogInterface.OnClickListener
+class atqv
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public atqv(LocationDialogUtil.11 param11) {}
+  atqv(atqu paramatqu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null))
+    {
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    atqu.a(this.a, false);
+    if ((this.a.a != null) && (!this.a.a.b(atqu.a(this.a)))) {
+      this.a.a.d();
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    atqu.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqv
  * JD-Core Version:    0.7.0.1
  */

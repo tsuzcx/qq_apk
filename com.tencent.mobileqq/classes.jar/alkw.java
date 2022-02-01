@@ -1,12 +1,6 @@
 public abstract interface alkw
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void c(int paramInt);
 }
 
 

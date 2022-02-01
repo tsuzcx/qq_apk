@@ -1,27 +1,9 @@
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.1;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.2;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.3;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import PersonalState.UserProfile;
+import java.util.List;
 
-public class bbac
+public abstract interface bbac
 {
-  public static final HashMap<Integer, String> a;
-  public static Set<Integer> a;
-  public static final HashMap<Integer, String> b = new PreDownloadConstants.2();
-  public static final HashMap<Integer, Integer> c = new PreDownloadConstants.3();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10088));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10081));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10082));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10069));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(10073));
-    jdField_a_of_type_JavaUtilHashMap = new PreDownloadConstants.1();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
 }
 
 

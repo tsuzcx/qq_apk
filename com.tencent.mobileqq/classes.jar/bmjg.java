@@ -1,15 +1,39 @@
-public abstract interface bmjg
-  extends bmni
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
+
+final class bmjg
+  implements FilenameFilter
 {
-  public abstract void a(long paramLong);
+  bmjg(long paramLong1, long paramLong2) {}
   
-  public abstract void a(bmon parambmon);
-  
-  public abstract void ag_();
-  
-  public abstract void b();
-  
-  public abstract void d();
+  public boolean accept(File paramFile, String paramString)
+  {
+    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
+    long l;
+    do
+    {
+      File localFile;
+      do
+      {
+        do
+        {
+          return false;
+        } while (paramString.split("_").length == 2);
+        localFile = new File(paramFile + File.separator + paramString);
+      } while ((localFile == null) || (!localFile.exists()));
+      l = localFile.lastModified();
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      }
+    } while ((l < this.a) || (l > this.b));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+    }
+    return true;
+  }
 }
 
 

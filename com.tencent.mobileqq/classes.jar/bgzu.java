@@ -1,224 +1,205 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.minigame.ui.GameRuntimeStateObserver.1;
-import com.tencent.qqmini.sdk.minigame.ui.GameRuntimeStateObserver.2;
-import com.tencent.qqmini.sdk.minigame.ui.GameRuntimeStateObserver.3;
-import com.tencent.qqmini.sdk.minigame.ui.GameRuntimeStateObserver.4;
-import com.tencent.qqmini.sdk.minigame.ui.GameRuntimeStateObserver.5;
-import com.tencent.qqmini.sdk.minigame.ui.GameUIProxy;
-import com.tencent.qqmini.sdk.minigame.ui.LoadingUI;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vas.VasMonitorHandler.1;
+import com.tencent.mobileqq.vas.VasMonitorHandler.2;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.pb.vasreporter.VasReporter.ReqBody;
+import com.tencent.pb.vasreporter.VasReporter.StatisInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class bgzu
-  extends bgug
+  extends anii
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private GameUIProxy jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy;
-  private LoadingUI jdField_a_of_type_ComTencentQqminiSdkMinigameUiLoadingUI;
-  private long b;
-  private long c;
-  private long d;
-  private long e;
+  public CopyOnWriteArrayList<String> a;
+  public AtomicBoolean a;
+  public AtomicBoolean b = new AtomicBoolean(false);
   
-  public bgzu(GameUIProxy paramGameUIProxy)
+  public bgzu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy = paramGameUIProxy;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private bglu a()
+  public static <T> ArrayList<T> a(T... paramVarArgs)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getJsService();
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  private void a(String paramString, float paramFloat)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiLoadingUI == null) {
-      return;
-    }
-    a(new GameRuntimeStateObserver.5(this, paramString, paramFloat));
-  }
-  
-  private void b()
-  {
-    if (a() != null)
+    ArrayList localArrayList = new ArrayList();
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      localObject = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getGameRuntime().a();
-      if (localObject != null) {}
+      localArrayList.add(paramVarArgs[i]);
+      i += 1;
     }
-    else
-    {
-      return;
-    }
-    JSONObject localJSONObject = ((bgza)localObject).b();
-    StringBuilder localStringBuilder = new StringBuilder().append("onShow(");
-    if (localJSONObject == null) {}
-    for (Object localObject = "";; localObject = localJSONObject.toString())
-    {
-      QMLog.i("GameRuntimeState", (String)localObject + "). " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      a().a("onAppEnterForeground", localJSONObject.toString(), -1);
-      return;
-    }
+    return localArrayList;
   }
   
-  private void c()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, ArrayList<String> paramArrayList, ArrayList<Float> paramArrayList1, String paramString2)
   {
-    if (a() != null)
+    try
     {
-      QMLog.i("GameRuntimeState", "onHide(). " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      a().a("onAppEnterBackground", "", -1);
-    }
-  }
-  
-  private void d()
-  {
-    if (a() != null)
-    {
-      QMLog.i("GameRuntimeState", "onAppStop(). " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      a().a("onAppStop", "", -1);
-    }
-  }
-  
-  public void a()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void a(bguf parambguf)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getMiniAppInfo();
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getActivity();
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiLoadingUI = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getLoadingUI();
-    switch (parambguf.jdField_a_of_type_Int)
-    {
-    default: 
-    case 20: 
-    case 2011: 
-    case 2012: 
-    case 2013: 
-    case 2001: 
-    case 2002: 
-    case 2003: 
-    case 2021: 
-    case 2031: 
-    case 63: 
-    case 2032: 
-      do
+      paramString2 = "uip:" + adaz.k() + ", " + paramString2;
+      if (QLog.isColorLevel()) {
+        QLog.e("VasMonitorHandler", 2, "reportOrg appid=" + paramString1 + ", keys=" + paramArrayList + ", values=" + paramArrayList1 + ", log=" + paramString2);
+      }
+      if (paramQQAppInterface == null)
       {
-        do
-        {
-          do
-          {
-            return;
-            QMLog.i("GameRuntimeState", "User click. onCreate/onNewIntent. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-            return;
-            QMLog.i("GameRuntimeState", "Game engine loading. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-          } while (!(parambguf.jdField_a_of_type_JavaLangObject instanceof bgzw));
-          parambguf = (bgzw)parambguf.jdField_a_of_type_JavaLangObject;
-          a(parambguf.a(), parambguf.a());
+        if (!QLog.isColorLevel()) {
           return;
-          QMLog.i("GameRuntimeState", "Game engine loaded. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-          if ((parambguf.jdField_a_of_type_JavaLangObject instanceof String)) {
-            a((String)parambguf.jdField_a_of_type_JavaLangObject, 1.0F);
-          }
-          if (parambguf.jdField_a_of_type_Bgun != null) {
-            parambguf.jdField_a_of_type_Bgun.notifyRuntimeEvent(4, new Object[0]);
-          }
-          l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-          bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1033, null, String.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getStatMode()), null, 0, "1", l1, null);
-          QMLog.e("[minigame][timecost] ", "step[load baseLib] succeed, cost time: " + l1);
-          return;
-          QMLog.i("GameRuntimeState", "Failed to load game engine. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-          if ((parambguf.jdField_a_of_type_JavaLangObject instanceof Integer))
-          {
-            if (((Integer)parambguf.jdField_a_of_type_JavaLangObject).intValue() != 104) {
-              break label525;
-            }
-            this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.showUpdateMobileQQDialog();
-          }
-          for (;;)
-          {
-            bhbx.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 510);
-            l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-            bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1033, null, String.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getStatMode()), null, -1, "1", l1, null);
-            QMLog.e("[minigame][timecost] ", "step[load baseLib] fail, cost time: " + l1);
-            a(new GameRuntimeStateObserver.2(this));
-            return;
-            a(new GameRuntimeStateObserver.1(this));
-          }
-          QMLog.i("GameRuntimeState", "Game package loading. " + parambguf.jdField_a_of_type_JavaLangObject + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        } while (!(parambguf.jdField_a_of_type_JavaLangObject instanceof bgzw));
-        parambguf = (bgzw)parambguf.jdField_a_of_type_JavaLangObject;
-        if (parambguf.a()) {
-          this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.setPackageDownloadFlag(true);
         }
-        a(parambguf.a(), parambguf.a());
+        QLog.e("VasMonitorHandler", 2, "report args0 Error appInterface=null, appid=" + paramString1 + ", keys=" + paramArrayList + ", values=" + paramArrayList1 + ", log=" + paramString2);
         return;
-        QMLog.i("GameRuntimeState", "Game package loaded. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        a("100%", 1.0F);
-        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1036, null, this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getLaunchMsg(), null, 0, "1", l1, null);
-        QMLog.e("[minigame][timecost] ", "step[load gpkg] succeed, cost time: " + l1);
+      }
+      if ((TextUtils.isEmpty(paramString1)) || (paramArrayList == null) || (paramArrayList1 == null))
+      {
+        QLog.e("VasMonitorHandler", 2, "report args Error appid=" + paramString1 + ", keys=" + paramArrayList + ", values=" + paramArrayList1 + ", log=" + paramString2);
         return;
-        QMLog.i("GameRuntimeState", "Failed to load game package. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        a(new GameRuntimeStateObserver.3(this));
-        l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        bhbx.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 511);
-        bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1036, null, null, null, -1, "1", l1, null);
-        QMLog.e("[minigame][timecost] ", "step[load gpkg] fail, cost time: " + l1);
-        return;
-        l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1037, null, this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getLaunchMsg(), null, 0, "1", l1, null);
-        QMLog.e("[minigame][timecost] ", "[MiniEng] step[init runTime] cost time " + l1 + ", include steps[load baseLib, load gpkg]");
-        return;
-        QMLog.i("GameRuntimeState", "Game surface create. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        this.c = System.currentTimeMillis();
-        return;
-        QMLog.i("GameRuntimeState", "Game launched. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        this.d = System.currentTimeMillis();
-        return;
-        QMLog.i("GameRuntimeState", "Game First render. " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        int i = 0;
-        if ((parambguf.jdField_a_of_type_JavaLangObject instanceof Integer)) {
-          i = ((Integer)parambguf.jdField_a_of_type_JavaLangObject).intValue();
-        }
-        this.e = System.currentTimeMillis();
-        l1 = this.e;
-        long l2 = this.c;
-        long l3 = this.e - this.b;
-        long l4 = this.e;
-        long l5 = this.d;
-        bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1043, null, this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiGameUIProxy.getLaunchMsg(), null, i, "1", l3, null);
-        QMLog.e("[minigame][timecost] ", "step[onFirstFrameAppear] (首帧出现) cost time " + (l1 - l2) + "(from create surfaceView), " + l3 + "(from onCreate) " + (l4 - l5) + " ms(from gameLaunched)");
-        a(new GameRuntimeStateObserver.4(this));
-      } while (parambguf.jdField_a_of_type_Bgun == null);
-      parambguf.jdField_a_of_type_Bgun.notifyRuntimeEvent(11, new Object[0]);
-      return;
-    case 2051: 
-      b();
-      return;
-    case 2052: 
-      label525:
-      c();
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("VasMonitorHandler", 2, "reportOrg err:" + paramQQAppInterface.toString());
       return;
     }
-    d();
+    VasReporter.StatisInfo localStatisInfo = new VasReporter.StatisInfo();
+    localStatisInfo.appid.set(paramString1);
+    localStatisInfo.key_list.set(paramArrayList);
+    localStatisInfo.value_list.set(paramArrayList1);
+    localStatisInfo.ts.set(System.currentTimeMillis() / 1000L);
+    localStatisInfo.msg.set(paramString2);
+    paramArrayList = new VasReporter.ReqBody();
+    paramArrayList.cmd.set(1);
+    paramArrayList.plat.set(109);
+    paramArrayList.qqversion.set("8.4.1.4680");
+    paramArrayList.osversion.set(Build.VERSION.RELEASE);
+    paramArrayList.statis_list.set(a(new VasReporter.StatisInfo[] { localStatisInfo }));
+    paramArrayList.setHasFlag(true);
+    paramArrayList1 = new ToServiceMsg("mobileqq.service", paramQQAppInterface.getCurrentAccountUin(), "gxhreport.report");
+    paramArrayList1.putWupBuffer(paramArrayList.toByteArray());
+    ((bgzu)paramQQAppInterface.a(103)).sendPbReq(paramArrayList1);
+    if (QLog.isColorLevel()) {
+      QLog.e("VasMonitorHandler", 2, "send reportOrg appid=" + paramString1 + ", log=" + paramString2);
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat)
+  {
+    a(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, null, null, paramFloat, 0.0F);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, float paramFloat1, float paramFloat2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface)))
+    {
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+      label24:
+      if ((paramAppRuntime != null) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))) {
+        break label588;
+      }
+      paramAppRuntime = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    label588:
+    for (;;)
+    {
+      if (paramAppRuntime == null)
+      {
+        paramAppRuntime = new Bundle();
+        paramAppRuntime.putString("key_appid", paramString1);
+        paramAppRuntime.putString("key_err_code", paramString2);
+        paramAppRuntime.putString("key_log", paramString3);
+        paramAppRuntime.putString("key_key4", paramString4);
+        paramAppRuntime.putString("key_key5", paramString5);
+        paramAppRuntime.putString("key_key6", paramString6);
+        paramAppRuntime.putFloat("key_value2", paramFloat1);
+        paramAppRuntime.putFloat("key_value3", paramFloat2);
+        QIPCClientHelper.getInstance().getClient().callServer("VasMonitorIPCModule", "action_vas_monitor", paramAppRuntime);
+        return;
+        paramAppRuntime = null;
+        break label24;
+      }
+      Object localObject = (bgzu)paramAppRuntime.a(103);
+      if (!((bgzu)localObject).b.get()) {
+        ((bgzu)localObject).a(paramAppRuntime, false);
+      }
+      if (((bgzu)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("VasMonitorHandler", 2, "report stop all report appid=" + paramString1 + ", errCode=" + paramString2 + ", log=" + paramString3 + ", key4=" + paramString4 + ", value2=" + paramFloat1);
+        return;
+      }
+      if (((bgzu)localObject).jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramString1))
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("VasMonitorHandler", 2, "report appid in appidBlackList appid=" + paramString1 + ", errCode=" + paramString2 + ", log=" + paramString3 + ", key4=" + paramString4 + ", value2=" + paramFloat1);
+        return;
+      }
+      VasWebviewUtil.reportCommercialDrainage(paramAppRuntime.getCurrentAccountUin(), "MIGReport", paramString1, "", 1, 0, 0, paramString2, paramString3, paramString4, paramString5, paramString6, String.valueOf(paramFloat1), String.valueOf(paramFloat2), 0, 0, 0, 0);
+      localObject = paramString4;
+      if (paramString4 == null) {
+        localObject = "";
+      }
+      paramString4 = paramString5;
+      if (paramString5 == null) {
+        paramString4 = "";
+      }
+      paramString5 = paramString6;
+      if (paramString6 == null) {
+        paramString5 = "";
+      }
+      ThreadManager.post(new VasMonitorHandler.1(paramAppRuntime, paramString1, a(new String[] { "109", "8.4.1", paramString2, localObject, paramString4, paramString5 }), a(new Float[] { Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) }), paramString3), 5, null, false);
+      QLog.e("VasMonitorHandler", 1, "report err appid=" + paramString1 + ", errCode=" + paramString2 + ", log=" + paramString3 + ", key4=" + (String)localObject + ", value2=" + paramFloat1);
+      return;
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    this.b.set(true);
+    ThreadManager.post(new VasMonitorHandler.2(this, paramAppRuntime, paramBoolean), 8, null, true);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (!"gxhreport.report".equals(paramFromServiceMsg.getServiceCmd())) {}
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("VasMonitorHandler", 2, "onReceive res.isSuccess=" + paramFromServiceMsg.isSuccess() + ",data=" + bgva.a((byte[])paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgzu
  * JD-Core Version:    0.7.0.1
  */

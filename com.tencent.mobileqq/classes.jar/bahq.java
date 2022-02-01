@@ -1,84 +1,19 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 
-public class bahq
-  implements Manager
+public final class bahq
+  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  private static String jdField_a_of_type_JavaLangString = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
-  private static String b = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
-  private static String c = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
-  private static String d = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bahq(QQAppInterface paramQQAppInterface)
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
   }
   
-  public static String a()
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("tencentdoc_pre_img_url_doc", "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png");
-    }
-    return jdField_a_of_type_JavaLangString;
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
   }
-  
-  public static String b()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      b = localSharedPreferences.getString("tencentdoc_pre_img_url_sheet", "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png");
-    }
-    return b;
-  }
-  
-  public static String c()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      c = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_doc", "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png");
-    }
-    return c;
-  }
-  
-  public static String d()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      d = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_sheet", "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png");
-    }
-    return d;
-  }
-  
-  public Boolean a()
-  {
-    boolean bool2 = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    boolean bool3 = aoxa.a().a();
-    boolean bool1 = apjl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = aoxa.a().a();
-    if ((bool1) && (str != null)) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeamWorkManager", 2, "WL_DEBUG isShowTencentDocEntry isShowTencentDocEntry = " + bool3 + ", isUser = " + bool1 + ", userConfigPlusURL = " + str);
-      }
-      if ((bool3) || (bool1)) {
-        bool2 = true;
-      }
-      if ((!bool3) && (bool1)) {
-        apjl.a("0X80094DF");
-      }
-      return Boolean.valueOf(bool2);
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

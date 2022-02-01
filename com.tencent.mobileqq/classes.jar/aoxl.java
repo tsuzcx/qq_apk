@@ -1,56 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
 public class aoxl
+  implements View.OnTouchListener
 {
-  private Map<String, List<aoxm>> a = new HashMap();
+  public aoxl(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public static aoxl a(aoko[] paramArrayOfaoko)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
-    }
-    localaoxl = new aoxl();
-    try
+    switch (paramMotionEvent.getAction())
     {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
-      Iterator localIterator = paramArrayOfaoko.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfaoko.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(aoxm.a(localJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        localaoxl.a.put(str, localArrayList);
-      }
-      return localaoxl;
     }
-    catch (JSONException paramArrayOfaoko)
+    for (;;)
     {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaoko);
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
     }
-  }
-  
-  public Map<String, List<aoxm>> a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxl
  * JD-Core Version:    0.7.0.1
  */

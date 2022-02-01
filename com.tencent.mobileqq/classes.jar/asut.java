@@ -1,47 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asut
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+  implements View.OnClickListener
 {
-  asvx a;
-  public ImageView d;
-  
-  public asut(HotPicPageView paramHotPicPageView, View paramView, asvx paramasvx)
-  {
-    super(paramView);
-    if (paramasvx != null)
-    {
-      this.a = paramasvx;
-      this.d = ((ImageView)paramView.findViewById(2131367783));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramasvx);
-    }
-  }
+  public asut(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.a != null)
-    {
-      this.a.b(paramView, getPosition());
-      bool = true;
-    }
-    return bool;
+    QfileCloudFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

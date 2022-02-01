@@ -1,87 +1,33 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.OrientationEventListener;
-import android.view.WindowManager;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class mef
-  extends OrientationEventListener
+public class mef
+  extends lfe
 {
-  int jdField_a_of_type_Int = -25;
-  protected Context a;
-  Configuration jdField_a_of_type_AndroidContentResConfiguration;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  public mef(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public mef(Context paramContext, int paramInt)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_Boolean = muz.f(paramContext);
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
+    {
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
+    }
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public void onOrientationChanged(int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (paramInt == -1) {
-      this.jdField_a_of_type_Int = paramInt;
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
-      }
-    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt -= 90;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = paramInt + 360;
-      }
-    }
-    if (this.b) {}
-    for (paramInt = lno.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lno.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-    {
-      int j = paramInt;
-      if (paramInt > 360) {
-        j = paramInt % 360;
-      }
-      i -= j;
-      paramInt = i;
-      if (i < 0) {
-        paramInt = i + 360;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt <= 314) && (paramInt >= 45)) {
-        break;
-      }
-      a(0, this.b);
-      return;
-    }
-    if ((paramInt > 44) && (paramInt < 135))
-    {
-      a(90, this.b);
-      return;
-    }
-    if ((paramInt > 134) && (paramInt < 225))
-    {
-      a(180, this.b);
-      return;
-    }
-    a(270, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mef
  * JD-Core Version:    0.7.0.1
  */

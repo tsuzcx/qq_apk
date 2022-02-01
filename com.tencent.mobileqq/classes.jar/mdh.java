@@ -1,57 +1,73 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class mdh
-  extends mdf
+class mdh
+  implements View.OnClickListener
 {
-  protected Drawable a;
-  protected String b;
-  protected int k = 0;
+  mdh(mdf parammdf) {}
   
-  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-  }
-  
-  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
-    this.b = paramString2;
-    this.k = paramInt5;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public Drawable a()
-  {
-    return this.a;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.a = paramDrawable;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public int k()
-  {
-    return this.k;
+    boolean bool = false;
+    Object localObject = (mdi)paramView.getTag();
+    if (((mdi)localObject).c) {
+      if (this.a.jdField_a_of_type_Int == 1)
+      {
+        bcst.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
+        if ((!((mdi)localObject).c) || (!((mdi)localObject).d)) {
+          break label242;
+        }
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695054, 1).a();
+        if (this.a.jdField_a_of_type_Int != 1) {
+          break label235;
+        }
+        localObject = "0x8007CB5";
+        label108:
+        lld.a((String)localObject);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      bcst.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
+      break;
+      if (this.a.jdField_a_of_type_Int == 1)
+      {
+        bcst.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
+        break;
+      }
+      if (this.a.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      bcst.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
+      break;
+      label235:
+      localObject = "0x8007CB6";
+      break label108;
+      label242:
+      VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvVideoController;
+      long l = ((mdi)localObject).a;
+      if (!((mdi)localObject).c) {
+        bool = true;
+      }
+      if ((localVideoController.a(l, bool)) && (((mdi)localObject).c)) {
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131694900, 1).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdh
  * JD-Core Version:    0.7.0.1
  */

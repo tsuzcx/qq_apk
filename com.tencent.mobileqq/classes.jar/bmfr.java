@@ -1,44 +1,17 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-
-class bmfr
-  implements GestureDetector.OnGestureListener
+public class bmfr
 {
-  private bmfr(bmfm parambmfm) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public bmfr()
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    paramMotionEvent2.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent2.getX();
-    paramFloat1 = paramMotionEvent2.getY();
-    float f = paramMotionEvent1.getY();
-    paramMotionEvent1.getY();
-    paramMotionEvent2.getY();
-    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
-      this.a.l();
-    }
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return true;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

@@ -1,15 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.memory;
 
-import abvb;
+import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewStub;
 import com.tencent.biz.qqstory.app.QQStoryContext;
@@ -17,24 +19,25 @@ import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesReloadListView;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import wmz;
-import wna;
-import wnb;
-import wxe;
-import wxj;
-import xwi;
+import ygk;
+import ygl;
+import ygm;
+import yqp;
+import yqu;
+import zpt;
 
 public class QQStoryMemoriesActivity
   extends QQStoryBaseActivity
-  implements wnb, xwi
+  implements ygm, zpt
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
   private StoryMemoriesReloadListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView;
   private String jdField_a_of_type_JavaLangString;
-  private wna jdField_a_of_type_Wna;
+  private ygl jdField_a_of_type_Ygl;
   
   public static Intent a(Context paramContext, int paramInt, long paramLong)
   {
@@ -61,7 +64,7 @@ public class QQStoryMemoriesActivity
     }
     for (;;)
     {
-      wxj.a("memory", "clk_entry", paramInt, 0, new String[] { i + "", "", "", "" });
+      yqu.a("memory", "clk_entry", paramInt, 0, new String[] { i + "", "", "", "" });
       i = paramInt;
       if ((paramContext instanceof SplashActivity))
       {
@@ -103,10 +106,10 @@ public class QQStoryMemoriesActivity
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Wna.a(paramString);
+      this.jdField_a_of_type_Ygl.a(paramString);
       return;
     }
-    this.jdField_a_of_type_Wna.b(paramLong);
+    this.jdField_a_of_type_Ygl.b(paramLong);
   }
   
   public static void a(Context paramContext, int paramInt, long paramLong)
@@ -126,20 +129,20 @@ public class QQStoryMemoriesActivity
   
   private void a(String paramString)
   {
-    wxe.a("Q.qqstory.memories.QQStoryMemoriesActivity", "get valid uid. start creating fragment. uid = %s.", paramString);
-    findViewById(2131369793).setVisibility(8);
+    yqp.a("Q.qqstory.memories.QQStoryMemoriesActivity", "get valid uid. start creating fragment. uid = %s.", paramString);
+    findViewById(2131370230).setVisibility(8);
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView != null) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.setVisibility(8);
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = StoryMemoriesFragment.a(this.jdField_a_of_type_Int, paramString);
-    localFragmentTransaction.replace(2131364736, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
+    localFragmentTransaction.replace(2131364961, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
   private void e()
   {
-    setContentViewNoTitle(2131561492);
+    setContentViewNoTitle(2131561727);
   }
   
   private void f()
@@ -148,15 +151,15 @@ public class QQStoryMemoriesActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("source", 1);
     this.jdField_a_of_type_Long = localIntent.getLongExtra("qq_number", -1L);
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("union_id");
-    wxe.d("Q.qqstory.memories.QQStoryMemoriesActivity", "get arguments. uid = %s, mQQ = %d, mFrom = %d.", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_Wna = new wna();
-    this.jdField_a_of_type_Wna.a(this);
+    yqp.d("Q.qqstory.memories.QQStoryMemoriesActivity", "get arguments. uid = %s, mQQ = %d, mFrom = %d.", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Ygl = new ygl();
+    this.jdField_a_of_type_Ygl.a(this);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Wna.a(this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Ygl.a(this.jdField_a_of_type_Long);
       return;
     }
-    if (!wmz.a(this.jdField_a_of_type_JavaLangString))
+    if (!ygk.a(this.jdField_a_of_type_JavaLangString))
     {
       a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
       return;
@@ -166,14 +169,14 @@ public class QQStoryMemoriesActivity
   
   private void g()
   {
-    View localView1 = findViewById(2131369793);
-    View localView2 = findViewById(2131373817);
+    View localView1 = findViewById(2131370230);
+    View localView2 = findViewById(2131374519);
     localView1.setVisibility(8);
     if (localView2 != null)
     {
-      wxe.b("Q.qqstory.memories.QQStoryMemoriesActivity", "get invalid uid. inflate reload list.");
+      yqp.b("Q.qqstory.memories.QQStoryMemoriesActivity", "get invalid uid. inflate reload list.");
       ((ViewStub)localView2).inflate();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView = ((StoryMemoriesReloadListView)findViewById(2131373816));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView = ((StoryMemoriesReloadListView)findViewById(2131374518));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.a(this);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.j();
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewStoryMemoriesReloadListView.setPullToRefreshListener(this);
@@ -182,7 +185,7 @@ public class QQStoryMemoriesActivity
   
   public void a()
   {
-    wxe.a("Q.qqstory.memories.QQStoryMemoriesActivity", "pull to refresh. uid = %s, qq = %d.", this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
+    yqp.a("Q.qqstory.memories.QQStoryMemoriesActivity", "pull to refresh. uid = %s, qq = %d.", this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
     a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
@@ -190,16 +193,16 @@ public class QQStoryMemoriesActivity
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed())))
     {
-      wxe.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid back when activity has destroyed.");
+      yqp.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid back when activity has destroyed.");
       return;
     }
-    if (wmz.a(this.jdField_a_of_type_JavaLangString))
+    if (ygk.a(this.jdField_a_of_type_JavaLangString))
     {
-      wxe.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid is already valid on new uid back. current uid is %s, new uid is %s.", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
+      yqp.e("Q.qqstory.memories.QQStoryMemoriesActivity", "uid is already valid on new uid back. current uid is %s, new uid is %s.", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
       return;
     }
-    wxe.a("Q.qqstory.memories.QQStoryMemoriesActivity", "on uid back. uid = %s, fromNet = %s.", paramString, Boolean.valueOf(paramBoolean));
-    if (wmz.a(paramString))
+    yqp.a("Q.qqstory.memories.QQStoryMemoriesActivity", "on uid back. uid = %s, fromNet = %s.", paramString, Boolean.valueOf(paramBoolean));
+    if (ygk.a(paramString))
     {
       this.jdField_a_of_type_JavaLangString = paramString;
       a(this.jdField_a_of_type_JavaLangString);
@@ -216,6 +219,14 @@ public class QQStoryMemoriesActivity
   protected void d()
   {
     ImmersiveUtils.a(getActivity().getWindow());
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -274,12 +285,18 @@ public class QQStoryMemoriesActivity
   public void finish()
   {
     super.finish();
-    abvb.a(this);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity
  * JD-Core Version:    0.7.0.1
  */

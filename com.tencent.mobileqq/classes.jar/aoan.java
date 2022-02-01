@@ -1,14 +1,29 @@
-public abstract interface aoan
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+
+public class aoan
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  public aoan(RegisterProxy paramRegisterProxy, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(aoaj paramaoaj);
-  
-  public abstract void b(int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    RegisterProxy.a(this.a, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoan
  * JD-Core Version:    0.7.0.1
  */

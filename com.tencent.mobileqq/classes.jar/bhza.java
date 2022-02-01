@@ -1,28 +1,49 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhza
-  extends ReplacementSpan
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int a;
+  public bhza(ParticipleView paramParticipleView) {}
   
-  public bhza(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return this.a;
+    long l = System.currentTimeMillis();
+    paramValueAnimator = ParticipleView.a(this.a).iterator();
+    int i = 1;
+    if (paramValueAnimator.hasNext())
+    {
+      bhze localbhze = (bhze)paramValueAnimator.next();
+      float f = Math.min((float)(l - bhze.a(localbhze)) / ParticipleView.a(this.a), 1.0F);
+      bhze.a(localbhze, f);
+      if (f < 1.0F) {
+        i = 0;
+      }
+      for (;;)
+      {
+        break;
+        paramValueAnimator.remove();
+      }
+    }
+    if (i != 0)
+    {
+      ParticipleView.a(this.a).cancel();
+      ParticipleView.a(this.a, null);
+      ParticipleView.a(this.a).clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+      }
+    }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhza
  * JD-Core Version:    0.7.0.1
  */

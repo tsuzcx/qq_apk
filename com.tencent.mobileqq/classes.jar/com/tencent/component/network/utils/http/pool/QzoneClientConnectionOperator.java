@@ -144,7 +144,7 @@ public class QzoneClientConnectionOperator
     //   251: ifnull +9 -> 260
     //   254: aload 7
     //   256: arraylength
-    //   257: ifgt +313 -> 570
+    //   257: ifgt +330 -> 587
     //   260: aload_2
     //   261: invokevirtual 88	org/apache/http/HttpHost:getHostName	()Ljava/lang/String;
     //   264: invokestatic 124	java/net/InetAddress:getAllByName	(Ljava/lang/String;)[Ljava/net/InetAddress;
@@ -188,144 +188,153 @@ public class QzoneClientConnectionOperator
     //   345: invokeinterface 134 3 0
     //   350: aload 13
     //   352: astore 10
-    //   354: aload 9
-    //   356: ifnull +162 -> 518
-    //   359: aload 9
-    //   361: aload 10
-    //   363: aload_2
-    //   364: invokevirtual 88	org/apache/http/HttpHost:getHostName	()Ljava/lang/String;
-    //   367: aload 14
-    //   369: aload_2
-    //   370: invokevirtual 138	org/apache/http/HttpHost:getPort	()I
-    //   373: invokevirtual 142	org/apache/http/conn/scheme/Scheme:resolvePort	(I)I
-    //   376: iconst_1
-    //   377: invokeinterface 149 5 0
-    //   382: astore 12
-    //   384: aload 12
-    //   386: aload 10
-    //   388: if_acmpeq +12 -> 400
-    //   391: aload_1
-    //   392: aload 12
-    //   394: aload_2
-    //   395: invokeinterface 134 3 0
-    //   400: aload_0
+    //   354: aload 4
+    //   356: ldc 148
+    //   358: aload 7
+    //   360: iload 6
+    //   362: aaload
+    //   363: invokevirtual 108	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   366: invokeinterface 154 3 0
+    //   371: aload 9
+    //   373: ifnull +162 -> 535
+    //   376: aload 9
+    //   378: aload 10
+    //   380: aload_2
+    //   381: invokevirtual 88	org/apache/http/HttpHost:getHostName	()Ljava/lang/String;
+    //   384: aload 14
+    //   386: aload_2
+    //   387: invokevirtual 138	org/apache/http/HttpHost:getPort	()I
+    //   390: invokevirtual 142	org/apache/http/conn/scheme/Scheme:resolvePort	(I)I
+    //   393: iconst_1
+    //   394: invokeinterface 157 5 0
+    //   399: astore 12
     //   401: aload 12
-    //   403: aload 4
-    //   405: aload 5
-    //   407: invokevirtual 153	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:prepareSocket	(Ljava/net/Socket;Lorg/apache/http/protocol/HttpContext;Lorg/apache/http/params/HttpParams;)V
-    //   410: aload_1
-    //   411: aload 11
-    //   413: aload 12
-    //   415: invokeinterface 157 2 0
-    //   420: aload 5
-    //   422: invokeinterface 161 3 0
-    //   427: return
-    //   428: astore 10
-    //   430: iload 6
-    //   432: aload 7
-    //   434: arraylength
-    //   435: iconst_1
-    //   436: isub
-    //   437: if_icmpne +124 -> 561
-    //   440: new 163	org/apache/http/conn/HttpHostConnectException
-    //   443: dup
-    //   444: aload_2
-    //   445: aload 10
-    //   447: invokespecial 166	org/apache/http/conn/HttpHostConnectException:<init>	(Lorg/apache/http/HttpHost;Ljava/net/ConnectException;)V
-    //   450: athrow
-    //   451: astore 10
-    //   453: aload_0
-    //   454: getfield 24	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:customDnsResolve	Lcom/tencent/component/network/utils/http/pool/CustomDnsResolve;
-    //   457: ifnull +58 -> 515
-    //   460: ldc 115
-    //   462: ldc 168
-    //   464: aload 10
-    //   466: invokestatic 172	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   469: aload_0
-    //   470: getfield 24	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:customDnsResolve	Lcom/tencent/component/network/utils/http/pool/CustomDnsResolve;
-    //   473: aload_2
-    //   474: invokevirtual 88	org/apache/http/HttpHost:getHostName	()Ljava/lang/String;
-    //   477: invokevirtual 175	com/tencent/component/network/utils/http/pool/CustomDnsResolve:resolveByDns	(Ljava/lang/String;)[Ljava/net/InetAddress;
-    //   480: astore 7
-    //   482: aload 7
-    //   484: ifnull +9 -> 493
-    //   487: aload 7
-    //   489: arraylength
-    //   490: ifgt +15 -> 505
-    //   493: ldc 115
-    //   495: ldc 168
-    //   497: aload 10
-    //   499: invokestatic 172	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   502: aload 10
-    //   504: athrow
-    //   505: ldc 115
-    //   507: ldc 177
-    //   509: invokestatic 179	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   512: goto -243 -> 269
-    //   515: aload 10
-    //   517: athrow
-    //   518: aload_0
+    //   403: aload 10
+    //   405: if_acmpeq +12 -> 417
+    //   408: aload_1
+    //   409: aload 12
+    //   411: aload_2
+    //   412: invokeinterface 134 3 0
+    //   417: aload_0
+    //   418: aload 12
+    //   420: aload 4
+    //   422: aload 5
+    //   424: invokevirtual 161	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:prepareSocket	(Ljava/net/Socket;Lorg/apache/http/protocol/HttpContext;Lorg/apache/http/params/HttpParams;)V
+    //   427: aload_1
+    //   428: aload 11
+    //   430: aload 12
+    //   432: invokeinterface 165 2 0
+    //   437: aload 5
+    //   439: invokeinterface 169 3 0
+    //   444: return
+    //   445: astore 10
+    //   447: iload 6
+    //   449: aload 7
+    //   451: arraylength
+    //   452: iconst_1
+    //   453: isub
+    //   454: if_icmpne +124 -> 578
+    //   457: new 171	org/apache/http/conn/HttpHostConnectException
+    //   460: dup
+    //   461: aload_2
+    //   462: aload 10
+    //   464: invokespecial 174	org/apache/http/conn/HttpHostConnectException:<init>	(Lorg/apache/http/HttpHost;Ljava/net/ConnectException;)V
+    //   467: athrow
+    //   468: astore 10
+    //   470: aload_0
+    //   471: getfield 24	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:customDnsResolve	Lcom/tencent/component/network/utils/http/pool/CustomDnsResolve;
+    //   474: ifnull +58 -> 532
+    //   477: ldc 115
+    //   479: ldc 176
+    //   481: aload 10
+    //   483: invokestatic 180	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   486: aload_0
+    //   487: getfield 24	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:customDnsResolve	Lcom/tencent/component/network/utils/http/pool/CustomDnsResolve;
+    //   490: aload_2
+    //   491: invokevirtual 88	org/apache/http/HttpHost:getHostName	()Ljava/lang/String;
+    //   494: invokevirtual 183	com/tencent/component/network/utils/http/pool/CustomDnsResolve:resolveByDns	(Ljava/lang/String;)[Ljava/net/InetAddress;
+    //   497: astore 7
+    //   499: aload 7
+    //   501: ifnull +9 -> 510
+    //   504: aload 7
+    //   506: arraylength
+    //   507: ifgt +15 -> 522
+    //   510: ldc 115
+    //   512: ldc 176
+    //   514: aload 10
+    //   516: invokestatic 180	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   519: aload 10
-    //   521: aload 4
-    //   523: aload 5
-    //   525: invokevirtual 153	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:prepareSocket	(Ljava/net/Socket;Lorg/apache/http/protocol/HttpContext;Lorg/apache/http/params/HttpParams;)V
-    //   528: aload_1
-    //   529: aload 11
-    //   531: aload 10
-    //   533: invokeinterface 157 2 0
-    //   538: aload 5
-    //   540: invokeinterface 161 3 0
-    //   545: return
-    //   546: astore 10
-    //   548: iload 6
-    //   550: aload 7
-    //   552: arraylength
-    //   553: iconst_1
-    //   554: isub
-    //   555: if_icmpne +6 -> 561
-    //   558: aload 10
-    //   560: athrow
-    //   561: iload 6
-    //   563: iconst_1
-    //   564: iadd
-    //   565: istore 6
-    //   567: goto -295 -> 272
-    //   570: goto -301 -> 269
+    //   521: athrow
+    //   522: ldc 115
+    //   524: ldc 185
+    //   526: invokestatic 187	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   529: goto -260 -> 269
+    //   532: aload 10
+    //   534: athrow
+    //   535: aload_0
+    //   536: aload 10
+    //   538: aload 4
+    //   540: aload 5
+    //   542: invokevirtual 161	com/tencent/component/network/utils/http/pool/QzoneClientConnectionOperator:prepareSocket	(Ljava/net/Socket;Lorg/apache/http/protocol/HttpContext;Lorg/apache/http/params/HttpParams;)V
+    //   545: aload_1
+    //   546: aload 11
+    //   548: aload 10
+    //   550: invokeinterface 165 2 0
+    //   555: aload 5
+    //   557: invokeinterface 169 3 0
+    //   562: return
+    //   563: astore 10
+    //   565: iload 6
+    //   567: aload 7
+    //   569: arraylength
+    //   570: iconst_1
+    //   571: isub
+    //   572: if_icmpne +6 -> 578
+    //   575: aload 10
+    //   577: athrow
+    //   578: iload 6
+    //   580: iconst_1
+    //   581: iadd
+    //   582: istore 6
+    //   584: goto -312 -> 272
+    //   587: goto -318 -> 269
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	573	0	this	QzoneClientConnectionOperator
-    //   0	573	1	paramOperatedClientConnection	OperatedClientConnection
-    //   0	573	2	paramHttpHost	HttpHost
-    //   0	573	3	paramInetAddress	java.net.InetAddress
-    //   0	573	4	paramHttpContext	HttpContext
-    //   0	573	5	paramHttpParams	HttpParams
-    //   156	410	6	i	int
-    //   144	407	7	arrayOfInetAddress	java.net.InetAddress[]
+    //   0	590	0	this	QzoneClientConnectionOperator
+    //   0	590	1	paramOperatedClientConnection	OperatedClientConnection
+    //   0	590	2	paramHttpHost	HttpHost
+    //   0	590	3	paramInetAddress	java.net.InetAddress
+    //   0	590	4	paramHttpContext	HttpContext
+    //   0	590	5	paramHttpParams	HttpParams
+    //   156	427	6	i	int
+    //   144	424	7	arrayOfInetAddress	java.net.InetAddress[]
     //   117	182	8	localObject1	java.lang.Object
-    //   124	236	9	localLayeredSocketFactory	org.apache.http.conn.scheme.LayeredSocketFactory
-    //   148	239	10	localObject2	java.lang.Object
-    //   428	18	10	localConnectException	java.net.ConnectException
-    //   451	81	10	localThrowable	java.lang.Throwable
-    //   546	13	10	localConnectTimeoutException	org.apache.http.conn.ConnectTimeoutException
-    //   104	426	11	localSocketFactory	org.apache.http.conn.scheme.SocketFactory
-    //   287	127	12	localSocket1	Socket
+    //   124	253	9	localLayeredSocketFactory	org.apache.http.conn.scheme.LayeredSocketFactory
+    //   148	256	10	localObject2	java.lang.Object
+    //   445	18	10	localConnectException	java.net.ConnectException
+    //   468	81	10	localThrowable	java.lang.Throwable
+    //   563	13	10	localConnectTimeoutException	org.apache.http.conn.ConnectTimeoutException
+    //   104	443	11	localSocketFactory	org.apache.http.conn.scheme.SocketFactory
+    //   287	144	12	localSocket1	Socket
     //   328	23	13	localSocket2	Socket
-    //   73	295	14	localScheme	org.apache.http.conn.scheme.Scheme
+    //   73	312	14	localScheme	org.apache.http.conn.scheme.Scheme
     // Exception table:
     //   from	to	target	type
-    //   298	330	428	java/net/ConnectException
-    //   341	350	428	java/net/ConnectException
-    //   359	384	428	java/net/ConnectException
-    //   391	400	428	java/net/ConnectException
-    //   400	427	428	java/net/ConnectException
-    //   518	545	428	java/net/ConnectException
-    //   260	269	451	java/lang/Throwable
-    //   298	330	546	org/apache/http/conn/ConnectTimeoutException
-    //   341	350	546	org/apache/http/conn/ConnectTimeoutException
-    //   359	384	546	org/apache/http/conn/ConnectTimeoutException
-    //   391	400	546	org/apache/http/conn/ConnectTimeoutException
-    //   400	427	546	org/apache/http/conn/ConnectTimeoutException
-    //   518	545	546	org/apache/http/conn/ConnectTimeoutException
+    //   298	330	445	java/net/ConnectException
+    //   341	350	445	java/net/ConnectException
+    //   354	371	445	java/net/ConnectException
+    //   376	401	445	java/net/ConnectException
+    //   408	417	445	java/net/ConnectException
+    //   417	444	445	java/net/ConnectException
+    //   535	562	445	java/net/ConnectException
+    //   260	269	468	java/lang/Throwable
+    //   298	330	563	org/apache/http/conn/ConnectTimeoutException
+    //   341	350	563	org/apache/http/conn/ConnectTimeoutException
+    //   354	371	563	org/apache/http/conn/ConnectTimeoutException
+    //   376	401	563	org/apache/http/conn/ConnectTimeoutException
+    //   408	417	563	org/apache/http/conn/ConnectTimeoutException
+    //   417	444	563	org/apache/http/conn/ConnectTimeoutException
+    //   535	562	563	org/apache/http/conn/ConnectTimeoutException
   }
   
   protected void prepareSocket(Socket paramSocket, HttpContext paramHttpContext, HttpParams paramHttpParams)
@@ -340,7 +349,7 @@ public class QzoneClientConnectionOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.utils.http.pool.QzoneClientConnectionOperator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.HashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.RspBody;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvi
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public auvi(NearbyJsInterface paramNearbyJsInterface, String paramString, boolean paramBoolean) {}
+  public auvi(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramInt = 1;
-    int i = 0;
-    Object localObject;
-    if ((paramBoolean) && (paramBundle != null))
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
+      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject, 0);
+      localObject = auud.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
+      aceh.a(ampj.a(), "769", "205019", (String)localObject, "76901", "1", "160", new String[] { auud.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
+      ((VasExtensionHandler)ampj.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()) && (paramBundle.bytes_bodybuffer.get() != null))
-        {
-          localObject = new oidb_0x8c1.RspBody();
-          ((oidb_0x8c1.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          paramBundle = (oidb_0x8c1.SelfCardInfo)((oidb_0x8c1.RspBody)localObject).msg_card_info.get();
-          if (!paramBundle.int32_friend_flag.has()) {
-            break label257;
-          }
-          if (paramBundle.int32_friend_flag.get() != 1) {
-            continue;
-          }
-          break label264;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_Yqz.a(paramBundle.bytes_xml_msg.get().toByteArray(), String.valueOf(paramBundle.uint64_uin.get()), 2, paramInt);
-          paramBundle = new auvl(String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(this.jdField_a_of_type_JavaLangString), paramBundle);
-          if (this.jdField_a_of_type_Boolean) {
-            NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, paramBundle);
-          }
-        }
-        return;
-        paramInt = 0;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramInt = 1001;
-      continue;
-      label257:
-      paramInt = 1001;
-      continue;
-      label264:
-      if (paramInt != 0) {
-        paramInt = i;
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvi
  * JD-Core Version:    0.7.0.1
  */

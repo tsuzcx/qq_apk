@@ -1,26 +1,47 @@
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
+import java.util.HashMap;
+
 public class aolg
+  extends aojs
 {
-  @atgw(a="poll_interval")
-  public int a;
-  @atgw(a="jump_url")
-  public String a;
-  @atgw(a="search_empty_show_troop_recommend")
-  public int b;
-  
-  public aolg()
+  public aolg(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static aolg a(String paramString)
+  private boolean C()
   {
-    return (aolg)atgx.a(paramString, aolg.class);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, HcePluginInstallActivity.class);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("from_type")) && (!bgsp.a((String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))) && ("2".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))))
+      {
+        boolean bool = C();
+        return bool;
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QwalletToBuscardAction", 1, "doAction error: " + localException.getMessage());
+      a("QwalletToBuscardAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,47 @@
-import android.support.annotation.NonNull;
-import android.view.Surface;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-public abstract interface axuo
+class axuo
+  implements Animation.AnimationListener
 {
-  public abstract Surface a();
+  axuo(axtp paramaxtp) {}
   
-  public abstract void a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (paramAnimation == axtp.b(this.a))
+    {
+      axtp.a(this.a).setVisibility(8);
+      axtp.a(this.a).setVisibility(4);
+      axtp.a(this.a).clearAnimation();
+      axtp.a(this.a).clearAnimation();
+      axtp.a(this.a).setBackgroundResource(2130849136);
+      axtp.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166686));
+      axtp.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166686));
+    }
+  }
   
-  public abstract void a(@NonNull axua paramaxua, boolean paramBoolean);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void b();
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == axtp.a(this.a))
+    {
+      axtp.a(this.a).setVisibility(0);
+      axtp.a(this.a).setVisibility(0);
+      axtp.a(this.a).setBackgroundResource(2130850652);
+      axtp.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166980));
+      axtp.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166980));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axuo
  * JD-Core Version:    0.7.0.1
  */

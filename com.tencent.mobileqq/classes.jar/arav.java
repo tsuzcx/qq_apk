@@ -1,70 +1,145 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.FileExtInfo;
-import cooperation.weiyun.channel.pb.WeiyunPB.FileItem;
-import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgRsp;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arav
-  implements bkkj<WeiyunPB.LibInfoListGetMsgRsp>
+public class arav
 {
-  arav(arau paramarau, String paramString) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  public void a(int paramInt, String paramString, WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
+  public static arav a(aqlg[] paramArrayOfaqlg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    int j = 0;
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
     }
-    arau.a(this.jdField_a_of_type_Arau).a().a(false, 31, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_JavaLangString });
-  }
-  
-  public void a(WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onSucceed, num[" + paramLibInfoListGetMsgRsp.FileItem_items.size() + "]");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = paramLibInfoListGetMsgRsp.FileItem_items.get().iterator();
-    while (((Iterator)localObject1).hasNext())
+    arav localarav = new arav();
+    try
     {
-      localObject2 = (WeiyunPB.FileItem)((Iterator)localObject1).next();
-      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-      localWeiYunFileInfo.jdField_b_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_mtime.get();
-      localWeiYunFileInfo.jdField_a_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_size.get();
-      localWeiYunFileInfo.jdField_a_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.from_source.get();
-      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = ((WeiyunPB.FileItem)localObject2).file_id.get();
-      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = bkmh.a(((WeiyunPB.FileItem)localObject2).pdir_key.get());
-      localWeiYunFileInfo.c = ((WeiyunPB.FileItem)localObject2).filename.get();
-      localWeiYunFileInfo.f = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_name.get();
-      localWeiYunFileInfo.g = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_value.get();
-      localWeiYunFileInfo.e = ((WeiyunPB.FileItem)localObject2).ext_info.thumb_url.get();
-      localWeiYunFileInfo.d = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_host.get();
-      localWeiYunFileInfo.jdField_b_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_port.get();
-      localWeiYunFileInfo.i = bkmh.a(((WeiyunPB.FileItem)localObject2).file_md5.get());
-      localWeiYunFileInfo.j = bkmh.a(((WeiyunPB.FileItem)localObject2).file_sha.get());
-      if (!arau.a(this.jdField_a_of_type_Arau).containsKey(localWeiYunFileInfo.jdField_a_of_type_JavaLangString))
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString);
+      if (!paramArrayOfaqlg.has("DocsImportFileInfo")) {
+        break label412;
+      }
+      paramArrayOfaqlg = paramArrayOfaqlg.getJSONObject("DocsImportFileInfo");
+      if (paramArrayOfaqlg.has("importFileMaxSize"))
       {
-        arau.a(this.jdField_a_of_type_Arau).put(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo);
-        localArrayList.add(localWeiYunFileInfo);
+        localObject1 = paramArrayOfaqlg.getString("importFileMaxSize");
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          localarav.jdField_a_of_type_Long = Long.parseLong((String)localObject1);
+        }
+      }
+      if (!paramArrayOfaqlg.has("importFileType")) {
+        break label245;
+      }
+      localObject1 = paramArrayOfaqlg.getJSONArray("importFileType");
+      localStringBuilder = new StringBuilder();
+      localObject2 = new StringBuilder();
+      if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
+        break label227;
+      }
+      i = 0;
+    }
+    catch (JSONException paramArrayOfaqlg)
+    {
+      label412:
+      for (;;)
+      {
+        Object localObject1;
+        StringBuilder localStringBuilder;
+        Object localObject2;
+        int i;
+        JSONObject localJSONObject;
+        label227:
+        label245:
+        if (QLog.isColorLevel())
+        {
+          QLog.e("TencentDocImportFileInfoBean", 1, "exception = " + paramArrayOfaqlg.toString());
+          continue;
+          i += 1;
+          continue;
+          i += 1;
+        }
       }
     }
-    localObject1 = arau.a(this.jdField_a_of_type_Arau).a();
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if (paramLibInfoListGetMsgRsp.finish_flag.get() == 1) {}
-    for (boolean bool = true;; bool = false)
+    if (i < ((JSONArray)localObject1).length())
     {
-      ((aqwn)localObject1).a(true, 31, new Object[] { localObject2, Boolean.valueOf(bool), Integer.valueOf(paramLibInfoListGetMsgRsp.FileItem_items.size()), paramLibInfoListGetMsgRsp.server_version.get(), localArrayList, Integer.valueOf(arau.a(this.jdField_a_of_type_Arau)) });
-      return;
+      localJSONObject = (JSONObject)((JSONArray)localObject1).get(i);
+      if (localJSONObject.has("suffix"))
+      {
+        localStringBuilder.append(localJSONObject.getString("suffix"));
+        ((StringBuilder)localObject2).append(localJSONObject.getString("suffix"));
+        if (localJSONObject.has("maxSize")) {
+          ((StringBuilder)localObject2).append("_").append(localJSONObject.getString("maxSize")).append("#");
+        }
+      }
     }
+    else
+    {
+      localarav.b = ((StringBuilder)localObject2).toString();
+      localarav.c = localStringBuilder.toString();
+      if (paramArrayOfaqlg.has("fileGroupType"))
+      {
+        localObject1 = paramArrayOfaqlg.getJSONArray("fileGroupType");
+        localStringBuilder = new StringBuilder();
+        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+        {
+          i = j;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
+            if ((!((JSONObject)localObject2).has("group")) || (!((JSONObject)localObject2).has("suffix"))) {
+              break label459;
+            }
+            localStringBuilder.append(((JSONObject)localObject2).getString("group") + "_" + ((JSONObject)localObject2).getString("suffix") + "&");
+            break label459;
+          }
+        }
+        localarav.d = localStringBuilder.toString();
+      }
+      if (paramArrayOfaqlg.has("importFileTips"))
+      {
+        paramArrayOfaqlg = paramArrayOfaqlg.getString("importFileTips");
+        if (!TextUtils.isEmpty(paramArrayOfaqlg)) {
+          localarav.jdField_a_of_type_JavaLangString = paramArrayOfaqlg;
+        }
+      }
+      return localarav;
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 

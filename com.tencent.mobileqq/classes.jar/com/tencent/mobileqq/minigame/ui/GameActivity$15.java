@@ -1,24 +1,55 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.ActivityManager.TaskDescription;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import bgmo;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.util.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
 class GameActivity$15
   implements Runnable
 {
-  GameActivity$15(GameActivity paramGameActivity) {}
+  GameActivity$15(GameActivity paramGameActivity, MiniAppConfig paramMiniAppConfig) {}
   
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    localBundle.putString("param_proc_modulename", "mini_app_client_module");
-    this.this$0.onProcessBackground(localBundle);
+    try
+    {
+      Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(URLDecoder.decode(this.val$miniConfig.config.iconUrl), null));
+      if (localBitmap != null)
+      {
+        int i = (int)(localBitmap.getWidth() / 4.0F);
+        Object localObject = RoundedBitmapDrawableFactory.create(this.this$0.getResources(), localBitmap);
+        ((RoundedBitmapDrawable)localObject).setCornerRadius(i);
+        ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bgmo.b((Drawable)localObject));
+          this.this$0.setTaskDescription((ActivityManager.TaskDescription)localObject);
+        }
+        if (!localBitmap.isRecycled()) {
+          localBitmap.recycle();
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-start", 1, "GameActivity changeWindowInfo exception.", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.15
  * JD-Core Version:    0.7.0.1
  */

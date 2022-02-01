@@ -1,40 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
-class ased
-  extends bfzo
+public class ased
+  implements awnc<EmoticonPackage>
 {
-  ased(aseb paramaseb) {}
+  public ased(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.a.x();
-    if (aseb.a(this.a) != -1)
+    if (paramEmoticonPackage == null)
     {
-      if ((!paramBoolean) || (paramHashMap == null)) {
-        break label151;
-      }
-      String str = (String)paramHashMap.get("uin");
-      paramHashMap = (String)paramHashMap.get("url");
-      aseb.a(this.a, paramHashMap);
-      aseb.b(this.a, paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aseb.a(this.a) + " mTroopNotNeedVefifyLink=" + aseb.b(this.a));
-      }
-      if ((str != null) && (str.equals(aseb.c(this.a)))) {
-        aseb.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      aseb.a(this.a, -1);
+      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
       return;
-      label151:
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131693136), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
   }
 }
 

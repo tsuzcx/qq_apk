@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azqs;
-import baic;
+import android.view.MotionEvent;
+import bcst;
+import bdjg;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -12,7 +15,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import ntw;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import oda;
 
 public class QQBrowserDelegationActivity
   extends BaseActivity
@@ -31,22 +35,30 @@ public class QQBrowserDelegationActivity
     do
     {
       int i;
-      ntw localntw;
+      oda localoda;
       do
       {
         return;
         i = 0;
-        localntw = (ntw)paramQQAppInterface.getManager(88);
-        if ("3046055438".equals(localntw.i)) {
+        localoda = (oda)paramQQAppInterface.getManager(88);
+        if ("3046055438".equals(localoda.i)) {
           i = 1;
         }
-        localntw.i = null;
+        localoda.i = null;
       } while (i == 0);
       paramIntent.setClass(this, BusinessBrowser.class);
       paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.a().a(localntw.i, 1008);
+      paramQQAppInterface = paramQQAppInterface.a().a(localoda.i, 1008);
     } while (paramQQAppInterface == null);
     paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -72,7 +84,7 @@ public class QQBrowserDelegationActivity
       default: 
         localIntent.setClass(this, QQBrowserActivity.class);
         str = localIntent.getStringExtra("url");
-        if (!baic.b(str)) {
+        if (!bdjg.b(str)) {
           break label244;
         }
         paramBundle = null;
@@ -84,10 +96,10 @@ public class QQBrowserDelegationActivity
       }
       for (;;)
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!baic.a(this, str, baic.a(this.app, paramBundle, i)))) {
+        if ((TextUtils.isEmpty(paramBundle)) || (!bdjg.a(this, str, bdjg.a(this.app, paramBundle, i)))) {
           break label244;
         }
-        azqs.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        bcst.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
         localIntent.setClass(this, QQH5BrowserActivity.class);
@@ -100,7 +112,7 @@ public class QQBrowserDelegationActivity
         }
       }
       paramBundle = localIntent;
-      if (!baic.a(str)) {
+      if (!bdjg.a(str)) {
         break label309;
       }
       if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {
@@ -137,6 +149,13 @@ public class QQBrowserDelegationActivity
     this.mCanLock = true;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
@@ -144,7 +163,7 @@ public class QQBrowserDelegationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserDelegationActivity
  * JD-Core Version:    0.7.0.1
  */

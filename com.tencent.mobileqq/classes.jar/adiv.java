@@ -1,54 +1,70 @@
+import android.app.Dialog;
 import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class adiv
-  extends adix
+  implements bkhw
 {
-  protected View a;
-  protected String a;
-  protected boolean a;
+  int jdField_a_of_type_Int = -1;
   
-  public adiv(View paramView, String paramString)
+  public adiv(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    super(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bkho != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bkho.dismiss();
+      }
+      switch (paramInt)
+      {
+      default: 
+      case 0: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
+          }
+        }
+      case 1: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
+          }
+        }
+      }
+    }
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    super.onClick(paramView);
-    try
-    {
-      if (QSecFramework.a().a(1001).booleanValue()) {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramView = this.jdField_a_of_type_AndroidViewView;
-          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
-          this.jdField_a_of_type_Boolean = false;
-          if (QLog.isColorLevel()) {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
-          }
-        }
-        else
-        {
-          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-      }
-    }
-    catch (Exception paramView)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

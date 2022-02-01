@@ -1,91 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public abstract class apmk<T extends CustomEmotionBase>
-  implements Manager
+class apmk
+  implements AdapterView.OnItemClickListener
 {
-  protected QQAppInterface a;
-  protected String a;
-  protected CopyOnWriteArrayList<WeakReference<apow>> a;
-  protected AtomicBoolean a;
+  apmk(apmg paramapmg) {}
   
-  public apmk(QQAppInterface paramQQAppInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-  }
-  
-  protected abstract int a();
-  
-  protected abstract alqn<T> a();
-  
-  protected abstract apmi<T> a();
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  public void a(apow paramapow)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramapow) {
-        return;
+    Object localObject = apmg.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(false);
+    }
+    apmg.a(this.a).setSelection(paramInt);
+    localObject = apmg.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(true);
+    }
+    apmg.a(this.a, paramInt);
+    apmg.a(this.a, true);
+    if ((apmg.a(this.a) != null) && (apmg.a(this.a).size() > 0) && (apmg.a(this.a).size() > apmg.a(this.a)))
+    {
+      localObject = (apnh)apmg.a(this.a).get(apmg.a(this.a));
+      if (localObject != null) {
+        apok.a(null, ((apnh)localObject).a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
       }
     }
-    paramapow = new WeakReference(paramapow);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramapow);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    alqn localalqn;
-    do
-    {
-      return;
-      localalqn = a();
-    } while (localalqn == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomEmotionRoamingManagerBase", 2, "------------start syncRoaming----------");
-    }
-    localalqn.a();
-  }
-  
-  public void b(apow paramapow)
-  {
-    if (paramapow == null) {}
-    WeakReference localWeakReference;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (localWeakReference.get() != paramapow);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

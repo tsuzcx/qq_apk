@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-
-public class alda
-  implements DialogInterface.OnClickListener
+class alda
 {
-  public alda(ApolloGameActivity paramApolloGameActivity) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alda(String paramString1, String paramString2, long paramLong)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

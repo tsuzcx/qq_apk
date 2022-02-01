@@ -1,21 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-
-class anqe
-  implements bhuk
+public class anqe
 {
-  anqe(anqc paramanqc, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Anqc.a.e();
-    this.jdField_a_of_type_Anqc.a.b(alud.a(2131701076));
-    this.jdField_a_of_type_Bhuf.dismiss();
-  }
+  public int a;
+  public long a = 9223372036854775807L;
+  public String a;
+  public int b = 1000;
+  public int c;
+  public int d = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqe
  * JD-Core Version:    0.7.0.1
  */

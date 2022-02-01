@@ -1,50 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class thu
-  implements TVK_SDKMgr.OnLogListener
+public class thu
+  implements AdapterView.OnItemClickListener
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      tlo.b(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public thu(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public int e(String paramString1, String paramString2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    tlo.d(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      tlo.a(paramString1, 2, paramString2);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      tlo.b(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      tlo.c(paramString1, 2, paramString2);
-    }
-    return 0;
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thu
  * JD-Core Version:    0.7.0.1
  */

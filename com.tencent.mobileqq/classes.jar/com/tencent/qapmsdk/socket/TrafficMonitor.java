@@ -3,40 +3,34 @@ package com.tencent.qapmsdk.socket;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.dns.HttpDns;
-import com.tencent.qapmsdk.impl.util.TraceUtil;
-import com.tencent.qapmsdk.socket.handler.FirstPackageInputFactory;
-import com.tencent.qapmsdk.socket.handler.FirstPackageOutputFactory;
-import com.tencent.qapmsdk.socket.util.HookUtils;
 
 public class TrafficMonitor
   extends QAPMMonitorPlugin
 {
-  private static final String TAG = "QAPM_Socket_TrafficMonitor";
-  private static FirstPackageInputFactory firstPackageInputFactory = new FirstPackageInputFactory();
-  private static FirstPackageOutputFactory firstPackageOutputFactory = new FirstPackageOutputFactory();
+  private static com.tencent.qapmsdk.socket.a.a a = new com.tencent.qapmsdk.socket.a.a();
+  private static com.tencent.qapmsdk.socket.a.b b = new com.tencent.qapmsdk.socket.a.b();
   
-  public static TrafficMonitor.TrafficConfig config()
+  public static TrafficMonitor.a a()
   {
-    return TrafficMonitor.TrafficConfig.access$000();
+    return TrafficMonitor.a.e();
   }
   
   public void start()
   {
     Logger.INSTANCE.i(new String[] { "QAPM_Socket_TrafficMonitor", "install TrafficMonitor" });
-    config().addInputStreamHandlerFactory(firstPackageInputFactory);
-    config().addOutputStreamHandlerFactory(firstPackageOutputFactory);
-    config().setConnectListener(new TrafficMonitor.1(this));
-    HookUtils.hook();
-    HttpDns.install(BaseInfo.app);
-    TraceUtil.setCanMonitorHttp(true);
+    a().a(a);
+    a().a(b);
+    a().a(new TrafficMonitor.1(this));
+    com.tencent.qapmsdk.socket.d.b.a();
+    com.tencent.qapmsdk.dns.a.a(BaseInfo.app);
+    com.tencent.qapmsdk.impl.g.b.a(true);
   }
   
   public void stop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.TrafficMonitor
  * JD-Core Version:    0.7.0.1
  */

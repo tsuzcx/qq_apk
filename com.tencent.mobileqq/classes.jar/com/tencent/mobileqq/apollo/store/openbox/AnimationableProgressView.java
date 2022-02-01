@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -13,6 +12,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import anni;
 
 public class AnimationableProgressView
   extends View
@@ -68,7 +68,7 @@ public class AnimationableProgressView
     if (this.jdField_b_of_type_Long > 0L) {
       if (this.jdField_a_of_type_Long > 0L)
       {
-        this.jdField_a_of_type_JavaLangString = (alud.a(2131700648) + this.d + alud.a(2131700650));
+        this.jdField_a_of_type_JavaLangString = (anni.a(2131699074) + this.d + anni.a(2131699076));
         this.i = -34816;
       }
     }
@@ -76,7 +76,7 @@ public class AnimationableProgressView
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * getResources().getDisplayMetrics().density);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + alud.a(2131700649));
+        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + anni.a(2131699075));
       }
       float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_Float = ((this.jdField_a_of_type_Int - f1) / 2.0F);
@@ -84,10 +84,10 @@ public class AnimationableProgressView
       this.jdField_b_of_type_Float = ((this.jdField_b_of_type_Int - localFontMetrics.bottom - localFontMetrics.top) / 2.0F);
       super.invalidate();
       return;
-      this.jdField_a_of_type_JavaLangString = (alud.a(2131700645) + this.d + "/" + this.c);
+      this.jdField_a_of_type_JavaLangString = (anni.a(2131699071) + this.d + "/" + this.c);
       break;
       this.i = -16777216;
-      this.jdField_a_of_type_JavaLangString = (alud.a(2131700647) + this.d + "/" + this.c + alud.a(2131700646));
+      this.jdField_a_of_type_JavaLangString = (anni.a(2131699073) + this.d + "/" + this.c + anni.a(2131699072));
     } while (this.d <= 0);
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
@@ -161,7 +161,7 @@ public class AnimationableProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.AnimationableProgressView
  * JD-Core Version:    0.7.0.1
  */

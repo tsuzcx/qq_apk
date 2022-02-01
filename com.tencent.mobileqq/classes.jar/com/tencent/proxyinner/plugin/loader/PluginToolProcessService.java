@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import atdh;
+import avju;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.MultiLoaderPluginProcessService;
 import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
@@ -27,7 +27,7 @@ public class PluginToolProcessService
   {
     super.onCreate();
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    atdh.d();
+    avju.d();
   }
   
   public void onDestroy()
@@ -74,7 +74,7 @@ public class PluginToolProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.PluginToolProcessService
  * JD-Core Version:    0.7.0.1
  */

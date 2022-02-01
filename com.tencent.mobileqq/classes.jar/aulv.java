@@ -1,13 +1,47 @@
-import android.support.v4.view.PagerAdapter;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public abstract interface aulv
+class aulv
+  implements WtTicketPromise
 {
-  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  aulv(aulu paramaulu, String paramString) {}
+  
+  public void Done(Ticket paramTicket)
+  {
+    if (DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a))
+    {
+      QLog.d("DeleteFaceFragment", 1, "GetSkey Done, activity is empty");
+      return;
+    }
+    QLog.d("DeleteFaceFragment", 1, "GetSkey done");
+    if ((paramTicket == null) || (paramTicket._sig == null))
+    {
+      QLog.e("DeleteFaceFragment", 1, "ticket is error");
+      DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, this.jdField_a_of_type_Aulu.a.getString(2131693958));
+      return;
+    }
+    paramTicket = new String(paramTicket._sig);
+    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, this.jdField_a_of_type_JavaLangString, paramTicket);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey Failed, ", paramErrMsg.getMessage() });
+    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, paramErrMsg.getMessage());
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.e("DeleteFaceFragment", 1, new Object[] { "getSkey timeout, ", paramErrMsg.getMessage() });
+    DeleteFaceFragment.a(this.jdField_a_of_type_Aulu.a, paramErrMsg.getMessage());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulv
  * JD-Core Version:    0.7.0.1
  */

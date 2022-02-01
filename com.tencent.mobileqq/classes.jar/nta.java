@@ -1,23 +1,20 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nta
-  implements alpg
+  implements DialogInterface.OnDismissListener
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public nta(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
+    this.a.p = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nta
  * JD-Core Version:    0.7.0.1
  */

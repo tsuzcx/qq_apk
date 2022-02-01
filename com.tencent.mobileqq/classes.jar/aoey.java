@@ -1,23 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aoey
-  implements DialogInterface.OnClickListener
 {
-  public aoey(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    aofa.d(BaseApplicationImpl.getContext());
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bgjw.a(paramString2));
     }
-    azqs.b(null, "dc00898", "", "", "0X800AB3C", "0X800AB3C", 0, 0, "", "", "", "");
+    long l = bbyp.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)bbzh.a(-1028);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
+    localMessageForGrayTips.isread = true;
+    if (!anqc.a(paramQQAppInterface, localMessageForGrayTips)) {
+      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bgjw.a(paramString2));
+    }
+    if ((paramBoolean1) && (acwh.e(paramInt)) && (QLog.isColorLevel())) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
+    }
+    long l = bbyp.a();
+    if (paramBoolean1) {}
+    for (int i = -5001;; i = -5000)
+    {
+      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
+      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)bbzh.a(i);
+      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
+      if (localMessage != null) {
+        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
+      }
+      localMessageForNewGrayTips.isread = paramBoolean3;
+      localMessageForNewGrayTips.spans = paramArrayList;
+      localMessageForNewGrayTips.updateMsgData();
+      if ((!paramBoolean2) || (!anqc.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
+        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
   }
 }
 

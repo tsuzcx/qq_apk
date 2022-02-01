@@ -1,16 +1,9 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.EditActivity;
 
-public class aybn
-  implements View.OnClickListener
+public abstract interface aybn
 {
-  public aybn(EditActivity paramEditActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a();
-  }
+  public abstract void a(Dialog paramDialog, View paramView, aybm paramaybm);
 }
 
 

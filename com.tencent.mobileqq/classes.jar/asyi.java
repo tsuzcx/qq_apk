@@ -1,66 +1,39 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-class asyi
-  implements INetInfoHandler
+public class asyi
+  extends atwn
 {
-  asyf a;
+  public asyi(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
   
-  public asyi(asyf paramasyf1, asyf paramasyf2)
-  {
-    this.a = paramasyf2;
-  }
+  public void a() {}
   
-  public void a()
-  {
-    this.a = null;
-  }
+  public void b() {}
   
-  public void onNetMobile2None()
+  public void c() {}
+  
+  public void d()
   {
-    asye.b("onNetMobile2None");
-    if (this.a != null) {
-      asyf.c(this.a);
+    Object localObject = athc.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (atha.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          bcst.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
+        }
+      }
     }
   }
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    asye.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      asyf.c(this.a);
-    }
-  }
+  public void e() {}
   
-  public void onNetNone2Mobile(String paramString)
+  public void f()
   {
-    asye.b("onNetNone2Mobile");
-    if (this.a != null) {
-      asyf.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    asye.b("onNetNone2Wifi");
-    if (this.a != null) {
-      asyf.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    asye.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      asyf.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    asye.b("onNetWifi2None");
-    if (this.a != null) {
-      asyf.c(this.a);
-    }
+    this.a.a.a().E();
   }
 }
 

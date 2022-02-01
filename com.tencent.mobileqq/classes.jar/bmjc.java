@@ -1,31 +1,61 @@
-class bmjc
-  implements bmzq<Boolean, bmzv>
+public class bmjc
 {
-  bmjc(bmja parambmja) {}
+  private static int jdField_a_of_type_Int;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static bmjc b;
+  private bmjc jdField_a_of_type_Bmjc;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
   
-  public Void a(Boolean paramBoolean, bmzv parambmzv)
+  public static bmjc a()
   {
-    if ((!paramBoolean.booleanValue()) || (parambmzv == null) || (parambmzv.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+      if (b != null)
+      {
+        bmjc localbmjc = b;
+        b = localbmjc.jdField_a_of_type_Bmjc;
+        localbmjc.jdField_a_of_type_Bmjc = null;
+        jdField_a_of_type_Int -= 1;
+        return localbmjc;
+      }
+      return new bmjc();
     }
-    wxe.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(parambmzv.jdField_a_of_type_Int));
-    if (parambmzv.jdField_a_of_type_Int >= this.a.a.length)
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+  }
+  
+  public bmjc a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
+    return this;
+  }
+  
+  public void a()
+  {
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(parambmzv.jdField_a_of_type_Int) });
-      return null;
+      if (jdField_a_of_type_Int < 50)
+      {
+        this.jdField_a_of_type_Bmjc = b;
+        b = this;
+        jdField_a_of_type_Int += 1;
+      }
+      return;
     }
-    wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(parambmzv.jdField_a_of_type_Int));
-    this.a.a[parambmzv.jdField_a_of_type_Int] = bmjd.a(this.a.a[parambmzv.jdField_a_of_type_Int], parambmzv.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.a.a[parambmzv.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = parambmzv.jdField_a_of_type_JavaLangString;
-    this.a.j();
-    return null;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmjc
  * JD-Core Version:    0.7.0.1
  */

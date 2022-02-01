@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.comment;
 
-import ygg;
-import yhm;
+import aaet;
+import aafz;
 
 public class CommentPresenter$1
   implements Runnable
 {
-  public CommentPresenter$1(ygg paramygg) {}
+  public CommentPresenter$1(aaet paramaaet) {}
   
   public void run()
   {
-    ygg.a(this.this$0).notifyDataSetChanged();
+    aaet.a(this.this$0).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.1
  * JD-Core Version:    0.7.0.1
  */

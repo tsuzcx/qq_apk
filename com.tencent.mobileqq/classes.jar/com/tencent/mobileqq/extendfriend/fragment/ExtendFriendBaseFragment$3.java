@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import aqcx;
-import aqdg;
-import aqfh;
+import asht;
+import asid;
+import askg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,14 +17,14 @@ class ExtendFriendBaseFragment$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Aqfh == null) || (this.this$0.jdField_a_of_type_Aqfh.a() <= 0) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
+    if ((this.this$0.jdField_a_of_type_Askg == null) || (this.this$0.jdField_a_of_type_Askg.a() <= 0) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
       return;
     }
     Object localObject1 = ExtendFriendBaseFragment.a(this.this$0);
     Object localObject2 = new ArrayList();
     Object localObject3 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((ArrayList)localObject2).add(((aqdg)((Iterator)localObject3).next()).jdField_a_of_type_Aqcx.mUin);
+      ((ArrayList)localObject2).add(((asid)((Iterator)localObject3).next()).jdField_a_of_type_Asht.mUin);
     }
     localObject3 = ExtendFriendBaseFragment.a(this.this$0).keySet().iterator();
     while (((Iterator)localObject3).hasNext())
@@ -37,11 +37,11 @@ class ExtendFriendBaseFragment$3
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (aqdg)((Iterator)localObject1).next();
-      localObject3 = ((aqdg)localObject2).jdField_a_of_type_Aqcx.mUin;
+      localObject2 = (asid)((Iterator)localObject1).next();
+      localObject3 = ((asid)localObject2).jdField_a_of_type_Asht.mUin;
       if (!ExtendFriendBaseFragment.a(this.this$0).containsKey(localObject3))
       {
-        ((aqdg)localObject2).jdField_a_of_type_Long = System.currentTimeMillis();
+        ((asid)localObject2).jdField_a_of_type_Long = System.currentTimeMillis();
         ExtendFriendBaseFragment.a(this.this$0).put(localObject3, localObject2);
       }
     }
@@ -50,7 +50,7 @@ class ExtendFriendBaseFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

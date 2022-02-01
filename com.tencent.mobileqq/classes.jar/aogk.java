@@ -1,34 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-public final class aogk
-  implements Parcelable.Creator<DanmuItemBean>
+class aogk
+  implements bdxd
 {
-  public DanmuItemBean a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
-    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.d = paramParcel.readLong();
-    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
-      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
-      return localDanmuItemBean;
-      bool = false;
-    }
-  }
+  aogk(aogd paramaogd, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public DanmuItemBean[] a(int paramInt)
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    return new DanmuItemBean[paramInt];
+    try
+    {
+      parambdxf = parambdxf.a.getWupBuffer();
+      parambdxe = new structmsg.RspSystemMsgRead();
+      parambdxe.mergeFrom(parambdxf);
+      int i = parambdxe.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
+      return;
+    }
+    catch (Exception parambdxf)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambdxf);
+    }
   }
 }
 

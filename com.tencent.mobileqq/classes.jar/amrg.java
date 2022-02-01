@@ -1,610 +1,358 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Pair;
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.2;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.3;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class amrg
-  extends alpd
+  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, bkhw
 {
-  public int a;
-  public SparseArray<amrh> a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bkho jdField_a_of_type_Bkho;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private boolean jdField_b_of_type_Boolean;
+  private String c;
+  private String d;
   
-  public amrg(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramObject = (alxa)this.app.getManager(92);
-    Object localObject;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000)) {
-      localObject = new oidb_sso.OIDBSSOPkg();
-    }
-    for (;;)
-    {
-      int j;
-      int i3;
-      long l;
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
-        {
-          j = paramFromServiceMsg.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.roammsg", 2, "handle_oidb_0x42e_3 ret = " + j);
-          }
-          if (j != 0) {
-            break label691;
-          }
-          paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-          i3 = paramFromServiceMsg.length;
-          l = 0L;
-          i = 0;
-          j = 0;
-          if (4 <= i3) {
-            l = bdqa.a(paramFromServiceMsg, 0);
-          }
-          if (6 > i3) {
-            break label868;
-          }
-          m = bdqa.a(paramFromServiceMsg, 4);
-          if (8 > i3) {
-            break label862;
-          }
-          n = bdqa.a(paramFromServiceMsg, 6);
-          if (10 <= i3) {
-            i = bdqa.a(paramFromServiceMsg, 8);
-          }
-          if (12 <= i3) {
-            j = bdqa.a(paramFromServiceMsg, 10);
-          }
-          if ((i == 0) && (j == 0) && (m == 0) && (n == 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.roammsg", 2, "handle_oidb_0x42e_3 : wYearEnd = wMonthEnd = wYearStart = wMonthStart = 0");
-            }
-            paramObject.a(2002);
-            paramObject.a(17, null);
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.roammsg", 2, "handle_oidb_0x42e_3 error: ", paramToServiceMsg);
-        }
-        paramObject.a(16, null);
-        return;
-      }
-      int i4 = (i - m) * 12 + (j - n) + 1;
-      localObject = new long[i4];
-      int i1 = 12;
-      int k = 0;
-      while (k < i4)
-      {
-        i2 = i1;
-        if (i1 + 4 <= i3)
-        {
-          localObject[k] = bdqa.a(paramFromServiceMsg, i1);
-          i2 = i1 + 4;
-        }
-        k += 1;
-        i1 = i2;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "handle_oidb_0x42e_3 Begin: " + m + "-" + n + ", End: " + i + "-" + j + " : dwIndexes = " + Arrays.toString((long[])localObject));
-      }
-      int i6 = paramToServiceMsg.extraData.getInt("EndRoamYearKey");
-      int i7 = paramToServiceMsg.extraData.getInt("EndRoamMonthKey");
-      i4 = paramToServiceMsg.extraData.getInt("EndRoamDayKey");
-      paramObject.a().f();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "handle_oidb_0x42e_3 : clearRoamDateSerIndex...");
-      }
-      int i2 = j;
-      k = i;
-      i1 = 0;
-      for (;;)
-      {
-        int i5 = 31;
-        i3 = i5;
-        if (k == i6)
-        {
-          i3 = i5;
-          if (i2 == i7) {
-            i3 = i4;
-          }
-        }
-        paramObject.a().a(l, k, i2, (int)localObject[i1], i3);
-        if (i2 - 1 > 0)
-        {
-          i3 = i2 - 1;
-          i2 = k;
-          k = i3;
-        }
-        while ((i2 < m) || ((i2 == m) && (k < n)))
-        {
-          paramObject.b(i6, i7, i4);
-          paramObject.a().a(String.valueOf(l), m, n, i, j);
-          paramObject.m();
-          paramObject.c();
-          paramObject.a(2003);
-          paramObject.a(18, null);
-          return;
-          i2 = 12;
-          i3 = k - 1;
-          k = i2;
-          i2 = i3;
-        }
-        i3 = k;
-        i1 += 1;
-        k = i2;
-        i2 = i3;
-      }
-      label691:
-      paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-      k = paramFromServiceMsg.length;
-      int i = 0;
-      paramToServiceMsg = null;
-      if (1 <= k) {
-        i = (short)paramFromServiceMsg[0];
-      }
-      if (i + 1 <= k) {
-        paramToServiceMsg = bdqa.a(paramFromServiceMsg, 1, i);
-      }
-      if (QLog.isColorLevel())
-      {
-        paramFromServiceMsg = new StringBuilder().append("handle_oidb_0x42e_3 ret = ").append(j).append(", ");
-        if (paramToServiceMsg == null) {
-          break label795;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("Q.roammsg", 2, paramToServiceMsg);
-        paramObject.a(16, null);
-        return;
-        label795:
-        paramToServiceMsg = "null";
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("handle_oidb_0x42e_3 error: ");
-        if (paramFromServiceMsg == null) {
-          break label856;
-        }
-      }
-      label856:
-      for (paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode());; paramToServiceMsg = "null")
-      {
-        QLog.d("Q.roammsg", 2, paramToServiceMsg);
-        paramObject.a(16, null);
-        return;
-      }
-      label862:
-      int n = 0;
-      continue;
-      label868:
-      int m = 0;
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = paramFromServiceMsg.getResultCode();
-    int j = 0;
-    int k = paramToServiceMsg.extraData.getShort("authMode");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "handle_roam_message_auth_mode retCode: " + i + ", mode: " + k);
-    }
-    if (1000 == i)
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          paramFromServiceMsg.printStackTrace();
-        }
-      }
-      i = j;
-      if (paramToServiceMsg != null)
-      {
-        i = j;
-        if (paramToServiceMsg.uint32_result.has())
-        {
-          j = paramToServiceMsg.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.roammsg", 2, "handle_roam_message_auth_mode ret=" + j + ", authMode: " + k);
-          }
-          i = j;
-          if (j == 0)
-          {
-            paramToServiceMsg = (alxa)this.app.getManager(92);
-            i = j;
-            if (paramToServiceMsg != null) {
-              paramToServiceMsg.d(k);
-            }
-          }
-        }
-      }
-    }
-    for (i = j;; i = -1)
-    {
-      paramToServiceMsg = this.app.getHandler(ChatHistoryAuthDevForRoamMsgFragment.class);
-      if (paramToServiceMsg != null)
-      {
-        paramFromServiceMsg = paramToServiceMsg.obtainMessage();
-        paramFromServiceMsg.what = 1;
-        paramFromServiceMsg.arg1 = i;
-        paramFromServiceMsg.arg2 = k;
-        paramToServiceMsg.sendMessage(paramFromServiceMsg);
-      }
-      return;
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "handle_get_roam_msg_auth_mode isSuccess: " + bool);
-      }
-      if (!bool) {}
-    }
-    try
-    {
-      paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-      if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has())) {
-        break label474;
-      }
-      i = paramToServiceMsg.uint32_result.get();
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      for (;;)
-      {
-        int i;
-        long l;
-        int j;
-        int k;
-        int m;
-        label317:
-        label357:
-        label363:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.roammsg", 2, "handle_get_roam_msg_auth_mode exception: " + paramToServiceMsg.getMessage());
-          continue;
-          i = -1;
-          continue;
-          i = 0;
-          continue;
-          i += 1;
-        }
-      }
-    }
-    if (i == 0)
-    {
-      l = paramFromServiceMsg.getInt();
-      paramFromServiceMsg.get();
-      j = paramFromServiceMsg.getShort();
-      if (!QLog.isColorLevel()) {
-        break label480;
-      }
-      QLog.d("Q.roammsg", 2, "handle_get_roam_msg_auth_mode, request success, tlvCount = " + j);
-      break label480;
-      if ((paramFromServiceMsg.hasRemaining()) && (i < j))
-      {
-        k = paramFromServiceMsg.getShort();
-        m = paramFromServiceMsg.getShort();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.roammsg", 2, "handle_get_roam_msg_auth_mode, TLV type: " + k + ",legnth: " + m);
-        }
-        if (k != -23723) {
-          break label363;
-        }
-        i = paramFromServiceMsg.getShort();
-        paramToServiceMsg = (alxa)this.app.getManager(92);
-        if (paramToServiceMsg != null) {
-          paramToServiceMsg.d(i);
-        }
-        if (QLog.isColorLevel())
-        {
-          paramFromServiceMsg = new StringBuilder().append("handle_get_roam_msg_auth_mode authMode is :").append(i).append(", manager is null: ");
-          if (paramToServiceMsg != null) {
-            break label357;
-          }
-          bool = true;
-          QLog.i("Q.roammsg", 2, bool);
-        }
-      }
-    }
-    for (;;)
-    {
-      ((alxa)this.app.getManager(92)).a(34, null);
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label317;
-      if (!QLog.isColorLevel()) {
-        break label486;
-      }
-      QLog.i("Q.roammsg", 2, "handle_get_roam_msg_auth_mode TLV error T: " + k);
-      break label486;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "handle_get_roam_msg_auth_mode pkg_result: " + i);
-      }
-    }
-  }
-  
-  public alwx a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-    {
-      amrh localamrh = new amrh(this, paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localamrh);
-    }
-    return (alwx)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "get_roam_msg_auth_mode begin...");
-    }
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1152);
-    localOIDBSSOPkg.uint32_result.set(0);
-    localOIDBSSOPkg.uint32_service_type.set(9);
-    Object localObject = ByteBuffer.allocate(9);
-    ((ByteBuffer)localObject).putInt((int)Long.parseLong(this.app.getCurrentAccountUin()));
-    ((ByteBuffer)localObject).put((byte)0);
-    ((ByteBuffer)localObject).putShort((short)1);
-    ((ByteBuffer)localObject).putShort((short)-23723);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-    localObject = createToServiceMsg("OidbSvc.0x480_9");
-    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
-    ((ToServiceMsg)localObject).extraData.putBoolean("reqFromMessageRoamHandler", true);
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public amrg(Context paramContext, AppInterface paramAppInterface)
   {
     try
     {
-      long l = Long.parseLong(paramString);
-      paramString = new byte[12];
-      bdqa.a(paramString, 0, l);
-      bdqa.a(paramString, 4, paramInt1);
-      bdqa.a(paramString, 6, paramInt2);
-      bdqa.a(paramString, 8, paramInt3);
-      bdqa.a(paramString, 10, paramInt4);
-      paramString = makeOIDBPkg("OidbSvc.0x42e_3", 1070, 3, paramString);
-      paramString.extraData.putInt("EndRoamYearKey", paramInt3);
-      paramString.extraData.putInt("EndRoamMonthKey", paramInt4);
-      paramString.extraData.putInt("EndRoamDayKey", paramInt5);
-      sendPbReq(paramString);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
       return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
+    }
+  }
+  
+  private int a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_cmGame_CmGameCommonShare", 2, "[parseShareParm],jsonStr:" + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("extendInfo");
+      this.c = paramString.optString("summary");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("localPicPath");
+      this.jdField_b_of_type_Int = paramString.optInt("activityId");
+      int i = paramString.optInt("reqCode");
+      paramString = ampj.a(this.jdField_a_of_type_Int);
+      if (paramString != null)
+      {
+        paramString.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+        paramString.c = i;
+      }
+      return 0;
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.roammsg", 2, "send_oidb_0x42e_3 error: ", paramString);
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
     }
+    return -3;
   }
   
-  public void a(String paramString, Calendar paramCalendar, boolean paramBoolean, int paramInt)
+  private AppInterface a()
   {
-    if (a(paramString, paramCalendar, paramBoolean, paramInt)) {
-      return;
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    paramString = (alxa)this.app.getManager(92);
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
+    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramString.a(0, paramInt, null);
-      return;
+      if (!this.jdField_a_of_type_JavaLangString.startsWith("GameSandBox:")) {
+        break label84;
+      }
+      str = this.jdField_a_of_type_JavaLangString.substring("GameSandBox:".length() + "//".length());
+      localStringBuilder.append(ancb.s);
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("/sandbox/");
+      localStringBuilder.append(str);
     }
-  }
-  
-  public void a(String paramString, Calendar paramCalendar, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    a(paramString, paramCalendar, paramBoolean1, paramInt, paramBoolean2, true);
-  }
-  
-  public void a(String paramString, Calendar paramCalendar, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    alxa localalxa = (alxa)this.app.getManager(92);
-    SharedPreferences localSharedPreferences = this.app.getApp().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
-    if (localalxa.b() == 0)
+    for (;;)
     {
-      l1 = localSharedPreferences.getLong("vip_message_roam_last_request_timestamp" + this.app.getCurrentAccountUin(), 0L);
-      if ((System.currentTimeMillis() - l1 > 7200000L) || (l1 == 0L))
+      return localStringBuilder.toString();
+      label84:
+      if (this.jdField_a_of_type_JavaLangString.startsWith("GameRes:"))
       {
-        QLog.d("Q.roammsg", 1, "getRoamHistoryForSomeDay open password lastRequestTime = " + l1);
-        localalxa.a(3, 2, null);
-        paramString = localSharedPreferences.edit();
-        paramString.putLong("vip_message_roam_last_request_timestamp" + this.app.getCurrentAccountUin(), System.currentTimeMillis());
-        paramString.commit();
-        return;
+        str = this.jdField_a_of_type_JavaLangString.substring("GameRes:".length() + "//".length());
+        localStringBuilder.append(ancb.s);
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("/");
+        localStringBuilder.append(str);
       }
     }
-    paramCalendar = localalxa.a((Calendar)paramCalendar.clone());
-    long l1 = ((Long)paramCalendar.first).longValue();
-    long l2 = ((Long)paramCalendar.second).longValue();
-    this.app.a().a(paramString, l1, 0L, l2, (short)0, 0L, 1, localalxa.a(), localalxa.b(), paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
   }
   
-  public void a(short paramShort)
+  private String a(int paramInt)
+  {
+    return ancb.s + paramInt + "/" + "shareQRCode_default_v2.png";
+  }
+  
+  private void a(int paramInt)
+  {
+    ThreadManager.post(new CmGameCommonShare.4(this, paramInt), 5, null, true);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    amrk localamrk = ampj.a(this.jdField_a_of_type_Int);
+    if (localamrk != null) {
+      localamrk.a(paramInt1, paramInt2, 0, "");
+    }
+  }
+  
+  private boolean a(long paramLong)
   {
     try
     {
-      long l = Long.parseLong(this.app.getAccount());
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "set_roam_message_auth_mode_0x4ff_9  authMode: " + paramShort);
+      localamrk = ampj.a(this.jdField_a_of_type_Int);
+      if (localamrk == null) {
+        break label82;
       }
-      Object localObject = new byte[13];
-      bdqa.a((byte[])localObject, 0, l);
-      localObject[4] = 0;
-      bdqa.a((byte[])localObject, 5, (short)1);
-      bdqa.a((byte[])localObject, 7, 41813);
-      bdqa.a((byte[])localObject, 9, (short)2);
-      bdqa.a((byte[])localObject, 11, paramShort);
-      localObject = makeOIDBPkg("OidbSvc.0x4ff_9", 1279, 9, (byte[])localObject);
-      ((ToServiceMsg)localObject).extraData.putBoolean("reqFromMessageRoamHandler", true);
-      ((ToServiceMsg)localObject).extraData.putShort("authMode", paramShort);
-      sendPbReq((ToServiceMsg)localObject);
+      CmGameStartChecker.StartCheckParam localStartCheckParam = localamrk.a();
+      if ((localStartCheckParam == null) || (localStartCheckParam.mGameType != 5)) {
+        break label82;
+      }
+      if (paramLong == 0L) {
+        break label76;
+      }
+      switch ((int)paramLong)
+      {
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        amrk localamrk;
+        label76:
+        label82:
+        QLog.e("apollo_cmGame_CmGameCommonShare", 1, localThrowable, new Object[0]);
+        continue;
+        int i = 1;
+        continue;
+        i = 2;
+        continue;
+        i = 3;
+        continue;
+        i = 4;
+      }
+    }
+    localamrk.e(i);
+    return true;
+    localamrk.e(1);
+    return false;
+  }
+  
+  private String b(int paramInt)
+  {
+    return ancb.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png";
+  }
+  
+  private void b()
+  {
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      Object localObject = this.jdField_a_of_type_JavaLangString;
+      File localFile = new File(a());
+      if (localFile.isFile())
+      {
+        localObject = localFile;
+        if (localFile.exists()) {}
+      }
+      else
+      {
+        localFile = new File(a(this.jdField_a_of_type_Int));
+        localObject = localFile;
+        if (!localFile.exists()) {
+          localObject = new File(b(this.jdField_a_of_type_Int));
+        }
+      }
+      localArrayList.add(((File)localObject).getAbsolutePath());
+      localBundle.putStringArrayList("images", localArrayList);
+      localBundle.putString("summary", this.c);
+      localBundle.putInt("req_type", 7);
+      localBundle.putBoolean("key_need_save_draft", false);
+      localObject = null;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+        localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      }
+      if (localObject != null)
+      {
+        bltb.a(a(), (Context)localObject, localBundle, this, 255);
+        return;
+      }
+      a(1, 4);
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("Q.roammsg", 2, "set_roam_message_auth_mode_0x4ff_9  error", localException);
+      QLog.d("apollo_cmGame_CmGameCommonShare", 1, "publishToQzone:", localException);
+      a(1, 4);
     }
   }
   
-  public boolean a(String paramString, Calendar paramCalendar, boolean paramBoolean, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    alxa localalxa = (alxa)this.app.getManager(92);
-    Object localObject = localalxa.a(paramCalendar);
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage next date is null");
-      }
-      return false;
+    a();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bkho != null) {
+      this.jdField_a_of_type_Bkho.dismiss();
     }
-    paramCalendar = ((Bundle)localObject).getString("MSG_TYPE");
-    int i = ((Bundle)localObject).getInt("DATE_YEAR");
-    int j = ((Bundle)localObject).getInt("DATE_MONTH");
-    int k = ((Bundle)localObject).getInt("DATE_DAY");
-    localObject = Calendar.getInstance();
-    ((Calendar)localObject).set(1, i);
-    ((Calendar)localObject).set(2, j - 1);
-    ((Calendar)localObject).set(5, k);
-    ((Calendar)localObject).set(11, 0);
-    ((Calendar)localObject).set(12, 0);
-    ((Calendar)localObject).set(13, 0);
-    ((Calendar)localObject).set(14, 0);
-    if ("server".equals(paramCalendar))
+  }
+  
+  public void a(Bitmap paramBitmap, int paramInt)
+  {
+    if (paramBitmap == null) {}
+    for (Object localObject = b(paramInt);; localObject = a(paramInt))
     {
-      localalxa.a((Calendar)localObject);
-      QLog.d("Q.roammsg", 1, "fetchMoreRoamMessage getRoamHistoryForSomeDay");
-      a(paramString, (Calendar)localObject, paramBoolean, paramInt, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage from server date: " + i + "-" + j + "-" + k + ", fetchNum: " + paramInt);
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {
+        break;
       }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "checkDefaultQRSharePic gameId:", paramInt + " bitmap:" + paramBitmap });
+    }
+    ThreadManager.post(new CmGameCommonShare.2(this, paramInt, paramBitmap, (File)localObject), 5, null, true);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    bkic localbkic = null;
+    this.d = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramInt = a(paramString);
+    if (paramInt < 0)
+    {
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + paramInt);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      if ((this.jdField_a_of_type_Bkho == null) && (paramString != null))
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(bkic.a(0));
+        localArrayList.add(bkic.a(1));
+        localArrayList.add(bkic.a(2));
+        localArrayList.add(bkic.a(3));
+        if (paramString != null)
+        {
+          localbkic = new bkic(paramString);
+          localbkic.a(localArrayList);
+        }
+        this.jdField_a_of_type_Bkho = bkic.a(paramString, localbkic, this, this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bkho == null) || (this.jdField_a_of_type_Bkho.isShowing())) {
+        break;
+      }
+      this.jdField_a_of_type_Bkho.setOnDismissListener(this);
+      this.jdField_a_of_type_Bkho.a(new amrh(this));
+      this.jdField_a_of_type_Bkho.show();
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (new File(ancb.s + paramInt + "/" + "shareQRCode_default_v2.png").exists()) {}
+    while (new File(ancb.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png").exists()) {
       return true;
-    }
-    if ("local".equals(paramCalendar))
-    {
-      localalxa.a((Calendar)localObject);
-      paramCalendar = localalxa.a((Calendar)((Calendar)localObject).clone());
-      int m = localalxa.a(paramString, ((Long)paramCalendar.first).longValue(), ((Long)paramCalendar.second).longValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage from local date: " + i + "-" + j + "-" + k + ",msgcount: " + m + ", fetchNum: " + (paramInt - m));
-      }
-      if ((m >= 0) && (m < paramInt)) {
-        return a(paramString, (Calendar)localObject, paramBoolean, paramInt - m);
-      }
-      return false;
     }
     return false;
   }
   
-  public alwx b(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    alwx localalwx = (alwx)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    return localalwx;
+    if (!this.jdField_b_of_type_Boolean) {
+      a(-1, -1);
+    }
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.allowCmdSet == null)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    for (;;)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x42e_3");
-      this.allowCmdSet.add("OidbSvc.0x4ff_9");
-      this.allowCmdSet.add("OidbSvc.0x480_9");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder(128);
-      localStringBuilder.append("onReceive success ssoSeq: ").append(paramToServiceMsg.getRequestSsoSeq()).append(", serviceCmd: ").append(str).append(", resultCode: ").append(paramFromServiceMsg.getResultCode());
-      QLog.d("Q.roammsg", 2, localStringBuilder.toString());
-    }
-    if ("OidbSvc.0x42e_3".equals(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!"OidbSvc.0x4ff_9".equals(str)) {
-          break;
-        }
-      } while (!paramToServiceMsg.extraData.getBoolean("reqFromMessageRoamHandler"));
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-    } while ((!"OidbSvc.0x480_9".equals(str)) || (!paramToServiceMsg.extraData.getBoolean("reqFromMessageRoamHandler")));
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.jdField_a_of_type_Long = l;
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
+      }
+      this.jdField_b_of_type_Boolean = true;
+      if (!a(paramLong)) {
+        if (paramLong == 1L) {
+          b();
+        } else if (paramLong == 0L) {
+          ThreadManager.post(new CmGameCommonShare.3(this), 5, null, true);
+        } else if (paramLong == 2L) {
+          a(0);
+        } else if (paramLong == 3L) {
+          a(1);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrg
  * JD-Core Version:    0.7.0.1
  */

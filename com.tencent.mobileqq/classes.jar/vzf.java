@@ -1,93 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.Iterator;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vzf
-  extends vtg
+class vzf
+  implements View.OnClickListener
 {
-  public vzf(vzd paramvzd) {}
+  vzf(vzd paramvzd, long paramLong) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
-      }
+    if (vyz.a(this.jdField_a_of_type_Vzd.a.a) != null) {
+      vyz.a(this.jdField_a_of_type_Vzd.a.a).a(this.jdField_a_of_type_Long);
     }
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).a(paramBundle1, paramBundle2);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).c();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).d();
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).e();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public void g()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((vrx)localIterator.next()).g();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzf
  * JD-Core Version:    0.7.0.1
  */

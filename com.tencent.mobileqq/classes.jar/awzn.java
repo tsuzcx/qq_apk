@@ -1,143 +1,213 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
-import mqq.app.AppRuntime;
 
 public class awzn
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
   {
-    for (;;)
+    return a(paramQQAppInterface, paramString, paramLong1, paramLong2, false);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-      try
+      int i = axaj.a(paramQQAppInterface, paramString, paramLong1, paramLong2);
+      if (i != 0) {
+        return i;
+      }
+    }
+    switch ((int)paramLong1)
+    {
+    }
+    do
+    {
+      do
       {
-        bbaa localbbaa = (bbaa)paramQQAppInterface.getManager(193);
-        if (localbbaa.a())
+        do
         {
-          int i = 2;
-          String str = "qboss_splash_ad_res_png";
-          if (paramInt == 2)
+          do
           {
-            i = 1;
-            str = "qboss_splash_ad_res_video";
-            j = 10082;
-            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("qbossSplashresAppid", paramString1);
-            a("qbossSplashrequest", localHashMap);
-            localbbaa.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new awzo(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
-          }
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              return 0;
+                              if (paramLong2 == 0L) {
+                                return 2130850163;
+                              }
+                              if (paramLong2 == 1L) {
+                                return 2130850164;
+                              }
+                            } while (paramLong2 != 2L);
+                            return 2130850165;
+                            if (paramLong2 == 0L) {
+                              return 2130850157;
+                            }
+                            if (paramLong2 == 1L) {
+                              return 2130850158;
+                            }
+                          } while (paramLong2 != 2L);
+                          return 2130850159;
+                          if (paramLong2 == 0L) {
+                            return 2130850160;
+                          }
+                          if (paramLong2 == 1L) {
+                            return 2130850161;
+                          }
+                        } while (paramLong2 != 2L);
+                        return 2130850162;
+                        if (paramLong2 == 1L) {
+                          return 2130850154;
+                        }
+                        if (paramLong2 == 2L) {
+                          return 2130850155;
+                        }
+                      } while (paramLong2 != 3L);
+                      return 2130850156;
+                      if (paramLong2 == 1L) {
+                        return 2130850181;
+                      }
+                    } while (paramLong2 != 2L);
+                    return 2130850140;
+                    if (paramLong2 == 1L) {
+                      return 2130850185;
+                    }
+                  } while (paramLong2 != 2L);
+                  return 2130850144;
+                  if (paramLong2 == 1L) {
+                    return 2130850173;
+                  }
+                } while (paramLong2 != 2L);
+                return 2130850172;
+                if (paramLong2 == 1L) {
+                  return 2130850179;
+                }
+              } while (paramLong2 != 2L);
+              return 2130850180;
+              if (paramLong2 == 1L) {
+                return 2130850184;
+              }
+            } while (paramLong2 != 2L);
+            return 2130850143;
+          } while (paramLong2 != 1L);
+          return 2130850178;
+        } while ((!paramBoolean) || (paramLong2 != 1L));
+        return 2130850176;
+        if (paramLong2 == 1L) {
+          return 2130850169;
         }
-        else
-        {
-          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
-          return;
+        if (paramLong2 == 2L) {
+          return 2130850170;
         }
+      } while (paramLong2 != 3L);
+      return 2130850171;
+      if (paramLong2 == 1L) {
+        return 2130850151;
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
+      if (paramLong2 == 2L) {
+        return 2130850152;
       }
-      int j = 10081;
-    }
+    } while (paramLong2 != 3L);
+    return 2130850153;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Collection<awzr> paramCollection)
+  public static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    for (;;)
-    {
-      awzr localawzr;
-      try
-      {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break label156;
-        }
-        localawzr = (awzr)paramCollection.next();
-        if (!localawzr.b())
-        {
-          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
-          continue;
-        }
-        switch (localawzr.a)
-        {
-        }
-      }
-      finally {}
-      a(paramQQAppInterface, localawzr.jdField_b_of_type_JavaLangString, localawzr.e, localawzr.h, 0, localawzr.k);
-      continue;
-      a(paramQQAppInterface, localawzr.jdField_b_of_type_JavaLangString, localawzr.e, localawzr.h, 2, localawzr.k);
-      continue;
-      a(paramQQAppInterface, localawzr.jdField_b_of_type_JavaLangString, localawzr.e, localawzr.h, 1, localawzr.k);
-      continue;
-      label156:
-      return;
-    }
+    return a(paramQQAppInterface, paramString1, awzy.b(paramString2), awzy.a(paramString2));
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static axan a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    Object localObject = awzm.a(BaseApplicationImpl.getContext(), paramString1);
-    paramString1 = ((SharedPreferences)localObject).edit();
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
-    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
-    if (!bool)
-    {
-      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
-      localObject = awzq.a;
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
-        ((awzr)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
-      }
-    }
-    paramString1.apply();
+    return aqqb.a().a(paramLong);
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public static String a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
   {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
-      {
-        azri.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramString) {}
+    return a(paramQQAppInterface, awzy.a(paramLong1, paramLong2));
   }
   
-  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramAppInterface == null) {
-      return;
+    paramQQAppInterface = aqqb.a().a(paramString);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.jdField_b_of_type_JavaLangString;
     }
-    try
+    return "";
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
+  {
+    int i = a(paramQQAppInterface, paramString, paramLong1, paramLong2);
+    if (i != 0) {
+      return awzy.a(i);
+    }
+    return "";
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    return a(paramQQAppInterface, paramString1, awzy.b(paramString2), awzy.a(paramString2));
+  }
+  
+  public static ArrayList<axao> a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = aqqb.a().a();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      paramAppInterface = (bbaa)paramAppInterface.getManager(193);
-      if (paramAppInterface.a()) {
-        paramAppInterface.a(paramString1, -1L);
+      axao localaxao = (axao)((Iterator)localObject).next();
+      if (b(paramQQAppInterface, localaxao.a, localaxao.jdField_b_of_type_Long)) {
+        localArrayList.add(localaxao);
       }
-      paramString1 = new HashMap();
-      paramString1.put("qbossSplashresAppid", paramString2);
-      a("qbossSplashDownloadFailed", paramString1);
-      return;
     }
-    catch (Exception paramString1) {}
+    return localArrayList;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    return (aqqb.a().a(paramLong)) && (b(paramQQAppInterface, paramLong));
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
+  {
+    return (aqqb.a().a(paramLong1, paramLong2)) && (b(paramQQAppInterface, paramLong1, paramLong2));
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    return ((paramLong != 1L) && (paramLong != 2L) && (paramLong != 3L)) || (axas.a(paramQQAppInterface.c()));
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
+  {
+    if (!b(paramQQAppInterface, paramLong1)) {}
+    while (((paramLong1 == 1L) || (paramLong1 == 2L) || (paramLong1 == 3L)) && (paramLong2 > 0L) && (!axas.a())) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzn
  * JD-Core Version:    0.7.0.1
  */

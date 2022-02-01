@@ -28,7 +28,7 @@ class AppJsPlugin$4
         localJSONObject.put("totalSize", paramObject.jdField_a_of_type_Long);
         localJSONObject.put("progress", paramObject.jdField_b_of_type_Long * 100L / paramObject.jdField_a_of_type_Long);
         if (paramObject.jdField_a_of_type_CooperationWadlIpcWadlParams != null) {
-          localJSONObject.put("versionCode", paramObject.jdField_a_of_type_CooperationWadlIpcWadlParams.f);
+          localJSONObject.put("versionCode", paramObject.jdField_a_of_type_CooperationWadlIpcWadlParams.e);
         }
         if (paramObject.jdField_b_of_type_Int == 6)
         {
@@ -57,7 +57,7 @@ class AppJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

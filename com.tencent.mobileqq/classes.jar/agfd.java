@@ -1,10 +1,35 @@
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface agfd
+public class agfd
+  implements TextWatcher
 {
-  public abstract void a(View paramView);
+  public agfd(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public abstract void b(View paramView);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    {
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bgsp.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
+      }
+      this.a.setSendEnable(false);
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      label55:
+      this.a.setSendEnable(true);
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

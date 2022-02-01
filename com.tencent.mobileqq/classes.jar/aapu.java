@@ -1,83 +1,78 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.gdtad.api.motivevideo.GdtMvAnimation585V.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-public class aapu
-  extends aapz
+class aapu
+  extends bhhe
 {
-  private Runnable a;
+  aapu(aapt paramaapt, aapk paramaapk, ArrayList paramArrayList, long paramLong) {}
   
-  protected aapu(Context paramContext)
+  public void onDone(bhhf parambhhf)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation585V.1(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    aase.b("GdtMotiveVideoAd", "585V doAnimation " + this.jdField_a_of_type_Aapr + " targetMode " + paramInt);
-    aapq localaapq;
-    if (this.jdField_a_of_type_Aapr != null)
+    if (parambhhf.a == 0)
     {
-      localaapq = (aapq)this.jdField_a_of_type_Aapr;
-      a();
-      if (paramInt == 1)
-      {
-        if (localaapq.jdField_a_of_type_AndroidViewView != null) {
-          localaapq.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      parambhhf = this.jdField_a_of_type_Aapt.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (parambhhf.hasNext()) {
+        if (!((File)parambhhf.next()).exists())
+        {
+          this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapt);
+          return;
         }
-        a(localaapq.jdField_f_of_type_AndroidViewView, localaapq.j, localaapq.k);
-        a(localaapq.jdField_e_of_type_AndroidViewView, localaapq.jdField_g_of_type_Int, localaapq.h);
-        a(localaapq.jdField_b_of_type_AndroidViewView, localaapq.jdField_a_of_type_Int, localaapq.jdField_b_of_type_Int);
-        a(localaapq.jdField_d_of_type_AndroidViewView, localaapq.jdField_e_of_type_Int, localaapq.jdField_f_of_type_Int);
-        a(localaapq.jdField_c_of_type_AndroidViewView, localaapq.jdField_c_of_type_Int, localaapq.jdField_d_of_type_Int);
+      }
+      try
+      {
+        parambhhf = this.jdField_a_of_type_Aapk.b.iterator();
+        int i = 1;
+        while (parambhhf.hasNext())
+        {
+          String str = (String)parambhhf.next();
+          File localFile = new File(this.jdField_a_of_type_Aapt.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            zkr.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Aapt.b();
+      }
+      catch (IOException parambhhf)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, parambhhf, new Object[0]);
+        this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapt);
+        this.jdField_a_of_type_Aapk.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.b(this.jdField_a_of_type_Aapt);
+        this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapy = new aapl(this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapa, this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz, this.jdField_a_of_type_Aapt.c, this.jdField_a_of_type_Aapk.b, this.jdField_a_of_type_Aapk.d, this.jdField_a_of_type_Aapk.c);
+        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        return;
+        if (this.jdField_a_of_type_Aapk.a) {
+          this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.b(this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapy);
+        } else {
+          this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapy);
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
-    a(localaapq.jdField_f_of_type_AndroidViewView, -localaapq.j, -localaapq.k);
-    a(localaapq.jdField_e_of_type_AndroidViewView, -localaapq.jdField_g_of_type_Int, -localaapq.h);
-    a(localaapq.jdField_b_of_type_AndroidViewView, -localaapq.jdField_a_of_type_Int, -localaapq.jdField_b_of_type_Int);
-    a(localaapq.jdField_d_of_type_AndroidViewView, -localaapq.jdField_e_of_type_Int, -localaapq.jdField_f_of_type_Int);
-    a(localaapq.jdField_c_of_type_AndroidViewView, -localaapq.jdField_c_of_type_Int, -localaapq.jdField_d_of_type_Int);
-  }
-  
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
-  {
-    aapq localaapq = new aapq();
-    localaapq.jdField_a_of_type_AndroidViewView = paramView1;
-    localaapq.jdField_f_of_type_AndroidViewView = paramView3;
-    localaapq.jdField_g_of_type_AndroidViewView = paramView2;
-    localaapq.j = aatp.a(-406, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.k = aatp.a(125, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = aatp.a(220, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
-    {
-      localaapq.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / aatp.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localaapq.jdField_b_of_type_Float = localaapq.jdField_a_of_type_Float;
-    }
-    localaapq.l = aatp.a(50, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.m = aatp.a(50, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.jdField_b_of_type_AndroidViewView = paramView4;
-    localaapq.jdField_c_of_type_AndroidViewView = paramView5;
-    localaapq.jdField_d_of_type_AndroidViewView = paramView6;
-    localaapq.jdField_e_of_type_AndroidViewView = paramView7;
-    localaapq.jdField_a_of_type_Int = aatp.a(-618, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.jdField_b_of_type_Int = aatp.a(275, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.jdField_c_of_type_Int = aatp.a(-457, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.jdField_d_of_type_Int = ((aatp.f(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - aatp.a(196, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext)));
-    localaapq.jdField_e_of_type_Int = aatp.a(-451, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.jdField_f_of_type_Int = ((aatp.f(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - aatp.a(196, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext)));
-    localaapq.jdField_g_of_type_Int = aatp.a(-440, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
-    localaapq.h = ((aatp.f(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - aatp.a(196, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext)));
-    a(localaapq, paramView8);
-    this.jdField_a_of_type_Aapr = localaapq;
+    this.jdField_a_of_type_Aapt.d = ("donwload failed!code = " + parambhhf.a + "errmsg = " + parambhhf.b);
+    this.jdField_a_of_type_Aapt.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapt);
   }
 }
 

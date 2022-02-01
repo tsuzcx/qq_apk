@@ -31,8 +31,8 @@ class MiniAppVideoPlayer$17
   
   public void run()
   {
-    int i = 4;
     int j = 0;
+    int i = 0;
     if (this.this$0.isBusyInChangeScreen) {}
     Activity localActivity;
     do
@@ -53,9 +53,9 @@ class MiniAppVideoPlayer$17
     MiniAppVideoPlayer.access$4500(this.this$0).setVisibility(8);
     if (this.this$0.hideTimeDesc)
     {
-      MiniAppVideoPlayer.access$3500(this.this$0).setVisibility(4);
-      MiniAppVideoPlayer.access$2200(this.this$0).setVisibility(4);
-      MiniAppVideoPlayer.access$3600(this.this$0).setVisibility(4);
+      MiniAppVideoPlayer.access$3500(this.this$0).setVisibility(8);
+      MiniAppVideoPlayer.access$2200(this.this$0).setVisibility(8);
+      MiniAppVideoPlayer.access$3600(this.this$0).setVisibility(8);
     }
     if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null))
     {
@@ -71,74 +71,70 @@ class MiniAppVideoPlayer$17
     if (this.this$0.webviewContainer != null)
     {
       localObject = this.this$0.webviewContainer.getPageOrientation();
-      if (!WindowInfo.ORIENTATION_AUTO.equals(localObject)) {}
-    }
-    for (;;)
-    {
-      localActivity.setRequestedOrientation(i);
-      label400:
-      if (Build.VERSION.SDK_INT >= 16) {
-        localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
-      }
-      for (;;)
+      if (WindowInfo.ORIENTATION_AUTO.equals(localObject))
       {
-        try
+        i = 4;
+        localActivity.setRequestedOrientation(i);
+        if (Build.VERSION.SDK_INT >= 16) {
+          localActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        do
         {
-          if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar() != null))
+          for (;;)
           {
-            i = this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar().getStatusNavigationBarTextStyle();
-            if (i != -1) {
+            try
+            {
+              if ((this.this$0.webviewContainer != null) && (this.this$0.webviewContainer.appBrandRuntime != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage() != null) && (this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar() != null))
+              {
+                i = this.this$0.webviewContainer.appBrandRuntime.getCurPage().getNavBar().getStatusNavigationBarTextStyle();
+                if (i != -1) {
+                  continue;
+                }
+                ImmersiveUtils.a(false, localActivity.getWindow());
+              }
+            }
+            catch (Exception localException)
+            {
+              QLog.e("MiniAppVideoPlayer", 1, "smallScreen: ", localException);
               continue;
             }
-            ImmersiveUtils.a(false, localActivity.getWindow());
+            this.this$0.lastSmallScreenTime = System.currentTimeMillis();
+            this.this$0.isBusyInChangeScreen = true;
+            MiniAppVideoPlayer.access$4200(this.this$0).postDelayed(new MiniAppVideoPlayer.17.1(this), 200L);
+            MiniAppVideoPlayer.access$3800(this.this$0);
+            MiniAppVideoPlayer.access$5400(this.this$0);
+            return;
+            if (WindowInfo.ORIENTATION_LANDSCAPE.equals(localObject)) {
+              break;
+            }
+            i = 1;
+            break;
+            if (i == -16777216) {
+              ImmersiveUtils.a(true, localActivity.getWindow());
+            }
           }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("MiniAppVideoPlayer", 1, "smallScreen: ", localException);
-          continue;
-          i = 1;
-          continue;
-          i = 1;
-        }
-        this.this$0.lastSmallScreenTime = System.currentTimeMillis();
-        this.this$0.isBusyInChangeScreen = true;
-        MiniAppVideoPlayer.access$4200(this.this$0).postDelayed(new MiniAppVideoPlayer.17.1(this), 200L);
-        MiniAppVideoPlayer.access$3800(this.this$0);
-        MiniAppVideoPlayer.access$5400(this.this$0);
-        return;
-        if (!WindowInfo.ORIENTATION_LANDSCAPE.equals(localObject)) {
-          continue;
-        }
-        i = 0;
-        break;
-        if ((GameRuntimeLoaderManager.g().getBindRuntimeLoader(localActivity) == null) || (GameRuntimeLoaderManager.g().getBindRuntimeLoader(localActivity).getMiniGamePkg() == null)) {
-          break label400;
-        }
-        localObject = GameRuntimeLoaderManager.g().getBindRuntimeLoader(localActivity).getMiniGamePkg().mGameConfigJson;
-        if (localObject == null) {
-          break label400;
-        }
-        localObject = ((JSONObject)localObject).optString("deviceOrientation", null);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label400;
-        }
-        if (!"landscape".equals(localObject)) {
-          continue;
-        }
-        i = j;
-        localActivity.setRequestedOrientation(i);
-        break label400;
-        if (i == -16777216) {
-          ImmersiveUtils.a(true, localActivity.getWindow());
-        }
-      }
+        } while ((GameRuntimeLoaderManager.g().getBindRuntimeLoader(localException) == null) || (GameRuntimeLoaderManager.g().getBindRuntimeLoader(localException).getMiniGamePkg() == null));
+        localObject = GameRuntimeLoaderManager.g().getBindRuntimeLoader(localException).getMiniGamePkg().mGameConfigJson;
+      } while (localObject == null);
+      localObject = ((JSONObject)localObject).optString("deviceOrientation", null);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    if ("landscape".equals(localObject)) {}
+    for (i = j;; i = 1)
+    {
+      localException.setRequestedOrientation(i);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.17
  * JD-Core Version:    0.7.0.1
  */

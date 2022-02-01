@@ -1,109 +1,37 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class adop
-  extends BaseAdapter
+class adop
+  extends WtloginObserver
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adoq(this);
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  adop(adoo paramadoo) {}
   
-  public adop(List<ProfileLabelInfo> paramList)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  private void a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    Object localObject = null;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a().keySet().iterator();
-    if (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      localObject = localProfileLabelInfo;
     }
-    label114:
-    for (;;)
+    if (paramInt2 == 0) {}
+    do
     {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a(localObject)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awvn.a(localObject));
-        return;
-      }
-      a(paramProfileLabelInfo.labelId);
       return;
-    }
-  }
-  
-  private void a(Long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
-    }
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
-    if (paramLong != null) {
-      paramLong.toggleStatus();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562709, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
-      paramViewGroup = new adoo();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377406));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      return paramView;
-      paramViewGroup = (adoo)paramView.getTag();
-    }
+      adoo.a(this.a);
+    } while (adoo.a(this.a) == null);
+    paramString = new Intent(adoo.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", adoo.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    adoo.a(this.a).startActivity(paramString);
+    adoo.a(this.a).finish();
   }
 }
 

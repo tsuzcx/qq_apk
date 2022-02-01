@@ -1,55 +1,24 @@
-import org.json.JSONObject;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 
-public class yzb
+class yzb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
+  private yzb(yys paramyys) {}
   
-  public static yzb a(String paramString)
+  public void onGlobalLayout()
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
     {
-      yzb localyzb = new yzb();
-      paramString = new JSONObject(paramString);
-      localyzb.a = paramString.optString("icon_image_url", "");
-      localyzb.b = paramString.optString("md5", "");
-      localyzb.c = paramString.optString("widget_id", "");
-      return localyzb;
+      this.a.dismiss();
+      return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
+    this.a.jdField_a_of_type_Yyz.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzb
  * JD-Core Version:    0.7.0.1
  */

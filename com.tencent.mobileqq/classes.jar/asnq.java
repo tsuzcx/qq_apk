@@ -1,27 +1,22 @@
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.List;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
 public class asnq
-  implements EIPCResultCallback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public asnq(GameSessionView paramGameSessionView) {}
+  public asnq(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = (List)paramEIPCResult.getSerializable("key_get_game_msg");
-        QLog.e(GameSessionView.a, 1, "[onCallback] list:" + paramEIPCResult.size());
-        this.a.setData(paramEIPCResult);
-      }
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
     }
+    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
   }
 }
 

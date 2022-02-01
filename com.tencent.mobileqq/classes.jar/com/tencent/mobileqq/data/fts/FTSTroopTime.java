@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class FTSTroopTime
-  extends awge
+  extends Entity
 {
   public long mTimeStamp;
   public String mTroopUin;
@@ -22,7 +22,7 @@ public class FTSTroopTime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSTroopTime
  * JD-Core Version:    0.7.0.1
  */

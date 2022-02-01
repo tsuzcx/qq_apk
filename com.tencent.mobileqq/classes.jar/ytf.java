@@ -1,23 +1,28 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class ytf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements wld<wza, xau>
 {
-  ytf(ytb paramytb) {}
+  ytf(ytd paramytd) {}
   
-  public void onGlobalLayout()
+  public void a(@NonNull wza paramwza, @Nullable xau paramxau, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bdgz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new bamb(this.a.jdField_a_of_type_Bbry.h, 16).a());
+    yqp.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxau != null))
+    {
+      yqp.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramxau.toString());
+      paramwza = new woh(paramxau.a, paramxau.c, paramxau.d, paramxau.e, paramxau.f, paramwza.d, paramwza.e);
+      this.a.a(0, paramwza);
+      return;
+    }
+    yqp.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ytf
  * JD-Core Version:    0.7.0.1
  */

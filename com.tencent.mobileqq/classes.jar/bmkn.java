@@ -1,11 +1,17 @@
-public abstract interface bmkn
-  extends bmni
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+
+public class bmkn
 {
-  public abstract int a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public static Class<? extends PluginProxyActivity> a(String paramString)
+  {
+    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
+      return QzoneLiveVideoTransparentActivity.class;
+    }
+    return QzoneLiveVideoGpuProxyActivity.class;
+  }
 }
 
 

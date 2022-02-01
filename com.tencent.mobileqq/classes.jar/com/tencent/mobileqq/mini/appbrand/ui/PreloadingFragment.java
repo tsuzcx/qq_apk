@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bhsz;
+import bkgj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,6 +23,8 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
+import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByIdEntity;
+import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppShowInfoEntity;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -31,11 +33,13 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import common.config.service.QzoneConfig;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class PreloadingFragment
   extends PublicBaseFragment
@@ -51,15 +55,15 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache;
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131369781);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370217);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559308, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559397, null);
   private Handler mUIHandler;
   
   static
   {
     boolean bool = true;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_db_cache", 1) == 1) {}
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_db_cache", 0) == 1) {}
     for (;;)
     {
       mEnableDBCache = bool;
@@ -82,87 +86,163 @@ public class PreloadingFragment
   
   private void doRequestByAppid(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam)
   {
-    if (mEnableDBCache)
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_db_cache", 1) == 1) {}
+    for (int i = 1;; i = 0)
     {
-      if (startMiniAppFromIdDB(paramString1, paramString2, paramString3, paramLaunchParam))
-      {
-        quit();
-        return;
+      if (mEnableDBCache) {
+        i = 0;
       }
-      MiniAppConfig localMiniAppConfig = getShowInfoFromDB(paramString1, null, 0, paramString2, paramLaunchParam);
-      if (localMiniAppConfig != null)
+      if ((!mEnableDBCache) || (!startMiniAppFromIdDB(paramString1, paramString2, paramString3, paramLaunchParam))) {
+        break;
+      }
+      quit();
+      return;
+    }
+    if ((i != 0) && (startMiniAppFromAppInfoIdDB(paramString1, paramString2, paramString3, paramLaunchParam)))
+    {
+      quit();
+      return;
+    }
+    Object localObject1;
+    if ((mEnableDBCache) || (i != 0))
+    {
+      localObject1 = getShowInfoFromDB(paramString1, null, 0, paramString2, paramLaunchParam);
+      if (localObject1 != null)
       {
         QLog.d("miniapp-db", 1, "start by showinfo " + paramString1);
-        MiniAppController.startApp(getActivity(), localMiniAppConfig, this.mResultReceiver);
-        MiniReportManager.reportEventType(localMiniAppConfig, 1028, "show_cache", MiniReportManager.getAppType(localMiniAppConfig));
+        MiniAppController.startApp(getActivity(), (MiniAppConfig)localObject1, this.mResultReceiver);
+        MiniReportManager.reportEventType((MiniAppConfig)localObject1, 1028, "show_cache", MiniReportManager.getAppType((MiniAppConfig)localObject1));
         quit();
         return;
       }
     }
     getActivity().runOnUiThread(new PreloadingFragment.2(this));
-    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new PreloadingFragment.3(this, paramLaunchParam));
+    if ((paramLaunchParam != null) && (paramLaunchParam.privateExtraData != null)) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new JSONObject(paramLaunchParam.privateExtraData).optJSONObject("functionalPage").optJSONObject("originAccountInfo").optString("appId");
+        MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, (String)localObject1, new PreloadingFragment.3(this, paramLaunchParam));
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      Object localObject2 = null;
+    }
   }
   
   private void doRequestByLink(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
-    if (mEnableDBCache)
+    int i;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_db_cache", 1) == 1)
     {
-      if (startMiniAppFromLinkDB(paramString1, paramInt, paramString2, paramLaunchParam))
-      {
-        quit();
-        return;
+      i = 1;
+      if (!mEnableDBCache) {
+        break label623;
       }
-      paramString2 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramString2 instanceof QQAppInterface))
+      i = 0;
+    }
+    label623:
+    for (;;)
+    {
+      if (mEnableDBCache)
       {
-        paramString2 = (MiniAppEntityManager)paramString2.getManager(330);
-        if (paramString2 != null)
+        if (startMiniAppFromLinkDB(paramString1, paramInt, paramString2, paramLaunchParam))
         {
-          paramString2 = paramString2.queryEntity(MiniAppByLinkEntity.class, false, "link=? and linkType=? ", new String[] { paramString1, String.valueOf(paramInt) }, null, null, null, null);
-          if ((paramString2 != null) && (paramString2.size() == 1))
+          quit();
+          return;
+          i = 0;
+          break;
+        }
+        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+        MiniAppConfig localMiniAppConfig2;
+        if ((localObject instanceof QQAppInterface))
+        {
+          localObject = (MiniAppEntityManager)((AppRuntime)localObject).getManager(330);
+          if (localObject != null)
           {
-            paramString2 = (MiniAppByLinkEntity)paramString2.get(0);
-            if (paramString2 != null)
+            localObject = ((MiniAppEntityManager)localObject).queryEntity(MiniAppByLinkEntity.class, false, "link=? and linkType=? ", new String[] { paramString1, String.valueOf(paramInt) }, null, null, null, null);
+            if ((localObject != null) && (((List)localObject).size() == 1))
             {
-              paramString2 = paramString2.appId;
-              MiniAppConfig localMiniAppConfig = getShowInfoFromDB(paramString2, paramString1, paramInt, null, paramLaunchParam);
-              if (localMiniAppConfig != null)
+              localObject = (MiniAppByLinkEntity)((List)localObject).get(0);
+              if (localObject != null)
               {
-                QLog.d("miniapp-db", 1, "start by showinfo " + paramString2);
-                MiniAppController.startApp(getActivity(), localMiniAppConfig, this.mResultReceiver);
-                MiniReportManager.reportEventType(localMiniAppConfig, 1028, "show_cache", MiniReportManager.getAppType(localMiniAppConfig));
+                localObject = ((MiniAppByLinkEntity)localObject).appId;
+                localMiniAppConfig2 = getShowInfoFromDB((String)localObject, paramString1, paramInt, null, paramLaunchParam);
+                if (localMiniAppConfig2 != null)
+                {
+                  QLog.d("miniapp-db", 1, "start by showinfo " + (String)localObject);
+                  MiniAppController.startApp(getActivity(), localMiniAppConfig2, this.mResultReceiver);
+                  MiniReportManager.reportEventType(localMiniAppConfig2, 1028, "show_cache", MiniReportManager.getAppType(localMiniAppConfig2));
+                  quit();
+                  return;
+                }
+              }
+            }
+          }
+        }
+        if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
+          try
+          {
+            localObject = (String)bkgj.a(paramString1).get("_mappid");
+            QLog.d("PreloadingFragment", 4, "scheme: appid:  " + (String)localObject);
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localMiniAppConfig2 = getShowInfoFromDB((String)localObject, paramString1, paramInt, "", paramLaunchParam);
+              if (localMiniAppConfig2 != null)
+              {
+                QLog.d("miniapp-db", 1, "start by showinfo " + (String)localObject);
+                MiniAppController.startApp(getActivity(), localMiniAppConfig2, this.mResultReceiver);
+                MiniReportManager.reportEventType(localMiniAppConfig2, 1028, "show_cache", MiniReportManager.getAppType(localMiniAppConfig2));
                 quit();
                 return;
               }
             }
           }
-        }
-      }
-      if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
-        try
-        {
-          paramString2 = (String)bhsz.a(paramString1).get("_mappid");
-          QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
-          if (!TextUtils.isEmpty(paramString2))
+          catch (Exception localException)
           {
-            paramString2 = getShowInfoFromDB(paramString2, paramString1, paramInt, "", paramLaunchParam);
-            if (paramString2 != null)
-            {
-              MiniAppController.startApp(getActivity(), paramString2, this.mResultReceiver);
-              MiniReportManager.reportEventType(paramString2, 1028, "show_cache", MiniReportManager.getAppType(paramString2));
-              quit();
-              return;
-            }
+            QLog.e("PreloadingFragment", 4, "start without appinfo fail, link: " + paramString1);
           }
         }
-        catch (Exception paramString2)
+      }
+      if (i != 0)
+      {
+        if (startMiniAppFromAppInfoLinkDB(paramString1, paramInt, paramString2, paramLaunchParam))
         {
-          QLog.e("PreloadingFragment", 4, "start without appinfo fail, link: " + paramString1);
+          quit();
+          return;
+        }
+        if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
+          try
+          {
+            paramString2 = (String)bkgj.a(paramString1).get("_mappid");
+            QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
+            if (!TextUtils.isEmpty(paramString2))
+            {
+              MiniAppConfig localMiniAppConfig1 = getShowInfoFromDB(paramString2, paramString1, paramInt, "", paramLaunchParam);
+              if (localMiniAppConfig1 != null)
+              {
+                QLog.d("miniapp-db", 1, "start by showinfo " + paramString2);
+                MiniAppController.startApp(getActivity(), localMiniAppConfig1, this.mResultReceiver);
+                MiniReportManager.reportEventType(localMiniAppConfig1, 1028, "show_cache", MiniReportManager.getAppType(localMiniAppConfig1));
+                quit();
+                return;
+              }
+            }
+          }
+          catch (Exception paramString2)
+          {
+            QLog.e("PreloadingFragment", 4, "start without appinfo fail, link: " + paramString1);
+          }
         }
       }
+      ThreadManagerV2.getUIHandlerV2().post(new PreloadingFragment.6(this));
+      MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new PreloadingFragment.7(this, paramLaunchParam));
+      return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new PreloadingFragment.5(this));
-    MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new PreloadingFragment.6(this, paramLaunchParam));
   }
   
   private void doStartMiniApp(MiniAppConfig paramMiniAppConfig)
@@ -171,7 +251,7 @@ public class PreloadingFragment
     {
       if (!isMiniAppInfoValid(paramMiniAppConfig))
       {
-        ThreadManager.getUIHandler().post(new PreloadingFragment.9(this));
+        ThreadManager.getUIHandler().post(new PreloadingFragment.11(this));
         return;
       }
       MiniAppController.startApp(getActivity(), paramMiniAppConfig, null);
@@ -338,7 +418,137 @@ public class PreloadingFragment
   
   private void showToast(String paramString)
   {
-    ThreadManager.getUIHandler().post(new PreloadingFragment.8(this, paramString));
+    ThreadManager.getUIHandler().post(new PreloadingFragment.10(this, paramString));
+  }
+  
+  private boolean startMiniAppFromAppInfoIdDB(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam)
+  {
+    if ((TextUtils.isEmpty(paramString3)) || ("release".equals(paramString3))) {}
+    try
+    {
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject1 instanceof QQAppInterface)) {
+        break label287;
+      }
+      localObject2 = (MiniAppEntityManager)((AppRuntime)localObject1).getManager(330);
+      if (localObject2 == null) {
+        break label296;
+      }
+      QLog.d("miniapp-db", 1, "query appInfo startAppByAppid start.");
+      localObject1 = paramString2;
+      if (paramString2 == null) {
+        localObject1 = "";
+      }
+      paramString2 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppInfoByIdEntity.class, false, "appId=? and entryPath=? ", new String[] { paramString1, localObject1 }, null, null, null, null);
+      if ((paramString2 == null) || (paramString2.size() != 1)) {
+        break label296;
+      }
+      paramString2 = (MiniAppInfoByIdEntity)paramString2.get(0);
+      if (paramString2 == null) {
+        break label296;
+      }
+      localObject2 = MiniAppInfo.getMiniAppInfoByIdFromDB(paramString2);
+      if (localObject2 == null) {
+        break label296;
+      }
+      if (paramLaunchParam != null) {
+        break label312;
+      }
+      paramString2 = new LaunchParam();
+    }
+    catch (Throwable paramString1)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject2;
+        QLog.e("PreloadingFragment", 1, "startMiniAppFromAppInfoIdDB getLinkInfo from db error,", paramString1);
+        continue;
+        paramString2 = paramLaunchParam;
+      }
+    }
+    if ((paramLaunchParam != null) && (!TextUtils.isEmpty(paramLaunchParam.extendData))) {
+      ((MiniAppInfo)localObject2).extendData = paramLaunchParam.extendData;
+    }
+    QLog.d("miniapp-db", 1, "launchMiniAppByAppInfo by Id DB.");
+    MiniAppController.launchMiniAppByAppInfo(getActivity(), (MiniAppInfo)localObject2, paramString2);
+    if (this.mResultReceiver != null)
+    {
+      paramString2 = new Bundle();
+      paramString2.putLong("retCode", 0L);
+      paramString2.putString("errMsg", "");
+      this.mResultReceiver.send(0, paramString2);
+    }
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, (String)localObject1, paramString3, new PreloadingFragment.5(this));
+    paramString1 = new MiniAppConfig((MiniAppInfo)localObject2);
+    MiniReportManager.reportEventType(paramString1, 1028, "idinfo_cache", MiniReportManager.getAppType(paramString1));
+    return true;
+    label287:
+    QLog.e("miniapp-db", 1, "not QQAppInterface");
+    label296:
+    return false;
+  }
+  
+  private boolean startMiniAppFromAppInfoLinkDB(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
+  {
+    try
+    {
+      paramString2 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramString2 instanceof QQAppInterface))
+      {
+        paramString2 = (MiniAppEntityManager)paramString2.getManager(330);
+        if (paramString2 != null)
+        {
+          QLog.d("miniapp-db", 1, "query linkEntityList start.");
+          paramString2 = paramString2.queryEntity(MiniAppInfoByLinkEntity.class, false, "link=? and linkType=? ", new String[] { paramString1, String.valueOf(paramInt) }, null, null, null, null);
+          if ((paramString2 != null) && (paramString2.size() == 1))
+          {
+            MiniAppInfoByLinkEntity localMiniAppInfoByLinkEntity = (MiniAppInfoByLinkEntity)paramString2.get(0);
+            if (localMiniAppInfoByLinkEntity != null)
+            {
+              MiniAppInfo localMiniAppInfo = MiniAppInfo.getMiniAppInfoByLinkFromDB(localMiniAppInfoByLinkEntity);
+              if (localMiniAppInfo != null)
+              {
+                paramString2 = paramLaunchParam;
+                if (paramLaunchParam == null) {
+                  paramString2 = new LaunchParam();
+                }
+                paramString2.shareTicket = localMiniAppInfoByLinkEntity.shareTicket;
+                paramString2.navigateExtData = localMiniAppInfo.extraData;
+                if (!TextUtils.isEmpty(paramString2.shareTicket)) {
+                  paramString2.scene = 1044;
+                }
+                QLog.d("miniapp-db", 1, "launchMiniAppByAppInfo by Link DB.");
+                MiniAppController.launchMiniAppByAppInfo(getActivity(), localMiniAppInfo, paramString2);
+                if (this.mResultReceiver != null)
+                {
+                  paramString2 = new Bundle();
+                  paramString2.putLong("retCode", 0L);
+                  paramString2.putString("errMsg", "");
+                  this.mResultReceiver.send(0, paramString2);
+                }
+                MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new PreloadingFragment.9(this));
+                paramString1 = new MiniAppConfig(localMiniAppInfo);
+                MiniReportManager.reportEventType(paramString1, 1028, "linkinfo_cache", MiniReportManager.getAppType(paramString1));
+                return true;
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        QLog.e("miniapp-db", 1, "not QQAppInterface");
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      for (;;)
+      {
+        QLog.e("PreloadingFragment", 1, "getLinkInfo from db error,", paramString1);
+      }
+    }
+    return false;
   }
   
   private boolean startMiniAppFromIdDB(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam)
@@ -355,48 +565,53 @@ public class PreloadingFragment
         break label357;
       }
       QLog.d("miniapp-db", 1, "query startAppByAppid start.");
-      localObject1 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppByIdEntity.class, false, "appId=? and entryPath=? ", new String[] { paramString1, paramString2 }, null, null, null, null);
+      localObject1 = paramString2;
+      if (paramString2 == null) {
+        localObject1 = "";
+      }
+      paramString2 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppByIdEntity.class, false, "appId=? and entryPath=? ", new String[] { paramString1, localObject1 }, null, null, null, null);
       localObject2 = ((MiniAppEntityManager)localObject2).queryEntity(MiniAppInfoEntity.class, false, "appId=? ", new String[] { paramString1 }, null, null, null, null);
-      if ((localObject1 == null) || (((List)localObject1).size() != 1) || (localObject2 == null) || (((List)localObject2).size() != 1)) {
+      if ((paramString2 == null) || (paramString2.size() != 1) || (localObject2 == null) || (((List)localObject2).size() != 1)) {
         break label357;
       }
-      localObject1 = (MiniAppByIdEntity)((List)localObject1).get(0);
+      paramString2 = (MiniAppByIdEntity)paramString2.get(0);
       localObject2 = (MiniAppInfoEntity)((List)localObject2).get(0);
-      if ((localObject1 == null) || (localObject1 == null)) {
+      if ((paramString2 == null) || (paramString2 == null)) {
         break label357;
       }
-      localObject2 = MiniAppInfo.getMiniAppInfoByIdFromDB((MiniAppByIdEntity)localObject1, (MiniAppInfoEntity)localObject2);
+      localObject2 = MiniAppInfo.getMiniAppInfoByIdFromDB(paramString2, (MiniAppInfoEntity)localObject2);
       if (localObject2 == null) {
         break label357;
       }
       if (paramLaunchParam != null) {
         break label373;
       }
-      localObject1 = new LaunchParam();
+      paramString2 = new LaunchParam();
     }
     catch (Throwable paramString1)
     {
       for (;;)
       {
+        Object localObject1;
         Object localObject2;
         QLog.e("PreloadingFragment", 1, "getLinkInfo from db error,", paramString1);
         continue;
-        Object localObject1 = paramLaunchParam;
+        paramString2 = paramLaunchParam;
       }
     }
     if ((paramLaunchParam != null) && (!TextUtils.isEmpty(paramLaunchParam.extendData))) {
       ((MiniAppInfo)localObject2).extendData = paramLaunchParam.extendData;
     }
     QLog.d("miniapp-db", 1, "launchMiniAppByAppInfo by Id DB.");
-    MiniAppController.launchMiniAppByAppInfo(getActivity(), (MiniAppInfo)localObject2, (LaunchParam)localObject1);
+    MiniAppController.launchMiniAppByAppInfo(getActivity(), (MiniAppInfo)localObject2, paramString2);
     if (this.mResultReceiver != null)
     {
-      paramLaunchParam = new Bundle();
-      paramLaunchParam.putLong("retCode", 0L);
-      paramLaunchParam.putString("errMsg", "");
-      this.mResultReceiver.send(0, paramLaunchParam);
+      paramString2 = new Bundle();
+      paramString2.putLong("retCode", 0L);
+      paramString2.putString("errMsg", "");
+      this.mResultReceiver.send(0, paramString2);
     }
-    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new PreloadingFragment.4(this));
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, (String)localObject1, paramString3, new PreloadingFragment.4(this));
     paramString1 = new MiniAppConfig((MiniAppInfo)localObject2);
     MiniReportManager.reportEventType(paramString1, 1028, "id_cache", MiniReportManager.getAppType(paramString1));
     return true;
@@ -447,7 +662,7 @@ public class PreloadingFragment
                     paramString2.putString("errMsg", "");
                     this.mResultReceiver.send(0, paramString2);
                   }
-                  MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new PreloadingFragment.7(this));
+                  MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString1, paramInt, new PreloadingFragment.8(this));
                   paramString1 = new MiniAppConfig(localMiniAppInfo);
                   MiniReportManager.reportEventType(paramString1, 1028, "link_cache", MiniReportManager.getAppType(paramString1));
                   return true;
@@ -493,10 +708,12 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559308, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131369781));
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559397, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370217));
     }
-    return this.mRootView;
+    paramLayoutInflater = this.mRootView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -525,7 +742,7 @@ public class PreloadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment
  * JD-Core Version:    0.7.0.1
  */

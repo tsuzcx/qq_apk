@@ -1,26 +1,92 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 class agsg
   implements View.OnClickListener
 {
-  agsg(agse paramagse) {}
+  private long jdField_a_of_type_Long;
+  
+  agsg(agsf paramagsf) {}
   
   public void onClick(View paramView)
   {
-    aepi.n = true;
-    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    if (agse.a(this.a) != null)
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
     {
-      if (agse.a(this.a).tagID == 1) {
-        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() != null) && ((paramView.getTag() instanceof JSONObject))) {
+        break label56;
       }
     }
-    else {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label56:
+      Object localObject2 = (JSONObject)paramView.getTag();
+      String str2;
+      Context localContext;
+      try
+      {
+        String str1 = ((JSONObject)localObject2).getString("url");
+        str2 = ((JSONObject)localObject2).getString("name");
+        localContext = paramView.getContext();
+        if (this.jdField_a_of_type_Agsf.a != null) {
+          MediaPlayerManager.a(this.jdField_a_of_type_Agsf.a).a(true);
+        }
+        if (!QQPlayerService.a(this.jdField_a_of_type_Agsf)) {
+          break label164;
+        }
+        QQPlayerService.c(localContext);
+        paramView.setContentDescription(localResources.getString(2131690157));
+      }
+      catch (Exception localException) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(localException));
+        continue;
+        label164:
+        if ((this.jdField_a_of_type_Agsf.a != null) && (this.jdField_a_of_type_Agsf.a.d()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("CommonHobbyForAIOShowItemBuilder", 0, "Video Chatting is going on, don't play music.");
+          }
+        }
+        else
+        {
+          SongInfo localSongInfo = new SongInfo();
+          localSongInfo.jdField_b_of_type_JavaLangString = localException;
+          localSongInfo.jdField_b_of_type_Int = 4;
+          QQPlayerService.a(new Intent(localContext, MusicPlayerActivity.class));
+          localObject2 = QQPlayerService.a();
+          Object localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            localObject1 = new Bundle();
+            QQPlayerService.a((Bundle)localObject1);
+          }
+          ((Bundle)localObject1).putString("KEY_SOURCE_NAME", str2);
+          QQPlayerService.a(this.jdField_a_of_type_Agsf);
+          QQPlayerService.a(localContext, this.jdField_a_of_type_Agsf.getToken(), localSongInfo);
+          paramView.setContentDescription(localResources.getString(2131690155));
+        }
+      }
     }
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", agse.a(this.a).tagName, "");
   }
 }
 

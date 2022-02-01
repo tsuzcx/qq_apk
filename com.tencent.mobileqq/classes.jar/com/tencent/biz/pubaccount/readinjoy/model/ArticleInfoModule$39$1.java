@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
+import pmk;
 
 class ArticleInfoModule$39$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArticleInfoModule$39$1
   
   public void run()
   {
-    oxb.a().b();
+    pmk.a().b();
   }
 }
 

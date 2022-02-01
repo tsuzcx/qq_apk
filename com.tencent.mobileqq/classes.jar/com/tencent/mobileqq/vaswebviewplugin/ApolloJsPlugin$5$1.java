@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aleh;
-import aleo;
+import amxo;
+import amxv;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -15,10 +15,10 @@ class ApolloJsPlugin$5$1
   {
     if (ApolloJsPlugin.access$200(this.this$1.this$0).contains(this.this$1.val$param.apolloId))
     {
-      if (!(this.this$1.val$activity instanceof aleo)) {
+      if (!(this.this$1.val$activity instanceof amxv)) {
         break label60;
       }
-      ((aleo)this.this$1.val$activity).a(this.val$tempList);
+      ((amxv)this.this$1.val$activity).a(this.val$tempList);
     }
     label60:
     while (ApolloJsPlugin.access$300(this.this$1.this$0) == null) {
@@ -29,7 +29,7 @@ class ApolloJsPlugin$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.5.1
  * JD-Core Version:    0.7.0.1
  */

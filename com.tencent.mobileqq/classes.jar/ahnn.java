@@ -1,25 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class ahnn
-  implements bibb
+  implements agso
 {
-  public ahnn(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
+  public ahnn(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void a(View paramView)
+  public void onUpdate(int paramInt)
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(false);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(true);
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
     }
   }
 }

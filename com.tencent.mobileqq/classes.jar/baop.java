@@ -1,50 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Rect;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.File;
 
 public class baop
+  implements bcit
 {
-  public static final String a = String.valueOf(153);
-  public static final String b = String.valueOf(153);
+  public baop(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
   
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt2 < 0) {
-      paramInt2 = bdin.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
     }
-    for (;;)
-    {
-      int i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = 10;
-      }
-      paramAppRuntime = paramString4;
-      try
-      {
-        if (TextUtils.isEmpty(paramString4)) {
-          paramAppRuntime = "1";
-        }
-        VasWebviewUtil.reportVasStatus(paramString1, paramString2, paramString3, i, paramInt1, paramInt3, Integer.parseInt(paramAppRuntime), paramString5, "");
-        if ((QLog.isColorLevel()) && (paramInt3 < 0))
-        {
-          paramString4 = new StringBuilder();
-          paramString4.append(paramString1).append("|step:");
-          paramString4.append(paramInt1).append("|from:");
-          paramString4.append(paramString2).append("|resultCode:");
-          paramString4.append(paramInt3).append("|id:");
-          paramString4.append(paramString3).append("|version:");
-          paramString4.append(paramAppRuntime);
-          QLog.i("ThemeReporter", 2, "ThemeReporterreportTheme Error data::" + paramString4.toString());
-        }
-        return;
-      }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("ThemeReporter", 1, "ThemeReporter reportTheme Exception:" + paramAppRuntime.getMessage());
-        return;
-      }
-    }
+    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
   }
 }
 

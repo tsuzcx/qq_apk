@@ -1,16 +1,28 @@
-public abstract interface atnt
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class atnt
+  implements atnd
 {
-  public abstract void a();
+  atnt(atns paramatns) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    this.a.a(false, atul.a(this.a.a.a()), this.a.c(), new atnu(this));
+  }
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void b()
+  {
+    this.a.d();
+    int i = this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 0)
+    {
+      localQQAppInterface.a().a(this.a.d());
+      return;
+    }
+    localQQAppInterface.a().a(this.a.a.a());
+  }
 }
 
 

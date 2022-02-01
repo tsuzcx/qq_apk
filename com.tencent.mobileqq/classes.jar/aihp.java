@@ -1,42 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class aihp
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  aihp(aihl paramaihl) {}
+  aihp(aihn paramaihn, long paramLong, int[] paramArrayOfInt, DevlockInfo[] paramArrayOfDevlockInfo) {}
   
-  public void onClick(View paramView)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(aihl.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_Aihj;
-    if (this.a.jdField_a_of_type_Aihj == null) {
-      return;
-    }
-    switch (i)
+    long l;
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 2131364912: 
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((aihj)localObject).a.msg);
+      l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo != null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
+      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
+      aihn.b(this.jdField_a_of_type_Aihn).b();
       return;
     }
-    paramView = new Bundle();
-    paramView.putInt("forward_type", -1);
-    paramView.putString("forward_text", ((aihj)localObject).a.msg);
-    localObject = new Intent();
-    ((Intent)localObject).putExtras(paramView);
-    aryv.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
   }
 }
 

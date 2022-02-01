@@ -1,52 +1,23 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atpi
+class atpi
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long;
-  ListenTogetherSession jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString = "";
-  boolean jdField_c_of_type_Boolean = true;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString = null;
-  boolean jdField_d_of_type_Boolean = false;
-  int e;
+  atpi(atpf paramatpf, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("UiData{mCurType=").append(this.jdField_a_of_type_Int).append(", mCurUin='").append(this.jdField_a_of_type_JavaLangString).append(", status=").append(this.jdField_b_of_type_Int).append(", userState=").append(this.jdField_c_of_type_Int).append(", changeMusic=").append(this.jdField_d_of_type_Boolean).append(", isAdmin=").append(this.jdField_a_of_type_Boolean).append(", canOper=").append(this.jdField_b_of_type_Boolean).append(", playMode=").append(this.e).append(", creatorUin=").append(this.jdField_c_of_type_JavaLangString).append(", creatorNick=");
-    if (this.jdField_d_of_type_JavaLangString == null) {}
-    for (String str = "null";; str = this.jdField_d_of_type_JavaLangString) {
-      return str + ", isShowPanel=" + this.jdField_c_of_type_Boolean + ", progres=" + this.jdField_d_of_type_Int + ", titleMsg=" + this.jdField_b_of_type_JavaLangString + ", session=\n" + this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession + '}';
-    }
+    bcst.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    atwt.a(this.jdField_a_of_type_Atpf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atpf.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpi
  * JD-Core Version:    0.7.0.1
  */

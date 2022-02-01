@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import org.jetbrains.annotations.NotNull;
 
-public class rtd
-  extends pdi
+public abstract interface rtd<R>
 {
-  public rtd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(float paramFloat);
   
-  public void a(pdc parampdc)
-  {
-    parampdc.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
-  }
+  public abstract void a(int paramInt, @NotNull String paramString);
+  
+  public abstract void a(R paramR);
+  
+  public abstract void a(@NotNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtd
  * JD-Core Version:    0.7.0.1
  */

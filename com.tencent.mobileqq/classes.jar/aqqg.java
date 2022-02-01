@@ -1,26 +1,74 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqqg
-  implements Comparator<FileManagerEntity>
+  extends aqkz<aqqf>
 {
-  public aqqg(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
+  public static aqqf a()
   {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
+    return (aqqf)aqlk.a().a(572);
+  }
+  
+  @NonNull
+  public aqqf a(int paramInt)
+  {
+    return new aqqf();
+  }
+  
+  @Nullable
+  public aqqf a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      new aqqf();
+      return aqqf.a(paramArrayOfaqlg);
     }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
+    return null;
+  }
+  
+  public void a(aqqf paramaqqf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramaqqf.toString());
     }
+  }
+  
+  public Class<aqqf> clazz()
+  {
+    return aqqf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
     return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 572;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqg
  * JD-Core Version:    0.7.0.1
  */

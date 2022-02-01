@@ -4,7 +4,7 @@ import com.tencent.map.geolocation.TencentPoi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class ff
+final class ff
   implements TencentPoi
 {
   private String a;

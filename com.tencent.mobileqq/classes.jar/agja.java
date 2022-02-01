@@ -1,26 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class agja
-  implements View.OnClickListener
+public class agja
+  extends aqkz<agjb>
 {
-  agja(agiy paramagiy, AIOShortVideoData paramAIOShortVideoData) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public agjb a(int paramInt)
   {
-    agiy.a(this.jdField_a_of_type_Agiy, agiy.a(this.jdField_a_of_type_Agiy), alud.a(2131700435));
-    boolean bool = azgd.a().a();
-    paramView = agiy.b(this.jdField_a_of_type_Agiy);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
-      return;
+    return new agjb();
+  }
+  
+  @Nullable
+  public agjb a(aqlg[] paramArrayOfaqlg)
+  {
+    agjb localagjb = new agjb();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      agjb.a(localagjb, paramArrayOfaqlg[0].a);
     }
+    return localagjb;
+  }
+  
+  public void a(agjb paramagjb) {}
+  
+  public Class<agjb> clazz()
+  {
+    return agjb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 592;
   }
 }
 

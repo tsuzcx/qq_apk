@@ -1,28 +1,33 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDynamicFragment;
+import com.tencent.biz.richframework.part.BasePartFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 public class vnt
-  implements View.OnKeyListener
+  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
 {
-  public vnt(StoryPlayerFragment paramStoryPlayerFragment) {}
+  public vnt(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
   {
-    if (paramInt == 4)
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
+    QLog.d("QCirclePersonalDynamicFragment", 4, "initViewData:getFeedListRequestRsp");
+    this.a.a(paramvup);
+    if ((uxx.a(this.a.jdField_a_of_type_JavaLangString)) && (paramvup != null) && (paramvup.a() == 0) && (!this.a.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())) {
+      this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
     }
-    return false;
+    while ((!uxx.a(this.a.jdField_a_of_type_JavaLangString)) || (paramvup == null) || (paramvup.a() == 1)) {
+      return;
+    }
+    this.a.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnt
  * JD-Core Version:    0.7.0.1
  */

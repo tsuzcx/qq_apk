@@ -1,28 +1,38 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class axqx
-  implements Animation.AnimationListener
+class axqx
+  implements URLDrawableDownListener
 {
-  public axqx(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  axqx(axqw paramaxqw, axqy paramaxqy, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
+    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int, false);
+    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if ((paramInt > 0) && (paramInt < 10000)) {
+      this.jdField_a_of_type_Axqy.b(this.jdField_a_of_type_Int, paramInt / 100);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqx
  * JD-Core Version:    0.7.0.1
  */

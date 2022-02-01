@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bdhk;
+import bgmp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class JumpAction$2
   implements Runnable
 {
-  public JumpAction$2(bdhk parambdhk) {}
+  public JumpAction$2(bgmp parambgmp) {}
   
   public void run()
   {
-    if (bdhk.a(this.this$0) == null) {}
+    if (this.this$0.a == null) {}
     String str;
     do
     {
       return;
-      str = bdhk.a(this.this$0).getCurrentAccountUin();
+      str = this.this$0.a.getCurrentAccountUin();
     } while (TextUtils.isEmpty(str));
     WebProcessManager.a(str, System.currentTimeMillis());
   }

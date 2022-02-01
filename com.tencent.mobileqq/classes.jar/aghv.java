@@ -1,15 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import java.lang.ref.WeakReference;
 
-final class aghv
-  implements DialogInterface.OnClickListener
+class aghv
 {
-  aghv(Activity paramActivity) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  WeakReference<DoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  long b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aghv(aghu paramaghu, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
   }
 }
 

@@ -2,32 +2,32 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder;
 
 import android.content.res.Resources;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
-import tlo;
-import tne;
+import upe;
+import uto;
 
 public class WSVerticalItemVideoProgressController$1
   implements Runnable
 {
-  public WSVerticalItemVideoProgressController$1(tne paramtne) {}
+  public WSVerticalItemVideoProgressController$1(uto paramuto) {}
   
   public void run()
   {
     try
     {
-      if (tne.a(this.this$0) != null) {
-        tne.a(this.this$0).setThumb(tne.a(this.this$0).getDrawable(2130841468));
+      if (uto.a(this.this$0) != null) {
+        uto.a(this.this$0).setThumb(uto.a(this.this$0).getDrawable(2130841780));
       }
       return;
     }
     catch (Exception localException)
     {
-      tlo.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
+      upe.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1
  * JD-Core Version:    0.7.0.1
  */

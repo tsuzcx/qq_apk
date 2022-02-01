@@ -1,55 +1,56 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahul
+public abstract interface ahul
+  extends IInterface
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public abstract int a(long paramLong, int paramInt);
   
-  public JSONObject a()
-  {
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
-    }
-    catch (JSONException localJSONException1)
-    {
-      try
-      {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
-        return localJSONObject;
-      }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
-      localJSONObject = null;
-    }
-    label68:
-    return localJSONObject;
-  }
+  public abstract Intent a(long paramLong, int paramInt);
   
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
-    }
-  }
+  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract MessageForShortVideo a(long paramLong);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(ahuo paramahuo);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(long[] paramArrayOfLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void d(long paramLong);
+  
+  public abstract void e(long paramLong);
 }
 
 

@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.VideoControlUI;
+import android.view.MotionEvent;
 
-public class mmg
-  extends Handler
+public abstract interface mmg
 {
-  public mmg(VideoControlUI paramVideoControlUI, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public void handleMessage(Message paramMessage)
-  {
-    String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 256: 
-      mdd.a(this.a.a, 1037, str);
-      return;
-    }
-    mdd.a(this.a.a, 1036, str);
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmg
  * JD-Core Version:    0.7.0.1
  */

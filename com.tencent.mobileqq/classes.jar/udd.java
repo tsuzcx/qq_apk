@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
 
-class udd
-  implements DialogInterface.OnClickListener
+public class udd
+  implements bggu
 {
-  udd(udb paramudb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onInfo(long paramLong, double paramDouble)
+  {
+    WSHomeFragment.a(this.a, paramDouble);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udd
  * JD-Core Version:    0.7.0.1
  */

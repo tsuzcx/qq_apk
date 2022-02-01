@@ -1,68 +1,76 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity.8.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class afgs
-  implements affa
+  extends anvp
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public afgs(SubLoginActivity paramSubLoginActivity) {}
   
-  public afgs(BaseChatPie paramBaseChatPie)
+  protected void b(boolean paramBoolean, bdei parambdei)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  private void a()
-  {
-    auaa localauaa;
-    if (this.jdField_a_of_type_Int > 0)
+    if (QLog.isColorLevel())
     {
-      localauaa = (auaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308);
-      if (localauaa == null) {
-        break label93;
+      QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() isSucc=" + paramBoolean + " isBindFromThis=" + this.a.a);
+      if (parambdei != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() mainAccount=" + parambdei.b + " subAccount=" + parambdei.c + " errType=" + parambdei.jdField_a_of_type_Int + " errMsg=" + parambdei.jdField_a_of_type_JavaLangString);
       }
-      switch (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+    }
+    if (!this.a.a) {}
+    label428:
+    for (;;)
+    {
+      return;
+      this.a.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount: start");
+      }
+      this.a.e();
+      if (paramBoolean)
       {
+        this.a.c(this.a.getString(2131718273));
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
+        }
+        bddx.b(this.a.app);
+        bddx.a(this.a.app);
+        this.a.finish();
+      }
+      for (;;)
+      {
+        if ((parambdei == null) || (!QLog.isColorLevel())) {
+          break label428;
+        }
+        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + parambdei.jdField_a_of_type_JavaLangString + "...errorType = " + parambdei.jdField_a_of_type_Int);
+        return;
+        if (parambdei == null) {
+          break;
+        }
+        switch (parambdei.jdField_a_of_type_Int)
+        {
+        default: 
+          this.a.b(this.a.getString(2131718264));
+          break;
+        case 1002: 
+          bddy.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.b(this.a.getString(2131718265));
+          break;
+        case 1004: 
+          String str2 = parambdei.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (TextUtils.isEmpty(str2)) {
+            str1 = this.a.getString(2131718266);
+          }
+          this.a.b(str1);
+          this.a.runOnUiThread(new SubLoginActivity.8.1(this));
+          SubLoginActivity.a(this.a, null);
+          bddx.a(this.a.app, 300L);
+        }
       }
     }
-    label93:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      localauaa.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, auaa.b);
-      return;
-      localauaa.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, auaa.c);
-      return;
-    }
-    QLog.d("UnreadCountHelper", 2, "PushNotificationManager is null");
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 5 };
   }
 }
 

@@ -1,70 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahiu
-  extends ameq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahiu(TroopView paramTroopView) {}
+  public ahiu(SixCombolEffectView paramSixCombolEffectView) {}
   
-  protected void d(boolean paramBoolean, ArrayList<ahfc> paramArrayList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
-    }
-    Object localObject;
-    int i;
-    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
-    {
-      localObject = TroopView.a(this.a);
-      if (paramBoolean)
-      {
-        i = 1;
-        localObject = ((ahjd)localObject).obtainMessage(14, 0, i);
-        TroopView.a(this.a).sendMessage((Message)localObject);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label223;
-      }
-      TroopView.a(this.a).sendEmptyMessage(4);
-    }
-    label223:
-    for (;;)
-    {
-      label118:
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        this.a.a.clear();
-        this.a.a.addAll(paramArrayList);
-        TroopView.a(this.a).notifyDataSetChanged();
-        localObject = new ArrayList();
-        i = 0;
-        for (;;)
-        {
-          if (i < paramArrayList.size())
-          {
-            ahfc localahfc = (ahfc)paramArrayList.get(i);
-            localahfc.c = (i + 100);
-            ((ArrayList)localObject).add(localahfc);
-            i += 1;
-            continue;
-            i = 0;
-            break;
-            TroopView.a(this.a).sendEmptyMessage(5);
-            break label118;
-          }
-        }
-        TroopView.a(this.a).a((ArrayList)localObject);
-        TroopView.a(this.a, 0);
-      }
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

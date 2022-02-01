@@ -1,134 +1,163 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspPreDownloadRecmd;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.SystemClock;
+import android.util.Printer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadSetting;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
+import java.util.Map;
 
-final class anvv
-  implements BusinessObserver
+class anvv
+  implements Printer
 {
-  anvv(RockDownloaderTask paramRockDownloaderTask) {}
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = 0;
+  private long jdField_c_of_type_Long;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
+  {
+    jdField_a_of_type_Int = 200;
+  }
+  
+  anvv(int paramInt, String paramString)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  private static String a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
+      return null;
+    }
+    int i = paramString.indexOf('(');
+    if (i == -1) {
+      return null;
+    }
+    int j = paramString.indexOf(')', i);
+    if (j == -1) {
+      return null;
+    }
+    String str1 = paramString.substring(i + 1, j);
+    int k = paramString.indexOf("} ", j);
+    if (k == -1) {
+      return null;
+    }
+    j = paramString.indexOf('@', k + 2);
+    i = j;
+    if (j == -1)
+    {
+      j = paramString.indexOf(':', k + 2);
+      i = j;
+      if (j == -1)
+      {
+        i = paramString.indexOf(' ', k + 2);
+        if (i == -1) {
+          break label150;
+        }
+      }
+    }
+    String str2 = paramString.substring(k + 2, i);
+    i = paramString.indexOf(": ", i);
+    if (i == -1)
+    {
+      return null;
+      label150:
+      return null;
+    }
+    return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
+  }
+  
+  void a(int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "type=", Integer.valueOf(paramInt), " success=", Boolean.valueOf(paramBoolean), " bundle=", paramBundle });
+      QLog.d("TM.global.LooperPrinter", 2, "setting threshold, threshold=" + paramInt);
     }
-    Object localObject;
-    if (1 == paramInt)
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void println(String paramString)
+  {
+    if (paramString.startsWith(">>"))
     {
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break label816;
-      }
-      localObject = paramBundle.getByteArray("BUNDLE_KEY_RESPONSE_BYTE");
-      paramBundle = new ServerApi.RspPreDownloadRecmd();
-      if (localObject == null)
-      {
-        if (this.a.getRockDownloadListener() != null)
-        {
-          this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), alud.a(2131713884), 10003);
-          this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-        }
-        anvu.a(this.a, "0x800A1E6");
+      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_c_of_type_Int);
       }
     }
-    else
-    {
+    while ((this.jdField_c_of_type_Long == 0L) || (!paramString.startsWith("<<"))) {
       return;
     }
-    try
+    this.jdField_a_of_type_Long += 1L;
+    long l = SystemClock.uptimeMillis() - this.jdField_c_of_type_Long;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_b_of_type_Long += l;
+    Object localObject = null;
+    paramString = (String)localObject;
+    if (QLog.isColorLevel())
     {
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = (ServerApi.ErrorInfo)paramBundle.err_info.get();
-      if (localObject == null) {
-        break label757;
+      if (!ThreadSetting.logcatBgTaskMonitor) {
+        break label192;
       }
-      if (((ServerApi.ErrorInfo)localObject).err_code.get() != 0) {
-        break label395;
-      }
-      paramBoolean = anvu.a(paramBundle, this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, new Object[] { "backend isGetPermission=", Boolean.valueOf(paramBoolean) });
-      }
-      if (!paramBoolean)
+      paramString = a(this.jdField_a_of_type_JavaLangString);
+      QLog.d("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + ", cost=" + l + ", " + paramString);
+    }
+    while (l > jdField_a_of_type_Int) {
+      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_c_of_type_Int))
       {
-        anvu.a(this.a, "0x800A1E9");
-        if (this.a.getRockDownloadListener() == null) {
-          break label387;
-        }
-        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        this.jdField_b_of_type_Int = 0;
         return;
+        label192:
+        paramString = (String)localObject;
+        if (l >= 200L)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          QLog.e("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + " OOT cost=" + l + ", " + paramString);
+        }
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, "InvalidProtocolBufferMicroException,", paramBundle);
-      }
-      if (this.a.getRockDownloadListener() != null)
+      else
       {
-        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_BYTE_INFO", 10003);
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        HashMap localHashMap;
+        if (paramString == null)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          localHashMap = new HashMap(8);
+          localObject = BaseActivity.sTopActivity;
+          if (localObject == null) {
+            break label338;
+          }
+        }
+        label338:
+        for (localObject = localObject.getClass().getName();; localObject = "")
+        {
+          localHashMap.put("act", localObject);
+          UnifiedMonitor.a().addEvent(this.jdField_c_of_type_Int, paramString, (int)l, this.jdField_b_of_type_Int, localHashMap);
+          this.jdField_b_of_type_Int = 0;
+          return;
+          break;
+        }
       }
-      anvu.a(this.a, "0x800A1E6");
-      return;
     }
-    anvu.a(this.a, "0x800A1E4");
-    if (this.a.getRockDownloadListener() != null) {
-      this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
+    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+      UnifiedMonitor.a().notifyNotTimeout(this.jdField_c_of_type_Int);
     }
-    label387:
-    anvu.c(this.a);
-    return;
-    label395:
-    if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
-    {
-      if (this.a.getRockDownloadListener() != null)
-      {
-        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
-        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-      }
-      anvu.a(this.a, "0x800A1E6");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "GET_DOWNLOAD_CONFIG error!! ", " ", paramBundle.download_url.get(), " ", Integer.valueOf(paramBundle.start_time.get()), " ", Integer.valueOf(paramBundle.end_time.get()), " ", Integer.valueOf(paramBundle.interval.get()), " ", Integer.valueOf(paramBundle.quota_num.get()), " ", Integer.valueOf(paramBundle.daily_num.get()), " ", ((ServerApi.ErrorInfo)localObject).err_msg.get(), " ", Integer.valueOf(((ServerApi.ErrorInfo)localObject).err_code.get()), " ", ((ServerApi.ErrorInfo)localObject).jump_url.get() });
-    }
-    if (this.a.getRockDownloadListener() != null)
-    {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-    }
-    anvu.a(this.a, "0x800A1E6");
-    return;
-    label757:
-    if (this.a.getRockDownloadListener() != null)
-    {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_NULL_ERROR_INFO", 10003);
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-    }
-    anvu.a(this.a, "0x800A1E6");
-    return;
-    label816:
-    if (this.a.getRockDownloadListener() != null)
-    {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR", 10003);
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-    }
-    anvu.a(this.a, "0x800A1E6");
+    this.jdField_b_of_type_Int += 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anvv
  * JD-Core Version:    0.7.0.1
  */

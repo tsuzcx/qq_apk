@@ -1,31 +1,54 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.AnimatorSet;
+import android.graphics.drawable.Drawable;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class asok
-  implements View.OnClickListener
+class asok
+  implements Animation.AnimationListener
 {
-  public asok(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
+  asok(asoh paramasoh, AnimatorSet paramAnimatorSet) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    int i = 0;
+    while (i < this.jdField_a_of_type_Asoh.a.size())
     {
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramView, 0);
-      paramView = asnl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      aahi.a(akwd.a(), "769", "205019", paramView, "76901", "1", "160", new String[] { asnl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
-      ((bdug)akwd.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      paramAnimation = (ImageView)this.jdField_a_of_type_Asoh.a.get(i);
+      paramAnimation.clearAnimation();
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 != null) && (i < this.jdField_a_of_type_Asoh.jdField_b_of_type_JavaUtilList.size()))
+      {
+        Object localObject2 = (String)this.jdField_a_of_type_Asoh.jdField_b_of_type_JavaUtilList.get(i);
+        Drawable localDrawable = bgmo.a(true);
+        localObject1 = aoch.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
+        localObject2 = paramAnimation.getDrawable();
+        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof aoch))) {
+          ((aoch)localObject2).b();
+        }
+        paramAnimation.setImageDrawable((Drawable)localObject1);
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_Asoh.c.clearAnimation();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    this.jdField_a_of_type_Asoh.jdField_b_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+    this.jdField_a_of_type_Asoh.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setDuration(200L);
+    paramAnimation.setAnimationListener(new asol(this));
+    this.jdField_a_of_type_Asoh.c.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

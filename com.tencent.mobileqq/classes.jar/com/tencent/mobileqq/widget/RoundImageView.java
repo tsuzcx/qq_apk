@@ -23,7 +23,8 @@ public class RoundImageView
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   boolean jdField_a_of_type_Boolean = false;
-  Rect b = new Rect();
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  boolean jdField_b_of_type_Boolean = false;
   
   public RoundImageView(Context paramContext)
   {
@@ -83,7 +84,30 @@ public class RoundImageView
       {
         int i = getMeasuredWidth();
         int j = getMeasuredHeight();
-        if (this.jdField_a_of_type_Float > 0.0F)
+        if (this.jdField_a_of_type_Float <= 0.0F) {
+          break label241;
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i + this.jdField_a_of_type_Float, j);
+          this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+          a(paramCanvas);
+          localObject = getDrawable();
+          if (localObject == null) {
+            break label241;
+          }
+          if ((localObject instanceof SkinnableBitmapDrawable))
+          {
+            localObject = ((SkinnableBitmapDrawable)localObject).getBitmap();
+            if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
+              break label241;
+            }
+            this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+            this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, i, j);
+            paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, null);
+          }
+        }
+        else
         {
           localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
           float f2 = i;
@@ -92,41 +116,31 @@ public class RoundImageView
             f1 = this.jdField_a_of_type_Float;
           }
           ((RectF)localObject).set(0.0F, 0.0F, f2, f1 + f3);
-          this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-          a(paramCanvas);
-          localObject = getDrawable();
-          if (localObject != null) {
-            if ((localObject instanceof SkinnableBitmapDrawable))
-            {
-              localObject = ((SkinnableBitmapDrawable)localObject).getBitmap();
-              if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-              {
-                this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-                this.b.set(0, 0, i, j);
-                paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.b, null);
-              }
-            }
-            else
-            {
-              if (!(localObject instanceof BitmapDrawable)) {
-                break label217;
-              }
-              localObject = ((BitmapDrawable)localObject).getBitmap();
-              continue;
-            }
-          }
+          continue;
         }
-        super.onDraw(paramCanvas);
-        return;
+        if (!(localObject instanceof BitmapDrawable)) {
+          break label247;
+        }
       }
       catch (Exception paramCanvas)
       {
         QLog.e("RoundImageView", 1, "onDraw exception", paramCanvas);
         return;
       }
-      label217:
-      Object localObject = null;
+      Object localObject = ((BitmapDrawable)localObject).getBitmap();
+      continue;
+      label241:
+      super.onDraw(paramCanvas);
+      return;
+      label247:
+      localObject = null;
     }
+  }
+  
+  public void setRadiusWithoutRight(int paramInt)
+  {
+    this.jdField_a_of_type_Float = paramInt;
+    this.jdField_b_of_type_Boolean = true;
   }
   
   public void setmRadius(int paramInt, boolean paramBoolean)
@@ -137,7 +151,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

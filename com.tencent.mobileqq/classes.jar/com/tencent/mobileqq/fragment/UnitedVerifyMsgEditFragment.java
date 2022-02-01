@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import acdj;
+import adks;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class UnitedVerifyMsgEditFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 100;
-  acdj jdField_a_of_type_Acdj;
+  adks jdField_a_of_type_Adks;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
@@ -27,19 +28,19 @@ public class UnitedVerifyMsgEditFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
-    setTitle(getString(2131689648));
-    setLeftButton(2131690648, null);
-    setRightButton(2131690797, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131375684));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131375685));
-    this.jdField_a_of_type_Acdj = new acdj(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Acdj);
+    setTitle(getString(2131689569));
+    setLeftButton(2131690582, null);
+    setRightButton(2131690671, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376410));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376411));
+    this.jdField_a_of_type_Adks = new adks(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Adks);
     ThreadManager.post(new UnitedVerifyMsgEditFragment.1(this), 8, null, true);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561389;
+    return 2131561624;
   }
   
   public boolean onBackEvent()
@@ -54,13 +55,14 @@ public class UnitedVerifyMsgEditFragment
   {
     if (paramView == this.rightViewText)
     {
-      paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       Intent localIntent = new Intent();
-      localIntent.putExtra("VERIFY_MSG", paramView);
+      localIntent.putExtra("VERIFY_MSG", str);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, localIntent);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130771990, 2130772001);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -71,13 +73,13 @@ public class UnitedVerifyMsgEditFragment
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Acdj);
+    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Adks);
     super.onDestroyView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment
  * JD-Core Version:    0.7.0.1
  */

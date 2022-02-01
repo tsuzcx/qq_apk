@@ -1,12 +1,34 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import java.util.List;
+import android.view.View;
 
-public abstract interface aiee
+class aiee
+  implements bkhw
 {
-  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
+  aiee(aidp paramaidp) {}
   
-  public abstract void q();
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.a.ag) {
+      return;
+    }
+    this.a.ag = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.z(2131694663);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.b(true, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.a.b(false, paramInt);
+      continue;
+      this.a.z(2131694663);
+      this.a.b(true, 0);
+    }
+  }
 }
 
 

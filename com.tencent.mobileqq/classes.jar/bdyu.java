@@ -1,18 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager.3.1;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class bdyu
-  implements BusinessObserver
+class bdyu
+  extends anqd
 {
-  bdyu(bdys parambdys) {}
+  bdyu(bdyr parambdyr) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    bgnl.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
+    this.a.a(this.a.c, false, paramBoolean, paramanqe);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
     }
+    this.a.d();
   }
 }
 

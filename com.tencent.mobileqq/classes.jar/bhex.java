@@ -1,19 +1,27 @@
-import com.tencent.smtt.sdk.ValueCallback;
-import java.util.List;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class bhex
-  implements ValueCallback
+public class bhex
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  bhex(bhew parambhew, String paramString) {}
+  public bhex(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onReceiveValue(Object paramObject)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    bhew.a(this.jdField_a_of_type_Bhew).add(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
+    }
+    paramTVK_IMediaPlayer.seekTo(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhex
  * JD-Core Version:    0.7.0.1
  */

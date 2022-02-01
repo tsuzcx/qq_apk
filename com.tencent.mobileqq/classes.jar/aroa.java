@@ -1,119 +1,164 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.earlydownload.xmldata.FaceModelsData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aroa
-  extends arus
+  extends arnz
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new arob(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  private int a;
+  private boolean d;
   
-  public aroa(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  public aroa(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    c();
+    super("qq.android.ar.face.models_v8.2.0", paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "FaceModelsDownloadHandler construct,STR_RES_NAME = qq.android.ar.face.models_v8.2.0");
+    }
   }
   
-  private void c()
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131376385));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371216));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return 10061;
   }
   
-  private void d()
+  public Class<? extends XmlData> a()
   {
-    if ((this.jdField_a_of_type_AndroidOsBundle == null) || (!this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
-    {
-      a(null);
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = arbs.a();
-    ArrayList localArrayList = new ArrayList();
-    localObject2 = ((Set)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
-    }
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-    localObject2 = new Intent();
-    if (222 == i)
-    {
-      ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-      i = -1;
-    }
-    for (;;)
-    {
-      a(i, (Intent)localObject2);
-      return;
-      if ((333 == i) || (666 == i) || (3333 == i) || (6666 == i))
-      {
-        ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-      }
-      else
-      {
-        if ((444 == i) || (555 == i))
-        {
-          if (444 == i) {}
-          for (boolean bool = true;; bool = false)
-          {
-            ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
-            ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-            break;
-          }
-        }
-        if ((777 == i) || (888 == i))
-        {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          bisq.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
-          i = -1;
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject1, localArrayList);
-          ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
-          ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
-          i = -1;
-        }
-      }
-    }
+    return FaceModelsData.class;
+  }
+  
+  public String a()
+  {
+    return null;
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698694);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131714182));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (arbs.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localTextView.setEnabled(bool);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "restoreState");
+    }
+    a().loadState = 0;
+    a().Version = 0;
+    arnn.a(a(), new String[0]);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
+    aowh.a(0, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
     }
   }
   
-  public void a(Bundle paramBundle)
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean)
+    if (!paramBoolean) {
+      aowh.a(0, false);
+    }
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "download finish: " + paramBoolean);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "download success: " + paramString);
+    }
+    if (aowj.a(paramString) != 0)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("qfile_search_param_exparams_qlink_ap_created");
+      a();
+      aowh.a(0, false);
+    }
+    for (;;)
+    {
+      super.a(paramString);
+      return;
+      aowh.a(0, true);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("res_type", "model");
+      bctj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.d) {
+      this.d = paramBoolean;
+    }
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "download restart userClick = " + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    super.b(paramXmlData);
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "download begin");
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.d)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by user ");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by startup ");
+    }
+    return super.b();
+  }
+  
+  public boolean e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceModelsDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
+    }
+    if (!this.d)
+    {
+      if (!aowh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceModelsDownloadHandler", 2, "pre download config disable ");
+        }
+        return false;
+      }
+      if (BaseActivity.sTopActivity == null) {
+        break label115;
+      }
+    }
+    label115:
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceModelsDownloadHandler", 2, "downloadResource later " + bool);
+      }
+      if (bool) {
+        break;
+      }
+      return super.e();
     }
   }
 }

@@ -1,47 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asyg
-  implements TVK_SDKMgr.OnLogListener
+public class asyg
+  implements View.OnClickListener
 {
-  asyg(asyf paramasyf) {}
+  public asyg(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    QfileRecentPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

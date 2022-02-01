@@ -1,35 +1,68 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class axkp
-  implements View.OnLongClickListener
+class axkp
+  extends niu
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  axkp(axko paramaxko) {}
   
-  private axkp(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
+        if (!localRspBody.busi_buf.has()) {
+          break label202;
+        }
+        if ((this.a.jdField_a_of_type_Axkq != null) && (paramInt == 0))
+        {
+          this.a.jdField_a_of_type_Axkq.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+          return;
+        }
+        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
+        if (this.a.jdField_a_of_type_Axkr == null) {
+          return;
+        }
+        this.a.jdField_a_of_type_Axkr.a(paramInt, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
+        if (this.a.jdField_a_of_type_Axkr == null) {
+          return;
+        }
+      }
+      this.a.jdField_a_of_type_Axkr.a(paramInt, null);
+      return;
+      label202:
+      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
+      if (this.a.jdField_a_of_type_Axkr != null) {
+        this.a.jdField_a_of_type_Axkr.a(paramInt, null);
+      }
     }
-    bhuf localbhuf = bhuf.a(paramView.getActivity());
-    localbhuf.b(2131691357);
-    localbhuf.c(2131690648);
-    localbhuf.a(new axkq(this, paramView, localbhuf));
-    localbhuf.show();
-    return true;
+    else
+    {
+      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
+      if (this.a.jdField_a_of_type_Axkr != null) {
+        this.a.jdField_a_of_type_Axkr.a(paramInt, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkp
  * JD-Core Version:    0.7.0.1
  */

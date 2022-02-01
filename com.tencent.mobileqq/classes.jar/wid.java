@@ -1,24 +1,38 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wid
+class wid
+  extends Job<Object, Object, Object>
 {
-  public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
-  
-  public wid(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  wid(why paramwhy, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramString1);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    paramJobContext = new wor(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    {
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+    }
+    wfo.a().dispatch(paramJobContext);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wid
  * JD-Core Version:    0.7.0.1
  */

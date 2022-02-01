@@ -1,85 +1,51 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class atbs
-  implements ataj
+  extends anif
 {
-  atbs(atbp paramatbp) {}
+  atbs(atbq paramatbq) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(Object paramObject)
   {
-    boolean bool = true;
-    atbp.a(this.a, paramBoolean);
-    int i;
-    if (!bdin.a(atbp.a(this.a).getApplicationContext()))
+    Object localObject1 = (bety)paramObject;
+    if (localObject1 == null) {}
+    attu localattu;
+    do
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label190;
-      }
-      localObject = atcg.a;
-      if (i != 0) {
-        break label185;
-      }
-    }
-    label185:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      ((atch)localObject).a(33, String.valueOf(paramBoolean));
-      atbp.a(this.a).findViewById(16908290).setVisibility(8);
-      if (!atbp.a(this.a).isFinishing())
+      do
       {
-        if (this.a.jdField_a_of_type_Bety != null) {
-          this.a.jdField_a_of_type_Bety.dismiss();
-        }
-        this.a.jdField_a_of_type_Bety = new bety(atbp.a(this.a), 40);
-        this.a.jdField_a_of_type_Bety.a(alud.a(2131706044));
-        this.a.jdField_a_of_type_Bety.setOnDismissListener(new atbt(this));
-        this.a.jdField_a_of_type_Bety.show();
+        return;
+        paramObject = ((bety)localObject1).jdField_b_of_type_Long + "";
+        localObject2 = ((bety)localObject1).e;
+        localattu = this.a.a("1", paramObject, (String)localObject2);
+      } while (localattu == null);
+      switch (((bety)localObject1).jdField_b_of_type_Int)
+      {
+      default: 
+        return;
       }
-      atbp.a(this.a, false);
-      return;
-      i = 0;
-      break;
-    }
-    label190:
-    Object localObject = atcg.a;
-    if (i == 0)
+    } while (localattu.a() == null);
+    Object localObject2 = new Bundle();
+    int i = (int)((float)((bety)localObject1).d * 1.0F / ((float)((bety)localObject1).c * 1.0F) * 100.0F);
+    localattu.a().a(0, Integer.parseInt("1"), paramObject, i, (Bundle)localObject2);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is finish. fileId[" + (String)localObject2 + "]");
+    if (localattu.a() != null)
     {
-      paramBoolean = true;
-      ((atch)localObject).a(34, String.valueOf(paramBoolean));
-      localObject = atbp.a(this.a).opType("huiyin").opName("hy_plugin_down");
-      if (i != 0) {
-        break label331;
-      }
-      paramBoolean = true;
-      label237:
-      ((IVPluginDataReporter)localObject).d1(String.valueOf(paramBoolean)).d2(String.valueOf(this.a.jdField_a_of_type_Boolean)).report();
-      atbp.a(this.a).findViewById(16908290).setVisibility(0);
-      if (i == 0) {
-        break label336;
-      }
-      if (!this.a.jdField_a_of_type_Boolean) {
-        atbp.a(this.a).opType("huiyin").opName("plugin_view").report();
-      }
-      atbp.a(this.a, true);
+      localObject2 = new Bundle();
+      boolean bool = bgmg.b(((bety)localObject1).a);
+      localattu.a().a(bool, Integer.parseInt("1"), paramObject, (Bundle)localObject2);
     }
-    for (;;)
+    this.a.b(localattu);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is stop. fileId[" + (String)localObject2 + "]");
+    if (localattu.a() != null)
     {
-      atbh.b("2880338");
-      return;
-      paramBoolean = false;
-      break;
-      label331:
-      paramBoolean = false;
-      break label237;
-      label336:
-      if (!this.a.jdField_a_of_type_Boolean) {
-        atbp.a(this.a).opType("huiyin").opName("plugin_download_loading_view").d1("3").report();
-      }
-      atbp.a(this.a, false);
+      localObject1 = new Bundle();
+      localattu.a().a(false, Integer.parseInt("1"), paramObject, (Bundle)localObject1);
     }
+    this.a.b(localattu);
   }
 }
 

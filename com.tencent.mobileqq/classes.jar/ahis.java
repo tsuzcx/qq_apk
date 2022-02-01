@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahis
-  implements ahvd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahis(TroopView paramTroopView) {}
+  public ahis(SixCombolEffectView paramSixCombolEffectView, ahje paramahje) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
-    }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
-      {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+    this.jdField_a_of_type_Ahje.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 

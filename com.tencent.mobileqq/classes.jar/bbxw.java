@@ -1,113 +1,29 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadWorker.1.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class bbxw
-  extends yum
+  extends aber
 {
-  bbxw(bbxv parambbxv) {}
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
+  private bbxt jdField_a_of_type_Bbxt = new bbxt();
+  private bbxv jdField_a_of_type_Bbxv = new bbxv();
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    long l = paramBundle.getLong("troopUin");
-    if (l != this.a.d) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      bbvl.b("TroopFileUploadWorker", bbvl.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult.but stoped");
-      return;
-    }
-    if ((paramUploadFileRspBody == null) || (!paramBoolean))
-    {
-      bbvl.a("TroopFileUploadWorker", bbvl.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
-      this.a.jdField_a_of_type_Bbux.c = 1;
-      this.a.jdField_a_of_type_Bbux.d = paramInt;
-      paramUploadFileRspBody = new bcmr(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.a.d, 3, 207);
-      this.a.a(true, bcps.b, bcps.A, paramUploadFileRspBody);
-      return;
-    }
-    int j = paramUploadFileRspBody.int32_ret_code.get();
-    bbvl.c("TroopFileUploadWorker", bbvl.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + j);
-    if (j < 0)
-    {
-      paramBundle = null;
-      int i;
-      switch (j)
-      {
-      default: 
-        i = 207;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Bbux.c = 1;
-        this.a.jdField_a_of_type_Bbux.d = j;
-        paramBundle = paramUploadFileRspBody;
-        if (paramUploadFileRspBody == null) {
-          paramBundle = new bcmr(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, i);
-        }
-        this.a.a(paramBoolean, bcps.c, paramInt, paramBundle);
-        return;
-        i = 202;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = 208;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        new Handler(Looper.getMainLooper()).postDelayed(new TroopFileUploadWorker.1.1(this, l), 1000L);
-        return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 104)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
-          this.a.m();
-          return;
-        }
-        i = 204;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = 209;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = -136;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = -138;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        paramUploadFileRspBody = paramUploadFileRspBody.str_client_wording.get();
-        paramUploadFileRspBody = new bcmr(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, 704, paramUploadFileRspBody);
-        i = 207;
-        paramBoolean = false;
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramUploadFileRspBody.str_file_id.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp = paramUploadFileRspBody.str_upload_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns = paramUploadFileRspBody.str_server_dns.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.CheckKey = paramUploadFileRspBody.bytes_check_key.get().toByteArray();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = paramUploadFileRspBody.uint32_bus_id.get();
-    bbvl.c("TroopFileUploadWorker", bbvl.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult fileid:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + " UploadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp + " ServerDns:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns + " busId:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId);
-    this.a.a(paramUploadFileRspBody);
-    this.a.a(false);
+    return this.jdField_a_of_type_Bbxt.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return this.jdField_a_of_type_Bbxv.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

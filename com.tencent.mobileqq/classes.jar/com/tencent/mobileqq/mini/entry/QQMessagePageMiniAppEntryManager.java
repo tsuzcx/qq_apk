@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajij;
-import ajmw;
-import alud;
+import alas;
+import alfl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,10 +18,11 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aool;
-import aoom;
-import bdoo;
-import bhto;
+import anni;
+import aqpu;
+import aqpv;
+import bgtn;
+import bkgx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
@@ -38,18 +38,18 @@ import com.tencent.widget.ListView;
 import mqq.observer.BusinessObserver;
 
 public class QQMessagePageMiniAppEntryManager
-  implements ajij, bhto, MiniAppPullInterface, BusinessObserver
+  implements alas, bkgx, MiniAppPullInterface, BusinessObserver
 {
   public static final long APP_STORE_TIME_THRESHOLD = 86400000L;
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = bdoo.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = bdoo.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = bdoo.a(-100.0F);
+  private static final int OFFSET_NODE_OPEN = bgtn.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = bgtn.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = bgtn.a(-100.0F);
   private static final int OVER_FLING_DISTANCE = 70;
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = bdoo.a(-70.0F);
+  private static final int STORY_TRANSLATE = bgtn.a(-70.0F);
   public static final String TAG = "QQMessagePageMicroAppEntryManager";
   private int OFFSET_SCROLL_OVER;
   private final int OVER_FLING_DISTANCE_DEFAULT = 30;
@@ -57,7 +57,7 @@ public class QQMessagePageMiniAppEntryManager
   boolean flag = false;
   private boolean isFirstOpenMiniAppEntry;
   private QQAppInterface mApp;
-  private final ajmw mCareNotificationBar;
+  private final alfl mCareNotificationBar;
   private PullRefreshHeader mChatTopRefresh;
   private MiniAppEntryLayout mContentView;
   private Context mContext;
@@ -75,7 +75,7 @@ public class QQMessagePageMiniAppEntryManager
     this.mDrawer = paramDrawerFrame;
     this.mListView = ((ARMapHongBaoListView)paramListView);
     this.mChatTopRefresh = paramPullRefreshHeader;
-    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Ajmw;
+    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Alfl;
   }
   
   private void doOnScroll(float paramFloat, boolean paramBoolean)
@@ -102,7 +102,7 @@ public class QQMessagePageMiniAppEntryManager
         f1 = this.mMiniAppListLayout.getTranslationY() - f2;
         setMicroAppEntryPanelAlpha(1.0F - this.mMiniAppListLayout.getTranslationY() / STORY_TRANSLATE + 0.8F);
         label226:
-        if (paramFloat <= bdoo.b(-70.0F)) {
+        if (paramFloat <= bgtn.b(-70.0F)) {
           break label342;
         }
         this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -205,9 +205,9 @@ public class QQMessagePageMiniAppEntryManager
     try
     {
       this.mListView.setOverscrollHeader(new ColorDrawable(Color.parseColor("#000000")));
-      int i = this.mContext.getResources().getColor(2131167002);
+      int i = this.mContext.getResources().getColor(2131167085);
       this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375587);
+      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376312);
       if (localTextView != null) {
         localTextView.setTextColor(i);
       }
@@ -223,10 +223,10 @@ public class QQMessagePageMiniAppEntryManager
   {
     try
     {
-      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130850260));
-      int i = this.mContext.getResources().getColor(2131166963);
+      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130850868));
+      int i = this.mContext.getResources().getColor(2131167046);
       this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375587);
+      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376312);
       if (localTextView != null) {
         localTextView.setTextColor(i);
       }
@@ -240,7 +240,7 @@ public class QQMessagePageMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mChatTopRefresh.findViewById(2131375583);
+    View localView = this.mChatTopRefresh.findViewById(2131376307);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -306,7 +306,7 @@ public class QQMessagePageMiniAppEntryManager
     {
       if (this.refreshProgressBar != null)
       {
-        Drawable localDrawable = this.mContext.getResources().getDrawable(2130839229);
+        Drawable localDrawable = this.mContext.getResources().getDrawable(2130839406);
         this.refreshProgressBar.setIndeterminateDrawable(localDrawable);
       }
       if (this.mChatTopRefresh != null) {
@@ -406,9 +406,9 @@ public class QQMessagePageMiniAppEntryManager
       if (this.mChatTopRefresh.indexOfChild(this.mContentView) < 0)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams.addRule(3, 2131375583);
+        localLayoutParams.addRule(3, 2131376307);
         this.mChatTopRefresh.addView(this.mContentView, localLayoutParams);
-        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131375588));
+        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131376313));
         updateRefreshTheme();
         this.mListView.setMaxOverScrollTopDistance(70);
         this.mListView.setQQStoryListViewListener(this);
@@ -453,9 +453,9 @@ public class QQMessagePageMiniAppEntryManager
     this.mApp.removeObserver(this.appletsObserver);
     this.mApp = paramQQAppInterface;
     boolean bool = false;
-    Object localObject = aoom.a();
+    Object localObject = aqpv.a();
     if (localObject != null) {
-      bool = ((aool)localObject).a();
+      bool = ((aqpu)localObject).a();
     }
     QLog.d("QQMessagePageMicroAppEntryManager", 1, "[MiniAppUserAppInfoListManager].onAccountChanged: " + bool);
     if ((!bool) && (this.mChatTopRefresh != null) && (this.mContentView != null))
@@ -475,7 +475,7 @@ public class QQMessagePageMiniAppEntryManager
   
   public void onChangeRedDotSwitch(int paramInt, boolean paramBoolean)
   {
-    if ((this.mContentView != null) && (aoom.l())) {
+    if ((this.mContentView != null) && (aqpv.h())) {
       this.mContentView.onChangeRedDotSwitch(paramInt, paramBoolean);
     }
   }
@@ -613,8 +613,8 @@ public class QQMessagePageMiniAppEntryManager
       {
         if (f <= -paramARMapHongBaoListView.getOverScrollHeight())
         {
-          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131375587);
-          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(alud.a(2131710850)))) {}
+          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131376312);
+          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anni.a(2131709226)))) {}
           for (this.mode = 3;; this.mode = 2)
           {
             paramARMapHongBaoListView.mForStory = true;
@@ -701,7 +701,7 @@ public class QQMessagePageMiniAppEntryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager
  * JD-Core Version:    0.7.0.1
  */

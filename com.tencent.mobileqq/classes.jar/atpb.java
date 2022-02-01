@@ -1,27 +1,25 @@
+import com.tencent.qphone.base.util.QLog;
+
 class atpb
+  extends anqd
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  atpb(atow paramatow) {}
   
-  public atpb(String paramString1, String paramString2)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bflr.d(paramString2);
-    this.d = atox.a(paramString1);
-  }
-  
-  public String toString()
-  {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    if (paramInt1 == 0)
+    {
+      if (atow.a(this.a)) {
+        atvf.a(2131693799);
+      }
+      atow.a(this.a, false);
+      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpb
  * JD-Core Version:    0.7.0.1
  */

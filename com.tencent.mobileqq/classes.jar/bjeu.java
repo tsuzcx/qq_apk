@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import android.text.TextUtils;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class bjeu
-  implements Parcelable.Creator<QZoneShareData>
+final class bjeu
+  implements FilenameFilter
 {
-  public QZoneShareData a(Parcel paramParcel)
+  public boolean accept(File paramFile, String paramString)
   {
-    return new QZoneShareData(paramParcel, null);
-  }
-  
-  public QZoneShareData[] a(int paramInt)
-  {
-    return new QZoneShareData[paramInt];
+    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjeu
  * JD-Core Version:    0.7.0.1
  */

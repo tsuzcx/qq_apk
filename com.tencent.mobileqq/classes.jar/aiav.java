@@ -1,10 +1,12 @@
-public abstract interface aiav
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aiav
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  aiav(aias paramaias) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,21 +1,24 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aipp
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  public aipp(SendPhotoActivity paramSendPhotoActivity) {}
+  public aipp(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    awiw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
-    return false;
+    if (!bgnt.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131694179, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
+    }
   }
 }
 

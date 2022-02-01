@@ -1,45 +1,26 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-class apfl
-  extends SQLiteCursor
+public class apfl
+  implements DialogInterface.OnClickListener
 {
-  apfl(apfk paramapfk, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
-  {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
-  }
+  public apfl(ARScanEntryView paramARScanEntryView) {}
   
-  public byte[] getBlob(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    byte[] arrayOfByte2 = super.getBlob(paramInt);
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (this.a.a.isNeedEncry()) {
-      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
-    }
-    return arrayOfByte1;
-  }
-  
-  public String getString(int paramInt)
-  {
-    String str2 = super.getString(paramInt);
-    String str1 = str2;
-    if (this.a.a.isNeedEncry()) {}
-    try
-    {
-      str1 = SecurityUtile.b(str2);
-      return str1;
-    }
-    catch (Exception localException) {}
-    return str2;
+    Activity localActivity = (Activity)this.a.a;
+    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+    localActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfl
  * JD-Core Version:    0.7.0.1
  */

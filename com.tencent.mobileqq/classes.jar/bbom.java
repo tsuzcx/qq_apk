@@ -1,8 +1,13 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.search.mostused.MostUsedSearch;
+import java.util.Comparator;
 
-class bbom
+final class bbom
+  implements Comparator<MostUsedSearch>
 {
-  TextView a;
+  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
+  {
+    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
+  }
 }
 
 

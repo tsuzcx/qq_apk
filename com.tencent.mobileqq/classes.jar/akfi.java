@@ -1,26 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class akfi
-  implements Animation.AnimationListener
+  extends akey
 {
-  public akfi(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public akfi(PhotoCropActivity paramPhotoCropActivity)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Akfw.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Akfw.a.clearAnimation();
+    super(paramPhotoCropActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
+  }
 }
 
 

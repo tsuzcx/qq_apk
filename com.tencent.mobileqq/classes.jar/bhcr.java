@@ -1,77 +1,24 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhcr
-  extends bhdw
+  implements View.OnClickListener
 {
-  private MiniAppMidasPay.StMiniCheckOfferIdReq a = new MiniAppMidasPay.StMiniCheckOfferIdReq();
+  public bhcr(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
   
-  public bhcr(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a.appId.set(paramString1);
-    this.a.offerId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StMiniCheckOfferIdRsp localStMiniCheckOfferIdRsp = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStMiniCheckOfferIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStMiniCheckOfferIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("result", localStMiniCheckOfferIdRsp.result.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        paramArrayOfByte.put("ext", localStMiniCheckOfferIdRsp.extInfo);
-        paramArrayOfByte.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
-        paramArrayOfByte.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
-        return paramArrayOfByte;
-      }
-      QMLog.d("CheckOfferIdRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("CheckOfferIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "MiniCheckOfferId";
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcr
  * JD-Core Version:    0.7.0.1
  */

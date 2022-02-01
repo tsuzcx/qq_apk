@@ -1,27 +1,27 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qeg
-  implements bhuk
+class qeg
+  implements ViewBase.OnClickListener
 {
-  public qeg(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qeg(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    switch (paramInt)
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
+    if (paramViewBase != null)
     {
-    }
-    for (;;)
-    {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
-      return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
+      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qeg
  * JD-Core Version:    0.7.0.1
  */

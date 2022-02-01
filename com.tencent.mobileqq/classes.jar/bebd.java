@@ -1,111 +1,49 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
 public class bebd
+  extends bebh
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<bkfr> jdField_a_of_type_JavaUtilList;
-  
-  private bebd(Activity paramActivity)
+  void a(int paramInt, becg parambecg, cmd0x352.ReqBody paramReqBody)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    parambecg = (bece)parambecg;
+    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(parambecg.jdField_c_of_type_JavaLangString).longValue());
+    localTryUpImgReq.uint64_file_size.set(parambecg.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambecg.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(parambecg.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.bool_address_book.set(parambecg.jdField_c_of_type_Boolean);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    localTryUpImgReq.uint32_bu_type.set(1);
+    localTryUpImgReq.bool_pic_original.set(parambecg.b);
+    localTryUpImgReq.uint32_pic_width.set(parambecg.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(parambecg.d);
+    localTryUpImgReq.uint32_pic_type.set(parambecg.jdField_a_of_type_Int);
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(bdxz.a()));
+    localTryUpImgReq.bool_reject_tryfast.set(true);
+    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
   }
   
-  public static bebd a(@NonNull Activity paramActivity)
+  public void a(bebv parambebv)
   {
-    return new bebd(paramActivity);
-  }
-  
-  private bkfr a(@NonNull JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("type");
-    Object localObject = new bkfs();
-    View localView = ((bkfs)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
-    if (localView == null)
+    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
     {
-      xqq.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
-      return null;
+      bdxe localbdxe = new bdxe();
+      localbdxe.jdField_a_of_type_JavaLangString = "LongConn.ArtisticFilter";
+      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv.jdField_a_of_type_JavaUtilList);
+      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
+      localbdxe.jdField_a_of_type_Bdxd = this;
+      a(parambebv, localbdxe);
     }
-    localObject = ((bkfs)localObject).a(str, localView);
-    if (localView == null)
-    {
-      xqq.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
-      return null;
-    }
-    ((bkfr)localObject).a(paramJSONObject);
-    return localObject;
-  }
-  
-  public bebd a(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    return this;
-  }
-  
-  public bebd a(@NonNull JSONArray paramJSONArray)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    a();
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.optJSONObject(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = a((JSONObject)localObject);
-        if (localObject != null)
-        {
-          ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(((bkfr)localObject).a(), localLayoutParams);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-        }
-      }
-    }
-    return this;
-  }
-  
-  public bebd a(@NonNull JSONObject paramJSONObject)
-  {
-    paramJSONObject = a(paramJSONObject);
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    a();
-    if (paramJSONObject == null) {
-      return this;
-    }
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
-    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bkfr)localIterator.next()).c();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

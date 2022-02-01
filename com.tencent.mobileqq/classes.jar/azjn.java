@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class azjn
-  implements View.OnClickListener
+public abstract interface azjn
 {
-  azjn(azjh paramazjh) {}
-  
-  public void onClick(View paramView)
-  {
-    azjh.a(this.a, azjh.a(this.a));
-    azjh.b(this.a, System.currentTimeMillis());
-    if (azjh.a(this.a) - azjh.b(this.a) < 300L) {
-      return;
-    }
-    azjh.a(this.a);
-  }
+  public abstract void a();
 }
 
 

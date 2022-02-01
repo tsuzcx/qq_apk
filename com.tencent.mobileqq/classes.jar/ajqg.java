@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajqg
-  extends hp
+  implements View.OnClickListener
 {
-  private ajqg(ajqe paramajqe) {}
+  ajqg(ajqf paramajqf, ajqi paramajqi) {}
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((ajqe.a(this.a) != null) && (ajqe.a(this.a).hasMessages(paramInt))) {
-      ajqe.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
+    String str = String.valueOf(this.jdField_a_of_type_Ajqi.a.getText());
+    ajqf.a(this.jdField_a_of_type_Ajqf, str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

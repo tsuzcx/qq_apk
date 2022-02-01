@@ -1,37 +1,40 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.pubaccount.weishi_new.event.WSUserAuthEvent;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.ResponseThrowable;
+import rx.Subscriber;
 
-class urq<Request extends urt, Respond extends uro>
-  implements uru<Respond>
+public class urq
+  extends Subscriber<urs>
 {
-  protected final long a;
-  protected urr<Request, Respond> a;
-  public Request a;
+  public urq(WSVerticalDataManager paramWSVerticalDataManager, ure paramure) {}
   
-  public urq(Request paramRequest)
+  public void a(urs paramurs)
   {
-    this.jdField_a_of_type_Urt = paramRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private void b(int paramInt, String paramString, Respond paramRespond)
-  {
-    urr localurr = this.jdField_a_of_type_Urr;
-    if (localurr != null)
+    if (paramurs == null) {}
+    do
     {
-      localurr.a(this.jdField_a_of_type_Urt, paramRespond, new ErrorMessage(paramInt, paramString));
       return;
-    }
-    wxe.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+      if ((paramurs.b) && (udy.a())) {
+        uhd.a().a(new WSUserAuthEvent());
+      }
+    } while (this.jdField_a_of_type_Ure == null);
+    this.jdField_a_of_type_Ure.a(paramurs.jdField_a_of_type_JavaUtilList, paramurs.jdField_a_of_type_Boolean, paramurs.b, paramurs.jdField_a_of_type_JavaLangObject);
   }
   
-  public void a(int paramInt, String paramString, Respond paramRespond)
+  public void onCompleted() {}
+  
+  public void onError(Throwable paramThrowable)
   {
-    b(paramInt, paramString, paramRespond);
+    if ((this.jdField_a_of_type_Ure != null) && ((paramThrowable instanceof WSVerticalDataManager.ResponseThrowable)))
+    {
+      paramThrowable = (WSVerticalDataManager.ResponseThrowable)paramThrowable;
+      this.jdField_a_of_type_Ure.a(paramThrowable.mErrorCode, paramThrowable.mErrorMsg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     urq
  * JD-Core Version:    0.7.0.1
  */

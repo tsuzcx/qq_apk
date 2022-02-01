@@ -1,11 +1,13 @@
-public class anbk
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
+
+public abstract interface anbk
 {
-  public int a = 3000;
+  public abstract void a(anbl paramanbl);
   
-  public String toString()
-  {
-    return "ARCloudRecogReqPreOcrInfo{timeout = " + this.a + '}';
-  }
+  public abstract void a(List<TraceData> paramList);
+  
+  public abstract void b(List<TraceData> paramList);
 }
 
 

@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class adzv
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public adzv(SubAccountUgActivity paramSubAccountUgActivity, bacu parambacu, Pair paramPair) {}
+  public adzv(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bacu.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bacu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      bact.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
   }
 }
 

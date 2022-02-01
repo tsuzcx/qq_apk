@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import aase;
+import acqy;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -20,7 +20,7 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    aase.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    acqy.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     TransitionContext localTransitionContext = (TransitionContext)this.a.get();
     if (localTransitionContext != null)
     {
@@ -45,7 +45,7 @@ final class TransitionContext$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

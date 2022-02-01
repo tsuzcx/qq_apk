@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-
-public class aclw
-  implements View.OnClickListener
+public abstract interface aclw
 {
-  public aclw(ChatHistory paramChatHistory) {}
+  public abstract void a(aclt paramaclt);
   
-  public void onClick(View paramView)
-  {
-    this.a.k();
-    azqs.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
-  }
+  public abstract void a(aclt paramaclt, int paramInt);
+  
+  public abstract void a(aclt paramaclt, int paramInt1, int paramInt2);
 }
 
 

@@ -1,34 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-class aewl
-  implements ImageAssetDelegate
+public class aewl
+  implements baod
 {
-  aewl(aewi paramaewi) {}
+  public aewl(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(float paramFloat)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
+    if (paramFloat < 0.0F)
     {
-      paramLottieImageAsset = bdhj.a(aewi.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
+      this.a.a(this.a.getString(2131693843));
+      return;
     }
-    catch (Exception paramLottieImageAsset)
+    if (paramFloat > 175.0F)
     {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
+      this.a.a(this.a.getString(2131693842));
+      return;
     }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

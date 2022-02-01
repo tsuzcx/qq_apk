@@ -1,7 +1,5 @@
 package com.tencent.ttpic.openapi.model;
 
-import com.google.android.filament.Engine;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import java.io.File;
@@ -12,14 +10,15 @@ import java.util.Map;
 
 public class NodeItemJava
 {
-  public String EXTENSION_JPG = "jpg";
-  public String EXTENSION_PNG = "png";
+  private static final String EXTENSION_JPG = "jpg";
+  private static final String EXTENSION_PNG = "png";
   public int activateTriggerCount = 0;
   public int activateTriggerTotalCount = 0;
   public int activateTriggerType = 0;
-  public int alwaysTriggered = 1;
+  public boolean alwaysTriggered;
   public String content;
   public int countTriggerType;
+  public boolean enableExpressionConfigRemap;
   public List<AnimojiExpressionJava> expressionConfigList = new ArrayList();
   public Map<String, Integer> expressionOrderList = new HashMap();
   public String externalTriggerWords;
@@ -32,11 +31,8 @@ public class NodeItemJava
   public boolean needShow = true;
   public int playCount = 0;
   public int rotateRequied = 0;
-  private boolean show = true;
   public TriggerCtrlItem triggerCtrlItem;
   public String triggerType;
-  
-  public void destroy(Engine paramEngine) {}
   
   public boolean getHide()
   {
@@ -63,10 +59,10 @@ public class NodeItemJava
     {
       return paramString;
       str2 = paramString + File.separator + this.modelId + File.separator + this.content + File.separator + this.content + "_" + this.triggerCtrlItem.getFrameIndex() + ".";
-      str1 = str2 + this.EXTENSION_PNG;
+      str1 = str2 + "png";
       paramString = str1;
     } while (new File(str1).exists());
-    return str2 + this.EXTENSION_JPG;
+    return str2 + "jpg";
   }
   
   public int getTriggerTypeInt()
@@ -79,14 +75,10 @@ public class NodeItemJava
     catch (NumberFormatException localNumberFormatException) {}
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
-  
-  public void reset() {}
-  
-  public void updateActionTriggered(PTDetectInfo paramPTDetectInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.NodeItemJava
  * JD-Core Version:    0.7.0.1
  */

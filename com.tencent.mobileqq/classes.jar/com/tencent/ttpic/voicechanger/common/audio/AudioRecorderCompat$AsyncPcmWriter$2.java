@@ -27,9 +27,9 @@ class AudioRecorderCompat$AsyncPcmWriter$2
         {
           localObject1 = new short[this.val$count / 2];
           ByteBuffer.wrap(this.val$fileBuffer).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get((short[])localObject1);
-          this.this$1.this$0.mVoiceChanger.writeVoiceFrames((short[])localObject1);
-          localObject1 = null;
-          if (0 == 0) {
+          arrayOfByte = this.this$1.this$0.mVoiceChanger.writeVoiceFrames((short[])localObject1);
+          localObject1 = arrayOfByte;
+          if (arrayOfByte == null) {
             throw new Exception("frames is null");
           }
         }
@@ -68,7 +68,7 @@ class AudioRecorderCompat$AsyncPcmWriter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderCompat.AsyncPcmWriter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,40 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-final class ajjs
-  implements Animation.AnimationListener
+class ajjs
+  implements bkhe
 {
-  ajjs(View paramView, Animation paramAnimation) {}
+  ajjs(ajjr paramajjr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
+    }
+    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 20, 0, 1);
+      }
+    }
+    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 20, 0, 1);
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
+      return;
+    }
+    this.a.e();
+  }
 }
 
 

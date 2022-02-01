@@ -1,57 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class addz
-  implements View.OnClickListener
+  extends QIPCModule
 {
-  public addz(GroupManagerActivity paramGroupManagerActivity) {}
+  private static addz a;
   
-  public void onClick(View paramView)
+  public addz(String paramString)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    if ((k & 0x2) != 0)
+    super(paramString);
+  }
+  
+  public static addz a()
+  {
+    if (a == null) {}
+    try
     {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label92;
-      }
+      a = new addz("HardCoderModule");
+      return a;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    EIPCResult localEIPCResult = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
+    }
+    if (paramString.equals("start"))
     {
-      if ((i == 0) && (j == 0)) {
-        break label97;
-      }
-      if (30 != this.a.a.size()) {
-        break label145;
-      }
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131720883);
-      paramView.a();
-      return;
-      i = 0;
-      break;
-      label92:
-      j = 0;
+      paramInt = paramBundle.getInt("key_delay");
+      i = paramBundle.getInt("key_cpu");
+      j = paramBundle.getInt("key_io");
+      k = paramBundle.getInt("key_bind");
+      m = paramBundle.getInt("key_timeout");
+      n = paramBundle.getInt("key_scene");
+      l = paramBundle.getLong("key_action");
+      paramString = paramBundle.getString("key_tag");
+      localEIPCResult = EIPCResult.createResult(addu.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
     }
-    label97:
-    if (16 == this.a.a.size())
+    while (!paramString.equals("stop"))
     {
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131720882);
-      paramView.a();
-      return;
+      int i;
+      int j;
+      int k;
+      int m;
+      int n;
+      long l;
+      return localEIPCResult;
     }
-    label145:
-    GroupManagerActivity.a(this.a, bdgm.a(this.a, 2131693325, 2131693331, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 0);
+    paramInt = paramBundle.getInt("key_code");
+    addu.a().a(paramInt);
+    return null;
   }
 }
 

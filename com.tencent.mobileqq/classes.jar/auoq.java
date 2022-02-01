@@ -1,17 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.graphics.Bitmap;
 
-class auoq
-  extends RecyclerView.ViewHolder
+public abstract interface auoq
 {
-  public auoq(auok paramauok, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoq
  * JD-Core Version:    0.7.0.1
  */

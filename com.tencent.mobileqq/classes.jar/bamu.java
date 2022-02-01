@@ -1,23 +1,14 @@
-import android.content.Context;
-
-final class bamu
-  implements bhsy<Integer>
+public class bamu
 {
-  bamu(Context paramContext, String paramString, bhuf parambhuf) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(Integer paramInteger)
+  public bamu(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInteger.intValue())
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      bamp.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bamp.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

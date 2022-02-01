@@ -1,35 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.qphone.base.util.QLog;
 
 public class adzr
-  implements View.OnClickListener
+  extends anub
 {
-  public adzr(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public adzr(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
     }
-    paramView = (badd)this.a.app.getManager(61);
-    if (paramView != null) {}
-    for (int i = paramView.a();; i = 0)
+    if (paramInt == 1)
     {
-      if (i < 2)
-      {
-        paramView = new Intent(this.a, SubLoginActivity.class);
-        paramView.putExtra("fromWhere", this.a.b);
-        this.a.startActivity(paramView);
-        return;
-      }
-      bacu.a(this.a.app, this.a);
+      this.a.a.a(29, 2);
+      this.a.a.a(-1, null);
       return;
     }
+    this.a.a.k();
   }
 }
 

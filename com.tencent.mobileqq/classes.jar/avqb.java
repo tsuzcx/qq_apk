@@ -1,24 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avqb
+public class avqb
   implements View.OnClickListener
 {
-  avqb(avqa paramavqa) {}
+  public avqb(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(avqa.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", "http://nearby.qq.com/nearby-topic/topicTags.html");
-    avqa.a(this.a).startActivity(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqb
  * JD-Core Version:    0.7.0.1
  */

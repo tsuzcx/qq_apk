@@ -1,24 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahga
-  extends Handler
+class ahga
+  implements View.OnClickListener
 {
-  public ahga(AddContactsActivity paramAddContactsActivity) {}
+  ahga(ahfz paramahfz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_Ahhc.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
+      akwv.b(this.a.jdField_a_of_type_AndroidContentContext, str);
+      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
+        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
+      }
     }
-    swe.a().a(300);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

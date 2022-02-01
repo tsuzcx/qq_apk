@@ -18,7 +18,7 @@ class MoviePlayer$3
       do
       {
         return;
-      } while ((!MoviePlayer.access$1500(this.this$0)) || (MoviePlayer.access$900(this.this$0) == null));
+      } while ((!MoviePlayer.access$1600(this.this$0)) || (MoviePlayer.access$900(this.this$0) == null));
       MoviePlayer.access$900(this.this$0).pause();
       return;
     } while (MoviePlayer.access$900(this.this$0) == null);
@@ -27,7 +27,7 @@ class MoviePlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer.3
  * JD-Core Version:    0.7.0.1
  */

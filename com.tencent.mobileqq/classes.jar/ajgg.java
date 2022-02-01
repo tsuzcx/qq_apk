@@ -1,23 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
-class ajgg
-  implements View.OnClickListener
+public class ajgg
+  extends RecyclerView.OnScrollListener
 {
-  ajgg(ajgb paramajgb) {}
+  public ajgg(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    try
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      bdgm.a(ajgb.a(this.a), 0, null, alud.a(2131701299), 2131690648, 2131694953, new ajgh(this), new ajgi(this)).show();
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
+      }
+    }
+    if (this.a.jdField_a_of_type_Aobu != null)
+    {
+      if (paramInt == 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_Aobu.a();
+      this.a.jdField_a_of_type_Aobu.c();
+    }
+    label73:
+    while (!this.a.jdField_a_of_type_Aobu.a()) {
       return;
     }
-    catch (Throwable paramView)
-    {
-      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
-    }
+    this.a.jdField_a_of_type_Aobu.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

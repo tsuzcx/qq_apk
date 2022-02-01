@@ -11,14 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import beej;
-import bhtd;
+import bhll;
+import bkgm;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class NearbyBaseFragment
   extends BaseFragment
@@ -26,40 +27,41 @@ public class NearbyBaseFragment
 {
   public static int b;
   public Handler a;
-  public NearbyActivity.TabInfo a;
   public NearbyAppInterface a;
+  public NearbyTabInfo a;
   int c = 5000;
   boolean e;
   boolean f;
+  public boolean g;
   
   public NearbyBaseFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = null;
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
   }
   
-  public beej a()
+  public bhll a()
   {
     return null;
   }
   
   public void a()
   {
-    beej localbeej = a();
-    if ((localbeej == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    bhll localbhll = a();
+    if ((localbhll == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbeej.mWebview.getWebScrollY();
-      int j = localbeej.mWebview.getHeight();
+      int i = localbhll.mWebview.getWebScrollY();
+      int j = localbhll.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbeej.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbeej), 60L);
+        localbhll.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbhll), 60L);
         return;
       }
     }
@@ -71,15 +73,20 @@ public class NearbyBaseFragment
     localException.mWebview.flingScroll(0, -this.c);
   }
   
-  public void a(NearbyActivity.TabInfo paramTabInfo)
+  public void a(NearbyTabInfo paramNearbyTabInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = paramTabInfo;
-    this.jdField_a_of_type_Int = paramTabInfo.tabIndex;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = paramNearbyTabInfo;
+    this.jdField_a_of_type_Int = paramNearbyTabInfo.tabIndex;
   }
   
-  public void aR_()
+  public void a(boolean paramBoolean)
   {
-    super.aR_();
+    this.g = paramBoolean;
+  }
+  
+  public void aP_()
+  {
+    super.aP_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
@@ -122,34 +129,33 @@ public class NearbyBaseFragment
   {
     boolean bool2 = false;
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo == null))
+    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo == null))
     {
       paramViewGroup = paramBundle.getString("info");
-      if (!TextUtils.isEmpty(paramViewGroup))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = new NearbyActivity.TabInfo();
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.fromJson(paramViewGroup);
+      if (!TextUtils.isEmpty(paramViewGroup)) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = NearbyTabInfo.fromJson(paramViewGroup);
       }
     }
     if (QLog.isColorLevel())
     {
       paramViewGroup = new StringBuilder().append("onCreateView: inState==null?");
       if (paramBundle != null) {
-        break label165;
+        break label159;
       }
     }
-    label165:
+    label159:
     for (boolean bool1 = true;; bool1 = false)
     {
       paramViewGroup = paramViewGroup.append(bool1).append(", mTabInfo==null?");
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo == null) {
         bool1 = true;
       }
       QLog.d("NearbyBaseFragment", 2, bool1 + ", this=" + this);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (b == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex) && (!this.e)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null) && (b == this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo.tabIndex) && (!this.e)) {
         this.e = true;
       }
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
     }
   }
@@ -163,8 +169,8 @@ public class NearbyBaseFragment
   {
     boolean bool2 = true;
     super.onSaveInstanceState(paramBundle);
-    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null)) {
-      paramBundle.putString("info", this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.toJson());
+    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null)) {
+      paramBundle.putString("info", this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo.toJson());
     }
     if (QLog.isColorLevel())
     {
@@ -174,7 +180,7 @@ public class NearbyBaseFragment
       }
       bool1 = true;
       paramBundle = localStringBuilder.append(bool1).append(", mTabInfo==null?");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null) {
         break label107;
       }
     }
@@ -191,7 +197,7 @@ public class NearbyBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

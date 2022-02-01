@@ -1,33 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acqg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acqg(ChatSettingForTroop paramChatSettingForTroop) {}
+  public acqg(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
-    while (paramInt != 0) {
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null)
+      {
+        str = "ad is loading";
+      }
+      else
+      {
+        if (GdtInterstitialFragmentForJS.a(this.a).a() == 0) {
+          break;
+        }
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
+      }
     }
-    this.a.finish();
+    if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {}
+    for (String str = "正在打开插屏";; str = "打开插屏错误")
+    {
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragmentForJS.3.1(this), 0, 5000L);
+      break;
+    }
   }
 }
 

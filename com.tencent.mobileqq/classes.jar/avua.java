@@ -1,49 +1,38 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class avua
-  implements QQPermissionCallback
+public class avua
+  implements bkhw
 {
-  avua(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
+  public avua(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, avuv paramavuv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
-    }
-    try
+    for (;;)
     {
-      avtz.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
-      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+      this.jdField_a_of_type_Avuv.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
       }
       return;
-    }
-    catch (Exception paramArrayOfString)
-    {
-      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
+      avtq.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Avuv.a().e, this.jdField_a_of_type_Avuv.a().b);
+      continue;
+      this.jdField_a_of_type_Avuv.g();
+      continue;
+      this.jdField_a_of_type_Avuv.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avua
  * JD-Core Version:    0.7.0.1
  */

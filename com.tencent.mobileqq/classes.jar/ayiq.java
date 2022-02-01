@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class ayiq
-  implements bhum
+public abstract interface ayiq
 {
-  ayiq(ayio paramayio, QQAppInterface paramQQAppInterface) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", ayin.a(this.jdField_a_of_type_Ayio.a), 0, "", "", "", "");
-  }
+  public abstract void b();
 }
 
 

@@ -1,109 +1,162 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tribe.async.dispatch.Dispatcher;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
+import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class vec
-  implements urr<vez<qqstory_service.ReqStorySubmitPollData>, vgx>
+  extends uzu
+  implements zwr
 {
-  public static final String a;
-  public int a;
-  public String b;
-  public String c;
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private uyv jdField_a_of_type_Uyv;
+  private zxl<QCircleReportBean> jdField_a_of_type_Zxl;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.submit_poll_data");
+    return "QCircleTaskCenterPart";
   }
   
-  vec(String paramString1, String paramString2, int paramInt)
+  public void a()
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a()
-  {
-    wxe.a("Q.qqstory.pollData.SendVidPollDataHandler", "sendRequest() feed=%s, poll=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
-    Object localObject = new qqstory_service.ReqStorySubmitPollData();
-    ((qqstory_service.ReqStorySubmitPollData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
-    ((qqstory_service.ReqStorySubmitPollData)localObject).poll_data.set(this.jdField_a_of_type_Int);
-    localObject = new vez(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
-    urp.a().a((urt)localObject, this);
-  }
-  
-  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
-  {
-    new vec(paramString1, paramString2, paramInt).a();
-  }
-  
-  public void a(@NonNull vez<qqstory_service.ReqStorySubmitPollData> paramvez, @Nullable vgx paramvgx, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isFail()) || (paramvgx == null))
+    String str;
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
     {
-      wxe.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request Error:%s", paramErrorMessage);
+      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      if (!QCircleReportBean.isContentDetailPage(c())) {
+        break label84;
+      }
+    }
+    label84:
+    for (int i = b();; i = c())
+    {
+      vrf.a(str, 8, 1, 0, i);
+      if (this.jdField_a_of_type_Uyv != null) {
+        this.jdField_a_of_type_Uyv.onRefreshData();
+      }
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(a().getRootView(), 81, 0, 0);
       return;
     }
-    paramvez = new qqstory_service.RspStorySubmitPollData();
-    StoryVideoItem localStoryVideoItem;
-    try
-    {
-      paramvez.mergeFrom(paramvgx.a);
-      paramvgx = new ved();
-      paramvgx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramvez.result.error_code.get(), paramvez.result.error_desc.get().toStringUtf8());
-      paramvgx.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      paramvgx.jdField_b_of_type_JavaLangString = this.c;
-      paramvgx.jdField_a_of_type_Int = paramvez.comment_id.get();
-      paramvgx.jdField_a_of_type_Long = paramvez.fake_id.get();
-      paramvgx.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      paramvgx.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramvez.video_poll_result.get());
-      int j = paramvgx.jdField_a_of_type_JavaUtilArrayList.size();
-      paramErrorMessage = (uvx)uwa.a(5);
-      localStoryVideoItem = paramErrorMessage.a(this.c);
-      wxe.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramvgx.jdField_b_of_type_Int));
-      if ((localStoryVideoItem == null) || (j <= 0)) {
-        break label302;
-      }
-      if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
-        localStoryVideoItem.mPollNumbers = new int[j];
-      }
-      int i = 0;
-      while (i < j)
-      {
-        localStoryVideoItem.mPollNumbers[i] = ((Integer)paramvez.video_poll_result.get(i)).intValue();
-        i += 1;
-      }
-      localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_Uyv = new uyv(null);
+    if (this.jdField_a_of_type_Zxl != null) {
+      this.jdField_a_of_type_Uyv.a(this.jdField_a_of_type_Zxl);
     }
-    catch (InvalidProtocolBufferMicroException paramvez)
+    for (;;)
     {
-      paramvez.printStackTrace();
-      wxe.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request parse Error:%s", paramvez);
+      a().add(this.jdField_a_of_type_Uyv);
+      super.a(paramView);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(), -1, -1);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755542);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(a());
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      a().a().setBackgroundResource(2130844110);
+      a().setBackgroundResource(2131165355);
+      a().setOnClickListener(new ved(this));
+      a().setPadding(0, (int)(zby.b(a()) * 0.6D), 0, 0);
+      return;
+      if (a() != null) {
+        this.jdField_a_of_type_Uyv.a(a());
+      }
+    }
+  }
+  
+  public void a(zxl<QCircleReportBean> paramzxl)
+  {
+    this.jdField_a_of_type_Zxl = paramzxl;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    {
+      b();
+      return true;
+    }
+    return super.a();
+  }
+  
+  protected int b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterPart", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Zxl != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterPart", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
+  
+  protected int c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterPart", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Zxl != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterPart", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    }
+    return 0;
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleTaskCenterEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    b();
+    super.onActivityDestroyed(paramActivity);
+  }
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    super.onActivityStarted(paramActivity);
+    zwp.a().a(this);
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    super.onActivityStopped(paramActivity);
+    zwp.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((!(paramSimpleBaseEvent instanceof QCircleTaskCenterEvent)) || (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mPopContextHashCode != a().hashCode())) {
       return;
     }
-    paramErrorMessage.a(localStoryVideoItem);
-    label302:
-    umc.a().dispatch(paramvgx);
-    xsf.a(QQStoryContext.a());
+    if (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mIsShowTaskPanel)
+    {
+      a();
+      return;
+    }
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vec
  * JD-Core Version:    0.7.0.1
  */

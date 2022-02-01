@@ -14,7 +14,7 @@ public final class oidb_0x59f$Guidelines_common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_common
  * JD-Core Version:    0.7.0.1
  */

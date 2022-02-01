@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.position;
 
 import java.util.List;
-import piq;
+import qac;
 
 public class SelectCityPresenter$1
   implements Runnable
 {
-  public SelectCityPresenter$1(piq parampiq, List paramList) {}
+  public SelectCityPresenter$1(qac paramqac, List paramList) {}
   
   public void run()
   {
-    piq.a(this.this$0, this.a);
+    qac.a(this.this$0, this.a);
   }
 }
 

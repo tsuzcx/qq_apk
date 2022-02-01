@@ -2,16 +2,17 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import azps;
-import beiy;
-import beja;
+import bcrt;
+import bhqc;
+import bhqe;
+import com.tencent.gamecenter.activities.GameCenterActivity;
 import java.net.URLEncoder;
-import myl;
+import nhe;
 
 public class SwiftBrowserStatistics$3
   implements Runnable
 {
-  public SwiftBrowserStatistics$3(beiy parambeiy, String paramString, int paramInt) {}
+  public SwiftBrowserStatistics$3(bhqc parambhqc, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
   
   public void run()
   {
@@ -26,7 +27,7 @@ public class SwiftBrowserStatistics$3
         if (TextUtils.isEmpty(str1)) {
           return;
         }
-        if ((!this.this$0.q) && (!myl.a().m(str1))) {
+        if ((!this.this$0.q) && (!nhe.a().m(str1))) {
           return;
         }
         str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
@@ -55,7 +56,8 @@ public class SwiftBrowserStatistics$3
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-        azps.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+        bcrt.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+        GameCenterActivity.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
         return;
       }
     }
@@ -63,7 +65,7 @@ public class SwiftBrowserStatistics$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.3
  * JD-Core Version:    0.7.0.1
  */

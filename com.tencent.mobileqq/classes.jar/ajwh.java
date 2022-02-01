@@ -1,6 +1,15 @@
-public abstract interface ajwh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajwh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a_(String paramString);
+  ajwh(ajvr paramajvr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

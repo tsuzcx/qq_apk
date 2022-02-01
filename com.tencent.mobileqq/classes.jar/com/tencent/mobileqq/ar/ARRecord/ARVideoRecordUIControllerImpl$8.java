@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amul;
-import amup;
-import amus;
+import aotc;
+import aotg;
+import aotj;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(amup paramamup, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(aotg paramaotg, int paramInt) {}
   
   public void run()
   {
-    if (amup.a(this.this$0) != null) {
-      amup.a(this.this$0).a(0);
+    if (aotg.a(this.this$0) != null) {
+      aotg.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (amup.a(this.this$0) != -1) {
-        switch (amup.a(this.this$0))
+      if (aotg.a(this.this$0) != -1) {
+        switch (aotg.a(this.this$0))
         {
         case 5: 
         default: 
-          amup.a(this.this$0, -1);
+          aotg.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      amup.b(this.this$0, false);
-      if (!amup.c(this.this$0)) {
-        amup.a(this.this$0);
+      aotg.b(this.this$0, false);
+      if (!aotg.c(this.this$0)) {
+        aotg.a(this.this$0);
       }
       return;
-      amup.a("0X8008A56");
-      amul.a("AR视频已保存", amup.e);
+      aotg.a("0X8008A56");
+      aotc.a("AR视频已保存", aotg.e);
       break;
-      amul.a(amup.h, true);
+      aotc.a(aotg.h, true);
       break;
-      amup.a("0X8008A56");
-      amul.a(amup.h, true);
+      aotg.a("0X8008A56");
+      aotc.a(aotg.h, true);
       break;
-      if (amup.b(this.this$0) == true)
+      if (aotg.b(this.this$0) == true)
       {
-        amup.a(this.this$0, false);
+        aotg.a(this.this$0, false);
       }
       else
       {
-        amup.a("0X8008A56");
-        amul.a(amup.h, true);
+        aotg.a("0X8008A56");
+        aotc.a(aotg.h, true);
         continue;
-        amup.a("0X8008A56");
+        aotg.a("0X8008A56");
         if (this.a == 1) {
-          amul.a("AR视频已保存", amup.f);
+          aotc.a("AR视频已保存", aotg.f);
         } else {
-          amul.a("AR视频已保存", amup.g);
+          aotc.a("AR视频已保存", aotg.g);
         }
       }
     }
@@ -60,7 +60,7 @@ public class ARVideoRecordUIControllerImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.8
  * JD-Core Version:    0.7.0.1
  */

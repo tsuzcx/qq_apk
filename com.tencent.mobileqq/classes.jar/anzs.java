@@ -1,25 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class anzs
-  implements QQPermissionCallback
+  implements Comparator<File>
 {
-  public anzs(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
+  public anzs(CleanCache paramCleanCache) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzs
  * JD-Core Version:    0.7.0.1
  */

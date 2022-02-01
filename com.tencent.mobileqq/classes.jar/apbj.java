@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-
 public class apbj
-  implements apbo
 {
-  public apbj(DanmakuManager paramDanmakuManager) {}
+  public long b = 0L;
   
-  public void a(apbq paramapbq)
+  public String toString()
   {
-    DanmakuManager.a(this.a).a(paramapbq);
+    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
   }
 }
 

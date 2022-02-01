@@ -1,81 +1,57 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.parallel.ParallelStream;
 
 public class ybm
+  extends JobSegment<ycb, ycb>
 {
-  @NotNull
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
+  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
+  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
+  private ycb jdField_a_of_type_Ycb;
+  
+  private void a(String paramString)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846162);
-    if (paramURLImageView.getLayoutParams() != null)
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new ybu(this), paramString);
+    yia localyia1;
+    yia localyia2;
+    if (this.jdField_a_of_type_Ycb.a())
     {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+      localyia1 = new yia(paramString, 2, "", 0);
+      localyia2 = new yia(paramString, 2, "", 1);
     }
-    return localURLDrawableOptions;
+    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new ybs(this, 0), paramString).map(new ybs(this, 1), paramString).map(new ybq(this), localyia1).map(new ybq(this), localyia2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new ybs(this, -1), paramString).map(new ybq(this), localyia1))
+    {
+      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new ybp(this));
+      return;
+      localyia1 = new yia(paramString, 2, "");
+    }
   }
   
-  public static void a()
+  protected void a(JobContext paramJobContext, ycb paramycb)
   {
-    if (BaseApplicationImpl.sProcessId == 1)
+    if ((paramycb == null) || (paramycb.a == null) || (TextUtils.isEmpty(paramycb.a.feedId)))
     {
-      BaseApplicationImpl.sImageCache.evict(0);
+      yqp.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
+      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
       return;
     }
-    BaseApplicationImpl.sImageCache.evictAll();
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
+    this.jdField_a_of_type_Ycb = paramycb;
+    a(paramycb.a.feedId);
   }
   
-  public static void a(String paramString, URLImageView paramURLImageView)
+  public void onCancel()
   {
-    a(paramString, paramURLImageView, null, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
-  {
-    WeakReference localWeakReference = new WeakReference(paramURLImageView);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-    if (paramURLDrawableOptions == null) {}
-    try
-    {
-      localURLDrawableOptions = a(paramURLImageView);
-      if (paramBoolean) {}
-      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
-      {
-        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841309);
-    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
+    super.onCancel();
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybm
  * JD-Core Version:    0.7.0.1
  */

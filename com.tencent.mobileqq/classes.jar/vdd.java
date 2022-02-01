@@ -1,41 +1,135 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.events.QCircleGoToCardSettingEvent;
+import com.tencent.biz.qqcircle.events.QCircleSpecialFollowListLoadEvent;
+import com.tencent.biz.qqcircle.events.QCircleSpecialFollowUpdateEvent;
+import com.tencent.biz.qqcircle.events.QCircleSyncToTroopSettingEvent;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.part.BasePartFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class vdd
-  extends uro
+  extends uzu
+  implements View.OnClickListener, zwr
 {
-  public List<wfv> a = new ArrayList();
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final vol jdField_a_of_type_Vol = vol.a();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public vdd(qqstory_service.RspConvertGroupId paramRspConvertGroupId)
+  private void a()
   {
-    super(paramRspConvertGroupId.result);
-    if (paramRspConvertGroupId.group_rsp_list.has())
+    int i = this.jdField_a_of_type_Vol.a();
+    QLog.i("QCircleSettingContentPart", 4, "updateSpecialCareCnt: " + i);
+    if (i == 0)
     {
-      paramRspConvertGroupId = paramRspConvertGroupId.group_rsp_list.get().iterator();
-      while (paramRspConvertGroupId.hasNext())
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("特别关注");
+      return;
+    }
+    if (i < 100)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("特别关注 (" + i + ")");
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("特别关注 (99+)");
+  }
+  
+  public String a()
+  {
+    return "QCircleSettingContentPart";
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_Boolean = ((Activity)a()).getIntent().getBooleanExtra("key_bundle_support_mainpage_to_personalcard", true);
+    this.b = ((Activity)a()).getIntent().getBooleanExtra("key_bundle_support_new_msg_sync_to_troop", true);
+    paramView.findViewById(2131373923).setOnClickListener(this);
+    paramView.findViewById(2131373927).setOnClickListener(this);
+    paramView.findViewById(2131369322).setOnClickListener(this);
+    paramView.findViewById(2131373926).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373928));
+    a();
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleGoToCardSettingEvent.class);
+    localArrayList.add(QCircleSpecialFollowUpdateEvent.class);
+    localArrayList.add(QCircleSpecialFollowListLoadEvent.class);
+    localArrayList.add(QCircleSyncToTroopSettingEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    super.onActivityCreated(paramActivity, paramBundle);
+    QLog.i("QCircleSettingContentPart", 4, "onActivityCreated");
+    zwp.a().a(this);
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    super.onActivityDestroyed(paramActivity);
+    QLog.i("QCircleSettingContentPart", 4, "onActivityDestroyed");
+    zwp.a().b(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      uxo.b(this.jdField_a_of_type_Boolean, this.b, a().clone().setElementIdStr("portraitlist"));
+      vrf.a("", 11, 22, 2);
+      continue;
+      if ((!a().onBackEvent()) && (a() != null))
       {
-        Object localObject = (qqstory_struct.GroupId)paramRspConvertGroupId.next();
-        localObject = new wfv(String.valueOf(((qqstory_struct.GroupId)localObject).group_uin.get()), ((qqstory_struct.GroupId)localObject).group_union_id.get().toStringUtf8());
-        this.a.add(localObject);
+        a().finish();
+        continue;
+        uxo.c(new uxk().a(a()).a());
+        continue;
+        uxo.a(a());
       }
     }
   }
   
-  public String toString()
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    return "GetUserGroupUnionIDResponse{groupIDList=" + this.a + '}';
+    if ((paramSimpleBaseEvent instanceof QCircleGoToCardSettingEvent)) {
+      this.jdField_a_of_type_Boolean = ((QCircleGoToCardSettingEvent)paramSimpleBaseEvent).mShowCard;
+    }
+    do
+    {
+      return;
+      if ((paramSimpleBaseEvent instanceof QCircleSyncToTroopSettingEvent))
+      {
+        this.b = ((QCircleSyncToTroopSettingEvent)paramSimpleBaseEvent).mCanSyncTroopARK;
+        return;
+      }
+      if ((paramSimpleBaseEvent instanceof QCircleSpecialFollowUpdateEvent))
+      {
+        a();
+        return;
+      }
+    } while (!(paramSimpleBaseEvent instanceof QCircleSpecialFollowListLoadEvent));
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdd
  * JD-Core Version:    0.7.0.1
  */

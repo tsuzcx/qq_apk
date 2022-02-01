@@ -1,21 +1,7 @@
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-class asoa
-  extends bdul
-{
-  asoa(asnz paramasnz) {}
-  
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
-  {
-    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-    if (paramObject == null) {
-      return;
-    }
-    asnz.a(this.a, (ArrayList)paramObject);
-    asnz.a(this.a).a(asnz.a(this.a));
-    asnz.a(this.a).notifyDataSetChanged();
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asoa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

@@ -1,22 +1,36 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class usr
-  extends uss
+public abstract class usr<T>
+  extends bkrv<T>
 {
-  usr(usq paramusq) {}
+  public WSVerticalPageFragment a;
+  public T a;
+  public uei<T> a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public usr(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    this.a.a.a.e();
-    if (paramBoolean) {
-      this.a.a.a.a(true, paramCommentEntry);
-    }
+    super(paramViewGroup, paramInt1);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    this.jdField_a_of_type_Uei = a(paramInt2);
+  }
+  
+  public abstract FrameLayout a();
+  
+  public abstract uei<T> a(int paramInt);
+  
+  public abstract void a(int paramInt);
+  
+  public void a(T paramT)
+  {
+    super.a(paramT);
+    this.jdField_a_of_type_JavaLangObject = paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     usr
  * JD-Core Version:    0.7.0.1
  */

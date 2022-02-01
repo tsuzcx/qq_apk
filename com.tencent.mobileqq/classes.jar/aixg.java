@@ -1,25 +1,57 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aixg
-  implements PopupWindow.OnDismissListener
+  extends anmu
 {
-  public aixg(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public aixg(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
   
-  public void onDismiss()
+  protected void onAddFriend(String paramString)
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (aixj.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
-    {
-      aixj.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
     }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      ajeu.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
+    }
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
+    }
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ConnectionsExplorationFragment.a(this.a, false, true);
+    }
+    while (paramInt1 != 1205) {
+      return;
+    }
+    ConnectionsExplorationFragment.a(this.a, false, false);
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ConnectionsExplorationFragment.a(this.a, false, false);
     }
   }
 }

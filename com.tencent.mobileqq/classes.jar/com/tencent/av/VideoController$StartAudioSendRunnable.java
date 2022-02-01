@@ -23,7 +23,7 @@ class VideoController$StartAudioSendRunnable
     if (this.jdField_a_of_type_Int > 0) {}
     for (int i = 1;; i = 2)
     {
-      VideoController.a().a(this.jdField_a_of_type_Long, "StartAudioSendRunnable", this.jdField_a_of_type_Boolean, this.b, i);
+      VideoController.a(VideoController.a(), this.jdField_a_of_type_Long, "StartAudioSendRunnable", this.jdField_a_of_type_Boolean, this.b, i);
       return;
     }
   }
@@ -35,7 +35,7 @@ class VideoController$StartAudioSendRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.StartAudioSendRunnable
  * JD-Core Version:    0.7.0.1
  */

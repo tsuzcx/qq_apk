@@ -1,66 +1,82 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class aqgh
-  extends aqgg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final String b;
+  public aqgh(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  aqgh(aqgi paramaqgi, int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super(paramaqgi, paramInt);
-    this.jdField_b_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch id" + paramInt);
-    Object localObject = new aqcl();
-    ((aqcl)localObject).jdField_b_of_type_Int = paramInt;
-    this.a.a(101, (aqcl)localObject);
-    localObject = (aqbe)this.a.a.a(127);
-    if (localObject != null)
+    int i = 0;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    ColorNote localColorNote;
+    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
+      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
+    }
+    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
     {
-      int i = aqfk.a(this.a.a);
-      ((aqbe)localObject).a(this.a.a.getCurrentAccountUin(), i, paramInt);
+      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      float f2 = paramMotionEvent1.getY();
+      float f3 = paramMotionEvent2.getY();
+      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      f2 = Math.abs((f2 - f3) / f1);
+      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
+        i = 1;
+      }
+      if ((f1 < 0.0F) && (f2 < 0.5F))
+      {
+        if (!bool) {
+          break label276;
+        }
+        if (i == 0) {
+          break label254;
+        }
+        this.a.jdField_a_of_type_Aqgd.sendEmptyMessage(1);
+        this.a.postInvalidate();
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Aqgg != null) {
+          this.a.jdField_a_of_type_Aqgg.a();
+        }
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        label254:
+        SwipePostTableLayout.a(this.a, true);
+        SwipePostTableLayout.a(this.a).a();
+        break;
+        label276:
+        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          this.a.c = true;
+          if (i != 0)
+          {
+            this.a.d();
+          }
+          else
+          {
+            SwipePostTableLayout.b(this.a, true);
+            SwipePostTableLayout.a(this.a).a();
+          }
+        }
+        else if (i != 0)
+        {
+          this.a.d();
+        }
+        else
+        {
+          SwipePostTableLayout.b(this.a, true);
+          SwipePostTableLayout.a(this.a).a();
+        }
+      }
     }
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
-  }
-  
-  void a(boolean paramBoolean, int paramInt, aqcl paramaqcl, String paramString)
-  {
-    if ((paramBoolean) && (paramaqcl != null))
-    {
-      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramaqcl.toString());
-      return;
-    }
-    paramaqcl = paramString;
-    if (paramString == null) {
-      paramaqcl = "";
-    }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramaqcl);
-  }
-  
-  void a(boolean paramBoolean, aqcl paramaqcl)
-  {
-    if (paramaqcl == null)
-    {
-      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
-      return;
-    }
-    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
-    if (paramBoolean)
-    {
-      a(paramaqcl.jdField_b_of_type_JavaLangString, paramaqcl.jdField_a_of_type_JavaLangString, paramaqcl.jdField_a_of_type_ArrayOfByte);
-      c(paramaqcl);
-      a(paramaqcl.jdField_b_of_type_JavaLangString, paramaqcl.e);
-      return;
-    }
-    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
   }
 }
 

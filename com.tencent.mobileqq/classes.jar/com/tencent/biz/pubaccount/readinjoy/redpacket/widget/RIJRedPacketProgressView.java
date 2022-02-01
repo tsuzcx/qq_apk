@@ -19,23 +19,23 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdaq;
-import bdin;
+import bggq;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout;
-import nrt;
-import ors;
-import orz;
-import qgx;
-import qhe;
-import qhg;
-import qhi;
-import qhk;
+import oat;
+import pha;
+import phi;
+import raf;
+import ram;
+import rao;
+import raq;
+import ras;
 
 public class RIJRedPacketProgressView
   extends PressEffectRelativeLayout
-  implements qgx
+  implements raf
 {
   private int jdField_a_of_type_Int = 5;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -43,7 +43,7 @@ public class RIJRedPacketProgressView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RIJRedPacketProgressBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressBar;
-  private qhi jdField_a_of_type_Qhi;
+  private raq jdField_a_of_type_Raq;
   private int jdField_b_of_type_Int = 1;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private int jdField_c_of_type_Int = 0;
@@ -61,17 +61,17 @@ public class RIJRedPacketProgressView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848934);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849432);
     this.jdField_b_of_type_AndroidWidgetImageView.setScaleX(0.0F);
     this.jdField_b_of_type_AndroidWidgetImageView.setScaleY(0.0F);
-    paramAttributeSet = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 27.0F), bdaq.a(paramContext, 27.0F));
+    paramAttributeSet = new RelativeLayout.LayoutParams(bggq.a(paramContext, 27.0F), bggq.a(paramContext, 27.0F));
     paramAttributeSet.addRule(14);
     addView(this.jdField_b_of_type_AndroidWidgetImageView, paramAttributeSet);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130848933);
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849431);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleX(0.0F);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleY(0.0F);
-    paramAttributeSet = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 27.0F), bdaq.a(paramContext, 27.0F));
+    paramAttributeSet = new RelativeLayout.LayoutParams(bggq.a(paramContext, 27.0F), bggq.a(paramContext, 27.0F));
     paramAttributeSet.addRule(13);
     paramAttributeSet.bottomMargin = 1;
     addView(this.jdField_c_of_type_AndroidWidgetImageView, paramAttributeSet);
@@ -83,7 +83,7 @@ public class RIJRedPacketProgressView
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressBar, paramAttributeSet);
     startViewTransition(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressBar);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848937);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849435);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramAttributeSet = new RelativeLayout.LayoutParams(-2, -2);
     paramAttributeSet.addRule(13);
@@ -92,19 +92,19 @@ public class RIJRedPacketProgressView
     this.jdField_a_of_type_AndroidWidgetTextView.setScaleX(0.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setScaleY(0.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848936);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849434);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 9.0F);
-    paramContext = new RelativeLayout.LayoutParams(bdaq.a(paramContext, 21.0F), bdaq.a(paramContext, 21.0F));
+    paramContext = new RelativeLayout.LayoutParams(bggq.a(paramContext, 21.0F), bggq.a(paramContext, 21.0F));
     paramContext.addRule(13);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_Qhi = new qhi(new qhe());
+      this.jdField_a_of_type_Raq = new raq(new ram());
       return;
     }
-    this.jdField_a_of_type_Qhi = new qhi(new qhg());
+    this.jdField_a_of_type_Raq = new raq(new rao());
   }
   
   private void a(View paramView)
@@ -118,7 +118,7 @@ public class RIJRedPacketProgressView
     paramView.setPivotY(paramView.getHeight() / 2);
     paramVarArgs = ValueAnimator.ofFloat(paramVarArgs);
     paramVarArgs.setDuration(200L);
-    paramVarArgs.addUpdateListener(new qhk(this, paramView));
+    paramVarArgs.addUpdateListener(new ras(this, paramView));
     paramVarArgs.start();
   }
   
@@ -126,25 +126,25 @@ public class RIJRedPacketProgressView
   {
     int j = 2;
     int i;
-    orz localorz1;
-    orz localorz2;
+    phi localphi1;
+    phi localphi2;
     if (paramBoolean)
     {
       i = 3;
-      localorz1 = new orz();
-      localorz2 = localorz1.a("icon_position", Integer.valueOf(paramInt)).a("icon_status", Integer.valueOf(i));
-      if (!bdin.h(BaseApplicationImpl.getContext())) {
+      localphi1 = new phi();
+      localphi2 = localphi1.a("icon_position", Integer.valueOf(paramInt)).a("icon_status", Integer.valueOf(i));
+      if (!bgnt.h(BaseApplicationImpl.getContext())) {
         break label136;
       }
     }
     label136:
     for (paramInt = j;; paramInt = 1)
     {
-      localorz2.a("network_type", Integer.valueOf(paramInt)).a("os", Integer.valueOf(1)).a("imei", ors.f());
+      localphi2.a("network_type", Integer.valueOf(paramInt)).a("os", Integer.valueOf(1)).a("imei", pha.h());
       if (!TextUtils.isEmpty(paramString2)) {
-        localorz1.a("rowkey", paramString2);
+        localphi1.a("rowkey", paramString2);
       }
-      nrt.a(paramString1, localorz1.a());
+      oat.a(paramString1, localphi1.a());
       return;
       if (a() == 1)
       {
@@ -168,7 +168,7 @@ public class RIJRedPacketProgressView
   
   public void a()
   {
-    this.jdField_a_of_type_Qhi.d();
+    this.jdField_a_of_type_Raq.d();
   }
   
   public void a(int paramInt, boolean paramBoolean, @Nullable String paramString)
@@ -182,13 +182,13 @@ public class RIJRedPacketProgressView
       return;
     }
     this.d = 1;
-    this.jdField_a_of_type_Qhi.a(paramString, paramInt1, paramInt2);
+    this.jdField_a_of_type_Raq.a(paramString, paramInt1, paramInt2);
     if (paramInt3 == 1)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848934);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849432);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848935);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849433);
   }
   
   public void b()
@@ -197,7 +197,7 @@ public class RIJRedPacketProgressView
       return;
     }
     this.d = 2;
-    this.jdField_a_of_type_Qhi.b();
+    this.jdField_a_of_type_Raq.b();
   }
   
   public void b(int paramInt, boolean paramBoolean, @Nullable String paramString)
@@ -207,7 +207,7 @@ public class RIJRedPacketProgressView
   
   public void c()
   {
-    this.jdField_a_of_type_Qhi.c();
+    this.jdField_a_of_type_Raq.c();
     b();
   }
   
@@ -222,20 +222,20 @@ public class RIJRedPacketProgressView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Qhi.a(this);
+    this.jdField_a_of_type_Raq.a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Qhi.a();
+    this.jdField_a_of_type_Raq.a();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    setMeasuredDimension(bdaq.a(getContext(), 27.0F), bdaq.a(getContext(), 27.0F));
+    setMeasuredDimension(bggq.a(getContext(), 27.0F), bggq.a(getContext(), 27.0F));
   }
   
   @SuppressLint({"SetTextI18n"})

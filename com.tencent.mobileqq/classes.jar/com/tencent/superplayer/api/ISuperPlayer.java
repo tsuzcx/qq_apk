@@ -13,6 +13,8 @@ public abstract interface ISuperPlayer
   
   public abstract int getBufferPercent();
   
+  public abstract int getCurrentPlayerState();
+  
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
@@ -23,11 +25,17 @@ public abstract interface ISuperPlayer
   
   public abstract String getStreamDumpInfo();
   
+  public abstract String getToken();
+  
   public abstract int getVideoHeight();
   
   public abstract int getVideoRotation();
   
+  public abstract ISPlayerVideoView getVideoView();
+  
   public abstract int getVideoWidth();
+  
+  public abstract boolean isBuffering();
   
   public abstract boolean isLoopBack();
   
@@ -37,7 +45,11 @@ public abstract interface ISuperPlayer
   
   public abstract boolean isPlaying();
   
+  public abstract void onPrePlayViewShow();
+  
   public abstract void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong);
+  
+  public abstract void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption);
   
   public abstract void pause();
   
@@ -53,11 +65,15 @@ public abstract interface ISuperPlayer
   
   public abstract void seekTo(int paramInt1, int paramInt2);
   
+  public abstract void setAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo);
+  
+  public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
   public abstract void setLoopback(boolean paramBoolean);
   
   public abstract void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2);
   
-  public abstract void setOnAudioPcmDataListener(ISuperPlayer.OnAudioPcmDataListener paramOnAudioPcmDataListener);
+  public abstract void setOnAudioFrameOutputListener(ISuperPlayer.OnAudioFrameOutputListener paramOnAudioFrameOutputListener);
   
   public abstract void setOnCaptureImageListener(ISuperPlayer.OnCaptureImageListener paramOnCaptureImageListener);
   
@@ -73,7 +89,7 @@ public abstract interface ISuperPlayer
   
   public abstract void setOnTVideoNetInfoUpdateListener(ISuperPlayer.OnTVideoNetInfoListener paramOnTVideoNetInfoListener);
   
-  public abstract void setOnVideoOutputFrameListener(ISuperPlayer.OnVideoOutputFrameListener paramOnVideoOutputFrameListener);
+  public abstract void setOnVideoFrameOutputListener(ISuperPlayer.OnVideoFrameOutputListener paramOnVideoFrameOutputListener);
   
   public abstract void setOnVideoPreparedListener(ISuperPlayer.OnVideoPreparedListener paramOnVideoPreparedListener);
   
@@ -97,7 +113,7 @@ public abstract interface ISuperPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.api.ISuperPlayer
  * JD-Core Version:    0.7.0.1
  */

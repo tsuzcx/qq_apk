@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class appc
-  implements apph
+final class appc
+  implements ark.PlayerStubFactory
 {
-  public appc(DragSortListView paramDragSortListView) {}
-  
-  public float a(float paramFloat, long paramLong)
+  public ark.PlayerStub CreateStub()
   {
-    return this.a.e * paramFloat;
+    return new appb();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agjx;
-import agki;
+import ahua;
+import ahul;
 
 public class AIOPhotoListAdapter$2
   implements Runnable
 {
-  public AIOPhotoListAdapter$2(agjx paramagjx, AIOShortVideoData paramAIOShortVideoData) {}
+  public AIOPhotoListAdapter$2(ahua paramahua, AIOShortVideoData paramAIOShortVideoData) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AIOPhotoListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,86 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nph
-  extends aave
+  extends aoqo
 {
-  public nph(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public nph(EqqAccountDetailActivity paramEqqAccountDetailActivity, nyl paramnyl, int paramInt1, int paramInt2) {}
+  
+  public int a()
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    return 7;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(Object paramObject)
   {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    paramWebView = this.a.findViewById(2131362681);
-    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
+    if ((paramObject instanceof ArrayList))
     {
-      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
-      paramWebView.setVisibility(0);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    aase.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      paramObject = ((ArrayList)paramObject).iterator();
+      for (;;)
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
+        if (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if (((localObject instanceof AppletItem)) && (((AppletItem)localObject).c().equals(EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))))
+          {
+            this.jdField_a_of_type_Nyl.d = this.jdField_a_of_type_Int;
+            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.p();
+            if (this.jdField_a_of_type_Nyl.e == 6)
+            {
+              if (this.b != 1) {
+                break label236;
+              }
+              this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(1);
+              bcst.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
+              bcst.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
+            }
+          }
         }
       }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!myl.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return true;
     }
-    catch (ActivityNotFoundException paramWebView)
+    for (;;)
     {
-      aase.d("AbsWebView", paramWebView.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, String.valueOf(this.b));
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换成功");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Nyl);
+      return;
+      label236:
+      bcst.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
     }
-    return true;
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "success:" + paramBoolean);
+    }
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+  }
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131694617);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    if (EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity) == 0) {
+      EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class ayas
-  implements DialogInterface.OnCancelListener
-{
-  ayas(ayao paramayao) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface) {}
-}
+class ayas {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

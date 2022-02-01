@@ -1,19 +1,29 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class bfeh
-  implements bfhx
+public class bfeh
+  extends RecyclerView.ItemDecoration
 {
-  bfeh(bfeg parambfeg, ImageView paramImageView) {}
+  private int a;
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public bfeh(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfeh
  * JD-Core Version:    0.7.0.1
  */

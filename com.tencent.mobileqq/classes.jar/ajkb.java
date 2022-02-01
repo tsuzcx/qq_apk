@@ -1,24 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
-class ajkb
-  implements View.OnTouchListener
+public class ajkb
+  extends ajhg
 {
-  ajkb(ajka paramajka) {}
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public StringBuilder a;
+  public SingleLineTextView c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  ajkb()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.b = 11;
   }
 }
 

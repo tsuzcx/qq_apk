@@ -1,37 +1,18 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class akto
+public final class akto
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public String a;
-  
-  public akto(String paramString)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    this.a = paramString;
+    return new RedPacketInfoBase(paramParcel);
   }
   
-  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  public RedPacketInfoBase[] a(int paramInt)
   {
-    int i = aknx.a(paramQQAppInterface);
-    if ((paramalbr == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramContext, true));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
-    }
-    albi.a(paramalbr, paramString, 3, 0);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

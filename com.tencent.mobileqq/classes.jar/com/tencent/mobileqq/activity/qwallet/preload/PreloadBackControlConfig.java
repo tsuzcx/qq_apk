@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
-import ajeu;
-import aoks;
+import akww;
+import aqlk;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class PreloadBackControlConfig
   {
     try
     {
-      PreloadBackControlConfig localPreloadBackControlConfig = (PreloadBackControlConfig)ajeu.a(getConfigPath(paramAppRuntime));
+      PreloadBackControlConfig localPreloadBackControlConfig = (PreloadBackControlConfig)akww.a(getConfigPath(paramAppRuntime));
       if (localPreloadBackControlConfig == null)
       {
         localPreloadBackControlConfig = new PreloadBackControlConfig(paramAppRuntime);
@@ -77,12 +77,12 @@ public class PreloadBackControlConfig
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 112	aoks:a	()Laoks;
+    //   2: invokestatic 112	aqlk:a	()Laqlk;
     //   5: bipush 68
     //   7: aload_0
     //   8: getfield 28	com/tencent/mobileqq/activity/qwallet/preload/PreloadBackControlConfig:a	Lmqq/app/AppRuntime;
     //   11: invokevirtual 118	mqq/app/AppRuntime:getLongAccountUin	()J
-    //   14: invokevirtual 121	aoks:a	(IJ)I
+    //   14: invokevirtual 121	aqlk:a	(IJ)I
     //   17: istore_1
     //   18: aload_0
     //   19: getfield 30	com/tencent/mobileqq/activity/qwallet/preload/PreloadBackControlConfig:mConfigVersion	I
@@ -125,9 +125,9 @@ public class PreloadBackControlConfig
   {
     try
     {
-      this.mConfigVersion = aoks.a().a(68, this.a.getLongAccountUin());
+      this.mConfigVersion = aqlk.a().a(68, this.a.getLongAccountUin());
       this.mLastBackResInfos = paramArrayList;
-      ajeu.a(this, getConfigPath(this.a));
+      akww.a(this, getConfigPath(this.a));
       return;
     }
     finally
@@ -139,7 +139,7 @@ public class PreloadBackControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadBackControlConfig
  * JD-Core Version:    0.7.0.1
  */

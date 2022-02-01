@@ -1,77 +1,83 @@
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
-import android.content.Intent;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bkgc
-  extends bkfv
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  private static int jdField_a_of_type_Int;
+  public static final Object a;
+  private static String jdField_a_of_type_JavaLangString = "";
+  
+  static
   {
-    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      paramObject = (sweet_comm_cfg_item)paramObject;
-      if (a() != null)
+      Object localObject = BaseApplicationImpl.getContext();
+      if (localObject == null) {
+        break label65;
+      }
+      localObject = ((Context)localObject).getFilesDir();
+      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "cmshow/";
+      }
+    }
+    for (;;)
+    {
+      return jdField_a_of_type_JavaLangString;
+      label65:
+      QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    a();
+    String str = jdField_a_of_type_JavaLangString;
+    if (paramInt == 0) {
+      str = jdField_a_of_type_JavaLangString + "jsc_temp_dir" + "/";
+    }
+    while (1 != paramInt) {
+      return str;
+    }
+    return jdField_a_of_type_JavaLangString + "sava_temp_dir" + "/";
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      String str;
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        str = a(paramInt);
+      }
+      try
       {
-        asig localasig = (asig)a().a(153);
-        if (localasig != null) {
-          localasig.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
+        jdField_a_of_type_Int = 1;
+        bgmg.a(paramString, str, false);
+        jdField_a_of_type_Int = 0;
+        QLog.i("ApolloSoLoader_preLoader", 1, "succeed to unzip so.");
+        if (jdField_a_of_type_Int == 0) {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          jdField_a_of_type_Int = 2;
+          QLog.e("ApolloSoLoader_preLoader", 1, paramString, new Object[0]);
         }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (a() == null);
-      paramObject = (asig)a().a(153);
-    } while (paramObject == null);
-    paramObject.a(false, null, null, null);
-  }
-  
-  public QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bkgd(this, paramIntent);
-  }
-  
-  public void a(long paramLong)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramIntent = (sweet_comm_cfg_get_rsp)bjur.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
-      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
-      {
-        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
-        if (paramIntent != null) {
-          bool = true;
-        }
-        a(bool, paramIntent);
-      }
-      return;
-    }
-    a(false, null);
+    return false;
   }
 }
 

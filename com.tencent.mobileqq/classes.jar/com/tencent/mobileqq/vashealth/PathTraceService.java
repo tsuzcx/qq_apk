@@ -137,13 +137,13 @@ public class PathTraceService
   public Notification a(Context paramContext, PendingIntent paramPendingIntent)
   {
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder = new NotificationCompat.Builder(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131559399);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131559517);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentIntent(paramPendingIntent);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentTitle("QQ运动");
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838247);
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838354);
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130838247);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130838354);
       if (paramContext != null) {
         this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(paramContext);
       }
@@ -239,7 +239,7 @@ public class PathTraceService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService
  * JD-Core Version:    0.7.0.1
  */

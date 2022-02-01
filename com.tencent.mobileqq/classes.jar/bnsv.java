@@ -1,29 +1,17 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnsv
+class bnsv
+  implements View.OnClickListener
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
+  bnsv(bnss parambnss) {}
   
-  public static String a()
+  public void onClick(View paramView)
   {
-    synchronized (a)
-    {
-      int i = new Random().nextInt(10000);
-      String str = a.format(new Date()) + "_" + i;
-      return str;
-    }
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    return paramFile.getName();
+    bnyh.a().ad();
+    bnss.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

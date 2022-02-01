@@ -1,35 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import java.lang.ref.WeakReference;
 
-public class rud
-  extends Handler
+class rud
+  implements MediaPlayer.OnPreparedListener
 {
-  private WeakReference<ReadInJoyNavigationGridview> a;
+  rud(ruc paramruc) {}
   
-  public rud(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
+      paramMediaPlayer.start();
+      ruc.a(this.a).a = true;
+      paramMediaPlayer = (ruf)ruc.a(this.a).get();
+      if (paramMediaPlayer != null)
+      {
+        paramMediaPlayer.a(ruc.a(this.a));
+        this.a.a(true, "ugc voice play");
+      }
       return;
     }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rud
  * JD-Core Version:    0.7.0.1
  */

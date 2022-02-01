@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adjk
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adjk(NearbyActivity paramNearbyActivity) {}
+  public adjk(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
-      i += 1;
-    }
+    bcst.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
+    this.a.finish();
   }
 }
 

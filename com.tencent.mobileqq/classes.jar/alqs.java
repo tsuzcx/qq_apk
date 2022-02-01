@@ -1,37 +1,27 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class alqs
-  implements INetInfoHandler
+public abstract interface alqs
 {
-  alqs(alqo paramalqo) {}
+  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
   
-  public void onNetMobile2None() {}
+  @NonNull
+  public abstract View a();
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b();
-  }
+  public abstract void a(int paramInt);
   
-  public void onNetNone2Mobile(String paramString) {}
+  public abstract void a(alqt paramalqt);
   
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b();
-  }
+  public abstract boolean a(int paramInt);
   
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.c();
-  }
+  public abstract void b(@ColorInt int paramInt);
   
-  public void onNetWifi2None()
-  {
-    this.a.c();
-  }
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqs
  * JD-Core Version:    0.7.0.1
  */

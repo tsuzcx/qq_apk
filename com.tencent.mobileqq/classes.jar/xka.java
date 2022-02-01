@@ -1,45 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class xka
-  implements blrq
+public class xka
+  extends xil<TroopAssistantHomeFeedPlayInfo>
 {
-  xka(xjy paramxjy) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public xka(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    String str = xjy.a(this.a).getResources().getString(2131698630);
-    Object localObject = str;
-    if (paramBoolean)
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (yij)wpm.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
+    }
+  }
+  
+  public yib a(String paramString)
+  {
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramObject = (FlowMusic)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
-      }
-      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
-      {
-        localObject = new xkl();
-        ((xkl)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
-        ((xkl)localObject).d = paramObject.url;
-        ((xkl)localObject).jdField_b_of_type_Int = 2;
-        ((xkl)localObject).a = String.valueOf(paramObject.songId);
-        this.a.a(12, localObject);
-        return;
-      }
-      localObject = str;
-      if (paramObject.playable != 1) {
-        localObject = xjy.a(this.a).getResources().getString(2131698631);
+      yib localyib = (yib)localIterator.next();
+      if (localyib.a.equals(paramString)) {
+        return localyib;
       }
     }
-    this.a.a(7, localObject);
+    return null;
   }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, xjd paramxjd)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramxjd.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      yqp.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new wzr();
+    ((wzr)localObject).a = this.a.a();
+    yqp.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((wzr)localObject).a);
+    wlb.a().a((wlf)localObject, new xkb(this, paramxjd));
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xka
  * JD-Core Version:    0.7.0.1
  */

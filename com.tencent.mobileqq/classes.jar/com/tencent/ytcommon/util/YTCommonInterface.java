@@ -40,6 +40,11 @@ public class YTCommonInterface
     return Auth.init(paramContext, paramString1, paramString2, 0, paramString3);
   }
   
+  public static int initAuthForQQ(Context paramContext)
+  {
+    return Auth.initAuthForQQ(paramContext);
+  }
+  
   public static void setLicensePath(String paramString)
   {
     Auth.setLicensePath(paramString);
@@ -47,7 +52,7 @@ public class YTCommonInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ytcommon.util.YTCommonInterface
  * JD-Core Version:    0.7.0.1
  */

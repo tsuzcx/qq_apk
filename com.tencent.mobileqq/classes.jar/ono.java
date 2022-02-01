@@ -1,19 +1,26 @@
-class ono
-  extends oob
+public abstract interface ono
 {
-  ono(omz paramomz, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
-  {
-    super(paramomz, null);
-  }
+  public abstract void a();
   
-  void a(ooe paramooe)
-  {
-    paramooe.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ono
  * JD-Core Version:    0.7.0.1
  */

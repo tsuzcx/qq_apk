@@ -1,43 +1,42 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class azih
-  extends PreviewContext
-  implements SurfaceHolder.Callback, azhv
+  implements View.OnTouchListener
 {
-  public azih(azho paramazho, int paramInt1, int paramInt2)
-  {
-    super(paramazho, paramInt1, paramInt2);
-  }
+  public azih(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
+    if (StickyNotePublishFragment.a(this.a))
     {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bkft.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
+    if (StickyNotePublishFragment.a(this.a) == 0)
+    {
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bkft.a(StickyNotePublishFragment.a(this.a));
+      return false;
+    }
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
 }
 

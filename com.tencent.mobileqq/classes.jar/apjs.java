@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.TranslucentActivity;
+import org.json.JSONObject;
 
-public final class apjs
-  implements Parcelable.Creator<DoutuData>
+public class apjs
+  implements apjp
 {
-  public DoutuData a(Parcel paramParcel)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    return new DoutuData(paramParcel);
-  }
-  
-  public DoutuData[] a(int paramInt)
-  {
-    return new DoutuData[paramInt];
+    if (paramLong != 0L) {}
+    do
+    {
+      return false;
+      paramJSONObject = BaseActivity.sTopActivity;
+    } while (paramJSONObject == null);
+    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
+    paramString3.addFlags(268435456);
+    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
+    paramString3.setAction("action_js2qzone");
+    paramString3.putExtra("cmd", "Schema");
+    paramString2 = paramString1;
+    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
+    {
+      paramString2 = paramString1;
+      if (!paramString1.contains("from")) {
+        paramString2 = paramString1 + "&from=aio";
+      }
+    }
+    paramString3.putExtra("schema", "mqzone://" + paramString2);
+    paramString3.putExtra("from", 2);
+    paramJSONObject.startActivity(paramString3);
+    return true;
   }
 }
 

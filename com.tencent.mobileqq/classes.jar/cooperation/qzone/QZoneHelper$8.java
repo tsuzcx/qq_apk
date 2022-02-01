@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import asta;
-import bdgk;
-import bjdt;
+import avaj;
+import bgln;
+import blsb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -10,7 +10,7 @@ import common.config.service.QzoneConfig;
 public final class QZoneHelper$8
   implements Runnable
 {
-  public QZoneHelper$8(QQAppInterface paramQQAppInterface, asta paramasta) {}
+  public QZoneHelper$8(QQAppInterface paramQQAppInterface, avaj paramavaj) {}
   
   public void run()
   {
@@ -20,20 +20,20 @@ public final class QZoneHelper$8
     }
     if (i == 1)
     {
-      long l = bdgk.d() / 1048576L;
+      long l = bgln.d() / 1048576L;
       i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
       if (QLog.isColorLevel()) {
         QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
       }
       if (l >= i) {
-        bjdt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_Asta, false);
+        blsb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_Avaj, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.8
  * JD-Core Version:    0.7.0.1
  */

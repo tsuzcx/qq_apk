@@ -1,13 +1,20 @@
-import android.content.Context;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import com.tencent.widget.HongBaoListView;
 
-public final class bkgw
-  extends bjsl<QzoneHuangzuanVipIconShow, Context>
+public abstract interface bkgw
 {
-  protected QzoneHuangzuanVipIconShow a(Context paramContext)
-  {
-    return new QzoneHuangzuanVipIconShow(paramContext);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(HongBaoListView paramHongBaoListView);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

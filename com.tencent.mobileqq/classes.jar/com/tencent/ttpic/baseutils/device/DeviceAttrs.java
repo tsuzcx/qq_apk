@@ -104,8 +104,8 @@ public final class DeviceAttrs
   private static final String readCamNumExceptionKey = "readCamNumException";
   private static final String readMaxNumFocusAreasAbnormalKey = "readMaxNumFocusAreasAbnormal";
   private static final String readMaxNumMeteringAreasAbnormalKey = "readMaxNumMeteringAreasAbnormal";
-  private static final String sReleaseURL = "http://xiangji.qq.com/services/cameraCoreSvr.php";
-  private static final String sTestURL = "http://test.xiangji.qq.com/services/cameraCoreSvr.php";
+  private static final String sReleaseURL = "https://xiangji.qq.com/services/cameraCoreSvr.php";
+  private static final String sTestURL = "https://test.xiangji.qq.com/services/cameraCoreSvr.php";
   private static final String str_backPictureSize169Key = "str_backPictureSize169";
   private static final String str_backPictureSize43Key = "str_backPictureSize43";
   private static final String str_backPreviewSize169Key = "str_backPreviewSize169";
@@ -201,7 +201,7 @@ public final class DeviceAttrs
   private DeviceAttrs()
   {
     if (TEST_URL.booleanValue()) {}
-    for (String str = "http://test.xiangji.qq.com/services/cameraCoreSvr.php";; str = "http://xiangji.qq.com/services/cameraCoreSvr.php")
+    for (String str = "https://test.xiangji.qq.com/services/cameraCoreSvr.php";; str = "https://xiangji.qq.com/services/cameraCoreSvr.php")
     {
       this.mRequestUrl = str;
       this.mFastCaptureKeys = new ArrayList();
@@ -995,7 +995,7 @@ public final class DeviceAttrs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.device.DeviceAttrs
  * JD-Core Version:    0.7.0.1
  */

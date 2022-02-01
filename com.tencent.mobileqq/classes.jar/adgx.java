@@ -1,98 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.LikeRankingListActivity.2.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.LikeRankingInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class adgx
-  extends alpq
+  implements DialogInterface.OnClickListener
 {
-  public adgx(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public adgx(TestAppFragment paramTestAppFragment, EditText paramEditText1, EditText paramEditText2) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && ((paramObject instanceof Card)))
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.b.getText().toString();
+    if ((TextUtils.isEmpty(paramDialogInterface)) || (TextUtils.isEmpty(str)))
     {
-      paramObject = (Card)paramObject;
-      if (paramObject.uin.equals(this.a.b)) {
-        this.a.app.a(new LikeRankingListActivity.2.1(this, paramObject));
-      }
-    }
-  }
-  
-  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
-  {
-    int i;
-    if (QLog.isColorLevel())
-    {
-      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
-      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
-      if (paramList == null)
-      {
-        i = 0;
-        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
-      }
-    }
-    else
-    {
-      if (!paramBoolean1) {
-        break label341;
-      }
-      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
-        break label284;
-      }
-      this.a.jdField_a_of_type_Alvt.a(paramList, paramInt, paramBoolean2);
-      if ((!paramBoolean2) || (paramList.size() != 0)) {
-        break label258;
-      }
-      this.a.e.setVisibility(0);
-      label165:
-      this.a.jdField_a_of_type_Adgy.a(paramList, true);
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        if (paramList.size() <= 0) {
-          break label273;
-        }
-        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
-        LikeRankingListActivity.a(this.a, false);
-      }
-    }
-    for (;;)
-    {
-      paramString = this.a;
-      if (paramBoolean2) {
-        paramInt = -1;
-      }
-      paramString.jdField_a_of_type_Int = paramInt;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), anni.a(2131713543), 1).a();
       return;
-      i = paramList.size();
-      break;
-      label258:
-      this.a.e.setVisibility(8);
-      break label165;
-      label273:
-      this.a.a(null);
-      continue;
-      label284:
-      this.a.a(null);
-      this.a.jdField_a_of_type_Adgy.a = false;
-      this.a.jdField_a_of_type_Adgy.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Adgy.getCount() <= 1) {
-        this.a.e.setVisibility(0);
-      }
     }
-    label341:
-    this.a.jdField_a_of_type_Adgy.a = false;
-    this.a.jdField_a_of_type_Adgy.notifyDataSetChanged();
-    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131706494), 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.c = paramDialogInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int = Integer.parseInt(str);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Aded = adei.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), "appid切换为:" + paramDialogInterface, 1).a();
   }
 }
 

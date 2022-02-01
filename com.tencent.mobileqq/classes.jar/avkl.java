@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
+import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
 
-public class avkl
-  implements asfa
+class avkl
+  extends CustomizedDownloader
 {
-  public avkl(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avkl(avju paramavju) {}
   
-  public void a()
+  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
   {
-    bhso localbhso = bhso.b;
-    if ((localbhso != null) && (localbhso.a()))
-    {
-      if (!localbhso.a(1)) {
-        localbhso.b(1);
-      }
-      if ((!localbhso.a(8)) && (localbhso.a(5))) {
-        localbhso.b(8);
-      }
-      if ((!localbhso.a(9)) && (localbhso.a(6))) {
-        localbhso.b(9);
-      }
-    }
+    paramBundle = new Bundle();
+    paramBundle.putString("url", paramString1);
+    paramBundle.putString("path", paramString2);
+    avkt.a().a(paramBundle, paramDownloadCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkl
  * JD-Core Version:    0.7.0.1
  */

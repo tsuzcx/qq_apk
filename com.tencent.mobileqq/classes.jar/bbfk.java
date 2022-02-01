@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class bbfk
-  implements QQPermissionCallback
+class bbfk
+  implements Comparator<bblw>
 {
-  public bbfk(AbsPublishActivity paramAbsPublishActivity) {}
+  bbfk(bbfi parambbfi) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a(bblw parambblw1, bblw parambblw2)
   {
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a(this.a, this.a);
+    parambblw1 = parambblw1.c;
+    parambblw2 = parambblw2.c;
+    return ChnToSpell.a(parambblw1, 2).compareTo(ChnToSpell.a(parambblw2, 2));
   }
 }
 

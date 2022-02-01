@@ -1,21 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy;
+import java.io.File;
+import java.io.FileFilter;
+import mqq.app.SecurityFileFrameworkManagerImpl;
 
 public class bcrj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements FileFilter
 {
-  public bcrj(RedDotAnimateView paramRedDotAnimateView) {}
+  public bcrj(UpdateSecureFileStrategy paramUpdateSecureFileStrategy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean accept(File paramFile)
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
+    {
+      paramFile = paramFile.getName().replaceAll("NoRename#", "");
+      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcrj
  * JD-Core Version:    0.7.0.1
  */

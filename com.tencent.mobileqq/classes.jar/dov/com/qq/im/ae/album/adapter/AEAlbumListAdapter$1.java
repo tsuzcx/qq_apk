@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import bkqd;
+import bnex;
 import java.util.List;
 
 public class AEAlbumListAdapter$1
   implements Runnable
 {
-  public AEAlbumListAdapter$1(bkqd parambkqd, List paramList) {}
+  public AEAlbumListAdapter$1(bnex parambnex, List paramList) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AEAlbumListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.album.adapter.AEAlbumListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

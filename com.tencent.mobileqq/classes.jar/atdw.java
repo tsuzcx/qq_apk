@@ -1,22 +1,14 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
-
-class atdw
-  implements CustomizedLoading
+public abstract interface atdw
 {
-  atdw(atdh paramatdh) {}
+  public abstract void a(String paramString);
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
-  {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atdw
  * JD-Core Version:    0.7.0.1
  */

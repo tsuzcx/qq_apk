@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acty
   implements View.OnClickListener
 {
-  public acty(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public acty(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
   public void onClick(View paramView)
   {
-    DiscussionInfoCardActivity.a(this.a);
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

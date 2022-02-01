@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo;
 
-import aknx;
-import akqk;
+import amhd;
+import amjq;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import bdgk;
+import bgln;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -16,21 +16,21 @@ public class EnginePreLoader$1
   {
     QLog.i("Apollo_EnginePreLoader", 1, "sava preload start");
     long l = System.currentTimeMillis();
-    akqk.a(this.this$0, new ApolloEngine());
-    akqk.a(this.this$0, new ApolloTicker());
+    amjq.a(this.this$0, new ApolloEngine());
+    amjq.a(this.this$0, new ApolloTicker());
     float f = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
-    if (akqk.a(this.this$0).a(0L, 0, 0, f, 1, aknx.a()) > 0L)
+    if (amjq.a(this.this$0).a(0L, 0, 0, f, 1, amhd.a()) > 0L)
     {
-      akqk.a(this.this$0).a(f);
-      akqk.a(this.this$0).a((int)Math.ceil((float)bdgk.i() / f), (int)Math.ceil((float)bdgk.j() / f));
-      akqk.a(this.this$0);
+      amjq.a(this.this$0).a(f);
+      amjq.a(this.this$0).a((int)Math.ceil((float)bgln.i() / f), (int)Math.ceil((float)bgln.j() / f));
+      amjq.a(this.this$0);
     }
     QLog.d("Apollo_EnginePreLoader", 1, "create sava director use time:" + (System.currentTimeMillis() - l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.EnginePreLoader.1
  * JD-Core Version:    0.7.0.1
  */

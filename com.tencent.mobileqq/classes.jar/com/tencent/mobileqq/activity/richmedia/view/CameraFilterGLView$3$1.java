@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajsq;
+import allg;
 import java.io.File;
 
 class CameraFilterGLView$3$1
@@ -10,12 +10,12 @@ class CameraFilterGLView$3$1
   
   public void run()
   {
-    ajsq.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    allg.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.base;
 
-import alud;
 import android.annotation.TargetApi;
+import anni;
 
 @TargetApi(14)
 public class ErrorMessage
@@ -54,7 +54,7 @@ public class ErrorMessage
     }
     else
     {
-      str = alud.a(2131704602);
+      str = anni.a(2131702999);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }
@@ -82,7 +82,7 @@ public class ErrorMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.ErrorMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
 
-class acmx
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+public final class acmx
+  implements DialogInterface.OnClickListener
 {
-  acmx(acms paramacms, apxv paramapxv) {}
+  public acmx(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
   
-  public void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
-    {
-      View localView = (View)paramView.getParent();
-      paramView = paramView.getTag();
-      String str = apvx.o.replace("[epId]", this.jdField_a_of_type_Apxv.a.epId).replace("[eId]", this.jdField_a_of_type_Apxv.a.eId);
-      if (this.jdField_a_of_type_Acms.a.a == null) {
-        this.jdField_a_of_type_Acms.a.a = new acnd(this.jdField_a_of_type_Acms.a);
-      }
-      this.jdField_a_of_type_Acms.a.a.a(1, localView, paramView, str);
-    }
+    GdtMotiveBrowsingFragment.a(this.a);
   }
 }
 

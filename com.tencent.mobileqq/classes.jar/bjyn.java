@@ -1,34 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
+import com.tencent.mobileqq.mini.network.RequestStrategy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestStrategyProxy;
+import java.util.Map;
+import org.json.JSONObject;
 
+@ProxyService(proxy=RequestStrategyProxy.class)
 public class bjyn
-  implements DialogInterface.OnClickListener
+  implements RequestStrategyProxy
 {
-  public bjyn(QzoneQunFeedJsPlugin.2.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String addHttpForwardingInfo(String paramString, Map<String, String> paramMap)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.a.a.a.mRuntime.a().getAccount();
-    Intent localIntent = new Intent();
-    String str = this.a.a.a.a.mRuntime.a().getResources().getString(2131718162);
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
-    localIntent.putExtra("aid", "jhan_plxz");
-    localIntent.putExtra("success_tips", str);
-    localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.a(this.a.a.a.a.mRuntime.a(), paramDialogInterface, localIntent, 4);
+    return RequestStrategy.g.addHttpForwardingInfo(paramString, paramMap);
+  }
+  
+  public void addHttpForwardingInfo(JSONObject paramJSONObject)
+  {
+    RequestStrategy.g.addHttpForwardingInfo(paramJSONObject);
+  }
+  
+  public boolean isIPV6Only()
+  {
+    return RequestStrategy.g.isIPv6Only();
+  }
+  
+  public void notifyNetWorkStatusChange()
+  {
+    RequestStrategy.g.notifyNetWorkStatusChange();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyn
  * JD-Core Version:    0.7.0.1
  */

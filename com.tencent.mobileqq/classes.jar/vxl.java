@@ -1,19 +1,32 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vxl
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+public class vxl
+  implements View.OnClickListener
 {
-  vxl(vxe paramvxe) {}
+  public vxl(QCircleLightInteractPushWidget paramQCircleLightInteractPushWidget, FeedCloudMeta.StUser paramStUser) {}
   
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    wxe.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a().clone().setElementIdStr("portrait"));
+    if (paramView == QCircleLightInteractPushWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget)) {
+      vrc.a(87, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vrc.a(87, 3, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxl
  * JD-Core Version:    0.7.0.1
  */

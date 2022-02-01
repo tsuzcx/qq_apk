@@ -1,26 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sld
-  implements slg
+class sld
+  extends skd
 {
-  public sld(ChannelTopBanner paramChannelTopBanner) {}
+  sld(ske paramske) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    ske.a(this.a, paramInt, paramBaseArticleInfo, paramString);
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sld
  * JD-Core Version:    0.7.0.1
  */

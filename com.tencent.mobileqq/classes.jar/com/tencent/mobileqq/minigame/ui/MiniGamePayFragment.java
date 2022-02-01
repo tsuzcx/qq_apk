@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
-import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +10,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import anni;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
@@ -57,7 +58,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", alud.a(2131707232));
+        paramString1.put("resultMsg", anni.a(2131705623));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -87,7 +88,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", alud.a(2131707237));
+        paramString1.put("errMsg", anni.a(2131705628));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);
@@ -118,7 +119,7 @@ public class MiniGamePayFragment
       {
         paramLayoutInflater = ApiUtil.wrapCallbackFail(paramViewGroup, null);
         if (paramLayoutInflater == null) {
-          break label134;
+          break label139;
         }
         paramLayoutInflater = paramLayoutInflater.toString();
         if (paramLayoutInflater != null) {
@@ -126,22 +127,25 @@ public class MiniGamePayFragment
         }
       }
     }
-    label134:
-    do
+    for (;;)
     {
+      V4FragmentCollector.onV4FragmentViewCreated(this, null);
       return null;
+      label139:
       paramLayoutInflater = "";
       break;
       paramLayoutInflater = getActivity();
-    } while (paramLayoutInflater == null);
-    paramLayoutInflater.setResult(0, null);
-    paramLayoutInflater.finish();
-    return null;
+      if (paramLayoutInflater != null)
+      {
+        paramLayoutInflater.setResult(0, null);
+        paramLayoutInflater.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment
  * JD-Core Version:    0.7.0.1
  */

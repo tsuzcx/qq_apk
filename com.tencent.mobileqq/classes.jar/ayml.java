@@ -1,32 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
 public class ayml
-  extends aymj
+  implements DialogInterface.OnClickListener
 {
-  public ayml(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    super(paramQQAppInterface, paramInt, paramString1, paramString2, paramString3, paramString4);
-  }
+  public ayml(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramView);
-    if (!ayvm.a(this.b)) {
-      ayvm.a(paramView, this);
-    }
-    if (SearchConfigManager.needSeparate) {
-      ayvm.a("search", "contact", "contacts", 0, 0, new String[] { ayvm.a(this.b) });
-    }
-  }
-  
-  public CharSequence c()
-  {
-    if (ayvm.a(this.b)) {
-      return alud.a(2131702952);
-    }
-    return alud.a(2131702919);
+    aypy.a("0X800AF9C", 2);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 

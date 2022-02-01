@@ -1,22 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class bmka
-  extends blts
+public abstract class bmka<T>
+  extends Handler
 {
-  bmka(bmjt parambmjt) {}
+  private WeakReference<T> a;
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public bmka(T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
+    this.a = new WeakReference(paramT);
+  }
+  
+  public abstract void a(T paramT, Message paramMessage);
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object localObject = this.a.get();
+    if (localObject != null) {
+      a(localObject, paramMessage);
     }
   }
 }

@@ -1,24 +1,34 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class oba
+  extends oaz
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private View b;
-  private View c;
-  
-  private oba(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = super.a(paramFromServiceMsg);
+    if (paramFromServiceMsg != null)
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      try
+      {
+        localStQWebRsp.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
+        return paramFromServiceMsg;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oba
  * JD-Core Version:    0.7.0.1
  */

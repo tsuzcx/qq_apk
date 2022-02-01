@@ -1,50 +1,49 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class bjew
-  extends AccountObserver
+class bjew
+  implements nkl
 {
-  bjew(String paramString, alpg paramalpg) {}
+  bjew(bjev parambjev, String paramString, boolean paramBoolean) {}
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((paramBoolean) && (paramHashMap != null))
+    if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
+      bjes.a.set(false);
+    }
+    this.jdField_a_of_type_Bjev.a = -1;
+    switch (paramInt)
     {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 6: 
+    default: 
+      this.jdField_a_of_type_Bjev.a(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_Bjev.a });
+      }
       return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_Alpg != null) {
-            this.jdField_a_of_type_Alpg.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
+      this.jdField_a_of_type_Bjev.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      continue;
+      if (paramString == null) {
+        this.jdField_a_of_type_Bjev.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
     }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.jdField_a_of_type_Bjev.a(this.jdField_a_of_type_JavaLangString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjew
  * JD-Core Version:    0.7.0.1
  */

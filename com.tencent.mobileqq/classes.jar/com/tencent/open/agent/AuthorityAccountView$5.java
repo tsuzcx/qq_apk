@@ -14,18 +14,17 @@ class AuthorityAccountView$5
   public void run()
   {
     Bitmap localBitmap = AuthorityAccountView.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, (int)(58.0F * this.this$0.a), true);
-    if (AuthorityAccountView.a(this.this$0) == null) {
+    if (AuthorityAccountView.a(this.this$0) == null)
+    {
+      QLog.e("AuthorityAccountView", 1, "-->updateAccountFace mContext == null");
       return;
-    }
-    if ((localBitmap == null) && (QLog.isColorLevel())) {
-      QLog.e("AuthorityAccountView", 2, "-->updateAccountFace uin = " + this.jdField_a_of_type_JavaLangString);
     }
     ((BaseActivity)AuthorityAccountView.a(this.this$0)).runOnUiThread(new AuthorityAccountView.5.1(this, localBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.5
  * JD-Core Version:    0.7.0.1
  */

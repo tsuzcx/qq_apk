@@ -1,47 +1,23 @@
-import android.content.Context;
-import java.lang.reflect.Method;
-import mqq.app.IActivityDispatchCallback;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class zhv
-  implements IActivityDispatchCallback
+public class zhv
+  implements AdapterView.OnItemClickListener
 {
-  public static zhv a;
+  public zhv(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public static void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (zhv)localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
-  
-  public static void a(Context paramContext)
-  {
-    zhv localzhv = a;
-    if (localzhv != null) {
-      localzhv.c(paramContext);
-    }
-  }
-  
-  public static void b(Context paramContext)
-  {
-    zhv localzhv = a;
-    if (localzhv != null) {
-      localzhv.d(paramContext);
-    }
-  }
-  
-  public abstract void c(Context paramContext);
-  
-  public abstract void d(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhv
  * JD-Core Version:    0.7.0.1
  */

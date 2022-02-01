@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class amwo
+  implements DialogInterface.OnClickListener
 {
-  public ArCloudConfigInfo a;
+  public amwo(ApolloGameActivity paramApolloGameActivity) {}
   
-  public amwo(ArCloudConfigInfo paramArCloudConfigInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramArCloudConfigInfo;
-  }
-  
-  public String toString()
-  {
-    return "ARTarget{arResourceInfo=" + this.a + '}';
+    mue.a(this.a);
   }
 }
 

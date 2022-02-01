@@ -1,37 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
 
-final class bfqn
-  implements URLDrawable.URLDrawableListener
+class bfqn
+  extends bfqp
 {
-  bfqn(ImageView paramImageView) {}
+  bfqn(bfql parambfql) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean)
   {
-    QLog.d("CommonUtils_", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
+    if (paramBoolean) {}
+    synchronized (this.a.a)
+    {
+      this.a.a.clear();
+      this.a.b();
+      bfql.a(this.a);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfqn
  * JD-Core Version:    0.7.0.1
  */

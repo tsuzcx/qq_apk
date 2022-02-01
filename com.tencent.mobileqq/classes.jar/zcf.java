@@ -1,25 +1,76 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 
-class zcf
-  extends BroadcastReceiver
+public class zcf
+  extends zcd
 {
-  zcf(zby paramzby) {}
+  public final int c;
+  @NonNull
+  public final String c;
+  public final int d;
+  @NonNull
+  public final String d;
+  public final int e;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public final String i;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zcf(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      zby.a(this.a, paramIntent);
-      zby.d(this.a);
-      zby.c(this.a);
+    super(paramInt1, paramString1, paramInt2);
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.h = paramString7;
+    this.i = paramString8;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+  }
+  
+  @NonNull
+  public Class<? extends zce> a()
+  {
+    return zcg.class;
+  }
+  
+  public String a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      return "";
     }
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  @NonNull
+  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new zcg(this, paramContext, paramViewGroup);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcf
  * JD-Core Version:    0.7.0.1
  */

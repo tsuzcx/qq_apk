@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class afrt
-  extends afuf
+public class afrt
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  afrt(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afrt(VisitorsActivity paramVisitorsActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onGlobalLayout()
   {
-    return new afvg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 

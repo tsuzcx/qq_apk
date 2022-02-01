@@ -1,25 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahal
-  implements View.OnClickListener
+  extends ahbl
 {
-  ahal(ahak paramahak) {}
-  
-  public void onClick(View paramView)
+  ahal(agwz paramagwz)
   {
-    paramView = new Intent();
-    paramView.putExtra("is_from_conversation", true);
-    paramView.putExtra("bookid", ahak.a(this.a));
-    paramView.putExtra("book_new_id", ahak.b(this.a));
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramView);
-    localIntent.putExtra("readtype", "15");
-    localIntent.setClassName(ahak.a(this.a), "cooperation.qqreader.QRBridgeActivity");
-    localIntent.addFlags(268435456);
-    ahak.a(this.a).startActivity(localIntent);
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new FlashPicItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,26 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 
-class pyc
-  implements View.OnTouchListener
+public class pyc
 {
-  pyc(pxx parampxx, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private long b = 0L;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+  }
+  
+  public pyc a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public pyc b(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyc
  * JD-Core Version:    0.7.0.1
  */

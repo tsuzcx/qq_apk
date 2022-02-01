@@ -1,120 +1,204 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.media.AudioManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class afvv
-  extends URLImageView
+public class afvv
 {
-  public afvv(afvg paramafvg, Context paramContext)
+  private volatile afvw jdField_a_of_type_Afvw;
+  private boolean jdField_a_of_type_Boolean = true;
+  bgkk[] jdField_a_of_type_ArrayOfBgkk;
+  private volatile boolean b;
+  private volatile boolean c;
+  private volatile boolean d;
+  private volatile boolean e;
+  private boolean f;
+  
+  private bgkk a(int paramInt)
   {
-    super(paramContext);
+    if (this.jdField_a_of_type_ArrayOfBgkk == null) {
+      this.jdField_a_of_type_ArrayOfBgkk = AudioHelper.a();
+    }
+    bgkk localbgkk2 = this.jdField_a_of_type_ArrayOfBgkk[0];
+    bgkk localbgkk1 = localbgkk2;
+    if (paramInt >= 0)
+    {
+      localbgkk1 = localbgkk2;
+      if (paramInt < this.jdField_a_of_type_ArrayOfBgkk.length) {
+        localbgkk1 = this.jdField_a_of_type_ArrayOfBgkk[paramInt];
+      }
+    }
+    return localbgkk1;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private void b(boolean paramBoolean)
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    paramThrowable = (afvu)aepi.a(this);
-    paramThrowable.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    this.a.a(paramThrowable, paramURLDrawable);
-    if (AppSetting.c) {
-      paramThrowable.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(alud.a(2131706855));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    avsn.a().a(paramBoolean);
+    c();
+  }
+  
+  private void c()
+  {
+    afvw localafvw1 = a();
+    int i = 0;
+    if ((AudioPlayerBase.jdField_a_of_type_Boolean) && (this.e)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      afvw localafvw2 = new afvw(a(i), i, true);
+      if (!localafvw1.a(localafvw2)) {
+        this.jdField_a_of_type_Afvw = localafvw2;
+      }
+      a("updateCurrentStatus end nextStatusType = " + i);
+      return;
+      if (this.b) {
+        i = 2;
+      } else if (this.c) {
+        i = 3;
+      } else if ((!this.jdField_a_of_type_Boolean) || (this.d)) {
+        i = 1;
+      }
     }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private void c(boolean paramBoolean)
   {
-    afvu localafvu = (afvu)aepi.a(this);
-    super.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
-    super.setImageDrawable(paramURLDrawable);
-    if (localafvu == null)
-    {
-      QLog.e("MarketFaceItemBuilder", 1, "onLoadSuccessed  holder == null url=" + paramURLDrawable.getURL());
-      return;
+    if (this.d != paramBoolean) {
+      this.d = paramBoolean;
     }
-    if (localafvu.jdField_a_of_type_Apxv == null)
-    {
-      paramURLDrawable = localafvu.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if (!(paramURLDrawable instanceof MessageForMarketFace)) {
-        break label570;
-      }
-      paramURLDrawable = ((MessageForMarketFace)paramURLDrawable).mMarkFaceMessage;
-      if (paramURLDrawable == null) {
-        break label570;
-      }
+    c();
+  }
+  
+  private void d(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    c();
+  }
+  
+  private void e(boolean paramBoolean)
+  {
+    this.c = AudioHelper.a(BaseApplicationImpl.getContext());
+    this.e = AudioHelper.c(BaseApplicationImpl.getContext());
+    c();
+  }
+  
+  public int a()
+  {
+    return 31;
+  }
+  
+  public afvw a()
+  {
+    if (this.jdField_a_of_type_Afvw == null) {
+      new afvw(a(0), 0);
     }
-    label548:
-    label568:
-    label570:
-    for (int i = paramURLDrawable.dwTabID;; i = -1)
+    return this.jdField_a_of_type_Afvw;
+  }
+  
+  public afvw a(int paramInt, boolean paramBoolean)
+  {
+    switch (paramInt)
     {
-      QLog.e("MarketFaceItemBuilder", 1, "onLoadSuccessed  emoticonInfo == null epId = " + i);
-      return;
-      if ((!apvx.a()) || (2 != localafvu.jdField_a_of_type_Apxv.a.jobType) || (this.a.jdField_a_of_type_Apro.e(localafvu.jdField_a_of_type_Apxv.a.epId)) || (!atzj.a()) || (apvx.c()))
-      {
-        float f = this.a.jdField_a_of_type_Apro.a(localafvu.jdField_a_of_type_Apxv.a.epId);
-        if ((f < 0.0F) || (1.0F == f))
-        {
-          localafvu.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          localafvu.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("MarketFaceItemBuilder", 2, "onLoadSuccessed progressBar gone ");
-          }
-        }
-      }
-      this.a.a(localafvu, paramURLDrawable);
-      if ((2 == localafvu.jdField_a_of_type_Apxv.a.jobType) && (atzj.a()) && (this.a.jdField_a_of_type_Apro.e(localafvu.jdField_a_of_type_Apxv.a.epId)))
-      {
-        if (atxu.a(localafvu.jdField_a_of_type_Apxv.a.magicValue) == 1) {
-          localafvu.f.setVisibility(8);
-        }
-      }
-      else
-      {
-        if ((4 == localafvu.jdField_a_of_type_Apxv.a.jobType) && (this.a.jdField_a_of_type_Apro.b()) && (this.a.jdField_a_of_type_Apro.a(localafvu.jdField_a_of_type_Apxv.a.epId, true, true)) && (!this.a.jdField_b_of_type_Boolean))
-        {
-          localafvu.f.setImageResource(2130837911);
-          localafvu.f.setVisibility(0);
-        }
-        if ((afvg.c != 0L) && (afvg.c == localafvu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) && (localafvu.jdField_a_of_type_Apxv.b()))
-        {
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) {
-            break label548;
-          }
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131695682, 0).b(this.a.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
-        }
-      }
-      for (;;)
-      {
-        if (!AppSetting.c) {
-          break label568;
-        }
-        localafvu.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription("");
-        return;
-        if (this.a.jdField_b_of_type_Boolean) {
-          break;
-        }
-        localafvu.f.setImageResource(2130837911);
-        localafvu.f.setVisibility(0);
-        break;
-        MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localafvu.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      }
-      break;
     }
+    for (;;)
+    {
+      a("onAudioDeviceStatusChanged changeType = " + paramInt + "|" + paramBoolean);
+      return this.jdField_a_of_type_Afvw;
+      b(paramBoolean);
+      continue;
+      c(paramBoolean);
+      continue;
+      d(paramBoolean);
+      continue;
+      e(paramBoolean);
+    }
+  }
+  
+  public bgkk a()
+  {
+    if ((this.jdField_a_of_type_Afvw == null) || (this.jdField_a_of_type_Afvw.a() == null)) {
+      return a(0);
+    }
+    a("getCurrentProperParam");
+    return this.jdField_a_of_type_Afvw.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Afvw = new afvw(a(0), 0);
+    this.b = lff.a(BaseApplicationImpl.getContext());
+    this.c = AudioHelper.a(BaseApplicationImpl.getContext());
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Boolean = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).z();
+    }
+    this.e = AudioHelper.c(BaseApplicationImpl.getContext());
+    c();
+    a("init ");
+  }
+  
+  public void a(AudioManager paramAudioManager)
+  {
+    a("doOnBluetoothSCODisconnected isBluetoothA2dpOn = " + paramAudioManager.isBluetoothA2dpOn());
+    if ((this.c) && (!paramAudioManager.isBluetoothA2dpOn())) {
+      this.c = false;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (!bgsp.a(paramString)) {
+        localStringBuilder.append(paramString);
+      }
+      localStringBuilder.append("\n mCurDeviceStatus = " + this.jdField_a_of_type_Afvw.a);
+      localStringBuilder.append("\n  userLoudSpeakerStatus = " + this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("\n  mNearToEar = " + this.d);
+      localStringBuilder.append("\n  wiredHeadsetConnect = " + this.b);
+      localStringBuilder.append("\n  blueHeadsetConnect = " + this.c);
+      localStringBuilder.append("\n  mblueHeadsetSCOConnect = " + this.e);
+      QLog.d("AudioPlayer_DeviceStatus", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+    c();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    if (!this.f)
+    {
+      a(AudioHelper.c(BaseApplicationImpl.getContext()));
+      this.f = true;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
   }
 }
 

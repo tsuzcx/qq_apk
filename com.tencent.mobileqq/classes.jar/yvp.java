@@ -1,39 +1,15 @@
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
 
 public class yvp
+  implements bato
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public yvp(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
   
-  public yvp(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-    }
-    if (paramJSONObject.has("tabID")) {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
-    }
-    if (paramJSONObject.has("icon")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-    }
-    if (paramJSONObject.has("jumpUrl")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    }
-    if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    }
-    if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    }
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 
-public class aoeo
-  implements View.OnClickListener
+class aoeo
+  implements DialogInterface.OnClickListener
 {
-  public aoeo(HistoryFormItem paramHistoryFormItem) {}
+  aoeo(aoen paramaoen, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    int i;
-    HistoryFormItem localHistoryFormItem;
-    if (aoca.a())
-    {
-      i = 1;
-      if ((i != 0) && (this.a.a()))
-      {
-        localHistoryFormItem = this.a;
-        if (HistoryFormItem.a(this.a)) {
-          break label112;
-        }
-      }
-    }
-    for (;;)
-    {
-      HistoryFormItem.a(localHistoryFormItem, bool);
-      this.a.a(paramView, HistoryFormItem.a(this.a));
-      if (HistoryFormItem.a(this.a) != null) {
-        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
-      }
-      return;
-      aocr.a(paramView.getContext());
-      i = 0;
-      break;
-      label112:
-      bool = false;
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("back_for_hidden_chat", true);
+    paramDialogInterface.setFlags(603979776);
+    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
+    bcst.b(this.jdField_a_of_type_Aoen.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
   }
 }
 

@@ -1,50 +1,54 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 public class ayxq
-  extends ayxs
+  extends ayxp
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  
-  public ayxq(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
+  public ayxp a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559170, paramViewGroup, false);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new ayxr(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377938));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370721));
-    if (paramBoolean2) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365369);
-    if (paramBoolean1) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    return this;
   }
   
-  public TextView a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(boolean paramBoolean)
+  public void a(long paramLong)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public TextView b()
+  public void a(String paramString)
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
   }
 }
 

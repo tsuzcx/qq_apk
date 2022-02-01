@@ -1,66 +1,105 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class qze
-  extends ContentObserver
+  implements sew
 {
-  public qze(qzb paramqzb, Handler paramHandler)
+  @Nullable
+  private RIJRedPacketProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView;
+  private qzg jdField_a_of_type_Qzg;
+  private rar jdField_a_of_type_Rar;
+  
+  public qze()
   {
-    super(paramHandler);
+    this(null);
   }
   
-  public ContentResolver a()
+  public qze(@Nullable RIJRedPacketProgressView paramRIJRedPacketProgressView)
   {
-    if (this.a.a() != null) {
-      return this.a.a().getContentResolver();
+    if (paramRIJRedPacketProgressView == null)
+    {
+      paramRIJRedPacketProgressView = pha.a(BaseActivity.sTopActivity);
+      if (paramRIJRedPacketProgressView == null) {}
     }
-    return null;
+    for (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView.a();; this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView)
+    {
+      this.jdField_a_of_type_Qzg = new qzg(this, null);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
+      }
+      return;
+    }
+  }
+  
+  private void a(sey paramsey, sfb paramsfb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJVideoRedPacketManager", 2, "startRedPacketTiming:view=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView + ", title=" + paramsey.a);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
+      RIJRedPacketManager.a().a(new qzf(this, paramsey, paramsfb));
+    }
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJVideoRedPacketManager", 2, "stopRedPacketTiming: ");
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.b();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.c();
+    }
   }
   
   public void a()
   {
-    if (a() != null) {
-      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
     }
+    pmk.a().a(this.jdField_a_of_type_Qzg);
+  }
+  
+  public void a(sey paramsey, sfb paramsfb, int paramInt1, int paramInt2, Object paramObject)
+  {
+    if ((paramsey == null) || (paramsey.b)) {
+      d();
+    }
+    do
+    {
+      return;
+      if (paramInt2 == 3)
+      {
+        a(paramsey, paramsfb);
+        return;
+      }
+    } while (paramInt1 != 3);
+    d();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Rar != null) && (this.jdField_a_of_type_Rar.isShowing());
   }
   
   public void b()
   {
-    if (a() != null) {
-      a().unregisterContentObserver(this);
-    }
+    pmk.a().b(this.jdField_a_of_type_Qzg);
   }
   
-  public void onChange(boolean paramBoolean)
+  public void c()
   {
-    super.onChange(paramBoolean);
-    if (this.a.a() == null) {}
-    for (;;)
-    {
-      return;
-      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
-      if (i == 1)
-      {
-        qzb.a(this.a, true);
-        this.a.a(true);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(qzb.a, 2, "RotationObserver.onChange() : rotateState=" + i);
-        return;
-        qzb.a(this.a, false);
-        this.a.a(false);
-      }
-    }
+    pmk.a().b(this.jdField_a_of_type_Qzg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qze
  * JD-Core Version:    0.7.0.1
  */

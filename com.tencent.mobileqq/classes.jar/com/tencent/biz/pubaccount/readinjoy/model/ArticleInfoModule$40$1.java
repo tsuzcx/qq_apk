@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import oxb;
+import pmk;
 
 class ArticleInfoModule$40$1
   implements Runnable
@@ -10,8 +10,8 @@ class ArticleInfoModule$40$1
   
   public void run()
   {
-    oxb.a().c(0, this.jdField_a_of_type_JavaUtilList);
-    oxb.a().c(70, this.b);
+    pmk.a().c(0, this.jdField_a_of_type_JavaUtilList);
+    pmk.a().c(70, this.b);
   }
 }
 

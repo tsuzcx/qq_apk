@@ -1,24 +1,103 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.qphone.base.util.QLog;
 
-class agpr
-  implements DialogInterface.OnClickListener
+final class agpr
+  implements ark.ApplicationCallback
 {
-  agpr(agpp paramagpp, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void AppCreate(ark.Application paramApplication)
   {
-    ((alrk)this.jdField_a_of_type_Agpp.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Agpp.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+  }
+  
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aprr.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    int i;
+    boolean bool2;
+    if (localArkAppUrlChecker != null)
+    {
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      i = 0;
+      if (j != 0) {
+        break label289;
+      }
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = apoh.a();
+      if ((!bool3) || (bool4)) {
+        break label295;
+      }
+      bool2 = true;
+      label69:
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
+      }
+      if (bool1) {
+        break label301;
+      }
+      i = 1;
+      if (bool2) {
+        break label301;
+      }
+      QLog.e("ArkApp.ArkAppContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", nmj.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
     }
-    ((alri)this.jdField_a_of_type_Agpp.a.a.a(6)).a();
-    this.jdField_a_of_type_Agpp.a.I();
+    label289:
+    label295:
+    label301:
+    for (;;)
+    {
+      aprr.a(paramApplication, paramString, j, i, agpq.c);
+      apok.b(agpq.a(), paramApplication, paramString, 1);
+      QLog.e("ArkApp.ArkAppContainer", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", nmj.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label69;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkAppContainer", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        apok.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
+    }
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    apio.a(paramModuleRegister, paramApplication);
   }
 }
 

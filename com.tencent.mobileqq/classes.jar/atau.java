@@ -1,136 +1,81 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class atau
-  implements aszl
+class atau
+  implements aszc
 {
-  private final long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
-  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  atau(atat paramatat, String paramString, atbj paramatbj) {}
   
-  public atau(atar paramatar, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
-    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (!paramBoolean2))
+    boolean bool3 = false;
+    boolean bool4 = true;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
+    boolean bool2 = bool3;
+    boolean bool1 = bool4;
+    if (paramInt != -100001)
     {
-      atar.a(this.jdField_a_of_type_Atar).a(5, new Object[] { "" });
-      return;
-    }
-    if (paramBoolean1) {}
-    for (long l = 0L;; l = 2000L)
-    {
-      if (!this.b) {
-        break label66;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
-      return;
-    }
-    label66:
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
-  }
-  
-  public void a()
-  {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    int j = 1;
-    long l1;
-    label99:
-    String str;
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
+      bool2 = bool3;
+      bool1 = bool4;
+      if (paramInt != -100002)
       {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = atar.a(this.jdField_a_of_type_Atar).a().a.getExtras();
-        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          atbh.a("2653752");
+        if (paramInt != -100003) {
+          break label107;
         }
-        a(this.jdField_a_of_type_Boolean, paramBoolean);
-        long l2 = System.currentTimeMillis();
-        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          break label421;
-        }
-        l1 = atar.a(this.jdField_a_of_type_Atar);
-        l1 = l2 - l1;
-        if (QLog.isColorLevel()) {
-          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
-        }
-        if (!atbh.jdField_a_of_type_Boolean) {
-          break label433;
-        }
-        str = "huayang";
-        label175:
-        if (!paramBoolean) {
-          break label440;
-        }
-        i = 1;
-        label182:
-        wxj.a(str, "getLoginKey", i, (int)l1, new String[] { atar.c(this.jdField_a_of_type_Atar), paramInt + "", paramString, "8.3.5" });
-        paramString = atar.a(this.jdField_a_of_type_Atar).opName(atar.a(this.jdField_a_of_type_Atar)).opType("getLoginKey");
-        if (!paramBoolean) {
-          break label446;
-        }
+        bool1 = bool4;
+        bool2 = bool3;
       }
     }
-    label421:
-    label433:
-    label440:
-    label446:
-    for (int i = j;; i = 0)
+    for (;;)
     {
-      paramString.opIn(i).opResult(paramInt).report();
+      this.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_Atat.jdField_a_of_type_Long, bool2), bool1);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = atet.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, atar.a(this.jdField_a_of_type_Atar));
-      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      atbh.a("2691711");
-      break;
-      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-        atbh.a("2653753");
-      }
-      for (;;)
+      label107:
+      if ((paramInt == -6101) || (paramInt == -7003))
       {
-        Toast.makeText(atar.a(this.jdField_a_of_type_Atar), alud.a(2131706022) + paramInt, 0).show();
-        break;
-        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          atbh.a("2691712");
-        }
+        bool1 = false;
+        bool2 = true;
       }
-      l1 = atar.b(this.jdField_a_of_type_Atar);
-      break label99;
-      str = "group_video";
-      break label175;
+      else
+      {
+        bool1 = false;
+        bool2 = bool3;
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Atat.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Atat.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Atat.d);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atat.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atat.f);
+    localBundle.putString("_m_ForwardUuid", paramString1);
+    localBundle.putString("_m_ForwardFileIdCrc", paramString2);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Atat.e))
+    {
       i = 0;
-      break label182;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Atat.f)) {
+        break label267;
+      }
+    }
+    label267:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Atat.f))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atat.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
+      }
+      atan.a(atan.a(this.jdField_a_of_type_Atat.jdField_a_of_type_Atan), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Atat.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Atbj);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Atat.e);
+      break;
     }
   }
 }

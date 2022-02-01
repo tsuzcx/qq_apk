@@ -1,26 +1,42 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.4.1;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-
 public class bcuz
-  implements bdbl
+  extends bcux
 {
-  public bcuz(TroopGiftAnimationController.5 param5) {}
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public bcuz()
   {
-    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
-      }
-      Bitmap localBitmap = bcpx.a(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.4.1(this, localBitmap));
-    }
+    this.a = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.a).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.a).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    return localStringBuffer.toString();
   }
 }
 

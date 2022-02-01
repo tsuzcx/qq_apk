@@ -1,139 +1,827 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.graphics.drawable.NinePatchDrawable;
-import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
-import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.JobQueue;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.io.File;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.io.OutputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.http.Header;
 
 public class bdwn
-  extends bdwi
+  extends bdsh
 {
-  public static final bdwn a;
-  public static final HashMap<Integer, String> a;
+  private JobQueue a = new JobQueue(4);
   
-  static
+  public static URL a(String paramString)
   {
-    jdField_a_of_type_Bdwn = new bdwn();
-    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
+    paramString = new URL(paramString);
+    return new URL("nearbyimage", paramString.getAuthority(), paramString.getFile());
   }
   
-  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
+  public static List<String> a(String paramString)
   {
-    int i = 0;
-    int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
-    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
-    int[] arrayOfInt2 = new int[2];
-    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
-    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
-    localByteBuffer.put((byte)1);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)9);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(arrayOfInt1[0]);
-    localByteBuffer.putInt(arrayOfInt1[1]);
-    localByteBuffer.putInt(arrayOfInt2[0]);
-    localByteBuffer.putInt(arrayOfInt2[1]);
-    while (i < 9)
+    int i = 28;
+    ArrayList localArrayList = new ArrayList();
+    int k;
+    Object localObject;
+    int j;
+    if (paramString != null)
     {
-      localByteBuffer.putInt(1);
-      i += 1;
+      long l = SystemClock.elapsedRealtime();
+      boolean bool = annj.a().a();
+      k = NetConnInfoCenter.getActiveNetIpFamily(true);
+      if (k != 3) {
+        break label348;
+      }
+      localObject = InnerDns.getInstance();
+      if (!bool) {
+        break label343;
+      }
+      j = 28;
+      localObject = ((InnerDns)localObject).reqDnsForIpList(paramString, 1001, true, j);
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+        localArrayList.add(((ArrayList)localObject).get(0));
+      }
+      localObject = InnerDns.getInstance();
+      if (bool) {
+        i = 1;
+      }
+      localObject = ((InnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+        localArrayList.add(((ArrayList)localObject).get(0));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyImgDownloader", 2, "convertURL: " + paramString.toString() + " ip_zhitongche cost: " + (SystemClock.elapsedRealtime() - l) + " ipType=" + k + " bPrefIpv6=" + bool + " ips=" + Arrays.toString(localArrayList.toArray()));
+      }
+      if ((localArrayList.size() == 0) && (k != 2))
+      {
+        localObject = null;
+        if (!"p.qpic.cn".equals(paramString)) {
+          break label417;
+        }
+        localObject = aqlf.a(2);
+      }
     }
-    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "pobing.preview.cache." + paramInt;
-  }
-  
-  public static boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
-  }
-  
-  public Bitmap a(Context paramContext, int paramInt, String paramString)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 320;
-    localOptions.inTargetDensity = 320;
-    paramContext = getDir(paramContext, getScid(paramInt));
-    paramContext = paramContext + File.separator + paramString;
-    paramString = new bdam();
-    bdal.a(paramContext, localOptions, paramString);
-    if (paramString.jdField_a_of_type_Int != 0)
+    for (;;)
     {
-      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
-      return null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localArrayList.add(localObject);
+      }
+      if (localArrayList.size() < 2) {
+        localArrayList.add(paramString);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyImgDownloader", 2, "convertURL urlStr end: ips=" + Arrays.toString(localArrayList.toArray()));
+      }
+      return localArrayList;
+      label343:
+      j = 1;
+      break;
+      label348:
+      if (k == 2)
+      {
+        j = 1;
+        label355:
+        localObject = InnerDns.getInstance();
+        if (j == 0) {
+          break label412;
+        }
+      }
+      for (;;)
+      {
+        localObject = ((InnerDns)localObject).reqDnsForIpList(paramString, 1001, true, i);
+        if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
+          break;
+        }
+        localArrayList.add(((ArrayList)localObject).get(0));
+        break;
+        j = 0;
+        break label355;
+        label412:
+        i = 1;
+      }
+      label417:
+      if ("p.qlogo.cn".equals(paramString)) {
+        localObject = aqlf.a(1);
+      } else if ("ugc.qpic.cn".equals(paramString)) {
+        localObject = aqlf.b(8);
+      } else if (a(paramString)) {
+        localObject = aqlf.a(0);
+      } else if ("i.gtimg.cn".equals(paramString)) {
+        localObject = aqlf.b();
+      } else if ("imgcache.qq.com".equals(paramString)) {
+        localObject = aqlf.a();
+      } else if (c(paramString)) {
+        localObject = aqlf.b(9);
+      } else if (d(paramString)) {
+        localObject = aqlf.b(11);
+      } else if (e(paramString)) {
+        localObject = aqlf.b(10);
+      } else if ("pgdt.gtimg.cn".equals(paramString)) {
+        localObject = aqlf.a(3);
+      } else if ("sqimg.qq.com".equals(paramString)) {
+        localObject = aqlf.a(4);
+      } else if ("download.wegame.qq.com".equals(paramString)) {
+        localObject = aqlf.a(5);
+      } else if ("wfqqreader.3g.qq.com".equals(paramString)) {
+        localObject = aqlf.a(6);
+      } else if ("buluo.qq.com".equals(paramString)) {
+        localObject = aqlf.a(7);
+      }
     }
-    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public boolean a(Context paramContext, int paramInt)
+  private void a(String paramString)
   {
-    Object localObject = "newComeCard." + paramInt;
-    paramContext = jdField_a_of_type_Bdwn.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyImgDownloader", 2, "download img start url: " + paramString + " time: " + SystemClock.elapsedRealtime());
+    }
+  }
+  
+  private void a(String paramString, boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyImgDownloader", 2, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
+      }
+      return;
+    }
+    QLog.w("NearbyImgDownloader", 1, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
+  }
+  
+  /* Error */
+  private boolean a(java.io.InputStream paramInputStream, long paramLong, bdub parambdub, URLDrawableHandler paramURLDrawableHandler)
+  {
+    // Byte code:
+    //   0: new 216	java/io/BufferedInputStream
+    //   3: dup
+    //   4: aload_1
+    //   5: ldc 217
+    //   7: invokespecial 220	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   10: astore 13
+    //   12: ldc 217
+    //   14: newarray byte
+    //   16: astore 14
+    //   18: new 222	java/io/FileOutputStream
+    //   21: dup
+    //   22: aload 4
+    //   24: getfield 227	bdub:a	Ljava/io/File;
+    //   27: iconst_0
+    //   28: invokespecial 230	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   31: astore 4
+    //   33: lconst_0
+    //   34: lstore 8
+    //   36: aload 4
+    //   38: astore_1
+    //   39: aload 13
+    //   41: aload 14
+    //   43: invokevirtual 236	java/io/InputStream:read	([B)I
+    //   46: istore 6
+    //   48: iload 6
+    //   50: iconst_m1
+    //   51: if_icmpeq +151 -> 202
+    //   54: aload 4
+    //   56: astore_1
+    //   57: aload 4
+    //   59: aload 14
+    //   61: iconst_0
+    //   62: iload 6
+    //   64: invokevirtual 240	java/io/FileOutputStream:write	([BII)V
+    //   67: lload 8
+    //   69: iload 6
+    //   71: i2l
+    //   72: ladd
+    //   73: lstore 10
+    //   75: aload 4
+    //   77: astore_1
+    //   78: lload 10
+    //   80: l2f
+    //   81: lload_2
+    //   82: l2f
+    //   83: fdiv
+    //   84: ldc 241
+    //   86: fmul
+    //   87: f2i
+    //   88: istore 7
+    //   90: aload 4
+    //   92: astore_1
+    //   93: aload 5
+    //   95: iload 7
+    //   97: invokeinterface 246 2 0
+    //   102: lload 10
+    //   104: lstore 8
+    //   106: aload 4
+    //   108: astore_1
+    //   109: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   112: ifeq -76 -> 36
+    //   115: aload 4
+    //   117: astore_1
+    //   118: ldc 91
+    //   120: iconst_2
+    //   121: new 93	java/lang/StringBuilder
+    //   124: dup
+    //   125: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   128: ldc 248
+    //   130: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: iload 7
+    //   135: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: ldc 250
+    //   140: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: iload 6
+    //   145: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   154: lload 10
+    //   156: lstore 8
+    //   158: goto -122 -> 36
+    //   161: astore 5
+    //   163: aload 4
+    //   165: astore_1
+    //   166: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   169: ifeq +17 -> 186
+    //   172: aload 4
+    //   174: astore_1
+    //   175: ldc 91
+    //   177: iconst_2
+    //   178: aload 5
+    //   180: invokevirtual 251	java/io/IOException:toString	()Ljava/lang/String;
+    //   183: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   186: iconst_0
+    //   187: istore 12
+    //   189: aload 13
+    //   191: invokevirtual 254	java/io/InputStream:close	()V
+    //   194: aload 4
+    //   196: invokevirtual 255	java/io/FileOutputStream:close	()V
+    //   199: iload 12
+    //   201: ireturn
+    //   202: aload 4
+    //   204: astore_1
+    //   205: aload 4
+    //   207: invokevirtual 258	java/io/FileOutputStream:flush	()V
+    //   210: iconst_1
+    //   211: istore 12
+    //   213: aload 13
+    //   215: invokevirtual 254	java/io/InputStream:close	()V
+    //   218: aload 4
+    //   220: invokevirtual 255	java/io/FileOutputStream:close	()V
+    //   223: iconst_1
+    //   224: ireturn
+    //   225: astore_1
+    //   226: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   229: ifeq -30 -> 199
+    //   232: ldc 91
+    //   234: iconst_2
+    //   235: aload_1
+    //   236: invokevirtual 259	java/lang/Exception:toString	()Ljava/lang/String;
+    //   239: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   242: iconst_1
+    //   243: ireturn
+    //   244: astore_1
+    //   245: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   248: ifeq -49 -> 199
+    //   251: ldc 91
+    //   253: iconst_2
+    //   254: aload_1
+    //   255: invokevirtual 259	java/lang/Exception:toString	()Ljava/lang/String;
+    //   258: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   261: iconst_0
+    //   262: ireturn
+    //   263: astore 4
+    //   265: aconst_null
+    //   266: astore_1
+    //   267: aload 13
+    //   269: invokevirtual 254	java/io/InputStream:close	()V
+    //   272: aload_1
+    //   273: invokevirtual 255	java/io/FileOutputStream:close	()V
+    //   276: aload 4
+    //   278: athrow
+    //   279: astore_1
+    //   280: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   283: ifeq -7 -> 276
+    //   286: ldc 91
+    //   288: iconst_2
+    //   289: aload_1
+    //   290: invokevirtual 259	java/lang/Exception:toString	()Ljava/lang/String;
+    //   293: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: goto -20 -> 276
+    //   299: astore 4
+    //   301: goto -34 -> 267
+    //   304: astore 5
+    //   306: aconst_null
+    //   307: astore 4
+    //   309: goto -146 -> 163
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	312	0	this	bdwn
+    //   0	312	1	paramInputStream	java.io.InputStream
+    //   0	312	2	paramLong	long
+    //   0	312	4	parambdub	bdub
+    //   0	312	5	paramURLDrawableHandler	URLDrawableHandler
+    //   46	98	6	i	int
+    //   88	46	7	j	int
+    //   34	123	8	l1	long
+    //   73	82	10	l2	long
+    //   187	25	12	bool	boolean
+    //   10	258	13	localBufferedInputStream	java.io.BufferedInputStream
+    //   16	44	14	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   39	48	161	java/io/IOException
+    //   57	67	161	java/io/IOException
+    //   78	90	161	java/io/IOException
+    //   93	102	161	java/io/IOException
+    //   109	115	161	java/io/IOException
+    //   118	154	161	java/io/IOException
+    //   205	210	161	java/io/IOException
+    //   213	223	225	java/lang/Exception
+    //   189	199	244	java/lang/Exception
+    //   12	33	263	finally
+    //   267	276	279	java/lang/Exception
+    //   39	48	299	finally
+    //   57	67	299	finally
+    //   78	90	299	finally
+    //   93	102	299	finally
+    //   109	115	299	finally
+    //   118	154	299	finally
+    //   166	172	299	finally
+    //   175	186	299	finally
+    //   205	210	299	finally
+    //   12	33	304	java/io/IOException
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    if (paramInt == 2000) {
-      return new File(paramContext, "addgroup_preview.png").exists();
+    return Pattern.compile("^q\\d?.qlogo.cn$").matcher(paramString).find();
+  }
+  
+  public static boolean c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    File localFile;
-    while (((Iterator)localObject).hasNext())
-    {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
-      }
+    return Pattern.compile("a[0-9].qpic.cn").matcher(paramString).find();
+  }
+  
+  public static boolean d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
-      }
+    return Pattern.compile(".*qzs.qq.com").matcher(paramString).find();
+  }
+  
+  public static boolean e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
+    return Pattern.compile(".*qzonestyle.gtimg.cn").matcher(paramString).find();
+  }
+  
+  /* Error */
+  public File a(bdub parambdub, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_2
+    //   2: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   5: invokespecial 297	bdwn:a	(Ljava/lang/String;)V
+    //   8: aload_3
+    //   9: invokeinterface 300 1 0
+    //   14: aload_2
+    //   15: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   18: ldc_w 302
+    //   21: invokevirtual 305	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   24: ifeq +223 -> 247
+    //   27: aload_2
+    //   28: aload_2
+    //   29: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   32: ldc_w 302
+    //   35: ldc_w 307
+    //   38: invokevirtual 311	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   41: putfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   44: new 313	java/io/File
+    //   47: dup
+    //   48: aload_2
+    //   49: getfield 317	com/tencent/image/DownloadParams:url	Ljava/net/URL;
+    //   52: invokevirtual 33	java/net/URL:getFile	()Ljava/lang/String;
+    //   55: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;)V
+    //   58: astore 8
+    //   60: aload 8
+    //   62: invokevirtual 321	java/io/File:exists	()Z
+    //   65: ifeq +161 -> 226
+    //   68: aload 8
+    //   70: invokevirtual 324	java/io/File:isFile	()Z
+    //   73: ifeq +153 -> 226
+    //   76: new 216	java/io/BufferedInputStream
+    //   79: dup
+    //   80: new 326	java/io/FileInputStream
+    //   83: dup
+    //   84: aload 8
+    //   86: invokespecial 329	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   89: invokespecial 332	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   92: astore 9
+    //   94: iconst_0
+    //   95: istore 4
+    //   97: aload_0
+    //   98: aload 9
+    //   100: aload 8
+    //   102: invokevirtual 335	java/io/File:length	()J
+    //   105: aload_1
+    //   106: aload_3
+    //   107: invokespecial 210	bdwn:a	(Ljava/io/InputStream;JLbdub;Lcom/tencent/image/URLDrawableHandler;)Z
+    //   110: ifeq +30 -> 140
+    //   113: aload_3
+    //   114: aload 8
+    //   116: invokevirtual 335	java/io/File:length	()J
+    //   119: invokeinterface 339 3 0
+    //   124: aload_0
+    //   125: aload_2
+    //   126: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   129: iconst_1
+    //   130: aload 8
+    //   132: invokevirtual 335	java/io/File:length	()J
+    //   135: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: iload 4
+    //   142: iconst_3
+    //   143: if_icmpne +24 -> 167
+    //   146: aload_3
+    //   147: iconst_4
+    //   148: invokeinterface 344 2 0
+    //   153: aload_0
+    //   154: aload_2
+    //   155: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   158: iconst_0
+    //   159: ldc2_w 345
+    //   162: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   165: aconst_null
+    //   166: areturn
+    //   167: ldc2_w 347
+    //   170: invokestatic 353	java/lang/Thread:sleep	(J)V
+    //   173: iload 4
+    //   175: iconst_1
+    //   176: iadd
+    //   177: istore 4
+    //   179: iload 4
+    //   181: iconst_3
+    //   182: if_icmple +538 -> 720
+    //   185: aload_3
+    //   186: iconst_4
+    //   187: invokeinterface 344 2 0
+    //   192: aload_0
+    //   193: aload_2
+    //   194: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   197: iconst_0
+    //   198: ldc2_w 345
+    //   201: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   204: aconst_null
+    //   205: areturn
+    //   206: astore_1
+    //   207: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   210: ifeq -25 -> 185
+    //   213: ldc 91
+    //   215: iconst_2
+    //   216: aload_1
+    //   217: invokevirtual 354	java/io/FileNotFoundException:toString	()Ljava/lang/String;
+    //   220: invokestatic 206	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   223: goto -38 -> 185
+    //   226: aload_3
+    //   227: iconst_4
+    //   228: invokeinterface 344 2 0
+    //   233: aload_0
+    //   234: aload_2
+    //   235: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   238: iconst_0
+    //   239: ldc2_w 345
+    //   242: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   245: aconst_null
+    //   246: areturn
+    //   247: new 39	java/util/ArrayList
+    //   250: dup
+    //   251: invokespecial 40	java/util/ArrayList:<init>	()V
+    //   254: astore 9
+    //   256: new 39	java/util/ArrayList
+    //   259: dup
+    //   260: invokespecial 40	java/util/ArrayList:<init>	()V
+    //   263: astore 10
+    //   265: new 21	java/net/URL
+    //   268: dup
+    //   269: aload_2
+    //   270: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   273: invokespecial 24	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   276: astore 11
+    //   278: aload 11
+    //   280: invokevirtual 357	java/net/URL:getHost	()Ljava/lang/String;
+    //   283: astore 12
+    //   285: aload 10
+    //   287: new 359	org/apache/http/message/BasicHeader
+    //   290: dup
+    //   291: ldc_w 361
+    //   294: aload 12
+    //   296: invokespecial 364	org/apache/http/message/BasicHeader:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   299: invokeinterface 84 2 0
+    //   304: pop
+    //   305: aload 9
+    //   307: aload 12
+    //   309: invokestatic 366	bdwn:a	(Ljava/lang/String;)Ljava/util/List;
+    //   312: invokeinterface 370 2 0
+    //   317: pop
+    //   318: iconst_0
+    //   319: istore 4
+    //   321: invokestatic 373	android/os/SystemClock:uptimeMillis	()J
+    //   324: lstore 6
+    //   326: iload 4
+    //   328: iconst_1
+    //   329: iadd
+    //   330: istore 5
+    //   332: aload 9
+    //   334: invokeinterface 137 1 0
+    //   339: iload 5
+    //   341: if_icmplt +121 -> 462
+    //   344: iload 5
+    //   346: iconst_1
+    //   347: isub
+    //   348: istore 4
+    //   350: new 21	java/net/URL
+    //   353: dup
+    //   354: ldc_w 375
+    //   357: aload 9
+    //   359: iload 4
+    //   361: invokeinterface 376 2 0
+    //   366: checkcast 102	java/lang/String
+    //   369: aload 11
+    //   371: invokevirtual 33	java/net/URL:getFile	()Ljava/lang/String;
+    //   374: invokespecial 36	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   377: astore 8
+    //   379: aload 8
+    //   381: ifnonnull +116 -> 497
+    //   384: iload 5
+    //   386: iconst_2
+    //   387: if_icmple +326 -> 713
+    //   390: aload_0
+    //   391: aload_2
+    //   392: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   395: iconst_0
+    //   396: ldc2_w 377
+    //   399: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   402: aconst_null
+    //   403: areturn
+    //   404: astore_1
+    //   405: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   408: ifeq +32 -> 440
+    //   411: ldc 91
+    //   413: iconst_2
+    //   414: new 93	java/lang/StringBuilder
+    //   417: dup
+    //   418: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   421: ldc_w 380
+    //   424: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   427: aload_1
+    //   428: invokevirtual 383	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   431: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   434: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   437: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   440: aload_3
+    //   441: bipush 13
+    //   443: invokeinterface 344 2 0
+    //   448: aload_0
+    //   449: aload_2
+    //   450: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   453: iconst_0
+    //   454: ldc2_w 384
+    //   457: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   460: aconst_null
+    //   461: areturn
+    //   462: aload 9
+    //   464: invokeinterface 137 1 0
+    //   469: iconst_1
+    //   470: isub
+    //   471: istore 4
+    //   473: goto -123 -> 350
+    //   476: astore 8
+    //   478: ldc 91
+    //   480: iconst_1
+    //   481: aload 8
+    //   483: invokevirtual 383	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   486: aload 8
+    //   488: invokestatic 388	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   491: aconst_null
+    //   492: astore 8
+    //   494: goto -115 -> 379
+    //   497: aload_2
+    //   498: aload 8
+    //   500: invokevirtual 389	java/net/URL:toString	()Ljava/lang/String;
+    //   503: putfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   506: new 391	bdwo
+    //   509: dup
+    //   510: aload_0
+    //   511: aload_1
+    //   512: aload_3
+    //   513: aload_2
+    //   514: invokespecial 394	bdwo:<init>	(Lbdwn;Lbdub;Lcom/tencent/image/URLDrawableHandler;Lcom/tencent/image/DownloadParams;)V
+    //   517: astore 8
+    //   519: aload_2
+    //   520: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   523: aload 8
+    //   525: aload 10
+    //   527: iconst_1
+    //   528: iconst_0
+    //   529: sipush 10000
+    //   532: sipush 20000
+    //   535: invokestatic 399	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Ljava/lang/String;Lbgml;Ljava/util/List;IZII)Larul;
+    //   538: astore 8
+    //   540: aload 8
+    //   542: getfield 404	arul:b	I
+    //   545: ifne +32 -> 577
+    //   548: aload_3
+    //   549: aload 8
+    //   551: getfield 406	arul:e	I
+    //   554: i2l
+    //   555: invokeinterface 339 3 0
+    //   560: aload_0
+    //   561: aload_2
+    //   562: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   565: iconst_1
+    //   566: aload 8
+    //   568: getfield 406	arul:e	I
+    //   571: i2l
+    //   572: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   575: aconst_null
+    //   576: areturn
+    //   577: invokestatic 373	android/os/SystemClock:uptimeMillis	()J
+    //   580: lload 6
+    //   582: lsub
+    //   583: ldc2_w 407
+    //   586: lcmp
+    //   587: iflt +62 -> 649
+    //   590: ldc 91
+    //   592: iconst_1
+    //   593: new 93	java/lang/StringBuilder
+    //   596: dup
+    //   597: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   600: ldc_w 410
+    //   603: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   606: invokestatic 373	android/os/SystemClock:uptimeMillis	()J
+    //   609: lload 6
+    //   611: lsub
+    //   612: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   615: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   618: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   621: aload_3
+    //   622: aload 8
+    //   624: getfield 404	arul:b	I
+    //   627: invokeinterface 344 2 0
+    //   632: aload_0
+    //   633: aload_2
+    //   634: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   637: iconst_0
+    //   638: aload 8
+    //   640: getfield 404	arul:b	I
+    //   643: i2l
+    //   644: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   647: aconst_null
+    //   648: areturn
+    //   649: iload 5
+    //   651: iconst_2
+    //   652: if_icmpne +31 -> 683
+    //   655: aload_3
+    //   656: aload 8
+    //   658: getfield 404	arul:b	I
+    //   661: invokeinterface 344 2 0
+    //   666: aload_0
+    //   667: aload_2
+    //   668: getfield 295	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   671: iconst_0
+    //   672: aload 8
+    //   674: getfield 404	arul:b	I
+    //   677: i2l
+    //   678: invokespecial 341	bdwn:a	(Ljava/lang/String;ZJ)V
+    //   681: aconst_null
+    //   682: areturn
+    //   683: iload 5
+    //   685: iconst_1
+    //   686: if_icmpne -302 -> 384
+    //   689: invokestatic 66	com/tencent/mobileqq/transfile/dns/InnerDns:getInstance	()Lcom/tencent/mobileqq/transfile/dns/InnerDns;
+    //   692: aload 12
+    //   694: aload 11
+    //   696: invokevirtual 357	java/net/URL:getHost	()Ljava/lang/String;
+    //   699: sipush 1001
+    //   702: invokevirtual 414	com/tencent/mobileqq/transfile/dns/InnerDns:reportBadIp	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   705: goto -321 -> 384
+    //   708: astore 10
+    //   710: goto -537 -> 173
+    //   713: iload 5
+    //   715: istore 4
+    //   717: goto -391 -> 326
+    //   720: goto -623 -> 97
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	723	0	this	bdwn
+    //   0	723	1	parambdub	bdub
+    //   0	723	2	paramDownloadParams	DownloadParams
+    //   0	723	3	paramURLDrawableHandler	URLDrawableHandler
+    //   95	621	4	i	int
+    //   330	384	5	j	int
+    //   324	286	6	l	long
+    //   58	322	8	localObject1	Object
+    //   476	11	8	localMalformedURLException	java.net.MalformedURLException
+    //   492	181	8	localObject2	Object
+    //   92	371	9	localObject3	Object
+    //   263	263	10	localArrayList	ArrayList
+    //   708	1	10	localInterruptedException	java.lang.InterruptedException
+    //   276	419	11	localURL	URL
+    //   283	410	12	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   76	94	206	java/io/FileNotFoundException
+    //   97	138	206	java/io/FileNotFoundException
+    //   146	165	206	java/io/FileNotFoundException
+    //   167	173	206	java/io/FileNotFoundException
+    //   265	318	404	java/net/MalformedURLException
+    //   350	379	476	java/net/MalformedURLException
+    //   167	173	708	java/lang/InterruptedException
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return null;
+  }
+  
+  public boolean a()
+  {
     return true;
   }
   
-  public long getBID()
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return 40L;
+    paramURLDrawableHandler = paramDownloadParams.getHeader("gif_type");
+    if (paramURLDrawableHandler != null)
+    {
+      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
+      float f = paramDownloadParams.mGifRoundCorner;
+      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (paramURLDrawableHandler.equals("1"))) {
+        return new bgyl(paramFile, true, f, 1);
+      }
+    }
+    return null;
   }
   
-  protected String getRootDir()
+  public JobQueue getQueue(URL paramURL)
   {
-    return "newComeCard";
+    return this.a;
   }
   
-  protected String getScidPrefix()
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return "newComeCard.";
+    String str = paramDownloadParams.urlStr;
+    Object localObject = a(str);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyImgDownloader", 2, "loadImageFile file exist: " + ((File)localObject).getAbsolutePath());
+      }
+      return localObject;
+    }
+    localObject = c(str);
+    localObject = InitUrlDrawable.a.a((String)localObject);
+    try
+    {
+      a((bdub)localObject, paramDownloadParams, paramURLDrawableHandler);
+      paramDownloadParams = a(str);
+      if (paramDownloadParams != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyImgDownloader", 2, "loadImageFile f exist:" + paramDownloadParams.getAbsolutePath());
+        }
+        ((bdub)localObject).a.delete();
+        return paramDownloadParams;
+      }
+    }
+    catch (Exception paramDownloadParams)
+    {
+      if (localObject != null) {
+        ((bdub)localObject).a(false);
+      }
+      throw paramDownloadParams;
+    }
+    paramDownloadParams = ((bdub)localObject).a();
+    return paramDownloadParams;
   }
 }
 

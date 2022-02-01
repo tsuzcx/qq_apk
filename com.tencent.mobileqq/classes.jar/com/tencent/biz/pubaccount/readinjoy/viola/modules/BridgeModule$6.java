@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import aasd;
-import aase;
-import aatd;
-import aate;
-import aatf;
+import acqx;
+import acqy;
+import acrx;
+import acry;
+import acrz;
 import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBField;
@@ -23,60 +23,62 @@ class BridgeModule$6
     if (BaseActivity.sTopActivity == null) {
       return;
     }
-    Object localObject1 = BaseActivity.sTopActivity.getApplicationContext();
+    Object localObject = BaseActivity.sTopActivity.getApplicationContext();
     JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = null;
-    Object localObject3 = new aate();
-    ((aate)localObject3).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject1 = aatd.a((Context)localObject1, (aate)localObject3);
-    if (localObject1 == null)
+    acry localacry = new acry();
+    localacry.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject = acrx.a((Context)localObject, localacry);
+    if (localObject == null)
     {
-      localObject1 = localObject2;
-      if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {
-        break label165;
+      localObject = null;
+      if ((localObject == null) || (localObject == JSONObject.NULL)) {
+        break label157;
       }
     }
     for (;;)
     {
       try
       {
-        localJSONObject.put("deviceInfo", localObject1);
+        localJSONObject.put("deviceInfo", localObject);
         if (!this.jdField_a_of_type_Boolean) {
-          break label176;
+          break label168;
         }
         this.this$0.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
         return;
-        localObject3 = ((aatf)localObject1).a;
-        localObject1 = localObject2;
-        if (localObject3 == null) {
+        localObject = ((acrz)localObject).a;
+        if (localObject == null)
+        {
+          localObject = null;
           break;
         }
-        localObject3 = aasd.a((PBField)localObject3);
-        localObject1 = localObject2;
-        if (localObject3 == null) {
+        localObject = acqx.a((PBField)localObject);
+        if (localObject == null)
+        {
+          localObject = null;
           break;
         }
-        localObject1 = localObject2;
-        if (!(localObject3 instanceof JSONObject)) {
+        if (!(localObject instanceof JSONObject))
+        {
+          localObject = null;
           break;
         }
-        localObject1 = (JSONObject)JSONObject.class.cast(localObject3);
+        localObject = (JSONObject)localObject;
       }
       catch (JSONException localJSONException)
       {
-        aase.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        acqy.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
         continue;
       }
-      label165:
-      aase.d(BridgeModule.TAG, "handleJsCallRequest error");
+      label157:
+      acqy.d(BridgeModule.TAG, "handleJsCallRequest error");
     }
-    label176:
+    label168:
     ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), this.this$0.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.6
  * JD-Core Version:    0.7.0.1
  */

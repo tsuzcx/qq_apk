@@ -1,30 +1,28 @@
 package com.tencent.pts.ui.view;
 
 import android.graphics.Canvas;
+import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.vnode.PTSNodeText;
-import com.tencent.pts.utils.PTSValueConvertUtil;
 import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 
 public class PTSTextView
   extends TextView
-  implements IView<PTSNodeText>
+  implements IView
 {
-  private PTSNodeText mNode;
-  private PTSViewDecorationUtil.RoundedCorner mRoundedCorner;
+  private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
   public PTSTextView(PTSNodeText paramPTSNodeText)
   {
     super(paramPTSNodeText.getContext());
-    this.mNode = paramPTSNodeText;
-    this.mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.mNode);
     setTextSize(16.0F);
-    setLineSpacing(PTSValueConvertUtil.dp2px(3.2F), 1.0F);
     setTextColor(-16777216);
     setIncludeFontPadding(false);
     setEllipsize(TextUtils.TruncateAt.END);
+    getPaint().setAntiAlias(true);
+    setGravity(16);
   }
   
   public void draw(Canvas paramCanvas)
@@ -32,11 +30,7 @@ public class PTSTextView
     int i = this.mRoundedCorner.getSaveCount(paramCanvas);
     super.draw(paramCanvas);
     this.mRoundedCorner.drawCorner(paramCanvas, i);
-  }
-  
-  public PTSNodeText getNode()
-  {
-    return this.mNode;
+    this.mRoundedCorner.drawBorder(paramCanvas);
   }
   
   public void onBindNodeInfo(PTSNodeInfo paramPTSNodeInfo)
@@ -46,7 +40,7 @@ public class PTSTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSTextView
  * JD-Core Version:    0.7.0.1
  */

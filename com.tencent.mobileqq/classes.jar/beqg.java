@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import java.util.List;
 
-class beqg
-  implements View.OnClickListener
+public class beqg
+  extends beqn
 {
-  beqg(beqf parambeqf, boolean paramBoolean) {}
+  public beqg(TroopAioKeywordTipBar.4 param4, List paramList, beqk parambeqk) {}
   
-  public void onClick(View paramView)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Beqf.a.dismiss();
-    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (beqc.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
+    this.jdField_a_of_type_Beqk.a(this.jdField_a_of_type_JavaUtilList, null, 2, new beqh(this));
+    return;
+    beqc.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

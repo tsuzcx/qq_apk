@@ -19,6 +19,9 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_FORMAT_NODES = "dl_param_format_nodes";
   public static final String DLPARAM_IS_OFFLINE = "dl_param_is_offline";
   public static final String DLPARAM_OFFLINE_PLAY_EXTRA_INFO = "dl_param_play_extra_info";
+  public static final String DLPARAM_PACKAGE = "package";
+  public static final String DLPARAM_PCDN_URLS = "dl_param_pcdn_urls";
+  public static final String DLPARAM_PCDN_VTS = "dl_param_pcdn_vts";
   public static final String DLPARAM_PLAY_CLIP_COUNT = "dl_param_play_clip_count";
   public static final String DLPARAM_PLAY_CLIP_NO = "dl_param_play_clip_no";
   public static final String DLPARAM_PLAY_DEFINITION = "dl_param_play_definition";
@@ -40,10 +43,14 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_VINFO_M3U8 = "dl_param_vinfo_m3u8";
   public static final String DLPARAM_VINFO_TESTID = "dl_param_vinfo_testid";
   public static final String DLPARAM_VINFO_TM = "dl_param_vinfo_tm";
+  public static final String DLPARAM_XP2P_ID = "xp2p_id";
+  public static final String DLPARAM_XP2P_KEY = "xp2p_key";
+  public static final String DLPARAM_XP2P_SECRET_KEY = "xp2p_secretKey";
   public static final int DLTYPE_ADAPTIVE_PLAY_BASE = 400;
   public static final int DLTYPE_AUTO = 0;
   public static final int DLTYPE_CLIP_MP4_VOD = 2;
   public static final int DLTYPE_FILE_DOWNLOAD = 10;
+  public static final int DLTYPE_FLV_LIVE = 12;
   public static final int DLTYPE_HLS_ADV = 7;
   public static final int DLTYPE_HLS_ADV_LOOP = 8;
   public static final int DLTYPE_HLS_LIVE = 5;
@@ -103,6 +110,7 @@ public class TPDownloadProxyEnum
   public static final String USER_DEVICE_MODEL = "device_model";
   public static final String USER_GUID = "guid";
   public static final String USER_IS_VIP = "qq_is_vip";
+  public static final String USER_LOSS_PACKAGE_INFO = "lose_package_check_info";
   public static final String USER_MAC = "mac";
   public static final String USER_MCC = "user_mcc";
   public static final String USER_MNC = "user_mnc";
@@ -116,7 +124,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

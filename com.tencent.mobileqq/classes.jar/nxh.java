@@ -1,19 +1,22 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nxh
-  extends bhry
+  implements View.OnClickListener
 {
-  nxh(nxg paramnxg) {}
+  nxh(nxe paramnxe) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    nxf.a(this.a.a.this$0, true);
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxh
  * JD-Core Version:    0.7.0.1
  */

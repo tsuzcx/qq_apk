@@ -1,11 +1,20 @@
-import MWIFI.SCGet3rdCloudCheck;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bezy
-  implements amfy
+class bezy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void a(int paramInt) {}
+  bezy(bezx parambezx, bfab parambfab) {}
   
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bfab.a).troopuin.equals(bezx.a(this.jdField_a_of_type_Bezx)))) {
+      this.jdField_a_of_type_Bfab.b = Boolean.valueOf(paramBoolean);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

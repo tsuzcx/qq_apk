@@ -1,36 +1,22 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.component.media.utils.LruCache;
 
-public class vgy
-  extends uro
+class vgy
+  extends LruCache<Integer, Bitmap>
 {
-  public List<QQUserUIItem> a = new ArrayList();
-  
-  public vgy(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
+  vgy(vgx paramvgx, int paramInt)
   {
-    super(paramRspConvertUinAndUnionId.result);
-    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
-    if (paramRspConvertUinAndUnionId != null)
-    {
-      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
-      while (paramRspConvertUinAndUnionId.hasNext())
-      {
-        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
-        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        this.a.add(localQQUserUIItem);
-      }
-    }
+    super(paramInt);
+  }
+  
+  protected int a(Integer paramInteger, Bitmap paramBitmap)
+  {
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgy
  * JD-Core Version:    0.7.0.1
  */

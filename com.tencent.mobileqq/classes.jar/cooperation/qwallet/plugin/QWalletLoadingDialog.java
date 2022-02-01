@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ajeq;
+import akws;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,10 +17,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QWalletLoadingDialog
-  extends Dialog
+  extends ReportDialog
 {
   Animatable mAnimatedDrawale = null;
   protected boolean mBackupActivityCanLock = true;
@@ -37,7 +38,7 @@ public class QWalletLoadingDialog
   
   public QWalletLoadingDialog(Context paramContext, boolean paramBoolean)
   {
-    this(paramContext, 2131755804, paramBoolean);
+    this(paramContext, 2131755826, paramBoolean);
   }
   
   public void dismiss()
@@ -72,7 +73,7 @@ public class QWalletLoadingDialog
         localObject = getWindow();
         if ((localObject != null) && (ImmersiveUtils.isSupporImmersive() == 1))
         {
-          if ((Build.VERSION.SDK_INT >= 21) && (!ajeq.d()))
+          if ((Build.VERSION.SDK_INT >= 21) && (!akws.d()))
           {
             if (Build.VERSION.SDK_INT >= 28)
             {
@@ -90,7 +91,7 @@ public class QWalletLoadingDialog
           }
         }
         else {
-          paramContext = LayoutInflater.from(paramContext).inflate(2131561871, null);
+          paramContext = LayoutInflater.from(paramContext).inflate(2131562104, null);
         }
       }
       catch (Throwable paramContext)
@@ -101,26 +102,26 @@ public class QWalletLoadingDialog
       try
       {
         setContentView(paramContext);
-        paramContext.findViewById(2131377007).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
+        paramContext.findViewById(2131377811).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
         paramContext.setFitsSystemWindows(false);
         localLayoutParams = ((Window)localObject).getAttributes();
         localLayoutParams.width = -1;
         localLayoutParams.height = -1;
         ((Window)localObject).setAttributes(localLayoutParams);
         setCanceledOnTouchOutside(false);
-        this.mCenterView = ((TextView)paramContext.findViewById(2131368670));
+        this.mCenterView = ((TextView)paramContext.findViewById(2131368994));
         if (this.mCenterView != null)
         {
           this.mCenterView.setVisibility(0);
-          this.mCenterView.setText(2131717801);
+          this.mCenterView.setText(2131716015);
         }
-        paramContext = (TextView)paramContext.findViewById(2131368632);
+        paramContext = (TextView)paramContext.findViewById(2131368955);
         if (paramContext != null)
         {
           paramContext.setVisibility(0);
-          paramContext.setText(2131717800);
+          paramContext.setText(2131716014);
         }
-        paramContext = (ImageView)super.findViewById(2131372971);
+        paramContext = (ImageView)super.findViewById(2131373596);
         localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
         ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
         ((TranslateAnimation)localObject).setDuration(800L);
@@ -140,7 +141,7 @@ public class QWalletLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839229));
+    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839406));
     if ((this.mAnimatedDrawale != null) && (this.mCenterView != null))
     {
       this.mCenterView.setCompoundDrawablePadding(10);
@@ -151,7 +152,7 @@ public class QWalletLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

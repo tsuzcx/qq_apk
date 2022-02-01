@@ -1,25 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-class msi
-  extends meu
+public class msi
 {
-  msi(mse parammse) {}
-  
-  protected void b(mey parammey)
-  {
-    if (parammey.jdField_b_of_type_Boolean) {
-      return;
-    }
-    parammey.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (parammey.jdField_b_of_type_Boolean) {
-      parammey.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammey.jdField_b_of_type_Boolean + "]");
-  }
+  public static PopupDialog a;
+  public int a;
+  public DialogInterface.OnClickListener a;
+  public String a;
+  public boolean a = false;
+  public int b;
+  public DialogInterface.OnClickListener b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,103 +1,116 @@
-import android.annotation.SuppressLint;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import com.tencent.qqmini.sdk.utils.DebugUtil;
-import java.io.File;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@SuppressLint({"WrongConstant"})
 public class bhif
 {
-  private static volatile bhif jdField_a_of_type_Bhif;
-  public static final String[] a;
-  private int jdField_a_of_type_Int = 3;
-  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  private boolean jdField_a_of_type_Boolean;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<bmuf> jdField_a_of_type_JavaUtilList;
   
-  static
+  private bhif(Activity paramActivity)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "native_lame_mp3", "c++_shared", "saturn", "traeimp-rtmp", "txffmpeg", "liteavsdk" };
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public bhif()
+  public static bhif a(@NonNull Activity paramActivity)
   {
-    Iterator localIterator = bgwa.a(this.jdField_a_of_type_Int).iterator();
-    while (localIterator.hasNext())
+    return new bhif(paramActivity);
+  }
+  
+  private bmuf a(@NonNull JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("type");
+    Object localObject = new bmug();
+    View localView = ((bmug)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
+    if (localView == null)
     {
-      InstalledEngine localInstalledEngine = (InstalledEngine)localIterator.next();
-      if (localInstalledEngine.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = localInstalledEngine;
+      zkb.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    localObject = ((bmug)localObject).a(str, localView);
+    if (localView == null)
+    {
+      zkb.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    ((bmuf)localObject).a(paramJSONObject);
+    return localObject;
+  }
+  
+  public bhif a(@NonNull ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    return this;
+  }
+  
+  public bhif a(@NonNull JSONArray paramJSONArray)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    a();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject = paramJSONArray.optJSONObject(i);
+      if (localObject == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject = a((JSONObject)localObject);
+        if (localObject != null)
+        {
+          ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(((bmuf)localObject).a(), localLayoutParams);
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
       }
     }
+    return this;
   }
   
-  public static bhif a()
+  public bhif a(@NonNull JSONObject paramJSONObject)
   {
-    if (jdField_a_of_type_Bhif == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhif == null) {
-        jdField_a_of_type_Bhif = new bhif();
-      }
-      return jdField_a_of_type_Bhif;
+    paramJSONObject = a(paramJSONObject);
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
     }
-    finally {}
+    a();
+    if (paramJSONObject == null) {
+      return this;
+    }
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
+    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
+    return this;
   }
   
-  private String a(InstalledEngine paramInstalledEngine)
+  public void a()
   {
-    if ((paramInstalledEngine != null) && (paramInstalledEngine.jdField_a_of_type_Boolean)) {
-      return paramInstalledEngine.jdField_b_of_type_JavaLangString;
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
     }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return a("native_lame_mp3");
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine == null) || (TextUtils.isEmpty(paramString))) {
-      QMLog.e("MiniAppSoLoader", "[MiniEng]load so " + paramString + " from " + this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bmuf)localIterator.next()).c();
     }
-    String str2;
-    String str1;
-    do
-    {
-      return false;
-      str2 = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-      str1 = str2 + File.separator + "lib" + paramString + ".so";
-      QMLog.i("MiniAppSoLoader", "[MiniEng]load so " + paramString + " from " + str1);
-    } while (TextUtils.isEmpty(str2));
-    try
-    {
-      System.load(str1);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int = 3;
-      }
-      QMLog.i("MiniAppSoLoader", "[MiniEng] load " + str1 + " success.");
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("MiniAppSoLoader", "[MiniEng] load " + str1 + " fail: " + DebugUtil.getPrintableStackTrace(paramString), paramString);
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Int = 2;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhif
  * JD-Core Version:    0.7.0.1
  */

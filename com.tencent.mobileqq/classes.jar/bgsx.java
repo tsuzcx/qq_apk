@@ -1,26 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgsx
-  implements VideoPlayerProxy.OnCaptureImageListener
+final class bgsx
+  extends ClickableSpan
 {
-  public bgsx(MiniAppVideoPlayer.17 param17) {}
+  bgsx(Context paramContext, axkm paramaxkm) {}
   
-  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Axkm.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Axkm.b());
     }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgsx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,65 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdcf
-  implements Parcelable.Creator<HeadRequest>
+public class bdcf
+  extends aqkz<bdcg>
 {
-  public HeadRequest a(Parcel paramParcel)
+  public static bdcg a()
   {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
+    return (bdcg)aqlk.a().a(610);
   }
   
-  public HeadRequest[] a(int paramInt)
+  @NonNull
+  public bdcg a(int paramInt)
   {
-    return new HeadRequest[paramInt];
+    return new bdcg();
+  }
+  
+  @Nullable
+  public bdcg a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StudyModeConfigProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return bdcg.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(bdcg parambdcg) {}
+  
+  public Class<bdcg> clazz()
+  {
+    return bdcg.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 610;
   }
 }
 

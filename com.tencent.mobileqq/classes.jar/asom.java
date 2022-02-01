@@ -1,36 +1,52 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class asom
-  implements View.OnClickListener
+class asom
+  implements Handler.Callback
 {
-  public asom(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  asom(asoh paramasoh) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    switch (paramMessage.what)
     {
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
-      aahi.a(akwd.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
-      bkjb.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
+      {
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
+      }
+      this.a.b();
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
+      Drawable localDrawable = bgmo.a(true);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        aoch.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+      return false;
     }
-    try
+    paramMessage = (ArrayList)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      asnm.a(102, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
-      return;
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
     }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
+    asoh.a(this.a, paramMessage);
+    return false;
   }
 }
 

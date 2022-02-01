@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.managers;
 
 import android.text.TextUtils;
-import atzq;
-import azqs;
+import awgz;
+import bcst;
 
 public class CUOpenCardGuideMng$CUOpenCardClickableSpan$2
   implements Runnable
 {
-  public CUOpenCardGuideMng$CUOpenCardClickableSpan$2(atzq paramatzq) {}
+  public CUOpenCardGuideMng$CUOpenCardClickableSpan$2(awgz paramawgz) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan$2
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        azqs.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        bcst.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
       return;
       if (this.this$0.a == 2) {
@@ -33,7 +33,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.2
  * JD-Core Version:    0.7.0.1
  */

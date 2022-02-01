@@ -1,91 +1,36 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 
 public class ohw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bhql
 {
-  public ohw(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  ohw(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    Object localObject = new Rect();
-    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
-    int j = i - ((Rect)localObject).height();
-    boolean bool;
-    if (j > 100)
+    super.a();
+    if ((this.jdField_a_of_type_Bhov.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.webView != null) && (this.c != null))
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
-      }
-      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
-      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
-        break label394;
-      }
-      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
-        ReadInJoyDeliverBiuActivity.a(this.a, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
-      }
-      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
-      }
-      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
-      ReadInJoyDeliverBiuActivity.a(this.a, bool);
-      localObject = this.a;
-      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
-        break label372;
-      }
-      j = i;
-      label283:
-      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
-      localObject = this.a;
-      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
-        break label383;
-      }
-      label307:
-      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
-      }
-      return;
-      bool = false;
-      break;
-      label372:
-      j = ReadInJoyDeliverBiuActivity.e(this.a);
-      break label283;
-      label383:
-      i = ReadInJoyDeliverBiuActivity.f(this.a);
-      break label307;
-      label394:
-      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841637);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.c.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView);
+      if (IPluginAdapterProxy.getProxy().isNightMode())
       {
-        i -= ReadInJoyDeliverBiuActivity.h(this.a);
-        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
-        }
-        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+        this.c.setBackgroundColor(-6710887);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841638);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohw
  * JD-Core Version:    0.7.0.1
  */

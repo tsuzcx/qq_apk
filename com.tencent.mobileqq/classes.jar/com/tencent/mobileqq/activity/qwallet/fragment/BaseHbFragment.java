@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aixs;
-import aiyl;
-import ajeu;
+import akpd;
+import akqa;
+import akww;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,17 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bdnn;
-import bjcn;
+import bgsp;
+import blqw;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public abstract class BaseHbFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   private static final String TAG = "BaseHbFragment";
   protected Bundle bundle;
@@ -30,30 +32,30 @@ public abstract class BaseHbFragment
   protected boolean isUIVisible;
   protected boolean isViewCreated;
   public SendHbActivity mActivity;
-  protected aiyl mLogic;
+  protected akqa mLogic;
   protected QQAppInterface mQApp;
   
   public static JSONObject getHbPannelConfig(int paramInt)
   {
     Object localObject1 = null;
     Object localObject3 = null;
-    Object localObject2 = ajeu.a();
-    aixs localaixs1;
+    Object localObject2 = akww.a();
+    akpd localakpd1;
     if (localObject2 != null)
     {
-      aixs localaixs2 = (aixs)((QQAppInterface)localObject2).getManager(245);
-      JSONArray localJSONArray = localaixs2.a("redPackPanel", new String[] { "panelRedPkgList" });
-      localaixs1 = localaixs2;
+      akpd localakpd2 = (akpd)((QQAppInterface)localObject2).getManager(245);
+      JSONArray localJSONArray = localakpd2.a("redPackPanel", new String[] { "panelRedPkgList" });
+      localakpd1 = localakpd2;
       localObject2 = localObject1;
       if (localJSONArray != null)
       {
-        localaixs1 = localaixs2;
+        localakpd1 = localakpd2;
         localObject2 = localObject1;
         if (localJSONArray.length() > 0)
         {
           int i = 0;
           localObject1 = localObject3;
-          localaixs1 = localaixs2;
+          localakpd1 = localakpd2;
           localObject2 = localObject1;
           if (i < localJSONArray.length())
           {
@@ -73,11 +75,11 @@ public abstract class BaseHbFragment
     }
     else
     {
-      localaixs1 = null;
+      localakpd1 = null;
       localObject2 = localObject1;
     }
-    if ((localObject2 == null) && (localaixs1 != null)) {
-      localaixs1.b(0);
+    if ((localObject2 == null) && (localakpd1 != null)) {
+      localakpd1.b(0);
     }
     return localObject2;
   }
@@ -124,21 +126,21 @@ public abstract class BaseHbFragment
   
   public boolean checkCount(String paramString)
   {
-    if (bdnn.a(paramString)) {}
+    if (bgsp.a(paramString)) {}
     do
     {
       return false;
       if ((paramString.indexOf('.') <= 0) || (paramString.indexOf('.') >= paramString.length() - 3)) {
         break;
       }
-      paramString = getString(2131697247);
+      paramString = getString(2131696076);
     } while (this.mActivity == null);
     this.mActivity.c(paramString);
     return false;
     return true;
   }
   
-  protected void combineUploadData(bjcn parambjcn, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  protected void combineUploadData(blqw paramblqw, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     try
     {
@@ -146,7 +148,7 @@ public abstract class BaseHbFragment
       localStringBuffer.append("number#");
       localStringBuffer.append(paramInt2);
       localStringBuffer.append(",type#");
-      if (("1".equals(parambjcn.recv_type)) || ("7".equals(parambjcn.recv_type)) || ("4".equals(parambjcn.recv_type)) || ("5".equals(parambjcn.recv_type))) {
+      if (("1".equals(paramblqw.recv_type)) || ("7".equals(paramblqw.recv_type)) || ("4".equals(paramblqw.recv_type)) || ("5".equals(paramblqw.recv_type))) {
         localStringBuffer.append("person");
       }
       for (;;)
@@ -157,7 +159,7 @@ public abstract class BaseHbFragment
         localStringBuffer.append(paramString1);
         addUploadData(paramString2, localStringBuffer.toString());
         return;
-        if ("2".equals(parambjcn.recv_type)) {
+        if ("2".equals(paramblqw.recv_type)) {
           localStringBuffer.append("crowd");
         } else {
           localStringBuffer.append("group");
@@ -165,7 +167,7 @@ public abstract class BaseHbFragment
       }
       return;
     }
-    catch (Throwable parambjcn) {}
+    catch (Throwable paramblqw) {}
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -173,11 +175,13 @@ public abstract class BaseHbFragment
     QLog.i("BaseHbFragment", 2, "onCreateView: " + getClass().getSimpleName());
     SendHbActivity localSendHbActivity = (SendHbActivity)getActivity();
     this.mActivity = localSendHbActivity;
-    this.mLogic = new aiyl(localSendHbActivity);
+    this.mLogic = new akqa(localSendHbActivity);
     this.mQApp = ((QQAppInterface)this.mActivity.getAppRuntime());
     this.mActivity.getWindow().setSoftInputMode(19);
     preInitParams();
-    return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   protected void onLazyLoad()
@@ -218,7 +222,7 @@ public abstract class BaseHbFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment
  * JD-Core Version:    0.7.0.1
  */

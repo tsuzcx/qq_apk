@@ -1,42 +1,17 @@
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 
-final class afxm
-  implements OnCompositionLoadedListener
+public class afxm
+  extends QQLruCache<String, ahxe>
 {
-  afxm(DiniFlyAnimationView paramDiniFlyAnimationView, afnk paramafnk, String paramString) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public afxm(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new afxn(this));
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(afxl.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Afnk != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramLottieComposition = this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ahxe paramahxe1, ahxe paramahxe2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramahxe1, paramahxe2);
   }
 }
 

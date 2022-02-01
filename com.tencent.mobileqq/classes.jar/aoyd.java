@@ -1,56 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class aoyd
-  extends aokh<aoyc>
+public abstract interface aoyd
+  extends IInterface
 {
-  public int a()
-  {
-    return 440;
-  }
-  
-  @NonNull
-  public aoyc a(int paramInt)
-  {
-    return new aoyc();
-  }
-  
-  @Nullable
-  public aoyc a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoyc.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoyc> a()
-  {
-    return aoyc.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoyc paramaoyc) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract ARScanStarFaceConfigInfo a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyd
  * JD-Core Version:    0.7.0.1
  */

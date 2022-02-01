@@ -2,14 +2,14 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bmkk;
+import bpbq;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.ArrayList;
 
 public class EditTakeGifSource
   extends EditLocalGifSource
 {
-  public static final Parcelable.Creator<EditTakeGifSource> CREATOR = new bmkk();
+  public static final Parcelable.Creator<EditTakeGifSource> CREATOR = new bpbq();
   
   public EditTakeGifSource(Parcel paramParcel)
   {
@@ -23,7 +23,7 @@ public class EditTakeGifSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource
  * JD-Core Version:    0.7.0.1
  */

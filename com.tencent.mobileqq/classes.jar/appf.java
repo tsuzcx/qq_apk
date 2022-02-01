@@ -1,20 +1,8 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
 
-class appf
-  extends DataSetObserver
+public abstract interface appf
 {
-  appf(appe paramappe, DragSortListView paramDragSortListView) {}
-  
-  public void onChanged()
-  {
-    this.jdField_a_of_type_Appe.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_Appe.notifyDataSetInvalidated();
-  }
+  public abstract void b(ArrayList<apoo> paramArrayList);
 }
 
 

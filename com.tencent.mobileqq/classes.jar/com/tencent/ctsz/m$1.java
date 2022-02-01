@@ -1,20 +1,20 @@
 package com.tencent.ctsz;
 
-import zjn;
+import abgl;
 
 public class m$1
   extends Thread
 {
-  public m$1(zjn paramzjn) {}
+  public m$1(abgl paramabgl) {}
   
   public void run()
   {
-    zjn.a(this.this$0);
+    abgl.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ctsz.m.1
  * JD-Core Version:    0.7.0.1
  */

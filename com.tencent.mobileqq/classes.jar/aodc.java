@@ -1,47 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class aodc
-  implements aocw
+class aodc
+  extends aocw
 {
-  private String a = "ReadInJoyLauncher";
+  aodc(aodb paramaodb) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
   {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.a.equals(paramFaceInfo.a))) {
       return;
     }
-    try
+    if ((this.a.jdField_a_of_type_Aocw != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Aocw);
+    }
+    if (paramBoolean)
     {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
+      paramFaceInfo = this.a.a();
+      if (paramFaceInfo != null)
       {
-        QLog.d(this.a, 2, "init color error something is null");
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramFaceInfo);
         return;
       }
+      this.a.a();
+      return;
     }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e(this.a, 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = osb.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramContext.startActivity(paramColorNote);
-    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, null);
   }
 }
 

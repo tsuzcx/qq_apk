@@ -1,24 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2.2.1;
+import android.graphics.Bitmap;
 
 public class ajmy
-  implements Animator.AnimatorListener
 {
-  public ajmy(CareNotificationBar.2 param2) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.post(new CareNotificationBar.2.2.1(this));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 

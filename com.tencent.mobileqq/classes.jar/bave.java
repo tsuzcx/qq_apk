@@ -1,88 +1,50 @@
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class bave
+class bave
+  extends anqd
 {
-  public long a;
-  public bauf a;
-  public baug a;
-  public bauh a;
-  public bavf a;
-  public OutputStream a;
-  public Object a;
-  public HashMap<String, String> a;
-  public List<bawy> a;
-  public byte[] a;
-  int jdField_b_of_type_Int = 1;
-  public long b;
-  private Object jdField_b_of_type_JavaLangObject;
-  public int c;
-  public long c;
-  public String c;
-  public int d = 5;
-  public String d;
-  public int e = 1;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public boolean i;
-  public boolean j = true;
-  public boolean k;
-  public boolean l = true;
-  public boolean m = true;
-  public boolean n = true;
-  public boolean o;
+  bave(bavc parambavc) {}
   
-  public bave()
+  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
   {
-    this.jdField_c_of_type_Long = 480000L;
-    this.jdField_c_of_type_Int = 8;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public Object a()
-  {
-    try
+    if (bavc.a(this.a) == null)
     {
-      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaLangObject = paramObject;
+      QLog.d(bavc.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
       return;
     }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
+    baux localbaux = (baux)bavc.a(this.a).peek();
+    if (localbaux != null) {
+      if ((paramLong == localbaux.jdField_a_of_type_Long) && (localbaux.c == 4))
+      {
+        localbaux.c = 5;
+        bavc.a(this.a).remove(localbaux);
+        if (localbaux.jdField_a_of_type_Anqd != null) {
+          localbaux.jdField_a_of_type_Anqd.a(paramBoolean, paramLong, paramanqe);
+        }
+        if (localbaux.jdField_a_of_type_Bava != null) {
+          localbaux.jdField_a_of_type_Bava.a(paramBoolean, paramLong);
+        }
+        if (localbaux.jdField_a_of_type_Boolean) {
+          bcfx.a().a(paramLong);
+        }
+        bavc.a(this.a).b(localbaux.jdField_a_of_type_Long);
+        if (QLog.isColorLevel())
+        {
+          paramanqe = new StringBuilder();
+          paramanqe.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(bavc.a(this.a).size()).append(", mNeedCompress:").append(localbaux.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
+          QLog.d(bavc.a, 2, paramanqe.toString());
+        }
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_JavaLangString != null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_JavaIoOutputStream != null;
+    for (;;)
+    {
+      bavc.a(this.a);
+      return;
+      QLog.d(bavc.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localbaux.c), ", uniseq:", Long.valueOf(localbaux.jdField_a_of_type_Long) });
+      continue;
+      QLog.d(bavc.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
+    }
   }
 }
 

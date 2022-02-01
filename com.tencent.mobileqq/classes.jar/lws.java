@@ -1,23 +1,40 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class lws
-  implements lxa
+public class lws
+  implements ServiceConnection
 {
-  lws(lwr paramlwr) {}
+  public lws(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    QQServiceForAV.b(this.a, true);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    QQServiceForAV.b(this.a, false);
+    try
+    {
+      BaseApplicationImpl.getContext().unbindService(this);
+      return;
     }
-    if (this.a.a != null) {
-      this.a.a.c = true;
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("QQServiceForAV", 1, "onServiceDisconnected disconnect exception:" + paramComponentName, paramComponentName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lws
  * JD-Core Version:    0.7.0.1
  */

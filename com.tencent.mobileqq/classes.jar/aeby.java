@@ -1,27 +1,45 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeby
-  extends MqqHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeby(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aeby(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (AppSetting.c)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
+      localObject1 = this.a.getString(2131692799);
+      DiscussionInfoCardActivity.b(this.a).setContentDescription((CharSequence)localObject1);
     }
-    this.a.c();
+    boolean bool2 = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
+    Object localObject1 = DiscussionInfoCardActivity.a(this.a);
+    Object localObject2 = this.a.a;
+    boolean bool1;
+    if (!bool2)
+    {
+      bool1 = true;
+      ((anks)localObject1).a((DiscussionInfo)localObject2, bool1);
+      localObject2 = new bcsy(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
+      if (!bool2) {
+        break label145;
+      }
+    }
+    label145:
+    for (localObject1 = "Clk_unstick";; localObject1 = "Clk_stick")
+    {
+      ((bcsy)localObject2).d((String)localObject1).a();
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

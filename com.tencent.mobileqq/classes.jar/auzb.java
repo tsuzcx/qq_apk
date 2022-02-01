@@ -1,111 +1,73 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import QC.FontInfo;
+import QC.FontRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class auzb
-  implements bemh<oidb_0x8e4.RspBody>
+  implements auyy<FontRecommendRsp>
 {
-  public auzb(GameRoomTransActivity paramGameRoomTransActivity, String paramString, int paramInt) {}
-  
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public int a()
   {
-    String str3 = null;
-    String str2;
-    if (paramRspBody.string_err_title.has())
+    return 3;
+  }
+  
+  public String a(Context paramContext)
+  {
+    return bgyg.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bgyg.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
+  {
+    int j = ((anuk)paramQQAppInterface.a(13)).b();
+    paramQQAppInterface = new ArrayList();
+    if (paramFontRecommendRsp.vItems != null)
     {
-      str2 = paramRspBody.string_err_title.get().toStringUtf8();
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {}
-    }
-    for (String str1 = null;; str1 = null)
-    {
-      str2 = str3;
-      if (paramRspBody.string_err_msg.has())
+      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
+      if (paramFontRecommendRsp.hasNext())
       {
-        str2 = paramRspBody.string_err_msg.get().toStringUtf8();
-        if (!TextUtils.isEmpty(str2)) {
-          break label578;
-        }
-        str2 = str3;
-      }
-      label578:
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "onAcceptInvite invitedId = " + this.jdField_a_of_type_JavaLangString + " errorCode = " + paramInt + " ,errTitle = " + str1 + " ,errMsgFromServer = " + str2);
-        }
-        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz = auzg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-        }
-        for (;;)
+        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = localFontInfo.item.itemId;
+        if (localFontInfo.linkBubbleID > 0) {}
+        for (int i = localFontInfo.linkBubbleID;; i = j)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          }
-          return;
-          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz = auzg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-          }
-          else
-          {
-            if ((paramInt == 0) || (paramInt == 1005))
-            {
-              paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
-              paramRspBody.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-              paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-              return;
-            }
-            if (paramInt == 1008)
-            {
-              str3 = paramRspBody.string_invite_id.get().toStringUtf8();
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str3;
-              paramInt = this.jdField_a_of_type_Int;
-              if (paramRspBody.uint32_max_member_num.has()) {
-                paramInt = paramRspBody.uint32_max_member_num.get();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz = auzg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2, str3, paramInt);
-            }
-            else if (paramInt == 1009)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 230);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.setTitle(str1);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.setMessage(str2);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.setPositiveButton(alud.a(2131705527), new auzc(this, paramRspBody));
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.setNegativeButton(2131690382, new auzd(this));
-              if (!this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.isFinishing()) {
-                this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz.show();
-              }
-            }
-            else
-            {
-              if (TextUtils.isEmpty(str2)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bdjz = auzg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-            }
-          }
+          localFontBubble.bubbleId = i;
+          localFontBubble.name = localFontInfo.name;
+          localFontBubble.engine = localFontInfo.engine;
+          localFontBubble.feeType = localFontInfo.feeType;
+          localFontBubble.payUrl = localFontInfo.payUrl;
+          localFontBubble.title = localFontInfo.title;
+          localFontBubble.msg = localFontInfo.msg;
+          localFontBubble.btn = localFontInfo.btn;
+          localFontBubble.picUrl = localFontInfo.strPicUrl;
+          localFontBubble.panelType = 3;
+          paramQQAppInterface.add(localFontBubble);
+          break;
         }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, alud.a(2131705503), 1).a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-        return;
       }
     }
+    return paramQQAppInterface;
+  }
+  
+  public void a(anuk paramanuk)
+  {
+    paramanuk.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzb
  * JD-Core Version:    0.7.0.1
  */

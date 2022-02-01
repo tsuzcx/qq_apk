@@ -1,6 +1,24 @@
-public abstract interface bajw
+import android.text.TextUtils;
+
+class bajw
+  extends bajy
 {
-  public abstract void a(int paramInt, baky parambaky);
+  bajw(bajv parambajv) {}
+  
+  public void a(boolean paramBoolean, bajz parambajz)
+  {
+    if (TextUtils.equals(bajv.a(this.a), String.valueOf(parambajz.jdField_a_of_type_Long))) {
+      if ((!paramBoolean) || (!parambajz.jdField_a_of_type_Boolean)) {
+        break label49;
+      }
+    }
+    label49:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      bajv.a(this.a, bajv.a(this.a), paramBoolean);
+      return;
+    }
+  }
 }
 
 

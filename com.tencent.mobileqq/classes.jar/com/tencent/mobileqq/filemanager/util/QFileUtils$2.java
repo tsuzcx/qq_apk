@@ -2,22 +2,22 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
 import android.widget.TextView;
-import arsg;
-import arsx;
+import atwb;
+import atwt;
 
 public final class QFileUtils$2
   implements Runnable
 {
-  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, arsg paramarsg) {}
+  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, atwb paramatwb) {}
   
   public void run()
   {
-    arsx.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Arsg);
+    atwt.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Atwb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.2
  * JD-Core Version:    0.7.0.1
  */

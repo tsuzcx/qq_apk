@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajpt
-  extends ampt
+  implements anqi
 {
-  public ajpt(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ajpt(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  
+  public void a(anqi paramanqi) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.p();
+    if (paramBoolean)
+    {
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
+    }
+    this.a.c(this.a.getString(2131690652));
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (FlowCameraActivity2.a(this.a) != null) {
-        FlowCameraActivity2.a(this.a);
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
-  }
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

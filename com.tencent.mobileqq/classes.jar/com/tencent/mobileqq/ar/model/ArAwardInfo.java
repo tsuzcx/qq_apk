@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anfm;
+import aped;
 
 public class ArAwardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new anfm();
+  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new aped();
   public int a;
   public String a;
   public int b;
@@ -51,7 +51,7 @@ public class ArAwardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArAwardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class anor
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class anor
+  implements View.OnClickListener
 {
-  anor(anoq paramanoq, anou paramanou) {}
+  public anor(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_Anou.b.setVisibility(0);
-      this.jdField_a_of_type_Anou.a.setVisibility(0);
-      this.jdField_a_of_type_Anou.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.jdField_a_of_type_Anou.a.setVisibility(8);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anor
  * JD-Core Version:    0.7.0.1
  */

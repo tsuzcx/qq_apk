@@ -1,23 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-class aukc
-  implements DialogInterface.OnClickListener
+public class aukc
+  extends nmf
 {
-  aukc(aujr paramaujr) {}
+  public aukc(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (this.a.g()) {
-      aujr.a(this.a).a(false, null, false);
-    }
-    azqs.b(this.a.a, "CliOper", "", "", aujr.b, aujr.b, 1, 0, "", "", "", "");
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
+    {
+      return;
+      this.a.y();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.h))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
+          }
+          this.a.M();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
+      }
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aufw.e.intValue());
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,38 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class vtu
-  extends vpn
 {
-  public final ErrorMessage a;
-  public final boolean a;
-  public final String b;
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int = -1;
   
-  public vtu(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public static float a()
   {
-    super(new vpm("ERROR_" + paramErrorMessage));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
+    if (jdField_a_of_type_Float < 0.0F) {
+      jdField_a_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().density;
+    }
+    return jdField_a_of_type_Float;
   }
   
-  public vtu(@NonNull String paramString, boolean paramBoolean)
+  public static int a()
   {
-    super(new vpm("LOADING_" + paramString));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
+    return bgtn.a();
   }
   
-  public boolean b()
+  public static int a(float paramFloat)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+    return (int)(vtc.a() * paramFloat + 0.5F);
   }
   
-  public boolean c()
+  public static int b(float paramFloat)
   {
-    return this.b != null;
+    return Math.round(a() * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtu
  * JD-Core Version:    0.7.0.1
  */

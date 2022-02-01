@@ -145,11 +145,11 @@
             {
                 "view_type": "container",
                 "layout_type": "layout_relative",
-                "margin_top": "5",
+                "margin_top": "0.5",
                 "margin_left": "8",
                 "height": {
-                    "type": "absolutely",
-                    "value": "16"
+                    "type": "relative",
+                    "value": "30"
                 },
                 "width": {
                     "type": "match_parent"
@@ -169,6 +169,7 @@
                             {
                                 "view_type": "UILabel",
                                 "view_id": "id_chioceness_label",
+                                "align_parent_center_vertical": "YES",
                                 "margin_right": "6",
                                 "height": {
                                     "type": "absolutely",
@@ -187,6 +188,7 @@
                             {
                                 "view_type": "UIView",
                                 "layout_type": "layout_relative",
+                                "align_parent_center_vertical": "YES",
                                 "view_id": "id_recommend_wrapper",
                                 "visible_depend_on_children": "YES",
                                 "margin_right": "6",
@@ -225,6 +227,7 @@
                             {
                                 "view_type": "UILabel",
                                 "view_id": "id_sub_article_title",
+                                "align_parent_center_vertical": "YES",
                                 "margin_right": "6",
                                 "height": {
                                     "type": "absolutely",
@@ -243,6 +246,7 @@
                             {
                                 "view_type": "UILabel",
                                 "view_id": "id_info_title",
+                                "align_parent_center_vertical": "YES",
                                 "margin_right": "6",
                                 "height": {
                                     "type": "absolutely",
@@ -261,26 +265,7 @@
                         ]
                     },
                     {
-                        "view_type":"UIButton",
-                        "view_id":"id_dislike_button",
-                        "default_visible":"YES",
-                        "align_parent_right":"YES",
-                        "align_parent_center_vertical": "YES",
-                        "margin_right":"1",
-                        "event_type":"cmd_dislike_click",
-                        "height":{
-                            "type":"relative",
-                            "value":"30"
-                        },
-                        "width":{
-                            "type":"relative",
-                            "value":"40"
-                        },
-
-                        "attributes":{
-                            "setImage:":"feeds_dislike"
-
-                        }
+                        "$includeComponet": "componet/RIJ_dislike_button.geojson"
                     }
                 ]
             },
@@ -288,7 +273,7 @@
                 "view_type": "UIView",
                 "view_id": "id_separator",
                 "margin_left": "6",
-                "margin_top": "14",
+                "margin_top": "7",
                 "default_visible": "YES",
                 "height": {
                     "type": "absolutely",

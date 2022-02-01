@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import alpk;
-import alpy;
-import alto;
+import anip;
+import anjh;
+import anmw;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -35,19 +35,26 @@ class ConditionSearchManager$4$1
         }
         if (localCard.strHometownCodes != null)
         {
-          localObject = localCard.strHometownCodes.split("-");
+          String[] arrayOfString = localCard.strHometownCodes.split("-");
           if (QLog.isColorLevel()) {
             QLog.d("ConditionSearch.Manager", 2, "parse hometown codes: " + localCard.strHometownCodes);
           }
-          str = this.a.this$0.a((String[])localObject);
+          str = this.a.this$0.a(arrayOfString);
           localObject = str;
           if (str.equals("不限")) {
             localObject = "";
           }
           localCard.strHometownDesc = ((String)localObject);
+          localObject = this.a.this$0.a(arrayOfString);
+          if ((localObject != null) && (localObject.length == 4))
+          {
+            localCard.strHometownCountry = localObject[0];
+            localCard.strHometownProvince = localObject[1];
+            localCard.strHometownCity = localObject[2];
+          }
         }
-        ((alto)alpy.a(this.a.this$0).getManager(51)).a(localCard);
-        ((alpk)alpy.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
+        ((anmw)anjh.a(this.a.this$0).getManager(51)).a(localCard);
+        ((anip)anjh.a(this.a.this$0).a(2)).notifyUI(43, true, localCard);
       }
       this.a.this$0.d = false;
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
@@ -62,7 +69,7 @@ class ConditionSearchManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4.1
  * JD-Core Version:    0.7.0.1
  */

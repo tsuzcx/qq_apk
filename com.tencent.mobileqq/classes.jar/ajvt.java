@@ -1,11 +1,15 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
-public abstract interface ajvt
+class ajvt
+  extends anjq
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  ajvt(ajvr paramajvr) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    ajvr.a(this.a, paramUpgradeDetailWrapper);
+    this.a.e();
+  }
 }
 
 

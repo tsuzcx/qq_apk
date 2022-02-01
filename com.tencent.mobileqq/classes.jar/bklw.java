@@ -1,6 +1,6 @@
 public abstract interface bklw
 {
-  public abstract int a();
+  public abstract void a();
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afzh;
-import afzt;
+import ahgl;
+import ahgx;
 import android.content.Context;
-import apdz;
+import argw;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,18 +16,18 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$4
   implements Runnable
 {
-  public ReplyTextItemBuilder$4(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, afzt paramafzt, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$4(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ahgx paramahgx, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
     Object localObject4 = null;
     Object localObject2;
     Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof apdz))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof argw))
     {
-      localObject2 = (apdz)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject1 = ((apdz)localObject2).getSourceMsgInfo();
-      ((apdz)localObject2).getHasPulledSourceMsg();
+      localObject2 = (argw)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject1 = ((argw)localObject2).getSourceMsgInfo();
+      ((argw)localObject2).getHasPulledSourceMsg();
     }
     for (;;)
     {
@@ -54,7 +54,7 @@ public final class ReplyTextItemBuilder$4
             if (((MessageRecord)localObject1).isLongMsg())
             {
               StringBuilder localStringBuilder = new StringBuilder();
-              localMessageRecord = afzh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, localStringBuilder);
+              localMessageRecord = ahgl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, localStringBuilder);
               localObject2 = localObject1;
               localObject3 = localObject4;
               if (localMessageRecord != null)
@@ -83,7 +83,7 @@ public final class ReplyTextItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

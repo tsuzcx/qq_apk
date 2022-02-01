@@ -1,39 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
 
-public final class zyf
-  implements Parcelable.Creator<MessageForShortVideo>
+public class zyf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public MessageForDevShortVideo a(Parcel paramParcel)
-  {
-    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
-    localMessageForDevShortVideo.uuid = paramParcel.readString();
-    localMessageForDevShortVideo.md5 = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForDevShortVideo.fileType = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForDevShortVideo.fileSource = paramParcel.readString();
-    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForDevShortVideo;
-  }
+  public zyf(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
   
-  public MessageForDevShortVideo[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new MessageForDevShortVideo[paramInt];
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setState(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zyf
  * JD-Core Version:    0.7.0.1
  */

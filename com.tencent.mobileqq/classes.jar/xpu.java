@@ -1,23 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-
-public final class xpu
-  implements Parcelable.Creator<TroopStoryItemInfo>
+class xpu
+  implements xpp
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
-  {
-    return new TroopStoryItemInfo(paramParcel);
-  }
+  public xpp a;
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  private xpu(xpr paramxpr) {}
+  
+  public boolean a(xpl paramxpl, int paramInt, Object paramObject)
   {
-    return new TroopStoryItemInfo[paramInt];
+    if (xpr.a(this.jdField_a_of_type_Xpr) != null)
+    {
+      if (paramInt != 2) {
+        break label54;
+      }
+      xpr.a(this.jdField_a_of_type_Xpr).c(xpr.a(this.jdField_a_of_type_Xpr));
+    }
+    while (this.jdField_a_of_type_Xpp != null)
+    {
+      return this.jdField_a_of_type_Xpp.a(paramxpl, paramInt, paramObject);
+      label54:
+      if (paramInt == 3) {
+        xpr.a(this.jdField_a_of_type_Xpr).b(xpr.a(this.jdField_a_of_type_Xpr));
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xpu
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import org.libpag.PAGFile;
 
 public class TAVPAGFileManager
 {
-  public static final int CACHE_SIZE = 10;
+  private static final int CACHE_SIZE = 10;
   private static final String TAG = TAVPAGFileManager.class.getSimpleName();
   private static volatile TAVPAGFileManager sInstance = null;
-  private LruCache<String, PAGFile> mapPAGFile = null;
+  private LruCache<String, PAGFile> mapPagFile = null;
   
   private void checkPAGFileMap()
   {
-    if (this.mapPAGFile == null) {
-      this.mapPAGFile = new LruCache(10);
+    if (this.mapPagFile == null) {
+      this.mapPagFile = new LruCache(10);
     }
   }
   
@@ -38,7 +38,7 @@ public class TAVPAGFileManager
     try
     {
       checkPAGFileMap();
-      this.mapPAGFile.evictAll();
+      this.mapPagFile.evictAll();
       System.gc();
       return;
     }
@@ -58,7 +58,7 @@ public class TAVPAGFileManager
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramString))
       {
-        localObject1 = (PAGFile)this.mapPAGFile.get("android_asset://" + paramString);
+        localObject1 = (PAGFile)this.mapPagFile.get("android_asset://" + paramString);
         if (localObject1 == null) {
           break label60;
         }
@@ -71,7 +71,7 @@ public class TAVPAGFileManager
       paramContext = PAGFile.Load(paramContext.getAssets(), paramString);
       localObject1 = paramContext;
     } while (paramContext == null);
-    this.mapPAGFile.put("android_asset://" + paramString, paramContext);
+    this.mapPagFile.put("android_asset://" + paramString, paramContext);
     return paramContext;
   }
   
@@ -96,7 +96,7 @@ public class TAVPAGFileManager
     Object localObject = null;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = (PAGFile)this.mapPAGFile.get(paramString);
+      localObject = (PAGFile)this.mapPagFile.get(paramString);
       if (localObject == null) {
         break label31;
       }
@@ -112,13 +112,13 @@ public class TAVPAGFileManager
       localPAGFile = PAGFile.Load(paramString);
       localObject = localPAGFile;
     } while (localPAGFile == null);
-    this.mapPAGFile.put(paramString, localPAGFile);
+    this.mapPagFile.put(paramString, localPAGFile);
     return localPAGFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVPAGFileManager
  * JD-Core Version:    0.7.0.1
  */

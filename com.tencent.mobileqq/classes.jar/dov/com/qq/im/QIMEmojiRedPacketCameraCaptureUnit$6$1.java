@@ -1,23 +1,23 @@
 package dov.com.qq.im;
 
-import alud;
-import bknm;
-import bknt;
+import anni;
+import bnbz;
+import bncg;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$6$1
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bknt parambknt) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bncg parambncg) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a(), alud.a(2131710184), 1).a();
+    QQToast.a(this.a.a.a(), anni.a(2131708560), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.soso;
 
-import ampu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aopb;
 
 public final class SosoInterface$SosoAttribute
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoAttribute> CREATOR = new ampu();
+  public static final Parcelable.Creator<SosoAttribute> CREATOR = new aopb();
   public String a;
   public boolean a;
   public String b;
@@ -64,7 +64,7 @@ public final class SosoInterface$SosoAttribute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute
  * JD-Core Version:    0.7.0.1
  */

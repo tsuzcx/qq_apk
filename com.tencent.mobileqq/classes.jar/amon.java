@@ -1,25 +1,102 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.lightGame.CmGameSocketConnection;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class amon
-  implements View.OnClickListener
+public class amon
+  extends Handler
 {
-  amon(amol paramamol, ArrayList paramArrayList, QIMNotifyAddFriend.VideoInfo paramVideoInfo) {}
+  private WeakReference<CmGameSocketConnection> a;
   
-  public void onClick(View paramView)
+  public amon(Looper paramLooper, CmGameSocketConnection paramCmGameSocketConnection)
   {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend$VideoInfo.videoVid), 120);
-    paramView.a();
-    vod.a(this.jdField_a_of_type_Amol.a, paramView.a(), null);
+    super(paramLooper);
+    this.a = new WeakReference(paramCmGameSocketConnection);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameConnection.ConnectionHandler", 2, "[handleMessage] msg=" + paramMessage.what);
+    }
+    if (this.a != null) {}
+    for (CmGameSocketConnection localCmGameSocketConnection = (CmGameSocketConnection)this.a.get();; localCmGameSocketConnection = null)
+    {
+      if (localCmGameSocketConnection == null) {
+        QLog.e("CmGameConnection.ConnectionHandler", 1, "[handleMessage] no connection");
+      }
+      boolean bool;
+      label165:
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            bool = CmGameSocketConnection.a(localCmGameSocketConnection);
+            if (QLog.isColorLevel()) {
+              QLog.d("CmGameConnection.ConnectionHandler", 2, new Object[] { "[handleMessage] conn result=", Boolean.valueOf(bool), ", connected=", Boolean.valueOf(localCmGameSocketConnection.a()) });
+            }
+            if (bool) {
+              break label165;
+            }
+          }
+        } while (localCmGameSocketConnection.a());
+        localCmGameSocketConnection.d();
+        return;
+        super.removeMessages(2);
+        paramMessage = super.obtainMessage(2);
+        paramMessage.obj = Boolean.valueOf(true);
+        super.sendMessage(paramMessage);
+        return;
+        bool = CmGameSocketConnection.b(localCmGameSocketConnection);
+        super.removeMessages(2);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] heartbeat, result=", Boolean.valueOf(bool), ", flag=", paramMessage.obj });
+        }
+        if (bool)
+        {
+          if ((paramMessage.obj != null) && (((Boolean)paramMessage.obj).booleanValue())) {
+            localCmGameSocketConnection.c();
+          }
+          if (anca.a > 0L) {}
+          for (l = anca.a;; l = 120000L)
+          {
+            super.sendEmptyMessageDelayed(2, l);
+            return;
+          }
+        }
+        localCmGameSocketConnection.a(true);
+        return;
+        bool = CmGameSocketConnection.c(localCmGameSocketConnection);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] send, result=", Boolean.valueOf(bool) });
+        }
+      } while (!bool);
+      super.removeMessages(2);
+      if (anca.a > 0L) {}
+      for (long l = anca.a;; l = 120000L)
+      {
+        super.sendEmptyMessageDelayed(2, l);
+        if (!CmGameSocketConnection.d(localCmGameSocketConnection)) {
+          break;
+        }
+        super.removeMessages(3);
+        super.sendEmptyMessage(3);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amon
  * JD-Core Version:    0.7.0.1
  */

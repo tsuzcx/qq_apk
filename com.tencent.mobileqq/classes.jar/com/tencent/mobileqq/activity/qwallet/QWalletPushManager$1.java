@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aivm;
+import akmq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QWalletPushManager$1
@@ -10,14 +10,14 @@ public final class QWalletPushManager$1
   
   public void run()
   {
-    if (aivm.a(this.a)) {
-      aivm.a(this.a);
+    if (akmq.a(this.a)) {
+      akmq.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletPushManager.1
  * JD-Core Version:    0.7.0.1
  */

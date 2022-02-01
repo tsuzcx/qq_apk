@@ -1,59 +1,49 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class agbe
-  implements bhuk
 {
-  public agbe(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, agbi paramagbi, bhuf parambhuf) {}
+  public int a;
+  public agbf a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public ArrayList<agbg> b;
+  public int c = -1;
+  public int d = -1;
   
-  public void OnClick(View paramView, int paramInt)
+  public agbe()
   {
-    switch (paramInt)
-    {
-    }
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public agbe(agbe paramagbe)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramagbe.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaUtilArrayList = paramagbe.jdField_a_of_type_JavaUtilArrayList;
+    this.jdField_b_of_type_Int = paramagbe.jdField_b_of_type_Int;
+    this.c = paramagbe.c;
+    this.d = paramagbe.d;
+    this.jdField_a_of_type_Boolean = paramagbe.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_JavaUtilArrayList = paramagbe.jdField_b_of_type_JavaUtilArrayList;
+    this.jdField_a_of_type_Agbf = paramagbe.jdField_a_of_type_Agbf;
+    this.jdField_a_of_type_JavaLangString = paramagbe.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a(int paramInt)
+  {
+    if (bgnk.a(this.jdField_b_of_type_JavaUtilArrayList)) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)) {
-        ShortVideoUtils.c("0X800A7F0", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2)
+      int i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
+      int j = 0;
+      while ((j < paramInt) && (i >= 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agbi);
-      }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null))
-      {
-        if (!ShortVideoRealItemBuilder.d())
-        {
-          ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agbi, true, true);
-        }
-        else if (!ShortVideoRealItemBuilder.a().containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
-        {
-          ShortVideoRealItemBuilder.a().put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-          if (QLog.isColorLevel()) {
-            QLog.i("ShortVideoRealItemBuilder", 2, "messageMap size:" + ShortVideoRealItemBuilder.a().size() + ", [" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + "] added, mEncoding:" + ShortVideoRealItemBuilder.d());
-          }
-        }
-      }
-      else if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
-      {
-        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
-        if (QLog.isColorLevel()) {
-          QLog.i("ShortVideoRealItemBuilder", 2, "onErrorIconClick resumeSending!");
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agbi);
-        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
+        ((agbg)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean = true;
+        j += 1;
+        i -= 1;
       }
     }
   }

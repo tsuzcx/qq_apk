@@ -1,52 +1,32 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qwd
-  implements ayug<aynu>
+  implements pyu
 {
-  private List<qwe> a = new ArrayList();
+  public qwd(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public List<aynu> a(ayuu paramayuu)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      qwe localqwe = (qwe)localIterator.next();
-      if (localqwe.a(paramayuu.a)) {
-        localArrayList.add(localqwe);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = owy.a().c().iterator();
-    while (localIterator.hasNext())
+    if (paramBoolean)
     {
-      qkw localqkw = (qkw)localIterator.next();
-      this.a.add(new qwe(localqkw));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131717086, 0).a();
   }
-  
-  public void a(ayuu paramayuu, ayuh<aynu> paramayuh)
-  {
-    paramayuh.a(a(paramayuu), 1);
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import android.view.View;
 
-public final class voj
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+class voj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void onComplete(String arg1, String paramString2)
+  voj(vog paramvog, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    synchronized ()
-    {
-      paramString2 = voi.a();
-      voi.a().post(new TVKPreloader.1.1(this, paramString2));
-      return;
-    }
+    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewView.setX(paramValueAnimator.x);
+    this.jdField_a_of_type_AndroidViewView.setY(paramValueAnimator.y);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     voj
  * JD-Core Version:    0.7.0.1
  */

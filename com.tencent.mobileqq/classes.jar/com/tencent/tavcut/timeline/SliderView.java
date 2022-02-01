@@ -79,6 +79,7 @@ public class SliderView
   private SliderChangeListener mSliderChangeListener;
   private long mTotalDurationMs;
   private int mTouchSlop;
+  private boolean showIndicator = true;
   
   public SliderView(Context paramContext)
   {
@@ -185,7 +186,7 @@ public class SliderView
       paramCanvas.drawRect(this.mSelectAreaRect.left - (this.mBarWidth >> 1), this.mSelectAreaRect.bottom - this.mFrameStrokeWidth, this.mSelectAreaRect.right + (this.mBarWidth >> 1), this.mSelectAreaRect.bottom, this.mFramePaint);
       return;
     }
-    this.mFramePaint.setColor(Color.parseColor("#66FFFFFF"));
+    this.mFramePaint.setColor(this.frameColor);
     this.mFramePaint.setStrokeWidth(this.mFrameStrokeWidth);
     this.mFramePaint.setStyle(Paint.Style.STROKE);
     this.mSelectAreaRect.set(getPaddingLeft(), this.mPaddingTop, getMeasuredWidth() - getPaddingRight(), getMeasuredHeight() - this.mPaddingBottom);
@@ -196,15 +197,17 @@ public class SliderView
   
   private void drawIndicator(Canvas paramCanvas)
   {
-    float f = this.mSelectAreaRect.left + this.mSelectAreaRect.width() * this.mIndicatorProgress - this.mIndicatorWidth / 2.0F;
+    float f1 = this.mSelectAreaRect.left;
+    float f2 = Util.dp2px(getContext(), 8.0F);
+    f1 = (this.mSelectAreaRect.width() - Util.dp2px(getContext(), 4.0F)) * this.mIndicatorProgress + (f1 - f2);
     if (this.mIndicatorBitmap != null)
     {
       Rect localRect1 = new Rect(0, 0, this.mIndicatorBitmap.getWidth(), this.mIndicatorBitmap.getHeight());
-      Rect localRect2 = new Rect((int)f, 0, (int)(f + this.mIndicatorWidth), getMeasuredHeight());
+      Rect localRect2 = new Rect((int)f1, 0, (int)(f1 + this.mIndicatorWidth), getMeasuredHeight());
       paramCanvas.drawBitmap(this.mIndicatorBitmap, localRect1, localRect2, this.mIndicatorPaint);
       return;
     }
-    paramCanvas.drawRect(f, 0.0F, f + this.mIndicatorWidth, getMeasuredHeight(), this.mIndicatorPaint);
+    paramCanvas.drawRect(f1, 0.0F, f1 + this.mIndicatorWidth, getMeasuredHeight(), this.mIndicatorPaint);
   }
   
   private void init()
@@ -215,8 +218,8 @@ public class SliderView
   
   private void initConfig()
   {
-    this.mPaddingTop = ((int)Util.dp2px(getContext(), 5.0F));
-    this.mPaddingBottom = ((int)Util.dp2px(getContext(), 5.0F));
+    this.mPaddingTop = ((int)Util.dp2px(getContext(), 12.5F));
+    this.mPaddingBottom = ((int)Util.dp2px(getContext(), 11.5F));
     this.mBarWidth = ((int)Util.dp2px(getContext(), 17.0F));
     this.mFrameStrokeWidth = ((int)Util.dp2px(getContext(), 1.0F));
     this.mFrameRadius = ((int)Util.dp2px(getContext(), 4.0F));
@@ -574,7 +577,9 @@ public class SliderView
     drawFrame(paramCanvas);
     drawDuration(paramCanvas);
     paramCanvas.restore();
-    drawIndicator(paramCanvas);
+    if (this.showIndicator) {
+      drawIndicator(paramCanvas);
+    }
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -720,7 +725,6 @@ public class SliderView
       return;
     }
     this.mIndicatorProgress = paramFloat;
-    Logger.d("SliderView", "setIndicatorProgress: indicatorProgress is " + paramFloat);
     invalidate();
   }
   
@@ -756,6 +760,24 @@ public class SliderView
     this.mMinSelectAreaWidth = paramInt;
   }
   
+  public void setSelectDuration(Long paramLong)
+  {
+    if (paramLong == null) {
+      return;
+    }
+    this.mDuration = translateDuration(paramLong.longValue());
+    if ((paramLong.equals(Long.valueOf(this.mMaxSelectDurationMs))) && ((this.mLeftBarMoved) || (this.mRightBarMoved)) && (this.mTotalDurationMs != this.mMaxSelectDurationMs) && (!TextUtils.isEmpty(this.mMaxDurationTips))) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        this.mDuration = this.mMaxDurationTips;
+      }
+      invalidate();
+      return;
+    }
+  }
+  
+  @Deprecated
   public void setSelectDuration(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -776,6 +798,11 @@ public class SliderView
   public void setShowDuration(boolean paramBoolean)
   {
     this.mShowDuration = paramBoolean;
+  }
+  
+  public void setShowIndicator(boolean paramBoolean)
+  {
+    this.showIndicator = paramBoolean;
   }
   
   public void setSliderBarMode(boolean paramBoolean)
@@ -807,7 +834,7 @@ public class SliderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.SliderView
  * JD-Core Version:    0.7.0.1
  */

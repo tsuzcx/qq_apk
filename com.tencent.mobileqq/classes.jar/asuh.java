@@ -1,43 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
 public class asuh
-  extends Handler
+  implements bkkk
 {
-  public asuh(HotPicPageView paramHotPicPageView) {}
+  public asuh(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramInt == this.a.jdField_a_of_type_Asti.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
     }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Asun == null) || (this.a.jdField_a_of_type_Asun.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof asuq)));
-    paramMessage = (asuq)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
-      return;
-    }
-    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 

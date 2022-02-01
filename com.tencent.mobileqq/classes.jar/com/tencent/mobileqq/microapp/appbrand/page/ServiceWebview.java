@@ -3,9 +3,8 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 import android.content.Context;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
-import com.tencent.mobileqq.microapp.apkg.f;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.a.a;
-import com.tencent.mobileqq.microapp.b.a;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,13 +26,13 @@ public class ServiceWebview
     removeJavascriptInterface("WeixinJSCore");
   }
   
-  public void initService(f paramf, a.a parama)
+  public void initService$cfb2ece(c paramc, a.a parama)
   {
     initJSGlobalConfig();
     if (QLog.isColorLevel()) {
       QLog.i("PageWebview111", 2, "---start getWAServiceJSStr----");
     }
-    evaluteJs(paramf.g(), new ServiceWebview.1(this, parama, paramf));
+    evaluteJs(paramc.f(), new ServiceWebview.1(this, parama, paramc));
   }
   
   @JavascriptInterface
@@ -57,10 +56,10 @@ public class ServiceWebview
         do
         {
           return;
-        } while (this.apkgInfo == null);
-        paramString = this.apkgInfo.d(paramString);
+        } while (this.apkgInfo$5475ea27 == null);
+        paramString = this.apkgInfo$5475ea27.d(paramString);
       } while ((TextUtils.isEmpty(paramString)) || ((this.appServiceJsLoadFlagMap.get(paramString) != null) && (((Boolean)this.appServiceJsLoadFlagMap.get(paramString)).booleanValue())));
-      str = this.apkgInfo.f(paramString);
+      str = this.apkgInfo$5475ea27.f(paramString);
     } while (TextUtils.isEmpty(str));
     evaluteJs(str, new ServiceWebview.2(this, paramString));
   }
@@ -70,13 +69,13 @@ public class ServiceWebview
   {
     QLog.d("AppBrandServiceEventInterface", 2, "publishHandler|service: " + paramString1 + " |str2: " + paramString2 + " |str3:" + paramString3);
     if (this.appBrandEventInterface != null) {
-      this.appBrandEventInterface.onServiceEvent(paramString1, paramString2, a.g(paramString3));
+      this.appBrandEventInterface.onServiceEvent(paramString1, paramString2, c.o(paramString3));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview
  * JD-Core Version:    0.7.0.1
  */

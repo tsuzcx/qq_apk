@@ -1,154 +1,111 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class adzn
-  extends amdg
+  extends anvp
 {
-  public adzn(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public adzn(Conversation paramConversation) {}
   
-  protected void b(boolean paramBoolean, bade parambade)
+  protected void a(boolean paramBoolean, bdei parambdei)
+  {
+    Object localObject2;
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
+      if (parambdei == null)
+      {
+        localObject1 = null;
+        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
+      }
+    }
+    else
+    {
+      if ((paramBoolean) && (parambdei != null)) {
+        break label113;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
+        if (!paramBoolean) {
+          break label107;
+        }
+      }
+    }
+    label107:
+    for (parambdei = "data=null";; parambdei = "isSucc=false")
+    {
+      QLog.d("SUB_ACCOUNT", 4, parambdei);
+      return;
+      localObject1 = parambdei.c;
+      break;
+    }
+    label113:
+    if (parambdei.jdField_a_of_type_Int == 1008)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
+      }
+      bddy.a(this.a.a, 0);
+    }
+    if (parambdei.a())
+    {
+      bddy.a(this.a.a, parambdei.a(), 2);
+      this.a.a.c = true;
+    }
+    if (parambdei.b())
+    {
+      localObject1 = parambdei.b();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          bddy.c(this.a.a, (String)localObject2);
+        }
+      }
+    }
+    parambdei.a();
+    this.a.a(0L);
+    Conversation.m(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, bdei parambdei)
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() isSucc=" + paramBoolean);
-      if (parambade != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() mainAccount=" + parambade.jdField_b_of_type_JavaLangString + " subAccount=" + parambade.c + " errType=" + parambade.jdField_a_of_type_Int + " errMsg=" + parambade.jdField_a_of_type_JavaLangString);
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambdei != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + parambdei.b + " subAccount=" + parambdei.c + " errType=" + parambdei.jdField_a_of_type_Int + " errMsg=" + parambdei.jdField_a_of_type_JavaLangString);
       }
     }
-    this.a.e();
-    Object localObject2;
-    if (paramBoolean)
+    if ((paramBoolean) && (parambdei != null) && (parambdei.c())) {
+      bddy.a(this.a.a, parambdei.c(), 1);
+    }
+    this.a.a(0L);
+  }
+  
+  protected void c(boolean paramBoolean, bdei parambdei)
+  {
+    if (QLog.isColorLevel())
     {
-      this.a.c(this.a.getString(2131720400));
-      bact.a(this.a.app);
-      this.a.getActivity().setTitle("");
-      this.a.finish();
-      if ((QLog.isColorLevel()) && (parambade != null))
-      {
-        localObject2 = new StringBuilder().append("onBindSubAccount:");
-        if (!paramBoolean) {
-          break label873;
-        }
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
+      if (parambdei != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + parambdei.b + " subAccount=" + parambdei.c + " errType=" + parambdei.jdField_a_of_type_Int + " errMsg=" + parambdei.jdField_a_of_type_JavaLangString);
       }
     }
-    label873:
-    for (Object localObject1 = "..success";; localObject1 = "...failed..")
-    {
-      QLog.d("SUB_ACCOUNT", 2, (String)localObject1 + " ...errorMsg = " + parambade.jdField_a_of_type_JavaLangString + "...errorType = " + parambade.jdField_a_of_type_Int);
-      do
-      {
-        return;
-      } while (parambade == null);
-      switch (parambade.jdField_a_of_type_Int)
-      {
-      default: 
-        localObject2 = this.a.getString(2131720389);
-        localObject1 = localObject2;
-        if (parambade != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambade.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        break;
-      case 1002: 
-        bacu.a(this.a.app, this.a);
-        break;
-      case 1003: 
-        this.a.b(this.a.getString(2131720390));
-        break;
-      case 1004: 
-        switch (parambade.jdField_b_of_type_Int)
-        {
-        default: 
-          localObject2 = parambade.jdField_a_of_type_JavaLangString;
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onBindSubAccount:bind error happen but msg is null shit, ");
-            }
-            localObject1 = this.a.getString(2131720389);
-          }
-          this.a.b((String)localObject1);
-          break;
-        case 1200: 
-        case 1214: 
-        case 1215: 
-          localObject1 = this.a.getString(2131720440);
-          localObject2 = this.a.getString(2131720392);
-          this.a.a((String)localObject1, (String)localObject2, new adzo(this, parambade));
-          break;
-        case 1218: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131719363);
-          this.a.b((String)localObject1);
-          break;
-        case 1232: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131720393);
-          this.a.b((String)localObject1);
-          break;
-        case 1233: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131720383);
-          this.a.b((String)localObject1);
-          break;
-        case 1240: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131720396);
-          this.a.b((String)localObject1);
-          break;
-        case 1241: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131720382);
-          this.a.b((String)localObject1);
-          break;
-        case 1242: 
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131720398);
-          this.a.b((String)localObject1);
-        }
-        break;
-      case 1011: 
-        localObject2 = this.a.getString(2131720389);
-        localObject1 = localObject2;
-        if (parambade != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambade.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambade.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        localObject1 = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject1).putExtra("subuin", parambade.c);
-        ((Intent)localObject1).putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-        this.a.startActivity((Intent)localObject1);
-        break;
-      }
+    if (parambdei == null) {}
+    while ((!paramBoolean) || (parambdei.c == null) || (parambdei.c.length() <= 4)) {
+      return;
     }
+    this.a.a.a().c(parambdei.c, 7000);
+    bddy.c(this.a.a, parambdei.c);
+    this.a.a(0L);
   }
 }
 

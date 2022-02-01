@@ -1,37 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
 
-public class beqv
-  implements View.OnTouchListener
+public final class beqv
+  implements Parcelable.Creator<TroopBarMyBar>
 {
-  public beqv(IphoneTreeView paramIphoneTreeView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public TroopBarMyBar a(Parcel paramParcel)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      bool = false;
-    }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarMyBar[] a(int paramInt)
+  {
+    return null;
   }
 }
 

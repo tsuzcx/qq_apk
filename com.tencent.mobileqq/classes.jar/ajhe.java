@@ -1,30 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.SimpleTextView;
 
 class ajhe
-  implements View.OnClickListener
+  extends bkov
 {
-  ajhe(ajgb paramajgb) {}
-  
-  public void onClick(View paramView)
+  ajhe(ajhd paramajhd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    ajgb.a(this.a).app.getPreferences();
-    amqe.a().a();
-    if (amqe.a().a() == 4)
-    {
-      amqe.a().a(ajgb.a(this.a));
-      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amqd.b(), amqe.b(), amqe.a(), "1");
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
+  {
+    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
+    if ((parambkou instanceof SimpleTextView)) {
+      parambkou.setTag(-10, paramObject);
     }
-    for (;;)
-    {
-      this.a.a(-1, null);
-      return;
-      UpgradeDetailActivity.a(ajgb.a(this.a), amqe.a().a(), true, true, true);
-      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amqd.b(), amqe.b(), amqe.a(), "1");
-    }
+    return parambkou;
+  }
+  
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  {
+    this.a.a(paramInt, paramArrayOfbkou);
   }
 }
 

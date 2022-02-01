@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aikh
-  implements DialogInterface.OnClickListener
+  extends aiju
 {
-  public aikh(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public JSONObject a()
   {
-    if (!this.a.a()) {
-      ((bdug)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bdrg.a, -1);
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("uin", this.a);
+      localJSONObject2.put("touin", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("scene", this.c);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.d);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
-    azqs.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
+    }
+    return localJSONObject1;
   }
 }
 

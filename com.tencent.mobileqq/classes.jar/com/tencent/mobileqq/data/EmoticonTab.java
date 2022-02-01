@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class EmoticonTab
-  extends awge
+  extends Entity
 {
   public boolean aioHave;
-  @awhs
+  @unique
   public String epId;
   public boolean kandianHave;
 }

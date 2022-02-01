@@ -11,8 +11,10 @@ import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import androidx.annotation.Keep;
 
 @TargetApi(17)
+@Keep
 class SingleViewPresentation
   extends Presentation
 {
@@ -28,7 +30,7 @@ class SingleViewPresentation
   
   public SingleViewPresentation(Context paramContext, Display paramDisplay, AccessibilityEventsDelegate paramAccessibilityEventsDelegate, SingleViewPresentation.PresentationState paramPresentationState, View.OnFocusChangeListener paramOnFocusChangeListener, boolean paramBoolean)
   {
-    super(paramContext, paramDisplay);
+    super(new SingleViewPresentation.ImmContext(paramContext), paramDisplay);
     this.accessibilityEventsDelegate = paramAccessibilityEventsDelegate;
     this.viewFactory = null;
     this.state = paramPresentationState;
@@ -39,7 +41,7 @@ class SingleViewPresentation
   
   public SingleViewPresentation(Context paramContext, Display paramDisplay, PlatformViewFactory paramPlatformViewFactory, AccessibilityEventsDelegate paramAccessibilityEventsDelegate, int paramInt, Object paramObject, View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    super(paramContext, paramDisplay);
+    super(new SingleViewPresentation.ImmContext(paramContext), paramDisplay);
     this.viewFactory = paramPlatformViewFactory;
     this.accessibilityEventsDelegate = paramAccessibilityEventsDelegate;
     this.viewId = paramInt;
@@ -101,7 +103,7 @@ class SingleViewPresentation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation
  * JD-Core Version:    0.7.0.1
  */

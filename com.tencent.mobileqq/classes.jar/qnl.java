@@ -1,65 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-
-public final class qnl
+public class qnl
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public TopicInfo a()
+  public String toString()
   {
-    return new TopicInfo(this, null);
-  }
-  
-  public qnl a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public qnl a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qnl a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public qnl b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public qnl b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qnl c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public qnl d(String paramString)
-  {
-    this.d = paramString;
-    return this;
+    return "InnerMsg{innerUniqId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.jdField_b_of_type_JavaLangString + '\'' + ", algorithID=" + this.jdField_a_of_type_Long + ", strategyID=" + this.jdField_a_of_type_Int + ", jumpSrcType=" + this.jdField_b_of_type_Int + ", pushContext='" + this.jdField_c_of_type_JavaLangString + '\'' + ", templateID=" + this.jdField_c_of_type_Int + ", articleContentType=" + this.d + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnl
  * JD-Core Version:    0.7.0.1
  */

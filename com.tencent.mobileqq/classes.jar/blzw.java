@@ -1,25 +1,18 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiOperationInfo;
 
-public class blzw
-  implements bdoh<Float>
+public final class blzw
+  implements Parcelable.Creator<WeishiOperationInfo>
 {
-  public blzw(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
-  
-  @TargetApi(11)
-  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public WeishiOperationInfo a(Parcel paramParcel)
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
+    return new WeishiOperationInfo(paramParcel);
+  }
+  
+  public WeishiOperationInfo[] a(int paramInt)
+  {
+    return new WeishiOperationInfo[paramInt];
   }
 }
 

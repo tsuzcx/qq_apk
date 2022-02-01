@@ -19,9 +19,8 @@ public final class SocketResponsePackage
   static
   {
     cache_header.put("", "");
-    byte[] arrayOfByte = (byte[])new byte[1];
-    cache_body = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
+    cache_body = new byte[1];
+    cache_body[0] = 0;
   }
   
   public SocketResponsePackage() {}
@@ -34,27 +33,28 @@ public final class SocketResponsePackage
     this.msg = paramString;
   }
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     this.statusCode = parama.a(this.statusCode, 0, true);
     this.header = ((Map)parama.a(cache_header, 1, true));
-    this.body = ((byte[])parama.c(2, true));
-    this.msg = parama.b(3, false);
+    this.body = parama.a(cache_body, 2, true);
+    this.msg = parama.a(3, false);
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.statusCode, 0);
     paramb.a(this.header, 1);
     paramb.a(this.body, 2);
-    if (this.msg != null) {
-      paramb.a(this.msg, 3);
+    String str = this.msg;
+    if (str != null) {
+      paramb.a(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.common.SocketResponsePackage
  * JD-Core Version:    0.7.0.1
  */

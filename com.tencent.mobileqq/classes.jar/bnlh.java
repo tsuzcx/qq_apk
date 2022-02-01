@@ -1,17 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bnlh
-  implements ValueAnimator.AnimatorUpdateListener
+class bnlh
+  implements Observer<bnuq>
 {
-  public bnlh(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bnlh(bnlc parambnlc) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable bnuq parambnuq)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    if (parambnuq == null) {
+      return;
+    }
+    parambnuq = parambnuq.b;
+    bnlc.a(this.a, parambnuq);
+    if (parambnuq == AECaptureMode.GIF)
+    {
+      bnlc.a(this.a);
+      bnlc.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      bnlc.a(this.a, parambnuq);
+      bnlc.b(this.a, parambnuq);
+      return;
+      if (bnlc.a(this.a)) {
+        bnlc.a(this.a).setVisibility(8);
+      }
+    }
   }
 }
 

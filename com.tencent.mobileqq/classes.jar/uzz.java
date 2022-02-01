@@ -1,32 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uzz
-  extends SimpleObserver<List<vlp>>
+  implements View.OnClickListener
 {
-  uzz(uzw paramuzw, vaa paramvaa, uyg paramuyg) {}
+  uzz(uzy paramuzy) {}
   
-  public void a(List<vlp> paramList)
+  public void onClick(View paramView)
   {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, Collections.emptyList());
+    if (uzy.a(this.a)) {
+      uzy.a(this.a);
     }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, paramError);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzz
  * JD-Core Version:    0.7.0.1
  */

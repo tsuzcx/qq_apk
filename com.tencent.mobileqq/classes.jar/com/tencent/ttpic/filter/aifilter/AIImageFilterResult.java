@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class AIImageFilterResult
 {
   public HashMap<String, String> adjustParam;
+  public String fid;
   public float glowStrength;
   public String lutPath;
   public float lutStrengt;
@@ -73,7 +74,7 @@ public class AIImageFilterResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.AIImageFilterResult
  * JD-Core Version:    0.7.0.1
  */

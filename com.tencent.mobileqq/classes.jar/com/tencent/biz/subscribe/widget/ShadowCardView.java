@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.R.styleable;
-import wxe;
+import yqp;
 
 public class ShadowCardView
   extends FrameLayout
@@ -46,8 +46,8 @@ public class ShadowCardView
   {
     try
     {
-      int k = getResources().getColor(2131167194);
-      int m = getResources().getColor(2131166864);
+      int k = getResources().getColor(2131167279);
+      int m = getResources().getColor(2131166946);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.shadowCardView);
       this.a = paramContext.getDimensionPixelSize(8, 0);
       this.b = paramContext.getColor(5, m);
@@ -69,7 +69,7 @@ public class ShadowCardView
     {
       for (;;)
       {
-        wxe.e("ShadowCardView", "init ShadowCardView catch exception");
+        yqp.e("ShadowCardView", "init ShadowCardView catch exception");
       }
     }
   }
@@ -98,7 +98,7 @@ public class ShadowCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.ShadowCardView
  * JD-Core Version:    0.7.0.1
  */

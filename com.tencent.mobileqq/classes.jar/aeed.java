@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
 
-class aeed
-  implements DialogInterface.OnClickListener
+public class aeed
+  implements arvb
 {
-  aeed(aeec paramaeec) {}
+  public aeed(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
   {
-    this.a.a.finish();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

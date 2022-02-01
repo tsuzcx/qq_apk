@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aznf
+class aznf
+  extends aniz
 {
-  public abstract void a(int paramInt, SoConfig.SoInfo paramSoInfo);
+  aznf(azne paramazne) {}
+  
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountLevelComponent", 2, String.format("onGetAllowSeeLoginDays isSuccess=%s isAllow=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    }
+    if ((paramBoolean1) && (TextUtils.equals(paramString, ((azfe)azne.a(this.a)).a.a)))
+    {
+      azne.a(this.a, paramBoolean2);
+      this.a.a();
+    }
+  }
 }
 
 

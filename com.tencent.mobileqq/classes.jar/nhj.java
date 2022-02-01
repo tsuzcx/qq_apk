@@ -1,30 +1,29 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class nhj
+class nhj
+  extends anxg
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  public ImageView a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  public ImageView b;
-  TextView b;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
-  ImageView e;
+  nhj(nhh paramnhh) {}
   
-  public nhj(ngw paramngw) {}
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (paramLong != this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    this.a.jdField_a_of_type_Long = 0L;
+    nhh.a(this.a, false);
+    if (paramBoolean)
+    {
+      nhh.a(this.a, paramTroopInfo);
+      return;
+    }
+    nhh.a(this.a, 2131717746, 1);
+    this.a.jdField_a_of_type_Nhk.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhj
  * JD-Core Version:    0.7.0.1
  */

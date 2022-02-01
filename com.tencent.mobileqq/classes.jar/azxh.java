@@ -1,18 +1,36 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class azxh
+  implements anil
 {
-  public Bundle a;
-  public View a;
-  public LinearLayout a;
-  public boolean a;
-  public View b;
-  public LinearLayout b;
-  public View c;
-  public View d;
-  public View e;
+  public final String a = "QuickLoginObserver";
+  
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
+      return;
+    }
+    QLog.e("QuickLoginObserver", 2, "onUpdateSetPCVerify error");
+  }
+  
+  private boolean a(Object paramObject)
+  {
+    return (paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 1);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
+  }
 }
 
 

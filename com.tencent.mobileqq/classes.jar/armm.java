@@ -1,27 +1,27 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class armm
-  implements auca
+  extends Handler
 {
-  armm(armi paramarmi) {}
-  
-  public void a(int paramInt)
+  armm(armk paramarmk, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     }
     do
     {
-      do
-      {
-        return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (armi.a(this.a));
-      armi.b(this.a);
       return;
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!armi.a(this.a));
-    armi.a(this.a);
+    } while (armk.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
   }
 }
 

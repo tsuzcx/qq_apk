@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
+import com.tencent.widget.ListView;
 
 public class bbkl
-  implements QQPermissionCallback
+  extends bbip<bbmy, bbvg>
 {
-  public bbkl(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bbkl(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, aobu paramaobu)
   {
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+    super(paramListView, paramaobu);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected bbps<bbmy, bbvg> a(int paramInt)
   {
-    this.a.f();
+    return new bbpp(FTSEntitySearchFragment.a(this.a));
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bbvc(paramViewGroup, 2131562846);
   }
 }
 

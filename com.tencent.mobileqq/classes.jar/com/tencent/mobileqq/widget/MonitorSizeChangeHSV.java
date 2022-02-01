@@ -7,12 +7,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
-import beqz;
+import bhyh;
 
 public class MonitorSizeChangeHSV
   extends HorizontalScrollView
 {
-  private beqz a;
+  private bhyh a;
   
   public MonitorSizeChangeHSV(Context paramContext)
   {
@@ -75,9 +75,9 @@ public class MonitorSizeChangeHSV
     }
   }
   
-  public void setOnSizeChangeCallback(beqz parambeqz)
+  public void setOnSizeChangeCallback(bhyh parambhyh)
   {
-    this.a = parambeqz;
+    this.a = parambhyh;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -89,7 +89,7 @@ public class MonitorSizeChangeHSV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MonitorSizeChangeHSV
  * JD-Core Version:    0.7.0.1
  */

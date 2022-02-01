@@ -27,7 +27,7 @@ public final class CommonStrategy
     this.cloudParas = paramMap;
   }
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     if (cache_moduleList == null)
     {
@@ -37,7 +37,7 @@ public final class CommonStrategy
     }
     this.moduleList = ((ArrayList)parama.a(cache_moduleList, 0, true));
     this.queryInterval = parama.a(this.queryInterval, 1, true);
-    this.url = parama.b(2, true);
+    this.url = parama.a(2, true);
     if (cache_cloudParas == null)
     {
       cache_cloudParas = new HashMap();
@@ -46,19 +46,20 @@ public final class CommonStrategy
     this.cloudParas = ((Map)parama.a(cache_cloudParas, 3, false));
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.moduleList, 0);
     paramb.a(this.queryInterval, 1);
     paramb.a(this.url, 2);
-    if (this.cloudParas != null) {
-      paramb.a(this.cloudParas, 3);
+    Map localMap = this.cloudParas;
+    if (localMap != null) {
+      paramb.a(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.strategy.CommonStrategy
  * JD-Core Version:    0.7.0.1
  */

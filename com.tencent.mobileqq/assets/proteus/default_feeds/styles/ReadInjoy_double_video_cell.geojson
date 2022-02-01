@@ -13,6 +13,13 @@
       "type":"relative",
       "value":"375"
     },
+    "data_attributes":{
+        "setLocalInfo:": {
+            "video_report_info": "$video_report_info",
+            "click_area": "6",
+            "account_expose_card": "$account_expose_card"
+        }
+    },
     "subviews":[
       {
         "view_type":"container",
@@ -79,6 +86,12 @@
                         },
                         "attributes":{
                           "setImageWithURLString:lineup:":["$left_cover_image_url","0"]
+                        },
+                        "data_attributes":{
+                            "setLocalInfo:": {
+                                "click_area": "7",
+                                "card_pos": "0"
+                            }
                         }
                       },
                       {
@@ -92,7 +105,14 @@
                           "type":"match_parent"
                         },
                         "attributes":{
-                          "setGifUrl:": "$left_cover_gif"
+                          "setGifUrl:": "$left_cover_gif",
+                          "setGifCoverUrl:": "$left_cover_url"
+                        },
+                        "data_attributes":{
+                            "setLocalInfo:": {
+                                "click_area": "7",
+                                "card_pos": "0"
+                            }
                         }
                       },
                       {
@@ -457,6 +477,12 @@
             "attributes": {
               "setAttatchInfo:": "$article_jump_url_1"
             },
+            "data_attributes":{
+                "setLocalInfo:": {
+                    "click_area": "7",
+                    "card_pos": "1"
+                }
+            },
             "subviews":[
               {
                 "view_type":"container",
@@ -493,6 +519,12 @@
                         },
                         "attributes":{
                           "setImageWithURLString:lineup:":["$right_cover_image_url","0"]
+                        },
+                        "data_attributes":{
+                            "setLocalInfo:": {
+                                "click_area": "7",
+                                "card_pos": "1"
+                            }
                         }
                       },
                       {
@@ -507,6 +539,12 @@
                         },
                         "attributes":{
                           "setGifUrl:": "$right_cover_gif"
+                        },
+                        "data_attributes":{
+                            "setLocalInfo:": {
+                                "click_area": "7",
+                                "card_pos": "1"
+                            }
                         }
                       },
                       {

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.honor;
 
-import aoks;
-import bcgc;
-import bcgl;
+import aqlk;
+import bfgp;
+import bfgz;
 
 public class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(bcgc parambcgc) {}
+  public TroopHonorManager$1(bfgp parambfgp) {}
   
   public void run()
   {
-    bcgl localbcgl = (bcgl)aoks.a().a(544);
-    this.this$0.a(localbcgl, true);
+    bfgz localbfgz = (bfgz)aqlk.a().a(544);
+    this.this$0.a(localbfgz, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorManager.1
  * JD-Core Version:    0.7.0.1
  */

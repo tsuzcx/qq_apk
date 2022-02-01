@@ -1,74 +1,90 @@
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-public class ause
+public abstract class ause
+  extends ausb
 {
-  public static final String a = "qqmusic://qq.com/ui/myTab?p=%7B%22tab%22%3A%22home%22%7D&ADTAG=YIQITING&source=" + URLEncoder.encode("https://y.qq.com/m/index.html?ADTAG=YIQITING");
+  protected Context a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected TextView b;
+  protected TextView c;
   
-  public static void a(Context paramContext, String paramString)
+  public ause(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    long l = 0L;
+    super(paramContext, paramView, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379852));
+    this.b = ((TextView)paramView.findViewById(2131379738));
+    this.c = ((TextView)paramView.findViewById(2131379501));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368397));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369575));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369545));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
+      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
+        break label130;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
     for (;;)
     {
-      try
+      this.itemView.setOnClickListener(new ausf(this, paramFeedsItemData));
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label130:
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
       {
-        localObject = new URL(paramString);
+        this.c.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      catch (MalformedURLException localMalformedURLException)
+      for (;;)
       {
-        Object localObject;
-        int i;
-        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
+        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
+          break label287;
+        }
+        this.b.setVisibility(8);
+        break;
+        this.c.setText(paramFeedsItemData.operateText + "");
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840937);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840937);
+        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
-      }
+      label287:
+      this.b.setText(paramFeedsItemData.label + "");
+      this.b.setVisibility(0);
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694947));
-    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
-    araj.a().b(paramString, (Bundle)localObject);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return a(paramContext, "com.tencent.qqmusic");
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext.getPackageInfo(paramString, 1);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ause
  * JD-Core Version:    0.7.0.1
  */

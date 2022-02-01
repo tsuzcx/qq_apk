@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class LoginActivity$3
   implements Runnable
 {
-  LoginActivity$3(LoginActivity paramLoginActivity, String paramString) {}
+  LoginActivity$3(LoginActivity paramLoginActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.a);
-    }
-    this.this$0.finish();
+    LoginActivity.a(this.this$0.app, this.this$0.app.getAccount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginActivity.3
  * JD-Core Version:    0.7.0.1
  */

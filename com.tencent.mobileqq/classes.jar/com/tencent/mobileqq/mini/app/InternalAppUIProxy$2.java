@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.mini.app;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class InternalAppUIProxy$2
   implements Runnable
@@ -14,21 +15,29 @@ class InternalAppUIProxy$2
   
   public void run()
   {
-    String str = (String)this.val$msg.obj;
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (str != null) {}
-    for (;;)
+    try
     {
-      QQToast.a(localBaseApplication, 1, str, 1).a();
-      InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.2.1(this), 1000L);
+      String str = (String)this.val$msg.obj;
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      if (str != null) {}
+      for (;;)
+      {
+        QQToast.a(localBaseApplication, 1, str, 1).a();
+        InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.2.1(this), 1000L);
+        return;
+        str = anni.a(2131704599);
+      }
       return;
-      str = alud.a(2131706198);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-start_AppUIProxy_Internal", 1, "MSG_WHAT_APKG_FAIL exception!", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.InternalAppUIProxy.2
  * JD-Core Version:    0.7.0.1
  */

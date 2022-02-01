@@ -1,34 +1,24 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
-
 public class bcub
-  extends RecyclerView.OnScrollListener
+  extends bcua
 {
-  public bcub(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
+  public long c = 0L;
+  boolean e = false;
+  public int j = 80;
+  public int k = 70;
+  public int l = 5;
+  public int m;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bcub(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    TroopRecommendFriendFragment.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
-        TroopRecommendFriendFragment.a(this.a);
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
+    this.l = (paramInt1 % 1000);
+    this.k = (paramInt1 / 1000 % 1000);
+    this.j = (paramInt1 / 1000 / 1000 % 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcub
  * JD-Core Version:    0.7.0.1
  */

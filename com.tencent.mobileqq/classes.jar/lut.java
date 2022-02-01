@@ -1,83 +1,109 @@
-import android.content.Context;
-import android.view.ViewConfiguration;
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Shader.TileMode;
 
 public class lut
+  extends ltv
 {
-  private int jdField_a_of_type_Int;
-  private luq jdField_a_of_type_Luq;
-  private boolean jdField_a_of_type_Boolean;
+  public LinearGradient a;
+  public int b;
+  public Rect b;
+  public int c;
+  public int d;
+  public int e;
   
-  public lut(Context paramContext)
+  public lut()
   {
-    this.jdField_a_of_type_Luq = new luq(paramContext);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  public int a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_Luq.a();
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = this.jdField_a_of_type_Luq.a();
-    if (this.jdField_a_of_type_Luq.a()) {}
-    for (int i = j;; i = this.jdField_a_of_type_Luq.b())
+    paramLong -= this.jdField_a_of_type_Long;
+    int j = 0;
+    int i;
+    if ((paramLong > 0L) && (paramLong < 200L))
     {
-      paramInt2 = lux.a(i + paramInt1, paramInt2, paramInt3);
-      if (paramInt2 != j) {
-        this.jdField_a_of_type_Luq.a(j, 0, paramInt2 - j, 0, 0);
+      i = (int)(255L * paramLong / 200L);
+      a(i);
+      if (paramLong >= 200L) {
+        break label164;
       }
-      return i + paramInt1 - paramInt2;
+      this.d = ((int)(255L * paramLong / 200L));
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Luq.a(true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = a();
-    luq localluq = this.jdField_a_of_type_Luq;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 0)
+    for (;;)
     {
-      localluq.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
+      i = (int)(this.c - paramLong * this.c / 750L);
+      a(0, i, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Int + i);
       return;
+      if ((paramLong >= 200L) && (paramLong <= 700L))
+      {
+        i = 255;
+        break;
+      }
+      i = j;
+      if (paramLong <= 700L) {
+        break;
+      }
+      i = j;
+      if (paramLong >= 750L) {
+        break;
+      }
+      i = (int)(255L * (paramLong - 750L) / -50L);
+      break;
+      label164:
+      if ((paramLong >= 200L) && (paramLong <= 650L)) {
+        this.d = 255;
+      } else if ((paramLong > 650L) && (paramLong < 750L)) {
+        this.d = ((int)(255L * (paramLong - 750L) / -100L));
+      }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(Canvas paramCanvas, Paint paramPaint)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramPaint.setAlpha(this.d);
+    paramPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
+    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
+    paramPaint.setAlpha(255);
+    paramPaint.setShader(null);
+    super.a(paramCanvas, paramPaint);
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_Luq.a();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_Luq.b();
+    super.b();
+    this.jdField_a_of_type_AndroidGraphicsLinearGradient = null;
+    this.jdField_b_of_type_AndroidGraphicsRect = null;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Luq.a(paramInt, 0, 0, 0, 0);
-    this.jdField_a_of_type_Luq.a();
+    if (this.e != paramInt)
+    {
+      this.e = paramInt;
+      c();
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 454 / 750);
+    this.c = (paramInt1 * -190 / 750);
+    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2 / 2);
+    c();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsRect.bottom, this.e, 0, Shader.TileMode.CLAMP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lut
  * JD-Core Version:    0.7.0.1
  */

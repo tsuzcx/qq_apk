@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.graphics.Bitmap;
 
-public class almk
-  implements DialogInterface.OnClickListener
+public abstract interface almk
 {
-  public almk(ApolloPanel paramApolloPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.n();
-  }
+  public abstract Bitmap a(int paramInt1, int paramInt2);
 }
 
 

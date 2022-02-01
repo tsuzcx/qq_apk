@@ -1,41 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import java.util.Comparator;
 
-public class acvf
-  implements View.OnClickListener
+final class acvf
+  implements Comparator<acvd>
 {
-  public acvf(EditActivity paramEditActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(acvd paramacvd1, acvd paramacvd2)
   {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramacvd1 == null) && (paramacvd2 == null)) {}
+    do
     {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
+      return 0;
+      if ((paramacvd1 == null) && (paramacvd2 != null)) {
+        return 1;
       }
-      this.a.e();
-      EditActivity.a(this.a).setImageResource(2130837979);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
+      if ((paramacvd1 != null) && (paramacvd2 == null)) {
+        return -1;
       }
-      return;
-    }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
-    }
-    EditActivity.a(this.a).setImageResource(2130847428);
-    this.a.a();
+      if (paramacvd1.a() > paramacvd2.a()) {
+        return -1;
+      }
+    } while (paramacvd1.a() >= paramacvd2.a());
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acvf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,12 @@
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+
 public abstract interface amut
 {
-  public abstract void g();
+  public abstract void a(int paramInt);
+  
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam);
+  
+  public abstract boolean a();
 }
 
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import bjix;
+import blxf;
 
 class QZoneMsgFragment$QZoneMsgUIObserver$1$1
   implements Runnable
@@ -14,7 +14,7 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.QZoneMsgUIObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

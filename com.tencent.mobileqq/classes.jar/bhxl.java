@@ -1,14 +1,24 @@
-public abstract interface bhxl
+import android.widget.BaseAdapter;
+
+public abstract class bhxl
+  extends BaseAdapter
 {
-  public abstract void onSelectBegin(int paramInt);
+  protected int a = 0;
   
-  public abstract void onSelectChanged(int paramInt1, int paramInt2);
+  public abstract int a();
   
-  public abstract void onSelectEnd();
+  public abstract int a(int paramInt);
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public abstract int b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxl
  * JD-Core Version:    0.7.0.1
  */

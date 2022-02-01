@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
-
 class akhw
-  implements View.OnClickListener
+  implements bigw
 {
-  private WeakReference<akhs> a;
+  akhw(akhu paramakhu, Runnable paramRunnable) {}
   
-  public akhw(akhs paramakhs)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramakhs);
-  }
-  
-  public void onClick(View paramView)
-  {
-    akhs localakhs = (akhs)this.a.get();
-    if (localakhs != null) {
-      localakhs.onClick(paramView);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhw
  * JD-Core Version:    0.7.0.1
  */

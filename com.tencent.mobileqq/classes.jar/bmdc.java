@@ -1,35 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-class bmdc
+public abstract interface bmdc
 {
-  final Map<bmdk, List<bmdd>> a;
-  final Map<bmdd, bmdk> b;
+  public abstract void a(bmdb parambmdb);
   
-  bmdc(Map<bmdd, bmdk> paramMap)
-  {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      bmdk localbmdk = (bmdk)localEntry.getValue();
-      List localList = (List)this.a.get(localbmdk);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localbmdk, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
-    }
-  }
+  public abstract void b(bmdb parambmdb);
+  
+  public abstract void c(bmdb parambmdb);
+  
+  public abstract void d(bmdb parambmdb);
+  
+  public abstract void e(bmdb parambmdb);
 }
 
 

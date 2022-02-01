@@ -1,16 +1,20 @@
-class arjm
-  implements aris
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arjm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  arjm(arjk paramarjk) {}
+  public arjm(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a(true, arqo.a(this.a.a.a()), this.a.c(), new arjn(this));
-  }
-  
-  public void b()
-  {
-    arjk.b(this.a);
+    if (!paramBoolean) {
+      arki.a().a();
+    }
+    arki.a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

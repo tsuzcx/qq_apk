@@ -1,24 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahhs
-  implements View.OnClickListener
+class ahhs
+  implements DialogInterface.OnClickListener
 {
-  public ahhs(SearchBaseActivity paramSearchBaseActivity) {}
+  ahhs(ahhm paramahhm, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
-    {
-      this.a.setResult(0);
-      this.a.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+    this.jdField_a_of_type_Ahhm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    bcec.jdField_a_of_type_Boolean = true;
   }
 }
 

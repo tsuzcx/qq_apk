@@ -1,46 +1,50 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-
-public class vgf
-  extends urt
+public class vgf<F, S>
 {
-  public String a;
+  public F a;
+  public S b;
   
-  public String a()
+  public vgf(F paramF, S paramS)
   {
-    return uqn.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+    this.a = paramF;
+    this.b = paramS;
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public vgf<F, S> a(F paramF, S paramS)
   {
-    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
-    try
+    this.a = paramF;
+    this.b = paramS;
+    return this;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    for (;;)
     {
-      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new vgg(localRspGroupStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      return true;
+      if (!(paramObject instanceof vgf)) {
+        return false;
       }
+      try
+      {
+        paramObject = (vgf)paramObject;
+        if ((!this.a.equals(paramObject.a)) || (!this.b.equals(paramObject.b))) {
+          return false;
+        }
+      }
+      catch (ClassCastException paramObject) {}
     }
+    return false;
   }
   
-  protected byte[] a()
+  public int hashCode()
   {
-    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGroupStoryFeedIdList.toByteArray();
+    return (this.a.hashCode() + 527) * 31 + this.b.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,40 @@
-import android.os.AsyncTask;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable.URLDrawableListener2;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
 
-public class bbgi
-  extends AsyncTask<Void, Void, String>
+final class bbgi
+  implements URLDrawable.URLDrawableListener2
 {
-  public bbgi(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  bbgi(SoftReference paramSoftReference, URLDrawable paramURLDrawable, bbgk parambbgk) {}
   
-  protected String a(Void... paramVarArgs)
-  {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bdhj.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695351) + " " + paramVarArgs;
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131695350);
-  }
+  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
   
-  protected void a(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
+      localAbstractGifImage.reset();
+      localAbstractGifImage.setStrongGIFPlayOnceListener(new bbgj(this, localAbstractGifImage));
+      paramURLDrawable.setVisibility(0);
+      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    } while (this.jdField_a_of_type_Bbgk == null);
+    this.jdField_a_of_type_Bbgk.a();
   }
 }
 

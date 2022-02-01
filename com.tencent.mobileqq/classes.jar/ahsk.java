@@ -1,13 +1,33 @@
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.io.File;
 
 class ahsk
-  implements ahud
+  implements bkhw
 {
-  ahsk(ahsi paramahsi) {}
+  ahsk(ahsd paramahsd, bkho parambkho, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Ahsd.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

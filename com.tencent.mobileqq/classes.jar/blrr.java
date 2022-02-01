@@ -1,87 +1,75 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.util.ArrayMap;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.control.QIMAsyncManager.1;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public abstract class blrr
-  extends blqj
+public class blrr
 {
-  private volatile boolean a;
-  
-  public void a()
+  public static void a(Activity paramActivity)
   {
-    boolean bool1 = true;
-    for (;;)
-    {
-      try
-      {
-        boolean bool2 = this.a;
-        if (bool2) {
-          return;
-        }
-        if (Looper.myLooper() == Looper.getMainLooper())
-        {
-          if (blro.a(bool1)) {
-            continue;
-          }
-          QIMAsyncManager.1 local1 = new QIMAsyncManager.1(this);
-          if (!bool1) {
-            break label94;
-          }
-          ThreadManager.excute(local1, 64, null, false);
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("QIMAsyncManager", 4, new Object[] { "onInit, async:", Boolean.valueOf(bool1) });
-          continue;
-        }
-        bool1 = false;
+    if (Build.MANUFACTURER.contains("samsung")) {
+      if (QLog.isColorLevel()) {
+        QLog.i("LeakUtil", 2, "removeLeakOn_SpenGestureManager samsung device");
       }
-      finally {}
-      continue;
-      label94:
-      localObject.run();
+    }
+    try
+    {
+      paramActivity = Class.forName("com.samsung.android.smartclip.SpenGestureManager").getDeclaredField("mContext");
+      paramActivity.setAccessible(true);
+      paramActivity.set(null, null);
+      return;
+    }
+    catch (ClassNotFoundException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    catch (IllegalAccessException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    catch (NoSuchFieldException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
     }
   }
   
-  public void b() {}
-  
-  public abstract void c();
-  
-  /* Error */
-  public void i()
+  public static void b(Activity paramActivity)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 14	blrr:a	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokevirtual 71	blrr:c	()V
-    //   18: aload_0
-    //   19: iconst_1
-    //   20: putfield 14	blrr:a	Z
-    //   23: goto -12 -> 11
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	blrr
-    //   6	2	1	bool	boolean
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	26	finally
-    //   14	23	26	finally
+    if ((Build.VERSION.SDK_INT < 19) || (Build.VERSION.SDK_INT >= 28) || (paramActivity == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object localObject2 = Class.forName("android.app.ActivityThread");
+        Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(localObject2, new Object[0]);
+        if (localObject1 != null)
+        {
+          localObject2 = ((Class)localObject2).getDeclaredField("mOnPauseListeners");
+          ((Field)localObject2).setAccessible(true);
+          localObject1 = ((Field)localObject2).get(localObject1);
+          if ((localObject1 instanceof ArrayMap))
+          {
+            ((ArrayMap)localObject1).remove(paramActivity);
+            return;
+          }
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.d("LeakUtil", 4, "fixOnPauseListenersLeak", paramActivity);
+      }
+    }
   }
 }
 

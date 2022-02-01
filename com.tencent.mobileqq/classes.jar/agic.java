@@ -1,33 +1,13 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
-class agic
-  implements bhuk
+public class agic
+  implements agih
 {
-  agic(aghx paramaghx, bhuf parambhuf, AIOImageData paramAIOImageData, File paramFile) {}
+  public agic(ColorPicker paramColorPicker, agif paramagif) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-    }
-    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Aghx.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bhuf.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Agif.a);
   }
 }
 

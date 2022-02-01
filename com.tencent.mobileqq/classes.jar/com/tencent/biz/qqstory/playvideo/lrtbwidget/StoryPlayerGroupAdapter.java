@@ -12,69 +12,69 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import vpl;
-import vpm;
-import vpn;
-import vss;
-import vtj;
-import vtn;
-import vts;
-import vtt;
-import vtu;
-import vvh;
-import wxe;
-import xqq;
+import xiw;
+import xix;
+import xiy;
+import xmd;
+import xmu;
+import xmy;
+import xnd;
+import xne;
+import xnf;
+import xos;
+import yqp;
+import zkb;
 
 public class StoryPlayerGroupAdapter
   extends PagerAdapter
 {
-  private ArrayList<vpn> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<xiy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public Map<Integer, StoryPlayerGroupHolder> a;
-  private vss jdField_a_of_type_Vss;
-  private vtj jdField_a_of_type_Vtj;
-  private vvh jdField_a_of_type_Vvh;
-  private vss b = new vtn(this);
+  private xmd jdField_a_of_type_Xmd;
+  private xmu jdField_a_of_type_Xmu;
+  private xos jdField_a_of_type_Xos;
+  private xmd b = new xmy(this);
   
-  public StoryPlayerGroupAdapter(vtj paramvtj)
+  public StoryPlayerGroupAdapter(xmu paramxmu)
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Vtj = paramvtj;
+    this.jdField_a_of_type_Xmu = paramxmu;
   }
   
   private void a(int paramInt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
-    vpn localvpn = (vpn)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    xiy localxiy = (xiy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     ArrayList localArrayList = new ArrayList();
-    if (localvpn.c()) {
-      if ((localvpn instanceof vpl)) {
-        localArrayList.add(vtt.a("LoadingGroup-" + localvpn.jdField_a_of_type_Vpm.a, null, "Fake-Loading"));
+    if (localxiy.c()) {
+      if ((localxiy instanceof xiw)) {
+        localArrayList.add(xne.a("LoadingGroup-" + localxiy.jdField_a_of_type_Xix.a, null, "Fake-Loading"));
       }
     }
     for (;;)
     {
-      paramStoryPlayerGroupHolder.a(paramInt, localvpn, localArrayList);
+      paramStoryPlayerGroupHolder.a(paramInt, localxiy, localArrayList);
       return;
-      localArrayList.add(vtt.a("LoadingGroup-" + localvpn.jdField_a_of_type_Vpm.a, null, ((vtu)localvpn).b));
+      localArrayList.add(xne.a("LoadingGroup-" + localxiy.jdField_a_of_type_Xix.a, null, ((xnf)localxiy).b));
       continue;
-      if (localvpn.b())
+      if (localxiy.b())
       {
-        if ((localvpn instanceof vpl)) {
-          localArrayList.add(vtt.a("ErrorGroup-" + localvpn.jdField_a_of_type_Vpm.a, null, ((vpl)localvpn).a));
+        if ((localxiy instanceof xiw)) {
+          localArrayList.add(xne.a("ErrorGroup-" + localxiy.jdField_a_of_type_Xix.a, null, ((xiw)localxiy).a));
         } else {
-          localArrayList.add(vtt.a("ErrorGroup-" + localvpn.jdField_a_of_type_Vpm.a, null, ((vtu)localvpn).a));
+          localArrayList.add(xne.a("ErrorGroup-" + localxiy.jdField_a_of_type_Xix.a, null, ((xnf)localxiy).a));
         }
       }
-      else if (localvpn.jdField_a_of_type_JavaUtilList.isEmpty())
+      else if (localxiy.jdField_a_of_type_JavaUtilList.isEmpty())
       {
-        localArrayList.add(vtt.a("EmptyGroup-" + localvpn.jdField_a_of_type_Vpm.a, null, new ErrorMessage(97000000, "no vid")));
+        localArrayList.add(xne.a("EmptyGroup-" + localxiy.jdField_a_of_type_Xix.a, null, new ErrorMessage(97000000, "no vid")));
       }
       else
       {
-        Iterator localIterator = localvpn.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = localxiy.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          localArrayList.add(new vtt(str, (String)localvpn.jdField_a_of_type_JavaUtilMap.get(str)));
+          localArrayList.add(new xne(str, (String)localxiy.jdField_a_of_type_JavaUtilMap.get(str)));
         }
       }
     }
@@ -84,15 +84,15 @@ public class StoryPlayerGroupAdapter
   @Nullable
   public StoryPlayerGroupHolder a(int paramInt)
   {
-    return this.jdField_a_of_type_Vtj.a(paramInt);
+    return this.jdField_a_of_type_Xmu.a(paramInt);
   }
   
-  public List<vpn> a()
+  public List<xiy> a()
   {
     return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void a(@NonNull ArrayList<vpn> paramArrayList)
+  public void a(@NonNull ArrayList<xiy> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -100,19 +100,19 @@ public class StoryPlayerGroupAdapter
     notifyDataSetChanged();
   }
   
-  public void a(vss paramvss, vvh paramvvh)
+  public void a(xmd paramxmd, xos paramxos)
   {
-    this.jdField_a_of_type_Vss = paramvss;
-    this.jdField_a_of_type_Vvh = paramvvh;
+    this.jdField_a_of_type_Xmd = paramxmd;
+    this.jdField_a_of_type_Xos = paramxos;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)paramObject;
-    wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "destroyItem, verticalPosition = %d, holderPosition = %d, object = %s", Integer.valueOf(paramInt), Integer.valueOf(localStoryPlayerGroupHolder.jdField_a_of_type_Int), paramObject);
+    yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "destroyItem, verticalPosition = %d, holderPosition = %d, object = %s", Integer.valueOf(paramInt), Integer.valueOf(localStoryPlayerGroupHolder.jdField_a_of_type_Int), paramObject);
     localStoryPlayerGroupHolder.c();
     paramViewGroup.removeView(localStoryPlayerGroupHolder.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Vtj.a().a(localStoryPlayerGroupHolder);
+    this.jdField_a_of_type_Xmu.a().a(localStoryPlayerGroupHolder);
   }
   
   public int getCount()
@@ -126,46 +126,46 @@ public class StoryPlayerGroupAdapter
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (((vpn)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Vpm.equals(paramObject.jdField_a_of_type_Vpm))
+      if (((xiy)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Xix.equals(paramObject.jdField_a_of_type_Xix))
       {
         if (i == paramObject.jdField_a_of_type_Int)
         {
-          wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_UNCHANGED", Integer.valueOf(paramObject.jdField_a_of_type_Int));
+          yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_UNCHANGED", Integer.valueOf(paramObject.jdField_a_of_type_Int));
           this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramObject);
           a(i, paramObject);
           return -1;
         }
-        wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_%d", Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(i));
+        yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_%d", Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(i));
         this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramObject);
         a(i, paramObject);
         return i;
       }
       i += 1;
     }
-    wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, vertical position = %d , groupId = %s => POSITION_NONE", Integer.valueOf(paramObject.jdField_a_of_type_Int), paramObject.jdField_a_of_type_Vpm.a);
+    yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, vertical position = %d , groupId = %s => POSITION_NONE", Integer.valueOf(paramObject.jdField_a_of_type_Int), paramObject.jdField_a_of_type_Xix.a);
     return -2;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d", Integer.valueOf(paramInt));
-    if ((vpn)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)
+    yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d", Integer.valueOf(paramInt));
+    if ((xiy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)
     {
-      xqq.a(false, "can not get group info by position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+      zkb.a(false, "can not get group info by position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
       return null;
     }
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder2 = (StoryPlayerGroupHolder)this.jdField_a_of_type_Vtj.a().a(StoryPlayerGroupHolder.class);
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder2 = (StoryPlayerGroupHolder)this.jdField_a_of_type_Xmu.a().a(StoryPlayerGroupHolder.class);
     StoryPlayerGroupHolder localStoryPlayerGroupHolder1 = localStoryPlayerGroupHolder2;
     if (localStoryPlayerGroupHolder2 == null)
     {
-      localStoryPlayerGroupHolder1 = new StoryPlayerGroupHolder(paramViewGroup, this.jdField_a_of_type_Vtj);
+      localStoryPlayerGroupHolder1 = new StoryPlayerGroupHolder(paramViewGroup, this.jdField_a_of_type_Xmu);
       localStoryPlayerGroupHolder1.a(localStoryPlayerGroupHolder1);
-      localStoryPlayerGroupHolder1.a(this.jdField_a_of_type_Vtj);
+      localStoryPlayerGroupHolder1.a(this.jdField_a_of_type_Xmu);
       localStoryPlayerGroupHolder1.b();
-      localStoryPlayerGroupHolder1.a(this.b, this.jdField_a_of_type_Vvh);
+      localStoryPlayerGroupHolder1.a(this.b, this.jdField_a_of_type_Xos);
     }
     paramViewGroup.addView(localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
-    wxe.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d, addView = %s", Integer.valueOf(paramInt), localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
+    yqp.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d, addView = %s", Integer.valueOf(paramInt), localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localStoryPlayerGroupHolder1);
     a(paramInt, localStoryPlayerGroupHolder1);
     return localStoryPlayerGroupHolder1;
@@ -187,7 +187,7 @@ public class StoryPlayerGroupAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter
  * JD-Core Version:    0.7.0.1
  */

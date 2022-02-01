@@ -1,10 +1,34 @@
-public abstract interface axoi
+class axoi
+  implements xrx
 {
-  public abstract void a();
+  axoi(axof paramaxof, axnw paramaxnw) {}
+  
+  public boolean a_(xrt paramxrt, int paramInt1, int paramInt2)
+  {
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Axnw.a(this.jdField_a_of_type_Axof, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axoi
  * JD-Core Version:    0.7.0.1
  */

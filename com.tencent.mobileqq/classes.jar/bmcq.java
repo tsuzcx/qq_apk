@@ -1,19 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.IInterface;
 
-final class bmcq
-  implements EIPCResultCallback
+public abstract interface bmcq
+  extends IInterface
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult != null)
-    {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

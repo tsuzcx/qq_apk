@@ -1,21 +1,19 @@
-import android.support.annotation.IntRange;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aews
+public class aews
+  extends anqd
 {
-  @IntRange(from=0L, to=3L)
-  public abstract int a();
+  public aews(QQLSActivity paramQQLSActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(aewt paramaewt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    }
+    QQLSActivity.a(this.a);
+  }
 }
 
 

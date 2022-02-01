@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.mini.launch;
 
+import anni;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class AppBrandLaunchManager$10
   implements Runnable
@@ -9,18 +12,13 @@ class AppBrandLaunchManager$10
   
   public void run()
   {
-    AppBrandLaunchManager localAppBrandLaunchManager = this.this$0;
-    if (!this.val$appConfig.isEngineTypeMiniGame()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAppBrandLaunchManager.preloadExtraMiniApp(bool);
-      return;
-    }
+    QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
+    QQToast.a(AppBrandLaunchManager.access$100(this.this$0), anni.a(2131699408), 2000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.10
  * JD-Core Version:    0.7.0.1
  */

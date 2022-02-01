@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
 
 public class akyb
-  implements TVK_SDKMgr.InstallListener
+  implements bkhy
 {
-  public akyb(CmGameAppInterface paramCmGameAppInterface) {}
+  public akyb(AppletsFolderManager.2 param2) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onDismiss()
   {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
+    akxz.a(this.a.this$0, false);
   }
 }
 

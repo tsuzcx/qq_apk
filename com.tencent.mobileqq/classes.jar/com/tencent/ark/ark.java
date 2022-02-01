@@ -53,12 +53,12 @@ public class ark
   
   public static final long arkGetARMv7LibCRC32()
   {
-    return 3509894839L;
+    return 674159483L;
   }
   
   public static final int arkGetARMv7LibSize()
   {
-    return 3490340;
+    return 3498536;
   }
   
   public static final native ark.Container arkGetContainer(long paramLong);
@@ -77,7 +77,7 @@ public class ark
   
   public static final int arkGetPlatformBuildNumber()
   {
-    return 268128999;
+    return 145405536;
   }
   
   public static final int arkGetPlatformVersion()
@@ -117,12 +117,12 @@ public class ark
   
   public static final long getArkSOArm64CRC()
   {
-    return 2139321494L;
+    return 2576444729L;
   }
   
   public static final int getArkSOArm64Size()
   {
-    return 5374592;
+    return 5391296;
   }
   
   public static final long getPngArm64CRC()
@@ -137,7 +137,7 @@ public class ark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ark.ark
  * JD-Core Version:    0.7.0.1
  */

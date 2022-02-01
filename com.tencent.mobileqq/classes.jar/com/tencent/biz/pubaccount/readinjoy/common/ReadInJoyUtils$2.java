@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import ors;
+import pha;
 
 public final class ReadInJoyUtils$2
   implements Runnable

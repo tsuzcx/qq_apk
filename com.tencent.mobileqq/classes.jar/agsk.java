@@ -1,91 +1,44 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agsk
-  extends alwx
+  implements View.OnClickListener
 {
-  agsk(agse paramagse) {}
+  agsk(agsj paramagsj) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    Object localObject;
+    int i;
+    if ((paramView instanceof ConfessNewsBgView))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
+      {
+        localObject = (MessageForConfessNews)localObject;
+        if (((MessageForConfessNews)localObject).istroop != 1) {
+          break label80;
+        }
+        i = 1;
+        if (i == 0) {
+          break label85;
+        }
+        aqkl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label80:
+      i = 0;
+      break;
+      label85:
+      aqjq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2);
-    }
-    this.a.e(196608);
-  }
-  
-  public void a(List<MessageRecord> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = (MessageRecord)paramList.get(0);
-      if ((!paramList.isSendFromLocal()) && (!(paramList instanceof MessageForUniteGrayTip)) && (paramList.frienduin != null) && (paramList.frienduin.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!((alto)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-      {
-        agse.c(this.a);
-        agse.b(this.a);
-        this.a.br();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onSendResult, isSucc:" + paramBoolean + " uin:" + paramString + " uniseq:" + paramLong);
-    }
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-      this.a.u = true;
-      this.a.a(262144, null, paramLong);
-    } while ((!paramBoolean) || (((alto)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-    agse.a(this.a);
-    agse.b(this.a);
-    this.a.br();
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.e(65536);
   }
 }
 

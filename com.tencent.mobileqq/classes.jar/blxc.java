@@ -1,170 +1,54 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.CaptureComboText.1;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.model.MQLikeCell;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQMsgInteractData;
 
 public class blxc
-  extends blrs
+  extends BroadcastReceiver
 {
-  private float jdField_a_of_type_Float;
-  private blxj jdField_a_of_type_Blxj = new blxd(this);
-  private DynamicTextConfigManager.DynamicTextConfigBean jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean;
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private float b;
-  private float c;
-  private volatile float jdField_d_of_type_Float;
-  private volatile int jdField_d_of_type_Int = 2;
+  public blxc(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public blxc(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)blqr.a(7));
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText id is: " + paramString);
-    }
-  }
-  
-  public float a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText getProgress, progress is: " + this.jdField_d_of_type_Float);
-    }
-    return this.jdField_d_of_type_Float * 0.01F;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
+    int j;
+    int k;
+    boolean bool;
     int i;
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      i = 2;
+    if (paramIntent.getAction() == "com.qzone.sync_comment_like")
+    {
+      j = paramIntent.getIntExtra("sync_comment_commentnum", 0);
+      paramContext = paramIntent.getStringExtra("sync_comment_likekey");
+      k = paramIntent.getIntExtra("sync_comment_likenum", 0);
+      bool = paramIntent.getBooleanExtra("sync_comment_haslike", false);
+      if ((this.a.jdField_a_of_type_Blxa != null) && (!TextUtils.isEmpty(paramContext))) {
+        i = 0;
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText getState, state is: " + i + " id is: " + this.jdField_a_of_type_JavaLangString);
-      }
-      return i;
-      if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean)) && (this.jdField_d_of_type_Int == 2)) {
-        i = 3;
-      } else {
-        i = this.jdField_d_of_type_Int;
-      }
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboDText", 2, "apply ComboText");
-    }
-    if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) || (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))) {}
-    DoodleLayout localDoodleLayout;
-    DynamicTextItem localDynamicTextItem;
-    do
-    {
-      do
+      if (i < this.a.jdField_a_of_type_Blxa.getCount())
       {
-        do
+        paramIntent = (MQMsg)this.a.jdField_a_of_type_Blxa.getItem(i);
+        if ((paramIntent.msgInteractData != null) && (paramIntent.msgInteractData.likeCell != null) && (paramIntent.msgInteractData.likeCell.likeKey.equals(paramContext)))
         {
-          return 0;
-        } while (paramActivity == null);
-        localDoodleLayout = blzf.a().a(paramInt);
-      } while ((localDoodleLayout == null) || (localDoodleLayout.a() == null));
-      localDoodleLayout.a().b(4);
-      localDynamicTextItem = new blxf().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), this.jdField_a_of_type_JavaUtilList);
-    } while (localDynamicTextItem == null);
-    float f = bnsm.a * this.c / localDynamicTextItem.a();
-    bmqy localbmqy = new bmqy(this.jdField_a_of_type_Float * bnsm.a, this.b * bnsm.a, f, 0.0F, 0.0F, 0.0F, localDynamicTextItem.a(), localDynamicTextItem.b());
-    if (localDoodleLayout.a().a(localbmqy, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, localDoodleLayout.d()) != null)
-    {
-      localDynamicTextItem.a(true);
-      localDoodleLayout.a().b(localDynamicTextItem);
-      localDoodleLayout.a().k();
-      return 0;
-    }
-    QQToast.a(paramActivity, paramActivity.getString(2131698628), 0).a();
-    ThreadManager.getUIHandler().post(new CaptureComboText.1(this, localDoodleLayout));
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (paramActivity != null)
-    {
-      paramActivity = blzf.a().a(paramInt);
-      if ((paramActivity != null) && (paramActivity.a() != null))
+          paramIntent.msgInteractData.likeCell.totalLike = k;
+          paramIntent.msgInteractData.totalComment = j;
+          paramIntent.msgInteractData.likeCell.liked = bool;
+          ((blxg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).a(paramIntent);
+        }
+      }
+      else
       {
-        paramActivity.a().b(4);
-        paramActivity.a().f();
-        paramActivity.a().k();
+        this.a.jdField_a_of_type_Blxa.notifyDataSetChanged();
+        return;
       }
+      i += 1;
     }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText download, state is: " + this.jdField_d_of_type_Int);
-    }
-    if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3)) {
-      return this.jdField_d_of_type_Int;
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText download, bean is null.");
-      }
-      this.jdField_d_of_type_Int = 2;
-      return 2;
-    }
-    a();
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "startDownload dynamicText is usable.");
-      }
-      b();
-      this.jdField_d_of_type_Int = 3;
-      return 2;
-    }
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, this.jdField_a_of_type_Blxj);
-    this.jdField_d_of_type_Int = 1;
-    return 1;
-  }
-  
-  public String toString()
-  {
-    return "Text@" + Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()) + "@" + hashCode();
   }
 }
 

@@ -1,38 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aeyu
-  implements INetInfoHandler
+  extends ayes
 {
-  public aeyu(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyu(QQSettingMe paramQQSettingMe) {}
   
-  public void onNetMobile2None()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    if (this.a.c) {
+      this.a.i();
     }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
-    }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 

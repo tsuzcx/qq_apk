@@ -1,20 +1,34 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.ImageView;
 
 class qjj
-  extends qip
+  implements Animator.AnimatorListener
 {
-  qjj(qja paramqja, AppInterface paramAppInterface) {}
+  qjj(qji paramqji) {}
   
-  public Drawable a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
+    qji.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    qji.a(this.a).setSelected(this.a.isSelected());
+    qji.a(this.a).start();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    qji.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjj
  * JD-Core Version:    0.7.0.1
  */

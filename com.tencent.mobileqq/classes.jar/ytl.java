@@ -1,27 +1,26 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.graphics.Bitmap;
 
-public class ytl
-  implements TextUtils.EllipsizeCallback
+class ytl
+  extends ywd
 {
-  public ytl(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public ytl(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-      return;
-    }
-    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
-    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public ytl(ywd paramywd, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramywd.jdField_c_of_type_Int, paramywd.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ytl
  * JD-Core Version:    0.7.0.1
  */

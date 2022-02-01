@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class adav
-  implements bhtv
+public final class adav
+  implements Parcelable.Creator<FromService>
 {
-  public adav(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public FromService a(Parcel paramParcel)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public FromService[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_Int = paramInt;
-    }
-    switch (paramInt)
-    {
-    default: 
-      abvl.a().a("vas_profilecard_list");
-    }
-    for (;;)
-    {
-      if (FriendProfileCardActivity.a(this.a) != null) {
-        FriendProfileCardActivity.a(this.a).a(paramInt);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      abvl.a().a("vas_profilecard_list", false);
-    }
+    return new FromService[paramInt];
   }
 }
 

@@ -1,21 +1,55 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import java.lang.ref.WeakReference;
 
 class balr
-  implements TextView.OnEditorActionListener
+  extends Handler
 {
-  balr(balm parambalm) {}
+  final WeakReference<balo> a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public balr(Looper paramLooper, balo parambalo)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    super(paramLooper);
+    this.a = new WeakReference(parambalo);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    baln.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
+    balo localbalo = (balo)this.a.get();
+    if (localbalo == null) {}
+    do
     {
-      bhsj.b(this.a.a);
-      this.a.d();
-      return true;
-    }
-    return false;
+      return;
+      if (paramMessage.getData() != null) {
+        paramMessage.getData().getInt("msg_sub_cmd");
+      }
+      switch (paramMessage.what)
+      {
+      case 1001: 
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1000: 
+        baln.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
+        return;
+      case 1002: 
+        baln.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
+        paramMessage = paramMessage.getData();
+      }
+    } while (paramMessage == null);
+    paramMessage = paramMessage.getString("vidoe_record_uniseq");
+    localbalo.a().a(paramMessage);
+    return;
+    AIOLongCaptureCtrl.a(paramMessage.getData());
+    return;
+    AIOLongCaptureCtrl.b(paramMessage.getData());
+    return;
+    paramMessage = paramMessage.getData();
+    ahsa.a().a(paramMessage);
   }
 }
 

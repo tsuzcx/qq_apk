@@ -12,12 +12,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ayfo;
-import bcpg;
+import bbdw;
+import bftx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 public class RobotChatTipLayout
@@ -26,7 +27,7 @@ public class RobotChatTipLayout
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<ayfo> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bbdw> jdField_a_of_type_JavaLangRefWeakReference;
   
   public RobotChatTipLayout(Context paramContext)
   {
@@ -39,13 +40,13 @@ public class RobotChatTipLayout
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
   
-  public void a(ayfo paramayfo)
+  public void a(bbdw parambbdw)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayfo);
-    LayoutInflater.from(getContext()).inflate(2131561354, this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbdw);
+    LayoutInflater.from(getContext()).inflate(2131561587, this);
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379033));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379942));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369081));
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     }
@@ -58,7 +59,7 @@ public class RobotChatTipLayout
       setVisibility(8);
       return;
       setBackgroundColor(-5066062);
-      findViewById(2131368764).setBackgroundColor(-10197916);
+      findViewById(2131369108).setBackgroundColor(-10197916);
     }
   }
   
@@ -66,24 +67,25 @@ public class RobotChatTipLayout
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramView = (ayfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramView != null) {
-        paramView.a(this);
+      bbdw localbbdw = (bbdw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbbdw != null) {
+        localbbdw.a(this);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setRobotName(String paramString)
   {
     String str1 = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str1 = getResources().getString(2131719298);
+      str1 = getResources().getString(2131717387);
     }
     paramString = BaseApplicationImpl.getApplication().getRuntime();
     String str2;
     if ((paramString != null) && ((paramString instanceof QQAppInterface)))
     {
-      str2 = ((bcpg)((QQAppInterface)paramString).getManager(203)).a();
+      str2 = ((bftx)((QQAppInterface)paramString).getManager(203)).a();
       paramString = str2;
       if (TextUtils.isEmpty(str2)) {}
     }
@@ -97,7 +99,7 @@ public class RobotChatTipLayout
           paramString = str2.replace("[name]", "%1$s");
           str2 = paramString;
           if (TextUtils.isEmpty(paramString)) {
-            str2 = getResources().getString(2131719293);
+            str2 = getResources().getString(2131717385);
           }
           paramString = String.format(str2, new Object[] { str1 });
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(paramString))) {
@@ -123,7 +125,7 @@ public class RobotChatTipLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatTipLayout
  * JD-Core Version:    0.7.0.1
  */

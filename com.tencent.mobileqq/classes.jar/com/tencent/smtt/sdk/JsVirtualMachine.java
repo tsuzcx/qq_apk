@@ -10,9 +10,9 @@ import java.util.Iterator;
 
 public final class JsVirtualMachine
 {
-  private final Context mContext;
-  private final HashSet<WeakReference<JsVirtualMachine.X5JsContextFallback>> mJsContexts = new HashSet();
-  private final IX5JsVirtualMachine mVirtualMachine;
+  private final Context a;
+  private final IX5JsVirtualMachine b;
+  private final HashSet<WeakReference<JsVirtualMachine.a>> c = new HashSet();
   
   public JsVirtualMachine(Context paramContext)
   {
@@ -21,35 +21,35 @@ public final class JsVirtualMachine
   
   public JsVirtualMachine(Context paramContext, Looper paramLooper)
   {
-    this.mContext = paramContext;
-    this.mVirtualMachine = X5JsCore.createVirtualMachine(paramContext, paramLooper);
+    this.a = paramContext;
+    this.b = X5JsCore.a(paramContext, paramLooper);
   }
   
-  protected IX5JsContext createJsContext()
+  protected IX5JsContext a()
   {
-    if (this.mVirtualMachine == null)
+    if (this.b == null)
     {
-      JsVirtualMachine.X5JsContextFallback localX5JsContextFallback = new JsVirtualMachine.X5JsContextFallback(this.mContext);
-      this.mJsContexts.add(new WeakReference(localX5JsContextFallback));
-      return localX5JsContextFallback;
+      JsVirtualMachine.a locala = new JsVirtualMachine.a(this.a);
+      this.c.add(new WeakReference(locala));
+      return locala;
     }
-    return this.mVirtualMachine.createJsContext();
+    return this.b.createJsContext();
   }
   
   public void destroy()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.destroy();
+    if (this.b != null) {
+      this.b.destroy();
     }
     for (;;)
     {
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).destroy();
+          ((JsVirtualMachine.a)localWeakReference.get()).destroy();
         }
       }
     }
@@ -57,31 +57,31 @@ public final class JsVirtualMachine
   
   public Looper getLooper()
   {
-    if (this.mVirtualMachine != null) {
-      return this.mVirtualMachine.getLooper();
+    if (this.b != null) {
+      return this.b.getLooper();
     }
     return Looper.myLooper();
   }
   
   public boolean isFallback()
   {
-    return this.mVirtualMachine == null;
+    return this.b == null;
   }
   
   public void onPause()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.onPause();
+    if (this.b != null) {
+      this.b.onPause();
     }
     for (;;)
     {
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).onPause();
+          ((JsVirtualMachine.a)localWeakReference.get()).a();
         }
       }
     }
@@ -89,18 +89,18 @@ public final class JsVirtualMachine
   
   public void onResume()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.onResume();
+    if (this.b != null) {
+      this.b.onResume();
     }
     for (;;)
     {
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).onResume();
+          ((JsVirtualMachine.a)localWeakReference.get()).b();
         }
       }
     }
@@ -108,7 +108,7 @@ public final class JsVirtualMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsVirtualMachine
  * JD-Core Version:    0.7.0.1
  */

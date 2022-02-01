@@ -1,12 +1,12 @@
 package com.tencent.widget;
 
-import bhxx;
+import bklj;
 import com.tencent.qphone.base.util.QLog;
 
 public class KandianNegativeWindow$3
   implements Runnable
 {
-  public KandianNegativeWindow$3(bhxx parambhxx, StringBuilder paramStringBuilder, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public KandianNegativeWindow$3(bklj parambklj, StringBuilder paramStringBuilder, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class KandianNegativeWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.KandianNegativeWindow.3
  * JD-Core Version:    0.7.0.1
  */

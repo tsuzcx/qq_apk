@@ -1,47 +1,20 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qdl
-  implements View.OnClickListener
+class qdl
+  implements ViewBase.OnClickListener
 {
-  public qdl(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
+  qdl(qdi paramqdi, pxk parampxk, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).jdField_a_of_type_JavaLangString))) {
-      if (ComponentContentUGCVoice.a(this.a).jdField_a_of_type_Boolean)
-      {
-        nrt.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
-        qyd.a().a();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      if (rcp.a().a())
-      {
-        QQToast.a(this.a.getContext(), alud.a(2131702678), 0).a();
-        return;
-      }
-      nrt.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
-      qyd.a().a(this.a, ComponentContentUGCVoice.a(this.a));
-      return;
-    }
-    QLog.d(ComponentContentUGCVoice.jdField_a_of_type_JavaLangString, 2, "mUGCVoiceInfo or its voiceUrl is null");
+    this.jdField_a_of_type_Qdi.a(this.jdField_a_of_type_Pxk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdl
  * JD-Core Version:    0.7.0.1
  */

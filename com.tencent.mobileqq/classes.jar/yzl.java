@@ -1,28 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 
-class yzl
-  implements Animation.AnimationListener
+final class yzl
+  implements Animator.AnimatorListener
 {
-  yzl(yzj paramyzj) {}
+  yzl(yzm paramyzm, ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (yzj.a(this.a) != null)
-    {
-      yzj.a(this.a).clearAnimation();
-      yzj.a(this.a).startAnimation(yzj.a(this.a));
+    if (this.jdField_a_of_type_Yzm != null) {
+      this.jdField_a_of_type_Yzm.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Yzm != null) {
+      this.jdField_a_of_type_Yzm.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Yzm != null) {
+      this.jdField_a_of_type_Yzm.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzl
  * JD-Core Version:    0.7.0.1
  */

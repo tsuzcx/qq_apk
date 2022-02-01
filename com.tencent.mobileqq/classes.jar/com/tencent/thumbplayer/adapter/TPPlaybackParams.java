@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.adapter;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
+import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -216,6 +217,12 @@ public class TPPlaybackParams
     this.mDataSource.setFileDescriptor(paramParcelFileDescriptor);
   }
   
+  public void setDataSource(TPUrlDataSource paramTPUrlDataSource, Map<String, String> paramMap)
+  {
+    this.mDataSource.setTpUrlDataSource(paramTPUrlDataSource);
+    this.mDataSource.setHttpHeaders(paramMap);
+  }
+  
   public void setDataSource(ITPMediaAsset paramITPMediaAsset)
   {
     this.mDataSource.setMediaClipInfo(paramITPMediaAsset);
@@ -341,7 +348,7 @@ public class TPPlaybackParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackParams
  * JD-Core Version:    0.7.0.1
  */

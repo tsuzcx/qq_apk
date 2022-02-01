@@ -1,245 +1,102 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin.1;
-import cooperation.vip.manager.MonitorManager;
-import java.util.Map;
-import mqq.manager.TicketManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy.AppDownloadListener;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.json.JSONObject;
 
-public class bjzg
-  extends bjxz
+class bjzg
+  implements bmxe
 {
-  private String a;
+  bjzg(bjzf parambjzf) {}
   
-  private int a(int paramInt)
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
   {
-    begg localbegg = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    int i = paramInt;
-    if ((localbegg instanceof beha)) {
-      i = ((beha)localbegg).switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, (byte)paramInt);
-    }
-    return i;
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    return "qq_m_qq" + "-" + "2013" + "-" + paramString1.replaceAll("-", "_") + "-" + "2013" + "-" + paramString2.replaceAll("-", "_");
-  }
-  
-  private void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2, int paramInt3, Intent paramIntent)
-  {
-    switch (paramInt1)
+    Object localObject1;
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
-    default: 
-      paramString = paramIntent;
-      if (paramIntent == null) {
-        paramString = new Intent();
-      }
-      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      paramActivity.setResult(0, paramString);
-      paramActivity.finish();
-    case 0: 
-      return;
-    case -5: 
-      paramActivity.finish();
-      return;
-    }
-    paramActivity.setResult(0, paramIntent);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
-    for (;;)
-    {
-      return;
-      try
+      localObject1 = bjzf.d(this.a).entrySet().iterator();
+      label78:
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = new JSONObject(paramString1);
-        a(((JSONObject)localObject).optString("openUin"), ((JSONObject)localObject).optString("openMonth"), ((JSONObject)localObject).optString("openVipType"), ((JSONObject)localObject).getBoolean("isAuto"), ((JSONObject)localObject).optString("aid"));
-        MonitorManager.a().a(1, 2, "native 支付", "js 回调 native 支付" + paramString1);
-        this.jdField_a_of_type_JavaLangString = paramString2;
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null) {
-          continue;
-        }
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount();
-        paramString2 = new bjdn();
-        paramString2.a("328");
-        paramString2.a(Long.parseLong(paramString1));
-        paramString2.b("10");
-        paramString2.c("1");
-        QZoneClickReport.startReportImediately(paramString1, paramString2);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        paramArrayList = (Map.Entry)((Iterator)localObject1).next();
+        if (paramArrayList != null) {}
+        for (paramArrayList = (AsyncResult)paramArrayList.getValue();; paramArrayList = null)
         {
-          localException.printStackTrace();
+          if (paramArrayList == null) {
+            break label78;
+          }
+          paramArrayList.onReceiveResult(false, null);
+          break;
         }
       }
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
-  {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localObject2 == null) || (((Activity)localObject2).isFinishing())) {}
-    AppInterface localAppInterface;
-    do
-    {
-      return;
-      localAppInterface = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    } while (localAppInterface == null);
-    Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
-    String str2 = VipUtils.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131718671);
-    String str3 = ((Activity)localObject2).getString(2131718672);
-    paramString4 = "";
-    Object localObject1 = "";
-    if ("1".equals(paramString3))
-    {
-      paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131718671);
-      localObject1 = "1450000153";
+      bjzf.d(this.a).clear();
     }
     for (;;)
     {
-      try
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        paramString3 = new JSONObject();
-        paramString3.put("offerId", localObject1);
-        localObject1 = (TicketManager)localAppInterface.getManager(2);
-        localObject2 = localAppInterface.getAccount();
-        paramString3.put("userId", localObject2);
-        paramString3.put("skey", ((TicketManager)localObject1).getSkey((String)localObject2));
-        paramString3.put("serviceCode", paramString4);
-        paramString3.put("serviceName", str1);
-        paramString3.put("channel", "");
-        paramString3.put("uint", str3);
-        paramString3.put("openMonth", paramString2);
-        paramString3.put("isCanChange", false);
-        paramString3.put("autoPay", paramBoolean);
-        paramString3.put("aid", str2);
-        paramString3.put("pf", a(bjdm.a(), str2));
-        if ((!paramString1.equals(localAppInterface.getCurrentAccountUin())) && (!paramString1.equals("0")))
+        Object localObject2 = (WadlResult)paramArrayList.next();
+        localObject1 = ((WadlResult)localObject2).jdField_a_of_type_CooperationWadlIpcWadlParams;
+        String str = ((WadlParams)localObject1).a;
+        if ((str != null) && (localObject1 != null)) {
+          bjzf.e(this.a).put(str, localObject1);
+        }
+        if ((str != null) && (bjzf.d(this.a).containsKey(str)))
         {
-          paramString3.put("provideUin", paramString1);
-          paramString3.put("provideType", "uin");
+          localObject1 = (AsyncResult)bjzf.d(this.a).remove(str);
+          if (localObject1 != null) {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("appid", str);
+              localJSONObject.put("status", ((WadlResult)localObject2).jdField_b_of_type_Int);
+              localJSONObject.put("downloadSize", ((WadlResult)localObject2).jdField_b_of_type_Long);
+              localJSONObject.put("totalSize", ((WadlResult)localObject2).jdField_a_of_type_Long);
+              localJSONObject.put("progress", ((WadlResult)localObject2).jdField_b_of_type_Long * 100L / ((WadlResult)localObject2).jdField_a_of_type_Long);
+              if (((WadlResult)localObject2).jdField_a_of_type_CooperationWadlIpcWadlParams != null) {
+                localJSONObject.put("versionCode", ((WadlResult)localObject2).jdField_a_of_type_CooperationWadlIpcWadlParams.e);
+              }
+              if (((WadlResult)localObject2).jdField_b_of_type_Int == 6)
+              {
+                localObject2 = ((WadlResult)localObject2).jdField_b_of_type_JavaLangString;
+                if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!new File((String)localObject2).exists()))
+                {
+                  localJSONObject.put("status", 0);
+                  localJSONObject.put("progress", 0);
+                }
+              }
+              ((AsyncResult)localObject1).onReceiveResult(true, localJSONObject);
+            }
+            catch (Throwable localThrowable)
+            {
+              ((AsyncResult)localObject1).onReceiveResult(false, null);
+            }
+          }
         }
-        paramString3.put("discountId", "");
-        paramString3.put("other", "");
-        paramString1 = new Bundle();
-        paramString1.putInt("pay_requestcode", 4);
-        paramString1.putString("json", paramString3.toString());
-        localIntent.putExtras(paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.startActivityForResult(localIntent, (byte)16);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      if ("2".equals(paramString3))
-      {
-        paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131718285);
-        localObject1 = "1450001557";
       }
     }
   }
   
-  private void b()
-  {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    localActivity.finish();
-  }
+  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList) {}
   
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
-    super.a(paramIntent, paramByte, paramInt);
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      break label32;
+    if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams == null)) {
+      bize.a("ThirdAppProxyImpl", "onWadlTaskStatusChanged error wadlResult is null");
     }
-    label32:
-    while (paramByte != 16) {
-      return;
-    }
-    Object localObject;
-    if (paramIntent != null)
-    {
-      localObject = paramIntent.getExtras();
-      if (localObject != null)
-      {
-        localActivity.setResult(paramInt, paramIntent);
-        localObject = ((Bundle)localObject).getString("result");
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject((String)localObject);
-        paramInt = localJSONObject.getInt("resultCode");
-        String str = localJSONObject.getString("resultMsg");
-        int i = localJSONObject.getInt("payState");
-        int j = localJSONObject.getInt("provideState");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localObject });
-        }
-        a(localActivity, paramInt, str, i, j, paramIntent);
-        paramInt = 0;
-        paramIntent = (Intent)localObject;
-      }
-      catch (Exception paramIntent)
-      {
-        paramIntent.printStackTrace();
-        paramInt = 1;
-        paramIntent = (Intent)localObject;
-        continue;
-      }
-      MonitorManager.a().a(1, 3, "米大师支付结果回调", " 回调黄钻结果通知js " + paramIntent);
-      if (paramInt == 0) {
-        break;
-      }
-      paramIntent = new Intent();
-      paramIntent.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
-      localActivity.setResult(0, paramIntent);
-      localActivity.finish();
-      return;
-      paramIntent = "";
-      paramInt = 1;
-      continue;
-      paramIntent = "";
-      paramInt = 1;
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
+    String str;
+    int i;
+    int j;
     do
     {
       do
@@ -248,69 +105,56 @@ public class bjzg
         {
           do
           {
-            do
+            return;
+            WadlParams localWadlParams = paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams;
+            str = localWadlParams.a;
+            i = bizo.a(paramWadlResult.jdField_b_of_type_Int);
+            bizj.b(localWadlParams.a);
+            QLog.i("ThirdAppProxyImpl", 1, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
+            switch (i)
             {
-              return bool1;
-              if ((paramString3.equals("payVipDirectly")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-                try
-                {
-                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-                  a(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-                  return true;
-                }
-                catch (Exception paramJsBridgeListener)
-                {
-                  paramJsBridgeListener.printStackTrace();
-                  return true;
-                }
+            case 3: 
+            case 9: 
+            case 10: 
+            case 20: 
+            default: 
+              QLog.e("ThirdAppProxyImpl", 1, "download status not response!");
+              return;
+            case 4: 
+              bjzf.a(this.a).remove(str);
+              if ((bjzf.b(this.a) != null) && (bjzf.b(this.a).containsKey(str)) && (bjzf.b(this.a).get(str) != null)) {
+                ((ThirdAppProxy.AppDownloadListener)bjzf.b(this.a).get(str)).onDownloadComplete();
               }
-              if ((paramString3.equals("closePayDialog")) || (paramString3.equals("closeFloatingWebView")))
-              {
-                b();
-                return true;
-              }
-              if (!paramString3.equals("SetNaviDeco")) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramVarArgs == null);
-            bool1 = bool2;
-          } while (TextUtils.isEmpty(paramVarArgs[0]));
-          paramJsBridgeListener = new Intent();
-          QzonePluginProxyActivity.a(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-          paramJsBridgeListener.putExtra("open_what", 7);
-          paramJsBridgeListener.putExtra("navi_deco", paramVarArgs[0]);
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null);
-        bool1 = bool2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
-    QzonePluginProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount(), paramJsBridgeListener, a(9));
-    return true;
-    if ("preloadQzone".equals(paramString3))
-    {
-      ThreadManagerV2.executeOnSubThread(new QzoneVipPaymentJsPlugin.1(this));
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934595L) && (paramMap != null))
-    {
-      ((Integer)paramMap.get("errorCode")).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneVipPaymentJsPlugin", 2, "VasWebReport:EVENT_LOAD_ERROR");
+              bjzf.b(this.a).remove(str);
+              return;
+            }
+          } while (!bjzf.c(this.a).containsKey(str));
+          paramWadlResult = (AsyncResult)bjzf.c(this.a).remove(str);
+        } while (paramWadlResult == null);
+        paramWadlResult.onReceiveResult(true, null);
+        return;
+        i = bizo.b(paramWadlResult.c);
+        bizo.a(i);
+        bjzf.a(this.a).remove(str);
+        if ((bjzf.b(this.a) != null) && (bjzf.b(this.a).containsKey(str)) && (bjzf.b(this.a).get(str) != null)) {
+          ((ThirdAppProxy.AppDownloadListener)bjzf.b(this.a).get(str)).onDownloadFailed(i, i, "failed");
+        }
+        bjzf.b(this.a).remove(str);
+        return;
+      } while ((bjzf.b(this.a) == null) || (!bjzf.b(this.a).containsKey(str)) || (bjzf.b(this.a).get(str) == null));
+      i = 0;
+      if (bjzf.a(this.a).containsKey(str)) {
+        i = ((Integer)bjzf.a(this.a).get(str)).intValue();
       }
-    }
-    return false;
+      j = (int)(paramWadlResult.jdField_b_of_type_Long * 100L / paramWadlResult.jdField_a_of_type_Long);
+    } while (j - i < 1);
+    ((ThirdAppProxy.AppDownloadListener)bjzf.b(this.a).get(str)).onDownloadProgress(paramWadlResult.jdField_b_of_type_Long, paramWadlResult.jdField_a_of_type_Long, j);
+    bjzf.a(this.a).put(str, Integer.valueOf(j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzg
  * JD-Core Version:    0.7.0.1
  */

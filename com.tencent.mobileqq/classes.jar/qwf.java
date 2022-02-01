@@ -1,31 +1,70 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
-import com.tencent.widget.ListView;
+import android.os.Looper;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qwf
-  extends ayjo<aynu, aywd>
+  extends pmn
 {
-  public qwf(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, bdbb parambdbb)
-  {
-    super(paramListView, parambdbb);
-  }
+  public qwf(ComponentContentRecommend paramComponentContentRecommend) {}
   
-  protected ayqp<aynu, aywd> a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)
   {
-    if (((aynu)a(paramInt) instanceof aymf)) {
-      return new ayry(this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    if ((ComponentContentRecommend.a(this.a) == null) || (ComponentContentRecommend.a(this.a).mRecommendFollowInfos == null))
+    {
+      QQToast.a(ComponentContentRecommend.a(this.a), 1, anni.a(2131701128), 1).a();
+      ComponentContentRecommend.a(this.a).clearAnimation();
     }
-    return new qwb(this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+    while (ComponentContentRecommend.a(this.a).mArticleID != paramLong) {
+      return;
+    }
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() <= 0))
+    {
+      QQToast.a(ComponentContentRecommend.a(this.a), 1, anni.a(2131701131), 1).a();
+      ComponentContentRecommend.a(this.a).clearAnimation();
+      return;
+    }
+    ComponentContentRecommend.a(this.a).clearAnimation();
+    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.clear();
+    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.addAll(paramList);
+    pmh.a().d(ComponentContentRecommend.a(this.a));
+    ComponentContentRecommend.a(this.a).clear();
+    ComponentContentRecommend.a(this.a).addAll(paramList);
+    ComponentContentRecommend.a(this.a).notifyDataSetChanged();
   }
   
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    return new ayvx(paramViewGroup, 2131562602);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      QLog.e(ComponentContentRecommend.a, 2, "Please call this method in main thread!!!");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+    }
+    Iterator localIterator = ComponentContentRecommend.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
+      if (paramLong == localRecommendFollowInfo.uin) {
+        localRecommendFollowInfo.isFollowed = paramBoolean;
+      }
+    }
+    ComponentContentRecommend.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwf
  * JD-Core Version:    0.7.0.1
  */

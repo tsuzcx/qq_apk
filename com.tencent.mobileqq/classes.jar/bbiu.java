@@ -1,336 +1,158 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.Path.FillType;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import java.util.Set;
 
 public class bbiu
   extends BaseAdapter
-  implements View.OnClickListener
 {
-  protected int a;
-  public Bitmap a;
-  protected Drawable a;
-  protected LayoutInflater a;
-  protected URLDrawable.URLDrawableOptions a;
-  protected ExtendGridView a;
-  protected CharSequence a;
-  private HashMap<String, Drawable.ConstantState> a;
-  protected List<String> a;
-  protected boolean a;
-  protected int b;
-  protected CharSequence b;
+  public static final String a;
+  public float a;
+  public int a;
+  public long a;
+  public bbnm a;
+  public HorizontalListView a;
+  public List<bbnn> a;
+  public float b;
+  public int b;
   
-  public bbiu(Context paramContext, ExtendGridView paramExtendGridView)
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 9;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView = paramExtendGridView;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847367);
-    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131696711);
-    this.jdField_b_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131718695);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseMemoryCache = false;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    a(paramContext);
+    jdField_a_of_type_JavaLangString = bbiu.class.getSimpleName();
   }
   
-  private void c()
+  public bbiu(bbnm parambbnm, int paramInt, HorizontalListView paramHorizontalListView)
   {
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(str))) {
-        localHashMap.put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(localHashMap);
-    localHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBar", 2, "!!!clearDirtyCache time is " + (System.currentTimeMillis() - l));
-    }
+    this.jdField_a_of_type_Bbnm = parambbnm;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
+    paramHorizontalListView.setOnScrollListener(new bbiv(this, paramHorizontalListView));
   }
   
-  public int a()
+  public bbnn a(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    return (bbnn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  @TargetApi(16)
-  public void a()
+  public List<bbnn> a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView == null) {
-      return;
-    }
-    int j = getCount();
-    int i = j;
-    if (j == this.jdField_a_of_type_Int + 1) {
-      i = j - 1;
-    }
-    i = (int)Math.ceil(i / this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getNumColumns());
-    Object localObject = getView(0, null, this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView);
-    ((View)localObject).measure(0, 0);
-    this.jdField_b_of_type_Int = ((View)localObject).getMeasuredHeight();
-    j = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getVerticalSpacing();
-    int k = this.jdField_b_of_type_Int;
-    int m = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingTop();
-    int n = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingBottom();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = (i * k + j * (i - 1) + m + n);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  protected void a(Context paramContext)
-  {
-    int i = (int)bdgz.a(paramContext, 60.0F);
-    int j = (int)bdgz.a(paramContext, 5.0F);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
-    paramContext = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setAntiAlias(true);
-    RectF localRectF = new RectF(0.0F, 0.0F, i, i);
-    localPaint.setAlpha(0);
-    paramContext.drawRect(0.0F, 0.0F, i, i, localPaint);
-    localPaint.setARGB(255, 255, 255, 255);
-    Path localPath = new Path();
-    localPath.addRoundRect(localRectF, j, j, Path.Direction.CW);
-    localPath.setFillType(Path.FillType.INVERSE_WINDING);
-    paramContext.drawPath(localPath, localPaint);
-  }
-  
-  public void a(List<String> paramList)
+  public void a(List<bbnn> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    a();
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    if (paramBoolean2) {
-      notifyDataSetChanged();
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.jdField_a_of_type_Boolean) && (paramInt == getCount() - 1);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      i = this.jdField_a_of_type_JavaUtilList.size();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    int j = i;
-    if (this.jdField_a_of_type_Boolean) {
-      j = i + 1;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Bbnm.m)) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    return j;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (a(paramInt))) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
   }
   
   public long getItemId(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return paramInt;
-    }
-    return 0L;
+    return paramInt;
   }
   
   public int getItemViewType(int paramInt)
   {
-    if (a(paramInt)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int k = 2147483647;
-    long l = System.currentTimeMillis();
-    View localView;
-    bbiv localbbiv;
-    int i;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559777, null);
-      localbbiv = new bbiv();
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131379394));
-      localbbiv.b = ((ImageView)localView.findViewById(2131368123));
-      localbbiv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376067));
-      localView.setTag(localbbiv);
-      i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
-      paramView = localView.getLayoutParams();
-      if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams))) {
-        break label245;
-      }
-      paramView = new AbsListView.LayoutParams(i, i);
-      label129:
-      localView.setLayoutParams((AbsListView.LayoutParams)paramView);
-      if (!a(paramInt)) {
-        break label260;
-      }
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842154);
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-      localbbiv.b.setVisibility(8);
-    }
-    label245:
-    String str;
-    label260:
-    do
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBar", 2, "---getView time is " + (System.currentTimeMillis() - l));
-      }
-      return localView;
-      localbbiv = (bbiv)paramView.getTag();
-      localView = paramView;
-      break;
-      paramView.width = i;
-      paramView.height = i;
-      break label129;
-      str = (String)getItem(paramInt);
-    } while (TextUtils.isEmpty(str));
-    int j;
-    if (i < 0)
-    {
-      j = 2147483647;
-      label288:
-      j = Math.min(100, j);
-      if (i >= 0) {
-        break label469;
-      }
-      i = k;
-      label306:
-      i = Math.min(100, i);
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
-      paramView = new File(str);
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
-        c();
-      }
-      Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (((paramInt == 0) && (paramViewGroup.getChildCount() == 0)) || (localConstantState == null)) {
-        break label472;
-      }
-      paramView = localConstantState.newDrawable();
-    }
-    for (;;)
-    {
-      paramView.setBounds(0, 0, j, i);
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
-      localbbiv.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
-      localbbiv.b.setVisibility(0);
-      localbbiv.b.setTag(Integer.valueOf(paramInt));
-      localbbiv.b.setOnClickListener(this);
-      localbbiv.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      break;
-      j = i;
-      break label288;
-      label469:
-      break label306;
-      try
-      {
-        label472:
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = j;
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = i;
-        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mPlayGifImage = true;
-        if (paramView.exists()) {}
-        for (paramView = URLDrawable.getDrawable(paramView.toURL(), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);; paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-        {
-          if (paramView != null) {
-            break label543;
-          }
-          paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          break;
-        }
-      }
-      catch (MalformedURLException paramView)
-      {
-        for (;;)
-        {
-          paramView = null;
-        }
-        label543:
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, paramView.getConstantState());
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    if ((paramInt == this.jdField_a_of_type_JavaUtilList.size()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bbnm.m))) {
       return 2;
     }
     return 1;
   }
   
-  public void onClick(View paramView)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    switch (paramView.getId())
+    switch (getItemViewType(paramInt))
     {
     default: 
-      return;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    case 1: 
+      localObject2 = (bbnp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      label86:
+      float f;
+      if (paramView == null)
+      {
+        localObject1 = new bbvu(paramViewGroup, 0);
+        paramView = ((bbvu)localObject1).a();
+        paramView.setTag(localObject1);
+        f = this.jdField_a_of_type_Bbnm.jdField_a_of_type_Int;
+        f = (float)(bgln.k() - bggq.a(paramView.getContext(), 13.5F)) / (f + 0.5F);
+        this.jdField_a_of_type_Float = (bggq.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 3.0F) + f);
+        switch (((bbnp)localObject2).jdField_a_of_type_Bbni.jdField_a_of_type_Int)
+        {
+        default: 
+          this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
+        }
+      }
+      for (;;)
+      {
+        ((bbvu)localObject1).a().setLayoutParams(new LinearLayout.LayoutParams((int)f, -2));
+        ((bbnp)localObject2).a((bbvs)localObject1);
+        ((bbvu)localObject1).a().measure(1073741824, 0);
+        this.jdField_b_of_type_Int = Math.max(((bbvu)localObject1).a().getMeasuredHeight(), this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().height = this.jdField_b_of_type_Int;
+        this.jdField_a_of_type_Long = ((bbnp)localObject2).jdField_a_of_type_Long;
+        break;
+        localObject1 = (bbvu)paramView.getTag();
+        break label86;
+        this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
+        continue;
+        this.jdField_b_of_type_Float = f;
+        continue;
+        this.jdField_b_of_type_Float = (228.0F * f / 162.0F);
+        continue;
+        this.jdField_b_of_type_Float = f;
+      }
     }
-    paramView = (Integer)paramView.getTag();
-    Intent localIntent = new Intent("key_photo_delete_action");
-    localIntent.putExtra("key_photo_delete_position", paramView.intValue());
-    BaseApplication.getContext().sendBroadcast(localIntent);
+    Object localObject1 = paramView;
+    if (paramView == null) {
+      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559826, paramViewGroup, false);
+    }
+    Object localObject2 = new FrameLayout.LayoutParams(-1, (int)this.jdField_b_of_type_Float);
+    ((FrameLayout.LayoutParams)localObject2).topMargin = bggq.a(paramViewGroup.getContext(), 6.0F);
+    paramView = (LinearLayout)((View)localObject1).findViewById(2131364961);
+    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = (ImageView)((View)localObject1).findViewById(2131371294);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131371322);
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      paramView.setBackgroundResource(2130839386);
+      localTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      ((ImageView)localObject2).setImageResource(2130842301);
+    }
+    for (;;)
+    {
+      localTextView.setText(this.jdField_a_of_type_Bbnm.jdField_a_of_type_JavaLangCharSequence);
+      ((View)localObject1).setOnClickListener(new bbiw(this, paramViewGroup));
+      paramView = (View)localObject1;
+      break;
+      paramView.setBackgroundResource(2130839385);
+      localTextView.setTextColor(Color.parseColor("#737373"));
+      ((ImageView)localObject2).setImageResource(2130842300);
+    }
   }
 }
 

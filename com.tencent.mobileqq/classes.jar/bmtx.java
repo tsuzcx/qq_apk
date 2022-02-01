@@ -1,25 +1,45 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
 public class bmtx
-  implements bmqt
 {
-  public bmtx(DoodleLayout paramDoodleLayout) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public bmtw a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
+    return new bmtw(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public bmtx a(int paramInt)
   {
-    if (this.a.a != null)
-    {
-      wxe.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bmtx a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bmtx a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bmtx b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public bmtx c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
 }
 

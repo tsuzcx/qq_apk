@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afan
-  implements afap
+  implements DialogInterface.OnClickListener
 {
-  public afan(DoodleView paramDoodleView) {}
+  public afan(RegisterActivity paramRegisterActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,16 +1,19 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.mobileqq.data.PhoneContactAdd;
 
-class ajbg
-  implements aixw
+public class ajbg
+  extends ajax
 {
-  ajbg(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
+  public PhoneContactAdd a;
   
-  public void a(String paramString1, String paramString2, aixq paramaixq)
+  public ajbg(PhoneContactAdd paramPhoneContactAdd)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
+    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

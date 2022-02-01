@@ -50,6 +50,7 @@
                     {"$includeComponet": "componet/readinjoy_comment_media.geojson"},
                     {"$includeComponet": "componet/vv_comment_media.geojson"},
                     {"$includeComponet": "componet/readinjoy_comment_diversion.geojson"},
+                    {"$includeComponet": "componet/RIJ_author_like_header.geojson"},
                     {"$includeComponet": "componet/readinjoy_comment_tail.geojson"},
                     {"$includeComponet": "componet/readinjoy_expose_subcomment_container.geojson"},
                     {"$includeComponet": "componet/readinjoy_comment_expose_like_person.geojson"}

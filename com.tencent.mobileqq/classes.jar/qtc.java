@@ -1,51 +1,66 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qtc
-  implements qsq
+  extends qqt
 {
-  private qsr jdField_a_of_type_Qsr;
-  private qtb jdField_a_of_type_Qtb;
-  private qug jdField_a_of_type_Qug;
-  
-  public qtc(qtb paramqtb)
+  public qtc(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    this.jdField_a_of_type_Qtb = paramqtb;
-    this.jdField_a_of_type_Qug = new qug(this.jdField_a_of_type_Qtb);
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  public void a()
+  public qqt a()
   {
-    this.jdField_a_of_type_Qug.a();
-    this.jdField_a_of_type_Qsr = null;
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
   }
   
-  public void a(UgcVideo paramUgcVideo)
+  public qqt d()
   {
-    if (this.jdField_a_of_type_Qsr != null) {
-      this.jdField_a_of_type_Qsr.j();
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    this.jdField_a_of_type_Qtb.a(paramUgcVideo, null);
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pya)) && (pha.s(((pya)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(afur.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qqs);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(afur.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
   }
   
-  public void a(qsr paramqsr)
+  public qqt e()
   {
-    this.jdField_a_of_type_Qug.a(paramqsr);
-    this.jdField_a_of_type_Qsr = paramqsr;
+    return null;
   }
   
-  public void b()
+  public qqt g()
   {
-    this.jdField_a_of_type_Qug.b();
+    this.jdField_a_of_type_Qqs = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
   
-  public void c()
+  public qqt o()
   {
-    this.jdField_a_of_type_Qug.c();
+    super.o();
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtc
  * JD-Core Version:    0.7.0.1
  */

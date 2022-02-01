@@ -1,7 +1,9 @@
 package c.t.m.g;
 
-public final class fa$1
-  extends fa
+import android.os.Parcelable.Creator;
+
+final class fa$1
+  implements Parcelable.Creator<fa>
 {}
 
 

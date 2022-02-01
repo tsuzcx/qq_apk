@@ -1,61 +1,60 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
-import awgf;
-import awgh;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pew;
+import pwb;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class ArticleInfoModule$39
   implements Runnable
 {
-  public ArticleInfoModule$39(pew parampew, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
+  public ArticleInfoModule$39(pwb parampwb, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
   
   public void run()
   {
-    awgh localawgh = this.this$0.jdField_a_of_type_Awgf.a();
-    localawgh.a();
+    EntityTransaction localEntityTransaction = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
+    localEntityTransaction.begin();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
+    Object localObject;
     int j;
-    Object localObject2;
     long l;
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        break label679;
+        break label449;
       }
-      oidb_cmd0x8c8.FeedsInfo localFeedsInfo = (oidb_cmd0x8c8.FeedsInfo)localIterator.next();
+      localObject = (oidb_cmd0x8c8.FeedsInfo)localIterator.next();
       j = i;
       try
       {
-        if (localFeedsInfo.has())
+        if (((oidb_cmd0x8c8.FeedsInfo)localObject).has())
         {
           j = i;
-          if (localFeedsInfo.get() != null)
+          if (((oidb_cmd0x8c8.FeedsInfo)localObject).get() != null)
           {
             j = i;
-            if (localFeedsInfo.msg_social_fees_info.has())
+            if (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.has())
             {
               j = i;
-              if (localFeedsInfo.msg_social_fees_info.get() != null)
+              if (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.get() != null)
               {
-                localObject2 = (oidb_cmd0x8c8.SocializeFeedsInfo)localFeedsInfo.msg_social_fees_info.get();
-                if (((oidb_cmd0x8c8.SocializeFeedsInfo)localObject2).uint64_feeds_id.has())
+                oidb_cmd0x8c8.SocializeFeedsInfo localSocializeFeedsInfo = (oidb_cmd0x8c8.SocializeFeedsInfo)((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.get();
+                if (localSocializeFeedsInfo.uint64_feeds_id.has())
                 {
-                  l = ((oidb_cmd0x8c8.SocializeFeedsInfo)localObject2).uint64_feeds_id.get();
-                  label132:
+                  l = localSocializeFeedsInfo.uint64_feeds_id.get();
+                  label131:
                   if (l != 0L) {
-                    break label171;
+                    break label168;
                   }
                   QLog.d("ArticleInfoModule", 1, "convertPBToInfo failed feedsInfo feedsId == 0");
                 }
@@ -73,70 +72,44 @@ public class ArticleInfoModule$39
     {
       break;
       l = 0L;
-      break label132;
-      label171:
-      if (!localException.feeds_type.has())
+      break label131;
+      label168:
+      if (!((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.has())
       {
         QLog.d("ArticleInfoModule", 1, "convertPBToInfo failed feedsInfo feeds_type == null");
         break;
       }
-      j = localException.feeds_type.get();
-      Object localObject1 = l + "" + j;
+      j = ((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.get();
+      localObject = l + "" + j;
       QLog.d("ArticleInfoModule", 1, new Object[] { "handle 8c8, feedsId = ", Long.valueOf(l), ", feedsType = ", Integer.valueOf(j) });
-      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 0);
+      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 0);
       if (localArticleInfo != null) {
-        pew.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 0);
+        pwb.a(this.this$0, localArticleInfo, localException, 0);
       }
-      localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 70);
+      localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 70);
       if (localArticleInfo != null) {
-        pew.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 70);
+        pwb.a(this.this$0, localArticleInfo, localException, 70);
       }
-      localObject1 = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 41403);
-      if (localObject1 != null) {
-        pew.a(this.this$0, (ArticleInfo)localObject1, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 41403);
+      localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 41403);
+      if (localObject != null) {
+        pwb.a(this.this$0, (ArticleInfo)localObject, localException, 41403);
       }
-      if ((this.jdField_a_of_type_Boolean) && (localObject1 != null) && (((ArticleInfo)localObject1).mSocialFeedInfo != null) && (((ArticleInfo)localObject1).publishUin != 0L))
+      if ((this.jdField_a_of_type_Boolean) && (localObject != null) && (((ArticleInfo)localObject).mSocialFeedInfo != null))
       {
-        localObject2 = "publishUin = " + ((ArticleInfo)localObject1).publishUin;
-        localObject2 = this.this$0.jdField_a_of_type_Awgf.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
-        if (localObject2 == null)
-        {
-          QLog.d("ArticleInfoModule", 1, "no soical feeds to update article.publishUin:" + ((ArticleInfo)localObject1).publishUin);
+        boolean bool = pwb.a(this.this$0, (ArticleInfo)localObject);
+        if (!bool) {
           break;
-        }
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localArticleInfo = (ArticleInfo)((Iterator)localObject2).next();
-          if ((localArticleInfo.mFeedId != ((ArticleInfo)localObject1).mFeedId) && (localArticleInfo.mSocialFeedInfo != null))
-          {
-            int k = 0;
-            j = k;
-            if (localArticleInfo.mSocialFeedInfo.h != 2)
-            {
-              j = k;
-              if (((ArticleInfo)localObject1).mSocialFeedInfo.h == 2) {
-                j = 1;
-              }
-            }
-            localArticleInfo.mSocialFeedInfo.h = ((ArticleInfo)localObject1).mSocialFeedInfo.h;
-            this.this$0.a(localArticleInfo);
-            localArticleInfo = this.this$0.a(localArticleInfo, (int)localArticleInfo.mChannelID);
-            if ((j != 0) && (localArticleInfo != null)) {
-              localArticleInfo.isNeedShowBtnWhenFollowed = true;
-            }
-          }
         }
       }
       j = 1;
       i = j;
     }
-    label679:
+    label449:
     if ((i != 0) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ArticleInfoModule.39.1(this));
     }
-    localawgh.c();
-    localawgh.b();
+    localEntityTransaction.commit();
+    localEntityTransaction.end();
     this.this$0.h();
   }
 }

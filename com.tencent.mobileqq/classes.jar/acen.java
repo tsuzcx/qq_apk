@@ -1,20 +1,19 @@
-import android.content.Intent;
+import android.graphics.Outline;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import java.util.ArrayList;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class acen
-  implements View.OnClickListener
+  extends ViewOutlineProvider
 {
-  public acen(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
+  public acen(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), afur.a(5.0F, paramView.getResources()));
+    }
   }
 }
 

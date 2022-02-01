@@ -1,52 +1,29 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class trs
-  extends yiu
+  implements ryo
 {
-  private QCircleTagPageHeaderView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView;
-  private yif jdField_a_of_type_Yif;
+  public trs(ViolaVideoView paramViolaVideoView) {}
   
-  public trs(Bundle paramBundle)
+  public long a()
   {
-    super(paramBundle);
+    return ViolaVideoView.a(this.a).a();
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView = new QCircleTagPageHeaderView(paramViewGroup.getContext());
-    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView;
+    ViolaVideoView.a(this.a).d(paramInt);
   }
   
-  public void handleShareDataChange(String paramString, yif paramyif)
+  public long b()
   {
-    super.handleShareDataChange(paramString, paramyif);
-    if ("share_key_tag_page_header_data".equals(paramString))
-    {
-      this.jdField_a_of_type_Yif = paramyif;
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView != null) {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView.setData(this.jdField_a_of_type_Yif);
-      }
-    }
+    return ViolaVideoView.a(this.a).b();
   }
-  
-  public void loadData(yii paramyii) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagPageHeaderView.setData(this.jdField_a_of_type_Yif);
-    }
-  }
-  
-  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trs
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import java.util.List;
 class ReadInJoyUserInfoModule$3
   implements Runnable
 {
-  ReadInJoyUserInfoModule$3(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, List paramList, int paramInt1, int paramInt2, int paramInt3) {}
+  ReadInJoyUserInfoModule$3(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, List paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    ReadInJoyUserInfoModule.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.b, this.c);
+    ReadInJoyUserInfoModule.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.b, this.c, this.d);
   }
 }
 

@@ -5,6 +5,7 @@ import android.os.Looper;
 import java.util.HashMap;
 import java.util.Timer;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
+import oicq.wlogin_sdk.tlv_type.tlv_t543;
 import oicq.wlogin_sdk.tools.util;
 
 public class WtloginHelper$HelperThread
@@ -305,6 +306,15 @@ public class WtloginHelper$HelperThread
     }
   }
   
+  private void saveContextCommonDataIntoExtentMap(async_context paramasync_context)
+  {
+    if (paramasync_context._t543 != null)
+    {
+      util.LOGI("context from seq " + this.mUserSigInfo._seqence + " tlv length " + paramasync_context._t543.get_data_len(), this.mUserAccount);
+      this.mUserSigInfo.loginResultTLVMap.put(new Integer(1347), paramasync_context._t543);
+    }
+  }
+  
   private void saveContextDataIntoExtentMap(async_context paramasync_context, int paramInt)
   {
     if ((paramInt == 0) && (paramasync_context.tlv528 != null))
@@ -350,7 +360,7 @@ public class WtloginHelper$HelperThread
     for (;;)
     {
       return;
-      int k = WtloginHelper.access$200(this.mHelper).s;
+      int k = WtloginHelper.access$200(this.mHelper).t;
       boolean bool;
       if (this.mHandler == null)
       {
@@ -413,7 +423,7 @@ public class WtloginHelper$HelperThread
           if (this.mReqType != 1) {
             break label472;
           }
-          i = WtloginHelper.access$700(this.mHelper, this.mUserAccount, this.mUserSigInfo, 1);
+          i = WtloginHelper.access$800(this.mHelper, this.mUserAccount, this.mUserSigInfo, 1);
           this.mHandler.post(new WtloginHelper.HelperThread.3(this, k, i));
         }
       }
@@ -436,44 +446,44 @@ public class WtloginHelper$HelperThread
             label472:
             if (this.mReqType == 2)
             {
-              i = WtloginHelper.access$800(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, 1);
+              i = WtloginHelper.access$900(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.4(this, k, i));
               continue;
             }
             if (this.mReqType == 3)
             {
-              i = WtloginHelper.access$900(this.mHelper, this.mUserAccount, this.mSmsAppid, this.mUserSigInfo, this.mExtraData, 1);
+              i = WtloginHelper.access$1000(this.mHelper, this.mUserAccount, this.mSmsAppid, this.mUserSigInfo, this.mExtraData, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.5(this, k, i));
               continue;
             }
             if (this.mReqType == 4)
             {
-              i = WtloginHelper.access$1000(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, this.mExtraData, 1);
+              i = WtloginHelper.access$1100(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, this.mExtraData, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.6(this, k, i));
               continue;
             }
             if (this.mReqType == 5) {
               synchronized (WtloginHelper.GET_ST_WITHOUT_PASSWORD_LOCK)
               {
-                int j = WtloginHelper.access$1100(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwDstAppid, this.mDwDstAppPri, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwDstSubAppidList, this.mUserSigInfo, this.mST, this.mReserve, 1, this.mPromise);
+                int j = WtloginHelper.access$1200(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwDstAppid, this.mDwDstAppPri, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwDstSubAppidList, this.mUserSigInfo, this.mST, this.mReserve, 1, this.mPromise);
                 i = j;
                 if (j == 20)
                 {
                   util.LOGI("retry ret=0x14", "");
-                  i = WtloginHelper.access$1100(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwDstAppid, this.mDwDstAppPri, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwDstSubAppidList, this.mUserSigInfo, this.mST, this.mReserve, 1, this.mPromise);
+                  i = WtloginHelper.access$1200(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwDstAppid, this.mDwDstAppPri, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwDstSubAppidList, this.mUserSigInfo, this.mST, this.mReserve, 1, this.mPromise);
                 }
                 this.mHandler.post(new WtloginHelper.HelperThread.7(this, k, i));
               }
             }
             if (this.mReqType == 6)
             {
-              i = WtloginHelper.access$1300(this.mHelper, this.mUserAccount, this.mAppid1, this.mSubAppid1, this.mDwMainSigMap, this.mAppName2, this.mSsoVer2, this.mAppid2, this.mSubAppid2, this.mAppVer2, this.mAppSign2, this.mUserSigInfo, this.mFastLoginInfo, 1);
+              i = WtloginHelper.access$1400(this.mHelper, this.mUserAccount, this.mAppid1, this.mSubAppid1, this.mDwMainSigMap, this.mAppName2, this.mSsoVer2, this.mAppid2, this.mSubAppid2, this.mAppVer2, this.mAppSign2, this.mUserSigInfo, this.mFastLoginInfo, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.8(this, k, i));
               continue;
             }
             if (this.mReqType == 7)
             {
-              WtloginHelper.access$1400(this.mHelper, 1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid);
+              WtloginHelper.access$1500(this.mHelper, 1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid);
               continue;
             }
             if (this.mReqType == 9)
@@ -490,42 +500,42 @@ public class WtloginHelper$HelperThread
             }
             if (this.mReqType == 12)
             {
-              i = WtloginHelper.access$1800(this.mHelper, this.mAppid1, this.mSubAppid1, this.mUserAccount, this.mExtraFlag, this.mExtraUin, this.mUserSigInfo, 1);
+              i = WtloginHelper.access$1900(this.mHelper, this.mAppid1, this.mSubAppid1, this.mUserAccount, this.mExtraFlag, this.mExtraUin, this.mUserSigInfo, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.11(this, k, i));
               continue;
             }
             if (this.mReqType == 13)
             {
-              i = WtloginHelper.access$1900(this.mHelper, this.mUserAccount, this.mMsgCode, this.mUserSigInfo, 1);
+              i = WtloginHelper.access$2000(this.mHelper, this.mUserAccount, this.mMsgCode, this.mUserSigInfo, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.12(this, k, i));
               continue;
             }
             if (this.mReqType == 14)
             {
-              i = WtloginHelper.access$2000(this.mHelper, this.mUserAccount, this.mUserSigInfo, 1);
+              i = WtloginHelper.access$2100(this.mHelper, this.mUserAccount, this.mUserSigInfo, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.13(this, k, i));
               continue;
             }
             if (this.mReqType == 8)
             {
-              WtloginHelper.access$2100(this.mHelper, 1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid, this.mReportErrType);
+              WtloginHelper.access$2200(this.mHelper, 1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid, this.mReportErrType);
               continue;
             }
             if (this.mReqType == 15)
             {
-              i = WtloginHelper.access$2200(this.mHelper, this.mUserAccount, this.quickLoginParam, 1);
+              i = WtloginHelper.access$2300(this.mHelper, this.mUserAccount, this.quickLoginParam, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.14(this, k, i));
               continue;
             }
             if (this.mReqType == 16)
             {
-              i = WtloginHelper.access$2300(this.mHelper, this.mUserAccount, this.ptSig, this.quickLoginParam, 1);
+              i = WtloginHelper.access$2400(this.mHelper, this.mUserAccount, this.ptSig, this.quickLoginParam, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.15(this, k, i));
               continue;
             }
             if (this.mReqType == 17)
             {
-              i = WtloginHelper.access$2400(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwSubDstAppid, this.mDwMainSigMap, this.mUserSigInfo, 1);
+              i = WtloginHelper.access$2500(this.mHelper, this.mUserAccount, this.mDwAppid, this.mDwSubDstAppid, this.mDwMainSigMap, this.mUserSigInfo, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.16(this, k, i));
               continue;
             }

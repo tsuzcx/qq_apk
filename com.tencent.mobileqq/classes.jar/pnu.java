@@ -1,64 +1,80 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-class pnu
-  implements rpw
+public class pnu
+  extends pnq
 {
-  pnu(pnh parampnh, View paramView, pny parampny, VideoView paramVideoView) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public pnu(@NotNull pnr parampnr, Activity paramActivity)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getLocationInWindow(arrayOfInt);
-    if ((arrayOfInt[0] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a[0]) || (arrayOfInt[1] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a[1]))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a = arrayOfInt;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.c() == VideoView.b) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b() != 3)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.c();
-      }
-    }
+    super(parampnr, "RIJDailyPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public boolean a()
+  private boolean c()
   {
     boolean bool2 = false;
-    View localView1 = (View)this.jdField_a_of_type_AndroidViewView.getParent();
-    View localView2 = (View)((View)localView1.getParent()).getParent();
+    boolean bool3 = true;
+    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
     boolean bool1 = bool2;
-    if (localView2 != null)
+    if (localIntent != null)
     {
-      View localView3 = (View)localView2.getParent();
       bool1 = bool2;
-      if (localView3 != null)
+      if (localIntent.hasExtra("arg_channel_rowkey"))
       {
-        int i = localView1.getTop();
-        int j = localView2.getTop();
-        int k = localView3.getPaddingTop();
-        int m = localView3.getBottom();
-        int n = localView2.getTop();
-        int i1 = localView1.getBottom();
-        if ((!this.jdField_a_of_type_Pny.a()) || (i + j - k < -localView1.getHeight() * 0.3D) || (m - n - i1 < -localView1.getHeight() * 0.3D)) {
-          break label159;
+        bool1 = bool2;
+        if (localIntent.hasExtra("arg_channel_article_url"))
+        {
+          String str1 = localIntent.getStringExtra("arg_channel_rowkey");
+          String str2 = localIntent.getStringExtra("arg_channel_article_url");
+          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
+            break label199;
+          }
+          Object localObject = new Bundle();
+          ((Bundle)localObject).putString("floating_window_rowkey", str1);
+          ((Bundle)localObject).putString("float_layer_article_url", str2);
+          bmqh.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
+          if (this.jdField_a_of_type_AndroidAppActivity != null)
+          {
+            localObject = pha.a(this.jdField_a_of_type_AndroidAppActivity);
+            if (localObject != null) {
+              ((ReadinjoyTabFrame)localObject).a(32);
+            }
+          }
+          QLog.i("RIJDailyPopupStep", 1, "[handleDailyJumpToRecommendChannel], open floating window, rowKey = " + str1 + ", articleURL = " + str2);
         }
       }
     }
-    label159:
-    for (bool1 = true;; bool1 = false) {
+    label199:
+    for (bool1 = bool3;; bool1 = false)
+    {
+      localIntent.removeExtra("arg_channel_rowkey");
+      localIntent.removeExtra("arg_channel_article_url");
       return bool1;
     }
   }
   
-  public void b()
+  protected void g()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a(false);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.c() == VideoView.b) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b() != 5)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    }
+    a(this.jdField_a_of_type_Boolean);
+  }
+  
+  protected void h()
+  {
+    this.jdField_a_of_type_Boolean = c();
+    a(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnu
  * JD-Core Version:    0.7.0.1
  */

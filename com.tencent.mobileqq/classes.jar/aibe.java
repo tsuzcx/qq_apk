@@ -1,17 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibe
-  extends aruk
+class aibe
+  implements DialogInterface.OnClickListener
 {
-  public aibe(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aibe(aiay paramaiay) {}
   
-  public void a(View paramView)
-  {
-    azqs.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

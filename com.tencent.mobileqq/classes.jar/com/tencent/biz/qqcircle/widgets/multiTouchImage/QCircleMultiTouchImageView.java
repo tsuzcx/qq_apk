@@ -10,14 +10,16 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLImageView;
-import uhq;
-import uhs;
-import uht;
-import uhu;
-import uhv;
-import uhw;
-import uhx;
-import uhy;
+import wba;
+import wbc;
+import wbd;
+import wbe;
+import wbf;
+import wbg;
+import wbh;
+import wbi;
+import wbj;
+import wbk;
 
 public class QCircleMultiTouchImageView
   extends URLImageView
@@ -142,9 +144,9 @@ public class QCircleMultiTouchImageView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramOnClickListener);
   }
   
-  public void setOnDoubleTabListener(uhq paramuhq)
+  public void setOnDoubleTabListener(wba paramwba)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhq);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwba);
   }
   
   public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
@@ -157,39 +159,49 @@ public class QCircleMultiTouchImageView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramOnLongClickListener);
   }
   
-  public void setOnMatrixChangeListener(uhs paramuhs)
+  public void setOnMatrixChangeListener(wbc paramwbc)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhs);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbc);
   }
   
-  public void setOnOutsidePhotoTapListener(uht paramuht)
+  public void setOnOutsidePhotoTapListener(wbd paramwbd)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuht);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbd);
   }
   
-  public void setOnPhotoTapListener(uhu paramuhu)
+  public void setOnPhotoTapListener(wbe paramwbe)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhu);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbe);
   }
   
-  public void setOnScaleChangeListener(uhv paramuhv)
+  public void setOnScaleBeginListener(wbf paramwbf)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhv);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbf);
   }
   
-  public void setOnSingleFlingListener(uhw paramuhw)
+  public void setOnScaleChangeListener(wbg paramwbg)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhw);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbg);
   }
   
-  public void setOnViewDragListener(uhx paramuhx)
+  public void setOnScaleEndListener(wbh paramwbh)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhx);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbh);
   }
   
-  public void setOnViewTapListener(uhy paramuhy)
+  public void setOnSingleFlingListener(wbi paramwbi)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramuhy);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbi);
+  }
+  
+  public void setOnViewDragListener(wbj paramwbj)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbj);
+  }
+  
+  public void setOnViewTapListener(wbk paramwbk)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher.a(paramwbk);
   }
   
   public void setRotationBy(float paramFloat)
@@ -244,7 +256,7 @@ public class QCircleMultiTouchImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.multiTouchImage.QCircleMultiTouchImageView
  * JD-Core Version:    0.7.0.1
  */

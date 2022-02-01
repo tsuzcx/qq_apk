@@ -13,12 +13,18 @@ class MultiIncomingCallsActivity$10
   public void run()
   {
     ArrayList localArrayList = this.this$0.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
-    ThreadManager.getUIHandler().post(new MultiIncomingCallsActivity.10.1(this, localArrayList));
+    if (MultiIncomingCallsActivity.c(this.this$0) != null)
+    {
+      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.c(this.this$0));
+      MultiIncomingCallsActivity.b(this.this$0, null);
+    }
+    MultiIncomingCallsActivity.b(this.this$0, new MultiIncomingCallsActivity.10.1(this, localArrayList));
+    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.c(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.10
  * JD-Core Version:    0.7.0.1
  */

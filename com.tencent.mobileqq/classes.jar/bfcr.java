@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.XListView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class bfcr
-  implements View.OnClickListener
+  implements bhva
 {
-  public bfcr(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bfcr(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onClick(View paramView)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    AuthorityControlFragment.a(this.a).c();
-    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690335);
-    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
-    this.a.rightViewText.setEnabled(true);
-    this.a.setLeftButton("", null);
-    this.a.leftView.setVisibility(0);
-    AuthorityControlFragment.a(this.a).setText(2131690349);
-    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

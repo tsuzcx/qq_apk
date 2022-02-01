@@ -1,32 +1,27 @@
-import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biww
-  extends biwp
+class biww
+  implements View.OnClickListener
 {
-  public biww(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, biws parambiws, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
-  {
-    super(paramActivity, parambiws, paramInt1, paramInt2, paramAppRuntime);
-  }
+  biww(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    if (LocationDetailActivity.a(this.a))
-    {
-      bivs.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
     }
-    super.onClick(paramView);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Biws.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,34 @@
-import android.app.Activity;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class scf
-  implements Animation.AnimationListener
+class scf
+  implements DialogInterface.OnDismissListener
 {
-  public scf(FastWebAnimationUtils.3 param3) {}
+  scf(sce paramsce) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
-    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772182);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
+    paramDialogInterface = this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (!sce.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      sce.a(paramDialogInterface, bool);
+      if ((sce.a(this.a) != null) && (sce.a(this.a).b()) && (sce.b(this.a)) && (sce.a(this.a))) {
+        sce.a(this.a).c();
+      }
+      if (sce.a(this.a) != null) {
+        sce.a(this.a).g();
+      }
+      sce.a(this.a, false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scf
  * JD-Core Version:    0.7.0.1
  */

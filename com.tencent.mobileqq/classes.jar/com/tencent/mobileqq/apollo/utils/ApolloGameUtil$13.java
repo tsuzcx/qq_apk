@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import akwd;
-import akyg;
-import alkd;
+import ampj;
+import amrk;
+import andl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,18 +17,18 @@ import com.tencent.qphone.base.util.QLog;
 final class ApolloGameUtil$13
   implements Runnable
 {
-  ApolloGameUtil$13(int paramInt, String paramString, alkd paramalkd) {}
+  ApolloGameUtil$13(int paramInt, String paramString, andl paramandl) {}
   
   public void run()
   {
     Object localObject1 = BaseApplicationImpl.getContext();
     try
     {
-      Object localObject2 = akwd.a(this.jdField_a_of_type_Int);
+      Object localObject2 = ampj.a(this.jdField_a_of_type_Int);
       if (localObject2 == null) {
         return;
       }
-      Object localObject3 = ((akyg)localObject2).a();
+      Object localObject3 = ((amrk)localObject2).a();
       if ((localObject3 != null) && (((CmGameStartChecker.StartCheckParam)localObject3).game != null))
       {
         localObject3 = ((CmGameStartChecker.StartCheckParam)localObject3).game.name;
@@ -38,7 +38,7 @@ final class ApolloGameUtil$13
         localIntent.putExtra("jump_cm_extendinfo", this.jdField_a_of_type_JavaLangString);
         localIntent.setFlags(337641472);
         localObject1 = null;
-        Activity localActivity = ((akyg)localObject2).a();
+        Activity localActivity = ((amrk)localObject2).a();
         if ((localActivity instanceof ApolloGameActivity))
         {
           localObject2 = ((ApolloGameActivity)localActivity).a();
@@ -47,7 +47,7 @@ final class ApolloGameUtil$13
             localObject1 = ApolloUtil.a();
           }
         }
-        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Alkd);
+        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Andl);
         return;
       }
     }
@@ -64,7 +64,7 @@ final class ApolloGameUtil$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.13
  * JD-Core Version:    0.7.0.1
  */

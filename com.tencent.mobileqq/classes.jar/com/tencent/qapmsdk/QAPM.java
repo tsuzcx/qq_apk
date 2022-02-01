@@ -4,14 +4,15 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.qapmsdk.abfactor.AbProviderImpl;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.config.PluginCombination.Companion;
+import com.tencent.qapmsdk.base.listener.IExtraDataListener;
 import com.tencent.qapmsdk.base.listener.IInspectorListener;
 import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
-import com.tencent.qapmsdk.base.listener.IMonitorListener;
 import com.tencent.qapmsdk.base.listener.IWebViewBreadCrumbListener;
+import com.tencent.qapmsdk.base.reporter.ab.AbProviderSingleton;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
 import com.tencent.qapmsdk.common.logger.LogState;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.dropframe.DropFrameMonitor;
@@ -38,11 +39,12 @@ public class QAPM
   public static final int ModeFileIO;
   public static final int ModeHTTP;
   public static final int ModeJsError;
-  public static final int ModeLeakInspector;
+  public static final int ModeLeakInspector = PluginCombination.leakPlugin.mode;
   public static final int ModeLooper;
   public static final int ModeResource;
   public static final int ModeStable;
   public static final int ModeWebView;
+  public static final int PropertyExtraDataListener = 202;
   public static final int PropertyInspectorListener = 107;
   public static final int PropertyKeyAppId = 101;
   public static final int PropertyKeyAppInstance = 201;
@@ -50,12 +52,7 @@ public class QAPM
   public static final int PropertyKeyAthenaHost = 111;
   public static final int PropertyKeyDeviceId = 109;
   public static final int PropertyKeyHost = 106;
-  public static final int PropertyKeyIsAuthorize = 301;
-  public static final int PropertyKeyIsBreadCrumb = 303;
-  public static final int PropertyKeyIsRemoteConfig = 302;
   public static final int PropertyKeyLogLevel = 105;
-  public static final int PropertyKeyMonitorListener = 305;
-  public static final int PropertyKeyResourcePublicMode = 304;
   public static final int PropertyKeySymbolId = 104;
   public static final int PropertyKeyUserId = 102;
   public static final int PropertyMemoryCellingListener = 108;
@@ -64,11 +61,10 @@ public class QAPM
   private static final String TAG = "QAPM_QAPM";
   @NonNull
   private static QAPM apm = new QAPM();
-  private static int userMode = PluginCombination.Companion.getModeStable();
+  private static int userMode = 0;
   
   static
   {
-    ModeLeakInspector = PluginCombination.leakPlugin.mode;
     ModeFileIO = PluginCombination.ioPlugin.mode;
     ModeDBIO = PluginCombination.dbPlugin.mode;
     ModeLooper = PluginCombination.loopStackPlugin.mode;
@@ -100,6 +96,11 @@ public class QAPM
     if (paramString2 == null) {
       str = "";
     }
+    if ((userMode & paramInt) != paramInt)
+    {
+      userMode |= paramInt;
+      a.a(paramInt, false);
+    }
     if (paramInt == ModeResource) {
       if ("RESOURCEMONITOR".equals(str)) {
         ResourceMonitor.getInstance().start();
@@ -110,18 +111,12 @@ public class QAPM
       return true;
       ResourceMonitor.getInstance().start(paramString1, str);
       continue;
-      if (paramInt == ModeDropFrame)
-      {
+      if (paramInt == ModeDropFrame) {
         if ("RESOURCEMONITOR".equals(str)) {
           ResourceMonitor.getInstance().stop();
         } else {
           DropFrameMonitor.getInstance().beginDropFrameScene(paramString1);
         }
-      }
-      else
-      {
-        userMode |= paramInt;
-        Magnifier.init(paramInt, false);
       }
     }
   }
@@ -137,35 +132,35 @@ public class QAPM
     if (paramString2 == null) {
       str = "";
     }
-    if (paramInt == ModeResource)
+    if ((userMode & paramInt) != paramInt)
     {
-      if ("RESOURCEMONITOR".equals(str))
-      {
+      userMode |= paramInt;
+      a.a(paramInt, false);
+    }
+    if (paramInt == ModeResource) {
+      if ("RESOURCEMONITOR".equals(str)) {
         ResourceMonitor.getInstance().stop();
-        return true;
       }
+    }
+    while (paramInt != ModeDropFrame)
+    {
+      return true;
       ResourceMonitor.getInstance().stop(paramString1, str);
       return true;
     }
-    if (paramInt == ModeDropFrame)
-    {
-      DropFrameMonitor.getInstance().stopDropFrameScene();
-      return true;
-    }
-    userMode |= paramInt;
-    Magnifier.init(paramInt, false);
+    DropFrameMonitor.getInstance().stopDropFrameScene();
     return true;
   }
   
-  public static String getABFactorByQAPMPlugin(int paramInt)
+  public static String getAbFactorByQapmPlugin(int paramInt)
   {
-    return AbProviderImpl.getInstance().getAbFactors(paramInt);
+    return AbProviderSingleton.getInstance().getAbFactors(paramInt);
   }
   
-  public static void setABFactor(@NotNull String paramString1, @NotNull String paramString2, @NotNull Class<? extends QAPM.ABType> paramClass)
+  public static void setAbFactor(@NotNull String paramString1, @NotNull String paramString2, @NotNull Class<? extends AbType> paramClass)
   {
     Logger.INSTANCE.i(new String[] { "QAPM_QAPM", "setABFactor:" + paramClass + " val " + paramString2 });
-    paramClass = AbProviderImpl.getInstance().getABFoctor(paramClass);
+    paramClass = AbProviderSingleton.getInstance().getAbType(paramClass);
     if (paramClass != null)
     {
       paramClass.initValue(paramString2, paramString1);
@@ -175,9 +170,9 @@ public class QAPM
     Logger.INSTANCE.e(new String[] { "QAPM_QAPM", "setABFactor not found" });
   }
   
-  public static void setABTypes(Class<? extends QAPM.ABType>[] paramArrayOfClass)
+  public static void setAbTypes(Class<? extends AbType>[] paramArrayOfClass)
   {
-    AbProviderImpl.getInstance().mFactorArr = paramArrayOfClass;
+    AbProviderSingleton.getInstance().abTypeArr = paramArrayOfClass;
   }
   
   @NonNull
@@ -229,15 +224,14 @@ public class QAPM
         Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
       }
       continue;
-      com.tencent.qapmsdk.base.listener.ListenerManager.monitorListener = (IMonitorListener)paramObject;
-      continue;
-      com.tencent.qapmsdk.base.reporter.authorization.Authorization.isAuthorize = ((Boolean)paramObject).booleanValue();
-      continue;
-      com.tencent.qapmsdk.qapmmanager.QAPMLauncher.isRemoteConfig = ((Boolean)paramObject).booleanValue();
-      continue;
-      com.tencent.qapmsdk.qapmmanager.QAPMLauncher.isBreadCrumb = ((Boolean)paramObject).booleanValue();
-      continue;
-      com.tencent.qapmsdk.base.config.RuntimeConfig.resouceMonitorPublicMode = ((Boolean)paramObject).booleanValue();
+      try
+      {
+        com.tencent.qapmsdk.base.listener.ListenerManager.extraDataListener = (IExtraDataListener)paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+      }
     }
   }
   
@@ -256,7 +250,7 @@ public class QAPM
       continue;
       if (QAPMConfigureWizard.setUin(paramString))
       {
-        Magnifier.init(userMode, true);
+        a.a(userMode, true);
         continue;
         QAPMConfigureWizard.setAPMHost(paramString);
         continue;
@@ -292,13 +286,13 @@ public class QAPM
     }
   }
   
-  public static void unSetABFactor(Class<? extends QAPM.ABType> paramClass)
+  public static void unSetAbFactor(Class<? extends AbType> paramClass)
   {
     Logger.INSTANCE.i(new String[] { "QAPM_QAPM", "unSetABFactor:" + paramClass });
-    paramClass = AbProviderImpl.getInstance().getABFoctor(paramClass);
+    paramClass = AbProviderSingleton.getInstance().getAbType(paramClass);
     if (paramClass != null)
     {
-      paramClass.unactive();
+      paramClass.unActive();
       return;
     }
     Logger.INSTANCE.e(new String[] { "QAPM_QAPM", "setABFactor not found" });
@@ -306,7 +300,7 @@ public class QAPM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.QAPM
  * JD-Core Version:    0.7.0.1
  */

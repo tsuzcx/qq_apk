@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.mobileqq.videoplatform.api.PlayerState;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
 import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 import com.tencent.superplayer.api.ISuperPlayer;
@@ -27,7 +26,7 @@ public class VideoPlayerProxy
 {
   private long bufferEndtime;
   private long bufferStartTime;
-  private VideoPlayerCallback mCallback;
+  private VideoPlayerInnerCallback mCallback;
   private Context mContext;
   public long mID;
   private PlayProgressChecker mPlayPgsChecker;
@@ -36,15 +35,16 @@ public class VideoPlayerProxy
   boolean mScaleFullScreen;
   public AtomicInteger mState = new AtomicInteger(0);
   private VideoPlayParam mVideoParam;
-  private View mVideoView;
+  private ISPlayerVideoView mVideoView;
   
-  public VideoPlayerProxy(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, VideoPlayerCallback paramVideoPlayerCallback, boolean paramBoolean)
+  public VideoPlayerProxy(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, VideoPlayerInnerCallback paramVideoPlayerInnerCallback, boolean paramBoolean)
   {
     this.mContext = paramContext;
     this.mID = paramLong;
     this.mVideoParam = paramVideoPlayParam;
-    this.mCallback = paramVideoPlayerCallback;
+    this.mCallback = paramVideoPlayerInnerCallback;
     this.mScaleFullScreen = paramBoolean;
+    this.mVideoView = createVideoView();
     init();
   }
   
@@ -63,7 +63,7 @@ public class VideoPlayerProxy
           return;
         }
         changeState(3);
-        this.mPlayer = SuperPlayerFactory.createMediaPlayer(this.mContext.getApplicationContext(), this.mVideoParam.mSceneId, (ISPlayerVideoView)this.mVideoView);
+        this.mPlayer = SuperPlayerFactory.createMediaPlayer(this.mContext.getApplicationContext(), this.mVideoParam.mSceneId, this.mVideoView);
         if (this.mScaleFullScreen)
         {
           this.mPlayer.setXYaxis(2);
@@ -73,6 +73,9 @@ public class VideoPlayerProxy
           this.mPlayer.setOnInfoListener(this);
           this.mPlayer.setOnErrorListener(this);
           this.mPlayer.setOnCaptureImageListener(this);
+          if (this.mVideoView != null) {
+            this.mVideoView.addViewCallBack(this);
+          }
         }
         else
         {
@@ -83,51 +86,27 @@ public class VideoPlayerProxy
     }
   }
   
-  private View createVideoView()
+  private ISPlayerVideoView createVideoView()
   {
-    ISPlayerVideoView localISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(this.mContext.getApplicationContext());
-    localISPlayerVideoView.addViewCallBack(this);
-    return (View)localISPlayerVideoView;
+    return SuperPlayerFactory.createPlayerVideoView(this.mContext.getApplicationContext());
   }
   
-  /* Error */
   private void init()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 186	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:getInstance	()Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;
-    //   5: invokevirtual 189	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:isSDKReady	()Z
-    //   8: ifeq +14 -> 22
-    //   11: aload_0
-    //   12: aload_0
-    //   13: invokespecial 96	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:createVideoView	()Landroid/view/View;
-    //   16: putfield 89	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:mVideoView	Landroid/view/View;
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: iconst_1
-    //   24: invokevirtual 122	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:changeState	(I)V
-    //   27: invokestatic 186	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:getInstance	()Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;
-    //   30: aload_0
-    //   31: getfield 56	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:mContext	Landroid/content/Context;
-    //   34: aload_0
-    //   35: invokevirtual 193	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:initSDKAsync	(Landroid/content/Context;Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
-    //   38: goto -19 -> 19
-    //   41: astore_1
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: aload_1
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	this	VideoPlayerProxy
-    //   41	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	41	finally
-    //   22	38	41	finally
+    try
+    {
+      if (!VideoPlaySDKManager.getInstance().isSDKReady())
+      {
+        changeState(1);
+        VideoPlaySDKManager.getInstance().initSDKAsync(this.mContext, this);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   private void openPlayer()
@@ -151,11 +130,11 @@ public class VideoPlayerProxy
           this.mPlayer.setLoopback(this.mVideoParam.mIsLoop, 0L, this.mVideoParam.mMaxPlayTimeMs);
           this.mPlayer.setOutputMute(this.mVideoParam.mIsMute);
           if (!this.mVideoParam.mIsLocal) {
-            break label244;
+            break label249;
           }
           if (this.mVideoParam.mVideoPath != null)
           {
-            SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mVideoPath, 101, this.mVideoParam.mFileID);
+            SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mVideoPath, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID);
             this.mPlayer.openMediaPlayer(this.mContext, localSuperPlayerVideoInfo, 0L);
             this.mVideoParam.mLastPlayPosMs = 0L;
             LogUtil.d(getLogTag(), 2, "openPlayer, videoPath = " + this.mVideoParam.mVideoPath);
@@ -169,8 +148,9 @@ public class VideoPlayerProxy
         }
       }
       finally {}
-      label244:
-      Object localObject2 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mUrls, 101, this.mVideoParam.mFileID, this.mVideoParam.mSavePath);
+      label249:
+      Object localObject2 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mUrls, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID, this.mVideoParam.mSavePath);
+      ((SuperPlayerVideoInfo)localObject2).setCookies(this.mVideoParam.mCookies);
       this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject2, 0L);
       this.mVideoParam.mLastPlayPosMs = 0L;
       if (LogUtil.isColorLevel())
@@ -250,23 +230,14 @@ public class VideoPlayerProxy
   
   protected void changeState(int paramInt)
   {
-    VideoPlayerProxy.5 local5;
     if (paramInt != this.mState.get())
     {
       if (LogUtil.isColorLevel()) {
         LogUtil.d(getLogTag(), 2, "changeState() , newState = " + PlayerState.getStateStr(paramInt));
       }
       this.mState.set(paramInt);
-      local5 = new VideoPlayerProxy.5(this, paramInt);
-      if (paramInt == 4) {
-        ThreadUtil.postOnUIThreadDelayed(local5, 300L);
-      }
+      ThreadUtil.postOnUIThread(new VideoPlayerProxy.5(this, paramInt));
     }
-    else
-    {
-      return;
-    }
-    ThreadUtil.postOnUIThread(local5);
   }
   
   public long getCurPostionMs()
@@ -330,7 +301,15 @@ public class VideoPlayerProxy
   
   public View getVideoView()
   {
-    return this.mVideoView;
+    return (View)this.mVideoView;
+  }
+  
+  public boolean isMute()
+  {
+    if (this.mPlayer != null) {
+      return this.mPlayer.isOutputMute();
+    }
+    return false;
   }
   
   public boolean isPlaying()
@@ -415,9 +394,12 @@ public class VideoPlayerProxy
       if (LogUtil.isColorLevel()) {
         LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_FIRST_VIDEO_FRAME_RENDERED ");
       }
-      if ((this.mReporter != null) && (this.mReporter.firstRenderTime == 0L))
-      {
+      if ((this.mReporter != null) && (this.mReporter.firstRenderTime == 0L)) {
         this.mReporter.firstRenderTime = System.currentTimeMillis();
+      }
+      if (this.mCallback != null)
+      {
+        this.mCallback.onFirstFrameRendered(this.mID);
         continue;
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_VIDEO_DECODER_TYPE ");
@@ -525,6 +507,9 @@ public class VideoPlayerProxy
     if (LogUtil.isColorLevel()) {
       LogUtil.e(getLogTag(), 2, "onSurfaceDestroy() ");
     }
+    if (this.mCallback != null) {
+      this.mCallback.onSurfaceDestroy(this.mID);
+    }
     release(false, false);
   }
   
@@ -592,6 +577,7 @@ public class VideoPlayerProxy
         }
         if (!VideoPlaySDKManager.getInstance().isSDKReady())
         {
+          VideoPlaySDKManager.getInstance().addSDKInstalledListener(this);
           if (LogUtil.isColorLevel()) {
             LogUtil.d(getLogTag(), 2, "play, sdk not ready, return.");
           }
@@ -609,7 +595,7 @@ public class VideoPlayerProxy
           continue;
         }
         if (this.mPlayer == null) {
-          break label264;
+          break label271;
         }
       }
       finally {}
@@ -630,7 +616,7 @@ public class VideoPlayerProxy
       {
         openPlayer();
         continue;
-        label264:
+        label271:
         createMediaPlayer();
         openPlayer();
       }
@@ -666,10 +652,11 @@ public class VideoPlayerProxy
         }
         else
         {
-          if ((this.mVideoView != null) && ((this.mVideoView instanceof ISPlayerVideoView))) {
-            ((ISPlayerVideoView)this.mVideoView).removeViewCallBack(this);
+          if (this.mVideoView != null) {
+            this.mVideoView.removeViewCallBack(this);
           }
           ThreadUtil.postOnSubThread(new VideoPlayerProxy.1(this, paramBoolean1));
+          VideoPlaySDKManager.getInstance().removeSDKInstalledListener(this);
           return;
         }
       }
@@ -692,6 +679,21 @@ public class VideoPlayerProxy
     }
   }
   
+  public void setID(long paramLong)
+  {
+    this.mID = paramLong;
+    if (this.mPlayPgsChecker != null) {
+      this.mPlayPgsChecker.setId(paramLong);
+    }
+  }
+  
+  public void setMute(boolean paramBoolean)
+  {
+    if (this.mPlayer != null) {
+      this.mPlayer.setOutputMute(paramBoolean);
+    }
+  }
+  
   public void setVideoParam(VideoPlayParam paramVideoPlayParam)
   {
     this.mVideoParam = paramVideoPlayParam;
@@ -699,7 +701,7 @@ public class VideoPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

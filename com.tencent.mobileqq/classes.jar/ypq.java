@@ -1,35 +1,35 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ypq
-  extends ClickableSpan
+  extends QQUIEventReceiver<ypb, wor>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ypr jdField_a_of_type_Ypr;
-  private String b;
-  
-  public void onClick(View paramView)
+  public ypq(@NonNull ypb paramypb)
   {
-    if (this.jdField_a_of_type_Ypr != null) {
-      this.jdField_a_of_type_Ypr.a(this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    super(paramypb);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(@NonNull ypb paramypb, @NonNull wor paramwor)
   {
-    if (this.jdField_a_of_type_Int != -2147483648)
+    if (paramwor.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+      yqp.d(this.TAG, "deleted story failed");
+      paramypb.a(5, paramwor.jdField_a_of_type_JavaLangString);
       return;
     }
-    super.updateDrawState(paramTextPaint);
+    paramypb.a(paramwor.jdField_a_of_type_JavaLangString);
+    paramypb.a(new ymk[] { new ymf(yln.a(ypb.a(paramypb).a.jdField_a_of_type_JavaLangString)), (ymk)paramypb.c.a() });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wor.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypq
  * JD-Core Version:    0.7.0.1
  */

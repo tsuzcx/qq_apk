@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aioq;
-import aior;
+import akfk;
+import akfl;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import asjr;
+import auqi;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.widget.Gallery;
 
@@ -16,9 +16,9 @@ public class ProGallery
   extends Gallery
 {
   private int jdField_a_of_type_Int = 1;
-  private aioq jdField_a_of_type_Aioq;
-  private aior jdField_a_of_type_Aior;
-  private asjr jdField_a_of_type_Asjr;
+  private akfk jdField_a_of_type_Akfk;
+  private akfl jdField_a_of_type_Akfl;
+  private auqi jdField_a_of_type_Auqi;
   
   public ProGallery(Context paramContext)
   {
@@ -37,23 +37,23 @@ public class ProGallery
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Aior != null) {
-      this.jdField_a_of_type_Aior.onscaleBegin(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Akfl != null) {
+      this.jdField_a_of_type_Akfl.onscaleBegin(paramInt, paramView, paramViewGroup);
     }
   }
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aior != null) {
-      this.jdField_a_of_type_Aior.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
+    if (this.jdField_a_of_type_Akfl != null) {
+      this.jdField_a_of_type_Akfl.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
     }
   }
   
   public void a(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
     super.a(paramInt, paramView, paramRegionDrawableData);
-    if (this.jdField_a_of_type_Aior != null) {
-      this.jdField_a_of_type_Aior.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
+    if (this.jdField_a_of_type_Akfl != null) {
+      this.jdField_a_of_type_Akfl.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
@@ -61,7 +61,7 @@ public class ProGallery
   {
     int k = 0;
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Aior == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Akfl == null)) {}
     int m;
     label34:
     do
@@ -99,40 +99,40 @@ public class ProGallery
           if (paramInt < 0) {
             break;
           }
-          this.jdField_a_of_type_Aior.onDestroyView(paramInt, null, paramViewGroup);
+          this.jdField_a_of_type_Akfl.onDestroyView(paramInt, null, paramViewGroup);
           return;
-          this.jdField_a_of_type_Aior.onCreateView(j, null, paramViewGroup);
+          this.jdField_a_of_type_Akfl.onCreateView(j, null, paramViewGroup);
           i += 1;
           break label34;
         }
-        this.jdField_a_of_type_Aior.onCreateView(j, null, paramViewGroup);
+        this.jdField_a_of_type_Akfl.onCreateView(j, null, paramViewGroup);
         i += 1;
       }
       paramInt = paramInt + n + 1;
     } while (paramInt >= m);
     label158:
-    this.jdField_a_of_type_Aior.onDestroyView(paramInt, null, paramViewGroup);
+    this.jdField_a_of_type_Akfl.onDestroyView(paramInt, null, paramViewGroup);
   }
   
   public void b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Aior != null) {
-      this.jdField_a_of_type_Aior.onSlot(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Akfl != null) {
+      this.jdField_a_of_type_Akfl.onSlot(paramInt, paramView, paramViewGroup);
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Asjr != null) {
-      this.jdField_a_of_type_Asjr.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Auqi != null) {
+      this.jdField_a_of_type_Auqi.a(paramMotionEvent);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Asjr != null) {
-      this.jdField_a_of_type_Asjr.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_Auqi != null) {
+      this.jdField_a_of_type_Auqi.a(paramScaleGestureDetector);
     }
     return super.onScale(paramScaleGestureDetector);
   }
@@ -140,26 +140,26 @@ public class ProGallery
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_Aioq != null) {
-      this.jdField_a_of_type_Aioq.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Akfk != null) {
+      this.jdField_a_of_type_Akfk.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return bool;
   }
   
-  public void setGalleryScaleListener(asjr paramasjr)
+  public void setGalleryScaleListener(auqi paramauqi)
   {
-    this.jdField_a_of_type_Asjr = paramasjr;
+    this.jdField_a_of_type_Auqi = paramauqi;
   }
   
-  public void setGestureListener(aioq paramaioq)
+  public void setGestureListener(akfk paramakfk)
   {
-    this.jdField_a_of_type_Aioq = paramaioq;
+    this.jdField_a_of_type_Akfk = paramakfk;
   }
   
-  public void setOnNoBlankListener(aior paramaior)
+  public void setOnNoBlankListener(akfl paramakfl)
   {
-    if (paramaior != this.jdField_a_of_type_Aior) {
-      this.jdField_a_of_type_Aior = paramaior;
+    if (paramakfl != this.jdField_a_of_type_Akfl) {
+      this.jdField_a_of_type_Akfl = paramakfl;
     }
   }
   
@@ -168,7 +168,7 @@ public class ProGallery
     int m = 0;
     super.setSelection(paramInt);
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Aior == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Akfl == null)) {}
     label193:
     for (;;)
     {
@@ -207,7 +207,7 @@ public class ProGallery
         }
         while (paramInt <= i)
         {
-          this.jdField_a_of_type_Aior.onDestroyView(paramInt, null, this);
+          this.jdField_a_of_type_Akfl.onDestroyView(paramInt, null, this);
           paramInt += 1;
         }
         break;
@@ -233,7 +233,7 @@ public class ProGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ProGallery
  * JD-Core Version:    0.7.0.1
  */

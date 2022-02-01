@@ -1,44 +1,103 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.webkit.MimeTypeMap;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import java.io.File;
 
-public class biyh
-  implements biyn
+public final class biyh
 {
-  public biyh(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
-  
-  public void a()
+  public static Intent a(Context paramContext, File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
+      return null;
     }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+    String str = paramFile.getName().toLowerCase().trim();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addFlags(268435456);
+    if (a(str, paramContext.getResources().getStringArray(2130968627))) {
+      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
+    }
+    for (;;)
+    {
+      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
+      return localIntent;
+      if (a(str, paramContext.getResources().getStringArray(2130968633)))
+      {
+        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968631)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968634)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968625)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
+      }
+      else
+      {
+        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
+        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
+      }
+    }
   }
   
-  public void a(float paramFloat)
+  public static boolean a(String paramString, String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    boolean bool2 = false;
+    int j = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramString.endsWith(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyh
  * JD-Core Version:    0.7.0.1
  */

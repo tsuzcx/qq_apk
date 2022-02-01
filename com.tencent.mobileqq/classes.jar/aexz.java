@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aexz
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public aexz(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  public aexz(QQMapActivity paramQQMapActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    this.a.u();
+    bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

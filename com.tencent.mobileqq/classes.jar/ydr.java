@@ -1,43 +1,49 @@
-import NS_COMM.COMM.StCommonExt;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class ydr
-  implements View.OnClickListener
+public final class ydr
+  extends QQUIEventReceiver<ydh, wwb>
 {
-  ydr(ydp paramydp) {}
-  
-  public void onClick(View paramView)
+  public ydr(@NonNull ydh paramydh)
   {
-    paramView = new StringBuilder(ybn.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (this.a.a() != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramView.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
-        zaj.b("auth_follow", "clk_more", 0, 0, new String[0]);
-        ybt.a(paramView.toString());
-        return;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        continue;
-      }
-      QLog.d(ydp.a, 0, "jump more recommend H5 page with no attach info!");
+    super(paramydh);
+  }
+  
+  public void a(@NonNull ydh paramydh, @NonNull wwb paramwwb)
+  {
+    if (ydh.a(paramydh) == null) {
+      yqp.b(this.TAG, "ignore this feature event. %s.", paramwwb.toString());
     }
+    wqp localwqp;
+    do
+    {
+      return;
+      while (!paramwwb.hasNext())
+      {
+        do
+        {
+          yqp.a(this.TAG, "receive feature event. %s.", paramwwb.toString());
+        } while (paramwwb.a == null);
+        paramwwb = paramwwb.a.iterator();
+      }
+      localwqp = (wqp)paramwwb.next();
+    } while (!localwqp.a.equals(ydh.a(paramydh)));
+    yqp.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(ydh.a(paramydh).a.mViewTotalTime), Integer.valueOf(localwqp.c));
+    ydh.a(paramydh).a.mViewTotalTime = localwqp.c;
+    paramydh.a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydr
  * JD-Core Version:    0.7.0.1
  */

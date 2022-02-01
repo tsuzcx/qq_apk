@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aslm;
-import bamp;
+import aurs;
+import bdnt;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class GameCenterSessionInfo
   implements Parcelable, Comparable<GameCenterSessionInfo>
 {
-  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new aslm();
+  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new aurs();
   public int a;
   public long a;
   public String a;
@@ -32,7 +32,7 @@ public class GameCenterSessionInfo
   public String h;
   public String i;
   public String j;
-  String k;
+  public String k;
   
   public int a()
   {
@@ -57,7 +57,7 @@ public class GameCenterSessionInfo
   
   public String a()
   {
-    return this.i;
+    return this.k;
   }
   
   public JSONObject a()
@@ -68,13 +68,13 @@ public class GameCenterSessionInfo
       localJSONObject.put("sessionType", this.jdField_a_of_type_Int);
       localJSONObject.put("sessionId", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("gameId", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("gameName", e());
+      localJSONObject.put("gameName", f());
       localJSONObject.put("faceUrl", this.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("nickName", g());
-      localJSONObject.put("firstMsg", new bamp(this.f, 6, 32, -1).a());
+      localJSONObject.put("nickName", h());
+      localJSONObject.put("firstMsg", new bdnt(this.f, 6, 32, -1).a());
       localJSONObject.put("firstMsgTime", this.jdField_a_of_type_Long);
       localJSONObject.put("requestCount", this.jdField_b_of_type_Int);
-      localJSONObject.put("lastMsg", new bamp(this.g, 6, 32, -1).a());
+      localJSONObject.put("lastMsg", new bdnt(this.g, 6, 32, -1).a());
       localJSONObject.put("lastMsgTime", this.jdField_b_of_type_Long);
       localJSONObject.put("unreadMsg", this.jdField_c_of_type_Int);
       localJSONObject.put("onlineType", this.jdField_d_of_type_Int);
@@ -121,7 +121,7 @@ public class GameCenterSessionInfo
   
   public String b()
   {
-    return this.h;
+    return this.i;
   }
   
   public void b(int paramInt)
@@ -146,7 +146,7 @@ public class GameCenterSessionInfo
   
   public String c()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.h;
   }
   
   public void c(int paramInt)
@@ -161,7 +161,7 @@ public class GameCenterSessionInfo
   
   public String d()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void d(int paramInt)
@@ -181,10 +181,7 @@ public class GameCenterSessionInfo
   
   public String e()
   {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_c_of_type_JavaLangString = "QQ手游";
-    }
-    return this.jdField_c_of_type_JavaLangString;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
   public void e(String paramString)
@@ -194,7 +191,10 @@ public class GameCenterSessionInfo
   
   public String f()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      this.jdField_c_of_type_JavaLangString = "QQ手游";
+    }
+    return this.jdField_c_of_type_JavaLangString;
   }
   
   public void f(String paramString)
@@ -204,10 +204,7 @@ public class GameCenterSessionInfo
   
   public String g()
   {
-    if (TextUtils.isEmpty(this.e)) {
-      this.e = "游戏好友";
-    }
-    return this.e;
+    return this.jdField_d_of_type_JavaLangString;
   }
   
   public void g(String paramString)
@@ -217,12 +214,20 @@ public class GameCenterSessionInfo
   
   public String h()
   {
-    return this.g;
+    if (TextUtils.isEmpty(this.e)) {
+      this.e = "游戏好友";
+    }
+    return this.e;
   }
   
   public void h(String paramString)
   {
     this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public String i()
+  {
+    return this.g;
   }
   
   public void i(String paramString)
@@ -263,11 +268,12 @@ public class GameCenterSessionInfo
     paramParcel.writeString(this.h);
     paramParcel.writeString(this.i);
     paramParcel.writeString(this.j);
+    paramParcel.writeString(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo
  * JD-Core Version:    0.7.0.1
  */

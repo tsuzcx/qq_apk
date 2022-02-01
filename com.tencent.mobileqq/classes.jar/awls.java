@@ -1,14 +1,19 @@
-public final class awls
-  extends awky
+import java.lang.ref.WeakReference;
+
+public abstract class awls<T>
 {
-  protected int c()
+  public WeakReference<T> a;
+  
+  public awls(T paramT)
   {
-    return 517;
+    this.a = new WeakReference(paramT);
   }
+  
+  public abstract void a(T paramT, boolean paramBoolean, awlp paramawlp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awls
  * JD-Core Version:    0.7.0.1
  */

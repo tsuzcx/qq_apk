@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nzb;
+import oiw;
 
 public class ReadInJoyFeedsActivity$5$1
   implements Runnable
 {
-  public ReadInJoyFeedsActivity$5$1(nzb paramnzb) {}
+  public ReadInJoyFeedsActivity$5$1(oiw paramoiw) {}
   
   public void run()
   {
     KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.a.app.getManager(162);
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.h();
+      localKandianMergeManager.i();
     }
   }
 }

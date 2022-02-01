@@ -12,11 +12,11 @@ class TroopActivity$12
   
   public void run()
   {
-    if (this.this$0.f)
+    if (this.this$0.g)
     {
       int i = this.this$0.app.a().b();
-      TextView localTextView = (TextView)this.this$0.findViewById(2131378616);
-      ImageView localImageView = (ImageView)this.this$0.findViewById(2131368979);
+      TextView localTextView = (TextView)this.this$0.findViewById(2131379468);
+      ImageView localImageView = (ImageView)this.this$0.findViewById(2131369362);
       localTextView.setVisibility(0);
       localImageView.setVisibility(0);
       localTextView.setText("" + i);
@@ -28,7 +28,7 @@ class TroopActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.12
  * JD-Core Version:    0.7.0.1
  */

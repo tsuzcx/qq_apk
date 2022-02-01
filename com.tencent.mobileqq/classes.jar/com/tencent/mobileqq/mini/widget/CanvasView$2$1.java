@@ -14,7 +14,7 @@ class CanvasView$2$1
     //   0: aload_0
     //   1: getfield 16	com/tencent/mobileqq/mini/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
     //   4: ifnonnull +38 -> 42
-    //   7: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   7: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   10: iconst_2
     //   11: ldc 33
     //   13: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -106,7 +106,7 @@ class CanvasView$2$1
     //   204: istore 5
     //   206: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   209: ifeq +40 -> 249
-    //   212: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   212: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   215: iconst_2
     //   216: new 101	java/lang/StringBuilder
     //   219: dup
@@ -127,7 +127,7 @@ class CanvasView$2$1
     //   253: getfield 14	com/tencent/mobileqq/mini/widget/CanvasView$2$1:this$1	Lcom/tencent/mobileqq/mini/widget/CanvasView$2;
     //   256: getfield 123	com/tencent/mobileqq/mini/widget/CanvasView$2:val$isPngFile	Z
     //   259: ifeq +243 -> 502
-    //   262: getstatic 129	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
+    //   262: getstatic 129	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
     //   265: astore 13
     //   267: iload 4
     //   269: iload 5
@@ -224,7 +224,7 @@ class CanvasView$2$1
     //   440: invokevirtual 59	com/tencent/mobileqq/mini/appbrand/page/WebviewContainer:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   443: return
     //   444: astore 12
-    //   446: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   446: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   449: iconst_2
     //   450: new 101	java/lang/StringBuilder
     //   453: dup
@@ -252,7 +252,7 @@ class CanvasView$2$1
     //   505: astore 13
     //   507: goto -240 -> 267
     //   510: astore 14
-    //   512: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   512: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   515: iconst_2
     //   516: ldc 160
     //   518: invokestatic 163	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
@@ -272,13 +272,13 @@ class CanvasView$2$1
     //   544: fstore_3
     //   545: goto -225 -> 320
     //   548: astore 14
-    //   550: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   550: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   553: iconst_2
     //   554: ldc 165
     //   556: invokestatic 163	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   559: goto -202 -> 357
     //   562: astore 13
-    //   564: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$100	()Ljava/lang/String;
+    //   564: invokestatic 31	com/tencent/mobileqq/mini/widget/CanvasView:access$200	()Ljava/lang/String;
     //   567: iconst_2
     //   568: ldc 167
     //   570: aload 13
@@ -352,7 +352,7 @@ class CanvasView$2$1
     //   715: invokevirtual 210	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   718: astore 14
     //   720: aload 14
-    //   722: invokestatic 216	bdhb:a	(Ljava/lang/String;)Ljava/io/File;
+    //   722: invokestatic 216	bgmg:a	(Ljava/lang/String;)Ljava/io/File;
     //   725: astore 13
     //   727: new 218	java/io/FileOutputStream
     //   730: dup
@@ -565,7 +565,7 @@ class CanvasView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.CanvasView.2.1
  * JD-Core Version:    0.7.0.1
  */

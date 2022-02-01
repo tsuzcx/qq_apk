@@ -1,25 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.Comparator;
 
 public class besn
-  extends ClickableSpan
+  implements Comparator<besl>
 {
-  public besn(ProfileCardExtendFriendView paramProfileCardExtendFriendView, Card paramCard) {}
-  
-  public void onClick(@NonNull View paramView)
+  public int a(besl parambesl1, besl parambesl2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 1L) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView.getContext(), 0, 2131699269, 1).a();
+    if (parambesl1.b < parambesl2.b) {
+      return 1;
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 0L) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 3L)) {
-      return;
+    if (parambesl1.b == parambesl2.b) {
+      return 0;
     }
-    aqgz.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView), this.jdField_a_of_type_ComTencentMobileqqDataCard.idx, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolName, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolId);
+    return -1;
   }
 }
 

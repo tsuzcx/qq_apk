@@ -1,41 +1,30 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
-public final class wao
-  extends QQUIEventReceiver<wah, vcp>
+public class wao
+  implements vvv
 {
-  public wao(@NonNull wah paramwah)
-  {
-    super(paramwah);
-  }
+  public wao(QCircleInsFeedItemView paramQCircleInsFeedItemView, Object paramObject) {}
   
-  public void a(@NonNull wah paramwah, @NonNull vcp paramvcp)
+  public void a()
   {
-    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramwah.a != null))
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramvcp.hasNext())
-      {
-        uxd localuxd = (uxd)paramvcp.next();
-        if (TextUtils.equals(paramwah.a.b, localuxd.a)) {
-          paramwah.i();
-        }
-      }
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      zwp.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType, QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)));
+      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType);
+      vrr.a().a(new vrt().a("content").b("like").a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a()).a(QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)).c(((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).poster.id.get()));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vcp.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,21 @@
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbbp
-  extends bbbz
+  extends Editable.Factory
 {
-  public String a;
-  public ArrayList<bawy> a = new ArrayList();
-  public String b;
-  public ArrayList<bawy> b = new ArrayList();
+  public bbbp(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof bdod)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bdod(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+  }
 }
 
 

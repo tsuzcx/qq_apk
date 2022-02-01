@@ -1,29 +1,23 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-final class anra
-  implements ArkEnvironmentManager.Log
+public class anra
+  extends BroadcastReceiver
 {
-  public void d(String paramString1, String paramString2)
+  public anra(PeakAppInterface paramPeakAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
+    {
+      int i = paramIntent.getIntExtra("rsptype", 0);
+      paramContext = paramIntent.getByteArrayExtra("rspbody");
+      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      ((bavs)this.a.a(0)).a(i, paramContext);
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
   }
 }
 

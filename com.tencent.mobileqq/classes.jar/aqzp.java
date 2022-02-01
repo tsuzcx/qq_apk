@@ -1,34 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aqzp
-  extends aqyt
+public class aqzp
 {
-  public aqzp(aqyp paramaqyp)
+  private aqzq jdField_a_of_type_Aqzq;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public aqzp()
   {
-    super(paramaqyp);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aqzq = new aqzq();
   }
   
-  protected String a()
+  public aqzp(String paramString, aqzq paramaqzq)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aqzq = paramaqzq;
   }
   
-  protected void a()
+  public aqzq a()
   {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 7);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Aqyt = new aqzn(this.jdField_a_of_type_Aqyp);
+    return this.jdField_a_of_type_Aqzq;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Aqzq == null) || (this.jdField_a_of_type_Aqzq.a == null) || (this.jdField_a_of_type_Aqzq.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzp
  * JD-Core Version:    0.7.0.1
  */

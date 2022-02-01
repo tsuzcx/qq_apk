@@ -1,8 +1,8 @@
 package dov.com.qq.im.ptv;
 
-import bdjz;
-import bmfk;
-import bmfl;
+import bgpa;
+import bowq;
+import bowr;
 
 public class LightVideoSoDownloadFragment$4
   implements Runnable
@@ -11,14 +11,14 @@ public class LightVideoSoDownloadFragment$4
   
   public void run()
   {
-    bmfk localbmfk = new bmfk(this);
-    bmfl localbmfl = new bmfl(this);
-    bdjz.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbmfk, localbmfk, localbmfl);
+    bowq localbowq = new bowq(this);
+    bowr localbowr = new bowr(this);
+    bgpa.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbowq, localbowq, localbowr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightVideoSoDownloadFragment.4
  * JD-Core Version:    0.7.0.1
  */

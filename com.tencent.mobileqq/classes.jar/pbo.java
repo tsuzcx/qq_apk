@@ -1,34 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.List;
 
-public class pbo
-  implements TVK_SDKMgr.InstallListener
+class pbo
+  extends pcm
 {
-  public pbo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
-  
-  public void onInstallProgress(float paramFloat)
+  pbo(pbe parampbe, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
   {
-    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
+    super(parampbe, null);
   }
   
-  public void onInstalledFailed(int paramInt)
+  void a(pcp parampcp)
   {
-    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
-    }
+    parampcp.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbo
  * JD-Core Version:    0.7.0.1
  */

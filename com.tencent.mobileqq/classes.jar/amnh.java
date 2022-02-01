@@ -1,20 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 
-class amnh
-  implements View.OnClickListener
+public class amnh
 {
-  amnh(amne paramamne) {}
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
   
-  public void onClick(View paramView)
+  public WebResourceResponse a()
   {
-    azqs.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
-    this.a.dismiss();
+    try
+    {
+      if (this.b != null)
+      {
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
+          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
+        }
+        if (!bgmg.a(this.b)) {
+          break label102;
+        }
+        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
+        return localWebResourceResponse;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
+    }
+    return null;
+    label102:
+    return null;
+  }
+  
+  public String a()
+  {
+    return "file://" + this.b;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bgmg.a(this.b)))
+      {
+        if (bgmg.b(this.b) <= 8388608L) {
+          break label84;
+        }
+        this.jdField_a_of_type_Boolean = true;
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
+        return;
+        label84:
+        this.jdField_a_of_type_ArrayOfByte = bgmg.a(this.b);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnh
  * JD-Core Version:    0.7.0.1
  */

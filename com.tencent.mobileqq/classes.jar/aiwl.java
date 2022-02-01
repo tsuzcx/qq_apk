@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiwl
-  implements DialogInterface.OnClickListener
+  extends aopa
 {
-  public aiwl(SendHbActivity paramSendHbActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiwl(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    PublicView.a(this.a, true);
+    PublicView.a(this.a, paramSosoLbsInfo);
   }
 }
 

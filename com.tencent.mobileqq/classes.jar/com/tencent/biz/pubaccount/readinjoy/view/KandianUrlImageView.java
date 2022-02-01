@@ -4,13 +4,14 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import rqc;
+import sna;
+import tdt;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
-  private rqc jdField_a_of_type_Rqc;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean mIsRecyclerView;
+  private sna mVisibilityChangedListener;
   
   public KandianUrlImageView(Context paramContext)
   {
@@ -29,7 +30,7 @@ public class KandianUrlImageView
   
   public void onDetachedFromWindow()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.mIsRecyclerView) {
       super.onDetachedFromWindow();
     }
   }
@@ -37,24 +38,31 @@ public class KandianUrlImageView
   protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Rqc != null) {
-      this.jdField_a_of_type_Rqc.a(paramView, paramInt);
+    if (this.mVisibilityChangedListener != null) {
+      this.mVisibilityChangedListener.a(paramView, paramInt);
+    }
+  }
+  
+  public void release()
+  {
+    if (this.mController != null) {
+      this.mController.a("onKandianUrlImageView release");
     }
   }
   
   public void setIsRecyclerView(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mIsRecyclerView = paramBoolean;
   }
   
-  public void setVisibilityChangedListener(rqc paramrqc)
+  public void setVisibilityChangedListener(sna paramsna)
   {
-    this.jdField_a_of_type_Rqc = paramrqc;
+    this.mVisibilityChangedListener = paramsna;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView
  * JD-Core Version:    0.7.0.1
  */

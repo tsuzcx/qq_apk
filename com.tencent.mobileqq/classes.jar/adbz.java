@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.qapmsdk.base.meta.DumpResult;
 
-public class adbz
-  implements aoim
+public abstract interface adbz
+  extends adbu
 {
-  public adbz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public abstract DumpResult a(String paramString, adcb paramadcb);
   
-  public int a()
-  {
-    return 1;
-  }
+  public abstract void a(long paramLong, String paramString);
   
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131694192);
-    }
-    return this.a.getString(2131692471);
-  }
+  public abstract void a(Object paramObject, String paramString);
 }
 
 

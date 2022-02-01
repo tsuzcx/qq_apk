@@ -1,82 +1,34 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afha
+public class afha
   implements View.OnClickListener
 {
-  afha(afgz paramafgz) {}
+  public afha(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
   public void onClick(View paramView)
   {
-    Object localObject;
-    if (afgz.a(this.a) != null)
-    {
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      long l1;
-      switch (afgz.a(this.a).jumpType)
-      {
-      default: 
-        if (localObject != null)
-        {
-          localObject = (asig)((QQAppInterface)localObject).a(153);
-          l1 = 0L;
-        }
-        break;
-      }
-      try
-      {
-        long l2 = Long.valueOf(afgx.a(this.a.a)).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err");
-        }
-      }
-      ((asig)localObject).a(l1, afgz.a(this.a).dateType);
+    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
+    if ((i != 1) && (i != 2)) {
+      i = this.a.a;
     }
-    for (;;)
-    {
-      if (afgz.a(this.a) != null) {
-        afgz.a(this.a).a(paramView, afgz.a(this.a));
-      }
-      return;
-      if ((afgz.a(this.a).linkUrl != null) && (this.a.a.a != null))
-      {
-        azqs.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", afgz.a(this.a).dateType, 0, "", "", "", "");
-        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-        bdhk localbdhk = bdib.a((QQAppInterface)localObject, this.a.a.a, afgz.a(this.a).linkUrl);
-        if (localbdhk != null) {
-          localbdhk.c();
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("intimate_relationship", 2, "click  scheme: " + afgz.a(this.a).linkUrl);
-          break;
-          if (afgz.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
-            bjdt.c(this.a.a.a, afgz.a(this.a).linkUrl);
-          } else {
-            afgx.a(this.a.a.a, afgz.a(this.a).linkUrl);
-          }
-        }
-      }
-      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
-      break;
-      azqs.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", afgz.a(this.a).dateType, 0, "", "", "", "");
-      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-      if (afgx.a(this.a.a) == null) {
-        break;
-      }
-      afgx.a(this.a.a).a(afgz.a(this.a));
-      break;
-      QLog.e("intimate_relationship", 2, "click  mInfo is null");
+    String str1 = this.a.getShareUrl();
+    String str2 = this.a.getShare().b();
+    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
+    if (!TextUtils.isEmpty(str2)) {
+      localIntent.putExtra("team_work_name", str2);
     }
+    localIntent.putExtra("team_work_pad_url", str1);
+    localIntent.putExtra("team_work_pad_list_type", this.a.d);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
+    this.a.a(14);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

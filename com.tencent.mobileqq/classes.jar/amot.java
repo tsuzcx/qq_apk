@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.ArrayList;
+import java.util.List;
 
-class amot
-  implements amoz
+public class amot
 {
-  amot(amos paramamos) {}
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<ApolloGameData> b = new ArrayList();
+  public List<String> c = new ArrayList();
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
+  public amot(amop paramamop)
   {
-    long l = paramRspBody.uint32_test_keep_silence_sec.get();
-    paramToServiceMsg = this.a;
-    if (l <= 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      amos.a(paramToServiceMsg, bool);
-      if (l > 0L)
-      {
-        amos.a(this.a).removeMessages(6);
-        amos.a(this.a).sendEmptyMessageDelayed(6, l);
-        if (QLog.isColorLevel()) {
-          QLog.d("FrontBackReportManager", 2, "receive keep silence");
-        }
-      }
-      return;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acqy
-  implements Comparator<PhoneContact>
+public class acqy
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public static void a(String paramString1, String paramString2)
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
+    a(paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 

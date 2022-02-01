@@ -1,37 +1,29 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
+import mqq.os.MqqHandler;
+
 public class aqcm
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  aqcm(aqcl paramaqcl, aqga paramaqga, boolean paramBoolean) {}
   
-  public aqcm()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
+    if (this.jdField_a_of_type_Aqga != null) {
+      this.jdField_a_of_type_Aqga.onColorNoteAnimFinish();
+    }
+    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof zri))) {
+      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
+    }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{SenderUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{SenderNickName: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{bEnter: ").append(this.jdField_a_of_type_Boolean).append("}");
-    localStringBuilder.append("{leaveChatType: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{leftChatTime: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{matchExpired: ").append(this.jdField_c_of_type_Int).append("}");
-    localStringBuilder.append("{c2cExpiredTime: ").append(this.d).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.jdField_c_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{readyTs: ").append(this.jdField_b_of_type_Long).append("}");
-    return localStringBuilder.toString();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -14,8 +14,7 @@ import feedcloud.FeedCloudWrite.StDoCommentReq;
 import feedcloud.FeedCloudWrite.StDoCommentRsp;
 import java.util.ArrayList;
 import java.util.List;
-import tra;
-import tzy;
+import uxx;
 
 public class QCircleDoCommentRequest
   extends QCircleBaseRequest
@@ -25,7 +24,7 @@ public class QCircleDoCommentRequest
   public static final int OPER_TYPE_OWNER_DELETE = 2;
   FeedCloudWrite.StDoCommentReq req;
   
-  public QCircleDoCommentRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt)
+  public QCircleDoCommentRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt, boolean paramBoolean)
   {
     if (paramStFeed == null)
     {
@@ -33,7 +32,7 @@ public class QCircleDoCommentRequest
       return;
     }
     this.req = new FeedCloudWrite.StDoCommentReq();
-    this.req.feed.set(tra.a(paramStFeed));
+    this.req.feed.set(uxx.a(paramStFeed));
     this.req.comment.set(paramStComment);
     this.req.commentType.set(paramInt);
     this.req.from.set(0);
@@ -42,7 +41,7 @@ public class QCircleDoCommentRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean) {
       paramStFeed.value.set("2");
     }
     for (;;)
@@ -76,7 +75,7 @@ public class QCircleDoCommentRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoCommentRequest
  * JD-Core Version:    0.7.0.1
  */

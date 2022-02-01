@@ -1,32 +1,59 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.Queue;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
+import java.util.List;
 
-class amcy
-  extends Handler
+public class amcy<T>
+  extends arrz<T>
+  implements View.OnClickListener
 {
-  amcy(amcw paramamcw, Looper paramLooper)
+  private DragSortListView a;
+  
+  public amcy(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
   {
-    super(paramLooper);
+    super(paramContext, paramList);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
   }
   
-  public void handleMessage(Message paramMessage)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    switch (paramMessage.what)
+    if (paramView == null) {}
+    for (View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561195, null);; localView = paramView)
     {
-    default: 
-      return;
+      localView.setVisibility(0);
+      localView.findViewById(2131377341).setVisibility(8);
+      TextView localTextView = (TextView)localView.findViewById(2131367650);
+      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localTextView.setText(localGroups.group_name);
+      ViewCompat.setImportantForAccessibility(localView.findViewById(2131367654), 1);
+      localView.setContentDescription(localGroups.group_name + anni.a(2131704134));
+      if ((VersionUtils.isOreo()) && (AppSetting.c)) {
+        localView.setOnClickListener(this);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
     }
-    paramMessage = (amda)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (AppSetting.c) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amcy
  * JD-Core Version:    0.7.0.1
  */

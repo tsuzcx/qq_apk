@@ -1,18 +1,21 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ved
-  extends uli
+class ved
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public int b;
-  public String b;
+  ved(vec paramvec) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ved
  * JD-Core Version:    0.7.0.1
  */

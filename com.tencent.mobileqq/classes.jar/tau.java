@@ -1,19 +1,108 @@
-import android.support.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RelatedSearchData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface tau<V extends tat, P extends taw<V>>
+public final class tau
+  implements Parcelable.Creator<FastWebArticleInfo>
 {
-  public abstract V a();
+  public FastWebArticleInfo a(Parcel paramParcel)
+  {
+    boolean bool2 = true;
+    int j = 0;
+    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
+    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.e = paramParcel.readString();
+    localFastWebArticleInfo.f = paramParcel.readString();
+    localFastWebArticleInfo.h = paramParcel.readString();
+    localFastWebArticleInfo.g = paramParcel.readString();
+    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.i = paramParcel.readString();
+    localFastWebArticleInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.l = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
+      localFastWebArticleInfo.o = paramParcel.readString();
+      localFastWebArticleInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label291;
+      }
+    }
+    int k;
+    Object localObject;
+    int i;
+    label291:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFastWebArticleInfo.jdField_c_of_type_Boolean = bool1;
+      localFastWebArticleInfo.q = paramParcel.readString();
+      k = paramParcel.readInt();
+      if (k < 0) {
+        break label413;
+      }
+      localObject = new ArrayList();
+      i = 0;
+      while (i < k)
+      {
+        sxw localsxw = new sxw();
+        localsxw.jdField_a_of_type_JavaLangString = paramParcel.readString();
+        localsxw.jdField_a_of_type_Long = paramParcel.readLong();
+        localsxw.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        ((List)localObject).add(localsxw);
+        i += 1;
+      }
+      bool1 = false;
+      break;
+    }
+    label413:
+    for (localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = ((List)localObject);; localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null)
+    {
+      k = paramParcel.readInt();
+      if (k <= 0) {
+        break label455;
+      }
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = new RelatedSearchData(localFastWebArticleInfo);
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList = new ArrayList();
+      i = j;
+      while (i < k)
+      {
+        localObject = new sxz();
+        ((sxz)localObject).jdField_a_of_type_JavaLangString = paramParcel.readString();
+        ((sxz)localObject).jdField_b_of_type_JavaLangString = paramParcel.readString();
+        ((sxz)localObject).jdField_a_of_type_Float = paramParcel.readFloat();
+        ((sxz)localObject).jdField_c_of_type_JavaLangString = paramParcel.readString();
+        ((sxz)localObject).jdField_a_of_type_Int = paramParcel.readInt();
+        i += 1;
+      }
+    }
+    localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    for (;;)
+    {
+      localFastWebArticleInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localFastWebArticleInfo.p = paramParcel.readString();
+      return localFastWebArticleInfo;
+      label455:
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = null;
+    }
+  }
   
-  @NonNull
-  public abstract P a();
-  
-  public abstract void a(P paramP);
-  
-  public abstract P b();
+  public FastWebArticleInfo[] a(int paramInt)
+  {
+    return new FastWebArticleInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tau
  * JD-Core Version:    0.7.0.1
  */

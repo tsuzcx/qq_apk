@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.music;
 
-import baub;
-import baue;
-import bave;
-import bavf;
-import bdgk;
-import blro;
+import bdvs;
+import bdvu;
+import bdws;
+import bdwt;
+import bgln;
+import boks;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -26,14 +26,14 @@ final class QIMMusicConfigManager$GetSongListStepTask
     super(paramQIMMusicConfigManager2);
   }
   
-  public void onResp(bavf parambavf)
+  public void onResp(bdwt parambdwt)
   {
-    if (parambavf.c == 200)
+    if (parambdwt.c == 200)
     {
-      if (parambavf.a != null)
+      if (parambdwt.a != null)
       {
-        parambavf = new String(parambavf.a);
-        PeakAppInterface.a.a(String.valueOf(1008), new Object[] { parambavf });
+        parambdwt = new String(parambdwt.a);
+        PeakAppInterface.a.a(String.valueOf(1008), new Object[] { parambdwt });
         return;
       }
       QIMMusicConfigManager.a(this.this$0, false);
@@ -41,7 +41,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
       return;
     }
     QIMMusicConfigManager.a(this.this$0, false);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + parambavf.c);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + parambdwt.c);
   }
   
   public void run()
@@ -69,26 +69,26 @@ final class QIMMusicConfigManager$GetSongListStepTask
           l1 = ((JSONObject)localObject2).optLong("diss_id", -1L);
           if (l1 != -1L)
           {
-            localObject1 = new baub();
-            ((baub)localObject1).jdField_a_of_type_Int = 0;
-            ((baub)localObject1).e = 1;
-            ((baub)localObject1).jdField_a_of_type_Baug = this;
+            localObject1 = new bdvs();
+            ((bdvs)localObject1).jdField_a_of_type_Int = 0;
+            ((bdvs)localObject1).d = 1;
+            ((bdvs)localObject1).jdField_a_of_type_Bdvw = this;
             long l2 = System.currentTimeMillis() / 1000L;
             localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
             HashMap localHashMap = new HashMap();
             localHashMap.put("app_id", "2000000025");
             localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-            localHashMap.put("device_id", bdgk.a());
+            localHashMap.put("device_id", bgln.a());
             localHashMap.put("timestamp", String.valueOf(l2));
             localHashMap.put("sign", a(l2));
             localHashMap.put("dissid", String.valueOf(l1));
             localHashMap.putAll(a(this.c, (String)localObject2));
-            ((baub)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
-            this.jdField_a_of_type_Baue.a((bave)localObject1);
+            ((bdvs)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
+            this.jdField_a_of_type_Bdvu.a((bdws)localObject1);
             if (!QLog.isColorLevel()) {
               break label389;
             }
-            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((baub)localObject1).jdField_a_of_type_JavaLangString);
+            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((bdvs)localObject1).jdField_a_of_type_JavaLangString);
             return;
           }
           QIMMusicConfigManager.a(this.this$0, true);
@@ -113,7 +113,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSongListStepTask
  * JD-Core Version:    0.7.0.1
  */

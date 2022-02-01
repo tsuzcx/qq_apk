@@ -1,17 +1,22 @@
-import android.graphics.Canvas;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public abstract interface wxt
-  extends xam
+public class wxt
 {
-  public abstract int a(int paramInt);
+  public int a;
+  public int b;
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public qqstory_struct.DateVideoCollectionID a()
+  {
+    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
+    localDateVideoCollectionID.collection_id.set(this.a);
+    localDateVideoCollectionID.collection_type.set(this.b);
+    return localDateVideoCollectionID;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wxt
  * JD-Core Version:    0.7.0.1
  */

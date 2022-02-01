@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.RegionDrawableData;
 
-public class akfl
-  implements Animation.AnimationListener
+public abstract interface akfl
 {
-  public akfl(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.leftView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
-    this.a.rightViewText.setContentDescription(alud.a(2131714655));
-    this.a.c = false;
-  }
+  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
+  
+  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

@@ -69,21 +69,14 @@ public class DuplicateEventLayout
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
           i = (int)paramMotionEvent.getX();
           int j = (int)paramMotionEvent.getY();
-          if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j))
-          {
+          if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j)) {
             bool1 = super.dispatchTouchEvent(paramMotionEvent);
-            if (bool1) {
-              this.b = true;
-            }
           }
-          for (;;)
+          for (this.b = bool1;; this.b = false)
           {
             this.jdField_a_of_type_Boolean = false;
             return bool1;
-            this.b = false;
-            continue;
             bool1 = super.dispatchTouchEvent(paramMotionEvent);
-            this.b = false;
           }
         }
         MotionEvent localMotionEvent1 = MotionEvent.obtain(paramMotionEvent);
@@ -123,7 +116,7 @@ public class DuplicateEventLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.DuplicateEventLayout
  * JD-Core Version:    0.7.0.1
  */

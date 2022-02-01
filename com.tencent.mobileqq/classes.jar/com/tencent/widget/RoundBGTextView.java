@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -48,12 +48,12 @@ public class RoundBGTextView
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = aepi.a(paramInt, getResources());
+    this.jdField_a_of_type_Int = afur.a(paramInt, getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.RoundBGTextView
  * JD-Core Version:    0.7.0.1
  */

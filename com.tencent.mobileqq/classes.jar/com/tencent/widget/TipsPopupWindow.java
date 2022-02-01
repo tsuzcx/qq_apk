@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import bibx;
+import bkpi;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsPopupWindow
   extends PopupWindow
-  implements bibx
+  implements bkpi
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -98,7 +98,7 @@ public class TipsPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.TipsPopupWindow
  * JD-Core Version:    0.7.0.1
  */

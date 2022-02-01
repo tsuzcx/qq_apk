@@ -1,300 +1,350 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class blyl
-  extends DynamicTextItem
 {
-  public static final float a;
-  public static final float b;
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  private static int e;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private RectF b;
-  private float c;
-  private float d;
-  private int f;
+  private final blyr jdField_a_of_type_Blyr = new blyr(null);
+  private final blys jdField_a_of_type_Blys = new blys(null);
   
-  static
+  public static blyl a()
   {
-    jdField_a_of_type_Float = azkz.a(22.0F);
-    jdField_b_of_type_Float = azkz.a(3.0F);
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = aepi.a(27.0F, localResources);
-    jdField_d_of_type_Int = aepi.a(6.0F, localResources);
-    int i = bmyg.a();
-    jdField_c_of_type_Int = localResources.getDisplayMetrics().widthPixels - xeb.a - i * 2;
+    return blyt.a();
   }
   
-  public blyl(int paramInt, List<String> paramList, Typeface paramTypeface)
+  @Nullable
+  public static String a(@Nullable BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    super(paramInt, paramList);
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    if (paramTypeface == null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+    if (paramAppInfo != null)
+    {
+      paramAppInfo = blyq.a(paramAppInfo);
+      return String.format("&traceId=%s&traceNum=%s&traceDetail=%s", new Object[] { paramAppInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramAppInfo.jdField_a_of_type_Int), URLEncoder.encode(paramAppInfo.a()) });
+    }
+    return null;
+  }
+  
+  public static String a(String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    String str1 = paramString;
+    String str2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str2 = "";
+      str1 = "";
+      if (paramAppInfo != null)
+      {
+        paramAppInfo = blyq.a(paramAppInfo);
+        str2 = String.format("trace_id=%s&trace_num=%s&trace_detail=%s", new Object[] { paramAppInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramAppInfo.jdField_a_of_type_Int), URLEncoder.encode(paramAppInfo.a()) });
+        if (!paramString.contains("?")) {
+          break label98;
+        }
+      }
+    }
+    label98:
+    for (str1 = "&";; str1 = "?")
+    {
+      str1 = paramString + str1 + str2;
+      return str1;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("appid", paramString1);
+      localJSONObject.put("page_id", paramString2);
+      paramString1 = "&trace_detail=base64-" + awzl.a(localJSONObject.toString());
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("MobileReport.Manager", 1, "json exception" + paramString1);
+    }
+    return "&trace_detail=base64-";
+  }
+  
+  @NonNull
+  public static String a(@Nullable String paramString1, @Nullable String paramString2, @NonNull String paramString3)
+  {
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      Object localObject = paramString2.split("_");
+      if (localObject.length > 2)
+      {
+        paramString2 = localObject[0];
+        String str = localObject[1];
+        localObject = localObject[2];
+        return paramString3 + "trace_num=1&trace_id=" + paramString1 + "_" + str + "_" + System.currentTimeMillis() + "&trace_detail_adv_pos_id=" + paramString2 + "&trace_detail_adv_id=" + str + "&trace_detail_pattern=" + (String)localObject;
+      }
+    }
+    return "";
+  }
+  
+  public static String b(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if (paramAppInfo != null) {
+      return String.format("&trace_detail=base64-%s", new Object[] { awzl.a(blyp.a(paramAppInfo).a()) });
+    }
+    return null;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder().append(paramString1);
+    if (paramString1.contains("?")) {}
+    for (paramString1 = "&";; paramString1 = "?") {
+      return a(str, paramString2, paramString1);
+    }
+  }
+  
+  public void a(@Nullable BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt)
+  {
+    if (paramAppInfo == null) {
+      return;
+    }
+    blyq localblyq = blyq.a(paramAppInfo);
+    ItemInfo localItemInfo = new blyo().a(localblyq.b).c(paramAppInfo.buffer.get()).a(new blyn(System.currentTimeMillis(), paramInt).a()).a();
+    if (QLog.isColorLevel())
+    {
+      if (102 != paramInt) {
+        break label119;
+      }
+      paramAppInfo = "ITEM_CLICK";
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      paramTypeface = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      e = (int)Math.abs(paramTypeface.bottom - paramTypeface.top);
-      if (!paramList.isEmpty()) {
-        a(0, (String)paramList.get(0));
-      }
+      QLog.d("MobileReport.Manager", 2, "report " + localblyq.toString() + " actionId = " + paramAppInfo);
+      this.jdField_a_of_type_Blys.a(localblyq, localItemInfo);
       return;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      label119:
+      if (101 == paramInt) {
+        paramAppInfo = "ITEM_EXPORT";
+      } else {
+        paramAppInfo = "UNKONW";
+      }
     }
   }
   
-  private static final boolean a(char paramChar)
+  public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3)
   {
-    return ((paramChar >= 'a') && (paramChar <= 'z')) || ((paramChar >= 'A') && (paramChar <= 'Z'));
-  }
-  
-  private static final boolean b(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
-  }
-  
-  private static final boolean c(char paramChar)
-  {
-    return (paramChar >= '一') && (paramChar <= 40891);
-  }
-  
-  private void d()
-  {
-    int n = 0;
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaLangString.length()];
-    char[] arrayOfChar = new char[this.jdField_a_of_type_JavaLangString.length()];
-    this.jdField_a_of_type_JavaLangString.getChars(0, this.jdField_a_of_type_JavaLangString.length(), arrayOfChar, 0);
-    int k = 0;
-    int m = -1;
-    if (k < this.jdField_a_of_type_JavaLangString.length())
+    blyq localblyq;
+    JSONObject localJSONObject;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("h5costreport=1")))
     {
-      char c2 = arrayOfChar[k];
-      label76:
-      char c1;
-      if (k <= 0)
-      {
-        i = -1;
-        if (i != -1) {
-          break label149;
-        }
-        c1 = '\000';
-        label83:
-        if (!c(c2)) {
-          break label157;
-        }
-        this.jdField_a_of_type_ArrayOfInt[k] = 2;
+      localblyq = new blyq("", 0, "", 0, "H5CostReport", paramString1);
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("coreType", paramInt2);
+      localJSONObject.put("coreVersion", paramString3);
+      localJSONObject.put("errorcode", paramString2);
+      paramString3 = new blyo().a("").c(localJSONObject.toString()).a(new blyn(System.currentTimeMillis(), paramInt1, paramLong).a()).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileReport.Manager", 2, "report " + localblyq.toString() + " opType = " + paramInt1 + " url = " + paramString1 + " timecost " + paramLong + " errorcode " + paramString2);
       }
+      this.jdField_a_of_type_Blys.a(localblyq, paramString3);
+      return;
+    }
+    catch (Exception paramString3)
+    {
       for (;;)
       {
-        k += 1;
-        m = i;
-        break;
-        j = k - 1;
-        for (;;)
-        {
-          i = m;
-          if (j < 0) {
-            break;
-          }
-          if (arrayOfChar[j] != '\n') {
-            break label143;
-          }
-          j -= 1;
-        }
-        label143:
-        i = j;
-        break label76;
-        label149:
-        c1 = arrayOfChar[i];
-        break label83;
-        label157:
-        if (a(c2))
-        {
-          this.jdField_a_of_type_ArrayOfInt[k] = 3;
-          if ((c1 != 0) && (a(c1))) {
-            this.jdField_a_of_type_ArrayOfInt[i] = -3;
-          }
-        }
-        else if (b(c2))
-        {
-          this.jdField_a_of_type_ArrayOfInt[k] = 4;
-        }
-        else if (d(c2))
-        {
-          this.jdField_a_of_type_ArrayOfInt[k] = 5;
-        }
-        else
-        {
-          this.jdField_a_of_type_ArrayOfInt[k] = 1;
-          if (c1 != 0) {
-            if (c(c1)) {
-              this.jdField_a_of_type_ArrayOfInt[i] = -2;
-            } else if (a(c1)) {
-              this.jdField_a_of_type_ArrayOfInt[i] = -3;
-            } else if (b(c1)) {
-              this.jdField_a_of_type_ArrayOfInt[i] = -4;
-            } else {
-              this.jdField_a_of_type_ArrayOfInt[i] = -1;
-            }
-          }
-        }
+        QLog.e("MobileReport.Manager", 2, " report exception " + paramString3);
       }
     }
-    this.f = 0;
-    arrayOfChar = this.jdField_a_of_type_JavaLangString.toCharArray();
-    int j = arrayOfChar.length;
-    int i = n;
-    while ((i < j) && (d(arrayOfChar[i])))
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    blyq localblyq;
+    Object localObject;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("h5costreport=1")))
     {
-      this.f += 1;
-      i += 1;
+      localblyq = new blyq("", 0, "", 0, "JumpUrlReport", paramString1);
+      localObject = new JSONObject();
     }
-  }
-  
-  private static final boolean d(char paramChar)
-  {
-    return paramChar == '\n';
-  }
-  
-  public float a()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    int i = 0;
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_AndroidTextStaticLayout = new StaticLayout(paramString, this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, jdField_a_of_type_Float, false);
-    float f1 = 0.0F;
-    paramInt = i;
-    while (paramInt < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount())
+    try
     {
-      f1 = Math.max(f1, this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
-      paramInt += 1;
+      ((JSONObject)localObject).put("jump_url", paramString2);
+      String str = bmvl.a(paramString1).getString("adId");
+      localObject = new blyo().a(String.valueOf(str)).c(((JSONObject)localObject).toString()).a(new blyn(System.currentTimeMillis(), 152, 1L).a()).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileReport.Manager", 2, "report " + localblyq.toString() + " opType = " + 152 + " url = " + paramString1 + " jumpUrl = " + paramString2);
+      }
+      this.jdField_a_of_type_Blys.a(localblyq, (ItemInfo)localObject);
+      return;
     }
-    this.jdField_c_of_type_Float = f1;
-    this.jdField_d_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-    d();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      float f2 = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-      float f3 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-      int j = 0;
-      int m;
-      for (int i = 0; j < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount(); i = m)
+      for (;;)
       {
-        this.jdField_b_of_type_AndroidTextStaticLayout.getLineBounds(j, this.jdField_a_of_type_AndroidGraphicsRect);
-        m = this.jdField_b_of_type_AndroidTextStaticLayout.getLineVisibleEnd(j);
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = (this.jdField_a_of_type_AndroidGraphicsRect.top + e);
-        float f1 = 0.0F;
-        float[] arrayOfFloat = new float[m - i];
-        this.jdField_a_of_type_AndroidTextTextPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, i, m, arrayOfFloat);
-        int k = i;
-        while (k < m) {
-          if (String.valueOf(this.jdField_a_of_type_JavaLangString.charAt(k)).equals("\n"))
-          {
-            this.jdField_a_of_type_Boolean = true;
-            k += 1;
-          }
-          else
-          {
-            if ((k == this.f) || (this.jdField_a_of_type_Boolean))
-            {
-              if (!this.jdField_a_of_type_Boolean) {
-                break label368;
-              }
-              this.jdField_a_of_type_Boolean = false;
-              if ((this.jdField_a_of_type_ArrayOfInt[k] != -1) && (this.jdField_a_of_type_ArrayOfInt[k] != 1) && (this.jdField_a_of_type_ArrayOfInt[k] != -3) && (this.jdField_a_of_type_ArrayOfInt[k] != 3)) {
-                break label317;
-              }
-            }
-            for (;;)
-            {
-              f1 += arrayOfFloat[(k - i)];
-              if (this.jdField_a_of_type_ArrayOfInt[k] > 0) {
-                paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
-              }
-              break;
-              label317:
-              paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
-              continue;
-              label368:
-              paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
-            }
-          }
-        }
-        paramCanvas.drawLine(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.left + f1, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidTextTextPaint);
-        j += 1;
-      }
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-65536);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (super.b(0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = f2;
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f3;
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+        QLog.e("MobileReport.Manager", 2, " report exception " + localException);
       }
     }
   }
   
-  public boolean a()
+  public void a(String paramString1, String paramString2, ItemInfo paramItemInfo)
   {
-    return true;
+    paramString1 = new blyq("", 1, "", -1, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("MobileReport.Manager", 2, "report " + paramString1.toString() + " actionId = " + paramItemInfo.toString());
+    }
+    this.jdField_a_of_type_Blyr.a(paramString1, paramItemInfo);
   }
   
-  public float b()
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong)
   {
-    return this.jdField_d_of_type_Float;
+    a("", null, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2)
+  {
+    paramString2 = new blyq("", 1, "", -1, paramString1, paramString2);
+    paramString3 = new blyo().a(paramString4).b(paramString5).d(paramString3).a(new blyn(System.currentTimeMillis(), paramInt1, paramInt2).a()).a();
+    if (QLog.isColorLevel())
+    {
+      if (102 != paramInt1) {
+        break label137;
+      }
+      paramString1 = "ITEM_CLICK";
+    }
+    for (;;)
+    {
+      QLog.d("MobileReport.Manager", 2, "report of notice:    itemId=" + paramString4 + ";" + paramString2.toString() + " actionId = " + paramString1);
+      this.jdField_a_of_type_Blys.a(paramString2, paramString3);
+      return;
+      label137:
+      if (101 == paramInt1) {
+        paramString1 = "ITEM_EXPORT";
+      } else if (100 == paramInt1) {
+        paramString1 = "PAGE_EXPORT";
+      } else {
+        paramString1 = "UNKONW";
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, long paramLong)
+  {
+    paramString4 = new blyq("", 1, "", -1, paramString3, paramString4);
+    blyo localblyo = new blyo();
+    paramString3 = paramString1;
+    if (paramString1 == null) {
+      paramString3 = "";
+    }
+    paramString3 = localblyo.a(paramString3).d(paramString5).a(new blyn(paramLong, paramInt1, paramInt2).a()).a();
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    paramString3.item_type = paramString1;
+    if (QLog.isColorLevel())
+    {
+      if (102 != paramInt1) {
+        break label150;
+      }
+      paramString1 = "ITEM_CLICK";
+    }
+    for (;;)
+    {
+      QLog.d("MobileReport.Manager", 2, "report " + paramString4.toString() + " actionId = " + paramString1);
+      this.jdField_a_of_type_Blys.a(paramString4, paramString3);
+      return;
+      label150:
+      if (101 == paramInt1) {
+        paramString1 = "ITEM_EXPORT";
+      } else {
+        paramString1 = "UNKONW";
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, long paramLong, String paramString6)
+  {
+    paramString4 = new blyq("", 1, "", -1, paramString3, paramString4);
+    blyo localblyo = new blyo();
+    paramString3 = paramString1;
+    if (paramString1 == null) {
+      paramString3 = "";
+    }
+    paramString3 = localblyo.a(paramString3).d(paramString5).c("{\"roomid\":\"" + paramString6 + "\"}").a(new blyn(paramLong, paramInt1, paramInt2).a()).a();
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    paramString3.item_type = paramString1;
+    if (QLog.isColorLevel())
+    {
+      if (102 != paramInt1) {
+        break label180;
+      }
+      paramString1 = "ITEM_CLICK";
+    }
+    for (;;)
+    {
+      QLog.d("MobileReport.Manager", 2, "report " + paramString4.toString() + " actionId = " + paramString1);
+      this.jdField_a_of_type_Blyr.a(paramString4, paramString3);
+      return;
+      label180:
+      if (101 == paramInt1) {
+        paramString1 = "ITEM_EXPORT";
+      } else {
+        paramString1 = "UNKONW";
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2)
+  {
+    paramString2 = new blyq("", 1, "", -1, paramString1, paramString2);
+    blyo localblyo = new blyo();
+    paramString1 = paramString5;
+    if (paramString5 == null) {
+      paramString1 = "";
+    }
+    paramString3 = localblyo.a(paramString1).d(paramString3).a(new blyn(System.currentTimeMillis(), paramInt1, paramInt2).a()).a();
+    paramString1 = paramString6;
+    if (paramString6 == null) {
+      paramString1 = "";
+    }
+    paramString3.item_type = paramString1;
+    paramString1 = paramString4;
+    if (paramString4 == null) {
+      paramString1 = "";
+    }
+    paramString3.sub_module_id = paramString1;
+    if (QLog.isColorLevel())
+    {
+      if (102 != paramInt1) {
+        break label166;
+      }
+      paramString1 = "ITEM_CLICK";
+    }
+    for (;;)
+    {
+      QLog.d("MobileReport.Manager", 2, "report " + paramString2.toString() + " actionId = " + paramString1);
+      this.jdField_a_of_type_Blys.a(paramString2, paramString3);
+      return;
+      label166:
+      if (101 == paramInt1) {
+        paramString1 = "ITEM_EXPORT";
+      } else {
+        paramString1 = "UNKONW";
+      }
+    }
   }
 }
 

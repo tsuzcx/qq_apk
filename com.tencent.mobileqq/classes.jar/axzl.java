@@ -1,30 +1,59 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class axzl
+  extends axxm
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  String jdField_a_of_type_JavaLangString;
-  public String[] a;
-  
-  public axzl(axzi paramaxzi, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public axzl(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramContext, paramQQAppInterface);
   }
   
-  public boolean a()
+  public int a(axxt paramaxxt)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + axzi.a());
-    return l2 < axzi.a();
+    return 5;
+  }
+  
+  public View a(ViewGroup paramViewGroup, axxt paramaxxt)
+  {
+    paramViewGroup = (axzm)paramaxxt;
+    paramaxxt = new TextView(this.a);
+    paramaxxt.setTextColor(this.a.getResources().getColor(2131165343));
+    paramaxxt.setTextSize(1, 16.0F);
+    paramaxxt.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup.g = paramaxxt;
+    return paramaxxt;
+  }
+  
+  public axxt a()
+  {
+    return new axzm(this);
+  }
+  
+  public void f(axxt paramaxxt)
+  {
+    paramaxxt = (axzm)paramaxxt;
+    Object localObject = (axzu)paramaxxt.a;
+    String str = ((axzu)localObject).n;
+    localObject = bgsw.a(this.a, ((axzu)localObject).a, str);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramaxxt.g.setVisibility(8);
+      return;
+    }
+    paramaxxt.g.setVisibility(0);
+    if ((localObject instanceof SpannableString)) {
+      paramaxxt.g.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    paramaxxt.g.setText((CharSequence)localObject);
   }
 }
 

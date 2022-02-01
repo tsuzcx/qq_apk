@@ -1,8 +1,27 @@
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public abstract interface bloj
+class bloj
+  implements INetInfoHandler
 {
-  public abstract void a(@Nullable bloh parambloh, int paramInt, boolean paramBoolean);
+  bloj(bloi parambloi) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    bloi.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    bloi.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

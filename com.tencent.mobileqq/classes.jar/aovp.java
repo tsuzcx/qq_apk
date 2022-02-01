@@ -1,70 +1,58 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.8.1;
+import com.tencent.mobileqq.ar.ArConfigService.8.2;
+import com.tencent.mobileqq.ar.ArConfigService.8.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class aovp
-  extends aouf<aovo>
+  implements apcd
 {
-  public static final aovo a = new aovo();
+  public aovp(ArConfigService paramArConfigService) {}
   
-  public static aovo c()
+  public void a()
   {
-    aovo localaovo2 = (aovo)aoks.a().a(423);
-    aovo localaovo1 = localaovo2;
-    if (localaovo2 == null) {
-      localaovo1 = new aovo();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
     }
-    return localaovo1;
   }
   
-  public int a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 423;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
+    }
   }
   
-  @NonNull
-  public aovo a()
+  public void a(boolean paramBoolean, apce paramapce)
   {
-    return a;
-  }
-  
-  @NonNull
-  public aovo a(aoko[] paramArrayOfaoko)
-  {
-    boolean bool = true;
-    localaovo = new aovo();
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
     {
-      if (new JSONObject(paramArrayOfaoko).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localaovo.a = bool;
-        return localaovo;
-        bool = false;
+      ArConfigService.f(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
       }
-      return localaovo;
     }
-    catch (JSONException paramArrayOfaoko)
-    {
-      wxe.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaoko.getMessage());
+    while (ArConfigService.e(this.a)) {
+      return;
     }
+    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
+    ArConfigService.a(this.a, true);
   }
   
-  public Class<aovo> a()
-  {
-    return aovo.class;
-  }
-  
-  @NonNull
-  public aovo b()
-  {
-    return a;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovp
  * JD-Core Version:    0.7.0.1
  */

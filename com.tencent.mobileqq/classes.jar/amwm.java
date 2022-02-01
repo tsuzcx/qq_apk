@@ -1,8 +1,17 @@
-public abstract interface amwm
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+
+public class amwm
+  extends amok
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  public amwm(ApolloGameActivity paramApolloGameActivity) {}
   
-  public abstract void a(float[] paramArrayOfFloat);
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
+    }
+  }
 }
 
 

@@ -1,56 +1,55 @@
 package com.tencent.mobileqq.triton.engine;
 
 import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
 import com.tencent.mobileqq.triton.sdk.ITLog;
 
-@TTNativeModule(name="TTLog")
 public class TTLog
 {
-  private static ITLog sDefLog = new TTLog.1();
-  private static ITLog sLogProxy;
+  private static ITLog a;
+  private static ITLog b = new TTLog.a();
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    return a().d(paramString1, paramString2);
+  }
+  
+  public static int a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    return a().d(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static ITLog a()
+  {
+    ITLog localITLog = a;
+    if (localITLog != null) {
+      return localITLog;
+    }
+    return b;
+  }
+  
+  public static void a(ITLog paramITLog)
+  {
+    a = paramITLog;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    return a().e(paramString1, paramString2);
+  }
+  
+  public static int b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    return a().e(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static int c(String paramString1, String paramString2)
+  {
+    return a().i(paramString1, paramString2);
+  }
   
   public static int d(String paramString1, String paramString2)
   {
-    return getLog().d(paramString1, paramString2);
-  }
-  
-  public static int d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static int e(String paramString1, String paramString2)
-  {
-    return getLog().e(paramString1, paramString2);
-  }
-  
-  public static int e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().e(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static ITLog getLog()
-  {
-    if (sLogProxy != null) {
-      return sLogProxy;
-    }
-    return sDefLog;
-  }
-  
-  public static int i(String paramString1, String paramString2)
-  {
-    return getLog().i(paramString1, paramString2);
-  }
-  
-  public static int i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().i(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void init(ITLog paramITLog)
-  {
-    sLogProxy = paramITLog;
+    return a().w(paramString1, paramString2);
   }
   
   @TTNativeCall
@@ -58,22 +57,12 @@ public class TTLog
   {
     paramArrayOfByte1 = new String(paramArrayOfByte1);
     paramArrayOfByte2 = new String(paramArrayOfByte2);
-    getLog().printNativeLog(paramInt, paramArrayOfByte1, paramArrayOfByte2);
-  }
-  
-  public static int w(String paramString1, String paramString2)
-  {
-    return getLog().w(paramString1, paramString2);
-  }
-  
-  public static int w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().w(paramString1, paramString2, paramThrowable);
+    a().printNativeLog(paramInt, paramArrayOfByte1, paramArrayOfByte2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTLog
  * JD-Core Version:    0.7.0.1
  */

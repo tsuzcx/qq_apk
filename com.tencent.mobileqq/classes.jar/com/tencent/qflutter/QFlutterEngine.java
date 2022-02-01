@@ -11,13 +11,13 @@ public class QFlutterEngine
   public static void initializeFlutterBoost(Application paramApplication, INativeRouter paramINativeRouter, QFlutterEngine.EventListener paramEventListener)
   {
     paramEventListener = new QFlutterEngine.1(paramEventListener);
-    paramApplication = new FlutterBoost.ConfigBuilder(paramApplication, paramINativeRouter).isDebug(true).whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED).renderMode(FlutterView.RenderMode.texture).pluginsRegister(paramEventListener).build();
+    paramApplication = new FlutterBoost.ConfigBuilder(paramApplication, paramINativeRouter).isDebug(true).whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED).renderMode(FlutterView.RenderMode.texture).lifecycleListener(paramEventListener).build();
     FlutterBoost.instance().init(paramApplication);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qflutter.QFlutterEngine
  * JD-Core Version:    0.7.0.1
  */

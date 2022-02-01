@@ -69,4 +69,5 @@
     <item android:id="@id/ini" android:title="StructMsg" />
     <item android:id="@id/b0w" android:title="厘米秀" />
     <item android:id="@id/j5q" android:title="@string/fos" />
+    <item android:id="@id/nqz" android:title="@string/wgy" />
 </menu>

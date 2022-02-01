@@ -1,21 +1,81 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adfw
-  implements View.OnFocusChangeListener
+class adfw
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public adfw(Leba paramLeba) {}
+  adea a;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public adfw(adea paramadea)
   {
-    if (paramBoolean)
+    this.a = paramadea;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
     {
-      paramView.clearFocus();
-      aysc.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      azqs.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+      paramDialogInterface.put("confirm", false);
+      paramDialogInterface.put("cancel", true);
+      adhh.a(this.a, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      adea localadea = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      adhh.a(localadea, -1, paramDialogInterface);
+    }
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool2 = true;
+    paramDialogInterface = new JSONObject();
+    boolean bool1;
+    if (paramInt == 1) {
+      bool1 = true;
+    }
+    try
+    {
+      paramDialogInterface.put("confirm", bool1);
+      if (paramInt != 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        paramDialogInterface.put("cancel", bool1);
+        adhh.a(this.a, paramDialogInterface);
+        return;
+        bool1 = false;
+        break;
+      }
+      String str;
+      adea localadea;
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      localadea = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      adhh.a(localadea, -1, paramDialogInterface);
     }
   }
 }

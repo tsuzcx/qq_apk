@@ -3,7 +3,7 @@ package com.tencent.richmediabrowser.core;
 import android.app.Activity;
 import com.tencent.richmediabrowser.model.BrowserBaseModel;
 import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BaseView;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
 
 public abstract interface IMvpFactory
 {
@@ -11,11 +11,11 @@ public abstract interface IMvpFactory
   
   public abstract BasePresenter createPresenter(int paramInt);
   
-  public abstract BaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter);
+  public abstract BrowserBaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.IMvpFactory
  * JD-Core Version:    0.7.0.1
  */

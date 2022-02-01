@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.app.FriendListHandler;
 
-class anmt
-  implements anmx
+public class anmt
 {
-  anmt(anmm paramanmm, anmw paramanmw, String paramString, anmy paramanmy) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void a(byte[] paramArrayOfByte)
+  public anmt(FriendListHandler paramFriendListHandler)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b }));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Anmy.a(false);
-      return;
-      if (!anmm.b(paramArrayOfByte, this.jdField_a_of_type_Anmw.d))
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b, this.jdField_a_of_type_Anmw.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString });
-        if (anmm.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.b, str }));
-      }
-    }
-    this.jdField_a_of_type_Anmy.a(true);
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

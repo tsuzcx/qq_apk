@@ -1,10 +1,23 @@
-public abstract interface bhoa
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+
+public class bhoa
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  public static final WebAccelerateHelper.CommonJsPluginFactory a = new bhob();
+  
+  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
+  {
+    switch (paramIntent.getIntExtra("web_view_module_from", -1))
+    {
+    default: 
+      return null;
+    }
+    return a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoa
  * JD-Core Version:    0.7.0.1
  */

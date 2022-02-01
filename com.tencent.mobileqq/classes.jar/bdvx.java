@@ -1,24 +1,6 @@
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class bdvx
-  extends fu
+public abstract interface bdvx
 {
-  bdvx(bdvv parambdvv) {}
-  
-  public void a(ChatMessage paramChatMessage, int paramInt)
-  {
-    if ((bdvv.a(this.a) < 0) || (bdvv.b(this.a) < bdvv.a(this.a)))
-    {
-      bdvv.a(this.a).shouldStartAnimation = true;
-      bdvv.a(this.a).startAnimation(false, false);
-      if (bdvv.a(this.a) > 0) {
-        bdvv.c(this.a);
-      }
-    }
-  }
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
+  public abstract void c(bdwt parambdwt);
 }
 
 

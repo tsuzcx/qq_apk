@@ -1,47 +1,35 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.qphone.base.util.QLog;
 
-class avne
-  implements Animation.AnimationListener
+final class avne
+  implements HookMethodCallback
 {
-  avne(avmf paramavmf) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (paramAnimation == avmf.b(this.a))
+    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
+    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
     {
-      avmf.a(this.a).setVisibility(8);
-      avmf.a(this.a).setVisibility(4);
-      avmf.a(this.a).clearAnimation();
-      avmf.a(this.a).clearAnimation();
-      avmf.a(this.a).setBackgroundResource(2130848660);
-      avmf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166606));
-      avmf.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166606));
+      paramMethodHookParam = new StringBuilder(1000);
+      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+      int i = 0;
+      while (i < arrayOfStackTraceElement.length)
+      {
+        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
+        i += 1;
+      }
+      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == avmf.a(this.a))
-    {
-      avmf.a(this.a).setVisibility(0);
-      avmf.a(this.a).setVisibility(0);
-      avmf.a(this.a).setBackgroundResource(2130850060);
-      avmf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166897));
-      avmf.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166897));
-    }
-  }
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avne
  * JD-Core Version:    0.7.0.1
  */

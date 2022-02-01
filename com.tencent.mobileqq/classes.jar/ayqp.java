@@ -1,6 +1,6 @@
-public abstract interface ayqp<M extends ayns, V extends aywe>
+public abstract interface ayqp
 {
-  public abstract void a(M paramM, V paramV);
+  public abstract void a(aysk paramaysk);
 }
 
 

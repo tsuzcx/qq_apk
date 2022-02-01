@@ -1,23 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-
 public class amgn
-  implements View.OnClickListener
 {
-  public amgn(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  public void onClick(View paramView)
+  public amgn()
   {
-    amgf.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
-    azqs.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amgn
  * JD-Core Version:    0.7.0.1
  */

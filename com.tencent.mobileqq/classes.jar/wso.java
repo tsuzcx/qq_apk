@@ -1,30 +1,72 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class wso<T extends Dispatcher.Dispatchable>
-  extends QQUIEventReceiver<wru, T>
-  implements wsz
+class wso
+  extends wfi
 {
-  protected static AtomicLong a = new AtomicLong(0L);
-  public int a;
-  public long a;
-  public vcf a;
-  public wtb a;
-  public int b;
+  wso(wsm paramwsm) {}
   
-  public abstract int a(T paramT);
-  
-  public abstract void a(T paramT);
-  
-  public boolean b()
+  public void a(byte paramByte)
   {
-    return this.b > 0;
+    boolean bool = true;
+    this.a.a = paramByte;
+    wsm.c(this.a, true);
+    wsm localwsm;
+    if (paramByte != -1)
+    {
+      if (paramByte == 0) {
+        wsm.b(this.a);
+      }
+      localwsm = this.a;
+      if (paramByte != 2) {
+        break label88;
+      }
+    }
+    for (;;)
+    {
+      localwsm.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
+      }
+      return;
+      label88:
+      bool = false;
+    }
+  }
+  
+  public void b()
+  {
+    wpf localwpf = (wpf)wpm.a(10);
+    this.a.b = ((Boolean)localwpf.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    wsm.a(this.a);
+    wsm.a(this.a, true);
+    wsm.a(this.a, true);
+    wsm.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!wsm.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        this.a.c = this.a.a();
+        wsm.a(this.a);
+        wsm.a(this.a, true);
+      }
+      wsm.b(this.a, true);
+      wsm.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wso
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
 
-public final class avxy
-  implements Parcelable.Creator<TranslateResult>
+public class avxy
+  implements DialogInterface.OnClickListener
 {
-  public TranslateResult a(Parcel paramParcel)
-  {
-    return new TranslateResult(paramParcel);
-  }
+  public avxy(LocationDialogUtil.16 param16) {}
   
-  public TranslateResult[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new TranslateResult[paramInt];
+    paramDialogInterface = awbw.a(this.a.a.app);
+    paramDialogInterface.a(3);
+    paramDialogInterface.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface aiep
+class aiep
+  implements DialogInterface.OnDismissListener
 {
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
+  aiep(aidp paramaidp) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.c = null;
+  }
 }
 
 

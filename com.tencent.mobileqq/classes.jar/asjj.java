@@ -1,135 +1,26 @@
-import java.io.Reader;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class asjj
-  extends asjh
+public class asjj
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private final char[] jdField_a_of_type_ArrayOfChar = new char['ÿ'];
-  private int jdField_b_of_type_Int;
-  private final char[] jdField_b_of_type_ArrayOfChar = new char[1024];
-  private int c;
-  private int d;
-  private int e;
-  private int f = -1;
+  public asjj(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public asjj(Reader paramReader)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaIoReader = paramReader;
-  }
-  
-  private final void a(char paramChar)
-  {
-    if (this.d == 0) {
-      this.e = (this.jdField_a_of_type_Int - 1);
-    }
-    char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
-    int i = this.d;
-    this.d = (i + 1);
-    arrayOfChar[i] = Character.toLowerCase(paramChar);
-  }
-  
-  private final asjf b()
-  {
-    if (this.d > 0)
+    if (this.a.getActivity() != null)
     {
-      String str2 = "other";
-      String str1 = str2;
-      switch (Character.getType(this.jdField_a_of_type_ArrayOfChar[0]))
-      {
-      default: 
-        str1 = str2;
+      String str = "";
+      if (this.a.getActivity().app != null) {
+        str = ((asfu)this.a.getActivity().app.getManager(264)).f();
       }
-      for (;;)
-      {
-        return new asjf(new String(this.jdField_a_of_type_ArrayOfChar, 0, this.d), this.e, this.e + this.d, str1);
-        str1 = "num";
-        continue;
-        str1 = "en";
-        continue;
-        str1 = "cn";
-      }
+      asme.a(this.a.getActivity(), str);
     }
-    return null;
-  }
-  
-  public final asjf a()
-  {
-    this.d = 0;
-    this.e = this.jdField_a_of_type_Int;
-    char c1;
-    do
-    {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_b_of_type_Int >= this.c)
-      {
-        this.c = this.jdField_a_of_type_JavaIoReader.read(this.jdField_b_of_type_ArrayOfChar);
-        this.jdField_b_of_type_Int = 0;
-      }
-      if (this.c == -1)
-      {
-        this.f = -1;
-        return b();
-      }
-      char[] arrayOfChar = this.jdField_b_of_type_ArrayOfChar;
-      int i = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (i + 1);
-      c1 = arrayOfChar[i];
-      switch (Character.getType(c1))
-      {
-      }
-    } while (this.d <= 0);
-    return b();
-    if (this.f == -1) {
-      this.f = 0;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        if (this.d != 255) {
-          break;
-        }
-        return b();
-      } while (this.f == 0);
-      this.f = 0;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
-    if (this.f == -1) {
-      this.f = 1;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        if (this.d != 255) {
-          break;
-        }
-        return b();
-      } while (this.f == 1);
-      this.f = 1;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
-    if (this.f == -1) {
-      this.f = 2;
-    }
-    do
-    {
-      do
-      {
-        a(c1);
-        return b();
-      } while (this.f == 2);
-      this.f = 2;
-    } while (this.d <= 0);
-    this.jdField_b_of_type_Int -= 1;
-    this.jdField_a_of_type_Int -= 1;
-    return b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

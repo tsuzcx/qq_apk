@@ -1,18 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aebe
-  implements avzl
+  implements DialogInterface.OnClickListener
 {
-  public aebe(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aebe(DialogActivity paramDialogActivity) {}
   
-  public void a(int paramInt, avzm paramavzm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramavzm.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramavzm.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
+    paramDialogInterface = this.a.app.a();
+    paramDialogInterface.d();
+    paramDialogInterface.c();
+    this.a.finish();
   }
 }
 

@@ -1,38 +1,17 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class gd
-  implements EIPCResultCallback
+  implements awnd<Void, Void>
 {
-  gd(gb paramgb) {}
+  gd(gc paramgc, anmw paramanmw, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public Void a(Void paramVoid)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    switch (paramEIPCResult.data.getInt("font_type"))
-    {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (bool1)
-      {
-        gb.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(1));
-      }
-      return;
-      bool1 = gb.a(this.a, false);
-      continue;
-      bool1 = gb.b(this.a, false);
-    }
+    this.jdField_a_of_type_Anmw.a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     gd
  * JD-Core Version:    0.7.0.1
  */

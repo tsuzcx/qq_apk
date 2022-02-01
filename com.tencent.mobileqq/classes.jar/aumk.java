@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class aumk
-  implements aumg
+  implements Handler.Callback
 {
-  public aumk(TabPageIndicator paramTabPageIndicator) {}
+  public aumk(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public boolean handleMessage(Message paramMessage)
   {
-    TabPageIndicator.a(this.a);
+    MsgBackupSettingFragment.a(this.a, paramMessage);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumk
  * JD-Core Version:    0.7.0.1
  */

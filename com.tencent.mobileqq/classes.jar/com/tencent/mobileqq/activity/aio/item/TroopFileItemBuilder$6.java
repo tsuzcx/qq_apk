@@ -1,25 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ageh;
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import ahdu;
+import ahlz;
 
 public class TroopFileItemBuilder$6
   implements Runnable
 {
-  public TroopFileItemBuilder$6(ageh paramageh, ChatMessage paramChatMessage) {}
-  
   public void run()
   {
-    this.this$0.a.a().b(this.a.frienduin, this.a.istroop, this.a.uniseq);
-    this.this$0.b.post(new TroopFileItemBuilder.6.1(this));
+    ahdu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

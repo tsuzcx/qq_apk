@@ -1,18 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class besi
-  implements ValueAnimator.AnimatorUpdateListener
+public class besi
+  extends DefaultHandler
 {
-  besi(besf parambesf) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  protected String e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public besi(besf parambesf) {}
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (besf.a(this.a) != null)
+    if (this.e != null)
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      besf.a(this.a).setAlpha(f);
+      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+      if (!this.e.equals("title")) {
+        break label46;
+      }
+      if (bgsp.a(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      }
+    }
+    label46:
+    while (!this.e.equals("summary")) {
+      return;
+    }
+    this.c = paramArrayOfChar;
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    this.e = null;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString2.equals("picture")) {
+      this.b = paramAttributes.getValue("cover");
+    }
+    for (;;)
+    {
+      this.e = paramString2;
+      return;
+      if (paramString2.equals("msg")) {
+        this.d = paramAttributes.getValue("url");
+      }
     }
   }
 }

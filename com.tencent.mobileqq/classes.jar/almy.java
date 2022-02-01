@@ -1,16 +1,69 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.36.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class almy
-  implements akoj
 {
-  public almy(ApolloPanel paramApolloPanel) {}
+  private int jdField_a_of_type_Int;
+  private short[] jdField_a_of_type_ArrayOfShort;
+  private int b;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public almy(int paramInt)
   {
-    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
-    this.a.post(new ApolloPanel.36.1(this));
+    if (paramInt > 0) {
+      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ArrayOfShort == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
+          break;
+        }
+        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
+        this.jdField_a_of_type_Int += paramInt2;
+        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        this.b += paramInt2;
+      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
+      this.b = this.jdField_a_of_type_ArrayOfShort.length;
+      return;
+      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
+      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
+        this.jdField_a_of_type_Int = 0;
+      }
+      this.b += paramInt2;
+    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
+    this.b = this.jdField_a_of_type_ArrayOfShort.length;
+  }
+  
+  public short[] a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
+      return null;
+    }
+    short[] arrayOfShort = new short[this.b];
+    if (this.jdField_a_of_type_Int >= this.b)
+    {
+      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
+      return arrayOfShort;
+    }
+    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
+    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    return arrayOfShort;
   }
 }
 

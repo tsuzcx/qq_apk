@@ -1,35 +1,88 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.animation.LinearInterpolator;
 
 public class yxc
-  implements PopupWindow.OnDismissListener
+  extends zcb
 {
-  public yxc(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
+  public final RectF a;
+  public final Drawable a;
+  public final String d;
+  public final String e;
   
-  public void onDismiss()
+  public yxc(ywy paramywy, @NonNull Drawable paramDrawable, @NonNull yxg paramyxg, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842853);
-    if (CustomMenuBar.a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165996));
+    super(paramyxg.jdField_a_of_type_AndroidGraphicsPointF, paramyxg.jdField_a_of_type_Float, paramyxg.jdField_b_of_type_Float, paramyxg.c, paramyxg.d, paramyxg.jdField_a_of_type_Int, paramyxg.jdField_b_of_type_Int, true);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_d_of_type_JavaLangString = paramString1;
+    this.e = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    float f2 = this.n;
+    float f1 = this.o;
+    if (f2 * this.j < 200.0F) {
+      f2 = 200.0F / this.j;
     }
-    for (;;)
+    if (this.j * f1 < 200.0F) {
+      f1 = 200.0F / this.j;
+    }
+    paramCanvas.save();
+    paramCanvas.concat(this.b.a.a(this));
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+    if (this.jdField_d_of_type_Boolean) {
+      zby.a(paramCanvas, this.b.a, this, 0, 2130844622, 2130844629);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    float f2 = this.n;
+    float f1 = this.o;
+    if (f2 * this.j < 200.0F) {
+      f2 = 200.0F / this.j;
+    }
+    if (this.j * f1 < 200.0F) {
+      f1 = 200.0F / this.j;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
     {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165995));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new yxd(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new yxe(this));
+    }
+    if (!this.c) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.c)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxc
  * JD-Core Version:    0.7.0.1
  */

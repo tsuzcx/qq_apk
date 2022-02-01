@@ -1,49 +1,78 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqpn
-  extends arsq
+  extends aqkz<aqpm>
 {
-  public aqpn(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
-  
-  public void a()
+  @NonNull
+  public aqpm a(int paramInt)
   {
-    this.a.a.a().c();
+    return new aqpm();
   }
   
-  public void b()
+  @Nullable
+  public aqpm a(aqlg[] paramArrayOfaqlg)
   {
-    this.a.a.a().k();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    {
+      aqpm localaqpm = aqpm.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqpm;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  public void c()
+  public void a(aqpm paramaqpm)
   {
-    this.a.a.a().l();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramaqpm.toString());
+    }
   }
   
-  public void d()
+  public Class<aqpm> clazz()
   {
-    this.a.a.a().m();
+    return aqpm.class;
   }
   
-  public void e()
+  public boolean isNeedCompressed()
   {
-    this.a.a.a().n();
+    return true;
   }
   
-  public void f()
+  public boolean isNeedStoreLargeFile()
   {
-    this.a.a.a().o();
+    return false;
   }
   
-  public void g()
+  public int migrateOldVersion()
   {
-    this.a.a.a().F();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 575;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpn
  * JD-Core Version:    0.7.0.1
  */

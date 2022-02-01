@@ -1,35 +1,26 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class zjm
-  extends URLDrawableDownListener.Adapter
+public class zjm
 {
-  zjm(zjl paramzjl, int paramInt, ViewGroup paramViewGroup) {}
+  public View a;
+  public View b;
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public zjm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_Zjl.a(this.jdField_a_of_type_Int, false);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131380607);
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    this.jdField_a_of_type_Zjl.b(this.jdField_a_of_type_Int, paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Zjl.a(this.jdField_a_of_type_Int, true);
-    paramView = this.jdField_a_of_type_Zjl.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
-    if (paramView != null) {
-      this.jdField_a_of_type_Zjl.a(paramView, paramURLDrawable);
-    }
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new zjn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zjm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.editipc;
 
-import bmcy;
+import bowc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class PeakIpcModuleServer$3
   implements Runnable
 {
-  public PeakIpcModuleServer$3(bmcy parambmcy, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
+  public PeakIpcModuleServer$3(bowc parambowc, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PeakIpcModuleServer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.editipc.PeakIpcModuleServer.3
  * JD-Core Version:    0.7.0.1
  */

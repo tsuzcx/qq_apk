@@ -30,6 +30,7 @@ final class LaunchParam$1
       localLaunchParam.fromBackToMiniApp = paramParcel.readInt();
       localLaunchParam.fromEnvVersion = paramParcel.readString();
       localLaunchParam.fromMiniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
+      localLaunchParam.privateExtraData = paramParcel.readString();
       return localLaunchParam;
     }
     catch (Throwable paramParcel)
@@ -46,7 +47,7 @@ final class LaunchParam$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.LaunchParam.1
  * JD-Core Version:    0.7.0.1
  */

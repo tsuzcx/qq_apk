@@ -1,15 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aigs
-  implements View.OnClickListener
+public class aigs
+  extends auwq
 {
-  aigs(aigp paramaigp) {}
+  public aigs(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    this.a.a = null;
-    this.a.dismiss();
+    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Ailk, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Ailk.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
+      TroopChatPie.e(this.a).a();
+    }
   }
 }
 

@@ -1,131 +1,73 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
-public class ahho
-  extends BaseAdapter
-  implements View.OnClickListener
+class ahho
+  implements VideoPlayerCallback
 {
-  public ahhp a;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList;
+  ahho(ahhm paramahhm, VideoPlayParam paramVideoPlayParam) {}
   
-  public ahho(Context paramContext, List<ReadInJoySearchHistoryEntity> paramList, ahhp paramahhp)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    b(paramList);
-    this.jdField_a_of_type_Ahhp = paramahhp;
-  }
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
   
-  private void b(List<ReadInJoySearchHistoryEntity> paramList)
+  public void onDownloadComplete(long paramLong)
   {
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      this.jdField_a_of_type_JavaUtilList = null;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("ShortVideoItemBuilder", 2, "onDownloadComplete, id = " + paramLong);
     }
-    if (paramList.size() < 6)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      return;
+    if (ahhm.a(this.jdField_a_of_type_Ahhm) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoItemBuilder", 2, "onDownloadComplete , mListView is null.");
+      }
     }
-    this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
-  }
-  
-  public void a(List<ReadInJoySearchHistoryEntity> paramList)
-  {
-    b(paramList);
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    View localView;
-    if (paramViewGroup == null) {
-      localView = null;
-    }
+    Object localObject;
     do
     {
-      return localView;
-      if (paramView == null)
+      do
       {
-        paramView = LayoutInflater.from(paramViewGroup).inflate(2131559664, null);
-        paramViewGroup = new ahhq(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367672));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369089));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364307));
-        paramView.setTag(paramViewGroup);
-        paramView.setOnClickListener(this);
-      }
-      for (;;)
-      {
-        paramViewGroup.jdField_a_of_type_Int = paramInt;
-        if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-          break;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
-        return paramView;
-        paramViewGroup = (ahhq)paramView.getTag();
-      }
-      localView = paramView;
-    } while (paramInt != this.jdField_a_of_type_JavaUtilList.size());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    return paramView;
+        return;
+        localObject = afur.a(paramLong, ahhm.a(this.jdField_a_of_type_Ahhm).getAdapter());
+      } while (!(localObject instanceof MessageForShortVideo));
+      localObject = (MessageForShortVideo)localObject;
+    } while (((((MessageForShortVideo)localObject).fileType != 6) && (((MessageForShortVideo)localObject).fileType != 17) && (((MessageForShortVideo)localObject).fileType != 9)) || (((MessageForShortVideo)localObject).videoFileStatus == 2003));
+    ((MessageForShortVideo)localObject).videoFileStatus = 2003;
+    ((MessageForShortVideo)localObject).transferedSize = 0;
+    ((MessageForShortVideo)localObject).videoFileProgress = 100;
+    ((MessageForShortVideo)localObject).serial();
+    this.jdField_a_of_type_Ahhm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForShortVideo)localObject).frienduin, this.jdField_a_of_type_Ahhm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
   }
   
-  public void onClick(View paramView)
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onFirstFrameRendered(long paramLong) {}
+  
+  public void onLoopBack(long paramLong1, long paramLong2)
   {
-    if ((paramView.getTag() instanceof ahhq))
-    {
-      paramView = (ahhq)paramView.getTag();
-      if (paramView.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label69;
-      }
-      if (this.jdField_a_of_type_Ahhp != null)
-      {
-        paramView = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramView.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Ahhp.a(paramView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onLoopBack, id = " + paramLong1 + " ,position = " + paramLong2);
     }
-    label69:
-    while ((paramView.jdField_a_of_type_Int != this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_Ahhp == null)) {
-      return;
+    MessageForShortVideo localMessageForShortVideo = bgjy.a().a(Long.valueOf(paramLong1));
+    ahhm.a(this.jdField_a_of_type_Ahhm, localMessageForShortVideo, paramLong2);
+  }
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    ahhm.a(this.jdField_a_of_type_Ahhm, paramLong, paramInt1, paramInt2, paramInt3, paramString, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2) {}
+  
+  public void onStateChange(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong + " , getAIOState() = " + this.jdField_a_of_type_Ahhm.a());
     }
-    this.jdField_a_of_type_Ahhp.a();
+    ahhm.a(this.jdField_a_of_type_Ahhm, paramLong, paramInt);
   }
 }
 

@@ -1,79 +1,57 @@
-import android.view.MotionEvent;
-import java.math.BigDecimal;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.Map;
 
 public class xck
+  extends xdt
 {
-  public float a;
-  private float b;
-  private float c;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public xck()
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 1) && (paramBoolean)) {
-      switch (j)
-      {
-      }
-    }
-    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
+    a(false, true);
+  }
+  
+  public xck(String paramString)
+  {
+    this();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new xcl(this));
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
     {
-      do
-      {
-        return false;
-        this.c = this.a;
-        return false;
-        if (paramMotionEvent.getY() >= this.a)
-        {
-          this.c = this.a;
-          return false;
-        }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      } while (i == 0);
-      azhg.a().b(i);
-      this.c = paramMotionEvent.getY();
+      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      b(true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
+      this.jdField_a_of_type_JavaLangString = ((String)xek.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    wxe.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-    }
-    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = xcp.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (i != 0)
-        {
-          wxe.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
-          azhg.a().b(i);
-          this.b = f1;
-        }
-        return true;
-        f4 = paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(1);
-        f3 = paramMotionEvent.getX(2);
-      }
-    }
-    this.b = xcp.a(f4, f2, f3, f1);
-    return false;
+    return super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xck
  * JD-Core Version:    0.7.0.1
  */

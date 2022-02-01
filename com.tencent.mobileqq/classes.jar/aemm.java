@@ -1,25 +1,21 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aemm
-  extends bhry
+  implements ViewSwitcher.ViewFactory
 {
-  public aemm(VisitorsActivity paramVisitorsActivity) {}
+  public aemm(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public View makeView()
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
-    }
-    this.a.centerView.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131694709);
-    }
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import awge;
+import anhk;
+import anyx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-class RecentUserCache$2
+public class RecentUserCache$2
   implements Runnable
 {
-  RecentUserCache$2(RecentUserCache paramRecentUserCache, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$2(anyx paramanyx, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -25,41 +26,41 @@ class RecentUserCache$2
       QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | start");
     }
     Object localObject1 = null;
-    label381:
+    label384:
     for (;;)
     {
-      synchronized (RecentUserCache.a(this.this$0))
+      synchronized (anyx.a(this.this$0))
       {
-        Iterator localIterator = RecentUserCache.b(this.this$0).values().iterator();
+        Iterator localIterator = anyx.b(this.this$0).values().iterator();
         if (localIterator.hasNext())
         {
-          awge localawge = (awge)localIterator.next();
-          if ((localawge == null) || (!alof.D.equals(((RecentUser)localawge).uin))) {
-            break label381;
+          Entity localEntity = (Entity)localIterator.next();
+          if ((localEntity == null) || (!anhk.D.equals(((RecentUser)localEntity).uin))) {
+            break label384;
           }
-          localObject1 = (RecentUser)localawge;
-          break label381;
+          localObject1 = (RecentUser)localEntity;
+          break label384;
         }
       }
       try
       {
-        ??? = RecentUserCache.b(this.this$0).a();
+        ??? = ((QQAppInterface)this.this$0.app).getWritableDatabase();
         if (localObject1 != null)
         {
-          localObject1 = this.this$0.a((awge)localObject1);
-          if (RecentUserCache.c(this.this$0).containsKey(localObject1)) {
-            RecentUserCache.d(this.this$0).remove(localObject1);
+          localObject1 = this.this$0.getKey((Entity)localObject1);
+          if (anyx.c(this.this$0).containsKey(localObject1)) {
+            anyx.d(this.this$0).remove(localObject1);
           }
         }
-        int i = ((SQLiteDatabase)???).a("recent", "uin=?", new String[] { alof.D });
+        int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { anhk.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | RecentUser delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).a(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { alof.D });
+        i = ((SQLiteDatabase)???).delete(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { anhk.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | conversationinfo delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).a(MessageRecord.getTableName(alof.D, 4000), "frienduin=?", new String[] { alof.D });
+        i = ((SQLiteDatabase)???).delete(MessageRecord.getTableName(anhk.D, 4000), "frienduin=?", new String[] { anhk.D });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | MessageRecord.RecommendMsg delCount = " + i);
         }
@@ -85,7 +86,7 @@ class RecentUserCache$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache.2
  * JD-Core Version:    0.7.0.1
  */

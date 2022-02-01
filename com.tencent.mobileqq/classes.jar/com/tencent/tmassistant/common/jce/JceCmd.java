@@ -6,6 +6,7 @@ public final class JceCmd
   implements Serializable
 {
   public static final JceCmd Empty;
+  public static final JceCmd GetAppDetailForSdk;
   public static final JceCmd GetAppSimpleDetail;
   public static final JceCmd GetAppUpdate;
   public static final JceCmd GetConfig;
@@ -21,6 +22,7 @@ public final class JceCmd
   public static final JceCmd SDKDataReport;
   public static final JceCmd StatReport;
   public static final int _Empty = 0;
+  public static final int _GetAppDetailForSdk = 16;
   public static final int _GetAppSimpleDetail = 5;
   public static final int _GetAppUpdate = 3;
   public static final int _GetConfig = 7;
@@ -45,7 +47,7 @@ public final class JceCmd
     for (boolean bool = true;; bool = false)
     {
       a = bool;
-      __values = new JceCmd[15];
+      __values = new JceCmd[16];
       Empty = new JceCmd(0, 0, "Empty");
       ReportLog = new JceCmd(1, 1, "ReportLog");
       GetSettings = new JceCmd(2, 2, "GetSettings");
@@ -61,6 +63,7 @@ public final class JceCmd
       SDKDataReport = new JceCmd(12, 13, "SDKDataReport");
       GetRecmdIdBatch = new JceCmd(13, 14, "GetRecmdIdBatch");
       GetMobilePhoneQqApkInfo = new JceCmd(14, 15, "GetMobilePhoneQqApkInfo");
+      GetAppDetailForSdk = new JceCmd(15, 16, "GetAppDetailForSdk");
       return;
     }
   }
@@ -116,7 +119,7 @@ public final class JceCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.JceCmd
  * JD-Core Version:    0.7.0.1
  */

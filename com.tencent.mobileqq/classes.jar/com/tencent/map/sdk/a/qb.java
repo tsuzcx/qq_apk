@@ -171,7 +171,7 @@ public final class qb
     {
       int i = 3203;
       String str2 = pz.a;
-      String str1 = "android_vector_sdk_4.2.8.1";
+      String str1 = "android_vector_sdk_4.2.8.2";
       if (paramBundle != null)
       {
         i = paramBundle.getInt("halley_app_id");

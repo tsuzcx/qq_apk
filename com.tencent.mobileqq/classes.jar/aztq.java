@@ -1,4 +1,7 @@
-class aztq {}
+public abstract interface aztq
+{
+  public abstract void a(byte[] paramArrayOfByte);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

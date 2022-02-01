@@ -1,33 +1,15 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aebf
-  implements PopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aebf(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aebf(DialogActivity paramDialogActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 2130845229;; i = 2130845740)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
-    }
+    paramDialogInterface.cancel();
   }
 }
 

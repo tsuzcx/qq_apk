@@ -12,16 +12,16 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bedv;
-import bedw;
-import bedy;
-import bedz;
+import bhkx;
+import bhky;
+import bhla;
+import bhlb;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bedv
+  implements TextureView.SurfaceTextureListener, bhkx
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -29,7 +29,7 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  protected bedw mVPNGRenderer;
+  protected bhky mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
   
@@ -63,7 +63,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bedw getVPNGRenderer()
+  public bhky getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -73,7 +73,7 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bedy.a().a(this.mVPNGRenderer);
+      bhla.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
@@ -104,9 +104,9 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(bedw parambedw)
+  public void onSetRenderer(bhky parambhky)
   {
-    this.mVPNGRenderer = parambedw;
+    this.mVPNGRenderer = parambhky;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
@@ -118,7 +118,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = bhla.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -156,7 +156,7 @@ public class VPNGImageView
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bedz.a(paramString, str))) {
+    if ((!new File(str).exists()) && (bhlb.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -175,7 +175,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = bhla.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {
@@ -199,7 +199,7 @@ public class VPNGImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.view.VPNGImageView
  * JD-Core Version:    0.7.0.1
  */

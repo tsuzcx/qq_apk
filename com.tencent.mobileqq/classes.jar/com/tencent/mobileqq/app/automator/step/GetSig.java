@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alwx;
-import amcl;
-import amih;
 import android.os.Bundle;
-import azqs;
-import biti;
+import anqd;
+import anuv;
+import aoaf;
+import bcst;
+import blhx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,9 +15,9 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class GetSig
   extends AsyncStep
 {
-  private alwx a;
+  private anqd a;
   
-  private void b()
+  private void a()
   {
     ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.createToServiceMsg("TransService.ReqGetSign");
     localToServiceMsg.extraData.putInt("ssover", 1);
@@ -29,28 +29,28 @@ public class GetSig
   
   public int a()
   {
-    if (this.jdField_a_of_type_Alwx == null)
+    if (this.jdField_a_of_type_Anqd == null)
     {
-      this.jdField_a_of_type_Alwx = new amih(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Alwx);
+      this.jdField_a_of_type_Anqd = new aoaf(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Anqd);
     }
-    b();
+    a();
     return 2;
   }
   
-  public void a()
+  public void c()
   {
-    ((amcl)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
-    azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
-    biti.a();
+    ((anuv)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
+    bcst.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
+    blhx.a();
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alwx != null)
+    if (this.jdField_a_of_type_Anqd != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alwx);
-      this.jdField_a_of_type_Alwx = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anqd);
+      this.jdField_a_of_type_Anqd = null;
     }
   }
 }

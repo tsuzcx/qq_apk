@@ -1,6 +1,6 @@
 package com.tencent.feedback.eup;
 
-import com.tencent.bugly.proguard.aq;
+import com.tencent.bugly.proguard.an;
 import com.tencent.bugly.proguard.t;
 import com.tencent.feedback.upload.UploadHandleListener;
 
@@ -14,10 +14,10 @@ final class CrashReport$2
     this.a.onUploadStart(paramInt);
   }
   
-  public final void a(int paramInt, aq paramaq, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
+  public final void a(int paramInt, an paraman, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
   {
-    if (paramaq == null) {}
-    for (int i = -1;; i = paramaq.b)
+    if (paraman == null) {}
+    for (int i = -1;; i = paraman.b)
     {
       this.a.onUploadEnd(paramInt, i, paramLong1, paramLong2, paramBoolean, paramString);
       return;

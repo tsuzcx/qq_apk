@@ -1,12 +1,9 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.ArrayList;
 
-public class bern
+public abstract interface bern
 {
-  public float a;
-  public Bitmap a;
-  public float b;
-  public float c;
-  public float d;
+  public abstract void a(ArrayList<Entity> paramArrayList);
 }
 
 

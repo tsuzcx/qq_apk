@@ -1,17 +1,21 @@
 package me.ele.uetool;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.projection.MediaProjectionManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import me.ele.uetool.base.Application;
 import me.ele.uetool.dialog.AttrsDialog;
 import me.ele.uetool.util.ImageCapture;
@@ -92,6 +96,14 @@ public class TransparentActivity
       }
       i += 1;
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void finish()
@@ -189,6 +201,13 @@ public class TransparentActivity
     super.onBackPressed();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -256,7 +275,7 @@ public class TransparentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.TransparentActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,48 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class ahqi
-  implements View.OnClickListener
+public abstract class ahqi
 {
-  public ahqi(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  public int a;
+  public Context a;
+  protected BaseChatPie a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  public int b;
   
-  public void onClick(View paramView)
+  public ahqi(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    paramView = (ahpe)paramView.getTag();
-    if (paramView.a.msg.group_msg_type.get() == 80)
-    {
-      paramView = TroopInfoActivity.a(String.valueOf(paramView.a.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.getActivity(), paramView);
-      return;
-    }
-    if (!bdin.d(this.a.getActivity()))
-    {
-      QQToast.a(this.a.a, this.a.getActivity().getString(2131694766), 0).b(this.a.a());
-      return;
-    }
-    ((FriendListHandler)TroopSuspiciousFragment.a(this.a).a(1)).b(String.valueOf(paramView.a.req_uin.get()));
-    ahql.a((structmsg.StructMsg)paramView.a.get());
-    TroopSuspiciousFragment.a(this.a, (structmsg.StructMsg)paramView.a.get(), paramView.c);
-    String str1 = paramView.a.msg.group_info.msg_alert.get();
-    String str2 = paramView.a.msg.group_code.get() + "";
-    if ((str1 == null) || ("".equals(str1)))
-    {
-      TroopSuspiciousFragment.a(this.a, 1, (structmsg.StructMsg)paramView.a.get());
-      if ((paramView.a.msg.has()) && (paramView.a.msg.req_uin_nick.has())) {
-        ((TroopManager)TroopSuspiciousFragment.a(this.a).getManager(52)).b(str2, paramView.a.req_uin.get() + "", paramView.a.msg.req_uin_nick.get());
-      }
-      ahql.a(paramView.a, "unnormal_join");
-    }
-    for (;;)
-    {
-      TroopSuspiciousFragment.c(this.a);
-      TroopSuspiciousFragment.a(this.a).c(2131719785);
-      TroopSuspiciousFragment.a(this.a).show();
-      return;
-      TroopSuspiciousFragment.a(this.a, 0, (structmsg.StructMsg)paramView.a.get());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
+  {
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
   }
 }
 

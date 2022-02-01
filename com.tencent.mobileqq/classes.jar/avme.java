@@ -1,41 +1,32 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
 
-class avme
-  extends FragmentPagerAdapter
+final class avme
+  implements bkhw
 {
-  private List<Fragment> jdField_a_of_type_JavaUtilList;
+  avme(Intent paramIntent, bkho parambkho) {}
   
-  avme(FragmentManager paramFragmentManager, List<Fragment> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramList);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    bcst.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
+    paramView = avmi.a();
+    if (paramInt == 0) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      paramView.a(paramInt);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avme
  * JD-Core Version:    0.7.0.1
  */

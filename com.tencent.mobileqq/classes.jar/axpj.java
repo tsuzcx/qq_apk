@@ -1,30 +1,27 @@
-import android.annotation.TargetApi;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
 
-final class axpj
-  implements bdoh<Float>
+class axpj
+  implements View.OnTouchListener
 {
-  axpj(View paramView) {}
+  axpj(axop paramaxop) {}
   
-  @TargetApi(11)
-  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131371284).setAlpha(0.5F);
     }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    for (;;)
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      return false;
+      this.a.a.findViewById(2131371284).setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpj
  * JD-Core Version:    0.7.0.1
  */

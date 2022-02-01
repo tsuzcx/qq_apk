@@ -1,28 +1,48 @@
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
-class auai
-  implements DialogInterface.OnClickListener
+public class auai
+  extends atdl
 {
-  auai(auah paramauah) {}
+  asyw jdField_a_of_type_Asyw = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auai(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.SplashActivity"));
-    localIntent.setFlags(268435456);
-    auah.a(this.a).getApp().startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    azqs.b(auah.a(this.a), "dc00898", "", "", "0X80085DA", "0X80085DA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    b();
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Asyw != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Asyw);
+    }
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Asyw = new auaj(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auai
  * JD-Core Version:    0.7.0.1
  */

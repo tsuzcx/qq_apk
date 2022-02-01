@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener;
 
 class DefaultMediaPlayer$1
   implements MediaPlayer.OnPreparedListener
@@ -16,7 +16,7 @@ class DefaultMediaPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DefaultMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

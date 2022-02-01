@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.utils;
 
-import aubw;
-import bdfi;
+import awjg;
+import bgkl;
 
 public final class AudioUtil$1
   implements Runnable
 {
   public void run()
   {
-    aubw.a().a(bdfi.a());
+    awjg.a().a(bgkl.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.1
  * JD-Core Version:    0.7.0.1
  */

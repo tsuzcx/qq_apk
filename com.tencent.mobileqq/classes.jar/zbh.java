@@ -1,14 +1,17 @@
 public class zbh
-  implements zaz
 {
-  public atwl a(String paramString)
-  {
-    return new atwx(paramString).a();
-  }
+  public int a;
+  public String a;
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbh
  * JD-Core Version:    0.7.0.1
  */

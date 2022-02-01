@@ -17,14 +17,6 @@
         </com.tencent.mobileqq.widget.ConfigClearableEditText>
     </LinearLayout>
     <View android:id="@id/io_" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/e43" android:layout_width="fill_parent" android:layout_height="@dimen/amo" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip">
-        <TextView android:textSize="@dimen/ays" android:textColor="#ff777777" android:gravity="center|left" android:id="@id/kdz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/re7" android:singleLine="true" />
-        <com.tencent.mobileqq.widget.OptionAbleEditText android:textSize="@dimen/ays" android:textColor="@color/fl" android:textColorHint="@color/bm" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fc7" android:background="@null" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="24.0dip" android:maxLines="1" android:singleLine="true" android:maxLength="15" android:inputType="number" android:textIsSelectable="false" android:textCursorDrawable="@drawable/b3j" mobileqq:clearBtnDrawable="@drawable/fl6" mobileqq:clearBtnDrawableHeight="25.0dip" mobileqq:clearBtnDrawableWidth="25.0dip" mobileqq:disableBeSelected="false" mobileqq:disableContextMenu="false" mobileqq:disableCopy="true" mobileqq:disableCut="false" mobileqq:disablePaste="false" mobileqq:disableSelectAllText="false" mobileqq:disableSelectText="false" />
-    </LinearLayout>
     <View android:id="@id/io9" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" />
     <Button android:enabled="false" android:id="@id/ail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="20.0dip" android:layout_marginRight="27.5dip" android:text="@string/fzq" style="@style/b9" />
-    <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/e42" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="27.5dip" android:layout_marginTop="@dimen/mu">
-        <CheckBox android:layout_gravity="center_vertical" android:id="@id/as4" android:background="@drawable/cm_blue_check_bg" android:layout_width="15.0dip" android:layout_height="15.0dip" android:checked="false" android:button="@null" />
-        <TextView android:textSize="@dimen/aym" android:textColor="#ff878b99" android:id="@id/kdy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ni" android:text="@string/fyq" />
-    </LinearLayout>
 </LinearLayout>

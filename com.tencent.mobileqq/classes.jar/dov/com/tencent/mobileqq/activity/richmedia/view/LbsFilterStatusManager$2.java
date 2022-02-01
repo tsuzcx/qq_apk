@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bniy;
+import bqab;
 import java.util.ArrayList;
 
 public class LbsFilterStatusManager$2
   implements Runnable
 {
-  public LbsFilterStatusManager$2(bniy parambniy, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public LbsFilterStatusManager$2(bqab parambqab, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bniy.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    bqab.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.2
  * JD-Core Version:    0.7.0.1
  */

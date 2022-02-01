@@ -1,28 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.PoiMapActivity;
-
-public class mzh
-  implements View.OnClickListener
+public abstract interface mzh
 {
-  public mzh(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public abstract long a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
-    paramView = str;
-    if (str == null) {
-      paramView = "";
-    }
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
+  
+  public abstract boolean a(long paramLong1, long paramLong2);
+  
+  public abstract boolean a(long paramLong1, long paramLong2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mzh
  * JD-Core Version:    0.7.0.1
  */

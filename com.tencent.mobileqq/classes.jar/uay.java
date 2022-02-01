@@ -1,90 +1,108 @@
 import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
 class uay
-  implements ucm
+  extends uaj
 {
-  uay(uax paramuax, Activity paramActivity, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, trx paramtrx) {}
+  uay(uat paramuat) {}
   
-  public void a()
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    QLog.d("QCircleCommentHelper", 1, "onClickSend()");
-    if ((this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (uax.a(this.jdField_a_of_type_Uax) == null))
-    {
-      QLog.d("QCircleCommentHelper", 1, "onCommentSend(): mCommentInputPopupWindow null");
-      return;
+    twm localtwm = uat.a(this.a).a(uat.a(this.a), uat.b(this.a), paramInt);
+    if (localtwm == null) {
+      return false;
     }
-    String str = uax.a(this.jdField_a_of_type_Uax).a();
-    if (TextUtils.isEmpty(str.trim()))
+    if (localtwm.jdField_a_of_type_Boolean)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131692457), 0).a();
-      return;
+      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
+      return true;
     }
-    if (!NetworkUtils.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+    switch (paramInt)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getString(2131694779), 0).a();
-      return;
+    default: 
+      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null)
+    for (;;)
     {
-      QLog.e("QCircleCommentHelper", 1, "feed is null");
-      return;
-    }
-    if (uax.a(this.jdField_a_of_type_Uax) != null) {}
-    for (ubb localubb = (ubb)uax.a(this.jdField_a_of_type_Uax).get();; localubb = null)
-    {
-      Object localObject;
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null)
+      return super.a(paramInt, paramActionSheetItem);
+      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
+      continue;
+      uat.a(this.a, paramActionSheetItem);
+      continue;
+      uat.a(this.a).a(uat.a(this.a).c);
+      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uat.a(this.a).b(uat.a(this.a).c);
+      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uat.a(this.a).c();
+      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uat.a(this.a).a(this.a);
+      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+      continue;
+      uat.a(this.a);
+      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+      continue;
+      if (!TextUtils.isEmpty(uat.a(this.a).c))
       {
-        localObject = new FeedCloudMeta.StReply();
-        ((FeedCloudMeta.StReply)localObject).id.set("fakeId_" + System.currentTimeMillis());
-        ((FeedCloudMeta.StReply)localObject).content.set(str);
-        ((FeedCloudMeta.StReply)localObject).createTime.set((int)(System.currentTimeMillis() / 1000L));
-        ((FeedCloudMeta.StReply)localObject).postUser.set(tqg.a());
-        if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get()))) {
-          ((FeedCloudMeta.StReply)localObject).targetUser.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.get());
-        }
-        if (localubb != null)
+        bdho.a(1, 3);
+        bdho.a(uat.a(this.a).c, uat.a(this.a).jdField_a_of_type_JavaLangString);
+        uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+        continue;
+        if (!TextUtils.isEmpty(uat.a(this.a).c))
         {
-          QLog.d("QCircleCommentHelper", 1, "addMessageFakeReply commentInputListener callback success");
-          localubb.a((FeedCloudMeta.StReply)localObject);
-          uax.a(this.jdField_a_of_type_Uax, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, (FeedCloudMeta.StReply)localObject);
+          this.a.a.d(uat.a(this.a).c, new uaz(this, localtwm));
+          continue;
+          uat.a(this.a).c(uat.a(this.a).c);
+          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+          continue;
+          uat.b(this.a);
+          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+          continue;
+          this.a.b("not_care");
+          continue;
+          Intent localIntent;
+          if (!TextUtils.isEmpty(uat.a(this.a).e))
+          {
+            localIntent = AddFriendLogicActivity.a(this.a.a(), 1, uat.a(this.a).e + "", null, 3096, 1, uat.a(this.a).f, null, null, null, null);
+            this.a.a().startActivity(localIntent);
+          }
+          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+          continue;
+          if (!TextUtils.isEmpty(uat.a(this.a).e))
+          {
+            localIntent = afur.a(new Intent(this.a.a(), SplashActivity.class), null);
+            localIntent.putExtra("uin", uat.a(this.a).e);
+            localIntent.putExtra("uintype", 0);
+            this.a.a().startActivity(localIntent);
+            uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+            continue;
+            if (!TextUtils.isEmpty(uat.a(this.a).e))
+            {
+              localIntent = new Intent(this.a.a(), AccountDetailActivity.class);
+              localIntent.putExtra("uin", uat.a(this.a).e);
+              localIntent.putExtra("from_js", true);
+              this.a.a().startActivity(localIntent);
+              uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
+              continue;
+              this.a.b("unfollow");
+            }
+          }
         }
-      }
-      for (;;)
-      {
-        uax.a(this.jdField_a_of_type_Uax).a("");
-        uax.a(this.jdField_a_of_type_Uax).b(null);
-        uax.a(this.jdField_a_of_type_Uax).dismiss();
-        return;
-        QLog.e("QCircleCommentHelper", 1, "addMessageFakeReply commentInputListener null");
-        break;
-        localObject = new FeedCloudMeta.StComment();
-        ((FeedCloudMeta.StComment)localObject).id.set("fakeId_" + System.currentTimeMillis());
-        ((FeedCloudMeta.StComment)localObject).content.set(str);
-        ((FeedCloudMeta.StComment)localObject).createTime.set((int)(System.currentTimeMillis() / 1000L));
-        ((FeedCloudMeta.StComment)localObject).postUser.set(tqg.a());
-        if (localubb != null) {
-          localubb.a((FeedCloudMeta.StComment)localObject);
-        }
-        uax.a(this.jdField_a_of_type_Uax, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_Trx.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, (FeedCloudMeta.StComment)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uay
  * JD-Core Version:    0.7.0.1
  */

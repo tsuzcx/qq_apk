@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adum
-  implements DialogInterface.OnClickListener
 {
-  public adum(RegisterNewBaseActivity.2 param2) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  protected adum(ChatHistory paramChatHistory) {}
 }
 
 

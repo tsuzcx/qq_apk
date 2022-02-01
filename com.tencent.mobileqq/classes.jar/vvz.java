@@ -1,37 +1,56 @@
-import android.view.animation.AlphaAnimation;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vvz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public vvz(ExploreAnimalView paramExploreAnimalView) {}
+  public vvz(QCircleExpandableTextView paramQCircleExpandableTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365404);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365405);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362823);
-    this.a.a(paramAnimation, 100L);
-    this.a.a(localImageView1, 240L);
-    this.a.a(localImageView2, 360L);
+    Object localObject = this.a;
+    boolean bool;
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      bool = true;
+      ((QCircleExpandableTextView)localObject).jdField_b_of_type_Boolean = bool;
+      if (!this.a.jdField_b_of_type_Boolean) {
+        break label157;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Vwc != null)
+      {
+        this.a.jdField_a_of_type_Vwc.b(false);
+        this.a.jdField_a_of_type_Vwc.a(false);
+      }
+    }
+    for (localObject = new vwb(this.a, this.a.getHeight(), this.a.d, null);; localObject = new vwb(this.a, this.a.getHeight(), this.a.c + this.a.e, null))
+    {
+      ((vwb)localObject).setFillAfter(true);
+      ((vwb)localObject).setAnimationListener(new vwa(this));
+      this.a.clearAnimation();
+      this.a.startAnimation((Animation)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+      label157:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Vwc != null)
+      {
+        this.a.jdField_a_of_type_Vwc.b(true);
+        this.a.jdField_a_of_type_Vwc.a(true);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vvz
  * JD-Core Version:    0.7.0.1
  */

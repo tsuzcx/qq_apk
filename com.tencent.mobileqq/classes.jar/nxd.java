@@ -1,14 +1,23 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class nxd
-  extends bkca
+  implements View.OnClickListener
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  public nxd(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  
+  public void onClick(View paramView)
   {
-    nxa.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxd
  * JD-Core Version:    0.7.0.1
  */

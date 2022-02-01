@@ -1,45 +1,45 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class aesi
-  implements AdapterView.OnItemClickListener
+public class aesi
+  extends BroadcastReceiver
 {
-  aesi(aesh paramaesh) {}
+  public aesi(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = ((ShareActionSheetBuilder.ActionSheetItem)aesh.a(this.a)[0].get(paramInt)).action;
-    aesh.a(this.a).dismiss();
-    int i = 0;
-    switch (j)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
     {
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
-    for (;;)
+    do
     {
-      if (i != 0) {
-        azqs.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
+      boolean bool;
+      do
+      {
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
+      {
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
-      }
-      this.a.a(j, aesh.a(this.a));
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 

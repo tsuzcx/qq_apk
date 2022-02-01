@@ -1,6 +1,6 @@
 package com.tencent.av.redpacket.ui;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.portal.StrokeTextView;
-import lxw;
-import lxy;
+import luy;
+import lva;
 
 public class RedPacketRollNumberView
   extends LinearLayout
-  implements lxy
+  implements lva
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private lxw jdField_a_of_type_Lxw;
+  private luy jdField_a_of_type_Luy;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
   private int c;
@@ -70,7 +70,7 @@ public class RedPacketRollNumberView
     localStrokeTextView.setTextSize(0, this.b);
     localStrokeTextView.setStrokeEnable(true);
     localStrokeTextView.setStrokeColor(-1);
-    localStrokeTextView.setStrokeSize(aepi.a(6.0F, getResources()));
+    localStrokeTextView.setStrokeSize(afur.a(6.0F, getResources()));
     localStrokeTextView.setInnerTextColor(-2094274);
     localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
     int i = (int)paramDouble;
@@ -108,8 +108,8 @@ public class RedPacketRollNumberView
   
   public void b()
   {
-    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lxw != null)) {
-      this.jdField_a_of_type_Lxw.a();
+    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Luy != null)) {
+      this.jdField_a_of_type_Luy.a();
     }
     this.c += 1;
   }
@@ -143,16 +143,16 @@ public class RedPacketRollNumberView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setLisener(lxw paramlxw)
+  public void setLisener(luy paramluy)
   {
-    if (paramlxw != null) {
-      this.jdField_a_of_type_Lxw = paramlxw;
+    if (paramluy != null) {
+      this.jdField_a_of_type_Luy = paramluy;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollNumberView
  * JD-Core Version:    0.7.0.1
  */

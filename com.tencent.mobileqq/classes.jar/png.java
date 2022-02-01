@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
-
-class png
-  implements View.OnClickListener
+final class png
+  implements pnh
 {
-  png(pna parampna, pgd parampgd, Container paramContainer, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public void l()
   {
-    paramView = this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = paramView.a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
-    }
-    paramView = (qms)paramView.a.get(0);
-    pna.a(this.jdField_a_of_type_Pna, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pgd.a(), (int)paramView.a, this.jdField_a_of_type_Pgd.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Pgd.a());
+    ube.a(2, true, System.currentTimeMillis(), 0, 0, false);
+  }
+  
+  public void m()
+  {
+    ube.a(2, false, pnc.d, 0, 0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     png
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,66 @@
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import java.util.HashSet;
+import java.util.Iterator;
 
-final class aslr
-  implements Comparator<PadFaceAd>
+public class aslr
+  implements aslq
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
+  private final HashSet<LoadingLayoutBase> a = new HashSet();
+  
+  public void a(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
+    if (paramLoadingLayoutBase != null) {
+      this.a.add(paramLoadingLayoutBase);
     }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
+  }
+  
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
     }
-    return 1;
+  }
+  
+  public void setLoadingDrawable(Drawable paramDrawable)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    }
+  }
+  
+  public void setPullLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
+    }
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    }
   }
 }
 

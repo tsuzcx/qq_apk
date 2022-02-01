@@ -1,51 +1,37 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class apke
+final class apke
+  implements apqz
 {
-  public apkf a;
-  public String a;
-  
-  public JSONObject a()
+  public void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkCommonUtil", 2, "ArkSafe.report onDisableReport");
+    }
+    apqv.a().a(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkCommonUtil", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.jdField_a_of_type_Apkf.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("source_md5", this.jdField_a_of_type_Apkf.jdField_b_of_type_JavaLangString);
-      localJSONObject2.put("source_url", this.jdField_a_of_type_Apkf.c);
-      localJSONArray = new JSONArray();
-      localIterator = this.jdField_a_of_type_Apkf.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put((String)localIterator.next());
+      if (localObject != null)
+      {
+        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
+        if (localObject != null) {
+          ((apni)localObject).a(paramString);
+        }
       }
-      localException.put("expose_md5s", localJSONArray);
+      return;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DoutuReportData", 2, "convert error:" + localException);
-      }
-      return localJSONObject1;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.jdField_a_of_type_Apkf.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray.put((String)localIterator.next());
-    }
-    localException.put("expose_urls", localJSONArray);
-    localException.put("click_md5", this.jdField_a_of_type_Apkf.d);
-    localException.put("click_url", this.jdField_a_of_type_Apkf.e);
-    localException.put("aio_type", this.jdField_a_of_type_Apkf.f);
-    localException.put("mobile_type", this.jdField_a_of_type_Apkf.g);
-    localException.put("to_user_id", this.jdField_a_of_type_Apkf.h);
-    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
-    localJSONObject1.put("data", localException);
-    return localJSONObject1;
   }
 }
 

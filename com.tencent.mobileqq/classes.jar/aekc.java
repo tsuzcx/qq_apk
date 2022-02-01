@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aekc
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public awge a;
-  public String a;
+  public aekc(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public aekc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, awge paramawge)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awge = paramawge;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

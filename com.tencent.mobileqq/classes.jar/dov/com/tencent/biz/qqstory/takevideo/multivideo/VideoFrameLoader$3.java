@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bnah;
-import bnai;
+import bprn;
+import bpro;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,21 +10,21 @@ import java.util.List;
 public class VideoFrameLoader$3
   implements Runnable
 {
-  public VideoFrameLoader$3(bnah parambnah) {}
+  public VideoFrameLoader$3(bprn parambprn) {}
   
   public void run()
   {
-    if (bnah.b(this.this$0) != bnah.a(this.this$0).size())
+    if (bprn.b(this.this$0) != bprn.a(this.this$0).size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bnah.b(this.this$0) + "-" + bnah.a(this.this$0).size());
+        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bprn.b(this.this$0) + "-" + bprn.a(this.this$0).size());
       }
-      if ((!bnah.c(this.this$0)) && (bnah.a(this.this$0).size() == 0))
+      if ((!bprn.c(this.this$0)) && (bprn.a(this.this$0).size() == 0))
       {
-        bnah.a(this.this$0, true);
+        bprn.a(this.this$0, true);
         this.this$0.b();
-        bnah.a(this.this$0, new RetrieverDecodeRunnable(bnah.a(this.this$0), bnah.c(this.this$0), bnah.d(this.this$0), bnah.b(this.this$0), bnah.a(this.this$0), bnah.a(this.this$0), bnah.b(this.this$0), this.this$0));
-        ThreadManager.post(bnah.a(this.this$0), 10, null, true);
+        bprn.a(this.this$0, new RetrieverDecodeRunnable(bprn.a(this.this$0), bprn.c(this.this$0), bprn.d(this.this$0), bprn.b(this.this$0), bprn.a(this.this$0), bprn.a(this.this$0), bprn.b(this.this$0), this.this$0));
+        ThreadManager.post(bprn.a(this.this$0), 10, null, true);
         if (QLog.isColorLevel()) {
           QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
         }
@@ -33,10 +33,10 @@ public class VideoFrameLoader$3
     for (;;)
     {
       return;
-      if (bnah.a(this.this$0) != null) {}
-      for (bnai localbnai = (bnai)bnah.a(this.this$0).get(); localbnai != null; localbnai = null)
+      if (bprn.a(this.this$0) != null) {}
+      for (bpro localbpro = (bpro)bprn.a(this.this$0).get(); localbpro != null; localbpro = null)
       {
-        localbnai.c();
+        localbpro.c();
         return;
       }
     }
@@ -44,7 +44,7 @@ public class VideoFrameLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.3
  * JD-Core Version:    0.7.0.1
  */

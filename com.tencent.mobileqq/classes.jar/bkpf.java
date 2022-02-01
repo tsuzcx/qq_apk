@@ -1,11 +1,8 @@
-import java.io.File;
+import com.tencent.widget.TCWNumberPicker;
 
-public class bkpf
+public abstract interface bkpf
 {
-  public static final String a = bkpi.b + File.separator + "playshow";
-  public static final String b = a + File.separator + "crazyface_tmp";
-  public static final String c = a + File.separator + "qudong_tmp";
-  public static final String d = a + File.separator + "web_tmp";
+  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
 }
 
 

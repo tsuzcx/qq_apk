@@ -1,14 +1,45 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Activity;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class acqp
-  implements aufz<Void, bdwv>
+class acqp
+  extends acqr
 {
-  public acqp(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public bdwv a(Void paramVoid)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    return bdww.a(this.a.app).a(this.a.a.troopUin);
+    if (paramacpp != null) {}
+    for (Activity localActivity = paramacpp.a(); (paramacpp == null) || (localActivity == null); localActivity = null)
+    {
+      QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "webPlugin == null || activity == null");
+      return true;
+    }
+    String str = "";
+    try
+    {
+      QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "args = " + paramVarArgs[0]);
+      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("antiSpam");
+      a(paramVarArgs);
+    }
+    catch (Throwable paramVarArgs)
+    {
+      try
+      {
+        paramacpp.callJs(paramString, new String[] { "" });
+        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramacpp.a());
+        return true;
+        paramVarArgs = paramVarArgs;
+        QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "json", paramVarArgs);
+        paramVarArgs = str;
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "callJs", paramString);
+        }
+      }
+    }
   }
 }
 

@@ -1,51 +1,83 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class xyg
-  extends AccessibilityNodeProvider
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wwx>
 {
-  public xyg(xye paramxye) {}
-  
-  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+  public xyg(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == -1)
-    {
-      localObject1 = localObject2;
-      if (xye.a(this.a) != null)
-      {
-        localObject1 = AccessibilityNodeInfo.obtain(xye.a(this.a));
-        xye.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-        ((AccessibilityNodeInfo)localObject1).setText(xye.a(this.a).getContentDescription());
-      }
-    }
-    return localObject1;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wwx paramwwx)
   {
-    boolean bool = xye.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
-    if (paramInt2 == 128) {
-      xye.a(this.a).post(xye.a(this.a));
+    if ((paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwx.jdField_a_of_type_JavaUtilList != null) && (!paramwwx.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    {
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label54;
+      }
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
     }
+    label54:
+    int j;
     do
     {
-      do
+      return;
+      j = 0;
+      int i = j;
+      Object localObject;
+      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
       {
-        return bool;
-      } while (paramInt2 != 64);
-      xye.a(this.a).removeCallbacks(xye.a(this.a));
-    } while (xye.a(this.a) == null);
-    xye.a(this.a).a();
-    return bool;
+        i = j;
+        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
+        {
+          localObject = paramwwx.jdField_a_of_type_JavaUtilList.iterator();
+          QQUserUIItem localQQUserUIItem;
+          do
+          {
+            i = j;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
+          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
+          i = 1;
+        }
+      }
+      j = i;
+      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
+      {
+        paramwwx = paramwwx.jdField_a_of_type_JavaUtilList.iterator();
+        do
+        {
+          j = i;
+          if (!paramwwx.hasNext()) {
+            break;
+          }
+          localObject = (QQUserUIItem)paramwwx.next();
+        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
+        j = 1;
+      }
+    } while (j == 0);
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyg
  * JD-Core Version:    0.7.0.1
  */

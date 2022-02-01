@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-final class assi
-  implements DialogInterface.OnClickListener
+class assi
+  implements bkiz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  assi(assg paramassg, View paramView) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

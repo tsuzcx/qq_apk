@@ -1,111 +1,37 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avzw
+class avzw
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private final avzx jdField_a_of_type_Avzx;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
-  private float e;
+  avzw(avzs paramavzs, Activity paramActivity) {}
   
-  public avzw(Context paramContext, avzx paramavzx)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Avzx = paramavzx;
-  }
-  
-  private float a(MotionEvent paramMotionEvent)
-  {
-    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
+    if (this.jdField_a_of_type_Avzs.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+      }
+      avzs.a(this.jdField_a_of_type_Avzs).setClickable(false);
+      avzs.a(this.jdField_a_of_type_Avzs).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840540));
+      avzs.a(this.jdField_a_of_type_Avzs).a(true);
+      bcst.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Avzx.b(this);
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Avzx.a(this));
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_Avzx.a(this);
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    int i = 0;
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            b();
-            return true;
-          } while (paramMotionEvent.getPointerCount() != 2);
-          float f = a(paramMotionEvent);
-          this.d = f;
-          this.e = f;
-          this.c = f;
-          return true;
-        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
-        this.d = a(paramMotionEvent);
-        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
-        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
-        boolean bool = this.jdField_a_of_type_Boolean;
-        a();
-        if ((!bool) || (a())) {
-          i = 1;
-        }
-      } while (i == 0);
-      this.e = this.d;
-      return true;
-    } while (paramMotionEvent.getPointerCount() != 2);
-    b();
-    return true;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public float c()
-  {
-    return this.d - this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzw
  * JD-Core Version:    0.7.0.1
  */

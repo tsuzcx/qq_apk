@@ -1,29 +1,22 @@
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class aqkj
-  implements Interpolator
+  implements View.OnClickListener
 {
-  aqkj(aqke paramaqke) {}
+  aqkj(aqki paramaqki, MessageForTroopConfess paramMessageForTroopConfess) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onClick(View paramView)
   {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      aqkl.a(this.jdField_a_of_type_Aqki.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aqki.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Aqki.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
     }
-    float f = paramFloat * 2.0F;
-    if (f >= 2.0F) {
-      return 1.0F;
-    }
-    paramFloat = 0.45F / 4.0F;
-    if (f < 1.0F)
-    {
-      f -= 1.0F;
-      d = Math.pow(2.0D, 10.0F * f);
-      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
-    }
-    f -= 1.0F;
-    double d = Math.pow(2.0D, -10.0F * f);
-    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

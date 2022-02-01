@@ -1,331 +1,311 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger.1;
 import com.tencent.qphone.base.util.QLog;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xc05.GetAuthAppListReq;
-import tencent.im.oidb.oidb_0xc05.GetAuthAppListRsp;
-import tencent.im.oidb.oidb_0xc05.ReqBody;
-import tencent.im.oidb.oidb_0xc05.RspBody;
-import tencent.im.oidb.oidb_0xccd.ReqBody;
-import tencent.im.oidb.oidb_0xccd.Result;
-import tencent.im.oidb.oidb_0xccd.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.oidb.qqconnect.Appinfo;
+import java.util.Map;
+import java.util.Observer;
+import java.util.Random;
 
-public final class bfqt
-  extends alpd
+public class bfqt
 {
-  private final List<qqconnect.Appinfo> a = new ArrayList(10);
-  private final List<AppInfo> b = new ArrayList(10);
+  protected static final List<String> a;
+  protected static Map<String, bfuv> a;
+  protected anwd a;
+  protected final String a;
+  protected final String b = "5520";
+  protected final String c = "3";
+  protected final String d = "5";
+  protected final String e = "cgi-bin/httpconn";
+  public String f;
   
-  public bfqt(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_JavaUtilList.add("2408:8756:3af0:10::107");
+    jdField_a_of_type_JavaUtilList.add("240e:ff:f101:10::104");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::132");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::22");
+    jdField_a_of_type_JavaUtilList.add("2408:80f1:31:50::21");
+    jdField_a_of_type_JavaUtilList.add("240e:e1:a900:50::3d");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8020:2::86");
+    jdField_a_of_type_JavaUtilList.add("2409:8c1e:8fd0:50::1c");
+    jdField_a_of_type_JavaUtilList.add("2408:8711:10:10::13");
+    jdField_a_of_type_JavaUtilList.add("240e:928:1400:10::23");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8030:1::a0");
+    jdField_a_of_type_JavaUtilList.add("2409:8702:4860:10::41");
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public bfqt(String paramString, Class<? extends bfuv> paramClass, anwd paramanwd)
   {
-    Object localObject1 = new oidb_0xc05.ReqBody();
-    Object localObject2 = new oidb_0xc05.GetAuthAppListReq();
-    ((oidb_0xc05.GetAuthAppListReq)localObject2).start.set(paramInt1);
-    ((oidb_0xc05.GetAuthAppListReq)localObject2).limit.set(paramInt2);
-    ((oidb_0xc05.ReqBody)localObject1).get_auth_app_list_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3077);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xc05.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xc05");
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putInt("req_index", paramInt1);
-    ((ToServiceMsg)localObject1).extraData.putInt("req_page_size", paramInt2);
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject = "";
-    int i;
-    if (paramFromServiceMsg.isSuccess())
+    this.jdField_a_of_type_JavaLangString = "0x6ff0072";
+    this.jdField_a_of_type_Anwd = paramanwd;
+    this.f = paramString;
+    if (jdField_a_of_type_JavaUtilMap == null) {
+      jdField_a_of_type_JavaUtilMap = new HashMap();
+    }
+    if ((bfuv)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList");
+      paramClass = bfuu.a(paramClass);
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramClass);
+    }
+  }
+  
+  private String a(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return null;
+    }
+    try
+    {
+      paramString1 = new URL("http", paramString2, paramInt, "cgi-bin/httpconn").toString();
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  private String a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    Object localObject2;
+    Object localObject1;
+    if (!paramBoolean)
+    {
+      bool1 = true;
+      localObject2 = a("htdata3.qq.com", "cgi-bin/httpconn", bool1);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (paramBoolean) {
+          break label77;
+        }
       }
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+    }
+    label77:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localObject1 = a("htdata4.qq.com", "cgi-bin/httpconn", bool1);
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = a("cgi-bin/httpconn", paramBoolean);
+      }
+      return localObject2;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public String a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    int i = 0;
+    for (;;)
+    {
+      Object localObject1;
       try
       {
-        paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        paramFromServiceMsg = paramObject;
+        localObject1 = InetAddress.getAllByName(paramString1);
+        if (localObject1 == null) {
+          break label150;
+        }
+        int j = localObject1.length;
+        if (i >= j) {
+          break label150;
+        }
+        localObject2 = localObject1[i];
+        if (((localObject2 instanceof Inet4Address)) && (paramBoolean))
+        {
+          localObject1 = localObject2.getHostAddress();
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label145;
+          }
+          paramString2 = a(paramString2, (String)localObject1, 80);
+        }
       }
-      catch (Exception paramObject)
+      catch (UnknownHostException paramString1)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed pkg failed", paramObject);
-          }
-        }
+        Object localObject2;
+        paramString2 = null;
+        QLog.i("TroopAvatarManger", 1, "UnknownHostException", paramString1);
+        return paramString2;
       }
-      i = -1;
-      if (paramFromServiceMsg.uint32_result.has()) {
-        i = paramFromServiceMsg.uint32_result.get();
-      }
-      if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
+      try
       {
-        paramObject = new oidb_0xc05.RspBody();
-        try
-        {
-          paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          i = 1;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            int j;
-            if (QLog.isColorLevel()) {
-              QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed rsp failed", paramFromServiceMsg);
-            }
-            i = 0;
-            continue;
-            paramToServiceMsg = new ArrayList(this.a.size());
-            paramObject = this.a.iterator();
-            while (paramObject.hasNext()) {
-              paramToServiceMsg.add(new AppInfo((qqconnect.Appinfo)paramObject.next()));
-            }
-            this.a.clear();
-            notifyUI(0, true, paramToServiceMsg);
-            continue;
-            paramToServiceMsg = paramFromServiceMsg;
-            i = 0;
-            continue;
-            paramFromServiceMsg = "";
-          }
-        }
-        if (i != 0) {
-          if (paramObject.wording.has())
-          {
-            paramFromServiceMsg = paramObject.wording.get();
-            if (paramObject.get_auth_app_list_rsp.has())
-            {
-              paramObject = paramObject.get_auth_app_list_rsp;
-              localObject = paramObject.appinfos.get();
-              if (localObject != null)
-              {
-                this.a.addAll((Collection)localObject);
-                i = paramToServiceMsg.extraData.getInt("req_index");
-                j = paramToServiceMsg.extraData.getInt("req_page_size");
-                if (i + j <= paramObject.total_count.get())
-                {
-                  a(i + j, 10);
-                  paramToServiceMsg = paramFromServiceMsg;
-                  i = 1;
-                }
-              }
-            }
-          }
-        }
+        QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByHost host[%s] %s", new Object[] { paramString1, localObject1 }));
+        return paramString2;
       }
+      catch (UnknownHostException paramString1)
+      {
+        continue;
+      }
+      if (((localObject2 instanceof Inet6Address)) && (!paramBoolean))
+      {
+        localObject1 = localObject2.getHostAddress();
+      }
+      else
+      {
+        i += 1;
+        continue;
+        label145:
+        paramString2 = null;
+        continue;
+        label150:
+        localObject1 = null;
+      }
+    }
+  }
+  
+  public String a(String paramString, boolean paramBoolean)
+  {
+    int i = new Random().nextInt(100);
+    String str;
+    if (paramBoolean)
+    {
+      int j = jdField_a_of_type_JavaUtilList.size();
+      str = (String)jdField_a_of_type_JavaUtilList.get(Math.abs(i) % j);
     }
     for (;;)
     {
-      if (i == 0)
-      {
-        this.a.clear();
-        notifyUI(0, false, paramToServiceMsg);
+      paramString = a(paramString, str, 80);
+      QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByRandomIp ip=%s bIpv6=%b", new Object[] { str, Boolean.valueOf(paramBoolean) }));
+      return paramString;
+      if (Math.abs(i) % 2 == 0) {
+        str = "14.17.18.20";
+      } else {
+        str = "112.90.139.96";
       }
-      return;
-      i = 0;
-      paramToServiceMsg = (ToServiceMsg)localObject;
     }
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public ArrayList<bfut> a()
   {
-    int i;
-    if (paramFromServiceMsg.isSuccess())
+    return ((bfuv)jdField_a_of_type_JavaUtilMap.get(this.f)).a();
+  }
+  
+  public List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool2 = annj.a().a();
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    bdyy localbdyy = bdyy.a();
+    localbdyy.b();
+    if (i == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "handleDelAppAuthrize");
+      String str = localbdyy.a(paramAppInterface, 0, bool2, true);
+      if (!TextUtils.isEmpty(str)) {
+        localArrayList.add(str + "cgi-bin/httpconn");
       }
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
+      if (!bool2) {}
+      for (bool1 = true;; bool1 = false)
       {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        for (;;)
+        paramAppInterface = localbdyy.a(paramAppInterface, 0, bool1, true);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
+        }
+        if (localArrayList.size() < 2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenAgentHandler", 2, "handleDelAppAuthrize, parsed pkg failed", paramFromServiceMsg);
+          paramAppInterface = a(false);
+          if (!TextUtils.isEmpty(paramAppInterface)) {
+            localArrayList.add(paramAppInterface);
           }
         }
-      }
-      i = -1;
-      if (paramToServiceMsg.uint32_result.has()) {
-        i = paramToServiceMsg.uint32_result.get();
-      }
-      if ((i == 0) && (paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
-      {
-        paramFromServiceMsg = new oidb_0xccd.RspBody();
-        try
-        {
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          i = 1;
+        paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface);
         }
-        catch (Exception paramToServiceMsg)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OpenAgentHandler", 2, "handleGetAuthorizeAppList, parsed rsp failed", paramToServiceMsg);
-            }
-            i = 0;
-          }
-          notifyUI(1, true, paramToServiceMsg);
-          this.b.clear();
-          i = 1;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAvatarManger", 2, String.format("getSrvAddr type=%d prefV6=%b getUrl=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Arrays.toString(localArrayList.toArray()) }));
         }
-        if ((i != 0) && (paramFromServiceMsg.errcode.get() == 0))
+        i = 0;
+        while (i < localArrayList.size())
         {
-          paramToServiceMsg = new ArrayList(this.b.size());
-          paramFromServiceMsg = paramFromServiceMsg.Results.get();
-          if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.iterator();
-            while (paramFromServiceMsg.hasNext())
-            {
-              paramObject = (oidb_0xccd.Result)paramFromServiceMsg.next();
-              if (paramObject.errcode.get() == 0)
-              {
-                i = paramObject.uint32_appid.get();
-                paramObject = this.b.iterator();
-                while (paramObject.hasNext())
-                {
-                  AppInfo localAppInfo = (AppInfo)paramObject.next();
-                  if (localAppInfo.a() == i) {
-                    paramToServiceMsg.add(localAppInfo);
-                  }
-                }
-              }
-            }
-          }
+          localArrayList.set(i, (String)localArrayList.get(i) + "?htcmd=" + "0x6ff0072" + "&ver=" + "5520" + "&ukey=" + paramString5 + "&range=" + paramString2 + "&uin=" + paramString4 + "&seq=23&groupuin=" + paramString3 + "&filetype=" + "3" + "&imagetype=" + "5" + "&userdata=" + paramString1);
+          i += 1;
         }
       }
     }
-    for (;;)
+    if (i == 2)
     {
-      if (i == 0)
-      {
-        this.b.clear();
-        notifyUI(1, false, "");
+      bool1 = true;
+      label421:
+      paramAppInterface = localbdyy.a(paramAppInterface, 0, bool1, true);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
       }
-      return;
-      i = 0;
+      if (i != 2) {
+        break label534;
+      }
     }
+    label534:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramAppInterface = a(bool1);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface);
+      }
+      paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+      if (TextUtils.isEmpty(paramAppInterface)) {
+        break;
+      }
+      localArrayList.add(paramAppInterface);
+      break;
+      bool1 = false;
+      break label421;
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenAgentHandler", 2, "getAuthorizedAppList");
-    }
-    a(0, 10);
+    this.jdField_a_of_type_Anwd = null;
   }
   
-  public void a(List<AppInfo> paramList)
+  public void a(Class<? extends Thread> paramClass, AppInterface paramAppInterface, ArrayList<TroopClipPic> paramArrayList, String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("deleteAppAuthorize, ");
-      if (paramList == null) {
-        break label131;
-      }
-    }
-    label131:
-    for (Object localObject1 = "size=" + paramList.size();; localObject1 = "apps=null")
-    {
-      QLog.d("OpenAgentHandler", 2, (String)localObject1);
-      localObject1 = new ArrayList(paramList.size());
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        AppInfo localAppInfo = (AppInfo)((Iterator)localObject2).next();
-        if (localAppInfo.a() > 0) {
-          ((List)localObject1).add(Integer.valueOf(localAppInfo.a()));
-        }
-      }
-    }
-    Object localObject2 = new oidb_0xccd.ReqBody();
-    ((oidb_0xccd.ReqBody)localObject2).uint32_appids.set((List)localObject1);
-    ((oidb_0xccd.ReqBody)localObject2).platform.set(1);
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3277);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xccd.ReqBody)localObject2).toByteArray()));
-    localObject2 = createToServiceMsg("OidbSvc.0xccd");
-    ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-    this.b.addAll(paramList);
-    sendPbReq((ToServiceMsg)localObject2);
+    ThreadManager.executeOnNetWorkThread(new TroopAvatarManger.1(this, paramAppInterface, paramString1, paramString3, paramString2, (bfuv)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public void a(String paramString)
   {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0xc05");
-      this.allowCmdSet.add("OidbSvc.0xccd");
+    if (this.jdField_a_of_type_Anwd != null) {
+      this.jdField_a_of_type_Anwd.e(paramString);
     }
-    return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends alpg> observerClass()
+  public void a(String paramString, int paramInt, ArrayList<Integer> paramArrayList)
   {
-    return bfqu.class;
+    if (this.jdField_a_of_type_Anwd != null) {
+      this.jdField_a_of_type_Anwd.a(paramString, paramInt, paramArrayList);
+    }
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(Observer paramObserver)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenAgentHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
-      }
-    }
-    do
-    {
-      return;
-      if ("OidbSvc.0xc05".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0xccd".equals(paramFromServiceMsg.getServiceCmd()));
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    ((bfuv)jdField_a_of_type_JavaUtilMap.get(this.f)).addObserver(paramObserver);
+  }
+  
+  public void b(Observer paramObserver)
+  {
+    ((bfuv)jdField_a_of_type_JavaUtilMap.get(this.f)).a(paramObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aqam;
+import asfa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,7 +22,7 @@ class TroopAIOEmotionFragment$2
     ArrayList localArrayList = new ArrayList();
     Object localObject = TroopAIOEmotionFragment.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((ChatMessage)((aqam)((Iterator)localObject).next()).a);
+      localArrayList.add((ChatMessage)((asfa)((Iterator)localObject).next()).a);
     }
     localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {}
@@ -49,7 +49,7 @@ class TroopAIOEmotionFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment.2
  * JD-Core Version:    0.7.0.1
  */

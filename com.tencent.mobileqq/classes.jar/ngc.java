@@ -1,28 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ngc
+final class ngc
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  String b;
-  
-  ngc(nga paramnga)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    paramDialogInterface.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ngc
  * JD-Core Version:    0.7.0.1
  */

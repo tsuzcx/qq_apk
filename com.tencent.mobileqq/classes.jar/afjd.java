@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 class afjd
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  afjd(afjb paramafjb, BaseActivity paramBaseActivity) {}
+  afjd(afjb paramafjb, bgpa parambgpa) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_Afjb.denied();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Afjb.grant();
+    bcst.b(this.jdField_a_of_type_Afjb.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afjb.a.a, "", "", "");
+    this.jdField_a_of_type_Bgpa.cancel();
   }
 }
 

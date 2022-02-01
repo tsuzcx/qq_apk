@@ -1,43 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ArkAppReportController.1;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
 
 public class azpl
+  extends VasQuickUpdateManager.CallBacker
 {
-  private static String a(azpm paramazpm)
-  {
-    return paramazpm.a();
-  }
+  public azpl(VasProfileTemplateController paramVasProfileTemplateController, azfl paramazfl, Card paramCard) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    azpm localazpm = new azpm();
-    localazpm.jdField_a_of_type_JavaLangString = paramString1;
-    localazpm.jdField_b_of_type_JavaLangString = paramString2;
-    localazpm.jdField_c_of_type_JavaLangString = paramString3;
-    localazpm.jdField_a_of_type_Long = paramLong1;
-    localazpm.jdField_b_of_type_Long = paramLong2;
-    localazpm.jdField_d_of_type_Long = paramLong3;
-    localazpm.f = paramLong4;
-    localazpm.g = paramLong5;
-    localazpm.jdField_d_of_type_JavaLangString = paramString4;
-    localazpm.e = paramString5;
-    localazpm.jdField_c_of_type_Long = 1L;
-    if (paramQQAppInterface == null)
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      paramQQAppInterface = a(localazpm);
       if (QLog.isColorLevel()) {
-        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
+        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate WZRY template download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
       }
-      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
-      return;
+      if (VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b != null)
+      {
+        if (this.jdField_a_of_type_Azfl.a(VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController), this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).jdField_a_of_type_Azfl = this.jdField_a_of_type_Azfl;
+        }
+        VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b.obtainMessage(5, 0, 12, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
-    paramString1 = a(localazpm);
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    azqs.b(paramQQAppInterface, "dc01616", paramString1, 1);
   }
 }
 

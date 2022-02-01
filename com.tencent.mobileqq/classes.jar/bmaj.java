@@ -1,48 +1,16 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmaj
-  implements bltv
+  implements DialogInterface.OnCancelListener
 {
-  public bmaj(MusicProviderView paramMusicProviderView) {}
+  public bmaj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
+    this.a.getPlayMode();
   }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bmau);
-    }
-    if (this.a.jdField_a_of_type_Bmau != null)
-    {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Bmau.a(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Bmau.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

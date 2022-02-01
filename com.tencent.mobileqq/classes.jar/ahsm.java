@@ -1,36 +1,12 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class ahsm
-  extends ViewPager.SimpleOnPageChangeListener
+  implements DialogInterface.OnCancelListener
 {
-  ahsm(ahsi paramahsi) {}
+  ahsm(ahsd paramahsd) {}
   
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 1) {
-      ahsi.a(this.a, ahsi.a(this.a).getCurrentItem());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + ahsi.b(this.a) + "  mPageChangedByIndicator:" + ahsi.a(this.a));
-    }
-    if (ahsi.a(this.a)) {
-      ahsi.b(this.a, false);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ahsi.a(this.a, paramInt);
-    if (!ahsi.a(this.a)) {
-      azqs.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + ahsi.b(this.a) + " mPageChangedByIndicator:" + ahsi.a(this.a));
-    }
-    ahsi.a(this.a, false);
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

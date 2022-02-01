@@ -1,16 +1,15 @@
-public abstract interface auqb
+import android.os.Build.VERSION;
+
+public class auqb
 {
-  public abstract void a();
-  
-  public abstract void a(aupy paramaupy);
-  
-  public abstract void a(aupy paramaupy, int paramInt);
-  
-  public abstract void b(aupy paramaupy);
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 11;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqb
  * JD-Core Version:    0.7.0.1
  */

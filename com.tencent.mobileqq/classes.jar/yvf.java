@@ -1,28 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.RadioViewPager;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-public class yvf
-  implements View.OnClickListener
+class yvf
+  implements bkhe
 {
-  public yvf(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  yvf(yvd paramyvd) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("selfSet_leftViewText", alud.a(2131713092));
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).a().size()) && (!yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).a()))
+    {
+      paramAbsListView = yvd.a(this.jdField_a_of_type_Yvd);
+      yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).b(paramAbsListView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvf
  * JD-Core Version:    0.7.0.1
  */

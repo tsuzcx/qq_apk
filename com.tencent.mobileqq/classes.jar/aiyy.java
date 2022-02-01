@@ -1,43 +1,75 @@
-import Wallet.GetRandomHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NewFriendMoreInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiyy
-  implements BusinessObserver
+  extends aiyi
+  implements View.OnClickListener
 {
-  public aiyy(WordChainHbFragment paramWordChainHbFragment, aiyz paramaiyz) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aiyy(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    if (paramInt == 27)
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    aiyz localaiyz;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aiyz)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment.a = false;
-      paramBundle = (GetRandomHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel()) {
-        QLog.d("WordChainHbFragment", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
+      localaiyz = new aiyz();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561333, null);
+      localaiyz.a = ((TextView)paramView.findViewById(2131371295));
+      if (ThemeUtil.isDefaultTheme())
+      {
+        paramView.setBackgroundResource(2130839447);
+        paramView.setTag(localaiyz);
       }
-      if ((!paramBoolean) || (paramBundle == null) || (paramBundle.suggestIdioms == null) || (paramBundle.suggestIdioms.size() <= 0)) {
-        break label170;
-      }
-      WordChainHbFragment.a().clear();
-      WordChainHbFragment.a().addAll(paramBundle.suggestIdioms);
-      if (QLog.isColorLevel()) {
-        QLog.d("WordChainHbFragment", 2, "getIdiomListFromSSO idiomListSize:" + WordChainHbFragment.a().size());
-      }
-      if (this.jdField_a_of_type_Aiyz != null) {
-        this.jdField_a_of_type_Aiyz.a(true, WordChainHbFragment.a());
-      }
-      WordChainHbFragment.a(System.currentTimeMillis());
     }
-    label170:
-    while (this.jdField_a_of_type_Aiyz == null) {
+    for (;;)
+    {
+      NewFriendMoreInfo localNewFriendMoreInfo = ((ajay)this.jdField_a_of_type_Ajax).a;
+      localaiyz.a.setText(localNewFriendMoreInfo.moreInfo);
+      paramView.setOnClickListener(this);
+      return paramView;
+      paramView.setBackgroundResource(2130839391);
+      break;
+      localaiyz = (aiyz)paramView.getTag();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof aiyz))) {
+      switch (((ajay)this.jdField_a_of_type_Ajax).a.type)
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      int i = this.jdField_a_of_type_Ajae.a();
+      NewFriendMoreSysMsgActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, 225, i);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
+      continue;
+      localObject = (aiyr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
+      localIntent.putExtra("entrence_data_report", 4);
+      localIntent.putExtra("EntranceId", 6);
+      ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 226);
+      ((aiyr)localObject).f();
     }
-    this.jdField_a_of_type_Aiyz.a(false, null);
   }
 }
 

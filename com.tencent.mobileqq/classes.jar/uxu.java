@@ -1,43 +1,44 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
 class uxu
-  extends ampt
+  implements View.OnClickListener
 {
-  uxu(uxt paramuxt, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  uxu(uxp paramuxp) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    wxe.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    uxv localuxv;
+    if (uxp.a(this.a) != null)
     {
-      bool = true;
-      if (!bool) {
-        break label114;
+      localuxv = (uxv)uxp.a(this.a).get();
+      if (localuxv != null) {
+        switch (paramView.getId())
+        {
+        }
       }
-      this.a.b = uxs.a(paramSosoLbsInfo.a);
-      wxe.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
     for (;;)
     {
-      if (!uxt.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
-      break;
-      label114:
-      wxe.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+      localuxv.a(uxw.a);
+      continue;
+      localuxv.a(uxw.b);
+      continue;
+      localuxv.a(uxw.c);
+      continue;
+      localuxv.a(uxw.d);
+      continue;
+      localuxv.a(uxw.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,32 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
-final class alkj
-  implements aled
+public class alkj
+  implements Animator.AnimatorListener
 {
-  alkj(String paramString, String[] paramArrayOfString, alkh paramalkh) {}
+  public alkj(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = alki.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (alki.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = alki.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Alkh.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
-            return;
-            this.jdField_a_of_type_Alkh.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Alkh.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Alkh.a(-1, null, null);
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
+      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
+      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
+      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

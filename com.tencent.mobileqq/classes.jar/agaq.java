@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class agaq
-  implements DialogInterface.OnClickListener
+public class agaq
 {
-  agaq(agai paramagai) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
+  ImageView c;
+  ImageView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azdd.a = 0L;
-  }
+  public agaq(agap paramagap) {}
 }
 
 

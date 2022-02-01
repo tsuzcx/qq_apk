@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.diy;
 
-import aelt;
+import afrc;
 import android.content.Context;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class DiyTextView
   extends HiBoomTextView
 {
-  aelt a;
+  afrc a;
   
   public DiyTextView(Context paramContext)
   {
@@ -24,14 +24,14 @@ public class DiyTextView
     }
   }
   
-  public void setOnMeasuredListener(aelt paramaelt)
+  public void setOnMeasuredListener(afrc paramafrc)
   {
-    this.a = paramaelt;
+    this.a = paramafrc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.diy.DiyTextView
  * JD-Core Version:    0.7.0.1
  */

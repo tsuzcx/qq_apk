@@ -1,19 +1,14 @@
-import android.view.animation.Interpolator;
+import com.tencent.widget.ListView;
 
-final class awso
-  implements Interpolator
+public abstract interface awso
 {
-  public float getInterpolation(float paramFloat)
-  {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
-  }
+  public abstract ListView a();
+  
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awso
  * JD-Core Version:    0.7.0.1
  */

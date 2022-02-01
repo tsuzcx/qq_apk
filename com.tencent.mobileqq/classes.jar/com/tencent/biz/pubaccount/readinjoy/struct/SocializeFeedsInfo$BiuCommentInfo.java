@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qmb;
+import rgx;
 
 public class SocializeFeedsInfo$BiuCommentInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new qmb();
+  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new rgx();
   public int a;
   public SocializeFeedsInfo.JumpInfo a;
   public SocializeFeedsInfo.UGCVoiceInfo a;

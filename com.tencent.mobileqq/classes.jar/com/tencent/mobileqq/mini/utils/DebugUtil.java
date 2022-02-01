@@ -1,10 +1,22 @@
 package com.tencent.mobileqq.mini.utils;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 
 public class DebugUtil
 {
+  public static boolean getDebugEnabled(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return false;
+    }
+    return StorageUtil.getPreference().getBoolean(paramMiniAppInfo.appId + "_debug", false);
+  }
+  
   public static String getPrintableStackTrace(Throwable paramThrowable)
   {
     return getPrintableStackTrace(paramThrowable, false);
@@ -64,10 +76,17 @@ public class DebugUtil
     localStringWriter.flush();
     return localStringWriter.toString();
   }
+  
+  public static void setDebugEnabled(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
+  {
+    if (paramMiniAppInfo != null) {
+      StorageUtil.getPreference().edit().putBoolean(paramMiniAppInfo.appId + "_debug", paramBoolean).apply();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.DebugUtil
  * JD-Core Version:    0.7.0.1
  */

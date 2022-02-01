@@ -1,94 +1,100 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-public abstract class bcru
-  extends bibh
+public class bcru
 {
-  protected final int a;
-  protected final int[] a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
-  
-  public bcru(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  private static String a(QQAppInterface paramQQAppInterface, bcum parambcum, int paramInt)
   {
-    super(paramInt1, paramInt2);
-    this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.b = paramArrayOfInt3;
-    this.c = paramArrayOfInt4;
+    if (parambcum == null) {
+      return null;
+    }
+    return parambcum.a(paramInt);
   }
   
-  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  public static void a(QQAppInterface paramQQAppInterface, bcul parambcul)
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((paramObject instanceof Object[]))
+    a("dc03309", paramQQAppInterface, parambcul);
+  }
+  
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, bcum parambcum)
+  {
+    if (parambcum == null)
     {
-      paramObject = (Object[])paramObject;
-      if ((paramObject.length != 2) || (!(paramObject[1] instanceof bbsa))) {
-        break label229;
-      }
+      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
+      if (QLog.isColorLevel()) {}
     }
-    label90:
-    label229:
-    for (bbsa localbbsa = (bbsa)paramObject[1];; localbbsa = null)
+    do
     {
-      localObject1 = localObject2;
-      if (parambibj != null)
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + "  report item is null");
+      return;
+      if ((!TextUtils.isEmpty(parambcum.i)) && (!TextUtils.isEmpty(parambcum.k)) && (!TextUtils.isEmpty(parambcum.j))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + " item.sopType must not empty");
+    return;
+    parambcum.b = NetConnInfoCenter.getServerTime();
+    if (!QLog.isColorLevel()) {}
+    Object localObject;
+    for (;;)
+    {
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null)
       {
-        localObject1 = localObject2;
-        if (parambibj.jdField_a_of_type_Int >= 0)
+        localObject = paramQQAppInterface;
+        if (BaseApplicationImpl.sProcessId == 1)
         {
-          localObject1 = localObject2;
-          if (parambibj.b >= 0)
+          AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+          localObject = paramQQAppInterface;
+          if (localAppRuntime != null)
           {
-            if (localbbsa != null) {
-              break label90;
+            localObject = paramQQAppInterface;
+            if ((localAppRuntime instanceof QQAppInterface)) {
+              localObject = (QQAppInterface)localAppRuntime;
             }
-            localObject1 = localObject2;
           }
         }
       }
-      do
-      {
-        return localObject1;
-        paramObject = localObject3;
-        if ((parambibj.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-          paramObject = (SimpleTextView)parambibj.jdField_a_of_type_AndroidViewView;
-        }
-        localObject1 = paramObject;
-      } while (paramObject == null);
-      paramInt = this.b[parambibj.b];
-      int i = this.c[parambibj.b];
-      int j = this.jdField_a_of_type_ArrayOfInt[parambibj.b];
-      paramObject.setVisibility(0);
-      paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
-      paramObject.setBackgroundResource(i);
-      paramObject.setId(j);
-      paramObject.setTag(localbbsa);
-      paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
-      paramObject.setOnClickListener(paramOnClickListener);
-      parambibj.c = this.d[parambibj.jdField_a_of_type_Int];
-      parambibj.d = this.jdField_a_of_type_Int;
-      return paramObject;
+      if (localObject != null) {
+        break;
+      }
+      paramQQAppInterface = a((QQAppInterface)localObject, parambcum, 1);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      ((Intent)localObject).putExtra("reporting_count", parambcum.c);
+      ((Intent)localObject).putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + ", content = " + parambcum.toString());
     }
+    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, parambcum, 1));
   }
   
-  public View a(Context paramContext, int paramInt)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      String str = paramString2;
+      if (paramString2.contains("${count_unknown}")) {
+        str = paramString2.replace("${count_unknown}", "1");
+      }
+      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), bcdh.class);
+      paramString2.putExtra("sendType", 2);
+      paramString2.putExtra("tag", paramString1);
+      paramString2.putExtra("content", str);
+      paramString2.setWithouLogin(true);
+      paramQQAppInterface.startServlet(paramString2);
+    }
   }
 }
 

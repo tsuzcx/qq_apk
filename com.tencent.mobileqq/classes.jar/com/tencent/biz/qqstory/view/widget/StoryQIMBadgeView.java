@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import altm;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -11,22 +10,24 @@ import android.util.LruCache;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import anmu;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
-import uqo;
-import uqs;
-import xsm;
-import xwt;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import wka;
+import wke;
+import zlx;
+import zqe;
 
 public class StoryQIMBadgeView
   extends ImageView
   implements View.OnClickListener
 {
   private static final LruCache<String, Boolean> jdField_a_of_type_AndroidUtilLruCache = new LruCache(50);
-  private altm jdField_a_of_type_Altm;
+  private anmu jdField_a_of_type_Anmu;
   private QQUserUIItem jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
@@ -64,8 +65,8 @@ public class StoryQIMBadgeView
   
   protected void a()
   {
-    if (uqo.b()) {
-      this.jdField_a_of_type_Altm = new xwt(this);
+    if (wka.b()) {
+      this.jdField_a_of_type_Anmu = new zqe(this);
     }
   }
   
@@ -80,7 +81,7 @@ public class StoryQIMBadgeView
       {
         return;
         this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramQQUserUIItem;
-        if (!uqo.b()) {
+        if (!wka.b()) {
           break;
         }
         if ((!this.jdField_a_of_type_Boolean) && (jdField_a_of_type_AndroidUtilLruCache.get(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null))
@@ -102,17 +103,17 @@ public class StoryQIMBadgeView
   
   public void a(boolean paramBoolean)
   {
-    xsm.a(this);
+    zlx.a(this);
     if (paramBoolean)
     {
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_JavaLangString = uqs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+        this.jdField_a_of_type_JavaLangString = wke.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           return;
         }
       }
-      xsm.a(this, this.jdField_a_of_type_JavaLangString, getMeasuredWidth(), getMeasuredHeight(), null, null);
+      zlx.a(this, this.jdField_a_of_type_JavaLangString, getMeasuredWidth(), getMeasuredHeight(), null, null);
     }
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
@@ -125,34 +126,37 @@ public class StoryQIMBadgeView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (uqo.b())
+    if (wka.b())
     {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-      if (this.jdField_a_of_type_Altm != null) {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Altm);
+      if (this.jdField_a_of_type_Anmu != null) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Anmu);
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null) {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Context localContext = paramView.getContext();
+      String str = wke.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("hide_operation_bar", true);
+      localContext.startActivity(localIntent);
     }
-    paramView = paramView.getContext();
-    String str = uqs.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    paramView.startActivity(localIntent);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((uqo.b()) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Altm != null))
+    if ((wka.b()) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Anmu != null))
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Altm);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     }
   }
@@ -164,7 +168,7 @@ public class StoryQIMBadgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView
  * JD-Core Version:    0.7.0.1
  */

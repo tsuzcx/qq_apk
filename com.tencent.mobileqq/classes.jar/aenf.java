@@ -1,6 +1,8 @@
+import android.graphics.drawable.Drawable;
+
 public abstract interface aenf
 {
-  public abstract void a(int paramInt);
+  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
 }
 
 

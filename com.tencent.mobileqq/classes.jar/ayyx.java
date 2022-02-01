@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public final class ayyx
-  implements Parcelable.Creator<FriendSingleInfo>
 {
-  public FriendSingleInfo a(Parcel paramParcel)
+  agru jdField_a_of_type_Agru;
+  ChatThumbView jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  int[] jdField_a_of_type_ArrayOfInt;
+  
+  public ayyx(MessageForPic paramMessageForPic)
   {
-    return new FriendSingleInfo(paramParcel);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
   }
   
-  public FriendSingleInfo[] a(int paramInt)
+  public ayyv a()
   {
-    return new FriendSingleInfo[paramInt];
+    return new ayyv(this, null);
+  }
+  
+  public ayyx a(agru paramagru)
+  {
+    this.jdField_a_of_type_Agru = paramagru;
+    return this;
+  }
+  
+  public ayyx a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView = paramChatThumbView;
+    return this;
+  }
+  
+  public ayyx a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    return this;
   }
 }
 

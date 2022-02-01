@@ -1,27 +1,29 @@
-import android.content.Context;
-import android.media.AudioManager;
-import java.lang.reflect.Method;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-public class lik
+class lik
+  implements Observer
 {
-  static int a = 0;
-  static int b = 0;
+  private WeakReference<lij> a;
   
-  public static boolean a(Context paramContext)
+  public lik(lij paramlij)
   {
-    try
-    {
-      paramContext = (AudioManager)paramContext.getSystemService("audio");
-      boolean bool = Boolean.parseBoolean(paramContext.getClass().getMethod("isWiredHeadsetOn", new Class[0]).invoke(paramContext, (Object[])null).toString());
-      return bool;
+    this.a = new WeakReference(paramlij);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    lij locallij = (lij)this.a.get();
+    if (locallij == null) {
+      return;
     }
-    catch (Exception paramContext) {}
-    return false;
+    lij.a(locallij, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lik
  * JD-Core Version:    0.7.0.1
  */

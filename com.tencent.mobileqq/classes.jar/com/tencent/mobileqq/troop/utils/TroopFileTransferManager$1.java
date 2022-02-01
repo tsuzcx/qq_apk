@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import alof;
-import bcne;
+import anhk;
+import bfrw;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public final class TroopFileTransferManager$1
       try
       {
         Thread.sleep(3000L);
-        File localFile = new File(alof.bp);
+        File localFile = new File(anhk.bs);
         if (!localFile.isDirectory()) {
           return;
         }
@@ -28,7 +28,7 @@ public final class TroopFileTransferManager$1
         localInterruptedException.printStackTrace();
         return;
       }
-      arrayOfFile = localInterruptedException.listFiles(new bcne(this));
+      arrayOfFile = localInterruptedException.listFiles(new bfrw(this));
     } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
     Object localObject = new ArrayList(arrayOfFile.length);
     int j = arrayOfFile.length;
@@ -54,7 +54,7 @@ public final class TroopFileTransferManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1
  * JD-Core Version:    0.7.0.1
  */

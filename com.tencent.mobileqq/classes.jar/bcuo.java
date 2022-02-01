@@ -1,23 +1,65 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.TextView;
+import java.util.HashMap;
 
 class bcuo
-  implements Animation.AnimationListener
+  implements Comparable<bcuo>
 {
-  bcuo(bcun parambcun) {}
+  public int a;
+  public String a;
+  public HashMap<String, bcuo> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bcuo()
   {
-    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(100L);
-    this.a.a.startAnimation(paramAnimation);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public bcuo(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a(bcuo parambcuo)
+  {
+    return parambcuo.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
+  }
+  
+  public bcuo a(String paramString)
+  {
+    return (bcuo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    return ((bcuo)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
+    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 

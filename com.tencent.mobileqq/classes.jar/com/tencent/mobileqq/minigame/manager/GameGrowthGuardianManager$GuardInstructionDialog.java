@@ -5,8 +5,8 @@ import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import bdgm;
-import bdjz;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -16,17 +16,17 @@ import com.tencent.qphone.base.util.QLog;
 
 abstract class GameGrowthGuardianManager$GuardInstructionDialog
 {
-  private final Context context;
-  private final INTERFACE.GuardInstruction guardInstruction;
-  private INTERFACE.StJudgeTimingRsp judgeTimingRsp;
-  private final MiniAppConfig miniAppConfig;
-  private DialogInterface.OnDismissListener onDismissListener;
+  private final Context mContext;
+  private final INTERFACE.GuardInstruction mGuardInstruction;
+  private INTERFACE.StJudgeTimingRsp mJudgeTimingRsp;
+  private final MiniAppConfig mMiniAppConfig;
+  private DialogInterface.OnDismissListener mOnDismissListener;
   
   GameGrowthGuardianManager$GuardInstructionDialog(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
-    this.guardInstruction = paramGuardInstruction;
-    this.context = paramContext;
-    this.miniAppConfig = paramMiniAppConfig;
+    this.mGuardInstruction = paramGuardInstruction;
+    this.mContext = paramContext;
+    this.mMiniAppConfig = paramMiniAppConfig;
   }
   
   static void tryBuildAndShow(Context paramContext, MiniAppConfig paramMiniAppConfig, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt)
@@ -100,33 +100,33 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     if ((getContext() == null) || (getGuardInstruction() == null)) {
       return;
     }
-    bdjz localbdjz = bdgm.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
+    bgpa localbgpa = bglp.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
     if (getPositiveDialogAction() != null) {
-      localbdjz.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
+      localbgpa.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
     }
     if (getNegativeDialogAction() != null) {
-      localbdjz.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
+      localbgpa.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
     }
     GameGrowthGuardianManager.GuardInstructionDialog.2 local2 = new GameGrowthGuardianManager.GuardInstructionDialog.2(this);
-    localbdjz.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
-    localbdjz.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
-    localbdjz.setCancelable(false);
-    localbdjz.show();
+    localbgpa.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
+    localbgpa.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
+    localbgpa.setCancelable(false);
+    localbgpa.show();
   }
   
   public Context getContext()
   {
-    return this.context;
+    return this.mContext;
   }
   
   INTERFACE.GuardInstruction getGuardInstruction()
   {
-    return this.guardInstruction;
+    return this.mGuardInstruction;
   }
   
   public MiniAppConfig getMiniAppConfig()
   {
-    return this.miniAppConfig;
+    return this.mMiniAppConfig;
   }
   
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
@@ -174,8 +174,8 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     }
     for (;;)
     {
-      if (this.judgeTimingRsp != null) {}
-      for (String str5 = String.valueOf(this.judgeTimingRsp.nextDuration.get());; str5 = null)
+      if (this.mJudgeTimingRsp != null) {}
+      for (String str5 = String.valueOf(this.mJudgeTimingRsp.nextDuration.get());; str5 = null)
       {
         if (getMiniAppConfig() != null) {}
         for (String str6 = MiniProgramLpReportDC04239.getAppType(getMiniAppConfig());; str6 = null)
@@ -194,17 +194,17 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
   
   public void setJudgeTimingRsp(INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    this.judgeTimingRsp = paramStJudgeTimingRsp;
+    this.mJudgeTimingRsp = paramStJudgeTimingRsp;
   }
   
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    this.onDismissListener = paramOnDismissListener;
+    this.mOnDismissListener = paramOnDismissListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialog
  * JD-Core Version:    0.7.0.1
  */

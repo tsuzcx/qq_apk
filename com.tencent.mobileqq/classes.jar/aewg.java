@@ -1,34 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
-class aewg
-  implements ImageAssetDelegate
+public class aewg
+  implements bics
 {
-  aewg(aewe paramaewe) {}
+  final WeakReference<QQBrowserActivity> a;
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public aewg(QQBrowserActivity paramQQBrowserActivity)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
-    {
-      paramLottieImageAsset = bdhj.a(aewe.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
+    this.a = new WeakReference(paramQQBrowserActivity);
+  }
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
+      return;
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
-    }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

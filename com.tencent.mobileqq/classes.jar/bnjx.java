@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
+import mqq.os.MqqHandler;
 
 public class bnjx
-  implements DialogInterface.OnClickListener
+  implements INetEventHandler
 {
-  public bnjx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnjx(bnjw parambnjw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
   }
 }
 

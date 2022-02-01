@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qoz;
+import rjw;
 
 public class ReadInJoyDeliverUGCActivity$DeliverData
   implements Parcelable
 {
-  public static final Parcelable.Creator<DeliverData> CREATOR = new qoz();
-  private int jdField_a_of_type_Int = 9;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
-  private int[] jdField_b_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
+  public static final Parcelable.Creator<DeliverData> CREATOR = new rjw();
+  private static int jdField_a_of_type_Int = 9;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[jdField_a_of_type_Int];
+  private int[] jdField_b_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[jdField_a_of_type_Int];
   
   public ReadInJoyDeliverUGCActivity$DeliverData() {}
   
@@ -35,22 +35,22 @@ public class ReadInJoyDeliverUGCActivity$DeliverData
   
   public void a()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    this.jdField_b_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[jdField_a_of_type_Int];
+    this.jdField_b_of_type_ArrayOfJavaLangString = new String[jdField_a_of_type_Int];
   }
   
   public void a(int paramInt, Integer paramInteger)
   {
-    if (paramInt < this.jdField_a_of_type_Int) {
+    if (paramInt < jdField_a_of_type_Int) {
       this.jdField_a_of_type_ArrayOfInt[paramInt] = paramInteger.intValue();
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt < this.jdField_a_of_type_Int) {
+    if (paramInt < jdField_a_of_type_Int) {
       this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
     }
   }
@@ -67,14 +67,14 @@ public class ReadInJoyDeliverUGCActivity$DeliverData
   
   public void b(int paramInt, Integer paramInteger)
   {
-    if (paramInt < this.jdField_a_of_type_Int) {
+    if (paramInt < jdField_a_of_type_Int) {
       this.jdField_b_of_type_ArrayOfInt[paramInt] = paramInteger.intValue();
     }
   }
   
   public void b(int paramInt, String paramString)
   {
-    if (paramInt < this.jdField_a_of_type_Int) {
+    if (paramInt < jdField_a_of_type_Int) {
       this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = paramString;
     }
   }

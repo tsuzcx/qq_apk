@@ -1,20 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bcus
-  implements badp
+class bcus
+  implements EIPCResultCallback
 {
-  public bcus(TroopGiftAnimationController.1 param1) {}
+  bcus(bcur parambcur) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitor", 2, new Object[] { "eipcResult=", Integer.valueOf(paramEIPCResult.code), paramEIPCResult.data });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcus
  * JD-Core Version:    0.7.0.1
  */

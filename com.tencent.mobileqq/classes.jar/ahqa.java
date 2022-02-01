@@ -1,42 +1,13 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahqa
-  extends RecyclerView.OnScrollListener
+  implements ahor
 {
-  public ahqa(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
-        TroopSuspiciousFragment.a(this.a);
-      }
-    }
-    if (this.a.jdField_a_of_type_Bdbb != null)
-    {
-      if (paramInt == 0) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_Bdbb.a();
-      this.a.jdField_a_of_type_Bdbb.c();
-    }
-    label94:
-    while (!this.a.jdField_a_of_type_Bdbb.a()) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bdbb.b();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    paramagup.b(paramagwc, paramContext.getString(2131718935));
   }
 }
 

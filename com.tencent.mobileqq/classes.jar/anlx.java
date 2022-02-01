@@ -1,16 +1,21 @@
-import android.content.Context;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
 
-public abstract interface anlx
+public class anlx
+  implements biay
 {
-  public abstract void attachArkView(anoq paramanoq, anou paramanou, int paramInt);
+  public anlx(FrameFragment paramFrameFragment) {}
   
-  public abstract void clickTail(anou paramanou, afiv paramafiv, Context paramContext);
-  
-  public abstract void destroyContainerByRemove();
-  
-  public abstract anlx extendArkCardByOpen(afii paramafii, String paramString1, String paramString2);
-  
-  public abstract String[] getArkAppNameAndPath();
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  {
+    if (paramInt1 == paramInt2)
+    {
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.d();
+      }
+    }
+  }
 }
 
 

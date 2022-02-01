@@ -1,205 +1,859 @@
+import android.annotation.TargetApi;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.drawable.AdaptiveIconDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Environment;
+import android.provider.MediaStore.Audio.Media;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Media;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.4;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.5;
+import com.tencent.mobileqq.filemanager.util.ReflectBuilder;
+import com.tencent.mobileqq.filemanager.util.ReflectBuilder.WrongParamException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.theme.SkinnableNinePatchDrawable;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.concurrent.Executor;
 
-public abstract class atvg
+public class atvg
 {
-  static String a = "";
-  static String b = "";
-  static String c = "";
+  private static Comparator<FileInfo> a = new atvh();
   
-  public static String a(Context paramContext, String paramString)
+  public static int a(Context paramContext)
   {
-    if (("mounted".equals(Environment.getExternalStorageState())) && (Environment.getExternalStorageDirectory().canWrite()))
+    localObject = null;
+    localContext = null;
+    int j = 0;
+    try
     {
-      paramContext = new File(Environment.getExternalStorageDirectory().getPath() + paramString);
-      if (!paramContext.exists()) {
-        paramContext.mkdirs();
+      paramContext = b(paramContext, "1=1 )GROUP BY (_data", null, 0);
+      localContext = paramContext;
+      localObject = paramContext;
+      int i = paramContext.getCount();
+      j = i;
+      if (paramContext != null)
+      {
+        paramContext.close();
+        j = i;
       }
-      return paramContext.getAbsolutePath();
     }
-    return paramContext.getFilesDir().getAbsolutePath();
+    catch (Exception paramContext)
+    {
+      do
+      {
+        localObject = localContext;
+        paramContext.printStackTrace();
+      } while (localContext == null);
+      localContext.close();
+      return 0;
+    }
+    finally
+    {
+      if (localObject == null) {
+        break label77;
+      }
+      ((Cursor)localObject).close();
+    }
+    return j;
+  }
+  
+  private static Cursor a(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  {
+    return paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "bucket_display_name", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
+  }
+  
+  public static Drawable a(Context paramContext, String paramString)
+  {
+    try
+    {
+      Object localObject = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
+      if ((localObject != null) && (((PackageInfo)localObject).applicationInfo != null))
+      {
+        localObject = ((PackageInfo)localObject).applicationInfo;
+        AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
+        new ReflectBuilder().a(8192).a(true).a("addAssetPath").a(AssetManager.class, localAssetManager).a(new Class[] { String.class }).a(new Object[] { paramString }).a();
+        paramContext = new Resources(localAssetManager, paramContext.getResources().getDisplayMetrics(), paramContext.getResources().getConfiguration()).getDrawable(((ApplicationInfo)localObject).icon);
+      }
+      boolean bool;
+      label181:
+      label190:
+      label199:
+      label208:
+      label217:
+      paramString = null;
+    }
+    catch (InstantiationException paramString)
+    {
+      try
+      {
+        if (a(paramContext)) {
+          return null;
+        }
+        paramString = paramContext;
+        if (Build.VERSION.SDK_INT < 26) {
+          return paramString;
+        }
+        paramString = paramContext;
+        if (!(paramContext instanceof AdaptiveIconDrawable)) {
+          return paramString;
+        }
+        paramString = (AdaptiveIconDrawable)paramContext;
+        bool = a(paramString.getForeground(), paramString.getBackground());
+        paramString = paramContext;
+        if (!bool) {
+          return paramString;
+        }
+        return null;
+      }
+      catch (NoSuchMethodException paramString)
+      {
+        break label217;
+      }
+      catch (InvocationTargetException paramString)
+      {
+        break label208;
+      }
+      catch (ReflectBuilder.WrongParamException paramString)
+      {
+        break label199;
+      }
+      catch (IllegalAccessException paramString)
+      {
+        break label190;
+      }
+      catch (InstantiationException paramString)
+      {
+        break label181;
+      }
+      paramString = paramString;
+      paramContext = null;
+      paramString.printStackTrace();
+      return paramContext;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      paramContext = null;
+      paramString.printStackTrace();
+      return paramContext;
+    }
+    catch (ReflectBuilder.WrongParamException paramString)
+    {
+      paramContext = null;
+      paramString.printStackTrace();
+      return paramContext;
+    }
+    catch (InvocationTargetException paramString)
+    {
+      paramContext = null;
+      paramString.printStackTrace();
+      return paramContext;
+    }
+    catch (NoSuchMethodException paramString)
+    {
+      paramContext = null;
+      paramString.printStackTrace();
+      return paramContext;
+    }
+    return paramString;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    PackageManager localPackageManager = BaseApplicationImpl.getContext().getPackageManager();
+    PackageInfo localPackageInfo = localPackageManager.getPackageArchiveInfo(paramString, 1);
+    if (localPackageInfo != null) {
+      return localPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
+    }
+    return atvo.a(paramString);
+  }
+  
+  private static String a(String paramString, int paramInt)
+  {
+    String str = anni.a(2131703284);
+    switch (paramInt)
+    {
+    default: 
+      return str;
+    case 3: 
+      return b(paramString);
+    }
+    return c(paramString);
+  }
+  
+  public static List<PackageInfo> a(Context paramContext)
+  {
+    localArrayList = new ArrayList();
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext = paramContext.getInstalledPackages(1024);
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        PackageInfo localPackageInfo = (PackageInfo)paramContext.get(i);
+        int j = localPackageInfo.applicationInfo.flags;
+        ApplicationInfo localApplicationInfo = localPackageInfo.applicationInfo;
+        if (((j & 0x1) <= 0) && (atwl.a(localPackageInfo.applicationInfo.publicSourceDir))) {
+          localArrayList.add(localPackageInfo);
+        }
+        i += 1;
+      }
+      return localArrayList;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  @TargetApi(9)
+  public static List<FileInfo> a(Context paramContext, QfileBaseTabView paramQfileBaseTabView)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a(paramContext);
+    paramContext = paramContext.getPackageManager();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+      try
+      {
+        FileInfo localFileInfo = new FileInfo(localPackageInfo.applicationInfo.publicSourceDir);
+        localFileInfo.b(5);
+        localFileInfo.d(localPackageInfo.applicationInfo.loadLabel(paramContext).toString());
+        localFileInfo.c(localPackageInfo.applicationInfo.packageName + ".apk");
+        if (Build.VERSION.SDK_INT >= 9) {
+          localFileInfo.b(localPackageInfo.lastUpdateTime);
+        }
+        localFileInfo.a(anni.a(2131703286));
+        localArrayList.add(localFileInfo);
+        if (paramQfileBaseTabView != null) {
+          paramQfileBaseTabView.a(localFileInfo);
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    Collections.sort(localArrayList, a);
+    return localArrayList;
+  }
+  
+  public static Map<String, List<FileInfo>> a(Context paramContext)
+  {
+    paramContext = a(paramContext, null, 0);
+    if (paramContext != null) {
+      a(paramContext);
+    }
+    return paramContext;
   }
   
   /* Error */
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  public static Map<String, List<FileInfo>> a(Context paramContext, String paramString, int paramInt)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 40	java/io/File
-    //   6: dup
-    //   7: getstatic 84	alof:bc	Ljava/lang/String;
-    //   10: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore_3
-    //   14: aload_3
-    //   15: invokevirtual 65	java/io/File:exists	()Z
-    //   18: ifne +8 -> 26
-    //   21: aload_3
-    //   22: invokevirtual 68	java/io/File:mkdirs	()Z
-    //   25: pop
-    //   26: new 86	java/io/FileWriter
-    //   29: dup
-    //   30: new 40	java/io/File
-    //   33: dup
-    //   34: new 46	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   41: getstatic 84	alof:bc	Ljava/lang/String;
-    //   44: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 88
-    //   49: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
-    //   58: iconst_1
-    //   59: invokespecial 91	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   62: astore_3
-    //   63: aload_3
-    //   64: new 46	java/lang/StringBuilder
-    //   67: dup
-    //   68: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   71: ldc 93
-    //   73: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: getstatic 14	atvg:a	Ljava/lang/String;
-    //   79: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 95
-    //   84: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: getstatic 16	atvg:b	Ljava/lang/String;
-    //   90: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: ldc 97
-    //   95: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: getstatic 18	atvg:c	Ljava/lang/String;
-    //   101: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc 99
-    //   106: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokestatic 103	com/tencent/common/config/AppSetting:b	()Ljava/lang/String;
-    //   112: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   121: aload_3
-    //   122: ldc 108
-    //   124: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   127: new 110	android/text/format/Time
-    //   130: dup
-    //   131: invokespecial 111	android/text/format/Time:<init>	()V
-    //   134: astore 4
-    //   136: aload 4
-    //   138: invokevirtual 114	android/text/format/Time:setToNow	()V
-    //   141: aload_3
-    //   142: new 46	java/lang/StringBuilder
-    //   145: dup
-    //   146: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   149: aload 4
-    //   151: ldc 116
-    //   153: invokevirtual 120	android/text/format/Time:format	(Ljava/lang/String;)Ljava/lang/String;
-    //   156: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc 122
-    //   161: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   170: aload_3
-    //   171: ldc 124
-    //   173: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   176: aload_3
-    //   177: ldc 108
-    //   179: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   182: aload_0
-    //   183: ifnull +31 -> 214
-    //   186: aload_3
-    //   187: new 46	java/lang/StringBuilder
-    //   190: dup
-    //   191: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   194: ldc 126
-    //   196: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: aload_0
-    //   200: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: ldc 128
-    //   205: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   208: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   211: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   214: aload_3
-    //   215: aload_1
-    //   216: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   219: aload_3
-    //   220: ldc 108
-    //   222: invokevirtual 106	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   225: aload_3
-    //   226: invokevirtual 131	java/io/FileWriter:close	()V
-    //   229: iconst_0
-    //   230: ifeq +11 -> 241
-    //   233: new 133	java/lang/NullPointerException
-    //   236: dup
-    //   237: invokespecial 134	java/lang/NullPointerException:<init>	()V
-    //   240: athrow
-    //   241: return
-    //   242: astore_1
-    //   243: aload 4
-    //   245: astore_0
-    //   246: aload_1
-    //   247: invokevirtual 137	java/lang/Exception:printStackTrace	()V
-    //   250: aload_0
-    //   251: ifnull -10 -> 241
-    //   254: aload_0
-    //   255: invokevirtual 131	java/io/FileWriter:close	()V
-    //   258: return
-    //   259: astore_0
-    //   260: return
-    //   261: astore_0
-    //   262: aconst_null
-    //   263: astore_1
-    //   264: aload_1
-    //   265: ifnull +7 -> 272
-    //   268: aload_1
-    //   269: invokevirtual 131	java/io/FileWriter:close	()V
-    //   272: aload_0
-    //   273: athrow
-    //   274: astore_0
-    //   275: return
-    //   276: astore_1
-    //   277: goto -5 -> 272
-    //   280: astore_0
-    //   281: aload_3
-    //   282: astore_1
-    //   283: goto -19 -> 264
-    //   286: astore_3
-    //   287: aload_0
-    //   288: astore_1
-    //   289: aload_3
-    //   290: astore_0
-    //   291: goto -27 -> 264
-    //   294: astore_1
-    //   295: aload_3
-    //   296: astore_0
-    //   297: goto -51 -> 246
+    //   3: aload_0
+    //   4: aload_1
+    //   5: aconst_null
+    //   6: iload_2
+    //   7: invokestatic 26	atvg:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: astore_0
+    //   11: aload_0
+    //   12: astore_1
+    //   13: aload_0
+    //   14: iconst_0
+    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: astore_3
+    //   19: aload_3
+    //   20: astore_1
+    //   21: aload_0
+    //   22: ifnull +11 -> 33
+    //   25: aload_0
+    //   26: invokeinterface 35 1 0
+    //   31: aload_3
+    //   32: astore_1
+    //   33: aload_1
+    //   34: areturn
+    //   35: astore_3
+    //   36: aconst_null
+    //   37: astore_0
+    //   38: aload_0
+    //   39: astore_1
+    //   40: aload_3
+    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
+    //   44: aload 4
+    //   46: astore_1
+    //   47: aload_0
+    //   48: ifnull -15 -> 33
+    //   51: aload_0
+    //   52: invokeinterface 35 1 0
+    //   57: aconst_null
+    //   58: areturn
+    //   59: astore_0
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnull +9 -> 72
+    //   66: aload_1
+    //   67: invokeinterface 35 1 0
+    //   72: aload_0
+    //   73: athrow
+    //   74: astore_0
+    //   75: goto -13 -> 62
+    //   78: astore_3
+    //   79: goto -41 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	300	0	paramString1	String
-    //   0	300	1	paramString2	String
-    //   0	300	2	paramBoolean	boolean
-    //   13	269	3	localObject1	Object
-    //   286	10	3	localObject2	Object
-    //   1	243	4	localTime	android.text.format.Time
+    //   0	82	0	paramContext	Context
+    //   0	82	1	paramString	String
+    //   0	82	2	paramInt	int
+    //   18	14	3	localMap	Map
+    //   35	6	3	localException1	Exception
+    //   78	1	3	localException2	Exception
+    //   1	44	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   3	26	242	java/lang/Exception
-    //   26	63	242	java/lang/Exception
-    //   254	258	259	java/lang/Exception
-    //   3	26	261	finally
-    //   26	63	261	finally
-    //   233	241	274	java/lang/Exception
-    //   268	272	276	java/lang/Exception
-    //   63	182	280	finally
-    //   186	214	280	finally
-    //   214	229	280	finally
-    //   246	250	286	finally
-    //   63	182	294	java/lang/Exception
-    //   186	214	294	java/lang/Exception
-    //   214	229	294	java/lang/Exception
+    //   3	11	35	java/lang/Exception
+    //   3	11	59	finally
+    //   13	19	74	finally
+    //   40	44	74	finally
+    //   13	19	78	java/lang/Exception
+  }
+  
+  private static Map<String, List<FileInfo>> a(Cursor paramCursor, int paramInt)
+  {
+    if (paramCursor.getCount() <= 0) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    int i;
+    int j;
+    int k;
+    int m;
+    String str2;
+    switch (paramInt)
+    {
+    default: 
+      i = 0;
+      j = 0;
+      k = 0;
+      m = 0;
+      if (bgjq.a()) {
+        str2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + "/" + "Camera";
+      }
+      break;
+    }
+    for (;;)
+    {
+      label100:
+      if (paramCursor.moveToNext())
+      {
+        Object localObject = paramCursor.getString(m);
+        int n = paramCursor.getInt(k);
+        paramCursor.getInt(j);
+        String str1;
+        if (paramInt != 1) {
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((((String)localObject).contains(str2)) || (((String)localObject).contains("/storage/sdcard1/DCIM/Camera")))) {
+            str1 = "camera";
+          }
+        }
+        for (;;)
+        {
+          if (localObject == null) {
+            break label100;
+          }
+          localObject = FileInfo.a((String)localObject);
+          if (localObject == null) {
+            break label100;
+          }
+          ((FileInfo)localObject).a(n);
+          ((FileInfo)localObject).b(paramInt);
+          ((FileInfo)localObject).a(str1);
+          if (!localHashMap.containsKey(str1)) {
+            localHashMap.put(str1, new ArrayList());
+          }
+          ((List)localHashMap.get(str1)).add(localObject);
+          break label100;
+          m = paramCursor.getColumnIndexOrThrow("_data");
+          k = paramCursor.getColumnIndexOrThrow("_id");
+          i = 0;
+          j = 0;
+          break;
+          m = paramCursor.getColumnIndexOrThrow("_data");
+          k = paramCursor.getColumnIndexOrThrow("_id");
+          j = paramCursor.getColumnIndexOrThrow("bucket_id");
+          i = paramCursor.getColumnIndexOrThrow("bucket_display_name");
+          break;
+          m = paramCursor.getColumnIndexOrThrow("_data");
+          k = paramCursor.getColumnIndexOrThrow("_id");
+          j = paramCursor.getColumnIndexOrThrow("bucket_id");
+          i = paramCursor.getColumnIndexOrThrow("bucket_display_name");
+          break;
+          str1 = paramCursor.getString(i);
+          continue;
+          str1 = anni.a(2131703291);
+        }
+      }
+      return localHashMap;
+      str2 = "/storage/emulated/0/DCIM/Camera";
+    }
+  }
+  
+  public static void a(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {}
+    while ((paramFileManagerEntity.nFileType != 5) || (paramFileManagerEntity.getCloudType() != 3)) {
+      return;
+    }
+    ThreadManager.post(new FileCategoryUtil.4(paramFileManagerEntity), 8, null, false);
+  }
+  
+  public static void a(Map<String, List<FileInfo>> paramMap)
+  {
+    if (paramMap == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext()) {
+        Collections.sort((List)paramMap.get((String)localIterator.next()), a);
+      }
+    }
+  }
+  
+  public static void a(TreeMap<Long, FileInfo> paramTreeMap, int paramInt, LinkedHashMap<String, List<FileInfo>> paramLinkedHashMap1, LinkedHashMap<String, List<FileInfo>> paramLinkedHashMap2, List<FileInfo> paramList)
+  {
+    if (paramTreeMap == null) {}
+    for (;;)
+    {
+      return;
+      HashMap localHashMap = new HashMap();
+      LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+      paramTreeMap = paramTreeMap.entrySet().iterator();
+      if (paramTreeMap.hasNext())
+      {
+        FileInfo localFileInfo = (FileInfo)((Map.Entry)paramTreeMap.next()).getValue();
+        if (localFileInfo != null)
+        {
+          paramList.add(0, localFileInfo);
+          if (paramLinkedHashMap2 != null)
+          {
+            str = a(atvo.f(localFileInfo.d()), paramInt);
+            if (!paramLinkedHashMap2.containsKey(str)) {
+              paramLinkedHashMap2.put(str, new ArrayList());
+            }
+            ((List)paramLinkedHashMap2.get(str)).add(localFileInfo);
+          }
+          long l = localFileInfo.b();
+          String str = atxd.a(l);
+          if (!localHashMap.containsValue(str)) {
+            localHashMap.put(str, Integer.valueOf((int)(l / 1000L)));
+          }
+          for (;;)
+          {
+            if (!localLinkedHashMap.containsKey(str)) {
+              localLinkedHashMap.put(str, new ArrayList());
+            }
+            ((List)localLinkedHashMap.get(str)).add(localFileInfo);
+            break;
+            if (((Integer)localHashMap.get(str)).intValue() > l) {
+              localHashMap.put(str, Integer.valueOf((int)(l / 1000L)));
+            }
+          }
+        }
+      }
+      else
+      {
+        paramTreeMap = new ArrayList(localHashMap.entrySet());
+        Collections.sort(paramTreeMap, new atvi());
+        paramTreeMap = paramTreeMap.iterator();
+        while (paramTreeMap.hasNext())
+        {
+          paramLinkedHashMap2 = (Map.Entry)paramTreeMap.next();
+          paramList = (List)localLinkedHashMap.get(paramLinkedHashMap2.getKey());
+          if (paramList.size() > 0)
+          {
+            Collections.sort(paramList, new atvj());
+            paramLinkedHashMap1.put(paramLinkedHashMap2.getKey(), paramList);
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, HashMap<String, List<FileInfo>> paramHashMap, QfileBaseTabView paramQfileBaseTabView)
+  {
+    if (paramString1 == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        if ((paramQfileBaseTabView == null) || (!paramQfileBaseTabView.d())) {
+          try
+          {
+            Thread.sleep(0L);
+            VFSFile localVFSFile = new VFSFile(paramString1);
+            if (localVFSFile.isDirectory())
+            {
+              if (localVFSFile.getName().indexOf(".") == 0) {
+                continue;
+              }
+              paramString1 = localVFSFile.listFiles();
+              if (paramString1 == null) {
+                continue;
+              }
+              int i = 0;
+              while (i < paramString1.length)
+              {
+                if ((!new VFSFile(paramString1[i].getAbsolutePath()).isDirectory()) || (paramBoolean)) {
+                  a(paramBoolean, paramString1[i].getAbsolutePath(), paramString2, paramString3, paramHashMap, paramQfileBaseTabView);
+                }
+                i += 1;
+              }
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            for (;;)
+            {
+              localInterruptedException.printStackTrace();
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("scanFileList", 2, "inFilter[" + paramString2 + "],outOfFilter[" + paramString3 + "],path[" + paramString1 + "]");
+            }
+            String str = atwl.a(paramString1);
+            Object localObject = str;
+            if (paramString2 != null)
+            {
+              localObject = str;
+              if (paramString2.length() > 0)
+              {
+                if ((str == null) || (str.length() <= 1)) {
+                  continue;
+                }
+                localObject = str.toLowerCase();
+                if (paramString2.indexOf((String)localObject) < 0) {
+                  continue;
+                }
+              }
+            }
+            paramString2 = (String)localObject;
+            if (localObject != null)
+            {
+              paramString2 = (String)localObject;
+              if (((String)localObject).length() > 1)
+              {
+                paramString2 = (String)localObject;
+                if (paramString3 != null)
+                {
+                  paramString2 = (String)localObject;
+                  if (paramString3.length() > 0)
+                  {
+                    paramString2 = ((String)localObject).toLowerCase();
+                    if (paramString3.indexOf(paramString2) >= 0) {
+                      continue;
+                    }
+                  }
+                }
+              }
+            }
+            paramString1 = FileInfo.a(paramString1);
+          }
+        }
+      }
+    } while (paramString1 == null);
+    if (!paramHashMap.containsKey(paramString2)) {
+      paramHashMap.put(paramString2, new ArrayList());
+    }
+    if (paramQfileBaseTabView != null) {
+      paramQfileBaseTabView.a(paramString1);
+    }
+    ((List)paramHashMap.get(paramString2)).add(paramString1);
+  }
+  
+  private static boolean a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {}
+    while (((paramDrawable instanceof SkinnableBitmapDrawable)) || ((paramDrawable instanceof SkinnableNinePatchDrawable))) {
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean a(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    if ((paramDrawable1 == null) || (paramDrawable2 == null)) {}
+    while (((paramDrawable1 instanceof SkinnableBitmapDrawable)) || ((paramDrawable1 instanceof SkinnableNinePatchDrawable)) || ((paramDrawable2 instanceof SkinnableNinePatchDrawable)) || ((paramDrawable2 instanceof SkinnableBitmapDrawable))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString, atvk paramatvk)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    atvy.a().execute(new FileCategoryUtil.5(paramString, paramatvk));
+    return true;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    return a(paramContext).size();
+  }
+  
+  private static Cursor b(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  {
+    return paramContext.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
+  }
+  
+  private static String b(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return anni.a(2131703288);
+    }
+    paramString = paramString.toLowerCase();
+    if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
+      return "WORD";
+    }
+    if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
+      return "PPT";
+    }
+    if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
+      return "EXCEL";
+    }
+    if (".pdf|".indexOf(paramString) >= 0) {
+      return "PDF";
+    }
+    return anni.a(2131703290);
+  }
+  
+  public static Map<String, List<FileInfo>> b(Context paramContext)
+  {
+    paramContext = b(paramContext, null, 0);
+    if (paramContext != null) {
+      a(paramContext);
+    }
+    return paramContext;
+  }
+  
+  /* Error */
+  public static Map<String, List<FileInfo>> b(Context paramContext, String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: aload_1
+    //   5: aconst_null
+    //   6: iload_2
+    //   7: invokestatic 604	atvg:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: astore_0
+    //   11: aload_0
+    //   12: astore_1
+    //   13: aload_0
+    //   14: iconst_2
+    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: astore_3
+    //   19: aload_3
+    //   20: astore_1
+    //   21: aload_0
+    //   22: ifnull +11 -> 33
+    //   25: aload_0
+    //   26: invokeinterface 35 1 0
+    //   31: aload_3
+    //   32: astore_1
+    //   33: aload_1
+    //   34: areturn
+    //   35: astore_3
+    //   36: aconst_null
+    //   37: astore_0
+    //   38: aload_0
+    //   39: astore_1
+    //   40: aload_3
+    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
+    //   44: aload 4
+    //   46: astore_1
+    //   47: aload_0
+    //   48: ifnull -15 -> 33
+    //   51: aload_0
+    //   52: invokeinterface 35 1 0
+    //   57: aconst_null
+    //   58: areturn
+    //   59: astore_0
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnull +9 -> 72
+    //   66: aload_1
+    //   67: invokeinterface 35 1 0
+    //   72: aload_0
+    //   73: athrow
+    //   74: astore_0
+    //   75: goto -13 -> 62
+    //   78: astore_3
+    //   79: goto -41 -> 38
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	paramContext	Context
+    //   0	82	1	paramString	String
+    //   0	82	2	paramInt	int
+    //   18	14	3	localMap	Map
+    //   35	6	3	localException1	Exception
+    //   78	1	3	localException2	Exception
+    //   1	44	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	11	35	java/lang/Exception
+    //   3	11	59	finally
+    //   13	19	74	finally
+    //   40	44	74	finally
+    //   13	19	78	java/lang/Exception
+  }
+  
+  private static Cursor c(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  {
+    return paramContext.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_display_name", "_data" }, paramString, paramArrayOfString, "date_added desc");
+  }
+  
+  private static String c(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return anni.a(2131703287);
+    }
+    paramString = paramString.toLowerCase();
+    if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
+      return anni.a(2131703285);
+    }
+    if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
+      return anni.a(2131703289);
+    }
+    if (".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|".indexOf(paramString) >= 0) {
+      return anni.a(2131703283);
+    }
+    return anni.a(2131703282);
+  }
+  
+  public static Map<String, List<FileInfo>> c(Context paramContext)
+  {
+    paramContext = c(paramContext, "1=1 )GROUP BY (_data", 0);
+    if (paramContext != null) {
+      a(paramContext);
+    }
+    return paramContext;
+  }
+  
+  /* Error */
+  public static Map<String, List<FileInfo>> c(Context paramContext, String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: aload_1
+    //   5: aconst_null
+    //   6: iload_2
+    //   7: invokestatic 624	atvg:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: astore_0
+    //   11: aload_0
+    //   12: astore_1
+    //   13: aload_0
+    //   14: iconst_1
+    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: astore_3
+    //   19: aload_3
+    //   20: astore_1
+    //   21: aload_0
+    //   22: ifnull +11 -> 33
+    //   25: aload_0
+    //   26: invokeinterface 35 1 0
+    //   31: aload_3
+    //   32: astore_1
+    //   33: aload_1
+    //   34: areturn
+    //   35: astore_3
+    //   36: aconst_null
+    //   37: astore_0
+    //   38: aload_0
+    //   39: astore_1
+    //   40: aload_3
+    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
+    //   44: aload 4
+    //   46: astore_1
+    //   47: aload_0
+    //   48: ifnull -15 -> 33
+    //   51: aload_0
+    //   52: invokeinterface 35 1 0
+    //   57: aconst_null
+    //   58: areturn
+    //   59: astore_0
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnull +9 -> 72
+    //   66: aload_1
+    //   67: invokeinterface 35 1 0
+    //   72: aload_0
+    //   73: athrow
+    //   74: astore_0
+    //   75: goto -13 -> 62
+    //   78: astore_3
+    //   79: goto -41 -> 38
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	paramContext	Context
+    //   0	82	1	paramString	String
+    //   0	82	2	paramInt	int
+    //   18	14	3	localMap	Map
+    //   35	6	3	localException1	Exception
+    //   78	1	3	localException2	Exception
+    //   1	44	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	11	35	java/lang/Exception
+    //   3	11	59	finally
+    //   13	19	74	finally
+    //   40	44	74	finally
+    //   13	19	78	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atvg
  * JD-Core Version:    0.7.0.1
  */

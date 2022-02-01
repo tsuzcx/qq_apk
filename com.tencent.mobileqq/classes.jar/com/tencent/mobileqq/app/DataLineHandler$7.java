@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
-import amkn;
-import bdqa;
+import anjx;
+import aofa;
+import bgva;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -19,7 +19,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$7
   implements Runnable
 {
-  public DataLineHandler$7(alqo paramalqo, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
+  public DataLineHandler$7(anjx paramanjx, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class DataLineHandler$7
         if (i >= 0)
         {
           localObject = new byte[i];
-          bdqa.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          bgva.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
         }
       }
       else if (localObject != null)
@@ -63,12 +63,12 @@ public class DataLineHandler$7
       this.this$0.a(localInvalidProtocolBufferMicroException);
       return;
     }
-    alqo.a(this.this$0, localInvalidProtocolBufferMicroException);
+    anjx.a(this.this$0, localInvalidProtocolBufferMicroException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.7
  * JD-Core Version:    0.7.0.1
  */

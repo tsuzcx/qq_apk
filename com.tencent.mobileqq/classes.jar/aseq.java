@@ -1,27 +1,12 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class aseq
-  extends ameq
+public class aseq
 {
-  aseq(asep paramasep) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((asep.a(this.a).equals(paramString)) && (asep.a(this.a) != null))
-      {
-        asep.a(this.a);
-        asep.a(this.a).a(paramList);
-      }
-      return;
-    }
-  }
+  public aseq(asem paramasem) {}
 }
 
 

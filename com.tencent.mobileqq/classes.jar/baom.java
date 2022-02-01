@@ -1,52 +1,38 @@
-import android.os.RemoteException;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class baom
-  extends baot
+public class baom
+  implements GLSurfaceView.EGLContextFactory
 {
-  baom(baol parambaol, banv parambanv) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void a()
+  public baom(CameraCaptureView paramCameraCaptureView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    try
-    {
-      this.jdField_a_of_type_Banv.beginSwitch();
-      return;
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
     }
-    catch (RemoteException localRemoteException)
-    {
-      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  public boolean a(int paramInt)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    try
-    {
-      this.jdField_a_of_type_Banv.postSwitch(paramInt);
-      return super.a(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.g();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-  }
-  
-  public boolean a(baoo parambaoo)
-  {
-    try
-    {
-      this.jdField_a_of_type_Banv.doSwitch(parambaoo.a(), parambaoo.d());
-      return true;
-    }
-    catch (RemoteException parambaoo)
-    {
-      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", parambaoo);
-    }
-    return true;
   }
 }
 

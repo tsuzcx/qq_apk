@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
@@ -16,9 +14,13 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.view.accessibility.AccessibilityRecord;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
+@Keep
 final class AccessibilityViewEmbedder
 {
   private static final String TAG = "AccessibilityBridge";
@@ -293,7 +295,7 @@ final class AccessibilityViewEmbedder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder
  * JD-Core Version:    0.7.0.1
  */

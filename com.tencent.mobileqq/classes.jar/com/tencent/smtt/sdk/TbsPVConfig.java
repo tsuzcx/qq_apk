@@ -8,21 +8,19 @@ import java.util.Map;
 public class TbsPVConfig
   extends TbsBaseConfig
 {
-  private static final String TBS_CFG_FILE = "tbs_pv_config";
-  private static TbsPVConfig mInstance;
-  private Context mAppContext;
+  private static TbsPVConfig b;
   public SharedPreferences mPreferences;
   
   public static TbsPVConfig getInstance(Context paramContext)
   {
     try
     {
-      if (mInstance == null)
+      if (b == null)
       {
-        mInstance = new TbsPVConfig();
-        mInstance.init(paramContext);
+        b = new TbsPVConfig();
+        b.init(paramContext);
       }
-      paramContext = mInstance;
+      paramContext = b;
       return paramContext;
     }
     finally {}
@@ -32,7 +30,7 @@ public class TbsPVConfig
   {
     try
     {
-      mInstance = null;
+      b = null;
       return;
     }
     finally
@@ -51,7 +49,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("disabled_core_version");
+      String str = (String)this.a.get("disabled_core_version");
       if (!TextUtils.isEmpty(str))
       {
         i = Integer.parseInt(str);
@@ -73,7 +71,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("emergent_core_version");
+      String str = (String)this.a.get("emergent_core_version");
       if (!TextUtils.isEmpty(str))
       {
         i = Integer.parseInt(str);
@@ -95,7 +93,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("get_localcoreversion_moretimes");
+      String str = (String)this.a.get("get_localcoreversion_moretimes");
       if (!TextUtils.isEmpty(str))
       {
         i = Integer.parseInt(str);
@@ -117,7 +115,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("read_apk");
+      String str = (String)this.a.get("read_apk");
       if (!TextUtils.isEmpty(str))
       {
         i = Integer.parseInt(str);
@@ -135,11 +133,25 @@ public class TbsPVConfig
     finally {}
   }
   
+  public String getSyncMapValue(String paramString)
+  {
+    try
+    {
+      paramString = (String)this.a.get(paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
   public boolean getTbsCoreSandboxModeEnable()
   {
     try
     {
-      bool = "true".equals((String)this.mSyncMap.get("tbs_core_sandbox_mode_enable"));
+      bool = "true".equals((String)this.a.get("tbs_core_sandbox_mode_enable"));
       if (!bool) {
         break label37;
       }
@@ -162,7 +174,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("disable_host_backup");
+      String str = (String)this.a.get("disable_host_backup");
       if (TextUtils.isEmpty(str)) {
         break label46;
       }
@@ -189,7 +201,7 @@ public class TbsPVConfig
   {
     try
     {
-      String str = (String)this.mSyncMap.get("enable_no_share_gray");
+      String str = (String)this.a.get("enable_no_share_gray");
       if (TextUtils.isEmpty(str)) {
         break label46;
       }
@@ -216,7 +228,7 @@ public class TbsPVConfig
   {
     try
     {
-      this.mSyncMap.put(paramString1, paramString2);
+      this.a.put(paramString1, paramString2);
       return;
     }
     finally
@@ -228,7 +240,7 @@ public class TbsPVConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsPVConfig
  * JD-Core Version:    0.7.0.1
  */

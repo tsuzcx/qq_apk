@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import atvd;
+import awch;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,9 +13,9 @@ public class SetLogOn
   {
     String str = this.a.app.a(ServerConfigManager.ConfigType.common, "QQIniUrl");
     if ((str != null) && (str.length() > 0)) {
-      atvd.b = str.trim();
+      awch.b = str.trim();
     }
-    atvd.a(this.a.app.getApp(), true);
+    awch.a(this.a.app.getApp(), true);
     return 7;
   }
 }

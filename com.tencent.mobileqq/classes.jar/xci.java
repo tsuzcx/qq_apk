@@ -1,35 +1,49 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class xci
-  extends xcs
+  extends xdt
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  private String a;
   
-  public xci(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public xci()
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    a(false, true);
   }
   
-  public xci a(Bitmap paramBitmap)
+  public void a()
   {
-    return new xci(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    bdzi localbdzi = localQQAppInterface.a();
+    bdzn localbdzn = new bdzn();
+    localbdzn.jdField_a_of_type_Ayyt = new xcj(this);
+    localbdzn.i = this.a;
+    localbdzn.jdField_a_of_type_Boolean = true;
+    localbdzn.jdField_b_of_type_Int = 196610;
+    localbdzn.jdField_b_of_type_JavaLangString = localQQAppInterface.c();
+    localbdzn.c = "";
+    localbdzn.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    localbdzi.a(localbdzn);
   }
   
-  public String toString()
+  protected void a(Map<String, Object> paramMap)
   {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
+      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xci
  * JD-Core Version:    0.7.0.1
  */

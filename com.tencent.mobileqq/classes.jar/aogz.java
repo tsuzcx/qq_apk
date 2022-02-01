@@ -1,36 +1,34 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
 class aogz
-  implements URLDrawable.URLDrawableListener
+  implements PermissionMonitor.Listener
 {
-  aogz(aogx paramaogx, RoundImageView paramRoundImageView, apby paramapby, String paramString) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null)
+    if (!aogs.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_Apby.c(true);
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
+  }
+  
+  aogz(aogs paramaogs) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
+    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), ((Integer)paramArrayOfObject[1]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

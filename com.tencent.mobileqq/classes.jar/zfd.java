@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-class zfd
-  implements Animation.AnimationListener
+public final class zfd
+  implements Parcelable.Creator<PublishParam>
 {
-  zfd(zfa paramzfa, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PublishParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    return new PublishParam(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zfd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
 public abstract interface bksj
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
 }
 
 

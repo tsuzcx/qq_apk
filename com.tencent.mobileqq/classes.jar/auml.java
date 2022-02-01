@@ -1,18 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class auml
+  implements Handler.Callback
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public String a;
+  public auml(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auml
  * JD-Core Version:    0.7.0.1
  */

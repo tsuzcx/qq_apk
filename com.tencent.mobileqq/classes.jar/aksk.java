@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aksk
+public class aksk
+  implements nkl
 {
-  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aksj paramaksj, long paramLong);
+  public aksk(PreloadModule paramPreloadModule) {}
   
-  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    }
+  }
   
-  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
-  
-  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
-  
-  public abstract void onGameCheckRetry(int paramInt);
-  
-  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
-  
-  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
-  
-  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
+  }
 }
 
 

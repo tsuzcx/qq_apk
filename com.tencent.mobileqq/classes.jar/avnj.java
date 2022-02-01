@@ -1,63 +1,123 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import java.util.Collection;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
+@Deprecated
 public class avnj
-  extends AvatarWallPagerAdapter<PicInfo>
 {
-  protected LinearLayout.LayoutParams a;
+  HashMap<String, avnl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  nhe jdField_a_of_type_Nhe;
   
-  public avnj(avmf paramavmf, AvatarWallViewPager paramAvatarWallViewPager)
+  public void a(avnl paramavnl, String paramString)
   {
-    super(paramAvatarWallViewPager);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramavnl);
   }
   
-  public View a(int paramInt, PicInfo paramPicInfo)
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Avmf.a(paramInt, paramPicInfo);
-  }
-  
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    if (paramString == null)
     {
-      paramInt = xsm.a(this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 5.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(paramInt, paramInt);
-      paramInt = xsm.a(this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 4.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (paramInt / 2);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = (paramInt / 2);
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
     }
-    if (paramBoolean) {}
-    for (Drawable localDrawable = bcpx.a(this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources(), Color.parseColor("#CC12B7F5"), this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getDrawable(2130843304));; localDrawable = bcpx.a(this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources(), Color.parseColor("#66FFFFFF"), this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getDrawable(2130843304)))
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, avnk paramavnk)
+  {
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-      localView.setBackgroundDrawable(localDrawable);
-      return localView;
+      if (i < j) {
+        try
+        {
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
+            }
+          }
+        }
+      }
     }
+    paramString1 = (avnl)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramavnk);
+    }
+    while (paramavnk == null) {
+      return;
+    }
+    paramavnk.a();
   }
   
-  public void a(int paramInt, View paramView)
+  public boolean a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_Avmf.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
-  }
-  
-  public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
-  {
-    return this.jdField_a_of_type_Avmf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(paramPicInfo1, paramPicInfo2);
+    if (paramString == null) {
+      return false;
+    }
+    if (!paramString.startsWith("jsbridge://")) {
+      return false;
+    }
+    List localList = Arrays.asList((paramString + "/#").split("/"));
+    if (localList.size() < 6) {
+      return false;
+    }
+    String str1 = (String)localList.get(2);
+    String str2 = (String)localList.get(3);
+    String str3 = (String)localList.get(4);
+    for (;;)
+    {
+      try
+      {
+        long l = Long.parseLong(str3);
+        localList = localList.subList(5, localList.size() - 1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("JB", 4, "calling " + str1 + "." + str2);
+        }
+        paramString = new avnk(paramWebView, l, paramString);
+        paramWebView = paramWebView.getUrl();
+        if (this.jdField_a_of_type_Nhe == null) {
+          this.jdField_a_of_type_Nhe = nhe.a();
+        }
+        if (this.jdField_a_of_type_Nhe.a(paramWebView, str1 + "." + str2))
+        {
+          a(str1, str2, localList, paramString);
+          return true;
+        }
+      }
+      catch (Exception paramWebView)
+      {
+        return false;
+      }
+      QLog.e("JsBridge", 1, "JS API no auth url = " + nmj.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
+      paramString.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avnj
  * JD-Core Version:    0.7.0.1
  */

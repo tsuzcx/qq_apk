@@ -1,19 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afva
-  implements bemz
+final class afva
+  implements afvp
 {
-  afva(afuw paramafuw) {}
-  
-  public void a(View paramView)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (atlt.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-      return;
-    }
-    aepi.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 74);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

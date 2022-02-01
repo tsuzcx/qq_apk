@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.R.styleable;
-import mww;
+import mue;
 
 public class HorizontalBallLoadingView
   extends MetaballView
@@ -30,7 +30,7 @@ public class HorizontalBallLoadingView
   
   protected int a()
   {
-    return (int)(mww.a(getContext(), 6.0F) * this.a);
+    return (int)(mue.a(getContext(), 6.0F) * this.a);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -42,12 +42,12 @@ public class HorizontalBallLoadingView
   
   protected int b()
   {
-    return (int)(mww.a(getContext(), 10.0F) * this.a);
+    return (int)(mue.a(getContext(), 10.0F) * this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView
  * JD-Core Version:    0.7.0.1
  */

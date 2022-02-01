@@ -4,13 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import blqj;
-import bltq;
-import blxf;
-import blxg;
-import blxh;
-import blxj;
-import blzq;
+import bojn;
+import bomu;
+import boqj;
+import boqk;
+import boql;
+import boqn;
+import bosu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,18 +22,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import ndr;
+import nmk;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicTextConfigManager
-  extends blqj
+  extends bojn
 {
   public static File a;
   private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + "usable" + File.separator;
   public int a;
-  private blxh jdField_a_of_type_Blxh = new blxh(this);
+  private boql jdField_a_of_type_Boql = new boql(this);
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
@@ -45,7 +45,7 @@ public class DynamicTextConfigManager
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(blzq.a(), "dynamic_text");
+    jdField_a_of_type_JavaIoFile = new File(bosu.a(), "dynamic_text");
   }
   
   public DynamicTextConfigManager()
@@ -53,9 +53,9 @@ public class DynamicTextConfigManager
     this.jdField_a_of_type_Int = 120;
   }
   
-  public static String a(@NonNull blxg paramblxg)
+  public static String a(@NonNull boqk paramboqk)
   {
-    return new File(jdField_a_of_type_JavaIoFile, paramblxg.a()).getPath();
+    return new File(jdField_a_of_type_JavaIoFile, paramboqk.a()).getPath();
   }
   
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a(String paramString)
@@ -74,7 +74,7 @@ public class DynamicTextConfigManager
         DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = DynamicTextConfigManager.DynamicTextConfigBean.convertFrom(paramString.getJSONObject(i));
         if (localDynamicTextConfigBean != null)
         {
-          localDynamicTextConfigBean.iconDrawableId = blxf.a(localDynamicTextConfigBean.text_id);
+          localDynamicTextConfigBean.iconDrawableId = boqj.a(localDynamicTextConfigBean.text_id);
           localArrayList.add(localDynamicTextConfigBean);
         }
         i += 1;
@@ -209,12 +209,12 @@ public class DynamicTextConfigManager
   
   public void a() {}
   
-  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, blxj paramblxj)
+  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, boqn paramboqn)
   {
     if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
       return;
     }
-    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, paramblxj), null, true);
+    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, paramboqn), null, true);
   }
   
   public void a(String paramString)
@@ -233,7 +233,7 @@ public class DynamicTextConfigManager
           this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject2);
           b(paramString);
           this.jdField_a_of_type_Boolean = true;
-          a().notifyObservers(bltq.class, 3, false, null);
+          a().notifyObservers(bomu.class, 3, false, null);
           ??? = ((ArrayList)localObject2).iterator();
           while (((Iterator)???).hasNext())
           {
@@ -243,7 +243,7 @@ public class DynamicTextConfigManager
             }
           }
         }
-        blzq.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
+        bosu.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
       }
     }
   }
@@ -266,7 +266,7 @@ public class DynamicTextConfigManager
       } while (!paramBoolean);
       localObject = new DynamicTextConfigManager.DynamicTextConfigBean();
       ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id = 28;
-      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = blxf.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
+      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = boqj.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
     } while ((paramList == null) || (paramList.size() <= 1));
     paramList.add(1, localObject);
   }
@@ -276,11 +276,11 @@ public class DynamicTextConfigManager
     return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
   }
   
-  public boolean a(blxg paramblxg)
+  public boolean a(boqk paramboqk)
   {
     boolean bool2 = true;
     boolean bool1;
-    if ((paramblxg == null) || (TextUtils.isEmpty(paramblxg.jdField_c_of_type_JavaLangString))) {
+    if ((paramboqk == null) || (TextUtils.isEmpty(paramboqk.jdField_c_of_type_JavaLangString))) {
       bool1 = false;
     }
     do
@@ -289,12 +289,12 @@ public class DynamicTextConfigManager
       {
         return bool1;
         bool1 = bool2;
-      } while (TextUtils.isEmpty(paramblxg.jdField_a_of_type_JavaLangString));
-      if (!new File(jdField_a_of_type_JavaIoFile, paramblxg.a()).exists()) {
+      } while (TextUtils.isEmpty(paramboqk.jdField_a_of_type_JavaLangString));
+      if (!new File(jdField_a_of_type_JavaIoFile, paramboqk.a()).exists()) {
         return false;
       }
       bool1 = bool2;
-    } while (new File(jdField_a_of_type_JavaLangString + paramblxg.jdField_c_of_type_JavaLangString).exists());
+    } while (new File(jdField_a_of_type_JavaLangString + paramboqk.jdField_c_of_type_JavaLangString).exists());
     return false;
   }
   
@@ -308,34 +308,34 @@ public class DynamicTextConfigManager
     }
     paramDynamicTextConfigBean = paramDynamicTextConfigBean.fontInfos.iterator();
     while (paramDynamicTextConfigBean.hasNext()) {
-      if (!a((blxg)paramDynamicTextConfigBean.next())) {
+      if (!a((boqk)paramDynamicTextConfigBean.next())) {
         return false;
       }
     }
     return true;
   }
   
-  public String b(blxg paramblxg)
+  public String b(boqk paramboqk)
   {
-    if (paramblxg == null) {
+    if (paramboqk == null) {
       return null;
     }
-    return jdField_a_of_type_JavaLangString + paramblxg.jdField_c_of_type_JavaLangString + File.separator;
+    return jdField_a_of_type_JavaLangString + paramboqk.jdField_c_of_type_JavaLangString + File.separator;
   }
   
   public void b() {}
   
-  public boolean b(blxg paramblxg)
+  public boolean b(boqk paramboqk)
   {
     try
     {
-      ndr.a(new File(jdField_a_of_type_JavaIoFile, paramblxg.a()), jdField_a_of_type_JavaLangString);
+      nmk.a(new File(jdField_a_of_type_JavaIoFile, paramboqk.a()), jdField_a_of_type_JavaLangString);
       return true;
     }
-    catch (Exception paramblxg)
+    catch (Exception paramboqk)
     {
       if (QLog.isColorLevel()) {
-        paramblxg.printStackTrace();
+        paramboqk.printStackTrace();
       }
     }
     return false;
@@ -356,7 +356,7 @@ public class DynamicTextConfigManager
       return;
       if (b())
       {
-        ??? = blzq.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
+        ??? = bosu.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
         Object localObject1 = ???;
         if (QLog.isColorLevel())
         {
@@ -374,7 +374,7 @@ public class DynamicTextConfigManager
           }
           return;
         }
-        ??? = blzq.a("dynamic_text_config.cfg");
+        ??? = bosu.a("dynamic_text_config.cfg");
         localObject3 = ???;
         if (QLog.isColorLevel())
         {
@@ -415,7 +415,7 @@ public class DynamicTextConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextConfigManager
  * JD-Core Version:    0.7.0.1
  */

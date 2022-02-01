@@ -1,37 +1,29 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.QualityReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
 
 public class obh
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public obh(JSONObject paramJSONObject)
+  public static void a(rgc paramrgc)
   {
-    if (paramJSONObject != null)
-    {
-      this.a = paramJSONObject.optString("dest_url");
-      this.b = paramJSONObject.optString("rl");
-      this.c = paramJSONObject.optString("button_txt");
-      this.d = paramJSONObject.optString("button_bg");
-    }
+    ThreadManager.excute(new QualityReporter.1(paramrgc), 16, null, true);
   }
   
-  public String toString()
+  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
   {
-    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
-    localStringBuilder.append("destUrl=").append(this.a);
-    localStringBuilder.append(",rl=").append(this.b);
-    localStringBuilder.append(",buttonTxt=").append(this.c);
-    localStringBuilder.append(",buttonBg=").append(this.d);
-    localStringBuilder.append("}");
-    return super.toString();
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), oaz.class);
+    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
+    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
+    localNewIntent.setObserver(new obi(localNewIntent));
+    pha.a().startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obh
  * JD-Core Version:    0.7.0.1
  */

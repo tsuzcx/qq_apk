@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.support.v4.app.Fragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
 
 public class awrz
-  implements DialogInterface.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public awrz(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public awrz(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.a.f();
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
+      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,125 +1,158 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
 public class ayqu
-  extends ayrj
 {
-  public ayqu(bdbb parambdbb)
+  private ayqa jdField_a_of_type_Ayqa = new ayqa(40001);
+  private ayqg jdField_a_of_type_Ayqg;
+  private ayqw jdField_a_of_type_Ayqw;
+  private ayru jdField_a_of_type_Ayru;
+  private aysk jdField_a_of_type_Aysk;
+  private String jdField_a_of_type_JavaLangString;
+  
+  ayqu(ayqg paramayqg)
   {
-    super(parambdbb);
+    this.jdField_a_of_type_Ayqg = paramayqg;
+    this.jdField_a_of_type_Ayru = new ayru("category", ayqi.l, ayqi.j, ayqi.k);
   }
   
-  protected ayqo<aynu, aywd> a(bdbb parambdbb)
+  int a()
   {
-    return new ayqv(parambdbb);
+    if (this.jdField_a_of_type_Ayqa.a("category")) {
+      this.jdField_a_of_type_Ayqw = null;
+    }
+    if (this.jdField_a_of_type_Ayqa == null) {
+      return 40001;
+    }
+    return this.jdField_a_of_type_Ayqa.a;
   }
   
-  public void a(ayns paramayns, aywc paramaywc)
+  String a()
   {
-    paramayns = (aynt)paramayns;
-    LinearLayout localLinearLayout = ((aywh)paramaywc).a();
-    List localList;
-    int k;
-    int i;
-    aynq localaynq;
-    Object localObject2;
-    Object localObject1;
-    if (localLinearLayout != null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Ayqw = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationCategoryDetector", 2, "[status][category] persistPoiData. status: " + paramLong + " category: " + this.jdField_a_of_type_Ayqw);
+    }
+    if ((this.jdField_a_of_type_Ayqw != null) && (ayqw.a(this.jdField_a_of_type_Ayqw) == paramLong)) {
+      this.jdField_a_of_type_Ayru.a(this.jdField_a_of_type_Aysk.a);
+    }
+  }
+  
+  public void a(aysk paramaysk, double paramDouble)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationCategoryDetector", 2, "[status][category] detect: " + paramaysk + " curRate: " + paramDouble);
+    }
+    if ((paramaysk == null) || (paramDouble > ayqi.a))
     {
-      localList = paramayns.a();
-      if (localList != null)
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Ayqw = null;
+      this.jdField_a_of_type_Ayqa.a();
+      this.jdField_a_of_type_Aysk = null;
+      return;
+    }
+    this.jdField_a_of_type_Aysk = paramaysk;
+    try
+    {
+      this.jdField_a_of_type_Ayru.a(paramaysk.a, new ayqv(this));
+      return;
+    }
+    catch (Throwable paramaysk)
+    {
+      QLog.e("LocationCategoryDetector", 1, "getPoiWithLatLngError", paramaysk);
+    }
+  }
+  
+  void a(PoiBean paramPoiBean)
+  {
+    int j = 0;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("[status][category] getPoiWithLatLng onResult poi_size: ");
+      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null)) {
+        break label89;
+      }
+    }
+    label89:
+    for (int i = 0;; i = paramPoiBean.poiArray.length)
+    {
+      QLog.d("LocationCategoryDetector", 2, i);
+      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null))
       {
-        localLinearLayout.removeAllViews();
-        k = Math.min(localList.size(), 3);
-        i = 0;
-        if (i < k)
+        i = j;
+        if (paramPoiBean.poiArray.length > 0) {
+          break;
+        }
+      }
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Ayqw = null;
+      this.jdField_a_of_type_Ayqa.a();
+      return;
+    }
+    label208:
+    ayqw localayqw;
+    if (i < Math.min(paramPoiBean.poiArray.length, ayqi.d))
+    {
+      Poi localPoi = paramPoiBean.poiArray[i];
+      if (localPoi._distance > ayqi.g) {
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationCategoryDetector", 2, "[status][category] onFetchPoi fail far poi: " + localPoi.title + "-" + localPoi.category + "-" + localPoi._distance + " category: " + localPoi.category);
+        }
+      }
+      do
+      {
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaLangString = (localPoi.title + "-" + localPoi.category + "-" + localPoi._distance);
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationCategoryDetector", 2, "[status][category] onFetchPoi poi: " + this.jdField_a_of_type_JavaLangString + " category: " + localPoi.category);
+        }
+      } while (localPoi.category == null);
+      localObject = localPoi.category.split(":");
+      Iterator localIterator = ayqi.b.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
         {
-          paramayns = (aynu)localList.get(i);
-          if ((paramayns instanceof aynq))
+          localayqw = (ayqw)localIterator.next();
+          if (ayqw.a(localayqw, (String[])localObject))
           {
-            localaynq = (aynq)paramayns;
-            localObject2 = null;
-            if (aypf.a(localaynq.e()) == 1)
-            {
-              localObject2 = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562604, null);
-              paramayns = ((View)localObject2).findViewById(2131368483);
-              localObject1 = new ayvx((View)localObject2);
+            localObject = localayqw;
+            if (QLog.isColorLevel()) {
+              QLog.d("LocationCategoryDetector", 2, "[status][category] onFetchPoi success poi: " + this.jdField_a_of_type_JavaLangString + " category: " + localPoi.category);
             }
           }
         }
       }
     }
-    for (;;)
+    for (Object localObject = localayqw;; localObject = null)
     {
-      label137:
-      int j;
-      if ((localObject2 != null) && (paramayns != null))
-      {
-        ((View)localObject2).setTag(2131379971, localaynq);
-        ((View)localObject2).setTag(2131379976, localObject1);
-        ((View)localObject2).setTag(2131379972, Integer.valueOf(i));
-        ((View)localObject2).setTag(2131379970, Integer.valueOf(localList.size()));
-        ((View)localObject2).setTag(2131379973, this.a);
-        ayvp.a(localaynq, k, i);
-        int m = localaynq.a();
-        int n = localaynq.b();
-        if ((localaynq instanceof aynv))
-        {
-          j = localaynq.r;
-          label240:
-          ayvp.a(m, n, (View)localObject2, j);
-          localLinearLayout.addView((View)localObject2);
-          this.a.a(localaynq, (aywe)localObject1);
-        }
+      this.jdField_a_of_type_Ayqw = ((ayqw)localObject);
+      if (this.jdField_a_of_type_Ayqw == null) {
+        break label208;
       }
-      for (;;)
-      {
-        i += 1;
+      this.jdField_a_of_type_Ayqa.a(ayqw.a(this.jdField_a_of_type_Ayqw));
+      if (this.jdField_a_of_type_Ayqg != null) {
+        this.jdField_a_of_type_Ayqg.a();
+      }
+      if (!QLog.isColorLevel()) {
         break;
-        if (aypf.a(localaynq.e()) != 2) {
-          break label538;
-        }
-        localObject2 = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562611, null);
-        paramayns = ((View)localObject2).findViewById(2131368483);
-        localObject1 = new aywg((View)localObject2);
-        break label137;
-        j = 0;
-        break label240;
-        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localaynq.e());
-        continue;
-        if ((paramayns instanceof ayms))
-        {
-          paramayns = (ayms)paramayns;
-          localObject1 = new ayxl(localLinearLayout, paramayns.d());
-          localObject2 = ((ayxl)localObject1).a();
-          ((View)localObject2).setTag(2131379971, paramayns);
-          ((View)localObject2).setTag(2131379976, localObject1);
-          ((View)localObject2).setTag(2131379972, Integer.valueOf(i));
-          ((View)localObject2).setTag(2131379970, Integer.valueOf(localList.size()));
-          ((View)localObject2).setTag(2131379973, this.a);
-          ayvp.a(paramayns, k, i);
-          localObject2 = new LinearLayout.LayoutParams(-1, -2);
-          localLinearLayout.addView(((ayxl)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
-          this.a.a(paramayns, (aywe)localObject1);
-        }
-        else
-        {
-          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
-        }
       }
-      if (paramaywc.b() != null) {
-        paramaywc.b().setVisibility(8);
-      }
+      QLog.d("LocationCategoryDetector", 2, "[status][category] getPoiWithLatLng onResult: " + this.jdField_a_of_type_JavaLangString + " category: " + this.jdField_a_of_type_Ayqw + " status: " + this.jdField_a_of_type_Ayqa);
       return;
-      label538:
-      paramayns = null;
-      localObject1 = null;
     }
   }
 }

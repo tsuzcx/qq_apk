@@ -1,35 +1,64 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class alqt
-  extends alwx
+public abstract interface alqt
 {
-  alqt(alqo paramalqo) {}
+  public abstract int a();
   
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 1) && (this.a.a()))
-    {
-      this.a.a(true);
-      alqo.a(this.a, ayzl.a());
-      this.a.app.a().a(0).b();
-    }
-    this.a.a.a(this.a);
-  }
+  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
   
-  protected void b(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 1) && (this.a.b()))
-    {
-      this.a.b(true);
-      alqo.b(this.a, ayzl.a());
-      this.a.app.a().a(1).b();
-    }
-  }
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  @Nullable
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(@NonNull alqv paramalqv);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract boolean f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqt
  * JD-Core Version:    0.7.0.1
  */

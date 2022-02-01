@@ -7,6 +7,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class HongBaoPanel$MyViewHolder
   extends RecyclerView.ViewHolder
@@ -28,13 +29,13 @@ class HongBaoPanel$MyViewHolder
       paramOnHolderItemClickListener = paramView.getLayoutParams();
       paramOnHolderItemClickListener.height += paramHongBaoPanel.itemTopMargin + 5;
     }
-    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367472));
-    this.hongbaoText = ((TextView)paramView.findViewById(2131367490));
+    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367782));
+    this.hongbaoText = ((TextView)paramView.findViewById(2131367800));
     if (HongBaoPanel.access$700(paramHongBaoPanel)) {
       this.hongbaoText.setTextColor(HongBaoPanel.access$800(paramHongBaoPanel));
     }
-    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367481));
-    this.imgFlag = ((ImageView)paramView.findViewById(2131368106));
+    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367791));
+    this.imgFlag = ((ImageView)paramView.findViewById(2131368432));
   }
   
   public void onClick(View paramView)
@@ -42,11 +43,12 @@ class HongBaoPanel$MyViewHolder
     if (this.mClickListener != null) {
       this.mClickListener.onItemClick(paramView, getPosition());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

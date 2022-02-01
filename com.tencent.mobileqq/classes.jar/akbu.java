@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
 public class akbu
-  implements Comparator<CommonlyUsedTroop>
+  implements bkhe
 {
-  protected akbu(akbr paramakbr) {}
+  public akbu(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    if (paramInt == 0) {
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(false);
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
+    for (;;)
+    {
+      this.b.u = paramInt;
+      if (paramInt != 0) {
+        break label127;
+      }
+      if (!this.b.jdField_a_of_type_Ambe.a) {
+        break;
+      }
+      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
+      return;
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(true);
     }
-    return 0;
+    URLDrawable.resume();
+    this.b.jdField_a_of_type_Ambe.notifyDataSetChanged();
+    return;
+    label127:
+    URLDrawable.pause();
+    this.b.jdField_a_of_type_Ambe.a = true;
   }
 }
 

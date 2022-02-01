@@ -1,36 +1,29 @@
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
-public class nls
-  implements View.OnTouchListener
+class nls
+  implements bkhw
 {
-  public nls(VideoCoverFragment paramVideoCoverFragment) {}
+  nls(nlo paramnlo, Activity paramActivity, String paramString, bkho parambkho) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    switch (paramInt)
     {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
-      {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
-        }
-        this.a.a(false);
-      }
     }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      nlo.b(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nlo.a(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class nhk
+public abstract interface nhk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public abstract void a();
   
-  nhk(ngw paramngw) {}
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhk
  * JD-Core Version:    0.7.0.1
  */

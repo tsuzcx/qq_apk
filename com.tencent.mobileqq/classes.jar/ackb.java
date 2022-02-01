@@ -1,35 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-public final class ackb
-  implements DialogInterface.OnClickListener
+public class ackb
+  implements AdVideoSpliceAdapter
 {
-  public ackb(aclo paramaclo, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    int i = mww.b(this.jdField_a_of_type_Aclo.jdField_a_of_type_Int);
-    String str;
-    if ((this.jdField_a_of_type_Aclo.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      str = (String)this.jdField_a_of_type_Aclo.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
-      if (str == null) {}
+      acqy.d("GdtVideoSpliceAdapter", "show error");
+      return new AdError(4);
     }
-    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
-      this.jdField_a_of_type_Aclo.d = false;
-      this.jdField_a_of_type_Aclo.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.dismiss();
-      }
-      return;
-    }
+    acqy.b("GdtVideoSpliceAdapter", "show");
+    new TransitionContext(paramParams).b();
+    return new AdError(0);
   }
 }
 

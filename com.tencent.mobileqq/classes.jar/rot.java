@@ -1,53 +1,53 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rot
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rot
 {
-  public rot(BaseTabbar paramBaseTabbar) {}
+  private static final List<Function1<ColumnInfo, Unit>> a;
+  public static final rot a;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-      int i;
-      do
-      {
-        return;
-        BaseTabbar.a(this.a, 0.0F);
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        i = paramMessage.arg1;
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-      } while (i == 1);
-      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-      return;
-    case 1: 
-      if (BaseTabbar.a(this.a) < 1.0F)
-      {
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
-      return;
+    jdField_a_of_type_Rot = new rot();
+    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull ColumnInfo paramColumnInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
+    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext()) {
+      ((Function1)localIterator.next()).invoke(paramColumnInfo);
     }
-    BaseTabbar.a(this.a);
-    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-    BaseTabbar.a(this.a, 1.0F);
-    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
-    this.a.invalidate();
-    BaseTabbar.a(this.a).set(false);
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.add(paramFunction1);
+  }
+  
+  @JvmStatic
+  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rot
  * JD-Core Version:    0.7.0.1
  */

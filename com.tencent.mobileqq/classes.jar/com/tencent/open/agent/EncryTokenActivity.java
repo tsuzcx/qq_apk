@@ -1,16 +1,35 @@
 package com.tencent.open.agent;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import bfrh;
+import android.view.MotionEvent;
+import biyn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
 public class EncryTokenActivity
   extends Activity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     BaseApplicationImpl.getApplication().addOtherTypeActivity(this);
@@ -34,7 +53,7 @@ public class EncryTokenActivity
     }
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = bfrh.a(this, "openid_encrytoken");
+      localObject = biyn.a(this, "openid_encrytoken");
       try
       {
         paramBundle = super.getIntent().getStringExtra("openid") + "";

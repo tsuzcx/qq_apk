@@ -1,25 +1,42 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class awqn
-  implements Comparator<awqi>
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  private boolean a;
   
-  public awqn(TagCloudView paramTagCloudView, Point paramPoint)
+  public static awqn a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      awqn localawqn = new awqn();
+      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
+      for (;;)
+      {
+        localawqn.a = bool;
+        return localawqn;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+    }
   }
   
-  public int a(awqi paramawqi1, awqi paramawqi2)
+  public boolean a()
   {
-    return TagCloudView.a(paramawqi1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramawqi2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqn
  * JD-Core Version:    0.7.0.1
  */

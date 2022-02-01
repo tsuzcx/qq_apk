@@ -20,13 +20,13 @@ import org.json.JSONObject;
 
 class AVCosUpload
 {
-  static final String Appid = "1253925544";
-  public static final String Bucket = "gzdata2";
+  static final String Appid = "";
+  public static final String Bucket = "";
   private static final int MaxUploadCount = 5;
   private static final int MinUploadInterval = 3;
-  static final String SecretID = "AKIDfHjBUedP6c8Sp17LoupZDoGXdgYFIsfT";
-  static final String SecretKey = "zymOoFiBSYTbeXbaUEwSlszvhItU0Qeh";
-  public static final String TAG = "AVCosUpload";
+  static final String SecretID = "";
+  static final String SecretKey = "";
+  public static final String TAG = "";
   public static final int UPLOAD_FILE_ACCESSERROR = 8193;
   public static final int UPLOAD_NETWORK_FAIL = 8195;
   public static final int UPLOAD_SUCCESS = 0;
@@ -40,38 +40,38 @@ class AVCosUpload
   private static String ReadFile(String paramString)
   {
     // Byte code:
-    //   0: new 66	java/io/File
+    //   0: new 58	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
-    //   9: new 71	java/io/BufferedReader
+    //   9: new 63	java/io/BufferedReader
     //   12: dup
-    //   13: new 73	java/io/FileReader
+    //   13: new 65	java/io/FileReader
     //   16: dup
     //   17: aload_0
-    //   18: invokespecial 76	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   21: invokespecial 79	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   18: invokespecial 68	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   21: invokespecial 71	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   24: astore_2
-    //   25: ldc 81
+    //   25: ldc 8
     //   27: astore_1
     //   28: aload_2
     //   29: astore_0
     //   30: aload_2
-    //   31: invokevirtual 85	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   31: invokevirtual 75	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   34: astore_3
     //   35: aload_3
     //   36: ifnull +29 -> 65
     //   39: aload_2
     //   40: astore_0
-    //   41: new 87	java/lang/StringBuilder
+    //   41: new 77	java/lang/StringBuilder
     //   44: dup
-    //   45: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   45: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   48: aload_1
-    //   49: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: aload_3
-    //   53: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   59: astore_3
     //   60: aload_3
     //   61: astore_1
@@ -79,13 +79,13 @@ class AVCosUpload
     //   65: aload_2
     //   66: astore_0
     //   67: aload_2
-    //   68: invokevirtual 98	java/io/BufferedReader:close	()V
+    //   68: invokevirtual 88	java/io/BufferedReader:close	()V
     //   71: aload_1
     //   72: astore_0
     //   73: aload_2
     //   74: ifnull +9 -> 83
     //   77: aload_2
-    //   78: invokevirtual 98	java/io/BufferedReader:close	()V
+    //   78: invokevirtual 88	java/io/BufferedReader:close	()V
     //   81: aload_1
     //   82: astore_0
     //   83: aload_0
@@ -93,18 +93,18 @@ class AVCosUpload
     //   85: astore_3
     //   86: aconst_null
     //   87: astore_2
-    //   88: ldc 81
+    //   88: ldc 8
     //   90: astore_1
     //   91: aload_2
     //   92: astore_0
     //   93: aload_3
-    //   94: invokevirtual 101	java/io/IOException:printStackTrace	()V
+    //   94: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   97: aload_1
     //   98: astore_0
     //   99: aload_2
     //   100: ifnull -17 -> 83
     //   103: aload_2
-    //   104: invokevirtual 98	java/io/BufferedReader:close	()V
+    //   104: invokevirtual 88	java/io/BufferedReader:close	()V
     //   107: aload_1
     //   108: areturn
     //   109: astore_0
@@ -116,7 +116,7 @@ class AVCosUpload
     //   115: aload_0
     //   116: ifnull +7 -> 123
     //   119: aload_0
-    //   120: invokevirtual 98	java/io/BufferedReader:close	()V
+    //   120: invokevirtual 88	java/io/BufferedReader:close	()V
     //   123: aload_1
     //   124: athrow
     //   125: astore_0
@@ -217,13 +217,13 @@ class AVCosUpload
   {
     if ((paramString == null) || (paramString.equals("")))
     {
-      Log.e("AVCosUpload", "checkFile| filePath == null.");
+      Log.e("", "checkFile| filePath == null.");
       return null;
     }
     File localFile = new File(paramString);
     if (!localFile.exists())
     {
-      Log.e("AVCosUpload", "checkFile| filePath is not exist. path=" + paramString);
+      Log.e("", "checkFile| filePath is not exist. path=" + paramString);
       return null;
     }
     return localFile;
@@ -275,10 +275,7 @@ class AVCosUpload
     }
   }
   
-  private void uploadFileImpl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, AVCosUpload.UploadFileListener paramUploadFileListener)
-  {
-    new Thread(new AVCosUpload.2(this, paramString1, paramInt, paramString4, paramString2, paramString3, paramString5, paramUploadFileListener)).start();
-  }
+  private void uploadFileImpl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, AVCosUpload.UploadFileListener paramUploadFileListener) {}
   
   public void startUploadTimer(int paramInt)
   {
@@ -297,7 +294,7 @@ class AVCosUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.avgesture.AVCosUpload
  * JD-Core Version:    0.7.0.1
  */

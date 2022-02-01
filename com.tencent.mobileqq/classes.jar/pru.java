@@ -1,37 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class pru
-  implements phj
+public class pru
+  implements prw
 {
-  pru(prr paramprr, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public pru(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    }
-    if (paramBoolean)
-    {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (paramInt == 2) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.isFollowed = paramBoolean;
-        prr.a(this.jdField_a_of_type_Prr, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-        prr.a(this.jdField_a_of_type_Prr).notifyDataSetChanged();
-        return;
-      }
-    }
-    QQToast.a(prr.a(this.jdField_a_of_type_Prr).getContext(), 1, 2131718961, 0).a();
+    ReadInJoySelfFragment.a(this.a);
+    oat.a(null, "CliOper", "", "", "0X8007DB4", "0X8007DB4", 0, 0, "", "", "", pha.e(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pru
  * JD-Core Version:    0.7.0.1
  */

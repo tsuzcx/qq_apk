@@ -15,11 +15,11 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import mqq.os.MqqHandler;
-import shm;
-import shp;
-import shq;
-import sht;
-import shv;
+import tgd;
+import tgg;
+import tgh;
+import tgk;
+import tgm;
 
 public class CropImageView
   extends TransformImageView
@@ -27,7 +27,7 @@ public class CropImageView
   private long jdField_a_of_type_Long = 500L;
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private shp jdField_a_of_type_Shp;
+  private tgg jdField_a_of_type_Tgg;
   private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
   private Runnable jdField_b_of_type_JavaLangRunnable;
   private float jdField_c_of_type_Float;
@@ -59,12 +59,12 @@ public class CropImageView
     }
   }
   
-  private void a(String paramString, boolean paramBoolean, @Nullable shq paramshq)
+  private void a(String paramString, boolean paramBoolean, @Nullable tgh paramtgh)
   {
-    if (paramshq == null) {
+    if (paramtgh == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new CropImageView.2(this, paramBoolean, paramshq, paramString));
+    ThreadManager.getUIHandler().post(new CropImageView.2(this, paramBoolean, paramtgh, paramString));
   }
   
   private float[] a()
@@ -73,11 +73,11 @@ public class CropImageView
     this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
     this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(-e());
     Object localObject2 = Arrays.copyOf(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat.length);
-    Object localObject1 = shv.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+    Object localObject1 = tgm.a(this.jdField_a_of_type_AndroidGraphicsRectF);
     this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject2);
     this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject1);
-    localObject2 = shv.a((float[])localObject2);
-    localObject1 = shv.a((float[])localObject1);
+    localObject2 = tgm.a((float[])localObject2);
+    localObject1 = tgm.a((float[])localObject1);
     float f1 = ((RectF)localObject2).left - ((RectF)localObject1).left;
     float f5 = ((RectF)localObject2).top - ((RectF)localObject1).top;
     float f4 = ((RectF)localObject2).right - ((RectF)localObject1).right;
@@ -210,19 +210,19 @@ public class CropImageView
     this.jdField_c_of_type_Float = (f1 / f2);
   }
   
-  public void a(@NonNull Bitmap.CompressFormat paramCompressFormat, int paramInt1, int paramInt2, int paramInt3, @Nullable shq paramshq)
+  public void a(@NonNull Bitmap.CompressFormat paramCompressFormat, int paramInt1, int paramInt2, int paramInt3, @Nullable tgh paramtgh)
   {
     a();
     setImageToWrapCropBounds(false);
     Bitmap localBitmap = a();
     if (localBitmap == null)
     {
-      if (paramshq != null) {
-        paramshq.a();
+      if (paramtgh != null) {
+        paramtgh.a();
       }
       return;
     }
-    ThreadManager.executeOnFileThread(new CropImageView.1(this, localBitmap, new sht(this.jdField_a_of_type_AndroidGraphicsRectF, shv.a(this.jdField_a_of_type_ArrayOfFloat), d(), e()), paramCompressFormat, paramInt1, paramshq));
+    ThreadManager.executeOnFileThread(new CropImageView.1(this, localBitmap, new tgk(this.jdField_a_of_type_AndroidGraphicsRectF, tgm.a(this.jdField_a_of_type_ArrayOfFloat), d(), e()), paramCompressFormat, paramInt1, paramtgh));
   }
   
   protected boolean a()
@@ -236,9 +236,9 @@ public class CropImageView
     this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(-e());
     paramArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
     this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints(paramArrayOfFloat);
-    float[] arrayOfFloat = shv.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+    float[] arrayOfFloat = tgm.a(this.jdField_a_of_type_AndroidGraphicsRectF);
     this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints(arrayOfFloat);
-    return shv.a(paramArrayOfFloat).contains(shv.a(arrayOfFloat));
+    return tgm.a(paramArrayOfFloat).contains(tgm.a(arrayOfFloat));
   }
   
   public float b()
@@ -270,14 +270,14 @@ public class CropImageView
     {
       b(f1, f2);
       c(f1, f2);
-      if (this.jdField_a_of_type_Shp != null) {
-        this.jdField_a_of_type_Shp.a(this.jdField_c_of_type_Float);
+      if (this.jdField_a_of_type_Tgg != null) {
+        this.jdField_a_of_type_Tgg.a(this.jdField_c_of_type_Float);
       }
-      if (this.jdField_a_of_type_Shm == null) {
+      if (this.jdField_a_of_type_Tgd == null) {
         break;
       }
-      this.jdField_a_of_type_Shm.b(d());
-      this.jdField_a_of_type_Shm.a(e());
+      this.jdField_a_of_type_Tgd.b(d());
+      this.jdField_a_of_type_Tgd.a(e());
       return;
       j = (this.jdField_b_of_type_Int - i) / 2;
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, j, this.jdField_a_of_type_Int, i + j);
@@ -296,9 +296,9 @@ public class CropImageView
     a(paramFloat1, paramFloat2, paramFloat3, false);
   }
   
-  public void setCropBoundsChangeListener(@Nullable shp paramshp)
+  public void setCropBoundsChangeListener(@Nullable tgg paramtgg)
   {
-    this.jdField_a_of_type_Shp = paramshp;
+    this.jdField_a_of_type_Tgg = paramtgg;
   }
   
   public void setCropRect(RectF paramRectF)
@@ -380,7 +380,7 @@ public class CropImageView
       this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
       this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(e());
       this.jdField_b_of_type_AndroidGraphicsMatrix.mapRect((RectF)localObject);
-      float[] arrayOfFloat = shv.a(this.jdField_a_of_type_ArrayOfFloat);
+      float[] arrayOfFloat = tgm.a(this.jdField_a_of_type_ArrayOfFloat);
       f3 = Math.max(((RectF)localObject).width() / arrayOfFloat[0], ((RectF)localObject).height() / arrayOfFloat[1]) * f6 - f6;
       break;
       a(f1, f2);
@@ -430,9 +430,9 @@ public class CropImageView
     {
       return;
       if (paramFloat == 0.0F) {}
-      for (this.jdField_c_of_type_Float = (localDrawable.getIntrinsicWidth() / localDrawable.getIntrinsicHeight()); this.jdField_a_of_type_Shp != null; this.jdField_c_of_type_Float = paramFloat)
+      for (this.jdField_c_of_type_Float = (localDrawable.getIntrinsicWidth() / localDrawable.getIntrinsicHeight()); this.jdField_a_of_type_Tgg != null; this.jdField_c_of_type_Float = paramFloat)
       {
-        this.jdField_a_of_type_Shp.a(this.jdField_c_of_type_Float);
+        this.jdField_a_of_type_Tgg.a(this.jdField_c_of_type_Float);
         return;
       }
     }
@@ -440,7 +440,7 @@ public class CropImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.CropImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,36 @@
-import NS_KING_INTERFACE.stPostCommentReplyRsp;
-import NS_KING_SOCIALIZE_META.stMetaReply;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class tcz
-  implements tgt
+  extends anxw
 {
-  tcz(tcu paramtcu, stMetaReply paramstMetaReply) {}
+  tcz(tcx paramtcx) {}
   
-  public void a(the paramthe)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyRsp))
-    {
-      stPostCommentReplyRsp localstPostCommentReplyRsp = (stPostCommentReplyRsp)paramthe.jdField_a_of_type_JavaLangObject;
-      paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentReplyRsp, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()) });
-      umc.a().dispatch(paramthe);
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    }
+  }
+  
+  public void a(List<bbof> paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (paramInt != 6) {}
+    while (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() != 0)) || (paramList == null) || (paramList.size() <= 0) || (!(paramList.get(0) instanceof HotWordSearchEntryDataModel))) {
       return;
     }
-    tlo.d(tcu.a(), "添加回复失败new！");
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
+    tcx.jdField_a_of_type_Int = 0;
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tcz
  * JD-Core Version:    0.7.0.1
  */

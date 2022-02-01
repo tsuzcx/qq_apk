@@ -1,31 +1,56 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aeyf
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public aeyf(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
+  public aeyf(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bggo.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
     }
   }
 }

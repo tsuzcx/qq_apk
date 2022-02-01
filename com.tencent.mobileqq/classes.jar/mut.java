@@ -1,106 +1,122 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RemoteViews;
-import android.widget.TextView;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.utils.AVGLUtils;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 
 public class mut
 {
-  float jdField_a_of_type_Float = 14.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  String jdField_a_of_type_JavaLangString = "NotificationStyleDiscover";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForText";
-  final String c = "SearchForTitle";
+  int jdField_a_of_type_Int = -1;
+  QQAVImageFilter jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
+  int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  int jdField_b_of_type_Int = -1;
+  byte[] jdField_b_of_type_ArrayOfByte = null;
+  int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  int c = 0;
+  int d = 0;
+  int e = 0;
   
-  public mut(Context paramContext)
+  public mut(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
-      return;
-    }
-    try
-    {
-      Object localObject = new Notification();
-      ((Notification)localObject).setLatestEventInfo(this.jdField_a_of_type_AndroidContentContext, "SearchForTitle", "SearchForText", null);
-      paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject = (ViewGroup)((Notification)localObject).contentView.apply(this.jdField_a_of_type_AndroidContentContext, paramContext);
-      a((ViewGroup)localObject);
-      b((ViewGroup)localObject);
-      paramContext.removeAllViews();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "erro");
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = (paramInt1 * paramInt2 * 3);
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.e);
+    this.jdField_b_of_type_ArrayOfByte = new byte[this.c * this.d * 4];
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    this.jdField_a_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_a_of_type_ArrayOfInt[0]);
+    this.jdField_b_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_b_of_type_ArrayOfInt[0]);
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = new muv();
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.init();
+    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.setQQAVEffectID("filter-test");
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterProcess", 2, "mBeforeTextureId:" + this.jdField_a_of_type_ArrayOfInt[0] + "\nmBeforeTextureFbo:" + this.jdField_a_of_type_Int + "\nmAfterTextureId:" + this.jdField_b_of_type_ArrayOfInt[0] + "\nmAfterTextureFbo:" + this.jdField_b_of_type_Int);
     }
   }
   
-  boolean a(ViewGroup paramViewGroup)
+  public long a()
   {
-    int j = paramViewGroup.getChildCount();
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {
+      return -1L;
+    }
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter == null) {
+      return -2L;
+    }
+    if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) || (this.jdField_b_of_type_ArrayOfInt[0] == 0)) {
+      return -3L;
+    }
+    long l = System.nanoTime();
     int i = 0;
-    while (i < j)
+    while (i < 70)
     {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
+      a();
+      a(a(this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfInt[0]).jdField_a_of_type_Int, this.c, this.d, 6408, this.jdField_b_of_type_ArrayOfByte);
       i += 1;
     }
-    return false;
+    return (System.nanoTime() - l) / 1000L / 1000L;
   }
   
-  boolean b(ViewGroup paramViewGroup)
+  muu a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
+    if (paramQQAVImageFilter != null)
     {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
+      paramQQAVImageFilter.onOutputSizeChanged(this.c, this.d);
+      paramQQAVImageFilter.onDraw2(paramInt2, paramInt3);
+      return new muu(this, paramInt3, paramInt4);
     }
-    return false;
+    return new muu(this, paramInt1, paramInt2);
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_ArrayOfByte == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(this.jdField_a_of_type_ArrayOfByte, 0, this.e);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6407, this.c, this.d, 0, 6407, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  {
+    GLES20.glBindFramebuffer(36160, paramInt1);
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, paramInt4, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glBindFramebuffer(36160, 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+    {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_JavaNioByteBuffer = null;
+    }
+    this.jdField_b_of_type_ArrayOfByte = null;
+    GLES20.glDeleteFramebuffers(2, new int[] { this.jdField_a_of_type_Int, this.jdField_b_of_type_Int }, 0);
+    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter != null)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mut
  * JD-Core Version:    0.7.0.1
  */

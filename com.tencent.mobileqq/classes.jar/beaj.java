@@ -1,14 +1,8 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
 
 public abstract interface beaj
 {
-  public abstract int a(boolean paramBoolean, String paramString);
-  
-  public abstract beae a(String paramString);
-  
-  public abstract void a(beae parambeae, bead parambead, Bundle paramBundle);
-  
-  public abstract void b();
+  public abstract Bitmap a(Bitmap paramBitmap);
 }
 
 

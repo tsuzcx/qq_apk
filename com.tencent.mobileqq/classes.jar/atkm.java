@@ -1,37 +1,83 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
 public class atkm
-  extends QIPCModule
 {
-  private static atkm a;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private final boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final List<ExcitingTransferHostInfo> b;
   
-  private atkm(String paramString)
+  public atkm(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public static atkm a()
+  public String a()
   {
-    if (a == null) {}
-    try
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<ExcitingTransferHostInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
     {
-      if (a == null) {
-        a = new atkm("JubaoIPCServer");
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
       }
-      return a;
+      return false;
     }
-    finally {}
+    return true;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public byte[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JubaoIPCServer", 2, "jubaoIpcServer onCall= " + paramString + ",callbackId = " + paramInt);
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public List<ExcitingTransferHostInfo> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    ExcitingTransferHostInfo localExcitingTransferHostInfo;
+    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
     }
-    return null;
+    localObject = (String)localObject + " -- IPV6:";
+    localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
+    }
+    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i;
+    }
   }
 }
 

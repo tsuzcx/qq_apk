@@ -1,42 +1,24 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.RotateableView;
 
 public class bibt
-  extends NumberKeyListener
+  extends Handler
 {
-  private bibt(TCWNumberPicker paramTCWNumberPicker) {}
+  public bibt(RotateableView paramRotateableView) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void handleMessage(Message paramMessage)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
+    if (RotateableView.a(this.a) >= 360.0F) {
+      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
     }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
-    }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
-  }
-  
-  protected char[] getAcceptedChars()
-  {
-    return TCWNumberPicker.a();
-  }
-  
-  public int getInputType()
-  {
-    return 2;
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibt
  * JD-Core Version:    0.7.0.1
  */

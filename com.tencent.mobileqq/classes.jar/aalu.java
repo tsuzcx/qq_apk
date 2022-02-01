@@ -1,17 +1,35 @@
-import android.os.SystemClock;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.network.DoLikeRequest;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aalu
-  implements afjs
+public class aalu
+  implements View.OnClickListener
 {
-  aalu(aalt paramaalt, AdArkAdapter.Callback paramCallback) {}
+  public aalu(RelativeFeedItemView paramRelativeFeedItemView, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
+    if ((!RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) || (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() == null) || (!aaaf.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), anni.a(2131712139), 0).a();
+      }
+      else
+      {
+        RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
+        DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+        VSNetworkHelper.a().a(localDoLikeRequest, new aalv(this));
+      }
     }
   }
 }

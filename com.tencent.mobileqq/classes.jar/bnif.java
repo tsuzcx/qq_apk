@@ -1,22 +1,10 @@
 import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
 
-public class bnif
+public abstract interface bnif
 {
-  public int a;
-  public Bitmap a;
+  public abstract void a(Bitmap paramBitmap);
   
-  protected void finalize()
-  {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

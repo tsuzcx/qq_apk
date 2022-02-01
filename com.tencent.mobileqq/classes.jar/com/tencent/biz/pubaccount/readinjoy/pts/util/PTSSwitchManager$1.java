@@ -5,13 +5,13 @@ import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.qphone.base.util.QLog;
-import pwa;
-import pxb;
+import qok;
+import qpo;
 
 public class PTSSwitchManager$1
   implements Runnable
 {
-  public PTSSwitchManager$1(pxb parampxb) {}
+  public PTSSwitchManager$1(qpo paramqpo) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class PTSSwitchManager$1
     }
     for (;;)
     {
-      pxb.a(this.this$0, bool1);
-      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + pxb.a(this.this$0));
+      qpo.a(this.this$0, bool1);
+      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + qpo.a(this.this$0));
       label111:
       int i;
-      if (pxb.a(this.this$0))
+      if (qpo.a(this.this$0))
       {
-        pwa.a().a();
+        qok.a().a();
         localObject = Build.CPU_ABI;
         if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("armeabi"))) {
           break label283;
@@ -72,10 +72,10 @@ public class PTSSwitchManager$1
             }
             QLog.i("PTSSwitchManager", 1, "[init], pageEnabledTmp = " + bool2 + ", viewEnabledTmp = " + bool3 + ", isArm = " + bool1);
             if ((bool2) || (bool3)) {
-              pxb.a(this.this$0);
+              qpo.a(this.this$0);
             }
-            pxb.b(this.this$0, bool2);
-            pxb.c(this.this$0, bool3);
+            qpo.b(this.this$0, bool2);
+            qpo.c(this.this$0, bool3);
             return;
             bool1 = false;
             break;

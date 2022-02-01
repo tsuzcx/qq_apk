@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import awgf;
-import awgg;
-import begz;
+import bhod;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,8 +24,8 @@ class AvatarPendantJsPlugin$1
       if (this.this$0.browserApp != null)
       {
         localObject = this.this$0.browserApp.getEntityManagerFactory(null).createEntityManager();
-        ExtensionInfo localExtensionInfo = (ExtensionInfo)((awgf)localObject).a(ExtensionInfo.class, this.this$0.browserApp.getAccount());
-        ((awgf)localObject).a();
+        ExtensionInfo localExtensionInfo = (ExtensionInfo)((EntityManager)localObject).find(ExtensionInfo.class, this.this$0.browserApp.getAccount());
+        ((EntityManager)localObject).close();
         localJSONObject.put("result", 0);
         if (localExtensionInfo == null) {
           localJSONObject.put("id", 0L);
@@ -62,7 +62,7 @@ class AvatarPendantJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

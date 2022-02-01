@@ -8,12 +8,12 @@ public class MiniProgramLpReportDC04884
   
   public static void reportApiReport(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04884.1(paramString2, paramString1, paramString3));
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04884.1(paramString1, paramString3, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04884
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-public class vvl
-  implements Animator.AnimatorListener
+class vvl
+  implements DialogInterface.OnClickListener
 {
-  public vvl(XViewPager paramXViewPager) {}
+  vvl(vvi paramvvi) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
-    }
+    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(0);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vvl
  * JD-Core Version:    0.7.0.1
  */

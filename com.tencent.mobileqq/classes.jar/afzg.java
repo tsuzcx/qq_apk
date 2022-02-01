@@ -1,42 +1,65 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class afzg
-  extends aepm
+  extends ClickableSpan
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String b;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_c_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_d_of_type_AndroidViewView;
-  ImageView jdField_d_of_type_AndroidWidgetImageView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_d_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_e_of_type_AndroidViewView;
-  TextView jdField_e_of_type_AndroidWidgetTextView;
-  View jdField_f_of_type_AndroidViewView;
-  TextView jdField_f_of_type_AndroidWidgetTextView;
-  View jdField_g_of_type_AndroidViewView;
-  TextView jdField_g_of_type_AndroidWidgetTextView;
-  View jdField_h_of_type_AndroidViewView;
-  TextView jdField_h_of_type_AndroidWidgetTextView;
-  View jdField_i_of_type_AndroidViewView;
-  TextView jdField_i_of_type_AndroidWidgetTextView;
-  TextView j;
-  TextView k;
+  afzg(afyw paramafyw, IntimateInfo.DNAInfo paramDNAInfo) {}
   
-  afzg(afzc paramafzc) {}
+  public void onClick(View paramView)
+  {
+    bcst.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
+    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
+    {
+      QLog.e("intimate_relationship", 2, "linkUrl is empty");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
+    }
+    paramView = bgng.a(this.jdField_a_of_type_Afyw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+    if (paramView != null)
+    {
+      paramView.a();
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
+    {
+      blsb.c(this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+      return;
+    }
+    agof.a(this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      int j = Color.parseColor("#4D94FF");
+      paramTextPaint.setColor(j);
+      int i = j;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
+      {
+        i = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
+          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
+        }
+      }
+      paramTextPaint.setColor(i);
+      return;
+    }
+    catch (IllegalArgumentException paramTextPaint)
+    {
+      QLog.e("intimate_relationship", 2, " color parse err");
+    }
+  }
 }
 
 

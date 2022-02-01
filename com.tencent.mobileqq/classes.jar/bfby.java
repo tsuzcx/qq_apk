@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class bfby
-  implements DialogInterface.OnClickListener
 {
-  public bfby(AuthorityActivity paramAuthorityActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

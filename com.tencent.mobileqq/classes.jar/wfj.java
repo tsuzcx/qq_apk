@@ -1,10 +1,6 @@
-public abstract interface wfj
-{
-  public abstract boolean a(String paramString);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wfj
  * JD-Core Version:    0.7.0.1
  */

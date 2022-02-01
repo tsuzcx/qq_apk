@@ -1,24 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class ssx
-  extends BroadcastReceiver
+  implements bdfl
 {
-  private ssx(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  public ssx(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(bdeo parambdeo)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
-      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
-    }
+    ReadInJoySkinSlideDownView.a(this.a, parambdeo);
+    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambdeo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssx
  * JD-Core Version:    0.7.0.1
  */

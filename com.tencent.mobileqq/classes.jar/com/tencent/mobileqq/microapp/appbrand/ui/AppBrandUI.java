@@ -1,33 +1,32 @@
 package com.tencent.mobileqq.microapp.appbrand.ui;
 
+import Override;
 import Wallet.ApkgConfig;
-import adpn;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import ayvq;
-import ayvr;
-import bdgk;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForMiniApp;
+import bbut;
+import bbuu;
+import bgln;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.microapp.activity.LoadingFragment;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.app.b.b;
 import com.tencent.mobileqq.microapp.appbrand.j;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppController;
-import com.tencent.mobileqq.microapp.sdk.MiniAppLifeUtil;
 import com.tencent.mobileqq.microapp.widget.input.a.a;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.LinkedList;
 
 public class AppBrandUI
@@ -39,8 +38,8 @@ public class AppBrandUI
   private FrameLayout d;
   private boolean e;
   private boolean f;
-  private ayvq g;
-  private ayvr h = new a(this);
+  private bbut g;
+  private bbuu h = new a(this);
   
   private void a()
   {
@@ -93,29 +92,28 @@ public class AppBrandUI
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandUI", 4, "moveTaskToBack nonRoot=" + paramBoolean1 + ",bAnim=" + paramBoolean2);
     }
-    try
+    if (b())
     {
-      MiniAppLifeUtil.notifyLifeAction(0, this.a.a().c.f);
-      label57:
-      if (b())
-      {
-        c();
-        paramBoolean1 = true;
-      }
-      boolean bool;
-      do
-      {
-        return paramBoolean1;
-        bool = super.moveTaskToBack(paramBoolean1);
-        paramBoolean1 = bool;
-      } while (!paramBoolean2);
-      com.tencent.mobileqq.microapp.b.a.b(this);
-      return bool;
+      c();
+      paramBoolean1 = true;
     }
-    catch (Throwable localThrowable)
+    boolean bool;
+    do
     {
-      break label57;
-    }
+      return paramBoolean1;
+      bool = super.moveTaskToBack(paramBoolean1);
+      paramBoolean1 = bool;
+    } while (!paramBoolean2);
+    com.tencent.mobileqq.microapp.a.c.b(this);
+    return bool;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -181,7 +179,7 @@ public class AppBrandUI
     if (this.a == null) {
       this.a = new j(this, this.d);
     }
-    this.g = new ayvq(this.d);
+    this.g = new bbut(this.d);
     this.g.a(this.h);
     return true;
   }
@@ -278,7 +276,7 @@ public class AppBrandUI
         b(localObject1);
         a(localObject1);
         if (QLog.isColorLevel()) {
-          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bdgk.a());
+          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bgln.a());
         }
         localObject2 = localObject1.config.mini_appid;
         locala = this.a.a((String)localObject2, localObject1.getRuntimeType());
@@ -311,8 +309,7 @@ public class AppBrandUI
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
         ((Intent)localObject2).putExtra("CONFIG", localObject1);
-        adpn.a(this, (Intent)localObject2, PublicFragmentActivityForMiniApp.class, LoadingFragment.class, 1);
-        com.tencent.mobileqq.microapp.b.a.a(this);
+        com.tencent.mobileqq.microapp.a.c.a(this);
         return;
       }
       if (!QLog.isColorLevel()) {
@@ -320,7 +317,7 @@ public class AppBrandUI
       }
       QLog.d("AppBrandUI", 4, "onResume appid=" + (String)localObject2 + ",app_name=" + localObject1.config.app_name + ",entryPath=" + localObject1.launchParam.entryPath + ",appBrandRunTime=" + locala);
       if (locala != null) {
-        break label462;
+        break label450;
       }
       if (!QLog.isColorLevel()) {
         break label326;
@@ -332,12 +329,12 @@ public class AppBrandUI
       a();
       return;
       if (!QLog.isColorLevel()) {
-        break label494;
+        break label482;
       }
       QLog.d("AppBrandUI", 4, "onResume bringToFront appBrandRunTime=" + locala);
       this.a.a(locala);
       if (TextUtils.isEmpty(localObject1.launchParam.entryPath)) {
-        break label526;
+        break label514;
       }
       locala.a(localObject1.launchParam.entryPath);
       locala.a(localObject1);
@@ -350,7 +347,7 @@ public class AppBrandUI
     label287:
     label326:
     label348:
-    label494:
+    label482:
     return;
   }
   
@@ -367,7 +364,7 @@ public class AppBrandUI
     }
     for (;;)
     {
-      com.tencent.mobileqq.microapp.b.a.b(this);
+      com.tencent.mobileqq.microapp.a.c.b(this);
       return;
       super.finish();
     }
@@ -386,6 +383,13 @@ public class AppBrandUI
     return super.moveTaskToBack(paramBoolean);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
@@ -393,7 +397,7 @@ public class AppBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

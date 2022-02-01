@@ -2,10 +2,11 @@ package com.tencent.av;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import mvj;
-import mww;
+import java.util.ArrayList;
+import java.util.Iterator;
+import lco;
 
 class VideoController$30
   implements Runnable
@@ -14,28 +15,28 @@ class VideoController$30
   
   public void run()
   {
-    if (this.this$0.f) {
-      return;
-    }
-    long l = this.this$0.a();
-    if (l > 0L)
+    ArrayList localArrayList = new ArrayList();
+    long l = AudioHelper.a() / 1000L;
+    Iterator localIterator = VideoController.a(this.this$0).iterator();
+    while (localIterator.hasNext())
     {
-      l %= 60L;
-      if (l % 30L == 0L)
-      {
-        String str = mww.a(this.this$0.a());
-        mvj.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
-        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackground_Stop) && (l % 10L == 0L)) {
-          QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "chattingTimerRunnale -->updateNotification() sessionId = " + this.this$0.a().c);
-        }
+      lco locallco = (lco)localIterator.next();
+      if ((locallco.h) || (locallco.d + 60L > l)) {
+        localArrayList.add(locallco);
       }
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    if (localArrayList.size() != VideoController.a(this.this$0).size())
+    {
+      VideoController.a(this.this$0, localArrayList);
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.a(this.this$0) });
+    }
+    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(VideoController.a(this.this$0), 10000L);
+    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList call mRemoveUnAttenedMember");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.30
  * JD-Core Version:    0.7.0.1
  */

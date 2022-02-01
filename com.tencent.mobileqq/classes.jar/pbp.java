@@ -1,26 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-
-public class pbp
-  implements Animation.AnimationListener
+class pbp
+  extends pcm
 {
-  public pbp(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  pbp(pbe parampbe)
   {
-    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    super(parampbe, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  void a(pcp parampcp)
+  {
+    parampcp.onCommentListLoad(1, true, this.a.b(), pbe.b(this.a), 2, 2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
-public class aqen
+class aqen
+  implements aqfa
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
+  aqen(aqel paramaqel, HistoryFormItem paramHistoryFormItem) {}
   
-  public aqen(QQAppInterface paramQQAppInterface)
+  public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
+    aqcc localaqcc = new aqcc();
+    ColorNote localColorNote2;
+    if ((aqcf.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
+      localColorNote2 = (ColorNote)aqel.a(this.jdField_a_of_type_Aqel).get(paramInt);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
-    }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
+      if (localColorNote1 != null)
+      {
+        localColorNote1.setType(0);
+        localaqcc.a(localColorNote1.parseBundle());
       }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
+      aqel.a(this.jdField_a_of_type_Aqel, localColorNote2, paramInt);
+      QQToast.a(paramView.getContext(), 2, anni.a(2131690771), 500).a();
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+        Object localObject = null;
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

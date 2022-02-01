@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.common.config.AppSetting;
 
-class adrl
-  implements DialogInterface.OnClickListener
+public abstract interface adrl
 {
-  adrl(adrj paramadrj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.p();
-  }
+  public static final boolean R = AppSetting.c;
+  public static final String f = anni.a(2131700365);
 }
 
 

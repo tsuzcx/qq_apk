@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ambm;
+import antv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$3
@@ -10,12 +10,12 @@ class Leba$3
   
   public void run()
   {
-    ((ambm)this.this$0.a.a(87)).a(false, false);
+    ((antv)this.this$0.a.a(87)).a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.3
  * JD-Core Version:    0.7.0.1
  */

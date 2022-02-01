@@ -1,17 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import rjn;
-import rny;
+import java.util.Iterator;
+import java.util.List;
+import sif;
+import sij;
 
 public class LitePlayer$3
   implements Runnable
 {
-  public LitePlayer$3(rny paramrny, rjn paramrjn) {}
+  public LitePlayer$3(sif paramsif) {}
   
   public void run()
   {
-    this.a.i();
-    this.a.a(null);
+    Iterator localIterator = sif.a(this.this$0).iterator();
+    while (localIterator.hasNext()) {
+      ((sij)localIterator.next()).onVideoStart();
+    }
   }
 }
 

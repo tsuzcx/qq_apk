@@ -1,41 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vho
-  extends uro
+class vho
+  implements Animation.AnimationListener
 {
-  public List<StoryVideoItem> a;
+  vho(vhl paramvhl) {}
   
-  public vho(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super(paramRspBatchGetVideoInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspBatchGetVideoInfo.vid_info_list.has())
-    {
-      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
-      while (paramRspBatchGetVideoInfo.hasNext())
-      {
-        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
-      }
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
     }
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vho
  * JD-Core Version:    0.7.0.1
  */

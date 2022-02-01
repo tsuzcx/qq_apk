@@ -33,7 +33,7 @@ public class SkinnableColorStateList
   private boolean k;
   private boolean l;
   private long m;
-  public j skinData;
+  public SkinData skinData;
   
   static
   {

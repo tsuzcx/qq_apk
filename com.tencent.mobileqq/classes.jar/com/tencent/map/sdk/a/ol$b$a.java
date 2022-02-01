@@ -2,6 +2,7 @@ package com.tencent.map.sdk.a;
 
 import android.os.Handler;
 import android.os.Message;
+import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.concurrent.Future;
 
@@ -28,6 +29,25 @@ public final class ol$b$a<T>
     this.c = localObject;
   }
   
+  private static void a(Handler paramHandler, Message paramMessage, long paramLong)
+  {
+    if ((paramHandler == null) || (paramMessage == null)) {
+      return;
+    }
+    try
+    {
+      Field localField = paramMessage.getClass().getDeclaredField("flags");
+      localField.setAccessible(true);
+      localField.set(paramMessage, Integer.valueOf(0));
+      paramHandler.sendMessageDelayed(paramMessage, paramLong);
+      return;
+    }
+    catch (Throwable paramHandler)
+    {
+      or.b(paramHandler.getMessage(), paramHandler);
+    }
+  }
+  
   public final void a()
   {
     if (this.g == null)
@@ -37,12 +57,12 @@ public final class ol$b$a<T>
       return;
     }
     this.j = true;
-    Object localObject = Message.obtain();
-    ((Message)localObject).obj = this;
-    this.g.sendMessageDelayed((Message)localObject, this.k);
-    localObject = os.a("DispatchUtil");
+    Message localMessage = Message.obtain();
+    localMessage.obj = this;
+    os.a locala = os.a("DispatchUtil");
     new StringBuilder("delay:").append(this.k).toString();
-    ((os.a)localObject).a();
+    locala.a();
+    a(this.g, localMessage, this.k);
   }
   
   final void a(Message paramMessage, Handler paramHandler, long paramLong)
@@ -54,9 +74,10 @@ public final class ol$b$a<T>
     if ((this.m != null) && (paramHandler != null) && (paramMessage != null))
     {
       this.g = paramHandler;
+      this.g.removeCallbacks(this.m);
       this.i = Message.obtain(this.g, this.m);
       this.i.copyFrom(paramMessage);
-      this.g.sendMessageDelayed(this.i, paramLong);
+      a(this.g, this.i, paramLong);
     }
   }
   

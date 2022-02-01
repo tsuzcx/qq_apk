@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.databinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import qsi;
-import qsl;
-import qsm;
+import rnl;
+import rno;
+import rnp;
 
 public class ObservableArrayList<T>
   extends ArrayList<T>
-  implements qsl<T>
+  implements rno<T>
 {
-  private transient qsi a = new qsi();
+  private transient rnl a = new rnl();
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -58,12 +58,12 @@ public class ObservableArrayList<T>
     return bool;
   }
   
-  public void addOnListChangedCallback(qsm paramqsm)
+  public void addOnListChangedCallback(rnp paramrnp)
   {
     if (this.a == null) {
-      this.a = new qsi();
+      this.a = new rnl();
     }
-    this.a.a(paramqsm);
+    this.a.a(paramrnp);
   }
   
   public void clear()
@@ -93,10 +93,10 @@ public class ObservableArrayList<T>
     return false;
   }
   
-  public void removeOnListChangedCallback(qsm paramqsm)
+  public void removeOnListChangedCallback(rnp paramrnp)
   {
     if (this.a != null) {
-      this.a.b(paramqsm);
+      this.a.b(paramrnp);
     }
   }
   

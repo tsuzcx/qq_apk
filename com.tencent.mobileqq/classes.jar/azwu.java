@@ -1,46 +1,56 @@
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.ILoadSo;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
+
 public class azwu
-  extends azuu
+  implements ILoadSo
 {
-  public boolean c;
-  public int k;
-  public int l = 3;
+  boolean a = false;
   
-  public azwu()
+  public boolean isCkeygeneratorV2Load()
   {
-    this(null);
+    return this.a;
   }
   
-  public azwu(String paramString)
+  public boolean isCkguardLoad()
   {
-    super(paramString, "content");
+    return this.a;
   }
   
-  public String a()
+  public boolean isDownProxyLoad()
   {
-    return "Content";
+    return this.a;
   }
   
-  public int b()
+  public boolean isTPCoreLoad()
   {
-    return this.l;
+    return this.a;
   }
   
-  public int c()
+  public boolean loadDownProxySync()
   {
-    return 2131378722;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.k != 0)) {
-      return -1;
+    boolean bool = bcof.a().a("DownloadProxy").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
     }
-    return -8355712;
+    return bool;
   }
   
-  public int f()
+  public void loadSo(LoadSoCallback paramLoadSoCallback)
   {
-    return 28;
+    bcof localbcof = bcof.a();
+    paramLoadSoCallback = new azwv(this, paramLoadSoCallback);
+    localbcof.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
+  }
+  
+  public boolean loadTPCoreSync()
+  {
+    boolean bool = bcof.a().a("TPCore-master").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
+    }
+    return bool;
   }
 }
 

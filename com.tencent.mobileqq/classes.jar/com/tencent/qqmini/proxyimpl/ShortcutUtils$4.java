@@ -1,23 +1,26 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alud;
 import android.app.Activity;
+import anni;
+import bjyz;
+import bjza;
+import bjzc;
 
-final class ShortcutUtils$4
+public final class ShortcutUtils$4
   implements Runnable
 {
-  ShortcutUtils$4(Activity paramActivity) {}
+  public ShortcutUtils$4(Activity paramActivity) {}
   
   public void run()
   {
-    if (ShortcutUtils.PermissionDialog.canShowDialog()) {
-      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, alud.a(2131714407), alud.a(2131714413), alud.a(2131714394), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
+    if (bjzc.a()) {
+      bjzc.a(this.a, anni.a(2131712777), anni.a(2131712783), anni.a(2131712764), new bjyz(this), new bjza(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.4
  * JD-Core Version:    0.7.0.1
  */

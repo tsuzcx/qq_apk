@@ -1,12 +1,24 @@
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
+
 public class azew
+  implements Comparator<Rect>
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  
+  public azew(TagCloudView paramTagCloudView, Point paramPoint)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+  }
+  
+  public int a(Rect paramRect1, Rect paramRect2)
+  {
+    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
+    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
+    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+  }
 }
 
 

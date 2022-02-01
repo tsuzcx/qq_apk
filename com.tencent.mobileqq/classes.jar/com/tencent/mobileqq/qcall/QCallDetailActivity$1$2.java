@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qcall;
 
-import axah;
+import azvw;
 
 public class QCallDetailActivity$1$2
   implements Runnable
 {
-  public QCallDetailActivity$1$2(axah paramaxah) {}
+  public QCallDetailActivity$1$2(azvw paramazvw) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QCallDetailActivity$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.1.2
  * JD-Core Version:    0.7.0.1
  */

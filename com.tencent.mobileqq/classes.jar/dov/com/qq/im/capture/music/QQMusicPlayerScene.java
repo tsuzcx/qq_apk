@@ -3,9 +3,10 @@ package dov.com.qq.im.capture.music;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import bhtd;
-import bltu;
+import bkgm;
+import bomy;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -13,10 +14,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class QQMusicPlayerScene
-  extends bltu
+  extends bomy
   implements Handler.Callback
 {
-  bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+  bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private boolean jdField_a_of_type_Boolean = true;
@@ -86,7 +87,7 @@ public class QQMusicPlayerScene
     }
   }
   
-  public void a(AudioPlayer paramAudioPlayer) {}
+  public void a(AudioPlayerBase paramAudioPlayerBase) {}
   
   protected void a(String paramString, int paramInt1, int paramInt2)
   {
@@ -151,7 +152,7 @@ public class QQMusicPlayerScene
       StringBuilder localStringBuilder = new StringBuilder("pauseMusic");
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b();
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
         i = this.jdField_a_of_type_Int;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) {
@@ -302,7 +303,7 @@ public class QQMusicPlayerScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QQMusicPlayerScene
  * JD-Core Version:    0.7.0.1
  */

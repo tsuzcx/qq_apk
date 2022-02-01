@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
-import alud;
-import amtt;
-import amtz;
+import anni;
+import aosk;
+import aosq;
 import com.tencent.common.app.AppInterface;
 
 public class PromotionResDownload$1
   implements Runnable
 {
-  public PromotionResDownload$1(amtz paramamtz, boolean paramBoolean, AppInterface paramAppInterface, amtt paramamtt) {}
+  public PromotionResDownload$1(aosq paramaosq, boolean paramBoolean, AppInterface paramAppInterface, aosk paramaosk) {}
   
   public void run()
   {
-    amtz.a(this.this$0, alud.a(2131708909), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Amtt.e, this.jdField_a_of_type_Amtt.a, this.jdField_a_of_type_Amtt);
+    aosq.a(this.this$0, anni.a(2131707285), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Aosk.e, this.jdField_a_of_type_Aosk.a, this.jdField_a_of_type_Aosk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload.1
  * JD-Core Version:    0.7.0.1
  */

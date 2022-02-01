@@ -10,12 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import wca;
-import wxe;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import xvl;
+import yqp;
 
 public class StoryPlayerWebToolFragment
   extends PublicBaseFragment
-  implements wca
+  implements xvl
 {
   private View jdField_a_of_type_AndroidViewView;
   private StoryPlayerWebFragment jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment;
@@ -51,23 +52,25 @@ public class StoryPlayerWebToolFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561542, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561777, null);
     paramViewGroup = getChildFragmentManager();
     paramLayoutInflater = getArguments().getString("url");
     paramViewGroup = paramViewGroup.beginTransaction();
     paramBundle = new Intent();
     paramBundle.putExtra("url", paramLayoutInflater);
     paramBundle.putExtra("isFullScreen", true);
-    wxe.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
+    yqp.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment = StoryPlayerWebFragment.a(paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment.a(this);
-    paramViewGroup.replace(2131380158, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
-    return this.jdField_a_of_type_AndroidViewView;
+    paramViewGroup.replace(2131381129, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebToolFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.List;
 
-public class atne
-  implements bhuk
+public abstract interface atne
 {
-  public atne(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(false);
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-      return;
-    }
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment);
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, true);
-  }
+  public abstract void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList);
 }
 
 

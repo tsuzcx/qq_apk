@@ -1,58 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import java.io.File;
-import java.net.URL;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.8.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class tlw
-  implements tpv
+public class tlw
+  implements tsu
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = System.currentTimeMillis();
+  public tlw(ViolaFragment paramViolaFragment) {}
   
-  tlw(KandianUrlImageView paramKandianUrlImageView) {}
-  
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void a()
   {
-    tlo.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
-    if (this.jdField_a_of_type_Int < 2)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      tlo.d("WeishiUtils", "");
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(paramURL);
-      return;
+    this.a.a.b();
+    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(URL paramURL, sfc paramsfc)
+  public void a(int paramInt)
   {
-    tlo.b("WeishiUtils", "onLoadSuccess!!!");
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_Long > 0L)
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
     {
-      if (paramURL != null)
-      {
-        tfd.b(1, paramURL.toString());
-        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        paramsfc = baqn.a(paramURL.toString());
-        if (paramsfc != null)
-        {
-          String str = paramsfc.getAbsolutePath();
-          long l2 = paramsfc.length();
-          tlo.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
-          tjz.a().a(true, l1, l2);
-        }
+      new Handler(localLooper).postDelayed(new ViolaFragment.8.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
       }
-      this.jdField_a_of_type_Long = 0L;
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tlw
  * JD-Core Version:    0.7.0.1
  */

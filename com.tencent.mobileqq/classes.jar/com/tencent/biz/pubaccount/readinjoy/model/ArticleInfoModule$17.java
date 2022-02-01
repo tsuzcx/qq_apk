@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pew;
-import pvi;
+import pwb;
+import qnm;
 
 public class ArticleInfoModule$17
   implements Runnable
 {
-  public ArticleInfoModule$17(pew parampew, int paramInt, List paramList, long paramLong) {}
+  public ArticleInfoModule$17(pwb parampwb, int paramInt, List paramList, long paramLong) {}
   
   public void run()
   {
-    pvi.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+    qnm.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
   }
 }
 

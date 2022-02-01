@@ -1,26 +1,58 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class alxo
-  implements Comparator<MessageRecord>
+  implements DialogInterface.OnDismissListener
 {
-  public alxo(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  public alxo(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, aohz paramaohz) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMessageRecord1.time < paramMessageRecord2.time) {
-      return 1;
+    Object localObject;
+    boolean bool;
+    if (bgnt.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
+    {
+      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      bool = this.jdField_a_of_type_Boolean;
+      paramDialogInterface.b(1, new String[] { localObject }, new boolean[] { bool });
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label208;
+      }
     }
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return -1;
+    label208:
+    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
+    {
+      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
+      this.jdField_a_of_type_Aohz.a();
+      return;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131691985;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
+      for (bool = true;; bool = false)
+      {
+        paramDialogInterface.a((FormSwitchItem)localObject, bool);
+        break;
+      }
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxo
  * JD-Core Version:    0.7.0.1
  */

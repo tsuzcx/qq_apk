@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bhxc
-  implements View.OnTouchListener
+class bhxc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhxc(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
+  bhxc(bhxb parambhxb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return true;
+    bhxb.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxc
  * JD-Core Version:    0.7.0.1
  */

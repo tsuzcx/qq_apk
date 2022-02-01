@@ -1,33 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastShareBottomCreator.ViewHolder.ShareCallBack.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-public class sbj
-  extends pfq
+class sbj
+  implements View.OnLayoutChangeListener
 {
-  public ArticleInfo a;
+  sbj(sbi paramsbi) {}
   
-  public sbj(sbi paramsbi, ArticleInfo paramArticleInfo)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, scw paramscw)
-  {
-    super.a(paramBoolean, paramInt, paramscw);
-    if ((paramBoolean) && (paramscw != null) && (!TextUtils.isEmpty(paramscw.a(paramInt)))) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ThreadManager.getUIHandler().post(new WebFastShareBottomCreator.ViewHolder.ShareCallBack.1(this, paramBoolean, paramInt, paramscw));
-      return;
-    }
+    VideoFeedsRecommendFragment.a(this.a.a).removeOnLayoutChangeListener(this);
+    VideoFeedsRecommendFragment.a(this.a.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbj
  * JD-Core Version:    0.7.0.1
  */

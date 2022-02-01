@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class beij
-  implements nbt
+  implements DialogInterface.OnClickListener
 {
-  public beij(SwiftBrowserOfflineHandler.1 param1, long paramLong) {}
+  public beij(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void loaded(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (paramInt != 0)
-    {
-      zej.c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString);
-      zeq.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

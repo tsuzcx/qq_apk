@@ -1,17 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
 
-final class afsy
-  implements afug
+public class afsy
+  implements afso
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afsy(PositionActivatePage paramPositionActivatePage) {}
+  
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
-      return 71;
+    if (paramInt > 0) {
+      this.a.a.setEnabled(true);
     }
-    return 84;
+    while (paramInt > 1)
+    {
+      this.a.a.setText(2131689523);
+      return;
+      this.a.a.setEnabled(false);
+    }
+    this.a.a.setText(2131689524);
   }
 }
 

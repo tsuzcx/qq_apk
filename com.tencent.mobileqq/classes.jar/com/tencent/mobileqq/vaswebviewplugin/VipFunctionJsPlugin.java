@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import begz;
+import arpd;
+import arph;
+import bhod;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(apml.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(arph.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)
@@ -263,7 +263,7 @@ public class VipFunctionJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipFunctionJsPlugin
  * JD-Core Version:    0.7.0.1
  */

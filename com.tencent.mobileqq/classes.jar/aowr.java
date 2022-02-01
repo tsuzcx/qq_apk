@@ -1,21 +1,26 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class aowr
+public abstract interface aowr
 {
-  public int a;
-  public String a;
+  public abstract void a();
   
-  @NotNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(ArEffectConfig paramArEffectConfig);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowr
  * JD-Core Version:    0.7.0.1
  */

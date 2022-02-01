@@ -1,44 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class lxz
-  extends Handler
+class lxz
+  extends anxg
 {
-  WeakReference<RedPacketRollTextView> a;
+  String jdField_a_of_type_JavaLangString;
   
-  public lxz(RedPacketRollTextView paramRedPacketRollTextView)
+  private lxz(lxv paramlxv) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramRedPacketRollTextView);
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
-    if (localRedPacketRollTextView == null) {}
+    if (paramTroopInfo == null) {}
     do
     {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = paramMessage.getData();
-      } while (localBundle == null);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      localRedPacketRollTextView.setText(localBundle.getString("content"));
-    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
-    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
+      return;
+      paramTroopInfo = paramTroopInfo.troopuin;
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
+    this.jdField_a_of_type_Lxv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (this == this.jdField_a_of_type_Lxv.jdField_a_of_type_Lxz) {
+      this.jdField_a_of_type_Lxv.jdField_a_of_type_Lxz = null;
+    }
+    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
+    this.jdField_a_of_type_Lxv.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lxz
  * JD-Core Version:    0.7.0.1
  */

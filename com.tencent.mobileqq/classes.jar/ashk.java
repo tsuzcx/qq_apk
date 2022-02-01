@@ -1,15 +1,19 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 
-public class ashk
+public final class ashk
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
-  public URLImageView a;
-  public Switch a;
-  public String a;
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
+  {
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
+  }
+  
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  {
+    return new MiniAppRecommInfo.MiniApp[paramInt];
+  }
 }
 
 

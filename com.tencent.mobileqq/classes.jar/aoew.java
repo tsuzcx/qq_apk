@@ -1,15 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class aoew
-  implements ValueAnimator.AnimatorUpdateListener
+public class aoew
 {
-  aoew(aoev paramaoev) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-  }
+  public long a;
+  public short a;
+  public long b;
+  public long c;
 }
 
 

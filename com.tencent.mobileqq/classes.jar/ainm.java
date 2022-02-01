@@ -1,30 +1,43 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
 
-public class ainm
-  extends awhw
+class ainm
+  implements aqjd
 {
-  public ainm(SettingActivity2.3 param3) {}
+  ainm(ainl paramainl) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (this.a.this$0.c != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
+    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "onConfirm: ");
+    long l = System.currentTimeMillis();
+    boolean bool = false;
+    if (ainl.a(this.a) > l) {
+      bool = true;
     }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      if (this.a.this$0.c != null)
-      {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
-      }
-      this.a.this$0.a();
-      this.a.this$0.setResult(-1);
+    if (ainl.a(this.a) != null) {
+      ainl.a(this.a).a(ainl.a(this.a), bool);
     }
+    if (bool) {
+      ainl.a(this.a).dismiss();
+    }
+    int i = (int)(ainl.a(this.a) - System.currentTimeMillis()) / 60000;
+    bcst.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", ainl.a(this.a), i, "", "", "", "");
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    ainl.a(this.a, paramInt1, paramInt2);
+    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "column: " + paramInt1 + ", row: " + paramInt2);
+    if (paramInt1 == 0) {
+      ainl.a(this.a).a(1);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    ainl.a(this.a).dismiss();
+    bcst.b(null, "dc00898", "", "", "0X800AE80", "0X800AE80", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,73 +1,78 @@
-import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import com.tencent.mobileqq.app.JobReporter;
+import com.tencent.mobileqq.app.ThreadWrapContext;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anvz
+  implements ThreadWrapContext
 {
-  @android.support.annotation.Nullable
-  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anvu.a(localRockDownloaderTask);
-  }
+  private static boolean a;
+  private static volatile boolean b;
   
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable anvt paramanvt)
+  public static void a(long paramLong)
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setQueryAPKListener(paramanvt);
-    anvu.b(localRockDownloaderTask);
-  }
-  
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
-  {
-    if (!bdin.a(BaseApplicationImpl.context))
+    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
     {
-      if (paramRockDownloadListener != null)
-      {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, alud.a(2131713885), 10009);
-        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
+      a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
       }
-      return;
+      if (paramLong > 0L)
+      {
+        b = JobReporter.ramdomReport((int)paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
+        }
+      }
     }
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
-    anvu.a(localRockDownloaderTask);
   }
   
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anvu.b(localRockDownloaderTask);
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  public long getMainProccessThreadMonitorTime()
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return anvu.a(localRockDownloaderTask);
+    return bgsg.d();
+  }
+  
+  public long getMainProccessThreadPeakCounts()
+  {
+    return bgsg.c();
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isShotReportRejectedError()
+  {
+    return b;
+  }
+  
+  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  {
+    bctj.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+  }
+  
+  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
+  
+  public void setMainProccessThreadMonitorTime(long paramLong)
+  {
+    bgsg.b(paramLong);
+  }
+  
+  public void setMainProccessThreadPeakCounts(long paramLong)
+  {
+    bgsg.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anvz
  * JD-Core Version:    0.7.0.1
  */

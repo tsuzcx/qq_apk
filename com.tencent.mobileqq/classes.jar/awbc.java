@@ -1,25 +1,32 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class awbc
+public class awbc
   implements ValueAnimator.AnimatorUpdateListener
 {
-  awbc(awaw paramawaw) {}
+  public awbc(PoiSlideBottomPanel paramPoiSlideBottomPanel, View paramView, float paramFloat, int paramInt) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (awaw.a(this.a) != null)
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
     {
-      awaw.a(this.a).setAlpha(f);
-      awaw.a(this.a).setTranslationY((1.0F - f) * aepi.a(25.0F, awaw.a(this.a)));
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (QLog.isColorLevel()) {
+        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: hide invoked. org: " + this.jdField_a_of_type_Float + " dest: " + this.jdField_a_of_type_Int + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
+      }
+      if (PoiSlideBottomPanel.g(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
+        PoiSlideBottomPanel.h(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbc
  * JD-Core Version:    0.7.0.1
  */

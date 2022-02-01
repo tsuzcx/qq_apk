@@ -1,32 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductNetLinkInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
-public final class ztj
-  implements Parcelable.Creator<ProductNetLinkInfo>
+public class ztj
+  implements DialogInterface.OnClickListener
 {
-  public ProductNetLinkInfo a(Parcel paramParcel)
-  {
-    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
-    localProductNetLinkInfo.productId = paramParcel.readInt();
-    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
-    return localProductNetLinkInfo;
-  }
+  public ztj(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public ProductNetLinkInfo[] a(int paramInt)
-  {
-    return new ProductNetLinkInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ztj
  * JD-Core Version:    0.7.0.1
  */

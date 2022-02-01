@@ -1,26 +1,48 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class aark
-  implements aaru
+public abstract class aark
+  extends niv
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public aark()
   {
-    Object localObject = null;
-    WeakReference localWeakReference = new WeakReference(paramaarb);
-    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
-    if (paramaarb != null) {}
-    for (paramString = paramaarb.a();; paramString = null)
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      paramVarArgs = localObject;
-      if (paramaarb != null) {
-        paramVarArgs = paramaarb.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
-      return false;
+      a(false, paramInt, null, paramBundle);
+      return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

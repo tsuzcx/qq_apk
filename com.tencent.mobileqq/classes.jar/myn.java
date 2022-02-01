@@ -1,25 +1,40 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 
-class myn
-  implements WtTicketPromise
+public class myn
+  extends myl
 {
-  myn(myl parammyl) {}
-  
-  public void Done(Ticket paramTicket)
+  protected myl a()
   {
-    myl.a(this.a, false);
-    this.a.h();
+    return new myn();
   }
   
-  public void Failed(ErrMsg paramErrMsg) {}
+  public void a(myl parammyl)
+  {
+    super.a(parammyl);
+  }
   
-  public void Timeout(ErrMsg paramErrMsg) {}
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
+  
+  public int b()
+  {
+    return 3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     myn
  * JD-Core Version:    0.7.0.1
  */

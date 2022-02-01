@@ -1,25 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.open.delegate.IArkDelegateSetup;
+import java.util.ArrayList;
 
-public class apri
-  implements appu
+final class apri
+  extends IArkDelegateSetup
 {
-  apri(aprh paramaprh) {}
-  
-  public void a(int paramInt)
+  public ArrayList<String> onGetPredownloadApp()
   {
-    aprj localaprj = this.a.a(paramInt);
-    if (localaprj != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
-      }
-      Bundle localBundle = new Bundle();
-      this.a.a(localBundle, 1001);
-      localaprj.a.putBundle("response", localBundle);
-      this.a.a(new WebIPCOperator.5.1(this, localaprj));
-    }
+    return null;
+  }
+  
+  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  {
+    bcrm.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
+  }
+  
+  public void setupArkEnvironment(boolean paramBoolean)
+  {
+    aprd.a(paramBoolean);
   }
 }
 

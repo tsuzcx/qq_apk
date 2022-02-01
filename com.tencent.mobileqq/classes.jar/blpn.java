@@ -1,33 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+
 public class blpn
-  extends blpo
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
+  public blpn(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public blpn(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt;
-    this.f = paramString6;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.b;
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.view.ViewGroup;
-import anse;
+import apsj;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -68,7 +68,7 @@ class MiniAppDesktop$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.3
  * JD-Core Version:    0.7.0.1
  */

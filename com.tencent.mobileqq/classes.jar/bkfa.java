@@ -1,38 +1,24 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Point;
+import java.util.ArrayList;
 
-class bkfa
-  implements ModuleDownloadListener
+public final class bkfa
 {
-  bkfa(bkey parambkey, bkfd parambkfd) {}
+  ArrayList<Point> a;
   
-  public void onDownloadCanceled(String paramString)
+  public int a()
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    return this.a.size();
   }
   
-  public void onDownloadFailed(String paramString)
+  public int a(int paramInt1, int paramInt2)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bkey.b(this.jdField_a_of_type_Bkey, false);
-    this.jdField_a_of_type_Bkfd.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
+      return 0;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkey.c(), " onDownloadSucceed = ", bkey.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkey.d());
-    bkey.b(this.jdField_a_of_type_Bkey);
-    this.jdField_a_of_type_Bkfd.a(bkey.b(this.jdField_a_of_type_Bkey));
+    if (paramInt2 == 0) {
+      return ((Point)this.a.get(paramInt1)).x;
+    }
+    return ((Point)this.a.get(paramInt1)).y;
   }
 }
 

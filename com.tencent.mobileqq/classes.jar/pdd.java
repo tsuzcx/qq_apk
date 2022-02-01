@@ -1,59 +1,35 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class pdd
-  extends pdc
+class pdd
+  implements ViewBase.OnClickListener
 {
-  public int a()
-  {
-    return 3;
-  }
+  pdd(pdc parampdc) {}
   
-  public void a(View paramView, ListView paramListView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramAdapterView = (ArticleInfo)a((int)paramLong);
-    if (otf.c(b())) {
-      if (!ors.a(paramAdapterView)) {
-        break label35;
-      }
-    }
-    label35:
-    for (paramInt = 4;; paramInt = 2)
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      opt.a(paramInt);
+    default: 
+      return;
+    case 1095: 
+      pha.a(pda.a(this.a.a), pda.a(this.a.a), pij.a(pda.a(this.a.a).innerUniqueID));
+      this.a.a.a(2);
+      this.a.a.dismiss();
+      paramViewBase = new phi();
+      paramViewBase.i().b("wording", "" + pij.a());
+      paa.a("0X8009FE8", pda.a(this.a.a), paramViewBase);
       return;
     }
-  }
-  
-  public void a(Map<Long, qkk> paramMap, boolean paramBoolean)
-  {
-    super.a(paramMap, paramBoolean);
-    if (otf.c(b()))
-    {
-      paramMap = a();
-      if (bkbq.w()) {
-        break label36;
-      }
-      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
-    }
-    label36:
-    while (paramMap == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
+    this.a.a.a(1);
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdd
  * JD-Core Version:    0.7.0.1
  */

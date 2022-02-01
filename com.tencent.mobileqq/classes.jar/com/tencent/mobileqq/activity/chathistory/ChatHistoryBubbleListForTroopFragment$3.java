@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import bcpr;
+import bfui;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -24,7 +24,7 @@ class ChatHistoryBubbleListForTroopFragment$3
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListForTroopFragment.3.1(this, localList));
       return;
     }
-    bcpr.a("chat_history", "target_404", String.valueOf(this.this$0.c), String.valueOf(this.this$0.b), "", "");
+    bfui.a("chat_history", "target_404", String.valueOf(this.this$0.c), String.valueOf(this.this$0.b), "", "");
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }
@@ -33,7 +33,7 @@ class ChatHistoryBubbleListForTroopFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment.3
  * JD-Core Version:    0.7.0.1
  */

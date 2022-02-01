@@ -1,17 +1,24 @@
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
+
 public class bkml
+  extends ReplacementSpan
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  private int a;
+  
+  public bkml(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
+  }
 }
 
 

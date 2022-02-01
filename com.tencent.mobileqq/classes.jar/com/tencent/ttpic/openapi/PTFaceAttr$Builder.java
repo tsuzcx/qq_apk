@@ -22,6 +22,9 @@ public class PTFaceAttr$Builder
   private int[] curve;
   private byte[] data;
   private Map<String, Long> detectTimes;
+  private List<Set<Integer>> expressions;
+  private List<float[]> face3DRotationArray;
+  private List<float[]> face3DVerticesArray;
   private Map<Integer, FaceActionCounter> faceActionCounter;
   private List<float[]> faceAngles = new ArrayList();
   private double faceAverageL = 60.0D;
@@ -85,6 +88,24 @@ public class PTFaceAttr$Builder
   public Builder detectTimes(Map paramMap)
   {
     this.detectTimes = paramMap;
+    return this;
+  }
+  
+  public Builder expressions(List<Set<Integer>> paramList)
+  {
+    this.expressions = paramList;
+    return this;
+  }
+  
+  public Builder face3DRotationArray(List<float[]> paramList)
+  {
+    this.face3DRotationArray = paramList;
+    return this;
+  }
+  
+  public Builder face3DVerticesArray(List<float[]> paramList)
+  {
+    this.face3DVerticesArray = paramList;
     return this;
   }
   
@@ -270,7 +291,7 @@ public class PTFaceAttr$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr.Builder
  * JD-Core Version:    0.7.0.1
  */

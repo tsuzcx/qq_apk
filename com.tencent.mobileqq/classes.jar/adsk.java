@@ -1,16 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class adsk
-  extends avva
+public final class adsk
+  implements bhhd
 {
-  public adsk(QQSettingMe paramQQSettingMe) {}
+  public adsk(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void callback(int paramInt)
   {
-    if (this.a.c) {
-      this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
     }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 

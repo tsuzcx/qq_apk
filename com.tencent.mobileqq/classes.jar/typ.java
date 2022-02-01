@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class typ
-  implements View.OnTouchListener
+  implements tom
 {
-  typ(tyn paramtyn) {}
+  typ(tym paramtym) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString1, String paramString2)
   {
-    return false;
+    this.a.callJs(paramString1, new String[] { paramString2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     typ
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import baxb;
+import bdyi;
 
 public class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(baxb parambaxb) {}
+  public ShortVideoDownloadProcessor$1(bdyi parambdyi) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ShortVideoDownloadProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

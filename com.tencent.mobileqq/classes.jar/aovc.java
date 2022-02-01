@@ -1,72 +1,25 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aovc
-  extends aouf<aovb>
+class aovc
+  extends aptj
 {
-  public static aovb c()
-  {
-    aovb localaovb2 = (aovb)aoks.a().a(469);
-    aovb localaovb1 = localaovb2;
-    if (localaovb2 == null) {
-      localaovb1 = new aovb();
-    }
-    return localaovb1;
-  }
+  aovc(aovb paramaovb) {}
   
-  public int a()
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    return 469;
-  }
-  
-  @NonNull
-  public aovb a()
-  {
-    return new aovb();
-  }
-  
-  @NonNull
-  public aovb a(aoko[] paramArrayOfaoko)
-  {
-    boolean bool = true;
-    localaovb = new aovb();
-    paramArrayOfaoko = paramArrayOfaoko[0].jdField_a_of_type_JavaLangString;
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
-      if (paramArrayOfaoko.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localaovb.jdField_a_of_type_Boolean = bool;
-        localaovb.jdField_a_of_type_JavaLangString = paramArrayOfaoko.optString("recover_text", localaovb.jdField_a_of_type_JavaLangString);
-        localaovb.b = paramArrayOfaoko.optString("recover_url", localaovb.b);
-        localaovb.c = paramArrayOfaoko.optString("recoveryHomePageUrl", localaovb.c);
-        return localaovb;
-        bool = false;
-      }
-      return localaovb;
-    }
-    catch (JSONException paramArrayOfaoko)
-    {
-      wxe.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfaoko.getMessage());
+    if (aovb.a(this.a) != null) {
+      aovb.a(this.a).a(paramArrayOfFloat);
     }
   }
   
-  public Class<aovb> a()
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return aovb.class;
-  }
-  
-  @NonNull
-  public aovb b()
-  {
-    return new aovb();
+    if (aovb.a(this.a) != null) {
+      aovb.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovc
  * JD-Core Version:    0.7.0.1
  */

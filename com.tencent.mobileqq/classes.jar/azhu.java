@@ -1,29 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable.1;
+import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
+import java.util.List;
 
 public class azhu
-  extends azfy
 {
-  public Handler a;
-  
-  public azhu(Handler paramHandler)
-  {
-    if (paramHandler != null)
-    {
-      this.a = paramHandler;
-      return;
-    }
-    this.a = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
-  }
+  public static final List<azia> a = new StickyNotePublishConstant.1();
 }
 
 

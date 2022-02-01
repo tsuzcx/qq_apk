@@ -1,83 +1,56 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class yiv
+class yiv
+  implements wld<wyd, wye>
 {
-  public static int a(RecyclerView paramRecyclerView)
-  {
-    int i;
-    if (paramRecyclerView != null) {
-      try
-      {
-        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
-          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
-        }
-        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-        {
-          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
-          int[] arrayOfInt = new int[i];
-          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
-          i = arrayOfInt[(i - 1)];
-          if (arrayOfInt.length != 2) {
-            return i;
-          }
-          if (arrayOfInt[1] >= arrayOfInt[0]) {
-            return arrayOfInt[1];
-          }
-          i = arrayOfInt[0];
-          return i;
-        }
-      }
-      catch (Exception paramRecyclerView)
-      {
-        paramRecyclerView.printStackTrace();
-      }
-    } else {
-      i = -1;
-    }
-    return i;
-  }
+  yiv(yit paramyit, JobContext paramJobContext, yig paramyig) {}
   
-  public static int b(RecyclerView paramRecyclerView)
+  public void a(@NonNull wyd paramwyd, @Nullable wye arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i;
-    if (paramRecyclerView != null) {
-      try
-      {
-        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
-          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-        }
-        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-        {
-          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
-          int[] arrayOfInt = new int[i];
-          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-          i = arrayOfInt[(i - 1)];
-          if (arrayOfInt.length != 2) {
-            return i;
-          }
-          if (arrayOfInt[1] >= arrayOfInt[0]) {
-            return arrayOfInt[0];
-          }
-          i = arrayOfInt[1];
-          return i;
-        }
-      }
-      catch (Exception paramRecyclerView)
-      {
-        paramRecyclerView.printStackTrace();
-      }
-    } else {
-      i = -1;
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
     }
-    return i;
+    if (??? == null)
+    {
+      paramErrorMessage = new wye(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Yit)
+      {
+        yit.a(this.jdField_a_of_type_Yit, paramErrorMessage);
+        yit.a(this.jdField_a_of_type_Yit).remove(paramwyd);
+        yit.a(this.jdField_a_of_type_Yit, this.jdField_a_of_type_Yig);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    woj localwoj = (woj)wpm.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (wyf)localIterator.next();
+      localwoj.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localwoj.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yiv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bcep;
+import bffd;
 
 class AudioItem$1$1
   implements Runnable
@@ -9,12 +9,12 @@ class AudioItem$1$1
   
   public void run()
   {
-    bcep.a(this.a.this$0, this.a.a);
+    bffd.a(this.a.this$0, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.1.1
  * JD-Core Version:    0.7.0.1
  */

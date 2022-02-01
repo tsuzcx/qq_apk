@@ -1,28 +1,37 @@
-import com.tencent.biz.JoinGroupTransitActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class mys
-  implements myr
+class mys
+  implements aqny
 {
-  public mys(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
+  mys(myr parammyr) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void c()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      String str1 = aqnx.a().a();
+      String str2 = aqnx.a().b();
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
+      }
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+      {
+        myr.a(this.a).b(110);
+        return;
+      }
+      this.a.a(new myu(str1, str2));
+      return;
+    }
+    myr.a(this.a).b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mys
  * JD-Core Version:    0.7.0.1
  */

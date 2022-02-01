@@ -1,22 +1,31 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import asnh;
+import auud;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class QQGamePubAccountFragment$8
   implements Runnable
 {
-  QQGamePubAccountFragment$8(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  QQGamePubAccountFragment$8(QQGamePubAccountFragment paramQQGamePubAccountFragment, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if ((this.this$0.isAdded()) && (QQGamePubAccountFragment.a(this.this$0) != null)) {
-      QQGamePubAccountFragment.a(this.this$0).a(false);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      synchronized (QQGamePubAccountFragment.a)
+      {
+        auud.a(localMessageRecord, 0);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.8
  * JD-Core Version:    0.7.0.1
  */

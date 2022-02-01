@@ -1,31 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.av.ui.QavPanel;
 
 public class mhy
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public mhy(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, VideoAppInterface paramVideoAppInterface, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mhy(QavPanel paramQavPanel, Looper paramLooper)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d, 1, "showConfirmBoxToHangup, yes, mRelationId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b + "]");
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.l(0L);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b));
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4, 0, 0, paramDialogInterface, null);
-    if (!bdjn.a(this.jdField_a_of_type_Int)) {
-      msp.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b), 3000, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696089));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QavPanel.a(this.a);
+          return;
+          QavPanel.b(this.a);
+          return;
+        } while ((mue.a(false)) || (this.a.h == null) || (!this.a.h.isShown()));
+        this.a.a(this.a.getResources().getString(2131692579));
+        mue.a(false);
+        QavPanel.a(this.a).a();
+        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+        return;
+      } while ((mue.a(true)) || (this.a.h == null) || (!this.a.h.isShown()) || (!QavPanel.a(this.a).a()));
+      this.a.a(this.a.getResources().getString(2131692580));
+      QavPanel.a(this.a).a();
+      QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+      mue.a(true);
+      return;
+      this.a.a("MSG_TRY_CLEAN_TIPS", 1);
+      return;
+    } while (QavPanel.a(this.a) == null);
+    QavPanel.a(this.a).a();
+    QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhy
  * JD-Core Version:    0.7.0.1
  */

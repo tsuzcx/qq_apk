@@ -1,72 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xbl
-  extends SimpleObserver<xlb>
+public class xbl
+  extends wla
 {
-  xbl(xbk paramxbk, xlb paramxlb) {}
+  public List<VideoCollectionItem> a = new ArrayList();
   
-  public void a(xlb paramxlb)
+  public xbl(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
   {
-    super.onNext(paramxlb);
-    this.jdField_a_of_type_Xbk.a(5);
-    paramxlb = this.jdField_a_of_type_Xlb.a;
-    wxe.b("EditVideoSave", "publishParam = " + paramxlb);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity() != null)
+    super(paramRspCollectionViewCount.result);
+    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
+    if (paramRspCollectionViewCount != null)
     {
-      localIntent = this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().getIntent();
-      if (localIntent == null) {
-        break label212;
+      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
+      while (paramRspCollectionViewCount.hasNext())
+      {
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
+        this.a.add(localVideoCollectionItem);
       }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
-    for (;;)
-    {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), paramxlb.b, i, j, this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a.a());
-      xbk.a(this.jdField_a_of_type_Xbk, paramxlb.b);
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().startActivityForResult(localIntent, 111);
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Xbk.b = ((int)(7000.0D / paramxlb.a * 4.0D));
-      this.jdField_a_of_type_Xbk.f();
-      return;
-      label212:
-      i = 0;
-      j = 0;
-    }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    wxe.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
-    this.jdField_a_of_type_Xbk.g();
-    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), alud.a(2131704224), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wxe.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
-    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), 1, alud.a(2131704159) + paramError, 0).a();
-    this.jdField_a_of_type_Xbk.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbl
  * JD-Core Version:    0.7.0.1
  */

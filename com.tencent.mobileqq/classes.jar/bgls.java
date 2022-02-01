@@ -1,78 +1,19 @@
-import android.app.Activity;
-import android.view.ViewGroup;
-import com.tencent.qqmini.sdk.core.plugins.engine.IJsPluginEngine;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class bgls
-  implements bglv, bglz
+final class bgls
+  implements DialogInterface.OnClickListener
 {
-  protected bglt a;
-  protected bgma a;
+  bgls(bgpa parambgpa) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 0;
+    this.a.dismiss();
   }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public abstract bglu a();
-  
-  public abstract bglx a();
-  
-  public abstract IJsPluginEngine a();
-  
-  public abstract ShareState a();
-  
-  public Object a(bgmc parambgmc)
-  {
-    if (parambgmc != null) {
-      return parambgmc.perform(this);
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Bglt != null) {
-      this.jdField_a_of_type_Bglt.onRuntimeMessage(paramInt, paramObject);
-    }
-  }
-  
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void a(Activity paramActivity, ViewGroup paramViewGroup);
-  
-  public void a(bglt parambglt)
-  {
-    this.jdField_a_of_type_Bglt = parambglt;
-  }
-  
-  public void a(bgma parambgma)
-  {
-    this.jdField_a_of_type_Bgma = parambgma;
-  }
-  
-  public void a(bgmi parambgmi) {}
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo, String paramString);
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
 package com.huawei.hiar;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import com.huawei.remoteLoader.client.ARDynamiteClient;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -39,6 +43,21 @@ public class LoaderActivity
     {
       paramBundle.printStackTrace();
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -151,7 +170,7 @@ public class LoaderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.huawei.hiar.LoaderActivity
  * JD-Core Version:    0.7.0.1
  */

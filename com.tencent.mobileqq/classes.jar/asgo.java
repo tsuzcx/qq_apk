@@ -1,47 +1,84 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import java.io.File;
 
 public class asgo
-  implements avuc
+  extends RecyclerView.ViewHolder
+  implements View.OnTouchListener
 {
-  public asgo(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private int jdField_a_of_type_Int;
+  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aski jdField_a_of_type_Aski;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private int b;
   
-  public boolean a()
+  public asgo(View paramView, RecyclerView paramRecyclerView, int paramInt1, aski paramaski, int paramInt2)
   {
-    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    super(paramView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378445));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Aski = paramaski;
+    paramView.setOnTouchListener(this);
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(asgo paramasgo, asht paramasht, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
+    paramasht = paramasgo.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    paramasht.height = (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() - this.jdField_a_of_type_Int);
+    if ((paramasht instanceof RecyclerView.LayoutParams)) {
+      ((RecyclerView.LayoutParams)paramasht).topMargin = this.jdField_a_of_type_Int;
     }
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(str)) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    paramasht = URLDrawable.URLDrawableOptions.obtain();
+    paramasht.mLoadingDrawable = bdzx.a;
+    paramasht.mFailedDrawable = bdzx.a;
+    paramasht = asmk.a("expand_square_blank.png");
+    if (new File(paramasht).exists())
     {
-      localJSONObject.put("status", paramInt1);
-      localJSONObject.put("direction", paramInt2);
-      localJSONObject.put("height", paramInt3);
-      if (this.a.jdField_a_of_type_Asgp != null) {
-        this.a.jdField_a_of_type_Asgp.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      paramasht = asmk.a(paramasht, localOptions);
+      paramasgo.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramasht));
+    }
+    if (paramInt == 1) {
+      if (this.b == 0) {
+        paramInt = 2131697915;
       }
-      return false;
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+      return;
+      paramInt = 2131697911;
+      continue;
+      if (this.b == 0) {
+        paramInt = 2131697914;
+      } else {
+        paramInt = 2131697910;
+      }
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_Aski != null) && (paramMotionEvent.getAction() == 0)) {
+      this.jdField_a_of_type_Aski.d();
     }
     return false;
   }

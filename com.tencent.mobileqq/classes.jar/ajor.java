@@ -1,36 +1,36 @@
-import android.view.MotionEvent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajor
-  implements View.OnTouchListener
+  implements Handler.Callback
 {
-  public ajor(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ajor(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 0)
+    switch (paramMessage.what)
     {
-      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
-        if (EditLocalVideoActivity.b(this.a))
-        {
-          EditLocalVideoActivity.b(this.a, false);
-          EditLocalVideoActivity.a(this.a).pause();
-          EditLocalVideoActivity.a(this.a).setVisibility(0);
-        }
-      }
-      while (!EditLocalVideoActivity.b(this.a)) {
-        return true;
-      }
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.b(this.a, true);
-      EditLocalVideoActivity.a(this.a).setVisibility(4);
-      return true;
+    default: 
+      return false;
     }
-    return false;
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131380332).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getActivity(), 2, anni.a(2131700421), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      QQToast.a(this.a.getActivity(), 2, anni.a(2131700431), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
   }
 }
 

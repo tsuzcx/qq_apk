@@ -1,57 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-class alge
+public class alge
+  implements TextWatcher
 {
-  public String a;
-  public WeakReference<WebViewPlugin> a;
-  private WeakReference<algd> b;
+  public alge(LoginView paramLoginView) {}
   
-  public alge(algd paramalgd, String paramString, WebViewPlugin paramWebViewPlugin)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.b = new WeakReference(paramalgd);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
+    LoginView.c(this.a);
   }
   
-  public void a(algf paramalgf, algg paramalgg)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    algd localalgd = (algd)this.b.get();
-    WebViewPlugin localWebViewPlugin;
-    if ((localalgd != null) && (paramalgf != null))
-    {
-      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    Object localObject;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null)
       {
-        if (paramalgg != null) {
-          paramalgg.d = System.currentTimeMillis();
+        localObject = (algt)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
+        if ((localObject != null) && (((algt)localObject).getCount() != 0)) {
+          break label139;
         }
-        if (algf.a(paramalgf) == null) {
-          break label175;
+        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
+        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+        {
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
-        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { algf.a(paramalgf).toString() });
+        this.a.b.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + algf.a(paramalgf));
+      if (paramCharSequence.length() <= 4) {
+        break label237;
       }
-      if (algd.a(localalgd) != null)
-      {
-        algd.a(localalgd).remove(algf.a(paramalgf));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + algf.a(paramalgf));
-        }
-      }
+      this.a.b(paramCharSequence.toString());
       return;
-      label175:
-      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+      label139:
+      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
+      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
+        break;
+      }
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      break;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
     }
+    label237:
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
   }
 }
 

@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class axkw
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+class axkw
+  extends niu
 {
-  public axkw(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  axkw(axks paramaxks, String paramString, axkz paramaxkz) {}
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
     }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
+    if (this.jdField_a_of_type_Axkz != null) {
+      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkw
  * JD-Core Version:    0.7.0.1
  */

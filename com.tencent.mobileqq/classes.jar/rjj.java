@@ -1,10 +1,19 @@
-public abstract interface rjj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class rjj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(rjk paramrjk, rjn paramrjn, int paramInt1, int paramInt2, Object paramObject);
+  rjj(rjl paramrjl) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjj
  * JD-Core Version:    0.7.0.1
  */

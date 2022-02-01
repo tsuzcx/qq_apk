@@ -1,15 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class adbm
-  implements bhuw
 {
-  public adbm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(String paramString)
   {
-    this.a.b();
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
+    {
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
+      }
+    }
+    return str1;
   }
 }
 

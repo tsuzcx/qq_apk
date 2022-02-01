@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import akvg;
+import amom;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -39,9 +39,9 @@ class CmGameSocketConnection$ReadRunnable
             {
               if (CmGameSocketConnection.a(localCmGameSocketConnection) != null)
               {
-                akvg localakvg = (akvg)CmGameSocketConnection.a(localCmGameSocketConnection).get();
-                if (localakvg != null) {
-                  localakvg.a(localMsfSocketInputBuffer);
+                amom localamom = (amom)CmGameSocketConnection.a(localCmGameSocketConnection).get();
+                if (localamom != null) {
+                  localamom.a(localMsfSocketInputBuffer);
                 }
               }
               localMsfSocketInputBuffer.reset();
@@ -59,7 +59,7 @@ class CmGameSocketConnection$ReadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.lightGame.CmGameSocketConnection.ReadRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,42 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class bgqa<Data>
+class bgqa
+  implements View.OnTouchListener
 {
-  final AsyncTask jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  bgqa(bgpw parambgpw) {}
   
-  public bgqa(AsyncTask paramAsyncTask, Data... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840123);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840123));
+    if (this.a.c)
+    {
+      bgpw.a(this.a);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+    }
+    for (;;)
+    {
+      this.a.c = false;
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
+      return false;
+      label110:
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqa
  * JD-Core Version:    0.7.0.1
  */

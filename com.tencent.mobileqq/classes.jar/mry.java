@@ -1,12 +1,16 @@
-public abstract interface mry
+public class mry
 {
-  public abstract void a(boolean paramBoolean);
+  public byte a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public mry(mrv parammrv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mry
  * JD-Core Version:    0.7.0.1
  */

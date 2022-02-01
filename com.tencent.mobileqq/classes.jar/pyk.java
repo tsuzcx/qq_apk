@@ -1,26 +1,49 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class pyk
-  implements View.OnTouchListener
+public class pyk
 {
-  pyk(pyg parampyg, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public JSONObject a()
   {
-    if (paramMotionEvent.getAction() == 0)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
+      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
+      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      return localJSONObject;
     }
-    return false;
+    catch (JSONException localJSONException)
+    {
+      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
+    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
+    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyk
  * JD-Core Version:    0.7.0.1
  */

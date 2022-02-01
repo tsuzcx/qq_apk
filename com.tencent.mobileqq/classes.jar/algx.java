@@ -1,18 +1,13 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
 
-class algx
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public class algx
+  implements DialogInterface.OnClickListener
 {
-  algx(algt paramalgt) {}
+  public algx(CameraPreviewNew.1 param1) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

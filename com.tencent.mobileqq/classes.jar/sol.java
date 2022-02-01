@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
-
-public class sol
-  implements spj
+class sol
+  extends pue
 {
-  public sol(BridgeModule paramBridgeModule) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
+  sol(snh paramsnh, String paramString)
   {
-    this.a.invokeCallJS(paramString, paramJSONObject);
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,35 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import UserGrowth.stSimpleMetaFeed;
 
-public class uqg
-  implements upz
+final class uqg
+  implements uih
 {
-  public uqg(StoryVideoUploadTask paramStoryVideoUploadTask, uqf paramuqf) {}
+  uqg(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed) {}
   
-  public void a(upy paramupy)
+  public void a()
   {
-    this.jdField_a_of_type_Uqf.k = ((upt)paramupy).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    uqd.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
+    unh.a("videolay_prof_clk_ws");
+  }
+  
+  public void b()
+  {
+    uqd.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000007);
+  }
+  
+  public void c()
+  {
+    uqd.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
+  }
+  
+  public void d()
+  {
+    uqd.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
+    unh.a("videolay_prof_dl_ws");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqg
  * JD-Core Version:    0.7.0.1
  */

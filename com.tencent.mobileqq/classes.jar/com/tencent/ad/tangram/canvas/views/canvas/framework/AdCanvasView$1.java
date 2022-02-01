@@ -13,14 +13,14 @@ class AdCanvasView$1
   {
     if ((paramInt == 8) || (paramInt == 2) || (paramInt == 3) || (paramInt == 6))
     {
-      AdLog.e("WXJ", "getDownloadStatus" + paramInt);
+      AdLog.e("AdCanvasView", "getDownloadStatus" + paramInt);
       AdThreadManager.INSTANCE.post(new AdCanvasView.1.1(this), 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView.1
  * JD-Core Version:    0.7.0.1
  */

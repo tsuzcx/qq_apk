@@ -1,35 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.ref.WeakReference;
 
-class zxh
-  implements bhuk
+public class zxh
+  implements zzq
 {
-  zxh(zxg paramzxg, MessageForShortVideo paramMessageForShortVideo, agas paramagas, bhuf parambhuf) {}
+  private WeakReference<zxg> a;
   
-  public void OnClick(View paramView, int paramInt)
+  zxh(zxg paramzxg)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramzxg);
+  }
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    if (this.a != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      this.jdField_a_of_type_Zxg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      if ((bdin.d(BaseApplication.getContext())) && (this.jdField_a_of_type_Agas != null) && (this.jdField_a_of_type_Agas.a != null))
-      {
-        this.jdField_a_of_type_Agas.a.setFailedIconVisable(false, this.jdField_a_of_type_Zxg);
-        zxg.a(this.jdField_a_of_type_Zxg, this.jdField_a_of_type_Agas, ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
+      zxg localzxg = (zxg)this.a.get();
+      if (localzxg != null) {
+        localzxg.a(paramArrayOfObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zxh
  * JD-Core Version:    0.7.0.1
  */

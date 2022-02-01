@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import java.util.List;
+import mqq.app.QQPermissionCallback;
 
 class akgs
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  akgs(akgr paramakgr, akgq paramakgq, int paramInt) {}
+  akgs(akgr paramakgr) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Akgq.a.isChecked()) {}
-    for (((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = false;; ((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = true)
-    {
-      this.jdField_a_of_type_Akgr.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Akgr.a();
-      return;
-    }
+    bglp.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    akgq.a(this.a.a);
   }
 }
 

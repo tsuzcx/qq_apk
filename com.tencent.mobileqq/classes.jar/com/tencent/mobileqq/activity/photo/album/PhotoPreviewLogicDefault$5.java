@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqy;
-import airg;
-import airj;
+import akic;
+import akif;
 import android.content.Intent;
-import azqs;
+import bcst;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
 
 public class PhotoPreviewLogicDefault$5
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$5(airj paramairj, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  public PhotoPreviewLogicDefault$5(akif paramakif, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,8 +22,8 @@ public class PhotoPreviewLogicDefault$5
     }
     for (;;)
     {
-      azqs.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      azdd.b = System.currentTimeMillis();
+      bcst.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      bcec.b = System.currentTimeMillis();
       return;
       PhotoUtils.a(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }
@@ -32,7 +31,7 @@ public class PhotoPreviewLogicDefault$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicDefault.5
  * JD-Core Version:    0.7.0.1
  */

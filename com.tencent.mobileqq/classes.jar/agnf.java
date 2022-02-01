@@ -1,30 +1,14 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class agnf
-  extends agmy
+class agnf
+  implements View.OnLayoutChangeListener
 {
-  public Bitmap a;
-  public String b;
+  agnf(agne paramagne) {}
   
-  public agnf(String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+    this.a.f();
   }
 }
 

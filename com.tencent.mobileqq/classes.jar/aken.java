@@ -1,37 +1,15 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class aken
-  implements akfb
+  implements DialogInterface.OnCancelListener
 {
-  public aken(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public aken(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    this.a.a = null;
   }
 }
 

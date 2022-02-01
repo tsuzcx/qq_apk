@@ -1,48 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.etrump.mixlayout.ETDecoration;
 
 public class vfr
-  extends urt
 {
-  public String a;
-  public String b;
+  public int a;
+  private long a;
+  public CharSequence a;
+  public vfv a;
+  public int b = -1;
   
-  public String a()
+  public vfr()
   {
-    return uqn.a("StorySvc.get_profile_feed_id_list");
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  static vfr a(vgl paramvgl)
   {
-    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
-    try
-    {
-      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new vfs(localRspProfileStoryFeedIdList);
+    if (paramvgl.jdField_a_of_type_ComEtrumpMixlayoutETDecoration == null) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
-    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqProfileStoryFeedIdList.toByteArray();
+    vfr localvfr = new vfr();
+    localvfr.jdField_a_of_type_Vfv = paramvgl.jdField_a_of_type_Vfv;
+    localvfr.jdField_a_of_type_JavaLangCharSequence = paramvgl.b();
+    localvfr.jdField_a_of_type_Int = paramvgl.jdField_a_of_type_ComEtrumpMixlayoutETDecoration.currentFrameIndex();
+    localvfr.jdField_a_of_type_Long = System.currentTimeMillis();
+    localvfr.b = paramvgl.c;
+    return localvfr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfr
  * JD-Core Version:    0.7.0.1
  */

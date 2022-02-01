@@ -1,109 +1,79 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 import java.util.List;
 
 public class bbav
-  extends bbaj
+  extends anvc
 {
-  private byte[] a(List<bbbi> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return new byte[0];
-    }
-    paramList = (bbbc)paramList.get(0);
-    mobileqq_mp.LongMsgUrlRequest localLongMsgUrlRequest = new mobileqq_mp.LongMsgUrlRequest();
-    try
-    {
-      l = Long.parseLong(paramList.d);
-      localLongMsgUrlRequest.puin.set(l);
-      localLongMsgUrlRequest.str_fileid.set(paramList.jdField_a_of_type_JavaLangString);
-      return localLongMsgUrlRequest.toByteArray();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l = 0L;
-      }
-    }
-  }
+  private bbav(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void a(bavr parambavr, bavq parambavq)
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    bbax localbbax = (bbax)parambavq.jdField_a_of_type_JavaLangObject;
-    bbbm localbbbm = localbbax.jdField_a_of_type_Bbbm;
-    parambavq = parambavr.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject = parambavr.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    alwy localalwy = parambavr.jdField_a_of_type_Alwy;
-    if (parambavq.getResultCode() == 1000) {}
-    try
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
+    }
+    for (;;)
     {
-      if (localbbbm.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        parambavr = (mobileqq_mp.LongMsgUrlResponse)new mobileqq_mp.LongMsgUrlResponse().mergeFrom((byte[])localObject);
-        parambavq = (bbbu)localbbbm.jdField_a_of_type_JavaUtilList.get(0);
-        parambavq.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$RetInfo = ((mobileqq_mp.RetInfo)parambavr.ret_info.get());
-        parambavq.jdField_a_of_type_JavaLangString = parambavr.str_url.get();
-        parambavq.b = parambavr.str_file_md5.get();
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
       }
-      for (;;)
+      while (this.a.jdField_a_of_type_Amfh.a(paramObject, true))
       {
-        label126:
-        bbcd.a(localbbax, localbbbm);
+        this.a.jdField_a_of_type_Amfh.notifyDataSetChanged();
         return;
-        int i = parambavq.getResultCode();
-        if ((i == 1002) || (i == 1013))
-        {
-          localObject = MessageHandler.a(parambavq);
-          parambavq = parambavq.getBusinessFailMsg();
-          parambavr = parambavq;
-          if (parambavq == null) {
-            parambavr = "";
-          }
-          a(-1, 9311, (String)localObject, parambavr, localalwy, localbbbm.jdField_a_of_type_JavaUtilList);
-        }
-        else
-        {
-          localObject = MessageHandler.a(parambavq);
-          parambavq = parambavq.getBusinessFailMsg();
-          parambavr = parambavq;
-          if (parambavq == null) {
-            parambavr = "";
-          }
-          a(-1, 9044, (String)localObject, parambavr, localalwy, localbbbm.jdField_a_of_type_JavaUtilList);
-        }
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
       }
     }
-    catch (Exception parambavr)
-    {
-      break label126;
-    }
   }
   
-  public void a(bbax parambbax)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    if ((parambbax != null) && (parambbax.jdField_a_of_type_JavaUtilList != null) && (parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    if (paramObject == null)
     {
-      bavq localbavq = new bavq();
-      localbavq.jdField_a_of_type_JavaLangString = "PubAccountSvc.pull_long_msg_url";
-      localbavq.jdField_a_of_type_ArrayOfByte = a(parambbax.jdField_a_of_type_JavaUtilList);
-      localbavq.jdField_a_of_type_JavaLangObject = parambbax;
-      localbavq.jdField_a_of_type_Bavp = this;
-      a(parambbax, localbavq);
+      SignTextEditFragment.a(this.a, 2);
+      return;
     }
-  }
-  
-  void b(bbax parambbax)
-  {
-    parambbax = parambbax.jdField_a_of_type_Bbbm;
-    parambbax.jdField_a_of_type_JavaUtilList.clear();
-    bbbu localbbbu = new bbbu();
-    parambbax.jdField_a_of_type_JavaUtilList.add(localbbbu);
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
+    {
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+      }
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
+      }
+      SignTextEditFragment.a(this.a, 3);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Amfh.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Amfh.notifyDataSetChanged();
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
+    }
   }
 }
 

@@ -1,25 +1,21 @@
 package com.tencent.tavcut.session;
 
-import com.tencent.tavcut.exporter.VideoExportConfig;
-import com.tencent.tavcut.exporter.VideoExporter;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
+import java.util.Map;
 
 class TAVCutVideoSession$3
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutVideoSession$3(TAVCutVideoSession paramTAVCutVideoSession, VideoExporter paramVideoExporter, VideoExportConfig paramVideoExportConfig) {}
+  TAVCutVideoSession$3(TAVCutVideoSession paramTAVCutVideoSession, float paramFloat1, String paramString1, float paramFloat2, Map paramMap, String paramString2) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    this.val$videoExporter.setTavComposition(paramVideoRenderChainManager.getComposition());
-    this.val$videoExporter.setVideoExportConfig(this.val$videoExportConfig);
+    this.this$0.resetAEKitModel(this.this$0.getMediaModel(), TAVCutVideoSession.access$000(this.this$0), this.val$effectStrength, this.val$lutPath, this.val$glowStrength, this.val$adjustParams, this.val$materialPath);
+    this.this$0.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.3
  * JD-Core Version:    0.7.0.1
  */

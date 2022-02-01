@@ -1,85 +1,127 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader.ColorScreenListener.1;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class adbb
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  private boolean a;
-  public long b;
+  private static adbb jdField_a_of_type_Adbb;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public String a;
+  private ArrayList<adbi> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public adbb(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader, long paramLong)
+  private adbb()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = ((paramColorScreenLoader.jdField_a_of_type_Arwr.jdField_a_of_type_Int + 1) * paramLong);
-    if (Build.VERSION.SDK_INT == 15) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  private adbb(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramContext = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("PATCH_LIST", "").split(";");
+    int j = paramContext.length;
+    while (i < j)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.b.post(new FriendProfileCardActivity.ColorScreenLoader.ColorScreenListener.1(this));
-    while (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_JavaUtilArrayDeque.isEmpty()) {
-      ((Message)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_JavaUtilArrayDeque.removeFirst()).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "onAnimationStart: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      try
+      Object localObject = paramContext[i];
+      if (!((String)localObject).equals(""))
       {
-        float f = (paramValueAnimator.getAnimatedFraction() + this.jdField_a_of_type_Int) * (float)this.jdField_a_of_type_Long;
-        if (f <= (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Arwr.jdField_a_of_type_Long)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAlpha(f / (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Arwr.jdField_a_of_type_Long);
-          return;
-        }
-        if ((this.b > 0L) && ((float)this.b - f <= (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Arwr.b))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.this$0.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAlpha(((float)this.b - f) / (float)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader.jdField_a_of_type_Arwr.b);
-          return;
-        }
+        localObject = new adbi(this.jdField_a_of_type_AndroidContentSharedPreferences, (String)localObject);
+        adax.a("KingKongMainConfig", "--> " + localObject);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
       }
-      catch (Exception paramValueAnimator)
+      i += 1;
+    }
+  }
+  
+  public static adbb a(Context paramContext)
+  {
+    if (jdField_a_of_type_Adbb != null) {
+      return jdField_a_of_type_Adbb;
+    }
+    try
+    {
+      if (jdField_a_of_type_Adbb != null)
       {
-        this.jdField_a_of_type_Boolean = true;
-        QLog.e("FriendProfileCardActivity", 1, "onAnimationUpdate: ", paramValueAnimator);
+        paramContext = jdField_a_of_type_Adbb;
+        return paramContext;
       }
     }
+    finally {}
+    jdField_a_of_type_Adbb = new adbb(paramContext);
+    paramContext = jdField_a_of_type_Adbb;
+    return paramContext;
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    adbi localadbi;
+    for (String str = ""; localIterator.hasNext(); str = str + localadbi.jdField_a_of_type_JavaLangString + ";") {
+      localadbi = (adbi)localIterator.next();
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("PATCH_LIST", str);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+  }
+  
+  public adbi a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      adbi localadbi = (adbi)localIterator.next();
+      if (localadbi.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localadbi;
+      }
+    }
+    return null;
+  }
+  
+  public ArrayList<adbi> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(adbi paramadbi)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (!((adbi)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramadbi.jdField_a_of_type_JavaLangString)) {}
+    }
+    for (;;)
+    {
+      if (i != -1) {
+        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramadbi);
+      }
+      for (;;)
+      {
+        paramadbi.b(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
+        return;
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramadbi);
+        a();
+      }
+      i = -1;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      adbi localadbi = (adbi)localIterator.next();
+      if (localadbi.jdField_a_of_type_JavaLangString.equals(paramString))
+      {
+        localadbi.a(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(localadbi);
+      }
+    }
+    a();
   }
 }
 

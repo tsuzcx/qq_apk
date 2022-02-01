@@ -1,26 +1,44 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ahkg
-  implements Comparable<ahkg>
+  implements View.OnClickListener
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  ahkg(ahkf paramahkf) {}
   
-  ahkg(ahke paramahke, String paramString, Long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public int a(ahkg paramahkg)
-  {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramahkg.jdField_a_of_type_JavaLangLong.longValue()) {
-      return -1;
+    Object localObject = afur.a(paramView);
+    if (!(localObject instanceof MessageForText)) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+      }
     }
-    return 1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (MessageForText)localObject;
+      if (!this.a.a())
+      {
+        if (((MessageForText)localObject).msgtype == -1003)
+        {
+          afur.n = true;
+          localObject = bgva.a(((MessageForText)localObject).action);
+          localObject = bgng.a(this.a.a, paramView.getContext(), (String)localObject);
+          if (localObject != null) {
+            ((bgmp)localObject).a();
+          }
+        }
+        if ((paramView instanceof ETTextView)) {
+          ((ETTextView)paramView).startAnimation(true, false);
+        }
+      }
+    }
   }
 }
 

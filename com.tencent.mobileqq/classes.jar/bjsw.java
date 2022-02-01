@@ -1,15 +1,23 @@
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public abstract class bjsw
+public class bjsw
+  extends BroadcastReceiver
 {
-  public static bjsw a = new bjsx();
+  public bjsw(Login paramLogin) {}
   
-  public abstract String a(List<Statistic> paramList);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("Login", 1, "AutoLoginReceiver onReceive");
+    Login.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjsw
  * JD-Core Version:    0.7.0.1
  */

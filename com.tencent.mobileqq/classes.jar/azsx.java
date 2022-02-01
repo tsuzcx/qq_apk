@@ -1,20 +1,17 @@
-import android.util.Pair;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
-class azsx
+public class azsx
+  implements View.OnClickListener
 {
-  public String a;
-  public HashSet<Pair<Long, Long>> a;
-  public String b;
+  public azsx(LSRecordPanel paramLSRecordPanel) {}
   
-  private azsx(azsw paramazsw)
-  {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsx
  * JD-Core Version:    0.7.0.1
  */

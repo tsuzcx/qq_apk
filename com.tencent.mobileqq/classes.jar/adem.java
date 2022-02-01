@@ -1,23 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class adem
+class adem
   implements View.OnClickListener
 {
-  public adem(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  adem(adek paramadek, adej paramadej, adeb paramadeb, JSONObject paramJSONObject, adea paramadea) {}
   
   public void onClick(View paramView)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    paramView = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    this.jdField_a_of_type_Adek.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Adej.a);
+    adek.a(this.jdField_a_of_type_Adek, this.jdField_a_of_type_Adej, 2);
+    adek.a(this.jdField_a_of_type_Adek, 0, this.jdField_a_of_type_Adeb, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adea);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

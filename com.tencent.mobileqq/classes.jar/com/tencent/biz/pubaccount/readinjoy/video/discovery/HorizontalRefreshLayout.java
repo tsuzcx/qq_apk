@@ -9,10 +9,10 @@ import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bdaq;
-import rmk;
-import rml;
-import rmm;
+import bggq;
+import shw;
+import shx;
+import shy;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
@@ -20,15 +20,15 @@ public class HorizontalRefreshLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private rml jdField_a_of_type_Rml;
-  private rmm jdField_a_of_type_Rmm;
+  private shx jdField_a_of_type_Shx;
+  private shy jdField_a_of_type_Shy;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   private int e;
-  private int f = bdaq.a(getContext(), 25.0F);
+  private int f = bggq.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -82,7 +82,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new rmk(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new shw(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -197,22 +197,22 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Rml != null) {
-        this.jdField_a_of_type_Rml.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_Shx != null) {
+        this.jdField_a_of_type_Shx.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(rml paramrml)
+  public void setOnDraggingListener(shx paramshx)
   {
-    this.jdField_a_of_type_Rml = paramrml;
+    this.jdField_a_of_type_Shx = paramshx;
   }
   
-  public void setRefreshHeader(rmm paramrmm)
+  public void setRefreshHeader(shy paramshy)
   {
-    this.jdField_a_of_type_Rmm = paramrmm;
-    a(this.jdField_a_of_type_Rmm.a(this));
+    this.jdField_a_of_type_Shy = paramshy;
+    a(this.jdField_a_of_type_Shy.a(this));
   }
 }
 

@@ -1,16 +1,37 @@
 package com.tencent.tavcut.bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TextEditorData
 {
+  public static final String BACKGROUND = "bgcolor";
+  private Map<String, Integer> colorList = new HashMap();
   private String content;
-  private String stickerId;
+  private String fontPath;
+  private String itemID;
+  private String pagFilePath;
+  private String stickerType;
   private int textColor;
+  private int type;
+  private String uniqueID;
   
-  public TextEditorData(String paramString1, int paramInt, String paramString2)
+  public TextEditorData() {}
+  
+  public TextEditorData(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, String paramString5, int paramInt2)
   {
-    this.stickerId = paramString1;
-    this.textColor = paramInt;
-    this.content = paramString2;
+    this.uniqueID = paramString1;
+    this.itemID = paramString2;
+    this.textColor = paramInt1;
+    this.content = paramString3;
+    this.pagFilePath = paramString4;
+    this.fontPath = paramString5;
+    this.colorList.put("bgcolor", Integer.valueOf(paramInt2));
+  }
+  
+  public Map<String, Integer> getColorList()
+  {
+    return this.colorList;
   }
   
   public String getContent()
@@ -18,9 +39,24 @@ public class TextEditorData
     return this.content;
   }
   
-  public String getStickerId()
+  public String getFontPath()
   {
-    return this.stickerId;
+    return this.fontPath;
+  }
+  
+  public String getItemID()
+  {
+    return this.itemID;
+  }
+  
+  public String getPagFilePath()
+  {
+    return this.pagFilePath;
+  }
+  
+  public String getStickerType()
+  {
+    return this.stickerType;
   }
   
   public int getTextColor()
@@ -28,24 +64,64 @@ public class TextEditorData
     return this.textColor;
   }
   
+  public int getType()
+  {
+    return this.type;
+  }
+  
+  public String getUniqueID()
+  {
+    return this.uniqueID;
+  }
+  
+  public void setBackGroundColor(String paramString, int paramInt)
+  {
+    this.colorList.put(paramString, Integer.valueOf(paramInt));
+  }
+  
   public void setContent(String paramString)
   {
     this.content = paramString;
   }
   
-  public void setStickerId(String paramString)
+  public void setFont(String paramString)
   {
-    this.stickerId = paramString;
+    this.fontPath = paramString;
+  }
+  
+  public void setItemID(String paramString)
+  {
+    this.itemID = paramString;
+  }
+  
+  public void setPagFilePath(String paramString)
+  {
+    this.pagFilePath = paramString;
+  }
+  
+  public void setStickerType(String paramString)
+  {
+    this.stickerType = paramString;
   }
   
   public void setTextColor(int paramInt)
   {
     this.textColor = paramInt;
   }
+  
+  public void setType(int paramInt)
+  {
+    this.type = paramInt;
+  }
+  
+  public void setUniqueID(String paramString)
+  {
+    this.uniqueID = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.bean.TextEditorData
  * JD-Core Version:    0.7.0.1
  */

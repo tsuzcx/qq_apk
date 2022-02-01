@@ -1,23 +1,40 @@
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.HashMap;
+import java.util.Set;
 
-public abstract interface vrv
+public class vrv
 {
-  public abstract void a();
+  public static int a()
+  {
+    switch ()
+    {
+    default: 
+      return 9;
+    case 0: 
+      switch (AppNetConnInfo.getMobileInfo())
+      {
+      default: 
+        return 9;
+      case 1: 
+        return 2;
+      case 2: 
+        return 3;
+      case 3: 
+        return 4;
+      }
+      return 5;
+    }
+    return 1;
+  }
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
-  
-  public abstract void a(@NonNull wiq paramwiq, ErrorMessage paramErrorMessage);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() == 0)) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vrv
  * JD-Core Version:    0.7.0.1
  */

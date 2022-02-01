@@ -1,22 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibf
-  implements View.OnClickListener
+class aibf
+  extends bhts
 {
-  public aibf(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aibf(aiay paramaiay) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.bw();
     }
     do
     {
       return;
-    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
-    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+      QQToast.a(this.a.a(), anni.a(2131703891), 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+    }
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bhtu == null)) {}
+    bhtt localbhtt;
+    do
+    {
+      return;
+      localbhtt = this.a.jdField_a_of_type_Bhtu.a();
+    } while (localbhtt == null);
+    localbhtt.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

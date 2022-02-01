@@ -1,12 +1,12 @@
-import java.io.File;
+import com.tencent.widget.SwitchExtend;
 
-public class bkox
+public abstract interface bkox
 {
-  public static final String a = bkoz.f + File.separator + "camera_story_default_template.json";
+  public abstract boolean a(SwitchExtend paramSwitchExtend);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkox
  * JD-Core Version:    0.7.0.1
  */

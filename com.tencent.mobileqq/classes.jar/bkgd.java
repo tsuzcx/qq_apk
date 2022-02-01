@@ -1,44 +1,60 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.opengl.GLES20;
 
-class bkgd
-  extends QzoneExternalRequest
+public class bkgd
 {
-  bkgd(bkgc parambkgc, Intent paramIntent) {}
-  
-  public String getCmdString()
+  public static int a(int paramInt, String paramString)
   {
-    return "SweetQzoneService.GetCommCfg";
-  }
-  
-  public JceStruct getReq()
-  {
-    sweet_comm_cfg_get_req localsweet_comm_cfg_get_req = new sweet_comm_cfg_get_req();
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(Integer.valueOf(1));
-    localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt != 0)
     {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      localObject = new sweet_req_comm();
-      ((sweet_req_comm)localObject).opuin = l;
-      ((sweet_req_comm)localObject).uin = l;
-      ((sweet_req_comm)localObject).loveuin = 0L;
-      ((sweet_req_comm)localObject).qua = bjdm.a();
-      ((sweet_req_comm)localObject).pf = 1;
-      ((sweet_req_comm)localObject).src = 3;
-      localsweet_comm_cfg_get_req.req_comm = ((sweet_req_comm)localObject);
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      if (paramString[0] == 0)
+      {
+        GLES20.glDeleteShader(paramInt);
+        return 0;
+      }
     }
-    return localsweet_comm_cfg_get_req;
+    return paramInt;
   }
   
-  public String uniKey()
+  public static int a(String paramString1, String paramString2)
   {
-    return "GetCommCfg";
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
+    {
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k != 0)
+    {
+      GLES20.glAttachShader(k, i);
+      a("glAttachShader");
+      GLES20.glAttachShader(k, j);
+      a("glAttachShader");
+      GLES20.glLinkProgram(k);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
+      {
+        GLES20.glDeleteProgram(k);
+        return 0;
+      }
+    }
+    return k;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      throw new RuntimeException(paramString + ": glError " + i);
+    }
   }
 }
 

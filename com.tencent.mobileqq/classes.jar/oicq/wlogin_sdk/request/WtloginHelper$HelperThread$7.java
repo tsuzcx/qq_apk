@@ -18,8 +18,9 @@ class WtloginHelper$HelperThread$7
       async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
       localErrMsg = localasync_context._last_err_msg;
       t.c(this.this$1.mUserSigInfo._seqence);
-      WtloginHelper.HelperThread.access$600(this.this$1, localasync_context, this.val$ret);
-      if (this.this$1.mDwDstAppid == WtloginHelper.access$1200(this.this$1.this$0))
+      WtloginHelper.HelperThread.access$600(this.this$1, localasync_context);
+      WtloginHelper.HelperThread.access$700(this.this$1, localasync_context, this.val$ret);
+      if (this.this$1.mDwDstAppid == WtloginHelper.access$1300(this.this$1.this$0))
       {
         this.this$1.mDwDstAppid = this.this$1.mDwSubDstAppid;
         this.this$1.mDwSubDstAppid = 0L;

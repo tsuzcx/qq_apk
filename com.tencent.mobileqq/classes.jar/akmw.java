@@ -1,13 +1,22 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface akmw
+public class akmw
+  implements akse
 {
-  public abstract void a(Canvas paramCanvas, Paint paramPaint);
+  public akmw(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmw
  * JD-Core Version:    0.7.0.1
  */

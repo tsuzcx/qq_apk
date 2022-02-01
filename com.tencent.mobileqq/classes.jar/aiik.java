@@ -1,18 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
-class aiik
-  implements View.OnTouchListener
+public class aiik
+  implements aiim
 {
-  aiik(aiie paramaiie) {}
+  public aiik(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((paramView.getTag() instanceof Integer))
+    {
+      paramView = (Integer)paramView.getTag();
+      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
+    }
   }
 }
 

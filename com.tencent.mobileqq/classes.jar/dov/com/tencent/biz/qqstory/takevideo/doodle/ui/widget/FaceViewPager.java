@@ -3,15 +3,15 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import bmxp;
-import bmxq;
+import bpov;
+import bpow;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<bmxq> a;
+  private List<bpow> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,19 +28,19 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new bmxp(this));
+    setOnPageChangeListener(new bpov(this));
   }
   
-  public void a(bmxq parambmxq)
+  public void a(bpow parambpow)
   {
-    if (!this.a.contains(parambmxq)) {
-      this.a.add(parambmxq);
+    if (!this.a.contains(parambpow)) {
+      this.a.add(parambpow);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager
  * JD-Core Version:    0.7.0.1
  */

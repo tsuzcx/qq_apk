@@ -1,87 +1,67 @@
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.AppRuntime;
+
 public class bhbj
 {
-  volatile int jdField_a_of_type_Int = 0;
-  private bhbk jdField_a_of_type_Bhbk = new bhbk();
-  volatile int b = 0;
-  
-  public bhbj(Class<? extends bhbk> paramClass, int paramInt)
+  public static File a(Context paramContext)
   {
-    for (;;)
+    return bhbn.a(paramContext);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "GLDrawableV841.zip";
+    }
+    return paramContext + File.separator + "GLDrawableV841.zip";
+  }
+  
+  public static void a()
+  {
+    try
     {
-      int i;
-      synchronized (this.jdField_a_of_type_Bhbk)
-      {
-        this.b = paramInt;
-        this.jdField_a_of_type_Bhbk.a = true;
-        i = 0;
-        if (i >= paramInt) {}
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "GLDrawableV841", "gldrawable");
       }
-      try
-      {
-        bhbk localbhbk2 = (bhbk)paramClass.newInstance();
-        localbhbk2.a = true;
-        localbhbk2.a(this.jdField_a_of_type_Bhbk.a(), false);
-        this.jdField_a_of_type_Bhbk.a(localbhbk2, false);
-        this.jdField_a_of_type_Int += 1;
-        label102:
-        i += 1;
-        continue;
-        return;
-        paramClass = finally;
-        throw paramClass;
-      }
-      catch (Throwable localThrowable)
-      {
-        break label102;
-      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public bhbk a(Class<? extends bhbk> paramClass)
+  public static void a(Context paramContext, int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    bhbk localbhbk;
-    if (this.jdField_a_of_type_Int > 0)
+    if (paramInt != 0) {}
+    try
     {
-      localbhbk = this.jdField_a_of_type_Bhbk;
-      localObject1 = localObject2;
-      try
-      {
-        if (this.jdField_a_of_type_Int <= 0) {
-          break label101;
-        }
-        localObject1 = this.jdField_a_of_type_Bhbk.a();
-        if (localObject1 == null) {
-          throw new RuntimeException("WTF");
-        }
-      }
-      finally {}
-      if (!((bhbk)localObject1).a) {
-        throw new RuntimeException("WTF");
-      }
-      this.jdField_a_of_type_Bhbk.a(bhbk.a((bhbk)localObject1), false);
-      ((bhbk)localObject1).a = false;
-      this.jdField_a_of_type_Int -= 1;
+      QLog.e("GLDrawableDownloadHelper", 1, "error: " + paramInt);
+      return;
     }
-    label101:
-    if (localObject1 == null) {
-      try
-      {
-        paramClass = (bhbk)paramClass.newInstance();
-        return paramClass;
-      }
-      catch (Throwable paramClass)
-      {
-        return localObject1;
-      }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
     }
-    return localObject1;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return new File(a(paramContext)).exists();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbj
  * JD-Core Version:    0.7.0.1
  */

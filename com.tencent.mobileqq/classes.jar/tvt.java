@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class tvt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  tvt(tvs paramtvs, int paramInt) {}
+  tvt(tvr paramtvr, tvq paramtvq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Tvs.jdField_a_of_type_Tvj.a.a().a(tuz.a(this.jdField_a_of_type_Tvs.jdField_a_of_type_Tvj.a), this.jdField_a_of_type_Tvs.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tvs.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int);
-    tuz.b(this.jdField_a_of_type_Tvs.jdField_a_of_type_Tvj.a, true);
+    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.a), "", "", "");
+    if ((this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.a)))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      tvr.a(this.jdField_a_of_type_Tvr);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tvt
  * JD-Core Version:    0.7.0.1
  */

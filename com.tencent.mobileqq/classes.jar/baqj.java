@@ -1,10 +1,8 @@
-public abstract interface baqj
+public class baqj
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public String a;
+  public boolean a;
+  public boolean b;
 }
 
 

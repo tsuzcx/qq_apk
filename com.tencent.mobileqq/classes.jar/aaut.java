@@ -1,7 +1,4 @@
-public abstract interface aaut
-{
-  public abstract void a(boolean paramBoolean);
-}
+public abstract interface aaut {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

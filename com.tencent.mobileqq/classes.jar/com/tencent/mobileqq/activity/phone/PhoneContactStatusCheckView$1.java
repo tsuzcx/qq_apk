@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
-import bdhj;
+import bgmo;
 import com.tencent.qphone.base.util.QLog;
 
 class PhoneContactStatusCheckView$1
@@ -17,13 +17,13 @@ class PhoneContactStatusCheckView$1
     Object localObject2 = this.this$0.getResources();
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeResource(this.this$0.getResources(), 2130844612, localOptions);
-    localOptions.inSampleSize = bdhj.a(localOptions, ((Resources)localObject2).getDimensionPixelSize(2131297062), ((Resources)localObject2).getDimensionPixelSize(2131297060));
+    BitmapFactory.decodeResource(this.this$0.getResources(), 2130845006, localOptions);
+    localOptions.inSampleSize = bgmo.a(localOptions, ((Resources)localObject2).getDimensionPixelSize(2131297115), ((Resources)localObject2).getDimensionPixelSize(2131297113));
     localOptions.inJustDecodeBounds = false;
     Object localObject1 = null;
     try
     {
-      localObject2 = BitmapFactory.decodeResource((Resources)localObject2, 2130844612, localOptions);
+      localObject2 = BitmapFactory.decodeResource((Resources)localObject2, 2130845006, localOptions);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,7 +42,7 @@ class PhoneContactStatusCheckView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView.1
  * JD-Core Version:    0.7.0.1
  */

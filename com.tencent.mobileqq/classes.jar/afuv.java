@@ -1,11 +1,12 @@
+import android.view.View;
 import android.widget.TextView;
 
-class afuv
-  extends aeqi
+public abstract class afuv
+  extends afxj
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  afuv(afuu paramafuu) {}
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 

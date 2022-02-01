@@ -19,6 +19,7 @@ public final class e_busi_param
   public static final int _AdvUUID = 113;
   public static final int _AlbumAdujstPhotoLloc = 91;
   public static final int _AlbumId = 12;
+  public static final int _AlbumPhotoCosRealLloc = 185;
   public static final int _AlbumPhotoLloc = 2;
   public static final int _AlbumPhotoName = 3;
   public static final int _AlbumPhotoSloc = 1;
@@ -87,6 +88,7 @@ public final class e_busi_param
   public static final int _IcRawFeedsOpuin = 59;
   public static final int _IcRawFeedsTypeid = 55;
   public static final int _IcRawFeedsUFlag = 58;
+  public static final int _InstalledWeishi = 204;
   public static final int _IsBrandUgcAdv = 102;
   public static final int _IsDelete = 35;
   public static final int _IsDirectApp = 61;
@@ -126,9 +128,12 @@ public final class e_busi_param
   public static final int _MobileFeedsType = 38;
   public static final int _MoodContent = 184;
   public static final int _MultiSessionId = 141;
+  public static final int _NeedAutoSlide = 201;
   public static final int _NeedParentChildGuideFeeds = 186;
+  public static final int _NeedShowNewUserGuide = 203;
   public static final int _NewCoverid = 11;
   public static final int _NewRecomFeedsType = 70;
+  public static final int _NewUserGuideVideoRate = 202;
   public static final int _OperateRef = 54;
   public static final int _OperateReport = 41;
   public static final int _OperationTraceInfo = 52;
@@ -144,6 +149,7 @@ public final class e_busi_param
   public static final int _PicEnlargeRate = 53;
   public static final int _PraiseActId = 199;
   public static final int _PublishSource = 51;
+  public static final int _PullWeishiTimes = 205;
   public static final int _QQGroupId = 166;
   public static final int _QuanKey = 144;
   public static final int _QzmallFlexibility = 145;
@@ -186,6 +192,7 @@ public final class e_busi_param
   public static final int _VIDEO_AD_POS = 93;
   public static final int _VideoAdvFeedsTopicid = 69;
   public static final int _VideoFloatLayerAdv = 95;
+  public static final int _VideoId = 200;
   public static final int _VideoReportInfo = 98;
   public static final int _VideoSetPraise = 107;
   public static final int _VideoWidthHeight = 155;

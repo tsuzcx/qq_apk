@@ -1,55 +1,107 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqde
-  implements bhuk
+  implements aqdf
 {
-  public aqde(ExtendFriendBaseFragment paramExtendFriendBaseFragment, aqcx paramaqcx, boolean paramBoolean1, boolean paramBoolean2, RecyclerView.ViewHolder paramViewHolder) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private void a(Context paramContext, JSONObject paramJSONObject)
   {
-    if (paramInt == 0)
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      zdv.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Aqcx.mUin, zdv.b(this.jdField_a_of_type_Aqcx.mUin, zdv.b(2)), null, null, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 20005, null, null);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009C8F", "0X8009C8F", 0, 0, "", "", "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Aqbe != null) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Aqbe.a(this.jdField_a_of_type_Aqcx.mUin);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf = null;
-      }
+      localJSONObject.put("jumpto", "com.qqcomic.activity.reader.VipComicPortraitReadingActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      localJSONObject.put("from", Integer.parseInt("1041001"));
+      label59:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
       return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
-      if (paramInt == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-    }
-    for (;;)
+    catch (Exception paramJSONObject)
     {
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.jdField_a_of_type_Bhuf.cancel();
+      break label59;
+    }
+  }
+  
+  private void b(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    localIntent.putExtra("subType", paramColorNote.mSubType);
+    localIntent.putExtra("fragmentStyle", 1);
+    localIntent.putExtra("tabBarStyle", 1);
+    localIntent.putExtra("titleBarStyle", 1);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
+  }
+  
+  private void b(Context paramContext, JSONObject paramJSONObject)
+  {
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("jumpto", "com.qqcomic.activity.media.VipComicMediaPlayActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      label46:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
       return;
-      if ((!this.jdField_a_of_type_Boolean) && (this.b))
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label46;
+    }
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    try
+    {
+      localObject = paramColorNote.getReserve();
+      if (localObject == null)
       {
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-        }
+        QLog.e("BoodoLauncher", 2, "color note reserve is null");
+        return;
       }
-      else if ((this.b) && (this.jdField_a_of_type_Boolean))
+      localObject = new JSONObject(new String((byte[])localObject));
+    }
+    catch (JSONException localJSONException)
+    {
+      int i;
+      JSONObject localJSONObject;
+      for (;;)
       {
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-        } else if (paramInt == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-        }
+        Object localObject;
+        QLog.e("BoodoLauncher", 1, localJSONException, new Object[0]);
+        localJSONObject = null;
       }
-      else if ((!this.jdField_a_of_type_Boolean) && (!this.b) && (paramInt == 1)) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendBaseFragment.a(false, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      if (i != 1) {
+        break label92;
       }
+      a(paramContext, localJSONObject);
+      return;
+      label92:
+      if (i != 3) {
+        return;
+      }
+      b(paramContext, localJSONObject);
+    }
+    i = ((JSONObject)localObject).optInt("colorNoteType", 0);
+    if (i == 2)
+    {
+      b(paramContext, paramColorNote);
+      return;
     }
   }
 }

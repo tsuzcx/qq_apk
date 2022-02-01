@@ -1,20 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-
-class apvb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface apvb
 {
-  apvb(apuz paramapuz) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (apuz.a(this.a).getParent() != null) {
-      apuz.a(this.a).getParent().requestLayout();
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

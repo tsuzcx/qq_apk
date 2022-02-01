@@ -1,33 +1,62 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pii
-  implements yrb
+public class pii
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pii(pih parampih, String paramString) {}
+  public static String a = "CommentFamilyConfigHandler";
   
-  public void callback(Bundle paramBundle)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
-    JSONObject localJSONObject = new JSONObject();
-    try
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = phv.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bmqa.m(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bmqa.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+      }
     }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmqa.m(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pii
  * JD-Core Version:    0.7.0.1
  */

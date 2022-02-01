@@ -1,126 +1,105 @@
+import android.content.Context;
+import android.os.Message;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import java.util.LinkedList;
-import java.util.List;
+import android.support.annotation.UiThread;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import cooperation.qqreader.helper.LoadingAnimationManager.1;
+import cooperation.qqreader.helper.LoadingAnimationManager.2;
+import cooperation.qqreader.helper.LoadingAnimationManager.3;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class bloh
+public final class bloh
 {
-  public static final List<bloh> a;
-  public int a;
-  private VsMusicItemInfo a;
-  public boolean a;
-  public final boolean b;
+  private static bloh jdField_a_of_type_Bloh;
+  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public static bloh a()
   {
-    jdField_a_of_type_JavaUtilList = a();
-  }
-  
-  public bloh(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean)
-  {
-    this(paramVsMusicItemInfo, paramBoolean, false);
-  }
-  
-  public bloh(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 0;
-    this.b = paramBoolean2;
-  }
-  
-  @NonNull
-  private static List<bloh> a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    while (i < 5)
+    if (jdField_a_of_type_Bloh == null) {}
+    try
     {
-      VsMusicItemInfo localVsMusicItemInfo = new VsMusicItemInfo();
-      localVsMusicItemInfo.mSongMid = ("fakeMid" + (i + 1));
-      localVsMusicItemInfo.mMusicName = "";
-      localVsMusicItemInfo.mUrl = "";
-      localVsMusicItemInfo.mAlbumUrl = "";
-      localLinkedList.add(new bloh(localVsMusicItemInfo, false, true));
-      i += 1;
+      if (jdField_a_of_type_Bloh == null) {
+        jdField_a_of_type_Bloh = new bloh();
+      }
+      return jdField_a_of_type_Bloh;
     }
-    return localLinkedList;
+    finally {}
   }
   
-  @NonNull
-  private String d()
+  private void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
+    if (paramLong > 0L)
+    {
+      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
+      localMessage.what = 30002;
+      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
+    b();
   }
   
-  public int a()
+  private void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView == null) {
+      return;
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart;
+    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    localImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
   }
   
-  @NonNull
-  public String a()
+  @UiThread
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
+    ThreadManager.getUIHandler().removeMessages(30002);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+      localImageView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
+    this.jdField_a_of_type_JavaLangRunnable = null;
   }
   
-  public boolean a()
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
   {
-    return TextUtils.isEmpty(a());
+    a(paramContext, paramImageView, 0L);
   }
   
-  public int b()
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localImageView != paramImageView) && (localImageView != null)) {
+      a();
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicDuration;
-  }
-  
-  @NonNull
-  public String b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
+    {
+      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      try
+      {
+        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        blpu.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
+        return;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
-  }
-  
-  @NonNull
-  public String c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "{songMid:" + a() + ", songName:" + d() + ", songUrl:" + b() + ", selected:" + this.jdField_a_of_type_Boolean + ", downloadStatus:" + this.jdField_a_of_type_Int + "}";
+    a(paramLong);
   }
 }
 

@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.content.Context;
 
-public final class bevy
-  implements ValueAnimator.AnimatorUpdateListener
+public class bevy
 {
-  private final TabDragAnimationView a;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public bevy(TabDragAnimationView paramTabDragAnimationView)
+  public bevy(Context paramContext, String paramString1, String paramString2)
   {
-    this.a = paramTabDragAnimationView;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramString2.length();
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String toString()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.b != null) {
+      localStringBuilder.append(", pinyin = " + this.b);
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.NonNull;
 
 public abstract interface PhotoListLogic$IadapterCallback
 {
-  public abstract View getViewCaseCamera(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public abstract AbstractPhotoListActivity.Holder getViewCaseCamera(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt);
   
-  public abstract View getViewCaseImage(int paramInt, View paramView, ViewGroup paramViewGroup, AbstractPhotoListActivity.PhotoListAdapter.Holder paramHolder, AbstractPhotoListActivity.CheckBoxClickedListener paramCheckBoxClickedListener);
+  public abstract AbstractPhotoListActivity.Holder getViewCaseImage(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt);
   
-  public abstract View getViewCaseVideo(int paramInt, View paramView, ViewGroup paramViewGroup, AbstractPhotoListActivity.PhotoListAdapter.Holder paramHolder, AbstractPhotoListActivity.CheckBoxClickedListener paramCheckBoxClickedListener);
+  public abstract AbstractPhotoListActivity.Holder getViewCaseVideo(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogic.IadapterCallback
  * JD-Core Version:    0.7.0.1
  */

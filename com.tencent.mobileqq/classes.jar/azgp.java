@@ -1,64 +1,96 @@
-import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class azgp
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
+  public static azgp a;
+  public SparseArray<azgq> a;
   
-  static
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = 1500;
+    if (jdField_a_of_type_Azgp == null)
+    {
+      if (!azgs.a(paramQQAppInterface.getApplication(), "cardWZ.zip"))
+      {
+        azgs.a(paramQQAppInterface, null);
+        return false;
+      }
+      return a(azgs.a(paramQQAppInterface.getApp()) + "xydata.json");
+    }
+    return true;
   }
   
-  public static boolean a()
+  public static boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool = azhf.a(azhf.r);
-    if (bool) {
+    if (TextUtils.isEmpty(paramString))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
+      }
+      return false;
+    }
+    Object localObject = new File(paramString);
+    try
+    {
+      localObject = bgmg.b((File)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
+        return false;
       }
     }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    if (Build.VERSION.SDK_INT < 18) {}
-    do
+    catch (Exception paramString)
     {
-      boolean bool;
-      do
-      {
-        do
-        {
-          return false;
-          bool = azhf.e(azhf.o);
-          if (!bool) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
-        return false;
-        bool = azhf.a(azhf.r);
-        if (!bool) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
       return false;
-    } while ((!b) || (!jdField_a_of_type_Boolean));
-    return true;
+    }
+    paramString = new azgp();
+    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
+    int i;
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    {
+      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < ((JSONArray)localObject).length())
+      {
+        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
+        if (localJSONObject != null)
+        {
+          azgq localazgq = new azgq();
+          localazgq.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
+          localazgq.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
+          localazgq.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
+          localazgq.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
+          if (localJSONObject.has("wz_icon"))
+          {
+            azgr localazgr = new azgr();
+            localJSONObject = localJSONObject.getJSONObject("wz_icon");
+            localazgr.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
+            localazgr.jdField_a_of_type_Int = localJSONObject.optInt("size");
+            localazgr.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
+            localazgr.jdField_b_of_type_Int = localJSONObject.optInt("width");
+            localazgr.jdField_c_of_type_Int = localJSONObject.optInt("height");
+            localazgr.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
+            localazgq.jdField_a_of_type_Azgr = localazgr;
+          }
+          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localazgq.jdField_a_of_type_Int, localazgq);
+        }
+      }
+      else
+      {
+        jdField_a_of_type_Azgp = paramString;
+        return true;
+      }
+      i += 1;
+    }
   }
 }
 

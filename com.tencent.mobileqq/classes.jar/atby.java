@@ -1,38 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class atby
-  extends Handler
+  implements bkhw
 {
-  atby(atbp paramatbp, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  atby(atbx paramatbx, bkho parambkho) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (atbp.a(this.a).getVisibility() != 0) {}
-    int i;
-    do
-    {
-      return;
-      i = paramMessage.arg1;
-    } while ((i < atbp.b(this.a)) || (i > 100));
-    atbp.b(this.a, i);
-    atbp.a(this.a).setProgress(atbp.b(this.a));
-    paramMessage = Message.obtain();
-    if (atbp.b(this.a) >= 90) {
-      i += 1;
+    if (this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(atbx.a(this.jdField_a_of_type_Atbx).uniseq, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
+      ChatActivityUtils.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_AndroidContentContext, 2131717747, 1);
     }
     for (;;)
     {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
+      this.jdField_a_of_type_Bkho.cancel();
       return;
-      i += 4;
+      paramView = atvo.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atbx.a(this.jdField_a_of_type_Atbx));
+      if (paramView.status == 16)
+      {
+        atvf.a(2131692466);
+        this.jdField_a_of_type_Bkho.cancel();
+        return;
+      }
+      atbx.a(this.jdField_a_of_type_Atbx).status = 1002;
+      atvo.a(this.jdField_a_of_type_Atbx.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Atbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     }
   }
 }

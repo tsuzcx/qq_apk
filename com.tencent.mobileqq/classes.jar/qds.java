@@ -1,63 +1,37 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qds
-  extends ClickableSpan
-  implements rvl
+class qds
+  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  boolean jdField_a_of_type_Boolean;
+  qds(qdp paramqdp, int paramInt, pxk parampxk, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public qds(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (rqj.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    boolean bool;
+    snh localsnh;
+    if (this.jdField_a_of_type_Int == 1161)
     {
-      ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 5, false);
-      rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a.a.e());
-      return;
+      bool = true;
+      localsnh = this.jdField_a_of_type_Pxk.a();
+      if (!bool) {
+        break label43;
+      }
     }
-    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    label43:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(aepi.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getResources()));
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      localsnh.b(bool, paramViewBase);
       return;
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qds
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,18 @@
-public abstract interface anel
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+
+public class anel
+  implements biea
 {
-  public abstract void b();
+  public anel(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public void onItemSelect(View paramView, int paramInt)
+  {
+    if (paramInt == 1) {
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

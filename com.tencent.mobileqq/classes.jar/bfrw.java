@@ -1,10 +1,23 @@
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
+
 public class bfrw
+  implements FilenameFilter
 {
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
+  public bfrw(TroopFileTransferManager.1 param1) {}
+  
+  public boolean accept(File paramFile, String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("[Thumb]");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrw
  * JD-Core Version:    0.7.0.1
  */

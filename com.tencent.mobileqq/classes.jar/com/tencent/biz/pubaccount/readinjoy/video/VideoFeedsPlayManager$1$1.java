@@ -2,26 +2,26 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import qyz;
-import rfo;
-import rfs;
-import rfu;
+import ruv;
+import sao;
+import sar;
+import sat;
 
 public class VideoFeedsPlayManager$1$1
   implements Runnable
 {
-  public VideoFeedsPlayManager$1$1(rfo paramrfo) {}
+  public VideoFeedsPlayManager$1$1(sao paramsao) {}
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.b(this.a.a) != null) && (VideoFeedsPlayManager.b(this.a.a).a != null)) {
-      VideoFeedsPlayManager.b(this.a.a).a.j(VideoFeedsPlayManager.b(this.a.a));
+    if ((VideoFeedsPlayManager.a(this.a.a) != null) && (VideoFeedsPlayManager.a(this.a.a).a != null)) {
+      VideoFeedsPlayManager.a(this.a.a).a.i(VideoFeedsPlayManager.a(this.a.a));
     }
     if (VideoFeedsPlayManager.a(this.a.a) != null)
     {
       Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((rfu)localIterator.next()).c(VideoFeedsPlayManager.b(this.a.a));
+        ((sat)localIterator.next()).c(VideoFeedsPlayManager.a(this.a.a));
       }
     }
   }

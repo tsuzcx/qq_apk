@@ -1,59 +1,89 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aquj
-  implements aqsa
+public class aquj
+  extends aqkz<aqui>
 {
-  aquj(aqui paramaqui, String paramString, aqva paramaqva) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public static aqui a()
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    aqui localaqui2 = (aqui)aqlk.a().a(435);
+    aqui localaqui1 = localaqui2;
+    if (localaqui2 == null) {
+      localaqui1 = new aqui();
     }
-    for (;;)
+    return localaqui1;
+  }
+  
+  @NonNull
+  public aqui a(int paramInt)
+  {
+    return new aqui();
+  }
+  
+  @Nullable
+  public aqui a(aqlg[] paramArrayOfaqlg)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqlg != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      localObject1 = localObject2;
+      if (paramArrayOfaqlg.length > 0) {
+        localObject1 = aqui.a(paramArrayOfaqlg);
       }
-      this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Aqui.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
+    }
+    return localObject1;
+  }
+  
+  public void a(aqui paramaqui)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramaqui.toString());
     }
   }
   
-  public void a(String paramString)
+  public Class<aqui> clazz()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqui.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqui.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqui.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqui.e);
-    localBundle.putString("_m_ForwardUuid", paramString);
+    return aqui.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqui.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    this.jdField_a_of_type_Aqva.a(paramString, localBundle);
+  }
+  
+  public int type()
+  {
+    return 435;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquj
  * JD-Core Version:    0.7.0.1
  */

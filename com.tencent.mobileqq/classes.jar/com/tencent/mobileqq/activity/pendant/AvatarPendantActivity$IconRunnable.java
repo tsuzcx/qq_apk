@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.pendant;
 
 import android.os.Bundle;
-import bdfp;
-import bead;
-import beae;
-import beag;
-import beaj;
+import bgks;
+import bhhe;
+import bhhf;
+import bhhh;
+import bhhk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -14,12 +14,12 @@ import java.lang.ref.WeakReference;
 class AvatarPendantActivity$IconRunnable
   implements Runnable
 {
-  WeakReference<bead> a;
+  WeakReference<bhhe> a;
   WeakReference<QQAppInterface> b;
   
-  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bead parambead, QQAppInterface paramQQAppInterface)
+  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bhhe parambhhe, QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(parambead);
+    this.a = new WeakReference(parambhhe);
     this.b = new WeakReference(paramQQAppInterface);
   }
   
@@ -30,21 +30,21 @@ class AvatarPendantActivity$IconRunnable
     }
     if ((this.b.get() != null) && (this.a.get() != null))
     {
-      beaj localbeaj = ((beag)((QQAppInterface)this.b.get()).getManager(47)).a(1);
-      if (localbeaj.a(bdfp.a) == null)
+      bhhk localbhhk = ((bhhh)((QQAppInterface)this.b.get()).getManager(47)).a(1);
+      if (localbhhk.a(bgks.a) == null)
       {
-        Object localObject = new File(bdfp.b + "/icon.zip");
-        localObject = new beae(bdfp.a, (File)localObject);
-        ((beae)localObject).p = false;
+        Object localObject = new File(bgks.b + "/icon.zip");
+        localObject = new bhhf(bgks.a, (File)localObject);
+        ((bhhf)localObject).p = false;
         Bundle localBundle = new Bundle();
-        localbeaj.a((beae)localObject, (bead)this.a.get(), localBundle);
+        localbhhk.a((bhhf)localObject, (bhhe)this.a.get(), localBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.IconRunnable
  * JD-Core Version:    0.7.0.1
  */

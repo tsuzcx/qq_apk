@@ -8,9 +8,12 @@ import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForCanvas;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ad.tangram.util.AdUriUtil;
 import java.lang.ref.WeakReference;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 @Keep
@@ -20,21 +23,11 @@ public enum AdSettingsUtil
   
   private static final String TAG = "AdSettingsUtil";
   private volatile gdt_settings.Settings currentSettings;
+  private volatile boolean initialized = false;
+  private volatile List<WeakReference<AdSettingsUtil.a>> listeners = new ArrayList();
   private volatile long loadSettingsTimeMillis = -2147483648L;
   
   private AdSettingsUtil() {}
-  
-  public static int getQueueLength(WeakReference<Context> paramWeakReference)
-  {
-    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {
-      return -2147483648;
-    }
-    paramWeakReference = INSTANCE.getSettingsCache((Context)paramWeakReference.get());
-    if (paramWeakReference != null) {
-      return paramWeakReference.settingsForCanvas.queueLength;
-    }
-    return -2147483648;
-  }
   
   private static boolean isValid(gdt_settings.Settings paramSettings)
   {
@@ -94,6 +87,11 @@ public enum AdSettingsUtil
     }
   }
   
+  private void notifyUpdated(WeakReference<Context> paramWeakReference, boolean paramBoolean)
+  {
+    AdThreadManager.INSTANCE.post(new AdSettingsUtil.2(this, paramWeakReference, paramBoolean), 0);
+  }
+  
   private static gdt_settings.Settings toObject(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -111,6 +109,19 @@ public enum AdSettingsUtil
     return null;
   }
   
+  public void addListener(WeakReference<AdSettingsUtil.a> paramWeakReference)
+  {
+    if (paramWeakReference != null) {}
+    try
+    {
+      if (paramWeakReference.get() != null) {
+        this.listeners.add(paramWeakReference);
+      }
+      return;
+    }
+    finally {}
+  }
+  
   public gdt_settings.Settings getSettingsCache(Context paramContext)
   {
     if (isValid(this.currentSettings)) {
@@ -119,47 +130,80 @@ public enum AdSettingsUtil
     return null;
   }
   
+  public void init(Context paramContext)
+  {
+    if (this.initialized) {
+      return;
+    }
+    try
+    {
+      if (this.initialized) {
+        return;
+      }
+    }
+    finally {}
+    this.initialized = true;
+    if (paramContext != null) {}
+    for (paramContext = paramContext.getApplicationContext();; paramContext = null)
+    {
+      paramContext = new WeakReference(paramContext);
+      if ((paramContext == null) || (paramContext.get() == null)) {
+        break;
+      }
+      AdThreadManager.INSTANCE.post(new AdSettingsUtil.1(this, paramContext), 4);
+      return;
+    }
+  }
+  
   public void update(Context paramContext)
   {
     int i;
-    String str;
-    if (this.currentSettings != null)
+    if (paramContext != null)
     {
-      i = this.currentSettings.intervalMillis;
+      paramContext = paramContext.getApplicationContext();
       if (this.currentSettings == null) {
-        break label62;
+        break label78;
       }
-      str = this.currentSettings.urlForSettings;
-      label30:
-      if ((this.loadSettingsTimeMillis == -2147483648L) || (System.currentTimeMillis() - this.loadSettingsTimeMillis >= i)) {
-        break label68;
+      i = this.currentSettings.intervalMillis;
+      label24:
+      if (this.currentSettings == null) {
+        break label85;
       }
     }
-    label62:
-    label68:
-    do
+    label78:
+    label85:
+    for (Object localObject = this.currentSettings.urlForSettings;; localObject = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-4-1.json")
     {
-      return;
-      i = 1800000;
-      break;
-      str = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-3-3.json";
-      break label30;
-      try
-      {
-        if ((this.loadSettingsTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.loadSettingsTimeMillis < i)) {
-          return;
-        }
+      localObject = AdUriUtil.replaceHttpsWithHttpForVivoY67OnAndroidM((String)localObject);
+      if ((this.loadSettingsTimeMillis == -2147483648L) || (System.currentTimeMillis() - this.loadSettingsTimeMillis >= i)) {
+        break label93;
       }
-      finally {}
-      this.loadSettingsTimeMillis = System.currentTimeMillis();
-      paramContext = load(paramContext, str);
-    } while (!isValid(paramContext));
-    this.currentSettings = paramContext;
+      return;
+      paramContext = null;
+      break;
+      i = 1800000;
+      break label24;
+    }
+    try
+    {
+      label93:
+      if ((this.loadSettingsTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.loadSettingsTimeMillis < i)) {
+        return;
+      }
+    }
+    finally {}
+    this.loadSettingsTimeMillis = System.currentTimeMillis();
+    localObject = load(paramContext, (String)localObject);
+    boolean bool = isValid((gdt_settings.Settings)localObject);
+    if (bool) {
+      this.currentSettings = ((gdt_settings.Settings)localObject);
+    }
+    notifyUpdated(new WeakReference(paramContext), bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.settings.AdSettingsUtil
  * JD-Core Version:    0.7.0.1
  */

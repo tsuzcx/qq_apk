@@ -9,11 +9,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import azqs;
-import befl;
-import begz;
-import biqn;
-import biqw;
+import bcst;
+import bhmn;
+import bhod;
+import blfh;
+import blfq;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -31,7 +31,7 @@ import mqq.manager.TicketManager;
 import org.json.JSONObject;
 
 public class PayJsPlugin
-  extends befl
+  extends bhmn
 {
   protected long a;
   Activity jdField_a_of_type_AndroidAppActivity;
@@ -75,7 +75,7 @@ public class PayJsPlugin
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
           if (QWalletHelper.sFullWindowActivitySource == 1) {
-            azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
+            bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
           }
           if (QWalletHelper.sFullWndCurType != QWalletHelper.FULL_WND_TYPE_NORMAL) {
             break label183;
@@ -178,12 +178,12 @@ public class PayJsPlugin
     {
       localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("qqskey", (String)localObject);
-      localObject = new biqw(0);
-      ((biqw)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      ((biqw)localObject).d = "Wallet";
-      ((biqw)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
-      ((biqw)localObject).a = localIntent;
-      biqn.b(this.mRuntime.a(), (biqw)localObject);
+      localObject = new blfq(0);
+      ((blfq)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      ((blfq)localObject).d = "Wallet";
+      ((blfq)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
+      ((blfq)localObject).a = localIntent;
+      blfh.b(this.mRuntime.a(), (blfq)localObject);
       return;
     }
   }
@@ -497,7 +497,7 @@ public class PayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

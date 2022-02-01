@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
 public class nyu
-  implements TopGestureLayout.OnGestureListener
+  implements TouchWebView.OnScrollChangedListener
 {
-  public nyu(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public nyu(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void flingLToR()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    PublicAccountBrowser.b(this.a, 0);
   }
-  
-  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nyu
  * JD-Core Version:    0.7.0.1
  */

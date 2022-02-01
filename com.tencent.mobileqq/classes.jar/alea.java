@@ -1,57 +1,98 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-final class alea
-  extends bead
+public class alea
+  extends AbsRecentStatus
 {
-  alea(String paramString, File paramFile, aleg paramaleg) {}
-  
-  public void onDone(beae parambeae)
+  public int[] declareStatus()
   {
-    super.onDone(parambeae);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambeae.a());
-    }
-    if (3 == parambeae.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    while (this.jdField_a_of_type_Aleg == null)
+    return new int[] { 2, 3, 1, 5 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    int k;
+    long l;
+    int m;
+    Object localObject;
+    for (;;)
     {
-      do
-      {
+      return false;
+      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+      k = paramRecentBaseData.getRecentUserType();
+      if ((k == 3000) || (k == 1)) {
         try
         {
-          ndr.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          if (this.jdField_a_of_type_Aleg != null) {
-            this.jdField_a_of_type_Aleg.a(true, 0);
-          }
-          return;
-        }
-        catch (Exception parambeae)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambeae.getMessage());
+          l = Long.parseLong(paramRecentBaseData.getRecentUserUin());
+          m = mue.b(k);
+          if (paramIMCoreAppRuntime.a().a(m, l) > 0L) {
+            if (paramIMCoreAppRuntime.a().a(m, l))
+            {
+              paramRecentBaseData.mStatus = 2;
+              if ((k != 0) || (!paramIMCoreAppRuntime.a().d(paramRecentBaseData.getRecentUserUin()))) {
+                continue;
+              }
+              paramRecentBaseData.mStatus = 5;
+              return false;
             }
           }
         }
-        catch (OutOfMemoryError parambeae)
+        catch (NumberFormatException localNumberFormatException)
         {
           for (;;)
           {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambeae.getMessage());
-            }
+            l = 0L;
+            continue;
+            paramRecentBaseData.mStatus = 3;
           }
+          localObject = paramIMCoreAppRuntime.a().a(l, 2);
+          if (localObject == null) {}
         }
-      } while (this.jdField_a_of_type_Aleg == null);
-      this.jdField_a_of_type_Aleg.a(false, 0);
-      return;
+      }
     }
-    this.jdField_a_of_type_Aleg.a(false, 0);
+    for (int i = ((lmm)localObject).a + 0;; i = 0)
+    {
+      localObject = paramIMCoreAppRuntime.a().a(l, 10);
+      int j = i;
+      if (localObject != null) {
+        j = i + ((lmm)localObject).a;
+      }
+      if (j <= 0) {
+        break;
+      }
+      if (paramIMCoreAppRuntime.a().a(m, l))
+      {
+        paramRecentBaseData.mStatus = 2;
+        break;
+      }
+      paramRecentBaseData.mStatus = 3;
+      break;
+      if ((!paramIMCoreAppRuntime.d()) || ((paramIMCoreAppRuntime.a().e() != 1) && (paramIMCoreAppRuntime.a().e() != 2))) {
+        break;
+      }
+      i = paramIMCoreAppRuntime.a().f();
+      localObject = paramIMCoreAppRuntime.a().c();
+      String str = paramIMCoreAppRuntime.a().d();
+      if ((k != i) || ((!paramRecentBaseData.getRecentUserUin().equals(localObject)) && (!paramRecentBaseData.getRecentUserUin().equals(str)))) {
+        break;
+      }
+      paramRecentBaseData.mStatus = 1;
+      break;
+    }
+  }
+  
+  public int priority()
+  {
+    return AbsRecentStatus.PRIORITY_VIDEO;
   }
 }
 

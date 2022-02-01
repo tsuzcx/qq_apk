@@ -1,60 +1,72 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.abtest.ABTestController;
+import com.tencent.mobileqq.abtest.ABTestController.EvtType;
+import com.tencent.mtt.abtestsdk.ABTestApi;
+import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
 
 public class adhi
-  extends WtloginObserver
 {
-  public adhi(LoginInfoActivity paramLoginInfoActivity) {}
+  public RomaExpEntity a;
+  public String a;
+  public String b = "";
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public adhi(String paramString)
   {
-    if (this.a.isFinishing()) {
+    this(paramString, "");
+  }
+  
+  private adhi(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity = ABTestApi.syncGetExpByName(paramString1);
+    if (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) {
+      ABTestController.a("ExperimentInfo", "abtest api, load exp success:" + paramString1 + ", ass:" + this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
+    }
+    for (;;)
+    {
+      ABTestController.a("ExperimentInfo", "abtest api, load cost:" + (System.currentTimeMillis() - l));
       return;
+      ABTestController.a("ExperimentInfo", "abtest api, load exp failure:" + paramString1);
     }
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+  }
+  
+  public void a(ABTestController.EvtType paramEvtType, String paramString)
+  {
+    if (a()) {
+      ABTestController.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId(), paramEvtType, paramString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (a())
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
-      }
-      aqax.a().a(paramDevlockInfo.TransferInfo);
-      LoginInfoActivity.a(this.a, paramDevlockInfo);
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      LoginInfoActivity.b(this.a, LoginInfoActivity.a(this.a));
-      return;
+      ABTestApi.reportExpExpose(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity);
+      a(ABTestController.EvtType.EXPOSE, paramString);
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment()));
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return "treatment".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
     }
-    LoginInfoActivity.e(this.a);
-    paramDevlockInfo = this.a.getString(2131692204);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    if (a()) {
+      return "control".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    return false;
   }
 }
 

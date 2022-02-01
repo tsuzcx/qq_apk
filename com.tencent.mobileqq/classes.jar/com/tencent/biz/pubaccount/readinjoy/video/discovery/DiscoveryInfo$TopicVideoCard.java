@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rmj;
+import shv;
 
 public class DiscoveryInfo$TopicVideoCard
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new rmj();
+  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new shv();
   public int a;
   public long a;
   public String a;
@@ -80,7 +80,7 @@ public class DiscoveryInfo$TopicVideoCard
   
   public String toString()
   {
-    return "TopicVideoCard{cornerIconUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", articleId=" + this.jdField_a_of_type_Long + ", topicId=" + this.jdField_b_of_type_Long + ", vid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", rowKey='" + this.jdField_d_of_type_JavaLangString + '\'' + ", accountName='" + this.jdField_e_of_type_JavaLangString + '\'' + ", accountUin='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + ", thirdIconUrl='" + this.h + '\'' + ", thirdUinName='" + this.i + '\'' + ", articleTitle='" + this.j + '\'' + ", articleSummary='" + this.k + '\'' + ", firstPagePicUrl='" + this.l + '\'' + ", articleContentUrl='" + this.m + '\'' + ", videoUrl='" + this.n + '\'' + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", duration=" + this.jdField_c_of_type_Int + ", busiType=" + this.jdField_d_of_type_Int + ", feedsType=" + this.jdField_e_of_type_Int + ", feedsId=" + this.jdField_c_of_type_Long + ", XGFileSize=" + this.jdField_d_of_type_Long + ", time=" + this.jdField_e_of_type_Long + ", isUgc=" + this.jdField_a_of_type_Boolean + '}';
+    return "TopicVideoCard{cornerIconUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", articleId=" + this.jdField_a_of_type_Long + ", topicId=" + this.jdField_b_of_type_Long + ", vid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", rowKey='" + this.jdField_d_of_type_JavaLangString + '\'' + ", accountName='" + this.jdField_e_of_type_JavaLangString + '\'' + ", accountUin='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + ", thirdIconUrl='" + this.h + '\'' + ", thirdUinName='" + this.i + '\'' + ", articleTitle='" + this.j + '\'' + ", articleSummary='" + this.k + '\'' + ", firstPagePicUrl='" + this.l + '\'' + ", articleContentUrl='" + this.m + '\'' + ", videoUrl='" + this.n + '\'' + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", duration=" + this.jdField_c_of_type_Int + ", busiType=" + this.jdField_d_of_type_Int + ", feedsType=" + this.jdField_e_of_type_Int + ", feedsId=" + this.jdField_c_of_type_Long + ", xgFileSize=" + this.jdField_d_of_type_Long + ", time=" + this.jdField_e_of_type_Long + ", isUgc=" + this.jdField_a_of_type_Boolean + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

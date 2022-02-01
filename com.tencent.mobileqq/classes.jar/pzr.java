@@ -1,107 +1,118 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class pzr
-  extends pxl
+  extends bhhe
 {
-  public pzr(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<TroopMemberApiService> jdField_a_of_type_JavaLangRefWeakReference;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  
+  public pzr(AppRuntime paramAppRuntime, String paramString, Bundle paramBundle, TroopMemberApiService paramTroopMemberApiService)
   {
-    super(paramContext, parambdbb, paramrqj);
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopMemberApiService);
   }
   
-  public pxl a()
+  public void onCancel(bhhf parambhhf)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().n().h().g().j();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    super.onCancel(parambhhf);
+    Object localObject = parambhhf.a().getString("resId");
+    parambhhf = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
     {
-      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout2.setBackgroundResource(2130842512);
-      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, aepi.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aepi.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
-      localLayoutParams.addRule(11);
-      ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
-      ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setId(1);
-      localRelativeLayout2.addView((ComponentContentSmall)this.jdField_a_of_type_Pxk);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(15);
-      localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Pxk).getId());
-      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localRelativeLayout1.addView(localRelativeLayout2);
-      localRelativeLayout2.setOnClickListener(new pzs(this));
-      localLinearLayout.addView(localRelativeLayout1);
+      ((rdd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
+      if (parambhhf != null)
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+        ((Bundle)localObject).putInt("retCode", -1);
+        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("rate", 0);
+        parambhhf.a(107, (Bundle)localObject);
+        if (QLog.isDebugVersion()) {
+          QLog.d("ReadInJoySkinHelper", 4, "onCancel rsp:" + ((Bundle)localObject).toString());
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    if (QLog.isColorLevel()) {
+      QLog.d("readinjoy", 4, "SkinDownloadListener onCancel");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
   }
   
-  public pxl e()
+  public void onDone(bhhf parambhhf)
   {
-    return null;
+    super.onDone(parambhhf);
+    Object localObject = parambhhf.a().getString("resId");
+    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
+    {
+      ((rdd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
+      if (localTroopMemberApiService != null)
+      {
+        localObject = new Bundle();
+        if (parambhhf.jdField_a_of_type_Int != 0) {
+          break label169;
+        }
+        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+        ((Bundle)localObject).putInt("retCode", 0);
+        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("rate", 100);
+        localTroopMemberApiService.a(107, (Bundle)localObject);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isDebugVersion()) {
+        QLog.d("ReadInJoySkinHelper", 4, "onDone rsp:" + ((Bundle)localObject).toString());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("readinjoy", 4, "SkinDownloadListener onDone");
+      }
+      return;
+      label169:
+      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+      ((Bundle)localObject).putInt("retCode", parambhhf.jdField_a_of_type_Int);
+      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+      ((Bundle)localObject).putInt("rate", 0);
+      localTroopMemberApiService.a(107, (Bundle)localObject);
+    }
   }
   
-  public pxl g()
+  public void onProgress(bhhf parambhhf)
   {
-    this.jdField_a_of_type_Pxk = new ComponentContentSmall(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    super.onProgress(parambhhf);
+    Object localObject = parambhhf.a().getString("resId");
+    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (localTroopMemberApiService != null))
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+      ((Bundle)localObject).putInt("retCode", 0);
+      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+      int i = (int)(parambhhf.b * 100L / parambhhf.jdField_a_of_type_Long);
+      ((Bundle)localObject).putInt("rate", i);
+      if (i != 100) {
+        localTroopMemberApiService.a(107, (Bundle)localObject);
+      }
+    }
   }
   
-  public pxl o()
+  public boolean onStart(bhhf parambhhf)
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    return super.onStart(parambhhf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pzr
  * JD-Core Version:    0.7.0.1
  */

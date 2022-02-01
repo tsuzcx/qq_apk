@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class ajda
-  implements View.OnClickListener
+class ajda
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public ajda(DrawHbFragment paramDrawHbFragment) {}
+  ajda(ajcz paramajcz, GridLayoutManager paramGridLayoutManager) {}
   
-  public void onClick(View paramView)
+  public int getSpanSize(int paramInt)
   {
-    if ((paramView instanceof TextView))
-    {
-      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+    if ((this.jdField_a_of_type_Ajcz.a(paramInt)) || (this.jdField_a_of_type_Ajcz.b(paramInt)) || (this.jdField_a_of_type_Ajcz.c(paramInt)) || (this.jdField_a_of_type_Ajcz.b())) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
     }
+    return 1;
   }
 }
 

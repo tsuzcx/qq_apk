@@ -2,8 +2,10 @@ package com.tencent.ttpic.openapi.model;
 
 public class VideoMaterialMetaData
 {
+  public static final String WEB_PREFIX = "http";
   public String category;
   public String id;
+  public long lastModified = 0L;
   public String path;
   public String thumbPath;
   public String url;
@@ -28,7 +30,7 @@ public class VideoMaterialMetaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.VideoMaterialMetaData
  * JD-Core Version:    0.7.0.1
  */

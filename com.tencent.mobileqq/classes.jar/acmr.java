@@ -1,34 +1,47 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class acmr
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initWeb$1", "Lcom/tencent/gdtad/views/videoceiling/GdtWebViewBuilder;", "onReceivedError", "", "view", "Lcom/tencent/smtt/sdk/WebView;", "errorCode", "", "description", "", "failingUrl", "shouldOverrideUrlLoading", "", "webview", "url", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acmr
+  extends acuc
 {
-  public acmr(ChatHistory paramChatHistory) {}
-  
-  public void onClick(View paramView)
+  acmr(AppInterface paramAppInterface1, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface2)
   {
-    if (this.a.d > 1)
+    super(paramActivity, paramIntent, paramAppInterface2, localAppInterface);
+  }
+  
+  public void onReceivedError(@NotNull WebView paramWebView, int paramInt, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramWebView, "view");
+    Intrinsics.checkParameterIsNotNull(paramString1, "description");
+    Intrinsics.checkParameterIsNotNull(paramString2, "failingUrl");
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(@NotNull WebView paramWebView, @Nullable String paramString)
+  {
+    boolean bool = true;
+    Intrinsics.checkParameterIsNotNull(paramWebView, "webview");
+    QLog.i("AbsWebView", 1, "shouldOverrideUrlLoading " + paramString);
+    if (paramString != null)
     {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838930);
-      paramView = this.a;
-      paramView.d -= 1;
-      if (this.a.d <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840288);
+      if (!acml.a(this.jdField_a_of_type_Acml).a(paramString, acml.a(this.jdField_a_of_type_Acml))) {
+        bool = a(paramWebView, paramString);
       }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Acms.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
     }
+    else {
+      return bool;
+    }
+    return true;
   }
 }
 

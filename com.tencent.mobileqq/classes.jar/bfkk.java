@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
+import java.util.Comparator;
 
-public class bfkk
-  implements View.OnClickListener
+class bfkk
+  implements Comparator<bfkl>
 {
-  public bfkk(CommonTitleBar paramCommonTitleBar) {}
+  bfkk(bfkj parambfkj) {}
   
-  public void onClick(View paramView)
+  public int a(bfkl parambfkl1, bfkl parambfkl2)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).b();
+    if (parambfkl1.b() < parambfkl2.b()) {
+      return 1;
     }
+    if (parambfkl1.b() > parambfkl2.b()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfkk
  * JD-Core Version:    0.7.0.1
  */

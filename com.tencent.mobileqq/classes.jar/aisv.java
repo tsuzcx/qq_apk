@@ -1,24 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class aisv
-  implements MediaScanner.OnMediaInfoScannerListener
 {
-  aisv(aisu paramaisu, Intent paramIntent, ArrayList paramArrayList) {}
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aisu.mActivity).cancleProgressDailog();
-    if (bnfr.a(this.jdField_a_of_type_Aisu.mActivity, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Aisu.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-    }
-  }
+  aisv(aist paramaist) {}
 }
 
 

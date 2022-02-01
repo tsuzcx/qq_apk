@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alnr;
-import alnu;
-import alnz;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import anhb;
+import anhe;
+import anhj;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class FrameGifView
   extends ImageView
-  implements alnz
+  implements anhj
 {
-  alnr jdField_a_of_type_Alnr;
-  protected alnu a;
+  anhb jdField_a_of_type_Anhb;
+  protected anhe a;
   private FrameGifView.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable = new FrameGifView.DecoderRunnable();
   
   public FrameGifView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Alnu = new alnu(this);
+    this.jdField_a_of_type_Anhe = new anhe(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Alnu = new alnu(this);
+    this.jdField_a_of_type_Anhe = new anhe(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Alnu = new alnu(this);
+    this.jdField_a_of_type_Anhe = new anhe(this);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alnr != null) {
-      this.jdField_a_of_type_Alnr.a();
+    if (this.jdField_a_of_type_Anhb != null) {
+      this.jdField_a_of_type_Anhb.a();
     }
   }
   
@@ -51,29 +51,29 @@ public class FrameGifView
   
   public int b()
   {
-    if (this.jdField_a_of_type_Alnu != null) {
-      return this.jdField_a_of_type_Alnu.a();
+    if (this.jdField_a_of_type_Anhe != null) {
+      return this.jdField_a_of_type_Anhe.a();
     }
     return 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Alnu != null) {
-      this.jdField_a_of_type_Alnu.a();
+    if (this.jdField_a_of_type_Anhe != null) {
+      this.jdField_a_of_type_Anhe.a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Alnu != null) {
-      this.jdField_a_of_type_Alnu.b();
+    if (this.jdField_a_of_type_Anhe != null) {
+      this.jdField_a_of_type_Anhe.b();
     }
   }
   
-  public void setAnimaListener(alnr paramalnr)
+  public void setAnimaListener(anhb paramanhb)
   {
-    this.jdField_a_of_type_Alnr = paramalnr;
+    this.jdField_a_of_type_Anhb = paramanhb;
   }
   
   public void setGifData(int paramInt, Drawable paramDrawable, String paramString1, String paramString2, boolean paramBoolean)
@@ -81,9 +81,9 @@ public class FrameGifView
     if (getDrawable() == null) {
       super.setImageDrawable(paramDrawable);
     }
-    if (this.jdField_a_of_type_Alnu != null)
+    if (this.jdField_a_of_type_Anhe != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_Alnu, paramInt, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_Anhe, paramInt, paramString1, paramString2, paramBoolean);
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
     }
@@ -91,14 +91,14 @@ public class FrameGifView
   
   public void setPlayLoop(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Alnu != null) {
-      this.jdField_a_of_type_Alnu.a(paramBoolean);
+    if (this.jdField_a_of_type_Anhe != null) {
+      this.jdField_a_of_type_Anhe.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.FrameGifView
  * JD-Core Version:    0.7.0.1
  */

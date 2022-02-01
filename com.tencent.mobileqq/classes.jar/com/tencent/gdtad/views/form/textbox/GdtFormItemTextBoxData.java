@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.form.textbox;
 
-import aase;
+import acqy;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.canvas.views.form.AdFormError;
 import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
@@ -31,7 +31,7 @@ public class GdtFormItemTextBoxData
   {
     if (!isValid())
     {
-      aase.d("GdtFormItemTextBoxData", "validate error");
+      acqy.d("GdtFormItemTextBoxData", "validate error");
       return new AdFormError(3, -1, null);
     }
     if ((this.required) && (TextUtils.isEmpty(getResult()))) {
@@ -45,7 +45,7 @@ public class GdtFormItemTextBoxData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData
  * JD-Core Version:    0.7.0.1
  */

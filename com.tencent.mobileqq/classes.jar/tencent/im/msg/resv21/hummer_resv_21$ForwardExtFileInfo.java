@@ -19,6 +19,7 @@ public final class hummer_resv_21$ForwardExtFileInfo
   public final PBBytesField bytes_file_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt64Field int64_dead_time = PBField.initInt64(0L);
   public final PBStringField str_file_name = PBField.initString("");
+  public final PBStringField str_fileidcrc = PBField.initString("");
   public final PBUInt32Field uint32_bus_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_img_height = PBField.initUInt32(0);
@@ -33,7 +34,7 @@ public final class hummer_resv_21$ForwardExtFileInfo
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72, 80, 88, 96, 104 }, new String[] { "uint32_file_type", "uint64_sender_uin", "uint64_receiver_uin", "bytes_file_uuid", "str_file_name", "uint64_file_size", "bytes_file_sha1", "bytes_file_md5", "int64_dead_time", "uint32_img_width", "uint32_img_height", "uint64_video_duration", "uint32_bus_id" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, "", Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, ForwardExtFileInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72, 80, 88, 96, 104, 114 }, new String[] { "uint32_file_type", "uint64_sender_uin", "uint64_receiver_uin", "bytes_file_uuid", "str_file_name", "uint64_file_size", "bytes_file_sha1", "bytes_file_md5", "int64_dead_time", "uint32_img_width", "uint32_img_height", "uint64_video_duration", "uint32_bus_id", "str_fileidcrc" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, "", Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "" }, ForwardExtFileInfo.class);
   }
 }
 

@@ -1,14 +1,17 @@
-public final class arov
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface arov
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  boolean a() default false;
   
-  public arov()
-  {
-    this.a = 1;
-  }
+  boolean b() default false;
 }
 
 

@@ -1,81 +1,129 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.QzoneFeedsPluginProxyActivity;
-import cooperation.qzone.QzoneFullscreenPluginProxyActivity;
-import cooperation.qzone.QzoneGPUPluginProxyActivity;
-import cooperation.qzone.QzoneNOGPUPluginProxyActivity;
-import cooperation.qzone.QzoneOrientationPluginProxyActivity;
-import cooperation.qzone.QzonePictureExtPluginProxyActivity;
-import cooperation.qzone.QzonePicturePluginProxyActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.QzonePublishMoodProxyActivity;
-import cooperation.qzone.QzoneTransNoTitlePluginProxyActivity;
-import cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity;
-import cooperation.qzone.QzoneTranslucentGPUPluginProxyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.data.QidianCorpInfo;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qidian.data.QidianProfileUiInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bjge
+  extends bjha
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public bjge(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.a(), paramString)) {
-      return QzonePicturePluginProxyActivity.class;
+    super.b(paramBoolean, paramHashMap);
+    this.a.a();
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      j = 0;
+      i = j;
+      if (paramHashMap.containsKey("external"))
+      {
+        i = j;
+        if (paramHashMap.get("external") != null)
+        {
+          localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
+          if (!this.a.jdField_a_of_type_Azfe.a.a.equals(localQidianExternalInfo.uin)) {
+            if (QLog.isColorLevel()) {
+              QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not current uin");
+            }
+          }
+        }
+      }
     }
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.b(), paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        QidianExternalInfo localQidianExternalInfo;
+        return;
+        int i = j;
+        if (!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo))
+        {
+          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
+          i = 1;
+        }
+        int j = i;
+        if (paramHashMap.containsKey("ConfigGroupInfo"))
+        {
+          j = i;
+          if (paramHashMap.get("ConfigGroupInfo") != null)
+          {
+            paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
+            j = i;
+            if (!paramHashMap.equals(QidianProfileCardActivity.a(this.a)))
+            {
+              QidianProfileCardActivity.a(this.a, paramHashMap);
+              j = 1;
+            }
+          }
+        }
+        if (j != 0)
+        {
+          this.a.c(6);
+          this.a.b();
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not change");
+      return;
     }
-    if ("com.qzone.common.activities.FeedActionPanelActivity".equals(paramString)) {
-      return QzoneTransWithKeyboardPluginProxyActivity.class;
+    QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo fail");
+  }
+  
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    super.e(paramBoolean, paramHashMap);
+    this.a.a();
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null) && (paramHashMap.containsKey("corp")) && (paramHashMap.get("corp") != null) && (paramHashMap.containsKey("ConfigGroupInfo")) && (paramHashMap.get("ConfigGroupInfo") != null))
+    {
+      localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
+      localQidianCorpInfo = (QidianCorpInfo)paramHashMap.get("corp");
+      paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
+      if (this.a.jdField_a_of_type_Azfe.a.a.equals(localQidianExternalInfo.uin)) {
+        if ((!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo)) || (!localQidianCorpInfo.equals(QidianProfileCardActivity.a(this.a))) || (!paramHashMap.equals(QidianProfileCardActivity.a(this.a))))
+        {
+          i = 1;
+          if (i == 0) {
+            break label230;
+          }
+          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
+          QidianProfileCardActivity.a(this.a, localQidianCorpInfo);
+          QidianProfileCardActivity.a(this.a, paramHashMap);
+          this.a.c(1);
+          this.a.b();
+        }
+      }
     }
-    if ("com.qzone.common.activities.QZoneRapidCommentActivity".equals(paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
+    label230:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            QidianExternalInfo localQidianExternalInfo;
+            QidianCorpInfo localQidianCorpInfo;
+            return;
+            int i = 0;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not change");
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not current uin");
+      return;
     }
-    if ("com.qzone.face.ui.QzoneMarkFaceActivity".equals(paramString)) {
-      return QzonePictureExtPluginProxyActivity.class;
-    }
-    if (("com.qzone.preview.QZoneVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneAdvertiseVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneEncourageAdvActivity".equals(paramString)) || ("com.qzone.preview.VideoPlayerActivity".equals(paramString)) || ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoFullscreenRecommendActivity".equals(paramString))) {
-      return QzoneOrientationPluginProxyActivity.class;
-    }
-    if ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoRecommendActivity".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.TrimVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.PreviewVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodRealActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodTabActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QzonePublishSecretShuoShuoH5Activity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(paramString)) {
-      return QzoneFeedsPluginProxyActivity.class;
-    }
-    if ("com.qzone.common.activities.QzoneDialogActivity".equals(paramString)) {
-      return QzoneFullscreenPluginProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneExtendFeedActiviy".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneExtendLiveCollectActivity".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QQPublicAccountPublishFeedActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.tencent.qcircle.QCirclePublishFeedActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    return QzoneGPUPluginProxyActivity.class;
+    QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjge
  * JD-Core Version:    0.7.0.1
  */

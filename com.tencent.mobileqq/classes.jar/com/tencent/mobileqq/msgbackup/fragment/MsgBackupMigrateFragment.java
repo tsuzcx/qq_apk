@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import auie;
-import aujo;
+import awph;
+import awqs;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class MsgBackupMigrateFragment
@@ -22,16 +23,16 @@ public class MsgBackupMigrateFragment
   {
     super.b();
     setTitle(getActivity().getString(2131690414));
-    this.vg.setOnItemSelectListener(new auie(this));
+    this.vg.setOnItemSelectListener(new awph(this));
   }
   
   protected void c()
   {
     super.c();
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690386);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690391);
     if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690386));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690391));
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690412));
     this.c.setVisibility(0);
@@ -64,24 +65,24 @@ public class MsgBackupMigrateFragment
         }
         if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165798));
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165847));
           this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690411));
         }
         if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
           break;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690439));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690435));
         break;
         bool = false;
       }
       label141:
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166903));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166986));
         this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690412));
       }
       if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690440));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690436));
       }
     }
   }
@@ -90,14 +91,17 @@ public class MsgBackupMigrateFragment
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      PublicFragmentActivity.a(getActivity(), MsgBackupSelectionFragment.class, 1000);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
+      }
+      awqs.a("0X800A230");
     }
-    PublicFragmentActivity.a(getActivity(), MsgBackupSelectionFragment.class, 1000);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
-    }
-    aujo.a("0X800A230");
   }
   
   public void onDestroyView()
@@ -115,7 +119,7 @@ public class MsgBackupMigrateFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment
  * JD-Core Version:    0.7.0.1
  */

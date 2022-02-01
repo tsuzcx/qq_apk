@@ -1,65 +1,142 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
+import com.tencent.biz.qqcircle.widgets.QCircleTaskItemView;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.AppRuntime;
+import qqcircle.TaskCenterReader.TaskRecord;
 
-class uyv
-  implements vln
+public class uyv
+  extends uzv<TaskCenterReader.TaskRecord>
 {
-  uyv(uyt paramuyt, List paramList) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private zxl<QCircleReportBean> jdField_a_of_type_Zxl;
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130844056, 2130844057, 2130844058, 2130844059, 2130844060, 2130844061, 2130844062, 2130844063, 2130844064, 2130844065 };
   
-  public void a()
+  public uyv(Bundle paramBundle)
   {
-    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
-    uyt.b(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "pull video info failed"));
+    super(paramBundle);
   }
   
-  public void a(ArrayList<StoryVideoItem> paramArrayList)
+  private RelativeLayout a()
   {
-    if (paramArrayList == null)
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560789, null));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370122));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379700));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uyw(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, ImmersiveUtils.a(60.0F)));
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  protected int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterAdapter", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Zxl != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterAdapter", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    }
+    return 0;
+  }
+  
+  public QCircleReportBean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getReportBean(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Zxl != null) {
+      return QCircleReportBean.getReportBean(a(), (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    }
+    return null;
+  }
+  
+  protected String a()
+  {
+    return "QCircleTaskCenterAdapter";
+  }
+  
+  public void a(zxl<QCircleReportBean> paramzxl)
+  {
+    this.jdField_a_of_type_Zxl = paramzxl;
+  }
+  
+  protected int b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterAdapter", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Zxl != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterAdapter", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean());
+    }
+    return 0;
+  }
+  
+  public int getItemCount()
+  {
+    return getDataNumber();
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 1;
+  }
+  
+  public void loadData(zxz paramzxz)
+  {
+    if (paramzxz.d())
     {
-      wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
-      uyt.a(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "video list empty !"));
-      return;
+      paramzxz = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      paramzxz.setEnableCache(true);
+      VSNetworkHelper.a().a(getContext(), paramzxz, new uyx(this));
     }
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    while (paramArrayList.hasNext())
-    {
-      localObject = (StoryVideoItem)paramArrayList.next();
-      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!bkfj.a(paramInt, getDataList())) {
+      ((QCircleTaskItemView)paramViewHolder.itemView).setData(getDataList().get(paramInt));
     }
-    paramArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    if (i < j)
-    {
-      localObject = (vlp)this.jdField_a_of_type_JavaUtilList.get(i);
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((vlp)localObject).b);
-      if (localStoryVideoItem == null) {
-        wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((vlp)localObject).a = localStoryVideoItem;
-        paramArrayList.add(localObject);
-      }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new QCircleTaskItemView(paramViewGroup.getContext());
+    paramViewGroup.setReportBean(a());
+    return new zxy(this, paramViewGroup);
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    setDatas(null);
+  }
+  
+  public void onInitBlock(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      addFixViewOccupySpaceAtTop(a(), ImmersiveUtils.a(60.0F));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
-    }
-    uyt.a(this.jdField_a_of_type_Uyt, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyv
  * JD-Core Version:    0.7.0.1
  */

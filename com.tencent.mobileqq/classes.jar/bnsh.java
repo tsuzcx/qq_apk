@@ -1,106 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
 
-public class bnsh
+class bnsh
+  extends RecyclerView.ViewHolder
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  AEGIFTextColorSelectionView a;
   
-  public static byte a(String paramString)
+  public bnsh(@NonNull View paramView)
   {
-    byte b = 0;
-    if (paramString == null) {
-      b = -1;
-    }
-    do
-    {
-      for (;;)
-      {
-        return b;
-        paramString = a() + "/lib" + paramString + ".so";
-        if (QLog.isColorLevel()) {
-          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
-        }
-        File localFile = new File(paramString);
-        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
-          try
-          {
-            System.load(paramString);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
-              return 0;
-            }
-          }
-          catch (UnsatisfiedLinkError paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
-            }
-            return -3;
-          }
-        }
-      }
-      b = -2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    return -2;
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131364052));
   }
   
-  public static String a()
+  public void a(String paramString)
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/tk";
+    this.a.setColor(paramString);
   }
   
-  public static boolean a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    boolean bool2 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_ArrayOfByte)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(awni.a(str1)))
-            {
-              break label221;
-              return bool1;
-            }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-              bool1 = bool2;
-            }
-          }
-        }
-        label221:
-        boolean bool1 = true;
-      }
-    }
-    return false;
+    this.a.a(Boolean.valueOf(paramBoolean));
   }
 }
 

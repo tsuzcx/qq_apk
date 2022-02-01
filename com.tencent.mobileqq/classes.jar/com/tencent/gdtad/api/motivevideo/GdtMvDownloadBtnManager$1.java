@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aapv;
-import aase;
+import acon;
+import acqy;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -14,18 +14,18 @@ class GdtMvDownloadBtnManager$1
   
   public void run()
   {
-    aapv localaapv;
+    acon localacon;
     if (GdtMvDownloadBtnManager.a(this.this$0) != null) {
-      localaapv = new aapv();
+      localacon = new acon();
     }
     for (;;)
     {
       GdtMvDownloadBtnManager.a(this.this$0);
       Object localObject = GdtMvDownloadBtnManager.a(this.this$0).getUrlForClick();
-      aase.a("GdtMvDownloadBtnManager", "fetching AppData " + GdtMvDownloadBtnManager.b(this.this$0) + ", url = " + (String)localObject);
+      acqy.a("GdtMvDownloadBtnManager", "fetching AppData " + GdtMvDownloadBtnManager.b(this.this$0) + ", url = " + (String)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = localaapv.a((String)localObject, "&gd=1", GdtMvDownloadBtnManager.b(this.this$0));
+        localObject = localacon.a((String)localObject, "&gd=1", GdtMvDownloadBtnManager.b(this.this$0));
         if ((localObject != null) && (((GdtMvAppBtnData)localObject).isValid()))
         {
           ((GdtMvAppBtnData)localObject).mGdtAd_appId = GdtMvDownloadBtnManager.a(this.this$0).getAppId();
@@ -37,21 +37,21 @@ class GdtMvDownloadBtnManager$1
       }
       if (GdtMvDownloadBtnManager.a(this.this$0) != null)
       {
-        aase.c("GdtMvDownloadBtnPresenter", "loader sucess!!!");
+        acqy.c("GdtMvDownloadBtnPresenter", "loader sucess!!!");
         this.this$0.e();
       }
       while ((GdtMvDownloadBtnManager.a(this.this$0) != null) || (GdtMvDownloadBtnManager.b(this.this$0) >= 2))
       {
         GdtMvDownloadBtnManager.a(this.this$0, false);
         return;
-        aase.c("GdtMvDownloadBtnPresenter", "loader failed!!!");
+        acqy.c("GdtMvDownloadBtnPresenter", "loader failed!!!");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager.1
  * JD-Core Version:    0.7.0.1
  */

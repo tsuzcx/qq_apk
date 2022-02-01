@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apgg
-  implements DialogInterface.OnClickListener
+public class apgg
+  implements View.OnClickListener
 {
-  apgg(apgd paramapgd) {}
+  public apgg(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.cancel();
-    QLog.d(apgd.a(), 1, "showConfirmDialog, cancel click");
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, apgd.d, apgd.d, 0, 0, "", "", "", "");
+    this.a.findViewById(2131369203).setAlpha(1.0F);
+    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.a.jdField_a_of_type_AndroidContentContext;
+    String str2 = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    if (!TextUtils.isEmpty(localScanTorchActivity.a)) {}
+    for (String str1 = localScanTorchActivity.a;; str1 = str2)
+    {
+      Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
+      localIntent.putExtra("from", "ScannerActivity");
+      localIntent.putExtra("title", localScanTorchActivity.getString(2131715862));
+      localIntent.putExtra("nick", str1);
+      localIntent.putExtra("uin", str2);
+      localIntent.putExtra("type", 1);
+      localScanTorchActivity.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

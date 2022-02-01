@@ -1,21 +1,22 @@
+import android.text.TextUtils;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afza
-  extends aeqi
+class afza
+  extends anmu
 {
-  public long a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public QQWalletTransferBubbleView a;
-  public TextView b;
-  public QQWalletTransferBubbleView b;
-  public TextView c;
+  afza(afyw paramafyw) {}
   
-  public afza(afyx paramafyx) {}
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    {
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (afyw.a(this.a) != null)) {
+        afyw.a(this.a).setImageBitmap(paramString);
+      }
+    }
+  }
 }
 
 

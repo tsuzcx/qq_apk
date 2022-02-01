@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
-import nic;
-import nif;
-import nii;
+import nqt;
+import nqw;
+import nqz;
 
 public class AccountDetailVideoManager$3$1
   implements Runnable
 {
-  public AccountDetailVideoManager$3$1(nif paramnif) {}
+  public AccountDetailVideoManager$3$1(nqw paramnqw) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AccountDetailVideoManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.3.1
  * JD-Core Version:    0.7.0.1
  */

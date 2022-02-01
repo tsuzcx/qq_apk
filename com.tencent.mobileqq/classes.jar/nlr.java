@@ -1,45 +1,29 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
+import android.app.Activity;
+import android.view.View;
 
-public class nlr
-  implements ViewPager.OnPageChangeListener
+class nlr
+  implements bkhw
 {
-  public nlr(VideoCoverFragment paramVideoCoverFragment, ViewPager.OnPageChangeListener paramOnPageChangeListener) {}
+  nlr(nlo paramnlo, Activity paramActivity, String paramString, bkho parambkho) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment, paramInt);
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
-    }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a(paramInt);
-    }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a().setProgress(paramInt, 0);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      nlo.a(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nlo.a(this.jdField_a_of_type_Nlo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nlr
  * JD-Core Version:    0.7.0.1
  */

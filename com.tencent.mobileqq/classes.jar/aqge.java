@@ -1,240 +1,146 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.limitchat.LimitChatUtil.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class aqge
 {
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = 0;
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("sp_match_chat_gray_section_" + paramString, 0);
-    }
-    return i;
-  }
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Method jdField_b_of_type_JavaLangReflectMethod;
+  private static boolean jdField_b_of_type_Boolean;
   
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
+  @RequiresApi(api=16)
+  private static void a()
   {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("LimitChatUtil", 2, "get sp by app is null");
-      return null;
-    }
-    paramQQAppInterface = paramQQAppInterface.c();
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface)))
-    {
-      QLog.e("LimitChatUtil", 2, "get sp by uin is null");
-      return null;
-    }
-    return BaseApplicationImpl.getContext().getSharedPreferences("sp_for_extendfriend_limit_chat" + paramQQAppInterface, 0);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      paramQQAppInterface = "";
-    }
-    String str;
-    do
-    {
-      return paramQQAppInterface;
-      str = paramQQAppInterface.getString("sp_limit_chat_on_plus_panel_name", "");
-      paramQQAppInterface = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusName: " + str);
-    return str;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    String str = "0";
-    SharedPreferences localSharedPreferences = b(paramQQAppInterface);
-    paramQQAppInterface = str;
-    if (localSharedPreferences != null) {
-      paramQQAppInterface = localSharedPreferences.getString("sp_match_chat_algorithm_id" + paramString, "0");
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat checkAndUpdateLimiteChatSetting app null");
-    }
-    while (!b(paramQQAppInterface)) {
+    if (jdField_a_of_type_Boolean) {
       return;
     }
-    paramQQAppInterface = (aqbe)paramQQAppInterface.a(127);
-    if (paramQQAppInterface != null)
+    try
     {
-      paramQQAppInterface.a(true);
-      return;
+      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
+      jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      arrayOfClass = Activity.class.getDeclaredClasses();
+      jdField_a_of_type_JavaLangClass = null;
+      j = arrayOfClass.length;
+      i = 0;
     }
-    QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat handler null");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().remove("sp_match_chat_first_in_" + paramString).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putInt("sp_match_chat_gray_section_" + paramString, paramInt).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putString("sp_match_chat_algorithm_id" + paramString1, paramString2).commit();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, long paramLong1, int paramInt, String paramString, long paramLong2)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat getLimitChatOnPlusExpireTime: app is null ");
-    }
-    long l;
-    do
+    catch (Throwable localThrowable)
     {
-      return;
-      SharedPreferences localSharedPreferences = a(paramQQAppInterface);
-      if (localSharedPreferences == null) {
-        break;
-      }
-      paramQQAppInterface = paramString;
-      if (paramString == null) {
-        paramQQAppInterface = "";
-      }
-      localSharedPreferences.edit().putBoolean("sp_limit_chat_on_plus_panel_be_show", paramBoolean).apply();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_chat_time", paramLong1).apply();
-      localSharedPreferences.edit().putInt("sp_limit_chat_on_plus_panel_left_count", paramInt).apply();
-      localSharedPreferences.edit().putString("sp_limit_chat_on_plus_panel_name", paramQQAppInterface).apply();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_expire_time", paramLong2).apply();
-      l = NetConnInfoCenter.getServerTime();
-      localSharedPreferences.edit().putLong("sp_limit_chat_on_plus_panel_update_time", l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.i("LimitChatUtil", 2, "ExtendFriendLimitChat setShowLimitChatOnPlus  bShow: " + paramBoolean + " chatTime:" + paramLong1 + " leftCount:" + paramInt + " funcName: " + paramQQAppInterface + " expireTime : " + paramLong2 + " nowTime: " + l);
-    return;
-    QLog.e("LimitChatUtil", 2, "ExtendFriendLimitChat setShowLimitChatOnPlus on null sp");
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("LimitChatUtil", 2, "reportInSubThread UIN EMPTY");
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new LimitChatUtil.1(paramString));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = paramQQAppInterface.getBoolean("sp_limit_chat_on_plus_panel_be_show", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "needShowLimitChatOnPlus: " + bool2);
-    return bool2;
-  }
-  
-  public static SharedPreferences b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("LimitChatUtil", 2, "get sp by app is null");
-      return null;
-    }
-    paramQQAppInterface = paramQQAppInterface.c();
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface)))
-    {
-      QLog.e("LimitChatUtil", 2, "get matchSp is null");
-      return null;
-    }
-    return BaseApplicationImpl.getContext().getSharedPreferences("sp_for_extendfriend_match_chat" + paramQQAppInterface, 0);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().clear().commit();
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      bool2 = bool1;
-    }
-    long l1;
-    long l2;
-    long l3;
-    do
-    {
-      return bool2;
-      if (alvw.c())
+      for (;;)
       {
-        QLog.i("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: by change local langauage");
-        return true;
-      }
-      QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: not ! by change local langauage");
-      l1 = paramQQAppInterface.getLong("sp_limit_chat_on_plus_panel_expire_time", 10L);
-      l2 = paramQQAppInterface.getLong("sp_limit_chat_on_plus_panel_update_time", 0L);
-      l3 = NetConnInfoCenter.getServerTime();
-      long l4 = l3 - l2;
-      bool1 = bool2;
-      if (l4 < l1)
-      {
-        bool1 = bool2;
-        if (l4 > 0L) {
-          bool1 = false;
+        Class[] arrayOfClass;
+        int j;
+        int i;
+        Class localClass;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
+          continue;
+          i += 1;
         }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("LimitChatUtil", 2, "getLimitChatOnPlusExpireTime: " + l1 + " update :" + l2 + " now：" + l3 + " needUpdate：" + bool1);
-    return bool1;
+    }
+    if (i < j)
+    {
+      localClass = arrayOfClass[i];
+      if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+        jdField_a_of_type_JavaLangClass = localClass;
+      }
+    }
+    else
+    {
+      jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
+      jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      jdField_b_of_type_Boolean = true;
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public static void a(Activity paramActivity)
   {
-    aqgf localaqgf = aqfy.a();
-    return (localaqgf != null) && (localaqgf.a()) && (a(paramQQAppInterface)) && (!localaqgf.b()) && (!babd.a());
+    try
+    {
+      Method localMethod = Activity.class.getDeclaredMethod("convertFromTranslucent", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(paramActivity, new Object[0]);
+      return;
+    }
+    catch (Throwable paramActivity) {}
   }
   
-  public static boolean d(QQAppInterface paramQQAppInterface)
+  public static void a(Activity paramActivity, InvocationHandler paramInvocationHandler)
   {
-    aqgf localaqgf = aqfy.a();
-    return (localaqgf != null) && (localaqgf.a()) && (a(paramQQAppInterface)) && (localaqgf.b()) && (!babd.a());
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      b(paramActivity, paramInvocationHandler);
+      return;
+    }
+    b(paramActivity);
+  }
+  
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return false;
+    }
+    a();
+    return jdField_b_of_type_Boolean;
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
+        int j = arrayOfClass.length;
+        i = 0;
+        if (i < j)
+        {
+          Class localClass = arrayOfClass[i];
+          if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+            localObject = localClass;
+          }
+        }
+        else
+        {
+          localObject = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject });
+          ((Method)localObject).setAccessible(true);
+          ((Method)localObject).invoke(paramActivity, new Object[] { null });
+          return;
+        }
+      }
+      catch (Throwable paramActivity)
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  @RequiresApi(api=16)
+  private static void b(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    
+    try
+    {
+      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
+      Class localClass = jdField_a_of_type_JavaLangClass;
+      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
+      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
+      return;
+    }
+    catch (Throwable paramActivity) {}
   }
 }
 

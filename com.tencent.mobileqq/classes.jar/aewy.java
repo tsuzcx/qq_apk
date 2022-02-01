@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
-class aewy
-  implements badp
+public class aewy
+  implements View.OnTouchListener
 {
-  aewy(aewx paramaewx) {}
+  public aewy(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    badv localbadv = new badv(3000, 360, 0);
-    localbadv.a = true;
-    this.a.a.d.a(new bado[] { localbadv });
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

@@ -1,21 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class agab
-  implements betp
+final class agab
+  implements bkhy
 {
-  public agab(Handler paramHandler) {}
+  agab(QQAppInterface paramQQAppInterface) {}
   
-  public void a(betn parambetn)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
-    }
-    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambetn), 100L);
+    bcst.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
   }
-  
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

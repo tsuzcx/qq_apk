@@ -1,44 +1,106 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class bert
-  implements ValueAnimator.AnimatorUpdateListener
+class bert
+  extends niv
 {
-  public bert(ParticipleView paramParticipleView) {}
+  bert(bers parambers, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    for (;;)
     {
-      berx localberx = (berx)paramValueAnimator.next();
-      float f = Math.min((float)(l - berx.a(localberx)) / ParticipleView.a(this.a), 1.0F);
-      berx.a(localberx, f);
-      if (f < 1.0F) {
-        i = 0;
+      try
+      {
+        Object localObject = new oidb_0x487.RspBody();
+        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
+            break label563;
+          }
+          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
+        {
+          this.jdField_a_of_type_Bers.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
+          bers.a(this.jdField_a_of_type_Bers);
+          this.jdField_a_of_type_Bers.notifyObservers(Integer.valueOf(0));
+          return;
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
+        {
+          paramBundle = (bfrd)this.jdField_a_of_type_Bers.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
+          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
+          if (i == 1)
+          {
+            localObject = (QQAppInterface)this.b.get();
+            if (localObject == null) {
+              break label562;
+            }
+            String str = ((QQAppInterface)localObject).c();
+            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
+            if (paramArrayOfByte == null) {
+              break label557;
+            }
+            paramArrayOfByte = paramArrayOfByte.getSkey(str);
+            HashMap localHashMap = new HashMap();
+            Bundle localBundle = new Bundle();
+            localBundle.putString("op", "0");
+            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
+            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
+            localBundle.putString("Referer", "https://buluo.qq.com");
+            localHashMap.put("BUNDLE", localBundle);
+            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
+            new bfpp("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new beru(this, paramBundle, i), 1000, null).a(localHashMap);
+          }
+          paramBundle.a(this.jdField_a_of_type_Bers.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+          if (paramInt == 1)
+          {
+            bers.b(this.jdField_a_of_type_Bers);
+            this.jdField_a_of_type_Bers.notifyObservers(Integer.valueOf(1));
+            return;
+          }
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
+        }
       }
       for (;;)
       {
-        break;
-        paramValueAnimator.remove();
+        bers.c(this.jdField_a_of_type_Bers);
+        this.jdField_a_of_type_Bers.notifyObservers();
+        return;
+        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
       }
+      label557:
+      paramArrayOfByte = null;
+      continue;
+      label562:
+      return;
+      label563:
+      paramArrayOfByte = "";
     }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
-      }
-    }
-    this.a.invalidate();
   }
 }
 

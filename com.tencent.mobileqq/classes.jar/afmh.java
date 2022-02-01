@@ -1,29 +1,21 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afmh
-  implements bhuk
+public class afmh
+  implements View.OnClickListener
 {
-  afmh(afmf paramafmf, MessageForFile paramMessageForFile, bhuf parambhuf, BaseChatItemLayout paramBaseChatItemLayout, afmm paramafmm) {}
+  public afmh(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_Afmf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null)
-    {
-      if (paramView.status == 16)
-      {
-        arri.a(2131692941);
-        this.jdField_a_of_type_Bhuf.cancel();
-        return;
-      }
-      arrr.a(this.jdField_a_of_type_Afmf.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afmf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    if (this.a.d == 11) {
+      bcst.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_Afmf.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afmm, paramView, false);
-    this.jdField_a_of_type_Bhuf.cancel();
+    this.a.b.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

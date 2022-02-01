@@ -64,8 +64,8 @@ class AudioPlayback$AudioThread
     //   44: monitorenter
     //   45: aload_0
     //   46: getfield 13	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback$AudioThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback;
-    //   49: getfield 50	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback:a	Lvxs;
-    //   52: invokevirtual 55	vxs:a	()Lvxt;
+    //   49: getfield 50	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback:a	Lxrd;
+    //   52: invokevirtual 55	xrd:a	()Lxre;
     //   55: astore_2
     //   56: aload_2
     //   57: ifnonnull +18 -> 75
@@ -83,15 +83,15 @@ class AudioPlayback$AudioThread
     //   77: aload_0
     //   78: getfield 13	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback$AudioThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback;
     //   81: aload_2
-    //   82: getfield 60	vxt:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   82: getfield 60	xre:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
     //   85: aload_2
-    //   86: getfield 63	vxt:jdField_a_of_type_Long	J
+    //   86: getfield 63	xre:jdField_a_of_type_Long	J
     //   89: invokevirtual 67	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback:b	(Ljava/nio/ByteBuffer;J)V
     //   92: aload_0
     //   93: getfield 13	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback$AudioThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback;
-    //   96: getfield 50	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback:a	Lvxs;
+    //   96: getfield 50	com/tencent/biz/qqstory/playvideo/player/mediaplayer/AudioPlayback:a	Lxrd;
     //   99: aload_2
-    //   100: invokevirtual 70	vxs:a	(Lvxt;)V
+    //   100: invokevirtual 70	xrd:a	(Lxre;)V
     //   103: goto -103 -> 0
     //   106: return
     // Local variable table:
@@ -99,8 +99,8 @@ class AudioPlayback$AudioThread
     //   0	107	0	this	AudioThread
     //   23	4	1	localObject1	Object
     //   28	1	1	localInterruptedException	java.lang.InterruptedException
-    //   55	2	2	localvxt1	vxt
-    //   70	30	2	localvxt2	vxt
+    //   55	2	2	localxre1	xre
+    //   70	30	2	localxre2	xre
     // Exception table:
     //   from	to	target	type
     //   9	20	23	finally
@@ -119,7 +119,7 @@ class AudioPlayback$AudioThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback.AudioThread
  * JD-Core Version:    0.7.0.1
  */

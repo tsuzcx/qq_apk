@@ -23,38 +23,38 @@ final class ea$2
     {
       try
       {
-        eb localeb = localea.b;
+        du localdu = localea.b;
         PackageInfo localPackageInfo = localea.f();
-        localeb.i = localPackageInfo.versionCode;
-        localeb.h = localPackageInfo.versionName;
+        localdu.i = localPackageInfo.versionCode;
+        localdu.h = localPackageInfo.versionName;
         localObject1 = localea.a.getApplicationInfo().loadLabel(localea.e);
         if (localObject1 == null) {
           continue;
         }
         localObject1 = ((CharSequence)localObject1).toString();
-        localeb.j = ((String)localObject1);
+        localdu.j = ((String)localObject1);
         Object localObject2 = localea.f;
         if (localObject2 != null)
         {
-          localeb.a = ((TelephonyManager)localObject2).getPhoneType();
+          localdu.a = ((TelephonyManager)localObject2).getPhoneType();
           localObject1 = fo.a(((TelephonyManager)localObject2).getDeviceId(), fo.a);
           localObject2 = fo.a(((TelephonyManager)localObject2).getSubscriberId(), fo.b);
           localea.k = ((String)localObject1);
-          localeb.b = ((String)localObject1);
-          localeb.c = ((String)localObject2);
-          localeb.d = "";
+          localdu.b = ((String)localObject1);
+          localdu.c = ((String)localObject2);
+          localdu.d = "";
         }
-        localeb.e = fo.a(fq.a().replaceAll(":", "").toUpperCase(Locale.ENGLISH), fo.c);
+        localdu.e = fo.a(fq.a().replaceAll(":", "").toUpperCase(Locale.ENGLISH), fo.c);
         localObject1 = localea.e;
         boolean bool1 = ((PackageManager)localObject1).hasSystemFeature("android.hardware.location.gps");
         boolean bool2 = ((PackageManager)localObject1).hasSystemFeature("android.hardware.wifi");
         boolean bool3 = ((PackageManager)localObject1).hasSystemFeature("android.hardware.telephony");
-        localeb.n = bool1;
-        localeb.m = bool2;
-        localeb.l = bool3;
+        localdu.n = bool1;
+        localdu.m = bool2;
+        localdu.l = bool3;
         new StringBuilder("doInBg: hasGps=").append(bool1).append(",hasWifi=").append(bool2).append(",hasCell=").append(bool3);
-        new StringBuilder("os:").append(Build.MODEL).append(" ").append(Build.VERSION.RELEASE).append(" ").append(localeb.a()).append(" net:").append(localPackageInfo.versionCode).append(" ").append(localPackageInfo.versionName).append(" sdk: ").append(localeb.d()).append(" ").append(localeb.e());
-        localeb.o = ea.b(localea.a);
+        new StringBuilder("os:").append(Build.MODEL).append(" ").append(Build.VERSION.RELEASE).append(" ").append(localdu.a()).append(" net:").append(localPackageInfo.versionCode).append(" ").append(localPackageInfo.versionName).append(" sdk: ").append(localdu.d()).append(" ").append(localdu.e());
+        localdu.o = ea.b(localea.a);
       }
       catch (Throwable localThrowable)
       {

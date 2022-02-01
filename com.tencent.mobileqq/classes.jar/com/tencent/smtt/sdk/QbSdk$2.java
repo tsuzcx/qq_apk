@@ -2,51 +2,38 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.smtt.utils.TbsLog;
 
 final class QbSdk$2
-  extends Handler
+  extends Thread
 {
-  QbSdk$2(Looper paramLooper, QbSdk.PreInitCallback paramPreInitCallback, Context paramContext)
-  {
-    super(paramLooper);
-  }
+  QbSdk$2(Context paramContext, Handler paramHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    int i = n.a().a(true, this.a);
+    TbsDownloader.setAppContext(this.a);
+    TbsLog.i("QbSdk", "QbSdk preinit ver is " + i);
+    if (i == 0) {
+      n.a().b(this.a, true);
     }
-    do
+    TbsLog.i("QbSdk", "preInit -- prepare initAndLoadSo");
+    d.a(true).a(this.a, false, false, null);
+    v localv = v.a();
+    localv.a(this.a, null);
+    boolean bool = localv.b();
+    this.b.sendEmptyMessage(3);
+    if (!bool)
     {
+      this.b.sendEmptyMessage(2);
       return;
-      if (this.val$callback != null) {
-        this.val$callback.onViewInitFinished(false);
-      }
-      TbsLog.writeLogToDisk();
-      return;
-      QbSdk.access$002(TbsExtensionFunctionManager.getInstance().canUseFunction(this.val$context, "disable_unpreinit.txt"));
-      if (QbSdk.mNeedCreateX5webviewAfterInit)
-      {
-        paramMessage = X5CoreEngine.getInstance().wizard();
-        if (paramMessage != null) {
-          paramMessage.createSDKWebview(this.val$context);
-        }
-      }
-      if (this.val$callback != null) {
-        this.val$callback.onViewInitFinished(true);
-      }
-      TbsLog.writeLogToDisk();
-      return;
-    } while (this.val$callback == null);
-    this.val$callback.onCoreInitFinished();
+    }
+    this.b.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.2
  * JD-Core Version:    0.7.0.1
  */

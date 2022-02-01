@@ -1,55 +1,23 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.AudioSenorManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class aepv
-  implements SensorEventListener
+class aepv
+  implements DialogInterface.OnClickListener
 {
-  public aepv(AudioSenorManager paramAudioSenorManager) {}
+  aepv(aepu paramaepu) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (aepi.b()) {}
-    label141:
-    label144:
-    for (;;)
-    {
-      return;
-      boolean bool;
-      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
-      {
-        bool = true;
-        label28:
-        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
-        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
-          continue;
-        }
-        if (!bool) {
-          break label141;
-        }
-      }
-      for (;;)
-      {
-        if (i == AudioSenorManager.a(this.a)) {
-          break label144;
-        }
-        AudioSenorManager.a(this.a, i);
-        if (AudioSenorManager.a(this.a) == null) {
-          break;
-        }
-        AudioSenorManager.a(this.a).a(i);
-        return;
-        bool = false;
-        break label28;
-        i = 0;
-      }
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
+    this.a.a.finish();
+    if (bgnt.d(BaseApplication.getContext())) {
+      aumh.a(this.a.a.a);
     }
+    new bcsy(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
   }
 }
 

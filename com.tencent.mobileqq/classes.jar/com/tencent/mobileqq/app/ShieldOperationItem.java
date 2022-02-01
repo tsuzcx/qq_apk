@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import amcn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anux;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new amcn();
+  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new anux();
   public int a;
   public long[] a;
   public int b;
@@ -45,7 +45,7 @@ public class ShieldOperationItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ShieldOperationItem
  * JD-Core Version:    0.7.0.1
  */

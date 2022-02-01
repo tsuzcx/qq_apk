@@ -1,72 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aosn
-  extends aokh<aosm>
+class aosn
+  implements bgsr
 {
-  public int a()
-  {
-    return 361;
-  }
+  aosn(aosm paramaosm, AppInterface paramAppInterface, String paramString, aoso paramaoso) {}
   
-  @NonNull
-  public aosm a(int paramInt)
+  public void a(boolean paramBoolean, ArrayList<bgsq> paramArrayList)
   {
-    return new aosm();
-  }
-  
-  @Nullable
-  public aosm a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    paramArrayList = (aosu)paramArrayList.get(0);
+    if ((aosm.a(this.jdField_a_of_type_Aosm) != null) && (aosm.a(this.jdField_a_of_type_Aosm) == paramArrayList) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
     {
-      aosm localaosm = aosm.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      QLog.w(this.jdField_a_of_type_Aosm.jdField_a_of_type_JavaLangString, 1, "异步加载config返回, bsuc[" + paramBoolean + "], TAG[" + paramArrayList.TAG + "], isEnableFromLocal[" + aosl.c() + "], config[" + paramArrayList.a + "]");
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Aosm.a(paramArrayList.a);
+        this.jdField_a_of_type_Aosm.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       }
-      return localaosm;
+      aosm.a(this.jdField_a_of_type_Aosm, null);
     }
-    return null;
-  }
-  
-  public Class<aosm> a()
-  {
-    return aosm.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aosm paramaosm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaosm.toString());
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aoso != null) {
+        this.jdField_a_of_type_Aoso.a(this.jdField_a_of_type_Aosm.a());
+      }
+      return;
+      QLog.w(this.jdField_a_of_type_Aosm.jdField_a_of_type_JavaLangString, 1, "异步加载config返回[" + this.jdField_a_of_type_JavaLangString + "], 但原请求取消了");
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosn
  * JD-Core Version:    0.7.0.1
  */

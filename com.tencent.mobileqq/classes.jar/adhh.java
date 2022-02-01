@@ -1,74 +1,114 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class adhh
-  extends altm
 {
-  public adhh(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public static int a(int paramInt)
   {
-    LoginInfoActivity.d(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
-      }
-      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-      }
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      return;
+    default: 
+      return 7;
+    case 2: 
+      return 0;
+    case 3: 
+      return 9;
+    case 4: 
+      return 11;
+    case 5: 
+      return 12;
+    case 6: 
+      return 13;
     }
-    if (QLog.isColorLevel())
+    return 14;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
+    case 1: 
+    default: 
+      return "android";
+    case 2: 
+      return "ark";
+    case 5: 
+      return "limi";
+    case 3: 
+      return "mini_game";
+    case 4: 
+      return "mini_app";
+    case 6: 
+      return "qqpay";
+    }
+    return "web";
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
       }
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
+    }
+    do
+    {
+      return null;
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
+    return null;
+    int i = paramString.indexOf('?');
+    int j = paramString.indexOf('#');
+    if (i == -1)
+    {
+      i = j;
+      if (j == -1) {
+        i = paramString.length();
+      }
     }
     for (;;)
     {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692211), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+      return paramString.substring(0, i);
+      if (j != -1) {
+        i = Math.min(i, j);
+      }
     }
   }
   
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  public static void a(adea paramadea, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
-    }
-    LoginInfoActivity.d(this.a);
-    if (paramBoolean)
-    {
-      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
-      {
-        LoginInfoActivity.a(this.a).remove(paramInt2);
-        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      }
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694648), 0).b(this.a.getTitleBarHeight());
+    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramadea, paramInt));
+  }
+  
+  public static void a(adea paramadea, int paramInt, String paramString)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramadea, paramInt, paramString));
+  }
+  
+  public static void a(adea paramadea, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramadea, paramJSONObject));
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.sProcessId == 1;
+  }
+  
+  public static void b(adea paramadea, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramadea, paramJSONObject));
   }
 }
 

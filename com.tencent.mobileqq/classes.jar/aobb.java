@@ -1,152 +1,171 @@
-import android.content.SharedPreferences;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareResultPic.2;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareResultPic.3;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class aobb
+  extends aoaw
 {
-  private static aobb jdField_a_of_type_Aobb;
-  public int a;
-  public String a;
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public final boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h = -1;
-  public int i = -1;
+  private String b;
   
-  public aobb()
+  public aobb(Activity paramActivity, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_g_of_type_Int = -1;
+    super(paramActivity, null, null, null, paramInt);
+    this.b = paramString;
   }
   
-  public static aobb a()
+  private Intent a()
   {
-    if (jdField_a_of_type_Aobb == null) {}
-    try
+    QLog.d("AVGameShareResultPic", 1, "getImageIntent");
+    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
+    localIntent.putExtra("key_help_forward_pic", true);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
+    localIntent.putExtra("selection_mode", 2);
+    localIntent.putExtra("avgame_share_callback_key", true);
+    localIntent.setData(Uri.parse(this.b));
+    return localIntent;
+  }
+  
+  protected void b(int paramInt)
+  {
+    super.b(paramInt);
+  }
+  
+  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend");
+    bcst.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "0", "", "", "");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_req", ForwardRecentActivity.f);
+    localBundle.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
+    localBundle.putString("key_direct_show_uin", paramActionSheetItem.uin);
+    paramActionSheetItem = a();
+    if (paramActionSheetItem == null)
     {
-      if (jdField_a_of_type_Aobb == null) {
-        jdField_a_of_type_Aobb = new aobb();
-      }
-      return jdField_a_of_type_Aobb;
-    }
-    finally {}
-  }
-  
-  private void a(SharedPreferences paramSharedPreferences)
-  {
-    QLog.i("Q.camera.adapter.CameraAttrs", 1, "[loadValueFromPref] + BEGIN");
-    this.jdField_b_of_type_Boolean = paramSharedPreferences.getBoolean("sysCameraOn", false);
-    this.jdField_a_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMinVersion", "1.0.0");
-    this.jdField_b_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
-    this.jdField_c_of_type_Boolean = paramSharedPreferences.getBoolean("disableCameraSDK", true);
-    this.jdField_d_of_type_Boolean = paramSharedPreferences.getBoolean("readCamNumException", false);
-    this.jdField_e_of_type_Boolean = paramSharedPreferences.getBoolean("disableFrontCamera", false);
-    this.jdField_f_of_type_Boolean = paramSharedPreferences.getBoolean("beBlurredPreviewAfterTakePic", false);
-    this.jdField_b_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate0", -1);
-    this.jdField_c_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate90", -1);
-    this.jdField_d_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate180", -1);
-    this.jdField_e_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate270", -1);
-    this.jdField_f_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate0", -1);
-    this.jdField_g_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate90", -1);
-    this.h = paramSharedPreferences.getInt("int_backCamRotate180", -1);
-    this.i = paramSharedPreferences.getInt("int_backCamRotate270", -1);
-    this.jdField_g_of_type_Boolean = paramSharedPreferences.getBoolean("frontCamFlipH", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.camera.adapter.CameraAttrs", 2, "[loadValueFromPref] + END");
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("sysCameraOn")) {
+      QLog.e("AVGameShareResultPic", 1, "shareToSpecifiedFriend error: intent is null");
+      QQToast.a(a(), 2131690386, 0).a();
       return;
     }
-    SharedPreferences localSharedPreferences = aobe.a(BaseApplicationImpl.getContext());
-    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("sysCameraOn", false);
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("str_sysMinVersion", "1.0.0");
-    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
-    this.jdField_a_of_type_JavaUtilArrayList.add("sysCameraOn");
-  }
-  
-  public void a(SharedPreferences paramSharedPreferences, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + BEGIN");
-    }
-    int j = paramSharedPreferences.getInt("qcamera_conf_version", 0);
-    if ((j != this.jdField_a_of_type_Int) && (paramBoolean))
-    {
-      this.jdField_a_of_type_Int = j;
-      a(paramSharedPreferences);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + END");
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("disableCameraSDK")) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = aobe.a(BaseApplicationImpl.getContext()).getBoolean("disableCameraSDK", true);
-    this.jdField_a_of_type_JavaUtilArrayList.add("disableCameraSDK");
+    paramActionSheetItem.putExtras(localBundle);
+    aufz.a(a(), paramActionSheetItem, ForwardRecentTranslucentActivity.class, -1);
+    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend success");
+    bcst.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "0", "", "", "");
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("readCamNumException")) {
+    QLog.d("AVGameShareResultPic", 1, "showActionSheet");
+    if ((a() == null) || (TextUtils.isEmpty(this.b)))
+    {
+      QLog.e("AVGameShareResultPic", 1, "showActionSheet error: params wrong");
+      QQToast.a(a(), 2131690386, 0).a();
       return;
     }
-    SharedPreferences localSharedPreferences = aobe.a(BaseApplicationImpl.getContext());
-    this.jdField_d_of_type_Boolean = localSharedPreferences.getBoolean("readCamNumException", false);
-    this.jdField_e_of_type_Boolean = localSharedPreferences.getBoolean("disableFrontCamera", false);
-    this.jdField_a_of_type_JavaUtilArrayList.add("readCamNumException");
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
+    {
+      QLog.e("AVGameShareResultPic", 1, "mShareActionSheet is null");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      return;
+    }
+    a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
+    List localList1 = a();
+    List localList2 = b();
+    Intent localIntent = a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localList1, localList2);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new aobc(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
   }
   
-  public void d()
+  protected void c(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("int_frontCamRotate0")) {
-      return;
-    }
-    SharedPreferences localSharedPreferences = aobe.a(BaseApplicationImpl.getContext());
-    this.jdField_b_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate0", -1);
-    this.jdField_c_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate90", -1);
-    this.jdField_d_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate180", -1);
-    this.jdField_e_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate270", -1);
-    this.jdField_f_of_type_Int = localSharedPreferences.getInt("int_backCamRotate0", -1);
-    this.jdField_g_of_type_Int = localSharedPreferences.getInt("int_backCamRotate90", -1);
-    this.h = localSharedPreferences.getInt("int_backCamRotate180", -1);
-    this.i = localSharedPreferences.getInt("int_backCamRotate270", -1);
-    this.jdField_a_of_type_JavaUtilArrayList.add("int_frontCamRotate0");
+    super.c(paramInt);
   }
   
-  public void e()
+  protected void d()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("frontCamFlipH")) {
+    QLog.d("AVGameShareResultPic", 1, "shareToQQ");
+    bcst.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "1", "", "", "");
+    Intent localIntent = a();
+    if (localIntent == null)
+    {
+      QLog.e("AVGameShareResultPic", 1, "shareToQQ error: params wrong");
+      QQToast.a(a(), 2131690386, 0).a();
       return;
     }
-    this.jdField_g_of_type_Boolean = aobe.a(BaseApplicationImpl.getContext()).getBoolean("frontCamFlipH", false);
-    this.jdField_a_of_type_JavaUtilArrayList.add("frontCamFlipH");
+    a().startActivityForResult(localIntent, -1);
+    QLog.d("AVGameShareResultPic", 1, "shareToQQ success");
+    bcst.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "1", "", "", "");
+  }
+  
+  protected void d(int paramInt)
+  {
+    super.d(paramInt);
+  }
+  
+  protected void e()
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToQzone");
+    bcst.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "2", "", "", "");
+    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.b);
+    localBundle.putStringArrayList("images", localArrayList);
+    bltb.a(localAppInterface, a(), localBundle, null, -1);
+    bcst.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "2", "", "", "");
+  }
+  
+  protected void f(int paramInt)
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToWeChat shareType: " + paramInt);
+    int i = a();
+    if (paramInt == 9) {}
+    for (Object localObject = "3";; localObject = "4")
+    {
+      bcst.b(null, "dc00898", "", "", "0X800B065", "0X800B065", i, 0, (String)localObject, "", "", "");
+      localObject = new HashMap(1);
+      if (WXShareHelper.a().a()) {
+        break;
+      }
+      QLog.e("AVGameShareResultPic", 1, "shareToWeChat error: wechat not install");
+      QQToast.a(a(), 1, 2131719199, 0).a();
+      return;
+    }
+    if (!WXShareHelper.a().b())
+    {
+      QLog.e("AVGameShareResultPic", 1, "shareToWeChat error: wechat version not support");
+      QQToast.a(a(), 1, 2131719200, 0).a();
+      return;
+    }
+    AVGameShareResultPic.2 local2 = new AVGameShareResultPic.2(this, (Map)localObject, paramInt);
+    a(a());
+    this.jdField_a_of_type_Biau.c(2131693478);
+    this.jdField_a_of_type_Biau.show();
+    ThreadManager.post(new AVGameShareResultPic.3(this, (Map)localObject, local2), 8, null, false);
   }
 }
 

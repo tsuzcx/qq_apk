@@ -1,42 +1,24 @@
-import android.content.ComponentName;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
 class ajgu
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  ajgu(ajgb paramajgb) {}
+  private WeakReference<ajgp> a;
   
-  public void onClick(View paramView)
+  public ajgu(ajgp paramajgp)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
-    {
-      ajgb.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
-        break label125;
-      }
-      i = 0;
+    this.a = new WeakReference(paramajgp);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ajgp localajgp = (ajgp)this.a.get();
+    if (localajgp != null) {
+      return localajgp.onLongClick(paramView);
     }
-    for (;;)
-    {
-      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      return;
-      label125:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-    }
+    return false;
   }
 }
 

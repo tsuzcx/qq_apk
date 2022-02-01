@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
-public final class amei
-  implements DialogInterface.OnClickListener
+class amei
+  implements bbaa
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  amei(ameh paramameh) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amei
  * JD-Core Version:    0.7.0.1
  */

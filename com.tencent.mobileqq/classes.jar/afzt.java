@@ -1,11 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-public abstract interface afzt
+public class afzt
+  extends bgmc
 {
-  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
+  public afzt(PlusPanel paramPlusPanel) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

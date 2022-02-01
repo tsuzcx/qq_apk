@@ -1,38 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-
-class aouc
-  implements aoth
+public abstract class aouc
 {
-  aouc(aotz paramaotz) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
   
-  public void a(Context paramContext)
+  public aouc(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localIntent.setAction(aotz.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", aotz.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
-    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aouc
  * JD-Core Version:    0.7.0.1
  */

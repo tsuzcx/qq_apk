@@ -7,14 +7,15 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import ors;
-import qnr;
+import org.jetbrains.annotations.NotNull;
+import pha;
+import rin;
 import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
 
 public class UrlJumpInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new qnr();
+  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new rin();
   public int a;
   public String a;
   public String b;
@@ -34,24 +35,26 @@ public class UrlJumpInfo
     this.e = paramParcel.readString();
   }
   
+  @NotNull
   public static UrlJumpInfo a(articlesummary.UrlJumpInfo paramUrlJumpInfo)
   {
-    if ((paramUrlJumpInfo != null) && (paramUrlJumpInfo.has()) && (paramUrlJumpInfo.get() != null))
-    {
-      UrlJumpInfo localUrlJumpInfo = new UrlJumpInfo();
-      if (paramUrlJumpInfo.uint32_jump_type.has()) {}
-      for (int i = paramUrlJumpInfo.uint32_jump_type.get();; i = 0)
-      {
-        localUrlJumpInfo.jdField_a_of_type_Int = i;
-        localUrlJumpInfo.c = ors.a(paramUrlJumpInfo.bytes_jump_schema);
-        localUrlJumpInfo.b = ors.a(paramUrlJumpInfo.bytes_jump_bundle);
-        localUrlJumpInfo.jdField_a_of_type_JavaLangString = ors.a(paramUrlJumpInfo.bytes_jump_url);
-        localUrlJumpInfo.d = ors.a(paramUrlJumpInfo.bytes_clipboard_info);
-        localUrlJumpInfo.e = ors.a(paramUrlJumpInfo.bytes_common_data);
-        return localUrlJumpInfo;
+    UrlJumpInfo localUrlJumpInfo = new UrlJumpInfo();
+    if ((paramUrlJumpInfo != null) && (paramUrlJumpInfo.has()) && (paramUrlJumpInfo.get() != null)) {
+      if (!paramUrlJumpInfo.uint32_jump_type.has()) {
+        break label106;
       }
     }
-    return null;
+    label106:
+    for (int i = paramUrlJumpInfo.uint32_jump_type.get();; i = 0)
+    {
+      localUrlJumpInfo.jdField_a_of_type_Int = i;
+      localUrlJumpInfo.c = pha.a(paramUrlJumpInfo.bytes_jump_schema);
+      localUrlJumpInfo.b = pha.a(paramUrlJumpInfo.bytes_jump_bundle);
+      localUrlJumpInfo.jdField_a_of_type_JavaLangString = pha.a(paramUrlJumpInfo.bytes_jump_url);
+      localUrlJumpInfo.d = pha.a(paramUrlJumpInfo.bytes_clipboard_info);
+      localUrlJumpInfo.e = pha.a(paramUrlJumpInfo.bytes_common_data);
+      return localUrlJumpInfo;
+    }
   }
   
   public articlesummary.UrlJumpInfo a()

@@ -1,9 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface afhb
+public class afhb
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
+  public afhb(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b(this.a.getShareUrl());
+    paramView.setEnabled(false);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

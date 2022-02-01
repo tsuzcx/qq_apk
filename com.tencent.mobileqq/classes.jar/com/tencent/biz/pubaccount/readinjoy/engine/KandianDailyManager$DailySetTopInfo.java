@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import alof;
-import amnz;
+import anhk;
+import aong;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Calendar;
 import mqq.os.MqqHandler;
-import nrt;
-import ors;
+import oat;
+import pha;
 
 public class KandianDailyManager$DailySetTopInfo
   implements Serializable
@@ -59,7 +59,7 @@ public class KandianDailyManager$DailySetTopInfo
     if (paramQQAppInterface == null) {}
     MessageRecord localMessageRecord;
     long l;
-    amnz localamnz;
+    aong localaong;
     RecentUser localRecentUser;
     do
     {
@@ -69,26 +69,26 @@ public class KandianDailyManager$DailySetTopInfo
         {
           return;
         } while (!a());
-        localMessageRecord = paramQQAppInterface.a().b(alof.aS, 1008);
-        if ((localMessageRecord == null) || (localMessageRecord.isread) || (ors.b(alof.aS)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
+        localMessageRecord = paramQQAppInterface.a().b(anhk.aR, 1008);
+        if ((localMessageRecord == null) || (localMessageRecord.isread) || (pha.c(anhk.aR)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
           break;
         }
         l = NetConnInfoCenter.getServerTime();
-        localamnz = paramQQAppInterface.a().a();
-      } while (localamnz == null);
-      localRecentUser = localamnz.b(alof.aS, 1008);
+        localaong = paramQQAppInterface.a().a();
+      } while (localaong == null);
+      localRecentUser = (RecentUser)localaong.findRecentUser(anhk.aR, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(alof.aS, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
-    localamnz.a(localRecentUser);
+    paramQQAppInterface.a().a(anhk.aR, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    localaong.saveRecentUser(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.sendEmptyMessage(1009);
     }
     this.lastSetTopMsgUniseq = localMessageRecord.uniseq;
     this.lastSetTopMsgTime = a();
-    ors.a("readinjoy_daily_settop_info_key", this, true);
-    nrt.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
+    pha.a("readinjoy_daily_settop_info_key", this, true);
+    oat.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
     QLog.d("KandianDailyManager", 2, "successful setTop !  " + this);
     return;
     QLog.d("KandianDailyManager", 2, "give up setTop!");

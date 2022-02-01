@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbqx
-  extends ameq
+  implements View.OnClickListener
 {
-  bbqx(bbqu parambbqu) {}
+  bbqx(bbqr parambbqr, bbnu parambbnu, bbwe parambbwe) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
-    if (this.a.jdField_a_of_type_Bbrd != null)
-    {
-      if (paramInt1 == 8) {
-        this.a.jdField_a_of_type_Bbrd.b(paramInt2, "");
-      }
-      this.a.jdField_a_of_type_Bbrd = null;
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
-    if (this.a.jdField_a_of_type_Bbrd != null)
-    {
-      if (paramInt1 == 8)
-      {
-        this.a.jdField_a_of_type_Bbrd.b(0, paramString);
-        this.a.a(paramString, true, "");
-        ((amdu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
-      }
-      this.a.jdField_a_of_type_Bbrd = null;
-    }
+    this.jdField_a_of_type_Bbnu.a(this.jdField_a_of_type_Bbwe.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -2,6 +2,7 @@ package oicq.wlogin_sdk.tools;
 
 import android.content.Context;
 import android.os.Build.VERSION;
+import android.text.TextUtils;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -16,20 +17,23 @@ import oicq.wlogin_sdk.request.t;
 
 public class EcdhCrypt
 {
-  public static final String DEFAULT_PUB_KEY = "020b03cf3d99541f29ffec281bebbd4ea211292ac1f53d7128";
-  public static final String DEFAULT_SHARE_KEY = "4da0f614fc9f29c2054c77048a6566d7";
-  public static final String S_PUB_KEY = "04928D8850673088B343264E0C6BACB8496D697799F37211DEB25BB73906CB089FEA9639B4E0260498B51A992D50813DA8";
-  public static final String X509_S_PUB_KEY = "3046301006072A8648CE3D020106052B8104001F03320004928D8850673088B343264E0C6BACB8496D697799F37211DEB25BB73906CB089FEA9639B4E0260498B51A992D50813DA8";
+  public static final String DEFAULT_PUB_KEY = "04edb8906046f5bfbe9abbc5a88b37d70a6006bfbabc1f0cd49dfb33505e63efc5d78ee4e0a4595033b93d02096dcd3190279211f7b4f6785079e19004aa0e03bc";
+  public static final String DEFAULT_SHARE_KEY = "c129edba736f4909ecc4ab8e010f46a3";
+  static String SvrPubKey;
+  static final String X509Prefix = "3059301306072a8648ce3d020106082a8648ce3d030107034200";
   public static byte[] _c_pri_key = new byte[0];
   public static byte[] _c_pub_key;
   private static byte[] _g_share_key = new byte[0];
   private static boolean initFlg = false;
   public static PrivateKey pkcs8PrivateKey;
-  private static boolean userOpenSSLLib = true;
+  private static int sKeyVersion = 1;
+  private static boolean userOpenSSLLib;
   public static PublicKey x509PublicKey;
   
   static
   {
+    SvrPubKey = "04EBCA94D733E399B2DB96EACDD3F69A8BB0F74224E2B44E3357812211D2E62EFBC91BB553098E25E33A799ADC7F76FEB208DA7C6522CDB0719A305180CC54A82E";
+    userOpenSSLLib = true;
     _c_pub_key = new byte[0];
   }
   
@@ -40,36 +44,30 @@ public class EcdhCrypt
   
   private byte[] calShareKeyByBouncycastle(byte[] paramArrayOfByte)
   {
-    Object localObject1 = "3046301006072A8648CE3D020106052B8104001F03320004";
     try
     {
-      if (paramArrayOfByte.length < 30) {
-        localObject1 = "302E301006072A8648CE3D020106052B8104001F031A00";
-      }
-      Object localObject2 = util.buf_to_string(paramArrayOfByte);
-      localObject1 = constructX509PublicKey((String)localObject1 + (String)localObject2);
-      util.LOGI("raw public key " + util.buf_to_string(_c_pub_key), "");
-      util.LOGI("pkcs8PrivateKey " + pkcs8PrivateKey.toString(), "");
-      localObject2 = KeyAgreement.getInstance("ECDH", "BC");
+      Object localObject1 = util.buf_to_string(paramArrayOfByte);
+      localObject1 = constructX509PublicKey("3059301306072a8648ce3d020106082a8648ce3d030107034200" + (String)localObject1);
+      Object localObject2 = KeyAgreement.getInstance("ECDH", "BC");
       ((KeyAgreement)localObject2).init(pkcs8PrivateKey);
       ((KeyAgreement)localObject2).doPhase((Key)localObject1, true);
       localObject1 = ((KeyAgreement)localObject2).generateSecret();
-      localObject2 = MD5.toMD5Byte((byte[])localObject1);
-      util.LOGI("share key " + util.buf_to_string((byte[])localObject1), "");
-      util.LOGI("share key md5 " + util.buf_to_string((byte[])localObject2), "");
-      return localObject2;
+      localObject2 = new byte[16];
+      System.arraycopy(localObject1, 0, localObject2, 0, 16);
+      localObject1 = MD5.toMD5Byte((byte[])localObject2);
+      return localObject1;
     }
     catch (ExceptionInInitializerError paramArrayOfByte)
     {
       util.LOGW("create key failed ExceptionInInitializerError, " + paramArrayOfByte.getMessage(), "");
-      t.as.attr_api(2459818);
+      t.at.attr_api(2459818);
       return null;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
       util.LOGI("calShareKeyByBouncycastle failed " + pkcs8PrivateKey.toString() + " peer public key " + util.buf_to_string(paramArrayOfByte), "");
-      util.printException(localException);
-      t.as.attr_api(2459818);
+      util.printThrowable(localThrowable, "calShareKeyByBouncycastle");
+      t.at.attr_api(2459818);
     }
     return null;
   }
@@ -80,7 +78,7 @@ public class EcdhCrypt
     if (GenECDHKeyEx(paramString3, paramString2, paramString1) == 0) {
       return _g_share_key;
     }
-    t.as.attr_api(2461268);
+    t.at.attr_api(2461268);
     return null;
   }
   
@@ -94,20 +92,25 @@ public class EcdhCrypt
   {
     try
     {
-      Object localObject1 = KeyPairGenerator.getInstance("EC", "BC");
-      ((KeyPairGenerator)localObject1).initialize(new ECGenParameterSpec("secp192k1"));
+      Object localObject1 = util.buf_to_string(util.string_to_buf(SvrPubKey));
+      Object localObject3 = "3059301306072a8648ce3d020106082a8648ce3d030107034200" + (String)localObject1;
+      localObject1 = KeyPairGenerator.getInstance("EC", "BC");
+      ((KeyPairGenerator)localObject1).initialize(new ECGenParameterSpec("prime256v1"));
       Object localObject2 = ((KeyPairGenerator)localObject1).genKeyPair();
       localObject1 = ((KeyPair)localObject2).getPublic();
       byte[] arrayOfByte = ((PublicKey)localObject1).getEncoded();
       localObject2 = ((KeyPair)localObject2).getPrivate();
       ((PrivateKey)localObject2).getEncoded();
-      PublicKey localPublicKey = constructX509PublicKey("3046301006072A8648CE3D020106052B8104001F03320004928D8850673088B343264E0C6BACB8496D697799F37211DEB25BB73906CB089FEA9639B4E0260498B51A992D50813DA8");
-      KeyAgreement localKeyAgreement = KeyAgreement.getInstance("ECDH", "BC");
-      localKeyAgreement.init((Key)localObject2);
-      localKeyAgreement.doPhase(localPublicKey, true);
-      _g_share_key = MD5.toMD5Byte(localKeyAgreement.generateSecret());
-      _c_pub_key = new byte[49];
-      System.arraycopy(arrayOfByte, 23, _c_pub_key, 0, 49);
+      localObject3 = constructX509PublicKey((String)localObject3);
+      Object localObject4 = KeyAgreement.getInstance("ECDH", "BC");
+      ((KeyAgreement)localObject4).init((Key)localObject2);
+      ((KeyAgreement)localObject4).doPhase((Key)localObject3, true);
+      localObject3 = ((KeyAgreement)localObject4).generateSecret();
+      localObject4 = new byte[16];
+      System.arraycopy(localObject3, 0, localObject4, 0, 16);
+      _g_share_key = MD5.toMD5Byte((byte[])localObject4);
+      _c_pub_key = new byte[65];
+      System.arraycopy(arrayOfByte, 26, _c_pub_key, 0, 65);
       x509PublicKey = (PublicKey)localObject1;
       pkcs8PrivateKey = (PrivateKey)localObject2;
       util.LOGI("initShareKeyByBouncycastle OK", "");
@@ -116,14 +119,14 @@ public class EcdhCrypt
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
       util.LOGW("create key pair and shared key failed ExceptionInInitializerError, " + localExceptionInInitializerError.getMessage(), "");
-      t.as.attr_api(2368735);
+      t.at.attr_api(2368735);
       return -1;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
       util.LOGI("initShareKeyByBouncycastle failed, ", "");
-      util.printException(localException);
-      t.as.attr_api(2368735);
+      util.printThrowable(localThrowable, "initShareKeyByBouncycastle");
+      t.at.attr_api(2368735);
     }
     return -2;
   }
@@ -154,7 +157,7 @@ public class EcdhCrypt
     {
       try
       {
-        int i = GenECDHKeyEx("04928D8850673088B343264E0C6BACB8496D697799F37211DEB25BB73906CB089FEA9639B4E0260498B51A992D50813DA8", "", "");
+        int i = GenECDHKeyEx(SvrPubKey, "", "");
         return i;
       }
       finally {}
@@ -200,6 +203,11 @@ public class EcdhCrypt
     return (byte[])_g_share_key.clone();
   }
   
+  public int get_pub_key_ver()
+  {
+    return sKeyVersion;
+  }
+  
   public int initShareKey()
   {
     if (true == initFlg) {
@@ -221,10 +229,31 @@ public class EcdhCrypt
   
   public int initShareKeyByDefault()
   {
-    _c_pub_key = util.string_to_buf("020b03cf3d99541f29ffec281bebbd4ea211292ac1f53d7128");
-    _g_share_key = util.string_to_buf("4da0f614fc9f29c2054c77048a6566d7");
+    _c_pub_key = util.string_to_buf("04edb8906046f5bfbe9abbc5a88b37d70a6006bfbabc1f0cd49dfb33505e63efc5d78ee4e0a4595033b93d02096dcd3190279211f7b4f6785079e19004aa0e03bc");
+    _g_share_key = util.string_to_buf("c129edba736f4909ecc4ab8e010f46a3");
     util.LOGI("initShareKeyByDefault OK", "");
     return 0;
+  }
+  
+  public void setPubKey(String paramString, int paramInt)
+  {
+    try
+    {
+      util.LOGI("setPubKey " + paramString + " ver:" + paramInt, "");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (paramInt <= 0) {
+          return;
+        }
+        SvrPubKey = paramString;
+        sKeyVersion = paramInt;
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      util.printThrowable(paramString, "setPubKey");
+    }
   }
   
   public void set_c_pri_key(byte[] paramArrayOfByte)

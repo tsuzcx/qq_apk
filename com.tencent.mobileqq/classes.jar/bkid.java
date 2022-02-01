@@ -1,14 +1,29 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract interface bkid
-  extends IInterface
+class bkid
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(bkig parambkig);
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public bkid(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.a = new WeakReference(paramOnDismissListener);
+  }
   
-  public abstract void b(bkig parambkig);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
+  }
 }
 
 

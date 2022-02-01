@@ -1,115 +1,26 @@
-public abstract class apbx<DATA, CONFIG extends apck>
-  extends apbq<DATA, CONFIG>
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+
+public abstract interface apbx
 {
-  private float[] a;
-  private float d;
-  private float e = -1.0F;
-  private float f;
+  public abstract void a(int paramInt);
   
-  public apbx(apbz paramapbz)
-  {
-    super(paramapbz);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public float a()
-  {
-    return -this.f;
-  }
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  protected float a(long paramLong)
-  {
-    long l = this.jdField_a_of_type_Long;
-    return f() - (float)(paramLong - l) * this.f;
-  }
+  public abstract void b(int paramInt);
   
-  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
-  {
-    if (!a(paramLong1))
-    {
-      apds.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
-      this.d = a(paramLong2);
-      if (!c())
-      {
-        this.e = paramFloat2;
-        a(true);
-      }
-      return;
-    }
-    a(false);
-  }
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public void a(long paramLong)
-  {
-    this.d = a(paramLong);
-  }
+  public abstract void c(int paramInt);
   
-  public float[] a(long paramLong)
-  {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - apbz.a().b());
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public float b()
-  {
-    return this.d;
-  }
+  public abstract void d();
   
-  public float[] b(long paramLong)
-  {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
+  public abstract void e();
   
-  public float c()
-  {
-    return this.e;
-  }
-  
-  public float d()
-  {
-    return this.d + this.jdField_a_of_type_Float;
-  }
-  
-  public float e()
-  {
-    return this.e + this.b;
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Apdi.a());
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.d = paramFloat;
-  }
-  
-  public void h(float paramFloat)
-  {
-    this.e = paramFloat;
-  }
+  public abstract void f();
 }
 
 

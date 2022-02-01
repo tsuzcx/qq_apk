@@ -1,47 +1,17 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aezp
+public class aezp
+  extends anmu
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public aezp(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  aezp(aezn paramaezn) {}
-  
-  public void a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
-      localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

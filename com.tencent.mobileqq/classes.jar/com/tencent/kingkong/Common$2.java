@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import abui;
-import abuw;
+import adax;
+import adbl;
 
 final class Common$2
   implements Runnable
@@ -12,7 +12,7 @@ final class Common$2
     {
       if ((!Common.jdField_a_of_type_Boolean) && (Common.b()) && (Common.c()) && (Common.d()))
       {
-        if (!Common.jdField_a_of_type_Abuw.a()) {
+        if (!Common.jdField_a_of_type_Adbl.a()) {
           return;
         }
         Common.a(true);
@@ -29,20 +29,20 @@ final class Common$2
         }
         Common.jdField_a_of_type_Boolean = true;
         Common.a(false);
-        Common.jdField_a_of_type_Abuw.a();
+        Common.jdField_a_of_type_Adbl.a();
         return;
       }
     }
     catch (Exception localException)
     {
       Common.jdField_a_of_type_Boolean = false;
-      abui.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
+      adax.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.kingkong.Common.2
  * JD-Core Version:    0.7.0.1
  */

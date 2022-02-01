@@ -1,41 +1,89 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bmpp
+public final class bmpp
+  extends Drawable.ConstantState
 {
-  private List<bmpr> a = new LinkedList();
+  int jdField_a_of_type_Int = 30;
+  bmpr jdField_a_of_type_Bmpr;
+  bmpy jdField_a_of_type_Bmpy;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public static bmpp a()
+  private bmpp(bmpl parambmpl) {}
+  
+  public int a()
   {
-    return bmps.a;
+    if (this.jdField_a_of_type_Bmpr == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Bmpr.a();
   }
   
-  public void a()
+  public void a(Rect paramRect)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmpr)localIterator.next()).b();
+    this.jdField_a_of_type_Bmpr.a(paramRect);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_Bmpr == null)
+    {
+      this.jdField_a_of_type_Bmpr = new bmpr(BaseApplicationImpl.getApplication());
+      if (this.jdField_a_of_type_Bmpy == null) {
+        this.jdField_a_of_type_Bmpy = new bmpq(this);
+      }
+      this.jdField_a_of_type_Bmpr.a(this.jdField_a_of_type_Bmpy);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        if (!URLUtil.isNetworkUrl(paramString)) {
+          break label148;
+        }
+        this.jdField_a_of_type_Bmpr.a(paramString, -1, true);
+      }
+    }
+    for (;;)
+    {
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+      if (this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Bmpr.a();
+      break;
+      label148:
+      this.jdField_a_of_type_Bmpr.a(paramString, true);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public int b()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmpr)localIterator.next()).a(paramBoolean);
-    }
+    return a() * 1000 / this.jdField_a_of_type_Int;
   }
   
-  public boolean a(@NonNull bmpr parambmpr)
+  public int getChangingConfigurations()
   {
-    return this.a.add(parambmpr);
+    return 0;
   }
   
-  public boolean b(@NonNull bmpr parambmpr)
+  public Drawable newDrawable()
   {
-    return this.a.remove(parambmpr);
+    return new bmpl(this);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new bmpl(this);
   }
 }
 

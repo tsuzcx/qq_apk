@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agea;
+import ahln;
+import ahls;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
-class TribeShortVideoItemBuilder$3
+public class TribeShortVideoItemBuilder$3
   implements Runnable
 {
-  TribeShortVideoItemBuilder$3(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, agea paramagea) {}
+  public TribeShortVideoItemBuilder$3(ahln paramahln, ahls paramahls) {}
   
   public void run()
   {
@@ -18,7 +19,7 @@ class TribeShortVideoItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

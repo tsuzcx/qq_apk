@@ -13,7 +13,7 @@ public enum VideoMaterialUtil$FACE_CROP_ITEM_FRAME
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoMaterialUtil.FACE_CROP_ITEM_FRAME
  * JD-Core Version:    0.7.0.1
  */

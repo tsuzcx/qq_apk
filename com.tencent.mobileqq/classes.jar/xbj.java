@@ -1,32 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class xbj
-  implements TextWatcher
+public class xbj
+  extends wla
 {
-  xbj(xbg paramxbg) {}
+  public wfw a = new wfw();
   
-  public void afterTextChanged(Editable paramEditable)
+  public xbj(qqstory_service.RspAuthKey paramRspAuthKey)
   {
-    xan localxan = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localxan.a("search_poi", 0, 0, new String[] { paramEditable });
-      wxk.a("0X80076D1");
-      wxk.b("0X80075E6");
-      xbg.a(this.a);
-      return;
-    }
+    super(paramRspAuthKey.result);
+    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
+    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
+    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
+    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
+    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
+    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
+    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbj
  * JD-Core Version:    0.7.0.1
  */

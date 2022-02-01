@@ -1,63 +1,39 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bflc
-  implements bfor
 {
-  public bflc(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
   
-  public void a(int paramInt, String paramString)
+  public bflc()
   {
-    bflp.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.b = "";
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public bflc(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    bflp.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bflp.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
-    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("iconUrl").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", appid").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", titleType").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", defTitle").append("=").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bflc
  * JD-Core Version:    0.7.0.1
  */

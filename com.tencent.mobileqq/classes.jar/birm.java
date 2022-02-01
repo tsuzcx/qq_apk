@@ -1,20 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.plugin.PluginIphoneTitleBarActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
 
 public class birm
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public birm(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
+  public birm(DownloadNativeApi.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      birk.a(this.a.this$0).onDownloadCancel(this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     birm
  * JD-Core Version:    0.7.0.1
  */

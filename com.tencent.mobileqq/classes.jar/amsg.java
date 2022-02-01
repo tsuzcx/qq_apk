@@ -1,436 +1,247 @@
-import android.app.ActivityManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ConfigurationInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.process.download.CmGameRscDownloader.1;
+import com.tencent.mobileqq.apollo.process.download.CmGameRscDownloader.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARDeviceController.1;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class amsg
 {
-  private static amsg jdField_a_of_type_Amsg = new amsg();
-  private int jdField_a_of_type_Int = 5;
-  private ArEffectConfig jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-  private String jdField_a_of_type_JavaLangString = a(Build.MODEL);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 1;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e = true;
-  private boolean f = true;
-  private boolean g;
-  private boolean h;
+  private int jdField_a_of_type_Int;
+  private amsj jdField_a_of_type_Amsj;
+  private amsp jdField_a_of_type_Amsp;
+  public bhhe a;
   
-  private amsg()
+  public amsg(amsj paramamsj, amsp paramamsp)
   {
-    Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4);
-    this.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("gpu_renderer", null);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString);
-    }
-    this.jdField_c_of_type_Int = ((SharedPreferences)localObject1).getInt("ar_incompatible_reason", 0);
-    this.jdField_d_of_type_Int = ((SharedPreferences)localObject1).getInt("ar_load_so_crash_time", 0);
-    Object localObject2 = ((SharedPreferences)localObject1).getString("ar_load_so_crash_version", "");
-    if (!AppSetting.f().equals(localObject2))
-    {
-      localObject2 = ((SharedPreferences)localObject1).edit();
-      ((SharedPreferences.Editor)localObject2).putInt("ar_load_so_crash_time", 0);
-      bdne.a((SharedPreferences.Editor)localObject2);
-      this.jdField_d_of_type_Int = 0;
-    }
-    int i = ((SharedPreferences)localObject1).getInt("ar_native_so_crash_version", 0);
-    if (((SharedPreferences)localObject1).getInt("ar_native_so_version", 0) != i)
-    {
-      ((SharedPreferences)localObject1).edit().putInt("ar_load_so_crash_time", 0).commit();
-      this.jdField_d_of_type_Int = 0;
-    }
-    try
-    {
-      localObject1 = ((ActivityManager)BaseApplicationImpl.getApplication().getSystemService("activity")).getDeviceConfigurationInfo();
-      if (localObject1 == null) {
-        break label249;
-      }
-      if (((ConfigurationInfo)localObject1).reqGlEsVersion < 131072) {
-        break label290;
-      }
-      bool = true;
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        if ((!"000000000000000".equalsIgnoreCase(((TelephonyManager)BaseApplicationImpl.getApplication().getSystemService("phone")).getDeviceId())) || (!Build.FINGERPRINT.startsWith("generic"))) {
-          break label303;
-        }
-        for (boolean bool = true;; bool = false)
-        {
-          this.g = bool;
-          return;
-          bool = false;
-          break;
-          localException = localException;
-          localException.printStackTrace();
-          break label249;
-        }
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    this.h = bool;
+    this.jdField_a_of_type_Bhhe = new amsi(this);
+    this.jdField_a_of_type_Amsj = paramamsj;
+    this.jdField_a_of_type_Amsp = paramamsp;
   }
   
-  public static amsg a()
+  private void a(int paramInt)
   {
-    return jdField_a_of_type_Amsg;
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
+    Object localObject = ampj.a(paramInt);
+    if (localObject == null) {
+      QLog.w("cmgame_process.CmGameRscDownloader", 1, "[handleLoadSuppack], launcher is null, mGameId:" + paramInt);
     }
-    paramString = paramString.toLowerCase();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramString.length())
+    do
     {
-      char c1 = paramString.charAt(i);
-      if (((c1 >= '0') && (c1 <= '9')) || ((c1 >= 'a') && (c1 <= 'z'))) {
-        localStringBuilder.append(c1);
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
+      return;
+      localObject = ((amrk)localObject).a();
+    } while (localObject == null);
+    ((amsk)localObject).a();
   }
   
-  private void a()
+  private void a(String paramString)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-    int i;
+    Object localObject = ampj.a();
+    if ((localObject == null) || (this.jdField_a_of_type_Amsj == null)) {
+      return;
+    }
+    ampj.c(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int);
+    bhhk localbhhk = null;
+    localObject = (bhhh)((AppInterface)localObject).getManager(47);
+    if (localObject != null) {
+      localbhhk = ((bhhh)localObject).a(3);
+    }
+    if (localbhhk == null)
+    {
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "updateGameRes no downloaderInterface");
+      return;
+    }
+    localObject = bgln.b();
+    if ((localObject != null) && (localObject.length == 2) && (localObject[1] <= 50L))
+    {
+      ApolloItemBuilder.a(anni.a(2131700917), 1, BaseApplicationImpl.getContext());
+      QLog.w("cmgame_process.CmGameRscDownloader", 2, "updateGameRes:available space on SD card is less than 50M. ====> Stop download game rsc.");
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(ancb.s).append(this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString);
     int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null)
+    if (this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.a.iterator();
-      for (;;)
+      localObject = ".patch";
+      paramString = new bhhf(paramString, new File((String)localObject));
+      paramString.p = true;
+      paramString.j = false;
+      paramString.n = true;
+      paramString.s = false;
+      paramString.q = true;
+      paramString.r = true;
+      paramString.jdField_b_of_type_Boolean = true;
+      paramString.f = "apollo_res";
+      localObject = new Bundle();
+      localbhhk.a(paramString, this.jdField_a_of_type_Bhhe, (Bundle)localObject);
+      k = this.jdField_a_of_type_Amsj.jdField_c_of_type_Int;
+      if ((k != 2) && (k != 1)) {
+        break label372;
+      }
+    }
+    label372:
+    for (int i = 1;; i = 0)
+    {
+      int j;
+      if ((k != 4) && (k != 5))
       {
-        if (localIterator.hasNext()) {
-          if (a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString))
-          {
-            this.jdField_a_of_type_Int = 5;
-            this.jdField_b_of_type_Int = 1;
-            i = 1;
-            int j = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.c.iterator();
-              do
-              {
-                k = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              k = 1;
-              j = k;
-              if (k == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                j = k;
-              }
-            }
-            k = j;
-            ArDefaultSetting localArDefaultSetting;
-            if (j == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              do
-              {
-                k = j;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-              } while ((localArDefaultSetting.jdField_a_of_type_Int != 0) || (!a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_a_of_type_JavaLangString)));
-              this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-              this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-              k = 1;
-            }
-            i = k;
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.b.iterator();
-              do
-              {
-                i = k;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Int = 5;
-              this.jdField_b_of_type_Int = 1;
-              i = 1;
-            }
-            k = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.d.iterator();
-              do
-              {
-                j = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              j = 1;
-              k = j;
-              if (j == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                k = j;
-              }
-            }
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              while (localIterator.hasNext())
-              {
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-                if ((localArDefaultSetting.jdField_a_of_type_Int == 1) && (a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_b_of_type_JavaLangString)))
-                {
-                  this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-                  this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-                  i = 1;
-                }
-              }
-            }
+        j = k;
+        if (k != 3) {}
+      }
+      else
+      {
+        j = 1;
+      }
+      this.jdField_a_of_type_Int = 1;
+      VipUtils.a(null, "cmshow", "Apollo", "game_renew_start", i, j, new String[] { String.valueOf(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Amsj.jdField_a_of_type_Int), this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Amsj.jdField_d_of_type_Int) });
+      return;
+      localObject = ".zip";
+      break;
+    }
+  }
+  
+  private void b()
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameRscDownloader", 2, "[doOnGameResFileDone]");
+    }
+    if (this.jdField_a_of_type_Amsj == null) {}
+    do
+    {
+      String str1;
+      do
+      {
+        return;
+        QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], download rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Amsj.jdField_c_of_type_Long));
+        boolean bool = this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean;
+        String str2 = this.jdField_a_of_type_Amsj.jdField_c_of_type_JavaLangString;
+        str1 = ancb.s + this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString + ".zip";
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
+        try
+        {
+          localSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString, false).commit();
+          if (!bool) {
+            break;
           }
+          bool = amhd.a(String.valueOf(this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString), str2);
+          QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], patch rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Amsj.jdField_c_of_type_Long));
+          if (bool) {
+            break;
+          }
+          QLog.e("cmgame_process.CmGameRscDownloader", 1, "fail to patch, download complete pack.");
+          this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean = false;
+          a(this.jdField_a_of_type_Amsj.jdField_d_of_type_JavaLangString);
+          return;
         }
+        catch (Exception localException)
+        {
+          QLog.e("cmgame_process.CmGameRscDownloader", 1, "uncompressZip fail zip file: " + str1, localException);
+          localSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString, true).commit();
+        }
+      } while (this.jdField_a_of_type_Amsp == null);
+      this.jdField_a_of_type_Amsp.c(-1006, this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString);
+      return;
+      if (this.jdField_a_of_type_Amsp != null) {
+        bgmg.a(str1, this.jdField_a_of_type_Amsp.a(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int, this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString), false);
+      }
+      ApolloUtil.a();
+      QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], unzip rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Amsj.jdField_c_of_type_Long));
+      ampj.a(new Object[] { "[downloadRes], done packName:", this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString, ", cost:", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Amsj.jdField_c_of_type_Long) });
+      a(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Amsp != null) {
+        this.jdField_a_of_type_Amsp.b(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int, this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_Int = 0;
+    } while (this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean);
+    int k = this.jdField_a_of_type_Amsj.jdField_c_of_type_Int;
+    if (k != 2) {
+      if (k != 1) {
+        break label626;
       }
     }
     for (;;)
     {
-      if ((i != 0) && (this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int <= 1))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      this.jdField_a_of_type_Int = localSharedPreferences.getInt("ar_adjust_track_quality", -1);
-      if ((this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_b_of_type_Int = localSharedPreferences.getInt("ar_adjust_render_quality", -1);
-        if ((this.jdField_b_of_type_Int < 0) || (this.jdField_b_of_type_Int > 1)) {
-          break label608;
-        }
-      }
-      for (this.jdField_c_of_type_Boolean = false;; this.jdField_c_of_type_Boolean = true)
-      {
-        this.jdField_d_of_type_Boolean = true;
-        return;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = 5;
-        break;
-        label608:
-        this.jdField_b_of_type_Int = 1;
-      }
-      i = k;
-      continue;
-      i = 0;
-      break;
-      i = 0;
-    }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    if ((this.e) || (this.jdField_c_of_type_Int != paramInt))
-    {
-      this.e = false;
-      ThreadManager.post(new ARDeviceController.1(this, paramInt, paramBoolean), 5, null, true);
-    }
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(ArEffectConfig paramArEffectConfig)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = paramArEffectConfig;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    do
-    {
+      int j;
+      VipUtils.a(null, "cmshow", "Apollo", "game_renew_succeed", i, j, new String[] { String.valueOf(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Amsj.jdField_a_of_type_Int), this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Amsj.jdField_d_of_type_Int) });
       return;
-      this.jdField_b_of_type_JavaLangString = a(paramString);
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-      localEditor.putString("gpu_renderer", paramString);
-      bdne.a(localEditor);
-      a(paramString);
-    } while (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null);
-    a();
+      i = 1;
+      label626:
+      if ((k != 2) && (k != 5))
+      {
+        j = k;
+        if (k != 3) {}
+      }
+      else
+      {
+        j = 1;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Amsp != null) {
+      this.jdField_a_of_type_Amsp.a(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int, this.jdField_a_of_type_Amsj.jdField_b_of_type_JavaLangString);
+    }
+    if ((this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Amsj.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Amsj.jdField_a_of_type_ArrayOfByte.length > 0))
+    {
+      ThreadManager.excute(new CmGameRscDownloader.2(this), 192, null, true);
+      return;
+    }
+    boolean bool = bgnt.h(BaseApplicationImpl.getApplication().getApplicationContext());
+    if (QLog.isColorLevel()) {
+      QLog.i("cmgame_process.CmGameRscDownloader", 2, "is wifi:" + bool + ",pkg size:" + this.jdField_a_of_type_Amsj.jdField_b_of_type_Long + ",tip size:" + this.jdField_a_of_type_Amsj.jdField_a_of_type_Long);
+    }
+    if ((bool) || (this.jdField_a_of_type_Amsj.jdField_b_of_type_Long < this.jdField_a_of_type_Amsj.jdField_a_of_type_Long))
+    {
+      if (this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean) {}
+      for (localObject = this.jdField_a_of_type_Amsj.jdField_e_of_type_JavaLangString;; localObject = this.jdField_a_of_type_Amsj.jdField_d_of_type_JavaLangString)
+      {
+        a((String)localObject);
+        return;
+      }
+    }
+    Object localObject = new amsh(this);
+    if (this.jdField_a_of_type_Amsp != null) {
+      this.jdField_a_of_type_Amsp.a((amlp)localObject, this.jdField_a_of_type_Amsj.jdField_b_of_type_Long);
+    }
+    if ("message".equals(this.jdField_a_of_type_Amsj.f)) {}
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm_toast", i, 3, new String[] { String.valueOf(this.jdField_a_of_type_Amsj.jdField_b_of_type_Int) });
+      return;
+    }
   }
   
   public boolean a()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    for (;;)
+    if (this.jdField_a_of_type_Amsj == null) {}
+    boolean bool;
+    do
     {
-      int j;
-      try
-      {
-        if (this.jdField_d_of_type_Int >= 5)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ARDeviceController", 2, "isAREnable enable= false,failCode= 870888");
-          }
-          a(false, 870888);
-          return bool2;
-        }
-        if (!this.f) {
-          break label338;
-        }
-        this.f = false;
-        this.jdField_d_of_type_Int += 1;
-        Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-        SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-        localEditor.putInt("ar_load_so_crash_time", this.jdField_d_of_type_Int);
-        localEditor.putString("ar_load_so_crash_version", AppSetting.f());
-        localEditor.putInt("ar_native_so_crash_version", ((SharedPreferences)localObject1).getInt("ar_native_so_version", 0));
-        bdne.a(localEditor);
-        j = 1;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 870882;
-          a(bool1, i);
-          if (QLog.isColorLevel()) {
-            QLog.d("ARDeviceController", 2, "isAREnable enable= " + bool1 + ",failCode= " + i);
-          }
-          bool2 = bool1;
-          if (j == 0) {
-            continue;
-          }
-          localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-          ((SharedPreferences.Editor)localObject1).putInt("ar_load_so_crash_time", 0);
-          bdne.a((SharedPreferences.Editor)localObject1);
-          this.jdField_d_of_type_Int = 0;
-          bool2 = bool1;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 14) {
-          break label272;
-        }
-      }
-      finally {}
-      int i = 870881;
-      continue;
-      label272:
-      if (!this.h)
-      {
-        i = 870883;
-      }
-      else if (this.g)
-      {
-        i = 870887;
-      }
-      else if (lnz.f() < 3)
-      {
-        i = 870884;
-      }
-      else
-      {
-        bool2 = awci.a();
-        if (!bool2)
-        {
-          i = 870886;
-        }
-        else
-        {
-          bool1 = true;
-          i = 0;
-          continue;
-          label338:
-          j = 0;
-        }
-      }
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    int i;
-    if (this.jdField_d_of_type_Int >= 5) {
-      i = 870888;
-    }
-    for (;;)
-    {
+      return false;
+      bool = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Amsj.jdField_a_of_type_JavaLangString, false);
+      if (bool) {}
+      QLog.i("cmgame_process.CmGameRscDownloader", 1, "isVerifyFail:" + bool + ",isUpdate:" + this.jdField_a_of_type_Amsj.jdField_a_of_type_Boolean + ",isPatch:" + this.jdField_a_of_type_Amsj.jdField_b_of_type_Boolean + "packType:" + this.jdField_a_of_type_Amsj.jdField_d_of_type_Int + ",delay:" + this.jdField_a_of_type_Amsj.jdField_e_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.d("ARDeviceController", 2, "isSupportAr enable= " + bool + ",errorCode= " + i);
+        QLog.d("cmgame_process.CmGameRscDownloader", 2, new Object[] { "patchUrl:", this.jdField_a_of_type_Amsj.jdField_e_of_type_JavaLangString });
       }
-      return bool;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = 870882;
-      }
-      else if (Build.VERSION.SDK_INT < 14)
-      {
-        i = 870881;
-      }
-      else if (!this.h)
-      {
-        i = 870883;
-      }
-      else if (this.g)
-      {
-        i = 870887;
-      }
-      else if (lnz.f() < 3)
-      {
-        i = 870884;
-      }
-      else if (!awci.a())
-      {
-        i = 870886;
-      }
-      else
-      {
-        i = 0;
-        bool = true;
-      }
-    }
+    } while ((!bool) && (!this.jdField_a_of_type_Amsj.jdField_a_of_type_Boolean));
+    ThreadManager.getSubThreadHandler().postDelayed(new CmGameRscDownloader.1(this), this.jdField_a_of_type_Amsj.jdField_e_of_type_Int);
+    return true;
   }
 }
 

@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class aqam
+  implements View.OnTouchListener
 {
-  public MessageRecord a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public aqam(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  public aqam(MessageRecord paramMessageRecord)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramMessageRecord;
-    this.b = (paramMessageRecord instanceof MessageForPic);
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
+      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
+      {
+        this.a.setText("");
+        this.a.setClearButtonVisible(false);
+        return true;
+      }
+    }
   }
 }
 

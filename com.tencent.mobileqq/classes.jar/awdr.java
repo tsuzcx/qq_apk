@@ -1,24 +1,64 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.TextView;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-class awdr
-  extends Editable.Factory
+public class awdr
+  extends ScheduledThreadPoolExecutor
 {
-  awdr(awdp paramawdp, TextView paramTextView) {}
-  
-  public Editable newEditable(CharSequence paramCharSequence)
+  public awdr(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    if ((paramCharSequence instanceof bamz)) {
-      return (Editable)paramCharSequence;
+    super(paramInt);
+  }
+  
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
     }
-    return new bamz(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.ttpic.openapi.util;
 
-import android.util.Pair;
+import com.tencent.ttpic.openapi.model.StickerItem;
 import java.util.Comparator;
 
 final class VideoTemplateParser$9
-  implements Comparator<Pair<Float, ? extends Object>>
+  implements Comparator<StickerItem>
 {
-  public int compare(Pair<Float, ? extends Object> paramPair1, Pair<Float, ? extends Object> paramPair2)
+  public int compare(StickerItem paramStickerItem1, StickerItem paramStickerItem2)
   {
-    return ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
+    return paramStickerItem1.zIndex - paramStickerItem2.zIndex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.9
  * JD-Core Version:    0.7.0.1
  */

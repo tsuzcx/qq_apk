@@ -1,25 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class npp
-  implements bhuw
+class npp
+  implements Animation.AnimationListener
 {
-  public npp(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
+  npp(npm paramnpm) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAdapterView = (npo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Nps == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Nps.a(paramAdapterView);
+    npm.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npp
  * JD-Core Version:    0.7.0.1
  */

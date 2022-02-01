@@ -1,26 +1,32 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class amsn
-  implements ServiceConnection
+  implements ancw
 {
-  amsn(amsm paramamsm) {}
+  amsn(amsk paramamsk, String paramString) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    amsm.a(this.a, amzn.a(paramIBinder));
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + amsm.a(this.a));
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
+      }
+      ApolloCmdChannel localApolloCmdChannel = ampj.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(amsk.a(this.jdField_a_of_type_Amsk), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
+      return;
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    amsm.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + amsm.a(this.a));
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
     }
   }
 }

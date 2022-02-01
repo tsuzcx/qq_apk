@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -31,8 +31,8 @@ public class OverlapLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OverlapLayout);
-    this.a = paramAttributeSet.getDimension(1, aepi.a(4.0F, paramContext.getResources()));
-    this.b = paramAttributeSet.getDimension(0, aepi.a(15.0F, paramContext.getResources()));
+    this.a = paramAttributeSet.getDimension(1, afur.a(4.0F, paramContext.getResources()));
+    this.b = paramAttributeSet.getDimension(0, afur.a(15.0F, paramContext.getResources()));
     paramAttributeSet.recycle();
   }
   
@@ -234,7 +234,7 @@ public class OverlapLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.OverlapLayout
  * JD-Core Version:    0.7.0.1
  */

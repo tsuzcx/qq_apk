@@ -1,49 +1,18 @@
-import MQQ.PayRuleCfg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
 
-public class adsc
-  extends Handler
+public final class adsc
+  implements DialogInterface.OnClickListener
 {
-  public adsc(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adsc(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.j();
-      return;
-    case 1: 
-      QQSettingMe.a(this.a);
-      return;
-    case 2: 
-      this.a.u();
-      return;
+    bgoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    int i = ((Bundle)paramMessage.obj).getInt("type");
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
-    {
-      QQSettingMe.a(this.a).enable = 0;
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
-      amfs.a(this.a.a.c(), QQSettingMe.a(this.a));
-      sendEmptyMessage(2);
-    }
-    beat.a(this.a.a, "last_pull_pay_rule", 0L);
-    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
-    ((amfs)this.a.a.a(27)).a(paramMessage, this.a.a.c());
   }
 }
 

@@ -3,11 +3,11 @@ package com.idlefish.flutterboost.containers;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.idlefish.flutterboost.Debuger;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.XFlutterView;
@@ -16,7 +16,7 @@ import io.flutter.embedding.android.FlutterView.FlutterEngineAttachmentListener;
 import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 
 public class FlutterSplashView
   extends FrameLayout
@@ -29,7 +29,7 @@ public class FlutterSplashView
   private Handler handler = new Handler();
   private FlutterEngine mFlutterEngine;
   @NonNull
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new FlutterSplashView.2(this);
+  private final FlutterUiDisplayListener onFirstFrameRenderedListener = new FlutterSplashView.2(this);
   @NonNull
   private final Runnable onTransitionComplete = new FlutterSplashView.3(this);
   @Nullable
@@ -127,7 +127,7 @@ public class FlutterSplashView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.gdtad.util.GdtSmartBlur;
 
 public class acse
-  extends ulw
 {
-  public acse(Conversation paramConversation) {}
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      wxe.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
-      this.a.a(1055, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, false);
-  }
+  public static GdtSmartBlur a = new GdtSmartBlur(null);
 }
 
 

@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bljn;
+import bnzb;
 import java.io.File;
 
 public class AEEditorComicLoadingView
@@ -39,7 +39,7 @@ public class AEEditorComicLoadingView
   
   public void setShowResult(boolean paramBoolean)
   {
-    bljn.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
+    bnzb.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.post(new AEEditorComicLoadingView.1(this));
@@ -50,7 +50,7 @@ public class AEEditorComicLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView
  * JD-Core Version:    0.7.0.1
  */

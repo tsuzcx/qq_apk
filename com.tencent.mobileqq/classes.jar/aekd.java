@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekd
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public aekd(UpgradeActivity paramUpgradeActivity) {}
+  public aekd(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.a();
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null)) {
+      bcst.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
     }
-    return false;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    }
   }
 }
 

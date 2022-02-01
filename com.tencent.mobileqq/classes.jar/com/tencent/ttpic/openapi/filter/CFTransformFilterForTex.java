@@ -1,5 +1,6 @@
 package com.tencent.ttpic.openapi.filter;
 
+import android.graphics.PointF;
 import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.internal.Frame;
@@ -7,11 +8,15 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.model.FaceFeature;
 import com.tencent.ttpic.model.FaceFeatureTex;
+import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.CosFunUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FrameUtil;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class CFTransformFilterForTex
   extends VideoFilterBase
@@ -19,10 +24,10 @@ public class CFTransformFilterForTex
   private static final String FRAGMENT_SHADER = "precision highp float;\n varying vec2 textureCoordinate;\n uniform lowp sampler2D inputImageTexture;\n\n uniform lowp float alphaBlend;\n\n void main()\n {\n     vec4 color1 = vec4(0.0, 0.0, 0.0, 1.0);\n     if (textureCoordinate.x >= 0.0 && textureCoordinate.x <= 1.0 && textureCoordinate.y >= 0.0 && textureCoordinate.y <= 1.0) {\n         color1 = texture2D(inputImageTexture,textureCoordinate);\n     }\n\n     gl_FragColor = color1 * alphaBlend;\n }";
   private static final int nTriangles = 196;
   private static int[] triangleArray = new int[588];
-  private final int backgroundMode1;
-  private final int backgroundMode2;
-  private final FaceFeatureTex faceFeatureBitmap1;
-  private final FaceFeatureTex faceFeatureBitmap2;
+  private int backgroundMode1;
+  private int backgroundMode2;
+  private FaceFeatureTex faceFeatureBitmap1;
+  private FaceFeatureTex faceFeatureBitmap2;
   private final float[] fragCoord1 = new float[1176];
   private final float[] fragCoord2 = new float[1176];
   private Frame outFrame = new Frame();
@@ -34,6 +39,15 @@ public class CFTransformFilterForTex
   private final float[][] vPT1 = (float[][])Array.newInstance(Float.TYPE, new int[] { 131, 2 });
   private final float[][] vPT2 = (float[][])Array.newInstance(Float.TYPE, new int[] { 131, 2 });
   private final float[] vertexCoord = new float[1176];
+  
+  public CFTransformFilterForTex()
+  {
+    super("precision highp float;\n varying vec2 textureCoordinate;\n uniform lowp sampler2D inputImageTexture;\n\n uniform lowp float alphaBlend;\n\n void main()\n {\n     vec4 color1 = vec4(0.0, 0.0, 0.0, 1.0);\n     if (textureCoordinate.x >= 0.0 && textureCoordinate.x <= 1.0 && textureCoordinate.y >= 0.0 && textureCoordinate.y <= 1.0) {\n         color1 = texture2D(inputImageTexture,textureCoordinate);\n     }\n\n     gl_FragColor = color1 * alphaBlend;\n }");
+    initTriangleIndices();
+    initParams();
+    setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
+    setCoordNum(588);
+  }
   
   public CFTransformFilterForTex(FaceFeatureTex paramFaceFeatureTex1, FaceFeatureTex paramFaceFeatureTex2, int paramInt1, int paramInt2)
   {
@@ -49,6 +63,48 @@ public class CFTransformFilterForTex
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(588);
     updateTextureCoords();
+  }
+  
+  public static FaceFeatureTex genFaceFeatureTex(int paramInt1, int paramInt2, int paramInt3, PTFaceAttr paramPTFaceAttr)
+  {
+    if ((paramInt1 < 0) || (paramPTFaceAttr == null) || (paramPTFaceAttr.getAllFacePoints() == null) || (paramPTFaceAttr.getAllFacePoints().size() <= 0)) {
+      return null;
+    }
+    FaceFeatureTex localFaceFeatureTex = new FaceFeatureTex();
+    localFaceFeatureTex.faceTex = paramInt1;
+    ArrayList localArrayList = new ArrayList();
+    double d = (float)paramPTFaceAttr.getFaceDetectScale();
+    paramPTFaceAttr = ((List)paramPTFaceAttr.getAllFacePoints().get(0)).iterator();
+    while (paramPTFaceAttr.hasNext())
+    {
+      PointF localPointF = (PointF)paramPTFaceAttr.next();
+      localArrayList.add(new PointF((float)(localPointF.x / d), (float)(localPointF.y / d)));
+    }
+    FaceOffUtil.getFullCoords(localArrayList, 2.0F);
+    localFaceFeatureTex.faceFeature = new FaceFeature(localArrayList, paramInt2, paramInt3);
+    return localFaceFeatureTex;
+  }
+  
+  private static FaceFeatureTex genFaceFeatureTex(int paramInt, PTFaceAttr paramPTFaceAttr)
+  {
+    if ((paramInt < 0) || (paramPTFaceAttr == null) || (paramPTFaceAttr.getAllFacePoints() == null) || (paramPTFaceAttr.getAllFacePoints().size() <= 0)) {
+      return null;
+    }
+    FaceFeatureTex localFaceFeatureTex = new FaceFeatureTex();
+    localFaceFeatureTex.faceTex = paramInt;
+    ArrayList localArrayList = new ArrayList();
+    double d = (float)paramPTFaceAttr.getFaceDetectScale();
+    paramInt = (int)(paramPTFaceAttr.getFaceDetWidth() * d);
+    int i = (int)(paramPTFaceAttr.getFaceDetHeight() * d);
+    paramPTFaceAttr = ((List)paramPTFaceAttr.getAllFacePoints().get(0)).iterator();
+    while (paramPTFaceAttr.hasNext())
+    {
+      PointF localPointF = (PointF)paramPTFaceAttr.next();
+      localArrayList.add(new PointF((float)(localPointF.x * d), (float)(localPointF.y * d)));
+    }
+    FaceOffUtil.getFullCoords(localArrayList, 2.0F);
+    localFaceFeatureTex.faceFeature = new FaceFeature(localArrayList, paramInt, i);
+    return localFaceFeatureTex;
   }
   
   private void generateTextureCoord(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
@@ -309,10 +365,32 @@ public class CFTransformFilterForTex
   {
     addParam(new UniformParam.FloatParam("alphaBlend", 0.0F));
   }
+  
+  public void updateFaceParmas(int paramInt1, int paramInt2, PTFaceAttr paramPTFaceAttr1, PTFaceAttr paramPTFaceAttr2)
+  {
+    this.faceFeatureBitmap1 = genFaceFeatureTex(paramInt1, paramPTFaceAttr1);
+    this.faceFeatureBitmap2 = genFaceFeatureTex(paramInt2, paramPTFaceAttr2);
+    this.backgroundMode1 = 2;
+    this.backgroundMode2 = 0;
+    this.outWidth = this.faceFeatureBitmap2.faceFeature.width;
+    this.outHeight = this.faceFeatureBitmap2.faceFeature.height;
+    updateTextureCoords();
+  }
+  
+  public void updateFaceParmas(FaceFeatureTex paramFaceFeatureTex1, FaceFeatureTex paramFaceFeatureTex2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.faceFeatureBitmap1 = paramFaceFeatureTex1;
+    this.faceFeatureBitmap2 = paramFaceFeatureTex2;
+    this.backgroundMode1 = paramInt3;
+    this.backgroundMode2 = paramInt4;
+    this.outWidth = paramInt1;
+    this.outHeight = paramInt2;
+    updateTextureCoords();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CFTransformFilterForTex
  * JD-Core Version:    0.7.0.1
  */

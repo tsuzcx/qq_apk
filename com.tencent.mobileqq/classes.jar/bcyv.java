@@ -1,30 +1,23 @@
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.view.View;
+import android.widget.TextView;
 
-public class bcyv
+class bcyv
 {
-  public float a;
-  public int a;
-  public String a;
-  public String b;
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public bcyv(bcyu parambcyu, String paramString, float paramFloat)
+  public void a()
   {
-    this.b = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public JSONArray a()
-  {
-    JSONArray localJSONArray = new JSONArray();
-    try
-    {
-      localJSONArray.put(this.b);
-      localJSONArray.put(this.jdField_a_of_type_Float);
-      return localJSONArray;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    catch (JSONException localJSONException) {}
-    return localJSONArray;
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
   }
 }
 

@@ -23,6 +23,7 @@ public final class UnifySearchCommon$ResultItemGroup
   public final PBUInt32Field hide_title_blank_view = PBField.initUInt32(0);
   public final PBUInt32Field highlight_title_keyword = PBField.initUInt32(0);
   public final PBUInt32Field is_big_pic = PBField.initUInt32(0);
+  public final PBBytesField layout_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField more_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField more_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatMessageField<UnifySearchCommon.ResultItem> result_items = PBField.initRepeatMessage(UnifySearchCommon.ResultItem.class);
@@ -37,12 +38,13 @@ public final class UnifySearchCommon$ResultItemGroup
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64, 72, 82, 90, 96, 8002, 8080 }, new String[] { "group_mask", "group_name", "result_items", "total_result_count", "more_url", "more_name", "hide_title", "highlight_title_keyword", "hide_title_blank_view", "group_footer_name", "group_footer_jump_url", "group_extra_flag", "rpt_highlight_words", "is_big_pic" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0) }, ResultItemGroup.class);
+    ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64, 72, 82, 90, 96, 810, 8002, 8080 }, new String[] { "group_mask", "group_name", "result_items", "total_result_count", "more_url", "more_name", "hide_title", "highlight_title_keyword", "hide_title_blank_view", "group_footer_name", "group_footer_jump_url", "group_extra_flag", "layout_name", "rpt_highlight_words", "is_big_pic" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0) }, ResultItemGroup.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pb.unify.search.UnifySearchCommon.ResultItemGroup
  * JD-Core Version:    0.7.0.1
  */

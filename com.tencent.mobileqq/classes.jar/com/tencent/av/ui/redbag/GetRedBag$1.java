@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import msc;
+import mph;
 
 public class GetRedBag$1
   extends ResultReceiver
 {
-  public GetRedBag$1(msc parammsc, Handler paramHandler)
+  public GetRedBag$1(mph parammph, Handler paramHandler)
   {
     super(paramHandler);
   }
@@ -22,12 +22,12 @@ public class GetRedBag$1
       this.a.a(-6, 5000L);
       return;
     }
-    msc.a(this.a, paramInt, paramBundle);
+    mph.a(this.a, paramInt, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.redbag.GetRedBag.1
  * JD-Core Version:    0.7.0.1
  */

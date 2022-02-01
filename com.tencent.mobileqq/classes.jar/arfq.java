@@ -1,15 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.graphics.Canvas;
+import android.text.TextPaint;
 
-class arfq
-  implements DialogInterface.OnDismissListener
+public class arfq
+  extends arfn
 {
-  arfq(arfp paramarfp) {}
+  private TextPaint a = new TextPaint();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private String a(aren paramaren)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    return String.valueOf(paramaren.a());
+  }
+  
+  public argl a(aren paramaren)
+  {
+    arfm localarfm = arew.a();
+    float f1 = argo.a(localarfm.c(), a(paramaren)) + localarfm.f() + localarfm.f();
+    float f2 = argo.a(localarfm.c());
+    f2 = localarfm.e() * 2.0F + f2;
+    paramaren.a(f2);
+    paramaren.b(f1);
+    return new argl(f1, f2);
+  }
+  
+  public boolean a(aren paramaren)
+  {
+    return true;
+  }
+  
+  public void b(Canvas paramCanvas, aren paramaren, arew paramarew, float paramFloat1, float paramFloat2)
+  {
+    paramarew = arew.a();
+    this.a.setTextSize(paramarew.c());
+    this.a.setColor(-1);
+    paramCanvas.drawText(a(paramaren), paramarew.f() + paramFloat1, paramarew.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 

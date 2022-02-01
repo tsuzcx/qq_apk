@@ -1,19 +1,98 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class adgh
-  extends alpq
 {
-  public adgh(Leba paramLeba) {}
+  WeakReference<CustomWebView> a;
+  WeakReference<AppInterface> b;
+  WeakReference<Activity> c;
+  WeakReference<bhni> d = null;
+  WeakReference<WebViewFragment> e = null;
   
-  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public adgh(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    this.c = new WeakReference(paramActivity);
+  }
+  
+  public Activity a()
+  {
+    return (Activity)this.c.get();
+  }
+  
+  public bhni a()
+  {
+    Activity localActivity;
+    if (this.d == null)
+    {
+      localActivity = a();
+      if (!(localActivity instanceof bhni)) {
+        break label45;
+      }
     }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
+    label45:
+    for (this.d = new WeakReference((bhni)localActivity);; this.d = new WeakReference(a())) {
+      return (bhni)this.d.get();
+    }
+  }
+  
+  public CustomWebView a()
+  {
+    WebViewFragment localWebViewFragment;
+    if (this.a == null)
+    {
+      localWebViewFragment = a();
+      if (localWebViewFragment == null) {
+        break label42;
+      }
+    }
+    label42:
+    for (this.a = new WeakReference(localWebViewFragment.getWebView());; this.a = new WeakReference(null)) {
+      return (CustomWebView)this.a.get();
+    }
+  }
+  
+  public AppInterface a()
+  {
+    AppRuntime localAppRuntime;
+    if (this.b == null)
+    {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localAppRuntime instanceof ToolAppRuntime)) {
+        break label52;
+      }
+      this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
+    }
+    for (;;)
+    {
+      return (AppInterface)this.b.get();
+      label52:
+      if ((localAppRuntime instanceof AppInterface)) {
+        this.b = new WeakReference((AppInterface)localAppRuntime);
+      } else {
+        this.b = new WeakReference(null);
+      }
+    }
+  }
+  
+  public WebViewFragment a()
+  {
+    Activity localActivity;
+    if (this.e == null)
+    {
+      localActivity = a();
+      if (!(localActivity instanceof bhne)) {
+        break label50;
+      }
+    }
+    label50:
+    for (this.e = new WeakReference(((bhne)localActivity).a());; this.e = new WeakReference(null)) {
+      return (WebViewFragment)this.e.get();
     }
   }
 }

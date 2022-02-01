@@ -1,19 +1,21 @@
-import java.util.Comparator;
-
-class azuf
-  implements Comparator
+public class azuf
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public int a;
+  public byte[] a;
+  public int b;
+  
+  public azuf(byte[] paramArrayOfByte, int paramInt)
   {
-    paramObject1 = (azub)paramObject1;
-    paramObject2 = (azub)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = 0;
+  }
+  
+  public azuf(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = paramInt1;
   }
 }
 

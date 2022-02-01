@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.BaseCache;
+import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
 
 public class anyv
-  implements QQPermissionCallback
+  extends BaseCacheManager
 {
-  public anyv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private QQAppInterface a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public anyv(QQAppInterface paramQQAppInterface)
   {
-    this.a.denied();
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public BaseCache createCacheByName(int paramInt)
   {
-    this.a.grant();
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 2: 
+      return new anyy(this.a, this.dbDelayManager);
+    }
+    return new anza(this.a, this.dbDelayManager);
   }
 }
 

@@ -1,18 +1,9 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
 
-class algy
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class algy
+  extends bcgy
 {
-  algy(algt paramalgt) {}
-  
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
-    }
-  }
+  public algy(CameraPreviewNew paramCameraPreviewNew) {}
 }
 
 

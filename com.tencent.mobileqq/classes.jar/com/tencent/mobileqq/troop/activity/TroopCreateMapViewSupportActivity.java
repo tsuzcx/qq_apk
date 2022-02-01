@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.troop.activity;
 
+import Override;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TroopCreateMapViewSupportActivity
   extends TroopCreateBaseActivity
@@ -20,18 +24,26 @@ public class TroopCreateMapViewSupportActivity
   {
     ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getParent();
     localViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2131559731, null, true));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297824));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2131559871, null, true));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297905));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView = new AutoLocationMapView(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131372927);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131373552);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView, new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_Int));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131372927);
+    localLayoutParams.addRule(3, 2131373552);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131375863);
+    localLayoutParams.addRule(3, 2131376599);
     localViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -73,6 +85,13 @@ public class TroopCreateMapViewSupportActivity
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onRestart()
   {
     super.onRestart();
@@ -83,7 +102,7 @@ public class TroopCreateMapViewSupportActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateMapViewSupportActivity
  * JD-Core Version:    0.7.0.1
  */

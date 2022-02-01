@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import java.io.File;
+import java.util.ArrayList;
 
 public class aapk
-  implements View.OnSystemUiVisibilityChangeListener
 {
-  public aapk(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public ArrayList<String> a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public ArrayList<String> b;
+  boolean b;
+  public String c;
+  public ArrayList<File> c = new ArrayList();
+  public String d;
+  public String e;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public aapk(aapa paramaapa)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(7942);
-    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

@@ -1,35 +1,26 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import com.tencent.biz.qqstory.view.PagerIndicator;
-import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qphone.base.util.QLog;
 
-public class xup
-  extends DataSetObserver
-  implements ViewPager.OnPageChangeListener
+class xup
+  implements DialogInterface.OnDismissListener
 {
-  private xup(PagerIndicator paramPagerIndicator) {}
+  xup(xui paramxui, Boolean[] paramArrayOfBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onChanged()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
-  }
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_Xui.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
+    }
+    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xup
  * JD-Core Version:    0.7.0.1
  */

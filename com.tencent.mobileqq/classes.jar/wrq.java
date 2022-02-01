@@ -1,29 +1,24 @@
-import java.io.File;
-import java.lang.ref.WeakReference;
-
 public class wrq
 {
-  private static final String jdField_a_of_type_JavaLangString = alof.aW + "/Tencent/com/tencent/mobileqq/";
-  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
+  public final long a;
+  public final wro a;
+  public final long b;
   
-  public static void a(wrt<Integer> paramwrt)
+  public wrq(wro paramwro, long paramLong1, long paramLong2)
   {
-    paramwrt = new WeakReference(paramwrt);
-    wsl localwsl = new wsl(null);
-    localwsl.a(new wrr(paramwrt));
-    localwsl.a(new wrs(paramwrt));
-    localwsl.a();
+    this.jdField_a_of_type_Wro = paramwro;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
-  public static boolean a()
+  public String toString()
   {
-    if (jdField_a_of_type_Boolean) {}
-    return false;
+    return "Progress{intput=" + this.jdField_a_of_type_Wro + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wrq
  * JD-Core Version:    0.7.0.1
  */

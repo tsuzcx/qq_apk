@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-abstract interface akcl
+public class akcl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public akcl(BindNumberActivity paramBindNumberActivity) {}
   
-  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
-  
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.setText("");
+    }
+  }
 }
 
 

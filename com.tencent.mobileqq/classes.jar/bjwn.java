@@ -1,106 +1,181 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import com.tencent.oskplayer.player.OskExoMediaPlayer;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnCompletionListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnLoopStartListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer.InternalOperationException;
 
 public class bjwn
-  extends bjxz
+  implements IMediaPlayer
 {
-  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  OskExoMediaPlayer a = new OskExoMediaPlayer();
+  
+  public long getCurrentPosition()
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
+    return this.a.getCurrentPosition();
+  }
+  
+  public long getDuration()
+  {
+    return this.a.getDuration();
+  }
+  
+  public int getVideoHeight()
+  {
+    return this.a.getVideoHeight();
+  }
+  
+  public int getVideoWidth()
+  {
+    return this.a.getVideoWidth();
+  }
+  
+  public boolean isLooping()
+  {
+    return this.a.isLooping();
+  }
+  
+  public boolean isPlaying()
+  {
+    return this.a.isPlaying();
+  }
+  
+  public void pause()
+  {
     try
     {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      paramWebViewPlugin = paramArrayOfString.optString("host");
-      paramArrayOfString = paramArrayOfString.optString("callback");
-      if (TextUtils.isEmpty(paramArrayOfString))
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
-        return;
-      }
-    }
-    catch (JSONException paramWebViewPlugin)
-    {
-      paramWebViewPlugin.printStackTrace();
+      this.a.pause();
       return;
     }
-    if (TextUtils.isEmpty(paramWebViewPlugin))
+    catch (IMediaPlayer.InternalOperationException localInternalOperationException)
     {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
-      return;
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
-  }
-  
-  private void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("host_ip", paramString2);
-        paramString2 = localJSONObject.toString();
-        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
-        {
-          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
-      }
+      throw new IllegalStateException(localInternalOperationException);
     }
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void prepareAsync()
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
-      return false;
-    }
-    a(this.a, paramVarArgs);
-    return true;
+    this.a.prepareAsync();
   }
   
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public void release()
   {
-    if ((paramLong == 8589934595L) && (paramMap != null))
+    this.a.release();
+  }
+  
+  public void reset()
+  {
+    this.a.reset();
+  }
+  
+  public void seekTo(long paramLong)
+  {
+    this.a.seekTo(paramLong);
+  }
+  
+  public void setDataSource(String paramString)
+  {
+    this.a.setDataSource(paramString);
+  }
+  
+  public void setDisplay(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.setDisplay(paramSurfaceHolder);
+  }
+  
+  public void setLooping(boolean paramBoolean)
+  {
+    this.a.setLooping(paramBoolean);
+  }
+  
+  public void setOnBufferingUpdateListener(IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener)
+  {
+    this.a.setOnBufferingUpdateListener(new bjwq(this, paramOnBufferingUpdateListener));
+  }
+  
+  public void setOnCompletionListener(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
+  {
+    this.a.setOnCompletionListener(new bjwp(this, paramOnCompletionListener));
+  }
+  
+  public void setOnErrorListener(IMediaPlayer.OnErrorListener paramOnErrorListener)
+  {
+    this.a.setOnErrorListener(new bjwt(this, paramOnErrorListener));
+  }
+  
+  public void setOnInfoListener(IMediaPlayer.OnInfoListener paramOnInfoListener)
+  {
+    this.a.setOnInfoListener(new bjwu(this, paramOnInfoListener));
+  }
+  
+  public void setOnLoopStartListener(IMediaPlayer.OnLoopStartListener paramOnLoopStartListener)
+  {
+    this.a.setOnLoopStartListener(new bjwv(this, paramOnLoopStartListener));
+  }
+  
+  public void setOnPreparedListener(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
+  {
+    this.a.setOnPreparedListener(new bjwo(this, paramOnPreparedListener));
+  }
+  
+  public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
+  {
+    this.a.setOnSeekCompleteListener(new bjwr(this, paramOnSeekCompleteListener));
+  }
+  
+  public void setOnVideoSizeChangedListener(IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener)
+  {
+    this.a.setOnVideoSizeChangedListener(new bjws(this, paramOnVideoSizeChangedListener));
+  }
+  
+  public void setRate(float paramFloat)
+  {
+    this.a.setRate(paramFloat);
+  }
+  
+  public void setScreenOnWhilePlaying(boolean paramBoolean)
+  {
+    this.a.setScreenOnWhilePlaying(paramBoolean);
+  }
+  
+  public void setSurface(Surface paramSurface)
+  {
+    this.a.setSurface(paramSurface);
+  }
+  
+  public void setVolume(float paramFloat1, float paramFloat2)
+  {
+    this.a.setVolume(paramFloat1, paramFloat2);
+  }
+  
+  public void start()
+  {
+    try
     {
-      paramString = paramMap.get("errorCode");
-      if ((paramString != null) && ((paramString instanceof Integer)))
-      {
-        int i = ((Integer)paramString).intValue();
-        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
-      }
+      this.a.start();
+      return;
     }
-    return false;
+    catch (IMediaPlayer.InternalOperationException localInternalOperationException)
+    {
+      throw new IllegalStateException(localInternalOperationException);
+    }
+  }
+  
+  public void stop()
+  {
+    this.a.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwn
  * JD-Core Version:    0.7.0.1
  */

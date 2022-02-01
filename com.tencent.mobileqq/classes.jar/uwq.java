@@ -1,39 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class uwq
-  implements urr<vgj, vhu>
+final class uwq
+  implements bihh
 {
-  uwq(uwo paramuwo) {}
+  uwq(String paramString) {}
   
-  public void a(@NonNull vgj paramvgj, @Nullable vhu paramvhu, @NonNull ErrorMessage paramErrorMessage)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    wxe.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramvhu != null))
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      wxe.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramvhu.b));
-      this.a.jdField_a_of_type_JavaLangObject = new uwr(paramvhu.b, paramvhu.a);
-      wxe.c("WeatherDataProvider", "update local weather data.");
-      paramvgj = (uvt)uwa.a(10);
-      paramvgj.b("edit_video_weather_filter_data", Integer.valueOf(paramvhu.b));
-      paramvgj.b("edit_video_weather_desc", paramvhu.a);
-      uwo.a(this.a, System.currentTimeMillis() + 14400000L);
-      paramvgj.b("edit_video_weather_expiry_time", Long.valueOf(uwo.a(this.a)));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+    case -1: 
+    default: 
+      zvc.a(1, 2131718007);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Boolean = false;
+      WXShareHelper.a().b(this);
       return;
-      wxe.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramvgj });
-      this.a.a(false, null);
+      zvc.a(2, 2131718025);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uwq
  * JD-Core Version:    0.7.0.1
  */

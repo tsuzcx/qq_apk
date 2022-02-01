@@ -1,19 +1,8 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.widget.TextView;
 
-public class bepa
-  extends ListView
+class bepa
 {
-  public bepa(DraggableGridView paramDraggableGridView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void setOverScrollMode(int paramInt)
-  {
-    super.setOverScrollMode(2);
-  }
+  TextView a;
 }
 
 

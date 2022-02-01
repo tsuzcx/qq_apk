@@ -1,47 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.EditText;
 
 public class akrk
-  implements DialogInterface.OnClickListener
+  extends akqs
 {
-  public akrk(HotChatCenterFragment paramHotChatCenterFragment, HotChatInfo paramHotChatInfo, String paramString1, RecentBaseData paramRecentBaseData, String paramString2) {}
+  private int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akrk(EditText paramEditText)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat)
+    super(paramEditText);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.toString().contains("."))
     {
-      paramInt = 1;
-      azqs.b(HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment), "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
-      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded()) || (bdin.d(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext()))) {
-        break label98;
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext(), alud.a(2131705936), 0).b(0);
-    }
-    label98:
-    do
-    {
-      return;
-      paramInt = 2;
-      break;
-      ((aluj)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
-      if (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get() != null)
+      localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("HotchatActivity", 2, "remove");
-        }
-        ((alug)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get()).b(this.jdField_a_of_type_JavaLangString);
+        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
       }
-    } while (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment) == null);
-    ((akrl)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment)).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.b);
+    }
+    paramCharSequence = localCharSequence;
+    if (localCharSequence.toString().trim().substring(0).equals("."))
+    {
+      paramCharSequence = "0" + localCharSequence;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
+    }
+    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
+    }
   }
 }
 

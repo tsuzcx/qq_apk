@@ -1,35 +1,23 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apzd
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public apzd(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel) {}
+  public apzd(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    ImageButton localImageButton;
-    if (SystemAndEmojiUniversalPanel.a(this.a) != null)
+    if ((this.a.a != null) && (this.a.a.isShowing()))
     {
-      localImageButton = SystemAndEmojiUniversalPanel.a(this.a);
-      if (TextUtils.isEmpty(paramEditable)) {
-        break label33;
-      }
+      this.a.a.dismiss();
+      this.a.a = null;
     }
-    label33:
-    for (boolean bool = true;; bool = false)
-    {
-      localImageButton.setEnabled(bool);
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

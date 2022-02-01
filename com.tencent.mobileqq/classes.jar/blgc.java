@@ -1,20 +1,14 @@
-import android.support.annotation.NonNull;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class blgc
+class blgc
+  implements FilenameFilter
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  blgc(blgb paramblgb, String paramString) {}
   
-  public blgc() {}
-  
-  public blgc(@NonNull blgc paramblgc)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a = paramblgc.a;
-    this.b = paramblgc.b;
-    this.c = paramblgc.c;
-    this.d = paramblgc.d;
+    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

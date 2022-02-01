@@ -1,224 +1,328 @@
-import com.tencent.mobileqq.data.Card;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 public class aqbl
-  implements alpg
+  extends QIPCModule
 {
-  protected void a(int paramInt) {}
+  private static aqbl a;
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aqcl paramaqcl, int paramInt3) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aqcl paramaqcl, String paramString) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, aqcl paramaqcl) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, aqcl paramaqcl, String paramString) {}
-  
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aqcx> paramList, aqck paramaqck) {}
-  
-  protected void a(boolean paramBoolean, aqcl paramaqcl) {}
-  
-  protected void a(boolean paramBoolean, aqcx paramaqcx, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, Card paramCard) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean1, ArrayList<aqda> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  protected void d(boolean paramBoolean) {}
-  
-  protected void e(boolean paramBoolean) {}
-  
-  protected void f(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private aqbl(String paramString)
   {
-    int i = -1;
-    switch (paramInt)
+    super(paramString);
+  }
+  
+  public static aqbl a()
+  {
+    if (a == null) {}
+    try
     {
-    case 4: 
-    case 10: 
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        do
-        {
-          return;
-          b(paramBoolean);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-        paramObject = (Object[])paramObject;
-        if ((paramBoolean) && (paramObject.length == 9))
-        {
-          a(true, ((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), (byte[])paramObject[3], ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Integer)paramObject[6]).intValue(), (List)paramObject[7], (aqck)paramObject[8]);
-          return;
-        }
-      } while ((paramBoolean) || (paramObject.length != 2));
-      a(false, ((Long)paramObject[0]).longValue(), (String)paramObject[1], false, null, false, false, 0, null, null);
-      return;
-    case 3: 
-      a(paramBoolean, (Card)paramObject);
-      return;
-    case 9: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (aqcx)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 5: 
-      c(((Boolean)paramObject).booleanValue());
-      return;
-    case 8: 
-      d(((Boolean)paramObject).booleanValue());
-      return;
-    case 6: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        if (paramObject.length == 4)
-        {
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (aqcl)paramObject[2], ((Integer)paramObject[3]).intValue());
-          return;
-        }
-        a(paramBoolean, -1, -1, null, -1);
-        return;
+      if (a == null) {
+        a = new aqbl("CampusCircleIpcServer_Model");
       }
-      a(paramBoolean, -1, -1, null, -1);
-      return;
-    case 7: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        if ((paramObject != null) && (paramObject.length == 2))
-        {
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (aqcl)paramObject[1]);
-          return;
-        }
-        a(false, -1, null);
-        return;
-      }
-      a(paramBoolean, -1, null);
-      return;
-    case 20: 
-      paramInt = i;
-      if (paramObject != null)
-      {
-        paramInt = i;
-        if ((paramObject instanceof Object[]))
-        {
-          paramObject = (Object[])paramObject;
-          paramInt = i;
-          if (paramObject != null)
-          {
-            paramInt = i;
-            if (paramObject.length > 0) {
-              paramInt = ((Integer)paramObject[0]).intValue();
-            }
-          }
-        }
-      }
-      a(paramBoolean, paramInt);
-      return;
-    case 22: 
-      a(paramBoolean, paramObject);
-      return;
-    case 11: 
-      if (paramBoolean)
-      {
-        if ((paramObject != null) && ((paramObject instanceof Object[])))
-        {
-          paramObject = (Object[])paramObject;
-          if ((paramObject != null) && (paramObject.length == 4))
-          {
-            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (aqcl)paramObject[1], (String)paramObject[3]);
-            return;
-          }
-          a(false, -1, null, null);
-          return;
-        }
-        a(false, -1, null, null);
-        return;
-      }
-      a(false, -1, null, null);
-      return;
-    case 16: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-      {
-        paramObject = (Object[])paramObject;
-        if ((paramObject != null) && (paramObject.length == 1))
-        {
-          a(paramBoolean, (aqcl)paramObject[0]);
-          return;
-        }
-        a(false, null);
-        return;
-      }
-      a(false, null);
-      return;
-    case 12: 
-      e(paramBoolean);
-      return;
-    case 13: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-      {
-        paramObject = (Object[])paramObject;
-        if ((paramObject != null) && (paramObject.length == 4))
-        {
-          a(true, (ArrayList)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (ArrayList)paramObject[3]);
-          return;
-        }
-        a(false, null, true, 0, null);
-        return;
-      }
-      a(false, null, true, 0, null);
-      return;
-    case 14: 
-      f(paramBoolean);
-      return;
-    case 15: 
-      if (paramBoolean)
-      {
-        if ((paramObject != null) && ((paramObject instanceof Object[])))
-        {
-          paramObject = (Object[])paramObject;
-          if ((paramObject != null) && (paramObject.length == 4))
-          {
-            a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[2]).intValue(), (aqcl)paramObject[1], (String)paramObject[3]);
-            return;
-          }
-          a(false, -1, -1, null, null);
-          return;
-        }
-        a(false, -1, -1, null, null);
-        return;
-      }
-      a(false, -1, -1, null, null);
-      return;
-    case 17: 
-      a(((Integer)paramObject).intValue());
-      return;
-    case 18: 
-      a(paramBoolean);
-      return;
-    case 19: 
-      a(paramBoolean, (ArrayList)paramObject);
-      return;
+      return a;
     }
-    b(paramBoolean, paramObject);
+    finally {}
+  }
+  
+  private EIPCResult a(String paramString, Bundle paramBundle)
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "isInTroopAIO, app is null");
+        }
+        return null;
+      }
+      boolean bool = aqkl.a(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MedalWallMng", 2, "isInTroopAIO, isInAIO " + bool);
+      }
+      paramString = new EIPCResult();
+      paramString.data = new Bundle();
+      paramString.data.putBoolean("isInTroopAIO", bool);
+      return paramString;
+    }
+  }
+  
+  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = null;
+    if ((!"action_get_red_point".equals(paramString)) || (paramBundle == null)) {
+      return null;
+    }
+    paramBundle = new Bundle();
+    EIPCResult localEIPCResult = new EIPCResult();
+    localEIPCResult.data = paramBundle;
+    paramString = localObject;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "getRedPoint, app is null");
+      }
+      paramBundle.putBoolean("hasRedTouch", false);
+      paramBundle.putInt("type", -1);
+      paramBundle.putInt("count", 0);
+      paramBundle.putLong("seq", -1L);
+      paramBundle.putInt("code", -1);
+      localEIPCResult.code = -1;
+    }
+    for (;;)
+    {
+      return localEIPCResult;
+      paramString = ((axzw)paramString.getManager(160)).a(103421);
+      if (paramString != null)
+      {
+        paramBundle.putBoolean("hasRedTouch", paramString.unReadFlag);
+        paramBundle.putInt("type", paramString.redtouchType);
+        paramBundle.putInt("count", paramString.count);
+        paramBundle.putLong("seq", paramString.curSeq);
+        paramBundle.putInt("code", 0);
+        localEIPCResult.code = 0;
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "getRedPoint, unreadMsg is null");
+        }
+        paramBundle.putBoolean("hasRedTouch", false);
+        paramBundle.putInt("type", -1);
+        paramBundle.putInt("count", 0);
+        paramBundle.putLong("seq", -1L);
+        paramBundle.putInt("code", -1);
+        localEIPCResult.code = -1;
+      }
+    }
+  }
+  
+  private EIPCResult b(String paramString, Bundle paramBundle)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "updateConfessSwitch action: %s", new Object[] { paramString }));
+    }
+    if (!"action_confess_update_switch".equals(paramString))
+    {
+      paramString = null;
+      return paramString;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, app is null");
+        }
+        return null;
+      }
+      int i = paramBundle.getInt("nSwitchValue");
+      paramString = (ajld)paramString.getManager(295);
+      paramBundle = paramString.a(1);
+      paramString.a(paramBundle, (short)i);
+      paramString.a(paramBundle);
+      paramBundle = new EIPCResult();
+      paramBundle.data = new Bundle();
+      paramBundle.data.putInt("ret", 0);
+      paramString = paramBundle;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, nSwitchValue: " + i);
+      return paramBundle;
+    }
+  }
+  
+  private EIPCResult b(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ((!"action_report_red_point".equals(paramString)) || (paramBundle == null)) {
+      return null;
+    }
+    long l1 = paramBundle.getLong("seq", -1L);
+    if (l1 < 0L) {
+      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, webSeq < 0:" + l1);
+    }
+    paramString = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, app is null");
+      }
+      return null;
+    }
+    axzw localaxzw = (axzw)paramString.getManager(160);
+    RedTouchItem localRedTouchItem = localaxzw.a(103421);
+    if (localRedTouchItem == null)
+    {
+      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, unReadMsg is null, return");
+      paramString = new EIPCResult();
+      paramString.data = null;
+      paramString.code = -1;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+    long l2 = localRedTouchItem.curSeq;
+    if (l1 >= l2) {
+      localaxzw.a(103421);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, localSeq=" + l2 + ", webSeq=" + l1 + ", unreadMsg=" + localRedTouchItem);
+      }
+      antv.a(paramString);
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+      localRedTouchItem.count = ((int)Math.abs(l2 - l1));
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "unreadmsg.coung set to " + localRedTouchItem.count);
+      }
+      localaxzw.a(103421, true, l1, true, true);
+    }
+  }
+  
+  private EIPCResult c(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "reportMedalRedPoint action: %s", new Object[] { paramString }));
+    }
+    if (!"action_report_medal_red_point".equals(paramString)) {
+      return null;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MedalWallMng", 2, "reportMedalRedPoint, app is null");
+        return null;
+      }
+      ((MedalWallMng)paramString.getManager(250)).a(2, null);
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+  }
+  
+  private EIPCResult d(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "reportConfessRedPoint action: %s", new Object[] { paramString }));
+    }
+    if (!"action_confess_clear_red_point".equals(paramString)) {
+      return null;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MedalWallMng", 2, "reportRedPoint_confess, app is null");
+        return null;
+      }
+      if ("frd_rec_confess".equals(paramBundle.getString("tag"))) {
+        aqjq.b(paramString, false);
+      }
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+  }
+  
+  private EIPCResult e(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "getTroopMembers action: %s", new Object[] { paramString }));
+    }
+    paramBundle = aqkl.a(paramBundle.getString("troopUin"));
+    paramString = new EIPCResult();
+    paramString.data = new Bundle();
+    if ((paramBundle != null) && (paramBundle.length == 3))
+    {
+      paramString.code = 0;
+      boolean bool1 = ((Boolean)paramBundle[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramBundle[1]).booleanValue();
+      paramBundle = (ArrayList)paramBundle[2];
+      if (paramBundle != null) {
+        paramString.data.putSerializable("troopUin", paramBundle);
+      }
+      paramString.data.putBoolean("isAdmin", bool1);
+      paramString.data.putBoolean("enableMemInvite", bool2);
+      return paramString;
+    }
+    paramString.code = -1;
+    return paramString;
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CampusCircleIpcServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+    }
+    if (paramBundle == null) {
+      QLog.d("CampusCircleIpcServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
+    }
+    do
+    {
+      return null;
+      if ("action_get_red_point".equals(paramString)) {
+        return a(paramString, paramBundle, paramInt);
+      }
+      if ("action_report_red_point".equals(paramString)) {
+        return b(paramString, paramBundle, paramInt);
+      }
+      if ("action_report_medal_red_point".equals(paramString)) {
+        return c(paramString, paramBundle, paramInt);
+      }
+      if ("action_allpeoplevote_getredpoint".equals(paramString)) {
+        return bhtw.b(paramString, paramBundle, paramInt);
+      }
+      if ("action_allpeoplevote_clearredpoint".equals(paramString)) {
+        return bhtw.a(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_clear_red_point".equals(paramString)) {
+        return d(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_get_troop_members".equals(paramString)) {
+        return e(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_is_in_troop_aio".equals(paramString)) {
+        return a(paramString, paramBundle);
+      }
+      if ("action_confess_update_switch".equals(paramString)) {
+        return b(paramString, paramBundle);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CampusCircleIpcServer", 1, "onCall, invalid action:" + paramString);
+    return null;
   }
 }
 

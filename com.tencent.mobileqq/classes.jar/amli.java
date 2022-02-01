@@ -1,110 +1,119 @@
-import IMMsgBodyPack.PersonInfoChange;
-import IMMsgBodyPack.PersonInfoField;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.text.StaticLayout;
 
 public class amli
-  extends absm
 {
-  public amli(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public float a;
+  public int a;
+  public long a;
+  private amle jdField_a_of_type_Amle;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  public StaticLayout a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public float c;
+  public int c;
+  private boolean c;
+  public float d;
+  public int d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
+  
+  public amli(amle paramamle, float paramFloat1, float paramFloat2, float paramFloat3, String paramString1, String paramString2)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    this.jdField_b_of_type_Int = -16777216;
+    this.jdField_g_of_type_Float = 24.0F;
+    this.jdField_c_of_type_Int = 20000;
+    this.jdField_d_of_type_Int = 255;
+    this.jdField_h_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaLangCharSequence = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_g_of_type_Int = ((int)(12.0F * paramFloat1));
+    this.jdField_h_of_type_Int = ((int)(6.0F * paramFloat1));
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramFloat2, paramFloat3);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = l;
+    this.jdField_b_of_type_Long = l;
+    this.jdField_a_of_type_Amle = paramamle;
   }
   
-  private void a(MsgInfo paramMsgInfo)
+  public Bitmap a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
-    paramMsgInfo.setServerEncoding("utf-8");
-    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
-    localPersonInfoChange.readFrom(paramMsgInfo);
-    int j;
-    int i;
-    long l;
-    int k;
-    if (localPersonInfoChange.cType == 0)
+    if (this.jdField_a_of_type_Amle != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Amle.a(this);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Amle != null)
     {
-      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
-      j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
-      {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
-        {
-          k = 1;
-          j = i;
-          i = k;
-        }
-      }
+      this.jdField_a_of_type_Amle.a(this);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Amle.a(this);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_e_of_type_Float += this.jdField_c_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
+    this.jdField_f_of_type_Float += this.jdField_d_of_type_Float * (float)(l - this.jdField_b_of_type_Long);
+    this.jdField_b_of_type_Long = l;
+    if (this.jdField_e_of_type_Float + this.jdField_e_of_type_Int >= 0.0F) {
+      this.jdField_c_of_type_Boolean = true;
     }
     for (;;)
     {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_c_of_type_Int) {
+        this.jdField_c_of_type_Boolean = false;
+      }
+      return;
+      if (this.jdField_b_of_type_Boolean)
       {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
-        {
-          paramMsgInfo = (FriendListHandler)this.a.a(1);
-          if (j != 0) {
-            paramMsgInfo.c(this.a.getAccount());
-          }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
-          }
-        }
-        do
-        {
-          return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
+        this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidGraphicsRectF.width();
+        this.jdField_c_of_type_Boolean = true;
       }
       else
       {
-        k = i;
-        i = j;
-        j = k;
+        this.jdField_c_of_type_Boolean = false;
       }
     }
   }
   
-  public abto a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new abto(null, false);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mIsAlive: ").append(this.jdField_c_of_type_Boolean).append(" mText: ").append(this.jdField_a_of_type_JavaLangCharSequence).append(" mMeasured: ").append(this.jdField_a_of_type_Boolean).append(" mBgFilePath: ").append(this.jdField_a_of_type_JavaLangString).append(" mActionId: ").append(this.jdField_a_of_type_Int).append(" mStartX: ").append(this.jdField_a_of_type_Float).append(" mStartY: ").append(this.jdField_b_of_type_Float).append(" mSpeedX: ").append(this.jdField_c_of_type_Float).append(" mSpeedY: ").append(this.jdField_d_of_type_Float).append(" mCurrentX: ").append(this.jdField_e_of_type_Float).append(" mCurrentY: ").append(this.jdField_f_of_type_Float).append(" mTextColor: ").append(this.jdField_b_of_type_Int).append(" mTextSize: ").append(this.jdField_g_of_type_Float).append(" mStartTime: ").append(this.jdField_a_of_type_Long).append(" mAlpha: ").append(this.jdField_d_of_type_Int).append(" mWidth: ").append(this.jdField_e_of_type_Int).append(" mHeight: ").append(this.jdField_f_of_type_Int).append(" mLeftPadding: ").append(this.jdField_g_of_type_Int).append(" mTopPadding: ").append(this.jdField_h_of_type_Int).append(" mViewRect: ").append(this.jdField_a_of_type_AndroidGraphicsRectF);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amli
  * JD-Core Version:    0.7.0.1
  */

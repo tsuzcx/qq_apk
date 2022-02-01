@@ -1,16 +1,106 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.List;
+
 public class lcy
-  extends lcv
+  extends ldi
 {
-  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
+  public static final String a = ;
   
-  public String a()
+  public static void a(String paramString, long paramLong)
   {
-    return a(this.a, a());
+    try
+    {
+      QLog.d("VideoUtils", 1, String.format("requestPartialWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
+      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
+      if (localPowerManager != null) {
+        localPowerManager.newWakeLock(1, paramString).acquire(paramLong);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d(paramString, 1, "requestPartialWakeLock fail.", localThrowable);
+    }
+  }
+  
+  public static final boolean a()
+  {
+    for (;;)
+    {
+      int j;
+      try
+      {
+        boolean bool = LocalMultiProcConfig.getBool("is_qzone_live_launch", false);
+        QLog.d("VideoUtils", 1, "isQzoneLiveExist, isRunning=" + bool);
+        if (!bool) {
+          return false;
+        }
+        int i = -2;
+        List localList = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+        if (localList != null)
+        {
+          j = 0;
+          if (j < localList.size())
+          {
+            if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)localList.get(j)).processName))
+            {
+              i = ((ActivityManager.RunningAppProcessInfo)localList.get(j)).pid;
+              break label184;
+            }
+          }
+          else
+          {
+            j = LocalMultiProcConfig.getInt("qzone_live_process_id", -1);
+            QLog.d("VideoUtils", 1, "isQzoneLiveExist, processId=" + i + ", id=" + j);
+            if (i == j)
+            {
+              bool = true;
+              return bool;
+            }
+            bool = false;
+            continue;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("VideoUtils", 1, localException, new Object[0]);
+        return false;
+      }
+      return false;
+      label184:
+      j += 1;
+    }
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    try
+    {
+      QLog.d("VideoUtils", 1, String.format("requestScreenBrightWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
+      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
+      if (localPowerManager != null) {
+        localPowerManager.newWakeLock(805306378, paramString).acquire(paramLong);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d(paramString, 1, "requestScreenBrightWakeLock fail.", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lcy
  * JD-Core Version:    0.7.0.1
  */

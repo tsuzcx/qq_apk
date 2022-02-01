@@ -1,71 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-class ajcv
-  implements ajal
+public abstract class ajcv<T>
+  extends ajcz<T>
 {
-  ajcv(ajct paramajct, boolean paramBoolean, ajcw paramajcw) {}
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
   
-  private void a()
+  public ajcv(Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      String str = aivo.a("", "key_draw_hb_last_succ_model", "");
-      if (!TextUtils.isEmpty(str)) {
-        ajct.a(this.jdField_a_of_type_Ajct, str, this.jdField_a_of_type_Ajcw, false);
-      }
-    }
-    while (this.jdField_a_of_type_Ajcw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ajcw.a(false);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    a(new ajcw(this, paramInt));
   }
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected abstract ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt);
+  
+  protected abstract void a(ajdf paramajdf, T paramT, int paramInt);
+  
+  public ajdf b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      try
-      {
-        String str1 = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
-        String str2 = new File(paramPathResult.folderPath, "classes.txt").toString();
-        if ((!new File(str1).exists()) || (!new File(str2).exists()))
-        {
-          QLog.e("DrawClassifier", 1, "init fail file not exist");
-          a();
-          return;
-        }
-        ajct.a(this.jdField_a_of_type_Ajct, new ajcm(str1, str2));
-        if (this.jdField_a_of_type_Ajcw != null) {
-          this.jdField_a_of_type_Ajcw.a(true);
-        }
-        aivo.a("", "key_draw_hb_last_succ_model", paramPathResult.url);
-        ajct.a(this.jdField_a_of_type_Ajct, true);
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("DrawClassifier", 2, "init success");
-        return;
-      }
-      catch (Throwable paramPathResult)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
-        }
-        paramPathResult.printStackTrace();
-        a();
-        return;
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DrawClassifier", 2, "init download fail");
-      }
-      a();
-    }
+    return a(paramContext, paramViewGroup, paramInt);
   }
 }
 

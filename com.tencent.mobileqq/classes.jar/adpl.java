@@ -1,10 +1,14 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class adpl
-  extends akit
+class adpl
+  implements apxw
 {
-  public adpf a;
-  public TextView a;
+  adpl(adpk paramadpk, agne paramagne, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a()
+  {
+    BaseChatPie.a(this.jdField_a_of_type_Adpk.a, this.jdField_a_of_type_Agne, this.jdField_a_of_type_Int, this.b, this.c);
+  }
 }
 
 

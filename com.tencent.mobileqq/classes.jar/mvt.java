@@ -1,69 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-final class mvt
-  implements baug
+public class mvt
+  extends RecyclerView.Adapter<mvu>
 {
-  mvt(mvv parammvv) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  List<mwy> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onResp(bavf parambavf)
+  public mvt(Context paramContext, int paramInt)
   {
-    if (parambavf.jdField_a_of_type_Int == 3) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ScoreManager", 1, "Download init. url = " + ((baub)parambavf.jdField_a_of_type_Bave).a);
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (parambavf.jdField_a_of_type_Int == 0)
-        {
-          File localFile = new File(((baub)parambavf.jdField_a_of_type_Bave).c);
-          String str = awni.a(localFile.getAbsolutePath());
-          if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((baub)parambavf.jdField_a_of_type_Bave).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
-            return;
-          }
-          try
-          {
-            parambavf = new File(this.a.c);
-            anea.a(this.a.c, parambavf.getParentFile().getAbsolutePath() + File.separator);
-            if (QLog.isColorLevel()) {
-              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambavf.getParentFile().getAbsolutePath());
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.i("ScoreManager", 1, "qav_score_good : " + mum.a("qav_score_good.jpg") + ", qav_score_normal : " + mum.a("qav_score_normal.jpg") + ", qav_score_bad : " + mum.a("qav_score_bad.jpg"));
-              return;
-            }
-          }
-          catch (Exception parambavf)
-          {
-            new File(this.a.c).delete();
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  public mvu a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((baub)parambave).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    return new mvu(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558709, paramViewGroup, false));
+  }
+  
+  public mwy a(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (mwy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  public void a(List<mwy> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(mvu parammvu, int paramInt)
+  {
+    mwy localmwy = a(paramInt);
+    RecyclerView.LayoutParams localLayoutParams;
+    if ((paramInt == 3) || (paramInt == 6))
+    {
+      localLayoutParams = (RecyclerView.LayoutParams)parammvu.itemView.getLayoutParams();
+      localLayoutParams.leftMargin = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      parammvu.itemView.setLayoutParams(localLayoutParams);
+      if ((localmwy == null) || (!localmwy.a())) {
+        break label163;
+      }
+      mvu.a(parammvu).setText("" + localmwy.a());
+      mvu.a(parammvu).setVisibility(0);
+      parammvu.itemView.setTag(localmwy);
+      mvu.a(parammvu).setVisibility(4);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(parammvu, paramInt, getItemId(paramInt));
+      return;
+      localLayoutParams = (RecyclerView.LayoutParams)parammvu.itemView.getLayoutParams();
+      localLayoutParams.leftMargin = 0;
+      parammvu.itemView.setLayoutParams(localLayoutParams);
+      break;
+      label163:
+      mvu.a(parammvu).setVisibility(8);
+      mvu.a(parammvu).setImageResource(2130845231);
+      mvu.a(parammvu).setVisibility(0);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvt
  * JD-Core Version:    0.7.0.1
  */

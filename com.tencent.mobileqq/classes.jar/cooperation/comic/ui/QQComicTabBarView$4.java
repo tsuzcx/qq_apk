@@ -12,13 +12,13 @@ class QQComicTabBarView$4
   
   public void run()
   {
-    Drawable localDrawable = this.this$0.getResources().getDrawable(2130850200);
+    Drawable localDrawable = this.this$0.getResources().getDrawable(2130850796);
     ThreadManager.getUIHandler().post(new QQComicTabBarView.4.1(this, localDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.4
  * JD-Core Version:    0.7.0.1
  */

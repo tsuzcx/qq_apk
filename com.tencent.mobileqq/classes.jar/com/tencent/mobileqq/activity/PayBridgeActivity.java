@@ -1,28 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import admi;
+import Override;
+import aesw;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Window;
-import apmm;
+import arpi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.pay.PayLogic;
 
 public class PayBridgeActivity
   extends BaseActivity
 {
   protected long a;
-  private admi jdField_a_of_type_Admi;
+  private aesw jdField_a_of_type_Aesw;
   private PayLogic jdField_a_of_type_CooperationQwalletPluginPayPayLogic;
   protected boolean a;
   public boolean b;
@@ -53,9 +56,9 @@ public class PayBridgeActivity
   {
     try
     {
-      this.jdField_a_of_type_Admi = new admi(this);
+      this.jdField_a_of_type_Aesw = new aesw(this);
       IntentFilter localIntentFilter = new IntentFilter("action_launch_completed");
-      registerReceiver(this.jdField_a_of_type_Admi, localIntentFilter);
+      registerReceiver(this.jdField_a_of_type_Aesw, localIntentFilter);
       return;
     }
     catch (Throwable localThrowable)
@@ -101,7 +104,7 @@ public class PayBridgeActivity
       return false;
     }
     Intent localIntent = new Intent(paramActivity, PayBridgeActivity.class);
-    localIntent.putExtras(new apmm(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
+    localIntent.putExtras(new arpi(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
     localIntent.putExtra("pay_requestcode", 1);
     localIntent.addFlags(67108864);
     localIntent.addFlags(536870912);
@@ -113,8 +116,8 @@ public class PayBridgeActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Admi != null) {
-        unregisterReceiver(this.jdField_a_of_type_Admi);
+      if (this.jdField_a_of_type_Aesw != null) {
+        unregisterReceiver(this.jdField_a_of_type_Aesw);
       }
       return;
     }
@@ -164,7 +167,9 @@ public class PayBridgeActivity
     }
     for (;;)
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      return bool;
       if ((this.jdField_a_of_type_Boolean) && (!isFinishing()))
       {
         long l = NetConnInfoCenter.getServerTimeMillis();
@@ -182,7 +187,7 @@ public class PayBridgeActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167140);
+    getWindow().setBackgroundDrawableResource(2131167224);
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayBridgeActivity", 2, "doOnCreate@" + hashCode());
     }
@@ -275,10 +280,17 @@ public class PayBridgeActivity
     }
     this.jdField_a_of_type_CooperationQwalletPluginPayPayLogic.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PayBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

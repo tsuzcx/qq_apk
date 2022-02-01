@@ -1,31 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.InstallRunable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bkcs
-  extends Handler
 {
-  public bkcs(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private AtomicInteger a = new AtomicInteger(0);
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    }
+    int i;
     do
     {
+      i = this.a.get();
+      if ((i & 0xFFFFFFFE) == 0) {}
       do
       {
         return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
+        if ((i & 0x1) == 0) {
+          break;
+        }
+      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
+      synchronized (this.a)
+      {
+        this.a.notifyAll();
+        return;
+      }
+    } while (!this.a.compareAndSet(i, i - 2));
+  }
+  
+  public boolean a()
+  {
+    int i;
+    do
+    {
+      i = this.a.get();
+      if ((i & 0x1) != 0) {
+        return false;
+      }
+    } while (!this.a.compareAndSet(i, i + 2));
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.compareAndSet(0, 1)) {}
+    while (this.a.compareAndSet(1, 1)) {
       return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
+    }
+    int i;
+    do
+    {
+      i = this.a.get();
+    } while (!this.a.compareAndSet(i, i | 0x1));
+    try
+    {
+      synchronized (this.a)
+      {
+        this.a.wait();
+        return;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
 }
 

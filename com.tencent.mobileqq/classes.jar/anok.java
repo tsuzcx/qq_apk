@@ -1,45 +1,51 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class anok
-  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public anok(ArkAppPreDownloadMgr.3.1 param1) {}
+  static SimpleDateFormat a;
+  static SimpleDateFormat b;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
-    }
-    paramString = (QQAppInterface)anoj.a(this.a.a.this$0).get();
-    if (paramString != null)
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  }
+  
+  public static long a(String paramString)
+  {
+    try
     {
-      paramString = (bbaa)paramString.getManager(193);
-      if (paramString != null)
+      l = jdField_a_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      long l;
+      localException.printStackTrace();
+      try
       {
-        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
-          break label211;
-        }
-        long l = 0L;
-        paramAppPathInfo = new File(paramAppPathInfo.path);
-        if (paramAppPathInfo.exists()) {
-          l = paramAppPathInfo.length();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
-        }
-        paramString.a(this.a.a.a.a, l);
+        l = jdField_b_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+        return l;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    return;
-    label211:
-    paramString.a(this.a.a.a.a, -1L);
+    return 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_b_of_type_Long).append("]");
+    return localStringBuilder.toString();
   }
 }
 

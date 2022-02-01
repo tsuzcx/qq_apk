@@ -1,22 +1,40 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class ascr
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  ascr(ascq paramascq) {}
+  ascr(asco paramasco) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131718361);
+    bgzo.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-    default: 
-      return false;
+      if (EmojiStickerManager.a().a != 0) {
+        break label103;
+      }
+      paramInt = 1;
     }
-    if ((this.a.jdField_a_of_type_Bdjz != null) && (this.a.jdField_a_of_type_Bdjz.isShowing()) && (this.a.jdField_a_of_type_Ascz != null)) {
-      this.a.jdField_a_of_type_Ascz.a();
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      label103:
+      if (EmojiStickerManager.a().a == 1) {
+        paramInt = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        paramInt = 3;
+      } else {
+        paramInt = -1;
+      }
     }
-    return true;
   }
 }
 

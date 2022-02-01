@@ -1,20 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atpk
-  implements ValueAnimator.AnimatorUpdateListener
+class atpk
+  implements View.OnClickListener
 {
-  public atpk(MusicPanelView paramMusicPanelView) {}
+  atpk(atpf paramatpf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpk
  * JD-Core Version:    0.7.0.1
  */

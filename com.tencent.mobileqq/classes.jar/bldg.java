@@ -1,73 +1,41 @@
-import android.support.annotation.Nullable;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
-class bldg
-  implements bmeo<blbt>
+public class bldg
+  extends OnPluginInstallListener.Stub
 {
-  bldg(blda paramblda) {}
+  public bldg(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
   
-  public void a(@Nullable blbt paramblbt)
+  public void onInstallBegin(String paramString)
   {
-    int i = 0;
-    blda.a(this.a).a().a(blda.a(this.a));
-    if (paramblbt != null)
-    {
-      QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", "=====" + paramblbt });
-      QLog.d("AEGIFChunkPreviewFragment", 4, "emo ===" + paramblbt.jdField_a_of_type_JavaLangString + "text ===" + paramblbt.jdField_a_of_type_Int + "material ====" + paramblbt.jdField_b_of_type_Int);
-      if (paramblbt.jdField_a_of_type_JavaLangString == null)
-      {
-        paramblbt.jdField_a_of_type_Int = 0;
-        paramblbt.jdField_b_of_type_Int = 6;
-        paramblbt.jdField_a_of_type_JavaLangString = "default";
-      }
-      if ((paramblbt.jdField_a_of_type_JavaUtilList != null) && (paramblbt.jdField_a_of_type_JavaUtilList.size() == 0)) {
-        paramblbt.jdField_a_of_type_JavaUtilList.addAll(blcf.jdField_a_of_type_JavaUtilList);
-      }
-      Object localObject;
-      if (paramblbt.jdField_a_of_type_JavaLangString.equals("default"))
-      {
-        localObject = alud.a(2131700357);
-        blda.a(this.a).setText((CharSequence)localObject);
-      }
-      for (;;)
-      {
-        if (i < paramblbt.jdField_a_of_type_Int)
-        {
-          localObject = new blca();
-          ((blca)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-          ((blca)localObject).jdField_a_of_type_JavaLangString = ((String)paramblbt.jdField_a_of_type_JavaUtilList.get(i % paramblbt.jdField_a_of_type_JavaUtilList.size()));
-          ((blca)localObject).jdField_b_of_type_Int = 2;
-          if (blda.a(this.a).size() < blda.a(this.a)) {}
-        }
-        else
-        {
-          blda.a(this.a).a(blda.a(this.a), paramblbt.jdField_a_of_type_JavaLangString);
-          blda.a(this.a).b().a(blda.a(this.a), new bldh(this, paramblbt));
-          blda.a(this.a).a().a(blda.a(this.a), new bldi(this, paramblbt));
-          return;
-          localObject = (String)blda.a(this.a).get(paramblbt.jdField_a_of_type_JavaLangString);
-          localObject = alud.a(2131700352) + (String)localObject + alud.a(2131700359);
-          break;
-        }
-        blda.a(this.a).add(localObject);
-        blda.a(this.a).notifyItemInserted(blda.a(this.a).size() - 1);
-        bler localbler = new bler();
-        localbler.jdField_b_of_type_JavaLangString = ((blca)localObject).jdField_a_of_type_JavaLangString;
-        localbler.jdField_a_of_type_Int = (i + 1);
-        blda.a(this.a).a(localbler);
-        i += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
     }
-    QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
-    paramblbt = new blca();
-    paramblbt.jdField_b_of_type_JavaLangString = "";
-    paramblbt.jdField_a_of_type_JavaLangString = "";
-    paramblbt.jdField_b_of_type_Int = 2;
-    paramblbt.jdField_a_of_type_Int = 11;
-    blda.a(this.a).add(paramblbt);
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
+    }
+    this.a.b.sendEmptyMessageDelayed(3, 200L);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
+    }
+    this.a.b.sendEmptyMessageDelayed(1, 1000L);
   }
 }
 

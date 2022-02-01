@@ -1,20 +1,8 @@
-import org.json.JSONObject;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public class bmur
+public abstract interface bmur
 {
-  public int a;
-  
-  public bmur(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public JSONObject a()
-  {
-    return null;
-  }
-  
-  public void a() {}
+  public abstract void a(AlumBasicData paramAlumBasicData);
 }
 
 

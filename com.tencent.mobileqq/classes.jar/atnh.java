@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-
-public class atnh
-  implements DialogInterface.OnClickListener
+public abstract interface atnh
 {
-  public atnh(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atnw paramatnw) {}
+  public abstract long a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Atnw.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
-  }
+  public abstract String a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(atds paramatds);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

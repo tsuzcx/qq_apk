@@ -1,25 +1,26 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-
-public class sie
-  implements TypeEvaluator<Rect>
+public abstract class sie
 {
-  public sie(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  abstract void a();
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
+  abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
-  }
+  abstract void a(int paramInt, Object paramObject);
+  
+  abstract void a(String paramString);
+  
+  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  abstract void a(sfb paramsfb);
+  
+  abstract void a(sfb paramsfb, int paramInt);
+  
+  abstract void a(boolean paramBoolean);
+  
+  abstract void b(sfb paramsfb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sie
  * JD-Core Version:    0.7.0.1
  */

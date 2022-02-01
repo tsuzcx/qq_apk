@@ -1,33 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 
 public class adyu
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public adyu(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
+  public adyu(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131719121), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
-      }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
-      return;
-    }
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
   }
 }
 

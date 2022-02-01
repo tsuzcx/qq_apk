@@ -1,19 +1,10 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-public abstract interface aqov
+public class aqov
 {
-  public abstract View.OnClickListener a(TextView paramTextView);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public String a = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqov
  * JD-Core Version:    0.7.0.1
  */

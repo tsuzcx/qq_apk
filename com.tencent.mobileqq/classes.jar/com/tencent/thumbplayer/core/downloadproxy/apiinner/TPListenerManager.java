@@ -7,8 +7,10 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPOfflineDownloadListener
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPreLoadListener;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
+import com.tencent.thumbplayer.core.downloadproxy.utils.TVKThreadUtil;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class TPListenerManager
 {
@@ -19,6 +21,7 @@ public class TPListenerManager
   private static final int MSG_DOWNLOAD_STATUS = 8;
   private static final int MSG_ERROR = 4;
   private static final int MSG_FINISH = 3;
+  private static final int MSG_NOTIFY_LOSE_PACKAGE_CEHCK = 2004;
   private static final int MSG_NOTIFY_PLAYER_SWITCH_DEFINITION = 2003;
   private static final int MSG_PLAY_VIDEO_NOT_FOUND = 101;
   private static final int MSG_PREPARE_FINISH = 50;
@@ -164,8 +167,12 @@ public class TPListenerManager
       }
       paramITPPlayListener.onPlayCallback(1, paramObject2, null, null, null);
       return;
+    case 2003: 
+      paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
+      return;
     }
-    paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
+    paramInt1 = TPDLProxyUtils.objectToInt(paramObject2, 0);
+    TVKThreadUtil.getScheduledExecutorServiceInstance().execute(new TPListenerManager.4(this, paramInt1));
   }
   
   private void dispatchPreLoadMessage(ITPPreLoadListener paramITPPreLoadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
@@ -362,7 +369,7 @@ public class TPListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,52 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.OnF2FConfigListener.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class aokl
-  implements aojz
+  extends aojs
 {
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aojy paramaojy)
+  public aokl(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramaojy != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramaojy.a);
+      i = Integer.parseInt(this.c);
+      switch (i)
+      {
+      default: 
+        return true;
       }
-      ThreadManager.post(new OnF2FConfigListener.1(this, paramaojy, paramQQAppInterface), 5, null, false);
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e("QQFavAction", 1, "doAction error NumberFormatException: " + localNumberFormatException.getMessage());
+        int i = -1;
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("selfSet_leftViewText", BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690563));
+      boolean bool = bljn.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QQFavAction", 1, "doAction error: " + localException.getMessage());
+      a("QQFavAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aokl
  * JD-Core Version:    0.7.0.1
  */

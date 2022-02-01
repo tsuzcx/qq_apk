@@ -1,39 +1,26 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asaw
-  implements View.OnClickListener
+public class asaw
+  implements Animator.AnimatorListener
 {
-  asaw(asau paramasau, DialogInterface.OnClickListener paramOnClickListener) {}
+  public asaw(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Asau.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Asau, 1);
-    }
-    if (asau.a(this.jdField_a_of_type_Asau))
+    if (!EmotionSearchPanel.b(this.a, true))
     {
-      asau.a(this.jdField_a_of_type_Asau).removeView(asau.a(this.jdField_a_of_type_Asau));
-      asau.a(this.jdField_a_of_type_Asau, false);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Asau.isShowing()) {
-        this.jdField_a_of_type_Asau.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
+      EmotionSearchPanel.a(this.a, 1.0F);
+      EmotionSearchPanel.b(this.a);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

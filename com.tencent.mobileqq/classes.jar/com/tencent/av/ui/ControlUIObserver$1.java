@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import meu;
+import mbx;
 
 public class ControlUIObserver$1
   implements Runnable
 {
-  public ControlUIObserver$1(meu parammeu, Object paramObject) {}
+  public ControlUIObserver$1(mbx parammbx, Object paramObject) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ControlUIObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.ControlUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

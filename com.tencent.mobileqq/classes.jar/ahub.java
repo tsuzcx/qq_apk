@@ -1,84 +1,29 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AlphaClickableRelativeLayout;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahub
-  extends ahsd
+class ahub
+  implements View.OnClickListener
 {
-  protected ahud a;
-  protected FrameLayout a;
-  protected ImageView a;
-  protected TextView a;
-  private babe a;
-  protected QQAppInterface a;
-  protected AlphaClickableRelativeLayout a;
-  protected XListView a;
+  ahub(ahua paramahua, String paramString) {}
   
-  public ahub(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Babe = new ahuc(this);
-    if ((paramActivity instanceof SplashActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
+    if ((ahua.a(this.jdField_a_of_type_Ahua) == null) || (ahua.a(this.jdField_a_of_type_Ahua).a.a(this.jdField_a_of_type_JavaLangString) == null))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("CTEntryController", 2, "CTEntryController create");
+    boolean bool = ahua.a(this.jdField_a_of_type_Ahua).a.a(this.jdField_a_of_type_JavaLangString, ahua.a(this.jdField_a_of_type_Ahua).jdField_d_of_type_Int, ahua.a(this.jdField_a_of_type_Ahua).jdField_d_of_type_JavaUtilList);
+    String str2 = ahua.a(this.jdField_a_of_type_Ahua) + "";
+    if (bool) {}
+    for (String str1 = "1";; str1 = "2")
+    {
+      bcst.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str2, str1, "", "");
+      this.jdField_a_of_type_Ahua.notifyDataSetChanged();
+      break;
     }
   }
-  
-  public void a(ahud paramahud)
-  {
-    this.jdField_a_of_type_Ahud = paramahud;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376826));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131375482));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375488));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131370123));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362131));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  protected boolean a()
-  {
-    boolean bool = babd.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryController", 2, String.format("shouldShowRecommendEntry, isStudyMode: %s", new Object[] { Boolean.valueOf(bool) }));
-    }
-    return !bool;
-  }
-  
-  public void b()
-  {
-    super.b();
-    babd.a(this.jdField_a_of_type_Babe);
-  }
-  
-  public void d()
-  {
-    super.d();
-    babd.b(this.jdField_a_of_type_Babe);
-  }
-  
-  public void d(boolean paramBoolean) {}
 }
 
 

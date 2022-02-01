@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bjgi;
+import blup;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -16,6 +16,8 @@ import com.tencent.smtt.sdk.WebView;
 public class QzoneTranslucentBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
+  private boolean a = true;
+  
   private int a(float paramFloat)
   {
     return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
@@ -32,50 +34,53 @@ public class QzoneTranslucentBrowserFragment
   
   private void a(RelativeLayout paramRelativeLayout)
   {
-    if ((paramRelativeLayout != null) && (a() != null))
+    if ((paramRelativeLayout != null) && (getHostActivity() != null))
     {
-      ImageView localImageView = new ImageView(a());
+      ImageView localImageView = new ImageView(getHostActivity());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.topMargin = a(11.5F);
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848101));
-      localImageView.setOnClickListener(new bjgi(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848577));
+      localImageView.setOnClickListener(new blup(this));
     }
   }
   
-  public void a(WebView paramWebView, String paramString)
+  public void activityFinish()
   {
-    super.a(paramWebView, paramString);
-    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer);
+    super.activityFinish();
+    if (getHostActivity() != null) {
+      getHostActivity().setResult(-1);
+    }
   }
   
-  public int d(Bundle paramBundle)
+  public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bejh != null) {
-      this.jdField_a_of_type_Bejh.d = true;
+    if (this.mUIStyleHandler != null) {
+      this.mUIStyleHandler.d = true;
     }
-    int i = super.d(paramBundle);
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    int i = super.doCreateLoopStep_InitUIContent(paramBundle);
+    if (this.intent != null)
     {
-      int j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.setBackgroundColor(j);
+      int j = this.intent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);
+      this.contentView.setBackgroundColor(j);
+      this.a = this.intent.getBooleanExtra("show_close_btn", true);
     }
     return i;
   }
   
-  public void d()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    super.d();
-    if (a() != null) {
-      a().setResult(-1);
+    super.onPageFinished(paramWebView, paramString);
+    if (this.a) {
+      a(this.contentView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

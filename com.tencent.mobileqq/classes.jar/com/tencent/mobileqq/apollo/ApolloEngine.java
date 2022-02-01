@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import algj;
-import aliu;
-import alko;
+import amhd;
+import amzq;
+import ancb;
 import android.graphics.RectF;
 import android.text.TextUtils;
+import andw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -30,7 +31,7 @@ public class ApolloEngine
   
   static
   {
-    alko.a("classLoad");
+    andw.a("classLoad");
   }
   
   public ApolloEngine()
@@ -53,9 +54,9 @@ public class ApolloEngine
   
   public static boolean a()
   {
-    if (!alko.a())
+    if (!andw.a())
     {
-      alko.a("other");
+      andw.a("other");
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
@@ -64,10 +65,10 @@ public class ApolloEngine
   
   private void b()
   {
-    new File(aliu.a, "slave");
-    String str1 = aliu.c + "/def/role/0/script/slave/";
-    String str2 = aliu.c + "/";
-    nativeSetFileHomeDir(aliu.av, aliu.g, aliu.a, aliu.a, aliu.a + "/extension/", str1, str2);
+    new File(ancb.a, "slave");
+    String str1 = ancb.c + "/def/role/0/script/slave/";
+    String str2 = ancb.c + "/";
+    nativeSetFileHomeDir(ancb.av, ancb.g, ancb.a, ancb.a, ancb.a + "/extension/", str1, str2);
   }
   
   private void c()
@@ -164,7 +165,7 @@ public class ApolloEngine
     QLog.d("ApolloManager.Engine", 1, "[createDirector] tid: " + Thread.currentThread().getId() + ", mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", isEngineReady:" + a() + ",glVersion:" + paramInt4);
     if (a())
     {
-      new File(aliu.i).mkdirs();
+      new File(ancb.i).mkdirs();
       if (paramInt4 != 3) {
         break label220;
       }
@@ -235,16 +236,29 @@ public class ApolloEngine
   {
     if (a("[disposeDirector]"))
     {
-      QLog.d("ApolloManager.Engine", 1, "[disposeDirector] tid: " + Thread.currentThread().getId() + ", mDirector: " + this.jdField_a_of_type_Long);
+      QLog.d("ApolloManager.Engine", 1, "[disposeDirector] tid: " + Thread.currentThread().getId() + ", mDirector: " + this.jdField_a_of_type_Long + " ApolloManager.sApolloEngineLockEnable:" + amhd.r);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      if (!amhd.r) {
+        break label105;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        nativeDiposeDirector(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Long = -1L;
+        return;
+      }
+      finally {}
+      label105:
       nativeDiposeDirector(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = -1L;
     }
   }
   
   public void a(double paramDouble)
   {
-    a(String.format(algj.b(), new Object[] { Double.valueOf(paramDouble) }));
+    a(String.format(amzq.b(), new Object[] { Double.valueOf(paramDouble) }));
   }
   
   public void a(double paramDouble, int paramInt)
@@ -371,32 +385,52 @@ public class ApolloEngine
     while (!a("[execScriptString]")) {
       return;
     }
-    try
+    int i;
+    for (;;)
     {
-      new StringBuilder(paramString.length() + 100).append("try{").append(paramString).append("}catch(err){BK.Script.log(0, 0, err.message);}");
-      l = this.jdField_a_of_type_Long;
-      if (!QLog.isColorLevel()) {
-        break label83;
-      }
-      i = 1;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
+      try
       {
-        long l;
+        new StringBuilder(paramString.length() + 100).append("try{").append(paramString).append("}catch(err){BK.Script.log(0, 0, err.message);}");
+        if (!amhd.r) {
+          continue;
+        }
+      }
+      catch (OutOfMemoryError paramString)
+      {
         QLog.e("ApolloManager.Engine", 1, paramString, new Object[0]);
         return;
-        int i = 0;
+        i = 0;
+        continue;
+        long l = this.jdField_a_of_type_Long;
+        if (!QLog.isColorLevel()) {
+          break label137;
+        }
+        i = 1;
+        nativeLoadScriptString(l, paramString, i);
+        return;
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("ApolloManager.Engine", 1, paramString, new Object[0]);
+        return;
+      }
+      try
+      {
+        l = this.jdField_a_of_type_Long;
+        if (QLog.isColorLevel())
+        {
+          i = 1;
+          nativeLoadScriptString(l, paramString, i);
+          return;
+        }
+      }
+      finally {}
     }
-    catch (Throwable paramString)
+    for (;;)
     {
-      label83:
-      QLog.e("ApolloManager.Engine", 1, paramString, new Object[0]);
+      label137:
+      i = 0;
     }
-    nativeLoadScriptString(l, paramString, i);
-    return;
   }
   
   public void a(String paramString, int paramInt)
@@ -485,7 +519,7 @@ public class ApolloEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloEngine
  * JD-Core Version:    0.7.0.1
  */

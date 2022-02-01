@@ -1,21 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-
-public class aida
-  implements View.OnTouchListener
+class aida
+  extends anxg
 {
-  public aida(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aida(aicv paramaicv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
+    aicv.a(this.a, paramBoolean, paramObject);
   }
 }
 

@@ -1,29 +1,49 @@
-import android.content.Context;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aiaw
+  extends anqd
 {
-  public ArrayList<aiax> a;
-  public int[] a;
-  public String[] a;
+  aiaw(aias paramaias) {}
   
-  public aiaw()
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (QLog.isColorLevel()) {
+      QLog.d(aias.g, 2, "[onUpdateSendMsgError], errMsg:" + paramString2 + ",replyCode:" + paramInt2);
+    }
+    ThreadManager.getUIHandler().post(new GameMsgChatPie.4.1(this, paramString2));
   }
   
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new aiax(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.a.a)) {
+      return;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    this.a.t = true;
+    this.a.a(262144, paramanqa, paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.f(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

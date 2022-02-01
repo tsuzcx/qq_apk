@@ -1,91 +1,122 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
-class nxj
-  extends oxe
+public class nxj
+  extends nxe
 {
-  nxj(nxf paramnxf) {}
+  private uwv a;
+  public int d;
+  public String d;
+  public int e;
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public static nxj a(JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (paramList != null))
+    if (paramJSONObject == null) {}
+    for (;;)
     {
-      if ((paramList != null) && (paramList.size() > 0)) {
-        this.a.a(paramList);
-      }
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      return null;
+      try
       {
-        Object localObject = (ChannelCoverInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
-          for (;;)
-          {
-            int i;
-            try
-            {
-              for (;;)
-              {
-                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
-                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
-                  break;
-                }
-                localObject = ((URL)localObject).getQuery().split("[&]");
-                int j = localObject.length;
-                i = 0;
-                if (i >= j) {
-                  break;
-                }
-                String[] arrayOfString = localObject[i].split("[=]");
-                if (arrayOfString.length <= 1) {
-                  break label272;
-                }
-                boolean bool = "topicid".equals(arrayOfString[0]);
-                if (!bool) {
-                  break label272;
-                }
-                try
-                {
-                  Integer.valueOf(arrayOfString[1]).intValue();
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
-                }
-                catch (Exception localException) {}
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
-            }
-            catch (MalformedURLException localMalformedURLException) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
-            break;
-            label272:
-            i += 1;
-          }
+        nxj localnxj = new nxj();
+        localnxj.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
+        localnxj.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
+        localnxj.e = paramJSONObject.optInt("imageHeight");
+        boolean bool = TextUtils.isEmpty(localnxj.jdField_d_of_type_JavaLangString);
+        if (!bool) {
+          return localnxj;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
+    return null;
+  }
+  
+  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nww paramnww, boolean paramBoolean)
+  {
+    super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramnww, paramBoolean);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131560214, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131372538);
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
+    try
+    {
+      paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
+      paramString2.setImage(paramString3);
+      if (tdv.a().a(paramString3)) {
+        this.jdField_a_of_type_Int = 2;
+      }
+      for (;;)
+      {
+        a(paramContext, paramString1);
+        return paramString1;
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Uwv = new nxk(this, paramString1, paramString2);
+        paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Uwv);
+        paramString1.findViewById(2131370202).setVisibility(0);
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_Int == 3) {
+      d();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      nxo localnxo = (nxo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248);
+      if (localnxo != null) {
+        localnxo.a(this.jdField_d_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Uwv = null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370202).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366231).setVisibility(8);
+    try
+    {
+      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
+      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372538)).setImage(localURL);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxj
  * JD-Core Version:    0.7.0.1
  */

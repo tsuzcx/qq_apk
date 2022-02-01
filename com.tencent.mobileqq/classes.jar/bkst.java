@@ -1,6 +1,36 @@
-class bkst
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.List;
+
+public class bkst
+  extends RecyclerView.RecycledViewPool
 {
-  public static bksp a = new bksp(null);
+  public bkst(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
+  
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  {
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bksn)))
+    {
+      localObject = (bksn)localObject;
+      if (((bksn)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bksn)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
+    }
+    return localViewHolder;
+  }
 }
 
 

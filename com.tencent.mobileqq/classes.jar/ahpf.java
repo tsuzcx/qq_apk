@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpf
-  implements ahpd
+  implements ahor
 {
-  public ahpf(TroopActivity paramTroopActivity) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
-      return;
-    }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
+    paramagup.a(paramMessageRecord, paramagwc);
   }
 }
 

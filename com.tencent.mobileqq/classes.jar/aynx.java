@@ -1,98 +1,30 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.text.SimpleDateFormat;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class aynx
-  extends aynv
+class aynx
+  extends Animation
 {
-  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy/MM/dd");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
-  private CharSequence c;
+  aynx(aynq paramaynq, View paramView, int paramInt) {}
   
-  public aynx(QQAppInterface paramQQAppInterface, String paramString, RecentUser paramRecentUser, MessageRecord paramMessageRecord)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
-  
-  public CharSequence a()
-  {
-    if (this.b == null) {
-      if (!nav.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-        break label60;
-      }
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat == 1.0F) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    label60:
-    SessionInfo localSessionInfo;
-    for (this.b = (BaseApplicationImpl.sApplication.getString(2131697672) + nav.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = bdgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
+    do
     {
-      return this.b;
-      localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
-    }
+      return;
+      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    } while (paramTransformation == null);
+    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
   }
   
-  public String a()
+  public boolean willChangeBounds()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    ajlb.jdField_a_of_type_Boolean = true;
-    ajlb.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    ajlb.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), bdgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType()), false);
-    amcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.c == null) {
-      this.c = ayvm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
-    }
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-      this.jdField_a_of_type_JavaLangCharSequence = bdns.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    return true;
   }
 }
 

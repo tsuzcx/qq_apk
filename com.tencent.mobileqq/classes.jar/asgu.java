@@ -1,23 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import java.util.ArrayList;
 
 public class asgu
-  implements CompoundButton.OnCheckedChangeListener
+  extends asht
 {
-  public asgu(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public ArrayList<asgv> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public asgu()
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695482), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      return;
-    }
+    this.mType = 6;
   }
 }
 

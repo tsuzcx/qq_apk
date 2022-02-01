@@ -43,6 +43,7 @@ public class ViolaEnvironment
   public static String KEY_CHANGE;
   public static String KEY_FRAME_PAGE;
   public static String KEY_MAIN;
+  public static final String KEY_NV_PROCESS = "KEY_NV_PROCESS";
   public static String KEY_PAGE_PROCESS;
   public static String KEY_RENDER_JS;
   public static String KEY_SO;
@@ -82,6 +83,7 @@ public class ViolaEnvironment
   public static String TIME_LAYOUT;
   public static String TIME_MAIN_JS_NET;
   public static String TIME_MAIN_JS_OFFLINE;
+  public static String TIME_NATIVE_VUE;
   public static String TIME_PAGE;
   public static String TIME_RENDER_JS;
   public static String TIME_REVEIVE_ORDER;
@@ -109,6 +111,7 @@ public class ViolaEnvironment
     TIME_BIND_DATA = "TIME_BIND_DATA";
     TIME_PAGE = "TIME_PAGE";
     TIME_RENDER_JS = "TIME_RENDER_JS";
+    TIME_NATIVE_VUE = "TIME_NATIVE_VUE";
     KEY_FRAME_PAGE = "KEY_FRAME_PAGE";
     KEY_PAGE_PROCESS = "KEY_PAGE_PROCESS";
     PAGE_ERROR_SO = "2";
@@ -195,7 +198,7 @@ public class ViolaEnvironment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaEnvironment
  * JD-Core Version:    0.7.0.1
  */

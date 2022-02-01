@@ -16,14 +16,12 @@ class GdtDemoMvFragment$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtMotiveVideoAd", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
-    }
+    QLog.i("GdtDemoMvFragment", 1, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment.1
  * JD-Core Version:    0.7.0.1
  */

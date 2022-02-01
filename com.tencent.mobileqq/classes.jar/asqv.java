@@ -1,17 +1,9 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 
 class asqv
-  implements DialogInterface.OnClickListener
+  extends amcl
 {
-  asqv(asqs paramasqs) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a = false;
-    asqs.a(this.a).finish();
-  }
+  TextView a;
 }
 
 

@@ -1,21 +1,17 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
 public class agel
-  extends aeqi
+  implements QQPermissionCallback
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  public agel(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public agel(ageh paramageh) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

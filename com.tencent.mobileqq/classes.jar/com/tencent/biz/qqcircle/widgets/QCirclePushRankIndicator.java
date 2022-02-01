@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,10 +19,10 @@ public class QCirclePushRankIndicator
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private final String jdField_a_of_type_JavaLangString = "#FF000000";
+  private final String jdField_a_of_type_JavaLangString = "#7A7A8D";
   private ArrayList<ImageView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "#4D7C878E";
+  private final String jdField_b_of_type_JavaLangString = "#B8B9C7";
   
   public QCirclePushRankIndicator(Context paramContext, int paramInt)
   {
@@ -34,9 +34,9 @@ public class QCirclePushRankIndicator
   
   private void a()
   {
-    int j = aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = aepi.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = afur.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
@@ -53,7 +53,7 @@ public class QCirclePushRankIndicator
       if (i == 0)
       {
         ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(k, j));
-        ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#FF000000")));
+        ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#7A7A8D")));
       }
       for (;;)
       {
@@ -62,7 +62,7 @@ public class QCirclePushRankIndicator
         i += 1;
         break;
         ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(j, j));
-        ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#4D7C878E")));
+        ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#B8B9C7")));
       }
     }
   }
@@ -80,12 +80,12 @@ public class QCirclePushRankIndicator
         if (QLog.isDevelopLevel()) {
           QLog.d("AccountDetailBannerIndicator", 2, "updateCurrentItem->pos:" + paramInt + ", newPos:" + i);
         }
-        paramInt = aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        int j = aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#4D7C878E")));
+        paramInt = afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        int j = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#B8B9C7")));
         ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setLayoutParams(new RelativeLayout.LayoutParams(paramInt, paramInt));
         this.jdField_b_of_type_Int = i;
-        ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#FF000000")));
+        ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#7A7A8D")));
         ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setLayoutParams(new RelativeLayout.LayoutParams(j, paramInt));
         return;
       }
@@ -94,7 +94,7 @@ public class QCirclePushRankIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator
  * JD-Core Version:    0.7.0.1
  */

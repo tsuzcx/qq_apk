@@ -1,22 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xac
-  implements DialogInterface.OnDismissListener
+  extends wlf<xbl>
 {
-  public xac(EditVideoGuide paramEditVideoGuide) {}
+  public static final String a;
+  public List<wxt> a;
+  public String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_Xan.a(14);
+    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_colleciton_view_count");
+  }
+  
+  public xac()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
+    try
+    {
+      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
+      return new xbl(this.b, localRspCollectionViewCount);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        yqp.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      wxt localwxt = (wxt)localIterator.next();
+      localReqCollectionViewCount.collection_id.add(localwxt.a());
+    }
+    return localReqCollectionViewCount.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xac
  * JD-Core Version:    0.7.0.1
  */

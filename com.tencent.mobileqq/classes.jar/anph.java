@@ -1,15 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-class anph
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class anph
+  implements anik
 {
-  anph(anpg paramanpg) {}
+  private List<String> a = new ArrayList();
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    if (paramBitmap != null) {
-      anpd.a(this.a.jdField_a_of_type_Anpd, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
     }
   }
 }

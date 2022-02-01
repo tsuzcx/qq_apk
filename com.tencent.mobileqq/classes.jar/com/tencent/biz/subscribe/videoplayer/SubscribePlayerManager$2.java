@@ -1,29 +1,29 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import afkf;
+import aajt;
+import agrp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import ndk;
-import ymq;
+import nmd;
 
 public class SubscribePlayerManager$2
   implements Runnable
 {
-  public SubscribePlayerManager$2(ymq paramymq) {}
+  public SubscribePlayerManager$2(aajt paramaajt) {}
   
   public void run()
   {
-    if (ndk.a(BaseApplicationImpl.context) != 1) {
+    if (nmd.a(BaseApplicationImpl.context) != 1) {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
     }
-    while ((ymq.a(this.this$0)) || (ymq.a(this.this$0).size() <= 0)) {
+    while ((aajt.a(this.this$0)) || (aajt.a(this.this$0).size() <= 0)) {
       return;
     }
-    ymq.a(this.this$0, true);
-    Object localObject = ymq.a(this.this$0).keySet().iterator();
+    aajt.a(this.this$0, true);
+    Object localObject = aajt.a(this.this$0).keySet().iterator();
     int i = 0;
     label73:
     if (((Iterator)localObject).hasNext())
@@ -38,18 +38,18 @@ public class SubscribePlayerManager$2
     for (;;)
     {
       break label73;
-      localObject = (afkf)ymq.a(this.this$0).get(Integer.valueOf(i));
+      localObject = (agrp)aajt.a(this.this$0).get(Integer.valueOf(i));
       if (localObject == null) {
         break;
       }
-      ymq.a(this.this$0, (afkf)localObject, ((afkf)localObject).b);
+      aajt.a(this.this$0, (agrp)localObject, ((agrp)localObject).b);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.2
  * JD-Core Version:    0.7.0.1
  */

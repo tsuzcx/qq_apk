@@ -1,39 +1,20 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class taj
-  extends Handler
+class taj
+  implements tal
 {
-  public taj(SwipeBackLayout paramSwipeBackLayout) {}
+  taj(szv paramszv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
+    tax.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     taj
  * JD-Core Version:    0.7.0.1
  */

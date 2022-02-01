@@ -1,14 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
 public class bdgx
-  implements DialogInterface.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  
+  public bdgx(TableQueryViewer paramTableQueryViewer, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378222));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131378220));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131378225));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131378218));
+    this.d.setTextSize(10.0F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdgx
  * JD-Core Version:    0.7.0.1
  */

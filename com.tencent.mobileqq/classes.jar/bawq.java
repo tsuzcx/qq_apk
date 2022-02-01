@@ -1,63 +1,215 @@
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import java.io.File;
+import org.json.JSONObject;
+
 public class bawq
+  extends BrowserBaseModel
 {
-  public int a = 40000;
-  public int b = 30000;
-  public int c = 20000;
-  public int d = 20000;
-  public int e = 15000;
-  public int f = 10000;
-  private int g;
-  
-  public bawq() {}
-  
-  private bawq(bawq parambawq)
+  public Drawable a(AIOFilePictureData paramAIOFilePictureData)
   {
-    this.a = parambawq.a;
-    this.b = parambawq.b;
-    this.c = parambawq.c;
-    this.d = parambawq.d;
-    this.e = parambawq.e;
-    this.f = parambawq.f;
+    File localFile1 = a(paramAIOFilePictureData, 18);
+    File localFile2 = a(paramAIOFilePictureData, 20);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+    localURLDrawableOptions.mFailedDrawable = bdzx.a;
+    if ((localFile1 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOFilePictureData, 18)) != null)) {
+      if (bdzx.a(localFile1.getAbsolutePath()) == 0) {}
+    }
+    do
+    {
+      do
+      {
+        return null;
+        return URLDrawable.getDrawable(a(paramAIOFilePictureData, 18), localURLDrawableOptions);
+        if ((localFile2 == null) || (BaseApplicationImpl.sImageCache.get(a(paramAIOFilePictureData, 20)) == null)) {
+          break;
+        }
+      } while (bdzx.a(localFile2.getAbsolutePath()) != 0);
+      return URLDrawable.getDrawable(a(paramAIOFilePictureData, 20), localURLDrawableOptions);
+    } while (a(paramAIOFilePictureData, 16) == null);
+    return URLDrawable.getDrawable(a(paramAIOFilePictureData, 16), localURLDrawableOptions);
   }
   
-  public int a(int paramInt)
+  public File a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
   {
+    if (paramAIOFilePictureData == null) {
+      return null;
+    }
     switch (paramInt)
     {
-    case 2: 
+    case 17: 
+    case 19: 
     default: 
-      return this.a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.c;
+      paramAIOFilePictureData = null;
     }
-    return this.b;
+    while ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
+    {
+      paramAIOFilePictureData = new File(paramAIOFilePictureData);
+      if (!paramAIOFilePictureData.exists()) {
+        break;
+      }
+      return paramAIOFilePictureData;
+      paramAIOFilePictureData = paramAIOFilePictureData.b;
+      continue;
+      paramAIOFilePictureData = paramAIOFilePictureData.c;
+      continue;
+      paramAIOFilePictureData = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
+    }
   }
   
-  public bawq a()
+  public String a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
   {
-    return new bawq(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = (paramInt * 2000);
-  }
-  
-  public int b(int paramInt)
-  {
+    if (paramAIOFilePictureData == null) {
+      return null;
+    }
     switch (paramInt)
     {
-    case 2: 
+    case 17: 
+    case 19: 
     default: 
-      return this.d + this.g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.f + this.g;
+      paramAIOFilePictureData = null;
     }
-    return this.e + this.g;
+    while ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
+    {
+      if (paramAIOFilePictureData.startsWith("/")) {
+        break label108;
+      }
+      return "file:/" + paramAIOFilePictureData;
+      paramAIOFilePictureData = paramAIOFilePictureData.b;
+      continue;
+      paramAIOFilePictureData = paramAIOFilePictureData.c;
+      continue;
+      paramAIOFilePictureData = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
+    }
+    label108:
+    if (paramAIOFilePictureData.startsWith("//")) {
+      return "file:" + paramAIOFilePictureData;
+    }
+    return "file:" + paramAIOFilePictureData;
+  }
+  
+  public void a(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
+  {
+    if ((paramAIOFilePictureData == null) || (paramString == null)) {
+      return;
+    }
+    if ("I:E".equals(paramString))
+    {
+      switch (paramInt)
+      {
+      case 17: 
+      case 19: 
+      default: 
+        return;
+      case 16: 
+        paramAIOFilePictureData.f = true;
+        return;
+      case 18: 
+        paramAIOFilePictureData.jdField_d_of_type_Boolean = true;
+        return;
+      }
+      paramAIOFilePictureData.e = true;
+      return;
+    }
+    switch (paramInt)
+    {
+    case 17: 
+    case 19: 
+    default: 
+      return;
+    case 16: 
+      paramAIOFilePictureData.b = paramString;
+      return;
+    case 18: 
+      paramAIOFilePictureData.c = paramString;
+      return;
+    }
+    paramAIOFilePictureData.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramAIOFilePictureData == null) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+        switch (paramInt)
+        {
+        case 20: 
+        case 17: 
+        case 19: 
+        default: 
+          return false;
+        case 16: 
+          bool1 = bool2;
+        }
+      } while (!paramAIOFilePictureData.b.equals("I:N"));
+      return false;
+      bool1 = bool2;
+    } while (!paramAIOFilePictureData.c.equals("I:N"));
+    return false;
+  }
+  
+  public void b(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
+  {
+    String str2 = "";
+    j = 0;
+    i = j;
+    localObject = str2;
+    if (!TextUtils.isEmpty(paramString)) {
+      str1 = str2;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = str2;
+      str1 = str2;
+      if (localJSONObject.has("errorType"))
+      {
+        str1 = str2;
+        paramString = localJSONObject.getString("errorType");
+      }
+      i = j;
+      localObject = paramString;
+      str1 = paramString;
+      if (localJSONObject.has("errorCode"))
+      {
+        str1 = paramString;
+        i = localJSONObject.getInt("errorCode");
+        localObject = paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        i = j;
+        localObject = str1;
+      }
+    }
+    if (paramInt == 18) {
+      if ((localObject != null) && (((String)localObject).equals("thumb_download"))) {
+        paramAIOFilePictureData.g = i;
+      }
+    }
+    while ((paramInt != 16) || (localObject == null) || (!((String)localObject).equals("thumb_download"))) {
+      return;
+    }
+    paramAIOFilePictureData.g = i;
   }
 }
 

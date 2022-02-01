@@ -1,0 +1,134 @@
+{
+    "view_type": "container",
+    "layout_type": "layout_linear",
+    "direction": "horizontal",
+    "height": {
+        "type": "relative",
+        "value": "30"
+    },
+    "width": {
+        "type": "wrap_content"
+    },
+    "subviews": [
+        {
+            "view_type": "UILabel",
+            "view_id": "id_ad_guide_text",
+            "align_parent_center_vertical":"YES",
+            "height": {
+                "type": "relative",
+                "value": "30"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$ad_guide_text",
+                "setTextColorString:": "#A6A6A6",
+                "setFontSizeString:": "12",
+                "setNumberOfLinesString:": "1"
+            }
+        },
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_star1",
+            "align_parent_center_vertical":"YES",
+            "margin_left": "1",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "11.5"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$star1",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_star2",
+            "margin_left": "2",
+            "align_parent_center_vertical":"YES",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "11.5"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$star2",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_star3",
+            "align_parent_center_vertical":"YES",
+            "margin_left": "2",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "11.5"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$star3",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_star4",
+            "align_parent_center_vertical":"YES",
+            "margin_left": "2",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "11.5"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$star4",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_star5",
+            "align_parent_center_vertical":"YES",
+            "margin_left": "2",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "11.5"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$star5",
+                    "0"
+                ]
+            }
+        }
+    ]
+}
+
+

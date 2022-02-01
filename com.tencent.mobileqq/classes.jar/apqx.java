@@ -1,13 +1,21 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.2;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class apqx
-  implements aeoq
+public class apqx
+  extends bhhe
 {
-  apqx(apqh paramapqh) {}
+  public apqx(ChooseImageIPCModule.2 param2, String paramString) {}
   
-  public void a()
+  public void onDone(bhhf parambhhf)
   {
-    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
+    super.onDone(parambhhf);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambhhf.a) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambhhf.a);
+    parambhhf = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.a, parambhhf);
   }
 }
 

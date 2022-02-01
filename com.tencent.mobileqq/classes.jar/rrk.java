@@ -1,19 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.widget.ListView;
 
-class rrk
-  implements View.OnClickListener
+public class rrk
+  extends bbip<bbmy, bbvg>
 {
-  rrk(rqj paramrqj, String paramString) {}
-  
-  public void onClick(View paramView)
+  public rrk(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, aobu paramaobu)
   {
-    nrt.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    super(paramListView, paramaobu);
+  }
+  
+  protected bbps<bbmy, bbvg> a(int paramInt)
+  {
+    if (((bbmy)a(paramInt) instanceof bblj)) {
+      return new bbrb(this.jdField_a_of_type_Aobu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    }
+    return new rrg(this.jdField_a_of_type_Aobu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bbva(paramViewGroup, 2131562840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrk
  * JD-Core Version:    0.7.0.1
  */

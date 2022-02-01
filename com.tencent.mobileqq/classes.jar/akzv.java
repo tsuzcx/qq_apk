@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akzv
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  akzv(akzr paramakzr, akzz paramakzz) {}
+  akzv(akyh paramakyh) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (this.jdField_a_of_type_Akzz != null)) {
-      this.jdField_a_of_type_Akzz.a(this.jdField_a_of_type_Akzr.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
-    }
-    return true;
+    this.a.a(23, 0);
+    this.a.a(-1, null);
+    bcst.b(akyh.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

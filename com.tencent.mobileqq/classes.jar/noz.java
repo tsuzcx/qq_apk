@@ -1,34 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-final class noz
-  implements BusinessObserver
+public class noz
+  extends AbsThirdDataSourceAdapter
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  int jdField_a_of_type_Int = 0;
+  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  String jdField_a_of_type_JavaLangString;
+  
+  public noz(NowVideoView paramNowVideoView) {}
+  
+  public boolean a()
   {
-    if (paramBoolean) {}
-    try
+    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Noq.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_JavaLangString = str;
+      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
       {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "doAdReport success!");
-        }
+        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
+        return true;
       }
+    }
+    return false;
+  }
+  
+  public int getPlayType()
+  {
+    return 1;
+  }
+  
+  public int getStaus()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      paramOnPreparedCallback.onPrepared();
       return;
     }
-    catch (Exception paramBundle) {}
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Noq.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     noz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class uyo
-  implements urr<uzk, uzl>
+class uyo
+  extends RecyclerView.ViewHolder
 {
-  uyo(uyl paramuyl) {}
-  
-  public void a(@NonNull uzk paramuzk, @Nullable uzl paramuzl, @NonNull ErrorMessage paramErrorMessage)
+  public uyo(BaseWidgetView paramBaseWidgetView)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramuzk, paramuzl, paramErrorMessage));
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-final class ShortVideoResourceManager$8
+import java.util.List;
+
+class ShortVideoResourceManager$8
   implements Runnable
 {
+  ShortVideoResourceManager$8(ShortVideoResourceManager paramShortVideoResourceManager, List paramList) {}
+  
   public void run()
   {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Azef, "new_qq_android_native_portrait_filter_");
+    ShortVideoResourceManager.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.8
  * JD-Core Version:    0.7.0.1
  */

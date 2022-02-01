@@ -1,33 +1,19 @@
-public class axsr
-  implements Cloneable
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class axsr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  axsr(axsd paramaxsd) {}
   
-  public axsr(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public axsr a()
-  {
-    return (axsr)super.clone();
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsr
  * JD-Core Version:    0.7.0.1
  */

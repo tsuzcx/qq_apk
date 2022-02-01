@@ -1,50 +1,28 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import java.util.List;
 
-public class attl
-  implements TencentMap.OnMapLoadedCallback
+class attl
+  implements bigw
 {
-  public attl(MapWidget paramMapWidget) {}
+  attl(attk paramattk, List paramList, attj paramattj) {}
   
-  public void onMapLoaded()
+  public void a(int paramInt)
   {
-    atpo localatpo = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localatpo.a() });
-    }
-    if ((localatpo.a() != null) && (!attk.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localatpo.a())))
+    if (paramInt == 2)
     {
-      this.a.a(false);
-      this.a.setTag(-2147483648, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localatpo.a() });
+      attk.a(this.jdField_a_of_type_Attk, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Attj != null) {
+        this.jdField_a_of_type_Attj.a(1, 0);
       }
     }
-    for (;;)
-    {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new attm(this));
-      }
+    while (this.jdField_a_of_type_Attj == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localatpo.a() });
-      }
     }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    this.jdField_a_of_type_Attj.a(1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attl
  * JD-Core Version:    0.7.0.1
  */

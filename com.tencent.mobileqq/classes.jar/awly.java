@@ -1,10 +1,23 @@
-import kotlin.Metadata;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class awly {}
+public final class awly
+  implements Parcelable.Creator<MiniAppOptions>
+{
+  public MiniAppOptions a(Parcel paramParcel)
+  {
+    return new MiniAppOptions(paramParcel);
+  }
+  
+  public MiniAppOptions[] a(int paramInt)
+  {
+    return new MiniAppOptions[paramInt];
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awly
  * JD-Core Version:    0.7.0.1
  */

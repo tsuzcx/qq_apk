@@ -1,42 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzu
-  implements beua
+  implements DialogInterface.OnClickListener
 {
-  public nzu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nzu(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
-    {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
-      return;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzu
  * JD-Core Version:    0.7.0.1
  */

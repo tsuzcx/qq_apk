@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class arjv
-  implements View.OnClickListener
+public class arjv
 {
-  arjv(arjq paramarjq, FileManagerEntity paramFileManagerEntity) {}
+  arjs jdField_a_of_type_Arjs;
+  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void onClick(View paramView)
-  {
-    azqs.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    arsx.a(this.jdField_a_of_type_Arjq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Arjq.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-  }
+  protected arjv(DataReportSettingFragment paramDataReportSettingFragment) {}
 }
 
 

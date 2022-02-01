@@ -1,32 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import com.tencent.qphone.base.util.QLog;
-import ola;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import sww;
 
-class FastWebActivity$36
+public class FastWebActivity$36
   implements Runnable
 {
   FastWebActivity$36(FastWebActivity paramFastWebActivity) {}
   
   public void run()
   {
-    if ((FastWebActivity.a(this.this$0) == null) || (FastWebActivity.a(this.this$0) == null))
-    {
-      QLog.d(FastWebActivity.a(this.this$0), 1, "error! scrollToHotNewComment");
-      return;
-    }
-    if (FastWebActivity.a(this.this$0).b)
-    {
-      FastWebActivity.a(this.this$0).f();
-      return;
-    }
-    FastWebActivity.a(this.this$0).e();
+    RIJRedPacketManager.a().a(this.this$0.a.innerUniqueID, FastWebActivity.b(this.this$0), 5, new sww(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.36
  * JD-Core Version:    0.7.0.1
  */

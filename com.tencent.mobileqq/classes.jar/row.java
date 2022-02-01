@@ -1,12 +1,21 @@
-public abstract interface row
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+
+public class row
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public row(EditColumnFragment paramEditColumnFragment) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(false);
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     row
  * JD-Core Version:    0.7.0.1
  */

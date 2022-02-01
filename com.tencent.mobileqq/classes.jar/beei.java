@@ -1,6 +1,22 @@
-public abstract interface beei
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.22.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+
+public class beei
+  implements ISuperPlayer.OnCompletionListener
 {
-  public abstract void a(boolean paramBoolean);
+  public beei(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
+    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.22.1(this));
+  }
 }
 
 

@@ -99,7 +99,7 @@ class SuperPlayerState
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FCCPlayerState[ mPreState:").append(getStateStr(this.mPreState)).append("/n");
+    localStringBuilder.append("SuperPlayerState[ mPreState:").append(getStateStr(this.mPreState)).append("/n");
     localStringBuilder.append("mCurState:").append(getStateStr(this.mCurState)).append("/n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
@@ -107,7 +107,7 @@ class SuperPlayerState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerState
  * JD-Core Version:    0.7.0.1
  */

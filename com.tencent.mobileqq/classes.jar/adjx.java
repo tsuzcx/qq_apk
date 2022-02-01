@@ -1,32 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
 
 public class adjx
-  implements DialogInterface.OnClickListener
+  extends aniz
 {
-  public adjx(NotificationActivity paramNotificationActivity) {}
+  public adjx(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    azqs.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.b(this.a), "");
-    if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.c(this.a))) {
-      MiniAppLauncher.startMiniApp(this.a, NotificationActivity.c(this.a), 2098, null);
+    Object localObject;
+    if ((paramBoolean) && (paramObject != null))
+    {
+      if (!(paramObject instanceof Card)) {
+        break label163;
+      }
+      localObject = (Card)paramObject;
+      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
+      {
+        paramObject = bghy.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
+        if (this.a.a != null) {
+          paramObject = bghy.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
+        }
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(paramObject);
+        }
+      }
     }
     for (;;)
     {
-      this.a.finish();
+      if (bjft.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
+        this.a.c.setVisibility(8);
+      }
       return;
-      QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
+      label163:
+      if ((paramObject instanceof ContactCard))
+      {
+        localObject = (ContactCard)paramObject;
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
+        {
+          paramObject = bghy.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
+          if (this.a.a != null) {
+            paramObject = bghy.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
+          }
+          if (!TextUtils.isEmpty(paramObject))
+          {
+            this.a.c.setVisibility(0);
+            this.a.c.setText(paramObject);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjx
  * JD-Core Version:    0.7.0.1
  */

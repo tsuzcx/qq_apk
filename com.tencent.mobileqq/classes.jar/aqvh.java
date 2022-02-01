@@ -1,114 +1,98 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class aqvh
+  extends aqkz<aqvg>
 {
-  private alpa jdField_a_of_type_Alpa = new aqvj(this);
-  private aqru jdField_a_of_type_Aqru = new aqvi(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, arpx> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public aqvh(QQAppInterface paramQQAppInterface)
+  public static aqvg a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    aqvg localaqvg2 = (aqvg)aqlk.a().a(493);
+    aqvg localaqvg1 = localaqvg2;
+    if (localaqvg2 == null) {
+      localaqvg1 = new aqvg();
+    }
+    return localaqvg1;
   }
   
-  private void c()
+  @NonNull
+  public aqvg a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqru != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    if (this.jdField_a_of_type_Alpa != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alpa);
-    }
+    return new aqvg();
   }
   
-  private void d()
+  @Nullable
+  public aqvg a(aqlg[] paramArrayOfaqlg)
   {
-    if (this.jdField_a_of_type_Aqru != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
     }
-    if (this.jdField_a_of_type_Alpa != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alpa);
-    }
-  }
-  
-  public arpx a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      }
+      return aqvg.a(paramArrayOfaqlg[0]);
     }
-    paramString1 = arpx.a(paramString1, paramString2, paramString3);
-    return (arpx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    return null;
   }
   
-  public void a()
+  public void a(aqvg paramaqvg)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaqvg == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramaqvg = paramaqvg.toString();; paramaqvg = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramaqvg);
       return;
     }
-    QLog.i("QFileMultiControlManager<QFile>", 1, "initFileControlManager");
-    this.jdField_a_of_type_Boolean = true;
-    c();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void a(arpx paramarpx)
+  public Class<aqvg> clazz()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return;
-    }
-    if (paramarpx == null)
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req is null.");
-      return;
-    }
-    String str = paramarpx.a();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "controlKey is null.");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramarpx.a(), paramarpx);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "addFileControlReq: controlKey[" + str + "]");
+    return aqvg.class;
   }
   
-  public void b()
+  public boolean isNeedCompressed()
   {
-    QLog.i("QFileMultiControlManager<QFile>", 1, "clearFileControlManager");
-    this.jdField_a_of_type_Boolean = false;
-    d();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    return true;
   }
   
-  public void b(arpx paramarpx)
+  public boolean isNeedStoreLargeFile()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
-    {
-      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
-      return;
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    paramarpx = paramarpx.a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramarpx);
-    QLog.e("QFileMultiControlManager<QFile>", 1, "removeFileContolReq: controlKey[" + paramarpx + "]");
+  }
+  
+  public int type()
+  {
+    return 493;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqvh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class audz
-  implements DialogInterface.OnClickListener
+public abstract interface audz
+  extends View.OnTouchListener
 {
-  audz(audv paramaudv, BaseActivity paramBaseActivity) {}
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    audv.a(this.jdField_a_of_type_Audv, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
+  public abstract void b(View paramView, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-class afwj
-  extends aepm
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+
+public class afwj
+  extends View.AccessibilityDelegate
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  int d;
+  public afwj(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  afwj(afwh paramafwh) {}
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
+  }
 }
 
 

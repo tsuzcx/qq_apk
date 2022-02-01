@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -11,18 +10,20 @@ import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public abstract class PhotoListLogic<K extends AbstractPhotoListActivity>
+public abstract class PhotoListLogic<K extends AbstractPhotoListActivity, O extends OtherCommonData>
   implements MediaScanner.OnMediaScannerListener
 {
   public K mActivity;
-  public aiqy mPhotoCommonData;
+  public O mOtherCommonData;
+  public PhotoCommonBaseData<O> mPhotoCommonData;
   protected PhotoListBaseData mPhotoListData;
   protected PhotoListLogic.IonSelectionChangeListener mSelectionListener = null;
   
   protected PhotoListLogic(K paramK)
   {
     this.mActivity = paramK;
-    this.mPhotoCommonData = aiqy.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mPhotoCommonData = PhotoCommonBaseData.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mOtherCommonData = this.mPhotoCommonData.bindCommonData(getOtherData());
     paramK.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
     this.mPhotoCommonData.addHoldNember();
     this.mPhotoListData = new PhotoListBaseData();
@@ -51,7 +52,15 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity>
   
   protected abstract String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo);
   
-  protected abstract List<LocalMediaInfo> getLocalMediaInfos();
+  protected OtherCommonData getOtherData()
+  {
+    return new PhotoListLogic.1(this);
+  }
+  
+  public Class<? extends OtherCommonData> getOtherDataClass()
+  {
+    return OtherCommonData.class;
+  }
   
   protected abstract void handlePicCapture(Intent paramIntent);
   
@@ -77,6 +86,8 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity>
   
   protected abstract void onQualityBtnClick(CompoundButton paramCompoundButton, boolean paramBoolean);
   
+  protected abstract void onQueryMediaListBack(List<LocalMediaInfo> paramList);
+  
   protected abstract boolean onQueryPhoto(List<LocalMediaInfo> paramList);
   
   protected abstract void onSendBtnClick(View paramView);
@@ -85,15 +96,17 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity>
   
   protected abstract void postInitUI();
   
-  protected abstract void processQueryResult(List<LocalMediaInfo> paramList);
+  protected abstract List<LocalMediaInfo> queryDoInBackground(Object... paramVarArgs);
   
   protected abstract void startPhotoPreviewActivity(Intent paramIntent);
+  
+  protected abstract void updateAddData(List<LocalMediaInfo> paramList, int paramInt);
   
   protected abstract void updateButton();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogic
  * JD-Core Version:    0.7.0.1
  */

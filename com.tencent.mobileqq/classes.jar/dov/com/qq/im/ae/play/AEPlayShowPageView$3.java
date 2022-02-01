@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.play;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import bljn;
+import bnzb;
 
 class AEPlayShowPageView$3
   implements Runnable
@@ -11,7 +11,7 @@ class AEPlayShowPageView$3
   
   public void run()
   {
-    bljn.a("AEPlayShowPart", "in........");
+    bnzb.a("AEPlayShowPart", "in........");
     if (AEPlayShowPageView.a(this.this$0) != null)
     {
       View localView = AEPlayShowPageView.a(this.this$0).findViewByPosition(this.a);
@@ -25,7 +25,7 @@ class AEPlayShowPageView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPageView.3
  * JD-Core Version:    0.7.0.1
  */

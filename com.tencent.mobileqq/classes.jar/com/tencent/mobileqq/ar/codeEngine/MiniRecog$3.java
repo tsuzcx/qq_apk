@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import anem;
+import apdd;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniRecog$3
   implements Runnable
 {
-  public MiniRecog$3(anem paramanem) {}
+  public MiniRecog$3(apdd paramapdd) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class MiniRecog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniRecog.3
  * JD-Core Version:    0.7.0.1
  */

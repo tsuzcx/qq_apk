@@ -1,70 +1,50 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.forward.ForwardMixedMsgOption;
+import com.tencent.mobileqq.forward.ForwardReplyMsgOption;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auhp
-  extends auge
+  implements View.OnClickListener
 {
-  public auhp(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
+  public auhp(ForwardMixedMsgOption paramForwardMixedMsgOption) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
-    }
-    super.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, auhi paramauhi)
-  {
-    if (paramBoolean) {
-      this.a.a(paramauhi);
-    }
-    super.a(paramBoolean, paramauhi);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    Object localObject;
-    if ((paramBoolean) && ((paramObject instanceof auhc)))
-    {
-      localObject = (auhc)paramObject;
-      this.a.a((auhc)localObject);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
+      if (this.a.jdField_a_of_type_Bgpa != null) {}
     }
     for (;;)
     {
-      super.a(paramBoolean, paramObject);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramObject instanceof Integer))
+      this.a.jdField_a_of_type_Bgpa.hideSoftInputFromWindow();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
       {
-        localObject = (Integer)paramObject;
-        this.a.a((Integer)localObject);
+        ((bakq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        ForwardReplyMsgOption.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      }
+      for (;;)
+      {
+        this.a.E();
+        break;
+        auio localauio = new auio(this.a.jdField_a_of_type_Bgpa, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localauio.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692399), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        this.a.jdField_a_of_type_Bgpa.addPreviewView(localauio.b());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
       }
     }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
-    }
-    super.b(paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    this.a.a(paramBoolean, paramObject);
-    super.b(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhp
  * JD-Core Version:    0.7.0.1
  */

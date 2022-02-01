@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bgrm;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -12,6 +11,7 @@ import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.ToastView;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class UIJsPlugin$2
@@ -40,15 +40,15 @@ class UIJsPlugin$2
       {
         try
         {
-          bgrm localbgrm = new bgrm(this.this$0.jsPluginEngine.getActivityContext());
+          QQToast localQQToast = new QQToast(this.this$0.jsPluginEngine.getActivityContext());
           if (TextUtils.isEmpty(this.val$imagePath)) {
             break label232;
           }
-          localbgrm.a(new BitmapDrawable(this.val$imagePath));
-          localbgrm.a(this.val$title);
-          localbgrm.c(this.val$duration);
-          localbgrm.a();
-          UIJsPlugin.access$102(this.this$0, localbgrm);
+          localQQToast.a(new BitmapDrawable(this.val$imagePath));
+          localQQToast.a(this.val$title);
+          localQQToast.d(this.val$duration);
+          localQQToast.a();
+          UIJsPlugin.access$102(this.this$0, localQQToast);
         }
         catch (Throwable localThrowable)
         {
@@ -79,7 +79,7 @@ class UIJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

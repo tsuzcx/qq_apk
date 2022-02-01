@@ -1,241 +1,156 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.frdsysmsg.FrdSysMsg.FriendSysMsg;
-import tencent.im.s2c.frdsysmsg.FrdSysMsg.SchoolInfo;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class athn
-  extends WebViewPlugin
+  extends atgy
 {
-  public athn()
+  private final int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private LocalFileBrowserActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity;
+  private List<FileInfo> jdField_a_of_type_JavaUtilList;
+  private final int b = 1;
+  
+  public athn(Context paramContext, List<FileInfo> paramList, LocalFileBrowserActivity paramLocalFileBrowserActivity)
   {
-    this.mPluginNameSpace = "friendApi";
+    super(paramContext, paramLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity = paramLocalFileBrowserActivity;
   }
   
-  private int a()
+  private View a(FileInfo paramFileInfo, ViewGroup paramViewGroup)
   {
-    int j = 999;
-    Activity localActivity = this.mRuntime.a();
-    int i = j;
-    if (localActivity != null)
+    atho localatho = new atho(this);
+    if (!paramFileInfo.c())
     {
-      i = j;
-      if (asid.a(localActivity.getIntent().getStringExtra("url"))) {
-        i = 127;
-      }
+      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560842, paramViewGroup, false);
+      localatho.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramFileInfo);
+      localatho.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localatho.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+      localatho.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localatho);
+      localatho.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131366568));
+      localatho.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366555));
+      localatho.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localatho.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localatho);
+      localatho.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131376513));
+      localatho.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131366566));
+      localatho.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+      localatho.b = ((TextView)paramFileInfo.findViewById(2131366569));
+      localatho.c = ((TextView)paramFileInfo.findViewById(2131366553));
+      localatho.d = ((TextView)paramFileInfo.findViewById(2131369522));
+      localatho.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramFileInfo.findViewById(2131361941));
+      localatho.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
     }
-    return i;
+    for (;;)
+    {
+      paramFileInfo.setTag(localatho);
+      return paramFileInfo;
+      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560850, paramViewGroup, false);
+      paramFileInfo.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+      localatho.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366579));
+      localatho.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131376523));
+      localatho.jdField_a_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramFileInfo.findViewById(2131366582));
+    }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public int getCount()
   {
-    if (!"friendApi".equals(paramString2)) {
-      return false;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (((FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c()) {
+      return -1;
     }
-    if ("openProfile".equals(paramString3)) {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-        if (QLog.isColorLevel()) {
-          QLog.w("FriendApiPlugin", 2, "open profile " + paramVarArgs[0]);
-        }
-      }
-    }
-    int i;
-    label330:
-    boolean bool;
-    label715:
-    do
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localFileInfo == null) {}
+    View localView;
+    for (Object localObject = null;; localView = paramView)
     {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      if (paramView == null) {}
       for (;;)
       {
         try
         {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = new ProfileActivity.AllInOne(paramJsBridgeListener.optString("uin"), paramJsBridgeListener.optInt("from"));
-          paramJsBridgeListener.h = a();
-          ProfileActivity.b(this.mRuntime.a(), paramJsBridgeListener);
-          return true;
+          localObject = a(localFileInfo, paramViewGroup);
+          paramView = (View)localObject;
         }
-        catch (JSONException paramJsBridgeListener)
+        catch (Exception localException2)
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("FriendApiPlugin", 2, "open profile error:" + paramJsBridgeListener.toString());
           continue;
         }
-        if ("addFriend".equals(paramString3))
+        try
         {
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+          localObject = (atho)paramView.getTag();
+          ((atho)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo = localFileInfo;
+          if (localFileInfo.c())
           {
-            if (QLog.isColorLevel()) {
-              QLog.w("FriendApiPlugin", 2, "add friend " + paramVarArgs[0]);
-            }
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramJsBridgeListener.optString("uin");
-              i = paramJsBridgeListener.optInt("sourceId", 0);
-              int j = paramJsBridgeListener.optInt("subSourceId", 0);
-              if (!paramJsBridgeListener.has("schoolInfo")) {
-                break label972;
-              }
-              paramString2 = paramJsBridgeListener.optJSONObject("schoolInfo");
-              if (paramString2 == null) {
-                break label972;
-              }
-              paramJsBridgeListener = paramString2.optString("schoolId");
-              paramString3 = paramString2.optString("schoolName");
-              paramString2 = new FrdSysMsg.SchoolInfo();
-              paramString2.str_school_id.set(paramJsBridgeListener);
-              paramString2.str_school_name.set(paramString3);
-              paramJsBridgeListener = new FrdSysMsg.FriendSysMsg();
-              paramJsBridgeListener.msg_school_info.set(paramString2);
-              paramJsBridgeListener = paramJsBridgeListener.toByteArray();
-              paramString3 = this.mRuntime.a();
-              paramVarArgs = AddFriendLogicActivity.a(paramString3, 1, paramString1, "", i, j, null, null, null, null, null);
-              if (paramJsBridgeListener != null)
-              {
-                paramString2 = paramVarArgs.getBundleExtra("flc_extra_param");
-                paramString1 = paramString2;
-                if (paramString2 == null)
-                {
-                  paramString1 = new Bundle();
-                  paramVarArgs.putExtra("flc_extra_param", paramString1);
-                }
-                paramString1.putByteArray("friend_src_desc", paramJsBridgeListener);
-              }
-              paramString3.startActivity(paramVarArgs);
-            }
-            catch (JSONException paramJsBridgeListener) {}
-            if (QLog.isColorLevel()) {
-              QLog.w("FriendApiPlugin", 2, "add friend error:" + paramJsBridgeListener.toString());
-            }
+            ((atho)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844278);
+            ((atho)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            ((atho)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
+            ((atho)localObject).jdField_a_of_type_Int = paramInt;
           }
-        }
-        else if ("isFriend".equals(paramString3))
-        {
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramJsBridgeListener.optString("frd_uin");
-              paramString2 = new Bundle();
-              paramString2.putString("KEY_UIN", paramString1);
-              paramString1 = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_IS_FRIEND", paramString2);
-              bool = false;
-              if (paramString1.isSuccess()) {
-                bool = paramString1.data.getBoolean("KEY_IS_FRIEND", false);
-              }
-              paramString1 = new JSONObject();
-              paramString1.put("result", bool);
-              callJs(paramJsBridgeListener.optString("callback"), new String[] { paramString1.toString() });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-        }
-        else
-        {
-          if (!"getPhoneNumber".equals(paramString3)) {
-            break;
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramJsBridgeListener = paramString2.optString("frd_uin");
-              paramString1 = new Bundle();
-              paramString1.putString("KEY_UIN", paramJsBridgeListener);
-              paramString1 = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_GET_PHONE_NUMBER", paramString1);
-              paramJsBridgeListener = null;
-              if (paramString1.isSuccess()) {
-                paramJsBridgeListener = paramString1.data.getString("PHONE_NUMBER", null);
-              }
-              paramString3 = new JSONObject();
-              if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                break label977;
-              }
-              paramString1 = paramJsBridgeListener;
-              if ("0".equals(paramJsBridgeListener)) {
-                break label977;
-              }
-              paramString3.put("PhoneNumber", paramString1);
-              callJs(paramString2.optString("callback"), new String[] { paramString3.toString() });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-        }
-      }
-    } while ((!"deleteOneWayFriends".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0));
-    for (;;)
-    {
-      try
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]).optJSONArray("uins");
-        paramJsBridgeListener = new ArrayList();
-        if ((paramString1 != null) && (paramString1.length() > 0))
-        {
-          i = 0;
-          if (i < paramString1.length())
+          else
           {
-            paramString2 = paramString1.optString(i);
-            if (TextUtils.isEmpty(paramString2)) {
-              break label983;
+            ((atho)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            atvo.a(((atho)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileInfo.c(), atvo.a(localFileInfo.c()));
+            ((atho)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
+            if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f())
+            {
+              ((atho)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+              ((atho)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(athc.a(localFileInfo));
+              String str1 = atxd.b(localFileInfo.b());
+              String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getString(2131692139);
+              ((atho)localObject).c.setText(str1 + str2 + atwl.a(localFileInfo.a()));
+              ((atho)localObject).jdField_a_of_type_Int = paramInt;
             }
-            paramJsBridgeListener.add(paramString2);
-            break label983;
           }
         }
-        QLog.d("FriendApiPlugin", 1, "delete single way friends: " + paramJsBridgeListener);
-        if (paramJsBridgeListener.isEmpty()) {
-          break;
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
         }
-        paramString1 = new Bundle();
-        paramString1.putStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS", paramJsBridgeListener);
-        paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_DELETE_SINGLE_WAY_FRIENDS", paramString1);
-        if (paramJsBridgeListener == null) {
-          break label966;
-        }
-        bool = paramJsBridgeListener.isSuccess();
-        QLog.d("FriendApiPlugin", 1, "notify delete single way friend, isSuccess: " + bool);
+        localException1.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      break;
-      label966:
-      bool = false;
-      continue;
-      label972:
-      paramJsBridgeListener = null;
-      break label330;
-      label977:
-      paramString1 = "";
-      break label715;
-      label983:
-      i += 1;
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

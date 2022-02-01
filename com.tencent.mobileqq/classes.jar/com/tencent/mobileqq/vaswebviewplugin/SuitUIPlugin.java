@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import begz;
+import bhod;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class SuitUIPlugin
@@ -13,7 +13,7 @@ public class SuitUIPlugin
     super.OnActivityCreate();
     WebViewFragment localWebViewFragment = this.mRuntime.a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.g = super.decodeUrl(localWebViewFragment.g);
+      localWebViewFragment.mUrl = super.decodeUrl(localWebViewFragment.mUrl);
     }
   }
   
@@ -24,7 +24,7 @@ public class SuitUIPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SuitUIPlugin
  * JD-Core Version:    0.7.0.1
  */

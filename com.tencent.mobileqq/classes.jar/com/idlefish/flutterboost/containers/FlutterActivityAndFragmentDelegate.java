@@ -6,14 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.idlefish.flutterboost.BoostPluginRegistry;
-import com.idlefish.flutterboost.BoostPluginRegistry.BoostRegistrarAggregate;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.FlutterBoost.ConfigBuilder;
 import com.idlefish.flutterboost.Platform;
@@ -25,7 +23,6 @@ import com.idlefish.flutterboost.interfaces.IOperateSyncer;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.embedding.engine.systemchannels.LifecycleChannel;
 import io.flutter.embedding.engine.systemchannels.SystemChannel;
 import io.flutter.plugin.platform.PlatformPlugin;
@@ -108,7 +105,7 @@ public class FlutterActivityAndFragmentDelegate
   }
   
   @Nullable
-  FlutterEngine getFlutterEngine()
+  public FlutterEngine getFlutterEngine()
   {
     return this.flutterEngine;
   }
@@ -150,10 +147,8 @@ public class FlutterActivityAndFragmentDelegate
   public void onAttach(@NonNull Context paramContext)
   {
     ensureAlive();
-    if (FlutterBoost.instance().platform().whenEngineStart() == FlutterBoost.ConfigBuilder.FLUTTER_ACTIVITY_CREATED)
-    {
+    if (FlutterBoost.instance().platform().whenEngineStart() == FlutterBoost.ConfigBuilder.FLUTTER_ACTIVITY_CREATED) {
       FlutterBoost.instance().doInitialFlutter();
-      FlutterBoost.instance().boostPluginRegistry();
     }
     if (this.flutterEngine == null) {
       setupFlutterEngine();
@@ -200,16 +195,6 @@ public class FlutterActivityAndFragmentDelegate
     Log.v("FlutterActivityAndFragmentDelegate", "onDestroyView()");
     this.mSyncer.onDestroy();
     ensureAlive();
-    BoostPluginRegistry localBoostPluginRegistry = (BoostPluginRegistry)FlutterBoost.instance().getPluginRegistry();
-    if (localBoostPluginRegistry != null)
-    {
-      ActivityPluginBinding localActivityPluginBinding = localBoostPluginRegistry.getRegistrarAggregate().getActivityPluginBinding();
-      if ((localActivityPluginBinding != null) && (localActivityPluginBinding.getActivity() == this.host.getActivity()))
-      {
-        localBoostPluginRegistry.getRegistrarAggregate().onDetachedFromActivityForConfigChanges();
-        this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
-      }
-    }
     this.flutterView.release();
   }
   
@@ -258,7 +243,6 @@ public class FlutterActivityAndFragmentDelegate
   {
     Log.v("FlutterActivityAndFragmentDelegate", "onPostResume()");
     ensureAlive();
-    Utils.setStatusBarLightMode(this.host.getActivity(), true);
   }
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
@@ -287,10 +271,7 @@ public class FlutterActivityAndFragmentDelegate
     Log.v("FlutterActivityAndFragmentDelegate", "onResume()");
     ensureAlive();
     this.flutterEngine.getLifecycleChannel().appIsResumed();
-    ActivityPluginBinding localActivityPluginBinding = ((BoostPluginRegistry)FlutterBoost.instance().getPluginRegistry()).getRegistrarAggregate().getActivityPluginBinding();
-    if ((localActivityPluginBinding != null) && (localActivityPluginBinding.getActivity() != this.host.getActivity())) {
-      this.flutterEngine.getActivityControlSurface().attachToActivity(this.host.getActivity(), this.host.getLifecycle());
-    }
+    this.flutterEngine.getActivityControlSurface().attachToActivity(this.host.getActivity(), this.host.getLifecycle());
   }
   
   public void onStart()
@@ -355,7 +336,7 @@ public class FlutterActivityAndFragmentDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,12 @@
-public class qlw
-  implements Cloneable
+import android.view.MotionEvent;
+
+public abstract interface qlw
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  
-  public qlw()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qlw
  * JD-Core Version:    0.7.0.1
  */

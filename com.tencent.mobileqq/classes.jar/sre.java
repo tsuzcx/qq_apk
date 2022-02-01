@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class sre
-  implements smr
+  implements bkqc
 {
-  public sre(ViolaBaseView paramViolaBaseView) {}
+  public sre(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
+  public void a()
+  {
+    this.a.a(new srf(this, "onListViewDrawFinished"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sre
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,18 @@
 package com.tencent.richmediabrowser.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
 public class ScreenUtils
 {
+  public static int dip2px(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
   public static int getScreenHeight(Context paramContext)
   {
     paramContext = (WindowManager)paramContext.getSystemService("window");
@@ -22,10 +28,15 @@ public class ScreenUtils
     paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
     return paramContext.getDefaultDisplay().getWidth();
   }
+  
+  public static int px2dip(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.utils.ScreenUtils
  * JD-Core Version:    0.7.0.1
  */

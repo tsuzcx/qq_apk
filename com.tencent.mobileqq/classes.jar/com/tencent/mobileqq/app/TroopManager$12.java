@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import amep;
+import anxf;
 import mqq.os.MqqHandler;
 
 class TroopManager$12
   implements Runnable
 {
-  TroopManager$12(TroopManager paramTroopManager, String paramString, amep paramamep) {}
+  TroopManager$12(TroopManager paramTroopManager, String paramString, anxf paramanxf) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class TroopManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.12
  * JD-Core Version:    0.7.0.1
  */

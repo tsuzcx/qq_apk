@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class anpz
-  implements View.OnClickListener
 {
-  public anpz(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public int a;
+  public FromServiceMsg a;
+  public ToServiceMsg a;
+  public Object a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public anpz(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramView = (bhuf)bhus.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131690265));
-    paramView.a(2131690264, 3);
-    paramView.c(2131690266);
-    paramView.setOnDismissListener(new anqa(this, paramView));
-    paramView.a(new anqb(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public anpz(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

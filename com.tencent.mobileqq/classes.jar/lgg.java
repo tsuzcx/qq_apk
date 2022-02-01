@@ -1,32 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class lgg
-  implements ServiceConnection
+public class lgg
 {
-  lgg(lgf paramlgf) {}
+  int jdField_a_of_type_Int = 0;
+  public String a;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final lgj jdField_a_of_type_Lgj;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  lgg(lgj paramlgj, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(lgf.a(), 2, "AVServiceForQQ onServiceConnected");
+    this.jdField_a_of_type_Lgj = paramlgj;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
     }
-    this.a.a = lzb.a(paramIBinder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(lgf.a(), 2, "AVServiceForQQ onServiceDisconnected");
-    }
-    this.a.a = null;
+    return this.jdField_a_of_type_Int >= 3;
+  }
+  
+  public String toString()
+  {
+    return "ItemRecord{" + this.jdField_a_of_type_Lgj + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lgg
  * JD-Core Version:    0.7.0.1
  */

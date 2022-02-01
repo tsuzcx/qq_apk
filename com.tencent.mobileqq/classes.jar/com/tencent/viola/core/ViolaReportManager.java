@@ -139,7 +139,7 @@ public class ViolaReportManager
         paramHashMap.sendRequest(localHttpRequset, new ViolaReportManager.3(this), true);
       }
       return;
-      localJSONObject3.put("name", "http://viola.oa.com");
+      localJSONObject3.put("name", "https://viola.oa.com");
     }
   }
   
@@ -214,7 +214,7 @@ public class ViolaReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaReportManager
  * JD-Core Version:    0.7.0.1
  */

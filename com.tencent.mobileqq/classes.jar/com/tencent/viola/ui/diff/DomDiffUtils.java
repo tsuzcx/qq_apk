@@ -45,7 +45,7 @@ public class DomDiffUtils
     if ((paramVComponent == null) || (paramDomObject1 == null) || (paramDomObject2 == null)) {
       ViolaLogUtils.d("DomDiffUtils", "dfsWalk: invalid param");
     }
-    label422:
+    label427:
     do
     {
       for (;;)
@@ -98,6 +98,7 @@ public class DomDiffUtils
         diffAttr(paramVComponent, paramDomObject2);
         diffStyles(paramVComponent, paramDomObject2);
         paramVComponent.resetComponent();
+        paramVComponent.resetComponent(paramDomObject2);
         paramVComponent.tryCompatVR(paramDomObject2);
         if ((paramVComponent instanceof VPageSlider))
         {
@@ -107,7 +108,7 @@ public class DomDiffUtils
         for (;;)
         {
           if (paramDOMActionContext == null) {
-            break label422;
+            break label427;
           }
           paramDOMActionContext.registerComponent(paramDomObject2.getRef(), paramVComponent);
           paramDOMActionContext.registerDOMObject(paramDomObject2.getRef(), paramDomObject2);
@@ -269,7 +270,7 @@ public class DomDiffUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.diff.DomDiffUtils
  * JD-Core Version:    0.7.0.1
  */

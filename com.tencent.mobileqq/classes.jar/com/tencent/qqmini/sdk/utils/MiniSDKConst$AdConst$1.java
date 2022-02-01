@@ -16,11 +16,12 @@ final class MiniSDKConst$AdConst$1
     put(Integer.valueOf(1006), "广告组件被驳回");
     put(Integer.valueOf(1007), "广告组件被封禁");
     put(Integer.valueOf(1008), "广告单元已关闭");
+    put(Integer.valueOf(1009), "广告位置设置有误");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-
-public class actw
-  implements DialogInterface.OnClickListener
+public abstract interface actw
 {
-  public actw(DialogActivity paramDialogActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import binm;
-import biof;
-import bioj;
+import blbb;
+import blbu;
+import blby;
 import com.tencent.qphone.base.util.QLog;
 
 class QQComicTabBarView$6
@@ -12,11 +12,11 @@ class QQComicTabBarView$6
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bioj != null) {
-      this.this$0.jdField_a_of_type_Bioj.deleteObserver(this.this$0.jdField_a_of_type_Biol);
+    if (this.this$0.jdField_a_of_type_Blby != null) {
+      this.this$0.jdField_a_of_type_Blby.deleteObserver(this.this$0.jdField_a_of_type_Blca);
     }
-    if (biof.a != null) {
-      biof.a.b(this.this$0.jdField_a_of_type_Binl);
+    if (blbu.a != null) {
+      blbu.a.b(this.this$0.jdField_a_of_type_Blba);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "unregister observers");
@@ -25,7 +25,7 @@ class QQComicTabBarView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.6
  * JD-Core Version:    0.7.0.1
  */

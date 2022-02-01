@@ -7,16 +7,16 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import uxj;
-import wxe;
-import xvz;
-import xwj;
+import wqv;
+import yqp;
+import zpk;
+import zpu;
 
 public class InteractContainerLayout
   extends FrameLayout
 {
-  public uxj a;
-  private final xvz a;
+  public wqv a;
+  private final zpk a;
   
   public InteractContainerLayout(@NonNull Context paramContext)
   {
@@ -26,9 +26,9 @@ public class InteractContainerLayout
   public InteractContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Xvz = new xwj(getContext());
+    this.jdField_a_of_type_Zpk = new zpu(getContext());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_Xvz.a(), paramContext);
+    addView(this.jdField_a_of_type_Zpk.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -36,36 +36,36 @@ public class InteractContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Uxj == null) {
+    if (this.jdField_a_of_type_Wqv == null) {
       return;
     }
-    this.jdField_a_of_type_Xvz.a(this.jdField_a_of_type_Uxj.b, this.jdField_a_of_type_Uxj.c, paramInt1, paramInt2, this.jdField_a_of_type_Uxj.d, this.jdField_a_of_type_Uxj.e, this.jdField_a_of_type_Uxj.f, this.jdField_a_of_type_Uxj.g, this.jdField_a_of_type_Uxj.h);
-    this.jdField_a_of_type_Xvz.a();
+    this.jdField_a_of_type_Zpk.a(this.jdField_a_of_type_Wqv.b, this.jdField_a_of_type_Wqv.c, paramInt1, paramInt2, this.jdField_a_of_type_Wqv.d, this.jdField_a_of_type_Wqv.e, this.jdField_a_of_type_Wqv.f, this.jdField_a_of_type_Wqv.g, this.jdField_a_of_type_Wqv.h);
+    this.jdField_a_of_type_Zpk.a();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    wxe.a("InteractContainerLayout", "bindRateView, vid=%s", paramStoryVideoItem.mVid);
+    yqp.a("InteractContainerLayout", "bindRateView, vid=%s", paramStoryVideoItem.mVid);
     a(paramStoryVideoItem.getInteractLayout(), paramStoryVideoItem.mRateResult);
   }
   
-  public void a(uxj paramuxj, int paramInt)
+  public void a(wqv paramwqv, int paramInt)
   {
-    wxe.a("InteractContainerLayout", "bindRateView, layout=%s, rateResult=%s.", paramuxj, Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Uxj = paramuxj;
-    if ((paramuxj == null) || (paramuxj.a.length < 1))
+    yqp.a("InteractContainerLayout", "bindRateView, layout=%s, rateResult=%s.", paramwqv, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Wqv = paramwqv;
+    if ((paramwqv == null) || (paramwqv.a.length < 1))
     {
       setVisibility(4);
       return;
     }
     setVisibility(0);
-    xwj localxwj = (xwj)this.jdField_a_of_type_Xvz;
-    localxwj.a(paramuxj.a);
-    localxwj.b(false);
+    zpu localzpu = (zpu)this.jdField_a_of_type_Zpk;
+    localzpu.a(paramwqv.a);
+    localzpu.b(false);
     if (paramInt != -2147483648) {}
     for (float f = paramInt;; f = 0.0F)
     {
-      localxwj.a(f);
+      localzpu.a(f);
       a(getWidth(), getHeight());
       return;
     }
@@ -79,7 +79,7 @@ public class InteractContainerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.InteractContainerLayout
  * JD-Core Version:    0.7.0.1
  */

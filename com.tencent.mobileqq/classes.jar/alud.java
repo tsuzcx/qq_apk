@@ -1,27 +1,29 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class alud
+  extends anhl
 {
-  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
+  public alud(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public static String a(int paramInt)
+  protected void a(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      String str = a.getResources().getString(paramInt);
-      return str;
     }
-    catch (Exception localException)
+    do
     {
-      localException.printStackTrace();
-    }
-    return "";
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
+      }
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alud
  * JD-Core Version:    0.7.0.1
  */

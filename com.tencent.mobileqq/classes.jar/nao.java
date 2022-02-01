@@ -1,34 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.gamelist.GameListItemView;
 
-class nao
-  extends BroadcastReceiver
+public class nao
+  implements View.OnTouchListener
 {
-  nao(nan paramnan) {}
+  public nao(GameListItemView paramGameListItemView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramIntent.getIntExtra("request_type", 0);
-    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
-    switch (i)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-    default: 
-      return;
     }
-    paramContext = new Intent();
-    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
-    paramContext.putExtra("command_type", 1);
-    paramContext.putExtra("data", nan.a(this.a));
-    this.a.a.getApp().sendBroadcast(paramContext);
+    for (;;)
+    {
+      return false;
+      paramView = nfx.a("avgame_start_game_owner_hl@3x.png");
+      if (paramView != null)
+      {
+        this.a.a.setImageBitmap(paramView);
+        continue;
+        paramView = nfx.a("avgame_start_game_owner_normal@3x.png");
+        if (paramView != null) {
+          this.a.a.setImageBitmap(paramView);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nao
  * JD-Core Version:    0.7.0.1
  */

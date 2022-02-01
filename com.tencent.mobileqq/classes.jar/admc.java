@@ -1,76 +1,21 @@
+import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Now;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admc
-  implements whf
+  implements View.OnClickListener
 {
-  public admc(Now paramNow) {}
+  public admc(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public View a()
+  public void onClick(View paramView)
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public ImageView a()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      xqq.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
-    }
-  }
-  
-  public TextView a()
-  {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      xqq.a(bool);
-      return this.a.c;
-    }
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Now.a(this.a);
-      return;
-    }
-    Now.b(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.a(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.a.a(true);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("start_from", 2);
+    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

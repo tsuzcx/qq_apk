@@ -1,46 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class zgb
-  implements BusinessObserver
+public final class zgb
+  implements Parcelable.Creator<SlideItemInfo>
 {
-  zgb(zfy paramzfy) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public SlideItemInfo a(Parcel paramParcel)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
-    {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.post(new Share.7.1(this, paramBundle), 5, null, true);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(zfy.a, 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
-      }
-    }
+    return new SlideItemInfo(paramParcel);
+  }
+  
+  public SlideItemInfo[] a(int paramInt)
+  {
+    return new SlideItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zgb
  * JD-Core Version:    0.7.0.1
  */

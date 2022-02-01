@@ -1,23 +1,72 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class nus
-  implements Parcelable.Creator<RecentShopParcel>
+public class nus
 {
-  public RecentShopParcel a(Parcel paramParcel)
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static nus jdField_a_of_type_Nus;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nut(this);
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> b = new ArrayList();
+  
+  public static nus a()
   {
-    return new RecentShopParcel(paramParcel);
+    if (jdField_a_of_type_Nus == null) {
+      jdField_a_of_type_Nus = new nus();
+    }
+    return jdField_a_of_type_Nus;
   }
   
-  public RecentShopParcel[] a(int paramInt)
+  private void a()
   {
-    return new RecentShopParcel[paramInt];
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = bdzx.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label118;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
+          }
+        }
+      }
+    }
+    a();
+    label118:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nus
  * JD-Core Version:    0.7.0.1
  */

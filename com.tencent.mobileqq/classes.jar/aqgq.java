@@ -1,9 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.List;
 
-public abstract interface aqgq<V extends View>
+public abstract interface aqgq
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
+  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
+  
+  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
 }
 
 

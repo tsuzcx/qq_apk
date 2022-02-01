@@ -8,15 +8,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bjhb;
-import bjuf;
+import blvh;
+import bmip;
 import com.qq.taf.jce.JceInputStream;
 import java.util.ArrayList;
 
 public class QZoneCountUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QZoneCountUserInfo> CREATOR = new bjhb();
+  public static final Parcelable.Creator<QZoneCountUserInfo> CREATOR = new blvh();
   public byte a;
   public int a;
   public long a;
@@ -33,7 +33,7 @@ public class QZoneCountUserInfo
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
     this.jdField_a_of_type_Byte = paramParcel.readByte();
-    this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush = ((PassiveFeedsPush)bjuf.a(PassiveFeedsPush.class, paramParcel.createByteArray()));
+    this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush = ((PassiveFeedsPush)bmip.a(PassiveFeedsPush.class, paramParcel.createByteArray()));
     this.jdField_a_of_type_JavaUtilArrayList = a(paramParcel);
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
   }
@@ -112,19 +112,19 @@ public class QZoneCountUserInfo
       }
     }
     label84:
-    for (Object localObject1 = localObject2;; localObject1 = bjuf.a(this.jdField_a_of_type_JavaUtilArrayList))
+    for (Object localObject1 = localObject2;; localObject1 = bmip.a(this.jdField_a_of_type_JavaUtilArrayList))
     {
       paramParcel.writeByteArray((byte[])localObject1);
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       return;
-      localObject1 = bjuf.a(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush);
+      localObject1 = bmip.a(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UndealCount.QZoneCountUserInfo
  * JD-Core Version:    0.7.0.1
  */

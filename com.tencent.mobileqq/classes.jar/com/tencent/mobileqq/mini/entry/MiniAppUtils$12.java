@@ -1,38 +1,39 @@
 package com.tencent.mobileqq.mini.entry;
 
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import org.json.JSONObject;
 
 final class MiniAppUtils$12
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  MiniAppUtils$12(String paramString) {}
+  MiniAppUtils$12(MiniAppConfig paramMiniAppConfig) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    try
+    if (paramBoolean)
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QLog.i("MiniAppUtils", 1, "reportBannerAd rspCode" + i);
+      long l = paramJSONObject.optLong("retCode");
+      String str = paramJSONObject.optString("errMsg");
+      QLog.d("MiniAppUtils", 1, "updateMiniAppMemoryCache, getAppInfoById retCode = " + l + ",errMsg = " + str);
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject.mergeData(this.val$appConfig.config);
+        MiniAppUtils.access$300(paramJSONObject);
+      }
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("MiniAppUtils", 1, "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
-    }
+    MiniAppUtils.access$300(this.val$appConfig.config);
+    MiniAppUtils.updateMiniAppList(11);
+    QLog.e("MiniAppUtils", 1, "updateMiniAppMemoryCache, request fail. appInfo: " + this.val$appConfig.config);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.12
  * JD-Core Version:    0.7.0.1
  */

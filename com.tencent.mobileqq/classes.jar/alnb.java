@@ -1,25 +1,20 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import java.util.Deque;
-
-public class alnb
-  implements PopupWindow.OnDismissListener
+class alnb
 {
-  public alnb(ApolloPanel paramApolloPanel) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  public void onDismiss()
+  public alnb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    this.a.a = null;
-    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
-    {
-      alng localalng = (alng)ApolloPanel.a(this.a).poll();
-      if (ApolloPanel.a(this.a).size() == 0) {
-        ApolloPanel.a(this.a, null);
-      }
-      if (localalng != null) {
-        ApolloPanel.a(this.a, localalng.jdField_a_of_type_AndroidViewView, localalng.jdField_a_of_type_Int, localalng.jdField_a_of_type_JavaLangString, localalng.b);
-      }
-    }
+    this.a = paramFloat2;
+    this.b = paramFloat3;
+    this.c = paramFloat1;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.f = paramFloat6;
   }
 }
 

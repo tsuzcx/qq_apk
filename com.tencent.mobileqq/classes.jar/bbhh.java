@@ -1,27 +1,19 @@
-public class bbhh
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
+class bbhh
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  bbhh(bbhg parambbhg) {}
   
-  public bbhh()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "TroopAppInfo{app_type='" + this.jdField_a_of_type_Int + '\'' + ", app_appid='" + this.jdField_a_of_type_Long + '\'' + ", app_removable='" + this.jdField_b_of_type_Int + '\'' + ", app_source='" + this.jdField_c_of_type_Int + '\'' + ", app_name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", app_icon='" + this.jdField_b_of_type_JavaLangString + '\'' + ", app_url='" + this.jdField_c_of_type_JavaLangString + '\'' + "}";
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

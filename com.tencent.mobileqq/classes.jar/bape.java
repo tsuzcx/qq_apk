@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class bape
-  implements OnCompositionLoadedListener
+  extends Animation
 {
-  public bape(QEffectLottieImageView paramQEffectLottieImageView) {}
+  public bape(CircleBarView paramCircleBarView) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null) {
-      return;
-    }
-    if (QEffectLottieImageView.a(this.a))
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
     {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
     }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    this.a.postInvalidate();
   }
 }
 

@@ -1,18 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
 public class ankz
-  extends BroadcastReceiver
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
+      }
     }
-    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
+    }
+    return paramString;
   }
 }
 

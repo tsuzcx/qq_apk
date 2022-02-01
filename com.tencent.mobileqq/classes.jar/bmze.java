@@ -1,106 +1,83 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
 public class bmze
-  extends bmzb
+  implements Cloneable
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private xwj jdField_a_of_type_Xwj;
-  protected boolean a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  protected View a()
+  /* Error */
+  public bmze a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 23	java/lang/Object:clone	()Ljava/lang/Object;
+    //   6: checkcast 2	bmze
+    //   9: astore_1
+    //   10: aload_0
+    //   11: monitorexit
+    //   12: aload_1
+    //   13: areturn
+    //   14: astore_1
+    //   15: aconst_null
+    //   16: astore_1
+    //   17: goto -7 -> 10
+    //   20: astore_1
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: aload_1
+    //   24: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	25	0	this	bmze
+    //   9	4	1	localbmze	bmze
+    //   14	1	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
+    //   16	1	1	localObject1	Object
+    //   20	4	1	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	14	java/lang/CloneNotSupportedException
+    //   2	10	20	finally
   }
   
-  public bmzd a()
+  public bmze a(bmzc parambmzc, int paramInt1, int paramInt2)
   {
-    return new bmzd(this.jdField_a_of_type_Xwj.a(), this.jdField_a_of_type_Xwj.a(), this.jdField_a_of_type_Xwj.a(), this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Xwj.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-    this.jdField_a_of_type_Xwj.c(false);
-  }
-  
-  public void a(Context paramContext, bmzd parambmzd, EditText paramEditText, TextView paramTextView, bmzc parambmzc)
-  {
-    super.a(paramContext, parambmzd, paramEditText, paramTextView, parambmzc);
-    this.jdField_a_of_type_Xwj = new xwj(paramContext);
-    this.jdField_a_of_type_Xwj.b(false);
-    this.jdField_a_of_type_Xwj.a(0.0F);
-    this.jdField_a_of_type_Xwj.c(true);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Xwj.a();
-    if (parambmzd == null) {
-      a(this.jdField_a_of_type_Xwj.a(), true);
-    }
-    for (;;)
-    {
-      a(paramEditText.getText().toString(), 24);
-      return;
-      this.jdField_a_of_type_Xwj.a(parambmzd.a);
-      a(parambmzd.a[0], false);
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    if (this.jdField_a_of_type_Xwj != null)
-    {
-      paramCharSequence = this.jdField_a_of_type_Xwj.a();
-      if ((paramCharSequence != null) && (paramCharSequence.length > 0)) {
-        this.jdField_a_of_type_JavaLangString = paramCharSequence[0];
-      }
-    }
-  }
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_Xwj.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-      this.jdField_a_of_type_Xwj.c(false);
-      this.jdField_a_of_type_Bmzc.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt2 = bdnn.b(paramCharSequence.toString());
-    if (24 - paramInt2 <= 6)
-    {
-      paramInt1 = paramInt2;
-      Object localObject = paramCharSequence;
-      if (24 - paramInt2 < 0)
+    if (paramInt1 != paramInt2) {
+      switch (paramInt1)
       {
-        localObject = bdnn.b(paramCharSequence.toString(), 0, 24);
-        paramInt1 = bdnn.b(((CharSequence)localObject).toString());
-        a((CharSequence)localObject, false);
+      case 4: 
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(paramInt1 / 2), Integer.valueOf(12) }));
-      paramCharSequence = (CharSequence)localObject;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Xwj.a(new String[] { paramCharSequence.toString() });
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        a(this.jdField_a_of_type_Xwj.a(), true);
+      try
+      {
+        parambmzc = a();
+        return parambmzc;
       }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!paramCharSequence.toString().equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      finally {}
+      this.a -= 1;
+      break;
+      this.b -= 1;
+      break;
+      this.c -= 1;
+      break;
+      this.d -= 1;
+      break;
+      this.a += 1;
+      continue;
+      this.b += 1;
+      continue;
+      this.c += 1;
+      continue;
+      this.d += 1;
     }
   }
 }

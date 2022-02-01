@@ -1,41 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.lebasearch.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class nfv
-  implements DialogInterface.OnClickListener
+public class nfv
 {
-  public nfv(int paramInt, alpg paramalpg, Context paramContext, yqz paramyqz, long paramLong) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  public static String a;
+  public static String b = "param_Type";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
-        paramDialogInterface.dismiss();
-        return;
-      }
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, true);
+    jdField_a_of_type_JavaLangString = "actAVGameOpenCamera";
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if ((jdField_a_of_type_Long <= 0L) || (jdField_a_of_type_Int <= 0)) {
       return;
     }
-    this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
-    paramDialogInterface.dismiss();
+    long l = System.currentTimeMillis() - jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(b, String.valueOf(jdField_a_of_type_Int));
+    bctj.a(BaseApplicationImpl.getApplication()).a("", jdField_a_of_type_JavaLangString, paramBoolean, l, 1L, localHashMap, "", true);
+    if (QLog.isColorLevel()) {
+      QLog.i("actAVGameOpenCamera", 1, "reportOpenCameraEnd duration:" + l + " success:" + paramBoolean + " type:" + jdField_a_of_type_Int);
+    }
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfv
  * JD-Core Version:    0.7.0.1
  */

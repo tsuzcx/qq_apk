@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 class QCircleRecommendImageView$3
@@ -12,14 +13,16 @@ class QCircleRecommendImageView$3
     if (QCircleRecommendImageView.a(this.this$0) != null) {
       QCircleRecommendImageView.a(this.this$0).stop();
     }
-    QCircleRecommendImageView.a(this.this$0, false);
+    if (QCircleRecommendImageView.a(this.this$0) != null) {
+      QCircleRecommendImageView.a(this.this$0).onAnimationEnd(null);
+    }
+    this.this$0.a();
     QCircleRecommendImageView.b(this.this$0);
-    QCircleRecommendImageView.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.3
  * JD-Core Version:    0.7.0.1
  */

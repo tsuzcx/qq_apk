@@ -1,18 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class aipn
-  implements DialogInterface.OnClickListener
+public class aipn
+  extends BroadcastReceiver
 {
-  aipn(Activity paramActivity, String paramString1, String paramString2) {}
+  public aipn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
     {
-      aipi.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
+      }
+      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
+      paramContext.putExtra("broadcastType", 1);
+      this.a.app.getApp().sendBroadcast(paramContext);
+      this.a.finish();
     }
   }
 }

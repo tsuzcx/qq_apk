@@ -1,16 +1,22 @@
-import android.support.annotation.IntRange;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aewb
+class aewb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  aewb(aevy paramaevy, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
-  
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Aevy.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

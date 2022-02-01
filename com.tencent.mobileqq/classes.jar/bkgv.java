@@ -1,68 +1,106 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ARMapHongBaoListView;
 
-final class bkgv
-  extends Drawable.ConstantState
+public class bkgv
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  Drawable b = null;
-  Drawable c = null;
-  Drawable d = null;
-  Drawable e = null;
-  Drawable f = null;
-  Drawable g = null;
+  public bkgv(ARMapHongBaoListView paramARMapHongBaoListView) {}
   
-  bkgv() {}
-  
-  bkgv(bkgv parambkgv)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((parambkgv.b != null) && (parambkgv.b.getConstantState() != null))
+    int j;
+    int k;
+    switch (paramMessage.what)
     {
-      this.b = parambkgv.b.getConstantState().newDrawable();
-      this.b.setBounds(parambkgv.b.getBounds());
+    default: 
+      return false;
+    case 1: 
+      this.a.setIsShowingPreguide(true);
+      boolean bool1 = paramMessage.getData().getBoolean("isFirstCall", false);
+      boolean bool2 = paramMessage.getData().getBoolean("isListViewSpring", false);
+      boolean bool3 = paramMessage.getData().getBoolean("isPendantBounce", false);
+      j = paramMessage.getData().getInt("pendantBountCnt", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, " + bool1 + "," + bool2 + "," + bool3 + "," + j);
+      }
+      if ((bool1) && (bool2))
+      {
+        this.a.jdField_a_of_type_Apsl.a(-this.a.d);
+        if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
+          ARMapHongBaoListView.a(this.a).b(false);
+        }
+      }
+      if ((bool3) && (j > 0))
+      {
+        float f = j * 1.0F / 6.0F;
+        if (this.a.jdField_a_of_type_Apsj != null) {
+          this.a.jdField_a_of_type_Apsj.a((int)(f * this.a.d), j * 300L);
+        }
+        k = j - 1;
+        i = k;
+        if (k > 0)
+        {
+          paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
+          paramMessage.getData().putBoolean("isFirstCall", false);
+          paramMessage.getData().putBoolean("isListViewSpring", false);
+          paramMessage.getData().putBoolean("isPendantBounce", bool3);
+          paramMessage.getData().putInt("pendantBountCnt", k);
+          ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+        }
+      }
+      break;
     }
-    if ((parambkgv.c != null) && (parambkgv.c.getConstantState() != null))
+    for (int i = k;; i = j)
     {
-      this.c = parambkgv.c.getConstantState().newDrawable();
-      this.c.setBounds(parambkgv.c.getBounds());
+      if (i == 0)
+      {
+        paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
+        ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
+      }
+      this.a.invalidate();
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
+      }
+      if (ARMapHongBaoListView.a(this.a) != null) {
+        ARMapHongBaoListView.a(this.a).a(false);
+      }
+      ARMapHongBaoListView.a(this.a, paramMessage.what);
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      return false;
+      this.a.setIsShowingPreguide(true);
+      i = this.a.d;
+      if (paramMessage.arg1 != 0) {
+        i = paramMessage.arg1;
+      }
+      this.a.jdField_a_of_type_Apsl.a(-i);
+      if (this.a.jdField_a_of_type_Apsj != null) {
+        this.a.jdField_a_of_type_Apsj.a(this.a.d / 3, 300L);
+      }
+      Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
+      localMessage.obj = paramMessage.obj;
+      ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
+      if ((ARMapHongBaoListView.a(this.a) == null) || (!this.a.b)) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).b(false);
+      return false;
+      if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
+        ARMapHongBaoListView.a(this.a, paramMessage.what);
+      }
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      if (ARMapHongBaoListView.a(this.a) == null) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      return false;
     }
-    if ((parambkgv.d != null) && (parambkgv.d.getConstantState() != null))
-    {
-      this.d = parambkgv.d.getConstantState().newDrawable();
-      this.d.setBounds(parambkgv.d.getBounds());
-    }
-    if ((parambkgv.e != null) && (parambkgv.e.getConstantState() != null))
-    {
-      this.e = parambkgv.e.getConstantState().newDrawable();
-      this.e.setBounds(parambkgv.e.getBounds());
-    }
-    if ((parambkgv.f != null) && (parambkgv.f.getConstantState() != null))
-    {
-      this.f = parambkgv.f.getConstantState().newDrawable();
-      this.f.setBounds(parambkgv.f.getBounds());
-    }
-    if ((parambkgv.g != null) && (parambkgv.g.getConstantState() != null))
-    {
-      this.g = parambkgv.g.getConstantState().newDrawable();
-      this.g.setBounds(parambkgv.g.getBounds());
-    }
-    if ((parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(parambkgv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
-    }
-    this.jdField_a_of_type_Int = parambkgv.jdField_a_of_type_Int;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new bkgu(new bkgv(this));
   }
 }
 

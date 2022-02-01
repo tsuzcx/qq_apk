@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aipv;
+import akgp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class TroopClipPic
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<TroopClipPic> CREATOR = new aipv();
+  public static final Parcelable.Creator<TroopClipPic> CREATOR = new akgp();
   public String clipInfo;
   public String id;
   public long ts;
@@ -47,7 +47,7 @@ public class TroopClipPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopClipPic
  * JD-Core Version:    0.7.0.1
  */

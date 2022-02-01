@@ -1,17 +1,48 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import java.util.List;
 
-class afqd
-  extends afuf
+public class afqd
+  extends anmu
 {
-  afqd(afpy paramafpy)
+  public afqd(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    super(paramafpy, null);
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
+    this.a.a(2131717797, 1);
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
   {
-    return new agdt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(2131691308, 2);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,24 +1,44 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 class arkj
-  implements ariq
+  extends DataReportViewer
 {
-  arkj(arki paramarki, String paramString) {}
-  
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  arkj(arki paramarki, Context paramContext1, Context paramContext2)
   {
-    paramString = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
+    super(paramContext1);
+  }
+  
+  public void d()
+  {
+    int j = bggq.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
-      paramString.addAll(paramList);
-      if (this.jdField_a_of_type_Arki.jdField_a_of_type_Arhw != null) {
-        this.jdField_a_of_type_Arki.jdField_a_of_type_Arhw.e();
-      }
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bggq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      arki.a(this.jdField_a_of_type_Arki).updateViewLayout(arki.a(this.jdField_a_of_type_Arki), localLayoutParams);
+      return;
     }
-    this.jdField_a_of_type_Arki.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
+  }
+  
+  public void e()
+  {
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
+    {
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bggq.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      arki.a(this.jdField_a_of_type_Arki).updateViewLayout(arki.a(this.jdField_a_of_type_Arki), localLayoutParams);
+      return;
+    }
   }
 }
 

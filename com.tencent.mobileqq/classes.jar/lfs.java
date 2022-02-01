@@ -1,27 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.AnyChatReqTimeoutRunnable;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.NetAddr;
+import java.util.List;
 
 public class lfs
-  implements DialogInterface.OnClickListener
 {
-  public lfs(VideoController.AnyChatReqTimeoutRunnable paramAnyChatReqTimeoutRunnable) {}
+  private static lfs a;
+  public int a;
+  public long a;
+  public List<NetAddr> a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (this.a.this$0.a().d == null) {
-      this.a.this$0.a().d = this.a.this$0.a().a.c;
-    }
-    this.a.this$0.a(this.a.a, 2131230741, 1, this.a.this$0.b);
-    this.a.this$0.a().a("AnyChatReqTimeoutRunnable", 6);
-    this.a.this$0.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.this$0.a().d, Long.valueOf(this.a.a) });
+    jdField_a_of_type_Lfs = new lfs();
+  }
+  
+  public static lfs a()
+  {
+    return jdField_a_of_type_Lfs;
+  }
+  
+  public String toString()
+  {
+    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lfs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,47 @@
-import android.os.IBinder;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
-public final class bdql
+class bdql
+  implements Comparator<oidb_0xe61.BeancurdCubeInfoResult>
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Method b;
-  private static Method c;
-  private static Method d;
+  private final afwx jdField_a_of_type_Afwx;
+  private final awej<bdqp, QQAppInterface> jdField_a_of_type_Awej;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  static
+  public bdql(QQAppInterface paramQQAppInterface, afwx paramafwx, awej<bdqp, QQAppInterface> paramawej)
   {
-    try
-    {
-      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
-      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
-      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
-      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
-      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Afwx = paramafwx;
+    this.jdField_a_of_type_Awej = paramawej;
   }
   
-  public static IBinder a(String paramString)
+  private int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
   {
-    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+    int i = bdqn.b((int)((oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get()).uint64_busi_id.get());
+    paramBeancurdCubeInfoResult = ((bdqp)this.jdField_a_of_type_Awej.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).a(i);
+    if (paramBeancurdCubeInfoResult != null) {
+      return paramBeancurdCubeInfoResult.a();
+    }
+    return 0;
   }
   
-  private static Object a(Method paramMethod, Object... paramVarArgs)
+  private boolean a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult)
   {
-    try
+    return (paramBeancurdCubeInfoResult != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.has()) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.get() != null) && (paramBeancurdCubeInfoResult.beancurdCubeInfo.uint64_busi_id.has());
+  }
+  
+  public int a(oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult1, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult2)
+  {
+    if ((a(paramBeancurdCubeInfoResult1)) && (a(paramBeancurdCubeInfoResult2)))
     {
-      paramMethod = paramMethod.invoke(null, paramVarArgs);
-      return paramMethod;
+      int i = a(paramBeancurdCubeInfoResult1);
+      int j = a(paramBeancurdCubeInfoResult2);
+      return this.jdField_a_of_type_Afwx.b(i) - this.jdField_a_of_type_Afwx.b(j);
     }
-    catch (IllegalArgumentException paramMethod)
-    {
-      paramMethod.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramMethod)
-    {
-      paramMethod.printStackTrace();
-      return null;
-    }
-    catch (InvocationTargetException paramMethod)
-    {
-      paramMethod.printStackTrace();
-    }
-    return null;
+    return 0;
   }
 }
 

@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.data.MessageForPic;
 
-public class ahgu
-  implements View.OnClickListener
+class ahgu
 {
-  public ahgu(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  int jdField_a_of_type_Int;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public ahgu(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
-    {
-      ClassificationSearchActivity.a(this.a);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

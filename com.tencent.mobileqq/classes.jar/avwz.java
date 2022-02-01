@@ -1,19 +1,22 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
 class avwz
-  implements Camera.PictureCallback
+  implements TencentDirectionListener
 {
   avwz(avwv paramavwv) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onDirectionChanged(double paramDouble, int paramInt)
   {
-    this.a.a(paramArrayOfByte, true);
+    if (avwv.a(this.a) != null)
+    {
+      avwv.a(this.a, 180.0D + paramDouble);
+      avwv.a(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwz
  * JD-Core Version:    0.7.0.1
  */

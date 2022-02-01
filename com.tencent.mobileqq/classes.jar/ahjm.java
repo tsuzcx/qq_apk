@@ -1,22 +1,27 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahjm
   implements View.OnClickListener
 {
-  public ahjm(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  public ahjm(StructingMsgItemBuilder paramStructingMsgItemBuilder, ImageView paramImageView, ChatMessage paramChatMessage, String paramString, long paramLong) {}
   
   public void onClick(View paramView)
   {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
-    if (i >= 4) {
+    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+      StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X800631E", "0X800631E", 0, 0, "" + this.jdField_a_of_type_Long, "", "", "");
     }
-    Face2FaceAddContactFragment.a(this.a, paramView, i);
-    i = Face2FaceAddContactFragment.a(this.a).length();
-    Face2FaceAddContactFragment.a(this.a, i);
-    Face2FaceAddContactFragment.b(this.a, i);
   }
 }
 

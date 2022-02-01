@@ -1,62 +1,52 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Handler;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bdmz
+class bdmz
+  extends bdmb
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bdmz(bdmq parambdmq) {}
   
-  private void a()
+  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null)
-    {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
+    ??? = this.a;
+    ???.jdField_a_of_type_Int -= 1;
+    if ((paramBoolean1) && (paramInt1 == 0)) {
+      for (;;)
+      {
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.a.jdField_a_of_type_JavaUtilList != null)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.clear();
+            this.a.c = paramInt2;
+            this.a.e = paramBoolean2;
+            if (paramList == null) {
+              break;
+            }
+            this.a.jdField_b_of_type_Int = paramList.size();
+          }
+        }
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+          return;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          continue;
+          paramList = finally;
+          throw paramList;
+        }
       }
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
+    if (this.a.jdField_b_of_type_Boolean) {}
+    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
-  
-  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
   }
 }
 

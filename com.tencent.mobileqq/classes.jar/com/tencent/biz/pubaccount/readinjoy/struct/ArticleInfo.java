@@ -5,17 +5,20 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import ors;
-import qjy;
-import qkf;
-import qkg;
-import qkq;
-import qlo;
-import qme;
-import qnm;
+import org.jetbrains.annotations.NotNull;
+import pha;
+import qpj;
+import reb;
+import req;
+import rer;
+import rfb;
+import rga;
+import rha;
+import rii;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
@@ -42,7 +45,7 @@ public class ArticleInfo
   
   public static Parcelable.Creator<ArticleInfo> makeArticleInfoCreator()
   {
-    return new qkg();
+    return new rer();
   }
   
   private void readFromParcel(ArticleInfo paramArticleInfo, Parcel paramParcel)
@@ -61,8 +64,8 @@ public class ArticleInfo
     paramArticleInfo.mRecommendTime = paramParcel.readLong();
     paramArticleInfo.mChannelID = paramParcel.readLong();
     paramArticleInfo.mRecommendSeq = paramParcel.readLong();
-    if (paramParcel.readByte() == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
       paramArticleInfo.mShowBigPicture = bool1;
       paramArticleInfo.mStrategyId = paramParcel.readInt();
@@ -81,12 +84,12 @@ public class ArticleInfo
       i = 0;
       while (i < j)
       {
-        paramArticleInfo.mPictures[i] = ors.a(paramParcel.readString());
+        paramArticleInfo.mPictures[i] = pha.a(paramParcel.readString());
         i += 1;
       }
     }
-    paramArticleInfo.mSinglePicture = ors.a(paramParcel.readString());
-    paramArticleInfo.mVideoCoverUrl = ors.a(paramParcel.readString());
+    paramArticleInfo.mSinglePicture = pha.a(paramParcel.readString());
+    paramArticleInfo.mVideoCoverUrl = pha.a(paramParcel.readString());
     paramArticleInfo.mVideoVid = paramParcel.readString();
     paramArticleInfo.mVideoDuration = paramParcel.readInt();
     paramArticleInfo.mCommentIconType = paramParcel.readInt();
@@ -96,13 +99,13 @@ public class ArticleInfo
       paramArticleInfo.mServerContext = null;
       i = paramParcel.readInt();
       if (i != -1) {
-        break label795;
+        break label836;
       }
       paramArticleInfo.mCommentInfoBytes = null;
       label317:
       i = paramParcel.readInt();
       if (i != -1) {
-        break label817;
+        break label858;
       }
       paramArticleInfo.mPackInfoBytes = null;
       label332:
@@ -110,14 +113,14 @@ public class ArticleInfo
       paramArticleInfo.mCircleId = paramParcel.readLong();
       paramArticleInfo.mStrCircleId = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label839;
+        break label880;
       }
       bool1 = true;
       label362:
       paramArticleInfo.mPUinIsActive = bool1;
       i = paramParcel.readInt();
       if (i != -1) {
-        break label845;
+        break label886;
       }
       paramArticleInfo.mSubscribeInfoBytes = null;
       label383:
@@ -125,7 +128,7 @@ public class ArticleInfo
       paramArticleInfo.mFeedId = paramParcel.readLong();
       i = paramParcel.readInt();
       if (i > 0) {
-        break label867;
+        break label908;
       }
       paramArticleInfo.mSocialFeedInfoByte = null;
       label413:
@@ -136,13 +139,13 @@ public class ArticleInfo
       paramArticleInfo.businessNamePrefix = paramParcel.readString();
       i = paramParcel.readInt();
       if (i > 0) {
-        break label934;
+        break label975;
       }
       paramArticleInfo.mTopicRecommendFeedsInfoByte = null;
       label467:
       i = paramParcel.readInt();
       if (i > 0) {
-        break label1001;
+        break label1042;
       }
       paramArticleInfo.mArkAppFeedsInfoBytes = null;
       label481:
@@ -158,59 +161,59 @@ public class ArticleInfo
       paramArticleInfo.mVideoAdsSource = paramParcel.readInt();
       paramArticleInfo.videoReportInfo = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label1077;
+        break label1118;
       }
       bool1 = true;
       label580:
       paramArticleInfo.isTwoItem = bool1;
       if (paramParcel.readByte() != 1) {
-        break label1083;
+        break label1124;
       }
       bool1 = true;
       label597:
       paramArticleInfo.isSuperTopic = bool1;
       i = paramParcel.readInt();
       if (i != -1) {
-        break label1089;
+        break label1130;
       }
       paramArticleInfo.mNewPackInfoBytes = null;
       label618:
       i = paramParcel.readInt();
       if (i > 0) {
-        break label1111;
+        break label1152;
       }
       paramArticleInfo.mRecommendFollowInfoBytes = null;
       label632:
       paramArticleInfo.mRecommendFollowId = paramParcel.readLong();
       paramArticleInfo.gifCoverUrl = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label1129;
+        break label1170;
       }
       bool1 = true;
       label659:
       paramArticleInfo.isUseGif = bool1;
       i = paramParcel.readInt();
       if (i != -1) {
-        break label1135;
+        break label1176;
       }
       paramArticleInfo.mExtraBiuBriefBytes = null;
       label680:
       i = paramParcel.readInt();
       if (i != -1) {
-        break label1157;
+        break label1198;
       }
       paramArticleInfo.mMultiBiuSameListBytes = null;
       label695:
       paramArticleInfo.mIsGallery = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label1179;
+        break label1220;
       }
       bool1 = bool2;
       label715:
       paramArticleInfo.mIsGalleryChannel = bool1;
       i = paramParcel.readInt();
       if (i != -1) {
-        break label1185;
+        break label1226;
       }
       paramArticleInfo.hotWordInfoListBytes = null;
     }
@@ -226,7 +229,14 @@ public class ArticleInfo
             paramArticleInfo.mGWCommonData = paramParcel.readString();
             paramArticleInfo.mReportCommonData = paramParcel.readString();
             paramArticleInfo.recommentFlag = paramParcel.readInt();
-            qjy.a(paramArticleInfo);
+            reb.a(paramArticleInfo);
+            i = paramParcel.readInt();
+            if (i <= 0) {
+              break label1248;
+            }
+            paramArticleInfo.ptsItemDataBytes = new byte[i];
+            paramParcel.readByteArray(paramArticleInfo.ptsItemDataBytes);
+            paramArticleInfo.ptsItemData = ((PTSItemData)qpj.a(paramArticleInfo.ptsItemDataBytes, PTSItemData.CREATOR));
             return;
             paramArticleInfo.mServerContext = new byte[i];
             if (i <= 0) {
@@ -234,31 +244,31 @@ public class ArticleInfo
             }
             paramParcel.readByteArray(paramArticleInfo.mServerContext);
             break;
-            label795:
+            label836:
             paramArticleInfo.mCommentInfoBytes = new byte[i];
             if (i <= 0) {
               break label317;
             }
             paramParcel.readByteArray(paramArticleInfo.mCommentInfoBytes);
             break label317;
-            label817:
+            label858:
             paramArticleInfo.mPackInfoBytes = new byte[i];
             if (i <= 0) {
               break label332;
             }
             paramParcel.readByteArray(paramArticleInfo.mPackInfoBytes);
             break label332;
-            label839:
+            label880:
             bool1 = false;
             break label362;
-            label845:
+            label886:
             paramArticleInfo.mSubscribeInfoBytes = new byte[i];
             if (i <= 0) {
               break label383;
             }
             paramParcel.readByteArray(paramArticleInfo.mSubscribeInfoBytes);
             break label383;
-            label867:
+            label908:
             paramArticleInfo.mSocialFeedInfoByte = new byte[i];
             paramParcel.readByteArray(paramArticleInfo.mSocialFeedInfoByte);
             articlesummary.SocializeFeedsInfo localSocializeFeedsInfo = new articlesummary.SocializeFeedsInfo();
@@ -274,14 +284,14 @@ public class ArticleInfo
             }
           }
           break label413;
-          label934:
+          label975:
           paramArticleInfo.mTopicRecommendFeedsInfoByte = new byte[i];
           paramParcel.readByteArray(paramArticleInfo.mTopicRecommendFeedsInfoByte);
           articlesummary.TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new articlesummary.TopicRecommendFeedsInfo();
           try
           {
             localTopicRecommendFeedsInfo.mergeFrom(paramArticleInfo.mTopicRecommendFeedsInfoByte);
-            paramArticleInfo.mTopicRecommendFeedsInfo = qnm.a(localTopicRecommendFeedsInfo);
+            paramArticleInfo.mTopicRecommendFeedsInfo = rii.a(localTopicRecommendFeedsInfo);
           }
           catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
           {
@@ -290,14 +300,14 @@ public class ArticleInfo
           }
         }
         break label467;
-        label1001:
+        label1042:
         paramArticleInfo.mArkAppFeedsInfoBytes = new byte[i];
         paramParcel.readByteArray(paramArticleInfo.mArkAppFeedsInfoBytes);
         articlesummary.ArkAppFeedsInfo localArkAppFeedsInfo = new articlesummary.ArkAppFeedsInfo();
         try
         {
           localArkAppFeedsInfo.mergeFrom(paramArticleInfo.mArkAppFeedsInfoBytes);
-          paramArticleInfo.mArkAppFeedsInfo = qkf.a(localArkAppFeedsInfo);
+          paramArticleInfo.mArkAppFeedsInfo = req.a(localArkAppFeedsInfo);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
         {
@@ -309,49 +319,134 @@ public class ArticleInfo
         }
       }
       break label481;
-      label1077:
+      label1118:
       bool1 = false;
       break label580;
-      label1083:
+      label1124:
       bool1 = false;
       break label597;
-      label1089:
+      label1130:
       paramArticleInfo.mNewPackInfoBytes = new byte[i];
       if (i <= 0) {
         break label618;
       }
       paramParcel.readByteArray(paramArticleInfo.mNewPackInfoBytes);
       break label618;
-      label1111:
+      label1152:
       paramArticleInfo.mRecommendFollowInfoBytes = new byte[i];
       paramParcel.readByteArray(paramArticleInfo.mRecommendFollowInfoBytes);
       break label632;
-      label1129:
+      label1170:
       bool1 = false;
       break label659;
-      label1135:
+      label1176:
       if (i <= 0) {
         break label680;
       }
       paramArticleInfo.mExtraBiuBriefBytes = new byte[i];
       paramParcel.readByteArray(paramArticleInfo.mExtraBiuBriefBytes);
       break label680;
-      label1157:
+      label1198:
       if (i <= 0) {
         break label695;
       }
       paramArticleInfo.mMultiBiuSameListBytes = new byte[i];
       paramParcel.readByteArray(paramArticleInfo.mMultiBiuSameListBytes);
       break label695;
-      label1179:
+      label1220:
       bool1 = false;
       break label715;
-      label1185:
+      label1226:
       if (i > 0)
       {
         paramArticleInfo.hotWordInfoListBytes = new byte[i];
         paramParcel.readByteArray(paramArticleInfo.hotWordInfoListBytes);
       }
+    }
+    label1248:
+    paramArticleInfo.ptsItemDataBytes = null;
+    paramArticleInfo.ptsItemData = null;
+  }
+  
+  private void writeByteArrayDataToParcel(@NotNull byte[] paramArrayOfByte, @NotNull Parcel paramParcel)
+  {
+    if (paramArrayOfByte == null) {}
+    for (int i = -1;; i = paramArrayOfByte.length)
+    {
+      paramParcel.writeInt(i);
+      if (i > 0) {
+        paramParcel.writeByteArray(paramArrayOfByte);
+      }
+      return;
+    }
+  }
+  
+  private void writeByteDataToParcel(boolean paramBoolean, @NotNull Parcel paramParcel)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramParcel.writeByte((byte)i);
+      return;
+    }
+  }
+  
+  private void writePictureToParcel(@NotNull Parcel paramParcel)
+  {
+    int j = 0;
+    int i;
+    if (this.mPictures != null)
+    {
+      i = this.mPictures.length;
+      paramParcel.writeInt(i);
+      if (this.mPictures == null) {
+        break label90;
+      }
+      URL[] arrayOfURL = this.mPictures;
+      int k = arrayOfURL.length;
+      i = j;
+      label40:
+      if (i >= k) {
+        break label90;
+      }
+      localObject = arrayOfURL[i];
+      if (localObject != null) {
+        break label80;
+      }
+    }
+    label80:
+    for (Object localObject = "";; localObject = ((URL)localObject).toString())
+    {
+      paramParcel.writeString((String)localObject);
+      i += 1;
+      break label40;
+      i = 0;
+      break;
+    }
+    label90:
+    if (this.mSinglePicture != null) {
+      if (this.mSinglePicture.getProtocol().equals("pubaccountimage")) {
+        localObject = this.mSinglePicture.getFile();
+      }
+    }
+    for (;;)
+    {
+      paramParcel.writeString((String)localObject);
+      return;
+      localObject = this.mSinglePicture.toString();
+      continue;
+      localObject = "";
+    }
+  }
+  
+  private void writeStringToParcel(@NotNull String paramString, @NotNull Parcel paramParcel)
+  {
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramParcel.writeString(paramString);
+      return;
+      paramString = "";
     }
   }
   
@@ -392,31 +487,31 @@ public class ArticleInfo
     return (this.mChannelInfoId != -1) && (!TextUtils.isEmpty(this.mChannelInfoName)) && (this.mChannelInfoType != -1) && (!TextUtils.isEmpty(this.mChannelInfoDisplayName));
   }
   
-  public qkq makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
+  public rfb makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
   {
     return makeDislikeParam(paramArrayList, this.innerUniqueID);
   }
   
-  public qkq makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
+  public rfb makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
   {
-    qkq localqkq = new qkq();
+    rfb localrfb = new rfb();
     if ((paramString != null) && (paramString.length() > 0)) {
-      localqkq.jdField_a_of_type_JavaLangString = paramString;
+      localrfb.jdField_a_of_type_JavaLangString = paramString;
     }
-    localqkq.jdField_a_of_type_Long = this.mArticleID;
-    localqkq.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localrfb.jdField_a_of_type_Long = this.mArticleID;
+    localrfb.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     if (this.mSocialFeedInfo != null)
     {
-      localqkq.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
-      localqkq.c = this.mSocialFeedInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long;
+      localrfb.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
+      localrfb.c = this.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long;
     }
-    if (ors.l(this))
+    if (pha.l(this))
     {
-      localqkq.c = this.mPolymericInfo.b;
-      localqkq.d = this.mPolymericInfo.f;
-      localqkq.jdField_a_of_type_Long = 0L;
+      localrfb.c = this.mPolymericInfo.b;
+      localrfb.d = this.mPolymericInfo.f;
+      localrfb.jdField_a_of_type_Long = 0L;
     }
-    return localqkq;
+    return localrfb;
   }
   
   public void prewrite()
@@ -426,8 +521,6 @@ public class ArticleInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
-    int i = -1;
     prewrite();
     paramParcel.writeLong(this.mArticleID);
     paramParcel.writeString(this.mTitle);
@@ -442,351 +535,69 @@ public class ArticleInfo
     paramParcel.writeLong(this.mRecommendTime);
     paramParcel.writeLong(this.mChannelID);
     paramParcel.writeLong(this.mRecommendSeq);
-    if (this.mShowBigPicture)
+    writeByteDataToParcel(this.mShowBigPicture, paramParcel);
+    paramParcel.writeInt(this.mStrategyId);
+    paramParcel.writeInt(this.articleStyle);
+    paramParcel.writeString(this.interfaceData);
+    paramParcel.writeString(this.galleryReprotExdData);
+    paramParcel.writeLong(this.mAlgorithmID);
+    paramParcel.writeString(this.mArticleFriendLikeText);
+    paramParcel.writeDouble(this.mTopicPicWHRatio);
+    paramParcel.writeString(this.mTopicPicInfo);
+    writePictureToParcel(paramParcel);
+    if (this.mVideoCoverUrl != null) {}
+    for (String str = this.mVideoCoverUrl.toString();; str = "")
     {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.mStrategyId);
-      paramParcel.writeInt(this.articleStyle);
-      paramParcel.writeString(this.interfaceData);
-      paramParcel.writeString(this.galleryReprotExdData);
-      paramParcel.writeLong(this.mAlgorithmID);
-      paramParcel.writeString(this.mArticleFriendLikeText);
-      paramParcel.writeDouble(this.mTopicPicWHRatio);
-      paramParcel.writeString(this.mTopicPicInfo);
-      if (this.mPictures == null) {
-        break label270;
-      }
-      paramInt = this.mPictures.length;
-      label205:
-      paramParcel.writeInt(paramInt);
-      if (this.mPictures == null) {
-        break label285;
-      }
-      URL[] arrayOfURL = this.mPictures;
-      int k = arrayOfURL.length;
-      paramInt = 0;
-      label230:
-      if (paramInt >= k) {
-        break label285;
-      }
-      localObject = arrayOfURL[paramInt];
-      if (localObject != null) {
-        break label275;
-      }
-    }
-    label270:
-    label275:
-    for (Object localObject = "";; localObject = ((URL)localObject).toString())
-    {
-      paramParcel.writeString((String)localObject);
-      paramInt += 1;
-      break label230;
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label205;
-    }
-    label285:
-    if (this.mSinglePicture != null) {
-      if (this.mSinglePicture.getProtocol().equals("pubaccountimage"))
-      {
-        localObject = this.mSinglePicture.getFile();
-        paramParcel.writeString((String)localObject);
-        if (this.mVideoCoverUrl == null) {
-          break label1101;
-        }
-        localObject = this.mVideoCoverUrl.toString();
-        label339:
-        paramParcel.writeString((String)localObject);
-        if (this.mVideoVid == null) {
-          break label1109;
-        }
-        localObject = this.mVideoVid;
-        label358:
-        paramParcel.writeString((String)localObject);
-        paramParcel.writeInt(this.mVideoDuration);
-        paramParcel.writeInt(this.mCommentIconType);
-        if (this.mServerContext != null) {
-          break label1117;
-        }
-        paramInt = -1;
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mServerContext);
-        }
-        if (this.mCommentInfoBytes != null) {
-          break label1126;
-        }
-        paramInt = -1;
-        label415:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mCommentInfoBytes);
-        }
-        if (this.mPackInfoBytes != null) {
-          break label1135;
-        }
-        paramInt = -1;
-        label441:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mPackInfoBytes);
-        }
-        paramParcel.writeLong(this.mCircleId);
-        paramParcel.writeString(this.mStrCircleId);
-        if (!this.mPUinIsActive) {
-          break label1144;
-        }
-        paramInt = 1;
-        label483:
-        paramParcel.writeByte((byte)paramInt);
-        if (this.mSubscribeInfoBytes != null) {
-          break label1149;
-        }
-        paramInt = -1;
-        label498:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mSubscribeInfoBytes);
-        }
-        paramParcel.writeInt(this.mFeedType);
-        paramParcel.writeLong(this.mFeedId);
-        if (this.mSocialFeedInfoByte != null) {
-          break label1158;
-        }
-        paramInt = -1;
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mSocialFeedInfoByte);
-        }
-        paramParcel.writeString(this.innerUniqueID);
-        paramParcel.writeLong(this.businessId);
-        if (this.businessName == null) {
-          break label1167;
-        }
-        localObject = this.businessName.toString();
-        label589:
-        paramParcel.writeString((String)localObject);
-        if (this.businessUrl == null) {
-          break label1175;
-        }
-        localObject = this.businessUrl.toString();
-        label611:
-        paramParcel.writeString((String)localObject);
-        if (this.businessNamePrefix == null) {
-          break label1183;
-        }
-        localObject = this.businessNamePrefix.toString();
-        label633:
-        paramParcel.writeString((String)localObject);
-        if (this.mTopicRecommendFeedsInfoByte != null) {
-          break label1191;
-        }
-        paramInt = -1;
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mTopicRecommendFeedsInfoByte);
-        }
-        if (this.mArkAppFeedsInfoBytes != null) {
-          break label1200;
-        }
-        paramInt = -1;
-        label674:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mArkAppFeedsInfoBytes);
-        }
-        paramParcel.writeLong(this.publishUin);
-        paramParcel.writeLong(this.mMergeVideoId);
-        paramParcel.writeInt(this.mVideoCommentCount);
-        paramParcel.writeString(this.proteusItemsData);
-        paramParcel.writeInt(this.mAccountLess);
-        if (this.mVideoArticleSubsText == null) {
-          break label1209;
-        }
-        localObject = this.mVideoArticleSubsText;
-        label744:
-        paramParcel.writeString((String)localObject);
-        if (this.mVideoArticleSubsColor == null) {
-          break label1217;
-        }
-        localObject = this.mVideoArticleSubsColor;
-        label763:
-        paramParcel.writeString((String)localObject);
-        if (this.mVideoAdsJumpUrl == null) {
-          break label1225;
-        }
-        localObject = this.mVideoAdsJumpUrl;
-        paramParcel.writeString((String)localObject);
-        paramParcel.writeInt(this.mVideoAdsJumpType);
-        paramParcel.writeInt(this.mVideoAdsSource);
-        paramParcel.writeString(this.videoReportInfo);
-        if (!this.isTwoItem) {
-          break label1233;
-        }
-        paramInt = 1;
-        label821:
-        paramParcel.writeByte((byte)paramInt);
-        if (!this.isSuperTopic) {
-          break label1238;
-        }
-        paramInt = 1;
-        label836:
-        paramParcel.writeByte((byte)paramInt);
-        if (this.mNewPackInfoBytes != null) {
-          break label1243;
-        }
-        paramInt = -1;
-        label851:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mNewPackInfoBytes);
-        }
-        if (this.mRecommendFollowInfoBytes != null) {
-          break label1252;
-        }
-        paramInt = -1;
-        label877:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mRecommendFollowInfoBytes);
-        }
-        paramParcel.writeLong(this.mRecommendFollowId);
-        paramParcel.writeString(this.gifCoverUrl);
-        if (!this.isUseGif) {
-          break label1261;
-        }
-        paramInt = 1;
-        paramParcel.writeByte((byte)paramInt);
-        if (this.mExtraBiuBriefBytes != null) {
-          break label1266;
-        }
-        paramInt = -1;
-        label934:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mExtraBiuBriefBytes);
-        }
-        if (this.mMultiBiuSameListBytes != null) {
-          break label1275;
-        }
-        paramInt = -1;
-        label960:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.mMultiBiuSameListBytes);
-        }
-        paramParcel.writeInt(this.mIsGallery);
-        if (!this.mIsGalleryChannel) {
-          break label1284;
-        }
-        paramInt = j;
-        label995:
-        paramParcel.writeInt(paramInt);
-        if (this.hotWordInfoListBytes != null) {
-          break label1289;
-        }
-        paramInt = i;
-        label1009:
-        paramParcel.writeInt(paramInt);
-        if (paramInt > 0) {
-          paramParcel.writeByteArray(this.hotWordInfoListBytes);
-        }
-        paramParcel.writeInt(this.busiType);
-        if (this.mGWCommonData == null) {
-          break label1298;
-        }
-        localObject = this.mGWCommonData;
-        paramParcel.writeString((String)localObject);
-        if (this.mReportCommonData == null) {
-          break label1306;
-        }
-      }
-    }
-    label389:
-    label540:
-    for (localObject = this.mReportCommonData;; localObject = "")
-    {
-      paramParcel.writeString((String)localObject);
+      paramParcel.writeString(str);
+      writeStringToParcel(this.mVideoVid, paramParcel);
+      paramParcel.writeInt(this.mVideoDuration);
+      paramParcel.writeInt(this.mCommentIconType);
+      writeByteArrayDataToParcel(this.mServerContext, paramParcel);
+      writeByteArrayDataToParcel(this.mCommentInfoBytes, paramParcel);
+      writeByteArrayDataToParcel(this.mPackInfoBytes, paramParcel);
+      paramParcel.writeLong(this.mCircleId);
+      paramParcel.writeString(this.mStrCircleId);
+      writeByteDataToParcel(this.mPUinIsActive, paramParcel);
+      writeByteArrayDataToParcel(this.mSubscribeInfoBytes, paramParcel);
+      paramParcel.writeInt(this.mFeedType);
+      paramParcel.writeLong(this.mFeedId);
+      writeByteArrayDataToParcel(this.mSocialFeedInfoByte, paramParcel);
+      paramParcel.writeString(this.innerUniqueID);
+      paramParcel.writeLong(this.businessId);
+      writeStringToParcel(this.businessName, paramParcel);
+      writeStringToParcel(this.businessUrl, paramParcel);
+      writeStringToParcel(this.businessNamePrefix, paramParcel);
+      writeByteArrayDataToParcel(this.mTopicRecommendFeedsInfoByte, paramParcel);
+      writeByteArrayDataToParcel(this.mArkAppFeedsInfoBytes, paramParcel);
+      paramParcel.writeLong(this.publishUin);
+      paramParcel.writeLong(this.mMergeVideoId);
+      paramParcel.writeInt(this.mVideoCommentCount);
+      paramParcel.writeString(this.proteusItemsData);
+      paramParcel.writeInt(this.mAccountLess);
+      writeStringToParcel(this.mVideoArticleSubsText, paramParcel);
+      writeStringToParcel(this.mVideoArticleSubsColor, paramParcel);
+      writeStringToParcel(this.mVideoAdsJumpUrl, paramParcel);
+      paramParcel.writeInt(this.mVideoAdsJumpType);
+      paramParcel.writeInt(this.mVideoAdsSource);
+      paramParcel.writeString(this.videoReportInfo);
+      writeByteDataToParcel(this.isTwoItem, paramParcel);
+      writeByteDataToParcel(this.isSuperTopic, paramParcel);
+      writeByteArrayDataToParcel(this.mNewPackInfoBytes, paramParcel);
+      writeByteArrayDataToParcel(this.mRecommendFollowInfoBytes, paramParcel);
+      paramParcel.writeLong(this.mRecommendFollowId);
+      paramParcel.writeString(this.gifCoverUrl);
+      writeByteDataToParcel(this.isUseGif, paramParcel);
+      writeByteArrayDataToParcel(this.mExtraBiuBriefBytes, paramParcel);
+      writeByteArrayDataToParcel(this.mMultiBiuSameListBytes, paramParcel);
+      paramParcel.writeInt(this.mIsGallery);
+      writeByteDataToParcel(this.mIsGalleryChannel, paramParcel);
+      writeByteArrayDataToParcel(this.hotWordInfoListBytes, paramParcel);
+      paramParcel.writeInt(this.busiType);
+      writeStringToParcel(this.mGWCommonData, paramParcel);
+      writeStringToParcel(this.mReportCommonData, paramParcel);
       paramParcel.writeInt(this.recommentFlag);
+      writeByteArrayDataToParcel(this.ptsItemDataBytes, paramParcel);
       return;
-      localObject = this.mSinglePicture.toString();
-      break;
-      localObject = "";
-      break;
-      label1101:
-      localObject = "";
-      break label339;
-      label1109:
-      localObject = "";
-      break label358;
-      label1117:
-      paramInt = this.mServerContext.length;
-      break label389;
-      label1126:
-      paramInt = this.mCommentInfoBytes.length;
-      break label415;
-      label1135:
-      paramInt = this.mPackInfoBytes.length;
-      break label441;
-      label1144:
-      paramInt = 0;
-      break label483;
-      label1149:
-      paramInt = this.mSubscribeInfoBytes.length;
-      break label498;
-      paramInt = this.mSocialFeedInfoByte.length;
-      break label540;
-      localObject = "";
-      break label589;
-      localObject = "";
-      break label611;
-      label1183:
-      localObject = "";
-      break label633;
-      label1191:
-      paramInt = this.mTopicRecommendFeedsInfoByte.length;
-      break label648;
-      label1200:
-      paramInt = this.mArkAppFeedsInfoBytes.length;
-      break label674;
-      label1209:
-      localObject = "";
-      break label744;
-      label1217:
-      localObject = "";
-      break label763;
-      label1225:
-      localObject = "";
-      break label782;
-      label1233:
-      paramInt = 0;
-      break label821;
-      label1238:
-      paramInt = 0;
-      break label836;
-      label1243:
-      paramInt = this.mNewPackInfoBytes.length;
-      break label851;
-      label1252:
-      paramInt = this.mRecommendFollowInfoBytes.length;
-      break label877;
-      label1261:
-      paramInt = 0;
-      break label919;
-      label1266:
-      paramInt = this.mExtraBiuBriefBytes.length;
-      break label934;
-      label1275:
-      paramInt = this.mMultiBiuSameListBytes.length;
-      break label960;
-      paramInt = 0;
-      break label995;
-      paramInt = this.hotWordInfoListBytes.length;
-      break label1009;
-      localObject = "";
-      break label1047;
     }
   }
 }

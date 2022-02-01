@@ -1,49 +1,108 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.2;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajsw
-  implements baug
+public class ajsw
+  implements bkhw
 {
-  ajsw(ajsv paramajsv) {}
+  public ajsw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onResp(bavf parambavf)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
-    if (parambavf.jdField_a_of_type_Int != 0) {
-      lek.c("VideoFilterTools", "download file failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
+    if ((!ChatHistoryTroopMemberFragment.c(this.a)) && (paramInt >= 5)) {}
+    for (int i = paramInt + 1;; i = paramInt)
     {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
-      {
-        lek.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-        return;
-      }
-      lek.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = ajsv.b;
-        bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
-        bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-        if ((ajsv.a(this.a).decrementAndGet() == 0) && (ajsv.a(this.a) != null))
-        {
-          ajsv.a(this.a).a(true);
-          return;
+      if (this.a.h) {
+        if (paramInt == 0) {
+          this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
         }
       }
-      catch (IOException parambavf)
+      for (;;)
       {
-        parambavf.printStackTrace();
-        lek.c("VideoFilterTools", "unzip file failed.");
+        if ((this.a.jdField_a_of_type_Bkho != null) && (this.a.jdField_a_of_type_Bkho.isShowing())) {
+          this.a.jdField_a_of_type_Bkho.dismiss();
+        }
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.history.BaseFragment", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.c);
+          continue;
+          if (this.a.jdField_d_of_type_Int == 9) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.f = true;
+              this.a.u = "";
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              if (this.a.jdField_a_of_type_Ajtv != null) {
+                this.a.jdField_a_of_type_Ajtv.a();
+              }
+              bcst.b(this.a.getActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.c, this.a.o, "", "");
+              break;
+            }
+          } else {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.A();
+              break;
+            case 1: 
+              if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+              {
+                paramView = new Intent(this.a.getActivity(), SelectMemberActivity.class);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("group_uin", this.a.c);
+                paramView.putExtra("param_groupcode", this.a.jdField_b_of_type_JavaLangString);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("param_subtype", 4);
+                paramView.putExtra("param_entrance", 30);
+                paramView.putExtra("param_max", 30);
+                paramView.putExtra("param_exit_animation", 3);
+                this.a.startActivity(paramView);
+                this.a.getActivity().overridePendingTransition(2130771997, 0);
+                bcst.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.c, "", "", "");
+              }
+              break;
+            case 2: 
+              this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
+              break;
+            case 3: 
+              this.a.g = true;
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              ChatHistoryTroopMemberFragment.a(this.a);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131368949));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(anni.a(2131700419));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ajsx(this));
+              if (this.a.jdField_a_of_type_Ajtv != null) {
+                this.a.jdField_a_of_type_Ajtv.a();
+              }
+              paramView = this.a.o;
+              this.a.a("Clk_del", paramView, "");
+            }
+          }
+        }
       }
     }
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

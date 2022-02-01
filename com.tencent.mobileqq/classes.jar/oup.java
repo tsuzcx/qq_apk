@@ -1,10 +1,20 @@
-public abstract interface oup
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+
+public class oup
+  implements biaw
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3);
+  public oup(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  
+  public void a()
+  {
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oup
  * JD-Core Version:    0.7.0.1
  */

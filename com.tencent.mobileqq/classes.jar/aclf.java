@@ -1,23 +1,29 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aclf
-  implements QQPermissionCallback
+public class aclf
+  implements View.OnClickListener
 {
-  public aclf(DialogInterface.OnClickListener paramOnClickListener) {}
+  public aclf(GdtBannerAd paramGdtBannerAd, acli paramacli) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 0);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 1);
+    acqy.b("GdtBannerAd", "getView().onClick");
+    GdtHandler.Params localParams = GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
+    acli localacli = this.jdField_a_of_type_Acli;
+    localParams.a = acli.a.onClick(paramView);
+    if (GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
+      GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+    }
+    GdtHandler.a(GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+    GdtBannerAd.access$100(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

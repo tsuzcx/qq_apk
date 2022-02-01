@@ -1,18 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bngq
-  implements DialogInterface.OnClickListener
+public class bngq
+  implements Animator.AnimatorListener
 {
-  bngq(bngl parambngl) {}
+  public bngq(AECropperImageView paramAECropperImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    bngl.a(this.a).q = true;
-    bngl.b(this.a).setSelected(true);
-    bngl.a(this.a).d(3002);
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
+    }
   }
 }
 

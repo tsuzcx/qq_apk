@@ -1,6 +1,9 @@
-public abstract interface bcpp
+import com.tencent.qq.effect.engine.QEffectData;
+
+class bcpp
+  extends QEffectData
 {
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  bcpp(bcpo parambcpo) {}
 }
 
 

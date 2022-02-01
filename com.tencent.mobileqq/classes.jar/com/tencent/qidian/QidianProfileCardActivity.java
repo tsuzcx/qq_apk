@@ -1,17 +1,13 @@
 package com.tencent.qidian;
 
-import aepi;
-import alof;
-import alpk;
-import alpq;
-import altm;
-import alto;
-import alud;
+import Override;
+import afur;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -23,6 +19,7 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -34,56 +31,60 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aoae;
-import asta;
-import awgf;
-import awgg;
-import awor;
-import awqt;
-import azmk;
-import bcpx;
-import bdbk;
-import bddf;
-import bdeu;
-import bdgc;
-import bdgm;
-import bdhj;
-import bdjz;
-import bety;
-import beuj;
-import bfyg;
-import bfyh;
-import bfyk;
-import bfyl;
-import bfyo;
-import bfyp;
-import bfyq;
-import bfyr;
-import bfys;
-import bfyt;
-import bfyu;
-import bfyv;
-import bfyw;
-import bfyx;
-import bfyy;
-import bfyz;
-import bfza;
-import bfzb;
-import bfzc;
-import bfzd;
-import bfze;
-import bfzf;
-import bfzi;
-import bfzo;
-import bfzp;
-import bfzt;
-import bfzu;
-import bfzv;
-import bfzw;
-import bfzx;
-import bhtl;
-import bhuf;
-import bhus;
+import anhk;
+import anip;
+import aniz;
+import anmu;
+import anmw;
+import anni;
+import aoch;
+import aqaj;
+import avaj;
+import azde;
+import azfe;
+import bcnj;
+import bfup;
+import bghy;
+import bgjw;
+import bglf;
+import bglp;
+import bgmo;
+import bgpa;
+import biau;
+import bibh;
+import bjfs;
+import bjft;
+import bjfw;
+import bjfx;
+import bjga;
+import bjgb;
+import bjgc;
+import bjgd;
+import bjge;
+import bjgf;
+import bjgg;
+import bjgh;
+import bjgi;
+import bjgj;
+import bjgk;
+import bjgl;
+import bjgm;
+import bjgn;
+import bjgo;
+import bjgp;
+import bjgq;
+import bjgr;
+import bjgu;
+import bjha;
+import bjhb;
+import bjhf;
+import bjhg;
+import bjhh;
+import bjhi;
+import bjhj;
+import bkgu;
+import bkho;
+import bkif;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -92,7 +93,6 @@ import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -102,6 +102,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -110,6 +113,7 @@ import com.tencent.qidian.data.QidianCorpInfo;
 import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qidian.data.QidianProfileUiInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import cooperation.qzone.QzonePluginProxyActivity;
 import java.io.File;
@@ -119,52 +123,52 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import nbn;
-import nbp;
-import ndd;
-import ndv;
-import syb;
+import nkg;
+import nki;
+import nlw;
+import nmp;
+import tzo;
 
 public class QidianProfileCardActivity
   extends ProfileActivity
 {
   public int a;
-  public alpk a;
-  private alpq jdField_a_of_type_Alpq = new bfyr(this);
-  private altm jdField_a_of_type_Altm = new bfyk(this);
-  public alto a;
   Dialog jdField_a_of_type_AndroidAppDialog;
   public Bitmap a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bfyo(this);
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bfyl(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjga(this);
+  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bjfx(this);
   public ImageView a;
   public LinearLayout a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  asta jdField_a_of_type_Asta = new asta("qzone_friendprofile", "com.tencent.mobileqq:qzone", QzonePluginProxyActivity.a());
-  public awqt a;
-  bdjz jdField_a_of_type_Bdjz;
-  public bety a;
-  private beuj jdField_a_of_type_Beuj;
-  bfyg jdField_a_of_type_Bfyg = new bfzd(this);
-  public bfyh a;
-  private bfzi jdField_a_of_type_Bfzi;
-  private bfzo jdField_a_of_type_Bfzo = new bfys(this);
-  private bhuf jdField_a_of_type_Bhuf;
+  public anip a;
+  private aniz jdField_a_of_type_Aniz = new bjgd(this);
+  private anmu jdField_a_of_type_Anmu = new bjfw(this);
+  public anmw a;
+  avaj jdField_a_of_type_Avaj = new avaj("qzone_friendprofile", "com.tencent.mobileqq:qzone", QzonePluginProxyActivity.a());
+  public azfe a;
+  bgpa jdField_a_of_type_Bgpa;
+  public biau a;
+  private bibh jdField_a_of_type_Bibh;
+  bjfs jdField_a_of_type_Bjfs = new bjgp(this);
+  public bjft a;
+  private bjgu jdField_a_of_type_Bjgu;
+  private bjha jdField_a_of_type_Bjha = new bjge(this);
+  private bkho jdField_a_of_type_Bkho;
   public BmqqUserSimpleInfo a;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   private QidianCorpInfo jdField_a_of_type_ComTencentQidianDataQidianCorpInfo;
   public QidianExternalInfo a;
   private QidianProfileUiInfo jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo;
   private String jdField_a_of_type_JavaLangString = "";
-  public ConcurrentHashMap<String, bfzf> a;
-  private nbn jdField_a_of_type_Nbn = new bfyt(this);
+  public ConcurrentHashMap<String, bjgr> a;
+  private nkg jdField_a_of_type_Nkg = new bjgf(this);
   private boolean jdField_a_of_type_Boolean;
   public int b;
   public ImageView b;
   public LinearLayout b;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private bhuf jdField_b_of_type_Bhuf;
+  private bkho jdField_b_of_type_Bkho;
   private String jdField_b_of_type_JavaLangString = "";
   public ConcurrentHashMap<String, Drawable> b;
   private boolean jdField_b_of_type_Boolean;
@@ -180,7 +184,7 @@ public class QidianProfileCardActivity
   
   public QidianProfileCardActivity()
   {
-    this.jdField_a_of_type_Awqt = new awqt();
+    this.jdField_a_of_type_Azfe = new azfe();
     this.jdField_c_of_type_Int = 4;
   }
   
@@ -209,7 +213,7 @@ public class QidianProfileCardActivity
           paramQQAppInterface = paramURLDrawable;
         } while (!paramBoolean);
         return QQAppInterface.a(paramURLDrawable, 50, 50);
-        paramURLDrawable = bdhj.a(paramQQAppInterface);
+        paramURLDrawable = bgmo.a(paramQQAppInterface);
         paramQQAppInterface = paramURLDrawable;
       } while (!paramBoolean);
       return QQAppInterface.a(paramURLDrawable, 50, 50);
@@ -241,35 +245,35 @@ public class QidianProfileCardActivity
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
     View localView = View.inflate(this, paramInt2, null);
-    int i = getResources().getDimensionPixelSize(2131297917);
+    int i = getResources().getDimensionPixelSize(2131297998);
     localView.setVisibility(0);
-    Button localButton = (Button)localView.findViewById(2131379107);
+    Button localButton = (Button)localView.findViewById(2131380031);
     localButton.setText(paramInt1);
     localButton.setOnClickListener(paramOnClickListener);
     localLayoutParams.weight = 1.0F;
     localLayoutParams.rightMargin = i;
     if (this.jdField_a_of_type_Boolean)
     {
-      if (paramInt2 != 2131560720) {
+      if (paramInt2 != 2131560925) {
         break label122;
       }
-      localButton.setBackgroundResource(2130844011);
-      localButton.setTextColor(getResources().getColor(2131166190));
+      localButton.setBackgroundResource(2130844408);
+      localButton.setTextColor(getResources().getColor(2131166261));
     }
     for (;;)
     {
       this.jdField_c_of_type_AndroidWidgetLinearLayout.addView(localView, localLayoutParams);
       return localButton;
       label122:
-      if (paramInt2 == 2131560719)
+      if (paramInt2 == 2131560924)
       {
-        localButton.setBackgroundResource(2130844010);
-        localButton.setTextColor(getResources().getColor(2131166189));
+        localButton.setBackgroundResource(2130844407);
+        localButton.setTextColor(getResources().getColor(2131166260));
       }
     }
   }
   
-  private awor a(int paramInt, String paramString1, String paramString2, String paramString3)
+  private azde a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     switch (paramInt)
     {
@@ -277,27 +281,27 @@ public class QidianProfileCardActivity
     default: 
       return null;
     case 1: 
-      return new awor(52, paramString2);
+      return new azde(52, paramString2);
     case 2: 
-      return new awor(4, paramString2);
+      return new azde(4, paramString2);
     case 3: 
-      return new awor(47, paramString2);
+      return new azde(47, paramString2);
     case 4: 
-      return new awor(48, new String[] { paramString1, paramString2 });
+      return new azde(48, new String[] { paramString1, paramString2 });
     case 7: 
-      return new awor(54, paramString3);
+      return new azde(54, paramString3);
     case 6: 
-      return new awor(75, paramString2);
+      return new azde(75, paramString2);
     case 5: 
-      return new awor(76, paramString3);
+      return new azde(76, paramString3);
     }
-    return new awor(82, paramString3);
+    return new azde(82, paramString3);
   }
   
   private String a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i)) {
-      return this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i)) {
+      return this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i;
     }
     if (this.jdField_c_of_type_Int == 0)
     {
@@ -312,23 +316,23 @@ public class QidianProfileCardActivity
       }
       return this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname;
     }
-    return this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
   }
   
-  private void a(bfzw parambfzw)
+  private void a(bjhi parambjhi)
   {
-    parambfzw = parambfzw.a;
-    if (parambfzw != null)
+    parambjhi = parambjhi.a;
+    if (parambjhi != null)
     {
-      int j = parambfzw.size();
+      int j = parambjhi.size();
       int i = 0;
       if (i < j)
       {
-        bfzx localbfzx = (bfzx)parambfzw.get(i);
+        bjhj localbjhj = (bjhj)parambjhi.get(i);
         if (i == j - 1) {}
         for (boolean bool = true;; bool = false)
         {
-          a(localbfzx, bool);
+          a(localbjhj, bool);
           i += 1;
           break;
         }
@@ -336,10 +340,10 @@ public class QidianProfileCardActivity
     }
   }
   
-  private void a(bfzx parambfzx, boolean paramBoolean)
+  private void a(bjhj parambjhj, boolean paramBoolean)
   {
-    if (parambfzx != null) {
-      switch (parambfzx.jdField_a_of_type_Int)
+    if (parambjhj != null) {
+      switch (parambjhj.jdField_a_of_type_Int)
       {
       }
     }
@@ -349,17 +353,17 @@ public class QidianProfileCardActivity
         j();
       }
       return;
-      b(parambfzx, paramBoolean);
+      b(parambjhj, paramBoolean);
       continue;
       if ((this.jdField_c_of_type_Int != 1) && (this.jdField_c_of_type_Int != 4))
       {
-        c(parambfzx, paramBoolean);
+        c(parambjhj, paramBoolean);
         continue;
         if ((this.jdField_c_of_type_Int != 1) && (this.jdField_c_of_type_Int != 4))
         {
-          d(parambfzx, paramBoolean);
+          d(parambjhj, paramBoolean);
           continue;
-          b(parambfzx, paramBoolean);
+          b(parambjhj, paramBoolean);
         }
       }
     }
@@ -372,29 +376,29 @@ public class QidianProfileCardActivity
   
   private void a(URLDrawable paramURLDrawable, String paramString)
   {
-    bhuf localbhuf = bhuf.c(this);
-    localbhuf.b(2131693487);
-    localbhuf.b(2131693497);
-    localbhuf.b(2131698553);
-    localbhuf.c(2131690648);
-    localbhuf.a(new bfyw(this, localbhuf, paramURLDrawable, paramString));
-    localbhuf.show();
+    bkho localbkho = bkho.c(this);
+    localbkho.b(2131692953);
+    localbkho.b(2131692959);
+    localbkho.b(2131697475);
+    localbkho.c(2131690582);
+    localbkho.a(new bjgi(this, localbkho, paramURLDrawable, paramString));
+    localbkho.show();
   }
   
-  private void b(bfzx parambfzx, boolean paramBoolean)
+  private void b(bjhj parambjhj, boolean paramBoolean)
   {
-    if ((parambfzx.jdField_b_of_type_JavaLangString == null) || ((TextUtils.isEmpty(parambfzx.jdField_b_of_type_JavaLangString.trim())) && (!parambfzx.jdField_a_of_type_JavaLangString.equals(alud.a(2131710137))))) {
+    if ((parambjhj.jdField_b_of_type_JavaLangString == null) || ((TextUtils.isEmpty(parambjhj.jdField_b_of_type_JavaLangString.trim())) && (!parambjhj.jdField_a_of_type_JavaLangString.equals(anni.a(2131708513))))) {
       return;
     }
     QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = parambfzx.jdField_a_of_type_JavaLangString;
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = parambfzx.jdField_b_of_type_JavaLangString;
-    localQidianSimpleProfileItem.jdField_a_of_type_Int = parambfzx.jdField_a_of_type_Int;
-    localQidianSimpleProfileItem.jdField_b_of_type_Int = parambfzx.jdField_b_of_type_Int;
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = parambjhj.jdField_a_of_type_JavaLangString;
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = parambjhj.jdField_b_of_type_JavaLangString;
+    localQidianSimpleProfileItem.jdField_a_of_type_Int = parambjhj.jdField_a_of_type_Int;
+    localQidianSimpleProfileItem.jdField_b_of_type_Int = parambjhj.jdField_b_of_type_Int;
     String str;
-    if (!TextUtils.isEmpty(parambfzx.d))
+    if (!TextUtils.isEmpty(parambjhj.d))
     {
-      str = parambfzx.d;
+      str = parambjhj.d;
       localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = str;
       if (localQidianSimpleProfileItem.jdField_b_of_type_Int == 0) {
         break label161;
@@ -405,11 +409,11 @@ public class QidianProfileCardActivity
     {
       localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool;
       localQidianSimpleProfileItem.jdField_b_of_type_Boolean = paramBoolean;
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = parambfzx.jdField_a_of_type_Boolean;
-      parambfzx = a(localQidianSimpleProfileItem);
-      this.jdField_a_of_type_Bfzi.sendMessage(parambfzx);
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = parambjhj.jdField_a_of_type_Boolean;
+      parambjhj = a(localQidianSimpleProfileItem);
+      this.jdField_a_of_type_Bjgu.sendMessage(parambjhj);
       return;
-      str = parambfzx.jdField_c_of_type_JavaLangString;
+      str = parambjhj.jdField_c_of_type_JavaLangString;
       break;
     }
   }
@@ -421,8 +425,8 @@ public class QidianProfileCardActivity
     for (;;)
     {
       return;
-      new File(alof.bd).mkdirs();
-      str = alof.bd + Utils.Crc64String(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString) + Utils.Crc64String(paramURLDrawable.getURL().toString());
+      new File(anhk.bg).mkdirs();
+      str = anhk.bg + Utils.Crc64String(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString) + Utils.Crc64String(paramURLDrawable.getURL().toString());
       File localFile = new File(str);
       if (!localFile.exists()) {
         try
@@ -435,12 +439,12 @@ public class QidianProfileCardActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131695350), 0).a();
+          QQToast.a(this, getString(2131694327), 0).a();
           return;
         }
       }
     }
-    bdgm.a(this, 230).setTitle(getString(2131719335)).setMessage(getString(2131695343)).setPositiveButton(getString(2131719209), new bfyy(this, paramURLDrawable, str)).setNegativeButton(getString(2131694806), new bfyx(this)).show();
+    bglp.a(this, 230).setTitle(getString(2131717422)).setMessage(getString(2131694323)).setPositiveButton(getString(2131717317), new bjgk(this, paramURLDrawable, str)).setNegativeButton(getString(2131693977), new bjgj(this)).show();
   }
   
   private void b(URLDrawable paramURLDrawable, String paramString)
@@ -458,10 +462,10 @@ public class QidianProfileCardActivity
   
   private boolean b()
   {
-    return bhtl.a(getApplicationContext(), "com.tencent.mm");
+    return bkgu.a(getApplicationContext(), "com.tencent.mm");
   }
   
-  private void c(bfzx parambfzx, boolean paramBoolean)
+  private void c(bjhj parambjhj, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo == null) {}
     do
@@ -473,28 +477,28 @@ public class QidianProfileCardActivity
     Object localObject = ((List)localObject).iterator();
     if (((Iterator)localObject).hasNext())
     {
-      bfzu localbfzu = (bfzu)((Iterator)localObject).next();
+      bjhg localbjhg = (bjhg)((Iterator)localObject).next();
       QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = localbfzu.jdField_a_of_type_Int;
-      localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = localbfzu.jdField_a_of_type_JavaLangString;
-      localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = localbfzu.jdField_b_of_type_JavaLangString.trim();
-      if (localbfzu.jdField_b_of_type_Int == 1) {}
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = localbjhg.jdField_a_of_type_Int;
+      localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = localbjhg.jdField_a_of_type_JavaLangString;
+      localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = localbjhg.jdField_b_of_type_JavaLangString.trim();
+      if (localbjhg.jdField_b_of_type_Int == 1) {}
       for (boolean bool = true;; bool = false)
       {
         localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool;
-        localQidianCompoundProfileItem.jdField_c_of_type_JavaLangString = parambfzx.jdField_a_of_type_JavaLangString;
+        localQidianCompoundProfileItem.jdField_c_of_type_JavaLangString = parambjhj.jdField_a_of_type_JavaLangString;
         localQidianCompoundProfileItem.jdField_b_of_type_Boolean = paramBoolean;
-        localQidianCompoundProfileItem.d = localbfzu.jdField_c_of_type_JavaLangString;
-        localQidianCompoundProfileItem.e = localbfzu.d;
+        localQidianCompoundProfileItem.d = localbjhg.jdField_c_of_type_JavaLangString;
+        localQidianCompoundProfileItem.e = localbjhg.d;
         localArrayList.add(localQidianCompoundProfileItem);
         break;
       }
     }
-    parambfzx = a(localArrayList);
-    this.jdField_a_of_type_Bfzi.sendMessage(parambfzx);
+    parambjhj = a(localArrayList);
+    this.jdField_a_of_type_Bjgu.sendMessage(parambjhj);
   }
   
-  private void d(bfzx parambfzx, boolean paramBoolean)
+  private void d(bjhj parambjhj, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo == null) {}
     do
@@ -506,48 +510,48 @@ public class QidianProfileCardActivity
     Object localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bfzt localbfzt = (bfzt)((Iterator)localObject).next();
+      bjhf localbjhf = (bjhf)((Iterator)localObject).next();
       QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = parambfzx.jdField_a_of_type_Int;
-      localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = String.valueOf(localbfzt.jdField_a_of_type_Long);
-      localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = localbfzt.jdField_a_of_type_JavaLangString.trim();
-      localQidianCompoundProfileItem.jdField_c_of_type_JavaLangString = parambfzx.jdField_a_of_type_JavaLangString;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = parambjhj.jdField_a_of_type_Int;
+      localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = String.valueOf(localbjhf.jdField_a_of_type_Long);
+      localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = localbjhf.jdField_a_of_type_JavaLangString.trim();
+      localQidianCompoundProfileItem.jdField_c_of_type_JavaLangString = parambjhj.jdField_a_of_type_JavaLangString;
       localQidianCompoundProfileItem.jdField_b_of_type_Boolean = paramBoolean;
       localArrayList.add(localQidianCompoundProfileItem);
     }
-    parambfzx = a(localArrayList);
-    this.jdField_a_of_type_Bfzi.sendMessage(parambfzx);
+    parambjhj = a(localArrayList);
+    this.jdField_a_of_type_Bjgu.sendMessage(parambjhj);
   }
   
   private void e(int paramInt)
   {
     if (paramInt == 4) {
-      a(2131695780);
+      a(2131694663);
     }
-    if (this.jdField_a_of_type_Bfyh.a(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true)) {
-      this.jdField_a_of_type_Bfyh.a(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
+    if (this.jdField_a_of_type_Bjft.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true)) {
+      this.jdField_a_of_type_Bjft.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
     }
     for (;;)
     {
       if (paramInt == 6) {
-        ((bfzp)this.app.a(85)).c(Long.parseLong(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+        ((bjhb)this.app.a(85)).c(Long.parseLong(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
       }
       return;
-      if (this.jdField_a_of_type_Bfyh.b(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false))
+      if (this.jdField_a_of_type_Bjft.b(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false))
       {
-        BmqqAccountType localBmqqAccountType = new BmqqAccountType(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 1);
-        this.jdField_a_of_type_Bfyh.b(this, localBmqqAccountType);
+        BmqqAccountType localBmqqAccountType = new BmqqAccountType(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 1);
+        this.jdField_a_of_type_Bjft.b(this, localBmqqAccountType);
       }
       else
       {
-        this.jdField_a_of_type_Bfyh.b(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bjft.b(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
       }
     }
   }
   
   private void f(int paramInt)
   {
-    this.jdField_a_of_type_Bfzi.postDelayed(new QidianProfileCardActivity.3(this, paramInt), 0L);
+    this.jdField_a_of_type_Bjgu.postDelayed(new QidianProfileCardActivity.3(this, paramInt), 0L);
   }
   
   private void g()
@@ -561,8 +565,8 @@ public class QidianProfileCardActivity
     this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = null;
     this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo = null;
     this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo = null;
-    this.jdField_a_of_type_Bhuf = null;
-    this.jdField_b_of_type_Bhuf = null;
+    this.jdField_a_of_type_Bkho = null;
+    this.jdField_b_of_type_Bkho = null;
     this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = null;
   }
   
@@ -642,29 +646,29 @@ public class QidianProfileCardActivity
   {
     Resources localResources = getResources();
     DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
-    this.jdField_a_of_type_Int = (localResources.getDimensionPixelSize(2131298914) - (int)(localDisplayMetrics.density * 66.0F));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363759));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367565));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367537));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bfyz(this));
-    if (!azmk.b()) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844007));
+    this.jdField_a_of_type_Int = (localResources.getDimensionPixelSize(2131298998) - (int)(localDisplayMetrics.density * 66.0F));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363965));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367877));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367848));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bjgl(this));
+    if (!bcnj.b()) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844404));
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379522));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364736));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368595));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131364645));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380457));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364961));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368918));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131364860));
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.mScrollFlag = 1;
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnScrollChangedListener(new bfza(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370977));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368989));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376764));
-    findViewById(2131376780).setOnClickListener(new bfzb(this));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369390));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new bfzc(this));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375841));
-    this.jdField_d_of_type_AndroidWidgetImageView.setTag(new awor(53, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnScrollChangedListener(new bjgm(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371539));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369372));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377575));
+    findViewById(2131377591).setOnClickListener(new bjgn(this));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369783));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new bjgo(this));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376575));
+    this.jdField_d_of_type_AndroidWidgetImageView.setTag(new azde(53, null));
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     b();
   }
@@ -682,7 +686,7 @@ public class QidianProfileCardActivity
     else {
       while (localIterator.hasNext())
       {
-        a((bfzw)localIterator.next());
+        a((bjhi)localIterator.next());
         continue;
         if ((paramInt == 0) || (paramInt == 2)) {
           i();
@@ -693,72 +697,72 @@ public class QidianProfileCardActivity
   
   private void h(String paramString)
   {
-    this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i = paramString;
-    FriendProfileCardActivity.a(this.jdField_a_of_type_Awqt, 4, paramString);
-    FriendProfileCardActivity.b(this.jdField_a_of_type_Awqt);
+    this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i = paramString;
+    FriendProfileCardActivity.a(this.jdField_a_of_type_Azfe, 4, paramString);
+    FriendProfileCardActivity.a(this.jdField_a_of_type_Azfe);
     paramString = a();
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
   private void i()
   {
-    bfzw localbfzw;
-    bfzx localbfzx;
+    bjhi localbjhi;
+    bjhj localbjhj;
     if (this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo != null)
     {
-      localbfzw = new bfzw();
-      localbfzw.a = new ArrayList(5);
-      new bfzx();
-      localbfzx = new bfzx();
-      localbfzx.jdField_a_of_type_Int = 1;
-      localbfzx.jdField_b_of_type_Int = 0;
-      localbfzx.jdField_a_of_type_JavaLangString = alud.a(2131710144);
-      localbfzx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-      localbfzw.a.add(localbfzx);
-      localbfzx = new bfzx();
-      localbfzx.jdField_a_of_type_Int = 1;
-      localbfzx.jdField_b_of_type_Int = 2;
-      localbfzx.jdField_a_of_type_JavaLangString = getResources().getString(2131698395);
-      localbfzx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMobileNum;
-      localbfzx.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMobileNum;
-      localbfzw.a.add(localbfzx);
-      localbfzx = new bfzx();
-      localbfzx.jdField_a_of_type_Int = 1;
-      localbfzx.jdField_b_of_type_Int = 1;
-      localbfzx.jdField_a_of_type_JavaLangString = getResources().getString(2131720581);
-      localbfzx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqTelphone;
-      localbfzx.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqTelphone;
-      localbfzw.a.add(localbfzx);
-      localbfzx = new bfzx();
-      localbfzx.jdField_a_of_type_Int = 1;
-      localbfzx.jdField_b_of_type_Int = 3;
-      localbfzx.jdField_a_of_type_JavaLangString = getResources().getString(2131694184);
-      localbfzx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqEmail;
-      localbfzx.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqEmail;
-      localbfzw.a.add(localbfzx);
-      localbfzx = new bfzx();
-      localbfzx.jdField_a_of_type_Int = 1;
-      localbfzx.jdField_a_of_type_JavaLangString = getResources().getString(2131695527);
-      localbfzx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqCompany;
-      if ((!nbp.b(getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqUin)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin)) || (!nbp.a(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin))) {
+      localbjhi = new bjhi();
+      localbjhi.a = new ArrayList(5);
+      new bjhj();
+      localbjhj = new bjhj();
+      localbjhj.jdField_a_of_type_Int = 1;
+      localbjhj.jdField_b_of_type_Int = 0;
+      localbjhj.jdField_a_of_type_JavaLangString = anni.a(2131708520);
+      localbjhj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+      localbjhi.a.add(localbjhj);
+      localbjhj = new bjhj();
+      localbjhj.jdField_a_of_type_Int = 1;
+      localbjhj.jdField_b_of_type_Int = 2;
+      localbjhj.jdField_a_of_type_JavaLangString = getResources().getString(2131697279);
+      localbjhj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMobileNum;
+      localbjhj.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMobileNum;
+      localbjhi.a.add(localbjhj);
+      localbjhj = new bjhj();
+      localbjhj.jdField_a_of_type_Int = 1;
+      localbjhj.jdField_b_of_type_Int = 1;
+      localbjhj.jdField_a_of_type_JavaLangString = getResources().getString(2131718386);
+      localbjhj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqTelphone;
+      localbjhj.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqTelphone;
+      localbjhi.a.add(localbjhj);
+      localbjhj = new bjhj();
+      localbjhj.jdField_a_of_type_Int = 1;
+      localbjhj.jdField_b_of_type_Int = 3;
+      localbjhj.jdField_a_of_type_JavaLangString = getResources().getString(2131693453);
+      localbjhj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqEmail;
+      localbjhj.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqEmail;
+      localbjhi.a.add(localbjhj);
+      localbjhj = new bjhj();
+      localbjhj.jdField_a_of_type_Int = 1;
+      localbjhj.jdField_a_of_type_JavaLangString = getResources().getString(2131694435);
+      localbjhj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqCompany;
+      if ((!nki.b(getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqUin)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin)) || (!nki.a(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin))) {
         break label428;
       }
-      localbfzx.jdField_b_of_type_Int = 7;
-      localbfzx.d = ("mqqwpa://card/show_pslcard?card_type=crm&uin=" + this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin);
+      localbjhj.jdField_b_of_type_Int = 7;
+      localbjhj.d = ("mqqwpa://card/show_pslcard?card_type=crm&uin=" + this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqMasterUin);
     }
-    for (localbfzx.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.isCertified();; localbfzx.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.isCertified())
+    for (localbjhj.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.isCertified();; localbjhj.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.isCertified())
     {
-      localbfzw.a.add(localbfzx);
-      a(localbfzw);
+      localbjhi.a.add(localbjhj);
+      a(localbjhi);
       return;
       label428:
-      localbfzx.jdField_b_of_type_Int = 0;
+      localbjhj.jdField_b_of_type_Int = 0;
     }
   }
   
   private void i(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Alto == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Anmw == null)) {
       return;
     }
     ThreadManager.post(new QidianProfileCardActivity.2(this, paramString), 8, null, true);
@@ -766,7 +770,7 @@ public class QidianProfileCardActivity
   
   private void j()
   {
-    this.jdField_a_of_type_Bfzi.post(new QidianProfileCardActivity.8(this));
+    this.jdField_a_of_type_Bjgu.post(new QidianProfileCardActivity.8(this));
   }
   
   private void j(String paramString)
@@ -776,7 +780,7 @@ public class QidianProfileCardActivity
     }
     String str = paramString;
     if (!paramString.startsWith("http")) {
-      str = "http://" + paramString;
+      str = "https://" + paramString;
     }
     paramString = new Intent(this, QQBrowserActivity.class);
     paramString.putExtra("url", str);
@@ -804,7 +808,7 @@ public class QidianProfileCardActivity
       startActivity(paramString);
       return;
     }
-    j("http://weixin.qq.com/d");
+    j("https://weixin.qq.com/d");
   }
   
   public Drawable a(URLImageView paramURLImageView, String paramString)
@@ -819,7 +823,7 @@ public class QidianProfileCardActivity
     {
       URLDrawable localURLDrawable1 = URLDrawable.getDrawable(paramString);
       if ((localURLDrawable1 == null) || (localURLDrawable1.getStatus() == 2)) {
-        return bdhj.b();
+        return bgmo.b();
       }
     }
     catch (Exception localException)
@@ -834,18 +838,18 @@ public class QidianProfileCardActivity
       if (localURLDrawable2.getStatus() == 1)
       {
         paramURLImageView = this.app;
-        if (!azmk.b()) {}
+        if (!bcnj.b()) {}
         for (bool = true;; bool = false) {
           return new BitmapDrawable(a(paramURLImageView, localURLDrawable2, bool));
         }
       }
       localQQAppInterface = this.app;
-      localDrawable = bdhj.b();
-      if (azmk.b()) {}
+      localDrawable = bgmo.b();
+      if (bcnj.b()) {}
     }
     for (boolean bool = true;; bool = false)
     {
-      paramURLImageView.setURLDrawableDownListener(new bfze(this, localQQAppInterface, paramURLImageView, paramString, localDrawable, bool));
+      paramURLImageView.setURLDrawableDownListener(new bjgq(this, localQQAppInterface, paramURLImageView, paramString, localDrawable, bool));
       return localURLDrawable2;
     }
   }
@@ -859,21 +863,21 @@ public class QidianProfileCardActivity
     ImageView localImageView;
     label154:
     int i;
-    if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710133)))
+    if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708509)))
     {
-      localObject1 = (RelativeLayout)getLayoutInflater().inflate(2131560714, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
-      Object localObject5 = (ImageView)((RelativeLayout)localObject1).findViewById(2131369363);
-      localObject2 = (TextView)((RelativeLayout)localObject1).findViewById(2131370422);
-      localObject3 = (TextView)((RelativeLayout)localObject1).findViewById(2131363426);
-      localObject4 = (ImageView)((RelativeLayout)localObject1).findViewById(2131375814);
-      localImageView = (ImageView)((RelativeLayout)localObject1).findViewById(2131370420);
-      ((ImageView)localObject5).setImageResource(2130844013);
+      localObject1 = (RelativeLayout)getLayoutInflater().inflate(2131560919, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+      Object localObject5 = (ImageView)((RelativeLayout)localObject1).findViewById(2131369754);
+      localObject2 = (TextView)((RelativeLayout)localObject1).findViewById(2131370865);
+      localObject3 = (TextView)((RelativeLayout)localObject1).findViewById(2131363620);
+      localObject4 = (ImageView)((RelativeLayout)localObject1).findViewById(2131376545);
+      localImageView = (ImageView)((RelativeLayout)localObject1).findViewById(2131370863);
+      ((ImageView)localObject5).setImageResource(2130844410);
       if (this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo != null)
       {
         localObject5 = this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo.mConfigGroupInfos.iterator();
         if (((Iterator)localObject5).hasNext())
         {
-          Iterator localIterator = ((bfzw)((Iterator)localObject5).next()).a.iterator();
+          Iterator localIterator = ((bjhi)((Iterator)localObject5).next()).a.iterator();
           label427:
           label430:
           for (;;)
@@ -881,14 +885,14 @@ public class QidianProfileCardActivity
             Object localObject6;
             if (localIterator.hasNext())
             {
-              localObject6 = (bfzx)localIterator.next();
-              if ((!((bfzx)localObject6).jdField_a_of_type_JavaLangString.equals(alud.a(2131710130))) || (((bfzx)localObject6).jdField_a_of_type_Bfzv == null)) {
+              localObject6 = (bjhj)localIterator.next();
+              if ((!((bjhj)localObject6).jdField_a_of_type_JavaLangString.equals(anni.a(2131708506))) || (((bjhj)localObject6).jdField_a_of_type_Bjhh == null)) {
                 continue;
               }
-              ((TextView)localObject2).setText(((bfzx)localObject6).jdField_a_of_type_Bfzv.jdField_a_of_type_JavaLangString);
-              ((TextView)localObject3).setText(((bfzx)localObject6).jdField_a_of_type_Bfzv.jdField_c_of_type_JavaLangString);
-              ((RelativeLayout)localObject1).setTag(a(paramQidianSimpleProfileItem.jdField_b_of_type_Int, paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString, ((bfzx)localObject6).jdField_a_of_type_Bfzv.d, paramQidianSimpleProfileItem.jdField_c_of_type_JavaLangString));
-              this.jdField_b_of_type_JavaLangString = ((bfzx)localObject6).jdField_a_of_type_Bfzv.d;
+              ((TextView)localObject2).setText(((bjhj)localObject6).jdField_a_of_type_Bjhh.jdField_a_of_type_JavaLangString);
+              ((TextView)localObject3).setText(((bjhj)localObject6).jdField_a_of_type_Bjhh.jdField_c_of_type_JavaLangString);
+              ((RelativeLayout)localObject1).setTag(a(paramQidianSimpleProfileItem.jdField_b_of_type_Int, paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString, ((bjhj)localObject6).jdField_a_of_type_Bjhh.d, paramQidianSimpleProfileItem.jdField_c_of_type_JavaLangString));
+              this.jdField_b_of_type_JavaLangString = ((bjhj)localObject6).jdField_a_of_type_Bjhh.d;
               if (this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo == null) {
                 continue;
               }
@@ -898,12 +902,12 @@ public class QidianProfileCardActivity
             }
             for (i = 1;; i = 0)
             {
-              if ((i == 0) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.verify_url)) || (!ndd.a(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.verify_url))) {
+              if ((i == 0) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.verify_url)) || (!nlw.a(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.verify_url))) {
                 break label430;
               }
               localObject6 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject6).mLoadingDrawable = getResources().getDrawable(2130844008);
-              ((URLDrawable.URLDrawableOptions)localObject6).mFailedDrawable = getResources().getDrawable(2130844008);
+              ((URLDrawable.URLDrawableOptions)localObject6).mLoadingDrawable = getResources().getDrawable(2130844405);
+              ((URLDrawable.URLDrawableOptions)localObject6).mFailedDrawable = getResources().getDrawable(2130844405);
               ((URLDrawable.URLDrawableOptions)localObject6).mPlayGifImage = false;
               ((URLDrawable.URLDrawableOptions)localObject6).mGifRoundCorner = 0.0F;
               ((URLDrawable.URLDrawableOptions)localObject6).mRequestWidth = 20;
@@ -935,15 +939,15 @@ public class QidianProfileCardActivity
       ((ImageView)localObject4).setVisibility(0);
       return localObject1;
     }
-    if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710127)))
+    if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708503)))
     {
-      i = 2130844019;
+      i = 2130844416;
       label509:
-      localObject2 = (RelativeLayout)super.getLayoutInflater().inflate(2131560718, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
-      localObject1 = (ImageView)((RelativeLayout)localObject2).findViewById(2131369363);
-      localObject3 = (TextView)((RelativeLayout)localObject2).findViewById(2131370422);
-      localObject4 = (ImageView)((RelativeLayout)localObject2).findViewById(2131375814);
-      localImageView = (ImageView)((RelativeLayout)localObject2).findViewById(2131370420);
+      localObject2 = (RelativeLayout)super.getLayoutInflater().inflate(2131560923, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+      localObject1 = (ImageView)((RelativeLayout)localObject2).findViewById(2131369754);
+      localObject3 = (TextView)((RelativeLayout)localObject2).findViewById(2131370865);
+      localObject4 = (ImageView)((RelativeLayout)localObject2).findViewById(2131376545);
+      localImageView = (ImageView)((RelativeLayout)localObject2).findViewById(2131370863);
       ((TextView)localObject3).setText(paramQidianSimpleProfileItem.jdField_b_of_type_JavaLangString);
       if (paramQidianSimpleProfileItem.jdField_a_of_type_Boolean) {
         break label1018;
@@ -962,7 +966,7 @@ public class QidianProfileCardActivity
     {
       ((ImageView)localObject1).setImageResource(i);
       localObject1 = localObject2;
-      if (!paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710138))) {
+      if (!paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708514))) {
         break;
       }
       localObject1 = localObject2;
@@ -976,59 +980,59 @@ public class QidianProfileCardActivity
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = ((bfzw)((Iterator)localObject3).next()).a.iterator();
+        localObject1 = ((bjhi)((Iterator)localObject3).next()).a.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject4 = (bfzx)((Iterator)localObject1).next();
-          if (((bfzx)localObject4).jdField_a_of_type_JavaLangString.equals(alud.a(2131710134))) {
-            ((RelativeLayout)localObject2).setTag(a(paramQidianSimpleProfileItem.jdField_b_of_type_Int, paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString, paramQidianSimpleProfileItem.jdField_b_of_type_JavaLangString, ((bfzx)localObject4).f + "|" + ((bfzx)localObject4).g));
+          localObject4 = (bjhj)((Iterator)localObject1).next();
+          if (((bjhj)localObject4).jdField_a_of_type_JavaLangString.equals(anni.a(2131708510))) {
+            ((RelativeLayout)localObject2).setTag(a(paramQidianSimpleProfileItem.jdField_b_of_type_Int, paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString, paramQidianSimpleProfileItem.jdField_b_of_type_JavaLangString, ((bjhj)localObject4).f + "|" + ((bjhj)localObject4).g));
           }
         }
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710129)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708505)))
       {
-        i = 2130844017;
+        i = 2130844414;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710131)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708507)))
       {
-        i = 2130844015;
+        i = 2130844412;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710139)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708515)))
       {
-        i = 2130845359;
+        i = 2130845756;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710128)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708504)))
       {
-        i = 2130844012;
+        i = 2130844409;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710135)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708511)))
       {
-        i = 2130844016;
+        i = 2130844413;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710142)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708518)))
       {
-        i = 2130844013;
+        i = 2130844410;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710132)))
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708508)))
       {
-        i = 2130844018;
+        i = 2130844415;
         break label509;
       }
-      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(alud.a(2131710141))) {
+      if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals(anni.a(2131708517))) {
         return null;
       }
       if (paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString.equals("QQ空间"))
       {
-        i = 2130844020;
+        i = 2130844417;
         break label509;
       }
-      i = 2130844014;
+      i = 2130844411;
       break label509;
       label1018:
       ((RelativeLayout)localObject2).setTag(a(paramQidianSimpleProfileItem.jdField_b_of_type_Int, paramQidianSimpleProfileItem.jdField_a_of_type_JavaLangString, paramQidianSimpleProfileItem.jdField_b_of_type_JavaLangString, paramQidianSimpleProfileItem.jdField_c_of_type_JavaLangString));
@@ -1054,9 +1058,9 @@ public class QidianProfileCardActivity
       do
       {
         return localObject1;
-        localRelativeLayout = (RelativeLayout)super.getLayoutInflater().inflate(2131560713, null);
-        localObject1 = (TextView)localRelativeLayout.findViewById(2131377606);
-        localLinearLayout = (LinearLayout)localRelativeLayout.findViewById(2131368482);
+        localRelativeLayout = (RelativeLayout)super.getLayoutInflater().inflate(2131560918, null);
+        localObject1 = (TextView)localRelativeLayout.findViewById(2131378445);
+        localLinearLayout = (LinearLayout)localRelativeLayout.findViewById(2131368790);
         ((TextView)localObject1).setText(((QidianProfileCardActivity.QidianCompoundProfileItem)paramList.get(0)).jdField_c_of_type_JavaLangString);
         i = 0;
         localObject1 = localRelativeLayout;
@@ -1064,24 +1068,24 @@ public class QidianProfileCardActivity
       localObject1 = localRelativeLayout;
     } while (i >= 2);
     Object localObject2 = (QidianProfileCardActivity.QidianCompoundProfileItem)paramList.get(i);
-    Object localObject1 = (LinearLayout)super.getLayoutInflater().inflate(2131560712, null);
-    URLImageView localURLImageView = (URLImageView)((LinearLayout)localObject1).findViewById(2131367819);
-    TextView localTextView1 = (TextView)((LinearLayout)localObject1).findViewById(2131370977);
-    ImageView localImageView = (ImageView)((LinearLayout)localObject1).findViewById(2131364085);
-    TextView localTextView2 = (TextView)((LinearLayout)localObject1).findViewById(2131365104);
+    Object localObject1 = (LinearLayout)super.getLayoutInflater().inflate(2131560917, null);
+    URLImageView localURLImageView = (URLImageView)((LinearLayout)localObject1).findViewById(2131368138);
+    TextView localTextView1 = (TextView)((LinearLayout)localObject1).findViewById(2131371539);
+    ImageView localImageView = (ImageView)((LinearLayout)localObject1).findViewById(2131364290);
+    TextView localTextView2 = (TextView)((LinearLayout)localObject1).findViewById(2131365344);
     localURLImageView.post(new QidianProfileCardActivity.10(this, (QidianProfileCardActivity.QidianCompoundProfileItem)localObject2, localURLImageView));
     localTextView1.setText(((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_b_of_type_JavaLangString);
     ((LinearLayout)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Int == 0)
     {
-      localTextView2.setText(2131698559);
-      ((LinearLayout)localObject1).setTag(new awor(49, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_JavaLangString));
+      localTextView2.setText(2131697481);
+      ((LinearLayout)localObject1).setTag(new azde(49, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_JavaLangString));
       label243:
       if ((((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Int != 0) || (!((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Boolean)) {
         break label385;
       }
       localImageView.setVisibility(0);
-      localImageView.setBackgroundResource(2130842290);
+      localImageView.setBackgroundResource(2130842600);
     }
     for (;;)
     {
@@ -1094,18 +1098,18 @@ public class QidianProfileCardActivity
       break;
       if (((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Int == 1)
       {
-        localTextView2.setText(2131698560);
-        ((LinearLayout)localObject1).setTag(new awor(50, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).e));
+        localTextView2.setText(2131697482);
+        ((LinearLayout)localObject1).setTag(new azde(50, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).e));
         break label243;
       }
       localTextView2.setText(((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_JavaLangString);
-      ((LinearLayout)localObject1).setTag(new awor(51, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_JavaLangString));
+      ((LinearLayout)localObject1).setTag(new azde(51, ((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_JavaLangString));
       break label243;
       label385:
       if ((((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Int == 1) && (((QidianProfileCardActivity.QidianCompoundProfileItem)localObject2).jdField_a_of_type_Boolean))
       {
         localImageView.setVisibility(0);
-        localImageView.setBackgroundResource(2130844037);
+        localImageView.setBackgroundResource(2130844434);
       }
       else
       {
@@ -1116,27 +1120,27 @@ public class QidianProfileCardActivity
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this, getResources().getDimensionPixelSize(2131298914));
+    if (this.jdField_a_of_type_Biau == null) {
+      this.jdField_a_of_type_Biau = new biau(this, getResources().getDimensionPixelSize(2131298998));
     }
-    this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_Bety.c(paramInt);
-    this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau.setCanceledOnTouchOutside(true);
+    this.jdField_a_of_type_Biau.c(paramInt);
+    this.jdField_a_of_type_Biau.show();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Beuj == null) {
-      this.jdField_a_of_type_Beuj = new beuj(this);
+    if (this.jdField_a_of_type_Bibh == null) {
+      this.jdField_a_of_type_Bibh = new bibh(this);
     }
-    this.jdField_a_of_type_Beuj.a(paramInt1, getTitleBarHeight(), 0, paramInt2);
+    this.jdField_a_of_type_Bibh.a(paramInt1, getTitleBarHeight(), 0, paramInt2);
   }
   
   public void a(int paramInt, URLImageView paramURLImageView, String paramString, boolean paramBoolean)
@@ -1152,7 +1156,7 @@ public class QidianProfileCardActivity
       }
       Object localObject;
       if (paramInt == 0) {
-        localObject = bdbk.a(this.app, 1, paramString);
+        localObject = aoch.a(this.app, 1, paramString);
       }
       while (localObject != null)
       {
@@ -1168,39 +1172,39 @@ public class QidianProfileCardActivity
     }
   }
   
-  public void a(bfzu parambfzu)
+  public void a(bjhg parambjhg)
   {
-    Object localObject = parambfzu.d;
+    Object localObject = parambjhg.d;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
     }
-    if (this.jdField_a_of_type_Bdjz == null)
+    if (this.jdField_a_of_type_Bgpa == null)
     {
-      this.jdField_a_of_type_Bdjz = bdgm.a(this, 0, 2131560722, null, null, getString(2131690885), getString(2131690885), new bfyu(this), null);
-      this.jdField_a_of_type_Bdjz.setMessageCount(super.getString(2131698558));
-      this.jdField_a_of_type_Bdjz.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Bgpa = bglp.a(this, 0, 2131560927, null, null, getString(2131690728), getString(2131690728), new bjgg(this), null);
+      this.jdField_a_of_type_Bgpa.setMessageCount(super.getString(2131697480));
+      this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(true);
     }
-    localObject = b((URLImageView)this.jdField_a_of_type_Bdjz.framePreviewImage, (String)localObject);
-    this.jdField_a_of_type_Bdjz.setPreviewImage((Drawable)localObject, true, 1);
-    if (this.jdField_a_of_type_Bdjz.getWindow() != null) {
-      this.jdField_a_of_type_Bdjz.getWindow().findViewById(2131366819).setOnLongClickListener(new bfyv(this, (Drawable)localObject, parambfzu));
+    localObject = b((URLImageView)this.jdField_a_of_type_Bgpa.framePreviewImage, (String)localObject);
+    this.jdField_a_of_type_Bgpa.setPreviewImage((Drawable)localObject, true, 1);
+    if (this.jdField_a_of_type_Bgpa.getWindow() != null) {
+      this.jdField_a_of_type_Bgpa.getWindow().findViewById(2131367087).setOnLongClickListener(new bjgh(this, (Drawable)localObject, parambjhg));
     }
-    this.jdField_a_of_type_Bdjz.show();
+    this.jdField_a_of_type_Bgpa.show();
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_b_of_type_Bhuf == null)
+    if (this.jdField_b_of_type_Bkho == null)
     {
-      this.jdField_b_of_type_Bhuf = ((bhuf)bhus.a(this, null));
-      this.jdField_b_of_type_Bhuf.a(super.getResources().getStringArray(2130968583)[0], 1);
-      if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Bfyh.d(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
-        this.jdField_b_of_type_Bhuf.c(super.getResources().getStringArray(2130968583)[1]);
+      this.jdField_b_of_type_Bkho = ((bkho)bkif.a(this, null));
+      this.jdField_b_of_type_Bkho.a(super.getResources().getStringArray(2130968586)[0], 1);
+      if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Bjft.d(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+        this.jdField_b_of_type_Bkho.c(super.getResources().getStringArray(2130968586)[1]);
       }
-      this.jdField_b_of_type_Bhuf.d(super.getResources().getStringArray(2130968583)[2]);
-      this.jdField_b_of_type_Bhuf.a(new bfyp(this, paramString));
+      this.jdField_b_of_type_Bkho.d(super.getResources().getStringArray(2130968586)[2]);
+      this.jdField_b_of_type_Bkho.a(new bjgb(this, paramString));
     }
-    this.jdField_b_of_type_Bhuf.show();
+    this.jdField_b_of_type_Bkho.show();
   }
   
   public void a(String paramString1, String paramString2)
@@ -1225,10 +1229,10 @@ public class QidianProfileCardActivity
   
   public boolean a()
   {
-    if (bfyh.a(this.jdField_b_of_type_Int)) {
+    if (bjft.a(this.jdField_b_of_type_Int)) {
       return true;
     }
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_Bfyh.a(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.app);
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_Bjft.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.app);
     if (QLog.isColorLevel()) {
       QLog.d("QidianProfileCardActivity", 2, "initAccountType accountType: " + this.jdField_c_of_type_Int);
     }
@@ -1238,9 +1242,9 @@ public class QidianProfileCardActivity
     for (;;)
     {
       return false;
-      a(2131695780);
+      a(2131694663);
       return true;
-      ndv.a(this, null, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true, -1, true, -1);
+      nmp.a(this, null, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true, -1, true, -1);
     }
   }
   
@@ -1253,7 +1257,7 @@ public class QidianProfileCardActivity
     {
       URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString);
       if ((localURLDrawable == null) || (localURLDrawable.getStatus() == 2)) {
-        return bdhj.b();
+        return bgmo.b();
       }
     }
     catch (Exception localException)
@@ -1269,7 +1273,7 @@ public class QidianProfileCardActivity
       if (localDrawable.getStatus() == 1) {
         return localDrawable;
       }
-      paramURLImageView.setURLDrawableDownListener(new bfze(this, this.app, paramURLImageView, paramString, getResources().getDrawable(2130850136), false));
+      paramURLImageView.setURLDrawableDownListener(new bjgq(this, this.app, paramURLImageView, paramString, getResources().getDrawable(2130850730), false));
       return localDrawable;
     }
   }
@@ -1277,40 +1281,40 @@ public class QidianProfileCardActivity
   public void b()
   {
     if ((this.jdField_c_of_type_Int != 1) && (this.jdField_c_of_type_Int != 2) && (this.jdField_c_of_type_Int != 0) && (this.jdField_c_of_type_Int != 6)) {}
-    label314:
+    label306:
     for (;;)
     {
       return;
       this.jdField_c_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      boolean bool2 = ProfileActivity.AllInOne.d(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      boolean bool2 = ProfileActivity.AllInOne.d(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
       boolean bool1;
       boolean bool3;
-      if ((this.jdField_c_of_type_Int == 1) || (this.jdField_c_of_type_Int == 6))
+      if (this.jdField_c_of_type_Int == 6)
       {
         bool1 = true;
-        bool3 = ProfileActivity.AllInOne.c(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+        bool3 = ProfileActivity.AllInOne.c(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
         if (bool2) {
-          a(2131693527, 2131560720, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new awor(7, null));
+          a(2131692973, 2131560925, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new azde(7, null));
         }
-        if ((this.jdField_c_of_type_Int != 1) || (!this.jdField_a_of_type_Bfyh.d(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
-          break label216;
+        if ((this.jdField_c_of_type_Int != 1) || (!this.jdField_a_of_type_Bjft.d(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+          break label208;
         }
-        a(2131698555, 2131560720, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new awor(55, null));
+        a(2131697477, 2131560925, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new azde(55, null));
       }
       for (;;)
       {
         if (!bool1) {
-          break label314;
+          break label306;
         }
-        a(2131699035, 2131560719, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new awor(8, Integer.valueOf(this.jdField_c_of_type_Int)));
+        a(2131697849, 2131560924, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new azde(8, Integer.valueOf(this.jdField_c_of_type_Int)));
         return;
-        bool1 = ProfileActivity.AllInOne.e(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+        bool1 = ProfileActivity.AllInOne.e(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
         break;
-        label216:
-        if ((this.jdField_c_of_type_Int == 6) && (this.jdField_a_of_type_Bfyh.c(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
-          a(2131693560, 2131560720, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new awor(20, null));
+        label208:
+        if ((this.jdField_c_of_type_Int == 6) && (this.jdField_a_of_type_Bjft.c(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+          a(2131692997, 2131560925, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new azde(20, null));
         } else if ((bool3) && (this.jdField_c_of_type_Int != 6)) {
-          a(2131693560, 2131560720, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new awor(20, null));
+          a(2131692997, 2131560925, this.jdField_a_of_type_AndroidViewView$OnClickListener).setTag(new azde(20, null));
         }
       }
     }
@@ -1318,58 +1322,58 @@ public class QidianProfileCardActivity
   
   public void b(int paramInt)
   {
-    awgf localawgf;
+    EntityManager localEntityManager;
     if (paramInt == 1) {
-      localawgf = this.app.getEntityManagerFactory().createEntityManager();
+      localEntityManager = this.app.a().createEntityManager();
     }
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = ((QidianExternalInfo)localawgf.a(QidianExternalInfo.class, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo = ((QidianProfileUiInfo)localawgf.a(QidianProfileUiInfo.class, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-        alto localalto = (alto)this.app.getManager(51);
-        this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqDataCard = localalto.b(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = ((QidianExternalInfo)localEntityManager.find(QidianExternalInfo.class, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo = ((QidianProfileUiInfo)localEntityManager.find(QidianProfileUiInfo.class, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+        anmw localanmw = (anmw)this.app.getManager(51);
+        this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqDataCard = localanmw.b(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
         if ((this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin))) {
-          this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo = ((QidianCorpInfo)localawgf.a(QidianCorpInfo.class, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin));
+          this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo = ((QidianCorpInfo)localEntityManager.find(QidianCorpInfo.class, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin));
         }
         return;
       }
       finally
       {
-        if (localawgf != null) {
-          localawgf.a();
+        if (localEntityManager != null) {
+          localEntityManager.close();
         }
       }
       if ((paramInt == 0) || (paramInt == 2))
       {
-        localawgf = this.app.getEntityManagerFactory().createEntityManager();
+        localEntityManager = this.app.a().createEntityManager();
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = ((BmqqUserSimpleInfo)localawgf.a(BmqqUserSimpleInfo.class, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = ((BmqqUserSimpleInfo)localEntityManager.find(BmqqUserSimpleInfo.class, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
           return;
         }
         finally
         {
-          if (localawgf != null) {
-            localawgf.a();
+          if (localEntityManager != null) {
+            localEntityManager.close();
           }
         }
       }
       if (paramInt != 6) {
         continue;
       }
-      localawgf = this.app.getEntityManagerFactory().createEntityManager();
+      localEntityManager = this.app.a().createEntityManager();
       try
       {
-        this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = ((QidianExternalInfo)localawgf.a(QidianExternalInfo.class, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo = ((QidianProfileUiInfo)localawgf.a(QidianProfileUiInfo.class, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = ((QidianExternalInfo)localEntityManager.find(QidianExternalInfo.class, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo = ((QidianProfileUiInfo)localEntityManager.find(QidianProfileUiInfo.class, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
         return;
       }
       finally
       {
-        if (localawgf != null) {
-          localawgf.a();
+        if (localEntityManager != null) {
+          localEntityManager.close();
         }
       }
     }
@@ -1377,26 +1381,26 @@ public class QidianProfileCardActivity
   
   public void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bhuf == null)
+    if (this.jdField_a_of_type_Bkho == null)
     {
-      this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this, null));
-      this.jdField_a_of_type_Bhuf.a(super.getResources().getStringArray(2130968582)[0], 1);
-      if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Bfyh.d(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Bhuf.a(super.getResources().getStringArray(2130968582)[1], 1);
+      this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this, null));
+      this.jdField_a_of_type_Bkho.a(super.getResources().getStringArray(2130968585)[0], 1);
+      if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Bjft.d(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Bkho.a(super.getResources().getStringArray(2130968585)[1], 1);
       }
-      this.jdField_a_of_type_Bhuf.a(super.getResources().getStringArray(2130968582)[2], 1);
-      this.jdField_a_of_type_Bhuf.d(super.getResources().getStringArray(2130968582)[3]);
-      this.jdField_a_of_type_Bhuf.a(new bfyq(this, paramString));
+      this.jdField_a_of_type_Bkho.a(super.getResources().getStringArray(2130968585)[2], 1);
+      this.jdField_a_of_type_Bkho.d(super.getResources().getStringArray(2130968585)[3]);
+      this.jdField_a_of_type_Bkho.a(new bjgc(this, paramString));
     }
-    this.jdField_a_of_type_Bhuf.show();
+    this.jdField_a_of_type_Bkho.show();
   }
   
   public void c()
   {
     Message localMessage = Message.obtain();
     localMessage.what = 0;
-    if (this.jdField_a_of_type_Bfzi != null) {
-      this.jdField_a_of_type_Bfzi.sendMessage(localMessage);
+    if (this.jdField_a_of_type_Bjgu != null) {
+      this.jdField_a_of_type_Bjgu.sendMessage(localMessage);
     }
   }
   
@@ -1413,19 +1417,19 @@ public class QidianProfileCardActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("need_finish", true);
-    syb.a(localIntent, this.app, this, paramString, -1);
+    tzo.a(localIntent, this.app, this, paramString, -1);
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Awqt == null) {
+    if (this.jdField_a_of_type_Azfe == null) {
       return;
     }
     Intent localIntent = new Intent(this, ProfileCardMoreActivity.class);
     Object localObject;
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = ((alto)this.app.getManager(51)).e(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      localObject = ((anmw)this.app.getManager(51)).e(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
       if ((localObject == null) || (TextUtils.isEmpty(((Friends)localObject).name))) {
         break label167;
       }
@@ -1437,8 +1441,8 @@ public class QidianProfileCardActivity
       if (this.jdField_c_of_type_Int == 6) {
         localIntent.putExtra("key_qidian_detail_url", this.jdField_b_of_type_JavaLangString);
       }
-      localObject = aoae.a(this.app, this.jdField_a_of_type_Awqt);
-      localIntent = bddf.a(localIntent, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.app, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, (BusinessCard)localObject);
+      localObject = aqaj.a(this.app, this.jdField_a_of_type_Azfe);
+      localIntent = bghy.a(localIntent, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.app, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, (BusinessCard)localObject);
       localIntent.addFlags(536870912);
       super.startActivityForResult(localIntent, 1012);
       return;
@@ -1457,11 +1461,11 @@ public class QidianProfileCardActivity
       Intent localIntent = new Intent(getActivity(), ChatActivity.class);
       localIntent.addFlags(67108864);
       localObject = null;
-      String str = this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Alto.b(str))
+      String str = this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Anmw.b(str))
       {
         paramInt = 0;
-        localObject = bdgc.i(this.app, str);
+        localObject = bglf.i(this.app, str);
       }
       for (;;)
       {
@@ -1479,17 +1483,25 @@ public class QidianProfileCardActivity
     {
       localObject = new Intent(getActivity(), ChatActivity.class);
       ((Intent)localObject).addFlags(67108864);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
       ((Intent)localObject).putExtra("uintype", 1024);
       startActivity((Intent)localObject);
       return;
     }
-    FriendProfileCardActivity.b(this.app, this, this.jdField_a_of_type_Awqt);
+    FriendProfileCardActivity.b(this.app, this, this.jdField_a_of_type_Azfe);
   }
   
   public void d(String paramString)
   {
-    bcpx.a(this, TroopInfoActivity.a(paramString, 31), 2);
+    bfup.a(this, TroopInfoActivity.a(paramString, 31), 2);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1512,7 +1524,7 @@ public class QidianProfileCardActivity
           return;
         }
         paramIntent = paramIntent.getStringExtra("remark");
-      } while (bdeu.a(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i, paramIntent));
+      } while (bgjw.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i, paramIntent));
       h(paramIntent);
       return;
     }
@@ -1529,23 +1541,23 @@ public class QidianProfileCardActivity
     if (QLog.isColorLevel()) {
       QLog.d("performance", 2, "open profile card start " + System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Bfyh = ((bfyh)this.app.getManager(165));
-    this.jdField_a_of_type_Alto = ((alto)this.app.getManager(51));
-    this.jdField_a_of_type_Alpk = ((alpk)this.app.a(2));
+    this.jdField_a_of_type_Bjft = ((bjft)this.app.getManager(165));
+    this.jdField_a_of_type_Anmw = ((anmw)this.app.getManager(51));
+    this.jdField_a_of_type_Anip = ((anip)this.app.a(2));
     try
     {
-      setContentView(2131560711);
-      this.jdField_d_of_type_Int = aepi.a(16.0F, getResources());
-      this.e = aepi.a(10.0F, getResources());
-      this.f = aepi.a(8.0F, getResources());
-      this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)super.getIntent().getParcelableExtra("AllInOne"));
-      if (this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)
+      setContentView(2131560916);
+      this.jdField_d_of_type_Int = afur.a(16.0F, getResources());
+      this.e = afur.a(10.0F, getResources());
+      this.f = afur.a(8.0F, getResources());
+      this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)super.getIntent().getParcelableExtra("AllInOne"));
+      if (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)
       {
         paramBundle = super.getIntent().getStringExtra("uin");
-        this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = new ProfileActivity.AllInOne(paramBundle, 104);
+        this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = new ProfileActivity.AllInOne(paramBundle, 104);
       }
       this.jdField_b_of_type_Int = super.getIntent().getIntExtra("cspecialflag", 0);
-      if ((this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString == null))
+      if ((this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString == null))
       {
         super.finish();
         return false;
@@ -1557,21 +1569,21 @@ public class QidianProfileCardActivity
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_Alto != null) && (this.jdField_a_of_type_Alto.b(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.app.getCurrentAccountUin()))) {
-      this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int = 1;
+    if ((this.jdField_a_of_type_Anmw != null) && (this.jdField_a_of_type_Anmw.b(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.app.getCurrentAccountUin()))) {
+      this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int = 1;
     }
-    this.jdField_a_of_type_Awqt.jdField_a_of_type_ArrayOfJavaLangString = new String[7];
+    this.jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfJavaLangString = new String[7];
     g();
-    this.app.addObserver(this.jdField_a_of_type_Altm);
-    this.app.addObserver(this.jdField_a_of_type_Nbn);
-    this.app.addObserver(this.jdField_a_of_type_Bfzo);
-    this.app.addObserver(this.jdField_a_of_type_Alpq);
+    this.app.addObserver(this.jdField_a_of_type_Anmu);
+    this.app.addObserver(this.jdField_a_of_type_Nkg);
+    this.app.addObserver(this.jdField_a_of_type_Bjha);
+    this.app.addObserver(this.jdField_a_of_type_Aniz);
     if (!a())
     {
       super.finish();
       return false;
     }
-    this.jdField_a_of_type_Bfzi = new bfzi(this);
+    this.jdField_a_of_type_Bjgu = new bjgu(this);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     ThreadManager.post(new QidianProfileCardActivity.1(this), 8, null, true);
@@ -1593,10 +1605,10 @@ public class QidianProfileCardActivity
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
       this.jdField_a_of_type_AndroidAppDialog = null;
     }
-    this.app.removeObserver(this.jdField_a_of_type_Altm);
-    this.app.removeObserver(this.jdField_a_of_type_Bfzo);
-    this.app.removeObserver(this.jdField_a_of_type_Alpq);
-    this.app.removeObserver(this.jdField_a_of_type_Nbn);
+    this.app.removeObserver(this.jdField_a_of_type_Anmu);
+    this.app.removeObserver(this.jdField_a_of_type_Bjha);
+    this.app.removeObserver(this.jdField_a_of_type_Aniz);
+    this.app.removeObserver(this.jdField_a_of_type_Nkg);
     g();
   }
   
@@ -1607,10 +1619,10 @@ public class QidianProfileCardActivity
       doOnActivityResult(1000, -1, paramIntent);
     }
     ProfileActivity.AllInOne localAllInOne = (ProfileActivity.AllInOne)paramIntent.getParcelableExtra("AllInOne");
-    if ((localAllInOne != null) && (localAllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+    if ((localAllInOne != null) && (localAllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
       e(this.jdField_c_of_type_Int);
     }
-    if ((localAllInOne != null) && (!localAllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
+    if ((localAllInOne != null) && (!localAllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
     {
       startActivity(paramIntent);
       super.finish();
@@ -1620,17 +1632,17 @@ public class QidianProfileCardActivity
   public void doOnResume()
   {
     super.doOnResume();
-    i(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    i(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin)) || (this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin)) || (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
     {
-      a(2131693562, 1);
+      a(2131692999, 1);
       return;
     }
-    ndv.b(this.app, this, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    nmp.b(this.app, this, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.masterUin, this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
   }
   
   public void e(String paramString)
@@ -1641,7 +1653,7 @@ public class QidianProfileCardActivity
   public void f()
   {
     getIntent().putExtra("param_return_addr", QidianProfileCardActivity.class.getName());
-    FriendProfileCardActivity.a(this.app, this, this.jdField_a_of_type_Awqt, this.jdField_a_of_type_AndroidAppDialog);
+    FriendProfileCardActivity.a(this.app, this, this.jdField_a_of_type_Azfe, this.jdField_a_of_type_AndroidAppDialog);
   }
   
   public void f(String paramString)
@@ -1663,11 +1675,18 @@ public class QidianProfileCardActivity
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 21))
     {
-      Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+      Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
       localIntent.putExtras(new Bundle(paramIntent.getExtras()));
       startActivity(localIntent);
       finish();
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void requestWindowFeature(Intent paramIntent)
@@ -1678,7 +1697,7 @@ public class QidianProfileCardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity
  * JD-Core Version:    0.7.0.1
  */

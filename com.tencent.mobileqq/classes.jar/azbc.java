@@ -1,33 +1,20 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class azbc
-  extends zhu
+class azbc
+  extends bkfi
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceTroopSvc" };
-  private azba jdField_a_of_type_Azba = new azba();
-  private azbb jdField_a_of_type_Azbb;
+  azbc(azav paramazav) {}
   
-  public azbc(AppInterface paramAppInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Azbb = new azbb(paramAppInterface);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Azba.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Azbb.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

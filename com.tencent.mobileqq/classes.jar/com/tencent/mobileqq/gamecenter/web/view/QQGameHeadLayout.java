@@ -11,30 +11,35 @@ public class QQGameHeadLayout
   public QQGameHeadLayout(@NonNull Context paramContext)
   {
     super(paramContext);
-    b();
+    a();
   }
   
   public QQGameHeadLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b();
+    a();
   }
   
-  private void b() {}
+  private void a() {}
   
-  protected int a()
+  protected int getLayoutId()
   {
-    return 2131559136;
+    return 2131559209;
   }
   
-  public boolean a()
+  public boolean isPined()
   {
     return false;
+  }
+  
+  public boolean isShow(String paramString)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.QQGameHeadLayout
  * JD-Core Version:    0.7.0.1
  */

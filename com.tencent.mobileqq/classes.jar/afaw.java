@@ -1,11 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
+
 public class afaw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public byte[] a;
+  public afaw(RegisterNewBaseActivity.2 param2) {}
   
-  afaw(afav paramafav)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
+    paramDialogInterface.dismiss();
   }
 }
 

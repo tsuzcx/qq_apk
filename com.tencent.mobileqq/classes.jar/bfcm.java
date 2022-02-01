@@ -1,13 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfcm
   implements DialogInterface.OnClickListener
 {
-  public bfcm(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  public bfcm(ReciteFragment paramReciteFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a(false);
+    this.a.c();
+  }
 }
 
 

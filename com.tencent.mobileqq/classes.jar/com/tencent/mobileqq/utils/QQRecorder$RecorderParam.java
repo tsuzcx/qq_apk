@@ -3,12 +3,12 @@ package com.tencent.mobileqq.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdme;
+import bgrg;
 
 public class QQRecorder$RecorderParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecorderParam> CREATOR = new bdme();
+  public static final Parcelable.Creator<RecorderParam> CREATOR = new bgrg();
   public int a;
   public Object a;
   public String a;
@@ -51,7 +51,7 @@ public class QQRecorder$RecorderParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQRecorder.RecorderParam
  * JD-Core Version:    0.7.0.1
  */

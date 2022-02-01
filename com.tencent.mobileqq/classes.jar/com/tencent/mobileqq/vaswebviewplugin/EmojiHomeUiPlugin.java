@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azri;
+import bctj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -356,7 +356,7 @@ public class EmojiHomeUiPlugin
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "statistic:openToOncreateGap:" + l1 + "openTogetKeyTimeGap:" + l2 + "bNeedGetKey:" + bool2 + "openToFinishOrErrorGap:" + l3 + "processStep:" + k + "isSuccess:" + bool1 + "errordescription:" + (String)localObject2 + "errorUrl:" + (String)localObject1 + "resultCode:" + j);
       }
-      azri.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
+      bctj.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
       return;
       label498:
       if (j == -12) {
@@ -434,7 +434,7 @@ public class EmojiHomeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

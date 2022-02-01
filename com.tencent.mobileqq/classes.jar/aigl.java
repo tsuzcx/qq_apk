@@ -1,18 +1,13 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigl
-  implements View.OnTouchListener
+public class aigl
+  extends anxo
 {
-  aigl(aigf paramaigf) {}
+  public aigl(TroopChatPie paramTroopChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.f(65536);
   }
 }
 

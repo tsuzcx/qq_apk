@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import adzd;
-import adze;
-import adzf;
+import Override;
+import affo;
+import affp;
+import affq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bdgm;
-import bdjz;
+import android.view.MotionEvent;
+import bglp;
+import bgpa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.manager.ServerConfigManager.ConfigType;
 
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private bdjz a;
+  private bgpa a;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -60,18 +64,26 @@ public class SpaceLowNoticeActiviy
     return false;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559398);
+    super.setContentView(2131559516);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bdgm.a(this, 230);
-    this.a.setContentView(2131558919);
-    this.a.setTitle(getString(2131699245)).setMessage(getString(2131699246)).setPositiveButton(2131699777, new adze(this)).setNegativeButton(2131690648, new adzd(this));
-    this.a.setOnKeyListener(new adzf(this));
+    this.a = bglp.a(this, 230);
+    this.a.setContentView(2131558985);
+    this.a.setTitle(getString(2131697873)).setMessage(getString(2131697874)).setPositiveButton(2131698250, new affp(this)).setNegativeButton(2131690582, new affo(this));
+    this.a.setOnKeyListener(new affq(this));
     this.a.show();
     return false;
   }
@@ -86,10 +98,17 @@ public class SpaceLowNoticeActiviy
   }
   
   public void onBackPressed() {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,43 @@
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aimv
-  implements Animation.AnimationListener
+class aimv
+  implements View.OnClickListener
 {
-  public aimv(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  private long jdField_a_of_type_Long;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  aimv(aimu paramaimu) {}
+  
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Aimu.jdField_a_of_type_Aimj.a();
+      Object localObject = new Intent(aimu.a(this.jdField_a_of_type_Aimu), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("hide_left_button", false);
+      ((Intent)localObject).putExtra("show_right_close_button", false);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      String str = bgyg.a(aimu.a(this.jdField_a_of_type_Aimu), "call", "mvip.gongneng.anroid.individuation.web");
+      VasWebviewUtil.openQQBrowserWithoutAD(aimu.a(this.jdField_a_of_type_Aimu), str, 524288L, (Intent)localObject, false, -1);
+      VipUtils.a(this.jdField_a_of_type_Aimu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
+      localObject = this.jdField_a_of_type_Aimu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      ((SharedPreferences.Editor)localObject).putInt("funcall_tip_" + this.jdField_a_of_type_Aimu.jdField_a_of_type_JavaLangString, 4);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

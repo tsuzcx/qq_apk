@@ -1,27 +1,28 @@
-import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akyj
-  implements alkp
+  implements View.OnClickListener
 {
-  akyj(akyg paramakyg) {}
+  akyj(akyh paramakyh, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    alko.b(akyg.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!akyg.c(this.a)))
-      {
-        akyg.a(this.a, true);
-        akyg.c(this.a);
+    if (BaseActivity.sTopActivity != null) {
+      awnr.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      awnr.m();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
     }
-    while (localActivity == null) {
-      return;
-    }
-    localActivity.finish();
   }
 }
 

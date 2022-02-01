@@ -1,6 +1,14 @@
-public abstract interface bklk
+import android.widget.PopupWindow.OnDismissListener;
+
+class bklk
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  bklk(bklj parambklj) {}
+  
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

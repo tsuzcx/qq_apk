@@ -2,10 +2,10 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bdpd;
-import bjdl;
-import bjdm;
-import bjur;
+import bguc;
+import blrt;
+import blru;
+import bmjb;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -26,29 +26,29 @@ public abstract class QzoneExternalRequest
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
-    return bjur.a(paramArrayOfByte, paramString);
+    return bmjb.a(paramArrayOfByte, paramString);
   }
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt);
+    return bmjb.a(paramArrayOfByte, paramString, paramArrayOfInt);
   }
   
   protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
   {
-    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
+    return bmjb.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = bjdm.a();
+    Object localObject2 = blru.a();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bdpd.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bguc.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -62,7 +62,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return bjdl.a().c();
+    return blrt.a().c();
   }
   
   public String getDeviceTail()
@@ -151,7 +151,7 @@ public abstract class QzoneExternalRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneExternalRequest
  * JD-Core Version:    0.7.0.1
  */

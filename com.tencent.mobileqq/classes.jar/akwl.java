@@ -1,16 +1,17 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 
 class akwl
-  implements AudioManager.OnAudioFocusChangeListener
+  extends BroadcastReceiver
 {
-  akwl(akwj paramakwj) {}
-  
-  public void onAudioFocusChange(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(akwj.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+      QLog.i("ArkPubicEventWrap", 2, "--VolumeReceiver---" + paramIntent.getAction());
     }
+    akwh.b(akwh.a());
   }
 }
 

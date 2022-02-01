@@ -1,121 +1,291 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.SparseArray;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.mobileqq.multiaio.presenter.MultiAioContext.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class awsk
 {
-  public static String a(Context paramContext)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private awsj jdField_a_of_type_Awsj;
+  private awsn jdField_a_of_type_Awsn;
+  private awso jdField_a_of_type_Awso;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private List<akaj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private volatile Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private volatile List<RecentBaseData> jdField_b_of_type_JavaUtilList;
+  private int jdField_c_of_type_Int;
+  private volatile Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  
+  public awsk(awsj paramawsj)
   {
-    return bddf.c(paramContext) + "wzryTemplate/";
+    this.jdField_a_of_type_Awsj = paramawsj;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, VasQuickUpdateManager.CallBacker paramCallBacker)
+  public static awsk a(AppInterface paramAppInterface)
   {
-    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    paramQQAppInterface.addCallBacker(paramCallBacker);
-    paramQQAppInterface.downloadItem(15L, "cardWZ.zip", "ProfileCard");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramInt == 0) {
-      if ("cardWZ.zip".equals(paramString1))
-      {
-        paramQQAppInterface = a(paramQQAppInterface.getApp()) + "xydata.json";
-        awsh.a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete, parseConfig " + paramQQAppInterface);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "create() called with: app = [" + paramAppInterface + "]");
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    paramAppInterface = (awsj)paramAppInterface.getManager(325);
+    awsk localawsk = new awsk(paramAppInterface);
+    localawsk.c(paramAppInterface.a(localawsk));
+    return localawsk;
+  }
+  
+  private void a(List<RecentBaseData> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "setRecentUserList() called with: recentUserList = [" + paramList + "]");
     }
-    QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete failed, errorCode = " + paramInt);
+    this.jdField_b_of_type_JavaUtilList = paramList;
   }
   
-  public static boolean a(long paramLong)
+  private void c(int paramInt)
   {
-    return (paramLong == awra.i) || (paramLong == awra.j);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public int a()
   {
-    if ("cardWZ.zip".equals(paramString))
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public akaj a(MultiAIOItemFragment paramMultiAIOItemFragment)
+  {
+    Object localObject2 = null;
+    int i = paramMultiAIOItemFragment.a();
+    Object localObject1 = localObject2;
+    if (i >= 0)
     {
-      String str = a(paramContext);
-      paramContext = new File(str, "xydata.json");
-      if (awsh.jdField_a_of_type_Awsh == null) {
-        awsh.a(paramContext.getAbsolutePath());
-      }
-      if (awsh.jdField_a_of_type_Awsh != null)
-      {
-        paramContext = new File(str, "logo.png");
-        paramString = new File(str, "bgImage.jpg");
-        Object localObject = new File(str, "shimmer_mask.png");
-        File localFile1 = new File(str, "logo_bg.png");
-        File localFile2 = new File(str, "font_chs.tff");
-        File localFile3 = new File(str, "font_num.tff");
-        File localFile4 = new File(str, "addIcon.png");
-        int i;
-        if ((paramContext.exists()) && (paramString.exists()) && (((File)localObject).exists()) && (localFile1.exists()) && (localFile2.exists()) && (localFile3.exists()) && (localFile4.exists()))
-        {
-          bool1 = true;
-          localObject = awsh.jdField_a_of_type_Awsh;
-          if (((awsh)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) {
-            break label338;
-          }
-          i = 0;
-          label207:
-          bool2 = bool1;
-          if (i >= ((awsh)localObject).jdField_a_of_type_AndroidUtilSparseArray.size()) {
-            break label341;
-          }
-          paramContext = (awsi)((awsh)localObject).jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-          bool2 = bool1;
-          if (paramContext.a != null)
-          {
-            bool2 = bool1;
-            if (!TextUtils.isEmpty(paramContext.a.a))
-            {
-              paramString = paramContext.a.a;
-              paramContext = paramString;
-              if (paramString.contains("/")) {
-                paramContext = paramString.substring(paramString.lastIndexOf("/"));
-              }
-              paramContext = new File(str, paramContext);
-              if ((!bool1) || (!paramContext.exists())) {
-                break label333;
-              }
-            }
-          }
-        }
-        label333:
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          bool2 = bool1;
-          i += 1;
-          bool1 = bool2;
-          break label207;
-          bool1 = false;
-          break;
-        }
+      localObject1 = localObject2;
+      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (akaj)this.jdField_a_of_type_JavaUtilList.get(i);
       }
     }
-    label338:
-    boolean bool2 = false;
-    label341:
-    return bool2;
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = akaq.a(paramMultiAIOItemFragment.getActivity(), paramMultiAIOItemFragment.a(), paramMultiAIOItemFragment.getActivity().app);
+      a(i, (akaj)localObject2);
+    }
+    return localObject2;
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {}
+    for (View localView1 = null;; localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.remove(0))
+    {
+      if (localView1 != null)
+      {
+        localObject = localView1.getParent();
+        if (localObject != null) {
+          ((ViewGroup)localObject).removeView(localView1);
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("MultiAioContext", 2, "getCacheViewFor() called with: position = [" + paramInt + "], v = " + localView1);
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        View localView2 = (View)((Iterator)localObject).next();
+        QLog.d("MultiAioContext", 2, "getCacheViewFor() cached v = [" + localView2 + "]");
+      }
+    }
+    return localView1;
+  }
+  
+  public awso a()
+  {
+    return this.jdField_a_of_type_Awso;
+  }
+  
+  public List<RecentBaseData> a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "getRecentUserList() called with: app = [" + paramQQAppInterface + "], activity = [" + paramFragmentActivity + "], openedFrom = [" + paramString1 + "], enteranceType = [" + paramInt + "], enteranceUin = [" + paramString2 + "], enterNickName = [" + paramString3 + "], mRecentUserList = " + this.jdField_b_of_type_JavaUtilList);
+    }
+    List localList2 = this.jdField_b_of_type_JavaUtilList;
+    List localList1 = localList2;
+    if (localList2 == null)
+    {
+      localList1 = awry.a(paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3);
+      a(localList1);
+    }
+    return localList1;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "destroy() called");
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      this.jdField_b_of_type_JavaUtilList = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, akaj paramakaj)
+  {
+    while (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
+      this.jdField_a_of_type_JavaUtilList.add(null);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "setMiniPie() called with: position = [" + paramInt + "], miniPie = [" + paramakaj + "]");
+    }
+    this.jdField_a_of_type_JavaUtilList.set(paramInt, paramakaj);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Awsn != null) {
+      this.jdField_a_of_type_Awsn.a(paramIntent);
+    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "setDecorViewBitmap() called with: decorViewBitmap = [" + paramBitmap + "]");
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
+  {
+    while (paramInt > 0)
+    {
+      a(paramLayoutInflater.inflate(2131558867, paramViewGroup, false));
+      paramInt -= 1;
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioContext", 2, "putCacheView() called size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " with: v = [" + paramView + "]");
+    }
+  }
+  
+  public void a(awsn paramawsn)
+  {
+    this.jdField_a_of_type_Awsn = paramawsn;
+  }
+  
+  public void a(awso paramawso)
+  {
+    this.jdField_a_of_type_Awso = paramawso;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getRecentThreadLooper());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
+    this.jdField_a_of_type_AndroidOsHandler.postAtTime(new MultiAioContext.1(this, paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3), this, 0L);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public Bitmap b()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Awso != null) {
+      this.jdField_a_of_type_Awso.a();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(Bitmap paramBitmap)
+  {
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public int c()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public Bitmap c()
+  {
+    return this.jdField_c_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void c(Bitmap paramBitmap)
+  {
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsk
  * JD-Core Version:    0.7.0.1
  */

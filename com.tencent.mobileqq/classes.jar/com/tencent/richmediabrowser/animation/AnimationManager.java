@@ -10,6 +10,7 @@ import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
 import com.tencent.richmediabrowser.model.BrowserAnimation;
 import com.tencent.richmediabrowser.model.IBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,9 +21,10 @@ public class AnimationManager
   AnimationView animationView;
   View bgView;
   int densityDpi;
-  View gallery;
   Activity mContext;
+  private MainBrowserPresenter mMainBrowserPresenter;
   IBrowserModel model;
+  View recyclerView;
   View rootView;
   
   public AnimationManager(Activity paramActivity, IBrowserModel paramIBrowserModel)
@@ -32,32 +34,45 @@ public class AnimationManager
     this.densityDpi = paramActivity.getResources().getDisplayMetrics().densityDpi;
   }
   
+  private Rect getAnimationEndDstRect()
+  {
+    if (this.mMainBrowserPresenter != null) {
+      return this.mMainBrowserPresenter.getAnimationEndDstRect();
+    }
+    return null;
+  }
+  
   private Drawable makeAnimationRect(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, BrowserAnimation paramBrowserAnimation, boolean paramBoolean)
   {
     if (paramBrowserAnimation == null) {}
-    Rect localRect;
+    Drawable localDrawable;
     do
     {
       return null;
-      paramRect1 = paramBrowserAnimation.getAnimationDrawable();
-      localRect = paramBrowserAnimation.getThumbRect();
-    } while ((localRect == null) || (paramRect1 == null) || (!paramBrowserAnimation.needAnimation(paramBoolean)));
-    int i = this.gallery.getWidth();
-    int j = this.gallery.getHeight();
-    int k = paramRect1.getIntrinsicWidth();
-    int m = paramRect1.getIntrinsicHeight();
+      localDrawable = paramBrowserAnimation.getAnimationDrawable();
+      paramRect1 = paramBrowserAnimation.getThumbRect();
+    } while ((paramRect1 == null) || (localDrawable == null) || (!paramBrowserAnimation.needAnimation(paramBoolean)));
+    int i = this.recyclerView.getWidth();
+    int j = this.recyclerView.getHeight();
+    int k = localDrawable.getIntrinsicWidth();
+    int m = localDrawable.getIntrinsicHeight();
     paramRect2.set(0, 0, k, m);
-    paramRect3.set(localRect);
-    paramRect4.set(AnimationUtils.getAnimationEndDstRect(k, m, i, j, null));
-    return paramRect1;
+    paramRect3.set(paramRect1);
+    paramRect2 = getAnimationEndDstRect();
+    paramRect1 = paramRect2;
+    if (paramRect2 == null) {
+      paramRect1 = AnimationUtils.getAnimationEndDstRect(k, m, i, j);
+    }
+    paramRect4.set(paramRect1);
+    return localDrawable;
   }
   
   public void init()
   {
-    this.gallery = this.mContext.findViewById(2131367020);
-    this.animationView = ((AnimationView)this.mContext.findViewById(2131362576));
-    this.rootView = this.mContext.findViewById(2131376034);
-    this.bgView = this.mContext.findViewById(2131363034);
+    this.recyclerView = this.mContext.findViewById(2131376265);
+    this.animationView = ((AnimationView)this.mContext.findViewById(2131362678));
+    this.rootView = this.mContext.findViewById(2131376788);
+    this.bgView = this.mContext.findViewById(2131363219);
   }
   
   public void onDestroy()
@@ -106,13 +121,18 @@ public class AnimationManager
     }
   }
   
+  public void setMainBrowserPresenter(MainBrowserPresenter paramMainBrowserPresenter)
+  {
+    this.mMainBrowserPresenter = paramMainBrowserPresenter;
+  }
+  
   public boolean startEnterAnimation()
   {
     boolean bool = true;
     if (isAnimating()) {
       return true;
     }
-    if (this.gallery == null) {
+    if (this.recyclerView == null) {
       init();
     }
     Rect localRect1 = new Rect();
@@ -156,7 +176,7 @@ public class AnimationManager
     if (isAnimating()) {
       return true;
     }
-    if (this.gallery == null) {
+    if (this.recyclerView == null) {
       init();
     }
     Rect localRect1 = new Rect();
@@ -203,7 +223,7 @@ public class AnimationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
 
-public class aopu
-  extends aokh<aopt>
+public final class aopu
+  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
 {
-  public int a()
+  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
   {
-    return 488;
+    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
   }
   
-  @NonNull
-  public aopt a(int paramInt)
+  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
   {
-    return new aopt();
-  }
-  
-  @Nullable
-  public aopt a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
-    {
-      aopt localaopt = aopt.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaopt;
-    }
-    return null;
-  }
-  
-  public Class<aopt> a()
-  {
-    return aopt.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aopt paramaopt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaopt.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aopu
  * JD-Core Version:    0.7.0.1
  */

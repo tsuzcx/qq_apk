@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class zjh
-  implements Animation.AnimationListener
+public class zjh
+  implements View.OnLongClickListener
 {
-  zjh(zjf paramzjf) {}
+  public zjh(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onLongClick(View paramView)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    return true;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zjh
  * JD-Core Version:    0.7.0.1
  */

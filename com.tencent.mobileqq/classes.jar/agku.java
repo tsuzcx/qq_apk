@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
 
 public class agku
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  String jdField_a_of_type_JavaLangString;
-  public String[] a;
+  public agku(AIOShakeHelper.1 param1) {}
   
-  public agku(agkr paramagkr, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + agkr.a());
-    }
-    return l2 < agkr.a();
+    return true;
   }
 }
 

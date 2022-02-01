@@ -1,18 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
+import com.tencent.qphone.base.util.QLog;
 
 final class aqhc
-  implements View.OnClickListener
+  implements arfl
 {
-  aqhc(Activity paramActivity, String paramString, DialogFromBottom paramDialogFromBottom) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    aqgz.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiDialogDialogFromBottom.dismiss();
-    azqs.b(null, "dc00898", "", "", "0X800AD9C", "0X800AD9C", 1, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(aqhb.a(), 2, paramString2);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aqhb.a(), 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(aqhb.a(), 2, paramString2);
+    }
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(aqhb.a(), 2, paramString2);
+    }
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(aqhb.a(), 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aqhb.a(), 2, paramString2);
+    }
   }
 }
 

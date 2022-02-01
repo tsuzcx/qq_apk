@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.msgnotify;
 
-import ammy;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
+import aoht;
 
 class MsgNotifyPushDialog$4$1
   implements Runnable
@@ -17,7 +17,7 @@ class MsgNotifyPushDialog$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.4.1
  * JD-Core Version:    0.7.0.1
  */

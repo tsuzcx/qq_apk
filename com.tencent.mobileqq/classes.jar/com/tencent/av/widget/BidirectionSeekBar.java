@@ -8,7 +8,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-import mxq;
+import muy;
 
 public class BidirectionSeekBar
   extends SeekBar
@@ -40,15 +40,15 @@ public class BidirectionSeekBar
     if (getThumbOffset() != 0) {
       setThumbOffset(0);
     }
-    int i = getResources().getDrawable(2130841608).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130841911).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      mxq localmxq = new mxq(getResources().getDrawable(2130841600), getResources().getDrawable(2130841603), 1, i);
-      localmxq.setLevel(localDrawable.getLevel());
-      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmxq);
+      muy localmuy = new muy(getResources().getDrawable(2130841903), getResources().getDrawable(2130841906), 1, i);
+      localmuy.setLevel(localDrawable.getLevel());
+      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmuy);
     }
     if (Build.VERSION.SDK_INT >= 11) {}
   }
@@ -69,7 +69,7 @@ public class BidirectionSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.widget.BidirectionSeekBar
  * JD-Core Version:    0.7.0.1
  */

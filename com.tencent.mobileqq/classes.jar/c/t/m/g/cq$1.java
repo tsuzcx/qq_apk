@@ -11,35 +11,21 @@ final class cq$1
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = 0L;
-    if ((paramIntent == null) || (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))) {
-      return;
-    }
+    if ((paramIntent == null) || (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))) {}
     for (;;)
     {
+      return;
       try
       {
         boolean bool = paramIntent.getBooleanExtra("noConnectivity", false);
         co.a("intent:" + paramIntent + ",");
-        if (bool) {
-          break;
-        }
-        co.a(cq.a(this.a), 107, 2000L);
-        if (cq.b(this.a) == null) {
-          break;
-        }
-        paramContext = cq.b(this.a);
-        if (2000L < 0L)
+        if (!bool)
         {
-          paramContext.a(1004, l);
+          co.a(cq.a(this.a), 107, 2000L);
           return;
         }
       }
-      catch (Throwable paramContext)
-      {
-        return;
-      }
-      l = 2000L;
+      catch (Throwable paramContext) {}
     }
   }
 }

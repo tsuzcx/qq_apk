@@ -1,25 +1,23 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class yzt
-  implements Downloader.DownloadListener
+public class yzt
+  implements zhz
 {
-  yzt(yzr paramyzr, yzb paramyzb, String paramString) {}
+  public yzt(DoodleLayout paramDoodleLayout) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void a()
   {
-    yzr.a(this.jdField_a_of_type_Yzr, this.jdField_a_of_type_Yzb, yzo.a().b(this.jdField_a_of_type_JavaLangString));
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,133 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.GifCoder;
-import dov.com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.api.standard.filter.AEGifSticker;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.view.RendererUtils;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class bnrf
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
-  private static int e;
-  private static int f;
+  private double jdField_a_of_type_Double = 1.0D;
+  private int jdField_a_of_type_Int;
+  private bnrc jdField_a_of_type_Bnrc = new bnrc();
+  private bnrg jdField_a_of_type_Bnrg;
+  private AEGifSticker jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private boolean jdField_b_of_type_Boolean;
   
-  public static int a(String paramString1, String paramString2, int paramInt, String paramString3)
+  private Frame a(Frame paramFrame, List<List<PointF>> paramList, List<float[]> paramList1)
   {
-    int i = 0;
-    QLog.i("GifProcessor", 1, "generateGifFromVFile vfPath=" + paramString1 + " output=" + paramString3);
-    a();
-    GifCoder localGifCoder = new GifCoder();
-    localGifCoder.c(true);
-    localGifCoder.a(a);
-    boolean bool;
-    int k;
-    int j;
-    VideoSourceHelper localVideoSourceHelper;
-    Bitmap localBitmap;
-    if (b == 1)
+    Object localObject = paramFrame;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker != null)
     {
-      bool = true;
-      localGifCoder.a(bool);
-      k = azib.z * 1000 / azib.y / c;
-      j = k;
-      if (k <= 0) {
-        j = 1;
-      }
-      localVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
-      localVideoSourceHelper.initHelperParam();
-      paramString1 = localVideoSourceHelper.getSourceVideoParam();
-      localBitmap = Bitmap.createBitmap(paramString1[0], paramString1[1], Bitmap.Config.RGB_565);
-      k = 0;
+      localObject = new HashSet();
+      ((Set)localObject).add(Integer.valueOf(1));
+      ((Set)localObject).add(Integer.valueOf(2));
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.updateFaceParams(paramList, paramList1, (Set)localObject);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.updateVideoSize(paramFrame.width, paramFrame.height, this.jdField_a_of_type_Double * 2.0D);
+      localObject = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.render(paramFrame);
+    }
+    return localObject;
+  }
+  
+  public Frame a(Frame paramFrame, int paramInt1, int paramInt2, List<List<PointF>> paramList, List<float[]> paramList1)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bnrc.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      paramFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
     }
     for (;;)
     {
-      if (k < azib.z)
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bnrg != null))
       {
-        i = localVideoSourceHelper.getVideoFrameByIndex(localBitmap, k);
-        if (QLog.isColorLevel()) {
-          QLog.d("GifProcessor", 2, "getVideoFrameByIndex from vffile. index=" + k + " ret=" + i);
-        }
-        if (i == 0) {
-          break label229;
-        }
+        GLES20.glEnable(3042);
+        GLES20.glBlendFunc(770, 771);
+        float f1 = -1.0F + this.jdField_a_of_type_Bnrg.jdField_a_of_type_Float * 2.0F;
+        float f2 = -1.0F + this.jdField_a_of_type_Bnrg.b * 2.0F;
+        float f3 = this.jdField_a_of_type_Bnrg.c * 2.0F + f1;
+        float f4 = this.jdField_a_of_type_Bnrg.d * 2.0F + f2;
+        this.jdField_a_of_type_ComTencentFilterBaseFilter.setPositions(new float[] { f1, f2, f1, f4, f3, f4, f3, f2 });
+        this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Bnrg.jdField_a_of_type_Int, paramFrame.width, paramFrame.height, -1, 0.0D, paramFrame);
+        GLES20.glDisable(3042);
       }
-      for (;;)
-      {
-        localGifCoder.b();
-        return i;
-        bool = false;
-        break;
-        label229:
-        paramString2 = localBitmap.copy(Bitmap.Config.ARGB_8888, true);
-        paramString1 = paramString2;
-        if (paramInt != 0)
-        {
-          paramString1 = paramString2;
-          if (!bnin.a(paramInt)) {
-            paramString1 = RecordThumbnailUtils.a(paramString2, paramInt);
-          }
-        }
-        if (localGifCoder.a(paramString1, paramString3, d, true)) {
-          break label280;
-        }
-        i = -1;
-      }
-      label280:
-      k += j;
+      this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(paramFrame.getTextureId(), 320, 320, -1, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+      return a(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, paramList, paramList1);
     }
   }
   
-  private static void a()
+  public void a()
   {
-    a = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifSize", 720);
-    b = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifSizeForLongEdge", 0);
-    c = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifFps", 5);
-    d = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifTimePerFrame", 200);
-    e = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifMaxFrame", 10);
-    f = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifFirstNSecond", 10);
+    this.jdField_a_of_type_Bnrc.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.apply();
+  }
+  
+  public void a(double paramDouble)
+  {
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.clear();
+    }
+    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker = new AEGifSticker(paramString);
+    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.apply();
+  }
+  
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_Bnrg = new bnrg(this);
+    bnrm localbnrm = new bnrm((int)(320.0F * paramFloat3), (int)(320.0F * paramFloat4));
+    localbnrm.a(paramString1);
+    localbnrm.a(paramInt1);
+    localbnrm.b(paramString2);
+    localbnrm.c(paramString3);
+    localbnrm.a(paramInt2);
+    localbnrm.b();
+    paramString1 = localbnrm.a();
+    this.jdField_a_of_type_Bnrg.jdField_a_of_type_Int = RendererUtils.createTexture(paramString1);
+    localbnrm.c();
+    this.jdField_a_of_type_Bnrg.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Bnrg.b = paramFloat2;
+    this.jdField_a_of_type_Bnrg.c = paramFloat3;
+    this.jdField_a_of_type_Bnrg.d = paramFloat4;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bnrc.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    if (this.jdField_a_of_type_Bnrg != null)
+    {
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Bnrg.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    }
   }
 }
 

@@ -1,9 +1,30 @@
-public class apsq
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+
+class apsq
+  implements Animator.AnimatorListener
 {
-  int a = 0;
-  public String a;
-  public boolean a;
-  String b;
+  apsq(apsl paramapsl, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Apsl.l();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Apsl.l();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Apsl.e) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
 }
 
 

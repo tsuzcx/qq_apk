@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.widget;
 
 import android.view.ViewGroup.LayoutParams;
-import bcqm;
+import bfve;
 import com.tencent.widget.GridView;
 
 public class AvatarGridAdapter$1
   implements Runnable
 {
-  public AvatarGridAdapter$1(bcqm parambcqm, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
+  public AvatarGridAdapter$1(bfve parambfve, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class AvatarGridAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarGridAdapter.1
  * JD-Core Version:    0.7.0.1
  */

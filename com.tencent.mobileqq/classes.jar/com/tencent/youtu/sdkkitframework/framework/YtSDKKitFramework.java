@@ -13,7 +13,7 @@ public class YtSDKKitFramework
 {
   private static final String TAG = YtSDKKitFramework.class.getSimpleName();
   private static YtSDKKitFramework instance;
-  private static final String version = "1.0.8.2h";
+  private static final String version = "1.0.8.4";
   private Rect detectRect = new Rect(20, 270, 700, 1130);
   private YtSDKKitFramework.IYtSDKKitFrameworkEventListener eventListener;
   private Rect previewRect = new Rect(0, 0, 720, 1280);
@@ -148,12 +148,12 @@ public class YtSDKKitFramework
   
   public String version()
   {
-    return "1.0.8.2h";
+    return "1.0.8.4";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework
  * JD-Core Version:    0.7.0.1
  */

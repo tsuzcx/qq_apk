@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afsa
-  extends afuf
+  implements View.OnClickListener
 {
-  afsa(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  afsa(afrz paramafrz) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afkg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.a.b(paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

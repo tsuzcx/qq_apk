@@ -1,19 +1,27 @@
-import mqq.app.AppRuntime.Status;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-public final class altd
+public class altd
+  implements DialogInterface.OnClickListener
 {
-  private final long jdField_a_of_type_Long;
-  private final AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
+  public altd(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  private altd(AppRuntime.Status paramStatus, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = paramLong;
+    paramDialogInterface.dismiss();
+    ((anwd)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
+    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     altd
  * JD-Core Version:    0.7.0.1
  */

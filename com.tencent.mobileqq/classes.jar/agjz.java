@@ -1,19 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class agjz
+  implements agkf
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  public agjz(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public agjz(agjx paramagjx) {}
+  public void a()
+  {
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    this.a.b();
+  }
 }
 
 

@@ -1,112 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Observable;
-import mqq.manager.Manager;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amiy
-  extends Observable
-  implements Manager
+  implements GLSurfaceView.EGLConfigChooser
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, SoftReference<amja>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int a;
   
-  public amiy(QQAppInterface paramQQAppInterface)
+  public amiy(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
   }
   
-  private amja a(String paramString)
+  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    for (;;)
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (localObject1 != null)
-        {
-          localObject1 = (amja)((SoftReference)localObject1).get();
-          Object localObject2 = localObject1;
-          if (localObject1 == null)
-          {
-            localObject2 = new amja(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new amiz(this));
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
-          }
-          return localObject2;
-        }
-      }
-      Object localObject1 = null;
+      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-  }
-  
-  public FullMessageSearchResult a(String paramString)
-  {
-    return a(paramString).b();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (SoftReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (amja)((SoftReference)localObject2).get();
-          if (localObject2 != null) {
-            ((amja)localObject2).b(2);
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (paramString != null)
-        {
-          paramString = (amja)paramString.get();
-          if (paramString != null) {
-            paramString.a();
-          }
-          return;
-        }
-      }
-      paramString = null;
-    }
-  }
-  
-  public FullMessageSearchResult b(String paramString)
-  {
-    return a(paramString).c();
-  }
-  
-  public void onDestroy()
-  {
-    a();
+    return arrayOfEGLConfig[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amiy
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class PackageInstallReceiver
   private static PackageInstallReceiver d = null;
   protected final String a = "DLSDK_PackageInstallReceiver";
   protected boolean b = false;
-  ArrayList<PackageInstallReceiver.IPackageInstallObserver> c = new ArrayList();
+  ArrayList<Object> c = new ArrayList();
   
   public static PackageInstallReceiver a()
   {
@@ -112,7 +112,7 @@ public class PackageInstallReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.PackageInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

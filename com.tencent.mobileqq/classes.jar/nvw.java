@@ -1,26 +1,20 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nvw
-  extends ampn
+class nvw
+  implements DialogInterface.OnClickListener
 {
-  nvw(nvp paramnvp, String paramString)
-  {
-    super(paramString);
-  }
+  nvw(nvu paramnvu, JsResult paramJsResult) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvw
  * JD-Core Version:    0.7.0.1
  */

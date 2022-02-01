@@ -1,9 +1,14 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface bdqu
+class bdqu
+  extends awej<bdqp, QQAppInterface>
 {
-  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
+  bdqu(bdqs parambdqs) {}
+  
+  protected bdqp a(QQAppInterface paramQQAppInterface)
+  {
+    return new bdqp(paramQQAppInterface);
+  }
 }
 
 

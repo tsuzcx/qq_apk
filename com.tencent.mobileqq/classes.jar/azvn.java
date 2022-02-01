@@ -1,33 +1,30 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
-public class azvn
-  implements View.OnClickListener
+final class azvn
+  implements bkhw
 {
-  public azvn(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
+  azvn(bkho parambkho, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    default: 
+      return;
     }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    if ((!bgvi.a) && (bgvf.a().a())) {
+      bgvf.a().a(paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    long l = bbyp.a();
+    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,21 +1,18 @@
-class amwl
-  extends ante
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+
+public class amwl
+  extends arpd
 {
-  amwl(amwk paramamwk) {}
+  public amwl(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
-  {
-    if (amwk.a(this.a) != null) {
-      amwk.a(this.a).a(paramArrayOfFloat);
-    }
-  }
+  public void onBindedToClient() {}
   
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (amwk.a(this.a) != null) {
-      amwk.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    }
-  }
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

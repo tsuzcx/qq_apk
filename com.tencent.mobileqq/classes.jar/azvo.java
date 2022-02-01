@@ -1,32 +1,77 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class azvo
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public azvo(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public azvo(Context paramContext, List<PhoneContact> paramList)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561079, null);
+    azvq localazvq = new azvq(null);
+    localazvq.a = ((TextView)paramViewGroup.findViewById(2131374198));
+    localazvq.b = ((TextView)paramViewGroup.findViewById(2131374197));
+    paramViewGroup.setTag(localazvq);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (azvq)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
+    }
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
+    {
+      a(paramInt, localView, paramViewGroup);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
     }
   }
 }

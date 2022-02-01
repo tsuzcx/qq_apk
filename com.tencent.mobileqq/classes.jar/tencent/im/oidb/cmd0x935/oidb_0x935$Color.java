@@ -15,7 +15,7 @@ public final class oidb_0x935$Color
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0x935.oidb_0x935.Color
  * JD-Core Version:    0.7.0.1
  */

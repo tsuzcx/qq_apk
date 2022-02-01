@@ -1,21 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-public class xxp
-  implements ValueAnimator.AnimatorUpdateListener
+class xxp
+  implements xxn
 {
-  public xxp(RotateCircleImageView paramRotateCircleImageView) {}
+  xxp(xxo paramxxo, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    xwv.b(xxo.a(this.jdField_a_of_type_Xxo), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    xwv.c(xxo.a(this.jdField_a_of_type_Xxo), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,140 +1,72 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Queue;
+import java.util.Set;
 
-class wdm
-  extends Drawable.ConstantState
+public class wdm
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @NonNull
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Error jdField_a_of_type_JavaLangError;
-  @NonNull
-  public final String a;
-  private final CopyOnWriteArraySet<wdp> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  @NonNull
-  private wdq<Bitmap> jdField_a_of_type_Wdq;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String b = "story.icon.ShareGroupDrawableState";
+  private wdn a = new wdn();
   
-  public wdm(String paramString, Context paramContext, Drawable paramDrawable)
+  public wdm(HashMap<String, List<wcm>> paramHashMap)
   {
-    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
-      throw new IllegalArgumentException("params should not be null");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext())
+      Object localObject = (Map.Entry)paramHashMap.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
+      if (localObject == null)
       {
-        wdp localwdp = (wdp)localIterator.next();
-        if (wdp.a(localwdp))
-        {
-          if (paramBoolean) {
-            localwdp.a(this);
-          } else {
-            localwdp.b(this);
-          }
-        }
-        else
-        {
-          wdk.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localwdp);
-        }
+        yqp.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
+      }
+      else
+      {
+        localObject = (List)localObject;
+        this.a.a(str, ((List)localObject).size());
       }
     }
-    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
   }
   
-  private void b(boolean paramBoolean)
+  public String a()
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(this.a);
+    while (localLinkedList.size() > 0)
     {
-      wdk.a(this.b, "startLoad");
-      this.jdField_a_of_type_Wdq.a(this).subscribe(new wdn(this));
+      int j = localLinkedList.size();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = (wdn)localLinkedList.poll();
+        if (localObject != null)
+        {
+          localStringBuilder.append(" [").append(((wdn)localObject).toString()).append("];");
+          localObject = ((wdn)localObject).a.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localLinkedList.offer((wdn)((Iterator)localObject).next());
+          }
+        }
+        i += 1;
+      }
+      localStringBuilder.append("\n");
     }
-    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
-      return;
-    }
-    wdk.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
-    this.jdField_a_of_type_JavaLangError = null;
-    b(true);
+    localStringBuilder.append("\n]");
+    yqp.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
   
-  Bitmap a()
+  public wdn a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Drawable a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    return null;
-  }
-  
-  Error a()
-  {
-    return this.jdField_a_of_type_JavaLangError;
-  }
-  
-  public void a()
-  {
-    wdk.b(this.b, "recycle");
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(wdo paramwdo)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wdp(paramwdo));
-  }
-  
-  void a(@NonNull wdq<Bitmap> paramwdq)
-  {
-    this.jdField_a_of_type_Wdq = paramwdq;
-  }
-  
-  public void b()
-  {
-    b(false);
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public Drawable newDrawable()
-  {
-    return new wdr(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wdm
  * JD-Core Version:    0.7.0.1
  */

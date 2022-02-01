@@ -1,19 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import rx.functions.Action1;
 
 class bald
-  implements DialogInterface.OnKeyListener
+  implements Action1<Throwable>
 {
-  bald(bala parambala) {}
+  bald(balb parambalb) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 4) && (bala.a(this.a) != null)) {
-      bala.a(this.a).a();
-    }
-    return paramInt == 4;
-  }
+  public void a(Throwable paramThrowable) {}
 }
 
 

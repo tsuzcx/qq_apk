@@ -3,16 +3,12 @@ package com.tencent.mobileqq.mini.entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserAppListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import alpg;
-import amru;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aoom;
-import awge;
-import awgf;
-import awgg;
-import awgh;
+import anil;
+import aoql;
+import aqpv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,6 +18,10 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class MiniAppUserAppInfoListManager
   private LinkedList<MiniAppInfo> mTopAppList = new LinkedList();
   private COMM.StCommonExt mTopExtInfo;
   private LinkedList<MiniAppInfo> mUsedAppList = new LinkedList();
-  private alpg redDotObserver = new MiniAppUserAppInfoListManager.1(this);
+  private anil redDotObserver = new MiniAppUserAppInfoListManager.1(this);
   
   public MiniAppUserAppInfoListManager(QQAppInterface paramQQAppInterface)
   {
@@ -100,7 +100,7 @@ public class MiniAppUserAppInfoListManager
   
   private void compareServerAndDbDataAsync(AppInterface paramAppInterface, List<MiniAppInfo> paramList)
   {
-    paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager().a(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager().query(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((paramList == null) || (paramList.size() == 0) || (paramAppInterface == null) || (paramAppInterface.size() == 0)) {
       return;
     }
@@ -147,32 +147,32 @@ public class MiniAppUserAppInfoListManager
     if (paramAppInterface == null) {
       QLog.e("MiniAppUserAppInfoListManager", 1, "clear DB, app is null.");
     }
-    awgf localawgf;
+    EntityManager localEntityManager;
     do
     {
       return;
-      localawgf = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    } while (localawgf == null);
-    paramAppInterface = localawgf.a();
+      localEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    } while (localEntityManager == null);
+    paramAppInterface = localEntityManager.getTransaction();
     try
     {
-      paramAppInterface.a();
-      localawgf.b(" DELETE FROM MiniAppEntity ");
-      localawgf.b("delete from sqlite_sequence where name='MiniAppEntity'");
-      localawgf.b("update sqlite_sequence SET seq = 0 where name = 'MiniAppEntity'");
-      paramAppInterface.c();
+      paramAppInterface.begin();
+      localEntityManager.execSQL(" DELETE FROM MiniAppEntity ");
+      localEntityManager.execSQL("delete from sqlite_sequence where name='MiniAppEntity'");
+      localEntityManager.execSQL("update sqlite_sequence SET seq = 0 where name = 'MiniAppEntity'");
+      paramAppInterface.commit();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        paramAppInterface.b();
+        paramAppInterface.end();
       }
     }
     finally
     {
-      paramAppInterface.b();
+      paramAppInterface.end();
     }
     QLog.i("MiniAppUserAppInfoListManager", 2, "clear mini app List DB");
   }
@@ -324,9 +324,9 @@ public class MiniAppUserAppInfoListManager
     ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.11(this, paramBoolean, paramList), 32, null, true);
   }
   
-  private void saveToDB(awge paramawge)
+  private void saveToDB(Entity paramEntity)
   {
-    ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.9(this, paramawge), 32, null, true);
+    ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.9(this, paramEntity), 32, null, true);
   }
   
   /* Error */
@@ -341,14 +341,14 @@ public class MiniAppUserAppInfoListManager
     //   11: ifeq +30 -> 41
     //   14: ldc 10
     //   16: iconst_1
-    //   17: new 331	java/lang/StringBuilder
+    //   17: new 334	java/lang/StringBuilder
     //   20: dup
-    //   21: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 453
-    //   27: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokespecial 335	java/lang/StringBuilder:<init>	()V
+    //   24: ldc_w 456
+    //   27: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: aload_1
-    //   31: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 346	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   37: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   40: return
     //   41: new 154	java/util/ArrayList
@@ -360,30 +360,30 @@ public class MiniAppUserAppInfoListManager
     //   52: aload_0
     //   53: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
     //   56: aload_1
-    //   57: invokevirtual 297	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
+    //   57: invokevirtual 300	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
     //   60: ifeq +12 -> 72
     //   63: aload_0
     //   64: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
     //   67: aload_1
-    //   68: invokevirtual 300	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
+    //   68: invokevirtual 303	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   71: pop
     //   72: aload_0
     //   73: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
     //   76: aload_1
-    //   77: invokevirtual 297	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
+    //   77: invokevirtual 300	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
     //   80: ifeq +12 -> 92
     //   83: aload_0
     //   84: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
     //   87: aload_1
-    //   88: invokevirtual 300	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
+    //   88: invokevirtual 303	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   91: pop
     //   92: aload_1
-    //   93: getfield 391	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
+    //   93: getfield 394	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
     //   96: ifne +43 -> 139
     //   99: aload_0
     //   100: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
     //   103: aload_1
-    //   104: invokevirtual 457	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
+    //   104: invokevirtual 460	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   107: aload_2
     //   108: aload_0
     //   109: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
@@ -399,16 +399,16 @@ public class MiniAppUserAppInfoListManager
     //   132: aload_0
     //   133: aload_2
     //   134: iconst_0
-    //   135: invokespecial 459	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:saveDataToDBWithBatch	(Ljava/util/List;Z)V
+    //   135: invokespecial 462	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:saveDataToDBWithBatch	(Ljava/util/List;Z)V
     //   138: return
     //   139: aload_1
-    //   140: getfield 391	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
+    //   140: getfield 394	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
     //   143: iconst_1
     //   144: if_icmpne -37 -> 107
     //   147: aload_0
     //   148: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
     //   151: aload_1
-    //   152: invokevirtual 457	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
+    //   152: invokevirtual 460	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   155: goto -48 -> 107
     //   158: astore_1
     //   159: ldc 2
@@ -430,31 +430,31 @@ public class MiniAppUserAppInfoListManager
     //   159	162	158	finally
   }
   
-  private boolean updateEntity(awgf paramawgf, awge paramawge)
+  private boolean updateEntity(EntityManager paramEntityManager, Entity paramEntity)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawgf.a()) {
-      if (paramawge.getStatus() == 1000)
+    if (paramEntityManager.isOpen()) {
+      if (paramEntity.getStatus() == 1000)
       {
-        paramawgf.b(paramawge);
-        if (paramawge.getStatus() == 1001) {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawgf.a();
+        paramEntityManager.close();
       }
     }
     do
     {
       return bool1;
-      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
+      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawgf.a(paramawge);
+      bool1 = paramEntityManager.update(paramEntity);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
+    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
     return false;
   }
   
@@ -524,31 +524,31 @@ public class MiniAppUserAppInfoListManager
     ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.13(this, paramMiniAppRedDotEntity), 32, null, true);
   }
   
-  private boolean updateRedDotData(awgf paramawgf, awge paramawge)
+  private boolean updateRedDotData(EntityManager paramEntityManager, Entity paramEntity)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramawgf.a()) {
-      if (paramawge.getStatus() == 1000)
+    if (paramEntityManager.isOpen()) {
+      if (paramEntity.getStatus() == 1000)
       {
-        paramawgf.b(paramawge);
-        if (paramawge.getStatus() == 1001) {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawgf.a();
+        paramEntityManager.close();
       }
     }
     do
     {
       return bool1;
-      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
+      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramawgf.a(paramawge);
+      bool1 = paramEntityManager.update(paramEntity);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
+    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
     return false;
   }
   
@@ -695,7 +695,7 @@ public class MiniAppUserAppInfoListManager
       return null;
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    return ((awgf)localObject).a(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    return ((EntityManager)localObject).query(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
   }
   
   public COMM.StCommonExt getPullDownEntryExtInfo()
@@ -716,7 +716,7 @@ public class MiniAppUserAppInfoListManager
       }
     }
     finally {}
-    boolean bool = aoom.i();
+    boolean bool = aqpv.e();
     localObject = ((List)localObject).iterator();
     MiniAppInfo localMiniAppInfo;
     Integer localInteger1;
@@ -829,10 +829,10 @@ public class MiniAppUserAppInfoListManager
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (amru)((AppInterface)localObject).getBusinessHandler(148);
+        localObject = (aoql)((AppInterface)localObject).getBusinessHandler(148);
         if (localObject != null)
         {
-          ((amru)localObject).a();
+          ((aoql)localObject).a();
           localSharedPreferences.edit().putLong(str, paramLong2).commit();
         }
       }
@@ -900,7 +900,7 @@ public class MiniAppUserAppInfoListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager
  * JD-Core Version:    0.7.0.1
  */

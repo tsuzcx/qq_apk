@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
 public class maq
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public maq(AVSchema paramAVSchema) {}
+  public maq(AVActivity paramAVActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     maq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.data.RecentUser;
-import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnct
-  implements Comparator<RecentUser>
+class bnct
+  extends BroadcastReceiver
 {
-  public bnct(ShareToActivity paramShareToActivity) {}
+  bnct(bncs parambncs) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
+    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
+      }
+      switch (paramIntent.getIntExtra("broadcastType", 1))
+      {
+      }
     }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
+    do
+    {
+      return;
+      paramContext = this.a.a.a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramContext.finish();
   }
 }
 

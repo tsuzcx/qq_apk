@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import atzx;
+import awhg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -25,7 +25,7 @@ public class PushBroadcastReceiver
           QLog.d("notification", 2, "PushBroadcastReceiver processIntent event : " + paramIntent.getAction());
         }
         ((MessageHandler)paramQQAppInterface.a(0)).a(BaseApplication.getContext(), paramIntent);
-        atzx.a(paramIntent);
+        awhg.a(paramIntent);
       }
       return;
       if (paramIntent.getAction().equals("tencent.notify.foreground")) {
@@ -43,7 +43,7 @@ public class PushBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.PushBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

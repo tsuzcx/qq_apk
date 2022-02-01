@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aslp;
-import awge;
-import awhs;
+import aurv;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
 
 public class PadFaceAd
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PadFaceAd> CREATOR = new aslp();
+  public static final Parcelable.Creator<PadFaceAd> CREATOR = new aurv();
   public String appName;
   public String appVersion;
   public String appView;
   public String arkMeta;
   public long endTime;
-  @awhs
+  @unique
   public int padFaceId;
   public int redPointId;
   public long startTime;
@@ -85,7 +85,7 @@ public class PadFaceAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.PadFaceAd
  * JD-Core Version:    0.7.0.1
  */

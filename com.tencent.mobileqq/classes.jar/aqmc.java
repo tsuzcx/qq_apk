@@ -1,33 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmc
-  implements View.OnClickListener
+  extends aqwr<aqmb>
 {
-  public aqmc(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public aqmb a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    }
-    paramView = (Button)paramView.findViewById(2131365060);
-    if (paramView.getTag() != null)
-    {
-      this.a.e = ((Integer)paramView.getTag()).intValue();
-      if (this.a.jdField_a_of_type_Arcc != null) {
-        this.a.jdField_a_of_type_Arcc.a(null);
+    return new aqmb();
+  }
+  
+  @NonNull
+  public aqmb a(@NonNull aqlg[] paramArrayOfaqlg)
+  {
+    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
+    if (paramArrayOfaqlg != null) {
+      try
+      {
+        if (paramArrayOfaqlg.length > 0)
+        {
+          int j = paramArrayOfaqlg.length;
+          int i = 0;
+          while (i < j)
+          {
+            aqlg localaqlg = paramArrayOfaqlg[i];
+            if (localaqlg != null)
+            {
+              aqmb localaqmb = aqmb.a(localaqlg.a);
+              if (QLog.isColorLevel()) {
+                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaqlg.a);
+              }
+              if (localaqmb != null) {
+                return localaqmb;
+              }
+            }
+            i += 1;
+          }
+        }
+        return new aqmb();
+      }
+      catch (Exception paramArrayOfaqlg)
+      {
+        paramArrayOfaqlg.printStackTrace();
+        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaqlg.getMessage());
       }
     }
-    this.a.m();
+  }
+  
+  @NonNull
+  public aqmb b()
+  {
+    return new aqmb();
+  }
+  
+  public Class<aqmb> clazz()
+  {
+    return aqmb.class;
+  }
+  
+  public int type()
+  {
+    return 649;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmc
  * JD-Core Version:    0.7.0.1
  */

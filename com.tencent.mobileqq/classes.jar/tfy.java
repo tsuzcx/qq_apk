@@ -1,56 +1,76 @@
-import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class tfy
-  extends tfj
+  extends qkz
 {
-  private TextView a;
+  private final long jdField_a_of_type_Long;
+  private final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private final String jdField_a_of_type_JavaLangString;
   
-  private tfy(ViewGroup paramViewGroup, tby paramtby)
+  public tfy(long paramLong, String paramString, ArticleInfo paramArticleInfo)
   {
-    super(paramViewGroup, paramtby, 2131560227);
+    super(-15504151, 13421772, 860716207);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static tfy a(ViewGroup paramViewGroup, tby paramtby)
+  public tfy(long paramLong, String paramString, ArticleInfo paramArticleInfo, int paramInt)
   {
-    return new tfy(paramViewGroup, paramtby);
+    super(paramInt, 13421772, 860716207);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void a()
+  private void a(long paramLong, Context paramContext)
   {
-    this.a = ((TextView)a(1).findViewById(2131379846));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
-    }
-    TextView localTextView = this.a;
-    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
-    for (int i = 8;; i = 0)
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null)) {}
+    ArticleInfo localArticleInfo;
+    String str;
+    do
     {
-      localTextView.setVisibility(i);
-      this.a.setText(paramstSimpleMetaFeed.feed_desc);
-      a(1, 1, paramstSimpleMetaFeed);
-      a(2, 2, paramstSimpleMetaFeed);
       return;
-    }
+      QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
+      pha.a(paramContext, pgc.g + bgku.encodeToString(String.valueOf(paramLong).getBytes(), 2));
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      pha.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
+      str = pha.a(this.jdField_a_of_type_JavaLangString, localArticleInfo, paramLong);
+      if (ube.a(localArticleInfo.mChannelID)) {}
+      for (paramContext = "0X800935C"; TextUtils.equals(this.jdField_a_of_type_JavaLangString, "3"); paramContext = "0X8007BA3")
+      {
+        oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+        snh.a(localArticleInfo, (int)localArticleInfo.mChannelID);
+        return;
+      }
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "5"))
+      {
+        if (qva.a(localArticleInfo))
+        {
+          oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+          snh.a(localArticleInfo, (int)localArticleInfo.mChannelID);
+          return;
+        }
+        oat.a(null, localArticleInfo.mSubscribeID, paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), "" + localArticleInfo.mStrategyId, str, false);
+        return;
+      }
+    } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "2"));
+    oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a(this.jdField_a_of_type_Long, paramView.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfy
  * JD-Core Version:    0.7.0.1
  */

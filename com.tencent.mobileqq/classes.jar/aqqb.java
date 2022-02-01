@@ -1,27 +1,89 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqqb
-  implements View.OnClickListener
+public class aqqb
+  extends aqkz<aqqa>
 {
-  aqqb(aqqa paramaqqa) {}
+  private static aqqa a;
   
-  public void onClick(View paramView)
+  public static aqqa a()
   {
-    Object localObject = arrr.a((FileInfo)((aqqc)paramView.getTag()).a);
-    localObject = new arlq(aqqa.a(this.a).app, aqqa.a(this.a), (FileManagerEntity)localObject, 10000);
-    localObject = new arls(aqqa.a(this.a), (arlv)localObject);
-    ((arls)localObject).a(8);
-    ((arls)localObject).a(zjc.a(paramView));
-    ((arls)localObject).a();
+    aqqa localaqqa2 = (aqqa)aqlk.a().a(524);
+    aqqa localaqqa1 = localaqqa2;
+    if (localaqqa2 == null) {
+      localaqqa1 = aqqa.a();
+    }
+    return localaqqa1;
+  }
+  
+  @NonNull
+  public aqqa a(int paramInt)
+  {
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = aqqa.a();
+    return a;
+  }
+  
+  @Nullable
+  public aqqa a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      paramArrayOfaqlg = aqqa.a(paramArrayOfaqlg[0].a);
+      a = null;
+      return paramArrayOfaqlg;
+    }
+    return aqqa.a();
+  }
+  
+  public void a(aqqa paramaqqa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramaqqa);
+    }
+  }
+  
+  public Class<aqqa> clazz()
+  {
+    return aqqa.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 524;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqb
  * JD-Core Version:    0.7.0.1
  */

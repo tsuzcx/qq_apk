@@ -1,13 +1,28 @@
-import android.view.View;
-
-class aihu
-  implements bhvm
+public class aihu
 {
-  aihu(aiht paramaiht, View paramView) {}
+  public double a;
+  public double b;
   
-  public void a()
+  public aihu(double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aihu(aihu paramaihu)
+  {
+    a(paramaihu);
+  }
+  
+  public void a(aihu paramaihu)
+  {
+    this.a = paramaihu.a;
+    this.b = paramaihu.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

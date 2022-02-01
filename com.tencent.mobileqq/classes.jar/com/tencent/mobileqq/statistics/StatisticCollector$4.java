@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.statistics;
 
-import azri;
-import zhx;
+import abev;
+import bctj;
 
 public class StatisticCollector$4
   implements Runnable
 {
-  public StatisticCollector$4(azri paramazri) {}
+  public StatisticCollector$4(bctj parambctj) {}
   
   public void run()
   {
-    zhx.a(azri.a(), 1);
+    abev.a(bctj.a(), 1);
   }
 }
 

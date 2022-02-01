@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,8 +25,8 @@ class ColorRingJsPlugin$1
         if (this.this$0.mBrowserApp != null)
         {
           localObject = this.this$0.mBrowserApp.getEntityManagerFactory(null).createEntityManager();
-          localExtensionInfo = (ExtensionInfo)((awgf)localObject).a(ExtensionInfo.class, this.this$0.mBrowserApp.getAccount());
-          ((awgf)localObject).a();
+          localExtensionInfo = (ExtensionInfo)((EntityManager)localObject).find(ExtensionInfo.class, this.this$0.mBrowserApp.getAccount());
+          ((EntityManager)localObject).close();
           localJSONObject.put("result", 0);
           localObject = new JSONObject();
           if (localExtensionInfo == null)
@@ -62,7 +62,7 @@ class ColorRingJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorRingJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,12 +27,29 @@ public class c
   String g;
   String h;
   ConcurrentLinkedQueue i = new ConcurrentLinkedQueue();
-  public u j = null;
+  public v j = null;
   volatile boolean k = false;
   private IMsfServiceCallbacker m;
   private IBinder.DeathRecipient n;
+  private final Object o = new Object();
   
-  private void e()
+  private void b(IMsfServiceCallbacker paramIMsfServiceCallbacker)
+  {
+    synchronized (this.o)
+    {
+      c(paramIMsfServiceCallbacker);
+      return;
+    }
+  }
+  
+  private void c(IMsfServiceCallbacker paramIMsfServiceCallbacker)
+  {
+    e();
+    this.m = paramIMsfServiceCallbacker;
+    d();
+  }
+  
+  private void d()
   {
     try
     {
@@ -51,7 +68,7 @@ public class c
     }
   }
   
-  private void f()
+  private void e()
   {
     try
     {
@@ -88,15 +105,26 @@ public class c
       return;
     }
     paramInt = e.e.getUinPushStatus(str);
-    t.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
+    u.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
     MsfService.getCore().pushManager.j.a();
   }
   
   public void a(IMsfServiceCallbacker paramIMsfServiceCallbacker)
   {
-    f();
-    this.m = paramIMsfServiceCallbacker;
-    e();
+    if ((paramIMsfServiceCallbacker == this.m) && (paramIMsfServiceCallbacker != null)) {
+      synchronized (this.o)
+      {
+        if (paramIMsfServiceCallbacker == this.m)
+        {
+          c(null);
+          this.a = false;
+          this.c = false;
+          this.k = false;
+          QLog.d("MSF.S.AppProcessInfo", 1, String.format("setAppDisConnected appProcessName = %s, isAppConnected = %s, halfCloseStatus = %s, keepProcessAlive = %s, preCallback = %s", new Object[] { this.g, Boolean.valueOf(this.a), Boolean.valueOf(this.c), Boolean.valueOf(this.k), Integer.toHexString(paramIMsfServiceCallbacker.hashCode()) }));
+        }
+        return;
+      }
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -118,7 +146,7 @@ public class c
     a(paramString2);
     if (paramIMsfServiceCallbacker != null)
     {
-      a(paramIMsfServiceCallbacker);
+      b(paramIMsfServiceCallbacker);
       this.a = true;
     }
     for (;;)
@@ -156,17 +184,6 @@ public class c
   public IMsfServiceCallbacker c()
   {
     return this.m;
-  }
-  
-  public void d()
-  {
-    a(null);
-    this.a = false;
-    this.c = false;
-    this.k = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.AppProcessInfo", 2, String.format("setAppDisConnected appProcessName=%s isAppConnected=%s halfCloseStatus=%s keepProcessAlive=%s", new Object[] { this.g, Boolean.valueOf(this.a), Boolean.valueOf(this.c), Boolean.valueOf(this.k) }));
-    }
   }
 }
 

@@ -1,35 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import java.util.ArrayList;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
-public class yrh
-  extends aluu
+class yrh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public yrh(TroopMemberApiService paramTroopMemberApiService) {}
+  yrh(yrg paramyrg) {}
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
+    if (paramBoolean)
+    {
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Yty.a.a != null) {
+        this.a.jdField_a_of_type_Yty.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
+    }
   }
   
-  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(102, localBundle);
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrh
  * JD-Core Version:    0.7.0.1
  */

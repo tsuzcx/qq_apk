@@ -1,9 +1,17 @@
-public class ajwk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+
+class ajwk
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  ajwk(ajvr paramajvr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+  }
 }
 
 

@@ -104,66 +104,66 @@ public class TabBarView
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     Object localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131378137);
+    ((View)localObject1).setId(2131378983);
     localRelativeLayout.addView((View)localObject1, new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 0.5F)));
     localObject1 = new ImageView(getContext());
-    ((ImageView)localObject1).setId(2131367819);
+    ((ImageView)localObject1).setId(2131368138);
     Object localObject2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 30.0F), DisplayUtil.dip2px(getContext(), 30.0F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131378137);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131378983);
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setId(2131363051);
+    ((TextView)localObject1).setId(2131363235);
     ((TextView)localObject1).setTextColor(-1);
     ((TextView)localObject1).setTextSize(1, 10.0F);
     ((TextView)localObject1).setPadding(DisplayUtil.dip2px(getContext(), 1.0F), 0, DisplayUtil.dip2px(getContext(), 1.0F), 0);
-    ((TextView)localObject1).setBackgroundResource(2130849805);
+    ((TextView)localObject1).setBackgroundResource(2130850392);
     ((TextView)localObject1).setVisibility(4);
     ((TextView)localObject1).setGravity(17);
     ((TextView)localObject1).setSingleLine();
     ((TextView)localObject1).setMaxEms(3);
     ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367819);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367819);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131368138);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131368138);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131375548);
-    ((View)localObject1).setBackgroundResource(2130849801);
+    ((View)localObject1).setId(2131376274);
+    ((View)localObject1).setBackgroundResource(2130850388);
     ((View)localObject1).setVisibility(4);
     localObject2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 10.0F), DisplayUtil.dip2px(getContext(), 10.0F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367819);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367819);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131368138);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131368138);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setId(2131377606);
+    ((TextView)localObject1).setId(2131378445);
     ((TextView)localObject1).setTextSize(1, 12.0F);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131367819);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131368138);
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = DisplayUtil.dip2px(getContext(), 5.0F);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
     localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377606);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131378445);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131363367);
+    ((View)localObject1).setId(2131363561);
     localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 0.5F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377606);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131378445);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new LinearLayout(getContext());
     ((LinearLayout)localObject1).setOrientation(0);
     localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363367);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363561);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject2 = new View(getContext());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(getContext(), 2.0F));
     localLayoutParams.weight = 1.0F;
     ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new View(getContext());
-    ((View)localObject2).setId(2131363372);
+    ((View)localObject2).setId(2131363566);
     ((View)localObject2).setVisibility(8);
     localLayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(getContext(), 2.0F));
     localLayoutParams.weight = 3.0F;
@@ -417,7 +417,7 @@ public class TabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

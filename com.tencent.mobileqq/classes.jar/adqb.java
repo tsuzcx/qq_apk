@@ -1,17 +1,18 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class adqb
+public class adqb
   implements DialogInterface.OnClickListener
 {
-  adqb(adqa paramadqa) {}
+  public adqb(BaseChatPie paramBaseChatPie) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, alud.a(2131710755));
-    this.a.a.finish();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
   }
 }
 

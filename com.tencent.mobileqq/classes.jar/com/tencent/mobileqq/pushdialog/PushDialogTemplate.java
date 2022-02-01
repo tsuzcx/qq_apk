@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awge;
-import awhp;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -9,6 +7,8 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -18,20 +18,20 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.TemplParam;
 
 public class PushDialogTemplate
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   private static final byte[] KV_SEPARATOR = { 64, 33 };
-  @awhp
+  @notColumn
   private static final byte[] PARAM_SEPARATOR = { 35, 33 };
-  @awhp
+  @notColumn
   private static final String TAG = "PushDialogTemplate";
   public long busi_id;
   public long busi_type;
   public int c2c_type;
   public int ctrl_flag;
   public int friend_banned_flag = -1;
-  @awhp
+  @notColumn
   private List<submsgtype0x122.TemplParam> mParamList;
   public long mUin;
   public byte[] reserv;
@@ -236,7 +236,7 @@ public class PushDialogTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogTemplate
  * JD-Core Version:    0.7.0.1
  */

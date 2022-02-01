@@ -1,57 +1,95 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract class qib
-  extends Binder
-  implements qia
+public class qib
 {
-  public qib()
+  private static String a(String paramString)
   {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-  }
-  
-  public static qia a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof qia))) {
-      return (qia)localIInterface;
-    }
-    return new qic(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramString = bgng.a(pha.a(), BaseApplicationImpl.getContext(), paramString);
+    if (paramString != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-      return true;
+      paramString = paramString.a;
+      if (paramString != null)
+      {
+        paramString = (String)paramString.get("target");
+        if (!TextUtils.isEmpty(paramString)) {
+          return paramString;
+        }
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    QLog.d("PGCShortContentUtils", 1, "getJumpType: " + paramString1 + " recommendType: " + paramString2);
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (;;)
     {
-      a(bool, paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
+      QLog.d("PGCShortContentUtils", 1, "getJumpType result is: " + paramString2);
+      return paramString2;
+      paramString2 = a(paramString1);
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        if (a(paramString1)) {
+          paramString2 = "6";
+        }
+      }
+      else if ((paramString1.startsWith("http:")) || (paramString1.startsWith("https:"))) {
+        paramString2 = paramString1;
+      } else {
+        paramString2 = "-1";
+      }
     }
+  }
+  
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo)
+  {
+    a(paramContext, paramArticleInfo, false);
+  }
+  
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    QLog.d("PGCShortContentUtils", 1, "redirectToOtherPage " + paramArticleInfo + " isComment: " + paramBoolean);
+    if (paramArticleInfo == null)
+    {
+      QLog.d("PGCShortContentUtils", 1, "articleInfo is null");
+      return;
+    }
+    if (paramArticleInfo.isCardJumpUrlAvailable == 1)
+    {
+      paramArticleInfo.clickJumpTarget = a(paramArticleInfo.getCardJumpUrl(), "-1");
+      pha.d(paramContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    paramArticleInfo.clickJumpTarget = a(pgc.e, "-1");
+    pha.a(paramContext, paramArticleInfo, paramBoolean);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = bgng.a(pha.a(), BaseApplicationImpl.getContext(), paramString);
+      if (localObject != null)
+      {
+        localObject = ((bgmp)localObject).a;
+        if ((localObject != null) && ("6".equals((String)((Map)localObject).get("target"))) && (((Map)localObject).containsKey("v_url_base64"))) {
+          return true;
+        }
+      }
+      return tlg.b(tlg.b(paramString));
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qib
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.video;
 
-import aatp;
+import acsj;
 import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 class GdtVideoCommonView$7
   implements Runnable
@@ -18,7 +18,7 @@ class GdtVideoCommonView$7
     int i;
     if (this.this$0.a())
     {
-      l2 = GdtVideoCommonView.a(this.this$0).getCurrentPostion();
+      l2 = GdtVideoCommonView.a(this.this$0).getCurrentPositionMs();
       if (l2 != 0L)
       {
         if (GdtVideoCommonView.a(this.this$0) <= 0L) {
@@ -36,7 +36,7 @@ class GdtVideoCommonView$7
       {
         GdtVideoCommonView.a(this.this$0).setProgress(i);
         GdtVideoCommonView.b(this.this$0).setProgress(i);
-        GdtVideoCommonView.c(this.this$0).setText(aatp.a(l1));
+        GdtVideoCommonView.c(this.this$0).setText(acsj.a(l1));
       }
       GdtVideoCommonView.a(this.this$0).postDelayed(this, 50L);
       return;
@@ -50,7 +50,7 @@ class GdtVideoCommonView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.7
  * JD-Core Version:    0.7.0.1
  */

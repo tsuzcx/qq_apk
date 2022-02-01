@@ -1,80 +1,54 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.text.TextUtils;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.utils.ErrorCodeUtil;
+import com.tencent.weiyun.utils.NetworkUtils;
 
-public abstract class bmzb
-  implements TextWatcher, TextView.OnEditorActionListener
+public final class bmzb
 {
-  protected EditText a;
-  protected TextView a;
-  protected bmzc a;
-  
-  @NonNull
-  public static bmzb a(int paramInt)
+  public static String a(int paramInt, String paramString)
   {
-    switch (paramInt)
+    String str = paramString;
+    if (paramInt != 0)
     {
-    default: 
-      throw new IllegalArgumentException("unSupport interactType:" + paramInt);
+      str = paramString;
+      if (TextUtils.isEmpty(paramString))
+      {
+        str = ErrorCodeUtil.getErrorMsg(paramInt);
+        paramString = str;
+        if (TextUtils.isEmpty(str)) {
+          if (!ErrorCodeUtil.isHttpError(paramInt)) {
+            break label101;
+          }
+        }
+      }
     }
-    return new bmze();
-  }
-  
-  protected abstract View a();
-  
-  public abstract bmzd a();
-  
-  public void a() {}
-  
-  public void a(Context paramContext, bmzd parambmzd, EditText paramEditText, TextView paramTextView, bmzc parambmzc)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_Bmzc = parambmzc;
-  }
-  
-  protected void a(CharSequence paramCharSequence, int paramInt)
-  {
-    int i = bdnn.b(paramCharSequence.toString());
-    if (paramInt - i <= 6)
+    label101:
+    for (paramString = ErrorCodeUtil.getErrorMsg(1810023);; paramString = ErrorCodeUtil.getErrorMsg(1810014))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(i / 2), Integer.valueOf(paramInt / 2) }));
-      return;
+      str = paramString;
+      if (1810008 == paramInt) {
+        str = paramString + "\n请尝试下载到其他路径";
+      }
+      str = "(" + paramInt + ")" + str;
+      return str;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  protected void a(CharSequence paramCharSequence, boolean paramBoolean)
+  public static String a(String paramString)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    paramString = new StringBuilder(paramString);
+    int i = NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext());
+    paramString.append("&nettype=").append(i);
+    return paramString.toString();
   }
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  static boolean a(int paramInt)
   {
-    return false;
+    return (-29150 == paramInt) || (-29151 == paramInt) || (-29152 == paramInt);
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

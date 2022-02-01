@@ -1,51 +1,57 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class auhd
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public auhd(ForwardFileOption paramForwardFileOption) {}
   
-  public auhc a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new auhc(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
-  
-  public auhd a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public auhd a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public auhd a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public auhd b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public auhd c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    int i = ForwardFileOption.a(this.a);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramMotionEvent = paramView.findViewById(2131367033);
+      if (paramMotionEvent != null) {
+        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
+      if (i != 1) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (i != 3);
+            paramView = (ImageView)paramView.findViewById(2131367039);
+          } while (paramView == null);
+          paramView.setImageResource(2130840118);
+          return false;
+        } while (paramMotionEvent.getAction() != 1);
+        paramMotionEvent = paramView.findViewById(2131367033);
+        if (paramMotionEvent != null) {
+          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
+        }
+      } while ((i == 1) || (i != 3));
+      paramView = (ImageView)paramView.findViewById(2131367039);
+    } while (paramView == null);
+    paramView.setImageResource(2130840117);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhd
  * JD-Core Version:    0.7.0.1
  */

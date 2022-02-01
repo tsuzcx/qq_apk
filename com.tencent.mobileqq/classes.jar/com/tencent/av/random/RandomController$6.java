@@ -15,7 +15,7 @@ class RandomController$6
   {
     RandomController.a(this.this$0).a().removeCallbacks(RandomController.d(this.this$0));
     if (!RandomController.a(this.this$0).a()) {
-      PopupDialog.a(RandomController.a(this.this$0).getApp().getApplicationContext(), RandomController.a(this.this$0).getApp().getString(2131696196), RandomController.a(this.this$0, RandomController.d(this.this$0)));
+      PopupDialog.a(RandomController.a(this.this$0).getApp().getApplicationContext(), RandomController.a(this.this$0).getApp().getString(2131695076), RandomController.a(this.this$0, RandomController.d(this.this$0)));
     }
     do
     {
@@ -40,7 +40,7 @@ class RandomController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.random.RandomController.6
  * JD-Core Version:    0.7.0.1
  */

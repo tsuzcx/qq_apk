@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzk
-  implements View.OnClickListener
+  extends ahbl
 {
-  agzk(agzj paramagzj) {}
-  
-  public void onClick(View paramView)
+  agzk(agwz paramagwz)
   {
-    agzj.a(this.a).a();
-    ChatActivityUtils.a(agzj.a(this.a), agzj.a(this.a), agzj.a(this.a).jdField_a_of_type_Int, agzj.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    azqs.b(agzj.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agsj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

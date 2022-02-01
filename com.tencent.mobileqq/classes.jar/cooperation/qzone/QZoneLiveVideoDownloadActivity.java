@@ -1,12 +1,15 @@
 package cooperation.qzone;
 
+import Override;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bjdt;
-import bjpo;
+import android.view.MotionEvent;
+import blsb;
+import bmdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
@@ -15,11 +18,12 @@ import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedL
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
 import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
-import ndd;
+import nlw;
 
 public class QZoneLiveVideoDownloadActivity
   extends QZoneLiveVideoBaseDownLoadActivty
@@ -54,6 +58,21 @@ public class QZoneLiveVideoDownloadActivity
     this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(a());
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -83,7 +102,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718313);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716472);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -98,7 +117,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131718313);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716472);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -113,12 +132,12 @@ public class QZoneLiveVideoDownloadActivity
     }
     QLog.d("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] plugin not downloaded");
     LpReportInfo_dc01500.reportLaunch(a(), "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.c + "");
-    if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (ndd.a(this.jdField_a_of_type_JavaLangString)))
+    if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (nlw.a(this.jdField_a_of_type_JavaLangString)))
     {
       paramPluginManagerClient = this.jdField_a_of_type_JavaLangString + "&stayin=1";
       QLog.d("QZoneLiveVideoDownloadActivity", 1, "watch mode, jump to H5, " + paramPluginManagerClient);
-      bjdt.a(this, paramPluginManagerClient, -1, null, null);
-      if (bjpo.b()) {
+      blsb.a(this, paramPluginManagerClient, -1, null, null);
+      if (bmdx.b()) {
         c();
       }
       a();
@@ -142,7 +161,7 @@ public class QZoneLiveVideoDownloadActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

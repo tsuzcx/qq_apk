@@ -1,19 +1,19 @@
 package com.tencent.biz.TroopRedpoint;
 
-import alof;
+import anhk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dating.MsgBoxListActivity;
 import com.tencent.qphone.base.util.QLog;
-import nan;
+import njg;
 
 public class TroopRedTouchManager$2
   implements Runnable
 {
-  public TroopRedTouchManager$2(nan paramnan, QQAppInterface paramQQAppInterface) {}
+  public TroopRedTouchManager$2(njg paramnjg, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.this$0.a = MsgBoxListActivity.a(this.a, alof.I, true);
+    this.this$0.a = MsgBoxListActivity.a(this.a, anhk.I, true);
     if (QLog.isColorLevel()) {
       QLog.d("nearby.redpoint", 2, "asyn nearbyMsgBoxUnReadNum=" + this.this$0.a);
     }
@@ -21,7 +21,7 @@ public class TroopRedTouchManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.2
  * JD-Core Version:    0.7.0.1
  */

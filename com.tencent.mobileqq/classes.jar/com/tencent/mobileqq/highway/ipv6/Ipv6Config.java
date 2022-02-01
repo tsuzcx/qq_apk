@@ -6,6 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -17,20 +18,33 @@ public class Ipv6Config
   public static final int STRATEGY_FIRST_AS_MSF = 3;
   public static final int STRATEGY_V4_FIRST = 1;
   public static final int STRATEGY_V6_FIRST = 2;
-  public static int sBdhStrategy;
-  public static int sConnAttemptDelay;
-  public static int sRMDownStrategy;
+  private static Ipv6Config sInstance = new Ipv6Config();
+  public int mBdhStrategy;
+  public int mConnAttemptDelay;
+  public int mCurnetIptype;
+  public int mRMDownStrategy;
   
-  static
+  private Ipv6Config()
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    sRMDownStrategy = localSharedPreferences.getInt("ipv6_strategy_rm_down", 0);
-    sBdhStrategy = localSharedPreferences.getInt("ipv6_strategy_bdh", 0);
-    sConnAttemptDelay = localSharedPreferences.getInt("ipv6_strategy_cad", 0);
-    BdhLogUtil.LogEvent("E", "Ipv6Config.getCfgFromSP: sRMDownStrategy = " + sRMDownStrategy + ", sBdhStrategy = " + sBdhStrategy + ", sConnAttemptDelay = " + sConnAttemptDelay);
+    this.mRMDownStrategy = localSharedPreferences.getInt("ipv6_strategy_rm_down", 0);
+    this.mBdhStrategy = localSharedPreferences.getInt("ipv6_strategy_bdh", 0);
+    this.mConnAttemptDelay = localSharedPreferences.getInt("ipv6_strategy_cad", 0);
+    BdhLogUtil.LogEvent("E", "Ipv6Config.getCfgFromSP: sRMDownStrategy = " + this.mRMDownStrategy + ", sBdhStrategy = " + this.mBdhStrategy + ", sConnAttemptDelay = " + this.mConnAttemptDelay);
   }
   
-  public static boolean isIpv6BDHFirst(HwEngine paramHwEngine)
+  public static Ipv6Config getInstance()
+  {
+    return sInstance;
+  }
+  
+  public int getNetType()
+  {
+    this.mCurnetIptype = NetConnInfoCenter.getActiveNetIpFamily(true);
+    return this.mCurnetIptype;
+  }
+  
+  public boolean isIpv6BDHFirst(HwEngine paramHwEngine)
   {
     boolean bool = true;
     if ((paramHwEngine != null) && (!paramHwEngine.ipv6Switch)) {
@@ -39,10 +53,11 @@ public class Ipv6Config
     do
     {
       return false;
-      if (sBdhStrategy == 2) {
+      BdhLogUtil.LogEvent("E", "Ipv6Config.isIpv6BDHFirst, mBdhStrategy = " + this.mBdhStrategy);
+      if (this.mBdhStrategy == 2) {
         return true;
       }
-    } while (sRMDownStrategy != 3);
+    } while (this.mRMDownStrategy != 3);
     if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {}
     for (;;)
     {
@@ -51,12 +66,17 @@ public class Ipv6Config
     }
   }
   
-  public static void updateCfgFromSrv(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public boolean isIpv6SwitchOpen(HwEngine paramHwEngine)
+  {
+    return (paramHwEngine != null) && (paramHwEngine.ipv6Switch);
+  }
+  
+  public void updateCfgFromSrv(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     BdhLogUtil.LogEvent("E", "Ipv6Config.updateCfgFromSrv: rmDownStrategy = " + paramInt1 + ", bdhStrategy = " + paramInt2 + ", connAttemptDelay = " + paramInt3);
-    sRMDownStrategy = paramInt1;
-    sBdhStrategy = paramInt2;
-    sConnAttemptDelay = paramInt3;
+    this.mRMDownStrategy = paramInt1;
+    this.mBdhStrategy = paramInt2;
+    this.mConnAttemptDelay = paramInt3;
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext.putInt("ipv6_strategy_rm_down", paramInt1);
     paramContext.putInt("ipv6_strategy_bdh", paramInt2);

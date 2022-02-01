@@ -1,64 +1,20 @@
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mrk
+class mrk
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public ViewStub a;
-  public LottieDrawable a;
-  public View b = null;
+  mrk(mri parammri) {}
   
-  public mrk()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int i;
-    if (paramBoolean)
-    {
-      i = 0;
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-      {
-        if (!paramBoolean) {
-          break label76;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewStub != null) {
-        this.jdField_a_of_type_AndroidViewViewStub.setVisibility(i);
-      }
-      if (this.b != null) {
-        this.b.setVisibility(i);
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(i);
-      }
-      return;
-      i = 8;
-      break;
-      label76:
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
-    }
+    paramDialogInterface.dismiss();
+    mri.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mrk
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.biz.qqcircle.widgets.multiTouchImage;
 
 import android.view.animation.Interpolator;
 import com.tencent.qphone.base.util.QLog;
-import uhn;
-import uhr;
+import wax;
+import wbb;
 
 class PhotoViewAttacher$AnimatedZoomRunnable
   implements Runnable
@@ -36,7 +36,7 @@ class PhotoViewAttacher$AnimatedZoomRunnable
     PhotoViewAttacher.a(this.this$0).a(f2, this.jdField_a_of_type_Float, this.b);
     if (f1 < 1.0F)
     {
-      uhn.a(PhotoViewAttacher.a(this.this$0), this);
+      wax.a(PhotoViewAttacher.a(this.this$0), this);
       QLog.d("PhotoViewAttacher", 4, "AnimatedZoomRunnable postOnAnimation t:" + f1 + " deltaScale:" + f2 + " mFocalX:" + this.jdField_a_of_type_Float + " mFocalY:" + this.b);
     }
     QLog.d("PhotoViewAttacher", 4, "AnimatedZoomRunnable t:" + f1 + " deltaScale:" + f2 + " mFocalX:" + this.jdField_a_of_type_Float + " mFocalY:" + this.b);
@@ -44,7 +44,7 @@ class PhotoViewAttacher$AnimatedZoomRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher.AnimatedZoomRunnable
  * JD-Core Version:    0.7.0.1
  */

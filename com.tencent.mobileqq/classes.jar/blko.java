@@ -1,6 +1,8 @@
-class blko
+import android.os.Bundle;
+
+public abstract interface blko
 {
-  public static blkl a = new blkl(null);
+  public abstract boolean a(int paramInt, Bundle paramBundle);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahdo;
-import ahdp;
+import aiqb;
+import aiqc;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
@@ -12,9 +12,9 @@ public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private ahdp jdField_a_of_type_Ahdp;
+  private aiqc jdField_a_of_type_Aiqc;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ahdo(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new aiqb(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -52,9 +52,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(ahdp paramahdp)
+  public void setInputListener(aiqc paramaiqc)
   {
-    this.jdField_a_of_type_Ahdp = paramahdp;
+    this.jdField_a_of_type_Aiqc = paramaiqc;
   }
   
   public void setTextLengthLimit(int paramInt)
@@ -64,7 +64,7 @@ public class BookEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
 public class umc
+  extends uly<ulp, WSPushStrategyInfo>
 {
-  public static Dispatcher a()
+  public umc(ulp paramulp)
   {
-    return Dispatchers.get(ThreadManager.getSubThreadLooper());
+    super(paramulp);
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    WSHomeFragment.a(paramContext);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     umc
  * JD-Core Version:    0.7.0.1
  */

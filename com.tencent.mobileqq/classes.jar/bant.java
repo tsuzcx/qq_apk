@@ -1,57 +1,31 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-
-public abstract class bant
-  extends Binder
-  implements bans
+class bant
+  implements alkz
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
-  static final int TRANSACTION_onComplete = 2;
-  static final int TRANSACTION_onProgress = 1;
+  bant(bans parambans, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
-  public bant()
+  public void a()
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
-  }
-  
-  public static bans asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bans))) {
-      return (bans)localIInterface;
-    }
-    return new banu(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
+      bcst.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
+      this.jdField_a_of_type_Bans.a.dismiss();
+      this.jdField_a_of_type_Bans.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    onComplete(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+  }
+  
+  public void b()
+  {
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
+    {
+      bcst.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
+      this.jdField_a_of_type_Bans.a.dismiss();
+      return;
+    }
   }
 }
 

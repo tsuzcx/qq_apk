@@ -1,30 +1,10 @@
-import android.support.v4.content.FileProvider;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import kotlin.Metadata;
 
-class tqa
-  implements twi
-{
-  tqa(tpz paramtpz) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
-    if (paramBoolean)
-    {
-      paramString = new File(paramString, tpz.a(this.a));
-      if ((paramString.exists()) && (paramString.length() > 0L))
-      {
-        tpz.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
-        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + tpz.b());
-      }
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DebugBridgeInvokeHandler$Companion;", "", "()V", "DETAIL_LOG", "", "NS_DEBUG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqa {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqa
  * JD-Core Version:    0.7.0.1
  */

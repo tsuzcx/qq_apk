@@ -1,20 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class arji
-  implements aris
+  implements DialogInterface.OnKeyListener
 {
-  arji(arje paramarje) {}
+  arji(arjh paramarjh) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a(true, arqo.a(this.a.a.a()), this.a.c(), new arjj(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 

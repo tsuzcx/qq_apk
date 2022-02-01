@@ -1,54 +1,31 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class yks
+  extends QQUIEventReceiver<ykq, wxv>
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private ylc jdField_a_of_type_Ylc;
-  
-  public void a()
+  public yks(@NonNull ykq paramykq)
   {
-    a(-1);
+    super(paramykq);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull ykq paramykq, @NonNull wxv paramwxv)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Ylc != null) {}
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case -1: 
-      this.jdField_a_of_type_Ylc.d();
-      return;
-    case 1: 
-      this.jdField_a_of_type_Ylc.b();
-      return;
-    case 2: 
-      this.jdField_a_of_type_Ylc.a();
+    if ((paramwxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwxv.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    this.jdField_a_of_type_Ylc.c();
+    paramykq.b(paramwxv.jdField_a_of_type_JavaUtilList);
   }
   
-  public void a(ylc paramylc)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Ylc = paramylc;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == -1;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
+    return wxv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yks
  * JD-Core Version:    0.7.0.1
  */

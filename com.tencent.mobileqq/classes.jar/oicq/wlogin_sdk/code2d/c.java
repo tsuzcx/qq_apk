@@ -28,15 +28,15 @@ public class c
   
   protected byte[] getAppInfo(long paramLong1, long paramLong2)
   {
-    byte[] arrayOfByte = new byte[28 + (t.E.length + 2 + 2 + t.G.length + 2 + t.H.length)];
-    util.int64_to_buf32(arrayOfByte, 0, 8L);
+    byte[] arrayOfByte = new byte[28 + (t.F.length + 2 + 2 + t.H.length + 2 + t.I.length)];
+    util.int64_to_buf32(arrayOfByte, 0, 11L);
     util.int64_to_buf32(arrayOfByte, 4, paramLong1);
     util.int64_to_buf32(arrayOfByte, 8, paramLong2);
-    System.arraycopy(t.A, 0, arrayOfByte, 12, t.A.length);
-    int i = t.A.length;
-    i = fill_staff(arrayOfByte, t.E, i + 12);
-    i = fill_staff(arrayOfByte, t.G, i);
-    fill_staff(arrayOfByte, t.H, i);
+    System.arraycopy(t.B, 0, arrayOfByte, 12, t.B.length);
+    int i = t.B.length;
+    i = fill_staff(arrayOfByte, t.F, i + 12);
+    i = fill_staff(arrayOfByte, t.H, i);
+    fill_staff(arrayOfByte, t.I, i);
     return arrayOfByte;
   }
   

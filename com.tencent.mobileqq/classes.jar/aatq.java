@@ -1,16 +1,17 @@
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-final class aatq
-  extends ShapeDrawable.ShaderFactory
+class aatq
+  implements DialogInterface.OnShowListener
 {
-  aatq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
+  aatq(aatm paramaatm) {}
   
-  public Shader resize(int paramInt1, int paramInt2)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

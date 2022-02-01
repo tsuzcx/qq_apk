@@ -1,26 +1,24 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneClickReport;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class afze
   implements View.OnClickListener
 {
-  afze(afzc paramafzc) {}
+  afze(afyw paramafyw) {}
   
   public void onClick(View paramView)
   {
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    for (;;)
     {
-      paramView = new bjdn();
-      paramView.c = "330";
-      paramView.d = "3";
-      paramView.e = "2";
-      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView);
-      paramView = bjea.a();
-      bjdt.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 0, 0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
+      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+      bcst.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
     }
   }
 }

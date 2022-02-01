@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class afqq
-  implements afug
+public class afqq
+  extends aywi
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afqq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
-    paramChatMessage = new ArkAppMessage.Config();
-    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
-      return 112;
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
     }
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
-      return 81;
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
     }
-    return 47;
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

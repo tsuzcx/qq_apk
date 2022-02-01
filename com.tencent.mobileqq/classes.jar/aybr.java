@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
-
 public abstract interface aybr
 {
-  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap);
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

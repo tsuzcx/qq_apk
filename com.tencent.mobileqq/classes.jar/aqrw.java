@@ -1,16 +1,13 @@
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+
 class aqrw
-  extends aqty
+  implements bosh
 {
-  aqrw(aqrv paramaqrv, aqsa paramaqsa) {}
+  aqrw(aqrv paramaqrv) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void a(String paramString)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqsa.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aqsa.a(paramInt, paramString1);
+    ((DynamicTextConfigManager)bojv.a(7)).a(paramString);
   }
 }
 

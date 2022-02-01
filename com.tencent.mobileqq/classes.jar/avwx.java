@@ -1,27 +1,19 @@
-import android.hardware.Camera.Size;
-import java.util.Comparator;
-
 class avwx
-  implements Comparator<Camera.Size>
+  extends anmu
 {
   avwx(avwv paramavwv) {}
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Long))) {
+      avzs.a(this.a.app, 0, String.valueOf(paramObject));
     }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwx
  * JD-Core Version:    0.7.0.1
  */

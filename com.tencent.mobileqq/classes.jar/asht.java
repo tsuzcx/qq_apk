@@ -1,17 +1,51 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.List;
 
 public class asht
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public asht(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  public static final int FOOTER_TYPE_LOADING = 0;
+  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
+  public static final int FOOTER_TYPE_LOAD_OVER = 2;
+  public static final int TYPE_CAMPUS_VERIFY = 7;
+  public static final int TYPE_EMTPY = 2;
+  public static final int TYPE_FEED = 0;
+  public static final int TYPE_FEED_ADV = 4;
+  public static final int TYPE_FEED_BANNER = 6;
+  public static final int TYPE_FOOTER = 1;
+  public static final int TYPE_MINI_RECOMM = 5;
+  public int clothesId;
+  public int fontId;
+  public int fontType;
+  public boolean mAddFriendVerified;
+  public int mAge;
+  public AlumBasicData mAlumbasicdata;
+  public int mAvailLikeCount;
+  public boolean mBigVipHide;
+  public int mBigVipLevel;
+  public String mDeclaration;
+  public int mFooterType;
+  public int mGender;
+  public boolean mIsMyFeed;
+  public List<ashu> mLabelInfos;
+  public boolean mLiked;
+  public String mNickName;
+  public int mPopularity;
+  public List<ashv> mSchoolInfos;
+  public String mStrRecomTrace;
+  public int mTemplateId;
+  public int mType;
+  public String mUin;
+  public boolean mVipHide;
+  public int mVipLevel;
+  public int mVipType;
+  public int mVoiceDuration;
+  public String mVoiceUrl;
+  public boolean mbAllowStrangerVote;
+  public byte[] voiceCode;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean equals(Object paramObject)
   {
-    ((auad)this.a.a.getManager(303)).a((short)-23168, paramBoolean, true);
-    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 6, 6, "", "", "", "");
+    return (paramObject != null) && ((paramObject instanceof asht)) && (bgjw.a(((asht)paramObject).mUin, this.mUin));
   }
 }
 

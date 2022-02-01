@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aswa
-  implements DialogInterface.OnClickListener
+public class aswa
+  implements View.OnClickListener
 {
-  aswa(asvy paramasvy) {}
+  public aswa(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.k();
+    QfileFavPicFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

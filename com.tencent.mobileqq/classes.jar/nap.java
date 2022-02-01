@@ -1,71 +1,30 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.avgame.gameroom.gamelist.GameListItemView;
+
 public class nap
+  implements View.OnTouchListener
 {
-  public static int a()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
+  public nap(GameListItemView paramGameListItemView) {}
   
-  public static String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.jdField_a_of_type_JavaLangString;
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
     }
-    return null;
-  }
-  
-  public static int b()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.b;
+    for (;;)
+    {
+      return false;
+      this.a.setPreparePressImage();
+      continue;
+      this.a.setPrepareNorImage();
     }
-    return -1;
-  }
-  
-  public static String b()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.c;
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.d;
-    }
-    return null;
-  }
-  
-  public static String d()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.e;
-    }
-    return null;
-  }
-  
-  public static String e()
-  {
-    aoso localaoso = (aoso)aoks.a().a(207);
-    if (localaoso != null) {
-      return localaoso.f;
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nap
  * JD-Core Version:    0.7.0.1
  */

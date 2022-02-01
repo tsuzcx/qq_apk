@@ -1,26 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
 public final class apee
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public IPSiteModel.GameRich a(Parcel paramParcel)
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
-    localGameRich.anchorFaceUrl = paramParcel.readString();
-    localGameRich.anchorId = paramParcel.readString();
-    localGameRich.anchorName = paramParcel.readString();
-    localGameRich.coverUrl = paramParcel.readString();
-    localGameRich.online = paramParcel.readString();
-    localGameRich.title = paramParcel.readString();
-    localGameRich.richJumpUrl = paramParcel.readString();
-    return localGameRich;
+    return new ArDefaultSetting(paramParcel);
   }
   
-  public IPSiteModel.GameRich[] a(int paramInt)
+  public ArDefaultSetting[] a(int paramInt)
   {
-    return new IPSiteModel.GameRich[paramInt];
+    return new ArDefaultSetting[paramInt];
   }
 }
 

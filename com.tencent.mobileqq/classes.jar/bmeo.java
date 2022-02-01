@@ -1,8 +1,6 @@
-import android.support.annotation.Nullable;
-
-public abstract interface bmeo<T>
+public abstract interface bmeo
 {
-  public abstract void a(@Nullable T paramT);
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
 }
 
 

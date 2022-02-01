@@ -16,7 +16,7 @@ public final class oidb_pk_post$Pic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.kandian.community.pk_post.oidb_pk_post.Pic
  * JD-Core Version:    0.7.0.1
  */

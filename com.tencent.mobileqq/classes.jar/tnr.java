@@ -1,48 +1,45 @@
-import UserGrowth.stSimpleGetFeedDetailRsp;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-class tnr
-  implements tgt
+public class tnr
+  implements rqa
 {
-  tnr(tnq paramtnq, tmr paramtmr) {}
+  public tnr(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
   
-  public void a(the paramthe)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    if (!paramthe.a())
-    {
-      tlo.d("WSVerticalForMiniAppPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramthe.jdField_a_of_type_Int + ", msg:" + paramthe.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Tmr != null) {
-        this.jdField_a_of_type_Tmr.a(paramthe.jdField_a_of_type_Int, paramthe.jdField_a_of_type_JavaLangString);
-      }
-    }
+    Iterator localIterator = paramList.iterator();
+    UgcVideo localUgcVideo;
     do
     {
-      Object localObject;
-      do
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localUgcVideo = (UgcVideo)localIterator.next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
+    {
+      if (localUgcVideo != null)
       {
-        do
-        {
-          return;
-          if (!(paramthe.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp)) {
-            break;
-          }
-          paramthe = ((stSimpleGetFeedDetailRsp)paramthe.jdField_a_of_type_JavaLangObject).feed;
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(paramthe);
-          paramthe = tms.a().a((ArrayList)localObject);
-        } while ((this.jdField_a_of_type_Tnq.a == null) || (this.jdField_a_of_type_Tnq.a.a() == null) || (this.jdField_a_of_type_Tnq.a.a().a() == null));
-        localObject = this.jdField_a_of_type_Tnq.a.a().a().a;
-      } while (!(localObject instanceof tnk));
-      ((tnk)localObject).b((tmv)paramthe.get(0));
+        oat.a("0X800AC61", rjh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a());
+        rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localUgcVideo);
+        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
       return;
-    } while (this.jdField_a_of_type_Tmr == null);
-    this.jdField_a_of_type_Tmr.a(paramthe.b, paramthe.jdField_a_of_type_JavaLangString);
+      localUgcVideo = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnr
  * JD-Core Version:    0.7.0.1
  */

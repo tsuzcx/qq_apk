@@ -1,17 +1,15 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bdrg
+class bdrg
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<bdrf> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  bdrg(bdrb parambdrb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

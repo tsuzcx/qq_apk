@@ -1,16 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-
-class anxf
-  extends AnimatorListenerAdapter
+public abstract interface anxf
 {
-  anxf(anxd paramanxd, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-  }
+  public abstract void a(Object paramObject);
 }
 
 

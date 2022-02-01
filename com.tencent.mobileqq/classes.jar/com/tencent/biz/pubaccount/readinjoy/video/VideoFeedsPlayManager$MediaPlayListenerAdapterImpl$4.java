@@ -1,32 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Properties;
-import qlq;
-import rfp;
-import rfs;
-import rjn;
+import java.util.ArrayList;
+import java.util.Iterator;
+import ruv;
+import sap;
+import sar;
+import sat;
 
 public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4(rfp paramrfp, rfs paramrfs) {}
+  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4(sap paramsap) {}
   
   public void run()
   {
-    if ((!VideoFeedsPlayManager.a(this.jdField_a_of_type_Rfp.a, this.jdField_a_of_type_Rfs)) || (VideoFeedsPlayManager.a(this.jdField_a_of_type_Rfp.a, this.jdField_a_of_type_Rfs) == null)) {
-      return;
+    if ((VideoFeedsPlayManager.a(this.a.a) != null) && (VideoFeedsPlayManager.a(this.a.a).a != null)) {
+      VideoFeedsPlayManager.a(this.a.a).a.i(VideoFeedsPlayManager.a(this.a.a));
     }
-    Properties localProperties = this.jdField_a_of_type_Rfs.jdField_a_of_type_Rjn.a().getPlayDetailsTime();
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.f = Long.valueOf(localProperties.getProperty("httpdnsMS")).longValue();
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.g = Long.valueOf(localProperties.getProperty("httpredirectMS")).longValue();
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.h = Long.valueOf(localProperties.getProperty("cacheframeMS")).longValue();
-    if (1 == this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.a) {
-      this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.i = Long.valueOf(localProperties.getProperty("vidtourlMS")).longValue();
+    if (VideoFeedsPlayManager.a(this.a.a) != null)
+    {
+      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
+      while (localIterator.hasNext()) {
+        ((sat)localIterator.next()).c(VideoFeedsPlayManager.a(this.a.a));
+      }
     }
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.j = Long.valueOf(localProperties.getProperty("httpfirstrecvMS")).longValue();
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.k = Long.valueOf(localProperties.getProperty("getmp4headerMS")).longValue();
-    this.jdField_a_of_type_Rfs.jdField_a_of_type_Qlq.l = Long.valueOf(localProperties.getProperty("httpconnectMS")).longValue();
   }
 }
 

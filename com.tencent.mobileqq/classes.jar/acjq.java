@@ -1,11 +1,23 @@
-public class acjq
+import android.os.Looper;
+import com.tencent.ad.tangram.offline.AdOfflineAdapter;
+
+public final class acjq
+  implements AdOfflineAdapter
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public long c;
+  public String getAppVersion()
+  {
+    return acrb.a();
+  }
+  
+  public String getVersionIfExists(String paramString)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      acqy.d("GdtOfflineAdapter", "getVersionIfExists error");
+      return null;
+    }
+    return nko.a(paramString);
+  }
 }
 
 

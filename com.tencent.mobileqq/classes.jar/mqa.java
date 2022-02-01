@@ -1,24 +1,20 @@
-import android.util.LruCache;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class mqa
-  extends LruCache<String, mqb>
+  implements View.OnTouchListener
 {
-  mqa(mpz parammpz, int paramInt)
-  {
-    super(paramInt);
-  }
+  mqa(mpw parammpw) {}
   
-  protected int a(String paramString, mqb parammqb)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (parammqb == null) {
-      return 0;
-    }
-    return parammqb.a.length;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqa
  * JD-Core Version:    0.7.0.1
  */

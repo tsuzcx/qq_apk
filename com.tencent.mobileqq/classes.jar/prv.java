@@ -1,31 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class prv
-  implements phj
+public class prv
+  implements prw
 {
-  prv(prr paramprr, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public prv(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      prr.a(this.jdField_a_of_type_Prr, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      prr.a(this.jdField_a_of_type_Prr).notifyDataSetChanged();
-      return;
-    }
-    QQToast.a(prr.b(this.jdField_a_of_type_Prr).getContext(), 1, 2131718961, 0).a();
+    ThreadManager.postImmediately(new ReadInJoySelfFragment.9.1(this), null, true);
+    Intent localIntent = new Intent(this.a.a.getContext(), ReadInJoySettingActivity.class);
+    this.a.startActivity(localIntent);
+    ReadInJoySelfFragment.a(this.a, 15);
+    bcst.b(null, "CliOper", "", "", "0X800705B", "0X800705B", 0, 0, "", "", "", pha.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     prv
  * JD-Core Version:    0.7.0.1
  */

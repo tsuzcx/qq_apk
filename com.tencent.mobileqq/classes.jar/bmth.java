@@ -1,8 +1,15 @@
-public abstract interface bmth
+import android.text.TextUtils;
+
+public class bmth
+  extends bjeo
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void c();
+  public void i(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
+    }
+    super.i(paramString1, paramString2);
+  }
 }
 
 

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class atme
-  implements atok
+class atme
+  extends BroadcastReceiver
 {
-  public atme(ListenTogetherManager paramListenTogetherManager) {}
+  atme(atmc paramatmc) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
+    }
   }
 }
 

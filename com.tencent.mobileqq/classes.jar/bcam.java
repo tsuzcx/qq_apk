@@ -1,72 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bcam
-  extends ameq
+  implements bcba
 {
-  public bcam(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public void a(boolean paramBoolean, bbyf parambbyf)
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean)
   {
-    super.a(paramBoolean, parambbyf);
-    this.a.l();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("获取作业信息");
-      if (!paramBoolean) {
-        break label123;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline");
     }
-    for (String str = "成功";; str = "失败")
-    {
-      QLog.d("SubmitHomeWorkFragment", 2, str);
-      if ((!paramBoolean) || (parambbyf == null) || (parambbyf.b == null)) {
-        break;
-      }
-      this.a.a = parambbyf;
-      parambbyf = parambbyf.b;
-      try
-      {
-        parambbyf = new JSONObject(parambbyf).getJSONArray("c");
-        parambbyf = new JSONObject().put("c", parambbyf).toString();
-        this.a.a(parambbyf);
-        return;
-      }
-      catch (Exception parambbyf)
-      {
-        label123:
-        this.a.a(3, null, null, null);
-        return;
-      }
-    }
-    this.a.a(3, null, null, null);
-    this.a.a = null;
-    this.a.getActivity().finish();
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    super.b(paramBoolean, paramInt);
-    this.a.l();
     if (paramBoolean)
     {
-      this.a.g();
+      if (QLog.isColorLevel()) {
+        QLog.e("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline: return isReaded4DataLine:" + paramBoolean);
+      }
       return;
     }
-    if (paramInt == 1002)
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
     {
-      this.a.a(2, null, null, null);
+      new Handler(localLooper).post(new DataLineDecoder.1(this, paramMessageHandler, paramMsg));
       return;
     }
-    if (paramInt == 10022)
-    {
-      this.a.a(1, null, null, null);
-      return;
-    }
-    this.a.a(3, null, null, null);
+    ((anjx)paramMessageHandler.app.a(8)).a(paramMsg);
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  {
+    a(paramMessageHandler, paramMsg, parambbyn.h);
   }
 }
 

@@ -1,26 +1,26 @@
 package com.tencent.gdtad.api.banner;
 
-import aanu;
-import aanx;
-import aany;
-import aanz;
-import aase;
-import aasp;
+import acle;
+import aclf;
+import aclg;
+import aclh;
+import acli;
+import aclj;
+import acqy;
 import android.content.Context;
 import android.view.View;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
-import java.lang.ref.WeakReference;
 
 public final class GdtBannerAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private aanx params;
+  private aclh params;
   private boolean rendered;
   
-  public GdtBannerAd(aanx paramaanx)
+  public GdtBannerAd(aclh paramaclh)
   {
-    super(paramaanx);
-    this.params = paramaanx;
+    super(paramaclh);
+    this.params = paramaclh;
+    init();
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -29,52 +29,50 @@ public final class GdtBannerAd
     if (paramInt1 != 0) {
       return paramInt1;
     }
-    if ((paramGdtAd == null) || (!isValid()))
+    if ((paramGdtAd == null) || (!isValid()) || (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet == null))
     {
-      aase.d("GdtBannerAd", "getErrorCode error");
+      acqy.d("GdtBannerAd", "getErrorCode error");
       return 1;
     }
     paramInt1 = paramGdtAd.getCreativeSize();
-    if ((getParams().jdField_a_of_type_Int == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 193) || (paramInt1 == 194) || (paramInt1 == 210) || (paramInt1 == 285))) {
+    if ((getParams().jdField_a_of_type_Int == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 194))) {
       return 0;
     }
     return 7;
   }
   
-  protected aanx getParams()
+  protected aclh getParams()
   {
     return this.params;
   }
   
-  public aany render(Context paramContext, int paramInt1, int paramInt2)
+  public acli render(Context paramContext, int paramInt1, int paramInt2)
   {
     if ((paramContext == null) || (paramInt1 < 0) || (paramInt2 < 0) || (!isLoaded()) || (this.rendered))
     {
-      aase.d("GdtBannerAd", "render error");
+      acqy.d("GdtBannerAd", "render error");
       return null;
     }
-    paramContext = new aanx();
-    paramContext.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-    paramContext.jdField_a_of_type_Int = this.params.jdField_a_of_type_Int;
-    paramContext.b = paramInt1;
-    paramContext.c = paramInt2;
-    paramContext = aanz.a(paramContext);
-    if ((paramContext == null) || (paramContext.a() == null) || (aany.a == null))
+    this.params.b = paramInt1;
+    this.params.c = paramInt2;
+    paramContext = aclj.a(this.params);
+    if ((paramContext == null) || (paramContext.a() == null) || (acli.a == null))
     {
-      aase.d("GdtBannerAd", "render error");
+      acqy.d("GdtBannerAd", "render error");
       return null;
     }
-    this.params.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(getAd(), new WeakReference(paramContext.a()));
-    paramContext.a().setOnClickListener(new aanu(this, paramContext));
-    aasp.a(getAd().getUrlForImpression());
-    notifyImpression();
+    paramContext.a().setOnTouchListener(new acle(this, paramContext));
+    paramContext.a().setOnClickListener(new aclf(this, paramContext));
+    if (paramContext.b() != null) {
+      paramContext.b().setOnClickListener(new aclg(this, paramContext));
+    }
     this.rendered = true;
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.GdtBannerAd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,41 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.limitchat.LimitChatDamon.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tbs.reader.TbsReaderView;
 
-public class atls
+class atls
+  implements View.OnClickListener
 {
-  private static volatile atls jdField_a_of_type_Atls;
-  private long jdField_a_of_type_Long = -1L;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private ConcurrentHashMap<String, Bundle> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  atls(atlp paramatlp, int paramInt, Activity paramActivity) {}
   
-  public static atls a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Atls == null) {}
-    try
+    int i;
+    if (this.jdField_a_of_type_Int == 5018)
     {
-      if (jdField_a_of_type_Atls == null) {
-        jdField_a_of_type_Atls = new atls();
-      }
-      return jdField_a_of_type_Atls;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm invoke, uin:" + paramString);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (localDisplay.getWidth() > localDisplay.getHeight())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm last request do not finish");
+        i = 0;
+        if (i == 0) {
+          break label61;
         }
-        return;
+        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
       }
     }
-    finally {}
-    this.jdField_a_of_type_JavaLangRunnable = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      break;
+      label61:
+      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      continue;
+      atlp.a(this.jdField_a_of_type_Atlp).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
     }
   }
 }

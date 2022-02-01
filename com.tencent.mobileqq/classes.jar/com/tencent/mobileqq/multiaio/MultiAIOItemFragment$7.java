@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio;
 
-import aijq;
+import akaj;
 
 class MultiAIOItemFragment$7
   implements Runnable
@@ -14,7 +14,7 @@ class MultiAIOItemFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.7
  * JD-Core Version:    0.7.0.1
  */

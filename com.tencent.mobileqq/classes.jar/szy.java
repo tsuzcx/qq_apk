@@ -1,12 +1,30 @@
-import android.net.Uri;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public abstract interface szy
+class szy
+  implements tal
 {
-  public abstract void a(Uri paramUri, String paramString, int paramInt);
+  szy(szv paramszv) {}
+  
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  {
+    ArticleInfo localArticleInfo = paramProteusItemData.b;
+    FastWebArticleInfo localFastWebArticleInfo = paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo;
+    String str = paramViewBase.getEventAttachedData();
+    tbc.b(localArticleInfo, localFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    tbc.a(localArticleInfo, localFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if (!TextUtils.isEmpty(str)) {
+      pha.d(paramContext, str);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szy
  * JD-Core Version:    0.7.0.1
  */

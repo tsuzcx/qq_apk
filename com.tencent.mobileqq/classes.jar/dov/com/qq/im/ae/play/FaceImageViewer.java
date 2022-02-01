@@ -16,9 +16,10 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import blid;
-import bliu;
-import bljo;
+import bnxq;
+import bnyh;
+import bnzd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 import java.lang.reflect.Field;
@@ -35,7 +36,7 @@ public class FaceImageViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private blid jdField_a_of_type_Blid;
+  private bnxq jdField_a_of_type_Bnxq;
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
@@ -63,8 +64,7 @@ public class FaceImageViewer
   private int jdField_h_of_type_Int;
   private float jdField_i_of_type_Float = 0.0F;
   private int jdField_i_of_type_Int;
-  private float jdField_j_of_type_Float;
-  private int jdField_j_of_type_Int;
+  private float j;
   
   public FaceImageViewer(Context paramContext)
   {
@@ -78,8 +78,8 @@ public class FaceImageViewer
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     setOnClickListener(this);
     c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837599));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368000);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837658));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368325);
   }
   
   private float a(MotionEvent paramMotionEvent)
@@ -122,14 +122,14 @@ public class FaceImageViewer
       f3 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
       f4 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
       f4 = (float)Math.sqrt(f3 * f3 + f4 * f4);
-      if (this.jdField_j_of_type_Float == 0.0F)
+      if (this.j == 0.0F)
       {
-        this.jdField_j_of_type_Float = f4;
+        this.j = f4;
         return;
       }
-    } while (Math.abs(f4 - this.jdField_j_of_type_Float) < 1.0F);
-    float f3 = f4 / this.jdField_j_of_type_Float;
-    this.jdField_j_of_type_Float = f4;
+    } while (Math.abs(f4 - this.j) < 1.0F);
+    float f3 = f4 / this.j;
+    this.j = f4;
     float f4 = a(paramMotionEvent);
     float f5 = this.jdField_i_of_type_Float;
     this.jdField_i_of_type_Float = a(paramMotionEvent);
@@ -169,8 +169,8 @@ public class FaceImageViewer
       this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight());
       localBitmap.recycle();
     }
-    if (this.jdField_a_of_type_Blid != null) {
-      this.jdField_a_of_type_Blid.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Bnxq != null) {
+      this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -257,12 +257,15 @@ public class FaceImageViewer
   
   public void onClick(View paramView)
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.jdField_c_of_type_Boolean) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      b();
+      bnyh.a().h();
+      bnzd.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
     }
-    b();
-    bliu.a().h();
-    bljo.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -316,7 +319,7 @@ public class FaceImageViewer
       this.jdField_e_of_type_Boolean = true;
       this.jdField_a_of_type_Boolean = false;
       this.jdField_h_of_type_Int = 0;
-      this.jdField_j_of_type_Float = 0.0F;
+      this.j = 0.0F;
       this.jdField_d_of_type_Int = 1;
       return true;
       this.jdField_e_of_type_Boolean = false;
@@ -345,10 +348,10 @@ public class FaceImageViewer
         if ((Math.abs(this.jdField_g_of_type_Float - this.jdField_e_of_type_Float) <= 10.0F) && (Math.abs(this.jdField_f_of_type_Float - this.jdField_h_of_type_Float) <= 10.0F)) {
           break label406;
         }
-        if (this.jdField_a_of_type_Blid == null) {
+        if (this.jdField_a_of_type_Bnxq == null) {
           break;
         }
-        this.jdField_a_of_type_Blid.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return true;
         if (l1 <= this.jdField_b_of_type_Long) {
           this.jdField_e_of_type_Boolean = false;
@@ -379,11 +382,6 @@ public class FaceImageViewer
     return true;
   }
   
-  public void setCenterViewWidth(int paramInt)
-  {
-    this.jdField_j_of_type_Int = paramInt;
-  }
-  
   public void setImageSelected(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
@@ -404,8 +402,8 @@ public class FaceImageViewer
   {
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramBitmap;
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = true;
-    if (this.jdField_a_of_type_Blid != null) {
-      this.jdField_a_of_type_Blid.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Bnxq != null) {
+      this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -420,14 +418,14 @@ public class FaceImageViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.zIndex = paramNodeItem.zIndex;
   }
   
-  public void setOnSaveScrollInfoListener(blid paramblid)
+  public void setOnSaveScrollInfoListener(bnxq parambnxq)
   {
-    this.jdField_a_of_type_Blid = paramblid;
+    this.jdField_a_of_type_Bnxq = parambnxq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.FaceImageViewer
  * JD-Core Version:    0.7.0.1
  */

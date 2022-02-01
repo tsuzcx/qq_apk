@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
-class ayhc
-  implements Comparator<ayms>
+public class ayhc
+  implements PopupWindow.OnDismissListener
 {
-  ayhc(ayha paramayha) {}
+  public ayhc(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
   
-  public int a(ayms paramayms1, ayms paramayms2)
+  public void onDismiss()
   {
-    paramayms1 = paramayms1.c;
-    paramayms2 = paramayms2.c;
-    return ChnToSpell.a(paramayms1, 2).compareTo(ChnToSpell.a(paramayms2, 2));
+    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Ayfk.c != null) && (this.jdField_a_of_type_Ayfk.c.size() > 1))
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846156);
+      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
   }
 }
 

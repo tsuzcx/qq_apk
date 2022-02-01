@@ -1,66 +1,34 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bdlk
+public class bdlk
   implements View.OnClickListener
 {
-  bdlk(bdlj parambdlj, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdlk(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick timeGap:" + (System.currentTimeMillis() - bdlj.a(this.jdField_a_of_type_Bdlj)) + " MANUFACTURER:" + Build.MANUFACTURER + " MODEL:" + Build.MODEL);
-    }
-    if ((System.currentTimeMillis() - bdlj.a(this.jdField_a_of_type_Bdlj) < 800L) && ("VIVO".equalsIgnoreCase(Build.MANUFACTURER)) && ((Build.MODEL.toUpperCase().contains("Y8")) || (Build.MODEL.toUpperCase().contains("V18")))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick skip");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramView = bdlj.a(this.jdField_a_of_type_Bdlj).getText().toString();
-        } while (paramView == null);
-        if ((!bamp.a(paramView)) && (!bamp.b(paramView))) {
-          break;
-        }
-        paramView = (Context)bdlj.a(this.jdField_a_of_type_Bdlj).get();
-      } while (paramView == null);
-      paramView = new QQToast(paramView);
-      paramView.d(2000);
-      paramView.c(2131720886);
-      paramView.a();
-      return;
-      if ((bdlj.a(this.jdField_a_of_type_Bdlj) != null) || (24 >= paramView.getBytes().length)) {
-        break;
-      }
-      paramView = (Context)bdlj.a(this.jdField_a_of_type_Bdlj).get();
-    } while (paramView == null);
-    paramView = new QQToast(paramView);
-    paramView.d(2000);
-    paramView.c(2131720887);
-    paramView.a();
-    return;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdlj, 1);
-    }
-    this.jdField_a_of_type_Bdlj.dismiss();
+    bdjg.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
+    PadInfo localPadInfo = (PadInfo)((bdlc)paramView.getTag()).a;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", nko.a(localPadInfo.pad_url, "_bid=2517"));
+    localBundle.putInt("key_team_work_edit_type", localPadInfo.type);
+    localBundle.putString("key_team_work_title", localPadInfo.title);
+    localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
+    localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
+    localBundle.putString("tdsourcetag", "s_qq_grpfile");
+    TeamWorkDocEditBrowserActivity.a(this.a, localBundle, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlk
  * JD-Core Version:    0.7.0.1
  */

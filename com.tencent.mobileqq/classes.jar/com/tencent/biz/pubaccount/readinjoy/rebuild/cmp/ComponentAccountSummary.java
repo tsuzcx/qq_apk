@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
@@ -9,30 +8,31 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bdgc;
+import anni;
+import bglf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ors;
-import pgd;
+import pha;
 import pxk;
-import pxt;
-import qbs;
-import qbv;
-import qbw;
-import qbx;
-import qmr;
-import qnm;
-import rqj;
+import qqs;
+import qrb;
+import qva;
+import qvd;
+import qve;
+import qvf;
+import rhn;
+import rii;
+import snh;
 
 public class ComponentAccountSummary
   extends FrameLayout
-  implements pxk
+  implements qqs
 {
   ReadInJoyYAFolderTextView a;
-  public qbs a;
+  public qva a;
   public boolean a;
   public boolean b;
   public boolean c;
@@ -57,7 +57,7 @@ public class ComponentAccountSummary
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qbs = new qbs();
+    this.jdField_a_of_type_Qva = new qva();
     a(paramContext);
     a();
   }
@@ -66,63 +66,63 @@ public class ComponentAccountSummary
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559977, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131364668));
+    LayoutInflater.from(paramContext).inflate(2131560124, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131364883));
   }
   
   public void a(Object paramObject)
   {
-    pgd localpgd;
-    if ((paramObject instanceof pgd))
+    pxk localpxk;
+    if ((paramObject instanceof pxk))
     {
-      localpgd = (pgd)paramObject;
-      this.jdField_a_of_type_Qbs.a(localpgd);
-      if (localpgd.a() != null) {}
+      localpxk = (pxk)paramObject;
+      this.jdField_a_of_type_Qva.a(localpxk);
+      if (localpxk.a() != null) {}
     }
     else
     {
       return;
     }
-    String str = localpgd.a().mSubscribeName;
-    paramObject = localpgd.a().mSummary;
-    if ((this.jdField_a_of_type_Qbs.c()) || (this.jdField_a_of_type_Qbs.g())) {
-      paramObject = localpgd.a().mTitle;
+    String str = localpxk.a().mSubscribeName;
+    paramObject = localpxk.a().mSummary;
+    if ((this.jdField_a_of_type_Qva.c()) || (this.jdField_a_of_type_Qva.g())) {
+      paramObject = localpxk.a().mTitle;
     }
     if (TextUtils.isEmpty(paramObject)) {
-      if (localpgd.a() == 33) {
-        paramObject = alud.a(2131702713);
+      if (localpxk.a() == 33) {
+        paramObject = anni.a(2131701133);
       }
     }
     for (;;)
     {
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       Object localObject;
-      if ((localpgd.a() == 33) && (localpgd.a().mSocialFeedInfo != null) && (localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm != null)) {
-        if (localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b == 0L)
+      if ((localpxk.a() == 33) && (localpxk.a().mSocialFeedInfo != null) && (localpxk.a().mSocialFeedInfo.jdField_a_of_type_Rii != null)) {
+        if (localpxk.a().mSocialFeedInfo.jdField_a_of_type_Rii.b == 0L)
         {
-          localObject = localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.a;
+          localObject = localpxk.a().mSocialFeedInfo.jdField_a_of_type_Rii.a;
           label199:
           localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(new qbx(this, (String)localObject, -3355444), 0, str.length(), 33);
+          localSpannableStringBuilder.setSpan(new qvf(this, (String)localObject, -3355444), 0, str.length(), 33);
           label229:
           localSpannableStringBuilder.append(": ");
-          localObject = localpgd.a();
+          localObject = localpxk.a();
           if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
             break label774;
           }
           paramObject = new SpannableStringBuilder();
-          if ((((ArticleInfo)localObject).mSocialFeedInfo == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a == null)) {
+          if ((((ArticleInfo)localObject).mSocialFeedInfo == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a == null)) {
             break label755;
           }
-          paramObject.append(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a);
+          paramObject.append(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a);
           if (QLog.isColorLevel()) {
-            QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a);
+            QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a);
           }
           label352:
-          str = alud.a(2131702675);
+          str = anni.a(2131701095);
           paramObject.append(" ");
           paramObject.append(str);
-          paramObject.setSpan(new qbw((ArticleInfo)localObject, -3355444, getContext(), getResources(), this.jdField_a_of_type_Qbs), paramObject.length() - str.length(), paramObject.length(), 33);
+          paramObject.setSpan(new qve((ArticleInfo)localObject, -3355444, getContext(), getResources(), this.jdField_a_of_type_Qva), paramObject.length() - str.length(), paramObject.length(), 33);
           paramObject.append(" ");
           localSpannableStringBuilder.append(paramObject);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.c = true;
@@ -130,42 +130,42 @@ public class ComponentAccountSummary
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(alud.a(2131702732));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anni.a(2131701152));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qbv(this, localpgd.a(), -3355444));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new qvd(this, localpxk.a(), -3355444));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
         b();
         return;
-        if ((this.jdField_a_of_type_Qbs.b()) || (this.jdField_a_of_type_Qbs.d()) || (this.jdField_a_of_type_Qbs.e()))
+        if ((this.jdField_a_of_type_Qva.b()) || (this.jdField_a_of_type_Qva.d()) || (this.jdField_a_of_type_Qva.e()))
         {
-          paramObject = alud.a(2131702716);
+          paramObject = anni.a(2131701136);
           break;
         }
-        if ((this.jdField_a_of_type_Qbs.c()) || (this.jdField_a_of_type_Qbs.g()))
+        if ((this.jdField_a_of_type_Qva.c()) || (this.jdField_a_of_type_Qva.g()))
         {
-          paramObject = alud.a(2131702693);
+          paramObject = anni.a(2131701113);
           break;
         }
-        if (this.jdField_a_of_type_Qbs.h())
+        if (this.jdField_a_of_type_Qva.h())
         {
-          paramObject = alud.a(2131702704);
+          paramObject = anni.a(2131701124);
           break;
         }
-        paramObject = alud.a(2131702718);
+        paramObject = anni.a(2131701138);
         break;
-        localObject = String.valueOf(localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
-        if (ors.a())
+        localObject = String.valueOf(localpxk.a().mSocialFeedInfo.jdField_a_of_type_Rii.b);
+        if (pha.a())
         {
-          str = bdgc.b((QQAppInterface)ors.a(), (String)localObject, true);
+          str = bglf.b((QQAppInterface)pha.a(), (String)localObject, true);
           break label199;
         }
-        str = localpgd.a().b(localpgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
+        str = localpxk.a().b(localpxk.a().mSocialFeedInfo.jdField_a_of_type_Rii.b);
         break label199;
-        if (localpgd.a().mAccountLess == 0)
+        if (localpxk.a().mAccountLess == 0)
         {
-          localObject = localpgd.a().mSubscribeID;
+          localObject = localpxk.a().mSubscribeID;
           localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(new qbx(this, (String)localObject, -3355444), 0, str.length(), 33);
+          localSpannableStringBuilder.setSpan(new qvf(this, (String)localObject, -3355444), 0, str.length(), 33);
           break label229;
         }
         localSpannableStringBuilder.append(str);
@@ -181,11 +181,11 @@ public class ComponentAccountSummary
         if (this.c)
         {
           paramObject = new SpannableStringBuilder();
-          if ((((ArticleInfo)localObject).mSocialFeedInfo != null) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a != null))
+          if ((((ArticleInfo)localObject).mSocialFeedInfo != null) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn != null) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a != null))
           {
-            paramObject.append(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a);
+            paramObject.append(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a);
             if (QLog.isColorLevel()) {
-              QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmr.a);
+              QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rhn.a);
             }
           }
           for (;;)
@@ -202,9 +202,9 @@ public class ComponentAccountSummary
     }
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.jdField_a_of_type_Qbs.a(parampxt);
+    this.jdField_a_of_type_Qva.a(paramqrb);
   }
   
   public void b() {}

@@ -1,113 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alxz
-  extends alpd
 {
-  protected QQAppInterface a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public alxz(QQAppInterface paramQQAppInterface)
+  static alxz a(JSONObject paramJSONObject)
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
-  }
-  
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-      i = 1;
+    if (paramJSONObject == null) {
+      return new alxz();
     }
-    for (;;)
+    alxz localalxz = new alxz();
+    try
     {
-      paramFromServiceMsg = (axls)this.a.getManager(65);
-      if (i != 0)
-      {
-        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
-        try
-        {
-          localNumMsgRspBody.mergeFrom((byte[])paramObject);
-          if (localNumMsgRspBody.i_retcode.get() == 0)
-          {
-            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
-            return;
-            i = 0;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
-          }
-          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
-          return;
-        }
-      }
+      localalxz.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localalxz.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localalxz.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localalxz.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localalxz.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localalxz.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localalxz.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localalxz.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localalxz.g = paramJSONObject.getString("classifyName");
+      localalxz.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localalxz.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localalxz.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localalxz.h = paramJSONObject.getString("trialstartday");
+      localalxz.i = paramJSONObject.getString("trialendday");
+      return localalxz;
     }
-    paramFromServiceMsg.a(null, paramToServiceMsg, false);
-  }
-  
-  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
-  {
-    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
-    localNumMsgReqBody.i_proto_ver.set(1);
-    localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("8.3.5.4555");
-    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
-    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
-    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
-    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
-    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
-    paramList.extraData.putString("NumMsgListenerCmd", paramString);
-    sendPbReq(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
-    }
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
+    catch (JSONException paramJSONObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      paramJSONObject.printStackTrace();
     }
+    return localalxz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxz
  * JD-Core Version:    0.7.0.1
  */

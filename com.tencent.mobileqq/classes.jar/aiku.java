@@ -1,14 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiku
-  extends avva
+class aiku
+  implements View.OnClickListener
 {
-  public aiku(AvatarPendantActivity paramAvatarPendantActivity) {}
+  aiku(aiks paramaiks) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    AvatarPendantActivity.a(this.a);
+    aiks.b(this.a);
+    bcst.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", aiks.a(this.a).a, "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

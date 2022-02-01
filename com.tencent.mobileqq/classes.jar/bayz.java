@@ -1,21 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import java.io.File;
-import java.io.OutputStream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class bayz
-  extends baqn
+class bayz
+  implements DialogInterface.OnClickListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(alof.aW);
-  }
+  bayz(bayw parambayw) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return AlbumThumbManager.getInstance(BaseApplicationImpl.getContext()).getThumb(paramDownloadParams.url, new baza(this));
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
   }
 }
 

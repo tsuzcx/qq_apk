@@ -1,13 +1,17 @@
 package cooperation.qqreader.ui;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
-import bjbl;
-import bjbw;
+import blpu;
+import blqf;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ReaderContentPageActivity
   extends ReaderBaseWebActivity
@@ -22,6 +26,14 @@ public class ReaderContentPageActivity
     return super.a(paramWebViewTabBarData);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnResume()
   {
     super.doOnResume();
@@ -33,12 +45,19 @@ public class ReaderContentPageActivity
       do
       {
         return;
-        localObject = (ReaderBaseFragment)b();
+        localObject = (ReaderBaseFragment)a();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bjbw)((ReaderBaseFragment)localObject).a;
+      localObject = (blqf)((ReaderBaseFragment)localObject).mSwiftTitleUI;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bjbw)localObject).a(false, localWindow);
+    ((blqf)localObject).a(false, localWindow);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -51,12 +70,12 @@ public class ReaderContentPageActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bjbl.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    blpu.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageActivity
  * JD-Core Version:    0.7.0.1
  */

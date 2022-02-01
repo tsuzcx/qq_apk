@@ -1,17 +1,28 @@
-abstract interface bmdf
-  extends bmdm
+import android.content.Context;
+
+class bmdf
+  extends bmcu
 {
-  public abstract void a(bmdn parambmdn);
+  bmdf(bmde parambmde, bmco parambmco, Context paramContext, bmcp parambmcp) {}
   
-  public abstract void b(bmdn parambmdn);
+  public void a(String paramString) {}
   
-  public abstract void c(bmdn parambmdn);
+  public void a(String paramString, float paramFloat, long paramLong) {}
   
-  public abstract void d(bmdn parambmdn);
+  public void a(String paramString, int paramInt)
+  {
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Bmco.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmcp);
+      return;
+    }
+    this.jdField_a_of_type_Bmco.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmcp);
+  }
   
-  public abstract void e(bmdn parambmdn);
-  
-  public abstract void f(bmdn parambmdn);
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Bmco.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmcp);
+  }
 }
 
 

@@ -1,21 +1,111 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-class aldc
-  implements alke
+public class aldc
+  extends albv
 {
-  aldc(aldb paramaldb) {}
-  
-  public void a(int paramInt)
+  private static void a(Context paramContext, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772120);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772119);
+    localAnimation.setAnimationListener(new aldd(paramView, paramContext));
+    paramContext.setAnimationListener(new alde(paramView, localAnimation));
+    paramView.startAnimation(localAnimation);
+  }
+  
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
+  {
+    aldf localaldf;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aldf)))
+    {
+      localaldf = new aldf(null);
+      View localView = a(paramContext, 2131562786, localaldf);
+      localaldf.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131368138));
+      localaldf.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380256));
+      localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131378776));
+      localaldf.b = ((SingleLineTextView)localView.findViewById(2131365369));
+      localaldf.b.setGravity(16);
+      localaldf.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362670));
+      localaldf.c = ((ImageView)localView.findViewById(2131362669));
+      Object localObject = paramContext.getResources();
+      float f = bgln.a();
+      paramView = ((Resources)localObject).getColorStateList(2131167064);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131166993);
+      localObject = ((Resources)localObject).getColorStateList(2131167065);
+      localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
+      {
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localaldf.b.setTextColor(paramView);
+        localaldf.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localaldf.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localaldf);
+        paramView = localView;
+        if (this.a != null)
+        {
+          localaldf.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          paramView = localView;
+        }
+      }
     }
-    if (this.a.jdField_a_of_type_Alkd != null) {
-      this.a.jdField_a_of_type_Alkd.a(paramInt);
+    for (;;)
+    {
+      return super.a(paramInt, paramObject, paramalby, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaled);
+      localaldf.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      break;
     }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    if ((paramView == null) || (paramRecentBaseData == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
+      }
+      return;
+    }
+    if ((paramView.getTag() instanceof aldf)) {}
+    for (aldf localaldf = (aldf)paramView.getTag();; localaldf = null)
+    {
+      if (localaldf == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+        return;
+      }
+      super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+      paramView = (RelativeLayout.LayoutParams)localaldf.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      paramView.height = localaldf.b.getMeasuredHeight();
+      localaldf.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      a(paramContext, localaldf.c);
+      return;
+    }
   }
 }
 

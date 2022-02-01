@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class ahci
-  implements ahcn
+class ahci
+  implements awnc<EmoticonPackage>
 {
-  public ahci(BlessActivity paramBlessActivity) {}
+  ahci(ahch paramahch, ahcu paramahcu, biau parambiau) {}
   
-  public void a()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Ahcr.l())
+    bcst.b(this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Ahcu.a.a.eId, "");
+    if (paramEmoticonPackage == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
+      this.jdField_a_of_type_Ahch.jdField_a_of_type_Ahct.a(107, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahcu.a, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ahch.a(this.jdField_a_of_type_Ahch));
+      aruo.a().a(this.jdField_a_of_type_Ahch.jdField_a_of_type_Ahct);
+      this.jdField_a_of_type_Ahch.jdField_a_of_type_Arup.a(this.jdField_a_of_type_Ahcu.a.a.epId, arup.c);
+      return;
     }
+    ahch.a(107, this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Ahcu.a, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Biau);
   }
 }
 

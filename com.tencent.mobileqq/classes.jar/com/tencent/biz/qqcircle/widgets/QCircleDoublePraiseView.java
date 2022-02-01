@@ -9,26 +9,29 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
-import tra;
-import tzs;
-import tzw;
-import ucs;
-import yiw;
-import yiy;
+import uxx;
+import vrc;
+import vrg;
+import vvy;
+import zwp;
+import zwr;
+import zxl;
 
 public class QCircleDoublePraiseView
   extends FrameLayout
-  implements yiy
+  implements zwr, zxl<QCircleReportBean>
 {
   private int jdField_a_of_type_Int;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -51,8 +54,13 @@ public class QCircleDoublePraiseView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131560601, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373157));
+    LayoutInflater.from(getContext()).inflate(2131560794, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373789));
+  }
+  
+  private boolean a()
+  {
+    return QCircleReportBean.isContentDetailPage(b());
   }
   
   private void b()
@@ -62,8 +70,8 @@ public class QCircleDoublePraiseView
       QLog.d("QCircleDoublePraiseView", 1, "mIsInAnimation");
       return;
     }
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772208));
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ucs(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772212));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new vvy(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
     c();
@@ -72,18 +80,33 @@ public class QCircleDoublePraiseView
   
   private void c()
   {
-    tra.a(getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null);
+    uxx.a(getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, a());
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Int == 57) {
-      tzw.a(69, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, this.b);
+    if (a()) {
+      vrg.a(69, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, this.b, a());
     }
     while (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) {
       return;
     }
-    tzs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 69, 2, this.b, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null);
+    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 69, 2, this.b, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, b());
+  }
+  
+  protected int a()
+  {
+    return QCircleReportBean.getParentPageId("QCircleDoublePraiseView", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  public QCircleReportBean a()
+  {
+    return QCircleReportBean.getReportBean("QCircleDoublePraiseView", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  protected int b()
+  {
+    return QCircleReportBean.getPageId("QCircleDoublePraiseView", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
   }
   
   public ArrayList<Class> getEventClass()
@@ -96,14 +119,14 @@ public class QCircleDoublePraiseView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yiw.a().a(this);
+    zwp.a().a(this);
     QLog.d("QCircleDoublePraiseView", 1, "registerReceiver");
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yiw.a().b(this);
+    zwp.a().b(this);
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -145,10 +168,15 @@ public class QCircleDoublePraiseView
   {
     this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void setReportBean(QCircleReportBean paramQCircleReportBean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean("QCircleDoublePraiseView", paramQCircleReportBean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,14 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.ak;
+import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.an;
 import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.f;
 import com.tencent.mobileqq.msf.core.g;
+import com.tencent.mobileqq.msf.core.h;
 import com.tencent.mobileqq.msf.core.net.l;
 import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.mobileqq.msf.core.q;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -22,7 +23,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -33,31 +36,75 @@ public class b
   public static final String c = "attr_quick_send_time";
   public static final String d = "attr_quick_xg_send_resend_time";
   public static final int e = 3;
+  public static final long g = 2000L;
+  private static final String i = "MSF.C.QuickSendManager";
+  private static final long q = 120000L;
   public d f = new d();
-  Handler g = new c(this);
-  private String h = "QuickSendManager";
-  private MsfCore i;
-  private final int j = 1;
-  private HashSet k = new HashSet();
-  private ConcurrentHashMap l = new ConcurrentHashMap();
-  private AtomicBoolean m = new AtomicBoolean();
-  private long n = 0L;
-  private volatile Handler o;
+  Handler h = new c(this);
+  private MsfCore j;
+  private final int k = 1;
+  private HashSet l = new HashSet();
+  private ConcurrentHashMap m = new ConcurrentHashMap();
+  private ConcurrentHashMap n = new ConcurrentHashMap();
+  private long o = 0L;
+  private volatile Handler p;
+  private long r = 0L;
+  private AtomicBoolean s = new AtomicBoolean(true);
   
   public b(MsfCore paramMsfCore)
   {
-    this.i = paramMsfCore;
-    this.l.clear();
+    this.j = paramMsfCore;
+    this.m.clear();
     paramMsfCore = new HandlerThread("MsfCoreHttpTimeoutChecker", 5);
     paramMsfCore.start();
-    this.o = new Handler(paramMsfCore.getLooper());
+    this.p = new Handler(paramMsfCore.getLooper());
     b();
+  }
+  
+  private void a(long paramLong, boolean paramBoolean)
+  {
+    AtomicBoolean localAtomicBoolean = (AtomicBoolean)this.n.get(Long.valueOf(paramLong));
+    if (localAtomicBoolean == null)
+    {
+      localAtomicBoolean = new AtomicBoolean(paramBoolean);
+      this.n.put(Long.valueOf(paramLong), localAtomicBoolean);
+      return;
+    }
+    localAtomicBoolean.set(paramBoolean);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean)
+  {
+    if (paramToServiceMsg == null) {
+      return;
+    }
+    a(paramToServiceMsg.getTimeout(), paramBoolean);
   }
   
   public static void b(int paramInt)
   {
     if ((MsfCore.sCore.lightTcpSender != null) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (MsfCore.sCore.lightTcpSender.a())) {
       MsfCore.sCore.lightTcpSender.a(paramInt);
+    }
+  }
+  
+  private boolean c(long paramLong)
+  {
+    Iterator localIterator = this.n.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Long)localIterator.next();
+      if (((Long)localObject).longValue() < paramLong)
+      {
+        localObject = (AtomicBoolean)this.n.get(localObject);
+        if ((localObject != null) && (((AtomicBoolean)localObject).get())) {
+          return false;
+        }
+      }
+    }
+    if (!b(paramLong)) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
@@ -72,12 +119,12 @@ public class b
         h(paramToServiceMsg);
         return;
       }
-      this.i.lightSender.a(paramToServiceMsg);
-    } while ((this.i.lightTcpSender == null) || (!f()) || (!com.tencent.mobileqq.a.a.a.b()));
-    this.i.lightTcpSender.b(paramToServiceMsg);
+      this.j.lightSender.a(paramToServiceMsg);
+    } while ((this.j.lightTcpSender == null) || (!g()) || (!com.tencent.mobileqq.a.a.a.b()));
+    this.j.lightTcpSender.b(paramToServiceMsg);
   }
   
-  public static boolean f()
+  public static boolean g()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -86,27 +133,27 @@ public class b
   {
     if (TextUtils.isEmpty(paramToServiceMsg.getServiceCmd()))
     {
-      QLog.d(this.h, 1, "tryResendMsg fail, cmd is null ");
+      QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, cmd is null ");
       return false;
     }
     if (!paramToServiceMsg.isNeedCallback())
     {
-      QLog.d(this.h, 1, "tryResendMsg fail, request don't need callback ");
+      QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, request don't need callback ");
       return false;
     }
-    if (this.k.contains(paramToServiceMsg.getServiceCmd()))
+    if (this.l.contains(paramToServiceMsg.getServiceCmd()))
     {
-      QLog.d(this.h, 1, "tryResendMsg fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by blacklist");
+      QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by blacklist");
       return false;
     }
     if ((!paramToServiceMsg.isQuickSendEnable()) || (QuickSendStrategy.getStragegyArgs(paramToServiceMsg.getQuickSendStrategy()) == null))
     {
-      QLog.d(this.h, 1, "tryResendMsg fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by quickSendStrategy error");
+      QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by quickSendStrategy error");
       return false;
     }
-    if (!this.l.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
+    if (!this.m.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
     {
-      QLog.d(this.h, 1, "tryResendMsg fail, sendQueue don't contain msg, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, sendQueue don't contain msg, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
       return false;
     }
     if (paramToServiceMsg.getAttributes().containsKey("attr_quick_send_resend_time")) {}
@@ -115,7 +162,7 @@ public class b
       a locala = QuickSendStrategy.getStragegyArgs(paramToServiceMsg.getQuickSendStrategy());
       if ((i1 < 0) || (i1 > locala.c))
       {
-        QLog.d(this.h, 1, "tryResendMsg fail, msg has resend " + i1 + " times, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + i1);
+        QLog.d("MSF.C.QuickSendManager", 1, "tryResendMsg fail, msg has resend " + i1 + " times, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + i1);
         return false;
       }
       paramToServiceMsg.getAttributes().put("attr_quick_send_resend_time", Integer.valueOf(i1 + 1));
@@ -135,26 +182,15 @@ public class b
           }
         }
       }
-      h();
-      Message localMessage = this.g.obtainMessage();
+      i();
+      Message localMessage = this.h.obtainMessage();
       localMessage.what = 1;
       localMessage.arg1 = paramToServiceMsg.getRequestSsoSeq();
-      this.g.sendMessageDelayed(localMessage, l2);
+      this.h.sendMessageDelayed(localMessage, l2);
       if (QLog.isColorLevel()) {
-        QLog.d(this.h, 2, "tryResendMsg cmd:" + paramToServiceMsg.getServiceCmd() + " ssoSeq:" + paramToServiceMsg.getRequestSsoSeq() + " resendIndex: " + (i1 + 1) + " delayed: " + locala.b);
+        QLog.d("MSF.C.QuickSendManager", 2, "tryResendMsg cmd:" + paramToServiceMsg.getServiceCmd() + " ssoSeq:" + paramToServiceMsg.getRequestSsoSeq() + " resendIndex: " + (i1 + 1) + " delayed: " + locala.b);
       }
       return true;
-    }
-  }
-  
-  public static void h()
-  {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
-    {
-      NetConnInfoCenter.checkConnInfo();
-      if (!NetConnInfoCenter.isMobileConn()) {
-        l.a(BaseApplication.getContext());
-      }
     }
   }
   
@@ -164,8 +200,8 @@ public class b
     try
     {
       d(paramToServiceMsg);
-      if (this.l.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) {
-        this.l.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      if (this.m.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) {
+        this.m.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
       }
       if (MsfCore.sCore.lightTcpSender != null) {
         MsfCore.sCore.lightTcpSender.a(paramToServiceMsg);
@@ -177,6 +213,17 @@ public class b
   
   public static void i()
   {
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
+    {
+      NetConnInfoCenter.checkConnInfo();
+      if (!NetConnInfoCenter.isMobileConn()) {
+        l.a(BaseApplication.getContext());
+      }
+    }
+  }
+  
+  public static void j()
+  {
     if ((MsfCore.sCore.lightTcpSender != null) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (MsfCore.sCore.lightTcpSender.a())) {
       MsfCore.sCore.lightTcpSender.b();
     }
@@ -184,40 +231,66 @@ public class b
   
   public Map a()
   {
-    return this.l;
+    return this.m;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (!c(paramLong))
+    {
+      QLog.d("MSF.C.QuickSendManager", 1, "quick heart beat has sending, timeout = " + paramLong + ", so return.");
+      return;
+    }
+    if (this.j.sender.b.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.QuickSendManager", 2, "sendQuickHeartBeat, timeout = " + paramLong);
+      }
+      a(paramLong, true);
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("", "0", "Heartbeat.Ping");
+      localToServiceMsg.setMsfCommand(MsfCommand._msf_QuickHeartBeat);
+      localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
+      localToServiceMsg.setAppId(this.j.getMsfAppid());
+      localToServiceMsg.putWupBuffer(new byte[] { 0, 0, 0, 4 });
+      localToServiceMsg.setTimeout(paramLong);
+      localToServiceMsg.getAttributes().put("quickSendDetectTime", Long.valueOf(SystemClock.elapsedRealtime()));
+      this.j.sender.a(localToServiceMsg);
+      return;
+    }
+    a(paramLong, false);
   }
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
     if (TextUtils.isEmpty(paramToServiceMsg.getServiceCmd()))
     {
-      QLog.d(this.h, 1, "addQuickSendQueue fail, cmd is null ");
+      QLog.d("MSF.C.QuickSendManager", 1, "addQuickSendQueue fail, cmd is null ");
       return;
     }
     if (!paramToServiceMsg.isNeedCallback())
     {
-      QLog.d(this.h, 1, "addQuickSendQueue fail, request don't need callback ");
+      QLog.d("MSF.C.QuickSendManager", 1, "addQuickSendQueue fail, request don't need callback ");
       return;
     }
-    if (this.k.contains(paramToServiceMsg.getServiceCmd()))
+    if (this.l.contains(paramToServiceMsg.getServiceCmd()))
     {
-      QLog.d(this.h, 1, "addQuickSendQueue fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by blacklist");
+      QLog.d("MSF.C.QuickSendManager", 1, "addQuickSendQueue fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by blacklist");
       return;
     }
     if ((!paramToServiceMsg.isQuickSendEnable()) || (QuickSendStrategy.getStragegyArgs(paramToServiceMsg.getQuickSendStrategy()) == null))
     {
-      QLog.d(this.h, 1, "addQuickSendQueue fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by quickSendStrategy error");
+      QLog.d("MSF.C.QuickSendManager", 1, "addQuickSendQueue fail, refuse quick send cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " by quickSendStrategy error");
       return;
     }
-    if (this.l.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
+    if (this.m.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
     {
-      QLog.d(this.h, 1, "addQuickSendQueue fail, msg has quick send, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.QuickSendManager", 1, "addQuickSendQueue fail, msg has quick send, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
       return;
     }
     paramToServiceMsg.getAttributes().put("attr_quick_send", Boolean.valueOf(true));
     paramToServiceMsg.getAttributes().put("light_sender_type", Integer.valueOf(1));
     paramToServiceMsg.getAttributes().put("attr_quick_send_resend_time", Integer.valueOf(0));
-    this.l.put(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), paramToServiceMsg);
+    this.m.put(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), paramToServiceMsg);
     f(paramToServiceMsg);
   }
   
@@ -225,7 +298,7 @@ public class b
   {
     if (paramToServiceMsg.isQuickSendEnable())
     {
-      QLog.d(this.h, 1, "onRecvNormalResp, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.QuickSendManager", 1, "onRecvNormalResp, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
       h(paramToServiceMsg);
     }
   }
@@ -234,31 +307,31 @@ public class b
   {
     boolean bool = false;
     if (paramToServiceMsg == null) {
-      QLog.d(this.h, 1, "onRecvResp toMsg is null");
+      QLog.d("MSF.C.QuickSendManager", 1, "onRecvResp toMsg is null");
     }
     do
     {
       return;
       if (paramFromServiceMsg == null)
       {
-        QLog.d(this.h, 1, "onRecvResp quicksend fail, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " fromMsg is null");
+        QLog.d("MSF.C.QuickSendManager", 1, "onRecvResp quicksend fail, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " fromMsg is null");
         return;
       }
       if (paramFromServiceMsg.isSuccess()) {
         break;
       }
-      QLog.d(this.h, 1, "onRecvResp quicksend fail, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " code: " + paramFromServiceMsg.getBusinessFailCode() + " failmsg: " + paramFromServiceMsg.getBusinessFailMsg());
+      QLog.d("MSF.C.QuickSendManager", 1, "onRecvResp quicksend fail, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq() + " code: " + paramFromServiceMsg.getBusinessFailCode() + " failmsg: " + paramFromServiceMsg.getBusinessFailMsg());
     } while (paramFromServiceMsg.getBusinessFailCode() != 2901);
     h(paramToServiceMsg);
     return;
-    if (this.l.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) {
-      QLog.d(this.h, 1, "onRecvResp quicksend succ, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
+    if (this.m.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) {
+      QLog.d("MSF.C.QuickSendManager", 1, "onRecvResp quicksend succ, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
     }
     for (;;)
     {
       try
       {
-        ak.a(paramToServiceMsg, paramFromServiceMsg, true);
+        an.a(paramToServiceMsg, paramFromServiceMsg, true);
         com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, true, 0);
         if (com.tencent.mobileqq.msf.core.a.a.aH())
         {
@@ -267,8 +340,8 @@ public class b
           }
           com.tencent.mobileqq.a.a.d.a(paramToServiceMsg, paramFromServiceMsg, bool);
         }
-        if ((this.i.quicksender != null) && (this.i.quicksender.b(paramToServiceMsg))) {
-          this.i.quicksender.f.b(paramToServiceMsg, paramFromServiceMsg);
+        if ((this.j.quicksender != null) && (this.j.quicksender.b(paramToServiceMsg))) {
+          this.j.quicksender.f.b(paramToServiceMsg, paramFromServiceMsg);
         }
       }
       catch (Exception localException)
@@ -281,9 +354,9 @@ public class b
       paramFromServiceMsg.setAppId(paramToServiceMsg.getAppId());
       paramFromServiceMsg.setAppSeq(paramToServiceMsg.getAppSeq());
       paramFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
-      this.i.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+      this.j.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
       return;
-      QLog.d(this.h, 1, "onRecvResp quicksend succ occurred 2901, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.QuickSendManager", 1, "onRecvResp quicksend succ occurred 2901, cmd: " + paramToServiceMsg.getServiceCmd() + " ssoSeq: " + paramToServiceMsg.getRequestSsoSeq());
     }
   }
   
@@ -304,99 +377,108 @@ public class b
         }
       }
     }
-    int i1;
     if (paramFromServiceMsg.getBusinessFailCode() == 1002)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.h, 2, "handleQuickHeartbeat wait " + paramToServiceMsg + " timeout.");
+        QLog.d("MSF.C.QuickSendManager", 2, "handleQuickHeartbeat wait " + paramToServiceMsg + " timeout.");
       }
       if (paramBoolean)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.h, 2, "new conn has created, stop quick detectind");
+          QLog.d("MSF.C.QuickSendManager", 2, "new conn has created, stop quick detectind");
         }
-        this.m.set(false);
+        a(paramToServiceMsg, false);
         i1 = 3;
         paramBoolean = bool;
-        if (this.i.statReporter != null)
+        if (this.j.statReporter != null)
         {
-          paramToServiceMsg = new HashMap();
-          if (this.i.getAccountCenter() == null) {
-            break label500;
+          paramFromServiceMsg = new HashMap();
+          if (this.j.getAccountCenter() == null) {
+            break label557;
           }
-          paramToServiceMsg.put("account", this.i.getAccountCenter().i());
+          paramFromServiceMsg.put("account", this.j.getAccountCenter().i());
+          label193:
+          paramFromServiceMsg.put("closeType", "" + i1);
+          if (paramToServiceMsg == null) {
+            break label578;
+          }
         }
       }
     }
-    for (;;)
+    label557:
+    label578:
+    for (l2 = paramToServiceMsg.getTimeout();; l2 = -1L)
     {
       for (;;)
       {
-        paramToServiceMsg.put("closeType", "" + i1);
-        this.i.statReporter.a("dim.Msf.QuickSendDetect", paramBoolean, l1, 0L, paramToServiceMsg, false, false);
+        paramFromServiceMsg.put("timeout", String.valueOf(l2));
+        this.j.statReporter.a("msf_send_quick_hb", paramBoolean, l1, 0L, paramFromServiceMsg, true, false);
+        this.j.statReporter.a("dim.Msf.QuickSendDetect", paramBoolean, l1, 0L, paramFromServiceMsg, false, false);
         return;
-        if (!this.i.sender.b.b())
+        if (!this.j.sender.b.b())
         {
           if (QLog.isColorLevel()) {
-            QLog.d(this.h, 2, "conn is also closed, stop quick detecting");
+            QLog.d("MSF.C.QuickSendManager", 2, "conn is also closed, stop quick detecting");
           }
-          this.m.set(false);
+          a(paramToServiceMsg, false);
           i1 = 1;
           paramBoolean = bool;
           break;
         }
         l2 = SystemClock.elapsedRealtime();
-        if (l2 > this.n + com.tencent.mobileqq.msf.core.a.a.H())
+        if (l2 > this.o + com.tencent.mobileqq.msf.core.a.a.H())
         {
-          this.n = l2;
+          this.o = l2;
           try
           {
-            QLog.d(this.h, 1, "handleQuickHeartbeat disconn: " + System.currentTimeMillis() + " mLastDetectDisconnTime:" + l2 + " closeConn closeByNetDetectFailedNew");
-            this.i.sender.b.a(com.tencent.qphone.base.a.A);
-            i1 = 2;
-            this.m.set(false);
-            paramBoolean = bool;
-            break;
+            QLog.d("MSF.C.QuickSendManager", 1, "handleQuickHeartbeat disconn: " + System.currentTimeMillis() + " mLastDetectDisconnTime:" + l2 + " closeConn closeByNetDetectFailedNew");
+            this.j.sender.b.a(com.tencent.qphone.base.a.A);
+            i2 = 2;
+            i1 = i2;
+            if (paramToServiceMsg != null) {
+              i1 = i2;
+            }
           }
-          catch (Exception paramToServiceMsg)
+          catch (Exception paramFromServiceMsg)
           {
-            QLog.d(this.h, 1, "handleQuickHeartbeat disconn error", paramToServiceMsg);
-            this.m.set(false);
-            i1 = 0;
-            paramBoolean = bool;
-            break;
+            for (;;)
+            {
+              paramFromServiceMsg = paramFromServiceMsg;
+              i1 = 0;
+              QLog.d("MSF.C.QuickSendManager", 1, "handleQuickHeartbeat disconn error", paramFromServiceMsg);
+            }
           }
           finally
           {
-            this.m.set(false);
+            a(paramToServiceMsg, false);
           }
         }
       }
-      this.m.set(false);
-      QLog.d(this.h, 1, "handleQuickHeartbeat stop disconn by too frequency.");
+      a(paramToServiceMsg, false);
+      QLog.d("MSF.C.QuickSendManager", 1, "handleQuickHeartbeat stop disconn by too frequency.");
       i1 = 0;
       paramBoolean = bool;
       break;
-      QLog.d(this.h, 1, "recv Quick heart resp.now conn is alive.");
-      this.m.set(false);
+      QLog.d("MSF.C.QuickSendManager", 1, "recv Quick heart resp.now conn is alive.");
+      a(paramToServiceMsg, false);
       paramBoolean = true;
       i1 = 0;
       break;
-      label500:
-      paramToServiceMsg.put("account", this.i.sender.j());
+      paramFromServiceMsg.put("account", this.j.sender.j());
+      break label193;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
-      i();
+    if (paramBoolean) {
+      d();
     }
   }
   
   public boolean a(int paramInt)
   {
-    return this.l.contains(Integer.valueOf(paramInt));
+    return this.m.contains(Integer.valueOf(paramInt));
   }
   
   public void b()
@@ -411,10 +493,29 @@ public class b
       while (i1 < i2)
       {
         String str = arrayOfString[i1];
-        this.k.add(str);
+        this.l.add(str);
         i1 += 1;
       }
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+      j();
+    }
+  }
+  
+  public boolean b(long paramLong)
+  {
+    AtomicBoolean localAtomicBoolean2 = (AtomicBoolean)this.n.get(Long.valueOf(paramLong));
+    AtomicBoolean localAtomicBoolean1 = localAtomicBoolean2;
+    if (localAtomicBoolean2 == null)
+    {
+      localAtomicBoolean1 = new AtomicBoolean();
+      this.n.put(Long.valueOf(paramLong), localAtomicBoolean1);
+    }
+    return localAtomicBoolean1.get();
   }
   
   public boolean b(ToServiceMsg paramToServiceMsg)
@@ -426,31 +527,13 @@ public class b
       if (e(paramToServiceMsg)) {
         paramToServiceMsg.setQuickSend(true, 1);
       }
-    } while ((this.k.contains(paramToServiceMsg.getServiceCmd())) || (!paramToServiceMsg.isQuickSendEnable()) || (QuickSendStrategy.getStragegyArgs(paramToServiceMsg.getQuickSendStrategy()) == null));
+    } while ((this.l.contains(paramToServiceMsg.getServiceCmd())) || (!paramToServiceMsg.isQuickSendEnable()) || (QuickSendStrategy.getStragegyArgs(paramToServiceMsg.getQuickSendStrategy()) == null));
     return true;
   }
   
   public void c()
   {
-    if (this.m.get())
-    {
-      QLog.d(this.h, 1, "quick heart beat has sending, return.");
-      return;
-    }
-    if (this.i.sender.b.b())
-    {
-      this.m.set(true);
-      ToServiceMsg localToServiceMsg = new ToServiceMsg("", "0", "Heartbeat.Ping");
-      localToServiceMsg.setMsfCommand(MsfCommand._msf_QuickHeartBeat);
-      localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localToServiceMsg.setAppId(this.i.getMsfAppid());
-      localToServiceMsg.putWupBuffer(new byte[] { 0, 0, 0, 4 });
-      localToServiceMsg.setTimeout(com.tencent.mobileqq.msf.core.a.a.G());
-      localToServiceMsg.getAttributes().put("quickSendDetectTime", Long.valueOf(SystemClock.elapsedRealtime()));
-      this.i.sender.a(localToServiceMsg);
-      return;
-    }
-    this.m.set(false);
+    this.s.set(false);
   }
   
   public void c(ToServiceMsg paramToServiceMsg)
@@ -466,7 +549,7 @@ public class b
         if (!com.tencent.mobileqq.msf.core.a.a.aH()) {
           break label68;
         }
-        this.o.postDelayed(locala1, 1000L);
+        this.p.postDelayed(locala1, 1000L);
       }
     }
     for (;;)
@@ -474,15 +557,17 @@ public class b
       paramToServiceMsg.getAttributes().put("to_msgtimeoutCallbacker", locala1);
       return;
       label68:
-      this.o.postDelayed(locala1, locala.a);
+      this.p.postDelayed(locala1, locala.a);
     }
   }
   
   public void d()
   {
-    MsfCore.sCore.lightSender.a();
-    if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.c();
+    long l1 = SystemClock.elapsedRealtime();
+    if ((q.a().d()) && (l1 - this.r > 120000L) && (this.s.compareAndSet(false, true)))
+    {
+      a(2000L);
+      this.r = l1;
     }
   }
   
@@ -490,18 +575,18 @@ public class b
   {
     if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes().containsKey("to_msgtimeoutCallbacker")))
     {
-      QLog.d(this.h, 1, "remove timoutchecker for msg");
+      QLog.d("MSF.C.QuickSendManager", 1, "remove timoutchecker for msg");
       Runnable localRunnable = (Runnable)paramToServiceMsg.getAttributes().get("to_msgtimeoutCallbacker");
-      this.o.removeCallbacks(localRunnable);
+      this.p.removeCallbacks(localRunnable);
       paramToServiceMsg.getAttributes().remove("to_msgtimeoutCallbacker");
     }
   }
   
   public void e()
   {
-    MsfCore.sCore.lightSender.b();
+    MsfCore.sCore.lightSender.a();
     if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.d();
+      MsfCore.sCore.lightTcpSender.c();
     }
   }
   
@@ -525,13 +610,21 @@ public class b
       }
     } while (("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())) && (!paramToServiceMsg.getAttributes().containsKey("normal_msg")));
     return true;
-    QLog.d(this.h, 1, "no try quicksend request ssoseq: " + paramToServiceMsg.getRequestSsoSeq() + " by timeout error");
+    QLog.d("MSF.C.QuickSendManager", 1, "no try quicksend request ssoseq: " + paramToServiceMsg.getRequestSsoSeq() + " by timeout error");
     return false;
   }
   
-  public void g()
+  public void f()
   {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+    MsfCore.sCore.lightSender.b();
+    if (MsfCore.sCore.lightTcpSender != null) {
+      MsfCore.sCore.lightTcpSender.d();
+    }
+  }
+  
+  public void h()
+  {
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
       b(30000);
     }
   }

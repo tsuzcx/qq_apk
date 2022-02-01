@@ -1,23 +1,25 @@
-import android.graphics.PointF;
-import java.util.ArrayList;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
-class mcs
+public class mcs
+  implements mhj
 {
-  int jdField_a_of_type_Int;
-  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  mgp jdField_a_of_type_Mgp;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  public mcs(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong, int paramInt) {}
   
-  mcs(mcr parammcr) {}
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mcs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.widget.QQToast;
 
 class axtb
-  extends axtk
+  extends Handler
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
+  axtb(axsd paramaxsd) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
+    }
+    do
+    {
+      do
       {
-        localHashMap.put("failure", "1");
-        if (QLog.isColorLevel())
+        do
         {
-          paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-          QLog.i(axtl.a, 2, paramString.toString());
-        }
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698201);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        return;
+      } while ((this.a.jdField_a_of_type_Axxf == null) || (axsd.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697879);
       }
-    }
-    label391:
-    for (;;)
-    {
-      return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-      }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
-      }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label391;
-        }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(axtl.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-        }
-      }
-    }
+      this.a.jdField_a_of_type_Axxf.a(axsd.a(this.a).uRoomid);
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
+      return;
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131698198, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Axxf == null);
+    this.a.jdField_a_of_type_Axxf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtb
  * JD-Core Version:    0.7.0.1
  */

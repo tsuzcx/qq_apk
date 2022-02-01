@@ -1,35 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bbhp
-  implements bhuy
+class bbhp
+  implements DialogInterface.OnDismissListener
 {
-  public bbhp(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  bbhp(bbhl parambbhl) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_Int = paramInt;
-      if (this.a.jdField_a_of_type_Aipw != null) {
-        this.a.jdField_a_of_type_Aipw.b(paramInt);
-      }
-      if (!this.a.c) {
-        azqs.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      }
-      while (TroopAvatarWallEditActivity.a(this.a) != null)
-      {
-        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
-        return;
-        azqs.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
-      }
-    }
+    bbhl.a(this.a);
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

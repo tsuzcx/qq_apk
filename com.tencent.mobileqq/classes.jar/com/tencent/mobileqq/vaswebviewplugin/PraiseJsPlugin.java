@@ -3,9 +3,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import begz;
+import arpd;
+import arph;
+import bhod;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -67,7 +67,7 @@ public class PraiseJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i("PraiseJsPlugin", 2, "queryLocal " + paramJsBridgeListener.toString());
         }
-        paramString1 = apml.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
+        paramString1 = arph.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
         try
         {
           if (paramJsBridgeListener.has("type")) {
@@ -94,7 +94,7 @@ public class PraiseJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(apml.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(arph.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
     return true;
   }
   
@@ -176,7 +176,7 @@ public class PraiseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PraiseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

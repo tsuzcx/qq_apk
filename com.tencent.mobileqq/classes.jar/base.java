@@ -1,60 +1,47 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-
 public class base
-  extends barz
+  extends barv
 {
-  public base(BaseApplicationImpl paramBaseApplicationImpl)
+  public android.opengl.EGLContext a;
+  public javax.microedition.khronos.egl.EGLContext a;
+  public int c = 0;
+  
+  public base(barv parambarv)
   {
-    super("DataLineFaceDownloader", paramBaseApplicationImpl);
+    super(parambarv.jdField_a_of_type_JavaLangString, parambarv.jdField_a_of_type_Int, parambarv.jdField_b_of_type_Boolean, parambarv.jdField_a_of_type_Boolean, parambarv.jdField_a_of_type_Long, parambarv.jdField_b_of_type_Long);
   }
   
-  private String a(Context paramContext, String paramString)
+  public base(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    String str = bdhj.a(paramContext, paramString, 0);
-    ImageInfo localImageInfo = new ImageInfo();
-    bdhj.a(4, paramContext, paramString, str, true, localImageInfo, 0);
-    return localImageInfo.b;
+    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean a(barv parambarv)
   {
-    if ((paramDownloadParams.tag instanceof MessageForPic)) {}
-    for (paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;; paramDownloadParams = null)
+    boolean bool = super.a(parambarv);
+    if ((parambarv instanceof base))
     {
-      if (TextUtils.isEmpty(paramDownloadParams)) {}
-      File localFile1;
-      do
+      parambarv = (base)parambarv;
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != parambarv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
       {
-        return null;
-        localFile1 = new File(paramDownloadParams);
-      } while (!localFile1.exists());
-      File localFile2;
-      if (localFile1.length() >= 1048576L)
-      {
-        String str = a(this.a.getApplicationContext(), paramDownloadParams);
-        if (!bdhb.a(str)) {
-          break label203;
-        }
-        localFile2 = new File(str);
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage compress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length() + " compressPath:" + str + " compressFileSize:" + localFile2.length());
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = parambarv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+        bool = true;
       }
-      label203:
-      for (paramDownloadParams = localFile2;; paramDownloadParams = localFile1)
+      if (this.jdField_a_of_type_AndroidOpenglEGLContext != parambarv.jdField_a_of_type_AndroidOpenglEGLContext)
       {
-        barz.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-        return null;
-        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage uncompress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length());
+        this.jdField_a_of_type_AndroidOpenglEGLContext = parambarv.jdField_a_of_type_AndroidOpenglEGLContext;
+        bool = true;
+      }
+      if (this.c != parambarv.c)
+      {
+        this.c = parambarv.c;
+        return true;
       }
     }
+    else
+    {
+      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
+    }
+    return bool;
   }
 }
 

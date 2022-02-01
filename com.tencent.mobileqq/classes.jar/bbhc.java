@@ -1,14 +1,8 @@
 import java.util.List;
 
-class bbhc
-  extends ameq
+public abstract interface bbhc
 {
-  bbhc(bbgz parambbgz) {}
-  
-  public void a(boolean paramBoolean, long paramLong, List paramList, int paramInt)
-  {
-    bbgz.a(this.a, paramBoolean, paramLong, paramList, paramInt);
-  }
+  public abstract void a(int paramInt, List<? extends bbgm> paramList);
 }
 
 

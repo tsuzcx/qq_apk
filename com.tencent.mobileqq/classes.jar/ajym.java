@@ -1,22 +1,33 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
 
-public class ajym
-  extends MqqHandler
+class ajym
+  implements bkik
 {
-  public ajym(ContactsInnerFrame paramContactsInnerFrame) {}
+  ajym(ajye paramajye) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
     }
-    ContactsInnerFrame.a(this.a);
+    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+    if (paramAdapterView == this.a.jdField_a_of_type_Ajyd)
+    {
+      this.a.jdField_a_of_type_Ajyc = ((ajyc)this.a.jdField_a_of_type_Ajyd.getItem(paramInt));
+      paramView.setSelected(true);
+      paramAdapterView = new bguh();
+      paramAdapterView.a(2131365147, anni.a(2131705447), 2130838920);
+      paramAdapterView.a(2131367027, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692395), 2130838929);
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, paramAdapterView, ajye.a(this.a), new ajyn(this, paramView));
+    }
+    while (paramAdapterView != this.a.jdField_a_of_type_Ajyo) {
+      return true;
+    }
+    return true;
   }
 }
 

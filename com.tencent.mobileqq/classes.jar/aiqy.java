@@ -1,33 +1,41 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.HashMap;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiqy
-  extends PhotoCommonBaseData
+  implements View.OnClickListener
 {
-  public int a = (int)bazm.a();
-  public long a;
-  public HashMap<String, PicInfo> a;
-  public boolean a;
-  private boolean b;
+  public aiqy(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.b = paramBoolean;
-    if (paramBoolean)
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    for (;;)
     {
-      this.needMediaInfo = true;
-      bhrb.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localObject).intValue();
+      if ((i >= 0) && (this.a.jdField_a_of_type_Airb != null))
+      {
+        localObject = this.a.getActivity();
+        if (localObject != null)
+        {
+          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+          MessageRecord localMessageRecord = ((aira)this.a.jdField_a_of_type_Airb.getItem(i)).a;
+          ChatHistoryBubbleListForTroopFragment.a((Activity)localObject, this.a.b, localMessageRecord, 100, 1);
+          if (QLog.isColorLevel()) {
+            QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+          }
+          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+        }
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    if (Build.VERSION.SDK_INT < 17) {
-      return false;
-    }
-    return this.b;
   }
 }
 

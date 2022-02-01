@@ -1,25 +1,23 @@
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.richstatus.SignatureFontView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
 
-public class aycw
-  extends fu
+class aycw
+  extends RecyclerView.ViewHolder
 {
-  public aycw(SignatureFontView paramSignatureFontView) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  FrameAnimationView jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView;
+  CircleImageView jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView;
   
-  public void a(ChatMessage paramChatMessage, int paramInt)
+  public aycw(View paramView)
   {
-    if ((SignatureFontView.a(this.a) < 0) || (SignatureFontView.b(this.a) < SignatureFontView.a(this.a)))
-    {
-      this.a.a.shouldStartAnimation = true;
-      this.a.a.startAnimation(false, false);
-      if (SignatureFontView.a(this.a) > 0) {
-        SignatureFontView.c(this.a);
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131366883));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366884));
+    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131366885));
   }
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

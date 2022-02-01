@@ -1,82 +1,25 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lwl
-  extends LinkMovementMethod
+  implements aobv
 {
-  private static lwl a;
-  public int a;
-  public int b = -7447805;
+  public lwl(QQServiceForAV paramQQServiceForAV) {}
   
-  public lwl()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = -10864125;
-  }
-  
-  static int a(TextView paramTextView, int paramInt1, int paramInt2)
-  {
-    paramTextView = paramTextView.getTag(paramInt1);
-    if ((paramTextView instanceof Integer)) {
-      paramInt2 = ((Integer)paramTextView).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
     }
-    return paramInt2;
-  }
-  
-  public static MovementMethod a()
-  {
-    if (jdField_a_of_type_Lwl == null) {
-      jdField_a_of_type_Lwl = new lwl();
-    }
-    return jdField_a_of_type_Lwl;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
-    {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
-      {
-        if (i == 1)
-        {
-          i = a(paramTextView, 2131377434, this.b);
-          localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-        }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
-          {
-            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131377433, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-          }
-        }
-      }
-      Selection.removeSelection(paramSpannable);
-    }
-    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    new lxd(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lwm(this, paramString, paramBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwl
  * JD-Core Version:    0.7.0.1
  */

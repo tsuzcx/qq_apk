@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjkx;
+import blzg;
 
 public class KingCardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<KingCardInfo> CREATOR = new bjkx();
+  public static final Parcelable.Creator<KingCardInfo> CREATOR = new blzg();
   public String a;
   public boolean a;
   public String b;
@@ -51,7 +51,7 @@ public class KingCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.KingCardInfo
  * JD-Core Version:    0.7.0.1
  */

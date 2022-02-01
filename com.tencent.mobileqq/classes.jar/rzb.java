@@ -1,25 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class rzb
-  implements scc
+final class rzb
+  implements pyu
 {
-  public rzb(FastWebActivity paramFastWebActivity) {}
+  rzb(String paramString, boolean paramBoolean) {}
   
-  public void a(scd paramscd)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ArticleInfo localArticleInfo = paramscd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = FastWebActivity.e(this.a);
     if (QLog.isColorLevel()) {
-      QLog.i(FastWebActivity.a(this.a), 2, "articleInfo" + localArticleInfo);
+      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean + ", data=" + paramInt);
     }
-    sdn.a(localArticleInfo, FastWebActivity.f(this.a), i, paramscd.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.g(this.a));
+    ryx.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzb
  * JD-Core Version:    0.7.0.1
  */

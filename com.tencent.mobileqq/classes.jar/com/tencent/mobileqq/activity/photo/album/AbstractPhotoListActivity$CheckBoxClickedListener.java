@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class AbstractPhotoListActivity$CheckBoxClickedListener
   implements View.OnClickListener
@@ -17,6 +18,7 @@ public class AbstractPhotoListActivity$CheckBoxClickedListener
     if (this.this$0.mPhotoListLogic != null) {
       this.this$0.mPhotoListLogic.onCheckBoxClick(paramView, this.mPosition, this.mCheckBox);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setCheckBox(CheckBox paramCheckBox)
@@ -31,7 +33,7 @@ public class AbstractPhotoListActivity$CheckBoxClickedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.CheckBoxClickedListener
  * JD-Core Version:    0.7.0.1
  */

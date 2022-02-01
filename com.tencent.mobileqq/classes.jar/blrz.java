@@ -1,23 +1,51 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import NS_MOBILE_PHOTO.get_albumlist_num_req;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class blrz
-  implements Handler.Callback
+public class blrz
+  extends QzoneExternalRequest
 {
-  blrz(blrx paramblrx) {}
+  public JceStruct a;
   
-  public boolean handleMessage(Message paramMessage)
+  public blrz(long paramLong, String paramString)
   {
-    switch (paramMessage.what)
-    {
+    super.setRefer(paramString);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    paramString = new get_albumlist_num_req();
+    paramString.uin = paramLong;
+    this.a = paramString;
+  }
+  
+  public static get_albumlist_num_rsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    for (;;)
+    get_albumlist_num_rsp localget_albumlist_num_rsp;
+    do
     {
-      return false;
-      if ((paramMessage.obj instanceof blsf)) {
-        paramMessage = (blsf)paramMessage.obj;
-      }
-    }
+      return paramArrayOfByte;
+      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
+      paramArrayOfByte = localget_albumlist_num_rsp;
+    } while (localget_albumlist_num_rsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getAlbumListNum";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getAlbumListNum";
   }
 }
 

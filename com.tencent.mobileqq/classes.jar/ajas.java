@@ -1,126 +1,149 @@
-import Wallet.DownloadReportReq;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajas
-  extends bead
+  extends ajax
 {
-  private boolean jdField_a_of_type_Boolean;
+  public MessageForSystemMsg a;
   
-  public ajas(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bead parambead, long paramLong) {}
-  
-  public void onDoneFile(beae parambeae)
+  public ajas(MessageForSystemMsg paramMessageForSystemMsg)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
-    }
-    if (this.jdField_a_of_type_Bead != null) {
-      this.jdField_a_of_type_Bead.onDoneFile(parambeae);
-    }
-    localObject = new DownloadReportReq();
+    this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg = paramMessageForSystemMsg;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.extStr;
+    this.jdField_a_of_type_Long = paramMessageForSystemMsg.time;
+    this.b = a(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.getSystemMsg());
+  }
+  
+  public ajas(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, structmsg.StructMsg paramStructMsg, boolean paramBoolean)
+  {
+    boolean bool3 = true;
+    boolean bool1 = false;
+    boolean bool2;
     int i;
-    File localFile;
-    long l;
-    if (parambeae.jdField_a_of_type_Int == 0)
+    label79:
+    label93:
+    boolean bool4;
+    if ((paramStructMsg != null) && (paramStructMsg.msg.uint32_source_flag.has()) && (paramQQAppInterface != null))
     {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambeae.jdField_a_of_type_JavaUtilMap != null)
+      paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
+      if ((paramBoolean) && (paramQQAppInterface != null) && (paramQQAppInterface.b(paramString)))
       {
-        i = j;
-        if (!TextUtils.isEmpty(parambeae.jdField_a_of_type_JavaLangString))
+        bool2 = true;
+        i = paramStructMsg.msg.uint32_source_flag.get();
+        if ((i & 0x10) != 0)
         {
-          localFile = (File)parambeae.jdField_a_of_type_JavaUtilMap.get(parambeae.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
+          bool1 = true;
+          if (!paramBoolean) {
+            break label191;
           }
-          l = -2L;
-          label113:
-          i = (int)l;
+          if ((!bool1) || (bool2)) {
+            break label185;
+          }
+          bool4 = bool1;
+          bool1 = bool3;
+          bool3 = bool4;
         }
       }
     }
     for (;;)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("isMsgFromWZRY", 2, "result=" + bool1 + ",isFromWzry=" + bool3 + ",sourceFlag=" + i + ",isFriend=" + bool2 + ",checkFriend=" + paramBoolean);
+      }
+      return bool1;
+      bool1 = false;
+      break label79;
+      label185:
+      bool3 = false;
+      break label93;
+      label191:
+      bool3 = bool1;
+      continue;
+      bool2 = false;
+      break;
+      bool2 = false;
+      i = 0;
+      bool4 = false;
+      bool3 = bool1;
+      bool1 = bool4;
+    }
+  }
+  
+  public static boolean a(structmsg.StructMsg paramStructMsg)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramStructMsg != null)
+    {
+      bool1 = bool2;
+      if (paramStructMsg.msg != null)
       {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = bdgk.i();
-        ((DownloadReportReq)localObject).sOsVersion = bdgk.e();
-        ((DownloadReportReq)localObject).sQQVersion = bdgk.c();
-        ((DownloadReportReq)localObject).iScene = parambeae.a().getInt("scene");
-        aivh.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambeae.jdField_a_of_type_Int + localObject);
-        }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
-        break;
-        try
+        bool1 = bool2;
+        if (paramStructMsg.msg.uint32_doubt_flag.has())
         {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
+          bool1 = bool2;
+          if (paramStructMsg.msg.uint32_doubt_flag.get() > 0) {
+            bool1 = true;
           }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
         }
       }
     }
+    return bool1;
   }
   
-  public void onProgress(beae parambeae)
+  public String a()
   {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.req_uin.get());
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.msg)))
     {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambeae.g;
-      d = parambeae.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
+      this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.parse();
+      this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.msg = MessageForSystemMsg.getSysMsgDesc(paramQQAppInterface.getApp().getResources(), this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg);
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.msg;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.isread;
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.req_uin_nick.has()) {
+      return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.req_uin_nick.get();
+    }
+    return null;
+  }
+  
+  public String c()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_additional.get()))
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_qna.get())) {
+        return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_qna.get();
       }
+      return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_additional.get();
     }
-    label43:
-    do
-    {
-      return;
-      parambeae = new DownloadReportReq();
-      parambeae.sSpeed = (d + "");
-      parambeae.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
-      parambeae.iType = 0;
-      parambeae.iUin = this.jdField_a_of_type_Long;
-      aivh.a(parambeae, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    int i = 3;
-    parambeae.f = 1048576L;
-    if (this.jdField_a_of_type_Int > 3) {
-      i = this.jdField_a_of_type_Int;
-    }
-    parambeae.b = i;
-    return super.onStart(parambeae);
+    return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_describe.get();
   }
 }
 

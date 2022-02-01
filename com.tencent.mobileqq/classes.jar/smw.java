@@ -1,22 +1,38 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class smw
-  implements TopGestureLayout.OnGestureListener
+  implements View.OnClickListener
 {
-  public smw(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  public smw(KandianProgressView paramKandianProgressView) {}
   
-  public void flingLToR()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
+    if (this.a.jdField_a_of_type_Smx == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131365319: 
+      case 2131365335: 
+        this.a.jdField_a_of_type_Smx.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        break;
+      case 2131376462: 
+      case 2131376470: 
+        this.a.jdField_a_of_type_Smx.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+      }
+    }
   }
-  
-  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
-import com.tencent.biz.widgets.TabLayout;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import java.util.List;
 
-public class nwo
-  implements Animator.AnimatorListener
+public abstract class nwo
+  implements anil
 {
-  public nwo(ReadInJoyChannelViewPagerController.10 param10) {}
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    nwm.b(this.a.this$0, false);
-    nwm.a(this.a.this$0, nwm.a, 0.0F, 0);
-    nwm.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
+    if (paramObject != null) {}
+    try
+    {
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      return;
+    }
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
+    return;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwo
  * JD-Core Version:    0.7.0.1
  */

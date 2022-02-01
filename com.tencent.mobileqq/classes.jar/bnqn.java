@@ -1,8 +1,12 @@
-public abstract interface bnqn
+class bnqn
+  implements bnsd
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  bnqn(bnqm parambnqm) {}
   
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public void a(bnpk parambnpk)
+  {
+    bnqm.a(this.a, parambnpk);
+  }
 }
 
 

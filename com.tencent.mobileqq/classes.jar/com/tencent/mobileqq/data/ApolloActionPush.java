@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloActionPush
-  extends awge
+  extends Entity
 {
   public int mActionId;
   public int mActionType;
   public int mAioType;
   public String mContent;
-  @awhs
+  @unique
   public long mId;
   public long mRcvUin;
   public long mSendUin;
@@ -30,7 +30,7 @@ public class ApolloActionPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionPush
  * JD-Core Version:    0.7.0.1
  */

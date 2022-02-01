@@ -1,33 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class bgqc
-  extends Handler
+class bgqc
+  implements asdc
 {
-  public bgqc(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bgqc(bgpw parambgpw) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    bgqa localbgqa = (bgqa)paramMessage.obj;
-    switch (paramMessage.what)
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localbgqa.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbgqa.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bgpw.a(this.a);
+      return true;
     }
-    localbgqa.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbgqa.jdField_a_of_type_ArrayOfJavaLangObject);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqc
  * JD-Core Version:    0.7.0.1
  */

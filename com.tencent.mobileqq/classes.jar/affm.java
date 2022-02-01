@@ -1,11 +1,36 @@
-class affm
-  implements anxq
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class affm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  affm(affl paramaffl) {}
+  public affm(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    affl.a(this.a);
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      this.a.app.c(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
+      }
+    }
+    for (;;)
+    {
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.app.c(0);
+      break;
+      label78:
+      i = 0;
+    }
   }
 }
 

@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
-import pcw;
+import ptr;
 
 public class MediaGifView
   extends GifView
-  implements pcw
+  implements ptr
 {
   public MediaGifView(Context paramContext)
   {
@@ -24,24 +24,24 @@ public class MediaGifView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void B_()
+  public void a()
   {
-    a();
+    displayGif();
   }
   
-  public void C_()
+  public void b()
   {
-    b();
+    displayCover();
   }
   
-  public void D_() {}
+  public void c() {}
   
-  public boolean a()
+  public void d() {}
+  
+  public boolean isPlaying()
   {
     return false;
   }
-  
-  public void d() {}
   
   public void setMediaCoverUrl(String paramString)
   {
@@ -50,6 +50,7 @@ public class MediaGifView
   
   public void setMediaPlayUrl(String paramString)
   {
+    setNeedGifUrl(false);
     setGifUrl(paramString);
   }
   

@@ -1,24 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import acjm;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
 
 public final class ReadInJoyUtils$21
   implements Runnable
 {
-  public ReadInJoyUtils$21(String paramString, QQAppInterface paramQQAppInterface) {}
+  public ReadInJoyUtils$21(View paramView1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView2) {}
   
   public void run()
   {
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1008);
-    QLog.d("ReadInJoyUtils", 2, "puin<" + this.jdField_a_of_type_JavaLangString + "> msg setRead !");
+    Object localObject = new Rect();
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
+    ((Rect)localObject).left -= this.jdField_a_of_type_Int;
+    ((Rect)localObject).top -= this.jdField_b_of_type_Int;
+    ((Rect)localObject).right += this.c;
+    ((Rect)localObject).bottom += this.d;
+    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_b_of_type_AndroidViewView.setTouchDelegate((TouchDelegate)localObject);
   }
 }
 

@@ -1,99 +1,124 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import tencent.im.cs.smartptt.Smartptt.PttTransRsp;
-import tencent.im.cs.smartptt.Smartptt.RspBody;
+import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
+import com.tencent.richmediabrowser.model.BrowserAnimation;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
-class bavv
-  implements ITransactionCallback
+public class bavv
+  extends BrowserAnimation
+  implements IBrowserAnimationListener
 {
-  bavv(bavu parambavu, long paramLong) {}
+  public int a;
+  public Rect a;
+  private RichMediaBaseData a;
+  Rect b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bavv() {}
+  
+  public bavv(RichMediaBaseData paramRichMediaBaseData)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms retCode=" + paramInt);
-    }
-    if ((bavu.a(this.jdField_a_of_type_Bavu) != null) && (bavu.a(this.jdField_a_of_type_Bavu).jdField_b_of_type_JavaLangString != null)) {
-      new File(bavu.a(this.jdField_a_of_type_Bavu).jdField_b_of_type_JavaLangString).delete();
-    }
-    this.jdField_a_of_type_Bavu.d(2005);
-    this.jdField_a_of_type_Bavu.jdField_a_of_type_Bass.a = paramArrayOfByte;
-    this.jdField_a_of_type_Bavu.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bavu.b);
-    this.jdField_a_of_type_Bavu.d();
+    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public Drawable getAnimationDrawable()
   {
-    boolean bool2 = true;
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "onSuccess SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    if ((bavu.a(this.jdField_a_of_type_Bavu) != null) && (bavu.a(this.jdField_a_of_type_Bavu).jdField_b_of_type_JavaLangString != null)) {
-      new File(bavu.a(this.jdField_a_of_type_Bavu).jdField_b_of_type_JavaLangString).delete();
-    }
-    paramHashMap = new Smartptt.RspBody();
-    try
+    for (;;)
     {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSliceUploadProcessor", 2, "onSuccess  text =" + paramHashMap.msg_ptttrans_rsp.str_text.get() + " id=" + paramHashMap.msg_ptttrans_rsp.str_voice_id.get() + " pos=" + this.jdField_a_of_type_Bavu.jdField_a_of_type_Bayk.p + " uint32_is_final=" + paramHashMap.msg_ptttrans_rsp.uint32_is_final.get());
-      }
-      this.jdField_a_of_type_Bavu.jdField_a_of_type_Bass.b = 327696;
-      this.jdField_a_of_type_Bavu.jdField_a_of_type_Bass.A = (bavu.a(this.jdField_a_of_type_Bavu) + paramHashMap.msg_ptttrans_rsp.str_text.get());
-      this.jdField_a_of_type_Bavu.jdField_a_of_type_Bass.c = 68;
-      this.jdField_a_of_type_Bavu.jdField_a_of_type_Bass.i = this.jdField_a_of_type_Bavu.jdField_a_of_type_Bayk.p;
-      paramArrayOfByte = this.jdField_a_of_type_Bavu;
-      boolean bool1 = bool2;
-      if (paramHashMap.msg_ptttrans_rsp.uint32_is_final.get() != 1) {
-        if (!bavu.a(this.jdField_a_of_type_Bavu).jdField_b_of_type_Boolean) {
-          break label355;
-        }
-      }
-      label355:
-      for (bool1 = bool2;; bool1 = false)
+      try
       {
-        bavu.a(paramArrayOfByte, bool1, true);
-        this.jdField_a_of_type_Bavu.b.b();
-        this.jdField_a_of_type_Bavu.b.a = 1;
-        return;
+        Drawable localDrawable;
+        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        {
+          localDrawable = new bawu().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localObject2 = getThumbRect();
+          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
+            this.isImgCenterCropMode = false;
+          }
+          if ((localDrawable != null) && (localObject2 != null))
+          {
+            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
+            if (localDrawable.getIntrinsicHeight() == -1) {
+              break;
+            }
+            localObject2 = localDrawable;
+            if (localDrawable.getIntrinsicWidth() != -1) {
+              return localObject2;
+            }
+            break;
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+          {
+            localDrawable = new bawv().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+          {
+            localDrawable = new bawq().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
+            break label219;
+          }
+          localDrawable = new bawr().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          continue;
+        }
+        return null;
       }
-      return;
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AIOImageInfo", 2, "getAnimationBitmap ", localThrowable);
+        }
+        return null;
+      }
+      label219:
+      Object localObject1 = null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    Object localObject2 = null;
+    return localObject2;
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> onTransStart()");
-    }
-    this.jdField_a_of_type_Bavu.b.a();
+    paramRichMediaBaseData = new bavv(paramRichMediaBaseData);
+    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    return paramRichMediaBaseData;
   }
   
-  public void onUpdateProgress(int paramInt)
+  public int getCutValue()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSliceUploadProcessor", 2, "onUpdateProgress transferedSize:" + paramInt);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect getStartSrcRect()
+  {
+    return this.b;
+  }
+  
+  public int getStartX()
+  {
+    return 0;
+  }
+  
+  public int getStartY()
+  {
+    return 0;
+  }
+  
+  public Rect getThumbRect()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
     }
+    return super.getThumbRect();
   }
 }
 

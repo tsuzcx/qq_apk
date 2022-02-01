@@ -1,89 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afnp
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnClickListener
 {
-  public afnp(afmy paramafmy) {}
+  public afnp(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    String str;
-    if (paramLong == 21L)
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L))
     {
-      paramString3 = "";
-      paramString2 = Integer.valueOf(0);
-      if (!paramString1.startsWith("poke.item.effect.")) {
-        break label245;
-      }
-      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-      paramVasQuickUpdateManager = Integer.valueOf(str);
-      paramString2 = paramVasQuickUpdateManager;
-      paramString3 = str;
-      if (!afxl.c.contains(paramVasQuickUpdateManager)) {
-        break label337;
-      }
-      afxl.c.remove(paramVasQuickUpdateManager);
-      paramString3 = str;
-      paramString2 = paramVasQuickUpdateManager;
-      paramInt2 = 1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    for (;;)
+    TroopRequestActivity.c = l;
+    Bundle localBundle = TroopInfoActivity.a(this.a.jdField_a_of_type_JavaLangString, 4);
+    localBundle.putInt("t_s_f", 1001);
+    int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
+    label97:
+    QQAppInterface localQQAppInterface;
+    String str2;
+    if ((i == 2) || (i == 10) || (i == 12))
     {
-      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!afxl.c.contains(paramString2)) && (!afxl.c.contains(paramString2)))
-      {
-        if (afxl.a("bubble", paramString2.intValue())) {
-          break label318;
-        }
-        paramInt2 = 1;
-        label142:
-        if (afxl.a("/normal.png", paramString2.intValue())) {
-          break label324;
-        }
-        label155:
-        boolean bool = afxl.b.contains(paramString2);
-        paramString3 = this.a.a;
-        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
-          break label330;
-        }
+      i = 1;
+      localQQAppInterface = this.a.app;
+      str2 = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+      if (i == 0) {
+        break label193;
       }
-      label318:
-      label324:
-      label330:
-      for (paramString2 = alud.a(2131705675);; paramString2 = "")
-      {
-        bdom.a(paramString3, paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
-        }
-        return;
-        label245:
-        if (!paramString1.startsWith("poke.item.res.")) {
-          break label337;
-        }
-        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        paramVasQuickUpdateManager = Integer.valueOf(str);
-        paramString2 = paramVasQuickUpdateManager;
-        paramString3 = str;
-        if (!afxl.d.contains(paramVasQuickUpdateManager)) {
-          break label337;
-        }
-        afxl.d.remove(paramVasQuickUpdateManager);
-        paramString3 = str;
-        paramString2 = paramVasQuickUpdateManager;
-        paramInt2 = 1;
-        break;
-        paramInt2 = 0;
-        break label142;
-        i = 0;
-        break label155;
-      }
-      label337:
-      paramInt2 = 0;
+    }
+    label193:
+    for (String str1 = "0";; str1 = "1")
+    {
+      bcst.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str2, str1, "", "");
+      bfup.a(this.a, localBundle, 2);
+      break;
+      i = 0;
+      break label97;
     }
   }
 }

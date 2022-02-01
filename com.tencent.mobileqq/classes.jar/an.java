@@ -1,24 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
 
 public class an
-  implements View.OnClickListener
+  implements atve
 {
-  public an(LiteActivity paramLiteActivity) {}
+  public an(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    aepi.n = true;
-    azrh.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
-    paramView = new Intent(this.a, LiteAdvanceActivity.class);
-    paramView.putExtra("targetUin", this.a.b);
-    this.a.startActivityForResult(paramView, 7);
+    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
+  
+  public void b() {}
 }
 
 

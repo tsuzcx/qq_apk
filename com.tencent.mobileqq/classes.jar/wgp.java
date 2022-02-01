@@ -1,37 +1,47 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 class wgp
+  implements wgu
 {
-  public TextView a;
-  public StoryPickerHorizontalListView a;
+  private wgp(wgm paramwgm) {}
   
-  public wgp(wgo paramwgo, View paramView, wgn paramwgn)
+  public void a(wgv paramwgv)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365013));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131367749));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramwgn);
-    paramView = (wgh)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramwgo.jdField_a_of_type_Wgm);
-    paramView.a(paramwgo.jdField_a_of_type_Wgl);
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    bcev localbcev = bcec.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramwgv.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    bcef localbcef = localMessageForShortVideo.getDownloadInfo(localbcev.b);
+    if (paramwgv.jdField_a_of_type_Int == 2)
+    {
+      localbcef.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localbcef.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localbcev.a(localbcef);
+      localbcev.a(new wgq(this, paramwgv.jdField_a_of_type_JavaLangString));
+      bcec.a(localbcev, localQQAppInterface);
+      yqp.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramwgv }));
+      return;
+      localbcef.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localbcef.a(localMessageForShortVideo.istroop, 0);
+    }
   }
   
-  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(xqz.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_Wgo.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    return true;
   }
+  
+  public void b(wgv paramwgv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wgp
  * JD-Core Version:    0.7.0.1
  */

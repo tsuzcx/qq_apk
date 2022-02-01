@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#1a7c878e" />
-    <corners android:radius="4.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/bk3" />
+    <item android:drawable="@drawable/bk2" />
+</selector>

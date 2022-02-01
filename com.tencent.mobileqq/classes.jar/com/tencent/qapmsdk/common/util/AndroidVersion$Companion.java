@@ -4,9 +4,15 @@ import android.os.Build.VERSION;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/AndroidVersion$Companion;", "", "()V", "isIceScreamSandwich", "", "isJellyBean", "isJellyBeanMr1", "isKitKat", "isKitKatWatch", "isL", "isM", "isN", "isO", "isP", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/AndroidVersion$Companion;", "", "()V", "isHoneycomb", "", "isIceScreamSandwich", "isJellyBean", "isJellyBeanMr1", "isKitKat", "isKitKatWatch", "isL", "isM", "isN", "isO", "isP", "isQ", "isR", "common_release"}, k=1, mv={1, 1, 15})
 public final class AndroidVersion$Companion
 {
+  @JvmStatic
+  public final boolean isHoneycomb()
+  {
+    return Build.VERSION.SDK_INT >= 13;
+  }
+  
   @JvmStatic
   public final boolean isIceScreamSandwich()
   {
@@ -64,12 +70,24 @@ public final class AndroidVersion$Companion
   @JvmStatic
   public final boolean isP()
   {
-    return Build.VERSION.SDK_INT >= 27;
+    return Build.VERSION.SDK_INT >= 28;
+  }
+  
+  @JvmStatic
+  public final boolean isQ()
+  {
+    return Build.VERSION.SDK_INT >= 29;
+  }
+  
+  @JvmStatic
+  public final boolean isR()
+  {
+    return Build.VERSION.SDK_INT >= 30;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.AndroidVersion.Companion
  * JD-Core Version:    0.7.0.1
  */

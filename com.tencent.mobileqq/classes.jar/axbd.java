@@ -1,47 +1,36 @@
-import com.tencent.mobileqq.videoplatform.api.ILog;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class axbd
-  implements ILog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"LIFE_CYCLE_FRAGMENT_TAG", "", "checkAndAddLifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/FragmentActivity;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class axbd
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  @NotNull
+  public static final LifeCycleFragment a(@NotNull FragmentActivity paramFragmentActivity)
   {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void v(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
+    Intrinsics.checkParameterIsNotNull(paramFragmentActivity, "$this$checkAndAddLifeCycleFragment");
+    Object localObject = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_fragment");
+    if ((localObject instanceof LifeCycleFragment)) {
+      return (LifeCycleFragment)localObject;
+    }
+    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager().beginTransaction();
+    if (localObject != null) {
+      paramFragmentActivity.remove((Fragment)localObject);
+    }
+    localObject = new LifeCycleFragment();
+    paramFragmentActivity.add((Fragment)localObject, "fragment_tag_life_cycle_fragment");
+    paramFragmentActivity.commitAllowingStateLoss();
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbd
  * JD-Core Version:    0.7.0.1
  */

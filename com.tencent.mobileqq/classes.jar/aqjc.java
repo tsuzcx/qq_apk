@@ -1,110 +1,59 @@
 import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class aqjc
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 0;
-  public aqda a;
-  private aqjc jdField_a_of_type_Aqjc;
-  private int jdField_b_of_type_Int = 0;
-  private aqjc jdField_b_of_type_Aqjc;
-  private int c;
-  private int d;
-  private int e;
+  private int jdField_a_of_type_Int = 25;
+  private int b;
   
-  public aqjc(aqda paramaqda)
+  public aqjc(TimeSelectView paramTimeSelectView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aqda = paramaqda;
-    this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297163);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
   }
   
-  public int a()
+  public int getCount()
   {
-    return this.jdField_a_of_type_Int;
+    return TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b);
   }
   
-  public aqjc a()
+  public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_Aqjc;
+    return Integer.valueOf(paramInt);
   }
   
-  public void a(int paramInt)
+  public long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return paramInt;
   }
   
-  public void a(aqjc paramaqjc)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Aqjc = paramaqjc;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public aqjc b()
-  {
-    return this.jdField_b_of_type_Aqjc;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(aqjc paramaqjc)
-  {
-    this.jdField_b_of_type_Aqjc = paramaqjc;
-  }
-  
-  public int c()
-  {
-    if (this.d != 0)
+    if (paramView == null)
     {
-      if (this.e != 0) {
-        return this.d + this.e;
-      }
-      this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297163);
-      return this.d + this.e;
-    }
-    return 0;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public int d()
-  {
-    if (this.c != 0) {
-      return this.c;
-    }
-    if ((this.jdField_a_of_type_Aqda != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Aqda.a)))
-    {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject2 = aqjd.a(this.jdField_a_of_type_Aqda.a, ((QQAppInterface)localObject1).getApp().getBaseContext());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = this.jdField_a_of_type_Aqda.a;
-      }
-      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297168);
-      localObject2 = new TextPaint();
-      ((TextPaint)localObject2).setAntiAlias(true);
-      ((TextPaint)localObject2).setDither(true);
-      ((TextPaint)localObject2).setTextSize(i);
-      this.c = ((int)((TextPaint)localObject2).measureText((String)localObject1) + (BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297167) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297166) * 2 + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297163) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297164)));
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
     }
     for (;;)
     {
-      return this.c;
-      QLog.e("TAG horserace", 2, " GET WIDTH WITH NULL INFO");
+      String str = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(20.0F);
+      localWheelTextView.setTextColor(TimeSelectView.jdField_a_of_type_Int);
+      localWheelTextView.setGravity(17);
+      localWheelTextView.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
 }

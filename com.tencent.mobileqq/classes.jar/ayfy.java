@@ -1,18 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class ayfy
-  implements ayfr
+  extends bdop
 {
-  public ayfy(ScreenShotFragment paramScreenShotFragment) {}
+  public ayfy(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
+      return;
     }
-    ScreenShotFragment.a(this.a, paramInt);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131706595), 0).a();
   }
 }
 

@@ -1,36 +1,18 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 
 public final class arhf
-  extends WebChromeClient
+  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
 {
-  private final IHostInterface.IWebClient a;
-  
-  private arhf(IHostInterface.IWebClient paramIWebClient)
+  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
   {
-    this.a = paramIWebClient;
+    return new IntimateInfo.CommonTroopInfo(paramParcel);
   }
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
   {
-    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
-      return super.onConsoleMessage(paramConsoleMessage);
-    }
-    return true;
-  }
-  
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
-      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-    }
-    if (paramJsPromptResult != null) {
-      paramJsPromptResult.cancel();
-    }
-    return true;
+    return new IntimateInfo.CommonTroopInfo[paramInt];
   }
 }
 

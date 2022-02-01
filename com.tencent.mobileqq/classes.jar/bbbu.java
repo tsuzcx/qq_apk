@@ -1,11 +1,16 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class bbbu
-  extends bbbz
+  implements bkhy
 {
-  public mobileqq_mp.RetInfo a;
-  public String a;
-  public String b;
+  public bbbu(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onDismiss()
+  {
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+  }
 }
 
 

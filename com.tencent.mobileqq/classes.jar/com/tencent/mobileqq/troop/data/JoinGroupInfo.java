@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbpb;
+import bepp;
 import java.util.Arrays;
 
 public class JoinGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<JoinGroupInfo> CREATOR = new bbpb();
+  public static final Parcelable.Creator<JoinGroupInfo> CREATOR = new bepp();
   public int a;
   public String a;
   public byte[] a;
@@ -60,7 +60,7 @@ public class JoinGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.JoinGroupInfo
  * JD-Core Version:    0.7.0.1
  */

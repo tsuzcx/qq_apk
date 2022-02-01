@@ -1,11 +1,12 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-class ajkw
-  extends ajjn
+public abstract interface ajkw
 {
-  public RelativeLayout a;
-  public ImageView c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void d();
 }
 
 

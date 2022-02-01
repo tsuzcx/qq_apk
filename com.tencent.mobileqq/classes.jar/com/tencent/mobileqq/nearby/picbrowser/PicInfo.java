@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avjq;
+import axra;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class PicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PicInfo> CREATOR = new avjq();
+  public static final Parcelable.Creator<PicInfo> CREATOR = new axra();
   public int a;
   public String a;
   public String b;
@@ -153,7 +153,7 @@ public class PicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.PicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class yez
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  yez(yew paramyew) {}
+  yez(yey paramyey) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a() != null)
-    {
-      paramView = this.a.a().a();
-      if (paramView != null) {
-        this.a.d(paramView);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QQToast.a(yew.a(this.a), 1, alud.a(2131715043), 0).a();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yez
  * JD-Core Version:    0.7.0.1
  */

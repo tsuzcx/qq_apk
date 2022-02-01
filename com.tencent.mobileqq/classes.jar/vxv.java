@@ -1,47 +1,35 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class vxv
-  extends vxw
+  implements View.OnClickListener
 {
-  private AudioPlayback a;
+  public vxv(QCirclePushRankTopView paramQCirclePushRankTopView) {}
   
-  public vxv(vya paramvya, boolean paramBoolean, int paramInt, vxy paramvxy, AudioPlayback paramAudioPlayback)
+  public void onClick(View paramView)
   {
-    super(paramvya, paramBoolean, paramInt, paramvxy);
-    this.a = paramAudioPlayback;
-    a();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
-  
-  public void a(vxx paramvxx, long paramLong)
-  {
-    this.a.a(paramvxx.jdField_a_of_type_JavaNioByteBuffer, paramvxx.jdField_a_of_type_Long);
-    b(paramvxx);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
+    if ((this.a.a() != null) && (QCirclePushRankTopView.a(this.a) != null) && (QCirclePushRankTopView.a(this.a).size() > QCirclePushRankTopView.a(this.a)) && (QCirclePushRankTopView.a(this.a).get(QCirclePushRankTopView.a(this.a)) != null))
+    {
+      String str = uxn.a(((QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(QCirclePushRankTopView.a(this.a))).urlInfo.get(), "RankItemUrl");
+      if (bgsp.a(str)) {
+        QLog.w("QCirclePushRankTopView", 1, "rank url is empty");
+      }
+      uxo.a(this.a.getContext(), str);
+      vrf.a("", 9, 4, 0, ((QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(QCirclePushRankTopView.a(this.a))).containerType.get() + "", "", "", "", "", QCirclePushRankTopView.a(this.a), this.a.d(), -1);
     }
-    return super.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxv
  * JD-Core Version:    0.7.0.1
  */

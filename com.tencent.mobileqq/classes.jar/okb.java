@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class okb
-  implements ViewBase.OnClickListener
+public class okb
+  implements CompoundButton.OnCheckedChangeListener
 {
-  okb(ojn paramojn) {}
+  public okb(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.i();
-    }
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     okb
  * JD-Core Version:    0.7.0.1
  */

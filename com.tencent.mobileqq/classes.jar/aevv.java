@@ -1,35 +1,61 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class aevv
-  extends AsyncTask<String, Void, Bitmap>
 {
-  public aevv(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
-  
-  protected Bitmap a(String... paramVarArgs)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
-    {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
-      }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    return null;
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
-  protected void a(Bitmap paramBitmap)
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
   {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    a(paramContext, null, paramClass, paramClass1);
+  }
+  
+  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    BaseApplicationImpl.getApplication().startActivity(localIntent);
+  }
+  
+  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramFragment.getActivity(), paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 

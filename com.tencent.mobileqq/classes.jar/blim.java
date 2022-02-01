@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class blim
-  implements View.OnClickListener
+public class blim
+  implements DialogInterface.OnDismissListener
 {
-  blim(blil paramblil, int paramInt) {}
+  public blim(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!blil.a()) {}
-    do
-    {
-      return;
-      blil.a(this.jdField_a_of_type_Blil, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Blil.notifyDataSetChanged();
-    } while (blil.a(this.jdField_a_of_type_Blil) == null);
-    blil.a(this.jdField_a_of_type_Blil).a(this.jdField_a_of_type_Int);
+    this.a.finish();
   }
 }
 

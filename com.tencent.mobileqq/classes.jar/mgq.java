@@ -1,57 +1,37 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavListItemBase;
 import com.tencent.qphone.base.util.QLog;
 
 class mgq
-  implements lug
+  implements mhk
 {
-  mgq(mgp parammgp, VideoAppInterface paramVideoAppInterface) {}
+  mgq(mgm parammgm) {}
   
-  public void a()
+  public void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase)
   {
-    mgp.c(this.jdField_a_of_type_Mgp);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = mgp.a(paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.w(mgp.a(this.jdField_a_of_type_Mgp), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mgp.w + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mgp.x + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mgp.v + "->" + paramInt3 + "], rotation[" + mgp.a(this.jdField_a_of_type_Mgp) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mgp.c() + "]");
-    }
-    if ((!this.jdField_a_of_type_Mgp.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    }
-    this.jdField_a_of_type_Mgp.w = paramInt1;
-    this.jdField_a_of_type_Mgp.x = paramInt2;
-    this.jdField_a_of_type_Mgp.v = paramInt3;
-    this.jdField_a_of_type_Mgp.i = i;
-    if (paramInt4 != -1) {
-      mgp.a(this.jdField_a_of_type_Mgp, i);
-    }
-    mgp.d(this.jdField_a_of_type_Mgp);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      String str = this.jdField_a_of_type_Mgp.b();
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+      if (QLog.isColorLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked begin, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], ignore[" + bool + "], seq[" + paramLong + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      return;
     }
-  }
-  
-  public void b()
-  {
-    mgp.b(this.jdField_a_of_type_Mgp);
-  }
-  
-  public void c()
-  {
-    mgp.a(this.jdField_a_of_type_Mgp);
+    QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked valid, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], seq[" + paramLong + "]");
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.d;
+    this.a.d = paramInt;
+    this.a.e = paramInt;
+    this.a.a(i, this.a.d);
+    this.a.a(this.a.d);
+    this.a.a(paramLong, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mgq
  * JD-Core Version:    0.7.0.1
  */

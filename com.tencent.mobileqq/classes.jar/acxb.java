@@ -1,12 +1,13 @@
-import android.widget.ImageView;
+import android.content.Context;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acxb
+public abstract interface acxb
 {
-  acwz jdField_a_of_type_Acwz;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
+  public abstract boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
-  acxb(acxa paramacxa) {}
+  public abstract boolean a(QQMessageFacade.Message paramMessage);
 }
 
 

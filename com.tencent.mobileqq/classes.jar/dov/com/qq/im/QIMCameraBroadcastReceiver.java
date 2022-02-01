@@ -4,19 +4,20 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bkms;
-import bljn;
-import bnpa;
+import bnbf;
+import bnpt;
+import bnzb;
+import bqft;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class QIMCameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bkms a;
+  private bnbf a;
   
-  public QIMCameraBroadcastReceiver(bkms parambkms)
+  public QIMCameraBroadcastReceiver(bnbf parambnbf)
   {
-    this.a = parambkms;
+    this.a = parambnbf;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -33,24 +34,24 @@ public class QIMCameraBroadcastReceiver
           {
             return;
             paramContext = paramIntent.getAction();
-            bljn.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
+            bnzb.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
             if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
               break;
             }
           } while ((this.a.g) || (!this.a.n));
           this.a.r();
           return;
-        } while (!"new_qq_android_native_ptu_res_".equals(paramContext));
-        azdw.a = true;
-      } while (bnpa.a == null);
+        } while (!bnpt.c.b.equals(paramContext));
+        bqft.jdField_a_of_type_Boolean = true;
+      } while (bqft.jdField_a_of_type_JavaLangString == null);
       paramContext = this.a.a();
     } while (!(paramContext instanceof EffectsCameraCaptureView));
-    ((EffectsCameraCaptureView)paramContext).setFaceEffect(bnpa.a);
+    ((EffectsCameraCaptureView)paramContext).setFaceEffect(bqft.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

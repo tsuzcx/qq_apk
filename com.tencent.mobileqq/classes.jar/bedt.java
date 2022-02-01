@@ -1,70 +1,67 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bedt
 {
-  public static final int a = ListenChangeVoicePanel.a.length;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  private int d;
+  public String d;
+  public String e;
   
-  public static String a(String paramString)
+  public bedt()
   {
-    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
-    new File(paramString).renameTo(new File(str));
-    return str;
+    this.jdField_d_of_type_Int = 1;
   }
   
-  public static String a(String paramString, int paramInt)
+  public JSONObject a()
   {
-    int i = paramString.lastIndexOf(".");
-    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    new File(paramString1).delete();
-    new File(paramString2).delete();
-    int i = 0;
-    while (i < a)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      new File(a(paramString1, i)).delete();
-      i += 1;
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("text", this.e);
+      localJSONObject.put("duration", this.jdField_a_of_type_Int);
+      localJSONObject.put("size", this.jdField_a_of_type_Long);
+      localJSONObject.put("width", this.jdField_b_of_type_Int);
+      localJSONObject.put("height", this.jdField_c_of_type_Int);
+      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
+      return localJSONObject;
     }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoInfo", 2, "VideoInfo: " + QLog.getStackTraceString(localJSONException));
+    }
+    return localJSONObject;
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt)
+  public void a(int paramInt)
   {
-    String str = null;
-    new File(paramString1).delete();
-    new File(paramString2).delete();
-    int i = 0;
-    paramString2 = str;
-    if (i < a)
+    switch (paramInt)
     {
-      str = a(paramString1, i);
-      if (i == paramInt) {
-        paramString2 = str;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        new File(str).delete();
-      }
+    default: 
+      this.jdField_d_of_type_Int = -1;
+      return;
+    case 1: 
+      this.jdField_d_of_type_Int = 2;
+      return;
+    case 0: 
+      this.jdField_d_of_type_Int = 1;
+      return;
     }
-    if (paramString2 != null) {
-      new File(paramString2).renameTo(new File(paramString1));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    new File(paramString1).deleteOnExit();
-    new File(paramString2).deleteOnExit();
-    int i = 0;
-    while (i < a)
-    {
-      new File(a(paramString1, i)).deleteOnExit();
-      i += 1;
-    }
+    this.jdField_d_of_type_Int = 3;
   }
 }
 

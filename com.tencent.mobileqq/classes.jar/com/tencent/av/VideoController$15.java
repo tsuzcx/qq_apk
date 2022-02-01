@@ -1,24 +1,21 @@
 package com.tencent.av;
 
-import com.tencent.qphone.base.util.QLog;
-import lid;
+import com.tencent.av.app.VideoAppInterface;
+import ley;
 
 class VideoController$15
   implements Runnable
 {
-  VideoController$15(VideoController paramVideoController) {}
+  VideoController$15(VideoController paramVideoController, ley paramley) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
-    }
-    this.this$0.b(this.this$0.a().d, 2);
+    this.this$0.a.a(new Object[] { Integer.valueOf(33), this.a.d, Boolean.valueOf(false) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.15
  * JD-Core Version:    0.7.0.1
  */

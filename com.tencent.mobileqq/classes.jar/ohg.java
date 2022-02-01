@@ -1,61 +1,71 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ohg
 {
-  private JSONObject a = new JSONObject();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private RainView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView;
+  private ohi jdField_a_of_type_Ohi;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public String a()
+  public ohg(ViewGroup paramViewGroup, Context paramContext)
   {
-    return this.a.toString();
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ohi = new ohi(this);
   }
   
-  public ohg a()
+  public void a()
   {
-    try
-    {
-      this.a.put("network", opn.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-      this.a.put("version", ntd.a);
-      this.a.put("os", "1");
-      this.a.put("uin", ors.a());
-      this.a.put("city", opn.b());
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public ohg a(int paramInt)
+  public void a(String paramString)
   {
-    int i = 0;
-    if (paramInt == 41516) {
-      i = 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRainAnimationController", 2, "rain animation show");
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") == null)
     {
-      try
-      {
-        this.a.put("source", i);
-        return this;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (paramInt == 41522) {
-        i = 16;
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView = new RainView(this.jdField_a_of_type_AndroidContentContext);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+      localLayoutParams.gravity = 48;
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setTag("ReadInJoyRainAnimationController");
     }
-    return this;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setAnimationEndListener(new ohh(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.a(this.jdField_a_of_type_AndroidViewViewGroup.getWidth(), this.jdField_a_of_type_AndroidViewViewGroup.getTop(), this.jdField_a_of_type_AndroidViewViewGroup.getBottom(), paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") != null;
+  }
+  
+  public void b()
+  {
+    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyRainAnimationController", 2, "rain animation hide");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.n();
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView);
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohg
  * JD-Core Version:    0.7.0.1
  */

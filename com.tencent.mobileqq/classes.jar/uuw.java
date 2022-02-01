@@ -1,25 +1,10 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public class uuw
-  implements uvi
+public abstract interface uuw
 {
-  protected AtomicBoolean c = new AtomicBoolean(false);
-  
-  public void a() {}
-  
-  public void b()
-  {
-    this.c.set(true);
-  }
-  
-  public boolean b()
-  {
-    return this.c.get();
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uuw
  * JD-Core Version:    0.7.0.1
  */

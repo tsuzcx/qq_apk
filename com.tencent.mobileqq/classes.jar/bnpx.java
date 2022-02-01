@@ -1,8 +1,6 @@
-public class bnpx
+class bnpx
 {
-  public long a;
-  public long b;
-  public long c;
+  static final bnpu a = new bnpu(null);
 }
 
 

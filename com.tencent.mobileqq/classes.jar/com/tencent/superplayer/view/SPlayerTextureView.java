@@ -2,12 +2,12 @@ package com.tencent.superplayer.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.tmediacodec.hook.THookTextureView;
 
 public class SPlayerTextureView
-  extends TextureView
+  extends THookTextureView
   implements ISPlayerViewBase
 {
   private static final String TAG = SPlayerTextureView.class.getSimpleName();
@@ -184,7 +184,7 @@ public class SPlayerTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerTextureView
  * JD-Core Version:    0.7.0.1
  */

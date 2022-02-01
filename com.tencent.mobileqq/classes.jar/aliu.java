@@ -1,187 +1,182 @@
-import android.os.Build;
+import android.annotation.TargetApi;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.NewIntent;
 
 public class aliu
 {
-  public static String A;
-  public static String B;
-  public static String C;
-  public static String D;
-  public static String E;
-  public static String F;
-  public static String G;
-  public static String H;
-  public static String I;
-  public static String J;
-  public static String K;
-  public static String L;
-  public static String M;
-  public static String N;
-  public static String O;
-  public static String P;
-  public static String Q;
-  public static String R;
-  public static String S;
-  public static String T;
-  public static String U;
-  public static String V;
-  public static final String W;
-  public static String X;
-  public static String Y;
-  public static String Z;
-  public static int a;
-  public static long a;
-  public static String a;
-  public static final String[] a;
-  public static final String aA;
-  public static final String aB;
-  public static String aC = alud.a(2131700701);
-  public static String aD = alud.a(2131700700);
-  public static String aE = "https://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
-  public static String aF = "#FFE746";
-  public static String aG = "https://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
-  public static String aH = alud.a(2131700699);
-  public static String aa;
-  public static String ab;
-  public static String ac;
-  public static String ad;
-  public static String ae;
-  public static String af;
-  public static String ag;
-  public static String ah;
-  public static String ai;
-  public static String aj;
-  public static String ak;
-  public static String al;
-  public static String am;
-  public static String an;
-  public static String ao;
-  public static String ap;
-  public static String aq;
-  public static String ar;
-  public static String as;
-  public static String at;
-  public static String au;
-  public static String av;
-  public static String aw;
-  public static String ax;
-  public static String ay;
-  public static final String az;
-  public static int b;
-  public static long b;
-  public static String b;
-  public static final String[] b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l;
-  public static String m;
-  public static String n;
-  public static String o;
-  public static String p;
-  public static String q;
-  public static String r;
-  public static String s;
-  public static String t;
-  public static String u;
-  public static String v;
-  public static String w;
-  public static String x;
-  public static String y;
-  public static String z;
+  private static aliu jdField_a_of_type_Aliu;
+  private aliw jdField_a_of_type_Aliw = new aliw(this, null);
+  private aliy jdField_a_of_type_Aliy;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new aliv(this));
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  static
+  private aliu(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = bdzf.a(alof.aX + "/.apollo");
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/rsc_jsonConfig/";
-    jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getFilesDir() + "/apollo";
-    jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/action/";
-    jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/audio/";
-    f = jdField_a_of_type_JavaLangString + "/dress/";
-    g = jdField_a_of_type_JavaLangString + "/role/";
-    h = jdField_a_of_type_JavaLangString + "/room/";
-    i = jdField_a_of_type_JavaLangString + "/shader_code/";
-    j = f + "/face/";
-    k = jdField_a_of_type_JavaLangString + "/image_cache/";
-    l = k + "game/";
-    m = jdField_a_of_type_JavaLangString + "/drawer_action/";
-    n = jdField_d_of_type_JavaLangString + "packages/";
-    o = jdField_a_of_type_JavaLangString + "/ai";
-    p = o + "/audioRecord/";
-    q = o + "/action/";
-    r = o + "/audioFromSvr/";
-    s = jdField_a_of_type_JavaLangString + "/game/";
-    t = jdField_a_of_type_JavaLangString + "/pre_download/";
-    u = "def/role/0/3D/";
-    v = "apollo_dwonload_game_icon.png";
-    w = "action/action.png";
-    x = "action/action.json";
-    y = "action/action.atlas";
-    z = "action_peer/action.png";
-    A = "action_peer/action.json";
-    B = "action_peer/action.atlas";
-    C = "dress.png";
-    D = "dress.json";
-    E = "dress.atlas";
-    F = "Bubble";
-    G = "sayhi";
-    H = "interact";
-    I = "friendcard";
-    J = "ai";
-    K = "drawer";
-    L = "role.png";
-    M = "role.json";
-    N = "role.atlas";
-    O = "config.json";
-    P = "skeleton.bin";
-    Q = "dress.bin";
-    R = "action.bin";
-    jdField_a_of_type_Int = 300000;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "FaceOrnament", "BackSuit", "HeadDress", "FaceSuit", "HairType", "TopSuit", "BottomSuit" };
-    jdField_b_of_type_Int = 31104;
-    jdField_c_of_type_Int = 31105;
-    jdField_d_of_type_Int = 31102;
-    jdField_e_of_type_Int = 31106;
-    jdField_a_of_type_Long = 35001L;
-    jdField_b_of_type_Long = 35019L;
-    S = "https://cmshow.qq.com/apollo/html/direct_pay.html?_wv=1027";
-    T = "https://cmshow.qq.com/apollo/html/actlist.html?_wv=1027";
-    U = "https://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
-    V = "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
-    StringBuilder localStringBuilder = new StringBuilder("https://cmshow.qq.com/apollo/html/index_v2.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("8.3.5.4555").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
-    W = localStringBuilder.toString();
-    X = "https://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
-    Y = "https://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";
-    Z = "https://cmshow.qq.com/apollo/html/system/mycoins.html?_bid=2536&_wv=1027";
-    aa = "https://cmshow.qq.com/apollo/html/task_658.html?_bid=2345&_wv=1027";
-    ab = "https://cmshow.qq.com/apollo/html/system/task_detail.html?_bid=2536&_wwv=4&_wv=16778243";
-    ac = "https://cmshow.qq.com/apollo/html/island/crystal.html?_wv=1027";
-    ad = "https://cmshow.qq.com/apollo/html/production/machine.html?_wv=3&_bid=2630";
-    ae = "https://cmshow.qq.com/apollo/html/game-platform/my-game.html?_wv=1027&_bid=2695";
-    af = "http://sqimg.qq.com/qq_product_operations/tmg_sdk/QAVOPENSDK_1.9.6.16.zip";
-    ag = "dd3d6659ce42a5face3777902679834b";
-    ar = "https://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box_lottie.zip";
-    as = "https://cmshow.qq.com/apollo/html/game-platform/game-feeds-gc.html?_wv=3&tab=hotplay&from=gamecenter&_bid=3143";
-    av = jdField_a_of_type_JavaLangString + "/script/" + au + "/";
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "103100.103200.103201", "103100.103200.103210.103211", "103100.103200.103201.103202", "103100.103200.103220" };
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(103100).append(".").append(103200).append(".").append(103240).append(".").append(103244);
-    aB = localStringBuilder.toString();
-    localStringBuilder.append(".").append(103245);
-    aA = localStringBuilder.toString();
-    localStringBuilder.append(".").append(103246);
-    az = localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Aliw);
+    }
+  }
+  
+  public static aliu a(AppInterface paramAppInterface)
+  {
+    if (jdField_a_of_type_Aliu == null) {
+      jdField_a_of_type_Aliu = new aliu(paramAppInterface);
+    }
+    return jdField_a_of_type_Aliu;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_Aliu != null)
+    {
+      jdField_a_of_type_Aliu.b();
+      jdField_a_of_type_Aliu = null;
+    }
+  }
+  
+  private void a(double paramDouble1, double paramDouble2, int paramInt)
+  {
+    int i = 4;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), hr.class);
+    localNewIntent.putExtra("key_latitude", paramDouble1);
+    localNewIntent.putExtra("key_longitude", paramDouble2);
+    localNewIntent.putExtra("k_cmd", 4);
+    localNewIntent.putExtra("key_lbs_template_cookie", paramInt);
+    switch (bgnt.a(BaseApplicationImpl.getApplication().getBaseContext()))
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      localNewIntent.putExtra("key_lbs_template_network_type", i);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("LBSDetetor", 2, "getLBSTemplateIds. req:" + paramInt + " netType:" + i + " latitude:" + paramDouble1 + " longitude:" + paramDouble2);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+    }
+  }
+  
+  private void a(boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "callback. isSuccess: " + paramBoolean + " cookie: " + paramInt);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    if (this.jdField_a_of_type_Aliy != null)
+    {
+      Object localObject = paramArrayList;
+      if (paramArrayList == null) {
+        localObject = new ArrayList(1);
+      }
+      this.jdField_a_of_type_Aliy.a(paramInt, paramBoolean, (ArrayList)localObject);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "destroy");
+      }
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Aliw);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    }
+    this.jdField_a_of_type_Aliy = null;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  @TargetApi(19)
+  public void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (Build.VERSION.SDK_INT < 19) {
+          continue;
+        }
+        Object localObject = BaseApplicationImpl.getApplication().getBaseContext();
+        AppOpsManager localAppOpsManager = (AppOpsManager)((Context)localObject).getSystemService("appops");
+        localObject = ((Context)localObject).getApplicationInfo();
+        int i = localAppOpsManager.checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        int j = localAppOpsManager.checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        if ((i == 0) && (j == 0))
+        {
+          bool1 = true;
+          bool2 = bool1;
+        }
+      }
+      catch (Exception localException1)
+      {
+        boolean bool1 = true;
+        boolean bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("LBSDetetor", 2, "something wrong:" + localException1.toString());
+        bool2 = bool1;
+        continue;
+        bool2 = true;
+        continue;
+      }
+      try
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("LBSDetetor", 2, "check permission by AppOpsManager:" + bool1);
+          bool2 = bool1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("LBSDetetor", 2, "startCheckPermissionAndDetetLocation. hasPermission:" + bool2);
+        }
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+        if (bool2)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
+          SosoInterface.a(new alix(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+        }
+        if (this.jdField_a_of_type_Aliy != null) {
+          this.jdField_a_of_type_Aliy.a(paramInt, bool2);
+        }
+        return;
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      bool1 = false;
+    }
+  }
+  
+  public void a(aliy paramaliy)
+  {
+    this.jdField_a_of_type_Aliy = paramaliy;
   }
 }
 

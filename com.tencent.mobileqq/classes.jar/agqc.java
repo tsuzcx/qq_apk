@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agqc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agqc(agps paramagps) {}
+  agqc(agpz paramagpz) {}
   
-  public void onClick(View paramView)
-  {
-    if (!this.a.N) {
-      acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

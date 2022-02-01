@@ -1,38 +1,104 @@
-import dov.com.qq.im.aeeditor.AEEditorActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bljw
 {
-  private int jdField_a_of_type_Int;
+  private static bljw jdField_a_of_type_Bljw;
+  private ArrayList<bljx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
   
-  public bljw(AEEditorActivity paramAEEditorActivity, int paramInt)
+  public static bljw a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (jdField_a_of_type_Bljw == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bljw == null) {
+        jdField_a_of_type_Bljw = new bljw();
+      }
+      return jdField_a_of_type_Bljw;
+    }
+    finally {}
   }
   
-  public String toString()
+  public bljx a(long paramLong)
   {
-    switch (this.jdField_a_of_type_Int)
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-    default: 
-      return "未知错误";
-    case 0: 
-      return "初始化成功";
-    case -1: 
-      return "初始化AEKit失败";
-    case -2: 
-      return "加载YTCommon失败";
-    case -3: 
-      return "加载PtuTools失败";
-    case -4: 
-      return "加载PtuAlgo失败";
-    case -5: 
-      return "加载人脸检测失败";
-    case -6: 
-      return "加载PAG失败";
-    case -7: 
-      return "加载ImageAlgo失败";
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
+        }
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        bljx localbljx = (bljx)localIterator.next();
+        if (localbljx.jdField_a_of_type_Long == paramLong)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localbljx);
+          if (QLog.isColorLevel()) {
+            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          return localbljx;
+        }
+      }
     }
-    return "初始化TAVCut失败";
+    return null;
+  }
+  
+  public List<Bundle> a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramArrayOfByte.getParcelableArrayList("pendingData");
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      return bool;
+    }
+  }
+  
+  public byte[] a()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        localArrayList1.add(((bljx)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+      }
+    }
+    if (localArrayList2.isEmpty()) {
+      return null;
+    }
+    ??? = new Bundle();
+    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
+    Parcel localParcel = Parcel.obtain();
+    ((Bundle)???).writeToParcel(localParcel, 0);
+    ??? = localParcel.marshall();
+    localParcel.recycle();
+    return ???;
   }
 }
 

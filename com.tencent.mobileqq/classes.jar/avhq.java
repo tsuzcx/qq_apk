@@ -1,75 +1,137 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import org.json.JSONObject;
 
 public class avhq
-  implements avdq
+  extends WebViewPlugin
 {
-  avhq(avhf paramavhf) {}
+  protected aanz a;
+  protected BroadcastReceiver a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private biau jdField_a_of_type_Biau;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public avhq()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new avhs(this);
+    this.mPluginNameSpace = "groupVideo";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " args:" + paramVarArgs);
+    }
+    if ((!TextUtils.equals(paramString2, "groupVideo")) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    do
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + avhf.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
+      return false;
+      int i;
+      if (TextUtils.equals(paramString3, "closeGroupVideoAPI")) {
+        try
         {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + avhf.c(this.a));
+          paramJsBridgeListener = getJsonFromJSBridge(paramString1);
+          if (paramJsBridgeListener == null) {
+            break;
           }
-          if (paramArrayOfByte.ret.get() == 0)
+          i = paramJsBridgeListener.optInt("type");
+          paramJsBridgeListener = new Intent("tencent.video.webjs.cmd");
+          paramJsBridgeListener.putExtra("type", i);
+          switch (i)
           {
-            avhf.c(this.a, true);
-            if (avhf.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
-              avhf.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new aveg().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (auul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-            return;
+          case 1: 
+          case 2: 
+            this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramJsBridgeListener);
           }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      if (TextUtils.equals(paramString3, "openRoom"))
       {
-        paramArrayOfByte.printStackTrace();
+        try
+        {
+          Object localObject = getJsonFromJSBridge(paramString1);
+          if (localObject != null)
+          {
+            paramJsBridgeListener = ((JSONObject)localObject).optString("roomCode");
+            i = ((JSONObject)localObject).optInt("isGroupCode");
+            paramString1 = ((JSONObject)localObject).optString("fromId");
+            paramString2 = ((JSONObject)localObject).optString("backType");
+            paramString3 = ((JSONObject)localObject).optString("action");
+            paramVarArgs = ((JSONObject)localObject).optString("openType");
+            localObject = ((JSONObject)localObject).optString("extra");
+            this.jdField_a_of_type_Aanz.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
+            avhx.a("group_video", new avhr(this, paramString3));
+          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+        return true;
+      }
+    } while (!TextUtils.equals(paramString3, "preload"));
+    try
+    {
+      QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "preload url:" + paramString1);
+      this.jdField_a_of_type_Aanz.e(null);
+      return true;
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
       }
     }
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
+    this.jdField_a_of_type_Aanz = aanz.a();
+    this.jdField_a_of_type_Aanz.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "GVideoWebPlugin onCreate");
+    }
+    IntentFilter localIntentFilter = new IntentFilter(avip.a("com.tencent.od"));
+    localIntentFilter.addAction(avip.b("com.tencent.od"));
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Biau = new biau(this.mRuntime.a());
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aanz != null) {
+      this.jdField_a_of_type_Aanz.b();
+    }
+    try
+    {
+      this.jdField_a_of_type_Biau.dismiss();
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhq
  * JD-Core Version:    0.7.0.1
  */

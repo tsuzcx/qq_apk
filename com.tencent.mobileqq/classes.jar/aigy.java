@@ -1,13 +1,24 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigy
-  implements bhvm
+public class aigy
+  implements afum
 {
-  aigy(aigx paramaigx, View paramView) {}
+  public aigy(TroopChatPie paramTroopChatPie) {}
   
-  public void a()
+  public void a(aimh paramaimh)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    ((avwk)this.a.a(33)).a(1, paramaimh);
+    ((agnm)this.a.a(43)).b(1, paramaimh);
+  }
+  
+  public void b(aimh paramaimh)
+  {
+    ((avwk)this.a.a(33)).b(1, paramaimh);
+    ((agnm)this.a.a(43)).a(1, paramaimh);
+    paramaimh = (agkw)this.a.a(71);
+    if (paramaimh != null) {
+      paramaimh.a(false);
+    }
   }
 }
 

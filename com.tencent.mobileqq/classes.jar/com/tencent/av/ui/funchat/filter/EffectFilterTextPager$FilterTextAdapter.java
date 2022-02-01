@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lek;
+import lbc;
 
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
@@ -88,15 +88,15 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559647, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131372632);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559784, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373246);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject != null) {}
       for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)
       {
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          lek.c("EffectFilterTextPager", "decodeFile url is null.");
+          lbc.c("EffectFilterTextPager", "decodeFile url is null.");
           localImageView.setImageDrawable(null);
         }
         for (;;)
@@ -104,7 +104,7 @@ public class EffectFilterTextPager$FilterTextAdapter
           if (this.jdField_a_of_type_Boolean)
           {
             localObject = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-            float f = localContext.getResources().getDimension(2131297559);
+            float f = localContext.getResources().getDimension(2131297638);
             ((LinearLayout.LayoutParams)localObject).setMargins(((LinearLayout.LayoutParams)localObject).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject).rightMargin, ((LinearLayout.LayoutParams)localObject).bottomMargin);
             localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
             localImageView.setScaleX(0.6F);
@@ -115,8 +115,8 @@ public class EffectFilterTextPager$FilterTextAdapter
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
           localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297564);
-          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297563);
+          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297643);
+          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297642);
           localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject, localURLDrawableOptions));
         }
       }
@@ -131,7 +131,7 @@ public class EffectFilterTextPager$FilterTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter
  * JD-Core Version:    0.7.0.1
  */

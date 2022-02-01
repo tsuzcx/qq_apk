@@ -1,54 +1,23 @@
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class swr
+public class swr
+  implements View.OnClickListener
 {
-  private ProfileParams a = new ProfileParams(null);
+  public swr(FastWebActivity paramFastWebActivity, RIJRedPacketPopupView paramRIJRedPacketPopupView) {}
   
-  public ProfileParams a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public swr a(int paramInt)
-  {
-    this.a.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public swr a(ProfileParams.CurLoginUsr paramCurLoginUsr)
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
-    return this;
-  }
-  
-  public swr a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public swr b(String paramString)
-  {
-    this.a.b = paramString;
-    return this;
-  }
-  
-  public swr c(String paramString)
-  {
-    this.a.c = paramString;
-    return this;
-  }
-  
-  public swr d(String paramString)
-  {
-    this.a.d = paramString;
-    return this;
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swr
  * JD-Core Version:    0.7.0.1
  */

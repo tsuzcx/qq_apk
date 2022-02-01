@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bjgm
-  implements View.OnClickListener
+  implements bhuq
 {
-  public bjgm(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bjgm(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onClick(View paramView)
-  {
-    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
-    QzoneVerticalVideoDownloadActivity.access$600(this.a);
-    this.a.finish();
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgm
  * JD-Core Version:    0.7.0.1
  */

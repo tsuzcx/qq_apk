@@ -1,18 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class pro
-  implements ViewBase.IBuilder
+  extends AnimatorListenerAdapter
 {
-  public ViewBase build(VafContext paramVafContext)
+  public pro(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new prm(paramVafContext);
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pro
  * JD-Core Version:    0.7.0.1
  */

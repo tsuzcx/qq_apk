@@ -1,69 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import qqcircle.TaskCenterReader.TaskListRsp;
 
 class uyx
-  implements urr<uzm, uzn>
+  implements zxa<TaskCenterReader.TaskListRsp>
 {
-  uyx(uyw paramuyw, uyg paramuyg) {}
+  uyx(uyv paramuyv) {}
   
-  public void a(@NonNull uzm paramuzm, @Nullable uzn paramuzn, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
   {
-    if ((paramuzn == null) || (paramErrorMessage.isFail()))
+    if (paramTaskListRsp != null)
     {
-      wxe.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Uyg);
-      uyw.a(this.jdField_a_of_type_Uyw, paramErrorMessage);
-      return;
-    }
-    if (paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
-    {
-      if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int != 5)
+      this.a.setDatas((ArrayList)paramTaskListRsp.taskRecords.get());
+      if ((this.a.a != null) && (uyv.a(this.a) != null))
       {
-        wxe.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Uyg + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
-        uyw.b(this.jdField_a_of_type_Uyw, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
-        return;
-      }
-      uyw.a(this.jdField_a_of_type_Uyw, uyw.a(paramuzn.jdField_a_of_type_JavaUtilList));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Uyg);
-    }
-    uyz.a(this.jdField_a_of_type_Uyg, paramuzn.jdField_a_of_type_ArrayOfByte);
-    paramuzm = uyw.a(paramuzn.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 12) {}
-    uyw.b(this.jdField_a_of_type_Uyw, paramuzm);
-    if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 12) {
-      if (this.jdField_a_of_type_Uyw.a != null)
-      {
-        this.jdField_a_of_type_Uyw.a.c = paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-        paramuzm = this.jdField_a_of_type_Uyw.a;
-        if (paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
-          break label345;
+        this.a.a.removeAllViews();
+        paramString = String.valueOf(paramTaskListRsp.myFuel.get()).toCharArray();
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          char c = paramString[i];
+          ImageView localImageView = new ImageView(uyv.b(this.a));
+          localImageView.setImageResource(uyv.a(this.a)[java.lang.Character.getNumericValue(c)]);
+          this.a.a.addView(localImageView);
+          i += 1;
         }
       }
-    }
-    label345:
-    for (boolean bool = true;; bool = false)
-    {
-      paramuzm.a = bool;
-      this.jdField_a_of_type_Uyg.i = paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      wxe.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Uyg.jdField_a_of_type_JavaLangString, paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
-      return;
+      uyv.a(this.a, paramTaskListRsp.taskEntranceUrl.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyx
  * JD-Core Version:    0.7.0.1
  */

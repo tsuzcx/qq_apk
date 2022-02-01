@@ -1,66 +1,309 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.manager.Manager;
 
 public class auox
-  extends auow
+  implements Manager
 {
+  private beaw jdField_a_of_type_Beaw;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
   public auox(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
   }
   
-  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  public static String a()
   {
-    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    return String.format("%s/res", new Object[] { b() });
+  }
+  
+  private String a(String paramString)
+  {
+    return String.format("%s/%s.zip", new Object[] { b(), paramString });
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (new File(paramString1).exists())
     {
-      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
-      int i = 0;
-      while (i < localArrayList.size())
+      paramString1 = azby.a(paramString1);
+      bool1 = bool2;
+      if (paramString2 != null)
       {
-        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
-        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
-        {
-          String str = alud.a(2131692474) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-          localArrayList.set(i, this.a.a().a().a(localMessageRecord, str, true));
+        bool1 = bool2;
+        if (paramString2.equalsIgnoreCase(paramString1)) {
+          bool1 = true;
         }
-        i += 1;
       }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      if (!new File(str).exists())
+      {
+        QLog.e("IntimateInfoManager", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { str }));
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private static String b()
+  {
+    Object localObject1 = null;
+    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject2 != null)
+    {
+      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/intimate_res";
+      File localFile = new File((String)localObject2);
+      localObject1 = localObject2;
+      if (!localFile.exists())
+      {
+        localFile.mkdirs();
+        localObject1 = localObject2;
+      }
+    }
+    return localObject1;
+  }
+  
+  private void b(String paramString)
+  {
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      paramString.delete();
     }
   }
   
-  public void a(aupm paramaupm, HashMap<String, ArrayList<MessageRecord>> paramHashMap, auoz paramauoz)
+  private boolean b()
   {
-    if (paramaupm == null) {
-      return;
+    boolean bool = false;
+    if (!TextUtils.isEmpty(this.b)) {
+      bool = a(a(this.b), this.b);
     }
-    if ((paramaupm.b == 8) || (paramaupm.b == 9)) {}
-    for (paramaupm = new arck(this.a, paramaupm, paramHashMap, paramauoz);; paramaupm = new arci(this.a, paramaupm, paramHashMap, paramauoz))
+    return bool;
+  }
+  
+  private boolean b(String paramString1, String paramString2)
+  {
+    try
     {
-      this.a.a().a().a(paramaupm, paramHashMap);
-      return;
-      if (paramaupm.b == 2)
-      {
-        a(paramHashMap);
-        paramauoz.a(0, 2, paramaupm);
-        return;
+      aovr.a(paramString1, paramString2);
+      return true;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("IntimateInfoManager", 1, "unzipResource fail.", paramString1);
+    }
+    return false;
+  }
+  
+  private boolean c()
+  {
+    if (!TextUtils.isEmpty(this.b))
+    {
+      String str = a();
+      if (a(new String[] { str + "/boy_add", str + "/boy_reduce", str + "/couple_add", str + "/couple_reduce", str + "/girl_add", str + "/girl_reduce" })) {
+        return true;
       }
     }
+    return false;
+  }
+  
+  public IntimateInfo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      return null;
+    }
+    return (IntimateInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(IntimateInfo.class, paramString);
+  }
+  
+  public String a(int paramInt, boolean paramBoolean)
+  {
+    String str = a();
+    if (paramInt == 3) {
+      if (paramBoolean) {
+        str = str + "/boy_add/data.json";
+      }
+    }
+    for (;;)
+    {
+      if ((!new File(str).exists()) && (QLog.isColorLevel())) {
+        QLog.d("IntimateInfoManager", 2, "getIntimateScoreAnimJsonPath not exists:" + str);
+      }
+      return str;
+      str = str + "/boy_reduce/data.json";
+      continue;
+      if (paramInt == 2)
+      {
+        if (paramBoolean) {
+          str = str + "/girl_add/data.json";
+        } else {
+          str = str + "/girl_reduce/data.json";
+        }
+      }
+      else
+      {
+        if (paramInt != 1) {
+          break;
+        }
+        if (paramBoolean) {
+          str = str + "/couple_add/data.json";
+        } else {
+          str = str + "/couple_reduce/data.json";
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
+      QLog.e("IntimateInfoManager", 1, "downloadResource invalid parameters.");
+    }
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      String str;
+      do
+      {
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_Beaw == null) {
+            this.jdField_a_of_type_Beaw = ((beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
+          }
+          str = a(this.b);
+          if (a(str, this.b)) {
+            break;
+          }
+          b(str);
+        } while (this.jdField_a_of_type_Beaw == null);
+        Object localObject = new bdvs();
+        ((bdvs)localObject).jdField_a_of_type_Bdvw = new auoy(this);
+        ((bdvs)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        ((bdvs)localObject).jdField_a_of_type_Int = 0;
+        ((bdvs)localObject).c = str;
+        ((bdvs)localObject).d = 0;
+        ((bdvs)localObject).jdField_a_of_type_Bdvv = new auoz(this);
+        localObject = new beau(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new aupa(this), (bdvs)localObject);
+        this.jdField_a_of_type_Beaw.a(10089, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, str, 2, 0, false, (beat)localObject);
+        return;
+      } while (c());
+      bool1 = b(str, a());
+      bool2 = c();
+    } while (!QLog.isColorLevel());
+    QLog.d("IntimateInfoManager", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+  }
+  
+  public void a(IntimateInfo paramIntimateInfo)
+  {
+    if (paramIntimateInfo == null) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramIntimateInfo);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("intimate_relationship", 2, String.format("updateIntimateInfo, uin: %s", new Object[] { paramIntimateInfo.friendUin }));
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()));
+      paramString = (IntimateInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(IntimateInfo.class, paramString);
+      if (paramString != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("intimate_relationship", 2, "removeIntimateInfo: " + paramString);
+  }
+  
+  public void a(String paramString, IntimateInfo paramIntimateInfo)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramIntimateInfo == null)) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramIntimateInfo);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("intimate_relationship", 2, String.format("updateIntimateInfo, uin: %s", new Object[] { paramString }));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("checkAndDownloadIntimateResources url=%s md5=%s", new Object[] { paramString1, paramString2 }));
+    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    if (!a()) {
+      a();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = b();
+    boolean bool2 = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    }
+    return (bool1) && (bool2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Beaw != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_Beaw.a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "IntimateInfoManager onDestroy");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auox
  * JD-Core Version:    0.7.0.1
  */

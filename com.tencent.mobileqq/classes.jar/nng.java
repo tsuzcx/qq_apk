@@ -1,25 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class nng
-  implements DialogInterface.OnCancelListener
+public class nng
+  implements aaob
 {
-  nng(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
+  public nng(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nmx.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nng
  * JD-Core Version:    0.7.0.1
  */

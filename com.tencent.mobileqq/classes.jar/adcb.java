@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-
-public class adcb
-  implements DialogInterface.OnDismissListener
+public abstract interface adcb
 {
-  public adcb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
-  }
+  public abstract void a();
 }
 
 

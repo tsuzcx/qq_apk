@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqes
-  implements aqie
+  implements View.OnClickListener
 {
-  public aqes(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public aqes(ColorNoteSettingFragment paramColorNoteSettingFragment, aqfb paramaqfb, int paramInt) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    this.jdField_a_of_type_Aqfb.a(paramView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

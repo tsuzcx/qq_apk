@@ -1,41 +1,63 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import mqq.os.MqqHandler;
 
 public class pjy
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private static volatile pjy jdField_a_of_type_Pjy;
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
+  private final pjx jdField_a_of_type_Pjx = new pjx();
+  
+  private pjy()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null) {}
-    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
-    {
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713287));
-        localJSONObject1.put("id_gallery_cnt", localObject);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
-        localJSONObject1.put("id_gallery_img", localObject);
-        localJSONObject1.put("id_gallery_bg", new JSONObject());
-      }
-      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
-      pkm.l(paramBaseArticleInfo, localJSONObject1);
-      pkm.i(paramBaseArticleInfo, localJSONObject1);
-      pkm.a(localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
-      pkm.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Pjx);
+  }
+  
+  public static pjy a()
+  {
+    if (jdField_a_of_type_Pjy != null) {
+      return jdField_a_of_type_Pjy;
     }
+    try
+    {
+      if (jdField_a_of_type_Pjy == null) {
+        jdField_a_of_type_Pjy = new pjy();
+      }
+      return jdField_a_of_type_Pjy;
+    }
+    finally {}
+  }
+  
+  private void a(pjz parampjz)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, parampjz), 15000L);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
+    bixg.a().a(paramDownloadInfo);
+    a(new pjz(paramDownloadInfo, null));
+  }
+  
+  public void a(pjw parampjw)
+  {
+    this.jdField_a_of_type_Pjx.a(parampjw);
+  }
+  
+  public void b(pjw parampjw)
+  {
+    this.jdField_a_of_type_Pjx.b(parampjw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjy
  * JD-Core Version:    0.7.0.1
  */

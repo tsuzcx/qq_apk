@@ -1,25 +1,58 @@
-import java.util.Set;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bbvd
-  extends bbxq
+public class bbvd
+  implements bbvf
 {
-  bbvd(bbvc parambbvc) {}
+  protected View a;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<bbvg> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  protected void a(Set<Long> paramSet)
+  public bbvd(ViewGroup paramViewGroup)
   {
-    this.a.a = 1;
-    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bbvc.a(this.a))))) {
-      this.a.a = 2;
-    }
-    bbvl.c("TroopFileTransferMgr", bbvl.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
-    if (this.a.b > 0)
-    {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        bcmp.a(bbvc.a(this.a), bbvc.b(this.a), 107);
-      }
-      this.a.a = 0;
-      this.a.b = 0;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562834, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371277));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370012));
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bbvg> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

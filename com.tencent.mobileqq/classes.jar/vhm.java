@@ -1,41 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqcircle.comment.QCircleBaseInputPopupWindow.1.1;
 
 public class vhm
-  extends uro
+  implements aaeo
 {
-  public List<ShareGroupItem> a;
+  vhm(vhl paramvhl) {}
   
-  public vhm(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
+  public void a(View paramView)
   {
-    super(paramRspGetShareGroupInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspGetShareGroupInfo.share_group_info_list.has())
-    {
-      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
-      while (paramRspGetShareGroupInfo.hasNext())
-      {
-        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
-        ShareGroupItem localShareGroupItem = new ShareGroupItem();
-        localShareGroupItem.convertFrom(localShareGroupInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
-      }
+    if (this.a.isShowing()) {
+      this.a.a.runOnUiThread(new QCircleBaseInputPopupWindow.1.1(this));
     }
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhm
  * JD-Core Version:    0.7.0.1
  */

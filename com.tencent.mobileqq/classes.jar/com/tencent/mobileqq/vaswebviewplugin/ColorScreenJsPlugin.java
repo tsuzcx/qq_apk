@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
+import arpd;
+import arph;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -135,7 +135,7 @@ public class ColorScreenJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("ColorScreenJsPlugin", 2, "queryLocal " + paramJSONObject.toString());
     }
-    paramString = apml.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
+    paramString = arph.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
     if (paramJSONObject != null) {}
     try
     {
@@ -165,12 +165,12 @@ public class ColorScreenJsPlugin
     paramJSONObject = new Bundle();
     paramJSONObject.clear();
     paramJSONObject.putInt("id", i);
-    super.sendRemoteReq(apml.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+    super.sendRemoteReq(arph.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

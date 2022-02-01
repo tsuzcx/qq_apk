@@ -1,16 +1,20 @@
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface blor
+class blor
+  implements View.OnClickListener
 {
-  public abstract void a(@Nullable bloh parambloh, int paramInt);
+  blor(blop paramblop) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void s();
-  
-  public abstract void t();
+  public void onClick(View paramView)
+  {
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + blop.a(this.a) + "()");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,168 +1,199 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.ark.ArkViewModelBase.ErrorInfo;
+import com.tencent.ark.ark;
+import com.tencent.ark.open.ArkAppInfo.TimeRecord;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.rich.ArkNodeContainer.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class bbrl
+  extends ArkViewModel
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public static bbro a(int paramInt)
+  private bbrk a;
+  public ArkAppInfo.TimeRecord a;
+  
+  public bbrl(bbrg parambbrg) {}
+  
+  private void b(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 10: 
-      return new bbrs();
-    case 12: 
-      return new bbrt();
-    case 18: 
-      return new bbrm();
-    case 5: 
-    case 19: 
-      return new bbrq();
-    case 4: 
-      return new bbrr();
-    case 99: 
-      return new bbrn();
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
     }
-    return new bbrp();
   }
   
-  public static String a(long paramLong)
+  public void a()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    Date localDate = new Date(1000L * paramLong);
-    localCalendar.setTime(localDate);
-    return new SimpleDateFormat("MM月dd日").format(localDate);
+    destroy();
+    this.jdField_a_of_type_Bbrk = null;
   }
   
-  /* Error */
-  public static Object[] a(org.json.JSONObject paramJSONObject, String paramString1, String paramString2)
+  public void a(String paramString)
   {
-    // Byte code:
-    //   0: new 65	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 66	java/util/ArrayList:<init>	()V
-    //   7: astore 5
-    //   9: new 65	java/util/ArrayList
-    //   12: dup
-    //   13: invokespecial 66	java/util/ArrayList:<init>	()V
-    //   16: astore 6
-    //   18: aload_0
-    //   19: ifnull +174 -> 193
-    //   22: aload_0
-    //   23: ldc 68
-    //   25: invokevirtual 74	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   28: ifeq +48 -> 76
-    //   31: aload_0
-    //   32: ldc 68
-    //   34: invokevirtual 78	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   37: astore 7
-    //   39: iconst_0
-    //   40: istore_3
-    //   41: iload_3
-    //   42: aload 7
-    //   44: invokevirtual 84	org/json/JSONArray:length	()I
-    //   47: if_icmpge +29 -> 76
-    //   50: aload 5
-    //   52: aload 7
-    //   54: iload_3
-    //   55: invokevirtual 88	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   58: ldc 90
-    //   60: invokevirtual 94	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   63: invokeinterface 100 2 0
-    //   68: pop
-    //   69: iload_3
-    //   70: iconst_1
-    //   71: iadd
-    //   72: istore_3
-    //   73: goto -32 -> 41
-    //   76: aload_0
-    //   77: ldc 102
-    //   79: invokevirtual 74	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   82: ifeq +111 -> 193
-    //   85: aload_0
-    //   86: ldc 102
-    //   88: invokevirtual 78	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   91: astore_0
-    //   92: iconst_0
-    //   93: istore_3
-    //   94: iload_3
-    //   95: aload_0
-    //   96: invokevirtual 84	org/json/JSONArray:length	()I
-    //   99: if_icmpge +94 -> 193
-    //   102: aload_0
-    //   103: iload_3
-    //   104: invokevirtual 88	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   107: astore 7
-    //   109: aload 7
-    //   111: ldc 104
-    //   113: invokevirtual 108	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   116: istore 4
-    //   118: iload 4
-    //   120: invokestatic 110	bbrl:a	(I)Lbbro;
-    //   123: astore 8
-    //   125: aload 8
-    //   127: ifnull +54 -> 181
-    //   130: aload 8
-    //   132: aload 7
-    //   134: invokevirtual 115	bbro:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/data/TroopFeedItem;
-    //   137: astore 7
-    //   139: aload 7
-    //   141: ifnull +40 -> 181
-    //   144: aload 7
-    //   146: invokevirtual 121	com/tencent/mobileqq/data/TroopFeedItem:isVaild	()Z
-    //   149: ifeq +32 -> 181
-    //   152: aload 7
-    //   154: iload 4
-    //   156: putfield 125	com/tencent/mobileqq/data/TroopFeedItem:orginType	I
-    //   159: aload 7
-    //   161: aload_2
-    //   162: putfield 129	com/tencent/mobileqq/data/TroopFeedItem:currentUin	Ljava/lang/String;
-    //   165: aload 7
-    //   167: aload_1
-    //   168: putfield 132	com/tencent/mobileqq/data/TroopFeedItem:troopUin	Ljava/lang/String;
-    //   171: aload 6
-    //   173: aload 7
-    //   175: invokeinterface 100 2 0
-    //   180: pop
-    //   181: iload_3
-    //   182: iconst_1
-    //   183: iadd
-    //   184: istore_3
-    //   185: goto -91 -> 94
-    //   188: astore_0
-    //   189: aload_0
-    //   190: invokevirtual 135	org/json/JSONException:printStackTrace	()V
-    //   193: iconst_2
-    //   194: anewarray 4	java/lang/Object
-    //   197: dup
-    //   198: iconst_0
-    //   199: aload 5
-    //   201: aastore
-    //   202: dup
-    //   203: iconst_1
-    //   204: aload 6
-    //   206: aastore
-    //   207: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	paramJSONObject	org.json.JSONObject
-    //   0	208	1	paramString1	String
-    //   0	208	2	paramString2	String
-    //   40	145	3	i	int
-    //   116	39	4	j	int
-    //   7	193	5	localArrayList1	java.util.ArrayList
-    //   16	189	6	localArrayList2	java.util.ArrayList
-    //   37	137	7	localObject	Object
-    //   123	8	8	localbbro	bbro
-    // Exception table:
-    //   from	to	target	type
-    //   22	39	188	org/json/JSONException
-    //   41	69	188	org/json/JSONException
-    //   76	92	188	org/json/JSONException
-    //   94	125	188	org/json/JSONException
-    //   130	139	188	org/json/JSONException
-    //   144	181	188	org/json/JSONException
+    try
+    {
+      new JSONObject(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ArkNodeContainer", 2, String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
+    }
+    boolean bool1;
+    label72:
+    String str1;
+    String str2;
+    String str3;
+    if (paramInt != 0)
+    {
+      bool1 = true;
+      if (paramInt != -2) {
+        break label152;
+      }
+      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+      b(str1);
+      b(str2);
+      b(str3);
+      if (paramString2 != null) {
+        break label158;
+      }
+      paramString2 = "";
+    }
+    label152:
+    label158:
+    for (;;)
+    {
+      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
+      return;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label72;
+    }
+  }
+  
+  public boolean a(bbrk parambbrk, String paramString, float paramFloat)
+  {
+    this.jdField_a_of_type_Bbrk = parambbrk;
+    if (this.jdField_a_of_type_Bbrk == null) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      a(paramString);
+    }
+    return super.init(this.jdField_a_of_type_Bbrk.b(), this.jdField_a_of_type_Bbrk.d(), this.jdField_a_of_type_Bbrk.c(), paramString, apoh.a(), paramFloat);
+  }
+  
+  public void initLibrary()
+  {
+    ark.MediaSetStub(appb.a);
+  }
+  
+  public void onFirstDrawEnd()
+  {
+    super.onFirstDrawEnd();
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramAppPathInfo != null) {}
+    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
+    {
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
+      a(paramAppPathInfo, paramInt, paramString);
+      return;
+    }
+  }
+  
+  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
+  {
+    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
+    {
+      this.mInit = false;
+      this.mLoadFailed = true;
+      paramAppInfo = this.mViewImpl;
+      if (paramAppInfo != null) {
+        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
+      }
+      return true;
+    }
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    Object localObject2 = this.jdField_a_of_type_Bbrk.a();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkNodeContainer.1(this, (String)localObject1));
+      return true;
+    }
+    localObject2 = this.mViewImpl;
+    if (localObject2 != null) {
+      ((ArkViewImplement)localObject2).onLoading();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
+    }
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new bbrm(this));
+    return false;
+  }
+  
+  public void onLoadReport(int paramInt)
+  {
+    if (this.mAppInfo != null) {
+      apok.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    }
+  }
+  
+  public void onRunAppFailed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
+    }
+    Object localObject = this.mViewImpl;
+    if (localObject != null)
+    {
+      if (this.jdField_a_of_type_Bbrk == null) {
+        break label90;
+      }
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131717630);
+    }
+    label90:
+    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_Bbrk.b() });; this.mErrorInfo.msg = "")
+    {
+      this.mErrorInfo.canRetry = false;
+      super.onRunAppFailed();
+      return;
+    }
   }
 }
 

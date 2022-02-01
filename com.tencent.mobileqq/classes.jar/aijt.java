@@ -1,94 +1,42 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aijt
-  implements apuc
+public class aijt
+  extends aiju
 {
-  aijt(aijq paramaijq) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(apuf paramapuf)
+  public JSONObject a()
   {
-    int i;
-    int j;
-    if ((paramapuf instanceof apzf))
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.a);
+      localJSONObject2.put("keyword", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.c);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("to_user_id", this.d);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    apza localapza;
-    int k;
-    int m;
-    do
+    catch (Exception localException)
     {
-      this.a.a.getEditableText().replace(i, j, banh.c(((apzf)paramapuf).a));
-      do
-      {
-        return;
-      } while (!(paramapuf instanceof apza));
-      localapza = (apza)paramapuf;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localapza.a;
-      m = localapza.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramapuf = banh.c(m);; paramapuf = banh.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramapuf);
-      this.a.a.requestFocus();
-      localapza.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      apsj.a().a(k).a(m, 2);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
     }
+    return localJSONObject1;
   }
-  
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
-  
-  public boolean a(apuf paramapuf)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

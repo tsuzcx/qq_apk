@@ -39,7 +39,7 @@ public class RedDotRadioButton
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849801);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
     }
     invalidate();
   }
@@ -78,7 +78,7 @@ public class RedDotRadioButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotRadioButton
  * JD-Core Version:    0.7.0.1
  */

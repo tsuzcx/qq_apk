@@ -1,16 +1,44 @@
-import android.os.Bundle;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public abstract interface blsa
+public class blsa
+  extends QzoneExternalRequest
 {
-  public abstract void a(blsn paramblsn);
+  public JceStruct a;
   
-  public abstract void a(blsn paramblsn, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  public blsa(long paramLong1, long paramLong2, String paramString)
+  {
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
+    localmobile_sub_get_photo_wall_req.uin = paramLong1;
+    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
+    this.a = localmobile_sub_get_photo_wall_req;
+  }
   
-  public abstract void a(blsq paramblsq, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  public static JceStruct a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return decode(paramArrayOfByte, "getPhotoWall");
+  }
   
-  public abstract void a(blsx paramblsx, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  public String getCmdString()
+  {
+    return "QzoneNewService.getPhotoWall";
+  }
   
-  public abstract void a(bnhc parambnhc);
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getPhotoWall";
+  }
 }
 
 

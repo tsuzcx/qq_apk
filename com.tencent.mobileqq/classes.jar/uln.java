@@ -1,35 +1,23 @@
-public abstract class uln<T>
-  implements ulo<T>
+import android.support.annotation.UiThread;
+
+public abstract interface uln<M>
+  extends uch
 {
-  private ulp<T> a;
+  @UiThread
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    Object localObject = this.a.a();
-    if (localObject != null)
-    {
-      a(localObject);
-      wxe.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
-      return;
-    }
-    wxe.d("Q.qqstory.home.data.Producer", "no data return");
-  }
+  @UiThread
+  public abstract void a(M paramM);
   
-  public abstract void a(T paramT);
+  @UiThread
+  public abstract void c();
   
-  public void a(ulp<T> paramulp)
-  {
-    this.a = paramulp;
-  }
-  
-  public void b()
-  {
-    a();
-  }
+  @UiThread
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uln
  * JD-Core Version:    0.7.0.1
  */

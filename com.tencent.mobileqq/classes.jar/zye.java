@@ -1,7 +1,17 @@
-public class zye {}
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
+
+public class zye
+  extends RecyclerView.ViewHolder
+{
+  public zye(RefreshHeaderView paramRefreshHeaderView)
+  {
+    super(paramRefreshHeaderView);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zye
  * JD-Core Version:    0.7.0.1
  */

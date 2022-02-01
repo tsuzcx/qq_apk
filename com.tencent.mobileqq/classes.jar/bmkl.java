@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 public final class bmkl
-  implements Parcelable.Creator<EditTakePhotoSource>
+  implements bmfh
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
-  {
-    return new EditTakePhotoSource(paramParcel);
-  }
+  public bmkl(Handler paramHandler) {}
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    return new EditTakePhotoSource[paramInt];
+    if ("cmd.uploadCommentVideo".equals(paramString))
+    {
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        bmfd.a().b(this);
+      }
+    }
   }
 }
 

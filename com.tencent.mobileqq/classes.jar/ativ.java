@@ -1,107 +1,72 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
-class ativ
-  extends ameq
+public class ativ
+  implements bbvg
 {
-  ativ(atir paramatir) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  protected void a(int paramInt1, int paramInt2)
+  public ativ(ViewGroup paramViewGroup)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      atir.a(this.a, 2131693805);
-    }
-    this.a.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560884, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366555));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366566));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365344));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366568));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public View a()
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
-      {
-      case -1: 
-      default: 
-        atir.a(this.a, 2131693805);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -1;
-      return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        atir.a(this.a, 2131693806, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        atir.a(this.a, 2131721057);
-        continue;
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-    }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public View a(String paramString)
   {
-    if (this.a.b == 0) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
-      }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
-      {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
-        }
-        paramInt2 = 1;
-        label61:
-        paramString = atir.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
-        }
-        ahpp.a(paramString, paramTroopInfo.troopuin);
-      }
-    }
-    for (;;)
-    {
-      this.a.b = 0;
-      return;
-      paramInt1 = 0;
-      break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        atir.a(this.a, paramTroopInfo);
-      }
-      else
-      {
-        atir.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
-        }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        atir.a(this.a, 2131719233);
-      }
-    }
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

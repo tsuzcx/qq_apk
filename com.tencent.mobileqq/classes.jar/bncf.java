@@ -1,14 +1,22 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.OnPreviewFrameHandlerListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bncf
-  implements ansr
+  implements QWalletFaceTracker.OnPreviewFrameHandlerListener
 {
-  bncf(bnce parambnce) {}
+  bncf(bnbz parambnbz) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void getFaceRecognizeResult(float paramFloat)
   {
-    if (bnce.a(this.a) != null) {
-      bnce.a(this.a).a(paramString1, 1, paramString2, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getFaceRecognizeResult=" + paramFloat);
+    }
+    if (paramFloat >= this.a.g)
+    {
+      bnbz.a(this.a);
+      if (bnbz.a(this.a)) {
+        this.a.ad();
+      }
     }
   }
 }

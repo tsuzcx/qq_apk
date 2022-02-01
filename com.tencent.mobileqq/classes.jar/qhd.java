@@ -1,37 +1,50 @@
-class qhd
-  implements qgt
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+public class qhd
+  implements ViewBase.OnClickListener
 {
-  qhd(qhb paramqhb, int paramInt1, int paramInt2, int paramInt3) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void a()
+  public qhd(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (qhb.a(this.jdField_a_of_type_Qhb) != null)
-    {
-      qhb.a(this.jdField_a_of_type_Qhb).i();
-      qhb.a(this.jdField_a_of_type_Qhb).a(this.jdField_a_of_type_Int, this.b, this.c);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (qhb.a(this.jdField_a_of_type_Qhb) != null)
-    {
-      if (paramInt == 0)
-      {
-        qhb.a(this.jdField_a_of_type_Qhb).i();
-        qhb.a(this.jdField_a_of_type_Qhb).a(paramLong, paramString1, paramqfz, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
-      }
-    }
-    else {
+    int i = snh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (i == 76) || (i == 78) || (i == 77)) {
       return;
     }
-    qhb.a(this.jdField_a_of_type_Qhb).i();
-    qhb.a(this.jdField_a_of_type_Qhb).a(paramString3, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent())
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickArea = 6;
+      qib.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      pha.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType == 36)
+    {
+      pha.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 6);
+      return;
+    }
+    if (snh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    {
+      paramViewBase = pgc.k + bgku.encodeToString(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID).getBytes(), 2);
+      pha.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      return;
+    }
+    pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qhd
  * JD-Core Version:    0.7.0.1
  */

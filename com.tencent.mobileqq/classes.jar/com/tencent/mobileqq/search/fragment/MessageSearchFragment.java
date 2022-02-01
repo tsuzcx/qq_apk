@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ayjn;
-import aykx;
-import ayug;
-import ayui;
+import bbio;
+import bbka;
+import bbtj;
+import bbtl;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected ayjn a()
+  protected bbio a()
   {
-    return new aykx(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
+    return new bbka(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
   }
   
-  protected ayug a()
+  protected bbtj a()
   {
-    return new ayui(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new bbtl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131719582);
+    return getString(2131717620);
   }
   
   public void a(String paramString)
@@ -36,18 +36,18 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Ayug.c();
+    this.jdField_a_of_type_Bbtj.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Ayug.d();
+    this.jdField_a_of_type_Bbtj.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
-public class bnrg
+class bnrg
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
   
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
-  }
+  bnrg(bnrf parambnrf) {}
 }
 
 

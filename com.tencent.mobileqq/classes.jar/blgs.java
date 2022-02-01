@@ -1,59 +1,36 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 public class blgs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends RemoteCommand
 {
-  public blgs(AETemplateInfoFragment paramAETemplateInfoFragment) {}
+  private QQAppInterface a;
   
-  public void onGlobalLayout()
+  public blgs(QQAppInterface paramQQAppInterface)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    super("common.get_qq_app_interface_data");
+    this.a = paramQQAppInterface;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    int i = paramBundle.getInt("param_data_type", 0);
+    paramOnInvokeFinishLinstener = new Bundle();
+    switch (i)
     {
-      AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      if (AETemplateInfoFragment.a(this.a) != null) {
-        break label50;
-      }
+    default: 
+      return paramOnInvokeFinishLinstener;
+    case 1: 
+      paramBundle = paramBundle.getString("param_uin");
+      paramOnInvokeFinishLinstener.putString("result_key", bglf.h(this.a, paramBundle));
+      return paramOnInvokeFinishLinstener;
     }
-    label50:
-    float f1;
-    float f2;
-    do
-    {
-      do
-      {
-        return;
-        AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        break;
-      } while ((AETemplateInfoFragment.a(this.a).getVideoHeight() == 0) || (AETemplateInfoFragment.a(this.a).getVideoWidth() == 0));
-      f1 = AETemplateInfoFragment.a(this.a).getVideoWidth() / AETemplateInfoFragment.a(this.a).getVideoHeight();
-      i = AETemplateInfoFragment.a(this.a).getWidth();
-      int j = AETemplateInfoFragment.a(this.a).getHeight();
-      f2 = i / j;
-      if (QLog.isDebugVersion()) {
-        QLog.d("AETemplateInfoFragment", 2, new Object[] { "adjust player size---origin w:h=", Integer.valueOf(i), ":", Integer.valueOf(j), " availableRatio(w/h)=", Float.valueOf(f2), " video aspectRation(w/h)=" + f1 });
-      }
-      if (f1 < f2)
-      {
-        double d = AETemplateInfoFragment.a(this.a).getHeight();
-        i = (int)(f1 * d);
-        localObject = AETemplateInfoFragment.a(this.a).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = i;
-        AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        return;
-      }
-    } while (f1 <= f2);
-    int i = (int)(AETemplateInfoFragment.a(this.a).getWidth() / f1);
-    Object localObject = (ViewGroup.MarginLayoutParams)AETemplateInfoFragment.a(this.a).getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).height = i;
-    AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    String str = paramBundle.getString("param_uin");
+    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
+    paramOnInvokeFinishLinstener.putString("result_key", bglf.b(this.a, str, bool));
+    return paramOnInvokeFinishLinstener;
   }
 }
 

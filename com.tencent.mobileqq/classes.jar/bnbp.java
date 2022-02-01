@@ -1,35 +1,25 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public abstract class bnbp<IN, OUT>
-  extends JobSegment<IN, OUT>
+public class bnbp
+  implements Animation.AnimationListener
 {
-  protected long a;
-  private final String a;
-  private long b;
+  public bnbp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public bnbp()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
+    }
   }
   
-  public void call(IN paramIN)
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void notifyError(Error paramError)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
-  
-  public void notifyResult(OUT paramOUT)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

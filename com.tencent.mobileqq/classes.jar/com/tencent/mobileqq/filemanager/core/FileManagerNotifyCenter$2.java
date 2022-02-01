@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwl;
-import aqwn;
-import arrr;
-import ayzl;
+import atcv;
+import atcx;
+import atvo;
+import bbyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FileManagerNotifyCenter$2
   implements Runnable
 {
-  public FileManagerNotifyCenter$2(aqwn paramaqwn, FileManagerEntity paramFileManagerEntity, int paramInt) {}
+  public FileManagerNotifyCenter$2(atcx paramatcx, FileManagerEntity paramFileManagerEntity, int paramInt) {}
   
   public void run()
   {
@@ -46,8 +46,8 @@ public class FileManagerNotifyCenter$2
         {
         default: 
           this.this$0.a.a().a(true, 3, null);
-          arrr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = ayzl.a();
+          atvo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = bbyp.a();
           this.this$0.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
           return;
           FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
@@ -69,6 +69,8 @@ public class FileManagerNotifyCenter$2
           this.this$0.a.a().a(true, 34, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
           continue;
           this.this$0.a.a().a(true, 33, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
+          continue;
+          this.this$0.a.a().a(true, 53, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
         }
       }
     }

@@ -1,107 +1,36 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Timer;
 
 public class asso
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements View.OnClickListener
 {
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public asso(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public asso(HiBoomPanelView paramHiBoomPanelView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
-  }
-  
-  public int a(int paramInt)
-  {
-    return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-  }
-  
-  public void a(List<Integer> paramList1, List<Integer> paramList2, List<Integer> paramList3)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList1 != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList1);
+    if (!bgnt.d(BaseApplicationImpl.getContext())) {
+      atvf.a(BaseApplicationImpl.getContext().getString(2131693946));
     }
-    if ((paramList2 != null) && (paramList2.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList2);
-    }
-    if ((paramList3 != null) && (paramList3.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList3);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt) == -2) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof assp))
+    for (;;)
     {
-      paramViewHolder = (assp)paramViewHolder;
-      paramViewHolder.jdField_a_of_type_Int = paramInt;
-      if (paramViewHolder.jdField_a_of_type_Boolean) {}
-    }
-    else
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    paramInt = a(paramInt);
-    ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
-    localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
-    localLayoutParams.width = HiBoomPanelView.b;
-    paramViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
-    localLayoutParams = paramViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
-    localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
-    localLayoutParams.height = localLayoutParams.width;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject = null;
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    try
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131562827, paramViewGroup, false);
-      localObject = paramViewGroup;
-      if (paramViewGroup == null) {
-        localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
-      }
-      return new assp(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
-      {
-        QLog.e("HiBoomFont.HiBoomPanelView", 1, "inflate hiboom item error: ", paramViewGroup);
-        bool = false;
-        paramViewGroup = (ViewGroup)localObject;
+      atvf.a(BaseApplicationImpl.getContext().getString(2131693758));
+      anjx localanjx = (anjx)MPFileVerifyPwdView.a(this.a).a(8);
+      MPFileVerifyPwdView.a(this.a, localanjx.a().a(3));
+      MPFileVerifyPwdView.b(this.a).setEnabled(false);
+      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
+      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+      if (MPFileVerifyPwdView.a(this.a) != null) {
+        MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
       }
     }
   }

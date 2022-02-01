@@ -1,42 +1,98 @@
-public class wis
+import java.util.concurrent.atomic.AtomicInteger;
+
+class wis
+  implements zmv
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public wis(String paramString, boolean paramBoolean)
+  public wis(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public wis(String paramString, boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean a()
+  public void onFailure(String paramString)
   {
-    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+    yqp.d(wip.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
   
-  public void a(boolean paramBoolean)
+  public void onFinish(boolean paramBoolean)
   {
-    wiv localwiv = new wiv();
-    localwiv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localwiv.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_Int != -1) {
-      localwiv.c = this.jdField_a_of_type_Int;
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    yqp.d(wip.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notify();
+      switch (this.jdField_a_of_type_Int)
+      {
+      case 1: 
+        yqp.e(wip.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
+        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
+      }
     }
-    urp.a().a(localwiv, new wit(this, paramBoolean));
+    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    if (paramBoolean)
+    {
+      label152:
+      localAtomicInteger.set(i);
+      for (;;)
+      {
+        label158:
+        return;
+        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+        if (!paramBoolean) {
+          break;
+        }
+        i = j;
+        label174:
+        localAtomicInteger.set(i);
+      }
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (!paramBoolean) {
+        break label248;
+      }
+    }
+    label248:
+    for (i = k;; i = 945001)
+    {
+      localAtomicInteger.set(i);
+      break label158;
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (paramBoolean) {}
+      for (i = m;; i = 944004)
+      {
+        localAtomicInteger.set(i);
+        break;
+      }
+      break;
+      i = 943004;
+      break label152;
+      i = 942004;
+      break label174;
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    yqp.c(wip.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    yqp.c(wip.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import alqo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,9 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqml;
-import biup;
+import anjx;
+import assl;
+import blja;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MPFileFailedView
   extends RelativeLayout
@@ -27,7 +28,7 @@ public class MPFileFailedView
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqml jdField_a_of_type_Aqml;
+  private assl jdField_a_of_type_Assl;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   TextView b;
   TextView c;
@@ -39,24 +40,24 @@ public class MPFileFailedView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public View a(ViewGroup paramViewGroup, aqml paramaqml, int paramInt1, int paramInt2)
+  public View a(ViewGroup paramViewGroup, assl paramassl, int paramInt1, int paramInt2)
   {
-    int k = 2131694534;
-    int m = 2130843995;
-    this.jdField_a_of_type_Aqml = paramaqml;
+    int k = 2131693800;
+    int m = 2130844390;
+    this.jdField_a_of_type_Assl = paramassl;
     this.c.setVisibility(8);
-    int i = 2131694537;
+    int i = 2131693803;
     int n;
     int j;
     switch (paramInt1)
     {
     default: 
-      k = 2131694513;
+      k = 2131693779;
       if (paramInt2 == 1)
       {
-        i = 2131694514;
+        i = 2131693780;
         paramInt2 = 0;
-        n = 2131694552;
+        n = 2131693818;
         j = i;
         i = paramInt2;
         paramInt2 = n;
@@ -82,57 +83,57 @@ public class MPFileFailedView
           this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         }
         return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-        k = 2131694535;
-        paramInt2 = 2131694551;
-        m = 2130844000;
-        j = 2131694535;
+        k = 2131693801;
+        paramInt2 = 2131693817;
+        m = 2130844395;
+        j = 2131693801;
         i = 8;
         continue;
-        k = 2131694536;
-        paramInt2 = 2131694551;
-        m = 2130844000;
-        j = 2131694537;
+        k = 2131693802;
+        paramInt2 = 2131693817;
+        m = 2130844395;
+        j = 2131693803;
         i = 0;
         continue;
-        k = 2131694553;
-        m = 2130843998;
+        k = 2131693819;
+        m = 2130844393;
         i = 8;
-        paramInt2 = 2131694552;
-        j = 2131694537;
+        paramInt2 = 2131693818;
+        j = 2131693803;
         continue;
-        k = 2131694513;
+        k = 2131693779;
         if (paramInt2 == 1) {
-          i = 2131694514;
+          i = 2131693780;
         }
         for (;;)
         {
           n = 0;
           j = i;
-          paramInt2 = 2131694552;
+          paramInt2 = 2131693818;
           i = n;
           break;
           if (paramInt2 == 0) {
-            i = 2131694515;
+            i = 2131693781;
           }
         }
-        k = 2131694553;
-        m = 2130843998;
+        k = 2131693819;
+        m = 2130844393;
         i = 8;
-        paramInt2 = 2131694552;
-        j = 2131694537;
+        paramInt2 = 2131693818;
+        j = 2131693803;
         continue;
         i = 8;
-        m = 2130843999;
-        paramInt2 = 2131694552;
-        j = 2131694534;
+        m = 2130844394;
+        paramInt2 = 2131693818;
+        j = 2131693800;
       }
     case 2110: 
       label157:
-      m = 2130844000;
+      m = 2130844395;
       if (paramInt2 == 1)
       {
-        j = 2131694536;
-        i = 2131694537;
+        j = 2131693802;
+        i = 2131693803;
         paramInt2 = 0;
       }
       break;
@@ -142,92 +143,93 @@ public class MPFileFailedView
       k = j;
       j = i;
       i = paramInt2;
-      paramInt2 = 2131694551;
+      paramInt2 = 2131693817;
       break label157;
       if (paramInt2 == 0)
       {
-        j = 2131694535;
-        i = 2131694525;
+        j = 2131693801;
+        i = 2131693791;
         paramInt2 = 8;
         continue;
-        k = 2131694831;
+        k = 2131693991;
         i = 8;
-        j = 2131694831;
-        paramInt2 = 2131694552;
+        j = 2131693991;
+        paramInt2 = 2131693818;
         break label157;
-        k = 2131694548;
+        k = 2131693814;
         i = 8;
-        j = 2131694548;
-        paramInt2 = 2131694552;
+        j = 2131693814;
+        paramInt2 = 2131693818;
         break label157;
         i = 8;
-        m = 2130843999;
-        paramInt2 = 2131694552;
-        j = 2131694534;
+        m = 2130844394;
+        paramInt2 = 2131693818;
+        j = 2131693800;
         break label157;
-        k = 2131691454;
+        k = 2131691234;
         i = 8;
         m = 0;
-        paramInt2 = 2131694552;
-        j = 2131694537;
+        paramInt2 = 2131693818;
+        j = 2131693803;
         break label157;
         if (paramInt2 != 0) {
           break;
         }
-        i = 2131694515;
+        i = 2131693781;
         break;
       }
-      j = 2131694517;
-      i = 2131694537;
+      j = 2131693783;
+      i = 2131693803;
       paramInt2 = 8;
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Aqml = null;
+    this.jdField_a_of_type_Assl = null;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560704, null).findViewById(2131361798));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131367945));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377621));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377622));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377630));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363799));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560909, null).findViewById(2131361798));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368270));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378460));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378461));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378469));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364005));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    alqo localalqo = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    anjx localanjx = (anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      if (!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equalsIgnoreCase(getResources().getString(2131694551))) {
-        break label90;
+      if (!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equalsIgnoreCase(getResources().getString(2131693817))) {
+        break label97;
       }
-      this.jdField_a_of_type_Long = localalqo.a().a(0);
+      this.jdField_a_of_type_Long = localanjx.a().a(0);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aqml != null) {
-        this.jdField_a_of_type_Aqml.a(this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Assl != null) {
+        this.jdField_a_of_type_Assl.a(this.jdField_a_of_type_Long);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label90:
-      if (localalqo.a().a()) {
-        this.jdField_a_of_type_Long = localalqo.a().a(1);
+      label97:
+      if (localanjx.a().a()) {
+        this.jdField_a_of_type_Long = localanjx.a().a(1);
       } else {
-        this.jdField_a_of_type_Long = localalqo.a().a(2);
+        this.jdField_a_of_type_Long = localanjx.a().a(2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileFailedView
  * JD-Core Version:    0.7.0.1
  */

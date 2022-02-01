@@ -1,45 +1,21 @@
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.content.DialogInterface;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class ugv
-  extends uga
+final class ugv
+  extends bgmc
 {
-  private static final String jdField_a_of_type_JavaLangString = ugv.class.getSimpleName();
-  private QCircleRockeyPopupView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView;
+  ugv(WSDownloadParams paramWSDownloadParams) {}
   
-  public void a(ViewStub paramViewStub)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramViewStub != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView = ((QCircleRockeyPopupView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372553));
-    }
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
-    {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setFeedId(localStFeed.id.get());
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRockeyPopupView.setPageType(1);
-      }
-    }
+    paramDialogInterface.dismiss();
+    ugq.a(126, this.a);
+    umw.a(this.a.mScene, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugv
  * JD-Core Version:    0.7.0.1
  */

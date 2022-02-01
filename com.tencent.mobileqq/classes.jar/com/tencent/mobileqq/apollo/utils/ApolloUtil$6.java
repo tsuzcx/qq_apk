@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aliu;
+import ancb;
 import android.content.SharedPreferences;
-import bckq;
-import bdhb;
+import bfpi;
+import bgmg;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,14 +22,14 @@ final class ApolloUtil$6
       try
       {
         SharedPreferences localSharedPreferences = ApolloUtil.a();
-        Object localObject = new File(aliu.s);
+        Object localObject = new File(ancb.s);
         if (!((File)localObject).exists()) {
           break;
         }
         if (!((File)localObject).isDirectory()) {
           return;
         }
-        if (bdhb.b(aliu.s) <= 104857600L) {
+        if (bgmg.b(ancb.s) <= 104857600L) {
           break;
         }
         localObject = ((File)localObject).listFiles();
@@ -56,7 +56,7 @@ final class ApolloUtil$6
           if (str.endsWith(".zip")) {
             localObject = str.substring(0, str.indexOf("."));
           }
-          if (bckq.b((String)localObject))
+          if (bfpi.b((String)localObject))
           {
             long l1 = localSharedPreferences.getLong((String)localObject, 0L);
             long l2 = NetConnInfoCenter.getServerTimeMillis();
@@ -69,7 +69,7 @@ final class ApolloUtil$6
               i = 1;
               if (i != 0)
               {
-                l1 = bdhb.b(aliu.s);
+                l1 = bgmg.b(ancb.s);
                 if (l1 < 104857600L)
                 {
                   if (!QLog.isColorLevel()) {
@@ -93,7 +93,7 @@ final class ApolloUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloUtil.6
  * JD-Core Version:    0.7.0.1
  */

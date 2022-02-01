@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.magicface.view;
 
-import atzj;
+import awgs;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 public class MagicfaceViewController$3
   implements Runnable
 {
-  public MagicfaceViewController$3(atzj paramatzj) {}
+  public MagicfaceViewController$3(awgs paramawgs) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MagicfaceViewController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.3
  * JD-Core Version:    0.7.0.1
  */

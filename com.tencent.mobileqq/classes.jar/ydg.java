@@ -1,12 +1,19 @@
-public abstract interface ydg
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+
+public class ydg
+  extends zpq
 {
-  public abstract void a();
+  public ydg(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public abstract void b();
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.d();
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.av.opengl;
 
-import azkt;
+import bnpy;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import lrc;
-import lsa;
+import lnz;
+import loz;
 
 public class GraphicRenderMgr
 {
@@ -21,7 +21,7 @@ public class GraphicRenderMgr
   public static boolean soloaded;
   public static boolean soloadedPTV;
   public int decoderPtrRef;
-  private lrc mAutoFocusCallback;
+  private lnz mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
   
   private GraphicRenderMgr()
@@ -46,13 +46,13 @@ public class GraphicRenderMgr
   
   public static void loadPtuSO()
   {
-    if (lsa.a())
+    if (loz.b())
     {
-      soloadedPTV = azkt.a();
-      ptuSoVersion = azkt.b();
+      soloadedPTV = bnpy.c();
+      ptuSoVersion = bnpy.b();
     }
     if (QLog.isColorLevel()) {
-      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lsa.a() + "]");
+      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + loz.b() + "]");
     }
   }
   
@@ -66,10 +66,10 @@ public class GraphicRenderMgr
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       SoLoadUtil.a(localBaseApplication, "c++_shared", 0, false);
       SoLoadUtil.a(localBaseApplication, "xplatform", 0, false);
-      UpdateAvSo.b(l, localBaseApplication, "SDKCommon", true);
-      UpdateAvSo.a(l, localBaseApplication, "SDKCommon", true);
-      UpdateAvSo.b(l, localBaseApplication, "qav_graphics", true);
-      UpdateAvSo.a(l, localBaseApplication, "qav_graphics", true);
+      AVSoUtils.b(l, localBaseApplication, "SDKCommon", true);
+      AVSoUtils.a(l, localBaseApplication, "SDKCommon", true);
+      AVSoUtils.b(l, localBaseApplication, "qav_graphics", true);
+      AVSoUtils.a(l, localBaseApplication, "qav_graphics", true);
       soloaded = true;
       return soloaded;
     }
@@ -188,11 +188,11 @@ public class GraphicRenderMgr
   
   public native void setFocusConfig(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2);
   
-  public void setFocusDetectCallback(lrc paramlrc)
+  public void setFocusDetectCallback(lnz paramlnz)
   {
     synchronized (this.mAutoFocusCallbackLock)
     {
-      this.mAutoFocusCallback = paramlrc;
+      this.mAutoFocusCallback = paramlnz;
       return;
     }
   }
@@ -209,7 +209,7 @@ public class GraphicRenderMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.opengl.GraphicRenderMgr
  * JD-Core Version:    0.7.0.1
  */

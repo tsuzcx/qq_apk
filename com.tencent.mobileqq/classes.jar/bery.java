@@ -1,103 +1,47 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bery
-  extends ExploreByTouchHelper
+public class bery
+  extends berz
 {
-  private WeakReference<View> a;
-  
-  private bery(View paramView)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    super(paramView);
-    this.a = new WeakReference(paramView);
-  }
-  
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    View localView = (View)this.a.get();
-    if ((localView instanceof ParticipleView))
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {}
+    for (;;)
     {
-      int i = ParticipleView.a((ParticipleView)localView, paramFloat1, paramFloat2);
-      if (i >= 0) {
-        return i;
-      }
-    }
-    return -2147483648;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      int i = 0;
-      int j = ((List)localObject).size();
-      while (i < j)
+      return null;
+      localTroopFeedItem.type = 99;
+      try
       {
-        paramList.add(Integer.valueOf(i));
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt2 == 16)
-    {
-      paramBundle = (View)this.a.get();
-      if ((paramBundle instanceof ParticipleView))
-      {
-        paramBundle = ParticipleView.a((ParticipleView)paramBundle);
-        if (paramBundle != null)
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
         {
-          paramBundle.invalidateVirtualView(paramInt1);
-          paramBundle.sendEventForVirtualView(paramInt1, 1);
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!wfg.i()) && (localTroopFeedItem.isStoryType()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
+          }
         }
       }
-      return true;
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if (paramInt < ((List)localObject).size()) {
-        paramAccessibilityEvent.setContentDescription(((berx)((List)localObject).get(paramInt)).a.a());
-      }
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if ((paramInt < ((List)localObject).size()) && (paramInt != -2147483648))
+      catch (JSONException paramJSONObject)
       {
-        localObject = (berx)((List)localObject).get(paramInt);
-        if (berx.a((berx)localObject).size() > 0)
-        {
-          RectF localRectF = (RectF)berx.a((berx)localObject).get(0);
-          paramAccessibilityNodeInfoCompat.setContentDescription(((berx)localObject).a.a());
-          paramAccessibilityNodeInfoCompat.addAction(16);
-          paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-        }
+        paramJSONObject.printStackTrace();
+        return null;
       }
     }
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

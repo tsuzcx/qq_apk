@@ -1,26 +1,35 @@
-public class ambp
-  implements alpg
+import android.os.Handler;
+import android.view.View;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
+
+public abstract class ambp
+  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  public void a(boolean paramBoolean) {}
+  protected Handler a;
+  public String a;
   
-  public void b(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private final void a(View paramView, Object paramObject, int paramInt, ambq paramambq)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 3: 
-      a(paramBoolean);
+    Object localObject = a(paramInt);
+    if (localObject == null) {
       return;
     }
-    b(paramBoolean);
+    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramambq);
+    ambq.a(paramambq, true);
+    ambq.a(paramambq, paramView);
+    this.a.post(paramView);
   }
+  
+  protected abstract Object a(int paramInt);
+  
+  public abstract void a(View paramView, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambp
  * JD-Core Version:    0.7.0.1
  */

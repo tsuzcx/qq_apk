@@ -1,71 +1,83 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import ahcr;
-import ajpy;
-import akct;
-import akcv;
+import Override;
+import aipe;
+import alio;
+import alvq;
+import alvs;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import azib;
-import azjh;
-import barf;
-import bayf;
-import bdpz;
-import bhsl;
+import android.view.MotionEvent;
+import bcjb;
+import bckg;
+import bdsx;
+import bdyr;
+import bdzi;
+import bguz;
+import bkfv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class SendVideoActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  private static bhsl a;
+  private static bkfv a;
   
   public static void a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("sv_encode_max_bitrate", -1);
     if (i > 0) {
-      azib.r = i;
+      bcjb.r = i;
     }
     i = paramIntent.getIntExtra("sv_encode_min_bitrate", -1);
     if (i > 0) {
-      azib.s = i;
+      bcjb.s = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmax", -1);
     if (i > 0) {
-      azib.t = i;
+      bcjb.t = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmin", -1);
     if (i > 0) {
-      azib.u = i;
+      bcjb.u = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmaxdiff", -1);
     if (i > 0) {
-      azib.v = i;
+      bcjb.v = i;
     }
     i = paramIntent.getIntExtra("sv_encode_ref_frame", -1);
     if (i > 0) {
-      azib.w = i;
+      bcjb.w = i;
     }
     i = paramIntent.getIntExtra("sv_encode_smooth", -1);
     if (i > 0) {
-      azib.x = i;
+      bcjb.x = i;
     }
-    azib.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
-    azib.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
-    azib.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
-    azib.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
-    azib.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
-    azib.a(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
+    bcjb.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
+    bcjb.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
+    bcjb.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
+    bcjb.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
+    bcjb.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
+    bcjb.a(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -86,12 +98,12 @@ public class SendVideoActivity
         QLog.d("SendVideoActivity", 2, "doOnCreate(), <<===");
       }
       return true;
-      new akcv(this, null).execute(new Void[0]);
+      new alvs(this, null).execute(new Void[0]);
       continue;
       paramBundle = getIntent().getStringExtra("activity_before_enter_send_video");
       if ((paramBundle != null) && (ShortVideoPreviewActivity.class.getName().equals(paramBundle)))
       {
-        new akct(this).execute(new Void[0]);
+        new alvq(this).execute(new Void[0]);
       }
       else
       {
@@ -105,8 +117,8 @@ public class SendVideoActivity
           }
           for (;;)
           {
-            ajpy.a("", "0X80088E4", String.valueOf(i));
-            azjh.a(this.app, false);
+            alio.a("", "0X80088E4", String.valueOf(i));
+            bckg.a(this.app, false);
             break;
             if (j == 3000) {
               i = 2;
@@ -128,7 +140,7 @@ public class SendVideoActivity
             }
             else
             {
-              a = new bhsl(this);
+              a = new bkfv(this);
               a.sendEmptyMessageDelayed(1, 45000L);
             }
           }
@@ -162,13 +174,13 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((ahcr)getAppInterface().getManager(138)).a();
+      paramMessage = ((aipe)getAppInterface().getManager(138)).a();
       if (paramMessage != null)
       {
-        bdpz localbdpz = this.app.a().a(paramMessage.frienduin, paramMessage.uniseq);
-        if ((localbdpz != null) && (ShortVideoUploadProcessor.class.isInstance(localbdpz)))
+        bguz localbguz = this.app.a().a(paramMessage.frienduin, paramMessage.uniseq);
+        if ((localbguz != null) && (bdyr.class.isInstance(localbguz)))
         {
-          boolean bool = ((barf)localbdpz).d();
+          boolean bool = ((bdsx)localbguz).d();
           int i = paramMessage.videoFileStatus;
           if ((bool) || (i == 1002) || (i == 1001)) {
             this.app.a().d(paramMessage.frienduin, paramMessage.uniseq);
@@ -177,10 +189,17 @@ public class SendVideoActivity
       }
     }
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendVideoActivity
  * JD-Core Version:    0.7.0.1
  */

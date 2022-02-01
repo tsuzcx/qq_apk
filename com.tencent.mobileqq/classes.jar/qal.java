@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 
-class qal
-  implements View.OnClickListener
+public abstract interface qal
 {
-  qal(qaf paramqaf) {}
+  public abstract void a(stc paramstc, pxk parampxk, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-  }
+  public abstract void a(stc paramstc, pxk parampxk, long paramLong, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qal
  * JD-Core Version:    0.7.0.1
  */

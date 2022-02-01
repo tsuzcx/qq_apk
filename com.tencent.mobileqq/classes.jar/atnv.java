@@ -1,34 +1,21 @@
-import android.graphics.Paint.Align;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface atnv
+class atnv
+  implements atng
 {
-  public abstract int a();
+  atnv(atns paramatns) {}
   
-  public abstract String a();
+  public void a()
+  {
+    this.a.a(true, atul.a(this.a.a.a()), this.a.c(), new atnw(this));
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setAlign(Paint.Align paramAlign);
-  
-  public abstract void setLineMaxWidth(int paramInt);
-  
-  public abstract void setLyric(atwl paramatwl, int paramInt);
-  
-  public abstract void setOnSizeChangeListener(atog paramatog);
-  
-  public abstract void setSongId(String paramString);
-  
-  public abstract void setStrokeColor(int paramInt);
-  
-  public abstract void setStrokeWidth(int paramInt);
+  public void b()
+  {
+    this.a.d();
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
+  }
 }
 
 

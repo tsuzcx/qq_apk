@@ -1,174 +1,149 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.device.msg.data.MessageForDevPtt;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.data.Apollo3DMessage;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class agpg
-  extends BroadcastReceiver
+public class agpg
+  implements View.OnClickListener
 {
-  agpg(agoz paramagoz) {}
+  public agpg(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent != null)
-    {
-      if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceUnBindRst")) {
-        break label72;
-      }
-      paramContext = paramIntent.getExtras();
-      if (paramContext != null) {
-        break label26;
-      }
-    }
-    label26:
-    label72:
+    BaseChatPie localBaseChatPie;
     int i;
     int j;
-    do
+    label70:
+    Object localObject;
+    int k;
+    label95:
+    ApolloMessage localApolloMessage;
+    Apollo3DMessage localApollo3DMessage;
+    if (ApolloItemBuilder.a(this.a) != null)
     {
-      do
+      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+      if (localBaseChatPie != null)
       {
-        do
-        {
-          float f;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    long l;
-                    do
-                    {
-                      return;
-                      l = paramContext.getLong("deviceopdin", 0L);
-                    } while ((paramContext.getInt("deviceoprstcode", 0) != 0) || (Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) != l));
-                    this.a.I();
-                    return;
-                    if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ProductFetchRst")) {
-                      break;
-                    }
-                    paramContext = paramIntent.getExtras();
-                  } while ((paramContext == null) || (paramContext.getInt("deviceoprstcode", 0) != 0));
-                  this.a.br();
-                  return;
-                  if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_receiveVasFlagResult")) {
-                    break;
-                  }
-                  paramContext = paramIntent.getExtras();
-                } while (paramContext == null);
-                i = paramContext.getInt("Flag", 0);
-                paramContext = (zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);
-                if (i == 1)
-                {
-                  agoz.X = true;
-                  paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691949) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691623);
-                  paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, ayzl.a(), true, false, 0);
-                  return;
-                }
-                agoz.X = false;
-                paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691949) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691622) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691605);
-                paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, ayzl.a(), true, false, 2);
-                return;
-                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgProgress")) {
-                  break;
-                }
-                paramContext = paramIntent.getExtras();
-              } while (paramContext == null);
-              i = paramContext.getInt("cookie", 0);
-              f = paramContext.getFloat("percent", 0.0F);
-            } while ((i == 0) || (!agoz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))));
-            paramContext = (MessageRecord)agoz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-            if ((paramContext instanceof MessageForDeviceFile))
-            {
-              paramContext = (MessageForDeviceFile)paramContext;
-              paramContext.nFileStatus = 3;
-              paramContext.progress = f;
-              paramContext.serial();
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
-              return;
-            }
-          } while (!(paramContext instanceof MessageForDevLittleVideo));
-          paramContext = (MessageForDevLittleVideo)paramContext;
-          paramContext.videoFileStatus = 1002;
-          paramContext.videoFileProgress = ((int)(100.0F * f));
-          paramContext.serial();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
-          ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, f);
-          return;
-        } while (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgSendRet"));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      i = paramContext.getInt("cookie", 0);
-      j = paramContext.getInt("err_code", 1);
-    } while ((i == 0) || (!agoz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))));
-    paramContext = (MessageRecord)agoz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    if (j == 0) {
-      if ((paramContext instanceof MessageForDevPtt))
-      {
-        paramContext = (MessageForDevPtt)paramContext;
-        paramContext.extraflag = 32770;
-        paramContext.fileSize = arrr.a(paramContext.url);
-        paramContext.extStr = "device_groupchat";
-        paramContext.serial();
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
-        ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(true));
+        if (localBaseChatPie.g() != 21) {
+          break label186;
+        }
+        i = 1;
+        if (amzq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
+          break label191;
+        }
+        j = 0;
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (!ApolloItemBuilder.a(this.a).isDoubleAction()) {
+          break label196;
+        }
+        k = 1;
+        VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "groupplusclick", i, k, new String[] { Integer.toString(ApolloItemBuilder.a(this.a).mApolloMessage.id), String.valueOf(j) });
+      }
+      localApolloMessage = ApolloItemBuilder.a(this.a).mApolloMessage;
+      localApollo3DMessage = ApolloItemBuilder.a(this.a).mApollo3DMessage;
+      if ((localApolloMessage != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+        break label202;
       }
     }
+    label186:
+    label191:
+    label196:
+    label202:
+    anfl localanfl;
+    do
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 0;
+      break;
+      j = 1;
+      break label70;
+      k = 0;
+      break label95;
+      localanfl = new anfl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      localObject = new ApolloActionData();
+      ancd localancd = (ancd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      if (localancd == null) {
+        break label640;
+      }
+      j = localApolloMessage.id;
+      i = j;
+      if (localApollo3DMessage != null)
+      {
+        i = j;
+        if (ApolloActionData.isAction3DModel(localApollo3DMessage.actionID_3D)) {
+          i = localApollo3DMessage.actionID_3D;
+        }
+      }
+      localObject = localancd.a(i);
+    } while (localObject == null);
+    label640:
     for (;;)
     {
-      agoz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
-      return;
-      if ((paramContext instanceof MessageForDeviceFile))
-      {
-        ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(true));
+      ((ApolloActionData)localObject).peerUin = (localApolloMessage.peer_uin + "");
+      if (localApolloMessage.text != null) {
+        ((ApolloActionData)localObject).atNickName = new String(localApolloMessage.text);
       }
-      else if ((paramContext instanceof MessageForDevLittleVideo))
+      ((ApolloActionData)localObject).inputText = ApolloItemBuilder.a(this.a).inputText;
+      localanfl.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((ApolloActionData)localObject);
+      if (ApolloItemBuilder.a(this.a).isBarrageMode())
       {
-        paramIntent = (MessageForDevLittleVideo)paramContext;
-        paramIntent.videoFileStatus = 1003;
-        paramIntent.videoFileProgress = 100;
-        paramIntent.serial();
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramIntent.frienduin, paramIntent.istroop, paramIntent.uniseq, paramIntent.msgData);
-        ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(true));
-        continue;
-        if ((paramContext instanceof MessageForDevPtt))
-        {
-          paramContext = (MessageForDevPtt)paramContext;
-          paramContext.extraflag = 32768;
-          paramContext.extStr = "device_groupchat";
-          paramContext.serial();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
-          ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(false));
+        i = 1;
+        label388:
+        localanfl.d = i;
+        localanfl.b = ApolloItemBuilder.a(this.a).inputText;
+        localanfl.e = ApolloItemBuilder.a(this.a).audioId;
+        localanfl.jdField_a_of_type_Float = ApolloItemBuilder.a(this.a).audioStartTime;
+        localanfl.h = 2;
+        adrm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localanfl);
+        if (amzq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
+          break;
         }
-        else if ((paramContext instanceof MessageForDeviceFile))
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        if (localObject != null)
         {
-          paramContext = (MessageForDeviceFile)paramContext;
-          ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(false));
+          ((MqqHandler)localObject).obtainMessage(49).sendToTarget();
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloItemBuilder", 2, "onPlusIconClickListener INIT_STATUS user open panel");
+          }
         }
-        else if ((paramContext instanceof MessageForDevLittleVideo))
-        {
-          paramIntent = (MessageForDevLittleVideo)paramContext;
-          paramIntent.videoFileStatus = 1005;
-          paramIntent.videoFileProgress = 0;
-          paramIntent.serial();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramIntent.frienduin, paramIntent.istroop, paramIntent.uniseq, paramIntent.msgData);
-          ((zxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramContext, Boolean.valueOf(false));
+        if ((this.a.jdField_a_of_type_AndroidContentContext == null) || (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() == null)) {
+          break;
+        }
+        if ((ApolloItemBuilder.a(this.a).mApollo3DMessage == null) || (ApolloItemBuilder.a(this.a).mApollo3DMessage.actionID_3D <= 0)) {
+          break label628;
         }
       }
+      label628:
+      for (i = 1;; i = 0)
+      {
+        if (localBaseChatPie.a == null) {
+          break label633;
+        }
+        localBaseChatPie.a.c = 1;
+        localBaseChatPie.a.e(i);
+        break;
+        i = 0;
+        break label388;
+      }
+      label633:
+      ApolloPanel.b = i;
+      break;
     }
   }
 }

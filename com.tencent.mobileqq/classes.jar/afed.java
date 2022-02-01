@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.Switch;
 
-class afed
-  implements DialogInterface.OnClickListener
+public class afed
 {
-  afed(afeb paramafeb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public CompoundButton.OnCheckedChangeListener a;
+  public TextView a;
+  public URLImageView a;
+  public Switch a;
+  public String a;
 }
 
 

@@ -1,28 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import friendlist.GetOnlineInfoResp;
 
 class akal
-  implements DialogInterface.OnClickListener
+  extends anmu
 {
-  akal(akak paramakak) {}
+  akal(akaj paramakaj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if (this.a.a.d == 36) {
-      if (this.a.a.a == 1) {
-        this.a.a.m();
-      }
+    if (TextUtils.equals(paramString, this.a.a.a)) {
+      this.a.f();
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      azqs.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
-      return;
-      this.a.a.a();
-      continue;
-      this.a.a.a();
-    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    this.a.f();
   }
 }
 

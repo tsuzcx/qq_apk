@@ -1,37 +1,40 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
 
-public class nms
-  implements TVK_SDKMgr.InstallListener
+final class nms
+  implements bkhw
 {
-  public nms(VideoCoverView.5 param5) {}
+  nms(bkho parambkho, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (paramInt)
+    {
     }
-    this.a.this$0.b = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
-    }
-    this.a.this$0.b = true;
-    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
+    do
+    {
+      return;
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      try
+      {
+        nmp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nms
  * JD-Core Version:    0.7.0.1
  */

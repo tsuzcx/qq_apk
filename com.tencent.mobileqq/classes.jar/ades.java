@@ -1,27 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class ades
-  implements TextWatcher
+class ades
+  extends awls<JobSegment>
 {
-  public ades(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  ades(ader paramader, JobSegment paramJobSegment)
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
-    {
-      this.a.b.setEnabled(true);
-      return;
-    }
-    this.a.b.setEnabled(false);
+    super(paramJobSegment);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, awlp paramawlp)
+  {
+    if (paramBoolean)
+    {
+      ader.a(this.a, paramawlp);
+      return;
+    }
+    ader.a(this.a, new AppInfoError(5, "appInfo error"));
+  }
 }
 
 

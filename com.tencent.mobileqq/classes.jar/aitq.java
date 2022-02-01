@@ -1,45 +1,121 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.widget.QzoneSearchResultView;
+import java.util.Map;
 
-class aitq
+public class aitq
   implements View.OnClickListener
 {
-  aitq(aitp paramaitp) {}
+  aitq(SearchContactsFragment paramSearchContactsFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent();
-    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
-    if ((aitp.a(this.a).selectedPhotoList == null) || (aitp.b(this.a).selectedPhotoList.size() == 0)) {
-      if ((aitp.a(this.a).paths != null) && (i != -1))
+    Object localObject1 = paramView.getTag();
+    aitr localaitr;
+    int j;
+    int i;
+    if ((localObject1 != null) && ((localObject1 instanceof aitr)))
+    {
+      localaitr = (aitr)localObject1;
+      if ((localaitr.b != 80000003) || (SearchContactsFragment.c(this.a) == null)) {
+        break label304;
+      }
+      this.a.a(SearchContactsFragment.c(this.a), SearchContactsFragment.a(this.a), SearchContactsFragment.b(this.a));
+      Integer localInteger = (Integer)SearchContactsFragment.a(this.a).get(Integer.valueOf(localaitr.b));
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if (localaitr.a != null)
       {
-        ArrayList localArrayList = new ArrayList();
-        String str = (String)aitp.b(this.a).paths.get(i);
-        if (TextUtils.isEmpty(str)) {
-          break label172;
+        localObject1 = localObject2;
+        if (localaitr.a.uin != null) {
+          localObject1 = String.valueOf(localaitr.a.uin.get());
         }
-        localArrayList.add(str);
-        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
+      }
+      j = localaitr.b;
+      if (localInteger == null) {
+        break label404;
+      }
+      i = localInteger.intValue();
+      label162:
+      bbup.a(j, i, 0, true, (String)localObject1, this.a.jdField_a_of_type_JavaLangString, SearchContactsFragment.d());
+      if (localaitr.b != 80000002) {
+        break label455;
+      }
+      localObject2 = this.a.getActivity();
+      if ((localObject2 != null) && ((localObject2 instanceof SearchBaseActivity)))
+      {
+        i = ((SearchBaseActivity)localObject2).a();
+        if (SearchContactsFragment.d() != 12) {
+          break label409;
+        }
+        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, "0", aitb.a(i), (String)localObject1, this.a.jdField_a_of_type_JavaLangString);
+        label268:
+        localObject2 = txm.a();
+        if (localInteger == null) {
+          break label450;
+        }
+        i = localInteger.intValue();
+        label284:
+        ((txm)localObject2).a(2, (String)localObject1, i, SearchContactsFragment.d());
       }
     }
     for (;;)
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, paramView);
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label172:
-      if (QLog.isColorLevel())
+      label304:
+      if (localaitr.b == 80000004)
       {
-        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
-        continue;
-        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", aitp.c(this.a).selectedPhotoList);
-        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(aitp.d(this.a).selectedPhotoList.size()), "", "", "");
+        QzoneSearchResultView.a(this.a.getActivity(), localaitr.jdField_c_of_type_JavaLangString);
+        break;
+      }
+      i = 0;
+      if (this.a.d == 1)
+      {
+        i = 3;
+        label347:
+        localObject1 = this.a;
+        j = localaitr.b;
+        if (localaitr.jdField_c_of_type_Int != 2) {
+          break label398;
+        }
+      }
+      label398:
+      for (boolean bool = true;; bool = false)
+      {
+        ((SearchContactsFragment)localObject1).a(j, bool, i);
+        break;
+        if (this.a.d != 0) {
+          break label347;
+        }
+        i = 2;
+        break label347;
+      }
+      label404:
+      i = 0;
+      break label162;
+      label409:
+      oat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D20", "0X8005D20", 0, 0, "0", aitb.a(i), this.a.jdField_a_of_type_JavaLangString, "", false);
+      break label268;
+      label450:
+      i = 0;
+      break label284;
+      label455:
+      if (localaitr.b == 80000003)
+      {
+        if (SearchContactsFragment.d() == 12) {
+          bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0");
+        } else {
+          oat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0", false);
+        }
+      }
+      else if (localaitr.b == 80000001) {
+        bbup.a("add_page", "all_result", "clk_more_grp", 0, SearchContactsFragment.a(this.a), new String[] { "", "", this.a.jdField_a_of_type_JavaLangString, "" });
       }
     }
   }

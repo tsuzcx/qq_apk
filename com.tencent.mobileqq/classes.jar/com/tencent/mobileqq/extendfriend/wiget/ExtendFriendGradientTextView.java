@@ -5,11 +5,11 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
-import bamp;
-import bkaw;
+import bdnt;
+import bmpg;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import fj;
+import fo;
 
 public class ExtendFriendGradientTextView
   extends ETTextView
@@ -78,7 +78,7 @@ public class ExtendFriendGradientTextView
   
   public void setETContent(String paramString)
   {
-    super.setTextMsg(new bamp(bkaw.d(paramString), 3, 24));
+    super.setTextMsg(new bdnt(bmpg.c(paramString), 3, 24));
   }
   
   public void setFold(boolean paramBoolean)
@@ -109,7 +109,7 @@ public class ExtendFriendGradientTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientTextView
  * JD-Core Version:    0.7.0.1
  */

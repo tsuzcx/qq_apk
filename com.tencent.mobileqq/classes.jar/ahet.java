@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StUser;
 
 class ahet
-  implements View.OnClickListener
+  implements vxd
 {
-  ahet(ahes paramahes) {}
+  ahet(ahes paramahes, ahev paramahev) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bcpx.a(ahes.a(this.a), paramView, this.a.a());
-    this.a.b(paramView);
+    paramStUser = this.jdField_a_of_type_Ahev.a;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramStUser.setClickable(paramBoolean);
+      return;
+    }
   }
 }
 

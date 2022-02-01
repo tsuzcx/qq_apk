@@ -5,7 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
-import bdoo;
+import bgtn;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class QzoneMsgPagerAdapter
   extends PagerAdapter
 {
-  private static final int jdField_a_of_type_Int = bdoo.a() - bdoo.b(24.0F);
-  private static final int jdField_b_of_type_Int = bdoo.b(230.0F);
+  private static final int jdField_a_of_type_Int = bgtn.a() - bgtn.b(24.0F);
+  private static final int jdField_b_of_type_Int = bgtn.b(230.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private ArrayList<AnyScaleTypeImageView> jdField_b_of_type_JavaUtilArrayList;
   
@@ -88,7 +88,7 @@ public class QzoneMsgPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QzoneMsgPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

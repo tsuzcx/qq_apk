@@ -3,6 +3,7 @@ package me.ele.uetool;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import me.ele.uetool.dialog.FragmentListTreeDialog;
 import me.ele.uetool.util.Util;
 
@@ -20,17 +21,21 @@ class UETCore$DevAttrs$1
     try
     {
       new FragmentListTreeDialog(paramView.getContext()).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception paramView)
+    catch (Exception localException)
     {
-      paramView.printStackTrace();
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.UETCore.DevAttrs.1
  * JD-Core Version:    0.7.0.1
  */

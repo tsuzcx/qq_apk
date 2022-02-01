@@ -3,13 +3,13 @@ package cooperation.wadl.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfsk;
-import bkiy;
+import bizo;
+import bmxn;
 
 public class WadlResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<WadlResult> CREATOR = new bkiy();
+  public static final Parcelable.Creator<WadlResult> CREATOR = new bmxn();
   public int a;
   public long a;
   public WadlParams a;
@@ -20,6 +20,7 @@ public class WadlResult
   public int c;
   public long c;
   public int d;
+  public long d;
   
   public WadlResult(Parcel paramParcel)
   {
@@ -31,8 +32,9 @@ public class WadlResult
     this.jdField_b_of_type_Long = paramParcel.readLong();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.jdField_d_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.d = paramParcel.readInt();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
   }
   
   public WadlResult(WadlParams paramWadlParams)
@@ -46,15 +48,15 @@ public class WadlResult
   public boolean a()
   {
     if (this.jdField_a_of_type_CooperationWadlIpcWadlParams != null) {}
-    for (String str = this.jdField_a_of_type_CooperationWadlIpcWadlParams.j;; str = "")
+    for (String str = this.jdField_a_of_type_CooperationWadlIpcWadlParams.f;; str = "")
     {
-      this.jdField_b_of_type_Int = bfsk.a(this.jdField_b_of_type_Int, str, this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_b_of_type_Int != 0) {
+      this.jdField_b_of_type_Int = bizo.a(this.jdField_b_of_type_Int, str, this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_b_of_type_Int == 0) {
         break;
       }
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
   
   public int describeContents()
@@ -64,7 +66,7 @@ public class WadlResult
   
   public String toString()
   {
-    return "WadlResult{wadlParams=" + this.jdField_a_of_type_CooperationWadlIpcWadlParams + ", event=" + this.jdField_a_of_type_Int + ", taskId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", taskStatus=" + this.jdField_b_of_type_Int + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", createTime=" + this.jdField_c_of_type_Long + ", errCode=" + this.jdField_c_of_type_Int + ", progress=" + this.d + '}';
+    return "WadlResult{wadlParams=" + this.jdField_a_of_type_CooperationWadlIpcWadlParams + ", event=" + this.jdField_a_of_type_Int + ", taskId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", taskStatus=" + this.jdField_b_of_type_Int + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", createTime=" + this.jdField_c_of_type_Long + ", lastUpdateTime=" + this.jdField_d_of_type_Long + ", errCode=" + this.jdField_c_of_type_Int + ", progress=" + this.jdField_d_of_type_Int + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -76,13 +78,14 @@ public class WadlResult
     paramParcel.writeLong(this.jdField_b_of_type_Long);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeLong(this.jdField_d_of_type_Long);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.jdField_d_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlResult
  * JD-Core Version:    0.7.0.1
  */

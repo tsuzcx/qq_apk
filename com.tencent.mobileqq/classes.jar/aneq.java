@@ -1,137 +1,82 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.ApolloGameProcessBar;
 
 public class aneq
-  extends anee
+  extends bgpa
 {
-  private static final Object a;
-  public static boolean a;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ApolloGameProcessBar jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar;
   
-  static
+  public aneq(Context paramContext)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    super(paramContext, 2131755201);
+    a(paramContext);
   }
   
-  public static byte a(String paramString)
+  @TargetApi(16)
+  private void a(Context paramContext)
   {
-    return anee.a(0, paramString);
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    Object localObject = new FrameLayout.LayoutParams(-2, -2, 17);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar = new ApolloGameProcessBar(paramContext, 2130838604, 2130838606);
+    localObject = new LinearLayout.LayoutParams(afur.a(80.0F, paramContext.getResources()), afur.a(80.0F, paramContext.getResources()));
+    ((LinearLayout.LayoutParams)localObject).setMargins(afur.a(60.5F, paramContext.getResources()), 0, afur.a(60.5F, paramContext.getResources()), 0);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar);
+    localObject = new TextView(paramContext);
+    ((TextView)localObject).setText(anni.a(2131699197));
+    ((TextView)localObject).setTextSize(16.0F);
+    ((TextView)localObject).setTextColor(Color.parseColor("#ababab"));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, afur.a(10.0F, paramContext.getResources()), 0, 0);
+    localLayoutParams.gravity = 1;
+    ((TextView)localObject).setLayoutParams(localLayoutParams);
+    localLinearLayout.addView((View)localObject);
+    this.jdField_a_of_type_AndroidWidgetButton = new Button(paramContext);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131699188));
+    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(14.0F);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#ffffff"));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackground(paramContext.getResources().getDrawable(2130838605));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aner(this));
+    localObject = new LinearLayout.LayoutParams(afur.a(100.0F, paramContext.getResources()), afur.a(30.0F, paramContext.getResources()));
+    ((LinearLayout.LayoutParams)localObject).setMargins(0, afur.a(35.0F, paramContext.getResources()), 0, 0);
+    ((LinearLayout.LayoutParams)localObject).gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetButton);
+    getWindow().setDimAmount(0.85F);
+    getWindow().setGravity(17);
+    setContentView(localLinearLayout);
+    setCanceledOnTouchOutside(false);
+    setCancelable(false);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new anes(this));
   }
   
-  public static Object a()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getFilesDir is null");
-      }
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidecode.so_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDecodeSoLoader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    return "lib" + paramString + ".so";
-  }
-  
-  protected static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if (!anee.a(0, jdField_a_of_type_Boolean, "minicode"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "native so is not exist!");
-      }
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        String str;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDecodeSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      break label165;
-      str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("minicode")) {
-        paramHashMap.put("minicode", localXmlPullParser.nextText());
-      }
-      if (str.equalsIgnoreCase("minicode_64"))
-      {
-        paramHashMap.put("minicode_64", localXmlPullParser.nextText());
-        break label132;
-        ;;
-        label132:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
-          return true;
-          label165:
-          if (i != 1) {
-            switch (i)
-            {
-            }
-          }
-        }
-      }
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
     }
   }
   
-  public static byte b(String paramString)
+  public void setProgress(int paramInt)
   {
-    return anee.a(0, jdField_a_of_type_Boolean, paramString);
-  }
-  
-  public static String b(String paramString)
-  {
-    return "lib" + paramString + ".so";
-  }
-  
-  public static String c(String paramString)
-  {
-    return anee.a(0, paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setProgress(paramInt);
+    }
   }
 }
 

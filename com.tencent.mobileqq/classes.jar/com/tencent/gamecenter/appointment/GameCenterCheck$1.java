@@ -1,56 +1,79 @@
 package com.tencent.gamecenter.appointment;
 
-import aahi;
+import aced;
+import aceh;
 import android.text.TextUtils;
-import bfrz;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import bize;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 final class GameCenterCheck$1
   implements Runnable
 {
-  GameCenterCheck$1(String paramString1, String paramString2) {}
-  
   public void run()
   {
-    int j = 0;
-    bfrz.c("GameCenterCheck", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
-    aahi.a();
-    String[] arrayOfString;
-    int k;
-    int i;
-    if (!TextUtils.isEmpty(this.a))
+    String str3 = aceh.a("APPOINTMENT_LIST");
+    String str4 = aceh.a("DELAY_LIST");
+    String str5 = aceh.a("APPOINTMENT_UPDATE_LIST");
+    String str2 = aceh.a("APPOINTMENT_TGPA_LIST");
+    String str1 = aceh.a("UNPACK_APK_LIST");
+    if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)) && (TextUtils.isEmpty(str5)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str1)))
     {
-      arrayOfString = this.a.split("\\|");
-      if ((aahi.a) && (AppNetConnInfo.isWifiConn())) {
-        aahi.a(arrayOfString);
-      }
-      k = arrayOfString.length;
-      i = 0;
-      while (i < k)
-      {
-        aahi.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
-        i += 1;
-      }
+      bize.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
+      aced.b();
     }
-    if (!TextUtils.isEmpty(this.b))
+    for (;;)
     {
-      arrayOfString = this.b.split("\\|");
-      if (aahi.b) {
-        aahi.b(arrayOfString);
+      return;
+      bize.c("GameCenterCheck", "checkGameCenter begin");
+      aceh.a();
+      if ((!TextUtils.isEmpty(str4)) && (aceh.a)) {
+        GameCenterCheck.a(str4.split("\\|"));
       }
-      k = arrayOfString.length;
-      i = j;
-      while (i < k)
+      if ((!TextUtils.isEmpty(str3)) && (aceh.b)) {
+        GameCenterCheck.b(str3.split("\\|"));
+      }
+      if ((!TextUtils.isEmpty(str5)) && (aceh.c)) {}
+      try
       {
-        aahi.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
-        i += 1;
+        GameCenterCheck.a(new JSONArray(str5));
+        if (TextUtils.isEmpty(str2)) {}
+      }
+      catch (JSONException localJSONException3)
+      {
+        try
+        {
+          GameCenterCheck.b(new JSONArray(str2));
+          if ((TextUtils.isEmpty(str1)) || (!aceh.d)) {
+            continue;
+          }
+          try
+          {
+            GameCenterCheck.c(new JSONArray(str1));
+            return;
+          }
+          catch (JSONException localJSONException1)
+          {
+            localJSONException1.printStackTrace();
+            return;
+          }
+          localJSONException3 = localJSONException3;
+          localJSONException3.printStackTrace();
+        }
+        catch (JSONException localJSONException2)
+        {
+          for (;;)
+          {
+            localJSONException2.printStackTrace();
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterCheck.1
  * JD-Core Version:    0.7.0.1
  */

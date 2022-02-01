@@ -1,72 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class ayfu
-  extends aokh<ayfv>
+  implements ayjd
 {
-  public int a()
-  {
-    return 485;
-  }
+  public ayfu(OCRResultActivity paramOCRResultActivity) {}
   
-  @NonNull
-  public ayfv a(int paramInt)
+  public void a(int paramInt, ayje paramayje)
   {
-    return new ayfv();
-  }
-  
-  @Nullable
-  public ayfv a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramayje.b)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaoko[0].a);
-      }
-      return ayfv.a(paramArrayOfaoko[0].a);
+      OCRResultActivity.b(this.a, paramayje.b);
+      OCRResultActivity.a(this.a, false);
     }
-    return new ayfv();
-  }
-  
-  public Class<ayfv> a()
-  {
-    return ayfv.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
-    }
-  }
-  
-  public void a(ayfv paramayfv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramayfv);
-    }
-    aygf.a(paramayfv);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

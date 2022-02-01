@@ -1,18 +1,10 @@
-import android.view.View;
-
-public abstract class xrx
-  extends xsa
+public abstract interface xrx
 {
-  public xrx(xsc paramxsc, View paramView)
-  {
-    super(paramxsc, paramView);
-  }
-  
-  public abstract int a();
+  public abstract boolean a_(xrt paramxrt, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xrx
  * JD-Core Version:    0.7.0.1
  */

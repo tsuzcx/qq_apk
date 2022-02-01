@@ -1,15 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import adrm;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public final class ReadInJoyUtils$22
   implements Runnable
 {
-  public ReadInJoyUtils$22(KandianMergeManager paramKandianMergeManager) {}
+  public ReadInJoyUtils$22(String paramString, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.r();
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localSessionInfo.jdField_a_of_type_Int = 1008;
+    adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    QLog.d("ReadInJoyUtils", 2, "puin<" + this.jdField_a_of_type_JavaLangString + "> msg setRead !");
   }
 }
 

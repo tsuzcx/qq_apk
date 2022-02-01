@@ -18,9 +18,7 @@ class VideoPlaySDKManager$3
   
   public int e(String paramString1, String paramString2)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.e(paramString1, 2, paramString2);
-    }
+    LogUtil.e(paramString1, 1, paramString2);
     return 0;
   }
   
@@ -50,7 +48,7 @@ class VideoPlaySDKManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager.3
  * JD-Core Version:    0.7.0.1
  */

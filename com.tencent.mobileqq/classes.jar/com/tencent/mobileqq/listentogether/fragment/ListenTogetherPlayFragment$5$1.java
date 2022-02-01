@@ -11,13 +11,13 @@ class ListenTogetherPlayFragment$5$1
   public void run()
   {
     if ((this.a.this$0.getActivity() != null) && (!this.a.this$0.getActivity().isFinishing())) {
-      QQToast.a(this.a.this$0.getActivity(), 2131694637, 1).a();
+      QQToast.a(this.a.this$0.getActivity(), 2131693890, 1).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

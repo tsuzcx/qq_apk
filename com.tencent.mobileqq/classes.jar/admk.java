@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class admk
-  extends altm
+  implements DialogInterface.OnClickListener
 {
-  public admk(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public admk(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
-    }
-  }
-  
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      this.a.a(2131719884, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    this.a.b();
   }
 }
 

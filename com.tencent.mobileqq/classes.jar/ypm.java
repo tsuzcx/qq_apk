@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public class ypm
-  implements View.OnClickListener
+class ypm
+  implements ymg<yln>
 {
-  public ypm(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  ypm(ypl paramypl, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(yln paramyln)
   {
-    zaj.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    ymb.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131720491, new ypn(this));
+    if ((paramyln.a != null) && (TextUtils.equals(paramyln.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      ypb.a(this.jdField_a_of_type_Ypl.a).a = paramyln.a;
+      ypb.a(this.jdField_a_of_type_Ypl.a).sendMessage(ypb.a(this.jdField_a_of_type_Ypl.a).obtainMessage(0, ypb.a(this.jdField_a_of_type_Ypl.a)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypm
  * JD-Core Version:    0.7.0.1
  */

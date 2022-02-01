@@ -1,20 +1,14 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
+import android.view.View;
 
-public class bfyb
-  implements SurfaceTexture.OnFrameAvailableListener
+public abstract interface bfyb
 {
-  public bfyb(MediaDecoder paramMediaDecoder, bfyc parambfyc) {}
+  public abstract void a(View paramView);
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    this.jdField_a_of_type_Bfyc.a(paramSurfaceTexture);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyb
  * JD-Core Version:    0.7.0.1
  */

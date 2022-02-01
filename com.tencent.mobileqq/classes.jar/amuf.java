@@ -1,47 +1,134 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
+import org.json.JSONObject;
 
-class amuf
-  extends BroadcastReceiver
+public class amuf
 {
-  amuf(amue paramamue) {}
+  private static final Set<String> a = new SpriteCommFunc.1();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
+    }
+    if (!amuo.c(paramQQAppInterface)) {}
     do
     {
-      int i;
-      int j;
+      do
+      {
+        return;
+        paramQQAppInterface = amuo.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramString = paramQQAppInterface.a(paramLong);
+    if (paramString == null)
+    {
+      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
+      return;
+    }
+    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+    }
+    if (!amuo.c(paramQQAppInterface)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 0);
+      paramQQAppInterface = amuo.a(paramQQAppInterface);
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
+      {
+        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
+        return;
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
+      return;
+    }
+    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
+    }
+    if (!amuo.c(paramQQAppInterface)) {}
+    do
+    {
+      amul localamul;
       do
       {
         do
         {
           return;
-        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
-        switch (paramIntent.getIntExtra("event", 0))
-        {
-        default: 
-          return;
-        case 1: 
-          paramContext = paramIntent.getStringExtra("bussinessSubName");
-          i = paramIntent.getIntExtra("download_Index", 0);
-          j = paramIntent.getIntExtra("download_Progress", 0);
-          if (AudioHelper.e()) {
-            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
-          }
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(paramContext, i, j);
-      return;
-      paramContext = paramIntent.getStringExtra("config_Content");
-      this.a.b(paramContext);
-    } while (this.a.a == null);
-    this.a.a.b();
+        } while (!a.contains(paramString));
+        localamul = amuo.a(paramQQAppInterface);
+      } while (localamul == null);
+      amug localamug = amuo.a(paramQQAppInterface);
+      if (localamug != null) {
+        localamug.a(paramString, paramBoolean);
+      }
+      if (amuo.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localamul.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramBoolean, false, paramString);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = amuo.b(paramQQAppInterface);
+    boolean bool2 = amuo.a(paramQQAppInterface);
+    return (bool1) || (bool2);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
+    }
+    if (!amuo.c(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramQQAppInterface = amuo.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = amuo.a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
+    return true;
   }
 }
 

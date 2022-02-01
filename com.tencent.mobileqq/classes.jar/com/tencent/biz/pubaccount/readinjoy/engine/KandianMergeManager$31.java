@@ -1,8 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import java.util.Iterator;
-import java.util.List;
-import owr;
+import bmqa;
 
 class KandianMergeManager$31
   implements Runnable
@@ -11,13 +9,7 @@ class KandianMergeManager$31
   
   public void run()
   {
-    if (KandianMergeManager.a(this.this$0) != null)
-    {
-      Iterator localIterator = KandianMergeManager.a(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((owr)localIterator.next()).b();
-      }
-    }
+    bmqa.n(KandianMergeManager.a(this.this$0), true);
   }
 }
 

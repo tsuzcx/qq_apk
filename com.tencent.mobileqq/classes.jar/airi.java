@@ -1,15 +1,23 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 class airi
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  airi(airh paramairh) {}
+  airi(aire paramaire) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    airh.a(this.a);
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

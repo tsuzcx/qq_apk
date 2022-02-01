@@ -1,17 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
 
-public class adrx
+public final class adrx
   implements DialogInterface.OnClickListener
 {
-  public adrx(QQSettingCleanActivity paramQQSettingCleanActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
+    paramDialogInterface.dismiss();
+    mqw.b();
   }
 }
 

@@ -1,40 +1,55 @@
-class qxx
-  implements qxr
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+
+public class qxx
+  extends ClickableSpan
+  implements sth
 {
-  qxx(qxw paramqxw) {}
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public qxx(ComponentHeaderUgc paramComponentHeaderUgc, long paramLong, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderUgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc, this.jdField_a_of_type_Long);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
     {
-    default: 
-      return;
-    case 0: 
-      qxw.a(this.a, paramString1);
-      qxw.b(this.a, paramString2);
-      qxw.a(this.a, 3);
-      return;
-    case 1001: 
-      qxw.b(this.a, 10);
-      return;
-    case 1002: 
-      qxw.b(this.a, 9);
-      return;
-    case 1003: 
-      qxw.b(this.a, 11);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }
-    qxw.b(this.a, 13);
-    qxw.c(this.a, 1002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qxx
  * JD-Core Version:    0.7.0.1
  */

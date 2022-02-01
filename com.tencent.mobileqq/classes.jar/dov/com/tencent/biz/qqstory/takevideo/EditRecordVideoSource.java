@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmkh;
+import bpbn;
 import java.io.File;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new bmkh();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new bpbn();
   public final float a;
   public final int a;
   public final long a;
@@ -104,7 +104,7 @@ public class EditRecordVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource
  * JD-Core Version:    0.7.0.1
  */

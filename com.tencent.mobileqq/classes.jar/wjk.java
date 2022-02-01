@@ -1,38 +1,41 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class wjk
+public abstract class wjk
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public int a;
-  public CommentEntry a;
-  private int b = -1;
+  protected AtomicInteger a;
+  public wjl a;
   
-  wjk(wjf paramwjf)
+  public wjk()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  private void a()
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
+    a();
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt)
+  public void a(wjl paramwjl)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.b = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Wjl = paramwjl;
   }
   
-  public boolean a(CommentEntry paramCommentEntry)
+  protected void b()
   {
-    return paramCommentEntry.commentId != this.b;
+    if (this.jdField_a_of_type_Wjl != null) {
+      this.jdField_a_of_type_Wjl.a(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjk
  * JD-Core Version:    0.7.0.1
  */

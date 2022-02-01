@@ -1,27 +1,32 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class onz
-  extends oob
+public class onz
+  extends onp
 {
-  onz(omz paramomz, int paramInt)
+  public int a(BaseData paramBaseData)
   {
-    super(paramomz, null);
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
+      i = opz.a((ProteusBannerTriplePicItemData)paramBaseData);
+    }
+    return i;
   }
   
-  void a(ooe paramooe)
+  protected syj a(View paramView, BaseData paramBaseData)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramooe.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    paramooe.onCommentLoadMore(2, false, new ArrayList(), false, 4);
+    return new ooa(this, paramView, paramBaseData, this.a);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.t == 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onz
  * JD-Core Version:    0.7.0.1
  */

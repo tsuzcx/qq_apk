@@ -1,30 +1,21 @@
-import java.util.Comparator;
-
-final class auto
-  implements Comparator<String>
+public class auto
+  implements anil
 {
-  public int a(String paramString1, String paramString2)
+  protected void a(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
+    switch (paramInt)
     {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
+    default: 
+      return;
     }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auto
  * JD-Core Version:    0.7.0.1
  */

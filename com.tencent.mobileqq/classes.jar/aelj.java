@@ -1,36 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
-public class aelj
-  implements DialogInterface.OnClickListener
+class aelj
+  implements bhlk
 {
-  public aelj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  aelj(aeli paramaeli, JumpActivity paramJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
-    }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "1");
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_key_jump_src", 1);
+    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aelj
  * JD-Core Version:    0.7.0.1
  */

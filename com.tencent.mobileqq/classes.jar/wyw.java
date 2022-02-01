@@ -1,123 +1,54 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class wyw
-  extends BaseAdapter
+  extends wlf<wyy>
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<xcz> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
+  public List<String> a = new ArrayList();
   
-  public wyw(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = xin.b(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = xin.b(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public xcz a(int paramInt)
+  public wla a(byte[] paramArrayOfByte)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (xcz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<xcz> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    xcz localxcz = new xcz();
-    this.jdField_a_of_type_JavaUtilList.add(localxcz);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView1;
-    if (paramView == null)
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
     {
-      paramViewGroup = new wyx(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559235, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131377822));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131376371);
-      localView1.setTag(paramViewGroup);
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new wyy(localRspStoryFeedTagInfo);
     }
-    xcz localxcz;
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      localxcz = a(paramInt);
-      if (localxcz != null) {
-        break;
-      }
-      return localView1;
-      paramViewGroup = (wyx)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localxcz.jdField_a_of_type_Int + localxcz.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label249;
-      }
-      paramView = bdal.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841174, this.b, this.jdField_a_of_type_Int);
-      localView2 = paramView;
-      if (paramView != null)
+      for (;;)
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localxcz.jdField_a_of_type_Int + localxcz.b, paramView);
-        localView2 = paramView;
+        paramArrayOfByte.printStackTrace();
       }
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704179));
-    }
-    for (;;)
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      if (paramInt != this.c) {
-        break label305;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return localView1;
-      label249:
-      paramView = bdal.a(localxcz.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704328) + localxcz.c);
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    label305:
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    return localView1;
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyw
  * JD-Core Version:    0.7.0.1
  */

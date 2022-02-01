@@ -1,21 +1,10 @@
-import android.support.annotation.RestrictTo;
+import cooperation.qzone.plugin.PluginRecord;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bmdu
-  implements bmdi
+abstract interface bmdu
 {
-  private final bmdh a;
+  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  bmdu(bmdh parambmdh)
-  {
-    this.a = parambmdh;
-  }
-  
-  public void a(bmdn parambmdn, bmdk parambmdk)
-  {
-    this.a.a(parambmdn, parambmdk, false, null);
-    this.a.a(parambmdn, parambmdk, true, null);
-  }
+  public abstract void d(PluginRecord paramPluginRecord);
 }
 
 

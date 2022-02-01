@@ -1,8 +1,17 @@
 public class azfg
 {
-  public static boolean a()
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public azfg(azff paramazff, int paramInt)
   {
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

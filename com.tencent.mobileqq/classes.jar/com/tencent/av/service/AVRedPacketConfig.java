@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import ansd;
-import bdgk;
+import apsi;
+import bgln;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,14 +15,14 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import lyq;
+import lvo;
 import org.xmlpull.v1.XmlPullParser;
 
 public class AVRedPacketConfig
   implements Parcelable, Serializable
 {
   static final String CONFIG_PATH = "avredpacket_config_";
-  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lyq();
+  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lvo();
   static final String TAG = "AVRedPacketConfig";
   public boolean checkEyeOpenClose;
   public boolean checkNormalFaceExpression;
@@ -119,7 +119,7 @@ public class AVRedPacketConfig
     Object localObject = "";
     try
     {
-      String str = bdgk.a(BaseApplicationImpl.getContext());
+      String str = bgln.a(BaseApplicationImpl.getContext());
       localObject = str;
     }
     catch (Exception localException)
@@ -224,11 +224,11 @@ public class AVRedPacketConfig
       }
       else if (paramString.equalsIgnoreCase("activityBeginTime"))
       {
-        localAVRedPacketConfig.operatingEntranceBeginTime = ansd.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceBeginTime = apsi.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("activityEndTime"))
       {
-        localAVRedPacketConfig.operatingEntranceEndTime = ansd.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceEndTime = apsi.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("androidCommonResUrl"))
       {
@@ -1248,7 +1248,7 @@ public class AVRedPacketConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.service.AVRedPacketConfig
  * JD-Core Version:    0.7.0.1
  */

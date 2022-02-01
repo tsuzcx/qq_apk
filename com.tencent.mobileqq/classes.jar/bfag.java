@@ -1,19 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bfag
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public bfag(WXShareHelper paramWXShareHelper) {}
+  public bfag(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 

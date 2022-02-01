@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class acnc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class acnc
+  implements View.OnClickListener
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
+  public acnc(Function0 paramFunction0) {}
   
-  protected acnc(ChatHistory paramChatHistory) {}
+  public final void onClick(View paramView)
+  {
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

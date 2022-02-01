@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anyq;
+import apyv;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,9 +18,9 @@ class WordMatchManager$3$1
     Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      anyq localanyq = (anyq)localIterator.next();
-      if (localanyq != null) {
-        localanyq.a(this.a.this$0.jdField_a_of_type_Anyr);
+      apyv localapyv = (apyv)localIterator.next();
+      if (localapyv != null) {
+        localapyv.a(this.a.this$0.jdField_a_of_type_Apyw);
       }
     }
     this.a.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -28,7 +28,7 @@ class WordMatchManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,33 @@
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class alej
-  implements akrd
+public abstract class alej
+  implements alel
 {
-  alej(aleh paramaleh, DisplayMetrics paramDisplayMetrics, alel paramalel) {}
+  public int a;
+  public long a;
+  public beps a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public alej()
   {
-    this.jdField_a_of_type_Aleh.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_a_of_type_Aleh.jdField_c_of_type_Float = (paramInt1 / 2 / f);
-    if ((this.jdField_a_of_type_Aleh.b != null) && (this.jdField_a_of_type_Aleh.a != null) && (aleh.a(this.jdField_a_of_type_Aleh) != null))
-    {
-      this.jdField_a_of_type_Aleh.b.onExecDispose();
-      this.jdField_a_of_type_Aleh.a.onExecDispose();
-      Message localMessage = aleh.a(this.jdField_a_of_type_Aleh).obtainMessage(19, this.jdField_a_of_type_Alel.c, this.jdField_a_of_type_Alel.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Alel.a) {
-        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Alel.jdField_b_of_type_Float);
-      }
-      aleh.a(this.jdField_a_of_type_Aleh).sendMessageDelayed(localMessage, 100L);
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Beps = new beps();
+  }
+  
+  @Nullable
+  public abstract Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

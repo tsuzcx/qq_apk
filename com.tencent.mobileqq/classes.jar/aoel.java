@@ -1,30 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.comic.VipComicJumpActivity;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoel
-  implements aoeq
+  extends anxg
 {
-  public String a()
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690596);
-  }
+  public aoel(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = new Intent("android.intent.action.MAIN");
-    paramView = paramView.getContext();
-    localObject = VipComicJumpActivity.a((Intent)localObject);
-    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (bimw)localObject)) {
-      VipComicJumpActivity.a(localQQAppInterface, true);
+    if ((paramInt2 == 512) && (paramBoolean))
+    {
+      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(52)).b(paramString1);
+      aoer.a(HiddenChatFragment.a(this.a), paramString2);
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch troopUin=" + paramString1);
+      }
     }
-    azqs.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", aocr.b(paramInt), 0, "", "", "", "");
   }
 }
 

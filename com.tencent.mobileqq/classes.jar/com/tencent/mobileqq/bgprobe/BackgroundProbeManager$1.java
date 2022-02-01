@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.bgprobe;
 
-import anvl;
+import apvq;
 
 public final class BackgroundProbeManager$1
   implements Runnable
 {
-  public BackgroundProbeManager$1(anvl paramanvl) {}
+  public BackgroundProbeManager$1(apvq paramapvq) {}
   
   public void run()
   {
-    anvl.a(this.a);
+    apvq.a(this.a);
   }
 }
 

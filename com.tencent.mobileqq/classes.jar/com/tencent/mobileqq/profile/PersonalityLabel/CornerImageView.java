@@ -10,8 +10,8 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bhtb;
 import com.tencent.image.URLImageView;
+import com.tencent.util.VersionUtils;
 
 public class CornerImageView
   extends URLImageView
@@ -44,10 +44,14 @@ public class CornerImageView
   
   public void a()
   {
-    if (!bhtb.i()) {
+    if (!VersionUtils.isKITKAT()) {
       setLayerType(1, null);
     }
   }
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  protected void b(Canvas paramCanvas) {}
   
   protected void drawableStateChanged()
   {
@@ -105,7 +109,9 @@ public class CornerImageView
       localPath.reset();
       localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       paramCanvas.clipPath(localPath);
+      a(paramCanvas);
       super.onDraw(paramCanvas);
+      b(paramCanvas);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -138,7 +144,7 @@ public class CornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView
  * JD-Core Version:    0.7.0.1
  */

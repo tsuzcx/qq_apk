@@ -1,8 +1,19 @@
-public class atef
+import android.os.Bundle;
+
+class atef
+  implements atep
 {
-  public static int a;
-  public static String a;
-  public static String b;
+  atef(atee paramatee) {}
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    atee.a(this.a, paramString);
+  }
+  
+  public void a(String paramString, ateo paramateo)
+  {
+    atee.a(this.a, paramString, paramateo);
+  }
 }
 
 

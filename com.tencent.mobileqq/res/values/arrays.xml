@@ -11,6 +11,28 @@
         <item>@string/cvy</item>
         <item>@string/cvz</item>
     </string-array>
+    <string-array name="bk">
+        <item>哈哈哈</item>
+        <item>在吗</item>
+        <item>宝贝</item>
+        <item>拜拜</item>
+        <item>为什么</item>
+        <item>我不知道</item>
+        <item>笑死我了</item>
+        <item>爱你</item>
+    </string-array>
+    <integer-array name="bl">
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="bm">
+        <item>好友</item>
+        <item>情侣</item>
+        <item>闺蜜</item>
+        <item>基友</item>
+    </string-array>
     <string-array name="d">
         <item>屏蔽所有群消息</item>
     </string-array>
@@ -79,11 +101,6 @@
         <item>骑行</item>
         <item>其他交通工具</item>
         <item>交通工具不限</item>
-    </string-array>
-    <string-array name="p">
-        <item>@string/fgb</item>
-        <item>@string/fhs</item>
-        <item>@string/fez</item>
     </string-array>
     <string-array name="q">
         <item>限男生</item>
@@ -859,7 +876,7 @@
         <item>收到的评论</item>
         <item>已结束的约会</item>
     </string-array>
-    <string-array name="bk">
+    <string-array name="bn">
         <item>\#33C573FF</item>
         <item>\#33FF80CA</item>
         <item>\#33FF5967</item>
@@ -870,7 +887,7 @@
         <item>\#3300CAFC</item>
         <item>\#3340A0FF</item>
     </string-array>
-    <string-array name="bl">
+    <string-array name="c_">
         <item>\#AB6ADB</item>
         <item>\#F173BC</item>
         <item>\#E85D69</item>

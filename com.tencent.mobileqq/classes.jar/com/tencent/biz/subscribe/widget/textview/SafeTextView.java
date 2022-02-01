@@ -23,7 +23,33 @@ public class SafeTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static String a(String paramString)
+  private static boolean a(char paramChar)
+  {
+    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    int j = paramString.length();
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (!a(paramString.charAt(i))) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static String b(String paramString)
   {
     if ((paramString == null) || (paramString.length() <= 0)) {}
     int j;
@@ -59,32 +85,6 @@ public class SafeTextView
     return localObject1.toString();
   }
   
-  private static boolean a(char paramChar)
-  {
-    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    int j = paramString.length();
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (!a(paramString.charAt(i))) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
@@ -96,7 +96,7 @@ public class SafeTextView
     {
       try
       {
-        setText(a(getText().toString()));
+        setText(b(getText().toString()));
         super.onMeasure(paramInt1, paramInt2);
         return;
       }
@@ -119,7 +119,7 @@ public class SafeTextView
     {
       try
       {
-        super.setText(a(getText().toString()), paramBufferType);
+        super.setText(b(getText().toString()), paramBufferType);
         return;
       }
       catch (Throwable paramCharSequence)
@@ -131,7 +131,7 @@ public class SafeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.SafeTextView
  * JD-Core Version:    0.7.0.1
  */

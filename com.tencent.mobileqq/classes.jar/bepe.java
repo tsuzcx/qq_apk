@@ -1,83 +1,22 @@
-import android.view.LayoutInflater;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.mobileqq.widget.MeasureGridView;
+import android.widget.TextView;
 
-public class bepe
-  extends BaseAdapter
+class bepe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bepe(DraggableGridView paramDraggableGridView) {}
+  bepe(bepb parambepb, benn parambenn) {}
   
-  public int getCount()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (DraggableGridView.a(this.a) != null) {
-      return DraggableGridView.a(this.a).a() * 2;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((DraggableGridView.a(this.a) != null) && (paramInt % 2 == 0)) {
-      return DraggableGridView.a(this.a).a(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt % 2 == 0) {
-      return DraggableGridView.a(this.a).b(paramInt / 2) + 1;
-    }
-    return DraggableGridView.a();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (getItemViewType(paramInt) == DraggableGridView.a())
-    {
-      if (paramView == null)
-      {
-        paramViewGroup = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560408, paramViewGroup, false);
-        paramViewGroup.setClickable(false);
-        paramViewGroup.setNumColumns(DraggableGridView.a(this.a));
-        paramViewGroup.setAdapter(new bepf(this.a, paramInt / 2));
-        paramView = paramViewGroup;
-      }
-      for (;;)
-      {
-        paramViewGroup.setTag(Integer.valueOf(paramInt / 2));
-        localObject = paramView;
-        return localObject;
-        paramViewGroup = (MeasureGridView)paramView;
-        ((bepf)paramViewGroup.getAdapter()).a(paramInt / 2);
-      }
-    }
-    if (paramView == null) {
-      paramView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
-    }
-    for (paramViewGroup = paramView;; paramViewGroup = paramView)
-    {
-      localObject = paramViewGroup;
-      if (DraggableGridView.a(this.a) == null) {
-        break;
-      }
-      DraggableGridView.a(this.a).a(paramView, paramInt / 2);
-      return paramViewGroup;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return DraggableGridView.a(this.a).b() + 1;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = 1.0F * (100 - i) / 100.0F;
+    this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
+    f = this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
+    this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidViewView.setTranslationY(f);
+    f = i * -180.0F / 100.0F;
+    this.jdField_a_of_type_Benn.c.setRotation(f);
   }
 }
 

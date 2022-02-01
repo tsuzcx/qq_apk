@@ -1,8 +1,19 @@
-public abstract interface bdmf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bdmf
+  implements View.OnClickListener
 {
-  public abstract void a(awyp paramawyp, awyq paramawyq);
+  bdmf(bdme parambdme) {}
   
-  public abstract void b(awyp paramawyp, awyq paramawyq);
+  public void onClick(View paramView)
+  {
+    if (bdme.a(this.a).isShowing()) {
+      bdme.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

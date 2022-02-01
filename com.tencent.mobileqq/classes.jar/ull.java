@@ -1,24 +1,27 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import UserGrowth.stFeed;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-class ull
-  extends LruCache<KEY, VALUE>
+public abstract interface ull
+  extends uln<List<stFeed>>
 {
-  ull(ulk paramulk, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract XRecyclerView a();
   
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
-  {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
-  }
+  public abstract ucp a();
+  
+  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
+  
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ull
  * JD-Core Version:    0.7.0.1
  */

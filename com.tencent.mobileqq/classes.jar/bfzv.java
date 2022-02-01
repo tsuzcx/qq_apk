@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
 public class bfzv
+  implements bdfn
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  public bfzv(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdfn parambdfn) {}
   
-  public bfzv(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
+  public void a()
   {
-    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
-      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
-      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
-      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
-      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bfzw(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfzv
  * JD-Core Version:    0.7.0.1
  */

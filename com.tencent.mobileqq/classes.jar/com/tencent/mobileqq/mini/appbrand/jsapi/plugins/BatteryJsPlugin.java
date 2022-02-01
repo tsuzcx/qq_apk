@@ -28,7 +28,7 @@ public class BatteryJsPlugin
       Object localObject = new JSONObject();
       try
       {
-        ((JSONObject)localObject).put("level", (int)(this.batteryPct * 100.0F));
+        ((JSONObject)localObject).put("level", String.valueOf((int)(this.batteryPct * 100.0F)));
         ((JSONObject)localObject).put("isCharging", this.isCharging);
         localObject = ApiUtil.wrapCallbackOk(paramString1, (JSONObject)localObject).toString();
         if ("getBatteryInfo".equals(paramString1)) {
@@ -76,7 +76,7 @@ public class BatteryJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BatteryJsPlugin
  * JD-Core Version:    0.7.0.1
  */

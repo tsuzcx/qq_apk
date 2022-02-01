@@ -1,75 +1,122 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class xes
-  implements Cloneable
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  public final String g;
-  public String h;
-  
-  public xes(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  protected static List<String> a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = null;
-    this.d = paramString3;
-    this.e = paramString4;
-    this.f = paramString5;
-    this.g = paramString6;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public xes(vhf paramvhf)
-  {
-    this.jdField_a_of_type_JavaLangString = paramvhf.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramvhf.jdField_b_of_type_JavaLangString;
-    this.c = paramvhf.c;
-    this.d = paramvhf.d;
-    this.e = paramvhf.e;
-    this.f = paramvhf.g;
-    this.g = paramvhf.f;
-    this.jdField_a_of_type_Int = paramvhf.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.h;
-  }
-  
-  public void a(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    ArrayList localArrayList = new ArrayList();
+    paramContext = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    paramContext = paramContext.queryIntentActivities(localIntent, 65536).iterator();
+    while (paramContext.hasNext()) {
+      localArrayList.add(((ResolveInfo)paramContext.next()).activityInfo.packageName);
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    return localArrayList;
+  }
+  
+  protected static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramQQAppInterface != null) && (paramInt != 0)) {
+      paramQQAppInterface.t();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.protocol", 2, "playSound ringType = " + paramInt);
+    }
+  }
+  
+  protected static boolean a(Context paramContext)
+  {
+    List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+    if (localList == null) {
       return false;
     }
-    paramObject = (xes)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    return a(paramContext).contains(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
   }
   
-  public int hashCode()
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    if (localObject1 == null) {
+      return false;
+    }
+    boolean bool = GesturePWDUtils.getGestureLocking((Context)localObject1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.protocol", 2, "isQQForeground isQQLock=" + bool);
+    }
+    if ((paramQQAppInterface == null) || (bool)) {
+      return false;
+    }
+    if (a((Context)localObject1)) {
+      return false;
+    }
+    if (!paramQQAppInterface.isBackground_Pause) {
+      return true;
+    }
+    try
+    {
+      Object localObject2 = (ActivityManager)((Context)localObject1).getApplicationContext().getSystemService("activity");
+      if (localObject2 == null) {
+        return false;
+      }
+      paramQQAppInterface = ((Context)localObject1).getApplicationContext().getPackageName();
+      if (TextUtils.isEmpty(paramQQAppInterface)) {
+        return false;
+      }
+      localObject1 = ((ActivityManager)localObject2).getRunningAppProcesses();
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+        if ((((ActivityManager.RunningAppProcessInfo)localObject2).importance == 100) && (((ActivityManager.RunningAppProcessInfo)localObject2).processName != null))
+        {
+          if (((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface + ":video")) {
+            return false;
+          }
+          if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface))
+          {
+            bool = ((ActivityManager.RunningAppProcessInfo)localObject2).processName.startsWith(paramQQAppInterface + ":");
+            if (!bool) {
+              break;
+            }
+          }
+          else
+          {
+            return true;
+          }
+        }
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xes
  * JD-Core Version:    0.7.0.1
  */

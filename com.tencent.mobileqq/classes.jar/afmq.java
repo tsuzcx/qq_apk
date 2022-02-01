@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afmq
-  implements bayi
+  implements View.OnClickListener
 {
-  public afmq(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  public afmq(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  public void onClick(View paramView)
   {
-    this.a.b();
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

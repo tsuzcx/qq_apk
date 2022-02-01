@@ -33,6 +33,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract Object handleGetPlayInfo(String paramString);
   
+  public abstract long handleGetPlayableDurationMs();
+  
   public abstract long handleGetPlayerBufferLength();
   
   public abstract TPProgramInfo[] handleGetProgramInfo();
@@ -57,7 +59,7 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handleOnDownloadFinish();
   
-  public abstract void handleOnDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public abstract void handleOnDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString);
   
   public abstract void handleOnDownloadProtocolUpdate(String paramString1, String paramString2);
   
@@ -109,7 +111,7 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal.ITPPlayerSwitchThreadListener
  * JD-Core Version:    0.7.0.1
  */

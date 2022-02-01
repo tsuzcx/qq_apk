@@ -1,13 +1,12 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public abstract interface ujg
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
+  public abstract void a(FromServiceMsg paramFromServiceMsg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujg
  * JD-Core Version:    0.7.0.1
  */

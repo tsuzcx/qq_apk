@@ -1,26 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qum
-  implements qti
+  implements View.OnClickListener
 {
-  qum(qul paramqul, UgcVideo paramUgcVideo) {}
+  qum(qul paramqul) {}
   
-  public void a(List<String> paramList)
+  public void onClick(View paramView)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    qul.a(this.jdField_a_of_type_Qul, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qum
  * JD-Core Version:    0.7.0.1
  */

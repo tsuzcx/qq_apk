@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.haoliyou;
 
-import asqk;
+import auxo;
 import com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,9 +16,9 @@ public class JefsClass$CancelableRunnable
     this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable = paramWeakOuterRefRunnable;
   }
   
-  public asqk a()
+  public auxo a()
   {
-    return new asqk(this);
+    return new auxo(this);
   }
   
   public void a(int paramInt)
@@ -44,7 +44,7 @@ public class JefsClass$CancelableRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable
  * JD-Core Version:    0.7.0.1
  */

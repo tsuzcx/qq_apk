@@ -1,62 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
 
 public class awau
-  extends MSFServlet
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  public awau(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onGlobalLayout()
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
+    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awau
  * JD-Core Version:    0.7.0.1
  */

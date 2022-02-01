@@ -1,31 +1,32 @@
-import android.graphics.Canvas;
+import android.content.Context;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import java.util.ArrayList;
 
 public class bntn
+  extends GifAnimationDrawable
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
-  
-  bntn(TCProgressBar paramTCProgressBar)
+  public bntn(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
   {
-    this.jdField_f_of_type_Boolean = false;
+    super(paramContext, paramArrayList, paramLong);
   }
   
-  void a(Canvas paramCanvas)
+  public void start()
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    if (!this.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("zswp20pro", 2, "start");
+      }
+      this.a = true;
+      this.b = true;
+      this.d = false;
+      a();
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("zswp20pro", 2, "start but isRunning");
   }
 }
 

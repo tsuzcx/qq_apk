@@ -1,28 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.6;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avwf
-  implements PopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  public avwf(OCRResultActivity paramOCRResultActivity) {}
+  public avwf(BaseListenTogetherPanel.6 param6) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    this.a.a = null;
-    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
-    {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130845229);
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
-    }
+    this.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface agjw
+public class agjw
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
+  public agjw(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public void onClick(View paramView)
+  {
+    AIOLongShotHelper.a(this.a).performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

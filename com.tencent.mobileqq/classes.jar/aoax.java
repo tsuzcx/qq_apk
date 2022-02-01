@@ -1,23 +1,34 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
-public class aoax
-  implements Camera.FaceDetectionListener
+class aoax
+  implements bihh
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aoam jdField_a_of_type_Aoam;
-  private final aoaq jdField_a_of_type_Aoaq;
+  aoax(aoaw paramaoaw, int paramInt) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
+    if ((paramBaseResp == null) || (paramBaseResp.transaction == null))
+    {
+      QLog.e("AVGameShareBase", 1, "onWXShareResp: respData is null");
+      return;
+    }
+    if (!paramBaseResp.transaction.equals(this.jdField_a_of_type_Aoaw.a))
+    {
+      QLog.e("AVGameShareBase", 1, "onWXShareResp: mWXTransaction is wrong");
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      this.jdField_a_of_type_Aoaw.d(this.jdField_a_of_type_Int);
+      return;
+    case 0: 
+      this.jdField_a_of_type_Aoaw.b(this.jdField_a_of_type_Int);
+      return;
+    }
+    this.jdField_a_of_type_Aoaw.c(this.jdField_a_of_type_Int);
   }
 }
 

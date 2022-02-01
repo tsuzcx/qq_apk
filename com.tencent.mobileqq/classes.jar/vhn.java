@@ -1,50 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vhn
-  extends uro
+class vhn
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public ArrayList<ShareGroupCollectionItem> a;
-  public boolean a;
-  public int b;
+  vhn(vhl paramvhl) {}
   
-  public vhn(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
+  public void onClick(View paramView)
   {
-    super(paramRspShareVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
-    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
-    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
-      while (paramRspShareVideoCollectionList.hasNext())
-      {
-        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
-        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
-        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
-      }
-      bool = false;
-    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhn
  * JD-Core Version:    0.7.0.1
  */

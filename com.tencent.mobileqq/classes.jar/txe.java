@@ -1,24 +1,24 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalDynamicFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import org.jetbrains.annotations.NotNull;
 
-public class txe
-  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ImageActionItem;", "Lcom/tencent/biz/pubaccount/util/ActionItem;", "name", "", "action", "", "webHandle", "", "url", "(Ljava/lang/String;IZLjava/lang/String;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class txe
+  extends twm
 {
-  public txe(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  @JvmField
+  @NotNull
+  public String b;
   
-  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
+  public txe(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
   {
-    QLog.d(QCirclePersonalDynamicFragment.a(), 4, "initViewData:getFeedListRequestRsp");
-    QCirclePersonalDynamicFragment.a(this.a, paramubz);
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txe
  * JD-Core Version:    0.7.0.1
  */

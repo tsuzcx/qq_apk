@@ -1,26 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class avmg
-  implements Handler.Callback
+final class avmg
+  implements EIPCResultCallback
 {
-  avmg(avmf paramavmf) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
     }
-    for (;;)
-    {
-      return true;
-      avmf.a(this.a);
-    }
+    if (paramEIPCResult.code != 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.app.b.a;
 import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.h;
 import com.tencent.mobileqq.microapp.appbrand.j;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 
 final class e
@@ -26,7 +26,7 @@ final class e
       do
       {
         return;
-        p.a().a(this.b.a);
+        h.a().a(this.b.a);
       } while (this.a.b == null);
       this.b.a.a.a(this.a.b, this.a.b.f.launchParam.entryPath);
       return;
@@ -44,7 +44,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.e
  * JD-Core Version:    0.7.0.1
  */

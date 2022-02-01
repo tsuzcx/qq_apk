@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
-public final class qoz
-  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
+class qoz
+  extends qnn
 {
-  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
-  }
+  qoz(qoy paramqoy) {}
   
-  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
+    qoy.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoz
  * JD-Core Version:    0.7.0.1
  */

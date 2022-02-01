@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$29
@@ -23,7 +23,7 @@ class DesktopDataManager$29
       return;
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    if (DesktopDataManager.access$3400(this.this$0, (awgf)localObject, this.val$entity))
+    if (DesktopDataManager.access$3300(this.this$0, (EntityManager)localObject, this.val$entity))
     {
       QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
       return;
@@ -33,7 +33,7 @@ class DesktopDataManager$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.29
  * JD-Core Version:    0.7.0.1
  */

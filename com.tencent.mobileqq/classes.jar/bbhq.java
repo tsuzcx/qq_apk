@@ -1,26 +1,20 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbhq
-  implements bhuk
+  implements View.OnClickListener
 {
-  public bbhq(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bhuf parambhuf) {}
+  public bbhq(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Aipw.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
-      }
-    }
+    this.a.a.setText("");
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

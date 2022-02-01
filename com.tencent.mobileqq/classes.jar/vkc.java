@@ -1,22 +1,18 @@
-import android.graphics.Bitmap;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
 class vkc
-  extends vja
+  implements zzq
 {
-  vkc(vji paramvji, boolean paramBoolean1, boolean paramBoolean2, vkr paramvkr)
-  {
-    super(paramBoolean1, paramBoolean2);
-  }
+  vkc(vkb paramvkb) {}
   
-  public boolean b()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Vkr.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
-    return true;
+    vkb.a(this.a, ((Boolean)paramArrayOfObject[0]).booleanValue(), ((Long)paramArrayOfObject[1]).longValue(), (String)paramArrayOfObject[2], (FeedCloudRead.StGetFeedListRsp)paramArrayOfObject[3], false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vkc
  * JD-Core Version:    0.7.0.1
  */

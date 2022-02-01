@@ -1,26 +1,21 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import java.util.Comparator;
 
-public class twq
-  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
+final class twq
+  implements Comparator<twv>
 {
-  public twq(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
-  
-  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
+  public int a(twv paramtwv1, twv paramtwv2)
   {
-    if (paramubz != null) {
-      QLog.d(QCircleBaseTabFragment.b, 4, "initViewData:getFeedListRequestRsp_" + this.a.b() + ",state:" + paramubz.a());
+    int j = paramtwv1.a - paramtwv2.a;
+    int i = j;
+    if (j == 0) {
+      i = paramtwv1.b - paramtwv2.b;
     }
-    this.a.a(paramubz);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     twq
  * JD-Core Version:    0.7.0.1
  */

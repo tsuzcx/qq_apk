@@ -1,31 +1,20 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class akoi
-  extends BroadcastReceiver
+public class akoi
+  extends anmu
 {
-  akoi(aknx paramaknx) {}
+  public akoi(TransactionActivity paramTransactionActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (paramIntent == null) {
-      QLog.e("ApolloManager", 1, "[onReceive] intent null");
-    }
-    do
-    {
+    if ((!paramBoolean) || (paramString == null)) {
       return;
-      paramContext = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
-      }
-    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
-    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
-    ((bdug)this.a.a.a(71)).a(null, paramContext, -1003, 0);
+    }
+    TransactionActivity.c(this.a, bglf.c(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = akww.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), afur.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
+    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 

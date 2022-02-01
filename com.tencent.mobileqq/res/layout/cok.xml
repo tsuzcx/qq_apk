@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="horizontal" android:id="@id/na_" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/na7" android:layout_width="45.0dip" android:layout_height="65.0dip" android:layout_centerInParent="true">
+            <com.tencent.mobileqq.widget.AnimationView android:layout_gravity="center" android:id="@id/na8" android:background="@color/ajr" android:layout_width="45.0dip" android:layout_height="45.0dip" android:scaleType="centerCrop" />
+            <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/na9" android:background="@color/ajr" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:scaleType="centerCrop" />
+        </FrameLayout>
+    </RelativeLayout>
+    <FrameLayout android:layout_gravity="bottom|center" android:id="@id/na5" android:background="@drawable/eee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:id="@id/na6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.5dip" android:text="1" android:includeFontPadding="false" />
+            <ImageView android:id="@id/n_k" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/gju" />
+        </LinearLayout>
+    </FrameLayout>
+</merge>

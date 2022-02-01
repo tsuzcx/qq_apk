@@ -883,7 +883,7 @@ public class b
   
   public static boolean j(Context paramContext)
   {
-    return (l(paramContext) | v() | w() | u()) > 0;
+    return (l(paramContext) | w() | x() | v()) > 0;
   }
   
   /* Error */
@@ -1267,7 +1267,7 @@ public class b
   
   public static long l()
   {
-    if (!t()) {
+    if (!u()) {
       return 0L;
     }
     try
@@ -1289,7 +1289,7 @@ public class b
   
   public static long m()
   {
-    if (!t()) {
+    if (!u()) {
       return 0L;
     }
     try
@@ -2076,7 +2076,18 @@ public class b
     //   68	74	170	java/lang/Throwable
   }
   
-  private static boolean t()
+  public static boolean t()
+  {
+    float f1 = (float)(Runtime.getRuntime().maxMemory() / 1048576.0D);
+    float f2 = (float)(Runtime.getRuntime().totalMemory() / 1048576.0D);
+    float f3 = f1 - f2;
+    x.c("maxMemory : %f", new Object[] { Float.valueOf(f1) });
+    x.c("totalMemory : %f", new Object[] { Float.valueOf(f2) });
+    x.c("freeMemory : %f", new Object[] { Float.valueOf(f3) });
+    return f3 < 10.0F;
+  }
+  
+  private static boolean u()
   {
     try
     {
@@ -2094,7 +2105,7 @@ public class b
     return false;
   }
   
-  private static int u()
+  private static int v()
   {
     try
     {
@@ -2112,7 +2123,7 @@ public class b
     return 0;
   }
   
-  private static int v()
+  private static int w()
   {
     int m = 0;
     try
@@ -2173,7 +2184,7 @@ public class b
   }
   
   /* Error */
-  private static int w()
+  private static int x()
   {
     // Byte code:
     //   0: iconst_0
@@ -2184,28 +2195,28 @@ public class b
     //   7: istore 6
     //   9: iconst_0
     //   10: istore_0
-    //   11: new 730	java/util/HashSet
+    //   11: new 757	java/util/HashSet
     //   14: dup
-    //   15: invokespecial 731	java/util/HashSet:<init>	()V
+    //   15: invokespecial 758	java/util/HashSet:<init>	()V
     //   18: astore 10
     //   20: new 445	java/io/BufferedReader
     //   23: dup
-    //   24: new 733	java/io/InputStreamReader
+    //   24: new 760	java/io/InputStreamReader
     //   27: dup
-    //   28: new 735	java/io/FileInputStream
+    //   28: new 762	java/io/FileInputStream
     //   31: dup
     //   32: new 253	java/lang/StringBuilder
     //   35: dup
-    //   36: ldc_w 737
+    //   36: ldc_w 764
     //   39: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   42: invokestatic 742	android/os/Process:myPid	()I
+    //   42: invokestatic 769	android/os/Process:myPid	()I
     //   45: invokevirtual 323	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   48: ldc_w 744
+    //   48: ldc_w 771
     //   51: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokespecial 745	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   60: ldc_w 747
-    //   63: invokespecial 750	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   57: invokespecial 772	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   60: ldc_w 774
+    //   63: invokespecial 777	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   66: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   69: astore 8
     //   71: iload_0
@@ -2230,8 +2241,8 @@ public class b
     //   104: iload 6
     //   106: istore_3
     //   107: aload 11
-    //   109: ldc_w 752
-    //   112: invokevirtual 755	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   109: ldc_w 779
+    //   112: invokevirtual 782	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   115: ifne +26 -> 141
     //   118: iload_0
     //   119: istore_1
@@ -2242,8 +2253,8 @@ public class b
     //   127: iload 6
     //   129: istore_3
     //   130: aload 11
-    //   132: ldc_w 757
-    //   135: invokevirtual 755	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   132: ldc_w 784
+    //   135: invokevirtual 782	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   138: ifeq -67 -> 71
     //   141: iload_0
     //   142: istore_1
@@ -2257,18 +2268,18 @@ public class b
     //   155: aload 11
     //   157: aload 11
     //   159: ldc_w 647
-    //   162: invokevirtual 761	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   162: invokevirtual 788	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   165: iconst_1
     //   166: iadd
     //   167: invokevirtual 465	java/lang/String:substring	(I)Ljava/lang/String;
-    //   170: invokevirtual 762	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   170: invokevirtual 789	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   173: pop
     //   174: goto -103 -> 71
     //   177: astore 9
     //   179: iload_1
     //   180: istore_0
     //   181: aload 9
-    //   183: invokevirtual 763	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   183: invokevirtual 790	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   186: iload_0
     //   187: istore_1
     //   188: aload 8
@@ -2288,7 +2299,7 @@ public class b
     //   211: iload 6
     //   213: istore_3
     //   214: aload 10
-    //   216: invokevirtual 767	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   216: invokevirtual 794	java/util/HashSet:iterator	()Ljava/util/Iterator;
     //   219: astore 10
     //   221: iload 4
     //   223: istore_0
@@ -2301,7 +2312,7 @@ public class b
     //   232: iload_0
     //   233: istore_3
     //   234: aload 10
-    //   236: invokeinterface 772 1 0
+    //   236: invokeinterface 799 1 0
     //   241: ifeq +89 -> 330
     //   244: iload_0
     //   245: istore_1
@@ -2312,7 +2323,7 @@ public class b
     //   252: iload_0
     //   253: istore_3
     //   254: aload 10
-    //   256: invokeinterface 776 1 0
+    //   256: invokeinterface 803 1 0
     //   261: astore 11
     //   263: iload_0
     //   264: istore_1
@@ -2325,7 +2336,7 @@ public class b
     //   273: aload 11
     //   275: checkcast 15	java/lang/String
     //   278: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   281: ldc_w 778
+    //   281: ldc_w 805
     //   284: invokevirtual 622	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   287: istore 7
     //   289: iload 7
@@ -2370,7 +2381,7 @@ public class b
     //   362: aload 8
     //   364: astore 9
     //   366: aload 10
-    //   368: invokevirtual 779	java/io/FileNotFoundException:printStackTrace	()V
+    //   368: invokevirtual 806	java/io/FileNotFoundException:printStackTrace	()V
     //   371: iload_0
     //   372: istore_1
     //   373: aload 8

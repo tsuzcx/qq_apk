@@ -16,6 +16,8 @@ public class LooperMonitor
   extends QAPMMonitorPlugin
 {
   private static final String TAG = "QAPM_looper_LooperMonitor";
+  static ILooperListener looperListener;
+  static LooperPrinter mainThreadLooperPrinter;
   @NonNull
   static HashMap<String, MonitorInfo> monitorMap = new HashMap();
   @NonNull
@@ -38,6 +40,11 @@ public class LooperMonitor
       Logger.INSTANCE.exception("QAPM_looper_LooperMonitor", "getMainPrinter error:", localException);
     }
     return null;
+  }
+  
+  public static void setLooperListener(ILooperListener paramILooperListener)
+  {
+    looperListener = paramILooperListener;
   }
   
   public static boolean setMonitoredThread(@Nullable Thread paramThread, IMonitorCallback paramIMonitorCallback)
@@ -86,13 +93,14 @@ public class LooperMonitor
       ((LooperPrinter)localObject).setOriginalPrinter(localPrinter);
     }
     Looper.getMainLooper().setMessageLogging((Printer)localObject);
+    mainThreadLooperPrinter = (LooperPrinter)localObject;
   }
   
   public void stop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperMonitor
  * JD-Core Version:    0.7.0.1
  */

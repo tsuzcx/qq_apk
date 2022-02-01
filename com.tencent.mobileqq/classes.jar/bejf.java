@@ -1,19 +1,39 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class bejf
-  implements View.OnClickListener
+public class bejf
+  extends ContentObserver
 {
-  bejf(bejc parambejc) {}
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   
-  public void onClick(View paramView)
+  public bejf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
+      return;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
   }
 }
 

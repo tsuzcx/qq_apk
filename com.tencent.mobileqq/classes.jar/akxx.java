@@ -1,17 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-final class akxx
-  implements EIPCResultCallback
+public class akxx
+  implements Animation.AnimationListener
 {
-  akxx(long paramLong) {}
+  public akxx(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    akwd.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
+    }
+    if (AnonymousEntranceView.b(this.a) != null)
+    {
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
+    }
   }
 }
 

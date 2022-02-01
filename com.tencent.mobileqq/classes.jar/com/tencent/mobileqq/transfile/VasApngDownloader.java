@@ -2,9 +2,11 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import baqo;
-import beae;
-import beag;
+import bdsi;
+import bhbq;
+import bhbt;
+import bhhf;
+import bhhh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -18,7 +20,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends baqo
+  extends bdsi
 {
   public VasApngDownloader()
   {
@@ -86,9 +88,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new beae(paramOutputStream, localFile);
+      paramDownloadParams = new bhhf(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = beag.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bhhh.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {
@@ -108,31 +110,46 @@ public class VasApngDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Object localObject2 = null;
     Object localObject1 = null;
-    if (ApngDrawable.isApngFile(paramFile))
+    if ((paramDownloadParams.mExtraInfo instanceof Bundle))
     {
-      paramURLDrawableHandler = localObject2;
-      if (paramFile.exists())
+      Object localObject2 = (Bundle)paramDownloadParams.mExtraInfo;
+      if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
       {
-        paramURLDrawableHandler = localObject2;
-        if (paramDownloadParams != null)
-        {
-          paramURLDrawableHandler = localObject2;
-          if (paramDownloadParams.useApngImage)
-          {
-            paramURLDrawableHandler = localObject1;
-            if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
-              paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
-            }
-            paramURLDrawableHandler = new VasApngDownloader.VasApngImage(paramFile, true, paramURLDrawableHandler);
-            if (paramURLDrawableHandler.firstFrame == null) {
-              ChatBackgroundManager.a(paramFile.getAbsolutePath());
-            }
-          }
+        boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
+        bhbt.a().a(null);
+        localObject2 = bhbt.a().a(paramFile, bool);
+        if (localObject2 != null) {
+          paramURLDrawableHandler = (URLDrawableHandler)localObject2;
         }
       }
-      return paramURLDrawableHandler;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return paramURLDrawableHandler;
+          if (!ApngDrawable.isApngFile(paramFile)) {
+            break;
+          }
+          paramURLDrawableHandler = localObject1;
+        } while (!paramFile.exists());
+        paramURLDrawableHandler = localObject1;
+      } while (paramDownloadParams == null);
+      paramURLDrawableHandler = localObject1;
+    } while (!paramDownloadParams.useApngImage);
+    if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {}
+    for (paramDownloadParams = (Bundle)paramDownloadParams.mExtraInfo;; paramDownloadParams = null)
+    {
+      paramDownloadParams = new VasApngDownloader.VasApngImage(paramFile, true, paramDownloadParams);
+      paramURLDrawableHandler = paramDownloadParams;
+      if (paramDownloadParams.firstFrame != null) {
+        break;
+      }
+      ChatBackgroundManager.a(paramFile.getAbsolutePath());
+      return paramDownloadParams;
     }
     if (paramFile == null)
     {
@@ -144,7 +161,7 @@ public class VasApngDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasApngDownloader
  * JD-Core Version:    0.7.0.1
  */

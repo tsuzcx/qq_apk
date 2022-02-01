@@ -11,10 +11,10 @@ import com.tencent.mobileqq.R.styleable;
 public class ResizeURLImageView
   extends ZImageView
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private boolean jdField_a_of_type_Boolean;
-  private float b = 1.0F;
+  private boolean mBlockLayout;
+  private Context mContext;
+  private float mHeightWeight = 1.0F;
+  private float mWidthWeight = 1.0F;
   
   public ResizeURLImageView(Context paramContext)
   {
@@ -29,15 +29,15 @@ public class ResizeURLImageView
   public ResizeURLImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramAttributeSet);
+    this.mContext = paramContext;
+    getResizeScale(paramAttributeSet);
   }
   
-  private void a(AttributeSet paramAttributeSet)
+  private void getResizeScale(AttributeSet paramAttributeSet)
   {
-    paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ResizeURLImageView);
-    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 1.0F);
-    this.b = paramAttributeSet.getFloat(0, 1.0F);
+    paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ResizeURLImageView);
+    this.mWidthWeight = paramAttributeSet.getFloat(1, 1.0F);
+    this.mHeightWeight = paramAttributeSet.getFloat(0, 1.0F);
     paramAttributeSet.recycle();
   }
   
@@ -46,33 +46,33 @@ public class ResizeURLImageView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    if ((this.jdField_a_of_type_Float == 1.0F) && (this.b != 1.0F)) {
-      setMeasuredDimension(paramInt1, (int)(paramInt1 * this.b));
+    if ((this.mWidthWeight == 1.0F) && (this.mHeightWeight != 1.0F)) {
+      setMeasuredDimension(paramInt1, (int)(paramInt1 * this.mHeightWeight));
     }
-    while ((this.jdField_a_of_type_Float == 1.0F) || (this.b != 1.0F)) {
+    while ((this.mWidthWeight == 1.0F) || (this.mHeightWeight != 1.0F)) {
       return;
     }
-    setMeasuredDimension((int)(paramInt2 * this.jdField_a_of_type_Float), paramInt2);
+    setMeasuredDimension((int)(paramInt2 * this.mWidthWeight), paramInt2);
   }
   
   public void requestLayout()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.mBlockLayout) {
       super.requestLayout();
     }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.mBlockLayout = true;
     super.setImageDrawable(null);
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Boolean = false;
+    this.mBlockLayout = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView
  * JD-Core Version:    0.7.0.1
  */

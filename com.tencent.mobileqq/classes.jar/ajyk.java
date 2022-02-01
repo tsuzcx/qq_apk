@@ -1,67 +1,18 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.TMG.utils.QLog;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class ajyk
+class ajyk
+  implements View.OnTouchListener
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.argb(64, 125, 113, 30);
-  private static final int d = Color.rgb(162, 116, 4);
-  private static final int e = Color.argb(64, 213, 185, 118);
-  public int a = 0;
+  ajyk(ajye paramajye) {}
   
-  private ajyb a(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == null) {}
-    do
-    {
-      return null;
-      if ((paramView.getParent() instanceof ajyb)) {
-        return (ajyb)paramView.getParent();
-      }
-    } while (!(paramView instanceof ajyb));
-    return (ajyb)paramView;
-  }
-  
-  void a(View paramView, ajxt paramajxt)
-  {
-    ajyb localajyb = a(paramView);
-    if (localajyb == null) {}
-    ajyd localajyd;
-    do
-    {
-      return;
-      localajyd = localajyb.delegate();
-    } while ((localajyd == null) || (!localajyd.b()) || (localajyb.hasSelected()));
-    if (this.a == 2)
-    {
-      localajyd.c(d);
-      localajyd.b(e);
-    }
-    for (;;)
-    {
-      localajyd.a(paramajxt);
-      localajyb.doSelecting(null);
-      return;
-      if (this.a == 1)
-      {
-        localajyd.c(b);
-        localajyd.b(c);
-      }
-      else
-      {
-        paramView = paramView.getResources();
-        int i = paramView.getColorStateList(2131166880).getDefaultColor();
-        int j = paramView.getColorStateList(2131166882).getDefaultColor();
-        localajyd.c(i);
-        localajyd.b(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
-        }
-      }
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

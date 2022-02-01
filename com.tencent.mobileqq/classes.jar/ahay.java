@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahay
-  implements DialogInterface.OnClickListener
+class ahay
+  extends ahbl
 {
-  public ahay(VideoStatusTipsBar paramVideoStatusTipsBar) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ahay(agwz paramagwz)
   {
-    mtq.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahce(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

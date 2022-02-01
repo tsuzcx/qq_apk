@@ -1,21 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class alde
-  implements EIPCResultCallback
+final class alde
+  implements Animation.AnimationListener
 {
-  public alde(ApolloGameActivity paramApolloGameActivity) {}
+  alde(View paramView, Animation paramAnimation) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    boolean bool1 = paramEIPCResult.getBoolean("isOpen");
-    boolean bool2 = paramEIPCResult.getBoolean("display", false);
-    this.a.a(bool2, bool1, ApolloGameActivity.a(this.a).mTempAIOUin);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

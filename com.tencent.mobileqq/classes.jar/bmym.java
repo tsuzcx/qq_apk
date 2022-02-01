@@ -1,39 +1,24 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
 
-public abstract class bmym<T extends bmyl>
+public class bmym
+  implements View.OnTouchListener
 {
-  protected int a;
-  public final View a;
-  public T a;
+  public bmym(WeiyunSaveTipsFactory.1 param1) {}
   
-  protected bmym(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
+    if (paramMotionEvent.getAction() == 0)
+    {
+      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
+      bmyl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+      return true;
     }
-  }
-  
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bmyl = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Bmyl = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bmyl != null) && (this.jdField_a_of_type_Bmyl.a());
+    return false;
   }
 }
 

@@ -1,22 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afqk
-  extends afuf
+public class afqk
+  implements View.OnClickListener
 {
-  afqk(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afqk(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afkd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afqk
  * JD-Core Version:    0.7.0.1
  */

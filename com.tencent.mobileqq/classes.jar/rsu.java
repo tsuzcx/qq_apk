@@ -1,21 +1,29 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class rsu
-  extends pdi
+  implements URLDrawable.URLDrawableListener
 {
-  rsu(rss paramrss, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  rsu(rsn paramrsn) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramString);
+    rsn.b(this.a);
   }
   
-  public void a(pdc parampdc)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    paramURLDrawable = bgmo.b(paramURLDrawable.getCurrDrawable());
+    rsn.a(this.a, paramURLDrawable, rsn.a(this.a).e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsu
  * JD-Core Version:    0.7.0.1
  */

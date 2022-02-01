@@ -1,153 +1,192 @@
+import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.Vas.ColorFont.FreeTypeLib;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import java.util.Arrays;
+import java.util.List;
 
 public class g
+  extends q
 {
-  private static g jdField_a_of_type_G;
-  static boolean jdField_a_of_type_Boolean = false;
-  private FreeTypeLib jdField_a_of_type_ComVasColorFontFreeTypeLib = new FreeTypeLib();
-  private h jdField_a_of_type_H = new h(this, 8);
-  public AtomicBoolean a;
-  public AtomicBoolean b = new AtomicBoolean(false);
-  public AtomicBoolean c = new AtomicBoolean(false);
+  private final String a;
+  private Paint c;
+  private int[] h;
   
-  private g()
+  public g(ETTextView paramETTextView, ETFont paramETFont)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    super(paramETTextView, paramETFont);
+    this.jdField_a_of_type_JavaLangString = getClass().getName();
   }
   
-  public static g a()
+  private void k()
   {
-    if (jdField_a_of_type_G == null) {}
-    try
+    int i;
+    label66:
+    w localw;
+    if (this.jdField_c_of_type_AndroidGraphicsCanvas == null)
     {
-      if (jdField_a_of_type_G == null) {
-        jdField_a_of_type_G = new g();
-      }
-      return jdField_a_of_type_G;
-    }
-    finally {}
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.releaseColorFont(paramInt);
-  }
-  
-  public int a(int paramInt1, int paramInt2, int[] paramArrayOfInt)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getFontColor(paramInt1, paramInt2, paramArrayOfInt);
-  }
-  
-  public int a(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getExtraBitmap(paramInt, paramBitmap1, paramBitmap2, 0);
-  }
-  
-  public int a(int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt2)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getExtraBitmap(paramInt1, paramBitmap1, paramBitmap2, paramInt2);
-  }
-  
-  public int a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty((String)this.jdField_a_of_type_H.get(Integer.valueOf(paramInt))))
-    {
-      this.jdField_a_of_type_H.put(Integer.valueOf(paramInt), paramString);
-      int[] arrayOfInt = new int[5];
-      long l1 = System.currentTimeMillis();
-      int i = this.jdField_a_of_type_ComVasColorFontFreeTypeLib.initColorFont(paramInt, paramString, arrayOfInt);
-      long l2 = System.currentTimeMillis();
-      i.a("FastColorFontHelper", "initColorFont cost:" + (l2 - l1) + " fontId=" + paramInt + "  fontWidth:" + arrayOfInt[1] + "  fontHeight:" + arrayOfInt[2] + "  lineSpace:" + arrayOfInt[0] + "  path=" + paramString);
-      if (i / 100 >= 2)
+      this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (this.jdField_c_of_type_AndroidGraphicsPaint == null)
       {
-        f.b(paramInt, i / 100);
-        f.c(paramInt, i % 100);
-        f.a(paramInt, arrayOfInt[0]);
-        f.e(paramInt, arrayOfInt[1]);
-        f.d(paramInt, arrayOfInt[2]);
-        f.f(paramInt, arrayOfInt[3]);
-        f.g(paramInt, arrayOfInt[4]);
+        this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_c_of_type_AndroidGraphicsPaint.setColor(-16777216);
       }
-      if ((paramInt >= 8388608) || (paramInt <= -8388608)) {
-        i.b("FastColorFontHelper", "为了缓存不出现问题，字体id最好限制在3个字节以内！");
+      this.jdField_h_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilList.size()];
+      i = 0;
+      if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
+        return;
       }
-      return i;
+      localw = (w)this.jdField_b_of_type_JavaUtilList.get(i);
+      if (localw.jdField_a_of_type_Boolean) {
+        break label130;
+      }
+      this.jdField_h_of_type_ArrayOfInt[i] = 0;
     }
-    i.a("FastColorFontHelper", "该字体已经初始化  fontId=" + paramInt + "  path=" + paramString);
-    return 0;
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, long paramLong, int paramInt2, Bitmap paramBitmap, int[] paramArrayOfInt2)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.drawSpecialEffectsText(paramInt1, paramArrayOfInt1, paramLong, paramInt2, paramBitmap, paramArrayOfInt2);
-  }
-  
-  public int a(int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getHiBoomViewSize(paramInt, paramArrayOfInt1, paramArrayOfInt2);
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.drawText(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramBitmap, paramInt2, paramInt3, paramInt4, 0, null, 0);
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt6, int paramInt5)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.drawText(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramBitmap, paramInt2, paramInt3, 0, paramInt4, paramArrayOfInt6, paramInt5);
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, int[] paramArrayOfInt6)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.drawAnimationText(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramBitmap1, paramBitmap2, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramArrayOfInt6, 0);
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, int[] paramArrayOfInt6, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, Bitmap paramBitmap, int[] paramArrayOfInt7, int paramInt6)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.renderExpressionBitmap(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramArrayOfInt6, paramInt2, paramInt3, paramInt4, paramLong, paramInt5, paramBitmap, paramArrayOfInt7, paramInt6);
-  }
-  
-  public int a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, int[] paramArrayOfInt6, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, int[] paramArrayOfInt7, int paramInt8)
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.drawStrikingText(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramArrayOfInt6, paramBitmap1, paramBitmap2, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramArrayOfInt7, paramInt8);
-  }
-  
-  public FreeTypeLib a()
-  {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_H.evictAll();
-    if (this.c.get())
+    for (;;)
     {
-      this.jdField_a_of_type_ComVasColorFontFreeTypeLib.clearCache();
-      i.a("FastColorFontHelper", "clearCache");
+      i += 1;
+      break label66;
+      this.jdField_c_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      break;
+      label130:
+      this.jdField_h_of_type_ArrayOfInt[i] = 1;
+      this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(localw.jdField_c_of_type_Int);
+      float f1 = localw.jdField_c_of_type_Int / 2.0F;
+      float f2 = (this.jdField_c_of_type_AndroidGraphicsPaint.descent() + this.jdField_c_of_type_AndroidGraphicsPaint.ascent()) / 2.0F;
+      this.jdField_c_of_type_AndroidGraphicsCanvas.drawText(String.valueOf(localw.jdField_a_of_type_Char), localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int + (f1 - f2), this.jdField_c_of_type_AndroidGraphicsPaint);
     }
   }
   
-  public void a(int paramInt1, int[] paramArrayOfInt1, int paramInt2, int[] paramArrayOfInt2)
+  public boolean a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getTextWidths(paramInt1, paramArrayOfInt1, paramInt2, paramArrayOfInt2);
+    if (b())
+    {
+      n.b(this.jdField_a_of_type_JavaLangString, "DynamicMultipleStyleLayout::onDraw view宽高为0或超过屏幕尺寸......");
+      return false;
+    }
+    if (!a())
+    {
+      n.b(this.jdField_a_of_type_JavaLangString, "DynamicMultipleStyleLayout::onDraw 创建bitmap失败！");
+      return false;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      n.b(this.jdField_a_of_type_JavaLangString, "DynamicMultipleStyleLayout::onDraw 行数为零！");
+      return false;
+    }
+    if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
+    {
+      n.b(this.jdField_a_of_type_JavaLangString, "DynamicMultipleStyleLayout::onDraw 字数为零！");
+      return false;
+    }
+    long l1 = System.nanoTime();
+    c();
+    b(paramCanvas);
+    k();
+    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation) && (!this.jdField_b_of_type_Boolean) && (this.jdField_h_of_type_Int > 0) && (this.jdField_h_of_type_Int < 6))
+    {
+      l.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.f - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.m_comboIndex);
+      b_();
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
+      if (this.jdField_e_of_type_Int == 0) {
+        b();
+      }
+    }
+    for (;;)
+    {
+      if (l.jdField_a_of_type_Boolean)
+      {
+        long l2 = System.nanoTime();
+        n.b(this.jdField_a_of_type_JavaLangString, "动画帧耗时 frameIndex:" + this.jdField_e_of_type_Int + "  行：" + this.jdField_h_of_type_Int + "  列：" + this.jdField_i_of_type_Int + "  耗时：" + (float)(l2 - l1) / 1000000.0F + "ms");
+        if (this.jdField_e_of_type_Int == 0) {
+          a("drawAnimationText.....");
+        }
+      }
+      return true;
+      this.jdField_e_of_type_Int = 0;
+      l.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.f - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, 0, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.m_comboIndex);
+      j();
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
+    }
   }
   
-  public int[] a(int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, long paramLong, int[] paramArrayOfInt4)
+  public void b()
   {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.getBitmapWH(paramInt, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramLong, paramArrayOfInt4);
+    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (b())) {}
+    do
+    {
+      return;
+      if ((this.jdField_h_of_type_Int <= 0) || (this.jdField_h_of_type_Int > 5) || (this.jdField_b_of_type_Boolean))
+      {
+        n.b(this.jdField_a_of_type_JavaLangString, "0行或超过5行或全EMOJI不支持播放动画..." + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+        return;
+      }
+    } while ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()));
+    if (l.jdField_a_of_type_Boolean) {
+      n.a(this.jdField_a_of_type_JavaLangString, "StartAnimation......animInfo:" + Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
+    }
+    if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
+    {
+      h();
+      return;
+    }
+    this.jdField_e_of_type_Int = 0;
+    l.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.f - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.m_comboIndex);
+    if ((this.jdField_i_of_type_ArrayOfInt[0] <= 0) || (this.jdField_i_of_type_ArrayOfInt[1] <= 0))
+    {
+      n.b(this.jdField_a_of_type_JavaLangString, "StartAnimation......动画帧数和帧间隔数据异常 animInfo:" + Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
+      return;
+    }
+    h();
   }
   
-  public int[] a(int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5, int[] paramArrayOfInt6, int[] paramArrayOfInt7, int[] paramArrayOfInt8, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  protected void b_()
   {
-    return this.jdField_a_of_type_ComVasColorFontFreeTypeLib.calculateExpressionSize(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4, paramArrayOfInt5, paramArrayOfInt6, paramArrayOfInt7, paramArrayOfInt8, paramInt2, paramInt3, paramInt4, paramLong);
+    int j = (int)(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() / 15.0F);
+    int i;
+    label47:
+    w localw;
+    if (this.jdField_b_of_type_AndroidGraphicsCanvas == null)
+    {
+      this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      int k = this.jdField_b_of_type_JavaUtilList.size();
+      i = 0;
+      if (i >= k) {
+        return;
+      }
+      localw = (w)this.jdField_b_of_type_JavaUtilList.get(i);
+      switch (localw.jdField_a_of_type_Int)
+      {
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label47;
+      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      break;
+      Object localObject = a(localw.jdField_b_of_type_Int, j);
+      this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int - j, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+      continue;
+      this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_d_of_type_Int + localw.jdField_b_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bdoa))
+      {
+        ((bdoa)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+      }
+      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbaw))
+      {
+        localObject = (bbaw)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bbaw)localObject).jdField_a_of_type_Boolean = false;
+        ((bbaw)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     g
  * JD-Core Version:    0.7.0.1
  */

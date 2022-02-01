@@ -1,66 +1,86 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import java.util.concurrent.Executor;
 
-public class atju
-  implements IMiniMsgUnreadCallback
+public abstract class atju
+  implements atji, IExcitingTransferRecvListener
 {
-  public atju(UiApiPlugin paramUiApiPlugin) {}
+  protected long a;
+  protected atjj a;
+  public atut a;
+  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void destroy() {}
+  public atju(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Atjj = a(paramQQAppInterface);
+  }
   
-  public void hide() {}
+  public int a()
+  {
+    return 1;
+  }
   
-  public void hideUnread()
+  protected abstract atjj a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
+  
+  public boolean a()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
+    finally {}
   }
   
-  public boolean show(int paramInt)
-  {
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  public void aE_()
   {
     try
     {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
+      this.jdField_a_of_type_Boolean = false;
+      atvy.a().execute(new BaseDownloader.1(this));
       return;
     }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
+    finally {}
   }
   
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  public void b()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
       return;
     }
-    catch (Exception localException) {}
+    finally {}
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_Atjj.a();
+  }
+  
+  public void d()
+  {
+    b();
+    this.jdField_a_of_type_Atjj.b();
+  }
+  
+  public void e()
+  {
+    b();
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, atjl.a().a(), this);
   }
 }
 

@@ -1,66 +1,26 @@
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.JSONConverter;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import QC.GetItemWatchWordReq;
+import QC.GetItemWatchWordRsp;
+import QC.UniBusinessItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import eipc.EIPCModule;
+import eipc.EIPCResultCallback;
 
 public class bhda
-  extends bhdw
+  implements bhcx
 {
-  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
-  
-  public bhda(int paramInt)
+  public void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    this.a.uiPageType.set(paramInt);
-  }
-  
-  protected String a()
-  {
-    return "store_app_client";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
-    try
-    {
-      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFirstPageByTypeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("data", JSONConverter.convert2JSONArray(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
-        paramArrayOfByte.put("dataType", "string");
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFirstPageByType";
+    paramEIPCResultCallback = new bhhm("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.watchword", "stReq", "stRsp");
+    UniBusinessItem localUniBusinessItem = new UniBusinessItem();
+    localUniBusinessItem.appid = Integer.parseInt(paramString1);
+    localUniBusinessItem.itemid = Integer.parseInt(paramString2);
+    paramEIPCResultCallback.a("GetItemWatchWord", new GetItemWatchWordReq(anuk.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()), localUniBusinessItem), new GetItemWatchWordRsp(), new bhdb(this, paramEIPCModule, paramInt), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhda
  * JD-Core Version:    0.7.0.1
  */

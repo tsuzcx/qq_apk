@@ -1,59 +1,38 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.BubblePopupWindow;
+import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import org.json.JSONObject;
 
 public class aqmb
-  implements bevj
 {
-  public aqmb(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public int a;
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public static aqmb a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    if (TextUtils.isEmpty(paramString)) {
+      return new aqmb();
     }
-    if (!this.a.b())
+    aqmb localaqmb = new aqmb();
+    try
     {
-      this.a.jdField_a_of_type_Arcc.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
+      localaqmb.a = new JSONObject(paramString).optInt("enable", 0);
+      return localaqmb;
     }
-    do
+    catch (Throwable paramString)
     {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131376551);
-      paramView = (FileInfo)this.a.jdField_a_of_type_Arcc.getItem(paramInt);
-      this.a.jdField_a_of_type_Arcc.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131365060);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+      paramString.printStackTrace();
+    }
+    return localaqmb;
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  @NonNull
+  public String toString()
   {
-    paramSlideDetectListView = paramView.findViewById(2131376551);
-    this.a.jdField_a_of_type_Arcc.a(null);
-    if (paramSlideDetectListView != null)
-    {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365060);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
-    }
-    LocalFileBrowserActivity.a(this.a);
+    return "switch = " + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmb
  * JD-Core Version:    0.7.0.1
  */

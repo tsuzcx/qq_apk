@@ -1,7 +1,7 @@
 package com.idlefish.flutterboost.containers;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterView.RenderMode;
 import io.flutter.embedding.android.FlutterView.TransparencyMode;
 import io.flutter.embedding.engine.FlutterShellArgs;
@@ -122,7 +122,7 @@ public class FlutterFragment$NewEngineFragmentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterFragment.NewEngineFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

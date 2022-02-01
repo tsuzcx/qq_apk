@@ -1,57 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashSet;
 
 class bkhu
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  bkhu(bkht parambkht, bkhk parambkhk) {}
+  bkhu(bkho parambkho) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bkhk != null)
+    int i = paramView.getId();
+    Object localObject;
+    if ((bkho.a(this.a)) && ((bkho.a(this.a) == null) || (!bkho.a(this.a).contains(Integer.valueOf(i)))) && (bkho.b(this.a) != -1) && (i != bkho.b(this.a)))
     {
-      this.jdField_a_of_type_Bkhk.dismiss();
-      if ((this.jdField_a_of_type_Bkhk.a != null) && (paramInt < this.jdField_a_of_type_Bkhk.a.size()))
-      {
-        paramAdapterView = (bkhq)this.jdField_a_of_type_Bkhk.a.get(paramInt);
-        if (paramAdapterView.a != 1) {
-          break label130;
-        }
-        if ((!TextUtils.isEmpty(paramAdapterView.c)) && (bkhs.a(this.jdField_a_of_type_Bkht.a) != null))
-        {
-          paramView = new Intent(bkhs.a(this.jdField_a_of_type_Bkht.a), QQBrowserActivity.class);
-          paramView.putExtra("url", paramAdapterView.c);
-          bkhs.a(this.jdField_a_of_type_Bkht.a).startActivity(paramView);
-        }
+      localObject = (View)bkho.a(this.a).get(bkho.b(this.a));
+      ((View)localObject).findViewById(2131361971).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131361970);
+      bkho.a(this.a, (TextView)localObject, false);
+      localObject = (View)bkho.a(this.a).get(i);
+      ((View)localObject).findViewById(2131361971).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131361970);
+      bkho.a(this.a, (TextView)localObject, true);
+      bkho.a(this.a, i);
+    }
+    if (bkho.a(this.a) != null) {
+      bkho.a(this.a).OnClick(paramView, i);
+    }
+    if (bkho.a(this.a) != null)
+    {
+      localObject = (TextView)paramView.findViewById(2131361970);
+      if ((localObject != null) && ((localObject instanceof TextView))) {
+        bkho.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
       }
     }
-    label130:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramAdapterView.a != 2);
-      if (bkhs.a(this.jdField_a_of_type_Bkht.a) != null)
-      {
-        if (!TextUtils.isEmpty(bkhs.a(this.jdField_a_of_type_Bkht.a).f))
-        {
-          paramAdapterView = bkhs.a(this.jdField_a_of_type_Bkht.a).f.replace("__ACT_TYPE__", "2001");
-          this.jdField_a_of_type_Bkht.a.a(paramAdapterView);
-        }
-        if (bkhs.a(this.jdField_a_of_type_Bkht.a) != null) {
-          this.jdField_a_of_type_Bkht.a.a(3, bkhs.a(this.jdField_a_of_type_Bkht.a).a, bkhs.a(this.jdField_a_of_type_Bkht.a) + 1);
-        }
-      }
-    } while (this.jdField_a_of_type_Bkht.a.a == null);
-    this.jdField_a_of_type_Bkht.a.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

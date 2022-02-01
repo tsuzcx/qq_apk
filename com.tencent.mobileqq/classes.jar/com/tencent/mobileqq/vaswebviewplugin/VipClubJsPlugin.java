@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import bdxb;
-import begz;
+import bhbt;
+import bhdx;
+import bhod;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.theme.diy.ThemeBackground;
 import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,6 +22,28 @@ public class VipClubJsPlugin
   public VipClubJsPlugin()
   {
     super("vipclub");
+  }
+  
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="cardSupportVideo")
+  public void cardSupportVideo(String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (bhbt.a()) {}
+      for (String str = "0";; str = "1")
+      {
+        localJSONObject.put("result", str);
+        localJSONObject.put("msg", "不支持视频");
+        super.callJs(paramString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      super.callJsOnError(paramString, localException.getMessage());
+    }
   }
   
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="type", method="paySuccess")
@@ -45,15 +69,37 @@ public class VipClubJsPlugin
     QLog.e("VipClubJsPlugin", 1, "paySuccess wrong type: " + paramObject.getClass());
   }
   
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="themeSupportVideo")
+  public void themeSupportVideo(String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (ThemeBackground.isSupportVideo()) {}
+      for (String str = "0";; str = "1")
+      {
+        localJSONObject.put("result", str);
+        localJSONObject.put("msg", "不支持超级主题");
+        super.callJs(paramString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      super.callJsOnError(paramString, localException.getMessage());
+    }
+  }
+  
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="wallpaperGetChatBg")
   public void wallpaperGetChatBg(String paramString)
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bdxb localbdxb = VipWallpaperService.a(this.mRuntime.a(), true);
+      bhdx localbhdx = VipWallpaperService.a(this.mRuntime.a(), true);
       localJSONObject.put("result", "0");
-      localJSONObject.put("id", localbdxb.a);
+      localJSONObject.put("id", localbhdx.a);
       super.callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
@@ -73,7 +119,7 @@ public class VipClubJsPlugin
         paramString3 = new JSONObject();
         if ("0".equals(paramString2))
         {
-          VipWallpaperService.a(this.mRuntime.a(), new bdxb(), null);
+          VipWallpaperService.a(this.mRuntime.a(), new bhdx(), null);
           paramString3.put("result", "0");
           paramString3.put("msg", "恢复系统壁纸");
           super.callJs(paramString1, new String[] { paramString3.toString() });
@@ -83,7 +129,7 @@ public class VipClubJsPlugin
         if (new File(str).exists())
         {
           AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-          paramString2 = new bdxb(paramString2, str, "");
+          paramString2 = new bhdx(paramString2, str, "");
           VipWallpaperService.a(this.mRuntime.a(), paramString2, localAtomicBoolean);
           paramString3.put("result", "0");
           paramString3.put("msg", "设置成功");
@@ -122,7 +168,7 @@ public class VipClubJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipClubJsPlugin
  * JD-Core Version:    0.7.0.1
  */

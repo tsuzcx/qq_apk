@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aedg
-  implements View.OnClickListener
+class aedg
+  implements DialogInterface.OnClickListener
 {
-  public aedg(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  aedg(aedf paramaedf) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    bgzo.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 

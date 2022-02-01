@@ -1,12 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import android.content.Context;
 
-public abstract interface phb
+final class phb
+  implements tlo
 {
-  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
+  phb(Context paramContext, String paramString) {}
+  
+  public void a()
+  {
+    pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     phb
  * JD-Core Version:    0.7.0.1
  */

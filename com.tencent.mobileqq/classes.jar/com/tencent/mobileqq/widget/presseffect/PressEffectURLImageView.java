@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bexd;
+import bieb;
 import com.tencent.image.URLImageView;
 
 public class PressEffectURLImageView
@@ -26,16 +26,16 @@ public class PressEffectURLImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bexd.a(this);
+      bieb.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bexd.b(this);
+      bieb.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectURLImageView
  * JD-Core Version:    0.7.0.1
  */

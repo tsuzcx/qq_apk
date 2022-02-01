@@ -1,249 +1,579 @@
-import android.content.Context;
-import android.os.Handler;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.profile.ProfileCardManager.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x703.cmd0x703.PhotoInfo;
-import tencent.im.oidb.cmd0x703.cmd0x703.UinPhotoListInfo;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class awqu
 {
-  public static String a;
-  public static Map<Long, Boolean> a;
-  public static Map<Long, Boolean> b;
-  protected Context a;
-  public Handler a;
-  protected AppInterface a;
-  public Vector<Integer> a;
-  Map<Long, Integer> c = new ConcurrentHashMap();
-  Map<String, Boolean> d = new ConcurrentHashMap();
-  private Map<Integer, awqv> e = new ConcurrentHashMap();
+  public static AtomicLong a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
+  public static boolean d;
   
   static
   {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    b = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangString = "https://gxh.vip.qq.com/xydata";
+    jdField_a_of_type_Boolean = true;
+    b = true;
+    c = true;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(1L);
   }
   
-  public awqu(AppInterface paramAppInterface)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramAppInterface.getApp().getApplicationContext();
-  }
-  
-  public static String a(Context paramContext, long paramLong)
-  {
-    return bddf.c(paramContext) + paramLong + File.separator;
-  }
-  
-  public static String a(Context paramContext, long paramLong1, long paramLong2)
-  {
-    if (paramLong1 == awra.j) {
-      return a(paramContext, paramLong2) + "wzBgImage.png";
+    if (paramInt == -1000) {
+      return 1;
     }
-    if (paramLong1 == awra.i) {
-      return a(paramContext, paramLong2) + "wzJoinImage.png";
+    return 2;
+  }
+  
+  public static int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return 0;
+      paramString = paramString.split("\\.");
+    } while (paramString.length != 4);
+    try
+    {
+      int i = Integer.parseInt(paramString[0]);
+      int j = Integer.parseInt(paramString[1]);
+      int k = Integer.parseInt(paramString[2]);
+      int m = Integer.parseInt(paramString[3]);
+      return m << 24 | i | j << 8 | k << 16;
     }
-    return a(paramContext, paramLong2) + "cardPreview.jpg";
+    catch (Exception paramString)
+    {
+      QLog.e("MsgBackup", 1, paramString, new Object[0]);
+    }
+    return 0;
+  }
+  
+  public static long a()
+  {
+    long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(1L + l);
+    return l;
+  }
+  
+  public static long a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
+      return paramMessageRecord.shmsgseq;
+    }
+    return 0xFFFF & (short)(int)paramMessageRecord.shmsgseq;
+  }
+  
+  public static String a(double paramDouble)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d1 = paramDouble;
+    if (paramDouble < 0.0D)
+    {
+      localStringBuilder.append('-');
+      d1 = -paramDouble;
+    }
+    long l3 = (100.0D * d1 + 0.5D);
+    long l1 = 100L;
+    int i = 3;
+    int j;
+    long l2;
+    for (;;)
+    {
+      j = i;
+      l2 = l1;
+      if (l1 * 10L > l3) {
+        break;
+      }
+      l1 *= 10L;
+      i += 1;
+    }
+    while (j > 0)
+    {
+      if (j == 2) {
+        localStringBuilder.append('.');
+      }
+      l1 = l3 / l2 % 10L;
+      l2 /= 10L;
+      if ((j != 1) || (l1 != 0L)) {
+        localStringBuilder.append((char)(int)(l1 + 48L));
+      }
+      j -= 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(double paramDouble, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return b(paramDouble);
+    }
+    return a(paramDouble);
+  }
+  
+  public static String a(long paramLong)
+  {
+    return a(paramLong, true);
+  }
+  
+  private static String a(long paramLong, boolean paramBoolean)
+  {
+    if (paramLong == 0L) {
+      str = "0K";
+    }
+    do
+    {
+      return str;
+      if (paramLong <= 1024L)
+      {
+        if (paramBoolean) {
+          return "1.00K";
+        }
+        return "1.0K";
+      }
+      str = "";
+      if (paramLong >= 1073741824L)
+      {
+        str = "" + a(paramLong / 1073741824.0D, paramBoolean);
+        return str + "G";
+      }
+      if (paramLong >= 1048576L)
+      {
+        if (paramLong >= 1048576000L)
+        {
+          str = "" + a(paramLong / 1048576.0D / 1024.0D, paramBoolean);
+          return str + "G";
+        }
+        str = "" + a(paramLong / 1048576.0D, paramBoolean);
+        return str + "M";
+      }
+    } while (paramLong < 1024L);
+    if (paramLong >= 1024000L)
+    {
+      str = "" + a(paramLong / 1024.0D / 1024.0D, paramBoolean);
+      return str + "M";
+    }
+    String str = "" + a(paramLong / 1024.0D, paramBoolean);
+    return str + "K";
+  }
+  
+  public static String a(awny paramawny)
+  {
+    String str = String.format("%s_%d", new Object[] { paramawny.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramawny.jdField_a_of_type_Int)) });
+    if (!TextUtils.isEmpty(paramawny.b)) {
+      str = String.format("%s_%d_%s", new Object[] { paramawny.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramawny.jdField_a_of_type_Int)), paramawny.b });
+    }
+    return awqo.c + str + ".db";
   }
   
   public static String a(String paramString)
   {
-    return alof.cn + "defaultCard" + File.separator + paramString + ".json";
+    return paramString;
   }
   
-  public static boolean a(Context paramContext, long paramLong)
+  public static String a(String paramString, int paramInt)
   {
-    paramContext = a(paramContext, paramLong);
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (paramContext = null; (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1); paramContext = new File(paramContext)) {
-      return true;
+    String str = "http://%s:%d/";
+    if (bdvy.b(paramString)) {
+      str = "http://[%s]:%d/";
     }
-    return false;
+    return String.format(str, new Object[] { paramString, Integer.valueOf(paramInt) });
   }
   
-  public static boolean a(Context paramContext, long paramLong, String paramString)
+  public static String a(String paramString1, int paramInt, String paramString2)
   {
-    paramContext = new File(a(paramContext, paramLong), paramString);
-    return (paramContext.exists()) && ((!paramContext.isDirectory()) || (paramContext.list().length > 1));
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    String str = String.format("%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
+    if (!TextUtils.isEmpty(paramString2)) {
+      str = String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     }
-    cmd0x703.UinPhotoListInfo localUinPhotoListInfo = new cmd0x703.UinPhotoListInfo();
-    cmd0x703.PhotoInfo localPhotoInfo = new cmd0x703.PhotoInfo();
-    localPhotoInfo.str_url.set(paramString);
-    localPhotoInfo.uint32_id.set(-1);
-    localPhotoInfo.uint32_timestamp.set(0);
-    localUinPhotoListInfo.rpt_msg_photo_info.add(localPhotoInfo);
-    return localUinPhotoListInfo.toByteArray();
+    return awqo.c + str + ".db";
   }
   
-  public static String b(Context paramContext, long paramLong)
+  public static String a(String paramString1, String paramString2)
   {
-    return bddf.c(paramContext) + paramLong + ".zip";
-  }
-  
-  public static String b(Context paramContext, long paramLong1, long paramLong2)
-  {
-    if (paramLong1 == awra.j) {
-      return a(paramContext, paramLong2) + "wzDynamicDrawerImage.png";
+    if (TextUtils.isEmpty(paramString2)) {
+      a("MsgBackup", "decryptPartionUrlParams key is null", new Object[0]);
     }
-    if (paramLong1 == awra.i) {
-      return a(paramContext, paramLong2) + "wzJoinImage.png";
-    }
-    return a(paramContext, paramLong2) + "cardPreview.jpg";
-  }
-  
-  public int a(long paramLong)
-  {
-    int i = 0;
-    if (this.c.containsKey(Long.valueOf(paramLong))) {
-      i = ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
-    }
-    return i;
-  }
-  
-  public awqv a(int paramInt, boolean paramBoolean)
-  {
-    try
+    String str = paramString1;
+    if (b)
     {
-      awqv localawqv = (awqv)this.e.get(Integer.valueOf(paramInt));
-      if (localawqv == null)
+      str = paramString1;
+      if (!TextUtils.isEmpty(paramString1))
       {
-        localawqv = new awqv(this, paramInt);
-        this.e.put(Integer.valueOf(paramInt), localawqv);
-      }
-      for (;;)
-      {
-        Object localObject2;
-        if (!localawqv.a)
+        str = paramString1;
+        if (!TextUtils.isEmpty(paramString2))
         {
-          localObject2 = new File(a(Integer.toString(paramInt)));
-          if (!((File)localObject2).exists()) {
-            break label101;
-          }
-          ThreadManager.excute(new ProfileCardManager.1(this, (File)localObject2, paramInt), 64, null, true);
-        }
-        for (;;)
-        {
-          return localawqv;
-          label101:
-          if ((paramBoolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt))))
+          a("MsgBackup", "originUrl = %s, encryptkey = %s", new Object[] { paramString1, paramString2 });
+          String[] arrayOfString = paramString1.split("\\/");
+          str = paramString1;
+          if (arrayOfString.length == 2)
           {
-            localObject2 = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
-            this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
-            ((VasQuickUpdateManager)localObject2).downloadItem(33L, "profileitem." + paramInt, "ProfileCardRes");
+            paramString1 = MsgBackupJniProxy.decryptFromString(arrayOfString[1], paramString2);
+            str = "/" + paramString1;
+            a("MsgBackup", "decryptUrl = %s", new Object[] { str });
           }
         }
       }
     }
-    finally {}
+    return str;
   }
   
-  public void a(long paramLong)
+  public static String a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184)).cancelDwonloadItem(15L, "card." + paramLong);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    this.c.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardManager", 2, "downloadProfileCardRes scid=" + paramString);
+    if (TextUtils.isEmpty(paramString3)) {
+      a("MsgBackup", "decrptUrlPathParams key is null", new Object[0]);
     }
-    if ((this.d.containsKey(paramString)) && (((Boolean)this.d.get(paramString)).booleanValue())) {
+    if ((b) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      a("MsgBackup", "decrptUrlPathParams originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+      paramString1 = paramString1.split(a(paramString2, paramInt));
+      if (paramString1.length == 2)
+      {
+        paramString2 = (String)a(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
+        if (TextUtils.isEmpty(paramString2)) {
+          return "";
+        }
+        paramString1 = paramString2;
+        if (c) {
+          paramString1 = Uri.decode(paramString2);
+        }
+        paramString1 = a(paramString1);
+        a("decrptUrlPathParams filepath = %s", paramString1, new Object[0]);
+      }
+    }
+    for (;;)
+    {
+      return paramString1;
+      paramString1 = "";
+    }
+  }
+  
+  public static Map<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("\\?");
+      if (paramString.length > 1)
+      {
+        paramString = paramString[1].split("&");
+        int j = paramString.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramString[i];
+          int k = localObject.indexOf("=");
+          if (k == -1) {}
+          for (;;)
+          {
+            i += 1;
+            break;
+            localHashMap.put(localObject.substring(0, k), localObject.substring(k + 1));
+          }
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static void a()
+  {
+    atwl.c(awqo.jdField_a_of_type_JavaLangString);
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000))
+    {
+      paramMsgBackupResEntity.msgSeq = paramMessageRecord.shmsgseq;
       return;
     }
-    this.d.put(paramString, Boolean.valueOf(true));
-    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(15L, paramString, "ProfileCardRes");
+    int i = bbzj.b(paramMessageRecord.msgUid);
+    paramMsgBackupResEntity.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
+    paramMsgBackupResEntity.msgRandom = i;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public static void a(MsgBackupMsgEntity paramMsgBackupMsgEntity)
   {
-    this.d.put(paramString1, Boolean.valueOf(false));
-    if (paramInt == 0)
+    if ((b) && (paramMsgBackupMsgEntity != null))
     {
-      l = Long.parseLong(paramString1.substring("card.".length(), paramString1.length()));
-      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
-      b.put(Long.valueOf(l), Boolean.valueOf(true));
-      paramString1 = a(paramQQAppInterface.getApp(), l);
-      paramQQAppInterface = new File(b(paramQQAppInterface.getApp(), l));
-      if (!paramQQAppInterface.exists()) {
-        QLog.e("ProfileCardManager", 1, "unzip file is missing " + paramQQAppInterface.getAbsolutePath());
+      if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
+        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.decryptFromString(paramMsgBackupMsgEntity.chatUin, awnr.c);
+      }
+      if (paramMsgBackupMsgEntity.extraData != null) {
+        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extraData, awnr.c);
+      }
+      if (paramMsgBackupMsgEntity.extensionData != null) {
+        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extensionData, awnr.c);
       }
     }
-    while (!QLog.isColorLevel()) {
+  }
+  
+  public static void a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (awnr.b != null)) {
+      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupResEntity.extraData, awnr.b);
+    }
+  }
+  
+  public static void a(String paramString, awny paramawny)
+  {
+    paramString = paramString.substring(0, paramString.indexOf(".")).split("_");
+    paramawny.jdField_a_of_type_JavaLangString = paramString[0];
+    paramawny.jdField_a_of_type_Int = c(Integer.parseInt(paramString[1]));
+    if (paramString.length > 2) {
+      paramawny.b = paramString[2];
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    String str;
+    do
+    {
+      return;
+      str = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        str = "MsgBackup";
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d(str, 4, String.format(paramString2, paramVarArgs));
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    while (!QLog.isDevelopLevel()) {
+      return;
+    }
+    QLog.d("MsgBackup", 4, String.format(paramString, paramVarArgs));
+  }
+  
+  public static boolean a()
+  {
+    String str = awqo.c;
+    Object localObject = new File(str);
+    boolean bool2 = ((File)localObject).exists();
+    if (!bool2) {
+      bool2 = ((File)localObject).mkdirs();
+    }
+    for (;;)
+    {
+      boolean bool1;
+      if (bool2)
+      {
+        File localFile = new File(awqo.b);
+        boolean bool3 = localFile.exists();
+        bool1 = bool3;
+        localObject = localFile;
+        if (!bool3)
+        {
+          bool1 = localFile.mkdirs();
+          localObject = localFile;
+        }
+      }
       for (;;)
       {
-        long l;
-        return;
-        try
+        a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
+        return bool2;
+        bool1 = false;
+      }
+    }
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong <= 1048576L;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 3000) {
+      return 2;
+    }
+    return 3;
+  }
+  
+  public static long b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
+      return 0L;
+    }
+    return bbzj.b(paramMessageRecord.msgUid);
+  }
+  
+  public static String b(double paramDouble)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d1 = paramDouble;
+    if (paramDouble < 0.0D)
+    {
+      localStringBuilder.append('-');
+      d1 = -paramDouble;
+    }
+    long l3 = (100.0D * d1 + 0.5D);
+    long l1 = 100L;
+    int i = 3;
+    int j;
+    long l2;
+    for (;;)
+    {
+      j = i;
+      l2 = l1;
+      if (l1 * 10L > l3) {
+        break;
+      }
+      l1 *= 10L;
+      i += 1;
+    }
+    while (j > 0)
+    {
+      if (j == 2) {
+        localStringBuilder.append('.');
+      }
+      l1 = l3 / l2;
+      l2 /= 10L;
+      localStringBuilder.append((char)(int)(l1 % 10L + 48L));
+      j -= 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(String paramString)
+  {
+    return awqo.b + paramString;
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    return paramString + "_" + paramInt;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      a("MsgBackup", "encryptUrlParams key is null", new Object[0]);
+    }
+    String str = paramString1;
+    if (b)
+    {
+      str = paramString1;
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        str = paramString1;
+        if (!TextUtils.isEmpty(paramString2))
         {
-          bdhb.a(paramQQAppInterface.getAbsolutePath(), paramString1, false);
-          VasQuickUpdateEngine.safeDeleteFile(paramQQAppInterface);
-          paramString2 = new File(paramString1, "dynamic.zip");
-          if (paramString2.exists())
-          {
-            String str = paramString1 + ".dynamic";
-            bdhb.a(paramString2.getAbsolutePath(), str, false);
-            VasQuickUpdateEngine.safeDeleteFile(paramString2);
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ProfileCardManager", 2, "onDownloadComplete, resDir= " + paramString1);
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramString2)
-        {
-          for (;;)
-          {
-            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
-          }
-        }
-        catch (Throwable paramString2)
-        {
-          for (;;)
-          {
-            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
-          }
+          a("MsgBackup", "encryptUrlParams urlParams = %s, encryptkey is not null!", new Object[] { paramString1 });
+          str = MsgBackupJniProxy.encryptFromString(paramString1, paramString2);
+          a("MsgBackup", "encryptUrlParams params = %s", new Object[] { str });
         }
       }
     }
-    QLog.d("ProfileCardManager", 2, "onDownloadComplete failed, errorCode = " + paramInt);
+    return str;
   }
   
-  public boolean b(Context paramContext, long paramLong)
+  public static String b(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return VasQuickUpdateEngine.safeDeleteFile(new File(a(paramContext, paramLong)));
+    if (TextUtils.isEmpty(paramString3)) {
+      a("MsgBackup", "decryptUrlParams key is null", new Object[0]);
+    }
+    Object localObject = paramString1;
+    if (b)
+    {
+      localObject = paramString1;
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localObject = paramString1;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          a("MsgBackup", "originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+          paramString2 = a(paramString2, paramInt);
+          localObject = paramString1.split(paramString2);
+          if (localObject.length == 2)
+          {
+            paramString1 = MsgBackupJniProxy.decryptFromString(localObject[1], paramString3);
+            paramString1 = paramString2 + paramString1;
+          }
+          a("MsgBackup", "decryptUrl = %s", new Object[] { paramString1 });
+          localObject = paramString1;
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  public static void b(MsgBackupMsgEntity paramMsgBackupMsgEntity)
+  {
+    if ((b) && (paramMsgBackupMsgEntity != null) && (awnr.b != null))
+    {
+      if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
+        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.encryptFromString(paramMsgBackupMsgEntity.chatUin, awnr.b);
+      }
+      if (paramMsgBackupMsgEntity.extraData != null) {
+        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extraData, awnr.b);
+      }
+      if (paramMsgBackupMsgEntity.extensionData != null) {
+        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extensionData, awnr.b);
+      }
+    }
+  }
+  
+  public static void b(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (awnr.c != null)) {
+      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupResEntity.extraData, awnr.c);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, String.format(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup", 2, String.format(paramString, paramVarArgs));
+    }
+  }
+  
+  public static int c(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 3000;
+    }
+    return 0;
+  }
+  
+  public static String c(String paramString)
+  {
+    String str = paramString;
+    if (c) {
+      str = Uri.encode(paramString);
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqu
  * JD-Core Version:    0.7.0.1
  */

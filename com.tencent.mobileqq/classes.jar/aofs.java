@@ -1,41 +1,44 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.annotation.SuppressLint;
+import android.util.Pair;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aofs
-  extends Handler
 {
-  private WeakReference<SwipeBackLayout> a;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
   
-  public aofs(SwipeBackLayout paramSwipeBackLayout)
+  public static int a(int paramInt)
   {
-    this.a = new WeakReference(paramSwipeBackLayout);
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
   }
   
-  public void handleMessage(Message paramMessage)
+  public static String a(int paramInt)
   {
-    SwipeBackLayout localSwipeBackLayout = (SwipeBackLayout)this.a.get();
-    switch (paramMessage.what)
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
+  }
+  
+  public static Map<Integer, Pair<String, Integer>> a()
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-    default: 
-      super.handleMessage(paramMessage);
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
+      }
+      return jdField_a_of_type_JavaUtilMap;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(localSwipeBackLayout));
-      SwipeBackLayout.a(localSwipeBackLayout, true);
-    } while (!(localSwipeBackLayout.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    localSwipeBackLayout.c = true;
-    ((Activity)localSwipeBackLayout.a).finish();
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  private static void a()
+  {
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
   }
 }
 

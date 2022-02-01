@@ -1,33 +1,31 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
-import android.app.Activity;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yof
-  implements zac<CertifiedAccountWrite.StDelFeedRsp>
+public class yof
+  extends QQUIEventReceiver<ynm, wxv>
 {
-  yof(yod paramyod) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
+  public yof(@NonNull ynm paramynm)
   {
-    if (this.a.a == null) {
+    super(paramynm);
+  }
+  
+  public void a(@NonNull ynm paramynm, @NonNull wxv paramwxv)
+  {
+    if ((paramwxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwxv.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    if ((!paramBoolean) || (paramLong != 0L))
-    {
-      QQToast.a(this.a.a, 1, alud.a(2131715040), 0).a();
-      return;
-    }
-    yiw.a().a(new SubscribeFeedsEvent(yod.a(this.a).a.id.get(), 3));
-    this.a.a.finish();
-    QQToast.a(this.a.a, alud.a(2131715036), 0).a();
+    paramynm.a(paramwxv);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wxv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yof
  * JD-Core Version:    0.7.0.1
  */

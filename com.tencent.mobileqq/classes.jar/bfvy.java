@@ -1,30 +1,42 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
+
 public class bfvy
-  extends bfvw
+  implements Animator.AnimatorListener
 {
-  private static bfvy jdField_a_of_type_Bfvy;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public static bfvy a()
+  public bfvy(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    if (jdField_a_of_type_Bfvy == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (jdField_a_of_type_Bfvy == null) {
-        jdField_a_of_type_Bfvy = new bfvy();
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
       }
-      return jdField_a_of_type_Bfvy;
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
+      }
     }
   }
   
-  public void a()
-  {
-    super.a();
-    jdField_a_of_type_Bfvy = null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvy
  * JD-Core Version:    0.7.0.1
  */

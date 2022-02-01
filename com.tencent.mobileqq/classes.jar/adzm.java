@@ -1,23 +1,47 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class adzm
-  extends MqqHandler
+  extends anke
 {
-  public adzm(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public adzm(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, anhk.z, 6000);
+    }
+    while (i != 1) {
       return;
     }
-    this.a.f();
+    this.a.a(8, anhk.A, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, anhk.z, 6003);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, anhk.A, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, anhk.z, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, anhk.A, 6003);
   }
 }
 

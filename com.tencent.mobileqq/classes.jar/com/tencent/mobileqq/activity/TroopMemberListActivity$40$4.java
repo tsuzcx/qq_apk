@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aegi;
+import afmp;
 import android.os.Handler;
 import android.os.Message;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -15,12 +15,12 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class TroopMemberListActivity$40$4
   implements Runnable
 {
-  public TroopMemberListActivity$40$4(aegi paramaegi, List paramList) {}
+  public TroopMemberListActivity$40$4(afmp paramafmp, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Aegi.a.app.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Aegi.a.b);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Afmp.a.app.getManager(52);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Afmp.a.b);
     if (localTroopInfo == null) {}
     label68:
     label124:
@@ -29,7 +29,7 @@ public class TroopMemberListActivity$40$4
       do
       {
         return;
-      } while (bdnn.a(localTroopInfo.troopowneruin));
+      } while (bgsp.a(localTroopInfo.troopowneruin));
       localTroopInfo.Administrator = "";
       int i;
       int j;
@@ -58,10 +58,10 @@ public class TroopMemberListActivity$40$4
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = this.jdField_a_of_type_Aegi.a.a.obtainMessage();
+      localObject1 = this.jdField_a_of_type_Afmp.a.a.obtainMessage();
       ((Message)localObject1).what = 11;
       ((Message)localObject1).obj = localTroopInfo;
-      this.jdField_a_of_type_Aegi.a.a.sendMessage((Message)localObject1);
+      this.jdField_a_of_type_Afmp.a.a.sendMessage((Message)localObject1);
     } while (!QLog.isColorLevel());
     label204:
     QLog.i("TroopMemberListActivityget_troop_member", 2, localTroopInfo.Administrator);
@@ -69,7 +69,7 @@ public class TroopMemberListActivity$40$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.40.4
  * JD-Core Version:    0.7.0.1
  */

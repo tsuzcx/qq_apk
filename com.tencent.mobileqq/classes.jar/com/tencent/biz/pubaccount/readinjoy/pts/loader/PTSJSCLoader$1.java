@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.qphone.base.util.QLog;
-import pwa;
-import pxb;
+import qok;
+import qpo;
 
 public class PTSJSCLoader$1
   implements Runnable
 {
-  public PTSJSCLoader$1(pwa parampwa) {}
+  public PTSJSCLoader$1(qok paramqok) {}
   
   public void run()
   {
-    if (!pxb.a.a())
+    if (!qpo.a.a())
     {
       QLog.i("PTSJSCLoader", 1, "[init], ptsJSCEnabled is false.");
       return;
     }
-    pwa.a(this.this$0);
+    qok.a(this.this$0);
   }
 }
 

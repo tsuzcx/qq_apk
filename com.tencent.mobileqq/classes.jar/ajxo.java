@@ -1,6 +1,19 @@
-final class ajxo
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+
+class ajxo
+  implements View.OnTouchListener
 {
-  public static final ajxm a = new ajxm(null);
+  ajxo(ajxi paramajxi) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

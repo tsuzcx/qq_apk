@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bjuq;
+import bmja;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class SharpPDec
@@ -140,8 +140,8 @@ public class SharpPDec
     {
       try
       {
-        paramContext = bjuq.a(paramContext);
-        if (bjuq.f(paramContext))
+        paramContext = bmja.a(paramContext);
+        if (bmja.f(paramContext))
         {
           QLog.i("SharpPDec", 1, "cooperation.SharpPDec:QzoneLive process,return 0.");
           i = j;
@@ -172,7 +172,7 @@ public class SharpPDec
     {
       try
       {
-        boolean bool = UpdateAvSo.a();
+        boolean bool = AVSoUtils.a();
         QLog.e("SharpPDec", 2, "load library exception:", localUnsatisfiedLinkError1);
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -195,7 +195,7 @@ public class SharpPDec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.SharpPDec
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,18 @@ package com.tencent.av.utils;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.av.VideoController;
-import lek;
-import mwf;
+import lbc;
+import mtn;
 
 public class SignalStrengthReport$1
   implements Runnable
 {
-  public SignalStrengthReport$1(mwf parammwf) {}
+  public SignalStrengthReport$1(mtn parammtn) {}
   
   public void run()
   {
     int m = 0;
-    int n = mwf.e();
+    int n = mtn.e();
     int i;
     int j;
     label22:
@@ -46,7 +46,7 @@ public class SignalStrengthReport$1
     {
       VideoController.a().a(n, j, k);
       this.this$0.jdField_a_of_type_JavaLangString = ("networkType:" + n + " signalStrength:" + j + " pingResult:" + k);
-      lek.c("SignalStrengthReport", "setGatewayTestResult networkType:" + n + " | levelPercent:" + i + " | dbm:" + i1 + "| pingResult:" + this.this$0.b);
+      lbc.c("SignalStrengthReport", "setGatewayTestResult networkType:" + n + " | levelPercent:" + i + " | dbm:" + i1 + "| pingResult:" + this.this$0.b);
       if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
       }
@@ -82,7 +82,7 @@ public class SignalStrengthReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.utils.SignalStrengthReport.1
  * JD-Core Version:    0.7.0.1
  */

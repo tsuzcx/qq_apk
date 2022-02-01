@@ -122,6 +122,15 @@ public class TPEnumUtils
     return 3;
   }
   
+  public static int convertSubtitleFrameFormat2Outer(int paramInt)
+  {
+    if (-1 == paramInt) {}
+    while (26 != paramInt) {
+      return -1;
+    }
+    return 26;
+  }
+  
   public static int convertVideoFrameFormat2Outter(int paramInt)
   {
     if (-1 == paramInt) {}
@@ -140,7 +149,7 @@ public class TPEnumUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPEnumUtils
  * JD-Core Version:    0.7.0.1
  */

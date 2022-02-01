@@ -1,56 +1,63 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
 
 class aylr
-  extends altw
+  implements aoso
 {
-  aylr(ayln paramayln) {}
+  aylr(aylq paramaylq, String paramString, AppInterface paramAppInterface) {}
   
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
+  public void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    super.a(paramBoolean, paramArrayList, paramArrayList1);
-    paramArrayList1 = (String)paramArrayList1.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
-    {
-      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject = (String)paramArrayList.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = bdpr.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
-      }
+    boolean bool = false;
+    QLog.w(aylq.jdField_a_of_type_JavaLangString, 1, "getRes, promotionConfigInfo[" + paramPromotionConfigInfo + "], activityID[" + this.jdField_a_of_type_JavaLangString + "], isDestroyed[" + aylq.a(this.jdField_a_of_type_Aylq) + "]");
+    if (aylq.a(this.jdField_a_of_type_Aylq)) {
+      return;
     }
-    ayln.a(this.a).put(paramArrayList1, localStringBuilder);
-    paramArrayList = ayln.b(this.a).get(paramArrayList1);
-    if (paramArrayList != null) {
-      try
-      {
-        paramArrayList.notify();
-        return;
+    Object localObject = null;
+    aosj localaosj;
+    String str;
+    if (paramPromotionConfigInfo != null)
+    {
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label324;
       }
-      finally {}
+      localaosj = paramPromotionConfigInfo.getItem(this.jdField_a_of_type_JavaLangString);
+      str = aylq.a(this.jdField_a_of_type_Aylq).getCurrentAccountUin();
+      int i = apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE");
+      int j = bguf.b(str);
+      if ((j != apfg.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION")) || (j == 0))
+      {
+        apfg.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION", j);
+        i = 0;
+      }
+      if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
+        apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 0);
+      }
+      if (!paramPromotionConfigInfo.showOnce) {
+        break label333;
+      }
+      if (i != 0) {}
+    }
+    label324:
+    label333:
+    for (bool = true;; bool = true)
+    {
+      aylq.a(this.jdField_a_of_type_Aylq).a(bool, paramPromotionConfigInfo.showInTopView);
+      localObject = localaosj;
+      if (bool)
+      {
+        localObject = localaosj;
+        if (paramPromotionConfigInfo.showOnce)
+        {
+          apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 1);
+          localObject = localaosj;
+        }
+      }
+      aylq.a(this.jdField_a_of_type_Aylq, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localObject);
+      return;
+      localaosj = paramPromotionConfigInfo.getActivityItem();
+      break;
     }
   }
 }

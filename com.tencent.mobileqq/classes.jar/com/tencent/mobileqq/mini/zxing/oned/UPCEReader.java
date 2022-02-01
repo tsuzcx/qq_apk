@@ -8,14 +8,8 @@ public final class UPCEReader
   extends UPCEANReader
 {
   private static final int[] MIDDLE_END_PATTERN = { 1, 1, 1, 1, 1, 1 };
-  static final int[][] NUMSYS_AND_CHECK_DIGIT_PATTERNS;
+  static final int[][] NUMSYS_AND_CHECK_DIGIT_PATTERNS = { { 56, 52, 50, 49, 44, 38, 35, 42, 41, 37 }, { 7, 11, 13, 14, 19, 25, 28, 21, 22, 26 } };
   private final int[] decodeMiddleCounters = new int[4];
-  
-  static
-  {
-    int[] arrayOfInt = { 7, 11, 13, 14, 19, 25, 28, 21, 22, 26 };
-    NUMSYS_AND_CHECK_DIGIT_PATTERNS = new int[][] { { 56, 52, 50, 49, 44, 38, 35, 42, 41, 37 }, arrayOfInt };
-  }
   
   public static String convertUPCEtoUPCA(String paramString)
   {
@@ -122,7 +116,7 @@ public final class UPCEReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.UPCEReader
  * JD-Core Version:    0.7.0.1
  */

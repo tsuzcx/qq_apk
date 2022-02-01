@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bdpv;
+import bgut;
+import bguv;
 
 public class HttpCommunicator$HttpCommunicatorHandler$1
   implements Runnable
 {
-  public HttpCommunicator$HttpCommunicatorHandler$1(bdpv parambdpv) {}
+  public HttpCommunicator$HttpCommunicatorHandler$1(bguv parambguv) {}
   
   public void run()
   {
-    HttpCommunicator.c(this.a.a, true);
+    bgut.c(this.a.a, true);
   }
 }
 

@@ -1,118 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.doutu.DuiButtonImageView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.HashMap;
 
-public class armv
-  extends armt
-  implements View.OnClickListener, arkm
+class armv
+  extends bhhe
 {
-  protected long a;
-  protected boolean a;
+  armv(armt paramarmt, String paramString1, String paramString2, String paramString3) {}
   
-  public armv(arki paramarki, Activity paramActivity)
+  public void onDone(bhhf parambhhf)
   {
-    super(paramarki, paramActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692942);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, false, this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    if ((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.jdField_a_of_type_Arki.c()))
+    boolean bool;
+    int i;
+    if (parambhhf.a() == 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
+      }
+      parambhhf = armt.a(this.jdField_a_of_type_Armt, this.b);
+      if (this.c.equalsIgnoreCase(parambhhf))
+      {
+        armt.a(this.jdField_a_of_type_Armt, this.b);
+        armt.a(this.jdField_a_of_type_Armt, armt.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
+        bgsg.d(BaseApplication.getContext(), false);
+        DuiButtonImageView.a();
+        bool = true;
+        i = 0;
       }
     }
-    if ((this.jdField_a_of_type_Arki.a(this)) && (QLog.isColorLevel())) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "requestWhitelist 本地信息为空!!!!");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 2, "clickPlay url = " + paramString1 + ", cookie = " + paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString1))
+    for (;;)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, VipVideoPlayActivity.class);
-      localIntent.putExtra("vtype", 2);
-      localIntent.putExtra("video_url", paramString1);
-      localIntent.putExtra("video_url_cookies", "FTN5K=" + paramString2);
-      localIntent.putExtra("screenOrientation", "portrait");
-      localIntent.putExtra("report_bus_type", "bus_type_troop_file_cloud_play");
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 100);
-    }
-    this.jdField_a_of_type_Arki.a(3);
-  }
-  
-  public void aE_()
-  {
-    if (bdin.h(BaseApplicationImpl.getContext())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692943));
-    }
-    while (this.jdField_a_of_type_Arki.i())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
+      parambhhf = new HashMap();
+      parambhhf.put("param_FailCode", String.valueOf(i));
+      bctj.a(BaseApplication.getContext()).a(null, "doutuResDownload", bool, 0L, 0L, parambhhf, "");
+      armt.jdField_a_of_type_Boolean = false;
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(BaseApplicationImpl.getContext().getString(2131692945));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(true);
-  }
-  
-  public void aF_()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(false);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
-    }
-    this.jdField_a_of_type_Arki.a(4);
-  }
-  
-  public void c() {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PreviewVideoSimpleFilePresenter", 2, "click online preview video too fast");
-    return;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Arki.c())
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708811), 0).b(this.jdField_a_of_type_Arki.l());
-      return;
+      i = 80704;
+      bgmg.d(this.b);
+      bool = false;
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambhhf.b + " code=" + parambhhf.a);
+      }
+      i = parambhhf.a;
+      bool = false;
     }
-    this.jdField_a_of_type_Arki.a(this);
   }
 }
 

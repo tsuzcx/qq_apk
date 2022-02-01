@@ -1,14 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
-class bmfq
-  implements DialogInterface.OnClickListener
+public class bmfq
+  extends blrw
 {
-  bmfq(bmfm parambmfm) {}
+  public JceStruct a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmfq(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    this.a.a.a(2);
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.nbpClientReport";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
   }
 }
 

@@ -1,9 +1,22 @@
-import com.tencent.mobileqq.emosm.web.IPCConstants.1;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface appv
+class appv
+  implements View.OnClickListener
 {
-  public static final HashMap<String, Integer> a = new IPCConstants.1();
+  appv(appt paramappt) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((appt.a(this.a) == 0) && (!TextUtils.isEmpty(appt.b(this.a)))) {
+      appt.a(this.a, null);
+    }
+    appt.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

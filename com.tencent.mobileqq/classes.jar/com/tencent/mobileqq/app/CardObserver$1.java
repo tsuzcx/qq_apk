@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import alpq;
+import aniz;
 
 public class CardObserver$1
   implements Runnable
 {
-  public CardObserver$1(alpq paramalpq, boolean paramBoolean, Object paramObject) {}
+  public CardObserver$1(aniz paramaniz, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class CardObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardObserver.1
  * JD-Core Version:    0.7.0.1
  */

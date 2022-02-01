@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ozm
-  implements oxc
+  implements pde
 {
-  public ozm(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
+  public ozm(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void a(oxe paramoxe)
+  public void a(int paramInt)
   {
-    paramoxe.h(this.jdField_a_of_type_Int);
+    if (paramInt != 2) {
+      this.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozm
  * JD-Core Version:    0.7.0.1
  */

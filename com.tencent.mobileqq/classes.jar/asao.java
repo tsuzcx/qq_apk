@@ -1,39 +1,62 @@
-import android.app.Activity;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 import com.tencent.qphone.base.util.QLog;
 
-class asao
-  implements View.OnClickListener
+public class asao
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  asao(asan paramasan) {}
+  public asao(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
-      if (this.a.jdField_a_of_type_Bdjz != null) {}
-    }
-    while (!QLog.isColorLevel())
+    if (this.a.jdField_b_of_type_Boolean) {}
+    Rect localRect;
+    int j;
+    boolean bool;
+    do
     {
       return;
-      this.a.jdField_a_of_type_Bdjz.hideSoftInputFromWindow();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
-      {
-        ((axnb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        ascg.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      localRect = new Rect();
+      this.a.jdField_b_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+      int i = localRect.bottom - localRect.top;
+      j = this.a.jdField_b_of_type_AndroidViewView.getHeight();
+      if (i / j >= 0.8D) {
+        break;
       }
-      for (;;)
-      {
-        this.a.D();
-        return;
-        paramView = new asbo(this.a.jdField_a_of_type_Bdjz, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692845), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        this.a.jdField_a_of_type_Bdjz.addPreviewView(paramView.b());
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionSearchPanel", 2, "visible" + bool + " isVisiableForLast=" + this.a.jdField_a_of_type_Boolean + " displayHight=" + i + " hight=" + j);
+      }
+    } while (bool == this.a.jdField_a_of_type_Boolean);
+    if (bool)
+    {
+      EmotionSearchPanel.jdField_a_of_type_Int = j - localRect.bottom;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionSearchPanel", 2, "keyboardHeight=" + EmotionSearchPanel.jdField_a_of_type_Int);
+      }
+      EmotionSearchPanel.c(this.a, EmotionSearchPanel.jdField_a_of_type_Int);
+      this.a.a(2);
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.71F);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
+      break;
+      if (this.a.c == 2) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.t(12);
+      }
+      this.a.b();
+      if (!bgsp.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())) {
+        arze.a("0X800AE25", 0);
       }
     }
-    QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
   }
 }
 

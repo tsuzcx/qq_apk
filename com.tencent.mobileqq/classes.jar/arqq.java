@@ -1,12 +1,23 @@
-class arqq
-  implements bezx
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.QLog;
+
+public class arqq
+  implements arqn
 {
-  arqq(arqo paramarqo, arrh paramarrh) {}
+  public arqq(CameraEmoSingleSend paramCameraEmoSingleSend) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Arrh.a();
+    boolean bool = true;
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      CameraEmoSingleSend.a(this.a, bool, paramInt);
+      this.a.a(String.valueOf(paramInt), 2);
+      return;
+      bool = false;
     }
   }
 }

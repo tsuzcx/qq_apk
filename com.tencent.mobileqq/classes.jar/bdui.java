@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-
-public abstract interface bdui
+class bdui
 {
-  public abstract boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = false;
   
-  public abstract boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo);
+  public bdui(bduh parambduh)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

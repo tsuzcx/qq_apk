@@ -1,6 +1,6 @@
 public abstract interface bchc
 {
-  public abstract void a(bcia parambcia);
+  public abstract int a(bchc parambchc, boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

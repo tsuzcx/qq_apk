@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.support.v4.app.FragmentActivity;
-import ataa;
+import avhu;
 
 public class GroupVideoLoadingFragment$2$1
   implements Runnable
 {
-  public GroupVideoLoadingFragment$2$1(ataa paramataa) {}
+  public GroupVideoLoadingFragment$2$1(avhu paramavhu) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class GroupVideoLoadingFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agvl
-  extends altm
+class agvl
+  implements bkhw
 {
-  public agvl(TroopChatPie paramTroopChatPie) {}
+  agvl(agvj paramagvj, bkho parambkho) {}
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i;
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (paramInt)
     {
-      String str = this.a.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
-      if (paramMap == null)
-      {
-        i = 0;
-        QLog.d(str, 2, i);
-      }
-    }
-    else
-    {
-      if ((paramMap != null) && (paramMap.size() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
-    {
-      return;
-      i = paramMap.size();
-      break;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131721102), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    default: 
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131721101), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    ChatActivityUtils.a(this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agvj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+    bcst.b(this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

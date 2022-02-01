@@ -1,62 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class oae
-  implements CompoundButton.OnCheckedChangeListener
+class oae
+  extends BroadcastReceiver
 {
-  public oae(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  oae(nzz paramnzz, String paramString, boolean paramBoolean) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoySettingActivity.c(this.a, paramBoolean);
-    int i;
-    label51:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Nzz.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    try
     {
-      QQToast.a(this.a.getBaseContext(), 2, 2131719051, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131719050);
-      if (!paramBoolean) {
-        break label149;
-      }
-      i = 1;
-      bkbq.e(i);
-      bkbq.a(paramBoolean);
-      bkbq.a(true);
-      localQQAppInterface = this.a.a;
-      if (!paramBoolean) {
-        break label154;
-      }
-      paramCompoundButton = "0X8008236";
-      label80:
-      if (!paramBoolean) {
-        break label160;
-      }
-    }
-    label149:
-    label154:
-    label160:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      nrt.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Nzz.c);
+      label58:
+      this.jdField_a_of_type_Nzz.c = null;
       return;
-      QQToast.a(this.a.getBaseContext(), 2, 2131719049, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131719053);
-      break;
-      i = 0;
-      break label51;
-      paramCompoundButton = "0X8008235";
-      break label80;
+    }
+    catch (Exception paramContext)
+    {
+      break label58;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oae
  * JD-Core Version:    0.7.0.1
  */

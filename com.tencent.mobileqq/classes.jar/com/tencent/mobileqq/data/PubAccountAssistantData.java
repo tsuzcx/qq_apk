@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class PubAccountAssistantData
-  extends awge
+  extends Entity
 {
   public int mDistance;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public int mType;
-  @awhs
+  @unique
   public String mUin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PubAccountAssistantData
  * JD-Core Version:    0.7.0.1
  */

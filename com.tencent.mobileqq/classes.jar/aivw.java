@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-
-public class aivw
-  implements View.OnClickListener
+public abstract interface aivw
 {
-  public aivw(RedPacketKSongFragment paramRedPacketKSongFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

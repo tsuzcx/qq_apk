@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +55,7 @@ public class LpReportInfo_dc01245
     {
       localHashMap.put("expose_time", String.valueOf(System.currentTimeMillis()));
       localHashMap.put("expose_src", String.valueOf(this.expose_src));
-      localHashMap.put("qua", bjdm.a());
+      localHashMap.put("qua", blru.a());
       localHashMap.put("zhubo_type", String.valueOf(this.zhubo_type));
       localHashMap.put("reserve1", String.valueOf(this.reserve1));
       localHashMap.put("reserve2", String.valueOf(this.reserve2));
@@ -67,7 +67,7 @@ public class LpReportInfo_dc01245
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc01245
  * JD-Core Version:    0.7.0.1
  */

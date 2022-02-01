@@ -1,148 +1,132 @@
-import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class obm
+  extends anii
 {
-  public String A;
-  public String B;
-  public String C;
-  public String D;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
-  public String v;
-  public String w;
-  public String x;
-  public String y;
-  public String z;
+  public static final String a = obm.class.getSimpleName();
   
-  public obm(String paramString)
+  public obm(AppInterface paramAppInterface)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementSoftInfo", 2, "softData = " + paramString);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        paramString = new JSONObject(new JSONObject(paramString).optString("SoftAd"));
-        a(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo = " + toString());
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo Exception = " + paramString.getMessage());
-          }
-          paramString = null;
-        }
-      }
-    }
-    QLog.d("AdvertisementSoftInfo", 2, "softData = null");
+    super(paramAppInterface);
   }
   
-  public obm(JSONObject paramJSONObject)
+  private void b(int paramInt, boolean paramBoolean, String paramString)
   {
-    a(paramJSONObject);
+    Object localObject = new oidb_0xd4b.ReqBody();
+    oidb_0xd4b.SubscribeVideoColumnReq localSubscribeVideoColumnReq = new oidb_0xd4b.SubscribeVideoColumnReq();
+    localSubscribeVideoColumnReq.uint32_video_column_id.set(paramInt);
+    PBUInt32Field localPBUInt32Field = localSubscribeVideoColumnReq.uint32_oper_type;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      ((oidb_0xd4b.ReqBody)localObject).msg_subscribe_video_column_req.set(localSubscribeVideoColumnReq);
+      localObject = super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, ((oidb_0xd4b.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("columnId", Integer.valueOf(paramInt));
+      ((ToServiceMsg)localObject).addAttribute("columnIconUrl", paramString);
+      ((ToServiceMsg)localObject).addAttribute("isSubscribe", Boolean.valueOf(paramBoolean));
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
   }
   
-  private void a(JSONObject paramJSONObject)
+  public void a(int paramInt, boolean paramBoolean, String paramString)
   {
-    if (paramJSONObject == null) {}
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt, paramBoolean, paramString), 16, null, true);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool3 = false;
+    int i;
+    if (paramToServiceMsg.getAttribute("columnId") != null) {
+      i = ((Integer)paramToServiceMsg.getAttribute("columnId")).intValue();
+    }
     for (;;)
     {
-      return;
-      try
+      String str;
+      label46:
+      boolean bool1;
+      if (paramToServiceMsg.getAttribute("columnIconUrl") != null)
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sAdID");
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("adImg");
-        this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("adTxt");
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("adAbb");
-        this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("buttonTxt");
-        this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("jmpUrl");
-        this.g = paramJSONObject.optString("appScheme");
-        this.h = paramJSONObject.optString("miniProgramUrl");
-        this.jdField_a_of_type_Int = paramJSONObject.optInt("contentType");
-        this.jdField_b_of_type_Int = paramJSONObject.optInt("video_percent");
-        this.jdField_c_of_type_Int = paramJSONObject.optInt("sourceId");
-        this.jdField_d_of_type_Int = paramJSONObject.optInt("bizPlatId");
-        this.jdField_e_of_type_Int = paramJSONObject.optInt("goodsType");
-        this.i = paramJSONObject.optString("goodsId");
-        this.j = paramJSONObject.optString("goodsName");
-        this.jdField_f_of_type_Int = paramJSONObject.optInt("accountId");
-        this.k = paramJSONObject.optString("goodsPrice");
-        this.l = paramJSONObject.optString("goodsPromotionPrice");
-        this.m = paramJSONObject.optString("goodsPromotionTxt");
-        this.C = paramJSONObject.optString("button");
-        paramJSONObject = new JSONObject(paramJSONObject.optString("extendInfo"));
-        this.n = paramJSONObject.optString("game_pkg_name");
-        this.o = paramJSONObject.optString("game_app_id");
-        this.p = paramJSONObject.optString("game_app_name");
-        this.q = paramJSONObject.optString("game_apk_url");
-        this.r = paramJSONObject.optString("app_download_schema");
-        this.s = paramJSONObject.optString("download_api_url");
-        this.t = paramJSONObject.optString("downloadNum");
-        this.u = paramJSONObject.optString("game_adtag");
-        this.v = paramJSONObject.optString("__ADSTR__");
-        this.w = paramJSONObject.optString("cmsid");
-        this.x = paramJSONObject.optString("soft_video_style");
-        this.z = paramJSONObject.optString("big_card_show_percent");
-        this.A = paramJSONObject.optString("big_card_show_second");
-        this.y = paramJSONObject.optString("big_card_show_type");
-        this.B = paramJSONObject.optString("small_card_start_time");
-        this.D = paramJSONObject.optString("bizPlatName");
-        if (!QLog.isColorLevel()) {
-          continue;
+        str = (String)paramToServiceMsg.getAttribute("columnIconUrl");
+        if (paramToServiceMsg.getAttribute("isSubscribe") == null) {
+          break label303;
         }
-        QLog.d("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo = " + toString());
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
+        bool1 = ((Boolean)paramToServiceMsg.getAttribute("isSubscribe")).booleanValue();
+        label69:
+        boolean bool2 = bool3;
+        if (paramFromServiceMsg.isSuccess())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo Exception = " + paramJSONObject.getMessage());
+          bool2 = bool3;
+          if (paramObject != null) {
+            bool2 = true;
           }
         }
+        if (QLog.isColorLevel()) {
+          QLog.d(a, 2, "onReceive() isSuccess = " + bool2);
+        }
+        if (bool2) {
+          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        }
+      }
+      try
+      {
+        oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
+        qnf.a(paramFromServiceMsg, paramObject, localRspBody);
+        int j = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
+        QLog.i(a, 1, "onReceive() " + j);
+        ThreadManager.getUIHandler().post(new VideoColumnSubscribeHandler.2(this, j, bool1, str, i));
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.uint32_result.has()) {
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
+          }
+        }
+        label303:
+        while (!QLog.isColorLevel())
+        {
+          return;
+          i = 0;
+          break;
+          str = "";
+          break label46;
+          bool1 = false;
+          break label69;
+        }
+        QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obm
  * JD-Core Version:    0.7.0.1
  */

@@ -2,20 +2,80 @@ package com.tencent.ad.tangram.net;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.LinkAddress;
+import android.net.LinkProperties;
 import android.net.NetworkInfo;
+import android.os.Build.VERSION;
 import android.support.annotation.Keep;
 import android.telephony.TelephonyManager;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.util.Iterator;
+import java.util.List;
 
 @Keep
 public final class AdNet
 {
+  public static final int IP_FAMILY_UNKNOWN = 0;
+  public static final int IP_FAMILY_V4 = 1;
+  public static final int IP_FAMILY_V6 = 2;
   private static final String TAG = "AdNet";
   private static String ipV4Address;
   private static long ipV4AddressTimeStamp = -2147483648L;
+  
+  public static int getIpFamily(Context paramContext)
+  {
+    int i = getIpFamilyImpl(paramContext);
+    AdLog.i("AdNet", String.format("getIpFamily %d", new Object[] { Integer.valueOf(i) }));
+    return i;
+  }
+  
+  private static int getIpFamilyImpl(Context paramContext)
+  {
+    if (paramContext == null) {
+      return 0;
+    }
+    paramContext = paramContext.getApplicationContext();
+    if (paramContext == null) {
+      return 0;
+    }
+    try
+    {
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (paramContext == null) {
+        return 0;
+      }
+      if (Build.VERSION.SDK_INT < 23) {
+        return 0;
+      }
+      paramContext = paramContext.getLinkProperties(paramContext.getActiveNetwork());
+      if (paramContext == null) {
+        return 0;
+      }
+      paramContext = paramContext.getLinkAddresses().iterator();
+      int i = 0;
+      while (paramContext.hasNext())
+      {
+        LinkAddress localLinkAddress = (LinkAddress)paramContext.next();
+        if (localLinkAddress != null)
+        {
+          int j = getNetIpFamily(localLinkAddress.getAddress());
+          i |= j;
+        }
+      }
+      return i;
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.i("AdNet", "getIpFamily", paramContext);
+    }
+    return 0;
+  }
   
   private static String getIpV4Address()
   {
@@ -43,6 +103,22 @@ public final class AdNet
   {
     AdLog.i("AdNet", String.format("getIpV4AddressCache address:%s timeStamp:%d", new Object[] { ipV4Address, Long.valueOf(ipV4AddressTimeStamp) }));
     return ipV4Address;
+  }
+  
+  private static int getNetIpFamily(InetAddress paramInetAddress)
+  {
+    if (paramInetAddress == null) {}
+    do
+    {
+      do
+      {
+        return 0;
+      } while ((paramInetAddress.isLoopbackAddress()) || (paramInetAddress.isLinkLocalAddress()) || (paramInetAddress.isAnyLocalAddress()));
+      if ((paramInetAddress instanceof Inet6Address)) {
+        return 2;
+      }
+    } while (!(paramInetAddress instanceof Inet4Address));
+    return 1;
   }
   
   public static int getNetworkType(Context paramContext)
@@ -80,73 +156,73 @@ public final class AdNet
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_0
-    //   7: invokevirtual 126	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   7: invokevirtual 81	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   10: astore 7
     //   12: aload 7
     //   14: ifnonnull +5 -> 19
     //   17: iconst_0
     //   18: ireturn
-    //   19: new 71	java/lang/Integer
+    //   19: new 57	java/lang/Integer
     //   22: dup
     //   23: iconst_1
-    //   24: invokespecial 142	java/lang/Integer:<init>	(I)V
+    //   24: invokespecial 220	java/lang/Integer:<init>	(I)V
     //   27: astore_2
-    //   28: new 71	java/lang/Integer
+    //   28: new 57	java/lang/Integer
     //   31: dup
     //   32: iconst_2
-    //   33: invokespecial 142	java/lang/Integer:<init>	(I)V
+    //   33: invokespecial 220	java/lang/Integer:<init>	(I)V
     //   36: astore 4
-    //   38: new 71	java/lang/Integer
+    //   38: new 57	java/lang/Integer
     //   41: dup
     //   42: iconst_3
-    //   43: invokespecial 142	java/lang/Integer:<init>	(I)V
+    //   43: invokespecial 220	java/lang/Integer:<init>	(I)V
     //   46: astore 5
     //   48: aload 4
     //   50: astore_0
-    //   51: ldc 134
-    //   53: ldc 144
-    //   55: invokevirtual 150	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   58: ldc 134
-    //   60: invokevirtual 156	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   51: ldc 212
+    //   53: ldc 222
+    //   55: invokevirtual 228	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   58: ldc 212
+    //   60: invokevirtual 234	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   63: astore_3
     //   64: aload 4
     //   66: astore_0
     //   67: aload_3
     //   68: astore_2
-    //   69: ldc 134
-    //   71: ldc 158
-    //   73: invokevirtual 150	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   76: ldc 134
-    //   78: invokevirtual 156	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   69: ldc 212
+    //   71: ldc 236
+    //   73: invokevirtual 228	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   76: ldc 212
+    //   78: invokevirtual 234	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   81: astore 4
     //   83: aload 4
     //   85: astore_0
     //   86: aload_3
     //   87: astore_2
-    //   88: ldc 134
-    //   90: ldc 160
-    //   92: invokevirtual 150	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   95: ldc 134
-    //   97: invokevirtual 156	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   88: ldc 212
+    //   90: ldc 238
+    //   92: invokevirtual 228	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   95: ldc 212
+    //   97: invokevirtual 234	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   100: astore 6
     //   102: aload 4
     //   104: astore_2
     //   105: aload 6
     //   107: astore_0
     //   108: aload 7
-    //   110: ldc 162
-    //   112: invokevirtual 132	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   115: checkcast 164	android/net/ConnectivityManager
+    //   110: ldc 83
+    //   112: invokevirtual 87	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   115: checkcast 89	android/net/ConnectivityManager
     //   118: astore 4
     //   120: aload 4
     //   122: ifnonnull +24 -> 146
     //   125: iconst_0
     //   126: ireturn
     //   127: astore_3
-    //   128: ldc 9
-    //   130: ldc 165
+    //   128: ldc 16
+    //   130: ldc 239
     //   132: aload_3
-    //   133: invokestatic 167	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   133: invokestatic 138	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   136: aload_2
     //   137: astore_3
     //   138: aload_0
@@ -155,50 +231,50 @@ public final class AdNet
     //   142: astore_0
     //   143: goto -35 -> 108
     //   146: aload 4
-    //   148: invokevirtual 171	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   148: invokevirtual 243	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   151: astore 4
     //   153: aload 4
     //   155: ifnonnull +5 -> 160
     //   158: iconst_0
     //   159: ireturn
     //   160: aload 4
-    //   162: invokevirtual 175	android/net/NetworkInfo:getType	()I
+    //   162: invokevirtual 247	android/net/NetworkInfo:getType	()I
     //   165: tableswitch	default:+130 -> 295, 0:+43->208, 1:+132->297, 2:+43->208, 3:+43->208, 4:+43->208, 5:+43->208, 6:+132->297
-    //   209: i2f
-    //   210: ldc 177
+    //   209: <illegal opcode>
+    //   210: ldc 249
     //   212: iconst_1
-    //   213: anewarray 146	java/lang/Class
+    //   213: anewarray 224	java/lang/Class
     //   216: dup
     //   217: iconst_0
-    //   218: getstatic 181	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   218: getstatic 253	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   221: aastore
-    //   222: invokevirtual 185	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   225: ldc 134
+    //   222: invokevirtual 257	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   225: ldc 212
     //   227: iconst_1
     //   228: anewarray 4	java/lang/Object
     //   231: dup
     //   232: iconst_0
     //   233: aload 4
-    //   235: invokevirtual 188	android/net/NetworkInfo:getSubtype	()I
-    //   238: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   235: invokevirtual 260	android/net/NetworkInfo:getSubtype	()I
+    //   238: invokestatic 61	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   241: aastore
-    //   242: invokevirtual 194	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   242: invokevirtual 266	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   245: astore 4
     //   247: aload 4
     //   249: aload_3
-    //   250: invokevirtual 198	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   250: invokevirtual 270	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   253: ifeq +5 -> 258
     //   256: iconst_2
     //   257: ireturn
     //   258: aload 4
     //   260: aload_2
-    //   261: invokevirtual 198	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   261: invokevirtual 270	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   264: ifeq +5 -> 269
     //   267: iconst_3
     //   268: ireturn
     //   269: aload 4
     //   271: aload_0
-    //   272: invokevirtual 198	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   272: invokevirtual 270	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   275: istore_1
     //   276: iload_1
     //   277: ifeq +5 -> 282
@@ -207,10 +283,10 @@ public final class AdNet
     //   282: iconst_0
     //   283: ireturn
     //   284: astore_0
-    //   285: ldc 9
-    //   287: ldc 165
+    //   285: ldc 16
+    //   287: ldc 239
     //   289: aload_0
-    //   290: invokestatic 105	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   290: invokestatic 179	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   293: iconst_0
     //   294: ireturn
     //   295: iconst_0
@@ -357,7 +433,7 @@ public final class AdNet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.net.AdNet
  * JD-Core Version:    0.7.0.1
  */

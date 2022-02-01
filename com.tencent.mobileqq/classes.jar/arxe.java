@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import io.flutter.plugin.common.MethodChannel.Result;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
-class arxe
-  extends arxf
+public class arxe
+  implements Animation.AnimationListener
 {
-  arxe(arxd paramarxd) {}
+  public arxe(EmoticonGuideBubbleView paramEmoticonGuideBubbleView) {}
   
-  protected void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    arxd.a(this.a, paramRequestPacket, paramResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonGuideBubbleView", 2, "removeFastImage fadeoutanimation ended");
+    }
+    this.a.removeAllViews();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

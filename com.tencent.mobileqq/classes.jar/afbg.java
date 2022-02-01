@@ -1,113 +1,51 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afbg
-  implements afax
+  extends aywi
 {
-  public static final afay<afbg> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private float b;
+  public afbg(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  static
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    jdField_a_of_type_Afay = new afbh();
-  }
-  
-  public afbg(afav paramafav)
-  {
-    paramafav.a();
-    this.jdField_a_of_type_Float = paramafav.a();
-    this.jdField_a_of_type_Long = paramafav.a();
-    this.jdField_a_of_type_Int = paramafav.a();
-    this.b = paramafav.a();
-  }
-  
-  public afbg(Path paramPath)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Path a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPath;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(afav paramafav, int paramInt)
-  {
-    paramafav.a(1);
-    paramafav.a(this.jdField_a_of_type_Float);
-    paramafav.a(this.jdField_a_of_type_Long);
-    paramafav.a(this.jdField_a_of_type_Int);
-    paramafav.a(this.b);
-  }
-  
-  public void a(afbg paramafbg)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramafbg.jdField_a_of_type_AndroidGraphicsPath);
-      this.b += paramafbg.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
   }
   
-  public void a(Path paramPath)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public void c(float paramFloat)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        RegisterQQNumberActivity.a(this.a, true);
+        RegisterQQNumberActivity.b(this.a);
+        return;
+      }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
+      {
+        RegisterQQNumberActivity.a(this.a);
+        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
+        localIntent.putExtra("phonenum", this.a.a);
+        localIntent.putExtra("key", this.a.b);
+        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_binduin", paramString);
+        this.a.startActivity(localIntent);
+        this.a.finish();
+        return;
+      }
+      RegisterQQNumberActivity.b(this.a);
       return;
     }
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(paramFloat, paramFloat);
-    Path localPath = new Path();
-    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
+    RegisterQQNumberActivity.b(this.a);
   }
 }
 

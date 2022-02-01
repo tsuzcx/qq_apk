@@ -1,61 +1,40 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pzx
-  extends pxl
+class pzx
+  implements pea
 {
-  public pzx(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  pzx(pzs parampzs, JSONObject paramJSONObject, String paramString) {}
   
-  public pxl a()
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)) && (ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a()))) {
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    }
-    for (;;)
+    if (!paramBoolean1) {}
+    try
     {
-      if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
-        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
+      for (;;)
+      {
+        this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      }
-      a(localLinearLayout);
-      return this;
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aepi.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyWebviewPlugin", 1, "handleCommentEditorNativeResult put create comment result error.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pzx
  * JD-Core Version:    0.7.0.1
  */

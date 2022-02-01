@@ -1,90 +1,133 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
 public class vhh
-  extends uro
 {
-  public String a;
-  public ArrayList<StoryVideoItem> a;
-  public boolean a;
-  public String c;
+  private final int jdField_a_of_type_Int;
+  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private int b;
+  private int c;
+  private int d;
   
-  public vhh(qqstory_service.RspFriendStoryFeedVideoList paramRspFriendStoryFeedVideoList)
+  public vhh(Context paramContext)
   {
-    super(paramRspFriendStoryFeedVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
-    this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
-    if (paramRspFriendStoryFeedVideoList.is_end.get() == 1) {}
-    Object localObject1;
-    Object localObject2;
-    for (;;)
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    int i = paramContext.widthPixels;
+    this.jdField_a_of_type_Int = (paramContext.heightPixels * i * 8);
+  }
+  
+  private void b(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
+    if (paramBitmap != null)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!paramRspFriendStoryFeedVideoList.share_group_video_info_list.has()) {
-        break;
+      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      if (!paramBitmap.isRecycled()) {
+        paramBitmap.recycle();
       }
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.share_group_video_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
-      {
-        localObject1 = (qqstory_struct.ShareGroupVideoInfo)paramRspFriendStoryFeedVideoList.next();
-        localObject2 = new StoryVideoItem();
-        ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-      }
-      bool = false;
     }
-    if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
+  }
+  
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    this.c += 1;
+    Object localObject1 = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    Object localObject2;
+    if (localIterator.hasNext())
     {
-      localObject1 = (uwm)uwa.a(2);
-      paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.get().iterator();
-      while (paramRspFriendStoryFeedVideoList.hasNext())
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
+        if (localObject1 == null) {
+          localObject2 = localBitmap;
+        }
+      }
+      for (;;)
       {
-        localObject2 = (qqstory_struct.MultiRecommendItem)paramRspFriendStoryFeedVideoList.next();
-        if (((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.has())
-        {
-          String str = ((qqstory_struct.MultiRecommendItem)localObject2).feed_id.get().toStringUtf8();
-          Iterator localIterator = ((qqstory_struct.MultiRecommendItem)localObject2).feed_video_info_list.get().iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (qqstory_struct.FeedVideoInfo)localIterator.next();
-            StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-            localStoryVideoItem.convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject3);
-            localStoryVideoItem.mAttachedFeedId = str;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
-            localObject3 = new QQUserUIItem();
-            ((QQUserUIItem)localObject3).convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
-            localObject3 = ((uwm)localObject1).a((QQUserUIItem)localObject3);
-            localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject3).uid;
-            localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject3).getDisplayName();
-          }
+        localObject1 = localObject2;
+        break;
+        localObject2 = localBitmap;
+        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
+          localObject2 = localObject1;
         }
       }
     }
-    paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.feed_video_info_list.get().iterator();
-    while (paramRspFriendStoryFeedVideoList.hasNext())
+    if (localObject1 != null)
     {
-      localObject1 = (qqstory_struct.FeedVideoInfo)paramRspFriendStoryFeedVideoList.next();
-      localObject2 = new StoryVideoItem();
-      ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
+      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
+      return localObject1;
+    }
+    try
+    {
+      this.d += 1;
+      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      return localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return localObject1;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        localBitmap.recycle();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
+    for (;;)
+    {
+      return;
+      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
+      while (this.b > this.jdField_a_of_type_Int)
+      {
+        paramBitmap = null;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          Bitmap localBitmap2 = (Bitmap)localIterator.next();
+          Bitmap localBitmap1;
+          if (paramBitmap == null) {
+            localBitmap1 = localBitmap2;
+          }
+          for (;;)
+          {
+            paramBitmap = localBitmap1;
+            break;
+            localBitmap1 = localBitmap2;
+            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
+              localBitmap1 = paramBitmap;
+            }
+          }
+        }
+        if (paramBitmap != null) {
+          b(paramBitmap);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhh
  * JD-Core Version:    0.7.0.1
  */

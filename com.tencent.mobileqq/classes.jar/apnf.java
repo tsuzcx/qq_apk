@@ -1,21 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class apnf
-  implements apmj
+public class apnf
 {
-  apnf(apnd paramapnd) {}
-  
-  public void a(List<apuf> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if (this.a.a != null) {
-      this.a.a.a((List)localObject);
-    }
-  }
+  public WeakReference<beaw> a;
+  public boolean a = false;
 }
 
 

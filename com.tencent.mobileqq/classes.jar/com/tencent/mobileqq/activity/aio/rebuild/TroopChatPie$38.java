@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+import ankw;
+import awhx;
+import bfql;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Set;
 
 class TroopChatPie$38
   implements Runnable
@@ -17,40 +20,35 @@ class TroopChatPie$38
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.this$0.j)) {}
-    Object localObject;
-    do
+    if (awhx.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
-      return;
-      localObject = ((TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.this$0.j);
-    } while (localObject != null);
-    String str1;
-    String str2;
-    if (QLog.isColorLevel())
-    {
-      str1 = this.this$0.jdField_a_of_type_JavaLangString;
-      str2 = this.this$0.j;
-      if (localObject == null) {
-        break label165;
-      }
+      this.this$0.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131689871));
+      this.this$0.jdField_a_of_type_AndroidWidgetToast.show();
+      awhx.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    label165:
-    for (boolean bool = true;; bool = false)
+    Object localObject = (ankw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+    if ((localObject != null) && (((ankw)localObject).a.contains(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
     {
-      QLog.i(str1, 2, String.format("checkSelfInTroop %s %s", new Object[] { str2, Boolean.valueOf(bool) }));
-      localObject = BaseApplicationImpl.getContext();
-      if (localObject != null) {
-        ThreadManager.getUIHandler().post(new TroopChatPie.38.1(this, (Context)localObject));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      ((ankw)localObject).a.remove(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
+    localObject = (bfql)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(109);
+    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localObject != null)
+    {
+      if (this.this$0.q != ((bfql)localObject).a(0))
+      {
+        this.this$0.q = ((bfql)localObject).a(0);
+        this.this$0.b.sendEmptyMessage(4);
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.j, 1);
-      this.this$0.a().post(new TroopChatPie.38.2(this));
-      return;
+      localTroopManager.c(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      ((bfql)localObject).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.38
  * JD-Core Version:    0.7.0.1
  */

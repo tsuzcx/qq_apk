@@ -1,16 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.Callable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ataf
-  implements Callable<aszg>
+  implements DialogInterface.OnClickListener
 {
-  ataf(atad paramatad) {}
+  ataf(atae paramatae, atak paramatak) {}
   
-  public aszg a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return aszp.b(atad.a(this.a).getApplication(), "GVideo", localQQAppInterface.c());
+    bcst.b(null, "dc00898", "", "", "0X800AE40", "0X800AE40", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Atak != null) {
+      this.jdField_a_of_type_Atak.a();
+    }
   }
 }
 

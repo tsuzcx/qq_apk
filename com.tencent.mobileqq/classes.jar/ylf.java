@@ -1,17 +1,28 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tribe.async.dispatch.IEventReceiver;
 
-final class ylf
-  implements Comparator<File>
+public class ylf
+  implements IEventReceiver
 {
-  public int a(File paramFile1, File paramFile2)
+  protected yko a;
+  
+  public yko a()
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    return this.a;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    yqp.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylf
  * JD-Core Version:    0.7.0.1
  */

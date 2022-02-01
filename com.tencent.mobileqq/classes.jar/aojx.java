@@ -1,292 +1,241 @@
+import android.content.Context;
 import android.text.TextUtils;
-import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aojx
 {
-  private final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(10);
-  private final ConcurrentHashMap<String, CopyOnWriteArraySet<aojz>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static volatile aojx jdField_a_of_type_Aojx;
+  private ArrayList<aoju> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public aojx()
+  private aojx()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(271, "batch_add_friend_for_troop_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(275, "confess_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(358, "contact_top_entry_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(372, "breaking_ice_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(326, "sosointerface_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(357, "register_invitation_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(330, "hiboom_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(296, "extend_friend_config_785");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(369, "account_logout_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(379, "qqsettingme_f2f_guide_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(378, "profile_btn_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(381, "profile_switch_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(401, "smart_devices_discovery_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(407, "hide_qq_xman");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(405, "add_contact_page_public_account_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(408, "select_member_entry_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(355, "troop_member_list_config");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    a("mqqapi://qqidentifier/web", aojp.class);
+    a("mqqapi://groupopenapp/openapp", aoms.class);
+    a("mqqapi://commonBuddyGroup/commonBuddyGroup", aomq.class);
+    a("mqqapi://manage_troop/main_page", aomo.class);
+    a("mqqapi://nearby_entry/nearby_feed", aojd.class);
+    a("mqqapi://now/playmedia", aomg.class);
+    a("mqqapi://wsgzh/waterfall", aomw.class);
+    a("mqqapi://wsgzh/miniapp_player", aomy.class);
+    a("mqqzone", aolv.class);
+    a("mqqapi://qzoneschema", aomc.class);
+    a("mqqapi://qzone/publicaccount", aolx.class);
+    a("mqqapi://qboss/loader", aoky.class);
+    a("qqfav://operation/", aokm.class);
+    a("mqq://shop/apollo_store", aoiv.class);
+    a("mqqapi://shop/apollo_store", aoiv.class);
+    a("mqqapi://cmshow/game_invite", aoiu.class);
+    a("mqqapi://assistant_setting/ASSISTANT_SETTING", aoip.class);
+    a("mqqapi://qzone/to_publish_queue", aolz.class);
+    a("mqqapi://qzone/to_friend_feeds", aols.class);
+    a("mqqapi://qzone/activefeed", aols.class);
+    a("mqqapi://qzone/open_homepage", aolu.class);
+    a("mqqapi://ftssearch/tab", aojb.class);
+    a("mqqapi://ftssearch/openmixweb", aoiz.class);
+    a("mqqapi://qzone/to_qzone_dialog", aolq.class);
+    a("mqqapi://qzone/to_redpocket_share", aomb.class);
+    a("qapp://", aokw.class);
+    a("mqqapi://qqreg", aokq.class);
+    a("mqqapi://microapp/open?", aojj.class);
+    a("mqqapi://miniapp/open?", aojl.class);
+    a("mqqapi://miniapp/adopen", aojl.class);
+    a("mqqapi://buscard/open", aolh.class);
+    a("mqqapi://wxminiapp/launch", aoll.class);
+    a("mqqapi://qqnotify/subscribe", aoko.class);
+    a("mqqapi://qqnotify/open", aoln.class);
+    a("mqqapi://wallet/open", aolj.class);
+    a("mqqmdpass://wallet/modify_pass", aolf.class);
+    a("mqqapi://gamecenter/install", aomu.class);
+    a("mqqapi://vaslive", aojr.class);
+    a("mqqapi://asyncmsg/showdetail?", aoir.class);
+    a("mqqapi://schedule/showDetail?", aome.class);
+    a("mqqapi://huayang", aojn.class);
+    a("mqqapi://od", aoke.class);
+    a("mqqapi://0odAddFriend", aokc.class);
+    a("mqqapi://teamwork/opendoclist", aomm.class);
+    a("mqqapi://qstory/opencontent", aoku.class);
+    a("qqstory://qstory/opencontent", aoku.class);
+    a("mqqapi://contact/add", aoix.class);
+    a("mqqapi://profile/setting", aokg.class);
+    a("mqqapi://stickynote", aomi.class);
+    a("mqqapi://groupvideo", aojf.class);
+    a("mqqapi://qwerewolf/enterHomePage", aoki.class);
+    a("mqqapi://lightapp/open", aoka.class);
+    a("mqqapi://qsubscribe", aomk.class);
+    a("mqqapi://qcircle", aokk.class);
+    a("mqqapi://troop_homework/publish", aojh.class);
+    a("https://qm.qq.com/cgi-bin/qm/qr", aola.class);
+    a("mqqapi://avgame/join_room", aoin.class);
+    a("mqqapi://avgame/create_room", aoik.class);
+  }
+  
+  public static aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    try
     {
-      String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new CopyOnWriteArraySet());
-      i += 1;
-    }
-    a("qqsettingme_f2f_guide_config", new aokl());
-    a("smart_devices_discovery_config", new aokm());
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return bdne.a(BaseApplicationImpl.getApplication(), paramString1, paramString2);
-  }
-  
-  private CopyOnWriteArraySet<aojz> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
+      if (jdField_a_of_type_Aojx == null) {}
+      try
+      {
+        if (jdField_a_of_type_Aojx == null) {
+          jdField_a_of_type_Aojx = new aojx();
+        }
+        paramQQAppInterface = jdField_a_of_type_Aojx.b(paramQQAppInterface, paramContext, paramString);
+        return paramQQAppInterface;
+      }
+      finally {}
       return null;
     }
-    return (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    if (QLog.isColorLevel())
+    catch (Exception paramQQAppInterface)
     {
-      paramQQAppInterface = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigFail [id: %s, tag: %s, isSuc: %s, result: %s]", new Object[] { Integer.valueOf(paramInt1), paramQQAppInterface, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+      paramContext = new HashMap(1);
+      paramContext.put("keyJumpParserUtilUrlErrorKey", paramString);
+      paramContext.put("keyJumpParserUtilSceneErrorKey", "1");
+      bctj.a(BaseApplicationImpl.getApplication()).a("", "keyJumpParserUtil", true, 0L, 0L, paramContext, "", false);
+      QLog.e("JumpParserUtil", 1, "parse error: " + paramQQAppInterface.getMessage());
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt)
+  private static aojw a(String paramString)
   {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (TextUtils.isEmpty(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, String.format(" handleConfig tag is null ! config: %s", new Object[] { Integer.valueOf(paramInt) }));
-      }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("JumpParserUtil", 1, "parseUrl error: jump is empty");
+      paramString = null;
+      return paramString;
     }
-    String str2;
-    BaseApplication localBaseApplication;
-    aojy localaojy;
-    do
+    aojw localaojw = new aojw("", "", "", "", paramString);
+    int i = paramString.indexOf(":");
+    String[] arrayOfString1;
+    if (i > 0)
     {
-      return;
-      str2 = paramQQAppInterface.getCurrentAccountUin();
-      localBaseApplication = paramQQAppInterface.getApp();
-      localaojy = new aojy();
-      localaojy.jdField_b_of_type_Int = paramConfig.version.get();
-      localaojy.jdField_a_of_type_Int = bdne.c(localBaseApplication, str2, str1);
-      if (localaojy.jdField_b_of_type_Int != localaojy.jdField_a_of_type_Int) {
-        break;
+      localaojw.a(paramString.substring(0, i));
+      QLog.d("JumpParserUtil", 1, "parseUrl scheme is: " + localaojw.a());
+      arrayOfString1 = paramString.split("\\?");
+      if (arrayOfString1.length != 2) {
+        break label278;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localaojy.jdField_b_of_type_Int) });
-    return;
-    localaojy.c = 0;
-    if (paramConfig.msg_content_list.size() > 0)
-    {
-      paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-      if (paramConfig != null) {
-        break label367;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, " handleConfig content is null !");
-      }
-      localaojy.c = 1;
+      paramString = arrayOfString1[0].substring(i + 3);
     }
     for (;;)
     {
-      if (localaojy.jdField_a_of_type_JavaLangString == null) {
-        localaojy.jdField_a_of_type_JavaLangString = "";
-      }
-      localaojy.jdField_b_of_type_Boolean = true;
-      localaojy.jdField_a_of_type_Boolean = false;
-      if (localaojy.c == 0) {
-        try
-        {
-          bdga.a(paramQQAppInterface, str1, localaojy);
-          if (!localaojy.jdField_a_of_type_Boolean)
-          {
-            bdne.a(localBaseApplication, str2, str1, localaojy.jdField_a_of_type_JavaLangString);
-            paramConfig = a(str1);
-            if ((paramConfig == null) || (paramConfig.size() <= 0)) {
-              break label579;
-            }
-            paramConfig = paramConfig.iterator();
-            for (;;)
-            {
-              for (;;)
-              {
-                if (!paramConfig.hasNext()) {
-                  break label579;
-                }
-                aojz localaojz = (aojz)paramConfig.next();
-                try
-                {
-                  localaojz.a(paramQQAppInterface, paramInt, str1, localaojy);
-                }
-                catch (Exception localException)
-                {
-                  localException.printStackTrace();
-                }
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("CfgProcess", 2, "handleConfig OnGetConfigListener fail:  " + str1);
-                  continue;
-                  label367:
-                  if (paramConfig.compress.get() != 1) {
-                    break label484;
-                  }
-                  paramConfig = awci.a(paramConfig.content.get().toByteArray());
-                  if (paramConfig == null) {
-                    break label460;
-                  }
-                  try
-                  {
-                    localaojy.jdField_a_of_type_JavaLangString = new String(paramConfig, "UTF-8");
-                  }
-                  catch (Throwable paramConfig)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.d("CfgProcess", 2, " handleConfig Throwable:" + paramConfig.getMessage());
-                    }
-                    localaojy.c = 2;
-                  }
-                }
-              }
-              break;
-              label460:
-              localaojy.c = 3;
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("CfgProcess", 2, " handleConfig inflateConfigString error!");
-              break;
-              label484:
-              localaojy.jdField_a_of_type_JavaLangString = paramConfig.content.get().toStringUtf8();
-            }
-          }
+      String[] arrayOfString2 = paramString.split("/");
+      if (arrayOfString2.length == 0)
+      {
+        localaojw.b(paramString);
+        QLog.d("JumpParserUtil", 1, "parseUrl server is: " + localaojw.b());
+        paramString = localaojw;
+        if (arrayOfString1.length != 2) {
+          break;
         }
-        catch (Throwable paramConfig)
+        arrayOfString1 = arrayOfString1[1].split("&");
+        i = 0;
+        label188:
+        paramString = localaojw;
+        if (i >= arrayOfString1.length) {
+          break;
+        }
+        paramString = arrayOfString1[i].split("=");
+        if (paramString.length != 2) {}
+      }
+      try
+      {
+        paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
+        localaojw.a(paramString[0], paramString[1]);
+        i += 1;
+        break label188;
+        localaojw.a(paramString);
+        QLog.d("JumpParserUtil", 1, "parseUrl scheme is: " + localaojw.a());
+        return localaojw;
+        label278:
+        paramString = paramString.substring(i + 3);
+        continue;
+        localaojw.b(arrayOfString2[0]);
+        localaojw.c(paramString.substring(paramString.indexOf("/") + 1));
+        QLog.d("JumpParserUtil", 1, "parseUrl server is: " + localaojw.b() + " action is: " + localaojw.c());
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          for (;;)
-          {
-            paramConfig.printStackTrace();
-            if (QLog.isColorLevel())
-            {
-              QLog.i("CfgProcess", 2, "handleConfig call save individual fail:  " + str1);
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.i("CfgProcess", 2, "handleConfig self save config tag: " + str1);
-              }
-            }
-          }
+          QLog.e("JumpParserUtil", 1, "failed to decode param value,keyValues[1] is:" + paramString[1] + ",keyValues[2] is:" + paramString[1], localException);
         }
       }
     }
-    label579:
-    if (localaojy.jdField_b_of_type_Boolean) {}
-    for (int i = localaojy.jdField_b_of_type_Int;; i = 0)
+  }
+  
+  private String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("JumpParserUtil", 1, "shouldPreDecodeUrl error: url is null");
+    }
+    while ((paramString.startsWith("mqqapi://qqidentifier/web")) || (paramString.startsWith("mqqapi://groupopenapp/openapp")) || (paramString.startsWith("mqqapi://commonBuddyGroup/commonBuddyGroup")) || (paramString.startsWith("mqqapi://manage_troop/main_page")) || (paramString.startsWith("mqqapi://nearby_entry/nearby_feed")) || (paramString.startsWith("mqqapi://now/playmedia")) || (paramString.startsWith("mqqapi://wsgzh/waterfall")) || (paramString.startsWith("mqqapi://wsgzh/miniapp_player")) || (paramString.startsWith("mqqzone")) || (paramString.startsWith("mqqapi://qzoneschema")) || (paramString.startsWith("mqqapi://qzone/publicaccount")) || (paramString.startsWith("mqqapi://qboss/loader")) || (paramString.startsWith("qqfav://operation/")) || (paramString.startsWith("mqq://shop/apollo_store")) || (paramString.startsWith("mqqapi://shop/apollo_store")) || (paramString.startsWith("mqqapi://cmshow/game_invite")) || (paramString.startsWith("mqqapi://assistant_setting/ASSISTANT_SETTING")) || (!paramString.contains("videochat")) || (!paramString.contains("uinType=21"))) {
+      return paramString;
+    }
+    QLog.d("JumpParserUtil", 1, "shouldPreDecodeUrl execute for containing videochat and uinType=21");
+    return URLDecoder.decode(paramString);
+  }
+  
+  private void a(String paramString, Class paramClass)
+  {
+    if (paramClass == null)
     {
-      bdne.c(localBaseApplication, str2, str1, i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(localaojy.jdField_a_of_type_Int), Integer.valueOf(localaojy.jdField_b_of_type_Int), Integer.valueOf(localaojy.c), localaojy.jdField_a_of_type_JavaLangString }));
+      QLog.e("JumpParserUtil", 1, "registerParser error: class is null");
       return;
     }
-  }
-  
-  public void a(ConfigurationService.ConfigSeq paramConfigSeq, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (TextUtils.isEmpty(str1))
+    if (TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion tag is null, configId: %s", new Object[] { Integer.valueOf(paramInt) }));
-      }
+      QLog.e("JumpParserUtil", 1, "registerParser error: urlStartStr is empty");
       return;
     }
-    String str2 = paramQQAppInterface.c();
-    paramQQAppInterface = paramQQAppInterface.getApp();
-    int i;
-    if (bdne.d(paramQQAppInterface, str2, str1) != AppSetting.a())
+    this.jdField_a_of_type_JavaUtilArrayList.add(new aoju(paramString, paramClass));
+  }
+  
+  public ArrayList<aoju> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public aojs b(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    QLog.d("JumpParserUtil", 1, "doParse url: " + paramString);
+    if (paramString == null)
     {
-      bdne.d(paramQQAppInterface, str2, str1, AppSetting.a());
-      bdne.c(paramQQAppInterface, str2, str1, 0);
-      paramConfigSeq.version.set(0);
-      i = 0;
+      QLog.d("JumpParserUtil", 1, "doParse url is null, return");
+      return null;
     }
-    for (;;)
+    Object localObject = a(paramString);
+    paramString = (String)localObject;
+    if (AudioHelper.e())
     {
-      paramConfigSeq.compress.set(1);
-      if (!QLog.isColorLevel()) {
-        break;
+      paramString = (String)localObject;
+      if (AudioHelper.a(8) == 1)
+      {
+        paramString = (String)localObject;
+        if (((String)localObject).startsWith("mqqconferenceflyticket://")) {
+          paramString = "mqqavshare://avshare/forward?url=https%3a%2f%2fwww.baidu.com%2fs%3fwd%3dabc%26rsv_spt%3d1&exp=1566906601";
+        }
       }
-      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion [id: %s, tag: %s, version: %s]", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(i) }));
-      return;
-      i = bdne.c(paramQQAppInterface, str2, str1);
-      paramConfigSeq.version.set(i);
     }
-  }
-  
-  public boolean a(aojz paramaojz)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((CopyOnWriteArraySet)localIterator.next()).remove(paramaojz) | bool) {}
-    return bool;
-  }
-  
-  public boolean a(String paramString, aojz paramaojz)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = paramString.add(paramaojz);
+    localObject = a(paramString);
+    aojt localaojt = aojv.a((aojw)localObject, a());
+    if (localaojt != null)
+    {
+      QLog.d("JumpParserUtil", 1, "doParse, prepare to parse url: " + paramString);
+      return localaojt.a(paramQQAppInterface, paramContext, paramString, (aojw)localObject);
     }
-    return bool;
-  }
-  
-  public boolean b(String paramString, aojz paramaojz)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = paramString.remove(paramaojz);
-    }
-    return bool;
+    QLog.d("JumpParserUtil", 1, "doParse error: jumpParser not register, handle with old method:" + paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojx
  * JD-Core Version:    0.7.0.1
  */

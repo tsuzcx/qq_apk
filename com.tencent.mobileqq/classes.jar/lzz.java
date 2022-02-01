@@ -1,48 +1,23 @@
-import android.os.RemoteException;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.LinearLayout;
 
-public class lzz
-  extends alvn
+abstract class lzz
 {
-  private List<lzj> a = new ArrayList();
+  int jdField_a_of_type_Int = -1;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  int b = -552421387;
+  int c = -15550475;
+  int d = 14;
   
-  public int a()
+  void a(int paramInt)
   {
-    return this.a.size();
-  }
-  
-  public void a(lzj paramlzj)
-  {
-    if (paramlzj != null) {
-      this.a.add(paramlzj);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
     }
-  }
-  
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      lzj locallzj = (lzj)localIterator.next();
-      try
-      {
-        locallzj.a(paramBoolean, paramLBSInfo);
-      }
-      catch (RemoteException localRemoteException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
-      }
-    }
-    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzz
  * JD-Core Version:    0.7.0.1
  */

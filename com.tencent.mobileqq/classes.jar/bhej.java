@@ -1,28 +1,27 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
 
 public class bhej
-  implements bgmc<bgqz>
+  extends bheh
 {
-  public static bgqz a(bglv parambglv)
+  public bhej(SurfaceHolder paramSurfaceHolder)
   {
-    return (bgqz)parambglv.a(new bhej());
+    super(paramSurfaceHolder);
   }
   
-  public bgqz a(bgls parambgls)
+  Canvas a(SurfaceHolder paramSurfaceHolder)
   {
-    parambgls = parambgls.a();
-    if (!(parambgls instanceof AppBrandPageContainer))
-    {
-      QMLog.w("Action", "Excepted AppBrandPageContainer, but is " + parambgls);
-      return null;
-    }
-    return ((AppBrandPageContainer)parambgls).a();
+    return paramSurfaceHolder.lockHardwareCanvas();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhej
  * JD-Core Version:    0.7.0.1
  */

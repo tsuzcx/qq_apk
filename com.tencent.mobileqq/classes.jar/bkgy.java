@@ -1,7 +1,6 @@
-public class bkgy
+public abstract interface bkgy
 {
-  public static final int a = (int)(40.0F * bdoo.a());
-  public static final int b = (int)(24.0F * bdoo.a());
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

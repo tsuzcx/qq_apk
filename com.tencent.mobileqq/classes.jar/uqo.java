@@ -1,31 +1,25 @@
-public class uqo
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class uqo
+  implements View.OnClickListener
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
+  uqo(uqn paramuqn) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-    c = false;
-    jdField_a_of_type_Int = 725;
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return true;
+    if (uqn.a(this.a).getActivity() != null) {
+      uqn.a(this.a).getActivity().doOnBackPressed();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqo
  * JD-Core Version:    0.7.0.1
  */

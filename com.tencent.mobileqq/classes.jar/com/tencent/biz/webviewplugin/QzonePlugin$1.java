@@ -1,23 +1,23 @@
 package com.tencent.biz.webviewplugin;
 
+import abcf;
 import com.tencent.smtt.sdk.WebView;
-import zfm;
 
 public class QzonePlugin$1
   implements Runnable
 {
-  public QzonePlugin$1(zfm paramzfm, byte[] paramArrayOfByte) {}
+  public QzonePlugin$1(abcf paramabcf, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (zfm.a(this.this$0) != null) {
-      zfm.a(this.this$0).postUrl(zfm.a(this.this$0), this.a);
+    if (abcf.a(this.this$0) != null) {
+      abcf.a(this.this$0).postUrl(abcf.a(this.this$0), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzonePlugin.1
  * JD-Core Version:    0.7.0.1
  */

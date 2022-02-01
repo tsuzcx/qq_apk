@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.wifisdk.services.common.api.e;
 import com.wifisdk.ui.api.RProxy.color;
 import com.wifisdk.ui.api.RProxy.id;
@@ -176,20 +177,22 @@ public class WifiCommonView
   
   public void onClick(View paramView)
   {
+    hv localhv;
     Context localContext;
     if (paramView == this.vu)
     {
       this.vx = true;
-      paramView = hv.fD();
+      localhv = hv.fD();
       localContext = this.vy;
       if (this.un != 1) {
-        break label40;
+        break label49;
       }
     }
-    label40:
+    label49:
     for (int i = 8;; i = 4)
     {
-      paramView.a(localContext, i);
+      localhv.a(localContext, i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
   }
@@ -201,7 +204,7 @@ public class WifiCommonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.wifisdk.ui.view.WifiCommonView
  * JD-Core Version:    0.7.0.1
  */

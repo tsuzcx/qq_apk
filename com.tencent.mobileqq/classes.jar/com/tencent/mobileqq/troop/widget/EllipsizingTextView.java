@@ -7,7 +7,7 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bcqt;
+import bfvl;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.theme.ISkinIgnoreTypeface;
 
@@ -16,7 +16,7 @@ public class EllipsizingTextView
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 1;
-  private bcqt jdField_a_of_type_Bcqt;
+  private bfvl jdField_a_of_type_Bfvl;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -52,12 +52,12 @@ public class EllipsizingTextView
     setTypeface(null);
   }
   
-  private bcqt a()
+  private bfvl a()
   {
-    if (this.jdField_a_of_type_Bcqt == null) {
-      this.jdField_a_of_type_Bcqt = new bcqt(this);
+    if (this.jdField_a_of_type_Bfvl == null) {
+      this.jdField_a_of_type_Bfvl = new bfvl(this);
     }
-    return this.jdField_a_of_type_Bcqt;
+    return this.jdField_a_of_type_Bfvl;
   }
   
   public void a()
@@ -76,15 +76,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((bcqt)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((bfvl)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((bfvl)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((bfvl)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);
@@ -103,7 +103,7 @@ public class EllipsizingTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.EllipsizingTextView
  * JD-Core Version:    0.7.0.1
  */

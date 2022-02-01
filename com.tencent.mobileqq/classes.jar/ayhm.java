@@ -1,21 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-class ayhm
-  implements View.OnClickListener
+public final class ayhm
+  implements Parcelable.Creator<OcrConfig>
 {
-  ayhm(ayhk paramayhk, aynp paramaynp) {}
-  
-  public void onClick(View paramView)
+  public OcrConfig a(Parcel paramParcel)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aynp.d))
-    {
-      ayvm.a(this.jdField_a_of_type_Ayhk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ayhk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aynp.d);
-      ayvm.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Ayhk.jdField_a_of_type_Int) });
-      return;
-    }
-    ayvm.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Ayhk.jdField_a_of_type_Int) });
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
   }
 }
 

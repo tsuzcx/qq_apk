@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aahi;
-import akwd;
+import aceh;
+import ampj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,18 +11,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import asnl;
-import asnm;
-import asnu;
-import asnv;
-import asnw;
-import asnx;
-import asny;
-import azus;
-import azut;
-import azwv;
-import bdug;
-import bkjb;
+import auud;
+import auue;
+import auuq;
+import auur;
+import auus;
+import auut;
+import auuu;
+import bcvs;
+import bcvt;
+import bcxv;
+import bmxq;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
@@ -35,14 +34,15 @@ import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import swh;
+import txp;
 
 public class ImgHeaderView
   extends RelativeLayout
-  implements asnu
+  implements auuq
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -60,8 +60,12 @@ public class ImgHeaderView
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
     localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(localIntent);
-    aahi.a(akwd.a(), "769", "205019", asnl.a(paramMessageRecord, 0), "76901", "1", "160", new String[] { asnl.a(paramMessageRecord), "", "20" });
-    ((bdug)akwd.a().getBusinessHandler(71)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
+    paramActivity = new HashMap();
+    aceh.a(paramActivity, auud.a(paramMessageRecord, 0));
+    paramActivity.put(Integer.valueOf(2), auud.a(paramMessageRecord));
+    paramActivity.put(Integer.valueOf(4), "20");
+    aceh.a(ampj.a(), "769", "205019", auud.a(paramMessageRecord, 0), "76901", "1", "160", paramActivity);
+    ((VasExtensionHandler)ampj.a().getBusinessHandler(71)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
   }
   
   private void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, QQGameMsgInfo paramQQGameMsgInfo)
@@ -70,14 +74,14 @@ public class ImgHeaderView
     localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(localIntent);
     paramActivity = new HashMap();
+    paramActivity.put(Integer.valueOf(2), paramString1);
+    paramActivity.put(Integer.valueOf(4), "20");
     paramActivity.put(Integer.valueOf(24), "1");
-    paramActivity.put(Integer.valueOf(1), paramString1);
-    paramActivity.put(Integer.valueOf(3), "20");
-    aahi.a(akwd.a(), "769", "205019", paramString2, "76901", "1", "160", paramActivity);
-    bkjb.a(3, paramString1, this.jdField_a_of_type_JavaLangString);
+    aceh.a(ampj.a(), "769", "205019", paramString2, "76901", "1", "160", paramActivity);
+    bmxq.a(3, paramString1, this.jdField_a_of_type_JavaLangString);
     try
     {
-      asnm.a(102, paramQQGameMsgInfo, paramInt);
+      auue.a(118, paramQQGameMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -85,6 +89,13 @@ public class ImgHeaderView
       paramActivity.printStackTrace();
     }
   }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public void a() {}
   
   public void a(MessageRecord paramMessageRecord, Activity paramActivity)
   {
@@ -109,10 +120,10 @@ public class ImgHeaderView
             {
               localObject3 = localObject2;
               localObject5 = localObject1;
-              if (!(localArrayList.get(k) instanceof azut)) {
+              if (!(localArrayList.get(k) instanceof bcvt)) {
                 break;
               }
-              localObject4 = ((azut)localArrayList.get(k)).a;
+              localObject4 = ((bcvt)localArrayList.get(k)).a;
               m = 0;
               j = 0;
               i = 0;
@@ -121,14 +132,14 @@ public class ImgHeaderView
               }
               if ((((ArrayList)localObject4).get(m) instanceof StructMsgItemTitle))
               {
-                localObject2 = ((StructMsgItemTitle)((ArrayList)localObject4).get(m)).Y;
+                localObject2 = ((StructMsgItemTitle)((ArrayList)localObject4).get(m)).ag;
                 i = j;
                 j = 1;
                 localObject3 = localObject1;
                 localObject1 = localObject2;
                 localObject2 = localObject3;
                 break label606;
-                this.jdField_a_of_type_JavaLangString = ((azus)localArrayList.get(k)).b;
+                this.jdField_a_of_type_JavaLangString = ((bcvs)localArrayList.get(k)).b;
                 localObject3 = localObject1;
                 localObject5 = localObject4;
                 if (j == 0) {
@@ -144,23 +155,23 @@ public class ImgHeaderView
             }
             else
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559130, this, false));
-              this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368092));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559202, this, false));
+              this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368418));
               localObject1 = URLDrawable.getDrawable((String)localObject4);
               this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377606));
+              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378445));
               this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
-              ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370086)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
-              this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365141));
-              this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(asnl.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-              this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new asnv(this, paramActivity, paramMessageRecord));
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new asnw(this, paramActivity, paramMessageRecord));
+              ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370529)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
+              this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365380));
+              this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(auud.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+              this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new auur(this, paramActivity, paramMessageRecord));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new auus(this, paramActivity, paramMessageRecord));
               addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
               return;
             }
-            if ((((ArrayList)localObject4).get(m) instanceof azwv))
+            if ((((ArrayList)localObject4).get(m) instanceof bcxv))
             {
-              localObject3 = ((azwv)((ArrayList)localObject4).get(m)).S;
+              localObject3 = ((bcxv)((ArrayList)localObject4).get(m)).aa;
               n = 1;
               j = i;
               localObject1 = localObject2;
@@ -177,7 +188,7 @@ public class ImgHeaderView
               continue;
             }
             localObject1 = (MessageForPubAccount)paramMessageRecord;
-            ((MessageForPubAccount)localObject1).mPAMessage = swh.a(((MessageForPubAccount)localObject1).msgData);
+            ((MessageForPubAccount)localObject1).mPAMessage = txp.a(((MessageForPubAccount)localObject1).msgData);
             localObject4 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).cover;
             localObject3 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).title;
             this.jdField_a_of_type_JavaLangString = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).url;
@@ -232,17 +243,17 @@ public class ImgHeaderView
       Object localObject = paramQQGameMsgInfo.coverUrl;
       String str = paramQQGameMsgInfo.title;
       this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559130, this, false));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368092));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559202, this, false));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368418));
       localObject = URLDrawable.getDrawable((String)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377606));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378445));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370086)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365141));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(asnl.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new asnx(this, paramActivity, paramQQGameMsgInfo, paramInt));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new asny(this, paramActivity, paramQQGameMsgInfo, paramInt));
+      ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370529)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365380));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(auud.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new auut(this, paramActivity, paramQQGameMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new auuu(this, paramActivity, paramQQGameMsgInfo, paramInt));
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       return;
     }
@@ -251,10 +262,12 @@ public class ImgHeaderView
       QLog.e("ImgHeaderView", 1, "init imgHeader failed e=" + paramQQGameMsgInfo.toString());
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ImgHeaderView
  * JD-Core Version:    0.7.0.1
  */

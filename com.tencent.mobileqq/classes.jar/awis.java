@@ -1,25 +1,23 @@
-import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.medalwall.MedalID;
 
-public abstract interface awis
-  extends IInterface
+public final class awis
+  implements Parcelable.Creator<MedalID>
 {
-  public abstract int a();
+  public MedalID a(Parcel paramParcel)
+  {
+    return new MedalID(paramParcel);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int[] a();
-  
-  public abstract boolean[] a();
+  public MedalID[] a(int paramInt)
+  {
+    return new MedalID[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awis
  * JD-Core Version:    0.7.0.1
  */

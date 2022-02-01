@@ -1,19 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.view.View.OnLongClickListener;
 
-public class ajdc
-  implements ajcl
+class ajdc
+  implements View.OnLongClickListener
 {
-  public ajdc(DrawHbFragment paramDrawHbFragment, View paramView) {}
+  ajdc(ajcz paramajcz, ajdf paramajdf) {}
   
-  public void a(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_Ajcz.a != null)
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(8);
-      return;
+      int i = this.jdField_a_of_type_Ajdf.getAdapterPosition();
+      return this.jdField_a_of_type_Ajcz.a.a(paramView, this.jdField_a_of_type_Ajdf, i);
     }
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(0);
+    return false;
   }
 }
 

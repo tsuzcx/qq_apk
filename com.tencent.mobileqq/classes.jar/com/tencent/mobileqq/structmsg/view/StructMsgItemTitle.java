@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import azuu;
+import bcvu;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends azuu
+  extends bcvu
 {
   public boolean c;
   public boolean d;
-  public int k;
+  public int o;
   
   public StructMsgItemTitle()
   {
@@ -36,13 +36,13 @@ public class StructMsgItemTitle
   
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    paramAbsShareMsg.mContentTitle = this.Y;
+    paramAbsShareMsg.mContentTitle = this.ag;
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
     this.c = paramBoolean;
-    this.k = paramInt;
+    this.o = paramInt;
   }
   
   public void b(boolean paramBoolean)
@@ -52,12 +52,12 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131379043;
+    return 2131379957;
   }
   
   public int e()
   {
-    if ((this.c) && (this.k != 0)) {
+    if ((this.c) && (this.o != 0)) {
       return -1;
     }
     return -16777216;
@@ -70,7 +70,7 @@ public class StructMsgItemTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle
  * JD-Core Version:    0.7.0.1
  */

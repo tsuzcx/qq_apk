@@ -1,69 +1,69 @@
-import java.util.List;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ukj
-  extends ukk<uja>
+  implements TVK_SDKMgr.InstallListener
 {
-  private int a = 200;
+  private Handler a;
   
-  protected double a()
+  public ukj(Handler paramHandler)
   {
-    return 0.3D;
+    this.a = paramHandler;
   }
   
-  protected int a()
+  public void onInstallProgress(float paramFloat)
   {
-    return this.a;
-  }
-  
-  protected long a(uja paramuja1, uja paramuja2)
-  {
-    if ((paramuja1 != paramuja2) && (paramuja1.b == paramuja2.b)) {
-      return 1L;
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
     }
-    return Math.abs(paramuja1.b - paramuja2.b);
   }
   
-  protected uja a(List<uja> paramList)
+  public void onInstalledFailed(int paramInt)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < paramList.size())
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      l += ((uja)paramList.get(i)).b;
-      i += 1;
+      localJSONObject.put("version", "8.4.1");
+      localJSONObject.put("error_code", paramInt);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
     }
-    uja localuja = new uja();
-    localuja.b = (l / paramList.size());
-    return localuja;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    int i = b();
-    if (i > 0) {
-      if (paramLong / i >= 1500L) {}
-    }
-    while (paramLong < 200L)
+    catch (Exception localException)
     {
-      return true;
-      return false;
+      for (;;)
+      {
+        upe.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
+      }
     }
-    return false;
   }
   
-  protected boolean a(uja paramuja1, uja paramuja2)
+  public void onInstalledSuccessed()
   {
-    return paramuja1.b == paramuja2.b;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.4.1");
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        upe.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukj
  * JD-Core Version:    0.7.0.1
  */

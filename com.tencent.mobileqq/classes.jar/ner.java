@@ -1,29 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AVGameJoinRoomFragment;
 
 public class ner
-  implements nbs
+  extends mwq
 {
-  public ner(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public ner(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
+    super.b(paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
+    this.a.getActivity().finish();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ner
  * JD-Core Version:    0.7.0.1
  */

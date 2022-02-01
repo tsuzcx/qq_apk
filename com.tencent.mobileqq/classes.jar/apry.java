@@ -1,8 +1,8 @@
-import android.view.View;
+import org.json.JSONObject;
 
 public abstract interface apry
 {
-  public abstract void a(View paramView);
+  public abstract void a(boolean paramBoolean, JSONObject paramJSONObject, Object paramObject);
 }
 
 

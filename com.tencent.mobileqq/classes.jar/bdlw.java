@@ -1,18 +1,29 @@
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-class bdlw
-  implements View.OnClickListener
+public class bdlw
+  extends ClickableSpan
 {
-  bdlw(bdls parambdls, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdlw(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdls, 1);
-    }
-    this.jdField_a_of_type_Bdls.dismiss();
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("hide_operation_bar", true);
+    this.a.startActivity(paramView.putExtra("url", "https://tim.qq.com/htdocs/2.0_lead/document.html"));
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.a.getResources().getColor(2131165512));
   }
 }
 

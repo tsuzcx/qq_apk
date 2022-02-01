@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afjx;
+import agrf;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class ArkFlashChatItemBubbleBuilder$1$1
   implements Runnable
 {
-  public ArkFlashChatItemBubbleBuilder$1$1(afjx paramafjx) {}
+  public ArkFlashChatItemBubbleBuilder$1$1(agrf paramagrf) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ArkFlashChatItemBubbleBuilder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 class yep
-  implements View.OnLongClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  yep(yen paramyen, ExtraTypeInfo paramExtraTypeInfo, CertifiedAccountMeta.StFeed paramStFeed) {}
+  yep(yen paramyen, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7003)
-      {
-        yei.a(this.jdField_a_of_type_Yen.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-        bool1 = true;
-      }
-    }
-    do
+    try
     {
-      do
-      {
-        return bool1;
-        if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002) {
-          return true;
-        }
-        bool1 = bool2;
-      } while (!(this.jdField_a_of_type_Yen.itemView instanceof RelativeFeedItemView));
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    this.jdField_a_of_type_Yen.a.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new yeq(this), new yer(this));
-    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_feeds", "press", 0, 0, new String[] { "", this.jdField_a_of_type_Yen.getAdapterPosition() + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-    return true;
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      return;
+    }
+    catch (Exception paramValueAnimator) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yep
  * JD-Core Version:    0.7.0.1
  */

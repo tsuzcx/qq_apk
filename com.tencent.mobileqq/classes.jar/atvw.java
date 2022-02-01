@@ -1,28 +1,27 @@
-public class atvw
+import android.app.Activity;
+import android.os.Bundle;
+
+class atvw
+  implements atve
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  atvw(atvv paramatvv, Activity paramActivity) {}
   
-  public atvw()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    bcst.b(null, "dc00898", "", "", "0X800AE48", "0X800AE48", 0, 0, "", "", "", "");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_open_with_qq_browser_", this.jdField_a_of_type_Atvv.a);
+    atvo.a(this.jdField_a_of_type_AndroidAppActivity, "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386", localBundle);
   }
   
-  public String toString()
+  public void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    bcst.b(null, "dc00898", "", "", "0X800AE49", "0X800AE49", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atvw
  * JD-Core Version:    0.7.0.1
  */

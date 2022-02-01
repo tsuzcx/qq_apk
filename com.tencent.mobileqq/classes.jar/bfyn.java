@@ -1,16 +1,10 @@
-class bfyn
-  implements bhvm
+public abstract interface bfyn
 {
-  bfyn(bfyl parambfyl) {}
-  
-  public void a()
-  {
-    this.a.a = null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyn
  * JD-Core Version:    0.7.0.1
  */

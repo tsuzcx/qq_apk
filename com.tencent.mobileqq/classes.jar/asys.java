@@ -1,55 +1,36 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class asys
-  extends asyt
+class asys
+  implements View.OnClickListener
 {
-  private WeakReference<asyq> a;
+  asys(asyr paramasyr) {}
   
-  private asys(asyq paramasyq)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramasyq);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
+    afwr localafwr = (afwr)afur.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localafwr != null)
     {
-      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
-      int i = paramObject.sint32_result.get();
-      int j = paramObject.uint32_interval.get();
-      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
-      if (i != 0) {
-        break label84;
+      i = -1;
+      localChatMessage = atvo.a(localafwr.a);
+      if (!this.a.a(localChatMessage)) {
+        break label57;
       }
-      if ((j > 0) && (this.a.get() != null)) {
-        ((asyq)this.a.get()).a = (j * 1000);
-      }
+      i = 0;
     }
-    return;
-    label84:
-    QLog.d(asyq.a(), 1, "send input status fail : " + paramObject);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.get() != null))
+    for (;;)
     {
-      if ((!asyq.a((asyq)this.a.get())) && (paramBoolean2))
-      {
-        if (asyq.a((asyq)this.a.get()) != null) {
-          asyq.a((asyq)this.a.get()).a(asyq.a((asyq)this.a.get()));
-        }
-        asyq.a((asyq)this.a.get()).a.addTextChangedListener(asyq.a((asyq)this.a.get()));
+      this.a.a(paramView, localafwr, localChatMessage, i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label57:
+      if (this.a.b(localChatMessage)) {
+        i = 1;
       }
-      asyq.a((asyq)this.a.get(), paramBoolean2);
     }
   }
 }

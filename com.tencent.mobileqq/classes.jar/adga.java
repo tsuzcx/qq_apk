@@ -1,29 +1,49 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class adga
-  extends avvd
+  extends adee
 {
-  public adga(Leba paramLeba) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
+    paramString = this.a.a();
+    if ((paramString == null) || (paramString.isFinishing()))
     {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+      QLog.e("NavigateModule", 1, "execute activity is null or finish");
+      return false;
     }
-    if (paramBoolean1)
+    Intent localIntent;
+    switch (paramInt)
     {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+    default: 
+      return false;
+    case 19: 
+      paramJSONObject = paramJSONObject.optString("action", "");
+      if ((paramJSONObject != null) && (paramJSONObject.startsWith("mqqapi:")))
+      {
+        localIntent = new Intent(paramString, JumpActivity.class);
+        localIntent.setData(Uri.parse(paramJSONObject));
+        paramString.startActivity(localIntent);
+        adhh.a(paramadea, adec.a);
       }
+      break;
+    }
+    for (;;)
+    {
+      return true;
+      paramJSONObject = paramJSONObject.optString("url", "");
+      localIntent = new Intent(paramString, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramJSONObject);
+      paramString.startActivity(localIntent);
+      adhh.a(paramadea, adec.a);
+      continue;
+      adhh.a(paramadea, -1, "scheme not support");
     }
   }
 }

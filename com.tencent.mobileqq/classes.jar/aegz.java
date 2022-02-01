@@ -1,22 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
-public class aegz
-  implements TextWatcher
+class aegz
+  implements DialogInterface.OnClickListener
 {
-  public aegz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  aegz(aegy paramaegy) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    paramDialogInterface.dismiss();
+    this.a.a.f();
+    bcst.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
+    if (this.a.a.a.b) {
+      new bcsy(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

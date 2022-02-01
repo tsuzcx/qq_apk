@@ -1,17 +1,12 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.QQTabHost;
 
-public class biay
+public abstract interface biay
 {
-  public int a;
-  public final Rect a = new Rect();
-  public Drawable a;
-  public boolean a;
-  public int b;
+  public abstract void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biay
  * JD-Core Version:    0.7.0.1
  */

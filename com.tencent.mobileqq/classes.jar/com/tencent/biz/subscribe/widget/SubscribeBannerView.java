@@ -1,5 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
+import aakr;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +13,6 @@ import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import ynv;
 
 public class SubscribeBannerView
   extends BaseWidgetView
@@ -45,21 +45,7 @@ public class SubscribeBannerView
     return 0;
   }
   
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = new ViewPager(getContext());
-    paramContext = new FrameLayout.LayoutParams(-1, -1);
-    paramContext.bottomMargin = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ynv(this));
-    ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    a((FrameLayout)paramView);
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void b()
+  public void a()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter != null) {
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter.a().clear();
@@ -68,6 +54,20 @@ public class SubscribeBannerView
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(null);
     }
   }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = new ViewPager(getContext());
+    paramContext = new FrameLayout.LayoutParams(-1, -1);
+    paramContext.bottomMargin = jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aakr(this));
+    ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
+    a((FrameLayout)paramView);
+  }
+  
+  public void a(Object paramObject) {}
   
   public void setAdapter(SubscribeBannerView.BannerAdapter paramBannerAdapter)
   {
@@ -104,7 +104,7 @@ public class SubscribeBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView
  * JD-Core Version:    0.7.0.1
  */

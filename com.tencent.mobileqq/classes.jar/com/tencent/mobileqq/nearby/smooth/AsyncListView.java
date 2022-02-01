@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import avtb;
-import avtc;
-import bhtv;
-import bhuy;
+import ayaq;
+import ayar;
+import bkhe;
+import bkil;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 
 public class AsyncListView
   extends FPSXListView
 {
-  final avtb a = new avtb(this);
+  final ayaq a = new ayaq(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(avtc paramavtc)
+  public void setItemManager(ayar paramayar)
   {
-    this.a.a(paramavtc);
+    this.a.a(paramayar);
   }
   
-  public void setOnItemSelectedListener(bhuy parambhuy)
+  public void setOnItemSelectedListener(bkil parambkil)
   {
-    this.a.a(parambhuy);
+    this.a.a(parambkil);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(parambhuy);
+      super.setOnItemSelectedListener(parambkil);
     }
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(bkhe parambkhe)
   {
-    this.a.a(parambhtv);
+    this.a.a(parambkhe);
     if (!this.a.a()) {
-      super.setOnScrollListener(parambhtv);
+      super.setOnScrollListener(parambkhe);
     }
   }
   
@@ -73,7 +73,7 @@ public class AsyncListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class beik
-  implements ThreadExcutor.IThreadListener
+public class beik
+  implements DialogInterface.OnClickListener
 {
-  beik(beii parambeii) {}
+  public beik(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

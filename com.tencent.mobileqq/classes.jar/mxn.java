@@ -1,23 +1,10 @@
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
-import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
-
-public class mxn
-  extends QQAVImageFilterGroup
+class mxn
 {
-  public mxn()
-  {
-    super(null);
-    int i = 0;
-    while (i < 3)
-    {
-      addFilter(new QQAVImageGaussianBlurFilter());
-      i += 1;
-    }
-  }
+  public static mxl a = new mxl(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import android.app.Activity;
-import ors;
-import oyk;
+import pha;
+import pnw;
 
 public class RIJMsgBoxPopupStep$1
   implements Runnable
 {
-  public RIJMsgBoxPopupStep$1(oyk paramoyk, Activity paramActivity, int paramInt, String paramString) {}
+  public RIJMsgBoxPopupStep$1(pnw parampnw, Activity paramActivity, int paramInt, String paramString) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ors.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
+      pha.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

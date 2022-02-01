@@ -1,25 +1,73 @@
-import android.view.MotionEvent;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class afzi
-  implements aetk
+  extends BaseAdapter
 {
-  afzi(afzh paramafzh) {}
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public boolean onLongClick(View paramView)
+  private afzi(afyw paramafyw) {}
+  
+  public void a(List<String> paramList)
   {
-    paramView = (afzr)((View)paramView.getParent().getParent().getParent()).getTag();
-    if (paramView != null) {
-      paramView.a.performLongClick();
-    }
-    return true;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int getCount()
   {
-    return false;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_Afyw.a).inflate(2131559272, null);
+    }
+    for (;;)
+    {
+      ImageView localImageView = (ImageView)paramView.findViewById(2131367195);
+      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!TextUtils.isEmpty(str)) {}
+      try
+      {
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(str, null);
+        localURLDrawable.setDecodeHandler(bgey.z);
+        localImageView.setImageDrawable(localURLDrawable);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + str, new Object[] { localException }));
+        }
+      }
+    }
   }
 }
 

@@ -11,6 +11,7 @@ public final class TrafficResultInfo
   static ToastImgInfo cache_toasInfo = new ToastImgInfo();
   public int bUpdate;
   public int iDrawerEnable;
+  public int iDrawerTextId;
   public int iGuideEnable;
   public int iImsiInterval;
   public int iReportInterval;
@@ -24,7 +25,7 @@ public final class TrafficResultInfo
   
   public TrafficResultInfo() {}
   
-  public TrafficResultInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5, ToastImgInfo paramToastImgInfo, PopupImgInfo paramPopupImgInfo, int paramInt6, int paramInt7)
+  public TrafficResultInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5, ToastImgInfo paramToastImgInfo, PopupImgInfo paramPopupImgInfo, int paramInt6, int paramInt7, int paramInt8)
   {
     this.iWkOrderState1 = paramInt1;
     this.iWkOrderState2 = paramInt2;
@@ -38,6 +39,7 @@ public final class TrafficResultInfo
     this.popInfo = paramPopupImgInfo;
     this.iReportInterval = paramInt6;
     this.bUpdate = paramInt7;
+    this.iDrawerTextId = paramInt8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -54,6 +56,7 @@ public final class TrafficResultInfo
     this.popInfo = ((PopupImgInfo)paramJceInputStream.read(cache_popInfo, 9, false));
     this.iReportInterval = paramJceInputStream.read(this.iReportInterval, 10, false);
     this.bUpdate = paramJceInputStream.read(this.bUpdate, 11, false);
+    this.iDrawerTextId = paramJceInputStream.read(this.iDrawerTextId, 12, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -80,6 +83,7 @@ public final class TrafficResultInfo
     }
     paramJceOutputStream.write(this.iReportInterval, 10);
     paramJceOutputStream.write(this.bUpdate, 11);
+    paramJceOutputStream.write(this.iDrawerTextId, 12);
   }
 }
 

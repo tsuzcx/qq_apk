@@ -1,424 +1,627 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.component.base.PullLoadMoreAdapter.2;
-import com.tencent.biz.subscribe.component.base.RefreshHeaderView;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.FeedEntry;
+import com.tencent.biz.qqstory.database.FeedIdListEntry;
+import com.tencent.biz.qqstory.database.MemoriesFeedIdListEntry;
+import com.tencent.biz.qqstory.database.TroopAssistantFeedIdListEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager.1;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager.2;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Ljava.lang.String;>;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
-public abstract class yij<E>
-  extends yhw<E>
-  implements yio
+public class yij
+  implements IEventReceiver, wou
 {
-  private static String jdField_g_of_type_JavaLangString = "PullLoadMoreAdapter";
-  protected final Handler a;
-  protected RecyclerView.LayoutManager a;
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  public RecyclerView a;
-  private View jdField_a_of_type_AndroidViewView;
-  private RefreshHeaderView jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean;
-  protected String b;
-  private boolean b;
-  protected String c;
-  private boolean c;
-  protected String d;
-  private boolean d;
-  protected String e;
-  private boolean e;
-  protected String f;
-  private boolean f;
-  private boolean jdField_g_of_type_Boolean = true;
+  public static ThreadLocal<SimpleDateFormat> a;
+  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public int a;
+  private long jdField_a_of_type_Long;
+  public ArrayList<yjy> a;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public Map<String, String> a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private wew<String, FeedItem> jdField_a_of_type_Wew = new wew(300);
+  public wre a;
+  private xvx jdField_a_of_type_Xvx = new xvx("feeItem");
+  private yhu jdField_a_of_type_Yhu = new yhu();
+  public yif a;
+  private yim jdField_a_of_type_Yim;
+  private yin jdField_a_of_type_Yin;
+  public boolean a;
+  public int b;
+  private ConcurrentHashMap<String, wqp> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public yif b;
+  private boolean jdField_b_of_type_Boolean = true;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
+  }
   
   public yij()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangString = alud.a(2131702654);
-    this.jdField_b_of_type_JavaLangString = alud.a(2131702728);
-    this.jdField_c_of_type_JavaLangString = alud.a(2131702727);
-    this.jdField_d_of_type_JavaLangString = alud.a(2131698356);
-    this.jdField_e_of_type_JavaLangString = alud.a(2131709253);
-    this.jdField_f_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  protected int a(int paramInt)
+  private FeedEntry a(String paramString)
   {
-    int i = paramInt;
-    if (this.jdField_b_of_type_Boolean) {
-      i = paramInt - 1;
+    paramString = wpj.a(QQStoryContext.a().a().createEntityManager(), FeedEntry.class, FeedEntry.class.getSimpleName(), FeedEntry.queryFeedId(), new String[] { paramString });
+    if ((paramString != null) && (paramString.size() == 1)) {
+      return (FeedEntry)paramString.get(0);
     }
-    return i;
+    return null;
   }
   
-  protected abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
-  
-  public RefreshHeaderView a()
+  private static FeedItem a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView;
+    yij localyij = (yij)wpm.a(11);
+    Object localObject2 = localyij.a(paramString1, paramString2);
+    yqp.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "find true feedId:%s", localObject2);
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject1 = VideoListFeedItem.makeFakeFeedId(paramString1, paramString2);
+      yqp.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "make fake feedId:%s", localObject1);
+    }
+    localObject2 = localyij.a((String)localObject1);
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      if (!paramBoolean) {
+        break label101;
+      }
+    }
+    label101:
+    for (paramString1 = ShareGroupFeedItem.createFakeFeedItem(paramString1, paramString2);; paramString1 = GeneralFeedItem.createFakeFeedItem(paramString2))
+    {
+      localyij.a(paramString1);
+      yqp.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "save fake item %s", paramString1.feedId);
+      localObject1 = paramString1;
+      return localObject1;
+    }
   }
   
-  public void a() {}
-  
-  public void a(RecyclerView.LayoutManager paramLayoutManager)
+  public static GeneralFeedItem a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramLayoutManager;
+    paramString1 = a(false, paramString1, paramString2);
+    if ((paramString1 != null) && ((paramString1 instanceof GeneralFeedItem))) {
+      return (GeneralFeedItem)paramString1;
+    }
+    zkb.a(paramString1);
+    return null;
   }
   
-  protected abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public void a(View paramView)
+  public static ShareGroupFeedItem a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramString1 = a(true, paramString1, paramString2);
+    if (paramString1 == null) {}
+    while (!(paramString1 instanceof ShareGroupFeedItem))
+    {
+      zkb.a("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
+      return null;
+    }
+    return (ShareGroupFeedItem)paramString1;
+  }
+  
+  public static VideoListFeedItem a(String paramString1, String paramString2)
+  {
+    paramString1 = a(true, paramString1, paramString2);
+    if (paramString1 == null) {}
+    while (!(paramString1 instanceof ShareGroupFeedItem))
+    {
+      zkb.a("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
+      return null;
+    }
+    return (ShareGroupFeedItem)paramString1;
+  }
+  
+  public static String a()
+  {
+    return a().format(new Date(NetConnInfoCenter.getServerTimeMillis()));
+  }
+  
+  public static SimpleDateFormat a()
+  {
+    SimpleDateFormat localSimpleDateFormat2 = (SimpleDateFormat)jdField_a_of_type_JavaLangThreadLocal.get();
+    SimpleDateFormat localSimpleDateFormat1 = localSimpleDateFormat2;
+    if (localSimpleDateFormat2 == null)
+    {
+      localSimpleDateFormat1 = new SimpleDateFormat("yyyyMMdd");
+      jdField_a_of_type_JavaLangThreadLocal.set(localSimpleDateFormat1);
+    }
+    return localSimpleDateFormat1;
+  }
+  
+  private void a(wyj paramwyj)
+  {
+    yqp.a("Q.qqstory.home.data.FeedManager", "request feed item list from net, %s", paramwyj.b);
+    wlb.a().a(paramwyj, new yil(this));
+  }
+  
+  public static void b(String paramString)
+  {
+    Bosses.get().postLightWeightJob(new FeedManager.1(paramString), 10);
+  }
+  
+  public static void d()
+  {
+    wwa.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    xip.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public FeedItem a(FeedItem paramFeedItem)
+  {
+    yqp.a("Q.qqstory.home.data.FeedManager", "save feed item %s", paramFeedItem.feedId);
+    paramFeedItem = (FeedItem)this.jdField_a_of_type_Wew.a(paramFeedItem.feedId, paramFeedItem);
+    FeedEntry localFeedEntry = paramFeedItem.covertToEntry();
+    QQStoryContext.a().a().createEntityManager().persistOrReplace(localFeedEntry);
+    return paramFeedItem;
+  }
+  
+  public FeedItem a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      yqp.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + zkp.a(3));
+      localObject = null;
+    }
+    do
+    {
+      return localObject;
+      localFeedItem = (FeedItem)this.jdField_a_of_type_Wew.a(paramString);
+      localObject = localFeedItem;
+    } while (localFeedItem != null);
+    Object localObject = a(paramString);
+    if (localObject == null) {
+      return null;
+    }
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(((FeedEntry)localObject).type);
+    if (localFeedItem == null)
+    {
+      yqp.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + ((FeedEntry)localObject).type);
+      return null;
+    }
+    localFeedItem.covertFromEntry((FeedEntry)localObject);
+    return (FeedItem)this.jdField_a_of_type_Wew.a(paramString, localFeedItem);
+  }
+  
+  @Nullable
+  public FeedItem a(@NonNull String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    FeedItem localFeedItem = b(paramString);
+    if (localFeedItem != null) {
+      return localFeedItem;
+    }
+    Bosses.get().postLightWeightJob(new FeedManager.3(this, paramString, paramBoolean), 0);
+    return null;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    yqp.a("Q.qqstory.home.data.FeedManager", "query my feedId unionId:%s, date:%s %s", paramString1, paramString2, this.jdField_a_of_type_JavaUtilHashMap);
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1 + paramString2);
+  }
+  
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = wpj.a(QQStoryContext.a().a().createEntityManager(), FeedIdListEntry.class, FeedIdListEntry.class.getSimpleName(), null, null);
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((FeedIdListEntry)((Iterator)localObject).next()).feedId);
+    }
+    return localArrayList;
+  }
+  
+  public List<StoryVideoItem> a(String paramString, List<StoryVideoItem> paramList, boolean paramBoolean)
+  {
+    return ((wpj)wpm.a(5)).a(paramString, 0, paramList, paramBoolean);
+  }
+  
+  public List<FeedItem> a(List<FeedItem> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        FeedItem localFeedItem = (FeedItem)paramList.next();
+        localFeedItem = (FeedItem)this.jdField_a_of_type_Wew.a(localFeedItem.feedId, localFeedItem);
+        localEntityManager.persistOrReplace(localFeedItem.covertToEntry());
+        localArrayList.add(localFeedItem);
+      }
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    localEntityManager.getTransaction().end();
+    return localArrayList;
+  }
+  
+  public wqp a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    wqp localwqp = (wqp)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (this.jdField_a_of_type_Yin == null)
+    {
+      this.jdField_a_of_type_Yin = new yin(this);
+      wfo.a().registerSubscriber(this.jdField_a_of_type_Yin);
+    }
+    new wwa(Collections.singletonList(paramString), true).a();
+    yqp.a("Q.qqstory.home.data.FeedManager", "request feed feature : %s", paramString);
+    return localwqp;
+  }
+  
+  public yhu a()
+  {
+    return this.jdField_a_of_type_Yhu;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Yim = new yim(this);
+    wfo.a().registerSubscriber(this.jdField_a_of_type_Yim);
   }
   
   public void a(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_g_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool;
-    label62:
-    int i;
-    if (d())
+    FeedEntry localFeedEntry = a(paramString);
+    if (localFeedEntry != null)
     {
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = paramBoolean2;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!paramBoolean2) {
-        break label168;
-      }
-      str = this.jdField_d_of_type_JavaLangString;
-      this.jdField_f_of_type_JavaLangString = str;
-      if ((bdnn.a(this.jdField_f_of_type_JavaLangString)) && ((!paramBoolean2) || (this.jdField_a_of_type_AndroidViewView == null))) {
-        break label175;
-      }
-      bool = true;
-      this.jdField_f_of_type_Boolean = bool;
-      if (!paramBoolean1)
+      localFeedEntry.setStatus(1001);
+      QQStoryContext.a().a().createEntityManager().remove(localFeedEntry);
+    }
+    this.jdField_a_of_type_Wew.a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1 + paramString2, paramString3);
+    yqp.a("Q.qqstory.home.data.FeedManager", "save my feedId %s", this.jdField_a_of_type_JavaUtilHashMap);
+  }
+  
+  public void a(List<yib> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      yib localyib = (yib)paramList.next();
+      this.jdField_a_of_type_JavaUtilHashMap.put(localyib.b + localyib.c, localyib.a);
+    }
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    if (paramBoolean) {}
+    try
+    {
+      localEntityManager.drop(FeedIdListEntry.class);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (NetworkUtils.isNetworkAvailable(BaseApplication.getContext())) {
-          break label181;
-        }
-        i = 1;
-        label83:
-        if (i == 0) {
-          break label186;
-        }
+        String str = (String)paramList.next();
+        FeedIdListEntry localFeedIdListEntry = new FeedIdListEntry();
+        localFeedIdListEntry.feedId = str;
+        localEntityManager.persistOrReplace(localFeedIdListEntry);
       }
     }
-    label168:
-    label175:
-    label181:
-    label186:
-    for (String str = this.jdField_c_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
+    finally
     {
-      this.jdField_f_of_type_JavaLangString = str;
-      this.jdField_f_of_type_Boolean = this.jdField_g_of_type_Boolean;
-      notifyItemChanged(getItemCount() - 1);
-      QLog.i(jdField_g_of_type_JavaLangString, 1, String.format("onLoadMoreCompleted: hashCode:%d ,isSuccess:%b, isFinish:%b, isShow:%b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.jdField_f_of_type_Boolean) }));
-      return;
-      str = "";
-      break;
-      bool = false;
-      break label62;
-      i = 0;
-      break label83;
+      localEntityManager.getTransaction().end();
     }
+    localEntityManager.getTransaction().end();
   }
   
-  public int b()
+  public boolean a(String paramString)
   {
+    FeedIdListEntry localFeedIdListEntry = new FeedIdListEntry();
+    localFeedIdListEntry.feedId = paramString;
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    localFeedIdListEntry.setStatus(1001);
+    return localEntityManager.remove(localFeedIdListEntry, "feedId=?", new String[] { paramString });
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = wpj.a(QQStoryContext.a().a().createEntityManager(), FeedIdListEntry.class, FeedIdListEntry.class.getSimpleName(), null, null);
+    if (localList == null) {
+      return false;
+    }
     int i = 0;
-    if (this.jdField_b_of_type_Boolean) {
-      i = 1;
-    }
-    int j = i;
-    if (this.jdField_c_of_type_Boolean) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  protected RecyclerView.ViewHolder b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView == null)
+    boolean bool = false;
+    if (i < localList.size())
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView = new RefreshHeaderView(paramViewGroup.getContext());
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.setOnRefreshListener(this);
-    }
-    return new yim(this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView);
-  }
-  
-  protected abstract void b();
-  
-  protected void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof yil))
-    {
-      paramViewHolder = (yil)paramViewHolder;
-      if (!this.jdField_f_of_type_Boolean)
+      FeedIdListEntry localFeedIdListEntry = (FeedIdListEntry)localList.get(i);
+      if (localFeedIdListEntry.feedId.equals(paramString1))
       {
-        yil.a(paramViewHolder).setVisibility(8);
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          yil.a(paramViewHolder).setVisibility(8);
-        }
-        QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder hideLoadingFooter");
+        localArrayList.add(paramString2);
+        bool = true;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localArrayList.add(localFeedIdListEntry.feedId);
       }
     }
-    else
-    {
-      return;
+    if (bool) {
+      a(localArrayList, true);
     }
-    boolean bool;
-    ProgressBar localProgressBar;
-    if ((this.jdField_e_of_type_Boolean) && (getItemCount() > c()))
+    return bool;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    yqp.a("Q.qqstory.home.position", "disableAutoRefresh mIsFirstTimeUse:%b, fromOldLeba:%b, hasRedPoint:%b, mLastViewTime:%d", Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Long.valueOf(this.jdField_a_of_type_Long));
+    if ((!this.jdField_b_of_type_Boolean) && (paramBoolean1) && (!paramBoolean2) && (this.jdField_a_of_type_Long > 0L))
     {
-      bool = true;
-      yil.a(paramViewHolder).setIndeterminate(bool);
-      localProgressBar = yil.a(paramViewHolder);
-      if (!bool) {
-        break label153;
+      long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      long l2 = ((Long)((wpf)wpm.a(10)).b("key_disable_auto_refresh_time", Long.valueOf(60000L))).longValue();
+      yqp.a("Q.qqstory.home.position", "disableAutoRefresh duration:%d, severConfigTime:%d", Long.valueOf(l1), Long.valueOf(l2));
+      if (l1 < l2)
+      {
+        this.jdField_a_of_type_Long = 0L;
+        return true;
       }
     }
-    label153:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      localProgressBar.setVisibility(paramInt);
-      if ((this.jdField_a_of_type_AndroidViewView == null) || (yil.a(paramViewHolder) == null) || (!this.jdField_a_of_type_Boolean)) {
-        break label159;
-      }
-      yil.a(paramViewHolder).setVisibility(8);
-      yil.a(paramViewHolder).setVisibility(0);
-      QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show CustomNoMoreDataView");
-      return;
-      bool = false;
-      break;
-    }
-    label159:
-    yil.a(paramViewHolder).setVisibility(0);
-    yil.a(paramViewHolder).setText(this.jdField_f_of_type_JavaLangString);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      yil.a(paramViewHolder).setVisibility(8);
-    }
-    QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show progress text:" + this.jdField_f_of_type_JavaLangString);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  protected int c()
-  {
-    return 1;
-  }
-  
-  protected RecyclerView.ViewHolder c(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = new yil(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560557, paramViewGroup, false));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      yil.a(paramViewGroup).addView(this.jdField_a_of_type_AndroidViewView);
-    }
-    return paramViewGroup;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView != null)
-    {
-      this.jdField_e_of_type_Boolean = c();
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.setRefreshing(paramBoolean);
-    }
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.b();
-    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
     return false;
   }
   
-  public void d(boolean paramBoolean)
+  public FeedItem b(String paramString)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void f()
-  {
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_f_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-    this.jdField_f_of_type_Boolean = true;
-    notifyItemChanged(getItemCount() - 1);
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public void g()
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView != null))
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.setState(2);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PullLoadMoreAdapter.2(this), 100L);
+      yqp.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + zkp.a(3));
+      return null;
+    }
+    return (FeedItem)this.jdField_a_of_type_Wew.a(paramString);
+  }
+  
+  public List<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = wpj.a(QQStoryContext.a().a().createEntityManager(), TroopAssistantFeedIdListEntry.class, TroopAssistantFeedIdListEntry.class.getSimpleName(), null, null);
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((TroopAssistantFeedIdListEntry)((Iterator)localObject).next()).feedId);
+    }
+    return localArrayList;
+  }
+  
+  public List<yjy> b(List<String> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject = (FeedItem)this.jdField_a_of_type_Wew.a(str);
+      paramList = (List<String>)localObject;
+      if (localObject == null)
+      {
+        localObject = a(str);
+        if (localObject != null)
+        {
+          paramList = FeedItem.createFeedItemByType(((FeedEntry)localObject).type);
+          if (paramList == null)
+          {
+            yqp.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + ((FeedEntry)localObject).type);
+          }
+          else
+          {
+            paramList.covertFromEntry((FeedEntry)localObject);
+            this.jdField_a_of_type_Wew.a(str, paramList);
+          }
+        }
+      }
+      else
+      {
+        localArrayList.add(paramList.generateAndPackageHomeFeedFromDB());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Yin != null) {
+      wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Yin);
+    }
+    if (this.jdField_a_of_type_Yim != null) {
+      wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Yim);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void b(@NonNull List<String> paramList)
+  {
+    Object localObject1 = new wyj();
+    Iterator localIterator = paramList.iterator();
+    paramList = (List<String>)localObject1;
+    while (localIterator.hasNext())
+    {
+      localObject1 = (String)localIterator.next();
+      if (a((String)localObject1) == null)
+      {
+        Object localObject2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+        if ((localObject2 != null) && (Math.abs(System.currentTimeMillis() - ((Long)localObject2).longValue()) < 300000L))
+        {
+          yqp.a("Q.qqstory.home.data.FeedManager", "request feed item list, ignore same request %s", localObject1);
+        }
+        else
+        {
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject1, Long.valueOf(System.currentTimeMillis()));
+          localObject2 = new yib((String)localObject1, 0, "", "");
+          paramList.a.add(localObject2);
+          paramList.b.add(localObject1);
+          if (paramList.a.size() <= 3) {
+            break label194;
+          }
+          a(paramList);
+          paramList = new wyj();
+        }
+      }
+    }
+    label194:
+    for (;;)
+    {
+      break;
+      if (paramList.a.size() == 0) {
+        return;
+      }
+      a(paramList);
+      return;
     }
   }
   
-  public int getItemCount()
+  public void b(List<String> paramList, boolean paramBoolean)
   {
-    return this.mDataList.size() + b();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_b_of_type_Boolean) && (paramInt == 0)) {
-      return -10000;
-    }
-    if (a(paramInt) < this.mDataList.size()) {
-      return 0;
-    }
-    return -99999;
-  }
-  
-  protected void h()
-  {
-    int j;
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    if (paramBoolean) {}
     try
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager == null) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-      }
-      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager))
+      localEntityManager.drop(TroopAssistantFeedIdListEntry.class);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() < this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 3) {
-          return;
-        }
-        b();
-        return;
+        String str = (String)paramList.next();
+        TroopAssistantFeedIdListEntry localTroopAssistantFeedIdListEntry = new TroopAssistantFeedIdListEntry();
+        localTroopAssistantFeedIdListEntry.feedId = str;
+        localEntityManager.persistOrReplace(localTroopAssistantFeedIdListEntry);
       }
-      if (!(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager)) {
-        return;
-      }
-      StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-      j = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
-      if (j == 1)
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    localEntityManager.getTransaction().end();
+  }
+  
+  public FeedItem c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      yqp.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + zkp.a(3));
+    }
+    do
+    {
+      return null;
+      paramString = a(paramString);
+    } while (paramString == null);
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramString.type);
+    if (localFeedItem == null)
+    {
+      yqp.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + paramString.type);
+      return null;
+    }
+    localFeedItem.covertFromEntry(paramString);
+    return localFeedItem;
+  }
+  
+  public List<String> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = wpj.a(QQStoryContext.a().a().createEntityManager(), MemoriesFeedIdListEntry.class, MemoriesFeedIdListEntry.class.getSimpleName(), null, null);
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((MemoriesFeedIdListEntry)((Iterator)localObject).next()).feedId);
+    }
+    return localArrayList;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    long l = ((Long)((wpf)wpm.a(10)).b("key_disable_auto_refresh_time", Long.valueOf(60000L))).longValue();
+    ThreadManager.getUIHandler().postDelayed(new FeedManager.2(this), l);
+  }
+  
+  public void c(List<String> paramList, boolean paramBoolean)
+  {
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    if (paramBoolean) {}
+    try
+    {
+      localEntityManager.drop(MemoriesFeedIdListEntry.class);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        arrayOfInt = new int[1];
-        localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
-        if (arrayOfInt[0] < localStaggeredGridLayoutManager.getItemCount() - 3) {
-          return;
-        }
-        b();
-        return;
+        String str = (String)paramList.next();
+        MemoriesFeedIdListEntry localMemoriesFeedIdListEntry = new MemoriesFeedIdListEntry();
+        localMemoriesFeedIdListEntry.feedId = str;
+        localEntityManager.persistOrReplace(localMemoriesFeedIdListEntry);
       }
     }
-    catch (Exception localException)
+    finally
     {
-      localException.printStackTrace();
-      return;
+      localEntityManager.getTransaction().end();
     }
-    int[] arrayOfInt = new int[j];
-    localException.findLastVisibleItemPositions(arrayOfInt);
-    int i = arrayOfInt[(j - 1)];
-    if (arrayOfInt.length == 2) {
-      if (arrayOfInt[1] < arrayOfInt[0]) {
-        break label185;
-      }
-    }
-    label185:
-    for (i = arrayOfInt[1]; i >= localException.getItemCount() - b() - 3 * j; i = arrayOfInt[0])
-    {
-      b();
-      return;
-    }
+    localEntityManager.getTransaction().end();
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public boolean isValidate()
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramRecyclerView.getLayoutManager();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new yik(this));
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder == null) || (paramInt >= getItemCount()) || ((this.jdField_b_of_type_Boolean) && (paramInt == 0))) {
-      return;
-    }
-    if (-99999 == getItemViewType(paramInt))
-    {
-      b(paramViewHolder, paramInt);
-      return;
-    }
-    a(paramViewHolder, a(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == -99999) {
-      return c(paramViewGroup, paramInt);
-    }
-    if (paramInt == -10000)
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = b(paramViewGroup, paramInt);
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-    }
-    return a(paramViewGroup, paramInt);
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseRefreshHeaderView.d();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yij
  * JD-Core Version:    0.7.0.1
  */

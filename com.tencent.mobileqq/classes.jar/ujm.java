@@ -1,157 +1,191 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.RequestPacket;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceUtil;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class ujm
-  extends JobSegment<List<uja>, List<uja>>
-  implements ujc, ujg
+  extends UniAttribute
 {
-  private HashMap<String, uiy> jdField_a_of_type_JavaUtilHashMap;
-  private ujn jdField_a_of_type_Ujn;
+  static HashMap<String, byte[]> a;
+  static HashMap<String, HashMap<String, byte[]>> b;
+  protected RequestPacket a;
   
-  public ujm(ujn paramujn)
+  public ujm()
   {
-    this.jdField_a_of_type_Ujn = paramujn;
+    this.jdField_a_of_type_ComQqTafRequestPacket = new RequestPacket();
+    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 2;
   }
   
-  public void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap)
+  private void a()
   {
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handlePOIResult errorMessage=%s", new Object[] { paramErrorMessage.toString() });
-    if (paramErrorMessage.isFail())
+    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
+    localJceInputStream.setServerEncoding(this.encodeName);
+    if (jdField_a_of_type_JavaUtilHashMap == null)
     {
-      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request POI list error:" + paramErrorMessage.getErrorMessage()));
-      return;
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      jdField_a_of_type_JavaUtilHashMap.put("", new byte[0]);
     }
-    Object localObject;
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
-    {
-      paramErrorMessage = paramHashMap.entrySet().iterator();
-      while (paramErrorMessage.hasNext())
-      {
-        paramHashMap = (Map.Entry)paramErrorMessage.next();
-        localObject = (String)paramHashMap.getKey();
-        paramHashMap = (AddressItem)paramHashMap.getValue();
-        localObject = (uiy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-        ((uiy)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
-        localObject = ((uiy)localObject).jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((uja)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
-        }
-      }
-    }
-    paramErrorMessage = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (paramHashMap.hasNext())
-      {
-        localObject = (uiy)((Map.Entry)paramHashMap.next()).getValue();
-        paramErrorMessage.addAll(((uiy)localObject).jdField_a_of_type_JavaUtilList);
-        if (((uja)((uiy)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null) {
-          wxe.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "后台返回的POI数据里缺少了 ：" + ((uiy)localObject).jdField_a_of_type_Uke);
-        }
-      }
-    }
-    wxe.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "this segment is finish  : result=%s", paramErrorMessage);
-    notifyResult(paramErrorMessage);
+    this._newData = localJceInputStream.readMap(jdField_a_of_type_JavaUtilHashMap, 0, false);
   }
   
-  public void a(ErrorMessage paramErrorMessage, List<String> paramList)
+  private void b()
   {
-    String str = paramErrorMessage.toString();
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
+    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
+    localJceInputStream.setServerEncoding(this.encodeName);
+    if (b == null)
     {
-      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
-      if (!paramErrorMessage.isFail()) {
-        break;
-      }
-      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request black list error:" + paramErrorMessage.getErrorMessage()));
-      return;
+      b = new HashMap();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("", new byte[0]);
+      b.put("", localHashMap);
     }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramErrorMessage = paramList.iterator();
-      while (paramErrorMessage.hasNext())
-      {
-        paramList = (String)paramErrorMessage.next();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramList);
-      }
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)
-    {
-      notifyResult(new ArrayList());
-      return;
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
-    {
-      a(new ErrorMessage(), null);
-      return;
-    }
-    paramErrorMessage = new ujb();
-    paramErrorMessage.a(this.jdField_a_of_type_JavaUtilHashMap);
-    paramErrorMessage.a(this);
-    paramErrorMessage.a();
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    this._data = localJceInputStream.readMap(b, 0, false);
+    this.cachedClassName = new HashMap();
   }
   
-  protected void a(JobContext paramJobContext, List<uja> paramList)
+  public void a(int paramInt)
   {
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "start PreProcessSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
-    if (paramList.isEmpty())
-    {
-      notifyResult(paramList);
-      return;
+    this.jdField_a_of_type_ComQqTafRequestPacket.iTimeout = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = paramString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.iRequestId = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = paramString;
+  }
+  
+  public void decode(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
     }
-    int i = ((uio)uwa.a(30)).a().b();
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    paramJobContext = paramList.iterator();
-    while (paramJobContext.hasNext())
+    try
     {
-      paramList = (uja)paramJobContext.next();
-      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {}
-      for (paramList.c = "EMPTY";; paramList.c = ukd.a(paramList.jdField_a_of_type_Double, paramList.b, i))
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
       {
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramList.c)) {
-          break label192;
-        }
-        ((uiy)this.jdField_a_of_type_JavaUtilHashMap.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
-        break;
+        a();
+        return;
       }
-      label192:
-      uiy localuiy = new uiy(paramList.c);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramList);
-      localuiy.jdField_a_of_type_JavaUtilList = localArrayList;
-      if ((!TextUtils.isEmpty(localuiy.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localuiy.jdField_a_of_type_JavaLangString, "EMPTY"))) {
-        localuiy.jdField_a_of_type_Uke = ukd.a(localuiy.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramList.c, localuiy);
-    }
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
-    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
-    {
-      a(new ErrorMessage(), null);
+      this._newData = null;
+      b();
       return;
     }
-    paramJobContext = new ujf();
-    paramJobContext.a(this.jdField_a_of_type_JavaUtilHashMap);
-    paramJobContext.a(this);
-    paramJobContext.a();
+    catch (Exception paramArrayOfByte)
+    {
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public void decodeVersion2(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
+    }
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      b();
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public void decodeVersion3(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
+    }
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      a();
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public byte[] encode()
+  {
+    if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
+    {
+      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals(""))) {
+        throw new IllegalArgumentException("servantName can not is null");
+      }
+      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
+        throw new IllegalArgumentException("funcName can not is null");
+      }
+    }
+    else
+    {
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) {
+        this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = "";
+      }
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) {
+        this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = "";
+      }
+    }
+    Object localObject = new JceOutputStream(0);
+    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+    if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
+      ((JceOutputStream)localObject).write(this._newData, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+      localObject = new JceOutputStream(0);
+      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
+      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+      int i = localObject.length;
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
+      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
+      return localByteBuffer.array();
+      ((JceOutputStream)localObject).write(this._data, 0);
+    }
+  }
+  
+  public <T> void put(String paramString, T paramT)
+  {
+    if (paramString.startsWith(".")) {
+      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    }
+    super.put(paramString, paramT);
+  }
+  
+  public void useVersion3()
+  {
+    super.useVersion3();
+    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujm
  * JD-Core Version:    0.7.0.1
  */

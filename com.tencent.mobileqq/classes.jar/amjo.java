@@ -1,117 +1,116 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.text.TextUtils;
+import java.io.File;
 
 public class amjo
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  
+  public static String a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    int k = 0;
-    int m = 0;
-    int j = 1;
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
-    if (localTroopInfo == null)
-    {
-      localTroopInfo = new TroopInfo();
-      localTroopInfo.cmdUinFlagEx2 = paramInt;
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
     }
-    for (int i = 1;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRankConfig", 2, "decodeSinglePbMsg_GroupDis, groupMemberFlagEx2=" + paramInt + ", troopUin=" + paramLong + ", hummer message cmdUinFlagEx2=" + localTroopInfo.cmdUinFlagEx2);
-      }
-      if (localTroopInfo.cmdUinFlagEx2 != paramInt)
-      {
-        i = m;
-        if (TroopInfo.isCmdUinFlagEx2Open(localTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramInt, 512)) {
-          i = 1;
-        }
-        localTroopInfo.cmdUinFlagEx2 = paramInt;
-        paramInt = j;
-      }
-      for (;;)
-      {
-        if (paramInt != 0)
-        {
-          localTroopManager.b(localTroopInfo);
-          if (i != 0) {
-            a(paramQQAppInterface, localTroopInfo);
-          }
-        }
-        return;
-        paramInt = i;
-        i = k;
-      }
+    if (paramString1.endsWith("/")) {
+      return paramString1 + paramLong + "/" + paramInt + "/" + paramString2;
     }
+    return paramString1 + "/" + paramLong + "/" + paramInt + "/" + paramString2;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
+  public static boolean a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512)) {}
-    for (int i = 1;; i = 0)
-    {
-      FriendsStatusUtil.a(paramQQAppInterface, paramTroopInfo.troopuin, 1, i);
-      return;
+    if (100 == paramInt) {
+      return new File(ancb.jdField_b_of_type_JavaLangString + paramInt + "_" + paramLong + "_" + paramString1 + File.separator + paramString2).exists();
     }
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Map<String, Boolean> paramMap)
+  public String a()
   {
-    paramMap = paramMap.entrySet().iterator();
-    if (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (((Boolean)localEntry.getValue()).booleanValue()) {}
-      for (int i = 1;; i = 0)
-      {
-        FriendsStatusUtil.a(paramQQAppInterface, (String)localEntry.getKey(), 1, i);
-        break;
-      }
-    }
+    return this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public String b()
   {
-    int i = 0;
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
+    if (100 == this.jdField_a_of_type_Int) {
+      return ancb.jdField_b_of_type_JavaLangString + a() + File.separator;
     }
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
-    TroopInfo localTroopInfo1 = localTroopInfo2;
-    if (localTroopInfo2 == null)
-    {
-      localTroopInfo1 = new TroopInfo();
-      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
-      i = 1;
+    return "";
+  }
+  
+  public String c()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + ".zip";
     }
-    if (localTroopInfo1.udwCmdUinRingtoneID != paramInt)
-    {
-      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
-      i = j;
+    return "";
+  }
+  
+  public String d()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + "_patch.zip";
+    }
+    return "";
+  }
+  
+  public String e()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_c_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ContentUpdateCheckResult{");
+    localStringBuffer.append("mBuzId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mItemId=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mVersion=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", mOldVersion=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", mDownloadFileUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mIsPatch=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", mPatchData=");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      localStringBuffer.append("null");
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        localTroopManager.b(localTroopInfo1);
-        aobk.a(paramQQAppInterface).a(paramInt);
-      }
-      return;
+      localStringBuffer.append(", mPatchSize=").append(this.jdField_b_of_type_Long);
+      localStringBuffer.append(", mDownloadPatchFileUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mMd5='").append(this.jdField_d_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadFileName='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadPatchFileName='").append(this.jdField_f_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mFlagWriteIntervalTs=").append(this.jdField_b_of_type_Boolean);
+      localStringBuffer.append(", mCheckServerInterval=").append(this.jdField_d_of_type_Int);
+      localStringBuffer.append(", mCheckRequestId=").append(this.jdField_e_of_type_Int);
+      localStringBuffer.append(", mDomainId=").append(this.jdField_f_of_type_Int);
+      localStringBuffer.append('}');
+      return localStringBuffer.toString();
+      localStringBuffer.append("mPatchData:").append(this.jdField_a_of_type_ArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjo
  * JD-Core Version:    0.7.0.1
  */

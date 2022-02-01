@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import oxb;
-import phk;
+import pmk;
+import pyv;
 
 public class VideoArticleModule$8
   implements Runnable
 {
-  public VideoArticleModule$8(phk paramphk, int paramInt, List paramList) {}
+  public VideoArticleModule$8(pyv parampyv, int paramInt, List paramList) {}
   
   public void run()
   {
-    oxb.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    pmk.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

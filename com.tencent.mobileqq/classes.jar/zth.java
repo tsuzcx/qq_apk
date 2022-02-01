@@ -1,45 +1,109 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.DeviceInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class zth
-  implements Parcelable.Creator<DeviceInfo>
+public class zth
+  extends WtloginObserver
 {
-  public DeviceInfo a(Parcel paramParcel)
+  public zth(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    DeviceInfo localDeviceInfo = new DeviceInfo();
-    localDeviceInfo.osPlatform = paramParcel.readString();
-    localDeviceInfo.osVersion = paramParcel.readString();
-    localDeviceInfo.netType = paramParcel.readInt();
-    localDeviceInfo.netDetail = paramParcel.readString();
-    localDeviceInfo.netAddress = paramParcel.readString();
-    localDeviceInfo.netAPN = paramParcel.readString();
-    localDeviceInfo.name = paramParcel.readString();
-    localDeviceInfo.remark = paramParcel.readString();
-    localDeviceInfo.type = paramParcel.readString();
-    localDeviceInfo.serialNum = paramParcel.readString();
-    localDeviceInfo.productId = paramParcel.readInt();
-    localDeviceInfo.appSecret = paramParcel.readString();
-    localDeviceInfo.din = paramParcel.readLong();
-    localDeviceInfo.isAdmin = paramParcel.readInt();
-    localDeviceInfo.status = ((short)paramParcel.readInt());
-    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
-    localDeviceInfo.productType = ((short)paramParcel.readInt());
-    localDeviceInfo.displayName = paramParcel.readString();
-    localDeviceInfo.productVer = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Version = paramParcel.readString();
-    return localDeviceInfo;
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    paramArrayOfByte1 = null;
+    paramString = paramArrayOfByte1;
+    if (paramInt == 0)
+    {
+      paramString = paramArrayOfByte1;
+      if (paramWUserSigInfo != null) {
+        paramString = WtloginHelper.getLoginTlvValue(paramWUserSigInfo, 54);
+      }
+    }
+    paramArrayOfByte1 = new Message();
+    paramWUserSigInfo = new Bundle();
+    paramWUserSigInfo.putInt("ret", paramInt);
+    paramWUserSigInfo.putByteArray("errMsg", paramArrayOfByte2);
+    if (paramString != null) {
+      paramWUserSigInfo.putByteArray("devInfo", paramString);
+    }
+    paramArrayOfByte1.setData(paramWUserSigInfo);
+    paramArrayOfByte1.what = 2;
+    this.a.a.sendMessage(paramArrayOfByte1);
   }
   
-  public DeviceInfo[] a(int paramInt)
+  public void OnException(String paramString, int paramInt)
   {
-    return new DeviceInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnException e=" + paramString);
+    }
+    paramString = new Message();
+    paramString.what = 3;
+    this.a.a.sendMessage(paramString);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c = paramString;
+    paramErrMsg = null;
+    paramString = paramErrMsg;
+    if (paramArrayList != null)
+    {
+      paramString = paramErrMsg;
+      if (paramArrayList.size() > 0)
+      {
+        paramString = new ByteArrayOutputStream();
+        int i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size()) {
+            try
+            {
+              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
+              i += 1;
+            }
+            catch (Throwable paramErrMsg)
+            {
+              for (;;)
+              {
+                paramErrMsg.printStackTrace();
+              }
+            }
+          }
+        }
+        paramString = paramString.toByteArray();
+      }
+    }
+    paramArrayList = new Message();
+    paramErrMsg = new Bundle();
+    paramErrMsg.putInt("ret", paramInt);
+    paramErrMsg.putByteArray("tlv", paramString);
+    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
+    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
+    paramArrayList.setData(paramErrMsg);
+    paramArrayList.what = 1;
+    this.a.a.sendMessage(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zth
  * JD-Core Version:    0.7.0.1
  */

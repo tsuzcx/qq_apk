@@ -1,23 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import android.widget.TextView;
 
-public class qab
-  extends pzz
+class qab
 {
-  public qab(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  int jdField_a_of_type_Int = 2;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
+  private qab(pzy parampzy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qab
  * JD-Core Version:    0.7.0.1
  */

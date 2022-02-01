@@ -1,18 +1,38 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajgk
+public class ajgk
   implements View.OnClickListener
 {
-  ajgk(ajgb paramajgb) {}
+  public ajgk(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
   public void onClick(View paramView)
   {
-    ajgb.a(this.a).app.a().a("0X800474F", 1);
-    bisq.a(ajgb.a(this.a), 4, null);
-    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    ajeo localajeo;
+    if ((paramView.getTag() instanceof ajeo))
+    {
+      localajeo = (ajeo)paramView.getTag();
+      if ((localajeo != null) && (ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajeo.b))) {
+        break label43;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label43:
+      ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajeo.b, false);
+      String str = this.a.getString(2131698394);
+      localajeo.a.setText(str);
+      localajeo.a.setClickable(false);
+      localajeo.a.setBackgroundDrawable(null);
+      localajeo.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755971);
+      ajgo.a(localajeo.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
+      bcst.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
+    }
   }
 }
 

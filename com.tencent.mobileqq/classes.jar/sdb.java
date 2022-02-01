@@ -1,21 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public final class sdb
-  implements ory
+class sdb
+  extends skd
 {
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  sdb(sce paramsce) {}
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
-      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
-    }
+    sce.a(this.a, paramVideoInfo);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdb
  * JD-Core Version:    0.7.0.1
  */

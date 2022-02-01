@@ -5,8 +5,8 @@ import android.text.TextUtils;
 
 public class TPNativeLibraryLoader
 {
-  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.3.1.1013.min";
-  private static final String MAIN_PLAYER_CORE_VERSION = "2.3.1";
+  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.5.0.1085.full";
+  private static final String MAIN_PLAYER_CORE_VERSION = "2.5.0";
   private static boolean mIsLibLoaded = false;
   private static Object mIsLibLoadedLock = new Object();
   private static ITPNativeLibraryExternalLoader mLibLoader = null;
@@ -29,9 +29,9 @@ public class TPNativeLibraryLoader
     }
     catch (Throwable localThrowable)
     {
-      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.3.1.1013.min");
+      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.5.0.1085.full");
     }
-    return "2.3.1.1013.min";
+    return "2.5.0.1085.full";
   }
   
   /* Error */
@@ -107,23 +107,24 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLib(Context paramContext)
   {
+    TPNativeLog.printLog(2, "loadLib cpu arch:" + TPSystemInfo.getCpuArchitecture());
     if ((TPSystemInfo.getCpuArchitecture() == 3) || (TPSystemInfo.getCpuArchitecture() == 4) || (TPSystemInfo.getCpuArchitecture() == 0)) {
       return false;
     }
     String str = "TPCore-master" + "";
     if (mLibLoader != null) {}
     boolean bool2;
-    for (boolean bool1 = mLibLoader.loadLib(str, "2.3.1.1013.min");; bool1 = loadLibDefault(str, paramContext))
+    for (boolean bool1 = mLibLoader.loadLib(str, "2.5.0.1085.full");; bool1 = loadLibDefault(str, paramContext))
     {
       bool2 = bool1;
       if (bool1)
       {
         paramContext = getPlayerCoreVersion();
-        bool1 = isMatchJavaAndPlayerCore("2.3.1", paramContext);
+        bool1 = isMatchJavaAndPlayerCore("2.5.0", paramContext);
         bool2 = bool1;
         if (!bool1)
         {
-          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.3.1" + ")");
+          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.5.0" + ")");
           bool2 = bool1;
         }
       }
@@ -149,7 +150,7 @@ public class TPNativeLibraryLoader
     //   5: new 60	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 129
+    //   12: ldc 134
     //   14: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_0
     //   18: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -158,18 +159,18 @@ public class TPNativeLibraryLoader
     //   27: iload_3
     //   28: istore_2
     //   29: aload_0
-    //   30: invokestatic 135	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   30: invokestatic 140	java/lang/System:loadLibrary	(Ljava/lang/String;)V
     //   33: iconst_1
     //   34: istore_2
     //   35: iconst_2
     //   36: new 60	java/lang/StringBuilder
     //   39: dup
     //   40: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   43: ldc 137
+    //   43: ldc 142
     //   45: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload_0
     //   49: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 139
+    //   52: ldc 144
     //   54: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   60: invokestatic 52	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
@@ -185,7 +186,7 @@ public class TPNativeLibraryLoader
     //   74: ifnull +92 -> 166
     //   77: iload_2
     //   78: istore_3
-    //   79: invokestatic 105	com/tencent/thumbplayer/core/common/TPSystemInfo:getCpuArchitecture	()I
+    //   79: invokestatic 107	com/tencent/thumbplayer/core/common/TPSystemInfo:getCpuArchitecture	()I
     //   82: bipush 6
     //   84: if_icmplt +82 -> 166
     //   87: iload_2
@@ -194,11 +195,11 @@ public class TPNativeLibraryLoader
     //   90: new 60	java/lang/StringBuilder
     //   93: dup
     //   94: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   97: ldc 141
+    //   97: ldc 146
     //   99: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   102: aload_0
     //   103: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc 143
+    //   106: ldc 148
     //   108: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   114: invokestatic 52	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
@@ -206,9 +207,9 @@ public class TPNativeLibraryLoader
     //   118: istore_3
     //   119: aload_0
     //   120: ldc 2
-    //   122: invokevirtual 149	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   122: invokevirtual 154	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   125: aload_1
-    //   126: invokestatic 155	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:load	(Ljava/lang/String;Ljava/lang/ClassLoader;Landroid/content/Context;)Z
+    //   126: invokestatic 160	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:load	(Ljava/lang/String;Ljava/lang/ClassLoader;Landroid/content/Context;)Z
     //   129: istore_2
     //   130: iload_2
     //   131: ifeq +78 -> 209
@@ -218,11 +219,11 @@ public class TPNativeLibraryLoader
     //   137: new 60	java/lang/StringBuilder
     //   140: dup
     //   141: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   144: ldc 157
+    //   144: ldc 162
     //   146: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload_0
     //   150: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: ldc 159
+    //   153: ldc 164
     //   155: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   161: invokestatic 52	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
@@ -235,11 +236,11 @@ public class TPNativeLibraryLoader
     //   171: new 60	java/lang/StringBuilder
     //   174: dup
     //   175: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   178: ldc 161
+    //   178: ldc 166
     //   180: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: aload_0
     //   184: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: ldc 163
+    //   187: ldc 168
     //   189: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: aload 4
     //   194: invokevirtual 70	java/lang/Throwable:getMessage	()Ljava/lang/String;
@@ -253,11 +254,11 @@ public class TPNativeLibraryLoader
     //   212: new 60	java/lang/StringBuilder
     //   215: dup
     //   216: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   219: ldc 157
+    //   219: ldc 162
     //   221: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: aload_0
     //   225: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: ldc 165
+    //   228: ldc 170
     //   230: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   236: invokestatic 52	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
@@ -268,11 +269,11 @@ public class TPNativeLibraryLoader
     //   243: new 60	java/lang/StringBuilder
     //   246: dup
     //   247: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   250: ldc 157
+    //   250: ldc 162
     //   252: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   255: aload_0
     //   256: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: ldc 167
+    //   259: ldc 172
     //   261: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload_1
     //   265: invokevirtual 70	java/lang/Throwable:getMessage	()Ljava/lang/String;
@@ -331,7 +332,7 @@ public class TPNativeLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,165 +1,512 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.TransReport;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor.2.1;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor.2.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
+import java.io.File;
+import java.net.URL;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class baxf
-  implements ITransactionCallback
+  extends baww
+  implements INetInfoHandler
 {
-  baxf(baxe parambaxe, long paramLong, String paramString) {}
+  private bayw a;
+  public MqqHandler a;
+  public ConcurrentHashMap<Integer, URLDrawable> b = new ConcurrentHashMap();
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public baxf()
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    String str5 = (String)paramHashMap.get("param_conf_connNum");
-    String str6 = (String)paramHashMap.get("param_fin_lost");
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoForwardProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_bdhSrv", paramHashMap.get("ip"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_bdhPort", paramHashMap.get("port"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str5);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str6);
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_net_ip_type", paramHashMap.get("param_net_ip_type"));
-    ThreadManager.post(new ShortVideoForwardProcessor.2.2(this, l2, l3, l4, l5), 5, null, true);
-    this.jdField_a_of_type_Baxe.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Baxe.jdField_b_of_type_Barh);
-    this.jdField_a_of_type_Baxe.d();
+    this.jdField_a_of_type_MqqOsMqqHandler = new baxg(this);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    long l1 = SystemClock.uptimeMillis();
-    try
-    {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has())
+    arnj localarnj = new arnj(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
-        if (paramArrayOfByte.length() > 0)
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localarnj, localarnj);
+        if (localURLDrawable.getStatus() != 1) {
+          localURLDrawable.downloadImediatly();
+        }
+        return localURLDrawable;
+      }
+      catch (Exception localException)
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "getCoverDrawable():  getDrawable Exception, coverUrl=" + paramString + "exception = " + localException.getMessage());
+      }
+    }
+    return localarnj;
+  }
+  
+  private boolean a(MessageForShortVideo paramMessageForShortVideo, int paramInt1, int paramInt2, int paramInt3)
+  {
+    return ((paramMessageForShortVideo.videoFileStatus == 1002) || (paramMessageForShortVideo.videoFileStatus == 2002)) && (paramMessageForShortVideo.videoFileStatus == paramInt1) && (paramInt2 - paramInt3 < 10);
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_Bayw != null) && (this.jdField_a_of_type_Bayw.a != null)) {
+      return this.jdField_a_of_type_Bayw.a.getCurPlayingPos();
+    }
+    return 0L;
+  }
+  
+  public long a(long paramLong)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101)) {
+      return ((AIOVideoData)localRichMediaBrowserInfo.baseData).jdField_f_of_type_Long;
+    }
+    return 0L;
+  }
+  
+  public akhh a(AIOVideoData paramAIOVideoData)
+  {
+    if (paramAIOVideoData == null) {
+      return null;
+    }
+    Object localObject = new File(paramAIOVideoData.b);
+    long l = 0L;
+    boolean bool;
+    if (((File)localObject).exists())
+    {
+      l = ((File)localObject).length();
+      if (paramAIOVideoData.d == 1) {
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "getVideoPlayMedioInfo longvideo GetUrlAction =" + bool);
+      if (bool)
+      {
+        localObject = baxq.a().a(paramAIOVideoData.jdField_a_of_type_Long);
+        if ((localObject != null) && (((baxt)localObject).a()))
         {
-          this.jdField_a_of_type_Baxe.f = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoForwardProcessor", 2, "set uuid from BDH ");
+          akhh localakhh = new akhh();
+          localakhh.jdField_a_of_type_Boolean = true;
+          localakhh.jdField_a_of_type_ArrayOfJavaLangString = ((baxt)localObject).jdField_a_of_type_ArrayOfJavaLangString;
+          localakhh.jdField_a_of_type_JavaLangString = paramAIOVideoData.b;
+          localakhh.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((baxt)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+          localakhh.jdField_a_of_type_Int = ((baxt)localObject).jdField_a_of_type_Int;
+          localakhh.jdField_a_of_type_Long = paramAIOVideoData.jdField_a_of_type_Long;
+          localakhh.b = paramAIOVideoData.jdField_a_of_type_Int;
+          return localakhh;
+          if (l < paramAIOVideoData.c)
+          {
+            bool = true;
+            continue;
+            BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "initData, #PLAY_CALLER_SHORT_VIDEO#, not exist");
+            bool = true;
           }
         }
-      }
-      long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-      long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-      long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-      long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-      paramArrayOfByte = (String)paramHashMap.get("rep_bdhTrans");
-      String str1 = (String)paramHashMap.get("segspercnt");
-      String str2 = (String)paramHashMap.get("param_conf_segSize");
-      String str3 = (String)paramHashMap.get("param_conf_segNum");
-      String str4 = (String)paramHashMap.get("param_conf_connNum");
-      String str5 = (String)paramHashMap.get("param_fin_lost");
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoForwardProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Baxe.jdField_a_of_type_Bass.jdField_a_of_type_Long + " transInfo:" + paramArrayOfByte);
-      }
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_bdhSrv", paramHashMap.get("ip"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_bdhPort", paramHashMap.get("port"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.jdField_a_of_type_Baxe.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", paramArrayOfByte);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str1);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str2);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str3);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str4);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str5);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_net_ip_type", paramHashMap.get("param_net_ip_type"));
-      this.jdField_a_of_type_Baxe.jdField_b_of_type_Barh.b();
-      this.jdField_a_of_type_Baxe.jdField_b_of_type_Barh.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Baxe.s = this.jdField_a_of_type_Baxe.jdField_q_of_type_Long;
-      this.jdField_a_of_type_Baxe.jdField_q_of_type_Boolean = true;
-      this.jdField_a_of_type_Baxe.b(false);
-      ThreadManager.post(new ShortVideoForwardProcessor.2.1(this, l2, l3, l4, l5), 5, null, true);
-      this.jdField_a_of_type_Baxe.jdField_a_of_type_Bass.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoForwardProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
-      }
-      bdhb.d(this.jdField_a_of_type_JavaLangString);
-      paramArrayOfByte = (String)paramHashMap.get("ip");
-      paramHashMap = (String)paramHashMap.get("port");
-      this.jdField_a_of_type_Baxe.a(true, 0, paramArrayOfByte, paramHashMap);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoForwardProcessor", 2, "get uuid from BDH error", paramArrayOfByte);
+        else
+        {
+          return null;
         }
       }
+      else
+      {
+        localObject = new akhh();
+        ((akhh)localObject).jdField_a_of_type_Boolean = false;
+        ((akhh)localObject).jdField_a_of_type_Long = paramAIOVideoData.jdField_a_of_type_Long;
+        ((akhh)localObject).b = paramAIOVideoData.jdField_a_of_type_Int;
+        ((akhh)localObject).jdField_a_of_type_JavaLangString = paramAIOVideoData.b;
+        ((akhh)localObject).d = l;
+        return localObject;
+      }
+      bool = false;
     }
   }
   
-  public void onSwitch2BackupChannel()
+  public AIOVideoData a()
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Baxe.d("<BDH_LOG> onSwitch2BackupChannel()");
-    this.jdField_a_of_type_Baxe.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
+    RichMediaBrowserInfo localRichMediaBrowserInfo = getSelectedItem();
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101)) {
+      return (AIOVideoData)localRichMediaBrowserInfo.baseData;
+    }
+    return null;
   }
   
-  public void onTransStart()
+  public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Baxe.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Baxe.jdField_b_of_type_Barh.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Baxe.jdField_b_of_type_Barh.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    baxe localbaxe = this.jdField_a_of_type_Baxe;
-    bass localbass = this.jdField_a_of_type_Baxe.jdField_a_of_type_Bass;
-    long l = paramInt;
-    localbass.e = l;
-    localbaxe.s = l;
-    if ((paramInt < this.jdField_a_of_type_Baxe.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Baxe.o) && (!this.jdField_a_of_type_Baxe.k))
+    Object localObject = a(a());
+    MessageForShortVideo localMessageForShortVideo;
+    if (localObject != null) {
+      localMessageForShortVideo = ((akhh)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    }
+    for (int j = ((akhh)localObject).jdField_a_of_type_Int;; j = -1)
     {
-      this.jdField_a_of_type_Baxe.i();
-      if (this.jdField_a_of_type_Baxe.g) {
-        bmcp.a(this.jdField_a_of_type_Baxe.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1002, this.jdField_a_of_type_Baxe.f());
+      if ((localMessageForShortVideo == null) || (paramInt == -1)) {}
+      do
+      {
+        int k;
+        do
+        {
+          int i;
+          do
+          {
+            return;
+            k = 0;
+            i = k;
+            if (paramLong > 0L)
+            {
+              i = k;
+              if (localMessageForShortVideo.videoFileSize > 0) {
+                i = (int)(100L * paramLong / localMessageForShortVideo.videoFileSize);
+              }
+            }
+            if (localMessageForShortVideo.videoFileProgress < 0) {
+              localMessageForShortVideo.videoFileProgress = 0;
+            }
+          } while (a(localMessageForShortVideo, paramInt, i, localMessageForShortVideo.videoFileProgress));
+          if ((j != 6) && (j != 17) && (j != 9))
+          {
+            k = i;
+            if (j != 20) {}
+          }
+          else
+          {
+            if ((paramInt == 2002) && (paramLong > 0L)) {
+              localMessageForShortVideo.transferedSize = ((int)paramLong);
+            }
+            k = i;
+            if (paramInt == 2003)
+            {
+              localMessageForShortVideo.transferedSize = 0;
+              k = 100;
+            }
+          }
+        } while (((localMessageForShortVideo.videoFileStatus == 2004) || (localMessageForShortVideo.videoFileStatus == 1004)) && ((paramInt == 1002) || (paramInt == 2002)));
+        localMessageForShortVideo.videoFileStatus = paramInt;
+        localMessageForShortVideo.fileType = j;
+        if (k > 0) {
+          localMessageForShortVideo.videoFileProgress = k;
+        }
+        localObject = ShortVideoUtils.c(localMessageForShortVideo);
+        if ((paramInt == 2003) && (!bgsp.a((String)localObject))) {
+          localMessageForShortVideo.lastModified = new File((String)localObject).lastModified();
+        }
+      } while (this.jdField_a_of_type_Bawx.a() == null);
+      this.jdField_a_of_type_Bawx.a().a(localMessageForShortVideo);
+      return;
+      localMessageForShortVideo = null;
+    }
+  }
+  
+  public void a(int paramInt, File paramFile)
+  {
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = null;
+      if (str != null) {
+        bcst.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
+      str = ShortVideoUtils.c();
+      if (zkr.a(BaseApplication.getContext(), paramFile.getAbsolutePath(), str)) {
+        QQToast.a(this.jdField_a_of_type_Bayw.mContext, 2, anni.a(2131698948), 0).a();
+      }
+      break;
+    }
+    for (;;)
+    {
+      bcst.b(null, "CliOper", "", "", "0X800610F", "0X800610F", 0, 0, "", "", "", "");
+      return;
+      str = "0X8007A24";
+      break;
+      str = "0X8007A25";
+      break;
+      QQToast.a(this.jdField_a_of_type_Bayw.mContext, 1, anni.a(2131698949), 0).a();
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101))
+    {
+      ((AIOVideoData)localRichMediaBrowserInfo.baseData).g = false;
+      updateItem(localRichMediaBrowserInfo);
+    }
+  }
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong1);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData.getType() == 101) && ((localRichMediaBrowserInfo.baseData instanceof AIOVideoData)))
+    {
+      AIOVideoData localAIOVideoData = (AIOVideoData)localRichMediaBrowserInfo.baseData;
+      if (paramInt2 == 256) {
+        localAIOVideoData.status = 2;
+      }
+      localAIOVideoData.progress = paramInt3;
+      localRichMediaBrowserInfo.baseData = localAIOVideoData;
+      updateItem(localRichMediaBrowserInfo);
+    }
+    localRichMediaBrowserInfo = getSelectedItem();
+    if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof AIOVideoData)) && (((AIOVideoData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long == paramLong1)) {
+      this.jdField_a_of_type_Bayw.updateUI();
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData.getType() == 101) && ((localRichMediaBrowserInfo.baseData instanceof AIOVideoData)))
+    {
+      AIOVideoData localAIOVideoData = (AIOVideoData)localRichMediaBrowserInfo.baseData;
+      localAIOVideoData.status = 0;
+      localAIOVideoData.progress = 0;
+      localRichMediaBrowserInfo.baseData = localAIOVideoData;
+      updateItem(localRichMediaBrowserInfo);
+    }
+    localRichMediaBrowserInfo = getSelectedItem();
+    if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof AIOVideoData)) && (((AIOVideoData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long == paramLong))
+    {
+      this.jdField_a_of_type_Bayw.updateUI();
+      if (paramInt2 != 256) {
+        break label225;
+      }
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "save video result resultStr = " + paramString);
+      if (paramInt3 != 1) {
+        break label195;
+      }
+      QQToast.a(this.jdField_a_of_type_Bayw.mContext, 2, this.jdField_a_of_type_Bayw.mContext.getString(2131717408), 0).a();
+    }
+    label195:
+    label225:
+    while ((paramInt2 != 1) && (paramInt2 != 0))
+    {
+      return;
+      QQToast.a(this.jdField_a_of_type_Bayw.mContext, 1, this.jdField_a_of_type_Bayw.mContext.getString(2131717423), 0).a();
+      return;
+    }
+    if (paramInt3 == 1) {}
+    for (;;)
+    {
+      a(paramLong, paramInt1, paramInt2, paramString);
+      this.jdField_a_of_type_Bayw.updateView(getSelectedIndex(), this.jdField_a_of_type_Bayw.mBrowserItemView, paramBoolean);
+      return;
+      paramString = "I:E";
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Bayw.a(paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3);
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101))
+    {
+      ((AIOVideoData)localRichMediaBrowserInfo.baseData).jdField_f_of_type_Boolean = paramBoolean;
+      updateItem(localRichMediaBrowserInfo);
+    }
+  }
+  
+  public void a(AIOVideoData paramAIOVideoData)
+  {
+    if ((paramAIOVideoData != null) && (RichMediaBrowserManager.getInstance().getProvider() != null))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "dealSaveVideo");
+      RichMediaBrowserManager.getInstance().getProvider().downloadMedia(paramAIOVideoData.jdField_a_of_type_Long, paramAIOVideoData.jdField_a_of_type_Int, 256);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
+  {
+    if (bgmg.b(paramString))
+    {
+      paramString = ShortVideoUtils.a(paramString);
+      if (paramString != null)
+      {
+        paramString = a(paramString.toString(), paramInt1, paramInt2);
+        if ((paramString instanceof URLDrawable)) {
+          this.b.put(Integer.valueOf(paramInt3), (URLDrawable)paramString);
+        }
+        paramImageView.setImageDrawable(paramString);
+      }
+    }
+    else
+    {
+      return;
+    }
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "url  is null");
+  }
+  
+  public boolean a(long paramLong)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101)) {
+      return ((AIOVideoData)localRichMediaBrowserInfo.baseData).h;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.a != null) && (this.jdField_a_of_type_Bawx.a() != null))
+    {
+      if (!bqcd.b()) {
+        break label94;
+      }
+      this.jdField_a_of_type_Bawx.a().a((int)afur.a(bqcd.jdField_a_of_type_Int, this.jdField_a_of_type_Bayw.mContext.getResources()) + 46);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bawx.a().d();
+      this.jdField_a_of_type_Bawx.a().c();
+      this.jdField_a_of_type_Bawx.a.a();
+      return;
+      label94:
+      this.jdField_a_of_type_Bawx.a().a(46);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    try
+    {
+      this.b.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    catch (Exception localException)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onRevokeMsg exception = " + localException.getMessage());
+    }
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101))
+    {
+      ((AIOVideoData)localRichMediaBrowserInfo.baseData).h = paramBoolean;
+      updateItem(localRichMediaBrowserInfo);
+    }
+  }
+  
+  public void b(AIOVideoData paramAIOVideoData)
+  {
+    if (RichMediaBrowserManager.getInstance().getProvider() != null) {
+      RichMediaBrowserManager.getInstance().getProvider().downloadMedia(paramAIOVideoData.jdField_a_of_type_Long, paramAIOVideoData.jdField_a_of_type_Int, 1);
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = aqgz.b();
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "isImmersionOpen:" + bool);
+    return bool;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = getItem(paramInt);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101)) {
+      return ((AIOVideoData)localRichMediaBrowserInfo.baseData).jdField_f_of_type_Boolean;
+    }
+    return false;
+  }
+  
+  public boolean b(long paramLong)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = a(paramLong);
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 101)) {
+      return ((AIOVideoData)localRichMediaBrowserInfo.baseData).g;
+    }
+    return false;
+  }
+  
+  public void buildPresenter()
+  {
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_Bayw.mContext, this);
+  }
+  
+  public boolean c()
+  {
+    Object localObject = getSelectedItem();
+    if ((localObject != null) && ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)))
+    {
+      localObject = (AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData;
+      return (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(((AIOBrowserBaseData)localObject).d)) != null) && (((Set)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(((AIOBrowserBaseData)localObject).d))).size() > 0);
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    AppNetConnInfo.unregisterNetInfoHandler(this);
+    baxq.a().a();
+  }
+  
+  public void onNetMobile2None()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetMobile2None");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetMobile2Wifi s = " + paramString);
+    baxq.a().a();
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetNone2Mobile s = " + paramString);
+    this.jdField_a_of_type_Bayw.a();
+    baxq.a().a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetNone2Wifi s = " + paramString);
+    baxq.a().a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetWifi2Mobile s = " + paramString);
+    this.jdField_a_of_type_Bayw.a();
+    baxq.a().a();
+  }
+  
+  public void onNetWifi2None()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoPresenter", 4, "onNetWifi2None");
+  }
+  
+  public void setGalleryView(BrowserBaseView paramBrowserBaseView)
+  {
+    super.setGalleryView(paramBrowserBaseView);
+    if ((paramBrowserBaseView instanceof bayw)) {
+      this.jdField_a_of_type_Bayw = ((bayw)paramBrowserBaseView);
     }
   }
 }

@@ -5,18 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bksv;
-import bljn;
+import bnhu;
+import bnzb;
 
 public class AEEditorGenerateBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bksv jdField_a_of_type_Bksv;
+  private bnhu jdField_a_of_type_Bnhu;
   private boolean jdField_a_of_type_Boolean;
   
-  public AEEditorGenerateBroadcastReceiver(bksv parambksv)
+  public AEEditorGenerateBroadcastReceiver(bnhu parambnhu)
   {
-    this.jdField_a_of_type_Bksv = parambksv;
+    this.jdField_a_of_type_Bnhu = parambnhu;
   }
   
   private IntentFilter a()
@@ -41,11 +41,15 @@ public class AEEditorGenerateBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bljn.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
+      bnzb.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
     }
     String str1;
     String str2;
     String str3;
+    String str4;
+    String str5;
+    String str6;
+    String str7;
     do
     {
       float f;
@@ -53,35 +57,39 @@ public class AEEditorGenerateBroadcastReceiver
       do
       {
         return;
-        str1 = paramIntent.getStringExtra("generate_mission");
-        str2 = paramIntent.getStringExtra("generate_path");
-        str3 = paramIntent.getStringExtra("generate_thumb_ptah");
+        str1 = paramIntent.getStringExtra("generate_materialid");
+        str2 = paramIntent.getStringExtra("generate_materialname");
+        str3 = paramIntent.getStringExtra("generate_filterid");
+        str4 = paramIntent.getStringExtra("generate_scheme");
+        str5 = paramIntent.getStringExtra("generate_mission");
+        str6 = paramIntent.getStringExtra("generate_path");
+        str7 = paramIntent.getStringExtra("generate_thumb_ptah");
         f = paramIntent.getFloatExtra("generate_progress", 0.0F);
-        i = paramIntent.getIntExtra("generate_thumb_ptah", 0);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str1);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str2);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str3);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
-        bljn.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + i);
-      } while (this.jdField_a_of_type_Bksv == null);
+        i = paramIntent.getIntExtra("generate_errorcode", 0);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
+        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + i);
+      } while (this.jdField_a_of_type_Bnhu == null);
       if ("AEEDITOR_GENERATE_STATUS_ERROR".equals(paramContext))
       {
-        this.jdField_a_of_type_Bksv.a(str1, i);
+        this.jdField_a_of_type_Bnhu.a(str5, i);
         return;
       }
       if ("AEEDITOR_GENERATE_STATUS_DOWNLOADING".equals(paramContext))
       {
-        this.jdField_a_of_type_Bksv.a(str1, f);
+        this.jdField_a_of_type_Bnhu.a(str5, f);
         return;
       }
     } while (!"AEEDITOR_GENERATE_STATUS_READY".equals(paramContext));
-    this.jdField_a_of_type_Bksv.a(str1, str2, str3);
+    this.jdField_a_of_type_Bnhu.a(str1, str2, str3, str4, str5, str6, str7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEEditorGenerateBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

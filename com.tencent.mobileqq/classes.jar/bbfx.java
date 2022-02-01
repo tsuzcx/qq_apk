@@ -1,35 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ThemeImageView;
 
 class bbfx
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  bbfx(bbfv parambbfv) {}
+  bbfx(bbfs parambbfs) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
+    boolean bool;
+    if (bbfs.a(this.a) != null)
     {
-    default: 
-      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      bbfv.a(this.a, bbfv.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      bbfv.a(this.a, bbfv.a(this.a).troopUin, 1);
-      return;
+      KDSearchHistoryFlowLayout localKDSearchHistoryFlowLayout = bbfs.a(this.a);
+      if (bbfs.a(this.a).a) {
+        break label111;
+      }
+      bool = true;
+      localKDSearchHistoryFlowLayout.a = bool;
+      if (!bbfs.a(this.a).a) {
+        break label116;
+      }
+      bbfs.a(this.a).setImageResource(2130846018);
     }
-    bbfv.a(this.a, bbfv.a(this.a).troopUin, 3);
+    for (;;)
+    {
+      bbfs.a(this.a).a(bbfs.a(this.a).a(), bbfs.a(this.a).a);
+      bbfs.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label111:
+      bool = false;
+      break;
+      label116:
+      bbfs.a(this.a).setImageResource(2130846019);
+    }
   }
 }
 

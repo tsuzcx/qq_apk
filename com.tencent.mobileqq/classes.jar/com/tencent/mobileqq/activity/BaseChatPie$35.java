@@ -1,26 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import android.app.Dialog;
+import afwy;
+import alqh;
 
 class BaseChatPie$35
   implements Runnable
 {
-  BaseChatPie$35(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$35(BaseChatPie paramBaseChatPie, alqh paramalqh) {}
   
   public void run()
   {
-    if ((this.this$0.e != null) && (this.this$0.e.isShowing())) {
-      this.this$0.e.dismiss();
+    if ((!this.a.b()) && (this.this$0.a != null)) {
+      this.this$0.a.d();
     }
-    while ((this.this$0.f == null) || (!this.this$0.f.isShowing())) {
-      return;
-    }
-    this.this$0.f.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.35
  * JD-Core Version:    0.7.0.1
  */

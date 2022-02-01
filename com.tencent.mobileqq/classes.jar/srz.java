@@ -1,32 +1,35 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class srz
-  implements TextWatcher
+  extends Handler
 {
-  public srz(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  private WeakReference<ReadInJoyNavigationGridview> a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public srz(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
-    {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
-    }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srz
  * JD-Core Version:    0.7.0.1
  */

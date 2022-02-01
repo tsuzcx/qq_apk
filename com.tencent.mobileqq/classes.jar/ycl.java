@@ -1,24 +1,73 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.lang.ref.WeakReference;
 
 public class ycl
-  implements ydm
+  implements yck
 {
-  public ycl(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  private int jdField_a_of_type_Int;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public ycl(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    yqp.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    Object localObject;
+    do
+    {
       return;
+      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        wjz.a((Context)localObject, 12, paramString);
+      }
+    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = "clk_reply_nick";
+      paramString = "2";
+      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
+        break label157;
+      }
+      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramInt = yqu.a(paramString);
+      if (!paramString.getOwner().isMe()) {
+        break label151;
+      }
+      paramString = "1";
     }
-    zaj.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    for (;;)
+    {
+      yqu.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, yqu.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+      localObject = "clk_like_name";
+      break;
+      label151:
+      paramString = "2";
+      continue;
+      label157:
+      paramInt = 4;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycl
  * JD-Core Version:    0.7.0.1
  */

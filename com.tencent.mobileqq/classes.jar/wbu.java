@@ -1,44 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wbu
-  extends QQUIEventReceiver<wax, uvf>
+  extends wbv
 {
-  public wbu(@NonNull wax paramwax)
-  {
-    super(paramwax);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void a(@NonNull wax paramwax, @NonNull uvf paramuvf)
+  public wbu(int paramInt)
   {
-    paramwax.l();
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramwax.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    wxe.b(this.TAG, "delete onEvent");
-    if ((!paramuvf.jdField_a_of_type_Boolean) && (paramuvf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
-    {
-      if (QLog.isColorLevel()) {
-        wxe.d(this.TAG, "删除失败：%s", new Object[] { paramuvf.a() });
-      }
-      QQToast.a(paramwax.b(), 1, alud.a(2131707271), 0).a();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uvf.class;
+    super(paramInt);
+    this.g = 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wbu
  * JD-Core Version:    0.7.0.1
  */

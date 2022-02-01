@@ -1,23 +1,41 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.WeakHashMap;
 
-public class agdz
-  implements uns
+class agdz
+  implements OnCompositionLoadedListener
 {
-  long jdField_a_of_type_Long;
-  agea jdField_a_of_type_Agea;
-  String jdField_a_of_type_JavaLangString;
+  agdz(agdw paramagdw) {}
   
-  public agdz(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (!paramString1.equals(this.a)) {}
+    if (agdw.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEggLottieAnimView", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
+      }
+    }
+    do
+    {
+      return;
+      if (paramLottieComposition == null) {
+        break;
+      }
+      agdw.a(this.a).setComposition(paramLottieComposition);
+      agdw.a(this.a).loop(false);
+      agdw.a(this.a).setVisibility(0);
+      agdw.a(this.a).playAnimation();
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopEggLottieAnimView", 2, "playNextAnim fromInputStream succ");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopEggLottieAnimView", 2, "playNextAnim fromInputStream composition null");
+    }
+    agdw.a(this.a).clear();
+    this.a.a();
   }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

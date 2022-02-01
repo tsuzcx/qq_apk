@@ -1,27 +1,19 @@
-import android.support.annotation.Nullable;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
 public class vsu
-  extends uli
+  implements vst
 {
-  public String a;
-  public vpm a;
-  public String b;
+  public vsu(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public vsu(@Nullable String paramString1, vpm paramvpm, String paramString2)
+  public float a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Vpm = paramvpm;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Vpm + ", vid='" + this.b + '\'' + '}';
+    return QCircleTransitionImageView.b(this.a).bottom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsu
  * JD-Core Version:    0.7.0.1
  */

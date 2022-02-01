@@ -1,47 +1,71 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class akng
-  extends Handler
+public class akng
+  extends BroadcastReceiver
 {
-  akng(aknf paramaknf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akng(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessage.what == aknf.a(this.a))
+    int i;
+    if (paramIntent != null)
     {
-      QLog.d(aknf.a(this.a), 4, "Receive Message!");
-      this.a.a();
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label79;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
+      }
+      i = 1;
     }
     for (;;)
     {
-      try
+      if (i != 0)
       {
-        azqs.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == aknf.b(this.a))
-      {
-        QLog.d(aknf.a(this.a), 4, "Receive Message!");
-        try
-        {
-          azqs.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
+        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
+          break label151;
         }
-        catch (Exception paramMessage) {}
+        this.a.a();
       }
+      label79:
+      while (!this.a.d)
+      {
+        return;
+        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+          break label188;
+        }
+        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
+        }
+        if (paramContext.getCallState() != 1) {
+          break label188;
+        }
+        i = 1;
+        break;
+      }
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
+      }
+      this.a.b(anni.a(2131712098));
+      return;
+      label188:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akng
  * JD-Core Version:    0.7.0.1
  */

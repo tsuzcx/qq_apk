@@ -28,7 +28,7 @@ public class PatchReplace
     if (this.mNewDom == null) {
       ViolaLogUtils.d("PatchReplace", "mNewDom is null");
     }
-    label234:
+    label241:
     do
     {
       Object localObject;
@@ -61,11 +61,12 @@ public class PatchReplace
               } while (paramDOMActionContext == null);
               i = ((VComponentContainer)localObject).indexOf(this.mOldComponent);
               if (i == -1) {
-                break label234;
+                break label241;
               }
               paramDOMActionContext.lazy(false);
               paramDOMActionContext.createView();
               ((VComponentContainer)localObject).remove(this.mOldComponent, false);
+              this.mOldComponent.removedByDiff();
               ((VComponentContainer)localObject).addChild(paramDOMActionContext, i);
               if ((!(localObject instanceof VRecyclerList)) || (this.mOldComponent.getRealView() == null)) {
                 break;
@@ -85,6 +86,7 @@ public class PatchReplace
       paramDOMActionContext.lazy(false);
       paramDOMActionContext.createView();
       ((VComponentContainer)localObject).remove(this.mOldComponent, false);
+      this.mOldComponent.removedByDiff();
       ((VComponentContainer)localObject).addChild(paramDOMActionContext);
       localViewGroup.removeView(this.mOldComponent.getRealView());
       localViewGroup.addView(paramDOMActionContext.getHostView());
@@ -99,7 +101,7 @@ public class PatchReplace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.diff.PatchReplace
  * JD-Core Version:    0.7.0.1
  */

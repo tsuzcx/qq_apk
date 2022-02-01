@@ -1,23 +1,68 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class xcg
-  implements vyn
+  extends xce
 {
-  public xcg(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  private final String c;
   
-  public void a_(vyi paramvyi)
+  private boolean a(xww paramxww)
   {
-    wxe.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    boolean bool = false;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramxww.a(), paramxww.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramxww.a(), 0.0F, 0.0F, null);
+      bgmo.a(bgmo.a(localBitmap, 100), new File(this.c));
+      bool = true;
+    }
+    catch (IOException paramxww)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxww, new Object[0]);
+      return false;
+    }
+    catch (OutOfMemoryError paramxww)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxww, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(xww paramxww)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramxww), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xcg
  * JD-Core Version:    0.7.0.1
  */

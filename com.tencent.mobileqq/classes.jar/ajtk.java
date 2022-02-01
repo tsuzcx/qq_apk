@@ -1,53 +1,21 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtk
-  extends FileObserver
+  implements View.OnClickListener
 {
-  private boolean a;
+  public ajtk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  private void a()
+  public void onClick(View paramView)
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
-  }
-  
-  public void onEvent(int paramInt, String paramString)
-  {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
-    }
-    do
-    {
-      return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
-    }
-    a();
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

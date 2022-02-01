@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +35,7 @@ public class PAGImage
     PAGFont.loadSystemFonts();
   }
   
-  private PAGImage(long paramLong)
+  PAGImage(long paramLong)
   {
     this.nativeContext = paramLong;
   }
@@ -73,6 +74,10 @@ public class PAGImage
   
   public static PAGImage FromBitmap(Bitmap paramBitmap)
   {
+    int k = 1;
+    if ((Build.VERSION.SDK_INT >= 26) && (paramBitmap.getConfig() == Bitmap.Config.HARDWARE)) {
+      return null;
+    }
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramBitmap.getHeight() * paramBitmap.getRowBytes());
     paramBitmap.copyPixelsToBuffer(localByteBuffer);
     Bitmap.Config localConfig2 = paramBitmap.getConfig();
@@ -81,32 +86,43 @@ public class PAGImage
       localConfig1 = Bitmap.Config.ARGB_8888;
     }
     int i;
-    switch (PAGImage.1.$SwitchMap$android$graphics$Bitmap$Config[localConfig1.ordinal()])
+    int j;
+    if (paramBitmap.isPremultiplied())
     {
-    default: 
-      i = 4;
-      if (!paramBitmap.isPremultiplied()) {
-        break;
+      i = 2;
+      switch (PAGImage.1.$SwitchMap$android$graphics$Bitmap$Config[localConfig1.ordinal()])
+      {
+      default: 
+        k = 4;
+        j = i;
+        i = k;
       }
     }
     long l;
-    for (int j = 2;; j = 3)
+    for (;;)
     {
       l = LoadFromPixels(localByteBuffer.array(), paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getRowBytes(), i, j);
       if (l != 0L) {
-        break label148;
+        break label189;
       }
       return null;
-      i = 1;
-      break;
-      i = 2;
-      break;
       i = 3;
       break;
-      i = 8;
-      break;
+      j = i;
+      i = k;
+      continue;
+      j = 1;
+      i = 2;
+      continue;
+      k = 3;
+      j = i;
+      i = k;
+      continue;
+      k = 8;
+      j = i;
+      i = k;
     }
-    label148:
+    label189:
     paramBitmap = new PAGImage(l);
     paramBitmap.pixels = localByteBuffer.array();
     return paramBitmap;
@@ -156,6 +172,8 @@ public class PAGImage
   
   private static native long LoadFromTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
   
+  private native void nativeFinalize();
+  
   private native void nativeGetMatrix(float[] paramArrayOfFloat);
   
   private static final native void nativeInit();
@@ -166,7 +184,7 @@ public class PAGImage
   
   protected void finalize()
   {
-    nativeRelease();
+    nativeFinalize();
   }
   
   public native int height();
@@ -178,6 +196,11 @@ public class PAGImage
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
     return localMatrix;
+  }
+  
+  public void release()
+  {
+    nativeRelease();
   }
   
   public native int scaleMode();
@@ -195,7 +218,7 @@ public class PAGImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGImage
  * JD-Core Version:    0.7.0.1
  */

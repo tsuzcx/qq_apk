@@ -1,8 +1,37 @@
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract interface aasl
+public class aasl
 {
-  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
+  public int a;
+  public String a;
+  public List<aask> a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public aasl(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("lottie");
+    this.c = paramJSONObject.optInt("interval");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    if (paramJSONObject.optJSONArray("aioActivities") != null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONArray("aioActivities");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        aask localaask = new aask(paramJSONObject.optJSONObject(i));
+        this.jdField_a_of_type_JavaUtilList.add(localaask);
+        i += 1;
+      }
+    }
+  }
 }
 
 

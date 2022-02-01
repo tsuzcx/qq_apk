@@ -1,96 +1,53 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.os.Process;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangOpenHelper.1;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-public class atba
+class atba
+  extends atbl
 {
-  public static void a(Context paramContext, String paramString)
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  
+  atba(atan paramatan, MessageRecord paramMessageRecord)
   {
-    if (paramString == null) {}
-    ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
-    do
-    {
-      return;
-      while (!paramContext.hasNext())
-      {
-        do
-        {
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-        } while ((paramContext == null) || (paramContext.size() == 0));
-        paramContext = paramContext.iterator();
-      }
-      localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-    } while (!paramString.equals(localRunningAppProcessInfo.processName));
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangOpenHelper", 2, "杀死进程：" + paramString);
-    }
-    Process.killProcess(localRunningAppProcessInfo.pid);
+    super(paramatan);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HuayangOpenHelper", 2, String.format("appType = %s,openType = %s, fromId = %s, uri = %s ，action = %s,pkgName = %s", new Object[] { paramString1, paramString2, paramString4, paramString3, paramString5, paramString6 }));
-    }
-    atbi.a(paramQQAppInterface.getApp(), paramString1);
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString6)))
-    {
-      if (!"slientDownload".equals(paramString5)) {
-        break label156;
-      }
-      atbh.a("2587808");
-      paramString7 = IVPluginInfo.a(paramString7);
-      paramString4 = paramString7;
-      if (paramString7.size() == 0) {
-        paramString4 = IVPluginInfo.a();
-      }
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label209;
-      }
-      paramString1 = "hy_sixgod";
-    }
-    label156:
-    label209:
-    for (;;)
-    {
-      ThreadManagerV2.executeOnSubThread(new HuayangOpenHelper.1(paramString1, atar.a(paramQQAppInterface.getApp(), paramString6, paramString1), paramQQAppInterface, paramString3, paramString5, paramString4));
-      a(paramString2, paramString2);
-      return;
-      if (!"download".equals(paramString5)) {
-        break;
-      }
-      if (atav.a(paramString6))
-      {
-        atbh.a("2691701");
-        break;
-      }
-      if (atav.b(paramString6))
-      {
-        atbh.a("2597718");
-        break;
-      }
-      atbi.b(paramQQAppInterface.getApp(), paramString1);
-      break;
-    }
-  }
+  void a(String paramString, int paramInt) {}
   
-  private static void a(String paramString1, String paramString2)
+  void a(String paramString, int paramInt, atbj paramatbj)
   {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "HyProxy";
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramatbj.a(atan.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    wxj.a("huayang", "openHy", 0, 0, new String[] { str, paramString2 });
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
+      }
+      paramatbj.a(atan.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    atan.a(this.jdField_a_of_type_Atan).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new atbb(this, paramString, paramatbj));
   }
 }
 

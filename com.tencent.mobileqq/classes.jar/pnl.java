@@ -1,30 +1,54 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class pnl
-  implements View.OnAttachStateChangeListener
+public class pnl
 {
-  pnl(pnh parampnh) {}
+  public static long a;
+  public static List<pnm> a;
+  public static long b;
+  public static long c;
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  static
   {
-    if (pnh.a(this.a) != null)
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
+  }
+  
+  public static void a(pnm parampnm)
+  {
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      pnh.a(this.a).b();
-      pnh.a(this.a, null);
+      pnm localpnm = (pnm)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (parampnm.b - localpnm.b > jdField_a_of_type_Long) {
+        a();
+      }
     }
-    if (pnh.a(this.a) != null)
+    jdField_a_of_type_JavaUtilList.add(parampnm);
+    c += parampnm.jdField_a_of_type_Long;
+    if (a())
     {
-      pnh.a(this.a).a();
-      pnh.a(this.a, null);
+      parampnm = new ArrayList();
+      parampnm.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      pmy.a(parampnm);
     }
+  }
+  
+  public static boolean a()
+  {
+    return c > b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnl
  * JD-Core Version:    0.7.0.1
  */

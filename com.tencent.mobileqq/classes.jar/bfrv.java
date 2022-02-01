@@ -1,26 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
-
-final class bfrv
-  implements HostnameVerifier
+public class bfrv
+  implements bfrt
 {
-  bfrv(URL paramURL) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public boolean a(besl parambesl)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("OpenSdkVirtualUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    switch (parambesl.e)
+    {
+    default: 
+      return false;
     }
-    return bool;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrv
  * JD-Core Version:    0.7.0.1
  */

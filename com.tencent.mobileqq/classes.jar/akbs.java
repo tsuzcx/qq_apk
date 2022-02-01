@@ -1,23 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.9.1;
 
 public class akbs
-  extends nac
+  extends anxr
 {
-  akbs(akbr paramakbr) {}
+  public akbs(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+    this.a.runOnUiThread(new AvatarPendantActivity.9.1(this));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajuo;
-import ajuy;
+import alne;
+import alno;
 
 public class RDBaseDataManager$2
   implements Runnable
 {
-  public RDBaseDataManager$2(ajuy paramajuy, ajuo paramajuo) {}
+  public RDBaseDataManager$2(alno paramalno, alne paramalne) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class RDBaseDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.ProxyDrawable;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class bhvl
-  extends ProxyDrawable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int jdField_a_of_type_Int;
-  int b;
+  public bhvl(ContainerView paramContainerView) {}
   
-  public bhvl(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  public void onGlobalLayout()
   {
-    super(paramDrawable);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    if (this.b > this.jdField_a_of_type_Int)
+    if (!ContainerView.a(this.a))
     {
-      int i = paramCanvas.save();
-      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
-      this.mCurrDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhvl
  * JD-Core Version:    0.7.0.1
  */

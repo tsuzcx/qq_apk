@@ -1,61 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aova
-  extends aouf<aouz>
+  extends aouc
 {
-  public int a()
+  public aoxu a;
+  public apdw a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int d;
+  public int e = 1;
+  
+  public aova(String paramString1, int paramInt1, int paramInt2, int paramInt3, apdw paramapdw, aoxu paramaoxu, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return 465;
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Apdw = paramapdw;
+    this.jdField_a_of_type_Aoxu = paramaoxu;
   }
   
-  @NonNull
-  public aouz a()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new aouz();
-  }
-  
-  @NonNull
-  public aouz a(@NonNull aoko[] paramArrayOfaoko)
-  {
-    aouz localaouz = new aouz();
-    try
-    {
-      localaouz.a = new JSONObject(paramArrayOfaoko[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaouz.a);
-      }
-      return localaouz;
-    }
-    catch (JSONException paramArrayOfaoko)
-    {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaoko);
-    }
-    return localaouz;
-  }
-  
-  public Class<aouz> a()
-  {
-    return aouz.class;
-  }
-  
-  @NonNull
-  public aouz b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new aouz();
+    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Apdw).append('\'');
+    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoxu).append('\'');
+    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aova
  * JD-Core Version:    0.7.0.1
  */

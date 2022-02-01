@@ -1,113 +1,24 @@
-import android.content.Context;
-import android.support.v4.util.ArraySet;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class aiiq
-  extends aeqo
+public abstract class aiiq
+  implements aiiu
 {
-  public final String a;
+  protected QQAppInterface a;
   
-  public aiiq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public aiiq(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_a_of_type_Afpy = new aiir(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_Aeqp = null;
+    this.a = paramQQAppInterface;
   }
   
-  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    long l1 = 0L;
-    paramInt = 0;
-    paramCharSequence = null;
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt < paramList.size())
-    {
-      localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = azah.b(localChatMessage.msgtype);
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
-      {
-        bool1 = true;
-        label165:
-        localChatMessage.mNeedTimeStamp = bool1;
-        if (localChatMessage.mNeedTimeStamp)
-        {
-          long l2 = localChatMessage.time;
-          l1 = l2;
-          if (localChatMessage.time < this.b)
-          {
-            aeuk.a(localChatMessage);
-            l1 = l2;
-          }
-        }
-        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-          break label362;
-        }
-        paramCharSequence = localChatMessage;
-      }
+    paramQQAppInterface = aijp.a(paramQQAppInterface);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.a(paramString);
     }
-    label362:
-    for (;;)
-    {
-      if (paramInt != paramList.size() - 1) {
-        localChatMessage.isFlowMessage = false;
-      }
-      paramInt += 1;
-      break;
-      bool1 = false;
-      break label165;
-      if (paramList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
-      }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
-      super.notifyDataSetChanged();
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ((aiir)this.jdField_a_of_type_Afpy).a(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
     return false;
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    if ((paramView != null) && ((paramView instanceof aiio)))
-    {
-      paramViewGroup = (aiio)paramView;
-      paramViewGroup.setIsShieldTouchForItem(true);
-      paramViewGroup.setFrom(((aiir)this.jdField_a_of_type_Afpy).a);
-      if ((paramView instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)paramView).c();
-      }
-    }
-    return paramView;
-  }
-  
-  public String toString()
-  {
-    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
   }
 }
 

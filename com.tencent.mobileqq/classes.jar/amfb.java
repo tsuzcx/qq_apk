@@ -1,10 +1,19 @@
-public abstract class amfb
+import com.tencent.mobileqq.data.ShowExternalTroop;
+
+public class amfb
 {
-  public abstract void a();
+  public int a;
+  public ShowExternalTroop a;
+  
+  public amfb(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amfb
  * JD-Core Version:    0.7.0.1
  */

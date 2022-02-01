@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bdtn;
+import bgyq;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -9,18 +9,18 @@ import mqq.os.MqqHandler;
 class VasQuickUpdateManager$TimeoutWrapper
   implements VasQuickUpdateManager.QueryItemVersionCallback, Runnable
 {
-  private bdtn callback;
+  private bgyq callback;
   private AtomicBoolean isDone = new AtomicBoolean(false);
-  private WeakReference<bdtn> weakReference;
+  private WeakReference<bgyq> weakReference;
   
-  private VasQuickUpdateManager$TimeoutWrapper(bdtn parambdtn, boolean paramBoolean)
+  private VasQuickUpdateManager$TimeoutWrapper(bgyq parambgyq, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.weakReference = new WeakReference(parambdtn);
+      this.weakReference = new WeakReference(parambgyq);
       return;
     }
-    this.callback = parambdtn;
+    this.callback = parambgyq;
   }
   
   private void onResult(int paramInt, String paramString1, String paramString2)
@@ -33,13 +33,13 @@ class VasQuickUpdateManager$TimeoutWrapper
       this.callback.a(paramInt, paramString1, paramString2);
     }
     label32:
-    bdtn localbdtn;
+    bgyq localbgyq;
     do
     {
       return;
-      localbdtn = (bdtn)this.weakReference.get();
-    } while (localbdtn == null);
-    localbdtn.a(paramInt, paramString1, paramString2);
+      localbgyq = (bgyq)this.weakReference.get();
+    } while (localbgyq == null);
+    localbgyq.a(paramInt, paramString1, paramString2);
   }
   
   public void onQueryItemVer(boolean paramBoolean, String paramString1, String paramString2)
@@ -60,7 +60,7 @@ class VasQuickUpdateManager$TimeoutWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.TimeoutWrapper
  * JD-Core Version:    0.7.0.1
  */

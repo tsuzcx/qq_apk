@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
 public class akag
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public akag(SelectMemberActivity paramSelectMemberActivity) {}
+  public akag(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    MiniMsgTabFragment.a(this.a, -1, null);
   }
 }
 

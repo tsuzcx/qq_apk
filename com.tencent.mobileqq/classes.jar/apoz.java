@@ -1,22 +1,24 @@
-import android.view.View;
+import android.graphics.Bitmap;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class apoz
+class apoz
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  ImageView d;
-  ImageView e;
-  ImageView f;
+  apoz(apoy paramapoy) {}
   
-  public apoz(apoy paramapoy) {}
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.a.a.a.setVisibility(8);
+  }
 }
 
 

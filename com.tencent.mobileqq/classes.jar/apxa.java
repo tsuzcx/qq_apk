@@ -1,97 +1,38 @@
-import android.util.Log;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class apxa
+class apxa
+  extends AnimatorListenerAdapter
 {
-  public static int a;
-  private static apxa jdField_a_of_type_Apxa;
-  private Map<Integer, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  apxa(apwv paramapwv, apxc paramapxc) {}
   
-  public static apxa a()
-  {
-    if (jdField_a_of_type_Apxa == null) {}
-    try
-    {
-      if (jdField_a_of_type_Apxa == null) {
-        jdField_a_of_type_Apxa = new apxa();
-      }
-      return jdField_a_of_type_Apxa;
-    }
-    finally {}
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public View a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))))
-    {
-      Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-      {
-        localObject = (View)((ArrayList)localObject).remove(0);
-        if (QLog.isColorLevel()) {
-          Log.d("EmotionPanelViewPool", "getView from pool : paneyType = " + paramInt);
-        }
-        return localObject;
-      }
-    }
-    return null;
-  }
-  
-  public void a()
+  public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelViewPool", 2, "destory");
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
     }
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0))
+    if ((this.jdField_a_of_type_Apxc != null) && (this.jdField_a_of_type_Apxc.b != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        ArrayList localArrayList = (ArrayList)((Map.Entry)localIterator.next()).getValue();
-        if (localArrayList != null) {
-          localArrayList.clear();
-        }
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Apxc.b.istroop != 0) {
+        break label84;
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      paramAnimator = "1";
     }
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    if (paramView == null) {}
     for (;;)
     {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(anuk.a(this.jdField_a_of_type_Apxc.b.vipBubbleID)), "");
       return;
-      ArrayList localArrayList;
-      if (this.jdField_a_of_type_JavaUtilMap == null)
-      {
-        this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-        localArrayList = new ArrayList();
-        localArrayList.add(paramView);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
-      {
-        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        if ((localArrayList != null) && (!localArrayList.contains(paramView))) {
-          localArrayList.add(0, paramView);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelViewPool", "relase view panelType = " + paramInt);
-        return;
-        localArrayList = new ArrayList();
-        localArrayList.add(0, paramView);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList);
+      label84:
+      if (this.jdField_a_of_type_Apxc.b.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Apxc.b.istroop == 3000) {
+        paramAnimator = "3";
       }
     }
   }

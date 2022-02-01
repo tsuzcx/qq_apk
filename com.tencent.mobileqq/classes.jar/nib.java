@@ -1,35 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class nib
-  implements BusinessObserver
+public class nib
+  implements View.OnClickListener
 {
-  nib(QQAppInterface paramQQAppInterface, boolean paramBoolean, alzr paramalzr) {}
+  public nib(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = nia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
-    {
-      if (this.jdField_a_of_type_Alzr != null) {
-        this.jdField_a_of_type_Alzr.a(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nib
  * JD-Core Version:    0.7.0.1
  */

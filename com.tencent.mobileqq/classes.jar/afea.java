@@ -1,18 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class afea
-  implements bhuw
+public class afea
+  extends anmu
 {
-  afea(afdy paramafdy) {}
+  public afea(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    paramAdapterView = (aihj)afdy.a(this.a).a.getItem(paramInt - 1);
-    afdy.a(this.a, paramAdapterView);
-    afdy.a(this.a).dismiss();
-    azqs.b(afdy.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    if (paramBoolean1)
+    {
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+    }
+  }
+  
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131717834, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131717834, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
   }
 }
 

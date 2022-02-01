@@ -1,30 +1,31 @@
-public class mxy
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+class mxy
+  extends mwv
 {
-  public static int a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
-  }
+  mxy(mxx parammxx) {}
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
   {
-    paramInt1 = a(paramInt1, paramInt3);
-    paramInt2 = a(paramInt2, paramInt3);
     if (paramBoolean)
     {
-      if (paramInt1 > paramInt2) {
-        return paramInt1 - paramInt2;
+      myc localmyc = (myc)mxx.a(this.a).a();
+      localmyc.a(paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when onUserNickUpdated %s", new Object[] { Arrays.toString(localmyc.a().players.toArray()) }));
       }
-      return paramInt1 + (paramInt3 - paramInt2);
+      mxx.a(this.a).a(paramHashMap);
+      mxx.a(this.a, paramHashMap);
     }
-    if (paramInt1 > paramInt2) {
-      return paramInt3 - paramInt1 + paramInt2;
-    }
-    return paramInt2 - paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxy
  * JD-Core Version:    0.7.0.1
  */

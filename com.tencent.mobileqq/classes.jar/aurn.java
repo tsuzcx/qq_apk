@@ -1,63 +1,36 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aurn
-  implements ServiceConnection
+  implements View.OnClickListener
 {
-  aurn(aurm paramaurm) {}
+  aurn(aurl paramaurl, String paramString) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    aurm.a(this.a, auqu.a(paramIBinder));
-    try
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+    }
+    for (;;)
     {
-      aurm.a(this.a).a(aurm.a(this.a));
-      if (aurm.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        aurm.a(this.a).a(paramComponentName);
-        aurm.a(this.a, null);
-      }
+      aceh.a(ampj.a(), "769", "205647", this.jdField_a_of_type_Aurl.jdField_a_of_type_Auqu.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Intent localIntent = new Intent(this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aurl.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
-    {
-      if (aurm.a(this.a) != null) {
-        aurm.a(this.a).b(aurm.a(this.a));
-      }
-      if (aurm.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        aurm.a(this.a).a(paramComponentName);
-        aurm.a(this.a, null);
-      }
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
-    aurm.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurn
  * JD-Core Version:    0.7.0.1
  */

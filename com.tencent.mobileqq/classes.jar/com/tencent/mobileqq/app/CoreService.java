@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.IBinder;
@@ -31,15 +33,15 @@ public class CoreService
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130840158;
-      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131559517);
+      ((Notification)localObject).icon = 2130840337;
+      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131559653);
       return localObject;
     }
     Object localObject = new Intent(BaseApplicationImpl.sApplication, SplashActivity.class);
     ((Intent)localObject).addFlags(67108864);
     localObject = PendingIntent.getActivity(BaseApplicationImpl.sApplication, 0, (Intent)localObject, 402653184);
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplicationImpl.sApplication);
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840158);
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840337);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }
@@ -234,6 +236,18 @@ public class CoreService
       return;
       stopTempService();
     }
+  }
+  
+  public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("crashcontrol", 0);
+    if (localSharedPreferences.getBoolean("crashFrequentLast", false))
+    {
+      QLog.d("GuardManager", 1, "crashFrequentLast,return START_NOT_STICKY");
+      localSharedPreferences.edit().putBoolean("crashFrequentLast", false).commit();
+      return 2;
+    }
+    return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
 }
 

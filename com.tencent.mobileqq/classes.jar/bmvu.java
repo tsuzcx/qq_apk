@@ -1,10 +1,25 @@
-public abstract interface bmvu
+import cooperation.qzone.util.QZLog;
+
+public class bmvu
 {
-  public abstract void a();
+  public static int a = 2;
+  public static int b = 1;
+  public static int c = 4;
   
-  public abstract void a(String paramString);
+  public static void a(String paramString1, String paramString2)
+  {
+    QZLog.d(paramString1, c, paramString2);
+  }
   
-  public abstract void b(String paramString);
+  public static void b(String paramString1, String paramString2)
+  {
+    QZLog.d(paramString1, b, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    QZLog.e(paramString1, paramString2, null);
+  }
 }
 
 

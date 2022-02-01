@@ -1,34 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-final class avdy
-  implements bfah
+class avdy
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  avdy(String paramString, aved paramaved) {}
+  avdy(avdv paramavdv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Aved != null) {
-        this.jdField_a_of_type_Aved.a(true);
-      }
+    this.a.c = 7;
+    if (avdv.a(this.a) != null) {
+      avdv.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
-    label50:
-    while (this.jdField_a_of_type_Aved == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aved.a(false);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdy
  * JD-Core Version:    0.7.0.1
  */

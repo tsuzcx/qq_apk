@@ -1,52 +1,78 @@
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class uma
-  implements Executor
+public class uma
+  extends uly<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private int b;
+  private int a;
   
-  private uma(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
+  public uma(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void execute(@NonNull Runnable paramRunnable)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
-    int i = this.jdField_a_of_type_JavaUtilQueue.size();
-    if (i > Runtime.getRuntime().availableProcessors()) {
-      wxe.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
     {
-      wxe.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      uee.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = ups.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      ups.a();
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
       {
-        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (paramRunnable != null) {
-          ThreadManager.excute(paramRunnable, this.b, new umb(this, paramRunnable), false);
+        i = 2;
+        if (this.jdField_a_of_type_Ulp != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        umw.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
         }
       }
+    }
+    for (;;)
+    {
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Ulp).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
+      {
+        umw.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uma
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
-public abstract interface avpu
+public class avpu
+  implements tol
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  public avpu(UiApiPlugin paramUiApiPlugin) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {
+      this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpu
  * JD-Core Version:    0.7.0.1
  */

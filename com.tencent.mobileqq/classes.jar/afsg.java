@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
-class afsg
-  extends afuf
+public class afsg
+  implements Comparator<aftt>
 {
-  afsg(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsg(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public int a(aftt paramaftt1, aftt paramaftt2)
   {
-    return new afkt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    long l = paramaftt2.a - paramaftt1.a;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -2,10 +2,10 @@ package dov.com.qq.im;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import azri;
-import bliu;
+import bctj;
+import bnyh;
 import com.tencent.common.app.BaseApplicationImpl;
-import wxj;
+import yqu;
 
 class QIMCameraCaptureActivity$1
   implements Runnable
@@ -15,13 +15,13 @@ class QIMCameraCaptureActivity$1
   public void run()
   {
     boolean bool = true;
-    azri.a(BaseApplicationImpl.getContext()).a(null, "enter_story_capture_count", true, 0L, 0L, null, "");
-    wxj.a("video_shoot_new", "shoot_exp", wxj.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
+    bctj.a(BaseApplicationImpl.getContext()).a(null, "enter_story_capture_count", true, 0L, 0L, null, "");
+    yqu.a("video_shoot_new", "shoot_exp", yqu.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
     if (!TextUtils.isEmpty(this.this$0.getIntent().getStringExtra("KEY_ISENTER_SO_DOWNLOAD"))) {}
     for (;;)
     {
-      bliu.a().a(bool);
-      bliu.a().K();
+      bnyh.a().a(bool);
+      bnyh.a().X();
       return;
       bool = false;
     }
@@ -29,7 +29,7 @@ class QIMCameraCaptureActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureActivity.1
  * JD-Core Version:    0.7.0.1
  */

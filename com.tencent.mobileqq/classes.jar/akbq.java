@@ -1,80 +1,44 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.animation.IntEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import java.util.List;
 
 public class akbq
-  extends ameq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akbq(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+  private IntEvaluator jdField_a_of_type_AndroidAnimationIntEvaluator = new IntEvaluator();
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public akbq(AvatarPendantActivity paramAvatarPendantActivity, List paramList1, List paramList2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.c();
-      }
-    }
-    do
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
     {
-      do
+      paramValueAnimator = (View)this.jdField_a_of_type_JavaUtilList.get(i);
+      akbt localakbt = (akbt)this.b.get(i);
+      ViewGroup.LayoutParams localLayoutParams = paramValueAnimator.getLayoutParams();
+      if (localakbt.jdField_a_of_type_Int != localakbt.b)
       {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.c();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.c();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (TroopDiscussionTroop.a(this.a) != null) {
-      TroopDiscussionTroop.a(this.a).a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.c();
+        FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)paramValueAnimator.getLayoutParams();
+        localLayoutParams1.topMargin = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.jdField_a_of_type_Int), Integer.valueOf(localakbt.b)).intValue();
+        paramValueAnimator.setLayoutParams(localLayoutParams1);
+      }
+      if (localakbt.c != localakbt.d) {
+        localLayoutParams.height = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.c), Integer.valueOf(localakbt.d)).intValue();
+      }
+      if (localakbt.e != localakbt.f) {
+        localLayoutParams.width = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localakbt.e), Integer.valueOf(localakbt.f)).intValue();
+      }
+      paramValueAnimator.setLayoutParams(localLayoutParams);
+      paramValueAnimator.requestLayout();
+      i += 1;
     }
   }
 }

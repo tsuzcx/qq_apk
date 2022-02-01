@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aepi;
+import afur;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
@@ -13,7 +13,7 @@ class TroopInviteStatusFragment$3
   {
     if ((this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
     {
-      Intent localIntent = aepi.a(new Intent(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class), null);
+      Intent localIntent = afur.a(new Intent(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class), null);
       localIntent.putExtra("uin", this.this$0.jdField_a_of_type_JavaLangString);
       localIntent.putExtra("uintype", 1);
       localIntent.putExtra("uinname", this.this$0.b);
@@ -25,7 +25,7 @@ class TroopInviteStatusFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.3
  * JD-Core Version:    0.7.0.1
  */

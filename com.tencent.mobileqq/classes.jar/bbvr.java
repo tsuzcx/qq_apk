@@ -1,14 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import com.tencent.widget.HorizontalListView;
 
-class bbvr
-  implements View.OnClickListener
+public class bbvr
+  extends bbvn
+  implements bkle
 {
-  bbvr(bbvo parambbvo) {}
+  public bbnm a;
+  public HorizontalListView a;
   
-  public void onClick(View paramView)
+  public bbvr(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.b(paramView);
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131377062));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
+  }
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4097) {
+      this.jdField_a_of_type_Bbnm.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    }
   }
 }
 

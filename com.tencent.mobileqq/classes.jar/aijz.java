@@ -1,47 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aijz
-  extends aijq
 {
-  public aijz(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public JSONObject a = new JSONObject();
   
-  private void A()
+  public static aijz a(String paramString)
   {
-    if (!this.d) {}
-    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        aijz localaijz = new aijz();
+        localaijz.a = paramString;
+        return localaijz;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdEmoConfigBean", 2, paramString.getMessage());
+        }
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-    if (mdj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698878));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected void g()
-  {
-    super.g();
-    A();
-  }
-  
-  protected void y()
-  {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
+    return null;
   }
 }
 

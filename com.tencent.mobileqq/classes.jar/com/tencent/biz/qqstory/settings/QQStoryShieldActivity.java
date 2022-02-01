@@ -1,11 +1,12 @@
 package com.tencent.biz.qqstory.settings;
 
-import aepi;
-import alto;
-import alud;
+import Override;
+import afur;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -15,8 +16,10 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdin;
-import beub;
+import anmw;
+import anni;
+import bgnt;
+import biax;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
@@ -24,15 +27,16 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import ulg;
-import ult;
-import ulu;
-import ulw;
-import wdb;
-import wrl;
-import wxj;
+import wes;
+import wff;
+import wfg;
+import wfi;
+import xwm;
+import ykw;
+import yqu;
 
 public class QQStoryShieldActivity
   extends IphoneTitleBarActivity
@@ -40,28 +44,36 @@ public class QQStoryShieldActivity
 {
   int jdField_a_of_type_Int = 3;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public beub a;
+  public biax a;
   public Switch a;
   String jdField_a_of_type_JavaLangString;
-  ult jdField_a_of_type_Ult;
-  ulu jdField_a_of_type_Ulu;
-  ulw jdField_a_of_type_Ulw = new wdb(this);
+  wff jdField_a_of_type_Wff;
+  wfg jdField_a_of_type_Wfg;
+  wfi jdField_a_of_type_Wfi = new xwm(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public Switch b;
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561367, null);
-    ((TextView)localView.findViewById(2131377938)).setText(paramString);
-    ((TextView)localView.findViewById(2131368235)).setText("");
+    View localView = View.inflate(this, 2131561602, null);
+    ((TextView)localView.findViewById(2131378776)).setText(paramString);
+    ((TextView)localView.findViewById(2131368563)).setText("");
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Ult.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Wff.a(this.jdField_a_of_type_JavaLangString);
     super.startTitleProgress();
   }
   
@@ -75,26 +87,26 @@ public class QQStoryShieldActivity
       super.finish();
       return false;
     }
-    this.jdField_a_of_type_Ulu = ((ulu)this.app.getManager(181));
-    this.jdField_a_of_type_Ult = ((ult)this.app.a(98));
-    this.app.addObserver(this.jdField_a_of_type_Ulw);
+    this.jdField_a_of_type_Wfg = ((wfg)this.app.getManager(181));
+    this.jdField_a_of_type_Wff = ((wff)this.app.a(98));
+    this.app.addObserver(this.jdField_a_of_type_Wfi);
     paramBundle = new LinearLayout(this);
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838593);
+    paramBundle.setBackgroundResource(2130838759);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, aepi.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, afur.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = paramBundle;
-    paramBundle = a(0, alud.a(2131711425));
-    paramBundle.setBackgroundResource(2130839261);
+    paramBundle = a(0, anni.a(2131709801));
+    paramBundle.setBackgroundResource(2130839439);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2)) {
       paramBundle.setVisibility(8);
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramBundle;
-    paramBundle.setText(alud.a(2131711443) + ulg.b);
-    paramBundle.setContentDescription(alud.a(2131711412) + ulg.b);
+    paramBundle.setText(anni.a(2131709819) + wes.b);
+    paramBundle.setContentDescription(anni.a(2131709788) + wes.b);
     paramBundle.setBgType(2);
     paramBundle.setTag(Integer.valueOf(1));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -105,12 +117,12 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     paramBundle = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
     if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 2)) {
-      paramBundle.topMargin = aepi.a(20.0F, getResources());
+      paramBundle.topMargin = afur.a(20.0F, getResources());
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramBundle;
-    paramBundle.setText(alud.a(2131711429) + ulg.b);
-    paramBundle.setContentDescription(alud.a(2131711400) + ulg.b);
+    paramBundle.setText(anni.a(2131709805) + wes.b);
+    paramBundle.setContentDescription(anni.a(2131709776) + wes.b);
     paramBundle.setBgType(3);
     paramBundle.setTag(Integer.valueOf(2));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -119,7 +131,7 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(2));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
-    paramBundle = this.jdField_a_of_type_Ulu.a(this.jdField_a_of_type_JavaLangString);
+    paramBundle = this.jdField_a_of_type_Wfg.a(this.jdField_a_of_type_JavaLangString);
     boolean bool;
     if (paramBundle != null)
     {
@@ -145,18 +157,18 @@ public class QQStoryShieldActivity
       if (this.jdField_a_of_type_Int != 3) {
         break label722;
       }
-      super.setTitle(ulg.jdField_a_of_type_JavaLangString + alud.a(2131711401));
+      super.setTitle(wes.jdField_a_of_type_JavaLangString + anni.a(2131709777));
       label624:
-      this.jdField_a_of_type_Beub = new beub(this, 2131561236);
-      if (bdin.g(this)) {
+      this.jdField_a_of_type_Biax = new biax(this, 2131561460);
+      if (bgnt.g(this)) {
         break label801;
       }
-      QQToast.a(this, 1, alud.a(2131711397), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, anni.a(2131709773), 0).b(getTitleBarHeight());
       super.startTitleProgress();
     }
     for (;;)
     {
-      wxj.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
+      yqu.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
       return true;
       bool = false;
       break;
@@ -168,95 +180,99 @@ public class QQStoryShieldActivity
       {
         if (QQStoryContext.a().a(this.jdField_a_of_type_JavaLangString))
         {
-          super.setTitle(ulg.jdField_a_of_type_JavaLangString + alud.a(2131711442));
+          super.setTitle(wes.jdField_a_of_type_JavaLangString + anni.a(2131709818));
           break label624;
         }
-        super.setTitle(alud.a(2131711421));
+        super.setTitle(anni.a(2131709797));
         break label624;
       }
-      super.setTitle(alud.a(2131711438));
+      super.setTitle(anni.a(2131709814));
       break label624;
       label801:
-      this.jdField_a_of_type_Ult.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Wff.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ulw);
+    this.app.removeObserver(this.jdField_a_of_type_Wfi);
     super.doOnDestroy();
   }
   
   public void finish()
   {
-    wrl.a(this.app);
+    ykw.a(this.app);
     super.finish();
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    if (!bdin.g(this)) {
-      QQToast.a(this, 1, alud.a(2131711440), 0).b(getTitleBarHeight());
+    if (!bgnt.g(this)) {
+      QQToast.a(this, 1, anni.a(2131709816), 0).b(getTitleBarHeight());
     }
     for (int i = 0;; i = 1)
     {
-      paramCompoundButton = new ArrayList();
-      paramCompoundButton.add(this.jdField_a_of_type_JavaLangString);
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).add(this.jdField_a_of_type_JavaLangString);
       switch (j)
       {
       default: 
         if (j == 2) {
-          if (paramBoolean) {
-            paramCompoundButton = "open_notletsee";
+          if (paramBoolean)
+          {
+            localObject = "open_notletsee";
+            label99:
+            if (this.jdField_a_of_type_Int != 3) {
+              break label296;
+            }
+            yqu.a("person_data_set", (String)localObject, 0, 0, new String[] { "", "", "", "" });
           }
         }
         break;
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Int != 3) {
-          break label277;
-        }
-        wxj.a("person_data_set", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
         return;
         if (i != 0)
         {
-          this.jdField_a_of_type_Ult.a(paramCompoundButton, true, paramBoolean);
-          this.jdField_a_of_type_Beub.b(0, 2131719164, 0);
+          this.jdField_a_of_type_Wff.a((ArrayList)localObject, true, paramBoolean);
+          this.jdField_a_of_type_Biax.b(0, 2131717286, 0);
           break;
         }
-        paramCompoundButton = this.jdField_a_of_type_ComTencentWidgetSwitch;
+        localObject = this.jdField_a_of_type_ComTencentWidgetSwitch;
         if (!paramBoolean) {}
         for (boolean bool = true;; bool = false)
         {
-          paramCompoundButton.setChecked(bool);
+          ((Switch)localObject).setChecked(bool);
           break;
         }
         if (i != 0)
         {
-          this.jdField_a_of_type_Ult.a(paramCompoundButton, false, paramBoolean);
-          this.jdField_a_of_type_Beub.b(0, 2131719164, 0);
+          this.jdField_a_of_type_Wff.a((ArrayList)localObject, false, paramBoolean);
+          this.jdField_a_of_type_Biax.b(0, 2131717286, 0);
           break;
         }
-        paramCompoundButton = this.b;
+        localObject = this.b;
         if (!paramBoolean) {}
         for (bool = true;; bool = false)
         {
-          paramCompoundButton.setChecked(bool);
+          ((Switch)localObject).setChecked(bool);
           break;
         }
-        paramCompoundButton = "close_notletsee";
-        continue;
-        if (paramBoolean) {
-          paramCompoundButton = "open_notsee";
-        } else {
-          paramCompoundButton = "close_notsee";
+        localObject = "close_notletsee";
+        break label99;
+        if (paramBoolean)
+        {
+          localObject = "open_notsee";
+          break label99;
         }
+        localObject = "close_notsee";
+        break label99;
+        label296:
+        yqu.a("list_settings", (String)localObject, 0, 0, new String[] { "", "", "", "" });
       }
-      label277:
-      wxj.a("list_settings", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
-      return;
     }
   }
   
@@ -265,21 +281,29 @@ public class QQStoryShieldActivity
     switch (((Integer)paramView.getTag()).intValue())
     {
     default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if (((alto)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
+    if (((anmw)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
     for (int i = 1;; i = 19)
     {
-      paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, i);
-      ProfileActivity.b(getActivity(), paramView);
-      wxj.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
-      return;
+      ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, i);
+      ProfileActivity.b(getActivity(), localAllInOne);
+      yqu.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
+      break;
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldActivity
  * JD-Core Version:    0.7.0.1
  */

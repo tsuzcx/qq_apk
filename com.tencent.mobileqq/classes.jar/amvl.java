@@ -1,25 +1,17 @@
-public abstract class amvl
+class amvl
+  extends amvk
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
+  private int b;
   
-  public amvl(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public amvl(int paramInt1, int paramInt2, amvm paramamvm, amvi paramamvi)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    super(paramInt1, paramamvm, paramamvi);
+    this.b = paramInt2;
+  }
+  
+  public amlc a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 

@@ -1,26 +1,10 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import kotlin.Metadata;
 
-class rbz
-  implements Animation.AnimationListener
-{
-  rbz(rby paramrby) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (rby.a(this.a) != null) {
-      rby.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract;", "", "IModel", "IPresenter", "IView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rbz {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbz
  * JD-Core Version:    0.7.0.1
  */

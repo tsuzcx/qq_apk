@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asrs
-  implements aufy<List<FontBubble>>
+  implements View.OnClickListener
 {
-  public asrs(FontBubblePanelView paramFontBubblePanelView) {}
+  public asrs(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(List<FontBubble> paramList)
+  public void onClick(View paramView)
   {
-    FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    bcst.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, bdho.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718487), false));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

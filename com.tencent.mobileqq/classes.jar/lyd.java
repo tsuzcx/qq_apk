@@ -1,75 +1,25 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class lyd
+class lyd
+  implements DialogInterface.OnDismissListener
 {
-  private static mul a;
+  lyd(lya paramlya) {}
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
+      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lyf + "]");
     }
-    if (a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVPushReport", 2, "ReportTask is running.");
-      }
-      return;
+    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lyf != null)) {
+      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
     }
-    String str;
-    if (a()) {
-      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
-    }
-    try
-    {
-      for (;;)
-      {
-        paramString = new JSONObject(paramString).optJSONObject("attach");
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-          localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.3.5");
-          localJSONObject.put("time", System.currentTimeMillis());
-          if (paramString != null) {
-            localJSONObject.put("attach", paramString);
-          }
-        }
-        catch (JSONException paramVideoAppInterface)
-        {
-          for (;;)
-          {
-            paramVideoAppInterface.printStackTrace();
-          }
-        }
-        a = new lye(str, localJSONObject.toString(), null);
-        a.execute(new Void[0]);
-        return;
-        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lyd
  * JD-Core Version:    0.7.0.1
  */

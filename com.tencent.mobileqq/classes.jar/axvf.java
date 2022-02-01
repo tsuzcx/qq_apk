@@ -1,108 +1,41 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeTask;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axvf
+class axvf
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private VideoFlowDecodeTask jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-  private Thread jdField_a_of_type_JavaLangThread;
+  axvf(axuv paramaxuv) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangThread != null) {
-      this.jdField_a_of_type_JavaLangThread.interrupt();
-    }
-    this.jdField_a_of_type_JavaLangThread = null;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-    if (localVideoFlowDecodeTask != null)
-    {
-      localVideoFlowDecodeTask.a(paramInt);
-      wxe.b("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt);
-      return;
-    }
-    wxe.d("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt + " failed, can not find DecodeRunnable");
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-    if (localVideoFlowDecodeTask != null)
-    {
-      wxe.d("FlowEdit_VideoFlowDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
-      localVideoFlowDecodeTask.a(paramLong1, paramLong2);
-      return;
-    }
-    wxe.d("FlowEdit_VideoFlowDecoder", "setPlayRange failed, can not find DecodeRunnable");
-  }
-  
-  public void a(axud paramaxud, axtx paramaxtx, axue paramaxue)
-  {
-    Thread localThread;
-    if (this.jdField_a_of_type_JavaLangThread != null)
-    {
-      wxe.b("FlowEdit_VideoFlowDecoder", "stopDecode before startDecode, current thread : %s", this.jdField_a_of_type_JavaLangThread.getName());
-      localThread = this.jdField_a_of_type_JavaLangThread;
-      a();
-    }
-    try
-    {
-      localThread.join();
-      wxe.c("FlowEdit_VideoFlowDecoder", "startDecode, create decode runnable");
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = new VideoFlowDecodeTask(paramaxud.a, paramaxtx, paramaxue);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask.a(paramaxud);
-      paramaxud = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-      paramaxtx = new StringBuilder().append("HWVideoDecoder-Thread-");
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(paramaxud, i, 8);
-      this.jdField_a_of_type_JavaLangThread.start();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698084);
       }
     }
-  }
-  
-  public void b()
-  {
-    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-    if (localVideoFlowDecodeTask != null)
+    for (;;)
     {
-      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = true;
-      wxe.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    wxe.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
-  }
-  
-  public void c()
-  {
-    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
-    if (localVideoFlowDecodeTask != null)
-    {
-      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = false;
-      synchronized (localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject)
-      {
-        localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject.notifyAll();
-        wxe.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
-        return;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      continue;
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698084);
+      } else if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698080);
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
       }
     }
-    wxe.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
-import qnu;
+import com.tencent.mobileqq.persistence.Entity;
+import riq;
 
 public class ArticleSummary
-  extends awge
+  extends Entity
 {
   public int adsJumpType;
   public String adsJumpUrl;
+  public int adsSource;
   public long algorithmID;
   public String articleContentUrl;
   public long articleID;
@@ -29,9 +30,8 @@ public class ArticleSummary
   public String summary;
   public long time;
   public String title;
-  public int uint32_adsSource;
   public int videoCommentCount;
-  public qnu videoData;
+  public riq videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;

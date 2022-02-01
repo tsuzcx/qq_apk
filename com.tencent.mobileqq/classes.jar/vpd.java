@@ -1,18 +1,22 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vpd
-  implements wjd
+public class vpd
+  implements View.OnClickListener
 {
-  vpd(vpc paramvpc, List paramList) {}
+  public vpd(QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
   
-  public void a(wje paramwje)
+  public void onClick(View paramView)
   {
-    vpc.a(this.jdField_a_of_type_Vpc, this.jdField_a_of_type_JavaUtilList, paramwje);
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vpd
  * JD-Core Version:    0.7.0.1
  */

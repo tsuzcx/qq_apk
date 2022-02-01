@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akra;
+import amkg;
 
 class SpriteUIHandler$SpriteVisibleRunnable$1
   implements Runnable
 {
-  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, akra paramakra) {}
+  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, amkg paramamkg) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class SpriteUIHandler$SpriteVisibleRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.SpriteVisibleRunnable.1
  * JD-Core Version:    0.7.0.1
  */

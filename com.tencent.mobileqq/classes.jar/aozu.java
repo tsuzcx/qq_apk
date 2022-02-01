@@ -1,25 +1,47 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-class aozu
-  implements Comparator<File>
+public class aozu
 {
-  aozu(aozt paramaozt) {}
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
   
-  public int a(File paramFile1, File paramFile2)
+  public aozu()
   {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public String toString()
+  {
+    try
+    {
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
     }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
+      }
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozu
  * JD-Core Version:    0.7.0.1
  */

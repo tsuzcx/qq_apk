@@ -7,11 +7,11 @@ public final class BuildConfig
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "3.9.7.16";
+  public static final String VERSION_NAME = "3.10.7.84116";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.dropframe.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

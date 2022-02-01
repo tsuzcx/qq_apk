@@ -1,20 +1,35 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class nvq
-  implements View.OnClickListener
+public class nvq
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  nvq(nvp paramnvp) {}
+  public nvq(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    ((Activity)paramView.getContext()).onBackPressed();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "is prepare");
+    }
+    if (VideoCoverView.a(this.a) == 1) {
+      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    bcst.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    nuv.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
+    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
+    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    {
+      VideoCoverView.a(this.a).start();
+      this.a.jdField_a_of_type_Int = 4;
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvq
  * JD-Core Version:    0.7.0.1
  */

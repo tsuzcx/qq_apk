@@ -1,87 +1,43 @@
-import android.util.Log;
-import com.tencent.tmassistant.common.ProtocolPackage;
-import com.tencent.tmassistant.common.jce.ReqHead;
-import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistant.common.jce.Response;
-import com.tencent.tmassistant.common.jce.StatItem;
-import com.tencent.tmassistant.common.jce.StatReportRequest;
-import com.tencent.tmassistant.common.jce.StatReportResponse;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class bfil
-  extends bfin
+  extends bfhq
 {
-  protected bfim a;
-  
-  public int a(ArrayList<StatItem> paramArrayList)
+  public bfil(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    StatReportRequest localStatReportRequest = new StatReportRequest();
-    localStatReportRequest.data = paramArrayList;
-    return a(localStatReportRequest);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public void a(bfim parambfim)
+  @Nullable
+  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    this.a = parambfim;
-  }
-  
-  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
-  {
-    Log.i("StatReportHttpRequest", "errorCode: " + paramInt);
-    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
-    paramArrayOfByte1 = ProtocolPackage.unpackRequestPackage(paramArrayOfByte1);
-    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
-    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
-    {
-      if ((paramArrayOfByte2 == null) && (this.a != null))
-      {
-        Log.i("StatReportHttpRequest", "response is null");
-        this.a.a(i, null, null, paramInt);
-        return;
-      }
-      if (this.a != null)
-      {
-        if ((localResponse == null) || (localResponse.body == null)) {
-          break label225;
-        }
-        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
-        if (paramArrayOfByte1 == null) {
-          break label208;
-        }
-        if (paramInt != 0) {
-          break label191;
-        }
-        if ((paramArrayOfByte1 instanceof StatReportResponse))
-        {
-          paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
-          if (paramArrayOfByte1.ret != 0) {
-            break label171;
-          }
-          this.a.a(i, null, paramArrayOfByte1, 0);
-        }
-      }
-      for (;;)
-      {
-        Log.i("StatReportHttpRequest", "exit");
-        return;
-        label171:
-        this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
-        continue;
-        label191:
-        this.a.a(i, null, null, paramInt);
-        continue;
-        label208:
-        this.a.a(i, null, null, paramInt);
-        continue;
-        label225:
-        this.a.a(i, null, null, paramInt);
-      }
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bfhr(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696889), bepx.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_album", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_album", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfil
  * JD-Core Version:    0.7.0.1
  */

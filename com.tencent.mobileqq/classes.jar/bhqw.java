@@ -1,38 +1,27 @@
-public abstract interface bhqw
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+import java.lang.ref.WeakReference;
+
+final class bhqw
+  implements TbsDownloader.TbsDownloaderCallback
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString);
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (bhqu.a != null))
+    {
+      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)bhqu.a.get();
+      if (localBrowserAppInterface != null)
+      {
+        localBrowserAppInterface.a(false);
+        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on callback:download tbs.");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqw
  * JD-Core Version:    0.7.0.1
  */

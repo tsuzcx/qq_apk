@@ -1,28 +1,40 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import bkbq;
+import bmqa;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import nwj;
-import nze;
-import rlb;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import oge;
+import oiz;
+import sgc;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public nwj a;
+  public oge a;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375349);
-    this.a = new nwj(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376073);
+    this.a = new oge(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -36,13 +48,13 @@ public class ReadInJoyFollowActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    rlb.a().a(this);
+    sgc.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560029);
+    setContentView(2131560175);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new nze(this));
+    setClickableTitle("BB圈", new oiz(this));
     a();
     this.a.a();
     return true;
@@ -52,7 +64,7 @@ public class ReadInJoyFollowActivity
   {
     super.doOnDestroy();
     this.a.d();
-    rlb.a().b(this);
+    sgc.a().b(this);
   }
   
   public void doOnPause()
@@ -70,7 +82,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bkbq.a(getAppRuntime());
+    bmqa.a(getAppRuntime());
     this.a.e();
   }
   
@@ -78,6 +90,13 @@ public class ReadInJoyFollowActivity
   {
     super.doOnStop();
     this.a.f();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDetachedFromWindow()

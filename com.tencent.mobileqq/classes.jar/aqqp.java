@@ -1,18 +1,69 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqqp
-  implements bhvm
+public class aqqp
 {
-  aqqp(aqqm paramaqqm, View paramView) {}
+  private boolean a;
   
-  public void a()
+  public static aqqp a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    aqqp localaqqp = new aqqp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
+    {
+      try
+      {
+        int j = paramArrayOfaqlg.length;
+        int i = 0;
+        if (i < j)
+        {
+          String str = paramArrayOfaqlg[i].a;
+          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_fake_msg"))
+          {
+            if (localJSONObject.optInt("enable_fake_msg", 0) == 1)
+            {
+              bool = true;
+              localaqqp.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "parse, content:" + localStringBuilder.toString());
+          return localaqqp;
+        }
+      }
+      catch (JSONException paramArrayOfaqlg)
+      {
+        QLog.e("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "JSONException", paramArrayOfaqlg);
+        return null;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("isEnableFakeMsg:").append(this.a);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqp
  * JD-Core Version:    0.7.0.1
  */

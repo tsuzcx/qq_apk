@@ -1,31 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
 public final class acjx
-  implements DialogInterface.OnClickListener
+  implements AdThreadManagerAdapter
 {
-  public acjx(aclo paramaclo, int paramInt, acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Aclo.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
     }
-    for (;;)
+    if (local1.containsKey(Integer.valueOf(paramInt)))
     {
-      if (this.jdField_a_of_type_Acln != null) {
-        this.jdField_a_of_type_Acln.a();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
-      }
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
     }
+    return false;
   }
 }
 

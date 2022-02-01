@@ -1,98 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
 public class arei
+  implements Handler.Callback
 {
-  protected long a;
-  protected areg a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  protected ExcitingTransferDownloaderFirstPkgRp a;
+  private WeakReference<DanmakuManager> a;
   
-  public arei(QQAppInterface paramQQAppInterface)
+  private arei(DanmakuManager paramDanmakuManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = new WeakReference(paramDanmakuManager);
   }
   
-  protected String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    return "actGroupPDFileDownload";
-  }
-  
-  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
-  {
-    this.jdField_a_of_type_Areg = new areg();
-    this.jdField_a_of_type_Areg.jdField_a_of_type_Long = paramInt;
-    this.jdField_a_of_type_Areg.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Areg.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Areg.d = paramLong2;
-    this.jdField_a_of_type_Areg.c = paramLong3;
-    this.jdField_a_of_type_Areg.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Areg.jdField_b_of_type_Int = 1;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    if (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime > paramExcitingTransferDownloadCompletedInfo.m_uStartTime) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Areg == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo == null))
+    switch (paramMessage.what)
     {
-      QLog.e("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloadDataReport err. param err");
-      return;
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
     }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Areg != null) {
-      localHashMap.putAll(this.jdField_a_of_type_Areg.a());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
-    }
-    for (;;)
-    {
-      QLog.i("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloadDataReport: act=" + a() + localHashMap.toString());
-      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, localHashMap, "");
-      this.jdField_a_of_type_Areg = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
-      return;
-      localHashMap.put("param_CSTime", String.valueOf(0));
-      localHashMap.put("param_HttpFirstTime", String.valueOf(0));
-      localHashMap.put("param_HttpFirstDataSize", String.valueOf(0));
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = paramLong;
-  }
-  
-  public void c(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = paramLong;
+    DanmakuManager.i(localDanmakuManager);
+    return false;
   }
 }
 

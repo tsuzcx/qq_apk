@@ -1,10 +1,24 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bnlx
+class bnlx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  bnlx(bnls parambnls) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    RecyclerView localRecyclerView = bnls.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+  }
 }
 
 

@@ -1,120 +1,101 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.Executor;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qsd
-  implements qrv, qrz
+  extends qqt
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new qse(this);
-  private Queue<qrw> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = amdp.a(64);
-  private qsa jdField_a_of_type_Qsa;
-  private boolean jdField_a_of_type_Boolean;
-  private Queue<qrw> b = new ArrayDeque();
-  
-  public qsd(qsa paramqsa)
+  public qsd(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    this.jdField_a_of_type_Qsa = paramqsa;
-    this.jdField_a_of_type_Qsa.a(this);
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  private boolean a()
-  {
-    return this.b.size() < 3;
-  }
-  
-  private void b()
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilQueue.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PreviewCaptureManager", 2, "fetchTaskToExe return for capturePrepared is false or waittingTaskQueue is Empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      while (a())
-      {
-        qrw localqrw = (qrw)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localqrw != null) {
-          e(localqrw);
-        }
-      }
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
-  }
-  
-  private void d(qrw paramqrw)
-  {
-    paramqrw.a(this.jdField_a_of_type_Qsa);
-    paramqrw.a(this);
-  }
-  
-  private void e(qrw paramqrw)
-  {
-    this.b.add(paramqrw);
-    d(paramqrw);
-    paramqrw.executeOnExecutor(this.jdField_a_of_type_JavaUtilConcurrentExecutor, null);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilQueue);
-    localArrayList.addAll(this.b);
-    this.jdField_a_of_type_JavaUtilQueue.clear();
-    this.b.clear();
-    int i = 0;
-    while (i < localArrayList.size())
-    {
-      qrw localqrw = (qrw)localArrayList.get(i);
-      if (localqrw != null) {
-        localqrw.cancel(true);
-      }
-      i += 1;
-    }
-    if (this.jdField_a_of_type_Qsa != null) {
-      this.jdField_a_of_type_Qsa.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, long paramLong)
+  public qqt a()
   {
     this.jdField_a_of_type_Boolean = true;
-    c();
+    return c(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).l().g().n().q().j().h();
   }
   
-  public void a(qrw paramqrw) {}
-  
-  public void b(qrw paramqrw)
+  public qqt c(snh paramsnh, aobu paramaobu)
   {
-    this.b.remove(paramqrw);
-    c();
+    super.c(paramsnh, paramaobu);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.b = true;
+    return this;
   }
   
-  public void c(qrw paramqrw)
+  public qqt d()
   {
-    if ((this.jdField_a_of_type_JavaUtilQueue.contains(paramqrw)) || (this.b.contains(paramqrw))) {
-      return;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PreviewCaptureManager", 2, "addCaptureTask task:" + paramqrw);
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
     }
-    this.jdField_a_of_type_JavaUtilQueue.add(paramqrw);
-    c();
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGalleryBiu)))
+    {
+      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setIsNeedAddTitle(true);
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      new LinearLayout.LayoutParams(-2, -2);
+      localLinearLayout2.addView((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs);
+      localLinearLayout2.setPadding(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localLinearLayout1.addView(localLinearLayout2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
+  }
+  
+  public qqt e()
+  {
+    return null;
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentGalleryBiu(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public qqt o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGalleryBiu)))
+    {
+      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setAdapter(this.jdField_a_of_type_Snh);
+      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Qqs).setPosition(this.jdField_a_of_type_Int);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsd
  * JD-Core Version:    0.7.0.1
  */

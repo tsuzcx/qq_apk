@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.NetworkState;
 import java.text.SimpleDateFormat;
@@ -54,15 +54,15 @@ public class LpReportInfo_DC02293
       localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
       localHashMap.put("AppId", "Android-QzoneInQQ");
       localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
-      localHashMap.put("qua", bjdm.a());
-      localHashMap.put("deviceinfo", bjdm.a());
+      localHashMap.put("qua", blru.a());
+      localHashMap.put("deviceinfo", blru.a());
       return localHashMap;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02293
  * JD-Core Version:    0.7.0.1
  */

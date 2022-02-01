@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
-import ajeu;
+import akww;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -62,13 +62,13 @@ public class AnimationView$AnimationInfo
     }
     String str = paramString + "Folder";
     File localFile = new File(str);
-    if ((!localFile.exists()) && (!ajeu.a(paramString, str))) {
+    if ((!localFile.exists()) && (!akww.a(paramString, str))) {
       return 3;
     }
     paramString = localFile.listFiles();
     if ((paramString == null) || (paramString.length <= 0))
     {
-      bdhb.a(str, false);
+      bgmg.a(str, false);
       return 4;
     }
     do
@@ -77,7 +77,7 @@ public class AnimationView$AnimationInfo
       if (i >= paramString.length) {
         break;
       }
-    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bdhb.e(paramString[i].getAbsolutePath())));
+    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bgmg.e(paramString[i].getAbsolutePath())));
     return 1;
     return 5;
   }
@@ -90,7 +90,7 @@ public class AnimationView$AnimationInfo
       return null;
       try
       {
-        paramFile = bdhb.b(paramFile);
+        paramFile = bgmg.b(paramFile);
         if (paramFile == null) {
           break;
         }
@@ -172,7 +172,7 @@ public class AnimationView$AnimationInfo
       {
         if ((localObject == null) || (localArrayList1 == null) || (localArrayList1.size() <= 0))
         {
-          paramString = ajeu.a(paramString);
+          paramString = akww.a(paramString);
           if ((paramString == null) || (paramString.length <= 0)) {
             return null;
           }
@@ -193,12 +193,12 @@ public class AnimationView$AnimationInfo
           }
           return null;
         }
-        ajeu.a(paramString);
+        akww.a(paramString);
         ArrayList localArrayList2 = new ArrayList();
         int i = 0;
         while (i < paramString.length)
         {
-          if ((paramString[i] != null) && (paramString[i].isFile()) && (bdhb.e(paramString[i].getAbsolutePath()))) {
+          if ((paramString[i] != null) && (paramString[i].isFile()) && (bgmg.e(paramString[i].getAbsolutePath()))) {
             localArrayList2.add(paramString[i]);
           }
           i += 1;
@@ -227,7 +227,7 @@ public class AnimationView$AnimationInfo
               }
               while (i < localSparseArray.size())
               {
-                ajeu.a((Drawable)localSparseArray.valueAt(i));
+                akww.a((Drawable)localSparseArray.valueAt(i));
                 i += 1;
               }
             }
@@ -252,7 +252,7 @@ public class AnimationView$AnimationInfo
           i = m;
           while (i < localSparseArray.size())
           {
-            ajeu.a((Drawable)localSparseArray.valueAt(i));
+            akww.a((Drawable)localSparseArray.valueAt(i));
             i += 1;
           }
           return null;
@@ -367,7 +367,7 @@ public class AnimationView$AnimationInfo
     int i = 0;
     while (i < this.mFrames.size())
     {
-      ajeu.a((Drawable)this.mFrames.valueAt(i));
+      akww.a((Drawable)this.mFrames.valueAt(i));
       i += 1;
     }
     this.mFrames.clear();
@@ -375,7 +375,7 @@ public class AnimationView$AnimationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.AnimationInfo
  * JD-Core Version:    0.7.0.1
  */

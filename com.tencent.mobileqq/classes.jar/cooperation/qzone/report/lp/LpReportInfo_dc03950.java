@@ -2,7 +2,7 @@ package cooperation.qzone.report.lp;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Arrays;
@@ -120,7 +120,7 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+    LpReportUtils.safePut(localHashMap, "qua", blru.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
@@ -141,7 +141,7 @@ public class LpReportInfo_dc03950
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc03950
  * JD-Core Version:    0.7.0.1
  */

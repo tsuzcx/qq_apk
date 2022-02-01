@@ -1,45 +1,26 @@
-import android.support.annotation.UiThread;
-import java.lang.ref.WeakReference;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public class tie<V extends tat>
-  implements taw<V>
+public class tie
+  implements tin
 {
-  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  @UiThread
-  public V a()
+  public tie(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (tat)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-  }
-  
-  @UiThread
-  public void a(V paramV)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new tif(this, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView), paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tie
  * JD-Core Version:    0.7.0.1
  */

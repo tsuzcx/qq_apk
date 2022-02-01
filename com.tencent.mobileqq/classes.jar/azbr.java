@@ -1,8 +1,32 @@
-public abstract interface azbr
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public final class azbr
+  implements bdvv
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(String paramString);
+  public void a(bdws parambdws, bdwt parambdwt)
+  {
+    if ((parambdws == null) || (parambdwt == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambdws instanceof bdvs));
+      parambdws = (bdvs)parambdws;
+      parambdws.jdField_a_of_type_Long += parambdwt.c;
+      parambdwt.c = 0L;
+      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
+      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
+      if (parambdwt.contains("range="))
+      {
+        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
+        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambdwt);
+  }
 }
 
 

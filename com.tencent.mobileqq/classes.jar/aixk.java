@@ -1,15 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.graphics.Bitmap;
 
 class aixk
-  extends RecyclerView.ViewHolder
+  implements bbaa
 {
-  aixl jdField_a_of_type_Aixl;
+  aixk(aixj paramaixj) {}
   
-  aixk(aixj paramaixj, View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    super(paramView);
-    this.jdField_a_of_type_Aixl = ((aixl)paramView);
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

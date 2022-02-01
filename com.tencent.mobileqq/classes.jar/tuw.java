@@ -1,32 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqcircle.comment.ItemReplyContainer;
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StComment;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class tuw
-  implements View.OnClickListener
+  extends tvk
 {
-  public tuw(QCircleCommentItemView paramQCircleCommentItemView) {}
+  public tuw(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    if ((QCircleCommentItemView.a(this.a) != null) && (QCircleCommentItemView.a(this.a).vecReply.size() > 0))
-    {
-      QCircleCommentItemView.a(this.a).a(paramView, 10, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
-      this.a.a.b.setVisibility(8);
-      this.a.a.a.setVisibility(8);
-      QCircleCommentItemView.a(this.a).setVisibility(0);
-      QCircleCommentItemView.a(this.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
     }
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      return;
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tuw
  * JD-Core Version:    0.7.0.1
  */

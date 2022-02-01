@@ -9,18 +9,17 @@ class VideoView$5
   
   public void run()
   {
-    try
+    synchronized (this.this$0)
     {
-      if (VideoView.a(this.this$0) != null)
+      if (VideoView.access$900(this.this$0) != null)
       {
-        VideoView.a(this.this$0).setXYaxis(VideoView.b(this.this$0));
+        VideoView.access$900(this.this$0).setXYaxis(VideoView.access$1300(this.this$0));
         if (this.a) {
-          this.this$0.E_();
+          this.this$0.openVideo();
         }
       }
       return;
     }
-    finally {}
   }
 }
 

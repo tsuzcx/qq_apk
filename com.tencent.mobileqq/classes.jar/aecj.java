@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecj
-  extends alwx
+  implements View.OnClickListener
 {
-  public aecj(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aecj(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.c();
-  }
-  
-  protected void b()
-  {
-    this.a.c();
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

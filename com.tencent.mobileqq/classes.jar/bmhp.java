@@ -1,27 +1,55 @@
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-final class bmhp
-  implements mpv
+public class bmhp
 {
-  public void a(int paramInt)
+  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
+  
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
+    return this.a.size();
+  }
+  
+  public Statistic a()
+  {
+    return (Statistic)this.a.poll();
+  }
+  
+  public List<Statistic> a()
+  {
+    return a(a());
+  }
+  
+  public List<Statistic> a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < 1)
+    {
+      localObject = null;
+      return localObject;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramInt, a());
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = a();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramInt += 1;
     }
   }
   
-  public void a(String paramString)
+  public void a(Statistic paramStatistic)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
+    this.a.add(paramStatistic);
   }
 }
 

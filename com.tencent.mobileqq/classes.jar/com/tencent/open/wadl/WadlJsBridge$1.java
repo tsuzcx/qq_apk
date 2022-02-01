@@ -1,7 +1,7 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bfrz;
+import bize;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
@@ -18,7 +18,7 @@ class WadlJsBridge$1
       if ((localWebView != null) && (!TextUtils.isEmpty(this.a)))
       {
         if (QLog.isColorLevel()) {
-          bfrz.c("WadlJsBridge", "##@WadlJavaScript:" + this.a);
+          bize.c("WadlJsBridge", "##@WadlJavaScript:" + this.a);
         }
         localWebView.loadUrl(this.a);
       }
@@ -26,13 +26,13 @@ class WadlJsBridge$1
     }
     catch (Exception localException)
     {
-      bfrz.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
+      bize.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridge.1
  * JD-Core Version:    0.7.0.1
  */

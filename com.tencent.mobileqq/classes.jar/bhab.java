@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
-import com.tencent.qqmini.sdk.utils.StorageUtil;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-
-public final class bhab
-  implements DialogInterface.OnShowListener
+public class bhab
 {
-  public bhab(TianShuAccess.AdItem paramAdItem, String paramString) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    StorageUtil.getPreference().edit().putLong("pref_key_banner_ad_popup_last_show_time_millis", System.currentTimeMillis()).putInt("pref_key_banner_ad_current_show_times", 1).apply();
-    MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.jdField_a_of_type_JavaLangString, 101);
+    paramString6 = new StringBuilder();
+    paramString6.append(paramString1).append("|");
+    paramString6.append(paramString2).append("|");
+    paramString6.append(paramString3).append("|");
+    paramString6.append(paramString4).append("|");
+    paramString6.append(paramString5).append("|");
+    paramString6.append(paramString7).append("|");
+    paramString6.append(paramString8).append("|");
+    paramString6.append(paramString9).append("|");
+    paramString6.append(paramString10);
+    bcrt.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhab
  * JD-Core Version:    0.7.0.1
  */

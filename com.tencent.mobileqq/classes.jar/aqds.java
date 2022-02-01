@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aqds
-  implements DialogInterface.OnClickListener
+class aqds
+  implements View.OnClickListener
 {
-  public aqds(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  aqdq jdField_a_of_type_Aqdq;
+  aqdu jdField_a_of_type_Aqdu;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aqds(aqdq paramaqdq, aqdu paramaqdu)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Aqdq = paramaqdq;
+    this.jdField_a_of_type_Aqdu = paramaqdu;
+  }
+  
+  public void onClick(View paramView)
+  {
+    aqcb.a(paramView.getContext(), (ColorNote)aqdq.a(this.jdField_a_of_type_Aqdq).get(this.jdField_a_of_type_Aqdu.getAdapterPosition()));
+    if (aqdq.a(this.jdField_a_of_type_Aqdq) != null) {
+      aqdq.a(this.jdField_a_of_type_Aqdq).b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

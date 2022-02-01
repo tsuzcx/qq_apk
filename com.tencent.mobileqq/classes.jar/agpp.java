@@ -1,146 +1,359 @@
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie.8.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
 
 public class agpp
-  extends alwx
+  extends agpq
 {
-  agpp(agpi paramagpi) {}
+  private static final Set<WeakReference<agpp>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  public WeakReference<MessageForArkApp> a;
+  public boolean a;
+  protected WeakReference<agpp> b = new WeakReference(this);
+  private WeakReference<ArkBabyqCardInfo> jdField_e_of_type_JavaLangRefWeakReference;
+  private boolean jdField_e_of_type_Boolean;
+  private WeakReference<RecommendCommonMessage> f;
+  private WeakReference<RecommendCommonMessage.ArkMsgAppInfo> g;
   
-  private void d(String paramString)
+  public agpp()
   {
-    try
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    agpv.a();
+    agpv.a(this.b);
+  }
+  
+  public static MessageForArkApp a(String paramString)
+  {
+    synchronized (jdField_a_of_type_JavaUtilSet)
     {
-      if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-        bdgm.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, alud.a(2131703727), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131719753), new agpr(this, paramString), null).show();
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "ERR!! send_discussion_msg_failed_not_member:" + paramString.getMessage());
+      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Object localObject;
+      label42:
+      MessageForArkApp localMessageForArkApp;
+      do
+      {
+        if (localIterator.hasNext())
+        {
+          localObject = (WeakReference)localIterator.next();
+          if (localObject != null) {
+            break label42;
+          }
+        }
+        do
+        {
+          do
+          {
+            do
+            {
+              return null;
+              localObject = (agpp)((WeakReference)localObject).get();
+            } while (localObject == null);
+            localObject = ((agpp)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+          } while (localObject == null);
+          localMessageForArkApp = (MessageForArkApp)((WeakReference)localObject).get();
+        } while (localMessageForArkApp == null);
+      } while ((!paramString.equals(localMessageForArkApp.getExtInfoFromExtStr("pa_msgId"))) && (!paramString.equals(String.valueOf(localMessageForArkApp.uniseq))));
+      paramString = (MessageForArkApp)((WeakReference)localObject).get();
+      return paramString;
     }
   }
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public static void a(int paramInt)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format(Locale.CHINA, "doArkAppEvent type:%d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
+    if (paramInt == 2)
     {
-      paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
-        aupg.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1, paramLong2, false);
-      }
-    }
-    if (paramInt1 == 3000) {
-      switch (paramInt2)
-      {
-      default: 
-        if (paramInt2 > 100) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-        }
-        break;
-      }
+      agpv.a();
+      agpv.a();
     }
     for (;;)
     {
-      this.a.e(196608);
-      return;
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131719751, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131719754, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      bdgm.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, alud.a(2131703726), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131691938), new agpq(this, paramString1), null).show();
-      continue;
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new DiscussChatPie.8.2(this, paramString1));
-      } else {
-        d(paramString1);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, alwu paramalwu)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.u = true;
-    this.a.a(262144, paramalwu, paramLong);
-  }
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onMsgRevokeNotice:" + paramBoolean1);
-    }
-    if (!paramBoolean1) {
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      Object localObject = (MessageRecord)paramList.get(0);
-      if (this.a.jdField_a_of_type_Bbqg != null)
+      synchronized (jdField_a_of_type_JavaUtilSet)
       {
-        int i = this.a.jdField_a_of_type_Bbqg.b();
-        if (i != -1)
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (WeakReference)localIterator.next();
+        if ((localObject2 == null) || (((WeakReference)localObject2).get() == null))
         {
-          auga localauga = (auga)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-          long l = localauga.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000);
-          if (((MessageRecord)localObject).uniseq == l)
-          {
-            localauga.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000, i);
-            this.a.jdField_a_of_type_Bbqg.a(i);
-            this.a.jdField_a_of_type_Bbqg.e();
+          if (QLog.isColorLevel()) {
+            QLog.d("ArkApp.ArkAioContainerWrapper", 4, "doArkAppEvent.(item == null || item.get() == null)");
           }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder("onMsgRevokeNotice==>");
-            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
-            QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
-          }
+          localIterator.remove();
         }
       }
+      Object localObject2 = (agpp)((WeakReference)localObject2).get();
+      ((agpp)localObject2).doOnEvent(paramInt);
+      if (paramInt == 2) {
+        b((agpp)localObject2);
+      }
     }
-    super.a(paramBoolean1, paramList, paramBoolean2);
+    if (paramInt == 2) {
+      jdField_a_of_type_JavaUtilSet.clear();
+    }
   }
   
-  public void b(String paramString)
+  public static void a(agpp paramagpp)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    if (paramagpp == null) {
+      return;
     }
-    this.a.e(131072);
+    synchronized (jdField_a_of_type_JavaUtilSet)
+    {
+      jdField_a_of_type_JavaUtilSet.remove(paramagpp.b);
+      return;
+    }
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  public static void b(agpp paramagpp)
   {
-    this.a.e(65536);
+    WeakReference localWeakReference = paramagpp.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((MessageForArkApp)localWeakReference.get()).arkContainer = null;
+    }
+    localWeakReference = paramagpp.f;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((RecommendCommonMessage)localWeakReference.get()).mOldAppInfo.mArkContainer = null;
+    }
+    localWeakReference = paramagpp.g;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((RecommendCommonMessage.ArkMsgAppInfo)localWeakReference.get()).mArkContainer = null;
+    }
+    paramagpp = paramagpp.jdField_e_of_type_JavaLangRefWeakReference;
+    if ((paramagpp != null) && (paramagpp.get() != null)) {
+      ((ArkBabyqCardInfo)paramagpp.get()).mArkBabyqContainer = null;
+    }
+  }
+  
+  public SessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return "";
+    }
+    MessageForArkApp localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMessageForArkApp == null) {
+      return "";
+    }
+    return localMessageForArkApp.ark_app_message.config;
+  }
+  
+  public String a(String paramString)
+  {
+    if (paramString == null) {
+      localObject = "";
+    }
+    MessageForArkApp localMessageForArkApp;
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject;
+          localObject = paramString;
+        } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
+        localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = paramString;
+      } while (localMessageForArkApp == null);
+      localObject = paramString;
+    } while (localMessageForArkApp.ark_app_message == null);
+    String str2 = localMessageForArkApp.ark_app_message.appName;
+    String str1 = ArkAppMgr.loadAppDesc(str2);
+    Object localObject = str1;
+    if (TextUtils.isEmpty(str1)) {
+      if (!ArkAppMgr.isValidAppName(str2)) {
+        break label180;
+      }
+    }
+    label180:
+    for (localObject = str2;; localObject = "")
+    {
+      str1 = paramString;
+      if (localMessageForArkApp.ark_app_message.appDesc != null) {
+        str1 = paramString.replace("%APP_DESC%", (CharSequence)localObject).replace("$APP_DESC$", (CharSequence)localObject);
+      }
+      paramString = str1;
+      if (localMessageForArkApp.ark_app_message.appName != null) {
+        paramString = str1.replace("%APP_NAME%", str2).replace("$APP_NAME$", str2);
+      }
+      localObject = paramString;
+      if (localMessageForArkApp.ark_app_message.promptText == null) {
+        break;
+      }
+      return paramString.replace("%PROMPT%", localMessageForArkApp.ark_app_message.promptText).replace("$PROMPT$", localMessageForArkApp.ark_app_message.promptText);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, ArkBabyqCardInfo paramArkBabyqCardInfo, SessionInfo paramSessionInfo)
+  {
+    this.jdField_e_of_type_Boolean = false;
+    if (paramArkBabyqCardInfo != null) {
+      this.jdField_e_of_type_JavaLangRefWeakReference = new WeakReference(paramArkBabyqCardInfo);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    this.d = true;
+    agpv.a();
+    agpv.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, MessageForArkApp paramMessageForArkApp, SessionInfo paramSessionInfo)
+  {
+    this.jdField_e_of_type_Boolean = false;
+    if (paramMessageForArkApp != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessageForArkApp);
+      a(paramSessionInfo, paramMessageForArkApp.senderuin);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    agpv.a();
+    agpv.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, RecommendCommonMessage.ArkMsgAppInfo paramArkMsgAppInfo, SessionInfo paramSessionInfo)
+  {
+    if (paramArkMsgAppInfo != null) {
+      this.g = new WeakReference(paramArkMsgAppInfo);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    agpv.a();
+    agpv.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, RecommendCommonMessage paramRecommendCommonMessage, SessionInfo paramSessionInfo)
+  {
+    if (paramRecommendCommonMessage != null)
+    {
+      this.f = new WeakReference(paramRecommendCommonMessage);
+      a(paramSessionInfo, paramRecommendCommonMessage.senderuin);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    agpv.a();
+    agpv.a(this.b);
+    return true;
+  }
+  
+  public void activateView(boolean paramBoolean)
+  {
+    boolean bool = this.mIsActivated;
+    super.activateView(paramBoolean);
+    if (bool == this.mIsActivated) {
+      return;
+    }
+    if (this.mIsActivated)
+    {
+      agpv.a();
+      agpv.a(this.b);
+      return;
+    }
+    agpv.a();
+    agpv.b(this.b);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_e_of_type_Boolean) {
+      super.doOnEvent(2);
+    }
+  }
+  
+  public void destroy()
+  {
+    super.destroy();
+    agpv.a();
+    agpv.c(this.b);
+  }
+  
+  public void doOnEvent(int paramInt)
+  {
+    if ((paramInt == 2) && (this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_e_of_type_Boolean = true;
+      return;
+    }
+    super.doOnEvent(paramInt);
+  }
+  
+  public String getViewId()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    MessageForArkApp localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMessageForArkApp == null) {
+      return null;
+    }
+    String str = localMessageForArkApp.getExtInfoFromExtStr("pa_msgId");
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return String.valueOf(localMessageForArkApp.uniseq);
   }
 }
 

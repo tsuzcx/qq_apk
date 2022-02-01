@@ -1,33 +1,27 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class atnb
-  implements bhuk
+  implements aqfb
 {
-  public atnb(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, atnw paramatnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public String a()
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Atnw.b(false);
-      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-      }
+    return anni.a(2131698258);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    while (paramInt != 17039360) {
       return;
-      atmr.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Atnw.a().e, this.jdField_a_of_type_Atnw.a().b);
-      continue;
-      this.jdField_a_of_type_Atnw.g();
-      continue;
-      this.jdField_a_of_type_Atnw.g();
     }
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
+    localIntent.putExtra("from", "FileAssistant");
+    paramView.startActivity(localIntent);
+    bcst.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
   }
 }
 

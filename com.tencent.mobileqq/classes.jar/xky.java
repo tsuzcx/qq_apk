@@ -1,91 +1,56 @@
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class xky
-  extends bici
+  extends zpa
 {
-  public static final TroopBarPOI a;
-  protected LayoutInflater a;
-  protected ArrayList<TroopBarPOI> a;
-  protected TroopBarPOI b;
+  public static final String KEY = "EmptyPlaceHolderSegment";
+  private final int jdField_a_of_type_Int;
+  private ynb jdField_a_of_type_Ynb;
   
-  static
+  public xky(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", alud.a(2131711382), 0, "", 0, "");
+    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public xky(Context paramContext)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    return 1;
   }
   
-  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (paramTroopBarPOI != null) {
-      this.b = new TroopBarPOI(paramTroopBarPOI);
+    return paramynb.a();
+  }
+  
+  public String a()
+  {
+    return "EmptyPlaceHolderSegment";
+  }
+  
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (QQStoryContext.a()) {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166472));
     }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
-    if (paramView == null)
+    for (;;)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561545, null);
-      paramViewGroup = new xkz();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376376));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369316));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.b)) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (xkz)paramView.getTag();
-      break;
+      this.jdField_a_of_type_Ynb = new ynb(paramViewGroup);
+      return this.jdField_a_of_type_Ynb;
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165545));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xky
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,59 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wyn
-  implements ThreadExcutor.IThreadListener
+  extends wlf<xal>
 {
-  wyn(wym paramwym) {}
+  private static final String b = wjz.a("StorySvc.video_show_delete");
+  public String a;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public wyn(String paramString)
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
-    if (azhg.a().a == 1) {}
-    for (;;)
-    {
-      axpl.h(i);
-      return;
-      i = 2;
-    }
+    this.a = paramString;
   }
   
-  public void onPreRun() {}
+  public String a()
+  {
+    return b;
+  }
+  
+  public xal a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new xal(localRspDeleteVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyn
  * JD-Core Version:    0.7.0.1
  */

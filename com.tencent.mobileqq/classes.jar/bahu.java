@@ -1,44 +1,28 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-public class bahu
-  extends Dialog
+abstract class bahu<T>
+  extends niv
 {
-  public bahu(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  protected T a;
+  private WeakReference<T> a;
+  
+  bahu(T paramT)
   {
-    super(paramContext, 2131755801);
-    setContentView(2131562730);
-    paramContext = (TextView)findViewById(2131377938);
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramContext.setVisibility(0);
-      paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131364771);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label142;
-      }
-      paramContext.setVisibility(0);
-      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
-      paramContext.setText(new bagd(paramString2, 8));
-    }
-    for (;;)
-    {
-      ((Button)findViewById(2131364694)).setOnClickListener(new bahv(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131364337)).setOnClickListener(new bahw(this, paramOnClickListener2));
-      setCanceledOnTouchOutside(false);
-      return;
-      paramContext.setVisibility(8);
-      break;
-      label142:
-      paramContext.setVisibility(8);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

@@ -1,24 +1,13 @@
-import android.os.SystemClock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bejw
+  implements DialogInterface.OnClickListener
 {
-  final long a;
-  public final String a;
-  public final String b;
-  public final String c;
+  public bejw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  bejw(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  boolean a()
-  {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

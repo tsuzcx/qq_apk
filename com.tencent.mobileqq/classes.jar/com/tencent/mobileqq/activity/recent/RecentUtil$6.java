@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.text.TextUtils;
-import azqs;
+import bcst;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,14 +48,14 @@ public final class RecentUtil$6
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject = "0X8005C36";
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.6
  * JD-Core Version:    0.7.0.1
  */

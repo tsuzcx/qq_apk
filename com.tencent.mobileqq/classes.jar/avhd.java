@@ -1,36 +1,21 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
 
-class avhd
-  implements avci
+public class avhd
 {
-  avhd(avhb paramavhb) {}
+  public long a;
+  public Intent a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public void a(Comments.Comment paramComment)
+  public avhd(avha paramavha)
   {
-    if (avhb.a(this.a) != null)
-    {
-      avhb.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
-    }
-  }
-  
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
-  {
-    if (avhb.a(this.a) != null)
-    {
-      avhb.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhd
  * JD-Core Version:    0.7.0.1
  */

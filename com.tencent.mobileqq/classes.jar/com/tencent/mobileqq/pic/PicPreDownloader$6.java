@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import awkd;
+import ayyp;
 import com.tencent.mobileqq.data.MessageForStructing;
 
 class PicPreDownloader$6
@@ -10,12 +10,12 @@ class PicPreDownloader$6
   
   public void run()
   {
-    awkd.a(this.a, this.this$0.a);
+    ayyp.a(this.a, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.6
  * JD-Core Version:    0.7.0.1
  */

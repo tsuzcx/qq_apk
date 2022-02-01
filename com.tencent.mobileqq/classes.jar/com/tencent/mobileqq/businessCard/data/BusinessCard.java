@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anzx;
-import awge;
-import awhp;
-import awhs;
+import aqac;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class BusinessCard
-  extends awge
+  extends Entity
   implements Parcelable
 {
   public static final int CARD_SRC_AB = 3;
@@ -23,41 +23,41 @@ public class BusinessCard
   public static final int CARD_SRC_FX = 2;
   public static final int CARD_SRC_SS = 1;
   public static final int CARD_SRC_ZL = 5;
-  public static final Parcelable.Creator<BusinessCard> CREATOR = new anzx();
+  public static final Parcelable.Creator<BusinessCard> CREATOR = new aqac();
   public static final int TYPE_CARD_ADD = 2;
   public static final int TYPE_CARD_MINE = 1;
   public static final int TYPE_CARD_MINE_ADD = 3;
   public static final int TYPE_CARD_OTHER = 0;
-  @awhp
+  @notColumn
   public CardOCRInfo OCRInfo;
   public String OCRInfoPacked;
   public String allPinyin;
   public String bindMobile;
   public String bindUin;
-  @awhs
+  @unique
   public String cardId;
   public String cardName;
   public int cardSrc = 1;
   public int cardType;
   public String company;
-  @awhp
+  @notColumn
   public List<String> descs = new ArrayList();
   public String descsPacked;
-  @awhp
+  @notColumn
   public String firstPinyin;
   public int lastUpdateTime;
-  @awhp
+  @notColumn
   public List<CardMobileInfo> mobileInfos = new ArrayList();
-  @awhp
+  @notColumn
   public List<String> mobilesNum = new ArrayList();
   public String moblieInfoPacked;
   public String mobulesNumPacked;
   public String picUrl;
-  @awhp
+  @notColumn
   public List<String> qqNum = new ArrayList();
   public String sortDesc;
   public String uinInfoPacked;
-  @awhp
+  @notColumn
   public List<CardUinInfo> uinInfos = new ArrayList();
   
   public BusinessCard() {}
@@ -213,7 +213,7 @@ public class BusinessCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.BusinessCard
  * JD-Core Version:    0.7.0.1
  */

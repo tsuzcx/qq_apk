@@ -1,42 +1,90 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class azgu
-  extends AsyncTask<Void, Void, Integer>
 {
-  public azgu(SVHwEncoder.HwEncode paramHwEncode) {}
+  public static int a;
+  public static SparseArray<String> a;
+  public static String a;
+  private static AtomicBoolean a;
   
-  protected Integer a(Void... paramVarArgs)
+  static
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
+    jdField_a_of_type_Int = 50;
+    jdField_a_of_type_JavaLangString = anni.a(2131715440);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {}
+    JSONObject localJSONObject;
+    JSONArray localJSONArray;
+    for (;;)
     {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bdhb.c(paramVarArgs, str)) {
-        break label177;
+      try
+      {
+        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
+        return;
       }
-      this.a.a.b = str;
-      i = j;
+      finally {}
+      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      {
+        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
+        if (localJSONObject == null) {
+          break label217;
+        }
+        localJSONArray = localJSONObject.optJSONArray("fontList");
+        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null)
+          {
+            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+            break label227;
+          }
+        }
+      }
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bdhb.b(str))
+      if (i < localJSONArray.length())
       {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
+        paramAppRuntime = localJSONArray.optJSONObject(i);
+        int j = paramAppRuntime.optInt("id");
+        String str = paramAppRuntime.optString("imgUrl");
+        if (TextUtils.isEmpty(str)) {
+          break label232;
+        }
+        paramAppRuntime = str;
+        if (!str.startsWith("http:"))
+        {
+          paramAppRuntime = str;
+          if (!str.startsWith("https:")) {
+            paramAppRuntime = "http:" + str;
+          }
+        }
+        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
+        break label232;
+        jdField_a_of_type_AndroidUtilSparseArray.clear();
       }
+      else
+      {
+        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
+        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
+        label217:
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        break;
+      }
+      label227:
+      int i = 0;
+      continue;
+      label232:
+      i += 1;
     }
   }
 }

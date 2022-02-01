@@ -1,28 +1,25 @@
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
 
-public class qqh
-  extends oxe
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qqh
+  implements View.OnClickListener
 {
-  public qqh(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  qqh(qqa paramqqa) {}
   
-  public void c(List<TagInfo> paramList)
+  public final void onClick(View paramView)
   {
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
-    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
-    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
-    if (paramList.isEmpty()) {
-      QQToast.a(this.a.getActivity(), 2131719056, 0).a();
-    }
+    qqa.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(1));
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqh
  * JD-Core Version:    0.7.0.1
  */

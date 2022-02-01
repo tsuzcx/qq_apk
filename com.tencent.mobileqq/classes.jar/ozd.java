@@ -1,29 +1,10 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class ozd
-  implements View.OnClickListener
+public abstract interface ozd
 {
-  public ozd(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(paramView);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void onViewState(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozd
  * JD-Core Version:    0.7.0.1
  */

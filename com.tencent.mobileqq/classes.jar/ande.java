@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class ande
-  implements andz
+public final class ande
+  implements BusinessObserver
 {
-  ande(andc paramandc, andg paramandg, ArCloudConfigInfo paramArCloudConfigInfo) {}
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Andg != null) {
-      this.jdField_a_of_type_Andg.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Andg != null) {
-      this.jdField_a_of_type_Andg.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Andg != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Andg != null) {
-      this.jdField_a_of_type_Andg.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    if (paramBoolean)
+    {
+      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
+      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nwm;
+import ogh;
 
 public class ReadInJoyChannelViewPagerController$2
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$2(nwm paramnwm) {}
+  public ReadInJoyChannelViewPagerController$2(ogh paramogh) {}
   
   public void run()
   {
-    nwm.a(this.this$0, nwm.a(this.this$0, 70));
+    ogh.a(this.this$0, ogh.a(this.this$0, 70));
   }
 }
 

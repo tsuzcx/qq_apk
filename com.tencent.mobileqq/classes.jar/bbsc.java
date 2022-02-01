@@ -1,18 +1,6 @@
-import java.util.Comparator;
-
-public class bbsc
-  implements Comparator<bbsa>
+public abstract interface bbsc
 {
-  public int a(bbsa parambbsa1, bbsa parambbsa2)
-  {
-    if (parambbsa1.b < parambbsa2.b) {
-      return 1;
-    }
-    if (parambbsa1.b == parambbsa2.b) {
-      return 0;
-    }
-    return -1;
-  }
+  public abstract void a();
 }
 
 

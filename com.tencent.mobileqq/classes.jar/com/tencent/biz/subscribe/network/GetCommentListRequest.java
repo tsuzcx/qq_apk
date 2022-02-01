@@ -5,7 +5,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
 import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -42,7 +42,7 @@ public class GetCommentListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetCommentListRequest
  * JD-Core Version:    0.7.0.1
  */

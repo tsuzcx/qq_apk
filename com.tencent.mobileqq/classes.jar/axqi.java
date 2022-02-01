@@ -1,14 +1,103 @@
-public abstract interface axqi
+import android.support.v4.util.SparseArrayCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class axqi
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public abstract void a();
+  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private SparseArrayCompat<View> b = new SparseArrayCompat();
   
-  public abstract void b();
+  public axqi(RecyclerView.Adapter paramAdapter)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
+  }
   
-  public abstract void c();
+  private boolean a(int paramInt)
+  {
+    return paramInt < a();
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return paramInt >= a() + c();
+  }
+  
+  private int c()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
+  }
+  
+  public RecyclerView.Adapter a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
+  }
+  
+  public int b()
+  {
+    return this.b.size();
+  }
+  
+  public void b(View paramView)
+  {
+    this.b.put(this.b.size() + 200000, paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return a() + c() + b();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (a(paramInt)) {
+      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
+    }
+    if (b(paramInt)) {
+      return this.b.keyAt(paramInt - a() - c());
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((a(paramInt)) || (b(paramInt))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
+      return new axqj((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
+    }
+    if (this.b.get(paramInt) != null) {
+      return new axqj((View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqi
  * JD-Core Version:    0.7.0.1
  */

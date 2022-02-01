@@ -1,32 +1,53 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akzj
-  implements aljo
+  implements View.OnClickListener
 {
-  akzj(akzg paramakzg, String paramString) {}
+  akzj(akyh paramakyh, Bundle paramBundle) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
+    if (akyh.a(this.jdField_a_of_type_Akyh) != null)
+    {
+      localObject1 = akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(1134042);
+      akyh.a(this.jdField_a_of_type_Akyh).sendMessage((Message)localObject1);
+    }
+    Object localObject1 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
-      }
-      ApolloCmdChannel localApolloCmdChannel = akwd.a();
-      if (localApolloCmdChannel != null)
+      localObject1 = Class.forName((String)localObject1);
+      if (localObject1 != null)
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("result", paramInt);
-        localApolloCmdChannel.callbackFromRequest(akzg.a(this.jdField_a_of_type_Akzg), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+        localObject1 = new Intent(akyh.a(this.jdField_a_of_type_Akyh).getApplicationContext(), (Class)localObject1);
+        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
+        if (!TextUtils.isEmpty(str)) {
+          ((Intent)localObject1).setAction(str);
+        }
+        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
+        if (!TextUtils.isEmpty(str)) {
+          ((Intent)localObject1).addCategory(str);
+        }
+        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+        akyh.a(this.jdField_a_of_type_Akyh).startActivity((Intent)localObject1);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+      for (;;)
+      {
+        Object localObject2 = null;
+      }
     }
   }
 }

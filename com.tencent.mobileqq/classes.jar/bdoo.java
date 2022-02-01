@@ -1,367 +1,147 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.ReqBody;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.RspBody;
+import tencent.im.oidb.cmd0xd79.Oidb_0xd79.content;
 
 public class bdoo
+  extends anii
 {
-  private static double a;
-  public static float a;
-  public static int a;
-  private static float jdField_b_of_type_Float;
-  private static int jdField_b_of_type_Int = -1;
-  private static float jdField_c_of_type_Float;
-  private static int jdField_c_of_type_Int = -1;
-  private static float jdField_d_of_type_Float;
-  private static int jdField_d_of_type_Int = -1;
-  private static int e;
+  private AtomicInteger a = new AtomicInteger();
   
-  static
+  public bdoo(QQAppInterface paramQQAppInterface)
   {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    jdField_a_of_type_Float = localDisplayMetrics.density;
-    jdField_a_of_type_Int = localDisplayMetrics.densityDpi;
-    jdField_c_of_type_Float = -1.0F;
-    jdField_d_of_type_Float = -1.0F;
+    super(paramQQAppInterface);
   }
   
-  public static double a()
+  private void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (jdField_a_of_type_Double <= 0.0D)
+    String str = null;
+    try
     {
-      DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-      double d1 = Math.pow(localDisplayMetrics.widthPixels, 2.0D);
-      jdField_a_of_type_Double = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + d1) / c();
-    }
-    return jdField_a_of_type_Double;
-  }
-  
-  public static float a()
-  {
-    if (jdField_c_of_type_Float < 0.0F) {
-      jdField_c_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().density;
-    }
-    return jdField_c_of_type_Float;
-  }
-  
-  public static float a(float paramFloat)
-  {
-    if (jdField_b_of_type_Float == 0.0F) {
-      jdField_b_of_type_Float = jdField_a_of_type_Int;
-    }
-    return jdField_b_of_type_Float * paramFloat / 160.0F;
-  }
-  
-  public static int a()
-  {
-    if (jdField_c_of_type_Int < 0) {
-      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
-        break label41;
-      }
-    }
-    label41:
-    for (jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels) {
-      return jdField_c_of_type_Int;
-    }
-  }
-  
-  public static int a(float paramFloat)
-  {
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int i = 0;
-    paramContext = paramContext.getResources();
-    int j = paramContext.getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getDimensionPixelSize(j);
-    }
-    return i;
-  }
-  
-  public static void a()
-  {
-    jdField_c_of_type_Int = -1;
-    jdField_d_of_type_Int = -1;
-  }
-  
-  @TargetApi(11)
-  public static void a(View paramView, float paramFloat)
-  {
-    if (Build.VERSION.SDK_INT >= 11) {
-      paramView.setAlpha(paramFloat);
-    }
-    while (paramView.getBackground() == null) {
-      return;
-    }
-    paramView.getBackground().setAlpha((int)(255.0F * paramFloat));
-  }
-  
-  @TargetApi(11)
-  public static void a(View paramView, int paramInt)
-  {
-    if (paramView.getBackground() != null) {
-      paramView.getBackground().setAlpha(paramInt);
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int j = paramView.getChildCount();
-      int i = 0;
-      while (i < j)
+      Oidb_0xd79.RspBody localRspBody = new Oidb_0xd79.RspBody();
+      parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      int i = localRspBody.uint32_ret.get();
+      localRspBody.uint64_seq.get();
+      localRspBody.uint64_uin.get();
+      paramFromServiceMsg = str;
+      if (localRspBody.uint32_compress_flag.get() == 0)
       {
-        a(paramView.getChildAt(i), paramInt);
-        i += 1;
+        paramObject = new Oidb_0xd79.content();
+        paramObject.mergeFrom(localRspBody.bytes_raw_content.get().toByteArray());
+        paramFromServiceMsg = str;
+        if (paramObject.bytes_slice_content.has()) {
+          paramFromServiceMsg = paramObject.bytes_slice_content.get();
+        }
+      }
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
+      {
+        paramObject = new ArrayList(paramFromServiceMsg.size());
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        while (paramFromServiceMsg.hasNext())
+        {
+          str = a(((ByteStringMicro)paramFromServiceMsg.next()).toStringUtf8());
+          if (!TextUtils.isEmpty(str)) {
+            paramObject.add(str);
+          }
+        }
+        if (i != 0) {
+          break label224;
+        }
       }
     }
-  }
-  
-  @TargetApi(16)
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT < 16)
+    catch (Exception paramFromServiceMsg)
     {
-      paramView.setBackgroundDrawable(paramDrawable);
+      QLog.d("ParticipleHandler", 1, paramFromServiceMsg, new Object[0]);
       return;
     }
-    paramView.setBackground(paramDrawable);
+    label224:
+    for (boolean bool = true;; bool = false)
+    {
+      notifyUI(1, bool, paramObject);
+      return;
+      notifyUI(1, false, null);
+      return;
+    }
   }
   
-  public static void a(View paramView1, View paramView2, int[] paramArrayOfInt)
+  public String a(String paramString)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length < 2)) {}
-    label156:
+    char[] arrayOfChar = paramString.toCharArray();
+    int k = paramString.length() - 1;
+    int i = 0;
+    while ((i <= k) && (arrayOfChar[i] <= ' ') && (arrayOfChar[i] != '\024')) {
+      i += 1;
+    }
     for (;;)
     {
-      return;
-      int i = 0;
-      int j = 0;
-      int k;
-      int m;
-      if (paramView1.getParent() != null)
+      int j;
+      if ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024')))
       {
-        j = paramView1.getLeft() + j;
-        k = paramView1.getTop() + i;
-        if (paramView1.getParent() == paramView2)
-        {
-          paramArrayOfInt[0] = j;
-          paramArrayOfInt[1] = k;
-          i = k;
-          m = j;
-          if (paramArrayOfInt.length >= 4)
-          {
-            paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-            paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            m = j;
-            i = k;
-          }
-        }
+        j -= 1;
       }
-      for (;;)
+      else
       {
-        for (;;)
-        {
-          if (paramView2 != null) {
-            break label156;
-          }
-          paramArrayOfInt[0] = m;
-          paramArrayOfInt[1] = i;
-          return;
-          try
-          {
-            paramView1 = (View)paramView1.getParent();
-            if (paramArrayOfInt.length >= 4)
-            {
-              paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-              paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            }
-            i = k;
-          }
-          catch (ClassCastException paramView1)
-          {
-            i = k;
-            m = j;
-          }
+        if ((i == 0) && (j == k)) {
+          return paramString;
         }
-        continue;
-        m = j;
+        return paramString.substring(i, j + 1);
+        j = k;
       }
     }
   }
   
-  public static boolean a(View paramView, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramView != null)
+    a(paramQQAppInterface, paramString, "");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    try
     {
-      paramView.setVisibility(paramInt);
-      return true;
+      Oidb_0xd79.ReqBody localReqBody = new Oidb_0xd79.ReqBody();
+      localReqBody.uint64_seq.set(this.a.incrementAndGet());
+      paramQQAppInterface = paramQQAppInterface.c();
+      localReqBody.uint64_uin.set(Long.parseLong(paramQQAppInterface));
+      localReqBody.uint32_compress_flag.set(0);
+      localReqBody.bytes_content.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
+      if (!TextUtils.isEmpty(paramString2)) {
+        localReqBody.uint64_sender_uin.set(Long.parseLong(paramString2));
+      }
+      localReqBody.bytes_qua.set(ByteStringMicro.copyFrom(("and_" + AppSetting.a() + "_" + "8.4.1").getBytes()));
+      sendPbReq(makeOIDBPkg("OidbSvc.0xd79", 3449, 1, localReqBody.toByteArray()));
+      return;
     }
-    return false;
-  }
-  
-  public static boolean a(View paramView1, View paramView2)
-  {
-    if (paramView1 == paramView2) {
-      return true;
-    }
-    if ((paramView2 instanceof ViewGroup))
+    catch (Exception paramQQAppInterface)
     {
-      int j = ((ViewGroup)paramView2).getChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        if (a(paramView1, ((ViewGroup)paramView2).getChildAt(i))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-    return false;
-  }
-  
-  public static float b()
-  {
-    if (jdField_d_of_type_Float < 0.0F) {
-      jdField_d_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity;
-    }
-    return jdField_d_of_type_Float;
-  }
-  
-  public static int b()
-  {
-    if (jdField_d_of_type_Int < 0) {
-      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
-        break label41;
-      }
-    }
-    label41:
-    for (jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;; jdField_d_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels) {
-      return jdField_d_of_type_Int;
+      QLog.d("ParticipleHandler", 1, paramQQAppInterface, new Object[0]);
     }
   }
   
-  public static int b(float paramFloat)
+  protected Class<? extends anil> observerClass()
   {
-    return Math.round(a() * paramFloat);
+    return bdop.class;
   }
   
-  @TargetApi(11)
-  public static void b(View paramView, float paramFloat)
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
+    if ((paramFromServiceMsg.isSuccess()) && (TextUtils.equals(paramFromServiceMsg.getServiceCmd(), "OidbSvc.0xd79"))) {
+      a(paramFromServiceMsg, paramObject);
     }
-    paramView.setScaleX(paramFloat);
-  }
-  
-  public static void b(View paramView, int paramInt)
-  {
-    if ((paramView != null) && (paramView.getVisibility() != paramInt)) {
-      paramView.setVisibility(paramInt);
-    }
-  }
-  
-  public static float c()
-  {
-    if (jdField_b_of_type_Int < 0) {
-      jdField_b_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().densityDpi;
-    }
-    return jdField_b_of_type_Int;
-  }
-  
-  public static int c()
-  {
-    if (e <= 0) {
-      e = (int)(BaseApplication.getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
-    }
-    return e;
-  }
-  
-  public static int c(float paramFloat)
-  {
-    return Math.round(paramFloat / a());
-  }
-  
-  @TargetApi(11)
-  public static void c(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setScaleY(paramFloat);
-  }
-  
-  public static int d(float paramFloat)
-  {
-    return (int)(BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
-  }
-  
-  @TargetApi(11)
-  public static void d(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setPivotX(paramFloat);
-  }
-  
-  public static int e(float paramFloat)
-  {
-    return (int)(paramFloat / BaseApplication.getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
-  }
-  
-  @TargetApi(11)
-  public static void e(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setPivotY(paramFloat);
-  }
-  
-  @TargetApi(11)
-  public static void f(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-  }
-  
-  @TargetApi(11)
-  public static void g(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setTranslationY(paramFloat);
-  }
-  
-  @TargetApi(11)
-  public static void h(View paramView, float paramFloat)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setRotation(paramFloat);
   }
 }
 

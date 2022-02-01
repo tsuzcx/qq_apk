@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.form.GdtFormView;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-public class aatw
-  implements View.OnClickListener
+class aatw
+  implements nkm
 {
-  public aatw(GdtFormView paramGdtFormView) {}
+  aatw(aatv paramaatv) {}
   
-  public void onClick(View paramView)
+  public void loaded(int paramInt, String paramString)
   {
-    if (GdtFormView.a(this.a)) {
-      GdtFormView.a(this.a);
-    }
+    this.a.a.loadConfigFromFile();
   }
 }
 

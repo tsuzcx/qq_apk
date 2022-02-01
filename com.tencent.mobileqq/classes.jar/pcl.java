@@ -1,29 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class pcl
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+class pcl
+  extends pcm
 {
-  public pcl(VideoView paramVideoView) {}
-  
-  public void OnDownloadCallback(String paramString)
+  pcl(pbe parampbe, int paramInt)
   {
-    try
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    if (parampcp == null) {}
+    do
     {
-      paramString = new JSONObject(paramString);
-      paramString.getInt("callBackType");
-      int i = paramString.getInt("fileSize");
-      this.a.setFileSize(i);
       return;
-    }
-    catch (JSONException paramString) {}
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        parampcp.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    parampcp.onCommentLoadMore(1, false, new ArrayList(), false, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcl
  * JD-Core Version:    0.7.0.1
  */

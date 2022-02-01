@@ -1,37 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class awvj
-  extends bhry
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public awvj(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
+  public awvj(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772262);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int < 4)
+    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
     {
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
-      paramAnimation.jdField_a_of_type_Int += 1;
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bhsl.obtainMessage(ProfileHeaderView.b);
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bhsl.sendMessageDelayed(paramAnimation, 4000L);
+      awvm localawvm = (awvm)MultiCardRootLayout.a(this.a).get();
+      if (localawvm != null) {
+        localawvm.a(this.a);
+      }
     }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvj
  * JD-Core Version:    0.7.0.1
  */

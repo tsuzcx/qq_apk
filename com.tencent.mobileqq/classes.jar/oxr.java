@@ -1,17 +1,21 @@
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-public class oxr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oxr
+  implements ViewBase.OnClickListener
 {
-  public oidb_cmd0x80a.AttributeList a;
-  public oidb_cmd0x80a.AttributeList b;
-  public oidb_cmd0x80a.AttributeList c;
-  public oidb_cmd0x80a.AttributeList d;
+  oxr(pan parampan, pay parampay) {}
   
-  public oxr(oxp paramoxp) {}
+  public final void onClick(ViewBase paramViewBase)
+  {
+    oyk.a(this.jdField_a_of_type_Pan, this.jdField_a_of_type_Pay);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxr
  * JD-Core Version:    0.7.0.1
  */

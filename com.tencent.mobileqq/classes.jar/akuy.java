@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class akuy
-  extends akve
+  extends akqb
 {
-  public akuy(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  public akuy(DrawHbFragment paramDrawHbFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
-    }
+    DrawHbFragment.a(this.a);
   }
 }
 

@@ -1,60 +1,61 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONObject;
 
 public class axao
-  extends BaseAdapter
 {
-  public List<QCallRecord> a;
+  public long a;
+  public axan a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public axao(QCallDetailActivity paramQCallDetailActivity)
+  public static axao a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    boolean bool2 = true;
+    if (paramJSONObject == null) {
+      return null;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
+    axao localaxao = new axao();
+    localaxao.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
+    localaxao.jdField_a_of_type_Long = awzy.b(localaxao.jdField_a_of_type_JavaLangString);
+    localaxao.jdField_b_of_type_Long = awzy.a(localaxao.jdField_a_of_type_JavaLangString);
+    localaxao.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+    if (paramJSONObject.optInt("enable") == 1)
+    {
+      bool1 = true;
+      localaxao.jdField_a_of_type_Boolean = bool1;
+      localaxao.c = paramJSONObject.optString("ruleWording");
+      if (paramJSONObject.optInt("maybe_spread_user") != 1) {
+        break label109;
+      }
     }
-    return QCallRecord.TYPE_REALRECORD;
+    label109:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localaxao.jdField_b_of_type_Boolean = bool1;
+      return localaxao;
+      bool1 = false;
+      break;
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public String toString()
   {
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append("level=").append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append("name=").append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append("enable=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("maybeSpreadUser=").append(this.jdField_b_of_type_Boolean).append("|");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axao
  * JD-Core Version:    0.7.0.1
  */

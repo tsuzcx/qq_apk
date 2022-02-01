@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import aisq;
+import akjm;
 import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
@@ -22,7 +22,7 @@ class PhotoListLogicQzone$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicQzone.2.1
  * JD-Core Version:    0.7.0.1
  */

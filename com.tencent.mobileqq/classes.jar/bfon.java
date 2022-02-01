@@ -1,39 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
 public class bfon
-  implements DialogInterface.OnClickListener
 {
-  public bfon(DownloadManager.17 param17) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfon()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    a();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bfon a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return this;
+  }
+  
+  public bfon a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bfon a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    return this;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = true;
+  }
+  
+  public boolean a()
+  {
+    return (!this.b) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != 0);
+  }
+  
+  public bfon b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfon
  * JD-Core Version:    0.7.0.1
  */

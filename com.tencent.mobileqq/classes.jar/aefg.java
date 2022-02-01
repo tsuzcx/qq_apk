@@ -1,21 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aefg
   implements View.OnClickListener
 {
-  public aefg(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aefg(ForwardRecentActivity paramForwardRecentActivity) {}
   
   public void onClick(View paramView)
   {
-    TroopMemberListActivity.b(this.a);
-    new azqx(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
+    bcst.b(this.a.app, "CliOper", "", "", "friendchoose", "0X8009D97", ForwardRecentActivity.a(this.a), 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.List;
+import com.tencent.TMG.utils.QLog;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
 
-public abstract interface uxy
+final class uxy
+  implements zxa<FeedCloudWrite.StDoLikeRsp>
 {
-  public abstract void a(int paramInt, uxz paramuxz, List<TroopBarPOI> paramList);
+  uxy(zxa paramzxa) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
+  {
+    if ((paramBoolean) && (paramLong == 0L)) {
+      QLog.d("doubleclicklike", 3, " success");
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.onReceive(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
+      }
+      return;
+      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxy
  * JD-Core Version:    0.7.0.1
  */

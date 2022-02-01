@@ -1,34 +1,27 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class akfx
+class akfx
+  extends niv
 {
-  public static void a(Activity paramActivity, String paramString, int paramInt)
+  akfx(akfu paramakfu) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 3) && (arxg.a().a()))
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put("uin", paramString);
-      ((Map)localObject).put("from", Integer.valueOf(3));
-      arxt.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
+    if ((akfu.a(this.a).isFinishing()) || (this.a.a)) {
       return;
     }
-    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
-    ((Intent)localObject).putExtra("key_friend_uin", paramString);
-    ((Intent)localObject).putExtra("key_start_from", 3);
-    paramActivity.startActivity((Intent)localObject);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+    this.a.d();
+    if (akfu.a(this.a) != null) {
+      akfu.a(this.a).removeCallbacks(akfu.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    akfu.a(this.a, akfu.a(this.a));
   }
 }
 

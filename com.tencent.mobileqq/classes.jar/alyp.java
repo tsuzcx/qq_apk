@@ -1,39 +1,35 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class alyp
-  implements Comparator<PhoneContact>
+public class alyp
+  implements Animation.AnimationListener
 {
-  alyp(alyn paramalyn) {}
+  public alyp(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
+    this.a.c.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.c = null;
+    if (this.a.a != null)
     {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
+      this.a.a.a();
+      this.a.a = null;
     }
-    return i;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyp
  * JD-Core Version:    0.7.0.1
  */

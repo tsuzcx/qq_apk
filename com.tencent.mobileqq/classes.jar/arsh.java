@@ -1,10 +1,6 @@
-public class arsh
+public abstract interface arsh
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

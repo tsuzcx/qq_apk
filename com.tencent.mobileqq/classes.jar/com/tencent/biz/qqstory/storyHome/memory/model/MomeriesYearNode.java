@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.database.MemoriesYearNodeEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import ulj;
+import wev;
 
 public class MomeriesYearNode
   extends BaseUIItem
-  implements ulj
+  implements wev
 {
   public int videoCount;
   public int year;
@@ -52,7 +52,7 @@ public class MomeriesYearNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode
  * JD-Core Version:    0.7.0.1
  */

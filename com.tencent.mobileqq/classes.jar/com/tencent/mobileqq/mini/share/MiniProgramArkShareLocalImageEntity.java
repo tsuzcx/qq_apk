@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.share;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import java.io.Serializable;
 
 public class MiniProgramArkShareLocalImageEntity
-  extends awge
+  extends Entity
   implements Serializable
 {
   public String arkPath;
@@ -25,7 +25,7 @@ public class MiniProgramArkShareLocalImageEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramArkShareLocalImageEntity
  * JD-Core Version:    0.7.0.1
  */

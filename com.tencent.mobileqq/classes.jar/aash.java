@@ -1,9 +1,11 @@
+import android.view.View;
+import android.widget.TextView;
+
 public class aash
 {
-  public static String a()
-  {
-    return "8.3.5";
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
 }
 
 

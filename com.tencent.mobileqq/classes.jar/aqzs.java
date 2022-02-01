@@ -1,34 +1,95 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
-class aqzs
-  extends aqyt
+public class aqzs
+  extends aqkz<aqzp>
 {
-  public aqzs(aqyp paramaqyp)
+  public static aqzp a()
   {
-    super(paramaqyp);
-  }
-  
-  protected String a()
-  {
-    return "StateSenderCancelSendWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    aqzp localaqzp = (aqzp)aqlk.a().a(529);
+    if (localaqzp != null) {
+      return localaqzp;
     }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 8);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Aqyt = new aqzq(this.jdField_a_of_type_Aqyp);
+    return new aqzp();
+  }
+  
+  @NonNull
+  public aqzp a(int paramInt)
+  {
+    return new aqzp();
+  }
+  
+  @Nullable
+  public aqzp a(aqlg[] paramArrayOfaqlg)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    String str;
+    if (paramArrayOfaqlg != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfaqlg.length > 0)
+      {
+        str = paramArrayOfaqlg[0].a;
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(str)) {
+          if (QLog.isColorLevel()) {
+            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + type() + ", content = " + str);
+          }
+        }
+      }
+    }
+    try
+    {
+      paramArrayOfaqlg = (aqzq)aqlu.a(str, aqzq.class);
+      localObject1 = new aqzp(str, paramArrayOfaqlg);
+      return localObject1;
+    }
+    catch (QStorageInstantiateException paramArrayOfaqlg)
+    {
+      for (;;)
+      {
+        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfaqlg);
+        paramArrayOfaqlg = null;
+      }
+    }
+  }
+  
+  public void a(aqzp paramaqzp) {}
+  
+  public Class<aqzp> clazz()
+  {
+    return aqzp.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 529;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzs
  * JD-Core Version:    0.7.0.1
  */

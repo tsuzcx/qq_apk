@@ -1,27 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
+@Deprecated
 public class wuy
-  extends QQUIEventReceiver<wub, wux>
+  extends wva
 {
-  public wuy(@NonNull wub paramwub)
+  public wuy(ViewGroup paramViewGroup)
   {
-    super(paramwub);
+    super(paramViewGroup, 2131561744);
   }
   
-  public void a(@NonNull wub paramwub, @NonNull wux paramwux)
+  public void a(wrs paramwrs)
   {
-    paramwub.a(paramwux);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wux.class;
+    super.a(paramwrs);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(anni.a(2131705727), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuy
  * JD-Core Version:    0.7.0.1
  */

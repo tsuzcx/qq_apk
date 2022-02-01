@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import altm;
-import alud;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -23,30 +21,32 @@ import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.Xml;
-import awah;
-import awci;
-import awna;
-import awnb;
-import awnc;
-import awnd;
-import awne;
-import awnf;
-import awng;
-import awnh;
-import awni;
-import awnw;
-import azqs;
-import azri;
-import baub;
-import baue;
-import bauf;
-import baug;
-import bave;
-import bavf;
-import bdgk;
-import bdhb;
-import bdoo;
-import bhsz;
+import anmu;
+import anni;
+import ayjz;
+import ayma;
+import azbq;
+import azbr;
+import azbs;
+import azbt;
+import azbu;
+import azbv;
+import azbw;
+import azbx;
+import azby;
+import azcm;
+import bcst;
+import bctj;
+import bdvs;
+import bdvu;
+import bdvv;
+import bdvw;
+import bdws;
+import bdwt;
+import bgln;
+import bgmg;
+import bgtn;
+import bkgj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -92,11 +92,11 @@ import org.xmlpull.v1.XmlPullParser;
 import tencent.im.s2c.msgtype0x210.submsgtype0x78.submsgtype0x78.MsgBody;
 
 public class PortalManager
-  implements SoundPool.OnLoadCompleteListener, Handler.Callback, baug, Manager, BusinessObserver
+  implements SoundPool.OnLoadCompleteListener, Handler.Callback, bdvw, Manager, BusinessObserver
 {
   static int jdField_a_of_type_Int;
   static long jdField_a_of_type_Long = 2500L;
-  protected static bauf a;
+  protected static bdvv a;
   private static PortalManager.TimerConfig jdField_a_of_type_ComTencentMobileqqPortalPortalManager$TimerConfig;
   public static final String a;
   static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
@@ -110,21 +110,21 @@ public class PortalManager
   public static long f;
   public static long g;
   private static long i;
-  private altm jdField_a_of_type_Altm = new awnd(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
   private Handler jdField_a_of_type_AndroidOsHandler;
   SparseArrayCompat<ArrayList<Long>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat(1);
-  private awah jdField_a_of_type_Awah;
-  awnf jdField_a_of_type_Awnf;
-  private awng jdField_a_of_type_Awng;
-  private baue jdField_a_of_type_Baue;
+  private anmu jdField_a_of_type_Anmu = new azbt(this);
+  private ayjz jdField_a_of_type_Ayjz;
+  azbv jdField_a_of_type_Azbv;
+  private azbw jdField_a_of_type_Azbw;
+  private bdvu jdField_a_of_type_Bdvu;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PortalManager.BannerConfig jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig;
   private PortalManager.PortalConfig jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig;
   protected volatile PortalManager.RedPacketConfig a;
   Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  public final ConcurrentHashMap<String, awne> a;
+  public final ConcurrentHashMap<String, azbu> a;
   private final int[] jdField_a_of_type_ArrayOfInt = { 0, 0, 0, 0, 0 };
   int jdField_b_of_type_Int = 4;
   private Handler jdField_b_of_type_AndroidOsHandler;
@@ -146,8 +146,8 @@ public class PortalManager
   {
     jdField_a_of_type_Int = 1;
     jdField_a_of_type_JavaLangString = File.separator + "redPacketRes/";
-    jdField_a_of_type_Bauf = new awnb();
-    jdField_a_of_type_JavaUtilComparator = new awnc();
+    jdField_a_of_type_Bdvv = new azbr();
+    jdField_a_of_type_JavaUtilComparator = new azbs();
     jdField_a_of_type_ComTencentMobileqqPortalPortalManager$TimerConfig = new PortalManager.TimerConfig(null);
     jdField_a_of_type_ArrayOfBoolean = new boolean[] { 0, 0, 0, 0, 0 };
     jdField_b_of_type_ArrayOfInt = new int[0];
@@ -161,12 +161,12 @@ public class PortalManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-    this.jdField_a_of_type_Awnf = new awnf(this, null);
+    this.jdField_a_of_type_Azbv = new azbv(this, null);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Awnf, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Azbv, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Altm);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anmu);
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -306,7 +306,7 @@ public class PortalManager
     //   140: aload_3
     //   141: astore 6
     //   143: aload 4
-    //   145: getfield 352	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Awah	Lawah;
+    //   145: getfield 352	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Ayjz	Layjz;
     //   148: astore_2
     //   149: aload_3
     //   150: astore 5
@@ -316,7 +316,7 @@ public class PortalManager
     //   157: iload_1
     //   158: aload_2
     //   159: iconst_2
-    //   160: invokestatic 355	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;ILawah;I)Landroid/util/Pair;
+    //   160: invokestatic 355	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;ILayjz;I)Landroid/util/Pair;
     //   163: astore 4
     //   165: aload_3
     //   166: astore_2
@@ -464,7 +464,7 @@ public class PortalManager
       {
         PortalManager localPortalManager = (PortalManager)BaseApplicationImpl.getApplication().getRuntime().getManager(79);
         localObject1 = localBitmap;
-        localObject2 = a((String)localObject2 + paramString1, -1, localPortalManager.jdField_a_of_type_Awah, 1);
+        localObject2 = a((String)localObject2 + paramString1, -1, localPortalManager.jdField_a_of_type_Ayjz, 1);
         paramString1 = localBitmap;
         if (localObject2 != null)
         {
@@ -518,7 +518,7 @@ public class PortalManager
       if (localObject1 == null) {
         break label163;
       }
-      localObject1 = ((PortalManager)localObject1).jdField_a_of_type_Awah;
+      localObject1 = ((PortalManager)localObject1).jdField_a_of_type_Ayjz;
     }
     catch (OutOfMemoryError paramString)
     {
@@ -543,7 +543,7 @@ public class PortalManager
       label184:
       localObject2 = null;
     }
-    localPair = a("", k, (awah)localObject1, 2);
+    localPair = a("", k, (ayjz)localObject1, 2);
     localObject1 = localObject2;
     if (localPair != null) {
       localObject1 = (Bitmap)localPair.second;
@@ -561,7 +561,7 @@ public class PortalManager
     return localObject2;
   }
   
-  private static Pair<Integer, Bitmap> a(String paramString, int paramInt1, awah paramawah, int paramInt2)
+  private static Pair<Integer, Bitmap> a(String paramString, int paramInt1, ayjz paramayjz, int paramInt2)
   {
     localObject3 = null;
     Object localObject1 = null;
@@ -574,31 +574,31 @@ public class PortalManager
       try
       {
         localObject4 = new BitmapFactory.Options();
-        if (paramawah == null) {
+        if (paramayjz == null) {
           continue;
         }
         ((BitmapFactory.Options)localObject4).inPurgeable = true;
         ((BitmapFactory.Options)localObject4).inInputShareable = true;
-        if (!paramawah.jdField_d_of_type_Boolean) {
+        if (!paramayjz.jdField_d_of_type_Boolean) {
           continue;
         }
         ((BitmapFactory.Options)localObject4).inPreferredConfig = Bitmap.Config.ARGB_8888;
-        if (!paramawah.jdField_b_of_type_Boolean) {
+        if (!paramayjz.jdField_b_of_type_Boolean) {
           continue;
         }
         ((BitmapFactory.Options)localObject4).inSampleSize = 2;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        if ((paramawah == null) || (paramawah.jdField_b_of_type_Boolean)) {
+        if ((paramayjz == null) || (paramayjz.jdField_b_of_type_Boolean)) {
           continue;
         }
-        paramawah.jdField_b_of_type_Boolean = true;
-        if (paramawah.jdField_c_of_type_Boolean) {
+        paramayjz.jdField_b_of_type_Boolean = true;
+        if (paramayjz.jdField_c_of_type_Boolean) {
           continue;
         }
-        localObject2 = a(paramString, paramInt1, paramawah, paramInt2);
-        paramawah = (Bitmap)((Pair)localObject2).second;
+        localObject2 = a(paramString, paramInt1, paramayjz, paramInt2);
+        paramayjz = (Bitmap)((Pair)localObject2).second;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -609,16 +609,16 @@ public class PortalManager
         ((BitmapFactory.Options)localObject4).inSampleSize = 1;
         continue;
       }
-      catch (Exception paramawah)
+      catch (Exception paramayjz)
       {
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("PortalManager", 2, "decodeBitmap Exception:" + paramawah.toString() + ",filePath:" + paramString);
+        QLog.d("PortalManager", 2, "decodeBitmap Exception:" + paramayjz.toString() + ",filePath:" + paramString);
         localObject3 = null;
         paramInt2 = 1;
         int k = 0;
-        paramawah = (awah)localObject2;
+        paramayjz = (ayjz)localObject2;
         localObject2 = localObject3;
         continue;
         ((BitmapFactory.Options)localObject4).inPurgeable = true;
@@ -631,7 +631,7 @@ public class PortalManager
           continue;
         }
         Object localObject4 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), paramInt1, (BitmapFactory.Options)localObject4);
-        paramawah = (awah)localObject4;
+        paramayjz = (ayjz)localObject4;
         continue;
         paramInt1 = ((Integer)((Pair)localObject2).first).intValue();
         continue;
@@ -646,7 +646,7 @@ public class PortalManager
         }
         paramInt1 = 3;
         continue;
-        l = paramawah.getRowBytes() * paramawah.getHeight() / 1024;
+        l = paramayjz.getRowBytes() * paramayjz.getHeight() / 1024;
         continue;
         continue;
       }
@@ -654,7 +654,7 @@ public class PortalManager
         continue;
       }
       localObject4 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject4);
-      paramawah = (awah)localObject4;
+      paramayjz = (ayjz)localObject4;
       localObject1 = null;
       paramInt2 = 0;
       k = 0;
@@ -665,7 +665,7 @@ public class PortalManager
         continue;
       }
       paramInt1 = 1;
-      if ((paramawah == null) && (k == 0) && (paramInt2 == 0)) {}
+      if ((paramayjz == null) && (k == 0) && (paramInt2 == 0)) {}
       try
       {
         paramString = new File(paramString);
@@ -681,14 +681,14 @@ public class PortalManager
         long l;
         continue;
         Object localObject2 = null;
-        paramawah = localObject3;
+        paramayjz = localObject3;
         continue;
-        paramawah = null;
+        paramayjz = null;
       }
-      paramString = new Pair(Integer.valueOf(paramInt1), paramawah);
+      paramString = new Pair(Integer.valueOf(paramInt1), paramayjz);
       if (QLog.isColorLevel())
       {
-        if (paramawah != null) {
+        if (paramayjz != null) {
           continue;
         }
         l = 0L;
@@ -1470,7 +1470,7 @@ public class PortalManager
         localObject = new Intent("com.tencent.portal.resp.action");
         ((Intent)localObject).putExtra("portal_type_key", paramInt1);
         Bundle localBundle = new Bundle();
-        localBundle.putByteArray("bc_data", awni.a(paramString));
+        localBundle.putByteArray("bc_data", azby.a(paramString));
         ((Intent)localObject).putExtras(localBundle);
         if (paramInt2 > 0) {
           ((Intent)localObject).putExtra("bc_seq", paramInt2);
@@ -1493,19 +1493,19 @@ public class PortalManager
     if (QLog.isColorLevel()) {
       QLog.i("PortalManager", 2, "downLoad, " + paramInt + ", " + paramString1 + ", " + paramString2);
     }
-    if (this.jdField_a_of_type_Baue == null) {
-      this.jdField_a_of_type_Baue = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    if (this.jdField_a_of_type_Bdvu == null) {
+      this.jdField_a_of_type_Bdvu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir() + jdField_a_of_type_JavaLangString;
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = this;
-    localbaub.jdField_a_of_type_JavaLangString = paramString1;
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.jdField_c_of_type_JavaLangString = (str + paramString2);
-    localbaub.jdField_e_of_type_Int = 2;
-    localbaub.a(new String[] { String.valueOf(paramInt), paramString2 });
-    localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
-    this.jdField_a_of_type_Baue.a(localbaub);
+    bdvs localbdvs = new bdvs();
+    localbdvs.jdField_a_of_type_Bdvw = this;
+    localbdvs.jdField_a_of_type_JavaLangString = paramString1;
+    localbdvs.jdField_a_of_type_Int = 0;
+    localbdvs.jdField_c_of_type_JavaLangString = (str + paramString2);
+    localbdvs.jdField_d_of_type_Int = 2;
+    localbdvs.a(new String[] { String.valueOf(paramInt), paramString2 });
+    localbdvs.jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
+    this.jdField_a_of_type_Bdvu.a(localbdvs);
   }
   
   private void a(long paramLong)
@@ -1720,7 +1720,7 @@ public class PortalManager
   
   private void a(PortalManager.RedPacketConfig paramRedPacketConfig)
   {
-    if (bdhb.a() < 1048576.0F) {}
+    if (bgmg.a() < 1048576.0F) {}
     do
     {
       return;
@@ -2163,15 +2163,15 @@ public class PortalManager
     {
       localObject2 = String.valueOf(paramRedPacketConfig.taskId);
       paramRedPacketConfig = String.valueOf(paramRedPacketConfig.version);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80078FA", "0X80078FA", 0, 0, (String)localObject1, (String)localObject2, paramRedPacketConfig, "");
-      if (awnw.a(this.jdField_a_of_type_AndroidContentContext, "hongbao_17_res_cover"))
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80078FA", "0X80078FA", 0, 0, (String)localObject1, (String)localObject2, paramRedPacketConfig, "");
+      if (azcm.a(this.jdField_a_of_type_AndroidContentContext, "hongbao_17_res_cover"))
       {
-        awnw.a(this.jdField_a_of_type_AndroidContentContext, "hongbao_17_res_cover");
+        azcm.a(this.jdField_a_of_type_AndroidContentContext, "hongbao_17_res_cover");
         localObject3 = new HashMap();
         ((HashMap)localObject3).put("config_version", paramRedPacketConfig);
         ((HashMap)localObject3).put("cover", localObject1);
         ((HashMap)localObject3).put("taskid", localObject2);
-        azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "hongbao_res_precover", bool2, 0L, 0L, (HashMap)localObject3, "", false);
+        bctj.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "hongbao_res_precover", bool2, 0L, 0L, (HashMap)localObject3, "", false);
       }
       return;
     }
@@ -2288,13 +2288,13 @@ public class PortalManager
     int k;
     int m;
     String str;
-    if (this.jdField_a_of_type_Awah == null)
+    if (this.jdField_a_of_type_Ayjz == null)
     {
-      this.jdField_a_of_type_Awah = new awah();
-      k = (int)(bdgk.d() / 1024L / 1024L);
-      m = bdoo.a();
+      this.jdField_a_of_type_Ayjz = new ayjz();
+      k = (int)(bgln.d() / 1024L / 1024L);
+      m = bgtn.a();
       str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.olympic_act_config.name());
-      this.jdField_a_of_type_Awah.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Ayjz.jdField_a_of_type_JavaLangString = str;
     }
     try
     {
@@ -2304,37 +2304,37 @@ public class PortalManager
         if (arrayOfString.length >= 9)
         {
           if (k <= Integer.valueOf(arrayOfString[0]).intValue()) {}
-          for (this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true)
+          for (this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true)
           {
             if (Integer.valueOf(arrayOfString[3]).intValue() == 1) {
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Boolean = true;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Boolean = true;
             }
-            this.jdField_a_of_type_Awah.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
-            this.jdField_a_of_type_Awah.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
-            this.jdField_a_of_type_Awah.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
-            this.jdField_a_of_type_Awah.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
-            this.jdField_a_of_type_Awah.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
             bool1 = false;
-            this.jdField_a_of_type_Awah.jdField_a_of_type_Boolean = bool1;
+            this.jdField_a_of_type_Ayjz.jdField_a_of_type_Boolean = bool1;
             if (bool1)
             {
               if (k > 512) {
                 break label487;
               }
-              this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Boolean = false;
-              this.jdField_a_of_type_Awah.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_Awah.jdField_b_of_type_Int = 3;
-              this.jdField_a_of_type_Awah.jdField_c_of_type_Int = 1000;
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Int = 1;
-              this.jdField_a_of_type_Awah.jdField_e_of_type_Int = 1;
+              this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Boolean = false;
+              this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int = 0;
+              this.jdField_a_of_type_Ayjz.jdField_b_of_type_Int = 3;
+              this.jdField_a_of_type_Ayjz.jdField_c_of_type_Int = 1000;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int = 1;
+              this.jdField_a_of_type_Ayjz.jdField_e_of_type_Int = 1;
             }
-            if (this.jdField_a_of_type_Awah.jdField_d_of_type_Int != 1) {
+            if (this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int != 1) {
               break label523;
             }
-            awci.a(bool2);
+            ayma.a(bool2);
             if (QLog.isColorLevel()) {
-              QLog.d("PortalManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + k + ",screenWidth:" + m + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Awah.toString());
+              QLog.d("PortalManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + k + ",screenWidth:" + m + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Ayjz.toString());
             }
             return;
             if (m > Integer.valueOf(arrayOfString[1]).intValue()) {
@@ -2356,16 +2356,16 @@ public class PortalManager
         label523:
         if (m <= Integer.valueOf(localException[2]).intValue())
         {
-          this.jdField_a_of_type_Awah.jdField_c_of_type_Boolean = true;
+          this.jdField_a_of_type_Ayjz.jdField_c_of_type_Boolean = true;
           continue;
           label487:
           if (m <= 480)
           {
-            this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;
           }
           else if (m <= 720)
           {
-            this.jdField_a_of_type_Awah.jdField_c_of_type_Boolean = true;
+            this.jdField_a_of_type_Ayjz.jdField_c_of_type_Boolean = true;
             continue;
             bool2 = false;
           }
@@ -2382,7 +2382,7 @@ public class PortalManager
     return -1;
   }
   
-  public awnh a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public azbx a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (0 == 0) {}
     for (Object localObject2 = a(paramInt2);; localObject2 = null)
@@ -2400,26 +2400,26 @@ public class PortalManager
           return null;
         }
       }
-      localObject3 = new awnh();
+      localObject3 = new azbx();
       switch (paramInt1)
       {
       default: 
         return null;
       }
-      ((awnh)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = a(localObject1.awardMd5, null);
-      ((awnh)localObject3).jdField_a_of_type_JavaLangString = localObject1.addMsg;
-      ((awnh)localObject3).h = localObject1.publicId;
-      ((awnh)localObject3).jdField_g_of_type_JavaLangString = localObject1.publicWording;
+      ((azbx)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = a(localObject1.awardMd5, null);
+      ((azbx)localObject3).jdField_a_of_type_JavaLangString = localObject1.addMsg;
+      ((azbx)localObject3).h = localObject1.publicId;
+      ((azbx)localObject3).jdField_g_of_type_JavaLangString = localObject1.publicWording;
       StringBuilder localStringBuilder = new StringBuilder().append(BaseApplicationImpl.getApplication().getFilesDir()).append(jdField_a_of_type_JavaLangString);
       if (localObject1.awardType == 2) {}
       for (localObject2 = localObject1.starMd5;; localObject2 = localObject1.awardMd5)
       {
-        ((awnh)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject2);
-        ((awnh)localObject3).jdField_d_of_type_JavaLangString = (BaseApplicationImpl.getApplication().getFilesDir() + jdField_a_of_type_JavaLangString + localObject1.ctfBgMd5);
-        ((awnh)localObject3).f = localObject1.awardMsg;
-        ((awnh)localObject3).e = localObject1.awardTitle;
-        ((awnh)localObject3).jdField_d_of_type_Int = localObject1.awardType;
-        ((awnh)localObject3).jdField_g_of_type_Int = localObject1.showPublic;
+        ((azbx)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject2);
+        ((azbx)localObject3).jdField_d_of_type_JavaLangString = (BaseApplicationImpl.getApplication().getFilesDir() + jdField_a_of_type_JavaLangString + localObject1.ctfBgMd5);
+        ((azbx)localObject3).f = localObject1.awardMsg;
+        ((azbx)localObject3).e = localObject1.awardTitle;
+        ((azbx)localObject3).jdField_d_of_type_Int = localObject1.awardType;
+        ((azbx)localObject3).jdField_g_of_type_Int = localObject1.showPublic;
         return localObject3;
       }
     }
@@ -2961,7 +2961,7 @@ public class PortalManager
     }
     for (;;)
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E7", "0X80077E7", 0, 0, "", "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E7", "0X80077E7", 0, 0, "", "", "", "");
       return;
       localObject = "";
       break;
@@ -2981,20 +2981,20 @@ public class PortalManager
         paramActivity.startActivity((Intent)localObject);
         continue;
         label303:
-        if ((this.jdField_a_of_type_Awng != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig != null)) {
-          this.jdField_a_of_type_Awng.a();
+        if ((this.jdField_a_of_type_Azbw != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig != null)) {
+          this.jdField_a_of_type_Azbw.a();
         }
       }
     }
     label328:
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E6", "0X80077E6", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E6", "0X80077E6", 0, 0, "", "", "", "");
   }
   
   public void a(Context paramContext) {}
   
-  public void a(awng paramawng, int paramInt, boolean paramBoolean, long paramLong)
+  public void a(azbw paramazbw, int paramInt, boolean paramBoolean, long paramLong)
   {
-    if (this.jdField_a_of_type_Awng == null) {
+    if (this.jdField_a_of_type_Azbw == null) {
       return;
     }
     Object localObject1 = null;
@@ -3004,7 +3004,7 @@ public class PortalManager
     String str1 = null;
     String str2 = null;
     Object localObject5 = null;
-    paramawng = null;
+    paramazbw = null;
     int m = 0;
     int k = m;
     long l4;
@@ -3018,7 +3018,7 @@ public class PortalManager
     {
       if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig == null)
       {
-        this.jdField_a_of_type_Awng.b();
+        this.jdField_a_of_type_Azbw.b();
         k = m;
       }
     }
@@ -3072,20 +3072,20 @@ public class PortalManager
         if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode != 1) {
           break label619;
         }
-        paramawng = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
-        localObject1 = a(paramawng.logoImageMD5, "hb_yure_star_logo_path");
-        localObject2 = a(paramawng.nameMD5, "hb_yure_star_name_path");
-        localBitmap1 = a(paramawng.padantImageMD5, "hb_icon_path");
+        paramazbw = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
+        localObject1 = a(paramazbw.logoImageMD5, "hb_yure_star_logo_path");
+        localObject2 = a(paramazbw.nameMD5, "hb_yure_star_name_path");
+        localBitmap1 = a(paramazbw.padantImageMD5, "hb_icon_path");
       }
     }
     for (;;)
     {
       label408:
-      if (paramawng != null) {
-        localObject4 = a(paramawng.greetImageMD5, null);
+      if (paramazbw != null) {
+        localObject4 = a(paramazbw.greetImageMD5, null);
       }
-      this.jdField_a_of_type_Awng.a(l4, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode, localBitmap2, (Bitmap)localObject1, localBitmap1, localBitmap3, localBitmap4, (Bitmap)localObject4, (Bitmap)localObject2, (List)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.rightMsg, paramLong, paramBoolean, l1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.useFlag < 2) && (!this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Awng.a()))
+      this.jdField_a_of_type_Azbw.a(l4, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode, localBitmap2, (Bitmap)localObject1, localBitmap1, localBitmap3, localBitmap4, (Bitmap)localObject4, (Bitmap)localObject2, (List)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.rightMsg, paramLong, paramBoolean, l1);
+      if ((this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.useFlag < 2) && (!this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Azbw.a()))
       {
         this.jdField_d_of_type_Boolean = true;
         paramInt = 1;
@@ -3115,7 +3115,7 @@ public class PortalManager
             break;
           }
           k = m;
-          if (!this.jdField_a_of_type_Awng.a((Bitmap)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig.jumpUrl)) {
+          if (!this.jdField_a_of_type_Azbw.a((Bitmap)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig.jumpUrl)) {
             break;
           }
           this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig.useFlag = 2;
@@ -3125,10 +3125,10 @@ public class PortalManager
           if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode != 2) {
             break label1206;
           }
-          paramawng = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
-          localObject1 = a(paramawng.logoImageMD5, "hb_busi_logo_path");
-          localObject2 = a(paramawng.nameMD5, "hb_yure_busi_name_path");
-          localBitmap1 = a(paramawng.padantImageMD5, "hb_busi_logo_path");
+          paramazbw = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
+          localObject1 = a(paramazbw.logoImageMD5, "hb_busi_logo_path");
+          localObject2 = a(paramazbw.nameMD5, "hb_yure_busi_name_path");
+          localBitmap1 = a(paramazbw.padantImageMD5, "hb_busi_logo_path");
           break label408;
           label686:
           if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.type == 2)
@@ -3138,7 +3138,7 @@ public class PortalManager
             if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode == 1)
             {
               localObject2 = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
-              paramawng = a(((PortalManager.LogoConfig)localObject2).logoImageMD5, "hb_icon_path");
+              paramazbw = a(((PortalManager.LogoConfig)localObject2).logoImageMD5, "hb_icon_path");
               localBitmap1 = a(((PortalManager.LogoConfig)localObject2).nameMD5, "hb_name_path");
               localObject1 = a(((PortalManager.LogoConfig)localObject2).padantImageMD5, "hb_icon_path");
               localObject4 = a(((PortalManager.LogoConfig)localObject2).relationCompanyLogoMD5, "hb_busi_logo_path");
@@ -3164,26 +3164,26 @@ public class PortalManager
             }
             for (;;)
             {
-              this.jdField_a_of_type_Awng.a(l4, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode, localBitmap2, paramawng, (Bitmap)localObject1, str1, str2, (String)localObject5, str3, paramLong, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.countGrab, localBitmap3, localBitmap4, (List)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.comboNumberConfigs, localBitmap1, l1, (Bitmap)localObject4, (Bitmap)localObject2);
+              this.jdField_a_of_type_Azbw.a(l4, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode, localBitmap2, paramazbw, (Bitmap)localObject1, str1, str2, (String)localObject5, str3, paramLong, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.countGrab, localBitmap3, localBitmap4, (List)localObject3, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.comboNumberConfigs, localBitmap1, l1, (Bitmap)localObject4, (Bitmap)localObject2);
               m = k;
               if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.showGesturesTime > 0L) {
                 break;
               }
               m = k;
-              if (!this.jdField_a_of_type_Awng.b()) {
+              if (!this.jdField_a_of_type_Azbw.b()) {
                 break;
               }
               this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.showGesturesTime = l2;
               m = 1;
               break;
-              paramawng = (awng)localObject2;
+              paramazbw = (azbw)localObject2;
               localObject4 = str1;
               localObject2 = str2;
               if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.mode != 2) {
                 break label790;
               }
               localObject1 = (PortalManager.LogoConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.logoList.get(0);
-              paramawng = a(((PortalManager.LogoConfig)localObject1).logoImageMD5, "hb_busi_logo_path");
+              paramazbw = a(((PortalManager.LogoConfig)localObject1).logoImageMD5, "hb_busi_logo_path");
               localBitmap1 = a(((PortalManager.LogoConfig)localObject1).nameMD5, "hb_name_path");
               localObject1 = a(((PortalManager.LogoConfig)localObject1).padantImageMD5, "hb_busi_logo_path");
               localObject4 = str1;
@@ -3204,18 +3204,18 @@ public class PortalManager
           m = k;
           if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.type == 3)
           {
-            paramawng = a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.bgMd5, null);
+            paramazbw = a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.bgMd5, null);
             m = k;
-            if (this.jdField_a_of_type_Awng.a(paramawng))
+            if (this.jdField_a_of_type_Azbw.a(paramazbw))
             {
               m = 1;
               this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.useFlag = 2;
             }
           }
-          this.jdField_a_of_type_Awng.a();
+          this.jdField_a_of_type_Azbw.a();
           continue;
           label1186:
-          this.jdField_a_of_type_Awng.a();
+          this.jdField_a_of_type_Azbw.a();
           m = k;
         }
         label1198:
@@ -3317,10 +3317,10 @@ public class PortalManager
       {
         if (k != 0)
         {
-          localObject1 = new awnh();
-          ((awnh)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.hotUrl;
-          ((awnh)localObject1).jdField_b_of_type_Int = 2;
-          this.jdField_a_of_type_Awng.a(1, (awnh)localObject1);
+          localObject1 = new azbx();
+          ((azbx)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.hotUrl;
+          ((azbx)localObject1).jdField_b_of_type_Int = 2;
+          this.jdField_a_of_type_Azbw.a(1, (azbx)localObject1);
           this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.useFlag = 4;
           a(false, 6, 1000L, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
           return false;
@@ -3338,7 +3338,7 @@ public class PortalManager
         }
         if (!bool)
         {
-          this.jdField_a_of_type_Awng.a(false, awna.jdField_a_of_type_JavaLangString, null);
+          this.jdField_a_of_type_Azbw.a(false, azbq.jdField_a_of_type_JavaLangString, null);
           return false;
         }
         if (this.h >= 0L)
@@ -3411,7 +3411,7 @@ public class PortalManager
       localObjectOutputStream.writeObject(paramRedPacketConfig);
       localObjectOutputStream.close();
       localByteArrayOutputStream.close();
-      return bdhb.a(new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "red_packet_config2017_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+      return bgmg.a(new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "red_packet_config2017_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
     }
     catch (Throwable paramRedPacketConfig)
     {
@@ -3442,7 +3442,7 @@ public class PortalManager
         localPortalConfig = (PortalManager.PortalConfig)this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.portalConfigs.get(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.portalConfigs.size() - 1);
         if ((localObject != null) && (localPortalConfig != null) && (((PortalManager.PortalConfig)localObject).realBegin <= l) && (l <= localPortalConfig.realEnd))
         {
-          paramString = bhsz.a(paramString);
+          paramString = bkgj.a(paramString);
           if ((paramString != null) && ("redpacket2017".equalsIgnoreCase((String)paramString.get("from"))))
           {
             bool = false;
@@ -3515,8 +3515,8 @@ public class PortalManager
       {
         localPortalConfig.useTime = l1;
         a(false, 6, 1000L, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E8", "0X80077E8", 0, 0, "", "", l1 + "", "");
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077EB", "0X80077EB", 0, 0, a() + "", "", "", "");
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E8", "0X80077E8", 0, 0, "", "", l1 + "", "");
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077EB", "0X80077EB", 0, 0, a() + "", "", "", "");
       }
       l1 = localPortalConfig.countTime - l1 + localPortalConfig.useTime;
       this.jdField_b_of_type_AndroidOsHandler.removeMessages(12);
@@ -3603,7 +3603,7 @@ public class PortalManager
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(15, 600000L);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.type == 1) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E4", "0X80077E4", 0, 0, "", "", "", "");
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01440", "", "", "0X80077E4", "0X80077E4", 0, 0, "", "", "", "");
       }
       return;
       label132:
@@ -3624,7 +3624,7 @@ public class PortalManager
     label61:
     for (String str = "1";; str = "2")
     {
-      azqs.b(localQQAppInterface, "dc01440", "", "", "0X80077E2", "0X80077E2", 0, 0, str, "", "", "");
+      bcst.b(localQQAppInterface, "dc01440", "", "", "0X80077E2", "0X80077E2", 0, 0, str, "", "", "");
       return;
     }
   }
@@ -3642,7 +3642,7 @@ public class PortalManager
     label54:
     for (String str = "1";; str = "2")
     {
-      azqs.b(localQQAppInterface, "dc01440", "", "", "0X80077E3", "0X80077E3", 0, 0, str, "", "", "");
+      bcst.b(localQQAppInterface, "dc01440", "", "", "0X80077E3", "0X80077E3", 0, 0, str, "", "", "");
       return;
     }
   }
@@ -3711,9 +3711,9 @@ public class PortalManager
       break;
       a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
       break;
-      localObject1 = (awng)paramMessage.obj;
-      this.jdField_a_of_type_Awng = ((awng)localObject1);
-      a((awng)localObject1, paramMessage.arg1, false, 0L);
+      localObject1 = (azbw)paramMessage.obj;
+      this.jdField_a_of_type_Azbw = ((azbw)localObject1);
+      a((azbw)localObject1, paramMessage.arg1, false, 0L);
       break;
       a();
       if ((!QLog.isColorLevel()) || (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig == null)) {
@@ -3730,14 +3730,14 @@ public class PortalManager
       }
       QLog.d("PortalManager", 2, "MSG_GRAB_TIMEOUT_REPORT | activity id:" + this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.id + ", total count:" + this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.countGrab);
       break;
-      if (this.jdField_a_of_type_Awng == null) {
+      if (this.jdField_a_of_type_Azbw == null) {
         break;
       }
-      localObject1 = this.jdField_a_of_type_Awng;
+      localObject1 = this.jdField_a_of_type_Azbw;
       if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig != null) {}
-      for (paramMessage = this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.emptyMsg;; paramMessage = alud.a(2131708739))
+      for (paramMessage = this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$PortalConfig.emptyMsg;; paramMessage = anni.a(2131707115))
       {
-        ((awng)localObject1).a(false, paramMessage, null);
+        ((azbw)localObject1).a(false, paramMessage, null);
         break;
       }
       if ((paramMessage.obj == null) || (!(paramMessage.obj instanceof ArrayList))) {
@@ -3857,15 +3857,15 @@ public class PortalManager
     //   173: aload_0
     //   174: getfield 171	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   177: aload_0
-    //   178: getfield 169	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Altm	Laltm;
-    //   181: invokevirtual 1906	com/tencent/mobileqq/app/QQAppInterface:removeObserver	(Lalpg;)V
+    //   178: getfield 169	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Anmu	Lanmu;
+    //   181: invokevirtual 1906	com/tencent/mobileqq/app/QQAppInterface:removeObserver	(Lanil;)V
     //   184: aload_0
     //   185: invokevirtual 1484	com/tencent/mobileqq/portal/PortalManager:d	()V
     //   188: aload_0
     //   189: getfield 171	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   192: invokevirtual 218	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   195: aload_0
-    //   196: getfield 212	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Awnf	Lawnf;
+    //   196: getfield 212	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Azbv	Lazbv;
     //   199: invokevirtual 1910	com/tencent/qphone/base/util/BaseApplication:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   202: aload_0
     //   203: getfield 1518	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_AndroidMediaSoundPool	Landroid/media/SoundPool;
@@ -4011,7 +4011,7 @@ public class PortalManager
           localObject1 = localObject2;
           if (paramBundle != null)
           {
-            localObject2 = new awnh(null, paramBundle.awardTitle, paramBundle.awardMsg, k, paramInt, (String)localObject3, m, bool, n, i1);
+            localObject2 = new azbx(null, paramBundle.awardTitle, paramBundle.awardMsg, k, paramInt, (String)localObject3, m, bool, n, i1);
             localObject3 = localPortalConfig.logoList.iterator();
             label477:
             PortalManager.LogoConfig localLogoConfig;
@@ -4027,8 +4027,8 @@ public class PortalManager
             if (localPortalConfig.mode == 1) {}
             for (localObject1 = "hb_icon_path";; localObject1 = "hb_busi_logo_path")
             {
-              ((awnh)localObject2).jdField_b_of_type_AndroidGraphicsBitmap = a(str, (String)localObject1);
-              ((awnh)localObject2).jdField_c_of_type_AndroidGraphicsBitmap = a(localLogoConfig.nameMD5, "hb_name_path");
+              ((azbx)localObject2).jdField_b_of_type_AndroidGraphicsBitmap = a(str, (String)localObject1);
+              ((azbx)localObject2).jdField_c_of_type_AndroidGraphicsBitmap = a(localLogoConfig.nameMD5, "hb_name_path");
               break label477;
               paramInt = 0;
               break;
@@ -4039,14 +4039,14 @@ public class PortalManager
             }
           }
         }
-        if (this.jdField_a_of_type_Awng != null)
+        if (this.jdField_a_of_type_Azbw != null)
         {
-          localObject3 = this.jdField_a_of_type_Awng;
+          localObject3 = this.jdField_a_of_type_Azbw;
           if (localPortalConfig != null)
           {
             localObject2 = localPortalConfig.emptyMsg;
             label615:
-            ((awng)localObject3).a(paramBoolean, (String)localObject2, (awnh)localObject1);
+            ((azbw)localObject3).a(paramBoolean, (String)localObject2, (azbx)localObject1);
           }
         }
         else
@@ -4064,7 +4064,7 @@ public class PortalManager
         {
           a(false, 6, 2000L, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
           return;
-          localObject2 = alud.a(2131708737);
+          localObject2 = anni.a(2131707113);
           break label615;
           label693:
           if (paramInt == 1) {
@@ -4103,21 +4103,21 @@ public class PortalManager
     }
   }
   
-  public void onResp(bavf parambavf)
+  public void onResp(bdwt parambdwt)
   {
     int k = 1;
     boolean bool;
-    baub localbaub;
+    bdvs localbdvs;
     Object localObject1;
     HashMap localHashMap;
     int m;
     PortalManager.PortalConfig localPortalConfig;
-    if (parambavf.jdField_a_of_type_Int == 0)
+    if (parambdwt.jdField_a_of_type_Int == 0)
     {
       bool = true;
-      localbaub = (baub)parambavf.jdField_a_of_type_Bave;
-      localObject1 = new File(localbaub.jdField_c_of_type_JavaLangString);
-      Object localObject2 = localbaub.a();
+      localbdvs = (bdvs)parambdwt.jdField_a_of_type_Bdws;
+      localObject1 = new File(localbdvs.jdField_c_of_type_JavaLangString);
+      Object localObject2 = localbdvs.a();
       localHashMap = new HashMap();
       if ((localObject2 == null) || (!(localObject2 instanceof String[]))) {
         break label441;
@@ -4130,7 +4130,7 @@ public class PortalManager
       }
       if (bool)
       {
-        if (!((String)localObject2).equals(awni.a(((File)localObject1).getAbsolutePath()))) {
+        if (!((String)localObject2).equals(azby.a(((File)localObject1).getAbsolutePath()))) {
           break label420;
         }
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig;
@@ -4147,21 +4147,21 @@ public class PortalManager
       }
       label214:
       if (QLog.isColorLevel()) {
-        QLog.i("PortalManager", 2, "onResp" + localbaub.jdField_a_of_type_JavaLangString + ", " + parambavf.jdField_a_of_type_Int + ", " + parambavf.jdField_b_of_type_Int + ", " + (String)localHashMap.get("param_checkMd5Fail"));
+        QLog.i("PortalManager", 2, "onResp" + localbdvs.jdField_a_of_type_JavaLangString + ", " + parambdwt.jdField_a_of_type_Int + ", " + parambdwt.jdField_b_of_type_Int + ", " + (String)localHashMap.get("param_checkMd5Fail"));
       }
       if (bool) {
         break label450;
       }
-      localHashMap.put("param_Url", localbaub.jdField_a_of_type_JavaLangString);
-      localHashMap.put("param_ResultCode", String.valueOf(parambavf.jdField_a_of_type_Int));
-      localHashMap.put("param_FailCode", String.valueOf(parambavf.jdField_b_of_type_Int));
+      localHashMap.put("param_Url", localbdvs.jdField_a_of_type_JavaLangString);
+      localHashMap.put("param_ResultCode", String.valueOf(parambdwt.jdField_a_of_type_Int));
+      localHashMap.put("param_FailCode", String.valueOf(parambdwt.jdField_b_of_type_Int));
     }
     for (;;)
     {
       if (k != 0)
       {
-        parambavf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        azri.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()).a(parambavf, "RedPacketPicDownload", bool, 0L, 0L, localHashMap, "", false);
+        parambdwt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        bctj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()).a(parambdwt, "RedPacketPicDownload", bool, 0L, 0L, localHashMap, "", false);
       }
       return;
       bool = false;
@@ -4182,8 +4182,8 @@ public class PortalManager
       label450:
       if (new Random().nextInt(10000) == 1000)
       {
-        localHashMap.put("param_Url", localbaub.jdField_a_of_type_JavaLangString);
-        localHashMap.put("param_ResultCode", String.valueOf(parambavf.jdField_a_of_type_Int));
+        localHashMap.put("param_Url", localbdvs.jdField_a_of_type_JavaLangString);
+        localHashMap.put("param_ResultCode", String.valueOf(parambdwt.jdField_a_of_type_Int));
       }
       else
       {
@@ -4192,11 +4192,11 @@ public class PortalManager
     }
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager
  * JD-Core Version:    0.7.0.1
  */

@@ -115,7 +115,7 @@ public abstract class Job<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tribe.async.async.Job
  * JD-Core Version:    0.7.0.1
  */

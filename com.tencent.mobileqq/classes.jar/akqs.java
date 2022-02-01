@@ -1,10 +1,22 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public abstract interface akqs
+public abstract class akqs
+  implements TextWatcher
 {
-  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
+  protected EditText a;
+  
+  public akqs(EditText paramEditText)
+  {
+    this.a = paramEditText;
+  }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,17 +1,8 @@
-public class bcoa
+import com.tencent.mobileqq.soload.SoLoadInfo;
+
+public abstract interface bcoa
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public bcoa(bcnu parambcnu, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a(SoLoadInfo paramSoLoadInfo);
 }
 
 

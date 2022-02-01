@@ -1,64 +1,44 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import common.config.service.QzoneConfig;
 
 public class vga
-  extends urt
 {
-  public static final String a;
-  public uxs a;
-  public String b;
+  private static Boolean a;
+  private static Boolean b;
+  private static Boolean c;
   
-  static
+  public static boolean a()
   {
-    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.homepage_batch_feeds_720");
+    return QzoneConfig.getInstance().getConfig("QzCustomFont", "TrueTypeViewCache", 1) != 0;
   }
   
-  public String a()
+  public static boolean a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uro a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
-    try
+    int i = QzoneConfig.getInstance().getConfig("QzCustomFont", "DiyFontShow", 0);
+    switch (paramInt)
     {
-      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new vgb(localRspStoryFeedIdList);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    do
     {
-      for (;;)
+      do
       {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_Uxs != null)
-    {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Uxs.c);
-      localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Uxs.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Uxs.b);
-    }
-    localReqStoryFeedIdList.client_version.set(6);
-    return localReqStoryFeedIdList.toByteArray();
+        do
+        {
+          do
+          {
+            return true;
+          } while ((i & 0x1) == 0);
+          return false;
+        } while ((i & 0x2) == 0);
+        return false;
+      } while ((i & 0x4) == 0);
+      return false;
+    } while ((i & 0x8) == 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vga
  * JD-Core Version:    0.7.0.1
  */

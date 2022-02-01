@@ -1,22 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class rsm
-  implements oot
+  extends rmq
 {
-  public rsm(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, oot paramoot) {}
+  public rsm(SelectVideoFragment paramSelectVideoFragment) {}
   
-  public void a(int paramInt)
+  @Nullable
+  public rmr a(int paramInt, @NotNull RecyclerView paramRecyclerView)
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
-    if (this.jdField_a_of_type_Oot != null) {
-      this.jdField_a_of_type_Oot.a(paramInt);
-    }
+    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bggq.a(SelectVideoFragment.a(this.a), 8.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsm
  * JD-Core Version:    0.7.0.1
  */

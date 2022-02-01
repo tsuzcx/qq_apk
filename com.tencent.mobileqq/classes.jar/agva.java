@@ -1,15 +1,9 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8;
-
-public class agva
-  implements nrr
+class agva
+  implements bkhy
 {
-  public agva(PublicAccountChatPie.8 param8) {}
+  agva(aguz paramaguz) {}
   
-  public void a()
-  {
-    this.a.this$0.a.sendEmptyMessage(1);
-  }
+  public void onDismiss() {}
 }
 
 

@@ -1,49 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aona
+  extends aonc
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  
-  public aona()
+  public aona(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static aona a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        aona localaona = new aona();
-        paramString = new JSONObject(paramString);
-        localaona.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
-        localaona.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", 0L);
-        localaona.b = paramString.optBoolean("enableKernelServiceInVivo", false);
-        localaona.c = paramString.optBoolean("disableSimpleBreakStrategy", false);
-        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localaona.toString());
-        return localaona;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BootOptimizeConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + ", enableKernelServiceInVivo=" + this.b + ", disableSimpleBreakStrategy=" + this.c + '}';
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aona
  * JD-Core Version:    0.7.0.1
  */

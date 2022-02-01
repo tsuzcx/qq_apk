@@ -1,33 +1,23 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class beyy
-  implements Application.ActivityLifecycleCallbacks
+  extends JobSegment<String, bezc>
 {
-  public beyy(ShareActionSheetV2 paramShareActionSheetV2) {}
+  private beza jdField_a_of_type_Beza;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public beyy(beza parambeza)
   {
-    if (paramActivity == this.a.a)
-    {
-      ShareActionSheetV2.a(this.a);
-      ShareActionSheetV2.b(this.a);
-    }
+    this.jdField_a_of_type_Beza = parambeza;
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    yqp.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    wlb.a().a(new bezb(this.jdField_a_of_type_Beza, this.jdField_a_of_type_JavaLangString), new beyz(this));
+  }
 }
 
 

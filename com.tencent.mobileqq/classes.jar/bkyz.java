@@ -1,289 +1,230 @@
-import android.app.Activity;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.openapi.model.WMEditItem;
-import com.tencent.ttpic.openapi.model.WMElement;
-import com.tencent.ttpic.openapi.model.WMLogic;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditListAdapter.7;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkyz
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-  implements DatePicker.OnDateChangedListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private bkzi jdField_a_of_type_Bkzi;
-  private WMEditItem jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem;
-  private List<WMEditItem> jdField_a_of_type_JavaUtilList;
+  private static bkyz jdField_a_of_type_Bkyz;
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
   
-  public bkyz(Activity paramActivity, List<WMElement> paramList)
+  public static bkyz a()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    int j;
-    int i;
-    if (paramList != null)
+    if (jdField_a_of_type_Bkyz == null) {}
+    try
     {
-      paramList = paramList.iterator();
-      if (paramList.hasNext())
-      {
-        paramActivity = (WMElement)paramList.next();
-        j = WMEditItem.ITEM_TYPE_TEXT;
-        i = j;
-        if (paramActivity.logic != null)
-        {
-          i = j;
-          if (paramActivity.logic.type != null)
-          {
-            if (!paramActivity.logic.type.equals("since")) {
-              break label131;
-            }
-            i = WMEditItem.ITEM_TYPE_SINCE;
-          }
-        }
-        label97:
-        if (paramActivity.userValue != null) {
-          paramActivity = paramActivity.userValue;
-        }
+      if (jdField_a_of_type_Bkyz == null) {
+        jdField_a_of_type_Bkyz = new bkyz();
       }
+      return jdField_a_of_type_Bkyz;
     }
+    finally {}
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new WMEditItem(paramActivity, i));
-      break;
-      label131:
-      i = j;
-      if (!paramActivity.logic.type.equals("countdown")) {
-        break label97;
-      }
-      i = WMEditItem.ITEM_TYPE_COUNTDOWN;
-      break label97;
-      if (i == WMEditItem.ITEM_TYPE_TEXT) {
-        paramActivity = paramActivity.curValue;
-      } else if (paramActivity.logic != null) {
-        paramActivity = paramActivity.logic.compare;
-      } else {
-        paramActivity = "";
-      }
-    }
-  }
-  
-  private void a(EditText paramEditText)
-  {
-    if (paramEditText != null) {
-      paramEditText.postDelayed(new WatermarkEditListAdapter.7(this, paramEditText), 200L);
-    }
-  }
-  
-  private void a(EditText paramEditText, WMEditItem paramWMEditItem)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem = paramWMEditItem;
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    if (this.jdField_a_of_type_Bkzi != null) {
-      this.jdField_a_of_type_Bkzi.a();
-    }
-  }
-  
-  private void a(WMElement paramWMElement, bkzh parambkzh)
-  {
-    bdjz localbdjz = new bdjz(this.jdField_a_of_type_AndroidWidgetEditText.getContext(), 2131755801);
-    localbdjz.setContentView(2131558942);
-    localbdjz.setTitle(alud.a(2131717268));
-    localbdjz.setMessage(alud.a(2131717273));
-    localbdjz.setNegativeButton(alud.a(2131717269), new bkze(this));
-    localbdjz.setPositiveButton(alud.a(2131717270), new bkzf(this, parambkzh, paramWMElement));
-    localbdjz.setCanceledOnTouchOutside(false);
-    localbdjz.show();
-  }
-  
-  private void b(EditText paramEditText)
-  {
-    if (paramEditText != null) {
-      paramEditText.setCustomSelectionActionModeCallback(new bkzg(this));
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((WMEditItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).value;
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    if ((!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem != null))
-    {
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType == WMEditItem.ITEM_TYPE_TEXT) {
-        break label83;
-      }
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-12339461);
-      if (this.jdField_a_of_type_Bkzi != null) {
-        this.jdField_a_of_type_Bkzi.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_AndroidWidgetEditText);
-      }
-    }
-    label83:
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length());
-      ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 1);
-    } while (this.jdField_a_of_type_Bkzi == null);
-    this.jdField_a_of_type_Bkzi.a();
-  }
-  
-  public void a(bkzi parambkzi)
-  {
-    this.jdField_a_of_type_Bkzi = parambkzi;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    bkzh localbkzh = (bkzh)paramViewHolder;
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText = localbkzh.jdField_a_of_type_AndroidWidgetEditText;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem = ((WMEditItem)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      if (getItemCount() == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
-      }
-    }
-    if (paramInt == getItemCount() - 1) {
-      localbkzh.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    WMEditItem localWMEditItem = (WMEditItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localbkzh.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bkza(this, paramInt, localbkzh));
-    if (localWMEditItem.itemType != WMEditItem.ITEM_TYPE_TEXT)
-    {
-      localbkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-      Object localObject = new SimpleDateFormat("yyyy-MM-dd");
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-      paramViewHolder = null;
+      return false;
       try
       {
-        localObject = localSimpleDateFormat.format(((SimpleDateFormat)localObject).parse(localWMEditItem.value));
-        paramViewHolder = (RecyclerView.ViewHolder)localObject;
-      }
-      catch (ParseException localParseException)
-      {
-        for (;;)
+        Object localObject = paramString.split(",");
+        if (localObject.length >= 2)
         {
-          localParseException.printStackTrace();
+          paramString = a(localObject[0].trim());
+          localObject = a(localObject[1].trim());
+          if ((paramString != null) && (localObject != null) && (paramString.length >= 4) && (localObject.length >= 4))
+          {
+            long l1 = paramString[0];
+            long l2 = paramString[1] << 24;
+            long l3 = paramString[2] << 16;
+            long l4 = paramString[3];
+            long l5 = localObject[0];
+            long l6 = localObject[1] << 24;
+            long l7 = localObject[2] << 16;
+            long l8 = localObject[3];
+            paramString = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(blru.a());
+            if (paramString.find())
+            {
+              long l9 = Long.parseLong(paramString.group(1));
+              long l10 = Long.parseLong(paramString.group(2));
+              long l11 = Long.parseLong(paramString.group(3));
+              long l12 = Long.parseLong(paramString.group(4));
+              l9 = l12 + ((l9 << 32) + (l10 << 24) + (l11 << 16));
+              if ((l9 < (l1 << 32) + l2 + l3 + l4) || (l9 > l8 + ((l5 << 32) + l6 + l7))) {}
+            }
+            else
+            {
+              return true;
+            }
+          }
         }
       }
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setText(paramViewHolder);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new bkzb(this, localbkzh, localWMEditItem));
-      b(localbkzh.jdField_a_of_type_AndroidWidgetEditText);
-      return;
+      catch (Throwable paramString) {}
     }
-    if ((localWMEditItem.value == null) || (localWMEditItem.value.equals("")))
+    return false;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    int i;
+    int j;
+    int k;
+    do
     {
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setText(((WMElement)LogicDataManager.getInstance().getEditableWMElement().get(paramInt)).getDefault());
-      if ((LogicDataManager.getInstance().getEditableWMElement() == null) || (LogicDataManager.getInstance().getEditableWMElement().size() <= 0) || (!((WMElement)LogicDataManager.getInstance().getEditableWMElement().get(paramInt)).ischeckin)) {
-        break label419;
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            localObject = paramJSONObject.optString("appVersionRange");
+          } while ((!TextUtils.isEmpty((CharSequence)localObject)) && (!a((String)localObject)));
+          Object localObject = paramJSONObject.optString("osVersionRange");
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+          localObject = ((String)localObject).split(",");
+          i = Integer.parseInt(localObject[0].trim());
+          j = Integer.parseInt(localObject[1].trim());
+        } while ((Build.VERSION.SDK_INT < i) || (Build.VERSION.SDK_INT > j));
+        paramJSONObject = paramJSONObject.optString("uinRange");
+        if (TextUtils.isEmpty(paramJSONObject)) {
+          break;
+        }
+        paramJSONObject = paramJSONObject.split(",");
+        k = paramJSONObject[0].length();
+      } while (k != paramJSONObject[1].length());
+      i = Integer.parseInt(paramJSONObject[0]);
+      j = Integer.parseInt(paramJSONObject[1]);
+      k = (int)Math.pow(10.0D, k);
+      k = (int)(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() % k);
+    } while ((k < i) || (k > j));
+    return true;
+  }
+  
+  private int[] a(String paramString)
+  {
+    int i = 0;
+    try
+    {
+      paramString = paramString.split("_");
+      if (paramString.length < 2) {
+        return null;
       }
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-      localbkzh.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837642);
-      localbkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      String[] arrayOfString = paramString[0].split("\\.");
+      if (arrayOfString.length >= 3)
+      {
+        int[] arrayOfInt = new int[4];
+        while (i < 3)
+        {
+          arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
+          i += 1;
+        }
+        arrayOfInt[3] = Integer.parseInt(paramString[1]);
+        return arrayOfInt;
+      }
     }
+    catch (Throwable paramString) {}
+    return null;
+  }
+  
+  public float a(String paramString1, String paramString2, float paramFloat)
+  {
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramFloat;
+    }
+    try
+    {
+      float f = Float.valueOf(paramString1).floatValue();
+      return f;
+    }
+    catch (Exception paramString1) {}
+    return paramFloat;
+  }
+  
+  public int a(String paramString1, String paramString2, int paramInt)
+  {
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramInt;
+    }
+    try
+    {
+      int i = Integer.valueOf(paramString1).intValue();
+      return i;
+    }
+    catch (Exception paramString1) {}
+    return paramInt;
+  }
+  
+  public long a(String paramString1, String paramString2, long paramLong)
+  {
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramLong;
+    }
+    try
+    {
+      long l = Long.valueOf(paramString1).longValue();
+      return l;
+    }
+    catch (Exception paramString1) {}
+    return paramLong;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    if (paramString1 == null) {}
     for (;;)
     {
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new bkzc(this, localbkzh, localWMEditItem));
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new bkzd(this, localbkzh, localWMEditItem));
-      return;
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setText(localWMEditItem.value);
-      break;
-      label419:
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-      localbkzh.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      localbkzh.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837640);
-      localbkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      return null;
+      try
+      {
+        paramString2 = new JSONArray(paramString1);
+        int j = paramString2.length();
+        int i = 0;
+        while (i < j)
+        {
+          JSONObject localJSONObject = paramString2.getJSONObject(i);
+          String str1 = localJSONObject.optString("configId");
+          String str2 = localJSONObject.optString("value");
+          Log.d("QzoneAlphaConfig", "configId=" + str1 + " value=" + str2);
+          boolean bool = a(localJSONObject);
+          if (bool) {
+            return str2;
+          }
+          i += 1;
+        }
+        return null;
+      }
+      catch (JSONException paramString2)
+      {
+        QZLog.e("QzoneAlphaConfig", "failed parsing config:" + paramString1);
+      }
     }
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public String a(String paramString1, String paramString2, String paramString3)
   {
-    return new bkzh(this, LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558488, paramViewGroup, false));
-  }
-  
-  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject;
-    label82:
-    StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem != null))
-    {
-      localObject = new StringBuilder().append(paramInt1).append(alud.a(2131717272));
-      if (paramInt2 + 1 >= 10) {
-        break label202;
-      }
-      paramDatePicker = "0";
-      localObject = ((StringBuilder)localObject).append(paramDatePicker).append(paramInt2 + 1).append(alud.a(2131717267));
-      if (paramInt3 >= 10) {
-        break label208;
-      }
-      paramDatePicker = "0";
-      localObject = paramDatePicker + paramInt3 + alud.a(2131717271);
-      localStringBuilder = new StringBuilder().append(paramInt1).append("-");
-      if (paramInt2 + 1 >= 10) {
-        break label214;
-      }
-      paramDatePicker = "0";
-      label138:
-      localStringBuilder = localStringBuilder.append(paramDatePicker).append(paramInt2 + 1).append("-");
-      if (paramInt3 >= 10) {
-        break label220;
-      }
+    paramString1 = a(paramString1, paramString2);
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString3;
     }
-    label202:
-    label208:
-    label214:
-    label220:
-    for (paramDatePicker = "0";; paramDatePicker = "")
-    {
-      paramDatePicker = paramDatePicker + paramInt3;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetEditText.setTag(paramDatePicker);
-      return;
-      paramDatePicker = "";
-      break;
-      paramDatePicker = "";
-      break label82;
-      paramDatePicker = "";
-      break label138;
-    }
+    return paramString1;
   }
 }
 

@@ -1,11 +1,13 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-
-public abstract interface blvz
+public class blvz
 {
-  public abstract void a(int paramInt, String... paramVarArgs);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI);
+  public static int a;
+  public static int b = 480;
+  public static int c = 360;
+  public static int d = 270;
+  public static int e = 200;
+  public static int f = 150;
+  public static int g = 200;
+  public static int h = 150;
 }
 
 

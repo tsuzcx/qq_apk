@@ -14,10 +14,10 @@ class RMVideoStateMgr$2
     synchronized (RMVideoStateMgr.a(this.this$0))
     {
       AudioCapture localAudioCapture = this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture;
-      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.this$0.jdField_a_of_type_Bnry != null) && (localAudioCapture.c()) && (localAudioCapture != null))
+      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.this$0.jdField_a_of_type_Bqim != null) && (localAudioCapture.c()) && (localAudioCapture != null))
       {
         localAudioCapture.c();
-        localAudioCapture.b.getAndSet(this.this$0.jdField_a_of_type_Bnry);
+        localAudioCapture.b.getAndSet(this.this$0.jdField_a_of_type_Bqim);
       }
       if (QLog.isColorLevel()) {
         QLog.d("RMVideoStateMgr", 2, "[@][openAudioRecord]");
@@ -28,7 +28,7 @@ class RMVideoStateMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr.2
  * JD-Core Version:    0.7.0.1
  */

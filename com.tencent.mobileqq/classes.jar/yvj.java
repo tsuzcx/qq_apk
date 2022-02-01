@@ -1,52 +1,32 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class yvj
+public abstract interface yvj
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
+  @NonNull
+  public abstract Context a();
   
-  public yvj(JSONObject paramJSONObject, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
-    this.f = paramJSONObject.optInt("giftPrice");
-    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
-    this.h = paramJSONObject.optInt("addTime");
-    this.i = paramJSONObject.optInt("freegiftlimit");
-    this.g = paramInt;
-    this.j = paramJSONObject.optInt("svip");
-    this.k = paramJSONObject.optInt("year_svip");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
-  }
+  public abstract Intent a(zem paramzem);
+  
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvj
  * JD-Core Version:    0.7.0.1
  */

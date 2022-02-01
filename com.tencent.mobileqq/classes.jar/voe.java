@@ -1,52 +1,136 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.Window;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleFullScreenStatusView;
+import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
+import com.tencent.biz.richframework.part.block.BlockContainer;
+import com.tencent.biz.richframework.part.list.base.PublicListInnerFragment;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-final class voe
-  extends vmf
+public abstract class voe<E, T>
+  extends zyv<E, T>
+  implements zxl<QCircleReportBean>
 {
-  voe(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  protected ExtraTypeInfo mExtraTypeInfo;
+  private QCircleReportBean mReportBean;
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public voe(Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    super(paramBundle);
+  }
+  
+  protected void assembleFromReportData()
+  {
+    if ((getHostFragment() == null) || (getActivity() == null)) {}
+    Object localObject;
+    do
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
+      do
       {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        vod.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
         return;
+        localObject = getHostFragment().getActivity().getIntent();
+      } while ((localObject == null) || (!((Intent)localObject).hasExtra("public_list_init_bean")));
+      localObject = (QCircleInitBean)((Intent)localObject).getSerializableExtra("public_list_init_bean");
+    } while ((localObject == null) || (((QCircleInitBean)localObject).mFromReportBean == null) || (this.mReportBean == null));
+    this.mReportBean.assembleFromReportData(((QCircleInitBean)localObject).mFromReportBean);
+  }
+  
+  protected QCircleStatusView createStatusView()
+  {
+    QCircleFullScreenStatusView localQCircleFullScreenStatusView = new QCircleFullScreenStatusView(getContext());
+    localQCircleFullScreenStatusView.setEmptyImageUrls("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/1-img/img_emptystate_relationship.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/2-text/1-fullscreen/text_fullscreen_01.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/3-action/link_fullscreen_noaction.png");
+    return localQCircleFullScreenStatusView;
+  }
+  
+  protected int getPageId()
+  {
+    return QCircleReportBean.getPageId(getLogTag(), this.mReportBean);
+  }
+  
+  public abstract String getPageIdStr();
+  
+  protected int getParentPageId()
+  {
+    return QCircleReportBean.getParentPageId(getLogTag(), this.mReportBean);
+  }
+  
+  public QCircleReportBean getReportBean()
+  {
+    if (this.mReportBean == null) {
+      this.mReportBean = new QCircleReportBean();
+    }
+    assembleFromReportData();
+    return QCircleReportBean.getReportBean(getLogTag(), this.mReportBean);
+  }
+  
+  public int getStatusBarColor()
+  {
+    return uxx.a();
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    super.onActivityCreated(paramActivity, paramBundle);
+    getActivity().getWindow().setSoftInputMode(32);
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    uxp.a().a();
+    uxh.a();
+  }
+  
+  public void onInitBlock(Bundle paramBundle)
+  {
+    QLog.d(getLogTag(), 1, "onPrepareParams");
+    getBlockContainer().setStatusView(createStatusView());
+    if ((this.mInitBean instanceof QCircleInitBean)) {
+      this.mExtraTypeInfo = ((QCircleInitBean)this.mInitBean).getExtraTypeInfo();
+    }
+  }
+  
+  public void setReportBean(QCircleReportBean paramQCircleReportBean)
+  {
+    this.mReportBean = QCircleReportBean.setReportBean(getLogTag(), paramQCircleReportBean);
+  }
+  
+  public void showEmptyView()
+  {
+    if ((getHostFragment() != null) && (getHostFragment().a() != null)) {
+      ((QCircleStatusView)getHostFragment().a().a()).a(getEmptyHint());
+    }
+  }
+  
+  protected void showErrorView(String paramString, long paramLong)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = anni.a(2131718323);
+      QLog.e(getLogTag(), 1, " return error！errMsg:" + paramString);
+      if (getItemCount() <= 0) {
+        break label61;
       }
+      vtt.a(paramLong, BaseApplicationImpl.getContext(), 1, paramString, 1);
     }
-    if (paramInt == 10100)
+    label61:
+    while ((getHostFragment() == null) || (getHostFragment().a() == null))
     {
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
-      paramString.putExtra("tipsResource", alud.a(2131714938));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
       return;
+      break;
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, alud.a(2131714939) + paramInt, 0).a();
+    ((QCircleStatusView)getHostFragment().a().a()).b(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     voe
  * JD-Core Version:    0.7.0.1
  */

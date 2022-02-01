@@ -1,74 +1,157 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
+import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
+import org.json.JSONObject;
 
 public class ujd
-  extends urt<uje>
 {
-  private static final String jdField_a_of_type_JavaLangString = uqn.a("StorySvc.batch_get_poi_list");
-  private List<uke> jdField_a_of_type_JavaUtilList;
-  
-  public int a()
+  private stSimpleMetaFeed a(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uje a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetPOIList localRspBatchGetPOIList = new qqstory_service.RspBatchGetPOIList();
-    try
+    if (paramJSONObject != null)
     {
-      localRspBatchGetPOIList.mergeFrom(paramArrayOfByte);
-      return new uje(localRspBatchGetPOIList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      Gson localGson = new Gson();
+      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
+      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
+      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
+      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
+      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
+      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
+      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
+      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
+      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
+      ArrayList localArrayList = new ArrayList();
+      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
+      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
+      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
+      localArrayList.add(localstMetaUgcImage);
+      localstSimpleMetaFeed.images = localArrayList;
+      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
+      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+      paramJSONObject = new stFloatingLayerCardStyle();
+      paramJSONObject.cardType = 1;
+      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
+      return localstSimpleMetaFeed;
     }
     return null;
   }
   
-  public void a(@NonNull List<uke> paramList)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    String str = "_ct=" + System.currentTimeMillis();
+    if (paramString.contains("?")) {}
+    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
+      return paramString;
+    }
   }
   
-  protected byte[] a()
+  private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    if (paramHashMap == null) {
+      return null;
     }
-    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
-      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
+    Object localObject = (String)paramHashMap.get("feeds");
+    paramHashMap = (String)paramHashMap.get("scene");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
     }
-    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((uke)localIterator.next()).a());
+    if (TextUtils.isEmpty(paramHashMap)) {
+      ups.d(paramHashMap);
     }
-    localReqBatchGetPOIList.gps.addAll(localArrayList);
-    return localReqBatchGetPOIList.toByteArray();
+    try
+    {
+      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
+      upe.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
+    }
+    catch (UnsupportedEncodingException paramHashMap)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject = new ArrayList();
+          paramHashMap = a(new JSONObject(paramHashMap));
+          if (paramHashMap != null) {
+            ((ArrayList)localObject).add(paramHashMap);
+          }
+          return localObject;
+        }
+        catch (Exception paramHashMap)
+        {
+          paramHashMap.printStackTrace();
+          upe.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
+        }
+        paramHashMap = paramHashMap;
+        paramHashMap.printStackTrace();
+        paramHashMap = (HashMap<String, String>)localObject;
+      }
+    }
+    return null;
+  }
+  
+  public static ujd a()
+  {
+    return ujf.a();
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    uee.a(paramContext, paramString, new uje(this));
+  }
+  
+  public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    ArrayList localArrayList = a(paramHashMap);
+    String str2 = "mini_app_personal_guest";
+    String str3 = "homepage_guest";
+    String str1 = str2;
+    paramHashMap = str3;
+    if (localArrayList != null)
+    {
+      str1 = str2;
+      paramHashMap = str3;
+      if (localArrayList.size() > 0)
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
+        str1 = str2;
+        paramHashMap = str3;
+        if (localstSimpleMetaFeed.poster != null)
+        {
+          str1 = str2;
+          paramHashMap = str3;
+          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, ups.f()))
+          {
+            str1 = "mini_app_personal_main";
+            paramHashMap = "homepage_main";
+          }
+        }
+      }
+    }
+    WSVerticalPageFragment.a(paramContext, str1, paramHashMap, localArrayList, 0, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujd
  * JD-Core Version:    0.7.0.1
  */

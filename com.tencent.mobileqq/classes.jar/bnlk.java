@@ -1,20 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.8.1;
+import mqq.os.MqqHandler;
 
 public class bnlk
-  extends Handler
+  implements aavl
 {
-  public bnlk(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bnlk(bnlc parambnlc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    ThreadManager.getUIHandler().postDelayed(new VideoStoryCapturePart.8.1(this), 500L);
   }
 }
 

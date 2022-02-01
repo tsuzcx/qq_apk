@@ -1,80 +1,66 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.os.Build;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 class bgrc
-  extends BaseAdapter
+  implements SensorEventListener
 {
   bgrc(bgrb parambgrb) {}
   
-  public int getCount()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent arg1)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    if (bgrb.a(this.a) == null) {
+      return;
     }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if (afur.b())
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
-      paramView = new bgrj(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368575));
-      paramViewGroup.setTag(paramView);
+      this.a.a = false;
+      return;
     }
-    paramView = (bgrj)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new bgri(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label212;
-      }
-      paramView.a.setBackgroundResource(2130840870);
+    if (???.values[0] < bgrb.a(this.a)) {
+      bgrb.a(this.a, true);
     }
     for (;;)
     {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label212:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130840871);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130840869);
+      ??? = Build.MODEL;
+      if (!afur.a()) {
+        break;
       }
+      if (bgrb.a(this.a).hasMessages(1)) {
+        bgrb.a(this.a).removeMessages(1);
+      }
+      bgrb.a(this.a).sendMessageDelayed(bgrb.a(this.a).obtainMessage(1), 150L);
+      return;
+      bgrb.a(this.a, false);
+    }
+    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
+    {
+      if (bgrb.a(this.a).hasMessages(1)) {
+        bgrb.a(this.a).removeMessages(1);
+      }
+      bgrb.a(this.a).sendMessageDelayed(bgrb.a(this.a).obtainMessage(1), 250L);
+      return;
+    }
+    synchronized (this.a)
+    {
+      if (bgrb.a(this.a) != null) {
+        bgrb.a(this.a).a(bgrb.a(this.a));
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgrc
  * JD-Core Version:    0.7.0.1
  */

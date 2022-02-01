@@ -1,32 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-public class vwr
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
+class vwr
+  implements DialogInterface.OnClickListener
 {
-  public void OnDownloadCallback(String paramString) {}
+  vwr(vwo paramvwo) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
+    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwr
  * JD-Core Version:    0.7.0.1
  */

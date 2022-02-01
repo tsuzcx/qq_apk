@@ -1,6 +1,13 @@
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+
 public class bkoj
 {
-  public void a() {}
+  public int a;
+  public final Rect a = new Rect();
+  public Drawable a;
+  public boolean a;
+  public int b;
 }
 
 

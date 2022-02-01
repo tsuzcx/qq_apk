@@ -1,32 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adkf
   implements DialogInterface.OnClickListener
 {
-  public adkf(NotificationActivity paramNotificationActivity) {}
+  public adkf(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      azqs.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
-      this.a.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    bgzo.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkf
  * JD-Core Version:    0.7.0.1
  */

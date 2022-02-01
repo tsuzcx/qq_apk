@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
-import aoko;
-import aznb;
-import azng;
+import aqlg;
+import bcoi;
+import bcon;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -59,7 +59,7 @@ public class SoConfig
     //   25: aload_3
     //   26: monitorenter
     //   27: aload 4
-    //   29: invokestatic 80	ajeu:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   29: invokestatic 80	akww:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   32: checkcast 2	com/tencent/mobileqq/soload/config/SoConfig
     //   35: astore_0
     //   36: aload_3
@@ -130,9 +130,15 @@ public class SoConfig
     return (this.mLastAppId == AppSetting.a()) && (this.mSoInfos != null) && (this.mSoInfos.size() > 0) && (this.mSoInfos.get(paramString) != null);
   }
   
-  public void saveConfig()
+  public void saveConfig(boolean paramBoolean)
   {
-    ThreadManager.getFileThreadHandler().post(new SoConfig.2(this));
+    SoConfig.2 local2 = new SoConfig.2(this);
+    if (paramBoolean)
+    {
+      local2.run();
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(local2);
   }
   
   public String toString()
@@ -140,16 +146,16 @@ public class SoConfig
     return "SoConfig{mSoInfos=" + this.mSoInfos + '}';
   }
   
-  public void update(azng paramazng)
+  public void update(bcon parambcon)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramazng != null) && (paramazng.a != null))
+    if ((parambcon != null) && (parambcon.a != null))
     {
       try
       {
-        localObject = new LinkedList(Arrays.asList(paramazng.a));
-        Collections.sort((List)localObject, new aznb(this));
-        paramazng = (azng)localObject;
+        localObject = new LinkedList(Arrays.asList(parambcon.a));
+        Collections.sort((List)localObject, new bcoi(this));
+        parambcon = (bcon)localObject;
       }
       catch (Throwable localThrowable1)
       {
@@ -159,7 +165,7 @@ public class SoConfig
           try
           {
             Object localObject;
-            JSONArray localJSONArray = new JSONObject(((aoko)localObject).jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
+            JSONArray localJSONArray = new JSONObject(((aqlg)localObject).jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
             if (localJSONArray == null) {
               continue;
             }
@@ -183,7 +189,7 @@ public class SoConfig
               i += 1;
               continue;
               localThrowable1 = localThrowable1;
-              paramazng = new LinkedList(Arrays.asList(paramazng.a));
+              parambcon = new LinkedList(Arrays.asList(parambcon.a));
               continue;
             }
             SoConfig.SoInfo localSoInfo2 = localSoInfo2.merge(localSoInfo1);
@@ -198,24 +204,24 @@ public class SoConfig
           localHashMap.put(localSoInfo1.name, localSoInfo1);
         }
       }
-      paramazng = paramazng.iterator();
+      parambcon = parambcon.iterator();
       do
       {
-        if (!paramazng.hasNext()) {
+        if (!parambcon.hasNext()) {
           break;
         }
-        localObject = (aoko)paramazng.next();
-      } while (TextUtils.isEmpty(((aoko)localObject).jdField_a_of_type_JavaLangString));
+        localObject = (aqlg)parambcon.next();
+      } while (TextUtils.isEmpty(((aqlg)localObject).jdField_a_of_type_JavaLangString));
     }
     label295:
     this.mSoInfos = localHashMap;
     this.mLastAppId = AppSetting.a();
-    saveConfig();
+    saveConfig(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig
  * JD-Core Version:    0.7.0.1
  */

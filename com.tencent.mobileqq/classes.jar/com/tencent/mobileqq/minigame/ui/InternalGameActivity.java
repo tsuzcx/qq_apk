@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import Override;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.util.AnimUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class InternalGameActivity
   extends GameActivity
@@ -20,6 +24,14 @@ public class InternalGameActivity
     super.changeWindowInfo(paramMiniAppConfig);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnBackPressed()
   {
     if ((this.mGameAppConfig != null) && (this.mGameAppConfig.config != null) && (this.mGameAppConfig.config.isInternalApp()))
@@ -34,6 +46,13 @@ public class InternalGameActivity
     super.doOnBackPressed();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void performMiniGameClose()
   {
     super.performMiniGameClose();
@@ -42,7 +61,7 @@ public class InternalGameActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.InternalGameActivity
  * JD-Core Version:    0.7.0.1
  */

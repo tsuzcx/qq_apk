@@ -1,16 +1,65 @@
-class rih
-  implements rim
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+
+public final class rih
 {
-  rih(rig paramrig) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public void a()
+  public TopicInfo a()
   {
-    rig.a(this.a, true, false);
+    return new TopicInfo(this, null);
+  }
+  
+  public rih a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public rih a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public rih a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public rih b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public rih b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public rih c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public rih d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rih
  * JD-Core Version:    0.7.0.1
  */

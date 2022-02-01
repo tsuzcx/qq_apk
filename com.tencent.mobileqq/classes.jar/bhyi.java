@@ -1,21 +1,10 @@
-import android.widget.PopupWindow.OnDismissListener;
-
-class bhyi
-  implements PopupWindow.OnDismissListener
+public abstract interface bhyi
 {
-  bhyi(bhyh parambhyh) {}
-  
-  public void onDismiss()
-  {
-    this.a.jdField_a_of_type_Bhyl = null;
-    this.a.jdField_a_of_type_Bhyk = null;
-    this.a.c();
-    ors.a = false;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhyi
  * JD-Core Version:    0.7.0.1
  */

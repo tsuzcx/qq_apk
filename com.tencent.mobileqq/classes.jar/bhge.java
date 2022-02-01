@@ -1,29 +1,59 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhge
-  implements Animator.AnimatorListener
+  extends Handler
 {
-  public bhge(PageWebviewContainer paramPageWebviewContainer, bgmk parambgmk) {}
+  public bhge() {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bhge(Looper paramLooper)
   {
-    this.jdField_a_of_type_Bgmk.b();
+    super(paramLooper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bgmk.a();
+    if (ThemeUiPlugin.reportHandler == null) {
+      ThemeUiPlugin.reportHandler = new bhge(BaseApplication.getContext().getMainLooper());
+    }
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ThemeUiPlugin.reportTimes < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
+        }
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeCount", "0", 0, 0, ThemeUiPlugin.initDownloadedThemeNumForReport, 0, "", "");
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeOn", "0", 0, 0, 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "");
+        ThemeUiPlugin.reportTimes += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
+        }
+        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
+      return;
+    }
+    ThemeUiPlugin.reportTimes = 0;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhge
  * JD-Core Version:    0.7.0.1
  */

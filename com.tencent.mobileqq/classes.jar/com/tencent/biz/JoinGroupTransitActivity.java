@@ -1,14 +1,18 @@
 package com.tencent.biz;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdhk;
-import bdib;
+import android.view.MotionEvent;
+import bgmp;
+import bgng;
 import com.tencent.mobileqq.app.BaseActivity;
-import myo;
-import mys;
-import myt;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import nhh;
+import nhl;
+import nhm;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
@@ -16,8 +20,8 @@ public class JoinGroupTransitActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private myo jdField_a_of_type_Myo;
-  private myt jdField_a_of_type_Myt;
+  private nhh jdField_a_of_type_Nhh;
+  private nhm jdField_a_of_type_Nhm;
   private String b = "";
   
   private void a()
@@ -28,11 +32,11 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Myt = new myt(this);
-      bdhk localbdhk = bdib.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localbdhk.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localbdhk.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localbdhk.b("subsource_id")).intValue();
+      this.jdField_a_of_type_Nhm = new nhm(this);
+      bgmp localbgmp = bgng.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbgmp.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbgmp.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbgmp.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -42,25 +46,40 @@ public class JoinGroupTransitActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_Myo = new myo(this, this.app, this.jdField_a_of_type_Int, this.b, new mys(this));
-    this.jdField_a_of_type_Myo.a();
-    this.jdField_a_of_type_Myt.sendEmptyMessage(0);
+    this.jdField_a_of_type_Nhh = new nhh(this, this.app, this.jdField_a_of_type_Int, this.b, new nhl(this));
+    this.jdField_a_of_type_Nhh.a();
+    this.jdField_a_of_type_Nhm.sendEmptyMessage(0);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Myo.b();
+    this.jdField_a_of_type_Nhh.b();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.JoinGroupTransitActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,47 @@
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class avot
-  implements aoim
+public class avot
+  extends WebViewPlugin
 {
-  avot(avop paramavop) {}
+  public static final String a = avot.class.getSimpleName();
   
-  public int a()
+  public avot()
   {
-    return 3;
+    this.mPluginNameSpace = "MixSearchWeb";
   }
   
-  public int a(int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
+      return false;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + alud.a(2131707694);
-    case 1: 
-      return paramInt2 + 1 + alud.a(2131707686);
+    if (!"MixSearchWeb".equals(paramString2)) {
+      return false;
     }
-    return paramInt2 + 1 + alud.a(2131707674);
+    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avot
  * JD-Core Version:    0.7.0.1
  */

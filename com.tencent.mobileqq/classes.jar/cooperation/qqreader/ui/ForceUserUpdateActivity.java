@@ -1,26 +1,30 @@
 package cooperation.qqreader.ui;
 
+import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import bdin;
-import bizv;
-import bjan;
-import bjba;
-import bjbb;
-import bjbc;
-import bjbd;
-import bjbe;
-import bjbj;
-import bjbl;
-import bjbz;
-import bjcc;
-import bjcd;
+import bgnt;
+import blog;
+import bloy;
+import blpj;
+import blpk;
+import blpl;
+import blpm;
+import blpn;
+import blps;
+import blpu;
+import blqi;
+import blql;
+import blqm;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qqreader.net.BusinessTask;
 import cooperation.qqreader.view.FrameLoading;
 import cooperation.qqreader.view.LoadingImageView;
@@ -32,12 +36,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjan jdField_a_of_type_Bjan = new bjba(this);
-  private bjbz jdField_a_of_type_Bjbz;
+  private bloy jdField_a_of_type_Bloy = new blpj(this);
+  private blqi jdField_a_of_type_Blqi;
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
   private boolean jdField_a_of_type_Boolean;
-  private bjan b = new bjbb(this);
-  private bjan c = new bjbc(this);
+  private bloy b = new blpk(this);
+  private bloy c = new blpl(this);
   
   private void a()
   {
@@ -54,38 +58,38 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bjbl.a("ForceUserUpdateActivity", paramString);
+    blpu.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
   private void b()
   {
-    if (!bdin.a()) {
+    if (!bgnt.a()) {
       b("网络连接异常，请检查网络后重试");
     }
     do
     {
       return;
-      if (!bizv.a()) {
+      if (!blog.a()) {
         c();
       }
-    } while (bjbj.d(this));
+    } while (blps.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bjbl.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      blpu.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bjbz == null) {
-        this.jdField_a_of_type_Bjbz = new bjcc(this).a(paramString).a("退出", new bjbe(this)).b("重试", new bjbd(this)).a();
+      if (this.jdField_a_of_type_Blqi == null) {
+        this.jdField_a_of_type_Blqi = new blql(this).a(paramString).a("退出", new blpn(this)).b("重试", new blpm(this)).a();
       }
-    } while (this.jdField_a_of_type_Bjbz.isShowing());
-    this.jdField_a_of_type_Bjbz.show();
+    } while (this.jdField_a_of_type_Blqi.isShowing());
+    this.jdField_a_of_type_Blqi.show();
   }
   
   private void c()
@@ -104,12 +108,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bjcd.a(bjcd.a, this.jdField_a_of_type_Bjan);
+    blqm.a(blqm.a, this.jdField_a_of_type_Bloy);
   }
   
   private void f()
   {
-    bjbj.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    blps.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -117,7 +121,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bizv.a()) && (bjbj.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (blog.a()) && (blps.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -139,6 +143,21 @@ public class ForceUserUpdateActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -153,22 +172,22 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bjbl.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    blpu.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bjbz != null) && (this.jdField_a_of_type_Bjbz.isShowing()))
+    if ((this.jdField_a_of_type_Blqi != null) && (this.jdField_a_of_type_Blqi.isShowing()))
     {
-      this.jdField_a_of_type_Bjbz.dismiss();
-      this.jdField_a_of_type_Bjbz = null;
+      this.jdField_a_of_type_Blqi.dismiss();
+      this.jdField_a_of_type_Blqi = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ForceUserUpdateActivity
  * JD-Core Version:    0.7.0.1
  */

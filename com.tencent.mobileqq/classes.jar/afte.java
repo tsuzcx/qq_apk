@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
-class afte
-  extends afuf
+public class afte
+  implements FakeUrl.FakeListener
 {
-  afte(afpy paramafpy)
+  public afte(QQNotifySettingBaseFragment.2.1 param1) {}
+  
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
   {
-    super(paramafpy, null);
+    return false;
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onClickUrl(String paramString)
   {
-    return new aflc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return false;
   }
 }
 

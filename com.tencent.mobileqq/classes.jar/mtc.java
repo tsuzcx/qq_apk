@@ -1,56 +1,37 @@
-import android.content.res.Resources;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class mtc
+final class mtc
+  implements bdvv
 {
-  public static mtd a(Resources paramResources, int paramInt)
+  public void a(bdws parambdws, bdwt parambdwt)
   {
-    Object localObject1 = (int[][])null;
-    int[] arrayOfInt1;
-    switch (paramInt)
+    if ((parambdws == null) || (parambdwt == null)) {}
+    bdvs localbdvs;
+    do
     {
-    case 2131559606: 
-    case 2131559607: 
-    case 2131559609: 
-    default: 
-      return null;
-    case 2131559605: 
-      localObject1 = new int[] { 2131695809, 2130841851 };
-      localObject2 = new int[] { 2131695812, 2130841853 };
-      arrayOfInt1 = new int[] { 2131695814, 2130841855 };
-      localObject1 = new int[][] { localObject1, { 2131695821, 2130841865 }, localObject2, { 2131695817, 2130841680 }, { 2131695815, 2130841678 }, arrayOfInt1, { 2131695810, 2130841936 }, { 2131695813, 2130841854 }, { 2131695819, 2130841862 } };
-    }
-    while (localObject1 == null)
-    {
-      return null;
-      localObject1 = new int[][] { { 2131695820, 2130841864 }, { 2131695809, 2130841851 }, { 2131695821, 2130841865 }, { 2131695812, 2130841853 }, { 2131695817, 2130841680 }, { 2131695813, 2130841854 }, { 2131695811, 2130841852 } };
-      continue;
-      localObject1 = new int[] { 2131695820, 2130841864 };
-      localObject2 = new int[] { 2131695809, 2130841851 };
-      arrayOfInt1 = new int[] { 2131695821, 2130841865 };
-      int[] arrayOfInt2 = { 2131695812, 2130841853 };
-      int[] arrayOfInt3 = { 2131695817, 2130841680 };
-      int[] arrayOfInt4 = { 2131695810, 2130841936 };
-      int[] arrayOfInt5 = { 2131695811, 2130841852 };
-      localObject1 = new int[][] { localObject1, localObject2, arrayOfInt1, arrayOfInt2, arrayOfInt3, { 2131695815, 2130841678 }, arrayOfInt4, { 2131695813, 2130841854 }, arrayOfInt5 };
-      continue;
-      localObject1 = new int[][] { { 2131695809, 2130841851 }, { 2131695817, 2130841680 }, { 2131695815, 2130841678 } };
-    }
-    Object localObject2 = new mtd();
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfInt1 = localObject1[i];
-      ((mtd)localObject2).a(new mtb(arrayOfInt1[0], paramResources.getString(arrayOfInt1[0]), arrayOfInt1[1]));
-      i += 1;
-    }
-    ((mtd)localObject2).a = paramInt;
-    return localObject2;
+      do
+      {
+        return;
+      } while (!(parambdws instanceof bdvs));
+      localbdvs = (bdvs)parambdws;
+      localbdvs.jdField_a_of_type_Long += parambdwt.c;
+      parambdwt.c = 0L;
+      parambdwt = "bytes=" + localbdvs.jdField_a_of_type_Long + "-";
+      localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      parambdwt = localbdvs.jdField_a_of_type_JavaLangString;
+      if (parambdwt.contains("range="))
+      {
+        parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
+        localbdvs.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + localbdvs.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((bdvs)parambdws).jdField_a_of_type_JavaLangString + ", offset=" + localbdvs.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,257 +1,42 @@
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdba
-  extends FaceDecodeTask
+class bdba
+  implements View.OnClickListener
 {
-  QQAppInterface a;
+  bdba(bdaz parambdaz) {}
   
-  public bdba(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo, bday parambday)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramFaceInfo, parambday);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.p);
-    try
+    Context localContext = paramView.getContext();
+    if (bgnt.a(localContext) == 1)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int != 101) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int != 1001)) {
-        break label291;
+      bdaz.a(this.a, localContext, paramView);
+      if ((localContext instanceof BaseActivity)) {
+        bcst.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
       }
-      localalri = (alri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int != 1001) {
-        break label119;
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = localalri.a(GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString), false);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    for (;;)
     {
-      do
-      {
-        for (;;)
-        {
-          alri localalri;
-          if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 113))
-          {
-            if (((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString))
-            {
-              str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, (byte)this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int);
-              this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(str);
-              if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-              {
-                i = HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-                this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(BaseApplicationImpl.sApplication.getResources(), i);
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(str, this.jdField_a_of_type_AndroidGraphicsBitmap, (byte)1);
-              }
-              this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-              try
-              {
-                if (jdField_a_of_type_MqqOsMqqHandler == null) {
-                  continue;
-                }
-                jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-                return;
-              }
-              catch (Exception localException3) {}
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException3);
-              return;
-            }
-            if (!bcpx.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString))
-            {
-              this.jdField_a_of_type_AndroidGraphicsBitmap = ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, false);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-              try
-              {
-                if (jdField_a_of_type_MqqOsMqqHandler == null) {
-                  continue;
-                }
-                jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-                return;
-              }
-              catch (Exception localException4) {}
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException4);
-              return;
-            }
-          }
-          if ((Setting)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int).second != null) {
-            break label783;
-          }
-          this.jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-settingNull, faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.toString());
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            if (jdField_a_of_type_MqqOsMqqHandler != null)
-            {
-              jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-              return;
-            }
-          }
-          catch (Exception localException5) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException5);
+      bcst.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int)) {
-        break label939;
-      }
-      for (bool = true;; bool = false)
+      if (!bgnt.g(localContext))
       {
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = bool;
-          if (!this.jdField_a_of_type_Boolean) {
-            break label944;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-fileNotExit, faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.toString());
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              break;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException6) {}
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException6);
-        return;
+        QQToast.a(localContext, 2131691985, 0).a();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 101) {
-        break label1021;
-      }
-      localPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int);
-      if ((localPair == null) || (!((Boolean)localPair.first).booleanValue())) {
-        break label1189;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Byte = 1;
-      bdbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-      for (;;)
+      else
       {
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, (byte)this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, 100, false, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(), this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int);
-          if ((QLog.isColorLevel()) && (this.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-            QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap fail. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              break;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException7) {}
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException7);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean) && (localException7 != null) && ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 32)))
-        {
-          localanug = (anug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(180);
-          if (localanug.a(localanug.b(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString), (Setting)localException7.second, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.dynamicAvatar", 2, "FaceDecodeTaskImpl isNeed2UpdateSettingInfo.");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Byte = 1;
-            bdbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-          }
-        }
+        Resources localResources = localContext.getResources();
+        bglp.a(localContext, 232, "", anni.a(2131713285), localResources.getString(2131690582), localResources.getString(2131694081), new bdbb(this, localContext, paramView), new bdbc(this)).show();
       }
     }
-    catch (Throwable localThrowable)
-    {
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localThrowable);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            if (jdField_a_of_type_MqqOsMqqHandler != null)
-            {
-              jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-              return;
-            }
-          }
-          catch (Exception localException8) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException8);
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-    try
-    {
-      label119:
-      String str;
-      label291:
-      int i;
-      label783:
-      boolean bool;
-      label939:
-      label944:
-      Pair localPair;
-      label1021:
-      anug localanug;
-      label1189:
-      if (jdField_a_of_type_MqqOsMqqHandler != null) {
-        jdField_a_of_type_MqqOsMqqHandler.sendMessage(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-      }
-      throw localObject;
-    }
-    catch (Exception localException9)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException9);
-        }
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l);
   }
 }
 

@@ -32,12 +32,12 @@ public class s
   
   public int a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int i = t.w;
+    int i = t.x;
     this.x.g = new String(paramArrayOfByte);
     paramInt1 = 0;
     for (;;)
     {
-      Object localObject = a(paramLong1, paramLong2, i, paramInt2, paramArrayOfByte, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramArrayOfLong, t.ac, t.A, paramWUserSigInfo);
+      Object localObject = a(paramLong1, paramLong2, i, paramInt2, paramArrayOfByte, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramArrayOfLong, t.ad, t.B, paramWUserSigInfo);
       a(this.i, this.t, this.j, 0L, this.m, this.n, i, this.p, (byte[])localObject);
       localObject = String.valueOf(this.x.f);
       int j = a((String)localObject, false, paramWUserSigInfo);
@@ -78,25 +78,25 @@ public class s
     localObject5 = ((tlv_t108)localObject5).get_tlv_108(paramArrayOfByte2);
     localObject6 = ((tlv_t116)localObject6).get_tlv_116(paramInt7, paramInt8, paramArrayOfLong);
     localObject7 = ((tlv_t154)localObject7).get_tlv_154(this.x.i);
-    localObject9 = ((tlv_t8)localObject9).get_tlv_8(0, t.u, 0);
+    localObject9 = ((tlv_t8)localObject9).get_tlv_8(0, t.v, 0);
     localObject11 = ((tlv_t191)localObject11).get_tlv_191(k.K);
     paramArrayOfByte3.set_data(new byte[] { 2 }, 1);
     paramArrayOfByte1 = util.get_os_type();
     paramArrayOfLong = util.get_os_version();
-    paramInt1 = t.D;
-    byte[] arrayOfByte1 = t.C;
-    byte[] arrayOfByte2 = t.F;
+    paramInt1 = t.E;
+    byte[] arrayOfByte1 = t.D;
+    byte[] arrayOfByte2 = t.G;
     localObject12 = ((tlv_t124)localObject12).get_tlv_124(paramArrayOfByte1, paramArrayOfLong, paramInt1, arrayOfByte1, new byte[0], arrayOfByte2);
-    localObject10 = ((tlv_t128)localObject10).get_tlv_128(t.U, t.V, t.W, t.Z, t.I, t.A, t.P);
+    localObject10 = ((tlv_t128)localObject10).get_tlv_128(t.V, t.W, t.X, t.aa, t.J, t.B, t.Q);
     localObject8 = ((tlv_t52d)localObject8).get_tlv_52d(this.a);
     paramArrayOfLong = new byte[0];
     paramArrayOfByte1 = paramArrayOfLong;
-    if (t.an != null)
+    if (t.ao != null)
     {
       paramArrayOfByte1 = paramArrayOfLong;
-      if (t.an.length > 0)
+      if (t.ao.length > 0)
       {
-        paramArrayOfByte1 = localtlv_t548.get_tlv_548(t.an);
+        paramArrayOfByte1 = localtlv_t548.get_tlv_548(t.ao);
         paramArrayOfLong = new StringBuilder().append("t548 len:");
         if (paramArrayOfByte1 != null) {
           break label1100;
@@ -106,7 +106,7 @@ public class s
       }
     }
     paramArrayOfLong = new byte[6];
-    util.int32_to_buf(paramArrayOfLong, 0, t.az);
+    util.int32_to_buf(paramArrayOfLong, 0, t.aA);
     util.int16_to_buf(paramArrayOfLong, 4, 0);
     ((tlv_t)localObject2).set_data(paramArrayOfLong, 6);
     localObject2 = ((tlv_t)localObject2).get_buf();

@@ -1,5 +1,6 @@
 package com.tencent.richmediabrowser.core;
 
+import android.content.Context;
 import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
@@ -10,6 +11,7 @@ import com.tencent.richmediabrowser.presenter.IProvider;
 public class RichMediaBrowserManager
 {
   private IBrowserAnimationListener animationListener;
+  private Context applicationContext;
   private IMvpFactory mvpFactory;
   private IProvider provider;
   
@@ -21,6 +23,11 @@ public class RichMediaBrowserManager
   public IBrowserAnimationListener getAnimationListener()
   {
     return this.animationListener;
+  }
+  
+  public Context getApplicationContext()
+  {
+    return this.applicationContext;
   }
   
   public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
@@ -54,6 +61,11 @@ public class RichMediaBrowserManager
     this.animationListener = paramIBrowserAnimationListener;
   }
   
+  public void setApplicationContext(Context paramContext)
+  {
+    this.applicationContext = paramContext;
+  }
+  
   public void setLogProxy(IBrowserLog paramIBrowserLog)
   {
     BrowserLogHelper.getInstance().setLogProxy(paramIBrowserLog);
@@ -71,7 +83,7 @@ public class RichMediaBrowserManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.RichMediaBrowserManager
  * JD-Core Version:    0.7.0.1
  */

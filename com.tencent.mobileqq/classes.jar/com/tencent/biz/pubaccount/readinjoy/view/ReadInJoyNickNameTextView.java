@@ -5,21 +5,23 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ors;
-import pgr;
-import ruf;
+import pha;
+import pyb;
+import ssb;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements pgr
+  implements pyb
 {
   private long jdField_a_of_type_Long;
-  private ruf jdField_a_of_type_Ruf;
+  private String jdField_a_of_type_JavaLangString;
+  private ssb jdField_a_of_type_Ssb;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -44,28 +46,28 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(ors.d(paramReadInJoyUserInfo.nick));
+        setText(pha.e(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Ruf != null)
+      while (this.jdField_a_of_type_Ssb != null)
       {
-        this.jdField_a_of_type_Ruf.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_Ssb.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
     }
   }
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  {
+    QLog.d("ReadInJoyNickNameTextView", 2, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
     if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
       return;
     }
     ThreadManager.getUIHandler().post(new ReadInJoyNickNameTextView.1(this, paramReadInJoyUserInfo));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d("ReadInJoyNickNameTextView", 2, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
   }
   
   public void setNickNameByUin(long paramLong)
@@ -86,7 +88,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = ors.d(str);
+        localObject = pha.e(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -122,14 +124,28 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(ruf paramruf)
+  public void setOnSetNickNameListener(ssb paramssb)
   {
-    this.jdField_a_of_type_Ruf = paramruf;
+    this.jdField_a_of_type_Ssb = paramssb;
+  }
+  
+  public void setPrefix(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    Object localObject = paramCharSequence;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localObject = this.jdField_a_of_type_JavaLangString + paramCharSequence;
+    }
+    super.setText((CharSequence)localObject, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView
  * JD-Core Version:    0.7.0.1
  */

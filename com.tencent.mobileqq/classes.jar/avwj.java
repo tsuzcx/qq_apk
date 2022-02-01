@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
 
 public class avwj
-  extends asjx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avwj(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public avwj(MusicPanelView paramMusicPanelView) {}
   
-  protected void a(boolean paramBoolean, aska paramaska)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!OCRResultFragmentNew.a(this.a)) {
-      return;
-    }
-    OCRResultFragmentNew.b(this.a, false);
-    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramaska));
+    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwj
  * JD-Core Version:    0.7.0.1
  */

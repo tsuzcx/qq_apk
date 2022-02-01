@@ -1,39 +1,22 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class aesv
-  implements bhuk
+public class aesv
+  implements DialogInterface.OnKeyListener
 {
-  aesv(aesk paramaesk, String paramString) {}
+  public aesv(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    aesk.a(this.jdField_a_of_type_Aesk).dismiss();
-    switch (paramInt)
+    if (paramInt == 4)
     {
+      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+      this.a.finish();
     }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        aesk.a(this.jdField_a_of_type_Aesk, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (aesk.a(this.jdField_a_of_type_Aesk))
-      {
-        aesk.b(this.jdField_a_of_type_Aesk);
-        return;
-      }
-      aesk.c(this.jdField_a_of_type_Aesk);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (aesk.a(this.jdField_a_of_type_Aesk))
-    {
-      aesk.b(this.jdField_a_of_type_Aesk);
-      return;
-    }
-    aesk.c(this.jdField_a_of_type_Aesk);
+    return false;
   }
 }
 

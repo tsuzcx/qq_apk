@@ -1,43 +1,44 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import java.util.Iterator;
-import java.util.List;
-
-public class aqli
-  extends AsyncTask<Void, Void, Integer>
+final class aqli
 {
-  public aqli(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  private final String c;
   
-  protected Integer a(Void... paramVarArgs)
+  public aqli(int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    return Integer.valueOf(arrj.b(this.a));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
+    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
   }
   
-  protected void a(Integer paramInteger)
+  public boolean equals(Object paramObject)
   {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (!(paramObject instanceof aqli)) {}
+    do
     {
-      arbw localarbw = (arbw)localIterator.next();
-      if (localarbw.e == 4)
-      {
-        localarbw.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_Arbu.notifyDataSetChanged();
-      }
-    }
+      return false;
+      paramObject = (aqli)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
   }
   
-  protected void onPreExecute()
+  public int hashCode()
   {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    return this.c.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqli
  * JD-Core Version:    0.7.0.1
  */

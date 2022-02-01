@@ -1,60 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.List;
-import java.util.Set;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcdd
-  extends BaseAdapter
+  extends MSFServlet
 {
-  protected List<ParagraphInfo> a;
-  protected Set<Integer> a;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public bcdd(List<ParagraphInfo> paramList, Set<Integer> paramSet)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
-  
-  public ParagraphInfo a(int paramInt)
-  {
-    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560476, paramViewGroup, false);
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
+      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+      if (i != 1000) {
+        break label148;
+      }
+      paramFromServiceMsg = bmes.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      notifyObserver(null, 1007, true, paramIntent, ayev.class);
+      return;
     }
-    Object localObject1 = (CheckBox)localView.findViewById(2131364254);
-    paramView = (TextView)localView.findViewById(2131378722);
-    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
-    Object localObject2 = a(paramInt);
-    localObject1 = String.format(SelectReciteParagraphFragment.b, new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
-    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
-    ((SpannableString)localObject2).setSpan(new bcqs(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131166976), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
-    paramView.setText((CharSequence)localObject2);
-    return localView;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
+    }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1007, false, paramIntent, ayev.class);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    }
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1007, false, paramIntent, ayev.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("selfuin", 0L);
+    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
+    boolean bool = paramIntent.getBooleanExtra("needReport", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    bmes localbmes = new bmes(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
+    localObject = localbmes.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbmes.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbmes.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

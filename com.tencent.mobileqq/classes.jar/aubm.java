@@ -1,62 +1,64 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.1.1;
 
 public class aubm
-  extends Animation
+  extends absc
 {
-  private final float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
-  private final float c;
-  private final float d;
-  private final float e;
+  aubm(aubl paramaubl) {}
   
-  public aubm(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public void a(Session paramSession, float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
-    {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
+    FileManagerEntity localFileManagerEntity = aubl.a(this.a).a();
+    if (localFileManagerEntity == null) {}
+    while ((aubl.c(this.a) == null) || (paramSession.uSessionID != aubl.a(this.a))) {
       return;
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
+    localFileManagerEntity.fProgress = paramFloat;
+    aubl.d(this.a).a(paramFloat);
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(Session paramSession, boolean paramBoolean)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    FileManagerEntity localFileManagerEntity = aubl.b(this.a).a();
+    if (localFileManagerEntity == null) {}
+    do
+    {
+      return;
+      if ((aubl.a(this.a) != null) && (paramSession.uSessionID == aubl.b(this.a)) && (paramBoolean))
+      {
+        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
+        aubl.b(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      }
+    } while ((aubl.e(this.a) == null) || (paramSession.uSessionID != aubl.a(this.a)));
+    if (paramBoolean)
+    {
+      localFileManagerEntity.fProgress = 1.0F;
+      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
+      aubl.f(this.a).f();
+      if (this.a.e() == 2)
+      {
+        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
+        return;
+      }
+      aubl.i(this.a).f();
+      return;
+    }
+    aubl.j(this.a).g();
+  }
+  
+  public void b(Session paramSession)
+  {
+    if ((aubl.a(this.a) != null) && (paramSession.uSessionID == aubl.a(this.a))) {
+      aubl.b(this.a).d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aubm
  * JD-Core Version:    0.7.0.1
  */

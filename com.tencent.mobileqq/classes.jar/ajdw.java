@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajdw
-  implements azmw
+  implements View.OnClickListener
 {
-  ajdw(ajdv paramajdv, ajdx paramajdx) {}
+  ajdw(ajdv paramajdv, View paramView) {}
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      ajdv.a(this.jdField_a_of_type_Ajdv, true);
-      if (this.jdField_a_of_type_Ajdx != null) {
-        this.jdField_a_of_type_Ajdx.a(true);
-      }
-    }
-    while (this.jdField_a_of_type_Ajdx == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ajdx.a(false);
+    bcst.b(ajdv.a(this.jdField_a_of_type_Ajdv), "dc00899", "Grp_contacts_news", "", "notice", "verify_clk", 0, 0, "", "", "", "");
+    ajdv.a(this.jdField_a_of_type_Ajdv, true);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

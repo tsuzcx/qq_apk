@@ -1,26 +1,25 @@
-public abstract interface aqfj
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+
+public class aqfj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract long a();
+  public aqfj(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      ColorNoteSmallScreenRelativeLayout.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
 }
 
 

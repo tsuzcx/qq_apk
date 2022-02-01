@@ -3,19 +3,7 @@ package com.tencent.mobileqq.app;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import alpd;
-import alpg;
-import alrt;
-import alzl;
-import alzm;
-import alzn;
-import alzo;
-import alzp;
-import alzr;
-import alzs;
-import alzt;
-import amnz;
-import ampk;
+import aahw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,11 +11,24 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azqs;
-import bdeu;
-import bdfr;
-import bjdl;
-import bjdm;
+import anii;
+import anil;
+import anlf;
+import anrs;
+import anrt;
+import anru;
+import anrv;
+import anrw;
+import anry;
+import anrz;
+import ansa;
+import aong;
+import aoor;
+import bcst;
+import bgjw;
+import bgku;
+import blrt;
+import blru;
 import com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateRsp;
 import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
 import com.tencent.common.app.AppInterface;
@@ -39,6 +40,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.BaseRecentUser;
 import com.tencent.mobileqq.data.EqqDetail;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
@@ -85,28 +87,27 @@ import mqq.manager.ServerConfigManager.ConfigType;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
 import msf.msgcomm.msg_comm.Msg;
-import nin;
-import nno;
-import nrz;
-import nsa;
-import ntw;
-import owy;
-import ssp;
-import suv;
-import swy;
+import nre;
+import nwl;
+import oaz;
+import oba;
+import oda;
+import pmh;
 import tencent.im.s2c.msgtype0x210.submsgtype0x28.SubMsgType0x28.FollowList;
 import tencent.im.s2c.msgtype0x210.submsgtype0x28.SubMsgType0x28.RspFollowList;
 import tencent.im.s2c.msgtype0x210.submsgtype0x28.SubMsgType0x28.RspTypeList;
-import ykm;
+import tue;
+import twi;
+import tyg;
 
 public class PublicAccountHandler
-  extends alpd
+  extends anii
 {
   public static String a;
   public static String b;
   public long a;
   public List<UinPair> a;
-  private Map<Integer, alzp> a;
+  private Map<Integer, anrw> a;
   public boolean a;
   private boolean b;
   private boolean c;
@@ -150,20 +151,20 @@ public class PublicAccountHandler
     Object localObject;
     if (paramBoolean2)
     {
-      NewIntent localNewIntent = new NewIntent(this.app.getApp(), nsa.class);
+      NewIntent localNewIntent = new NewIntent(this.app.getApp(), oba.class);
       localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_read.GetFollowList");
       localObject = new CertifiedAccountRead.StGetFollowListReq();
-      ((CertifiedAccountRead.StGetFollowListReq)localObject).seq.set(bdeu.a(paramLong1));
-      ((CertifiedAccountRead.StGetFollowListReq)localObject).count.set(bdeu.a(paramLong4));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject).seq.set(bgjw.a(paramLong1));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject).count.set(bgjw.a(paramLong4));
       if (!TextUtils.isEmpty(paramString)) {
         ((CertifiedAccountRead.StGetFollowListReq)localObject).attach_info.set(paramString);
       }
       paramString = new PROTOCAL.StQWebReq();
       paramString.Seq.set(-1L);
-      paramString.qua.set(bjdm.a());
-      paramString.deviceInfo.set(bjdl.a().c());
+      paramString.qua.set(blru.a());
+      paramString.deviceInfo.set(blrt.a().c());
       paramString.busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject).toByteArray()));
-      String str = ykm.a();
+      String str = aahw.a();
       if (!TextUtils.isEmpty(str)) {
         paramString.traceid.set(str);
       }
@@ -179,7 +180,7 @@ public class PublicAccountHandler
       localNewIntent.putExtra("get_user_follow_list_data_seq", paramLong2);
       localNewIntent.putExtra("time_stamp", paramLong5);
       localNewIntent.putExtra("get_user_follow_list_is_increment", paramBoolean1);
-      nsa.a(localNewIntent);
+      oba.a(localNewIntent);
       this.app.startServlet(localNewIntent);
     }
     for (;;)
@@ -188,13 +189,13 @@ public class PublicAccountHandler
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountHandler", 2, "getUserFollowList");
       }
-      paramString = new NewIntent(this.app.getApp(), nrz.class);
+      paramString = new NewIntent(this.app.getApp(), oaz.class);
       paramString.putExtra("cmd", "get_follow_list");
       localObject = new mobileqq_mp.GetUserFollowListRequest();
-      ((mobileqq_mp.GetUserFollowListRequest)localObject).follow_seqno.set(bdeu.a(paramLong1));
-      ((mobileqq_mp.GetUserFollowListRequest)localObject).public_account_seqno.set(bdeu.a(paramLong2));
-      ((mobileqq_mp.GetUserFollowListRequest)localObject).begin.set(bdeu.a(paramLong3));
-      ((mobileqq_mp.GetUserFollowListRequest)localObject).limit.set(bdeu.a(paramLong4));
+      ((mobileqq_mp.GetUserFollowListRequest)localObject).follow_seqno.set(bgjw.a(paramLong1));
+      ((mobileqq_mp.GetUserFollowListRequest)localObject).public_account_seqno.set(bgjw.a(paramLong2));
+      ((mobileqq_mp.GetUserFollowListRequest)localObject).begin.set(bgjw.a(paramLong3));
+      ((mobileqq_mp.GetUserFollowListRequest)localObject).limit.set(bgjw.a(paramLong4));
       ((mobileqq_mp.GetUserFollowListRequest)localObject).version.set(1);
       ((mobileqq_mp.GetUserFollowListRequest)localObject).is_increment.set(paramBoolean1);
       paramString.putExtra("data", ((mobileqq_mp.GetUserFollowListRequest)localObject).toByteArray());
@@ -203,7 +204,7 @@ public class PublicAccountHandler
       paramString.putExtra("get_user_follow_list_data_seq", paramLong2);
       paramString.putExtra("time_stamp", paramLong5);
       paramString.putExtra("get_user_follow_list_is_increment", paramBoolean1);
-      nrz.a(paramString);
+      oaz.a(paramString);
       this.app.startServlet(paramString);
     }
   }
@@ -224,7 +225,7 @@ public class PublicAccountHandler
   
   private void a(int paramInt)
   {
-    SosoInterface.a(new alzn(this, 0, true, true, 60000L, true, false, "PublicAccountHandler", paramInt));
+    SosoInterface.a(new anru(this, 0, true, true, 60000L, true, false, "PublicAccountHandler", paramInt));
   }
   
   private void a(long paramLong, boolean paramBoolean)
@@ -241,7 +242,7 @@ public class PublicAccountHandler
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    alzt localalzt = new alzt();
+    ansa localansa = new ansa();
     int j = 1;
     boolean bool2 = false;
     int i;
@@ -270,7 +271,7 @@ public class PublicAccountHandler
     long l5;
     if ((paramIntent != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramArrayOfByte != null))
     {
-      localalzt.jdField_a_of_type_Int = 0;
+      localansa.jdField_a_of_type_Int = 0;
       l1 = paramIntent.getLongExtra("time_stamp", 0L);
       l2 = paramIntent.getLongExtra("get_user_follow_list_begin", 0L);
       l3 = paramIntent.getLongExtra("get_user_follow_list_follow_seq", 0L);
@@ -297,7 +298,7 @@ public class PublicAccountHandler
           l3 = paramFromServiceMsg.seq.get();
           paramIntent = paramFromServiceMsg.attach_info.get();
           if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountHandler", 2, "handleGetUserFollowList\t  refresh: " + bool1 + "\thas_next: " + bool2);
+            QLog.d("PublicAccountHandler", 2, "handleGetUserFollowList      refresh: " + bool1 + "    has_next: " + bool2);
           }
           if (!bool1) {
             continue;
@@ -308,8 +309,8 @@ public class PublicAccountHandler
         }
         catch (Exception paramIntent)
         {
-          localalzt.jdField_a_of_type_Int = -1;
-          localalzt.jdField_a_of_type_Boolean = true;
+          localansa.jdField_a_of_type_Int = -1;
+          localansa.jdField_a_of_type_Boolean = true;
           paramBoolean = false;
           i = j;
           continue;
@@ -320,7 +321,7 @@ public class PublicAccountHandler
         if (i == 0) {
           break;
         }
-        notifyUI(100, paramBoolean, localalzt);
+        notifyUI(100, paramBoolean, localansa);
         return;
         bool1 = false;
         continue;
@@ -329,33 +330,33 @@ public class PublicAccountHandler
         paramFromServiceMsg = paramFromServiceMsg.account_list.get();
         l4 = paramFromServiceMsg.size();
         paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoListCf8(paramFromServiceMsg, l1);
-        localalzt.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+        localansa.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
         if (bool2) {
           break label1296;
         }
         bool1 = true;
-        localalzt.jdField_a_of_type_Boolean = bool1;
-        localalzt.jdField_a_of_type_Long = l4;
-        paramArrayOfByte = (alzl)this.app.getManager(56);
-        a(paramFromServiceMsg, l1, bool3, localalzt.jdField_a_of_type_Boolean);
-        if (localalzt.jdField_a_of_type_Boolean)
+        localansa.jdField_a_of_type_Boolean = bool1;
+        localansa.jdField_a_of_type_Long = l4;
+        paramArrayOfByte = (anrs)this.app.getManager(56);
+        a(paramFromServiceMsg, l1, bool3, localansa.jdField_a_of_type_Boolean);
+        if (localansa.jdField_a_of_type_Boolean)
         {
-          suv.a().a(this.app, paramArrayOfByte.a());
-          ssp.a().c(this.app);
-          suv.a().g(this.app);
-          owy.a().e();
+          twi.a().a(this.app, paramArrayOfByte.a());
+          tue.a().c(this.app);
+          twi.a().g(this.app);
+          pmh.a().e();
           paramFromServiceMsg = new PublicAccountHandler.FolderRefreshRunnable(this.app, paramArrayOfByte);
           ThreadManager.getSubThreadHandler().postDelayed(paramFromServiceMsg, 15000L);
           ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountHandler.2(this), 500L);
         }
-        if (!localalzt.jdField_a_of_type_Boolean)
+        if (!localansa.jdField_a_of_type_Boolean)
         {
           if (bool3)
           {
             a(l3, 0L, 0L, 20L, l1, true, true, paramIntent);
             b(0L, paramBoolean);
             paramBoolean = true;
-            localalzt.jdField_a_of_type_Int = 0;
+            localansa.jdField_a_of_type_Int = 0;
             i = 1;
           }
           else
@@ -371,7 +372,7 @@ public class PublicAccountHandler
             break label1302;
           }
           i = ((mobileqq_mp.RetInfo)paramIntent.ret_info.get()).ret_code.get();
-          localalzt.jdField_a_of_type_Int = i;
+          localansa.jdField_a_of_type_Int = i;
           if (QLog.isColorLevel())
           {
             if (!paramIntent.has_next.has()) {
@@ -379,11 +380,11 @@ public class PublicAccountHandler
             }
             bool1 = paramIntent.has_next.get();
             label785:
-            QLog.d("PublicAccountHandler", 2, "handleGetUserFollowList\t\terrCode: " + i + "\thas_next: " + bool1);
+            QLog.d("PublicAccountHandler", 2, "handleGetUserFollowList        errCode: " + i + "    has_next: " + bool1);
           }
           if (i != 0)
           {
-            localalzt.jdField_a_of_type_Boolean = true;
+            localansa.jdField_a_of_type_Boolean = true;
             paramBoolean = bool2;
             i = j;
           }
@@ -394,12 +395,12 @@ public class PublicAccountHandler
             }
             i = paramIntent.follow_seqno.get();
             label864:
-            l4 = bdeu.a(i);
+            l4 = bgjw.a(i);
             if (!paramIntent.public_account_seqno.has()) {
               break label1320;
             }
             i = paramIntent.public_account_seqno.get();
-            l5 = bdeu.a(i);
+            l5 = bgjw.a(i);
             if ((l4 <= l3) || (l3 == 0L)) {
               break label942;
             }
@@ -415,9 +416,9 @@ public class PublicAccountHandler
       }
       i = paramIntent.total_count.get();
       label961:
-      l3 = bdeu.a(i);
+      l3 = bgjw.a(i);
       paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoList(paramIntent.info.get(), l1);
-      localalzt.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+      localansa.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
       if (!paramIntent.has_next.has()) {
         break label1326;
       }
@@ -427,21 +428,21 @@ public class PublicAccountHandler
     }
     for (;;)
     {
-      localalzt.jdField_a_of_type_Boolean = bool1;
-      localalzt.jdField_a_of_type_Long = l3;
-      paramIntent = (alzl)this.app.getManager(56);
-      a(paramFromServiceMsg, l1, bool3, localalzt.jdField_a_of_type_Boolean);
-      if (localalzt.jdField_a_of_type_Boolean)
+      localansa.jdField_a_of_type_Boolean = bool1;
+      localansa.jdField_a_of_type_Long = l3;
+      paramIntent = (anrs)this.app.getManager(56);
+      a(paramFromServiceMsg, l1, bool3, localansa.jdField_a_of_type_Boolean);
+      if (localansa.jdField_a_of_type_Boolean)
       {
-        suv.a().a(this.app, paramIntent.a());
-        ssp.a().c(this.app);
-        suv.a().g(this.app);
-        owy.a().e();
+        twi.a().a(this.app, paramIntent.a());
+        tue.a().c(this.app);
+        twi.a().g(this.app);
+        pmh.a().e();
         paramIntent = new PublicAccountHandler.FolderRefreshRunnable(this.app, paramIntent);
         ThreadManager.getSubThreadHandler().postDelayed(paramIntent, 15000L);
         ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountHandler.3(this), 500L);
       }
-      if (!localalzt.jdField_a_of_type_Boolean) {
+      if (!localansa.jdField_a_of_type_Boolean) {
         if (bool3) {
           a(l4, l5, 0L, 20L, l1, true, paramBoolean, null);
         }
@@ -456,14 +457,14 @@ public class PublicAccountHandler
         continue;
         a(l4, paramBoolean);
       }
-      localalzt.jdField_a_of_type_Int = -1;
-      localalzt.jdField_a_of_type_Boolean = true;
+      localansa.jdField_a_of_type_Int = -1;
+      localansa.jdField_a_of_type_Boolean = true;
       paramBoolean = bool2;
       i = j;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("PublicAccountHandler", 2, "<<---handleGetUserFollowList " + localalzt.jdField_a_of_type_Int);
+      QLog.d("PublicAccountHandler", 2, "<<---handleGetUserFollowList " + localansa.jdField_a_of_type_Int);
       paramBoolean = bool2;
       i = j;
       break;
@@ -499,7 +500,7 @@ public class PublicAccountHandler
     if ((paramAppInterface instanceof QQAppInterface)) {
       localQQAppInterface = (QQAppInterface)paramAppInterface;
     }
-    azqs.b(localQQAppInterface, "P_CliOper", paramString2, "", paramString3, paramString4, 0, 0, paramString1, "", "", "");
+    bcst.b(localQQAppInterface, "P_CliOper", paramString2, "", paramString3, paramString4, 0, 0, paramString1, "", "", "");
   }
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
@@ -508,7 +509,7 @@ public class PublicAccountHandler
     if ((paramAppInterface instanceof QQAppInterface)) {
       localQQAppInterface = (QQAppInterface)paramAppInterface;
     }
-    azqs.b(localQQAppInterface, "P_CliOper", paramString2, "", paramString3, paramString4, paramInt, 0, paramString1, "", "", "");
+    bcst.b(localQQAppInterface, "P_CliOper", paramString2, "", paramString3, paramString4, paramInt, 0, paramString1, "", "", "");
   }
   
   private void a(String paramString)
@@ -520,21 +521,21 @@ public class PublicAccountHandler
   
   private void a(List<PublicAccountInfo> paramList, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = ((alzl)this.app.getManager(56)).a(paramList, paramLong, paramBoolean1, paramBoolean2);
+    Object localObject1 = ((anrs)this.app.getManager(56)).a(paramList, paramLong, paramBoolean1, paramBoolean2);
     paramList = this.app.a();
     localObject1 = ((List)localObject1).iterator();
     int i = 0;
     if (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (PublicAccountInfo)((Iterator)localObject1).next();
-      localObject2 = paramList.a().b(((PublicAccountInfo)localObject2).getUin(), 1008);
+      localObject2 = (RecentUser)paramList.a().findRecentUser(((PublicAccountInfo)localObject2).getUin(), 1008);
       if (localObject2 == null) {
-        break label131;
+        break label134;
       }
-      paramList.a().b((RecentUser)localObject2);
+      paramList.a().delRecentUser((BaseRecentUser)localObject2);
       i = 1;
     }
-    label131:
+    label134:
     for (;;)
     {
       break;
@@ -576,24 +577,24 @@ public class PublicAccountHandler
         j = i;
         i = k;
         break;
-        localObject2 = (alzl)this.app.getManager(56);
-        ((alzl)localObject2).b((String)localObject1);
-        ((alzl)localObject2).a((String)localObject1);
-        paramRspFollowList = new alzs();
-        paramRspFollowList.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = ((alzl)localObject2).a(l + "");
+        localObject2 = (anrs)this.app.getManager(56);
+        ((anrs)localObject2).b((String)localObject1);
+        ((anrs)localObject2).a((String)localObject1);
+        paramRspFollowList = new anrz();
+        paramRspFollowList.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = ((anrs)localObject2).a(l + "");
         this.app.a().a((String)localObject1, 1008);
-        suv.a().a(this.app, ((alzl)localObject2).a());
-        ssp.a().c(this.app);
-        localObject1 = (ntw)this.app.getManager(88);
+        twi.a().a(this.app, ((anrs)localObject2).a());
+        tue.a().c(this.app);
+        localObject1 = (oda)this.app.getManager(88);
         if (localObject1 != null) {
-          ((ntw)localObject1).a(l + "", "pushmsg");
+          ((oda)localObject1).a(l + "", "pushmsg");
         }
-        owy.a().a(l, 1);
+        pmh.a().a(l, 1);
         i = j;
         j = 1;
         continue;
         a();
-        owy.a().a(l, 2);
+        pmh.a().a(l, 2);
         j = i;
         i = 1;
       }
@@ -616,7 +617,7 @@ public class PublicAccountHandler
     {
       l = ((SubMsgType0x28.FollowList)localList.get(0)).uint64_puin.get();
       ThreadManager.getUIHandler().post(new PublicAccountHandler.1(this, l, bool));
-      paramRspFollowList = owy.a();
+      paramRspFollowList = pmh.a();
       i = m;
       if (bool) {
         i = 2;
@@ -674,7 +675,7 @@ public class PublicAccountHandler
       if (paramIntent.business.has())
       {
         paramIntent = PublicRecommendAccountInfo.createPublicRecommendAccountInfoList(paramIntent.business.get());
-        ((alzl)this.app.getManager(56)).a(paramIntent);
+        ((anrs)this.app.getManager(56)).a(paramIntent);
         notifyUI(104, true, null);
         return;
         notifyUI(104, false, null);
@@ -740,7 +741,7 @@ public class PublicAccountHandler
   
   public int a()
   {
-    boolean bool = swy.c();
+    boolean bool = tyg.c();
     long l1 = a(bool);
     long l2 = b(bool);
     String str = a();
@@ -749,7 +750,7 @@ public class PublicAccountHandler
   
   public int a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    NewIntent localNewIntent = new NewIntent(this.app.getApp(), nrz.class);
+    NewIntent localNewIntent = new NewIntent(this.app.getApp(), oaz.class);
     localNewIntent.putExtra("cmd", "get_business_recommend");
     publicaccount_recommend.BusinessRecommendRequest localBusinessRecommendRequest = new publicaccount_recommend.BusinessRecommendRequest();
     localBusinessRecommendRequest.recomend_count.set(20);
@@ -769,7 +770,7 @@ public class PublicAccountHandler
       localBusinessRecommendRequest.city_info.set(str);
       localBusinessRecommendRequest.platform.set(109);
       localNewIntent.putExtra("data", localBusinessRecommendRequest.toByteArray());
-      nrz.a(localNewIntent);
+      oaz.a(localNewIntent);
       this.app.startServlet(localNewIntent);
       return 0;
     }
@@ -782,7 +783,7 @@ public class PublicAccountHandler
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ampk.a(new alzo(this, "qq_weather", false, paramInt2, paramInt3, paramInt4, paramInt1));
+    aoor.a(new anrv(this, "qq_weather", false, paramInt2, paramInt3, paramInt4, paramInt1));
   }
   
   /* Error */
@@ -796,26 +797,26 @@ public class PublicAccountHandler
     //   9: new 72	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 852
+    //   16: ldc_w 856
     //   19: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: lload_1
     //   23: l2i
-    //   24: invokestatic 856	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   24: invokestatic 860	java/lang/Integer:toHexString	(I)Ljava/lang/String;
     //   27: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   33: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   36: lload_1
     //   37: l2i
     //   38: lookupswitch	default:+26->64, 40:+27->65, 63:+126->164
-    //   65: new 858	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody
+    //   65: new 862	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody
     //   68: dup
-    //   69: invokespecial 859	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:<init>	()V
+    //   69: invokespecial 863	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:<init>	()V
     //   72: aload_3
-    //   73: invokevirtual 860	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   76: checkcast 858	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody
+    //   73: invokevirtual 864	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   76: checkcast 862	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody
     //   79: astore_3
     //   80: aload_3
-    //   81: getfield 863	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   81: getfield 867	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   84: invokevirtual 393	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   87: istore 4
     //   89: invokestatic 68	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -825,7 +826,7 @@ public class PublicAccountHandler
     //   98: new 72	java/lang/StringBuilder
     //   101: dup
     //   102: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   105: ldc_w 865
+    //   105: ldc_w 869
     //   108: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: iload 4
     //   113: invokevirtual 356	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -836,31 +837,31 @@ public class PublicAccountHandler
     //   125: if_icmpne +18 -> 143
     //   128: aload_0
     //   129: aload_3
-    //   130: getfield 869	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:msg_rsp_followlist	Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList;
-    //   133: invokevirtual 870	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   136: checkcast 625	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList
-    //   139: invokespecial 872	com/tencent/mobileqq/app/PublicAccountHandler:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList;)V
+    //   130: getfield 873	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:msg_rsp_followlist	Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList;
+    //   133: invokevirtual 874	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   136: checkcast 629	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList
+    //   139: invokespecial 876	com/tencent/mobileqq/app/PublicAccountHandler:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspFollowList;)V
     //   142: return
     //   143: iload 4
     //   145: iconst_2
     //   146: if_icmpne -82 -> 64
     //   149: aload_0
     //   150: aload_3
-    //   151: getfield 876	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:msg_rsp_typelist	Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList;
-    //   154: invokevirtual 879	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   157: checkcast 878	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList
-    //   160: invokespecial 881	com/tencent/mobileqq/app/PublicAccountHandler:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList;)V
+    //   151: getfield 880	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$MsgBody:msg_rsp_typelist	Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList;
+    //   154: invokevirtual 883	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   157: checkcast 882	tencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList
+    //   160: invokespecial 885	com/tencent/mobileqq/app/PublicAccountHandler:a	(Ltencent/im/s2c/msgtype0x210/submsgtype0x28/SubMsgType0x28$RspTypeList;)V
     //   163: return
-    //   164: new 883	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody
+    //   164: new 887	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody
     //   167: dup
-    //   168: invokespecial 884	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:<init>	()V
+    //   168: invokespecial 888	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:<init>	()V
     //   171: astore 7
     //   173: aload 7
     //   175: aload_3
-    //   176: invokevirtual 885	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   176: invokevirtual 889	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   179: pop
     //   180: aload 7
-    //   182: getfield 888	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:rpt_msg_pubunikey	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   182: getfield 892	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$MsgBody:rpt_msg_pubunikey	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   185: invokevirtual 427	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   188: invokeinterface 585 1 0
     //   193: astore_3
@@ -869,26 +870,26 @@ public class PublicAccountHandler
     //   200: ifeq -136 -> 64
     //   203: aload_3
     //   204: invokeinterface 594 1 0
-    //   209: checkcast 890	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey
+    //   209: checkcast 894	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey
     //   212: astore 7
     //   214: aload 7
-    //   216: getfield 893	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey:uint64_fromPubUin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   219: invokevirtual 644	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   216: getfield 897	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey:uint64_fromPubUin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   219: invokevirtual 648	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   222: lstore_1
     //   223: aload 7
-    //   225: getfield 896	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey:uint64_qwMsgId	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   228: invokevirtual 644	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   225: getfield 900	tencent/im/s2c/msgtype0x210/submsgtype0x3f/SubMsgType0x3f$PubUniKey:uint64_qwMsgId	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   228: invokevirtual 648	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   231: lstore 5
     //   233: lload_1
-    //   234: invokestatic 898	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   234: invokestatic 902	java/lang/Long:toString	(J)Ljava/lang/String;
     //   237: astore 7
     //   239: aload_0
     //   240: getfield 102	com/tencent/mobileqq/app/PublicAccountHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   243: invokevirtual 671	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   243: invokevirtual 675	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   246: aload 7
     //   248: sipush 1008
     //   251: aconst_null
-    //   252: invokevirtual 901	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;I[I)Ljava/util/List;
+    //   252: invokevirtual 905	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;I[I)Ljava/util/List;
     //   255: invokeinterface 585 1 0
     //   260: astore 8
     //   262: aload 8
@@ -896,46 +897,46 @@ public class PublicAccountHandler
     //   269: ifeq -75 -> 194
     //   272: aload 8
     //   274: invokeinterface 594 1 0
-    //   279: checkcast 903	com/tencent/mobileqq/data/MessageRecord
+    //   279: checkcast 907	com/tencent/mobileqq/data/MessageRecord
     //   282: astore 9
     //   284: aload 9
-    //   286: invokestatic 908	aeum:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lcom/tencent/mobileqq/data/PAMessage;
+    //   286: invokestatic 912	agaw:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Lcom/tencent/mobileqq/data/PAMessage;
     //   289: astore 10
     //   291: aload 10
     //   293: ifnull +37 -> 330
     //   296: aload 10
-    //   298: getfield 913	com/tencent/mobileqq/data/PAMessage:mMsgId	J
+    //   298: getfield 917	com/tencent/mobileqq/data/PAMessage:mMsgId	J
     //   301: lload 5
     //   303: lcmp
     //   304: ifne +26 -> 330
     //   307: aload_0
     //   308: getfield 102	com/tencent/mobileqq/app/PublicAccountHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   311: invokevirtual 671	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   311: invokevirtual 675	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   314: aload 7
     //   316: sipush 1008
     //   319: aload 9
-    //   321: getfield 916	com/tencent/mobileqq/data/MessageRecord:uniseq	J
-    //   324: invokevirtual 919	com/tencent/imcore/message/QQMessageFacade:b	(Ljava/lang/String;IJ)V
+    //   321: getfield 920	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   324: invokevirtual 923	com/tencent/imcore/message/QQMessageFacade:b	(Ljava/lang/String;IJ)V
     //   327: goto -133 -> 194
     //   330: aload 9
-    //   332: ldc_w 921
-    //   335: invokevirtual 925	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   332: ldc_w 925
+    //   335: invokevirtual 929	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   338: astore 10
     //   340: aload 10
     //   342: ifnull -80 -> 262
     //   345: aload 10
-    //   347: invokestatic 637	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   347: invokestatic 641	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   350: lload 5
     //   352: lcmp
     //   353: ifne -91 -> 262
     //   356: aload_0
     //   357: getfield 102	com/tencent/mobileqq/app/PublicAccountHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   360: invokevirtual 671	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   360: invokevirtual 675	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   363: aload 7
     //   365: sipush 1008
     //   368: aload 9
-    //   370: getfield 916	com/tencent/mobileqq/data/MessageRecord:uniseq	J
-    //   373: invokevirtual 919	com/tencent/imcore/message/QQMessageFacade:b	(Ljava/lang/String;IJ)V
+    //   370: getfield 920	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   373: invokevirtual 923	com/tencent/imcore/message/QQMessageFacade:b	(Ljava/lang/String;IJ)V
     //   376: goto -182 -> 194
     //   379: astore 9
     //   381: goto -119 -> 262
@@ -969,10 +970,10 @@ public class PublicAccountHandler
     //   345	376	386	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
   }
   
-  public void a(Context paramContext, int paramInt, alzp paramalzp)
+  public void a(Context paramContext, int paramInt, anrw paramanrw)
   {
-    if (paramalzp != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramalzp);
+    if (paramanrw != null) {
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramanrw);
     }
     if (paramInt == 1) {
       a(paramInt, 0, 0, 0);
@@ -985,7 +986,7 @@ public class PublicAccountHandler
       paramContext = (AppActivity)paramContext;
       if (paramContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
       {
-        paramContext.requestPermissions(new alzm(this, paramInt, paramContext), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+        paramContext.requestPermissions(new anrt(this, paramInt, paramContext), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
         return;
       }
       a(paramInt);
@@ -1010,7 +1011,7 @@ public class PublicAccountHandler
           {
             paramIntent = (GetRecvMsgStateRsp)paramIntent;
             this.app.getApp().getSharedPreferences("public_account_detail_setting_status", 0).edit().putInt("setting_result_" + l + "_" + this.app.getCurrentAccountUin(), paramIntent.result).putInt("setting_status_" + l + "_" + this.app.getCurrentAccountUin(), paramIntent.state).commit();
-            paramIntent = this.app.getHandler(nin.class);
+            paramIntent = this.app.getHandler(nre.class);
             if (paramIntent != null)
             {
               paramIntent.sendEmptyMessage(1000);
@@ -1160,36 +1161,36 @@ public class PublicAccountHandler
   
   public void a(Object paramObject)
   {
-    alzs localalzs = new alzs();
-    localalzs.jdField_a_of_type_Int = 0;
+    anrz localanrz = new anrz();
+    localanrz.jdField_a_of_type_Int = 0;
     long l = SystemClock.uptimeMillis();
-    Object localObject = (alzl)this.app.getManager(56);
+    Object localObject = (anrs)this.app.getManager(56);
     if ((paramObject instanceof AccountDetail))
     {
-      localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
-      ((alzl)localObject).a((AccountDetail)paramObject);
-      ((alzl)localObject).a(localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-      suv.a().a(this.app, ((alzl)localObject).a());
+      localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
+      ((anrs)localObject).a((AccountDetail)paramObject);
+      ((anrs)localObject).a(localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+      twi.a().a(this.app, ((anrs)localObject).a());
       if (((paramObject instanceof AccountDetail)) && (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) <= 0)) {
-        ssp.a().a(this.app, localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
+        tue.a().a(this.app, localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
       }
-      localObject = (ntw)this.app.getManager(88);
+      localObject = (oda)this.app.getManager(88);
       if (localObject != null) {
-        if (localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo != null) {
+        if (localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo != null) {
           break label199;
         }
       }
     }
     label199:
-    for (paramObject = null;; paramObject = localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin())
+    for (paramObject = null;; paramObject = localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin())
     {
-      ((ntw)localObject).a(paramObject, "onFollow");
-      notifyUI(101, true, localalzs);
+      ((oda)localObject).a(paramObject, "onFollow");
+      notifyUI(101, true, localanrz);
       return;
       if (!(paramObject instanceof EqqDetail)) {
         break;
       }
-      localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+      localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
       break;
     }
   }
@@ -1219,7 +1220,7 @@ public class PublicAccountHandler
   
   public void a(String paramString, long paramLong, int paramInt, BusinessObserver paramBusinessObserver)
   {
-    NewIntent localNewIntent = new NewIntent(this.app.getApp(), nrz.class);
+    NewIntent localNewIntent = new NewIntent(this.app.getApp(), oaz.class);
     localNewIntent.putExtra("cmd", "pull_aio_history_msg");
     historyMsg.AioHistoryMsgRequest localAioHistoryMsgRequest = new historyMsg.AioHistoryMsgRequest();
     localAioHistoryMsgRequest.puin.set(Long.parseLong(paramString));
@@ -1232,9 +1233,9 @@ public class PublicAccountHandler
     for (;;)
     {
       this.app.startServlet(localNewIntent);
-      azqs.b(this.app, "CliOper", "", "", "0X8006502", "0X8006502", 0, 0, "", "", "", "");
+      bcst.b(this.app, "CliOper", "", "", "0X8006502", "0X8006502", 0, 0, "", "", "", "");
       return;
-      nrz.a(localNewIntent);
+      oaz.a(localNewIntent);
     }
   }
   
@@ -1306,43 +1307,43 @@ public class PublicAccountHandler
   
   public void b(Object paramObject)
   {
-    alzs localalzs = new alzs();
-    localalzs.jdField_a_of_type_Int = 0;
+    anrz localanrz = new anrz();
+    localanrz.jdField_a_of_type_Int = 0;
     long l = SystemClock.uptimeMillis();
-    Object localObject = (alzl)this.app.getManager(56);
+    Object localObject = (anrs)this.app.getManager(56);
     if ((paramObject instanceof AccountDetail))
     {
-      localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
-      ((alzl)localObject).b((AccountDetail)paramObject);
-      ((alzl)localObject).b(localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+      localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
+      ((anrs)localObject).b((AccountDetail)paramObject);
+      ((anrs)localObject).b(localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
       if ((paramObject instanceof EqqDetail))
       {
-        alrt localalrt = (alrt)this.app.getManager(69);
-        if (localalrt != null) {
-          localalrt.b((EqqDetail)paramObject);
+        anlf localanlf = (anlf)this.app.getManager(69);
+        if (localanlf != null) {
+          localanlf.b((EqqDetail)paramObject);
         }
       }
-      suv.a().a(this.app, ((alzl)localObject).a());
+      twi.a().a(this.app, ((anrs)localObject).a());
       if ((paramObject instanceof AccountDetail)) {
-        ssp.a().a(this.app, localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
+        tue.a().a(this.app, localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
       }
-      localObject = (ntw)this.app.getManager(88);
+      localObject = (oda)this.app.getManager(88);
       if (localObject != null) {
-        if (localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo != null) {
+        if (localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo != null) {
           break label218;
         }
       }
     }
     label218:
-    for (paramObject = null;; paramObject = localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin())
+    for (paramObject = null;; paramObject = localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin())
     {
-      ((ntw)localObject).a(paramObject, "onUnfollow");
-      notifyUI(102, true, localalzs);
+      ((oda)localObject).a(paramObject, "onUnfollow");
+      notifyUI(102, true, localanrz);
       return;
       if (!(paramObject instanceof EqqDetail)) {
         break;
       }
-      localalzs.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+      localanrz.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
       break;
     }
   }
@@ -1364,9 +1365,9 @@ public class PublicAccountHandler
     //   1: istore 7
     //   3: iconst_0
     //   4: istore 6
-    //   6: new 1205	java/util/ArrayList
+    //   6: new 1209	java/util/ArrayList
     //   9: dup
-    //   10: invokespecial 1206	java/util/ArrayList:<init>	()V
+    //   10: invokespecial 1210	java/util/ArrayList:<init>	()V
     //   13: astore 8
     //   15: aload_2
     //   16: invokevirtual 362	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
@@ -1377,25 +1378,25 @@ public class PublicAccountHandler
     //   27: istore 5
     //   29: iload 5
     //   31: ifeq +194 -> 225
-    //   34: new 1208	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody
+    //   34: new 1212	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody
     //   37: dup
-    //   38: invokespecial 1209	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:<init>	()V
+    //   38: invokespecial 1213	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:<init>	()V
     //   41: astore_1
     //   42: aload_1
     //   43: aload_3
-    //   44: checkcast 753	[B
-    //   47: checkcast 753	[B
-    //   50: invokevirtual 1210	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   44: checkcast 757	[B
+    //   47: checkcast 757	[B
+    //   50: invokevirtual 1214	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   53: pop
     //   54: iload 7
     //   56: istore 5
     //   58: aload_1
-    //   59: getfield 1213	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:ret_info	Lcom/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo;
-    //   62: invokevirtual 1216	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo:has	()Z
+    //   59: getfield 1217	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:ret_info	Lcom/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo;
+    //   62: invokevirtual 1220	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo:has	()Z
     //   65: ifeq +136 -> 201
     //   68: aload_1
-    //   69: getfield 1213	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:ret_info	Lcom/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo;
-    //   72: getfield 1217	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   69: getfield 1217	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:ret_info	Lcom/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo;
+    //   72: getfield 1221	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   75: invokevirtual 393	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   78: istore 4
     //   80: invokestatic 68	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1403,42 +1404,42 @@ public class PublicAccountHandler
     //   86: ldc 70
     //   88: iconst_1
     //   89: iconst_2
-    //   90: anewarray 1219	java/lang/Object
+    //   90: anewarray 1223	java/lang/Object
     //   93: dup
     //   94: iconst_0
-    //   95: ldc_w 1221
+    //   95: ldc_w 1225
     //   98: aastore
     //   99: dup
     //   100: iconst_1
     //   101: iload 4
-    //   103: invokestatic 772	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   103: invokestatic 776	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   106: aastore
-    //   107: invokestatic 1224	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   107: invokestatic 1228	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   110: iload 7
     //   112: istore 5
     //   114: iload 4
     //   116: ifne +85 -> 201
     //   119: aload_1
-    //   120: getfield 1227	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   123: invokevirtual 1228	com/tencent/mobileqq/pb/PBRepeatMessageField:isEmpty	()Z
+    //   120: getfield 1231	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   123: invokevirtual 1232	com/tencent/mobileqq/pb/PBRepeatMessageField:isEmpty	()Z
     //   126: ifne +93 -> 219
     //   129: iconst_0
     //   130: istore 4
     //   132: iload 4
     //   134: aload_1
-    //   135: getfield 1227	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   138: invokevirtual 1229	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   135: getfield 1231	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   138: invokevirtual 1233	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   141: if_icmpge +78 -> 219
     //   144: aload 8
     //   146: aload_1
-    //   147: getfield 1227	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   147: getfield 1231	com/tencent/mobileqq/biuGuide/SSOBiuGuide$RspBody:rpt_msg_uin_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   150: iload 4
-    //   152: invokevirtual 1232	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   155: checkcast 1234	com/tencent/mobileqq/biuGuide/SSOBiuGuide$UinInfo
-    //   158: getfield 1235	com/tencent/mobileqq/biuGuide/SSOBiuGuide$UinInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   161: invokevirtual 644	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   164: invokestatic 761	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   167: invokevirtual 1238	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   152: invokevirtual 1236	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   155: checkcast 1238	com/tencent/mobileqq/biuGuide/SSOBiuGuide$UinInfo
+    //   158: getfield 1239	com/tencent/mobileqq/biuGuide/SSOBiuGuide$UinInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   161: invokevirtual 648	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   164: invokestatic 765	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   167: invokevirtual 1242	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   170: pop
     //   171: iload 4
     //   173: iconst_1
@@ -1453,9 +1454,9 @@ public class PublicAccountHandler
     //   189: istore 5
     //   191: ldc 70
     //   193: iconst_1
-    //   194: ldc_w 1240
+    //   194: ldc_w 1244
     //   197: aload_1
-    //   198: invokestatic 1192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   198: invokestatic 1196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   201: aload_0
     //   202: bipush 110
     //   204: iload 5
@@ -1552,7 +1553,7 @@ public class PublicAccountHandler
       {
         paramObject = ((ByteStringMicro)paramFromServiceMsg.get(j)).toByteArray();
         localMsg = new msg_comm.Msg();
-        localMsg.mergeFrom(bdfr.decode(paramObject, 0));
+        localMsg.mergeFrom(bgku.decode(paramObject, 0));
         paramIntent.add(localMsg);
         j += 1;
       }
@@ -1560,7 +1561,7 @@ public class PublicAccountHandler
       {
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_Long = l;
-        new nno(this.app, this.app.a()).a(l, paramIntent);
+        new nwl(this.app, this.app.a()).a(l, paramIntent);
         return;
         QLog.e("PublicAccountHandler", 2, "handleGetRecommendList onReceive fail: ", paramIntent);
         return;
@@ -1584,9 +1585,9 @@ public class PublicAccountHandler
     }
   }
   
-  public Class<? extends alpg> observerClass()
+  public Class<? extends anil> observerClass()
   {
-    return alzr.class;
+    return anry.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1621,7 +1622,7 @@ public class PublicAccountHandler
         paramToServiceMsg = paramToServiceMsg.string_msg.get();
         if ((i == 1) || (i == 2))
         {
-          paramFromServiceMsg = (alzp)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+          paramFromServiceMsg = (anrw)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
           if (paramFromServiceMsg != null) {
             paramFromServiceMsg.a(paramToServiceMsg);
           }
@@ -1642,7 +1643,7 @@ public class PublicAccountHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler
  * JD-Core Version:    0.7.0.1
  */

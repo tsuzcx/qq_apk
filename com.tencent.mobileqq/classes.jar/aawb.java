@@ -1,45 +1,55 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aawb
-  extends aavz
 {
-  public aawb(JSONObject paramJSONObject)
+  private String a = aavz.b;
+  private String b = "1";
+  private String c = aavz.a;
+  
+  public static aawb a(String paramString)
   {
-    a(paramJSONObject);
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      aawb localaawb = new aawb();
+      paramString = new JSONObject(paramString);
+      localaawb.a = paramString.optString("mine_videostory_entrance", aavz.b);
+      localaawb.b = paramString.optString("enable_click_take_picture", "1");
+      localaawb.c = paramString.optString("mine_videostory_drawer_entrance", aavz.a);
+      return localaawb;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
   public String a()
   {
-    String str = super.a();
-    try
-    {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
-    }
-    return str;
+    return this.a;
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public String b()
   {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aawb
  * JD-Core Version:    0.7.0.1
  */

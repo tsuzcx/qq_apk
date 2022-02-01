@@ -1,35 +1,78 @@
+import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import mqq.os.MqqHandler;
 
-public abstract class bmyl
+public class bmyl
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
-  
-  public bmyl(int paramInt1, String paramString, int paramInt2)
+  private static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
   }
   
-  @NonNull
-  public abstract bmym a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  @NonNull
-  public abstract Class<? extends bmym> a();
-  
-  public boolean a()
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    return false;
+    if (paramQQAppInterface.a().a() == true)
+    {
+      paramQQAppInterface.a().c();
+      return;
+    }
+    if (bgnt.d(BaseApplication.getContext()))
+    {
+      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
+      paramQQAppInterface.putExtra("tab_tab_type", 3);
+      paramQQAppInterface.putExtra("from", "FileAssistant");
+      paramActivity.startActivityForResult(paramQQAppInterface, 101);
+      return;
+    }
+    atvf.a(BaseApplication.getContext().getString(2131693946));
   }
   
-  public String toString()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
   {
-    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
+    if ((paramQQAppInterface == null) || (paramActivity == null)) {
+      return;
+    }
+    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt, paramQQAppInterface), 1000L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
+  {
+    int i = bgsg.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
+    if (i == 1)
+    {
+      String str = bgsg.u(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      i = bgsg.aT(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      if (!TextUtils.isEmpty(str)) {
+        try
+        {
+          a(paramActivity, str, i);
+          return;
+        }
+        catch (MiniAppException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
+          }
+          a(paramQQAppInterface, paramActivity);
+          return;
+        }
+      }
+      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
+      a(paramQQAppInterface, paramActivity);
+      return;
+    }
+    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
+    a(paramQQAppInterface, paramActivity);
   }
 }
 

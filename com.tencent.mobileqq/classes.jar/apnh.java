@@ -1,29 +1,33 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
+import java.util.LinkedHashMap;
 
-class apnh
-  extends apow<CustomEmotionData>
+public class apnh
 {
-  apnh(apnd paramapnd) {}
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public void a()
+  public apnh()
   {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
-  public void a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    if (((paramInt1 <= 28) || (paramInt2 % 28 == 0)) && (this.a.a != null)) {
-      this.a.a.e();
-    }
+    if (!(paramObject instanceof apnh)) {}
+    do
+    {
+      return false;
+      paramObject = (apnh)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
   }
 }
 

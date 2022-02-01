@@ -1,76 +1,212 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Map;
 
 public class aobd
 {
-  private static final aobd jdField_a_of_type_Aobd = new aobd();
-  private static String jdField_a_of_type_JavaLangString = aobd.class.getSimpleName();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
-  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  private aobd()
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
-      i += 1;
-    }
-    a();
-  }
+  private static volatile aobd jdField_a_of_type_Aobd;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
   
   public static aobd a()
   {
-    return jdField_a_of_type_Aobd;
+    if (jdField_a_of_type_Aobd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aobd == null) {
+        jdField_a_of_type_Aobd = new aobd();
+      }
+      return jdField_a_of_type_Aobd;
+    }
+    finally {}
   }
   
-  private void a()
+  private boolean a(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
-    }
+    return (paramBroadcastReceiver == null) || (paramContext == null);
   }
   
-  public String a()
+  public Intent a(Context paramContext)
   {
-    String str;
-    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
-    }
-    for (;;)
+    if (paramContext == null)
     {
-      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
-      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
-      } else {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
+      QLog.e("AVGameShareUtil", 1, "getBackFlowIntent error: context is null");
+      return null;
+    }
+    paramContext = new Intent(paramContext, SplashActivity.class);
+    paramContext.putExtra("thridparty_prepare_av_game", true);
+    paramContext.addFlags(67108864);
+    paramContext.addFlags(268435456);
+    paramContext.putExtra("fragment_id", 1);
+    return paramContext;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      QLog.e("AVGameShareUtil", 1, "getCoverUrl error: map is null");
+      return null;
+    }
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    QLog.d("AVGameShareUtil", 1, "getCoverUrl gameId: " + paramString + " coverUrl: " + str);
+    return str;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      QLog.e("AVGameShareUtil", 1, "clearCoverMap invalid: map is null");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    new aobb(paramActivity, paramString, paramInt).c();
+  }
+  
+  public void a(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
+  {
+    try
+    {
+      if (a(paramBroadcastReceiver, paramContext))
+      {
+        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: iLegalReceiver");
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: is registered");
+        return;
       }
     }
+    catch (Exception paramBroadcastReceiver)
+    {
+      QLog.e("AVGameShareUtil", 2, "registerShareReceiver error: " + paramBroadcastReceiver.getMessage());
+      return;
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.app.avgameshare.avgameshareutil");
+    paramContext.registerReceiver(paramBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public String b()
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
+    if (paramContext == null) {}
+    try
+    {
+      QLog.e("AVGameShareUtil", 1, "notifyFromForward error: context is null");
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      Intent localIntent;
+      QLog.e("AVGameShareUtil", 1, "notifyFromForward error: " + paramContext.getMessage());
+    }
+    localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.app.avgameshare.avgameshareutil");
+    localIntent.putExtra("avgame_share_result_success", paramBoolean);
+    localIntent.setPackage(paramContext.getPackageName());
+    paramContext.sendBroadcast(localIntent);
+    return;
+  }
+  
+  public void a(AVGameAppInterface paramAVGameAppInterface, long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, aobj paramaobj)
+  {
+    QLog.d("AVGameShareUtil", 1, "requestGetShareLink roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString1 + " shareType: " + paramInt1 + " gameId: " + paramString2 + " gameType: " + paramInt2);
+    long l = System.currentTimeMillis();
+    HashMap localHashMap = new HashMap();
+    paramaobj = new aobg(this, l, localHashMap, paramAVGameAppInterface, paramaobj);
+    localHashMap.put(Long.valueOf(l), paramaobj);
+    paramAVGameAppInterface.addObserver(paramaobj);
+    mxl.a().a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, l);
+  }
+  
+  public void a(AVGameAppInterface paramAVGameAppInterface, Activity paramActivity, long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt)
+  {
+    QLog.d("AVGameShareUtil", 1, "shareAVGameResultLink currentUin: " + paramLong2 + " roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString1 + " roundId: " + paramString2 + " gameType: " + paramInt);
+    a(paramAVGameAppInterface, paramLong1, paramLong2, paramString1, 2, paramString2, paramInt, new aobf(this, paramActivity, paramLong2, paramLong1, paramInt, paramString1, paramString2));
+  }
+  
+  public void a(AVGameAppInterface paramAVGameAppInterface, BaseActivity paramBaseActivity, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QLog.d("AVGameShareUtil", 1, "sinviteCallbackhareAVGameEntry currentUin: " + paramLong2 + " roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString + " gameSerType:" + paramInt);
+    a(paramAVGameAppInterface, paramLong1, paramLong2, paramString, 1, "", paramInt, new aobe(this, paramBaseActivity, paramLong2, paramLong1, paramString));
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString, aobj paramaobj)
+  {
+    QLog.d("AVGameShareUtil", 1, "requestGetInviteBackflowInfo key: " + paramString);
+    mwd localmwd = (mwd)paramAppInterface.getManager(373);
+    long l = System.currentTimeMillis();
+    HashMap localHashMap = new HashMap();
+    paramaobj = new aobh(this, l, localHashMap, paramAppInterface, paramaobj);
+    localHashMap.put(Long.valueOf(l), paramaobj);
+    paramAppInterface.addObserver(paramaobj);
+    if (localmwd != null) {
+      localmwd.a(paramString, l);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt2, String paramString3, int paramInt3)
+  {
+    QLog.d("AVGameShareUtil", 1, "requestShareUrlAndSendMsg roomId: " + paramLong1 + " curType: " + paramInt1 + " friendUin: " + paramString1 + " shareUin: " + paramLong2 + " shareName: " + paramString2 + " shareType: " + paramInt2 + " gameId: " + paramString3 + " gameType: " + paramInt3);
+    mwd localmwd = (mwd)paramQQAppInterface.getManager(373);
+    long l = System.currentTimeMillis();
+    HashMap localHashMap = new HashMap();
+    paramString1 = new aobi(this, l, localHashMap, paramQQAppInterface, paramInt1, paramString1, paramString2, paramLong2, paramLong1);
+    localHashMap.put(Long.valueOf(l), paramString1);
+    paramQQAppInterface.addObserver(paramString1);
+    if (localmwd != null) {
+      localmwd.a(paramLong1, paramLong2, paramString2, paramInt2, paramString3, paramInt3, l);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    QLog.d("AVGameShareUtil", 1, "addCoverUrl gameId: " + paramString1 + " coverUrl: " + paramString2);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void b(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
+  {
+    try
+    {
+      if (a(paramBroadcastReceiver, paramContext))
+      {
+        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: iLegalReceiver");
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: is not registered");
+        return;
+      }
+    }
+    catch (Exception paramBroadcastReceiver)
+    {
+      QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: " + paramBroadcastReceiver.getMessage());
+      return;
+    }
+    paramContext.unregisterReceiver(paramBroadcastReceiver);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

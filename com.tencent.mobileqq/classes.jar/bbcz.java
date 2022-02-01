@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.view.View;
 
-public class bbcz
-  implements DialogInterface.OnClickListener
+public abstract interface bbcz
 {
-  public bbcz(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

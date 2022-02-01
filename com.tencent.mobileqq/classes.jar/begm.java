@@ -1,37 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class begm
-  implements View.OnTouchListener
+  implements InputFilter
 {
-  public begm(WebViewFragment paramWebViewFragment) {}
+  public begm(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    if (paramCharSequence != null)
     {
-    default: 
-      bool1 = false;
+      paramCharSequence = paramCharSequence.toString();
+      if (bfqu.a(paramCharSequence, '\n') + bfqu.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "vg onTouch");
-    }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    return null;
   }
 }
 

@@ -1,33 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigm
-  implements bhuw
+public class aigm
+  extends benb
 {
-  aigm(aigf paramaigf) {}
+  public aigm(TroopChatPie paramTroopChatPie) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Aige.getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = this.a.jdField_a_of_type_Aige.a(paramInt - 1);
-    if (paramAdapterView != null)
+    if (!String.valueOf(paramLong).equals(this.a.c())) {}
+    PlusPanel localPlusPanel;
+    do
     {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
-    }
-    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
+      localPlusPanel = (PlusPanel)TroopChatPie.g(this.a).b(8);
+    } while (localPlusPanel == null);
+    localPlusPanel.a();
   }
 }
 

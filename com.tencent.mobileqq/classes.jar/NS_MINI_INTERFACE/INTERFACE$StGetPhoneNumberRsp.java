@@ -4,16 +4,18 @@ import NS_COMM.COMM.StCommonExt;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class INTERFACE$StGetPhoneNumberRsp
   extends MessageMicro<StGetPhoneNumberRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "extInfo", "purePhoneNumber", "countryCode", "encryptedData", "iv" }, new Object[] { null, "", "", "", "" }, StGetPhoneNumberRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50 }, new String[] { "extInfo", "purePhoneNumber", "countryCode", "encryptedData", "iv", "phoneLists" }, new Object[] { null, "", "", "", "", null }, StGetPhoneNumberRsp.class);
   public final PBStringField countryCode = PBField.initString("");
   public final PBStringField encryptedData = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField iv = PBField.initString("");
+  public final PBRepeatMessageField<INTERFACE.StPhoneNumber> phoneLists = PBField.initRepeatMessage(INTERFACE.StPhoneNumber.class);
   public final PBStringField purePhoneNumber = PBField.initString("");
 }
 

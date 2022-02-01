@@ -1,22 +1,36 @@
 package com.tencent.biz.webviewplugin;
 
-import bety;
-import zdv;
+import abap;
+import anni;
+import biau;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class NewReportPlugin$2$1
+public class NewReportPlugin$2$1
   implements Runnable
 {
-  NewReportPlugin$2$1(NewReportPlugin.2 param2, String paramString) {}
+  public NewReportPlugin$2$1(abap paramabap) {}
   
   public void run()
   {
-    zdv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_Bety.dismiss();
+    try
+    {
+      if (this.this$0.jdField_a_of_type_Biau.isShowing()) {
+        this.this$0.jdField_a_of_type_Biau.dismiss();
+      }
+      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, anni.a(2131706330), 0).a();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NewReportPlugin", 2, "handleGetTinyId, exp=" + localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

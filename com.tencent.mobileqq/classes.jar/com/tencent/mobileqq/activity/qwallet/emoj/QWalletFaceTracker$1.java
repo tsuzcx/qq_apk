@@ -5,9 +5,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import java.util.ArrayList;
 import java.util.List;
-import lvw;
-import lvx;
-import lvy;
+import lsy;
+import lsz;
+import lta;
 
 class QWalletFaceTracker$1
   implements Runnable
@@ -62,9 +62,9 @@ class QWalletFaceTracker$1
           QWalletFaceTracker.ExpressionInfo localExpressionInfo = (QWalletFaceTracker.ExpressionInfo)this.this$0.expressionItemList.get(this.val$index);
           if (localExpressionInfo != null)
           {
-            lvx locallvx = localExpressionInfo.expressionItem;
-            lvy locallvy = lvw.a(locallvx, new ArrayList(localList), lvw.b((float[])localObject));
-            f2 = locallvy.a;
+            lsz locallsz = localExpressionInfo.expressionItem;
+            lta locallta = lsy.a(locallsz, new ArrayList(localList), lsy.b((float[])localObject));
+            f2 = locallta.a;
             if (QLog.isColorLevel()) {
               QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression score: " + f2 + " threshold: " + this.val$threshold);
             }
@@ -74,7 +74,7 @@ class QWalletFaceTracker$1
               f1 = f2;
               if (this.this$0.normalFaceExpression != null)
               {
-                if ((locallvx.expressionWeight[0] <= 0.0D) || (locallvx.expressionWeight[1] <= 0.0D) || (lvw.a(locallvy))) {
+                if ((locallsz.expressionWeight[0] <= 0.0D) || (locallsz.expressionWeight[1] <= 0.0D) || (lsy.a(locallta))) {
                   break label628;
                 }
                 if (!QLog.isColorLevel()) {
@@ -82,7 +82,7 @@ class QWalletFaceTracker$1
                 }
                 QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression, invalid EyeOpenClose,reset score");
                 break label634;
-                boolean bool = QWalletFaceTracker.access$100(this.this$0, locallvy.a, localExpressionInfo.coolValue, locallvx.expressionWeight, locallvx.a, this.this$0.normalFaceExpression, localList, lvw.b((float[])localObject));
+                boolean bool = QWalletFaceTracker.access$100(this.this$0, locallta.a, localExpressionInfo.coolValue, locallsz.expressionWeight, locallsz.a, this.this$0.normalFaceExpression, localList, lsy.b((float[])localObject));
                 if (QLog.isColorLevel()) {
                   QLog.d(QWalletFaceTracker.TAG, 2, "isNormalExpression: " + f1);
                 }
@@ -147,7 +147,7 @@ class QWalletFaceTracker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,6 @@
-final class bkji
-  implements bklf
+public abstract interface bkji
 {
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong, bkkq parambkkq, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (parambkkq.a != 5) {
-        break label25;
-      }
-      bkmk.a(paramString, "actFileWyDown", parambkkq, false, paramLong);
-    }
-    label25:
-    while (parambkkq.a != 4) {
-      return;
-    }
-    bkmk.a(paramString, "actFileWyDown", parambkkq, true, paramLong);
-  }
+  public abstract int[] a();
 }
 
 

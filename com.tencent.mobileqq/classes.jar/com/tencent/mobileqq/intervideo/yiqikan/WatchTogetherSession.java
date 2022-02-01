@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atgf;
-import bapt;
-import bapu;
+import avmv;
+import bdrn;
+import bdro;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class WatchTogetherSession
-  extends bapt
+  extends bdrn
   implements Parcelable
 {
-  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new atgf();
+  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new avmv();
   public int a;
   public long a;
   public String a;
@@ -75,7 +75,7 @@ public class WatchTogetherSession
   
   public int b()
   {
-    return 2130844447;
+    return 2130844841;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -93,7 +93,7 @@ public class WatchTogetherSession
       if (TextUtils.isEmpty(paramQQAppInterface)) {
         break label78;
       }
-      paramQQAppInterface = bapu.a(16, paramQQAppInterface);
+      paramQQAppInterface = bdro.a(16, paramQQAppInterface);
     }
     for (;;)
     {
@@ -168,7 +168,7 @@ public class WatchTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
-
 public class agbf
-  implements beqw
 {
-  public agbf(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, agbi paramagbi) {}
-  
-  public void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Agbi.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

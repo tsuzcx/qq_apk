@@ -1,18 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import org.json.JSONObject;
 
-public class rvh
-  extends ThreadLocal<Integer>
+public abstract interface rvh
 {
-  public rvh(ReadInJoyXListView paramReadInJoyXListView) {}
-  
-  protected Integer a()
-  {
-    return Integer.valueOf(0);
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvh
  * JD-Core Version:    0.7.0.1
  */

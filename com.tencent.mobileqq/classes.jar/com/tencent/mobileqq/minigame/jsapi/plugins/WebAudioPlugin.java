@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
@@ -381,7 +381,7 @@ public class WebAudioPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.WebAudioPlugin
  * JD-Core Version:    0.7.0.1
  */

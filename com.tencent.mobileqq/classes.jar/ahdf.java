@@ -1,21 +1,59 @@
-import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMyEnterTroop;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahdf
-  implements View.OnClickListener
+  extends afuu
 {
-  public ahdf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public void onClick(View paramView)
+  public ahdf(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected afuv a()
+  {
+    return new ahdg(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, afuv paramafuv, View paramView, LinearLayout paramLinearLayout, afzq paramafzq)
+  {
+    paramLinearLayout = (ahdg)paramafuv;
+    paramafuv = paramView;
+    if (paramView == null)
+    {
+      paramafuv = LayoutInflater.from(this.a).inflate(2131558889, null);
+      paramLinearLayout.b = ((TextView)paramafuv.findViewById(2131367600));
     }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    paramLinearLayout.b.setMovementMethod(null);
+    paramLinearLayout.b.setGravity(17);
+    if ((paramMessageRecord instanceof MessageForMyEnterTroop))
+    {
+      paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
+      paramMessageRecord = this.a.getString(2131696497);
+      paramLinearLayout.b.setText(paramMessageRecord);
+      paramView = this.a.getResources().getColorStateList(2131165430);
+      if (paramView != null) {
+        paramLinearLayout.b.setTextColor(paramView);
+      }
+      paramafuv.setContentDescription(paramMessageRecord);
     }
+    return paramafuv;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bguj[] a(View paramView)
+  {
+    return null;
   }
 }
 

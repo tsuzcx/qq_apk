@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ajsv;
-import azda;
-import azek;
-import azel;
-import bdhb;
+import alll;
+import bcdz;
+import bcfk;
+import bcfl;
+import bgmg;
 import java.io.File;
 
 public final class ShortVideoArtResourceMgr$1
@@ -12,8 +12,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = azda.b();
-    String str2 = azda.a();
+    String str1 = bcdz.b();
+    String str2 = bcdz.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,8 +37,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = azek.a((String)localObject2);
-            m = ((azel)localObject3).a();
+            localObject3 = bcfk.a((String)localObject2);
+            m = ((bcfl)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -50,7 +50,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((azel)localObject3).b();
+        localObject3 = ((bcfl)localObject3).b();
       }
     }
     label419:
@@ -81,8 +81,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(ajsv.c).exists()) {
-        bdhb.a(ajsv.c);
+      if (new File(alll.c).exists()) {
+        bgmg.a(alll.c);
       }
       return;
     }
@@ -90,7 +90,7 @@ public final class ShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

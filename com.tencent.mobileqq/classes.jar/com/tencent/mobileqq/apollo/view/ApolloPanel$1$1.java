@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import almj;
 import android.widget.ImageView;
+import anfn;
 
 public class ApolloPanel$1$1
   implements Runnable
 {
-  public ApolloPanel$1$1(almj paramalmj) {}
+  public ApolloPanel$1$1(anfn paramanfn) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ApolloPanel$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.1.1
  * JD-Core Version:    0.7.0.1
  */

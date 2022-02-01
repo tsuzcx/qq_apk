@@ -1,24 +1,16 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class adyw
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adyw(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adyw(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
   }
 }

@@ -1,20 +1,8 @@
-public class bmro
+public abstract interface bmro
 {
-  public int a;
-  public bmrl a;
-  public int b;
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
   
-  private bmro(bmrq parambmrq)
-  {
-    this.jdField_a_of_type_Bmrl = bmrq.a(parambmrq);
-    this.jdField_a_of_type_Int = bmrq.a(parambmrq);
-    this.b = bmrq.b(parambmrq);
-  }
-  
-  public String toString()
-  {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Bmrl + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 

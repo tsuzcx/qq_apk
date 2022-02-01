@@ -1,33 +1,31 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class uhp
-  implements ScaleGestureDetector.OnScaleGestureListener
+  implements URLDrawable.URLDrawableListener
 {
-  uhp(uho paramuho) {}
+  uhp(uhk paramuhk) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if ((Float.isNaN(f)) || (Float.isInfinite(f))) {
-      return false;
-    }
-    if (f >= 0.0F) {
-      uho.a(this.a).a(f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    }
-    return true;
+    uhk.a(this.a, null);
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return true;
+    uhk.a(this.a, null);
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    uhk.a(this.a, paramURLDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uhp
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ public final class FastWebAnimationUtils$1
   
   public void run()
   {
-    ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131368670)).setText("");
+    ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131368994)).setText("");
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.1
  * JD-Core Version:    0.7.0.1
  */

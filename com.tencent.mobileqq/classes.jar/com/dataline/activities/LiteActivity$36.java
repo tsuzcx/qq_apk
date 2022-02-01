@@ -1,6 +1,5 @@
 package com.dataline.activities;
 
-import alof;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -9,9 +8,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azvd;
-import bamp;
-import bdgc;
+import anhk;
+import bcwd;
+import bdnt;
+import bglf;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -31,15 +31,15 @@ class LiteActivity$36
       if (this.this$0.jdField_b_of_type_AndroidWidgetTextView == null)
       {
         this.this$0.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.this$0);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131370831);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131371393);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130838955));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130839121));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838955);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131166973));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839121);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.this$0.getResources().getColorStateList(2131167056));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setPadding((int)(LiteActivity.a(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingTop(), (int)(LiteActivity.b(this.this$0) * 10.0F), this.this$0.jdField_b_of_type_AndroidWidgetTextView.getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131296956));
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.getResources().getDimension(2131297009));
         this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.this$0);
       }
@@ -61,7 +61,7 @@ class LiteActivity$36
       localStringBuilder.append(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.nickName);
       label388:
       localStringBuilder.append(":");
-      if (!(localObject instanceof bamp)) {
+      if (!(localObject instanceof bdnt)) {
         break label905;
       }
     }
@@ -69,7 +69,7 @@ class LiteActivity$36
     {
       try
       {
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((bamp)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((bdnt)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_AndroidContentIntent);
         localObject = this.this$0.jdField_b_of_type_AndroidWidgetTextView.getHandler();
@@ -85,7 +85,7 @@ class LiteActivity$36
         label510:
         if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgtype == -2011)
         {
-          localObject = azvd.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgData);
+          localObject = bcwd.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgData);
           if (localObject != null)
           {
             localObject = ((AbsStructMsg)localObject).mMsgBrief;
@@ -124,9 +124,9 @@ class LiteActivity$36
         }
         if ((1010 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop) || (1001 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop) || (10002 == this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.istroop))
         {
-          if (String.valueOf(alof.H).equals(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin))
+          if (String.valueOf(anhk.H).equals(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin))
           {
-            str2 = bdgc.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin);
+            str2 = bglf.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin);
             str1 = str2;
             if (TextUtils.isEmpty(str2)) {
               str1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.senderuin;
@@ -137,10 +137,10 @@ class LiteActivity$36
             if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.msgtype != -1024) {
               break label388;
             }
-            localObject = String.format(this.this$0.getResources().getString(2131699159), new Object[] { str1 });
+            localObject = String.format(this.this$0.getResources().getString(2131697866), new Object[] { str1 });
             break label388;
           }
-          str2 = bdgc.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin);
+          str2 = bglf.q(this.this$0.app, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message.frienduin);
           str1 = str2;
           if (!TextUtils.isEmpty(str2)) {
             continue;
@@ -166,7 +166,7 @@ class LiteActivity$36
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.36
  * JD-Core Version:    0.7.0.1
  */

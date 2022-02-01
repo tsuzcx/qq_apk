@@ -1,59 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class akck
-  implements akcl
+  implements DialogInterface.OnClickListener
 {
-  akck(akci paramakci) {}
+  public akck(BindNumberActivity paramBindNumberActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (akci.a(this.a) != null) {
-      akci.a(this.a).a(paramInt);
+    if (this.a.a != null) {
+      this.a.a.setText("");
     }
-  }
-  
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
-  {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      akci.a(this.a).a(paramPublishVideoEntry, paramString2);
-    }
-    for (;;)
-    {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", akci.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
-      }
-      akci.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (akci.b(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bdhb.b(paramPublishVideoEntry.doodlePath)))
-    {
-      akci.a(paramString, paramPublishVideoEntry, akci.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
   }
 }
 

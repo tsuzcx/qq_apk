@@ -26,7 +26,6 @@ import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceActionCallback;
 import com.tencent.ttpic.util.youtu.ExpressionDetectorObject;
-import com.tencent.ttpic.util.youtu.GenderDetector;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -50,8 +49,10 @@ public abstract class FaceDetector
   protected static final Object mDetectLock = new Object();
   private Sensor accelerometer;
   private double angle = 0.0D;
+  boolean clearFaceQueue = false;
   private int curDetectInterval = 800;
   private FaceDetector.DETECT_STAGE detectStage = FaceDetector.DETECT_STAGE.DETECT_NO_FACE;
+  protected List<Set<Integer>> expressions;
   protected Set<FaceDetector.FaceDetectListener> faceDetectListeners = new HashSet();
   protected List<FaceInfo> faceInfos = new ArrayList();
   private long factor = 0L;
@@ -113,7 +114,6 @@ public abstract class FaceDetector
         this.sensorManager.unregisterListener(this.mSensorEventListener);
       }
       this.faceDetectListeners.clear();
-      GenderDetector.getInstance().destroy();
       return;
     }
   }
@@ -228,6 +228,11 @@ public abstract class FaceDetector
   }
   
   public abstract RetrieveDataManager.DATA_TYPE getDataType();
+  
+  public List<Set<Integer>> getExpressions()
+  {
+    return this.expressions;
+  }
   
   public Map<Integer, FaceActionCounter> getFaceActionCounter()
   {
@@ -505,11 +510,6 @@ public abstract class FaceDetector
   
   public void setDetectEmotion(boolean paramBoolean) {}
   
-  public void setDetectGender(boolean paramBoolean)
-  {
-    GenderDetector.getInstance().setNeedDetectGender(paramBoolean);
-  }
-  
   public void setMaxFaceCount(int paramInt) {}
   
   public void unlockActionCounter()
@@ -569,6 +569,33 @@ public abstract class FaceDetector
     }
   }
   
+  public void updateAllFaceExpression(boolean paramBoolean)
+  {
+    int j = 0;
+    if (paramBoolean)
+    {
+      this.expressions = new ArrayList();
+      int i = 0;
+      while (i < this.faceInfos.size())
+      {
+        this.expressions.add(new HashSet());
+        i += 1;
+      }
+      PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+      int k = arrayOfPTExpression.length;
+      i = j;
+      while (i < k)
+      {
+        PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
+        this.mExpressionDetectorObject.detectAllFaceExpression(this.expressions, localPTExpression.value);
+        i += 1;
+      }
+    }
+    if (this.clearFaceQueue) {
+      this.mExpressionDetectorObject.clearFaceQueue();
+    }
+  }
+  
   protected void updatePointsAndAngles(FaceStatus[] paramArrayOfFaceStatus)
   {
     int i = 0;
@@ -617,34 +644,28 @@ public abstract class FaceDetector
   
   protected void updateTriggerExpression()
   {
-    int j = 0;
-    this.mTriggeredExpressionType.clear();
-    PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
-    int m = arrayOfPTExpression.length;
     int i = 0;
-    while (i < m)
+    this.mTriggeredExpressionType.clear();
+    this.clearFaceQueue = false;
+    PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+    int j = arrayOfPTExpression.length;
+    while (i < j)
     {
       PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
-      int k = j;
       if (this.mExpressionDetectorObject.detectExpression(localPTExpression.value))
       {
         this.mTriggeredExpressionType.add(Integer.valueOf(localPTExpression.value));
-        k = j;
         if (ExpressionDetectorObject.needSaveDetectedExpression(localPTExpression.value)) {
-          k = 1;
+          this.clearFaceQueue = true;
         }
       }
       i += 1;
-      j = k;
-    }
-    if (j != 0) {
-      this.mExpressionDetectorObject.clearFaceQueue();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.facedetect.FaceDetector
  * JD-Core Version:    0.7.0.1
  */

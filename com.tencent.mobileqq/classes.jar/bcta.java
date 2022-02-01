@@ -1,184 +1,141 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.ui.RoundProgressBar;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager.ISpLogCallback;
 import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.observer.BusinessObserver;
-import tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.OStatisticInfo;
-import tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.RspBody;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class bcta
-  implements BusinessObserver
+public final class bcta
+  implements SharedPreferencesProxyManager.ISpLogCallback
 {
-  private final WeakReference<TroopMoreDetailView> a;
+  private static String jdField_a_of_type_JavaLangString;
+  public static final boolean a;
+  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<String, String[]> b = new ConcurrentHashMap();
   
-  public bcta(TroopMoreDetailView paramTroopMoreDetailView)
+  static
   {
-    this.a = new WeakReference(paramTroopMoreDetailView);
+    jdField_a_of_type_Boolean = false;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private static int a(String paramString1, String paramString2, String paramString3)
   {
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    Object localObject2;
-    Context localContext;
-    int j;
-    label141:
-    View localView;
-    StringBuffer localStringBuffer;
+    return (paramString1 + paramString2 + paramString3).hashCode();
+  }
+  
+  public static bcta a()
+  {
+    return bctc.a;
+  }
+  
+  private static bctd a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      do
+      return null;
+      paramString = paramString.split("\\|");
+    } while (paramString.length != 3);
+    return new bctd(paramString[0], paramString[1], paramString[2]);
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((paramString.contains("com.oppo.embryo")) || (!paramString.contains("."))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void onIllegalModify(String paramString1, String paramString2, Object paramObject)
+  {
+    String str = null;
+    int i = 1;
+    if ((!jdField_a_of_type_Boolean) || (BaseApplicationImpl.sProcessId != 1)) {}
+    label388:
+    label392:
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getPackageName();
+      }
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && ((paramObject instanceof String)) && (!TextUtils.isEmpty((String)paramObject)))
       {
-        for (;;)
+        boolean bool = jdField_a_of_type_JavaLangString.equals(paramString2);
+        paramObject = (String)paramObject;
+        if (bool)
         {
-          return;
-          localObject1 = TroopMoreDetailView.a(localTroopMoreDetailView);
-          if ((localObject1 != null) && (paramBoolean))
-          {
-            localObject2 = paramBundle.getByteArray("data");
-            if (localObject2 != null)
-            {
-              localContext = localTroopMoreDetailView.getContext();
-              if (localContext != null) {
-                try
-                {
-                  paramBundle = new troop_member_distribute.RspBody();
-                  paramBundle.mergeFrom((byte[])localObject2);
-                  if (paramBundle.uint32_result.get() == 0)
-                  {
-                    localObject2 = paramBundle.rpt_msg_statistic.get();
-                    j = paramBundle.uint32_group_member.get();
-                    if (j != 0) {
-                      break label141;
-                    }
-                    if (QLog.isColorLevel())
-                    {
-                      QLog.d("TroopMoreDetailView", 2, "mGetTroopMemberDistributeObserver.onReceive: memberCount should not be 0!");
-                      return;
-                    }
-                  }
-                }
-                catch (InvalidProtocolBufferMicroException paramBundle) {}
-              }
-            }
+          this.jdField_a_of_type_JavaUtilMap.put(paramString1, new String[] { paramString2, null });
+          label111:
+          if (!bool) {
+            break label353;
+          }
+          paramString2 = (String[])this.b.get(paramString1);
+          if (paramString2 == null) {
+            break label345;
+          }
+          paramObject = paramString2[0];
+          paramString2 = paramString2[1];
+          label142:
+          if (TextUtils.isEmpty(paramObject)) {
+            break label388;
           }
         }
-      } while (!QLog.isColorLevel());
-      QLog.e("TroopMoreDetailView", 2, paramBundle, new Object[0]);
-      return;
-      localView = localTroopMoreDetailView.a[5];
-      localStringBuffer = new StringBuffer(localTroopMoreDetailView.getResources().getString(2131721088));
-    } while ((localView == null) || (((List)localObject2).size() < 4));
-    localView.setVisibility(0);
-    if (localTroopMoreDetailView.a[4] != null) {
-      localTroopMoreDetailView.a[4].setBackgroundResource(2130839261);
-    }
-    localStringBuffer.append(",本群共").append(j).append("人");
-    paramBundle = localView.findViewById(2131378443);
-    paramBoolean = ThemeUtil.isInNightMode((AppRuntime)localObject1);
-    int i = 0;
-    label300:
-    Object localObject3;
-    RoundProgressBar localRoundProgressBar;
-    if (i < ((List)localObject2).size())
-    {
-      paramInt = Color.parseColor("#ffffff00");
-      switch (i)
-      {
-      case 0: 
-        localObject3 = (troop_member_distribute.OStatisticInfo)((List)localObject2).get(i);
-        localRoundProgressBar = (RoundProgressBar)paramBundle.findViewById(2131376070);
-        localRoundProgressBar.setTextColor(localContext.getResources().getColor(2131166906));
-        if (!paramBoolean) {
-          break;
+        for (;;)
+        {
+          if (i == 0) {
+            break label392;
+          }
+          Object localObject = a(paramString2);
+          if (localObject == null) {
+            break;
+          }
+          paramString2 = ((bctd)localObject).c;
+          str = ((bctd)localObject).jdField_a_of_type_JavaLangString;
+          localObject = ((bctd)localObject).b;
+          if ((a(str)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty((CharSequence)localObject)) || (this.jdField_a_of_type_JavaUtilList.contains(paramString2))) {
+            break;
+          }
+          this.jdField_a_of_type_JavaUtilList.add(paramString2);
+          SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("sp_dm_report", 0).edit();
+          localEditor.putString(String.valueOf(a(str, (String)localObject, paramObject)), paramString1 + '|' + str + '|' + paramObject + '|' + paramString2);
+          localEditor.commit();
+          return;
+          this.b.put(paramString1, new String[] { paramString2, paramObject });
+          break label111;
+          label345:
+          paramString2 = null;
+          paramObject = str;
+          break label142;
+          label353:
+          if ((String[])this.jdField_a_of_type_JavaUtilMap.get(paramString1) != null)
+          {
+            str = paramString2;
+            paramString2 = paramObject;
+            paramObject = str;
+            break label142;
+          }
+          paramString2 = null;
+          paramObject = str;
+          break label142;
+          i = 0;
         }
-      }
-    }
-    for (Object localObject1 = "#FF1F1F1F";; localObject1 = "#FFDDDDDD")
-    {
-      localRoundProgressBar.setCircleColor(Color.parseColor((String)localObject1));
-      localRoundProgressBar.setRoundWidth(aepi.a(2.0F, localTroopMoreDetailView.getResources()));
-      localRoundProgressBar.setTextSize(34.0F);
-      localRoundProgressBar.setCircleProgressColor(paramInt);
-      paramInt = ((troop_member_distribute.OStatisticInfo)localObject3).uint32_count.get() * 100 / j;
-      localRoundProgressBar.setProgress(paramInt);
-      localObject1 = (TextView)paramBundle.findViewById(2131377938);
-      localObject3 = ((troop_member_distribute.OStatisticInfo)localObject3).bytes_desc.get().toStringUtf8();
-      ((TextView)localObject1).setText((CharSequence)localObject3);
-      localObject1 = ((String)localObject3).split("-");
-      localStringBuffer.append(", 百分之").append(paramInt).append("为").append(localObject1[0]);
-      i += 1;
-      break;
-      localObject1 = localView.findViewById(2131378443);
-      if (paramBoolean)
-      {
-        paramBundle = "#FF371657";
-        label496:
-        paramInt = Color.parseColor(paramBundle);
-        paramBundle = (Bundle)localObject1;
-        break label300;
-        localObject1 = localView.findViewById(2131378444);
-        if (!paramBoolean) {
-          break label605;
-        }
-        paramBundle = "#FF17470A";
-        label523:
-        paramInt = Color.parseColor(paramBundle);
-        paramBundle = (Bundle)localObject1;
-        break label300;
-        localObject1 = localView.findViewById(2131378445);
-        if (!paramBoolean) {
-          break label611;
-        }
-        paramBundle = "#FF074861";
-        label550:
-        paramInt = Color.parseColor(paramBundle);
-        paramBundle = (Bundle)localObject1;
-        break label300;
-        localObject1 = localView.findViewById(2131378446);
-        if (!paramBoolean) {
-          break label618;
-        }
-      }
-      label605:
-      label611:
-      label618:
-      for (paramBundle = "#FF615400";; paramBundle = "#ffff8400")
-      {
-        paramInt = Color.parseColor(paramBundle);
-        paramBundle = (Bundle)localObject1;
-        break;
-        localView.setContentDescription(localStringBuffer);
-        return;
-        break;
-        paramBundle = "#ff771bf4";
-        break label496;
-        paramBundle = "#ff0eddb8";
-        break label523;
-        paramBundle = "#ff0d8aff";
-        break label550;
       }
     }
   }
+  
+  public void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcta
  * JD-Core Version:    0.7.0.1
  */

@@ -1,153 +1,56 @@
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.2;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class agjo
-  implements bhxl
+public class agjo
+  implements agma
 {
-  int jdField_a_of_type_Int = -2147483648;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 2147483647;
-  boolean jdField_b_of_type_Boolean;
+  private agjq jdField_a_of_type_Agjq;
+  private anty jdField_a_of_type_Anty = new agjp(this);
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  agjo(agji paramagji) {}
-  
-  public agkf a(int paramInt)
+  agjo(BaseChatPie paramBaseChatPie)
   {
-    Object localObject = this.jdField_a_of_type_Agji.a.a(paramInt);
-    if (agkf.class.isInstance(localObject)) {
-      return (agkf)localObject;
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public void onSelectBegin(int paramInt)
+  public void a(int paramInt)
   {
-    boolean bool2 = false;
-    if (!agji.b(this.jdField_a_of_type_Agji)) {}
-    agkf localagkf;
-    do
+    Object localObject = null;
+    switch (paramInt)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Agji.a() == 2);
-      localagkf = a(paramInt);
-    } while (localagkf == null);
-    if (localagkf.b() == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      agji localagji = this.jdField_a_of_type_Agji;
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_Boolean) {
-        bool1 = true;
-      }
-      if (localagji.a(localagkf, bool1, true))
-      {
-        this.jdField_a_of_type_Agji.w();
-        agji.g(this.jdField_a_of_type_Agji).invalidateViews();
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("AIOImageListScene", 2, "onSelectBegin beginIndex:" + paramInt);
-      return;
     }
-  }
-  
-  public void onSelectChanged(int paramInt1, int paramInt2)
-  {
-    if (!agji.c(this.jdField_a_of_type_Agji)) {}
-    while ((this.jdField_a_of_type_Agji.a() == 2) || (!this.jdField_b_of_type_Boolean)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOImageListScene", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
-    }
-    int j;
-    int i;
-    if (paramInt2 < paramInt1)
-    {
-      j = paramInt1;
-      i = paramInt2;
-      if (this.jdField_b_of_type_Int > paramInt2)
-      {
-        this.jdField_b_of_type_Int = paramInt2;
-        i = paramInt2;
-        j = paramInt1;
-      }
-    }
-    agkf localagkf;
     for (;;)
     {
-      paramInt1 = i;
-      for (;;)
+      if (localObject != null) {}
+      try
       {
-        if (paramInt1 > j) {
-          break label181;
-        }
-        localagkf = a(paramInt1);
-        if (localagkf != null) {
-          break;
-        }
-        paramInt1 += 1;
+        ((Runnable)localObject).run();
+        return;
       }
-      if (this.jdField_a_of_type_Int < paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      j = paramInt2;
-      i = paramInt1;
-    }
-    agji localagji = this.jdField_a_of_type_Agji;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localagji.a(localagkf, bool, true);
-      break;
-    }
-    label181:
-    paramInt1 = j + 1;
-    if (paramInt1 <= this.jdField_a_of_type_Int)
-    {
-      localagkf = a(paramInt1);
-      if (localagkf == null) {}
-      for (;;)
+      catch (Exception localException)
       {
-        paramInt1 += 1;
-        break;
-        this.jdField_a_of_type_Agji.a(localagkf, this.jdField_a_of_type_Boolean, true);
+        QLog.e("AIOIconChangeByTimeHelper", 1, localException, new Object[0]);
       }
+      this.jdField_a_of_type_Agjq = new agjq(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, null);
+      agjq.a(this.jdField_a_of_type_Agjq);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.addObserver(this.jdField_a_of_type_Anty);
+      localObject = new AIOIconChangeByTimeHelper.1(this);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.removeObserver(this.jdField_a_of_type_Anty);
+      localObject = new AIOIconChangeByTimeHelper.2(this);
     }
-    paramInt1 = this.jdField_b_of_type_Int;
-    if (paramInt1 < i)
-    {
-      localagkf = a(paramInt1);
-      if (localagkf == null) {}
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        this.jdField_a_of_type_Agji.a(localagkf, this.jdField_a_of_type_Boolean, true);
-      }
-    }
-    this.jdField_a_of_type_Agji.w();
-    agji.h(this.jdField_a_of_type_Agji).invalidateViews();
   }
   
-  public void onSelectEnd()
+  public int[] a()
   {
-    if (!agji.d(this.jdField_a_of_type_Agji)) {}
-    while ((this.jdField_a_of_type_Agji.a() == 2) || (!this.jdField_b_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOImageListScene", 2, "onSelectEnd");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_b_of_type_Int = 2147483647;
+    return new int[] { 3, 7, 13 };
   }
 }
 

@@ -1,32 +1,28 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
 
-class vjt
-  extends vim
+public class vjt
+  extends RecyclerView.ViewHolder
 {
-  vjt(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
-  {
-    super(paramStoryVideoItem);
-  }
+  QCircleContentVideo jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo;
   
-  public boolean b()
+  public vjt(vjn paramvjn, View paramView)
   {
-    String str = (String)a("result");
-    xqq.a(str);
-    xqq.a(this.jdField_a_of_type_Vkq.d);
-    if (this.jdField_a_of_type_Vkq.d == null)
+    super(paramView);
+    paramvjn = ((FrameLayout)paramView).getChildAt(0);
+    if ((paramvjn instanceof QCircleContentVideo))
     {
-      this.jdField_a_of_type_Vkq.d = "";
-      wxe.c(this.b, "imageLocalPath is null", new Throwable());
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentVideo = ((QCircleContentVideo)paramvjn);
+      return;
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
-    return true;
+    ((FrameLayout)paramView).removeAllViews();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjt
  * JD-Core Version:    0.7.0.1
  */

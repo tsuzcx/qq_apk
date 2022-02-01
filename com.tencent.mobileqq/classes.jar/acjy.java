@@ -1,29 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Context;
+import com.tencent.ad.tangram.toast.AdToastAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class acjy
-  implements DialogInterface.OnCancelListener
+public class acjy
+  implements AdToastAdapter
 {
-  public acjy(aclo paramaclo, int paramInt, acln paramacln) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aclo.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+    int i = 1;
+    if (paramInt1 == 1) {
+      paramInt1 = i;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Acln != null) {
-        this.jdField_a_of_type_Acln.a();
-      }
+      QQToast.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
       return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      if (paramInt1 == 2) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 0;
       }
     }
   }

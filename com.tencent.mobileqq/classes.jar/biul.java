@@ -1,22 +1,11 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class biul
-  implements View.OnClickListener
+public class biul
 {
-  biul(Dialog paramDialog, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
+  public static final String a = biip.a().f();
+  public static final String b = biip.a().f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
 public class auxm
-  implements bhuw
+  implements DialogInterface.OnClickListener
 {
-  public auxm(GameQuickWordsPanel paramGameQuickWordsPanel) {}
+  public auxm(JefsClass.8 param8) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramView = new acjt();
-    paramView.c = bdin.a(BaseApplication.getContext());
-    paramView.a = System.currentTimeMillis();
-    acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
-    this.a.jdField_a_of_type_Agqq.aM();
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxm
  * JD-Core Version:    0.7.0.1
  */

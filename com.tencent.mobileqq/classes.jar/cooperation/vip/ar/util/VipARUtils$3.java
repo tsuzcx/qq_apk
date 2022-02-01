@@ -1,21 +1,21 @@
 package cooperation.vip.ar.util;
 
-import bkey;
-import bkfb;
+import bmti;
+import bmtl;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class VipARUtils$3
   implements Runnable
 {
-  public VipARUtils$3(bkey parambkey) {}
+  public VipARUtils$3(bmti parambmti) {}
   
   public void run()
   {
-    if ((bkey.a("VipARUtils_JAR_md5", bkey.b())) || (!bkey.a())) {}
+    if ((bmti.a("VipARUtils_JAR_md5", bmti.b())) || (!bmti.a())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bkfb(this));
+        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bmtl(this));
       }
       return;
     }
@@ -23,7 +23,7 @@ public class VipARUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ar.util.VipARUtils.3
  * JD-Core Version:    0.7.0.1
  */

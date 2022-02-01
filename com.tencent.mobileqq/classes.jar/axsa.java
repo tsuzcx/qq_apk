@@ -1,33 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axsa
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public axsa(ProviderContainerView paramProviderContainerView, boolean paramBoolean) {}
+  public axsa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)
+    if ((this.a.b != null) && (!this.a.isFinishing()))
     {
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setAlpha(1.0F);
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setVisibility(8);
+      this.a.b.dismiss();
+      this.a.b = null;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)) {
-      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).a(false, 150);
-    }
+    this.a.a(300L);
+    bcst.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsa
  * JD-Core Version:    0.7.0.1
  */

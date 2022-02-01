@@ -1,43 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.GetAnchorOnline1Req;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqmini.sdk.manager.LoginManager;
 
-public final class aydb
-  implements apuc
+public class aydb
 {
-  public aydb(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public void a(apuf paramapuf)
+  public void a(ayda paramayda)
   {
-    if (paramapuf != null) {}
-    try
-    {
-      paramapuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+    NowQQLiveFocusProto.GetAnchorOnline1Req localGetAnchorOnline1Req = new NowQQLiveFocusProto.GetAnchorOnline1Req();
+    String str = LoginManager.getInstance().getAccount();
+    if (TextUtils.isEmpty(str)) {}
+    while (this.b) {
       return;
     }
-    catch (Throwable paramapuf) {}
+    this.b = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int >= 3)
+      {
+        paramayda.a(-1, "retry fail");
+        return;
+      }
+    }
+    localGetAnchorOnline1Req.uin.set(Long.parseLong(str));
+    localGetAnchorOnline1Req.is_uid.set(1);
+    localGetAnchorOnline1Req.source.set(1);
+    localGetAnchorOnline1Req.need_kroom.set(0);
+    aydp.a().a(28679, 2, localGetAnchorOnline1Req.toByteArray(), new aydc(this, paramayda));
   }
-  
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
-  
-  public boolean a(apuf paramapuf)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    banh.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

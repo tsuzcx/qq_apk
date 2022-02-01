@@ -1,17 +1,10 @@
-import android.os.IInterface;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-
 public abstract interface avbm
-  extends IInterface
 {
-  public abstract Message a(Message paramMessage);
-  
-  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avbm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,63 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
 
-public class awyt
-  implements awyp
+class awyt
+  implements ServiceConnection
 {
-  private awyr jdField_a_of_type_Awyr;
-  private ArrayList<awyp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  awyt(awys paramawys) {}
   
-  public awyq a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramArrayOfByte = new awyq(paramArrayOfByte, paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
+    awys.a(this.a, awya.a(paramIBinder));
+    try
     {
-      Object localObject = paramArrayOfByte;
-      awyp localawyp;
-      awyq localawyq;
-      if (localIterator.hasNext())
+      awys.a(this.a).a(awys.a(this.a));
+      if (awys.a(this.a) != null)
       {
-        localawyp = (awyp)localIterator.next();
-        if (this.jdField_a_of_type_Awyr != null) {
-          this.jdField_a_of_type_Awyr.a(localawyp, paramArrayOfByte);
-        }
-        localawyq = localawyp.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localawyq;
-        if (localawyq != null)
-        {
-          localObject = localawyq;
-          if (localawyq.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localawyq.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localawyq;
-          }
-        }
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        awys.a(this.a).a(paramComponentName);
+        awys.a(this.a, null);
       }
-      return localObject;
-      label121:
-      paramArrayOfByte = localawyq;
-      if (this.jdField_a_of_type_Awyr != null)
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (awys.a(this.a) != null) {
+        awys.a(this.a).b(awys.a(this.a));
+      }
+      if (awys.a(this.a) != null)
       {
-        this.jdField_a_of_type_Awyr.b(localawyp, localawyq);
-        paramArrayOfByte = localawyq;
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        awys.a(this.a).a(paramComponentName);
+        awys.a(this.a, null);
       }
     }
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((awyp)localIterator.next()).a();
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((awyp)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(awyp paramawyp)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramawyp);
-  }
-  
-  public void a(awyr paramawyr)
-  {
-    this.jdField_a_of_type_Awyr = paramawyr;
+    awys.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyt
  * JD-Core Version:    0.7.0.1
  */

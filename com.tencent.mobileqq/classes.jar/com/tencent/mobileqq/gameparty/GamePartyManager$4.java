@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gameparty;
 
-import aspf;
-import aspj;
+import auwj;
+import auwn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
@@ -16,11 +16,11 @@ import mqq.manager.TicketManager;
 public class GamePartyManager$4
   implements Runnable
 {
-  public GamePartyManager$4(aspf paramaspf, String paramString, aspj paramaspj) {}
+  public GamePartyManager$4(auwj paramauwj, String paramString, auwn paramauwn) {}
   
   public void run()
   {
-    Object localObject3 = (QQAppInterface)aspf.a(this.this$0).get();
+    Object localObject3 = (QQAppInterface)auwj.a(this.this$0).get();
     if (localObject3 == null) {}
     label308:
     do
@@ -65,9 +65,9 @@ public class GamePartyManager$4
               if (QLog.isColorLevel()) {
                 QLog.d("GamePartyManager", 2, "http request succeeded, url = " + this.jdField_a_of_type_JavaLangString);
               }
-              if (this.jdField_a_of_type_Aspj != null)
+              if (this.jdField_a_of_type_Auwn != null)
               {
-                this.jdField_a_of_type_Aspj.a(((StringBuffer)localObject2).toString());
+                this.jdField_a_of_type_Auwn.a(((StringBuffer)localObject2).toString());
                 return;
               }
             }
@@ -83,7 +83,7 @@ public class GamePartyManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.4
  * JD-Core Version:    0.7.0.1
  */

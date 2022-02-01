@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
 
-public class bedr
+class bedr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
-  bedk jdField_a_of_type_Bedk;
-  bedp jdField_a_of_type_Bedp;
-  beds jdField_a_of_type_Beds;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  bedr(bedo parambedo) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), i, 0, 0);
+  }
 }
 
 

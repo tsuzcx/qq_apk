@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amdu;
+import anwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -15,12 +15,12 @@ class MessageForQQWalletTips$1$1
     if (localQQAppInterface == null) {
       return;
     }
-    ((amdu)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
+    ((anwd)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-public abstract interface augk
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+
+class augk
+  extends ayyr
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  augk(aufz paramaufz, augl paramaugl, MessageForPic paramMessageForPic, String paramString) {}
   
-  public abstract void a(long paramLong);
+  public void a(int paramInt, ayxy paramayxy)
+  {
+    if (this.jdField_a_of_type_Augl != null) {
+      this.jdField_a_of_type_Augl.b();
+    }
+    bdsh.d(bdzx.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+      aufz.a(this.jdField_a_of_type_Aufz, ahth.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_JavaLangString);
+    }
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     augk
  * JD-Core Version:    0.7.0.1
  */

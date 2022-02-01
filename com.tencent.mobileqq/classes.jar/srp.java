@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-public abstract interface srp
+public class srp
+  implements Function1<Canvas, Unit>
 {
-  public abstract void a(WormholeView paramWormholeView);
+  public srp(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void b(WormholeView paramWormholeView);
+  public Unit a(Canvas paramCanvas)
+  {
+    ReadInJoyListViewGroup.a(this.a, paramCanvas);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srp
  * JD-Core Version:    0.7.0.1
  */

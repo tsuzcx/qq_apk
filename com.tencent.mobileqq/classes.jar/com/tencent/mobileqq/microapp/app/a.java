@@ -38,7 +38,6 @@ public final class a
       d.put("android.permission.READ_EXTERNAL_STORAGE", "需要存储权限，请到设置中设置");
       d.put("android.permission.WRITE_EXTERNAL_STORAGE", "需要存储权限，请到设置中设置");
     }
-    c.put("operateCamera", "android.permission.CAMERA");
     d.put("android.permission.ACCESS_FINE_LOCATION", "需要位置权限，请到设置中设置");
     d.put("android.permission.CALL_PHONE", "需要电话权限，请到设置中设置");
     d.put("android.permission.RECORD_AUDIO", "需要麦克风权限，请到设置中设置");
@@ -141,7 +140,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.app.a
  * JD-Core Version:    0.7.0.1
  */

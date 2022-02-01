@@ -1,22 +1,20 @@
-public class wfv
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class wfv
+  implements INetEventHandler
 {
-  public String a;
-  public String b;
+  private wfv(wfs paramwfs) {}
   
-  public wfv(String paramString1, String paramString2)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
+    yqp.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
+    this.a.b.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wfv
  * JD-Core Version:    0.7.0.1
  */

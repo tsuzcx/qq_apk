@@ -1,32 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class rpy
-  implements View.OnClickListener
+class rpy
+  implements rpo
 {
-  public rpy(KandianProgressView paramKandianProgressView) {}
+  rpy(rps paramrps, UgcVideo paramUgcVideo) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (this.a.jdField_a_of_type_Rpz == null) {
-      return;
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.getProgress();
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.RIJUgcVideoPublishManager", 2, "uploadCallback: taskType = " + paramInt + ",isSuccess = " + paramBoolean1 + "isFinish = " + paramBoolean2 + "errorMsg = " + paramString + "progress = " + i);
     }
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131365082: 
-    case 2131365097: 
-      this.a.jdField_a_of_type_Rpz.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.a.jdField_a_of_type_Rpz.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpy
  * JD-Core Version:    0.7.0.1
  */

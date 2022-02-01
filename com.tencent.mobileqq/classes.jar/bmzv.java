@@ -1,11 +1,14 @@
-import android.graphics.Bitmap;
+import java.util.List;
 
-public class bmzv
+public abstract interface bmzv
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  public abstract void a(int paramInt, bmzc parambmzc, String paramString);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, bmzc parambmzc);
+  
+  public abstract void a(long paramLong, boolean paramBoolean1, bmzd parambmzd, boolean paramBoolean2);
+  
+  public abstract void a(String paramString, List<bmzc> paramList);
 }
 
 

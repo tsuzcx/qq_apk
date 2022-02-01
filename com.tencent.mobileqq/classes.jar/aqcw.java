@@ -1,23 +1,60 @@
-public class aqcw
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.Comparator;
+
+class aqcw
+  implements Comparator<ColorNote>
 {
-  public long a;
-  public String a;
-  public String b;
+  aqcw(aqcv paramaqcv) {}
   
-  public aqcw(String paramString1, String paramString2, long paramLong)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{schoolId: ").append(this.b).append("}");
-    localStringBuilder.append("{schoolName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{schoolState: ").append(this.jdField_a_of_type_Long).append("}");
-    return localStringBuilder.toString();
+    int j = 0;
+    int k = 1;
+    boolean bool1 = aqda.c(paramColorNote1);
+    boolean bool2 = aqda.c(paramColorNote2);
+    int i;
+    if ((bool1) && (bool2)) {
+      i = aqcv.a(this.a, paramColorNote1, paramColorNote2);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+          if (bool1) {
+            return -1;
+          }
+          i = k;
+        } while (bool2);
+        bool1 = aqda.b(paramColorNote1);
+        bool2 = aqda.b(paramColorNote2);
+        if ((bool1) && (bool2)) {
+          return aqcv.a(this.a, paramColorNote1, paramColorNote2);
+        }
+        if (bool1) {
+          return -1;
+        }
+        i = k;
+      } while (bool2);
+      if (paramColorNote1.getServiceType() == 16973824) {}
+      for (i = 1;; i = 0)
+      {
+        if (paramColorNote2.getServiceType() == 16973824) {
+          j = 1;
+        }
+        if ((i == 0) || (j == 0)) {
+          break;
+        }
+        return aqcv.a(this.a, paramColorNote1, paramColorNote2);
+      }
+      if (i != 0) {
+        return -1;
+      }
+      i = k;
+    } while (j != 0);
+    return aqcv.a(this.a, paramColorNote1, paramColorNote2);
   }
 }
 

@@ -1,12 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
-
-public class adez
+public abstract interface adez
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  public abstract void a(awlp paramawlp, int paramInt);
 }
 
 

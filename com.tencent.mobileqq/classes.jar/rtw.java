@@ -1,31 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
-
-public class rtw
-  extends AnimatorListenerAdapter
+class rtw
+  implements rtq
 {
-  public rtw(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  rtw(rtv paramrtv) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      rtv.a(this.a, paramString1);
+      rtv.b(this.a, paramString2);
+      rtv.a(this.a, 3);
+      return;
+    case 1001: 
+      rtv.b(this.a, 10);
+      return;
+    case 1002: 
+      rtv.b(this.a, 9);
+      return;
+    case 1003: 
+      rtv.b(this.a, 11);
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    rtv.b(this.a, 13);
+    rtv.c(this.a, 1002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,67 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
 public class bahl
-  implements URLDrawableHandler
+  extends bahu<ReceiptMessageReadMemberListContainerFragment>
 {
-  public bahl(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
-  
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public bahl(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    return false;
+    super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  public void onFileDownloadFailed(int paramInt)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      for (;;)
+      {
+        try
+        {
+          paramBundle = new oidb_0x986.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
+          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
+          if (!paramArrayOfByte.hasNext()) {
+            break;
+          }
+          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
+          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
+            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
+              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            } else {
+              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+          return;
+        }
+      }
+      if (paramBundle.uint64_next_uin.get() == 0L)
+      {
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        return;
+      }
+      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
+      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
-  
-  public void onFileDownloadStarted()
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
-  }
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

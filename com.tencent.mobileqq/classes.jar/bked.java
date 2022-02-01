@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-class bked
-  implements View.OnClickListener
+public class bked
+  implements bkek
 {
-  bked(bkeb parambkeb) {}
+  public bked(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    bkeb.a(this.a);
-    if ((bkeb.a(this.a) != null) && (bkeb.a(this.a).a() != null) && (bkeb.a(this.a).a().app != null) && (bkeb.a(this.a) != null)) {
-      bkea.a(bkeb.a(this.a).a().app, 122, String.valueOf(bkeb.a(this.a).iAdId.get()), bkeb.a(this.a).traceinfo.get());
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
     }
+    TraeAudioManager.b(paramLong, null, -1L, true);
+    this.a.c(paramLong);
   }
 }
 

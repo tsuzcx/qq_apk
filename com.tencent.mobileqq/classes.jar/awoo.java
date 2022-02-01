@@ -1,28 +1,28 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-
 public class awoo
-  extends RecyclerView.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public awoo(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public awoo()
   {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366728));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366718));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167194));
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awoo
  * JD-Core Version:    0.7.0.1
  */

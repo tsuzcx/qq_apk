@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asrr
-  implements aufz<T, List<FontBubble>>
+  implements View.OnClickListener
 {
-  public asrr(FontBubblePanelView paramFontBubblePanelView) {}
+  public asrr(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public List<FontBubble> a(T paramT)
+  public void onClick(View paramView)
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
-    FontBubble localFontBubble = new FontBubble();
-    localFontBubble.viewType = 0;
-    paramT.add(localFontBubble);
-    return paramT;
+    bcst.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, bdho.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718486), true));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

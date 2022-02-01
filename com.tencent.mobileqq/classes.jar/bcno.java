@@ -1,11 +1,16 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.soload.SoLoadInfo;
 
-public class bcno
+class bcno
+  implements bcoa
 {
-  public int a;
-  public String a;
+  bcno(bcnn parambcnn) {}
   
-  public bcno(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public void a(@NonNull SoLoadInfo paramSoLoadInfo)
+  {
+    int i = bcnn.a(this.a, paramSoLoadInfo);
+    bcnn.a(this.a, i);
+  }
 }
 
 

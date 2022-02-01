@@ -1,22 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.widget.RoundedImageView;
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
 
-public class awtd
-  extends RecyclerView.ViewHolder
+public final class awtd
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  public RoundedImageView a;
-  public boolean a;
-  
-  public awtd(awtb paramawtb, View paramView)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131375862));
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtd
  * JD-Core Version:    0.7.0.1
  */

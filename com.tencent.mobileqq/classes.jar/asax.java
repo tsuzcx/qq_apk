@@ -1,30 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class asax
-  implements View.OnTouchListener
+public class asax
+  implements Animation.AnimationListener
 {
-  asax(asau paramasau) {}
+  public asax(FastImagePreviewLayout paramFastImagePreviewLayout) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    asau.a(this.a).setImageResource(2130839717);
-    asau.a(this.a).setTag(Integer.valueOf(2130839717));
-    if (asau.a(this.a))
-    {
-      asau.a(this.a);
-      asau.a(this.a).removeView(asau.a(this.a));
-      asau.a(this.a, false);
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
     }
-    return false;
+    this.a.removeAllViews();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

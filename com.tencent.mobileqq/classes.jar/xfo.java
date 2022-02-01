@@ -1,16 +1,60 @@
-public abstract interface xfo
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
+
+public class xfo
+  implements zmv
 {
-  public abstract void a();
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public abstract void a(int paramInt);
+  public xfo(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.b = paramString2;
+  }
   
-  public abstract void a(boolean paramBoolean, xeq paramxeq);
+  public void onFailure(String paramString)
+  {
+    paramString = new xfn(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    wfo.a().dispatch(paramString);
+    yqu.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    yqu.a("play_video", "down_watermark", 0, 1, new String[0]);
+  }
   
-  public abstract void b(int paramInt);
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    xfn localxfn = new xfn(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    wfo.a().dispatch(localxfn);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = new xfn(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    paramString.b = this.jdField_a_of_type_JavaLangString;
+    wfo.a().dispatch(paramString);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
+    yqu.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    yqu.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
+    yqu.a("play_video", "down_watermark", 0, 0, new String[0]);
+    zkr.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfo
  * JD-Core Version:    0.7.0.1
  */

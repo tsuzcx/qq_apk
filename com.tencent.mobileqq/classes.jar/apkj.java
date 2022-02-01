@@ -1,26 +1,22 @@
-public class apkj
+import android.os.Bundle;
+
+final class apkj
+  extends aplp
 {
-  public int a;
-  public String a;
-  public boolean a;
-  
-  public apkj(String paramString, int paramInt)
+  apkj(String paramString, apky paramapky)
   {
-    this(paramString, paramInt, true);
+    super(paramString);
   }
   
-  public apkj(String paramString, int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    String str = null;
+    if (paramBoolean) {
+      str = paramBundle.getString("pskey", null);
+    }
+    if (this.a != null) {
+      this.a.a(str);
+    }
   }
 }
 

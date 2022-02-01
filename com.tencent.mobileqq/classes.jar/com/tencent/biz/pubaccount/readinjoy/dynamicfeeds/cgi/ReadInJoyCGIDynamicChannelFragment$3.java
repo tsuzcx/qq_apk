@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nrt;
+import oat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,7 +60,7 @@ class ReadInJoyCGIDynamicChannelFragment$3
             QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "put channelID failed, mChannelID = ", Integer.valueOf(ReadInJoyCGIDynamicChannelFragment.h(this.this$0)), ", e = ", localJSONException2 });
           }
           QLog.d("ReadInJoyDynamicChannelBaseFragment", 1, new Object[] { "actionName = ", ReadInJoyCGIDynamicChannelFragment.a(this.this$0), ", r5 = ", localJSONObject.toString() });
-          nrt.a(null, "", ReadInJoyCGIDynamicChannelFragment.b(this.this$0), ReadInJoyCGIDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
+          oat.a(null, "", ReadInJoyCGIDynamicChannelFragment.b(this.this$0), ReadInJoyCGIDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
         }
       }
     }

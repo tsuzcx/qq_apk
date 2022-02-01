@@ -1,88 +1,86 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class bhcz
-  extends bhdw
+  implements InvocationHandler
 {
-  private CloudStorage.StGetUserCloudStorageReq a = new CloudStorage.StGetUserCloudStorageReq();
+  private Class a;
+  public Object a;
   
-  public bhcz(String[] paramArrayOfString, String paramString)
+  public bhcz(Class paramClass)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
-    }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject1 = new CloudStorage.StGetUserCloudStorageRsp();
+    this.jdField_a_of_type_JavaLangClass = paramClass;
     try
     {
-      ((CloudStorage.StGetUserCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
-      if ((localObject1 == null) || (((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList == null)) {
-        break label174;
-      }
-      paramArrayOfByte = new JSONObject();
-      Object localObject2 = ((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList.get();
-      localObject1 = new JSONArray();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject2).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("key", localStKVData.key.get());
-        localJSONObject.put("value", localStKVData.value.get());
-        ((JSONArray)localObject1).put(localJSONObject);
-      }
-      paramArrayOfByte.put("KVDataList", localObject1);
+      this.jdField_a_of_type_JavaLangObject = paramClass.newInstance();
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (IllegalAccessException paramClass)
     {
-      QMLog.d("GetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramClass.printStackTrace();
+      return;
     }
-    return paramArrayOfByte;
-    label174:
-    QMLog.d("GetCloudStorageRequest", "onResponse fail.rsp = null");
+    catch (InstantiationException paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+  }
+  
+  Object a(String paramString, Bundle paramBundle)
+  {
+    paramString = bhcy.a(this.jdField_a_of_type_JavaLangClass.getName() + '$' + paramString, paramBundle);
+    if ((paramString != null) && (paramString.data != null))
+    {
+      paramBundle = paramString.data.getString("resultType");
+      return bhcy.a(paramString.data, paramBundle, "result");
+    }
     return null;
   }
   
-  protected byte[] a()
+  void a(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
   {
-    return this.a.toByteArray();
+    bhcy.a(this.jdField_a_of_type_JavaLangClass.getName() + '$' + paramString, paramBundle, paramEIPCResultCallback);
   }
   
-  protected String b()
+  void a(Method paramMethod, Object[] paramArrayOfObject, Bundle paramBundle)
   {
-    return "GetUserCloudStorage";
+    paramMethod = paramMethod.getParameterTypes();
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramMethod.length)
+    {
+      String str1 = "__arg+" + i + "__";
+      String str2 = paramMethod[i].getName();
+      localArrayList.add(str2);
+      bhcy.a(paramBundle, str2, str1, paramArrayOfObject[i]);
+      i += 1;
+    }
+    paramBundle.putStringArrayList("__parameterTypes__", localArrayList);
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    paramObject = new Bundle();
+    a(paramMethod, paramArrayOfObject, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteProxy", 2, "getReturnType:" + paramMethod.getReturnType());
+    }
+    if ((paramMethod.getReturnType().getName().equals("void")) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof EIPCResultCallback)))
+    {
+      a(paramMethod.getName(), paramObject, (EIPCResultCallback)paramArrayOfObject[(paramArrayOfObject.length - 1)]);
+      return null;
+    }
+    return a(paramMethod.getName(), paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcz
  * JD-Core Version:    0.7.0.1
  */

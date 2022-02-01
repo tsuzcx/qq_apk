@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class acwo
-  implements apsa
+  implements Comparator<MessageRecord>
 {
-  public acwo(EmosmActivity paramEmosmActivity) {}
+  public acwo(QQMessageFacade paramQQMessageFacade) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

@@ -1,12 +1,9 @@
-class afxj
+import com.tencent.mobileqq.data.ChatMessage;
+
+public class afxj
 {
-  public int a;
-  public long a;
-  
-  afxj(afxh paramafxh)
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public ChatMessage a;
+  public StringBuilder b;
 }
 
 

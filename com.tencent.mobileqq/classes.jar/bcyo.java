@@ -1,18 +1,29 @@
-public class bcyo
+import android.view.View;
+import android.widget.TextView;
+
+class bcyo
+  extends anry
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  public final long b;
-  final String b;
+  bcyn jdField_a_of_type_Bcyn = null;
   
-  public bcyo(bcyj parambcyj, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  public bcyo(bcym parambcym, bcyn parambcyn)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bcyn = parambcyn;
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Bcyn != null)
+    {
+      this.jdField_a_of_type_Bcyn.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bcyn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Bcyn.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        this.jdField_a_of_type_Bcyn.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131713297));
+        this.jdField_a_of_type_Bcyn.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
+    }
   }
 }
 

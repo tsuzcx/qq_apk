@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class aith
-  implements View.OnClickListener
+public class aith
 {
-  aith(aitg paramaitg) {}
-  
-  public void onClick(View paramView)
-  {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public TextView b;
+  public String b;
+  public int c;
+  public TextView c;
+  public TextView d;
 }
 
 

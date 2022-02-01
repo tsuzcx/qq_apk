@@ -1,65 +1,158 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StUser;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import java.util.HashMap;
 
-class tvl
-  implements tqy
+public class tvl
+  implements URLDrawable.URLDrawableListener
 {
-  tvl(tvj paramtvj, FeedCloudMeta.StComment paramStComment) {}
+  private HashMap<URLDrawable, tvn> a = new HashMap();
   
-  public void a(int paramInt)
+  public void a()
   {
-    Object localObject;
-    if (paramInt == tqz.a)
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public void a(Object paramObject, ImageView paramImageView, int paramInt1, int paramInt2, tvo paramtvo)
+  {
+    if ((paramObject != null) && ((paramObject instanceof String))) {}
+    for (;;)
     {
-      tuz.a(this.jdField_a_of_type_Tvj.a, 48);
-      if (this.jdField_a_of_type_Tvj.a.a().a(tuz.a(this.jdField_a_of_type_Tvj.a), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment))
+      try
       {
-        localObject = tuz.a(this.jdField_a_of_type_Tvj.a).getString(2131698377);
-        bdgm.a(tuz.a(this.jdField_a_of_type_Tvj.a), 230, (String)localObject, null, 2131690648, 2131690626, new tvm(this), new tvn(this)).show();
+        paramObject = bdzx.a((String)paramObject, paramInt1, paramInt2);
+        if (paramObject != null) {
+          break label74;
+        }
+        return;
+      }
+      catch (IllegalArgumentException paramObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SubscriptPicManager", 2, paramObject.toString());
+        }
+        paramObject = null;
+        continue;
+      }
+      if ((paramObject != null) && ((paramObject instanceof URL)))
+      {
+        paramObject = bdzx.a((URL)paramObject, paramInt1, paramInt2);
+        continue;
+        label74:
+        if (paramObject.getStatus() != 1)
+        {
+          paramImageView.setTag(2131378066, paramObject.getURL());
+          tvn localtvn = new tvn(this, null);
+          localtvn.a = new WeakReference(paramImageView);
+          localtvn.b = new WeakReference(paramtvo);
+          this.a.put(paramObject, localtvn);
+          paramObject.setURLDrawableListener(this);
+        }
+        paramImageView.setImageDrawable(null);
+        paramImageView.setImageDrawable(paramObject);
+      }
+      else
+      {
+        paramObject = null;
       }
     }
+  }
+  
+  public void a(Object paramObject, ImageView paramImageView, int paramInt1, int paramInt2, tvo paramtvo, int paramInt3)
+  {
+    if ((paramObject != null) && ((paramObject instanceof String))) {}
+    for (;;)
+    {
+      try
+      {
+        paramObject = bdzx.a((String)paramObject);
+        if (paramObject != null) {
+          break label68;
+        }
+        return;
+      }
+      catch (IllegalArgumentException paramObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SubscriptPicManager", 2, paramObject.toString());
+        }
+        paramObject = null;
+        continue;
+      }
+      if ((paramObject != null) && ((paramObject instanceof URL)))
+      {
+        paramObject = bdzx.a((URL)paramObject);
+        continue;
+        label68:
+        paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        if (paramObject.getStatus() != 1)
+        {
+          paramImageView.setTag(2131378066, paramObject.getURL());
+          paramImageView.setTag(2131378060, Boolean.TRUE);
+          paramImageView.setTag(2131378063, Integer.valueOf(paramInt1));
+          paramImageView.setTag(2131378061, Integer.valueOf(paramInt2));
+          paramImageView.setTag(2131378062, Integer.valueOf(paramInt3));
+          tvn localtvn = new tvn(this, null);
+          localtvn.a = new WeakReference(paramImageView);
+          localtvn.b = new WeakReference(paramtvo);
+          this.a.put(paramObject, localtvn);
+          paramObject.setURLDrawableListener(this);
+        }
+        paramObject.setTag(bgey.b(paramInt1, paramInt2, (int)(paramInt3 * bgln.a())));
+        paramObject.setDecodeHandler(bgey.j);
+        paramImageView.setImageDrawable(null);
+        paramImageView.setImageDrawable(paramObject);
+      }
+      else
+      {
+        paramObject = null;
+      }
+    }
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if ((this.a == null) || (paramURLDrawable == null)) {}
+    Object localObject;
+    ImageView localImageView;
     do
     {
       do
       {
-        return;
-        this.jdField_a_of_type_Tvj.a.a().b(tuz.a(this.jdField_a_of_type_Tvj.a), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-        tuz.b(this.jdField_a_of_type_Tvj.a, true);
-        return;
-        if (paramInt == tqz.b)
+        do
         {
-          tuz.a(this.jdField_a_of_type_Tvj.a, 49);
-          localObject = tuz.b(this.jdField_a_of_type_Tvj.a).getString(2131698280);
-          bdgm.a(tuz.b(this.jdField_a_of_type_Tvj.a), 230, (String)localObject, null, 2131690648, 2131690626, new tvo(this), new tvp(this)).show();
           return;
-        }
-        if (paramInt != tqz.c) {
-          break;
-        }
-        tuz.a(this.jdField_a_of_type_Tvj.a, 46);
-        localObject = (ClipboardManager)tuz.c(this.jdField_a_of_type_Tvj.a).getSystemService("clipboard");
-      } while (localObject == null);
-      ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.content.get()));
-      return;
-    } while (paramInt != tqz.e);
-    tuz.a(this.jdField_a_of_type_Tvj.a, 47);
-    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.get())) {}
-    for (paramInt = 0;; paramInt = 2)
+          localObject = (tvn)this.a.get(paramURLDrawable);
+        } while (localObject == null);
+        this.a.remove(paramURLDrawable);
+        localImageView = (ImageView)((tvn)localObject).a.get();
+      } while ((localImageView == null) || (!paramURLDrawable.getURL().equals(localImageView.getTag(2131378066))));
+      localObject = (tvo)((tvn)localObject).b.get();
+    } while ((localObject != null) && (!((tvo)localObject).a(localImageView)));
+    if ((localImageView.getTag(2131378060) != null) && (((Boolean)localImageView.getTag(2131378060)).booleanValue()))
     {
-      localObject = tuz.c(this.jdField_a_of_type_Tvj.a).getString(2131698284);
-      bdgm.a(tuz.d(this.jdField_a_of_type_Tvj.a), 230, (String)localObject, null, 2131690648, 2131690626, new tvq(this, paramInt), new tvr(this)).show();
-      return;
+      paramURLDrawable.setTag(bgey.b(((Integer)localImageView.getTag(2131378063)).intValue(), ((Integer)localImageView.getTag(2131378061)).intValue(), (int)(((Integer)localImageView.getTag(2131378062)).intValue() * bgln.a())));
+      paramURLDrawable.setDecodeHandler(bgey.j);
     }
+    localImageView.setImageDrawable(null);
+    localImageView.setImageDrawable(paramURLDrawable);
+    localImageView.setTag(2131378066, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tvl
  * JD-Core Version:    0.7.0.1
  */

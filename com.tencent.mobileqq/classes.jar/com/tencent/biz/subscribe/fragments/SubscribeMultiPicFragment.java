@@ -2,6 +2,15 @@ package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import aacb;
+import aacn;
+import aacp;
+import aahc;
+import aahd;
+import aaid;
+import aajr;
+import aakz;
+import aaxb;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -10,33 +19,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import mqq.os.MqqHandler;
-import ydu;
-import yeg;
-import yei;
-import yjk;
-import yjl;
-import ykt;
-import ymo;
-import yod;
-import zaj;
 
 public class SubscribeMultiPicFragment
   extends SubscribeBaseFragment
 {
   private long jdField_a_of_type_Long;
+  private aacn jdField_a_of_type_Aacn;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ComponentPageView jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView;
-  private yeg jdField_a_of_type_Yeg;
+  private BlockContainer jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer;
   private View b;
   private View jdField_c_of_type_AndroidViewView;
   private boolean jdField_c_of_type_Boolean;
@@ -46,33 +46,33 @@ public class SubscribeMultiPicFragment
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("bundle_key_subscribe_feed_bytes_array", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray());
     localBundle.putSerializable("bundle_key_feed_extra_type_info", this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_Yeg = new yeg(localBundle);
-    this.jdField_a_of_type_Yeg.a(getActivity().mSystemBarComp);
-    if (this.jdField_a_of_type_Ykt != null) {
-      this.jdField_a_of_type_Ykt.a(this.jdField_a_of_type_Yeg);
+    this.jdField_a_of_type_Aacn = new aacn(localBundle);
+    this.jdField_a_of_type_Aacn.a(getActivity().mSystemBarComp);
+    if (this.jdField_a_of_type_Aaid != null) {
+      this.jdField_a_of_type_Aaid.a(this.jdField_a_of_type_Aacn);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.mContentView.findViewById(2131364911));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369666));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368710);
-    this.b = this.mContentView.findViewById(2131368912);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131368837));
-    this.jdField_c_of_type_AndroidViewView = this.mContentView.findViewById(2131369298);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setLayoutManagerType(3, 2);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yeg);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new ydu(localBundle));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new yei(localBundle));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new yjk(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.c();
-    this.b.setOnClickListener(new yjl(this));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.mContentView.findViewById(2131365146));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370086));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369046);
+    this.b = this.mContentView.findViewById(2131369286);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131369188));
+    this.jdField_c_of_type_AndroidViewView = this.mContentView.findViewById(2131369689);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setParentFragment(this);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setLayoutManagerType(3, 2);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableLoadMore(true);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aacn);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new aacb(localBundle));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new aacp(localBundle));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aahc(this));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
+    this.b.setOnClickListener(new aahd(this));
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_Yeg != null) && (this.jdField_a_of_type_Yeg.a() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a() != null)) {
-      zaj.a(this.jdField_a_of_type_Yeg.a().poster.id.get(), "auth_" + yod.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a()), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", this.jdField_a_of_type_Yeg.a().id.get() });
+    if ((this.jdField_a_of_type_Aacn != null) && (this.jdField_a_of_type_Aacn.a() != null) && (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a() != null)) {
+      aaxb.a(this.jdField_a_of_type_Aacn.a().poster.id.get(), "auth_" + aakz.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a()), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", this.jdField_a_of_type_Aacn.a().id.get() });
     }
   }
   
@@ -103,8 +103,8 @@ public class SubscribeMultiPicFragment
   
   protected void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Yeg != null) {
-      this.jdField_a_of_type_Yeg.a(paramStFeed);
+    if (this.jdField_a_of_type_Aacn != null) {
+      this.jdField_a_of_type_Aacn.a(paramStFeed);
     }
   }
   
@@ -148,7 +148,7 @@ public class SubscribeMultiPicFragment
   
   public int getContentLayoutId()
   {
-    return 2131558712;
+    return 2131558778;
   }
   
   public boolean isNeedMiniMsg()
@@ -163,7 +163,7 @@ public class SubscribeMultiPicFragment
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null) && (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a())) {
+    if ((this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer != null) && (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a())) {
       return true;
     }
     if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType == 9001))
@@ -177,13 +177,13 @@ public class SubscribeMultiPicFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.b();
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer != null) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.b();
     }
-    ymo.a().a("subscribe_freshman_interaction_guide");
-    ymo.a().a("subscribe_freshman_share_guide");
-    if (this.jdField_a_of_type_Yeg != null) {
-      this.jdField_a_of_type_Yeg.j();
+    aajr.a().a("subscribe_freshman_interaction_guide");
+    aajr.a().a("subscribe_freshman_share_guide");
+    if (this.jdField_a_of_type_Aacn != null) {
+      this.jdField_a_of_type_Aacn.j();
     }
   }
   
@@ -201,7 +201,7 @@ public class SubscribeMultiPicFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment
  * JD-Core Version:    0.7.0.1
  */

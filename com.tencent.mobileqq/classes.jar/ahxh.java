@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahxh
-  implements DialogInterface.OnClickListener
+public class ahxh
+  extends ahxe
 {
-  ahxh(ahww paramahww) {}
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahxh(String paramString)
   {
-    if (paramInt == 0) {
-      ahww.a(this.a);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
     }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

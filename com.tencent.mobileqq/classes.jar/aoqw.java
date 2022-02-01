@@ -1,87 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
 
 public class aoqw
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
-  public int b;
-  public int c = 1;
-  public int d;
-  public int e;
+  private static aoqw a;
   
-  public aoqw()
+  public static aoqw a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    if (a == null) {
+      a = new aoqw();
+    }
+    return a;
   }
   
-  public static aoqw a(String paramString)
+  public void a(long paramLong)
   {
-    aoqw localaoqw = new aoqw();
-    if (paramString == null) {
-      return localaoqw;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localaoqw.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
-      localaoqw.b = paramString.optInt("kDisableChooseSwitch", 0);
-      localaoqw.c = paramString.optInt("kShowKickDialog", 1);
-      localaoqw.d = paramString.optInt("kFDHookSwitch", 0);
-      localaoqw.e = paramString.optInt("kWtloginPowTest", 0);
-      paramString = paramString.optJSONObject("kSignatureList");
-      if (paramString != null)
-      {
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = paramString.optString(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            localaoqw.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
-            }
-          }
-        }
-      }
-      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localaoqw.toString());
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-      }
-      return null;
-    }
-    if (localaoqw.e == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
-      return localaoqw;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
   }
   
-  public String toString()
+  public void a(long paramLong1, long paramLong2)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
-    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    localStringBuilder.append(" fdSwitch:").append(this.d);
-    localStringBuilder.append(" wtloginPowTest:").append(this.e);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqw
  * JD-Core Version:    0.7.0.1
  */

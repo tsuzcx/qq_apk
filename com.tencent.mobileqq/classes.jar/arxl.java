@@ -1,45 +1,21 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import java.util.List;
 
 public class arxl
-  implements SplashScreen
+  implements arxk
 {
-  private OnFirstFrameRenderedListener a;
+  private arxl(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public arxl(OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public List<asaf> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = paramOnFirstFrameRenderedListener;
-  }
-  
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560708, null);
-  }
-  
-  public boolean doesSplashViewRememberItsTransition()
-  {
-    return false;
-  }
-  
-  @Nullable
-  public Bundle saveSplashScreenState()
-  {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    paramRunnable.run();
-    if (this.a != null) {
-      this.a.onFirstFrameRendered();
+    if ((paramBoolean2) || (EmoticonMainPanel.a(this.a).jdField_a_of_type_Arxz.b)) {
+      return arze.b(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
+    if (!paramBoolean1) {
+      return arze.a(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    return arze.a(EmoticonMainPanel.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, EmoticonMainPanel.a(this.a).g, EmoticonMainPanel.a(this.a).h);
   }
 }
 

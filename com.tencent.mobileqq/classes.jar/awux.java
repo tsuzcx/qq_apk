@@ -1,28 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class awux
-  extends Handler
+class awux
+  extends anmu
 {
-  public awux(CircularProgressBar paramCircularProgressBar) {}
-  
-  public void handleMessage(Message paramMessage)
+  protected void onAddFriend(String paramString)
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardManager", 2, "onAddFriend " + paramString);
+    }
+    ArrayList localArrayList;
+    if ((!awus.a(this.a)) && (awus.a(this.a) != null))
     {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
+      localArrayList = (ArrayList)awus.a(this.a).get(Long.valueOf(awus.a(this.a)));
+      if (localArrayList == null) {}
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (localArrayList.indexOf(Long.valueOf(l)) != -1)
+      {
+        paramString = new ArrayList(1);
+        paramString.add(Long.valueOf(l));
+        localArrayList = new ArrayList(1);
+        localArrayList.add(Long.valueOf(awus.a(this.a)));
+        HashMap localHashMap = new HashMap(5);
+        localHashMap.put("notRequest", paramString);
+        localHashMap.put("groupUin", localArrayList);
+        ((auov)awus.a(this.a).a(153)).a(awus.a(this.a), paramString, localHashMap);
       }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MultiCardManager", 2, "onAddFriend error " + paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,138 +1,181 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.1;
-import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.2;
-import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aggv
-  extends aggp
-  implements Animation.AnimationListener
+  implements aghj
 {
-  private long jdField_a_of_type_Long;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public static final aghk<aggv> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private float b;
+  private float c;
+  private float d;
   
-  public aggv(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  static
   {
-    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
-    paramBaseChatPie = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    if (paramBaseChatPie != null)
+    jdField_a_of_type_Aghk = new aggw();
+  }
+  
+  public aggv()
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
+    this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    float f = this.jdField_a_of_type_Int / 750.0F;
+    this.jdField_a_of_type_Float = (12.0F * f);
+    this.b = (f * 6.0F);
+    this.c = (mue.a(localBaseApplication, 50.0F) / 1000.0F);
+    this.d = (mue.a(localBaseApplication, 0.4F) / 1000.0F);
+  }
+  
+  public aggv(aghh paramaghh)
+  {
+    paramaghh.a();
+    this.jdField_a_of_type_AndroidGraphicsRect = paramaghh.a();
+    this.jdField_a_of_type_Float = paramaghh.a();
+    this.b = paramaghh.a();
+    this.c = paramaghh.a();
+    this.d = paramaghh.a();
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f = (float)paramLong / 1000.0F;
+    paramFloat1 = (float)Math.sqrt((paramFloat3 - paramFloat1) * (paramFloat3 - paramFloat1) + (paramFloat4 - paramFloat2) * (paramFloat4 - paramFloat2));
+    if (paramFloat1 <= 0.0F)
     {
-      paramBaseChatPie = paramBaseChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-      if (paramBaseChatPie != null) {
-        this.jdField_a_of_type_Long = paramBaseChatPie.dwGroupClassExt;
-      }
+      paramFloat1 = a();
+      return paramFloat1;
     }
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = paramQQAppInterface;
-    if (paramQQAppInterface == null)
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    paramFloat2 = f / paramFloat1;
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) {}
+    for (paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRect.width();; paramFloat1 = this.jdField_a_of_type_Int)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        paramQQAppInterface = (QQAppInterface)localObject;
+      paramFloat2 *= mue.b(localBaseApplication, paramFloat1);
+      paramFloat3 = c();
+      paramFloat4 = d();
+      f = b();
+      paramFloat1 = a();
+      if (paramFloat2 > paramFloat3) {
+        break;
       }
-      localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        return "troopapp_shortcut_guide_counts";
+      if (paramFloat2 >= paramFloat4) {
+        break label139;
       }
+      return f;
     }
-    return "troopapp_shortcut_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+    label139:
+    return (paramFloat2 - paramFloat4) * (a() - f) / (paramFloat3 - paramFloat4) + f;
   }
   
-  public static void e()
+  public Rect a()
   {
-    ThreadManager.postImmediately(new TroopAppShortcutNavBar.3(), null, false);
+    return this.jdField_a_of_type_AndroidGraphicsRect;
   }
   
-  public long a()
+  public void a(float paramFloat)
   {
-    return 15000L;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public View a()
+  public void a(int paramInt1, int paramInt2)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560830, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362830));
-    return localView;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
   }
   
-  public void a()
+  public void a(aggv paramaggv)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg.b(true);
-      azqs.b(null, "dc00898", "", "", "0X800AD07", "0X800AD07", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, Long.toString(this.jdField_a_of_type_Long), "");
-    }
+    this.c = paramaggv.c();
+    this.d = paramaggv.d();
+    this.jdField_a_of_type_Float = paramaggv.a();
+    this.b = paramaggv.b();
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramaggv.a());
   }
   
-  public boolean a()
+  public void a(aghh paramaghh, int paramInt)
   {
-    boolean bool1 = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg == null)) {
-      QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
-    }
-    boolean bool2;
-    do
-    {
-      return false;
-      bool2 = auou.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 2, String.format("canShowTroopAppShortcut: %s", new Object[] { Boolean.valueOf(bool2) }));
-      }
-    } while (!bool2);
-    int i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
-    }
-    if (i < 3) {}
+    paramaghh.a(1);
+    paramaghh.a(this.jdField_a_of_type_AndroidGraphicsRect);
+    paramaghh.a(this.jdField_a_of_type_Float);
+    paramaghh.a(this.b);
+    paramaghh.a(this.c);
+    paramaghh.a(this.d);
+  }
+  
+  public void a(aghm paramaghm)
+  {
+    if (paramaghm == null) {}
     for (;;)
     {
-      return bool1;
-      bool1 = false;
+      return;
+      ArrayList localArrayList = paramaghm.a();
+      if (localArrayList != null)
+      {
+        int j = localArrayList.size();
+        if (j == 1)
+        {
+          ((aghn)localArrayList.get(0)).c(a());
+          return;
+        }
+        if (j > 1)
+        {
+          ((aghn)localArrayList.get(0)).c(a());
+          paramaghm = (aghn)localArrayList.get(0);
+          int i = 1;
+          while (i < j)
+          {
+            aghn localaghn = (aghn)localArrayList.get(i);
+            localaghn.c(a(localaghn.a() - paramaghm.a(), paramaghm.a(), paramaghm.b(), localaghn.a(), localaghn.b()));
+            i += 1;
+            paramaghm = localaghn;
+          }
+        }
+      }
     }
   }
   
-  public void b()
+  public float b()
   {
-    azqs.b(null, "dc00898", "", "", "0X800AD06", "0X800AD06", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, Long.toString(this.jdField_a_of_type_Long), "");
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopAppShortcutNavBar.1(this), 500L);
-    ThreadManager.postImmediately(new TroopAppShortcutNavBar.2(this), null, false);
+    return this.b;
   }
   
-  public void c() {}
-  
-  public void d()
+  public void b(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.b = paramFloat;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public float c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    return this.c;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public float d()
+  {
+    return this.d;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
 }
 
 

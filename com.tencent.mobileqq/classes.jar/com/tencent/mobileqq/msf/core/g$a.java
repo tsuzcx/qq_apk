@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.net.LinkProperties;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.os.Handler;
-import com.tencent.mobileqq.msf.core.net.l.a;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class g$a
-  extends l.a
+  implements ThreadFactory
 {
-  g$a(g paramg) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  g$a(String paramString)
   {
-    this.a.b = null;
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.b = ((ThreadGroup)localObject);
+      this.d = (paramString + "-pool-" + a.getAndIncrement() + "-thread-");
+      return;
+    }
   }
   
-  public void onAvailable(Network paramNetwork)
+  public Thread newThread(Runnable paramRunnable)
   {
-    g.a(this.a, false);
-    this.a.b = paramNetwork;
-    g.d(this.a).removeMessages(1);
-    paramNetwork = g.d(this.a).obtainMessage(2);
-    g.d(this.a).sendMessageAtFrontOfQueue(paramNetwork);
+    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
-  
-  public void onCapabilitiesChanged(Network paramNetwork, NetworkCapabilities paramNetworkCapabilities) {}
-  
-  public void onLinkPropertiesChanged(Network paramNetwork, LinkProperties paramLinkProperties) {}
-  
-  public void onLosing(Network paramNetwork, int paramInt) {}
-  
-  public void onLost(Network paramNetwork) {}
 }
 
 

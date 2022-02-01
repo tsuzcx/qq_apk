@@ -1,18 +1,24 @@
-final class nbw
-  implements nbs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nbw
+  implements View.OnClickListener
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if ((paramInt == 0) && (nbv.a.a())) {
-      nbv.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
-    }
-  }
+  public nbw(GuessActionStageView paramGuessActionStageView) {}
   
-  public void progress(int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbw
  * JD-Core Version:    0.7.0.1
  */

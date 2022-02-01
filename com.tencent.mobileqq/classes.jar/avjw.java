@@ -1,28 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
+import com.tencent.qqinterface.CommonCallback;
 
-public class avjw
-  extends auxl
+class avjw
+  implements CustomizedRecord
 {
-  public avjw(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  avjw(avju paramavju) {}
   
-  protected void a(boolean paramBoolean)
+  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((auul)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean) {
-      this.a.getActivity().finish();
-    }
+    avkt.a().b(paramBundle, paramCommonCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjw
  * JD-Core Version:    0.7.0.1
  */

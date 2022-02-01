@@ -1,23 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-class ages
-  implements TextWatcher
+public class ages
+  extends AccessibilityDelegateCompat
 {
-  ages(ager paramager) {}
+  public ages(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373133, null);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
+    {
+      PressToSpeakPanel.a(this.a, true);
+      PressToSpeakPanel.b(this.a);
+      bgfz.a(this.a, this.a.getContext().getString(2131690958));
+    }
   }
 }
 

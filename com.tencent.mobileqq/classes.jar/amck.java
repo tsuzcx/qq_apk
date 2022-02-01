@@ -1,81 +1,324 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.DeviceHeadMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import cooperation.qzone.widget.QzoneSearchResultView;
+import java.util.Hashtable;
 
-public class amck
-  implements SensorEventListener
+public abstract class amck
+  extends BaseAdapter
+  implements aobv, bkhe
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  private int jdField_a_of_type_Int = 0;
+  protected aobu a;
+  private bkhe jdField_a_of_type_Bkhe;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  private void a(long paramLong)
+  public amck(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this);
+    this.jdField_a_of_type_Aobu = new aobu(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Aobu.a(this);
   }
   
-  protected void a() {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  protected Bitmap a()
   {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
+    return bgmo.a();
+  }
+  
+  protected Bitmap a(int paramInt, String paramString)
+  {
+    if (anhk.Z.equals(paramString)) {}
+    try
     {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+      paramString = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130847422);
+      return paramString;
     }
-    label66:
-    while (l2 <= 80L) {
-      return;
+    catch (OutOfMemoryError paramString) {}
+    return a(paramString, paramInt, (byte)0);
+    return null;
+  }
+  
+  protected Bitmap a(String paramString, int paramInt, byte paramByte)
+  {
+    Bitmap localBitmap = this.jdField_a_of_type_Aobu.a(paramInt, paramString);
+    if (localBitmap != null) {
+      return localBitmap;
     }
-    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-    }
-    this.d += f1;
-    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel())
+      this.jdField_a_of_type_Aobu.a();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (!this.jdField_a_of_type_Aobu.a()) {
+      this.jdField_a_of_type_Aobu.a(paramString, paramInt, true, paramByte);
+    }
+    return a();
+  }
+  
+  protected void a(ajhg paramajhg, Bitmap paramBitmap)
+  {
+    if (paramajhg.d == null) {}
+    do
+    {
+      do
       {
-        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
-        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
+        do
+        {
+          return;
+          if (anhk.z.equals(paramajhg.a))
+          {
+            paramajhg.d.setBackgroundResource(2130844220);
+            return;
+          }
+          if (anhk.A.equals(paramajhg.a))
+          {
+            paramajhg.d.setBackgroundResource(2130844218);
+            return;
+          }
+          if (anhk.B.equals(paramajhg.a))
+          {
+            paramajhg.d.setBackgroundResource(2130844223);
+            return;
+          }
+          if (anhk.y.equals(paramajhg.a))
+          {
+            paramajhg.d.setBackgroundResource(2130839564);
+            return;
+          }
+          if ((!anhk.aa.equals(paramajhg.a)) || (!(paramajhg instanceof ajjg))) {
+            break;
+          }
+          paramBitmap = (ajjg)paramajhg;
+        } while (!(paramBitmap.a instanceof Friends));
+        paramBitmap = (Friends)paramBitmap.a;
+      } while (paramBitmap == null);
+      if (!DeviceHeadMgr.getInstance().isLostQfindDevice(paramBitmap.name)) {
+        break;
       }
-      a();
-      a(l1);
-      return;
-    }
-    if (this.jdField_a_of_type_Int < 10)
+      paramBitmap = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(paramBitmap.name);
+    } while (paramBitmap == null);
+    paramajhg.d.setBackgroundDrawable(paramBitmap);
+    return;
+    paramajhg.d.setBackgroundDrawable(new BitmapDrawable(DeviceHeadMgr.getInstance().getDeviceHeadByDin(paramBitmap.name)));
+    return;
+    if (paramBitmap != null)
     {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Float = f2;
-      this.b = f3;
-      this.c = f4;
-      this.jdField_a_of_type_Long = l1;
+      paramajhg.d.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
       return;
     }
-    a(l1);
+    paramajhg.d.setBackgroundDrawable(new BitmapDrawable(a(paramajhg.jdField_b_of_type_Int, paramajhg.a)));
+  }
+  
+  public void a(bkhe parambkhe)
+  {
+    this.jdField_a_of_type_Bkhe = parambkhe;
+  }
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    int j;
+    int i;
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentWidgetListView != null))
+    {
+      j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        amcl localamcl = (amcl)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
+        if ((localamcl != null) && (localamcl.a != null) && (localamcl.a.length() > 0) && (localamcl.a.equals(paramString))) {
+          localamcl.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FacePreloadBaseAdapter", 2, "checkResetApp, need change app!");
+    }
+    if (this.jdField_a_of_type_Aobu != null)
+    {
+      this.jdField_a_of_type_Aobu.d();
+      this.jdField_a_of_type_Aobu = new aobu(null, paramQQAppInterface);
+      this.jdField_a_of_type_Aobu.a(this);
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getOnScrollListener() == this)) {
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(null);
+    }
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
+    }
+    this.jdField_a_of_type_ComTencentWidgetListView = null;
+  }
+  
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (paramInt1 == 0) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Aobu.a());
+      if (paramBitmap != null) {
+        this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
+      }
+    } while (paramInt1 > 0);
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))
+    {
+      paramInt2 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      paramInt1 = 0;
+      if (paramInt1 < paramInt2)
+      {
+        paramString = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1);
+        paramBitmap = paramString.getTag();
+        if ((paramBitmap != null) && ((paramBitmap instanceof amcl)))
+        {
+          paramString = (amcl)paramBitmap;
+          if ((paramString != null) && (paramString.a != null) && (paramString.a.length() > 0))
+          {
+            paramBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString.a);
+            if (paramBitmap != null) {
+              paramString.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+            }
+          }
+        }
+        for (;;)
+        {
+          paramInt1 += 1;
+          break;
+          if ((paramString instanceof QzoneSearchResultView))
+          {
+            paramString = (QzoneSearchResultView)paramString;
+            if ((paramString != null) && (!TextUtils.isEmpty(paramString.a())))
+            {
+              paramBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString.a());
+              if (paramBitmap != null) {
+                paramString.setAvartaView(paramBitmap);
+              }
+            }
+          }
+          else if ((paramBitmap != null) && ((paramBitmap instanceof ajhg)))
+          {
+            paramString = (ajhg)paramBitmap;
+            a(paramString, (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString.a));
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashtable.clear();
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Bkhe != null) {
+      this.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramInt == 0) || (paramInt == 1))
+    {
+      if (this.jdField_a_of_type_Aobu.a()) {
+        this.jdField_a_of_type_Aobu.b();
+      }
+      if (this.jdField_a_of_type_ComTencentWidgetListView != null)
+      {
+        int j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
+          if ((localObject != null) && ((localObject instanceof amcl)))
+          {
+            localObject = (amcl)localObject;
+            if ((localObject != null) && (((amcl)localObject).a != null) && (((amcl)localObject).a.length() > 0)) {
+              ((amcl)localObject).jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(((amcl)localObject).jdField_c_of_type_Int, ((amcl)localObject).a));
+            }
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            if ((localObject != null) && ((localObject instanceof ajhg)))
+            {
+              localObject = (ajhg)localObject;
+              a((ajhg)localObject, (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(((ajhg)localObject).a));
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Aobu.a();
+      this.jdField_a_of_type_Aobu.c();
+    }
+    if (this.jdField_a_of_type_Bkhe != null) {
+      this.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 

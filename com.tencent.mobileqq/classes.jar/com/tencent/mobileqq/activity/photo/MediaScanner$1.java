@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.media.MediaMetadataRetriever;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -27,7 +27,7 @@ class MediaScanner$1
         localMediaMetadataRetriever.release();
         localLocalMediaInfo.mDuration = Long.parseLong(str);
         localOnMediaScannerListener.onPhotoListDatasetDurationChanged(this.val$position, localLocalMediaInfo);
-        MediaScanner.access$000(MediaScanner.getInstance(BaseApplicationImpl.getContext())).updateMediaScnnerInfoDuration(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
+        MediaScanner.access$000(MediaScanner.getInstance(BaseApplication.getContext())).updateMediaScnnerInfoDuration(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
         return;
       }
     }
@@ -41,7 +41,7 @@ class MediaScanner$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner.1
  * JD-Core Version:    0.7.0.1
  */

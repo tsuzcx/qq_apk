@@ -1,32 +1,40 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
 
-public class mwe
+class mwe
+  extends mwq
 {
-  public static String a = "ShareUtils";
+  mwe(mwd parammwd) {}
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString1);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("image_url", localArrayList);
-    localBundle.putString("title", paramString2);
-    localBundle.putString("desc", paramString3);
-    localBundle.putLong("req_share_id", 0L);
-    localBundle.putString("detail_url", paramString4);
-    bjev.a(paramAppInterface, paramContext, localBundle, null);
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
+    if (paramString1 == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while (this.a.b(paramString1));
+      mwd.a(this.a, paramString1, true);
+      return;
+    } while ((paramInt != 5) || (!this.a.b(paramString1)));
+    mwd.a(this.a, paramString1, false);
+  }
+  
+  public void a(int paramInt, String paramString, mwr parammwr)
+  {
+    if ((paramInt != 0) || (parammwr == null) || (parammwr.jdField_a_of_type_JavaUtilList == null) || (parammwr.jdField_a_of_type_JavaLangString == null)) {}
+    while (parammwr.jdField_a_of_type_JavaUtilList.size() != 0) {
+      return;
     }
+    mwd.a(this.a, parammwr.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwe
  * JD-Core Version:    0.7.0.1
  */

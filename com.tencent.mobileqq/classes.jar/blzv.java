@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiInterestInfo;
 
-public class blzv
-  implements View.OnClickListener
+public final class blzv
+  implements Parcelable.Creator<WeishiInterestInfo>
 {
-  public blzv(AdvancedProviderView paramAdvancedProviderView) {}
-  
-  public void onClick(View paramView)
+  public WeishiInterestInfo a(Parcel paramParcel)
   {
-    paramView = bnpk.a().a();
-    if (paramView.size() > 1) {
-      xsx.a(this.a.a, paramView.get(1));
-    }
+    return new WeishiInterestInfo(paramParcel);
+  }
+  
+  public WeishiInterestInfo[] a(int paramInt)
+  {
+    return new WeishiInterestInfo[paramInt];
   }
 }
 

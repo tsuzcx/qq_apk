@@ -1,22 +1,21 @@
-import java.io.File;
-import java.util.concurrent.Callable;
-
 class aszb
-  implements Callable<Boolean>
+  extends aszz
 {
-  aszb(asyz paramasyz, File paramFile) {}
+  aszb(asyx paramasyx, aszc paramaszc) {}
   
-  public Boolean a()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    if ((asyz.a(this.jdField_a_of_type_Asyz).exists()) && (this.jdField_a_of_type_JavaIoFile == asyz.a(this.jdField_a_of_type_Asyz))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aszc.a(paramString2, paramString3);
+      return;
     }
+    this.jdField_a_of_type_Aszc.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aszb
  * JD-Core Version:    0.7.0.1
  */

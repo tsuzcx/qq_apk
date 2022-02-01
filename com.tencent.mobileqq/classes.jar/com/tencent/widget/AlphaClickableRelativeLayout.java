@@ -9,6 +9,7 @@ public class AlphaClickableRelativeLayout
   extends RelativeLayout
 {
   private boolean a;
+  private boolean b;
   
   public AlphaClickableRelativeLayout(Context paramContext)
   {
@@ -41,14 +42,23 @@ public class AlphaClickableRelativeLayout
     {
       return super.dispatchTouchEvent(paramMotionEvent);
       setAlpha(0.5F);
-      continue;
-      setAlpha(1.0F);
+      if (this.b)
+      {
+        super.dispatchTouchEvent(paramMotionEvent);
+        return true;
+        setAlpha(1.0F);
+      }
     }
+  }
+  
+  public void setConsumeDownEvent(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AlphaClickableRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

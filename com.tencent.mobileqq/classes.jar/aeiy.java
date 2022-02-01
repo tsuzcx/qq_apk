@@ -1,18 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeiy
   implements View.OnClickListener
 {
-  public aeiy(TroopTransferActivity paramTroopTransferActivity) {}
+  public aeiy(GeneralSettingActivity paramGeneralSettingActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    this.a.finish();
+    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
+    bcst.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

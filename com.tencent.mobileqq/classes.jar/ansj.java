@@ -1,21 +1,30 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class ansj
-  extends bhry
+public class ansj
+  extends BroadcastReceiver
 {
-  ansj(ansg paramansg) {}
+  public ansj(QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    if (this.a.l) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
+      }
+    }
+    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      return;
+    }
+    QQAppInterface.a(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ansj
  * JD-Core Version:    0.7.0.1
  */

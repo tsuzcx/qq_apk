@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class agtq
-  implements Animation.AnimationListener
+public class agtq
+  implements bkhw
 {
-  agtq(agti paramagti) {}
+  public agtq(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bkho parambkho) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.W = false;
-    this.a.s = 0;
-    this.a.X = false;
-    this.a.ag = false;
-    this.a.af = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.o, agti.b(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
 }
 

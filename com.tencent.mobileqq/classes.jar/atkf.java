@@ -1,50 +1,80 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-class atkf
-  extends Handler
+public abstract class atkf
+  extends atjj
 {
-  atkf(atke paramatke, Looper paramLooper)
+  final String b = "ExcitingTransfer.UploadDataRP<FileAssistant>";
+  protected String c;
+  protected int d;
+  protected long d;
+  protected String d;
+  protected long e;
+  protected long f;
+  protected long g;
+  
+  public atkf(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    super(paramQQAppInterface);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected abstract int a();
+  
+  protected HashMap<String, String> a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      atke.a(this.a).c();
-      bdfi.b(2131230744, false);
-      bdfi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
-      return;
-    }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_ReportVer", String.valueOf(1));
+    localHashMap.put("param_TransferType", String.valueOf(a()));
+    localHashMap.put("param_Platform", String.valueOf(2));
+    localHashMap.put("param_AppType", String.valueOf(0));
+    localHashMap.put("param_Result", String.valueOf(this.jdField_d_of_type_Int));
+    localHashMap.put("param_FileName", String.valueOf(this.c));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_d_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.e));
+    localHashMap.put("param_GroupCode", String.valueOf(this.f));
+    localHashMap.put("param_FileSize", String.valueOf(this.g));
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  {
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.c = paramString1;
+    this.jdField_d_of_type_JavaLangString = paramString2;
+    this.g = paramLong3;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  protected HashMap<String, String> b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
+    return null;
+  }
+  
+  public void b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
   }
 }
 

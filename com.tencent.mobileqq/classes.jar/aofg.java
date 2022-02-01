@@ -1,23 +1,15 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-
-public abstract interface aofg
+public class aofg
 {
-  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  public int a;
+  public String a;
+  public int b;
   
-  public abstract void a(Point paramPoint, int paramInt);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Point paramPoint, boolean paramBoolean);
-  
-  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  public aofg(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

@@ -1,19 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
 
-public class aehs
-  implements View.OnClickListener
+class aehs
+  extends anmu
 {
-  public aehs(TroopRequestActivity paramTroopRequestActivity) {}
+  aehs(aehr paramaehr) {}
   
-  public void onClick(View paramView)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    TroopRequestActivity.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security_verify", 2, "close warning tips");
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Aehv);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Aehv, false);
+      this.a.c(this.a.jdField_a_of_type_Aehv);
+      return;
+    }
+    this.a.jdField_a_of_type_Aehv.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Aehv);
   }
 }
 

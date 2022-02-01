@@ -1,15 +1,57 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class apxq
+public class apxq
+  extends apxp
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
   
-  private apxq(apxn paramapxn) {}
+  public apxq()
+  {
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      super.a(paramInt, paramString, paramJSONObject);
+      paramString = BaseApplicationImpl.getContext();
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
+      {
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = afur.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = afur.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = afur.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = afur.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
+      }
+      if (paramJSONObject.has("end_rect"))
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = afur.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = afur.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = afur.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = afur.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      }
+    }
+  }
 }
 
 

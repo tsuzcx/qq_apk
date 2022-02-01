@@ -46,7 +46,7 @@ public final class BaseInfo
     Object localObject2 = null;
     Info = new BaseInfo.Info(null);
     userMeta = new UserMeta(null, null, null, 0, null, null, null, null, null, null, null, null, null, 8191, null);
-    urlMeta = new UrlMeta(null, null, null, null, null, null, 63, null);
+    urlMeta = new UrlMeta(null, null, null, null, null, null, null, null, 255, null);
     Object localObject1 = app;
     if (localObject1 != null) {}
     for (localObject1 = ((Application)localObject1).getSharedPreferences("QAPM_SP", 0);; localObject1 = null)
@@ -84,7 +84,7 @@ public final class BaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.BaseInfo
  * JD-Core Version:    0.7.0.1
  */

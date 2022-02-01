@@ -1,40 +1,30 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class airg
-  extends PhotoPreviewBaseData
+class airg
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public xne a;
-  public boolean a;
-  public int b;
-  public String b;
-  public HashMap<String, PhotoSendParams> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public HashMap<String, PicInfo> c;
-  public boolean c;
-  public int d;
-  public HashMap<String, PicInfo> d;
-  public boolean d;
-  public int e;
-  public HashMap<String, byte[]> e;
-  public boolean e;
-  public int f = 1052;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  airg(aire paramaire) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.a = true;
+    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimator.putExtra("from_key", this.a.a.a());
+    paramAnimator.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimator);
+    this.a.a.overridePendingTransition(0, 0);
+    bgjr.a(false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

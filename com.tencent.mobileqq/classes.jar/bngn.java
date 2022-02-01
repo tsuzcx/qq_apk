@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.ae.album.logic.AEPhotoListLogicDefault.7.1;
+import mqq.util.WeakReference;
 
-class bngn
-  implements View.OnClickListener
+public class bngn
+  implements wiw
 {
-  bngn(bngl parambngl) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    wxj.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!bngl.a(this.a).q)
+    if (paramInt == 0)
     {
-      bngl.b(this.a);
+      QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+      ThreadManager.postImmediately(new AEPhotoListLogicDefault.7.1(this), null, true);
       return;
     }
-    bngl.a(this.a).q = false;
-    bngl.b(this.a).setSelected(false);
-    bngl.a(this.a).d(3003);
+    paramString1 = Message.obtain();
+    paramString1.what = 2;
+    paramString1.obj = Integer.valueOf(paramInt);
+    ((bnfn)this.jdField_a_of_type_Bngh.a.get()).a.sendMessage(paramString1);
   }
 }
 

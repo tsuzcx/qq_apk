@@ -1,120 +1,74 @@
 import android.content.Context;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.OCRScanEntryView;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.ar.view.ScanEntryProviderView;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class anic
+  extends anuu
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<anid> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373905, 2131371332, 2131362739 };
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { alud.a(2131713901), alud.a(2131719396), "AR" };
-  public boolean b;
-  private final int[] b;
-  public boolean c;
-  private final int[] c;
-  private final int[] d = { 2130844469, 2130844470, 2130844471, 2130844472, 2130844473, 2130844474, 2130844475, 2130844476 };
-  
-  public anic(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844477, 2130844478, 2130844479, 2130844480, 2130844481, 2130844482, 2130844483, 2130844484 };
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844452, 2130844453, 2130844454, 2130844455, 2130844456, 2130844457, 2130844458, 2130844459 };
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_ArrayOfInt.length;
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = 1;
-    if (paramInt == 1) {
-      i = 0;
-    }
-    while (paramInt == 2) {
-      return i;
-    }
-    return 2;
-  }
-  
-  public anid a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < b())) {
-      return (anid)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public ScanEntryProviderView a(int paramInt, Context paramContext, anhx paramanhx)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new QRScanEntryView(paramContext, paramanhx);
-    case 3: 
-      return new ARScanEntryView(paramContext, paramanhx);
-    }
-    return new OCRScanEntryView(paramContext, paramanhx);
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = BaseApplicationImpl.sApplication;
+    boolean bool1;
+    if (i > 10)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new anid(1, alud.a(2131713902)));
+      i = 4;
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
+      if ((BaseActivity2.topActivity != null) && (BaseActivity2.topActivity.getClass().getName().equals(localObject)))
+      {
+        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131694390), "qqsetting_screenshot_key", false);
+        boolean bool2 = bgil.a(BaseApplication.getContext());
+        if ((bool1) && (bool2))
+        {
+          if (BaseActivity2.topActivity.screenShot == null)
+          {
+            if (!BaseActivity2.topActivity.isPause) {
+              break label164;
+            }
+            localObject = BaseActivity2.topActivity.getApplicationContext();
+            label118:
+            BaseActivity2.topActivity.screenShot = new ScreenShot((Context)localObject, BaseActivity2.topActivity.getWindow());
+          }
+          bool1 = BaseActivity2.topActivity.screenShot.b();
+          if (!bool1) {
+            break label172;
+          }
+          ScreenShot.a("BaseActivity2 is showing");
+        }
       }
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new anid(2, "OCR"));
+    }
+    for (;;)
+    {
+      return;
+      i = 0;
+      break;
+      label164:
+      localObject = BaseActivity2.topActivity;
+      break label118;
+      label172:
+      if (!BaseActivity2.topActivity.screenShot.c()) {
+        BaseActivity2.access$000(BaseActivity2.topActivity);
       }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new anid(3, "AR"));
+      while (QLog.isColorLevel())
+      {
+        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
+        return;
+        if ((!bgvi.g) && (Build.VERSION.SDK_INT < 11)) {
+          bgvf.a().a(BaseActivity2.topActivity.getWindow());
+        }
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public int[] a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_b_of_type_ArrayOfInt;
-    }
-    if (paramInt == 1) {
-      return this.d;
-    }
-    if (paramInt == 2) {
-      return this.jdField_c_of_type_ArrayOfInt;
-    }
-    return null;
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anic
  * JD-Core Version:    0.7.0.1
  */

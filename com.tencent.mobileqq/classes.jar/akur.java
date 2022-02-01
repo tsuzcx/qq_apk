@@ -1,30 +1,62 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class akur
-  implements EIPCResultCallback
+  implements akse
 {
-  akur(akuq paramakuq) {}
+  akur(akuo paramakuo, akus paramakus) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private void a()
   {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
-      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + akuq.a(this.a));
-      if (!akuq.a(this.a).equals(paramEIPCResult))
-      {
-        akuq.a(this.a).removeMessages(1);
-        akuq.a(this.a).sendEmptyMessage(1);
-      }
-      return;
+    if (this.jdField_a_of_type_Akus != null) {
+      this.jdField_a_of_type_Akus.a(false);
     }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
-    akuq.a(this.a).removeMessages(1);
-    akuq.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      try
+      {
+        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
+        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
+        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
+        {
+          QLog.e("DrawClassifier", 1, "init fail file not exist");
+          a();
+          return;
+        }
+        akuo.a(this.jdField_a_of_type_Akuo, new akuh(str, paramPathResult));
+        if (this.jdField_a_of_type_Akus != null) {
+          this.jdField_a_of_type_Akus.a(true);
+        }
+        akuo.a(this.jdField_a_of_type_Akuo, true);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("DrawClassifier", 2, "init success");
+        return;
+      }
+      catch (Throwable paramPathResult)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
+        }
+        paramPathResult.printStackTrace();
+        a();
+        return;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier", 2, "init download fail");
+      }
+      a();
+    }
   }
 }
 

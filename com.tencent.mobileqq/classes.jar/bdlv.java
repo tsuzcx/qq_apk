@@ -1,18 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bdlv
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  bdlv(bdls parambdls, DialogInterface.OnClickListener paramOnClickListener) {}
+  bdlv(bdlu parambdlu) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdls, 0);
-    }
-    this.jdField_a_of_type_Bdls.dismiss();
+    this.a.a.a = null;
   }
 }
 

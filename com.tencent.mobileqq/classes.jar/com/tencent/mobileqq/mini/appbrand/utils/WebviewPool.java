@@ -36,6 +36,7 @@ public class WebviewPool
 {
   private static final int DEFAULT_POOL_SIZE = 1;
   private static final String TAG = WebviewPool.class.getSimpleName();
+  protected boolean enableEmbeddedLive;
   protected boolean enableEmbeddedVideo;
   private JsVirtualMachine jsVirtualMachine;
   private AppBrandRuntime mAppBrandRuntime;
@@ -62,6 +63,20 @@ public class WebviewPool
     paramWebView.clearHistory();
     paramWebView.clearView();
     ((MutableContextWrapper)paramWebView.getContext()).setBaseContext(BaseApplicationImpl.context);
+  }
+  
+  private int getTmpDirTbsVersion(Context paramContext)
+  {
+    try
+    {
+      int i = QbSdk.getTmpDirTbsVersion(paramContext);
+      return i;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.d("miniapp-start", 1, "", paramContext);
+    }
+    return 0;
   }
   
   public void cleanFirstWebView(Context paramContext)
@@ -94,7 +109,7 @@ public class WebviewPool
       throw new Exception("Worker already created and running!");
     }
     int i = QbSdk.getTbsVersion(this.mCt);
-    int j = QbSdk.getTmpDirTbsVersion(this.mCt);
+    int j = getTmpDirTbsVersion(this.mCt);
     if (((i > 0) || (j > 0)) && (!isTbsFallback(this.mCt)))
     {
       this.mWorker = new MiniAppWorker(this.mCt, this.mAppBrandRuntime);
@@ -153,7 +168,7 @@ public class WebviewPool
     if (localJsRuntime == null)
     {
       int i = QbSdk.getTbsVersion(this.mCt);
-      int j = QbSdk.getTmpDirTbsVersion(this.mCt);
+      int j = getTmpDirTbsVersion(this.mCt);
       QLog.d("miniapp-start", 2, "create new ServiceWebview when getServiceWebview, tbsVersion: " + i + ", tmpDirTbsVersion: " + j);
       if (((i > 0) || (j > 0)) && (!isTbsFallback(this.mCt.getBaseContext())))
       {
@@ -184,38 +199,38 @@ public class WebviewPool
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3: getfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
     //   6: ifnonnull +39 -> 45
-    //   9: ldc 232
+    //   9: ldc 110
     //   11: iconst_1
-    //   12: ldc_w 276
-    //   15: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   12: ldc_w 284
+    //   15: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   18: aload_0
-    //   19: getfield 120	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
+    //   19: getfield 137	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
     //   22: ifnull +44 -> 66
     //   25: aload_0
-    //   26: getfield 120	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
-    //   29: invokevirtual 279	android/content/MutableContextWrapper:getApplicationContext	()Landroid/content/Context;
+    //   26: getfield 137	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
+    //   29: invokevirtual 287	android/content/MutableContextWrapper:getApplicationContext	()Landroid/content/Context;
     //   32: astore_1
     //   33: aload_0
-    //   34: new 186	com/tencent/mobileqq/mini/appbrand/page/PageWebview
+    //   34: new 198	com/tencent/mobileqq/mini/appbrand/page/PageWebview
     //   37: dup
     //   38: aload_1
-    //   39: invokespecial 212	com/tencent/mobileqq/mini/appbrand/page/PageWebview:<init>	(Landroid/content/Context;)V
-    //   42: putfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   39: invokespecial 222	com/tencent/mobileqq/mini/appbrand/page/PageWebview:<init>	(Landroid/content/Context;)V
+    //   42: putfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
     //   45: aload_0
-    //   46: getfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   46: getfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
     //   49: aload_0
-    //   50: getfield 214	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
-    //   53: invokevirtual 218	com/tencent/mobileqq/mini/appbrand/page/PageWebview:setEnableNativeBuffer	(Z)V
+    //   50: getfield 224	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
+    //   53: invokevirtual 228	com/tencent/mobileqq/mini/appbrand/page/PageWebview:setEnableNativeBuffer	(Z)V
     //   56: aload_0
-    //   57: getfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   60: invokevirtual 221	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadHtml	()V
+    //   57: getfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   60: invokevirtual 231	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadHtml	()V
     //   63: aload_0
     //   64: monitorexit
     //   65: return
     //   66: aload_1
-    //   67: invokevirtual 282	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   67: invokevirtual 290	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   70: astore_1
     //   71: goto -38 -> 33
     //   74: astore_1
@@ -249,6 +264,7 @@ public class WebviewPool
         this.mFirstPageWebview = new PageWebview(this.mCt);
       }
       this.enableEmbeddedVideo = this.mFirstPageWebview.isEnableEmbeddedVideo();
+      this.enableEmbeddedLive = this.mFirstPageWebview.isEnableEmbeddedLive();
       return;
     }
     finally {}
@@ -263,138 +279,139 @@ public class WebviewPool
     //   3: aload_0
     //   4: monitorenter
     //   5: aload_0
-    //   6: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   9: ifnonnull +149 -> 158
+    //   6: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   9: ifnonnull +150 -> 159
     //   12: aload_1
-    //   13: invokestatic 147	com/tencent/smtt/sdk/QbSdk:getTbsVersion	(Landroid/content/Context;)I
+    //   13: invokestatic 161	com/tencent/smtt/sdk/QbSdk:getTbsVersion	(Landroid/content/Context;)I
     //   16: istore 4
-    //   18: aload_1
-    //   19: invokestatic 150	com/tencent/smtt/sdk/QbSdk:getTmpDirTbsVersion	(Landroid/content/Context;)I
-    //   22: istore 5
-    //   24: aload_0
-    //   25: getfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   28: ifnull +160 -> 188
-    //   31: aload_0
-    //   32: getfield 102	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   35: invokevirtual 297	com/tencent/mobileqq/mini/appbrand/page/PageWebview:getX5WebViewExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewExtension;
-    //   38: ifnull +150 -> 188
-    //   41: ldc 232
-    //   43: iconst_1
-    //   44: new 234	java/lang/StringBuilder
-    //   47: dup
-    //   48: invokespecial 235	java/lang/StringBuilder:<init>	()V
-    //   51: ldc_w 299
-    //   54: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: iload 4
-    //   59: invokevirtual 244	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: ldc 246
-    //   64: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: iload 5
-    //   69: invokevirtual 244	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: ldc_w 301
-    //   75: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: iload 6
-    //   80: invokevirtual 304	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   83: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   89: iload 4
-    //   91: ifgt +8 -> 99
-    //   94: iload 5
-    //   96: ifle +98 -> 194
-    //   99: aload_0
-    //   100: aload_1
-    //   101: invokevirtual 154	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:isTbsFallback	(Landroid/content/Context;)Z
-    //   104: ifne +90 -> 194
-    //   107: iload 6
-    //   109: ifeq +85 -> 194
-    //   112: new 254	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview
-    //   115: dup
-    //   116: aload_0
-    //   117: getfield 120	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
-    //   120: invokespecial 255	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview:<init>	(Landroid/content/Context;)V
-    //   123: astore 7
-    //   125: aload_0
-    //   126: aload 7
-    //   128: putfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   131: aload_0
-    //   132: iconst_1
-    //   133: putfield 214	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
-    //   136: aload 7
-    //   138: aload_0
-    //   139: getfield 214	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
-    //   142: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview:setEnableNativeBuffer	(Z)V
-    //   145: aload_0
-    //   146: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   149: aload_0
-    //   150: getfield 62	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mAppBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/AppBrandRuntime;
-    //   153: invokeinterface 259 2 0
-    //   158: aload_0
-    //   159: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   162: ifnull +23 -> 185
-    //   165: aload_0
-    //   166: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   169: aload_3
-    //   170: invokeinterface 309 2 0
-    //   175: aload_0
-    //   176: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
-    //   179: aload_2
-    //   180: invokeinterface 312 2 0
-    //   185: aload_0
-    //   186: monitorexit
-    //   187: return
-    //   188: iconst_0
-    //   189: istore 6
-    //   191: goto -150 -> 41
-    //   194: new 314	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$2
-    //   197: dup
-    //   198: aload_0
-    //   199: aload_1
-    //   200: aload_2
-    //   201: invokespecial 317	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/utils/WebviewPool;Landroid/content/Context;Ljava/lang/String;)V
-    //   204: invokestatic 323	com/tencent/mobileqq/mini/appbrand/utils/AppBrandTask:runTaskOnUiThread	(Ljava/lang/Runnable;)V
-    //   207: goto -49 -> 158
-    //   210: astore 7
-    //   212: ldc 232
-    //   214: iconst_1
-    //   215: ldc_w 325
-    //   218: aload 7
-    //   220: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   223: new 327	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$3
-    //   226: dup
-    //   227: aload_0
-    //   228: aload_1
-    //   229: aload_2
-    //   230: invokespecial 328	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/utils/WebviewPool;Landroid/content/Context;Ljava/lang/String;)V
-    //   233: invokestatic 323	com/tencent/mobileqq/mini/appbrand/utils/AppBrandTask:runTaskOnUiThread	(Ljava/lang/Runnable;)V
-    //   236: goto -78 -> 158
-    //   239: astore_1
-    //   240: aload_0
-    //   241: monitorexit
-    //   242: aload_1
-    //   243: athrow
+    //   18: aload_0
+    //   19: aload_1
+    //   20: invokespecial 162	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:getTmpDirTbsVersion	(Landroid/content/Context;)I
+    //   23: istore 5
+    //   25: aload_0
+    //   26: getfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   29: ifnull +160 -> 189
+    //   32: aload_0
+    //   33: getfield 121	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstPageWebview	Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   36: invokevirtual 310	com/tencent/mobileqq/mini/appbrand/page/PageWebview:getX5WebViewExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewExtension;
+    //   39: ifnull +150 -> 189
+    //   42: ldc 110
+    //   44: iconst_1
+    //   45: new 242	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 243	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 312
+    //   55: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: iload 4
+    //   60: invokevirtual 252	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   63: ldc 254
+    //   65: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: iload 5
+    //   70: invokevirtual 252	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   73: ldc_w 314
+    //   76: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: iload 6
+    //   81: invokevirtual 317	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   90: iload 4
+    //   92: ifgt +8 -> 100
+    //   95: iload 5
+    //   97: ifle +98 -> 195
+    //   100: aload_0
+    //   101: aload_1
+    //   102: invokevirtual 166	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:isTbsFallback	(Landroid/content/Context;)Z
+    //   105: ifne +90 -> 195
+    //   108: iload 6
+    //   110: ifeq +85 -> 195
+    //   113: new 262	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview
+    //   116: dup
+    //   117: aload_0
+    //   118: getfield 137	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mCt	Landroid/content/MutableContextWrapper;
+    //   121: invokespecial 263	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview:<init>	(Landroid/content/Context;)V
+    //   124: astore 7
+    //   126: aload_0
+    //   127: aload 7
+    //   129: putfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   132: aload_0
+    //   133: iconst_1
+    //   134: putfield 224	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
+    //   137: aload 7
+    //   139: aload_0
+    //   140: getfield 224	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mEnableNativeBuffer	Z
+    //   143: invokevirtual 318	com/tencent/mobileqq/mini/appbrand/page/ServiceWebview:setEnableNativeBuffer	(Z)V
+    //   146: aload_0
+    //   147: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   150: aload_0
+    //   151: getfield 63	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mAppBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/AppBrandRuntime;
+    //   154: invokeinterface 267 2 0
+    //   159: aload_0
+    //   160: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   163: ifnull +23 -> 186
+    //   166: aload_0
+    //   167: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   170: aload_3
+    //   171: invokeinterface 322 2 0
+    //   176: aload_0
+    //   177: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   180: aload_2
+    //   181: invokeinterface 325 2 0
+    //   186: aload_0
+    //   187: monitorexit
+    //   188: return
+    //   189: iconst_0
+    //   190: istore 6
+    //   192: goto -150 -> 42
+    //   195: new 327	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$2
+    //   198: dup
+    //   199: aload_0
+    //   200: aload_1
+    //   201: aload_2
+    //   202: invokespecial 330	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/utils/WebviewPool;Landroid/content/Context;Ljava/lang/String;)V
+    //   205: invokestatic 336	com/tencent/mobileqq/mini/appbrand/utils/AppBrandTask:runTaskOnUiThread	(Ljava/lang/Runnable;)V
+    //   208: goto -49 -> 159
+    //   211: astore 7
+    //   213: ldc 110
+    //   215: iconst_1
+    //   216: ldc_w 338
+    //   219: aload 7
+    //   221: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   224: new 340	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$3
+    //   227: dup
+    //   228: aload_0
+    //   229: aload_1
+    //   230: aload_2
+    //   231: invokespecial 341	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/utils/WebviewPool;Landroid/content/Context;Ljava/lang/String;)V
+    //   234: invokestatic 336	com/tencent/mobileqq/mini/appbrand/utils/AppBrandTask:runTaskOnUiThread	(Ljava/lang/Runnable;)V
+    //   237: goto -78 -> 159
+    //   240: astore_1
+    //   241: aload_0
+    //   242: monitorexit
+    //   243: aload_1
+    //   244: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	244	0	this	WebviewPool
-    //   0	244	1	paramContext	Context
-    //   0	244	2	paramString	String
-    //   0	244	3	paramValueCallback	com.tencent.smtt.sdk.ValueCallback
-    //   16	74	4	i	int
-    //   22	73	5	j	int
-    //   1	189	6	bool	boolean
-    //   123	14	7	localServiceWebview	ServiceWebview
-    //   210	9	7	localException	Exception
+    //   0	245	0	this	WebviewPool
+    //   0	245	1	paramContext	Context
+    //   0	245	2	paramString	String
+    //   0	245	3	paramValueCallback	com.tencent.smtt.sdk.ValueCallback
+    //   16	75	4	i	int
+    //   23	73	5	j	int
+    //   1	190	6	bool	boolean
+    //   124	14	7	localServiceWebview	ServiceWebview
+    //   211	9	7	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   99	107	210	java/lang/Exception
-    //   112	158	210	java/lang/Exception
-    //   194	207	210	java/lang/Exception
-    //   5	41	239	finally
-    //   41	89	239	finally
-    //   99	107	239	finally
-    //   112	158	239	finally
-    //   158	185	239	finally
-    //   194	207	239	finally
-    //   212	236	239	finally
+    //   100	108	211	java/lang/Exception
+    //   113	159	211	java/lang/Exception
+    //   195	208	211	java/lang/Exception
+    //   5	42	240	finally
+    //   42	90	240	finally
+    //   100	108	240	finally
+    //   113	159	240	finally
+    //   159	186	240	finally
+    //   195	208	240	finally
+    //   213	237	240	finally
   }
   
   /* Error */
@@ -404,32 +421,32 @@ public class WebviewPool
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   3: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
     //   6: ifnull +54 -> 60
-    //   9: new 234	java/lang/StringBuilder
+    //   9: new 242	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 235	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 332
-    //   19: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 243	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 345
+    //   19: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: astore 4
     //   24: aload_2
     //   25: ifnull +38 -> 63
     //   28: aload_2
-    //   29: invokevirtual 338	java/lang/String:length	()I
+    //   29: invokevirtual 351	java/lang/String:length	()I
     //   32: istore_3
-    //   33: ldc 232
+    //   33: ldc 110
     //   35: iconst_1
     //   36: aload 4
     //   38: iload_3
-    //   39: invokevirtual 244	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 118	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   39: invokevirtual 252	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 135	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   48: aload_0
-    //   49: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   49: getfield 123	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
     //   52: aload_1
     //   53: aload_2
     //   54: aconst_null
-    //   55: invokeinterface 342 4 0
+    //   55: invokeinterface 355 4 0
     //   60: aload_0
     //   61: monitorexit
     //   62: return
@@ -463,10 +480,10 @@ public class WebviewPool
       {
         QLog.i("miniapp-start", 1, "initServiceWebViewEx");
         if (this.mFirstServiceWebview != null) {
-          break label371;
+          break label406;
         }
         int j = QbSdk.getTbsVersion(paramContext);
-        int k = QbSdk.getTmpDirTbsVersion(paramContext);
+        int k = getTmpDirTbsVersion(paramContext);
         int i;
         if ((this.mFirstPageWebview != null) && (this.mFirstPageWebview.getX5WebViewExtension() != null))
         {
@@ -484,11 +501,12 @@ public class WebviewPool
           continue;
         }
         if (((j <= 0) && (k <= 0)) || (isTbsFallback(paramContext)) || (i == 0)) {
-          break label355;
+          break label390;
         }
         paramContext = new ServiceWebview(paramContext, "service-thread", paramCallback);
         paramContext.setJsErrorListener(this.mAppBrandRuntime.mJsErrorListener);
         paramContext.setEnableEmbeddedVideo(this.enableEmbeddedVideo);
+        paramContext.setEnableEmbeddedLive(this.enableEmbeddedLive);
         this.mFirstServiceWebview = paramContext;
         this.mFirstServiceWebview.setAppBrandEventInterface(this.mAppBrandRuntime);
         this.mEnableNativeBuffer = true;
@@ -497,18 +515,28 @@ public class WebviewPool
         {
           paramContext = "x5_embedded_video";
           MiniReportManager.reportEventType(paramMiniAppConfig, 700, paramContext, "0");
+          paramMiniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
+          if (!this.enableEmbeddedLive) {
+            break label419;
+          }
+          paramContext = "x5_embedded_live_player";
+          MiniReportManager.reportEventType(paramMiniAppConfig, 710, paramContext, "0");
           continue;
         }
         paramContext = "x5_normal_video";
       }
       finally {}
       continue;
-      label355:
+      label390:
       AppBrandTask.runTaskOnUiThread(new WebviewPool.1(this, paramContext, paramCallback));
       continue;
-      label371:
-      if (paramCallback != null) {
+      label406:
+      if (paramCallback != null)
+      {
         paramCallback.onJscoreInited();
+        continue;
+        label419:
+        paramContext = "x5_normal_live_player";
       }
     }
   }
@@ -522,7 +550,7 @@ public class WebviewPool
     if (this.mFirstServiceWebview == null)
     {
       int i = QbSdk.getTbsVersion(paramContext);
-      int j = QbSdk.getTmpDirTbsVersion(paramContext);
+      int j = getTmpDirTbsVersion(paramContext);
       QLog.d("miniapp-start", 2, "create n  ew ServiceWebview when initWebviewEnv, tbsVersion: " + i + ", tmpDirTbsVersion: " + j);
       if (((i > 0) || (j > 0)) && (!isTbsFallback(paramContext)))
       {
@@ -533,16 +561,16 @@ public class WebviewPool
         this.mFirstServiceWebview.setAppBrandEventInterface(this.mAppBrandRuntime);
         this.mServiceWebviewMap.put(paramApkgInfo.appId, this.mFirstServiceWebview);
         if (this.mFirstPageWebview != null) {
-          break label319;
+          break label320;
         }
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "create new PageWebview when initWebviewEnv");
         }
         if (this.mCt == null) {
-          break label311;
+          break label312;
         }
         paramContext = this.mCt.getApplicationContext();
-        label190:
+        label191:
         this.mFirstPageWebview = new PageWebview(paramContext);
         this.mFirstPageWebview.setEnableNativeBuffer(this.mEnableNativeBuffer);
       }
@@ -563,10 +591,10 @@ public class WebviewPool
       }
       QLog.d(TAG, 2, "get cache ServiceWebview when initWebviewEnv");
       break;
-      label311:
+      label312:
       paramContext = paramContext.getApplicationContext();
-      break label190;
-      label319:
+      break label191;
+      label320:
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "get cache PageWebview when initWebviewEnv");
       }
@@ -759,7 +787,7 @@ public class WebviewPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.WebviewPool
  * JD-Core Version:    0.7.0.1
  */

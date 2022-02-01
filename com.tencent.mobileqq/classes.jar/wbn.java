@@ -1,34 +1,39 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
 
-public final class wbn
-  extends QQUIEventReceiver<wax, wpd>
+public class wbn
+  implements GestureDetector.OnDoubleTapListener
 {
-  public wbn(@NonNull wax paramwax)
-  {
-    super(paramwax);
-  }
+  public wbn(PhotoViewAttacher paramPhotoViewAttacher) {}
   
-  public void a(@NonNull wax paramwax, @NonNull wpd paramwpd)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((paramwpd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwax.a != null) && (TextUtils.equals(paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwax.a.b)))
-    {
-      wxe.a(paramwax.b, "refresh feed item , feed id :%s", paramwax.a.b);
-      paramwax.i();
+    if (PhotoViewAttacher.a(this.a) != null) {
+      PhotoViewAttacher.a(this.a).a();
     }
+    return false;
   }
   
-  public Class acceptEventClass()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return wpd.class;
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    this.a.a();
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (PhotoViewAttacher.a(this.a) != null) {
+      PhotoViewAttacher.a(this.a).a(PhotoViewAttacher.a(this.a), f1, f2);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wbn
  * JD-Core Version:    0.7.0.1
  */

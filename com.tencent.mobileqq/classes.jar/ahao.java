@@ -1,6 +1,18 @@
-public abstract interface ahao
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class ahao
+  extends ahbl
 {
-  public static final int[] a = { 4, 5, 6 };
+  ahao(agwz paramagwz)
+  {
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agrz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

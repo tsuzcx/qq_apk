@@ -1,11 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adtl;
-import adtm;
+import Override;
+import aezv;
+import aezw;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,11 +21,11 @@ public class QuickLoginActivity
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
   public ArrayList<HashMap<String, String>> a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adtm(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aezw(this);
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131373996));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131374718));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     c();
     b();
@@ -38,9 +42,9 @@ public class QuickLoginActivity
       localHashMap2.put("text", (String)localHashMap1.get("qq") + " " + (String)localHashMap1.get("password"));
       localArrayList.add(localHashMap2);
     }
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558427, new String[] { "text" }, new int[] { 2131368545 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558430, new String[] { "text" }, new int[] { 2131368856 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new adtl(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aezv(this));
   }
   
   /* Error */
@@ -214,17 +218,32 @@ public class QuickLoginActivity
     //   141	146	213	java/io/IOException
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558426);
+    super.setContentView(2131558429);
     a();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QuickLoginActivity
  * JD-Core Version:    0.7.0.1
  */

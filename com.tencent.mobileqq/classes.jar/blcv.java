@@ -1,6 +1,12 @@
 public abstract interface blcv
 {
-  public abstract void a(blag paramblag);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(String[] paramArrayOfString);
 }
 
 

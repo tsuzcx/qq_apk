@@ -1,20 +1,39 @@
 package com.tencent.mobileqq.msf.core;
 
-public class h$a
+import android.net.LinkProperties;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.core.net.l.a;
+
+class h$a
+  extends l.a
 {
-  public int a;
-  public long b;
-  public long c;
-  public long d;
-  public long e = -1L;
-  public boolean f;
+  h$a(h paramh) {}
   
-  public String toString()
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("logInfoContext, stat:").append(this.a).append(", reqSeq:").append(this.b).append(", logSize:").append(this.c).append(", zipLogSize:").append(this.d).append(", failCode:").append(this.e);
-    return localStringBuilder.toString();
+    this.a.b = null;
   }
+  
+  public void onAvailable(Network paramNetwork)
+  {
+    h.a(this.a, false);
+    this.a.b = paramNetwork;
+    h.d(this.a).removeMessages(1);
+    paramNetwork = h.d(this.a).obtainMessage(2);
+    h.d(this.a).sendMessageAtFrontOfQueue(paramNetwork);
+  }
+  
+  public void onCapabilitiesChanged(Network paramNetwork, NetworkCapabilities paramNetworkCapabilities) {}
+  
+  public void onLinkPropertiesChanged(Network paramNetwork, LinkProperties paramLinkProperties) {}
+  
+  public void onLosing(Network paramNetwork, int paramInt) {}
+  
+  public void onLost(Network paramNetwork) {}
 }
 
 

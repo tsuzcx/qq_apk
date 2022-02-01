@@ -1,49 +1,82 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import java.util.Iterator;
+import java.util.List;
 
 public class lhf
 {
-  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lhg(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public lhf(VideoAppInterface paramVideoAppInterface)
+  public static boolean a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void b()
-  {
-    try
+    boolean bool3 = true;
+    Object localObject1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    Object localObject2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
+    boolean bool1;
+    label132:
+    long l;
+    if ((!bcls.e()) || (AIManager.installDetector(PTHumanSegmenter.class, (String)localObject2, (String)localObject1)))
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_Boolean = false;
+      bool1 = true;
+      bool2 = lhi.a().a();
+      boolean bool4 = lhg.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable portraitSo = " + bool1 + "| sensorEnable = " + bool2 + " |DPCEntry = " + bool4);
       }
-      return;
+      if ((!bool1) || (!bool2) || (!bool4)) {
+        break label279;
+      }
+      bool2 = true;
+      if (!bool2) {
+        return bool2;
+      }
+      localObject1 = lhg.a();
+      if (localObject1 == null) {
+        break label337;
+      }
+      l = lhg.a();
+      localObject1 = ((List)localObject1).iterator();
+      bool1 = false;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    label163:
+    while (((Iterator)localObject1).hasNext())
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
+      localObject2 = (lhh)((Iterator)localObject1).next();
+      if (localObject2 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable CPUinfo = " + ((lhh)localObject2).b + "|" + ((lhh)localObject2).a);
+        }
+        if ((bool1) || (loz.a(((lhh)localObject2).b, ((lhh)localObject2).a * 10000, l * 100000000L))) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          break label163;
+          bool1 = false;
+          break;
+          bool2 = false;
+          break label132;
+        }
+      }
     }
+    label279:
+    if ((bool2) && (bool1)) {}
+    for (boolean bool2 = bool3;; bool2 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable isDeviceSupport = " + bool1);
+      }
+      return bool2;
+    }
+    label337:
+    return false;
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lhf
  * JD-Core Version:    0.7.0.1
  */

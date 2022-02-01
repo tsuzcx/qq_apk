@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bloz
-  implements View.OnClickListener
+public abstract class bloz
+  implements bloy
 {
-  public bloz(AEEditorColorSelectorView paramAEEditorColorSelectorView, int paramInt) {}
+  public void a(blpa paramblpa) {}
   
-  public void onClick(View paramView)
-  {
-    AEEditorColorSelectorView.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView, this.jdField_a_of_type_Int);
-  }
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
 }
 
 

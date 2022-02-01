@@ -28,7 +28,7 @@ public class AdJSON
     if (i < Array.getLength(paramObject))
     {
       Object localObject = fromObject(Array.get(paramObject, i), paramSet);
-      if ((localObject == null) || (localObject == JSONObject.NULL)) {
+      if ((localObject == null) || (JSONObject.NULL.equals(localObject))) {
         localJSONArray.put(i, JSONObject.NULL);
       }
       for (;;)
@@ -61,7 +61,7 @@ public class AdJSON
         Object localObject2 = localField.get(paramObject);
         localField.setAccessible(bool);
         localObject2 = fromObject(localObject2, paramSet);
-        if ((localObject2 != null) || (localObject2 == JSONObject.NULL)) {
+        if ((localObject2 != null) || (JSONObject.NULL.equals(localObject2))) {
           localJSONObject.put(localField.getName(), localObject2);
         }
       }
@@ -151,7 +151,7 @@ public class AdJSON
     if (i < paramJSONArray.length())
     {
       Object localObject1 = paramJSONArray.get(i);
-      if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {}
+      if ((localObject1 == null) || (JSONObject.NULL.equals(localObject1))) {}
       for (localObject1 = null;; localObject1 = toObject(localObject1, paramClass.getComponentType()))
       {
         Array.set(localObject2, i, localObject1);
@@ -209,7 +209,7 @@ public class AdJSON
       if (localField != null)
       {
         localObject1 = paramJSONObject.get((String)localObject1);
-        if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {}
+        if ((localObject1 == null) || (JSONObject.NULL.equals(localObject1))) {}
         for (localObject1 = null;; localObject1 = toObject(localObject1, localField.getType()))
         {
           boolean bool = localField.isAccessible();
@@ -332,7 +332,7 @@ public class AdJSON
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.json.AdJSON
  * JD-Core Version:    0.7.0.1
  */

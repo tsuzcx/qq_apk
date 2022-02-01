@@ -9,7 +9,9 @@ import tencent.im.qqwallet.qqwalletaio_resv.qqwalletaio_body_resv;
 public class QQWalletAioBodyReserve
 {
   public String feedId = "";
+  public String makeHbExtend;
   public int pfa_type;
+  public String poemRule;
   public int subChannel;
   
   public QQWalletAioBodyReserve() {}
@@ -49,25 +51,44 @@ public class QQWalletAioBodyReserve
   
   public void init(byte[] paramArrayOfByte)
   {
-    try
+    for (;;)
     {
-      qqwalletaio_resv.qqwalletaio_body_resv localqqwalletaio_body_resv = new qqwalletaio_resv.qqwalletaio_body_resv();
-      localqqwalletaio_body_resv.mergeFrom(paramArrayOfByte);
-      if (localqqwalletaio_body_resv.uint32_pfa_type.has()) {
-        this.pfa_type = localqqwalletaio_body_resv.uint32_pfa_type.get();
-      }
-      if (localqqwalletaio_body_resv.bytes_feeds_id.has()) {}
-      for (this.feedId = localqqwalletaio_body_resv.bytes_feeds_id.get().toStringUtf8(); localqqwalletaio_body_resv.uint32_subchannel.has(); this.feedId = "")
+      try
       {
-        this.subChannel = localqqwalletaio_body_resv.uint32_subchannel.get();
+        qqwalletaio_resv.qqwalletaio_body_resv localqqwalletaio_body_resv = new qqwalletaio_resv.qqwalletaio_body_resv();
+        localqqwalletaio_body_resv.mergeFrom(paramArrayOfByte);
+        if (localqqwalletaio_body_resv.uint32_pfa_type.has()) {
+          this.pfa_type = localqqwalletaio_body_resv.uint32_pfa_type.get();
+        }
+        if (localqqwalletaio_body_resv.bytes_feeds_id.has())
+        {
+          this.feedId = localqqwalletaio_body_resv.bytes_feeds_id.get().toStringUtf8();
+          if (localqqwalletaio_body_resv.uint32_subchannel.has()) {
+            this.subChannel = localqqwalletaio_body_resv.uint32_subchannel.get();
+          }
+          if (localqqwalletaio_body_resv.bytes_poem_rule.has())
+          {
+            this.poemRule = localqqwalletaio_body_resv.bytes_poem_rule.get().toStringUtf8();
+            if (!localqqwalletaio_body_resv.bytes_client_extend.has()) {
+              break;
+            }
+            this.makeHbExtend = localqqwalletaio_body_resv.bytes_client_extend.get().toStringUtf8();
+          }
+        }
+        else
+        {
+          this.feedId = "";
+          continue;
+        }
+        this.poemRule = "";
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
         return;
       }
-      return;
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    this.makeHbExtend = "";
   }
   
   public String toString()
@@ -77,7 +98,7 @@ public class QQWalletAioBodyReserve
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletAioBodyReserve
  * JD-Core Version:    0.7.0.1
  */

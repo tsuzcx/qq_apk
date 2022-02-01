@@ -1,17 +1,11 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
 public class bneq
-  implements AdapterView.OnItemClickListener
+  extends ViewModel
 {
-  public bneq(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public final MutableLiveData<bnnb> a = new MutableLiveData();
+  public final MutableLiveData<bnip> b = new MutableLiveData();
 }
 
 

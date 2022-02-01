@@ -62,7 +62,7 @@ class DoubleVideoMeetingCtrlUI$RefreshUIRunnable
   
   public void run()
   {
-    if (this.this$0.g()) {
+    if (this.this$0.h()) {
       return;
     }
     a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b);
@@ -70,7 +70,7 @@ class DoubleVideoMeetingCtrlUI$RefreshUIRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.RefreshUIRunnable
  * JD-Core Version:    0.7.0.1
  */

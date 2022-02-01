@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bbsu
-  implements DialogInterface.OnClickListener
+public class bbsu
+  extends bbti
 {
-  bbsu(bbsn parambbsn, bbsa parambbsa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbsu(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    bcmu.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bbsa);
-    paramDialogInterface.dismiss();
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
+  
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new bbmp(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

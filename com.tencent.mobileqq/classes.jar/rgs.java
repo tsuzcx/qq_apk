@@ -1,27 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
 
-public class rgs
-  extends RecyclerView.OnScrollListener
+public final class rgs
+  implements pvb<feeds_info.LocationInfo, rhf>
 {
-  public rgs(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public rhf a(feeds_info.LocationInfo paramLocationInfo)
   {
-    if (paramInt == 0)
-    {
-      VideoFeedsRecyclerView.a(this.a, false);
-      return;
-    }
-    VideoFeedsRecyclerView.a(this.a, true);
+    return rhf.a(paramLocationInfo);
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgs
  * JD-Core Version:    0.7.0.1
  */

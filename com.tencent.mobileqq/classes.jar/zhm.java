@@ -1,38 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.widgets.TabLayout;
+import java.util.List;
+import javax.annotation.Nonnull;
 
-public class zhm
-  implements Animator.AnimatorListener
+public abstract interface zhm
 {
-  public zhm(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
+  public abstract void a(int paramInt, @Nonnull List<zhp> paramList, boolean paramBoolean);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
-  }
+  public abstract void b(int paramInt, @Nonnull List<zhp> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhm
  * JD-Core Version:    0.7.0.1
  */

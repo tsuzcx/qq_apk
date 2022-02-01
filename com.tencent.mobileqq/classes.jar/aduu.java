@@ -1,23 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aduu
   implements DialogInterface.OnClickListener
 {
-  public aduu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
+  public aduu(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

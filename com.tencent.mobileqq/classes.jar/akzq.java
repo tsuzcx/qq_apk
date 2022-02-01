@@ -1,70 +1,56 @@
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager.39.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
+import mqq.os.MqqHandler;
 
 public class akzq
-  extends MSFServlet
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  akzq(akyh paramakyh) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameServlet", 2, "[onReceive]");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
+    if (!akyh.a(this.a)) {}
     for (;;)
     {
-      Object localObject = akwd.a();
-      if (localObject == null) {
-        QLog.e("cmgame_process.CmGameServlet", 1, "app is null.");
-      }
-      do
-      {
-        return;
-        localObject = (akzp)((AppInterface)localObject).getBusinessHandler(0);
-      } while (localObject == null);
-      ((akzp)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      arrayOfByte = null;
+      akyh.a(this.a, false);
+      new Handler().postDelayed(new BannerManager.39.1(this), 1000L);
+      QQAppInterface localQQAppInterface = (QQAppInterface)akyh.a(this.a).getAppRuntime();
+      String str = localQQAppInterface.getCurrentAccountUin();
+      Object localObject = new StringBuilder("https://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append("uin=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("&plat=1");
+      ((StringBuilder)localObject).append("&app=1");
+      ((StringBuilder)localObject).append("&version=8.4.1.4680");
+      ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+      ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+      ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      localObject = ((StringBuilder)localObject).toString();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("portraitOnly", true);
+      localIntent.putExtra("url", (String)localObject);
+      localIntent.putExtra("uin", str);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      VasWebviewUtil.openQQBrowserActivity(akyh.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
+      aywm.a().a(localQQAppInterface);
+      akyh.a(this.a).sendEmptyMessageDelayed(4, 1000L);
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
+      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 18, 0, "", "", "", "");
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameServlet", 2, "[onSend]");
-    }
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte != null)
-      {
-        paramIntent = new byte[arrayOfByte.length + 4];
-        bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
-        bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-        paramPacket.putSendData(paramIntent);
-      }
-    }
-    else
-    {
-      return;
-    }
-    paramIntent = new byte[4];
-    bdqa.a(paramIntent, 0, 4L);
-    paramPacket.putSendData(paramIntent);
   }
 }
 

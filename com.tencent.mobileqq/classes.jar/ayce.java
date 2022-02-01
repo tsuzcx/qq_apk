@@ -1,17 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.app.PendingIntent;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class ayce
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/DefaultJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayce
+  extends aybw
 {
-  public ayce(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NotNull
+  protected PendingIntent a(@NotNull ayca paramayca)
   {
-    bhsj.b(paramView);
-    return false;
+    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
+    return d(paramayca);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

@@ -1,19 +1,49 @@
-class aqzx
-  extends aqzb
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aqzx
 {
-  public aqzx(aqyp paramaqyp)
+  private String a = anni.a(2131713531);
+  private String b = "";
+  
+  public static aqzx a(aqlg[] paramArrayOfaqlg)
   {
-    super(paramaqyp);
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
+    }
+    aqzx localaqzx = new aqzx();
+    try
+    {
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
+      localaqzx.a = paramArrayOfaqlg.getString("emptyShowWording");
+      localaqzx.b = paramArrayOfaqlg.getString("linkWord");
+      return localaqzx;
+    }
+    catch (JSONException paramArrayOfaqlg)
+    {
+      paramArrayOfaqlg.printStackTrace();
+      return localaqzx;
+    }
+    catch (NullPointerException paramArrayOfaqlg)
+    {
+      paramArrayOfaqlg.printStackTrace();
+    }
+    return localaqzx;
   }
   
-  protected String a()
+  public String a()
   {
-    return "StateUploadoneWhenPause";
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzx
  * JD-Core Version:    0.7.0.1
  */

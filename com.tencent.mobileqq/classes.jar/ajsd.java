@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ajsd
-  implements azcw
+  implements ajul
 {
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public ajsd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void a()
   {
-    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public void b()
   {
-    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
   }
 }
 

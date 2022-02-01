@@ -1,38 +1,56 @@
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class lje<T1 extends MessageMicro, T2 extends MessageMicro>
+public class lje
+  extends Handler
 {
-  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public lje(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    Object localObject = ljb.a(this);
-    ((ljd)localObject).a("QAVMessageHandler", paramLong);
-    if ((((ljd)localObject).a != null) && (((ljd)localObject).b != null)) {}
-    try
-    {
-      MessageMicro localMessageMicro = (MessageMicro)((ljd)localObject).a.newInstance();
-      localObject = (MessageMicro)((ljd)localObject).b.newInstance();
-      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
-        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
-      }
-      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
-    }
+    super(paramLooper);
   }
   
-  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    long l = mtl.a(paramMessage.obj);
+    if (AudioHelper.f()) {
+      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraUtils.a(this.a, l);
+      return;
+    case 2: 
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        CameraUtils.a(this.a, l, bool);
+        return;
+        bool = false;
+      }
+    case 3: 
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      CameraUtils.a(this.a, l, i, j);
+      return;
+    case 4: 
+      CameraUtils.b(this.a, l);
+      return;
+    }
+    int i = paramMessage.arg1;
+    CameraUtils.a(this.a, l, i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lje
  * JD-Core Version:    0.7.0.1
  */

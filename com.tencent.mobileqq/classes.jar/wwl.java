@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class wwl
-  implements View.OnClickListener
+public class wwl
+  extends weu
 {
-  wwl(wwk paramwwk) {}
+  public List<String> a;
+  public List<wzp> b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    this.a.dismiss();
+    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwl
  * JD-Core Version:    0.7.0.1
  */

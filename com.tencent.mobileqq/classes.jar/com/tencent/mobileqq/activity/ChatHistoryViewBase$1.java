@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acoj;
+import advt;
 
 public class ChatHistoryViewBase$1
   implements Runnable
 {
-  public ChatHistoryViewBase$1(acoj paramacoj) {}
+  public ChatHistoryViewBase$1(advt paramadvt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ChatHistoryViewBase$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryViewBase.1
  * JD-Core Version:    0.7.0.1
  */

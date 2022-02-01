@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import abti;
+import acwh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -18,15 +18,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import augo;
-import auib;
-import auid;
-import auio;
-import auip;
-import auiq;
-import aujo;
-import bdin;
-import bdoo;
+import awnr;
+import awpe;
+import awpg;
+import awpr;
+import awps;
+import awpt;
+import awqs;
+import bgnt;
+import bgtn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -34,6 +34,7 @@ import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -52,9 +53,9 @@ public class MsgBackupSelectionFragment
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private augo jdField_a_of_type_Augo;
-  private auib jdField_a_of_type_Auib;
-  private auid jdField_a_of_type_Auid = new auiq(this);
+  private awnr jdField_a_of_type_Awnr;
+  private awpe jdField_a_of_type_Awpe;
+  private awpg jdField_a_of_type_Awpg = new awpt(this);
   private String jdField_a_of_type_JavaLangString;
   public List<RecentBaseData> a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -88,17 +89,17 @@ public class MsgBackupSelectionFragment
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690418, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131690417, new Object[] { Integer.valueOf(paramInt) }));
     }
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690402, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131690407, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
     }
     if (this.jdField_b_of_type_Int == 2) {
-      localStringBuilder.append("\n").append(getString(2131690392));
+      localStringBuilder.append("\n").append(getString(2131690397));
     }
     if (localStringBuilder.length() > 0)
     {
@@ -111,37 +112,37 @@ public class MsgBackupSelectionFragment
       if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
       {
         this.jdField_a_of_type_Boolean = true;
-        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690449);
+        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690443);
         return;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       else
       {
         this.jdField_a_of_type_Boolean = false;
-        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690427);
+        a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690425);
         return;
       }
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_Boolean = false;
-    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690427);
+    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690425);
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690418, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131690417, new Object[] { Integer.valueOf(paramInt) }));
     }
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690402, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131690407, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
     }
     if (this.jdField_b_of_type_Int == 2) {
-      localStringBuilder.append("\n").append(getString(2131690392));
+      localStringBuilder.append("\n").append(getString(2131690397));
     }
     if (localStringBuilder.length() > 0)
     {
@@ -150,12 +151,12 @@ public class MsgBackupSelectionFragment
     }
     while (paramBoolean)
     {
-      a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690449);
+      a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690443);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690427);
+    a(this.jdField_b_of_type_AndroidWidgetTextView, 2131690425);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
@@ -172,49 +173,49 @@ public class MsgBackupSelectionFragment
   
   private void b()
   {
-    this.jdField_a_of_type_Augo = augo.a();
+    this.jdField_a_of_type_Awnr = awnr.a();
   }
   
   private void c()
   {
-    augo.a().a.clear();
-    augo.a().a(new auio(this));
-    augo.a().n();
+    awnr.a().a.clear();
+    awnr.a().a(new awpr(this));
+    awnr.a().n();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363363));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376340));
-    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690427);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365004));
-    a(this.jdField_c_of_type_AndroidWidgetTextView, 2131690428);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376357));
-    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690417);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363557));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377123));
+    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690425);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365240));
+    a(this.jdField_c_of_type_AndroidWidgetTextView, 2131690426);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377145));
+    a(this.jdField_a_of_type_AndroidWidgetButton, 2131690416);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370430));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370873));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370426));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131370869));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Auib = new auib(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auib);
-    this.jdField_a_of_type_Auib.a(this.jdField_a_of_type_Auid);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131365760);
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369757);
+    this.jdField_a_of_type_Awpe = new awpe(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awpe);
+    this.jdField_a_of_type_Awpe.a(this.jdField_a_of_type_Awpg);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131366001);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131370188);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.vg.setOnItemSelectListener(new auip(this));
+    this.vg.setOnItemSelectListener(new awps(this));
   }
   
   private void e()
   {
-    bdoo.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    bdoo.b(this.jdField_b_of_type_AndroidViewView, 8);
-    bdoo.b(this.jdField_a_of_type_AndroidViewView, 8);
+    bgtn.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
+    bgtn.b(this.jdField_b_of_type_AndroidViewView, 8);
+    bgtn.b(this.jdField_a_of_type_AndroidViewView, 8);
   }
   
   private void f()
@@ -223,7 +224,7 @@ public class MsgBackupSelectionFragment
     {
       h();
       if (this.jdField_a_of_type_Int == 0) {
-        aujo.a("0X800A233", 2);
+        awqs.a("0X800A233", 2);
       }
     }
     do
@@ -231,17 +232,17 @@ public class MsgBackupSelectionFragment
       do
       {
         return;
-      } while (!augo.c);
-      aujo.a("0X800A258", 2);
+      } while (!awnr.c);
+      awqs.a("0X800A258", 2);
       return;
       g();
       if (this.jdField_a_of_type_Int == 0)
       {
-        aujo.a("0X800A233", 1);
+        awqs.a("0X800A233", 1);
         return;
       }
-    } while (!augo.c);
-    aujo.a("0X800A258", 1);
+    } while (!awnr.c);
+    awqs.a("0X800A258", 1);
   }
   
   private void g()
@@ -257,10 +258,10 @@ public class MsgBackupSelectionFragment
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        augo.a().a.add(localRecentBaseData);
+        awnr.a().a.add(localRecentBaseData);
       }
     }
-    this.jdField_a_of_type_Auib.b();
+    this.jdField_a_of_type_Awpe.b();
   }
   
   private void h()
@@ -270,8 +271,8 @@ public class MsgBackupSelectionFragment
     {
       this.jdField_a_of_type_Boolean = bool;
       a(0, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Auib.c();
-      augo.a().c();
+      this.jdField_a_of_type_Awpe.c();
+      awnr.a().c();
       return;
     }
   }
@@ -280,12 +281,12 @@ public class MsgBackupSelectionFragment
   {
     int m = 3;
     int k = 2;
-    Object localObject = augo.a().a.iterator();
+    Object localObject = awnr.a().a.iterator();
     int i = 0;
     int j = i;
     if (((Iterator)localObject).hasNext())
     {
-      if (!abti.d(((RecentBaseData)((Iterator)localObject).next()).a())) {
+      if (!acwh.d(((RecentBaseData)((Iterator)localObject).next()).getRecentUserType())) {
         break label135;
       }
       if (i == 2) {
@@ -323,7 +324,7 @@ public class MsgBackupSelectionFragment
       for (;;)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          aujo.a((String)localObject, j, i);
+          awqs.a((String)localObject, j, i);
         }
         return;
         i = 1;
@@ -338,7 +339,7 @@ public class MsgBackupSelectionFragment
         }
         i = 4;
         break label97;
-        if (augo.c) {
+        if (awnr.c) {
           localObject = "0X800A25D";
         }
       }
@@ -353,12 +354,12 @@ public class MsgBackupSelectionFragment
     b();
     d();
     c();
-    augo.a().c();
+    awnr.a().c();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561274;
+    return 2131561505;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -371,9 +372,9 @@ public class MsgBackupSelectionFragment
     e();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Auib.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Auib.a();
-      this.jdField_a_of_type_Auib.notifyDataSetChanged();
+      this.jdField_a_of_type_Awpe.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Awpe.a();
+      this.jdField_a_of_type_Awpe.notifyDataSetChanged();
       return false;
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
@@ -402,7 +403,7 @@ public class MsgBackupSelectionFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onActivityResult startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
         }
-        a(this.jdField_a_of_type_Augo.a.size());
+        a(this.jdField_a_of_type_Awnr.a.size());
       }
     }
     while ((1000 != paramInt1) || (paramInt2 != 1001)) {
@@ -419,65 +420,69 @@ public class MsgBackupSelectionFragment
     switch (paramView.getId())
     {
     default: 
-      return;
-    case 2131376340: 
-      f();
-      return;
-    case 2131365004: 
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "date_select startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
+    case 2131377123: 
+    case 2131365240: 
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        f();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "date_select startTime = " + this.jdField_a_of_type_Long + ", endTime = " + this.jdField_b_of_type_Long + ", mCurContentType = " + this.jdField_b_of_type_Int + ", startTimeShow = " + this.jdField_a_of_type_JavaLangString + ", endTimeShow = " + this.jdField_b_of_type_JavaLangString);
+        }
+        localIntent = new Intent();
+        localIntent.putExtra("session_start_time", this.jdField_a_of_type_Long);
+        localIntent.putExtra("session_end_time", this.jdField_b_of_type_Long);
+        localIntent.putExtra("session_start_time_str", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("session_end_time_str", this.jdField_b_of_type_JavaLangString);
+        localIntent.putExtra("session_content_type", this.jdField_b_of_type_Int);
+        localIntent.putExtra("backup_select_from", this.jdField_a_of_type_Int);
+        PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupDateFragment.class, 1000);
       }
-      paramView = new Intent();
-      paramView.putExtra("session_start_time", this.jdField_a_of_type_Long);
-      paramView.putExtra("session_end_time", this.jdField_b_of_type_Long);
-      paramView.putExtra("session_start_time_str", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("session_end_time_str", this.jdField_b_of_type_JavaLangString);
-      paramView.putExtra("session_content_type", this.jdField_b_of_type_Int);
-      paramView.putExtra("backup_select_from", this.jdField_a_of_type_Int);
-      PublicFragmentActivity.a(getActivity(), paramView, MsgBackupDateFragment.class, 1000);
-      return;
     }
-    augo.jdField_b_of_type_Int = augo.a().a.size();
-    aujo.a();
-    aujo.a.jdField_b_of_type_Long = augo.jdField_b_of_type_Int;
+    awnr.jdField_b_of_type_Int = awnr.a().a.size();
+    awqs.a();
+    awqs.a.jdField_b_of_type_Long = awnr.jdField_b_of_type_Int;
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + augo.jdField_b_of_type_Int);
+      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "select session detail, sessionCount = " + awnr.jdField_b_of_type_Int);
     }
-    paramView = new Intent();
-    paramView.putExtra("session_start_time", this.jdField_a_of_type_Long);
-    paramView.putExtra("session_end_time", this.jdField_b_of_type_Long);
-    paramView.putExtra("session_content_type", this.jdField_b_of_type_Int);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("session_start_time", this.jdField_a_of_type_Long);
+    localIntent.putExtra("session_end_time", this.jdField_b_of_type_Long);
+    localIntent.putExtra("session_content_type", this.jdField_b_of_type_Int);
     boolean bool;
     if (this.jdField_a_of_type_Int == 0)
     {
-      bool = bdin.a(BaseApplication.getContext());
-      paramView.putExtra("session_net_status", bool);
+      bool = bgnt.a(BaseApplication.getContext());
+      localIntent.putExtra("session_net_status", bool);
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_OTHER_DEVICE isNetEnable = " + bool);
       }
       if (bool)
       {
-        augo.a().a(false);
-        PublicFragmentActivity.a(getActivity(), paramView, MsgBackupQRFragment.class, 1000);
+        awnr.a().a(false);
+        label407:
+        PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupQRFragment.class, 1000);
       }
     }
     for (;;)
     {
       i();
-      return;
+      break;
       if (!QLog.isColorLevel()) {
-        break;
+        break label407;
       }
       QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_OTHER_DEVICE net enable status = " + bool);
-      break;
+      break label407;
       if (this.jdField_a_of_type_Int == 1)
       {
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_PC");
         }
-        paramView.putExtra("0x11bpush_extra", this.jdField_c_of_type_JavaLangString);
-        paramView.putExtra("param_start", 2);
-        PublicFragmentActivity.a(getActivity(), paramView, MsgBackupPCTransportFragment.class, 1000);
+        localIntent.putExtra("0x11bpush_extra", this.jdField_c_of_type_JavaLangString);
+        localIntent.putExtra("param_start", 2);
+        PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupPCTransportFragment.class, 1000);
       }
     }
   }
@@ -485,28 +490,28 @@ public class MsgBackupSelectionFragment
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131690429));
+    setTitle(getActivity().getString(2131690427));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Auib != null) {
-      this.jdField_a_of_type_Auib.d();
+    if (this.jdField_a_of_type_Awpe != null) {
+      this.jdField_a_of_type_Awpe.d();
     }
-    augo.a().a(null);
+    awnr.a().a(null);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Auib.notifyDataSetChanged();
+    this.jdField_a_of_type_Awpe.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment
  * JD-Core Version:    0.7.0.1
  */

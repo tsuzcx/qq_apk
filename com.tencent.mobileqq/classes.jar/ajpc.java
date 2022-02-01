@@ -1,26 +1,70 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class ajpc
-  implements aepr
+public abstract class ajpc
 {
-  ajpc(ajpb paramajpb) {}
+  protected ajrj a;
+  protected FragmentActivity a;
+  protected View a;
+  protected String a;
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public ajpc(FragmentActivity paramFragmentActivity)
   {
-    if (ajpb.a(this.a))
-    {
-      ajpb.a(this.a, false);
-      ajpb.a(this.a);
-    }
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
   }
   
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
+  public abstract int a();
   
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  public FragmentManager a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+  }
   
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  protected View a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+  }
   
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
+  public BaseActivity a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131376788);
+    f();
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(ajrj paramajrj)
+  {
+    this.jdField_a_of_type_Ajrj = paramajrj;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Ajrj = null;
+  }
+  
+  public void e() {}
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+  }
 }
 
 

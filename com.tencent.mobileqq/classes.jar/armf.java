@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
 
-class armf
-  implements View.OnClickListener
+public class armf
+  extends lyi
 {
-  armf(armd paramarmd) {}
-  
-  public void onClick(View paramView)
+  public static boolean a(Context paramContext, String paramString)
   {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
-    {
-      i = arsx.b(this.a.a.e());
-      azqs.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    while ((i != 1) || (this.a.a.a() == null)) {
-      return;
-    }
-    this.a.a.a().a();
+    return a(paramContext, "TencentDoc_USER_" + paramString, false);
+  }
+  
+  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
   }
 }
 

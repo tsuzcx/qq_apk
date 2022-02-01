@@ -1,61 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.2;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.3;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.4;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.6;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class aphz
-  implements Manager
+  implements INetInfoHandler
 {
-  private apix jdField_a_of_type_Apix;
-  private apjc jdField_a_of_type_Apjc;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Object b = new Object();
+  aphz(aphx paramaphx) {}
   
-  public aphz(QQAppInterface paramQQAppInterface)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + aphx.b(this.a));
+    }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
   }
   
-  public apix a()
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (this.jdField_a_of_type_Apix != null) {
-      return this.jdField_a_of_type_Apix;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + aphx.b(this.a));
     }
-    synchronized (this.b)
-    {
-      if (this.jdField_a_of_type_Apix == null) {
-        this.jdField_a_of_type_Apix = new apix(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      apix localapix = this.jdField_a_of_type_Apix;
-      return localapix;
-    }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
   }
   
-  public apjc a()
+  public void onNetNone2Mobile(String paramString)
   {
-    if (this.jdField_a_of_type_Apjc != null) {
-      return this.jdField_a_of_type_Apjc;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + aphx.b(this.a));
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Apjc == null) {
-        this.jdField_a_of_type_Apjc = new apjc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      apjc localapjc = this.jdField_a_of_type_Apjc;
-      return localapjc;
-    }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
   }
   
-  public void onDestroy()
+  public void onNetNone2Wifi(String paramString)
   {
-    if (this.jdField_a_of_type_Apjc != null) {
-      this.jdField_a_of_type_Apjc.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + aphx.b(this.a));
     }
-    this.jdField_a_of_type_Apjc = null;
-    if (this.jdField_a_of_type_Apix != null)
-    {
-      this.jdField_a_of_type_Apix.a();
-      this.jdField_a_of_type_Apix = null;
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + aphx.b(this.a));
     }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + aphx.b(this.a));
+    }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
   }
 }
 

@@ -1,8 +1,8 @@
 public abstract interface ayki
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
   
-  public abstract void c(String paramString);
+  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

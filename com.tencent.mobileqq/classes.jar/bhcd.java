@@ -1,79 +1,91 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.QUAUtil;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhcd
+  extends bhbw
 {
-  private static final HashMap<String, bhce> a = new HashMap();
+  public static bhcd a = new bhcd();
   
-  private static void a(bhce parambhce)
+  public static String a(Context paramContext, int paramInt)
   {
-    if (parambhce != null) {
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    return paramContext + File.separator + paramInt + ".wav";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bgyv parambgyv, boolean paramBoolean)
+  {
+    a.download(paramQQAppInterface, "specialRing." + paramInt, parambgyv, paramBoolean);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    Object localObject = "specialRing." + paramInt;
+    paramContext = a.getDir(paramContext, (String)localObject);
+    if (!new File(paramContext).exists()) {
+      return false;
+    }
+    localObject = new String[3];
+    localObject[0] = ".wav";
+    localObject[1] = ".json";
+    localObject[2] = ".jpg";
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = localObject[i];
+      if (!new File(paramContext, paramInt + str).exists())
+      {
+        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    paramContext = bgmg.a(new File(paramContext + File.separator + paramInt + ".json"));
+    if (!TextUtils.isEmpty(paramContext)) {
       try
       {
-        String str = parambhce.a();
-        QMLog.d("MiniProgramLpReportDC05", "doReport " + str);
-        QMLog.d("MiniProgramLpReportDC05", "doReport " + parambhce.toString());
-        Bundle localBundle = new Bundle();
-        localBundle.putStringArray("data", new String[] { str });
-        if (QUAUtil.isQQApp()) {}
-        for (str = "dc05115";; str = "dc05387")
-        {
-          localBundle.putString("log_key", str);
-          bgtu.a().a("cmd_dc_report_log_key_data", localBundle, null);
-          parambhce.a();
-          return;
-        }
-        return;
+        paramContext = new JSONObject(paramContext).optString("name", null);
+        return paramContext;
       }
-      catch (Exception parambhce)
+      catch (JSONException paramContext)
       {
-        QMLog.e("MiniProgramLpReportDC05", "doReport ", parambhce);
+        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
+        return null;
       }
     }
+    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
+    return null;
   }
   
-  public static void a(MiniAppInfo paramMiniAppInfo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  public long getBID()
   {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      paramMiniAppInfo = (bhce)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null)
-      {
-        bhce.a(paramMiniAppInfo, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
-        a(paramMiniAppInfo);
-      }
-    }
+    return 37L;
   }
   
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong1, long paramLong2)
+  protected String getRootDir()
   {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      paramMiniAppInfo = (bhce)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null) {
-        paramMiniAppInfo.a(paramLong2, paramLong1, paramInt);
-      }
-    }
+    return "ring";
   }
   
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong, boolean paramBoolean)
+  protected String getScidPrefix()
   {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      paramMiniAppInfo = (bhce)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null) {
-        paramMiniAppInfo.a(paramLong, paramInt, paramBoolean);
-      }
-    }
+    return "specialRing.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcd
  * JD-Core Version:    0.7.0.1
  */

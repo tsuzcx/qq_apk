@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeqw;
-import aeqx;
-import aiio;
+import afxg;
+import afxh;
+import ajzh;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
@@ -14,13 +14,13 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ChatItemAnimLayout
   extends RelativeLayout
-  implements aiio
+  implements ajzh
 {
-  int Y;
-  int Z = 255;
+  int Z;
   public long a;
-  public aeqx a;
+  public afxh a;
   private Handler a;
+  int aa = 255;
   public ChatMessage b;
   protected boolean b;
   protected boolean c;
@@ -33,21 +33,21 @@ public class ChatItemAnimLayout
   {
     super(paramContext);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new aeqw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afxg(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new aeqw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afxg(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new aeqw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afxg(this);
   }
   
   private boolean a(ChatMessage paramChatMessage)
@@ -68,14 +68,14 @@ public class ChatItemAnimLayout
     if ((this.jdField_b_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage != paramChatMessage))
     {
       this.h = 0.0F;
-      this.Z = 255;
+      this.aa = 255;
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
       this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
     }
   }
   
-  public void a(ChatMessage paramChatMessage, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, aeqx paramaeqx)
+  public void a(ChatMessage paramChatMessage, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, afxh paramafxh)
   {
     if (a(paramChatMessage))
     {
@@ -88,12 +88,12 @@ public class ChatItemAnimLayout
       QLog.d("ChatItemAnimLayout", 2, "startAnim");
     }
     this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_Aeqx = paramaeqx;
+    this.jdField_a_of_type_Afxh = paramafxh;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.g = paramFloat1;
     this.h = paramFloat2;
-    this.Y = ((int)(paramFloat3 * 255.0F));
-    this.Z = ((int)(paramFloat4 * 255.0F));
+    this.Z = ((int)(paramFloat3 * 255.0F));
+    this.aa = ((int)(paramFloat4 * 255.0F));
     this.e = 0.0F;
     this.f = 0.0F;
     paramChatMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
@@ -106,7 +106,7 @@ public class ChatItemAnimLayout
     float f2 = this.g;
     float f3 = this.e;
     float f4 = this.g;
-    setAlpha(((this.Z - this.Y) * this.f + this.Y) / 255.0F);
+    setAlpha(((this.aa - this.Z) * this.f + this.Z) / 255.0F);
     paramCanvas.translate((f1 - f2) * f3 + f4, 0.0F);
     try
     {
@@ -128,7 +128,7 @@ public class ChatItemAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ChatItemAnimLayout
  * JD-Core Version:    0.7.0.1
  */

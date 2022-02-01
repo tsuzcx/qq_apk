@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface andg
+class andg
+  extends andn
 {
-  public abstract void a(int paramInt);
+  andg(andf paramandf) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void a(int paramInt, byte[] paramArrayOfByte)
+  {
+    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
+  }
 }
 
 

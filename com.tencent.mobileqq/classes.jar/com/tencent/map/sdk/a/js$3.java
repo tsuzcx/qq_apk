@@ -2,6 +2,7 @@ package com.tencent.map.sdk.a;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 final class js$3
   implements View.OnClickListener
@@ -13,6 +14,7 @@ final class js$3
     if (this.a.e != null) {
       this.a.e.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

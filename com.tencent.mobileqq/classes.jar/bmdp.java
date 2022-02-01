@@ -1,11 +1,16 @@
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map;
+import cooperation.qzone.plugin.PluginRecord;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bmdp
+public abstract interface bmdp
 {
-  private Map<String, Integer> a = new HashMap();
+  public abstract void a(PluginRecord paramPluginRecord);
+  
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
 }
 
 

@@ -1,16 +1,25 @@
-class arkc
-  implements arip
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+
+public class arkc
+  implements Animation.AnimationListener
 {
-  arkc(arka paramarka) {}
+  public arkc(DataReportViewer paramDataReportViewer) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(false, arqo.a(this.a.a.a()), this.a.c(), new arkd(this));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  public void b()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    arka.b(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 

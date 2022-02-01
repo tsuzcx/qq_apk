@@ -4,12 +4,12 @@ import AvatarInfo.QQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdcf;
+import bghc;
 
 public class HeadRequest
   implements Parcelable
 {
-  public static final Parcelable.Creator<HeadRequest> CREATOR = new bdcf();
+  public static final Parcelable.Creator<HeadRequest> CREATOR = new bghc();
   public int a;
   public QQHeadInfo a;
   public String a;
@@ -38,7 +38,7 @@ public class HeadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.util.HeadRequest
  * JD-Core Version:    0.7.0.1
  */

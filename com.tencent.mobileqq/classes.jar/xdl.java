@@ -1,40 +1,20 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-
-@TargetApi(14)
-public class xdl
+class xdl
+  extends xcc
 {
-  public static float a(View paramView)
+  xdl(xcu paramxcu, String paramString1, String paramString2, boolean paramBoolean, xed paramxed)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return 0.0F;
-    }
-    return paramView.getX();
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public static void a(View paramView, float paramFloat)
+  public boolean b()
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return;
-    }
-    paramView.setAlpha(paramFloat);
-  }
-  
-  public static float b(View paramView)
-  {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
-      return 0.0F;
-    }
-    return paramView.getY();
+    this.jdField_a_of_type_Xed.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xdl
  * JD-Core Version:    0.7.0.1
  */

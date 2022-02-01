@@ -1,0 +1,1922 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n      \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-wrp",
+                "id": "swiper-wrp"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "flex-direction": "column",
+                "background-color": "white"
+            },
+            "children": [
+                {
+                    "tag": "swiper",
+                    "content": "\n        \n      ",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "swiper",
+                        "indicator-dots": "{{true}}",
+                        "indicator-color": "rgba(0, 0, 0, .2)",
+                        "indicator-active-color": "rgba(0, 0, 0, .9)",
+                        "autoplay": "{{true}}",
+                        "interval": "4500",
+                        "circular": "{{true}}",
+                        "pts:indicator-dots-width": "32rpx",
+                        "pts:indicator-dots-height": "6rpx",
+                        "pts:indicator-dots-gap": "8rpx",
+                        "pts:indicator-dots-radius": "2px",
+                        "pts:indicator-bottom": "16rpx"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "750rpx",
+                        "height": "388rpx"
+                    },
+                    "children": [
+                        {
+                            "tag": "swiper-item",
+                            "content": "\n\n          \n          \n\n          \n          \n\n          \n          \n\n          \n          \n\n          \n          \n\n        ",
+                            "attributes": {
+                                "viewID": "3",
+                                "class": "swiper-item",
+                                "wx:for": "{{datas}}",
+                                "wx:for-item": "swiperItemData",
+                                "pts:on-swiper-item-exposure": "{{$RIJArticle.rowKey}}",
+                                "pts:on-swiper-drag": "{{swiperItemData.type}}",
+                                "pts:on-tap": "{{$RIJArticle.rowKey}}",
+                                "data-event-type": "{{'allInOneJump'}}",
+                                "data-jump-url": "{{swiperItemData.jump_url}}",
+                                "data-r5": "{{swiperItemData.inner_report_params}}"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "flex-direction": "row",
+                                "padding-top": "16rpx",
+                                "justify-content": "center"
+                            },
+                            "children": [
+                                {
+                                    "tag": "view",
+                                    "content": "\n            \n            \n            \n          ",
+                                    "attributes": {
+                                        "viewID": "4",
+                                        "class": "bg",
+                                        "wx:if": "{{swiperItemData.type == 'weather'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "relative",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start",
+                                        "width": "726rpx",
+                                        "height": "326rpx",
+                                        "background-size": "cover"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "9",
+                                                "class": "bg-img",
+                                                "src": "{{swiperItemData.cover_image_url}}"
+                                            },
+                                            "styles": {
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "10",
+                                                "class": "tag-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "margin-left": "24rpx",
+                                                "margin-top": "24rpx",
+                                                "width": "292rpx",
+                                                "height": "38rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "26",
+                                                        "class": "tag-bg-img",
+                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200429/e2900a8d368745cfa2821ce1a882f981.png"
+                                                    },
+                                                    "styles": {
+                                                        "position": "absolute",
+                                                        "width": "100%",
+                                                        "height": "100%",
+                                                        "border-radius": "6rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.name}}",
+                                                    "attributes": {
+                                                        "viewID": "27",
+                                                        "class": "tag-name"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "left": "14rpx",
+                                                        "height": "100%",
+                                                        "font-weight": "bold",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(0, 0, 0)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.date}}",
+                                                    "attributes": {
+                                                        "viewID": "28",
+                                                        "class": "tag-date"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "right": "12rpx",
+                                                        "height": "100%",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "11",
+                                                "class": "temperature-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "absolute",
+                                                "bottom": "24rpx",
+                                                "flex-direction": "row"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.temperature}}",
+                                                    "attributes": {
+                                                        "viewID": "29",
+                                                        "class": "temperature"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin-left": "24rpx",
+                                                        "font-size": "108rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "font-weight": "bold"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "30",
+                                                        "class": "weather-location-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "margin-left": "20rpx",
+                                                        "flex-direction": "column",
+                                                        "justify-content": "center"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.weather}}",
+                                                            "attributes": {
+                                                                "viewID": "59",
+                                                                "class": "weather-location"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "30rpx",
+                                                                "color": "rgb(255, 255, 255)"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.location}}",
+                                                            "attributes": {
+                                                                "viewID": "60",
+                                                                "class": "weather-location location-top-margin"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "30rpx",
+                                                                "color": "rgb(255, 255, 255)",
+                                                                "margin-top": "17rpx"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n            \n            \n            \n          ",
+                                    "attributes": {
+                                        "viewID": "5",
+                                        "class": "bg",
+                                        "wx:if": "{{swiperItemData.type == 'constellation'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "relative",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start",
+                                        "width": "726rpx",
+                                        "height": "326rpx",
+                                        "background-size": "cover"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "12",
+                                                "class": "bg-img",
+                                                "src": "{{swiperItemData.cover_image_url}}"
+                                            },
+                                            "styles": {
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "13",
+                                                "class": "tag-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "margin-left": "24rpx",
+                                                "margin-top": "24rpx",
+                                                "width": "292rpx",
+                                                "height": "38rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "31",
+                                                        "class": "tag-bg-img",
+                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200429/e2900a8d368745cfa2821ce1a882f981.png"
+                                                    },
+                                                    "styles": {
+                                                        "position": "absolute",
+                                                        "width": "100%",
+                                                        "height": "100%",
+                                                        "border-radius": "6rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.name}}",
+                                                    "attributes": {
+                                                        "viewID": "32",
+                                                        "class": "tag-name"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "left": "14rpx",
+                                                        "height": "100%",
+                                                        "font-weight": "bold",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(0, 0, 0)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.date}}",
+                                                    "attributes": {
+                                                        "viewID": "33",
+                                                        "class": "tag-date"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "right": "12rpx",
+                                                        "height": "100%",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "14",
+                                                "class": "constellation-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "flex-direction": "column",
+                                                "position": "absolute",
+                                                "bottom": "24rpx",
+                                                "width": "100%",
+                                                "padding-left": "24rpx",
+                                                "padding-right": "24rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.constellation}}",
+                                                    "attributes": {
+                                                        "viewID": "34",
+                                                        "class": "constellation"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "font-size": "24rpx",
+                                                        "color": "rgba(255, 255, 255, 0.8)"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "35",
+                                                        "class": "lucky-wrp lucky"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "margin-top": "24rpx",
+                                                        "font-size": "32rpx",
+                                                        "color": "rgb(255, 255, 255)"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.lucky_color}}",
+                                                            "attributes": {
+                                                                "viewID": "61"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "32rpx",
+                                                                "color": "rgb(255, 255, 255)"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.lucky_number}}",
+                                                            "attributes": {
+                                                                "viewID": "62",
+                                                                "class": "lucky-left-margin"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "margin-left": "36rpx",
+                                                                "font-size": "32rpx",
+                                                                "color": "rgb(255, 255, 255)"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.dating_constellation}}",
+                                                    "attributes": {
+                                                        "viewID": "36",
+                                                        "class": "lucky dating-top-margin"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "font-size": "32rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "margin-top": "18rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n            \n            \n            \n          ",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "class": "bg plague-bg",
+                                        "wx:if": "{{swiperItemData.type == 'plague'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "relative",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start",
+                                        "width": "726rpx",
+                                        "height": "326rpx",
+                                        "background-size": "cover",
+                                        "background-color": "rgb(251, 251, 251)"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "15",
+                                                "class": "tag-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "margin-left": "24rpx",
+                                                "margin-top": "24rpx",
+                                                "width": "292rpx",
+                                                "height": "38rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "37",
+                                                        "class": "tag-bg-img",
+                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200429/e2900a8d368745cfa2821ce1a882f981.png"
+                                                    },
+                                                    "styles": {
+                                                        "position": "absolute",
+                                                        "width": "100%",
+                                                        "height": "100%",
+                                                        "border-radius": "6rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.name}}",
+                                                    "attributes": {
+                                                        "viewID": "38",
+                                                        "class": "tag-name"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "left": "14rpx",
+                                                        "height": "100%",
+                                                        "font-weight": "bold",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(0, 0, 0)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.date}}",
+                                                    "attributes": {
+                                                        "viewID": "39",
+                                                        "class": "tag-date"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "right": "12rpx",
+                                                        "height": "100%",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "16",
+                                                "class": "plague-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "flex-direction": "row",
+                                                "justify-content": "center",
+                                                "margin-top": "42rpx",
+                                                "align-self": "center"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "40",
+                                                        "class": "plague-item-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "column",
+                                                        "align-items": "center",
+                                                        "width": "178rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "63",
+                                                                "class": "plague-increase-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "font-size": "22rpx",
+                                                                "height": "30rpx",
+                                                                "align-items": "center",
+                                                                "justify-content": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "较上日",
+                                                                    "attributes": {
+                                                                        "viewID": "88",
+                                                                        "class": "plague-increase-pre"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(153, 153, 153)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.remain_increase}}",
+                                                                    "attributes": {
+                                                                        "viewID": "89",
+                                                                        "class": "plague-remain"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(222, 0, 49)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.remain}}",
+                                                            "attributes": {
+                                                                "viewID": "64",
+                                                                "class": "plague-num plague-remain"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "color": "rgb(222, 0, 49)",
+                                                                "margin-top": "3rpx",
+                                                                "font-size": "36rpx",
+                                                                "height": "50rpx",
+                                                                "font-weight": "bold"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "65",
+                                                                "class": "plague-name-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "margin-top": "11rpx",
+                                                                "width": "146rpx",
+                                                                "height": "48rpx",
+                                                                "background-color": "rgb(243, 243, 243)",
+                                                                "border-radius": "8rpx",
+                                                                "justify-content": "center",
+                                                                "align-items": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "现有确诊",
+                                                                    "attributes": {
+                                                                        "viewID": "90",
+                                                                        "class": "plague-name"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "26rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "41",
+                                                        "class": "plague-item-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "column",
+                                                        "align-items": "center",
+                                                        "width": "178rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "66",
+                                                                "class": "plague-increase-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "font-size": "22rpx",
+                                                                "height": "30rpx",
+                                                                "align-items": "center",
+                                                                "justify-content": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "较上日",
+                                                                    "attributes": {
+                                                                        "viewID": "91",
+                                                                        "class": "plague-increase-pre"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(153, 153, 153)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.total_increase}}",
+                                                                    "attributes": {
+                                                                        "viewID": "92",
+                                                                        "class": "plague-total"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(255, 78, 40)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.total}}",
+                                                            "attributes": {
+                                                                "viewID": "67",
+                                                                "class": "plague-num plague-total"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "color": "rgb(255, 78, 40)",
+                                                                "margin-top": "3rpx",
+                                                                "font-size": "36rpx",
+                                                                "height": "50rpx",
+                                                                "font-weight": "bold"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "68",
+                                                                "class": "plague-name-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "margin-top": "11rpx",
+                                                                "width": "146rpx",
+                                                                "height": "48rpx",
+                                                                "background-color": "rgb(243, 243, 243)",
+                                                                "border-radius": "8rpx",
+                                                                "justify-content": "center",
+                                                                "align-items": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "累计确诊",
+                                                                    "attributes": {
+                                                                        "viewID": "93",
+                                                                        "class": "plague-name"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "26rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "42",
+                                                        "class": "plague-item-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "column",
+                                                        "align-items": "center",
+                                                        "width": "178rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "69",
+                                                                "class": "plague-increase-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "font-size": "22rpx",
+                                                                "height": "30rpx",
+                                                                "align-items": "center",
+                                                                "justify-content": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "较上日",
+                                                                    "attributes": {
+                                                                        "viewID": "94",
+                                                                        "class": "plague-increase-pre"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(153, 153, 153)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.cure_increase}}",
+                                                                    "attributes": {
+                                                                        "viewID": "95",
+                                                                        "class": "plague-cure"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(36, 169, 104)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.cure}}",
+                                                            "attributes": {
+                                                                "viewID": "70",
+                                                                "class": "plague-num plague-cure"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "color": "rgb(36, 169, 104)",
+                                                                "margin-top": "3rpx",
+                                                                "font-size": "36rpx",
+                                                                "height": "50rpx",
+                                                                "font-weight": "bold"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "71",
+                                                                "class": "plague-name-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "margin-top": "11rpx",
+                                                                "width": "146rpx",
+                                                                "height": "48rpx",
+                                                                "background-color": "rgb(243, 243, 243)",
+                                                                "border-radius": "8rpx",
+                                                                "justify-content": "center",
+                                                                "align-items": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "累计治愈",
+                                                                    "attributes": {
+                                                                        "viewID": "96",
+                                                                        "class": "plague-name"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "26rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "43",
+                                                        "class": "plague-item-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "column",
+                                                        "align-items": "center",
+                                                        "width": "178rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "72",
+                                                                "class": "plague-increase-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "font-size": "22rpx",
+                                                                "height": "30rpx",
+                                                                "align-items": "center",
+                                                                "justify-content": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "较上日",
+                                                                    "attributes": {
+                                                                        "viewID": "97",
+                                                                        "class": "plague-increase-pre"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "color": "rgb(153, 153, 153)",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.death_increase}}",
+                                                                    "attributes": {
+                                                                        "viewID": "98",
+                                                                        "class": "plague-increase"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "22rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.death}}",
+                                                            "attributes": {
+                                                                "viewID": "73",
+                                                                "class": "plague-num"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "margin-top": "3rpx",
+                                                                "font-size": "36rpx",
+                                                                "height": "50rpx",
+                                                                "font-weight": "bold"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "74",
+                                                                "class": "plague-name-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "margin-top": "11rpx",
+                                                                "width": "146rpx",
+                                                                "height": "48rpx",
+                                                                "background-color": "rgb(243, 243, 243)",
+                                                                "border-radius": "8rpx",
+                                                                "justify-content": "center",
+                                                                "align-items": "center"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "累计死亡",
+                                                                    "attributes": {
+                                                                        "viewID": "99",
+                                                                        "class": "plague-name"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "26rpx"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "17",
+                                                "class": "plague-bottom-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "flex-direction": "row",
+                                                "margin-top": "27rpx",
+                                                "font-size": "24rpx",
+                                                "color": "rgb(153, 153, 153)",
+                                                "align-items": "flex-start",
+                                                "width": "100%"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.source}}",
+                                                    "attributes": {
+                                                        "viewID": "44",
+                                                        "class": "bottom-source"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin-left": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "color": "rgb(153, 153, 153)"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.update_time}}",
+                                                    "attributes": {
+                                                        "viewID": "45",
+                                                        "class": "bottom-update-time"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin-left": "10rpx",
+                                                        "font-size": "24rpx",
+                                                        "color": "rgb(153, 153, 153)"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "46",
+                                                        "class": "bottom-jump-detail-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "position": "absolute",
+                                                        "align-items": "center",
+                                                        "right": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "color": "rgb(153, 153, 153)"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.jump_detail}}",
+                                                            "attributes": {
+                                                                "viewID": "75"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "24rpx",
+                                                                "color": "rgb(153, 153, 153)"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "img",
+                                                            "content": "",
+                                                            "attributes": {
+                                                                "viewID": "76",
+                                                                "class": "bottom-icon",
+                                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200430/192a9a76ac074e93a9968aa5dd685e7c.png"
+                                                            },
+                                                            "styles": {
+                                                                "width": "9rpx",
+                                                                "height": "16rpx",
+                                                                "margin-left": "8rpx",
+                                                                "font-size": "24rpx",
+                                                                "color": "rgb(153, 153, 153)"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n            \n            \n            \n            \n          ",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "class": "bg",
+                                        "wx:if": "{{swiperItemData.type == 'column'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "relative",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start",
+                                        "width": "726rpx",
+                                        "height": "326rpx",
+                                        "background-size": "cover"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "18",
+                                                "class": "bg-img",
+                                                "src": "{{swiperItemData.cover_image_url}}"
+                                            },
+                                            "styles": {
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "19",
+                                                "class": "bg-img",
+                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200506/1fb9b53fe804403e98f55892cc170a5f.png"
+                                            },
+                                            "styles": {
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "20",
+                                                "class": "tag-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "margin-left": "24rpx",
+                                                "margin-top": "24rpx",
+                                                "width": "292rpx",
+                                                "height": "38rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "47",
+                                                        "class": "tag-bg-img",
+                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200429/e2900a8d368745cfa2821ce1a882f981.png"
+                                                    },
+                                                    "styles": {
+                                                        "position": "absolute",
+                                                        "width": "100%",
+                                                        "height": "100%",
+                                                        "border-radius": "6rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.name}}",
+                                                    "attributes": {
+                                                        "viewID": "48",
+                                                        "class": "tag-name"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "left": "14rpx",
+                                                        "height": "100%",
+                                                        "font-weight": "bold",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(0, 0, 0)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.date}}",
+                                                    "attributes": {
+                                                        "viewID": "49",
+                                                        "class": "tag-date"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "right": "12rpx",
+                                                        "height": "100%",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "21",
+                                                "class": "constellation-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "flex-direction": "column",
+                                                "position": "absolute",
+                                                "bottom": "24rpx",
+                                                "width": "100%",
+                                                "padding-left": "24rpx",
+                                                "padding-right": "24rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "50",
+                                                        "class": "column-row-wrp column-row-bottom-margin-wrp",
+                                                        "wx:if": "{{swiperItemData.column_title != null}}"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "align-items": "center",
+                                                        "margin-bottom": "6rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "img",
+                                                            "content": "",
+                                                            "attributes": {
+                                                                "viewID": "77",
+                                                                "class": "column-image",
+                                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200506/2e6bed8b0b744ad6b48e490e67902e1b.png"
+                                                            },
+                                                            "styles": {
+                                                                "width": "20rpx",
+                                                                "height": "22rpx",
+                                                                "margin-right": "12rpx"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.column_title}}",
+                                                            "attributes": {
+                                                                "viewID": "78",
+                                                                "class": "column-title"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "24rpx",
+                                                                "color": "rgb(255, 255, 255)"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "51",
+                                                        "class": "column-row-wrp column-row-top-margin-wrp",
+                                                        "wx:if": "{{swiperItemData.content_title_1 != null}}"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "align-items": "center",
+                                                        "margin-top": "18rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "",
+                                                            "attributes": {
+                                                                "viewID": "79",
+                                                                "class": "column-dot"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "width": "6rpx",
+                                                                "height": "6rpx",
+                                                                "margin-left": "7rpx",
+                                                                "margin-right": "19rpx",
+                                                                "background-color": "rgb(255, 255, 255)",
+                                                                "border-radius": "3rpx",
+                                                                "flex-shrink": "0"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.content_title_1}}",
+                                                            "attributes": {
+                                                                "viewID": "80",
+                                                                "class": "column-content-title"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "32rpx",
+                                                                "color": "rgb(255, 255, 255)",
+                                                                "-webkit-line-clamp": "1"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "52",
+                                                        "class": "column-row-wrp column-row-top-margin-wrp",
+                                                        "wx:if": "{{swiperItemData.content_title_2 != null}}"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "align-items": "center",
+                                                        "margin-top": "18rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "",
+                                                            "attributes": {
+                                                                "viewID": "81",
+                                                                "class": "column-dot"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "width": "6rpx",
+                                                                "height": "6rpx",
+                                                                "margin-left": "7rpx",
+                                                                "margin-right": "19rpx",
+                                                                "background-color": "rgb(255, 255, 255)",
+                                                                "border-radius": "3rpx",
+                                                                "flex-shrink": "0"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.content_title_2}}",
+                                                            "attributes": {
+                                                                "viewID": "82",
+                                                                "class": "column-content-title"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "32rpx",
+                                                                "color": "rgb(255, 255, 255)",
+                                                                "-webkit-line-clamp": "1"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "53",
+                                                        "class": "column-row-wrp column-row-top-margin-wrp",
+                                                        "wx:if": "{{swiperItemData.content_title_3 != null}}"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "row",
+                                                        "align-items": "center",
+                                                        "margin-top": "18rpx"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "",
+                                                            "attributes": {
+                                                                "viewID": "83",
+                                                                "class": "column-dot"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "width": "6rpx",
+                                                                "height": "6rpx",
+                                                                "margin-left": "7rpx",
+                                                                "margin-right": "19rpx",
+                                                                "background-color": "rgb(255, 255, 255)",
+                                                                "border-radius": "3rpx",
+                                                                "flex-shrink": "0"
+                                                            },
+                                                            "children": []
+                                                        },
+                                                        {
+                                                            "tag": "text",
+                                                            "content": "{{swiperItemData.content_title_3}}",
+                                                            "attributes": {
+                                                                "viewID": "84",
+                                                                "class": "column-content-title"
+                                                            },
+                                                            "styles": {
+                                                                "box-sizing": "border-box",
+                                                                "display": "-webkit-box",
+                                                                "overflow": "hidden",
+                                                                "font-size": "32rpx",
+                                                                "color": "rgb(255, 255, 255)",
+                                                                "-webkit-line-clamp": "1"
+                                                            },
+                                                            "children": []
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n            \n            \n            \n            \n          ",
+                                    "attributes": {
+                                        "viewID": "8",
+                                        "class": "bg subscribe-column-wrp",
+                                        "wx:if": "{{swiperItemData.type == 'subscribe_column'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "relative",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start",
+                                        "width": "726rpx",
+                                        "height": "326rpx",
+                                        "background-size": "cover",
+                                        "overflow": "hidden"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "22",
+                                                "class": "bg-img column-blur",
+                                                "src": "{{swiperItemData.cover_image_url}}"
+                                            },
+                                            "styles": {
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%",
+                                                "filter": "blur(10px)"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "23",
+                                                "class": "bg-img column-mask"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "absolute",
+                                                "width": "100%",
+                                                "height": "100%",
+                                                "background-color": "rgba(255, 255, 255, 0.9)",
+                                                "border-style": "solid",
+                                                "border-top-style": "solid",
+                                                "border-right-style": "solid",
+                                                "border-bottom-style": "solid",
+                                                "border-left-style": "solid",
+                                                "border-width": "1px",
+                                                "border-top-width": "1px",
+                                                "border-right-width": "1px",
+                                                "border-bottom-width": "1px",
+                                                "border-left-width": "1px",
+                                                "border-color": "rgba(229, 229, 229, 0.6)"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "24",
+                                                "class": "tag-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "margin-left": "24rpx",
+                                                "margin-top": "24rpx",
+                                                "width": "292rpx",
+                                                "height": "38rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "54",
+                                                        "class": "tag-bg-img",
+                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200429/e2900a8d368745cfa2821ce1a882f981.png"
+                                                    },
+                                                    "styles": {
+                                                        "position": "absolute",
+                                                        "width": "100%",
+                                                        "height": "100%",
+                                                        "border-radius": "6rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.name}}",
+                                                    "attributes": {
+                                                        "viewID": "55",
+                                                        "class": "tag-name"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "left": "14rpx",
+                                                        "height": "100%",
+                                                        "font-weight": "bold",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(0, 0, 0)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{swiperItemData.date}}",
+                                                    "attributes": {
+                                                        "viewID": "56",
+                                                        "class": "tag-date"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "position": "absolute",
+                                                        "right": "12rpx",
+                                                        "height": "100%",
+                                                        "font-size": "22rpx",
+                                                        "color": "rgb(255, 255, 255)",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n              \n              \n            ",
+                                            "attributes": {
+                                                "viewID": "25",
+                                                "class": "subscribe-column-content-wrp"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "absolute",
+                                                "flex-direction": "row",
+                                                "bottom": "24rpx",
+                                                "width": "100%",
+                                                "padding-left": "24rpx",
+                                                "padding-right": "24rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "57",
+                                                        "class": "subscribe-column-image",
+                                                        "src": "{{swiperItemData.cover_image_url}}"
+                                                    },
+                                                    "styles": {
+                                                        "width": "180rpx",
+                                                        "height": "180rpx",
+                                                        "border-radius": "12rpx",
+                                                        "flex-shrink": "0"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "view",
+                                                    "content": "\n                \n                \n                \n              ",
+                                                    "attributes": {
+                                                        "viewID": "58",
+                                                        "class": "subscribe-column-title-wrp"
+                                                    },
+                                                    "styles": {
+                                                        "display": "flex",
+                                                        "box-sizing": "border-box",
+                                                        "flex-direction": "column",
+                                                        "margin-left": "18rpx",
+                                                        "justify-content": "center"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "85",
+                                                                "class": "column-row-wrp column-row-bottom-margin-wrp"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "align-items": "center",
+                                                                "margin-bottom": "6rpx"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "img",
+                                                                    "content": "",
+                                                                    "attributes": {
+                                                                        "viewID": "100",
+                                                                        "class": "column-image",
+                                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200506/94a15af2d8c04805abde94cfbcce725c.png"
+                                                                    },
+                                                                    "styles": {
+                                                                        "width": "20rpx",
+                                                                        "height": "22rpx",
+                                                                        "margin-right": "12rpx"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.column_title}}",
+                                                                    "attributes": {
+                                                                        "viewID": "101",
+                                                                        "class": "subscribe-column-title"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "24rpx",
+                                                                        "color": "rgb(115, 115, 115)"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "86",
+                                                                "class": "column-row-wrp column-row-top-margin-wrp",
+                                                                "wx:if": "{{swiperItemData.content_title_1 != null}}"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "align-items": "center",
+                                                                "margin-top": "18rpx"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "view",
+                                                                    "content": "",
+                                                                    "attributes": {
+                                                                        "viewID": "102",
+                                                                        "class": "subscribe-column-dot"
+                                                                    },
+                                                                    "styles": {
+                                                                        "display": "flex",
+                                                                        "box-sizing": "border-box",
+                                                                        "width": "6rpx",
+                                                                        "height": "6rpx",
+                                                                        "margin-left": "7rpx",
+                                                                        "margin-right": "19rpx",
+                                                                        "background-color": "rgb(35, 35, 35)",
+                                                                        "border-radius": "3rpx",
+                                                                        "flex-shrink": "0"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.content_title_1}}",
+                                                                    "attributes": {
+                                                                        "viewID": "103",
+                                                                        "class": "subscribe-column-content-title"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "32rpx",
+                                                                        "color": "rgb(35, 35, 35)",
+                                                                        "-webkit-line-clamp": "1"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "tag": "view",
+                                                            "content": "\n                  \n                  \n                ",
+                                                            "attributes": {
+                                                                "viewID": "87",
+                                                                "class": "column-row-wrp column-row-top-margin-wrp",
+                                                                "wx:if": "{{swiperItemData.content_title_2 != null}}"
+                                                            },
+                                                            "styles": {
+                                                                "display": "flex",
+                                                                "box-sizing": "border-box",
+                                                                "flex-direction": "row",
+                                                                "align-items": "center",
+                                                                "margin-top": "18rpx"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "tag": "view",
+                                                                    "content": "",
+                                                                    "attributes": {
+                                                                        "viewID": "104",
+                                                                        "class": "subscribe-column-dot"
+                                                                    },
+                                                                    "styles": {
+                                                                        "display": "flex",
+                                                                        "box-sizing": "border-box",
+                                                                        "width": "6rpx",
+                                                                        "height": "6rpx",
+                                                                        "margin-left": "7rpx",
+                                                                        "margin-right": "19rpx",
+                                                                        "background-color": "rgb(35, 35, 35)",
+                                                                        "border-radius": "3rpx",
+                                                                        "flex-shrink": "0"
+                                                                    },
+                                                                    "children": []
+                                                                },
+                                                                {
+                                                                    "tag": "text",
+                                                                    "content": "{{swiperItemData.content_title_2}}",
+                                                                    "attributes": {
+                                                                        "viewID": "105",
+                                                                        "class": "subscribe-column-content-title"
+                                                                    },
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "display": "-webkit-box",
+                                                                        "overflow": "hidden",
+                                                                        "font-size": "32rpx",
+                                                                        "color": "rgb(35, 35, 35)",
+                                                                        "-webkit-line-clamp": "1"
+                                                                    },
+                                                                    "children": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

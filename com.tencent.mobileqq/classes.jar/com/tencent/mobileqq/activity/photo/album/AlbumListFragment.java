@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aitd;
+import akjz;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ public class AlbumListFragment
   protected AlbumListLogic generateLogic()
   {
     int i = getActivity().getIntent().getIntExtra("enter_from", 0);
-    AlbumListLogic localAlbumListLogic = aitd.a(i, this);
+    AlbumListLogic localAlbumListLogic = akjz.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("AlbumListFragment", 2, "generateLogic:" + localAlbumListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -20,7 +20,7 @@ public class AlbumListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListFragment
  * JD-Core Version:    0.7.0.1
  */

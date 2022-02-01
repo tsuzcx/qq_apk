@@ -1,13 +1,54 @@
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajfa
+  implements View.OnClickListener
 {
-  public static final String a = ;
-  public static final String b = a + ".tmp/";
-  public static final String c = QWalletHelper.getQWalletInternalPath();
-  public static final String d = c + ".tmp/";
-  public static final String e = d + "topay_recommends";
-  public static final String f = d + "group_available_list_";
+  public ajfa(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  
+  public void onClick(View paramView)
+  {
+    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "quit_tab_clk", 0, 0, "", "", "", "");
+    ajfn.a(false);
+    TroopNotifyAndRecommendView.a(this.a).setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
+    if (this.a.jdField_c_of_type_Int != 2)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      }
+      this.a.setType(2);
+      this.a.b(true);
+      ArrayList localArrayList = new ArrayList();
+      this.a.jdField_a_of_type_Ajdv.b(localArrayList);
+      this.a.jdField_a_of_type_Ajdv.a(ajfn.a());
+      this.a.jdField_a_of_type_Ajdv.a = 0;
+      this.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      this.a.setType(0);
+      this.a.b(false);
+      this.a.jdField_a_of_type_Ajdv.a(ajfn.c());
+      this.a.jdField_a_of_type_Ajdv.a = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_c_of_type_JavaUtilList != null) && (this.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
+        this.a.jdField_a_of_type_Ajdv.b(this.a.jdField_c_of_type_JavaUtilList);
+      }
+      this.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+    }
+  }
 }
 
 

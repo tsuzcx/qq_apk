@@ -15,7 +15,7 @@ public final class cmd0xe23$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.cmd0xe23.cmd0xe23.RspBody
  * JD-Core Version:    0.7.0.1
  */

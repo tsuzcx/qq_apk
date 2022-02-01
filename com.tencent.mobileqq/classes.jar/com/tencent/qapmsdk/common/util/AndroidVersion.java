@@ -9,6 +9,12 @@ public final class AndroidVersion
   public static final AndroidVersion.Companion Companion = new AndroidVersion.Companion(null);
   
   @JvmStatic
+  public static final boolean isHoneycomb()
+  {
+    return Companion.isHoneycomb();
+  }
+  
+  @JvmStatic
   public static final boolean isIceScreamSandwich()
   {
     return Companion.isIceScreamSandwich();
@@ -67,10 +73,22 @@ public final class AndroidVersion
   {
     return Companion.isP();
   }
+  
+  @JvmStatic
+  public static final boolean isQ()
+  {
+    return Companion.isQ();
+  }
+  
+  @JvmStatic
+  public static final boolean isR()
+  {
+    return Companion.isR();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.AndroidVersion
  * JD-Core Version:    0.7.0.1
  */

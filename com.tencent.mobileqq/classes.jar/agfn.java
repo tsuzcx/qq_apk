@@ -1,28 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-
-final class agfn
-  implements nbs
+public abstract interface agfn
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
-    }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = agfj.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((agfo)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      agfj.a.clear();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void progress(int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

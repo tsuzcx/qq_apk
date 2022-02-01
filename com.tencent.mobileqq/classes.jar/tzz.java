@@ -1,23 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetSessionInfoRsp;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-class tzz
-  implements zac<FeedCloudRead.StGetSessionInfoRsp>
+final class tzz
+  extends aoqo
 {
-  tzz(tzy paramtzy, int paramInt) {}
+  tzz(anry paramanry, String paramString, AppInterface paramAppInterface, Context paramContext) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetSessionInfoRsp paramStGetSessionInfoRsp)
+  public int a()
   {
-    if (((!paramBoolean) || (paramLong != 0L) || (paramStGetSessionInfoRsp == null)) && (!TextUtils.isEmpty(paramString))) {
-      QLog.e("QCircleReportHelper", 1, "requestReportSession error:" + paramString);
-    }
-    tzy.a(this.jdField_a_of_type_Tzy, paramStGetSessionInfoRsp, this.jdField_a_of_type_Int);
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Anry != null) {
+      this.jdField_a_of_type_Anry.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    tzo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Anry != null) {
+      this.jdField_a_of_type_Anry.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzz
  * JD-Core Version:    0.7.0.1
  */

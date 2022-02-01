@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import wvg;
+import yor;
 
 class LocalVideoPushSegment$2$2
   implements Runnable
@@ -9,12 +9,12 @@ class LocalVideoPushSegment$2$2
   
   public void run()
   {
-    wvg.a(this.a.this$0);
+    yor.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.2.2
  * JD-Core Version:    0.7.0.1
  */

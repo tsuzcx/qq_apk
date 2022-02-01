@@ -1,35 +1,83 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class aoyc
+class aoyc
+  implements aoya
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private IBinder a;
   
-  public static aoyc a(aoko[] paramArrayOfaoko)
+  aoyc(IBinder paramIBinder)
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
-    }
-    aoyc localaoyc = new aoyc();
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].jdField_a_of_type_JavaLangString);
-      localaoyc.jdField_a_of_type_Boolean = paramArrayOfaoko.getBoolean("enable");
-      localaoyc.jdField_a_of_type_JavaLangString = paramArrayOfaoko.getString("content");
-      return localaoyc;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    catch (JSONException paramArrayOfaoko)
+    finally
     {
-      QLog.e("TencentDocMiniProgramGrayTipsBean", 1, paramArrayOfaoko.getLocalizedMessage(), paramArrayOfaoko);
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    return localaoyc;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyc
  * JD-Core Version:    0.7.0.1
  */

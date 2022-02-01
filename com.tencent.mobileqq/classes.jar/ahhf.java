@@ -1,6 +1,21 @@
-public abstract interface ahhf
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
+import com.tencent.qphone.base.util.QLog;
+
+public final class ahhf
+  implements bial
 {
-  public abstract void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString);
+  public ahhf(Handler paramHandler) {}
+  
+  public void a(biaj parambiaj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
+    }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambiaj), 100L);
+  }
+  
+  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
 }
 
 

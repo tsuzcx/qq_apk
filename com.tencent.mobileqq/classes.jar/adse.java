@@ -1,31 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adse
-  implements View.OnTouchListener
+public final class adse
+  implements bgop
 {
-  public adse(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
+  public adse(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
-      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      mww.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
-      continue;
-      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
-      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
-      mww.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

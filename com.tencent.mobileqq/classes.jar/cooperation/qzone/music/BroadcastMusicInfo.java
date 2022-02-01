@@ -1,12 +1,12 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjls;
+import anni;
+import bmab;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bjls();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bmab();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
@@ -148,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = alud.a(2131701590);
+        localObject2 = anni.a(2131700014);
       }
       return localObject2;
     }
@@ -182,7 +182,7 @@ public class BroadcastMusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastMusicInfo
  * JD-Core Version:    0.7.0.1
  */

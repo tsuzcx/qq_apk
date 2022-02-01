@@ -1,23 +1,13 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class afqe
-  extends afuf
+public class afqe
+  implements DialogInterface.OnClickListener
 {
-  afqe(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afqe(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afmn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

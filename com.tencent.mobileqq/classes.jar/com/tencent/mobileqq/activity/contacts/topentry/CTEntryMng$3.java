@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahuf;
-import ahum;
-import bdga;
+import ajld;
+import ajlk;
+import bgld;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import org.json.JSONArray;
 public class CTEntryMng$3
   implements Runnable
 {
-  public CTEntryMng$3(ahuf paramahuf) {}
+  public CTEntryMng$3(ajld paramajld) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(ahuf.a(this.this$0));
+    ArrayList localArrayList = new ArrayList(ajld.a(this.this$0));
     for (;;)
     {
       JSONArray localJSONArray;
@@ -32,16 +32,16 @@ public class CTEntryMng$3
           if (i >= localArrayList.size()) {
             break label211;
           }
-          Object localObject = (ahum)localArrayList.get(i);
-          if ((((ahum)localObject).a > 4) && (!ahuf.b(this.this$0).contains(Integer.valueOf(((ahum)localObject).a))))
+          Object localObject = (ajlk)localArrayList.get(i);
+          if ((((ajlk)localObject).a > 4) && (!ajld.b(this.this$0).contains(Integer.valueOf(((ajlk)localObject).a))))
           {
             if (QLog.isColorLevel()) {
-              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ahum)localObject).a);
+              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ajlk)localObject).a);
             }
           }
           else
           {
-            localObject = ((ahum)localObject).a();
+            localObject = ((ajlk)localObject).a();
             if (localObject != null) {
               localJSONArray.put(localObject);
             }
@@ -58,7 +58,7 @@ public class CTEntryMng$3
         if (QLog.isColorLevel()) {
           QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str }));
         }
-        bdga.a(ahuf.a(this.this$0).getApp(), ahuf.a(this.this$0).c(), "ct_entry_user_setting", str);
+        bgld.a(ajld.a(this.this$0).getApp(), ajld.a(this.this$0).c(), "ct_entry_user_setting", str);
         return;
         label211:
         str = localJSONArray.toString();
@@ -69,7 +69,7 @@ public class CTEntryMng$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.3
  * JD-Core Version:    0.7.0.1
  */

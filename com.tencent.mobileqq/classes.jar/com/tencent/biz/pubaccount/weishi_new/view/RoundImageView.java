@@ -42,8 +42,9 @@ public class RoundImageView
   private final Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private int c = 0;
   private int d;
+  private int e;
   
   public RoundImageView(Context paramContext)
   {
@@ -105,12 +106,12 @@ public class RoundImageView
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Int);
-    this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    this.e = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
     this.jdField_b_of_type_Float = Math.min((this.jdField_b_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int) / 2.0F, (this.jdField_b_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_Int) / 2.0F);
     this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Float = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F);
+    this.jdField_a_of_type_Float = (Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F) - this.c);
     b();
     invalidate();
   }
@@ -126,10 +127,10 @@ public class RoundImageView
     this.jdField_a_of_type_AndroidGraphicsMatrix.set(null);
     float f3;
     float f2;
-    if (this.c * this.jdField_a_of_type_AndroidGraphicsRectF.height() > this.jdField_a_of_type_AndroidGraphicsRectF.width() * this.d)
+    if (this.d * this.jdField_a_of_type_AndroidGraphicsRectF.height() > this.jdField_a_of_type_AndroidGraphicsRectF.width() * this.e)
     {
-      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.d;
-      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.c * f3) * 0.5F;
+      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.e;
+      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.d * f3) * 0.5F;
     }
     for (;;)
     {
@@ -137,9 +138,9 @@ public class RoundImageView
       this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_b_of_type_Int, (int)(f1 + 0.5F) + this.jdField_b_of_type_Int);
       this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
       return;
-      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.c;
+      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.d;
       f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-      float f4 = this.d;
+      float f4 = this.e;
       f2 = 0.0F;
       f1 = (f1 - f4 * f3) * 0.5F;
     }
@@ -186,6 +187,15 @@ public class RoundImageView
     invalidate();
   }
   
+  public void setBorderInnerPadding(int paramInt)
+  {
+    if (paramInt == this.c) {
+      return;
+    }
+    this.c = paramInt;
+    a();
+  }
+  
   public void setBorderWidth(int paramInt)
   {
     if (paramInt == this.jdField_b_of_type_Int) {
@@ -223,7 +233,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

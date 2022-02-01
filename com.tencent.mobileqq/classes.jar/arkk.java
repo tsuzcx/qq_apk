@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
 class arkk
-  implements ariq
+  extends BroadcastReceiver
 {
   arkk(arki paramarki) {}
   
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (arkl)arki.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      this.a.f = paramString;
-      if (this.a.jdField_a_of_type_Arhw != null) {
-        this.a.jdField_a_of_type_Arhw.e();
-      }
+      this.a.a();
+      arki.a(this.a).a(paramContext);
     }
   }
 }

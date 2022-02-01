@@ -1,33 +1,64 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class xgs
 {
-  public final ArrayList<xeh> a;
-  @NonNull
-  public final xdm a;
-  @NonNull
-  public final xdn a;
-  @NonNull
-  public final xdx a;
-  @NonNull
-  public final xeb a;
+  protected long a;
+  public Handler a;
+  public WeakReference<xpl> a;
+  public Timer a;
+  private TimerTask a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public xgs(@NonNull xeb paramxeb, @NonNull xdx paramxdx, @NonNull xdn paramxdn, @NonNull xdm paramxdm)
+  private void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Xeb = paramxeb;
-    this.jdField_a_of_type_Xdx = paramxdx;
-    this.jdField_a_of_type_Xdn = paramxdn;
-    this.jdField_a_of_type_Xdm = paramxdm;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdn);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdx);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramxeb);
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+  }
+  
+  private void b()
+  {
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  public void a(long paramLong1, long paramLong2, xpl paramxpl)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxpl);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgs
  * JD-Core Version:    0.7.0.1
  */

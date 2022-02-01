@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import com.tencent.mobileqq.profilecard.base.view.ProfileBaseView;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomHeaderListView
@@ -16,7 +16,7 @@ public class PullToZoomHeaderListView
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProfileBaseView jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView;
+  private ProfileBaseView jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView;
   private int b;
   
   public PullToZoomHeaderListView(Context paramContext)
@@ -73,8 +73,8 @@ public class PullToZoomHeaderListView
         if (this.jdField_a_of_type_AndroidViewView != null) {
           this.jdField_a_of_type_AndroidViewView.layout(k, i, n, i1);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.a(i);
+        if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView != null) {
+          this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView.c(i);
         }
       }
       return;
@@ -142,12 +142,12 @@ public class PullToZoomHeaderListView
   
   public void setProfileBaseView(ProfileBaseView paramProfileBaseView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView = paramProfileBaseView;
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView = paramProfileBaseView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.PullToZoomHeaderListView
  * JD-Core Version:    0.7.0.1
  */

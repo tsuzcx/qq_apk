@@ -1,23 +1,47 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+import android.content.Context;
+import android.widget.TextView;
 
 public class bcxh
-  implements Animator.AnimatorListener
+  extends bcvu
 {
-  public bcxh(PhantomPicView.1 param1) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bcxh()
   {
-    this.a.this$0.c();
+    this(null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public bcxh(String paramString)
+  {
+    super(paramString, "tips");
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public TextView a(Context paramContext)
+  {
+    paramContext = super.a(paramContext);
+    paramContext.setBackgroundResource(2130844771);
+    paramContext.setPadding(20, 5, 20, 5);
+    paramContext.setGravity(17);
+    return paramContext;
+  }
+  
+  public String a()
+  {
+    return "tips";
+  }
+  
+  protected int c()
+  {
+    return 2131379953;
+  }
+  
+  public int e()
+  {
+    return -1;
+  }
+  
+  public int f()
+  {
+    return 28;
+  }
 }
 
 

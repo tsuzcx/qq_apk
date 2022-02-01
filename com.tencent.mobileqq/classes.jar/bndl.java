@@ -1,15 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.io.File;
 
-class bndl
-  implements ValueAnimator.AnimatorUpdateListener
+public class bndl
 {
-  bndl(bndb parambndb) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  public static final String a = bndv.b + File.separator + "camera";
+  public static final String b = a + File.separator + "photo_compress";
 }
 
 

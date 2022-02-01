@@ -1,28 +1,28 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract interface axrk
+public class axrk
+  implements Animation.AnimationListener
 {
-  public abstract void a(long paramLong);
+  public axrk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.k += 1;
+    if (NearbyPeopleProfileActivity.a(this.a) != null) {
+      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    }
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
-  
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void a_(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract void c(boolean paramBoolean);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrk
  * JD-Core Version:    0.7.0.1
  */

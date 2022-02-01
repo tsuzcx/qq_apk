@@ -1,28 +1,18 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class ajsc
-  implements bhxs
+public class ajsc
+  implements bfrk
 {
-  ajsc(ajry paramajry) {}
+  private long jdField_a_of_type_Long;
   
-  public void onScrollStateChanged(int paramInt)
+  public ajsc(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
-    }
-    if (paramInt == 4097)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
-      }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 

@@ -1,15 +1,20 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class aemd
-  extends bhry
+  implements DialogInterface.OnDismissListener
 {
-  public aemd(VisitorsActivity paramVisitorsActivity) {}
+  public aemd(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.e.setVisibility(0);
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      return;
+    }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

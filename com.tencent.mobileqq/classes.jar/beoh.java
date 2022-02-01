@@ -1,17 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class beoh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnFocusChangeListener
 {
-  public beoh(ContainerView paramContainerView) {}
+  public beoh(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onGlobalLayout()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (!ContainerView.a(this.a))
+    if (paramBoolean)
     {
-      ContainerView.a(this.a, ContainerView.a);
-      ContainerView.a(this.a, true);
+      paramView = this.a.a();
+      if (paramView != null)
+      {
+        paramView.d(true);
+        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131376449, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
     }
   }
 }

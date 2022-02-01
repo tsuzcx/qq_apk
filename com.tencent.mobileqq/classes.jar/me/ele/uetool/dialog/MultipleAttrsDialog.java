@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.uetool.base.DimenUtil;
@@ -25,7 +26,7 @@ import me.ele.uetool.util.Util;
 import me.ele.uetool.util.ViewKnife;
 
 public class MultipleAttrsDialog
-  extends Dialog
+  extends ReportDialog
 {
   private static final String TAG = "MultipleAttrsDialog";
   private static int clickItemNum = -1;
@@ -153,7 +154,7 @@ public class MultipleAttrsDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.dialog.MultipleAttrsDialog
  * JD-Core Version:    0.7.0.1
  */

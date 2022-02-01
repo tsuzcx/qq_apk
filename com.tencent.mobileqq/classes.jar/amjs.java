@@ -1,34 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amjs
-  implements Animator.AnimatorListener
+  extends bgzm
 {
-  public amjs(AIOIceBreakShow paramAIOIceBreakShow) {}
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public amjs(FriendCardApolloViewController paramFriendCardApolloViewController)
   {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
   {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AIOIceBreakShow.a(this.a, true);
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
+      }
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjs
  * JD-Core Version:    0.7.0.1
  */

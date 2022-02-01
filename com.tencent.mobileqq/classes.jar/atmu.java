@@ -1,8 +1,25 @@
-public abstract interface atmu
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
+
+class atmu
+  implements atkw
 {
-  public abstract void a();
+  atmu(atmt paramatmt, BaseActivity paramBaseActivity) {}
   
-  public abstract void b();
+  public atoo a()
+  {
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Atmt.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new atpf(this.jdField_a_of_type_Atmt.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, atmt.a(this.jdField_a_of_type_Atmt));
+      }
+    }
+    return localObject1;
+  }
 }
 
 

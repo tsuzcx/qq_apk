@@ -1,23 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acjm;
-import alof;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import bmqa;
 
 class KandianMergeManager$26
   implements Runnable
 {
-  KandianMergeManager$26(KandianMergeManager paramKandianMergeManager, String paramString, int paramInt) {}
+  KandianMergeManager$26(KandianMergeManager paramKandianMergeManager, String paramString, long paramLong) {}
   
   public void run()
   {
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = alof.az;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    acjm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
-    KandianMergeManager.a(this.this$0).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
+    SharedPreferences.Editor localEditor = bmqa.a(KandianMergeManager.a(this.this$0), 1).edit();
+    localEditor.putString("kandian_push_msg_xml", this.jdField_a_of_type_JavaLangString).putLong("kandian_push_msg_time", this.jdField_a_of_type_Long);
+    bmqa.a(localEditor, true);
   }
 }
 

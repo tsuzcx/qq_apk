@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agsh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agsh(agse paramagse) {}
+  agsh(agsf paramagsf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    azqs.b(this.a.a, "dc00898", "", "", "0X800ADCA", "0X800ADCA", 0, 0, "", "", "", "");
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str)) {
+      agsf.a(this.a, str);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,29 +1,60 @@
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+
 public class aolt
-  extends aolr
+  extends aojs
 {
-  private aomk jdField_a_of_type_Aomk;
-  private aomu jdField_a_of_type_Aomu;
-  
-  public aolt(String paramString, aomk paramaomk, aomu paramaomu)
+  public aolt(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramString);
-    this.jdField_a_of_type_Aomk = paramaomk;
-    this.jdField_a_of_type_Aomu = paramaomu;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public aomk a()
+  private boolean C()
   {
-    return this.jdField_a_of_type_Aomk;
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(str))
+        {
+          str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          blsb.a((Activity)this.jdField_a_of_type_AndroidContentContext, blsi.a(), str, 0, 0, 0);
+          return true;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QzoneOpenHomePageAction", 1, localException, new Object[0]);
+        return true;
+      }
+    }
   }
   
-  public aomu a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_Aomu;
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneOpenHomePageAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneOpenHomePageAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolt
  * JD-Core Version:    0.7.0.1
  */

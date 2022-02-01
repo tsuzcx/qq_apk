@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class bgwx
-  implements DialogInterface.OnClickListener
+  extends arvd
 {
-  bgwx(bgww parambgww) {}
+  bgwx(bgwv parambgwv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.a.a("click");
-    paramDialogInterface.dismiss();
-    try
-    {
-      Process.killProcess(Process.myPid());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
     }
-    catch (Throwable paramDialogInterface)
-    {
-      QMLog.e("GameGrowthGuardianManager", "getPositiveDialogAction", paramDialogInterface);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgwx
  * JD-Core Version:    0.7.0.1
  */

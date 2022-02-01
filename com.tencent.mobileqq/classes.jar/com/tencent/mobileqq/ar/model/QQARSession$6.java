@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import anfx;
+import apeo;
 
 public class QQARSession$6
   implements Runnable
 {
-  public QQARSession$6(anfx paramanfx) {}
+  public QQARSession$6(apeo paramapeo) {}
   
   public void run()
   {
-    anfx.a(this.this$0, false);
+    apeo.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.6
  * JD-Core Version:    0.7.0.1
  */

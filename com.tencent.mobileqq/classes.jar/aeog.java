@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aeog
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aeog(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public aeog(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    azqs.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
+    LoginInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
+    LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,28 +1,40 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import android.os.Handler;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
 public class bcgn
-  implements URLDrawable.URLDrawableListener
+  extends SCameraCaptureProcessor.CaptureCallback
 {
-  public bcgn(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
+  public bcgn(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onError(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    bcgu.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onPictureAvailable(ByteBuffer paramByteBuffer)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    bcgu.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    bcgt.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
+    {
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get(arrayOfByte);
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+    }
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onShutter()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    bcgu.a(1, "[Camera2]samsungCapture onShutter!");
   }
 }
 

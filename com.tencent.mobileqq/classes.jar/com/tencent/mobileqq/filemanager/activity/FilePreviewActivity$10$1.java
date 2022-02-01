@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.os.Handler;
-import aqll;
+import asrl;
 
 public class FilePreviewActivity$10$1
   implements Runnable
 {
-  public FilePreviewActivity$10$1(aqll paramaqll) {}
+  public FilePreviewActivity$10$1(asrl paramasrl) {}
   
   public void run()
   {
-    if (this.a.a.f)
+    if (this.a.a.g)
     {
       this.a.a.d();
       return;
@@ -22,7 +22,7 @@ public class FilePreviewActivity$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

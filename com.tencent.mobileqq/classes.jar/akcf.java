@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class akcf
-  implements Comparator<TroopMemberInfo>
+  implements DialogInterface.OnClickListener
 {
-  private akcf(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public akcf(BindNumberActivity paramBindNumberActivity) {}
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-    }
-    return 0;
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

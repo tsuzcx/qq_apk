@@ -1,42 +1,53 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class mab
-  implements blar
+class mab
+  extends lzz
 {
-  final WeakReference<QQServiceForAV> a;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  mab(QQServiceForAV paramQQServiceForAV)
+  mab(LinearLayout paramLinearLayout)
   {
-    this.a = new WeakReference(paramQQServiceForAV);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373499));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131373212));
   }
   
-  public void a(blao paramblao, long paramLong1, long paramLong2) {}
-  
-  public void a(blao paramblao, String paramString, boolean paramBoolean, int paramInt)
+  Resources a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramblao.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
+  }
+  
+  void a()
+  {
+    if (!a()) {
+      return;
     }
-    paramString = (QQServiceForAV)this.a.get();
-    if (paramString != null)
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+  }
+  
+  boolean a(mac parammac)
+  {
+    a();
+    if ((parammac.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
-      paramString = (QQAppInterface)paramString.a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
-      localIntent.putExtra("packageIdx", paramblao.a);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt);
-      paramString.getApp().sendBroadcast(localIntent);
+      lzx.a(this.jdField_a_of_type_AndroidWidgetTextView, parammac);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mab
  * JD-Core Version:    0.7.0.1
  */

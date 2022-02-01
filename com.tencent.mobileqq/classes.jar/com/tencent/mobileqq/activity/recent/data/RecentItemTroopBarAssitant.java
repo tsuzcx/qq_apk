@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aeum;
-import alud;
-import alzl;
+import agaw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import azus;
-import azut;
-import bdil;
+import anni;
+import anrs;
+import bcvs;
+import bcvt;
+import bgnr;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -30,12 +30,12 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import suk;
-import suv;
-import swy;
+import tvx;
+import twi;
+import tyg;
 
 public class RecentItemTroopBarAssitant
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public RecentItemTroopBarAssitant(RecentUser paramRecentUser)
   {
@@ -45,11 +45,11 @@ public class RecentItemTroopBarAssitant
   
   public void a(Context paramContext)
   {
-    if ((this.mUnreadNum > 0) && (!suk.e((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+    if ((this.mUnreadNum > 0) && (!tvx.e((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
       if (this.mUnreadNum <= 99)
       {
-        this.mMsgExtroInfo = String.format(paramContext.getString(2131696913), new Object[] { Integer.valueOf(this.mUnreadNum) });
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
+        this.mMsgExtroInfo = String.format(paramContext.getString(2131695735), new Object[] { Integer.valueOf(this.mUnreadNum) });
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
       }
     }
     for (;;)
@@ -58,7 +58,7 @@ public class RecentItemTroopBarAssitant
         this.mShowTime = "";
       }
       return;
-      this.mMsgExtroInfo = paramContext.getString(2131696908);
+      this.mMsgExtroInfo = paramContext.getString(2131695730);
       break;
       this.mMsgExtroInfo = "";
     }
@@ -67,7 +67,7 @@ public class RecentItemTroopBarAssitant
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.mStatus = 0;
-    TroopBarData localTroopBarData = suv.a().a(paramQQAppInterface);
+    TroopBarData localTroopBarData = twi.a().a(paramQQAppInterface);
     if ((localTroopBarData == null) || (TextUtils.isEmpty(localTroopBarData.mUin))) {}
     do
     {
@@ -76,7 +76,7 @@ public class RecentItemTroopBarAssitant
         return;
         paramQQAppInterface = paramQQAppInterface.a();
       } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a(localTroopBarData.mUin, 1008);
+      paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(localTroopBarData.mUin, 1008);
     } while ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary())));
     this.mStatus = 0;
   }
@@ -87,21 +87,21 @@ public class RecentItemTroopBarAssitant
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = swy.a(paramQQAppInterface, paramContext);
-    Object localObject5 = suv.a();
-    MsgSummary localMsgSummary = a();
+    this.mTitleName = tyg.a(paramQQAppInterface, paramContext);
+    Object localObject5 = twi.a();
+    MsgSummary localMsgSummary = getMsgSummaryTemp();
     Object localObject1;
     label91:
     Object localObject2;
-    if (suk.e(paramQQAppInterface))
+    if (tvx.e(paramQQAppInterface))
     {
       this.mUnreadNum = 1;
-      ((suv)localObject5).a = this.mUnreadNum;
-      localObject1 = suk.b(paramQQAppInterface);
+      ((twi)localObject5).a = this.mUnreadNum;
+      localObject1 = tvx.b(paramQQAppInterface);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (localMsgSummary.strContent = paramContext.getString(2131698244);; localMsgSummary.strContent = ((CharSequence)localObject1))
+      for (localMsgSummary.strContent = paramContext.getString(2131697095);; localMsgSummary.strContent = ((CharSequence)localObject1))
       {
-        this.mDisplayTime = ((suv)localObject5).a(paramQQAppInterface);
+        this.mDisplayTime = ((twi)localObject5).a(paramQQAppInterface);
         a(paramQQAppInterface);
         a(paramQQAppInterface, localMsgSummary);
         a(paramQQAppInterface, paramContext, localMsgSummary);
@@ -111,7 +111,7 @@ public class RecentItemTroopBarAssitant
           if (this.mUnreadNum != 0) {
             break label948;
           }
-          localObject2 = paramContext.getString(2131696912);
+          localObject2 = paramContext.getString(2131695734);
           if (this.mLastMsg != null) {
             break;
           }
@@ -129,13 +129,13 @@ public class RecentItemTroopBarAssitant
     Object localObject4;
     label350:
     int i;
-    if (((suv)localObject5).a(paramQQAppInterface) == 0)
+    if (((twi)localObject5).a(paramQQAppInterface) == 0)
     {
       this.mUnreadNum = 0;
-      ((suv)localObject5).a = 0;
+      ((twi)localObject5).a = 0;
       localObject2 = null;
       localObject3 = paramQQAppInterface.a();
-      localObject4 = ((suv)localObject5).a(paramQQAppInterface);
+      localObject4 = ((twi)localObject5).a(paramQQAppInterface);
       localObject1 = localObject2;
       if (localObject3 != null)
       {
@@ -148,16 +148,16 @@ public class RecentItemTroopBarAssitant
         break label927;
       }
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
-      if (TextUtils.isEmpty(((suv)localObject5).a(((QQMessageFacade.Message)localObject1).frienduin)))
+      if (TextUtils.isEmpty(((twi)localObject5).a(((QQMessageFacade.Message)localObject1).frienduin)))
       {
-        localObject2 = (alzl)paramQQAppInterface.getManager(56);
+        localObject2 = (anrs)paramQQAppInterface.getManager(56);
         if (localObject2 != null)
         {
-          localObject5 = ((alzl)localObject2).b(((QQMessageFacade.Message)localObject1).frienduin);
+          localObject5 = ((anrs)localObject2).b(((QQMessageFacade.Message)localObject1).frienduin);
           if (localObject5 != null) {
             break label629;
           }
-          localObject2 = ((alzl)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin);
+          localObject2 = ((anrs)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin);
           if (localObject2 == null) {
             break label619;
           }
@@ -166,19 +166,19 @@ public class RecentItemTroopBarAssitant
       }
       if (localObject1 != null)
       {
-        bdil.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, "", true, false);
+        bgnr.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, "", true, false);
         i = ((QQMessageFacade.Message)localObject1).msgtype;
         if ((i == -3006) || (i == -5004))
         {
           localMsgSummary.suffix = "";
           localMsgSummary.strContent = "";
-          localObject5 = aeum.a((MessageRecord)localObject1);
+          localObject5 = agaw.a((MessageRecord)localObject1);
           if ((localObject5 != null) && (((PAMessage)localObject5).items != null) && (((PAMessage)localObject5).items.size() != 0)) {
             break label639;
           }
           a((QQMessageFacade.Message)localObject1, this.mUser.getType(), paramQQAppInterface, paramContext, localMsgSummary);
         }
-        if (((!TextUtils.isEmpty(localMsgSummary.strContent)) || (!TextUtils.isEmpty(localMsgSummary.suffix))) && (!TextUtils.equals(localMsgSummary.a(paramContext), AbsStructMsg.PA_DEFAULT_MSG_BRIEF))) {
+        if (((!TextUtils.isEmpty(localMsgSummary.strContent)) || (!TextUtils.isEmpty(localMsgSummary.suffix))) && (!TextUtils.equals(localMsgSummary.parseMsg(paramContext), AbsStructMsg.PA_DEFAULT_MSG_BRIEF))) {
           break label755;
         }
         i = 1;
@@ -201,9 +201,9 @@ public class RecentItemTroopBarAssitant
       if ((localObject1 == null) && (TextUtils.isEmpty(localMsgSummary.strContent)) && (TextUtils.isEmpty(localMsgSummary.suffix)))
       {
         localMsgSummary.strPrefix = null;
-        localMsgSummary.strContent = (alud.a(2131713552) + swy.a(paramQQAppInterface, paramContext) + alud.a(2131713568));
+        localMsgSummary.strContent = (anni.a(2131711931) + tyg.a(paramQQAppInterface, paramContext) + anni.a(2131711947));
         break label91;
-        this.mUnreadNum = ((suv)localObject5).a(paramQQAppInterface, false);
+        this.mUnreadNum = ((twi)localObject5).a(paramQQAppInterface, false);
         break label207;
         label619:
         localObject2 = ((QQMessageFacade.Message)localObject1).frienduin;
@@ -237,14 +237,14 @@ public class RecentItemTroopBarAssitant
         i = 0;
         if (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (azus)((Iterator)localObject2).next();
-          if (!(localObject3 instanceof azut)) {
+          localObject3 = (bcvs)((Iterator)localObject2).next();
+          if (!(localObject3 instanceof bcvt)) {
             break label1098;
           }
-          localObject3 = ((azut)localObject3).a.iterator();
+          localObject3 = ((bcvt)localObject3).a.iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            localObject4 = (azus)((Iterator)localObject3).next();
+            localObject4 = (bcvs)((Iterator)localObject3).next();
             if ((localObject4 instanceof StructMsgItemTitle))
             {
               localMsgSummary.strContent = ((StructMsgItemTitle)localObject4).b();
@@ -261,25 +261,25 @@ public class RecentItemTroopBarAssitant
         }
         break label825;
         break label528;
-        this.mDisplayTime = ((suv)localObject5).a(paramQQAppInterface);
+        this.mDisplayTime = ((twi)localObject5).a(paramQQAppInterface);
         break label528;
         break;
         paramQQAppInterface = this.mLastMsg;
         break label148;
         if (this.mUnreadNum == 1)
         {
-          this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, alud.a(2131713569), this.mShowTime });
+          this.mContentDesc = String.format(paramContext.getString(2131695733), new Object[] { localObject1, anni.a(2131711948), this.mShowTime });
           break label177;
         }
         if (this.mUnreadNum == 2)
         {
-          this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, alud.a(2131713582), this.mShowTime });
+          this.mContentDesc = String.format(paramContext.getString(2131695733), new Object[] { localObject1, anni.a(2131711961), this.mShowTime });
           break label177;
         }
         if (this.mUnreadNum <= 0) {
           break label177;
         }
-        this.mContentDesc = String.format(paramContext.getString(2131696911), new Object[] { localObject1, Integer.toString(this.mUnreadNum), this.mShowTime });
+        this.mContentDesc = String.format(paramContext.getString(2131695733), new Object[] { localObject1, Integer.toString(this.mUnreadNum), this.mShowTime });
         break label177;
       }
     }
@@ -299,16 +299,16 @@ public class RecentItemTroopBarAssitant
           paramMsgSummary.mDraft = null;
           paramMsgSummary = paramQQAppInterface.a();
         } while (paramMsgSummary == null);
-        paramQQAppInterface = suv.a().a(paramQQAppInterface);
+        paramQQAppInterface = twi.a().a(paramQQAppInterface);
       } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.mUin)) || (this.mDisplayTime >= paramQQAppInterface.mLastDraftTime));
-      paramQQAppInterface = paramMsgSummary.a(paramQQAppInterface.mUin, 1008);
+      paramQQAppInterface = paramMsgSummary.getDraftSummaryInfo(paramQQAppInterface.mUin, 1008);
     } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
     this.mDisplayTime = paramQQAppInterface.getTime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopBarAssitant
  * JD-Core Version:    0.7.0.1
  */

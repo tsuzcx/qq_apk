@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
-class auwg
-  implements alqc
+public abstract interface auwg
+  extends auwf
 {
-  auwg(auwd paramauwd) {}
+  public abstract int getViewHeight();
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
-    }
-    auwd.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-  }
+  public abstract boolean isPined();
+  
+  public abstract boolean isShow(String paramString);
+  
+  public abstract void onScrollTo(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwg
  * JD-Core Version:    0.7.0.1
  */

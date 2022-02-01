@@ -1,23 +1,40 @@
-import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import android.support.annotation.NonNull;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
-class bmib
-  implements QGRenderer.QGEventListener
+public class bmib
+  implements Comparable<bmib>
 {
-  bmib(bmhu parambmhu) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void onCanvasCreated()
+  public bmib(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
   {
-    wxe.b("StoryEffectTextMode", "Event: Canvas was created");
-    bmhu.e(this.a, true);
-    bmhu.c(this.a, true);
-    bmhu.d(this.a);
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void onDrawFrame()
+  public int a(@NonNull bmib parambmib)
   {
-    if (bmhu.a(this.a) != null) {
-      bmhu.a(this.a).d();
-    }
+    return (int)(this.jdField_a_of_type_Long - parambmib.jdField_a_of_type_Long);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bmib)) && (this.jdField_a_of_type_JavaLangString.equals(((bmib)paramObject).jdField_a_of_type_JavaLangString));
   }
 }
 

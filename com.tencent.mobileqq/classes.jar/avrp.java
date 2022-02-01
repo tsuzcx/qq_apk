@@ -1,88 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.Iterator;
+import java.util.List;
 
-final class avrp
-  implements avdq
+class avrp
+  extends avru
 {
-  avrp(avrt paramavrt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    for (;;)
+    paramQQAppInterface = ((baif)paramQQAppInterface.getManager(36)).a(0, paramString);
+    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5) && (paramQQAppInterface.red_display_info.has()) && (paramQQAppInterface.red_display_info.get() != null) && (paramQQAppInterface.red_display_info.red_type_info.has()) && (paramQQAppInterface.red_display_info.red_type_info.get() != null))
     {
-      try
+      paramString = paramQQAppInterface.red_display_info.red_type_info.get().iterator();
+      while (paramString.hasNext())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.next();
+        if (localRedTypeInfo.red_type.get() == 11) {
+          localRedTypeInfo.red_type.set(0);
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
     }
+    return paramQQAppInterface;
+  }
+  
+  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    paramRedTouch.a(paramAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avrp
  * JD-Core Version:    0.7.0.1
  */

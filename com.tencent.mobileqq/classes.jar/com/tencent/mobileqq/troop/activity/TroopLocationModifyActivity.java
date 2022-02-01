@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.troop.activity;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TroopLocationModifyActivity
   extends TroopCreateMapViewSupportActivity
@@ -30,6 +34,14 @@ public class TroopLocationModifyActivity
     paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     switch (paramInt1)
@@ -51,7 +63,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131721141, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131718880, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -62,20 +74,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131721146, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131718885, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131721154);
+      str = getString(2131718892);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131721140);
+        str = getString(2131718879);
       } else {
-        str = getString(2131721145);
+        str = getString(2131718884);
       }
     }
   }
@@ -94,10 +106,17 @@ public class TroopLocationModifyActivity
   {
     super.doOnDestroy();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -14,7 +14,7 @@ import qqcircle.QQCircleBase.StAppInfo;
 import qqcircle.QQCircleBase.StNetworkInfo;
 import qqcircle.QQCircleReport.StHeartbeatSignalReq;
 import qqcircle.QQCircleReport.StHeartbeatSignalRsp;
-import tzy;
+import vri;
 
 public class QCircleHeartbeatSignalReportRequest
   extends QCircleBaseRequest
@@ -27,16 +27,16 @@ public class QCircleHeartbeatSignalReportRequest
     this.mReq.interval_time_ms.set(paramLong);
     this.mReq.sig_optype.set(paramInt);
     Object localObject = new QQCircleBase.StAppInfo();
-    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.3.5.4555");
-    ((QQCircleBase.StAppInfo)localObject).qua.set(bjdm.a());
+    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.4.1.4680");
+    ((QQCircleBase.StAppInfo)localObject).qua.set(blru.a());
     ((QQCircleBase.StAppInfo)localObject).platform.set("android");
     this.mReq.app_info.set((MessageMicro)localObject);
     localObject = new QQCircleBase.StNetworkInfo();
-    ((QQCircleBase.StNetworkInfo)localObject).network_type.set(tzy.b());
+    ((QQCircleBase.StNetworkInfo)localObject).network_type.set(vri.b());
     this.mReq.network_info.set((MessageMicro)localObject);
     localObject = new ArrayList();
     if (paramArrayOfByte != null) {
-      ((ArrayList)localObject).add(tzy.a("SessionID", paramArrayOfByte));
+      ((ArrayList)localObject).add(vri.a("SessionID", paramArrayOfByte));
     }
     this.mReq.byteExtinfo.set((List)localObject);
   }
@@ -60,7 +60,7 @@ public class QCircleHeartbeatSignalReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleHeartbeatSignalReportRequest
  * JD-Core Version:    0.7.0.1
  */

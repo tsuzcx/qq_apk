@@ -2,27 +2,29 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class CapsuleButton$7
-  implements EIPCResultCallback
+  implements MiniAppCmdInterface
 {
   CapsuleButton$7(CapsuleButton paramCapsuleButton, MiniAppInfo paramMiniAppInfo) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == -100))
+    if (paramBoolean)
     {
       AppBrandTask.runTaskOnUiThread(new CapsuleButton.7.1(this));
+      QLog.d("CapsuleButton", 2, "sendSetUserAppTopRequest, success to set top");
       return;
     }
-    CapsuleButton.access$800(this.this$0, this.val$miniAppInfo);
+    QLog.e("CapsuleButton", 1, "sendSetUserAppTopRequest, fail to set top");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton.7
  * JD-Core Version:    0.7.0.1
  */

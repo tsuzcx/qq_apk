@@ -1,65 +1,66 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.AutoVerticalScrollTextView;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bhvi
-  extends Animation
+  extends ExploreByTouchHelper
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
-  
-  public bhvi(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public bhvi(ConfigClearableEditText paramConfigClearableEditText, View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramView);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
+      return 0;
     }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    return -1;
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    if (ConfigClearableEditText.a(this.a)) {
+      paramList.add(Integer.valueOf(0));
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    }
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription(anni.a(2131701228));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(anni.a(2131701229));
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramInt = ConfigClearableEditText.a(this.a);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhvi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,68 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.WeakHashMap;
 
-public class agdy
-  extends agdz
+class agdy
+  implements ImageAssetDelegate
 {
-  public agdy(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder)
-  {
-    super(paramTribeShortVideoItemBuilder);
-  }
+  agdy(agdw paramagdw, String paramString) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inScaled = true;
+    ((BitmapFactory.Options)localObject).inDensity = agdw.a(this.jdField_a_of_type_Agdw).a.getResources().getDisplayMetrics().densityDpi;
+    try
+    {
+      String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
+      if (agdw.a(this.jdField_a_of_type_Agdw) != null)
+      {
+        paramLottieImageAsset = (Bitmap)agdw.a(this.jdField_a_of_type_Agdw).get(str);
+        if (paramLottieImageAsset != null) {
+          localObject = paramLottieImageAsset;
+        }
+        for (;;)
+        {
+          return localObject;
+          try
+          {
+            Bitmap localBitmap = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
+            localObject = localBitmap;
+            paramLottieImageAsset = localBitmap;
+            if (agdw.a(this.jdField_a_of_type_Agdw) != null)
+            {
+              paramLottieImageAsset = localBitmap;
+              agdw.a(this.jdField_a_of_type_Agdw).put(str, localBitmap);
+              return localBitmap;
+            }
+          }
+          catch (Exception localException1) {}
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopEggLottieAnimView", 2, "playNextAnim setImageAssetDelegate Exception");
+        }
+        localException1.printStackTrace();
+        return paramLottieImageAsset;
+      }
     }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramLottieImageAsset = null;
+        continue;
+        paramLottieImageAsset = null;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Agea, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Agea, this.jdField_a_of_type_Long);
   }
 }
 

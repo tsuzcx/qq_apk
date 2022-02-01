@@ -1,62 +1,44 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import java.util.List;
 
-public class wpz
-  extends QQUIEventReceiver<wpr, utn>
+class wpz
+  implements wld<wym, xak>
 {
-  public wpz(@NonNull wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  wpz(wpy paramwpy, wqt paramwqt, boolean paramBoolean, long paramLong) {}
   
-  public void a(@NonNull wpr paramwpr, @NonNull utn paramutn)
+  public void a(wym arg1, xak paramxak, ErrorMessage paramErrorMessage)
   {
-    if ((TextUtils.isEmpty(paramutn.jdField_a_of_type_JavaLangString)) || (paramutn.jdField_a_of_type_Int == 0) || (paramutn.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramutn.b)))
+    long l = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess())
     {
-      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramutn.jdField_a_of_type_JavaLangString, Integer.valueOf(paramutn.jdField_a_of_type_Int), Long.valueOf(paramutn.jdField_a_of_type_Long), paramutn.b });
-      return;
+      ??? = paramxak.a;
+      if (???.size() > 0)
+      {
+        ??? = (QQUserUIItem)???.get(0);
+        ??? = this.jdField_a_of_type_Wpy.a(???);
+        this.jdField_a_of_type_Wqt.a = ???.qq;
+        this.jdField_a_of_type_Wqt.b = ???.uid;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ??? = (wpf)wpm.a(10);
+          ???.b("qqstory_my_uin", this.jdField_a_of_type_Wqt.a);
+          ???.b("qqstory_my_union_id", this.jdField_a_of_type_Wqt.b);
+        }
+      }
+      yqp.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_Wqt, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
-    Object localObject1 = paramwpr.a(paramutn.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof wqp)))
+    synchronized (this.jdField_a_of_type_Wqt)
     {
-      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramutn.jdField_a_of_type_JavaLangString });
+      this.jdField_a_of_type_Wqt.notifyAll();
       return;
+      yqp.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
-    Object localObject2 = (wqp)localObject1;
-    localObject1 = wjf.a(paramutn.jdField_a_of_type_JavaLangString, paramutn.jdField_a_of_type_Int, paramutn.jdField_a_of_type_Long, paramutn.b, paramutn.c, paramutn.d, paramutn.e, paramutn.f);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject1);
-    ((wqp)localObject2).a(localArrayList, false);
-    localObject2 = (CommentLikeFeedItem)((wqp)localObject2).a;
-    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-    if (wpr.a((CommentLikeFeedItem)localObject2)) {
-      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-    }
-    for (;;)
-    {
-      wpr.a(paramwpr).b(paramutn.jdField_a_of_type_JavaLangString);
-      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramutn), 5, null, false);
-      wpr.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
-      return;
-      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return utn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpz
  * JD-Core Version:    0.7.0.1
  */

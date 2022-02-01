@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class rtq
-  extends pdi
+public abstract interface rtq
 {
-  public rtq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  public void a(pdc parampdc)
-  {
-    parampdc.e();
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtq
  * JD-Core Version:    0.7.0.1
  */

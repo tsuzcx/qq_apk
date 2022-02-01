@@ -1,36 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class axjr
-  implements affa
+public abstract interface axjr
 {
-  private QQAppInterface a;
+  public abstract void a(Comments.Comment paramComment);
   
-  public axjr(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a == null);
-    ((axjs)this.a.getManager(312)).onDestroy();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 9 };
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axjr
  * JD-Core Version:    0.7.0.1
  */

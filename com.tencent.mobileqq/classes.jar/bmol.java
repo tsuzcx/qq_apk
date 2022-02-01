@@ -1,25 +1,114 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
-class bmol
-  implements bhtv
+public class bmol
+  extends WebViewPlugin
+  implements bhmo
 {
-  int jdField_a_of_type_Int = 0;
+  private BroadcastReceiver a = new bmom(this);
   
-  bmol(bmoj parambmoj) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("QZoneCardPreDownload");
+    localIntentFilter.addAction("action_facade_qzone2js");
+    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void b()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).a().size()) && (!bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).a()))
-    {
-      paramAbsListView = bmoj.a(this.jdField_a_of_type_Bmoj);
-      bmoj.a(this.jdField_a_of_type_Bmoj, bmoj.a(this.jdField_a_of_type_Bmoj)).b(paramAbsListView);
+    BaseApplication.getContext().unregisterReceiver(this.a);
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 2L) && (paramString.equals(bmoi.a))) {
+      bmoi.a(this.mRuntime, null);
     }
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    }
+    if (bmld.a(paramString3))
+    {
+      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
+      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+    }
+    if (paramString2.equals("qzcardstorre"))
+    {
+      if (paramString3.equals("closecardpreview")) {
+        return true;
+      }
+      if (paramString3.equals("setcardfinish")) {
+        bmoa.a(this, this.mRuntime, paramVarArgs);
+      }
+      if (paramString3.equals("downloadcard"))
+      {
+        bmoa.a(this.mRuntime, paramVarArgs);
+        return true;
+      }
+    }
+    else
+    {
+      if (!paramString2.equals("QzAvatar")) {
+        break label208;
+      }
+      if (!paramString3.equals("downloadAvatar")) {
+        break label162;
+      }
+      bmog.b(this.mRuntime, paramVarArgs);
+    }
+    label162:
+    label208:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return false;
+          if (paramString3.equals("setAvatar")) {
+            bmog.a(this.mRuntime, paramVarArgs);
+          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
+            bmog.c(this.mRuntime, new String[0]);
+          }
+        }
+      } while (!paramString2.equals("QzFloat"));
+      if (paramString3.equals("downloadFloat"))
+      {
+        bmoi.a(this.mRuntime, paramVarArgs);
+        return true;
+      }
+    } while (!paramString3.equals("setFloat"));
+    bmoi.b(this.mRuntime, paramVarArgs);
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    b();
   }
 }
 

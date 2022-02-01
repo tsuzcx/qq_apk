@@ -1,223 +1,277 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ac.ArticleCenter.GetUrlByVidResponse;
+import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
+import com.tencent.mobileqq.ac.ArticleCenter.VideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class slr
 {
-  final ArrayList<slq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Set<Character> jdField_a_of_type_JavaUtilSet;
-  private final sls jdField_a_of_type_Sls;
-  boolean jdField_a_of_type_Boolean = false;
-  private slo[] jdField_a_of_type_ArrayOfSlo;
-  boolean b = false;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<slr> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e = "";
   
-  public slr(sls paramsls)
+  public slr()
   {
-    this.jdField_a_of_type_Sls = paramsls;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public float a()
+  public slr(String paramString)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f = 0.0F;
-    int i = 0;
-    while (i < j)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  private static String a(ArticleCenter.GetUrlByVidResponse paramGetUrlByVidResponse)
+  {
+    if (paramGetUrlByVidResponse.encode_type.get() == 1) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      f += ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
-      i += 1;
+      paramGetUrlByVidResponse = null;
+      return paramGetUrlByVidResponse;
     }
-    return f;
-  }
-  
-  public void a()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1 = localObject3;
+    label388:
+    label419:
+    for (;;)
     {
-      ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramFloat, this.b);
-      i += 1;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      slq localslq = (slq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localslq.a(paramCanvas, paramPaint);
-      paramCanvas.translate(localslq.a(), 0.0F);
-      i += 1;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(char[] paramArrayOfChar)
-  {
-    if (this.jdField_a_of_type_ArrayOfSlo == null) {
-      throw new IllegalStateException("Need to call #setCharacterLists first.");
-    }
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a() > 0.0F) {
-        i += 1;
-      }
-      for (;;)
+      try
       {
-        break;
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-    int[] arrayOfInt = sln.a(a(), paramArrayOfChar, this.jdField_a_of_type_JavaUtilSet);
-    int m = 0;
-    int i1 = 1;
-    int i2 = 1;
-    int n = 0;
-    i = 0;
-    if (m < arrayOfInt.length)
-    {
-      int i4;
-      int j;
-      int k;
-      int i3;
-      switch (arrayOfInt[m])
-      {
-      default: 
-        throw new IllegalArgumentException("Unknown action: " + arrayOfInt[m]);
-      case 1: 
-        this.jdField_a_of_type_JavaUtilArrayList.add(i, new slq(this.jdField_a_of_type_ArrayOfSlo, this.jdField_a_of_type_Sls));
-      case 0: 
-        slq localslq = (slq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localslq.a(i2, paramArrayOfChar[n], this.b);
-        i4 = i + 1;
-        n += 1;
-        j = i1;
-        k = i2;
-        i3 = n;
-        i = i4;
-        if (this.jdField_a_of_type_Boolean) {
-          if (localslq.a() == localslq.b())
-          {
-            j = i1;
-            k = i2;
-            i3 = n;
-            i = i4;
-            if (i2 <= 1) {
-              break;
-            }
-          }
-          else
-          {
-            k = i2 + i1;
-            j = i1 + 1;
-            i = i4;
-            i3 = n;
-          }
+        if (paramGetUrlByVidResponse.rate.get() == null) {
+          break label422;
         }
-        break;
-      }
-      for (;;)
-      {
-        m += 1;
-        i1 = j;
-        i2 = k;
-        n = i3;
-        break;
-        ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(i2, '\000', this.b);
-        i4 = i + 1;
-        j = i1;
-        k = i2;
-        i3 = n;
-        i = i4;
-        if (this.jdField_a_of_type_Boolean)
+        localObject1 = localObject3;
+        if (Long.valueOf(paramGetUrlByVidResponse.rate.get().toStringUtf8()).longValue() == 0L) {
+          break label422;
+        }
+        localObject1 = localObject3;
+        long l3 = Long.valueOf(paramGetUrlByVidResponse.rate.get().toStringUtf8()).longValue();
+        long l1 = 9223372036854775807L;
+        localObject1 = localObject3;
+        if (!paramGetUrlByVidResponse.video_info.has()) {
+          break label388;
+        }
+        localObject1 = localObject3;
+        if (paramGetUrlByVidResponse.video_info.get().size() <= 0) {
+          break label388;
+        }
+        localObject1 = localObject3;
+        Iterator localIterator = paramGetUrlByVidResponse.video_info.get().iterator();
+        paramGetUrlByVidResponse = (ArticleCenter.GetUrlByVidResponse)localObject2;
+        localObject1 = paramGetUrlByVidResponse;
+        if (!localIterator.hasNext()) {
+          break label363;
+        }
+        localObject1 = paramGetUrlByVidResponse;
+        localObject2 = (ArticleCenter.VideoInfo)localIterator.next();
+        if (localObject2 == null) {
+          continue;
+        }
+        try
         {
-          k = i2 + i1;
-          j = i1 + 1;
-          i3 = n;
-          i = i4;
+          if ((((ArticleCenter.VideoInfo)localObject2).encode_type.get() != 0) || (Long.valueOf(((ArticleCenter.VideoInfo)localObject2).rate.get().toStringUtf8()).longValue() == 0L) || (TextUtils.isEmpty(((ArticleCenter.VideoInfo)localObject2).url.get().toStringUtf8()))) {
+            break label419;
+          }
+          l2 = Math.abs(l3 - Long.valueOf(((ArticleCenter.VideoInfo)localObject2).rate.get().toStringUtf8()).longValue());
+          if (l2 >= l1) {
+            break label419;
+          }
+        }
+        catch (Exception localException2)
+        {
+          try
+          {
+            localObject1 = ((ArticleCenter.VideoInfo)localObject2).url.get().toStringUtf8();
+            paramGetUrlByVidResponse = (ArticleCenter.GetUrlByVidResponse)localObject1;
+            l1 = l2;
+            localObject2 = paramGetUrlByVidResponse;
+            paramGetUrlByVidResponse = (ArticleCenter.GetUrlByVidResponse)localObject2;
+          }
+          catch (Exception localException3)
+          {
+            long l2;
+            continue;
+          }
+          localException2 = localException2;
+          l2 = l1;
+        }
+        l1 = l2;
+        localObject2 = paramGetUrlByVidResponse;
+        localObject1 = paramGetUrlByVidResponse;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject1 = paramGetUrlByVidResponse;
+        QLog.e("Q.readinjoy.video.VideoUrlInfo", 2, "innerChooseHWBackupUrlForHevc error 1:", localException2);
+        l1 = l2;
+        localObject2 = paramGetUrlByVidResponse;
+        continue;
+        if (!QLog.isColorLevel()) {
+          break;
         }
       }
+      catch (Exception localException1)
+      {
+        paramGetUrlByVidResponse = (ArticleCenter.GetUrlByVidResponse)localObject1;
+      }
+      QLog.e("Q.readinjoy.video.VideoUrlInfo", 2, "innerChooseHWBackupUrlForHevc error 2:", localException1);
+      return localObject1;
+      label363:
+      localObject1 = paramGetUrlByVidResponse;
+      oat.a(null, null, "0X8009824", "0X8009824", 0, 0, "", "", "", "", false);
+      return paramGetUrlByVidResponse;
+      localObject1 = localException2;
+      oat.a(null, null, "0X8009825", "0X8009825", 0, 0, "", "", "", "", false);
+      return null;
     }
+    label422:
+    return null;
   }
   
-  public void a(String... paramVarArgs)
+  public static slr a(String paramString, ArticleCenter.VideoInfo paramVideoInfo)
   {
-    int j = 0;
-    this.jdField_a_of_type_ArrayOfSlo = new slo[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    slr localslr = new slr();
+    boolean bool;
+    if (paramVideoInfo != null)
     {
-      this.jdField_a_of_type_ArrayOfSlo[i] = new slo(paramVarArgs[i]);
-      i += 1;
+      localslr.jdField_b_of_type_JavaLangString = paramString;
+      if (paramVideoInfo.url.get() == null) {
+        break label111;
+      }
+      paramString = paramVideoInfo.url.get().toStringUtf8();
+      localslr.jdField_a_of_type_JavaLangString = paramString;
+      if (paramVideoInfo.encode_type.get() != 1) {
+        break label117;
+      }
+      bool = true;
+      label56:
+      localslr.jdField_a_of_type_Boolean = bool;
+      if (paramVideoInfo.rate.get() == null) {
+        break label122;
+      }
     }
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    i = j;
-    while (i < paramVarArgs.length)
+    label111:
+    label117:
+    label122:
+    for (paramString = paramVideoInfo.rate.get().toStringUtf8();; paramString = "")
     {
-      this.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_ArrayOfSlo[i].a());
-      i += 1;
+      localslr.jdField_c_of_type_JavaLangString = paramString;
+      localslr.jdField_b_of_type_Int = paramVideoInfo.width.get();
+      localslr.jdField_c_of_type_Int = paramVideoInfo.height.get();
+      return localslr;
+      paramString = "";
+      break;
+      bool = false;
+      break label56;
     }
   }
   
-  char[] a()
+  static boolean a(ArticleCenter.GetUrlByVidResponse paramGetUrlByVidResponse, slr paramslr)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    char[] arrayOfChar = new char[j];
-    int i = 0;
-    while (i < j)
+    boolean bool2 = false;
+    paramslr.jdField_a_of_type_JavaLangString = pha.a(paramGetUrlByVidResponse.url);
+    paramslr.jdField_d_of_type_Int = paramGetUrlByVidResponse.ret_info.ret_code.get();
+    paramslr.jdField_a_of_type_Int = paramGetUrlByVidResponse.video_type.get();
+    if (paramGetUrlByVidResponse.encode_type.get() == 1) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      arrayOfChar[i] = ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
+      paramslr.jdField_a_of_type_Boolean = bool1;
+      paramslr.jdField_b_of_type_Int = paramGetUrlByVidResponse.width.get();
+      paramslr.jdField_c_of_type_Int = paramGetUrlByVidResponse.height.get();
+      paramslr.jdField_c_of_type_JavaLangString = pha.a(paramGetUrlByVidResponse.rate);
+      paramslr.jdField_a_of_type_Long = paramGetUrlByVidResponse.file_size.get();
+      if (paramslr.jdField_a_of_type_Boolean) {
+        paramslr.e = a(paramGetUrlByVidResponse);
+      }
+      Object localObject = pha.a(paramGetUrlByVidResponse.json_video_detail);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+      try
+      {
+        JSONObject localJSONObject = new JSONObject((String)localObject);
+        if (paramslr.jdField_a_of_type_Boolean) {
+          paramslr.jdField_b_of_type_Boolean = localJSONObject.optBoolean("isH265HWCodec", true);
+        }
+        paramslr.jdField_d_of_type_JavaLangString = localJSONObject.optString("reportInfo", "");
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.readinjoy.video.VideoUrlInfo", 2, "onReceive CMD_VIDEO_UUIDFORURL jsonVideoDetail = " + (String)localObject);
+          bool1 = bool2;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          bool1 = true;
+        }
+      }
+      paramGetUrlByVidResponse = paramGetUrlByVidResponse.video_info.get();
+      if ((paramGetUrlByVidResponse == null) || (paramGetUrlByVidResponse.size() <= 0)) {
+        return bool1;
+      }
+      paramGetUrlByVidResponse = paramGetUrlByVidResponse.iterator();
+      while (paramGetUrlByVidResponse.hasNext())
+      {
+        localObject = (ArticleCenter.VideoInfo)paramGetUrlByVidResponse.next();
+        localObject = a(paramslr.jdField_b_of_type_JavaLangString, (ArticleCenter.VideoInfo)localObject);
+        paramslr.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      }
     }
-    return arrayOfChar;
+    return bool1;
   }
   
-  public slo[] a()
+  public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_ArrayOfSlo;
+    return (paramLong - this.jdField_b_of_type_Long > 0L) && (paramLong - this.jdField_b_of_type_Long < 7200L);
   }
   
-  public float b()
+  public boolean a(long paramLong1, long paramLong2)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f = 0.0F;
-    int i = 0;
-    while (i < j)
-    {
-      f += ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-    return f;
+    return (paramLong1 - this.jdField_b_of_type_Long > 0L) && (paramLong1 - this.jdField_b_of_type_Long < paramLong2);
   }
   
-  public void b(boolean paramBoolean)
+  public String toString()
   {
-    this.b = paramBoolean;
+    return "VidUrl {\n vid: " + this.jdField_b_of_type_JavaLangString + "\n url: " + this.jdField_a_of_type_JavaLangString + "\n width: " + this.jdField_b_of_type_Int + "\n height: " + this.jdField_c_of_type_Int + "\n isH265: " + this.jdField_a_of_type_Boolean + "\n fileBitRate: " + this.jdField_c_of_type_JavaLangString + "\n isHWCodec: " + this.jdField_b_of_type_Boolean + "\n videoReportInfo:" + this.jdField_d_of_type_JavaLangString + "\n hwBackupURL:" + this.e + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     slr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
-public abstract interface aote
+public class aote
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract long a();
+  public aote(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public abstract ExcitingTransferDownloadConfig a();
-  
-  public abstract boolean a();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aote
  * JD-Core Version:    0.7.0.1
  */

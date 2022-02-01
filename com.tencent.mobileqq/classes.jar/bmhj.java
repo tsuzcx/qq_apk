@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.setting.QIMSelectEffectParams;
+import cooperation.qzone.statistic.access.concept.Collector;
 
-public final class bmhj
-  implements Parcelable.Creator<QIMSelectEffectParams>
+final class bmhj
+  extends bmhi
 {
-  public QIMSelectEffectParams a(Parcel paramParcel)
+  public boolean a(Collector paramCollector)
   {
-    return new QIMSelectEffectParams(paramParcel);
-  }
-  
-  public QIMSelectEffectParams[] a(int paramInt)
-  {
-    return new QIMSelectEffectParams[paramInt];
+    return true;
   }
 }
 

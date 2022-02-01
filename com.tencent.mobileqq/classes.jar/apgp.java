@@ -1,13 +1,6 @@
-import org.json.JSONObject;
-
-public abstract class apgp
+public abstract interface apgp
 {
-  public String a;
-  public boolean a = true;
-  
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
+  public abstract void a(int paramInt);
 }
 
 

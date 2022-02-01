@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class TroopFileData
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final long serialVersionUID = 0L;
@@ -16,14 +16,18 @@ public class TroopFileData
   public int duration;
   public long entitySessionId;
   public String fileName;
-  @awhs
+  @unique
   public String fileUrl;
   public int height;
   public long lastTime;
   public long lfileSize;
+  public String md5;
   public String sha1;
   public String uuid;
   public int width;
+  public String yybApkIconUrl;
+  public String yybApkName;
+  public String yybApkPackageName;
   
   public String toString()
   {
@@ -32,7 +36,7 @@ public class TroopFileData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileData
  * JD-Core Version:    0.7.0.1
  */

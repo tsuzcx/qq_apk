@@ -1,78 +1,52 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.VideoFilterPageChangeListener.1;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtd
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  public ajtd(VideoFilterViewPager paramVideoFilterViewPager) {}
+  public ajtd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageSelected position: " + paramInt);
-    }
-    int i = VideoFilterViewPager.a(this.a).a(paramInt);
-    if ((VideoFilterViewPager.a(this.a) != null) && (i != 0))
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
     {
-      VideoFilterViewPager.a(this.a).a(0);
-      VideoFilterViewPager.a(this.a, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state: 0");
-      }
-    }
-    for (;;)
-    {
-      ajpy.a("", "0X8007804", "", "", "", "");
-      Object localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      ajsv.a().a((FilterDesc)localObject1);
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      if (localObject1 != null)
-      {
-        localObject2 = new VideoFilterViewPager.VideoFilterPageChangeListener.1(this, paramInt, (View)localObject1);
-        ((View)localObject1).setVisibility(0);
-        ((View)localObject1).postDelayed((Runnable)localObject2, 1800L);
-        ((View)localObject1).setTag(localObject2);
-        VideoFilterViewPager.a(this.a, (View)localObject1, paramInt, false);
-      }
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt - 1);
-      Object localObject2 = VideoFilterViewPager.a(this.a).a(paramInt + 1);
-      if (localObject1 != null)
-      {
-        ((View)localObject1).removeCallbacks((Runnable)((View)localObject1).getTag());
-        ((View)localObject1).clearAnimation();
-      }
-      if (localObject2 != null)
-      {
-        ((View)localObject2).removeCallbacks((Runnable)((View)localObject2).getTag());
-        ((View)localObject2).clearAnimation();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((VideoFilterViewPager.a(this.a) != null) && (VideoFilterViewPager.a(this.a).a(paramInt) == 0) && (VideoFilterViewPager.a(this.a) != 0))
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    localObject = paramView.findViewById(2131379765);
+    if ((((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)((View)localObject).getTag()).booleanValue();; bool = false)
+    {
+      if (bool)
       {
-        VideoFilterViewPager.a(this.a).a(0);
-        VideoFilterViewPager.a(this.a, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state-check: 0");
+        localObject = (ajtt)this.a.jdField_a_of_type_Ajtx.getItem(i);
+        this.a.a((ajtt)localObject);
+        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
         }
+        if (this.a.jdField_d_of_type_Int != 11) {
+          break;
+        }
+        bcst.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+        break;
       }
+      localObject = (ajtt)this.a.jdField_a_of_type_Ajtv.getItem(i);
+      this.a.a((ajtt)localObject);
+      if (this.a.jdField_d_of_type_Int == 11) {
+        bcst.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      }
+      if (this.a.jdField_d_of_type_Int != 18) {
+        break;
+      }
+      bcst.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
+      break;
     }
   }
 }

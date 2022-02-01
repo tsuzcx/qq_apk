@@ -1,23 +1,37 @@
-public class amzd
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
+
+class amzd
 {
-  public float a;
   public int a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
+  public String a;
+  public final List<amze> a;
   
   public amzd()
   {
-    this.jdField_a_of_type_Float = 2.0F;
-    this.jdField_b_of_type_Float = 2.0F;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((amze)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
+    }
+    return localJSONObject;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
+    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
     return localStringBuilder.toString();
   }
 }

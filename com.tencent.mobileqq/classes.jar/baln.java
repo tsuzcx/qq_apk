@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class baln
-  implements View.OnClickListener
+public class baln
 {
-  baln(balm parambalm) {}
-  
-  public void onClick(View paramView)
+  public static int a(String paramString1, String paramString2)
   {
-    this.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, "##" + paramString2);
+    }
+    return 0;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
   }
 }
 

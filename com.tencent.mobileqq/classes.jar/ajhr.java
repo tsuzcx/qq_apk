@@ -1,24 +1,55 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 class ajhr
-  implements View.OnClickListener
+  extends anmu
 {
-  ajhr(ajgb paramajgb, String paramString) {}
+  ajhr(ajhk paramajhk) {}
   
-  public void onClick(View paramView)
+  public void onConversationRecommendTypeChange(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
+      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
     }
-    paramView = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), QQBrowserDelegationActivity.class);
-    paramView.putExtra("injectrecommend", true);
-    ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    ajhk.c(this.a, paramInt);
+  }
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ajhk.a(this.a, false, false);
+    }
+  }
+  
+  public void onRecommendTroopJoinedOrDeleted(String paramString)
+  {
+    if ((ajhk.a(this.a) instanceof ajlx)) {
+      ((ajlx)ajhk.a(this.a)).a(paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ajhk.b(this.a));
+    }
+    if (ajhk.b(this.a))
+    {
+      int i = ajhk.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ajhk.b(this.a) + "  defaultPos:" + i);
+      }
+      if (ajhk.b(this.a) != i)
+      {
+        ajhk.c(this.a, true);
+        ajhk.b(this.a, i);
+        ajhk.c(this.a, false);
+      }
+      ajhk.b(this.a, false);
+    }
   }
 }
 

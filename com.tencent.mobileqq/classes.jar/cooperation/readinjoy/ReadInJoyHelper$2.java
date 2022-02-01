@@ -1,7 +1,7 @@
 package cooperation.readinjoy;
 
 import android.content.SharedPreferences;
-import bkbq;
+import bmqa;
 import mqq.app.AppRuntime;
 
 public final class ReadInJoyHelper$2
@@ -12,14 +12,14 @@ public final class ReadInJoyHelper$2
   public void run()
   {
     int i = 1;
-    SharedPreferences localSharedPreferences = bkbq.a(this.a, true, true);
+    SharedPreferences localSharedPreferences = bmqa.a(this.a, true, true);
     if (localSharedPreferences == null) {
       return;
     }
     if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
     for (;;)
     {
-      bkbq.a(i);
+      bmqa.a(i);
       return;
       i = 0;
     }
@@ -27,7 +27,7 @@ public final class ReadInJoyHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public final class hd_video_putinfo$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,14 @@
-public class annk
+class annk
+  implements ankk
 {
-  public void a(annm paramannm, Object paramObject) {}
+  annk(annj paramannj) {}
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
 }
 
 

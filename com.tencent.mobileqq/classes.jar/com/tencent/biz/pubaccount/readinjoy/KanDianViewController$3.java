@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import nwc;
-import nwg;
-import qip;
+import ofx;
+import ogb;
+import rcs;
 
 public class KanDianViewController$3
   implements Runnable
 {
-  public KanDianViewController$3(nwc paramnwc) {}
+  public KanDianViewController$3(ofx paramofx) {}
   
   public void run()
   {
-    String str = qip.f();
+    String str = rcs.f();
     if ((str != null) && (new File(str).exists()))
     {
-      nwc.a(this.this$0).removeMessages(2);
-      nwc.a(this.this$0).sendEmptyMessage(3);
+      ofx.a(this.this$0).removeMessages(2);
+      ofx.a(this.this$0).sendEmptyMessage(3);
     }
   }
 }

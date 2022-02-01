@@ -1,37 +1,41 @@
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class pio
+  implements AladdinConfigHandler
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public pio(String paramString)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
+        bmqa.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
+        bmqa.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
+        bmqa.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      }
+    }
+    return true;
   }
   
-  public pio(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 2;
-    this.d = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.e = paramString4;
-  }
-  
-  public String toString()
-  {
-    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
+    bmqa.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
+    bmqa.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
+    bmqa.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pio
  * JD-Core Version:    0.7.0.1
  */

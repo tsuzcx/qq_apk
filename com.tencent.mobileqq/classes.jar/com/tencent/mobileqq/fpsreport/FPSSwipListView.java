@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fpsreport;
 
-import abvq;
+import adce;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import com.tencent.widget.SwipListView;
 public class FPSSwipListView
   extends SwipListView
 {
-  private abvq jdField_a_of_type_Abvq;
+  private adce jdField_a_of_type_Adce;
   private boolean jdField_a_of_type_Boolean = true;
   
   public FPSSwipListView(Context paramContext)
@@ -29,8 +29,8 @@ public class FPSSwipListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Abvq != null) {
-      this.jdField_a_of_type_Abvq.a();
+    if (this.jdField_a_of_type_Adce != null) {
+      this.jdField_a_of_type_Adce.a();
     }
   }
   
@@ -42,28 +42,28 @@ public class FPSSwipListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abvq != null)) {
-      this.jdField_a_of_type_Abvq.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Adce != null)) {
+      this.jdField_a_of_type_Adce.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Abvq != null) {
-      this.jdField_a_of_type_Abvq.a(paramInt);
+    if (this.jdField_a_of_type_Adce != null) {
+      this.jdField_a_of_type_Adce.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_Abvq = new abvq();
-    this.jdField_a_of_type_Abvq.a(paramString);
+    this.jdField_a_of_type_Adce = new adce();
+    this.jdField_a_of_type_Adce.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSSwipListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.screendetect;
 
 import android.content.Context;
-import aygf;
+import bben;
 import java.lang.ref.WeakReference;
 
 class ScreenShotDetector$1
@@ -11,12 +11,12 @@ class ScreenShotDetector$1
   
   public void run()
   {
-    aygf.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+    bben.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector.1
  * JD-Core Version:    0.7.0.1
  */

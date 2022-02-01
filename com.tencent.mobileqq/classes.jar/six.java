@@ -1,55 +1,22 @@
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class six
-  implements sjc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface six
 {
-  six(siw paramsiw) {}
+  @Nullable
+  public abstract View a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (siw.a(this.a) != null)
-      {
-        paramString = (Animation)siw.a(this.a).getTag(2131369027);
-        paramString.setAnimationListener(new siy(this));
-        siw.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131718894, 0).a();
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramBoolean)
-    {
-      siw.a(this.a).a(siw.a(this.a), siw.a(this.a, paramInt), this.a.a, "", "", paramString2);
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131718898, 0).a();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (siw.a(this.a) != null)
-      {
-        paramString = (Animation)siw.a(this.a).getTag(2131369027);
-        paramString.setAnimationListener(new siz(this));
-        siw.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131718901, 0).a();
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     six
  * JD-Core Version:    0.7.0.1
  */

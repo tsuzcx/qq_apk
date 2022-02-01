@@ -1,73 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.List;
 
 class awqx
-  extends BroadcastReceiver
+  implements awxg
 {
-  awqx(awqw paramawqw) {}
+  awqx(awqv paramawqv, awwz paramawwz, awxi paramawxi, List paramList) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    int k = 0;
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
-    {
-      if (paramIntent.getIntExtra("faceType", -1) != 1) {
-        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
-      }
-    }
-    else {
-      return;
-    }
-    if (TextUtils.isEmpty(awqw.a(this.a)))
-    {
-      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
-      return;
-    }
-    paramContext = paramIntent.getStringArrayListExtra("uinList");
-    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-    int j = k;
-    int i;
-    if (paramContext != null)
-    {
-      j = k;
-      if (paramIntent != null)
+    this.jdField_a_of_type_Awwz.a(new awqy(this));
+    this.jdField_a_of_type_Awwz.show();
+  }
+  
+  public void a(awxe paramawxe)
+  {
+    if ((paramawxe != null) && (awqv.a(this.jdField_a_of_type_Awqv) != null) && (awqv.a(this.jdField_a_of_type_Awqv).v())) {
+      switch (paramawxe.a)
       {
-        j = k;
-        if (paramContext.size() == paramIntent.size()) {
-          i = 0;
-        }
       }
     }
     for (;;)
     {
-      j = k;
-      if (i < paramContext.size())
-      {
-        if (((String)paramContext.get(i)).equals(awqw.a(this.a)))
-        {
-          awqw.a(this.a, (String)paramIntent.get(i));
-          j = 1;
-        }
+      if (this.jdField_a_of_type_Awwz.isShowing()) {
+        this.jdField_a_of_type_Awwz.dismiss();
       }
-      else
-      {
-        if ((j == 0) || (!awqw.a(this.a))) {
-          break;
-        }
-        awqw.a(this.a, awqw.b(this.a));
-        return;
+      if (awqv.a(this.jdField_a_of_type_Awqv) != null) {
+        awqv.a(this.jdField_a_of_type_Awqv).a(false, null, false);
       }
-      i += 1;
+      this.jdField_a_of_type_Awxi.b();
+      return;
+      awxf.a(awqv.a(this.jdField_a_of_type_Awqv));
+      continue;
+      awxf.b(awqv.a(this.jdField_a_of_type_Awqv));
+      continue;
+      awxf.c(awqv.a(this.jdField_a_of_type_Awqv));
     }
+  }
+  
+  public void a(awxe paramawxe, int paramInt)
+  {
+    this.jdField_a_of_type_Awwz.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Awwz.isShowing()) {
+      this.jdField_a_of_type_Awwz.dismiss();
+    }
+    if (awqv.a(this.jdField_a_of_type_Awqv) != null) {
+      awqv.a(this.jdField_a_of_type_Awqv).a(false, null, false);
+    }
+    this.jdField_a_of_type_Awxi.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Awxi.a(awqv.a(this.jdField_a_of_type_Awqv), this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqx
  * JD-Core Version:    0.7.0.1
  */

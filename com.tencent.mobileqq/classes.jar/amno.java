@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
-public abstract class amno
+public class amno
+  implements DialogInterface.OnClickListener
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  public amno(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public amno(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", ancb.Y);
+    this.a.startActivity(paramDialogInterface);
+    ApolloWebGameActivity.a(this.a);
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amno
  * JD-Core Version:    0.7.0.1
  */

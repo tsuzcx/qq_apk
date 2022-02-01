@@ -1,27 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
 
 public class azqg
-  implements DialogInterface.OnClickListener
+  extends azpu
 {
-  public azqg(LocalCrashCollector.3 param3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azqg(azlw paramazlw, azfe paramazfe)
   {
-    try
+    super(paramazlw, paramazfe);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderWZRYComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
+      localVasProfileWZRYView.setClickListener(this);
+      localVasProfileWZRYView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
   }
 }

@@ -1,23 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class rlw
-  extends BroadcastReceiver
+class rlw
+  extends DefaultPTSLiteEventListener
 {
-  private rlw(rlt paramrlt) {}
+  rlw(rlv paramrlv) {}
   
-  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
+  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  
+  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  
+  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView) {}
+  
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
   {
-    rlt.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[onTapEventTriggered], identifier is empty.");
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (TextUtils.equals(paramString, "editPersonalProfile"))
+        {
+          RIJUGCAddAccountFragment.b(rlv.a(this.a));
+          RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.c);
+          return;
+        }
+      } while (!TextUtils.equals(paramString, "useOriginalAccount"));
+      RIJUGCAddAccountFragment.a(rlv.a(this.a));
+      RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.b);
+    } while (!(rlv.a(this.a) instanceof BaseActivity));
+    ((BaseActivity)rlv.a(this.a)).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlw
  * JD-Core Version:    0.7.0.1
  */

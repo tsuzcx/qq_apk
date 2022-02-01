@@ -162,16 +162,16 @@ public class FrozenFrameTrigerCtrlItem
     if (paramPTFaceAttr != null)
     {
       if (this.mFaceAttr != null) {
-        break label163;
+        break label184;
       }
       byte[] arrayOfByte = new byte[paramPTFaceAttr.getData().length];
       System.arraycopy(paramPTFaceAttr.getData(), 0, arrayOfByte, 0, arrayOfByte.length);
-      this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data(arrayOfByte).bodyPoints(paramPTFaceAttr.getBodyPoints()).faceKitVerticesArray(paramPTFaceAttr.getFaceKitVerticesArray()).featureIndicesArray(paramPTFaceAttr.getFeatureIndicesArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()));
+      this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data(arrayOfByte).bodyPoints(paramPTFaceAttr.getBodyPoints()).faceKitVerticesArray(paramPTFaceAttr.getFaceKitVerticesArray()).featureIndicesArray(paramPTFaceAttr.getFeatureIndicesArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()).faceDetWidth(paramPTFaceAttr.getFaceDetWidth()).faceDetHeight(paramPTFaceAttr.getFaceDetHeight()).faceInfoList(paramPTFaceAttr.getFaceInfoList()));
     }
     for (;;)
     {
       return this.mFaceAttr;
-      label163:
+      label184:
       this.mFaceAttr.setTimeStamp(paramPTFaceAttr.getTimeStamp());
     }
   }
@@ -200,13 +200,13 @@ public class FrozenFrameTrigerCtrlItem
       this.mFreezeFrame = FrameBufferCache.getInstance().get(paramFrame1.width, paramFrame1.height);
       paramBaseFilter.RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, -1, 0.0D, this.mFreezeFrame);
       this.mFreezeFrame.setCanUnlock(false);
-      paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, -1, 0.0D, paramFrame2);
+      paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
     }
     for (;;)
     {
       return paramFrame2;
       if (this.mFreezeFrame != null) {
-        paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, -1, 0.0D, paramFrame2);
+        paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
       }
     }
   }
@@ -248,7 +248,7 @@ public class FrozenFrameTrigerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.triggerctrlitem.FrozenFrameTrigerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
 import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-public class bcrf
+public final class bcrf
+  implements bcou
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
-  public ImageProgressCircle a;
+  public bcrf(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  protected bcrf(bcrd parambcrd) {}
+  public void a()
+  {
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcrf
  * JD-Core Version:    0.7.0.1
  */

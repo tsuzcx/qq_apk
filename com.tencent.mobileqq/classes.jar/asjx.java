@@ -1,21 +1,6 @@
-public class asjx
-  implements alpg
+public abstract interface asjx
 {
-  public void a() {}
-  
-  public void a(aska paramaska) {}
-  
-  protected void a(boolean paramBoolean, aska paramaska) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (aska)paramObject);
-  }
+  public abstract void b();
 }
 
 

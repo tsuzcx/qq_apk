@@ -1,14 +1,13 @@
-import android.view.ViewGroup;
-
 public class aywr
-  extends aywp
 {
-  public static final String a = aywr.class.getSimpleName();
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public aywr(ViewGroup paramViewGroup, int paramInt)
+  public String toString()
   {
-    super(paramViewGroup, 2131559683);
-    a(a());
+    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

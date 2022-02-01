@@ -1,50 +1,51 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bajl
-  implements WtTicketPromise
+class bajl
+  extends anmu
 {
-  private aoyo jdField_a_of_type_Aoyo;
-  private WeakReference<bajk> jdField_a_of_type_JavaLangRefWeakReference;
+  bajl(bajk parambajk) {}
   
-  public bajl(bajk parambajk, aoyo paramaoyo)
+  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambajk);
-    this.jdField_a_of_type_Aoyo = paramaoyo;
-  }
-  
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    int j = 1;
+    anmw localanmw;
+    int i;
+    Object localObject;
+    if (paramBoolean)
     {
-      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
+      localanmw = (anmw)this.a.a.getManager(51);
+      ExtensionInfo localExtensionInfo = localanmw.a(paramString2, true);
+      i = 0;
+      localObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        localObject = new ExtensionInfo();
+        ((ExtensionInfo)localObject).uin = paramString2;
+        i = 1;
+      }
+      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
+        break label152;
+      }
+      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
+      i = j;
     }
-    if (this.jdField_a_of_type_Aoyo != null) {
-      this.jdField_a_of_type_Aoyo.a(false);
+    label152:
+    for (;;)
+    {
+      if (i != 0) {
+        localanmw.a((ExtensionInfo)localObject);
+      }
+      if (bajk.a(this.a) == null) {}
+      for (localObject = null;; localObject = (bajo)bajk.a(this.a).get())
+      {
+        if (localObject != null) {
+          ((bajo)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
+        }
+        return;
+      }
     }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Aoyo != null) {
-      this.jdField_a_of_type_Aoyo.a(false);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Aoyo != null) {
-      this.jdField_a_of_type_Aoyo.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 

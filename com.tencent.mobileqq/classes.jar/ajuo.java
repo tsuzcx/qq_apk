@@ -1,8 +1,19 @@
-public class ajuo
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajuo
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  ajuo(ajun paramajun, ajuq paramajuq) {}
+  
+  public void onClick(View paramView)
+  {
+    String str = String.valueOf(this.jdField_a_of_type_Ajuq.a.getText());
+    ajun.a(this.jdField_a_of_type_Ajun, str);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

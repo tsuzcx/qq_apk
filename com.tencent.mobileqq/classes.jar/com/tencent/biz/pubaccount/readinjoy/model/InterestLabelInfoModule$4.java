@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pge;
+import pmk;
+import pxl;
 
 public class InterestLabelInfoModule$4
   implements Runnable
 {
-  public InterestLabelInfoModule$4(pge parampge, int paramInt) {}
+  public InterestLabelInfoModule$4(pxl parampxl, int paramInt) {}
   
   public void run()
   {
-    oxb.a().a(this.a);
+    pmk.a().a(this.a);
   }
 }
 

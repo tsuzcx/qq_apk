@@ -5,6 +5,7 @@ import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 
 public class AEModuleConfig
 {
+  private int authMode;
   private boolean debugMode;
   private boolean enableDataReport;
   private boolean enableDefaultBasic3;
@@ -42,11 +43,17 @@ public class AEModuleConfig
     this.enableDumpFilterParams = AEModuleConfig.Builder.access$1400(paramBuilder);
     this.enableReducedMeidaLibrary = AEModuleConfig.Builder.access$1500(paramBuilder);
     this.networkRequest = AEModuleConfig.Builder.access$1600(paramBuilder);
+    this.authMode = AEModuleConfig.Builder.access$1700(paramBuilder);
   }
   
   public static AEModuleConfig.Builder newBuilder()
   {
     return new AEModuleConfig.Builder();
+  }
+  
+  public int getAuthMode()
+  {
+    return this.authMode;
   }
   
   public boolean getIsLoadSo()
@@ -136,7 +143,7 @@ public class AEModuleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModuleConfig
  * JD-Core Version:    0.7.0.1
  */

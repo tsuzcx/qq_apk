@@ -1,23 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class agug
-  implements DialogInterface.OnClickListener
+class agug
+  implements agsm
 {
-  agug(agti paramagti, PublicAccountInfo paramPublicAccountInfo, alzl paramalzl) {}
+  agug(agtx paramagtx, aguj paramaguj, MessageForPoke paramMessageForPoke) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Alzl.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Agti.a(1, null);
-    paramDialogInterface = new PublicAccountChatPie.35.1(this);
-    this.jdField_a_of_type_Agti.a.a(paramDialogInterface);
-    agti.c(this.jdField_a_of_type_Agti);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Aguj.b == agtx.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agtx.a instanceof ChatHistoryActivity)) && (!agtx.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Aguj.c.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      afur.a -= 1;
+      return;
+      this.jdField_a_of_type_Aguj.c.setVisibility(8);
+    }
   }
 }
 

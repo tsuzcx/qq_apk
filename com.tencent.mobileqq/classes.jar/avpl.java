@@ -1,34 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-public class avpl
-  implements View.OnClickListener
+class avpl
+  implements aaob
 {
-  public avpl(NearbyProfileFragment paramNearbyProfileFragment) {}
+  avpl(avpk paramavpk, long paramLong1, long paramLong2, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    this.a.a(false);
-    if (this.a.a.app != null)
+    boolean bool = true;
+    paramBundle = paramBundle.getString("videoPath");
+    Object localObject;
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
-        break label82;
+      localObject = new File(paramBundle);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
       }
-      azqs.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
-    }
-    label82:
-    while ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 1)) {
+      try
+      {
+        localObject = new JSONObject();
+        if (bool)
+        {
+          MediaApiPlugin.a(this.jdField_a_of_type_Avpk.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+          ((JSONObject)localObject).put("ret", 0);
+          ((JSONObject)localObject).put("errMsg", "");
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Avpk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+          ((JSONObject)localObject).put("ret", -2);
+          ((JSONObject)localObject).put("errMsg", anni.a(2131713860));
+        }
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      catch (Exception paramBundle)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
       return;
+      bool = false;
     }
-    azqs.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,30 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
-class aeon
-  implements Comparator<File>
+public class aeon
+  implements ActionMode.Callback
 {
-  aeon(aeom paramaeom) {}
+  public aeon(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    long l = aeom.a(this.a, paramFile1) - aeom.a(this.a, paramFile2);
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    return false;
   }
   
-  public boolean equals(Object paramObject)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    return true;
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

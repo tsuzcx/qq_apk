@@ -1,119 +1,32 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
-public class aruf
+class aruf
+  extends BroadcastReceiver
 {
-  public static String b;
-  protected int a;
-  protected Object a;
-  protected int b;
-  protected long b;
-  protected Object b;
-  protected int c;
-  protected final long c;
-  protected Object c;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  aruf(arti paramarti, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_b_of_type_JavaLangString = "UniformDownloaderAssinfo<FileAssistant>";
-  }
-  
-  public aruf(long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangObject = new Object();
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public int a(String paramString, Bundle paramBundle)
-  {
-    if (a()) {
-      return 0;
-    }
-    if ((paramString == null) || (paramBundle == null)) {
-      try
-      {
-        QLog.e(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
-        return -1;
-      }
-      finally {}
-    }
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.e = paramBundle.getString("_PARAM_FILEPATH");
-    this.f = paramBundle.getString("_PARAM_TMP_FILEPATH");
-    this.d = paramBundle.getString("_PARAM_FILENAME");
-    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
-    this.g = paramBundle.getString("_PARAM_COOKIE");
-    QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
-    c(1);
-    return 0;
-  }
-  
-  protected void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Int = paramInt;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
       return;
     }
-  }
-  
-  protected boolean a()
-  {
-    return e() >= 1;
-  }
-  
-  protected void b(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
+    if (paramContext != null) {
+      paramContext.unregisterReceiver(this);
     }
-  }
-  
-  protected void c(int paramInt)
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
-      this.jdField_c_of_type_Int = paramInt;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
     }
-  }
-  
-  public int e()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-  }
-  
-  protected int g()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public int h()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      int i = this.jdField_b_of_type_Int;
-      return i;
-    }
+    paramContext = new Bundle(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

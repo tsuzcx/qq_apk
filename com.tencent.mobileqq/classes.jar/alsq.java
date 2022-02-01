@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class alsq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements adsx
 {
-  public alsq(FrameHelperActivity paramFrameHelperActivity) {}
+  public alsq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onGlobalLayout()
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
-      this.a.c.setVisibility(8);
-    }
+    this.a.e = 2;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsq
  * JD-Core Version:    0.7.0.1
  */

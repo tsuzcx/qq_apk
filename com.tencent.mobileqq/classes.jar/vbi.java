@@ -1,33 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class vbi
-  implements View.OnClickListener
+  implements Observer<vup<List<QQCircleFeedBase.StTabInfo>>>
 {
-  public vbi(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
+  public vbi(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable vup<List<QQCircleFeedBase.StTabInfo>> paramvup)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
-    for (int i = 1;; i = 0)
-    {
-      wxj.a("msg_tab", "clk_all", 0, i, new String[0]);
-      paramView = bdib.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
-      xqq.a(paramView);
-      if (paramView != null) {
-        paramView.c();
-      }
-      return;
-    }
+    QCircleFolderFragmentsPart.a(this.a, paramvup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbi
  * JD-Core Version:    0.7.0.1
  */

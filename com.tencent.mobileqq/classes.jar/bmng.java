@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public final class bmng
-  implements Parcelable.Creator<EditVideoParams>
+class bmng
+  implements bmnh
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  bmng(bmnd parambmnd) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    return new EditVideoParams[paramInt];
+    paramJSONObject.put("event_video_album_state", paramBundle.getString("event_video_album_state"));
   }
 }
 

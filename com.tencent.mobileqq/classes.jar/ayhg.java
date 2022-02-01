@@ -1,28 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.search.HistorySearchEntryModel.2.1;
-import java.util.List;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
 
 public class ayhg
-  implements View.OnClickListener
+  implements aygs
 {
-  ayhg(ayhe paramayhe) {}
+  public ayhg(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = ((Long)paramView.getTag(-1)).longValue();
-    int i = ayhe.a(this.a, this.a.a, l);
-    if (i == -1) {}
-    do
-    {
-      return;
-      paramView = (SearchHistory)((ayhr)this.a.a.get(i)).a();
-    } while (paramView == null);
-    ayvm.a("home_page", "del_history", new String[] { "" + i });
-    ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, paramView, l), null, true);
+    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
   }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    }
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

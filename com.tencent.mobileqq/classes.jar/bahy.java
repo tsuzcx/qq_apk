@@ -1,47 +1,135 @@
-import com.tencent.imcore.message.QQMessageFacade;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bahy
-  extends bahj
+public class bahy
+  extends bahx
 {
-  bahy(bahx parambahx) {}
+  public int a;
+  public String a;
+  public String b = "";
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public bahy()
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if (paramTeamWorkFileImportInfo.e != bahx.a(this.a).uniseq) {
-      return;
-    }
-    bahx.a(this.a).saveExtInfoToExtStr("errorString", bahx.a(this.a, paramTeamWorkFileImportInfo.f));
-    bahx.a(this.a).saveExtInfoToExtStr("retCode", String.valueOf(paramTeamWorkFileImportInfo.f));
-    bahx.a(this.a).a().a(bahx.a(this.a).frienduin, bahx.a(this.a).istroop, bahx.a(this.a).uniseq);
-    bahx.a(this.a).removeObserver(bahx.a(this.a));
-    bahx.a(this.a).a().a(bahx.a(this.a).frienduin, bahx.a(this.a).istroop, bahx.a(this.a).uniseq, "extStr", bahx.a(this.a).extStr);
-    bahx.a(this.a).a().a(bahx.a(this.a).frienduin, bahx.a(this.a).istroop, bahx.a(this.a).uniseq, 32768, -1);
-    QLog.i("TeamWorkSender", 1, bahx.a(this.a).uniseq + " import file faild");
-    bahx.a(this.a).a().a(true, 3, null);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1001;
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (paramTeamWorkFileImportInfo.e != bahx.a(this.a).uniseq) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
+    }
+    if ("7720.772004".equals(paramString)) {}
+    for (paramString = awie.a(paramQQAppInterface, paramString);; paramString = ((baif)paramQQAppInterface.getManager(36)).a(paramString)) {
+      return baij.a(paramString);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
+    }
+    ((baif)paramQQAppInterface.getManager(36)).b(paramString);
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "actId == " + paramInt);
+    }
+    if (paramString == null) {
+      return;
+    }
+    try
+    {
+      if (paramString.contains("\\.")) {}
+      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
+      {
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          paramString = ((baif)paramQQAppInterface.getManager(36)).a(paramString);
+          localJSONObject.put("service_type", 0);
+          localJSONObject.put("actId", paramInt);
+          localJSONObject.put("obj_id", "");
+          localJSONObject.put("pay_amt", 0);
+          localJSONObject.put("service_id", i);
+          ((baif)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
+          return;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          paramQQAppInterface.printStackTrace();
+          return;
+        }
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        localNumberFormatException.printStackTrace();
+        int i = 0;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
+    paramBundle.putString("reportPath", this.b);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("cmd");
+    if ("getRedInfo".equals(localObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+      }
+      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+      localObject = new Bundle();
+      ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
+      paramBundle.putBundle("keyResponse", (Bundle)localObject);
+      super.a(paramBundle);
+    }
     do
     {
       return;
-      bahx.a(this.a).removeObserver(bahx.a(this.a));
-      bahx.a(this.a).mMsgUrl = paramString;
-      bahx.a(this.a).structingMsg.mMsgUrl = paramString;
-      bahx.a(this.a).msgData = bahx.a(this.a).getBytes();
-      bahx.a(this.a).removeFlag(1);
-      bahx.a(this.a).removeFlag(2);
-      bahx.a(this.a).a().b(bahx.a(this.a), null, false);
-      QLog.i("TeamWorkSender", 1, "start import file success");
-    } while (!QLog.isColorLevel());
-    QLog.i("TeamWorkSender", 1, "msg uniseq : " + bahx.a(this.a).uniseq + " import success, url:" + paramString);
+      if ("reportRedInfo".equals(localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+        }
+        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        return;
+      }
+    } while (!"clearRedInfo".equals(localObject));
+    if (QLog.isColorLevel()) {
+      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+    }
+    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    super.b(paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
+    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
+    this.b = paramBundle.getString("reportPath");
   }
 }
 

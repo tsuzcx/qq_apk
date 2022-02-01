@@ -1,38 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent.IDebuggerMessageListener;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgzf
-  implements IInspectorAgent
+public final class bgzf
+  implements URLDrawable.URLDrawableListener
 {
-  private IInspectorAgent.IDebuggerMessageListener jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener;
-  private IInspectorAgent jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent;
+  public bgzf(int[] paramArrayOfInt) {}
   
-  public void a(IInspectorAgent paramIInspectorAgent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent = paramIInspectorAgent;
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.setOnDebuggerMessageListener(this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void sendMessageToDebugger(@NonNull String paramString)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.sendMessageToDebugger(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
     }
   }
   
-  public void setOnDebuggerMessageListener(@Nullable IInspectorAgent.IDebuggerMessageListener paramIDebuggerMessageListener)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener = paramIDebuggerMessageListener;
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.setOnDebuggerMessageListener(this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
+    }
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
+      ApngImage.playByTag(this.a[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgzf
  * JD-Core Version:    0.7.0.1
  */

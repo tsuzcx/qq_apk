@@ -1,176 +1,131 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tribe.async.async.JobContext;
+import java.io.IOException;
 
-class zel
-  extends Handler
+public class zel
+  extends zez<zem, zem>
 {
-  zel(zej paramzej, Looper paramLooper)
+  protected void a(JobContext paramJobContext, zem paramzem)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    label32:
-    Object localObject2;
-    label468:
-    do
+    paramJobContext = null;
+    if (paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath == null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            Object localObject1;
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                if (paramMessage.arg1 != 1) {
-                  break label468;
-                }
-                this.a.b = paramMessage.arg2;
-                localObject1 = (String)paramMessage.obj;
-                localObject2 = this.a.mRuntime.a();
-              }
-            } while (localObject2 == null);
-            if (this.a.jdField_a_of_type_Long == -1L) {
-              this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            }
-            ((CustomWebView)localObject2).loadUrlOriginal((String)localObject1);
-            ((CustomWebView)localObject2).requestFocus();
-            if (QLog.isColorLevel()) {
-              QLog.i("OfflinePluginQQ", 2, "mCheckupHandler loadUrl start \n" + (String)localObject1);
-            }
-            this.a.a((String)localObject1);
-            for (;;)
-            {
-              for (;;)
-              {
-                localObject1 = this.a.mRuntime.a();
-                localObject2 = this.a.mRuntime.a(this.a.mRuntime.a());
-                if ((localObject2 == null) || (!(localObject2 instanceof belh))) {
-                  break;
-                }
-                if (paramMessage.arg1 != 4) {
-                  break label535;
-                }
-                if ((zej.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(zej.a(this.a)))) {
-                  break;
-                }
-                localObject1 = (swb)zej.jdField_a_of_type_JavaUtilHashMap.get(zej.a(this.a));
-                if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-                  this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg2);
-                }
-                if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-                  break;
-                }
-                this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((swb)localObject1).e + paramMessage.arg2 + "%");
-                return;
-                try
-                {
-                  localObject1 = (String)((Object[])(Object[])paramMessage.obj)[1];
-                  localObject2 = new JSONObject();
-                  ((JSONObject)localObject2).put("retcode", 0);
-                  ((JSONObject)localObject2).put("data", ndq.a((String)localObject1));
-                  this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
-                }
-                catch (Exception localException1)
-                {
-                  try
-                  {
-                    JSONObject localJSONObject1 = new JSONObject();
-                    localJSONObject1.put("retcode", -1);
-                    localJSONObject1.put("msg", "error");
-                    this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-                  }
-                  catch (JSONException localJSONException) {}
-                }
-              }
-              if (!QLog.isColorLevel()) {
-                break label32;
-              }
-              QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + localJSONException);
-              break label32;
-              if (paramMessage.arg1 == 2)
-              {
-                if (QLog.isDevelopLevel()) {
-                  QLog.i("OfflinePluginQQ", 4, "checkOfflineUpBack refresh current url");
-                }
-                this.a.c();
-              }
-              else if (paramMessage.arg1 == 3)
-              {
-                try
-                {
-                  JSONObject localJSONObject2 = (JSONObject)paramMessage.obj;
-                  this.a.a(localJSONObject2);
-                }
-                catch (Exception localException2)
-                {
-                  localException2.printStackTrace();
-                }
-              }
-            }
-          } while ((paramMessage.arg1 != 5) || (zej.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(zej.a(this.a))));
-          localObject2 = (swb)zej.jdField_a_of_type_JavaUtilHashMap.get(zej.a(this.a));
-        } while (localObject2 == null);
-        if (paramMessage.arg2 != 0) {
-          break;
-        }
-        ((swb)localObject2).a(3);
-      } while (localException2 == null);
-      paramMessage = localException2.getResources().getDrawable(2130839201);
-      paramMessage.setBounds(0, 0, 40, 40);
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((swb)localObject2).d);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-    label535:
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    return;
-    if ((paramMessage.arg2 == 5) || (paramMessage.arg2 == 7))
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-      ((swb)localObject2).a(4);
+      super.notifyError(new ErrorMessage(-1, "DoodleRotateSegment error, you must merger everything first"));
       return;
     }
-    ybk.a(1, 2131696566);
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    String str2 = paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
+    String str1 = paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
+    if ((str1 == null) && (str2 == null))
+    {
+      super.notifyResult(paramzem);
+      return;
     }
-    ((swb)localObject2).a(4);
+    int i = paramzem.jdField_a_of_type_Zes.c;
+    int j = paramzem.jdField_a_of_type_Int;
+    if ((j == 2) || (j == 3) || (j == 5) || (j == 101) || (j == 104) || (j == 6)) {
+      if (str2 == null) {}
+    }
+    for (;;)
+    {
+      boolean bool1;
+      boolean bool2;
+      try
+      {
+        Bitmap localBitmap = zkh.a(str2, null);
+        paramJobContext = localBitmap;
+        j = 1;
+        if ((paramJobContext != null) || (str1 == null)) {
+          break label269;
+        }
+        j = 0;
+      }
+      catch (Throwable localThrowable)
+      {
+        try
+        {
+          localBitmap = BitmapFactory.decodeFile(str1);
+          paramJobContext = localBitmap;
+          if (paramJobContext == null) {
+            break label316;
+          }
+          if (i == 270)
+          {
+            i = 90;
+            paramJobContext = zen.a(paramJobContext, i);
+            if (paramJobContext == null) {
+              break label338;
+            }
+            if (j == 0) {
+              break label295;
+            }
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          yqp.c("Q.qqstory.publish.edit.DoodleRotateSegment", "decodeFile failed", localOutOfMemoryError);
+        }
+        try
+        {
+          zkh.a(paramJobContext, str2, null);
+          bool1 = true;
+          bool2 = bool1;
+          if (!bool1)
+          {
+            bool2 = bool1;
+            if (str1 != null) {
+              bool2 = zkh.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str1);
+            }
+          }
+          paramJobContext.recycle();
+          if ((paramJobContext != null) && (!bool2)) {
+            break label301;
+          }
+          super.notifyResult(paramzem);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          yqp.c("Q.qqstory.publish.edit.DoodleRotateSegment", "serializeBitmapToFile failed", localIOException);
+        }
+        localThrowable = localThrowable;
+        yqp.c("Q.qqstory.publish.edit.DoodleRotateSegment", "unSerializeBitmapFromFile failed", localThrowable);
+      }
+      continue;
+      label269:
+      continue;
+      if (i == 90)
+      {
+        i = -90;
+        continue;
+        label295:
+        bool1 = false;
+        continue;
+        label301:
+        super.notifyError(new ErrorMessage(-1, "bitmap compress failed"));
+        return;
+        label316:
+        super.notifyError(new BitmapError("Q.qqstory.publish.edit.DoodleRotateSegment", 6));
+        return;
+        super.notifyResult(paramzem);
+        return;
+        label338:
+        bool2 = false;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zel
  * JD-Core Version:    0.7.0.1
  */

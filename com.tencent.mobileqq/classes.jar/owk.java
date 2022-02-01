@@ -1,22 +1,25 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class owk
-  extends altm
+public final class owk
+  implements pyb
 {
-  public owk(KandianMergeManager paramKandianMergeManager) {}
+  public owk(CommentInfo paramCommentInfo) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, alof.aA))) {
-      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { alof.aA });
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
+      return;
     }
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     owk
  * JD-Core Version:    0.7.0.1
  */

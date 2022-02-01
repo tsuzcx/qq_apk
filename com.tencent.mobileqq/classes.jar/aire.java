@@ -1,19 +1,46 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.animation.ValueAnimator;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aire
-  implements arrh
+public class aire
+  implements aisn
 {
-  aire(aira paramaira) {}
+  public aire(AddContactsActivity paramAddContactsActivity) {}
+  
+  public Activity a()
+  {
+    return this.a;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
   
   public void a()
   {
-    this.a.b();
+    if (this.a.a) {
+      return;
+    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new airf(this));
+    localValueAnimator.addListener(new airg(this));
+    localValueAnimator.start();
+    bgjr.a(true);
   }
   
   public void b()
   {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    this.a.findViewById(2131376734).setVisibility(0);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new airh(this));
+    localValueAnimator.addListener(new airi(this));
+    localValueAnimator.start();
   }
 }
 

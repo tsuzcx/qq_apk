@@ -1,16 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
-class apgk
-  implements DialogInterface.OnClickListener
+public class apgk
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  apgk(apgd paramapgd) {}
+  public apgk(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface.cancel();
-    apgd.a(this.a).c();
+    if (paramBoolean)
+    {
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
+    }
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
+    ((apep)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
   }
 }
 

@@ -1,38 +1,17 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-
 public class bnrj
-  extends PreviewContext
-  implements SurfaceHolder.Callback, azhv
 {
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  private Boolean a;
+  public String a;
+  
+  public bnrj(String paramString)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
-    }
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
   }
 }
 

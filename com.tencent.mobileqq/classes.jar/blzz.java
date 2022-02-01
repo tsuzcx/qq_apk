@@ -1,8 +1,23 @@
-public abstract interface blzz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
+
+public final class blzz
+  implements Parcelable.Creator<WeishiUserInfo>
 {
-  public abstract void a();
+  public WeishiUserInfo a(Parcel paramParcel)
+  {
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    localWeishiUserInfo.logo = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
   
-  public abstract void b();
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
+  }
 }
 
 

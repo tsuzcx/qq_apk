@@ -1,117 +1,41 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class lee
-  extends WebViewPlugin
-  implements lec
+class lee
+  extends BroadcastReceiver
 {
-  private befc jdField_a_of_type_Befc;
-  private boolean jdField_a_of_type_Boolean;
+  lee(led paramled) {}
   
-  public lee()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.mPluginNameSpace = "aioShareMusic";
-  }
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {}
-    for (;;)
+    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AioShareMusic.AioShareMusicPlugin", 2, "onEvent（） actionType =" + paramString + " data = " + paramJSONObject.toString());
-      }
-      if (this.jdField_a_of_type_Befc == null) {
-        this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
-      }
-      if ("checkAioShareMusic".equals(paramString))
+      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+      paramIntent = paramIntent.getExtras().getString("verify");
+      if ((led.a(this.a, paramIntent, paramContext)) && (led.a(this.a, paramContext)))
       {
-        this.jdField_a_of_type_Befc.a(paramJSONObject);
-        return;
-      }
-      if ("startListenAioShareMusic".equals(paramString))
-      {
-        this.jdField_a_of_type_Befc.b(paramJSONObject);
-        return;
-      }
-      if ("updateSongIdToAioShareMusic".equals(paramString)) {
-        try
+        paramContext = led.a(this.a).a();
+        if ((paramContext == null) || (paramContext.a().f()))
         {
-          paramString = paramJSONObject.getString("current_song_id");
-          this.jdField_a_of_type_Befc.a = paramString;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "updateSongId() newSongId = " + paramString);
-            return;
+          if (paramContext != null) {
+            paramContext.B();
           }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
+          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
+          Process.killProcess(Process.myPid());
         }
       }
     }
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
-      return true;
-    }
-    if (this.jdField_a_of_type_Befc == null) {
-      this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "handleEvent() type = " + paramLong);
-    }
-    if (paramLong == 8589934594L)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Befc.a(this.mRuntime.a().getIntent());
-        return true;
-      }
-    }
-    else if (paramLong == 8589934622L)
-    {
-      Object localObject = paramMap.get("intent");
-      if ((localObject != null) && ((localObject instanceof Intent)))
-      {
-        paramString = (Intent)localObject;
-        this.jdField_a_of_type_Befc.b(paramString);
-        return true;
-      }
-    }
-    return super.handleEvent(paramString, paramLong, paramMap);
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    lea.a().a(this);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Befc != null)
-    {
-      this.jdField_a_of_type_Befc.a();
-      this.jdField_a_of_type_Befc = null;
-    }
-    lea.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lee
  * JD-Core Version:    0.7.0.1
  */

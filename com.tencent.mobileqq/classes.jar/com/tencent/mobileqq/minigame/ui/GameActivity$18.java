@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import android.os.Process;
+
 class GameActivity$18
   implements Runnable
 {
@@ -7,14 +9,12 @@ class GameActivity$18
   
   public void run()
   {
-    if (GameActivity.access$900(this.this$0) == null) {
-      this.this$0.tryStartGameWhenReady();
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.18
  * JD-Core Version:    0.7.0.1
  */

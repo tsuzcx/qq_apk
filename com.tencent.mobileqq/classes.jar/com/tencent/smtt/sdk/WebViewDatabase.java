@@ -4,23 +4,22 @@ import android.content.Context;
 
 public class WebViewDatabase
 {
-  protected static final String LOGTAG = "webviewdatabase";
-  private static WebViewDatabase mInstance;
-  private Context mContext;
+  private static WebViewDatabase a;
+  private Context b;
   
   protected WebViewDatabase(Context paramContext)
   {
-    this.mContext = paramContext;
+    this.b = paramContext;
   }
   
-  private static WebViewDatabase createInstance(Context paramContext)
+  private static WebViewDatabase a(Context paramContext)
   {
     try
     {
-      if (mInstance == null) {
-        mInstance = new WebViewDatabase(paramContext);
+      if (a == null) {
+        a = new WebViewDatabase(paramContext);
       }
-      paramContext = mInstance;
+      paramContext = a;
       return paramContext;
     }
     finally {}
@@ -28,74 +27,74 @@ public class WebViewDatabase
   
   public static WebViewDatabase getInstance(Context paramContext)
   {
-    return createInstance(paramContext);
+    return a(paramContext);
   }
   
   public void clearFormData()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webViewDatabaseClearFormData(this.mContext);
+      localv.c().g(this.b);
       return;
     }
-    android.webkit.WebViewDatabase.getInstance(this.mContext).clearFormData();
+    android.webkit.WebViewDatabase.getInstance(this.b).clearFormData();
   }
   
   public void clearHttpAuthUsernamePassword()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webViewDatabaseClearHttpAuthUsernamePassword(this.mContext);
+      localv.c().e(this.b);
       return;
     }
-    android.webkit.WebViewDatabase.getInstance(this.mContext).clearHttpAuthUsernamePassword();
+    android.webkit.WebViewDatabase.getInstance(this.b).clearHttpAuthUsernamePassword();
   }
   
   @Deprecated
   public void clearUsernamePassword()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webViewDatabaseClearUsernamePassword(this.mContext);
+      localv.c().c(this.b);
       return;
     }
-    android.webkit.WebViewDatabase.getInstance(this.mContext).clearUsernamePassword();
+    android.webkit.WebViewDatabase.getInstance(this.b).clearUsernamePassword();
   }
   
   public boolean hasFormData()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().webViewDatabaseHasFormData(this.mContext);
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().f(this.b);
     }
-    return android.webkit.WebViewDatabase.getInstance(this.mContext).hasFormData();
+    return android.webkit.WebViewDatabase.getInstance(this.b).hasFormData();
   }
   
   public boolean hasHttpAuthUsernamePassword()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().webViewDatabaseHasHttpAuthUsernamePassword(this.mContext);
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().d(this.b);
     }
-    return android.webkit.WebViewDatabase.getInstance(this.mContext).hasHttpAuthUsernamePassword();
+    return android.webkit.WebViewDatabase.getInstance(this.b).hasHttpAuthUsernamePassword();
   }
   
   @Deprecated
   public boolean hasUsernamePassword()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().webViewDatabaseHasUsernamePassword(this.mContext);
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().b(this.b);
     }
-    return android.webkit.WebViewDatabase.getInstance(this.mContext).hasUsernamePassword();
+    return android.webkit.WebViewDatabase.getInstance(this.b).hasUsernamePassword();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewDatabase
  * JD-Core Version:    0.7.0.1
  */

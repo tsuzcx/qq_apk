@@ -7,7 +7,7 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.FileObserver;
 import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -648,7 +648,7 @@ public class MediaScanner
     paramOnMediaInfoScannerListener = new MediaScanner.2(this, new WeakReference(paramLocalMediaInfo), paramOnMediaInfoScannerListener);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      ThreadManager.excute(paramOnMediaInfoScannerListener, 64, null, true);
+      ThreadManagerV2.excute(paramOnMediaInfoScannerListener, 64, null, true);
       return;
     }
     paramOnMediaInfoScannerListener.run();
@@ -658,12 +658,12 @@ public class MediaScanner
   public void queryMediaInfoDuration(MediaScanner.OnMediaScannerListener paramOnMediaScannerListener, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
     paramOnMediaScannerListener = new WeakReference(paramOnMediaScannerListener);
-    ThreadManager.post(new MediaScanner.1(this, new WeakReference(paramLocalMediaInfo), paramOnMediaScannerListener, paramInt), 5, null, true);
+    ThreadManagerV2.excute(new MediaScanner.1(this, new WeakReference(paramLocalMediaInfo), paramOnMediaScannerListener, paramInt), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner
  * JD-Core Version:    0.7.0.1
  */

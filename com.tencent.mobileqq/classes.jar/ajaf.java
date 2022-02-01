@@ -1,52 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajaf
-  extends bead
+  extends Handler
 {
-  public ajaf(PreloadManager paramPreloadManager, String paramString, ajah paramajah) {}
+  public ajaf(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onDoneFile(beae parambeae)
+  public void handleMessage(Message paramMessage)
   {
-    int i = -5;
-    super.onDoneFile(parambeae);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadModule|done" + parambeae.jdField_a_of_type_JavaLangString);
-    }
-    Object localObject = parambeae.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (ajeu.c(localPreloadModule.mid, this.jdField_a_of_type_JavaLangString))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadManager", 2, "downloadModule|done code" + parambeae.jdField_a_of_type_Int);
-      }
-      if (parambeae.jdField_a_of_type_Int != 0) {
-        break label168;
-      }
-      i = 0;
-      if (localObject != null) {
-        break label183;
-      }
-    }
-    label168:
-    label183:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
-    {
-      this.jdField_a_of_type_Ajah.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambeae.jdField_a_of_type_JavaUtilMap.get(parambeae.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
       return;
-      if (parambeae.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
     }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131718372);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 

@@ -1,22 +1,57 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ajcu
-  implements ajdx
+public class ajcu
+  extends anxg
 {
-  ajcu(ajct paramajct, ajcw paramajcw) {}
+  public ajcu(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, String paramString1, ArrayList<ajce> paramArrayList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopRecommendGrayTipsPerson ").append(paramBoolean1).append(" ").append(paramString1).append(" ");
+      if (paramArrayList == null)
+      {
+        localObject = "";
+        QLog.i("TroopRecommendFriendFragment", 2, localObject + " " + paramBoolean2 + " " + paramString2);
+      }
     }
-    if (paramBoolean) {
-      ajct.a(this.jdField_a_of_type_Ajct, ajct.a(this.jdField_a_of_type_Ajct), this.jdField_a_of_type_Ajcw, true);
+    else if ((paramBoolean1) && (TroopRecommendFriendFragment.a(this.a).equals(paramString1)))
+    {
+      TroopRecommendFriendFragment.a(this.a).setVisibility(8);
+      if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+        break label167;
+      }
+      TroopRecommendFriendFragment.a(this.a, paramArrayOfByte);
+      TroopRecommendFriendFragment.a(this.a).a(paramArrayList);
+      TroopRecommendFriendFragment.a(this.a).notifyDataSetChanged();
     }
-    while (this.jdField_a_of_type_Ajcw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ajcw.a(false);
+    label167:
+    do
+    {
+      do
+      {
+        return;
+        localObject = Integer.valueOf(paramArrayList.size());
+        break;
+      } while (TextUtils.isEmpty(paramString2));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopRecommendFriendFragment", 2, "onGetTroopRecommendGrayTipsPerson no data");
+      }
+      TroopRecommendFriendFragment.a(this.a).setVisibility(0);
+      paramString1 = TroopRecommendFriendFragment.a(this.a).findViewById(2131372926);
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+      paramString1 = (TextView)TroopRecommendFriendFragment.a(this.a).findViewById(2131380031);
+    } while (paramString1 == null);
+    paramString1.setText(paramString2);
   }
 }
 

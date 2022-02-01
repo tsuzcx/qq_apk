@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
-
-public class yve
-  extends RadioButton
+class yve
+  implements zpt
 {
-  public yve(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  yve(yvd paramyvd) {}
   
-  public boolean performClick()
+  public void a()
   {
-    return true;
+    yvg localyvg = yvd.a(this.a);
+    yvd.a(this.a, yvd.a(this.a)).a(localyvg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yve
  * JD-Core Version:    0.7.0.1
  */

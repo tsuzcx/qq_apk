@@ -1,23 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class bmyf
-  extends Handler
+final class bmyf
+  implements atve
 {
-  private WeakReference<bmye> a;
+  bmyf(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
   
-  public bmyf(WeakReference<bmye> paramWeakReference)
+  public void a()
   {
-    this.a = paramWeakReference;
+    atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.get() != null) {
-      bmye.a((bmye)this.a.get());
-    }
-  }
+  public void b() {}
 }
 
 

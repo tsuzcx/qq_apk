@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ors;
+import pha;
 
 class ReadInJoyNewFeedsActivity$11
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyNewFeedsActivity$11
   public void run()
   {
     if (!this.this$0.isFinishing()) {
-      ors.a(this.this$0, 5, true, this.a);
+      pha.a(this.this$0, 5, true, this.a);
     }
   }
 }

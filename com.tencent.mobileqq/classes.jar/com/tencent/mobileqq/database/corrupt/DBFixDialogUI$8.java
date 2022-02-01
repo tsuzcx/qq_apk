@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import apgd;
-import apgm;
+import ariy;
+import arjh;
 
 public class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(apgd paramapgd, int paramInt) {}
+  public DBFixDialogUI$8(ariy paramariy, int paramInt) {}
   
   public void run()
   {
-    if (this.a == apgm.d) {
-      apgd.c(this.this$0);
+    if (this.a == arjh.d) {
+      ariy.c(this.this$0);
     }
-    while (this.a != apgm.e) {
+    while (this.a != arjh.e) {
       return;
     }
-    apgd.d(this.this$0);
+    ariy.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.8
  * JD-Core Version:    0.7.0.1
  */

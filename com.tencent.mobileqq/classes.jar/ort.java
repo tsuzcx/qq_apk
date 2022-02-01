@@ -1,18 +1,10 @@
-import android.content.Context;
-
-final class ort
-  implements sms
+public abstract interface ort
 {
-  ort(Context paramContext, String paramString) {}
-  
-  public void a()
-  {
-    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ort
  * JD-Core Version:    0.7.0.1
  */

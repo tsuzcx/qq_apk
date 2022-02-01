@@ -1,225 +1,166 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
 public class blcf
 {
-  public static final List<String> a;
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private StaggeredGridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private blcq jdField_a_of_type_Blcq;
-  private blej jdField_a_of_type_Blej;
-  private BaseVMPeakActivity jdField_a_of_type_DovComQqImBaseVMPeakActivity;
-  private AEGIFOutlineTextView jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
+  private static Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Map<String, String> b = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { alud.a(2131700361), alud.a(2131700372), alud.a(2131700370), alud.a(2131700377), alud.a(2131700381), alud.a(2131700378), "dbq", "886", alud.a(2131700375), alud.a(2131700374), alud.a(2131700365), "ok", "666", alud.a(2131700367), alud.a(2131700384), alud.a(2131700376) });
+    b.put("comicIndex", "https://qc.vip.qq.com/pages/index.html?asyncMode=3");
+    b.put("comicCategory", "https://qc.vip.qq.com/gc/pages/category.html?from=1006002&filter=0&categoryType=1&sort=4&_bid=354&_wv=1027&_cwv=4&_webviewtype=4&asyncMode=3&_wvx=3");
+    b.put("comicGroup", "https://qc.vip.qq.com/gc/pages/user/home.html?_wv=1091118887&_wvx=3&asyncMode=3&_sharp_v=1&_sonic_xv=32&cancelColorTab=1");
+    b.put("comicMore", "https://qc.vip.qq.com/gc/pages/community/square.html?_wv=3&_cwv=4&origin=1&from=10000001");
+    b.put("comicPayDownload", "https://cdn.vip.qq.com/club/client/comic/release/html/payDownload.html");
+    b.put("comicPayRead", "https://cdn.vip.qq.com/club/client/comic/release/html/payRead.html");
+    b.put("comicDetailComic", "https://cdn.vip.qq.com/club/client/comic/release/html/detail.html");
+    b.put("comicDetailNovel", "https://cdn.vip.qq.com/club/client/comic/release/html/detail.html");
+    b.put("comicDetailVideo", "https://cdn.vip.qq.com/club/client/comic/release/html/video.html");
+    b.put("comicMyPic", "https://cdn.vip.qq.com/club/client/comic/release/html/my_pic.html");
+    b.put("comicVideoSimple", "https://cdn.vip.qq.com/club/client/comic/release/html/video.html");
+    b.put("comicReadShare", "https://cdn.vip.qq.com/club/client/comic/release/html/read_share.html");
+    b.put("comicPicShare", "https://cdn.vip.qq.com/club/client/comic/release/html/pic_share.html");
+    b.put("comicReport", "https://guanjia.qq.com/online_server/m_report.html");
+    b.put("comicCdn", "https://imgcache.gtimg.cn/club/mobile/profile/comic_center/");
+    b.put("comicFav", "https://qc.vip.qq.com/gc/pages/user/favorite.html?_wv=3&_cwv=4&asyncMode=3&_sharp_v=1&_sonic_xv=32");
+    b.put("comicReaderContent", "https://cdn.vip.qq.com/club/client/comic/release/html/readerIndex.html");
+    b.put("comicSearch", "https://cdn.vip.qq.com/club/client/comic/release/html/search.html?platId=109&_bid=354&pos=external&_wv=1027&from=6");
+    b.put("comicBarrageList", "https://cdn.vip.qq.com/club/client/comic/release/html/bulletScreen.html");
+    b.put("comicQRCode", "https://cdn.vip.qq.com/club/client/comic/release/html/redirect.html");
   }
   
-  public blcf(BaseVMPeakActivity paramBaseVMPeakActivity, RelativeLayout paramRelativeLayout, AEGIFOutlineTextView paramAEGIFOutlineTextView)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_DovComQqImBaseVMPeakActivity = paramBaseVMPeakActivity;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373340));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376857));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373341));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373337));
+    String str1 = null;
+    if (jdField_a_of_type_JavaUtilMap != null) {
+      str1 = (String)jdField_a_of_type_JavaUtilMap.get(paramString);
     }
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView = paramAEGIFOutlineTextView;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("happy", alud.a(2131700386));
-    this.jdField_a_of_type_JavaUtilHashMap.put("neutral", alud.a(2131700362));
-    this.jdField_a_of_type_JavaUtilHashMap.put("sad", alud.a(2131700368));
-    this.jdField_a_of_type_JavaUtilHashMap.put("anger", alud.a(2131700379));
-    this.jdField_a_of_type_JavaUtilHashMap.put("disgust", alud.a(2131700371));
-    this.jdField_a_of_type_JavaUtilHashMap.put("fear", alud.a(2131700366));
+    String str2 = str1;
+    if (str1 == null) {
+      str2 = (String)b.get(paramString);
+    }
+    return str2;
   }
   
-  private void b(String paramString1, String paramString2, String paramString3)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(paramString1);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    int i;
-    if (paramString1.indexOf('\n') > 0)
+    String str2 = "";
+    String str1 = str2;
+    if (!paramString1.isEmpty())
     {
-      i = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 73.199997F);
-      localLayoutParams.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(paramString2);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramString3);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 4.0F));
-      if (paramString1.indexOf('\n') <= 0) {
-        break label137;
+      str1 = str2;
+      if (!paramString2.isEmpty())
+      {
+        str1 = str2;
+        if (!paramString3.isEmpty()) {
+          str1 = paramString1.replaceAll("(" + paramString2 + "=[^&]*)", paramString2 + "=" + paramString3);
+        }
       }
     }
-    label137:
-    for (float f = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 26.0F);; f = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 30.0F))
-    {
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(f);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.invalidate();
-      return;
-      i = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 41.0F);
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicUrlHelper", 2, "replaceUrlFieldValueReg url is " + paramString1 + "fieldName is " + paramString2 + ",newValue is " + paramString3 + ", newUrl is " + str1);
     }
+    return str1;
   }
   
-  private void e()
+  /* Error */
+  public static void a(android.content.Intent paramIntent)
   {
-    this.jdField_a_of_type_Blej = ((blej)bkpx.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, bmda.a()).a(blej.class));
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 160	blcf:jdField_a_of_type_Boolean	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifeq +7 -> 15
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: return
+    //   15: aload_0
+    //   16: ifnull -5 -> 11
+    //   19: aload_0
+    //   20: ldc 162
+    //   22: invokevirtual 168	android/content/Intent:getSerializableExtra	(Ljava/lang/String;)Ljava/io/Serializable;
+    //   25: astore_0
+    //   26: aload_0
+    //   27: instanceof 13
+    //   30: ifeq -19 -> 11
+    //   33: aload_0
+    //   34: checkcast 13	java/util/HashMap
+    //   37: astore_0
+    //   38: aload_0
+    //   39: invokevirtual 169	java/util/HashMap:isEmpty	()Z
+    //   42: ifne -31 -> 11
+    //   45: getstatic 104	blcf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   48: ifnonnull +13 -> 61
+    //   51: new 13	java/util/HashMap
+    //   54: dup
+    //   55: invokespecial 16	java/util/HashMap:<init>	()V
+    //   58: putstatic 104	blcf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   61: getstatic 104	blcf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   64: invokeinterface 172 1 0
+    //   69: getstatic 104	blcf:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   72: aload_0
+    //   73: invokeinterface 176 2 0
+    //   78: iconst_1
+    //   79: putstatic 160	blcf:jdField_a_of_type_Boolean	Z
+    //   82: goto -71 -> 11
+    //   85: astore_0
+    //   86: ldc 2
+    //   88: monitorexit
+    //   89: aload_0
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	paramIntent	android.content.Intent
+    //   6	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	85	finally
+    //   19	61	85	finally
+    //   61	82	85	finally
   }
   
-  public int a()
+  public static boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RecyclerView a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<blcb> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new blcb((String)localIterator.next()));
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, 0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.setGapStrategy(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    e();
-    c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) && (this.jdField_a_of_type_Blcq != null)) {
-      this.jdField_a_of_type_Blcq.a();
-    }
-    b(paramString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840056);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(paramString2);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramString3);
-    a(paramString1);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(paramBoolean1);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(paramBoolean2);
-  }
-  
-  public void b()
-  {
-    Log.d("AEGIFTextMvp", "On loading completed...");
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    this.jdField_a_of_type_Blcq = new blcq(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, this);
-    this.jdField_a_of_type_Blcq.setHasStableIds(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Blcq);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setClipToPadding(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setClipChildren(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new blcg(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new blch(this));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(paramString);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 4.0F));
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    AEGIFOutlineTextView localAEGIFOutlineTextView = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
-    float f;
-    if (paramString.indexOf('\n') > 0)
-    {
-      f = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 26.0F);
-      localAEGIFOutlineTextView.setTextSize(f);
-      if (paramString.indexOf('\n') <= 0) {
-        break label114;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null) {
+      if ((paramString.indexOf("banSlideToTab=1") == -1) && (paramString.indexOf("bodong.vip.qq.com") == -1) && (paramString.indexOf("qc.vip.qq.com") == -1))
+      {
+        bool1 = bool2;
+        if (paramString.indexOf("cdn.vip.qq.com/club/client/comic") == -1) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
-    label114:
-    for (int i = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 73.199997F);; i = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 41.0F))
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicUrlHelper", 2, "isBoodoUrl() url is " + paramString + " isBoodo is " + bool1);
+    }
+    return bool1;
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    if (paramString1.indexOf(paramString2) == -1)
     {
-      localLayoutParams.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(localLayoutParams);
-      return;
-      f = bdaq.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 30.0F);
-      break;
+      localObject = Uri.parse(paramString1).buildUpon();
+      ((Uri.Builder)localObject).appendQueryParameter(paramString2, paramString3);
     }
-  }
-  
-  public void c()
-  {
-    Log.d("AEGIFTextMvp", "On loading...");
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    d();
-    this.jdField_a_of_type_Blej.a().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new blci(this));
-  }
-  
-  public void d()
-  {
-    Log.d("AEGIFTextMvp", "Clearing smart text");
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840057);
-    if (this.jdField_a_of_type_Blcq != null) {
-      this.jdField_a_of_type_Blcq.a();
+    for (Object localObject = ((Uri.Builder)localObject).build().toString();; localObject = paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicUrlHelper", 2, "addUrlField url is " + paramString1 + "fieldName is " + paramString2 + ",Value is " + paramString3 + ", newUrl is " + (String)localObject);
+      }
+      return localObject;
     }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    a(false, true);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-    b(alud.a(2131700382), "#ccffffff", "#000000");
   }
 }
 

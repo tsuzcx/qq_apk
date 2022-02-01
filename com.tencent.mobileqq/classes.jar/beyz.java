@@ -1,22 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class beyz
-  implements DialogInterface.OnDismissListener
+class beyz
+  implements wld<bezb, wla>
 {
-  public beyz(ShareActionSheetV2 paramShareActionSheetV2) {}
+  beyz(beyy parambeyy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(@NonNull bezb parambezb, @Nullable wla paramwla, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    if (paramErrorMessage.isFail())
+    {
+      yqp.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
+      beyy.a(this.a, paramErrorMessage);
+      return;
     }
-    ShareActionSheetV2.b(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
+    if (paramwla.a == 0)
+    {
+      parambezb = new bezc();
+      parambezb.a = beyy.a(this.a);
+      parambezb.b = beyy.a(this.a).b;
+      beyy.a(this.a, parambezb);
+      return;
     }
+    yqp.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramwla.b);
+    beyy.b(this.a, new ErrorMessage(paramwla.a, paramwla.b));
   }
 }
 

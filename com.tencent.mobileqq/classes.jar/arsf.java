@@ -1,160 +1,96 @@
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Stack;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Checkable;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortItemView;
+import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class arsf
-  extends DefaultHandler
+  extends BaseAdapter
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
   
-  public HashMap<String, Object> a()
+  public arsf(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
   {
-    return (HashMap)this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new arsg(this, paramDragSortListView));
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public boolean areAllItemsEnabled()
   {
-    System.out.println("characters:");
-    if (paramInt2 > 0)
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView != null)
     {
-      if (this.b)
+      localObject = (DragSortItemView)paramView;
+      localView1 = ((DragSortItemView)localObject).getChildAt(0);
+      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      if (localView2 != localView1)
       {
-        this.jdField_a_of_type_JavaLangString = new String(paramArrayOfChar, paramInt1, paramInt2);
-        System.out.println("key:" + this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.c)
-      {
-        if (!HashMap.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-          break label157;
+        if (localView1 != null) {
+          ((DragSortItemView)localObject).removeViewAt(0);
         }
-        HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-        String str = new String(paramArrayOfChar, paramInt1, paramInt2);
-        localHashMap.put(this.jdField_a_of_type_JavaLangString, str);
+        ((DragSortItemView)localObject).addView(localView2);
       }
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
     }
-    for (;;)
+    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+    if ((localView1 instanceof Checkable)) {}
+    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
     {
-      System.out.println("value:" + new String(paramArrayOfChar, paramInt1, paramInt2));
-      return;
-      label157:
-      if (ArrayList.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-        ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(new String(paramArrayOfChar, paramInt1, paramInt2));
-      }
-    }
-  }
-  
-  public void endDocument()
-  {
-    System.out.println(alud.a(2131704943));
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if ((!"plist".equals(paramString3)) || ("key".equals(paramString3))) {
-      this.b = false;
-    }
-    if ("string".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("integer".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("array".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-    if ("dict".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-  }
-  
-  public void startDocument()
-  {
-    System.out.println(alud.a(2131704932));
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    boolean bool2 = false;
-    if ("plist".equals(paramString3)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    boolean bool1;
-    if ("dict".equals(paramString3))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label228;
-      }
-      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        bool1 = true;
-        this.jdField_a_of_type_Boolean = bool1;
-      }
-    }
-    else
-    {
-      if ("key".equals(paramString3)) {
-        this.b = true;
-      }
-      if ("true".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-      }
-      if ("false".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-      }
-      if ("array".equals(paramString3))
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label295;
-        }
-        paramString1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool1 = true;
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-      }
-    }
-    for (;;)
-    {
-      if ("string".equals(paramString3)) {
-        this.c = true;
-      }
-      if ("integer".equals(paramString3)) {
-        this.c = true;
-      }
-      return;
-      bool1 = false;
+      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((DragSortItemView)localObject).addView(localView1);
       break;
-      label228:
-      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new HashMap();
-      if ((paramString1 instanceof ArrayList)) {
-        ((ArrayList)paramString1).add(paramString2);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-        break;
-        if ((paramString1 instanceof HashMap)) {
-          ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
-        }
-      }
-      label295:
-      paramString1 = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-      paramString1.put(this.jdField_a_of_type_JavaLangString, paramString2);
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
+  }
+  
+  public boolean hasStableIds()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
   }
 }
 

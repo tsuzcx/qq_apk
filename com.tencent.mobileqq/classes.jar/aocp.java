@@ -1,36 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class aocp
+public abstract interface aocp
 {
-  private int a = 1;
-  
-  public static aocp a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      try
-      {
-        aocp localaocp = new aocp();
-        localaocp.a = new JSONObject(paramString).getInt("ifrecent");
-        return localaocp;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 1;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

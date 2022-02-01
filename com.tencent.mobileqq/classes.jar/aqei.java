@@ -1,22 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.view.View;
 
 public class aqei
-  implements CompoundButton.OnCheckedChangeListener
+  extends aqee
 {
-  public aqei(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(aqdu paramaqdu, int paramInt, boolean paramBoolean)
   {
-    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aqej(this, paramBoolean));
-    if (paramBoolean) {}
-    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
-    {
-      azqs.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
-      return;
-    }
+    super.a(paramaqdu, paramInt, paramBoolean);
+    paramaqdu.b.setBackgroundResource(2130839245);
   }
 }
 

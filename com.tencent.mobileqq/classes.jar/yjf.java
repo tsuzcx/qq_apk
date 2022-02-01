@@ -1,23 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class yjf
-  implements aofp
+class yjf
+  extends wfi
 {
-  public yjf(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  yjf(yjc paramyjc) {}
   
-  public void onColorNoteAnimFinish()
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (this.a.getActivity() != null)
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
     }
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((woj)wpm.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjf
  * JD-Core Version:    0.7.0.1
  */

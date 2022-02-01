@@ -1,31 +1,8 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.Bitmap;
 
-class aggu
-  implements View.OnTouchListener
+public abstract interface aggu
 {
-  aggu(aggq paramaggq) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
-  }
+  public abstract void a(Bitmap paramBitmap, aggc paramaggc, int paramInt);
 }
 
 

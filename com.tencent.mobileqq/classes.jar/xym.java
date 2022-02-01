@@ -1,34 +1,29 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xym
-  extends Handler
+class xym
+  extends SimpleJob<Object>
 {
-  public xym(QRCardActivity paramQRCardActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  xym(xyk paramxyk, String paramString)
   {
-    switch (paramMessage.what)
-    {
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new xyn(this.a, this.a.c);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    this.a.d = this.a.a.a;
+    xyk.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xym
  * JD-Core Version:    0.7.0.1
  */

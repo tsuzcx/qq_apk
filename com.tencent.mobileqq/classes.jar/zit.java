@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class zit
-  implements View.OnClickListener
 {
-  zit(zis paramzis) {}
+  static void a(String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.e();
-  }
+  static void b(String paramString1, String paramString2) {}
+  
+  static void c(String paramString1, String paramString2) {}
+  
+  static void d(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zit
  * JD-Core Version:    0.7.0.1
  */

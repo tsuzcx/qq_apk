@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.wifisdk.ui.api.RProxy.dimen;
 import com.wifisdk.ui.api.RProxy.drawable;
 import com.wifisdk.ui.api.RProxy.id;
@@ -284,11 +285,13 @@ public class e
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    paramViewGroup = getItem(paramInt);
-    if (i == 0) {
-      return a((hr)paramViewGroup, paramView);
+    Object localObject = getItem(paramInt);
+    if (i == 0) {}
+    for (localObject = a((hr)localObject, paramView);; localObject = a((ho)localObject, paramView))
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
     }
-    return a((ho)paramViewGroup, paramView);
   }
   
   public int getViewTypeCount()
@@ -305,7 +308,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.wifisdk.ui.view.e
  * JD-Core Version:    0.7.0.1
  */

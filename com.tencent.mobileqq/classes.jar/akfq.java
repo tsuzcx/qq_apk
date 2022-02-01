@@ -1,31 +1,18 @@
 import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.image.URLImageView;
 
-public class akfq
-  implements Animation.AnimationListener
+class akfq
+  implements bkhg
 {
-  public akfq(SpecailCareListActivity paramSpecailCareListActivity) {}
+  akfq(akfp paramakfp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void b(View paramView)
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a = null;
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof akfr))) {
+      ((akfr)paramView).a.setImageDrawable(null);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

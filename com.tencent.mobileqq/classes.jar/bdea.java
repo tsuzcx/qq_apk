@@ -1,37 +1,14 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class bdea
+class bdea
+  implements DialogInterface.OnCancelListener
 {
-  public static String a(Context paramContext, String paramString)
-  {
-    if (paramContext != null) {
-      return paramContext.getSharedPreferences("c_profile_sharepreference", 0).getString(paramString, "");
-    }
-    return "";
-  }
+  bdea(bddy parambddy, String paramString, int paramInt) {}
   
-  public static void a(Context paramContext, String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-      paramContext.remove(paramString);
-      paramContext.commit();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    b(paramContext, paramString1, paramString2);
-  }
-  
-  private static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
-    paramContext.putString(paramString1, paramString2);
-    paramContext.commit();
+    this.jdField_a_of_type_Bddy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

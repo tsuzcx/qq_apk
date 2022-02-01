@@ -1,30 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-
-public class ajni
-  implements Animator.AnimatorListener
+public abstract interface ajni
 {
-  public ajni(LoginView paramLoginView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    LoginView.c(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    LoginView.c(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

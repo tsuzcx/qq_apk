@@ -1,69 +1,47 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class beax
+  extends beat
+  implements Handler.Callback
 {
-  public String a(Context paramContext)
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  
+  public beax(QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
   {
-    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "kcsdk_4.4.7.3661.jar";
-    }
-    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
-      }
-      return;
+    if (paramMessage.what == 0) {
+      this.ctrl.a(this);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return true;
   }
   
-  public void a(Context paramContext, int paramInt)
+  protected void realCancel()
   {
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      try
-      {
-        String str = paramContext.getDir("lib", 0).getAbsolutePath();
-        paramContext = beav.a().b(paramContext);
-        if (bdom.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
-        {
-          QLog.d("KC.TMSManager", 1, "unzip succ");
-          beav.a(beav.a());
-          return;
-        }
-        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
-        continue;
-        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
-      }
-      finally {}
-    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public String b(Context paramContext)
+  protected void realStart()
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "libtmsdualcore.zip";
-    }
-    return paramContext + File.separator + "libtmsdualcore.zip";
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_Long);
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "[" + this.jdField_a_of_type_JavaLangRunnable + ", " + this.jdField_a_of_type_Long + "]";
   }
 }
 

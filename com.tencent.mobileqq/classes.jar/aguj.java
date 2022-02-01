@@ -1,17 +1,24 @@
+import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-class aguj
-  extends altm
+public class aguj
+  extends afwr
 {
-  aguj(agti paramagti, ImageView paramImageView) {}
+  float jdField_a_of_type_Float;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  ImageView b;
+  public View c;
+  ImageView c;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Agti.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdbk.a(this.jdField_a_of_type_Agti.a, paramString, (byte)3));
-    }
-  }
+  public aguj(agtx paramagtx) {}
 }
 
 

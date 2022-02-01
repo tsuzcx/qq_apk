@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bnjr
-  implements DialogInterface.OnClickListener
+class bnjr
+  implements Observer<bnip>
 {
-  public bnjr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnjr(bnjl parambnjl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable bnip parambnip)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+    bnjl.a(this.a, parambnip);
+    if (bnjl.a(this.a) != null) {
+      bnjl.a(this.a).a(this.a);
     }
-    bnpu.a = true;
   }
 }
 

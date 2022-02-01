@@ -1,26 +1,12 @@
-import java.util.List;
-
-class onn
-  extends oob
+public abstract interface onn
 {
-  onn(omz paramomz, boolean paramBoolean1, boolean paramBoolean2, List paramList)
-  {
-    super(paramomz, null);
-  }
+  public abstract void a();
   
-  void a(ooe paramooe)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramooe.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, omz.e(this.jdField_a_of_type_Omz), 4);
-      return;
-    }
-    paramooe.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, omz.e(this.jdField_a_of_type_Omz), 4, 4);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onn
  * JD-Core Version:    0.7.0.1
  */

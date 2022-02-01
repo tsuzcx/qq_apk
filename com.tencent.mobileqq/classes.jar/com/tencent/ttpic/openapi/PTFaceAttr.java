@@ -12,6 +12,7 @@ import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.ttpic.util.AlgoUtils;
@@ -32,6 +33,9 @@ public class PTFaceAttr
   private List<List<PointF>> bodyPoints;
   private int[] curve;
   private Map<String, Long> detectTimes;
+  private List<Set<Integer>> expressions;
+  private List<float[]> face3DRotationArray;
+  private List<float[]> face3DVerticesArray;
   private double faceAverageL;
   private int faceDetHeight = 0;
   private int faceDetRotation = 0;
@@ -59,6 +63,7 @@ public class PTFaceAttr
   private int mRotation;
   private int mSrcRotation;
   private long mTimeStamp;
+  private List<List<PointF>> mTransformFacePoints;
   private Set<Integer> mTriggeredExpression;
   private float[] rgbGain;
   private List<LinkedList<FaceInfo>> shookFaceInfos;
@@ -94,15 +99,18 @@ public class PTFaceAttr
     this.curve = PTFaceAttr.Builder.access$2300(paramBuilder);
     this.faceAverageL = PTFaceAttr.Builder.access$2400(paramBuilder);
     this.faceKitVerticesArray = PTFaceAttr.Builder.access$2500(paramBuilder);
-    this.featureIndicesArray = PTFaceAttr.Builder.access$2600(paramBuilder);
-    this.facePiont2DCenter = PTFaceAttr.Builder.access$2700(paramBuilder);
-    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$2800(paramBuilder);
-    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$2900(paramBuilder);
-    this.shookFaceInfos = PTFaceAttr.Builder.access$3000(paramBuilder);
-    this.detectTimes = PTFaceAttr.Builder.access$3100(paramBuilder);
-    this.faceDetWidth = PTFaceAttr.Builder.access$3200(paramBuilder);
-    this.faceDetHeight = PTFaceAttr.Builder.access$3300(paramBuilder);
-    this.faceDetRotation = PTFaceAttr.Builder.access$3400(paramBuilder);
+    this.face3DVerticesArray = PTFaceAttr.Builder.access$2600(paramBuilder);
+    this.face3DRotationArray = PTFaceAttr.Builder.access$2700(paramBuilder);
+    this.featureIndicesArray = PTFaceAttr.Builder.access$2800(paramBuilder);
+    this.facePiont2DCenter = PTFaceAttr.Builder.access$2900(paramBuilder);
+    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$3000(paramBuilder);
+    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$3100(paramBuilder);
+    this.shookFaceInfos = PTFaceAttr.Builder.access$3200(paramBuilder);
+    this.detectTimes = PTFaceAttr.Builder.access$3300(paramBuilder);
+    this.faceDetWidth = PTFaceAttr.Builder.access$3400(paramBuilder);
+    this.faceDetHeight = PTFaceAttr.Builder.access$3500(paramBuilder);
+    this.faceDetRotation = PTFaceAttr.Builder.access$3600(paramBuilder);
+    this.expressions = PTFaceAttr.Builder.access$3700(paramBuilder);
   }
   
   private static boolean checkFaceFeatureOutScreen(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
@@ -227,6 +235,21 @@ public class PTFaceAttr
   public byte[] getData()
   {
     return this.mData;
+  }
+  
+  public List<Set<Integer>> getExpressions()
+  {
+    return this.expressions;
+  }
+  
+  public List<float[]> getFace3DRotationArray()
+  {
+    return this.face3DRotationArray;
+  }
+  
+  public List<float[]> getFace3DVerticesArray()
+  {
+    return this.face3DVerticesArray;
   }
   
   public Map<Integer, FaceActionCounter> getFaceActionCounter()
@@ -401,9 +424,31 @@ public class PTFaceAttr
     return this.mTimeStamp;
   }
   
+  public List<List<PointF>> getTransformFacePoints()
+  {
+    return this.mTransformFacePoints;
+  }
+  
   public Set<Integer> getTriggeredExpression()
   {
     return this.mTriggeredExpression;
+  }
+  
+  public void initTransformFacePoints()
+  {
+    if (this.mTransformFacePoints == null) {
+      this.mTransformFacePoints = new ArrayList();
+    }
+    this.mTransformFacePoints.clear();
+    if (this.mFacePoints != null)
+    {
+      Iterator localIterator = this.mFacePoints.iterator();
+      while (localIterator.hasNext())
+      {
+        List localList = (List)localIterator.next();
+        this.mTransformFacePoints.add(VideoMaterialUtil.copyList(localList));
+      }
+    }
   }
   
   public boolean isLandscape()
@@ -465,7 +510,7 @@ public class PTFaceAttr
       ((FaceInfo)localObject2).denseFaceModel = null;
       ((FaceInfo)localObject2).transform = null;
       ((FaceInfo)localObject2).expressionWeights = null;
-      ((FaceInfo)localObject2).gender = GenderType.DEFAULT.value;
+      ((FaceInfo)localObject2).gender = GenderType.FEMALE.value;
       localArrayList.add(localObject2);
     }
     Object localObject2 = new ArrayList();
@@ -627,6 +672,11 @@ public class PTFaceAttr
     this.mTimeStamp = paramLong;
   }
   
+  public void setTransformFacePoints(int paramInt, List<PointF> paramList)
+  {
+    this.mTransformFacePoints.set(paramInt, paramList);
+  }
+  
   public void setTriggeredExpression(Set<Integer> paramSet)
   {
     this.mTriggeredExpression = paramSet;
@@ -634,7 +684,7 @@ public class PTFaceAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr
  * JD-Core Version:    0.7.0.1
  */

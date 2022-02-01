@@ -8,10 +8,11 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StIdeConfig
   extends MessageMicro<StIdeConfig>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "scene", "extraAppid", "extraData" }, new Object[] { "", "", "" }, StIdeConfig.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "scene", "extraAppid", "extraData", "startExtInfo" }, new Object[] { "", "", "", null }, StIdeConfig.class);
   public final PBStringField extraAppid = PBField.initString("");
   public final PBStringField extraData = PBField.initString("");
   public final PBStringField scene = PBField.initString("");
+  public INTERFACE.StStartExtInfo startExtInfo = new INTERFACE.StStartExtInfo();
 }
 
 

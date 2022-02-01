@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bjqu;
-import bjqw;
+import bmfd;
+import bmfg;
 import java.util.ArrayList;
 
 class QzoneWebMusicJsPlugin$11
@@ -11,12 +11,12 @@ class QzoneWebMusicJsPlugin$11
   
   public void run()
   {
-    bjqu.a().a().b(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
+    bmfd.a().a().b(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

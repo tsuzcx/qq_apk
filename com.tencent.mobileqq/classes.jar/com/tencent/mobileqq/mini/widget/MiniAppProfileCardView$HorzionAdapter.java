@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 class MiniAppProfileCardView$HorzionAdapter
@@ -36,29 +37,36 @@ class MiniAppProfileCardView$HorzionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView;
     if ((this.miniAppInfoItems == null) || (this.miniAppInfoItems.size() < 1))
     {
-      paramViewGroup = paramView;
-      return paramViewGroup;
+      localObject = paramView;
+      localView = paramView;
+      paramView = (View)localObject;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
     }
-    paramViewGroup = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
+    Object localObject = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
     if (paramView == null) {
       paramView = new MiniAppProfileCardItemView(MiniAppProfileCardView.access$000(this.this$0), null);
     }
     for (;;)
     {
-      ((MiniAppProfileCardItemView)paramView).setData(paramViewGroup, paramInt);
-      paramViewGroup = paramView;
-      if (!MiniAppProfileCardView.access$100(this.this$0)) {
-        break;
-      }
-      if (MiniAppProfileCardView.access$200(this.this$0) != null)
+      ((MiniAppProfileCardItemView)paramView).setData((MiniAppInfo)localObject, paramInt);
+      if (MiniAppProfileCardView.access$100(this.this$0))
       {
+        if (MiniAppProfileCardView.access$200(this.this$0) == null) {
+          break label127;
+        }
         ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$200(this.this$0));
-        return paramView;
       }
-      ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$300(this.this$0));
-      return paramView;
+      for (;;)
+      {
+        localView = paramView;
+        break;
+        label127:
+        ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$300(this.this$0));
+      }
     }
   }
   
@@ -69,7 +77,7 @@ class MiniAppProfileCardView$HorzionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView.HorzionAdapter
  * JD-Core Version:    0.7.0.1
  */

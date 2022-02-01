@@ -1,74 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import java.util.ArrayList;
 
-class bejy
-  implements bejp
+public class bejy
+  implements Animation.AnimationListener
 {
-  bejy(bejx parambejx) {}
+  public bejy(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public int a(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
-    }
-    do
+    boolean bool = false;
+    paramAnimation = this.a;
+    paramAnimation.jdField_q_of_type_Int -= 1;
+    if (this.a.jdField_q_of_type_Int == 0)
     {
-      do
+      this.a.jdField_q_of_type_Boolean = false;
+      int i = 0;
+      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
       {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
+        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
+        if (paramAnimation != null) {
+          paramAnimation.clearAnimation();
         }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
+        i += 1;
       }
-      if (!beiy.s)
-      {
-        beiy.s = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          beiy.U = WebProcessReceiver.b - WebProcessReceiver.a;
-          beiy.V = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)beiy.U;
-          int j = (int)beiy.V;
-          QLog.i("WebLog_SwiftWebAccelerator", 1, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
-        }
+      this.a.c.clearAnimation();
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
+      paramAnimation = this.a.jdField_a_of_type_Beji;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
+        bool = true;
       }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (beiy.t);
-    beiy.t = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-    {
-      beiy.W = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "WebProcessReceiver.onReceive cost: " + beiy.U + "ms, complete preload cost: " + beiy.W + "ms.");
+      paramAnimation.a(bool, true);
+      this.a.jdField_a_of_type_Beji.a(this.a.jdField_a_of_type_JavaUtilArrayList);
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

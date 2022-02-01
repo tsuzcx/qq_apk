@@ -1,108 +1,68 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
 
 public class aecv
-  extends alpa
+  implements View.OnClickListener
 {
-  public aecv(TroopGagActivity paramTroopGagActivity) {}
+  public aecv(EditActivity paramEditActivity) {}
   
-  protected void a(bcnx parambcnx)
+  public void onClick(View paramView)
   {
-    if ((parambcnx == null) || (!parambcnx.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + parambcnx.jdField_a_of_type_Int);
-    }
-    amem localamem;
-    aecx localaecx;
-    if (parambcnx.jdField_a_of_type_Int == 3)
+    this.a.e();
+    Object localObject1;
+    if (this.a.jdField_a_of_type_Int == 105)
     {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      if (parambcnx.jdField_a_of_type_JavaUtilArrayList != null)
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      if (localObject1 != null)
       {
-        parambcnx = parambcnx.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (parambcnx.hasNext())
-        {
-          localamem = (amem)parambcnx.next();
-          localaecx = new aecx();
-          localaecx.jdField_a_of_type_JavaLangString = localamem.jdField_a_of_type_JavaLangString;
-          localaecx.jdField_a_of_type_Long = localamem.jdField_a_of_type_Long;
-          this.a.jdField_a_of_type_JavaUtilList.add(localaecx);
+        localObject1 = localObject1.toString().trim();
+        if (((String)localObject1).length() != 0) {
+          break label78;
         }
+        QQToast.a(this.a, this.a.getString(2131691749), 0).a();
+        break label179;
       }
-      this.a.jdField_a_of_type_Aecy.notifyDataSetChanged();
     }
-    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
+    label179:
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (parambcnx.jdField_a_of_type_Int == 1)
+      label78:
+      if (EditActivity.a(this.a, (String)localObject1))
       {
-        parambcnx = parambcnx.jdField_a_of_type_Bcob;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (parambcnx.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-          break;
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-        }
+        QQToast.a(this.a, this.a.getString(2131691750), 0).a();
       }
-      if (parambcnx.jdField_a_of_type_Int == 5)
+      else
       {
-        if (!parambcnx.jdField_a_of_type_Bcny.jdField_a_of_type_Boolean)
+        Object localObject2 = (arro)this.a.app.getManager(149);
+        arrp localarrp = (arrp)this.a.app.getManager(103);
+        localObject2 = ((arro)localObject2).a();
+        if ((EditActivity.a(this.a) != -1) && (localObject2 != null))
         {
-          ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (parambcnx.jdField_a_of_type_JavaUtilArrayList != null)
+          localObject2 = ((List)localObject2).iterator();
+          if (((Iterator)localObject2).hasNext())
           {
-            parambcnx = parambcnx.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (parambcnx.hasNext())
-            {
-              localamem = (amem)parambcnx.next();
-              localaecx = new aecx();
-              localaecx.jdField_a_of_type_JavaLangString = localamem.jdField_a_of_type_JavaLangString;
-              localaecx.jdField_a_of_type_Long = localamem.jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localaecx);
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject2).next();
+            if (EditActivity.a(this.a) != localCustomEmotionData.emoId) {
+              break;
             }
-          }
-          this.a.jdField_a_of_type_Aecy.notifyDataSetChanged();
-        }
-      }
-      else if (parambcnx.jdField_a_of_type_Int == 4)
-      {
-        parambcnx = parambcnx.jdField_a_of_type_Bcnz;
-        if (!parambcnx.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (parambcnx.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-            break;
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+            EditActivity.c(this.a);
+            localarrp.a(localCustomEmotionData, (String)localObject1);
+            continue;
+            EditActivity.b(this.a);
           }
         }
       }
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

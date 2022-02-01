@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
+import android.view.animation.Interpolator;
 
-public class asqj
-  implements DialogInterface.OnClickListener
+class asqj
+  implements Interpolator
 {
-  public asqj(JefsClass.8 param8) {}
+  asqj(asqe paramasqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    paramDialogInterface.dismiss();
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 

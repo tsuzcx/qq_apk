@@ -1,280 +1,348 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
-import android.os.Looper;
-import android.os.Message;
-import android.os.MessageQueue;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
-import java.util.HashMap;
-import java.util.Map;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.1;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.2;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.3;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.4;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.5;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bmnd
-  extends bmnh
-  implements DialogInterface.OnDismissListener, bmzm
+  extends bmmk
+  implements bmfh
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  bmzl jdField_a_of_type_Bmzl;
-  LinkerSummaryView jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView;
-  public Map<String, bmzn> a;
-  private boolean jdField_a_of_type_Boolean;
+  private ConcurrentHashMap<String, String> a;
   
-  public bmnd(@NonNull bmnj parambmnj)
+  public bmnd()
   {
-    super(parambmnj);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public static void a(String paramString, Context paramContext)
+  private Bundle a(Bundle paramBundle, String paramString)
   {
-    if (paramContext == null) {
-      return;
-    }
-    String str = "1";
-    if ((paramContext instanceof QIMCameraCaptureActivity)) {
-      str = "1";
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00899", "grp_story", "", "video_edit", paramString, 0, 0, str, "", "", "");
-      return;
-      if ((paramContext instanceof EditVideoActivity)) {
-        str = "2";
-      } else if ((paramContext instanceof EditPicActivity)) {
-        str = "2";
-      }
-    }
-  }
-  
-  public bmzn a()
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView != null) {
-      return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.jdField_a_of_type_Bmzn;
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    super.a(paramInt1, paramInt2, paramObject);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView != null)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setEditing(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.editEditVideoLinker", 2, "editVideoLinker state : " + paramInt2);
-      }
-    }
-    switch (paramInt2)
-    {
-    default: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setVisibility(4);
-  }
-  
-  public void a(int paramInt, @NonNull bnaz parambnaz)
-  {
-    String str = null;
-    super.a(paramInt, parambnaz);
-    bmzn localbmzn = a();
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (localbmzn != null)
-    {
-      bool = localbmzn.a();
-      localObject2 = new StringBuilder().append("editVideoPrePublish: mHasRiched = ").append(bool).append(" , mUrl = ");
-      if (localbmzn.jdField_a_of_type_JavaLangString != null) {
-        break label278;
-      }
-      localObject1 = "null";
-      localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(" , mShareTitle = ");
-      if (localbmzn.b != null) {
-        break label288;
-      }
-      localObject1 = "null";
-      label87:
-      localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(" , mShareDesc = ");
-      if (localbmzn.c != null) {
-        break label298;
-      }
-      localObject1 = "null";
-      label113:
-      localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(" , mShareThumb = ");
-      if (localbmzn.d != null) {
-        break label308;
-      }
-      localObject1 = "null";
-      label139:
-      wxe.b("Q.qqstory.publish.editEditVideoLinker", (String)localObject1);
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView == null) {
-        break label350;
-      }
-      localObject1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.b;
-      str = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("editVideoPrePublish: , sourceName = ");
-      if (localObject1 != null) {
-        break label318;
-      }
-      localObject2 = "null";
-      label202:
-      localStringBuilder = localStringBuilder.append((String)localObject2).append(" , sourceIconUrl = ");
-      if (str != null) {
-        break label325;
-      }
-      localObject2 = "null";
-      label225:
-      wxe.b("Q.qqstory.publish.editEditVideoLinker", (String)localObject2);
-    }
-    for (;;)
-    {
-      if (bool) {}
-      for (localObject1 = uxp.a(localbmzn.jdField_a_of_type_JavaLangString, localbmzn.b, localbmzn.c, str, (String)localObject1);; localObject1 = uxp.a(localbmzn.jdField_a_of_type_JavaLangString, true, str, (String)localObject1))
+    if (paramBundle.containsKey("data")) {
+      try
       {
-        parambnaz.a.setLinkInfo((uxp)localObject1);
+        paramBundle = paramBundle.getBundle("data");
+        if (paramBundle == null) {
+          QLog.e("QzoneRecommedPhotoJsPlugin", 1, "call js function,bundle is empty");
+        }
+        return paramBundle;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramBundle);
+        i(paramString);
+      }
+    }
+    for (;;)
+    {
+      return null;
+      i(paramString);
+    }
+  }
+  
+  private String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return bmmf.a(paramString, 200, 200, true);
+    }
+    return "";
+  }
+  
+  private void a(String paramString)
+  {
+    a("cmd.getEventVideoAlbumState", paramString, new QzoneRecommedPhotoJsPlugin.1(this), true);
+  }
+  
+  private void a(String paramString, Bundle paramBundle, bmnh parambmnh)
+  {
+    Bundle localBundle;
+    if ((paramBundle != null) && (parambmnh != null))
+    {
+      localBundle = a(paramBundle, paramString);
+      if (localBundle != null) {
+        paramBundle = new JSONObject();
+      }
+    }
+    try
+    {
+      parambmnh.a(paramBundle, localBundle);
+      if (paramString != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { paramBundle.toString() });
+      }
+      return;
+    }
+    catch (Throwable parambmnh)
+    {
+      for (;;)
+      {
+        QLog.e("QzoneRecommedPhotoJsPlugin", 1, "onCallJsBridge.setData error", parambmnh);
+      }
+    }
+  }
+  
+  private void a(String paramString1, String paramString2, Runnable paramRunnable, boolean paramBoolean)
+  {
+    try
+    {
+      String str = new JSONObject(paramString2).optString("callback");
+      if ((paramBoolean) && (TextUtils.isEmpty(str))) {
         return;
-        label278:
-        localObject1 = localbmzn.jdField_a_of_type_JavaLangString;
-        break;
-        label288:
-        localObject1 = localbmzn.b;
-        break label87;
-        label298:
-        localObject1 = localbmzn.c;
-        break label113;
-        label308:
-        localObject1 = localbmzn.d;
-        break label139;
-        label318:
-        localObject2 = localObject1;
-        break label202;
-        label325:
-        localObject2 = str;
-        break label225;
       }
-      label350:
-      localObject1 = null;
+      if (!TextUtils.isEmpty(paramString1)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, str);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bmnp.class).post(paramRunnable);
+      return;
     }
-  }
-  
-  public void a(bmzn parambmzn)
-  {
-    String str = parambmzn.jdField_a_of_type_JavaLangString;
-    if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))) {
-      this.jdField_a_of_type_JavaUtilMap.put(str, parambmzn);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    bmzn localbmzn2 = (bmzn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    bmzn localbmzn1 = localbmzn2;
-    if (localbmzn2 == null) {
-      localbmzn1 = new bmzn(paramString);
-    }
-    a("clk_added", a());
-    d();
-    wxj.a("video_shoot", "exp_linkbar", 1, 0, new String[] { "", "", "", "" });
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setShowShare(false);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.b = null;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setLinkerObject(localbmzn1);
-    this.jdField_a_of_type_Bmnj.a(Message.obtain(null, 15, 1, 0));
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bmzl == null)
+    catch (Exception paramString1)
     {
-      this.jdField_a_of_type_Bmzl = new bmzl(a());
-      this.jdField_a_of_type_Bmzl.a(this);
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleRunnable error" + paramString2, paramString1);
     }
-    Object localObject = a();
-    if ((localObject != null) && (((bmzn)localObject).jdField_a_of_type_JavaLangString != null)) {}
-    for (localObject = ((bmzn)localObject).jdField_a_of_type_JavaLangString;; localObject = null)
+  }
+  
+  private void b(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_Bmzl.a((String)localObject);
-      if ((!paramBoolean) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView == null)) {
-        azqs.b(null, "dc00899", "grp_story", "", "video_edit", "clk_linkbutton", 0, 0, "", "", "", "");
+      paramString = new JSONObject(paramString).optString("callback");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("cmd.getRecommedPhoto", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bmnp.class).post(new QzoneRecommedPhotoJsPlugin.2(this));
       }
       return;
     }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleGetRecommendphoto error", paramString);
+    }
   }
   
-  void d()
+  private void c(String paramString)
   {
-    this.jdField_a_of_type_Bmnj.a().d();
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView == null)
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365400));
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-      {
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        localLayoutParams.addRule(12, -1);
-        localLayoutParams.setMargins(0, 0, 0, a().getDimensionPixelSize(2131297923) + aepi.a(17.0F, a()));
-        i = 0;
-      }
+      paramString = new JSONObject(paramString).optString("photoEventID");
+      Intent localIntent = new Intent("action_enter_to_qzone_recommend_photo");
+      localIntent.putExtra("param.formSchemeToRecommend", true);
+      localIntent.putExtra("param.photoUnikey", paramString);
+      blsb.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), blsi.a(), localIntent, 0);
+      return;
     }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleForwardToRecommedPhoto error", paramString);
+    }
+  }
+  
+  private void d(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("recommend_on", paramString.optString("recommend_on"));
+      localBundle.putString("recommendPush_on", paramString.optString("recommendPush_on"));
+      localBundle.putString("recommendChatCachePhoto_on", paramString.optString("recommendChatCachePhoto_on"));
+      bmfd.a().a().a(localBundle);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleSetShouldScanPhotoEventState error", paramString);
+    }
+  }
+  
+  private void e(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("event_video_album_state", paramString.optString("event_video_album_state"));
+      bmfd.a().a().b(localBundle);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleSetEventVideoAlbumState error", paramString);
+    }
+  }
+  
+  private void f(String paramString)
+  {
+    a("cmd.getLocalPhotoSwitcher", paramString, new QzoneRecommedPhotoJsPlugin.3(this), true);
+  }
+  
+  private void g(String paramString)
+  {
+    a("cmd.getQuickMakeDynamicStatus", paramString, new QzoneRecommedPhotoJsPlugin.4(this), true);
+  }
+  
+  private void h(String paramString)
+  {
+    a("cmd.setQuickMakeDynamicStatus", paramString, new QzoneRecommedPhotoJsPlugin.5(this, paramString), false);
+  }
+  
+  private void i(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    QLog.w("QzoneRecommedPhotoJsPlugin", 1, "errorCallBack error");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "errorCallBack error", paramString);
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("getEventVideoAlbumState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bmfd.a().a(this);
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("setEventVideoAlbumState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      e(paramVarArgs[0]);
+      return true;
+    }
+    if (("getRecommendPhotoEvent".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bmfd.a().a(this);
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if (("enterPhotoEventDetail".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      c(paramVarArgs[0]);
+      return true;
+    }
+    if (("setShouldScanPhotoEventState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      d(paramVarArgs[0]);
+      return true;
+    }
+    if (("getShouldScanPhotoEventState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bmfd.a().a(this);
+      f(paramVarArgs[0]);
+      return true;
+    }
+    if (("getQuickMakeDynamicStatus".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      bmfd.a().a(this);
+      g(paramVarArgs[0]);
+      return true;
+    }
+    if (("setQuickMakeDynamicStatus".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    {
+      h(paramVarArgs[0]);
+      return true;
+    }
+    return false;
+  }
+  
+  public void onWebEvent(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    String str;
+    Object localObject1;
+    do
+    {
+      return;
+      str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (!"cmd.getRecommedPhoto".equals(paramString)) {
+        break;
+      }
+      localObject1 = a(paramBundle, str);
+    } while (localObject1 == null);
     for (;;)
     {
-      if (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
+      int i;
+      try
       {
-        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i).getId() == 2131365402)
+        paramString = new JSONObject();
+        paramString.put("code", 0);
+        paramString.put("photoEventID", ((Bundle)localObject1).getString("photoEventID"));
+        paramString.put("title", ((Bundle)localObject1).getString("title"));
+        paramString.put("time", ((Bundle)localObject1).getString("time"));
+        paramString.put("mediaCount", ((Bundle)localObject1).getInt("mediaCount"));
+        paramBundle = ((Bundle)localObject1).getIntegerArrayList("dataType");
+        localObject1 = ((Bundle)localObject1).getStringArrayList("dataPath");
+        JSONArray localJSONArray = new JSONArray();
+        if ((paramBundle != null) && (paramBundle.size() > 0) && (localObject1 != null) && (((ArrayList)localObject1).size() > 0) && (paramBundle.size() == ((ArrayList)localObject1).size()))
         {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView = new LinkerSummaryView(a());
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setEditVideoLinker(this);
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView, i, localLayoutParams);
+          i = 0;
+          if (i < paramBundle.size())
+          {
+            Object localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("imageData", "data:image/jpg;base64," + a((String)((ArrayList)localObject1).get(i)));
+            ((JSONObject)localObject2).put("type", paramBundle.get(i));
+            localJSONArray.put(localObject2);
+            if (((Integer)paramBundle.get(i)).intValue() != 3) {
+              break label444;
+            }
+            localObject2 = new File((String)((ArrayList)localObject1).get(i));
+            if (!((File)localObject2).exists()) {
+              break label444;
+            }
+            ((File)localObject2).delete();
+            break label444;
+          }
+          paramString.put("thumbInfos", localJSONArray);
+          if (str == null) {
+            break;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { paramString.toString() });
+          return;
         }
       }
-      else {
+      catch (Throwable paramString)
+      {
+        QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramString);
         return;
       }
-      i += 1;
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (this.jdField_a_of_type_Boolean) {
+      i(str);
       return;
-    }
-    Looper.myQueue().addIdleHandler(new bmne(this));
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView = null;
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView = null;
-    }
-    this.jdField_a_of_type_Bmnj.a(Message.obtain(null, 15, 0, 0));
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerLinkerSummaryView.setEditing(false);
+      if ("cmd.getLocalPhotoSwitcher".equals(paramString))
+      {
+        a(str, paramBundle, new bmne(this));
+        return;
+      }
+      if ("cmd.getQuickMakeDynamicStatus".equals(paramString))
+      {
+        a(str, paramBundle, new bmnf(this));
+        return;
+      }
+      if (!"cmd.getEventVideoAlbumState".equals(paramString)) {
+        break;
+      }
+      a(str, paramBundle, new bmng(this));
+      return;
+      label444:
+      i += 1;
     }
   }
 }

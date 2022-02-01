@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-class bknn
-  implements View.OnClickListener
+public abstract interface bknn
 {
-  bknn(bknm parambknm) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.performClick();
-    azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
-  }
+  public abstract void a();
 }
 
 

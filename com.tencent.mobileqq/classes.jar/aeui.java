@@ -1,17 +1,30 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class aeui
+  extends aeuk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
-  ImageView c;
-  ImageView d;
+  public aeui(PortraitImageview paramPortraitImageview) {}
   
-  public aeui(aeuh paramaeuh) {}
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
+    }
+    return false;
+  }
 }
 
 

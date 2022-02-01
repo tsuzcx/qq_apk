@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdDownloadView.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class oso
-  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
+public class oso
+  implements old
 {
-  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
-  {
-    return new AladdinConfigServlet.ConfigResult(paramParcel);
-  }
+  oso(osm paramosm) {}
   
-  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new AladdinConfigServlet.ConfigResult[paramInt];
+    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.2.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oso
  * JD-Core Version:    0.7.0.1
  */

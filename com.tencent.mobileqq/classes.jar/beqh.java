@@ -1,14 +1,26 @@
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class beqh
-  extends FrameLayout.LayoutParams
+class beqh
+  extends beqn
 {
-  public int a;
-  public int b;
+  beqh(beqg parambeqg) {}
   
-  public beqh(int paramInt1, int paramInt2, int paramInt3)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    if (!this.a.a.this$0.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    beqc.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

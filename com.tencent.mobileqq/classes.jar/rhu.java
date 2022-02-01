@@ -1,18 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-
-class rhu
-  implements bhun
+public class rhu
 {
-  rhu(rht paramrht) {}
-  
-  public void ap_()
-  {
-    rhf.a(this.a.a).c();
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhu
  * JD-Core Version:    0.7.0.1
  */

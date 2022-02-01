@@ -1,7 +1,50 @@
-public abstract interface blns
-  extends blnr
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qwallet.plugin.QWalletHelper;
+import mqq.app.AppRuntime;
+
+public class blns
+  extends RemoteCommand
 {
-  public abstract void l();
+  public blns()
+  {
+    super("qqreader_plugin_asyn_cmd");
+  }
+  
+  private QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    switch (paramBundle.getInt("CommondType"))
+    {
+    }
+    for (;;)
+    {
+      return null;
+      if (a() != null)
+      {
+        paramBundle = paramBundle.getString("publicaccount_uin");
+        tzo.a(a(), a().getApp(), paramBundle, new blnt(this, paramOnInvokeFinishLinstener));
+        continue;
+        QWalletHelper.preloadQWallet(a());
+      }
+    }
+  }
+  
+  public boolean isSynchronized()
+  {
+    return false;
+  }
 }
 
 

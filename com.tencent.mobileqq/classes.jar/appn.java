@@ -1,8 +1,17 @@
-public abstract interface appn
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+
+class appn
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public abstract void a(int paramInt);
+  appn(appm paramappm) {}
   
-  public abstract void b(int paramInt);
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      appj.a(this.a.jdField_a_of_type_Appj, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
+    }
+  }
 }
 
 

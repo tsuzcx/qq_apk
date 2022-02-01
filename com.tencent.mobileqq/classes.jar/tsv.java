@@ -1,28 +1,22 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class tsv
-  implements bhuk
+public class tsv
+  implements View.OnClickListener
 {
-  tsv(tss paramtss, bhuf parambhuf) {}
+  public tsv(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!yxv.a("showMoreActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      tss.d(this.jdField_a_of_type_Tss);
-    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsv
  * JD-Core Version:    0.7.0.1
  */

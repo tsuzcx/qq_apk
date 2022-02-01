@@ -1,39 +1,31 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class alyi
-  implements Comparator<PhoneContact>
+  implements Animation.AnimationListener
 {
-  public alyi(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public alyi(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv, int paramInt) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
+    this.jdField_a_of_type_Alyv.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131368138);
+    paramAnimation.addRule(10);
+    paramAnimation.setMargins(0, (int)(10.0F * SpecailCareListActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), this.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_Alyv.a.setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyi
  * JD-Core Version:    0.7.0.1
  */

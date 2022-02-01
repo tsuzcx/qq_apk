@@ -1,27 +1,36 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbgc
-  implements bhuy
+class bbgc
+  implements View.OnClickListener
 {
-  public bbgc(MediaPreviewActivity paramMediaPreviewActivity) {}
+  bbgc(bbfs parambbfs) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {
+    ViewPager localViewPager;
+    if (bbfs.a(this.a).getCurrentItem() != 1)
+    {
+      localViewPager = bbfs.a(this.a);
+      if (bbfs.a(this.a)) {
+        break label85;
+      }
+    }
+    label85:
+    for (boolean bool = true;; bool = false)
+    {
+      localViewPager.setCurrentItem(1, bool);
+      this.a.c();
+      this.a.a(1);
+      this.a.a(this.a.a.getResources().getString(2131708844));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if (this.a.jdField_a_of_type_Bcrd != null) {
-      this.a.jdField_a_of_type_Bcrd.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

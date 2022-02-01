@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class nqu
-  implements DialogInterface.OnCancelListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public nqu(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  nqu(nqt paramnqt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    this.a.a.start();
+    new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,158 +1,105 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody.Item;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
 public abstract class aard
-  extends PublicBaseFragment
+  extends niv
 {
-  protected aane a;
-  protected LinearLayout a;
-  private GdtAppReceiver a;
-  
-  protected aard()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-    this.jdField_a_of_type_Aane = new aarg(this);
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends aard> paramClass)
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<besl> paramList, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramActivity == null) || (paramJSONObject == null))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      aase.b("GdtBaseBannerFragment", "start error");
-      return;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder().append("GetFileListObserver, errorCode=").append(paramInt).append(", has data=");
+        if (paramArrayOfByte == null) {
+          break label73;
+        }
+      }
+      label73:
+      for (bool = true;; bool = false)
+      {
+        QLog.i("TroopFileProtocol", 2, bool);
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
+      }
     }
-    aase.b("GdtBaseBannerFragment", "start");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("params", paramJSONObject.toString());
-    paramJSONObject = new Intent();
-    paramJSONObject.putExtra("public_fragment_window_feature", 1);
-    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramJSONObject.putExtras(localBundle);
-    adpn.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
-  }
-  
-  protected abstract GdtAd a();
-  
-  protected abstract void a();
-  
-  protected abstract void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams);
-  
-  public void initWindowStyleAndAnimation(Activity paramActivity)
-  {
-    super.initWindowStyleAndAnimation(paramActivity);
-    if (paramActivity == null) {
-      return;
-    }
-    paramActivity.getWindow().addFlags(1024);
-  }
-  
-  public boolean isWrapContent()
-  {
-    return false;
-  }
-  
-  public boolean needImmersive()
-  {
-    return false;
-  }
-  
-  public boolean needStatusTrans()
-  {
-    return false;
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-  }
-  
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    paramLayoutInflater = null;
-    if (getArguments() == null) {
-      return null;
-    }
-    paramViewGroup = getArguments().getString("params");
+    Object localObject1 = new oidb_0x6d8.RspBody();
     try
     {
-      Object localObject = new JSONObject(paramViewGroup);
-      paramBundle = ((JSONObject)localObject).getJSONObject("requestParams");
-      localObject = ((JSONObject)localObject).getJSONObject("clickParams");
-      boolean bool1 = ((JSONObject)localObject).getBoolean("reportForClick");
-      boolean bool2 = ((JSONObject)localObject).getBoolean("appAutoDownload");
-      boolean bool3 = ((JSONObject)localObject).optBoolean("videoCeilingSupported", false);
-      paramBundle = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aasd.a(new qq_ad_get.QQAdGet(), paramBundle));
-      localObject = new GdtHandler.Params();
-      ((GdtHandler.Params)localObject).c = 1;
-      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-      ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
-      ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
-      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-      if (bool3) {
-        paramLayoutInflater = GdtVideoCeilingFragmentForJS.class;
-      }
-      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = paramLayoutInflater;
-      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-      a(paramViewGroup, paramBundle, (GdtHandler.Params)localObject);
-    }
-    catch (JSONException paramLayoutInflater)
-    {
-      for (;;)
+      ((oidb_0x6d8.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+      if (!((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.has())
       {
-        aase.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no FileList rsp.");
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
       }
     }
-    paramLayoutInflater = new Button(getActivity());
-    paramLayoutInflater.setText("load");
-    paramLayoutInflater.setOnClickListener(new aare(this));
-    paramViewGroup = new Button(getActivity());
-    paramViewGroup.setText("show");
-    paramViewGroup.setOnClickListener(new aarf(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
-    paramLayoutInflater = new ScrollView(getActivity());
-    paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
-    return paramLayoutInflater;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getActivity());
-    super.onDestroy();
-  }
-  
-  public void onPause()
-  {
-    super.onPause();
-  }
-  
-  public void onResume()
-  {
-    super.onResume();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "merge data exception," + paramArrayOfByte.toString());
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
+      return;
+    }
+    localObject1 = (oidb_0x6d8.GetFileListRspBody)((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.get();
+    if (((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.has())
+    {
+      i = ((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, retCode=" + i);
+      }
+      if (i < 0)
+      {
+        if (i == -1000)
+        {
+          a(true, false, 0, i, 0, null, null, paramBundle);
+          return;
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, has not redCode");
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
+      return;
+    }
+    int i = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_all_file_count.get();
+    boolean bool = ((oidb_0x6d8.GetFileListRspBody)localObject1).bool_is_end.get();
+    int j = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_next_index.get();
+    paramArrayOfByte = ((oidb_0x6d8.GetFileListRspBody)localObject1).bytes_context.get();
+    Object localObject2 = ((oidb_0x6d8.GetFileListRspBody)localObject1).rpt_item_list.get();
+    localObject1 = new ArrayList();
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((List)localObject1).add(new besl((oidb_0x6d8.GetFileListRspBody.Item)((Iterator)localObject2).next()));
+    }
+    a(true, bool, i, paramInt, j, paramArrayOfByte, (List)localObject1, paramBundle);
   }
 }
 

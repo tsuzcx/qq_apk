@@ -1,10 +1,10 @@
 package com.tencent.av.config;
 
 import android.content.Context;
-import bdhe;
+import bgmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import lek;
+import lbc;
 
 public class ConfigInfo
 {
@@ -31,10 +31,10 @@ public class ConfigInfo
       }
       String str1 = paramContext.substring(0, i);
       String str2 = paramContext.substring(i + 1);
-      lek.c(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + paramContext + "| version=" + str1 + "| payload=" + str2);
+      lbc.c(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + paramContext + "| version=" + str1 + "| payload=" + str2);
       return str2;
     }
-    lek.c(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
+    lbc.c(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
     return "";
   }
   
@@ -72,7 +72,7 @@ public class ConfigInfo
       i = j;
     } while (!QLog.isDevelopLevel());
     QLog.w(TAG, 1, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
-    bdhe.b(TAG, localException);
+    bgmj.b(TAG, localException);
     return 0;
   }
   
@@ -154,7 +154,7 @@ public class ConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.config.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

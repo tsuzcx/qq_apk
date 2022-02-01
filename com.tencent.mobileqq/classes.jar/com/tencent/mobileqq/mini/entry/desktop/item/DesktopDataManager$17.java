@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.util.Log;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$17
@@ -29,7 +29,7 @@ class DesktopDataManager$17
     try
     {
       localDeskTopAppEntity.setStatus(1001);
-      if (((awgf)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
+      if (((EntityManager)localObject).remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
       {
         QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localDeskTopAppEntity.name + " success from db");
         return;
@@ -45,7 +45,7 @@ class DesktopDataManager$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.17
  * JD-Core Version:    0.7.0.1
  */

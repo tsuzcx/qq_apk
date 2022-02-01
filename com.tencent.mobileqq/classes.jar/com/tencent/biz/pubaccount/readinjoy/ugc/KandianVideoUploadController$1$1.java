@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import qoe;
-import qof;
+import rjb;
+import rjc;
 
 public class KandianVideoUploadController$1$1
   implements Runnable
 {
-  public KandianVideoUploadController$1$1(qof paramqof) {}
+  public KandianVideoUploadController$1$1(rjc paramrjc) {}
   
   public void run()
   {

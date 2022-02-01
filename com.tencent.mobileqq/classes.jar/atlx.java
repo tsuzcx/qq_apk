@@ -1,19 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class atlx
-  implements alrb
+public abstract interface atlx
 {
-  atlx(atlw paramatlw) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      atlw.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,24 +1,63 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ases
-  extends RecyclerView.OnScrollListener
+public abstract class ases
 {
-  ases(asep paramasep) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static ases a(Bundle paramBundle)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      asep.a(this.a).c();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
+    {
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
+      {
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
+        }
+        localObject1 = new asfd(null).b(paramBundle);
+      }
     }
-    while (!asep.a(this.a).a()) {
-      return;
-    }
-    asep.a(this.a).b();
-    asep.a(this.a).notifyDataSetChanged();
+    label53:
+    do
+    {
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new asfb(null).b(paramBundle);
   }
+  
+  public abstract int a(List<ases> paramList);
+  
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract arxg a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putInt("cur_data_source_type", paramInt);
+  }
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(ases paramases);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

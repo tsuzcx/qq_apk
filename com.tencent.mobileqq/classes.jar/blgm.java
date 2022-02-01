@@ -1,51 +1,55 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class blgm
-  implements bmeo<blfi>
+public class blgm
+  implements INetEventHandler
 {
-  blgm(blgj paramblgj) {}
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(@Nullable blfi paramblfi)
+  public blgm(blgh paramblgh) {}
+  
+  public void a()
   {
-    if (paramblfi == null) {}
+    if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          paramblfi = paramblfi.a;
-          if (paramblfi != AECaptureMode.NORMAL) {
-            break;
-          }
-          if ((blfz.a == null) || (blfz.a != bkzy.a())) {
-            bliy.a().g("none");
-          }
-        } while (!this.a.a());
-        blgj.a(this.a).setVisibility(8);
-        return;
-        if (paramblfi != AECaptureMode.GIF) {
-          break;
-        }
-      } while (!this.a.a());
-      blgj.a(this.a).setVisibility(8);
       return;
-    } while (paramblfi != AECaptureMode.PLAY);
-    blgj.c(this.a);
-    if (blgj.a(this.a) != null)
-    {
-      paramblfi = blgj.a(this.a).a();
-      if ((!TextUtils.isEmpty(paramblfi)) && (!"-1".equals(paramblfi))) {
-        bliy.a().g(paramblfi);
+      this.jdField_a_of_type_Boolean = true;
+      try
+      {
+        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+        return;
       }
-    }
-    blgj.a(this.a).setVisibility(0);
-    blgj.d(this.a);
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        AppNetConnInfo.unregisterNetEventHandler(this);
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    blgh.a(this.jdField_a_of_type_Blgh).sendEmptyMessage(66304);
   }
 }
 

@@ -1,8 +1,6 @@
-import android.graphics.drawable.Drawable;
-
 public abstract interface bkbl
 {
-  public abstract void a(Drawable paramDrawable);
+  public abstract void a(int paramInt, bkbk parambkbk, bkbm parambkbm);
 }
 
 

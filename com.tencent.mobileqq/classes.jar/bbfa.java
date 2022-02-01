@@ -1,22 +1,30 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import java.lang.ref.WeakReference;
 
 public class bbfa
 {
-  public String a;
-  public String b;
-  public String c;
+  int jdField_a_of_type_Int;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
+  public WeakReference<bbfb> b;
   
-  public void a(JSONObject paramJSONObject)
+  public bbfa(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, bbfb parambbfb)
   {
-    this.a = paramJSONObject.optString("left");
-    this.b = paramJSONObject.optString("text");
-    this.c = paramJSONObject.optString("right");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambbfb);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public boolean a()
+  public View a()
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public bbfb a()
+  {
+    return (bbfb)this.jdField_b_of_type_JavaLangRefWeakReference.get();
   }
 }
 

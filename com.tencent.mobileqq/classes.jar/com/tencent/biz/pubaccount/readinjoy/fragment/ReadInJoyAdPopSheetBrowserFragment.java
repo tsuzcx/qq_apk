@@ -7,60 +7,55 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import beft;
-import bejh;
-import bewj;
+import bhmv;
+import bhql;
+import bidh;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
-import ofx;
-import oyt;
+import ost;
+import pog;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  private static final String a;
+  private static final String a = ReadInJoyAdPopSheetBrowserFragment.class.getName();
   private String b;
   private String c;
-  private String s;
+  private String d;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ReadInJoyAdPopSheetBrowserFragment.class.getName();
-  }
-  
-  private void i()
+  private void a()
   {
     Object localObject = getActivity().getIntent();
     if (localObject != null)
     {
       this.b = ((Intent)localObject).getStringExtra("h5url");
       this.c = ((Intent)localObject).getStringExtra("adrl");
-      this.s = ((Intent)localObject).getStringExtra("traceId");
+      this.d = ((Intent)localObject).getStringExtra("traceId");
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate h5Url: " + this.b);
+      QLog.d(a, 2, "onCreate h5Url: " + this.b);
     }
     if (TextUtils.isEmpty(this.b))
     {
       getActivity().finish();
       return;
     }
-    localObject = ofx.a(getActivity(), this.b, this.c, this.s);
-    ((ofx)localObject).a(new oyt(this));
-    ((ofx)localObject).show();
+    localObject = ost.a(getActivity(), this.b, this.c, this.d);
+    ((ost)localObject).a(new pog(this));
+    ((ost)localObject).show();
   }
   
-  public int a(Bundle paramBundle)
+  public int doCreateLoopStep_Final(Bundle paramBundle)
   {
-    int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_Beft != null) && (this.jdField_a_of_type_Beft.a != null)) {
-      this.jdField_a_of_type_Beft.a.setVisibility(8);
+    int i = super.doCreateLoopStep_Final(paramBundle);
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.a != null)) {
+      this.mSwiftTitleUI.a.setVisibility(8);
     }
-    if (this.d != null) {
-      this.d.setVisibility(8);
+    if (this.mSystemBarComp != null) {
+      this.mSystemBarComp.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_Bejh != null) && (this.jdField_a_of_type_Bejh.a != null)) {
-      this.jdField_a_of_type_Bejh.a.a(false);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.a != null)) {
+      this.mUIStyleHandler.a.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;
@@ -69,7 +64,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
   public void onResume()
   {
     super.onResume();
-    i();
+    a();
   }
 }
 

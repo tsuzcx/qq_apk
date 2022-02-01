@@ -1,55 +1,32 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
-public class yqi
-  implements TVK_SDKMgr.OnLogListener
+class yqi
 {
-  public yqi(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public TextView a;
   
-  public int d(String paramString1, String paramString2)
+  public yqi(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    this.a = ((TextView)paramView.findViewById(2131378227));
   }
   
-  public int e(String paramString1, String paramString2)
+  public void a(zhq paramzhq, yqh paramyqh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    if (TextUtils.isEmpty(paramzhq.a))
+    {
+      this.a.setVisibility(8);
+      return;
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    this.a.setVisibility(0);
+    this.a.setText(yqd.a(paramzhq));
+    yqd.a(this.a);
+    this.a.setOnClickListener(new yqj(this, paramyqh, paramzhq));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqi
  * JD-Core Version:    0.7.0.1
  */

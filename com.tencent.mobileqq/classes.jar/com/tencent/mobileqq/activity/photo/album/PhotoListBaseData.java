@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PhotoListBaseData
 {
@@ -16,15 +15,13 @@ public class PhotoListBaseData
   public static Map<String, LocalMediaInfo> newCaptureMediaInfo = new HashMap();
   public static int sPhotoListFirstPos = -1;
   public boolean backPressed = false;
-  public HashSet<String> cancelPresendPathSet = new HashSet();
   public String currentPhotoPath;
   public String customSendBtnText = null;
-  public MediaFileFilter filter;
   public long filterVideoDurationLimit;
-  public boolean filterVideoGif = false;
   public boolean firstResume = true;
   public int gifSelectedCount = 0;
   public boolean hasShownMaxSelectToast = false;
+  public volatile AtomicBoolean isQuerying = new AtomicBoolean(false);
   public boolean isRecodeLastAlbumPath = false;
   public boolean isShowCamera = false;
   public boolean isSingleMode = true;
@@ -32,18 +29,17 @@ public class PhotoListBaseData
   public long lastTimeShowToast;
   public int maxVideoNum = 1;
   public boolean needQueryTask = true;
+  public String olderAlbumId = null;
   public int photoListStartPos;
-  public HashSet<String> presendPathSet = new HashSet();
   public int requestCode = 0;
   public LocalMediaInfo selectedVideoInfo = null;
   public boolean showCameraInVideo = false;
   public boolean showGifTypeIcon;
-  public int showMediaType;
   public int videoSelectedCnt = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListBaseData
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,8 @@ public final class SPKey
 {
   public static final SPKey.Companion Companion = new SPKey.Companion(null);
   @NotNull
+  public static final String KEY_ATHENA_BUCKETS = "athena_buckets_new";
+  @NotNull
   public static final String KEY_AUTHORIZATION_TOKEN = "token";
   @NotNull
   public static final String KEY_BATTERY_LAST_RANDOM_FACTOR = "rand_factor";
@@ -48,7 +50,7 @@ public final class SPKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.sharedpreferences.SPKey
  * JD-Core Version:    0.7.0.1
  */

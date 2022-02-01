@@ -1,27 +1,38 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahyf
-  implements aiel
+class ahyf
+  extends anry
 {
-  public ahyf(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  ahyf(ahxt paramahxt) {}
   
-  public void a(int paramInt)
+  public void onDownPublicAccount()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.k();
-      return;
-    case 3: 
-      this.a.l();
-      return;
-    case 2: 
-      this.a.m();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
     }
-    this.a.n();
+  }
+  
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c(this.a.a.getIntent());
+    }
   }
 }
 

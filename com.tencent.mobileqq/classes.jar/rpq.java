@@ -1,58 +1,73 @@
-import android.view.View;
-import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class rpq
+  extends ouc
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<biam> jdField_a_of_type_JavaUtilList;
+  @Nullable
+  private rpo jdField_a_of_type_Rpo;
+  @NotNull
+  private rpp jdField_a_of_type_Rpp;
   
-  public float a(int paramInt)
+  public rpq(@NotNull rpp paramrpp, @Nullable rpo paramrpo)
   {
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    super(paramrpp, true, "PublishTaskStep");
+    this.jdField_a_of_type_Rpp = paramrpp;
+    this.jdField_a_of_type_Rpo = paramrpo;
+  }
+  
+  private void a(UgcVideo paramUgcVideo)
+  {
+    rpo localrpo;
+    if ((paramUgcVideo.rowkey != null) && (!paramUgcVideo.rowkey.isEmpty()))
     {
-      f1 = f2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        f1 = ((biam)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
+      paramUgcVideo.status = UgcVideo.STATUS_FINISH;
+      if (this.jdField_a_of_type_Rpo != null)
+      {
+        localrpo = this.jdField_a_of_type_Rpo;
+        if (paramUgcVideo.status != UgcVideo.STATUS_FINISH) {
+          break label74;
+        }
       }
     }
-    return f1;
-  }
-  
-  public rpq a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
-    }
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    label74:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+      localrpo.a(4, bool, true, "");
+      d();
+      return;
+      paramUgcVideo.status = UgcVideo.STATUS_FAILED;
+      break;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
+    return this.jdField_a_of_type_Rpp.a().status == UgcVideo.STATUS_UPLOADING;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rpp.a();
+    Object localObject = localUgcVideo.title;
+    String str = localUgcVideo.url;
+    QLog.i("RIJUGC.PublishTaskStep", 1, "onStep: title=" + (String)localObject);
+    if ((localObject != null) && (!((String)localObject).isEmpty()))
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(localUgcVideo);
+      rog.a((List)localObject, new rpr(this, localUgcVideo));
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpq
  * JD-Core Version:    0.7.0.1
  */

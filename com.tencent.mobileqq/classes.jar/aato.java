@@ -1,50 +1,41 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.widget.AuthorizationItem;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
 
-public class aato
+class aato
+  implements TextView.OnEditorActionListener
 {
-  public int a;
-  public final String a;
-  public final String b;
-  public final String c;
+  aato(aatm paramaatm, TroopGiftPanel paramTroopGiftPanel) {}
   
-  private aato(String paramString1, String paramString2, String paramString3)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this(paramString1, paramString2, paramString3, 0);
-  }
-  
-  private aato(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static aato b()
-  {
-    return new aato("", "", "", 1);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (paramInt == 6)
+    {
+      this.jdField_a_of_type_Aatm.c();
+      paramTextView = this.jdField_a_of_type_Aatm.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
+        this.jdField_a_of_type_Aatm.b();
+        if (!njo.a().a(this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
+          break label194;
+        }
+      }
+      label194:
+      for (paramInt = 2;; paramInt = 1)
+      {
+        bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        return true;
+        this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
+        break;
+      }
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
-      return this.b;
-    }
-    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
-      return this.c;
-    }
-    return "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
+    return false;
   }
 }
 

@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
 import android.text.TextUtils;
-import apmq;
-import baoo;
+import arpm;
+import bdps;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
@@ -109,7 +109,7 @@ public class ThemeCleaner
   
   private static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!apmq.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!arpm.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
     for (;;)
     {
       return false;
@@ -166,7 +166,7 @@ public class ThemeCleaner
   
   private static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!apmq.a(paramString)))
+    if ((TextUtils.isEmpty(paramString)) || (!arpm.a(paramString)))
     {
       QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
       return;
@@ -176,7 +176,7 @@ public class ThemeCleaner
       QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
       return;
     }
-    b(new File(new baoo().a(paramString).a(paramAppRuntime.getApplication())));
+    b(new File(new bdps().a(paramString).a(paramAppRuntime.getApplication())));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -230,7 +230,7 @@ public class ThemeCleaner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeCleaner
  * JD-Core Version:    0.7.0.1
  */

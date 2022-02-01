@@ -1,11 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
 class aaqb
-  implements aaqm
+  implements DialogInterface.OnDismissListener
 {
   aaqb(aaqa paramaaqa) {}
   
-  public void a(Object... paramVarArgs)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aaqa.a(this.a);
+    this.a.a.deleteObserver(this.a);
   }
 }
 

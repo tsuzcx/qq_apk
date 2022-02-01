@@ -1,17 +1,23 @@
 package com.tencent.superplayer.api;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SuperPlayerVideoInfo
+  implements Cloneable
 {
-  public static final int VIDEO_LIVE_FORMAT_HLS = 104;
-  public static final int VIDEO_LIVE_FORMAT_UNKNOWN = 105;
+  public static final int AUDIO_VOD_FORMAT_MP3 = 107;
+  public static final int VIDEO_LIVE_FORMAT_FLV = 202;
+  public static final int VIDEO_LIVE_FORMAT_HLS = 201;
+  public static final int VIDEO_LIVE_FORMAT_UNKNOWN = 203;
   public static final int VIDEO_SOURCE_DIRECT_URL = 3;
   public static final int VIDEO_SOURCE_TVIDEO = 1;
   public static final int VIDEO_VOD_FORMAT_HLS = 102;
   public static final int VIDEO_VOD_FORMAT_MP4 = 101;
-  public static final int VIDEO_VOD_FORMAT_UNKNOWN = 103;
+  public static final int VIDEO_VOD_FORMAT_RTMP = 103;
+  public static final int VIDEO_VOD_FORMAT_UNKNOWN = 104;
   private int mBusiPlatform;
+  private ArrayList<String> mCookies = null;
   private String mFileId;
   private int mFormat;
   private String mLocalSavePath;
@@ -19,7 +25,9 @@ public class SuperPlayerVideoInfo
   private String[] mPlayUrls;
   private String mRequestDefinition;
   private TVideoNetInfo mTVideoNetInfo;
+  private ArrayList<String> mUrlHostList = null;
   private String mVid;
+  private long mVideoDurationMs;
   private int mVideoSource;
   private int mVideoType;
   
@@ -62,9 +70,19 @@ public class SuperPlayerVideoInfo
     this.mPid = paramString2;
   }
   
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
   public int getBusiPlatform()
   {
     return this.mBusiPlatform;
+  }
+  
+  public ArrayList<String> getCookie()
+  {
+    return this.mCookies;
   }
   
   public String getFileId()
@@ -113,9 +131,19 @@ public class SuperPlayerVideoInfo
     return this.mTVideoNetInfo;
   }
   
+  public ArrayList<String> getUrlHostList()
+  {
+    return this.mUrlHostList;
+  }
+  
   public String getVid()
   {
     return this.mVid;
+  }
+  
+  public long getVideoDurationMs()
+  {
+    return this.mVideoDurationMs;
   }
   
   public int getVideoSource()
@@ -131,6 +159,11 @@ public class SuperPlayerVideoInfo
   public void setBusiPlatform(int paramInt)
   {
     this.mBusiPlatform = paramInt;
+  }
+  
+  public void setCookies(ArrayList<String> paramArrayList)
+  {
+    this.mCookies = paramArrayList;
   }
   
   void setFileId(String paramString)
@@ -168,6 +201,16 @@ public class SuperPlayerVideoInfo
     this.mTVideoNetInfo = paramTVideoNetInfo;
   }
   
+  public void setUrlHostList(ArrayList<String> paramArrayList)
+  {
+    this.mUrlHostList = paramArrayList;
+  }
+  
+  public void setVideoDurationMs(long paramLong)
+  {
+    this.mVideoDurationMs = paramLong;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -177,13 +220,14 @@ public class SuperPlayerVideoInfo
     localStringBuilder.append("mVid:").append(this.mVid).append("\n");
     localStringBuilder.append("mPid:").append(this.mPid).append("\n");
     localStringBuilder.append("mPlayUrls:").append(Arrays.toString(this.mPlayUrls)).append("\n");
+    localStringBuilder.append("mRequestDefn:").append(this.mRequestDefinition).append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

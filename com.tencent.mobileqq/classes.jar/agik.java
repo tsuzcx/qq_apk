@@ -1,22 +1,11 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
 
-class agik
-  implements DialogInterface.OnKeyListener
+public class agik
+  extends agip
 {
-  agik(aghx paramaghx) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.n = true;
-      aghx.a(this.a).dismiss();
-    }
-    return false;
-  }
+  public View a;
+  public ImageView a;
 }
 
 

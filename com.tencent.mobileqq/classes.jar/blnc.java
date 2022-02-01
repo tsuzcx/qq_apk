@@ -1,23 +1,38 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
+import android.text.TextUtils;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public class blnc
-  extends BroadcastReceiver
 {
-  public blnc(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
   {
-    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) {}
-    do
+    if (paramQQPimTipsInfo == null)
     {
+      blna.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
       return;
-      paramContext = AEEditorMusicHelper.a(paramIntent);
-    } while (paramContext == null);
-    AEEditorVideoEditFragment.a(this.a, paramContext);
+    }
+    blna.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
+  }
+  
+  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  {
+    if (paramQQPimTipsInfo == null) {}
+    while (TextUtils.isEmpty(blna.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
+      return;
+    }
+    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
+    {
+    case 3: 
+    default: 
+      return;
+    case 1: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    case 2: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    }
+    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
   }
 }
 

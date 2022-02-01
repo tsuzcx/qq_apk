@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.List;
 
-public class bajj
-  extends bajg
+public abstract interface bajj
 {
-  public bajj(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bajm parambajm)
-  {
-    super(paramQQAppInterface, paramDataLineMsgRecord, parambajm);
-  }
-  
-  protected String a()
-  {
-    return this.a.filename;
-  }
+  public abstract void a(boolean paramBoolean, List<aiit> paramList);
 }
 
 

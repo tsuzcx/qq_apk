@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
-import bddt;
+import bgim;
 import com.tencent.qphone.base.util.QLog;
 
 class PageWebview$4
@@ -19,7 +19,7 @@ class PageWebview$4
       Object localObject = this.this$0.getContext().getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);
-      localObject = bddt.a(this.this$0, i, j);
+      localObject = bgim.a(this.this$0, i, j);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
         if (this.val$callback != null) {
@@ -43,7 +43,7 @@ class PageWebview$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.PageWebview.4
  * JD-Core Version:    0.7.0.1
  */

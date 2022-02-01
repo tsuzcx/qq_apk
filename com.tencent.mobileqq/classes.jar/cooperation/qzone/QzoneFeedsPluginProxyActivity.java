@@ -1,12 +1,31 @@
 package cooperation.qzone;
 
-import abws;
+import Override;
+import addy;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QzoneFeedsPluginProxyActivity
   extends QzonePluginProxyActivity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -16,7 +35,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      abws.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      addy.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   
@@ -27,7 +46,7 @@ public class QzoneFeedsPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneFeedsPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

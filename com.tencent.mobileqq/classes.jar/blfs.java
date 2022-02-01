@@ -1,72 +1,94 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewStub;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapter;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.HashMap;
 
-public abstract class blfs
+public class blfs
+  implements IPluginAdapter
 {
-  protected Activity a;
-  protected View a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  protected blft a;
-  private volatile boolean jdField_a_of_type_Boolean;
+  public static HashMap<String, Integer> a = new HashMap();
   
-  @Deprecated
-  public blfs(Activity paramActivity, View paramView, blft paramblft)
+  static
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Blft = paramblft;
+    a.put("qzone_plugin.apk", Integer.valueOf(2));
   }
   
-  public blfs(Activity paramActivity, ViewStub paramViewStub, blft paramblft)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Blft = paramblft;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  protected void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  protected final void j()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if ((Integer)a.get(paramString) == null) {
+      return 1;
     }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
+    return ((Integer)a.get(paramString)).intValue();
+  }
+  
+  public Object invoke(int paramInt, Object paramObject)
+  {
+    int i = 4;
+    boolean bool = false;
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      paramObject = BaseApplicationImpl.getApplication();
+      str = IPluginAdapterProxy.getProxy().currentUin;
+      if (!TextUtils.isEmpty(str))
+      {
+        if (Build.VERSION.SDK_INT > 10) {}
+        for (;;)
+        {
+          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
+          if ((!"1103".equals(paramObject)) && (!"2920".equals(paramObject))) {
+            break;
+          }
+          return Boolean.valueOf(true);
+          i = 0;
+        }
+      }
+      return Boolean.valueOf(false);
+    case 3: 
+      paramObject = BaseApplicationImpl.getApplication();
+      str = IPluginAdapterProxy.getProxy().currentUin;
+      if (!TextUtils.isEmpty(str))
+      {
+        if (Build.VERSION.SDK_INT > 10) {}
+        for (;;)
+        {
+          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
+          if ((!"1000".equals(paramObject)) && (!"999".equals(paramObject))) {
+            break;
+          }
+          return Boolean.valueOf(true);
+          i = 0;
+        }
+      }
+      return Boolean.valueOf(false);
+    case 2: 
+      return ThreadManager.getSubThreadLooper();
+    case 4: 
+      if (a((String)paramObject) > 1) {
+        bool = true;
+      }
+      return Boolean.valueOf(bool);
+    }
+    return Integer.valueOf(ImmersiveUtils.isSupporImmersive());
+  }
+  
+  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blfs
  * JD-Core Version:    0.7.0.1
  */

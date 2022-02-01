@@ -1,52 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class yga
-  implements TextWatcher
+  extends QQUIEventReceiver<yfw, yfz>
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString = null;
-  
-  public yga(CommentEditText paramCommentEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public yga(yfw paramyfw)
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    try
+    super(paramyfw);
+  }
+  
+  public void a(@NonNull yfw paramyfw, @NonNull yfz paramyfz)
+  {
+    if (paramyfz.jdField_a_of_type_Boolean)
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
-      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
+      if (paramyfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        yfw.a(paramyfw, paramyfz.jdField_a_of_type_JavaUtilList, true);
+        yfw.a(paramyfw).a(true);
       }
       return;
     }
-    catch (Exception paramEditable)
-    {
-      QLog.e("CommentInputPopupWindow", 1, "setTextError");
-    }
+    yfw.a(paramyfw, paramyfz);
+    yfw.a(paramyfw).remove(yfw.b());
+    yfw.a(paramyfw);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public Class acceptEventClass()
   {
-    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
-    int i = paramCharSequence.toString().indexOf(']', paramInt1);
-    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
-    {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
-      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = null;
+    return yfz.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yga
  * JD-Core Version:    0.7.0.1
  */

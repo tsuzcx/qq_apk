@@ -1,103 +1,92 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
-import com.tencent.viola.vinstance.VInstanceAction.VInstanceEventListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.CommentInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ContentInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ParamInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ReqBody;
 
-public class pdx
-  implements View.OnClickListener, VInstanceAction.VInstanceEventListener, srp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper;", "", "()V", "TAG", "", "getOnlyBiuReqBody", "Ltencent/im/oidb/cmd0xe16/oidb_cmd0xe16$ReqBody;", "commentData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "requestBiuAfterComment", "", "onlyBiuCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdx
 {
-  private int jdField_a_of_type_Int;
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private WormholeView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView;
-  private pdw jdField_a_of_type_Pdw;
-  private sro jdField_a_of_type_Sro;
+  public static final pdx a = new pdx();
   
-  public pdx(sro paramsro, WormholeView paramWormholeView, pdw parampdw)
+  private final oidb_cmd0xe16.ReqBody a(SimpleCommentData paramSimpleCommentData)
   {
-    this.jdField_a_of_type_Sro = paramsro;
-    this.jdField_a_of_type_Pdw = parampdw;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView = paramWormholeView;
-    paramWormholeView.setLifeListener(this);
-    paramWormholeView.a();
-    paramWormholeView.setOnErrorViewClickListener(this);
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId()));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-  }
-  
-  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Sro != null) && (this.jdField_a_of_type_Sro.a(paramBaseArticleInfo, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.a())))
+    oidb_cmd0xe16.ContentInfo localContentInfo = new oidb_cmd0xe16.ContentInfo();
+    localContentInfo.uint32_src.set(paramSimpleCommentData.d());
+    Object localObject = "";
+    oidb_cmd0xe16.CommentInfo localCommentInfo;
+    if ((paramSimpleCommentData instanceof FirstCommentCreateData))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.c();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.b();
-  }
-  
-  public void a(WormholeView paramWormholeView)
-  {
-    if (this.jdField_a_of_type_Sro != null)
-    {
-      this.jdField_a_of_type_Sro.a(paramWormholeView.a(), this.jdField_a_of_type_Pdw.a());
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-        this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId(), this);
+      localContentInfo.str_rowkey.set(paramSimpleCommentData.b());
+      localContentInfo.str_article_id.set(paramSimpleCommentData.c());
+      localObject = ((FirstCommentCreateData)paramSimpleCommentData).a();
+      localCommentInfo = new oidb_cmd0xe16.CommentInfo();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localCommentInfo.str_comment.set((String)localObject);
+        if ((paramSimpleCommentData instanceof SubCommentCreateData))
+        {
+          if (((SubCommentCreateData)paramSimpleCommentData).b() != 0L) {
+            localCommentInfo.uint64_sub_author.set(((SubCommentCreateData)paramSimpleCommentData).b());
+          }
+          localCommentInfo.str_sub_comment_id.set(((SubCommentCreateData)paramSimpleCommentData).f());
+          if (((CharSequence)((SubCommentCreateData)paramSimpleCommentData).a()).length() <= 0) {
+            break label313;
+          }
+        }
       }
     }
-  }
-  
-  public void b(WormholeView paramWormholeView)
-  {
-    if (this.jdField_a_of_type_Sro != null)
+    label313:
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_Sro.a(paramWormholeView.a());
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-        this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId());
+      if (i != 0) {
+        localCommentInfo.str_comment_id.set(((SubCommentCreateData)paramSimpleCommentData).a());
       }
+      paramSimpleCommentData = new oidb_cmd0xe16.ParamInfo();
+      paramSimpleCommentData.bool_only_biu.set(true);
+      localObject = new oidb_cmd0xe16.ReqBody();
+      ((oidb_cmd0xe16.ReqBody)localObject).msg_comment_info.set((MessageMicro)localCommentInfo);
+      ((oidb_cmd0xe16.ReqBody)localObject).msg_content_info.set((MessageMicro)localContentInfo);
+      ((oidb_cmd0xe16.ReqBody)localObject).msg_param_info.set((MessageMicro)paramSimpleCommentData);
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJBiuNetworkHelper", 2, "requestBiuAfterComment :" + localObject);
+      }
+      return localObject;
+      if (!(paramSimpleCommentData instanceof SubCommentCreateData)) {
+        break;
+      }
+      localContentInfo.str_rowkey.set(paramSimpleCommentData.b());
+      localContentInfo.str_article_id.set(paramSimpleCommentData.c());
+      localObject = ((SubCommentCreateData)paramSimpleCommentData).e();
+      break;
     }
   }
   
-  public void onClick(View paramView)
+  public final void a(@NotNull SimpleCommentData paramSimpleCommentData, @NotNull Function1<? super Boolean, Unit> paramFunction1)
   {
-    if ((paramView.getId() == 2131380290) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.jdField_a_of_type_Sro != null)) {
-      this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeData());
-    }
-  }
-  
-  public void onError(String paramString)
-  {
-    if ((a(paramString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.d();
-    }
-  }
-  
-  public void onRefreshItem(String paramString)
-  {
-    if (a(paramString)) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Int);
-    }
+    Intrinsics.checkParameterIsNotNull(paramSimpleCommentData, "commentData");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "onlyBiuCallback");
+    paramSimpleCommentData = a(paramSimpleCommentData);
+    nir.a(pha.a(), (niv)new pdy(paramFunction1), paramSimpleCommentData.toByteArray(), "OidbSvc.0xe16", 3606, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdx
  * JD-Core Version:    0.7.0.1
  */

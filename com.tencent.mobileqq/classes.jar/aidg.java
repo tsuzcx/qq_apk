@@ -1,35 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.AnimationEndClearListener.1;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aidg
-  implements Animation.AnimationListener
+class aidg
+  extends anmu
 {
-  public int a;
-  public View a;
+  aidg(aidf paramaidf) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onAddFriend(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.postDelayed(new ChatHistoryTroopMemberFragment.AnimationEndClearListener.1(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      aidf.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
     }
   }
 }

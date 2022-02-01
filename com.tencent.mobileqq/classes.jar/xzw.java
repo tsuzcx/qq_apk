@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
+import android.view.View;
 
-class xzw
-  implements DialogInterface.OnClickListener
+public abstract interface xzw
 {
-  xzw(xzu paramxzu, CompoundButton paramCompoundButton) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
-  }
+  public abstract void a(View paramView, ygo paramygo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
-class agif
-  implements DialogInterface.OnDismissListener
+public class agif
+  extends agip
 {
-  agif(aghx paramaghx) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aghx.a(this.a) != null)) {
-      this.a.q();
-    }
-  }
+  public ImageView a;
+  public ColorView a;
 }
 
 

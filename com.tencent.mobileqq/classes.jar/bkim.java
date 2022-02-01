@@ -1,26 +1,24 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
+import android.database.DataSetObserver;
+import com.tencent.widget.AdapterViewPagerAdapter;
 
-class bkim
-  implements IBinder.DeathRecipient
+public class bkim
+  extends DataSetObserver
 {
-  bkim(bkil parambkil) {}
+  public bkim(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
   
-  public void binderDied()
+  public void onChanged()
   {
-    bfrz.c("WadlProxyServiceManager", "wadl download process is died!");
-    bkil.a(this.a).asBinder().unlinkToDeath(bkil.a(this.a), 0);
-    bkil.a(this.a, null);
-    if ((bkil.a(this.a) != null) && (bkil.a(this.a).a()))
-    {
-      bfrz.c("WadlProxyServiceManager", "download process died restart service");
-      this.a.b();
-    }
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkim
  * JD-Core Version:    0.7.0.1
  */

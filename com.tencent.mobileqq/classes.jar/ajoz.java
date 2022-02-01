@@ -1,59 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class ajoz
-  extends Handler
+  extends atxe
 {
-  private WeakReference<EditLocalVideoActivity> a;
+  public ajoz(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public ajoz(EditLocalVideoActivity paramEditLocalVideoActivity)
+  public void a(View paramView)
   {
-    this.a = new WeakReference(paramEditLocalVideoActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    EditLocalVideoActivity localEditLocalVideoActivity;
-    do
-    {
+    if (paramView.getId() == 2131366102) {
+      ChatHistoryBaseTenDocFragment.a(this.a);
+    }
+    while ((paramView.getTag() instanceof String)) {
       return;
-      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
-      switch (paramMessage.what)
-      {
-      case 1000: 
-      default: 
-        return;
-      case 1001: 
-        EditLocalVideoActivity.b(localEditLocalVideoActivity);
-        return;
-      case 1103: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity);
-        return;
-      case 1102: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
-        return;
+    }
+    TencentDocItem localTencentDocItem = ((ajow)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Ajuh.a(localTencentDocItem);
+      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramView = "unknown";
+    if (atha.b(localTencentDocItem.mUrl)) {
+      paramView = "doc";
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", localTencentDocItem.mUrl);
+      localBundle.putString("tdsourcetag", "s_qq_history_tab");
+      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
+      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
+      return;
+      if (atha.e(localTencentDocItem.mUrl)) {
+        paramView = "form";
+      } else if (atha.d(localTencentDocItem.mUrl)) {
+        paramView = "ppt";
+      } else if (atha.c(localTencentDocItem.mUrl)) {
+        paramView = "sheet";
       }
-    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
-    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
-    return;
-    EditLocalVideoActivity.c(localEditLocalVideoActivity);
-    return;
-    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), alud.a(2131704047), 1).show();
-    EditLocalVideoActivity.d(localEditLocalVideoActivity);
-    return;
-    localEditLocalVideoActivity.a("608", "3", "1", true);
-    LpReportInfo_pf00064.allReport(664, 3, 4);
-    paramMessage = (String)paramMessage.obj;
-    return;
-    localEditLocalVideoActivity.a("608", "3", "2", true);
-    return;
-    EditLocalVideoActivity.e(localEditLocalVideoActivity);
+    }
   }
 }
 

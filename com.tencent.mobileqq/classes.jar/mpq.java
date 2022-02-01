@@ -1,58 +1,61 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class mpq
-  implements ViewPager.OnPageChangeListener
+class mpq
+  implements lfk
 {
-  private WeakReference<mps> jdField_a_of_type_JavaLangRefWeakReference;
+  mpq(mpp parammpp) {}
   
-  public mpq(EffectFilterTextPager paramEffectFilterTextPager, mps parammps)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammps);
-  }
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageScrollStateChanged, arg0[" + paramInt + "], seq[" + l + "]");
-    }
-    if (paramInt == 0)
+    boolean bool2 = true;
+    if (11 != paramInt1) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
-      }
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    long l = AudioHelper.b();
-    if (AudioHelper.e()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageSelected, pos[" + paramInt + "], mProgramingPos[" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) + "], seq[" + l + "]");
-    }
-    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      return false;
+      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
+      paramArrayOfByte = this.a.a();
+    } while (paramArrayOfByte == null);
+    boolean bool1;
+    switch (paramInt2)
     {
-      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
-      if (localFilterItem != null) {
-        ((mps)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, localFilterItem.getId());
+    default: 
+      bool1 = false;
+    }
+    for (;;)
+    {
+      return bool1;
+      this.a.jdField_a_of_type_Int = 2;
+      paramArrayOfByte.b("AbilityResDownloading");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 1;
+      paramArrayOfByte.b("AbilityEnable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 0;
+      paramArrayOfByte.b("AbilityDisable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Boolean = true;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int != 1)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        paramArrayOfByte.b("Enter_SendMode");
+        bool1 = bool2;
+        continue;
+        this.a.jdField_a_of_type_Boolean = false;
+        bool1 = bool2;
+        continue;
+        paramArrayOfByte.a(this.a.b);
+        bool1 = bool2;
       }
-      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpq
  * JD-Core Version:    0.7.0.1
  */

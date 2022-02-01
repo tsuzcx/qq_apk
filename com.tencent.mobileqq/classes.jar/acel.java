@@ -1,15 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class acel
-  implements CompoundButton.OnCheckedChangeListener
+  implements TouchWebView.OnScrollChangedListener
 {
-  public acel(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acel(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    afgj.a(paramBoolean);
+    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
+      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
+    }
   }
 }
 

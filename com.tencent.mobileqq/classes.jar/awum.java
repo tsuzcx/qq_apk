@@ -1,30 +1,39 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
-class awum
-  extends awuh
+public class awum
+  implements awsv
 {
-  awum(awul paramawul, long paramLong)
+  public awum(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void a()
   {
-    super(paramLong);
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).a();
+    }
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public void a(int paramInt)
   {
-    paramUploadImageSize = awug.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
+    if (MultiCardFragment.a(this.a) != null)
     {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
+      MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.a(this.a).setScrollState(2);
+      MultiCardFragment.a(this.a).fling(-paramInt);
     }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+  }
+  
+  public boolean a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      return MultiCardFragment.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awum
  * JD-Core Version:    0.7.0.1
  */

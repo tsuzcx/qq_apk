@@ -1,27 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-final class athk
-  extends BroadcastReceiver
+class athk
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((athj.a != null) && (athj.a.size() > 0))
-    {
-      Iterator localIterator = athj.a.iterator();
-      while (localIterator.hasNext())
-      {
-        athj localathj = (athj)((WeakReference)localIterator.next()).get();
-        if (localathj != null) {
-          localathj.a(paramContext, paramIntent);
-        }
-      }
-    }
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long b;
+  
+  athk(athj paramathj) {}
 }
 
 

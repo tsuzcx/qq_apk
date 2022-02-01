@@ -13,9 +13,6 @@ import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
 import android.os.LocaleList;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.UiThread;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -34,6 +31,9 @@ import android.view.accessibility.AccessibilityNodeProvider;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.UiThread;
 import io.flutter.app.FlutterPluginRegistry;
 import io.flutter.embedding.android.AndroidKeyProcessor;
 import io.flutter.embedding.android.AndroidTouchProcessor;
@@ -58,7 +58,6 @@ import io.flutter.plugin.editing.TextInputPlugin;
 import io.flutter.plugin.platform.PlatformPlugin;
 import io.flutter.plugin.platform.PlatformViewsController;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -114,7 +113,7 @@ public class FlutterView
       {
         this.dartExecutor = this.mNativeView.getDartExecutor();
         this.flutterRenderer = new FlutterRenderer(this.mNativeView.getFlutterJNI());
-        this.mIsSoftwareRenderingEnabled = FlutterJNI.nativeGetIsSoftwareRenderingEnabled();
+        this.mIsSoftwareRenderingEnabled = this.mNativeView.getFlutterJNI().nativeGetIsSoftwareRenderingEnabled();
         this.mMetrics = new FlutterView.ViewportMetrics();
         this.mMetrics.devicePixelRatio = paramContext.getResources().getDisplayMetrics().density;
         setFocusable(true);
@@ -671,44 +670,10 @@ public class FlutterView
   {
     this.mNativeView.setMessageHandler(paramString, paramBinaryMessageHandler);
   }
-  
-  public void updateCustomAccessibilityActions(ByteBuffer paramByteBuffer, String[] paramArrayOfString)
-  {
-    try
-    {
-      if (this.mAccessibilityNodeProvider != null)
-      {
-        paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-        this.mAccessibilityNodeProvider.updateCustomAccessibilityActions(paramByteBuffer, paramArrayOfString);
-      }
-      return;
-    }
-    catch (Exception paramByteBuffer)
-    {
-      Log.e("FlutterView", "Uncaught exception while updating local context actions", paramByteBuffer);
-    }
-  }
-  
-  public void updateSemantics(ByteBuffer paramByteBuffer, String[] paramArrayOfString)
-  {
-    try
-    {
-      if (this.mAccessibilityNodeProvider != null)
-      {
-        paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-        this.mAccessibilityNodeProvider.updateSemantics(paramByteBuffer, paramArrayOfString);
-      }
-      return;
-    }
-    catch (Exception paramByteBuffer)
-    {
-      Log.e("FlutterView", "Uncaught exception while updating semantics", paramByteBuffer);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.FlutterView
  * JD-Core Version:    0.7.0.1
  */

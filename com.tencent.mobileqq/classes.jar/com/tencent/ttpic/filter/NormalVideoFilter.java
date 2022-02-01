@@ -12,17 +12,21 @@ import com.tencent.aekit.openrender.UniformParam.Float3fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
@@ -58,6 +62,7 @@ public abstract class NormalVideoFilter
   private boolean mAudioPause;
   private boolean mHasBodyDetected = false;
   private boolean mHasSeenValid = false;
+  private boolean mIsLastPause = false;
   private boolean mIsNeedSeekTime = false;
   private PlayerUtil.Player mPlayer;
   public List<PointF> mPreviousBodyPoints = null;
@@ -119,62 +124,97 @@ public abstract class NormalVideoFilter
     if (VideoMaterialUtil.isEmptyItem(this.item)) {
       return this.tex[0];
     }
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
-    {
-      this.mVideoDecoder.decodeFrame(paramInt);
-      if (this.mVideoDecoder.updateFrame()) {
-        this.isImageReady = true;
+    Object localObject = VideoMemoryManager.getInstance().getVideoPath();
+    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG)) {
+      if ((localObject != null) && (((String)localObject).endsWith(".png")))
+      {
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+        if (BitmapUtils.isLegal((Bitmap)localObject)) {
+          BenchUtil.benchStart("1normal loadTexture");
+        }
       }
-      this.lastImageIndex = paramInt;
     }
-    label404:
+    label580:
     for (;;)
     {
-      return this.tex[0];
-      if (this.tex[0] != 0) {
-        if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
-        {
-          if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
-          {
-            this.isImageReady = true;
-            this.lastImageIndex = paramInt;
-          }
+      try
+      {
+        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+        this.isImageReady = true;
+        if (localObject != null) {
+          ((Bitmap)localObject).recycle();
         }
-        else
+        if (this.mVideoDecoder != null) {
+          this.mVideoDecoder.release();
+        }
+        VideoMemoryManager.getInstance().setVideoPath(null);
+        return this.tex[0];
+      }
+      catch (Exception localException1)
+      {
+        LogUtils.e(TAG, "1getNextFrame:loadTexture Exception:" + localException1.getMessage());
+        continue;
+      }
+      if (this.mVideoDecoder != null)
+      {
+        this.mVideoDecoder.decodeFrame(paramInt);
+        if (this.mVideoDecoder.updateFrame()) {
+          this.isImageReady = true;
+        }
+        this.lastImageIndex = paramInt;
+        if ((localObject != null) && (((String)localObject).endsWith(".mp4")))
         {
-          Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
-          {
-            localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-            localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-          }
-          for (int i = 1;; i = 0) {
-            for (;;)
+          this.mVideoDecoder.release();
+          this.mVideoDecoder = null;
+          this.mVideoDecoder = new ActVideoDecoder((String)localObject, this.tex[0]);
+          VideoMemoryManager.getInstance().setVideoPath(null);
+          continue;
+          if (this.tex[0] != 0) {
+            if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
             {
-              if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-                break label404;
-              }
-              BenchUtil.benchStart("normal loadTexture");
-              try
+              if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
               {
-                GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-                BenchUtil.benchEnd("normal loadTexture");
-                this.spritePictureWidth = ((Bitmap)localObject).getWidth();
-                this.spritePictureHeight = ((Bitmap)localObject).getHeight();
-                if (i != 0)
-                {
-                  ((Bitmap)localObject).recycle();
-                  this.isImageReady = true;
-                  this.lastImageIndex = paramInt;
-                }
+                this.isImageReady = true;
+                this.lastImageIndex = paramInt;
               }
-              catch (Exception localException)
+            }
+            else
+            {
+              localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+              if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
               {
+                localObject = FileUtils.genSeperateFileDir(this.dataPath) + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+                localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+              }
+              for (int i = 1;; i = 0) {
                 for (;;)
                 {
-                  PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException.getMessage());
-                  continue;
-                  VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
+                  if (!BitmapUtils.isLegal((Bitmap)localObject)) {
+                    break label580;
+                  }
+                  BenchUtil.benchStart("normal loadTexture");
+                  try
+                  {
+                    GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+                    BenchUtil.benchEnd("normal loadTexture");
+                    this.spritePictureWidth = ((Bitmap)localObject).getWidth();
+                    this.spritePictureHeight = ((Bitmap)localObject).getHeight();
+                    if (i != 0)
+                    {
+                      ((Bitmap)localObject).recycle();
+                      this.isImageReady = true;
+                      this.lastImageIndex = paramInt;
+                    }
+                  }
+                  catch (Exception localException2)
+                  {
+                    for (;;)
+                    {
+                      PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException2.getMessage());
+                      continue;
+                      VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
+                    }
+                  }
                 }
               }
             }
@@ -187,16 +227,20 @@ public abstract class NormalVideoFilter
   private void initAudio()
   {
     if (this.mPlayer != null) {}
-    while ((this.item == null) || (TextUtils.isEmpty(this.dataPath)) || (TextUtils.isEmpty(this.item.id)) || (TextUtils.isEmpty(this.item.audio))) {
-      return;
-    }
-    String str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
-    if (str.startsWith("assets://"))
+    for (;;)
     {
-      this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false);
       return;
+      if ((this.item != null) && (!TextUtils.isEmpty(this.dataPath)) && (!TextUtils.isEmpty(this.item.id)) && (!TextUtils.isEmpty(this.item.audio)))
+      {
+        String str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
+        if (str.startsWith("assets://")) {}
+        for (this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false); this.mPlayer != null; this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false))
+        {
+          TouchTriggerManager.getInstance().setMusicDuration(this.mPlayer.getDuration());
+          return;
+        }
+      }
     }
-    this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false);
   }
   
   private boolean isFullScreenRender(AttributeParam paramAttributeParam)
@@ -222,6 +266,20 @@ public abstract class NormalVideoFilter
     return true;
   }
   
+  private void recordMusicStartInfo(boolean paramBoolean)
+  {
+    if (this.mPlayer == null) {
+      return;
+    }
+    if (TouchTriggerManager.getInstance().getMusicStartTime() <= 0L) {
+      TouchTriggerManager.getInstance().setMusicStartTime(System.currentTimeMillis());
+    }
+    if ((!this.mIsLastPause) && (paramBoolean)) {
+      TouchTriggerManager.getInstance().setMusicCurrentPosition(this.mPlayer.getCurrentPosition());
+    }
+    this.mIsLastPause = paramBoolean;
+  }
+  
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
@@ -242,7 +300,7 @@ public abstract class NormalVideoFilter
   
   public boolean canUseBlendMode()
   {
-    return (this.item != null) && (this.item.blendMode < 2);
+    return (this.item != null) && (this.item.blendMode < 2) && (!this.item.isDisplacementMaterial());
   }
   
   public void clearGLSLSelf()
@@ -261,6 +319,7 @@ public abstract class NormalVideoFilter
       {
         this.mVideoDecoder.release();
         this.mVideoDecoder = null;
+        VideoMemoryManager.getInstance().setVideoPath(null);
       }
       return;
     }
@@ -319,9 +378,11 @@ public abstract class NormalVideoFilter
   
   public void initParams()
   {
-    int i = -1;
+    int i;
     int j;
-    if (this.item.transformType == 1) {
+    if (this.item.transformType == 1)
+    {
+      i = -1;
       j = 1;
     }
     for (;;)
@@ -338,17 +399,37 @@ public abstract class NormalVideoFilter
       addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
       addParam(new UniformParam.FloatParam("alpha", 1.0F));
       addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-      return;
-      if (this.item.transformType == 2)
+      addParam(new UniformParam.Float2fParam("displacement", this.item.displacementX, this.item.displacementY));
+      Object localObject = this.dataPath + File.separator + this.item.displacementLutPath;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.item.isDisplacementMaterial()))
       {
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, 1);
+        if (BitmapUtils.isLegal((Bitmap)localObject))
+        {
+          addParam(new UniformParam.TextureBitmapParam("inputImageTexture4", (Bitmap)localObject, 33988, true));
+          addParam(new UniformParam.IntParam("displacementEnableLut", 1));
+        }
+      }
+      for (;;)
+      {
+        addParam(new UniformParam.TextureParam("inputImageTexture5", 0, 33989));
+        addParam(new UniformParam.FloatParam("useDisplacementMask", 0.0F));
+        return;
+        if (this.item.transformType != 2) {
+          break label477;
+        }
         j = -1;
         i = 1;
+        break;
+        addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
+        addParam(new UniformParam.IntParam("displacementEnableLut", 0));
+        continue;
+        addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
+        addParam(new UniformParam.IntParam("displacementEnableLut", 0));
       }
-      else
-      {
-        i = 1;
-        j = 1;
-      }
+      label477:
+      i = 1;
+      j = 1;
     }
   }
   
@@ -370,7 +451,7 @@ public abstract class NormalVideoFilter
   public boolean needCopyTex()
   {
     if (this.item == null) {}
-    while ((this.item.blendMode < 2) || (this.item.blendMode > 12)) {
+    while (((this.item.blendMode < 2) || (this.item.blendMode > 12)) && (!this.item.isDisplacementMaterial())) {
       return false;
     }
     return true;
@@ -386,12 +467,18 @@ public abstract class NormalVideoFilter
     return this.triggered;
   }
   
+  public void pauseAndSeekToOrigin()
+  {
+    PlayerUtil.pauseAndSeekToOrigin(this.mPlayer);
+  }
+  
   public void reset()
   {
     this.mHasBodyDetected = false;
     this.mHasSeenValid = false;
     this.mPreviousBodyPoints = null;
     this.mAudioPause = false;
+    pauseAndSeekToOrigin();
   }
   
   public void setAudioPause(boolean paramBoolean)
@@ -454,10 +541,7 @@ public abstract class NormalVideoFilter
     this.triggered = paramBoolean;
   }
   
-  public void stopAndResetAudio()
-  {
-    PlayerUtil.stopAndResetPlayer(this.mPlayer);
-  }
+  protected void updateCatFacePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat) {}
   
   public void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
   {
@@ -492,6 +576,7 @@ public abstract class NormalVideoFilter
     if (this.playMode == 0)
     {
       PlayerUtil.startPlayer(this.mPlayer, true);
+      recordMusicStartInfo(false);
       return;
     }
     long l;
@@ -503,10 +588,12 @@ public abstract class NormalVideoFilter
       return;
     }
     PlayerUtil.startPlayer(this.mPlayer, false);
+    recordMusicStartInfo(false);
     return;
     if (this.playMode == 0)
     {
       PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      recordMusicStartInfo(false);
       return;
     }
     if ((this.playMode == 1) && (this.mIsNeedSeekTime))
@@ -517,13 +604,13 @@ public abstract class NormalVideoFilter
       return;
     }
     PlayerUtil.startPlayer(this.mPlayer, false);
+    recordMusicStartInfo(false);
     return;
     PlayerUtil.stopPlayer(this.mPlayer);
+    recordMusicStartInfo(true);
   }
   
   protected void updatePositions(List<PointF> paramList) {}
-  
-  protected void updatePositions(List<PointF> paramList, int paramInt) {}
   
   protected abstract void updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat);
   
@@ -531,25 +618,33 @@ public abstract class NormalVideoFilter
   
   public void updatePreview(Object paramObject)
   {
-    int i;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
+      if ((!this.item.isDisplacementMaterial()) || (paramObject.displacementMaskFrame == null) || (paramObject.displacementMaskFrame.getLastRenderTextureId() <= 0)) {
+        break label140;
+      }
+      addParam(new UniformParam.TextureParam("inputImageTexture5", paramObject.displacementMaskFrame.getLastRenderTextureId(), 33989));
+      addParam(new UniformParam.FloatParam("useDisplacementMask", 1.0F));
+    }
+    int i;
+    for (;;)
+    {
       if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
       updatePlayer(this.isFirstTriggered);
       i = this.frameIndex;
-      if (!needRenderTexture())
-      {
-        clearTextureParam();
-        VideoMemoryManager.getInstance().reset(this.item.id);
-        updateTextureParam(0, paramObject.timestamp);
+      if (needRenderTexture()) {
+        break;
       }
-    }
-    else
-    {
+      clearTextureParam();
+      VideoMemoryManager.getInstance().reset(this.item.id);
+      updateTextureParam(0, paramObject.timestamp);
       return;
+      label140:
+      addParam(new UniformParam.TextureParam("inputImageTexture5", 0, 33989));
+      addParam(new UniformParam.FloatParam("useDisplacementMask", 0.0F));
     }
     if (VideoMaterialUtil.isGestureItem(this.item)) {
       updatePositions(paramObject.handPoints);
@@ -566,7 +661,7 @@ public abstract class NormalVideoFilter
         for (;;)
         {
           if (this.mHasBodyDetected) {
-            break label177;
+            break label279;
           }
           paramObject.bodyPoints = null;
           break;
@@ -579,8 +674,12 @@ public abstract class NormalVideoFilter
       }
       else
       {
-        label177:
-        updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
+        label279:
+        if (VideoMaterialUtil.isCatItem(this.item)) {
+          updateCatFacePositions(paramObject.catFacePoints, paramObject.catFaceAngles, paramObject.phoneAngle);
+        } else {
+          updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
+        }
       }
     }
   }
@@ -605,7 +704,7 @@ public abstract class NormalVideoFilter
     {
       label7:
       return;
-      if (paramInt != this.lastImageIndex)
+      if ((paramInt != this.lastImageIndex) || (this.item.isCanDiyPitcureVideo != 0))
       {
         if ((this.lastImageIndex > paramInt) && (this.mVideoDecoder != null)) {
           this.mVideoDecoder.reset();
@@ -628,14 +727,14 @@ public abstract class NormalVideoFilter
           return;
         }
         if (this.item.stickerType != VideoFilterFactory.STICKER_TYPE.SPIRITE.type) {
-          break label453;
+          break label463;
         }
         if (!this.gotSpritePicture)
         {
           addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
           this.gotSpritePicture = true;
           if ((this.item.frameSize == null) || (this.item.frameSize.length < 2)) {
-            break label441;
+            break label451;
           }
           this.spritePictureColumn = (this.spritePictureWidth / this.item.frameSize[0]);
           this.spritePictureRow = (this.spritePictureHeight / this.item.frameSize[1]);
@@ -649,12 +748,12 @@ public abstract class NormalVideoFilter
           setTexCords(new float[] { f3, f1, f3, f2, f4, f2, f4, f1 });
           this.lastImageIndex = paramInt;
           return;
-          label441:
+          label451:
           LogUtils.e(TAG, "SPIRITE Invalid frameSize.");
         }
       }
     }
-    label453:
+    label463:
     addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
   }
   
@@ -666,7 +765,7 @@ public abstract class NormalVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.NormalVideoFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,102 @@
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
+import com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
-class auen
-  extends QQUIEventReceiver<auek, auee>
+public class auen
+  extends auee
 {
-  public auen(@NonNull auek paramauek)
+  public static final AtomicInteger a;
+  private Map<Integer, MethodChannel.Result> a;
+  
+  static
   {
-    super(paramauek);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   }
   
-  public void a(@NonNull auek paramauek, @NonNull auee paramauee)
+  public auen(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppManager", 2, "receive event:" + paramauee.toString());
+    super(paramString, paramBinaryMessenger);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  }
+  
+  private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
+  {
+    if ((paramRequestPacket == null) || (paramResult == null)) {
+      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
     }
-    switch (paramauee.jdField_a_of_type_Int)
-    {
-    }
+    int i;
     do
     {
-      do
-      {
-        return;
-      } while ((!"MiniAppLauncher".equals(paramauee.jdField_a_of_type_JavaLangString)) || (aued.a((String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[0]) != 1) || (((Integer)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue() == 2));
-      String str = (String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[1];
-      if (paramauee.jdField_a_of_type_Boolean)
-      {
-        QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131707218), 0).a();
-        auef localauef = auek.a(paramauek).a(str, 2, 0, false);
-        if (localauef != null)
-        {
-          localauef.jdField_a_of_type_AndroidOsBundle.putString("unzipped_path", (String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[3]);
-          auek.b(paramauek, (auec)auek.a(paramauek).get(localauef.h));
-          return;
-        }
-      }
-      paramauee = auef.a(str);
-      auek.a(paramauek, paramauee[1], Integer.parseInt(paramauee[0]), 1003);
       return;
-      auek.a(paramauek, (MiniAppActivity)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[0], (String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[1], ((Integer)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue(), (MiniAppOptions)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[3]);
-      return;
-      auek.a(paramauek, auef.a((String)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)paramauee.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue()));
-      return;
-    } while (paramauee.jdField_a_of_type_Boolean);
-    auek.a(paramauek, paramauee.jdField_a_of_type_Auef.jdField_a_of_type_JavaLangString, paramauee.jdField_a_of_type_Auef.jdField_a_of_type_Int, 1004);
+      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
+      localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
+      localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
+      localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
+      localToServiceMsg.putWupBuffer(paramRequestPacket.body);
+      paramResult = new NewIntent(a().getApplication(), auem.class);
+      paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+      a().startServlet(paramResult);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
   }
   
-  public Class acceptEventClass()
+  public MethodChannel.MethodCallHandler a()
   {
-    return auee.class;
+    return new aueo(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return auep.a;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg == null)
+    {
+      QLog.d("QFlutter.SSOChannel", 1, "onReceive, request is null");
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = paramToServiceMsg.extraData.getLong("REQUEST_TIME");
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+    }
+    byte[] arrayOfByte = paramFromServiceMsg.getWupBuffer();
+    ResponsePacket localResponsePacket = new ResponsePacket();
+    localResponsePacket.isSuc = Boolean.valueOf(paramFromServiceMsg.isSuccess());
+    localResponsePacket.errCode = Integer.valueOf(paramFromServiceMsg.getResultCode());
+    localResponsePacket.body = arrayOfByte;
+    int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
+    paramFromServiceMsg = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+    a(paramToServiceMsg.getServiceCmd(), localResponsePacket, paramFromServiceMsg);
+  }
+  
+  public void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
+  {
+    ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auen
  * JD-Core Version:    0.7.0.1
  */

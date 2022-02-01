@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.contactsync;
 
-import apac;
 import com.tencent.qphone.base.util.QLog;
 
-public class ContactSyncManager$2
+class ContactSyncManager$2
   implements Runnable
 {
-  public ContactSyncManager$2(apac paramapac) {}
+  ContactSyncManager$2(ContactSyncManager paramContactSyncManager, int paramInt) {}
   
   public void run()
   {
     try
     {
-      this.this$0.a();
+      this.this$0.a(this.a);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,7 +23,7 @@ public class ContactSyncManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ContactSyncManager.2
  * JD-Core Version:    0.7.0.1
  */

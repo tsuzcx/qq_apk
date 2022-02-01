@@ -3,12 +3,12 @@ package com.tencent.mobileqq.miniapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aueo;
+import awly;
 
 public class MiniAppOptions
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniAppOptions> CREATOR = new aueo();
+  public static final Parcelable.Creator<MiniAppOptions> CREATOR = new awly();
   
   public MiniAppOptions() {}
   
@@ -23,7 +23,7 @@ public class MiniAppOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppOptions
  * JD-Core Version:    0.7.0.1
  */

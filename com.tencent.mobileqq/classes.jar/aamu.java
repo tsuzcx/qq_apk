@@ -1,6 +1,6 @@
 public abstract interface aamu
 {
-  public abstract void onResponse(aamt paramaamt);
+  public abstract void a();
 }
 
 

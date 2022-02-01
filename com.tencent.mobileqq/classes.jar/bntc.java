@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import com.tencent.common.app.AppInterface;
 
-public final class bntc
-  implements Parcelable.Creator<ShortVideoTravellerManager.TravellerVideoItem>
+class bntc
+  extends bnoz
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
-  }
+  bntc(bnta parambnta, AppInterface paramAppInterface) {}
   
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
+    bnta.a(this.jdField_a_of_type_Bnta).a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
   }
 }
 

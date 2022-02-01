@@ -1,58 +1,32 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoik
-  extends BaseAdapter
+  extends aojt
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
-  
-  public aoik(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+    paramQQAppInterface = new aoij(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "avgame";
+    paramQQAppInterface.c = "create_room";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    for (;;)
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
     {
-      paramViewGroup = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+      paramString = paramContext[i];
+      if (paramString.split("=").length == 2)
+      {
+        int j = paramString.indexOf("=");
+        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
+      }
+      i += 1;
     }
+    return paramQQAppInterface;
   }
 }
 

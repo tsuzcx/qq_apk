@@ -1,21 +1,7 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-
-class bdra
-  extends URLDrawableDownListener.Adapter
+public final class bdra
 {
-  bdra(bdqz parambdqz) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.onLoadSuccessed(paramURLDrawable);
-  }
+  public static final String a = anni.a(2131713692);
+  public static final String b = anni.a(2131713706);
 }
 
 

@@ -13,7 +13,7 @@ public class ShareData
   public static final Parcelable.Creator<ShareData> CREATOR = new ShareData.1();
   protected final String TAG = "ShareData";
   public boolean isLocalPic;
-  public MiniAppInfo miniAppInfo;
+  protected MiniAppInfo miniAppInfo;
   public boolean needShareCallback;
   public boolean shareInMiniProcess;
   public int shareItemId;
@@ -138,7 +138,7 @@ public class ShareData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ShareData
  * JD-Core Version:    0.7.0.1
  */

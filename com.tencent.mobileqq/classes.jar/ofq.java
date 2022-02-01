@@ -1,40 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class ofq
-  implements Animator.AnimatorListener
+  implements QQPermissionCallback
 {
-  ofq(ofn paramofn) {}
+  ofq(ofp paramofp, BaseActivity paramBaseActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ofn.a(this.a, false);
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bglp.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ofn.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    ofn.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ofn.a(this.a, true);
-    ofn.a(this.a).setAlpha(0.0F);
-    ofn.b(this.a).setAlpha(0.0F);
-    ofn.c(this.a).setAlpha(0.0F);
-    ofn.a(this.a).setVisibility(0);
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    ofk.a(this.jdField_a_of_type_Ofp.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ofq
  * JD-Core Version:    0.7.0.1
  */

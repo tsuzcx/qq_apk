@@ -20,21 +20,44 @@ public class RichTextParser
     this.context = paramContext;
   }
   
-  public Node createNode(String paramString1, String paramString2, CssStyleSet paramCssStyleSet, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  private void addExtraInfo(Node paramNode1, Node paramNode2, CssStyleSet paramCssStyleSet, JSONObject paramJSONObject)
   {
+    if (paramNode2 == null) {}
+    do
+    {
+      return;
+      paramNode2.cssStyleSet = paramCssStyleSet;
+      paramNode2.nodeRatio = paramNode1.nodeRatio;
+    } while ((paramJSONObject == null) || (!paramJSONObject.has("ratio")));
+    paramNode2.nodeRatio = paramJSONObject.optDouble("ratio", 1.0D);
+  }
+  
+  private Node createNode(Node paramNode, String paramString1, String paramString2, CssStyleSet paramCssStyleSet, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    Object localObject = null;
     if ("text".equals(paramString2))
     {
-      paramString1 = new TextNode();
-      ((TextNode)paramString1).text = paramJSONObject1.optString("text");
+      paramString2 = paramJSONObject1.optString("text");
+      paramString1 = localObject;
+      if (Node.valueIsLegal(paramString2))
+      {
+        paramString1 = new TextNode();
+        ((TextNode)paramString1).text = paramString2;
+      }
     }
     for (;;)
     {
-      paramString1.cssStyleSet = paramCssStyleSet;
+      addExtraInfo(paramNode, paramString1, paramCssStyleSet, paramJSONObject2);
       return paramString1;
       if ("img".equals(paramString1))
       {
-        paramString1 = new ImgNode();
-        ((ImgNode)paramString1).src = paramJSONObject2.optString("src");
+        paramString2 = paramJSONObject2.optString("src");
+        paramString1 = localObject;
+        if (Node.valueIsLegal(paramString2))
+        {
+          paramString1 = new ImgNode();
+          ((ImgNode)paramString1).src = paramString2;
+        }
       }
       else
       {
@@ -43,7 +66,7 @@ public class RichTextParser
     }
   }
   
-  public CssStyleSet getCssStyleSet(String paramString1, String paramString2, Node paramNode)
+  private CssStyleSet getCssStyleSet(String paramString1, String paramString2, Node paramNode, JSONObject paramJSONObject)
   {
     CssStyleSet localCssStyleSet = new CssStyleSet();
     if ((paramNode != null) && (paramNode.cssStyleSet != null)) {
@@ -74,6 +97,8 @@ public class RichTextParser
       }
       if ("strong".equalsIgnoreCase(paramString1)) {
         localCssStyleSet.addCssStyle(CssStyle.createStyle("font-weight", "bold"));
+      } else if (("a".equalsIgnoreCase(paramString1)) && (paramJSONObject != null)) {
+        localCssStyleSet.addCssStyle(CssStyle.createStyle("href", paramJSONObject.optString("href")));
       } else {
         localCssStyleSet.addCssStyle(CssStyle.getDisplay(false));
       }
@@ -90,9 +115,13 @@ public class RichTextParser
     int i = 0;
     while (i < paramJSONArray.length())
     {
-      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      if (localJSONObject != null) {
-        localLayoutNode.children.add(parseNodeItem(localJSONObject, localLayoutNode));
+      Object localObject = paramJSONArray.optJSONObject(i);
+      if (localObject != null)
+      {
+        localObject = parseNodeItem((JSONObject)localObject, localLayoutNode);
+        if (localObject != null) {
+          localLayoutNode.children.add(localObject);
+        }
       }
       i += 1;
     }
@@ -108,15 +137,17 @@ public class RichTextParser
     if (localJSONObject != null) {
       localObject = localJSONObject.optString("style");
     }
-    paramNode = createNode(str1, str2, getCssStyleSet(str1, (String)localObject, paramNode), paramJSONObject, localJSONObject);
+    paramNode = createNode(paramNode, str1, str2, getCssStyleSet(str1, (String)localObject, paramNode, localJSONObject), paramJSONObject, localJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("children");
-    if (paramJSONObject != null)
+    if ((paramJSONObject != null) && (paramNode != null))
     {
       int i = 0;
       while (i < paramJSONObject.length())
       {
         localObject = parseNodeItem(paramJSONObject.optJSONObject(i), paramNode);
-        paramNode.children.add(localObject);
+        if (localObject != null) {
+          paramNode.children.add(localObject);
+        }
         i += 1;
       }
     }
@@ -125,7 +156,7 @@ public class RichTextParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser
  * JD-Core Version:    0.7.0.1
  */

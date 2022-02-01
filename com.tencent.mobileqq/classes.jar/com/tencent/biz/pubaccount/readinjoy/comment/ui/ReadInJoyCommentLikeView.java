@@ -13,11 +13,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bkbq;
+import bmqa;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
-import opf;
-import opg;
+import pew;
+import pex;
 
 public class ReadInJoyCommentLikeView
   extends FrameLayout
@@ -28,7 +28,7 @@ public class ReadInJoyCommentLikeView
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseCommentData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
-  private opg jdField_a_of_type_Opg;
+  private pex jdField_a_of_type_Pex;
   
   public ReadInJoyCommentLikeView(@NonNull Context paramContext)
   {
@@ -50,11 +50,11 @@ public class ReadInJoyCommentLikeView
   
   private void a()
   {
-    inflate(getContext(), 2131559935, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369671));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368823));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378725));
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new opf(this);
+    inflate(getContext(), 2131560083, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370093));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369172));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379591));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new pew(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -79,11 +79,11 @@ public class ReadInJoyCommentLikeView
       }
     }
     label77:
-    for (int i = 2130842436;; i = 2130842434)
+    for (int i = 2130842759;; i = 2130842757)
     {
       localImageView.setImageResource(i);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt > 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(bkbq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(bmqa.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt == 0) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("");
@@ -128,9 +128,9 @@ public class ReadInJoyCommentLikeView
     measure(paramInt1, paramInt2);
   }
   
-  public void setOnLikeListener(opg paramopg)
+  public void setOnLikeListener(pex parampex)
   {
-    this.jdField_a_of_type_Opg = paramopg;
+    this.jdField_a_of_type_Pex = parampex;
   }
 }
 

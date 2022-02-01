@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import ajlh;
+import acvy;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemActivateFriendsData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   private static final String TAG = "ActivateFriends.Recent";
   
@@ -43,11 +43,11 @@ public class RecentItemActivateFriendsData
         break;
       }
       this.mUnreadNum = paramQQAppInterface.a(localMessage.frienduin, localMessage.istroop);
-      this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
+      this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
       this.mLastMsg = localMessage.getMessageText();
-      e();
+      updateMsgUnreadStateMenu();
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131689607);
+        this.mTitleName = paramContext.getString(2131689531);
       }
     } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder();
@@ -84,7 +84,7 @@ public class RecentItemActivateFriendsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemActivateFriendsData
  * JD-Core Version:    0.7.0.1
  */

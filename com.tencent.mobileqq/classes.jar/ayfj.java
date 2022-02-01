@@ -1,16 +1,8 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import java.util.List;
 
-public final class ayfj
-  extends Editable.Factory
+public abstract interface ayfj
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof bamz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bamz(paramCharSequence, 1, 20);
-  }
+  public abstract void a(List<ayir> paramList);
 }
 
 

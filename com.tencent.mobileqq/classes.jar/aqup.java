@@ -1,58 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqup
-  extends aqvc
+public class aqup
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public int a;
+  public int b;
   
-  aqup(aque paramaque, MessageRecord paramMessageRecord)
+  public static aqup a(String paramString)
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqup localaqup = new aqup();
+        paramString = new JSONObject(paramString);
+        localaqup.a = paramString.optInt("switch", 0);
+        localaqup.b = paramString.optInt("stoppreload", 0);
+        QLog.d("ConfBean", 2, "confBean = " + localaqup.a);
+        return localaqup;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqva paramaqva)
+  public String toString()
   {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
-      return;
-    }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aquq(this, paramString, paramaqva));
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("result:").append(this.a);
+    localStringBuilder.append(" stoppreload:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqup
  * JD-Core Version:    0.7.0.1
  */

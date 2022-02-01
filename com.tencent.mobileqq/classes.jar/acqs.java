@@ -1,32 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-
-public class acqs
-  implements View.OnClickListener
+public abstract interface acqs
 {
-  public acqs(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
+  public abstract String a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    case 2131377746: 
-    default: 
-      this.a.a = 0;
-    }
-    for (;;)
-    {
-      this.a.a(this.a.a);
-      azqs.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
-      return;
-      this.a.a = 1;
-      continue;
-      this.a.a = 2;
-      continue;
-      this.a.a = 3;
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

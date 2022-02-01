@@ -1,14 +1,27 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface bgyt
+public final class bgyt
+  implements EIPCResultCallback
 {
-  public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
+  public bgyt(bgyq parambgyq) {}
   
-  public abstract void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.code != 0)
+    {
+      this.a.a(2, "", "");
+      return;
+    }
+    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
+    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyt
  * JD-Core Version:    0.7.0.1
  */

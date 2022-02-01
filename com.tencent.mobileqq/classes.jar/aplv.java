@@ -1,187 +1,39 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.SystemFaceData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aplv
-  extends apld
-  implements Handler.Callback
+final class aplv
+  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
 {
-  public static final String c = SystemFaceData.class.getSimpleName();
-  private Handler a = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<String> b;
+  aplv(String paramString1, String paramString2, apip paramapip) {}
   
-  public aplv(QQAppInterface paramQQAppInterface)
+  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    super("qq.android.system.face.gifv14", paramQQAppInterface);
-  }
-  
-  private void c(String paramString)
-  {
-    int j = 0;
-    int i = j;
-    try
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
     {
-      int m = Integer.parseInt(paramString);
-      i = j;
-      int k = bamd.a[m];
-      i = j;
-      j = bamd.b[m];
-      i = j;
-      localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(k), "");
-      i = j;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      Object localObject;
-      do
+      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
+      if (paramString != null)
       {
-        for (;;)
+        boolean bool = paramString.CheckShareUrlLegality(this.b);
+        paramString.Release();
+        if (bool)
         {
-          URL localURL;
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() ", localMalformedURLException);
-          }
-          localObject = null;
+          this.jdField_a_of_type_Apip.a(true);
+          ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
         }
-        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(i);
-        localObject = URLDrawable.getDrawable((URL)localObject, localDrawable, localDrawable, true);
-        if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status!=successed||loading. go to restartDownload");
-          }
-          ((URLDrawable)localObject).addHeader("faceIdx", paramString);
-          ((URLDrawable)localObject).restartDownload();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status=" + ((URLDrawable)localObject).getStatus() + " do nothing..");
-    }
-    if (localURL == null) {
+      }
+      else
+      {
+        return;
+      }
+      this.jdField_a_of_type_Apip.a(false);
+      ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       return;
     }
-  }
-  
-  public int a()
-  {
-    return 10055;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return SystemFaceData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlySysFaceGif";
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      File localFile = BaseApplicationImpl.getContext().getDir("systemface", 0);
-      bdhb.a(paramString, localFile.getAbsolutePath(), true);
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 2, "doOnDownloadFinish() uncompressZip to:" + localFile.getAbsolutePath());
-      }
-      super.a(paramString);
-      this.a.sendEmptyMessage(196864);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void b(String paramString)
-  {
-    apks.a.lock();
-    try
-    {
-      if (this.b == null) {
-        this.b = new ArrayList();
-      }
-      if (!this.b.contains(paramString))
-      {
-        this.b.add(0, paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, "addWaittingFace idx=" + paramString);
-        }
-      }
-      return;
-    }
-    finally
-    {
-      apks.a.unlock();
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramMessage = null;
-      if ((this.b == null) || (this.b.size() <= 0)) {
-        continue;
-      }
-      apks.a.lock();
-      try
-      {
-        if (this.b.size() > 0) {
-          paramMessage = (String)this.b.remove(0);
-        }
-        apks.a.unlock();
-        if ((paramMessage == null) || (paramMessage.length() <= 0)) {
-          continue;
-        }
-        c(paramMessage);
-        if (this.b.size() <= 0) {
-          continue;
-        }
-        this.a.sendEmptyMessageDelayed(196864, 2000L);
-        return false;
-      }
-      finally
-      {
-        apks.a.unlock();
-      }
-    }
+    this.jdField_a_of_type_Apip.a(false);
+    apok.a(apkd.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
+    ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 

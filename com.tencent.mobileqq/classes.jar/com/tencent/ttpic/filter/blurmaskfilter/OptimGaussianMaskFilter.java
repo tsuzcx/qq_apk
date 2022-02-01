@@ -6,6 +6,7 @@ import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.device.YearClass;
 import com.tencent.ttpic.offlineset.enumclass.ScaleMode;
+import com.tencent.ttpic.openapi.filter.GaussianMaskFilter;
 import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 
 public class OptimGaussianMaskFilter
@@ -13,6 +14,8 @@ public class OptimGaussianMaskFilter
 {
   private int MAX_LENGTH = 360;
   private final float MIN_SCALE_STRENGTH = 2.0F;
+  private int customSizeH;
+  private int customSizeW;
   private BlurMaskFilter.IBlurMaskFilter mGaussMaskFitler;
   private int mGaussianHeight;
   private int mGaussianWidth;
@@ -256,6 +259,11 @@ public class OptimGaussianMaskFilter
     clearExtraFilter();
   }
   
+  public void applyForCustomFilter(boolean paramBoolean)
+  {
+    applyFilterChain(paramBoolean, this.customSizeW, this.customSizeH);
+  }
+  
   public void clear()
   {
     clearExtraFilter();
@@ -264,6 +272,16 @@ public class OptimGaussianMaskFilter
       this.mGaussMaskFitler.clear();
       this.mGaussMaskFitler = null;
     }
+  }
+  
+  public void setCustomSizeH(int paramInt)
+  {
+    this.customSizeH = paramInt;
+  }
+  
+  public void setCustomSizeW(int paramInt)
+  {
+    this.customSizeW = paramInt;
   }
   
   public void setMaskTextureId(int paramInt)
@@ -289,7 +307,7 @@ public class OptimGaussianMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.OptimGaussianMaskFilter
  * JD-Core Version:    0.7.0.1
  */

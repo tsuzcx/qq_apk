@@ -4,11 +4,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.auth.b;
 import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.h;
-import com.tencent.mobileqq.msf.core.h.a;
+import com.tencent.mobileqq.msf.core.i;
+import com.tencent.mobileqq.msf.core.i.a;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -35,7 +35,7 @@ public class a
   public static String i = "SetLogLevel";
   public static String j = "UploadLogFile";
   public static String k = "UploadLogFiled_Debug";
-  private static String l = "/183.61.46.145:60000";
+  private static String l = "/14.18.180.90:60000";
   
   public static String a(int paramInt)
   {
@@ -83,10 +83,10 @@ public class a
     localEditor.commit();
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt, h.a parama)
+  public static void a(String paramString1, String paramString2, int paramInt, i.a parama)
   {
     parama.a = paramInt;
-    h.a(parama);
+    i.a(parama);
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(paramString1, 0);
     Object localObject = localSharedPreferences.getString(paramString2, null);
     int m = paramInt;
@@ -127,10 +127,10 @@ public class a
     }
   }
   
-  public static void a(String paramString1, String paramString2, h.a parama)
+  public static void a(String paramString1, String paramString2, i.a parama)
   {
     parama.a = 10;
-    h.a(parama);
+    i.a(parama);
     a(paramString1);
     paramString1 = BaseApplication.getContext().getSharedPreferences(paramString1, 0);
     try

@@ -1,33 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import java.util.List;
+import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
 
-class tgf
-  implements Animator.AnimatorListener
+public class tgf
+  implements tgi
 {
-  tgf(tge paramtge, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  public tgf(UCropView paramUCropView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(RectF paramRectF)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    UCropView.a(this.a).setCropRect(paramRectF);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    tge.a(this.jdField_a_of_type_Tge).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
-    tge.a(this.jdField_a_of_type_Tge).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgf
  * JD-Core Version:    0.7.0.1
  */

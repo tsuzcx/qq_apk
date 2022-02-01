@@ -1,6 +1,11 @@
-public abstract interface bmhg
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.List;
+
+public abstract class bmhg
 {
-  public abstract void a(int paramInt);
+  public static bmhg a = new bmhh();
+  
+  public abstract String a(List<Statistic> paramList);
 }
 
 

@@ -1,37 +1,31 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class qqw
-  extends FragmentPagerAdapter
+class qqw
+  implements bkls
 {
-  public qqw(CoverSelectTabFragment paramCoverSelectTabFragment, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  qqw(qqt paramqqt) {}
   
-  public int getCount()
+  public void a()
   {
-    return CoverSelectTabFragment.a(this.a).size();
-  }
-  
-  @NotNull
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)CoverSelectTabFragment.a(this.a).get(paramInt);
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return CoverSelectTabFragment.a()[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "onAdComplain");
+    }
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((pxk)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqw
  * JD-Core Version:    0.7.0.1
  */

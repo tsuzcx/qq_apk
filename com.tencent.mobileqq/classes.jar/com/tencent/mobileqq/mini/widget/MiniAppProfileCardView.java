@@ -42,8 +42,8 @@ public class MiniAppProfileCardView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561191, this, true);
-    this.mListView = ((HorizontalListView)findViewById(2131372331));
+    this.mLayoutInflater.inflate(2131561416, this, true);
+    this.mListView = ((HorizontalListView)findViewById(2131372925));
     this.mAdapter = new MiniAppProfileCardView.HorzionAdapter(this);
     this.mListView.setAdapter(this.mAdapter);
     this.mListView.setVisibility(0);
@@ -70,7 +70,7 @@ public class MiniAppProfileCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView
  * JD-Core Version:    0.7.0.1
  */

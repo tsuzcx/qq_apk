@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avcw;
+import axkf;
 import java.io.Serializable;
 
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new avcw();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new axkf();
   public String address = "";
   public String city = "";
   boolean isForeign = false;
@@ -181,7 +181,7 @@ public class LocationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

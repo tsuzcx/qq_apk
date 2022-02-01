@@ -1,15 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.util.HashSet;
+import java.util.Set;
 
-class akwb
-  implements EIPCResultCallback
+public class akwb
 {
-  akwb(akvv paramakvv) {}
+  public static final Set<String> a = new HashSet();
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  static
   {
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
+    a.add("SoLoadModule");
   }
 }
 

@@ -1,21 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
 
-class mwm
-  implements bhum
+public abstract class mwm
+  extends anii
 {
-  mwm(mwk parammwk) {}
-  
-  public void onDismiss()
+  protected mwm(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
-    }
-    azqs.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    super(paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwm
  * JD-Core Version:    0.7.0.1
  */

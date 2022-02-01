@@ -1,11 +1,8 @@
-import android.media.MediaPlayer;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-
 public abstract interface bnia
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  public abstract void a(String paramString);
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public abstract void b(String paramString);
 }
 
 

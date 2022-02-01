@@ -1,14 +1,20 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
 
-class akpp
+public class akpp
+  implements akug
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public akpp(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  akpp(akpm paramakpm) {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.a.a.findViewById(2131368540).setVisibility(8);
+      return;
+    }
+    this.a.a.findViewById(2131368540).setVisibility(0);
+  }
 }
 
 

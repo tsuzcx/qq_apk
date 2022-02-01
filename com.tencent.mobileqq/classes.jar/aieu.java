@@ -1,6 +1,19 @@
-public abstract interface aieu
+import mqq.app.QQPermissionCallback;
+
+class aieu
+  implements QQPermissionCallback
 {
-  public abstract void c();
+  aieu(aidp paramaidp) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aidp.d(this.a);
+  }
 }
 
 

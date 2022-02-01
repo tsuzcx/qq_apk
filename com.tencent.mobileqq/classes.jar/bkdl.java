@@ -1,37 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bkdl
+public final class bkdl
+  implements Parcelable.Creator<String>
 {
-  public int a;
-  public Bitmap a;
-  public bkda a;
-  public bkdb a;
-  public bkdk a;
-  String jdField_a_of_type_JavaLangString;
-  public AtomicBoolean a;
-  public boolean a;
-  public int b;
-  public String b;
-  
-  public bkdl(TroopHWJsPlugin paramTroopHWJsPlugin)
+  public String a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Bkda = new bkdm(this);
+    return paramParcel.readString();
   }
   
-  public void a()
+  public String[] a(int paramInt)
   {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
-  }
-  
-  public void b()
-  {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
+    return new String[paramInt];
   }
 }
 

@@ -1,36 +1,37 @@
-import android.text.TextUtils;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class aorq
+class aorq
+  implements MediaPlayer.OnPreparedListener
 {
-  public String a = "";
+  aorq(aorl paramaorl) {}
   
-  public static aorq a(String paramString)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    try
     {
-      return null;
-      try
-      {
-        aorq localaorq = new aorq();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("contents")) {
-          localaorq.a = paramString.getJSONArray("contents").toString();
-        }
-        return localaorq;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + aorl.b(this.a));
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
-    return null;
+      this.a.a.seekTo(0);
+      aorl.b(this.a, true);
+      if (aorl.b(this.a))
+      {
+        this.a.a.start();
+        aorl.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorq
  * JD-Core Version:    0.7.0.1
  */

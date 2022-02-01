@@ -1,45 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
 
 class atuq
-  implements attt
+  implements bigw
 {
-  atuq(atun paramatun) {}
+  atuq(atul paramatul, Activity paramActivity, int paramInt) {}
   
-  public void a(LocationRoom.Venue paramVenue) {}
-  
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  public void a(int paramInt)
   {
-    if (paramList != null)
-    {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.a.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bdhj.c(localBitmap, 16, 16);
-          atun.a(this.a).a(paramList, localBitmap);
-        }
-      }
+    if (paramInt == 2) {
+      atul.a(this.jdField_a_of_type_Atul, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
     }
   }
-  
-  public void a(boolean paramBoolean, Point paramPoint) {}
-  
-  public void a(boolean paramBoolean, attu paramattu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atuq
  * JD-Core Version:    0.7.0.1
  */

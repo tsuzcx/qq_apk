@@ -1,28 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
 
 public class auki
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public auki(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
+  public auki(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bgpa parambgpa) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_Bgpa.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auki
  * JD-Core Version:    0.7.0.1
  */

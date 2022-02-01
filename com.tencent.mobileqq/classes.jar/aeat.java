@@ -1,34 +1,35 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeat
-  implements View.OnLongClickListener
+class aeat
+  implements DialogInterface.OnClickListener
 {
-  public aeat(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  aeat(aear paramaear, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
+    for (paramInt = 1;; paramInt = 2)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+      if (bgnt.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+        break;
       }
-      return true;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), anni.a(2131701399), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      return;
     }
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    beib localbeib = (beib)this.a.a.a(8);
-    if ((localbeib != null) && (localbeib.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(aear.a(this.jdField_a_of_type_Aear));
+    ((anno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL__ACTION_DELETE_SHELL);
+    this.jdField_a_of_type_Aear.a = new biau(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.jdField_a_of_type_Aear.a.setContentView(2131562815);
+    this.jdField_a_of_type_Aear.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691896));
+    this.jdField_a_of_type_Aear.a.setCancelable(true);
+    this.jdField_a_of_type_Aear.a.show();
   }
 }
 

@@ -1,58 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 class agua
-  extends amrx
+  implements ahnt
 {
-  agua(agti paramagti, String paramString) {}
+  agua(agtx paramagtx, aguj paramaguj, MessageForPoke paramMessageForPoke) {}
   
-  public int a()
+  public void a()
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
-    {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Agti.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
-      }
-      agti.a(this.jdField_a_of_type_Agti, agti.a(this.jdField_a_of_type_Agti));
-      nrt.a(this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      ((bcml)this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      agti.b(this.jdField_a_of_type_Agti, false);
-      if ((this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.appid.get() + ""))) {
-        this.jdField_a_of_type_Agti.b(1);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
     }
-    else
+    ahed.a().a(20);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
+    this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Aguj.b == agtx.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agtx.a instanceof ChatHistoryActivity)) && (!agtx.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Aguj.c.setVisibility(0);
+    }
+    for (;;)
     {
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
       return;
-    }
-    this.jdField_a_of_type_Agti.c(this.jdField_a_of_type_Agti.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    this.jdField_a_of_type_Agti.B(2131695729);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    agti.c(this.jdField_a_of_type_Agti);
-    if (agti.d(this.jdField_a_of_type_Agti) == 0) {
-      this.jdField_a_of_type_Agti.bs();
+      this.jdField_a_of_type_Aguj.c.setVisibility(8);
     }
   }
 }

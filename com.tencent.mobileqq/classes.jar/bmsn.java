@@ -1,42 +1,24 @@
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
 class bmsn
-  implements blxn
+  implements View.OnClickListener
 {
-  bmsn(bmsi parambmsi) {}
+  bmsn(bmsl parambmsl) {}
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
-    {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (!paramView.equals(blxf.a(paramDynamicTextItem.c(), paramInt))) {
-          break label139;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bmsi.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-        }
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
-        }
-        return;
-        label139:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-      }
+    bmsl.a(this.a);
+    if ((bmsl.a(this.a) != null) && (bmsl.a(this.a).a() != null) && (bmsl.a(this.a).a().app != null) && (bmsl.a(this.a) != null)) {
+      bmsk.a(bmsl.a(this.a).a().app, 122, String.valueOf(bmsl.a(this.a).iAdId.get()), bmsl.a(this.a).traceinfo.get());
     }
-    this.a.a(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

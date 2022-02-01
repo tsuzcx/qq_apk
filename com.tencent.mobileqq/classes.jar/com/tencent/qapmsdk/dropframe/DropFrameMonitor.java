@@ -1,6 +1,10 @@
 package com.tencent.qapmsdk.dropframe;
 
 import android.annotation.TargetApi;
+import android.app.Application;
+import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -8,11 +12,13 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
-import com.tencent.qapmsdk.base.listener.IMonitorListener;
-import com.tencent.qapmsdk.base.listener.ListenerManager;
+import android.view.Display;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.DropFrameResultMeta;
 import com.tencent.qapmsdk.base.meta.UserMeta;
+import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.activty.ActivityInfo;
 import com.tencent.qapmsdk.common.logger.Logger;
@@ -24,6 +30,7 @@ import java.util.Arrays;
 public class DropFrameMonitor
   extends QAPMMonitorPlugin
 {
+  private static final float DEFAULT_REFRESH_RATE = 60.0F;
   private static final int DROP_0 = 0;
   private static final int DROP_1 = 1;
   private static final int DROP_LESS_15 = 15;
@@ -36,11 +43,12 @@ public class DropFrameMonitor
   private static final int DROP_RANGE_8_15 = 4;
   private static final int DROP_RANGE_OVER_15 = 5;
   private static final long FRAME_INTERVAL_NANOS = 16666667L;
-  private static final double MAX_DURATION = 1.E-009D;
+  private static final float MAX_REFRESH_RATE = 62.0F;
+  private static final float MIN_REFRESH_RATE = 58.0F;
   private static final int MSG_ON_FRAME_RENDERED = 1;
   private static final String TAG = "QAPM_dropframe_DropFrameMonitor";
   private static String currentScene = "";
-  static DropFrameMonitor dropFrameMonitor;
+  static IDropFrameListener dropFrameListener;
   private static volatile DropFrameMonitor instance;
   private static boolean isStarted = false;
   @Nullable
@@ -50,6 +58,7 @@ public class DropFrameMonitor
   private DropFrameResultMeta dropItem = new DropFrameResultMeta();
   @Nullable
   private Choreographer.FrameCallback fpsMeasuringCallback;
+  private long frameRate = 16666667L;
   private long lastFrameTimeNs = 0L;
   
   private DropFrameMonitor()
@@ -57,18 +66,30 @@ public class DropFrameMonitor
     if (!AndroidVersion.isJellyBean()) {
       return;
     }
-    this.choreographer = Choreographer.getInstance();
-    this.calHandler = new Handler(ThreadManager.getMonitorThreadLooper(), new DropFrameMonitor.1(this));
-    this.fpsMeasuringCallback = new DropFrameMonitor.2(this);
+    float f = getRefreshRate();
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_dropframe_DropFrameMonitor", "build version is low, " + f });
+      return;
+    }
+    if ((f < 58.0F) || (f > 62.0F))
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_dropframe_DropFrameMonitor", "refresh rate is valid, " + f });
+      return;
+    }
+    this.frameRate = ((1.0E+009F / f));
+    new Handler(Looper.getMainLooper()).post(new DropFrameMonitor.1(this));
+    this.calHandler = new Handler(ThreadManager.getMonitorThreadLooper(), new DropFrameMonitor.2(this));
+    this.fpsMeasuringCallback = new DropFrameMonitor.3(this);
   }
   
   private DropFrameMonitor(boolean paramBoolean) {}
   
   private boolean checkValidData(DropFrameResultMeta paramDropFrameResultMeta)
   {
-    if ((paramDropFrameResultMeta.dropCount < 0) || (paramDropFrameResultMeta.duration <= 1.E-009D)) {}
+    if ((paramDropFrameResultMeta.dropCount < 0) || (paramDropFrameResultMeta.duration <= PluginCombination.dropFramePlugin.threshold)) {}
     long l1;
-    label65:
+    label68:
     do
     {
       return false;
@@ -79,7 +100,7 @@ public class DropFrameMonitor
       for (;;)
       {
         if (i >= j) {
-          break label65;
+          break label68;
         }
         long l2 = paramDropFrameResultMeta[i];
         if (l2 < 0L) {
@@ -96,28 +117,28 @@ public class DropFrameMonitor
   public static DropFrameMonitor getInstance()
   {
     // Byte code:
-    //   0: getstatic 150	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
+    //   0: getstatic 220	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
     //   3: ifnonnull +27 -> 30
     //   6: ldc 2
     //   8: monitorenter
-    //   9: getstatic 150	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
+    //   9: getstatic 220	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
     //   12: astore_0
     //   13: aload_0
     //   14: ifnonnull +13 -> 27
     //   17: new 2	com/tencent/qapmsdk/dropframe/DropFrameMonitor
     //   20: dup
-    //   21: invokespecial 151	com/tencent/qapmsdk/dropframe/DropFrameMonitor:<init>	()V
-    //   24: putstatic 150	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
+    //   21: invokespecial 221	com/tencent/qapmsdk/dropframe/DropFrameMonitor:<init>	()V
+    //   24: putstatic 220	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
     //   27: ldc 2
     //   29: monitorexit
-    //   30: getstatic 150	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
+    //   30: getstatic 220	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
     //   33: areturn
     //   34: astore_0
     //   35: new 2	com/tencent/qapmsdk/dropframe/DropFrameMonitor
     //   38: dup
     //   39: iconst_1
-    //   40: invokespecial 153	com/tencent/qapmsdk/dropframe/DropFrameMonitor:<init>	(Z)V
-    //   43: putstatic 150	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
+    //   40: invokespecial 223	com/tencent/qapmsdk/dropframe/DropFrameMonitor:<init>	(Z)V
+    //   43: putstatic 220	com/tencent/qapmsdk/dropframe/DropFrameMonitor:instance	Lcom/tencent/qapmsdk/dropframe/DropFrameMonitor;
     //   46: goto -19 -> 27
     //   49: astore_0
     //   50: ldc 2
@@ -160,9 +181,28 @@ public class DropFrameMonitor
     return 5;
   }
   
+  @TargetApi(17)
+  private float getRefreshRate()
+  {
+    Application localApplication = BaseInfo.app;
+    if ((localApplication != null) && (Build.VERSION.SDK_INT >= 17)) {
+      try
+      {
+        float f = ((DisplayManager)localApplication.getSystemService("display")).getDisplay(0).getRefreshRate();
+        return f;
+      }
+      catch (Exception localException)
+      {
+        Logger.INSTANCE.exception("QAPM_dropframe_DropFrameMonitor", "getRefreshRate", localException);
+      }
+    }
+    return 60.0F;
+  }
+  
   private boolean preMonitorScene()
   {
-    if ((this.choreographer == null) || (isStarted)) {
+    if (Looper.getMainLooper() != Looper.myLooper()) {}
+    while ((this.choreographer == null) || (isStarted)) {
       return false;
     }
     this.choreographer.removeFrameCallback(this.fpsMeasuringCallback);
@@ -171,24 +211,30 @@ public class DropFrameMonitor
     return true;
   }
   
+  public static void setDropFrameListener(IDropFrameListener paramIDropFrameListener)
+  {
+    dropFrameListener = paramIDropFrameListener;
+  }
+  
   public void beginDropFrameScene(String paramString)
   {
-    if (preMonitorScene())
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        currentScene = paramString;
-      }
+    if (!canEventReport(PluginCombination.dropFramePlugin.plugin)) {
+      Logger.INSTANCE.i(new String[] { "QAPM_dropframe_DropFrameMonitor", "DropFrame loose: ", paramString });
     }
-    else {
+    do
+    {
+      return;
+      Logger.INSTANCE.d(new String[] { "QAPM_dropframe_DropFrameMonitor", "beginDropFrameScene", paramString });
+    } while (!preMonitorScene());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      currentScene = paramString;
       return;
     }
     currentScene = ActivityInfo.getCurrentActivityName();
   }
   
-  public void start()
-  {
-    new Handler(Looper.getMainLooper()).post(new DropFrameRunnable());
-  }
+  public void start() {}
   
   public void stop()
   {
@@ -201,7 +247,9 @@ public class DropFrameMonitor
   
   public void stopDropFrameScene()
   {
-    if (this.choreographer == null) {
+    Logger.INSTANCE.d(new String[] { "QAPM_dropframe_DropFrameMonitor", "stopDropFrameScene" });
+    if (!isStarted) {}
+    while ((this.choreographer == null) || (Looper.getMainLooper() != Looper.myLooper())) {
       return;
     }
     try
@@ -212,14 +260,11 @@ public class DropFrameMonitor
       {
         Object localObject = ActivityInfo.getCurrentActivityName();
         if (!checkValidData(this.dropItem)) {
-          break label220;
+          break label258;
         }
-        Logger.INSTANCE.i(new String[] { "QAPM_dropframe_DropFrameMonitor", "DropFrame, scene: ", localObject, ", state: ", String.valueOf(this.dropItem.state), " , duration: ", Float.toString(this.dropItem.duration), " , dropCount: ", Arrays.toString(this.dropItem.dropIntervals) });
+        Logger.INSTANCE.i(new String[] { "QAPM_dropframe_DropFrameMonitor", "DropFrame, scene: ", localObject, ", state: ", String.valueOf(this.dropItem.state), " , duration: ", Float.toString(this.dropItem.duration / 1000000.0F), " , dropCount: ", Arrays.toString(this.dropItem.dropIntervals) });
+        PluginController.INSTANCE.addPluginReportNum(PluginCombination.dropFramePlugin.plugin);
         this.dropItem.scene = currentScene;
-        localObject = ListenerManager.monitorListener;
-        if (localObject != null) {
-          ((IMonitorListener)localObject).onMetaGet(this.dropItem);
-        }
         localObject = new InsertRunnable(BaseInfo.userMeta.uin, currentScene, this.dropItem);
         this.calHandler.post((Runnable)localObject);
         currentScene = "";
@@ -234,7 +279,7 @@ public class DropFrameMonitor
         continue;
         String str = currentScene;
         continue;
-        label220:
+        label258:
         this.dropItem.reset();
       }
     }
@@ -242,7 +287,7 @@ public class DropFrameMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.dropframe.DropFrameMonitor
  * JD-Core Version:    0.7.0.1
  */

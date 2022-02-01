@@ -1,63 +1,37 @@
-import android.animation.Animator.AnimatorListener;
-import android.util.SparseArray;
-
 public class anhl
+  implements anil
 {
-  private int jdField_a_of_type_Int = 1;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new anhm(this);
-  private SparseArray<anhi> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private anhn jdField_a_of_type_Anhn;
+  protected void a() {}
   
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
-    }
-  }
+  protected void a(int paramInt) {}
   
-  private void a(int paramInt1, int paramInt2)
-  {
-    anhi localanhi1 = (anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    anhi localanhi2 = (anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    localanhi1.a(false, null);
-    localanhi2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a()
+  protected void b() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    while (i <= 3)
+    switch (paramInt)
     {
-      a(i);
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt, anhi paramanhi)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramanhi);
-  }
-  
-  public void a(int paramInt, anhn paramanhn)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      a(((Integer)paramObject).intValue());
       return;
     }
-    this.jdField_a_of_type_Anhn = paramanhn;
-    a(this.jdField_a_of_type_Int, paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b()
-  {
     a();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_Anhn = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anhl
  * JD-Core Version:    0.7.0.1
  */

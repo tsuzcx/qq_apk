@@ -1,38 +1,64 @@
-import java.util.ArrayList;
-import java.util.List;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.util.Pair;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.4.1;
 
 public class azpx
+  extends aniz
 {
-  int jdField_a_of_type_Int = 0;
-  azpy jdField_a_of_type_Azpy = new azpy(this.jdField_a_of_type_Int, '&');
-  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  azpx(azpu paramazpu) {}
   
-  public azpx()
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_Azpy;
-    int i = 0;
-    if (i < paramString.length())
+    try
     {
-      char c = paramString.charAt(i);
-      azpy localazpy = ((azpy)localObject).a(c);
-      if (localazpy == null)
+      if (!azpu.e(this.a).isFinishing())
       {
-        localazpy = new azpy(this.jdField_a_of_type_Int, c);
-        this.jdField_a_of_type_Int += 1;
-        ((azpy)localObject).a(localazpy);
+        azpu.a(this.a).removeCallbacks(azpu.a(this.a));
+        azpu.a(this.a);
+        if ((paramBoolean) && (paramObject != null))
+        {
+          if ((paramObject instanceof Card))
+          {
+            ThreadManager.post(new AbsVasProfileHeaderComponent.4.1(this, (Card)paramObject), 5, null, true);
+            return;
+          }
+          if ((paramObject instanceof Pair))
+          {
+            paramObject = (Pair)paramObject;
+            if (((Integer)paramObject.first).intValue() == 101107) {
+              azpu.a(this.a, 1);
+            }
+            for (;;)
+            {
+              azpu.b(this.a);
+              return;
+              if (((Integer)paramObject.first).intValue() == 101108)
+              {
+                azpu.a(this.a, 2);
+              }
+              else if (((Integer)paramObject.first).intValue() == 101111)
+              {
+                azpu.a(this.a, 3);
+              }
+              else
+              {
+                if (((Integer)paramObject.first).intValue() != 12002) {
+                  break;
+                }
+                azpu.a(this.a, 4);
+              }
+            }
+            azpu.a(this.a, 5);
+            azpu.a(this.a, (SSummaryCardRsp)paramObject.second);
+          }
+        }
       }
-      for (localObject = localazpy;; localObject = localazpy)
-      {
-        i += 1;
-        break;
-        localazpy.a();
-      }
+      return;
     }
+    catch (Exception paramObject) {}
   }
 }
 

@@ -1,35 +1,12 @@
-class aszc
+abstract interface aszc
 {
-  public static aszc a;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public abstract void a(int paramInt, String paramString);
   
-  static
-  {
-    jdField_a_of_type_Aszc = new aszc(null);
-  }
-  
-  public aszc(String paramString)
-  {
-    this(paramString, null, null);
-  }
-  
-  public aszc(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aszc
  * JD-Core Version:    0.7.0.1
  */

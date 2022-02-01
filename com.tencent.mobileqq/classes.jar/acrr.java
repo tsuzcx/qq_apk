@@ -1,111 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class acrr
-  extends ameq
+  extends QzoneExternalRequest
 {
-  public acrr(Conversation paramConversation) {}
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  protected void a()
+  public acrr(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
-    }
-    this.a.a(0L);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+    long l = Long.parseLong(paramString1);
+    super.setHostUin(l);
+    super.setLoginUserId(l);
+    this.needCompress = false;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0)
-      {
-        auam.a().c(this.a.a);
-        this.a.a(8, paramString, 1);
-        this.a.a(8, alof.C, 5000);
-        this.a.a(8, alof.aL, 5001);
-      }
+    JceStruct localJceStruct = null;
+    if (paramArrayOfByte != null) {
+      localJceStruct = decode(paramArrayOfByte, paramString);
     }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    auam.a().b(paramString, this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
-    }
-    this.a.a(8, paramString, 1);
-    this.a.a(8, alof.C, 5000);
-    this.a.a(8, alof.aL, 5001);
+    return localJceStruct;
   }
   
-  protected void a(String paramString1, String paramString2)
+  public String getCmdString()
   {
-    this.a.a(8, paramString1, 1);
+    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(boolean paramBoolean)
+  public JceStruct getReq()
   {
-    auam.a().c(this.a.a);
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
   }
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public String uniKey()
   {
-    if (paramBoolean1)
-    {
-      this.a.a(8, alof.C, 5000);
-      this.a.a(8, alof.aL, 5001);
-      if (paramTroopInfo != null) {
-        this.a.a(8, paramTroopInfo.troopuin, 1);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(8, paramString, 1);
-      this.a.a(8, alof.C, 5000);
-      this.a.a(8, alof.aL, 5001);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      paramArrayList = (TroopMemberCardInfo)paramArrayList.get(0);
-      if (paramArrayList != null)
-      {
-        this.a.a(8, paramArrayList.troopuin, 1);
-        this.a.a(8, paramArrayList.memberuin, -2147483648);
-        this.a.a(8, alof.C, 5000);
-        this.a.a(8, alof.aL, 5001);
-      }
-    }
-  }
-  
-  protected void b(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.a.getCurrentAccountUin()))) {
-      this.a.a(8, paramString1, 1);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
-    }
-    if ((paramBoolean) && (paramObject != null))
-    {
-      long l = ((Long)((Object[])(Object[])paramObject)[0]).longValue();
-      this.a.a(8, String.valueOf(l), 1);
-    }
+    return this.b;
   }
 }
 

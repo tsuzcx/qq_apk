@@ -1,28 +1,10 @@
-import com.qflutter.video.IQflutterVideoView.StatusCallBack;
-import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
-
-public class bhhy
-  implements bgrw
+public abstract interface bhhy
 {
-  public bhhy(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
-  
-  public void a(bgrq parambgrq)
-  {
-    if (SurfaceFlutterVideoView.a(this.a) != null) {
-      SurfaceFlutterVideoView.a(this.a).on(12, null);
-    }
-    if (SurfaceFlutterVideoView.a(this.a)) {}
-    try
-    {
-      SurfaceFlutterVideoView.a(this.a).start();
-      return;
-    }
-    catch (Throwable parambgrq) {}
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhy
  * JD-Core Version:    0.7.0.1
  */

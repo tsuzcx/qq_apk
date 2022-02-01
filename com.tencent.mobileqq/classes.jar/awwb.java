@@ -1,59 +1,66 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class awwb
-  implements bhva
+  extends awwa
 {
-  public awwb(QzonePhotoView paramQzonePhotoView) {}
-  
-  public AdapterView a(Context paramContext, int paramInt)
+  public awwb(QQAppInterface paramQQAppInterface)
   {
-    do
+    super(paramQQAppInterface);
+  }
+  
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
+      return;
+    }
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      try
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
+        {
+          String str = anni.a(2131692058) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.a().a().a(localMessageRecord, str, true));
+        }
+        i += 1;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+    }
+  }
+  
+  public void a(awws paramawws, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awwd paramawwd)
+  {
+    if (paramawws == null) {
+      return;
+    }
+    if ((paramawws.b == 8) || (paramawws.b == 9)) {}
+    for (paramawws = new athu(this.a, paramawws, paramHashMap, paramawwd);; paramawws = new aths(this.a, paramawws, paramHashMap, paramawwd))
+    {
+      this.a.a().a().a(paramawws, paramHashMap);
+      return;
+      if (paramawws.b == 2)
       {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167140);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
+        a(paramHashMap);
+        paramawwd.a(0, 2, paramawws);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awwb
  * JD-Core Version:    0.7.0.1
  */

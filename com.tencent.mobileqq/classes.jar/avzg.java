@@ -1,45 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class avzg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnKeyListener
 {
-  public avzg(ScanOcrView paramScanOcrView, avzi paramavzi) {}
+  public avzg(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.jdField_a_of_type_Avzi.a * f);
-    int i = (int)(f * this.jdField_a_of_type_Avzi.jdField_b_of_type_Int);
-    int m = j - this.jdField_a_of_type_Avzi.a;
-    int k = i - this.jdField_a_of_type_Avzi.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
+    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+      return true;
     }
-    j = i;
-    if (i < 0) {
-      j = 0;
+    if ((paramInt == 84) || (paramInt == 66))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+      return true;
     }
-    i = this.jdField_a_of_type_Avzi.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.jdField_a_of_type_Avzi.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.jdField_a_of_type_Avzi.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.jdField_a_of_type_Avzi.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.jdField_a_of_type_Avzi.e = j;
-    this.jdField_a_of_type_Avzi.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzg
  * JD-Core Version:    0.7.0.1
  */

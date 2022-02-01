@@ -1,39 +1,57 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class mdu
-  implements URLDrawable.URLDrawableListener
+class mdu
+  implements lri
 {
-  public mdu(AVActivity paramAVActivity) {}
+  mdu(mdt parammdt, VideoAppInterface paramVideoAppInterface) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a()
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+    mdt.c(this.jdField_a_of_type_Mdt);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+    int i = mdt.a(paramInt4);
+    if (QLog.isColorLevel()) {
+      QLog.w(mdt.a(this.jdField_a_of_type_Mdt), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mdt.w + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mdt.x + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mdt.v + "->" + paramInt3 + "], rotation[" + mdt.a(this.jdField_a_of_type_Mdt) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mdt.c() + "]");
+    }
+    if ((!this.jdField_a_of_type_Mdt.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    }
+    this.jdField_a_of_type_Mdt.w = paramInt1;
+    this.jdField_a_of_type_Mdt.x = paramInt2;
+    this.jdField_a_of_type_Mdt.v = paramInt3;
+    this.jdField_a_of_type_Mdt.i = i;
+    if (paramInt4 != -1) {
+      mdt.a(this.jdField_a_of_type_Mdt, i);
+    }
+    mdt.d(this.jdField_a_of_type_Mdt);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void a(byte[] paramArrayOfByte)
   {
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    {
+      String str = this.jdField_a_of_type_Mdt.b();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+    }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void b()
   {
-    AVActivity.a(this.a, true);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
+    mdt.b(this.jdField_a_of_type_Mdt);
+  }
+  
+  public void c()
+  {
+    mdt.a(this.jdField_a_of_type_Mdt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdu
  * JD-Core Version:    0.7.0.1
  */

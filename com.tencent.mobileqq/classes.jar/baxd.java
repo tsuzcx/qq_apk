@@ -1,56 +1,32 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.data.ThumbWidthHeightDP;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-public class baxd
-  extends baqn
+class baxd
+  implements IGalleryImageListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(paramDownloadParams.url.getFile());
-  }
+  baxd(baxc parambaxc, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  public boolean a()
-  {
-    return false;
-  }
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 160;
-    localOptions.inTargetDensity = 160;
-    localOptions.inScreenDensity = 160;
-    localOptions.inJustDecodeBounds = false;
-    String str = paramFile.getAbsolutePath();
-    if (!bdhb.b(str))
+    this.jdField_a_of_type_Baxc.a.b.setVisibility(8);
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
+      this.jdField_a_of_type_Baxc.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      if (this.jdField_a_of_type_Baxc.a.a != null) {
+        this.jdField_a_of_type_Baxc.a.a.initDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Baxc.a.mScreenWidthPx, this.jdField_a_of_type_Baxc.a.mScreenHeightPx, this.jdField_a_of_type_Baxc.getRotation(paramInt));
       }
-      return null;
+      return;
     }
-    paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
-    SafeBitmapFactory.decodeFile(str, localOptions);
-    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
-    if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
-      paramURLDrawableHandler.recycle();
-    }
-    paramFile = new RoundRectBitmap(new bazi(paramFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-    paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
-    paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
-    return paramFile;
+    QQToast.a(this.jdField_a_of_type_Baxc.a.mContext, this.jdField_a_of_type_Baxc.a.mContext.getString(2131694413), 0).a();
   }
 }
 

@@ -1,9 +1,10 @@
 package com.tencent.gdtad.views.image;
 
-import aauk;
-import aaum;
-import aaun;
-import aauo;
+import acqy;
+import acti;
+import actk;
+import actl;
+import actm;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.TextUtils;
@@ -15,29 +16,35 @@ import java.lang.ref.WeakReference;
 public class GdtGifImageView
   extends URLImageView
 {
-  aaum jdField_a_of_type_Aaum;
+  actk jdField_a_of_type_Actk;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<aauo> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<actm> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  aaum jdField_b_of_type_Aaum;
+  actk jdField_b_of_type_Actk;
   private String jdField_b_of_type_JavaLangString;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private volatile boolean c;
   
-  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<aauo> paramWeakReference)
+  public GdtGifImageView(Context paramContext, String paramString1, String paramString2, WeakReference<actm> paramWeakReference, boolean paramBoolean)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramBoolean;
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_Aaum = new aaun(this);
-      new aauk(paramString2, new WeakReference(this.jdField_a_of_type_Aaum)).a();
+      this.jdField_a_of_type_Actk = new actl(this);
+      new acti(paramString2, new WeakReference(this.jdField_a_of_type_Actk)).a();
     }
-    this.jdField_b_of_type_Aaum = new aaun(this);
-    paramContext = new aauk(paramString1, new WeakReference(this.jdField_b_of_type_Aaum));
-    paramContext.a();
-    setImageDrawable(paramContext.a());
+    if (!paramBoolean)
+    {
+      this.jdField_b_of_type_Actk = new actl(this);
+      paramContext = new acti(paramString1, new WeakReference(this.jdField_b_of_type_Actk));
+      paramContext.a();
+      setImageDrawable(paramContext.a());
+    }
     URLDrawable.resume();
     AbstractGifImage.resumeAll();
   }
@@ -55,6 +62,19 @@ public class GdtGifImageView
     setImageDrawable(paramURLDrawable);
   }
   
+  public void a(String paramString, WeakReference<actm> paramWeakReference)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    paramWeakReference = new acti(paramString, new WeakReference(this.jdField_b_of_type_Actk));
+    paramWeakReference.a();
+    setImageDrawable(paramWeakReference.a());
+    this.jdField_b_of_type_Boolean = true;
+    acqy.a("GdtImageView", "GdtGifImageView update completed " + paramString);
+    URLDrawable.resume();
+    AbstractGifImage.resumeAll();
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
@@ -67,7 +87,7 @@ public class GdtGifImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtGifImageView
  * JD-Core Version:    0.7.0.1
  */

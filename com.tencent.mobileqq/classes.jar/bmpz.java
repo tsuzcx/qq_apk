@@ -1,43 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bmpz
-  extends JobSegment<Bitmap, Bitmap>
 {
-  public int a;
-  
-  public bmpz()
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    this.a = 10;
+    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public bmpz(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.a = paramInt;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
+    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
+    paramQQAppInterface.commit();
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bdnl.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    wxe.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

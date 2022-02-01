@@ -11,8 +11,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bjnt;
-import bjum;
+import bmcc;
+import bmiw;
 import cooperation.qzone.util.QZLog;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,7 +24,7 @@ public class PanoramaLoadingBall
   private int jdField_a_of_type_Int = PanoramaLoadingLayout.jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bjnt(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new bmcc(this, Looper.getMainLooper());
   private PanoramaLoadingBackground jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
@@ -167,7 +167,7 @@ public class PanoramaLoadingBall
   public void setRotationX(float paramFloat)
   {
     float f1 = 255.0F;
-    if (!bjum.a().c()) {
+    if (!bmiw.a().c()) {
       super.setRotationX(paramFloat);
     }
     paramFloat = paramFloat / this.jdField_a_of_type_Float * (255 - PanoramaLoadingBackground.jdField_a_of_type_Int) + PanoramaLoadingBackground.jdField_a_of_type_Int;
@@ -185,14 +185,14 @@ public class PanoramaLoadingBall
   
   public void setRotationY(float paramFloat)
   {
-    if (!bjum.a().c()) {
+    if (!bmiw.a().c()) {
       super.setRotationY(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBall
  * JD-Core Version:    0.7.0.1
  */

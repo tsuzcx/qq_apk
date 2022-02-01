@@ -1,217 +1,106 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 public class aeka
-  extends akis
+  implements arsl
 {
-  public aeka(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramInt, paramBoolean);
-  }
+  public aeka(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public int getCount()
+  public void a_(int paramInt1, int paramInt2)
   {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.a.a != null) && (paramInt >= 0) && (paramInt < this.a.a.size())) {
-      return this.a.a.get(paramInt);
+    if (paramInt1 == paramInt2) {
+      return;
     }
-    return null;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1 = (aekc)getItem(paramInt);
-    View localView;
-    if ((paramView != null) && (paramView.getTag() != null))
+    int j = this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
+    this.a.b = new byte[j];
+    int i = 0;
+    while (i < j)
     {
-      paramViewGroup = (aekb)paramView.getTag();
-      localView = paramView;
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
+      i += 1;
     }
-    Object localObject2;
-    for (;;)
+    if (paramInt2 < paramInt1)
     {
-      paramView = (TextView)localView.findViewById(2131376448);
-      localObject2 = localView.findViewById(2131375628);
-      if (((aekc)localObject1).jdField_a_of_type_Int != 0) {
-        break;
-      }
-      ((View)localObject2).setVisibility(8);
-      paramView.setVisibility(0);
-      paramView.setText(((aekc)localObject1).jdField_a_of_type_JavaLangString);
-      if (AppSetting.c)
+      i = j - 1;
+      if (i >= 0)
       {
-        paramView.setFocusable(true);
-        paramView.setContentDescription(((aekc)localObject1).jdField_a_of_type_JavaLangString);
-      }
-      paramViewGroup.jdField_b_of_type_Int = 0;
-      paramViewGroup.jdField_a_of_type_JavaLangString = "";
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      return localView;
-      localView = this.a.getLayoutInflater().inflate(2131560900, null);
-      paramViewGroup = new aekb(this.a, null);
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367819));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(16908308));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367297));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367114));
-      paramViewGroup.d = ((TextView)localView.findViewById(2131376296));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364256));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localView.setTag(paramViewGroup);
-    }
-    ((View)localObject2).setVisibility(0);
-    paramView.setVisibility(8);
-    label402:
-    int i;
-    if ((((aekc)localObject1).jdField_a_of_type_Awge instanceof Friends))
-    {
-      localObject1 = (Friends)((aekc)localObject1).jdField_a_of_type_Awge;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-      if (!TextUtils.isEmpty(((Friends)localObject1).remark))
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).remark);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        if (AppSetting.c) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject1).remark);
+        if ((paramInt2 < i) && (i <= paramInt1)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
         }
-        if (TextUtils.equals(alud.a(2131716265), ((Friends)localObject1).recommReason)) {
-          ((Friends)localObject1).recommReason = alud.a(2131716269);
-        }
-        paramViewGroup.d.setText(((Friends)localObject1).recommReason);
-        if (((Friends)localObject1).age == 0) {
-          break label793;
-        }
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(((Friends)localObject1).age));
-        switch (((Friends)localObject1).gender)
+        for (;;)
         {
-        default: 
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130845459);
-          i = 0;
-          label440:
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
-          if ((((Friends)localObject1).age == 0) && (i == 0))
-          {
-            paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-            label474:
-            if (AppSetting.c)
-            {
-              localObject2 = paramViewGroup.jdField_c_of_type_AndroidWidgetTextView;
-              if (i != 0) {
-                break label847;
-              }
-              paramView = String.valueOf(((Friends)localObject1).age);
-              label500:
-              ((TextView)localObject2).setContentDescription(paramView);
-              paramViewGroup.d.setContentDescription(((Friends)localObject1).recommReason);
-            }
-            paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(1, ((Friends)localObject1).uin));
-          }
+          i -= 1;
           break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+          }
         }
       }
+    }
+    else if (paramInt1 < paramInt2)
+    {
+      i = 0;
+      if (i < j)
+      {
+        if ((i < paramInt1) || (paramInt2 < i)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
+          }
+        }
+      }
+    }
+    i = 0;
+    while (i < j)
+    {
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
+      i += 1;
+    }
+    Groups localGroups;
+    if (paramInt2 < paramInt1)
+    {
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      GroupManagerActivity.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.b));
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
+      }
+      GroupManagerActivity.a(this.a, this.a.a(this.a.b, this.a.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (!GroupManagerActivity.a(this.a)) {
+        break label586;
+      }
+      this.a.a(2131692829);
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_b_of_type_Int = 1;
-      localView.setOnClickListener(this.a);
-      return localView;
-      if (!TextUtils.isEmpty(((Friends)localObject1).smartRemark))
-      {
-        if (!TextUtils.isEmpty(((Friends)localObject1).name))
-        {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).name);
-          label591:
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText("(" + ((Friends)localObject1).smartRemark + ")");
-          if (!AppSetting.c) {
-            break;
-          }
-          localObject2 = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-          if (!TextUtils.isEmpty(((Friends)localObject1).name)) {
-            break label691;
-          }
-        }
-        label691:
-        for (paramView = ((Friends)localObject1).uin;; paramView = ((Friends)localObject1).name)
-        {
-          ((TextView)localObject2).setContentDescription(paramView);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject1).smartRemark);
-          break;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).uin);
-          break label591;
-        }
-      }
-      if (!TextUtils.isEmpty(((Friends)localObject1).name))
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).name);
-        label723:
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        if (!AppSetting.c) {
-          break;
-        }
-        localObject2 = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-        if (!TextUtils.isEmpty(((Friends)localObject1).name)) {
-          break label784;
-        }
-      }
-      label784:
-      for (paramView = ((Friends)localObject1).uin;; paramView = ((Friends)localObject1).name)
-      {
-        ((TextView)localObject2).setContentDescription(paramView);
+      bcst.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
+      return;
+      if (paramInt1 >= paramInt2) {
         break;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).uin);
-        break label723;
       }
-      label793:
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(null);
-      break label402;
-      i = 2130840263;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130845459);
-      break label440;
-      i = 2130840258;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130845457);
-      break label440;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      break label474;
-      label847:
-      if (((Friends)localObject1).gender == 1)
-      {
-        paramView = alud.a(2131716266) + ((Friends)localObject1).age;
-        break label500;
-      }
-      paramView = alud.a(2131716271) + ((Friends)localObject1).age;
-      break label500;
-      if ((((aekc)localObject1).jdField_a_of_type_Awge instanceof PhoneContact))
-      {
-        paramView = (PhoneContact)((aekc)localObject1).jdField_a_of_type_Awge;
-        paramViewGroup.jdField_a_of_type_JavaLangString = paramView.mobileCode;
-        paramViewGroup.jdField_c_of_type_Int = 11;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.name);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        paramViewGroup.d.setText(alud.a(2131716270));
-        if (AppSetting.c)
-        {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramView.name);
-          paramViewGroup.d.setContentDescription(alud.a(2131716268));
-        }
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramViewGroup.jdField_a_of_type_JavaLangString, 11, (byte)0));
-      }
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      break;
+      label586:
+      this.a.a();
     }
   }
 }

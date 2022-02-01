@@ -1,31 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bkzu
-  implements blic
+public class bkzu
 {
-  bkzu(bkzt parambkzt, ToServiceMsg paramToServiceMsg) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void a(int paramInt)
+  public bkzu(int paramInt, String paramString)
   {
-    bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      paramBitmap = bkzt.a(this.jdField_a_of_type_Bkzt.mApp.getApp(), paramBitmap);
-      if ((paramBitmap == null) || (paramBitmap.length() < 1))
-      {
-        bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
-        return;
-      }
-      bkzt.a(this.jdField_a_of_type_Bkzt, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
-      return;
-    }
-    bkzt.a(this.jdField_a_of_type_Bkzt, null, null);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4);
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(paramInt + "preload_switch" + paramString, -1);
+    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload" + paramString, false);
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload_data" + paramString, false);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt(paramInt + "mem_limit" + paramString, 256);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramInt + "ext1" + paramString, "");
   }
 }
 

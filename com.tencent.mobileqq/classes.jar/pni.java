@@ -1,27 +1,44 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class pni
-  extends ComponentContentPgcShortContentGridImage
 {
-  pni(pnh parampnh, Context paramContext, ArticleInfo paramArticleInfo)
+  public long a;
+  public ArrayList<Pair<BaseArticleInfo, Float>> a;
+  public long b;
+  
+  private pni(pmy parampmy)
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public int d()
+  public ArrayList<Long> a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
     }
-    return super.d();
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Pair localPair = (Pair)localIterator.next();
+      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pni
  * JD-Core Version:    0.7.0.1
  */

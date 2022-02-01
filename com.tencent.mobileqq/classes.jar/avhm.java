@@ -1,20 +1,32 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.QLog;
 
 class avhm
-  extends avbs
+  implements avlv
 {
-  avhm(avhf paramavhf) {}
+  avhm(avhl paramavhl) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(avhf.b(this.a) + ""))) {
-      this.a.h(paramBoolean);
-    }
+    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avhl.a(this.a, paramNewTogetherRoomMessageData, 1);
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avhl.a(this.a, paramNewTogetherRoomMessageData, 3);
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avhl.a(this.a, paramNewTogetherRoomMessageData, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhm
  * JD-Core Version:    0.7.0.1
  */

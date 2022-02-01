@@ -1,64 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-final class aldz
-  extends bead
+public class aldz
+  extends AbsRecentStatus
 {
-  aldz(File paramFile) {}
+  private static int a = 25;
   
-  public void onDone(beae parambeae)
+  public int[] declareStatus()
   {
-    super.onDone(parambeae);
-    if ((3 == parambeae.a()) && (this.a.exists())) {}
-    try
+    return new int[] { 7 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    do
     {
-      ndr.a(this.a, this.a.getParent() + File.separator);
-      label166:
-      return;
-    }
-    catch (Exception parambeae)
+      return false;
+      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+    } while ((paramRecentBaseData.mStatus == 4) || ((paramRecentBaseData.getRecentUserType() != 1) && (paramRecentBaseData.getRecentUserType() != 0)));
+    String str = paramRecentBaseData.getRecentUserUin();
+    if (paramRecentBaseData.getRecentUserType() == 1) {}
+    for (int i = 1;; i = 2)
     {
-      parambeae = parambeae;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambeae.getMessage());
+      i = ((bdrb)paramIMCoreAppRuntime.getManager(339)).a(i, str);
+      if (((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus < i)) || (i == 0)) {
+        break;
       }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambeae)
-      {
-        return;
-      }
+      paramRecentBaseData.mStatus = i;
+      return false;
     }
-    catch (OutOfMemoryError parambeae)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambeae.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambeae)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw parambeae;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
-    }
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

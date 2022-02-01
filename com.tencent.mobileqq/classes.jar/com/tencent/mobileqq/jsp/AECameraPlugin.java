@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.jsp;
 
-import amrk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,25 +12,26 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import arso;
-import atgy;
-import atgz;
-import atha;
-import awkj;
-import baub;
-import baue;
-import baug;
-import bavg;
-import bdfr;
-import bdhj;
-import bdin;
-import begz;
-import bkou;
-import bkpf;
-import blat;
-import blax;
-import bljc;
-import bmpo;
+import aoqb;
+import atwl;
+import avno;
+import avnp;
+import avnq;
+import ayyz;
+import bdvs;
+import bdvu;
+import bdvw;
+import bdwu;
+import bgku;
+import bgmo;
+import bgnt;
+import bhod;
+import bndh;
+import bnds;
+import bnqb;
+import bnqf;
+import bnyp;
+import bpgu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -64,13 +64,13 @@ public class AECameraPlugin
   
   static
   {
-    File localFile = new File(bkpf.d);
+    File localFile = new File(bnds.d);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
     if (b(BaseApplicationImpl.getContext()))
     {
-      localFile = new File(bkou.a());
+      localFile = new File(bndh.a());
       if (!localFile.exists()) {
         localFile.mkdirs();
       }
@@ -114,23 +114,23 @@ public class AECameraPlugin
     Object localObject = paramString.split("\\.");
     localObject = localObject[(localObject.length - 1)];
     if (b(this.mRuntime.a())) {
-      return bkou.a() + paramString.hashCode() + "." + (String)localObject;
+      return bndh.a() + paramString.hashCode() + "." + (String)localObject;
     }
-    return bkpf.d + File.separator + paramString.hashCode() + "." + (String)localObject;
+    return bnds.d + File.separator + paramString.hashCode() + "." + (String)localObject;
   }
   
   private String a(String paramString, int paramInt)
   {
     paramString = new CompressInfo(paramString, paramInt);
-    awkj.a(paramString);
+    ayyz.a(paramString);
     return paramString.e;
   }
   
   private String a(String paramString, int paramInt1, int paramInt2)
   {
-    String str = bkpf.d + File.separator + "ae_pic_" + System.currentTimeMillis() + ".jpeg";
+    String str = bnds.d + File.separator + "ae_pic_" + System.currentTimeMillis() + ".jpeg";
     this.jdField_a_of_type_Double = 0.7D;
-    bdhj.a(paramString, str, paramInt1, paramInt2, (int)(this.jdField_a_of_type_Double * 100.0D));
+    bgmo.a(paramString, str, paramInt1, paramInt2, (int)(this.jdField_a_of_type_Double * 100.0D));
     return str;
   }
   
@@ -149,7 +149,7 @@ public class AECameraPlugin
     for (;;)
     {
       localBitmap.recycle();
-      paramString.append(bdfr.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
+      paramString.append(bgku.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
       return paramString;
       paramString = new StringBuilder("data:image/jpeg;base64,");
       localBitmap.compress(Bitmap.CompressFormat.JPEG, 80, localByteArrayOutputStream);
@@ -214,7 +214,7 @@ public class AECameraPlugin
     if (this.mRuntime == null) {
       return;
     }
-    if ((blat.c(this.mRuntime.a())) || (blat.d(this.mRuntime.a()))) {}
+    if ((bnqb.c(this.mRuntime.a())) || (bnqb.d(this.mRuntime.a()))) {}
     for (Intent localIntent = new Intent(this.mRuntime.a(), QzoneFeedsPluginProxyActivity.class);; localIntent = new Intent(this.mRuntime.a(), SplashActivity.class))
     {
       localIntent.addFlags(67108864);
@@ -237,7 +237,7 @@ public class AECameraPlugin
     if (this.jdField_b_of_type_Int == 0)
     {
       paramInt = 400;
-      if (this.jdField_c_of_type_Int != 0) {
+      if (this.c != 0) {
         break label90;
       }
     }
@@ -248,17 +248,17 @@ public class AECameraPlugin
       paramInt = this.jdField_b_of_type_Int;
       break;
       label90:
-      i = this.jdField_c_of_type_Int;
+      i = this.c;
     }
   }
   
-  private void a(atha paramatha, @NonNull String paramString)
+  private void a(avnq paramavnq, @NonNull String paramString)
   {
-    this.jdField_b_of_type_Int = paramatha.jdField_a_of_type_Int;
-    this.jdField_c_of_type_Int = paramatha.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = paramavnq.jdField_a_of_type_Int;
+    this.c = paramavnq.jdField_b_of_type_Int;
     this.jdField_b_of_type_JavaLangString = paramString;
-    int i = blat.C.a();
-    blax.a(this.mRuntime.a(), a(1), i, paramatha);
+    int i = bnqb.C.a();
+    bnqf.a(this.mRuntime.a(), a(1), i, paramavnq);
   }
   
   private void a(@NonNull String paramString)
@@ -274,7 +274,7 @@ public class AECameraPlugin
     this.jdField_a_of_type_Int = -1;
     paramString = new File(a(paramString));
     if (paramString.exists()) {
-      arso.a(paramString);
+      atwl.a(paramString);
     }
   }
   
@@ -284,12 +284,20 @@ public class AECameraPlugin
     if (TextUtils.isEmpty(paramString2)) {
       str = "key_web_selected_pic_path";
     }
-    bljc.a().a(str, paramString1, 0);
+    bnyp.a().a(str, paramString1, 0);
+  }
+  
+  private boolean a()
+  {
+    if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getIntent() != null)) {
+      return bnqb.h(this.mRuntime.a().getIntent().getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", bnqb.a.a()));
+    }
+    return false;
   }
   
   private String b(@NonNull String paramString)
   {
-    return bkpf.d + File.separator + paramString.hashCode() + "_thumb.jpg";
+    return bnds.d + File.separator + paramString.hashCode() + "_thumb.jpg";
   }
   
   private JSONObject b(@NonNull String paramString1, @NonNull String paramString2)
@@ -306,19 +314,19 @@ public class AECameraPlugin
     return localJSONObject;
   }
   
-  private static void b(AppInterface paramAppInterface, String paramString1, String paramString2, baug parambaug)
+  private static void b(AppInterface paramAppInterface, String paramString1, String paramString2, bdvw parambdvw)
   {
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_JavaLangString = paramString1;
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.jdField_c_of_type_JavaLangString = paramString2;
-    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-    localbaub.jdField_c_of_type_Long = 60000L;
-    localbaub.jdField_a_of_type_Baug = new atgz(parambaug);
+    bdvs localbdvs = new bdvs();
+    localbdvs.jdField_a_of_type_JavaLangString = paramString1;
+    localbdvs.jdField_a_of_type_Int = 0;
+    localbdvs.jdField_c_of_type_JavaLangString = paramString2;
+    localbdvs.jdField_b_of_type_Int = bgnt.a(bdwu.a().a());
+    localbdvs.jdField_c_of_type_Long = 60000L;
+    localbdvs.jdField_a_of_type_Bdvw = new avnp(parambdvw);
     try
     {
-      paramAppInterface.getNetEngine(0).a(localbaub);
-      localbaub.jdField_a_of_type_Baug.onUpdateProgeress(localbaub, 1L, 100L);
+      paramAppInterface.getNetEngine(0).a(localbdvs);
+      localbdvs.jdField_a_of_type_Bdvw.onUpdateProgeress(localbdvs, 1L, 100L);
       return;
     }
     catch (Exception paramAppInterface)
@@ -337,57 +345,71 @@ public class AECameraPlugin
     String str1 = a(paramString);
     String str2 = b(paramString);
     if (!new File(str1).exists()) {
-      QQToast.a(this.mRuntime.a(), 2131720031, 0).a();
+      QQToast.a(this.mRuntime.a(), 2131718007, 0).a();
     }
     for (;;)
     {
       return;
       paramString = this.mRuntime.a().getIntent();
-      Object localObject1;
+      Object localObject;
       if (paramString == null)
       {
-        localObject1 = blat.a;
+        localObject = bnqb.a;
         paramString = "";
         label69:
-        if ((localObject1 != blat.e) || (TextUtils.isEmpty(paramString))) {
+        if ((localObject != bnqb.e) || (TextUtils.isEmpty(paramString))) {
           break label178;
         }
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("file_send_path", str1);
-        ((Intent)localObject1).putExtra("file_send_duration", ShortVideoUtils.a(str1));
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("file_send_path", str1);
+        ((Intent)localObject).putExtra("file_send_duration", ShortVideoUtils.a(str1));
       }
       try
       {
-        ((Intent)localObject1).putExtra("widgetinfo", URLEncoder.encode(paramString, "UTF-8"));
+        ((Intent)localObject).putExtra("widgetinfo", URLEncoder.encode(paramString, "UTF-8"));
         label127:
-        this.mRuntime.a().setResult(-1, (Intent)localObject1);
+        this.mRuntime.a().setResult(-1, (Intent)localObject);
         this.mRuntime.a().finish();
         return;
-        localObject1 = blat.a(paramString.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", blat.a.a()));
+        localObject = bnqb.a(paramString.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", bnqb.a.a()));
         paramString = paramString.getStringExtra("url");
         break label69;
         label178:
-        paramString = a(str1, 1);
-        if (paramString != null) {}
+        localObject = a(str1, 1);
         try
         {
-          bdhj.b(paramString, 80, new File(str2));
-          bmpo.a(this.mRuntime.a(), str1, str2, blat.c(this.mRuntime.a()), a(21));
+          if (a())
+          {
+            Intent localIntent = new Intent();
+            localIntent.putExtra("h5_key_flag", true);
+            localIntent.putExtra("h5_key_video_path", str1);
+            localIntent.putExtra("h5_key_thumb_path", str2);
+            localIntent.putExtra("widgetinfo", URLEncoder.encode(paramString, "UTF-8"));
+            bgmo.b((Bitmap)localObject, 80, new File(str2));
+            this.mRuntime.a().setResult(-1, localIntent);
+            this.mRuntime.a().finish();
+            return;
+          }
+          if (localObject != null)
+          {
+            bgmo.b((Bitmap)localObject, 80, new File(str2));
+            bpgu.a(this.mRuntime.a(), str1, str2, bnqb.c(this.mRuntime.a()), a(21));
+          }
           for (;;)
           {
             return;
-            QQToast.a(this.mRuntime.a(), 2131720031, 0).a();
+            QQToast.a(this.mRuntime.a(), 2131718007, 0).a();
           }
         }
-        catch (IOException localIOException)
+        catch (IOException paramString)
         {
-          QQToast.a(this.mRuntime.a(), 2131720031, 0).a();
+          QQToast.a(this.mRuntime.a(), 2131718007, 0).a();
           return;
         }
         finally
         {
-          if (paramString != null) {
-            paramString.recycle();
+          if (localObject != null) {
+            ((Bitmap)localObject).recycle();
           }
         }
       }
@@ -404,7 +426,7 @@ public class AECameraPlugin
     if (TextUtils.isEmpty(paramString2)) {
       str = "key_web_selected_pic_path";
     }
-    ThreadManager.excute(new AECameraPlugin.2(this, bljc.a().a(str, "", 0), paramString1), 64, null, true);
+    ThreadManager.excute(new AECameraPlugin.2(this, bnyp.a().a(str, "", 0), paramString1), 64, null, true);
   }
   
   private static boolean b(@NonNull Context paramContext)
@@ -412,7 +434,7 @@ public class AECameraPlugin
     if (Build.VERSION.SDK_INT < 23) {
       return true;
     }
-    return amrk.a(paramContext);
+    return aoqb.a(paramContext);
   }
   
   private void c(String paramString)
@@ -443,12 +465,12 @@ public class AECameraPlugin
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = 1;
     String str = a(paramString1);
-    atgy localatgy = new atgy(this, paramString1, paramString2, str);
+    avno localavno = new avno(this, paramString1, paramString2, str);
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable = new AECameraPlugin.DownloadRunnable(null);
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_b_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_Baug = localatgy;
+    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_Bdvw = localavno;
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_c_of_type_JavaLangString = paramString2;
     ThreadManager.excute(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable, 128, null, true);
   }
@@ -464,7 +486,7 @@ public class AECameraPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = new atha();
+        paramString1 = new avnq();
         paramString1.jdField_a_of_type_Int = paramJsBridgeListener.getInt("outMaxWidth");
         paramString1.jdField_b_of_type_Int = paramJsBridgeListener.getInt("outMaxHeight");
         paramString1.jdField_a_of_type_Double = paramJsBridgeListener.optDouble("compression");
@@ -563,7 +585,7 @@ public class AECameraPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AECameraPlugin
  * JD-Core Version:    0.7.0.1
  */

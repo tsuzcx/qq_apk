@@ -1,132 +1,78 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bmsg
 {
-  private static final Matrix a = new Matrix();
-  
-  public static bmtc a(RectF paramRectF1, RectF paramRectF2)
+  public static ArrayList<Object> a(JSONArray paramJSONArray)
   {
-    bmtc localbmtc = new bmtc(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localbmtc;
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+      return null;
     }
-    localbmtc.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localbmtc.c, localbmtc.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localbmtc.a += paramRectF1.centerX() - localRectF.centerX();
-    float f = localbmtc.b;
-    localbmtc.b = (paramRectF1.centerY() - localRectF.centerY() + f);
-    return localbmtc;
-  }
-  
-  public static bmtc a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bmtc localbmtc = new bmtc(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
     {
-      return localbmtc;
-      if ((paramRectF2.width() < paramRectF1.width()) && (paramRectF2.height() < paramRectF1.height())) {
-        localbmtc.c = Math.min(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbmtc.c, localbmtc.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.width() < paramRectF1.width()) {
-        localbmtc.a += paramRectF1.centerX() - localRectF.centerX();
-      }
-      while (localRectF.height() < paramRectF1.height())
+      Object localObject = paramJSONArray.opt(i);
+      if (localObject == null) {}
+      for (;;)
       {
-        paramFloat1 = localbmtc.b;
-        localbmtc.b = (paramRectF1.centerY() - localRectF.centerY() + paramFloat1);
-        return localbmtc;
-        if (localRectF.left > paramRectF1.left) {
-          localbmtc.a += paramRectF1.left - localRectF.left;
-        } else if (localRectF.right < paramRectF1.right) {
-          localbmtc.a += paramRectF1.right - localRectF.right;
+        i += 1;
+        break;
+        if (localObject.getClass() == JSONObject.class) {
+          localArrayList.add(a((JSONObject)localObject));
+        } else if (localObject.getClass() == JSONArray.class) {
+          localArrayList.add(a((JSONArray)localObject));
         }
       }
-      if (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbmtc.b;
-        localbmtc.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbmtc;
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbmtc.b;
-    localbmtc.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbmtc;
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2)
-  {
-    paramRectF2.offset(paramRectF1.centerX() - paramRectF2.centerX(), paramRectF1.centerY() - paramRectF2.centerY());
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat)
-  {
-    a(paramRectF1, paramRectF2, paramFloat, paramFloat, paramFloat, paramFloat);
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    if ((paramRectF1.isEmpty()) || (paramRectF2.isEmpty())) {
-      return;
     }
-    float f2 = paramFloat1;
-    float f1 = paramFloat3;
-    if (paramRectF1.width() < paramFloat1 + paramFloat3)
-    {
-      f1 = 0.0F;
-      f2 = 0.0F;
-    }
-    paramFloat3 = paramFloat2;
-    paramFloat1 = paramFloat4;
-    if (paramRectF1.height() < paramFloat2 + paramFloat4)
-    {
-      paramFloat1 = 0.0F;
-      paramFloat3 = 0.0F;
-    }
-    paramFloat2 = paramRectF1.width();
-    paramFloat4 = paramRectF1.height();
-    paramFloat2 = Math.min((paramFloat2 - f2 - f1) / paramRectF2.width(), (paramFloat4 - paramFloat3 - paramFloat1) / paramRectF2.height());
-    paramRectF2.set(0.0F, 0.0F, paramRectF2.width() * paramFloat2, paramFloat2 * paramRectF2.height());
-    paramRectF2.offset(paramRectF1.centerX() + (f2 - f1) / 2.0F - paramRectF2.centerX(), paramRectF1.centerY() + (paramFloat3 - paramFloat1) / 2.0F - paramRectF2.centerY());
+    return localArrayList;
   }
   
-  public static bmtc b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  public static Map<String, Object> a(String paramString)
   {
-    bmtc localbmtc = new bmtc(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    try
     {
-      return localbmtc;
-      if ((paramRectF2.width() < paramRectF1.width()) || (paramRectF2.height() < paramRectF1.height())) {
-        localbmtc.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbmtc.c, localbmtc.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.left > paramRectF1.left) {
-        localbmtc.a += paramRectF1.left - localRectF.left;
-      }
-      while (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbmtc.b;
-        localbmtc.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbmtc;
-        if (localRectF.right < paramRectF1.right) {
-          localbmtc.a += paramRectF1.right - localRectF.right;
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localLinkedHashMap;
+  }
+  
+  public static Map<String, Object> a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = localIterator.next() + "";
+      Object localObject = paramJSONObject.get(str);
+      if (localObject != null) {
+        if (localObject.getClass() == JSONObject.class) {
+          localLinkedHashMap.put(str, a((JSONObject)localObject));
+        } else if (localObject.getClass() == JSONArray.class) {
+          localLinkedHashMap.put(str, a((JSONArray)localObject));
+        } else {
+          localLinkedHashMap.put(str, localObject);
         }
       }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbmtc.b;
-    localbmtc.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbmtc;
+    }
+    return localLinkedHashMap;
   }
 }
 

@@ -1,19 +1,26 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
-
 class bjzt
-  implements bjff
+  implements bjck
 {
-  bjzt(bjzq parambjzq, int paramInt) {}
+  bjzt(bjzs parambjzs) {}
   
-  public void onFail(Activity paramActivity, String paramString)
+  public boolean isMultiVideoMsgSupport(int paramInt)
   {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+    if (paramInt - 32 == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bjcq.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      return bool;
+    }
+  }
+  
+  public boolean isSharpVideoMsgSupport(int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzt
  * JD-Core Version:    0.7.0.1
  */

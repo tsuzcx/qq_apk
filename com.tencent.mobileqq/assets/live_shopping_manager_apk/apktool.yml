@@ -1,0 +1,23 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: live_shopping_manager.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '15'
+  targetSdkVersion: '28'
+sharedLibrary: false
+sparseResources: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '1'
+  versionName: '1.0'

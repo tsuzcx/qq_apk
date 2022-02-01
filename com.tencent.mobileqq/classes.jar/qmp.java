@@ -1,17 +1,22 @@
-public class qmp
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
+import java.util.List;
+
+class qmp
+  extends EventCallback
 {
-  private String a;
-  private String b;
-  private String c;
+  qmp(qmi paramqmi) {}
   
-  public qmp(String paramString)
+  public void onPagerChange(int paramInt)
   {
-    this.a = paramString;
+    qmi.b(paramInt);
+    if ((qmi.b() != null) && (!qmi.b().contains(Integer.valueOf(paramInt)))) {
+      qmi.b().add(Integer.valueOf(paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qmp
  * JD-Core Version:    0.7.0.1
  */

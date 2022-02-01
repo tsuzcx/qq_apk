@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
 import android.text.TextUtils;
-import awgf;
-import awgh;
-import bdhb;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -19,7 +19,7 @@ public class MiniAppEntityManager
   private static final long APPINFO_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_appinfoentity_interval_time", 172800000L);
   private static final long OTHER_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_otherentity_interval_time", 345600000L);
   private static final String TAG = "MiniAppEntityManager";
-  private awgf mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
+  private EntityManager mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
   private MiniAppEntityManagerFactory miniAppEntityManagerFactory = getEntityManagerFactory(paramString);
   
   public MiniAppEntityManager(String paramString) {}
@@ -36,16 +36,16 @@ public class MiniAppEntityManager
         {
           File localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile db : " + localFile.getPath());
-          bdhb.d(localFile.getPath());
+          bgmg.d(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-journal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbJournal : " + localFile.getPath());
-          bdhb.d(localFile.getPath());
+          bgmg.d(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-wal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbWal : " + localFile.getPath());
-          bdhb.d(localFile.getPath());
+          bgmg.d(localFile.getPath());
           localObject = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-shm");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbShm : " + ((File)localObject).getPath());
-          bdhb.d(((File)localObject).getPath());
+          bgmg.d(((File)localObject).getPath());
         }
       }
       return;
@@ -166,43 +166,77 @@ public class MiniAppEntityManager
     //   142: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   145: pop
     //   146: aload_0
-    //   147: monitorexit
-    //   148: return
-    //   149: astore 7
-    //   151: ldc 13
-    //   153: iconst_1
-    //   154: ldc 209
-    //   156: aload 7
-    //   158: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   161: aload 7
-    //   163: instanceof 211
-    //   166: ifeq -20 -> 146
-    //   169: ldc 13
-    //   171: iconst_1
-    //   172: ldc 213
-    //   174: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   177: aload_0
-    //   178: invokespecial 215	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:deleteDbFile	()V
-    //   181: goto -35 -> 146
-    //   184: astore 7
-    //   186: aload_0
-    //   187: monitorexit
-    //   188: aload 7
-    //   190: athrow
+    //   147: ldc 179
+    //   149: iconst_2
+    //   150: anewarray 4	java/lang/Object
+    //   153: dup
+    //   154: iconst_0
+    //   155: ldc 209
+    //   157: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   160: aastore
+    //   161: dup
+    //   162: iconst_1
+    //   163: lload_1
+    //   164: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   167: aastore
+    //   168: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   171: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   174: pop
+    //   175: aload_0
+    //   176: ldc 179
+    //   178: iconst_2
+    //   179: anewarray 4	java/lang/Object
+    //   182: dup
+    //   183: iconst_0
+    //   184: ldc 211
+    //   186: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   189: aastore
+    //   190: dup
+    //   191: iconst_1
+    //   192: lload_1
+    //   193: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   196: aastore
+    //   197: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   200: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   203: pop
+    //   204: aload_0
+    //   205: monitorexit
+    //   206: return
+    //   207: astore 7
+    //   209: ldc 13
+    //   211: iconst_1
+    //   212: ldc 213
+    //   214: aload 7
+    //   216: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   219: aload 7
+    //   221: instanceof 215
+    //   224: ifeq -20 -> 204
+    //   227: ldc 13
+    //   229: iconst_1
+    //   230: ldc 217
+    //   232: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: aload_0
+    //   236: invokespecial 219	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:deleteDbFile	()V
+    //   239: goto -35 -> 204
+    //   242: astore 7
+    //   244: aload_0
+    //   245: monitorexit
+    //   246: aload 7
+    //   248: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	this	MiniAppEntityManager
-    //   17	86	1	l1	long
+    //   0	249	0	this	MiniAppEntityManager
+    //   17	176	1	l1	long
     //   21	111	3	l2	long
     //   25	108	5	l3	long
-    //   149	13	7	localThrowable	Throwable
-    //   184	5	7	localObject	Object
+    //   207	13	7	localThrowable	Throwable
+    //   242	5	7	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   27	146	149	java/lang/Throwable
-    //   2	27	184	finally
-    //   27	146	184	finally
-    //   151	181	184	finally
+    //   27	204	207	java/lang/Throwable
+    //   2	27	242	finally
+    //   27	204	242	finally
+    //   209	239	242	finally
   }
   
   /* Error */
@@ -212,7 +246,7 @@ public class MiniAppEntityManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnonnull +9 -> 17
@@ -223,16 +257,16 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   21: new 93	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   28: ldc 218
+    //   28: ldc 222
     //   30: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_1
     //   34: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokevirtual 223	awgf:b	(Ljava/lang/String;)Z
+    //   40: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
     //   43: istore_2
     //   44: goto -31 -> 13
     //   47: astore_1
@@ -245,7 +279,7 @@ public class MiniAppEntityManager
     //   0	52	0	this	MiniAppEntityManager
     //   0	52	1	paramString	String
     //   12	32	2	bool	boolean
-    //   6	2	3	localawgf	awgf
+    //   6	2	3	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   2	7	47	finally
@@ -259,7 +293,7 @@ public class MiniAppEntityManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnonnull +9 -> 17
@@ -270,9 +304,9 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   21: aload_1
-    //   22: invokevirtual 223	awgf:b	(Ljava/lang/String;)Z
+    //   22: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
     //   25: istore_2
     //   26: goto -13 -> 13
     //   29: astore_1
@@ -285,7 +319,7 @@ public class MiniAppEntityManager
     //   0	34	0	this	MiniAppEntityManager
     //   0	34	1	paramString	String
     //   12	14	2	bool	boolean
-    //   6	2	3	localawgf	awgf
+    //   6	2	3	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   2	7	29	finally
@@ -293,13 +327,13 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public awge find(java.lang.Class<? extends awge> paramClass, String paramString, String[] paramArrayOfString)
+  public com.tencent.mobileqq.persistence.Entity find(java.lang.Class<? extends com.tencent.mobileqq.persistence.Entity> paramClass, String paramString, String[] paramArrayOfString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   6: astore 4
     //   8: aload 4
     //   10: ifnonnull +9 -> 19
@@ -310,7 +344,7 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: areturn
     //   19: aload_0
-    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   23: aload_1
     //   24: iconst_1
     //   25: aload_2
@@ -318,15 +352,15 @@ public class MiniAppEntityManager
     //   27: aconst_null
     //   28: aconst_null
     //   29: aconst_null
-    //   30: ldc 227
-    //   32: invokevirtual 231	awgf:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   30: ldc 229
+    //   32: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   35: astore_1
     //   36: aload_1
     //   37: ifnull +17 -> 54
     //   40: aload_1
     //   41: iconst_0
-    //   42: invokeinterface 237 2 0
-    //   47: checkcast 239	awge
+    //   42: invokeinterface 239 2 0
+    //   47: checkcast 241	com/tencent/mobileqq/persistence/Entity
     //   50: astore_1
     //   51: goto -36 -> 15
     //   54: aconst_null
@@ -340,10 +374,10 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	64	0	this	MiniAppEntityManager
-    //   0	64	1	paramClass	java.lang.Class<? extends awge>
+    //   0	64	1	paramClass	java.lang.Class<? extends com.tencent.mobileqq.persistence.Entity>
     //   0	64	2	paramString	String
     //   0	64	3	paramArrayOfString	String[]
-    //   6	3	4	localawgf	awgf
+    //   6	3	4	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   2	8	59	finally
@@ -351,16 +385,16 @@ public class MiniAppEntityManager
     //   40	51	59	finally
   }
   
-  public awgh getTransaction()
+  public EntityTransaction getTransaction()
   {
     if (this.mEntityManager == null) {
       return null;
     }
-    return this.mEntityManager.a();
+    return this.mEntityManager.getTransaction();
   }
   
   /* Error */
-  public boolean insertOrReplaceEntity(awge paramawge)
+  public boolean insertOrReplaceEntity(com.tencent.mobileqq.persistence.Entity paramEntity)
   {
     // Byte code:
     //   0: iconst_0
@@ -368,7 +402,7 @@ public class MiniAppEntityManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   8: astore_3
     //   9: aload_3
     //   10: ifnonnull +7 -> 17
@@ -377,32 +411,32 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_1
-    //   18: invokevirtual 251	awge:getStatus	()I
+    //   18: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   21: sipush 1000
     //   24: if_icmpne +26 -> 50
     //   27: aload_0
-    //   28: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   28: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   31: aload_1
-    //   32: invokevirtual 254	awgf:b	(Lawge;)V
+    //   32: invokevirtual 257	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   35: aload_1
-    //   36: invokevirtual 251	awge:getStatus	()I
+    //   36: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   39: sipush 1001
     //   42: if_icmpne -29 -> 13
     //   45: iconst_1
     //   46: istore_2
     //   47: goto -34 -> 13
     //   50: aload_1
-    //   51: invokevirtual 251	awge:getStatus	()I
+    //   51: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   54: sipush 1001
     //   57: if_icmpeq +13 -> 70
     //   60: aload_1
-    //   61: invokevirtual 251	awge:getStatus	()I
+    //   61: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   64: sipush 1002
     //   67: if_icmpne -54 -> 13
     //   70: aload_0
-    //   71: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   71: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   74: aload_1
-    //   75: invokevirtual 256	awgf:a	(Lawge;)Z
+    //   75: invokevirtual 260	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   78: istore_2
     //   79: goto -66 -> 13
     //   82: astore_1
@@ -413,9 +447,9 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	87	0	this	MiniAppEntityManager
-    //   0	87	1	paramawge	awge
+    //   0	87	1	paramEntity	com.tencent.mobileqq.persistence.Entity
     //   1	78	2	bool	boolean
-    //   8	2	3	localawgf	awgf
+    //   8	2	3	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   4	9	82	finally
@@ -429,7 +463,7 @@ public class MiniAppEntityManager
   public void onDestroy()
   {
     if (this.mEntityManager != null) {
-      this.mEntityManager.a();
+      this.mEntityManager.close();
     }
     if (this.miniAppEntityManagerFactory != null) {
       this.miniAppEntityManagerFactory.close();
@@ -437,13 +471,13 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public java.util.List<? extends awge> queryEntity(java.lang.Class<? extends awge> paramClass, boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5)
+  public java.util.List<? extends com.tencent.mobileqq.persistence.Entity> queryEntity(java.lang.Class<? extends com.tencent.mobileqq.persistence.Entity> paramClass, boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   3: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   6: astore 9
     //   8: aload 9
     //   10: ifnonnull +9 -> 19
@@ -454,7 +488,7 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: areturn
     //   19: aload_0
-    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   20: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   23: aload_1
     //   24: iload_2
     //   25: aload_3
@@ -463,7 +497,7 @@ public class MiniAppEntityManager
     //   30: aload 6
     //   32: aload 7
     //   34: aload 8
-    //   36: invokevirtual 231	awgf:a	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   36: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   39: astore_1
     //   40: goto -25 -> 15
     //   43: astore_1
@@ -474,7 +508,7 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	48	0	this	MiniAppEntityManager
-    //   0	48	1	paramClass	java.lang.Class<? extends awge>
+    //   0	48	1	paramClass	java.lang.Class<? extends com.tencent.mobileqq.persistence.Entity>
     //   0	48	2	paramBoolean	boolean
     //   0	48	3	paramString1	String
     //   0	48	4	paramArrayOfString	String[]
@@ -482,7 +516,7 @@ public class MiniAppEntityManager
     //   0	48	6	paramString3	String
     //   0	48	7	paramString4	String
     //   0	48	8	paramString5	String
-    //   6	3	9	localawgf	awgf
+    //   6	3	9	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   2	8	43	finally
@@ -490,7 +524,7 @@ public class MiniAppEntityManager
   }
   
   /* Error */
-  public boolean removeEntity(awge paramawge)
+  public boolean removeEntity(com.tencent.mobileqq.persistence.Entity paramEntity)
   {
     // Byte code:
     //   0: iconst_0
@@ -498,7 +532,7 @@ public class MiniAppEntityManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   5: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   8: astore_3
     //   9: aload_3
     //   10: ifnonnull +7 -> 17
@@ -509,9 +543,9 @@ public class MiniAppEntityManager
     //   17: aload_1
     //   18: ifnull -5 -> 13
     //   21: aload_0
-    //   22: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lawgf;
+    //   22: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   25: aload_1
-    //   26: invokevirtual 267	awgf:b	(Lawge;)Z
+    //   26: invokevirtual 271	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   29: istore_2
     //   30: goto -17 -> 13
     //   33: astore_1
@@ -522,9 +556,9 @@ public class MiniAppEntityManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	38	0	this	MiniAppEntityManager
-    //   0	38	1	paramawge	awge
+    //   0	38	1	paramEntity	com.tencent.mobileqq.persistence.Entity
     //   1	29	2	bool	boolean
-    //   8	2	3	localawgf	awgf
+    //   8	2	3	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
     //   4	9	33	finally
@@ -533,7 +567,7 @@ public class MiniAppEntityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager
  * JD-Core Version:    0.7.0.1
  */

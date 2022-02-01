@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import alsn;
-import alsp;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,19 +13,23 @@ import android.view.ViewGroup;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
-import asfa;
-import azri;
-import bdmh;
+import anlv;
+import anlx;
+import aulk;
+import bctj;
+import bgrj;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.Now;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contacts.base.Contacts;
 import com.tencent.mobileqq.activity.leba.QzoneFrame;
 import com.tencent.mobileqq.widget.QQTabHost;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,15 +37,15 @@ import java.util.Map;
 import mqq.app.Constants.LogoutReason;
 
 public class FrameFragment
-  extends Fragment
-  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, asfa
+  extends ReportV4Fragment
+  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, aulk
 {
   long jdField_a_of_type_Long = -1L;
-  private alsn jdField_a_of_type_Alsn;
   protected View a;
+  private anlv jdField_a_of_type_Anlv;
   public QQTabHost a;
   private HashMap<String, TabHost.TabSpec> jdField_a_of_type_JavaUtilHashMap;
-  private final Map<String, alsn> jdField_a_of_type_JavaUtilMap = new HashMap(4);
+  private final Map<String, anlv> jdField_a_of_type_JavaUtilMap = new HashMap(4);
   String f = null;
   protected boolean g;
   
@@ -52,25 +54,25 @@ public class FrameFragment
     return this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTab();
   }
   
-  protected alsn a()
+  protected anlv a()
   {
-    return this.jdField_a_of_type_Alsn;
+    return this.jdField_a_of_type_Anlv;
   }
   
-  public alsn a(Class<? extends alsn> paramClass)
+  public anlv a(Class<? extends anlv> paramClass)
   {
-    alsn localalsn = null;
+    anlv localanlv = null;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localalsn = (alsn)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
+      localanlv = (anlv)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
     }
-    return localalsn;
+    return localanlv;
   }
   
   protected String a()
   {
-    alsn localalsn = b();
-    if (localalsn != null) {
-      return localalsn.a();
+    anlv localanlv = b();
+    if (localanlv != null) {
+      return localanlv.a();
     }
     return null;
   }
@@ -82,25 +84,25 @@ public class FrameFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.PerfTrace", 2, this.f + "TabSwitch, cost=" + l);
     }
-    azri.a(BaseApplication.getContext()).a(bdmh.a(), "actSwitch" + this.f, true, l, 0L, null, null);
+    bctj.a(BaseApplication.getContext()).a(bgrj.a(), "actSwitch" + this.f, true, l, 0L, null, null);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    alsn localalsn = b();
-    if (localalsn != null) {
-      localalsn.a(paramInt1, paramInt2, paramIntent);
+    anlv localanlv = b();
+    if (localanlv != null) {
+      localanlv.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  protected void a(View paramView1, Class<? extends alsn> paramClass, View paramView2)
+  protected void a(View paramView1, Class<? extends anlv> paramClass, View paramView2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost = ((QQTabHost)paramView1.findViewById(16908306));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setup();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new alsp(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new anlx(this));
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
     }
     String str = paramClass.getName();
@@ -114,13 +116,13 @@ public class FrameFragment
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.addTab(paramView1);
   }
   
-  protected void a(Class<? extends alsn> paramClass)
+  protected void a(Class<? extends anlv> paramClass)
   {
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      alsn localalsn = a(paramClass);
-      if (localalsn != null) {
-        localalsn.k();
+      anlv localanlv = a(paramClass);
+      if (localanlv != null) {
+        localanlv.k();
       }
       paramClass = paramClass.getName();
       this.jdField_a_of_type_JavaUtilMap.remove(paramClass);
@@ -134,11 +136,11 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alsn)localIterator.next()).a(paramLogoutReason);
+      ((anlv)localIterator.next()).a(paramLogoutReason);
     }
   }
   
-  public alsn b()
+  public anlv b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
@@ -147,7 +149,7 @@ public class FrameFragment
       }
       return null;
     }
-    return (alsn)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
+    return (anlv)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
   }
   
   protected void b()
@@ -157,7 +159,7 @@ public class FrameFragment
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alsn)localIterator.next()).a();
+      ((anlv)localIterator.next()).a();
     }
   }
   
@@ -176,10 +178,10 @@ public class FrameFragment
     }
     for (;;)
     {
-      ((alsn)localObject).a(getActivity());
-      View localView = ((alsn)localObject).a(getActivity().getLayoutInflater());
-      ((alsn)localObject).c(localView);
-      ((alsn)localObject).e();
+      ((anlv)localObject).a(getActivity());
+      View localView = ((anlv)localObject).a(getActivity().getLayoutInflater());
+      ((anlv)localObject).c(localView);
+      ((anlv)localObject).e();
       this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
       return localView;
       if (paramString.equals(Contacts.class.getName())) {
@@ -200,13 +202,15 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alsn)localIterator.next()).a(paramConfiguration);
+      ((anlv)localIterator.next()).a(paramConfiguration);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131559245, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559330, null);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -214,7 +218,7 @@ public class FrameFragment
     super.onDestroy();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((alsn)localIterator.next()).k();
+      ((anlv)localIterator.next()).k();
     }
   }
   
@@ -222,52 +226,52 @@ public class FrameFragment
   {
     super.onPause();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    alsn localalsn;
+    anlv localanlv;
     do
     {
       return;
-      localalsn = b();
-    } while (localalsn == null);
-    localalsn.g();
+      localanlv = b();
+    } while (localanlv == null);
+    localanlv.g();
   }
   
   public void onResume()
   {
     super.onResume();
     if (SplashActivity.a != 1) {}
-    alsn localalsn;
+    anlv localanlv;
     do
     {
       return;
-      localalsn = b();
-    } while ((localalsn == null) || (!localalsn.b()));
-    localalsn.e(false);
+      localanlv = b();
+    } while ((localanlv == null) || (!localanlv.b()));
+    localanlv.e(false);
   }
   
   public void onStart()
   {
     super.onStart();
     if (SplashActivity.a != 1) {}
-    alsn localalsn;
+    anlv localanlv;
     do
     {
       return;
-      localalsn = b();
-    } while (localalsn == null);
-    localalsn.f();
+      localanlv = b();
+    } while (localanlv == null);
+    localanlv.f();
   }
   
   public void onStop()
   {
     super.onStop();
     if ((SplashActivity.a != 1) && (!this.g)) {}
-    alsn localalsn;
+    anlv localanlv;
     do
     {
       return;
-      localalsn = b();
-    } while (localalsn == null);
-    localalsn.h();
+      localanlv = b();
+    } while (localanlv == null);
+    localanlv.h();
   }
   
   public void onTabChanged(String paramString)
@@ -284,20 +288,20 @@ public class FrameFragment
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setFirstDrawTrue();
       }
     }
-    if (this.jdField_a_of_type_Alsn != null)
+    if (this.jdField_a_of_type_Anlv != null)
     {
-      this.jdField_a_of_type_Alsn.g();
-      this.jdField_a_of_type_Alsn.B();
+      this.jdField_a_of_type_Anlv.g();
+      this.jdField_a_of_type_Anlv.C();
     }
-    this.jdField_a_of_type_Alsn = b();
-    if ((this.jdField_a_of_type_Alsn != null) && (this.jdField_a_of_type_Alsn.b())) {
-      this.jdField_a_of_type_Alsn.e(true);
+    this.jdField_a_of_type_Anlv = b();
+    if ((this.jdField_a_of_type_Anlv != null) && (this.jdField_a_of_type_Anlv.b())) {
+      this.jdField_a_of_type_Anlv.e(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment
  * JD-Core Version:    0.7.0.1
  */

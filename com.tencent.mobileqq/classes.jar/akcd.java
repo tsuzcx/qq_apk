@@ -1,38 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class akcd
-  implements DialogInterface.OnClickListener
+  extends anmu
 {
-  public akcd(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public akcd(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    switch (paramInt)
-    {
-    }
-    boolean bool;
-    do
-    {
-      return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
       }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
+    }
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
     {
-      ajeu.a(0, paramDialogInterface);
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
       return;
-      bool = false;
-      break;
     }
   }
 }

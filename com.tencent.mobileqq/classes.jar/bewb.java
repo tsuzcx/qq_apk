@@ -1,33 +1,16 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bewb
-  extends Dialog
+class bewb
+  implements View.OnClickListener
 {
-  private TextView a;
+  bewb(bewa parambewa) {}
   
-  public bewb(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext, 2131755164);
-    getWindow().setFlags(16, 16);
-    getWindow().setFlags(8, 8);
-    getWindow().setGravity(17);
-    setContentView(2131561339);
-    this.a = ((TextView)findViewById(2131378113));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      this.a.setTextColor(Color.parseColor("#FF737373"));
-    }
-    setCancelable(false);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.setText(paramString);
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

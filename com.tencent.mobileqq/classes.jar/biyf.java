@@ -1,41 +1,23 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.GetVirtualListResult;
 
-public class biyf
-  implements biyn
+public final class biyf
+  implements Parcelable.Creator<GetVirtualListResult>
 {
-  public biyf(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void a()
+  public GetVirtualListResult a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimBridgeActivity.hasInstalled()");
-    }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+    return new GetVirtualListResult(paramParcel);
   }
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt)
+  public GetVirtualListResult[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(biyg.a, 2, "QQPimBridgeActivity.downloadError()");
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+    return new GetVirtualListResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-class svg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+
+public final class svg
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
 {
-  int a;
-  int b;
-  int c;
-  int d;
-  
-  public svg() {}
-  
-  public svg(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aanh;
+import ackr;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -31,7 +31,7 @@ class AppBoxPlugin$MiniAppBox
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniAppBox";
-  private aanh adBox;
+  private ackr adBox;
   private String adUnitId;
   private int appBoxId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -94,23 +94,23 @@ class AppBoxPlugin$MiniAppBox
     {
       bool = ((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape();
       if (!bool) {
-        break label535;
+        break label536;
       }
       i = 90;
       QLog.i("[minigame] MiniAppBox", 1, "handle initAdParam appId = " + (String)localObject2 + "， deviceOrient = " + i);
       localApkgInfo = this.jsPluginEngine.appBrandRuntime.getApkgInfo();
       if ((localApkgInfo == null) || (!localApkgInfo.isEngineTypeMiniApp())) {
-        break label540;
+        break label541;
       }
       j = 0;
       label212:
       if (j != 0) {
-        break label545;
+        break label546;
       }
     }
-    label535:
-    label540:
-    label545:
+    label536:
+    label541:
+    label546:
     for (int j = 7;; j = 8)
     {
       Object localObject3 = "";
@@ -164,7 +164,7 @@ class AppBoxPlugin$MiniAppBox
       }
       str1 = AdUtils.getSpAdGdtCookie(j);
       int k = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameShareRate", 53);
-      localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.parseLong(str3), this.adUnitId, (String)localObject2, k, j, i, str1, (String)localObject1, (String)localObject4, (String)localObject3, (String)localObject5);
+      localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.parseLong(str3), this.adUnitId, (String)localObject2, k, j, i, str1, (String)localObject1, (String)localObject4, (String)localObject3, (String)localObject5, 1);
       QLog.i("[minigame] MiniAppBox", 1, "generateAdReq account= " + str3 + " adUnitId=" + this.adUnitId);
       return localObject1;
       bool = isOrientationLandscape();
@@ -277,7 +277,7 @@ class AppBoxPlugin$MiniAppBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppBoxPlugin.MiniAppBox
  * JD-Core Version:    0.7.0.1
  */

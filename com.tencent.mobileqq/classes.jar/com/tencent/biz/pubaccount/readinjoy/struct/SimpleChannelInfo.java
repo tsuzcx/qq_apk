@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qly;
+import rgk;
 
 public class SimpleChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SimpleChannelInfo> CREATOR = new qly();
+  public static final Parcelable.Creator<SimpleChannelInfo> CREATOR = new rgk();
   public long a;
   public String a;
   public long b;

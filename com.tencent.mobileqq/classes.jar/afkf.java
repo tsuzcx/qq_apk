@@ -1,27 +1,17 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afkf
-  extends aeqi
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  public String b;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  public int e = 544;
-  public int f = 960;
+  public afkf(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public afkf()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = "http://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
+    TroopInfoActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public class bfcz
+class bfcz
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
+  bfcz(bfcy parambfcy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(this.a.a.a);
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).f();
+    }
+  }
 }
 
 

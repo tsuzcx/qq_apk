@@ -1,70 +1,32 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class opa
-  extends ViewBase
+  implements qft
 {
-  private NativeExposeReplyCommentView a;
-  
-  public opa(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramVafContext);
-    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
+    return null;
   }
   
-  public void a(ola paramola)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.a.setAdapter(paramola);
+    return qbe.a(paramBaseArticleInfo);
   }
   
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2) {}
   
-  public int getComMeasuredWidth()
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
   {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return super.setAttribute(paramInt, paramObject);
-    } while ((!(paramObject instanceof omt)) || (((omt)paramObject).a == null));
-    this.a.a((omt)paramObject);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     opa
  * JD-Core Version:    0.7.0.1
  */

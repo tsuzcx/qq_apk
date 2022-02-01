@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import UserGrowth.eConfigBit;
+import UserGrowth.stUserConfigReq;
+import UserGrowth.stUserConfigRsp;
+import android.support.annotation.NonNull;
 
-public abstract interface uoa
+public class uoa
+  extends ujr<stUserConfigRsp>
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
-  
-  public abstract void b(String paramString, int paramInt);
+  public uoa(@NonNull eConfigBit parameConfigBit)
+  {
+    super("UserConfig", 10005);
+    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
+    localstUserConfigReq.config_set = parameConfigBit.value();
+    this.a = localstUserConfigReq;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uoa
  * JD-Core Version:    0.7.0.1
  */

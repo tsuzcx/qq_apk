@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import acjm;
-import android.content.Context;
-import android.content.res.Resources;
-import apza;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 class BaseChatPie$62
   implements Runnable
@@ -13,30 +13,28 @@ class BaseChatPie$62
   
   public void run()
   {
-    acjm.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-    try
+    int i = this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length();
+    if ((BaseChatPie.a(this.this$0) == i) && (BaseChatPie.b(this.this$0) != 1)) {
+      BaseChatPie.c(this.this$0);
+    }
+    while (BaseChatPie.d(this.this$0) <= BaseChatPie.e(this.this$0))
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846656);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846657);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837915);
-      apza.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendMsgSignal();
+      BaseChatPie.f(this.this$0);
+      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.a(this.this$0), 2000L);
       return;
+      BaseChatPie.a(this.this$0, i);
+      BaseChatPie.b(this.this$0, 0);
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
-    }
+    BaseChatPie.a(this.this$0, false);
+    BaseChatPie.c(this.this$0, 50);
+    BaseChatPie.b(this.this$0, 0);
+    BaseChatPie.d(this.this$0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.62
  * JD-Core Version:    0.7.0.1
  */

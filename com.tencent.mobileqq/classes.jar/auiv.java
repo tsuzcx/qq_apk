@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class auiv
-  extends aujd<MessageRecord>
+class auiv
+  extends RecyclerView.OnScrollListener
 {
-  public auiv(MessageRecord paramMessageRecord)
-  {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
-  }
+  auiv(auis paramauis) {}
   
-  protected int a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return 0;
+    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      auis.a(this.a).c();
+    }
+    while (!auis.a(this.a).a()) {
+      return;
+    }
+    auis.a(this.a).b();
+    auis.a(this.a).notifyDataSetChanged();
   }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    return null;
-  }
-  
-  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auiv
  * JD-Core Version:    0.7.0.1
  */

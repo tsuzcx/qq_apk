@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class aenb
-  extends amgd
+public abstract interface aenb
 {
-  public aenb(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
-  }
+  public abstract void a();
 }
 
 

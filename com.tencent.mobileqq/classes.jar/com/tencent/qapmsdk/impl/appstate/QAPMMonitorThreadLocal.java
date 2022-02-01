@@ -1,22 +1,20 @@
 package com.tencent.qapmsdk.impl.appstate;
 
 import android.os.Looper;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMTraceUnit;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMUnit;
-import com.tencent.qapmsdk.impl.instrumentation.TraceStack;
-import com.tencent.qapmsdk.impl.instrumentation.TraceType.CONTEXT;
+import com.tencent.qapmsdk.impl.instrumentation.i;
+import com.tencent.qapmsdk.impl.instrumentation.j;
+import com.tencent.qapmsdk.impl.instrumentation.k.b;
 import java.util.Vector;
 
 public class QAPMMonitorThreadLocal
-  extends MonitorThreadLocal
+  extends f
 {
-  private static final int METHOD_LIST_MAX = 20;
-  private static volatile QAPMMonitorThreadLocal instance;
-  protected ThreadLocal<Vector<QAPMUnit>> finishedMethodThreadLocal = new ThreadLocal();
+  private static volatile QAPMMonitorThreadLocal e;
+  protected ThreadLocal<Vector<i>> d = new ThreadLocal();
   
-  private Vector<QAPMUnit> getFinishMethods()
+  private Vector<i> g()
   {
-    Vector localVector2 = (Vector)this.finishedMethodThreadLocal.get();
+    Vector localVector2 = (Vector)this.d.get();
     Vector localVector1 = localVector2;
     if (localVector2 == null) {
       localVector1 = new Vector();
@@ -26,62 +24,62 @@ public class QAPMMonitorThreadLocal
   
   public static QAPMMonitorThreadLocal getInstance()
   {
-    if (instance == null) {}
+    if (e == null) {}
     try
     {
-      if (instance == null) {
-        instance = new QAPMMonitorThreadLocal();
+      if (e == null) {
+        e = new QAPMMonitorThreadLocal();
       }
-      return instance;
+      return e;
     }
     finally {}
   }
   
-  public void clear()
+  public void d()
   {
-    if (this.finishedMethodThreadLocal.get() != null) {
-      ((Vector)this.finishedMethodThreadLocal.get()).clear();
+    if (this.d.get() != null) {
+      ((Vector)this.d.get()).clear();
     }
-    super.clear();
+    super.d();
   }
   
-  public ThreadLocal<Vector<QAPMUnit>> getFinishedMethodThreadLocal()
+  public ThreadLocal<Vector<i>> f()
   {
-    return this.finishedMethodThreadLocal;
+    return this.d;
   }
   
   public void pop(boolean paramBoolean)
   {
-    if (getFinishMethods() != null)
+    if (g() != null)
     {
-      if ((this.finishedMethodThreadLocal.get() == null) || (((Vector)this.finishedMethodThreadLocal.get()).size() < 20)) {
-        this.finishedMethodThreadLocal.set(getFinishMethods());
+      if ((this.d.get() == null) || (((Vector)this.d.get()).size() < 20)) {
+        this.d.set(g());
       }
-      if ((getTraceStack() != null) && (!getTraceStack().isEmpty()))
+      if ((e() != null) && (!e().isEmpty()))
       {
         if (paramBoolean) {
-          ((QAPMUnit)getTraceStack().peek()).complete();
+          ((i)e().peek()).a();
         }
-        getFinishMethods().add(getTraceStack().peek());
+        g().add(e().peek());
       }
     }
-    super.pop();
+    super.a();
   }
   
   public void push(String paramString1, String paramString2, long paramLong)
   {
-    paramString1 = new QAPMTraceUnit(paramString1, paramString2, paramLong, paramLong, TraceType.CONTEXT.APP.getValue());
+    paramString1 = new com.tencent.qapmsdk.impl.instrumentation.f(paramString1, paramString2, paramLong, paramLong, k.b.b.a());
     if (Looper.myLooper() == Looper.getMainLooper()) {}
     for (boolean bool = true;; bool = false)
     {
-      super.push(paramString1, Boolean.valueOf(bool));
+      super.a(paramString1, Boolean.valueOf(bool));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.QAPMMonitorThreadLocal
  * JD-Core Version:    0.7.0.1
  */

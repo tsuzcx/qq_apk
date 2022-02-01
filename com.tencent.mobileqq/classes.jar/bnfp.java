@@ -1,42 +1,59 @@
-import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.List;
 
-public class bnfp
+class bnfp
+  extends Handler
 {
-  public double a;
-  public int a;
-  public ajpz a;
-  public Activity a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public double b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public String m;
+  private final WeakReference<bnfn> a;
+  
+  public bnfp(bnfn parambnfn)
+  {
+    this.a = new WeakReference(parambnfn);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = (bnfn)this.a.get();
+      localArrayList = ((bnfn)localObject).jdField_a_of_type_Bnfu.a.selectedPhotoList;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        localObject = ((bnfn)localObject).jdField_a_of_type_Bnfi;
+      }
+    } while (localObject == null);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(((bnfi)localObject).a);
+    paramMessage = paramMessage.getData();
+    int i = paramMessage.getInt("ALBUMLIST_POSITION");
+    long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
+    paramMessage = (LocalMediaInfo)localArrayList.get(i);
+    paramMessage.mDuration = l;
+    localArrayList.set(i, paramMessage);
+    ((bnfi)localObject).a(localArrayList);
+    ((bnfi)localObject).notifyDataSetChanged();
+    return;
+    ((bnfn)this.a.get()).jdField_a_of_type_Bnfu.a(paramMessage);
+    return;
+    ((bnfn)localObject).d();
+    QLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
+    QQToast.a(((bnfn)localObject).getActivity(), ((bnfn)localObject).getResources().getString(2131694279), 0).a();
+  }
 }
 
 

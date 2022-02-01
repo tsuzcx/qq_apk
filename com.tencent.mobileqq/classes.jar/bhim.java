@@ -1,30 +1,35 @@
-import android.os.SystemClock;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import java.lang.ref.WeakReference;
 
-class bhim
-  implements bhff
+public class bhim
+  extends bdzy
 {
-  long jdField_a_of_type_Long;
+  private WeakReference<View> a;
   
-  bhim(bhil parambhil, bhhc parambhhc, long paramLong) {}
-  
-  public void onStateChanged()
+  public bhim(View paramView)
   {
-    if (this.jdField_a_of_type_Bhhc != null) {}
-    for (bhfg localbhfg = this.jdField_a_of_type_Bhhc.getCurrState();; localbhfg = null)
-    {
-      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.e)) {
-        this.jdField_a_of_type_Bhil.a(this.jdField_a_of_type_Bhhc, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+    this.a = new WeakReference(paramView);
+  }
+  
+  public static void a(URLDrawable paramURLDrawable, View paramView)
+  {
+    if (paramURLDrawable.getStatus() != 1) {
+      paramURLDrawable.setURLDrawableListener(new bhim(paramView));
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (View)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhim
  * JD-Core Version:    0.7.0.1
  */

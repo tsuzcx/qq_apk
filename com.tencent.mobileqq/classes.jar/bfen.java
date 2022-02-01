@@ -1,50 +1,73 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
+import android.text.TextUtils;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfen
-  extends Handler
 {
-  public bfen(FriendListOpenFrame paramFriendListOpenFrame) {}
+  static HashMap<String, Integer> a = new HashMap();
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
-    {
+    a.put("str", Integer.valueOf(0));
+    a.put("img", Integer.valueOf(1));
+    a.put("video", Integer.valueOf(2));
+    a.put("voice", Integer.valueOf(3));
+    a.put("recite", Integer.valueOf(4));
+    a.put("calculation", Integer.valueOf(7));
+  }
+  
+  public static bfem a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
+    try
     {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-      int i = 0;
-      while (i < j)
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static bfem a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      Object localObject = paramJSONObject.getString("type");
+      localObject = (Integer)a.get(localObject);
+      if (localObject == null) {
+        return null;
+      }
+      switch (((Integer)localObject).intValue())
       {
-        bfep localbfep = (bfep)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localbfep != null) && (str.equals(localbfep.b)))
-        {
-          localbfep.a.setImageBitmap(paramMessage);
-          return;
-        }
-        i += 1;
+      case 0: 
+        paramJSONObject = new bfev(paramJSONObject);
+        return paramJSONObject;
       }
     }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      break label142;
+      return new bfer(paramJSONObject);
+      return new bfex(paramJSONObject);
+      return new bfel(paramJSONObject);
+      return new bfeo(paramJSONObject);
+      paramJSONObject = new bfej(paramJSONObject);
+      return paramJSONObject;
+    }
+    label142:
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfen
  * JD-Core Version:    0.7.0.1
  */

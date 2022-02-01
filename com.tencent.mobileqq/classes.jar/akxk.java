@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import java.util.Comparator;
-
-public class akxk
-  implements Comparator<akxl>
+public abstract interface akxk
 {
-  public akxk(CmGameCmdChannel paramCmGameCmdChannel) {}
+  public abstract void a();
   
-  public int a(akxl paramakxl1, akxl paramakxl2)
-  {
-    return paramakxl1.a() - paramakxl2.a();
-  }
+  public abstract void b();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

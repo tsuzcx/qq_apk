@@ -1,22 +1,52 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahhi
-  extends ampt
+class ahhi
+  implements View.OnClickListener
 {
-  public ahhi(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ahhi(ahhh paramahhh) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
     }
-    PublicView.a(this.a, true);
-    PublicView.a(this.a, paramSosoLbsInfo);
+    afur.n = true;
+    if (this.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (SystemClock.uptimeMillis() - ahhh.a(this.a) < 3000L)
+      {
+        QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
+      }
+      else
+      {
+        MessageForShakeWindow localMessageForShakeWindow = (MessageForShakeWindow)afur.a(paramView);
+        if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+        {
+          FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
+          ahhh.a(this.a, SystemClock.uptimeMillis());
+          localFragmentActivity.getChatFragment().a().at();
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localMessageForShakeWindow.frienduin, false);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localMessageForShakeWindow.frienduin, false);
+        }
+      }
+    }
   }
 }
 

@@ -1,60 +1,87 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
-import java.util.Collection;
+import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 
 public class bdws
 {
-  private static bdwi jdField_a_of_type_Bdwi = new bdwj();
-  private static final HashMap<Long, bdwi> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
+  public long a;
+  public bdvv a;
+  public bdvw a;
+  public bdvx a;
+  public bdwt a;
+  public OutputStream a;
+  public Object a;
+  public HashMap<String, String> a;
+  public List<bdyf> a;
+  public byte[] a;
+  public int b;
+  public long b;
+  private Object b;
+  public int c;
+  public long c;
+  public String c;
+  public int d = 1;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public boolean j;
+  public boolean k = true;
+  public boolean l;
+  public boolean m = true;
+  public boolean n = true;
+  public boolean o;
   
-  public static bdwi a(long paramLong)
+  public bdws()
   {
-    bdwi localbdwi2 = (bdwi)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    bdwi localbdwi1 = localbdwi2;
-    if (localbdwi2 == null) {
-      localbdwi1 = jdField_a_of_type_Bdwi;
-    }
-    return localbdwi1;
+    this.jdField_c_of_type_Long = 480000L;
+    this.jdField_b_of_type_Int = 8;
+    this.jdField_c_of_type_Int = 5;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static void a(Context paramContext)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bdwi)localIterator.next()).cleanCache(paramContext);
-    }
-  }
-  
-  public static void a(bdwi parambdwi)
+  public Object a()
   {
     try
     {
-      jdField_a_of_type_Bdwi = parambdwi;
+      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangObject = paramObject;
       return;
     }
     finally
     {
-      parambdwi = finally;
-      throw parambdwi;
+      paramObject = finally;
+      throw paramObject;
     }
   }
   
-  public static void b(bdwi parambdwi)
+  public boolean a()
   {
-    try
-    {
-      if (jdField_a_of_type_Bdwi == parambdwi) {
-        jdField_a_of_type_Bdwi = new bdwj();
-      }
-      return;
-    }
-    finally
-    {
-      parambdwi = finally;
-      throw parambdwi;
-    }
+    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_JavaLangString != null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_JavaIoOutputStream != null;
   }
 }
 

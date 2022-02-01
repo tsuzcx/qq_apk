@@ -1,26 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class azoy
+class azoy
   implements View.OnClickListener
 {
-  public azoy(aznp paramaznp) {}
+  azoy(azow paramazow) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a(15, 1, 0L);
-    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
-    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
+    azow.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,38 @@
-import android.text.TextUtils;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
 
 public class bkex
-  extends bfxc
+  implements SensorResource
 {
-  public void i(String paramString1, String paramString2)
+  public boolean checkSensorEnable()
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
-      return;
-    }
-    super.i(paramString1, paramString2);
+    return lhi.a().a();
+  }
+  
+  public boolean getCameraIsFront()
+  {
+    return lhi.a().b();
+  }
+  
+  public int getRotation()
+  {
+    return 0;
+  }
+  
+  public void registerListener(SensorEventListener paramSensorEventListener)
+  {
+    lhi.a().a(paramSensorEventListener);
+  }
+  
+  public void setCameraChangedListener(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
+  {
+    lhi.a().a(paramCameraChangedCallBack);
+  }
+  
+  public void unregisterListener(SensorEventListener paramSensorEventListener)
+  {
+    lhi.a().b(paramSensorEventListener);
   }
 }
 

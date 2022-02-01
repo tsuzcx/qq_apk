@@ -1,219 +1,90 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.1;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.2;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.3;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.4;
-import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-public abstract class yef
-  extends yhy<CertifiedAccountMeta.StFeed>
-  implements yiy, yow
+public class yef
+  extends zpa
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  protected RecyclerView.LayoutManager a;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  public static final String KEY = "DetailEmptyInteractionSegment";
+  private int a;
   
-  public yef(Bundle paramBundle)
+  public yef(Context paramContext)
   {
-    super(paramBundle);
+    super(paramContext);
   }
   
-  private int a(String paramString)
+  public void T_()
   {
-    int i = 0;
-    for (;;)
-    {
-      CertifiedAccountMeta.StFeed localStFeed;
-      if (i < getDataList().size())
-      {
-        localStFeed = (CertifiedAccountMeta.StFeed)getDataList().get(i);
-        if ((paramString.startsWith("fakeid_")) && (!localStFeed.id.get().startsWith("fakeid_"))) {
-          QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
-        }
-      }
-      else
-      {
-        return -1;
-      }
-      if (paramString.equals(localStFeed.id.get()))
-      {
-        QLog.d("FakerFeedsAdapter", 2, "find fakeid:" + paramString);
-        return i;
-      }
-      i += 1;
-    }
-  }
-  
-  private void a(SubscribeFeedsEvent paramSubscribeFeedsEvent)
-  {
-    Object localObject = new StringBuilder().append("fakeFeed state:").append(paramSubscribeFeedsEvent.mState).append(",fakeId:").append(paramSubscribeFeedsEvent.mTargetId).append(",fake listSize:");
-    int i;
-    if (paramSubscribeFeedsEvent.mFakeFeedDataList == null)
-    {
-      i = 0;
-      QLog.d("FakerFeedsAdapter", 2, i);
-      if (getShareData("share_key_subscribe_user") != null) {
-        break label83;
-      }
-    }
-    label83:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            i = paramSubscribeFeedsEvent.mFakeFeedDataList.size();
-            break;
-            switch (paramSubscribeFeedsEvent.mState)
-            {
-            default: 
-              return;
-            case 1: 
-              if (ybo.a() != null)
-              {
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.icon.set(ybo.a().icon.get());
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.nick.set(ybo.a().nick.get());
-              }
-              a().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
-              return;
-            case 2: 
-              i = a(paramSubscribeFeedsEvent.mTargetId);
-            }
-          } while (i == -1);
-          ((CertifiedAccountMeta.StFeed)getDataList().get(i)).id.set(paramSubscribeFeedsEvent.mSingleFakeFeed.id.get());
-          ((CertifiedAccountMeta.StFeed)getDataList().get(i)).createTime.set(paramSubscribeFeedsEvent.mSingleFakeFeed.createTime.get());
-          a().post(new FakerFeedsAdapter.2(this));
-          return;
-          i = a(paramSubscribeFeedsEvent.mTargetId);
-        } while (i == -1);
-        a().post(new FakerFeedsAdapter.3(this, i));
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = false;
-    } while ((paramSubscribeFeedsEvent.mFakeFeedDataList == null) || (paramSubscribeFeedsEvent.mFakeFeedDataList.size() <= 0));
-    if (ybo.a() != null)
-    {
-      localObject = paramSubscribeFeedsEvent.mFakeFeedDataList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((Iterator)localObject).next();
-        if (localStFeed.poster != null)
-        {
-          localStFeed.poster.icon.set(ybo.a().icon.get());
-          localStFeed.poster.nick.set(ybo.a().nick.get());
-        }
-      }
-    }
-    a().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
-  }
-  
-  protected Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager)) {
-      ((StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).invalidateSpanAssignments();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (bhrz.a(paramInt, getDataList())) {
-      return;
-    }
-    getDataList().remove(paramInt);
-    notifyItemRemoved(paramInt);
-  }
-  
-  protected void a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (getDataList() != null) {
-      a(getDataList().indexOf(paramStFeed));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (a())
+    zpa localzpa1 = a().a("DetailCommentSegment");
+    zpa localzpa2 = a().a("DetailLikeListSegment");
+    yee localyee = (yee)a().a("DetailDoubleTabSegment");
+    if ((localyee != null) && (localyee.a() > 0) && (localzpa1 != null) && (localzpa1.a() == 0) && (localzpa2 != null) && (localzpa2.a() == 0))
     {
       this.jdField_a_of_type_Boolean = true;
-      bjfr.a().b();
+      this.jdField_a_of_type_Int = localyee.b();
+      return;
     }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public ArrayList<Class> getEventClass()
+  public int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(SubscribeFeedsEvent.class);
-    localArrayList.add(PublishBoxStatusEvent.class);
-    return localArrayList;
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
   }
   
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
   {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramRecyclerView.getLayoutManager();
-    if (this.b)
+    paramInt = zlx.d(this.jdField_a_of_type_AndroidContentContext);
+    int i = zlx.e(this.jdField_a_of_type_AndroidContentContext);
+    int j = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();
+    int k = zlx.a(this.jdField_a_of_type_AndroidContentContext, 56.0F);
+    paramViewGroup = (yeq)a().a("GeneralFeedProfileSegment");
+    yes localyes = (yes)a().a("ShareGroupFeedProfileSegment");
+    ydz localydz = (ydz)a().a("BannerProfileSegment");
+    yeh localyeh = (yeh)a().a("DetailInteractSegment");
+    yee localyee = (yee)a().a("DetailDoubleTabSegment");
+    paramInt = paramInt - i - j - (paramViewGroup.b() + localyes.b() + localydz.b() + localyeh.b() + localyee.c()) - k;
+    if (paramInt > zlx.a(this.jdField_a_of_type_AndroidContentContext, 50.0F))
     {
-      yiw.a().a(this);
-      bjfr.a().b();
+      paramynb.a().getLayoutParams().height = paramInt;
+      yqp.b("Q.qqstory.detail.DetailEmptyInteractionSegment", "view height is %d.", Integer.valueOf(paramynb.a().getLayoutParams().height));
+      paramViewGroup = (TextView)paramynb.a(2131377881);
+      if (this.jdField_a_of_type_Int != 1) {
+        break label247;
+      }
+      paramViewGroup.setText(anni.a(2131701926));
+    }
+    for (;;)
+    {
+      return paramynb.a();
+      paramynb.a().getLayoutParams().height = zlx.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+      break;
+      label247:
+      paramViewGroup.setText(anni.a(2131701927));
     }
   }
   
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  public String a()
   {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.b) {
-      yiw.a().b(this);
-    }
+    return "DetailEmptyInteractionSegment";
   }
   
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
   {
-    if ((paramSimpleBaseEvent instanceof SubscribeFeedsEvent)) {
-      a((SubscribeFeedsEvent)paramSimpleBaseEvent);
-    }
+    return new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561658, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yef
  * JD-Core Version:    0.7.0.1
  */

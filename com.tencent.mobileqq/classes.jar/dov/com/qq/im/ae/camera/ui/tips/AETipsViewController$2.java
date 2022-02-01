@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.tips;
 
-import bkyd;
+import bnne;
 
 public class AETipsViewController$2
   implements Runnable
 {
-  public AETipsViewController$2(bkyd parambkyd) {}
+  public AETipsViewController$2(bnne parambnne) {}
   
   public void run()
   {
-    bkyd.a(this.this$0);
+    bnne.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.tips.AETipsViewController.2
  * JD-Core Version:    0.7.0.1
  */

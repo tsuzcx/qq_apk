@@ -1,14 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.NoScrollViewPager;
 
 class bncz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bnzj
 {
-  bncz(bncx parambncx) {}
+  bncz(bncy parambncy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.a.invalidateSelf();
+    if (paramInt == 0)
+    {
+      bncy.a(this.a).setCurrentItem(0, true);
+      bncy.a(this.a).d();
+      bncy.a(this.a).t();
+      bnyh.a().Y();
+      return;
+    }
+    if (bncy.a(this.a))
+    {
+      bncy.a(this.a);
+      bnyh.a().Z();
+      return;
+    }
+    bncy.b(this.a);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt != 1) || (bncy.a(this.a));
   }
 }
 

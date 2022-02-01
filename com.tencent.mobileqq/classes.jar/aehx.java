@@ -1,30 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aehx
-  implements bhuk
+  implements aqiw
 {
-  public aehx(TroopRequestActivity paramTroopRequestActivity, bhuf parambhuf) {}
+  public aehx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131693461);
     }
-    if (bdin.d(BaseApplication.getContext())) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
-    }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-    }
+    return this.a.getString(2131692055);
   }
 }
 

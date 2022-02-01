@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adle
-  extends alpq
+  implements View.OnClickListener
 {
-  public adle(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public adle(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1)
-    {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
-    }
+    bcst.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

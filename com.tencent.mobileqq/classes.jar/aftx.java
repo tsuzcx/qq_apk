@@ -1,18 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import java.io.File;
+import java.io.FileFilter;
 
 class aftx
-  extends afuf
+  implements FileFilter
 {
-  aftx(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  aftx(aftv paramaftv) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean accept(File paramFile)
   {
-    return new TribeShortVideoItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return paramFile.getName().startsWith(aftv.a(this.a));
   }
 }
 

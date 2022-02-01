@@ -1,28 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenCardContainer;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-class bfgb
-  implements View.OnClickListener
+public abstract class bfgb<VH extends RecyclerView.ViewHolder, D extends bfem>
+  extends bffi<VH, D>
 {
-  bfgb(bfga parambfga, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public bfgb(XMediaEditor paramXMediaEditor)
   {
-    if ((bfga.a(this.jdField_a_of_type_Bfga) == null) || (this.jdField_a_of_type_Int >= bfga.a(this.jdField_a_of_type_Bfga).size()) || (this.jdField_a_of_type_Int < 0)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Bfga.a.a != null) && (bfga.a(this.jdField_a_of_type_Bfga).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bfga.a) != null)) {
-      OpenCardContainer.a(this.jdField_a_of_type_Bfga.a).a(((bfgd)bfga.a(this.jdField_a_of_type_Bfga).get(this.jdField_a_of_type_Int)).a);
-    }
-    bfga.a(this.jdField_a_of_type_Bfga).remove(bfga.a(this.jdField_a_of_type_Bfga).get(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Bfga.notifyDataSetChanged();
+    super(paramXMediaEditor);
   }
+  
+  public abstract void a(D paramD);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfgb
  * JD-Core Version:    0.7.0.1
  */

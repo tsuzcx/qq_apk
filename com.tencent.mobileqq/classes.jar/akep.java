@@ -1,52 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class akep
-  implements DialogInterface.OnDismissListener
+  extends BaseAdapter
 {
-  public akep(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, amne paramamne) {}
+  public akep(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public String a(int paramInt)
   {
-    Object localObject;
-    boolean bool;
-    if (bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
-    {
-      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      bool = this.jdField_a_of_type_Boolean;
-      paramDialogInterface.b(1, new String[] { localObject }, new boolean[] { bool });
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label208;
-      }
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
     }
-    label208:
-    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    akeq localakeq;
+    Object localObject;
+    if (paramView == null)
     {
-      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
-      this.jdField_a_of_type_Amne.a();
-      return;
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692398;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
-      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
-      for (bool = true;; bool = false)
-      {
-        paramDialogInterface.a((FormSwitchItem)localObject, bool);
-        break;
+      paramView = this.a.getLayoutInflater().inflate(2131559564, null);
+      localakeq = new akeq();
+      localakeq.a = ((URLImageView)paramView.findViewById(2131372845));
+      paramView.setTag(localakeq);
+      localObject = a(paramInt);
+      if (localObject == null) {
+        break label155;
       }
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localakeq.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localakeq = (akeq)paramView.getTag();
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        continue;
+      }
+      label155:
+      localMalformedURLException.a.setImageDrawable(null);
     }
   }
 }

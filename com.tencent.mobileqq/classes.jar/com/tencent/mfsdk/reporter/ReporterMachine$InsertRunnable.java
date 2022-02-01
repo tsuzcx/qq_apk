@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import abvs;
+import addl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 

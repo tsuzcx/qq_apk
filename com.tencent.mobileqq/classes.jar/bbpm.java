@@ -1,9 +1,12 @@
-import java.util.List;
+import android.view.View;
 
 public class bbpm
+  implements bbps
 {
-  public String a;
-  public List<Integer> a;
+  public void a(bbmw parambbmw, bbvh parambbvh)
+  {
+    parambbvh.a().setVisibility(8);
+  }
 }
 
 

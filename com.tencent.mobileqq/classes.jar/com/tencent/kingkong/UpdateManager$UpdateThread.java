@@ -1,23 +1,23 @@
 package com.tencent.kingkong;
 
-import abuu;
+import adbj;
 import android.os.Looper;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private abuu a;
+  private adbj a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new abuu();
+    this.a = new adbj();
     Looper.loop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.kingkong.UpdateManager.UpdateThread
  * JD-Core Version:    0.7.0.1
  */

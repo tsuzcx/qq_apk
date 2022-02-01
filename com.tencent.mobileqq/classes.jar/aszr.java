@@ -1,129 +1,56 @@
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.TicketManager;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aszr
+public class aszr
+  extends MSFServlet
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aszt(this);
-  private atff jdField_a_of_type_Atff = new aszs(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<atfe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<atfe> b = new ArrayList();
-  
-  private Intent a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    atfz localatfz = (atfz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338);
-    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
-    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
-    localatfz.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
-  }
-  
-  private void a(Intent paramIntent, List<atfe> paramList)
-  {
-    int i;
-    String str;
-    StringBuilder localStringBuilder;
-    if (!paramList.isEmpty())
-    {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext()) {
-        ((atfe)paramIntent.next()).a(i, str);
-      }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
     }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
+    if (paramIntent == null)
     {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
-      paramList.clear();
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
       return;
     }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
   }
   
-  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", paramInt);
-    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
-    b(localIntent);
-  }
-  
-  private void b()
-  {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
-    {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
-      localIntent.putExtra("command_type", 6);
-      localIntent.putExtra("sKeyKey", (String)localObject);
-      b(localIntent);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
     }
-    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
-  }
-  
-  private void b(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
-  }
-  
-  public atff a()
-  {
-    return this.jdField_a_of_type_Atff;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(Bundle paramBundle, atfe paramatfe)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", 4);
-    localIntent.putExtra("closeRoomBundle", paramBundle);
-    b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramatfe);
-  }
-  
-  void a(atfe paramatfe)
-  {
-    this.b.add(paramatfe);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = new IntentFilter();
-    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+    if (paramIntent == null) {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
   }
 }
 

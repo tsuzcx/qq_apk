@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
 public class auyu
-  implements bemh<oidb_0x8e4.RspBody>
+  extends anun
 {
-  public auyu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  private WeakReference<BaseChatPie> a;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public auyu(BaseChatPie paramBaseChatPie)
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    this.a = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      auyq.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
     }
-    do
-    {
-      return;
-      this.a.a(paramInt, paramRspBody, alud.a(2131705523));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+  }
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      auyq.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyu
  * JD-Core Version:    0.7.0.1
  */

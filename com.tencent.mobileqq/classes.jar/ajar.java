@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ContactMatch;
 
 public class ajar
-  implements nbs
+  extends ajax
 {
-  public ajar(PreloadModule paramPreloadModule) {}
+  public ContactMatch a;
   
-  public void loaded(String paramString, int paramInt)
+  public ajar(ContactMatch paramContactMatch)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
   }
   
-  public void progress(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 

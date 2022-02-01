@@ -1,11 +1,21 @@
-import java.util.List;
-import java.util.Map;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
-public abstract interface afar
+public class afar
+  extends MqqHandler
 {
-  public abstract void a(String paramString, int paramInt, afaj paramafaj, List<afbe> paramList, Map<Integer, Integer> paramMap);
+  public afar(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public abstract boolean a(String paramString);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
+  }
 }
 
 

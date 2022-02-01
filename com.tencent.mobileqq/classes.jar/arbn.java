@@ -1,43 +1,61 @@
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class arbn
+  extends aqkz<arbm>
 {
-  private final bklf jdField_a_of_type_Bklf;
-  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public arbn(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, bklf parambklf)
+  public static arbm a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
-    this.jdField_a_of_type_Bklf = parambklf;
+    return (arbm)aqlk.a().a(348);
   }
   
-  public void a()
+  @NonNull
+  public arbm a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
-      return;
+    return new arbm();
+  }
+  
+  @Nullable
+  public arbm a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbm.a(paramArrayOfaqlg);
     }
-    bkks.a().a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
   
-  public void a(String paramString)
+  public void a(arbm paramarbm) {}
+  
+  public Class<arbm> clazz()
   {
-    this.b = paramString;
+    return arbm.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 348;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,19 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
 public class akvd
+  implements View.OnLongClickListener
 {
-  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, akve paramakve)
+  public akvd(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    if (paramAppInterface == null) {
-      return;
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).show();
     }
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.3.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
-      ((JSONObject)localObject).put("from", paramString);
-      ((JSONObject)localObject).put("gameId", paramInt);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString = new NewIntent(BaseApplicationImpl.getContext(), aksh.class);
-      paramString.putExtra("timeout", 10000L);
-      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
-      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
-      paramString.setObserver(paramakve);
-      paramAppInterface.startServlet(paramString);
-      return;
-    }
-    catch (Exception paramAppInterface)
-    {
-      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
-    }
+    return true;
   }
 }
 

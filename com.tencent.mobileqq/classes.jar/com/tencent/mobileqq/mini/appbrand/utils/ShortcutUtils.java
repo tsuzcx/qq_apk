@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import alud;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -14,7 +13,8 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
-import bdhj;
+import anni;
+import bgmo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -67,11 +67,11 @@ public class ShortcutUtils
       if (hasRightsToShortCutInVIVO(paramBaseActivity)) {
         break;
       }
-      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, alud.a(2131714401), alud.a(2131714414), alud.a(2131714416), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
+      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, anni.a(2131712771), anni.a(2131712784), anni.a(2131712786), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
       paramBaseActivity.showCheckbox(false);
       paramBaseActivity.show();
     } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, alud.a(2131714395));
+    paramAddShortcutCallback.onAddResult(2, anni.a(2131712765));
     return;
     doAddShortcut(paramBaseActivity, paramApkgInfo, paramAddShortcutCallback);
   }
@@ -91,7 +91,7 @@ public class ShortcutUtils
     }
     for (;;)
     {
-      return bdhj.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
+      return bgmo.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
     }
   }
   
@@ -489,7 +489,7 @@ public class ShortcutUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils
  * JD-Core Version:    0.7.0.1
  */

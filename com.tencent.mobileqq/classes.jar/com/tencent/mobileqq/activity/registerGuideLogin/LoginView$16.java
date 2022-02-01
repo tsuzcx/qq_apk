@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.registerGuideLogin;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bnle;
+import bqcd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -23,10 +23,10 @@ class LoginView$16
       LoginView.a(this.this$0).setVisibility(8);
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(7, 2131369178);
-    localLayoutParams.addRule(5, 2131369178);
+    localLayoutParams.addRule(7, 2131369567);
+    localLayoutParams.addRule(5, 2131369567);
     localLayoutParams.setMargins(0, (int)(13.0F * LoginView.a(this.this$0) + 0.5F), 0, 0);
-    localLayoutParams.addRule(3, 2131369844);
+    localLayoutParams.addRule(3, 2131370284);
     this.this$0.b.setLayoutParams(localLayoutParams);
     int j = (int)(35.0F * LoginView.a(this.this$0));
     int k = LoginView.a(this.this$0) - j;
@@ -51,12 +51,12 @@ class LoginView$16
         if (LoginView.a(this.this$0).isRunning()) {
           LoginView.a(this.this$0).cancel();
         }
-        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bnle.a()))) {
-          break label655;
+        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bqcd.a()))) {
+          break label664;
         }
       }
     }
-    label655:
+    label664:
     for (i = 40;; i = 0)
     {
       j = LoginView.d(this.this$0);
@@ -75,13 +75,14 @@ class LoginView$16
       }
       this.this$0.e.scrollTo(0, j);
       LoginView.d(this.this$0, true);
+      LoginView.c(this.this$0, false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,291 +1,517 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import QQService.BindUinResult;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRespKikOut;
+import QQService.SvcRspBindUin;
+import QQService.SvcRspDelLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class aodu
-  implements aodv
+  extends aods
 {
-  protected int a(ColorNote paramColorNote)
+  public aodu(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    switch (aocr.a(paramColorNote.getServiceType()) & 0xFFFF0000)
-    {
-    default: 
-      return 2130843981;
-    case 16973824: 
-      return 2130843926;
-    case 17039360: 
-      return 2130839045;
-    case 16842752: 
-      return 2130839046;
-    case 16908288: 
-      return 2130839047;
-    case 17104896: 
-      return 2130843763;
-    }
-    return 2130840085;
+    super(paramQQAppInterface, paramFriendListHandler);
   }
   
-  public int a(ColorNote paramColorNote, boolean paramBoolean)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRespKikOut paramSvcRespKikOut)
   {
-    int i;
-    switch (paramColorNote.getServiceType() & 0xFFFF0000)
-    {
-    default: 
-      i = 0;
+    int i = paramToServiceMsg.extraData.getInt("index", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerKickOutDev index = " + i);
     }
-    for (;;)
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      if (aocr.b(paramColorNote))
+      if (paramSvcRespKikOut == null)
       {
-        if (!paramBoolean) {
-          break;
-        }
-        i = 2130839066;
+        a(52, false, new Object[] { Long.valueOf(-1L), Integer.valueOf(-1), Integer.valueOf(i) });
+        return;
       }
-      return i;
-      if (paramBoolean)
-      {
-        i = 2130839058;
+      a(52, true, new Object[] { Long.valueOf(paramSvcRespKikOut.appid), Integer.valueOf(paramSvcRespKikOut.result), Integer.valueOf(i) });
+      return;
+    }
+    if (paramSvcRespKikOut == null)
+    {
+      a(52, false, new Object[] { Long.valueOf(-1L), Integer.valueOf(-1), Integer.valueOf(i) });
+      return;
+    }
+    a(52, false, new Object[] { Long.valueOf(-1L), Integer.valueOf(-1), Integer.valueOf(i) });
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspBindUin paramSvcRspBindUin)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "handlerBindUinStaus() success");
       }
-      else
+      if (paramSvcRspBindUin != null)
       {
-        i = 2130839059;
-        continue;
-        if (paramBoolean)
+        paramToServiceMsg = paramSvcRspBindUin.vecResult;
+        if (paramToServiceMsg != null)
         {
-          i = 2130839052;
-        }
-        else
-        {
-          i = 2130839053;
-          continue;
-          if (paramBoolean)
+          int i = 0;
+          if (i < paramToServiceMsg.size())
           {
-            i = 2130839055;
-          }
-          else
-          {
-            i = 2130839056;
-            continue;
-            if (paramBoolean)
+            paramFromServiceMsg = (BindUinResult)paramToServiceMsg.get(i);
+            if (paramFromServiceMsg == null) {}
+            for (;;)
             {
-              i = 2130839064;
-            }
-            else
-            {
-              i = 2130839065;
-              continue;
-              if (paramBoolean) {
-                i = 2130839061;
-              } else {
-                i = 2130839062;
+              i += 1;
+              break;
+              if (QLog.isColorLevel()) {
+                QLog.d("SUB_ACCOUNT", 2, "result iResult = " + paramFromServiceMsg.iResult + "; lUin = " + paramFromServiceMsg.lUin + "; strResult = " + paramFromServiceMsg.strResult);
               }
             }
           }
         }
       }
     }
-    return 2130839067;
-  }
-  
-  public void a(aodk paramaodk, int paramInt, boolean paramBoolean)
-  {
-    ColorNote localColorNote = paramaodk.a(paramInt);
-    localResources = paramaodk.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources();
-    paramInt = a(localColorNote);
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      try
-      {
-        localObject1 = new URL(localColorNote.getPicUrl());
-        bool = "resdrawable".equals(((URL)localObject1).getProtocol());
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject1;
-        boolean bool;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions;
-        localObject2 = localResources.getDrawable(paramInt);
-        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
-        continue;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        Object localObject2 = localResources.getDrawable(paramInt);
-        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
-        continue;
-        paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramaodk.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable, null);
-        paramaodk.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable.a(300);
-        localObject2 = paramaodk.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839058;
-        ((View)localObject2).setBackgroundResource(paramInt);
-        paramaodk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839070);
-        continue;
-        paramInt = 2130839059;
-        continue;
-        paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject2 = paramaodk.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839052;
-        ((View)localObject2).setBackgroundResource(paramInt);
-        paramaodk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839068);
-        continue;
-        paramInt = 2130839053;
-        continue;
-        paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject2 = paramaodk.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839055;
-        ((View)localObject2).setBackgroundResource(paramInt);
-        paramaodk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839069);
-        continue;
-        paramInt = 2130839056;
-        continue;
-        paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject2 = paramaodk.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839064;
-        ((View)localObject2).setBackgroundResource(paramInt);
-        paramaodk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839072);
-        continue;
-        paramInt = 2130839065;
-        continue;
-        paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject2 = paramaodk.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839061;
-        ((View)localObject2).setBackgroundResource(paramInt);
-        paramaodk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839071);
-        continue;
-        paramInt = 2130839062;
-        continue;
-        paramInt = 2130839067;
-        continue;
-      }
-      try
-      {
-        localObject1 = localResources.getDrawable(Integer.parseInt(((URL)localObject1).getHost()));
-        paramaodk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-        bool = aocr.b(localColorNote);
-        switch (aocr.a(localColorNote.getServiceType() & 0xFFFF0000))
-        {
-        default: 
-          paramaodk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-          if (bool)
-          {
-            localObject1 = paramaodk.jdField_a_of_type_AndroidViewView;
-            if (!paramBoolean) {
-              continue;
-            }
-            paramInt = 2130839066;
-            ((View)localObject1).setBackgroundResource(paramInt);
-          }
-          paramaodk.jdField_a_of_type_AndroidWidgetTextView.setText(localColorNote.getMainTitle());
-          paramaodk.jdField_b_of_type_AndroidWidgetTextView.setText(localColorNote.getSubTitle());
-          return;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        localObject2 = localResources.getDrawable(paramInt);
-        continue;
-      }
-      if ("uindrawable".equals(((URL)localObject2).getProtocol()))
-      {
-        localObject2 = aody.a(((URL)localObject2).getQuery());
-      }
-      else
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = aepi.a(40.0F, localResources);
-        localURLDrawableOptions.mRequestHeight = aepi.a(40.0F, localResources);
-        localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(paramInt);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
-      }
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerBindUinStaus res no success");
     }
   }
   
-  public void a(ColorNote paramColorNote, View paramView, ImageView paramImageView, boolean paramBoolean)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspDelLoginInfo paramSvcRspDelLoginInfo)
   {
-    i = a(paramColorNote, paramBoolean);
-    if (i != 0) {
-      paramView.setBackgroundResource(i);
+    int i = paramToServiceMsg.extraData.getInt("index", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerDelMultiClient index = " + i);
     }
-    paramView = paramView.getContext().getResources();
-    i = a(paramColorNote);
-    for (;;)
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      try
+      if (paramSvcRspDelLoginInfo == null)
       {
-        paramColorNote = new URL(paramColorNote.getPicUrl());
-        paramBoolean = "resdrawable".equals(paramColorNote.getProtocol());
-        if (!paramBoolean) {
-          continue;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions;
-        paramColorNote = paramView.getDrawable(i);
-        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
-        continue;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        paramColorNote = paramView.getDrawable(i);
-        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
-        continue;
-      }
-      try
-      {
-        paramColorNote = paramView.getDrawable(Integer.parseInt(paramColorNote.getHost()));
-        paramImageView.setImageDrawable(paramColorNote);
+        a(62, false, new Object[] { null, Integer.valueOf(i) });
         return;
       }
-      catch (NumberFormatException paramColorNote)
+      if (paramSvcRspDelLoginInfo.iResult == 0)
       {
-        paramColorNote = paramView.getDrawable(i);
-        continue;
+        a(62, true, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+        return;
       }
-      if ("uindrawable".equals(paramColorNote.getProtocol()))
+      a(62, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+      return;
+    }
+    if (paramSvcRspDelLoginInfo == null)
+    {
+      a(62, false, new Object[] { null, Integer.valueOf(i) });
+      return;
+    }
+    a(62, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspGetDevLoginInfo == null)
       {
-        paramColorNote = aody.a(paramColorNote.getQuery());
+        a(58, false, null);
+        return;
       }
-      else
+      if (paramSvcRspGetDevLoginInfo.iResult == 0)
       {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = aepi.a(40.0F, paramView);
-        localURLDrawableOptions.mRequestHeight = aepi.a(40.0F, paramView);
-        localURLDrawableOptions.mLoadingDrawable = paramView.getDrawable(i);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
+        int i;
+        if ((paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo != null) && (paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.size() > 0))
+        {
+          i = 0;
+          if (i < paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.size())
+          {
+            paramToServiceMsg = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.get(i);
+            if (paramToServiceMsg != null) {}
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramToServiceMsg.vecGuid == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerLoginDevList info.vecGuid is null n =" + paramToServiceMsg.strDeviceTypeInfo);
+            }
+          }
+          else
+          {
+            if (NetConnInfoCenter.GUID == null) {
+              if (QLog.isColorLevel()) {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerLoginDevList NetConnInfoCenter.GUID is null");
+              }
+            }
+            while (Arrays.equals(paramToServiceMsg.vecGuid, NetConnInfoCenter.GUID))
+            {
+              paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.remove(i);
+              paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.add(0, paramToServiceMsg);
+              if (QLog.isColorLevel()) {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerMultiClientList Arrays true");
+              }
+              a(58, true, paramSvcRspGetDevLoginInfo);
+              return;
+              try
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerLoginDevList NetConnInfoCenter.GUID =" + bgva.a(NetConnInfoCenter.GUID) + "; info.guid = " + bgva.a(paramToServiceMsg.vecGuid));
+                }
+              }
+              catch (Exception paramFromServiceMsg)
+              {
+                paramFromServiceMsg.printStackTrace();
+              }
+            }
+          }
+        }
+      }
+      a(58, false, null);
+      return;
+    }
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      a(58, false, null);
+      return;
+    }
+    a(58, false, null);
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspDelLoginInfo paramSvcRspDelLoginInfo)
+  {
+    int i = paramToServiceMsg.extraData.getInt("index", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerDelMultiClient index = " + i);
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspDelLoginInfo == null)
+      {
+        a(61, false, new Object[] { null, Integer.valueOf(i) });
+        return;
+      }
+      if (paramSvcRspDelLoginInfo.iResult == 0)
+      {
+        a(61, true, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+        return;
+      }
+      a(61, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+      return;
+    }
+    if (paramSvcRspDelLoginInfo == null)
+    {
+      a(61, false, new Object[] { null, Integer.valueOf(i) });
+      return;
+    }
+    a(61, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspGetDevLoginInfo == null)
+      {
+        a(59, false, null);
+        return;
+      }
+      if (paramSvcRspGetDevLoginInfo.iResult == 0)
+      {
+        if ((paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo != null) && (paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo.size() > 0))
+        {
+          int j = 0;
+          int i = 0;
+          if (i < paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo.size())
+          {
+            paramToServiceMsg = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo.get(i);
+            int k;
+            if (paramToServiceMsg == null) {
+              k = j;
+            }
+            for (;;)
+            {
+              i += 1;
+              j = k;
+              break;
+              if (paramToServiceMsg.vecGuid != null) {
+                break label152;
+              }
+              k = j;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerRecentLoginDevList info.vecGuid is null n =" + paramToServiceMsg.strDeviceTypeInfo);
+                k = j;
+              }
+            }
+            label152:
+            if (NetConnInfoCenter.GUID == null) {
+              if (QLog.isColorLevel()) {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerRecentLoginDevList NetConnInfoCenter.GUID is null");
+              }
+            }
+            for (;;)
+            {
+              k = j;
+              if (System.currentTimeMillis() / 1000L - paramToServiceMsg.iLoginTime >= 2592000L) {
+                break;
+              }
+              k = j;
+              if (j != 0) {
+                break;
+              }
+              k = j;
+              if (paramToServiceMsg.iTerType != 3L) {
+                break;
+              }
+              k = 1;
+              a(102, true, null);
+              break;
+              try
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerRecentLoginDevList NetConnInfoCenter.GUID =" + bgva.a(NetConnInfoCenter.GUID) + "; info.guid = " + bgva.a(paramToServiceMsg.vecGuid));
+                }
+              }
+              catch (Exception paramFromServiceMsg)
+              {
+                paramFromServiceMsg.printStackTrace();
+              }
+            }
+          }
+        }
+        a(59, true, paramSvcRspGetDevLoginInfo);
+        return;
+      }
+      a(59, false, null);
+      return;
+    }
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      a(59, false, null);
+      return;
+    }
+    a(59, false, null);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspDelLoginInfo paramSvcRspDelLoginInfo)
+  {
+    int i = paramToServiceMsg.extraData.getInt("index", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerDelMultiClient index = " + i);
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspDelLoginInfo == null)
+      {
+        a(51, false, new Object[] { null, Integer.valueOf(i) });
+        return;
+      }
+      if (paramSvcRspDelLoginInfo.iResult == 0)
+      {
+        a(51, true, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+        return;
+      }
+      a(51, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+      return;
+    }
+    if (paramSvcRspDelLoginInfo == null)
+    {
+      a(51, false, new Object[] { null, Integer.valueOf(i) });
+      return;
+    }
+    a(51, false, new Object[] { paramSvcRspDelLoginInfo.strResult, Integer.valueOf(i) });
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspGetDevLoginInfo == null)
+      {
+        a(60, false, null);
+        return;
+      }
+      if (paramSvcRspGetDevLoginInfo.iResult == 0)
+      {
+        if ((paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo != null) && (paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo.size() > 0))
+        {
+          int i = 0;
+          if (i < paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo.size())
+          {
+            paramToServiceMsg = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo.get(i);
+            if (paramToServiceMsg == null) {}
+            for (;;)
+            {
+              i += 1;
+              break;
+              if (paramToServiceMsg.vecGuid == null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerAuthLoginDevList info.vecGuid is null n =" + paramToServiceMsg.strDeviceTypeInfo);
+                }
+              }
+              else if (NetConnInfoCenter.GUID == null)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerAuthLoginDevList NetConnInfoCenter.GUID is null");
+                }
+              }
+              else {
+                try
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerAuthLoginDevList NetConnInfoCenter.GUID =" + bgva.a(NetConnInfoCenter.GUID) + "; info.guid = " + bgva.a(paramToServiceMsg.vecGuid));
+                  }
+                }
+                catch (Exception paramToServiceMsg)
+                {
+                  paramToServiceMsg.printStackTrace();
+                }
+              }
+            }
+          }
+        }
+        a(60, true, paramSvcRspGetDevLoginInfo);
+        return;
+      }
+      a(60, false, null);
+      return;
+    }
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      a(60, false, null);
+      return;
+    }
+    a(60, false, null);
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      if (paramSvcRspGetDevLoginInfo == null)
+      {
+        a(50, false, null);
+        return;
+      }
+      if (paramSvcRspGetDevLoginInfo.iResult == 0)
+      {
+        int i;
+        if ((paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo != null) && (paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.size() > 0))
+        {
+          i = 0;
+          if (i < paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.size())
+          {
+            paramToServiceMsg = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.get(i);
+            if (paramToServiceMsg != null) {}
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramToServiceMsg.vecGuid == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerMultiClientList info.vecGuid is null n =" + paramToServiceMsg.strDeviceTypeInfo);
+            }
+          }
+          else
+          {
+            if (NetConnInfoCenter.GUID == null) {
+              if (QLog.isColorLevel()) {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerMultiClientList NetConnInfoCenter.GUID is null");
+              }
+            }
+            while (Arrays.equals(paramToServiceMsg.vecGuid, NetConnInfoCenter.GUID))
+            {
+              paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.remove(i);
+              paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo.add(0, paramToServiceMsg);
+              if (QLog.isColorLevel()) {
+                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerMultiClientList Arrays true");
+              }
+              a(50, true, new Object[] { paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo });
+              return;
+              try
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handlerMultiClientList NetConnInfoCenter.GUID =" + bgva.a(NetConnInfoCenter.GUID) + "; info.guid = " + bgva.a(paramToServiceMsg.vecGuid));
+                }
+              }
+              catch (Exception paramFromServiceMsg)
+              {
+                paramFromServiceMsg.printStackTrace();
+              }
+            }
+          }
+        }
+      }
+      a(50, false, null);
+      return;
+    }
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      a(50, false, null);
+      return;
+    }
+    a(50, false, null);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("StatSvc.GetDevLoginInfo".equals(paramString)) || ("StatSvc.DelDevLoginInfo".equals(paramString)) || ("StatSvc.SvcReqKikOut".equals(paramString)) || ("StatSvc.BindUin".equals(paramString));
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("StatSvc.GetDevLoginInfo".equals(str)) {
+      if (paramToServiceMsg.extraData.getLong("iGetDevListType") == 1L) {
+        a(paramToServiceMsg, paramFromServiceMsg, (SvcRspGetDevLoginInfo)paramObject);
       }
     }
+    do
+    {
+      return;
+      if (paramToServiceMsg.extraData.getLong("iGetDevListType") == 2L)
+      {
+        b(paramToServiceMsg, paramFromServiceMsg, (SvcRspGetDevLoginInfo)paramObject);
+        return;
+      }
+      if (paramToServiceMsg.extraData.getLong("iGetDevListType") == 4L)
+      {
+        c(paramToServiceMsg, paramFromServiceMsg, (SvcRspGetDevLoginInfo)paramObject);
+        return;
+      }
+      d(paramToServiceMsg, paramFromServiceMsg, (SvcRspGetDevLoginInfo)paramObject);
+      return;
+      if ("StatSvc.DelDevLoginInfo".equals(str))
+      {
+        if (paramToServiceMsg.extraData.getInt("iDelType") == 1)
+        {
+          a(paramToServiceMsg, paramFromServiceMsg, (SvcRspDelLoginInfo)paramObject);
+          return;
+        }
+        if (paramToServiceMsg.extraData.getInt("iDelType") == 2)
+        {
+          b(paramToServiceMsg, paramFromServiceMsg, (SvcRspDelLoginInfo)paramObject);
+          return;
+        }
+        c(paramToServiceMsg, paramFromServiceMsg, (SvcRspDelLoginInfo)paramObject);
+        return;
+      }
+      if ("StatSvc.SvcReqKikOut".equals(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, (SvcRespKikOut)paramObject);
+        return;
+      }
+    } while (!"StatSvc.BindUin".equals(str));
+    a(paramToServiceMsg, paramFromServiceMsg, (SvcRspBindUin)paramObject);
   }
 }
 

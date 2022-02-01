@@ -1,41 +1,25 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
 
 class rmw
-  extends nta
+  implements rnb
 {
-  private rmw(rmv paramrmv) {}
+  int jdField_a_of_type_Int = -1;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public rmw(rmt paramrmt, int paramInt)
   {
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    for (;;)
-    {
-      return;
-      String str = paramBundle.getString("VALUE_VIDEO_VID");
-      int i = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-      if (!TextUtils.isEmpty(str))
-      {
-        paramBundle = rmv.a(this.a).a().iterator();
-        while (paramBundle.hasNext())
-        {
-          VideoInfo localVideoInfo = (VideoInfo)paramBundle.next();
-          if ((str.equals(localVideoInfo.a)) && (i > 0) && (localVideoInfo.p == 0))
-          {
-            localVideoInfo.p = i;
-            rmv.a(this.a).b(localVideoInfo);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a() {}
+  
+  public void a(Bitmap paramBitmap, rmz paramrmz)
+  {
+    rmt.a(this.jdField_a_of_type_Rmt).a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rmw
  * JD-Core Version:    0.7.0.1
  */

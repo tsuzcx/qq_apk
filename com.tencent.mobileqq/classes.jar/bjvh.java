@@ -1,167 +1,89 @@
+import android.app.Activity;
 import android.text.TextUtils;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import common.config.service.QzoneConfig;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBoxADLisener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class bjvh
+class bjvh
+  implements AdProxy.ICmdListener
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
-  private static long jdField_a_of_type_Long;
-  private static LRULinkedHashMap<String, Pattern> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
-  private static String jdField_a_of_type_JavaLangString;
+  bjvh(bjvg parambjvg, Activity paramActivity) {}
   
-  private static String a()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long >= 180000L)
-    {
-      jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneUrlBanList", "[{'domains':['^.*\\.douyin\\.com/.*'],'items':['^https?://d\\.douyin\\.com/.+']},{'domains':['^.*\\.huoshan\\.com/.*'],'items':['^https?://d\\.huoshan\\.com/.+']},{'domains':['^.*\\.toutiao\\.com/.*','^.*\\.xiguaapp\\.cn/.*','^.*\\.xiguashipin\\.cn/.*','^.*\\.365yg\\.com/.*','^.*\\.snssdk\\.com/.*','^.*\\.ixigua\\.com/.*','^.*\\.toutiaocdn\\.net/.*'],'items':['^https?://d\\.toutiao\\.com/.+','^https?://d\\.ixigua\\.com/.+']},{'domains':['^http.*'],'items':['^snssdk[0-9]+://.*','^changba://.*','^orpheus://.*']}]");
-      jdField_a_of_type_Long = l;
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return false;
-    }
-    if (jdField_a_of_type_ComTencentUtilLRULinkedHashMap == null) {
-      jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(jdField_a_of_type_Int);
-    }
-    Pattern localPattern1 = null;
-    try
-    {
-      if (jdField_a_of_type_Int > 0) {
-        localPattern1 = (Pattern)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
+    if ((!paramBoolean) || (paramJSONObject == null)) {
+      if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
+        this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
       }
-      Pattern localPattern2 = localPattern1;
-      if (localPattern1 == null)
-      {
-        localPattern1 = Pattern.compile(paramString2);
-        localPattern2 = localPattern1;
-        if (jdField_a_of_type_Int > 0)
-        {
-          jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString2, localPattern1);
-          localPattern2 = localPattern1;
-        }
-      }
-      boolean bool = localPattern2.matcher(paramString1).lookingAt();
-      return bool;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QzoneStringMatcher", 1, "isMatch reg error.", paramString1);
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return false;
-    }
-    String str1 = a();
-    if (TextUtils.isEmpty(str1)) {
-      return false;
-    }
-    int i;
-    label102:
-    int j;
-    try
-    {
-      localJSONArray = new JSONArray(str1);
-      if (localJSONArray.length() > 0) {
-        break label291;
-      }
-      return false;
-    }
-    catch (JSONException paramString1)
-    {
-      JSONArray localJSONArray;
-      Object localObject1;
-      Object localObject2;
-      String str2;
-      label147:
-      QLog.e("QzoneStringMatcher", 1, "config is not valid json. " + str1);
-    }
-    if (i < localJSONArray.length())
-    {
-      localObject1 = localJSONArray.getJSONObject(i);
-      localObject2 = ((JSONObject)localObject1).optJSONArray("domains");
-      if (localObject2 == null) {
-        break label296;
-      }
-      if (((JSONArray)localObject2).length() != 0) {
-        break label303;
-      }
-      break label296;
-      if (j >= ((JSONArray)localObject2).length()) {
-        break label285;
-      }
-      str2 = (String)((JSONArray)localObject2).get(j);
-      if ((TextUtils.isEmpty(str2)) || (!a(paramString1, str2))) {
-        break label309;
-      }
-      j = 1;
-      if (j == 0) {
-        break label296;
-      }
-      localObject1 = ((JSONObject)localObject1).optJSONArray("items");
-      if ((localObject1 == null) || (((JSONArray)localObject1).length() == 0)) {
-        break label296;
-      }
-      j = 0;
     }
     for (;;)
     {
-      if (j < ((JSONArray)localObject1).length())
+      return;
+      int i;
+      String str;
+      try
       {
-        localObject2 = (String)((JSONArray)localObject1).get(j);
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!a(paramString2, (String)localObject2))) {
-          break label318;
+        i = paramJSONObject.getInt("retCode");
+        str = paramJSONObject.getString("errMsg");
+        paramJSONObject = paramJSONObject.getString("response");
+        if ((i != 0) || (TextUtils.isEmpty(paramJSONObject))) {
+          break label283;
         }
-        QLog.d("QzoneStringMatcher", 2, "match url:" + paramString2 + ",item=" + (String)localObject2);
-        return true;
-        return false;
-        label285:
-        j = 0;
-        break label147;
-        label291:
-        i = 0;
-        break;
+        if (new JSONObject(paramJSONObject).optJSONArray("pos_ads_info").getJSONObject(0).optInt("ret", -1) == 0) {
+          break label164;
+        }
+        if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener == null) {
+          continue;
+        }
+        this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+        return;
       }
-      label296:
-      i += 1;
-      break;
-      label303:
-      j = 0;
-      break label102;
-      label309:
-      j += 1;
-      break label102;
-      label318:
-      j += 1;
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
+      }
+      if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null)
+      {
+        this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        return;
+        label164:
+        this.jdField_a_of_type_Bjvg.jdField_a_of_type_Ackr = ackr.a(this.jdField_a_of_type_AndroidAppActivity).a(new GdtAdBoxData(paramJSONObject)).a(new bjvi(this)).a();
+        if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_Ackr != null)
+        {
+          if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
+            this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onLoad();
+          }
+          AdProxyImpl.a(this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject, this.jdField_a_of_type_Bjvg.b);
+          return;
+        }
+        if (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null)
+        {
+          this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+          return;
+          label283:
+          int j = PluginConst.AdConst.getRetCodeByServerResult(i);
+          if (j != -1) {
+            i = j;
+          }
+          while (this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null)
+          {
+            this.jdField_a_of_type_Bjvg.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(i, str);
+            return;
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,32 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class sgs
-  implements SoundPool.OnLoadCompleteListener
+class sgs
+  extends Handler
 {
-  public sgs(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, long paramLong) {}
-  
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  sgs(sgp paramsgp, Looper paramLooper)
   {
-    long l = System.currentTimeMillis();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
+      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
-    azqs.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
-    ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgs
  * JD-Core Version:    0.7.0.1
  */

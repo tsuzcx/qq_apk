@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import ambz;
 import android.database.sqlite.SQLiteDatabase;
-import awhf;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
 
 public class MiniAppEntityManagerFactory
-  extends QQEntityManagerFactory
+  extends EntityManagerFactory
 {
-  private static final int DB_VERSION = 11;
+  private static final int DB_VERSION = 12;
   
   public MiniAppEntityManagerFactory(String paramString)
   {
     super(paramString);
   }
   
-  public ambz build(String paramString)
+  public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "miniapp_" + paramString + ".db", null, 11);
-      this.dbHelper = new ambz(this.mInnerDbHelper);
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "miniapp_" + paramString + ".db", null, 12);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
@@ -30,10 +30,12 @@ public class MiniAppEntityManagerFactory
   public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
   {
     QLog.d("miniapp-db", 1, "createDatabase");
-    paramSQLiteDatabase.execSQL(awhf.a(new MiniAppInfoEntity()));
-    paramSQLiteDatabase.execSQL(awhf.a(new MiniAppByLinkEntity()));
-    paramSQLiteDatabase.execSQL(awhf.a(new MiniAppByIdEntity()));
-    paramSQLiteDatabase.execSQL(awhf.a(new MiniAppShowInfoEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppByLinkEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppByIdEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppShowInfoEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByIdEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByIdEntity()));
   }
   
   public String getPackageName()
@@ -46,20 +48,19 @@ public class MiniAppEntityManagerFactory
     QLog.d("miniapp-db", 1, "upgradeDatabase --  oldVersion: " + paramInt1 + "; newVersion : " + paramInt2);
     if (paramInt1 < 8)
     {
-      paramSQLiteDatabase.execSQL(awhf.a(MiniAppInfoEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(awhf.a(MiniAppByLinkEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(awhf.a(MiniAppByIdEntity.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(awhf.a(MiniAppShowInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppByLinkEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppByIdEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppShowInfoEntity.class.getSimpleName()));
     }
     if (paramInt1 < 11) {
-      paramSQLiteDatabase.execSQL(awhf.a(MiniAppShowInfoEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppShowInfoEntity.class.getSimpleName()));
     }
-    checkColumnChange(getPackageName(), paramSQLiteDatabase, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

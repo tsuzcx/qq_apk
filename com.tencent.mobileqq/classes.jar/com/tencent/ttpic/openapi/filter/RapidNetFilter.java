@@ -7,9 +7,8 @@ import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.model.SizeI;
-import com.tencent.ttpic.openapi.initializer.RapidNetGenderSwitchInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
@@ -193,15 +192,9 @@ public class RapidNetFilter
     calCropCoordsV2(paramFrame, j, k);
     this.cropFilter.setTexCords(this.texCoords);
     this.cropFilter.RenderProcess(i, this.NET_SIZE.width, this.NET_SIZE.height, -1, 0.0D, this.cropFrame);
-    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
     paramFrame = GlUtil.saveTexture(this.cropFrame);
-    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
-    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
     paramFrame = FeatureManager.Features.RAPID_NET_GENDER_SWITCH.forward(paramFrame, 0, 0);
-    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
-    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
     GlUtil.loadTexture(this.tex[0], paramFrame);
-    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
     this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.fillFrame);
     this.fillFilter.setPositions(this.position);
     GlUtil.setBlendMode(true);
@@ -213,7 +206,7 @@ public class RapidNetFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RapidNetFilter
  * JD-Core Version:    0.7.0.1
  */

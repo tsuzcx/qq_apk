@@ -1,30 +1,44 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class atti
-  implements QQPermissionCallback
+class atti
+  implements atve
 {
-  public atti(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
+  atti(atte paramatte, List paramList, aszd paramaszd, attj paramattj) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    paramArrayOfString = bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new attj(this));
+    atvf.d(atte.a(this.jdField_a_of_type_Atte).getString(2131692439));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bgmg.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aszd.a(localFileManagerEntity.getFilePath(), "", atte.a(this.jdField_a_of_type_Atte).getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aszd.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
     }
-    atpw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(4, 0);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void b()
   {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(4, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atti
  * JD-Core Version:    0.7.0.1
  */

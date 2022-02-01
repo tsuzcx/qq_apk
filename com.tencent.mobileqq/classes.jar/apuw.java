@@ -1,39 +1,38 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class apuw
-  implements aufy<Integer>
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public apuw(EmoticonPanelController paramEmoticonPanelController, long paramLong) {}
+  public apuw(DynamicAvatarView paramDynamicAvatarView) {}
   
-  public void a(Integer paramInteger)
+  public void onPlayRepeat(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.f(paramInteger.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(paramInteger.intValue());
-    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Apux.e) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Apux.f)) {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).i();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Apux.f = false;
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelController", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Apux.g) {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).i();
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
+      return;
     }
-    paramInteger = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.b;
-    if (paramInteger.size() > EmoticonPanelController.d) {
-      if (((apwv)paramInteger.get(EmoticonPanelController.d)).a != 8) {
-        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Apul.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
       }
     }
-    for (;;)
-    {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).i();
-      return;
-      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
-    }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
 }
 

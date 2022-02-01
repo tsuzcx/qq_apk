@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import aqni;
-import aqqa;
-import arrr;
-import arsu;
-import arvi;
-import com.tencent.mobileqq.app.ThreadManager;
+import anni;
+import asti;
+import asxb;
+import atvo;
+import atwr;
+import atxz;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -28,7 +27,7 @@ public class QfileLocalFileAppTabView
   private boolean a;
   private boolean b;
   
-  public QfileLocalFileAppTabView(Context paramContext, List<arvi> paramList, boolean paramBoolean)
+  public QfileLocalFileAppTabView(Context paramContext, List<atxz> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
@@ -48,7 +47,7 @@ public class QfileLocalFileAppTabView
     }
     else
     {
-      localObject = alud.a(2131710071);
+      localObject = anni.a(2131708447);
     }
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
@@ -57,7 +56,7 @@ public class QfileLocalFileAppTabView
     if (((List)localObject).contains(paramFileInfo) == true) {
       return;
     }
-    int j = arrr.a((List)localObject, paramFileInfo.b());
+    int j = atvo.a((List)localObject, paramFileInfo.b());
     int i = j;
     if (j < 0) {
       i = 0;
@@ -65,21 +64,21 @@ public class QfileLocalFileAppTabView
     ((List)localObject).add(i, paramFileInfo);
   }
   
-  private void o()
+  private void p()
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     if (this.f) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(alud.a(2131710067), new ArrayList());
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(anni.a(2131708443), new ArrayList());
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(alud.a(2131710080), new ArrayList());
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(anni.a(2131708456), new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_JavaLangRunnable = new QfileLocalFileAppTabView.2(this);
-    ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManagerV2.excute(this.jdField_a_of_type_JavaLangRunnable, 64, null, true);
   }
   
-  protected aqni a()
+  protected asti a()
   {
-    return new aqqa(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new asxb(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()
@@ -151,20 +150,20 @@ public class QfileLocalFileAppTabView
       if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
         break label50;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().R();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().P();
     }
     for (;;)
     {
-      l();
+      o();
       return;
       label50:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().W();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().U();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView
  * JD-Core Version:    0.7.0.1
  */

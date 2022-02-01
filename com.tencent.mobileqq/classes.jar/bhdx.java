@@ -1,78 +1,43 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
-
 public class bhdx
-  extends bhdw
 {
-  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public bhdx(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public bhdx()
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appId.set(paramString1);
-    this.a.prepayId.set(paramString2);
-    this.a.starCurrency.set(paramInt1);
-    this.a.sandboxEnv.set(paramInt2);
+    this.a = "0";
+    this.b = "";
+    this.c = "";
   }
   
-  protected String a()
+  public bhdx(String paramString1, String paramString2, String paramString3)
   {
-    return "mini_app_pay";
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public boolean equals(Object paramObject)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (this == paramObject) {
+      return true;
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStQueryStarCurrencyRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
-      }
-      QMLog.d("QueryCurrencyRequest", "onResponse fail.rsp = null");
-      return null;
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    paramObject = (bhdx)paramObject;
+    return this.b.equals(paramObject.b);
   }
   
-  public byte[] a()
+  public String toString()
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "QueryStarCurrency";
+    return "WallpaperConfig{itemId='" + this.a + '\'' + ", imgPath='" + this.b + '\'' + ", videoPath='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdx
  * JD-Core Version:    0.7.0.1
  */

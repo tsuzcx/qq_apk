@@ -1,33 +1,23 @@
-public class aopc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+
+public final class aopc
+  implements Parcelable.Creator<SosoInterface.SosoCell>
 {
-  private aopd jdField_a_of_type_Aopd;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aopc()
+  public SosoInterface.SosoCell a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Aopd = new aopd();
+    return new SosoInterface.SosoCell(paramParcel);
   }
   
-  public aopc(String paramString, aopd paramaopd)
+  public SosoInterface.SosoCell[] a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aopd = paramaopd;
-  }
-  
-  public aopd a()
-  {
-    return this.jdField_a_of_type_Aopd;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return new SosoInterface.SosoCell[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aopc
  * JD-Core Version:    0.7.0.1
  */

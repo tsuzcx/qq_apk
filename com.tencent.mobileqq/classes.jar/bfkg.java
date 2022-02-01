@@ -1,45 +1,22 @@
-public class bfkg
+import java.util.ArrayList;
+
+public abstract class bfkg
+  implements bfkh
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  
-  public bfkg(String paramString1, String paramString2)
+  public void a(int paramInt, ArrayList<bfkl> paramArrayList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    a(paramInt, paramArrayList, false);
   }
   
-  public bfkg(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(int paramInt, ArrayList<bfkl> paramArrayList, boolean paramBoolean);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void b(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfkg
  * JD-Core Version:    0.7.0.1
  */

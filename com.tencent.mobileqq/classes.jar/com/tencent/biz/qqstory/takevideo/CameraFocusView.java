@@ -18,7 +18,7 @@ public class CameraFocusView
   public CameraFocusView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setDrawableRes(2130846074);
+    setDrawableRes(2130846513);
   }
   
   public void a()
@@ -62,7 +62,7 @@ public class CameraFocusView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.CameraFocusView
  * JD-Core Version:    0.7.0.1
  */

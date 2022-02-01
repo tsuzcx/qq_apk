@@ -1,78 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoox
-  extends aokh<aoow>
+public final class aoox
+  extends BroadcastReceiver
 {
-  public int a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 578;
-  }
-  
-  @NonNull
-  public aoow a(int paramInt)
-  {
-    return new aoow();
-  }
-  
-  @Nullable
-  public aoow a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    if (paramIntent == null) {}
+    do
     {
-      aoow localaoow = aoow.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaoow;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<aoow> a()
-  {
-    return aoow.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(aoow paramaoow)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramaoow.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+      do
+      {
+        do
+        {
+          return;
+          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+            break;
+          }
+          SosoInterface.a(true);
+        } while (!QLog.isColorLevel());
+        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
+        return;
+      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
+      SosoInterface.a(false);
+      SosoInterface.a().sendEmptyMessage(1002);
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoox
  * JD-Core Version:    0.7.0.1
  */

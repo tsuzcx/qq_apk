@@ -1,47 +1,76 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import java.util.List;
 
-public abstract class arwy
-  implements MethodChannel.MethodCallHandler
+public class arwy
+  extends aryx
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  private arxd jdField_a_of_type_Arxd;
+  private arxj jdField_a_of_type_Arxj;
+  private List<arxg> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public arwy(Context paramContext, arxd paramarxd, int paramInt)
   {
-    String str = paramMethodCall.method;
-    if ("reportException".equals(str))
+    super(paramContext, 7, paramInt);
+    this.jdField_a_of_type_Arxd = paramarxd;
+    this.jdField_a_of_type_ArrayOfInt = asdb.a();
+  }
+  
+  public int a()
+  {
+    return ascv.a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected int a(int paramInt)
+  {
+    return 2007;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Arxd = null;
+  }
+  
+  protected void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    int i;
+    do
     {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
-      return;
-    }
-    if ("recordPageView".equals(str))
+      do
+      {
+        return;
+        i = a(paramInt);
+      } while (paramInt >= b());
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = ascv.a(this.jdField_a_of_type_ArrayOfInt);
+      }
+    } while (i != 2007);
+    if (this.jdField_a_of_type_Arxj == null)
     {
-      a((String)paramMethodCall.argument("pagePath"), paramResult);
-      return;
+      this.jdField_a_of_type_Arxj = new aryy(this, 2007);
+      this.jdField_a_of_type_Arxj.a(true);
+      this.jdField_a_of_type_Arxj.c(false);
+      this.jdField_a_of_type_Arxj.b(false);
+      arxg localarxg = new arxg();
+      localarxg.i = "delete";
+      this.jdField_a_of_type_Arxj.a(localarxg);
     }
-    if ("reportScrollPerfomance".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
-      return;
-    }
-    if ("reportPageLoadTime".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
+    paramView = (EmoticonLinearLayout)paramView;
+    paramView.setCallBack(this.jdField_a_of_type_Arxd);
+    paramView.setAdapter(this.jdField_a_of_type_Arxj);
+    this.jdField_a_of_type_Arxj.a(3, 7);
+    this.jdField_a_of_type_Arxj.a(paramInt);
+    this.jdField_a_of_type_Arxj.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Arxj.a();
+  }
+  
+  public int b()
+  {
+    return a() + ascv.h;
   }
 }
 

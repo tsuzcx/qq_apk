@@ -1,38 +1,46 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class qer
+class qer
   implements View.OnClickListener
 {
-  public qer(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  qer(qeq paramqeq, ArticleInfo paramArticleInfo, Context paramContext) {}
   
   public void onClick(View paramView)
   {
-    int i = 0;
-    nxu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.isEmpty())) {
+      QLog.d("PackProteusItem", 1, "articleInfo is null or topicRecommendInfo is null or topicRecommendInfoList is empty");
     }
-    try
+    String str1;
+    do
     {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      nrt.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (JSONException paramView)
+      str1 = ((rik)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b;
+    } while (TextUtils.isEmpty(str1));
+    String str2 = pha.a("1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if (ube.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
+    for (Object localObject = "0X800935C";; localObject = "0X8007BA3")
     {
-      paramView.printStackTrace();
+      oat.a(null, "", (String)localObject, (String)localObject, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId, str2, false);
+      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+      ((Intent)localObject).putExtra("url", str1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qer
  * JD-Core Version:    0.7.0.1
  */

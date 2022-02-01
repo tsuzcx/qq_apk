@@ -1,41 +1,78 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-class avld
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/intervideo/now/webplugin/AudioRoomSettingHandler;", "", "()V", "ACT_GET_TMP_MSG_PUSH_SETTING", "", "ACT_SET_TMP_MSG_PUSH_SETTING", "TAG", "", "handleGetTmpMsgPushSetting", "", "plugin", "Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;", "reqJson", "Lorg/json/JSONObject;", "callback", "handleRequest", "args", "", "(Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;[Ljava/lang/String;)V", "handleSetTmpMsgPushSetting", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class avld
 {
-  avld(avkt paramavkt, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  public static final avld a = new avld();
   
-  public void onClick(View paramView)
+  private final void a(avjq paramavjq, JSONObject paramJSONObject, String paramString)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      avkt.a(this.jdField_a_of_type_Avkt, 1);
-      new azqx(this.jdField_a_of_type_Avkt.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Avkt.a.a.a).a();
-    }
+    paramavjq.a().a((short)-23161, (aaob)new avle(paramavjq, paramString));
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull avjq paramavjq, @NotNull String[] paramArrayOfString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramavjq, "plugin");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "args");
     for (;;)
     {
-      avkt.b(this.jdField_a_of_type_Avkt);
+      String str;
+      try
+      {
+        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+        str = paramArrayOfString.optString("callback");
+        int i = paramArrayOfString.optInt("act", -1);
+        switch (i)
+        {
+        case 1: 
+          QLog.w("AudioRoomSettingHandler", 1, "unknown action: " + i);
+          return;
+        }
+      }
+      catch (Exception paramavjq)
+      {
+        QLog.w("AudioRoomSettingHandler", 1, "handleRequest catch: " + paramavjq);
+        return;
+      }
+      avld localavld = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localavld.a(paramavjq, paramArrayOfString, str);
       return;
-      if (paramView == this.b)
-      {
-        avkt.a(this.jdField_a_of_type_Avkt, 2);
-        new azqx(this.jdField_a_of_type_Avkt.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Avkt.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        avkt.a(this.jdField_a_of_type_Avkt, 3);
-        new azqx(this.jdField_a_of_type_Avkt.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Avkt.a.a.a).a();
-      }
+      localavld = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localavld.b(paramavjq, paramArrayOfString, str);
+      return;
     }
+  }
+  
+  private final void b(avjq paramavjq, JSONObject paramJSONObject, String paramString)
+  {
+    boolean bool = false;
+    int i = paramJSONObject.optInt("pushSwitch", -1);
+    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting request: toStatus=" + i);
+    if ((i != 0) && (i != 1))
+    {
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("result", "fail");
+      paramavjq.callJs(paramString, new String[] { paramJSONObject.toString() });
+      return;
+    }
+    paramJSONObject = paramavjq.a();
+    if (i == 1) {
+      bool = true;
+    }
+    paramJSONObject.a((short)-23161, bool, (aaob)new avlf(i, paramavjq, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avld
  * JD-Core Version:    0.7.0.1
  */

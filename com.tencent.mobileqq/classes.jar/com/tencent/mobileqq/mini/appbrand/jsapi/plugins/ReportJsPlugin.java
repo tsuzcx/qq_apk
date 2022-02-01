@@ -6,10 +6,13 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.mini.report.MiniAppRealTimeLogReporter;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04884;
+import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -25,10 +28,12 @@ public class ReportJsPlugin
   public static final String API_API_REPORT = "api_report";
   public static final String API_API_REPORT_DC = "reportDC";
   private static final String API_REPORT_KEY_VALUE = "reportKeyValue";
+  public static final String EVENT_NAME_REAL_TIME_LOG = "realtimeLog";
   public static final String EVENT_NAME_REPORT_DATA_TO_DC = "reportDataToDC";
   public static final String KEY_TABLE_DATA = "args";
   public static final String KEY_TABLE_NAME = "tableName";
   private static final int REPORT_EVENT_Display = 15496;
+  private static final int REPORT_EVENT_JS_EXCEPTION = 13582;
   private static final int REPORT_EVENT_Speed = 13544;
   private static final int REPORT_EVENT_Speed_newPage2pageReady = 9;
   private static final int REPORT_EVENT_Speed_reRenderTime = 6;
@@ -124,6 +129,8 @@ public class ReportJsPlugin
     for (;;)
     {
       int i;
+      Object localObject;
+      int j;
       long l;
       try
       {
@@ -131,8 +138,8 @@ public class ReportJsPlugin
         i = 0;
         if (i < paramString2.length())
         {
-          Object localObject = paramString2.getJSONObject(i);
-          int j = ((JSONObject)localObject).getInt("key");
+          localObject = paramString2.getJSONObject(i);
+          j = ((JSONObject)localObject).getInt("key");
           if (15496 == j)
           {
             localObject = ((JSONObject)localObject).getString("value").split(",");
@@ -150,17 +157,17 @@ public class ReportJsPlugin
           {
             localObject = ((JSONObject)localObject).getString("value").split(",");
             j = Integer.parseInt(localObject[0]);
-            if ((9 == j) || (6 == j))
-            {
-              l = Long.parseLong(localObject[1]);
-              l = Long.parseLong(localObject[4]) - l;
-              if (l > 0L)
-              {
-                QLog.e("[mini] ReportJsPlugin", 1, paramString1 + " REPORT_EVENT_Speed: " + l);
-                if (9 == j) {
-                  MiniReportManager.reportEventType(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 636, null, null, null, 0, "0", l, null);
-                }
-              }
+            if ((9 != j) && (6 != j)) {
+              break label447;
+            }
+            l = Long.parseLong(localObject[1]);
+            l = Long.parseLong(localObject[4]) - l;
+            if (l <= 0L) {
+              break label447;
+            }
+            QLog.e("[mini] ReportJsPlugin", 1, paramString1 + " REPORT_EVENT_Speed: " + l);
+            if (9 == j) {
+              MiniReportManager.reportEventType(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 636, null, null, null, 0, "0", l, null);
             }
           }
         }
@@ -171,6 +178,24 @@ public class ReportJsPlugin
       }
       return;
       MiniReportManager.reportEventType(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 637, null, null, null, 0, "0", l, null);
+      break label447;
+      if (13582 == j)
+      {
+        localObject = ((JSONObject)localObject).getString("value");
+        try
+        {
+          if (this.jsPluginEngine.appBrandRuntime != null)
+          {
+            AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)this.jsPluginEngine.appBrandRuntime;
+            MiniReportManager.reportJsError(localAppBrandRuntime, (String)localObject, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(localAppBrandRuntime));
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("[mini] ReportJsPlugin", 1, paramString1 + " REPORT_EVENT_JS_EXCEPTION: failed:", localException);
+        }
+      }
+      label447:
       i += 1;
     }
   }
@@ -214,6 +239,18 @@ public class ReportJsPlugin
         label181:
         QLog.e("[mini] ReportJsPlugin", 1, "ReportPlugin report to table[" + paramJsRuntime + "] fail, no args, [eventName=" + paramString1 + "][jsonParams=" + paramString2 + "]");
       }
+      else if ("realtimeLog".equals(paramString1))
+      {
+        try
+        {
+          MiniAppRealTimeLogReporter.getInstance().report(paramString2);
+          QLog.e("[mini] ReportJsPlugin", 1, "EVENT_NAME_REAL_TIME_LOG " + paramString2);
+        }
+        catch (Exception paramJsRuntime)
+        {
+          QLog.e("[mini] ReportJsPlugin", 1, "ReportPlugin handleNativeRequest exception, [eventName=" + paramString1 + "][jsonParams=" + paramString2 + "]");
+        }
+      }
     }
   }
   
@@ -230,7 +267,7 @@ public class ReportJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ReportJsPlugin
  * JD-Core Version:    0.7.0.1
  */

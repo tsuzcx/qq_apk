@@ -1,70 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
 public class otu
-  implements AladdinConfigHandler
 {
-  private static final Set<String> a = ;
+  private View a;
   
-  public static Set<String> a()
+  public otu(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
   {
-    String str = oij.e();
-    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "getNativeFeedsAlladinKey | operationBarAladdinKey : " + str);
-    if ((a != null) && (!TextUtils.isEmpty(str))) {
-      a.add(str);
-    }
-    return a;
-  }
-  
-  private static Set<String> b()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bkbq.a("native_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
-    }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    if (pha.a() != null)
     {
-      localHashSet.add(localObject[i]);
-      i += 1;
+      paramArkAppMessage = pha.a().getApplication();
+      if (paramArkAppMessage != null) {}
     }
-    return localHashSet;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    else
     {
-      String str1 = (String)localIterator.next();
-      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
-      {
-        String str2 = (String)paramString.get(str1);
-        QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-        bkbq.a("native_feeds_aladdin_keys", str2);
-      }
+      return;
     }
-    return true;
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
   }
   
-  public void onWipeConfig(int paramInt)
+  public View a()
   {
-    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
+    return this.a;
   }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otu
  * JD-Core Version:    0.7.0.1
  */

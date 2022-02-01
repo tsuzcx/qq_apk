@@ -1,20 +1,27 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class uep
-  implements twi
 {
-  public uep(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, ueq paramueq) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static void a(View paramView, uev paramuev)
   {
-    if (paramBoolean) {
-      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, this.jdField_a_of_type_Ueq.a(), paramString);
-    }
+    paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramView.getHeight(), 0.0F });
+    paramView.addListener(paramuev);
+    paramView.setDuration(200L);
+    paramView.start();
+  }
+  
+  public static void b(View paramView, uev paramuev)
+  {
+    paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, paramView.getHeight() });
+    paramView.addListener(paramuev);
+    paramView.setDuration(200L);
+    paramView.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uep
  * JD-Core Version:    0.7.0.1
  */

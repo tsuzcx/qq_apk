@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import awhp;
-import bkbq;
+import bmqa;
 import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.AdDislikeInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -17,17 +17,19 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import obl;
-import obm;
-import oed;
+import omq;
+import omr;
+import oms;
+import oqi;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qkd;
-import qlg;
+import reo;
+import rfs;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
 import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
@@ -43,35 +45,35 @@ public class AdvertisementInfo
   public static final int AD_STYLE_3 = 3;
   public static final int APP_STATE_DOWNLOAD = 0;
   public static final int APP_STATE_OPEN = 1;
-  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new qkd();
+  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new reo();
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
   public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
-  @awhp
+  @notColumn
   public int adStrategyType;
-  @awhp
+  @notColumn
   public int adbt;
-  @awhp
+  @notColumn
   public int adpa;
-  @awhp
+  @notColumn
   public int adpb;
   public int clickPos = -1;
   public int clickType;
-  @awhp
+  @notColumn
   public int downloadState = 0;
-  @awhp
+  @notColumn
   public VideoInfo.GameAdComData gameAdComData;
-  @awhp
+  @notColumn
   public boolean hasAddExposure;
   public boolean isClickFromPkFragment;
-  @awhp
+  @notColumn
   public boolean isHideForAnimate;
-  @awhp
+  @notColumn
   public boolean isIMaxAndNewStyle;
   public boolean isMultiyVideo;
   public boolean isShowBrandAnimate;
-  @awhp
+  @notColumn
   public boolean isShowingGuide;
   public long mADVideoAutoPlay;
   public long mAdAdvertiseId;
@@ -89,7 +91,7 @@ public class AdvertisementInfo
   public String mAdCustomizedInvokeUrl;
   public String mAdDesc;
   public int mAdDestType;
-  @awhp
+  @notColumn
   public ArrayList<AdDislikeInfo> mAdDislikeInfos;
   public String mAdDownloadApiUrl;
   public String mAdEffectUrl;
@@ -106,7 +108,7 @@ public class AdvertisementInfo
   public String mAdLandingPage;
   public String mAdLandingPageReportUrl;
   public int mAdLayout;
-  @awhp
+  @notColumn
   public int mAdLocalSource = 1;
   public int mAdMaterialHeight;
   public int mAdMaterialId;
@@ -127,45 +129,49 @@ public class AdvertisementInfo
   public long mAdVideoFileSize;
   public String mAdVideoUrl;
   public String mAdViewId;
-  @awhp
-  public obl mAdvertisementExtInfo;
-  @awhp
-  public obm mAdvertisementSoftInfo;
-  @awhp
+  @notColumn
+  public omq mAdvertisementExtInfo;
+  @notColumn
+  public omr mAdvertisementSoftInfo;
+  @notColumn
+  public JSONObject mBusiJson;
+  @notColumn
   public ArrayList<String> mC2SClickUrl;
-  @awhp
+  @notColumn
   public ArrayList<String> mC2SExposureUrl;
   public int mC2SReportTriggerTime;
-  @awhp
+  @notColumn
   public int mC2SSwitch;
-  @awhp
+  @notColumn
   public ArrayList<String> mC2SVideoPlayUrl;
-  @awhp
+  @notColumn
+  public oms mCommentAdParams;
+  @notColumn
   public String mImaxImg;
-  @awhp
+  @notColumn
   public int mImaxImgDisplayMs = 5000;
-  @awhp
+  @notColumn
   public int mImaxJumpLandingPage = 1;
-  @awhp
+  @notColumn
   public int mImaxShowAdType;
-  @awhp
+  @notColumn
   public int mImaxShowSlipAllowMs = 3000;
-  @awhp
+  @notColumn
   public String mImaxStyle = "0";
-  @awhp
+  @notColumn
   public String mImaxVideoUrl;
   public int mInteractEffectType;
   public String mInteractImageList = "";
   public int mInteractType;
-  public qlg mLocalInfo;
-  @awhp
+  public rfs mLocalInfo;
+  @notColumn
   public int mOrigin;
   public int mPhoneComponetId;
   public String mPopFormH5Url;
-  @awhp
-  public boolean mProgressFromFeeds;
+  @notColumn
+  public JSONObject mReportDataJson;
   public int mRevisionVideoType = 1;
-  @awhp
+  @notColumn
   public String mRowKey;
   public boolean mShowAdButton = true;
   public String mSoftAdData;
@@ -173,9 +179,9 @@ public class AdvertisementInfo
   public String mSubordinateProductId;
   public int materialGroup;
   public int miniProgramType;
-  @awhp
+  @notColumn
   public int progress;
-  @awhp
+  @notColumn
   public int replay;
   
   public AdvertisementInfo() {}
@@ -240,7 +246,7 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
-    this.mAdvertisementExtInfo = new obl(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new omq(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
   
@@ -322,20 +328,20 @@ public class AdvertisementInfo
     }
     this.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
     processAdExtraDataInfo(this.mAdExtInfo);
-    this.mLocalInfo = new qlg(paramAdInfo.local_info);
+    this.mLocalInfo = new rfs(paramAdInfo.local_info);
     this.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
     if (paramAdInfo.string_interact_image_list.has()) {
       this.mInteractImageList = paramAdInfo.string_interact_image_list.get();
     }
     this.mInteractType = paramAdInfo.uint32_interact_type.get();
-    this.mAdvertisementExtInfo = new obl(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new omq(this.mAdExtInfo);
     processAdExt(this.mAdExt);
   }
   
   public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return oed.b(paramAdvertisementInfo);
+      return oqi.c(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -343,14 +349,14 @@ public class AdvertisementInfo
   public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return oed.b(paramAdvertisementInfo);
+      return oqi.c(paramAdvertisementInfo);
     }
     return 0;
   }
   
   public static boolean isAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
   {
-    return AdvertisementInfo.class.isInstance(paramBaseArticleInfo);
+    return paramBaseArticleInfo instanceof AdvertisementInfo;
   }
   
   public static boolean isAppAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
@@ -380,9 +386,57 @@ public class AdvertisementInfo
     return this.clickPos;
   }
   
+  public String getExtraParam(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.mAdExtInfo))) {
+      return "";
+    }
+    try
+    {
+      paramString = new JSONObject(this.mAdExtInfo).optString(paramString, "");
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public int getNextAdPosition()
+  {
+    if (this.mAdExtInfo != null) {
+      try
+      {
+        int i = new JSONObject(this.mAdExtInfo).optInt("next_ad_position");
+        return i;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return 0;
+  }
+  
+  public boolean isCommentAd()
+  {
+    if (this.mCommentAdParams != null) {
+      return this.mCommentAdParams.jdField_a_of_type_Boolean;
+    }
+    return false;
+  }
+  
   public boolean isGameAdSource()
   {
     return (this.mAdvertisementExtInfo != null) && (this.mAdvertisementExtInfo.j == 32768);
+  }
+  
+  public boolean isKolSoftAd()
+  {
+    return (isSoftAd()) && (this.mAdvertisementSoftInfo.jdField_c_of_type_Int == 3);
+  }
+  
+  public boolean isSoftAd()
+  {
+    return (this.mAdvertisementSoftInfo != null) && (this.mSoftAdType == 2);
   }
   
   public String logAdString()
@@ -591,11 +645,18 @@ public class AdvertisementInfo
           if (paramString.has("imaxShowSlipAllowMs")) {
             this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
           }
-          this.mImaxStyle = bkbq.a("sp_key_ad_imax_style");
-          if ((this.mImaxShowAdType != 1001) || (!"1".equals(this.mImaxStyle))) {
-            break;
+          this.mImaxStyle = bmqa.a("sp_key_ad_imax_style");
+          if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
+            this.isIMaxAndNewStyle = true;
           }
-          this.isIMaxAndNewStyle = true;
+          this.mCommentAdParams = new oms();
+          this.mCommentAdParams.jdField_a_of_type_Boolean = paramString.optBoolean("comment_get_ads");
+          this.mCommentAdParams.jdField_b_of_type_Boolean = paramString.optBoolean("comment_show_comment");
+          this.mCommentAdParams.jdField_c_of_type_Boolean = paramString.optBoolean("comment_button_flag");
+          this.mCommentAdParams.jdField_a_of_type_Int = paramString.optInt("comment_card_style");
+          this.mCommentAdParams.jdField_b_of_type_Int = paramString.optInt("comment_exposure_time_limit");
+          this.mCommentAdParams.jdField_c_of_type_Int = paramString.optInt("comment_exposure_count_limit");
+          this.mCommentAdParams.jdField_a_of_type_Long = paramString.optInt("ad_start_time");
           return;
         }
       }
@@ -610,12 +671,12 @@ public class AdvertisementInfo
   
   public void processSoftDataInfo(String paramString)
   {
-    this.mAdvertisementSoftInfo = new obm(paramString);
+    this.mAdvertisementSoftInfo = new omr(paramString);
   }
   
   public void processSoftDataInfo(JSONObject paramJSONObject)
   {
-    this.mAdvertisementSoftInfo = new obm(paramJSONObject);
+    this.mAdvertisementSoftInfo = new omr(paramJSONObject);
   }
   
   public void resetClickPos()

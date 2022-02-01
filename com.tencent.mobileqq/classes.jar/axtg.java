@@ -1,28 +1,41 @@
-import java.util.HashMap;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class axtg
-  extends axtf
+class axtg
+  implements Animation.AnimationListener
 {
-  public HashMap<String, String> a(String paramString)
+  axtg(axsd paramaxsd) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ("ShortVideo.Save".equals(paramString))
+    if (paramAnimation == axsd.b(this.a))
     {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      return paramString;
+      axsd.a(this.a).setVisibility(8);
+      axsd.a(this.a).clearAnimation();
+      axsd.a(this.a).setBackgroundResource(2130849136);
+      axsd.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166686));
     }
-    return null;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == axsd.a(this.a))
+    {
+      axsd.a(this.a).setVisibility(0);
+      axsd.a(this.a).setBackgroundResource(2130850652);
+      axsd.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166980));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtg
  * JD-Core Version:    0.7.0.1
  */

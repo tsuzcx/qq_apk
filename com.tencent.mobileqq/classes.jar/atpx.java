@@ -1,44 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import java.util.ArrayList;
 
-class atpx
-  extends ameq
+public class atpx
+  extends atqb
 {
-  atpx(atpw paramatpw) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public atpx(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
-      }
-      atso.a(this.a.app, 1, paramString);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
   }
   
-  protected void b(String paramString, int paramInt)
+  public Intent a()
   {
-    super.b(paramString, paramInt);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (this.a.a.a())) {
-        QQToast.a(localBaseActivity, 2131693355, 1).a();
-      }
-      atso.a(this.a.app, 1, paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return null;
     }
+    ForwardFileInfo localForwardFileInfo = ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpx
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import qnw;
+import ris;
 
 public class VisibleSetParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new qnw();
+  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new ris();
   public static VisibleSetParam a;
   public static VisibleSetParam b;
   private final int jdField_a_of_type_Int;

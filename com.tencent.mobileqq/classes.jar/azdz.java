@@ -1,41 +1,20 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-class azdz
-  implements azeh
+public class azdz
+  extends RecyclerView.ItemDecoration
 {
-  azdz(azdy paramazdy) {}
+  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
   
-  public void a(int paramInt1, int paramInt2)
+  private azdz(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
-    VideoEnvironment.a(azdy.a(this.a), ((StringBuilder)localObject).toString(), null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
-        azdy.a(this.a);
-        return;
-      }
-      localObject = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(azdy.a(this.a), (List)localObject);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
-        azdy.a(this.a).a();
-        asxn.a().a();
-        return;
-      }
-      VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
-      azdy.a(this.a);
-      return;
-    }
-    VideoEnvironment.a(azdy.a(this.a), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    azdy.a(this.a);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

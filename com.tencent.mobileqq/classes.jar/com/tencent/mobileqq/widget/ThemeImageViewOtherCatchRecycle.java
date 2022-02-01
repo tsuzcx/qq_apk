@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bibv;
+import bkpg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
 
@@ -13,7 +13,7 @@ public class ThemeImageViewOtherCatchRecycle
   public ThemeImageViewOtherCatchRecycle(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setMaskShape(bibv.c);
+    setMaskShape(bkpg.c);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -32,7 +32,7 @@ public class ThemeImageViewOtherCatchRecycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle
  * JD-Core Version:    0.7.0.1
  */

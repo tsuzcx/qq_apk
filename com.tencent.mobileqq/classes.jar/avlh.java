@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import java.util.concurrent.Callable;
 
-class avlh
-  implements DialogInterface.OnClickListener
+public class avlh
+  implements Callable<avgz>
 {
-  avlh(avkt paramavkt) {}
+  public avlh(ODLoadingActivity paramODLoadingActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avgz a()
   {
-    paramDialogInterface.dismiss();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return avhi.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avlh
  * JD-Core Version:    0.7.0.1
  */

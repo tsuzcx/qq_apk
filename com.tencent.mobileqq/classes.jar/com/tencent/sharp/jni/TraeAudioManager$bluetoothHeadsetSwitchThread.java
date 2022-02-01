@@ -2,7 +2,7 @@ package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import bhqr;
+import bkeb;
 import com.tencent.qphone.base.util.QLog;
 
 class TraeAudioManager$bluetoothHeadsetSwitchThread
@@ -103,7 +103,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 str = "Y";
                 localStringBuilder.append(str);
                 localStringBuilder.append(" :");
-                localStringBuilder.append(this.this$0.jdField_a_of_type_Bhqr.a());
+                localStringBuilder.append(this.this$0.jdField_a_of_type_Bkeb.a());
                 localStringBuilder.append("\n");
                 QLog.w(this.jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
               }
@@ -123,7 +123,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 if ((QLog.isColorLevel()) && (k == 0)) {
                   QLog.e(this.jdField_a_of_type_JavaLangString, 2, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
                 }
-                this.this$0.jdField_a_of_type_Bhqr.a(a(), false);
+                this.this$0.jdField_a_of_type_Bkeb.a(a(), false);
                 a(10);
                 this.this$0.a(this.jdField_a_of_type_Long);
               }
@@ -207,7 +207,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.bluetoothHeadsetSwitchThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,74 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class aoqr
+  extends QIPCModule
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  private static aoqr a;
   
-  public aoqr()
+  public aoqr(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramString);
   }
   
-  public static aoqr a(aoko[] paramArrayOfaoko)
+  public static aoqr a()
   {
-    localaoqr = new aoqr();
-    int i = 0;
+    if (a == null) {}
     try
     {
-      while (i < paramArrayOfaoko.length)
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("pubaccountSwitch"))
-        {
-          localaoqr.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localaoqr.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("fullPopIntervalDay"))
-        {
-          localaoqr.jdField_b_of_type_Int = localJSONObject.optInt("fullPopIntervalDay");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localaoqr.jdField_b_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("isFeedByWeb"))
-        {
-          localaoqr.c = localJSONObject.optInt("isFeedByWeb");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localaoqr.c);
-          }
-        }
-        if (localJSONObject.has("gamePubUrl"))
-        {
-          localaoqr.jdField_b_of_type_JavaLangString = localJSONObject.optString("gamePubUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed gamePubUlr=" + localaoqr.jdField_a_of_type_JavaLangString);
-          }
-        }
-        if (localJSONObject.has("feedUrl"))
-        {
-          localaoqr.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localaoqr.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
+      if (a == null) {
+        a = new aoqr("PublicAccountModule");
       }
-      return localaoqr;
+      return a;
     }
-    catch (Throwable paramArrayOfaoko)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountModule", 2, new Object[] { "PublicAccountModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    String str;
+    boolean bool;
+    if ("ACTION_REPORT_PUBLIC_ACCOUNT_FOLLOW_INFO_IN_WEBVIEW".equalsIgnoreCase(paramString))
     {
-      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaoko.toString());
+      paramInt = paramBundle.getInt("BUNDLE_KEY_REPORT_INFO_SOURCE", -1);
+      str = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
+      bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
+      if ((paramInt != -1) && (!TextUtils.isEmpty(str))) {
+        break label161;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", str });
+      }
+    }
+    return null;
+    label161:
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PublicAccountModule", 2, "app is null!");
+        return null;
+      }
+      aoqs.a(paramString, bool, str, paramInt);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqr
  * JD-Core Version:    0.7.0.1
  */

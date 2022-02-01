@@ -1,41 +1,24 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class axlw
-  implements Application.ActivityLifecycleCallbacks
+class axlw
+  implements View.OnClickListener
 {
-  public axlw(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
+  axlw(axlu paramaxlu) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    if (paramActivity.getComponentName() != null)
-    {
-      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
-      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
-        RedTouchLifeTimeManager.a(this.a);
-      }
-    }
+    axlu.a(this.a).a.clear();
+    axlu.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlw
  * JD-Core Version:    0.7.0.1
  */

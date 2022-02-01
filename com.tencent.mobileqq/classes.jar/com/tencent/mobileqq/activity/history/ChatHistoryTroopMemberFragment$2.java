@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import alto;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import bdgg;
+import anmw;
+import bglj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -15,7 +15,7 @@ import java.util.List;
 class ChatHistoryTroopMemberFragment$2
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, alto paramalto, TroopManager paramTroopManager) {}
+  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, anmw paramanmw, TroopManager paramTroopManager) {}
   
   public void run()
   {
@@ -76,21 +76,21 @@ class ChatHistoryTroopMemberFragment$2
               QLog.d("Q.history.BaseFragment", 2, "onActivityResult, REQUEST_CODE_SHOW_MEMBER_CARD, admins:" + this.this$0.g + " owner:" + this.this$0.f);
             }
           }
-          if ((i != 0) && (this.this$0.jdField_a_of_type_Aidh != null)) {
+          if ((i != 0) && (this.this$0.jdField_a_of_type_Ajtv != null)) {
             this.this$0.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(9);
           }
           return;
           if ((i & 0x2) == 0) {
             break;
           }
-          Object localObject2 = bdgg.a().a(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
-          if ((localObject2 == null) || (this.jdField_a_of_type_Alto == null)) {
+          Object localObject2 = bglj.a().a(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
+          if ((localObject2 == null) || (this.jdField_a_of_type_Anmw == null)) {
             break;
           }
           this.this$0.a((String)???);
           synchronized (this.this$0)
           {
-            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Alto);
+            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Anmw);
             this.this$0.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
         }
@@ -101,7 +101,7 @@ class ChatHistoryTroopMemberFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.2
  * JD-Core Version:    0.7.0.1
  */

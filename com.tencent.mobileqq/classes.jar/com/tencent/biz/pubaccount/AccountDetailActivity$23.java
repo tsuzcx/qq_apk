@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount;
 
-import android.os.Handler;
-
 class AccountDetailActivity$23
   implements Runnable
 {
@@ -9,7 +7,7 @@ class AccountDetailActivity$23
   
   public void run()
   {
-    this.this$0.a.sendEmptyMessage(5);
+    this.this$0.j();
   }
 }
 

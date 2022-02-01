@@ -1,43 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
-public abstract interface bmnt
-  extends bmni
+class bmnt
+  extends BroadcastReceiver
 {
-  public abstract int a();
+  bmnt(bmns parambmns) {}
   
-  public abstract long a(int paramInt);
-  
-  public abstract Bitmap a(int paramInt);
-  
-  public abstract List<? extends bmpw> a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(TransferData paramTransferData);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(long paramLong, boolean paramBoolean);
-  
-  public abstract void k();
-  
-  public abstract void l();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    try
+    {
+      paramContext = paramIntent.getStringExtra("callback");
+      int i = paramIntent.getIntExtra("ret", 1);
+      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
+      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
+    }
+  }
 }
 
 

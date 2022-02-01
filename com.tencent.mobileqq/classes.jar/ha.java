@@ -1,22 +1,41 @@
-final class ha
+public final class ha
 {
-  private final byte[] a;
-  private final byte[] b;
+  private final int jdField_a_of_type_Int;
+  private final gz[] jdField_a_of_type_ArrayOfGz;
   
-  ha(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  ha(int paramInt, gz... paramVarArgs)
   {
-    this.a = paramArrayOfByte1;
-    this.b = paramArrayOfByte2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfGz = paramVarArgs;
   }
   
-  public byte[] a()
+  public int a()
   {
-    return this.a;
+    return this.jdField_a_of_type_Int;
   }
   
-  public byte[] b()
+  public gz[] a()
   {
-    return this.b;
+    return this.jdField_a_of_type_ArrayOfGz;
+  }
+  
+  public int b()
+  {
+    int i = 0;
+    gz[] arrayOfgz = this.jdField_a_of_type_ArrayOfGz;
+    int k = arrayOfgz.length;
+    int j = 0;
+    while (i < k)
+    {
+      j += arrayOfgz[i].a();
+      i += 1;
+    }
+    return j;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int * b();
   }
 }
 

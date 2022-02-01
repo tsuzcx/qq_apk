@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfhi
-  extends ndm
+  implements View.OnClickListener
 {
-  public bfhi(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bfhi(HomeworkTroopController.2 param2) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(View paramView)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
-      return;
-    }
-    this.a.c(alud.a(2131715524));
+    this.a.this$0.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfhi
  * JD-Core Version:    0.7.0.1
  */

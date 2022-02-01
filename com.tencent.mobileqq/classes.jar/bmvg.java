@@ -1,8 +1,10 @@
-import javax.microedition.khronos.opengles.GL;
+import java.util.HashMap;
 
-public abstract interface bmvg
+public class bmvg
 {
-  public abstract GL a(GL paramGL);
+  public int a;
+  public HashMap<String, String> a;
+  public int b;
 }
 
 

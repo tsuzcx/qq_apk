@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfbm;
-import bfiu;
-import bflm;
-import bflp;
-import bfox;
+import biip;
+import biqd;
+import bisv;
+import bisy;
+import biwe;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.tmassistantbase.common.DownloadSDKConfigManager;
 import java.io.File;
@@ -28,17 +28,17 @@ public final class AppClient$2
     Bundle localBundle;
     label169:
     Object localObject3;
-    if (bfiu.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
+    if (biqd.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
     {
       bool = true;
-      if (!bfox.a().a(bfbm.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
+      if (!biwe.a().a(biip.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
       {
-        localObject1 = bfiu.g() + File.separator + "qapp_center_detail.htm";
+        localObject1 = biqd.g() + File.separator + "qapp_center_detail.htm";
         localObject2 = new File((String)localObject1);
         if (!((File)localObject2).exists())
         {
-          bflp.d("AppClient", "file" + (String)localObject1 + " not exist copyassets.");
-          bflm.a("Page/system", bfiu.h());
+          bisy.d("AppClient", "file" + (String)localObject1 + " not exist copyassets.");
+          bisv.a("Page/system", biqd.h());
         }
         localIntent = new Intent();
         localBundle = new Bundle();
@@ -76,7 +76,7 @@ public final class AppClient$2
       else
       {
         label300:
-        localIntent.setClass(bfbm.a().a(), QZoneAppListActivity.class);
+        localIntent.setClass(biip.a().a(), QZoneAppListActivity.class);
         if (!DownloadSDKConfigManager.canGotoNewDetailPage(this.d)) {
           break label523;
         }
@@ -90,16 +90,16 @@ public final class AppClient$2
         if (this.jdField_a_of_type_AndroidOsBundle.getInt("process_id") == 2) {
           localBundle.putInt("process_id", 2);
         }
-        bflp.b("Jie", "APP_URL:" + (String)localObject2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
+        bisy.b("Jie", "APP_URL:" + (String)localObject2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
         localIntent.putExtras(localBundle);
         localIntent.putExtra("adapter_action", "action_app_detail");
         localIntent.addFlags(872415232);
-        bfbm.a().a().startActivity(localIntent);
+        biip.a().a().startActivity(localIntent);
         return;
         bool = false;
         break;
         label461:
-        localObject2 = bfiu.m() + File.separator + "qapp_center_detail.htm";
+        localObject2 = biqd.m() + File.separator + "qapp_center_detail.htm";
         break label169;
         localObject3 = (String)localObject1 + "&" + this.jdField_b_of_type_JavaLangString;
         break label300;
@@ -110,7 +110,7 @@ public final class AppClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.2
  * JD-Core Version:    0.7.0.1
  */

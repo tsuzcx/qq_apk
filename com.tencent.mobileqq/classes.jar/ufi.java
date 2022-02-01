@@ -1,22 +1,22 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
 
 public class ufi
-  extends RecyclerView.OnScrollListener
+  implements aaeo
 {
-  public ufi(QCircleRecommendWidget paramQCircleRecommendWidget) {}
+  ufi(ufh paramufh) {}
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(View paramView)
   {
-    if (paramInt1 > 0) {
-      tzs.a(30, 2, QCircleRecommendWidget.a(this.a));
+    if (this.a.isShowing()) {
+      ufh.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufi
  * JD-Core Version:    0.7.0.1
  */

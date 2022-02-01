@@ -1,29 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class zyc
-  extends amcj
+  extends RecyclerView.OnScrollListener
 {
-  zyc(zxz paramzxz) {}
+  zyc(zyb paramzyb) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
-        return;
-      }
-      aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
-      return;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.i();
     }
-    aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,91 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import mqq.manager.Manager;
 
 public class awhh
-  extends awgq
+  implements Manager
 {
-  public awhh()
+  public static String a;
+  public static String b = "extra_notify_msg";
+  public Intent a;
+  public RecentItemPullActivePush a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  
+  static
   {
-    this.a = 3;
+    jdField_a_of_type_JavaLangString = "QQ";
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public awhh(QQAppInterface paramQQAppInterface)
   {
-    paramawge = (TroopAssistantData)paramawge;
-    if (paramawgp == null)
-    {
-      paramawge.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramawge.lastmsgtime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgtime"));
-      paramawge.lastdrafttime = paramCursor.getLong(paramCursor.getColumnIndex("lastdrafttime"));
-      return paramawge;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
+      return 0;
     }
-    int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1)
+    return 1;
+  }
+  
+  public MessageForText a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
     {
-      paramawgp.a(new NoColumnError("troopUin", String.class));
-      i = paramCursor.getColumnIndex("lastmsgtime");
-      if (i != -1) {
-        break label187;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)bbzh.a(-1000));
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 9653;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = anhk.aw;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = anhk.aw;
+      if (this.jdField_a_of_type_AndroidContentIntent != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(b);
       }
-      paramawgp.a(new NoColumnError("lastmsgtime", Long.TYPE));
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
     }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName))) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = null;
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null)
     {
-      i = paramCursor.getColumnIndex("lastdrafttime");
-      if (i != -1) {
-        break label202;
-      }
-      paramawgp.a(new NoColumnError("lastdrafttime", Long.TYPE));
-      return paramawge;
-      paramawge.troopUin = paramCursor.getString(i);
-      break;
-      label187:
-      paramawge.lastmsgtime = paramCursor.getLong(i);
+      localObject = new RecentUser(anhk.aw, 9653);
+      ((RecentUser)localObject).msgType = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = new RecentItemPullActivePush((RecentUser)localObject);
     }
-    label202:
-    paramawge.lastdrafttime = paramCursor.getLong(i);
-    return paramawge;
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Object localObject = paramIntent.getStringExtra(b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.a((String)localObject, l);
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,lastmsgtime INTEGER ,lastdrafttime INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(awge paramawge, ContentValues paramContentValues)
-  {
-    paramawge = (TroopAssistantData)paramawge;
-    paramContentValues.put("troopUin", paramawge.troopUin);
-    paramContentValues.put("lastmsgtime", Long.valueOf(paramawge.lastmsgtime));
-    paramContentValues.put("lastdrafttime", Long.valueOf(paramawge.lastdrafttime));
-  }
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awhh
  * JD-Core Version:    0.7.0.1
  */

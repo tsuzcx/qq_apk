@@ -1,73 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class aonw
-  extends aokh<aonv>
+class aonw
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 414;
-  }
+  aonw(aonv paramaonv, ArrayList paramArrayList, String paramString) {}
   
-  @NonNull
-  public aonv a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aonv();
-  }
-  
-  @Nullable
-  public aonv a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
-    {
-      aonv localaonv = aonv.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaonv;
-    }
-    return null;
-  }
-  
-  public Class<aonv> a()
-  {
-    return aonv.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aonv paramaonv)
-  {
-    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramaonv.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramaonv.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    localOpenPlayerBuilder.a();
+    xho.a(this.jdField_a_of_type_Aonv.a.a, localOpenPlayerBuilder.a(), null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aonw
  * JD-Core Version:    0.7.0.1
  */

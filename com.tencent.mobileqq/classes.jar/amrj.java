@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.utils.NumberWheelView;
-import com.tencent.widget.VerticalGallery;
-
-public abstract interface amrj
+public class amrj
 {
-  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
+  public static String a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
+    }
+    return "ltgame_redpkg_plankinfo.check_game";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrj
  * JD-Core Version:    0.7.0.1
  */

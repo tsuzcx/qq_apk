@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
 import android.view.View;
-import bioa;
-import bion;
+import blbp;
+import blcc;
 import com.tencent.mobileqq.redtouch.RedAppInfo;
 import com.tencent.mobileqq.redtouch.RedTouchUI;
 import com.tencent.qphone.base.util.QLog;
@@ -24,9 +24,9 @@ class QQComicTabBarView$7$1
     if ((i >= 0) && (i < QQComicTabBarView.a(this.jdField_a_of_type_CooperationComicUiQQComicTabBarView$7.this$0)))
     {
       localObject = QQComicTabBarView.a(this.jdField_a_of_type_CooperationComicUiQQComicTabBarView$7.this$0, i).getTag(-3);
-      if (!(localObject instanceof bioa)) {}
+      if (!(localObject instanceof blbp)) {}
     }
-    for (Object localObject = ((bioa)localObject).a;; localObject = null)
+    for (Object localObject = ((blbp)localObject).a;; localObject = null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
@@ -56,7 +56,7 @@ class QQComicTabBarView$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.7.1
  * JD-Core Version:    0.7.0.1
  */

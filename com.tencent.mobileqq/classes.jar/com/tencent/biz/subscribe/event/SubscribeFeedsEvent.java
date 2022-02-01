@@ -4,6 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -76,17 +77,19 @@ public class SubscribeFeedsEvent
       localStFeed.title.set(paramCertifiedFakeFeed.c());
       localStFeed.content.set(paramCertifiedFakeFeed.d());
       localStFeed.poster.id.set(paramCertifiedFakeFeed.f());
+      localStFeed.poster.setHasFlag(true);
       localStFeed.type.set(paramCertifiedFakeFeed.a());
       localStFeed.createTime.set(paramCertifiedFakeFeed.a());
       localPBStringField = localStFeed.cover.url;
       if (paramCertifiedFakeFeed.e() != null) {
-        break label215;
+        break label231;
       }
     }
-    label215:
+    label231:
     for (String str = "";; str = paramCertifiedFakeFeed.e())
     {
       localPBStringField.set(str);
+      localStFeed.cover.setHasFlag(true);
       switch (paramCertifiedFakeFeed.a())
       {
       case 1: 
@@ -102,12 +105,13 @@ public class SubscribeFeedsEvent
     localStFeed.video.width.set(paramCertifiedFakeFeed.b());
     localStFeed.video.height.set(paramCertifiedFakeFeed.c());
     localStFeed.video.duration.set(paramCertifiedFakeFeed.d());
+    localStFeed.video.setHasFlag(true);
     return localStFeed;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.SubscribeFeedsEvent
  * JD-Core Version:    0.7.0.1
  */

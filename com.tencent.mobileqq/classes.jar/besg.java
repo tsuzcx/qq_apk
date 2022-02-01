@@ -1,20 +1,52 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class besg
-  implements View.OnKeyListener
+  extends Handler
 {
-  besg(besf parambesf) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  besg(besf parambesf, Looper paramLooper)
   {
-    if (paramInt == 4)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      besf.a(this.a);
-      return true;
+    default: 
+    case 2: 
+    case 3: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          this.a.a(1000);
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          besf.a(this.a);
+          this.a.notifyObservers(Integer.valueOf(101));
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
+        return;
+        this.a.a = ((List)paramMessage.obj);
+        besf.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(105));
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
+      return;
+    case 5: 
+      besf.c(this.a);
+      this.a.notifyObservers(Integer.valueOf(1010));
+      return;
     }
-    return false;
+    besf.d(this.a);
+    this.a.notifyObservers(Integer.valueOf(103));
   }
 }
 

@@ -1,17 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-
 public class akth
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public akth(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public akth(String paramString, long paramLong, int paramInt)
   {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -10,19 +10,21 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
-import bgou;
-import bgxl;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.DeviceUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.VersionUtil;
+import com.tencent.qqmini.sdk.manager.LoginManager;
 
+@MiniKeep
 public class QUAUtil
 {
   private static final String TAG = "QUAUtil";
   private static volatile String mWebViewUA = "";
-  private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "phone", "other" };
+  private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "qqwtlogin", "other" };
   private static volatile String ua;
   
   public static String getApplicationName(Context paramContext)
@@ -39,7 +41,7 @@ public class QUAUtil
   
   public static String getLoginType()
   {
-    int i = bgxl.a().a();
+    int i = LoginManager.getInstance().getLoginType();
     return sLoginTypeList[i];
   }
   
@@ -58,17 +60,20 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.3.1";
+    return "1.6.0";
   }
   
   public static String getQUA()
   {
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    return "V1_AND_MINISDK_1.3.1_0_RELEASE_B";
+    return "V1_AND_MINISDK_1.6.0_0_RELEASE_B";
   }
   
   public static String getSimpleDeviceInfo(Context paramContext)
   {
+    if (paramContext == null) {
+      return "";
+    }
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     Object localObject = (WindowManager)paramContext.getSystemService("window");
     paramContext = new DisplayMetrics();
@@ -79,9 +84,9 @@ public class QUAUtil
     ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
     ((StringBuilder)localObject).append("p=").append(paramContext.widthPixels).append('*').append(paramContext.heightPixels).append('&');
     ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
-    ((StringBuilder)localObject).append("mm=").append(bgou.b() / 1048576L).append('&');
-    ((StringBuilder)localObject).append("cf=").append(bgou.c()).append('&');
-    ((StringBuilder)localObject).append("cc=").append(bgou.b()).append('&');
+    ((StringBuilder)localObject).append("mm=").append(DeviceUtil.getSystemTotalMemory() / 1048576L).append('&');
+    ((StringBuilder)localObject).append("cf=").append(DeviceUtil.getCpuFrequency()).append('&');
+    ((StringBuilder)localObject).append("cc=").append(DeviceUtil.getCpuNumber()).append('&');
     ((StringBuilder)localObject).append("qqversion=").append(localMiniAppProxy.getAppVersion());
     return ((StringBuilder)localObject).toString();
   }
@@ -104,11 +109,11 @@ public class QUAUtil
         {
           try
           {
-            String str1 = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getMiniAppEnv().getContext());
+            String str1 = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getContext());
             localStringBuilder = new StringBuilder();
             int j = str1.length();
             if (i >= j) {
-              break label144;
+              break label138;
             }
             c = str1.charAt(i);
             if ((c > '\037') && (c < '')) {
@@ -136,7 +141,7 @@ public class QUAUtil
       for (;;)
       {
         return ua;
-        label144:
+        label138:
         ua = localStringBuilder.toString();
       }
       i += 1;
@@ -152,9 +157,19 @@ public class QUAUtil
     return mWebViewUA;
   }
   
+  public static boolean isAlienApp()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId().startsWith("2");
+  }
+  
   public static boolean isDemoApp()
   {
     return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("demo");
+  }
+  
+  public static boolean isMicroApp()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ma");
   }
   
   public static boolean isQQApp()
@@ -162,9 +177,19 @@ public class QUAUtil
     return (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qi")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ssq"));
   }
   
+  public static boolean isQQBrowseApp()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qb");
+  }
+  
   public static boolean isQQMainApp()
   {
     return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq");
+  }
+  
+  public static boolean isQQSpeedApp()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ssq");
   }
   
   public static boolean isRdmBuild()
@@ -174,7 +199,7 @@ public class QUAUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.QUAUtil
  * JD-Core Version:    0.7.0.1
  */

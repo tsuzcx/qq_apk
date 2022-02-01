@@ -1,29 +1,29 @@
 package cooperation.vip.vipcomponent.util;
 
-import bkhc;
-import bkhe;
+import bmvw;
+import bmvy;
 
 public class ZipResDownloadManager$1
   implements Runnable
 {
-  public ZipResDownloadManager$1(bkhc parambkhc, String paramString) {}
+  public ZipResDownloadManager$1(bmvw parambmvw, String paramString) {}
   
   public void run()
   {
     String str = this.a;
     if (this.this$0.a(str)) {}
-    bkhe localbkhe;
+    bmvy localbmvy;
     do
     {
       return;
-      localbkhe = bkhc.a(this.this$0, str, -1, null, null);
-    } while (!bkhc.a(this.this$0, str, localbkhe));
-    bkhc.a(this.this$0, localbkhe);
+      localbmvy = bmvw.a(this.this$0, str, -1, null, null);
+    } while (!bmvw.a(this.this$0, str, localbmvy));
+    bmvw.a(this.this$0, localbmvy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

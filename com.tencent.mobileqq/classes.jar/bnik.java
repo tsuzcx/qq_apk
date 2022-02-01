@@ -1,8 +1,13 @@
-public abstract interface bnik
+class bnik
+  extends bolh
 {
-  public abstract void a(float paramFloat);
+  bnik(bnii parambnii) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    super.a();
+    this.a.j();
+  }
 }
 
 

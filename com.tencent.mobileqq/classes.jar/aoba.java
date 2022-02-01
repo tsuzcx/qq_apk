@@ -1,17 +1,60 @@
-import android.hardware.Camera.ShutterCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+import android.app.Activity;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aoba
-  implements Camera.ShutterCallback
+  extends aoay
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aoaq jdField_a_of_type_Aoaq;
-  private final aoar jdField_a_of_type_Aoar;
+  private String b;
   
-  public void onShutter()
+  public aoba(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
+    this.b = paramString4;
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (TextUtils.isEmpty(paramString)) || (a() == 1);
+  }
+  
+  protected String d()
+  {
+    String str2 = aobd.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.d();
+    }
+    return str1;
+  }
+  
+  protected String e()
+  {
+    String str2 = aobd.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.e();
+    }
+    return str1;
+  }
+  
+  protected String f()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "result");
+    localJSONObject2.put("gameType", a());
+    JSONObject localJSONObject3 = new JSONObject();
+    localJSONObject3.put("jump_url", a());
+    String str2 = aobd.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
+    }
+    localJSONObject3.put("icon_url", str1);
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
   }
 }
 

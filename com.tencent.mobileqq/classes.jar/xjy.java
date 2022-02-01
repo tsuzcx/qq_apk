@@ -1,70 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class xjy
+  extends Subscriber.SingleEventSubscriberNoRefect<wii>
 {
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private xkb jdField_a_of_type_Xkb;
-  private boolean jdField_a_of_type_Boolean;
+  xjt a;
   
-  public xjy(Context paramContext, xkb paramxkb, Handler paramHandler)
+  public xjy(@NonNull xjt paramxjt)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xjz(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Xkb = paramxkb;
-    paramContext = new IntentFilter("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    paramContext.addAction("action_music_start");
-    paramContext.addAction("action_music_refresh_list");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramContext);
+    this.a = paramxjt;
   }
   
-  private void a(String paramString)
+  protected void a(@NonNull wii paramwii)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "songMid not exist");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698630));
-      return;
+    if ((paramwii.b != null) && (paramwii.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      xjt.a(this.a, paramwii.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwii.b.mVid, paramwii.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
     }
-    if (!bdin.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "Net not Support");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698635));
-      return;
-    }
-    if (bdin.b(this.jdField_a_of_type_AndroidContentContext)) {
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698634));
-    }
-    ((QIMMusicConfigManager)blqr.a(2)).a(paramString, this.jdField_a_of_type_Boolean, new xka(this));
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    paramObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramObject);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+    return wii.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xjy
  * JD-Core Version:    0.7.0.1
  */

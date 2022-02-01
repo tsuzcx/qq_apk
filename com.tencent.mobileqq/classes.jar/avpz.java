@@ -1,14 +1,28 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-class avpz
+public class avpz
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public avpz(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(0) });
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpz
  * JD-Core Version:    0.7.0.1
  */

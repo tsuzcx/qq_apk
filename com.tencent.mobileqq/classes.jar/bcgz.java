@@ -1,29 +1,52 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bcgz
-  implements Comparable<bcgz>
+class bcgz<K, V>
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public int a(@NonNull bcgz parambcgz)
+  public bcgz(bcgy parambcgy) {}
+  
+  public ArrayList<V> a(K paramK)
   {
-    if (this.b != parambcgz.b) {
-      return this.b - parambcgz.b;
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+  }
+  
+  public void a(V paramV)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ArrayList localArrayList = (ArrayList)localEntry.getValue();
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        Object localObject = localArrayList.get(i);
+        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
+          ((ArrayList)localEntry.getValue()).remove(paramV);
+        } else {
+          i += 1;
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+  }
+  
+  public void a(K paramK, V paramV)
+  {
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
     }
-    if (parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambcgz.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
+    if (!localArrayList1.contains(paramV)) {
+      localArrayList1.add(paramV);
     }
-    if (this.jdField_a_of_type_Int != parambcgz.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambcgz.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambcgz.jdField_a_of_type_JavaLangString);
   }
 }
 

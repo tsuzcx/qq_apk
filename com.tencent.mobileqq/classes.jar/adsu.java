@@ -1,56 +1,28 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.widget.FixedBounceScrollView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adsu
-  extends Handler
+public final class adsu
+  implements DialogInterface.OnClickListener
 {
-  public adsu(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adsu(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, adsx paramadsx, Bundle paramBundle, boolean paramBoolean2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    boolean bool = false;
+    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 1)
     {
-    default: 
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_AndroidOsBundle);
       return;
-    case 0: 
-      paramMessage = new Rect();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.offsetDescendantRectToMyCoords((View)localObject, paramMessage);
-      localObject = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getDrawingRect((Rect)localObject);
-      boolean bool = ((Rect)localObject).contains(paramMessage);
-      if (!bool) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.scrollTo(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getScrollX(), paramMessage.top);
-      }
-      if (bool) {}
-      for (long l = 0L;; l = 50L)
-      {
-        sendEmptyMessageDelayed(1, l);
-        return;
-      }
     }
-    paramMessage = new Rect();
-    Object localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[4];
-    ((View)localObject).getHitRect(paramMessage);
-    localObject = ((View)localObject).findViewById(2131368579);
-    paramMessage.offset(((View)localObject).getLeft() + aepi.a(34.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), ((View)localObject).getTop() - aepi.a(18.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    localObject = (FrameLayout.LayoutParams)QQSettingMe.b(this.a).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject).leftMargin = paramMessage.left;
-    ((FrameLayout.LayoutParams)localObject).topMargin = paramMessage.top;
-    QQSettingMe.b(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    QQSettingMe.b(this.a).setPadding(aepi.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aepi.a(4.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aepi.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), aepi.a(8.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    QQSettingMe.b(this.a).setVisibility(0);
+    if (!this.b) {
+      bool = true;
+    }
+    ChatActivityUtils.a(paramDialogInterface, bool, null);
   }
 }
 

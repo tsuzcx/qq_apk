@@ -13,7 +13,7 @@ public enum VideoMaterialUtil$STICKER_ORDER_MODE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoMaterialUtil.STICKER_ORDER_MODE
  * JD-Core Version:    0.7.0.1
  */

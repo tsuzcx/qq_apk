@@ -1,20 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
-class vsy
-  implements View.OnTouchListener
+public class vsy
+  implements vst
 {
-  private vsy(vsv paramvsv) {}
+  public vsy(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public float a()
   {
-    return vsv.a(this.a).a(paramMotionEvent);
+    return QCircleTransitionImageView.b(this.a).top;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsy
  * JD-Core Version:    0.7.0.1
  */

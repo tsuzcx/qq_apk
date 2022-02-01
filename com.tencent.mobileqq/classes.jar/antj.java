@@ -1,60 +1,36 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
+import android.os.Handler;
+import android.os.Message;
 
-public abstract class antj
-  extends anti
+public class antj
+  implements anil
 {
-  public int a;
-  protected Context a;
-  protected ants a;
-  public Matrix4 a;
-  public float[] b = new float[3];
-  public float[] c = new float[3];
+  private Handler a;
   
-  public antj(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
+  public antj(Handler paramHandler)
   {
-    super(paramSensorManager, paramantb);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
+    this.a = paramHandler;
   }
   
-  private void a(Context paramContext)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Ants = new ants();
+    this.a = null;
   }
   
-  protected void a(float[] paramArrayOfFloat)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_Antb == null) || (paramArrayOfFloat == null)) {}
-    do
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 0)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
-        this.jdField_a_of_type_Ants.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          this.jdField_a_of_type_Antb.updateAzimuth(this.c[0]);
-          return;
-        }
-        this.b[0] = this.c[1];
-        this.b[1] = (-this.c[0]);
-        this.b[2] = (-this.c[2]);
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          this.jdField_a_of_type_Antb.updateRotation(this.b[0], this.b[1], this.b[2]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
-      this.jdField_a_of_type_Antb.updateRotation(this.b[0], this.b[1], this.b[2]);
-    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
-    this.jdField_a_of_type_Antb.onRotationUpdateOriginal(paramArrayOfFloat);
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 

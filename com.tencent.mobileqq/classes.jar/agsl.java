@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
 class agsl
-  extends altm
+  extends afuv
 {
-  agsl(agse paramagse) {}
-  
-  protected void onAddFriend(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      agse.a(this.a);
-    }
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

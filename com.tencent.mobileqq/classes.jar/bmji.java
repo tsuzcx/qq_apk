@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bmji
+public final class bmji
 {
-  public static String a;
+  public int a;
+  public Map<String, String> a;
   
-  public static boolean a(long paramLong, Context paramContext)
+  public bmji()
   {
-    a = alsd.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
-    }
-    return (bool1) || (bool2);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public String toString()
+  {
+    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

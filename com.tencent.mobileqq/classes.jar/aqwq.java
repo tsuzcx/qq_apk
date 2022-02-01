@@ -1,43 +1,108 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class aqwq
-  extends aqru
+public class aqwq
+  extends aqkz<aqwl>
 {
-  aqwq(aqwp paramaqwp) {}
+  final String a = "QfileFileAssistantTipsConfigProcessor<FileAssistant>";
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  @NonNull
+  public aqwl a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
-    }
-    bkmm.a(null, paramInt2);
-    paramString1 = this.a.a.a().a(paramLong2);
-    Bundle localBundle;
-    if ((paramString1 != null) && (paramString1.nOpType == 50))
-    {
-      localBundle = new Bundle();
-      localBundle.putString("taskId", paramString1.miniAppDownloadId);
-      if (!paramBoolean) {
-        break label163;
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new aqwl();
+  }
+  
+  @Nullable
+  public aqwl a(aqlg[] paramArrayOfaqlg)
+  {
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaqlg != null) {
+      try
+      {
+        if (paramArrayOfaqlg.length > 0)
+        {
+          paramArrayOfaqlg = (aqwl)aqlu.a(paramArrayOfaqlg[0].a, aqwl.class);
+          return paramArrayOfaqlg;
+        }
       }
+      catch (QStorageInstantiateException paramArrayOfaqlg) {}
     }
-    label163:
-    for (paramInt1 = 1;; paramInt1 = 0)
+    return null;
+  }
+  
+  public void a(aqwl paramaqwl)
+  {
+    if (paramaqwl == null)
     {
-      localBundle.putInt("retCode", paramInt1);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localBundle.putString("retMsg", paramString1);
-      QIPCServerHelper.getInstance().callClient(arbl.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
-      this.a.a(paramLong2);
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onUpdate: newConf is null.");
       return;
     }
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject == null)
+      {
+        QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
+        return;
+      }
+      if (paramaqwl == null) {
+        break;
+      }
+      if (TextUtils.isEmpty(paramaqwl.a)) {
+        paramaqwl.a = "{}";
+      }
+      SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject).c(), 0).edit();
+      localEditor.putString("qfile_file_assistant_tips", paramaqwl.a);
+      localEditor.apply();
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "save FileAssistantTips config [" + paramaqwl.a + "]");
+      localObject = (atam)((QQAppInterface)localObject).getManager(317);
+      if (localObject == null) {
+        break;
+      }
+      ((atam)localObject).a(paramaqwl);
+      return;
+    }
+  }
+  
+  public Class<aqwl> clazz()
+  {
+    return aqwl.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public int type()
+  {
+    return 606;
   }
 }
 

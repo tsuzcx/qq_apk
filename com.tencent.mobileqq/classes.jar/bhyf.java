@@ -1,18 +1,29 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
-class bhyf
-  implements PopupWindow.OnDismissListener
+public class bhyf
 {
-  bhyf(bhyd parambhyd) {}
+  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public void onDismiss()
+  public bhyf(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public ChatThumbView a()
   {
-    this.a.a(1.0F);
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
+    }
+    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhyf
  * JD-Core Version:    0.7.0.1
  */

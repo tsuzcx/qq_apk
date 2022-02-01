@@ -1,45 +1,50 @@
-import android.util.SparseArray;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import java.util.HashSet;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class bgsl
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bgsl(bgsi parambgsi) {}
+  bgsl(bgsk parambgsk) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((bgsi.a(this.a)) && ((bgsi.a(this.a) == null) || (!bgsi.a(this.a).contains(Integer.valueOf(i)))) && (bgsi.b(this.a) != -1) && (i != bgsi.b(this.a)))
+    if (!bgsk.a(this.a)) {}
+    for (;;)
     {
-      localObject = (View)bgsi.a(this.a).get(bgsi.b(this.a));
-      ((View)localObject).findViewById(2131361916).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361915);
-      bgsi.a(this.a, (TextView)localObject, false);
-      localObject = (View)bgsi.a(this.a).get(i);
-      ((View)localObject).findViewById(2131361916).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361915);
-      bgsi.a(this.a, (TextView)localObject, true);
-      bgsi.a(this.a, i);
-    }
-    if (bgsi.a(this.a) != null) {
-      bgsi.a(this.a).OnClick(paramView, i);
-    }
-    if (bgsi.a(this.a) != null)
-    {
-      localObject = (TextView)paramView.findViewById(2131361915);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        bgsi.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      return;
+      Object localObject = new Rect();
+      bgsk.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+      int j = bgsk.a(this.a) - ((Rect)localObject).height();
+      bgsk.a(this.a, ((Rect)localObject).height());
+      if (j > bgsk.b(this.a) / 3) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        bgsk.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        }
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
+        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
+          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
+        }
+        if (bgsk.a(this.a) != null) {
+          bgsk.a(this.a).a(j, false);
+        }
+        this.a.a();
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgsl
  * JD-Core Version:    0.7.0.1
  */

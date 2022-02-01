@@ -1,49 +1,28 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akkq
-  extends bibk
+  implements View.OnClickListener
 {
-  akkq(akkn paramakkn, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  akkq(akkp paramakkp) {}
   
-  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
-    if ((parambibj instanceof SimpleTextView)) {
-      parambibj.setTag(paramObject);
-    }
-    return parambibj;
-  }
-  
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
-    for (;;)
+    if (akkp.a(this.a) == null)
     {
-      return;
-      if (paramArrayOfbibj.length < 0)
-      {
-        paramArrayOfbibj[0].b = 0;
-        paramArrayOfbibj[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbibj.length)
-      {
-        paramArrayOfbibj[paramInt].b = -1;
-        paramArrayOfbibj[paramInt].a = -1;
-        paramInt += 1;
-      }
+      akkp.a(this.a, bglp.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716984), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716982), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716983), new akkr(this), new akks(this)));
+      akkp.a(this.a).setCanceledOnTouchOutside(false);
     }
+    akkp.a(this.a).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkq
  * JD-Core Version:    0.7.0.1
  */

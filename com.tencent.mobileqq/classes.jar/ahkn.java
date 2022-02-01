@@ -1,6 +1,15 @@
-public abstract interface ahkn
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ahkn
+  extends afwr
 {
-  public abstract void a(String paramString);
+  long jdField_a_of_type_Long;
+  afzq jdField_a_of_type_Afzq;
+  public alqf a;
+  public ImageView b;
+  public ImageView c;
+  public TextView d;
 }
 
 

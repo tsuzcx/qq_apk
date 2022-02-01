@@ -1,14 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adra
+final class adra
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  adra(adsx paramadsx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

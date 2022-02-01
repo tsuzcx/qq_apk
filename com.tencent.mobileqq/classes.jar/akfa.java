@@ -1,52 +1,30 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akfa
+  extends Handler
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public akfa(PhotoCropActivity paramPhotoCropActivity) {}
   
-  static akfa a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramJSONObject == null) {
-      return new akfa();
-    }
-    akfa localakfa = new akfa();
-    try
+    switch (paramMessage.what)
     {
-      localakfa.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localakfa.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localakfa.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localakfa.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localakfa.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localakfa.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localakfa.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localakfa.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localakfa.g = paramJSONObject.getString("classifyName");
-      localakfa.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localakfa.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localakfa.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localakfa.h = paramJSONObject.getString("trialstartday");
-      localakfa.i = paramJSONObject.getString("trialendday");
-      return localakfa;
     }
-    catch (JSONException paramJSONObject)
+    do
     {
-      paramJSONObject.printStackTrace();
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
     }
-    return localakfa;
+    PhotoCropActivity.a(this.a, 2131715973);
+    this.a.c();
   }
 }
 

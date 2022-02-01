@@ -1,16 +1,44 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 class agjk
-  implements DialogInterface.OnClickListener
+  extends anqd
 {
-  agjk(agjj paramagjj) {}
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private agjk(agjh paramagjh, BaseActivity paramBaseActivity)
   {
-    paramDialogInterface.dismiss();
-    agji.j(this.a.a).setResult(8001);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+  }
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramList, paramBoolean2);
+    if ((agjh.a(this.jdField_a_of_type_Agjh, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      }
+      if ((paramBoolean2) && (paramList != null))
+      {
+        if (!this.jdField_a_of_type_Agjh.a) {
+          break;
+        }
+        paramList.finish();
+      }
+      return;
+    }
+    if (agjh.a() == paramList)
+    {
+      agjh.a(this.jdField_a_of_type_Agjh, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 

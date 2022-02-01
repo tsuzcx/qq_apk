@@ -8,7 +8,7 @@ final class PTSItemData$1
 {
   public PTSItemData createFromParcel(Parcel paramParcel)
   {
-    return new PTSItemData.Builder().withItemID(paramParcel.readString()).withAppName(paramParcel.readString()).withJsonData(paramParcel.readString()).withFrameTreeJson(paramParcel.readString()).withPageJs(paramParcel.readString()).build();
+    return new PTSItemData.Builder().withItemID(paramParcel.readString()).withPageName(paramParcel.readString()).withJsonData(paramParcel.readString()).withFrameTreeJson(paramParcel.readString()).withPageJs(paramParcel.readString()).build();
   }
   
   public PTSItemData[] newArray(int paramInt)
@@ -18,7 +18,7 @@ final class PTSItemData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemData.1
  * JD-Core Version:    0.7.0.1
  */

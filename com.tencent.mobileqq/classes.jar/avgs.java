@@ -1,22 +1,44 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.4.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class avgs
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public final class avgs
+  implements PluginManagerUpdater
 {
-  avgs(avgo paramavgo) {}
+  private final File a;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public avgs(String paramString)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this));
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return anvy.a(16).submit(new avgu(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return anvy.a(16).submit(new avgt(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgs
  * JD-Core Version:    0.7.0.1
  */

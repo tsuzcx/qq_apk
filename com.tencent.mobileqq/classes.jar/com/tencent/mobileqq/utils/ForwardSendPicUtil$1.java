@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import aips;
+import akgm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ForwardSendPicUtil$1
@@ -15,7 +15,7 @@ public final class ForwardSendPicUtil$1
       String str = this.jdField_a_of_type_JavaLangString;
       int i = this.jdField_a_of_type_Int;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      aips.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
+      akgm.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
       return;
     }
     catch (Exception localException) {}
@@ -23,7 +23,7 @@ public final class ForwardSendPicUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ForwardSendPicUtil.1
  * JD-Core Version:    0.7.0.1
  */

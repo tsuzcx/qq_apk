@@ -1,15 +1,17 @@
-import java.util.List;
+import android.view.View;
 
 class arpr
-  implements bezx
+  implements bkhw
 {
-  arpr(arpn paramarpn, List paramList) {}
+  arpr(arpp paramarpp, bkho parambkho) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 2) {
-      bcnt.a(arpn.a(this.jdField_a_of_type_Arpn), arpn.a(this.jdField_a_of_type_Arpn), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Arpp.f();
+    if (this.jdField_a_of_type_Bkho.isShowing()) {
+      this.jdField_a_of_type_Bkho.dismiss();
     }
+    bcst.b(arpp.a(this.jdField_a_of_type_Arpp), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
   }
 }
 

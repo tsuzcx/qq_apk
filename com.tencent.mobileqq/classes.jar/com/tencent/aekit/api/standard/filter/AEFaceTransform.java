@@ -13,6 +13,7 @@ import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
+import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTHairAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.filter.BeautyParam;
@@ -30,6 +31,7 @@ public class AEFaceTransform
 {
   private AIAttr aiAttr;
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private PTFaceAttr faceAttr;
   private VideoFilterBase fillFilter = new VideoFilterBase(BaseFilter.getFragmentShader(0));
   private final HashSet<BeautyRealConfig.TYPE> jsonType = new HashSet(Arrays.asList(new BeautyRealConfig.TYPE[] { BeautyRealConfig.TYPE.BASIC4, BeautyRealConfig.TYPE.BASIC3, BeautyRealConfig.TYPE.FACE_SHORTEN, BeautyRealConfig.TYPE.NOSE }));
   private List<List<PointF>> mAllFacePoints = null;
@@ -173,6 +175,13 @@ public class AEFaceTransform
     this.aiAttr = paramAIAttr;
   }
   
+  public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
+  {
+    this.faceAttr = paramPTFaceAttr;
+    this.mRemodelFilter.updatePreview(paramPTFaceAttr);
+    this.mBeautyTransformList.updatePreview(paramPTFaceAttr);
+  }
+  
   public void setFaceStatus(List<List<PointF>> paramList, List<float[]> paramList1, List<FaceStatus> paramList2, double paramDouble, float paramFloat)
   {
     this.mStatusList = paramList2;
@@ -250,6 +259,12 @@ public class AEFaceTransform
     }
   }
   
+  public void setNeedReCaculateFace(boolean paramBoolean)
+  {
+    this.mRemodelFilter.setNeedReCaculateFace(paramBoolean);
+    this.mBeautyTransformList.setNeedReCaculateFace(paramBoolean);
+  }
+  
   public void setPointUpdate(boolean paramBoolean)
   {
     this.pointUpdate = paramBoolean;
@@ -272,7 +287,7 @@ public class AEFaceTransform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceTransform
  * JD-Core Version:    0.7.0.1
  */

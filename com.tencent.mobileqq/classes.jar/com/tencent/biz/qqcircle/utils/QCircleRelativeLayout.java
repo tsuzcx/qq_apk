@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bdaq;
+import bggq;
 
 public class QCircleRelativeLayout
   extends RelativeLayout
@@ -40,16 +40,16 @@ public class QCircleRelativeLayout
     int i1 = getPaddingBottom();
     Paint localPaint = new Paint();
     localPaint.setColor(Color.parseColor("#EBECF0"));
-    int i2 = bdaq.a(getContext(), 5.0F);
-    localPaint.setShadowLayer(bdaq.a(getContext(), 10.0F), 0, i2, Color.parseColor("#99A6ABBD"));
-    i2 = bdaq.a(getContext(), 6.0F);
+    int i2 = bggq.a(getContext(), 5.0F);
+    localPaint.setShadowLayer(bggq.a(getContext(), 10.0F), 0, i2, Color.parseColor("#99A6ABBD"));
+    i2 = bggq.a(getContext(), 6.0F);
     paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
     super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.utils.QCircleRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

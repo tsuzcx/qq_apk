@@ -1,42 +1,22 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class suw
-  implements Comparator<TroopBarData>
+public class suw
+  implements pxp
 {
-  suw(suv paramsuv) {}
+  public suw(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
+  public void a(int paramInt)
   {
-    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
-    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
-          return -1;
-        }
-        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
-          break;
-        }
-      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
-      }
-      return -1;
-    } while (l1 < l2);
-    if (l1 == l2) {
-      return 0;
+    if (paramInt == 0) {
+      ReadinjoyTabFrame.g(this.a);
     }
-    return -1;
+    QLog.d("ReadInJoyTabFrame", 2, "ugcAccountCreateResult result = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     suw
  * JD-Core Version:    0.7.0.1
  */

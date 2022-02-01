@@ -1,88 +1,68 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Typeface;
-import android.text.TextPaint;
+import com.tencent.av.gameplay.GPNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class llu
-  extends lll
 {
-  TextPaint a;
+  public static boolean a;
+  private static boolean b;
   
-  public llu(ljf paramljf, boolean paramBoolean)
+  public static byte a(String paramString)
   {
-    super(paramljf, paramBoolean);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(4.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int * 16;
-  }
-  
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    int k = this.jdField_a_of_type_Int - 8;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
-    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw width = " + paramInt1);
-    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    String str2 = this.jdField_a_of_type_Ljf.a.toString();
-    String str1 = str2;
-    if (str2.length() > 10) {
-      str1 = str2.substring(str2.length() - 10);
+    byte b1 = 0;
+    if (paramString == null) {
+      return -1;
     }
-    str2 = llr.a(str1);
-    int j = str1.length();
-    str1 = str1 + str2;
-    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw showText = " + str1);
-    paramInt2 = str1.length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > 13) {
-      paramInt1 = 13;
+    llv localllv = llv.a();
+    String str = lmd.a() + "lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
     }
-    int i = 2;
-    k -= 6;
-    paramInt2 = 0;
-    while (paramInt2 < paramInt1)
+    Object localObject = new File(str);
+    if ((!a) && (((File)localObject).exists())) {}
+    for (;;)
     {
-      if (paramInt2 >= j)
+      try
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+        System.load(str);
+        b = true;
+        localObject = "null";
+        if (localllv != null) {
+          localObject = localllv.b;
+        }
+        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
+        return b1;
       }
-      str2 = str1.substring(paramInt2, paramInt2 + 1);
-      llr.a(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += this.jdField_a_of_type_Int;
-      paramInt2 += 1;
-    }
-    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw offsetX = " + i);
-  }
-  
-  public void a(Typeface paramTypeface, int paramInt, mqq parammqq)
-  {
-    super.a(paramTypeface, paramInt, parammqq);
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        b1 = -3;
+        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+        continue;
+      }
+      b1 = -2;
     }
   }
   
-  public int b()
+  public static boolean a()
   {
-    return this.jdField_a_of_type_Int;
+    if (b) {}
+    do
+    {
+      return true;
+      if (!llw.a().b()) {
+        break;
+      }
+    } while (a("qavgameplayengine") == 0);
+    return false;
+    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     llu
  * JD-Core Version:    0.7.0.1
  */

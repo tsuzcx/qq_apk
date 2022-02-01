@@ -1,79 +1,109 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.data.IntimateInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class aupb
-  implements awkh
+public class aupb
+  implements anil
 {
-  aupb(aupa paramaupa, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajep> paramArrayList) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  protected void a(boolean paramBoolean, long paramLong) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return null;
-  }
-  
-  public void a(awki paramawki) {}
-  
-  public void b(awki paramawki)
-  {
-    try
+    switch (paramInt)
     {
-      if (paramawki.jdField_a_of_type_Int == 0)
+    }
+    do
+    {
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - aupa.a(this.jdField_a_of_type_Aupa)) + ",mResid:" + paramawki.c);
-        }
-        AbsShareMsg localAbsShareMsg = acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramawki.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)azaf.a(-1051);
-        localMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        localMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
-        localMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
-        localMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin;
-        localMessageForLongTextMsg.senderuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-        localMessageForLongTextMsg.isread = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isread;
-        localMessageForLongTextMsg.time = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time;
-        localMessageForLongTextMsg.msgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq;
-        localMessageForLongTextMsg.msgUid = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid;
-        localMessageForLongTextMsg.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq;
-        localMessageForLongTextMsg.issend = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.issend;
-        localMessageForLongTextMsg.uniseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-        localMessageForLongTextMsg.mAnimFlag = true;
-        localMessageForLongTextMsg.longMsgCount = 1;
-        localMessageForLongTextMsg.longMsgIndex = 0;
-        localMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
-        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramawki.c);
-        if (nav.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-          nav.a().a(localMessageForLongTextMsg);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForLongTextMsg, null, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "MessageForReplyText upload multi msg pack failed, result.errStr=" + paramawki.b + ",result.errStr=" + paramawki.jdField_a_of_type_JavaLangString);
-      }
-      aupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+                    return;
+                  }
+                  a(false, "", null);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+                    return;
+                  }
+                  a(paramBoolean, "", false);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+                    return;
+                  }
+                  a(false, "");
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  }
+                  a(false, "", -1, -1, -1);
+                  return;
+                  if ((paramBoolean) && ((paramObject instanceof Object[])))
+                  {
+                    a(paramBoolean, (Object[])paramObject);
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while (!(paramObject instanceof Object[]));
+                paramObject = (Object[])paramObject;
+              } while (paramObject.length < 2);
+              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+          } while (paramObject.length < 1);
+          a(paramBoolean, ((Long)paramObject[0]).longValue());
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 2);
+      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
       return;
-    }
-    catch (Exception paramawki)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "MessageForReplyText upload multi msg pack failed, catch exception", paramawki);
-      }
-      aupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupb
  * JD-Core Version:    0.7.0.1
  */

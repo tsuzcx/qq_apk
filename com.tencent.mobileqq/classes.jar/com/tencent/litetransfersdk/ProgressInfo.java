@@ -1,9 +1,9 @@
 package com.tencent.litetransfersdk;
 
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.RouterMsgRecord;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -27,9 +27,9 @@ public class ProgressInfo
   
   public void GetFilePath(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = paramQQAppInterface.a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramLong + " where uSessionID = ?", new String[] { String.valueOf(this.uint64_sessionid) });
-    paramQQAppInterface.a();
+    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+    List localList = paramQQAppInterface.rawQuery(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramLong + " where uSessionID = ?", new String[] { String.valueOf(this.uint64_sessionid) });
+    paramQQAppInterface.close();
     if ((localList != null) && (localList.size() > 0)) {
       this.filepath = ((RouterMsgRecord)localList.get(0)).filename;
     }
@@ -99,7 +99,7 @@ public class ProgressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProgressInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,286 +1,251 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QzoneGiftFullScreenActionManager.1;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-public class bjfj
+@TargetApi(16)
+public abstract class bjfj
 {
-  public atxy a;
-  public atya a;
-  public atyd a;
-  public atyp a;
-  public atza a;
-  atzb jdField_a_of_type_Atzb;
-  bjfk jdField_a_of_type_Bjfk;
-  bjfl jdField_a_of_type_Bjfl;
-  bjfm jdField_a_of_type_Bjfm;
-  String jdField_a_of_type_JavaLangString;
-  public List<atxy> a;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  public volatile boolean b = false;
-  public volatile boolean c = false;
+  protected long a;
+  protected MediaCodec.BufferInfo a;
+  protected MediaCodec a;
+  protected MediaExtractor a;
+  protected MediaFormat a;
+  protected bjfk a;
+  protected bjfl a;
+  protected bjfo a;
+  protected boolean a;
+  protected ByteBuffer[] a;
+  protected long b;
+  protected boolean b;
+  protected ByteBuffer[] b;
+  protected long c;
   
-  public bjfj(bjfm parambjfm)
+  public bjfj(bjfl parambjfl, bjfk parambjfk)
   {
-    this.jdField_a_of_type_Atya = null;
-    this.jdField_a_of_type_Bjfm = parambjfm;
-    this.jdField_a_of_type_Atyd = new atyd();
-    this.jdField_a_of_type_Atzb = new atzb();
-  }
-  
-  public static atya a(String paramString1, String paramString2)
-  {
-    paramString1 = new atyp(paramString2).a("receive.xml");
-    if (paramString1 == null) {
-      return null;
-    }
-    return new atyd().a(paramString1);
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = bjhx.e();
-    File localFile = new File(str);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
-    }
-    return str + File.separator + paramString + File.separator;
-  }
-  
-  private List<atxy> a(boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      atxy localatxy;
-      if (localIterator.hasNext())
-      {
-        localatxy = (atxy)localIterator.next();
-        if (localatxy == null) {
-          continue;
-        }
-        if (paramBoolean)
-        {
-          if (!"default".equals(localatxy.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          localArrayList.add(localatxy);
-        }
-      }
-      else
-      {
-        return localArrayList;
-      }
-      if (!"default".equals(localatxy.jdField_a_of_type_JavaLangString)) {
-        localArrayList.add(localatxy);
-      }
-    }
-  }
-  
-  private void a(atya paramatya)
-  {
-    if (this.jdField_a_of_type_Bjfk != null) {
-      this.jdField_a_of_type_Bjfk.a(paramatya);
-    }
-    if ((paramatya != null) && (paramatya.a != null)) {
-      paramatya.a();
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
-    this.jdField_a_of_type_Atza.a();
-    this.jdField_a_of_type_Atyp = new atyp(paramString);
-    this.jdField_a_of_type_Atza.a(this.jdField_a_of_type_Atyp);
-    this.jdField_a_of_type_Atza.a(this.jdField_a_of_type_Atzb);
-  }
-  
-  private int[] a(String paramString)
-  {
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
-    }
-    int[] arrayOfInt;
-    for (;;)
-    {
-      return paramString;
-      arrayOfInt = new int[3];
-      int i = 0;
-      while (i < 3)
-      {
-        arrayOfInt[i] = 0;
-        i += 1;
-      }
-      String[] arrayOfString = paramString.split("\\.");
-      paramString = arrayOfInt;
-      if (arrayOfString != null)
-      {
-        paramString = arrayOfInt;
-        if (arrayOfString.length > 1)
-        {
-          i = j;
-          paramString = arrayOfInt;
-          try
-          {
-            if (i < arrayOfInt.length)
-            {
-              arrayOfInt[i] = Integer.valueOf(arrayOfString[i]).intValue();
-              i += 1;
-            }
-          }
-          catch (Throwable paramString)
-          {
-            paramString.printStackTrace();
-          }
-        }
-      }
-    }
-    return arrayOfInt;
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = bjhx.f();
-    File localFile = new File(str);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
-    }
-    return str + File.separator + paramString + File.separator;
-  }
-  
-  private void b()
-  {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Atya == null) || ("non-ver".equals(this.jdField_a_of_type_Atya.b)))
-    {
-      this.jdField_a_of_type_JavaUtilList = a(false);
-      return;
-    }
-    int[] arrayOfInt1 = a("8.3.5");
-    int[] arrayOfInt2 = a(this.jdField_a_of_type_Atya.b);
-    int i;
-    if ((arrayOfInt1 != null) && (arrayOfInt2 != null) && (arrayOfInt1.length == arrayOfInt2.length))
-    {
-      i = 0;
-      if (i < arrayOfInt2.length) {
-        if (arrayOfInt1[i] > arrayOfInt2[i]) {
-          i = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        bool = true;
-      }
-      this.jdField_a_of_type_JavaUtilList = a(bool);
-      return;
-      if (arrayOfInt1[i] < arrayOfInt2[i])
-      {
-        i = 0;
-      }
-      else
-      {
-        i += 1;
-        break;
-        i = 1;
-      }
-    }
-  }
-  
-  private void b(atya paramatya)
-  {
-    if (this.jdField_a_of_type_Bjfl != null) {
-      this.jdField_a_of_type_Bjfl.a();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bjfk != null) {
-      this.jdField_a_of_type_Bjfk.b(paramatya);
-    }
-  }
-  
-  public void a()
-  {
-    this.c = true;
-    if (this.jdField_a_of_type_Atya != null) {
-      this.jdField_a_of_type_Atya.a(null);
-    }
-    if (this.jdField_a_of_type_Atza != null)
-    {
-      this.jdField_a_of_type_Atza.a(null);
-      this.jdField_a_of_type_Atza.c();
-    }
-    if (this.jdField_a_of_type_Atzb != null)
-    {
-      this.jdField_a_of_type_Atzb.a();
-      this.jdField_a_of_type_Atzb = null;
-    }
-    this.jdField_a_of_type_Bjfm = null;
-  }
-  
-  public void a(atza paramatza)
-  {
-    this.jdField_a_of_type_Atza = paramatza;
-  }
-  
-  public void a(bjfk parambjfk)
-  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Bjfl = parambjfl;
     this.jdField_a_of_type_Bjfk = parambjfk;
   }
   
-  public void a(bjfl parambjfl)
+  public long a()
   {
-    if (parambjfl != null) {
-      this.jdField_a_of_type_Bjfl = parambjfl;
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo != null) {
+      return this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
     }
-    this.b = true;
-    if (this.jdField_a_of_type_Atxy != null) {
-      this.jdField_a_of_type_Atxy.d();
+    return 0L;
+  }
+  
+  public long a(long paramLong)
+  {
+    long l1 = System.currentTimeMillis();
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 0);
+      long l2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+      if (this.jdField_a_of_type_Bjfo != null) {
+        this.jdField_a_of_type_Bjfo.b(l2 / 1000L);
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_b_of_type_Long = l2;
+      this.c = l2;
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l2;
+      this.jdField_a_of_type_Long = (System.currentTimeMillis() - l2 / 1000L);
+      yqp.b(a(), "end seekTo timecost=" + (System.currentTimeMillis() - l1) + " seekTargetTimeUs:" + paramLong + " realStartTime:" + l2);
+      return l2;
     }
-    if (this.jdField_a_of_type_Atya != null) {
-      this.jdField_a_of_type_Atya.a(null);
+    catch (RuntimeException localRuntimeException)
+    {
+      for (;;)
+      {
+        yqp.c(a(), "decoder flush error %s", localRuntimeException);
+      }
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  protected abstract String a();
+  
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    ThreadManager.post(new QzoneGiftFullScreenActionManager.1(this, paramString2), 8, null, true);
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L);
   }
   
-  public void a(boolean paramBoolean)
+  protected abstract void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo);
+  
+  protected abstract void a(bjfk parambjfk, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat);
+  
+  public void a(bjfo parambjfo)
   {
-    if (this.jdField_a_of_type_Atya != null) {
-      this.jdField_a_of_type_Atya.d = true;
-    }
+    this.jdField_a_of_type_Bjfo = parambjfo;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool2 = false;
+    bjfg.a(this.jdField_a_of_type_Bjfl.jdField_a_of_type_Long, "[" + a() + "] init now");
+    this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+    boolean bool1;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_Bjfk.b);
+        bjfg.a(this.jdField_a_of_type_Bjfl.jdField_a_of_type_Long, "[" + a() + "] extractor setDataSource");
+        i = 0;
+        bool1 = bool2;
+        if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+          str = this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime");
+          if (!str.startsWith(this.jdField_a_of_type_Bjfk.a)) {
+            break label353;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
+          bjfg.a(this.jdField_a_of_type_Bjfl.jdField_a_of_type_Long, "[" + a() + "] find and selectTrack");
+        }
+      }
+      catch (IOException localIOException)
+      {
+        String str;
+        yqp.b(a(), "init set data source error :%s", localIOException);
+        return false;
+      }
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+        bjfg.a(this.jdField_a_of_type_Bjfl.jdField_a_of_type_Long, "[" + a() + "] create codec");
+        a(this.jdField_a_of_type_Bjfk, this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
+        bjfg.a(this.jdField_a_of_type_Bjfl.jdField_a_of_type_Long, "[" + a() + "] configureCodec");
+        bool1 = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        yqp.b(a(), "init createDecoderByType error :%s", localThrowable);
+        bool1 = bool2;
+        continue;
+      }
+      if (!bool1) {
+        break;
+      }
+      yqp.b(a(), "create media decoder success!");
+      return bool1;
+      label353:
+      i += 1;
+    }
+    yqp.d(a(), "create media decoder error!");
+    return bool1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+        this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      yqp.c(a(), "onRelease error :%s ", localException);
+    }
   }
   
   public boolean b()
   {
-    return BaseApplicationImpl.getApplication().getRuntime().getPreferences().getBoolean("receiveSound", false);
+    yqp.a(a(), "start ! %s", this.jdField_a_of_type_Bjfk);
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      try
+      {
+        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        return true;
+      }
+      catch (Exception localException)
+      {
+        yqp.c(a(), "decode start error :%s", localException);
+      }
+      localThrowable = localThrowable;
+      yqp.c(a(), "decode start error", localThrowable);
+      return false;
+    }
+  }
+  
+  public void c()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      d();
+    }
+    if (!this.jdField_b_of_type_Boolean) {
+      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+    }
+    if (this.jdField_b_of_type_Boolean) {}
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  protected void d()
+  {
+    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    int j;
+    long l1;
+    if (i >= 0)
+    {
+      ByteBuffer localByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
+      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
+      l1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+      if (j < 0)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    else
+    {
+      return;
+    }
+    long l2 = this.jdField_b_of_type_Long;
+    this.jdField_b_of_type_Long = l1;
+    this.c += l1 - l2;
+    this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.c, 0);
+    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjfj
  * JD-Core Version:    0.7.0.1
  */

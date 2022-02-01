@@ -1,160 +1,87 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class pcv
+class pcv
+  implements BusinessObserver
 {
-  public static void a(View paramView)
-  {
-    if ((paramView instanceof pcp)) {
-      ((pcp)paramView).a();
-    }
-  }
+  pcv(pcu parampcu, BaseCommentData paramBaseCommentData) {}
   
-  public static void a(Container paramContainer)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
-    while (paramContainer.hasNext())
-    {
-      Object localObject = (Map.Entry)paramContainer.next();
-      if ((((Map.Entry)localObject).getValue() instanceof psd))
-      {
-        localObject = (psd)((Map.Entry)localObject).getValue();
-        if ((((psd)localObject).a() instanceof NativeVideoView)) {
-          ((psd)localObject).a().c();
-        }
-      }
-    }
-  }
-  
-  public static void a(ListView paramListView)
-  {
-    a(paramListView, true);
-  }
-  
-  public static void a(ListView paramListView, boolean paramBoolean)
-  {
-    e(paramListView);
-  }
-  
-  public static void b(Container paramContainer)
-  {
-    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
-    while (paramContainer.hasNext())
-    {
-      Object localObject = (Map.Entry)paramContainer.next();
-      if ((((Map.Entry)localObject).getValue() instanceof psd))
-      {
-        localObject = (psd)((Map.Entry)localObject).getValue();
-        if ((((psd)localObject).a() instanceof NativeVideoView)) {
-          ((psd)localObject).a().b();
-        }
-      }
-    }
-  }
-  
-  public static void b(ListView paramListView)
-  {
-    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    int i = 1;
+    if (paramBoolean) {}
     for (;;)
     {
-      return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
+      try
       {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof pcp)) {
-          ((pcp)localView).b();
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label253;
         }
-        i += 1;
-      }
-    }
-  }
-  
-  public static void c(ListView paramListView)
-  {
-    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
-      {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof pcp)) {
-          ((pcp)localView).a();
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
         }
-        i += 1;
-      }
-    }
-  }
-  
-  public static void d(ListView paramListView)
-  {
-    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramListView.getChildCount())
-      {
-        View localView = paramListView.getChildAt(i);
-        if ((localView instanceof pcp)) {
-          ((pcp)localView).c();
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  private static void e(ListView paramListView)
-  {
-    int j = 0;
-    int i = 0;
-    View localView;
-    if (i < paramListView.getChildCount())
-    {
-      localView = paramListView.getChildAt(i);
-      if (((localView instanceof pcp)) && (orc.a(localView) >= 60.0F))
-      {
-        QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 60f");
-        if (!((pcp)localView).a()) {}
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        QLog.d("gifvideo.VideoPlayControlUtils", 2, "item to play: " + i);
-        for (;;)
+        paramBundle = new JSONObject(paramBundle);
+        if (paramInt != 0)
         {
-          if (j < paramListView.getChildCount())
-          {
-            localView = paramListView.getChildAt(j);
-            if (((localView instanceof pcp)) && (j != i)) {
-              ((pcp)localView).a();
-            }
-            j += 1;
-            continue;
-            i += 1;
-            break;
+          paramBundle.optString("msg");
+          paramInt = 0;
+          i = paramInt;
+          if ((i == 0) && (pcu.a(this.jdField_a_of_type_Pcu) != null)) {
+            pcu.a(this.jdField_a_of_type_Pcu).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
           }
+          return;
+        }
+        paramInt = paramBundle.optInt("ret");
+        if (paramInt != 0) {
+          break label253;
+        }
+        paramInt = i;
+        try
+        {
+          if (pcu.a(this.jdField_a_of_type_Pcu) == null) {
+            continue;
+          }
+          pcu.a(this.jdField_a_of_type_Pcu).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+          paramInt = i;
+        }
+        catch (Exception paramBundle)
+        {
+          paramInt = 1;
         }
       }
-      return;
-      i = -1;
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+        continue;
+      }
+      paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label253:
+        paramInt = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcv
  * JD-Core Version:    0.7.0.1
  */

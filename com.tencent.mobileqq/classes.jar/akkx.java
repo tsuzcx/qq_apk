@@ -1,28 +1,28 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import com.tencent.mobileqq.activity.photo.album.preview.VideoPreviewPresent;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-class akkx
-  implements bhtv
+public class akkx
+  extends VideoPreviewPresent
 {
-  akkx(akkt paramakkt) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public akkx(PreviewBean paramPreviewBean)
   {
-    akkt.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      akkt.a(this.a, null, null);
-      akkt.a(this.a).b();
-      return;
-    }
-    akkt.a(this.a).c();
-    akkt.a(this.a).a();
+    super(paramPreviewBean);
+  }
+  
+  public BaseVideoView generateVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  {
+    paramVideoPlayParam.mSceneId = 105;
+    paramVideoPlayParam.mSceneName = azws.a(105);
+    return (BaseVideoView)azwr.b(paramContext, paramLong, paramVideoPlayParam, paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkx
  * JD-Core Version:    0.7.0.1
  */

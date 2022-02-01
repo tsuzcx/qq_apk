@@ -1,24 +1,6 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.Button;
-import com.tencent.ttpic.openapi.model.WMEditItem;
-
-class bkzc
-  implements View.OnFocusChangeListener
+public abstract interface bkzc
 {
-  bkzc(bkyz parambkyz, bkzh parambkzh, WMEditItem paramWMEditItem) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      bkyz.a(this.jdField_a_of_type_Bkyz, this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-      this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837640);
-      this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_Bkzh.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-  }
+  public abstract void onConfigChange();
 }
 
 

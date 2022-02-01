@@ -1,45 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
 
-public class xws
-  extends QQUIEventReceiver<StoryNickNameView, vdl>
+class xws
+  implements bkhw
 {
-  public xws(@NonNull StoryNickNameView paramStoryNickNameView)
-  {
-    super(paramStoryNickNameView);
-  }
+  xws(xwr paramxwr, bkho parambkho, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull vdl paramvdl)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
+    this.jdField_a_of_type_Bkho.e();
+    switch (paramInt)
     {
+    default: 
       return;
-      if ((paramvdl.jdField_a_of_type_JavaUtilList == null) || (paramvdl.jdField_a_of_type_JavaUtilList.size() == 0))
-      {
-        wxe.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
-      }
-      if (TextUtils.equals(paramvdl.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramvdl.jdField_a_of_type_JavaUtilList.get(0));
-      }
-    } while (!TextUtils.equals(paramvdl.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramvdl.jdField_a_of_type_JavaUtilList.get(0));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdl.class;
+    case 0: 
+      this.jdField_a_of_type_Xwr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Xwr.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xws
  * JD-Core Version:    0.7.0.1
  */

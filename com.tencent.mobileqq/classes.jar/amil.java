@@ -1,44 +1,46 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class amil
-  extends alwx
+public final class amil
+  implements adea
 {
-  public amil(QQComicStep paramQQComicStep) {}
+  public amil(View paramView, aded paramaded, long paramLong, int paramInt) {}
   
-  public void a(List<MessageRecord> paramList)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = azvd.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
-        {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              binc.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], agiy.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
-        }
-      }
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
+    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
+    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
+    paramJSONObject.optDouble("accuracy", 0.0D);
+    double d5 = paramJSONObject.optDouble("speed", 0.0D);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      return;
+    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aded, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,35 @@
 package com.tencent.biz.qrcode.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bety;
+import android.view.MotionEvent;
+import biau;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import xyk;
-import xzn;
-import xzo;
+import zrv;
+import ztf;
+import ztg;
 
 public class QRJumpActivity
   extends BaseActivity
 {
-  protected bety a;
+  protected biau a;
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -33,9 +45,9 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.a = new bety(this, super.getTitleBarHeight());
-    this.a.c(2131717638);
-    this.a.setOnCancelListener(new xzn(this));
+    this.a = new biau(this, super.getTitleBarHeight());
+    this.a.c(2131715864);
+    this.a.setOnCancelListener(new ztf(this));
     this.a.show();
     String str1;
     try
@@ -105,8 +117,8 @@ public class QRJumpActivity
       if (QLog.isColorLevel()) {
         QLog.i("QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str3 }));
       }
-      paramBundle = new xzo(this, (String)localObject1, paramBundle, this, str1);
-      localObject1 = new NewIntent(this, xyk.class);
+      paramBundle = new ztg(this, (String)localObject1, paramBundle, this, str1);
+      localObject1 = new NewIntent(this, zrv.class);
       ((NewIntent)localObject1).putExtra("d", str1);
       ((NewIntent)localObject1).putExtra("cmd", "QRCodeSvc.decode");
       ((NewIntent)localObject1).putExtra("bqq", "1");
@@ -134,10 +146,17 @@ public class QRJumpActivity
     this.a = null;
     super.doOnDestroy();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRJumpActivity
  * JD-Core Version:    0.7.0.1
  */

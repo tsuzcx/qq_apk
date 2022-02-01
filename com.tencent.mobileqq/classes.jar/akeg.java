@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akeg
-  implements DialogInterface.OnClickListener
+  extends aywi
 {
-  public akeg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public akeg(SettingActivity2.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    if (this.a.this$0.c != null)
+    {
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
+      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
+    }
+  }
 }
 
 

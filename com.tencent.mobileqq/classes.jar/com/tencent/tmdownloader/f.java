@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
+import com.tencent.tmassistant.appinfo.aidl.IGetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetailReqParam;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantbase.util.s;
@@ -31,6 +33,24 @@ public class f
       return a;
     }
     finally {}
+  }
+  
+  public int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback)
+  {
+    if (this.mServiceInterface != null) {
+      try
+      {
+        ab.c("RemoteOpProxy", "<requestAppInfo> process:" + s.e() + ", mServiceInterface is ok");
+        int i = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramAppDetailReqParam, paramIGetAppInfoCallback);
+        return i;
+      }
+      catch (Exception paramAppDetailReqParam)
+      {
+        paramAppDetailReqParam.printStackTrace();
+      }
+    }
+    ab.c("RemoteOpProxy", "<requestAppInfo> process:" + s.e() + ", mServiceInterface is null");
+    return -1;
   }
   
   public void a(int paramInt, String paramString)
@@ -304,7 +324,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.f
  * JD-Core Version:    0.7.0.1
  */

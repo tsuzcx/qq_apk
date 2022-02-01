@@ -10,7 +10,7 @@ class MiniAppSearchDataManager$4
   public void run()
   {
     MiniAppSearchDataManager.access$700(this.this$0).clear();
-    MiniAppSearchDataManager.access$700(this.this$0).addAll(this.val$searchInfoList);
+    MiniAppSearchDataManager.access$700(this.this$0).addAll(this.val$resultList);
     if (MiniAppSearchDataManager.access$800(this.this$0) != null) {
       MiniAppSearchDataManager.access$800(this.this$0).onHotSearchDataChanged();
     }
@@ -18,7 +18,7 @@ class MiniAppSearchDataManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.4
  * JD-Core Version:    0.7.0.1
  */

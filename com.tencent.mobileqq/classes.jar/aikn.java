@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class aikn
-  implements DialogInterface.OnClickListener
+  implements aiko
 {
-  public aikn(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean)
   {
-    azqs.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+    paramView.setBackgroundDrawable(null);
   }
 }
 

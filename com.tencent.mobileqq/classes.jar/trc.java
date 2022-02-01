@@ -1,23 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.biz.pubaccount.readinjoy.viola.redpacket.VKdRedPacketProgress;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.ui.dom.DomObject;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class trc
-  extends FlingGestureHandler
+  extends pmn
 {
-  public trc(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public trc(VKdRedPacketProgress paramVKdRedPacketProgress) {}
   
-  public void flingLToR()
+  public void a(boolean paramBoolean, String paramString)
   {
-    tzv.a("", 22, 10L);
-    super.flingLToR();
+    if (paramBoolean) {}
+    try
+    {
+      if (this.a.mAppendEvents.contains("redPacketProcessFinish"))
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("isFinish", paramBoolean);
+        localJSONObject.put("tips", paramString);
+        paramString = new JSONArray();
+        if (this.a.getDomObject() != null)
+        {
+          String str = this.a.getDomObject().getRef();
+          if (str != null) {
+            paramString.put(str);
+          }
+          paramString.put("redPacketProcessFinish");
+          VKdRedPacketProgress.access$000(this.a, "redPacketProcessFinish", paramString, localJSONObject);
+        }
+      }
+      else
+      {
+        QLog.i("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " red packet task do not get Tips!");
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " onRedPacketTaskFinish error :" + paramString.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trc
  * JD-Core Version:    0.7.0.1
  */

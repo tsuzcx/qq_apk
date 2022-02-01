@@ -1,19 +1,24 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.List;
 
-class tum
-  implements zac<FeedCloudRead.StGetCommentListRsp>
+public class tum
+  implements bmvh
 {
-  tum(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed) {}
+  public tum(FolderRecommendTabFragment paramFolderRecommendTabFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    tuk.a(this.jdField_a_of_type_Tuk, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, true);
+    List localList = null;
+    if (paramBoolean) {
+      localList = bdri.a(paramBoolean, paramGetAdsRsp, 476);
+    }
+    FolderRecommendTabFragment.a(this.a).a(localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tum
  * JD-Core Version:    0.7.0.1
  */

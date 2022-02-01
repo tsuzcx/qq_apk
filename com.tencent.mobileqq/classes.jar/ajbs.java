@@ -1,30 +1,28 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajbs
+  extends aywj
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public ajbs(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public ajbs() {}
-  
-  public ajbs(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
+      PhoneContactManagerImp.c(this.a, paramBoolean);
+    }
   }
   
-  public String toString()
+  protected void b(boolean paramBoolean)
   {
-    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
   }
 }
 

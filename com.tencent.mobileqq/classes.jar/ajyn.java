@@ -1,40 +1,13 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-public class ajyn
-  extends awhw
+class ajyn
+  implements bkiz
 {
-  public ajyn(ContactsInnerFrame paramContactsInnerFrame) {}
+  ajyn(ajym paramajym, View paramView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
-    }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
-    {
-      ContactsInnerFrame.a(this.a);
-      return;
-    }
-    ContactsInnerFrame.b(this.a);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

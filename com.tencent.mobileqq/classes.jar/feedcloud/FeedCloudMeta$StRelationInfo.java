@@ -15,16 +15,17 @@ public final class FeedCloudMeta$StRelationInfo
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField id = PBField.initString("");
   public final PBUInt32Field relation = PBField.initUInt32(0);
+  public final PBUInt32Field relationState = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "id", "relation", "busiData" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro }, StRelationInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "id", "relation", "busiData", "relationState" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, StRelationInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StRelationInfo
  * JD-Core Version:    0.7.0.1
  */

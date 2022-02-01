@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
-class airy
-  implements MediaScanner.OnMediaInfoScannerListener
+public class airy
+  implements View.OnTouchListener
 {
-  airy(airx paramairx) {}
+  public airy(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (bnfr.a(this.a.mActivity, paramLocalMediaInfo))
-    {
-      airx.a(this.a, paramLocalMediaInfo);
-      zaj.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 

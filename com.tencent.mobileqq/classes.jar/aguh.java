@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class aguh
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  aguh(agti paramagti, PublicAccountInfo paramPublicAccountInfo, alzl paramalzl) {}
+  aguh(agtx paramagtx, StateListDrawable paramStateListDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Alzl.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Agti.a(2, null);
+    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bilp;
+import bkzc;
 import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class QzoneIPStracyConfig
   extends IPConfigStrategy
-  implements bilp
+  implements bkzc
 {
   private static final String TAG = "QzoneIPStracyConfig";
   private static final String VIDEO_HOST_QZPB = "qzpb.qq.com";
@@ -91,7 +91,7 @@ class QzoneIPStracyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.QzoneIPStracyConfig
  * JD-Core Version:    0.7.0.1
  */

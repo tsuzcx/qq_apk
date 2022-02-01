@@ -1,37 +1,107 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Context;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class aode
-  implements aocw
+  extends Observable
+  implements Manager
 {
-  private String a = "SubscribeColorNoteLauncher";
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<aodg>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public aode(QQAppInterface paramQQAppInterface)
   {
-    try
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private aodg a(String paramString)
+  {
+    for (;;)
     {
-      paramColorNote = paramColorNote.getReserve();
-      if (paramColorNote == null) {
-        return;
-      }
-      paramColorNote = (SubscribeColorNoteReserveBean)yly.a(paramColorNote);
-      if (paramColorNote != null)
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
-        localStFeed.mergeFrom(paramColorNote.feedData);
-        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
-        ybt.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
-        return;
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = (aodg)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new aodg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new aodf(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
+          }
+          return localObject2;
+        }
+      }
+      Object localObject1 = null;
+    }
+  }
+  
+  public FullMessageSearchResult a(String paramString)
+  {
+    return a(paramString).b();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (aodg)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((aodg)localObject2).b(2);
+          }
+        }
       }
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
     }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (aodg)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
+    }
+  }
+  
+  public FullMessageSearchResult b(String paramString)
+  {
+    return a(paramString).c();
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 

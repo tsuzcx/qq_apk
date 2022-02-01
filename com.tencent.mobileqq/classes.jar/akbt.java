@@ -1,18 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class akbt
-  extends ameq
+public class akbt
 {
-  akbt(akbr paramakbr) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      akbr.a(this.a, paramString, localBitmap);
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g = 600;
 }
 
 

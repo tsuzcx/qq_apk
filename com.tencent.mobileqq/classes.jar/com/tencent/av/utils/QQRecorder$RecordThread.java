@@ -32,13 +32,13 @@ class QQRecorder$RecordThread
     //   42: astore 9
     //   44: aload_0
     //   45: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   48: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   48: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   51: ifnull +26 -> 77
     //   54: aload 10
     //   56: astore 9
     //   58: aload_0
     //   59: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   62: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   62: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   65: aload_0
     //   66: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
     //   69: getfield 54	com/tencent/av/utils/QQRecorder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -104,13 +104,13 @@ class QQRecorder$RecordThread
     //   201: astore 9
     //   203: aload_0
     //   204: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   207: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   207: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   210: ifnull +19 -> 229
     //   213: aload 10
     //   215: astore 9
     //   217: aload_0
     //   218: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   221: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   221: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   224: invokeinterface 87 1 0
     //   229: aload 10
     //   231: astore 9
@@ -154,11 +154,11 @@ class QQRecorder$RecordThread
     //   299: ifne +84 -> 383
     //   302: aload_0
     //   303: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   306: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   306: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   309: ifnull +29 -> 338
     //   312: aload_0
     //   313: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   316: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   316: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   319: astore 11
     //   321: lload 5
     //   323: lconst_0
@@ -243,11 +243,11 @@ class QQRecorder$RecordThread
     //   482: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   485: aload_0
     //   486: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   489: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   489: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   492: ifnull +15 -> 507
     //   495: aload_0
     //   496: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   499: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   499: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   502: invokeinterface 130 1 0
     //   507: iload 4
     //   509: ifgt +315 -> 824
@@ -279,13 +279,13 @@ class QQRecorder$RecordThread
     //   570: astore 9
     //   572: aload_0
     //   573: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   576: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   576: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   579: ifnull +27 -> 606
     //   582: aload 10
     //   584: astore 9
     //   586: aload_0
     //   587: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   590: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   590: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   593: aload_0
     //   594: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
     //   597: getfield 54	com/tencent/av/utils/QQRecorder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -335,13 +335,13 @@ class QQRecorder$RecordThread
     //   696: astore 9
     //   698: aload_0
     //   699: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   702: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   702: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   705: ifnull +27 -> 732
     //   708: aload 10
     //   710: astore 9
     //   712: aload_0
     //   713: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   716: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   716: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   719: aload_0
     //   720: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
     //   723: getfield 54	com/tencent/av/utils/QQRecorder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -444,11 +444,11 @@ class QQRecorder$RecordThread
     //   913: invokevirtual 182	java/io/FileOutputStream:flush	()V
     //   916: aload_0
     //   917: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   920: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   920: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   923: ifnull +15 -> 938
     //   926: aload_0
     //   927: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   930: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   930: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   933: invokeinterface 185 1 0
     //   938: aload_0
     //   939: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
@@ -530,13 +530,13 @@ class QQRecorder$RecordThread
     //   1113: astore 9
     //   1115: aload_0
     //   1116: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   1119: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   1119: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   1122: ifnull +31 -> 1153
     //   1125: aload 10
     //   1127: astore 9
     //   1129: aload_0
     //   1130: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
-    //   1133: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Mvq	Lmvq;
+    //   1133: getfield 51	com/tencent/av/utils/QQRecorder:jdField_a_of_type_Msw	Lmsw;
     //   1136: aload_0
     //   1137: getfield 46	com/tencent/av/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/av/utils/QQRecorder;
     //   1140: getfield 54	com/tencent/av/utils/QQRecorder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -743,7 +743,7 @@ class QQRecorder$RecordThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.utils.QQRecorder.RecordThread
  * JD-Core Version:    0.7.0.1
  */

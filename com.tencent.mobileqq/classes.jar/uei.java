@@ -1,38 +1,22 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
-import java.util.List;
-
-public class uei
-  extends FragmentPagerAdapter
+public abstract interface uei<T>
 {
-  public uei(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  public abstract void a();
   
-  public int getCount()
-  {
-    return QCirclePersonalBottomView.a(this.a).size();
-  }
+  public abstract void a(int paramInt);
   
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
-      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
+  public abstract void a(T paramT);
   
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uei
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.annotation.NonNull;
 
-class uci
-  implements Animation.AnimationListener
+public abstract interface uci<V extends uch, P extends uck<V>>
 {
-  uci(uce paramuce) {}
+  public abstract V a();
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  @NonNull
+  public abstract P a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(P paramP);
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.a != null) {
-      this.a.a.setVisibility(0);
-    }
-  }
+  public abstract P b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uci
  * JD-Core Version:    0.7.0.1
  */

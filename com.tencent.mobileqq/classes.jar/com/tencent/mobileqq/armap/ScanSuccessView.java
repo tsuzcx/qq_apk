@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import aepi;
-import alud;
+import afur;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -9,6 +8,7 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
+import anni;
 import java.util.Random;
 
 public class ScanSuccessView
@@ -18,7 +18,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = alud.a(2131713912);
+  String jdField_a_of_type_JavaLangString = anni.a(2131712291);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -94,7 +94,7 @@ public class ScanSuccessView
     this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_g_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_h_of_type_Int = aepi.a(18.0F, getResources());
+    this.jdField_h_of_type_Int = afur.a(18.0F, getResources());
     this.jdField_g_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     Paint.FontMetrics localFontMetrics = this.jdField_f_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.i = ((int)Math.ceil(localFontMetrics.descent - localFontMetrics.ascent));
@@ -196,7 +196,7 @@ public class ScanSuccessView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ScanSuccessView
  * JD-Core Version:    0.7.0.1
  */

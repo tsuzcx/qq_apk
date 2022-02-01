@@ -1,123 +1,36 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.2;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
 import org.jetbrains.annotations.NotNull;
 
-public class tql
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/OfflineBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tql
+  extends tpt
 {
+  public static final tqm a = new tqm(null);
+  
+  public tql(@NotNull BridgeModule paramBridgeModule)
+  {
+    super(paramBridgeModule);
+  }
+  
   @NotNull
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
+  public String a()
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846162);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
-    if (paramURLImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
+    return "offline";
   }
   
-  public static void a()
+  public void a()
   {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      BaseApplicationImpl.sImageCache.evict(0);
-      return;
-    }
-    BaseApplicationImpl.sImageCache.evictAll();
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView)
-  {
-    a(paramString, paramURLImageView, null, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, Drawable paramDrawable)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = b(paramURLImageView);
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
-    a(paramString, paramURLImageView, localURLDrawableOptions, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
-  {
-    a(paramString, paramURLImageView, paramURLDrawableOptions, paramBoolean, null);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean, URLDrawableDownListener paramURLDrawableDownListener)
-  {
-    WeakReference localWeakReference = new WeakReference(paramURLImageView);
-    Object localObject = paramURLDrawableOptions;
-    if (paramURLDrawableOptions == null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = a(paramURLImageView);
-        long l = 0L;
-        if (paramBoolean)
-        {
-          paramURLDrawableOptions = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-          if ((paramURLDrawableOptions == null) || (localWeakReference.get() == null)) {
-            break label158;
-          }
-          paramURLImageView.setURLDrawableDownListener(new tqm(paramURLDrawableDownListener, l, paramString));
-          ((ImageView)localWeakReference.get()).setImageDrawable(paramURLDrawableOptions);
-          return;
-        }
-        localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
-        switch (((URLDrawable)localObject).getStatus())
-        {
-        case 1: 
-        case 3: 
-          l = System.currentTimeMillis();
-          ((URLDrawable)localObject).startDownload();
-          paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
-          break;
-        case 2: 
-          l = System.currentTimeMillis();
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      ((URLDrawable)localObject).restartDownload();
-      paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
-      continue;
-      label158:
-      return;
-    }
-  }
-  
-  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841309);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
-    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
+    a("updateIfNeed", (Function2)new OfflineBridgeInvokeHandler.register.1(this));
+    a("batchCheckUpdate", (Function2)new OfflineBridgeInvokeHandler.register.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tql
  * JD-Core Version:    0.7.0.1
  */

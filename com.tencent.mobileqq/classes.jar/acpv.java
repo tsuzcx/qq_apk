@@ -1,60 +1,39 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Map;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class acpv
-  extends altm
+  implements acqj
 {
-  public acpv(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
-    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
-      return;
-    }
-    if (!paramBoolean) {
-      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
-        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131721101), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
-      return;
-      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-      if (paramMap != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
-      }
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    Object localObject = null;
     try
     {
-      l = Long.valueOf(paramString).longValue();
-      if (l != 0L) {
-        this.a.a(l);
-      }
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
+      paramString = new JSONObject(paramVarArgs[0]);
+      acqy.a("GdtC2SJsCallHandler", paramString.toString());
+      int i = paramString.optInt("operationType");
+      int j = paramString.optInt("businessType");
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
+      acre.a(i, j, localAdInfo);
+      if (paramacpp != null) {}
+      for (paramString = paramacpp.a();; paramString = null)
       {
-        paramString.printStackTrace();
-        long l = 0L;
+        paramVarArgs = localObject;
+        if (paramacpp != null) {
+          paramVarArgs = paramacpp.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
+        return true;
       }
+      return true;
+    }
+    catch (Exception paramacpp)
+    {
+      acqy.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramacpp);
     }
   }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

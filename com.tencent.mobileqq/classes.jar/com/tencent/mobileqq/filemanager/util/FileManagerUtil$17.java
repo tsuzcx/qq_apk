@@ -1,138 +1,64 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import aqwl;
-import arrp;
-import arrr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import atvo;
+import bgme;
+import bgrj;
+import bgvf;
+import bgvi;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import mqq.app.MobileQQ;
 
 public final class FileManagerUtil$17
   implements Runnable
 {
-  public FileManagerUtil$17(String paramString1, QQAppInterface paramQQAppInterface, int paramInt, String paramString2) {}
+  public FileManagerUtil$17(Context paramContext, int paramInt, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    SharedPreferences localSharedPreferences;
-    String str2;
-    long l1;
-    long l2;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    int j;
-    label262:
-    MessageRecord localMessageRecord;
-    do
+    try
     {
-      for (;;)
-      {
+      Object localObject1 = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
+      BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int, (BitmapFactory.Options)localObject1);
+      ((BitmapFactory.Options)localObject1).inSampleSize = 1;
+      ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
+      Object localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int, (BitmapFactory.Options)localObject1);
+      if (localObject2 == null) {
         return;
-        try
-        {
-          Thread.sleep(500L);
-          String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "BatProcessTips";
-          localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(str1, 0);
-          str2 = this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int + "_LastShowTime";
-          l1 = localSharedPreferences.getLong(str2, 0L);
-          l2 = System.currentTimeMillis();
-          if (l2 - l1 < 86400000L)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],today has notify user!return!");
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          if ((localObject1 == null) || (((List)localObject1).size() == 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],msgRecd null,return");
-            }
-          }
-          else
-          {
-            i = 1;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-            j = ((List)localObject1).size() - 1;
-          }
+      }
+      int i = bgme.a(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = localObject2;
+      if (((Bitmap)localObject2).getWidth() != i) {
+        if (bgvi.c) {
+          break label163;
         }
       }
-      if (j < 0) {
-        break;
-      }
-      localMessageRecord = (MessageRecord)((List)localObject1).get(j);
-    } while ((localMessageRecord.msgtype != -2005) || (localMessageRecord.isSend()) || (localMessageRecord.senderuin.equalsIgnoreCase((String)localObject2) == true));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FileManagerUtil<FileAssistant>", 4, "updateBatProcessTips count[" + i + "]");
-    }
-    if (i >= 4)
-    {
-      localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
-      switch (arrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
+      label163:
+      for (localObject1 = bgvf.a().a((Bitmap)localObject2, i); Build.VERSION.SDK_INT < 26; localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, i, false))
       {
-      case 1: 
-      case 4: 
-      case 5: 
-      case 8: 
-      default: 
-        localObject1 = "3";
-      }
-      for (;;)
-      {
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692743), -1L, -1L, -1L);
-        localSharedPreferences.edit().putLong(str2, l2);
-        if (QLog.isColorLevel()) {
-          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + arrr.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
-        }
-        arrp.a("0X800506B");
+        localObject2 = new Intent("android.intent.action.MAIN");
+        ((Intent)localObject2).addCategory("android.intent.category.LAUNCHER");
+        ((Intent)localObject2).putExtra(this.jdField_a_of_type_JavaLangString, true);
+        ((Intent)localObject2).setClassName(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class.getName());
+        ((Intent)localObject2).setFlags(337641472);
+        bgrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
         return;
-        localObject1 = "0";
-        continue;
-        localObject1 = "1";
       }
+      atvo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      return;
     }
-    long l3 = localMessageRecord.time * 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],time[" + l3 + "]");
-    }
-    if (l3 > l1) {
-      i += 1;
-    }
-    for (;;)
-    {
-      j -= 1;
-      break label262;
-      break;
-    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.17
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,18 @@
+import org.json.JSONObject;
+
 public class aasm
 {
-  public static void a(String paramString)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public aasm(JSONObject paramJSONObject)
   {
-    aasq.a(paramString);
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("iconGrid");
+    this.c = paramJSONObject.optString("jumpUrl");
+    this.d = paramJSONObject.optString("iconLoveGrid");
   }
 }
 

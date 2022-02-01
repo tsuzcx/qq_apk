@@ -1,22 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable.DownloadListener;
+import kotlin.Metadata;
 
-public class sjx
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$saveBitmapAndUpload$1", "Lcom/tencent/image/URLDrawable$DownloadListener;", "onFileDownloadFailed", "", "p0", "", "onFileDownloadStarted", "onFileDownloadSucceed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sjx
+  implements URLDrawable.DownloadListener
 {
-  public sjx(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, ska paramska) {}
+  sjx(String paramString, rtb paramrtb, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void onFileDownloadFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Ska);
+    rtb localrtb = this.jdField_a_of_type_Rtb;
+    if (localrtb != null) {
+      localrtb.a(2, "");
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    sjs.a(this.jdField_a_of_type_Sjs, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rtb);
+    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public class zfl
-  extends WebViewPlugin
+class zfl
+  implements ServiceConnection
 {
-  public zfl()
+  private zfj a;
+  
+  public zfl(zfj paramzfj)
   {
-    this.mPluginNameSpace = "qztodayinhistory";
+    this.a = paramzfj;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    this.a = null;
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    zfj localzfj = this.a;
+    if (localzfj != null) {
+      localzfj.a(paramComponentName, paramIBinder);
     }
-    if (!paramString2.equals("qztodayinhistory")) {}
-    while (!paramString3.equals("settihnome")) {
-      return false;
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    zfj localzfj = this.a;
+    if (localzfj != null) {
+      localzfj.a(paramComponentName);
     }
-    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
-    }
-    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zfl
  * JD-Core Version:    0.7.0.1
  */

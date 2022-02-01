@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr;
 
-import avwp;
-import avzj;
+import aygh;
+import ayjb;
 
 public class OCRResultFragmentNew$7$1
   implements Runnable
 {
-  public OCRResultFragmentNew$7$1(avwp paramavwp) {}
+  public OCRResultFragmentNew$7$1(aygh paramaygh) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class OCRResultFragmentNew$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1
  * JD-Core Version:    0.7.0.1
  */

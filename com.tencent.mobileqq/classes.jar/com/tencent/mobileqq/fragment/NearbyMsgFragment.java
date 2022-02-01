@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class NearbyMsgFragment
   extends NearbyBaseFragment
@@ -18,9 +19,9 @@ public class NearbyMsgFragment
 {
   public NearbyActivity a;
   
-  public void aR_()
+  public void aP_()
   {
-    super.aR_();
+    super.aP_();
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onPageSelected， startMsgBoxListActivity");
@@ -62,8 +63,8 @@ public class NearbyMsgFragment
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561062, paramViewGroup, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex))
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561274, paramViewGroup, false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo.tabIndex))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(false);
         if (QLog.isColorLevel()) {
@@ -71,7 +72,9 @@ public class NearbyMsgFragment
         }
       }
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -116,7 +119,7 @@ public class NearbyMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyMsgFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,23 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agwa
-  implements Animation.AnimationListener
+class agwa
+  implements atwb
 {
-  public agwa(TroopChatPie paramTroopChatPie) {}
+  agwa(agup paramagup, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d.setBackgroundResource(2130843228);
-    this.a.a.setBackgroundResource(2130843234);
-    this.a.q.setVisibility(8);
-    this.a.r.setVisibility(8);
-    this.a.o.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.q.setVisibility(0);
-    this.a.r.setVisibility(0);
+    paramView = new Intent(this.jdField_a_of_type_Agup.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
+    paramView.putExtra("uin", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("uintype", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agup.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    atvm.a("0X800506C");
   }
 }
 

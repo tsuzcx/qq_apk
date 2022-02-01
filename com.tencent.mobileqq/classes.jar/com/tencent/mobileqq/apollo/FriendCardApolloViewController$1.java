@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import albr;
+import amux;
 
 public class FriendCardApolloViewController$1
   implements Runnable
@@ -18,7 +18,7 @@ public class FriendCardApolloViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.FriendCardApolloViewController.1
  * JD-Core Version:    0.7.0.1
  */

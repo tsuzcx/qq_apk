@@ -1,45 +1,70 @@
+import android.content.Context;
+import android.media.AudioManager;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class aloc
 {
-  int jdField_a_of_type_Int = 0;
-  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  public static long a;
+  public static Context a;
+  public static String a;
   
-  public aloc(String paramString)
+  static
+  {
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
+  }
+  
+  public static void a()
   {
     try
     {
-      paramString = aojx.a(paramString, "troop_member_list_config");
-      if (paramString != null)
-      {
-        Object localObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
-        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
-        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
-        {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
-          i += 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
-      }
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
       return;
     }
-    catch (Throwable paramString)
+    catch (Exception localException)
     {
-      paramString.printStackTrace();
+      localException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = alod.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aloc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 class avdn
-  extends nab
+  implements DialogInterface.OnClickListener
 {
-  avdn(avdj paramavdj, String paramString, avdq paramavdq) {}
+  avdn(avdh paramavdh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != 0) {
-      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Avdq != null) {
-      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    paramDialogInterface.dismiss();
+    avdh.a(this.a);
+    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdn
  * JD-Core Version:    0.7.0.1
  */

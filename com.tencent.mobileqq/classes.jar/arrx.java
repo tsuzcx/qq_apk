@@ -1,14 +1,14 @@
-final class arrx
-  implements bezx
+import com.tencent.mobileqq.data.CustomEmotionBase;
+
+public class arrx<T extends CustomEmotionBase>
 {
-  arrx(arrh paramarrh) {}
+  public void a() {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.a.a();
-    }
-  }
+  public void a(int paramInt) {}
+  
+  public void a(T paramT, int paramInt1, int paramInt2) {}
+  
+  public void b() {}
 }
 
 

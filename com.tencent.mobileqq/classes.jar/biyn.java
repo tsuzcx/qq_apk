@@ -1,16 +1,26 @@
-public abstract interface biyn
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class biyn
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public static SharedPreferences a(Context paramContext, String paramString)
+  {
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,10 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import Wallet.AcsMsg;
 
-class afub
-  extends afuf
+public class afub
 {
-  afub(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
-  
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agfj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)afpy.a(this.a));
-  }
+  public int a;
+  public AcsMsg a;
+  public String a;
 }
 
 

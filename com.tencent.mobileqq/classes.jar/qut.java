@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qut
-  implements quj
+  implements View.OnClickListener
 {
-  qut(qun paramqun, UgcVideo paramUgcVideo) {}
+  qut(qus paramqus) {}
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.i("RIJUGC.RIJUgcVideoPublishManager", 2, "uploadCallback: taskType = " + paramInt + ",isSuccess = " + paramBoolean1 + "isFinish = " + paramBoolean2 + "errorMsg = " + paramString + "progress = " + i);
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qut
  * JD-Core Version:    0.7.0.1
  */

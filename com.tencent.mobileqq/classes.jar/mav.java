@@ -1,29 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mav
-  implements DialogInterface.OnClickListener
+public class mav
+  extends ldy
 {
-  mav(mau parammau, long paramLong) {}
+  public mav(AVActivity paramAVActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+    if (this.a.isDestroyed()) {
       return;
     }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mau.jdField_a_of_type_JavaLangString);
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
+  
+  protected void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a.isDestroyed()) {
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new maw(this));
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mav
  * JD-Core Version:    0.7.0.1
  */

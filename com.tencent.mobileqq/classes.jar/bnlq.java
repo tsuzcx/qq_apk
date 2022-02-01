@@ -1,20 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bnlq
-  implements Animation.AnimationListener
 {
-  public bnlq(BeautyBar paramBeautyBar) {}
+  public String a;
+  public String b = "null";
+  public String c = "null";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bnlq(@NonNull String paramString)
   {
-    bnfi.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    this.a = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public bnlq(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  @NonNull
+  public String toString()
+  {
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
+  }
 }
 
 

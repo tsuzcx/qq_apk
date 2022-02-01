@@ -1,52 +1,68 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class ujw
+  implements INetInfoHandler
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b;
-  public String b;
-  public int c;
+  private WSPlayerManager a;
   
-  public ujw() {}
-  
-  public ujw(uij paramuij)
+  public ujw(WSPlayerManager paramWSPlayerManager)
   {
-    this.jdField_a_of_type_Int = paramuij.jdField_e_of_type_Int;
-    if (paramuij.g > 0) {}
-    for (int i = paramuij.g;; i = ujv.a(this.jdField_a_of_type_Int))
-    {
-      this.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramuij.jdField_e_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramuij.d;
-      this.c = paramuij.f;
-      this.jdField_a_of_type_JavaUtilList = paramuij.jdField_a_of_type_JavaUtilList;
-      return;
-    }
+    this.a = paramWSPlayerManager;
   }
   
-  public String toString()
+  private void a()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
-    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
-    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder1.append(" mTextId=").append(this.c);
-    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
-    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    if ((this.a != null) && (this.a.a() != null))
     {
-      localStringBuilder2.append(str);
-      localStringBuilder1.append("]");
-      return localStringBuilder1.toString();
+      ukb localukb = this.a.a();
+      if ((!this.a.f()) && (!this.a.e())) {
+        break label55;
+      }
+      this.a.b(localukb, false);
     }
+    label55:
+    while (!this.a.g()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void onNetMobile2None()
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    upe.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujw
  * JD-Core Version:    0.7.0.1
  */

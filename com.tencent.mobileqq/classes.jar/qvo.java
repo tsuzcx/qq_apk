@@ -1,23 +1,57 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import android.support.annotation.NonNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class qvo
-  implements Parcelable.Creator<ResultRecord>
 {
-  public ResultRecord a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<svs> jdField_b_of_type_JavaUtilList = new ArrayList();
+  
+  public qvn a()
   {
-    return new ResultRecord(paramParcel);
+    return new qvn(this, null);
   }
   
-  public ResultRecord[] a(int paramInt)
+  public qvo a(int paramInt)
   {
-    return new ResultRecord[paramInt];
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public qvo a(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qvo a(@NonNull List<svs> paramList)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((svs)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    }
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public qvo b(@NonNull String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qvo b(@NonNull List<URL> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvo
  * JD-Core Version:    0.7.0.1
  */

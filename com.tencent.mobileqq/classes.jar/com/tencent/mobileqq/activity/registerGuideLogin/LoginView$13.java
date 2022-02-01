@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import bety;
+import biau;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LoginView$13
   implements Runnable
 {
-  LoginView$13(LoginView paramLoginView, String paramString, bety parambety) {}
+  LoginView$13(LoginView paramLoginView, String paramString, biau parambiau) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ class LoginView$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.13
  * JD-Core Version:    0.7.0.1
  */

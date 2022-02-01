@@ -1,24 +1,35 @@
-import android.support.annotation.Nullable;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class upb
+public class upb
 {
-  private WeakReference<upa> a;
+  private String a;
   
-  public upb(upa paramupa)
+  public static upb a()
   {
-    this.a = new WeakReference(paramupa);
+    return upd.a();
   }
   
-  @Nullable
-  public upa a()
+  public String a()
   {
-    return (upa)this.a.get();
+    return this.a;
+  }
+  
+  public void a()
+  {
+    WSRedDotPushMsg localWSRedDotPushMsg = ups.a();
+    if (localWSRedDotPushMsg != null) {
+      this.a = localWSRedDotPushMsg.mPushId;
+    }
+  }
+  
+  public void b()
+  {
+    this.a = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upb
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public final class QQCircleRankinglist$NotifyRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqcircle.QQCircleRankinglist.NotifyRsp
  * JD-Core Version:    0.7.0.1
  */

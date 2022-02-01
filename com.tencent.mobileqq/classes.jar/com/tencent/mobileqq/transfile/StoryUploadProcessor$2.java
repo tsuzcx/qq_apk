@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import baxx;
+import bdza;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
-import wxe;
+import yqp;
 
 public final class StoryUploadProcessor$2
   implements Runnable
@@ -32,7 +32,7 @@ public final class StoryUploadProcessor$2
           {
             QQStoryContext.a();
             HwServlet.getConfig(QQStoryContext.a(), str);
-            wxe.d(baxx.a, "pull session key");
+            yqp.d(bdza.a, "pull session key");
           }
           return;
         }
@@ -44,7 +44,7 @@ public final class StoryUploadProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

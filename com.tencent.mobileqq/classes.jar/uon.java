@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.Iterator;
-import java.util.List;
-
-final class uon
-  implements DialogInterface.OnClickListener
+public class uon
 {
-  uon(List paramList) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uon() {}
+  
+  public uon(String paramString1, String paramString2)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      uom.a((String)localIterator.next());
-    }
-    paramDialogInterface.dismiss();
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uon
  * JD-Core Version:    0.7.0.1
  */

@@ -307,7 +307,7 @@ public class TPPlayerInternal
       return;
     case 83: 
       paramMessage = (TPPlayerMsg.TPDownLoadProgressInfo)paramMessage.obj;
-      this.mTPSwitchThreadListener.handleOnDownloadProgressUpdate((int)paramMessage.playableDurationMS, paramMessage.downloadSpeedKBps, paramMessage.currentDownloadSize, paramMessage.totalFileSize);
+      this.mTPSwitchThreadListener.handleOnDownloadProgressUpdate((int)paramMessage.playableDurationMS, paramMessage.downloadSpeedKBps, paramMessage.currentDownloadSize, paramMessage.totalFileSize, paramMessage.extraInfo);
       return;
     }
     this.mStringPlayinfo = this.mTPSwitchThreadListener.handleGetPlayInfo((String)paramMessage.obj);
@@ -673,6 +673,20 @@ public class TPPlayerInternal
     return this.mStringPlayinfo;
   }
   
+  long getPlayableDurationMs()
+  {
+    try
+    {
+      long l = this.mTPSwitchThreadListener.handleGetPlayableDurationMs();
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+    }
+    return 0L;
+  }
+  
   public long getPlayerBufferLength()
   {
     try
@@ -781,12 +795,13 @@ public class TPPlayerInternal
   
   public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    paramString = new TPPlayerMsg.TPDownLoadProgressInfo();
-    paramString.playableDurationMS = paramInt1;
-    paramString.downloadSpeedKBps = paramInt2;
-    paramString.currentDownloadSize = paramLong1;
-    paramString.totalFileSize = paramLong2;
-    internalMessage(83, 0, 0, paramString, false, false, 0L);
+    TPPlayerMsg.TPDownLoadProgressInfo localTPDownLoadProgressInfo = new TPPlayerMsg.TPDownLoadProgressInfo();
+    localTPDownLoadProgressInfo.playableDurationMS = paramInt1;
+    localTPDownLoadProgressInfo.downloadSpeedKBps = paramInt2;
+    localTPDownLoadProgressInfo.currentDownloadSize = paramLong1;
+    localTPDownLoadProgressInfo.totalFileSize = paramLong2;
+    localTPDownLoadProgressInfo.extraInfo = paramString;
+    internalMessage(83, 0, 0, localTPDownLoadProgressInfo, false, false, 0L);
   }
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
@@ -979,7 +994,7 @@ public class TPPlayerInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal
  * JD-Core Version:    0.7.0.1
  */

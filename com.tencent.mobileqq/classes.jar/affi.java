@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import android.provider.Settings.System;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class affi
-  implements DialogInterface.OnClickListener
+public class affi
+  implements View.OnClickListener
 {
-  affi(affg paramaffg, DialogInterface.OnClickListener paramOnClickListener) {}
+  public affi(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
+    {
+      Uri localUri = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(localUri);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

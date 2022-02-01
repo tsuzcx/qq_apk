@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
-import bdgk;
+import bgln;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -23,7 +23,7 @@ public class GameRuntimeLoaderManager
   private static final String TAG = "GameRuntimeLoaderManager";
   private static volatile GameRuntimeLoaderManager sInstance;
   private volatile boolean mHasRuntimeLoaderObtained;
-  private int mPerfLevel = bdgk.f();
+  private int mPerfLevel = bgln.f();
   private ConcurrentMap<Context, GameRuntimeLoader> mRuntimeLoaderMap;
   private ConcurrentLinkedQueue<GameRuntimeLoader> mRuntimeLoaders;
   
@@ -112,7 +112,7 @@ public class GameRuntimeLoaderManager
       }
       else
       {
-        paramContext = new GameRuntimeLoader(paramContext);
+        paramContext = new GameRuntimeLoader(paramContext, paramPREPARE_FROM);
         GameLog.getInstance().i("GameRuntimeLoaderManager", "prepare " + paramContext);
         paramContext.prepare();
         this.mRuntimeLoaders.add(paramContext);
@@ -145,7 +145,7 @@ public class GameRuntimeLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager
  * JD-Core Version:    0.7.0.1
  */

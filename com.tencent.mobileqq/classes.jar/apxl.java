@@ -1,21 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.view.View;
-import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
 
-public class apxl
-  implements ValueAnimator.AnimatorUpdateListener
+class apxl
+  extends AnimatorListenerAdapter
 {
-  public apxl(HorizontalListViewEx paramHorizontalListViewEx, View paramView, int paramInt) {}
+  apxl(apxi paramapxi, ObjectAnimator paramObjectAnimator) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int += this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int == this.jdField_a_of_type_AndroidViewView.getLeft()) {
-      HorizontalListViewEx.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx, false);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Apxi.c != null) {
+      this.jdField_a_of_type_Apxi.c.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.invalidate();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo.speedpicker;
 
 import android.widget.ImageView;
-import bncx;
-import bndn;
+import bpud;
+import bput;
 
 class PickerContainer$4
   implements Runnable
@@ -11,11 +11,11 @@ class PickerContainer$4
   
   public void run()
   {
-    bndn localbndn;
+    bput localbput;
     if ((PickerContainer.a(this.this$0) != null) && (PickerContainer.a(this.this$0).a(this.a)))
     {
       PickerContainer.a(this.this$0).stop();
-      localbndn = PickerContainer.a(this.this$0);
+      localbput = PickerContainer.a(this.this$0);
       if (PickerContainer.b(this.this$0)) {
         break label167;
       }
@@ -23,7 +23,7 @@ class PickerContainer$4
     label167:
     for (boolean bool = true;; bool = false)
     {
-      localbndn.a(bool);
+      localbput.a(bool);
       PickerContainer.a(this.this$0).a(1);
       PickerContainer.a(this.this$0).start();
       if (PickerContainer.a(this.this$0) != null) {
@@ -42,7 +42,7 @@ class PickerContainer$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer.4
  * JD-Core Version:    0.7.0.1
  */

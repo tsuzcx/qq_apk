@@ -1,42 +1,44 @@
-import android.graphics.SurfaceTexture;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class blgx
-  implements TextureView.SurfaceTextureListener
+public abstract class blgx
+  extends Binder
+  implements blgw
 {
-  private WeakReference<AETemplateInfoFragment> a;
-  
-  public blgx(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public static blgw a(IBinder paramIBinder)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
+    if ((localIInterface != null) && ((localIInterface instanceof blgw))) {
+      return (blgw)localIInterface;
+    }
+    return new blgy(paramIBinder);
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      return true;
     }
   }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

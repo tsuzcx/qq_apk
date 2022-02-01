@@ -1,24 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ptg
-  extends psx
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public ptg(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public ptg(VideoView paramVideoView) {}
   
-  public void onClick(View paramView)
+  public void OnDownloadCallback(String paramString)
   {
-    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
-    rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getInt("callBackType");
+      int i = paramString.getInt("fileSize");
+      this.a.setFileSize(i);
+      return;
+    }
+    catch (JSONException paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ptg
  * JD-Core Version:    0.7.0.1
  */

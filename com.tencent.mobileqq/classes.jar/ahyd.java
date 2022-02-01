@@ -1,35 +1,55 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahyd
-  implements Handler.Callback
+class ahyd
+  implements View.OnClickListener
 {
-  public ahyd(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
+  ahyd(ahxt paramahxt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131379406).setEnabled(true);
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    if (paramMessage.arg1 == 0) {
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131702001), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
+    boolean bool = true;
+    Object localObject1 = paramView.getTag();
+    if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {}
     for (;;)
     {
-      this.a.getActivity().setResult(1);
-      this.a.getActivity().finish();
-      return false;
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131702011), 0).b(this.a.getActivity().getTitleBarHeight());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      switch (((Integer)localObject1).intValue())
+      {
+      default: 
+        break;
+      case 1: 
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
+        break;
+      case 2: 
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
+        break;
+      case 3: 
+        if (this.a.jdField_a_of_type_Bjft.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        {
+          localObject1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690563);
+          if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
+          for (;;)
+          {
+            ChatActivityUtils.a((Activity)localObject1, (SessionInfo)localObject2, str, bool);
+            break;
+            bool = false;
+          }
+        }
+        this.a.br();
+      }
     }
   }
 }

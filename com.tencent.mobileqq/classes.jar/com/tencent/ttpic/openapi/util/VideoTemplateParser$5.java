@@ -7,15 +7,15 @@ final class VideoTemplateParser$5
 {
   VideoTemplateParser$5()
   {
-    put("radius", "0.688");
+    put("radius", "0.637");
     put("positionX", "0");
-    put("positionY", "0.239");
-    put("positionZ", "-0.108");
+    put("positionY", "0.014");
+    put("positionZ", "-0.124");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.5
  * JD-Core Version:    0.7.0.1
  */

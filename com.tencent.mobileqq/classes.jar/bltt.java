@@ -1,6 +1,12 @@
-public abstract interface bltt
+class bltt
+  implements bltr
 {
-  public abstract void a(boolean paramBoolean);
+  bltt(blts paramblts, bltp parambltp) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bltp.a();
+  }
 }
 
 

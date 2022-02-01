@@ -1,18 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
 
-public class astw
-  implements ValueAnimator.AnimatorUpdateListener
+class astw
 {
-  public astw(HotPicMainPanel paramHotPicMainPanel) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
-  }
+  View[] a = new View[12];
 }
 
 

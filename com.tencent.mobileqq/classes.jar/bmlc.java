@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 class bmlc
-  implements View.OnClickListener
+  implements bltv
 {
-  bmlc(bmla parambmla, int paramInt) {}
+  bmlc(bmlb parambmlb, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.jdField_a_of_type_Bmla.a.jdField_a_of_type_Bmor != null) && (this.jdField_a_of_type_Bmla.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
-      this.jdField_a_of_type_Bmla.a.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Bmlb.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
+      this.jdField_a_of_type_Bmlb.a.callJs(str);
     }
   }
 }

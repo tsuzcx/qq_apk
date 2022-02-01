@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.startup.step.InitHook;
-
 public class azoc
-  implements alrb
 {
-  public void a(boolean paramBoolean) {}
+  public int a;
+  public boolean a;
+  public boolean b;
 }
 
 

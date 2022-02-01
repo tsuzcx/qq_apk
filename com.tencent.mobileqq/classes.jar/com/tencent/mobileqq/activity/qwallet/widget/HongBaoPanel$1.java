@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import aere;
+import afxp;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class HongBaoPanel$1
-  implements aere
+  implements afxp
 {
   HongBaoPanel$1(HongBaoPanel paramHongBaoPanel) {}
   
@@ -21,7 +21,7 @@ class HongBaoPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,189 +1,159 @@
-import android.app.Activity;
-import android.content.Context;
+import android.content.res.Resources;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import com.tencent.mobileqq.vip.KCWraperV2.2;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
-import dualsim.common.IKcActivationViewer;
-import dualsim.common.IKingCardInterface;
-import dualsim.common.OrderCheckResult;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import tmsdk.common.KcSdkShellManager;
 
 public class bean
-  extends beam
 {
-  public AtomicBoolean a = new AtomicBoolean(false);
-  
-  private void a(OrderCheckResult paramOrderCheckResult)
+  private static int a(int paramInt, MessageRecord paramMessageRecord, String paramString)
   {
-    int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
-    {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
-      }
+    int i = 2;
+    if ((paramInt == 9063) || (paramInt == 90632)) {
+      paramInt = 1;
     }
-    label30:
-    label46:
-    boolean bool2;
+    int j;
     do
     {
-      return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label186;
+      do
+      {
+        return paramInt;
+        if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
+          break;
+        }
+        if (paramInt != -9527) {
+          break label119;
+        }
+        j = a(paramString);
+        paramInt = i;
+      } while (j == 197);
+      if ((j != 202) && (j != 201)) {
+        break;
       }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label206;
+      return 3;
+      if (paramInt != -9527) {
+        break;
       }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    amfs localamfs = (amfs)((QQAppInterface)localObject).a(27);
-    boolean bool1;
-    label113:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
+      j = a(paramString);
+      paramInt = i;
+    } while (j == 199);
+    if ((j == 206) || (j == 207)) {
+      return 3;
+    }
+    label119:
+    return -1;
+  }
+  
+  private static int a(String paramString)
+  {
+    int j = 0;
+    int i = j;
+    if (paramString != null)
     {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label196;
+      paramString = paramString.split("_");
+      i = j;
+      if (paramString != null)
+      {
+        i = j;
+        if (paramString.length != 2) {}
       }
-      bool1 = true;
-      localamfs.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label201;
+    }
+    try
+    {
+      i = Integer.parseInt(paramString[1]);
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 0;
+  }
+  
+  private static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+    case 2: 
+      return BaseApplicationImpl.getApplication().getResources().getString(2131689918);
+    }
+    return BaseApplicationImpl.getApplication().getResources().getString(2131689917);
+  }
+  
+  public static String a(MessageForPic paramMessageForPic)
+  {
+    Object localObject2 = null;
+    int i;
+    try
+    {
+      String str = paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitError");
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty(str)) {
+        break label155;
+      }
+      i = a(Integer.parseInt(str), paramMessageForPic, paramMessageForPic.getExtInfoFromExtStr("PicUploadExplicitErrorReason"));
+      if (i == 3)
+      {
+        str = paramMessageForPic.getExtInfoFromExtStr("SEND_PHOTO_DAY_KEY");
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty(str)) {
+          break label155;
+        }
+        long l1 = Long.parseLong(str);
+        long l2 = SystemClock.uptimeMillis();
+        if (pgz.a(l1, l2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);
+          }
+          return a(i);
+        }
+        paramMessageForPic.removeExtInfoToExtStr("SEND_PHOTO_DAY_KEY");
+        paramMessageForPic.updateMsgExtFiled();
+        return null;
+      }
+    }
+    catch (Exception paramMessageForPic)
+    {
+      paramMessageForPic.printStackTrace();
+      return null;
+    }
+    Object localObject1 = a(i);
+    label155:
+    return localObject1;
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramMessageRecord instanceof MessageForPic))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadExplicitError", 2, "uploadFailUpdateMsg,errCode:" + paramInt + " errStr:" + paramString1 + " uinType:" + paramMessageRecord.istroop + " msg:" + paramMessageRecord);
+      }
+      int i = a(paramInt, paramMessageRecord, paramString2);
+      if (i > 0)
+      {
+        if (i != 3) {
+          break label124;
+        }
+        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
+        paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
+        paramMessageRecord.saveExtInfoToExtStr("SEND_PHOTO_DAY_KEY", String.valueOf(SystemClock.uptimeMillis()));
       }
     }
     for (;;)
     {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localamfs.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
+      ((MessageForPic)paramMessageRecord).updateMsgExtFiled();
       return;
-      label186:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label196:
-      bool1 = false;
-      break label113;
-      label201:
-      i = 0;
+      label124:
+      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitError", String.valueOf(paramInt));
+      paramMessageRecord.saveExtInfoToExtStr("PicUploadExplicitErrorReason", paramString2);
     }
-    label206:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
-  }
-  
-  public String a()
-  {
-    return "KC.KCWraperV2";
-  }
-  
-  void a(ViewGroup paramViewGroup)
-  {
-    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
-    if (localObject != null)
-    {
-      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
-      if (localObject != null)
-      {
-        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
-        ((IKcActivationViewer)localObject).startLoad();
-        return;
-      }
-      QLog.e("KC.TMSManager", 1, "activationViewer == null");
-    }
-    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
-  }
-  
-  public void a(beaw parambeaw, boolean paramBoolean)
-  {
-    ThreadManager.post(new KCWraperV2.2(this, parambeaw, paramBoolean), 5, null, false);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("load jar");
-    if (this.a.get()) {
-      return;
-    }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    File localFile = new File(beav.a().a(localContext));
-    if (!localFile.exists())
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      a(false);
-      return;
-    }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
-  }
-  
-  boolean a()
-  {
-    if (this.a.get()) {
-      return true;
-    }
-    if (!new File(beav.a().a(BaseApplicationImpl.getApplication())).exists()) {
-      return false;
-    }
-    synchronized (this.a)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait load");
-        }
-        this.a.wait(500L);
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait end");
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
-        }
-      }
-      return this.a.get();
-    }
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-    return true;
-  }
-  
-  boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
-    }
-    return true;
   }
 }
 

@@ -1,23 +1,59 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.LocaleFileDownloader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+
 public class mvv
+  extends URLDrawableParams
 {
-  public baub a;
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
   
-  public String toString()
+  public mvv(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append(", url='").append(this.a).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    super(paramContext);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ("fileassistantimage".equals(paramString)) {
+      return new bduh(BaseApplicationImpl.getApplication());
+    }
+    if ("file".equalsIgnoreCase(paramString)) {
+      return new LocaleFileDownloader();
+    }
+    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
+      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new bdvl();
+    }
+    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bgzd.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return null;
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvv
  * JD-Core Version:    0.7.0.1
  */

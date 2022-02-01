@@ -1,11 +1,11 @@
 package io.flutter.embedding.engine;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleOwner;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 import io.flutter.embedding.engine.plugins.PluginRegistry;
 import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
 import io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverControlSurface;
@@ -22,17 +22,15 @@ import io.flutter.embedding.engine.systemchannels.SettingsChannel;
 import io.flutter.embedding.engine.systemchannels.SystemChannel;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel;
 import io.flutter.plugin.platform.PlatformViewsController;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
 public class FlutterEngine
-  implements LifecycleOwner
 {
   private static final String TAG = "FlutterEngine";
   @NonNull
   private final AccessibilityChannel accessibilityChannel;
-  @NonNull
-  private final FlutterEngineAndroidLifecycle androidLifecycle;
   @NonNull
   private final DartExecutor dartExecutor;
   @NonNull
@@ -40,7 +38,7 @@ public class FlutterEngine
   @NonNull
   private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new HashSet();
   @NonNull
-  private final FlutterJNI flutterJNI = new FlutterJNI();
+  private final FlutterJNI flutterJNI;
   @NonNull
   private final KeyEventChannel keyEventChannel;
   @NonNull
@@ -66,12 +64,25 @@ public class FlutterEngine
   
   public FlutterEngine(@NonNull Context paramContext)
   {
-    this.flutterJNI.addEngineLifecycleListener(this.engineLifecycleListener);
+    this(paramContext, null);
+  }
+  
+  public FlutterEngine(@NonNull Context paramContext, @NonNull FlutterLoader paramFlutterLoader, @NonNull FlutterJNI paramFlutterJNI)
+  {
+    this(paramContext, paramFlutterLoader, paramFlutterJNI, null, true);
+  }
+  
+  public FlutterEngine(@NonNull Context paramContext, @NonNull FlutterLoader paramFlutterLoader, @NonNull FlutterJNI paramFlutterJNI, @Nullable String[] paramArrayOfString, boolean paramBoolean)
+  {
+    this.flutterJNI = paramFlutterJNI;
+    paramFlutterLoader.startInitialization(paramContext);
+    paramFlutterLoader.ensureInitializationComplete(paramContext, paramArrayOfString);
+    paramFlutterJNI.addEngineLifecycleListener(this.engineLifecycleListener);
     attachToJni();
-    this.dartExecutor = new DartExecutor(this.flutterJNI, paramContext.getAssets());
+    this.dartExecutor = new DartExecutor(paramFlutterJNI, paramContext.getAssets());
     this.dartExecutor.onAttachedToJNI();
-    this.renderer = new FlutterRenderer(this.flutterJNI);
-    this.accessibilityChannel = new AccessibilityChannel(this.dartExecutor, this.flutterJNI);
+    this.renderer = new FlutterRenderer(paramFlutterJNI);
+    this.accessibilityChannel = new AccessibilityChannel(this.dartExecutor, paramFlutterJNI);
     this.keyEventChannel = new KeyEventChannel(this.dartExecutor);
     this.lifecycleChannel = new LifecycleChannel(this.dartExecutor);
     this.localizationChannel = new LocalizationChannel(this.dartExecutor);
@@ -81,8 +92,15 @@ public class FlutterEngine
     this.systemChannel = new SystemChannel(this.dartExecutor);
     this.textInputChannel = new TextInputChannel(this.dartExecutor);
     this.platformViewsController = new PlatformViewsController();
-    this.androidLifecycle = new FlutterEngineAndroidLifecycle(this);
-    this.pluginRegistry = new FlutterEnginePluginRegistry(paramContext.getApplicationContext(), this, this.androidLifecycle);
+    this.pluginRegistry = new FlutterEnginePluginRegistry(paramContext.getApplicationContext(), this, paramFlutterLoader);
+    if (paramBoolean) {
+      registerPlugins();
+    }
+  }
+  
+  public FlutterEngine(@NonNull Context paramContext, @Nullable String[] paramArrayOfString)
+  {
+    this(paramContext, FlutterLoader.getInstance(), new FlutterJNI(), paramArrayOfString, true);
   }
   
   private void attachToJni()
@@ -98,6 +116,23 @@ public class FlutterEngine
   private boolean isAttachedToJni()
   {
     return this.flutterJNI.isAttached();
+  }
+  
+  private void registerPlugins()
+  {
+    try
+    {
+      Class.forName("io.flutter.plugins.GeneratedPluginRegistrant").getDeclaredMethod("registerWith", new Class[] { FlutterEngine.class }).invoke(null, new Object[] { this });
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Tried to automatically register plugins with FlutterEngine (");
+      localStringBuilder.append(this);
+      localStringBuilder.append(") but could not find and invoke the GeneratedPluginRegistrant.");
+      Log.w("FlutterEngine", localStringBuilder.toString());
+    }
   }
   
   public void addEngineLifecycleListener(@NonNull FlutterEngine.EngineLifecycleListener paramEngineLifecycleListener)
@@ -148,12 +183,6 @@ public class FlutterEngine
   public KeyEventChannel getKeyEventChannel()
   {
     return this.keyEventChannel;
-  }
-  
-  @NonNull
-  public Lifecycle getLifecycle()
-  {
-    return this.androidLifecycle;
   }
   
   @NonNull
@@ -229,7 +258,7 @@ public class FlutterEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEngine
  * JD-Core Version:    0.7.0.1
  */

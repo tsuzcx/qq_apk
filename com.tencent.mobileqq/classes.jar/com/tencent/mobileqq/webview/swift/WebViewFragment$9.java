@@ -13,9 +13,9 @@ class WebViewFragment$9
   {
     try
     {
-      URL localURL = new URL(this.this$0.g);
+      URL localURL = new URL(this.this$0.mUrl);
       if (PreloadManager.a().a(localURL.getHost())) {
-        this.this$0.i(true);
+        this.this$0.enableSwipeBackForHost(true);
       }
       return;
     }
@@ -27,7 +27,7 @@ class WebViewFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.9
  * JD-Core Version:    0.7.0.1
  */

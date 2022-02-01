@@ -1,23 +1,25 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
+import NS_KING_INTERFACE.stGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListRsp;
 
-public abstract interface unn
+public class unn
+  extends ujr<stQQGetFeedCommentListRsp>
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, unj paramunj);
+  public unn()
+  {
+    super("QQGetFeedCommentList");
+    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
+  }
   
-  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj);
-  
-  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj);
-  
-  public abstract void a(String paramString, int paramInt, unj paramunj);
-  
-  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj);
-  
-  public abstract void b(String paramString, int paramInt, unj paramunj);
+  public unn(String paramString1, String paramString2, int paramInt)
+  {
+    super("QQGetFeedCommentList", 10003);
+    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     unn
  * JD-Core Version:    0.7.0.1
  */

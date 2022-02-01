@@ -1,21 +1,20 @@
 package com.tencent.viola.vinstance;
 
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.viola.core.ViolaInstance;
 
 class VInstanceAction$1
   implements Runnable
 {
-  VInstanceAction$1(VInstanceAction paramVInstanceAction, VInstance paramVInstance, View paramView, ViewGroup paramViewGroup) {}
+  VInstanceAction$1(VInstanceAction paramVInstanceAction) {}
   
   public void run()
   {
-    this.val$instance.willAppear((int)this.val$itemView.getY(), 0, this.val$parent.getHeight());
+    this.this$0.violaInstance.renderJSSource(this.this$0.preconditor.getServiceJsCode(), this.this$0.preconditor.getAdapter().getPageData(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.VInstanceAction.1
  * JD-Core Version:    0.7.0.1
  */

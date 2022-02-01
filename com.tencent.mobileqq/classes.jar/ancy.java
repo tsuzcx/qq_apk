@@ -1,16 +1,23 @@
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ancy
+class ancy
+  implements AdapterView.OnItemClickListener
 {
-  public double a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  ancy(ancx paramancx, String paramString) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Message localMessage = this.jdField_a_of_type_Ancx.a.obtainMessage();
+    localMessage.what = ((int)paramLong);
+    localMessage.obj = this.jdField_a_of_type_JavaLangString;
+    localMessage.sendToTarget();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
 }
 
 

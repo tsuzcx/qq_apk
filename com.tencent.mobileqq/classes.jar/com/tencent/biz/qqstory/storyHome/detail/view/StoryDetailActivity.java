@@ -1,14 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
-import abvb;
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class StoryDetailActivity
   extends QQStoryBaseActivity
@@ -72,12 +75,20 @@ public class StoryDetailActivity
   
   private void d()
   {
-    setContentView(2131561417);
-    this.leftView.setText(2131690623);
+    setContentView(2131561653);
+    this.leftView.setText(2131690563);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131364736, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    localFragmentTransaction.replace(2131364961, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
     localFragmentTransaction.commitAllowingStateLoss();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -98,12 +109,18 @@ public class StoryDetailActivity
   public void finish()
   {
     super.finish();
-    abvb.a(this);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity
  * JD-Core Version:    0.7.0.1
  */

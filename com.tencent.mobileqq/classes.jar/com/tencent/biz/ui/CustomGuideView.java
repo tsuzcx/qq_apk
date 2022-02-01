@@ -1,6 +1,5 @@
 package com.tencent.biz.ui;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -14,6 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import anni;
 
 public class CustomGuideView
   extends View
@@ -35,21 +35,21 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
+    this.jdField_a_of_type_JavaLangString = anni.a(2131701499);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
+    this.jdField_a_of_type_JavaLangString = anni.a(2131701499);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = alud.a(2131703092);
+    this.jdField_a_of_type_JavaLangString = anni.a(2131701499);
     a();
   }
   
@@ -131,7 +131,7 @@ public class CustomGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.ui.CustomGuideView
  * JD-Core Version:    0.7.0.1
  */

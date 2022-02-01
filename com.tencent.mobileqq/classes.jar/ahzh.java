@@ -1,78 +1,58 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
-public class ahzh
-  implements bewr
+class ahzh
+  implements View.OnClickListener
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  CalendarDay b;
+  ahzh(ahzf paramahzf) {}
   
-  public ahzh(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public CalendarDay a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  }
-  
-  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
-  {
-    if (ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.getString(2131720345), new ahzg(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment));
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramCalendarDay);
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(paramCalendarDay.getTimeInMillis());
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).d(localCalendar);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(anhk.y)) {
+      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+        this.a.I();
+      }
     }
     for (;;)
     {
-      QLog.i(ChatHistoryC2CDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment);
-      ChatHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.getActivity(), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), paramMessageRecord.time, paramMessageRecord.shmsgseq, 0);
-    }
-  }
-  
-  public void a(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
-  {
-    if (!ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramInt1, paramInt2))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.d) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.a(paramInt1, paramInt2);
+      Object localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      ((Intent)localObject1).putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+      Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
+      }
+      for (;;)
+      {
+        bmqo.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+        break;
+        ((Intent)localObject1).putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
+      }
+      localObject1 = (abqn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      localObject2 = ((abqn)localObject1).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
+      {
+        if (ahzf.a(this.a)) {
+          ((abqn)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
+        }
+        this.a.I();
+      }
+      else
+      {
+        ((abqn)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.b(paramInt1, paramInt2);
-  }
-  
-  public CalendarDay b()
-  {
-    if (this.b == null)
-    {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
-      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
-    }
-    return this.b;
   }
 }
 

@@ -1,32 +1,152 @@
+import NS_KING_PUBLIC.stAuth;
 import android.content.Context;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import android.os.Bundle;
+import com.tencent.common.config.AppSetting;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+import cooperation.ilive.IliveShadowImpl.1;
+import java.util.concurrent.ExecutorService;
 
 public class blef
-  extends GifAnimationDrawable
+  implements IShadow
 {
-  public blef(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
+  private static blef jdField_a_of_type_Blef;
+  private bleh jdField_a_of_type_Bleh;
+  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  
+  private blef()
   {
-    super(paramContext, paramArrayList, paramLong);
+    setILoggerFactory();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = anvy.b(192);
   }
   
-  public void start()
+  public static blef a()
   {
-    if (!this.a)
+    if (jdField_a_of_type_Blef == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("zswp20pro", 2, "start");
+      if (jdField_a_of_type_Blef == null) {
+        jdField_a_of_type_Blef = new blef();
       }
-      this.a = true;
-      this.b = true;
-      this.d = false;
-      a();
+      return jdField_a_of_type_Blef;
     }
-    while (!QLog.isColorLevel()) {
+    finally {}
+  }
+  
+  private PluginManager a(Context paramContext, String paramString)
+  {
+    if (bldz.a().a()) {
+      return new DynamicPluginManager(bldz.a().a());
+    }
+    return new DynamicPluginManager(new blds());
+  }
+  
+  private void a(Context paramContext, long paramLong, PluginManager paramPluginManager, Bundle paramBundle, stAuth paramstAuth, EnterCallback paramEnterCallback)
+  {
+    blet.a("IliveLaunch enterWithAuth");
+    Bundle localBundle2 = paramBundle.getBundle("KEY_EXTRAS");
+    Bundle localBundle1 = localBundle2;
+    if (localBundle2 == null) {
+      localBundle1 = new Bundle();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("IliveAuthShadowImpl", 2, "start enterWithAuth  , uid = " + paramstAuth.sUid);
+    }
+    localBundle1.putString("openID", paramstAuth.sUid);
+    localBundle1.putString("token", paramstAuth.sSessionKey);
+    localBundle1.putInt("auth_type", 0);
+    paramBundle.putBundle("KEY_EXTRAS", localBundle1);
+    try
+    {
+      paramPluginManager.enter(paramContext, paramLong, paramBundle, new bleg(this, paramEnterCallback, paramLong));
+      blet.b("IliveLaunch enterWithAuth");
       return;
     }
-    QLog.d("zswp20pro", 2, "start but isRunning");
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+        QLog.e("IliveAuthShadowImpl", 1, "enterWithAuth exception , e = " + paramContext.getMessage());
+      }
+    }
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    try
+    {
+      paramString2 = getPluginManager(paramContext, paramString1, paramString2);
+      blpu.c("IliveAuthShadowImpl", "enter: " + paramLong + ", frameVersion = " + "1");
+      blet.a("stAuth");
+      if (paramString2 != null)
+      {
+        long l = System.currentTimeMillis();
+        paramBundle.putString("hostuid", paramString1);
+        paramBundle.putString("hostVersion", "8.4.1");
+        paramBundle.putInt("key_frame_version", Integer.valueOf("1").intValue());
+        paramBundle.putLong("entryTime", l);
+        if (!bldz.a().a())
+        {
+          paramBundle.putString("pluginZipPath", bldz.a().c());
+          paramBundle.putString("pluginZipMD5", bldz.a().d());
+        }
+        paramBundle.putBoolean("isDebugVersion", false);
+        paramBundle.putString("qqVersion", AppSetting.a);
+        paramString1 = blek.a().a();
+        if (paramString1 != null)
+        {
+          QLog.e("IliveAuthShadowImpl", 1, "[enterWithAuth] use local auth !");
+          a(paramContext, paramLong, paramString2, paramBundle, paramString1, paramEnterCallback);
+          return;
+        }
+        QLog.e("IliveAuthShadowImpl", 1, "[enterWithAuth] start request getStAuth");
+        this.jdField_a_of_type_Bleh = new bleh(this, paramString2, paramLong, paramContext, paramBundle, paramEnterCallback);
+        blek.a().a(this.jdField_a_of_type_Bleh);
+        return;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+      QLog.e("IliveAuthShadowImpl", 1, "enter exception ", paramContext);
+      return;
+    }
+    QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager is null !");
+  }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new IliveShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
+  }
+  
+  public void setILoggerFactory()
+  {
+    try
+    {
+      LoggerFactory.setILoggerFactory(avgw.a());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

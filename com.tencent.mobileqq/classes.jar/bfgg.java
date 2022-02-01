@@ -1,56 +1,59 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import java.util.List;
 import org.json.JSONObject;
 
 public class bfgg
-  implements bfml
+  extends bfgl
 {
-  protected bfgg(bfgf parambfgf) {}
+  private TextView a;
+  private TextView b;
   
-  public void a(Exception paramException)
+  protected bfgg(View paramView)
   {
-    bflp.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379851));
+    this.b = ((TextView)paramView.findViewById(2131379704));
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, bfgj parambfgj)
   {
-    try
+    paramHWReciteItem = (bfeo)parambfgj.a;
+    switch (paramView.getId())
     {
-      int i = paramJSONObject.getInt("ret");
-      Object localObject = paramJSONObject.getString("msg");
-      if (i == 0)
-      {
-        localObject = paramJSONObject.getJSONArray("update_list");
-        i = ((JSONArray)localObject).length();
-        if (i > 0) {
-          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
-        }
-        localObject = bfrh.a(bfbm.a().a(), "prefer_last_avatar_update_time").edit();
-        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
-        ((SharedPreferences.Editor)localObject).commit();
-        if (this.a.a != null) {
-          this.a.a.a();
-        }
-      }
-      else
-      {
-        bflp.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
-        return;
-      }
     }
-    catch (JSONException paramJSONObject)
+    do
     {
-      bflp.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+      return;
+      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
+      paramView = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(paramView instanceof QQAppInterface));
+    bgjt.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
+  }
+  
+  public void a(HWReciteItem paramHWReciteItem, bfgj parambfgj, bfeo parambfeo, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambfeo.jdField_c_of_type_JavaLangString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(anni.a(2131704091)).append(parambfeo.b);
+      if ((parambfeo.a != null) && (!parambfeo.a.isEmpty())) {
+        localStringBuilder.append(bfds.a(parambfeo.a));
+      }
+      parambfeo.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambfeo.jdField_c_of_type_JavaLangString);
+    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambfgj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfgg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,52 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.DynamicAvatar;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class apum
+class apum
+  extends apuk
 {
-  private final apux a;
+  apum(apul paramapul) {}
   
-  public apum(EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt)
+  protected void a(boolean paramBoolean1, apuf paramapuf, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
-    this.a = new apux(paramEmoticonMainPanel);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.a.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public apum a(int paramInt)
-  {
-    this.a.b = paramInt;
-    return this;
-  }
-  
-  public apum a(apuj paramapuj)
-  {
-    this.a.jdField_a_of_type_Apuj = paramapuj;
-    return this;
-  }
-  
-  public apum a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public apum a(boolean paramBoolean)
-  {
-    this.a.h = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    this.a.b();
-  }
-  
-  public apum b(int paramInt)
-  {
-    this.a.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public apum b(boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public apum c(boolean paramBoolean)
-  {
-    this.a.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public apum d(boolean paramBoolean)
-  {
-    this.a.d = paramBoolean;
-    return this;
-  }
-  
-  public apum e(boolean paramBoolean)
-  {
-    this.a.e = paramBoolean;
-    return this;
-  }
-  
-  public apum f(boolean paramBoolean)
-  {
-    this.a.f = paramBoolean;
-    return this;
-  }
-  
-  public apum g(boolean paramBoolean)
-  {
-    this.a.g = paramBoolean;
-    return this;
-  }
-  
-  public apum h(boolean paramBoolean)
-  {
-    this.a.i = paramBoolean;
-    return this;
+    String str4 = apul.a(paramInt2, paramInt1, String.valueOf(paramLong), paramInt3);
+    if (!paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo not success: " + paramInt1 + " " + paramLong + " " + paramInt2);
+      }
+      apul.a(this.a, str4, null, null);
+      return;
+    }
+    if ((paramapuf != null) && (paramapuf.a != null) && (!paramapuf.a.isEmpty())) {}
+    for (paramapuf = DynamicAvatar.convertFrom((apug)paramapuf.a.get(0));; paramapuf = null)
+    {
+      if (paramapuf == null)
+      {
+        apul.a(this.a, str4, null, null);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo: " + paramapuf);
+      }
+      String str2 = apul.a(paramInt2, paramInt3, paramapuf);
+      String str3 = apul.a(paramInt2, 640, paramapuf);
+      String str1 = str3;
+      paramLong = str2;
+      if (TextUtils.isEmpty(str2))
+      {
+        str1 = str3;
+        paramLong = str2;
+        if (paramBoolean2)
+        {
+          paramLong = apul.a(17, paramInt3, paramapuf);
+          str1 = apul.a(17, 640, paramapuf);
+        }
+      }
+      apul.a(this.a, str4, paramLong, str1);
+      return;
+    }
   }
 }
 

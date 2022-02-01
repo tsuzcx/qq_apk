@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class ajnz
-  implements DialogInterface.OnClickListener
+class ajnz
+  implements QQPermissionCallback
 {
-  public ajnz(LoginView paramLoginView) {}
+  ajnz(ajnk paramajnk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bglp.a(ajnk.a(this.a), new ajoa(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    ajnk.a(this.a, ajnk.b(this.a));
   }
 }
 

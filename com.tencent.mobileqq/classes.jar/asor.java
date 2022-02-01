@@ -1,19 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
 
 public class asor
-  implements ajal
+  implements apyj
 {
-  public asor(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public asor(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
-      QLog.d("GameWebPage", 1, "loading apng download succ!");
+    if (paramInt == SignalBombAnimationView.a(this.a)) {
+      SignalBombAnimationView.a(this.a).sendEmptyMessage(2);
     }
   }
+  
+  public void b() {}
 }
 
 

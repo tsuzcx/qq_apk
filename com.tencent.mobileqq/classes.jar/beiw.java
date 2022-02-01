@@ -1,19 +1,13 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class beiw
-  implements yrb
+public class beiw
+  implements DialogInterface.OnClickListener
 {
-  beiw(beir parambeir) {}
+  public beiw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void callback(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("fontSize", 1);
-    if (i != this.a.b)
-    {
-      this.a.b = i;
-      this.a.b(this.a.b);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bkbq;
+import bmqa;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
@@ -9,18 +9,18 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import osq;
-import qki;
+import phv;
+import ret;
 
 public class AwesomeCommentConfigHandler
   implements AladdinConfigHandler
 {
-  private final String TAG = "AwesomeCommentConfigHandler";
+  private static final String TAG = "AwesomeCommentConfigHandler";
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     QLog.d("AwesomeCommentConfigHandler", 2, "[onReceiveConfig] " + paramInt1 + " " + paramString);
-    Map localMap = osq.a(paramString);
+    Map localMap = phv.a(paramString);
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -34,7 +34,7 @@ public class AwesomeCommentConfigHandler
         }
         for (;;)
         {
-          bkbq.a(qki.h, Integer.valueOf(paramInt2));
+          bmqa.a(ret.h, Integer.valueOf(paramInt2));
           break;
           if (TextUtils.equals(str2, "2")) {
             paramInt2 = 2;
@@ -46,7 +46,7 @@ public class AwesomeCommentConfigHandler
       if (TextUtils.equals(str1, "awesome_comment_line_number")) {
         try
         {
-          bkbq.a(qki.i, Integer.valueOf(str2));
+          bmqa.a(ret.i, Integer.valueOf(str2));
           Aladdin.getConfig(paramInt1).update(paramString);
         }
         catch (NumberFormatException localNumberFormatException)

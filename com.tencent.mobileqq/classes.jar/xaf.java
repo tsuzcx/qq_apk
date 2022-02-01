@@ -1,31 +1,37 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class xaf
-  implements View.OnTouchListener
+public class xaf
+  extends wyl<qqstory_service.ReqGetPromoteTaskList>
 {
-  xaf(xae paramxae) {}
+  public static final String b = wjz.a("StorySvc.get_promote_tasklist");
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public xaf(String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    return new xag(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    yqp.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return zlb.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xaf
  * JD-Core Version:    0.7.0.1
  */

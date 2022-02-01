@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bmbq;
+import bouu;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class SpeedProviderView
   extends ProviderView
   implements View.OnClickListener
 {
-  private bmbq a;
+  private bouu a;
   protected View c;
   protected View d;
   protected View e;
@@ -24,23 +25,23 @@ public class SpeedProviderView
   
   protected int a()
   {
-    return 2131560770;
+    return 2131560974;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560770, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560974, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131372090);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131372661);
     this.c.setOnClickListener(this);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131372089);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131372660);
     this.d.setOnClickListener(this);
-    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372091);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372662);
     this.e.setOnClickListener(this);
-    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131372092);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131372663);
     this.f.setOnClickListener(this);
   }
   
@@ -55,9 +56,10 @@ public class SpeedProviderView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bmbq != null) {
-        this.jdField_a_of_type_Bmbq.a(i);
+      if (this.jdField_a_of_type_Bouu != null) {
+        this.jdField_a_of_type_Bouu.a(i);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 2;
       continue;
@@ -67,14 +69,14 @@ public class SpeedProviderView
     }
   }
   
-  public void setEditSpeedListener(bmbq parambmbq)
+  public void setEditSpeedListener(bouu parambouu)
   {
-    this.jdField_a_of_type_Bmbq = parambmbq;
+    this.jdField_a_of_type_Bouu = parambouu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.view.SpeedProviderView
  * JD-Core Version:    0.7.0.1
  */

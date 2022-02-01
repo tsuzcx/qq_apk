@@ -1,30 +1,43 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 class waz
-  implements bhuk
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  waz(wax paramwax, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bhuf parambhuf) {}
+  waz(way paramway) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    switch (paramInt)
-    {
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if ((Float.isNaN(f)) || (Float.isInfinite(f))) {
+      return false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      vls.a(this.jdField_a_of_type_Wax.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new wba(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (f >= 0.0F) {
+      way.a(this.a).a(f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+    }
+    return true;
+  }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (way.a(this.a) != null) {
+      way.a(this.a).a(f);
+    }
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (way.a(this.a) != null) {
+      way.a(this.a).a(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     waz
  * JD-Core Version:    0.7.0.1
  */

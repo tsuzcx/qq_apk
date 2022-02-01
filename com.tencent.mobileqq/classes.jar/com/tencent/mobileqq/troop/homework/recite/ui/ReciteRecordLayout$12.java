@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import bccp;
+import bfdd;
 
 class ReciteRecordLayout$12
   implements Runnable
@@ -17,7 +17,7 @@ class ReciteRecordLayout$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.12
  * JD-Core Version:    0.7.0.1
  */

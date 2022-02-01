@@ -1,31 +1,59 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.style.ClickableSpan;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class agwe
-  extends aspm
+class agwe
+  extends ClickableSpan
 {
-  public agwe(TroopChatPie paramTroopChatPie) {}
+  public final String a;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
   
-  protected void a()
+  agwe(agup paramagup, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Agzq, new Object[0]);
-    }
+    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  protected void b()
+  public void onClick(View paramView)
   {
-    if (((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Agzq.a();
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if ((paramView == null) || (localObject == null)) {}
+    long l;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(localObject instanceof Activity));
+      if (!bgnt.d((Context)localObject))
+      {
+        QQToast.a((Context)localObject, 2131691985, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298998));
+        return;
+      }
+      l = System.currentTimeMillis();
+      if ((agup.a(this.jdField_a_of_type_Agup) == 0L) || (l <= agup.a(this.jdField_a_of_type_Agup)) || (l - agup.a(this.jdField_a_of_type_Agup) > 800L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+    return;
+    agup.a(this.jdField_a_of_type_Agup, l);
+    localObject = bgng.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
+    if (localObject != null) {
+      ((bgmp)localObject).a();
     }
-  }
-  
-  protected void c()
-  {
-    if ((((aspf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
-      TroopChatPie.e(this.a).a();
-    }
+    bcst.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, aybt.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
   }
 }
 

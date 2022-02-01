@@ -18,17 +18,17 @@ import android.view.View.MeasureSpec;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bkrq;
-import bkrr;
-import bkrs;
-import bkrt;
-import bkru;
-import bkrv;
-import bkrw;
-import bkrx;
-import bkry;
-import bksc;
-import bljn;
+import bngp;
+import bngq;
+import bngr;
+import bngs;
+import bngt;
+import bngu;
+import bngv;
+import bngw;
+import bngx;
+import bnhb;
+import bnzb;
 import com.tencent.mobileqq.R.styleable;
 
 public class AECropperImageView
@@ -40,7 +40,7 @@ public class AECropperImageView
   public Bitmap a;
   protected GestureDetector a;
   protected ScaleGestureDetector a;
-  private bkrw jdField_a_of_type_Bkrw;
+  private bngv jdField_a_of_type_Bngv;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   private float jdField_b_of_type_Float;
@@ -111,16 +111,16 @@ public class AECropperImageView
     float f1 = a(localMatrix, 2);
     float f2 = a(localMatrix, 5);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.addUpdateListener(new bkrs(this, localMatrix, paramFloat1, f1, paramFloat2, f2));
-    localValueAnimator.addListener(new bkrt(this));
+    localValueAnimator.addUpdateListener(new bngr(this, localMatrix, paramFloat1, f1, paramFloat2, f2));
+    localValueAnimator.addListener(new bngs(this));
     localValueAnimator.start();
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 20 });
-    localValueAnimator.addUpdateListener(new bkrq(this, paramFloat6, paramFloat5, paramFloat2, paramFloat1, paramFloat4, paramFloat3));
-    localValueAnimator.addListener(new bkrr(this));
+    localValueAnimator.addUpdateListener(new bngp(this, paramFloat6, paramFloat5, paramFloat2, paramFloat1, paramFloat4, paramFloat3));
+    localValueAnimator.addListener(new bngq(this));
     localValueAnimator.start();
   }
   
@@ -142,8 +142,8 @@ public class AECropperImageView
     for (this.jdField_b_of_type_Int = 2;; this.jdField_b_of_type_Int = 1)
     {
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bkrx(this, null), null, true);
-      this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new bkry(this, null));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bngw(this, null), null, true);
+      this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new bngx(this, null));
       setScaleType(ImageView.ScaleType.MATRIX);
       return;
     }
@@ -153,7 +153,7 @@ public class AECropperImageView
   {
     if (paramDrawable == null) {
       if (this.h) {
-        bljn.d("AECropperImageView", "Drawable is null. I can't fit anything");
+        bnzb.d("AECropperImageView", "Drawable is null. I can't fit anything");
       }
     }
     do
@@ -163,7 +163,7 @@ public class AECropperImageView
         break;
       }
     } while (!this.h);
-    bljn.d("AECropperImageView", "VideoFrame Dimension is 0. I'm quite boggled by it.");
+    bnzb.d("AECropperImageView", "VideoFrame Dimension is 0. I'm quite boggled by it.");
     return;
     this.jdField_b_of_type_Int = 1;
     int j = paramDrawable.getIntrinsicWidth();
@@ -179,7 +179,7 @@ public class AECropperImageView
   {
     if (paramDrawable == null) {
       if (this.h) {
-        bljn.d("AECropperImageView", "Drawable is null. I can't fit anything");
+        bnzb.d("AECropperImageView", "Drawable is null. I can't fit anything");
       }
     }
     do
@@ -191,7 +191,7 @@ public class AECropperImageView
           break;
         }
       } while (!this.h);
-      bljn.d("AECropperImageView", "VideoFrame Dimension is 0. I'm quite boggled by it.");
+      bnzb.d("AECropperImageView", "VideoFrame Dimension is 0. I'm quite boggled by it.");
       return;
       this.jdField_b_of_type_Int = 2;
       if (paramBoolean) {
@@ -230,12 +230,12 @@ public class AECropperImageView
   {
     if (paramFloat <= 0.0F)
     {
-      bljn.d("AECropperImageView", "Min zoom must be greater than 0");
+      bnzb.d("AECropperImageView", "Min zoom must be greater than 0");
       return false;
     }
     if ((this.jdField_a_of_type_Boolean) && (paramFloat > this.jdField_b_of_type_Float))
     {
-      bljn.d("AECropperImageView", "Min zoom must not be greater than max zoom");
+      bnzb.d("AECropperImageView", "Min zoom must not be greater than max zoom");
       this.jdField_b_of_type_Float = paramFloat;
     }
     this.jdField_b_of_type_Boolean = false;
@@ -271,20 +271,20 @@ public class AECropperImageView
     float f6 = a(localMatrix, 4);
     if (this.h)
     {
-      bljn.a("AECropperImageView", "onUp( tx = " + f3 + ", ty = " + f4 + ")");
-      bljn.a("AECropperImageView", "onUp() - scale: " + f7);
-      bljn.a("AECropperImageView", "onUp() - min, max, base zoom: " + this.jdField_a_of_type_Float + ", " + this.jdField_b_of_type_Float + ", " + this.jdField_c_of_type_Float);
-      bljn.a("AECropperImageView", "onUp() - imageview size: " + getWidth() + " " + getHeight());
-      bljn.a("AECropperImageView", "onUp() - drawable size: " + localDrawable.getIntrinsicWidth() + " " + localDrawable.getIntrinsicHeight());
-      bljn.a("AECropperImageView", "onUp() - scaled drawable size: " + localDrawable.getIntrinsicWidth() * f7 + " " + localDrawable.getIntrinsicHeight() * f6);
-      bljn.a("AECropperImageView", "onUp() - h diff: " + (localDrawable.getIntrinsicHeight() * f6 + f4 - getHeight()));
+      bnzb.a("AECropperImageView", "onUp( tx = " + f3 + ", ty = " + f4 + ")");
+      bnzb.a("AECropperImageView", "onUp() - scale: " + f7);
+      bnzb.a("AECropperImageView", "onUp() - min, max, base zoom: " + this.jdField_a_of_type_Float + ", " + this.jdField_b_of_type_Float + ", " + this.jdField_c_of_type_Float);
+      bnzb.a("AECropperImageView", "onUp() - imageview size: " + getWidth() + " " + getHeight());
+      bnzb.a("AECropperImageView", "onUp() - drawable size: " + localDrawable.getIntrinsicWidth() + " " + localDrawable.getIntrinsicHeight());
+      bnzb.a("AECropperImageView", "onUp() - scaled drawable size: " + localDrawable.getIntrinsicWidth() * f7 + " " + localDrawable.getIntrinsicHeight() * f6);
+      bnzb.a("AECropperImageView", "onUp() - h diff: " + (localDrawable.getIntrinsicHeight() * f6 + f4 - getHeight()));
     }
     float f2;
     if ((f7 < this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Float >= this.jdField_c_of_type_Float))
     {
-      bljn.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 1 scaleX < mMinZoom && mMinZoom >= mBaseZoom");
+      bnzb.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 1 scaleX < mMinZoom && mMinZoom >= mBaseZoom");
       if (this.h) {
-        bljn.a("AECropperImageView", "onUp() - set scale to min zoom: " + this.jdField_a_of_type_Float);
+        bnzb.a("AECropperImageView", "onUp() - set scale to min zoom: " + this.jdField_a_of_type_Float);
       }
       f2 = getWidth() / 2 - this.jdField_a_of_type_Float * localDrawable.getIntrinsicWidth() / 2.0F;
       f1 = getHeight() / 2 - this.jdField_a_of_type_Float * localDrawable.getIntrinsicHeight() / 2.0F;
@@ -329,13 +329,13 @@ public class AECropperImageView
         setImageMatrix(localMatrix);
         invalidate();
         if (this.h) {
-          bljn.a("AECropperImageView", "onUp() - scale after invalidate: " + a(localMatrix));
+          bnzb.a("AECropperImageView", "onUp() - scale after invalidate: " + a(localMatrix));
         }
       }
     }
     if ((f7 <= this.jdField_c_of_type_Float) || (f7 <= this.jdField_d_of_type_Float))
     {
-      bljn.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 2 scaleX <= mBaseZoom || scaleX <= mBaseZoomBigger");
+      bnzb.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 2 scaleX <= mBaseZoom || scaleX <= mBaseZoomBigger");
       int j = localDrawable.getIntrinsicHeight();
       int k = localDrawable.getIntrinsicWidth();
       if (j <= k)
@@ -389,11 +389,11 @@ public class AECropperImageView
     }
     if ((this.jdField_a_of_type_Boolean) && (f7 > this.jdField_b_of_type_Float))
     {
-      bljn.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 3 isMaxZoomSet && scaleX > mMaxZoom");
+      bnzb.b("AECropperImageView", "onUp(" + f7 + ", " + this.jdField_a_of_type_Float + ", " + this.jdField_c_of_type_Float + ") - 3 isMaxZoomSet && scaleX > mMaxZoom");
       if (this.h)
       {
-        bljn.a("AECropperImageView", "onUp() - set to max zoom");
-        bljn.a("AECropperImageView", "onUp() - isMaxZoomSet: " + this.jdField_a_of_type_Boolean);
+        bnzb.a("AECropperImageView", "onUp() - set to max zoom");
+        bnzb.a("AECropperImageView", "onUp() - isMaxZoomSet: " + this.jdField_a_of_type_Boolean);
       }
       if (a()) {
         d();
@@ -408,7 +408,7 @@ public class AECropperImageView
       }
     }
     if (this.h) {
-      bljn.a("AECropperImageView", "onUp() - adjust to sides");
+      bnzb.a("AECropperImageView", "onUp() - adjust to sides");
     }
     d();
     return true;
@@ -418,8 +418,8 @@ public class AECropperImageView
   {
     float f1 = a(getImageMatrix());
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 20 });
-    localValueAnimator.addUpdateListener(new bkru(this, f1));
-    localValueAnimator.addListener(new bkrv(this));
+    localValueAnimator.addUpdateListener(new bngt(this, f1));
+    localValueAnimator.addListener(new bngu(this));
     localValueAnimator.start();
   }
   
@@ -493,13 +493,13 @@ public class AECropperImageView
     return this.jdField_b_of_type_Int;
   }
   
-  public bksc a()
+  public bnhb a()
   {
     boolean bool = true;
     int k = 0;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      bljn.d("AECropperImageView", "original image is not available");
+      bnzb.d("AECropperImageView", "original image is not available");
       return null;
     }
     Object localObject = getImageMatrix();
@@ -508,8 +508,8 @@ public class AECropperImageView
     float f1 = a((Matrix)localObject, 0);
     if (this.h)
     {
-      bljn.a("AECropperImageView", "xTrans: " + f4 + ", yTrans: " + f5 + " , scale: " + f1);
-      bljn.a("AECropperImageView", "old bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + " " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      bnzb.a("AECropperImageView", "xTrans: " + f4 + ", yTrans: " + f5 + " , scale: " + f1);
+      bnzb.a("AECropperImageView", "old bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + " " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
     int j;
     if ((f4 > 0.0F) && (f5 > 0.0F) && (f1 <= this.jdField_a_of_type_Float))
@@ -523,7 +523,7 @@ public class AECropperImageView
       }
       for (;;)
       {
-        return bksc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_Boolean, k, j, this.jdField_a_of_type_Int);
+        return bnhb.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_Boolean, k, j, this.jdField_a_of_type_Int);
         j = (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / 2;
         break;
         label258:
@@ -536,10 +536,10 @@ public class AECropperImageView
     float f7 = getWidth() / f1;
     if (this.h)
     {
-      bljn.a("AECropperImageView", "cropY: " + f2);
-      bljn.a("AECropperImageView", "Y: " + f6);
-      bljn.a("AECropperImageView", "cropX: " + f3);
-      bljn.a("AECropperImageView", "X: " + f7);
+      bnzb.a("AECropperImageView", "cropY: " + f2);
+      bnzb.a("AECropperImageView", "Y: " + f6);
+      bnzb.a("AECropperImageView", "cropX: " + f3);
+      bnzb.a("AECropperImageView", "X: " + f7);
     }
     label547:
     int m;
@@ -549,7 +549,7 @@ public class AECropperImageView
       f1 = f2;
       if (this.h)
       {
-        bljn.a("AECropperImageView", "readjust cropY to: " + f2);
+        bnzb.a("AECropperImageView", "readjust cropY to: " + f2);
         f1 = f2;
       }
       if (f3 + f7 <= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) {
@@ -559,7 +559,7 @@ public class AECropperImageView
       f2 = f3;
       if (this.h)
       {
-        bljn.a("AECropperImageView", "readjust cropX to: " + f3);
+        bnzb.a("AECropperImageView", "readjust cropX to: " + f3);
         f2 = f3;
       }
       if (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() <= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) {
@@ -584,13 +584,13 @@ public class AECropperImageView
     }
     for (;;)
     {
-      return bksc.a((Rect)localObject, bool, m, j, this.jdField_a_of_type_Int);
+      return bnhb.a((Rect)localObject, bool, m, j, this.jdField_a_of_type_Int);
       f1 = f2;
       if (f2 >= 0.0F) {
         break;
       }
       if (this.h) {
-        bljn.a("AECropperImageView", "readjust cropY to: " + 0.0F);
+        bnzb.a("AECropperImageView", "readjust cropY to: " + 0.0F);
       }
       f1 = 0.0F;
       break;
@@ -600,7 +600,7 @@ public class AECropperImageView
         break label547;
       }
       if (this.h) {
-        bljn.a("AECropperImageView", "readjust cropX to: " + 0.0F);
+        bnzb.a("AECropperImageView", "readjust cropX to: " + 0.0F);
       }
       f2 = 0.0F;
       break label547;
@@ -648,7 +648,7 @@ public class AECropperImageView
   public void a(boolean paramBoolean)
   {
     if (this.g) {
-      bljn.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+      bnzb.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
     }
     Drawable localDrawable;
     do
@@ -697,7 +697,7 @@ public class AECropperImageView
   public void b(boolean paramBoolean)
   {
     if (this.g) {
-      bljn.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+      bnzb.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
     }
     Drawable localDrawable;
     do
@@ -730,7 +730,7 @@ public class AECropperImageView
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.h) {
-      bljn.a("AECropperImageView", "onLayout: " + paramBoolean + " [" + paramInt1 + ", " + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + "]");
+      bnzb.a("AECropperImageView", "onLayout: " + paramBoolean + " [" + paramInt1 + ", " + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + "]");
     }
     Drawable localDrawable;
     if (((paramBoolean) || (this.jdField_c_of_type_Boolean)) && (this.jdField_c_of_type_Boolean))
@@ -740,7 +740,7 @@ public class AECropperImageView
         break label136;
       }
       if (this.h) {
-        bljn.d("AECropperImageView", "drawable is null");
+        bnzb.d("AECropperImageView", "drawable is null");
       }
     }
     return;
@@ -756,7 +756,7 @@ public class AECropperImageView
         this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
         if (this.jdField_a_of_type_Float > this.jdField_b_of_type_Float)
         {
-          bljn.d("AECropperImageView", "min zoom is greater than max zoom. Changing min zoom = max zoom");
+          bnzb.d("AECropperImageView", "min zoom is greater than max zoom. Changing min zoom = max zoom");
           a(this.jdField_b_of_type_Float);
         }
       }
@@ -787,21 +787,21 @@ public class AECropperImageView
   {
     if (this.jdField_f_of_type_Boolean)
     {
-      bljn.a("AECropperImageView", "onTouchEvent(isAdjusting) - Can't perform this action right now.");
+      bnzb.a("AECropperImageView", "onTouchEvent(isAdjusting) - Can't perform this action right now.");
       return true;
     }
     if (this.g)
     {
-      bljn.a("AECropperImageView", "onTouchEvent(isCropping) - Can't perform this action right now.");
+      bnzb.a("AECropperImageView", "onTouchEvent(isCropping) - Can't perform this action right now.");
       return true;
     }
-    bljn.a("AECropperImageView", "onTouchEvent(" + paramMotionEvent.getActionMasked() + ", " + paramMotionEvent.getAction() + ")");
+    bnzb.a("AECropperImageView", "onTouchEvent(" + paramMotionEvent.getActionMasked() + ", " + paramMotionEvent.getAction() + ")");
     getParent().requestDisallowInterceptTouchEvent(true);
     if (paramMotionEvent.getActionMasked() == 0)
     {
-      bljn.a("AECropperImageView", "onTouchEvent(MotionEvent.ACTION_DOWN)");
-      if (this.jdField_a_of_type_Bkrw != null) {
-        this.jdField_a_of_type_Bkrw.a();
+      bnzb.a("AECropperImageView", "onTouchEvent(MotionEvent.ACTION_DOWN)");
+      if (this.jdField_a_of_type_Bngv != null) {
+        this.jdField_a_of_type_Bngv.a();
       }
     }
     this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
@@ -814,9 +814,9 @@ public class AECropperImageView
     default: 
       return true;
     }
-    bljn.a("AECropperImageView", "onTouchEvent(MotionEvent.ACTION_UP)");
-    if (this.jdField_a_of_type_Bkrw != null) {
-      this.jdField_a_of_type_Bkrw.b();
+    bnzb.a("AECropperImageView", "onTouchEvent(MotionEvent.ACTION_UP)");
+    if (this.jdField_a_of_type_Bngv != null) {
+      this.jdField_a_of_type_Bngv.b();
     }
     return c();
   }
@@ -826,9 +826,9 @@ public class AECropperImageView
     this.h = paramBoolean;
   }
   
-  public void setGestureCallback(bkrw parambkrw)
+  public void setGestureCallback(bngv parambngv)
   {
-    this.jdField_a_of_type_Bkrw = parambkrw;
+    this.jdField_a_of_type_Bngv = parambngv;
   }
   
   public void setGestureEnabled(boolean paramBoolean)
@@ -840,7 +840,7 @@ public class AECropperImageView
   {
     if (this.g)
     {
-      bljn.d("AECropperImageView", "Cropping current bitmap. Can't set bitmap now");
+      bnzb.d("AECropperImageView", "Cropping current bitmap. Can't set bitmap now");
       return;
     }
     this.jdField_c_of_type_Boolean = true;
@@ -851,7 +851,7 @@ public class AECropperImageView
       return;
     }
     if ((paramBitmap.getHeight() > 1280) || ((paramBitmap.getWidth() > 1280) && (this.h))) {
-      bljn.c("AECropperImageView", "Bitmap size greater than 1280. This might cause memory issues");
+      bnzb.c("AECropperImageView", "Bitmap size greater than 1280. This might cause memory issues");
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     setMinZoom(a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), getWidth()));
@@ -867,21 +867,16 @@ public class AECropperImageView
     }
   }
   
-  public void setMakeSquare(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
   public void setMaxZoom(float paramFloat)
   {
     if (paramFloat <= 0.0F)
     {
-      bljn.d("AECropperImageView", "Max zoom must be greater than 0");
+      bnzb.d("AECropperImageView", "Max zoom must be greater than 0");
       return;
     }
     if ((this.jdField_a_of_type_Float > 0.0F) && (paramFloat < this.jdField_a_of_type_Float))
     {
-      bljn.d("AECropperImageView", "Max zoom must be greater than min zoom");
+      bnzb.d("AECropperImageView", "Max zoom must be greater than min zoom");
       return;
     }
     this.jdField_b_of_type_Float = paramFloat;
@@ -895,11 +890,6 @@ public class AECropperImageView
     }
   }
   
-  public void setPaddingColor(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
   public void setShowAnimation(boolean paramBoolean)
   {
     this.jdField_e_of_type_Boolean = paramBoolean;
@@ -907,7 +897,7 @@ public class AECropperImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.album.nocropper.AECropperImageView
  * JD-Core Version:    0.7.0.1
  */

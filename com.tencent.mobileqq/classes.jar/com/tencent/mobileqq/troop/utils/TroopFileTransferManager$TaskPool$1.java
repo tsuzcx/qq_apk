@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcnq;
+import bfsg;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TroopFileTransferManager$TaskPool$1
   implements Runnable
 {
-  public TroopFileTransferManager$TaskPool$1(bcnq parambcnq) {}
+  public TroopFileTransferManager$TaskPool$1(bfsg parambfsg) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class TroopFileTransferManager$TaskPool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool.1
  * JD-Core Version:    0.7.0.1
  */

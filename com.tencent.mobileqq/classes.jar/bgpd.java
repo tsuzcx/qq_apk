@@ -1,33 +1,41 @@
-import com.tencent.qqmini.sdk.core.utils.FileInfo;
-import java.util.Comparator;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
 
-public class bgpd
-  implements Comparator<FileInfo>
+class bgpd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  bgpd(bgpa parambgpa, int paramInt, String paramString) {}
+  
+  public void onGlobalLayout()
   {
-    if (paramFileInfo1.a()) {
-      if (paramFileInfo2.a()) {
-        break label25;
-      }
-    }
-    label25:
-    while (paramFileInfo1.b() > paramFileInfo2.b())
+    this.jdField_a_of_type_Bgpa.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i;
+    if (this.jdField_a_of_type_Bgpa.text.getLineCount() > this.jdField_a_of_type_Int)
     {
-      return -1;
-      if (paramFileInfo2.a()) {
-        return 1;
+      i = this.jdField_a_of_type_Bgpa.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label134;
       }
     }
-    if (paramFileInfo1.b() == paramFileInfo2.b()) {
-      return 0;
+    label134:
+    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
+    {
+      boolean bool1 = bdnt.a(str);
+      boolean bool2 = bdnt.b(str);
+      if ((!bool1) && (!bool2))
+      {
+        str = this.jdField_a_of_type_Bgpa.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_Bgpa.text.setText(str);
+      }
+      return;
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpd
  * JD-Core Version:    0.7.0.1
  */

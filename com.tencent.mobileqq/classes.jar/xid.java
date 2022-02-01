@@ -1,50 +1,64 @@
-import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class xid
-  extends xia<xhu>
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public xid(Context paramContext)
+  private xid(VideoCoverListBar paramVideoCoverListBar) {}
+  
+  public String a(int paramInt)
   {
-    super(paramContext);
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Xhr == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new xie(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xhu)this.jdField_a_of_type_Xhr).a(), ((xhu)this.jdField_a_of_type_Xhr).a(), this);; paramView = (xie)paramView)
+    View localView;
+    if (paramView == null)
     {
-      paramView.a((xhu)this.jdField_a_of_type_Xhr, paramInt, getCount());
-      return paramView;
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561772, null);
+      paramView = new xie(this, localView);
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.a(paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      xie localxie = (xie)paramView.getTag();
+      localView = paramView;
+      paramView = localxie;
     }
   }
   
-  public void onClick(View paramView)
+  public int getViewTypeCount()
   {
-    int i = ((Integer)paramView.getTag(2131377441)).intValue();
-    xhv localxhv = (xhv)((xhu)this.jdField_a_of_type_Xhr).a.get(i);
-    paramView = (ImageView)paramView;
-    Boolean localBoolean = (Boolean)paramView.getTag(2131377419);
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
-    {
-      localxhv.a = paramView.getDrawable();
-      this.jdField_a_of_type_Xht.a(localxhv);
-      return;
-    }
-    wxe.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xid
  * JD-Core Version:    0.7.0.1
  */

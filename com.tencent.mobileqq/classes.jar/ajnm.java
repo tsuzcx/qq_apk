@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ajnm
-  implements View.OnClickListener
+class ajnm
+  implements DialogInterface.OnKeyListener
 {
-  public ajnm(LoginView paramLoginView) {}
+  ajnm(ajnk paramajnk) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    azqs.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
+    if (paramInt == 4)
+    {
+      ajnk.a(this.a, ajnk.a(this.a), Long.valueOf(ajnk.a(this.a)).longValue());
+      ajnk.a(this.a);
+    }
+    return true;
   }
 }
 

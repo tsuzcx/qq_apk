@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.out.plugins;
 
 import android.content.Intent;
-import com.tencent.mobileqq.microapp.appbrand.utils.c;
+import com.tencent.mobileqq.microapp.appbrand.b.c;
 import com.tencent.mobileqq.microapp.sdk.MiniAppController.ActivityResultListener;
 
 final class b
@@ -21,7 +21,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.plugins.b
  * JD-Core Version:    0.7.0.1
  */

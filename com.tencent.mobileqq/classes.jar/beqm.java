@@ -1,98 +1,34 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
+import java.util.List;
 
 public class beqm
-  extends Drawable
+  extends anwn
 {
-  private ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private Paint c;
+  beqm(beqk parambeqk, MessageRecord paramMessageRecord, beqn parambeqn) {}
   
-  public beqm()
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    this.c = new Paint();
-    this.c.setAntiAlias(true);
-    this.c.setStyle(Paint.Style.FILL);
-    this.c.setColor(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = paramColorMatrixColorFilter;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(paramColorMatrixColorFilter);
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((j - i) / 2.0F + i);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = ((j - i) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i;
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, j);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
-    this.jdField_b_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.c.getColor() != 0) {
-      paramCanvas.drawCircle(i / 2.0F, j / 2.0F, i / 2.0F, this.c);
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter != null)
+    if (paramBoolean)
     {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Beqn);
+        synchronized (this.jdField_a_of_type_Beqk.b)
+        {
+          this.jdField_a_of_type_Beqk.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
+          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
+          return;
+        }
+      }
+      beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Beqn);
+      return;
     }
+    beqk.a(this.jdField_a_of_type_Beqk, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Beqn);
   }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

@@ -1,48 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class aoxt
+public final class aoxt
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  private int a = -1;
-  
-  public static aoxt a(aoko[] paramArrayOfaoko)
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      paramArrayOfaoko = null;
-    }
-    aoxt localaoxt;
-    do
-    {
-      return paramArrayOfaoko;
-      localaoxt = new aoxt();
-      try
-      {
-        localaoxt.a = new JSONObject(paramArrayOfaoko[0].a).getInt("show_limit");
-        return localaoxt;
-      }
-      catch (JSONException localJSONException)
-      {
-        paramArrayOfaoko = localaoxt;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
-    return localaoxt;
+    return new ArCloudConfigInfo(paramParcel);
   }
   
-  public int a()
+  public ArCloudConfigInfo[] a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 0;
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxt
  * JD-Core Version:    0.7.0.1
  */

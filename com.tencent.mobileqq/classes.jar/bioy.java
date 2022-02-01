@@ -1,22 +1,35 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bioy
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public class bioy
+  extends BaseAdapter
 {
-  bioy(biov parambiov) {}
-  
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public int getCount()
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bioy
  * JD-Core Version:    0.7.0.1
  */

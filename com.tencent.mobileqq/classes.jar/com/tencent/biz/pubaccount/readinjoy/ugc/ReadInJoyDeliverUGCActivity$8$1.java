@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import qox;
+import rju;
 
 public class ReadInJoyDeliverUGCActivity$8$1
   implements Runnable
 {
-  public ReadInJoyDeliverUGCActivity$8$1(qox paramqox) {}
+  public ReadInJoyDeliverUGCActivity$8$1(rju paramrju) {}
   
   public void run()
   {

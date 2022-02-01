@@ -1,57 +1,64 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import android.text.TextUtils;
-import bfkr;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import nop;
-import qyj;
+import java.util.Iterator;
+import java.util.List;
+import nxp;
+import oqh;
+import orb;
 
 public class ADBaseAppDownloadManager$2
   implements Runnable
 {
-  public ADBaseAppDownloadManager$2(nop paramnop, qyj paramqyj, int paramInt) {}
+  public ADBaseAppDownloadManager$2(nxp paramnxp, DownloadInfo paramDownloadInfo, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Qyj.c;
-    int i;
-    int j;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 3)))
-    {
-      localObject = bfkr.a().a((String)localObject);
-      if (localObject != null)
-      {
-        i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
-        j = ((TMAssistantDownloadTaskInfo)localObject).mState;
-        if ((this.jdField_a_of_type_Int != 3) || (j != 3)) {
-          break label122;
-        }
-        this.this$0.c(this.jdField_a_of_type_Qyj);
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 4);
-      }
-    }
-    label122:
+    orb localorb;
+    label139:
     do
     {
-      return;
-      if ((this.jdField_a_of_type_Int == 4) && (j == 2))
+      try
       {
-        this.this$0.a(this.jdField_a_of_type_Qyj);
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 3);
+        if (this.this$0.a.size() == 0) {
+          oqh.a("ADBaseAppDownloadManager", "notifyState error : empty downloads");
+        }
+        Iterator localIterator = this.this$0.a.iterator();
+        while (localIterator.hasNext())
+        {
+          localorb = (orb)localIterator.next();
+          if ((localorb.d != null) && (localorb.jdField_a_of_type_JavaLangString != null)) {
+            break label139;
+          }
+          oqh.a("ADBaseAppDownloadManager", "notifyState error : packageName = " + localorb.d + " appId = " + localorb.jdField_a_of_type_JavaLangString);
+        }
         return;
       }
-    } while (j != 4);
-    localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-    ((DownloadInfo)localObject).f = 100;
-    this.this$0.a((DownloadInfo)localObject, 5);
+      catch (Exception localException)
+      {
+        oqh.a("ADBaseAppDownloadManager", "notifyState error " + localException.getMessage());
+      }
+    } while (!localorb.d.equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
+    localorb.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localorb.b = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+    oqh.a("ADBaseAppDownloadManager", "notifyState success : progress = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + " packageName = " + localorb.d + " appId = " + localorb.jdField_a_of_type_JavaLangString);
+    if (localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+    {
+      localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = this.jdField_a_of_type_Int;
+      localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+    }
+    if (localorb.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null)
+    {
+      localorb.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b = this.jdField_a_of_type_Int;
+      localorb.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+    }
+    if (localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null)
+    {
+      localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = this.jdField_a_of_type_Int;
+      localorb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+    }
+    oqh.a("ADBaseAppDownloadManager", "progress " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+    this.this$0.a(localorb, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
   }
 }
 

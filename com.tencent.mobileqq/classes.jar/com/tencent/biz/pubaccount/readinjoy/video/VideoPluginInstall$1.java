@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rjp;
+import sfd;
 
 public class VideoPluginInstall$1
   implements Runnable
 {
-  public VideoPluginInstall$1(rjp paramrjp) {}
+  public VideoPluginInstall$1(sfd paramsfd) {}
   
   public void run()
   {
-    rjp.a(this.this$0);
+    sfd.a(this.this$0);
   }
 }
 

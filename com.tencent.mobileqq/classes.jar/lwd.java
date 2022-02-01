@@ -1,142 +1,202 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFocusInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.Emoji;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FocusInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FrameSyncInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.HitInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
 class lwd
-  implements lir
+  implements lwb
 {
-  lwd(lwb paramlwb) {}
+  private IBinder a;
   
-  public lrd a()
+  lwd(IBinder paramIBinder)
   {
+    this.a = paramIBinder;
+  }
+  
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      AVRedPacketManager.LocalFrameSyncInfo localLocalFrameSyncInfo;
-      AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-      int i;
       try
       {
-        System.currentTimeMillis();
-        Object localObject1 = (AVRedPacketManager)this.a.a.a(6);
-        if (!((AVRedPacketManager)localObject1).a()) {
-          return null;
-        }
-        localObject1 = ((AVRedPacketManager)localObject1).a();
-        localLocalFrameSyncInfo = ((AVRedPacketManager.GameStateInfo)localObject1).currLocalFrameSyncInfo;
-        if (QLog.isColorLevel()) {}
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        localFrameSyncInfo.currScores.set(localLocalFrameSyncInfo.curScore);
-        i = localLocalFrameSyncInfo.localEmojiInfos.size() - 1;
-        if (i >= 0)
+        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+        localParcel1.writeString(paramString);
+        localParcel1.writeInt(paramInt1);
+        localParcel1.writeInt(paramInt2);
+        if (paramBundle != null)
         {
-          localObject3 = (AVRedPacketManager.LocalEmojiInfo)localLocalFrameSyncInfo.localEmojiInfos.get(i);
-          if (localObject3 == null) {
-            break label412;
+          localParcel1.writeInt(1);
+          paramBundle.writeToParcel(localParcel1, 0);
+          this.a.transact(5, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+            return paramString;
           }
-          AVRedPacketGameSyncInfo.Emoji localEmoji = new AVRedPacketGameSyncInfo.Emoji();
-          localEmoji.emojiTypeId.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiType);
-          localEmoji.startTime.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).startTime);
-          localEmoji.trackNum.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).trackNum);
-          localEmoji.id.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiId);
-          localEmoji.isBigEmoji.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).isBigEmoji);
-          localEmoji.fallDownDuration.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).fallDownDuration);
-          localFrameSyncInfo.emojis.add(localEmoji);
         }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramString = null;
       }
-      catch (Exception localException)
+      finally
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("AVRedPacketHandler", 2, "OnFrameDataGet ", localException);
-        }
-        return null;
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
-      Object localObject3 = new AVRedPacketGameSyncInfo.FocusInfo();
-      ((AVRedPacketGameSyncInfo.FocusInfo)localObject3).id.set(localLocalFrameSyncInfo.localFocusInfo.emojiId);
-      localFrameSyncInfo.focusInfo.set((MessageMicro)localObject3);
-      localObject3 = new AVRedPacketGameSyncInfo.HitInfo();
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).id.set(localLocalFrameSyncInfo.localHitInfo.emojiId);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).startTime.set(localLocalFrameSyncInfo.localHitInfo.hitStartTime);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).comboCnt.set(localLocalFrameSyncInfo.localHitInfo.comboCnt);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).newAddScore.set(localLocalFrameSyncInfo.localHitInfo.newAddScore);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).topWordTipType.set(localLocalFrameSyncInfo.localHitInfo.topWordTipType);
-      localFrameSyncInfo.hitInfo.set((MessageMicro)localObject3);
-      localFrameSyncInfo.frameSyncGameState.set(localLocalFrameSyncInfo.frameSyncGameState);
-      localException.count_OnFrameDataSend += 1;
-      localFrameSyncInfo.seq.set(localException.count_OnFrameDataSend);
-      Object localObject2 = localFrameSyncInfo.toByteArray();
-      if (QLog.isColorLevel()) {}
-      localObject2 = new lrd((short)5, (short)localObject2.length, (byte[])localObject2);
-      return localObject2;
-      label412:
-      i -= 1;
     }
   }
   
-  public void a(String paramString, lrd paramlrd)
+  /* Error */
+  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
   {
-    boolean bool;
-    if ((!QLog.isColorLevel()) || (paramlrd != null))
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	lwd:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	lwd
+    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
+    //   3	51	2	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      try
-      {
-        if (paramlrd.a() == null) {
-          return;
-        }
-        localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-        if (!localAVRedPacketManager.b()) {
-          return;
-        }
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        paramString = null;
-      }
-      catch (Exception paramString)
-      {
-        AVRedPacketManager localAVRedPacketManager;
-        AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-        label78:
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.e("AVRedPacketHandler", 2, "onFrameDataCome ", paramString);
-        return;
-      }
-      try
-      {
-        localFrameSyncInfo.mergeFrom(paramlrd.a());
-        paramlrd = lwb.a(this.a, localFrameSyncInfo);
-        paramString = paramlrd;
-        bool = true;
-      }
-      catch (Exception paramlrd)
-      {
-        bool = false;
-        break label78;
-      }
-      if (QLog.isColorLevel()) {}
-      localAVRedPacketManager.a(bool, paramString);
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(6, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    int i = 0;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      if (paramBoolean) {
+        i = 1;
+      }
+      localParcel1.writeInt(i);
+      localParcel1.writeString(paramString1);
+      localParcel1.writeString(paramString2);
+      localParcel1.writeString(paramString3);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwd
  * JD-Core Version:    0.7.0.1
  */

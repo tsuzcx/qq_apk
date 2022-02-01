@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pvi;
+import qnm;
 
 class ArticleInfoModule$18$1
   implements Runnable
@@ -10,7 +10,7 @@ class ArticleInfoModule$18$1
   
   public void run()
   {
-    pvi.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$18.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$18.b);
+    qnm.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$18.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$18.b);
   }
 }
 

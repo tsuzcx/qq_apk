@@ -7,12 +7,19 @@ import org.json.JSONObject;
 public class SoConfig$SoDetailInfo
   implements Serializable
 {
+  public static final int TEST_FLAG_NOT_EXIST_CHECK_EXIST_IPC = 8;
+  public static final int TEST_FLAG_NOT_EXIST_IS_FILE = 1;
+  public static final int TEST_FLAG_NOT_EXIST_LOAD_ANYWAY = 4;
+  public static final int TEST_FLAG_NOT_EXIST_OPEN = 15;
+  public static final int TEST_FLAG_NOT_EXIST_WAIT_AND_CHECK_EXIST = 2;
   public long crc = -1L;
   public String md5;
+  public SoConfig.RelatedFileInfo relatedFileInfo;
+  public int testFlag;
   public String url;
   public String ver;
   
-  public static SoDetailInfo create(JSONObject paramJSONObject, String paramString)
+  public static SoDetailInfo create(JSONObject paramJSONObject, String paramString, SoConfig.RelatedFileInfo paramRelatedFileInfo, int paramInt)
   {
     if (paramJSONObject == null) {}
     String str1;
@@ -29,17 +36,19 @@ public class SoConfig$SoDetailInfo
     paramJSONObject.url = str1;
     paramJSONObject.ver = paramString;
     paramJSONObject.crc = l;
+    paramJSONObject.relatedFileInfo = paramRelatedFileInfo;
+    paramJSONObject.testFlag = paramInt;
     return paramJSONObject;
   }
   
   public String toString()
   {
-    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + ", c='" + this.crc + '}';
+    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + ", c='" + this.crc + ", r='" + this.relatedFileInfo + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo
  * JD-Core Version:    0.7.0.1
  */

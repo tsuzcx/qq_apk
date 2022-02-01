@@ -1,38 +1,60 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.StringTokenizer;
 
-class bdkk
+public abstract class bdkk
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  public int a;
+  protected bdkq a;
+  public QQAppInterface a;
+  public DataLineMsgRecord a;
+  public String a;
   
-  private void a()
+  public bdkk(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bdkq parambdkq)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.w("BrandColorManager", 4, "set band border-color fail");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
+    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
+    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
+    this.jdField_a_of_type_Bdkq = parambdkq;
   }
   
-  void a(View paramView)
+  public abstract String a();
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    Object localObject = arak.a().a();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+      }
+    }
+    String str;
+    do
+    {
+      while (!((StringTokenizer)localObject).hasMoreTokens())
+      {
+        do
+        {
+          return false;
+          str = atwl.a(a());
+          localObject = new StringTokenizer((String)localObject, "|");
+          if (((StringTokenizer)localObject).hasMoreTokens()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
+        return false;
+      }
+    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkk
  * JD-Core Version:    0.7.0.1
  */

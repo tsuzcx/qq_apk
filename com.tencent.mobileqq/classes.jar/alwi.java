@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class alwi
-  implements babe
+public class alwi
+  implements DialogInterface.OnClickListener
 {
-  alwi(alwd paramalwd) {}
+  public alwi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((FriendListHandler)alwd.a(this.a).a(1)).notifyUI(108, true, null);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwi
  * JD-Core Version:    0.7.0.1
  */

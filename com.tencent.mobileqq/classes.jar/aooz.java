@@ -1,85 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class aooz
-  extends aokh<aooy>
+public final class aooz
+  extends aopa
 {
-  public static aooy a()
+  public aooz(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    return (aooy)aoks.a().a(426);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static boolean e()
-  {
-    aooy localaooy = a();
-    if (localaooy != null) {}
-    for (boolean bool = localaooy.c();; bool = false)
-    {
-      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
-      return bool;
-    }
-  }
-  
-  public int a()
-  {
-    return 426;
-  }
-  
-  @NonNull
-  public aooy a(int paramInt)
-  {
-    return new aooy();
-  }
-  
-  @Nullable
-  public aooy a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      new aooy();
-      return aooy.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aooy> a()
-  {
-    return aooy.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aooy paramaooy)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramaooy.toString());
+      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    synchronized (SosoInterface.a())
+    {
+      SosoInterface.a().notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooz
  * JD-Core Version:    0.7.0.1
  */

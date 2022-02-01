@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
+import arpd;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppPlugin$3
-  extends apmh
+  extends arpd
 {
   MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
   
@@ -32,7 +32,7 @@ class MiniAppPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,73 @@
+import com.tencent.commonsdk.pool.ByteArrayPool;
+import java.io.ByteArrayOutputStream;
+
 public class bgof
+  extends ByteArrayOutputStream
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  private final ByteArrayPool a;
   
-  public static boolean a(int paramInt)
+  public bgof(ByteArrayPool paramByteArrayPool, int paramInt)
   {
-    return (paramInt & 0x1) != 0;
+    this.a = paramByteArrayPool;
+    this.buf = this.a.getBuf(Math.max(paramInt, 256));
   }
   
-  public static boolean b(int paramInt)
+  private void a(int paramInt)
   {
-    return (paramInt & 0x2) != 0;
+    if (this.count + paramInt <= this.buf.length) {
+      return;
+    }
+    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
+    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
+    this.a.returnBuf(this.buf);
+    this.buf = arrayOfByte;
   }
   
-  public static boolean c(int paramInt)
+  public byte[] a()
   {
-    return (paramInt & 0x4) != 0;
+    return this.buf;
   }
   
-  public static boolean d(int paramInt)
+  public void close()
   {
-    return (paramInt & 0x8) != 0;
+    this.a.returnBuf(this.buf);
+    this.buf = null;
+    super.close();
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      a(1);
+      super.write(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      a(paramInt2);
+      super.write(paramArrayOfByte, paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgof
  * JD-Core Version:    0.7.0.1
  */

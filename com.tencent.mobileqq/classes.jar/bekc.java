@@ -1,16 +1,36 @@
-import java.util.ArrayList;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bekc
+  extends ClickableSpan
 {
-  public static int a;
-  public static ArrayList<String> a;
-  public static boolean a;
-  public static boolean b;
+  public bekc(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Int = -1;
+    if (this.a.a != null)
+    {
+      if (!this.a.a.a()) {
+        break label42;
+      }
+      this.a.a.b();
+    }
+    for (;;)
+    {
+      this.a.e(true);
+      return;
+      label42:
+      this.a.a.a();
+      bcst.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

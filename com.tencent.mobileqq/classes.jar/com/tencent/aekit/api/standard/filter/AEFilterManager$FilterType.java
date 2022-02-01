@@ -4,6 +4,7 @@ public final class AEFilterManager$FilterType
 {
   public static final int ADJUST = 116;
   public static final int AIFILTER = 117;
+  public static final int AIFILTER_V1 = 119;
   public static final int BEAUTY = 104;
   public static final int BODY = 115;
   public static final int DENOISE = 108;
@@ -23,7 +24,7 @@ public final class AEFilterManager$FilterType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFilterManager.FilterType
  * JD-Core Version:    0.7.0.1
  */

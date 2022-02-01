@@ -1,56 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
 
 public class aost
-  extends aokh<aoss>
 {
-  public int a()
+  static aosv a;
+  public static String a;
+  
+  static
   {
-    return 484;
+    jdField_a_of_type_JavaLangString = "AREngine_ARPromotion";
   }
   
-  @NonNull
-  public aoss a(int paramInt)
+  public static aosm a(AppInterface paramAppInterface)
   {
-    return new aoss();
-  }
-  
-  @Nullable
-  public aoss a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoss.a(paramArrayOfaoko);
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return (aosm)((QQAppInterface)paramAppInterface).getManager(279);
+    }
+    if (AudioHelper.e()) {
+      throw new IllegalArgumentException(anni.a(2131707288));
     }
     return null;
   }
   
-  public Class<aoss> a()
+  public static aosv a(AppInterface paramAppInterface)
   {
-    return aoss.class;
+    if (((paramAppInterface instanceof QQAppInterface)) && (AudioHelper.e())) {
+      throw new IllegalArgumentException(anni.a(2131707286));
+    }
+    if (jdField_a_of_type_Aosv == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aosv == null) {
+        jdField_a_of_type_Aosv = new aosv(paramAppInterface);
+      }
+      return jdField_a_of_type_Aosv;
+    }
+    finally {}
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aoss paramaoss) {}
-  
-  public int b()
+  public static void a(AppInterface paramAppInterface)
   {
-    return 0;
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      a(paramAppInterface).a(paramAppInterface);
+      BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
   }
   
-  public boolean b()
+  public static boolean a(long paramLong)
   {
-    return false;
+    return paramLong < AudioHelper.a();
   }
   
-  public boolean c()
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    return true;
+    long l = AudioHelper.a();
+    return (paramLong1 < l) && (paramLong2 > l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aost
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.util.notification;
 
-import bhtk;
+import bkgt;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NotifyIdManager$1
   implements Runnable
 {
-  public NotifyIdManager$1(bhtk parambhtk) {}
+  public NotifyIdManager$1(bkgt parambkgt) {}
   
   public void run()
   {
-    bhtk.a(this.this$0).set(false);
+    bkgt.a(this.this$0).set(false);
   }
 }
 

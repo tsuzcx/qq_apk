@@ -1,22 +1,72 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqoe
-  implements arrh
+public class aqoe
+  extends aqkz<aqod>
 {
-  aqoe(aqoc paramaqoc, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public static aqod a()
   {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Aqoc.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    return (aqod)aqlk.a().a(452);
   }
   
-  public void b() {}
+  @NonNull
+  public aqod a(int paramInt)
+  {
+    return new aqod().b("0");
+  }
+  
+  @Nullable
+  public aqod a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      aqod localaqod = aqod.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqod;
+    }
+    return null;
+  }
+  
+  public void a(aqod paramaqod) {}
+  
+  public Class<aqod> clazz()
+  {
+    return aqod.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 452;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqoe
  * JD-Core Version:    0.7.0.1
  */

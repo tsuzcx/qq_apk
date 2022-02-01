@@ -1,35 +1,26 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.app.Activity;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
-import com.tencent.mobileqq.triton.sdk.APIProxy;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.triton.sdk.FPSCallback;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITHttp;
-import com.tencent.mobileqq.triton.sdk.ITLog;
-import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.OnGetTraceRecordCallback;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
-import com.tencent.mobileqq.triton.sdk.audio.IAudioPlayerBuilder;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
 import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
 import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
 import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
+import com.tencent.mobileqq.triton.sdk.debug.JankTraceLevel;
 import com.tencent.mobileqq.triton.sdk.game.GameLifecycle;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 import java.util.Map;
-import java.util.concurrent.Executor;
 
 public class GameEngineWrapper
   implements ITTEngine
 {
   private ITTEngine baseEngine;
-  private APIProxy mAPIProxy;
   
   public void addFPSCallback(FPSCallback paramFPSCallback)
   {
@@ -53,20 +44,12 @@ public class GameEngineWrapper
     return null;
   }
   
-  public APIProxy getApiProxy()
-  {
-    if (this.baseEngine != null) {
-      return this.baseEngine.getApiProxy();
-    }
-    return this.mAPIProxy;
-  }
-  
   public IAudioNativeManager getAudioNativeManager()
   {
-    if (this.baseEngine != null) {
-      return this.baseEngine.getAudioNativeManager();
+    if (this.baseEngine == null) {
+      return null;
     }
-    return null;
+    return this.baseEngine.getAudioNativeManager();
   }
   
   public long getCurrentDrawCount()
@@ -75,14 +58,6 @@ public class GameEngineWrapper
       return this.baseEngine.getCurrentDrawCount();
     }
     return 0L;
-  }
-  
-  public int getDisplayRefreshRate()
-  {
-    if (this.baseEngine != null) {
-      return this.baseEngine.getDisplayRefreshRate();
-    }
-    return 0;
   }
   
   public IGameLauncher getGameLauncher()
@@ -117,18 +92,18 @@ public class GameEngineWrapper
     return -1L;
   }
   
-  public ITNativeBufferPool getNativeBufferPool()
+  public String getLastClicks()
   {
     if (this.baseEngine != null) {
-      return this.baseEngine.getNativeBufferPool();
+      return this.baseEngine.getLastClicks();
     }
     return null;
   }
   
-  public ITHttp getNativeHttp()
+  public ITNativeBufferPool getNativeBufferPool()
   {
     if (this.baseEngine != null) {
-      return this.baseEngine.getNativeHttp();
+      return this.baseEngine.getNativeBufferPool();
     }
     return null;
   }
@@ -164,6 +139,13 @@ public class GameEngineWrapper
     return 0;
   }
   
+  public void getTraceRecord(@NonNull ITTEngine.OnGetTraceRecordCallback paramOnGetTraceRecordCallback)
+  {
+    if (this.baseEngine != null) {
+      this.baseEngine.getTraceRecord(paramOnGetTraceRecordCallback);
+    }
+  }
+  
   public void handleFocusGain()
   {
     if (this.baseEngine != null) {
@@ -176,14 +158,6 @@ public class GameEngineWrapper
     if (this.baseEngine != null) {
       this.baseEngine.handleFocusLoss();
     }
-  }
-  
-  public int initEngine(Context paramContext, ITTEngine.IListener paramIListener, @Nullable IInspectorAgent paramIInspectorAgent)
-  {
-    if (this.baseEngine != null) {
-      return this.baseEngine.initEngine(paramContext, paramIListener, paramIInspectorAgent);
-    }
-    return 1;
   }
   
   public void onCreate(Activity paramActivity)
@@ -221,46 +195,15 @@ public class GameEngineWrapper
     }
   }
   
-  public void setApiProxy(APIProxy paramAPIProxy)
-  {
-    if (this.baseEngine != null)
-    {
-      this.baseEngine.setApiProxy(paramAPIProxy);
-      return;
-    }
-    this.mAPIProxy = paramAPIProxy;
-  }
-  
-  public void setAudioPlayerBuilder(IAudioPlayerBuilder paramIAudioPlayerBuilder)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setAudioPlayerBuilder(paramIAudioPlayerBuilder);
-    }
-  }
-  
   public void setBaseEngine(ITTEngine paramITTEngine)
   {
     this.baseEngine = paramITTEngine;
-  }
-  
-  public void setDiskIoExecutor(@NonNull Executor paramExecutor)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setDiskIoExecutor(paramExecutor);
-    }
   }
   
   public void setEnableCodeCache(boolean paramBoolean)
   {
     if (this.baseEngine != null) {
       this.baseEngine.setEnableCodeCache(paramBoolean);
-    }
-  }
-  
-  public void setEnableJankCanary(boolean paramBoolean)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setEnableJankCanary(paramBoolean);
     }
   }
   
@@ -271,31 +214,10 @@ public class GameEngineWrapper
     }
   }
   
-  public void setJsEngine(IJSEngine paramIJSEngine)
+  public void setJankTraceLevel(JankTraceLevel paramJankTraceLevel)
   {
     if (this.baseEngine != null) {
-      this.baseEngine.setJsEngine(paramIJSEngine);
-    }
-  }
-  
-  public void setLog(ITLog paramITLog)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setLog(paramITLog);
-    }
-  }
-  
-  public void setQQEnv(IQQEnv paramIQQEnv)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setQQEnv(paramIQQEnv);
-    }
-  }
-  
-  public void setSoLoader(ITSoLoader paramITSoLoader)
-  {
-    if (this.baseEngine != null) {
-      this.baseEngine.setSoLoader(paramITSoLoader);
+      this.baseEngine.setJankTraceLevel(paramJankTraceLevel);
     }
   }
   
@@ -308,7 +230,7 @@ public class GameEngineWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameEngineWrapper
  * JD-Core Version:    0.7.0.1
  */

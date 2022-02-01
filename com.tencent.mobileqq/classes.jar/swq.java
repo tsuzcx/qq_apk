@@ -1,26 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.27.2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public final class swq
-  implements Parcelable.Creator<ProfileParams>
+public class swq
+  implements InvocationHandler
 {
-  public ProfileParams a(Parcel paramParcel)
-  {
-    swr localswr = new swr();
-    localswr.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localswr.a();
-  }
+  public swq(FastWebActivity.27.2 param2) {}
   
-  public ProfileParams[] a(int paramInt)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    return new ProfileParams[paramInt];
+    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.a.a).setVisibility(8);
+    QLog.d("FastWebActivity", 1, "open web page, set activity transparent");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swq
  * JD-Core Version:    0.7.0.1
  */

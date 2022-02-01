@@ -1,35 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-class reo
-  implements View.OnClickListener
+public final class reo
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  reo(rem paramrem) {}
-  
-  public void onClick(View paramView)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    rdm.a(rem.a(this.a), rem.a(this.a).a);
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("uin", rem.a(this.a).getCurrentAccountUin());
-      label45:
-      nrt.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", ntd.a(null, null, rem.a(this.a).a.a.a, rem.a(this.a).a.a.g, paramView), false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label45;
-    }
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     reo
  * JD-Core Version:    0.7.0.1
  */

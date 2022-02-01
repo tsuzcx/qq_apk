@@ -1,41 +1,99 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.IOException;
+import java.net.URLEncoder;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wjh
-  implements View.OnTouchListener
+public class wjh
+  extends wjk
 {
-  wjh(wjf paramwjf) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wjh(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private ErrorMessage a()
+  {
+    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    long l = System.currentTimeMillis();
+    localObject = nlw.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
+    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
     {
-      if (wjf.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(wjf.a(this.a), wjf.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, wjf.a(this.a).jdField_a_of_type_Boolean);
-      wjf.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
+      localObject = nlw.a((HttpResponse)localObject);
+      yqp.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
+      localObject = new JSONObject((String)localObject);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0) {
+        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
       }
     }
-    label100:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      wjf.a(paramView, bool);
-      return false;
+      yqp.d("Q.qqstory.publish.upload.LinkRichObject", "");
+      if (localObject != null) {}
+      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
+        return new ErrorMessage(96000003, (String)localObject);
+      }
     }
-    label105:
-    this.a.b();
-    return false;
+    String str = ((JSONObject)localObject).getString("title");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
+      this.b = str;
+    }
+    str = ((JSONObject)localObject).getString("abstract");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
+      this.c = str;
+    }
+    localObject = ((JSONObject)localObject).getString("thumbUrl");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
+      this.d = ((String)localObject);
+    }
+    yqp.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return new ErrorMessage();
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      if (a().isSuccess())
+      {
+        b();
+        notifyResult(new ErrorMessage());
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      yqp.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
+      new ErrorMessage(96000001, localJSONException.getMessage());
+      b();
+      notifyResult(new ErrorMessage());
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        yqp.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+        new ErrorMessage(96000000, localIOException.getMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjh
  * JD-Core Version:    0.7.0.1
  */

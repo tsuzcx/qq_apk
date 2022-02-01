@@ -1,57 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.debug.PstnCardTestActivity;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-final class alcq
-  implements alby
+class alcq
+  implements bknm
 {
-  alcq(CmShowRenderView paramCmShowRenderView) {}
+  alcq(alcp paramalcp) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(bknl parambknl)
   {
-    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
-    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
-    alco.a(this.a);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
-  {
-    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
-    if (paramInt2 == 100)
+    switch (parambknl.a)
     {
-      alco.b(this.a);
-      return;
-    }
-    if (paramInt2 == 101)
-    {
-      if (alco.a() < 3)
-      {
-        alco.b();
-        alco.b(this.a);
-        return;
+    default: 
+      if (AudioHelper.e()) {
+        PstnCardTestActivity.onDebugMenuEvent(parambknl, this.a.a);
       }
-      alco.c(this.a);
+      return;
+    case 2131697835: 
+      this.a.e();
+      return;
+    case 2131691111: 
+      this.a.d();
+      return;
+    case 2131691121: 
+      this.a.c();
+      return;
+    case 2131691115: 
+      this.a.f();
+      return;
+    case 2131691122: 
+      this.a.i();
+      return;
+    case 2131691123: 
+      alcp.a(this.a);
+      return;
+    case 2131691113: 
+      this.a.a(8);
+      bcst.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131691120: 
+      this.a.h();
+      return;
+    case 2131691114: 
+      this.a.g();
+      return;
+    case 2131691117: 
+      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
+      bcst.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
+      return;
+    case 2131691116: 
+      this.a.m();
+      return;
+    case 2131698256: 
+      alcp.b(this.a);
       return;
     }
-    alco.a(0);
+    this.a.n();
   }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

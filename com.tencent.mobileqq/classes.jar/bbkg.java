@@ -1,90 +1,90 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 
 public class bbkg
-  extends Handler
+  extends bhll
+  implements bhmj
 {
-  public bbkg(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public bbkg(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramMessage.what)
-            {
-            case 1002: 
-            case 1007: 
-            default: 
-              return;
-            case 1001: 
-              this.a.a(false);
-              if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-                this.a.jdField_a_of_type_Bety.dismiss();
-              }
-              QQToast.a(this.a, 2131696744, 1).b(this.a.getTitleBarHeight());
-            }
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          try
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-            return;
-          }
-          catch (UnsupportedOperationException paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopBar", 2, paramMessage.toString());
-        return;
-        if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-          this.a.jdField_a_of_type_Bety.dismiss();
-        }
-        this.a.a(false);
-        this.a.a();
-        return;
-        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-        }
-      } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
-      this.a.a();
-      return;
-      this.a.a(false);
-      if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-        this.a.jdField_a_of_type_Bety.dismiss();
-      }
-      QQToast.a(this.a, 2131696722, 1).b(this.a.getTitleBarHeight());
-      return;
-      if ((paramMessage.obj instanceof String))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    return;
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
-    {
-      this.a.requestPermissions(new bbkh(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
-      return;
-    }
-    TroopBarReplyActivity.a(this.a, 4);
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("KDSearchResultBuilder", 2, "[bindJavaScript]");
+    }
+    paramArrayList.add(new tym());
+    paramArrayList.add(new avow());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new avnu());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+    this.mWebview.setWebViewClient(new bbkh(this, this.mWebview.getPluginEngine()));
+  }
+  
+  public void c()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

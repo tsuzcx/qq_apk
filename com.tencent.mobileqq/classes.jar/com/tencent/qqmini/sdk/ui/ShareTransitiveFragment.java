@@ -1,29 +1,36 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import bhmi;
 import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ShareProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ShareData;
-import com.tencent.qqmini.sdk.log.QMLog;
 
+@MiniKeep
 public class ShareTransitiveFragment
   extends MiniBaseFragment
 {
-  private static String jdField_a_of_type_JavaLangString = "key_origin_task_id";
-  private static String b = "key_share_data";
-  private int jdField_a_of_type_Int;
-  private ShareProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
-  private ShareData jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareData;
-  private boolean jdField_a_of_type_Boolean;
+  private static final int INVALID_TASK_ID = -1;
+  private static final String TAG = "ShareTransitiveFragment";
+  private boolean mIsAlreadyResumed;
+  private int mOriginTaskId;
+  private ShareData mShareData;
+  private ShareProxy mShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
   
-  private Intent a()
+  private void finish()
+  {
+    if (getActivity() != null) {
+      getActivity().finish();
+    }
+  }
+  
+  private Intent getIntent()
   {
     if (getActivity() == null) {
       return null;
@@ -31,19 +38,12 @@ public class ShareTransitiveFragment
     return getActivity().getIntent();
   }
   
-  private void a()
-  {
-    if (getActivity() != null) {
-      getActivity().finish();
-    }
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
+  private void moveTaskToFront(int paramInt, boolean paramBoolean)
   {
     if ((paramBoolean) || (paramInt == -1))
     {
       QMLog.w("ShareTransitiveFragment", "Invalid task id, restart mini app");
-      MiniSDK.startMiniApp(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareData.getMiniAppId());
+      MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
       return;
     }
     try
@@ -55,38 +55,23 @@ public class ShareTransitiveFragment
     {
       QMLog.w("ShareTransitiveFragment", "Failed to moveTaskToFront", localException);
       QMLog.i("ShareTransitiveFragment", "Restart mini app");
-      MiniSDK.startMiniApp(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareData.getMiniAppId());
+      MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
     }
-  }
-  
-  public static void a(Activity paramActivity, ShareData paramShareData)
-  {
-    if (paramActivity == null)
-    {
-      QMLog.e("ShareTransitiveFragment", "Failed to launch. activity is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra(jdField_a_of_type_JavaLangString, paramActivity.getTaskId());
-    localIntent.putExtra(b, paramShareData);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    bhmi.a(paramActivity, localIntent, MiniTranslucentFragmentActivity.class, ShareTransitiveFragment.class);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     QMLog.i("ShareTransitiveFragment", "onActivityResult() requestCode=" + paramInt1 + " ,resultCode=" + paramInt2);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy.onShareActivityResult(paramInt1, paramInt2, paramIntent);
+    this.mShareProxy.onShareActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1) {
-      a(this.jdField_a_of_type_Int, true);
+      moveTaskToFront(this.mOriginTaskId, true);
     }
     for (;;)
     {
-      a();
+      finish();
       return;
       if ((paramInt1 == 10104) && (paramInt2 == 0)) {
-        a(this.jdField_a_of_type_Int, true);
+        moveTaskToFront(this.mOriginTaskId, true);
       }
     }
   }
@@ -95,31 +80,39 @@ public class ShareTransitiveFragment
   {
     super.onCreate(paramBundle);
     QMLog.i("ShareTransitiveFragment", "onCreate()");
-    paramBundle = a();
+    paramBundle = getIntent();
     if (paramBundle == null) {
-      a();
+      finish();
     }
-    this.jdField_a_of_type_Int = paramBundle.getIntExtra(jdField_a_of_type_JavaLangString, -1);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareData = ((ShareData)paramBundle.getParcelableExtra(b));
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy.share(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareData);
+    try
+    {
+      this.mOriginTaskId = paramBundle.getIntExtra("key_origin_task_id", -1);
+      this.mShareData = ((ShareData)paramBundle.getParcelableExtra("key_share_data"));
+      this.mShareProxy.share(getActivity(), this.mShareData);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QMLog.e("ShareTransitiveFragment", "Failed to share", paramBundle);
+    }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.mIsAlreadyResumed)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.mIsAlreadyResumed = true;
       return;
     }
     QMLog.i("ShareTransitiveFragment", "Finish self when second time onResume");
-    a(this.jdField_a_of_type_Int, true);
-    a();
+    moveTaskToFront(this.mOriginTaskId, true);
+    finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.ShareTransitiveFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,19 @@
-public abstract interface ajss
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
+public class ajss
+  implements View.OnTouchListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public ajss(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

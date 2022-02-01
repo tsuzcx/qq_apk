@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amrf;
+import aopw;
 
 public class MessageForDeviceFile
   extends ChatMessage
@@ -66,7 +66,7 @@ public class MessageForDeviceFile
   {
     try
     {
-      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)amrf.a(this.msgData);
+      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)aopw.a(this.msgData);
       if (localDeviceFileMsgSerial != null)
       {
         this.strServiceName = localDeviceFileMsgSerial.strServiceName;
@@ -195,7 +195,7 @@ public class MessageForDeviceFile
     localDeviceFileMsgSerial.quality = this.quality;
     try
     {
-      this.msgData = amrf.a(localDeviceFileMsgSerial);
+      this.msgData = aopw.a(localDeviceFileMsgSerial);
       return;
     }
     catch (Exception localException)

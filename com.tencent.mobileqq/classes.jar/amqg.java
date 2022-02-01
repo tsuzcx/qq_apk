@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
 
-public abstract interface amqg
+public class amqg
+  implements AVCallback
 {
-  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, amqe paramamqe);
+  public amqg(CmGameAvHandler.11 param11) {}
+  
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqg
  * JD-Core Version:    0.7.0.1
  */

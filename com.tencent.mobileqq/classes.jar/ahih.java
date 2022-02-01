@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahih
-  extends ampt
+  implements View.OnClickListener
 {
-  public ahih(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahih(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, boolean paramBoolean2, QQAppInterface paramQQAppInterface) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 300L)) {}
+    for (;;)
     {
-      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
-      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+        bchd.a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      } else {
+        QLog.d("ShortVideoRealItemBuilder", 1, String.format("not support dance Pendant, codec[%s], entry[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
+      }
     }
   }
 }

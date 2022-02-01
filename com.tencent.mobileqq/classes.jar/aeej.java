@@ -1,0 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aeej
+  implements View.OnClickListener
+{
+  public aeej(FontSettingActivity paramFontSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (anll.a(this.a, FontSettingActivity.a(this.a), true)) {
+      anll.a();
+    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     aeej
+ * JD-Core Version:    0.7.0.1
+ */

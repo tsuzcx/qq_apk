@@ -1,69 +1,161 @@
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.FeedsProtocol.GetMediaDetailReq;
+import com.tencent.pb.now.ilive_feeds_like.FeedsLikeReq;
+import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeReq;
+import com.tencent.pb.now.ilive_feeds_source.CollectFeedsDataReq;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionReq;
+import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelReq;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
 
 public class axks
-  implements awiq
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  AppInterface a = null;
   
-  public axks(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public axks(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
+    this.a = paramAppInterface;
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(awir paramawir)
+  private boolean a(oidb_0xada.ReqBody paramReqBody)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    if ((paramawir.b == 0) && (paramawir.a != null))
+    paramReqBody.uid.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.a.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.a.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.a.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
-      {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
+      paramReqBody.a2.set(str);
+      paramReqBody.platform.set(1);
+      paramReqBody.version.set("8.4.1");
+      paramReqBody.original_id.set(this.a.getCurrentAccountUin());
+      paramReqBody.original_key.set((String)localObject);
+      paramReqBody.original_id_type.set(1);
+      return true;
+    }
+    return false;
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean, axkz paramaxkz)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    ilive_new_anchor_follow_interface.FollowActionReq localFollowActionReq;
+    PBUInt32Field localPBUInt32Field;
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(536);
+      localReqBody.subcmd.set(64);
+      localFollowActionReq = new ilive_new_anchor_follow_interface.FollowActionReq();
+      localFollowActionReq.anchor_uin.set(paramLong1);
+      localFollowActionReq.client_type.set(401);
+      localFollowActionReq.source.set(paramInt2);
+      localPBUInt32Field = localFollowActionReq.action;
+      if (!paramBoolean) {
+        break label166;
       }
-      paramawir = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramawir.a, null, (MessageRecord)localObject, null);
-      if ((paramawir != null) && (!paramawir.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+    }
+    label166:
+    for (paramInt2 = 1;; paramInt2 = 2)
+    {
+      localPBUInt32Field.set(paramInt2);
+      localFollowActionReq.anchor_nowid.set(paramLong2);
+      localFollowActionReq.id_type.set(paramInt1);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFollowActionReq.toByteArray()));
+      nir.a(this.a, new axkx(this, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
     }
+  }
+  
+  public void a(long paramLong, String paramString, axkz paramaxkz)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(30481);
+      localReqBody.subcmd.set(1);
+      ilive_short_video_label.GetShortVideoVideoLabelReq localGetShortVideoVideoLabelReq = new ilive_short_video_label.GetShortVideoVideoLabelReq();
+      if (!TextUtils.isEmpty(paramString)) {
+        localGetShortVideoVideoLabelReq.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
+      }
+      localGetShortVideoVideoLabelReq.uid.set(paramLong);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetShortVideoVideoLabelReq.toByteArray()));
+      nir.a(this.a, new axky(this, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    }
+  }
+  
+  public void a(String paramString, axkz paramaxkz)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(24640);
+      localReqBody.subcmd.set(3);
+      ilive_feeds_source.CollectFeedsDataReq localCollectFeedsDataReq = new ilive_feeds_source.CollectFeedsDataReq();
+      localCollectFeedsDataReq.client_type.set(2);
+      localCollectFeedsDataReq.feeds_id.set(ByteStringMicro.copyFromUtf8(paramString));
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localCollectFeedsDataReq.toByteArray()));
+      nir.a(this.a, new axku(this, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    }
+  }
+  
+  public void a(String paramString, axkz paramaxkz, Bundle paramBundle)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(24640);
+      localReqBody.subcmd.set(1);
+      ilive_feeds_like.FeedsLikeReq localFeedsLikeReq = new ilive_feeds_like.FeedsLikeReq();
+      localFeedsLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsLikeReq.toByteArray()));
+      nir.a(this.a, new axkt(this, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+    }
+  }
+  
+  public void b(String paramString, axkz paramaxkz)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramawir.b);
+      QLog.i("getMediaDetailInfo", 2, "mQueryString = " + paramString);
     }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
     {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
+      localReqBody.cmd.set(30577);
+      localReqBody.subcmd.set(1);
+      FeedsProtocol.GetMediaDetailReq localGetMediaDetailReq = new FeedsProtocol.GetMediaDetailReq();
+      localGetMediaDetailReq.querystring.set(ByteStringMicro.copyFrom(paramString.getBytes()));
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetMediaDetailReq.toByteArray()));
+      nir.a(this.a, new axkw(this, paramString, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+  }
+  
+  public void b(String paramString, axkz paramaxkz, Bundle paramBundle)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
+    {
+      localReqBody.cmd.set(24640);
+      localReqBody.subcmd.set(2);
+      ilive_feeds_like.FeedsUnLikeReq localFeedsUnLikeReq = new ilive_feeds_like.FeedsUnLikeReq();
+      localFeedsUnLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsUnLikeReq.toByteArray()));
+      nir.a(this.a, new axkv(this, paramaxkz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axks
  * JD-Core Version:    0.7.0.1
  */

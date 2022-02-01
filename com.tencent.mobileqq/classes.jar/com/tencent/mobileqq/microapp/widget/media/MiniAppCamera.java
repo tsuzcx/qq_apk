@@ -6,9 +6,11 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.view.SurfaceHolder;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import java.io.File;
 import org.json.JSONObject;
 
@@ -26,7 +28,7 @@ public class MiniAppCamera
   
   private void a(String paramString, WebviewContainer paramWebviewContainer, int paramInt)
   {
-    paramString = com.tencent.mobileqq.microapp.b.a.b(paramString, null);
+    paramString = c.b(paramString, null);
     if (paramString != null) {}
     for (paramString = paramString.toString();; paramString = "")
     {
@@ -76,7 +78,7 @@ public class MiniAppCamera
     //   68: getstatic 110	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:h	I
     //   71: getstatic 112	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:i	I
     //   74: iload_3
-    //   75: invokestatic 117	bdhj:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   75: invokestatic 117	bgmo:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   78: astore_0
     //   79: aload 6
     //   81: ifnull +8 -> 89
@@ -331,7 +333,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

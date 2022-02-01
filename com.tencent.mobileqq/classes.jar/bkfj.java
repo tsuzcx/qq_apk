@@ -1,31 +1,29 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.List;
 
-class bkfj
-  implements Downloader.DownloadListener
+public class bkfj
 {
-  bkfj(bkfi parambkfi, String paramString1, String paramString2) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public static boolean a(int paramInt, List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
-    }
-    bkfi.a(this.jdField_a_of_type_Bkfi, 2);
-    bkfi.a(this.jdField_a_of_type_Bkfi, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public static <T> boolean a(T[] paramArrayOfT, T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
+    if ((paramArrayOfT == null) || (paramT == null)) {}
+    for (;;)
+    {
+      return false;
+      int j = paramArrayOfT.length;
+      int i = 0;
+      while (i < j)
+      {
+        T ? = paramArrayOfT[i];
+        if ((? != null) && (?.equals(paramT))) {
+          return true;
+        }
+        i += 1;
+      }
     }
-    bkfi.b(this.jdField_a_of_type_Bkfi, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

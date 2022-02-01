@@ -2,8 +2,8 @@ package com.tencent.mobileqq.managers;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import auam;
-import bdnf;
+import awhv;
+import bgsh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class TroopAssistantManager$1
   implements Runnable
 {
-  public TroopAssistantManager$1(auam paramauam, QQAppInterface paramQQAppInterface) {}
+  public TroopAssistantManager$1(awhv paramawhv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -43,13 +43,13 @@ public class TroopAssistantManager$1
     }
     finally {}
     if (localObject1 != null) {
-      bdnf.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
+      bgsh.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.managers.TroopAssistantManager.1
  * JD-Core Version:    0.7.0.1
  */

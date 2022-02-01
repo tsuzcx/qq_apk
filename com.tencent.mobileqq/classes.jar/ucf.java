@@ -1,22 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleBaseInputPopupWindow.1.1;
+import android.os.Bundle;
 
 public class ucf
-  implements ygb
+  implements anil
 {
-  ucf(uce paramuce) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void a(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.isShowing()) {
-      uce.a(this.a).runOnUiThread(new QCircleBaseInputPopupWindow.1.1(this));
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
     }
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucf
  * JD-Core Version:    0.7.0.1
  */

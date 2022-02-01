@@ -1,42 +1,65 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbl
+  extends aqkz<arbk>
 {
-  private static arbl jdField_a_of_type_Arbl;
-  public static String a;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new arbm(this, "Module_WeiyunDownloadService");
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  public static arbl a()
+  public static arbk a()
   {
-    if (jdField_a_of_type_Arbl == null) {}
-    try
-    {
-      jdField_a_of_type_Arbl = new arbl();
-      return jdField_a_of_type_Arbl;
-    }
-    finally {}
+    return (arbk)aqlk.a().a(335);
   }
   
-  private QQAppInterface a()
+  @NonNull
+  public arbk a(int paramInt)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return new arbk();
+  }
+  
+  @Nullable
+  public arbk a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbk.a(paramArrayOfaqlg);
     }
     return null;
   }
   
-  public QIPCModule a()
+  public void a(arbk paramarbk) {}
+  
+  public Class<arbk> clazz()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    return arbk.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 335;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbl
  * JD-Core Version:    0.7.0.1
  */

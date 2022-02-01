@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class akam
-  implements DialogInterface.OnClickListener
+  implements bgsm
 {
-  akam(akak paramakak) {}
+  akam(akaj paramakaj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    akaj.a(this.a, bgsk.a(paramInt));
+    this.a.a.height = akaj.a(this.a);
   }
 }
 

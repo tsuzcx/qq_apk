@@ -1,25 +1,31 @@
-import android.content.SharedPreferences;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.4.1;
 
 public class beja
+  implements Animation.AnimationListener
 {
-  public static HashMap<String, Integer> a;
-  public static int d = -1;
-  public int a;
-  public long a;
-  public SharedPreferences a;
-  public boolean a;
-  public int b;
-  public int c = 6;
+  public beja(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    if (this.a.jdField_b_of_type_AndroidViewView == null) {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidViewView.post(new TroopAvatarWallPreviewActivity.4.1(this));
   }
   
-  public beja()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = 1;
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

@@ -1,22 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ad.TianshuBigInsertPage.4.1;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bkef
-  implements ajal
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  bkef(bkeb parambkeb) {}
+  public bkef(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
     }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      bkeb.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+      return;
     }
   }
 }

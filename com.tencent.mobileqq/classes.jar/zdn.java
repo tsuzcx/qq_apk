@@ -1,30 +1,29 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-class zdn
-  implements yrb
+public class zdn
+  implements zdm
 {
-  zdn(zdj paramzdj) {}
+  public zdn(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void callback(Bundle paramBundle)
+  public void a()
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        zdj.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
-    }
+    this.a.a.c(true);
+  }
+  
+  public void a(zdw paramzdw)
+  {
+    this.a.b(paramzdw);
+  }
+  
+  public void b()
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdn
  * JD-Core Version:    0.7.0.1
  */

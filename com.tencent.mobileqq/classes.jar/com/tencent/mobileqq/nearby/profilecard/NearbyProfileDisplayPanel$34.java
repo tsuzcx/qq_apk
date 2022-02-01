@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Intent;
-import avkt;
+import axsd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class NearbyProfileDisplayPanel$34
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$34(avkt paramavkt) {}
+  public NearbyProfileDisplayPanel$34(axsd paramaxsd) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class NearbyProfileDisplayPanel$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.34
  * JD-Core Version:    0.7.0.1
  */

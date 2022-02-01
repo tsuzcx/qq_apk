@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public class rdk
-  extends AnimatorListenerAdapter
+class rdk
+  extends rcs
 {
-  private rdk(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  rdk(rdd paramrdd, AppInterface paramAppInterface) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Drawable a()
   {
-    super.onAnimationCancel(paramAnimator);
-    VideoFeedsGuideView.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    VideoFeedsGuideView.a(this.a, true);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdk
  * JD-Core Version:    0.7.0.1
  */

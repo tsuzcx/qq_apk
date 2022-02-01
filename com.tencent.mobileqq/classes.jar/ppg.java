@@ -1,44 +1,48 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONObject;
 
 public class ppg
-  implements ViewBase.OnClickListener
+  implements tix
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public ppg(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public ppg(ArticleInfo paramArticleInfo, Context paramContext)
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    int i = rqj.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (i == 76) || (i == 78) || (i == 77)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent())
+    this.a.a.a(paramBaseArticleInfo, paramInt);
+    JSONObject localJSONObject = pfe.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
+    try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_area = 6;
-      pqd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      ors.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      localJSONObject.put("card_type", 8);
+      pfg localpfg = new pfg(paramBaseArticleInfo);
+      localpfg.e = String.valueOf(paramBaseArticleInfo.mArticleID);
+      localpfg.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
+      localpfg.g = localJSONObject.toString();
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localpfg.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
+      }
+      localpfg.b = "0X8009A79";
+      localpfg.c = "0X8009A79";
+      pfe.a(localpfg);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.a.a());
+      localJSONObject.put("folder_status", pha.d);
+      localJSONObject.put("kandian_mode", pha.e());
+      localJSONObject.put("feeds_type", "" + pha.a(paramBaseArticleInfo));
+      localJSONObject.put("rowkey", ube.a(paramBaseArticleInfo));
+      paramBaseArticleInfo = localJSONObject.toString();
+      oat.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", anni.a(2131711909), paramBaseArticleInfo, false);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType == 36)
-    {
-      ors.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 6);
-      return;
-    }
-    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
+    catch (Exception paramBaseArticleInfo) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppg
  * JD-Core Version:    0.7.0.1
  */

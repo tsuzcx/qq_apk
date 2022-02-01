@@ -1,27 +1,49 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class yai
-  implements Handler.Callback
 {
-  public yai(ScannerActivity paramScannerActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean handleMessage(Message paramMessage)
+  public yai(String paramString)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((wpf)wpm.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      return true;
-      this.a.c();
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
     }
+  }
+  
+  public String toString()
+  {
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yai
  * JD-Core Version:    0.7.0.1
  */

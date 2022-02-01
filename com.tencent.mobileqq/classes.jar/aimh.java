@@ -1,23 +1,11 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
 
-public class aimh
-  implements Animation.AnimationListener
+public abstract interface aimh
+  extends aiml
 {
-  public aimh(CountryActivity paramCountryActivity, int paramInt) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract View a(Object... paramVarArgs);
 }
 
 

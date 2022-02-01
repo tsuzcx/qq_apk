@@ -1,27 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
-class ojp
-  implements ViewBase.OnClickListener
+public class ojp
+  implements ssa
 {
-  ojp(ojn paramojn) {}
+  private WeakReference<ReadInJoyNewBaseActivity> a;
   
-  public void onClick(ViewBase paramViewBase)
+  public ojp(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramViewBase.getEventAttachedData());
-    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
-    bcgq.a(this.a.jdField_a_of_type_Omg.a(), 0, localArrayList, true, "", 1888);
-    if (this.a.jdField_a_of_type_Omg.a() != null) {
-      this.a.jdField_a_of_type_Omg.a().f(this.a.jdField_a_of_type_Omt);
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+  }
+  
+  public void a()
+  {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
     }
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
+      return;
+    }
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojp
  * JD-Core Version:    0.7.0.1
  */

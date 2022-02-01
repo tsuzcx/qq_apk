@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import baoo;
+import bdps;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -11,12 +11,12 @@ final class ThemeCleaner$1
   
   public void run()
   {
-    ThemeCleaner.a(new File(new baoo().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication())));
+    ThemeCleaner.a(new File(new bdps().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeCleaner.1
  * JD-Core Version:    0.7.0.1
  */

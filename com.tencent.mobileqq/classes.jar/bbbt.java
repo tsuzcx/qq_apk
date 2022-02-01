@@ -1,28 +1,23 @@
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class bbbt
-  extends bbbz
+  implements bkhw
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<bawy> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
+  public bbbt(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public bbbt()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    if (paramInt == 0)
+    {
+      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
+      bgtl.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
+    }
+    if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) != null) {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
+    }
   }
 }
 

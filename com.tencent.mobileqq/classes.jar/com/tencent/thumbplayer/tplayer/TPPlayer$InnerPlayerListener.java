@@ -11,10 +11,12 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedL
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChangeListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
+import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
@@ -24,7 +26,7 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.Map;
 
 class TPPlayer$InnerPlayerListener
-  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener, ITPPlayListener
+  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener, ITPPlayListener
 {
   TPPlayer$InnerPlayerListener(TPPlayer paramTPPlayer) {}
   
@@ -230,6 +232,11 @@ class TPPlayer$InnerPlayerListener
     TPPlayer.access$300(this.this$0, 265, 0, 0, paramTPSubtitleData);
   }
   
+  public void onSubtitleFrameOut(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
+  {
+    TPPlayer.access$300(this.this$0, 279, 0, 0, paramTPSubtitleFrameBuffer);
+  }
+  
   public void onVideoFrameOut(TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
     TPPlayerListeners localTPPlayerListeners = TPPlayer.access$1000(this.this$0);
@@ -248,7 +255,7 @@ class TPPlayer$InnerPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.InnerPlayerListener
  * JD-Core Version:    0.7.0.1
  */

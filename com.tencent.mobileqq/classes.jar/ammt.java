@@ -1,26 +1,42 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ammt
-  implements Comparator<Map.Entry<String, Integer>>
+  extends ammq
 {
-  public ammt(MsgLruCache paramMsgLruCache) {}
-  
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  public ammt(QQAppInterface paramQQAppInterface)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
-    }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
-    }
-    return -1;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (!a()) {}
+    SharedPreferences localSharedPreferences;
+    do
+    {
+      return;
+      this.b = true;
+      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
+    amuo.a(paramamux, anni.a(2131703395), 7, 0);
+    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
+    a(paramContext, paramQQAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return (this.c) && (!this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammt
  * JD-Core Version:    0.7.0.1
  */

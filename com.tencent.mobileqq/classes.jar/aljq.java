@@ -1,20 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aljq
-  implements AdapterView.OnItemClickListener
+public class aljq
+  implements aaob
 {
-  aljq(aljp paramaljp, String paramString) {}
+  public aljq(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void callback(Bundle paramBundle)
   {
-    paramAdapterView = this.jdField_a_of_type_Aljp.a.obtainMessage();
-    paramAdapterView.what = ((int)paramLong);
-    paramAdapterView.obj = this.jdField_a_of_type_JavaLangString;
-    paramAdapterView.sendToTarget();
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, anni.a(2131706245), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
   }
 }
 

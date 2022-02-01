@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
-import alud;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -17,10 +17,10 @@ import mqq.app.AppRuntime;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = alud.a(2131706792);
-  public static final String CLICK_MESSAGE = alud.a(2131706794);
-  public static final String NOT_HIT = alud.a(2131706791);
-  public static final String SAMPLE_REPORT = alud.a(2131706793);
+  public static final String ALL_REPORT = anni.a(2131705183);
+  public static final String CLICK_MESSAGE = anni.a(2131705185);
+  public static final String NOT_HIT = anni.a(2131705182);
+  public static final String SAMPLE_REPORT = anni.a(2131705184);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled;
   private static long sampleValidEndTime;
@@ -182,7 +182,7 @@ public class LpReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportUtils
  * JD-Core Version:    0.7.0.1
  */

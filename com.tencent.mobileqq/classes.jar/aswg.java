@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aswg
-  implements TVK_SDKMgr.InstallListener
+  implements bcpg
 {
-  aswg(asvy paramasvy) {}
+  public aswg(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    asvy.a = false;
-    this.a.a(alud.a(2131708794));
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
+    FileAssistantActivity.c(this.a);
   }
   
-  public void onInstalledSuccessed()
+  public void b()
   {
-    asvy.a = false;
-    if (!this.a.c)
-    {
-      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
-    }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    FileAssistantActivity.c(this.a);
   }
 }
 

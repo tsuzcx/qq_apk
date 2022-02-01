@@ -1,57 +1,24 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bfbo
-  implements bfrt
+public class bfbo
+  implements View.OnClickListener
 {
-  bfbo(bfbn parambfbn) {}
+  public bfbo(ComplexGuidViewPager paramComplexGuidViewPager) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("AgentActivity", 1, "preAuthWithRetry onSuccess");
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((paramInt == 110530) || (paramInt == 1002))
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
-      return;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    if (paramInt == 110509)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b);
-      return;
-    }
-    if (paramInt == 110513)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "");
-      return;
-    }
-    String str;
-    if (paramInt == -1) {
-      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695065);
-    }
-    for (;;)
-    {
-      ForwardUtils.a(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new bfbp(this, paramInt, paramString));
-      return;
-      if (TextUtils.isEmpty(paramString)) {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695053), new Object[] { Integer.valueOf(paramInt) });
-      } else {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131696959), new Object[] { paramString, Integer.valueOf(paramInt) });
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbo
  * JD-Core Version:    0.7.0.1
  */

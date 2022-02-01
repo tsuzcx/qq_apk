@@ -4,8 +4,8 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nom;
-import nrt;
+import nxm;
+import oat;
 
 class ReadInJoyNativeAdAppVideoView$8
   implements Runnable
@@ -30,7 +30,7 @@ class ReadInJoyNativeAdAppVideoView$8
     }
     for (;;)
     {
-      nrt.a(null, str, "0X80093B8", "0X80093B8", 0, i, ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdTraceId, null, null, null);
+      oat.a(null, str, "0X80093B8", "0X80093B8", 0, i, ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdTraceId, null, null, null);
       ReadInJoyNativeAdAppVideoView.a(this.this$0).start();
       ReadInJoyNativeAdAppVideoView.e(this.this$0, 4);
       ReadInJoyNativeAdAppVideoView.a(this.this$0);

@@ -1,100 +1,29 @@
-public class blza
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+
+public final class blza
+  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt;
-  public long[] a;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int[] jdField_b_of_type_ArrayOfInt;
-  int c;
-  
-  public blza()
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-  }
-  
-  public blza(int paramInt)
-  {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-    this.jdField_a_of_type_ArrayOfLong = new long[paramInt];
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
     {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
     }
+    return localGameCoverInfo;
   }
   
-  public void a(int paramInt, long paramLong)
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfLong[paramInt] == 0L)) {
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-    }
-  }
-  
-  public void a(Integer... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (this.jdField_b_of_type_Int >= 400)) {
-      return;
-    }
-    if (paramVarArgs.length == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfInt == null) {
-        this.jdField_a_of_type_ArrayOfInt = new int[400];
-      }
-      this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Int += 1;
-      return;
-      if (paramVarArgs.length == 2)
-      {
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[400];
-        }
-        if (this.jdField_b_of_type_ArrayOfInt == null) {
-          this.jdField_b_of_type_ArrayOfInt = new int[400];
-        }
-        this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
-        this.jdField_b_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[1].intValue();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= paramInt;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    a();
+    return null;
   }
 }
 

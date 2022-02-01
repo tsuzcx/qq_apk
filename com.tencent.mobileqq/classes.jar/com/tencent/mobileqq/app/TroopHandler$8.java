@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import azur;
-import azux;
+import bcvr;
+import bcvx;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -11,24 +11,24 @@ public final class TroopHandler$8
 {
   public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    azur localazur = new azur(this, new azux());
+    bcvr localbcvr = new bcvr(this, new bcvx());
     try
     {
-      localazur.setOutput(paramByteArrayOutputStream, paramString);
-      localazur.startDocument(paramString, null);
-      localazur.startTag(null, "msg");
-      localazur.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localazur.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localbcvr.setOutput(paramByteArrayOutputStream, paramString);
+      localbcvr.startDocument(paramString, null);
+      localbcvr.startTag(null, "msg");
+      localbcvr.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbcvr.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgBrief == null) {}
       for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        localazur.attribute(null, "brief", paramByteArrayOutputStream);
-        toContentXml(localazur);
-        localazur.startTag(null, "source");
-        localazur.endTag(null, "source");
-        localazur.endTag(null, "msg");
-        localazur.endDocument();
-        localazur.flush();
+        localbcvr.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localbcvr);
+        localbcvr.startTag(null, "source");
+        localbcvr.endTag(null, "source");
+        localbcvr.endTag(null, "msg");
+        localbcvr.endDocument();
+        localbcvr.flush();
         return;
       }
       return;
@@ -43,7 +43,7 @@ public final class TroopHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopHandler.8
  * JD-Core Version:    0.7.0.1
  */

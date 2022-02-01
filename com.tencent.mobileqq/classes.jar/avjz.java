@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.WebCallHandler;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
 
-public class avjz
-  implements awss
+class avjz
+  implements CustomizedWebView
 {
-  public avjz(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  avjz(avju paramavju) {}
   
-  public void a(int paramInt1, awsr paramawsr, int paramInt2, String paramString)
+  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
-    }
+    avkt.a().a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjz
  * JD-Core Version:    0.7.0.1
  */

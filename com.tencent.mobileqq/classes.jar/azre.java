@@ -1,65 +1,50 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class azre
-  extends RecyclablePool.Recyclable
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacyHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "checkIv", "Landroid/widget/ImageView;", "getCheckIv", "()Landroid/widget/ImageView;", "setCheckIv", "(Landroid/widget/ImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azre
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
+  @NotNull
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public azre()
+  public azre(@NotNull View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
+    super(paramView);
+    View localView = paramView.findViewById(2131378877);
+    if (localView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    paramView = paramView.findViewById(2131364458);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.ImageView");
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView);
   }
   
-  public void recycle()
+  @NotNull
+  public final ImageView a()
   {
-    super.recycle();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.e = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.f = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.j = 0L;
-    this.i = 0L;
-    this.h = 0L;
-    this.g = 0L;
-    this.m = 0L;
-    this.l = 0L;
-    this.k = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.p = 0L;
-    this.o = 0L;
-    this.n = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azre
  * JD-Core Version:    0.7.0.1
  */

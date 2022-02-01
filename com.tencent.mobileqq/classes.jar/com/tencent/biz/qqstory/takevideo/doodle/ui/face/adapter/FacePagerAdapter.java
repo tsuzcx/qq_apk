@@ -9,23 +9,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import xhq;
-import xhr;
-import xht;
-import xib;
-import xic;
-import xim;
+import zbb;
+import zbc;
+import zbe;
+import zbm;
+import zbn;
+import zbx;
 
 public class FacePagerAdapter
   extends PagerAdapter
-  implements xim
+  implements zbx
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
   private Queue<FaceListPage> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private xhq jdField_a_of_type_Xhq;
-  private xht jdField_a_of_type_Xht;
-  private xib jdField_a_of_type_Xib;
+  private zbb jdField_a_of_type_Zbb;
+  private zbe jdField_a_of_type_Zbe;
+  private zbm jdField_a_of_type_Zbm;
   
   public FacePagerAdapter(Context paramContext)
   {
@@ -39,33 +39,33 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    xhr localxhr = this.jdField_a_of_type_Xib.a(paramInt);
-    if (localxhr != null)
+    zbc localzbc = this.jdField_a_of_type_Zbm.a(paramInt);
+    if (localzbc != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
         if (localFaceListPage.a == paramInt) {
-          localFaceListPage.a(localxhr);
+          localFaceListPage.a(localzbc);
         }
       }
     }
   }
   
-  public void a(xhq paramxhq)
+  public void a(zbb paramzbb)
   {
-    this.jdField_a_of_type_Xhq = paramxhq;
+    this.jdField_a_of_type_Zbb = paramzbb;
   }
   
-  public void a(xht paramxht)
+  public void a(zbe paramzbe)
   {
-    this.jdField_a_of_type_Xht = paramxht;
+    this.jdField_a_of_type_Zbe = paramzbe;
   }
   
-  public void a(xic paramxic)
+  public void a(zbn paramzbn)
   {
-    this.jdField_a_of_type_Xib = paramxic;
+    this.jdField_a_of_type_Zbm = paramzbn;
     notifyDataSetChanged();
   }
   
@@ -93,10 +93,10 @@ public class FacePagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Xib == null) {
+    if (this.jdField_a_of_type_Zbm == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Xib.a();
+    return this.jdField_a_of_type_Zbm.a();
   }
   
   public int getItemPosition(Object paramObject)
@@ -106,18 +106,18 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Xib == null) {
+    if (this.jdField_a_of_type_Zbm == null) {
       return null;
     }
-    xhr localxhr = this.jdField_a_of_type_Xib.a(paramInt);
+    zbc localzbc = this.jdField_a_of_type_Zbm.a(paramInt);
     FaceListPage localFaceListPage2 = (FaceListPage)this.jdField_a_of_type_JavaUtilQueue.poll();
     FaceListPage localFaceListPage1 = localFaceListPage2;
     if (localFaceListPage2 == null) {
-      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xht, this.jdField_a_of_type_Xhq);
+      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zbe, this.jdField_a_of_type_Zbb);
     }
     paramViewGroup.addView(localFaceListPage1);
     localFaceListPage1.a = paramInt;
-    localFaceListPage1.a(localxhr);
+    localFaceListPage1.a(localzbc);
     this.jdField_a_of_type_JavaUtilList.add(localFaceListPage1);
     return localFaceListPage1;
   }
@@ -129,7 +129,7 @@ public class FacePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

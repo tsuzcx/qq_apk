@@ -1,33 +1,109 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeLabelTextView;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import com.tencent.qphone.base.util.QLog;
 
 public class bchx
-  extends akit
 {
   int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  long jdField_a_of_type_Long;
+  public boolean a;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  public boolean b;
+  public boolean c;
+  boolean d;
+  boolean e;
+  boolean f;
+  boolean g;
   
-  bchx(View paramView)
+  public bchx(SVHwEncoder.HwEncode paramHwEncode) {}
+  
+  public void a()
   {
-    this.c = ((ImageView)paramView.findViewById(2131368796));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368527));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370862));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131378882));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378980);
-    this.b = ((TextView)paramView.findViewById(2131379006));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362536));
+    a("releaseMuxer[resetValidData]");
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public void a(MediaFormat paramMediaFormat)
+  {
+    if ((paramMediaFormat.containsKey("csd-0")) && (paramMediaFormat.containsKey("csd-1"))) {
+      this.d = true;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SVHwEncoder", 2, paramString + ": mHasKeyFrame=" + this.jdField_a_of_type_Boolean + " mVideoFirst=" + this.jdField_b_of_type_Boolean + " mFirstIsKey=" + this.c + " mVideoConfigOK=" + this.d + " mAudioConfigOK=" + this.e + " mVideoMuxeredframeCount=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioMuxeredframeCount=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoOrderError=" + this.f + " mAudioOrderError=" + this.g + " mVideoOrderErrorCnt=" + this.jdField_a_of_type_Int + " mAudioOrderErrorCnt=" + this.jdField_b_of_type_Int);
+    }
+  }
+  
+  boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[audioSpecOK]", "mNeedEncodeAudio=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioConfigOK=" + this.e);
+    if (SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) {
+      return this.e;
+    }
+    return true;
+  }
+  
+  public boolean a(long paramLong, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Long <= paramLong) {
+        break label83;
+      }
+      this.f = true;
+      this.jdField_a_of_type_Int += 1;
+    }
+    label83:
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      this.jdField_a_of_type_Long = paramLong;
+      return paramBoolean;
+      if (this.jdField_b_of_type_Long > paramLong)
+      {
+        this.g = true;
+        this.jdField_b_of_type_Int += 1;
+      }
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        this.jdField_b_of_type_Long = paramLong;
+        return paramBoolean;
+      }
+    }
+  }
+  
+  public void b(MediaFormat paramMediaFormat)
+  {
+    if (paramMediaFormat.containsKey("csd-0")) {
+      this.e = true;
+    }
+  }
+  
+  boolean b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[videoSpecOK]", "mNeedEncodeVideo=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoConfigOK=" + this.d);
+    return (!SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c) && (this.d) && (!this.f));
+  }
+  
+  public boolean c()
+  {
+    return (a()) && (b());
   }
 }
 

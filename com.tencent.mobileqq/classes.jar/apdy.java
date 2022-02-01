@@ -1,28 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.FeedsManager.2.1;
-
 public class apdy
-  implements ThreadExcutor.IThreadListener
+  extends apdt
 {
-  public apdy(FeedsManager paramFeedsManager) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public apdy(int paramInt)
   {
-    FeedsManager.access$102(this.a, true);
-    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
-    if (FeedsManager.access$300(this.a))
-    {
-      FeedsManager.access$302(this.a, false);
-      this.a.updateQzoneFeeds();
-    }
+    super(paramInt);
   }
   
-  public void onPreRun() {}
+  protected void a() {}
+  
+  protected void a(apdw paramapdw) {}
 }
 
 

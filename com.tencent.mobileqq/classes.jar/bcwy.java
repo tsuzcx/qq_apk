@@ -1,29 +1,38 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.util.List;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
 public class bcwy
-  extends bcoc
+  extends Animation
 {
-  public bcwy(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bcon> paramList)
+  public bcwy(ViewGroup paramViewGroup)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    paramString = (bcop)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
-    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
-    {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.a.c();
-    bdgm.a(this.a, 230, this.a.getResources().getString(2131698178), this.a.getResources().getString(2131698177), this.a.getResources().getString(2131690648), this.a.getResources().getString(2131698180), new bcwz(this), new bcxa(this)).show();
-    bcwu.a("gold_bean", "gap");
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
+    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramViewGroup.height = 0;
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

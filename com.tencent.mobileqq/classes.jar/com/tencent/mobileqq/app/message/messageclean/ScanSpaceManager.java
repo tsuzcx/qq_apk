@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import ammm;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import arqx;
-import azuc;
+import aohk;
+import atut;
+import bcvc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -16,8 +16,8 @@ public class ScanSpaceManager
 {
   public static final ArrayList<String> a;
   public long a;
-  private ammm jdField_a_of_type_Ammm;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private aohk jdField_a_of_type_Aohk;
   private volatile boolean jdField_a_of_type_Boolean;
   public long b;
   public long c;
@@ -46,8 +46,8 @@ public class ScanSpaceManager
   
   private void c()
   {
-    String str1 = arqx.a().b();
-    String str2 = arqx.a().a();
+    String str1 = atut.a().b();
+    String str2 = atut.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(str1))
     {
@@ -85,18 +85,18 @@ public class ScanSpaceManager
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Ammm != null)
+      if (this.jdField_a_of_type_Aohk != null)
       {
-        this.jdField_a_of_type_Ammm.b();
-        this.jdField_a_of_type_Ammm.a(0);
+        this.jdField_a_of_type_Aohk.b();
+        this.jdField_a_of_type_Aohk.a(0);
       }
-      azuc.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      bcvc.a().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(ammm paramammm)
+  public void a(aohk paramaohk)
   {
-    this.jdField_a_of_type_Ammm = paramammm;
+    this.jdField_a_of_type_Aohk = paramaohk;
   }
   
   public boolean a()
@@ -115,14 +115,14 @@ public class ScanSpaceManager
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    azuc.a();
+    bcvc.a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    this.jdField_a_of_type_Ammm = null;
+    this.jdField_a_of_type_Aohk = null;
   }
   
   public long c()
@@ -141,12 +141,12 @@ public class ScanSpaceManager
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Ammm != null)
+      if (this.jdField_a_of_type_Aohk != null)
       {
-        this.jdField_a_of_type_Ammm.a(paramMessage.arg1);
+        this.jdField_a_of_type_Aohk.a(paramMessage.arg1);
         continue;
-        if (this.jdField_a_of_type_Ammm != null) {
-          this.jdField_a_of_type_Ammm.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_Aohk != null) {
+          this.jdField_a_of_type_Aohk.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
         }
       }
     }
@@ -154,7 +154,7 @@ public class ScanSpaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager
  * JD-Core Version:    0.7.0.1
  */

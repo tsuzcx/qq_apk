@@ -1,47 +1,15 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-public abstract class vth
+public abstract interface vth
 {
-  public abstract Activity a();
+  public abstract void a(FeedCloudMeta.StComment paramStComment);
   
-  public abstract OpenPlayerBuilder.Data a();
-  
-  public abstract XViewPager a();
-  
-  public abstract String a(String paramString);
-  
-  public abstract vpm a();
-  
-  public abstract vpp a();
-  
-  public abstract vsz a();
-  
-  public abstract vts a();
-  
-  public abstract void a();
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(ulw paramulw);
-  
-  public abstract void a(vrx paramvrx);
-  
-  public abstract void a(vua paramvua);
-  
-  public abstract boolean a();
-  
-  public abstract void b(ulw paramulw);
-  
-  public abstract void b(vrx paramvrx);
-  
-  public abstract boolean b();
+  public abstract void a(FeedCloudMeta.StReply paramStReply);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vth
  * JD-Core Version:    0.7.0.1
  */

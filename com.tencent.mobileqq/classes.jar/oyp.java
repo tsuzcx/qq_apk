@@ -1,24 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class oyp
-  extends qiz
 {
-  oyp(oym paramoym) {}
+  private static List<pcp> a;
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  private oyp()
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      ThreadManager.excute(new RIJSkinOperationPopupStep.5.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 16, null, true);
+    a = new ArrayList();
+  }
+  
+  public static oyp a()
+  {
+    return oyr.a();
+  }
+  
+  public List<pcp> a()
+  {
+    if (a == null) {
+      return null;
     }
+    return a;
+  }
+  
+  public void a()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public void a(pcp parampcp)
+  {
+    if ((parampcp == null) || (a == null)) {}
+    while (a.contains(parampcp)) {
+      return;
+    }
+    a.add(parampcp);
+  }
+  
+  public void b(pcp parampcp)
+  {
+    if ((a == null) || (a.size() == 0)) {
+      return;
+    }
+    a.remove(parampcp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyp
  * JD-Core Version:    0.7.0.1
  */

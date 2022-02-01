@@ -7,7 +7,7 @@ class VideoView$11
   
   public void run()
   {
-    VideoView.i(this.this$0);
+    VideoView.access$2400(this.this$0);
   }
 }
 

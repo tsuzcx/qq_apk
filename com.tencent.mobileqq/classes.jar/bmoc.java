@@ -1,18 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bmoc
-  implements betp
+  implements View.OnClickListener
 {
-  bmoc(bmnz parambmnz) {}
+  bmoc(bmob parambmob) {}
   
-  public void a(betn parambetn)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
+    {
+      String str = blsf.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
+      this.a.mRuntime.a().loadUrl(str);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

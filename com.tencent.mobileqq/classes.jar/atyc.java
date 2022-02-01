@@ -1,32 +1,28 @@
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class atyc
+  implements atve
 {
-  public int a;
-  public String a;
-  public List<atyf> a = new ArrayList();
-  public int b = -1;
-  public String b;
-  public String c;
+  public atyc(SendBottomBar paramSendBottomBar) {}
   
-  public int a(int paramInt)
+  public void a()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      atyf localatyf = (atyf)localIterator.next();
-      if ((localatyf.a <= paramInt) && (localatyf.b > paramInt)) {
-        return localatyf.c;
-      }
-    }
-    return 0;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(athc.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a).finish();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyc
  * JD-Core Version:    0.7.0.1
  */

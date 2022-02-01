@@ -24,8 +24,8 @@ import com.tencent.ttpic.openapi.PTEmotionAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.PTSegAttr;
-import com.tencent.ttpic.openapi.initializer.AnimojiInitializer;
-import com.tencent.ttpic.openapi.initializer.FilamentInitializer;
+import com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer;
+import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
 import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
@@ -409,10 +409,10 @@ public class QQPtvVideoFilter
   public void changeFilter(AESticker paramAESticker, int paramInt1, int paramInt2, double paramDouble, VideoMaterial paramVideoMaterial)
   {
     if ((VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) && (!this.mFilamentSoInited)) {
-      this.mFilamentSoInited = FeatureManager.Features.FILAMENT.init();
+      this.mFilamentSoInited = FeatureManager.Features.ACE_3D_ENGINE.init();
     }
     if ((VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial)) && (!this.mAnimojiSoInited)) {
-      this.mAnimojiSoInited = FeatureManager.Features.ANIMOJI.init();
+      this.mAnimojiSoInited = FeatureManager.Features.FACE_3D_LIB.init();
     }
     if ((VideoMaterialUtil.needVoiceChange(paramVideoMaterial)) && (!this.mVoiceChangeSoInited)) {
       this.mVoiceChangeSoInited = FeatureManager.Features.VOICE_TO_TEXT.init();
@@ -864,7 +864,7 @@ public class QQPtvVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter
  * JD-Core Version:    0.7.0.1
  */

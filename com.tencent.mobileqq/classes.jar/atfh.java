@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class atfh
-  implements DialogInterface.OnClickListener
+  extends atfi
 {
-  atfh(atfg paramatfg, Bundle paramBundle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atfh(atfe paramatfe)
   {
-    paramDialogInterface.dismiss();
-    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Atfg);
+    super(paramatfe);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 5);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Atfi = new atff(this.jdField_a_of_type_Atfe);
   }
 }
 

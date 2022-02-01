@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anyq;
+import apyv;
 import java.util.ArrayList;
 
 class WordMatchManager$1
   implements Runnable
 {
-  WordMatchManager$1(WordMatchManager paramWordMatchManager, anyq paramanyq) {}
+  WordMatchManager$1(WordMatchManager paramWordMatchManager, apyv paramapyv) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ class WordMatchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.comic.ui.QQComicFragment;
+import java.util.Observable;
+import java.util.Observer;
 
-class blbh
-  implements bmeo<Boolean>
+public class blbh
+  implements Observer
 {
-  blbh(blbe paramblbe) {}
+  public blbh(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    int i = 200;
-    if (paramBoolean == null) {
-      return;
-    }
-    Intent localIntent = blbe.a(this.a).a().getIntent();
-    if (localIntent != null) {
-      i = localIntent.getIntExtra("AECAMERA_MODE", 200);
-    }
-    if (paramBoolean.booleanValue())
+    if (blbu.a != null)
     {
-      if ((blbe.a(this.a).a()) && (i != 202))
-      {
-        blbe.a(this.a).setVisibility(0);
-        return;
-      }
-      blbe.a(this.a).setVisibility(8);
-      return;
+      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
+      blbu.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
     }
-    blbe.a(this.a).setVisibility(4);
   }
 }
 

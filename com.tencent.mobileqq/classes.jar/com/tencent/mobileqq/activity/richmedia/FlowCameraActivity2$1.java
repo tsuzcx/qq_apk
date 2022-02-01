@@ -14,7 +14,7 @@ class FlowCameraActivity2$1
     if ((this.this$0.b != null) && (!this.this$0.b.isEnabled()))
     {
       this.this$0.b.setEnabled(true);
-      this.this$0.b.setText(2131692718);
+      this.this$0.b.setText(2131692285);
       this.this$0.b.setTextColor(-15550475);
     }
     int i = 0;
@@ -28,7 +28,7 @@ class FlowCameraActivity2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.1
  * JD-Core Version:    0.7.0.1
  */

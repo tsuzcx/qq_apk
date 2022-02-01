@@ -1,27 +1,12 @@
-import com.dataline.activities.LiteActivity;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bu
-  implements bezx
+public final class bu
+  implements DialogInterface.OnClickListener
 {
-  public bu(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
-  
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      arri.b(arrr.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692912));
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(paramInt).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
-      return;
-    }
-    arri.b(arrr.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692912));
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,16 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class akyd
-  implements View.OnClickListener
+public class akyd
 {
-  akyd(akyc paramakyc) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  public void onClick(View paramView)
+  public akyd(int paramInt1, int paramInt2)
   {
-    akyc.a(this.a, true);
-    this.a.a();
-    akyc.a(this.a, -1, -1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt >= 2;
+  }
+  
+  public boolean a()
+  {
+    return this.b >= 2;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 

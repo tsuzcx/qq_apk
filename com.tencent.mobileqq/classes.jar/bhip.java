@@ -1,30 +1,39 @@
-import android.os.SystemClock;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Card;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhip
-  implements bhff
+public class bhip
 {
-  long jdField_a_of_type_Long;
-  
-  bhip(bhio parambhio, bhhc parambhhc, long paramLong) {}
-  
-  public void onStateChanged()
+  public static bhil a(Activity paramActivity, @NonNull JSONObject paramJSONObject, azfe paramazfe, String paramString)
   {
-    if (this.jdField_a_of_type_Bhhc != null) {}
-    for (bhfg localbhfg = this.jdField_a_of_type_Bhhc.getCurrState();; localbhfg = null)
-    {
-      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbhfg != null) && (localbhfg == this.jdField_a_of_type_Bhhc.e)) {
-        this.jdField_a_of_type_Bhio.a(this.jdField_a_of_type_Bhhc, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+    if ((paramazfe == null) || (paramazfe.a == null)) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
     }
+    long l1 = paramazfe.a.lCurrentStyleId;
+    if (l1 < 0L) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
+    }
+    long l2 = paramJSONObject.optLong("id");
+    if (l2 != l1) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
+    }
+    if (l2 == azfl.l) {}
+    for (paramActivity = new bhiq(paramActivity, paramJSONObject, paramazfe);; paramActivity = new bhir(paramActivity, paramJSONObject, paramazfe))
+    {
+      paramActivity.a(paramString);
+      return paramActivity;
+      if (l2 != azfl.m) {
+        break;
+      }
+    }
+    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhip
  * JD-Core Version:    0.7.0.1
  */

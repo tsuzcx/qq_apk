@@ -1,24 +1,57 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjr
-  implements Animation.AnimationListener
+  extends ldy
 {
-  public mjr(QQLogo paramQQLogo) {}
+  public mjr(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(long paramLong, int paramInt)
   {
-    this.a.setVisibility(8);
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
+    }
+    boolean bool = this.a.i;
+    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    {
+      super.a(paramLong);
+      mts.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.a.a(l);
+      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      {
+        paramLong = Long.valueOf(this.a.c).longValue();
+        if (!this.a.h)
+        {
+          this.a.h = true;
+          if (paramInt != 1) {
+            break label255;
+          }
+          this.a.a().a(l, paramLong, 7);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.e = true;
+      if ((!this.a.l) || (this.a.jdField_a_of_type_Mhe == null) || (this.a.f())) {
+        break;
+      }
+      this.a.jdField_a_of_type_Mhe.a(new mjs(this));
+      return;
+      label255:
+      if (paramInt == 2) {
+        this.a.a().a(l, paramLong, 2);
+      }
+    }
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,58 @@
-import android.app.Dialog;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
 public class acum
-  implements beoy
+  extends URLDrawableParams
 {
-  public acum(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  Context a;
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public acum(Context paramContext, File paramFile)
   {
-    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
-    alaz.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    QQToast.a(this.a, 2, this.a.getString(2131690872), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131377938)).setTextColor(Color.parseColor("#cccccc"));
+    super(paramContext);
+    this.a = paramContext;
+    bdzx.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new bdua(paramFile);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    {
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
+      {
+        return new bdvl(bool, paramObject);
+        bool = false;
+      }
     }
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bgzd.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847826);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847826);
   }
 }
 

@@ -1,61 +1,38 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
 
 public class rfs
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public View a;
-  public ViewGroup a;
-  public VideoInfo a;
-  public qlp a;
-  public qlq a;
-  public qyz a;
-  public rjn a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public rfs()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
+  public rfs() {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public rfs(articlesummary.LocalInfo paramLocalInfo)
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
+    if (paramLocalInfo == null) {
       return;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
-      return paramBoolean;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
+    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
+    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
+    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
+    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
+    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rfs
  * JD-Core Version:    0.7.0.1
  */

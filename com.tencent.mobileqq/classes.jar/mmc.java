@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class mmc
-  implements DialogInterface.OnClickListener
+class mmc
+  implements View.OnKeyListener
 {
-  public mmc(VideoControlUI paramVideoControlUI, long paramLong) {}
+  mmc(mlz parammlz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramKeyEvent.getAction() == 0) {}
+    switch (paramInt)
+    {
+    default: 
+      return false;
     }
+    mlz.b(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,44 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-public class rev
-  extends rex
+public abstract class rev
 {
-  private float i;
-  
-  public rev(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
-  {
-    super(paramLikeExplosionView);
-    b();
-  }
-  
-  public rev(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, int paramInt)
-  {
-    super(paramLikeExplosionView);
-    double d = Math.toRadians(paramInt);
-    this.e = ((float)Math.cos(d));
-    this.f = ((float)Math.sin(d));
-    a();
-    b();
-  }
-  
-  private void b()
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
-    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * aepi.a(10.0F, this.a.getResources()) + aepi.a(4.5F, this.a.getResources()));
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    paramCanvas.drawCircle(this.c, this.d, this.i, VideoFeedsLikeAnimate.LikeExplosionView.a(this.a));
-  }
+  public int a;
+  public long a;
+  public BaseArticleInfo a;
+  public TabChannelCoverInfo a;
+  public Long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public BaseArticleInfo b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rev
  * JD-Core Version:    0.7.0.1
  */

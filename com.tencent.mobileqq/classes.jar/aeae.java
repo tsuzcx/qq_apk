@@ -1,28 +1,28 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeae
-  implements View.OnFocusChangeListener
+  implements bkhw
 {
-  public aeae(SubLoginActivity paramSubLoginActivity) {}
+  public aeae(Conversation paramConversation) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (true == paramBoolean)
+    switch (paramInt)
     {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bkho.e();
       return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
+      }
+      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).h();
     }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

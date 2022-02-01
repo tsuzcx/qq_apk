@@ -1,40 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class suz
-  implements svy
+public class suz
+  implements View.OnClickListener
 {
-  @NonNull
-  private final RecyclerView.Adapter a;
+  public suz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public suz(@NonNull RecyclerView.Adapter paramAdapter)
+  public void onClick(View paramView)
   {
-    this.a = paramAdapter;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemMoved(paramInt1, paramInt2);
+    ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
+    if (BaseApplicationImpl.sProcessId != 9) {
+      bncl.a(BaseApplicationImpl.getContext());
+    }
+    pha.e("1");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     suz
  * JD-Core Version:    0.7.0.1
  */

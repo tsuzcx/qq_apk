@@ -1,22 +1,21 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class tfm
-  implements View.OnTouchListener
+public class tfm
+  implements OnCompositionLoadedListener
 {
-  tfm(tfk paramtfk) {}
+  public tfm(RefreshAnimView.1 param1) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    tfk.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.image.URLImageView;
 
-class ppj
-  implements phj
+public class ppj
+  extends ppl
 {
-  ppj(pph parampph, ArticleInfo paramArticleInfo) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  ppj(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    QLog.d("OnSocialHeaderFollowClickListener", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
-      owy.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      owy.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
-      oxb.a().b();
-      oxb.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
-      return;
-    }
-    QQToast.a(pph.a(this.jdField_a_of_type_Pph), alud.a(2131708237), 0).a();
+    super(paramReadInJoyPicWaterFallFragment, paramView);
+    this.b = ((URLImageView)paramView.findViewById(2131365096));
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362647));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
+    afur.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362004));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378776));
+    paramView.setOnClickListener(new ppk(this, paramReadInJoyPicWaterFallFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppj
  * JD-Core Version:    0.7.0.1
  */

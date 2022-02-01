@@ -1,270 +1,282 @@
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.text.SpannableString;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.io.File;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
 public class audv
-  implements Manager
+  extends RecyclerView.Adapter<audy>
 {
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
+  public static SparseArray<WeakReference<ArkFlashChatContainerWrapper>> a;
+  public static int b;
+  public static SparseArray<MessageForArkFlashChat> b;
+  public int a;
+  private agrb jdField_a_of_type_Agrb = new audw(this);
+  public audz a;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
+  public List<audr> a;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private String b;
   
-  public audv(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (SettingCloneUtil.isContainValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key")) {}
-    for (boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key", true);; bool = b())
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_b_of_type_Int = 1;
   }
   
-  private Bitmap a(String paramString)
+  public audv(audz paramaudz, BaseChatPie paramBaseChatPie, int paramInt, MqqHandler paramMqqHandler)
   {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewMsgNotificationManager", 2, new Object[] { "getBitmapFromLocal: invoked. ", " id: ", Integer.valueOf(i), " iconUrl: ", paramString });
-      }
-      i = asqa.a(i);
-      paramString = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), i);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("NewMsgNotificationManager", 1, "getBitmapFromLocal: failed. ", paramString);
-      return null;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("NewMsgNotificationManager", 2, "getBitmapFromLocal: failed. ", paramString);
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_b_of_type_JavaLangString = "FlashChatAdapter";
+    this.jdField_a_of_type_Audz = paramaudz;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
-  public static audv a(QQAppInterface paramQQAppInterface)
+  public audy a(ViewGroup paramViewGroup, int paramInt)
   {
-    return (audv)paramQQAppInterface.getManager(349);
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (paramInt == 1009) || (paramInt == 1001) || (paramInt == 10002) || (paramInt == 10004) || (paramInt == 1003) || (paramInt == 1004) || (paramInt == 1005) || (paramInt == 1020) || (paramInt == 1000) || (paramInt == 1023) || (paramInt == 1024) || (paramInt == 1025) || (paramInt == 7220) || (paramInt == 7120) || (paramInt == 7200) || (paramInt == 1008) || (paramInt == 3001) || (paramInt == 7210) || (paramInt == 7230) || (paramInt == 7) || (paramInt == 6000) || (paramInt == 6003) || (paramInt == 7000) || (paramInt == 10007) || (paramInt == 10008);
-  }
-  
-  private boolean a(int paramInt, String paramString)
-  {
-    boolean bool1 = true;
-    boolean bool2 = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "newMsgNotificationEnabled: invoked. ", " systemNotificationEnabled: ", Boolean.valueOf(bool2) });
-    }
-    if ((a(paramInt)) || (a(paramString))) {
-      bool1 = a();
-    }
-    return bool1;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return alof.M.equals(paramString);
-  }
-  
-  private Bitmap b(String paramString)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      QLog.e("NewMsgNotificationManager", 1, new Object[] { "getBitmapFromUrl: failed. can't run in ui thread. ", paramString });
-      return null;
-    }
-    String str = baqn.d(paramString);
-    Object localObject = new File(str);
-    long l1 = SystemClock.uptimeMillis();
-    localObject = new beae(paramString, (File)localObject);
-    ((beae)localObject).n = true;
-    ((beae)localObject).b = 2;
-    ((beae)localObject).a = str;
-    ((beae)localObject).b(512);
-    int i = beag.a((beae)localObject, null, null);
-    long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("NewMsgNotificationManager", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((beae)localObject).a + " iconUrl: " + paramString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(17104901);
-    return SafeBitmapFactory.decodeFile(str);
-  }
-  
-  private void b(BaseActivity paramBaseActivity)
-  {
-    Intent localIntent = bdie.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    if (BaseActivity.sTopActivity != null)
-    {
-      BaseActivity.sTopActivity.startActivity(localIntent);
-      return;
-    }
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
-  public Bitmap a(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      return paramBitmap;
-      if ("2".equals(paramString1)) {
-        return b(paramString2);
-      }
-    } while (!"1".equals(paramString1));
-    return a(paramString2);
-  }
-  
-  public CompoundButton.OnCheckedChangeListener a(NotifyPushSettingActivity paramNotifyPushSettingActivity, FormSwitchItem paramFormSwitchItem, FormSimpleItem paramFormSimpleItem)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new audw(this, paramNotifyPushSettingActivity, paramFormSwitchItem);
-    return this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+    return new audy(LayoutInflater.from(((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getBaseContext()).inflate(2131561094, paramViewGroup, false), this.jdField_a_of_type_Audz, this.jdField_a_of_type_Int);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = null;
+    jdField_a_of_type_AndroidUtilSparseArray.clear();
+    jdField_b_of_type_AndroidUtilSparseArray.clear();
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  public void a(audy paramaudy, int paramInt)
   {
-    audy localaudy = new audy(this);
-    audz localaudz = new audz(this, paramBaseActivity);
-    bdgm.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131693817), paramBaseActivity.getString(2131690648), paramBaseActivity.getString(2131693816), localaudz, localaudy).show();
-  }
-  
-  public void a(BaseActivity paramBaseActivity, TextView paramTextView)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources();
-    int i = paramTextView.getCurrentTextColor();
-    String str = ((Resources)localObject).getString(2131695452);
-    localObject = new SpannableString(str + "允许QQ通知" + ((Resources)localObject).getString(2131695453));
-    ((SpannableString)localObject).setSpan(new audx(this, paramBaseActivity), str.length(), (str + "允许QQ通知").length(), 17);
-    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    paramTextView.setText((CharSequence)localObject);
-    paramTextView.setClickable(true);
-    paramTextView.setTextColor(i);
-  }
-  
-  public void a(FormSwitchItem paramFormSwitchItem1, TextView paramTextView, FormSwitchItem paramFormSwitchItem2)
-  {
-    int i = 0;
-    boolean bool1 = b();
-    if (bool1 != this.jdField_a_of_type_Boolean)
+    Object localObject1 = (audr)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = (ViewGroup.MarginLayoutParams)paramaudy.itemView.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject2).height = FlashChatPanel.f;
+    ((ViewGroup.MarginLayoutParams)localObject2).width = FlashChatPanel.e;
+    if (paramInt % 3 == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. ", " curSystemState[系统设置发生了变化]: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      }
-      this.jdField_a_of_type_Boolean = bool1;
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key", bool1);
-      paramFormSwitchItem1 = paramFormSwitchItem1.a();
-      paramFormSwitchItem2 = paramFormSwitchItem2.a();
-      if (bool1) {
-        break label201;
-      }
-      paramFormSwitchItem1.setAlpha(0.5F);
-      paramFormSwitchItem2.setAlpha(0.5F);
+      ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = 0;
+      ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = FlashChatPanel.g;
     }
     for (;;)
     {
-      if (bool1) {
-        i = 8;
+      if (paramInt / 3 == 0)
+      {
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = 0;
+        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = FlashChatPanel.g;
+        label82:
+        paramaudy.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        paramaudy.itemView.setBackgroundDrawable(new ColorDrawable(0));
+        paramaudy.itemView.setContentDescription(anni.a(2131703403) + ((audr)localObject1).jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.name);
+        paramaudy.jdField_a_of_type_Int = ((audr)localObject1).jdField_a_of_type_Int;
+        paramaudy.jdField_b_of_type_Int = ((audr)localObject1).jdField_b_of_type_Int;
+        paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = ((audr)localObject1).jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
+        paramaudy.jdField_a_of_type_Audr = ((audr)localObject1);
+        paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setClipRadius(4.0F);
+        paramaudy.itemView.setLayerType(0, null);
       }
-      paramTextView.setVisibility(i);
-      return;
-      boolean bool2 = a();
-      if (!QLog.isColorLevel()) {
-        break;
+      try
+      {
+        paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setVisibility(0);
+        paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setBkgColorNormal(Color.parseColor(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.color));
+        label231:
+        String str;
+        if (jdField_a_of_type_AndroidUtilSparseArray.get(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id) == null)
+        {
+          localObject1 = null;
+          localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new ArkFlashChatContainerWrapper();
+            jdField_a_of_type_AndroidUtilSparseArray.put(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id, new WeakReference(localObject2));
+          }
+          localObject1 = (MessageForArkFlashChat)jdField_b_of_type_AndroidUtilSparseArray.get(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id);
+          if (localObject1 != null) {
+            break label878;
+          }
+          localObject1 = new MessageForArkFlashChat();
+          ((MessageForArkFlashChat)localObject1).uniseq = jdField_b_of_type_Int;
+          jdField_b_of_type_Int += 1;
+          ((MessageForArkFlashChat)localObject1).ark_app_message = new ArkFlashChatMessage();
+          ((MessageForArkFlashChat)localObject1).ark_app_message.preview = true;
+          jdField_b_of_type_AndroidUtilSparseArray.put(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id, localObject1);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break label840;
+          }
+          this.jdField_a_of_type_JavaLangString = FlashChatManager.b(((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceAll("\\s", "");
+          label400:
+          if (!auzk.c.get()) {
+            this.jdField_a_of_type_JavaLangString = "";
+          }
+          ArkFlashChatMessage localArkFlashChatMessage = ((MessageForArkFlashChat)localObject1).ark_app_message;
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+            break label850;
+          }
+          str = anni.a(2131703400);
+          label440:
+          localArkFlashChatMessage.promptText = str;
+          ((MessageForArkFlashChat)localObject1).ark_app_message.appName = paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.appName;
+          ((MessageForArkFlashChat)localObject1).arkContainer = ((ArkFlashChatContainerWrapper)localObject2);
+          ((ArkFlashChatContainerWrapper)localObject2).a();
+          ((ArkFlashChatContainerWrapper)localObject2).a(((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.sApplication, paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.appName, paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.mainView, paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.ver, paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id, ((MessageForArkFlashChat)localObject1).ark_app_message.getMeta(((MessageForArkFlashChat)localObject1).uniseq, false), paramaudy.itemView.getContext().getResources().getDisplayMetrics().scaledDensity, ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(), FlashChatPanel.e - bqja.a(7.0F), FlashChatPanel.f - bqja.a(7.0F), FlashChatPanel.e, FlashChatPanel.f, (MessageForArkFlashChat)localObject1);
+          paramaudy.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = ((MessageForArkFlashChat)localObject1);
+          paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnVisibleChangeListener(this.jdField_a_of_type_Agrb);
+          paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new audx(this, paramaudy, paramInt));
+          paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a((agpq)localObject2, paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
+          if ((paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getVisibility() == 0) && (auzk.c.get()))
+          {
+            paramaudy.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setVisibility(8);
+            FlashChatTextEffectView.a(paramaudy);
+            localObject1 = Message.obtain();
+            ((Message)localObject1).obj = paramaudy;
+            ((Message)localObject1).what = paramInt;
+            if (paramInt >= FlashChatTextEffectView.a().length) {
+              break label859;
+            }
+            this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject1, FlashChatTextEffectView.a()[paramInt]);
+          }
+        }
+        for (;;)
+        {
+          EventCollector.getInstance().onRecyclerBindViewHolder(paramaudy, paramInt, getItemId(paramInt));
+          return;
+          if (paramInt % 3 == 2)
+          {
+            ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = FlashChatPanel.g;
+            ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = 0;
+            break;
+          }
+          ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = FlashChatPanel.g;
+          ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = FlashChatPanel.g;
+          break;
+          if (paramInt / 3 == getItemCount() / 3)
+          {
+            ((ViewGroup.MarginLayoutParams)localObject2).topMargin = FlashChatPanel.g;
+            ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = 0;
+            break label82;
+          }
+          ((ViewGroup.MarginLayoutParams)localObject2).topMargin = FlashChatPanel.g;
+          ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = FlashChatPanel.g;
+          break label82;
+          localObject1 = (ArkFlashChatContainerWrapper)((WeakReference)jdField_a_of_type_AndroidUtilSparseArray.get(paramaudy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.id)).get();
+          break label231;
+          label840:
+          this.jdField_a_of_type_JavaLangString = "";
+          break label400;
+          label850:
+          str = this.jdField_a_of_type_JavaLangString;
+          break label440;
+          label859:
+          this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject1, 7000L);
+        }
       }
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. [系统设置未变化]", " curSystemState: ", Boolean.valueOf(bool1), " globalSwitchOn: ", Boolean.valueOf(bool2) });
-      break;
-      label201:
-      paramFormSwitchItem1.setAlpha(1.0F);
-      paramFormSwitchItem2.setAlpha(1.0F);
+      catch (Throwable localThrowable)
+      {
+        label878:
+        for (;;) {}
+      }
     }
   }
   
-  public boolean a()
+  public void a(List<? extends audr> paramList)
   {
-    boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "new_msg_notification_key", true);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "globalSwitchOn: invoked. ", " enable: ", Boolean.valueOf(bool) });
-    }
-    return bool;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public boolean a(QQMessageFacade.Message paramMessage)
+  public void b()
   {
-    if (paramMessage == null) {
-      return true;
+    int i = 0;
+    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      Object localObject = (WeakReference)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if (localObject != null)
+      {
+        localObject = (ArkFlashChatContainerWrapper)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((ArkFlashChatContainerWrapper)localObject).doOnEvent(0);
+        }
+      }
+      i += 1;
     }
-    return a(paramMessage.istroop, paramMessage.frienduin);
   }
   
-  public boolean a(MessageRecord paramMessageRecord)
+  public void c()
   {
-    if (paramMessageRecord == null) {
-      return true;
+    int i = 0;
+    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      Object localObject = (WeakReference)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if (localObject != null)
+      {
+        localObject = (ArkFlashChatContainerWrapper)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((ArkFlashChatContainerWrapper)localObject).doOnEvent(1);
+        }
+      }
+      i += 1;
     }
-    return a(paramMessageRecord.istroop, paramMessageRecord.frienduin);
   }
   
-  public boolean a(String paramString1, String paramString2)
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "needDecodeIcon: invoked. ", " iconType: ", paramString1, " iconUrl: ", paramString2 });
+    int i = 0;
+    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      Object localObject = (WeakReference)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if (localObject != null)
+      {
+        localObject = (ArkFlashChatContainerWrapper)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((ArkFlashChatContainerWrapper)localObject).doOnEvent(2);
+        }
+      }
+      i += 1;
     }
-    return (("1".equals(paramString1)) || ("2".equals(paramString1))) && (!TextUtils.isEmpty(paramString2));
   }
   
-  public boolean b()
+  public int getItemCount()
   {
-    boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "systemNotificationEnabled: invoked. ", " enable: ", Boolean.valueOf(bool) });
-    }
-    return bool;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void onDestroy() {}
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audv
  * JD-Core Version:    0.7.0.1
  */

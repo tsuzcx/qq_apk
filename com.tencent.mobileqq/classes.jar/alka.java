@@ -1,13 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
 
-class alka
-  extends alkf
+public class alka
+  implements DialogInterface.OnClickListener
 {
-  alka(aljx paramaljx) {}
+  public alka(NewFlowCameraActivity.45 param45) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

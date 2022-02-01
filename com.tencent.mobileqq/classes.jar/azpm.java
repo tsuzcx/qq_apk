@@ -1,60 +1,146 @@
-class azpm
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/base/component/AbsProfileComponent;", "Landroid/widget/FrameLayout;", "TAG", "", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Ljava/lang/String;Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "getTAG", "()Ljava/lang/String;", "isBackgroundShow", "", "()Z", "setBackgroundShow", "(Z)V", "buildVasProfileData", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "info", "getComponentName", "getComponentType", "", "getContainerView", "getDefaultResourceID", "onDataUpdate", "data", "onVasDataUpdate", "setAbFactor", "", "type", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class azpm
+  extends azkq<FrameLayout>
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public final long e;
-  public String e;
-  public long f = 0L;
-  public long g = 0L;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public azpm()
+  public azpm(@NotNull String paramString, @Nullable azlw paramazlw, @Nullable azfe paramazfe)
   {
-    this.jdField_e_of_type_Long = 2L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 1L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
+    super(paramazlw, paramazfe);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public String a()
+  public final int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append("${count_unknown}");
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(2L);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    return 1003;
+  }
+  
+  @NotNull
+  public FrameLayout a()
+  {
+    Object localObject = super.a();
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    return (FrameLayout)localObject;
+  }
+  
+  @NotNull
+  public final azpj a(@Nullable azfe paramazfe)
+  {
+    if (paramazfe != null) {}
+    for (Object localObject1 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard; localObject1 == null; localObject1 = null) {
+      return new azpj(0L, 0L, null, null, null, null, 63, null);
+    }
+    Card localCard = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
+    long l1 = localCard.lCurrentStyleId;
+    long l2 = localCard.lCurrentBgId;
+    String str2 = localCard.backgroundUrl;
+    Intrinsics.checkExpressionValueIsNotNull(str2, "backgroundUrl");
+    long l3 = localCard.backgroundColor;
+    int i = localCard.dynamicCardFlag;
+    localObject1 = localCard.strZipUrl;
+    Object localObject2;
+    label108:
+    String str1;
+    if (localObject1 != null)
+    {
+      localObject2 = localCard.strActiveUrl;
+      if (localObject2 == null) {
+        break label274;
+      }
+      str1 = localCard.strDrawerCardUrl;
+      if (str1 == null) {
+        break label281;
+      }
+    }
+    for (;;)
+    {
+      String str3 = localCard.strWzryHeroUrl;
+      Intrinsics.checkExpressionValueIsNotNull(str3, "strWzryHeroUrl");
+      localObject1 = new azpg(l1, l2, str2, l3, i, (String)localObject1, (String)localObject2, str1, str3, localCard.wzryHonorInfo, localCard.strExtInfo, localCard.strCurrentBgUrl);
+      localObject2 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
+      localObject2 = new azpi(((Card)localObject2).diyText, ((Card)localObject2).diyTextFontId, ((Card)localObject2).diyTextWidth, ((Card)localObject2).diyTextHeight, ((Card)localObject2).diyTextLocX, ((Card)localObject2).diyTextLocY, ((Card)localObject2).diyTextDegree, ((Card)localObject2).diyTextScale, ((Card)localObject2).diyTextTransparency, ((Card)localObject2).diyDefaultText);
+      return new azpj(paramazfe.jdField_a_of_type_Long, paramazfe.b, paramazfe.jdField_a_of_type_Azfl, (azpg)localObject1, paramazfe.jdField_a_of_type_Azph, (azpi)localObject2);
+      localObject1 = "";
+      break;
+      label274:
+      localObject2 = "";
+      break label108;
+      label281:
+      str1 = "";
+    }
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final void a(@Nullable String paramString)
+  {
+    CharSequence localCharSequence = (CharSequence)paramString;
+    int i;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0))
+    {
+      i = 1;
+      if (i == 0) {
+        break label30;
+      }
+    }
+    label30:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      QAPM.setAbFactor("资料卡背景", paramString, adbt.class);
+    } while (!QLog.isColorLevel());
+    QLog.d("AbsVasProfileBackgroundComponent", 2, "updateTheme cardType=" + paramString);
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final boolean a(@Nullable azfe paramazfe)
+  {
+    azpj localazpj = a(paramazfe);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "vasdata = " + localazpj);
+    }
+    return a(localazpj) | super.a(paramazfe);
+  }
+  
+  public abstract boolean a(@NotNull azpj paramazpj);
+  
+  public final int b()
+  {
+    return 2130845755;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,7 +1,8 @@
-public class arwa
-  implements alpg
+class arwa
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public String a;
+  public String b;
 }
 
 

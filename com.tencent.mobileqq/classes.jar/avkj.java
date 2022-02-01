@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
-public class avkj
-  implements alqc
+class avkj
+  implements CustomizedLoading
 {
-  public avkj(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avkj(avju paramavju) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
   {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
+    LoadingFragment.a(paramContext, paramBundle, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkj
  * JD-Core Version:    0.7.0.1
  */

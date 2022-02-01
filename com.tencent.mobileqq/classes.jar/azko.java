@@ -1,26 +1,31 @@
-import android.opengl.EGLContext;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
 
-public class azko
+class azko
+  implements axdi
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public azlk a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  azko(azkn paramazkn, CardProfile paramCardProfile, ImageView paramImageView) {}
   
-  public void a()
+  public void a(String paramString, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Azkn.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Azkn.a;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
+      str1 = "1";
+      if (!paramBoolean) {
+        break label69;
+      }
     }
-  }
-  
-  public void a(EGLContext paramEGLContext)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    label69:
+    for (String str2 = "2";; str2 = "1")
     {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      axda.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
       return;
+      str1 = "2";
+      break;
     }
   }
 }

@@ -1,23 +1,18 @@
-import android.text.Spanned;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.feed.CertifiedFakeFeed;
 
-class blxt
-  extends bmsw
+public final class blxt
+  implements Parcelable.Creator<CertifiedFakeFeed>
 {
-  blxt(blxr paramblxr, int paramInt)
+  public CertifiedFakeFeed a(Parcel paramParcel)
   {
-    super(paramInt);
+    return new CertifiedFakeFeed(paramParcel);
   }
   
-  public int a(CharSequence paramCharSequence)
+  public CertifiedFakeFeed[] a(int paramInt)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bcnt.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    return new CertifiedFakeFeed[paramInt];
   }
 }
 

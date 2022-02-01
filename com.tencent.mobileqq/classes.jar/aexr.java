@@ -1,33 +1,27 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.Set;
 
 public class aexr
-  implements OnCompositionLoadedListener
+  extends BroadcastReceiver
 {
-  public aexr(AudioTransitionAnimManager.1 param1) {}
+  public aexr(QQMapActivity paramQQMapActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramLottieComposition == null)
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
     {
-      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+      }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.a(this.a, paramContext);
+      this.a.q = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
-    }
-    aexq.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    aexw localaexw = new aexw(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(localaexw);
-    aexq.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
-    aexq.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
   }
 }
 

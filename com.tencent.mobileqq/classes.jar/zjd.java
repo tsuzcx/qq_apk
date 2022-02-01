@@ -1,72 +1,49 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class zjd
+public class zjd
+  extends nit
 {
-  public Rect a;
-  public int c = 2;
-  public boolean c;
+  zjd(zjc paramzjc) {}
   
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
-    do
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
+      paramBundle = new qqstory_group.RspGroupVideoForward();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if ((paramArrayOfByte.error_code.has()) && (paramArrayOfByte.error_code.get() == 0))
+        {
+          ThreadManager.executeOnSubThread(new TroopStoryForwardTask.2.1(this, paramBundle.story_id.get().toStringUtf8()));
+          return paramArrayOfByte;
+        }
       }
-    } while (f1 <= 1.0F);
-    return 2;
-  }
-  
-  public abstract int a();
-  
-  public Rect a()
-  {
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.troopstory.share", 2, "parse RspGroupVideoForward error", paramArrayOfByte);
+        }
+      }
+    }
+    this.a.a.sendEmptyMessage(5);
     return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public Rect b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public abstract Drawable c();
-  
-  public int d()
-  {
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zjd
  * JD-Core Version:    0.7.0.1
  */

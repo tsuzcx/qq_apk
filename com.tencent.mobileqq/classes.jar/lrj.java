@@ -1,44 +1,119 @@
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.texture.YUVTexture;
+import java.util.List;
 
-public abstract interface lrj
+public class lrj
+  extends YUVTexture
 {
-  public abstract int a(int paramInt, boolean paramBoolean1, lsd paramlsd, boolean paramBoolean2);
+  private static String jdField_a_of_type_JavaLangString;
+  private static String b;
+  private static boolean e;
+  private static boolean f;
+  public static int n = 480;
+  private static int o = 1;
+  private lrd jdField_a_of_type_Lrd;
+  private mdt jdField_a_of_type_Mdt;
   
-  public abstract void a();
+  public lrj(Context paramContext, mdt parammdt, String paramString, long paramLong)
+  {
+    super(paramContext, paramString, paramLong);
+    this.jdField_a_of_type_Mdt = parammdt;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  private static void a(Context paramContext)
+  {
+    int i = 0;
+    if (e) {}
+    for (;;)
+    {
+      return;
+      e = true;
+      if (jdField_a_of_type_JavaLangString == null) {
+        jdField_a_of_type_JavaLangString = bgln.c();
+      }
+      paramContext = lof.a();
+      f = false;
+      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
+        continue;
+      }
+      n = paramContext.b;
+      o = paramContext.c;
+      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+      try
+      {
+        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
+          continue;
+        }
+        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
+        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
+        while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
+        {
+          if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = true;
+            return;
+          }
+          if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = false;
+            return;
+          }
+          if (i == 2) {
+            f = true;
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception paramContext) {}
+    }
+  }
   
-  public abstract void a(long paramLong);
+  public lqy[] a(lpx paramlpx)
+  {
+    if (a() > b())
+    {
+      i = a();
+      a(this.jdField_a_of_type_AndroidContentContext);
+      if ((!f) || (getImgWidth() > n) || (i <= ((lpy)paramlpx).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_Mdt.a().size() != 0) || (VideoController.a().a().d != 2)) {
+        break label211;
+      }
+    }
+    label211:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (this.jdField_a_of_type_Lrd == null) {
+          this.jdField_a_of_type_Lrd = lrd.a();
+        }
+        super.a(paramlpx);
+        if (super.a() != null) {
+          this.jdField_a_of_type_Lrd.a(paramlpx, getImgWidth(), getImgHeight(), ((lpy)paramlpx).c(), ((lpy)paramlpx).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, o);
+        }
+        return lqw.a(0).a();
+        i = b();
+        break;
+      }
+      return super.a(paramlpx);
+    }
+  }
   
-  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(FilterDesc paramFilterDesc);
-  
-  public abstract void a(lsa paramlsa, lsd paramlsd);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(lrq paramlrq);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract boolean c();
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_Lrd != null) {
+      this.jdField_a_of_type_Lrd.a();
+    }
+    e = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lrj
  * JD-Core Version:    0.7.0.1
  */

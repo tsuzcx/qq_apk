@@ -1,29 +1,23 @@
-import mqq.manager.Manager;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aufx
-  extends Manager
+public class aufx
+  implements apip
 {
-  public abstract int a();
+  public aufx(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a.putBoolean("forward_ark_from_h5_success", true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufx
  * JD-Core Version:    0.7.0.1
  */

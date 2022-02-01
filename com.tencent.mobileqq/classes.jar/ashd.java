@@ -1,41 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-
-public class ashd
-  extends Handler
+class ashd
+  implements bhaw
 {
-  public ashd(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  ashd(ashc paramashc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void load(bgyy parambgyy)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        return;
-        if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
-        {
-          this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
-          this.a.jdField_a_of_type_Bety.d(2130849126);
-          this.a.jdField_a_of_type_Bety.b(false);
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-        return;
-      } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
-      this.a.jdField_a_of_type_Bety.cancel();
-      this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
-      this.a.jdField_a_of_type_Bety.c(true);
-      this.a.jdField_a_of_type_Bety.a(false);
-      this.a.jdField_a_of_type_Bety.b(true);
-      return;
-    }
-    QQSettingChatOperationFragment.b(this.a);
+    this.a.a(parambgyy);
   }
 }
 

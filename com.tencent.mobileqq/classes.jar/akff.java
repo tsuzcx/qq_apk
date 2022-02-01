@@ -1,27 +1,24 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akff
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public akff(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
+  public akff(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Akfw.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367819);
-    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
-    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Akfw.a.setVisibility(4);
+    Intent localIntent = this.a.getIntent();
+    String str = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = localIntent.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.a(localIntent, this.a, str, i, i, 1080, 1080, bghy.a());
+    bcst.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

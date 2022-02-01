@@ -1,69 +1,26 @@
-import android.content.Intent;
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class thd
-  extends MSFServlet
+  implements thm
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public thd(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    if (paramIntent == null) {
-      Log.e("weishi", "***onReceive request is null");
-    }
-    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
-      return;
-    }
-    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramIntent == null)
-    {
-      Log.e("weishi", "onSend request is null");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((paramIntent instanceof WeishiIntent))
-        {
-          the localthe = ((WeishiIntent)paramIntent).a;
-          thb localthb = localthe.a;
-          byte[] arrayOfByte2 = localthb.encode();
-          byte[] arrayOfByte1 = arrayOfByte2;
-          if (arrayOfByte2 == null)
-          {
-            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localthe.a.uniKey());
-            arrayOfByte1 = new byte[4];
-          }
-          paramPacket.setTimeout(30000L);
-          Log.e("timeout", "timeout:30000");
-          paramPacket.setSSOCommand("SQQzoneSvc." + localthe.a.c());
-          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localthe.a.c());
-          localthb.d = arrayOfByte1.length;
-          paramPacket.putSendData(arrayOfByte1);
-          Log.i("weishi-Servlet", "onSend request cmd=" + localthe.a.uniKey() + " is correct");
-          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
-          return;
-        }
-      }
-      catch (Exception paramIntent)
-      {
-        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
-        return;
-      }
-      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new the(this, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView), paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thd
  * JD-Core Version:    0.7.0.1
  */

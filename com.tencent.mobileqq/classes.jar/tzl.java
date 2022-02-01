@@ -1,38 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class tzl
-  extends yka
+  extends pmn
 {
-  private QCircleInitBean a;
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  public tzl(QCircleInitBean paramQCircleInitBean)
+  public tzl(tym paramtym, String paramString, int paramInt)
   {
-    this.a = paramQCircleInitBean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a() {}
-  
-  public void a(ykg paramykg)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    if ((this.a != null) && (this.a.getTagInfo() != null) && ((!TextUtils.isEmpty(this.a.getTagInfo().tagId.get())) || (!TextUtils.isEmpty(this.a.getTagInfo().tagName.get()))))
+    super.a(paramLong, paramInt, paramString);
+    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    try
     {
-      QCircleGetFeedListRequest localQCircleGetFeedListRequest = new QCircleGetFeedListRequest(this.a.getTagInfo().tagId.get(), this.a.getTagInfo().tagName.get(), null);
-      paramykg = new tzm(this, localQCircleGetFeedListRequest, paramykg);
-      localQCircleGetFeedListRequest.setEnableCache(true);
-      VSNetworkHelper.a().a(localQCircleGetFeedListRequest, paramykg);
-      QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetFeedListRequest.getCmdName() + "| TraceId:" + localQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + localQCircleGetFeedListRequest.getCurrentSeq());
+      paramString = new JSONObject();
+      paramString.put("feedsId", String.valueOf(paramLong));
+      paramString.put("retCode", paramInt);
+      paramString.put("feedsType", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzl
  * JD-Core Version:    0.7.0.1
  */

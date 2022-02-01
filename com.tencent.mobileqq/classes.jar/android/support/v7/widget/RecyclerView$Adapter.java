@@ -2,6 +2,7 @@ package android.support.v7.widget;
 
 import android.support.v4.os.TraceCompat;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
@@ -110,6 +111,7 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
   public void onBindViewHolder(VH paramVH, int paramInt, List<Object> paramList)
   {
     onBindViewHolder(paramVH, paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, paramList, getItemId(paramInt));
   }
   
   public abstract VH onCreateViewHolder(ViewGroup paramViewGroup, int paramInt);

@@ -1,13 +1,13 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import KQQ.ReqItem;
+import KQQ.RespItem;
 
-public class bcbk
+public abstract interface bcbk
 {
-  public ByteArrayOutputStream a;
-  public File a;
-  public FileOutputStream a;
-  public String a;
+  public abstract int a();
+  
+  public abstract ReqItem a(int paramInt);
+  
+  public abstract void a(RespItem paramRespItem);
 }
 
 

@@ -1,44 +1,23 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class arra
-  implements arqw
+final class arra
+  implements DialogInterface.OnClickListener
 {
-  arra(arqz paramarqz) {}
+  arra(QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
-    arqx.a(this.a.a.this$0);
-    arrp.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718361), "");
     }
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
-    arqx.a(this.a.a.this$0);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

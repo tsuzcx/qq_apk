@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acwj
-  implements appk
+final class acwj
+  implements Comparator<MessageRecord>
 {
-  public acwj(EmosmActivity paramEmosmActivity) {}
-  
-  public void a_(int paramInt1, int paramInt2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramInt1 != paramInt2)
-    {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.a(localEmoticonPackage);
-      this.a.a.b(true);
-      this.a.a.a(localEmoticonPackage, paramInt2);
-      aprn.a().a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.d = true;
-      azqs.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
-      if (this.a.b == 1) {
-        azqs.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
-      }
-    }
-    else
-    {
-      return;
-    }
-    azqs.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

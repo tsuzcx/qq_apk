@@ -1,60 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bhpw
+class bhpw
+  implements aaob
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<bhpv> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<bhpv> b;
-  public boolean b;
-  public long c;
-  public String c;
-  public List<bhpv> c;
-  public boolean c;
-  public long d;
-  public String d = "";
-  public long e;
-  public String e = "";
-  public long f;
-  public String f;
-  public long g;
-  public String g;
+  bhpw(bhpv parambhpv) {}
   
-  public bhpw()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 6;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 6;
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
+    {
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
+    }
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718680, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718677, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpw
  * JD-Core Version:    0.7.0.1
  */

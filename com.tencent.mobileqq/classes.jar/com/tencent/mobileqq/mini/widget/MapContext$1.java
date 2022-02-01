@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.widget;
 
-import ampt;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import aopa;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -14,7 +14,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
 class MapContext$1
-  extends ampt
+  extends aopa
 {
   MapContext$1(MapContext paramMapContext, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, SensorEventListener paramSensorEventListener)
   {
@@ -60,7 +60,7 @@ class MapContext$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MapContext.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
-import java.io.File;
-
-public class bkpi
+public abstract interface bkpi
 {
-  public static final String a = bkph.b + File.separator + "ae";
-  public static final String b = bkph.a + File.separator + "ae";
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

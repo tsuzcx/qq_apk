@@ -1,21 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aesr
+public class aesr
   implements View.OnClickListener
 {
-  aesr(aesk paramaesk) {}
+  public aesr(Now paramNow) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return;
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).m();
     }
-    TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-    TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-    azqs.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

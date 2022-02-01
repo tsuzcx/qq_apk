@@ -1,48 +1,40 @@
-import android.util.SparseArray;
+import android.view.View.OnClickListener;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class azfe
 {
-  public float a;
   public int a;
-  public SparseArray<azfd> a;
+  public long a;
+  public View.OnClickListener a;
+  public azfl a;
+  @Nullable
+  public azph a;
+  public bgdg a;
+  public biab a;
+  public ProfileActivity.AllInOne a;
+  public Card a;
+  public ContactCard a;
+  public TroopMemberCard a;
+  public RichStatus a;
+  public String a;
   public boolean a;
-  public int[] a;
-  public int b = 30;
+  public String[] a;
+  public int b = -1;
+  public long b;
+  public String b;
   public boolean b;
-  public int[] b;
-  public int c = 8;
   public boolean c;
-  public int[] c;
-  public int d = 640;
   public boolean d;
-  public int[] d;
-  public int e = 480;
-  public int[] e;
-  public int f = 550000;
-  public int[] f;
-  public int g = 100000;
-  public int[] g;
-  public int h = 35;
-  public int i = 3;
-  public int j = 3;
-  public int k = 1;
-  public int l = 1;
-  public int m;
-  public int n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s = -1;
-  public int t = -1;
-  public int u = 2;
-  public int v = 3;
   
   public azfe()
   {
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Float = 1.0F;
   }
 }
 

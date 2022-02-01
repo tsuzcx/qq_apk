@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import acjm;
-import aijq;
+import adrm;
+import akaj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anny;
-import ayxz;
-import azaf;
-import azvd;
+import apoe;
+import bbxc;
+import bbzh;
+import bcwd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ArkAppMessage;
@@ -70,11 +70,11 @@ public class MiniChatFragmentForQzone
       }
     } while ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str1)));
     localObject1 = new ArkAppMessage(str4, (String)localObject4, (String)localObject3, str1, (String)localObject2, str2, str3, "");
-    Object localObject2 = (ArkAppMessage)anny.a(2, (String)localObject4, localBundle, localObject1);
+    Object localObject2 = (ArkAppMessage)apoe.a(2, (String)localObject4, localBundle, localObject1);
     if (localObject2 == null) {}
     for (;;)
     {
-      localObject3 = azvd.a(localBundle);
+      localObject3 = bcwd.a(localBundle);
       localObject2 = localBundle.getString("forward_appId_ark_from_sdk");
       localObject4 = localBundle.getString("struct_share_key_source_name");
       str1 = localBundle.getString("struct_share_key_source_action_data");
@@ -99,11 +99,11 @@ public class MiniChatFragmentForQzone
         str1 = ((QQAppInterface)localObject4).getCurrentAccountUin();
         str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
         int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-        int j = ayxz.jdField_a_of_type_Int;
-        ayxz.jdField_a_of_type_Int = j + 1;
-        ((ArkAppMessage)localObject1).containStructMsg = azaf.a((QQAppInterface)localObject4, str1, str2, (String)localObject2, i, j, (AbsStructMsg)localObject3);
+        int j = bbxc.jdField_a_of_type_Int;
+        bbxc.jdField_a_of_type_Int = j + 1;
+        ((ArkAppMessage)localObject1).containStructMsg = bbzh.a((QQAppInterface)localObject4, str1, str2, (String)localObject2, i, j, (AbsStructMsg)localObject3);
         i = localBundle.getInt("KEY_MSG_FORWARD_ID");
-        acjm.a((QQAppInterface)localObject4, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1, i);
+        adrm.a((QQAppInterface)localObject4, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1, i);
         b();
         return;
         localObject1 = "";
@@ -118,8 +118,8 @@ public class MiniChatFragmentForQzone
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.a(131075, 0L);
+    if (this.jdField_a_of_type_Akaj != null) {
+      this.jdField_a_of_type_Akaj.a(131075, 0L);
     }
   }
   
@@ -131,7 +131,7 @@ public class MiniChatFragmentForQzone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatFragmentForQzone
  * JD-Core Version:    0.7.0.1
  */

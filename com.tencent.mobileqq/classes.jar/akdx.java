@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akdx
-  implements DialogInterface.OnClickListener
+  extends aywi
 {
-  public akdx(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public akdx(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
+    }
   }
 }
 

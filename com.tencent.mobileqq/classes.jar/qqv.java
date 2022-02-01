@@ -1,32 +1,20 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class qqv
-  implements Comparator<Object>
+class qqv
+  implements bkln
 {
-  private Spanned a;
+  qqv(qqt paramqqt) {}
   
-  public qqv(Spanned paramSpanned)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.a = paramSpanned;
-  }
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i > j) {
-      return 1;
-    }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
+    qqt.a(this.a, (pxk)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqv
  * JD-Core Version:    0.7.0.1
  */

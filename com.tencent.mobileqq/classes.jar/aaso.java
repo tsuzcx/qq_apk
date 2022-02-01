@@ -1,8 +1,15 @@
-import android.view.View;
+import org.json.JSONObject;
 
-public abstract interface aaso
+public class aaso
 {
-  public abstract void reportImpression(View paramView);
+  public String a;
+  public String b;
+  
+  public aaso(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("jumpUrl");
+  }
 }
 
 

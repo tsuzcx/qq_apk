@@ -1,22 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
+import android.os.SystemClock;
 
 public class avdt
-  implements aved
 {
-  avdt(avds paramavds) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  avdu jdField_a_of_type_Avdu;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  int c = 100;
+  
+  public avdt(int paramInt, avdu paramavdu)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avdu = paramavdu;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.b += paramInt;
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        return;
+      }
+    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
+    avdu localavdu = this.jdField_a_of_type_Avdu;
+    if (this.b > this.jdField_a_of_type_Int) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localavdu.b(bool);
+      this.jdField_a_of_type_Long = 0L;
+      this.b = 0;
+      return;
+    }
+  }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (auul)this.a.a.getManager(106)), 16, null, false);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajyv
-  implements QQPermissionCallback
+class ajyv
+  implements View.OnClickListener
 {
-  public ajyv(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
+  ajyv(ajyr paramajyr) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
-    paramArrayOfString.arg1 = 1;
-    paramArrayOfString.arg2 = 2131699432;
-    paramArrayOfString.sendToTarget();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
+    ajyr.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

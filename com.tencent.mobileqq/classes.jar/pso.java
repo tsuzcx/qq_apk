@@ -1,82 +1,85 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class pso
-  extends NativeText
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  protected float a = 0.0F;
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
   
-  public pso(VafContext paramVafContext)
+  public pso(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
   {
-    super(paramVafContext);
-    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167140));
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
   }
   
-  private String a(String paramString1, String paramString2)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    return String.format(paramString1, new Object[] { paramString2 });
-  }
-  
-  public void a(long paramLong)
-  {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new psq(this, String.valueOf(paramLong)));
-    if (localReadInJoyUserInfo != null)
-    {
-      setText(ors.d(localReadInJoyUserInfo.nick));
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
     }
-    setText(ReadInJoyUserInfoModule.a());
+    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
+    ReadInjoyIMAXAdFragment.d = true;
+    paramTVK_IMediaPlayer.i();
+    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
   }
   
-  public void a(String paramString, long paramLong)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new psp(this, String.valueOf(paramLong), paramString));
-    if (localReadInJoyUserInfo != null)
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
     {
-      setText(a(paramString, ors.d(localReadInJoyUserInfo.nick)));
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
+      }
+      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.i();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramSurfaceHolder == null) {
       return;
     }
-    setText(a(paramString, ReadInJoyUserInfoModule.a()));
+    paramSurfaceHolder.c();
   }
   
-  public void onParseValueFinished()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    super.onParseValueFinished();
-    if (this.a > 0.0F) {
-      this.mNative.setLineSpacing(this.a, 1.0F);
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
     }
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
     {
+      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
     }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramString);
-      try
-      {
-        this.a = Utils.dp2px(Double.valueOf(paramString).doubleValue());
-        return true;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("ReadInjoyTextView", 1, "", localException);
-      }
-    }
+    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pso
  * JD-Core Version:    0.7.0.1
  */

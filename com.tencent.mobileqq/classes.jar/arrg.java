@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Comparator;
 
-final class arrg
-  implements DialogInterface.OnClickListener
+class arrg
+  implements Comparator<String>
 {
-  arrg(arrh paramarrh) {}
+  arrg(arre paramarre) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.b();
-    paramDialogInterface.dismiss();
+    return paramString2.compareTo(paramString1);
   }
 }
 

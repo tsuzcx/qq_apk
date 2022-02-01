@@ -1,16 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3.1.1;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class avli
-  implements DialogInterface.OnClickListener
+public class avli
+  implements EnterCallback
 {
-  avli(avkt paramavkt) {}
+  public avli(ODLoadingActivity.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCloseLoadingView()
+  {
+    ODLoadingActivity.b(this.a.this$0);
+    this.a.this$0.finish();
+    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
+    avjb.b("33669909");
+  }
+  
+  public void onEnterComplete()
+  {
+    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
+    avjb.b("33669911");
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    ODLoadingActivity.a(this.a.this$0, paramView);
+    this.a.this$0.runOnUiThread(new ODLoadingActivity.3.1.1(this));
+    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
+    avjb.b("33669908");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avli
  * JD-Core Version:    0.7.0.1
  */

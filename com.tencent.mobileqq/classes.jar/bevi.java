@@ -1,30 +1,60 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView;
-
 public class bevi
-  implements bhtv
 {
-  public bevi(SlideDetectListView paramSlideDetectListView) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  public int h;
+  public long h;
+  public int i = 0;
+  public int j;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public bevi()
   {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    this.jdField_h_of_type_Int = 0;
+    a();
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a()
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_h_of_type_Long = 0L;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_h_of_type_Int = 0;
+    this.i = 0;
+    this.j = 0;
   }
 }
 

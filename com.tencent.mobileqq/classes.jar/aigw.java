@@ -1,32 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigw
-  implements bhuw
+public class aigw
+  extends bdix
 {
-  aigw(aigp paramaigp) {}
+  public aigw(TroopChatPie paramTroopChatPie) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Aign.getCount() <= 0) || (paramInt <= 0)) {}
-    do
-    {
-      return;
-      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aign.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
-    }
-    ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, 0);
+    bdjg.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    bdjg.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

@@ -1,44 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class rvq
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnDismissListener
 {
-  rvq(rvp paramrvp, Context paramContext) {}
+  rvq(rvn paramrvn) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramAdapterView = (pha)this.jdField_a_of_type_Rvp.getItem(paramInt);
-    if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.b)))
-    {
-      if (!paramAdapterView.b.startsWith("mqq://")) {
-        break label154;
-      }
-      paramView = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
-      if (paramView != null) {
-        paramView.c();
-      }
+    if (rvn.a(this.a) != null) {
+      rvn.a(this.a).a(rvn.a(this.a), rvn.b(this.a), false, false);
     }
-    for (;;)
-    {
-      paramView = new orz().b().a();
-      if (!TextUtils.isEmpty(paramView)) {
-        nrt.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + paramAdapterView.c, "" + paramAdapterView.a, "", paramView, false);
-      }
-      return;
-      label154:
-      ors.b(rvp.a(this.jdField_a_of_type_Rvp), paramAdapterView.b);
-    }
+    rvn.a(this.a, true);
+    rvn.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvq
  * JD-Core Version:    0.7.0.1
  */

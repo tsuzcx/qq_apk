@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahdb
-  implements akcn
+class ahdb
+  implements View.OnClickListener
 {
-  public ahdb(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  ahdb(ahda paramahda) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
+    afur.n = true;
+    if (this.a.a()) {}
+    for (;;)
     {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      return;
+      ahda.a(this.a).onClick(paramView);
     }
   }
 }

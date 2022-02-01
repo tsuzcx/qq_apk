@@ -1,36 +1,53 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.lang.ref.WeakReference;
 
-final class xtr
-  extends xtb
+public class xtr
+  extends QQUIEventReceiver<xto, xnc>
 {
-  xtr(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
+  private WeakReference<xsv> a;
   
-  public void onFailure(String paramString)
+  public xtr(@NonNull xto paramxto)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    super(paramxto);
+  }
+  
+  public void a(xsv paramxsv)
+  {
+    this.a = new WeakReference(paramxsv);
+  }
+  
+  public void a(@NonNull xto paramxto, @NonNull xnc paramxnc)
+  {
+    if (paramxnc.jdField_a_of_type_Boolean) {
+      if ((paramxnc.jdField_a_of_type_JavaLangString != null) && (this.a != null))
+      {
+        paramxto = (xsv)this.a.get();
+        if (paramxto != null) {
+          paramxto.b(paramxnc.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-    this.jdField_a_of_type_Xtb.onFailure(paramString);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original failed " + paramString);
+    do
+    {
+      do
+      {
+        return;
+        yqp.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramxnc.jdField_a_of_type_JavaLangString });
+      } while (this.a == null);
+      paramxto = (xsv)this.a.get();
+    } while (paramxto == null);
+    paramxto.d();
   }
   
-  public void onStart()
+  public Class acceptEventClass()
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original：" + String.valueOf(l1 - l2));
+    return xnc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xtr
  * JD-Core Version:    0.7.0.1
  */

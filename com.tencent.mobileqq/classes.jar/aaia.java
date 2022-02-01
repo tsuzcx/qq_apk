@@ -1,88 +1,72 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_COMM.COMM.StCommonExt;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class aaia
+  extends aahw
 {
-  private static AppInterface a;
-  
-  private static void a(String paramString, long paramLong)
+  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    String[] arrayOfString;
-    if (bdin.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
-    }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
-      return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
-    }
+    paramBundle.putByteArray("key_data", paramArrayOfByte);
+    notifyObserver(paramIntent, this.a, true, paramBundle, null);
   }
   
-  public static void a(String paramString, long paramLong, short paramShort)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramShort == 0) {
-      a(paramString, paramLong);
-    }
-    while (paramShort != 1) {
-      return;
-    }
-    b(paramString, paramLong);
-  }
-  
-  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
-  {
-    if ((a == null) || (paramArrayOfString == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
-      }
-    }
-    for (;;)
-    {
-      return;
-      try
+    Object localObject3 = null;
+    Object localObject1 = null;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte != null) {}
+    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
+      for (;;)
       {
-        String str = a.getCurrentAccountUin();
-        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
-        if (QLog.isColorLevel())
+        try
         {
-          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
-          return;
+          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
+          i = paramIntent.getIntExtra("key_index", -1);
+          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+          if (arrayOfByte == null) {}
         }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            localObject1 = new CertifiedAccountMeta.StFeed();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            int i;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
+            localObject2 = new aahz((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.PublishFeed");
+            paramPacket.putSendData(bguc.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+          {
+            break label166;
+          }
+          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+          QLog.e("CertifiedAccountPublishFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
+          continue;
+        }
+        label166:
+        QLog.e("CertifiedAccountPublishFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  private static void b(String paramString, long paramLong)
-  {
-    String[] arrayOfString;
-    if (bdin.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
-    }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
-      return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterUploadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
     }
   }
 }

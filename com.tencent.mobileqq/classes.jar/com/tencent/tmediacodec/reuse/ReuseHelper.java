@@ -3,109 +3,79 @@ package com.tencent.tmediacodec.reuse;
 import android.media.MediaFormat;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.tmediacodec.TCodecManager;
-import com.tencent.tmediacodec.TCodecManager.Companion;
 import com.tencent.tmediacodec.codec.AudioCodecWrapper;
 import com.tencent.tmediacodec.codec.FormatWrapper;
 import com.tencent.tmediacodec.codec.ReuseCodecWrapper;
 import com.tencent.tmediacodec.codec.VideoCodecWrapper;
 import com.tencent.tmediacodec.util.LogUtils;
 import com.tencent.tmediacodec.util.TUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/reuse/ReuseHelper;", "", "()V", "TAG", "", "codecAdaptationWorkaroundMode", "Lcom/tencent/tmediacodec/reuse/ReuseHelper$AdaptationWorkaroundMode;", "name", "initFormatWrapper", "", "format", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "mediaFormat", "Landroid/media/MediaFormat;", "isSeamlessAdaptationSupported", "", "codecWrapper", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "newFormat", "isNewFormatComplete", "AdaptationWorkaroundMode", "ReuseType", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class ReuseHelper
 {
-  public static final ReuseHelper INSTANCE = new ReuseHelper();
-  @NotNull
   public static final String TAG = "ReuseHelper";
   
-  @NotNull
-  public final ReuseHelper.AdaptationWorkaroundMode codecAdaptationWorkaroundMode(@NotNull String paramString)
+  @NonNull
+  public static ReuseHelper.AdaptationWorkaroundMode codecAdaptationWorkaroundMode(@NonNull String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "name");
-    if ((Build.VERSION.SDK_INT <= 25) && (Intrinsics.areEqual("OMX.Exynos.avc.dec.secure", paramString)))
-    {
-      String str = Build.MODEL;
-      Intrinsics.checkExpressionValueIsNotNull(str, "Build.MODEL");
-      if (!StringsKt.startsWith$default(str, "SM-T585", false, 2, null))
-      {
-        str = Build.MODEL;
-        Intrinsics.checkExpressionValueIsNotNull(str, "Build.MODEL");
-        if (!StringsKt.startsWith$default(str, "SM-A510", false, 2, null))
-        {
-          str = Build.MODEL;
-          Intrinsics.checkExpressionValueIsNotNull(str, "Build.MODEL");
-          if (!StringsKt.startsWith$default(str, "SM-A520", false, 2, null))
-          {
-            str = Build.MODEL;
-            Intrinsics.checkExpressionValueIsNotNull(str, "Build.MODEL");
-            if (!StringsKt.startsWith$default(str, "SM-J700", false, 2, null)) {
-              break label115;
-            }
-          }
-        }
-      }
+    if ((Build.VERSION.SDK_INT <= 25) && ("OMX.Exynos.avc.dec.secure" == paramString) && ((Build.MODEL.startsWith("SM-T585")) || (Build.MODEL.startsWith("SM-A510")) || (Build.MODEL.startsWith("SM-A520")) || (Build.MODEL.startsWith("SM-J700")))) {
       return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_ALWAYS;
     }
-    label115:
-    if ((Build.VERSION.SDK_INT < 24) && ((Intrinsics.areEqual("OMX.Nvidia.h264.decode", paramString)) || (Intrinsics.areEqual("OMX.Nvidia.h264.decode.secure", paramString))) && ((Intrinsics.areEqual("flounder", Build.DEVICE)) || (Intrinsics.areEqual("flounder_lte", Build.DEVICE)) || (Intrinsics.areEqual("grouper", Build.DEVICE)) || (Intrinsics.areEqual("tilapia", Build.DEVICE)))) {
+    if ((Build.VERSION.SDK_INT < 24) && (("OMX.Nvidia.h264.decode" == paramString) || ("OMX.Nvidia.h264.decode.secure" == paramString)) && (("flounder" == Build.DEVICE) || ("flounder_lte" == Build.DEVICE) || ("grouper" == Build.DEVICE) || ("tilapia" == Build.DEVICE))) {
       return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_SAME_RESOLUTION;
     }
     return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_NEVER;
   }
   
-  public final void initFormatWrapper(@NotNull FormatWrapper paramFormatWrapper, @NotNull MediaFormat paramMediaFormat)
+  public static void initFormatWrapper(@NonNull FormatWrapper paramFormatWrapper, @NonNull MediaFormat paramMediaFormat)
   {
-    int i = 0;
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "format");
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "mediaFormat");
-    ReusePolicy localReusePolicy = TCodecManager.Companion.getInstance().getReusePolicy();
-    int k = Math.max(localReusePolicy.getInitWidth(), paramFormatWrapper.getWidth());
-    int m = Math.max(localReusePolicy.getInitHeight(), paramFormatWrapper.getHeight());
-    if (localReusePolicy.getReConfigByRealFormat())
+    ReusePolicy localReusePolicy = TCodecManager.getInstance().getReusePolicy();
+    int i = Math.max(localReusePolicy.initWidth, paramFormatWrapper.width);
+    int j = Math.max(localReusePolicy.initHeight, paramFormatWrapper.height);
+    if (localReusePolicy.reConfigByRealFormat)
     {
-      localReusePolicy.setInitWidth(k);
-      localReusePolicy.setInitHeight(m);
+      localReusePolicy.initWidth = i;
+      localReusePolicy.initHeight = j;
     }
-    int j = Math.max(0, TUtils.getCodecMaxInputSize$default(TUtils.INSTANCE, paramFormatWrapper.getSampleMimeType(), k, m, false, 8, null));
-    LogUtils.INSTANCE.d("ReuseHelper", "initFormatWrapper initWidth:" + k + " initHeight:" + m + " initMaxInputSize:" + j + ' ' + "reusePolicy:" + localReusePolicy);
-    paramFormatWrapper.setMaxWidth(k);
-    paramFormatWrapper.setMaxHeight(m);
-    paramFormatWrapper.setMaxInputSize(j);
-    if (j > 0) {
-      i = j;
+    int k = Math.max(0, TUtils.getCodecMaxInputSize(paramFormatWrapper.sampleMimeType, i, j, false));
+    if (LogUtils.isLogEnable()) {
+      LogUtils.d("ReuseHelper", "initFormatWrapper initWidth:" + i + " initHeight:" + j + " initMaxInputSize:" + k + ' ' + "reusePolicy:" + localReusePolicy);
     }
-    paramMediaFormat.setInteger("max-input-size", i);
+    paramFormatWrapper.maxWidth = i;
+    paramFormatWrapper.maxHeight = j;
+    paramFormatWrapper.maxInputSize = k;
+    paramMediaFormat.setInteger("max-input-size", Math.max(k, 0));
     if ((paramFormatWrapper.isVideo()) && (Build.VERSION.SDK_INT >= 19))
     {
-      paramMediaFormat.setInteger("max-width", k);
-      paramMediaFormat.setInteger("max-height", m);
+      paramMediaFormat.setInteger("max-width", i);
+      paramMediaFormat.setInteger("max-height", j);
     }
   }
   
-  public final boolean isSeamlessAdaptationSupported(@NotNull ReuseCodecWrapper paramReuseCodecWrapper, @NotNull FormatWrapper paramFormatWrapper, boolean paramBoolean)
+  public static boolean isSeamlessAdaptationSupported(@NonNull ReuseCodecWrapper paramReuseCodecWrapper, @NonNull FormatWrapper paramFormatWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramReuseCodecWrapper, "codecWrapper");
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "newFormat");
-    FormatWrapper localFormatWrapper = paramReuseCodecWrapper.getFormat();
+    return isSeamlessAdaptationSupported(paramReuseCodecWrapper, paramFormatWrapper, false);
+  }
+  
+  public static boolean isSeamlessAdaptationSupported(@NonNull ReuseCodecWrapper paramReuseCodecWrapper, @NonNull FormatWrapper paramFormatWrapper, boolean paramBoolean)
+  {
+    FormatWrapper localFormatWrapper = paramReuseCodecWrapper.format;
     if ((paramReuseCodecWrapper instanceof VideoCodecWrapper)) {
-      if ((!Intrinsics.areEqual(localFormatWrapper.getSampleMimeType(), paramFormatWrapper.getSampleMimeType())) || (localFormatWrapper.getRotationDegrees() != paramFormatWrapper.getRotationDegrees()) || ((!paramReuseCodecWrapper.getAdaptive()) && ((localFormatWrapper.getWidth() != paramFormatWrapper.getWidth()) || (localFormatWrapper.getHeight() != paramFormatWrapper.getHeight())))) {}
+      if ((!TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) || (localFormatWrapper.rotationDegrees != paramFormatWrapper.rotationDegrees) || ((!paramReuseCodecWrapper.adaptive) && ((localFormatWrapper.width != paramFormatWrapper.width) || (localFormatWrapper.height != paramFormatWrapper.height)))) {}
     }
     while (!(paramReuseCodecWrapper instanceof AudioCodecWrapper))
     {
       return true;
       return false;
     }
-    return (!(Intrinsics.areEqual("audio/mp4a-latm", localFormatWrapper.getSampleMimeType()) ^ true)) && (!(Intrinsics.areEqual(localFormatWrapper.getSampleMimeType(), paramFormatWrapper.getSampleMimeType()) ^ true)) && (localFormatWrapper.getChannelCount() == paramFormatWrapper.getChannelCount()) && (localFormatWrapper.getSampleRate() == paramFormatWrapper.getSampleRate());
+    return (TextUtils.equals("audio/mp4a-latm", localFormatWrapper.sampleMimeType)) && (TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) && (localFormatWrapper.channelCount == paramFormatWrapper.channelCount) && (localFormatWrapper.sampleRate == paramFormatWrapper.sampleRate);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.reuse.ReuseHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 public abstract interface bdvu
 {
-  public abstract void load(bdtv parambdtv);
+  public abstract void a(bdws parambdws);
+  
+  public abstract void b(bdws parambdws);
 }
 
 

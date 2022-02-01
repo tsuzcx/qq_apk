@@ -1,27 +1,25 @@
-import java.util.Comparator;
+import UserGrowth.stSchema;
 
-final class uiq
-  implements Comparator<uiz>
+public class uiq
+  extends uig
 {
-  public int a(uiz paramuiz1, uiz paramuiz2)
+  public uiq(uii paramuii)
   {
-    if (paramuiz1.a() > paramuiz2.a()) {}
-    do
-    {
-      return 1;
-      if (paramuiz1.a() < paramuiz2.a()) {
-        return -1;
-      }
-      if (paramuiz1.d() == paramuiz2.d()) {
-        return 0;
-      }
-    } while (paramuiz1.d() < paramuiz2.d());
-    return -1;
+    super(paramuii);
+  }
+  
+  public boolean a(uii paramuii)
+  {
+    uee.a(paramuii.a(), paramuii.a().H5Url);
+    if (paramuii.a() != null) {
+      paramuii.a().c();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uiq
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import bewp;
+import bidn;
 import java.util.ArrayList;
 
 public class Workspace
@@ -30,7 +30,7 @@ public class Workspace
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
   protected Scroller a;
-  private bewp jdField_a_of_type_Bewp;
+  private bidn jdField_a_of_type_Bidn;
   protected boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   protected float b;
@@ -65,7 +65,7 @@ public class Workspace
     c();
     setDrawingCacheEnabled(true);
     setAlwaysDrawnWithCacheEnabled(true);
-    setBackgroundDrawable(getResources().getDrawable(2130838592));
+    setBackgroundDrawable(getResources().getDrawable(2130838758));
   }
   
   private void c()
@@ -100,8 +100,8 @@ public class Workspace
       if (this.jdField_c_of_type_Int != i)
       {
         this.jdField_c_of_type_Int = i;
-        if (this.jdField_a_of_type_Bewp != null) {
-          this.jdField_a_of_type_Bewp.a(i);
+        if (this.jdField_a_of_type_Bidn != null) {
+          this.jdField_a_of_type_Bidn.a(i);
         }
       }
       this.jdField_d_of_type_Int = i;
@@ -200,8 +200,8 @@ public class Workspace
       this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
       this.jdField_d_of_type_Int = -1;
       b();
-    } while (this.jdField_a_of_type_Bewp == null);
-    this.jdField_a_of_type_Bewp.b(this.jdField_b_of_type_Int);
+    } while (this.jdField_a_of_type_Bidn == null);
+    this.jdField_a_of_type_Bidn.b(this.jdField_b_of_type_Int);
   }
   
   public boolean dispatchUnhandledMove(View paramView, int paramInt)
@@ -448,7 +448,7 @@ public class Workspace
           i = (int)(this.jdField_a_of_type_Float - f1);
           if ((i > 0) && (!this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Int == getChildCount() - 1))
           {
-            this.jdField_a_of_type_Bewp.b(getChildCount());
+            this.jdField_a_of_type_Bidn.b(getChildCount());
             return true;
           }
           this.jdField_a_of_type_Float = f1;
@@ -560,14 +560,14 @@ public class Workspace
     }
   }
   
-  public void setOnScreenChangeListener(bewp parambewp)
+  public void setOnScreenChangeListener(bidn parambidn)
   {
-    this.jdField_a_of_type_Bewp = parambewp;
+    this.jdField_a_of_type_Bidn = parambidn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Workspace
  * JD-Core Version:    0.7.0.1
  */

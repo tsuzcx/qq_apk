@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.listentogether.player;
 
 import android.content.IntentFilter;
-import atot;
-import bdin;
+import avvs;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,8 +25,8 @@ class QQMusicPlayService$2
     try
     {
       BaseApplicationImpl.getContext().registerReceiver(QQMusicPlayService.a(this.this$0), localIntentFilter);
-      QQMusicPlayService.a(bdin.g(this.this$0.getApplicationContext()));
-      QQMusicPlayService.a(this.this$0, new atot(this.this$0));
+      QQMusicPlayService.a(bgnt.g(this.this$0.getApplicationContext()));
+      QQMusicPlayService.a(this.this$0, new avvs(this.this$0));
       AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), QQMusicPlayService.a(this.this$0));
     }
     catch (Exception localException)
@@ -52,7 +52,7 @@ class QQMusicPlayService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.2
  * JD-Core Version:    0.7.0.1
  */

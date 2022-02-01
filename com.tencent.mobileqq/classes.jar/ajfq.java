@@ -1,18 +1,28 @@
-public abstract interface ajfq
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
+
+public class ajfq
+  extends MqqHandler
 {
-  public abstract int a();
+  public ajfq(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract boolean c();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopSuspiciousFragment.a(this.a) == null);
+      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    this.a.a();
+  }
 }
 
 

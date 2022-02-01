@@ -1,83 +1,40 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
+import android.text.SpannableStringBuilder;
+import java.util.ArrayList;
 
 public class uol
-  extends uoc
+  extends SpannableStringBuilder
 {
-  public uol(@NonNull String[] paramArrayOfString)
+  private ArrayList<uon> a;
+  private ArrayList<uom> b;
+  
+  uol(CharSequence paramCharSequence)
   {
-    super(paramArrayOfString);
+    super(paramCharSequence);
   }
   
-  protected void a(String[] paramArrayOfString, uod paramuod)
+  public ArrayList<uon> a()
   {
-    int k = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < k)
-      {
-        paramuod = new File(paramArrayOfString[i]).listFiles();
-        if (paramuod == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          int m = paramuod.length;
-          int j = 0;
-          while (j < m)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile = paramuod[j];
-              if (a(localFile)) {
-                a(localFile);
-              }
-              j += 1;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                wxe.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-      }
-    }
+    return this.a;
   }
   
-  protected boolean a(File paramFile)
+  public void a(ArrayList<uon> paramArrayList)
   {
-    if (!paramFile.isDirectory()) {}
-    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
-      return false;
-    }
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label60;
-      }
-      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
-        break;
-      }
-      i += 1;
-    }
-    label60:
-    return true;
+    this.a = paramArrayList;
+  }
+  
+  public ArrayList<uom> b()
+  {
+    return this.b;
+  }
+  
+  public void b(ArrayList<uom> paramArrayList)
+  {
+    this.b = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uol
  * JD-Core Version:    0.7.0.1
  */

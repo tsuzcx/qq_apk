@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -60,7 +60,7 @@ public class MiniAppUserHealthDataServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetUserHealthData");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -79,7 +79,7 @@ public class MiniAppUserHealthDataServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppUserHealthDataServlet
  * JD-Core Version:    0.7.0.1
  */

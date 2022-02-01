@@ -1,18 +1,13 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-
-class bamk
-  extends bamo
+public class bamk
 {
-  bamk(@NonNull String paramString)
-  {
-    super(0, paramString);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    return paramPaint.measureText(a());
-  }
+  long a;
+  public String a;
+  public boolean a;
+  long b;
+  public String b;
+  public boolean b;
+  public String c;
+  boolean c;
 }
 
 

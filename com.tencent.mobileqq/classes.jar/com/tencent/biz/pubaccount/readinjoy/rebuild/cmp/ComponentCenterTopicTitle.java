@@ -4,20 +4,20 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-import bkbq;
+import bmqa;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.ArrayList;
-import pgd;
 import pxk;
-import pxt;
-import qbs;
-import qnm;
-import qno;
+import qqs;
+import qrb;
+import qva;
+import rii;
+import rik;
 
 public class ComponentCenterTopicTitle
   extends ComponentTitle
-  implements pxk
+  implements qqs
 {
   TextView a;
   TextView b;
@@ -41,27 +41,27 @@ public class ComponentCenterTopicTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559981, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364669));
-    this.b = ((TextView)findViewById(2131365104));
+    LayoutInflater.from(paramContext).inflate(2131560128, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364884));
+    this.b = ((TextView)findViewById(2131365344));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      paramObject = (pgd)paramObject;
-      this.jdField_a_of_type_Qbs.a(paramObject);
+      paramObject = (pxk)paramObject;
+      this.jdField_a_of_type_Qva.a(paramObject);
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null) && (paramObject.mSocialFeedInfo.a.a != null) && (!paramObject.mSocialFeedInfo.a.a.isEmpty()))
       {
-        paramObject = (qno)paramObject.mSocialFeedInfo.a.a.get(0);
+        paramObject = (rik)paramObject.mSocialFeedInfo.a.a.get(0);
         String str = paramObject.c + paramObject.a;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         if (paramObject.b <= 0) {
           break label176;
         }
-        paramObject = String.format("- %s人正在参与 -", new Object[] { bkbq.a(paramObject.b) });
+        paramObject = String.format("- %s人正在参与 -", new Object[] { bmqa.a(paramObject.b) });
         this.b.setText(paramObject);
         this.b.setVisibility(0);
       }
@@ -75,9 +75,9 @@ public class ComponentCenterTopicTitle
     }
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.jdField_a_of_type_Qbs.a(parampxt);
+    this.jdField_a_of_type_Qva.a(paramqrb);
   }
   
   public void b() {}

@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class azxf
-  implements View.OnClickListener
+public abstract interface azxf
 {
-  azxf(azxe paramazxe) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

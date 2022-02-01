@@ -1,36 +1,44 @@
-import android.app.Activity;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class ogb
-  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
+public class ogb
+  extends Handler
 {
-  ogb(ofx paramofx, RelativeLayout.LayoutParams paramLayoutParams) {}
+  private WeakReference<ofx> a;
   
-  public void onSoftKeyboardClosed()
+  public ogb(ofx paramofx)
   {
-    if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(140.5F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
-      ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
-    }
+    this.a = new WeakReference(paramofx);
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
+    ofx localofx = (ofx)this.a.get();
+    if (localofx == null) {}
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(40.0F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
-      ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
-    }
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          ofx.a(localofx);
+          return;
+        }
+      } while (ofx.a(localofx) == null);
+      ofx.a(localofx).a(ofx.a(localofx));
+      return;
+    } while (ofx.a(localofx) == null);
+    ofx.a(localofx).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ogb
  * JD-Core Version:    0.7.0.1
  */

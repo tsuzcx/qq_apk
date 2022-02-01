@@ -1,13 +1,8 @@
-class bkpq
-  implements bkso
+import android.view.View;
+
+public abstract interface bkpq
 {
-  bkpq(bkpl parambkpl) {}
-  
-  public void a()
-  {
-    blfv.a().a("onFirstFrameDone");
-    bkpl.c(this.a);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

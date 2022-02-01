@@ -1,24 +1,50 @@
-import android.support.annotation.NonNull;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bmew
-  implements bmev
+  extends QzoneExternalRequest
 {
-  @NonNull
-  public <T extends bmes> T a(@NonNull Class<T> paramClass)
+  private JceStruct a;
+  
+  public bmew(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
   {
-    try
-    {
-      bmes localbmes = (bmes)paramClass.newInstance();
-      return localbmes;
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
+  }
+  
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    catch (InstantiationException localInstantiationException)
+    MobileQbossReportRsp localMobileQbossReportRsp;
+    do
     {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-    }
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.mobileqboss.report";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
   }
 }
 

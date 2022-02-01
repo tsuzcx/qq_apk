@@ -1,34 +1,53 @@
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import java.util.Collection;
+import java.util.Map;
+
 public class axtn
+  extends AvatarWallPagerAdapter<PicInfo>
 {
-  public static int a(long paramLong1, long paramLong2)
+  protected LinearLayout.LayoutParams a;
+  
+  public View a(int paramInt, PicInfo paramPicInfo)
   {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
-      return -1;
-    }
-    long l = Math.max(paramLong1, paramLong2);
-    if ((l > 500L) && (l <= 960L)) {
-      return 3;
-    }
-    if ((l > 200L) && (l <= 500L)) {
-      return 2;
-    }
-    if (l <= 200L) {
-      return 1;
-    }
-    if (a(paramLong1, paramLong2)) {
-      return 0;
-    }
-    return 4;
+    return this.jdField_a_of_type_Axsd.a(paramInt, paramPicInfo);
   }
   
-  public static boolean a(long paramLong1, long paramLong2)
+  public View a(boolean paramBoolean, int paramInt)
   {
-    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
+    View localView = new View(this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(zlx.a(this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext, 11.0F), zlx.a(this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext, 1.0F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zlx.a(this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = zlx.a(this.jdField_a_of_type_Axsd.jdField_a_of_type_AndroidContentContext, 2.0F);
+    }
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (paramBoolean)
+    {
+      localView.setBackgroundColor(-1);
+      return localView;
+    }
+    localView.setBackgroundColor(1728053247);
+    return localView;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Axsd.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+  }
+  
+  public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
+  {
+    return this.jdField_a_of_type_Axsd.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(paramPicInfo1, paramPicInfo2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtn
  * JD-Core Version:    0.7.0.1
  */

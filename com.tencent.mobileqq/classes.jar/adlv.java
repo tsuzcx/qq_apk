@@ -1,28 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlv
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adlv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlv(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (NotifyPushSettingActivity.a(this.a) == null)
+    int i;
+    label43:
+    QQAppInterface localQQAppInterface;
+    String str1;
+    if (paramBoolean)
     {
-      NotifyPushSettingActivity.a(this.a, new admb(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
-      admb.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+      i = 1;
+      bmqa.d(i);
+      bmqa.a(paramBoolean);
+      bmqa.a(true);
+      if (!paramBoolean) {
+        break label108;
+      }
+      QQToast.a(this.a.getBaseContext(), 2, 2131717181, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label131;
+      }
+      str1 = "0X8008236";
+      label60:
+      if (!paramBoolean) {
+        break label138;
+      }
     }
-    if (NotifyPushSettingActivity.a(this.a))
+    label131:
+    label138:
+    for (String str2 = "0X8008236";; str2 = "0X8008235")
     {
-      int i = (int)NetConnInfoCenter.getServerTime();
-      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
-      NotifyPushSettingActivity.a(this.a).a(j - i);
+      oat.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+      label108:
+      QQToast.a(this.a.getBaseContext(), 2, 2131717179, 2000).a();
+      break label43;
+      str1 = "0X8008235";
+      break label60;
     }
-    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 

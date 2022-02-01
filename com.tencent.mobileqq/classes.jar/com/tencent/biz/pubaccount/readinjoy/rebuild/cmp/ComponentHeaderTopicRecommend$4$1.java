@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import owy;
-import qeh;
+import pmh;
+import qxp;
 
 public class ComponentHeaderTopicRecommend$4$1
   implements Runnable
 {
-  public ComponentHeaderTopicRecommend$4$1(qeh paramqeh) {}
+  public ComponentHeaderTopicRecommend$4$1(qxp paramqxp) {}
   
   public void run()
   {
-    owy.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
+    pmh.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
   }
 }
 

@@ -27,6 +27,18 @@ public class SPlayerDownloaderImpl
     }
   }
   
+  private int getDlType(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 301: 
+      return 1;
+    }
+    return 10;
+  }
+  
   public int startOfflineDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, ISPlayerDownloader.Listener paramListener)
   {
     if (this.mTPDownloadProxy == null)
@@ -38,7 +50,11 @@ public class SPlayerDownloaderImpl
     localTPDownloadParamData.setUrl(paramSuperPlayerVideoInfo.getPlayUrl());
     localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
     localTPDownloadParamData.setDownloadFileID(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo));
-    localTPDownloadParamData.setDlType(1);
+    localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
+    localTPDownloadParamData.setDlType(getDlType(paramSuperPlayerVideoInfo.getFormat()));
+    if (paramSuperPlayerVideoInfo.getCookie() != null) {
+      localTPDownloadParamData.setUrlCookieList(paramSuperPlayerVideoInfo.getCookie());
+    }
     int i = this.mTPDownloadProxy.startOfflineDownload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), new SPlayerDownloaderImpl.1(this, paramListener));
     this.mTPDownloadProxy.startTask(i);
     return i;
@@ -53,7 +69,7 @@ public class SPlayerDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

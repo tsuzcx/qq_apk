@@ -1,157 +1,99 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
-class bdsf
-  extends bead
+public class bdsf
+  extends bdvl
 {
-  bdsf(bdse parambdse, String paramString1, String paramString2)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    super(paramString1, paramString2);
+    URL localURL = paramDownloadParams.url;
+    String str = paramDownloadParams.urlStr;
+    paramDownloadParams.url = new URL(paramDownloadParams.url.getFile());
+    paramDownloadParams.urlStr = paramDownloadParams.url.toString();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("AIOFlowerImgDownloader", 4, paramDownloadParams.urlStr);
+    }
+    paramOutputStream = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+    paramDownloadParams.url = localURL;
+    paramDownloadParams.urlStr = str;
+    return paramOutputStream;
   }
   
-  public void onDone(beae parambeae)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onDone, status=" + parambeae.a());
-    }
-    Bundle localBundle = parambeae.a();
-    int k = localBundle.getInt("callId");
-    int i = localBundle.getInt("resourceType");
-    boolean bool1;
-    boolean bool2;
-    Object localObject;
-    if (parambeae.a() == 3)
+    Canvas localCanvas = null;
+    paramURLDrawableHandler = null;
+    paramDownloadParams = new BitmapFactory.Options();
+    paramDownloadParams.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+    float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
+    paramDownloadParams.inSampleSize = ((int)Math.min(paramDownloadParams.outWidth / (115.0F * f + 0.5F), paramDownloadParams.outHeight / (f * 105.0F + 0.5F)));
+    paramDownloadParams.inJustDecodeBounds = false;
+    label234:
+    do
     {
-      bool1 = true;
-      bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = localBundle.getBoolean("isExists", false);
-        localObject = localBundle.getString("path");
-        if (!bool2) {
-          break label481;
-        }
-        label101:
-        bool2 = bool1;
-        if (!bool1)
-        {
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ColorRingManager", 2, "rename failure.");
-            bool2 = bool1;
-          }
-        }
-      }
-      if ((this.a.jdField_a_of_type_Beak != null) && (parambeae.a().getBoolean("isIPC")))
-      {
-        parambeae = new Bundle();
-        parambeae.putString("status", "onDone");
-        parambeae.putInt("fcStatus", 3);
-        parambeae.putInt("id", k);
-        parambeae.putInt("callId", k);
-        parambeae.putInt("srcType", localBundle.getInt("srcType"));
-        parambeae.putBoolean("result", bool2);
-        parambeae.putInt("resourceType", localBundle.getInt("resourceType"));
-        parambeae.putString("colorType", localBundle.getString("colorType"));
-        parambeae.putBoolean("result_boo", bool2);
-        parambeae.putInt("resourceType", i);
-        this.a.jdField_a_of_type_Beak.a(parambeae);
-      }
-      if (i == 3)
-      {
-        parambeae = (amca)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13);
-        i = parambeae.g();
-        if (i != 2) {
-          break label511;
-        }
-        i = 0;
-      }
-    }
-    label526:
-    label531:
-    for (;;)
-    {
-      label299:
+      int i;
       int j;
-      if ("colorring".equals(localBundle.getString("colorType")))
+      try
       {
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (bool2)
+        paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+        if (paramDownloadParams == null) {
+          return paramURLDrawableHandler;
+        }
+      }
+      catch (OutOfMemoryError paramFile)
+      {
+        for (;;)
         {
-          j = 0;
-          label330:
-          azqs.b((QQAppInterface)localObject, "CliOper", "", "", "0X8004A22", "0X8004A22", 0, j, "" + i, k + "", "", "");
+          paramDownloadParams = null;
         }
+        i = paramDownloadParams.getWidth();
+        j = paramDownloadParams.getHeight();
+        paramFile = localCanvas;
       }
-      else if ("comering".equals(localBundle.getString("colorType")))
+      try
       {
-        if (!bool2) {
-          break label526;
-        }
+        paramURLDrawableHandler = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        paramFile = paramURLDrawableHandler;
+        paramURLDrawableHandler.setDensity(160);
+        paramFile = paramURLDrawableHandler;
+        localCanvas = new Canvas(paramURLDrawableHandler);
+        paramFile = paramURLDrawableHandler;
+        Paint localPaint = new Paint(1);
+        paramFile = paramURLDrawableHandler;
+        localPaint.setColor(-16777216);
+        paramFile = paramURLDrawableHandler;
+        BaseApplicationImpl.getApplication();
+        paramFile = paramURLDrawableHandler;
+        Rect localRect = new Rect(0, 0, i, j - (int)(5.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density));
+        paramFile = paramURLDrawableHandler;
+        localCanvas.drawBitmap(paramDownloadParams, localRect, new RectF(localRect), localPaint);
+        paramFile = paramURLDrawableHandler;
       }
-      for (i = 0;; i = 1)
+      catch (OutOfMemoryError paramURLDrawableHandler)
       {
-        azqs.b(null, "CliOper", "", "", "0X8005002", "0X8005002", 0, i, "" + parambeae.g(), k + "", "", "");
-        return;
-        bool1 = false;
-        break;
-        label481:
-        bool1 = bdhb.c((String)localObject + ".tmp", (String)localObject);
-        break label101;
-        label511:
-        if (i != 3) {
-          break label531;
-        }
-        i = 2;
-        break label299;
-        j = 1;
-        break label330;
+        break label234;
       }
-    }
-  }
-  
-  public void onProgress(beae parambeae)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onProgress, loaded=" + parambeae.b + "percent=" + parambeae.a);
-    }
-    if ((parambeae.a().getBoolean("isIPC")) && (this.a.jdField_a_of_type_Beak != null))
-    {
-      Bundle localBundle1 = parambeae.a();
-      Bundle localBundle2 = new Bundle();
-      localBundle2.putString("status", "onProgress");
-      localBundle2.putInt("fcStatus", 2);
-      localBundle2.putInt("id", localBundle1.getInt("callId"));
-      localBundle2.putInt("callId", localBundle1.getInt("callId"));
-      localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
-      localBundle2.putInt("progress", (int)parambeae.a);
-      localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
-      localBundle2.putString("colorType", localBundle1.getString("colorType"));
-      this.a.jdField_a_of_type_Beak.a(localBundle2);
-    }
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onStart, loaded=" + parambeae.b + "percent=" + parambeae.a);
-    }
-    if ((parambeae.a().getBoolean("isIPC")) && (this.a.jdField_a_of_type_Beak != null))
-    {
-      parambeae = parambeae.a();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("status", "onStart");
-      localBundle.putInt("id", parambeae.getInt("callId"));
-      localBundle.putInt("fcStatus", 1);
-      localBundle.putInt("callId", parambeae.getInt("callId"));
-      localBundle.putInt("srcType", parambeae.getInt("srcType"));
-      localBundle.putInt("resourceType", parambeae.getInt("resourceType"));
-      localBundle.putString("colorType", parambeae.getString("colorType"));
-      this.a.jdField_a_of_type_Beak.a(localBundle);
-    }
-    return true;
+      paramURLDrawableHandler = paramFile;
+    } while (paramDownloadParams.isRecycled());
+    paramDownloadParams.recycle();
+    return paramFile;
   }
 }
 

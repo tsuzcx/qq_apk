@@ -1,34 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import java.io.RandomAccessFile;
 
-final class mwb
-  extends BroadcastReceiver
+public class mwb
+  extends mwa
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public float a;
+  public long a;
+  public MediaCodec.BufferInfo a;
+  public MediaExtractor a;
+  public RandomAccessFile a;
+  public String a;
+  public byte[] a;
+  public int b = 0;
+  public int c = 2147483647;
+  public int d;
+  public int e;
+  
+  public mwb()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while (!mwa.a.equals(paramIntent.getAction())) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("SensorReport", 1, "H264_decode");
-    }
-    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
-    paramIntent = paramIntent.getStringExtra("key");
-    paramContext = paramIntent;
-    if (paramIntent == null) {
-      paramContext = mwa.a;
-    }
-    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
+    super(null);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public String toString()
+  {
+    return "FileInfo{filename = " + this.jdField_a_of_type_JavaLangString + ", fileType = " + this.b + ", volumeScale = " + this.jdField_a_of_type_Float + ", mixCnt = " + this.c + ", channelNum = " + this.jdField_a_of_type_Int + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwb
  * JD-Core Version:    0.7.0.1
  */

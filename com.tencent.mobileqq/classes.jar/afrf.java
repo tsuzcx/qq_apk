@@ -1,17 +1,45 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
 
-class afrf
-  extends afuf
+public class afrf
+  implements bbaa
 {
-  afrf(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afrf(VisitorsActivity paramVisitorsActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    return new afnq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
+      }
+      paramInt2 = paramBitmap.getChildCount();
+    }
+    for (;;)
+    {
+      if (i < paramInt2)
+      {
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof afrw)))
+        {
+          localObject = (afrw)localObject;
+          if ((((afrw)localObject).b == paramInt1) && (((afrw)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((afrw)localObject).e, paramInt1);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
+      }
+    }
   }
 }
 

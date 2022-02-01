@@ -1,15 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class ajxh
-  implements ValueAnimator.AnimatorUpdateListener
+class ajxh
+  implements Comparator<ajyc>
 {
-  public ajxh(RotationSeekBar paramRotationSeekBar) {}
+  ajxh(ajxg paramajxg) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(ajyc paramajyc1, ajyc paramajyc2)
   {
-    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    return (int)(paramajyc2.a.time - paramajyc1.a.time);
   }
 }
 

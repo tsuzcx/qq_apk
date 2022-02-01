@@ -1,55 +1,55 @@
-import android.app.Application;
-import android.support.annotation.NonNull;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bmeu
-  extends bmew
+  extends QzoneExternalRequest
 {
-  private static bmeu jdField_a_of_type_Bmeu;
-  private Application jdField_a_of_type_AndroidAppApplication;
+  private JceStruct a;
   
-  public bmeu(@NonNull Application paramApplication)
+  public bmeu(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    ArrayList localArrayList = new ArrayList(1);
+    ReportExceptionInfo localReportExceptionInfo = new ReportExceptionInfo();
+    localReportExceptionInfo.iCode = paramInt3;
+    localReportExceptionInfo.iAppid = paramInt1;
+    localReportExceptionInfo.iTaskId = paramInt2;
+    localReportExceptionInfo.strMsg = paramString;
+    localArrayList.add(localReportExceptionInfo);
+    this.a = new MobileQbossReportExceptionReq(paramLong, localArrayList);
   }
   
-  @NonNull
-  public static bmeu a(@NonNull Application paramApplication)
+  public static MobileQbossReportExceptionRsp a(byte[] paramArrayOfByte)
   {
-    if (jdField_a_of_type_Bmeu == null) {
-      jdField_a_of_type_Bmeu = new bmeu(paramApplication);
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    return jdField_a_of_type_Bmeu;
+    MobileQbossReportExceptionRsp localMobileQbossReportExceptionRsp;
+    do
+    {
+      return paramArrayOfByte;
+      localMobileQbossReportExceptionRsp = (MobileQbossReportExceptionRsp)decode(paramArrayOfByte, "reportException");
+      paramArrayOfByte = localMobileQbossReportExceptionRsp;
+    } while (localMobileQbossReportExceptionRsp != null);
+    return null;
   }
   
-  @NonNull
-  public <T extends bmes> T a(@NonNull Class<T> paramClass)
+  public String getCmdString()
   {
-    if (bmer.class.isAssignableFrom(paramClass)) {
-      try
-      {
-        bmes localbmes = (bmes)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidAppApplication });
-        return localbmes;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-      }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
-      }
-    }
-    return super.a(paramClass);
+    return "QzoneNewService.mobileqboss.reportException";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "reportException";
   }
 }
 

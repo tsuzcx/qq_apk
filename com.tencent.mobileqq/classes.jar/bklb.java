@@ -1,22 +1,27 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.database.DataSetObserver;
+import com.tencent.widget.HorizontalListView;
 
-class bklb
-  implements ThreadPool.Job<Void>
+public class bklb
+  extends DataSetObserver
 {
-  bklb(bkks parambkks, List paramList) {}
+  public bklb(HorizontalListView paramHorizontalListView) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onChanged()
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bkks.a(l);
-    }
-    return null;
+    this.a.mDataChanged = true;
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
+  }
+  
+  public void onInvalidated()
+  {
+    HorizontalListView.access$402(this.a, false);
+    HorizontalListView.access$100(this.a);
+    this.a.reset(true);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
 }
 

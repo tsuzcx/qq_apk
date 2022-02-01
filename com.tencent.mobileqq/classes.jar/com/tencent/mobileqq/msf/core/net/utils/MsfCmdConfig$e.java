@@ -5,6 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,27 +22,62 @@ class MsfCmdConfig$e
   
   protected void a(int paramInt, List paramList)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    Pair localPair = null;
+    boolean bool = false;
+    Object localObject = BaseApplication.getContext().getSharedPreferences("pref_safemode_not_exit", 0);
+    SharedPreferences.Editor localEditor;
+    if (paramInt > ((SharedPreferences)localObject).getInt("key_not_exit_version", 0))
     {
-      Pair localPair = (Pair)paramList.next();
-      if ("enable".equals(localPair.first)) {
-        BaseApplication.getContext().getSharedPreferences("sp_safemode_test_crash_config", 4).edit().putBoolean("key_test_crash_switch", Boolean.parseBoolean((String)localPair.second)).commit();
+      localEditor = ((SharedPreferences)localObject).edit();
+      localEditor.putInt("key_not_exit_version", paramInt);
+      Iterator localIterator = paramList.iterator();
+      localObject = null;
+      paramList = localPair;
+      if (localIterator.hasNext())
+      {
+        localPair = (Pair)localIterator.next();
+        if ("enable".equals(localPair.first)) {
+          bool = Boolean.parseBoolean((String)localPair.second);
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      if ("crashType".equals(localPair.first))
+      {
+        if (localPair.second == null) {}
+        for (localObject = "";; localObject = (String)localPair.second) {
+          break;
+        }
+      }
+      if ("crashStack".equals(localPair.first))
+      {
+        if (localPair.second == null) {}
+        for (paramList = "";; paramList = (String)localPair.second) {
+          break;
+        }
+        QLog.d("MsfCmdConfig", 1, "noExitEnable=" + bool + ",noExitCrashType=" + (String)localObject + ",noExitCrashStack=" + paramList);
+        localEditor.putBoolean("key_not_exit_enable", bool);
+        localEditor.putString("key_not_exit_crash_type", (String)localObject);
+        localEditor.putString("key_not_exit_crash_stack", paramList);
+        localEditor.commit();
+        return;
       }
     }
   }
   
   protected boolean a()
   {
-    return ("test_flag".equals(this.a)) && (this.b != null) && (this.b.size() > 0);
+    return ("not_exit".equals(this.a)) && (this.b != null) && (this.b.size() > 0);
   }
   
   protected boolean a(Pair paramPair)
   {
-    if (!"enable".equals(paramPair.first)) {
+    if ((!"enable".equals(paramPair.first)) && (!"crashType".equals(paramPair.first)) && (!"crashStack".equals(paramPair.first))) {
       return false;
     }
-    return !TextUtils.isEmpty((CharSequence)paramPair.second);
+    return (!"enable".equals(paramPair.first)) || (!TextUtils.isEmpty((CharSequence)paramPair.second));
   }
 }
 

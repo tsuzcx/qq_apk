@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class beoi
-  implements bias
+  implements View.OnKeyListener
 {
-  public beoi(ContainerView paramContainerView) {}
+  public beoi(NewTroopContactView paramNewTroopContactView) {}
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
+    if (paramInt == 67)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
-      paramScrollView = ajxm.a();
-      if ((paramScrollView.c()) && (!paramScrollView.a())) {
-        paramScrollView.a();
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
       }
-      ContainerView.b(this.a, false);
-      return;
-      ContainerView.b(this.a, true);
-      paramScrollView = ajxm.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+    }
+    for (;;)
+    {
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Beol.a();
+      }
+    }
   }
 }
 

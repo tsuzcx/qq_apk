@@ -20,7 +20,7 @@ public class TAVStickerResourceExporter
   private static final String ERROR_MSG_ILLEGAL_PARAMETER = "参数错误。";
   private static final String ERROR_MSG_NO_DATA = "没有数据。";
   private static final String TAG = TAVStickerResourceExporter.class.getSimpleName();
-  private List<String> mExportList = new ArrayList();
+  private List<String> exports = new ArrayList();
   
   private boolean checkExportFilePath(String paramString, TAVStickerResourceExporter.IStickerResourceExportListener paramIStickerResourceExportListener)
   {
@@ -89,7 +89,7 @@ public class TAVStickerResourceExporter
     {
       try
       {
-        if (this.mExportList.contains(paramString))
+        if (this.exports.contains(paramString))
         {
           notifyExportFailed(paramString, paramIStickerResourceExportListener, "正在导出，请不要重复操作。");
           return;
@@ -106,7 +106,7 @@ public class TAVStickerResourceExporter
           if (paramIStickerResourceExportListener != null) {
             paramIStickerResourceExportListener.start(paramTAVSticker);
           }
-          this.mExportList.add(paramString);
+          this.exports.add(paramString);
           paramTAVSticker = new TAVStickerResourceExporter.ResourceExportTask(this, paramTAVSticker, paramIStickerResourceExportListener);
           ThreadPoolManager.get().start(paramTAVSticker);
           continue;
@@ -137,7 +137,7 @@ public class TAVStickerResourceExporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerResourceExporter
  * JD-Core Version:    0.7.0.1
  */

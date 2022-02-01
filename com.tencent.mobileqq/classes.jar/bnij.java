@@ -1,6 +1,15 @@
-public abstract interface bnij
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class bnij
+  implements Observer<bnnb>
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  bnij(bnii parambnii) {}
+  
+  public void a(@Nullable bnnb parambnnb)
+  {
+    bnii.a(this.a, parambnnb);
+  }
 }
 
 

@@ -1,11 +1,23 @@
 package cooperation.pluginbridge;
 
+import Override;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MainBridgeProxyActivity
   extends PluginProxyActivity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -13,10 +25,17 @@ public class MainBridgeProxyActivity
     }
     return super.getProxyActivity(paramString);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.pluginbridge.MainBridgeProxyActivity
  * JD-Core Version:    0.7.0.1
  */

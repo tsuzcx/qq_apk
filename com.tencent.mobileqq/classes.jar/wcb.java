@@ -1,147 +1,73 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wcb
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+class wcb
+  extends SimpleObserver<List<wcl>>
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean e;
+  wcb(wca paramwca, wcz paramwcz) {}
   
-  public wcb(ViewGroup paramViewGroup)
+  public void a(List<wcl> paramList)
   {
-    super(paramViewGroup);
-  }
-  
-  public String a()
-  {
-    return "UploadStatusVideoInfoWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379857));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379859));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379858));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379860));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    if (paramStoryVideoItem.isUploadFail())
-    {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700096);
-      }
-      while (this.e)
-      {
-        this.e = false;
-        wxj.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131700098);
-      }
-      wxj.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-      return;
+    super.onNext(paramList);
+    wca.a(this.jdField_a_of_type_Wca, 0);
+    Object localObject = new wce();
+    ((wce)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
+    ((wce)localObject).jdField_a_of_type_JavaUtilList = paramList;
+    wfo.a().dispatch((Dispatcher.Dispatchable)localObject);
+    if (!paramList.isEmpty()) {
+      wca.a(this.jdField_a_of_type_Wca, this.jdField_a_of_type_Wcz.a(), this.jdField_a_of_type_Wcz.b());
     }
-    if (paramStoryVideoItem.isUploading())
+    long l = System.currentTimeMillis() - wca.a(this.jdField_a_of_type_Wca);
+    String str = wca.a(paramList);
+    if (this.jdField_a_of_type_Wcz.a())
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = uoy.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131716320) + i + "%");
-      }
-      for (;;)
-      {
-        uoy.a().a(paramStoryVideoItem.mVid, new wcc(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131716322));
+      localObject = "2";
+      yqu.a("video_shoot_slides", "scan", 0, 0, new String[] { "", localObject, l + "" });
+      if (!this.jdField_a_of_type_Wcz.a()) {
+        break label271;
       }
     }
-    k();
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new wcd(this), "");
-  }
-  
-  public void a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    a(paramStoryVideoItem);
-  }
-  
-  public boolean a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
-  }
-  
-  public int b()
-  {
-    return 2131561634;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Vtt != null) {}
-    for (StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Vtt.a(); localStoryVideoItem == null; localStoryVideoItem = null)
+    label271:
+    for (localObject = "2";; localObject = "1")
     {
-      wxe.d(this.b, "video item not found ,click error..");
+      yqu.a("video_shoot_slides", "piece_smartalbum", 0, 0, new String[] { str, localObject, paramList.size() + "" });
+      yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split success timecost=%s : ScanInfo =%s result=%s", new Object[] { Long.valueOf(l), this.jdField_a_of_type_Wcz, str });
+      wca.a(this.jdField_a_of_type_Wca, this.jdField_a_of_type_Wcz);
       return;
+      localObject = "1";
+      break;
     }
-    switch (paramView.getId())
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    Object localObject = new wce();
+    ((wce)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = ((ErrorMessage)paramError);
+    ((wce)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
+    wfo.a().dispatch((Dispatcher.Dispatchable)localObject);
+    wca.a(this.jdField_a_of_type_Wca, 0);
+    yqp.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split falied : " + paramError);
+    long l1 = System.currentTimeMillis();
+    long l2 = wca.a(this.jdField_a_of_type_Wca);
+    int i = ((ErrorMessage)paramError).errorCode;
+    localObject = ((ErrorMessage)paramError).errorMsg;
+    if (this.jdField_a_of_type_Wcz.a()) {}
+    for (paramError = "2";; paramError = "1")
     {
-    default: 
+      yqu.a("video_shoot_slides", "scan", 0, i, new String[] { localObject, paramError, l1 - l2 + "" });
       return;
-    }
-    switch (localStoryVideoItem.mUploadStatus)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    }
-    if (!vls.a(localStoryVideoItem, b())) {
-      wxj.a("play_video", "retrypub_fail", 0, 0, new String[0]);
-    }
-    for (;;)
-    {
-      wxj.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      wxe.b(this.b, "on retry click !");
-      return;
-      this.e = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcb
  * JD-Core Version:    0.7.0.1
  */

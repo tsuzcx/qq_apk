@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class PhoneMatchActivity$2$1
@@ -17,7 +17,7 @@ class PhoneMatchActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

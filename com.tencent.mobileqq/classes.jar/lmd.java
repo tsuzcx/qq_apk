@@ -1,55 +1,68 @@
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.qphone.base.util.QLog;
 
-class lmd
+public class lmd
 {
-  int jdField_a_of_type_Int = -99;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = -99;
-  int c = -99;
-  int d = -99;
-  int e = -99;
-  int f = -99;
-  int g = -99;
-  int h = -99;
-  int i = -99;
-  int j = -99;
-  
-  void a()
+  public static int a(llv paramllv)
   {
-    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
-  }
-  
-  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
-  {
-    long l = this.j;
-    if (paramInt1 <= -99) {}
-    for (this.j = 0;; this.j += 1)
+    if (paramllv == null) {}
+    do
     {
-      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
-        QLog.w("AndroidCamera", 1, "PreviewCallback, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], CUR_CAMERA[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
+      do
+      {
+        return 11;
+        if (!TextUtils.isEmpty(paramllv.c)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramllv }));
+      return 11;
+      if (!paramllv.a) {
+        break;
       }
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.d = paramInt4;
-      this.e = paramInt5;
-      this.f = paramInt6;
-      this.g = paramInt7;
-      this.h = paramInt8;
-      this.i = paramInt9;
-      return;
-    }
+    } while (!a(paramllv));
+    return 1;
+    return 2;
   }
   
-  void b()
+  static SharedPreferences a()
   {
-    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
+    return EffectConfigBase.a(298, EffectConfigBase.c);
+  }
+  
+  public static String a()
+  {
+    return AVSoUtils.b();
+  }
+  
+  public static boolean a(llv paramllv)
+  {
+    String str1 = paramllv.b;
+    paramllv = a() + paramllv.d + ".so";
+    String str2 = a().getString("so_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (bgmg.a(paramllv)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramllv }));
+    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmd
  * JD-Core Version:    0.7.0.1
  */

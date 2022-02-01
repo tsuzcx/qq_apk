@@ -1,7 +1,9 @@
 package com.tencent.weseevideo.model.template.auto;
 
 import android.text.TextUtils;
+import com.tencent.autotemplate.model.TAVTransitionAutomaticEffect;
 import com.tencent.weseevideo.model.BaseMediaModel;
+import com.tencent.weseevideo.model.template.movie.MovieSegmentModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +14,12 @@ public class AutomaticMediaTemplateModel
   private String imagePagAssetDir = "";
   private boolean isRhythmTemplate;
   private boolean isSwitchToTemplateByUser;
+  private ArrayList<TAVTransitionAutomaticEffect> mTransitionEffects;
   private int randomIndex;
   private int randomType;
   private String rhythmEffectID;
   private List<Integer> rhythmSecondEffectIndices = new ArrayList();
+  private List<MovieSegmentModel> rhythmSegmentModels = new ArrayList();
   private String templateDir = "";
   private String templateFileName = "";
   
@@ -24,6 +28,7 @@ public class AutomaticMediaTemplateModel
     setRhythmTemplate(false);
     setRhythmEffectID(null);
     clearSegmentModels();
+    clearTransitionEffects();
     clearSecondEffectIndices();
     setRandomIndex(0);
     setRandomType(0);
@@ -36,7 +41,19 @@ public class AutomaticMediaTemplateModel
     }
   }
   
-  public void clearSegmentModels() {}
+  public void clearSegmentModels()
+  {
+    if (this.rhythmSegmentModels != null) {
+      this.rhythmSegmentModels.clear();
+    }
+  }
+  
+  public void clearTransitionEffects()
+  {
+    if (this.mTransitionEffects != null) {
+      this.mTransitionEffects.clear();
+    }
+  }
   
   public String getAssetDir()
   {
@@ -68,6 +85,11 @@ public class AutomaticMediaTemplateModel
     return this.rhythmSecondEffectIndices;
   }
   
+  public List<MovieSegmentModel> getRhythmSegmentModels()
+  {
+    return this.rhythmSegmentModels;
+  }
+  
   public String getTemplateDir()
   {
     return this.templateDir;
@@ -76,6 +98,16 @@ public class AutomaticMediaTemplateModel
   public String getTemplateFileName()
   {
     return this.templateFileName;
+  }
+  
+  public ArrayList<TAVTransitionAutomaticEffect> getTransitionEffects()
+  {
+    return this.mTransitionEffects;
+  }
+  
+  public boolean isContainSegments()
+  {
+    return (this.rhythmSegmentModels != null) && (!this.rhythmSegmentModels.isEmpty());
   }
   
   public boolean isEmpty()
@@ -123,6 +155,11 @@ public class AutomaticMediaTemplateModel
     this.rhythmSecondEffectIndices = paramList;
   }
   
+  public void setRhythmSegmentModels(List<MovieSegmentModel> paramList)
+  {
+    this.rhythmSegmentModels = paramList;
+  }
+  
   public void setRhythmTemplate(boolean paramBoolean)
   {
     this.isRhythmTemplate = paramBoolean;
@@ -142,10 +179,15 @@ public class AutomaticMediaTemplateModel
   {
     this.templateFileName = paramString;
   }
+  
+  public void setTransitionEffects(ArrayList<TAVTransitionAutomaticEffect> paramArrayList)
+  {
+    this.mTransitionEffects = paramArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

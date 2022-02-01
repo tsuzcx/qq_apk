@@ -1,19 +1,20 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
 
-class aknq
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class aknq
+  implements DialogInterface.OnClickListener
 {
-  aknq(aknn paramaknn) {}
+  public aknq(RedPacketPopFragment paramRedPacketPopFragment) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ntw;
+import oda;
 
 class PublicAccountHandler$2
   implements Runnable
@@ -9,15 +9,15 @@ class PublicAccountHandler$2
   
   public void run()
   {
-    ntw localntw = (ntw)this.this$0.app.getManager(88);
-    if (localntw != null) {
-      localntw.a(null, "FollowList");
+    oda localoda = (oda)this.this$0.app.getManager(88);
+    if (localoda != null) {
+      localoda.a(null, "FollowList");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler.2
  * JD-Core Version:    0.7.0.1
  */

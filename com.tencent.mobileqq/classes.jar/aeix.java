@@ -1,57 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.TroopShortcutbarFragment;
-import com.tencent.util.Pair;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeix
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public aeix(TroopShortcutbarFragment paramTroopShortcutbarFragment) {}
+  public aeix(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
-    {
-      paramThrowable = this.a.a.iterator();
-      while (paramThrowable.hasNext())
-      {
-        Pair localPair = (Pair)paramThrowable.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null)) {
-          ((URLImageView)localPair.second).setImageDrawable(this.a.getResources().getDrawable(2130843303));
-        }
-      }
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
-    if ((localDrawable instanceof RegionDrawable))
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
-      {
-        Pair localPair = (Pair)localIterator.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
-        {
-          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
-          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
-          ((URLImageView)localPair.second).setVisibility(0);
-        }
-      }
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingChatOperationFragment.class);
+    bcst.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

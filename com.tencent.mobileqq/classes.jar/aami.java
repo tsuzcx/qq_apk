@@ -1,27 +1,57 @@
-import android.content.Context;
-import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aami
-  implements AdProgressDialogAdapter
+class aami
+  implements View.OnClickListener
 {
-  private bety a;
+  aami(aamh paramaamh, tty paramtty, int paramInt, String paramString) {}
   
-  public void dismiss()
+  public void onClick(View paramView)
   {
-    if ((this.a != null) && (this.a.isShowing()))
+    aamh.a(this.jdField_a_of_type_Aamh, paramView, this.jdField_a_of_type_Tty);
+    QQAppInterface localQQAppInterface = ((BaseActivity)paramView.getContext()).app;
+    if (QLog.isColorLevel()) {
+      QLog.d(ServiceFolderFollowPBHeadView.a(), 2, "onClickFeedItem->uin:" + this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString + ", name:" + this.jdField_a_of_type_Tty.c);
+    }
+    String str1 = "0X80067F1";
+    int i = this.jdField_a_of_type_Tty.jdField_a_of_type_Int;
+    String str2;
+    int j;
+    if (i == 1)
     {
-      this.a.dismiss();
-      this.a = null;
+      str1 = "0X80067EF";
+      long l = tue.a().a(this.jdField_a_of_type_Tty);
+      bcst.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, str1, str1, 0, 0, "" + i, "" + l, "" + (this.jdField_a_of_type_Int + 1), "" + this.jdField_a_of_type_Tty.b);
+      alcv.a(localQQAppInterface, this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Tty.jdField_a_of_type_Int, this.jdField_a_of_type_Tty.b, 2, this.jdField_a_of_type_Tty.c);
+      str2 = this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Tty.jdField_a_of_type_Int;
+      j = this.jdField_a_of_type_Tty.b;
+      if (this.jdField_a_of_type_Tty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
+        break label445;
+      }
     }
-  }
-  
-  public void show(Context paramContext, int paramInt)
-  {
-    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
-      this.a = new bety(paramContext, paramInt);
-    }
-    if (this.a != null) {
-      this.a.show();
+    label445:
+    for (str1 = "";; str1 = this.jdField_a_of_type_Tty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg)
+    {
+      aoqq.b(localQQAppInterface, str2, i, j, str1, this.jdField_a_of_type_JavaLangString);
+      if (ahdq.a(this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString)) {
+        bcst.b(localQQAppInterface, "P_CliOper", "weather_public_account", "", "weather_public_account", "brief_weather_click", 0, 0, "", "", "8.4.1", "");
+      }
+      aaxb.a(this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, "auth_follow", "new_s_clk", 0, 0, new String[] { "", "", this.jdField_a_of_type_Tty.c, this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangCharSequence.toString() });
+      uac.a(null, "SUBSCRIPT_AIO_COST");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (i != 2) {
+        break;
+      }
+      str1 = "0X80067F0";
+      break;
     }
   }
 }

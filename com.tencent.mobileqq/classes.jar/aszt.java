@@ -1,33 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 
 class aszt
-  extends BroadcastReceiver
+  implements auas
 {
-  aszt(aszr paramaszr) {}
+  aszt(aszs paramaszs, aszu paramaszu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("GroupVideoManager|Communicate", 2, "get message from plugin: " + paramIntent.getExtras());
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      aszr.a(this.a, paramIntent, aszr.a(this.a));
-      return;
-    case 2: 
-      aszr.a(this.a, paramIntent, aszr.b(this.a));
-      return;
-    case 3: 
-      aszr.a(this.a, paramIntent);
-      return;
-    }
-    aszr.a(this.a);
+    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
+    this.jdField_a_of_type_Aszs.a = true;
+    this.jdField_a_of_type_Aszu.a(true);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
+    this.jdField_a_of_type_Aszu.a(false);
   }
 }
 

@@ -1,28 +1,46 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 public class yec
-  implements ydg
+  implements View.OnTouchListener
 {
-  public yec(DetailBaseAdapter.4.1 param1) {}
-  
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
-  }
-  
-  public void b()
-  {
-    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      Object localObject = ((TextView)paramView).getText();
+      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+      paramView = (TextView)paramView;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class yet
-  implements ymf
+public class yet
 {
-  yet(yes paramyes) {}
+  private qqstory_struct.GatherCardInfo a;
   
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public yet(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    if (paramBoolean)
+    this.a = paramGatherCardInfo;
+  }
+  
+  public yet(byte[] paramArrayOfByte)
+  {
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
     {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
-        this.a.setDatas((ArrayList)paramVarArgs[0]);
-      }
+      this.a.mergeFrom(paramArrayOfByte);
       return;
     }
-    QLog.d(yes.a, 4, "get drafts failed");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yet
  * JD-Core Version:    0.7.0.1
  */

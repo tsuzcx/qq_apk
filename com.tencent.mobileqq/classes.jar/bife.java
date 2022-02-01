@@ -1,17 +1,30 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 
 class bife
-  extends RecyclerView.ViewHolder
+  implements biev
 {
-  bife(bifb parambifb, View paramView)
+  bife(bifd parambifd) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramView);
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    avmi.a().a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bife
  * JD-Core Version:    0.7.0.1
  */

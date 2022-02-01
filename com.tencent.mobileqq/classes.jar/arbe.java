@@ -1,29 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arbe
-  implements bkkj<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
+public class arbe
 {
-  arbe(arau paramarau, arbi paramarbi) {}
+  public String a = anni.a(2131713516);
+  public String b = anni.a(2131713523);
+  public String c = anni.a(2131713519);
+  public String d = anni.a(2131713521);
+  public String e = anni.a(2131713514);
   
-  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  public static arbe a(aqlg[] paramArrayOfaqlg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
     }
-    if (this.jdField_a_of_type_Arbi != null) {
-      this.jdField_a_of_type_Arbi.a(paramInt, paramString);
+    arbe localarbe = new arbe();
+    try
+    {
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a).optJSONObject("MyFileNameConfig");
+      localarbe.a = paramArrayOfaqlg.optString("tdfileTabName");
+      localarbe.b = paramArrayOfaqlg.optString("wyfileTabName");
+      localarbe.c = paramArrayOfaqlg.optString("tdlistTabviewName");
+      localarbe.d = paramArrayOfaqlg.optString("createTXDocTitle");
+      localarbe.e = paramArrayOfaqlg.optString("safeShareToastWording");
+      return localarbe;
     }
-  }
-  
-  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    catch (JSONException paramArrayOfaqlg)
+    {
+      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfaqlg.getLocalizedMessage(), paramArrayOfaqlg);
     }
-    if (this.jdField_a_of_type_Arbi != null) {
-      this.jdField_a_of_type_Arbi.a(null);
-    }
+    return localarbe;
   }
 }
 

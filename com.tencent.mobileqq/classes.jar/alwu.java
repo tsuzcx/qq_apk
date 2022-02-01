@@ -1,19 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
 public class alwu
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public long e;
+  public alwu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwu
  * JD-Core Version:    0.7.0.1
  */

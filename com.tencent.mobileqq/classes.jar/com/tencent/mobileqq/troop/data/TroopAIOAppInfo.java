@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.text.TextUtils;
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appid,groupType")
 public class TroopAIOAppInfo
-  extends awge
+  extends Entity
   implements Serializable, Comparable<TroopAIOAppInfo>
 {
   static final long serialVersionUID = 1L;
@@ -97,7 +97,7 @@ public class TroopAIOAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAIOAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class OlympicPredownInfo
-  extends awge
+  extends Entity
 {
   public int dailyRetryCount;
   public long dailyStartTime;
   public int totalRetryCount;
-  @awhs
+  @unique
   public String url;
   
   public String toString()
@@ -24,7 +24,7 @@ public class OlympicPredownInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.OlympicPredownInfo
  * JD-Core Version:    0.7.0.1
  */

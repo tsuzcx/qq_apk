@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.view.View;
 
-public class bbda
-  implements DialogInterface.OnDismissListener
+public abstract interface bbda
 {
-  public bbda(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    TribeVideoListPlayerFragment.a(this.a);
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

@@ -1,17 +1,20 @@
+import java.util.ArrayList;
+
 public class uwr
 {
-  public final int a;
-  public final String a;
-  
-  public uwr(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public int a;
+  public String a;
+  public ArrayList<uwt> a;
+  public uws a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uwr
  * JD-Core Version:    0.7.0.1
  */

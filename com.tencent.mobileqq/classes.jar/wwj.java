@@ -1,116 +1,63 @@
-import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wwj
-  extends xvp
 {
-  public static final String KEY = "PlaceholderSegment";
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private wtq jdField_a_of_type_Wtq;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public wwj(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  @Nullable
+  public static wzp a(String paramString, List<wzp> paramList)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void W_()
-  {
-    X_();
-  }
-  
-  protected void X_()
-  {
-    xvp localxvp = a().a(this.jdField_b_of_type_JavaLangString);
-    if ((localxvp == null) || (localxvp.a() == 0))
-    {
-      e_(true);
-      return;
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    e_(false);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramwtq.a(2131373813);
-    ImageView localImageView = (ImageView)paramwtq.a(2131373814);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramViewGroup.setText(alud.a(2131708583) + ulg.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
-      QQStoryContext.a();
-      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        break label104;
+      wzp localwzp = (wzp)paramList.next();
+      if (paramString.equals(localwzp.a)) {
+        return localwzp;
       }
-      localImageView.setImageResource(this.jdField_b_of_type_Int);
     }
-    for (;;)
+    return null;
+  }
+  
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
     {
-      return paramwtq.a();
-      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
-      break;
-      label104:
-      localImageView.setImageResource(this.jdField_a_of_type_Int);
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
+        }
+      }
     }
-  }
-  
-  public String a()
-  {
-    return "PlaceholderSegment";
-  }
-  
-  public wtq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Wtq = new wtq(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561439, paramViewGroup, false));
-    return this.jdField_a_of_type_Wtq;
-  }
-  
-  protected void c()
-  {
-    X_();
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_Wtq == null) {}
-    ImageView localImageView;
-    do
-    {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_Wtq.a(2131373814);
-    } while (localImageView == null);
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
-    {
-      localImageView.setImageResource(this.jdField_b_of_type_Int);
+    if (paramList.size() == 0) {
       return;
     }
-    localImageView.setImageResource(this.jdField_a_of_type_Int);
+    yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new wzo(paramList);
+    wlb.a().a((wlf)localObject, new wwk(paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwj
  * JD-Core Version:    0.7.0.1
  */

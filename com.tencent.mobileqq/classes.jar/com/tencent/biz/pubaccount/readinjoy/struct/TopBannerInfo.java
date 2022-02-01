@@ -1,44 +1,44 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import qnf;
-import qng;
-import qni;
+import rib;
+import ric;
+import rie;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
 
 public class TopBannerInfo
-  extends awge
+  extends Entity
 {
   private static final String TAG = "TopBannerInfo";
-  @awhp
-  public final List<qng> dynamicItems = new ArrayList();
-  @awhp
-  public final List<qnf> items = new ArrayList();
+  @notColumn
+  public final List<ric> dynamicItems = new ArrayList();
+  @notColumn
+  public final List<rib> items = new ArrayList();
   public byte[] itemsByte;
   public int mChannelId = -1;
   public String mCookie;
-  @awhp
-  public qni moreChannelItem;
+  @notColumn
+  public rie moreChannelItem;
   
-  public void addDynamicItem(qng paramqng)
+  public void addDynamicItem(ric paramric)
   {
-    this.dynamicItems.add(paramqng);
+    this.dynamicItems.add(paramric);
   }
   
-  public void addItem(qnf paramqnf)
+  public void addItem(rib paramrib)
   {
-    this.items.add(paramqnf);
+    this.items.add(paramrib);
   }
   
   public boolean isBothEmpty()
@@ -71,7 +71,7 @@ public class TopBannerInfo
           localIterator = localBannerRoundRspBody.rpt_msg_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = qnf.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
+            localObject = rib.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
             if (localObject != null)
             {
               this.items.add(localObject);
@@ -87,7 +87,7 @@ public class TopBannerInfo
         QLog.d("TopBannerInfo", 1, "", localInvalidProtocolBufferMicroException);
       }
     }
-    qni localqni;
+    rie localrie;
     do
     {
       do
@@ -97,16 +97,16 @@ public class TopBannerInfo
           localIterator = localInvalidProtocolBufferMicroException.rpt_msg_dynamic_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = qng.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
+            localObject = ric.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
             if (localObject != null) {
               this.dynamicItems.addAll((Collection)localObject);
             }
           }
         }
       } while (!localInvalidProtocolBufferMicroException.msg_more_channel_item.has());
-      localqni = qni.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
-    } while (localqni == null);
-    this.moreChannelItem = localqni;
+      localrie = rie.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
+    } while (localrie == null);
+    this.moreChannelItem = localrie;
   }
   
   public void prewrite()
@@ -117,13 +117,13 @@ public class TopBannerInfo
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.items.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((qnf)localIterator.next()).a());
+        localArrayList.add(((rib)localIterator.next()).a());
       }
       localBannerRoundRspBody.rpt_msg_banner_list.addAll(localArrayList);
       localArrayList = new ArrayList();
       localIterator = this.dynamicItems.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((qng)localIterator.next()).a());
+        localArrayList.add(((ric)localIterator.next()).a());
       }
       if (this.moreChannelItem != null) {
         localBannerRoundRspBody.msg_more_channel_item.set(this.moreChannelItem.a());
@@ -133,9 +133,9 @@ public class TopBannerInfo
     }
   }
   
-  public void setMoreChannelItem(qni paramqni)
+  public void setMoreChannelItem(rie paramrie)
   {
-    this.moreChannelItem = paramqni;
+    this.moreChannelItem = paramrie;
   }
   
   public String toString()

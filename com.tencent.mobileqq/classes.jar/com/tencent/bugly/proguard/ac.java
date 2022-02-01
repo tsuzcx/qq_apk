@@ -2,7 +2,7 @@ package com.tencent.bugly.proguard;
 
 public abstract interface ac
 {
-  public abstract boolean a(Thread paramThread);
+  public abstract boolean a(aa paramaa);
 }
 
 

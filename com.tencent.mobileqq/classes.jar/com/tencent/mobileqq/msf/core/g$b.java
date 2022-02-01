@@ -1,105 +1,60 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.msf.core.net.b;
-import com.tencent.mobileqq.msf.core.net.l;
-import com.tencent.mobileqq.msf.core.quicksend.f;
+import com.tencent.mobileqq.a.a.a;
+import com.tencent.mobileqq.monitor.MsfMonitorCallback;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 
 class g$b
-  extends Handler
+  implements Runnable
 {
-  public g$b(g paramg, Looper paramLooper)
+  public ToServiceMsg a;
+  
+  g$b(g paramg, ToServiceMsg paramToServiceMsg)
   {
-    super(paramLooper);
+    this.a = paramToServiceMsg;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    do
     {
-    default: 
-    case 2: 
-      do
+      try
       {
-        do
-        {
+        if ((g.a(this.b) != null) && (g.a(this.b).mMsfMonitorCallback != null)) {
+          g.a(this.b).mMsfMonitorCallback.handleStart(3);
+        }
+        Object localObject1 = Thread.currentThread().getName();
+        int i = g.b(this.b).getActiveCount();
+        if (QLog.isColorLevel()) {
+          QLog.d("LightSender", 2, "threadName: " + (String)localObject1 + " threadPoolAccount: " + i);
+        }
+        localObject1 = this.a;
+        if (localObject1 == null) {
           return;
-          if (!g.a(this.a)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("LightTcpSender", 2, "Network is exit " + this.a.b);
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        QLog.d("LightSender", 1, "LightSender sendTask exception,", localException);
         return;
-        if (this.a.a()) {
+      }
+      finally
+      {
+        if ((g.a(this.b) == null) || (g.a(this.b).mMsfMonitorCallback == null)) {
           break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("LightTcpSender", 2, "Network is closed " + this.a.b);
-      return;
-      while ((!g.a(this.a)) && (this.a.e.size() > 0))
-      {
-        ToServiceMsg localToServiceMsg = (ToServiceMsg)this.a.e.poll();
-        if (localToServiceMsg != null)
-        {
-          f localf = new f();
-          localf.b = SystemClock.elapsedRealtime();
-          localf.j = localf.b;
-          localf.g = localf.b;
-          String str2 = g.a(this.a, localToServiceMsg);
-          String str1 = "";
-          paramMessage = str1;
-          if (localToServiceMsg.getAttributes().containsKey("connIDC"))
-          {
-            paramMessage = str1;
-            if (localToServiceMsg.getAttributes().get("connIDC") != null)
-            {
-              str1 = (String)localToServiceMsg.getAttributes().get("connIDC");
-              paramMessage = str1;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("LightTcpSender", 2, "sleectConnect ssoSeq:" + localToServiceMsg.getRequestSsoSeq() + " connIDC: " + str1);
-                paramMessage = str1;
-              }
-            }
-          }
-          if ((g.b(this.a)) || (g.a(this.a, localToServiceMsg, localf, str2, paramMessage)))
-          {
-            g.a(this.a, localf, localToServiceMsg);
-            if (!g.b(this.a)) {
-              this.a.a.c();
-            }
-          }
-        }
+        g.a(this.b).mMsfMonitorCallback.handleEnd(3);
       }
-    }
-    try
-    {
-      this.a.e.clear();
-      this.a.a.c();
-      this.a.a.d();
-      paramMessage = g.c(this.a);
-    }
-    catch (Exception paramMessage)
-    {
-      for (;;)
-      {
-        QLog.i("LightTcpSender", 1, paramMessage.getMessage(), paramMessage);
-        paramMessage.printStackTrace();
-        paramMessage = g.c(this.a);
-      }
-    }
-    finally
-    {
-      l.c(g.c(this.a));
-    }
-    l.c(paramMessage);
+      g.c(this.b).add(this.a);
+      a.a().c(this.a);
+      this.b.c(this.a);
+      this.b.b(this.a);
+    } while ((g.a(this.b) == null) || (g.a(this.b).mMsfMonitorCallback == null));
+    g.a(this.b).mMsfMonitorCallback.handleEnd(3);
   }
 }
 

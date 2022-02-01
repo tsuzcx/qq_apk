@@ -1,16 +1,23 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class agac
-  extends aeqi
+final class agac
+  extends anxg
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
+  agac(SessionInfo paramSessionInfo) {}
   
-  public agac(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  {
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
+    }
+  }
 }
 
 

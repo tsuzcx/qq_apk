@@ -1,6 +1,16 @@
-public abstract interface bdnk
+import android.text.Editable;
+import android.text.Editable.Factory;
+
+final class bdnk
+  extends Editable.Factory
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof bdnj)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bdnj(paramCharSequence, 32);
+  }
 }
 
 

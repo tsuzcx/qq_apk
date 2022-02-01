@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-
-class blvx
-  implements axpu
+public abstract interface blvx
 {
-  blvx(blvw paramblvw, boolean paramBoolean) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Blvw.a = new blvy(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Blvw.a);
-  }
+  public abstract void onLoadOver(boolean paramBoolean);
 }
 
 

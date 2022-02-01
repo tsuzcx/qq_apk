@@ -1,62 +1,100 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.content.Context;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1;
 
 public class uto
-  extends usn
+  extends ueh<uru>
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new utq(this);
+  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
+  private WSPlayerControlBar jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+  private WSVerticalVideoRelativeLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout;
+  private utw jdField_a_of_type_Utw;
+  private boolean jdField_a_of_type_Boolean;
   
-  public uto(ust paramust, ShareGroupItem paramShareGroupItem)
+  public uto(Context paramContext, utw paramutw, WSVerticalVideoRelativeLayout paramWSVerticalVideoRelativeLayout)
   {
-    super(paramust);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+    super(paramContext);
+    this.jdField_a_of_type_Utw = paramutw;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = paramWSVerticalVideoRelativeLayout;
+    if ((this.jdField_a_of_type_Utw != null) && (this.jdField_a_of_type_Utw.a != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = this.jdField_a_of_type_Utw.a.a();
+    }
   }
   
-  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  private void i()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
-      super.a(paramView, paramCommentEntry, paramInt);
-    }
-    paramView = QQStoryContext.a().b();
-    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_Ust.a);
-    if (paramCommentEntry.authorUnionId.equals(paramView)) {
-      if (paramCommentEntry.status == 2)
-      {
-        localbhuf.c(alud.a(2131714327));
-        localbhuf.a(alud.a(2131714321), 3);
-      }
-    }
-    for (;;)
-    {
-      localbhuf.d(alud.a(2131714303));
-      localbhuf.a(new usq(this, localbhuf, paramCommentEntry, paramInt));
-      localbhuf.show();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout == null) {
       return;
-      localbhuf.c(alud.a(2131714304));
-      break;
-      if ((this.b) && (this.jdField_a_of_type_Boolean))
-      {
-        localbhuf.c(alud.a(2131714315));
-        localbhuf.a(alud.a(2131714324), 3);
-        localbhuf.c(alud.a(2131714331));
-      }
-      else
-      {
-        localbhuf.c(alud.a(2131714314));
-        localbhuf.c(alud.a(2131714322));
-      }
+    }
+    WSVerticalItemVideoProgressController.1 local1 = new WSVerticalItemVideoProgressController.1(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout.setDispatchTouchEventListener(new utp(this, local1));
+  }
+  
+  protected void a() {}
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setProgress(paramFloat);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected int b()
+  {
+    return 2131560021;
+  }
+  
+  protected void b()
+  {
+    a(0.0F);
+  }
+  
+  protected void c()
+  {
+    h();
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131380824));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
+    i();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.a();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.b();
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uto
  * JD-Core Version:    0.7.0.1
  */

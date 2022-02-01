@@ -1,21 +1,59 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class awun
-  implements bdoh<Rect>
+  extends awte
 {
-  public awun(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public awun(MultiCardFragment paramMultiCardFragment) {}
   
-  public void a(bdob<Rect> parambdob, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
+          {
+            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+            MultiCardFragment.a(this.a).a();
+          }
+        } while (MultiCardFragment.a(this.a) == null);
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      return;
+    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awun
  * JD-Core Version:    0.7.0.1
  */

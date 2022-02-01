@@ -1,81 +1,35 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xoc
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<xoe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private xoe jdField_a_of_type_Xoe;
+  public xoc(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xoc(Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  @Nullable
-  public xoe a()
-  {
-    return this.jdField_a_of_type_Xoe;
-  }
-  
-  public void a(List<xoe> paramList)
-  {
-    if (paramList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nullable xoe paramxoe)
-  {
-    this.jdField_a_of_type_Xoe = paramxoe;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561587, null);
-      paramView = new xod(paramViewGroup);
-      paramViewGroup.setTag(paramView);
+    if (!bgnt.g(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131693946, 0).a();
     }
     for (;;)
     {
-      paramView.a((xoe)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Xoe);
-      return paramView.a;
-      paramView = (xod)paramView.getTag();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      yqp.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.a.a(10, true, "retry play");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xoc
  * JD-Core Version:    0.7.0.1
  */

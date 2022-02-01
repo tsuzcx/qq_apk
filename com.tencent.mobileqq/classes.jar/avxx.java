@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public final class avxx
-  implements Parcelable.Creator<OcrRecogResult>
+final class avxx
+  implements DialogInterface.OnClickListener
 {
-  public OcrRecogResult a(Parcel paramParcel)
-  {
-    return new OcrRecogResult(paramParcel);
-  }
+  avxx(BaseActivity paramBaseActivity) {}
   
-  public OcrRecogResult[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new OcrRecogResult[paramInt];
+    bier.c();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxx
  * JD-Core Version:    0.7.0.1
  */

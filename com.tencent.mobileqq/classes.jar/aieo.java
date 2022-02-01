@@ -1,8 +1,19 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public abstract interface aieo
+class aieo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  aieo(aidp paramaidp, PublicAccountInfo paramPublicAccountInfo, anrs paramanrs) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Anrs.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Aidp.a(2, null);
+  }
 }
 
 

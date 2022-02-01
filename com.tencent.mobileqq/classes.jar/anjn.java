@@ -1,9 +1,9 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import SummaryCard.CondFitUser;
+import java.util.List;
 
-abstract interface anjn
+public abstract interface anjn
 {
-  public abstract void a(ArrayList<WadlResult> paramArrayList);
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

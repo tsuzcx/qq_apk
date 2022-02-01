@@ -1,36 +1,17 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aegu
-  implements Animation.AnimationListener
+  extends aywi
 {
-  public int a;
-  public View a;
+  public aegu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    super.b(paramBoolean, paramInt);
+    if ((this.a.g) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
+    this.a.g = false;
   }
 }
 

@@ -1,11 +1,29 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
 
 public class agck
-  implements biac
+  extends View
 {
-  public agck(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  agck(agci paramagci, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public void a() {}
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
+    }
+    return true;
+  }
 }
 
 

@@ -1,128 +1,132 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class awha
-  extends awgq
 {
-  public awha()
+  public long a;
+  public final String a;
+  public final ArrayList<Integer> a;
+  public boolean a;
+  public awhb[] a;
+  public String b;
+  public boolean b;
+  
+  public awha(String paramString)
   {
-    this.a = 8;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfAwhb = new awhb[6];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfAwhb.length)
+    {
+      this.jdField_a_of_type_ArrayOfAwhb[i] = null;
+      i += 1;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = bgln.a();
+    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public void a()
   {
-    paramawge = (SearchHistory)paramawge;
-    if (paramawgp == null)
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      paramawge.key = paramCursor.getString(paramCursor.getColumnIndex("key"));
-      paramawge.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
-      paramawge.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramawge.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramawge.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
-      paramawge.extralInfo = paramCursor.getString(paramCursor.getColumnIndex("extralInfo"));
-      paramawge.count = paramCursor.getInt(paramCursor.getColumnIndex("count"));
-      paramawge.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
-      return paramawge;
+      return;
+      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "init");
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    int i = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
+      }
     }
-    int i = paramCursor.getColumnIndex("key");
-    if (i == -1)
+    do
     {
-      paramawgp.a(new NoColumnError("key", String.class));
-      i = paramCursor.getColumnIndex("type");
-      if (i != -1) {
-        break label448;
+      return;
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
       }
-      paramawgp.a(new NoColumnError("type", Integer.TYPE));
-      label225:
-      i = paramCursor.getColumnIndex("uin");
-      if (i != -1) {
-        break label463;
+      this.jdField_b_of_type_Boolean = false;
+      while (i < this.jdField_a_of_type_ArrayOfAwhb.length)
+      {
+        this.jdField_a_of_type_ArrayOfAwhb[i] = null;
+        i += 1;
       }
-      paramawgp.a(new NoColumnError("uin", String.class));
-      label259:
-      i = paramCursor.getColumnIndex("troopUin");
-      if (i != -1) {
-        break label478;
-      }
-      paramawgp.a(new NoColumnError("troopUin", String.class));
-      label293:
-      i = paramCursor.getColumnIndex("displayName");
-      if (i != -1) {
-        break label493;
-      }
-      paramawgp.a(new NoColumnError("displayName", String.class));
-      label327:
-      i = paramCursor.getColumnIndex("extralInfo");
-      if (i != -1) {
-        break label508;
-      }
-      paramawgp.a(new NoColumnError("extralInfo", String.class));
-      label361:
-      i = paramCursor.getColumnIndex("count");
-      if (i != -1) {
-        break label523;
-      }
-      paramawgp.a(new NoColumnError("count", Integer.TYPE));
-    }
+      this.jdField_b_of_type_JavaLangString = "";
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
+    return;
     for (;;)
     {
-      i = paramCursor.getColumnIndex("time");
-      if (i != -1) {
-        break label538;
+      Object localObject;
+      try
+      {
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
+          break label359;
+        }
+        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
       }
-      paramawgp.a(new NoColumnError("time", Long.TYPE));
-      return paramawge;
-      paramawge.key = paramCursor.getString(i);
-      break;
-      label448:
-      paramawge.type = paramCursor.getInt(i);
-      break label225;
-      label463:
-      paramawge.uin = paramCursor.getString(i);
-      break label259;
-      label478:
-      paramawge.troopUin = paramCursor.getString(i);
-      break label293;
-      label493:
-      paramawge.displayName = paramCursor.getString(i);
-      break label327;
-      label508:
-      paramawge.extralInfo = paramCursor.getString(i);
-      break label361;
-      label523:
-      paramawge.count = paramCursor.getInt(i);
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      finally {}
+      if ((i < this.jdField_a_of_type_ArrayOfAwhb.length) && (i < awgy.a.length))
+      {
+        if (((JSONObject)localObject).has(awgy.a[i])) {
+          this.jdField_a_of_type_ArrayOfAwhb[i] = awhb.a(((JSONObject)localObject).getJSONObject(awgy.a[i]));
+        } else {
+          this.jdField_a_of_type_ArrayOfAwhb[i] = null;
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_JavaLangString = paramString;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject = new StringBuilder(300);
+        ((StringBuilder)localObject).append("parseConfig:").append("\n");
+        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
+        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
+        i = j;
+        while ((i < this.jdField_a_of_type_ArrayOfAwhb.length) && (i < awgy.a.length))
+        {
+          ((StringBuilder)localObject).append(awgy.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfAwhb[i]).append("\n");
+          i += 1;
+        }
+        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
+        continue;
+        label359:
+        i = 0;
+        continue;
+      }
+      i += 1;
     }
-    label538:
-    paramawge.time = paramCursor.getLong(i);
-    return paramawge;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,key TEXT UNIQUE ,type INTEGER ,uin TEXT ,troopUin TEXT ,displayName TEXT ,extralInfo TEXT ,count INTEGER ,time INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(awge paramawge, ContentValues paramContentValues)
-  {
-    paramawge = (SearchHistory)paramawge;
-    paramContentValues.put("key", paramawge.key);
-    paramContentValues.put("type", Integer.valueOf(paramawge.type));
-    paramContentValues.put("uin", paramawge.uin);
-    paramContentValues.put("troopUin", paramawge.troopUin);
-    paramContentValues.put("displayName", paramawge.displayName);
-    paramContentValues.put("extralInfo", paramawge.extralInfo);
-    paramContentValues.put("count", Integer.valueOf(paramawge.count));
-    paramContentValues.put("time", Long.valueOf(paramawge.time));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awha
  * JD-Core Version:    0.7.0.1
  */

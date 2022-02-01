@@ -1,139 +1,95 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.http.AvatarUpdateService.1;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class bfmb
-  implements bfmn
+class bfmb
+  extends anqd
 {
-  private static bfmb a;
-  public SharedPreferences a;
-  public HashMap<String, bfmc> a;
+  bfmb(bfly parambfly) {}
   
-  protected bfmb()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static bfmb a()
-  {
-    try
+    if ((bfly.a(this.a) == null) || (bfly.a(this.a).a == null) || (bfly.a(this.a).M))
     {
-      if (jdField_a_of_type_Bfmb == null) {
-        jdField_a_of_type_Bfmb = new bfmb();
-      }
-      return jdField_a_of_type_Bfmb;
+      break label36;
+      break label36;
+      break label36;
+      break label36;
     }
-    finally {}
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, bfmn parambfmn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarUpdateService", 2, "-->updateAvatar--uin = " + paramString1);
-    }
-    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
-    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
-    str1 = "o" + str1;
-    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambfmn), 5, null, true);
-  }
-  
-  protected void a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap == null) {}
-    do
-    {
-      return;
-      paramString = bdhj.a(paramString);
-    } while (paramString == null);
-    paramString = new FileOutputStream(paramString);
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-    paramString.flush();
-    paramString.close();
-  }
-  
-  public void a(String paramString, Bitmap arg2)
-  {
-    boolean bool2 = true;
-    Object localObject1;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localObject1 = (bfmc)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
-          if (??? == null)
-          {
-            bool1 = true;
-            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
-            if (localObject1 != null) {
-              break label116;
-            }
-            bool1 = bool2;
-            QLog.d("AvatarUpdateService", 2, bool1);
-          }
-        }
-        else
-        {
-          if (localObject1 != null) {
-            break;
-          }
-          return;
-        }
-      }
-      boolean bool1 = false;
-      continue;
-      label116:
-      bool1 = false;
-    }
-    ??? = (Context)((bfmc)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((??? != null) && (??? != null))
-    {
-      ??? = bfii.a((Context)???, ???, 63, 63);
-      if (??? == null) {}
-    }
-    try
-    {
-      a(???, ((bfmc)localObject1).jdField_b_of_type_JavaLangString);
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putString(((bfmc)localObject1).jdField_a_of_type_JavaLangString, ((bfmc)localObject1).c);
-      ((SharedPreferences.Editor)???).commit();
-      label205:
-      localObject1 = (bfmn)((bfmc)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null)
+      label36:
+      return;
+      if (paramBoolean1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
+          QLog.i("AppShortcutBarProcessor", 2, "onGetSystemMsgFin.success");
         }
-        ((bfmn)localObject1).a(paramString, ???);
+        Object localObject = bfly.a(this.a).a.a().b(anhk.N, 0);
+        bfkp localbfkp = null;
+        paramList = localbfkp;
+        if (localObject != null)
+        {
+          paramList = localbfkp;
+          if (((List)localObject).size() - 1 >= 0) {
+            paramList = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
+          }
+        }
+        if ((paramList == null) || (!(paramList instanceof MessageForSystemMsg))) {
+          break;
+        }
+        paramList = ((MessageForSystemMsg)paramList).getSystemMsg();
+        if ((paramList.msg_type.get() != 2) || (paramList.msg.get() == null)) {
+          break;
+        }
+        int i = paramList.msg.group_msg_type.get();
+        if ((i != 3) && (i != 15)) {
+          break;
+        }
+        long l = paramList.msg.group_code.get();
+        if (!bfly.a(this.a).equalsIgnoreCase("" + l)) {
+          break;
+        }
+        paramList = ((TroopManager)bfly.a(this.a).a.getManager(52)).b(bfly.a(this.a));
+        if (paramList == null) {
+          break;
+        }
+        try
+        {
+          localObject = (bfkr)bfly.a(this.a).a.getManager(355);
+          localbfkp = (bfkp)bfly.a(this.a).a.a(171);
+          localObject = ((bfkr)localObject).a(Long.valueOf(bfly.a(this.a)));
+          if (localObject != null)
+          {
+            ((bfkq)localObject).c(0);
+            ((bfkq)localObject).d(0);
+            ((bfkq)localObject).a(0L);
+            localbfkp.a(bfly.a(this.a), (int)paramList.dwGroupClassExt);
+            return;
+          }
+        }
+        catch (Exception paramList)
+        {
+          QLog.e("AppShortcutBarProcessor", 1, paramList.getMessage());
+        }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        return;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      break label205;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfmb
  * JD-Core Version:    0.7.0.1
  */

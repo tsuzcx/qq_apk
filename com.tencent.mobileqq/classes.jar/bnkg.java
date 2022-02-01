@@ -1,52 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
 
-public class bnkg
-  implements MediaPlayer.OnPreparedListener
+class bnkg
+  implements Animator.AnimatorListener
 {
-  public bnkg(ShortVideoPreviewActivity paramShortVideoPreviewActivity, int paramInt) {}
+  bnkg(bnkd parambnkd) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_b_of_type_Long);
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
     }
-    paramMediaPlayer = this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((paramMediaPlayer == null) || (!paramMediaPlayer.getSurface().isValid()))
-    {
-      arri.a(2131691372);
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.f();
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.c) && (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(paramMediaPlayer);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int = this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-      if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int > 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int));
-        }
-        this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.d.setText(ShortVideoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int));
-        this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    if (this.jdField_a_of_type_Int > 0) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.b(1);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

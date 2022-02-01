@@ -1,65 +1,163 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.WebView;
+import eipc.EIPCClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjtt
-  implements Downloader.DownloadListener
+@JsPlugin(secondary=true)
+public class bjtt
+  extends BaseJsPlugin
 {
-  bjtt(bjts parambjts, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
-  
-  public void onDownloadCanceled(String paramString)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
-    File localFile = new File(bjts.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
+    catch (JSONException localJSONException)
+    {
+      QLog.e("TenDocChannelPlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
     }
-    if (bjts.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bjts.jdField_a_of_type_ArrayOfBoolean[bjts.a(this.jdField_a_of_type_Bjts)] = false;
+    return null;
+  }
+  
+  private void a(Activity paramActivity, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        boolean bool = localJSONObject.optBoolean("success");
+        String str = localJSONObject.optString("url");
+        paramString = localJSONObject.optString("fileName");
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("isSuccess", bool);
+        localBundle.putString("url", str);
+        localBundle.putString("fileName", paramString);
+        if ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) || (((TeamWorkDocEditBrowserActivity)paramActivity).getHostWebView() == null)) {
+          break label203;
+        }
+        paramActivity = ((TeamWorkDocEditBrowserActivity)paramActivity).getHostWebView().getUrl();
+        paramString = paramActivity;
+        if (TextUtils.isEmpty(paramActivity)) {
+          paramString = localJSONObject.optString("refer_url");
+        }
+        localBundle.putString("docUrl", paramString);
+        localBundle.putString("cookie", CookieManager.getInstance().getCookie(str));
+        localBundle.putBoolean("isMiniProgram", true);
+        QIPCClientHelper.getInstance().getClient().callServer("TeamWorkModule", "action_download_export_file", localBundle);
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("TenDocChannelPlugin", 1, "downloadExportedFile exception e = " + paramActivity.toString());
+        continue;
+      }
+      finally {}
+      return;
+      label203:
+      paramActivity = null;
     }
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  private void b(Activity paramActivity, String paramString)
   {
-    File localFile = new File(bjts.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    try
+    {
+      paramString = new JSONObject(paramString).optString("fileName");
+      new Bundle().putString("fileName", paramString);
+      bdhu.a(paramActivity, paramString, true);
+      bdkv.a(null, "0X800A4B2");
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
+    catch (Exception paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("TenDocChannelPlugin", 1, "startExportedFile exception e = " + paramActivity.toString());
+      }
     }
-    if (bjts.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bjts.jdField_a_of_type_ArrayOfBoolean[bjts.a(this.jdField_a_of_type_Bjts)] = false;
-    }
+    finally {}
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  private void c(Activity paramActivity, String paramString)
   {
-    File localFile = new File(bjts.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    try
+    {
+      paramString = new JSONObject(paramString).optString("folderId");
+      Intent localIntent = new Intent(paramActivity, FMActivity.class);
+      localIntent.putExtra(bdhn.f, true);
+      localIntent.addFlags(536870912);
+      localIntent.putExtra("selectMode", true);
+      localIntent.putExtra("busiType", 9);
+      localIntent.putExtra("peerType", 10006);
+      localIntent.putExtra("enterfrom", 9);
+      localIntent.putExtra("tab_tab_type", 7);
+      localIntent.putExtra("only_show_local_tab", true);
+      localIntent.putExtra(bdhn.g, paramString);
+      localIntent.putExtra("smart_device_support_flag", 8);
+      paramActivity.startActivity(localIntent);
+      return;
     }
-    localFile = new File(bjts.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(bjts.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
+    catch (Exception paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("TenDocChannelPlugin", 1, "openFMActivityToImport exception", paramActivity);
+      }
     }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
+    finally {}
+  }
+  
+  @JsEvent({"tdoc_channel"})
+  public void tdocChannel(RequestEvent paramRequestEvent)
+  {
+    Object localObject;
+    Activity localActivity;
+    try
+    {
+      localObject = new JSONObject(a(paramRequestEvent).optString("data"));
+      paramRequestEvent = ((JSONObject)localObject).getString("action");
+      localObject = ((JSONObject)localObject).getString("data");
+      localActivity = this.mMiniAppContext.getAttachedActivity();
+      if (TextUtils.equals(paramRequestEvent, "openLocalFilesToImport"))
+      {
+        c(localActivity, (String)localObject);
+        return;
+      }
+      if (TextUtils.equals(paramRequestEvent, "txDocsStartExport"))
+      {
+        b(localActivity, (String)localObject);
+        return;
+      }
     }
-    if (bjts.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bjts.jdField_a_of_type_ArrayOfBoolean[bjts.a(this.jdField_a_of_type_Bjts)] = false;
+    catch (JSONException paramRequestEvent)
+    {
+      QLog.e("TenDocChannelPlugin", 1, "parse param failed", paramRequestEvent);
+      return;
+    }
+    if (TextUtils.equals(paramRequestEvent, "openExportedFile")) {
+      a(localActivity, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjtt
  * JD-Core Version:    0.7.0.1
  */

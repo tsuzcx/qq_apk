@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory.db;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class WSPersonalEntity
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String uin;
   public byte[] weiShiPersonalRsp;
   
@@ -21,7 +21,7 @@ public class WSPersonalEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.db.WSPersonalEntity
  * JD-Core Version:    0.7.0.1
  */

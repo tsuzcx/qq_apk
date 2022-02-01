@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aepr
+public class aepr
+  implements View.OnClickListener
 {
-  public abstract void a(AudioPlayer paramAudioPlayer);
+  public aepr(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public abstract void a(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void b(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void c(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void d(AudioPlayer paramAudioPlayer, int paramInt);
+  public void onClick(View paramView)
+  {
+    MoveToGroupActivity.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

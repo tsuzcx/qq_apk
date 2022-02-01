@@ -1,110 +1,176 @@
 package com.tencent.beacon.core.event;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import com.tencent.beacon.core.a.f;
+import com.tencent.beacon.core.d.j;
+import com.tencent.beacon.core.d.k;
+import com.tencent.beacon.core.info.a;
+import com.tencent.beacon.event.UserAction;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
-public final class m
-  implements SensorEventListener, Runnable
+public class m
 {
-  private static Map<Integer, String> f;
-  private long a = 0L;
-  private l b;
-  private int c = 0;
-  private long d = 0L;
-  private Context e;
-  private SensorManager g;
+  protected RDBean a;
+  protected final Context b;
+  private final boolean c;
+  private boolean d = false;
+  private int e = 20000;
+  private int f = 0;
+  protected Runnable g = new l(this);
   
-  static
+  public m(Context paramContext)
   {
-    HashMap localHashMap = new HashMap();
-    f = localHashMap;
-    localHashMap.put(Integer.valueOf(1), "A126");
-    f.put(Integer.valueOf(4), "A127");
-    f.put(Integer.valueOf(2), "A128");
+    this.b = paramContext;
+    this.c = a.g(this.b);
+    this.d = a.f;
   }
   
-  public static void a()
+  public static void a(Context paramContext)
   {
-    com.tencent.beacon.core.a.b.b().a(111, true);
-    com.tencent.beacon.core.d.b.a("[sensor] cancel next record", new Object[0]);
+    com.tencent.beacon.core.a.d.a().a(108, true);
+    f.a(paramContext).b().a("HEART_DENGTA", com.tencent.beacon.core.e.b.a()).a();
+    com.tencent.beacon.core.e.d.d("[event] heartbeat uploaded success!", new Object[0]);
   }
   
-  public final void a(Context paramContext)
+  private Map<String, String> d()
   {
-    if (!EventStrategyBean.getInstance().isSensorEnable()) {
+    HashMap localHashMap = new HashMap(4);
+    com.tencent.beacon.core.info.e locale = com.tencent.beacon.core.info.e.d(this.b);
+    localHashMap.put("A33", locale.k(this.b));
+    if (this.c)
+    {
+      localHashMap.put("A66", "F");
+      localHashMap.put("A68", "" + a.b(this.b));
+      if (!this.d) {
+        break label156;
+      }
+    }
+    label156:
+    for (String str = "Y";; str = "N")
+    {
+      localHashMap.put("A85", str);
+      localHashMap.put("A20", locale.p(this.b));
+      localHashMap.put("A69", locale.q(this.b));
+      return localHashMap;
+      localHashMap.put("A66", "B");
+      break;
+    }
+  }
+  
+  private void e()
+  {
+    Map localMap = d();
+    this.a = s.a(this.b, null, "rqd_heartbeat", true, 0L, 0L, localMap, true);
+  }
+  
+  protected void a()
+  {
+    if (!com.tencent.beacon.core.e.e.c(this.b)) {}
+    do
+    {
+      return;
+      k localk = k.a(this.b);
+      if (localk != null)
+      {
+        ArrayList localArrayList = new ArrayList(2);
+        localArrayList.add(this.a);
+        Object localObject = k.a(this.b).d().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((com.tencent.beacon.core.d.l)((Iterator)localObject).next()).incRealTimeEventCalls();
+        }
+        localObject = this.b;
+        localk.a(new r((Context)localObject, com.tencent.beacon.core.info.b.b((Context)localObject).a(), localArrayList));
+      }
+      a(b() + 1);
+      if (b() % 10 == 0)
+      {
+        com.tencent.beacon.core.a.d.a().a(108, this.g, 600000L, this.e);
+        a(0);
+      }
+    } while (!this.d);
+    f.a(this.b).b().a("active_user_date", com.tencent.beacon.core.e.b.a()).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      this.f = paramInt;
       return;
     }
-    this.e = paramContext;
-    int i = EventStrategyBean.getInstance().getConsuming();
-    com.tencent.beacon.core.d.b.a("[sensor] startEvent consuming : %d", new Object[] { Integer.valueOf(i) });
-    this.d = EventStrategyBean.getInstance().getGatherDur();
-    com.tencent.beacon.core.a.b.b().a(111, this, 10000L, i * 1000);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(boolean paramBoolean)
   {
-    if (this.c <= 0)
+    int i = 0;
+    Object localObject1 = com.tencent.beacon.core.e.b.a();
+    Object localObject2 = f.a(this.b);
+    String str = ((f)localObject2).a("HEART_DENGTA", "");
+    localObject2 = ((f)localObject2).a("active_user_date", "");
+    if ((((String)localObject1).equals(str)) || (((String)localObject2).equals(localObject1)))
     {
-      this.b = null;
-      com.tencent.beacon.core.d.b.a("[sensor] unregisterSensorListener", new Object[0]);
-      if (this.g != null) {
-        this.g.unregisterListener(this);
+      com.tencent.beacon.core.e.d.i("[event] heartbeat had upload!", new Object[0]);
+      return;
+    }
+    localObject1 = EventStrategyBean.getInstance();
+    if (((EventStrategyBean)localObject1).isInPreventEventCode("rqd_heartbeat"))
+    {
+      com.tencent.beacon.core.e.d.i("[event] rqd_heartbeat not allowed in strategy!", new Object[0]);
+      return;
+    }
+    if (!((EventStrategyBean)localObject1).isUploadByRate("rqd_heartbeat"))
+    {
+      com.tencent.beacon.core.e.d.i("[event] rqd_heartbeat is sampled by svr rate!", new Object[0]);
+      return;
+    }
+    e();
+    if (paramBoolean) {
+      i = com.tencent.beacon.core.e.b.a(1800) * 1000;
+    }
+    com.tencent.beacon.core.a.d.a().a(108, this.g, i, this.e);
+  }
+  
+  public int b()
+  {
+    try
+    {
+      int i = this.f;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c()
+  {
+    f localf = f.a(this.b);
+    String str = localf.a("active_user_date", "");
+    if (!com.tencent.beacon.core.e.b.a().equals(str))
+    {
+      com.tencent.beacon.core.e.d.a("[event] recover a heart beat for active user.", new Object[0]);
+      if (UserAction.onUserAction("rqd_heartbeat", true, 0L, 0L, d(), true)) {
+        localf.b().a("active_user_date", com.tencent.beacon.core.e.b.a()).a();
       }
       return;
     }
-    if ((System.currentTimeMillis() - this.a >= this.d) && (this.b != null))
-    {
-      l locall = this.b;
-      com.tencent.beacon.core.a.b.b().a(locall);
-      this.a = System.currentTimeMillis();
-      this.b = null;
-      this.c -= 1;
-      com.tencent.beacon.core.d.b.a("[sensor] report sensor event and %d times left ", new Object[] { Integer.valueOf(this.c) });
-    }
-    if (this.b == null) {
-      this.b = new l();
-    }
-    this.b.a((String)f.get(Integer.valueOf(paramSensorEvent.sensor.getType())), paramSensorEvent.values);
-  }
-  
-  public final void run()
-  {
-    this.g = ((SensorManager)this.e.getSystemService("sensor"));
-    if (this.g != null)
-    {
-      EventStrategyBean localEventStrategyBean = EventStrategyBean.getInstance();
-      int i = 1000000 / localEventStrategyBean.getHertzCount();
-      if (localEventStrategyBean.isAcceleEnable())
-      {
-        com.tencent.beacon.core.d.b.a("[sensor] AcceleEnable", new Object[0]);
-        this.g.registerListener(this, this.g.getDefaultSensor(1), i);
-      }
-      if (localEventStrategyBean.isGyroEnable())
-      {
-        com.tencent.beacon.core.d.b.a("[sensor] GyroEnable", new Object[0]);
-        this.g.registerListener(this, this.g.getDefaultSensor(4), i);
-      }
-      if (localEventStrategyBean.isMagneticEnable())
-      {
-        com.tencent.beacon.core.d.b.a("[sensor] MagneticEnable", new Object[0]);
-        this.g.registerListener(this, this.g.getDefaultSensor(2), i);
-      }
-    }
-    this.a = System.currentTimeMillis();
-    this.c = EventStrategyBean.getInstance().getGatherCount();
-    com.tencent.beacon.core.d.b.a("[sensor] start a record", new Object[0]);
+    com.tencent.beacon.core.e.d.i("[event] active user event had upload.", new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.event.m
  * JD-Core Version:    0.7.0.1
  */

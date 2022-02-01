@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import bimi;
-import biml;
-import bize;
+import bkzv;
+import bkzy;
+import blnp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -31,20 +31,20 @@ public class Leba$5
         WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
       }
     }
-    localObject = (bize)this.this$0.a.getManager(129);
+    localObject = (blnp)this.this$0.a.getManager(129);
     if (localObject != null) {
-      ((bize)localObject).a(6);
+      ((blnp)localObject).a(6);
     }
-    localObject = (biml)this.this$0.a.getManager(142);
+    localObject = (bkzy)this.this$0.a.getManager(142);
     if (localObject != null) {
-      bimi.a(((biml)localObject).a(6), 500L);
+      bkzv.a(((bkzy)localObject).a(6), 500L);
     }
     ThreadManager.post(new Leba.5.1(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.5
  * JD-Core Version:    0.7.0.1
  */

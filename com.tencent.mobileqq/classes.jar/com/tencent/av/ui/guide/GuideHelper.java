@@ -7,20 +7,21 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
-import bdne;
-import bfvz;
+import bgsg;
+import bjda;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import mre;
-import mrf;
-import mrg;
-import mrk;
-import mtt;
+import ley;
+import moj;
+import mok;
+import mol;
+import mop;
+import mqz;
 
 public class GuideHelper
 {
@@ -31,7 +32,7 @@ public class GuideHelper
   private final int jdField_a_of_type_Int = 2;
   private Context jdField_a_of_type_AndroidContentContext;
   GuideHelper.DelayTryShowRunnable jdField_a_of_type_ComTencentAvUiGuideGuideHelper$DelayTryShowRunnable;
-  public mrk a;
+  public mop a;
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   
@@ -43,7 +44,7 @@ public class GuideHelper
   
   public GuideHelper()
   {
-    this.jdField_a_of_type_Mrk = new mrk();
+    this.jdField_a_of_type_Mop = new mop();
   }
   
   private int a(long paramLong, Context paramContext)
@@ -67,7 +68,7 @@ public class GuideHelper
   static long a(Context paramContext)
   {
     if (jdField_a_of_type_Long == -1L) {
-      jdField_a_of_type_Long = bdne.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
+      jdField_a_of_type_Long = bgsg.a(paramContext).getLong("qav_UserGuide_gesture_had_show", 0L);
     }
     return jdField_a_of_type_Long;
   }
@@ -78,7 +79,7 @@ public class GuideHelper
     if ((j != -1) && ((paramInt == 2) || ((j != 2) && (paramInt == j)) || (j == 2))) {}
     for (int i = 1; i == 0; i = 0)
     {
-      if (AudioHelper.d()) {
+      if (AudioHelper.e()) {
         QLog.w("GuideHelper", 1, "tryShow, checkCondition false, had_show[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
       }
       return;
@@ -100,7 +101,7 @@ public class GuideHelper
       QLog.w("GuideHelper", 1, "tryShow, initTipsView false, had_show[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
       return;
     }
-    if ((this.jdField_a_of_type_Mrk.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
+    if ((this.jdField_a_of_type_Mop.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) && (i == 0))
     {
       QLog.w("GuideHelper", 1, "tryShow, loadedLottieDrawable, seq[" + paramLong + "]");
       return;
@@ -111,9 +112,9 @@ public class GuideHelper
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Mrk.a(true);
-    mtt.a();
-    bfvz.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
+    this.jdField_a_of_type_Mop.a(true);
+    mqz.a();
+    bjda.a().postDelayed(new GuideHelper.3(this, paramLong), 5000L);
     if (i == 0)
     {
       a(paramContext, paramLong);
@@ -125,7 +126,7 @@ public class GuideHelper
   static void a(Context paramContext, long paramLong)
   {
     jdField_a_of_type_Long = System.currentTimeMillis();
-    paramContext = bdne.a(paramContext).edit();
+    paramContext = bgsg.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_gesture_had_show", jdField_a_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -137,12 +138,12 @@ public class GuideHelper
     if (a(paramContext) == 0L)
     {
       paramContext = (AVActivity)paramContext;
-      lid locallid = VideoController.a().a();
-      if ((locallid == null) || (paramContext.a == null)) {
+      ley localley = VideoController.a().a();
+      if ((localley == null) || (paramContext.a == null)) {
         return true;
       }
-      boolean bool3 = locallid.s();
-      boolean bool4 = paramContext.a.h();
+      boolean bool3 = localley.t();
+      boolean bool4 = paramContext.a.i();
       boolean bool5 = paramContext.a.a().b(0);
       boolean bool2 = paramContext.a.d(paramLong);
       if ((bool3) && (bool4) && (bool5) && (bool2)) {}
@@ -166,23 +167,23 @@ public class GuideHelper
       if (paramInt == 0)
       {
         i = 1;
-        if (this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView == null)
+        if (this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewView == null)
         {
-          if (this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub == null)
+          if (this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewViewStub == null)
           {
-            this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131372643));
-            if (this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub != null) {
-              this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewViewStub.inflate();
+            this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)localAVActivity.findViewById(2131373258));
+            if (this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewViewStub != null) {
+              this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewViewStub.inflate();
             }
           }
-          this.jdField_a_of_type_Mrk.b = localAVActivity.findViewById(2131372802);
-          this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mrk.b.findViewById(2131372885);
+          this.jdField_a_of_type_Mop.b = localAVActivity.findViewById(2131373417);
+          this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Mop.b.findViewById(2131373500);
         }
-        this.jdField_a_of_type_Mrk.b.setOnTouchListener(new mre(this, paramLong));
+        this.jdField_a_of_type_Mop.b.setOnTouchListener(new moj(this, paramLong));
         if (i == 0) {
           break label236;
         }
-        new mrg().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new mrf(this, paramLong, paramContext, paramInt));
+        new mol().a(paramLong, paramContext, jdField_a_of_type_JavaLangString, new mok(this, paramLong, paramContext, paramInt));
       }
       for (;;)
       {
@@ -193,10 +194,10 @@ public class GuideHelper
         i = 0;
         break;
         label236:
-        paramContext = this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView.getLayoutParams();
+        paramContext = this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewView.getLayoutParams();
         paramContext.width = -2;
         paramContext.height = -2;
-        this.jdField_a_of_type_Mrk.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130841718));
+        this.jdField_a_of_type_Mop.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localAVActivity.getResources().getDrawable(2130842024));
       }
     }
   }
@@ -214,16 +215,16 @@ public class GuideHelper
       if (!bool1)
       {
         paramContext = (AVActivity)paramContext;
-        lid locallid = VideoController.a().a();
-        if ((locallid == null) || (paramContext.a == null))
+        ley localley = VideoController.a().a();
+        if ((localley == null) || (paramContext.a == null))
         {
           return true;
           bool1 = false;
         }
-        else if (!locallid.d())
+        else if (!localley.d())
         {
           i = 1;
-          bool1 = paramContext.a.h();
+          bool1 = paramContext.a.i();
           boolean bool3 = paramContext.a.a().b(0);
           if ((bool1) && (bool3))
           {
@@ -250,20 +251,20 @@ public class GuideHelper
   private static long b(Context paramContext)
   {
     if (jdField_b_of_type_Long == -1L) {
-      jdField_b_of_type_Long = bdne.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
+      jdField_b_of_type_Long = bgsg.a(paramContext).getLong("qav_UserGuide_textchat_had_show2", 0L);
     }
     return jdField_b_of_type_Long;
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_Mrk.a(false);
+    this.jdField_a_of_type_Mop.a(false);
   }
   
   private static void b(Context paramContext, long paramLong)
   {
     jdField_b_of_type_Long = System.currentTimeMillis();
-    paramContext = bdne.a(paramContext).edit();
+    paramContext = bgsg.a(paramContext).edit();
     paramContext.putLong("qav_UserGuide_textchat_had_show2", jdField_b_of_type_Long);
     paramContext.apply();
     QLog.w("AVActivity", 1, "qav_UserGuide_gesture, save, time[" + jdField_a_of_type_Long + "], seq[" + paramLong + "]");
@@ -278,7 +279,10 @@ public class GuideHelper
   public void a(long paramLong)
   {
     b(paramLong);
-    this.jdField_a_of_type_Mrk.a();
+    if ((this.jdField_a_of_type_Mop != null) && (this.jdField_a_of_type_Mop.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)) {
+      this.jdField_a_of_type_Mop.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+    }
+    this.jdField_a_of_type_Mop.a();
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
   }
@@ -325,7 +329,7 @@ public class GuideHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper
  * JD-Core Version:    0.7.0.1
  */

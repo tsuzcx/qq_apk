@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -15,10 +14,12 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.reflect.Field;
 
 public class PickerView
-  extends Dialog
+  extends ReportDialog
   implements DialogInterface.OnCancelListener, View.OnClickListener
 {
   private TextView mCancelTextView;
@@ -30,13 +31,13 @@ public class PickerView
   
   public PickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755367);
+    super(paramContext, 2131755379);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559019, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559087, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -48,10 +49,10 @@ public class PickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131371317));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378686));
+    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131371884));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131379547));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378721));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131379586));
     this.mConfirmTextView.setOnClickListener(this);
     setNumpickerDiverColor(this.mNumPicker);
     setOnCancelListener(this);
@@ -127,20 +128,25 @@ public class PickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378686)
+    if (paramView.getId() == 2131379547)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378721) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView.getId() == 2131379586)
+      {
+        if (this.mOnConfirmListener != null) {
+          this.mOnConfirmListener.onValConfirm(this.result);
+        }
+        dismissDlg();
+      }
     }
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onValConfirm(this.result);
-    }
-    dismissDlg();
   }
   
   public void setDisplayedValues(String[] paramArrayOfString)
@@ -166,7 +172,7 @@ public class PickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.PickerView
  * JD-Core Version:    0.7.0.1
  */

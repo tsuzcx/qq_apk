@@ -1,81 +1,90 @@
-import android.os.Bundle;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
 
 public class zve
-  implements alpg
 {
-  public void a(Bundle paramBundle) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private zwd jdField_a_of_type_Zwd;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void a(Session paramSession) {}
-  
-  public void a(Session paramSession, float paramFloat) {}
-  
-  public void a(Session paramSession, boolean paramBoolean) {}
-  
-  public void a(MessageRecord paramMessageRecord, float paramFloat) {}
-  
-  public void a(MessageRecord paramMessageRecord, Boolean paramBoolean) {}
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(Session paramSession) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private zve(zvg paramzvg)
   {
-    if (paramObject == null) {}
-    do
+    if (!TextUtils.isEmpty(zvg.a(paramzvg))) {
+      this.jdField_a_of_type_JavaLangString = zvg.a(paramzvg);
+    }
+    this.jdField_a_of_type_Boolean = zvg.a(paramzvg);
+    long l;
+    int i;
+    if (zvg.a(paramzvg) > 0L)
     {
-      do
-      {
-        do
-        {
-          Session localSession;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  switch (paramInt)
-                  {
-                  default: 
-                    return;
-                  case 100: 
-                    paramObject = (Session)paramObject;
-                  }
-                } while (paramObject == null);
-                a(paramObject);
-                return;
-                paramObject = (Session)paramObject;
-              } while (paramObject == null);
-              b(paramObject);
-              return;
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length <= 1);
-            localSession = (Session)paramObject[0];
-          } while (localSession == null);
-          a(localSession, ((Float)paramObject[1]).floatValue());
-          return;
-          paramObject = (Session)paramObject;
-        } while (paramObject == null);
-        a(paramObject, paramBoolean);
-        return;
-        paramObject = (Bundle)paramObject;
-      } while (paramObject == null);
-      a(paramObject);
+      l = zvg.a(paramzvg);
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = zvg.a(paramzvg);
+      if (zvg.b(paramzvg) <= 0) {
+        break label107;
+      }
+      i = zvg.b(paramzvg);
+      label69:
+      this.jdField_b_of_type_Int = i;
+      this.jdField_b_of_type_Boolean = zvg.b(paramzvg);
+      if (zvg.a(paramzvg) == null) {
+        break label113;
+      }
+    }
+    label107:
+    label113:
+    for (paramzvg = zvg.a(paramzvg);; paramzvg = new zwb())
+    {
+      this.jdField_a_of_type_Zwd = paramzvg;
       return;
-      paramObject = (Bundle)paramObject;
-    } while (paramObject == null);
-    b(paramObject);
+      l = 1000L;
+      break;
+      i = 50;
+      break label69;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public zwd a()
+  {
+    return this.jdField_a_of_type_Zwd;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zve
  * JD-Core Version:    0.7.0.1
  */

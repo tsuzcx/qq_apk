@@ -1,26 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteActivity.9.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class bz
-  implements View.OnTouchListener
+  implements bigw
 {
-  public bz(LiteActivity paramLiteActivity) {}
+  public bz(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
+    paramInt = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      atvf.b(atvo.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692437));
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(paramInt).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
+      return;
     }
-    this.a.q();
-    LiteActivity.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new LiteActivity.9.1(this), 200L);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.onTouch(paramView, paramMotionEvent);
-    return false;
+    atvf.b(atvo.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692437));
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
 }
 

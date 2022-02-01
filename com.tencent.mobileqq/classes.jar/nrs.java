@@ -1,10 +1,22 @@
-public abstract interface nrs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class nrs
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  nrs(nre paramnre, String paramString, nyl paramnyl) {}
+  
+  public void onClick(View paramView)
+  {
+    nre.b(this.jdField_a_of_type_Nre, this.jdField_a_of_type_JavaLangString);
+    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrs
  * JD-Core Version:    0.7.0.1
  */

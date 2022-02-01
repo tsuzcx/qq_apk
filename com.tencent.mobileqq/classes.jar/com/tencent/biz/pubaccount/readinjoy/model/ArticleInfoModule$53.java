@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import oxb;
-import pew;
+import pmk;
+import pwb;
 
 public class ArticleInfoModule$53
   implements Runnable
 {
-  public ArticleInfoModule$53(pew parampew, List paramList1, List paramList2) {}
+  public ArticleInfoModule$53(pwb parampwb, List paramList1, List paramList2) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 2, "onTopicInfoListFetched: keywordList: " + this.a + " topicInfoList: " + this.b);
     }
-    oxb.a().a(this.a, this.b);
+    pmk.a().a(this.a, this.b);
   }
 }
 

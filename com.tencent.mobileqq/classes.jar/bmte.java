@@ -1,24 +1,27 @@
-import android.animation.TypeEvaluator;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bmte
-  implements TypeEvaluator<bmtc>
+  extends BaseJsModule
 {
-  private bmtc a;
+  public bmte(bmtc parambmtc) {}
   
-  public bmtc a(float paramFloat, bmtc parambmtc1, bmtc parambmtc2)
+  public String getModuleName()
   {
-    float f1 = parambmtc1.a + (parambmtc2.a - parambmtc1.a) * paramFloat;
-    float f2 = parambmtc1.b + (parambmtc2.b - parambmtc1.b) * paramFloat;
-    float f3 = parambmtc1.c + (parambmtc2.c - parambmtc1.c) * paramFloat;
-    paramFloat = parambmtc1.d + (parambmtc2.d - parambmtc1.d) * paramFloat;
-    if (this.a == null) {
-      this.a = new bmtc(f1, f2, f3, paramFloat);
-    }
-    for (;;)
+    return "VipQGModel";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
     {
-      return this.a;
-      this.a.a(f1, f2, f3, paramFloat);
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { bgtn.a(), bgtn.b() });
+      return true;
     }
+    return false;
   }
 }
 

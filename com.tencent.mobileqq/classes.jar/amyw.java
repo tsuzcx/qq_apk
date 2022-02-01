@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class amyw
-  implements awbh
+class amyw
+  implements amxk
 {
-  public amyw(ScanningSurfaceView.8 param8) {}
+  amyw(amyl paramamyl, File paramFile, String paramString) {}
   
-  public void a()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
-    azqs.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + anni.a(2131699318));
+        return;
+      }
+      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anni.a(2131699294));
+      return;
     }
-    this.a.this$0.a.a();
+    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anni.a(2131699312));
   }
 }
 

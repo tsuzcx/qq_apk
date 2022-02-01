@@ -1,43 +1,30 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StRecomForward;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class ttp
+public class ttp
   implements DialogInterface.OnClickListener
 {
-  ttp(ttl paramttl) {}
+  public ttp(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
+    switch (paramInt)
     {
-      if (!ttl.a(this.a).a.isRecomFd.get()) {
-        break label118;
-      }
-      paramDialogInterface = new FeedCloudMeta.StFeed();
-      paramDialogInterface.id.set(ttl.a(this.a).a.recomForward.id.get());
-      paramDialogInterface.poster.set(ttl.a(this.a).a.recomForward.poster.get());
-    }
-    for (;;)
-    {
-      String str = paramDialogInterface.id.get();
-      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
-      VSNetworkHelper.a().a(paramDialogInterface, new ttq(this, str));
+    default: 
       return;
-      label118:
-      paramDialogInterface = ttl.a(this.a).a;
+    case 1: 
+      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
+      return;
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttp
  * JD-Core Version:    0.7.0.1
  */

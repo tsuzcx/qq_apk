@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class apyd
+class apyd
+  extends AnimatorListenerAdapter
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  apyd(apyb paramapyb) {}
   
-  public apyd(apyc paramapyc) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    apyb.a(this.a, null);
+  }
 }
 
 

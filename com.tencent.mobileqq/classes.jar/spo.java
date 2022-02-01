@@ -1,17 +1,29 @@
-class spo
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.qphone.base.util.QLog;
+
+public class spo
+  implements spc
 {
-  public String a;
-  public String b;
+  public spo(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  spo(spm paramspm, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (ReadInJoyDailyXListView.a(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
+      }
+      if ((this.a.c == 0) && ((!ube.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spo
  * JD-Core Version:    0.7.0.1
  */

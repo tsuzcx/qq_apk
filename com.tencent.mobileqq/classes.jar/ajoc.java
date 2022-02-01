@@ -1,21 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-public class ajoc
+class ajoc
   implements DialogInterface.OnClickListener
 {
-  public ajoc(LoginView paramLoginView) {}
+  ajoc(ajnk paramajnk) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azqs.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if (paramInt == 0) {
+      ajnk.a(this.a);
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 

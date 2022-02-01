@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ae.SessionWrap;
 
-public class bnes
-  implements View.OnClickListener
+public final class bnes
+  implements Parcelable.Creator<SessionWrap>
 {
-  public bnes(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onClick(View paramView)
+  public SessionWrap a(Parcel paramParcel)
   {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.a();
+    return new SessionWrap(paramParcel);
+  }
+  
+  public SessionWrap[] a(int paramInt)
+  {
+    return new SessionWrap[0];
   }
 }
 

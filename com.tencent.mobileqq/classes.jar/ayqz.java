@@ -1,88 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.text.TextUtils;
+import com.tencent.lbssearch.httpresponse.AdInfo;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.util.WeakReference;
 
-public class ayqz
-  extends ayrm
+class ayqz
+  implements ayry
 {
-  private Drawable a;
+  ayqz(ayqy paramayqy, LatLng paramLatLng, int paramInt) {}
   
-  public ayqz(bdbb parambdbb)
+  public void a(PoiBean paramPoiBean)
   {
-    super(parambdbb);
-  }
-  
-  private void a(aywd paramaywd, TextView paramTextView, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    ayra localayra = (ayra)ayqy.a(this.jdField_a_of_type_Ayqy).get();
+    if (localayra == null)
     {
-      if (this.a == null)
-      {
-        this.a = paramaywd.a().getContext().getResources().getDrawable(2130841432);
-        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. mCallback is null ");
       }
-      paramTextView.setCompoundDrawables(null, null, this.a, null);
       return;
     }
-    paramTextView.setCompoundDrawables(null, null, null, null);
-  }
-  
-  private void b(aywd paramaywd, aynu paramaynu)
-  {
-    TextView localTextView = paramaywd.a();
-    Context localContext;
-    boolean bool;
-    if ((localTextView != null) && (paramaynu != null))
+    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
     {
-      localContext = localTextView.getContext();
-      if (!(paramaynu instanceof ayoy)) {
-        break label73;
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
       }
-      paramaynu = ((ayoy)paramaynu).a();
-      if ((paramaynu != null) && (localContext != null))
-      {
-        if (paramaynu.certifiedGrade <= 0L) {
-          break label68;
-        }
-        bool = true;
-        a(paramaywd, localTextView, bool);
+      localayra.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", ayqy.a(this.jdField_a_of_type_Ayqy), ayqy.a(this.jdField_a_of_type_Ayqy));
+      return;
+    }
+    String str1;
+    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
+    {
+      str1 = "";
+      if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
+        break label213;
       }
     }
-    label68:
-    label73:
-    do
+    label213:
+    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
     {
-      do
-      {
-        return;
-        bool = false;
-        break;
-      } while (!(paramaynu instanceof aymy));
-      paramaynu = (aymy)paramaynu;
-    } while ((paramaynu == null) || (localContext == null));
-    a(paramaywd, localTextView, paramaynu.b());
-  }
-  
-  protected void a(aywd paramaywd, aynu paramaynu)
-  {
-    super.a(paramaywd, paramaynu);
-    if ((paramaynu instanceof ayoy))
-    {
-      Object localObject = (ayoy)paramaynu;
-      PublicAccountInfo localPublicAccountInfo = ((ayoy)localObject).a();
-      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((ayoy)localObject).a())))
-      {
-        localObject = new SpannableString(localPublicAccountInfo.name);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
-        paramaywd.a().setText((CharSequence)localObject);
-      }
+      str1 = str1 + str2;
+      localayra.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, ayqy.a(this.jdField_a_of_type_Ayqy), ayqy.a(this.jdField_a_of_type_Ayqy));
+      return;
+      str1 = paramPoiBean.adInfo.city;
+      break;
     }
-    b(paramaywd, paramaynu);
   }
 }
 

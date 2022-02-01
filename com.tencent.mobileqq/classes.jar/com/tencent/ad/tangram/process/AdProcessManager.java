@@ -81,6 +81,24 @@ public enum AdProcessManager
     finally {}
   }
   
+  public String getMainProcessName()
+  {
+    AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
+    if (localAdProcessManagerAdapter != null) {
+      return localAdProcessManagerAdapter.getMainProcessName();
+    }
+    return null;
+  }
+  
+  public String getWebProcessName()
+  {
+    AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
+    if (localAdProcessManagerAdapter != null) {
+      return localAdProcessManagerAdapter.getWebProcessName();
+    }
+    return null;
+  }
+  
   public Boolean isOnMainProcess()
   {
     AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
@@ -124,7 +142,7 @@ public enum AdProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.process.AdProcessManager
  * JD-Core Version:    0.7.0.1
  */

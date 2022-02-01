@@ -1,43 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajdy
+class ajdy
+  implements View.OnClickListener
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  ajdy(ajdv paramajdv) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
-  
-  public static String a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      QQAppInterface localQQAppInterface = ajeu.a();
-      if (localQQAppInterface != null) {
-        d = ((aixs)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
-      }
-    }
-    return d;
-  }
-  
-  public String toString()
-  {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bfup.a(ajdv.a(this.a), localRecommendTroopItem, 17, 10029);
+    bgjt.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

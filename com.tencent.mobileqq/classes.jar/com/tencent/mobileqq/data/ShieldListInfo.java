@@ -1,18 +1,20 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin")
 public class ShieldListInfo
-  extends awge
+  extends Entity
 {
   public static final int SHIELD_LIST_DEFAULT_SRC_SUB_ID = 0;
   public static final int SHIELD_LIST_INFO_FLAG_IS_SHIELD = 1;
   public static final int SHIELD_LIST_INFO_FLAG_NOT_SHIELD = 0;
+  public static final int SHIELD_LIST_SOURCE_AUDIO_ROOM = 167;
   public static final int SHIELD_LIST_SOURCE_CONFESS = 156;
+  public static final int SHIELD_LIST_SOURCE_GAME_BUDDY = 168;
   public static final int SHIELD_LIST_SOURCE_ID_CIRCLE_GROUP = 23;
   public static final int SHIELD_LIST_SOURCE_ID_CM_GAME_TEMP = 2164;
   public static final int SHIELD_LIST_SOURCE_ID_CONTECT = 8;
@@ -38,7 +40,7 @@ public class ShieldListInfo
   public int flags;
   public int source_id;
   public int source_sub_id;
-  @awhs
+  @unique
   public String uin;
   
   public static int AIO_TYPE_2_SOURCE_ID(int paramInt)
@@ -90,8 +92,12 @@ public class ShieldListInfo
       return 166;
     case 1036: 
       return 2164;
+    case 10008: 
+      return 165;
+    case 10009: 
+      return 168;
     }
-    return 165;
+    return 167;
   }
   
   public static int SOURCE_ID_2_AIO_TYPE(int paramInt)
@@ -140,8 +146,12 @@ public class ShieldListInfo
       return 1045;
     case 2164: 
       return 1036;
+    case 165: 
+      return 10008;
+    case 168: 
+      return 10009;
     }
-    return 10008;
+    return 10010;
   }
   
   private void shieldMsg(boolean paramBoolean)
@@ -161,7 +171,7 @@ public class ShieldListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShieldListInfo
  * JD-Core Version:    0.7.0.1
  */

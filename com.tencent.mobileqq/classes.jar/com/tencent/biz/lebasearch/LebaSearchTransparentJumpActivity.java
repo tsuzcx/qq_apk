@@ -1,30 +1,42 @@
 package com.tencent.biz.lebasearch;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import ayha;
-import aynu;
-import ayod;
-import bdgc;
-import bivc;
-import bjdt;
-import bjea;
+import bbfi;
+import bbmy;
+import bbnh;
+import bglf;
+import bljn;
+import blsb;
+import blsi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
-import nxu;
-import uqn;
+import ohp;
+import wjz;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
 {
   public View a;
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -40,12 +52,12 @@ public class LebaSearchTransparentJumpActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ayha localayha = (ayha)this.app.getManager(222);
-    if (localayha.jdField_a_of_type_Aynu != null) {
-      localayha.jdField_a_of_type_Aynu = null;
+    bbfi localbbfi = (bbfi)this.app.getManager(222);
+    if (localbbfi.jdField_a_of_type_Bbmy != null) {
+      localbbfi.jdField_a_of_type_Bbmy = null;
     }
-    if (localayha.jdField_a_of_type_Ayod != null) {
-      localayha.jdField_a_of_type_Ayod = null;
+    if (localbbfi.jdField_a_of_type_Bbnh != null) {
+      localbbfi.jdField_a_of_type_Bbnh = null;
     }
   }
   
@@ -61,7 +73,7 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      uqn.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      wjz.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
       QWalletHelper.launchQWalletAct(this, this.app, true, false);
       continue;
@@ -70,23 +82,23 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).putExtra("refer", "schemeActiveFeeds");
       QzonePluginProxyActivity.a((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
       ((Intent)localObject1).addFlags(805306368);
-      bjdt.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
+      blsb.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690623));
-      bivc.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690563));
+      bljn.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
-      bjea localbjea = bjea.a();
+      blsi localblsi = blsi.a();
       try
       {
         long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-        localbjea.a = String.valueOf(l);
+        localblsi.a = String.valueOf(l);
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = bdgc.h(this.app, String.valueOf(l));
+          localObject1 = bglf.h(this.app, String.valueOf(l));
         }
-        localbjea.b = ((String)localObject1);
-        bjdt.b(this, localbjea, Long.valueOf(l), 0, false, -1);
+        localblsi.b = ((String)localObject1);
+        blsb.b(this, localblsi, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {
@@ -94,7 +106,7 @@ public class LebaSearchTransparentJumpActivity
         return;
       }
       int i = localException1.getIntExtra("tab_tab_index", 0);
-      nxu.a(this.app, this, 1, i);
+      ohp.a(this.app, this, 1, i);
       continue;
       Object localObject2 = new Intent(this, PhoneUnityBindInfoActivity.class);
       ((Intent)localObject2).putExtra("kSrouce", 18);
@@ -108,11 +120,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((ayha)this.app.getManager(222)).jdField_a_of_type_Aynu;
+        localObject2 = ((bbfi)this.app.getManager(222)).jdField_a_of_type_Bbmy;
         if (localObject2 != null)
         {
-          this.a.setTag(2131379972, Integer.valueOf(i));
-          ((aynu)localObject2).a(this.a);
+          this.a.setTag(2131380930, Integer.valueOf(i));
+          ((bbmy)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -129,13 +141,20 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((ayha)this.app.getManager(222)).jdField_a_of_type_Ayod.a(this.a);
+      ((bbfi)this.app.getManager(222)).jdField_a_of_type_Bbnh.a(this.a);
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchTransparentJumpActivity
  * JD-Core Version:    0.7.0.1
  */

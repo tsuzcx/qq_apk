@@ -1,8 +1,16 @@
-public abstract interface bkbe
+import android.util.Pair;
+
+final class bkbe
+  implements bkbg
 {
-  public abstract void onAnimationFinished();
-  
-  public abstract void onDrawableLoaded();
+  public Pair<String, String> a(String paramString)
+  {
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
+  }
 }
 
 

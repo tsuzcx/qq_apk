@@ -1,56 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
 
-public final class amql
-  implements Parcelable.Creator<UpgradeTIMWrapper>
+class amql
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public UpgradeTIMWrapper a(Parcel paramParcel)
-  {
-    Object localObject = null;
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    int j = 0;
-    for (;;)
-    {
-      try
-      {
-        int i = paramParcel.readInt();
-        j = i;
-        String str1 = paramParcel.readString();
-        paramParcel.printStackTrace();
-      }
-      catch (Exception paramParcel)
-      {
-        try
-        {
-          paramParcel = paramParcel.readString();
-          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
-        }
-        catch (Exception paramParcel)
-        {
-          break label81;
-        }
-        paramParcel = paramParcel;
-        str1 = null;
-        i = j;
-      }
-      label81:
-      paramParcel = localObject;
-    }
-  }
+  amql(amqf paramamqf) {}
   
-  public UpgradeTIMWrapper[] a(int paramInt)
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    return null;
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amql
  * JD-Core Version:    0.7.0.1
  */

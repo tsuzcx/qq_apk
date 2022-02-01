@@ -1,8 +1,20 @@
-import android.view.View;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public abstract interface arsg
+class arsg
+  extends DataSetObserver
 {
-  public abstract void onClick(View paramView);
+  arsg(arsf paramarsf, DragSortListView paramDragSortListView) {}
+  
+  public void onChanged()
+  {
+    this.jdField_a_of_type_Arsf.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Arsf.notifyDataSetInvalidated();
+  }
 }
 
 

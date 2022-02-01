@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfok;
+import bisy;
+import bivr;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManager$12
   implements Runnable
 {
-  public DownloadManager$12(bfok parambfok, String paramString) {}
+  public DownloadManager$12(bivr parambivr, String paramString) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class DownloadManager$12
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bisy.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.12
  * JD-Core Version:    0.7.0.1
  */

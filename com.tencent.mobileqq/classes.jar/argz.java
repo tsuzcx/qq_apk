@@ -1,26 +1,23 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
 public final class argz
-  implements bauf
+  implements Parcelable.Creator
 {
-  public void a(bave parambave, bavf parambavf)
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-    } while (!parambavf.contains("range="));
-    parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
-    parambave.jdField_a_of_type_JavaLangString = (parambavf + "range=" + parambave.jdField_a_of_type_Long);
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
+  }
+  
+  public IPSiteModel.ComicRich[] a(int paramInt)
+  {
+    return new IPSiteModel.ComicRich[paramInt];
   }
 }
 

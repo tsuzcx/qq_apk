@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class ahzj
-  implements bhwy
+class ahzj
+  implements DialogInterface.OnClickListener
 {
-  public ahzj(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  ahzj(ahzf paramahzf) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azqs.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
+    paramDialogInterface.dismiss();
+    abru.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
+    this.a.g = "";
   }
 }
 

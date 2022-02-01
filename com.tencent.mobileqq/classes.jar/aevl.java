@@ -1,6 +1,19 @@
-public abstract interface aevl
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aevl
+  implements View.OnClickListener
 {
-  public abstract void aq_();
+  public aevl(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

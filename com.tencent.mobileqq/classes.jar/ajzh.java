@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-
-public class ajzh
-  implements View.OnClickListener
+public abstract interface ajzh
 {
-  public ajzh(FriendTabView paramFriendTabView) {}
+  public abstract void setFrom(boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.a(1);
-  }
+  public abstract void setIsShieldTouchForItem(boolean paramBoolean);
 }
 
 

@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-class allr
-  implements DialogInterface.OnClickListener
+public class allr
+  implements Animation.AnimationListener
 {
-  allr(alln paramalln) {}
+  private int jdField_a_of_type_Int;
+  private alls jdField_a_of_type_Alls;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public allr(VideoFilterViewPager paramVideoFilterViewPager, alls paramalls, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Alls = paramalls;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Alls != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Alls.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

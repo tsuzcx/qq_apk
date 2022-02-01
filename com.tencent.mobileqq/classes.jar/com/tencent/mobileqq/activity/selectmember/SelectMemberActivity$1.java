@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amdu;
+import anwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +11,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    amdu localamdu = (amdu)this.this$0.app.a(20);
-    if (localamdu != null) {}
+    anwd localanwd = (anwd)this.this$0.app.a(20);
+    if (localanwd != null) {}
     try
     {
-      localamdu.b(Long.valueOf(this.this$0.c));
-      localamdu.a(Long.valueOf(this.this$0.c));
+      localanwd.b(Long.valueOf(this.this$0.c));
+      localanwd.a(Long.valueOf(this.this$0.c));
       return;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -28,7 +28,7 @@ class SelectMemberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.1
  * JD-Core Version:    0.7.0.1
  */

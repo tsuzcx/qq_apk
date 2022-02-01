@@ -1,76 +1,24 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
 public class asvb
-  extends BaseAdapter
+  extends asvl
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  public List<HotPicTagInfo> a;
-  boolean jdField_a_of_type_Boolean;
+  public asvb(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
-  public asvb(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    this.a.b(paramInt);
   }
   
-  public int getCount()
+  public void a(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.a.a(paramBundle);
   }
   
-  public Object getItem(int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new asvd(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558587, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131367768));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      paramViewGroup = paramViewGroup.a;
-      paramViewGroup.setText(str);
-      paramViewGroup.setTextSize(2, HotPicTab.b());
-      paramViewGroup.setTextColor(HotPicTab.c());
-      paramViewGroup.setPadding(0, 0, 0, 0);
-      paramViewGroup.setFocusable(true);
-      paramViewGroup.setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new asvc(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        azqs.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
-      }
-      return paramView;
-      paramViewGroup = (asvd)paramView.getTag();
-    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

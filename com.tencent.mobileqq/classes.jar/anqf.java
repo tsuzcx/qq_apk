@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-public class anqf
-  implements View.OnClickListener
+public abstract interface anqf
 {
-  public anqf(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    ArkIDESettingFragment.a(this.a, 0);
-  }
+  public static final String a = arpm.a("VIP_roam_msg_search_cfg", "https://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 

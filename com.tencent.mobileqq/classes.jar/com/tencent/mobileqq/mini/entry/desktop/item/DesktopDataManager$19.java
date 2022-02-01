@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awge;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$19
@@ -18,12 +18,12 @@ class DesktopDataManager$19
     if (localObject == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    awgf localawgf;
+    EntityManager localEntityManager;
     do
     {
       return;
-      localawgf = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localawgf == null);
+      localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localEntityManager == null);
     for (;;)
     {
       try
@@ -37,7 +37,7 @@ class DesktopDataManager$19
         if (localObject != null)
         {
           ((DeskTopAppEntity)localObject).setStatus(1000);
-          DesktopDataManager.access$3200(this.this$0, localawgf, (awge)localObject);
+          DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject);
           localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
         }
         if (!QLog.isColorLevel()) {
@@ -61,7 +61,7 @@ class DesktopDataManager$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.19
  * JD-Core Version:    0.7.0.1
  */

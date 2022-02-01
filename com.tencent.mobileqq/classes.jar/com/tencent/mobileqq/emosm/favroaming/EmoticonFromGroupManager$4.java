@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apod;
-import apol;
+import arre;
+import arrm;
 
 public class EmoticonFromGroupManager$4
   implements Runnable
 {
-  public EmoticonFromGroupManager$4(apod paramapod) {}
+  public EmoticonFromGroupManager$4(arre paramarre) {}
   
   public void run()
   {
-    apod.a(this.this$0).b = (apol.a - this.this$0.b());
+    arre.a(this.this$0).b = (arrm.a - this.this$0.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.4
  * JD-Core Version:    0.7.0.1
  */

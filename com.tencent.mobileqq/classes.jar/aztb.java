@@ -1,81 +1,14 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
-public class aztb
+public abstract interface aztb
 {
-  private int jdField_a_of_type_Int;
-  private LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
-  private int b;
+  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
   
-  public aztb(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(paramInt1, 0.5F, true);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
   
-  public Map<String, Integer> a()
-  {
-    HashMap localHashMap = null;
-    label110:
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((Integer)localEntry.getValue()).intValue() < this.b) {
-            break label110;
-          }
-          if (localHashMap == null)
-          {
-            localHashMap = new HashMap();
-            localHashMap.put(localEntry.getKey(), localEntry.getValue());
-            break label110;
-          }
-        }
-        else
-        {
-          return localHashMap;
-        }
-      }
-    }
-  }
+  public abstract void g();
   
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))
-        {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + 1));
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramString = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString.getKey());
-        }
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(1));
-    }
-  }
+  public abstract void h();
 }
 
 

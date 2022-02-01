@@ -1,55 +1,63 @@
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+import android.os.AsyncTask;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-final class bgyn
-  implements DownloaderProxy.DownloadListener
+public class bgyn
+  extends AsyncTask<Long, Void, Void>
 {
-  bgyn(MiniGamePluginInfo paramMiniGamePluginInfo, bgyr parambgyr, File paramFile1, File paramFile2) {}
+  long jdField_a_of_type_Long;
+  Object jdField_a_of_type_JavaLangObject;
   
-  public void onDownloadFailed(int paramInt, String paramString)
+  public bgyn(PendantInfo paramPendantInfo, Object paramObject, long paramLong)
   {
-    QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin failed " + paramInt + " " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-    this.jdField_a_of_type_Bgyr.a(false, null);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  protected Void a(Long... paramVarArgs)
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize != 0) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize != this.jdField_a_of_type_JavaIoFile.length()))
+      long l1 = paramVarArgs[0].longValue();
+      long l2 = paramVarArgs[1].longValue();
+      long l3 = paramVarArgs[2].longValue();
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
+      if ((paramVarArgs != null) && (!isCancelled()))
       {
-        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin file-size mismatch " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-        this.jdField_a_of_type_Bgyr.a(false, new RuntimeException("file size mismatch, expected:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.packageSize + " got:" + this.jdField_a_of_type_JavaIoFile.length()));
-        return;
+        l2 = SystemClock.uptimeMillis();
+        Message localMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(17);
+        if (PendantInfo.a(localMessage, this.jdField_a_of_type_Long))
+        {
+          localMessage.obj = paramVarArgs;
+          if (l2 < l1) {
+            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, l1 - l2);
+          } else {
+            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+          }
+        }
       }
-      bgpc.a(this.b.getAbsolutePath(), false);
-      if (!bgoa.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.b.getAbsolutePath()))
-      {
-        QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin unpack failed " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-        this.jdField_a_of_type_Bgyr.a(false, new RuntimeException("unpack file failed"));
-        return;
-      }
-      QMLog.i("[minigame] GpkgManager", "[Gpkg] download plugin success " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-      this.jdField_a_of_type_Bgyr.a(true, null);
-      return;
     }
-    finally
+    catch (Throwable paramVarArgs)
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
+      if (QLog.isDevelopLevel()) {
+        QLog.e("PendantInfo", 4, "", paramVarArgs);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.b = true;
     }
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_Bgyn = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyn
  * JD-Core Version:    0.7.0.1
  */

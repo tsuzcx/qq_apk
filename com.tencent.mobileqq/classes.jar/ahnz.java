@@ -1,14 +1,34 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahnz
-  extends akit
+  implements View.OnClickListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  ahnz(ahny paramahny) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!ahny.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (lkw.c())
+      {
+        Object localObject = (afxj)afur.a(paramView);
+        if (localObject != null)
+        {
+          localObject = (MessageForVideo)((afxj)localObject).a;
+          ahny.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          if (((MessageForVideo)localObject).istroop == 1044) {
+            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
+          }
+        }
+      }
+    }
+  }
 }
 
 

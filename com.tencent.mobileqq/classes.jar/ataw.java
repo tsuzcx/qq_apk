@@ -1,119 +1,107 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
 
-class ataw
-  extends BroadcastReceiver
+public class ataw
+  extends ataa
 {
-  ataw(atav paramatav) {}
+  public ataw(QFileMsgForwardManager.BuddyUploadTaskExcuter.1 param1, atab paramatab, byte[] paramArrayOfByte) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    JSONObject localJSONObject;
-    if ((paramContext.equals(atav.a(this.a.b))) || (paramContext.equals(atav.d(this.a.b))))
+    if ((paramInt == -100001) || (paramInt == -100002))
     {
-      i = paramIntent.getIntExtra("key_state", -1);
-      atav.a(this.a, i);
-      localJSONObject = atav.a(this.a, i);
-      switch (i)
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "]" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), true);
+    }
+    while (paramApplyUploadRspV3 == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "], but rspV3 is null" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), false);
+      return;
+      if (paramInt == -100003)
       {
-      default: 
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild，retCode[" + paramInt + "]" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), false);
+        return;
       }
     }
-    do
+    if (!paramApplyUploadRspV3.int32_ret_code.has())
     {
-      for (;;)
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "BuddyUploadTaskExcuter faild not has int32_ret_code" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), false);
+      return;
+    }
+    if (paramApplyUploadRspV3.int32_ret_code.get() != 0)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，retcode:" + paramApplyUploadRspV3.int32_ret_code.get());
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), false);
+      return;
+    }
+    if ((paramApplyUploadRspV3.bool_file_exist.has()) && (paramApplyUploadRspV3.bytes_uuid.has()))
+    {
+      paramApplyUploadRspV3 = paramApplyUploadRspV3.bytes_uuid.get().toByteArray();
+      if ((paramApplyUploadRspV3 != null) && (paramApplyUploadRspV3.length > 0))
       {
-        return;
-        l = paramIntent.getLongExtra("key_totalSize", 0L);
-        atav.a(this.a, "size:" + l);
-        try
-        {
-          localJSONObject.putOpt("totalSize", Long.valueOf(l));
-          localJSONObject.remove("state");
+        str1 = new String(paramApplyUploadRspV3);
+        atav.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav).putString("_m_ForwardUuid", str1);
+        this.jdField_a_of_type_Atab.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, paramApplyUploadRspV3, 5000, 3, null);
+        if (QLog.isColorLevel()) {
+          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start sendLocalFileToBuddyBySHA cs hit:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString);
         }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-      }
-      int j = paramIntent.getIntExtra("key_progress", 0);
-      long l = paramIntent.getLongExtra("key_totalSize", 0L);
-      paramIntent = this.a;
-      if (i == 1) {}
-      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
-      {
-        for (;;)
-        {
-          atav.a(paramIntent, paramContext);
-          if (i == 4)
-          {
-            if (j <= 90) {
-              break;
-            }
-            atav.a(this.a).removeCallbacksAndMessages(null);
-          }
-          try
-          {
-            localJSONObject.putOpt("totalSize", Long.valueOf(l));
-            localJSONObject.putOpt("pro", Integer.valueOf(j));
-          }
-          catch (JSONException paramContext)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-        break;
-      }
-      atav.a(this.a, "STATE_DOWANLODAD_COMPLETE");
-      paramContext = Message.obtain();
-      if (atav.a(this.a) == 1) {}
-      for (paramContext.arg1 = 40; !TextUtils.equals(atav.a(this.a), "checkVersion"); paramContext.arg1 = 0)
-      {
-        atav.b(this.a, 0);
-        atav.a(this.a).sendMessage(paramContext);
-        break;
-      }
-      atav.a(this.a, "STATE_DOWANLODAD_FAILED");
-      break;
-      atav.a(this.a, "STATE_PRELOAD_FALIED");
-      break;
-      atav.a(this.a, "STATE_LOAD_COMPLETE");
-      break;
-      atav.a(this.a, "STATE_LOAD_FALIED");
-      break;
-      atav.a(this.a, "STATE_LAUNCHERING");
-      break;
-      atav.a(this.a, "STATE_LAUNCHER_SUCC");
-      break;
-      atav.a(this.a, "STATE_LAUNCHER_FAILED");
-      break;
-      if (atav.b(this.a.b).equals(paramContext))
-      {
-        paramContext = this.a.mRuntime.a();
-        if ((paramContext instanceof BaseActivity))
-        {
-          ((BaseActivity)paramContext).doOnBackPressed();
-          return;
-        }
-        paramContext.onBackPressed();
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(str1, atav.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav));
         return;
       }
-    } while (!atav.c(this.a.b).equals(paramContext));
-    atav.c(this.a, paramIntent.getIntExtra("key_isCache", -1));
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，file exist bug uuid is null");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), true);
+      return;
+    }
+    if (!paramApplyUploadRspV3.bytes_upload_key.has())
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，uploadkey is null");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), true);
+      return;
+    }
+    if (!paramApplyUploadRspV3.bytes_uuid.has())
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，uuid is null");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), true);
+      return;
+    }
+    if (!paramApplyUploadRspV3.str_upload_https_domain.has())
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild，https domain is null");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, false), true);
+      return;
+    }
+    String str1 = paramApplyUploadRspV3.str_upload_https_domain.get();
+    paramBoolean = atgz.a(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Atan));
+    ByteStringMicro localByteStringMicro = paramApplyUploadRspV3.bytes_uuid.get();
+    String str2 = new String(localByteStringMicro.toByteArray());
+    String str3 = com.tencent.commonsdk.util.HexUtil.bytes2HexStr(paramApplyUploadRspV3.bytes_upload_key.get().toByteArray());
+    paramApplyUploadRspV3 = paramApplyUploadRspV3.str_upload_ip.get();
+    if (paramBoolean) {}
+    for (paramApplyUploadRspV3 = "https://" + paramApplyUploadRspV3 + "/ftn_handler";; paramApplyUploadRspV3 = "http://" + paramApplyUploadRspV3 + "/ftn_handler")
+    {
+      String str4 = com.qq.taf.jce.HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA cs nohit, start uploadFile");
+      }
+      paramApplyUploadRspV3 = new aszv(atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Atan), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Long, str3, str4, paramApplyUploadRspV3, paramBoolean, str1, new atax(this, localByteStringMicro, str2));
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_JavaLangString + " add to rsCenter");
+      }
+      atav.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav, atvo.a().longValue());
+      atan.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav.jdField_a_of_type_Atan).a().a(atav.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Atav), paramApplyUploadRspV3);
+      return;
+    }
   }
 }
 

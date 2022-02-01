@@ -1,19 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface uud
+class uud
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  uud(uuc paramuuc) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    upe.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
+    uuc.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
   
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    upe.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
+    uuc.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uud
  * JD-Core Version:    0.7.0.1
  */

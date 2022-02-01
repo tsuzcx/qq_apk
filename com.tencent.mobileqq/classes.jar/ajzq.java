@@ -1,40 +1,59 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class ajzq
-  extends awhw
+  implements agma
 {
-  public ajzq(PhoneContactTabView paramPhoneContactTabView) {}
+  private ahqe jdField_a_of_type_Ahqe;
+  private akaj jdField_a_of_type_Akaj;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  ajzq(akaj paramakaj)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
+    this.jdField_a_of_type_Akaj = paramakaj;
+  }
+  
+  private ListView a()
+  {
+    return this.jdField_a_of_type_Akaj.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
     default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
+    case 3: 
     case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Ahqe = new ahqe();
+          return;
+        } while (this.b);
+        this.b = true;
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Ahqe.b(this.jdField_a_of_type_Akaj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
       return;
     }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Ahqe = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 5, 13, 19, 12 };
   }
 }
 

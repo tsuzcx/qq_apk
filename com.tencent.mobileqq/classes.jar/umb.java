@@ -1,34 +1,49 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class umb
-  implements ThreadExcutor.IThreadListener
+public class umb
 {
-  umb(uma paramuma, Runnable paramRunnable) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public static uly a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    uma.a(this.jdField_a_of_type_Uma).decrementAndGet();
-    wxe.b(uma.a(this.jdField_a_of_type_Uma), "threshold after running current task is " + uma.a(this.jdField_a_of_type_Uma).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      wxe.b(uma.a(this.jdField_a_of_type_Uma), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
-  }
-  
-  public void onPreRun()
-  {
-    uma.a(this.jdField_a_of_type_Uma).incrementAndGet();
-    wxe.a(uma.a(this.jdField_a_of_type_Uma), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      wxe.b(uma.a(this.jdField_a_of_type_Uma), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
+    if (paramWSRedDotPushMsg == null) {}
+    do
+    {
+      return null;
+      int i;
+      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
+        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      }
+      while (paramInt == 2) {
+        if (i == 1)
+        {
+          return new umc(paramWSRedDotPushMsg);
+          i = 0;
+        }
+        else if (i == 5)
+        {
+          return new ulz(paramWSRedDotPushMsg);
+        }
+      }
+      if (i == 2) {
+        return new umd(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 3) {
+        return new ume(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 4) {
+        return new uma(paramWSRedDotPushMsg, paramInt);
+      }
+      if (paramInt == 2) {
+        return new umc(paramWSRedDotPushMsg);
+      }
+    } while (paramInt != 6);
+    return new umd(paramWSRedDotPushMsg, paramInt, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     umb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz;
 
-import bety;
-import myo;
+import biau;
+import nhh;
 
 public class JoinGroupHandler$2
   implements Runnable
 {
-  public JoinGroupHandler$2(myo parammyo) {}
+  public JoinGroupHandler$2(nhh paramnhh) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class JoinGroupHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.JoinGroupHandler.2
  * JD-Core Version:    0.7.0.1
  */

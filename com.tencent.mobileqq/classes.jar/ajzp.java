@@ -1,22 +1,63 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
 public class ajzp
-  extends MqqHandler
+  implements IMiniMsgUnreadCallback
 {
-  public ajzp(PhoneContactTabView paramPhoneContactTabView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void handleMessage(Message paramMessage)
+  public ajzp(View paramView, TextView paramTextView)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void destroy()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void hide()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void hideUnread()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public boolean show(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    updateUnreadCount(paramInt, false);
+    return true;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
+    }
+    localTextView.setText(str);
+    if (!paramBoolean)
     {
-    case 1: 
-    case 2: 
-    default: 
+      if (paramInt <= 0) {
+        localTextView.setVisibility(8);
+      }
+    }
+    else {
       return;
     }
-    this.a.d();
+    localTextView.setVisibility(0);
   }
 }
 

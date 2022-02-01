@@ -1,8 +1,12 @@
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bbwl
+class bbwl
+  implements View.OnClickListener
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbwj parambbwj);
+  bbwl(bbwj parambbwj) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alud;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import anug;
+import anni;
+import apul;
 import java.io.File;
 
 class SelectCoverActivity$3
@@ -26,14 +26,14 @@ class SelectCoverActivity$3
         } while (this.this$0.jdField_b_of_type_Boolean);
         if (TextUtils.isEmpty(this.this$0.jdField_b_of_type_JavaLangString))
         {
-          SelectCoverActivity.a(this.this$0, 2, alud.a(2131714106), 0);
+          SelectCoverActivity.a(this.this$0, 2, anni.a(2131712482), 0);
           return;
         }
-        SelectCoverActivity.a(this.this$0, 0, alud.a(2131714099), 0);
+        SelectCoverActivity.a(this.this$0, 0, anni.a(2131712475), 0);
         if ((this.this$0.jdField_d_of_type_Int != 1) && (this.this$0.jdField_d_of_type_Int != 3)) {
           break;
         }
-      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Anug.a)) || (!new File(this.this$0.jdField_a_of_type_Anug.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Anug.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Anug.jdField_b_of_type_JavaLangString).exists()));
+      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Apul.a)) || (!new File(this.this$0.jdField_a_of_type_Apul.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Apul.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Apul.jdField_b_of_type_JavaLangString).exists()));
       SelectCoverActivity.b(this.this$0);
       return;
     } while (this.this$0.jdField_d_of_type_Int != 2);
@@ -49,7 +49,7 @@ class SelectCoverActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.3
  * JD-Core Version:    0.7.0.1
  */

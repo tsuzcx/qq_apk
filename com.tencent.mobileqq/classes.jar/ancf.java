@@ -1,23 +1,20 @@
-import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class ancf
+class ancf
+  implements Comparator<ApolloActionData>
 {
-  public float a;
-  public int a;
-  public FaceStatus a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  ancf(ancd paramancd) {}
   
-  public String toString()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
+    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
+      return 0;
+    }
+    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
+      return 1;
+    }
+    return -1;
   }
 }
 

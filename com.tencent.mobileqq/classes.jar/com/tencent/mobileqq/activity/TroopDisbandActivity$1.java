@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amdu;
+import anwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,14 +14,14 @@ class TroopDisbandActivity$1
   {
     try
     {
-      amdu localamdu = (amdu)this.this$0.app.a(20);
-      if (localamdu != null)
+      anwd localanwd = (anwd)this.this$0.app.a(20);
+      if (localanwd != null)
       {
         long l = Long.parseLong(this.this$0.a);
-        localamdu.a(l, 0L, 5, 6, 1);
+        localanwd.a(l, 0L, 5, 6, 1);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Long.valueOf(l));
-        localamdu.a(localArrayList);
+        localanwd.a(localArrayList);
       }
       return;
     }
@@ -34,7 +34,7 @@ class TroopDisbandActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.1
  * JD-Core Version:    0.7.0.1
  */

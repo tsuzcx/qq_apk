@@ -1,49 +1,137 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.NeonControl.1;
+import com.tencent.mobileqq.ar.NeonControl.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aowx
 {
-  private String a = alud.a(2131715231);
-  private String b = "";
+  private static aowx jdField_a_of_type_Aowx;
+  public static boolean a;
+  aowy jdField_a_of_type_Aowy;
+  public final Object a;
+  private boolean b;
   
-  public static aowx a(aoko[] paramArrayOfaoko)
+  static
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
-    }
-    aowx localaowx = new aowx();
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
-      localaowx.a = paramArrayOfaoko.getString("emptyShowWording");
-      localaowx.b = paramArrayOfaoko.getString("linkWord");
-      return localaowx;
-    }
-    catch (JSONException paramArrayOfaoko)
-    {
-      paramArrayOfaoko.printStackTrace();
-      return localaowx;
-    }
-    catch (NullPointerException paramArrayOfaoko)
-    {
-      paramArrayOfaoko.printStackTrace();
-    }
-    return localaowx;
+    jdField_a_of_type_Boolean = true;
   }
   
-  public String a()
+  private aowx()
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
+    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
+      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
+    }
+    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
+    boolean bool3 = aoxi.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (bool3)
+      {
+        i = 1;
+        if (!bool2) {
+          break label174;
+        }
+        j = 1;
+        label97:
+        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
+      }
+    }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangObject;
+      if ((!bool3) || (!bool2)) {
+        break label179;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.b = bool1;
+        return;
+      }
+      finally {}
+      i = 0;
+      break;
+      label174:
+      j = 0;
+      break label97;
+      label179:
+      bool1 = false;
+    }
   }
   
-  public String b()
+  public static aowx a()
   {
-    return this.b;
+    if (jdField_a_of_type_Aowx == null) {
+      jdField_a_of_type_Aowx = new aowx();
+    }
+    return jdField_a_of_type_Aowx;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aowy == null) {}
+    aowy localaowy;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        localaowy = new aowy(this);
+        localaowy.jdField_a_of_type_Long = this.jdField_a_of_type_Aowy.jdField_a_of_type_Long;
+        localaowy.jdField_a_of_type_Int = this.jdField_a_of_type_Aowy.jdField_a_of_type_Int;
+        localaowy.b = this.jdField_a_of_type_Aowy.b;
+        this.jdField_a_of_type_Aowy.b = -2147483648;
+        this.jdField_a_of_type_Aowy.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Aowy.jdField_a_of_type_Int = 0;
+      } while ((localaowy.jdField_a_of_type_Long <= 0L) || (localaowy.jdField_a_of_type_Int <= 0) || (localaowy.b == -2147483648));
+      i = (int)(localaowy.jdField_a_of_type_Long / localaowy.jdField_a_of_type_Int);
+    } while ((i < 0) || (i >= 600000));
+    ThreadManager.post(new NeonControl.2(this, localaowy, i), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Aowy == null)
+    {
+      this.jdField_a_of_type_Aowy = new aowy(this);
+      this.jdField_a_of_type_Aowy.b = paramInt;
+    }
+    if (this.jdField_a_of_type_Aowy.b != paramInt)
+    {
+      if ((this.jdField_a_of_type_Aowy.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Aowy.jdField_a_of_type_Int > 0)) {
+        a();
+      }
+      this.jdField_a_of_type_Aowy.b = paramInt;
+      this.jdField_a_of_type_Aowy.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Aowy.jdField_a_of_type_Int = 0;
+    }
+    aowy localaowy = this.jdField_a_of_type_Aowy;
+    localaowy.jdField_a_of_type_Long += paramLong;
+    localaowy = this.jdField_a_of_type_Aowy;
+    localaowy.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.b;
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowx
  * JD-Core Version:    0.7.0.1
  */

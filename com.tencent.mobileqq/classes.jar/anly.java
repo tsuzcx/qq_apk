@@ -1,236 +1,209 @@
-import android.os.Build;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qphone.base.util.QLog;
 
 public class anly
+  implements alaq
 {
-  public static String a;
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  public static Map<String, List<anlz>> a;
-  public static boolean a;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
-  public static boolean i;
-  public static boolean j;
-  private anmj jdField_a_of_type_Anmj;
-  private anmm jdField_a_of_type_Anmm;
-  private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
+  public anly(FrameHelperActivity paramFrameHelperActivity) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_Boolean = true;
-    f = true;
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (Build.MODEL.contains("Android SDK built for x86")) {
-      c = true;
+    int i = 0;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerStartMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity() + " mDrawerBg= " + this.a.jdField_a_of_type_AndroidViewViewGroup);
     }
-    String str1 = Build.CPU_ABI;
-    String str2 = Build.CPU_ABI2;
-    if ((!c) && ((a(str1).booleanValue()) || (a(str2).booleanValue()))) {
-      jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public anly(ArkAppCenter paramArkAppCenter)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter = paramArkAppCenter;
-    Object localObject = aolx.b(159).a();
-    if ((localObject != null) && (((aolv)localObject).a() != null))
-    {
-      localObject = ((aolv)localObject).a();
-      jdField_a_of_type_Boolean = ((aomp)localObject).jdField_a_of_type_Boolean;
-      f = ((aomp)localObject).jdField_b_of_type_Boolean;
-    }
-    this.jdField_a_of_type_Anmj = new anmj(paramArkAppCenter.b());
-    this.jdField_a_of_type_Anmm = new anmm(paramArkAppCenter.b());
-    d();
-    a();
-    paramArkAppCenter = aolx.b(186).a();
-    if ((paramArkAppCenter != null) && (paramArkAppCenter.a() != null))
-    {
-      ArkAppCenter.c("ArkApp.AI", "ArkAiAppCenter updateDialogConfig content =" + paramArkAppCenter.a());
-      a(paramArkAppCenter.a());
-    }
-  }
-  
-  private static Boolean a(String paramString)
-  {
-    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (localAppRuntime == null) {
-      return "";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  public static String a(String paramString)
-  {
-    return bdea.a(BaseApplication.getContext(), paramString + a());
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    bdea.a(BaseApplication.getContext(), paramString1 + a(), paramString2);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "open";; str = "close")
-    {
-      bdea.a(BaseApplication.getContext(), "ark_use_android_http_" + a(), str);
+    if (this.a.getActivity() == null) {
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    try
-    {
-      boolean bool = "open".equals(bdea.a(BaseApplication.getContext(), "ark_use_android_http_" + a()));
-      return bool;
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
+      FrameHelperActivity.a(this.a, false);
     }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilList.contains(paramString);
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "open";; str = "close") {
-      try
-      {
-        bdea.a(BaseApplication.getContext(), "ark_support_android9_emoji", str);
-        return;
+    alaq[] arrayOfalaq = this.a.jdField_a_of_type_ArrayOfAlaq;
+    int j = arrayOfalaq.length;
+    while (i < j)
+    {
+      alaq localalaq = arrayOfalaq[i];
+      if (localalaq != null) {
+        localalaq.a(paramInt);
       }
-      catch (Exception localException)
-      {
-        ArkAppCenter.c("ArkApp.AI", "setAndroid9EmojiSupportState exception: " + localException.getMessage());
-      }
+      i += 1;
     }
+    this.a.d(true);
   }
   
-  public static boolean b()
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat)
   {
-    try
+    int i = 0;
+    if ((QLog.isDevelopLevel()) && (FrameHelperActivity.a(this.a)))
     {
-      boolean bool = "open".equals(bdea.a(BaseApplication.getContext(), "ark_support_android9_emoji"));
-      return bool;
+      FrameHelperActivity.a(this.a, false);
+      QLog.i("Q.recent", 4, "onDrawerMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity());
     }
-    catch (Exception localException)
-    {
-      ArkAppCenter.c("ArkApp.AI", "getAndroid9EmojiSupportState exception: " + localException.getMessage());
-    }
-    return false;
-  }
-  
-  private void d()
-  {
-    anmj.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.b());
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Anmm.a();
-  }
-  
-  public void a(aomu paramaomu)
-  {
-    if (paramaomu == null)
-    {
-      ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig,dialogConfig is null", new Object[0]));
+    if (this.a.getActivity() == null) {
       return;
     }
-    e = paramaomu.jdField_a_of_type_Boolean;
-    d = this.jdField_a_of_type_Anmm.a(paramaomu.jdField_b_of_type_JavaLangString);
-    g = paramaomu.jdField_b_of_type_Boolean;
-    a(g);
-    if (ArkAppCenter.jdField_b_of_type_Boolean) {
-      ark.SetUseAndroidHTTP(g);
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null) && (bkfq.a()))
+    {
+      localObject1 = FrameHelperActivity.a(this.a).a(bkfq.a);
+      if (localObject1 != null) {
+        ((bkpm)localObject1).c();
+      }
     }
-    h = paramaomu.c;
-    b(h);
-    if (ArkAppCenter.jdField_b_of_type_Boolean) {
-      ark.arkSetAndroid9EmojiFeatureSupport(h);
+    if (Build.VERSION.SDK_INT >= 11) {}
+    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAlaq;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.a(paramInt, paramFloat);
+      }
+      i += 1;
     }
-    i = paramaomu.d;
-    Object localObject;
-    if (i) {
-      localObject = "true";
+    this.a.d(true);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    FrameHelperActivity.a(this.a, true);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerOpened:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
+    }
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    FrameHelperActivity.b(this.a, true);
+    this.a.a(paramInt2, true, FrameHelperActivity.a(this.a));
+    Object localObject1 = this.a.getActivity().app;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[setDrawerBg(app)]from DrawerOpened");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(14);
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
+    {
+      FrameHelperActivity.a(this.a).a();
+      if (bkfq.a())
+      {
+        localObject1 = FrameHelperActivity.a(this.a).a(bkfq.a);
+        if (localObject1 != null)
+        {
+          if (paramInt2 != 1) {
+            break label260;
+          }
+          ((bkpm)localObject1).d();
+        }
+      }
     }
     for (;;)
     {
-      a("ark_engine_multi_thread", (String)localObject);
-      jdField_a_of_type_JavaLangString = paramaomu.jdField_a_of_type_JavaLangString;
-      boolean bool;
-      if (ArkAppCenter.jdField_b_of_type_Boolean)
+      if (Build.VERSION.SDK_INT < 11) {}
+      localObject1 = this.a.jdField_a_of_type_ArrayOfAlaq;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = ArkEnvironmentManager.getInstance();
-        if (i) {
-          break label183;
+        Object localObject2 = localObject1[i];
+        if (localObject2 != null) {
+          localObject2.a(paramInt1, paramInt2);
         }
-        bool = true;
-        ((ArkEnvironmentManager)localObject).setSingleThreadMode(bool);
-        ArkEnvironmentManager.getInstance().setThreadMode();
+        i += 1;
       }
-      try
-      {
-        localObject = new JSONObject(jdField_a_of_type_JavaLangString);
-        ArkEnvironmentManager.getInstance().setHardwareDisableList((JSONObject)localObject);
-        j = paramaomu.e;
-        return;
-        localObject = "false";
-        continue;
-        label183:
-        bool = false;
+      label260:
+      ((bkpm)localObject1).a();
+    }
+    FrameHelperActivity.a(this.a);
+    this.a.d(true);
+    pmk.a().m();
+    this.a.m();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerStartToggle:: side = " + paramInt + " open:" + paramBoolean + " getActivity = " + this.a.getActivity());
+    }
+    alaq[] arrayOfalaq = this.a.jdField_a_of_type_ArrayOfAlaq;
+    int j = arrayOfalaq.length;
+    int i = 0;
+    while (i < j)
+    {
+      alaq localalaq = arrayOfalaq[i];
+      if (localalaq != null) {
+        localalaq.a(paramInt, paramBoolean);
       }
-      catch (JSONException localJSONException)
+      i += 1;
+    }
+    if (paramBoolean) {
+      ThreadManager.post(new FrameHelperActivity.1.1(this), 5, null, true);
+    }
+    this.a.d(paramBoolean);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerClosed:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
+    }
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    FrameHelperActivity.b(this.a, false);
+    this.a.a(paramInt2, false, FrameHelperActivity.a(this.a));
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
+    {
+      FrameHelperActivity.a(this.a).b();
+      if (bkfq.a())
       {
-        for (;;)
-        {
-          ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
+        localObject1 = FrameHelperActivity.a(this.a).a(bkfq.a);
+        if (localObject1 != null) {
+          ((bkpm)localObject1).b();
         }
       }
     }
-  }
-  
-  public void b()
-  {
-    anmj localanmj = this.jdField_a_of_type_Anmj;
-    anmj.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a());
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Anmj.b();
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
+      }
+    }
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380259)).setImageResource(0);
+    }
+    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAlaq;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.b(paramInt1, paramInt2);
+      }
+      i += 1;
+    }
+    this.a.d(false);
+    localObject1 = (QQAppInterface)pha.a();
+    if (localObject1 != null) {
+      ((KandianMergeManager)((QQAppInterface)localObject1).getManager(162)).p();
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(17)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(17);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 100L);
   }
 }
 

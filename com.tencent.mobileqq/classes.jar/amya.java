@@ -1,22 +1,11 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-
-public abstract interface amya
+public class amya
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract void a(ArEffectConfig paramArEffectConfig);
-  
-  public abstract void b();
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

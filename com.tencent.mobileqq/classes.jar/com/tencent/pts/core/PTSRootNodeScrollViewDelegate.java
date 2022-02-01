@@ -2,9 +2,9 @@ package com.tencent.pts.core;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import com.tencent.pts.ui.PTSNodeFactory;
 import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.view.PTSCustomScrollView;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 import com.tencent.pts.utils.PTSAnimationUtil;
 import com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo;
@@ -18,7 +18,7 @@ public class PTSRootNodeScrollViewDelegate
   private final String TAG = "PTSRootNodeScrollViewDelegate";
   private PTSAppInstance mAppInstance;
   private HashMap<String, PTSNodeVirtual> mNodeMap = new HashMap();
-  private PTSCustomScrollView mScrollView;
+  private ScrollView mScrollView;
   
   PTSRootNodeScrollViewDelegate(PTSAppInstance paramPTSAppInstance)
   {
@@ -57,6 +57,11 @@ public class PTSRootNodeScrollViewDelegate
       bool = true;
     }
     return bool;
+  }
+  
+  public View getRootView()
+  {
+    return this.mScrollView;
   }
   
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
@@ -105,7 +110,7 @@ public class PTSRootNodeScrollViewDelegate
   
   public View onCreateNativeView()
   {
-    this.mScrollView = new PTSCustomScrollView(this.mAppInstance.getContext());
+    this.mScrollView = new ScrollView(this.mAppInstance.getContext());
     return this.mScrollView;
   }
   
@@ -149,7 +154,7 @@ public class PTSRootNodeScrollViewDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeScrollViewDelegate
  * JD-Core Version:    0.7.0.1
  */

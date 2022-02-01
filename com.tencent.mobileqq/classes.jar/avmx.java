@@ -1,53 +1,133 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
-class avmx
-  implements View.OnClickListener
+public class avmx
+  extends WebViewPlugin
 {
-  avmx(avmf paramavmf) {}
-  
-  public void onClick(View paramView)
+  public avmx()
   {
-    if (this.a.p)
+    this.mPluginNameSpace = "emojiEggSetting";
+  }
+  
+  private void a(int paramInt, String... paramVarArgs)
+  {
+    try
     {
-      avmf.b(this.a);
+      Activity localActivity = this.mRuntime.a();
+      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("frd_uin");
+      if (!TextUtils.isEmpty(paramVarArgs))
+      {
+        Intent localIntent = afur.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+        localIntent.putExtra("uin", paramVarArgs);
+        if (paramInt == 1) {
+          localIntent.putExtra("KEY_SHOULD_SHOW_KEYBOARD", true);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("uintype", 0);
+          localActivity.startActivity(localIntent);
+          return;
+          if (paramInt == 2) {
+            localIntent.putExtra("KEY_SHOULD_SHOW_PLUS_PANEL", true);
+          }
+        }
+      }
       return;
     }
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    paramView = zjc.a(paramView);
-    int i = 0;
-    label33:
-    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
-    }
-    for (;;)
+    catch (Exception paramVarArgs)
     {
-      this.a.a.a(i, paramView);
-      azqs.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-      if (this.a.a.e == 3) {}
-      for (paramView = "2";; paramView = "1")
-      {
-        azqs.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
-        if (!auwd.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
-          break;
-        }
-        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
-        return;
-        i += 1;
-        break label33;
-      }
-      i = 0;
+      QLog.e("IntimatePlugin", 1, "gotoC2C exception e = ", paramVarArgs);
     }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimatePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if ("emojiEggSetting".equals(paramString2))
+    {
+      if (!"showVC".equals(paramString3)) {}
+    }
+    else
+    {
+      for (;;)
+      {
+        int i;
+        try
+        {
+          paramJsBridgeListener = this.mRuntime.a();
+          i = new JSONObject(paramVarArgs[0]).optInt("entry");
+          paramString1 = new Intent(paramJsBridgeListener, ShowReactiveActivity.class);
+          paramString1.putExtra("entry", i);
+          paramJsBridgeListener.startActivity(paramString1);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          QLog.e("IntimatePlugin", 1, "openConfessAIO exception e = ", paramJsBridgeListener);
+          return false;
+        }
+        if ("interactionScore".equals(paramString2))
+        {
+          if ("gotoChat".equals(paramString3))
+          {
+            a(1, paramVarArgs);
+            return true;
+          }
+          if ("gotoCall".equals(paramString3))
+          {
+            a(2, paramVarArgs);
+            return true;
+          }
+          if (!"saveConnectionsSwitch".equals(paramString3)) {
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("IntimatePlugin", 2, "IntimatePlugin: METHOD_SAVE_CONNECTIONS_SWITCH called");
+          }
+          try
+          {
+            paramJsBridgeListener = this.mRuntime.a();
+            if (paramJsBridgeListener != null)
+            {
+              i = new JSONObject(paramVarArgs[0]).optInt("flag");
+              paramJsBridgeListener.getApp().getSharedPreferences("mayknow_connections_switch", 4).edit().putInt("key_mayknow_connections_switch", i).commit();
+              return true;
+            }
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            QLog.e("IntimatePlugin", 2, "IntimatePlugin: METHOD_SAVE_CONNECTIONS_SWITCH called exception");
+            return true;
+          }
+        }
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmx
  * JD-Core Version:    0.7.0.1
  */

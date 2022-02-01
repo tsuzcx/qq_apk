@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import common.config.service.QzoneConfig;
+import java.util.ArrayList;
+import java.util.List;
 
-class anqm
-  implements DialogInterface.OnDismissListener
+public class anqm
+  implements anik
 {
-  anqm(anqk paramanqk) {}
+  private List<String> a = new ArrayList();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    anqk.a(this.a, false);
-    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
+    if (this.a.isEmpty()) {
+      this.a.add("100077");
+    }
+    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
+      return this.a;
+    }
+    return null;
   }
 }
 

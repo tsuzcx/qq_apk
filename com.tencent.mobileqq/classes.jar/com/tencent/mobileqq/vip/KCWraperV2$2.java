@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vip;
 
-import bean;
-import beaw;
+import bhho;
+import bhhy;
 import com.tencent.mobileqq.app.ThreadManager;
 import dualsim.common.IKingCardInterface;
 import dualsim.common.OrderCheckResult;
@@ -11,7 +11,7 @@ import tmsdk.common.KcSdkShellManager;
 public class KCWraperV2$2
   implements Runnable
 {
-  public KCWraperV2$2(bean parambean, beaw parambeaw, boolean paramBoolean) {}
+  public KCWraperV2$2(bhho parambhho, bhhy parambhhy, boolean paramBoolean) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class KCWraperV2$2
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Beaw != null)
+      if (this.jdField_a_of_type_Bhhy != null)
       {
         if (!this.jdField_a_of_type_Boolean) {
           break;
@@ -38,14 +38,14 @@ public class KCWraperV2$2
         bool = true;
       }
       i = ((OrderCheckResult)localObject).product;
-      bean.a(this.this$0, (OrderCheckResult)localObject);
+      bhho.a(this.this$0, (OrderCheckResult)localObject);
     }
-    this.jdField_a_of_type_Beaw.a(true, bool, i);
+    this.jdField_a_of_type_Bhhy.a(true, bool, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.2
  * JD-Core Version:    0.7.0.1
  */

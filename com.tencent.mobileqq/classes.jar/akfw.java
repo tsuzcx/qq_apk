@@ -1,27 +1,70 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class akfw
+class akfw
+  implements adea
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public Friends a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
-  public ImageView g;
+  akfw(akfu paramakfu, String paramString) {}
+  
+  public void onComplete()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKAvatarSettingManager", 2, "check api, onComplete");
+    }
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
+    }
+    if ((akfu.a(this.jdField_a_of_type_Akfu).isFinishing()) || (this.jdField_a_of_type_Akfu.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Akfu.d();
+    if (akfu.a(this.jdField_a_of_type_Akfu) != null) {
+      akfu.a(this.jdField_a_of_type_Akfu).removeCallbacks(akfu.a(this.jdField_a_of_type_Akfu));
+    }
+    this.jdField_a_of_type_Akfu.a(anni.a(2131712361), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
+    }
+    if ((akfu.a(this.jdField_a_of_type_Akfu).isFinishing()) || (this.jdField_a_of_type_Akfu.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Akfu.d();
+    if (akfu.a(this.jdField_a_of_type_Akfu) != null) {
+      akfu.a(this.jdField_a_of_type_Akfu).removeCallbacks(akfu.a(this.jdField_a_of_type_Akfu));
+    }
+    this.jdField_a_of_type_Akfu.a(anni.a(2131712365), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
+    }
+    if ((akfu.a(this.jdField_a_of_type_Akfu).isFinishing()) || (this.jdField_a_of_type_Akfu.b)) {
+      return;
+    }
+    if (akfu.a(this.jdField_a_of_type_Akfu) != null) {
+      akfu.a(this.jdField_a_of_type_Akfu).removeCallbacks(akfu.a(this.jdField_a_of_type_Akfu));
+    }
+    akfu.a(this.jdField_a_of_type_Akfu);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKAvatarSettingManager", 2, "check api, onTrigger");
+    }
+  }
 }
 
 

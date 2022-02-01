@@ -1,24 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
 public class bbbb
-  extends bbbi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
+  public bbbb(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" groupFileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" groupFileKey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.b);
-    return localStringBuilder.toString();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

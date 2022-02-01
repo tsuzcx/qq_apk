@@ -1,30 +1,59 @@
-import com.tencent.av.ui.VideoLayerUIBase;
+import android.content.Context;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
 import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
 
-public class mnz
-  implements Observer
+public abstract class mnz
+  extends mnw
 {
-  private WeakReference<VideoLayerUIBase> a;
-  
-  public mnz(VideoLayerUIBase paramVideoLayerUIBase)
+  public mnz(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
+    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected abstract int a(int paramInt);
+  
+  public int a(long paramLong)
   {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
+    int i = 0;
+    if (a())
+    {
+      i = b(paramLong);
+      this.e -= i;
     }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
+    return i;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    this.e = (b(paramLong) + this.e);
+  }
+  
+  public boolean a()
+  {
+    return this.e + c() > 0;
+  }
+  
+  protected int b(long paramLong)
+  {
+    return (int)(a(this.jdField_a_of_type_Lga.a.length()) * paramLong / 1000L);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
+      this.e = this.g;
+    }
+  }
+  
+  public boolean c()
+  {
+    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mnz
  * JD-Core Version:    0.7.0.1
  */

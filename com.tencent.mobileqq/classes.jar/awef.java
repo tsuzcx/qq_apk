@@ -1,30 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import java.util.Comparator;
 
-public class awef
-  implements View.OnClickListener
+class awef
+  implements Comparator<awdw>
 {
-  public awef(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(awdw paramawdw1, awdw paramawdw2)
   {
-    awet.a(AutoReplyEditActivity.a(this.a), false);
-    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    if (AutoReplyEditActivity.a(this.a) != null) {}
-    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
-    {
-      AutoReplyEditActivity.a(this.a);
-      return;
+    if (paramawdw1.a >= paramawdw2.a) {
+      return 1;
     }
-    AutoReplyEditActivity.a(this.a);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awef
  * JD-Core Version:    0.7.0.1
  */

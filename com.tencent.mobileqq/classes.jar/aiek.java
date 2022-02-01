@@ -1,35 +1,21 @@
-import android.view.View;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aiek
-  extends aruk
+  implements aauj
 {
-  aiek(aiei paramaiei) {}
+  aiek(aidp paramaidp) {}
   
-  public void a(View paramView)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((aiei.a(this.a)) && (aiei.a(this.a) != null))
+    if ((ahdq.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
     {
-      if (paramView.getId() != 2131365545) {
-        break label43;
-      }
-      aiei.a(this.a).a(1);
-    }
-    label43:
-    do
-    {
+      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
       return;
-      if (paramView.getId() == 2131365550)
-      {
-        aiei.a(this.a).a(3);
-        return;
-      }
-      if (paramView.getId() == 2131365546)
-      {
-        aiei.a(this.a).a(2);
-        return;
-      }
-    } while (paramView.getId() != 2131365544);
-    aiei.a(this.a).a(4);
+    }
+    afur.n = true;
+    this.a.jdField_a_of_type_Nzz.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, aidp.a(this.a), aidp.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    aoqq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, aidp.e(this.a), paramInt1);
   }
 }
 

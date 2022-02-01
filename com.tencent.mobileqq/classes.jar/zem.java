@@ -1,45 +1,71 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
 
-class zem
-  implements nbs
+public class zem
 {
-  zem(zej paramzej, JsBridgeListener paramJsBridgeListener) {}
+  public final int a;
+  public final PublishVideoEntry a;
+  public final EditVideoParams.EditSource a;
+  public final EditVideoParams a;
+  public PublishParam a;
+  public TribeVideoPublishParams a;
+  public LpReportInfo_pf00064 a;
+  public String a;
+  public WeakReference<View> a;
+  public zeq a;
+  public zes a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public boolean d;
   
-  public void loaded(String paramString, int paramInt)
+  public zem(EditVideoParams paramEditVideoParams)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject();
-        paramString.put("retcode", -1);
-        paramString.put("msg", "error");
-        this.jdField_a_of_type_Zej.callJs(this.jdField_a_of_type_Zej.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
-        return;
-      }
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_Zej.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
+    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("enable_flow_decode", Boolean.valueOf(basa.b));
   }
   
-  public void progress(int paramInt) {}
+  public View a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    return null;
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public String toString()
+  {
+    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zem
  * JD-Core Version:    0.7.0.1
  */

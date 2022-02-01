@@ -1,11 +1,17 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-public abstract interface asjr
+public class asjr
+  implements asno
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public asjr(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  public void a(String paramString, int paramInt)
+  {
+    this.a.a.setText(paramString);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a(paramString);
+  }
 }
 
 

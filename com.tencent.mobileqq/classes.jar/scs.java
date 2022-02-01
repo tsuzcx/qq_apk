@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-final class scs
-  implements scv
+class scs
+  extends skd
 {
-  scs(sct paramsct) {}
+  scs(sce paramsce) {}
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
+  public int a()
   {
-    this.a.a(paramList);
+    return 3;
+  }
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    this.a.a.c(paramString + "&sourcefrom=6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

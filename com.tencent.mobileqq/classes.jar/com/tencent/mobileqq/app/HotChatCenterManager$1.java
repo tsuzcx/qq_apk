@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import alug;
-import awgf;
-import awgg;
+import annl;
 import com.tencent.mobileqq.data.HotChatItemData;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotChatCenterManager$1
   implements Runnable
 {
-  public HotChatCenterManager$1(alug paramalug, HotChatItemData paramHotChatItemData) {}
+  public HotChatCenterManager$1(annl paramannl, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {
     Object localObject3 = null;
-    awgf localawgf2 = null;
-    localawgf1 = localawgf2;
+    EntityManager localEntityManager2 = null;
+    localEntityManager1 = localEntityManager2;
     localObject1 = localObject3;
     for (;;)
     {
@@ -25,11 +25,11 @@ public class HotChatCenterManager$1
         if (localQQAppInterface != null) {
           continue;
         }
-        localawgf1 = localawgf2;
+        localEntityManager1 = localEntityManager2;
         localObject1 = localObject3;
         if (QLog.isColorLevel())
         {
-          localawgf1 = localawgf2;
+          localEntityManager1 = localEntityManager2;
           localObject1 = localObject3;
           QLog.d("HotChatCenterManager", 2, "saveHotChatItemData app = null");
         }
@@ -40,12 +40,12 @@ public class HotChatCenterManager$1
       catch (Throwable localThrowable)
       {
         QQAppInterface localQQAppInterface;
-        localObject1 = localawgf1;
+        localObject1 = localEntityManager1;
         QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
-        if (localawgf1 == null) {
+        if (localEntityManager1 == null) {
           continue;
         }
-        localawgf1.a();
+        localEntityManager1.close();
         return;
       }
       finally
@@ -53,42 +53,42 @@ public class HotChatCenterManager$1
         if (localObject1 == null) {
           continue;
         }
-        ((awgf)localObject1).a();
+        ((EntityManager)localObject1).close();
       }
       return;
-      localawgf1 = localawgf2;
+      localEntityManager1 = localEntityManager2;
       localObject1 = localObject3;
-      localawgf2 = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localawgf1 = localawgf2;
-      localObject1 = localawgf2;
+      localEntityManager2 = localQQAppInterface.a().createEntityManager();
+      localEntityManager1 = localEntityManager2;
+      localObject1 = localEntityManager2;
       if (this.a.getStatus() == 1000)
       {
-        localawgf1 = localawgf2;
-        localObject1 = localawgf2;
-        localawgf2.a(this.a);
-        localawgf1 = localawgf2;
-        localObject1 = localawgf2;
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
+        localEntityManager2.persist(this.a);
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
         if (QLog.isColorLevel())
         {
-          localawgf1 = localawgf2;
-          localObject1 = localawgf2;
+          localEntityManager1 = localEntityManager2;
+          localObject1 = localEntityManager2;
           QLog.d("HotChatCenterManager", 2, new Object[] { "saveHotChatItemData [persist],code:", this.a.mHotChatCode });
         }
-        if (localawgf2 != null) {
-          localawgf2.a();
+        if (localEntityManager2 != null) {
+          localEntityManager2.close();
         }
       }
       else
       {
-        localawgf1 = localawgf2;
-        localObject1 = localawgf2;
-        localawgf2.a(this.a);
-        localawgf1 = localawgf2;
-        localObject1 = localawgf2;
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
+        localEntityManager2.update(this.a);
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
         if (QLog.isColorLevel())
         {
-          localawgf1 = localawgf2;
-          localObject1 = localawgf2;
+          localEntityManager1 = localEntityManager2;
+          localObject1 = localEntityManager2;
           QLog.d("HotChatCenterManager", 2, new Object[] { "saveHotChatItemData [update],code:", this.a.mHotChatCode });
         }
       }
@@ -97,7 +97,7 @@ public class HotChatCenterManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatCenterManager.1
  * JD-Core Version:    0.7.0.1
  */

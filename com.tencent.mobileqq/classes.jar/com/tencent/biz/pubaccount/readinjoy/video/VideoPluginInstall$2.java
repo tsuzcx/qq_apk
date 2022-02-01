@@ -1,34 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import rjp;
-import rjs;
+import sfd;
+import sfg;
+import siw;
 
 public class VideoPluginInstall$2
   implements Runnable
 {
-  public VideoPluginInstall$2(rjp paramrjp) {}
+  public VideoPluginInstall$2(sfd paramsfd) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
     }
-    if (!rjp.b()) {
-      rjp.a(this.this$0);
+    if (!sfd.b()) {
+      sfd.a(this.this$0);
     }
     try
     {
-      if (rjp.a(this.this$0) != null) {
-        TVK_SDKMgr.installPlugin(rjp.a(this.this$0), new rjs(rjp.a(this.this$0)));
-      }
+      sfd.a(this.this$0).a(new sfg(sfd.a(this.this$0)));
       return;
     }
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e("Q.readinjoy.video", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
+      QLog.e("Q.readinjoy.video", 2, "VideoSDKMgr.installPlugin ERROR e=" + localException.getMessage());
     }
   }
 }

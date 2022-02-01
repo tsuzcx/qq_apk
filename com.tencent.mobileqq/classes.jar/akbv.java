@@ -1,30 +1,49 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akbv
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  public static List<akbw> a;
   
-  public akbv(akbr paramakbr, int paramInt, awge paramawge)
+  public static void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawge);
-  }
-  
-  public akbv(akbr paramakbr, int paramInt, DiscussionInfo paramDiscussionInfo)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public akbv(akbr paramakbr, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
+    int i = 2;
+    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("entryList");
+      ArrayList localArrayList = new ArrayList();
+      if (paramJSONObject.length() > 2) {}
+      for (;;)
+      {
+        int j = 0;
+        while (j < i)
+        {
+          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
+          akbw localakbw = new akbw();
+          localakbw.jdField_a_of_type_Int = localJSONObject.optInt("id");
+          Object localObject = localJSONObject.optJSONObject("image");
+          if (localObject != null)
+          {
+            localObject = ((JSONObject)localObject).optString("src");
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              localakbw.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
+            }
+          }
+          localakbw.c = localJSONObject.optString("name");
+          localakbw.d = localJSONObject.optString("desc");
+          localakbw.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
+          localakbw.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
+          localakbw.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
+          localArrayList.add(localakbw);
+          j += 1;
+        }
+        i = paramJSONObject.length();
+      }
+      a = localArrayList;
+    }
   }
 }
 

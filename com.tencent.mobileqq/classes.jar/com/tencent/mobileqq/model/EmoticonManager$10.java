@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
-import aufn;
+import awmr;
 import java.util.List;
 
 public class EmoticonManager$10
   implements Runnable
 {
-  public EmoticonManager$10(aufn paramaufn, List paramList) {}
+  public EmoticonManager$10(awmr paramawmr, List paramList) {}
   
   /* Error */
   public void run()
@@ -17,93 +17,93 @@ public class EmoticonManager$10
     //   4: invokespecial 26	java/util/HashSet:<init>	()V
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laufn;
-    //   12: getfield 31	aufn:jdField_a_of_type_Awgf	Lawgf;
-    //   15: invokevirtual 36	awgf:a	()Lawgh;
+    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawmr;
+    //   12: getfield 31	awmr:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   15: invokevirtual 37	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   18: astore_1
     //   19: aload_1
-    //   20: invokevirtual 40	awgh:a	()V
+    //   20: invokevirtual 42	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   23: aload_0
     //   24: getfield 16	com/tencent/mobileqq/model/EmoticonManager$10:a	Ljava/util/List;
-    //   27: invokeinterface 46 1 0
+    //   27: invokeinterface 48 1 0
     //   32: astore_3
     //   33: aload_3
-    //   34: invokeinterface 52 1 0
+    //   34: invokeinterface 54 1 0
     //   39: ifeq +143 -> 182
     //   42: aload_3
-    //   43: invokeinterface 56 1 0
-    //   48: checkcast 58	com/tencent/mobileqq/data/Emoticon
+    //   43: invokeinterface 58 1 0
+    //   48: checkcast 60	com/tencent/mobileqq/data/Emoticon
     //   51: astore 4
     //   53: aload 4
     //   55: ifnull -22 -> 33
     //   58: aload_2
     //   59: aload 4
-    //   61: getfield 62	com/tencent/mobileqq/data/Emoticon:name	Ljava/lang/String;
-    //   64: invokevirtual 66	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   61: getfield 64	com/tencent/mobileqq/data/Emoticon:name	Ljava/lang/String;
+    //   64: invokevirtual 68	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   67: pop
     //   68: aload_0
-    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laufn;
+    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawmr;
     //   72: aload 4
-    //   74: invokestatic 69	aufn:a	(Laufn;Lcom/tencent/mobileqq/data/Emoticon;)V
+    //   74: invokestatic 71	awmr:a	(Lawmr;Lcom/tencent/mobileqq/data/Emoticon;)V
     //   77: aload_0
-    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laufn;
+    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawmr;
     //   81: aload 4
-    //   83: invokestatic 72	aufn:a	(Laufn;Lawge;)Z
+    //   83: invokestatic 74	awmr:a	(Lawmr;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   86: ifne -53 -> 33
-    //   89: ldc 74
+    //   89: ldc 76
     //   91: iconst_1
-    //   92: new 76	java/lang/StringBuilder
+    //   92: new 78	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   99: ldc 79
-    //   101: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   99: ldc 81
+    //   101: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: aload 4
-    //   106: getfield 86	com/tencent/mobileqq/data/Emoticon:epId	Ljava/lang/String;
-    //   109: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: ldc 88
-    //   114: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: getfield 88	com/tencent/mobileqq/data/Emoticon:epId	Ljava/lang/String;
+    //   109: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: ldc 90
+    //   114: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   117: aload 4
-    //   119: getfield 91	com/tencent/mobileqq/data/Emoticon:eId	Ljava/lang/String;
-    //   122: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: getfield 93	com/tencent/mobileqq/data/Emoticon:eId	Ljava/lang/String;
+    //   122: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: goto -98 -> 33
     //   134: astore_3
-    //   135: ldc 74
+    //   135: ldc 76
     //   137: iconst_1
-    //   138: new 76	java/lang/StringBuilder
+    //   138: new 78	java/lang/StringBuilder
     //   141: dup
-    //   142: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   145: ldc 103
-    //   147: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   145: ldc 105
+    //   147: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: aload_3
-    //   151: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   154: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   160: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: invokevirtual 108	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   154: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   160: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   163: aload_1
-    //   164: invokevirtual 109	awgh:b	()V
+    //   164: invokevirtual 111	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   167: aload_0
-    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laufn;
-    //   171: getfield 112	aufn:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   174: invokestatic 117	agyv:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lagyv;
+    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawmr;
+    //   171: getfield 114	awmr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   174: invokestatic 119	aijp:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Laijp;
     //   177: aload_2
-    //   178: invokevirtual 120	agyv:a	(Ljava/util/Collection;)V
+    //   178: invokevirtual 122	aijp:a	(Ljava/util/Collection;)V
     //   181: return
     //   182: aload_1
-    //   183: invokevirtual 123	awgh:c	()V
+    //   183: invokevirtual 125	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   186: aload_1
-    //   187: invokevirtual 109	awgh:b	()V
+    //   187: invokevirtual 111	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   190: goto -23 -> 167
     //   193: astore_2
     //   194: aload_1
-    //   195: invokevirtual 109	awgh:b	()V
+    //   195: invokevirtual 111	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   198: aload_2
     //   199: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	200	0	this	10
-    //   18	177	1	localawgh	awgh
+    //   18	177	1	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
     //   7	171	2	localHashSet	java.util.HashSet
     //   193	6	2	localObject	Object
     //   32	11	3	localIterator	java.util.Iterator
@@ -124,7 +124,7 @@ public class EmoticonManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.10
  * JD-Core Version:    0.7.0.1
  */

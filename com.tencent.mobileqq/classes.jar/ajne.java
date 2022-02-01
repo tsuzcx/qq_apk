@@ -1,42 +1,21 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ajne
-  implements ImageAssetDelegate
+class ajne
+  implements DialogInterface.OnClickListener
 {
-  private Context a;
+  ajne(ajnc paramajnc) {}
   
-  public ajne(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramContext;
-  }
-  
-  @Nullable
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    try
-    {
-      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inScaled = false;
-      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
-      paramLottieImageAsset.close();
-      return localObject;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    catch (Throwable paramLottieImageAsset)
-    {
-      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    if (paramInt == 1) {
+      bgzo.a(ajnc.a(this.a), ajnc.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ajnc.a(this.a).getApp().getString(2131718361), "");
     }
-    return null;
   }
 }
 

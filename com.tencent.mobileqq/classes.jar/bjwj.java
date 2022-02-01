@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneWeishiFeedsGpuProxyActivity;
+import com.tencent.plato.mqq.network.ProgressListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 
-public class bjwj
+final class bjwj
+  implements ProgressListener
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  bjwj(UploaderProxy.UploadListener paramUploadListener) {}
+  
+  public void onProgress(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    return QzoneWeishiFeedsGpuProxyActivity.class;
+    this.a.onUploadProgress((int)(100.0D * paramLong1 / paramLong2), (int)paramLong1, (int)paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwj
  * JD-Core Version:    0.7.0.1
  */

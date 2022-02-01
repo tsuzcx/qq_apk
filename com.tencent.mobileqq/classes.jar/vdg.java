@@ -1,47 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.widget.QQToast;
+import qqcircle.QQCircleRight.SetCircleUnCareRsp;
 
-public class vdg
-  extends uuc
+class vdg
+  implements zxa<QQCircleRight.SetCircleUnCareRsp>
 {
-  qqstory_service.RspIconPostfix a;
+  vdg(vde paramvde, boolean paramBoolean) {}
   
-  public vdg() {}
-  
-  public vdg(qqstory_service.RspIconPostfix paramRspIconPostfix)
-  {
-    super(paramRspIconPostfix.result);
-    this.a = paramRspIconPostfix;
-  }
-  
-  public void a()
-  {
-    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
-      Bosses.get().postJob(new vdh(this, "GetUserIconHandler"));
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+      QLog.d("QCircleSharePart", 1, "uncare person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        QQToast.a(this.jdField_a_of_type_Vde.a(), 2, 2131697134, 0).a();
+      }
+      zwp.a().a(new QCircleFeedEvent("", 6));
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_Vde.a(), 1, 2131697212, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,42 @@
-class aqvs
-  implements arrh
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aqvs
+  implements aqlb<String>
 {
-  aqvs(aqvp paramaqvp) {}
+  public String a;
+  public boolean a;
   
-  public void a()
+  public aqvs()
   {
-    arrr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqvp.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_JavaLangString = "{}";
   }
   
-  public void b() {}
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("dialogSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqvs
  * JD-Core Version:    0.7.0.1
  */

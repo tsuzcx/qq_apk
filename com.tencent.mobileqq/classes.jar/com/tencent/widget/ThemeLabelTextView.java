@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bibv;
-import bibw;
+import bkpg;
+import bkph;
 
 public class ThemeLabelTextView
   extends TextView
-  implements bibw
+  implements bkph
 {
-  bibv a;
+  bkpg a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -64,10 +64,10 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bibv();
+        this.a = new bkpg();
       }
       this.a.a(true);
-      setMaskShape(bibv.c);
+      setMaskShape(bkpg.c);
     }
     while (this.a == null) {
       return;
@@ -77,7 +77,7 @@ public class ThemeLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ThemeLabelTextView
  * JD-Core Version:    0.7.0.1
  */

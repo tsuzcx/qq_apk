@@ -1,51 +1,17 @@
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class ahft
-  implements RadioGroup.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public ahft(AddContactsActivity paramAddContactsActivity) {}
+  public ahft(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 2131377369) && (AddContactsActivity.a(this.a).isChecked()))
-    {
-      AddContactsActivity.a(this.a);
-      azqs.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
-      AddContactsActivity.a(this.a).setSelected(true);
-      AddContactsActivity.b(this.a).setSelected(false);
-      AddContactsActivity.c(this.a).setSelected(false);
-      AddContactsActivity.a(this.a).setVisibility(8);
-    }
-    do
-    {
-      return;
-      if ((paramInt == 2131377371) && (AddContactsActivity.b(this.a).isChecked()))
-      {
-        AddContactsActivity.b(this.a);
-        azqs.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
-        azqs.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
-        AddContactsActivity.b(this.a).setSelected(true);
-        AddContactsActivity.a(this.a).setSelected(false);
-        AddContactsActivity.c(this.a).setSelected(false);
-        paramRadioGroup = AddContactsActivity.a(this.a);
-        if (AddContactsActivity.a(this.a)) {}
-        for (paramInt = 0;; paramInt = 8)
-        {
-          paramRadioGroup.setVisibility(paramInt);
-          return;
-        }
-      }
-    } while ((paramInt != 2131377370) || (!AddContactsActivity.c(this.a).isChecked()));
-    AddContactsActivity.c(this.a);
-    azqs.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
-    AddContactsActivity.c(this.a).setSelected(true);
-    AddContactsActivity.a(this.a).setSelected(false);
-    AddContactsActivity.b(this.a).setSelected(false);
-    AddContactsActivity.a(this.a).setVisibility(8);
+    adrm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

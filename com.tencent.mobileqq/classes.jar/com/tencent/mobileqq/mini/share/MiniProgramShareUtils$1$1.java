@@ -9,12 +9,12 @@ class MiniProgramShareUtils$1$1
   
   public void run()
   {
-    QQToast.a(this.this$0.val$activity, 1, 2131720031, 0).a();
+    QQToast.a(this.this$0.val$activity, 1, 2131718007, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

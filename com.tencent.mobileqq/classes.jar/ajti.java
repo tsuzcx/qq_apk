@@ -1,26 +1,59 @@
-public abstract interface ajti
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class ajti
+  extends ankx
 {
-  public abstract xkl a();
+  public ajti(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public abstract void a();
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
+    }
+  }
   
-  public abstract void a(int paramInt);
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      bcst.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Ajtv != null) {
+        this.a.jdField_a_of_type_Ajtv.a();
+      }
+      if (this.a.k)
+      {
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Ajtx != null) {
+          this.a.jdField_a_of_type_Ajtx.notifyDataSetChanged();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.c != null) {
+        this.a.c.dismiss();
+      }
+      return;
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693171), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+  }
   
-  public abstract void a(String paramString);
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
   
-  public abstract void a(xkl paramxkl);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
+    }
+  }
 }
 
 

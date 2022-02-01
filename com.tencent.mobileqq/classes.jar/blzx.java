@@ -1,9 +1,19 @@
-import dov.com.qq.im.capture.view.ComboProviderView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiPictureUrl;
 
-public class blzx
-  extends blsd
+public final class blzx
+  implements Parcelable.Creator<WeishiPictureUrl>
 {
-  public blzx(ComboProviderView paramComboProviderView) {}
+  public WeishiPictureUrl a(Parcel paramParcel)
+  {
+    return new WeishiPictureUrl(paramParcel);
+  }
+  
+  public WeishiPictureUrl[] a(int paramInt)
+  {
+    return new WeishiPictureUrl[paramInt];
+  }
 }
 
 

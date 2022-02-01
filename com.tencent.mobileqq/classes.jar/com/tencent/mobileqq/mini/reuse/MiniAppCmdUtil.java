@@ -12,17 +12,19 @@ import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import aoom;
-import bjdm;
+import aqpv;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
-import com.tencent.mobileqq.mini.http.HttpCmdManager;
+import com.tencent.mobileqq.mini.network.http.HttpCmdManager;
 import com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet;
 import com.tencent.mobileqq.mini.servlet.CloudStorageServlet;
+import com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgServlet;
 import com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet;
 import com.tencent.mobileqq.mini.servlet.GetUserInteractiveStorageServlet;
+import com.tencent.mobileqq.mini.servlet.MiniAppAddPhoneNumberServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppBatchGetContactServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppBatchQueryAppInfoServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppChangeShareImageUrlServlet;
@@ -32,6 +34,7 @@ import com.tencent.mobileqq.mini.servlet.MiniAppCheckSessionServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppContentAccelerateServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDataReportServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDcReportServlet;
+import com.tencent.mobileqq.mini.servlet.MiniAppDelPhoneNumberServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDelUserAppServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdForSDKServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdServlet;
@@ -64,6 +67,7 @@ import com.tencent.mobileqq.mini.servlet.MiniAppGetUserSettingServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppLocalSearchDataServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppObserver;
 import com.tencent.mobileqq.mini.servlet.MiniAppOpenChannelAbstractServlet;
+import com.tencent.mobileqq.mini.servlet.MiniAppRealTimeLogReportServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppReportLogFileServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSearchAppServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppSendArkMsgServlet;
@@ -81,6 +85,7 @@ import com.tencent.mobileqq.mini.servlet.MiniMidasConsumeServlet;
 import com.tencent.mobileqq.mini.servlet.MiniMidasQueryServlet;
 import com.tencent.mobileqq.mini.servlet.MiniReportShareServlet;
 import com.tencent.mobileqq.mini.servlet.MiniRewardedVideoAdServlet;
+import com.tencent.mobileqq.mini.servlet.MiniWxPayCheckUrlServlet;
 import com.tencent.mobileqq.mini.servlet.ModifyFriendInteractiveStorageServlet;
 import com.tencent.mobileqq.mini.servlet.PersonalizeSetAvatarServlet;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
@@ -89,6 +94,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.RealTimeLogItem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,7 +104,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import zaf;
+import zxd;
 
 public class MiniAppCmdUtil
 {
@@ -109,6 +115,12 @@ public class MiniAppCmdUtil
   public static final String KEY_LIBTYPE = "key_libtype";
   public static final String KEY_RETURN_CODE = "retCode";
   public static final String KEY_UIN = "key_uin";
+  public static final long MINI_RET_CODE_SUB_SWITCH_OFF = 20004L;
+  public static final long MINI_RET_CODE_TEMPLATEID_COUNT_OUT_OF_MAX = 20003L;
+  public static final long MINI_RET_CODE_TEMPLATEID_INVAILD = 20001L;
+  public static final long RET_CODE_SUB_SWITCH_OFF = -101511021L;
+  public static final long RET_CODE_TEMPLATEID_COUNT_OUT_OF_MAX = -101511020L;
+  public static final long RET_CODE_TEMPLATEID_INVAILD = -101511014L;
   public static String TAG = "MiniAppCmdUtil";
   private static volatile AtomicInteger index = new AtomicInteger(0);
   private static volatile MiniAppCmdUtil instance;
@@ -212,6 +224,16 @@ public class MiniAppCmdUtil
     new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppOpenChannelAbstractServlet.class, paramMiniAppCmdInterface, "OpenChannel").putExtra("key_data", paramArrayOfByte);
   }
   
+  public void addPhoneNumber(String paramString1, String paramString2, String paramString3, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppAddPhoneNumberServlet.class, paramMiniAppCmdInterface, "addPhoneNumber");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("purePhoneNumber", paramString2);
+    paramMiniAppCmdInterface.putExtra("countryCode", paramString3);
+    paramMiniAppCmdInterface.putExtra("isSave", paramInt);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
   public void batchGetContact(ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppBatchGetContactServlet.class, paramMiniAppCmdInterface, "batchGetContact");
@@ -231,7 +253,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -268,6 +290,35 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
+  public void checkWxPayUrl(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniWxPayCheckUrlServlet.class, paramMiniAppCmdInterface, "wxPayCheckUrl");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_url", paramString2);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CreateUpdatableMsgServlet.class, paramMiniAppCmdInterface, "createUpdatableMsg");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_template_id", paramString2);
+    paramMiniAppCmdInterface.putExtra("key_from", paramInt1);
+    paramMiniAppCmdInterface.putExtra("key_scene", paramInt2);
+    paramMiniAppCmdInterface.putExtra("key_uin", paramString3);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void delPhoneNumber(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppDelPhoneNumberServlet.class, paramMiniAppCmdInterface, "delPhoneNumbers");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("purePhoneNumber", paramString2);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
   public void delUserApp(String paramString, int paramInt1, int paramInt2, int paramInt3, COMM.StCommonExt paramStCommonExt, int paramInt4, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppDelUserAppServlet.class, paramMiniAppCmdInterface, "delUserApp");
@@ -289,22 +340,30 @@ public class MiniAppCmdUtil
   
   public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    getAppInfoById(paramStCommonExt, paramString1, paramString2, paramString3, null, paramMiniAppCmdInterface);
+  }
+  
+  public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
     {
       QLog.d(TAG, 1, "getAppInfoById, send request by https.");
-      HttpCmdManager.g().getAppInfoById(paramStCommonExt, paramString1, paramString2, paramString3, str, new MiniAppCmdUtil.4(this, paramMiniAppCmdInterface));
+      HttpCmdManager.g().getAppInfoById(paramStCommonExt, paramString1, paramString2, paramString3, str, paramString4, new MiniAppCmdUtil.4(this, paramMiniAppCmdInterface));
       return;
     }
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetAppInfoByIdServlet.class, paramMiniAppCmdInterface, "getAppInfoById");
     paramMiniAppCmdInterface.putExtra("key_app_id", paramString1);
     paramMiniAppCmdInterface.putExtra("key_first_path", paramString2);
     paramMiniAppCmdInterface.putExtra("key_env_version", paramString3);
+    if (paramString4 != null) {
+      paramMiniAppCmdInterface.putExtra("key_from_app_id", paramString4);
+    }
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
@@ -313,10 +372,18 @@ public class MiniAppCmdUtil
   
   public void getAppInfoByIdForSDK(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    getAppInfoByIdForSDK(paramStCommonExt, paramString1, paramString2, paramString3, null, paramMiniAppCmdInterface);
+  }
+  
+  public void getAppInfoByIdForSDK(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetAppInfoByIdForSDKServlet.class, paramMiniAppCmdInterface, "getAppInfoById");
     paramMiniAppCmdInterface.putExtra("key_app_id", paramString1);
     paramMiniAppCmdInterface.putExtra("key_first_path", paramString2);
     paramMiniAppCmdInterface.putExtra("key_env_version", paramString3);
+    if (paramString4 != null) {
+      paramMiniAppCmdInterface.putExtra("key_from_app_id", paramString4);
+    }
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
@@ -328,7 +395,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -491,7 +558,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aoom.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -645,7 +712,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), zaf.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), zxd.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -778,12 +845,15 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void getUserSetting(String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void getUserSetting(String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetUserSettingServlet.class, paramMiniAppCmdInterface, "GetUserSetting");
     paramMiniAppCmdInterface.putExtra("KEY_APP_ID", paramString1);
     paramMiniAppCmdInterface.putExtra("KEY_OPEN_ID", paramString2);
     paramMiniAppCmdInterface.putExtra("KEY_SETTING_ITEM", paramString3);
+    if (paramArrayList != null) {
+      paramMiniAppCmdInterface.putStringArrayListExtra("KEY_TEMPLATE_IDS", paramArrayList);
+    }
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
@@ -825,6 +895,17 @@ public class MiniAppCmdUtil
       return;
     }
     QLog.e(TAG, 1, "performReport failed: BaseApplicationImpl.getApplication().getRuntime() is null");
+  }
+  
+  public void realTimeLogReport(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, ArrayList<RealTimeLogItem> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppRealTimeLogReportServlet.class, paramMiniAppCmdInterface, "GetAppInfoByLink");
+    paramMiniAppCmdInterface.putExtra("key_page", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_jslib_version", paramString2);
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString3);
+    paramMiniAppCmdInterface.putExtra("key_filter_msg", paramArrayOfString);
+    paramMiniAppCmdInterface.putParcelableArrayListExtra("key_log_items", paramArrayList);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void removeUserCloudStorage(String paramString, String[] paramArrayOfString, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -933,7 +1014,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (aoom.g()) {}
+    if (aqpv.c()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);
@@ -984,7 +1065,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bjdm.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((blru.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1014,7 +1095,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bjdm.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((blru.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1074,7 +1155,7 @@ public class MiniAppCmdUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,39 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-public class alcx
-  extends EditText
-  implements ActionMode.Callback
+class alcx
+  extends aoqo
 {
-  public alcx(Context paramContext)
+  alcx(alcv paramalcv, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  
+  public int a()
   {
-    super(paramContext);
-    super.setLongClickable(false);
-    super.setTextIsSelectable(false);
-    super.setImeOptions(268435456);
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.setCustomSelectionActionModeCallback(this);
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentPubAccHelper", 2, "unfollow success");
     }
+    alcv.a(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    ((bfrd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    alcv.b(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    try
-    {
-      super.setSelection(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
-    }
+    alcv.a(this.jdField_a_of_type_Alcv, 2131694617);
   }
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void b(boolean paramBoolean, Object paramObject)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public boolean onTextContextMenuItem(int paramInt)
-  {
-    return true;
+    alcv.a(this.jdField_a_of_type_Alcv);
   }
 }
 

@@ -1,62 +1,29 @@
-import com.tencent.kwstudio.office.base.ILog;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
 public final class arhc
-  implements ILog
+  implements Parcelable.Creator
 {
-  public void d(String paramString1, String paramString2)
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public IPSiteModel.Goods[] a(int paramInt)
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+    return new IPSiteModel.Goods[paramInt];
   }
 }
 

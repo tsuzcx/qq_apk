@@ -1,28 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpu
-  implements View.OnClickListener
+  implements ahor
 {
-  public ahpu(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (!(paramView.getTag() instanceof ahok)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (ahok)paramView.getTag();
-      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
-      this.a.a(paramView);
-    } while (paramView.jdField_a_of_type_Int != 82);
-    azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+    paramagup.b(paramMessageRecord, paramLinearLayout, paramafzq, paramagwc, paramString);
   }
 }
 

@@ -1,19 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+import android.arch.lifecycle.ViewModelProvider.Factory;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bner
-  implements AdapterView.OnItemSelectedListener
 {
-  public bner(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    return new ViewModelProvider(paramViewModelStoreOwner, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, ViewModelProvider.Factory paramFactory)
+  {
+    return new ViewModelProvider(paramViewModelStoreOwner, paramFactory);
+  }
 }
 
 

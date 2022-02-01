@@ -1,22 +1,42 @@
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import cooperation.hce.HcePluginInstallActivity;
+import org.json.JSONObject;
 
-class bldp
-  implements EIPCResultCallback
+public class bldp
+  implements adea
 {
-  bldp(bldk parambldk) {}
+  public bldp(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
-    {
-      QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onFailure code:" + paramInt + "msg:" + paramString);
     }
-    QLog.d("AEGIFSinglePreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    QQToast.a(this.a.getApplicationContext(), anni.a(2131704228), 0).a();
+    this.a.finish();
   }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onPermission " + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), anni.a(2131704230), 0).a();
+    this.a.finish();
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      HcePluginInstallActivity.a(this.a, paramJSONObject.optString("openid"));
+    }
+    HcePluginInstallActivity.b(this.a);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

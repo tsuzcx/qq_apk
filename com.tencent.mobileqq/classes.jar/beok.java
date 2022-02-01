@@ -1,21 +1,31 @@
-import android.content.Context;
-import android.text.ClipboardManager;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class beok
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public beok(ContextMenuTextView paramContextMenuTextView) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void onClick(View paramView)
+  public beok(NewTroopContactView paramNewTroopContactView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView.getId() == 2131364912)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
+      }
     }
   }
 }

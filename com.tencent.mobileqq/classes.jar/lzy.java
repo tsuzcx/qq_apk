@@ -1,40 +1,21 @@
-import java.lang.ref.WeakReference;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class lzy
-  implements alqc
+class lzy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private WeakReference<mac> a;
-  private WeakReference<alpy> b;
-  private WeakReference<lzj> c;
+  lzy(lzx paramlzx) {}
   
-  public lzy(mac parammac, alpy paramalpy, lzj paramlzj)
+  public void onGlobalLayout()
   {
-    this.a = new WeakReference(parammac);
-    this.b = new WeakReference(paramalpy);
-    this.c = new WeakReference(paramlzj);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = (alpy)this.b.get();
-    if (localObject != null) {
-      ((alpy)localObject).d(this);
+    if (this.a.a == null) {
+      return;
     }
-    localObject = (mac)this.a.get();
-    lzj locallzj = (lzj)this.c.get();
-    if ((localObject != null) && (locallzj != null)) {
-      ((mac)localObject).a(paramBoolean, locallzj);
-    }
-  }
-  
-  public void a(lzj paramlzj)
-  {
-    this.c = new WeakReference(paramlzj);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajaz;
+import akss;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,7 +9,7 @@ import mqq.app.AppRuntime;
 public class QWalletIPCModule$1
   implements Runnable
 {
-  public QWalletIPCModule$1(ajaz paramajaz, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
+  public QWalletIPCModule$1(akss paramakss, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class QWalletIPCModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

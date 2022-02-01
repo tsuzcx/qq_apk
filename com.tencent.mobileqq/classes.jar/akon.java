@@ -1,6 +1,26 @@
-public abstract interface akon
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class akon
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public akon(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  
+  public void onClick(View paramView)
+  {
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      akww.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

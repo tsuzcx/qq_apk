@@ -9,30 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import berd;
-import bevh;
-import bevi;
-import bevj;
-import bhtv;
+import bhyl;
+import bicf;
+import bicg;
+import bich;
+import bkhe;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements berd
+  implements bhyl
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private bevj jdField_a_of_type_Bevj;
-  private bhtv jdField_a_of_type_Bhtv;
+  private bich jdField_a_of_type_Bich;
+  private bkhe jdField_a_of_type_Bkhe;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private bhtv b;
+  private bkhe b;
   public boolean b;
   public int c;
   public boolean c;
@@ -51,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bevh(this);
-    super.setOnScrollListener(new bevi(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bicf(this);
+    super.setOnScrollListener(new bicg(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -163,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bevj != null) {
-          this.jdField_a_of_type_Bevj.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bich != null) {
+          this.jdField_a_of_type_Bich.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -176,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376551);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377341);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -266,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bevj != null) {
-            this.jdField_a_of_type_Bevj.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bich != null) {
+            this.jdField_a_of_type_Bich.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -325,26 +325,26 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(bhtv parambhtv)
+  public void setOnScrollGroupFloatingListener(bkhe parambkhe)
   {
-    this.jdField_b_of_type_Bhtv = parambhtv;
+    this.jdField_b_of_type_Bkhe = parambkhe;
   }
   
-  public void setOnScrollListener(bhtv parambhtv) {}
+  public void setOnScrollListener(bkhe parambkhe) {}
   
-  public void setOnScrollToTopListener(bhtv parambhtv)
+  public void setOnScrollToTopListener(bkhe parambkhe)
   {
-    this.jdField_a_of_type_Bhtv = parambhtv;
+    this.jdField_a_of_type_Bkhe = parambkhe;
   }
   
-  public void setOnSlideListener(bevj parambevj)
+  public void setOnSlideListener(bich parambich)
   {
-    this.jdField_a_of_type_Bevj = parambevj;
+    this.jdField_a_of_type_Bich = parambich;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

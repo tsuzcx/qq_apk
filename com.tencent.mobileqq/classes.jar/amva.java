@@ -1,33 +1,39 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.text.SimpleDateFormat;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amva
+public final class amva
+  implements EIPCResultCallback
 {
-  public static String a()
-  {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    return str + "/Camera/ARVideoRecord.tmp";
-  }
+  public amva(andx paramandx) {}
   
-  public static boolean a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return (Build.VERSION.SDK_INT >= 18) && (amyr.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
-  }
-  
-  public static String b()
-  {
-    String str = ShortVideoUtils.d();
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + mpw.a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    if (paramEIPCResult == null)
+    {
+      this.a.a(1);
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
+      return;
     }
-    return str;
+    ancb.au = paramEIPCResult.getString("sApolloBaseScriptId");
+    amhd.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
+    amhd.r = paramEIPCResult.getBoolean("sApolloEngineLockEnable");
+    ancb.av = ancb.a + "/script/" + ancb.au + "/";
+    if (andw.a()) {
+      this.a.a(0);
+    }
+    for (;;)
+    {
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
+      return;
+      andw.b(this.a);
+      andw.a(this.a);
+      andw.a("sdk");
+    }
   }
 }
 

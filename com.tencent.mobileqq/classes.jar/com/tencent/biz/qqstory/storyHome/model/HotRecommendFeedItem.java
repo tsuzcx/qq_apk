@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wqj;
+import yju;
 
 public class HotRecommendFeedItem
-  extends VideoListFeedItem<wqj, HotRecommendOwner>
+  extends VideoListFeedItem<yju, HotRecommendOwner>
 {
   public static final String TAG = "HotRecommendFeedItem";
   public boolean mIsTopLocation;
@@ -106,9 +106,9 @@ public class HotRecommendFeedItem
   }
   
   @NonNull
-  public wqj generateHomeFeed()
+  public yju generateHomeFeed()
   {
-    return new wqj(this);
+    return new yju(this);
   }
   
   public int getCommentLikeType()
@@ -136,7 +136,7 @@ public class HotRecommendFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem
  * JD-Core Version:    0.7.0.1
  */

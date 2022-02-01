@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
 class aiea
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  aiea(aidz paramaidz, aiec paramaiec) {}
+  aiea(aidp paramaidp) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = String.valueOf(this.jdField_a_of_type_Aiec.a.getText());
-    aidz.a(this.jdField_a_of_type_Aidz, paramView);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

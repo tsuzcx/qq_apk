@@ -1,32 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class awon
-  extends RecyclerView.ViewHolder
 {
-  int jdField_a_of_type_Int;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a;
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Long, awoo> a;
+  public AtomicBoolean a;
+  public boolean a;
+  public String b;
+  public ConcurrentHashMap<Long, awoo> b = new ConcurrentHashMap();
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public awon(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public awon()
   {
-    super(paramView);
-    paramView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367944));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377620));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363798));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramCustomCoverFragment.a);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramCustomCoverFragment.a);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awon
  * JD-Core Version:    0.7.0.1
  */

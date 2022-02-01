@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.msf.core.a;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.h;
-import com.tencent.mobileqq.msf.core.h.a;
+import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.i;
+import com.tencent.mobileqq.msf.core.i.a;
 import com.tencent.msf.service.protocol.serverconfig.a;
 import com.tencent.msf.service.protocol.serverconfig.l;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 class e
   extends Thread
 {
-  e(d paramd, String paramString1, String paramString2, h.a parama)
+  e(d paramd, String paramString1, String paramString2, i.a parama)
   {
     super(paramString1);
   }
@@ -26,7 +26,7 @@ class e
       if (QLog.isColorLevel()) {
         QLog.i("MSF.C.SsoListManager", 2, "zip file start");
       }
-      localObject1 = h.a(((a)localObject1).b.a, ((a)localObject1).b.b, ((a)localObject1).b.c, ((a)localObject1).b.d, ((a)localObject1).c.a, ((a)localObject1).c.b, ((a)localObject1).c.c, ((a)localObject1).c.d, this.a, this.b);
+      localObject1 = i.a(((a)localObject1).b.a, ((a)localObject1).b.b, ((a)localObject1).b.c, ((a)localObject1).b.d, ((a)localObject1).c.a, ((a)localObject1).c.b, ((a)localObject1).c.c, ((a)localObject1).c.d, this.a, this.b);
       if (QLog.isColorLevel()) {
         QLog.i("MSF.C.SsoListManager", 2, "zip file finish");
       }
@@ -39,7 +39,7 @@ class e
           if (QLog.isColorLevel()) {
             QLog.i("MSF.C.SsoListManager", 2, "report file start");
           }
-          h.a(this.c.c.n.sender.k(), (File)localObject1, this.a, this.b);
+          i.a(this.c.c.n.sender.k(), (File)localObject1, this.a, this.b);
           if (QLog.isColorLevel()) {
             QLog.i("MSF.C.SsoListManager", 2, "report file finish");
           }

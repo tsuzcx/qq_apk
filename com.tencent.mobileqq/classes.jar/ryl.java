@@ -1,36 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ryl
-  implements DialogInterface.OnDismissListener
+  implements slp
 {
-  public ryl(FastWebActivity paramFastWebActivity) {}
+  public ryl(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(slr paramslr)
   {
-    Context localContext;
-    if (!FastWebActivity.c(this.a))
-    {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.d(this.a)) {
-        break label86;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(ryj.a(), 2, "UUIDToUrlCallback Callback vid=" + paramslr.jdField_b_of_type_JavaLangString + ", url=" + paramslr.jdField_a_of_type_JavaLangString + ", isH265=" + paramslr.jdField_a_of_type_Boolean + ", isHWCodec=" + paramslr.jdField_b_of_type_Boolean + ", fileBitRate=" + paramslr.c);
     }
-    label86:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
-    {
-      scx.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      sdn.a(this.a, this.a.getAppInterface(), FastWebActivity.a(this.a), -1, -1, true, FastWebActivity.e(this.a));
-      FastWebActivity.c(this.a, false);
-      return;
+    if ((!TextUtils.isEmpty(paramslr.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramslr.jdField_a_of_type_JavaLangString, paramslr.jdField_b_of_type_JavaLangString))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramslr.jdField_a_of_type_JavaLangString, paramslr.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryl
  * JD-Core Version:    0.7.0.1
  */

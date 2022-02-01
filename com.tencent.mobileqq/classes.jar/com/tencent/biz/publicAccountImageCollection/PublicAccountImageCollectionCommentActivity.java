@@ -1,9 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
@@ -11,12 +14,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
-import tos;
-import tot;
-import tou;
-import tov;
-import tow;
-import tox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import uvs;
+import uvt;
+import uvu;
+import uvv;
+import uvw;
+import uvx;
 
 public class PublicAccountImageCollectionCommentActivity
   extends BaseActivity
@@ -66,24 +70,32 @@ public class PublicAccountImageCollectionCommentActivity
     return true;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559480);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364522);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364519));
+    super.setContentView(2131559612);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364736);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364733));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new tos(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tot(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364513).setOnClickListener(new tou(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new tov(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376390));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new tow(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new uvs(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new uvt(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131364727).setOnClickListener(new uvu(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new uvv(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377179));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new uvw(this));
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("anonymous", false);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362581));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362683));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new tox(this));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new uvx(this));
     paramBundle = getIntent().getStringExtra("comment");
     if (!TextUtils.isEmpty(paramBundle))
     {
@@ -98,10 +110,17 @@ public class PublicAccountImageCollectionCommentActivity
   {
     return false;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity
  * JD-Core Version:    0.7.0.1
  */

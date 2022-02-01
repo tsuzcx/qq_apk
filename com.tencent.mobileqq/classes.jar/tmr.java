@@ -1,14 +1,25 @@
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public abstract interface tmr
+class tmr
+  implements OnCompositionLoadedListener
 {
-  public abstract void a(int paramInt, String paramString);
+  tmr(tmq paramtmq) {}
   
-  public abstract void a(List<tmv> paramList);
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  {
+    if (paramLottieComposition != null)
+    {
+      this.a.a.setComposition(paramLottieComposition);
+      this.a.a.playAnimation();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tmr
  * JD-Core Version:    0.7.0.1
  */

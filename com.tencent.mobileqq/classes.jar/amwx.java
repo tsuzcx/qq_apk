@@ -1,54 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.7.1;
-import com.tencent.mobileqq.ar.ArConfigService.7.2;
-import com.tencent.mobileqq.ar.ArConfigService.7.3;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class amwx
-  implements andm
+  implements amkh
 {
-  public amwx(ArConfigService paramArConfigService) {}
+  public amwx(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARCOREResourceDownloadCallBack");
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARCOREResourceDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.d(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.7.1(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, andn paramandn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCOREResourceDownloadCallBack result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    if (this.a.a != null)
     {
-      ArConfigService.e(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.7.2(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
       }
+      this.a.a.getRenderImpl().a(0L);
     }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.7.3(this));
-    ArConfigService.a(this.a, true);
   }
   
-  public void b() {}
+  public void a(int paramInt, String paramString) {}
 }
 
 

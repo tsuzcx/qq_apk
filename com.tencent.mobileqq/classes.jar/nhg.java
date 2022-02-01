@@ -1,48 +1,25 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class nhg
-  implements njx
+  implements WtTicketPromise
 {
-  nhg(ngw paramngw) {}
+  nhg(nhe paramnhe) {}
   
-  public void a(int paramInt)
+  public void Done(Ticket paramTicket)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
-    }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
-    {
-      this.a.d(paramInt);
-      return;
-    }
-    this.a.e();
+    nhe.a(this.a, false);
+    this.a.h();
   }
+  
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhg
  * JD-Core Version:    0.7.0.1
  */

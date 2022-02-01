@@ -1,32 +1,68 @@
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 public class amvx
-  extends amvl
+  extends bgzm
+  implements amkj
 {
-  public amzd a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int = 3;
+  private amve jdField_a_of_type_Amve;
+  private WeakReference<amvi> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public amvx(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, amzd paramamzd, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public amvx(amvi paramamvi, int paramInt)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Amzd = paramamzd;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamvi);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String toString()
+  public void a(amve paramamve)
   {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Amzd).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Amve = paramamve;
+  }
+  
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
+    }
+    ThreadManager.post(new CmShowViewListener.2(this, paramBoolean, paramObject), 5, null, true);
+  }
+  
+  public void onNotifyLongTouch(String paramString)
+  {
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyLongTouch name", paramString });
+    if (this.jdField_a_of_type_Amve != null) {
+      this.jdField_a_of_type_Amve.a(paramString);
+    }
+  }
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      amvj localamvj = ((amvi)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      if (localamvj != null) {
+        localamvj.a(amuo.a(paramInt), null, paramString);
+      }
+    }
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyStatusChanged clickPart:", Integer.valueOf(paramInt), " apolloId:" + paramString });
+    if (this.jdField_a_of_type_Amve != null) {
+      this.jdField_a_of_type_Amve.a(paramInt, paramString);
+    }
+  }
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
+    }
+    ThreadManager.post(new CmShowViewListener.1(this, paramInt1, paramInt2), 8, null, true);
   }
 }
 

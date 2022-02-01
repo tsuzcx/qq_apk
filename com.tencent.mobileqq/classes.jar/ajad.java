@@ -1,4 +1,12 @@
-// INTERNAL ERROR //
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+public class ajad
+  extends aiyk
+{
+  public long a;
+  public structmsg.StructMsg a;
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajad

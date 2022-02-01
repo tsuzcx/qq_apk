@@ -74,6 +74,8 @@ public final class BaseInfo$Info
     BaseInfo.urlMeta.setAuthorizationUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/authorize/");
     BaseInfo.urlMeta.setJsonUploadUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/uploadJson/");
     BaseInfo.urlMeta.setFileUploadUrl(BaseInfo.urlMeta.qapmDomain + "/entrance/" + BaseInfo.userMeta.appId + "/uploadFile/");
+    BaseInfo.urlMeta.setAthenaJsonUploadUrl(BaseInfo.urlMeta.athenaDomain + "entrance/uploadJson/" + BaseInfo.userMeta.appId + '/' + BaseInfo.userMeta.version + '/');
+    BaseInfo.urlMeta.setAthenaFileUploadUrl(BaseInfo.urlMeta.athenaDomain + "entrance/uploadFile/" + BaseInfo.userMeta.appId + '/' + BaseInfo.userMeta.version + '/');
   }
   
   @JvmStatic
@@ -85,7 +87,7 @@ public final class BaseInfo$Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.BaseInfo.Info
  * JD-Core Version:    0.7.0.1
  */

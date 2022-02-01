@@ -1,38 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajsm
-  implements xnc
+  implements View.OnClickListener
 {
-  public ajsm(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ajsm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
-    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
-    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
-    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
-      LpReportInfo_pf00064.allReport(585, 15, 8);
-    }
-    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
-    {
-      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
-      if (localObject != null)
-      {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-          ((Bitmap)localObject).recycle();
-        }
-      }
-    }
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

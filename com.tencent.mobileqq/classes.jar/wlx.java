@@ -1,39 +1,64 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class wlx
-  extends QQUIEventReceiver<wlu, wmx>
+  extends wnn
 {
-  public wlx(@NonNull wlu paramwlu)
+  int jdField_a_of_type_Int;
+  public final String a;
+  String b;
+  
+  public wlx(wlr paramwlr, String paramString, int paramInt)
   {
-    super(paramwlu);
+    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_comment_list");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull wlu paramwlu, @NonNull wmx paramwmx)
+  public String a()
   {
-    if (paramwmx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wno a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    try
     {
-      wxe.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramwmx.jdField_a_of_type_Int));
-      wlu.b(paramwlu, paramwmx.jdField_a_of_type_Int);
-      if (paramwlu.a != null)
-      {
-        paramwlu.a.shareGroupCount = wlu.b(paramwlu);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramwlu), 5, null, false);
-      }
+      localRspGetCommentList.mergeFrom(paramArrayOfByte);
+      return new wly(this.jdField_a_of_type_Wlr, localRspGetCommentList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return wmx.class;
+    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
+    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
+    }
+    return localReqGetCommentList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlx
  * JD-Core Version:    0.7.0.1
  */

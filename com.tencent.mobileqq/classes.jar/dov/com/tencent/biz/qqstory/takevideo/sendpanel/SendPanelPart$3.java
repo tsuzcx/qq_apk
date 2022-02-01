@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bnce;
-import bncn;
+import bptk;
+import bptt;
 
 public class SendPanelPart$3
   implements Runnable
 {
-  public SendPanelPart$3(bncn parambncn) {}
+  public SendPanelPart$3(bptt parambptt) {}
   
   public void run()
   {
-    bncn.a(this.this$0).a(true);
+    bptt.a(this.this$0).a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelPart.3
  * JD-Core Version:    0.7.0.1
  */

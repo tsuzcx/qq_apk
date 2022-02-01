@@ -1,37 +1,36 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class aufe
-  extends alwx
+public class aufe
 {
-  aufe(aufc paramaufc, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
-    {
-      aufc.a(this.jdField_a_of_type_Aufc, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
     }
-    aufc localaufc = this.jdField_a_of_type_Aufc;
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
-    if (paramalwy != null) {}
-    for (paramalwy = Integer.valueOf(paramalwy.b);; paramalwy = "")
+    boolean bool = aval.a("com.tencent.mobileqq:tool");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
+    localIntent.putExtra("preload_process", bool);
+    if (paramMap != null)
     {
-      aufc.a(localaufc, localMessageForMixedMsg, true, paramalwy);
-      return;
+      paramString = new BoostFlutterActivity.SerializableMap();
+      paramString.setMap(paramMap);
+      localIntent.putExtra("params", paramString);
     }
+    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufe
  * JD-Core Version:    0.7.0.1
  */

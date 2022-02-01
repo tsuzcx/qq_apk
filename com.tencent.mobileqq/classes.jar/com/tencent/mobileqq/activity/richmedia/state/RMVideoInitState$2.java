@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtn;
-import alud;
-import azhf;
+import almd;
+import anni;
+import bcif;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMVideoInitState$2
   implements Runnable
 {
-  public RMVideoInitState$2(ajtn paramajtn) {}
+  public RMVideoInitState$2(almd paramalmd) {}
   
   public void run()
   {
-    boolean bool = azhf.a(azhf.y);
+    boolean bool = bcif.a(bcif.y);
     if (bool)
     {
-      RMVideoStateMgr.a().a(1102, alud.a(2131713845), true);
+      RMVideoStateMgr.a().a(1102, anni.a(2131712224), true);
       return;
     }
     try
     {
       if ((!this.this$0.d) && (this.this$0.f)) {
-        RMVideoStateMgr.a().a(1102, alud.a(2131713851) + 1102, true);
+        RMVideoStateMgr.a().a(1102, anni.a(2131712230) + 1102, true);
       }
       RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
       if (QLog.isColorLevel()) {
@@ -38,7 +38,7 @@ public class RMVideoInitState$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.2
  * JD-Core Version:    0.7.0.1
  */

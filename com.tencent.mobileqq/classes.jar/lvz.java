@@ -1,177 +1,153 @@
-import android.content.SharedPreferences;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Notification;
+import android.graphics.Bitmap;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
 
-public class lvz
+public abstract class lvz
+  extends Binder
+  implements lvy
 {
-  public static void a()
+  public lvz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportNoEntranceByPtuSoFail");
-    }
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPPtuSoFail", true, 0L, 0L, null, "", true);
+    attachInterface(this, "com.tencent.av.service.IAVServiceForQQ");
   }
   
-  public static void a(int paramInt)
+  public static lvy a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportDetectInvalidExpression,invalidType  = " + paramInt);
+    if (paramIBinder == null) {
+      return null;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("invalidType", String.valueOf(paramInt));
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPDetectInvalidExp", true, 0L, 0L, localHashMap, "", true);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof lvy))) {
+      return (lvy)localIInterface;
+    }
+    return new lwa(paramIBinder);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public IBinder asBinder()
   {
-    if (paramInt2 == 0) {}
-    for (boolean bool = true;; bool = false)
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AV_rp_dc", 2, "reportResDownloadResult  resType = " + paramInt1 + ",success = " + bool);
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("resType", String.valueOf(paramInt1));
-      localHashMap.put("downResult", String.valueOf(bool));
-      localHashMap.put("errorCode", String.valueOf(paramInt2));
-      azri.a(BaseApplicationImpl.getApplication()).a(null, "actResDownResult", bool, 0L, 0L, localHashMap, "", true);
-      return;
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat, int paramInt4, int paramInt5)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportEmojiHitResult,emojiID  = " + paramInt1 + ",emojiType = " + paramInt2 + ",hitType = " + paramInt3 + ",missCount1 = " + paramInt4 + ",missCount2 = " + paramInt5 + ",score = " + paramFloat);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("id", String.valueOf(paramInt1));
-    localHashMap.put("etype", String.valueOf(paramInt2));
-    localHashMap.put("htype", String.valueOf(paramInt3));
-    localHashMap.put("score", String.valueOf(paramFloat));
-    localHashMap.put("mcount1", String.valueOf(paramInt4));
-    localHashMap.put("mcount2", String.valueOf(paramInt5));
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVEmojiHit", true, 0L, 0L, localHashMap, "", true);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    int i;
-    do
-    {
-      return;
-      i = ((lwp)paramQQAppInterface.getManager(254)).a();
-      if (i > 0)
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(lvw.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      c(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0)
       {
-        paramQQAppInterface = new HashMap();
-        paramQQAppInterface.put("configVersion", String.valueOf(i));
-        azri.a(BaseApplicationImpl.getApplication()).a(null, "actConfigExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AV_rp_dc", 2, "reportConfigExistStatus localVersion = " + i);
-  }
-  
-  public static void a(String paramString)
-  {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "checkAndReportIllegalAVRedPacketRequest exist = " + bool);
-    }
-    if (bool)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("md5", paramString);
-      localHashMap.put("model", Build.MODEL);
-      localHashMap.put("version", String.valueOf(Build.VERSION.SDK_INT));
-      azri.a(BaseApplicationImpl.getApplication()).a(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportConfigReqResult success = " + paramBoolean);
-    }
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVConfigReqResult", paramBoolean, 0L, 0L, null, "", true);
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportRedPacketBtnGrayWhenSessionFinish,isGray  = " + paramBoolean + ",grayType = " + paramString);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("grayType", paramString);
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPBtnGrayOrNot", paramBoolean, 0L, 0L, localHashMap, "", true);
-  }
-  
-  public static void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportSendRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode1", paramString1);
-    localHashMap.put("errorCode2", paramString2);
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVSendRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      int i = ((lwp)paramQQAppInterface.getManager(254)).a();
-      boolean bool;
-      if (i > 0)
-      {
-        bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
-        if (bool)
-        {
-          paramQQAppInterface = new HashMap();
-          paramQQAppInterface.put("configVersion", String.valueOf(i));
-          azri.a(BaseApplicationImpl.getApplication()).a(null, "actResExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label292;
         }
       }
-      while (QLog.isColorLevel())
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        QLog.d("AV_rp_dc", 2, "reportResourceExistStaus localVersion = " + i + ",exist = " + bool);
-        return;
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
         bool = false;
+        break;
       }
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (Bitmap)Bitmap.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(paramParcel2, paramParcel1);
+        return true;
+      }
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readString());
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel1 = a(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      label292:
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0) {
+        bool = true;
+      }
+      a(bool);
+      paramParcel2.writeNoException();
+      return true;
     }
-  }
-  
-  public static void b(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportClickRedPacketBtnResult success = " + paramBoolean + ",errorCode = " + paramString);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", paramString);
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVClickRPBtnResult", paramBoolean, 0L, 0L, localHashMap, "", true);
-  }
-  
-  public static void b(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AV_rp_dc", 2, "reportGrabRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode1", paramString1);
-    localHashMap.put("errorCode2", paramString2);
-    azri.a(BaseApplicationImpl.getApplication()).a(null, "actAVGrabRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+    c();
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvz
  * JD-Core Version:    0.7.0.1
  */

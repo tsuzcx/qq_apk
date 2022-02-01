@@ -24,7 +24,7 @@ public final class fi
   private int e;
   private int f;
   private String g;
-  private fp h;
+  private fb h;
   private final Bundle i = new Bundle();
   private String j = "network";
   private String k = "network";
@@ -165,23 +165,23 @@ public final class fi
     //   230: aload_2
     //   231: ifnull +56 -> 287
     //   234: aload_0
-    //   235: new 192	c/t/m/g/fp
+    //   235: new 192	c/t/m/g/fb
     //   238: dup
     //   239: aload_2
-    //   240: invokespecial 193	c/t/m/g/fp:<init>	(Lorg/json/JSONObject;)V
-    //   243: putfield 195	c/t/m/g/fi:h	Lc/t/m/g/fp;
+    //   240: invokespecial 193	c/t/m/g/fb:<init>	(Lorg/json/JSONObject;)V
+    //   243: putfield 195	c/t/m/g/fi:h	Lc/t/m/g/fb;
     //   246: aload_0
-    //   247: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fp;
+    //   247: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fb;
     //   250: ifnull +30 -> 280
     //   253: aload_0
-    //   254: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fp;
-    //   257: getfield 198	c/t/m/g/fp:c	Lc/t/m/g/fg;
+    //   254: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fb;
+    //   257: getfield 198	c/t/m/g/fb:c	Lc/t/m/g/fg;
     //   260: ifnull +20 -> 280
     //   263: aload_0
     //   264: getfield 52	c/t/m/g/fi:i	Landroid/os/Bundle;
     //   267: aload_0
-    //   268: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fp;
-    //   271: getfield 198	c/t/m/g/fp:c	Lc/t/m/g/fg;
+    //   268: getfield 195	c/t/m/g/fi:h	Lc/t/m/g/fb;
+    //   271: getfield 198	c/t/m/g/fb:c	Lc/t/m/g/fg;
     //   274: getfield 202	c/t/m/g/fg:m	Landroid/os/Bundle;
     //   277: invokevirtual 206	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   280: return
@@ -202,13 +202,13 @@ public final class fi
     //   301: invokevirtual 214	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   304: ifeq -58 -> 246
     //   307: aload_0
-    //   308: new 192	c/t/m/g/fp
+    //   308: new 192	c/t/m/g/fb
     //   311: dup
     //   312: aload_1
     //   313: ldc 210
     //   315: invokevirtual 190	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   318: invokespecial 193	c/t/m/g/fp:<init>	(Lorg/json/JSONObject;)V
-    //   321: putfield 195	c/t/m/g/fi:h	Lc/t/m/g/fp;
+    //   318: invokespecial 193	c/t/m/g/fb:<init>	(Lorg/json/JSONObject;)V
+    //   321: putfield 195	c/t/m/g/fi:h	Lc/t/m/g/fb;
     //   324: goto -78 -> 246
     //   327: astore_2
     //   328: goto -105 -> 223
@@ -235,15 +235,15 @@ public final class fi
     return paramfi;
   }
   
-  public static fi a(fi paramfi, eu parameu, boolean paramBoolean)
+  public static fi a(fi paramfi, et paramet, boolean paramBoolean)
   {
     int i3;
     int i1;
-    if ((paramfi != null) && (parameu != null) && (paramfi.g != null))
+    if ((paramfi != null) && (paramet != null) && (paramfi.g != null))
     {
       String str = paramfi.g;
       int i2 = 0;
-      i3 = parameu.f;
+      i3 = paramet.f;
       i1 = i2;
       if (str != null)
       {
@@ -252,19 +252,19 @@ public final class fi
           i1 = Integer.parseInt(str.split(",")[1]);
         }
       }
-      parameu = paramfi.b;
-      if (parameu == null) {}
+      paramet = paramfi.b;
+      if (paramet == null) {}
     }
     try
     {
-      parameu.d = ((float)e.r(parameu.d, i1, i3));
+      paramet.d = ((float)e.r(paramet.d, i1, i3));
       label91:
       if (paramBoolean) {
         paramfi.k = "fake";
       }
       if (!paramfi.k.equals("fake"))
       {
-        if (parameu.d > 150.0D) {
+        if (paramet.d > 150.0D) {
           break label133;
         }
         paramfi.k = "wifi";

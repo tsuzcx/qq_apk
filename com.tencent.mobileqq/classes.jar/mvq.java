@@ -1,22 +1,20 @@
-public abstract interface mvq
+import android.graphics.drawable.Drawable;
+
+public class mvq
 {
-  public abstract void a();
+  public Drawable a;
+  public final String a;
+  public mvh a;
+  public String b;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof mvq)) && (((mvq)paramObject).a.equals(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvq
  * JD-Core Version:    0.7.0.1
  */

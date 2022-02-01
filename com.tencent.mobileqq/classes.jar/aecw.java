@@ -1,45 +1,79 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aecw
-  extends ameq
+  implements TextWatcher
 {
-  public aecw(TroopGagActivity paramTroopGagActivity) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = true;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean = false;
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public aecw(EditActivity paramEditActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    if (paramBoolean)
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
     {
-      this.a.jdField_a_of_type_Aecy.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Aecy.getCount() != 0) {
-        break label209;
+      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
+        this.jdField_b_of_type_Boolean = true;
       }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new TroopGagActivity.3.1(this, (bcnu)this.a.app.getManager(48)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      int i = this.jdField_a_of_type_JavaLangString.length();
+      int j = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.f();
       return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
+    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+      }
+      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,15 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-public class acnq
-  implements DialogInterface.OnClickListener
+class acnq
+  extends acuc
 {
-  public acnq(ChatHistoryFileActivity paramChatHistoryFileActivity, acnt paramacnt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  acnq(acno paramacno, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Acnt.a(false);
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    QLog.i("AbsWebView", 1, "onPageFinished:" + paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    QLog.i("AbsWebView", 1, "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    QLog.i("AbsWebView", 1, "onReceivedTitle: " + paramString);
+    acno.a(this.a, paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (acno.a(this.a, paramWebView, paramString)) {
+      return true;
+    }
+    return a(paramWebView, paramString);
   }
 }
 

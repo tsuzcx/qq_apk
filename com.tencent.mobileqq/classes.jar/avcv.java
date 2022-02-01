@@ -1,43 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import android.view.View;
 
-public final class avcv
-  implements Parcelable.Creator<LocalMediaInfo>
+public abstract interface avcv
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
-    localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
-    return localLocalMediaInfo;
-  }
-  
-  public LocalMediaInfo[] a(int paramInt)
-  {
-    return new LocalMediaInfo[0];
-  }
+  public abstract void onClick(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avcv
  * JD-Core Version:    0.7.0.1
  */

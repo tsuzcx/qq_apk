@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.List;
 
-public class bbkp
-  implements QQPermissionCallback
+public abstract class bbkp
+  implements bbmx
 {
-  public bbkp(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  protected String a;
+  protected List<bbmy> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bbkp(List<bbmy> paramList, String paramString)
   {
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a()
   {
-    this.a.f();
+    return 3;
+  }
+  
+  public List<bbmy> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

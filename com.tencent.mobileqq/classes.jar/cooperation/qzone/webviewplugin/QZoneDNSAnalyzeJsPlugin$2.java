@@ -1,19 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import bjwn;
+import bmkx;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import ndd;
+import nlw;
 
 public class QZoneDNSAnalyzeJsPlugin$2
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$2(bjwn parambjwn, int paramInt) {}
+  public QZoneDNSAnalyzeJsPlugin$2(bmkx parambmkx, int paramInt) {}
   
   public void run()
   {
-    int i = ndd.a();
+    int i = nlw.a();
     if ((i != 0) && (i != -1)) {
       try
       {
@@ -33,7 +33,7 @@ public class QZoneDNSAnalyzeJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

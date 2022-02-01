@@ -1,20 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-
-public class avwa
-  implements View.OnClickListener
+class avwa
 {
-  public avwa(OCRResultActivity paramOCRResultActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public avwa(String paramString1, String paramString2)
   {
-    this.a.doOnBackPressed();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = bita.d(paramString2);
+    this.d = avvw.a(paramString1);
+  }
+  
+  public String toString()
+  {
+    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwa
  * JD-Core Version:    0.7.0.1
  */

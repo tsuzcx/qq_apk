@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import pbf;
-import sno;
+import psa;
+import tmn;
 
 public class ReadInJoyViolaChannelFragment$2$1
   implements Runnable
 {
-  public ReadInJoyViolaChannelFragment$2$1(pbf parampbf) {}
+  public ReadInJoyViolaChannelFragment$2$1(psa parampsa) {}
   
   public void run()
   {

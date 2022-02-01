@@ -1,42 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class anxa
-  extends bead
 {
-  public anxa(BubbleManager paramBubbleManager, String paramString1, String paramString2)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    super(paramString1, paramString2);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", aqxc.c().a(paramString2, paramString1));
+    localIntent.putExtra("hide_operation_bar", true);
+    paramContext.startActivity(localIntent);
   }
   
-  public void onCancel(beae parambeae)
+  public static boolean a(int paramInt)
   {
-    String str = parambeae.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
-    }
-    this.a.a("Bubble_download_cancel", parambeae.b(), str, 0L);
+    return paramInt != 0;
   }
   
-  public void onDone(beae parambeae)
+  public static boolean b(int paramInt)
   {
-    long l = parambeae.h - parambeae.g;
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
-    }
-    this.a.a("Bubble_download_succ", parambeae.b(), "pkgName", l);
+    return (paramInt & 0x1) != 0;
   }
   
-  public boolean onStart(beae parambeae)
+  public static boolean c(int paramInt)
   {
-    String str = parambeae.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
-    }
-    this.a.a("Bubble_download", parambeae.b(), str, 0L);
-    super.onStart(parambeae);
-    return true;
+    return (paramInt & 0x2) != 0;
   }
 }
 

@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import aawh;
+import abev;
+import abfc;
+import acvg;
 import android.os.Looper;
-import aozj;
-import azpf;
+import arcj;
+import bcrg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.GuardManager;
@@ -14,8 +16,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import zhx;
-import zie;
 
 public class NewRuntime
   extends Step
@@ -25,8 +25,8 @@ public class NewRuntime
     int i;
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      i = 41;
-      azpf.b(i, this.mDirector, null).step();
+      i = 42;
+      bcrg.b(i, this.mDirector, null).step();
       if (BaseApplicationImpl.sProcessId != 1) {}
     }
     for (;;)
@@ -50,26 +50,26 @@ public class NewRuntime
         continue;
       }
       QLog.i("QQAppInterface", 1, "enableManagerSmallLock " + AppSetting.b);
-      if ((BaseApplicationImpl.sProcessId != 1) || (!zhx.a(BaseApplicationImpl.sApplication))) {
+      if ((BaseApplicationImpl.sProcessId != 1) || (!abev.a(BaseApplicationImpl.sApplication))) {
         continue;
       }
       BaseApplicationImpl.sApplication.doInit(true);
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface)))
       {
-        zhx.a();
-        zhx.a("QQ处于安全模式");
+        abev.a();
+        abev.a("QQ处于安全模式");
         localObject = (QQAppInterface)localObject;
         str = ((QQAppInterface)localObject).getCurrentAccountUin();
-        aozj.a((QQAppInterface)localObject, 283, str);
-        aawh.a((QQAppInterface)localObject, str, -1, "SafeMode");
+        arcj.a((QQAppInterface)localObject, 283, str);
+        acvg.a((QQAppInterface)localObject, str, -1, "SafeMode");
         QLog.d("SafeModeUtil", 1, "request Patch and CmdConfig for SafeMode");
         if ((Looper.getMainLooper().getThread() != Thread.currentThread()) && (((QQAppInterface)localObject).isLogin()))
         {
           QLog.d("SafeModeUtil", 1, "waiting config for max 10s in SafeMode");
           BaseApplicationImpl.sLaunchTime = 0L;
           BaseApplicationImpl.sShowTime = 0L;
-          zhx.b();
+          abev.b();
         }
       }
       if ((GuardManager.a == null) && ("com.tencent.mobileqq".equals(BaseApplicationImpl.processName))) {
@@ -82,14 +82,14 @@ public class NewRuntime
         }
         localObject = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject != null) {
-          ((AppRuntime)localObject).setAppStateChangeListener(zie.a());
+          ((AppRuntime)localObject).setAppStateChangeListener(abfc.a());
         }
       }
       if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
         ThreadManager.getSubThreadHandler().postDelayed(new NewRuntime.1(this), 5000L);
       }
       return true;
-      i = 43;
+      i = 44;
       break;
       bool = false;
     }
@@ -97,7 +97,7 @@ public class NewRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.NewRuntime
  * JD-Core Version:    0.7.0.1
  */

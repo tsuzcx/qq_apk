@@ -1,28 +1,83 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import java.io.File;
 
-class whx
-  extends SimpleJob
+public class whx
+  extends who
 {
-  whx(whw paramwhw, String paramString, whz paramwhz, boolean paramBoolean)
+  public whx(@NonNull String[] paramArrayOfString)
   {
-    super(paramString);
+    super(paramArrayOfString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected void a(String[] paramArrayOfString, whp paramwhp)
   {
-    this.jdField_a_of_type_Whw.a();
-    this.jdField_a_of_type_Whw.b();
-    ((uux)uwa.a(17)).a(this.jdField_a_of_type_Whz.a, whw.a(this.jdField_a_of_type_Whw).a, whw.a(this.jdField_a_of_type_Whw).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Whw.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
+    int k = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i < k)
+      {
+        paramwhp = new File(paramArrayOfString[i]).listFiles();
+        if (paramwhp == null)
+        {
+          i += 1;
+        }
+        else
+        {
+          int m = paramwhp.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramwhp[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                yqp.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  protected boolean a(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
+    }
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whx
  * JD-Core Version:    0.7.0.1
  */

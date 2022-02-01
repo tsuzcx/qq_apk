@@ -1,39 +1,41 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xay
-  extends SimpleObserver<Bitmap>
+public class xay
+  extends wla
 {
-  xay(xax paramxax) {}
+  public List<ShareGroupItem> a;
   
-  public void a(Bitmap paramBitmap)
+  public xay(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
+    super(paramRspGetShareGroupInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspGetShareGroupInfo.share_group_info_list.has())
     {
-      if (this.a.b)
+      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
+      while (paramRspGetShareGroupInfo.hasNext())
       {
-        this.a.a.setImageBitmap(paramBitmap);
-        wxe.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
+        ShareGroupItem localShareGroupItem = new ShareGroupItem();
+        localShareGroupItem.convertFrom(localShareGroupInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
       }
     }
-    else {
-      return;
-    }
-    wxe.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
   }
   
-  public void onError(@NonNull Error paramError)
+  public String toString()
   {
-    super.onError(paramError);
-    wxe.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xay
  * JD-Core Version:    0.7.0.1
  */

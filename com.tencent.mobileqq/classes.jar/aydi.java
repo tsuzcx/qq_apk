@@ -1,40 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.util.Log;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aydi
-  implements TextWatcher
+  extends aydl
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  public aydi(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForArkApp paramMessageForArkApp) {}
   
-  public aydi(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (banh.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    int i = 0;
+    ayej.b(this.jdField_a_of_type_Int + 1, aydg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
+    paramView = ayep.a(ayep.a(aydg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "fromid", String.valueOf(60013)), "startsrc", String.valueOf(60013));
+    try
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690363, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+      int j = Integer.parseInt(ayep.a(paramView, "roomid"));
+      i = j;
     }
-    if ((paramEditable == null) || (paramEditable.length() == 0))
+    catch (Exception localException)
     {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
-      return;
+      for (;;)
+      {
+        QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
+      }
     }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    Log.i("MessageReceivingAdapter", "jumpUrl = " + paramView);
+    return ayen.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
   }
 }
 

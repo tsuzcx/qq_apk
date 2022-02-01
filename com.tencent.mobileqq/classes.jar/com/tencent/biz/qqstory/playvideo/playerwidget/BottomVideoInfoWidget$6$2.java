@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
-import vzl;
-import vzq;
+import xsw;
+import xtb;
 
 public class BottomVideoInfoWidget$6$2
   implements Runnable
 {
-  public BottomVideoInfoWidget$6$2(vzq paramvzq) {}
+  public BottomVideoInfoWidget$6$2(xtb paramxtb) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class BottomVideoInfoWidget$6$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.6.2
  * JD-Core Version:    0.7.0.1
  */

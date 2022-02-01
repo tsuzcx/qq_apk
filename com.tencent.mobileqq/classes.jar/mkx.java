@@ -1,14 +1,25 @@
-import android.widget.RelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
-public abstract interface mkx
+public class mkx
+  implements Animation.AnimationListener
 {
-  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  private mkx(VideoLayerUI paramVideoLayerUI) {}
   
-  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    VideoLayerUI.a(this.a).setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mkx
  * JD-Core Version:    0.7.0.1
  */

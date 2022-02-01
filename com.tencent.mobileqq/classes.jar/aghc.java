@@ -1,10 +1,34 @@
-import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-public abstract interface aghc
+public class aghc
+  implements aghf
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public aghc(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void a(int paramInt, aghq paramaghq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      this.jdField_a_of_type_JavaUtilMap.notifyAll();
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramaghq);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
+      paramaghq = finally;
+      throw paramaghq;
+    }
+  }
 }
 
 

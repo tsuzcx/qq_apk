@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-import eipc.EIPCResult;
-
-class ajbf
-  implements aznf
+public class ajbf
+  extends ajax
 {
-  ajbf(ajaz paramajaz, int paramInt) {}
+  public String b;
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  public ajbf(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoInfo);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    this.b = paramString;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

@@ -1,27 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-final class nvz
-  implements ViewFactory.FoundClickableViewListener
+class nvz
+  implements DialogInterface.OnCancelListener
 {
-  nvz(String paramString, JSONObject paramJSONObject) {}
+  nvz(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      paramViewBase.setOnClickListener(new nwb(this));
-      return;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nvu.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    paramViewBase.setOnClickListener(new nwa(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvz
  * JD-Core Version:    0.7.0.1
  */

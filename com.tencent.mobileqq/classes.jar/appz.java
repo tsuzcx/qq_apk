@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class appz
-  implements aprz
+class appz
+  implements View.OnClickListener
 {
-  public appz(MessengerService paramMessengerService) {}
+  appz(appw paramappw) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
-    }
+    adhh.a(appw.a(this.a), -3, "user canceled");
+    appw.a(this.a).a();
+    appw.a(this.a).dismiss();
+    appw.a(this.a, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

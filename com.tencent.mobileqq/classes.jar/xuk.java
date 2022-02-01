@@ -1,49 +1,30 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xuk
-  implements ViewPager.OnPageChangeListener
+class xuk
+  implements bkhw
 {
-  public xuk(EmptySupportViewPager paramEmptySupportViewPager) {}
+  xuk(xui paramxui, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bkho parambkho) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a != null)
+    switch (paramInt)
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.a.a != null)
+    for (;;)
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      xfe.a(this.jdField_a_of_type_Xui.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new xul(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xuk
  * JD-Core Version:    0.7.0.1
  */

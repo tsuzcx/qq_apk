@@ -1,21 +1,48 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdam
+class bdam
+  extends URLDrawableDownListener.Adapter
 {
-  public int a;
-  public Bitmap a;
-  private bdam a;
+  bdam(bdak parambdak) {}
   
-  public bdam()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Bdam = null;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
+    }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdam
  * JD-Core Version:    0.7.0.1
  */

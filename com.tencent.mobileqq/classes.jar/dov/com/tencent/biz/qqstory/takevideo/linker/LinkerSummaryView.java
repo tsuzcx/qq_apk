@@ -14,27 +14,28 @@ import android.webkit.URLUtil;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import bmnd;
-import bmzn;
-import bmzo;
+import bcst;
+import bpej;
+import bpqt;
+import bpqu;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import nbv;
-import wxe;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import nko;
+import yqp;
 
 public class LinkerSummaryView
   extends FrameLayout
-  implements View.OnClickListener, bmzo
+  implements View.OnClickListener, bpqu
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmnd jdField_a_of_type_Bmnd;
-  public bmzn a;
+  bpej jdField_a_of_type_Bpej;
+  public bpqt a;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
@@ -51,16 +52,16 @@ public class LinkerSummaryView
   public LinkerSummaryView(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131559047, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365585));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365586));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365587));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365582));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365581));
-    this.d = ((TextView)findViewById(2131365588));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365580));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365584));
-    this.e = ((TextView)findViewById(2131365583));
+    inflate(paramContext, 2131559114, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365819));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365820));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365821));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365816));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365815));
+    this.d = ((TextView)findViewById(2131365822));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365814));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365818));
+    this.e = ((TextView)findViewById(2131365817));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
@@ -70,9 +71,9 @@ public class LinkerSummaryView
   private void b()
   {
     Object localObject2;
-    if ((this.jdField_a_of_type_Bmzn != null) && (this.jdField_a_of_type_Bmzn.jdField_a_of_type_JavaLangString != null))
+    if ((this.jdField_a_of_type_Bpqt != null) && (this.jdField_a_of_type_Bpqt.jdField_a_of_type_JavaLangString != null))
     {
-      localObject2 = this.jdField_a_of_type_Bmzn.jdField_a_of_type_JavaLangString;
+      localObject2 = this.jdField_a_of_type_Bpqt.jdField_a_of_type_JavaLangString;
       localObject1 = null;
       int i = ((String)localObject2).lastIndexOf("#");
       if (i > 0) {
@@ -88,7 +89,7 @@ public class LinkerSummaryView
     {
       localObject2 = localObject1;
       if (((String)localObject1).lastIndexOf("&_wv=") == -1) {
-        localObject2 = nbv.a((String)localObject1, "&_wv=2");
+        localObject2 = nko.a((String)localObject1, "&_wv=2");
       }
       localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       ((Intent)localObject1).putExtra("url", (String)localObject2);
@@ -110,14 +111,14 @@ public class LinkerSummaryView
       if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaLangString != null))
       {
         localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130846181);
-        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130839436);
+        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130846620);
+        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130839610);
       }
       try
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        wxe.b(getClass().getName(), "setIconURlDrawable:" + this.jdField_a_of_type_JavaLangString);
+        yqp.b(getClass().getName(), "setIconURlDrawable:" + this.jdField_a_of_type_JavaLangString);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
@@ -129,34 +130,34 @@ public class LinkerSummaryView
     this.e.setVisibility(8);
   }
   
-  public void a(bmzn parambmzn)
+  public void a(bpqt parambpqt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.1(this, parambmzn));
+    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.1(this, parambpqt));
   }
   
-  public void a(bmzn parambmzn, int paramInt)
+  public void a(bpqt parambpqt, int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.2(this, parambmzn));
+    ThreadManagerV2.getUIHandlerV2().post(new LinkerSummaryView.2(this, parambpqt));
   }
   
-  void b(bmzn parambmzn)
+  void b(bpqt parambpqt)
   {
-    this.jdField_a_of_type_Bmzn = parambmzn;
-    String str1 = parambmzn.jdField_a_of_type_JavaLangString;
-    String str2 = parambmzn.d;
-    str2 = parambmzn.jdField_b_of_type_JavaLangString;
-    parambmzn = parambmzn.c;
+    this.jdField_a_of_type_Bpqt = parambpqt;
+    String str1 = parambpqt.jdField_a_of_type_JavaLangString;
+    String str2 = parambpqt.d;
+    str2 = parambpqt.jdField_b_of_type_JavaLangString;
+    parambpqt = parambpqt.c;
     if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839436);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839610);
     }
     if (!TextUtils.isEmpty(str2))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      if (!TextUtils.isEmpty(parambmzn))
+      if (!TextUtils.isEmpty(parambpqt))
       {
-        parambmzn = Html.fromHtml(parambmzn);
-        wxe.b(getClass().getName(), "result:" + parambmzn);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(parambmzn);
+        parambpqt = Html.fromHtml(parambpqt);
+        yqp.b(getClass().getName(), "result:" + parambpqt);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(parambpqt);
       }
       this.d.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -175,45 +176,44 @@ public class LinkerSummaryView
   {
     switch (paramView.getId())
     {
-    case 2131365581: 
-    case 2131365582: 
-    case 2131365583: 
-    default: 
-    case 2131365580: 
-    case 2131365585: 
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Bmnd != null) {
-          this.jdField_a_of_type_Bmnd.j();
-        }
-        this.jdField_a_of_type_Bmzn = null;
-        this.jdField_a_of_type_Bmnd = null;
-        bmnd.a("clk_linkdelete", this.jdField_a_of_type_AndroidContentContext);
-        return;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          b();
-          return;
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Bmnd == null);
-      this.jdField_a_of_type_Bmnd.b(true);
-      azqs.b(null, "dc00899", "grp_story", "", "video_edit", "edit_linkbar", 0, 0, "2", "1", "", "");
-      return;
-      setEditing(true);
-      bmnd.a("clk_linkbar", this.jdField_a_of_type_AndroidContentContext);
-      return;
     }
-    b();
-    bmnd.a("clk_linkgo", this.jdField_a_of_type_AndroidContentContext);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Bpej != null) {
+        this.jdField_a_of_type_Bpej.j();
+      }
+      this.jdField_a_of_type_Bpqt = null;
+      this.jdField_a_of_type_Bpej = null;
+      bpej.a("clk_linkdelete", this.jdField_a_of_type_AndroidContentContext);
+      continue;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        b();
+      }
+      else if (this.jdField_b_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Bpej != null)
+        {
+          this.jdField_a_of_type_Bpej.b(true);
+          bcst.b(null, "dc00899", "grp_story", "", "video_edit", "edit_linkbar", 0, 0, "2", "1", "", "");
+        }
+      }
+      else
+      {
+        setEditing(true);
+        bpej.a("clk_linkbar", this.jdField_a_of_type_AndroidContentContext);
+        continue;
+        b();
+        bpej.a("clk_linkgo", this.jdField_a_of_type_AndroidContentContext);
+      }
+    }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bmnd != null))
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bpej != null))
     {
       setEditing(false);
       return true;
@@ -221,9 +221,9 @@ public class LinkerSummaryView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setEditVideoLinker(bmnd parambmnd)
+  public void setEditVideoLinker(bpej parambpej)
   {
-    this.jdField_a_of_type_Bmnd = parambmnd;
+    this.jdField_a_of_type_Bpej = parambpej;
   }
   
   public void setEditing(boolean paramBoolean)
@@ -242,26 +242,26 @@ public class LinkerSummaryView
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  public void setLinkerObject(bmzn parambmzn)
+  public void setLinkerObject(bpqt parambpqt)
   {
     a();
-    if (parambmzn.a())
+    if (parambpqt.a())
     {
-      b(parambmzn);
+      b(parambpqt);
       return;
     }
-    this.jdField_a_of_type_Bmzn = parambmzn;
-    String str = parambmzn.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bpqt = parambpqt;
+    String str = parambpqt.jdField_a_of_type_JavaLangString;
     this.d.setVisibility(0);
     this.d.setText(str);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846181);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846620);
     }
-    parambmzn.a(this);
-    parambmzn.a(str);
+    parambpqt.a(this);
+    parambpqt.a(str);
   }
   
   public void setReadOnly()
@@ -276,7 +276,7 @@ public class LinkerSummaryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView
  * JD-Core Version:    0.7.0.1
  */

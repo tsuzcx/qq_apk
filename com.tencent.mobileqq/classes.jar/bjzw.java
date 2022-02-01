@@ -1,44 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.WebSocket;
 
-class bjzw
+public class bjzw
 {
-  public static File a()
+  public int a;
+  public WebSocketProxy.WebSocketListener a;
+  public String a;
+  private OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
+  public WebSocket a;
+  public boolean a;
+  
+  public bjzw(int paramInt1, String paramString, Map<String, String> paramMap, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
   {
-    try
+    this.jdField_a_of_type_Int = paramString;
+    this.jdField_a_of_type_JavaLangString = paramMap;
+    Iterator localIterator;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener = localIterator;
+    paramMap = new Request.Builder().url(paramMap).build().newBuilder();
+    if (paramInt2 != null)
     {
-      String str = bjih.b;
-      File localFile1 = new File(str);
-      boolean bool = localFile1.exists();
-      if (!bool) {
-        try
-        {
-          new File(str, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localIOException.printStackTrace();
-          }
-        }
+      localIterator = paramInt2.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        paramMap.addHeader(str, (String)paramInt2.get(str));
       }
     }
-    finally {}
-    return localFile2;
+    paramMap = paramMap.build();
+    long l = paramWebSocketListener / 1000 + 1;
+    this.jdField_a_of_type_Okhttp3OkHttpClient = new OkHttpClient().newBuilder().connectTimeout(l, TimeUnit.SECONDS).writeTimeout(l, TimeUnit.SECONDS).readTimeout(0L, TimeUnit.SECONDS).build();
+    this.jdField_a_of_type_Okhttp3OkHttpClient.newWebSocket(paramMap, new bjzx(this, paramInt1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzw
  * JD-Core Version:    0.7.0.1
  */

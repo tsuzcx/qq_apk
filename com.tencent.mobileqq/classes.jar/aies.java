@@ -1,112 +1,138 @@
-import android.app.Fragment;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.leba.QzoneFrame;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aies
-  extends aiet
+class aies
+  implements BusinessObserver
 {
-  public aies(QzoneFrame paramQzoneFrame)
-  {
-    super(paramQzoneFrame);
-  }
+  aies(aidp paramaidp) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("QzoneFrame", 1, "onSwitch: " + paramInt);
-    Fragment localFragment = QzoneFrame.b(this.a);
-    if ((QzoneFrame.b(this.a) == QzoneFrame.a(this.a)) && (paramInt == 1)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    String str;
-    Drawable localDrawable;
-    if (QzoneFrame.c(this.a) == null)
+    int k = 1;
+    paramInt = 1;
+    int j;
+    if (!paramBoolean)
     {
-      QzoneFrame.a(this.a, bjho.a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaExtendFeedFragment"));
-      if (QzoneFrame.a(this.a) == null) {
-        QzoneFrame.a(this.a, (TextView)QzoneFrame.a(this.a).findViewById(2131368670));
-      }
-      if (QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) {
-        break label490;
-      }
-      QzoneFrame.b(this.a, QzoneFrame.a(this.a));
-      ((bjht)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(QzoneFrame.a(this.a));
-      str = "动态";
-      localDrawable = null;
-      if (QzoneFrame.b(this.a) != null)
-      {
-        QzoneFrame.b(this.a).onAttach(this.a.a());
-        QzoneFrame.b(this.a).onCreate(null);
-        if (QzoneFrame.b(this.a).getView() == null)
-        {
-          QzoneFrame.b(this.a).onCreateView(LayoutInflater.from(this.a.a()), null, null);
-          QzoneFrame.b(this.a).onActivityCreated(null);
-        }
-      }
-      if ((QzoneFrame.b(this.a) == QzoneFrame.c(this.a)) && ((QzoneFrame.c(this.a) instanceof bjht)))
-      {
-        if (!QzoneFrame.a(this.a)) {
-          break label607;
-        }
-        QzoneFrame.a(this.a, false);
-      }
-      label321:
-      localFragment.onPause();
-      localFragment.onStop();
-      QzoneFrame.b(this.a).onStart();
-      ((bjht)QzoneFrame.b(this.a)).resetReportFlag();
-      QzoneFrame.b(this.a).onResume();
-      QzoneFrame.b(this.a).removeView(localFragment.getView());
-      QzoneFrame.b(this.a).addView(QzoneFrame.b(this.a).getView());
-      if (Build.VERSION.SDK_INT <= 15) {
-        break label625;
-      }
-      QzoneFrame.b(this.a).setBackground(localDrawable);
+      this.a.A(2131694617);
+      j = paramInt;
     }
     for (;;)
     {
-      QzoneFrame.a(this.a).setText(str);
-      if (QzoneFrame.b(this.a) != QzoneFrame.a(this.a)) {
-        break label639;
-      }
-      ((bjht)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.jdField_a_of_type_Int);
-      return;
-      if ((QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) || (paramInt != 2)) {
-        break;
+      if (j != 0) {
+        this.a.bp();
       }
       return;
-      label490:
-      QzoneFrame.b(this.a, QzoneFrame.c(this.a));
-      if (QzoneFrame.a(this.a) == null)
+      j = paramInt;
+      if (!paramBoolean) {
+        continue;
+      }
+      int i = k;
+      try
       {
-        if (Build.VERSION.SDK_INT <= 20) {
-          break label581;
+        paramBundle = paramBundle.getByteArray("data");
+        j = paramInt;
+        if (paramBundle == null) {
+          continue;
         }
-        QzoneFrame.a(this.a, this.a.a().getDrawable(2130844694));
+        i = k;
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        i = k;
+        localFollowResponse.mergeFrom(paramBundle);
+        i = k;
+        j = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (j == 0)
+        {
+          i = k;
+          oat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", false);
+          i = k;
+          paramBundle = (anrs)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+          if (paramBundle != null)
+          {
+            i = k;
+            paramBundle = paramBundle.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+            if (paramBundle != null)
+            {
+              i = k;
+              if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null)
+              {
+                i = k;
+                this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+              }
+              i = k;
+              this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramBundle);
+              paramInt = 1;
+              break label492;
+            }
+          }
+        }
+        label492:
+        for (;;)
+        {
+          i = paramInt;
+          this.a.S = true;
+          i = paramInt;
+          this.a.X = true;
+          i = paramInt;
+          this.a.bq();
+          j = paramInt;
+          i = paramInt;
+          if (!this.a.am) {
+            break;
+          }
+          i = paramInt;
+          paramBundle = (PlusPanel)aidp.a(this.a).b(8);
+          j = paramInt;
+          if (paramBundle == null) {
+            break;
+          }
+          i = paramInt;
+          paramBundle.d();
+          j = paramInt;
+          break;
+          i = k;
+          this.a.E();
+          paramInt = 0;
+          break label492;
+          i = k;
+          this.a.E();
+          paramInt = 0;
+          continue;
+          if (j == 58)
+          {
+            i = k;
+            this.a.A(2131694614);
+            j = paramInt;
+            break;
+          }
+          if (j == 65)
+          {
+            i = k;
+            this.a.A(2131694591);
+            j = paramInt;
+            break;
+          }
+          i = k;
+          this.a.A(2131694617);
+          j = paramInt;
+          break;
+        }
       }
-      for (;;)
+      catch (Exception paramBundle)
       {
-        QzoneFrame.a(this.a, ((bjht)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(0));
-        localDrawable = QzoneFrame.a(this.a);
-        str = "暖说说";
-        break;
-        label581:
-        QzoneFrame.a(this.a, this.a.a().getResources().getDrawable(2130844694));
+        j = i;
       }
-      label607:
-      ((bjht)QzoneFrame.c(this.a)).forceRefresh();
-      break label321;
-      label625:
-      QzoneFrame.b(this.a).setBackgroundDrawable(localDrawable);
     }
-    label639:
-    ((bjht)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.b);
   }
 }
 

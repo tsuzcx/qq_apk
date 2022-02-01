@@ -1,14 +1,17 @@
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-final class bllg
-  implements blny
+public class bllg
+  implements View.OnClickListener
 {
-  bllg(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public bllg(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.a.onBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

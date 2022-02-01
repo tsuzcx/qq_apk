@@ -1,59 +1,62 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
 
 public class wzo
-  implements wzq
+  extends wlf<xbc>
 {
-  private long jdField_a_of_type_Long;
+  public final List<String> a;
   
-  public wzo(EditVideoFilter paramEditVideoFilter) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public wzo(List<String> paramList)
   {
-    wxs localwxs = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
-    if (localwxs != null) {
-      localwxs.a(paramMotionEvent);
-    }
+    this.a = paramList;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  public String a()
   {
-    if (paramMotionEvent2 != null)
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    try
     {
-      wxs localwxs = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
-      if (localwxs != null) {}
-      for (boolean bool = localwxs.a(paramMotionEvent2);; bool = false)
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new xbc(localRspStoryPlayerTagInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        if (bool)
-        {
-          a(paramMotionEvent1);
-          a(paramMotionEvent2);
-        }
-        return bool;
+        yqp.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
       }
     }
-    return false;
   }
   
-  public void onClick(View paramView)
+  protected byte[] a()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 300L)
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Long = l;
-      paramView = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
-      if (paramView != null) {
-        paramView.d_();
-      }
-      return;
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    wxe.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.4.1"));
+    return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzo
  * JD-Core Version:    0.7.0.1
  */

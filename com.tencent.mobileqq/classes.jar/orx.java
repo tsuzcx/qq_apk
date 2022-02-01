@@ -1,25 +1,67 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-final class orx
-  implements INetEventHandler
+class orx
+  extends BaseAdapter
 {
-  orx(Context paramContext) {}
+  orx(oru paramoru) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public int getCount()
   {
-    if (paramBoolean)
+    return oru.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return oru.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      ors.b(this.a);
-      return;
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560189, null);
+      paramView = new ory(this.a);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379942));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369077));
+      localView.setTag(paramView);
+      localObject = (GiftServiceBean)getItem(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
+      if (oru.a(this.a) != paramInt) {
+        break label143;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842842);
     }
-    ors.j("");
-    ors.k("");
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (ory)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label143:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842843);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     orx
  * JD-Core Version:    0.7.0.1
  */

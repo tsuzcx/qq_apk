@@ -3,12 +3,12 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import yav;
+import zun;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerParams> CREATOR = new yav();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new zun();
   public int a;
   public String a;
   public boolean a;
@@ -230,7 +230,7 @@ public class ScannerParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.ipc.ScannerParams
  * JD-Core Version:    0.7.0.1
  */

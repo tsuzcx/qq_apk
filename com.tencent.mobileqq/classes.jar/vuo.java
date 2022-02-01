@@ -1,32 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public class vuo
-  extends vut<StoryVideoItem>
+class vuo
+  implements zxa<FeedCloudRead.StGetFeedListRsp>
 {
-  public vuo(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  vuo(vun paramvun, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wxe.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleTagPageViewModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Vun.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vuo
  * JD-Core Version:    0.7.0.1
  */

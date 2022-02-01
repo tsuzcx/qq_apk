@@ -1,145 +1,132 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.activity.history.link.TroopLinkHandler.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.TicketManagerImpl;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajut
+  implements bdvw
 {
-  protected double a;
-  protected int a;
-  protected short a;
-  private boolean a;
-  protected double b;
-  protected int b;
-  private boolean b;
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
+  private long jdField_a_of_type_Long;
+  @NonNull
+  private ajus jdField_a_of_type_Ajus;
+  private bdvu jdField_a_of_type_Bdvu;
+  private final ChatHistoryTroopLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public ajut()
+  public ajut(QQAppInterface paramQQAppInterface, ChatHistoryTroopLinkFragment paramChatHistoryTroopLinkFragment, @NonNull ajus paramajus)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment = paramChatHistoryTroopLinkFragment;
+    this.jdField_a_of_type_Bdvu = ((bdwr)paramQQAppInterface.getManager(21)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+    this.jdField_a_of_type_Ajus = paramajus;
   }
   
-  public void a(int paramInt)
+  private ArrayList<TroopLinkElement> a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = (paramInt / 50);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Double = 2.25D;
-      this.jdField_a_of_type_Double = 2.0D;
-      this.jdField_b_of_type_Int = 20;
-      return;
-    }
-    this.jdField_b_of_type_Double = (62500 * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Double = (0.0500000007450581D * this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
+    paramJSONObject = paramJSONObject.optJSONArray("url_list");
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject == null) {
+      return localArrayList;
     }
     int i = 0;
-    while (i < paramInt2)
+    while (i < paramJSONObject.length())
     {
-      this.c += 1;
-      if (((paramArrayOfShort[(i + paramInt1)] >= 0) && (this.jdField_a_of_type_Short < 0)) || ((paramArrayOfShort[(i + paramInt1)] < 0) && (this.jdField_a_of_type_Short >= 0))) {
-        this.d += 1;
-      }
-      this.jdField_a_of_type_Short = paramArrayOfShort[(i + paramInt1)];
-      this.f += paramArrayOfShort[i] * paramArrayOfShort[i];
-      if (this.c >= this.jdField_a_of_type_Int)
-      {
-        this.c = 0;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          if (this.jdField_b_of_type_Int == 0)
-          {
-            this.jdField_a_of_type_Double = (this.d * this.jdField_a_of_type_Double / 20.0D);
-            this.jdField_b_of_type_Double = (this.f * this.jdField_b_of_type_Double / 20.0D);
-            if (this.jdField_a_of_type_Double > 100.0D)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("NoiseDetector", 2, "large zero threshold, reset:" + this.jdField_a_of_type_Double);
-              }
-              this.jdField_a_of_type_Double = 100.0D;
-            }
-            if (this.jdField_b_of_type_Double > 85000000.0D)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("NoiseDetector", 2, "large power threshold, reset:" + this.jdField_b_of_type_Double);
-              }
-              this.jdField_b_of_type_Double = 85000000.0D;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("NoiseDetector", 2, "calc new threshold:" + this.jdField_a_of_type_Double + " - " + this.jdField_b_of_type_Double);
-            }
-            this.d = 0;
-            this.f = 0;
-            this.e = 0;
-            this.g = 0;
-          }
-          this.jdField_b_of_type_Int -= 1;
-        }
-      }
-      else
-      {
-        i += 1;
-        continue;
-      }
-      int j = 0;
-      int k = 0;
-      if (this.d >= this.jdField_a_of_type_Double)
-      {
-        this.e += 1;
-        label382:
-        if (this.e >= 1)
-        {
-          this.e = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("NoiseDetector", 2, "reach Zero cross :" + this.d + "-" + this.jdField_a_of_type_Double);
-          }
-          j = 1;
-        }
-        this.d = 0;
-        if (this.f < this.jdField_b_of_type_Double) {
-          break label573;
-        }
-      }
-      label573:
-      for (this.g += 1;; this.g = 0)
-      {
-        if (this.g >= 1)
-        {
-          this.g = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("NoiseDetector", 2, "reach Power:" + this.f + "-" + this.jdField_b_of_type_Double);
-          }
-          k = 1;
-        }
-        this.f = 0;
-        if ((j == 0) || (k == 0)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("NoiseDetector", 2, "DETECT VOICE..:");
-        }
-        return true;
-        this.e = 0;
-        break label382;
-      }
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+      localArrayList.add(TroopLinkElement.mergeFromJson(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment.a(), localJSONObject));
+      i += 1;
     }
-    return false;
+    return localArrayList;
   }
+  
+  private void a(bdwt parambdwt)
+  {
+    try
+    {
+      parambdwt = new JSONObject(new String(parambdwt.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopLinkHandler", 2, "resolveResponse: invoked.  json: " + parambdwt);
+      }
+      a(true, a(parambdwt));
+      a(parambdwt);
+      return;
+    }
+    catch (Exception parambdwt)
+    {
+      QLog.e("TroopLinkHandler", 1, "resolveResponse: failed. ", parambdwt);
+      a(false, new ArrayList());
+    }
+  }
+  
+  private void a(String paramString, long paramLong)
+  {
+    bdvs localbdvs = new bdvs();
+    localbdvs.jdField_a_of_type_JavaLangString = "https://qun.qq.com/cgi-bin/groupchat_url_collect/get_url_collect";
+    localbdvs.jdField_a_of_type_Int = 1;
+    localbdvs.d = 0;
+    localbdvs.jdField_a_of_type_Bdvw = this;
+    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(bfup.b(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopLinkHandler", 2, "send: invoked.  postData: " + paramString);
+    }
+    str = "uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + ";skey=" + str;
+    localbdvs.jdField_a_of_type_ArrayOfByte = paramString.getBytes();
+    localbdvs.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Cookie", str);
+    this.jdField_a_of_type_Bdvu.a(localbdvs);
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq");
+    long l = paramJSONObject.optLong("n_all", -1L);
+    if ((this.jdField_a_of_type_Long == 0L) || (l == 0L)) {
+      this.jdField_a_of_type_Ajus.r();
+    }
+  }
+  
+  @UiThread
+  private void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList)
+  {
+    paramList = new TroopLinkHandler.1(this, paramBoolean, paramList);
+    ThreadManager.getUIHandler().post(paramList);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a(paramString, this.jdField_a_of_type_Long);
+      return;
+    }
+    a(paramString, 0L);
+  }
+  
+  public void onResp(bdwt parambdwt)
+  {
+    if (parambdwt.c == 200)
+    {
+      a(parambdwt);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopLinkHandler", 2, "onResp: invoked.  resp: " + parambdwt);
+    }
+    a(false, new ArrayList());
+  }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

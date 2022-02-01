@@ -1,13 +1,17 @@
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-class agez
-  extends aepm
+public class agez
+  implements View.OnTouchListener
 {
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public agez(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  agez(agey paramagey) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

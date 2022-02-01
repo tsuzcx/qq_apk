@@ -1,20 +1,32 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
 
-class augm
-  implements Handler.Callback
+public class augm
+  implements DialogInterface.OnClickListener
 {
-  augm(augl paramaugl) {}
+  public augm(ForwardChooseFriendOption paramForwardChooseFriendOption, int paramInt, Bundle paramBundle) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    augl.a(this.a, paramMessage);
-    return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.setResult(1);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augm
  * JD-Core Version:    0.7.0.1
  */

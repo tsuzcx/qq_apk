@@ -1,27 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
 public class bbaz
-  extends bbbi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public bbaz(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" uuid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" storageSource:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" isSelfSend:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.d);
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

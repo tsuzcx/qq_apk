@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-
 public class aqks
-  implements View.OnClickListener
 {
-  public aqks(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
+  private String a;
   
-  public void onClick(View paramView)
+  public aqks(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.d();
+    this.a = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof aqks))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqks
  * JD-Core Version:    0.7.0.1
  */

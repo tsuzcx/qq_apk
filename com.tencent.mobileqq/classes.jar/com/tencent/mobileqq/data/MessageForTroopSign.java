@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.text.TextUtils;
-import azus;
-import azwv;
-import azxl;
-import azzm;
+import anni;
+import bcvs;
+import bcxv;
+import bcyl;
+import bdaq;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
@@ -45,19 +45,19 @@ public class MessageForTroopSign
     localObject1 = ((StructMsgForGeneralShare)localObject1).mStructMsgItemLists;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      localObject1 = (azus)((List)localObject1).get(0);
-      if ((localObject1 instanceof azxl))
+      localObject1 = (bcvs)((List)localObject1).get(0);
+      if ((localObject1 instanceof bcyl))
       {
-        Object localObject2 = (azxl)localObject1;
-        localObject1 = ((azxl)localObject2).a;
+        Object localObject2 = (bcyl)localObject1;
+        localObject1 = ((bcyl)localObject2).a;
         try
         {
           if (QLog.isColorLevel()) {
-            QLog.d("MessageForTroopSign", 2, "doParse, mCommonData=" + ((azxl)localObject2).i);
+            QLog.d("MessageForTroopSign", 2, "doParse, mCommonData=" + ((bcyl)localObject2).i);
           }
-          if (!TextUtils.isEmpty(((azxl)localObject2).i))
+          if (!TextUtils.isEmpty(((bcyl)localObject2).i))
           {
-            localObject2 = new JSONObject(((azxl)localObject2).i);
+            localObject2 = new JSONObject(((bcyl)localObject2).i);
             this.markType = ((JSONObject)localObject2).getInt("markType");
             this.positonType = ((JSONObject)localObject2).getInt("positonType");
             this.markIconUrl = ((JSONObject)localObject2).getString("markIconUrl");
@@ -77,8 +77,8 @@ public class MessageForTroopSign
               continue;
               if ("summary".equals(str))
               {
-                if ((localException instanceof azzm)) {
-                  this.msgContent = ((azzm)localException).b();
+                if ((localException instanceof bdaq)) {
+                  this.msgContent = ((bdaq)localException).b();
                 }
               }
               else if (("title".equals(str)) && ((localException instanceof StructMsgItemTitle))) {
@@ -93,13 +93,13 @@ public class MessageForTroopSign
           if (!((Iterator)localObject1).hasNext()) {
             break label372;
           }
-          localObject2 = (azus)((Iterator)localObject1).next();
-          str = ((azus)localObject2).a;
+          localObject2 = (bcvs)((Iterator)localObject1).next();
+          str = ((bcvs)localObject2).a;
           if (!"vote".equals(str)) {
             break;
           }
-          if ((localObject2 instanceof azwv)) {
-            this.msgCoverUrl = ((azwv)localObject2).S;
+          if ((localObject2 instanceof bcxv)) {
+            this.msgCoverUrl = ((bcxv)localObject2).aa;
           }
         }
       }
@@ -114,7 +114,7 @@ public class MessageForTroopSign
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msgBrief)) {
-      this.msgBrief = alud.a(2131706996);
+      this.msgBrief = anni.a(2131705387);
     }
     return this.msgBrief;
   }
@@ -146,7 +146,7 @@ public class MessageForTroopSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopSign
  * JD-Core Version:    0.7.0.1
  */

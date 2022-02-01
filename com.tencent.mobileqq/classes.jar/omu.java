@@ -1,38 +1,46 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
 
-class omu
-  extends ClickableSpan
+public class omu
 {
-  omu(omt paramomt, SubCommentData paramSubCommentData) {}
+  public int a;
+  public String a;
+  public Pattern a;
+  public JSONObject a;
+  public String b = "";
+  public String c = "";
   
-  public void onClick(View paramView)
+  public omu(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
   {
-    olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
-    paramView = new oke(this.jdField_a_of_type_Omt).a().a();
-    nrt.a(null, olt.a(this.jdField_a_of_type_Omt.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Omt.a.mArticleID), String.valueOf(this.jdField_a_of_type_Omt.a.mAlgorithmID), this.jdField_a_of_type_Omt.a.innerUniqueID, paramView, false);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.b = paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      this.c = paramString3;
+    }
+    if (paramJSONObject != null) {
+      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    }
+    if (paramPattern != null) {
+      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String toString()
   {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
-    for (String str = "#FF8444";; str = "#737373")
-    {
-      paramTextPaint.setColor(Color.parseColor(str));
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
+    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     omu
  * JD-Core Version:    0.7.0.1
  */

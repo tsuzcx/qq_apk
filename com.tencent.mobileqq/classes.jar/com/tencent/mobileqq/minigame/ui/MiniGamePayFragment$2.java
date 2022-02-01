@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import alud;
+import anni;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class MiniGamePayFragment$2
       try
       {
         paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", alud.a(2131707240));
+        paramJSONObject.put("resultMsg", anni.a(2131705631));
         if (paramJSONObject != null) {}
         for (paramJSONObject = paramJSONObject.toString(); paramJSONObject != null; paramJSONObject = "")
         {
@@ -66,7 +66,7 @@ class MiniGamePayFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.util.Pair;
-import apmh;
-import apml;
-import aprh;
+import arpd;
+import arph;
+import arui;
 
 class EmojiJsPlugin$5
   implements DialogInterface.OnClickListener
@@ -19,14 +19,14 @@ class EmojiJsPlugin$5
     paramDialogInterface.putInt("id", this.val$emoPackId);
     paramDialogInterface.putInt("businessType", this.val$businessType);
     paramDialogInterface.putInt("sceneType", this.val$sceneType);
-    paramDialogInterface = apml.a("startDownloadEmoji", this.val$callbackid, this.this$0.mOnRemoteResp.key, paramDialogInterface);
+    paramDialogInterface = arph.a("startDownloadEmoji", this.val$callbackid, this.this$0.mOnRemoteResp.key, paramDialogInterface);
     this.this$0.addDownloadingStateObserver(new Pair(Integer.valueOf(this.val$emoPackId), this.val$callbackid));
-    aprh.a().b(paramDialogInterface);
+    arui.a().b(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

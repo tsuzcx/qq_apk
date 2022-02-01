@@ -1,23 +1,17 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class akcj
-  implements upk
+public class akcj
+  implements DialogInterface.OnClickListener
 {
-  akcj(akci paramakci, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
+  public akcj(BindNumberActivity paramBindNumberActivity) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (akci.a(this.jdField_a_of_type_Akci)) {}
-    for (int i = -24;; i = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + akci.a(this.jdField_a_of_type_Akci) + ", errCode:" + paramInt);
-      }
-      this.jdField_a_of_type_Akci.a = true;
-      akci.a(this.jdField_a_of_type_Akci).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      return;
-    }
+    this.a.a("dc00898", "0X8009F15", 0);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

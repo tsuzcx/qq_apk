@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aliw;
-import bdug;
+import ancd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.data.ApolloGameScoreData;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ final class ApolloGameUtil$7
   
   public void run()
   {
-    bdug localbdug;
+    VasExtensionHandler localVasExtensionHandler;
     String str;
     Object localObject2;
     try
@@ -32,12 +32,12 @@ final class ApolloGameUtil$7
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] real update " + this.jdField_a_of_type_JavaLangString);
       }
-      localbdug = (bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-      Object localObject1 = (aliw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localVasExtensionHandler = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      Object localObject1 = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Object localObject5 = ((aliw)localObject1).h();
-      Object localObject3 = ((aliw)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
-      Object localObject4 = ((aliw)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject5 = ((ancd)localObject1).j();
+      Object localObject3 = ((ancd)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject4 = ((ancd)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
       if ((localObject3 != null) && (QLog.isColorLevel())) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] self init " + ((List)localObject3).size());
       }
@@ -89,14 +89,14 @@ final class ApolloGameUtil$7
     label424:
     for (;;)
     {
-      localbdug.a(str, (List)localObject2, this.jdField_a_of_type_JavaLangString, localThrowable);
+      localVasExtensionHandler.a(str, (List)localObject2, this.jdField_a_of_type_JavaLangString, localThrowable);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.7
  * JD-Core Version:    0.7.0.1
  */

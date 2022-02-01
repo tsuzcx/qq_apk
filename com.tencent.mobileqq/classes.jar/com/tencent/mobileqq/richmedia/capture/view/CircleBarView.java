@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import axrd;
-import axre;
-import axrf;
+import bape;
+import bapf;
+import bapg;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axrd jdField_a_of_type_Axrd;
-  private axre jdField_a_of_type_Axre;
-  private axrf jdField_a_of_type_Axrf;
+  private bape jdField_a_of_type_Bape;
+  private bapf jdField_a_of_type_Bapf;
+  private bapg jdField_a_of_type_Bapg;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Axrf = new axrf(this);
+    this.jdField_a_of_type_Bapg = new bapg(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Axrd != null) && (this.jdField_a_of_type_Axrd.hasStarted())) {
-      this.jdField_a_of_type_Axrd.cancel();
+    if ((this.jdField_a_of_type_Bape != null) && (this.jdField_a_of_type_Bape.hasStarted())) {
+      this.jdField_a_of_type_Bape.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Axrd = new axrd(this);
+    this.jdField_a_of_type_Bape = new bape(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Axrd.setDuration(paramInt);
-    this.jdField_a_of_type_Axrd.setRepeatCount(-1);
-    this.jdField_a_of_type_Axrd.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Axrd);
+    this.jdField_a_of_type_Bape.setDuration(paramInt);
+    this.jdField_a_of_type_Bape.setRepeatCount(-1);
+    this.jdField_a_of_type_Bape.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Bape);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(axre paramaxre)
+  public void setOnAnimationListener(bapf parambapf)
   {
-    this.jdField_a_of_type_Axre = paramaxre;
+    this.jdField_a_of_type_Bapf = parambapf;
   }
   
   public void setTextView(TextView paramTextView)
@@ -164,7 +164,7 @@ public class CircleBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView
  * JD-Core Version:    0.7.0.1
  */

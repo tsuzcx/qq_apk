@@ -1,25 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
 
-public class bknc
-  implements Animation.AnimationListener
+public abstract interface bknc
+  extends ExpandableListAdapter
 {
-  public bknc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(View paramView, int paramInt);
 }
 
 

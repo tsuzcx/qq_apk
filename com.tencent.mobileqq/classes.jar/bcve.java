@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import java.util.Comparator;
 
-public class bcve
-  implements baej
+class bcve
+  implements Comparator
 {
-  public bcve(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, baej parambaej) {}
-  
-  public void a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_Baej != null) {
-      this.jdField_a_of_type_Baej.a();
+    paramObject1 = (bcvb)paramObject1;
+    paramObject2 = (bcvb)paramObject2;
+    if (paramObject1.b > paramObject2.b) {
+      return -1;
     }
+    if (paramObject1.b < paramObject2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

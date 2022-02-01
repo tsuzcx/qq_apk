@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
-final class oit
-  extends bdgx
+public class oit
+  implements nkl
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public oit(ReadInJoyFeedsActivity.1 param1) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oit
  * JD-Core Version:    0.7.0.1
  */

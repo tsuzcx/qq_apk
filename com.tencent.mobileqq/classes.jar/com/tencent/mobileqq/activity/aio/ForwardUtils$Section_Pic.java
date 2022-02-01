@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aese;
+import afyp;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 public final class ForwardUtils$Section_Pic
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator<Section_Pic> CREATOR = new aese();
+  public static final Parcelable.Creator<Section_Pic> CREATOR = new afyp();
   public String a;
   public String b;
   
@@ -32,7 +32,7 @@ public final class ForwardUtils$Section_Pic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic
  * JD-Core Version:    0.7.0.1
  */

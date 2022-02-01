@@ -1,57 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class atpq
+class atpq
+  extends aarg
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  atpq(atpf paramatpf) {}
   
-  public atpq(int paramInt, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (!(paramObject instanceof atpq)) {}
-    do
+    if (paramFileInfo != null)
     {
-      return false;
-      paramObject = (atpq)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+      String str = bglf.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Atmn.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      if (this.a.jdField_a_of_type_Atov != null) {
+        this.a.jdField_a_of_type_Atov.b(str, paramFileInfo);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpq
  * JD-Core Version:    0.7.0.1
  */

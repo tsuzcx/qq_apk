@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class blhr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  blhr(blhn paramblhn) {}
+  blhr(blhj paramblhj, zuk paramzuk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    blhn.a(this.a).setText("");
+    this.jdField_a_of_type_Zuk.a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhr
  * JD-Core Version:    0.7.0.1
  */

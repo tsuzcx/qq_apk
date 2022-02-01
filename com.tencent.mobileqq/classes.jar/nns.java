@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import java.util.ArrayList;
 
-public final class nns
-  implements Parcelable.Creator<EncryptUinInfo>
+public abstract interface nns
 {
-  public EncryptUinInfo a(Parcel paramParcel)
-  {
-    return new EncryptUinInfo(paramParcel);
-  }
+  public abstract void a();
   
-  public EncryptUinInfo[] a(int paramInt)
-  {
-    return new EncryptUinInfo[paramInt];
-  }
+  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nns
  * JD-Core Version:    0.7.0.1
  */

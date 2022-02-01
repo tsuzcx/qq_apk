@@ -1,38 +1,62 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-final class xga
-  implements Animator.AnimatorListener
+public class xga
+  extends Handler
 {
-  xga(xgb paramxgb, ValueAnimator paramValueAnimator) {}
+  WeakReference<FollowCaptureLauncher> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public xga(FollowCaptureLauncher paramFollowCaptureLauncher)
   {
-    if (this.jdField_a_of_type_Xgb != null) {
-      this.jdField_a_of_type_Xgb.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    this.a = new WeakReference(paramFollowCaptureLauncher);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Xgb != null) {
-      this.jdField_a_of_type_Xgb.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Xgb != null) {
-      this.jdField_a_of_type_Xgb.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    int i = 0;
+    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
+    if (localFollowCaptureLauncher == null) {}
+    for (;;)
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      }
+      while (i != 0)
+      {
+        FollowCaptureLauncher.f(localFollowCaptureLauncher);
+        return;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher);
+        continue;
+        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.c(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.d(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
+        }
+        yqu.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
+        FollowCaptureLauncher.e(localFollowCaptureLauncher);
+        continue;
+        localFollowCaptureLauncher.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xga
  * JD-Core Version:    0.7.0.1
  */

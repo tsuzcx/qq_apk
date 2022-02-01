@@ -1,8 +1,6 @@
-import cooperation.wadl.ipc.WadlResult;
-
-abstract interface anjl
+public abstract interface anjl
 {
-  public abstract void a(WadlResult paramWadlResult);
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

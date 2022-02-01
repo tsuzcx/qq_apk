@@ -1,40 +1,39 @@
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class qwi<K, V>
+public class qwi
+  implements pyt
 {
-  private Map a = new LinkedHashMap();
+  public qwi(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup, List paramList, boolean paramBoolean) {}
   
-  public void a(V paramV, qwj paramqwj)
+  public void a(boolean paramBoolean, ArrayList<pwk> paramArrayList, String paramString)
   {
-    this.a.put(paramqwj, paramV);
-  }
-  
-  public boolean a(K paramK, qwk paramqwk)
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.e("ComponentContentRecommendFollowGroup", 2, "followThem, isSuccess = " + paramBoolean + ", followList = " + paramArrayList + ", errorMsg = " + paramString);
+    }
+    if (paramBoolean)
     {
-      qwj localqwj = (qwj)localIterator.next();
-      if ((localqwj != null) && (!localqwj.a(paramK)))
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if ((paramqwk != null) && (this.a.get(localqwj) != null)) {
-          paramqwk.a(this.a.get(localqwj));
-        }
-        return false;
+        paramArrayList = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramArrayList.isFollowed = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.b(paramArrayList);
+        i += 1;
       }
+      ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup).notifyDataSetChanged();
+      return;
     }
-    if (paramqwk != null) {
-      paramqwk.a();
-    }
-    return true;
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.getContext(), 1, 2131717086, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwi
  * JD-Core Version:    0.7.0.1
  */

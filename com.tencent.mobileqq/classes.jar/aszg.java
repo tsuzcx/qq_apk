@@ -1,16 +1,16 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aszg
-  extends PluginManager
+class aszg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
+  aszg(aszd paramaszd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aszg
  * JD-Core Version:    0.7.0.1
  */

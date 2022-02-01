@@ -1,22 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pjl
-  implements View.OnClickListener
+public class pjl
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pjl(pji parampji, String paramString, ArticleInfo paramArticleInfo) {}
+  public static String a = "ViolaPicSerPreloadHandler";
+  public static String b = "viola_service_instance";
   
-  public void onClick(View paramView)
+  public static boolean a()
   {
-    paramView = oqu.g + bdfr.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    ors.a(pji.a(this.jdField_a_of_type_Pji), paramView);
-    pji.a(this.jdField_a_of_type_Pji, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    return ((Boolean)bmqa.a(b, Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = phv.a(paramString);
+    Object localObject = localMap.keySet();
+    for (;;)
+    {
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject).next();
+          String str1 = (String)localMap.get(str2);
+          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
+            continue;
+          }
+          str2 = b;
+          if (Integer.parseInt(str1) == 1)
+          {
+            bool = true;
+            bmqa.a(str2, Boolean.valueOf(bool));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmqa.a(b, Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeup;
-import aevl;
+import agaz;
+import agbx;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.AnimationUtils;
-import bdgk;
-import bhrx;
+import bgln;
+import bkfh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
@@ -20,8 +20,8 @@ public class MoveToBottomScroller
   float jdField_a_of_type_Float = 1.0F;
   public int a;
   private long jdField_a_of_type_Long;
-  aeup jdField_a_of_type_Aeup;
-  aevl jdField_a_of_type_Aevl;
+  agaz jdField_a_of_type_Agaz;
+  agbx jdField_a_of_type_Agbx;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -47,12 +47,12 @@ public class MoveToBottomScroller
     jdField_b_of_type_Int = 50;
   }
   
-  public MoveToBottomScroller(ListView paramListView, aeup paramaeup)
+  public MoveToBottomScroller(ListView paramListView, agaz paramagaz)
   {
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Aeup = paramaeup;
+    this.jdField_a_of_type_Agaz = paramagaz;
     this.jdField_c_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledMinimumFlingVelocity();
-    if (bdgk.d() / 1048576L > 512L) {}
+    if (bgln.d() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_b_of_type_Boolean = bool;
@@ -130,13 +130,13 @@ public class MoveToBottomScroller
           i1 = 1;
         }
         int i2;
-        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_Aeup.jdField_a_of_type_Int >= 0)) {
+        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_Agaz.jdField_a_of_type_Int >= 0)) {
           if (this.jdField_d_of_type_Int > 1)
           {
             i2 = this.jdField_d_of_type_Int - 1;
             label448:
             this.jdField_d_of_type_Int = i2;
-            this.n = this.jdField_a_of_type_Aeup.jdField_a_of_type_Int;
+            this.n = this.jdField_a_of_type_Agaz.jdField_a_of_type_Int;
             label464:
             i2 = this.n;
             this.n = (this.jdField_d_of_type_Int * this.jdField_a_of_type_ComTencentWidgetListView.getHeight() / i1 + i2);
@@ -173,16 +173,16 @@ public class MoveToBottomScroller
     }
   }
   
-  public void a(aevl paramaevl)
+  public void a(agbx paramagbx)
   {
-    this.jdField_a_of_type_Aevl = paramaevl;
+    this.jdField_a_of_type_Agbx = paramagbx;
   }
   
   public void b()
   {
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Aevl != null) {
-      this.jdField_a_of_type_Aevl.aq_();
+    if (this.jdField_a_of_type_Agbx != null) {
+      this.jdField_a_of_type_Agbx.al_();
     }
     this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this);
   }
@@ -298,7 +298,7 @@ public class MoveToBottomScroller
         this.jdField_c_of_type_Float -= this.jdField_b_of_type_Float * i3;
         i1 = (int)(this.n - this.jdField_c_of_type_Float * (this.m - i3) / 2.0F);
         break;
-        i1 = (int)(bhrx.a(i3 / this.m) * this.n);
+        i1 = (int)(bkfh.a(i3 / this.m) * this.n);
         break;
         i1 = (int)(i3 / this.m * this.n);
         break;
@@ -334,7 +334,7 @@ public class MoveToBottomScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.MoveToBottomScroller
  * JD-Core Version:    0.7.0.1
  */

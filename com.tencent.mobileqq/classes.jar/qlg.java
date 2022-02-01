@@ -1,38 +1,42 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class qlg
+  extends qkz
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public qlg() {}
-  
-  public qlg(articlesummary.LocalInfo paramLocalInfo)
+  public qlg(NativeBiuCommentView paramNativeBiuCommentView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (paramLocalInfo == null) {
+    super(paramInt, 13421772, 860716207);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (snh.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    {
+      pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 5, false);
+      snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
       return;
     }
-    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
-    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
-    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
-    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
-    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
-    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
-    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
-    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
+    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    {
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext();
+      if ((paramView instanceof Activity)) {
+        pha.c(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 6);
+      }
+      snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      return;
+    }
+    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qlg
  * JD-Core Version:    0.7.0.1
  */

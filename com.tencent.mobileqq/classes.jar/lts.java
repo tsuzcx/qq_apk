@@ -1,16 +1,68 @@
-import com.tencent.av.opengl.program.TextureProgram;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class lts
-  extends TextureProgram
+  extends apsz
 {
-  public lts()
+  public String a(aptd paramaptd)
   {
-    super("uniform  mat4   uMatrix;\nuniform  mat4 uTextureMatrix;\nattribute vec2  aPosition ;\nvarying vec2 vTextureCoord;\nvoid main(void)\n{\nvec4 pos = vec4(aPosition, 0.0, 1.0);\n gl_Position = uMatrix * pos;\n vTextureCoord = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;\n}\n", "precision mediump float;\nvarying vec2 vTextureCoord;\nuniform sampler2D uTextureSampler0;\nconst mat3 m = mat3(0.2990, 0.5870, 0.1140,-0.1687,-0.3313, 0.5,0.5,-0.4187,-0.0813);\nconst vec3 adduv = vec3(0.0,0.5,0.5);\nvoid main(void)\n{\nvec4 color = texture2D(uTextureSampler0, vTextureCoord);\nvec3 rgb =  color.rgb * m + adduv;\ngl_FragColor =vec4(rgb,1.0);\n}\n", new ltw[] { new ltv("aPosition"), new ltx("uMatrix"), new ltx("uAlpha"), new ltx("uTextureMatrix"), new ltx("uTextureSampler0") }, false);
+    paramaptd = lbf.g() + paramaptd.b + File.separator;
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramaptd);
+    }
+    return paramaptd;
+  }
+  
+  public boolean a(aptd paramaptd, boolean paramBoolean)
+  {
+    long l1 = -1L;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (paramaptd.a)
+    {
+      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramaptd.b, -1L);
+      paramaptd = new File(a(paramaptd));
+      paramBoolean = bool2;
+      if (paramaptd.exists())
+      {
+        long l2 = paramaptd.lastModified();
+        l1 = l2;
+        paramBoolean = bool2;
+        if (l3 > 0L)
+        {
+          l1 = l2;
+          paramBoolean = bool2;
+          if (l3 != l2)
+          {
+            paramBoolean = false;
+            l1 = l2;
+          }
+        }
+      }
+      bool1 = paramBoolean;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AVRedPacketRDHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
+        bool1 = paramBoolean;
+      }
+    }
+    return bool1;
+  }
+  
+  public String b(aptd paramaptd)
+  {
+    paramaptd = lbf.g() + paramaptd.b + ".end";
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramaptd + "]");
+    }
+    return paramaptd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lts
  * JD-Core Version:    0.7.0.1
  */

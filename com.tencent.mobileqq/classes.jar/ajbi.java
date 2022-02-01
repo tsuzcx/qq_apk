@@ -1,22 +1,30 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
-class ajbi
-  implements ajal
+public class ajbi
+  extends ajax
 {
-  ajbi(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
+  public QIMNotifyAddFriend a;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public ajbi(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 

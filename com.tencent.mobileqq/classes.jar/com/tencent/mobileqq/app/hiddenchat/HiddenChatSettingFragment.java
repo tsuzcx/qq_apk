@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.app.hiddenchat;
 
-import alpk;
-import alpq;
-import amjm;
-import amjn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,17 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import azqs;
+import anip;
+import aniz;
+import aoep;
+import aoeq;
+import bcst;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class HiddenChatSettingFragment
   extends IphoneTitleBarFragment
   implements CompoundButton.OnCheckedChangeListener
 {
-  private alpq jdField_a_of_type_Alpq = new amjm(this);
+  private aniz jdField_a_of_type_Aniz = new aoep(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private FormSwitchItem b;
@@ -50,19 +51,19 @@ public class HiddenChatSettingFragment
     if ((getActivity().getAppRuntime() instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131373592));
-      this.b = ((FormSwitchItem)this.mContentView.findViewById(2131373593));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alpq);
-      boolean bool = amjn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131374298));
+      this.b = ((FormSwitchItem)this.mContentView.findViewById(2131374299));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aniz);
+      boolean bool = aoeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem, bool);
-      bool = amjn.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
+      bool = aoeq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), getActivity());
       a(this.b, bool);
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131562538;
+    return 2131562776;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -71,45 +72,46 @@ public class HiddenChatSettingFragment
     int i = 1;
     if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      ((alpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42318);
-      paramCompoundButton = getActivity().app;
+      ((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42318);
+      localQQAppInterface = getActivity().app;
       if (paramBoolean) {
-        azqs.b(paramCompoundButton, "dc00898", "", "", "0X800A34C", "0X800A34C", i, 0, "0", "0", "", "");
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A34C", "0X800A34C", i, 0, "0", "0", "", "");
       }
     }
     while (paramCompoundButton != this.b.a()) {
       for (;;)
       {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
         return;
         i = 2;
       }
     }
-    ((alpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42319);
-    paramCompoundButton = getActivity().app;
+    ((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(paramBoolean, 42319);
+    QQAppInterface localQQAppInterface = getActivity().app;
     if (paramBoolean) {}
     for (i = j;; i = 2)
     {
-      azqs.b(paramCompoundButton, "dc00898", "", "", "0X800A350", "0X800A350", i, 0, "0", "0", "", "");
-      return;
+      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A350", "0X800A350", i, 0, "0", "0", "", "");
+      break;
     }
   }
   
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131719882));
+    setTitle(getActivity().getString(2131717832));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alpq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aniz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment
  * JD-Core Version:    0.7.0.1
  */

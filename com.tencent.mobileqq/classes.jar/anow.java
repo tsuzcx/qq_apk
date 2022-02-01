@@ -1,12 +1,12 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
-
-final class anow
-  implements ark.PlayerStubFactory
+public class anow
 {
-  public ark.PlayerStub CreateStub()
+  public int a;
+  public long a;
+  public int b;
+  
+  public String toString()
   {
-    return new anov();
+    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
   }
 }
 

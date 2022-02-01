@@ -1,16 +1,18 @@
-class qjd
-  extends qio
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qjd
+  implements ViewBase.IBuilder
 {
-  qjd(qja paramqja) {}
-  
-  public int a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    return -15550475;
+    return new qjc(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjd
  * JD-Core Version:    0.7.0.1
  */

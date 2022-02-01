@@ -16,7 +16,7 @@ class RedPacketVoiceFragment$4
     if (this.this$0.c()) {
       return;
     }
-    String str2 = this.this$0.getResources().getString(2131695804);
+    String str2 = this.this$0.getResources().getString(2131694681);
     String str1;
     if (this.jdField_a_of_type_Int == 2) {
       str1 = this.jdField_a_of_type_JavaLangString;
@@ -43,7 +43,7 @@ class RedPacketVoiceFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment.4
  * JD-Core Version:    0.7.0.1
  */

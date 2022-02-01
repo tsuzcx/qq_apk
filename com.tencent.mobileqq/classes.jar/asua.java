@@ -1,22 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
 
-public class asua
-  implements ValueAnimator.AnimatorUpdateListener
+class asua
+  implements bkiz
 {
-  public asua(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  asua(asty paramasty, View paramView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

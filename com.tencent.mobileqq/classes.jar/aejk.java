@@ -1,16 +1,41 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aejk
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aejk(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejk(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.cancel();
+    int j = 1;
+    Object localObject = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
+    {
+      i = 2;
+      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
+      this.a.a(paramBoolean);
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label105;
+      }
+    }
+    label105:
+    for (int i = j;; i = 0)
+    {
+      bcst.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

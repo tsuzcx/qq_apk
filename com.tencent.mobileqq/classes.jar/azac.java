@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import java.util.ArrayList;
-
-public class azac
+public final class azac
+  extends ayzn
 {
-  public MessageForText.AtTroopMemberInfo a;
-  public ArrayList<Object> a = new ArrayList(2);
+  protected int a()
+  {
+    return 504;
+  }
 }
 
 

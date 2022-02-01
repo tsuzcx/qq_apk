@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import java.util.Comparator;
 
-public class bcvf
-  implements badp
+class bcvf
+  implements Comparator
 {
-  public bcvf(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
-  
-  public void a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
+    paramObject1 = (bcvb)paramObject1;
+    paramObject2 = (bcvb)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
     }
-    for (;;)
-    {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 

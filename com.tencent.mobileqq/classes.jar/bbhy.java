@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
 public class bbhy
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public bbhy(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbhy(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
+    }
+    return false;
+  }
 }
 
 

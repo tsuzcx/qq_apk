@@ -1,19 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
+import bmfd;
+import bmfg;
 
 public final class QzoneDeviceTagJsPlugin$2
   implements Runnable
 {
   public void run()
   {
-    bjqu.a().a().m();
+    bmfd.a().a().m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

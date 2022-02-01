@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import java.util.Map;
-import nwm;
+import ogh;
 
 class ReadInJoyListViewGroup$14
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyListViewGroup$14
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (nwm.b(this.this$0.a)) {
+      if (ogh.b(this.this$0.a)) {
         this.this$0.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
       }
       return;
@@ -22,7 +22,7 @@ class ReadInJoyListViewGroup$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.14
  * JD-Core Version:    0.7.0.1
  */

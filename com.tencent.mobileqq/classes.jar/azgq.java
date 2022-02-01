@@ -1,35 +1,10 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
-
 public class azgq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public AtomicReference<SVHwEncoder> a;
-  private long b;
-  
-  public azgq()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramLong;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.b = paramLong1;
-    if (((this.b - this.jdField_a_of_type_Long) / azgp.jdField_a_of_type_Int == this.jdField_a_of_type_Int + 1) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null))
-    {
-      float f = (float)(paramLong2 * 1000.0D / paramLong1);
-      ((SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(f, -1);
-      this.jdField_a_of_type_Int += 1;
-    }
-  }
+  public int a;
+  public azgr a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

@@ -1,22 +1,10 @@
-import java.util.Comparator;
-
-final class uir
-  implements Comparator<uja>
+public abstract interface uir
 {
-  public int a(uja paramuja1, uja paramuja2)
-  {
-    if ((paramuja1 == paramuja2) || (paramuja1.b == paramuja2.b)) {
-      return 0;
-    }
-    if (paramuja1.b < paramuja2.b) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract uig a(uii paramuii);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uir
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
 
-class anmq
-  implements anmy
+public class anmq
+  extends MqqHandler
 {
-  anmq(anmm paramanmm, anmw paramanmw, anmy paramanmy, String paramString) {}
-  
-  public void a(boolean paramBoolean)
+  public anmq(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    if (paramBoolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Anmy.a(true);
+    default: 
       return;
     }
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
-    anmm.a(this.jdField_a_of_type_Anmm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw, new anmr(this));
+    FriendListHandler.a(this.a);
   }
 }
 

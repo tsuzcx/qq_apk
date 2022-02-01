@@ -1,25 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.text.style.LineBackgroundSpan;
 
-class tbt
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class tbt
+  implements LineBackgroundSpan
 {
-  tbt(tbs paramtbs) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public tbt(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      tlo.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tbt
  * JD-Core Version:    0.7.0.1
  */

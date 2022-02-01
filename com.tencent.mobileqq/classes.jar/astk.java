@@ -1,10 +1,27 @@
-import android.view.animation.Animation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ExpandableListView;
 
-public abstract interface astk
+class astk
+  implements zrq
 {
-  public abstract void a(Animation paramAnimation);
+  astk(asti paramasti, int paramInt) {}
   
-  public abstract void b(Animation paramAnimation);
+  public void a()
+  {
+    String str = (String)this.jdField_a_of_type_Asti.getGroup(this.jdField_a_of_type_Int);
+    if (asti.a(this.jdField_a_of_type_Asti).c(this.jdField_a_of_type_Int))
+    {
+      QQAppInterface.f(str + anni.a(2131708396));
+      return;
+    }
+    QQAppInterface.f(str + anni.a(2131708376));
+  }
+  
+  public void b()
+  {
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+  }
 }
 
 

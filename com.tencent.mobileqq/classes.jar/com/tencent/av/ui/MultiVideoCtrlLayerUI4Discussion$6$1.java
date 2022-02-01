@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mhx;
+import mfb;
 
 public class MultiVideoCtrlLayerUI4Discussion$6$1
   implements Runnable
 {
-  public MultiVideoCtrlLayerUI4Discussion$6$1(mhx parammhx) {}
+  public MultiVideoCtrlLayerUI4Discussion$6$1(mfb parammfb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class MultiVideoCtrlLayerUI4Discussion$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,106 +1,126 @@
-import android.os.Build.VERSION;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public class amqc
+  implements aobv
 {
-  public static String a(String paramString1, String paramString2)
+  anmu jdField_a_of_type_Anmu = new amqd(this);
+  private aobu jdField_a_of_type_Aobu;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, Integer> b = new HashMap();
+  
+  public amqc(QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Aobu = new aobu(paramQQAppInterface);
+    this.jdField_a_of_type_Aobu.a(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anmu);
+  }
+  
+  public void a()
+  {
+    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
+    if (this.jdField_a_of_type_Aobu != null)
     {
-      return null;
-      try
-      {
-        paramString1 = bdhb.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
-        if ((paramString1 == null) || (paramString1.length <= 0)) {
-          continue;
-        }
-        if (Build.VERSION.SDK_INT <= 8)
-        {
-          paramString1 = new String(paramString1);
-          return paramString1;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            paramString1.printStackTrace();
-          }
-          paramString1 = null;
-          continue;
-          try
-          {
-            paramString1 = new String(paramString1, "UTF-8");
-          }
-          catch (Exception paramString1)
-          {
-            if (QLog.isDevelopLevel()) {
-              paramString1.printStackTrace();
-            }
-            paramString1 = null;
-          }
-        }
-      }
+      this.jdField_a_of_type_Aobu.d();
+      this.jdField_a_of_type_Aobu = null;
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
-      }
-    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
     do
     {
       return;
-      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
-      bdhb.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
-    } while (!QLog.isColorLevel());
-    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
+      switch (paramInt2)
+      {
+      default: 
+        return;
+      case 1: 
+        localObject = bglf.c((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+        if ((!bfpi.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
+          break label147;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
+        }
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
+    return;
+    label147:
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putString("uin", paramString);
+    localBundle.putString("nickName", (String)localObject);
+    paramString = EIPCResult.createResult(0, localBundle);
+    ampb.a().callbackResult(paramInt1, paramString);
+    return;
+    Object localObject = this.jdField_a_of_type_Aobu.a(1, String.valueOf(paramString), 0, (byte)1);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "bm != null:" + paramString);
+      }
+      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
+      localBundle = new Bundle();
+      localBundle.putInt("type", 2);
+      localBundle.putString("uin", paramString);
+      localBundle.putParcelable("head", (Parcelable)localObject);
+      paramString = EIPCResult.createResult(0, localBundle);
+      ampb.a().callbackResult(paramInt1, paramString);
+      return;
+    }
+    if (this.b != null) {
+      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
+    }
+    this.jdField_a_of_type_Aobu.a(paramString, 200, false, 1, true, (byte)0, 1);
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
-    }
-    File localFile;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
-      if (!localFile.exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        bool = localFile.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
-        }
-        return bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
       }
-      catch (Exception localException)
+      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      if ((this.b != null) && (this.b.get(paramString + "head") != null))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
-        }
-        bool = false;
-        continue;
+        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 2);
+        localBundle.putString("uin", paramString);
+        localBundle.putParcelable("head", paramBitmap);
+        paramString = EIPCResult.createResult(0, localBundle);
+        ampb.a().callbackResult(paramInt1, paramString);
       }
-      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqc
  * JD-Core Version:    0.7.0.1
  */

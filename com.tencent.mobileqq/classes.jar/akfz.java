@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class akfz
-  extends Handler
+class akfz
+  implements DialogInterface.OnKeyListener
 {
-  public akfz(VipSpecialCareHandler.1 param1, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  akfz(akfu paramakfu) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-    default: 
-      return;
+      this.a.a.dismiss();
+      akfu.a(this.a, akfu.a(this.a), true, Long.valueOf(akfu.b(this.a)).longValue(), true);
     }
-    akfy.a(this.a.this$0, "-->request timeout");
-    akfy.a(this.a.this$0, -2);
+    return false;
   }
 }
 

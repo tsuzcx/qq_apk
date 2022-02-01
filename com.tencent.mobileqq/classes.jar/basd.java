@@ -1,17 +1,36 @@
-import android.graphics.Bitmap;
-import java.net.URL;
+import android.opengl.Matrix;
 
-class basd
-  implements bazg
+public class basd
 {
-  public basc a;
+  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   
-  basd(basb parambasb) {}
-  
-  public Bitmap getBitmap(URL paramURL)
+  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Basc = this.jdField_a_of_type_Basb.a(paramURL);
-    return basb.a(this.jdField_a_of_type_Basb, this.jdField_a_of_type_Basc);
+    float f1 = paramInt3 / paramInt4;
+    float f2 = paramInt1 / paramInt2;
+    if (f1 < f2)
+    {
+      f2 = paramInt4 * f2 / paramInt3;
+      f1 = 1.0F;
+    }
+    for (;;)
+    {
+      float[] arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
+      return arrayOfFloat;
+      if (f1 > f2)
+      {
+        f1 = paramInt3 / (f2 * paramInt4);
+        f2 = 1.0F;
+      }
+      else
+      {
+        f1 = 1.0F;
+        f2 = 1.0F;
+      }
+    }
   }
 }
 

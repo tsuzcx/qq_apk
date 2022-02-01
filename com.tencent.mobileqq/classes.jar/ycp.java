@@ -1,33 +1,32 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ycp
-  implements View.OnLongClickListener
+  extends wvn
 {
-  public ycp(RecommendBannerItemView paramRecommendBannerItemView) {}
+  public FeedVideoInfo a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public String b;
   
-  public boolean onLongClick(View paramView)
+  public ycp(ErrorMessage paramErrorMessage, String paramString)
   {
-    if (RecommendBannerItemView.a(this.a) == null) {
-      return false;
-    }
-    yll.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new ycq(this), new ycr(this));
-    if (RecommendBannerItemView.a(this.a)) {
-      zaj.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-    }
-    for (;;)
-    {
-      return true;
-      zaj.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
-    }
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycp
  * JD-Core Version:    0.7.0.1
  */

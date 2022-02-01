@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import nrt;
-import rjk;
-import rkp;
-import rom;
-import ron;
+import oat;
+import sey;
+import sfq;
+import skb;
+import skc;
 
 public class VideoUIManager$9
   implements Runnable
 {
-  public VideoUIManager$9(rkp paramrkp, int paramInt) {}
+  public VideoUIManager$9(sfq paramsfq, int paramInt) {}
   
   public void run()
   {
-    if ((rkp.a(this.this$0) != null) && (rkp.a(this.this$0).a != null))
+    if ((sfq.a(this.this$0) != null) && (sfq.a(this.this$0).a != null))
     {
-      ron localron = new ron("", "", rkp.a(this.this$0).a.mVideoVid, rkp.a(this.this$0).a.innerUniqueID).a((int)rkp.a(this.this$0).a.mChannelID);
-      nrt.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localron.a().a(), false);
-      nrt.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localron.a().a(), false);
+      skc localskc = new skc("", "", sfq.a(this.this$0).a.mVideoVid, sfq.a(this.this$0).a.innerUniqueID).a((int)sfq.a(this.this$0).a.mChannelID);
+      oat.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localskc.a().a(), false);
+      oat.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localskc.a().a(), false);
     }
   }
 }

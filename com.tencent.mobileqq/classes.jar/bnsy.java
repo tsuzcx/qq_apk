@@ -1,31 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
 class bnsy
-  extends BroadcastReceiver
+  implements MediaPlayer.OnPreparedListener
 {
-  bnsy(bnsx parambnsx) {}
+  bnsy(bnss parambnss) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (paramIntent.getAction() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.b();
-      } while ((this.a.jdField_a_of_type_Bnsz == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.a();
-        this.a.jdField_a_of_type_Bnsz.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Bnsz.a(1, this.a.jdField_a_of_type_JavaLangString);
+    paramMediaPlayer.start();
   }
 }
 

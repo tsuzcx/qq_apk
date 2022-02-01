@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acys;
+import aegh;
 
 public class ForwardTroopListFragment$MyTroopObserver$1
   implements Runnable
 {
-  public ForwardTroopListFragment$MyTroopObserver$1(acys paramacys) {}
+  public ForwardTroopListFragment$MyTroopObserver$1(aegh paramaegh) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ForwardTroopListFragment$MyTroopObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmio;
-import bmnj;
-import bmnt;
-import bmoq;
+import bozu;
+import bpep;
+import bpez;
+import bpfw;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class EditVideoTransfer$1
@@ -11,21 +11,21 @@ public class EditVideoTransfer$1
 {
   public void run()
   {
-    if (bmoq.a(this.this$0))
+    if (bpfw.a(this.this$0))
     {
-      localObject = (bmnt)this.this$0.a(bmnt.class);
+      localObject = (bpez)this.this$0.a(bpez.class);
       if (localObject != null) {
-        ((bmnt)localObject).a(bmoq.a(this.this$0));
+        ((bpez)localObject).a(bpfw.a(this.this$0));
       }
     }
-    bmoq.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
-    Object localObject = (bmio)this.this$0.a(bmio.class);
+    bpfw.a(this.this$0, ((EditTakeVideoSource)this.this$0.a.a.a).a.mDuration);
+    Object localObject = (bozu)this.this$0.a(bozu.class);
     if (this.this$0.a() != 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoTransfer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqdw
-  implements DialogInterface.OnClickListener
+class aqdw
+  implements View.OnClickListener
 {
-  public aqdw(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  aqdw(aqdv paramaqdv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    if ((aqdv.a(this.a) != null) && (aqdv.a(this.a).getVisibility() == 0) && (aqdv.a(this.a).hasFocus())) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aqdv.a(this.a);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("start_from", 1);
+      ColorNoteSettingFragment.a(aqdv.a(this.a), ColorNoteSettingFragment.class, localBundle);
+      bcst.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
+    }
   }
 }
 

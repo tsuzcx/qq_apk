@@ -1,10 +1,16 @@
-public abstract interface xjj
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+
+public class xjj
+  extends xjg
 {
-  public abstract void a(String paramString);
+  public xjj(MemorySelectVideoPlayInfo paramMemorySelectVideoPlayInfo)
+  {
+    super(paramMemorySelectVideoPlayInfo.childPlayInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xjj
  * JD-Core Version:    0.7.0.1
  */

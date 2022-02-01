@@ -1,24 +1,12 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.CaughtExceptionReport.Proxy;
 
-public class bcqh
-  extends RecyclerView.OnScrollListener
+public final class bcqh
+  implements IMCoreProxyRoute.CaughtExceptionReport.Proxy
 {
-  public bcqh(AddedRobotView paramAddedRobotView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void e(@NonNull Throwable paramThrowable, @NonNull String paramString)
   {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      AddedRobotView.a(this.a).c();
-    }
-    while (!AddedRobotView.a(this.a).a()) {
-      return;
-    }
-    AddedRobotView.a(this.a).b();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
+    bcrp.a(paramThrowable, paramString);
   }
 }
 

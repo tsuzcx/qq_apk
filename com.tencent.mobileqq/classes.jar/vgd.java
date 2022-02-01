@@ -1,26 +1,26 @@
-public class vgd
+import android.text.TextUtils;
+import cooperation.qzone.util.MultiHashMap;
+
+class vgd
+  implements blxz
 {
-  public final String a;
-  public final xnx a;
-  public final xof a;
-  public final String b;
+  vgd(vgc paramvgc, int paramInt) {}
   
-  public vgd(String paramString1, xof paramxof, xnx paramxnx, String paramString2)
+  public void a(int paramInt, String paramString1, String arg3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Xof = paramxof;
-    this.jdField_a_of_type_Xnx = paramxnx;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Xof + ", comInfo=" + this.jdField_a_of_type_Xnx + ", extCfgInfo=" + this.b + '}';
+    if (TextUtils.isEmpty(paramString1)) {}
+    synchronized (vgc.a())
+    {
+      vgc.a(this.jdField_a_of_type_Vgc).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      vgc.a(this.jdField_a_of_type_Vgc, null);
+      vgc.a(this.jdField_a_of_type_Vgc, paramInt, paramString1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgd
  * JD-Core Version:    0.7.0.1
  */

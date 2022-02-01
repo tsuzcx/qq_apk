@@ -1,62 +1,19 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public abstract class ev
-  extends BaseAdapter
+class ev
+  implements View.OnLongClickListener
 {
-  long jdField_a_of_type_Long = 0L;
-  private Map<Long, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  ev(es parames) {}
   
-  public abstract int a();
-  
-  public abstract long a(int paramInt);
-  
-  public boolean a(long paramLong)
+  public boolean onLongClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong));
-  }
-  
-  public abstract long b(int paramInt);
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    int j = a();
-    if (j > 0)
-    {
-      int i = 0;
-      while (i < j)
-      {
-        long l = a(i);
-        if (l > this.jdField_a_of_type_Long + 180L)
-        {
-          this.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    int i = a();
-    if (i == 0) {}
-    long l;
-    do
-    {
-      return;
-      l = a(i - 1);
-    } while (l <= this.jdField_a_of_type_Long + 180L);
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i - 1)), Long.valueOf(this.jdField_a_of_type_Long));
+    return this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ev
  * JD-Core Version:    0.7.0.1
  */

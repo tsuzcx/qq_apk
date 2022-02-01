@@ -1,14 +1,17 @@
-class arta
-  implements arrh
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+
+public class arta
+  implements arva
 {
-  arta(arsz paramarsz) {}
+  public arta(MessengerService paramMessengerService) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    cx.b(this.a.a, 0);
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    }
   }
-  
-  public void b() {}
 }
 
 

@@ -1,54 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oyb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeSubCommentOneClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyb
+  implements owp
 {
-  public static long a;
-  public static List<oyc> a;
-  public static long b;
-  public static long c;
-  
-  static
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    jdField_a_of_type_Long = -1L;
-    b = -1L;
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_JavaUtilList.clear();
-    c = 0L;
-  }
-  
-  public static void a(oyc paramoyc)
-  {
-    if (!jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      oyc localoyc = (oyc)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
-      if (paramoyc.b - localoyc.b > jdField_a_of_type_Long) {
-        a();
-      }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyc(parampan, parampay));
+    parampay = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_one");
+    if ((parampay instanceof ped)) {
+      ((ped)parampay).a(parampan, (View)paramContainer, 0);
     }
-    jdField_a_of_type_JavaUtilList.add(paramoyc);
-    c += paramoyc.jdField_a_of_type_Long;
-    if (a())
-    {
-      paramoyc = new ArrayList();
-      paramoyc.addAll(jdField_a_of_type_JavaUtilList);
-      jdField_a_of_type_JavaUtilList.clear();
-      oxp.a(paramoyc);
-    }
-  }
-  
-  public static boolean a()
-  {
-    return c > b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyb
  * JD-Core Version:    0.7.0.1
  */

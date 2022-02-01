@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import bifa;
+import bksm;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecyclerViewCompat
   extends RecyclerView
 {
-  private bifa jdField_a_of_type_Bifa;
+  private bksm jdField_a_of_type_Bksm;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -31,9 +31,9 @@ public class RecyclerViewCompat
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public bifa a()
+  public bksm a()
   {
-    return this.jdField_a_of_type_Bifa;
+    return this.jdField_a_of_type_Bksm;
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -61,7 +61,7 @@ public class RecyclerViewCompat
     boolean bool1 = false;
     int j = paramInt1;
     int k = paramInt2;
-    if (this.jdField_a_of_type_Bifa != null)
+    if (this.jdField_a_of_type_Bksm != null)
     {
       if (getLayoutManager() == null) {
         QLog.e("RecyclerViewCompat", 2, "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
@@ -105,7 +105,7 @@ public class RecyclerViewCompat
           bool1 = true;
         }
         dispatchNestedFling(i, paramInt1, bool1);
-        if ((this.jdField_a_of_type_Bifa != null) && (this.jdField_a_of_type_Bifa.a(i, paramInt1))) {
+        if ((this.jdField_a_of_type_Bksm != null) && (this.jdField_a_of_type_Bksm.a(i, paramInt1))) {
           return true;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -121,14 +121,14 @@ public class RecyclerViewCompat
     super.setAdapter(paramAdapter);
   }
   
-  public void setOnFlingListener(bifa parambifa)
+  public void setOnFlingListener(bksm parambksm)
   {
-    this.jdField_a_of_type_Bifa = parambifa;
+    this.jdField_a_of_type_Bksm = parambksm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,18 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
 
-public abstract interface agya
+final class agya
+  implements ahbm
 {
-  public abstract List<? extends agxz> a(String paramString);
-  
-  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    paramQQAppInterface = (MessageForPoke)paramChatMessage;
+    if ((paramQQAppInterface.interactType == 126) && (!aheh.a(paramQQAppInterface.minVersion))) {
+      return 0;
+    }
+    return 62;
+  }
 }
 
 

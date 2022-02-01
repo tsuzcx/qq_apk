@@ -1,132 +1,92 @@
 import android.content.Context;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.av.video.call.ClientLogReport;
-import com.tencent.av.video.call.GAClientLogReport;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ReplacementSpan;
+import android.util.TypedValue;
 
 public class bfvk
-  implements bfvf
+  extends ReplacementSpan
 {
-  private long jdField_a_of_type_Long;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bfvh jdField_a_of_type_Bfvh;
-  private bfvn jdField_a_of_type_Bfvn;
-  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
+  private String jdField_a_of_type_JavaLangString;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private float c;
+  private float d;
   
-  public bfvk(Context paramContext, long paramLong, bfvh parambfvh)
+  public bfvk(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bfvh = parambfvh;
-    this.jdField_a_of_type_Bfvh.a(this);
-    bfvs.a().a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bfvn = new bfvn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bfvh);
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = this.jdField_a_of_type_Bfvn.a();
-    ClientLogReport.instance();
-    GAClientLogReport.instance();
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, paramInt2, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.c = TypedValue.applyDimension(1, paramInt4, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.d = TypedValue.applyDimension(1, paramInt5, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+    this.jdField_b_of_type_Int = paramInt6;
+    this.jdField_b_of_type_Float = a(paramString, paramInt3);
   }
   
-  public static int a()
+  private float a(String paramString, int paramInt)
   {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    for (;;)
+    if (paramString.length() > 1)
     {
-      bfvp.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      } else {
-        i = 0;
-      }
+      Rect localRect = new Rect();
+      Paint localPaint = new Paint();
+      localPaint.setTextSize(this.d);
+      localPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
+      float f = TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+      return localRect.width() + f * 2.0F;
     }
+    return this.jdField_a_of_type_Float;
   }
   
-  public static void a(bfvh parambfvh)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if (parambfvh != null) {
-      parambfvh.a();
-    }
+    paramCharSequence = new Paint();
+    paramCharSequence.setColor(this.jdField_a_of_type_Int);
+    paramCharSequence.setStyle(Paint.Style.FILL);
+    paramCharSequence.setAntiAlias(true);
+    paramPaint = paramPaint.getFontMetrics();
+    float f2 = paramPaint.descent;
+    float f3 = paramPaint.ascent;
+    float f1 = paramInt4;
+    f2 = (f2 - f3 - this.jdField_a_of_type_Float) / 2.0F;
+    f1 = paramPaint.ascent + (f2 + f1);
+    paramCanvas.drawRoundRect(new RectF(paramFloat, f1, this.jdField_b_of_type_Float + paramFloat, this.jdField_a_of_type_Float + f1), 0.0F, 0.0F, paramCharSequence);
+    paramCharSequence = new TextPaint();
+    paramCharSequence.setColor(this.jdField_b_of_type_Int);
+    paramCharSequence.setTextSize(this.d);
+    paramCharSequence.setAntiAlias(true);
+    paramCharSequence.setTextAlign(Paint.Align.CENTER);
+    paramPaint = paramCharSequence.getFontMetrics();
+    f2 = paramPaint.bottom;
+    f3 = paramPaint.top;
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Float / 2.0F + paramFloat, f1 + (this.jdField_a_of_type_Float - (f2 - f3)) / 2.0F - paramPaint.top, paramCharSequence);
   }
   
-  public static void a(bfvh parambfvh, Context paramContext, long paramLong)
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if (parambfvh != null) {
-      parambfvh.a(lno.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public bfvl a()
-  {
-    return this.jdField_a_of_type_Bfvn;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bfvn != null)
-    {
-      this.jdField_a_of_type_Bfvn.c();
-      this.jdField_a_of_type_Bfvn = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bfvh = null;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetIPAndPort(paramString, paramInt);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    lno.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte);
-  }
-  
-  public void b(byte[] paramArrayOfByte) {}
-  
-  public void c(byte[] paramArrayOfByte) {}
-  
-  public void d(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(1, paramArrayOfByte);
-    }
-  }
-  
-  public void e(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(2, paramArrayOfByte);
-    }
+    return (int)(this.jdField_b_of_type_Float + this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvk
  * JD-Core Version:    0.7.0.1
  */

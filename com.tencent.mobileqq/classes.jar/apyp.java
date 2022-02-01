@@ -1,51 +1,35 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.lang.ref.WeakReference;
 
 class apyp
-  implements View.OnClickListener
+  implements bkhw
 {
-  apyp(apyo paramapyo, apvt paramapvt) {}
+  apyp(apyo paramapyo, Context paramContext, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent();
-    label41:
-    String str2;
-    if (this.jdField_a_of_type_Apvt.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      localIntent.putExtra("emoji_to_dressup", true);
-      if (this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label212;
-      }
-      paramView = "";
-      str2 = this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Apvt.jdField_a_of_type_Boolean) {
-        break label226;
-      }
     }
-    label212:
-    label226:
-    for (String str1 = "1";; str1 = "2")
+    for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Apyo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
-      azqs.b(this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
-      return;
-      if ((this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
+      this.jdField_a_of_type_Bkho.dismiss();
+      do
       {
-        localIntent.putExtra("emoji_is_original", bool);
-        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_Apvt.jdField_a_of_type_Int);
-        break;
+        return;
+        paramView = this.jdField_a_of_type_Apyo.b + this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        bcst.b((QQAppInterface)this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangString, "");
       }
-      paramView = this.jdField_a_of_type_Apyo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label41;
     }
   }
 }

@@ -1,34 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.Iterator;
-import java.util.List;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-class awtc
-  implements View.OnClickListener
+public class awtc
+  extends DataSetObserver
 {
-  awtc(awtb paramawtb, int paramInt) {}
+  public awtc(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (awtb.a(this.jdField_a_of_type_Awtb) == this.jdField_a_of_type_Int) {
-      return;
-    }
-    paramView = awtb.a(this.jdField_a_of_type_Awtb).iterator();
-    while (paramView.hasNext()) {
-      ((awtf)paramView.next()).a = false;
-    }
-    ((awtf)awtb.a(this.jdField_a_of_type_Awtb).get(this.jdField_a_of_type_Int)).a = true;
-    awtb.a(this.jdField_a_of_type_Awtb, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Awtb.notifyDataSetChanged();
-    if (awtb.a(this.jdField_a_of_type_Awtb) != null) {
-      awtb.a(this.jdField_a_of_type_Awtb).a((awtf)awtb.a(this.jdField_a_of_type_Awtb).get(this.jdField_a_of_type_Int));
-    }
-    azqs.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtc
  * JD-Core Version:    0.7.0.1
  */

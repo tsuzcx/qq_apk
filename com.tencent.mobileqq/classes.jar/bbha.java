@@ -1,30 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.Comparator;
 
-class bbha
-  implements View.OnTouchListener
+final class bbha
+  implements Comparator<bbgm>
 {
-  bbha(bbgz parambbgz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(bbgm parambbgm1, bbgm parambbgm2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    long l1 = parambbgm1.c();
+    long l2 = parambbgm2.c();
+    if (l1 < l2) {
+      return 1;
     }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    if (l1 > l2) {
+      return -1;
     }
+    return 0;
   }
 }
 

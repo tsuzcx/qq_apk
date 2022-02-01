@@ -1,48 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.Nullable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import java.io.File;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aeta
-  implements ImageAssetDelegate
+public class aeta
+  extends anot
 {
-  aeta(aesz paramaesz) {}
+  public aeta(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  @Nullable
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    paramLottieImageAsset = this.a.a + File.separator + paramLottieImageAsset;
-    boolean bool = new File(paramLottieImageAsset).exists();
     if (QLog.isColorLevel()) {
-      QLog.d("IntimateTitleSwitchView", 0, "fetchBitmap exists:" + bool + " imagePath:" + paramLottieImageAsset);
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
-    if (!bool) {
-      return null;
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
     }
-    Object localObject = BaseApplicationImpl.sImageCache.get(paramLottieImageAsset);
-    if ((localObject != null) && ((localObject instanceof Bitmap))) {
-      return (Bitmap)localObject;
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
     }
-    try
-    {
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inScaled = false;
-      localObject = BitmapFactory.decodeFile(paramLottieImageAsset, (BitmapFactory.Options)localObject);
-      BaseApplicationImpl.sImageCache.put(paramLottieImageAsset, localObject);
-      return localObject;
+    if (!paramBoolean1) {
+      this.a.a(2131717834, 1);
     }
-    catch (Throwable paramLottieImageAsset)
-    {
-      QLog.i("IntimateTitleSwitchView", 0, "fetchBitmap error " + paramLottieImageAsset.getMessage());
-    }
-    return null;
+    this.a.a(paramBoolean2);
   }
 }
 

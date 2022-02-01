@@ -1,82 +1,65 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class bndx
-  implements Animator.AnimatorListener
+public class bndx
+  extends bnbm
 {
-  bndx(bnds parambnds) {}
+  private bnfn jdField_a_of_type_Bnfn;
+  private boym jdField_a_of_type_Boym;
+  private boyn jdField_a_of_type_Boyn;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bndx(boyn paramboyn, boym paramboym)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + bnds.c(this.a) + " isrun:" + bnds.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      bnds.e(this.a, bnds.c(this.a));
-      if (bnds.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      bnds.a(this.a, false);
-      return;
-      label105:
-      if (bnds.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (bnds.c(this.a) == 5) {
-        this.a.a(1);
-      }
-    }
+    this.jdField_a_of_type_Boyn = paramboyn;
+    this.jdField_a_of_type_Boym = paramboym;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + bnds.c(this.a) + " isrun:" + bnds.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      bnds.d(this.a, bnds.c(this.a));
-      if (bnds.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      bnds.a(this.a, false);
-      return;
-      label105:
-      if (bnds.c(this.a) == 4)
-      {
-        this.a.a(0);
-      }
-      else if (bnds.c(this.a) == 5)
-      {
-        this.a.a(1);
-        bnds.a(this.a, 0);
-      }
-      else if (bnds.c(this.a) == 6)
-      {
-        this.a.a(2);
-      }
-    }
+    return this.jdField_a_of_type_Boyn.a().getLayoutInflater().inflate(2131558578, null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + bnds.c(this.a) + " isrun:" + bnds.a(this.a));
+    Intent localIntent = this.jdField_a_of_type_Boyn.a().getIntent();
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM_VIDEO", 1);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 7);
+    this.jdField_a_of_type_Bnfn = new bnfn();
+    this.jdField_a_of_type_Boyn.a().getFragmentManager().beginTransaction().add(2131366665, this.jdField_a_of_type_Bnfn).commit();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Boyn == null) {
+      return false;
     }
-    if (this.a.isRunning()) {
-      bnds.c(this.a, bnds.c(this.a));
+    if ((this.jdField_a_of_type_Bnfn != null) && (this.jdField_a_of_type_Bnfn.a != null)) {
+      this.jdField_a_of_type_Bnfn.a.a(null);
     }
+    return true;
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_Boyn.a().finish();
+  }
+  
+  public void p()
+  {
+    super.p();
   }
 }
 

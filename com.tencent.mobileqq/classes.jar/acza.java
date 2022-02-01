@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.GroupPubAccountInfo;
 
 public class acza
-  extends awhw
+  extends aczg
 {
-  public acza(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void a(boolean paramBoolean)
+  public int a()
   {
-    this.a.A();
-    if (paramBoolean) {
-      return;
-    }
-    QQToast.a(this.a, 1, alud.a(2131705314), 1000).a();
+    return 1000;
   }
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
   {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.n) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.n = false;
+    new bbzc().g(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.group_pub_acc_info.has()) && (paramElem.group_pub_acc_info.uint64_pub_account.has());
   }
 }
 

@@ -1,34 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bags
-  implements WtTicketPromise
+public class bags
+  extends anqd
 {
-  bags(bagr parambagr, Runnable paramRunnable) {}
+  public bags(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void Done(Ticket paramTicket)
+  public void a(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
+    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
+    {
+      if (paramInt != 0) {
+        break label78;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
+      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+        ReceiptMessageDetailFragment.a(this.a, 1, true);
+      }
     }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    label78:
+    do
+    {
+      return;
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
   }
 }
 

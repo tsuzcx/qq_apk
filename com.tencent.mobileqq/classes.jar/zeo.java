@@ -1,55 +1,108 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.HashMap;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-class zeo
-  implements View.OnClickListener
+public class zeo
+  extends zez<zem, zem>
 {
-  zeo(zej paramzej) {}
+  public final String a;
+  public final WeakReference<yrd> a;
+  private boolean a;
   
-  public void onClick(View paramView)
+  public zeo(yrd paramyrd, String paramString)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    swb localswb;
-    do
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyrd);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public zeo(yrd paramyrd, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyrd);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private Bitmap a(zem paramzem, Bitmap paramBitmap)
+  {
+    try
     {
-      do
+      paramzem = paramzem.a();
+      yqp.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", paramzem);
+      if (paramzem == null)
       {
-        do
-        {
-          return;
-        } while ((zej.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(zej.a(this.a))));
-        localswb = (swb)zej.jdField_a_of_type_JavaUtilHashMap.get(zej.a(this.a));
-      } while (localswb == null);
-      if (localswb.b() == 3)
-      {
-        localswb.a();
-        this.a.b();
-        localswb.a(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        }
-        zej.jdField_a_of_type_JavaUtilHashMap.remove(zej.a(this.a));
-        return;
+        yqp.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
+        return null;
       }
-    } while (localswb.b() != 0);
-    nbv.a(paramView.getApplicationContext(), zej.a(this.a), localswb.f, localswb.a, localswb);
-    localswb.a(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      paramBitmap = Bitmap.createBitmap(paramBitmap);
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      float f3 = paramzem.getWidth();
+      float f4 = paramzem.getHeight();
+      Canvas localCanvas = new Canvas(paramBitmap);
+      localCanvas.scale(f1 / f3, f2 / f4);
+      paramzem.draw(localCanvas);
+      return paramBitmap;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    catch (OutOfMemoryError paramzem)
+    {
+      yqp.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", paramzem);
+    }
+    return null;
+  }
+  
+  protected void a(JobContext paramJobContext, zem paramzem)
+  {
+    long l = SystemClock.uptimeMillis();
+    paramJobContext = this.jdField_a_of_type_JavaLangString;
+    if (paramJobContext == null) {
+      paramJobContext = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.b, ".png");
+    }
+    for (;;)
+    {
+      Object localObject = (yrd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (!((yrd)localObject).b()))
+      {
+        localObject = ((yrd)localObject).a();
+        if (localObject != null)
+        {
+          paramzem.jdField_a_of_type_Zeq.b = ((Bitmap)localObject);
+          paramzem.jdField_a_of_type_Boolean = true;
+          Bitmap localBitmap = a(paramzem, (Bitmap)localObject);
+          if (localBitmap == null) {
+            break label234;
+          }
+          yqp.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
+          localObject = localBitmap;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          boolean bool = zkh.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+          paramzem.jdField_a_of_type_Boolean = bool;
+          paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          if (!bool) {
+            yqp.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
+          }
+        }
+        yqp.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + paramzem.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
+        super.notifyResult(paramzem);
+        return;
+        label234:
+        yqp.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zeo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,99 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
 import com.tencent.qphone.base.util.QLog;
 
-class aexs
-  implements Animator.AnimatorListener
+public class aexs
+  extends BroadcastReceiver
 {
-  aexs(aexq paramaexq, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
+  public aexs(QQMapActivity paramQQMapActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
+    {
+      this.a.j = paramIntent.getStringExtra("streetViewUrl");
+      this.a.n();
     }
-    aexq.a(this.jdField_a_of_type_Aexq, paramAnimator, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
+          {
+            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+            localObject = new LBSShare.LocationResp();
+            paramContext = (Context)localObject;
+            if (arrayOfByte != null) {}
+            try
+            {
+              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
+              paramIntent = paramIntent.getExtras().getBundle("req");
+              this.a.a(paramContext, paramIntent);
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  paramContext.printStackTrace();
+                }
+                paramContext = null;
+              }
+            }
+          }
+          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
+            break;
+          }
+          paramContext = paramIntent.getByteArrayExtra("data");
+        } while (paramContext == null);
+        Object localObject = new LBSShare.NearByShopsResp();
+        try
+        {
+          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+          paramIntent = paramIntent.getExtras().getBundle("req");
+          this.a.a(paramContext, paramIntent);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          this.a.a(null, null);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
+      paramContext = paramIntent.getByteArrayExtra("data");
+    } while (paramContext == null);
+    paramIntent = new LBSShare.GetShopsByIdsResp();
+    try
+    {
+      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+      this.a.a(paramContext);
+      return;
     }
-    if ((aexv.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
+    catch (InvalidProtocolBufferMicroException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        paramContext.printStackTrace();
+      }
+      this.a.a(null);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
   }
 }
 

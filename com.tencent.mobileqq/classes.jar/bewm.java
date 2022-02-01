@@ -1,30 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
+import java.util.List;
 
 public class bewm
-  extends Handler
+  extends anxg
 {
-  public bewm(WorkSpaceView paramWorkSpaceView) {}
+  bewm(bewl parambewl) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
+    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
-      int i = ((azum)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
     }
+    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
   }
 }
 

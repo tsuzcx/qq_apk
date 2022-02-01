@@ -1,36 +1,19 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.XListView;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.statistics.GdtReporter;
 
-public class acpc
-  implements aufy<bdwv>
+class acpc
+  implements acri
 {
-  public acpc(ChatSettingForTroop paramChatSettingForTroop) {}
+  acpc(acow paramacow) {}
   
-  public void a(bdwv parambdwv)
+  public void reportImpression(View paramView)
   {
-    if (this.a.f) {
-      return;
-    }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambdwv.jdField_a_of_type_JavaLangString);
-    localFormSimpleItem.setTag(2131374184, parambdwv);
-    if (parambdwv.jdField_a_of_type_Boolean)
+    paramView = paramView.getTag(2131380927);
+    if ((paramView != null) && ((paramView instanceof GdtAd)))
     {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130841117));
-      if (!beat.a(this.a.app, "troop_keyword_scrolled", false))
-      {
-        beat.b(this.a.app, "troop_keyword_scrolled", true);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.addOnLayoutChangeListener(ChatSettingForTroop.a(this.a));
-      }
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambdwv.c, 1, 0, "", "", "", "");
-      return;
-      localFormSimpleItem.setRightIcon(null);
+      paramView = (GdtAd)paramView;
+      GdtReporter.doCgiReport(new acnt().a(paramView.getUrlForImpression()));
     }
   }
 }

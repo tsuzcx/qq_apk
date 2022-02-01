@@ -1,210 +1,145 @@
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
+import tencent.im.oidb.oidb_0xdc9.oidb_0xdc9.ReqBody;
+import tencent.im.oidb.oidb_0xdc9.oidb_0xdc9.RspBody;
 
 public class bfgo
+  extends anii
 {
-  private static volatile bfgo jdField_a_of_type_Bfgo;
-  public static boolean a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bfgq(this);
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  
-  static
+  public bfgo(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Boolean = true;
+    super(paramQQAppInterface);
   }
   
-  private bfgo()
+  public void a()
   {
-    a();
-  }
-  
-  public static bfgo a()
-  {
-    if (jdField_a_of_type_Bfgo == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bfgo == null) {
-        jdField_a_of_type_Bfgo = new bfgo();
-      }
-      return jdField_a_of_type_Bfgo;
+    Object localObject1 = this.mApp.getApplication().getSharedPreferences(this.mApp.getCurrentAccountUin(), 0);
+    long l1 = ((SharedPreferences)localObject1).getLong("SP_HOST_HONOR_LIST_REQUEST_LIMIT_INTERVAL", 0L);
+    long l2 = ((SharedPreferences)localObject1).getLong("SP_HOST_HONOR_LIST_LAST_REQUEST_TIMESTAMP", 0L);
+    l2 = NetConnInfoCenter.getServerTime() - l2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.handler", 2, String.format("getHostTroopHonorList, requestInterval: %s, limitInterval: %s", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
     }
-    finally {}
-  }
-  
-  @Nullable
-  private static OpenSDKAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof OpenSDKAppInterface)) {
-      return (OpenSDKAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    int i = 1;
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    for (;;)
+    if (l2 < l1)
     {
-      if (i != 0) {
-        QIPCServerHelper.getInstance().register(new bfgp(this, "QR_LOGIN_QIPC_MODULE_NAME"));
-      }
+      QLog.d("TroopHonor.handler", 1, "getHostTroopHonorList, requestInterval < limitInterval");
       return;
-      i = 0;
     }
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null) {}
-    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = alud.a(2131711581))
+    localObject1 = new ArrayList();
+    Object localObject2 = ((TroopManager)this.mApp.getManager(52)).a();
+    if (localObject2 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QrAgentLoginManager", 2, "onQRCodeExpired: invoked.  error: " + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        paramArrayOfByte = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramArrayOfByte != null) {
-          paramArrayOfByte.setVisibility(8);
+        TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject2).next();
+        try
+        {
+          ((List)localObject1).add(Long.valueOf(localTroopInfo.troopuin));
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.d("TroopHonor.handler", 1, "getHostTroopHonorList, convert uin exception", localNumberFormatException);
         }
       }
-      paramArrayOfByte = BaseActivity.sTopActivity;
-      if (!(paramArrayOfByte instanceof ScannerActivity)) {
-        break;
-      }
-      Intent localIntent = new Intent(paramArrayOfByte, QRLoginAuthActivity.class);
-      localIntent.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("KEY_QR_CODE_EXPIRED", true);
-      paramArrayOfByte.startActivityForResult(localIntent, 2);
+    }
+    if ((localObject1 == null) || (((List)localObject1).isEmpty()))
+    {
+      QLog.d("TroopHonor.handler", 1, "getHostTroopHonorList, troopUinList is empty!");
       return;
     }
-    paramArrayOfByte = new Intent(BaseApplicationImpl.context, QRLoginAuthActivity.class);
-    paramArrayOfByte.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
-    paramArrayOfByte.putExtra("KEY_QR_CODE_EXPIRED", true);
-    BaseApplicationImpl.context.startActivity(paramArrayOfByte);
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, AgentActivity.class);
-    localIntent.putExtra("key_action", "action_login");
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_login_by_qr_scan", true);
-    localBundle.putString("client_id", String.valueOf(paramLong));
-    localBundle.putString("sdkp", paramString);
-    localBundle.putLong("KEY_ONLINE_STATUS", this.jdField_a_of_type_Long);
-    localBundle.putByteArray("key_qr_code", this.jdField_a_of_type_ArrayOfByte);
-    localIntent.putExtra("key_params", localBundle);
-    localBaseActivity.startActivity(localIntent);
-  }
-  
-  public void a(Bundle paramBundle, boolean paramBoolean)
-  {
-    OpenSDKAppInterface localOpenSDKAppInterface = a();
-    if (localOpenSDKAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QrAgentLoginManager", 2, " openSDKApp: " + localOpenSDKAppInterface);
+    if (QLog.isColorLevel()) {
+      if (localObject1 != null) {
+        break label300;
       }
+    }
+    label300:
+    for (int i = 0;; i = ((List)localObject1).size())
+    {
+      QLog.d("TroopHonor.handler", 2, String.format("getHostTroopHonorList, troopUinList size = %s", new Object[] { Integer.valueOf(i) }));
+      localObject2 = new oidb_0xdc9.ReqBody();
+      ((oidb_0xdc9.ReqBody)localObject2).group_id.set((List)localObject1);
+      sendPbReq(makeOIDBPkg("OidbSvc.0xdc9", 3529, 0, ((oidb_0xdc9.ReqBody)localObject2).toByteArray()));
       return;
     }
-    long l = paramBundle.getLong("KEY_ONLINE_STATUS");
-    paramBundle = paramBundle.getByteArray("key_qr_code");
-    Object localObject1 = ybk.a(l);
-    Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
-    ((ByteBuffer)localObject2).putShort((short)2);
-    ((ByteBuffer)localObject2).putShort((short)localObject1.length);
-    ((ByteBuffer)localObject2).put((byte[])localObject1);
-    Object localObject3 = ((ByteBuffer)localObject2).array();
-    localObject1 = localOpenSDKAppInterface.getAccount();
-    localObject2 = new ArrayList();
-    if ((!TextUtils.isEmpty("")) && (!"".equals(localObject1)))
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
     {
-      byte[] arrayOfByte = "".getBytes();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfByte.length + 4);
-      localByteBuffer.putShort((short)1);
-      localByteBuffer.putShort((short)arrayOfByte.length);
-      localByteBuffer.put(arrayOfByte);
-      arrayOfByte = localByteBuffer.array();
-      localByteBuffer = ByteBuffer.allocate(arrayOfByte.length + 4);
-      localByteBuffer.putShort((short)4);
-      localByteBuffer.putShort((short)arrayOfByte.length);
-      localByteBuffer.put(arrayOfByte);
-      arrayOfByte = localByteBuffer.array();
-      ((ArrayList)localObject2).add(bdhe.a((byte[])localObject3));
-      ((ArrayList)localObject2).add(bdhe.a(arrayOfByte));
-      localObject3 = ByteBuffer.allocate(8);
-      ((ByteBuffer)localObject3).putShort((short)21);
-      ((ByteBuffer)localObject3).putShort((short)4);
-      if (!paramBoolean) {
-        break label349;
+      QLog.d("TroopHonor.handler", 2, "handleGetHostTroopHonorList, data error");
+      return;
+    }
+    oidb_0xdc9.RspBody localRspBody = new oidb_0xdc9.RspBody();
+    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+    label64:
+    long l;
+    if (j == 0) {
+      if (localRspBody.honor_list.has())
+      {
+        paramToServiceMsg = localRspBody.honor_list.get();
+        if (!localRspBody.cache_ts.has()) {
+          break label225;
+        }
+        l = localRspBody.cache_ts.get();
+        label86:
+        ((bfgp)this.mApp.getManager(346)).a(paramToServiceMsg);
+        paramToServiceMsg = this.mApp.getApplication().getSharedPreferences(this.mApp.getCurrentAccountUin(), 0);
+        paramToServiceMsg.edit().putLong("SP_HOST_HONOR_LIST_REQUEST_LIMIT_INTERVAL", l).apply();
+        paramToServiceMsg.edit().putLong("SP_HOST_HONOR_LIST_LAST_REQUEST_TIMESTAMP", NetConnInfoCenter.getServerTime()).apply();
       }
     }
-    label349:
     for (int i = 1;; i = 0)
     {
-      ((ByteBuffer)localObject3).putInt(i);
-      ((ArrayList)localObject2).add(bdhe.a(((ByteBuffer)localObject3).array()));
-      ((WtloginManager)localOpenSDKAppInterface.getManager(1)).CloseCode((String)localObject1, 16L, paramBundle, 1, (ArrayList)localObject2, this.jdField_a_of_type_MqqObserverWtloginObserver);
+      if (i != 0) {
+        ((anwd)this.app.a(20)).notifyUI(80, true, null);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopHonor.handler", 2, String.format("handleGetHostTroopHonorList, result = %s", new Object[] { Integer.valueOf(j) }));
       return;
-      ((ArrayList)localObject2).add(bdhe.a((byte[])localObject3));
-      break;
+      paramToServiceMsg = null;
+      break label64;
+      label225:
+      l = 0L;
+      break label86;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString, View paramView)
+  protected Class<? extends anil> observerClass()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QrAgentLoginManager", 2, "requestQRLogin: invoked.  qrCodeStr: " + paramString);
+    return anxg.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
+    while (!"OidbSvc.0xdc9".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
     }
-    this.jdField_a_of_type_Long = paramQQAppInterface.a();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).edit().putString("KEY_QR_AGENT_LOGIN_CODE" + paramQQAppInterface.c(), this.jdField_a_of_type_JavaLangString).apply();
-    paramView = (WtloginManager)paramQQAppInterface.getManager(1);
-    int i = paramString.indexOf("?k=") + 3;
-    Object localObject = paramString.substring(i, i + 32);
-    this.jdField_a_of_type_ArrayOfByte = QRLoginAuthActivity.a(((String)localObject).getBytes(), ((String)localObject).length());
-    paramString = paramString.substring(paramString.indexOf("&f=") + 3);
-    paramQQAppInterface = paramQQAppInterface.getAccount();
-    if (QLog.isColorLevel()) {
-      QLog.i("QrAgentLoginManager", 2, "requestQRLogin: invoked.  userAccount: " + paramQQAppInterface + " carAppIdString: " + paramString + " content: " + (String)localObject);
-    }
-    paramString = this.jdField_a_of_type_ArrayOfByte;
-    localObject = this.jdField_a_of_type_MqqObserverWtloginObserver;
-    paramView.VerifyCode(paramQQAppInterface, 16L, true, paramString, new int[] { 3, 5, 32, 54 }, 1, (WtloginObserver)localObject);
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfgo
  * JD-Core Version:    0.7.0.1
  */

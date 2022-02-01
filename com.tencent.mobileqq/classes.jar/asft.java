@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 class asft
-  implements View.OnClickListener
+  implements anil
 {
-  asft(asfs paramasfs, int paramInt) {}
+  asft(asfs paramasfs, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (asfs.a(this.jdField_a_of_type_Asfs, this.jdField_a_of_type_Int))
+    if (paramBoolean)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
-      }
-    }
-    if (LangSettingFragment.a(this.jdField_a_of_type_Asfs.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_Asfs.a, ((Integer)paramView.getTag()).intValue());
+      paramObject = (anmw)this.jdField_a_of_type_Asfs.app.getManager(51);
+      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
+      localCard.clothesId = this.jdField_a_of_type_Int;
+      localCard.fontId = this.b;
+      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
+      paramObject.a(localCard);
+      this.jdField_a_of_type_Asfs.notifyUI(1, paramBoolean, null);
     }
   }
 }

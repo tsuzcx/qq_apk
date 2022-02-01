@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
+import org.json.JSONObject;
 
 public class besk
-  implements View.OnLayoutChangeListener
 {
-  public besk(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static besk a(JSONObject paramJSONObject)
   {
-    if (!ProfileCardExtendFriendView.a(this.a)) {
-      this.a.removeOnLayoutChangeListener(this);
+    if (paramJSONObject != null)
+    {
+      besk localbesk = new besk();
+      localbesk.a = paramJSONObject.optString("apurl");
+      localbesk.c = paramJSONObject.optString("img");
+      localbesk.b = paramJSONObject.optString("rl");
+      return localbesk;
     }
-    while ((!ProfileCardExtendFriendView.a(this.a)) || (!ProfileCardExtendFriendView.b(this.a)) || (ProfileCardExtendFriendView.a(this.a) != 0) || (ProfileCardExtendFriendView.b(this.a) != 0)) {
-      return;
-    }
-    ProfileCardExtendFriendView.a(this.a, Math.max(paramInt4 - paramInt2, paramInt8 - paramInt6));
-    ProfileCardExtendFriendView.b(this.a, Math.min(paramInt4 - paramInt2, paramInt8 - paramInt6));
-    this.a.removeOnLayoutChangeListener(this);
-    ProfileCardExtendFriendView.a(this.a);
+    return null;
   }
 }
 

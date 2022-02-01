@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qnk;
-import qnl;
+import rig;
+import rih;
 
 public class TopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicInfo> CREATOR = new qnk();
+  public static final Parcelable.Creator<TopicInfo> CREATOR = new rig();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -30,20 +30,20 @@ public class TopicInfo
     this.e = paramParcel.readString();
   }
   
-  private TopicInfo(qnl paramqnl)
+  private TopicInfo(rih paramrih)
   {
-    this.jdField_a_of_type_Long = qnl.a(paramqnl);
-    this.jdField_a_of_type_JavaLangString = qnl.a(paramqnl);
-    this.jdField_b_of_type_JavaLangString = qnl.b(paramqnl);
-    this.c = qnl.c(paramqnl);
-    this.d = qnl.d(paramqnl);
-    this.jdField_b_of_type_Long = qnl.b(paramqnl);
-    this.jdField_a_of_type_Boolean = qnl.a(paramqnl);
+    this.jdField_a_of_type_Long = rih.a(paramrih);
+    this.jdField_a_of_type_JavaLangString = rih.a(paramrih);
+    this.jdField_b_of_type_JavaLangString = rih.b(paramrih);
+    this.c = rih.c(paramrih);
+    this.d = rih.d(paramrih);
+    this.jdField_b_of_type_Long = rih.b(paramrih);
+    this.jdField_a_of_type_Boolean = rih.a(paramrih);
   }
   
-  public static qnl a()
+  public static rih a()
   {
-    return new qnl(null);
+    return new rih(null);
   }
   
   public long a()

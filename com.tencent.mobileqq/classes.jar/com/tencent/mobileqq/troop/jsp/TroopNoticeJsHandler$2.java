@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcgq;
-import bjcy;
+import bfhe;
+import blrk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import java.util.ArrayList;
-import rqj;
+import snh;
 
 public final class TroopNoticeJsHandler$2
   implements Runnable
@@ -47,7 +47,7 @@ public final class TroopNoticeJsHandler$2
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
       localBundle.putBoolean("is_grid_image_report", true);
-      rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
+      snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       localBundle.putString("src_id", this.jdField_a_of_type_JavaLangString);
@@ -56,9 +56,9 @@ public final class TroopNoticeJsHandler$2
       localBundle.putString("str_data_extra", this.jdField_b_of_type_JavaLangString);
     }
     localIntent.putExtras(localBundle);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > bcgq.a()))
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > bfhe.a()))
     {
-      bjcy.a(localIntent, this.jdField_a_of_type_AndroidAppActivity);
+      blrk.a(localIntent, this.jdField_a_of_type_AndroidAppActivity);
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
       localIntent.putExtra("save_intent_to_file", true);
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, this.jdField_b_of_type_Int);
@@ -69,7 +69,7 @@ public final class TroopNoticeJsHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.2
  * JD-Core Version:    0.7.0.1
  */

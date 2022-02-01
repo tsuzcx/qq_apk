@@ -1,42 +1,23 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class angm
+class angm
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
+  angm(angk paramangk, Context paramContext) {}
   
-  public angm()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
-  
-  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("H5Source", "0");
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("version", "0");
-    if (!paramBundle.getBoolean("disablecloud", false)) {}
-    for (boolean bool = true;; bool = false)
+    paramDialogInterface.dismiss();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131690038), 0).b(0);
+    if (angk.a(this.jdField_a_of_type_Angk))
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("is_from_h5_entry", false);
-      this.jdField_b_of_type_Boolean = false;
-      a(paramAppInterface, paramBundle);
-      return;
+      angk.a(this.jdField_a_of_type_Angk, 1);
+      angk.b(this.jdField_a_of_type_Angk);
+      this.jdField_a_of_type_Angk.a.r();
     }
   }
 }

@@ -1,65 +1,39 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akaw
-  implements Comparator<akau>
+public class akaw
+  extends akaj
 {
-  public int a(akau paramakau)
+  public akaw(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (paramakau.jdField_a_of_type_Int != -1) {
-      return paramakau.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramakau.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bdgc.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramakau.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public int a(akau paramakau1, akau paramakau2)
+  protected boolean b()
   {
-    return a(paramakau1) - a(paramakau2);
+    return true;
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForTroop";
   }
 }
 

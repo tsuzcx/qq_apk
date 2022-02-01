@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import axxz;
-import axyi;
-import axyq;
-import axzf;
+import bawa;
+import bawp;
+import bawx;
+import baxn;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
@@ -11,24 +11,24 @@ import com.tencent.richmediabrowser.log.IBrowserLog;
 public class AIOGalleryActivity$2$3
   implements Runnable
 {
-  public AIOGalleryActivity$2$3(axxz paramaxxz, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public AIOGalleryActivity$2$3(bawa parambawa, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a) != null))
+    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_Bawa.a) != null))
     {
-      axyi localaxyi = AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a;
+      bawp localbawp = AIOGalleryActivity.a(this.jdField_a_of_type_Bawa.a).a;
       try
       {
-        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = axzf.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
+        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = baxn.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
         if (arrayOfAIOBrowserBaseData == null)
         {
           BrowserLogHelper.getInstance().getGalleryLog().d("IAIOImageProviderCallBack", 4, "galleryBaseDatas is null");
           return;
         }
-        if (localaxyi.a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int))
+        if (localbawp.a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int))
         {
-          AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
+          AIOGalleryActivity.a(this.jdField_a_of_type_Bawa.a).a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
           return;
         }
       }
@@ -41,7 +41,7 @@ public class AIOGalleryActivity$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alpy;
-import alqc;
+import anjh;
+import anjl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ class ConditionSearchManager$2$1
   
   public void run()
   {
-    alpy.a(this.a.this$0, false);
+    anjh.a(this.a.this$0, false);
     if (this.a.this$0.c) {
       for (;;)
       {
@@ -28,17 +28,17 @@ class ConditionSearchManager$2$1
           if (!((Iterator)localObject).hasNext()) {
             continue;
           }
-          localalqc = (alqc)((Iterator)localObject).next();
-          if (alpy.a(this.a.this$0) == null) {
+          localanjl = (anjl)((Iterator)localObject).next();
+          if (anjh.a(this.a.this$0) == null) {
             continue;
           }
           bool = true;
         }
         catch (Exception localException)
         {
-          alqc localalqc;
+          anjl localanjl;
           QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
-          if ((!this.a.this$0.d) || (alpy.a(this.a.this$0) == null)) {
+          if ((!this.a.this$0.d) || (anjh.a(this.a.this$0) == null)) {
             continue;
           }
           this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard);
@@ -50,18 +50,18 @@ class ConditionSearchManager$2$1
           this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
           return;
         }
-        localalqc.a(2, bool);
+        localanjl.a(2, bool);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
     }
-    alpy.a(this.a.this$0, null);
+    anjh.a(this.a.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.2.1
  * JD-Core Version:    0.7.0.1
  */

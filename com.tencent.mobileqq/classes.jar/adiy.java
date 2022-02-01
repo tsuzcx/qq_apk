@@ -1,24 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class adiy
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public adiy(AddAccountActivity paramAddAccountActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      FrameHelperActivity.c(false);
-      return false;
-    }
-    FrameHelperActivity.c(true);
-    return false;
+    AddAccountActivity.c(this.a, false);
   }
 }
 

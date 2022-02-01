@@ -1,49 +1,49 @@
 package com.tencent.richmediabrowser.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.image.RegionDrawableData;
+import com.tencent.richmediabrowser.listener.IBrowserItemScrollListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
-import com.tencent.richmediabrowser.view.page.AdapterView;
-import com.tencent.richmediabrowser.view.page.DragGallery;
-import com.tencent.richmediabrowser.view.page.DragView;
-import com.tencent.richmediabrowser.view.page.DragView.OnGestureChangeListener;
-import com.tencent.richmediabrowser.view.page.Gallery;
-import com.tencent.richmediabrowser.view.page.ProGallery;
-import com.tencent.richmediabrowser.view.page.ProGallery.OnProGalleryListener;
-import com.tencent.richmediabrowser.view.progress.AbstractProgressView;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter.BrowserViewHolder;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserRecyclerView;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScrollListener;
+import com.tencent.richmediabrowser.view.recyclerview.DragView;
+import com.tencent.richmediabrowser.view.recyclerview.DragView.OnGestureChangeListener;
 
 public class MainBrowserScene
   extends BrowserBaseScene
-  implements DragView.OnGestureChangeListener
+  implements IBrowserItemScrollListener, DragView.OnGestureChangeListener
 {
   private static final String TAG = "MainBrowserScene";
   private RelativeLayout contentView;
   private volatile boolean isRemoveFullScreen = false;
   public Activity mActivity;
-  public BrowserAdapter mAdapter;
   public DragView mDragView;
   public Intent mIntent;
-  public MainBrowserPresenter mainBrowserPresenter;
   
   public MainBrowserScene(Activity paramActivity, MainBrowserPresenter paramMainBrowserPresenter)
   {
     super(paramActivity);
     this.mActivity = paramActivity;
     this.mainBrowserPresenter = paramMainBrowserPresenter;
-    super.setPresenter(this.mainBrowserPresenter);
   }
   
   private void setFullScreen(boolean paramBoolean)
@@ -67,22 +67,17 @@ public class MainBrowserScene
   
   public boolean back()
   {
-    boolean bool2 = false;
     if (!this.isRemoveFullScreen)
     {
       this.isRemoveFullScreen = true;
       setFullScreen(false);
     }
     super.back();
-    boolean bool1 = bool2;
-    if (this.mAdapter != null)
-    {
-      bool1 = bool2;
-      if (this.mAdapter.getCurrentView() != null) {
-        bool1 = this.mAdapter.getCurrentView().back();
-      }
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.back();
     }
-    return bool1;
+    return false;
   }
   
   public void buildComplete()
@@ -94,6 +89,7 @@ public class MainBrowserScene
   {
     super.buildParams(paramIntent);
     this.mIntent = paramIntent;
+    this.scrollListener.setBrowserItemScrollListener(this);
   }
   
   public void buildView(ViewGroup paramViewGroup)
@@ -102,19 +98,16 @@ public class MainBrowserScene
     initView();
   }
   
-  protected BrowserAdapter createGalleryAdapter(Context paramContext)
+  protected BrowserAdapter createGalleryAdapter(Activity paramActivity)
   {
-    this.mAdapter = new BrowserAdapter(paramContext);
+    this.mAdapter = new BrowserAdapter(paramActivity);
     this.mAdapter.setPresenter(this.mainBrowserPresenter);
-    if ((ProGallery.OnProGalleryListener.class.isInstance(this.mAdapter)) && (ProGallery.class.isInstance(this.mGallery))) {
-      ((ProGallery)this.mGallery).setOnNoBlankListener(this.mAdapter);
-    }
     return this.mAdapter;
   }
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559246, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559331, null);
   }
   
   public RelativeLayout getContentView()
@@ -124,10 +117,7 @@ public class MainBrowserScene
   
   public BrowserBaseView getCurrentView()
   {
-    if (this.mAdapter != null) {
-      return this.mAdapter.getCurrentView();
-    }
-    return null;
+    return getView(this.mainBrowserPresenter.getCurrentPosition());
   }
   
   public RichMediaBrowserInfo getItem(int paramInt)
@@ -135,32 +125,43 @@ public class MainBrowserScene
     return this.mAdapter.getItem(paramInt);
   }
   
-  public void hideProgress()
+  public int getLastVisibleItemPosition()
   {
-    if (this.progressView != null) {
-      this.progressView.hide();
+    if (this.linearLayoutManager != null) {
+      return this.linearLayoutManager.findLastVisibleItemPosition();
     }
+    return -1;
+  }
+  
+  public BrowserBaseView getView(int paramInt)
+  {
+    if ((this.mainBrowserPresenter != null) && (this.recyclerView != null))
+    {
+      RecyclerView.ViewHolder localViewHolder = this.recyclerView.findViewHolderForAdapterPosition(paramInt);
+      if ((localViewHolder instanceof BrowserAdapter.BrowserViewHolder)) {
+        return ((BrowserAdapter.BrowserViewHolder)localViewHolder).itemView;
+      }
+    }
+    return null;
   }
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131364771));
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131364999));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
-      this.mGallery.setSelection(this.mainBrowserPresenter.browserModel.getSelectedIndex());
+      this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
-    this.mGallery.setVisibility(0);
-    if ((this.mGallery instanceof DragGallery)) {
-      ((DragGallery)this.mGallery).setGalleryScaleListener(this.mAdapter);
-    }
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365489));
+    this.recyclerView.setVisibility(0);
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131365725));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();
   }
   
-  public boolean needShowPageView()
+  public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
   {
-    return false;
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    return (localBrowserBaseView != null) && (localBrowserBaseView.isNeedDisallowInterceptEvent(paramMotionEvent));
   }
   
   public void notifyDataSetChanged()
@@ -172,13 +173,20 @@ public class MainBrowserScene
   {
     if ((this.mAdapter != null) && (this.mainBrowserPresenter != null))
     {
+      this.mAdapter.reset();
       this.mAdapter.notifyDataSetChanged();
-      this.mGallery.setSelection(this.mainBrowserPresenter.getCurrentPosition());
+      this.recyclerView.scrollToPosition(this.mainBrowserPresenter.getCurrentPosition());
       BrowserLogHelper.getInstance().getGalleryLog().e("MainBrowserScene", 2, "notifyImageModelDataChanged");
     }
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().notifyImageModelDataChanged();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.notifyImageModelDataChanged();
     }
+  }
+  
+  public void notifyItemChanged(int paramInt)
+  {
+    this.mAdapter.notifyItemChanged(paramInt);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -188,8 +196,9 @@ public class MainBrowserScene
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onConfigurationChanged(paramConfiguration);
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -201,16 +210,21 @@ public class MainBrowserScene
       setFullScreen(false);
     }
     this.bgView.setAlpha(paramFloat);
-    if ((paramFloat < 0.8F) && (this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().updateUI();
+    if (paramFloat < 0.8F)
+    {
+      BrowserBaseView localBrowserBaseView = getCurrentView();
+      if (localBrowserBaseView != null) {
+        localBrowserBaseView.updateUI();
+      }
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onDestroy();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onDestroy();
     }
     if (this.contentView != null) {
       this.contentView.removeAllViews();
@@ -220,44 +234,56 @@ public class MainBrowserScene
     }
   }
   
+  public void onDoubleTap()
+  {
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onDoubleTap();
+    }
+  }
+  
   public void onEnterAnimationEnd()
   {
     super.onEnterAnimationEnd();
     showContentView(true);
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null))
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null)
     {
-      this.mAdapter.getCurrentView().onEnterAnimationEnd();
-      this.mAdapter.getCurrentView().isInEnterAnim = false;
+      localBrowserBaseView.onEnterAnimationEnd();
+      localBrowserBaseView.isInEnterAnim = false;
     }
   }
   
   public void onEnterAnimationStart()
   {
     super.onEnterAnimationStart();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null))
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null)
     {
-      this.mAdapter.getCurrentView().onEnterAnimationStart();
-      this.mAdapter.getCurrentView().isInEnterAnim = true;
+      localBrowserBaseView.onEnterAnimationStart();
+      localBrowserBaseView.isInEnterAnim = true;
     }
   }
   
   public void onExitAnimationEnd()
   {
     super.onExitAnimationEnd();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null))
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null)
     {
-      this.mAdapter.getCurrentView().onExitAnimationEnd();
-      this.mAdapter.getCurrentView().isInExitAnim = false;
+      localBrowserBaseView.onExitAnimationEnd();
+      localBrowserBaseView.isInExitAnim = false;
     }
   }
   
   public void onExitAnimationStart()
   {
     super.onExitAnimationStart();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null))
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null)
     {
-      this.mAdapter.getCurrentView().onExitAnimationStart();
-      this.mAdapter.getCurrentView().isInExitAnim = true;
+      localBrowserBaseView.onExitAnimationStart();
+      localBrowserBaseView.isInExitAnim = true;
     }
     showContentView(false);
   }
@@ -267,35 +293,12 @@ public class MainBrowserScene
     this.mContext.finish();
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemSelected(int paramInt)
   {
-    super.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
-  
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      return this.mAdapter.getCurrentView().onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
-    return super.onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
-  }
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    if ((this.mAdapter != null) && (this.mainBrowserPresenter != null))
-    {
-      this.mAdapter.onItemSelected(paramInt);
-      this.mainBrowserPresenter.browserModel.setSelectedIndex(paramInt);
-      if (this.mAdapter.getCurrentView() != null) {
-        this.mAdapter.getCurrentView().onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-      }
-    }
-    if (this.mainBrowserPresenter != null) {
-      this.mainBrowserPresenter.onItemSelect(paramInt);
+    super.onItemSelected(paramInt);
+    BrowserBaseView localBrowserBaseView = getView(paramInt);
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onItemSelected(paramInt);
     }
   }
   
@@ -305,35 +308,23 @@ public class MainBrowserScene
     {
     default: 
     case 82: 
+      BrowserBaseView localBrowserBaseView;
       do
       {
         return super.onKeyDown(paramInt, paramKeyEvent);
-      } while ((this.mAdapter == null) || (this.mAdapter.getCurrentView() == null));
-      return this.mAdapter.getCurrentView().onKeyDown(paramInt, paramKeyEvent);
+        localBrowserBaseView = getCurrentView();
+      } while (localBrowserBaseView == null);
+      return localBrowserBaseView.onKeyDown(paramInt, paramKeyEvent);
     }
     return back();
-  }
-  
-  public void onLoadFinish(int paramInt, boolean paramBoolean)
-  {
-    this.mAdapter.onLoadFinish(paramInt, paramBoolean);
-  }
-  
-  public void onLoadStart(int paramInt1, int paramInt2)
-  {
-    this.mAdapter.onLoadStart(paramInt1, paramInt2);
-  }
-  
-  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
-  {
-    this.mAdapter.onLoadFinish(paramInt, paramBoolean);
   }
   
   public void onPause()
   {
     super.onPause();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onPause();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onPause();
     }
   }
   
@@ -344,42 +335,103 @@ public class MainBrowserScene
       this.isRemoveFullScreen = false;
       setFullScreen(true);
     }
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().updateUI();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.updateUI();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onResume();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onResume();
     }
   }
   
-  public void onRotateFinished(View paramView, int paramInt1, int paramInt2) {}
-  
-  public void onScrollEnd(int paramInt)
+  public void onScale()
   {
-    super.onScrollEnd(paramInt);
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onScrollEnd(paramInt);
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onScale();
     }
   }
   
-  public void onScrollStart(int paramInt)
+  public void onScaleBegin()
   {
-    super.onScrollStart(paramInt);
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onScrollStart(paramInt);
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onScaleBegin();
+    }
+  }
+  
+  public void onScaleEnd()
+  {
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onScaleEnd();
+    }
+  }
+  
+  public void onScrollEnd()
+  {
+    if (this.mainBrowserPresenter != null)
+    {
+      BrowserBasePresenter localBrowserBasePresenter = this.mainBrowserPresenter.getCurrentPresenter();
+      if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
+        localBrowserBasePresenter.browserBaseView.onScrollEnd();
+      }
+    }
+  }
+  
+  public void onScrollHalfScreenWidth()
+  {
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onScrollHalfScreenWidth();
+    }
+  }
+  
+  public void onScrollStart()
+  {
+    if (this.mainBrowserPresenter != null)
+    {
+      BrowserBasePresenter localBrowserBasePresenter = this.mainBrowserPresenter.getCurrentPresenter();
+      if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
+        localBrowserBasePresenter.browserBaseView.onScrollStart();
+      }
+    }
+  }
+  
+  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
+  {
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((this.mAdapter != null) && (this.mAdapter.getCurrentView() != null)) {
-      this.mAdapter.getCurrentView().onStop();
+    BrowserBaseView localBrowserBaseView = getCurrentView();
+    if (localBrowserBaseView != null) {
+      localBrowserBaseView.onStop();
+    }
+  }
+  
+  public void requestDisallowInterceptDragEvent(boolean paramBoolean)
+  {
+    if (this.mDragView != null) {
+      this.mDragView.requestDisallowInterceptTouchEvent(paramBoolean);
+    }
+  }
+  
+  public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
+  {
+    if (this.recyclerView != null) {
+      this.recyclerView.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
@@ -409,7 +461,7 @@ public class MainBrowserScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.MainBrowserScene
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,35 @@
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public class ykk
-  extends yka
+class ykk
+  extends LruCache<ykm, Drawable>
 {
-  private String a;
-  
-  public ykk(String paramString)
+  ykk(ykj paramykj, int paramInt)
   {
-    this.a = paramString;
+    super(paramInt);
   }
   
-  public void a() {}
-  
-  public void a(ykg paramykg)
+  protected int a(ykm paramykm, Drawable paramDrawable)
   {
-    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
-    paramykg = new ykl(this, paramykg);
-    localSubscribePersonalDetailRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramykg);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        ykv.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramykm, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykk
  * JD-Core Version:    0.7.0.1
  */

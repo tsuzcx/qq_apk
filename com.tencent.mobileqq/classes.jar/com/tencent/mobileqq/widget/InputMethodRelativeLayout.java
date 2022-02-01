@@ -6,15 +6,15 @@ import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
-import beqt;
-import bequ;
+import bhyb;
+import bhyc;
 
 public class InputMethodRelativeLayout
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new beqt(this);
-  public bequ a;
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bhyb(this);
+  public bhyc a;
   private boolean jdField_a_of_type_Boolean;
   
   public InputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -36,14 +36,14 @@ public class InputMethodRelativeLayout
     return localRect.bottom - localRect.top;
   }
   
-  public void setOnSizeChangedListenner(bequ parambequ)
+  public void setOnSizeChangedListenner(bhyc parambhyc)
   {
-    this.jdField_a_of_type_Bequ = parambequ;
+    this.jdField_a_of_type_Bhyc = parambhyc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aeur;
-import alqf;
+import agbb;
+import anjo;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -12,11 +12,11 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$7
   implements Runnable
 {
-  public ConfigHandler$7(alqf paramalqf, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
+  public ConfigHandler$7(anjo paramanjo, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
   
   public void run()
   {
-    if (!alqf.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
+    if (!anjo.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
@@ -32,16 +32,16 @@ public class ConfigHandler$7
       }
       if (i == 0)
       {
-        aeur.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+        agbb.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
         return;
       }
-    } while (aeur.a().a() != null);
-    aeur.a().a(this.this$0.app.getApplication());
+    } while (agbb.a().a() != null);
+    agbb.a().a(this.this$0.app.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.7
  * JD-Core Version:    0.7.0.1
  */

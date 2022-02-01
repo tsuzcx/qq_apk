@@ -1,44 +1,28 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class tcg
-  extends StaggeredGridLayoutManager
+class tcg
+  implements aaob
 {
-  public tcg(int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  tcg(tcf paramtcf, boolean paramBoolean) {}
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void callback(Bundle paramBundle)
   {
-    try
+    int j = paramBundle.getInt("readinjoy_to_wx_config");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
     {
-      super.onLayoutChildren(paramRecycler, paramState);
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "config = " + j + ", scene" + i);
+      }
+      this.jdField_a_of_type_Tcf.a(j, i);
       return;
-    }
-    catch (Exception paramRecycler)
-    {
-      tlo.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
-    }
-  }
-  
-  public void scrollToPosition(int paramInt)
-  {
-    try
-    {
-      super.scrollToPosition(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      tlo.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tcg
  * JD-Core Version:    0.7.0.1
  */

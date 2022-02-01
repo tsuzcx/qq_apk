@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.data.PrecoverResource;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract interface awnp
+class awnp
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  awnp(awno paramawno) {}
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public boolean handleMessage(Message paramMessage)
+  {
+    awno.a(this.a, paramMessage);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnp
  * JD-Core Version:    0.7.0.1
  */

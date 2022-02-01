@@ -1,20 +1,10 @@
-import java.util.Comparator;
-
-class azue
-  implements Comparator
+public abstract interface azue
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (azub)paramObject1;
-    paramObject2 = (azub)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
-    }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract azuf a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

@@ -1,26 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
-final class alfu
-  extends bead
+public class alfu
+  implements ImageAssetDelegate
 {
-  alfu(SharedPreferences paramSharedPreferences, int paramInt, alfs paramalfs) {}
+  private Context a;
   
-  public void onDone(beae parambeae)
+  public alfu(Context paramContext)
   {
-    super.onDone(parambeae);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambeae.a() + ", httpCode: " + parambeae.f);
-    if (3 == parambeae.a())
+    this.a = paramContext;
+  }
+  
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    try
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Alfs != null) {
-        alfs.a(this.jdField_a_of_type_Alfs);
-      }
+      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
+      paramLottieImageAsset.close();
+      return localObject;
     }
+    catch (Throwable paramLottieImageAsset)
+    {
+      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
   }
 }
 

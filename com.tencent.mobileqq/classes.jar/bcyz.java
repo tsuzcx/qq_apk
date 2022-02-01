@@ -1,179 +1,183 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public abstract class bcyz
-  implements DownloadParams.DecodeHandler
+public class bcyz
+  extends bcvt
 {
-  public static final DownloadParams.DecodeHandler a;
-  private static String a;
-  public static final DownloadParams.DecodeHandler b = new bczl();
-  public static final DownloadParams.DecodeHandler c = new bczq();
-  public static final DownloadParams.DecodeHandler d = new bczr();
-  public static final DownloadParams.DecodeHandler e = new bczs();
-  public static final DownloadParams.DecodeHandler f = new bczt();
-  public static final DownloadParams.DecodeHandler g = new bczu();
-  public static final DownloadParams.DecodeHandler h = new bczv();
-  public static final DownloadParams.DecodeHandler i = new bczw();
-  public static final DownloadParams.DecodeHandler j = new bczb();
-  public static final DownloadParams.DecodeHandler k = new bczc();
-  public static final DownloadParams.DecodeHandler l = new bczd();
-  public static final DownloadParams.DecodeHandler m = new bcze();
-  public static final DownloadParams.DecodeHandler n = new bczf();
-  public static final DownloadParams.DecodeHandler o = new bczg();
-  public static final DownloadParams.DecodeHandler p = new bczh();
-  public static final DownloadParams.DecodeHandler q = new bczi();
-  public static final DownloadParams.DecodeHandler r = new bczj();
-  public static final DownloadParams.DecodeHandler s = new bczx(10);
-  public static final DownloadParams.DecodeHandler t = new bczx(20);
-  public static final DownloadParams.DecodeHandler u = new bczk();
-  public static final DownloadParams.DecodeHandler v = new bczm();
-  public static final DownloadParams.DecodeHandler w = new bczy();
-  public static final DownloadParams.DecodeHandler x = new bczn();
-  public static final DownloadParams.DecodeHandler y = new bczo();
-  public static final DownloadParams.DecodeHandler z = new bczp();
+  static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#8C6CF5"));
+  static HashMap<Integer, ColorDrawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+  public int s = -1;
   
-  static
+  protected int b()
   {
-    jdField_a_of_type_JavaLangString = "URLDrawableDecodeHandler";
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new bcza();
+    return 28;
   }
   
-  public static Bitmap a(Bitmap paramBitmap)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    int i1 = paramBitmap.getWidth();
-    int i2 = paramBitmap.getHeight();
-    int i3 = i1 * 15 / 16;
-    int i4 = i2 * 16 / 15;
-    if (i2 > i3)
+    Object localObject1 = null;
+    View localView;
+    bczb localbczb;
+    label223:
+    Object localObject2;
+    if (paramView == null)
     {
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, (i2 - i3) / 2, i1, i3, null, false);
-      paramBitmap.recycle();
-    }
-    do
-    {
-      return localBitmap;
-      localBitmap = paramBitmap;
-    } while (i1 <= i4);
-    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, (i1 - i4) / 2, 0, i4, i2, null, false);
-    paramBitmap.recycle();
-    return localBitmap;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt)
-  {
-    int i3 = paramBitmap.getWidth();
-    int i4 = paramBitmap.getHeight();
-    Object localObject = new int[i3 * i4];
-    paramBitmap.getPixels((int[])localObject, 0, i3, 0, 0, i3, i4);
-    int i5 = (int)Math.ceil(i4 / paramInt);
-    int i6 = (int)Math.ceil(i3 / paramInt);
-    int i1 = 0;
-    while (i1 < i5)
-    {
-      int i2 = 0;
-      while (i2 < i6)
+      localView = LayoutInflater.from(paramContext).inflate(2131560664, null);
+      localbczb = new bczb(this);
+      localbczb.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)localView.findViewById(2131363382));
+      localbczb.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(13.0F);
+      localbczb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377784));
+      localbczb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377707));
+      localbczb.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378830));
+      localbczb.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377706));
+      localView.setTag(this.s, localbczb);
+      localView.setOnClickListener(this);
+      paramBundle = (ColorDrawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.p));
+      paramView = paramBundle;
+      if (paramBundle == null)
       {
-        a((int[])localObject, i2 * paramInt + 1, i1 * paramInt + 1, paramInt, i3, i4);
-        i2 += 1;
-      }
-      i1 += 1;
-    }
-    paramBitmap.recycle();
-    paramBitmap = Bitmap.createBitmap(i3, i4, Bitmap.Config.ARGB_8888);
-    paramBitmap.setPixels((int[])localObject, 0, i3, 0, 0, i3, i4);
-    localObject = new Canvas();
-    ((Canvas)localObject).setBitmap(paramBitmap);
-    ((Canvas)localObject).drawARGB(89, 0, 0, 0);
-    return paramBitmap;
-  }
-  
-  public static void a(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
-  {
-    Matrix localMatrix = paramMatrix;
-    if (paramMatrix == null) {
-      localMatrix = new Matrix();
-    }
-    if (paramInt1 * paramInt4 > paramInt3 * paramInt2) {}
-    for (float f1 = paramInt4 / paramInt2;; f1 = paramInt3 / paramInt1)
-    {
-      float f5 = paramInt3 * 0.5F;
-      float f4 = paramInt4 * 0.5F;
-      float f3 = 0.0F;
-      float f2 = 0.0F;
-      paramInt1 = (int)(paramInt1 * f1);
-      paramInt2 = (int)(paramInt2 * f1);
-      float f7 = paramInt1 * paramFloat1;
-      float f6 = paramInt2 * paramFloat2;
-      paramFloat1 = f3;
-      if (paramInt1 > paramInt3)
-      {
-        paramFloat1 = f3;
-        if (f7 > f5) {
-          paramFloat1 = Math.min(paramInt1 - paramInt3, f7 - f5);
+        paramView = paramBundle;
+        if (this.p != 0)
+        {
+          paramView = new ColorDrawable(this.p);
+          jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.p), paramView);
         }
       }
-      paramFloat2 = f2;
-      if (paramInt2 > paramInt4)
-      {
-        paramFloat2 = f2;
-        if (f6 > f4) {
-          paramFloat2 = Math.min(paramInt2 - paramInt4, f6 - f4);
-        }
+      paramBundle = paramView;
+      if (paramView == null) {
+        paramBundle = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
       }
-      localMatrix.setScale(f1, f1);
-      localMatrix.postTranslate((int)(paramFloat1 + 0.5F) * -1, (int)(paramFloat2 + 0.5F) * -1);
-      return;
+      localbczb.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramBundle);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramView = null;
+      paramBundle = (Bundle)localObject1;
+      if (!localIterator.hasNext()) {
+        break label512;
+      }
+      localObject1 = (bcvs)localIterator.next();
+      localObject2 = ((bcvs)localObject1).jdField_a_of_type_JavaLangString;
+      if (!"title".equals(localObject2)) {
+        break label346;
+      }
+      localObject2 = (StructMsgItemTitle)localObject1;
+      localbczb.jdField_b_of_type_AndroidWidgetTextView.setText(((StructMsgItemTitle)localObject2).ag);
+      label282:
+      if (!TextUtils.isEmpty(paramView)) {
+        break label608;
+      }
+      localObject1 = (StructMsgForGeneralShare)((bcvs)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+      paramView = ((StructMsgForGeneralShare)localObject1).animResId;
+      paramBundle = ((StructMsgForGeneralShare)localObject1).atMembers;
+      localbczb.c = String.valueOf(((StructMsgForGeneralShare)localObject1).uniseq);
     }
-  }
-  
-  public static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    int i1 = paramInt1 + paramInt3 - 1;
-    int i2 = paramInt2 + paramInt3 - 1;
-    paramInt3 = i1;
-    if (i1 > paramInt4) {
-      paramInt3 = paramInt4;
-    }
-    if (i2 > paramInt5) {}
+    label346:
+    label608:
     for (;;)
     {
-      i2 = paramArrayOfInt[((paramInt3 - paramInt1 + 1) / 2 + paramInt1 + ((paramInt5 - paramInt2 + 1) / 2 + paramInt2 - 1) * paramInt4 - 1)];
-      while (paramInt2 <= paramInt5)
+      for (;;)
       {
-        i1 = paramInt1;
-        while (i1 <= paramInt3)
-        {
-          paramArrayOfInt[((paramInt2 - 1) * paramInt4 + i1 - 1)] = i2;
-          i1 += 1;
+        break label223;
+        localbczb = (bczb)paramView.getTag(this.s);
+        localView = paramView;
+        break;
+        if (!"picture".equals(localObject2)) {
+          break label460;
         }
-        paramInt2 += 1;
+        localObject2 = ((bcxv)localObject1).aa;
+        try
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label282;
+          }
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mRequestWidth = ((int)bgme.a(paramContext, 62.5F));
+          localURLDrawableOptions.mRequestHeight = ((int)bgme.a(paramContext, 115.0F));
+          localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+          localbczb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          localbczb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        catch (Exception localException)
+        {
+          QLog.e("Q.robot.StructMsg", 1, localException, new Object[0]);
+          localbczb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        }
       }
-      return;
-      paramInt5 = i2;
+      break label282;
+      if (!"voice".equals(localException)) {
+        break label282;
+      }
+      bcxi localbcxi = (bcxi)localObject1;
+      localbczb.jdField_a_of_type_AndroidWidgetTextView.setText(localbcxi.o + "\"");
+      break label282;
+      localbczb.jdField_a_of_type_JavaLangString = paramView;
+      localbczb.jdField_b_of_type_JavaLangString = paramBundle;
+      if (bfke.a().b(localbczb.c))
+      {
+        if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) {
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)paramContext.getResources().getDrawable(2130843840));
+        }
+        localbczb.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
+        if (!this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.isRunning()) {
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+        }
+        return localView;
+      }
+      localbczb.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843839);
+      return localView;
     }
   }
   
-  public static final int[] a(int paramInt1, int paramInt2)
+  public String b()
   {
-    return new int[] { paramInt1, paramInt2 };
+    return "layout28";
   }
   
-  public static int[] a(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    return new int[] { paramInt1, paramInt2, paramInt3 };
-  }
-  
-  public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    return new int[] { paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6 };
-  }
-  
-  public static final int[] b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return new int[] { paramInt1, paramInt2, paramInt3 };
+    Object localObject = paramView.getTag(this.s);
+    if ((localObject instanceof bczb))
+    {
+      localObject = (bczb)localObject;
+      if (!TextUtils.isEmpty(((bczb)localObject).jdField_a_of_type_JavaLangString)) {
+        break label48;
+      }
+      QLog.e("Q.robot.StructMsg", 2, "onClick failed , resid empty!");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label48:
+      String str1 = ((bczb)localObject).jdField_a_of_type_JavaLangString;
+      String str2 = ((bczb)localObject).c;
+      bfke localbfke = bfke.a();
+      if (localbfke.a(((bczb)localObject).jdField_a_of_type_JavaLangString)) {
+        bfke.a().a(str2, ((bczb)localObject).jdField_a_of_type_JavaLangString, ((bczb)localObject).jdField_b_of_type_JavaLangString);
+      } else {
+        localbfke.a(((bczb)localObject).jdField_a_of_type_JavaLangString, new bcza(this, str2, str1, (bczb)localObject));
+      }
+    }
   }
 }
 

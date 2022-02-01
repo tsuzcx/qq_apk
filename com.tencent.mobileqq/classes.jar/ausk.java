@@ -1,22 +1,24 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 
-final class ausk
-  implements Comparator<autj>
+public class ausk
+  implements View.OnLayoutChangeListener
 {
-  public int a(autj paramautj1, autj paramautj2)
+  public ausk(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramautj1.a < paramautj2.a) {
-      return -1;
+    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    {
+      QQGamePadFaceFragment.a(this.a, true);
+      QQGamePadFaceFragment.a(this.a);
     }
-    if (paramautj1.a > paramautj2.a) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausk
  * JD-Core Version:    0.7.0.1
  */

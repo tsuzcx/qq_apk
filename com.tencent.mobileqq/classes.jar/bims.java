@@ -1,28 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
-import cooperation.comic.VipComicHelper.3.1;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import org.json.JSONObject;
 
-public final class bims
-  implements WebBundleH5OptionListner
+class bims
+  implements DialogInterface.OnClickListener
 {
-  bims(SharedPreferences paramSharedPreferences) {}
+  bims(bimq parambimq, preAuth.PreAuthResponse paramPreAuthResponse, JSONObject paramJSONObject) {}
   
-  public void enableWebBundle(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
-    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new VipComicHelper.3.1(this));
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bimq.a.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bims
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class airk
-  implements View.OnClickListener
+public class airk
+  extends Handler
 {
-  airk(airj paramairj) {}
+  public airk(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Aisn.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    txm.a().a(300);
   }
 }
 

@@ -1,33 +1,26 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
 
-class blcm
-  implements bmeo<String>
+public class blcm
+  implements blcu
 {
-  blcm(blcj paramblcj, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  blcm(blck paramblck) {}
   
-  public void a(@Nullable String paramString)
+  public void a(int paramInt, String paramString)
   {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (!paramString.equals("")) {}
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
     }
-    else
+    for (;;)
     {
-      str = alud.a(2131700347);
-    }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = blcj.a(this.jdField_a_of_type_Blcj) * 3 / 10;; i = blcj.a(this.jdField_a_of_type_Blcj) * 11 / 50)
-    {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(bdaq.c(blcj.a(this.jdField_a_of_type_Blcj), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bdaq.a(blcj.a(this.jdField_a_of_type_Blcj), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
       return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

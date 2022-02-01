@@ -1,16 +1,40 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapper.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ajcn
-  implements Comparator<ajco>
+public class ajcn
+  extends anxg
 {
-  ajcn(ajcm paramajcm) {}
+  ajcn(ajcl paramajcl) {}
   
-  public int a(ajco paramajco1, ajco paramajco2)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramajco2.a - paramajco1.a > 0.0F) {
-      return 1;
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
     }
-    return -1;
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  {
+    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  {
+    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
+  {
+    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
+  }
+  
+  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    this.a.a(paramBoolean);
   }
 }
 

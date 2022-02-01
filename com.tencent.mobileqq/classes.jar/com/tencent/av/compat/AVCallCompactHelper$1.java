@@ -2,46 +2,46 @@ package com.tencent.av.compat;
 
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import lfb;
-import lid;
-import lmy;
+import lbu;
+import ley;
+import ljv;
 import mqq.app.BaseActivity;
 
 public class AVCallCompactHelper$1
   implements Runnable
 {
-  public AVCallCompactHelper$1(lmy paramlmy, BaseActivity paramBaseActivity) {}
+  public AVCallCompactHelper$1(ljv paramljv, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
     Object localObject = null;
-    Intent localIntent = lmy.a(this.this$0, lmy.a());
+    Intent localIntent = ljv.a(this.this$0, ljv.a());
     String str1;
     int i;
     if ((this.a.isResume()) && (localIntent != null))
     {
-      int j = lfb.a().a();
-      String str2 = lmy.a(lmy.a(), localIntent);
-      lid locallid = lfb.a().c(str2);
-      localObject = locallid;
+      int j = lbu.a().a();
+      String str2 = ljv.a(ljv.a(), localIntent);
+      ley localley = lbu.a().c(str2);
+      localObject = localley;
       str1 = str2;
       i = j;
       if (j >= 2)
       {
-        localObject = locallid;
+        localObject = localley;
         str1 = str2;
         i = j;
-        if (locallid != null)
+        if (localley != null)
         {
-          localObject = locallid;
+          localObject = localley;
           str1 = str2;
           i = j;
-          if (locallid.i())
+          if (localley.j())
           {
             this.a.startActivity(localIntent);
             i = j;
             str1 = str2;
-            localObject = locallid;
+            localObject = localley;
           }
         }
       }
@@ -59,7 +59,7 @@ public class AVCallCompactHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.compat.AVCallCompactHelper.1
  * JD-Core Version:    0.7.0.1
  */

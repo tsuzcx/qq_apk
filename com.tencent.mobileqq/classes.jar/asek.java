@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 class asek
-  implements View.OnClickListener
+  implements awnc<Emoticon>
 {
-  asek(asei paramasei) {}
+  asek(asej paramasej, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(Emoticon paramEmoticon)
   {
-    asei.a(this.a);
+    ahch.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Asej.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asej.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
   }
 }
 

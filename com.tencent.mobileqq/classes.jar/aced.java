@@ -1,51 +1,127 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class aced
-  implements afjs
+  implements INetEventHandler
 {
-  public aced(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public static int a;
+  private static aced jdField_a_of_type_Aced;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  public static boolean a;
+  public static boolean b;
+  boolean c = false;
+  boolean d = false;
   
-  public void a()
+  static
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+    jdField_a_of_type_Int = 100;
+  }
+  
+  public static void a()
+  {
+    bize.c("GameCenterBroadcastReceiver", "registerReceiver");
+    if (jdField_a_of_type_Aced == null) {
+      jdField_a_of_type_Aced = new aced();
     }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Afii;
-      if (localObject != null)
-      {
-        if ((!((afii)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
-      }
+    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new acee();
     }
-    for (;;)
+    if (!jdField_a_of_type_Boolean) {}
+    try
     {
-      ((ImageView)localObject).setVisibility(i);
+      AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getApplication(), jdField_a_of_type_Aced);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      jdField_a_of_type_Boolean = true;
       return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
+    }
+    catch (Throwable localThrowable)
+    {
+      bize.a("GameCenterBroadcastReceiver", "registerReceiver exception", localThrowable);
     }
   }
   
-  public void b() {}
+  public static void b()
+  {
+    bize.c("GameCenterBroadcastReceiver", "unRegisterReceiver");
+    try
+    {
+      if (jdField_a_of_type_Aced != null)
+      {
+        AppNetConnInfo.unregisterNetEventHandler(jdField_a_of_type_Aced);
+        jdField_a_of_type_Aced = null;
+      }
+      if (jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+      {
+        BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
+        jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        bize.a("GameCenterBroadcastReceiver", "unRegisterReceiver exception", localThrowable);
+        jdField_a_of_type_Aced = null;
+        jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      }
+    }
+    finally
+    {
+      jdField_a_of_type_Aced = null;
+      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameCenterBroadcastReceiver", 2, "no net");
+      }
+    }
+    do
+    {
+      return;
+      if (!AppNetConnInfo.isMobileConn()) {
+        break;
+      }
+    } while (this.d);
+    if (QLog.isColorLevel()) {
+      QLog.i("GameCenterBroadcastReceiver", 2, "mobile connect");
+    }
+    for (;;)
+    {
+      this.c = false;
+      return;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        if (this.c) {
+          break;
+        }
+        this.c = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("GameCenterBroadcastReceiver", 2, "wifi connect");
+        }
+        GameCenterCheck.a();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("GameCenterBroadcastReceiver", 2, "no connect");
+      }
+    }
+  }
 }
 
 

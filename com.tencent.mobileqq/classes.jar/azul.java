@@ -1,20 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class azul
+class azul
+  extends ClickableSpan
 {
-  private static HashMap<String, azuk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  azul(azuj paramazuj, String paramString1, String paramString2, String paramString3) {}
   
-  public static HashMap<String, azuk> a()
+  public void onClick(View paramView)
   {
-    return jdField_a_of_type_JavaUtilHashMap;
+    new azuo(azuj.a(this.jdField_a_of_type_Azuj).a).a(this.jdField_a_of_type_JavaLangString).a();
+    bcst.b(azuj.a(this.jdField_a_of_type_Azuj).a(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
   }
   
-  public static List<String> a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return jdField_a_of_type_JavaUtilList;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(bggq.a(azuj.a(this.jdField_a_of_type_Azuj).a, 14.0F));
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    if (!TextUtils.isEmpty(this.b)) {
+      paramTextPaint.setColor(Color.parseColor(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
+    }
   }
 }
 

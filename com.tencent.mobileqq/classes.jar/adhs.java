@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhs
-  extends avvc
+  implements View.OnClickListener
 {
-  public adhs(LoginInfoActivity paramLoginInfoActivity) {}
+  public adhs(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    bcst.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    }
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

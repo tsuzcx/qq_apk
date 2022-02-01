@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahsx;
-import ahyo;
-import aiaw;
-import aiax;
-import aidp;
+import ajhy;
+import ajpc;
+import ajrk;
+import ajrl;
+import ajud;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import com.tencent.mobileqq.activity.contacts.adapter.CustomFragmentStatePagerAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.base.tabs.CustomFragmentStatePagerAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ChatHistoryViewPagerAdapter
   extends CustomFragmentStatePagerAdapter
-  implements ahsx
+  implements ajhy
 {
-  private ahyo jdField_a_of_type_Ahyo;
-  private aiaw jdField_a_of_type_Aiaw;
+  private ajpc jdField_a_of_type_Ajpc;
+  private ajrk jdField_a_of_type_Ajrk;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private String jdField_a_of_type_JavaLangString;
   protected ArrayList<ChatHistoryBaseFragment> a;
-  private ArrayList<aiax> b = new ArrayList();
+  private ArrayList<ajrl> b = new ArrayList();
   
-  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, ahyo paramahyo, aiaw paramaiaw, String paramString)
+  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, ajpc paramajpc, ajrk paramajrk, String paramString)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Ahyo = paramahyo;
-    this.jdField_a_of_type_Aiaw = paramaiaw;
+    this.jdField_a_of_type_Ajpc = paramajpc;
+    this.jdField_a_of_type_Ajrk = paramajrk;
     this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_Aiaw.jdField_a_of_type_JavaUtilArrayList);
+    this.b.addAll(this.jdField_a_of_type_Ajrk.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -42,7 +42,7 @@ public class ChatHistoryViewPagerAdapter
     int i = 0;
     while (i < this.b.size())
     {
-      if (((aiax)this.b.get(i)).a == paramInt) {
+      if (((ajrl)this.b.get(i)).a == paramInt) {
         return i;
       }
       i += 1;
@@ -50,10 +50,10 @@ public class ChatHistoryViewPagerAdapter
     return -1;
   }
   
-  private aiax a(int paramInt)
+  private ajrl a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      return (aiax)this.b.get(paramInt);
+      return (ajrl)this.b.get(paramInt);
     }
     return null;
   }
@@ -82,24 +82,24 @@ public class ChatHistoryViewPagerAdapter
   
   public ChatHistoryBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    aiax localaiax = a(paramInt);
+    ajrl localajrl = a(paramInt);
     Object localObject1 = null;
-    if (localaiax != null)
+    if (localajrl != null)
     {
-      Object localObject2 = a(localaiax.a);
+      Object localObject2 = a(localajrl.a);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = localObject2;
         if (paramBoolean)
         {
-          localObject1 = aidp.a(localaiax.a);
+          localObject1 = ajud.a(localajrl.a);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-          ((ChatHistoryBaseFragment)localObject1).a(paramInt);
+          ((ChatHistoryBaseFragment)localObject1).b(paramInt);
           ((ChatHistoryBaseFragment)localObject1).b(this.jdField_a_of_type_JavaLangString);
-          ((ChatHistoryBaseFragment)localObject1).b(localaiax.a);
-          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Ahyo);
+          ((ChatHistoryBaseFragment)localObject1).c(localajrl.a);
+          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Ajpc);
           localObject2 = new Bundle();
           ((Bundle)localObject2).putBoolean("should_restore_from_kill", false);
           ((ChatHistoryBaseFragment)localObject1).setArguments((Bundle)localObject2);
@@ -130,11 +130,13 @@ public class ChatHistoryViewPagerAdapter
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "doOnResume:" + paramInt);
+      QLog.d("Q.history.ViewPagerAdapter", 2, "remove fragment cache :" + paramInt);
     }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt, false);
-    if (localChatHistoryBaseFragment != null) {
-      localChatHistoryBaseFragment.e();
+    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt);
+    if (localChatHistoryBaseFragment != null)
+    {
+      localChatHistoryBaseFragment.g();
+      this.jdField_a_of_type_JavaUtilArrayList.remove(localChatHistoryBaseFragment);
     }
   }
   
@@ -156,24 +158,22 @@ public class ChatHistoryViewPagerAdapter
   public void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
+      QLog.d("Q.history.ViewPagerAdapter", 2, "doOnResume:" + paramInt);
+    }
+    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt, false);
+    if (localChatHistoryBaseFragment != null) {
+      localChatHistoryBaseFragment.e();
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
       QLog.d("Q.history.ViewPagerAdapter", 2, "doOnPause:" + paramInt);
     }
     ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt, false);
     if (localChatHistoryBaseFragment != null) {
       localChatHistoryBaseFragment.f();
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.ViewPagerAdapter", 2, "remove fragment cache :" + paramInt);
-    }
-    ChatHistoryBaseFragment localChatHistoryBaseFragment = a(paramInt);
-    if (localChatHistoryBaseFragment != null)
-    {
-      localChatHistoryBaseFragment.g();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localChatHistoryBaseFragment);
     }
   }
   
@@ -207,7 +207,7 @@ public class ChatHistoryViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

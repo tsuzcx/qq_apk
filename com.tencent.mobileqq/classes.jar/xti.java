@@ -1,45 +1,34 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xti
+public final class xti
+  extends QQUIEventReceiver<xsw, yio>
 {
-  public int a;
-  public String a;
-  public ArrayList<Object> a;
-  public xtk a;
-  public String[] a;
-  
-  public xti() {}
-  
-  public xti(String[] paramArrayOfString, String paramString, xtk paramxtk)
+  public xti(@NonNull xsw paramxsw)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Xtk = paramxtk;
+    super(paramxsw);
   }
   
-  public String toString()
+  public void a(@NonNull xsw paramxsw, @NonNull yio paramyio)
   {
-    String str1;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    if ((paramyio.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramyio.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxsw.a != null) && (TextUtils.equals(paramyio.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxsw.a.b)))
     {
-      str1 = "null";
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label86;
-      }
+      yqp.a(paramxsw.b, "refresh feed item , feed id :%s", paramxsw.a.b);
+      paramxsw.i();
     }
-    label86:
-    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
-    {
-      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
-      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
-      break;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return yio.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xti
  * JD-Core Version:    0.7.0.1
  */

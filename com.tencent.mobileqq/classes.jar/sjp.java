@@ -1,26 +1,24 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class sjp
-  implements sjw
+final class sjp
+  extends sjr
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public sjp(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  sjp(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sjq(this, paramInt1, paramInt2));
+    sjo.a(this.a, this, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sjp
  * JD-Core Version:    0.7.0.1
  */

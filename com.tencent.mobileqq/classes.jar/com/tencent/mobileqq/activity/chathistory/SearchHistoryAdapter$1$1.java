@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import ahea;
+import aiqn;
 
 class SearchHistoryAdapter$1$1
   implements Runnable
@@ -15,7 +15,7 @@ class SearchHistoryAdapter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SearchHistoryAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

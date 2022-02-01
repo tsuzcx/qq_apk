@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aezq;
-import aezw;
-import afaj;
-import afal;
-import afar;
-import afas;
-import afav;
-import afaw;
-import afax;
-import afba;
-import afbb;
-import afbe;
+import aggc;
+import aggi;
+import aggv;
+import aggx;
+import aghd;
+import aghe;
+import aghh;
+import aghi;
+import aghj;
+import aghm;
+import aghn;
+import aghq;
 import android.graphics.Rect;
 import android.text.TextUtils;
-import aygl;
-import bdhb;
+import bbet;
+import bgmg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,24 +30,24 @@ import java.util.Map;
 public class LoadDataJob
   implements Runnable
 {
-  private static final String jdField_b_of_type_JavaLangString = aygl.a() + "pclcache" + File.separator;
+  private static final String jdField_b_of_type_JavaLangString = bbet.a() + "pclcache" + File.separator;
   final int jdField_a_of_type_Int = 3;
   public String a;
-  private WeakReference<afar> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aghd> jdField_a_of_type_JavaLangRefWeakReference;
   private int jdField_b_of_type_Int;
   private int c;
   private int d;
   
-  public LoadDataJob(String paramString, int paramInt1, int paramInt2, afar paramafar)
+  public LoadDataJob(String paramString, int paramInt1, int paramInt2, aghd paramaghd)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramafar);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaghd);
     this.jdField_b_of_type_Int = paramInt1;
     this.c = paramInt2;
   }
   
   /* Error */
-  private afaj a(String paramString)
+  private aggv a(String paramString)
   {
     // Byte code:
     //   0: iconst_1
@@ -90,7 +90,7 @@ public class LoadDataJob
     //   72: if_icmpne +603 -> 675
     //   75: aload 4
     //   77: iconst_0
-    //   78: invokestatic 105	aezw:a	([BI)I
+    //   78: invokestatic 105	aggi:a	([BI)I
     //   81: istore_3
     //   82: iload_3
     //   83: ifle +9 -> 92
@@ -137,7 +137,7 @@ public class LoadDataJob
     //   175: ldc 134
     //   177: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: aload_1
-    //   181: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   181: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   184: pop
     //   185: aload 4
     //   187: astore 5
@@ -169,14 +169,14 @@ public class LoadDataJob
     //   241: goto +449 -> 690
     //   244: aload_0
     //   245: aload 4
-    //   247: invokevirtual 147	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	([B)Lafav;
+    //   247: invokevirtual 147	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	([B)Laghh;
     //   250: astore 4
     //   252: aload 4
     //   254: ifnull +421 -> 675
-    //   257: getstatic 152	afaj:a	Lafay;
+    //   257: getstatic 152	aggv:a	Laghk;
     //   260: aload 4
     //   262: invokeinterface 157 2 0
-    //   267: checkcast 149	afaj
+    //   267: checkcast 149	aggv
     //   270: astore 4
     //   272: goto -144 -> 128
     //   275: astore 5
@@ -237,7 +237,7 @@ public class LoadDataJob
     //   404: ldc 134
     //   406: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   409: aload_1
-    //   410: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   410: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   413: pop
     //   414: aconst_null
     //   415: astore 5
@@ -287,7 +287,7 @@ public class LoadDataJob
     //   515: ldc 134
     //   517: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   520: aload_1
-    //   521: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   521: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   524: pop
     //   525: aload 4
     //   527: athrow
@@ -446,7 +446,7 @@ public class LoadDataJob
         paramString = jdField_b_of_type_JavaLangString + paramString.substring(paramString.lastIndexOf(File.separator) + 1, paramString.lastIndexOf('_')) + "_dwr";
         if (paramBoolean)
         {
-          paramBoolean = bdhb.a(paramString);
+          paramBoolean = bgmg.a(paramString);
           if (paramBoolean) {
             return paramString;
           }
@@ -462,7 +462,7 @@ public class LoadDataJob
   }
   
   /* Error */
-  private List<afbe> a(String paramString, afar paramafar)
+  private List<aghq> a(String paramString, aghd paramaghd)
   {
     // Byte code:
     //   0: new 195	java/util/ArrayList
@@ -542,7 +542,7 @@ public class LoadDataJob
     //   147: istore 5
     //   149: aload 16
     //   151: iconst_0
-    //   152: invokestatic 105	aezw:a	([BI)I
+    //   152: invokestatic 105	aggi:a	([BI)I
     //   155: istore 4
     //   157: iload 4
     //   159: ifle +10 -> 169
@@ -637,10 +637,10 @@ public class LoadDataJob
     //   359: invokeinterface 211 1 0
     //   364: ifle +16 -> 380
     //   367: aload 14
-    //   369: new 226	afas
+    //   369: new 226	aghe
     //   372: dup
     //   373: aload_0
-    //   374: invokespecial 229	afas:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;)V
+    //   374: invokespecial 229	aghe:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;)V
     //   377: invokestatic 235	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   380: aload 14
     //   382: monitorexit
@@ -673,7 +673,7 @@ public class LoadDataJob
     //   443: ldc 239
     //   445: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   448: aload_1
-    //   449: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   449: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   452: pop
     //   453: aload 14
     //   455: invokeinterface 242 1 0
@@ -758,13 +758,13 @@ public class LoadDataJob
     //   625: aload_0
     //   626: iload_3
     //   627: aload 17
-    //   629: new 250	afaq
+    //   629: new 250	aghc
     //   632: dup
     //   633: aload_0
     //   634: aload 15
     //   636: aload 14
-    //   638: invokespecial 253	afaq:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/Map;Ljava/util/List;)V
-    //   641: invokespecial 256	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;I[BLafat;)V
+    //   638: invokespecial 253	aghc:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/Map;Ljava/util/List;)V
+    //   641: invokespecial 256	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;I[BLaghf;)V
     //   644: astore 17
     //   646: aload 9
     //   648: astore 11
@@ -938,7 +938,7 @@ public class LoadDataJob
     //   1024: ldc 239
     //   1026: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1029: aload_1
-    //   1030: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   1030: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   1033: pop
     //   1034: aload 14
     //   1036: invokeinterface 242 1 0
@@ -1126,7 +1126,7 @@ public class LoadDataJob
     //   1413: ldc 239
     //   1415: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1418: aload_1
-    //   1419: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   1419: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   1422: pop
     //   1423: aload 14
     //   1425: invokeinterface 242 1 0
@@ -1258,7 +1258,7 @@ public class LoadDataJob
     //   1677: ldc 239
     //   1679: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1682: aload_1
-    //   1683: invokestatic 139	bdhb:d	(Ljava/lang/String;)Z
+    //   1683: invokestatic 139	bgmg:d	(Ljava/lang/String;)Z
     //   1686: pop
     //   1687: aload 14
     //   1689: invokeinterface 242 1 0
@@ -1487,7 +1487,7 @@ public class LoadDataJob
     //   start	length	slot	name	signature
     //   0	2125	0	this	LoadDataJob
     //   0	2125	1	paramString	String
-    //   0	2125	2	paramafar	afar
+    //   0	2125	2	paramaghd	aghd
     //   105	1461	3	i	int
     //   155	523	4	j	int
     //   20	2095	5	bool1	boolean
@@ -1503,7 +1503,7 @@ public class LoadDataJob
     //   81	1578	10	localObject5	Object
     //   1696	25	10	localException2	Exception
     //   1734	6	10	localObject6	Object
-    //   1745	372	10	localafar	afar
+    //   1745	372	10	localaghd	aghd
     //   85	725	11	localObject7	Object
     //   876	25	11	localException3	Exception
     //   920	1	11	localObject8	Object
@@ -1671,18 +1671,18 @@ public class LoadDataJob
     //   72	83	2057	java/lang/OutOfMemoryError
   }
   
-  private List<afbe> a(List<afba> paramList, Rect paramRect)
+  private List<aghq> a(List<aghm> paramList, Rect paramRect)
   {
     Object localObject1 = paramList.iterator();
     long l = 0L;
     Object localObject2;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (afba)((Iterator)localObject1).next();
-      if (((afba)localObject2).b() == null) {
+      localObject2 = (aghm)((Iterator)localObject1).next();
+      if (((aghm)localObject2).b() == null) {
         break label251;
       }
-      l = ((afba)localObject2).b().a() + l;
+      l = ((aghm)localObject2).b().a() + l;
     }
     label251:
     for (;;)
@@ -1704,7 +1704,7 @@ public class LoadDataJob
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          localObject2 = new afbe((afba)paramList.next(), paramRect.width(), paramRect.height(), this.jdField_b_of_type_Int, this.c, i, j, 1.0F);
+          localObject2 = new aghq((aghm)paramList.next(), paramRect.width(), paramRect.height(), this.jdField_b_of_type_Int, this.c, i, j, 1.0F);
           if (localObject2 != null) {
             ((ArrayList)localObject1).add(localObject2);
           }
@@ -1720,12 +1720,12 @@ public class LoadDataJob
           j = 45;
         }
       }
-      Collections.sort((List)localObject1, new afas(this));
+      Collections.sort((List)localObject1, new aghe(this));
       return localObject1;
     }
   }
   
-  private Map<Integer, Integer> a(List<afbe> paramList)
+  private Map<Integer, Integer> a(List<aghq> paramList)
   {
     HashMap localHashMap = new HashMap();
     if (paramList == null) {
@@ -1734,9 +1734,9 @@ public class LoadDataJob
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      int i = ((afbe)paramList.next()).a();
+      int i = ((aghq)paramList.next()).a();
       if (i > 0) {
-        if (!afal.a().b(0, i)) {
+        if (!aggx.a().b(0, i)) {
           localHashMap.put(Integer.valueOf(i), Integer.valueOf(4));
         } else {
           localHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
@@ -1757,7 +1757,7 @@ public class LoadDataJob
         paramString = jdField_b_of_type_JavaLangString + paramString.substring(paramString.lastIndexOf(File.separator) + 1, paramString.lastIndexOf('_')) + "_prm";
         if (paramBoolean)
         {
-          paramBoolean = bdhb.a(paramString);
+          paramBoolean = bgmg.a(paramString);
           if (paramBoolean) {
             return paramString;
           }
@@ -1772,22 +1772,22 @@ public class LoadDataJob
     return null;
   }
   
-  public afav a(byte[] paramArrayOfByte)
+  public aghh a(byte[] paramArrayOfByte)
   {
-    afav localafav = new afav(0);
-    localafav.a(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return localafav;
+    aghh localaghh = new aghh(0);
+    localaghh.a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return localaghh;
   }
   
-  public afaw a(afax paramafax)
+  public aghi a(aghj paramaghj)
   {
-    afav localafav = new afav(102400);
-    paramafax.a(localafav, 0);
-    return localafav.a();
+    aghh localaghh = new aghh(102400);
+    paramaghj.a(localaghh, 0);
+    return localaghh.a();
   }
   
   /* Error */
-  public void a(afaj paramafaj, String paramString)
+  public void a(aggv paramaggv, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -1809,7 +1809,7 @@ public class LoadDataJob
     //   25: ifeq +4 -> 29
     //   28: return
     //   29: aload_2
-    //   30: invokestatic 190	bdhb:a	(Ljava/lang/String;)Z
+    //   30: invokestatic 190	bgmg:a	(Ljava/lang/String;)Z
     //   33: ifne -5 -> 28
     //   36: new 18	java/lang/StringBuilder
     //   39: dup
@@ -1862,7 +1862,7 @@ public class LoadDataJob
     //   137: astore 7
     //   139: aload_0
     //   140: aload_1
-    //   141: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lafax;)Lafaw;
+    //   141: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Laghj;)Laghi;
     //   144: astore_1
     //   145: aload 8
     //   147: astore_3
@@ -1874,8 +1874,8 @@ public class LoadDataJob
     //   158: astore 7
     //   160: aload 5
     //   162: aload_1
-    //   163: getfield 423	afaw:jdField_a_of_type_Int	I
-    //   166: invokestatic 426	aezw:a	(I)[B
+    //   163: getfield 423	aghi:jdField_a_of_type_Int	I
+    //   166: invokestatic 426	aggi:a	(I)[B
     //   169: invokevirtual 430	java/io/FileOutputStream:write	([B)V
     //   172: aload 8
     //   174: astore_3
@@ -1887,10 +1887,10 @@ public class LoadDataJob
     //   185: astore 7
     //   187: aload 5
     //   189: aload_1
-    //   190: getfield 433	afaw:jdField_a_of_type_ArrayOfByte	[B
+    //   190: getfield 433	aghi:jdField_a_of_type_ArrayOfByte	[B
     //   193: iconst_0
     //   194: aload_1
-    //   195: getfield 423	afaw:jdField_a_of_type_Int	I
+    //   195: getfield 423	aghi:jdField_a_of_type_Int	I
     //   198: invokevirtual 435	java/io/FileOutputStream:write	([BII)V
     //   201: aload 8
     //   203: ifnull +8 -> 211
@@ -1902,7 +1902,7 @@ public class LoadDataJob
     //   218: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   221: aload 10
     //   223: aload_2
-    //   224: invokestatic 439	bdhb:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   224: invokestatic 439	bgmg:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   227: pop
     //   228: return
     //   229: astore_1
@@ -1954,7 +1954,7 @@ public class LoadDataJob
     //   332: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   335: aload 10
     //   337: aload_2
-    //   338: invokestatic 439	bdhb:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   338: invokestatic 439	bgmg:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   341: pop
     //   342: return
     //   343: astore_1
@@ -2039,7 +2039,7 @@ public class LoadDataJob
     //   520: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   523: aload 10
     //   525: aload_2
-    //   526: invokestatic 439	bdhb:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   526: invokestatic 439	bgmg:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   529: pop
     //   530: aload_1
     //   531: athrow
@@ -2067,7 +2067,7 @@ public class LoadDataJob
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	580	0	this	LoadDataJob
-    //   0	580	1	paramafaj	afaj
+    //   0	580	1	paramaggv	aggv
     //   0	580	2	paramString	String
     //   4	506	3	localObject1	Object
     //   532	24	3	localException	Exception
@@ -2113,7 +2113,7 @@ public class LoadDataJob
   }
   
   /* Error */
-  public boolean a(List<afbe> paramList, String paramString)
+  public boolean a(List<aghq> paramList, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -2137,7 +2137,7 @@ public class LoadDataJob
     //   35: iconst_0
     //   36: ireturn
     //   37: aload_2
-    //   38: invokestatic 190	bdhb:a	(Ljava/lang/String;)Z
+    //   38: invokestatic 190	bgmg:a	(Ljava/lang/String;)Z
     //   41: ifne -6 -> 35
     //   44: new 18	java/lang/StringBuilder
     //   47: dup
@@ -2211,8 +2211,8 @@ public class LoadDataJob
     //   192: aload_0
     //   193: aload_1
     //   194: invokeinterface 287 1 0
-    //   199: checkcast 350	afbe
-    //   202: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lafax;)Lafaw;
+    //   199: checkcast 350	aghq
+    //   202: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Laghj;)Laghi;
     //   205: astore 9
     //   207: aload 6
     //   209: astore 5
@@ -2222,8 +2222,8 @@ public class LoadDataJob
     //   217: astore 8
     //   219: aload 4
     //   221: aload 9
-    //   223: getfield 423	afaw:jdField_a_of_type_Int	I
-    //   226: invokestatic 426	aezw:a	(I)[B
+    //   223: getfield 423	aghi:jdField_a_of_type_Int	I
+    //   226: invokestatic 426	aggi:a	(I)[B
     //   229: invokevirtual 430	java/io/FileOutputStream:write	([B)V
     //   232: aload 6
     //   234: astore 5
@@ -2233,10 +2233,10 @@ public class LoadDataJob
     //   242: astore 8
     //   244: aload 4
     //   246: aload 9
-    //   248: getfield 433	afaw:jdField_a_of_type_ArrayOfByte	[B
+    //   248: getfield 433	aghi:jdField_a_of_type_ArrayOfByte	[B
     //   251: iconst_0
     //   252: aload 9
-    //   254: getfield 423	afaw:jdField_a_of_type_Int	I
+    //   254: getfield 423	aghi:jdField_a_of_type_Int	I
     //   257: invokevirtual 435	java/io/FileOutputStream:write	([BII)V
     //   260: goto -101 -> 159
     //   263: astore 5
@@ -2283,7 +2283,7 @@ public class LoadDataJob
     //   355: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   358: aload 11
     //   360: aload_2
-    //   361: invokestatic 439	bdhb:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   361: invokestatic 439	bgmg:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   364: pop
     //   365: iconst_1
     //   366: istore_3
@@ -2387,7 +2387,7 @@ public class LoadDataJob
     //   591: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   594: aload 11
     //   596: aload_2
-    //   597: invokestatic 439	bdhb:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   597: invokestatic 439	bgmg:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   600: pop
     //   601: aload_1
     //   602: athrow
@@ -2434,7 +2434,7 @@ public class LoadDataJob
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	687	0	this	LoadDataJob
-    //   0	687	1	paramList	List<afbe>
+    //   0	687	1	paramList	List<aghq>
     //   0	687	2	paramString	String
     //   335	349	3	bool	boolean
     //   76	434	4	localFileOutputStream	java.io.FileOutputStream
@@ -2449,7 +2449,7 @@ public class LoadDataJob
     //   645	24	6	localObject4	Object
     //   84	572	7	localObject5	Object
     //   1	499	8	localObject6	Object
-    //   7	246	9	localafaw	afaw
+    //   7	246	9	localaghi	aghi
     //   10	96	10	localObject7	Object
     //   64	531	11	str	String
     //   95	39	12	localFileChannel	java.nio.channels.FileChannel
@@ -2505,9 +2505,9 @@ public class LoadDataJob
       ((File)localObject1).mkdirs();
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (afar localafar = (afar)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localafar = null)
+    for (aghd localaghd = (aghd)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localaghd = null)
     {
-      if (localafar == null) {
+      if (localaghd == null) {
         QLog.d("LoadDataJob", 2, "mListener == null");
       }
       label669:
@@ -2519,10 +2519,10 @@ public class LoadDataJob
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "file == null");
           }
-          localafar.a(null, 4, null, null, null);
+          localaghd.a(null, 4, null, null, null);
           return;
         }
-        if (!localafar.a(this.jdField_a_of_type_JavaLangString))
+        if (!localaghd.a(this.jdField_a_of_type_JavaLangString))
         {
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "onCheck  false");
@@ -2532,18 +2532,18 @@ public class LoadDataJob
         {
           Object localObject3 = a(this.jdField_a_of_type_JavaLangString, true);
           Object localObject2 = b(this.jdField_a_of_type_JavaLangString, true);
-          if (localafar.a(this.jdField_a_of_type_JavaLangString))
+          if (localaghd.a(this.jdField_a_of_type_JavaLangString))
           {
             Object localObject4;
             label250:
-            afbe localafbe;
+            aghq localaghq;
             if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("LoadDataJob", 2, "run  read parcel begin");
               }
-              localObject1 = a((String)localObject3, localafar);
-              if ((!localafar.a(this.jdField_a_of_type_JavaLangString)) || (localObject1 == null)) {
+              localObject1 = a((String)localObject3, localaghd);
+              if ((!localaghd.a(this.jdField_a_of_type_JavaLangString)) || (localObject1 == null)) {
                 continue;
               }
               if (localObject1 != null)
@@ -2551,10 +2551,10 @@ public class LoadDataJob
                 localObject4 = ((List)localObject1).iterator();
                 if (((Iterator)localObject4).hasNext())
                 {
-                  localafbe = (afbe)((Iterator)localObject4).next();
-                  if ((localafbe == null) || (!localafbe.a()))
+                  localaghq = (aghq)((Iterator)localObject4).next();
+                  if ((localaghq == null) || (!localaghq.a()))
                   {
-                    bdhb.d((String)localObject3);
+                    bgmg.d((String)localObject3);
                     localObject1 = null;
                     label294:
                     localObject2 = a((String)localObject2);
@@ -2567,7 +2567,7 @@ public class LoadDataJob
             }
             for (;;)
             {
-              if (!localafar.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localaghd.a(this.jdField_a_of_type_JavaLangString)) {
                 break label669;
               }
               if ((localObject1 != null) && (localObject2 != null))
@@ -2581,24 +2581,24 @@ public class LoadDataJob
                   QLog.d("LoadDataJob", 2, "run load file begin:");
                 }
                 long l1 = System.currentTimeMillis();
-                localObject2 = aezw.a(this.jdField_a_of_type_JavaLangString);
+                localObject2 = aggi.a(this.jdField_a_of_type_JavaLangString);
                 if (localObject2 == null)
                 {
-                  localafar.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
+                  localaghd.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
                   return;
-                  localafbe.a(0, 0, this.jdField_b_of_type_Int, this.c);
+                  localaghq.a(0, 0, this.jdField_b_of_type_Int, this.c);
                   break label250;
                 }
-                localObject1 = ((aezq)localObject2).a();
-                if (!localafar.a(this.jdField_a_of_type_JavaLangString)) {
+                localObject1 = ((aggc)localObject2).a();
+                if (!localaghd.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("LoadDataJob", 2, "run setpathdata ");
                 }
-                localObject4 = a(((aezq)localObject2).a(), ((aezq)localObject2).a().a());
+                localObject4 = a(((aggc)localObject2).a(), ((aggc)localObject2).a().a());
                 long l2 = System.currentTimeMillis();
-                if (!localafar.a(this.jdField_a_of_type_JavaLangString)) {
+                if (!localaghd.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
@@ -2609,7 +2609,7 @@ public class LoadDataJob
                   if (QLog.isColorLevel()) {
                     QLog.d("LoadDataJob", 2, "need cache:");
                   }
-                  ThreadManager.post(new LoadDataJob.1(this, (afaj)localObject1, (List)localObject4), 5, null, false);
+                  ThreadManager.post(new LoadDataJob.1(this, (aggv)localObject1, (List)localObject4), 5, null, false);
                 }
                 localObject2 = localObject1;
                 localObject3 = localObject4;
@@ -2620,11 +2620,11 @@ public class LoadDataJob
                   localObject2 = localObject1;
                 }
               }
-              if (!localafar.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localaghd.a(this.jdField_a_of_type_JavaLangString)) {
                 break;
               }
               localObject1 = a((List)localObject3);
-              localafar.a(this.jdField_a_of_type_JavaLangString, 0, (afaj)localObject2, (List)localObject3, (Map)localObject1);
+              localaghd.a(this.jdField_a_of_type_JavaLangString, 0, (aggv)localObject2, (List)localObject3, (Map)localObject1);
               if (!QLog.isColorLevel()) {
                 break;
               }
@@ -2642,7 +2642,7 @@ public class LoadDataJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LoadDataJob
  * JD-Core Version:    0.7.0.1
  */

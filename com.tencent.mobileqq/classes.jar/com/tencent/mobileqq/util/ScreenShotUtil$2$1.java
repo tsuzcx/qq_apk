@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bddy;
+import bgir;
 
 class ScreenShotUtil$2$1
   implements Runnable
@@ -9,12 +9,12 @@ class ScreenShotUtil$2$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bddy.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.this$0.jdField_a_of_type_Bgir.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.2.1
  * JD-Core Version:    0.7.0.1
  */

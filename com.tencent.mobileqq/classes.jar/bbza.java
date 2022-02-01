@@ -1,22 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import QQService.StreamInfo;
 
 public class bbza
-  implements View.OnClickListener
 {
-  public bbza(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  public int a;
+  public StreamInfo a;
+  public String a;
+  public short a;
+  public int b;
   
-  public void onClick(View paramView)
+  public bbza(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Short = paramShort;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbza
  * JD-Core Version:    0.7.0.1
  */

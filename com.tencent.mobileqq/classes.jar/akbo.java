@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class akbo
-  extends altm
+  extends ayes
 {
-  public akbo(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  public akbo(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean1) {
-      this.a.c();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.c();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    AvatarPendantActivity.a(this.a);
   }
 }
 

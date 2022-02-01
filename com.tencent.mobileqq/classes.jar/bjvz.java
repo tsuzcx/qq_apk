@@ -1,48 +1,32 @@
-import android.os.Handler;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
-public class bjvz
-  implements bjvy
+class bjvz
+  implements IActivityResultListener
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ConcurrentHashMap<String, bjvz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int = -1;
-  private bjvy jdField_a_of_type_Bjvy;
-  private String jdField_a_of_type_JavaLangString;
+  bjvz(bjvo parambjvo, IActivityResultManager paramIActivityResultManager, AsyncResult paramAsyncResult) {}
   
-  private bjvz(String paramString)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bjvy = bjwe.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static bjvz a(String paramString)
-  {
-    Object localObject1 = (bjvz)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        bjvz localbjvz = (bjvz)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject1 = localbjvz;
-        if (localbjvz == null)
-        {
-          localObject1 = new bjvz(paramString);
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        }
-        return localObject1;
+    boolean bool = false;
+    if (paramInt1 == 9)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+      if (paramInt2 == 0) {
+        bool = true;
       }
+      paramIntent.onReceiveResult(bool, null);
+      return true;
     }
-    return localObject1;
-  }
-  
-  public void a(Handler paramHandler)
-  {
-    this.jdField_a_of_type_Bjvy.a(paramHandler);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvz
  * JD-Core Version:    0.7.0.1
  */

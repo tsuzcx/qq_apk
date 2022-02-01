@@ -1,30 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import java.util.Comparator;
 
-public class bbkt
-  implements bfah
+class bbkt
+  implements Comparator<FTSEntity>
 {
-  public bbkt(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  bbkt(bbkr parambbkr) {}
   
-  public void a(BaseResp paramBaseResp)
+  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
+    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
+    long l1;
+    if (paramFTSEntity1 != null)
     {
-    case -1: 
-    default: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720031, 1).a();
+      l1 = paramFTSEntity1.time;
+      if (paramFTSEntity2 == null) {
+        break label54;
+      }
     }
-    for (;;)
+    label54:
+    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
     {
-      WXShareHelper.a().b(this);
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720050, 1).a();
+      return Long.signum(l2 - l1);
+      l1 = 0L;
+      break;
     }
   }
 }

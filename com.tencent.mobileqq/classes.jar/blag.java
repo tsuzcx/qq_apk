@@ -1,14 +1,23 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
+import cooperation.comic.VipComicHelper.3.1;
+import mqq.os.MqqHandler;
 
-public class blag
+public final class blag
+  implements WebBundleH5OptionListner
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
+  blag(SharedPreferences paramSharedPreferences) {}
   
-  public String toString()
+  public void enableWebBundle(boolean paramBoolean)
   {
-    return "AEMaterialWrapper{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", state=" + this.jdField_a_of_type_Int + '}';
+    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
+    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new VipComicHelper.3.1(this));
+    }
   }
 }
 

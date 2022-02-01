@@ -1,62 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-public class rcy
+class rcy
+  extends bhhe
 {
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = rcy.class.getSimpleName();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  rcy(rcx paramrcx, String paramString, RefreshData paramRefreshData, int paramInt) {}
   
-  public rcy(QQAppInterface paramQQAppInterface)
+  public void onCancel(bhhf parambhhf)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = ors.a();
-    jdField_a_of_type_Int = 0;
+    String str = parambhhf.a().getString("refreshId");
+    this.jdField_a_of_type_Rcx.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str);
+    super.onCancel(parambhhf);
   }
   
-  private int c()
+  public void onDone(bhhf parambhhf)
   {
-    int i = 0;
-    boolean bool = bkbq.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!bool) {
-      bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+    String str1 = parambhhf.a().getString("refreshId");
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes onDone task.errCode =" + parambhhf.jdField_a_of_type_Int);
     }
-    if (bool) {
-      i = ((Integer)bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    try
+    if (parambhhf.jdField_a_of_type_Int == 0)
     {
-      int i = c();
-      jdField_a_of_type_Int += 1;
-      bkbq.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+      parambhhf = new File(this.jdField_a_of_type_JavaLangString);
+      if (!parambhhf.exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        bgmg.a(parambhhf.getAbsolutePath(), rdv.a(), false);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown = true;
+        bgsg.f(this.jdField_a_of_type_Rcx.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_Rcx.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString(), this.jdField_a_of_type_Int);
+      }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
+        parambhhf.delete();
+        continue;
+      }
+      finally
+      {
+        parambhhf.delete();
+      }
+      this.jdField_a_of_type_Rcx.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str1);
       return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes failed: id = " + str2);
+      }
     }
   }
   
-  public int b()
+  public void onProgress(bhhf parambhhf)
   {
-    return c();
+    super.onProgress(parambhhf);
+  }
+  
+  public boolean onStart(bhhf parambhhf)
+  {
+    return super.onStart(parambhhf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rcy
  * JD-Core Version:    0.7.0.1
  */

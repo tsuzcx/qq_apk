@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class oib
-  implements View.OnClickListener
+  implements bkhy
 {
-  public oib(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public oib(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
-    {
-      this.a.d(ReadInJoyDeliverBiuActivity.n(this.a));
-      return;
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
     }
-    this.a.finish();
-    nrt.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oib
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,55 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
-class bboq
-  implements ValueAnimator.AnimatorUpdateListener
+public class bboq
+  extends bbor
 {
-  bboq(bbon parambbon, bbmz parambbmz) {}
+  String a = null;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bbmx a(aitt paramaitt, List<bbmy> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f = 1.0F * (100 - i) / 100.0F;
-    this.jdField_a_of_type_Bbmz.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
-    f = this.jdField_a_of_type_Bbmz.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
-    this.jdField_a_of_type_Bbmz.jdField_b_of_type_AndroidViewView.setTranslationY(f);
-    f = i * -180.0F / 100.0F;
-    this.jdField_a_of_type_Bbmz.c.setRotation(f);
+    bbly localbbly;
+    if (paramList != null)
+    {
+      localbbly = (bbly)paramList.get(0);
+      if ((localbbly != null) && (localbbly.a() != null))
+      {
+        String str = localbbly.a().hotword.get();
+        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localbbly.a(), str, String.valueOf(localbbly.a().hotword_type.get()), "");
+      }
+      if ((localbbly == null) || (localbbly.a() == null)) {
+        break label166;
+      }
+    }
+    for (;;)
+    {
+      if ((localbbly != null) && (localbbly.a() != null)) {
+        oat.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localbbly.a().account_id.get()));
+      }
+      bbuo.a(110);
+      this.a = paramString2;
+      return new bblx(paramaitt, paramList, paramString1, paramString2);
+      label166:
+      if (paramList.size() > 1) {
+        localbbly = (bbly)paramList.get(1);
+      } else {
+        localbbly = null;
+      }
+    }
+  }
+  
+  bbmy a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  {
+    return new bbly(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
+  }
+  
+  bbmy a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new bbly(paramrecord, paramString, paramCharSequence);
   }
 }
 

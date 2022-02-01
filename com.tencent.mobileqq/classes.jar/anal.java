@@ -1,6 +1,6 @@
 public abstract interface anal
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -1,56 +1,151 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class asjw
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private bkfv jdField_a_of_type_Bkfv = new bkfv(ThreadManager.getFileThreadLooper(), this);
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  WeakReference<asjx> b;
   
-  public String a()
+  public asjw(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
+    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
+  }
+  
+  private void b()
+  {
+    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {}
+    do
+    {
+      return;
+      ??? = bgmg.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((QQAppInterface)???).getCurrentAccountUin() }));
+    } while (this.jdField_a_of_type_Boolean);
+    if ((??? != null) && ((??? instanceof List))) {}
+    for (??? = (List)???;; ??? = null)
+    {
+      Object localObject2 = ???;
+      if (??? == null) {
+        localObject2 = new ArrayList();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          break label201;
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+      }
+      this.jdField_a_of_type_Boolean = true;
+      label201:
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
+          break;
+        }
+        ((asjx)this.b.get()).b();
+        return;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    bgmg.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a()
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.f = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.d = "";
-    this.e = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.b != null) && (this.b.get() != null)) {
+        ((asjx)this.b.get()).b();
+      }
+      if (!this.jdField_a_of_type_Bkfv.hasMessages(0)) {
+        this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(0, 300L);
+      }
+      return;
+    }
+  }
+  
+  public void a(asjx paramasjx)
+  {
+    if (paramasjx != null)
+    {
+      this.b = new WeakReference(paramasjx);
+      return;
+    }
+    this.b = null;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        b();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+        if ((this.b != null) && (this.b.get() != null)) {
+          ((asjx)this.b.get()).b();
+        }
+        if (this.jdField_a_of_type_Bkfv.hasMessages(0)) {
+          continue;
+        }
+        this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(0, 300L);
+        return;
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bdhb.b(this.jdField_c_of_type_JavaLangString));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+    }
   }
 }
 

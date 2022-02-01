@@ -1,20 +1,22 @@
-import java.nio.ByteBuffer;
+import android.opengl.GLES20;
 
 public class lqx
+  extends lqy
 {
-  public int a;
-  public ByteBuffer a;
-  public boolean a;
-  
-  public lqx(ByteBuffer paramByteBuffer, int paramInt)
+  public lqx(String paramString)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lrz.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lqx
  * JD-Core Version:    0.7.0.1
  */

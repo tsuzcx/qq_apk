@@ -1,31 +1,30 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mdl
-  extends becx
+  implements View.OnTouchListener
 {
-  public mdl(AVActivity paramAVActivity) {}
+  public mdl(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
+    switch (paramMotionEvent.getAction())
+    {
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdl
  * JD-Core Version:    0.7.0.1
  */

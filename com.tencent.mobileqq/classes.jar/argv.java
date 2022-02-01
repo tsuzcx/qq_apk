@@ -1,48 +1,28 @@
-import android.os.Message;
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
-public final class argv
-  implements Debugger.IDebugCallback
+public class argv
+  implements ThreadExcutor.IThreadListener
 {
-  private final WeakReference<TdsDebugView> a;
+  public argv(FeedsManager paramFeedsManager) {}
   
-  private argv(TdsDebugView paramTdsDebugView)
-  {
-    this.a = new WeakReference(paramTdsDebugView);
-  }
+  public void onAdded() {}
   
-  public void onCleanCache(String paramString, int paramInt)
+  public void onPostRun()
   {
-    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
+    {
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
     }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
   }
   
-  public void onCleanPlugin(String paramString, int paramInt)
-  {
-    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
-  }
-  
-  public void onUpgradePlugin(String paramString, int paramInt)
-  {
-    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
-  }
+  public void onPreRun() {}
 }
 
 

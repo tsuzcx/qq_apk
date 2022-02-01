@@ -1,30 +1,57 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class weh
-  implements bhuk
+class weh
+  extends RecyclerView.OnScrollListener
 {
-  public weh(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, bhuf parambhuf) {}
+  private long jdField_a_of_type_Long;
+  private final long b = 20L;
   
-  public void OnClick(View paramView, int paramInt)
+  weh(wef paramwef) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (xsm.b()) {}
-    do
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 1) && (wef.b(this.jdField_a_of_type_Wef)))
     {
+      yqp.b("FredguoFix", "set needAnimated to false, break animation");
+      wef.a(this.jdField_a_of_type_Wef).a(wef.a(this.jdField_a_of_type_Wef));
+      wef.b(this.jdField_a_of_type_Wef, false);
+      wef.a(this.jdField_a_of_type_Wef, false);
+    }
+    if (paramInt == 0)
+    {
+      wef.d(this.jdField_a_of_type_Wef, false);
+      this.jdField_a_of_type_Long = 0L;
+      if (wef.a(this.jdField_a_of_type_Wef).a(paramRecyclerView.getLayoutManager()) == null) {
+        return;
+      }
+      if (wef.c(this.jdField_a_of_type_Wef))
+      {
+        yqp.b("FredguoFix", "animated to false, play animation done");
+        wef.a(this.jdField_a_of_type_Wef, false);
+        wef.a(this.jdField_a_of_type_Wef).a(wef.a(this.jdField_a_of_type_Wef));
+      }
+      this.jdField_a_of_type_Wef.d();
       return;
-      this.jdField_a_of_type_Bhuf.e();
-      paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
-    } while (!alud.a(2131711434).equals(paramView));
-    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-    bcpx.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+    }
+    wef.d(this.jdField_a_of_type_Wef, true);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) >= 20L)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Wef.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     weh
  * JD-Core Version:    0.7.0.1
  */

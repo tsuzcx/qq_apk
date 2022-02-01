@@ -1,22 +1,16 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class akbg
-  extends akit
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public Button a;
-  public CheckBox a;
-  public TextView a;
-  public TroopMemberInfo a;
-  public View b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public akbg(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcst.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+  }
 }
 
 

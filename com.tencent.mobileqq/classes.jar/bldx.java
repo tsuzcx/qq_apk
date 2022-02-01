@@ -1,16 +1,31 @@
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveLaunchFragment;
+import java.util.HashMap;
+
 class bldx
-  implements blee
+  implements SDKInitListener
 {
-  bldx(blds paramblds) {}
+  bldx(bldw parambldw) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if (blds.a(this.a))
+    blet.b("IliveLaunch initSDKAsync");
+    HashMap localHashMap = new HashMap();
+    if (azwq.b()) {}
+    for (String str = "sucess";; str = "error")
     {
-      blds.a(this.a, paramBoolean1, paramBoolean2);
+      localHashMap.put("status_msg", str);
+      localHashMap.put("isDebug", "0");
+      bhak.a("live_player_load", localHashMap, System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK status = " + azwq.b());
+      IliveLaunchFragment.access$202(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment, azwq.b());
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK onSDKInited = " + paramBoolean);
+      if (!IliveLaunchFragment.access$200(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment)) {
+        this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+      }
       return;
     }
-    blds.b(this.a, paramBoolean1, paramBoolean2);
   }
 }
 

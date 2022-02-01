@@ -1,6 +1,17 @@
-public abstract interface benk
+import android.view.View;
+
+class benk
+  implements bkhw
 {
-  public abstract void a();
+  benk(beng parambeng) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    beng.a(this.a);
+    if (paramInt == 0) {
+      beng.a(this.a, "");
+    }
+  }
 }
 
 

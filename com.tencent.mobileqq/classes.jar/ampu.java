@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public final class ampu
-  implements Parcelable.Creator<SosoInterface.SosoAttribute>
+class ampu
+  implements MediaPlayer.OnCompletionListener
 {
-  public SosoInterface.SosoAttribute a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoAttribute(paramParcel);
-  }
+  ampu(ampr paramampr) {}
   
-  public SosoInterface.SosoAttribute[] a(int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return new SosoInterface.SosoAttribute[paramInt];
+    this.a.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampu
  * JD-Core Version:    0.7.0.1
  */

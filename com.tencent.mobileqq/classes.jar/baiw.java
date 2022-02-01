@@ -1,33 +1,39 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class baiw
-  implements bhuk
 {
-  public baiw(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bhuf parambhuf) {}
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  public void OnClick(View paramView, int paramInt)
+  public baiw(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    try
     {
-      paramInt = -1;
-      switch (paramInt)
+      paramString = aqkp.a(paramString, "troop_member_list_config");
+      if (paramString != null)
       {
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
+        }
       }
-    }
-    for (;;)
-    {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Bhuf.isShowing()) {
-        this.jdField_a_of_type_Bhuf.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
       }
       return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

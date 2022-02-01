@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
+import arov;
 
 public class QFlutterAppData
   extends XmlData
 {
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String assetResMD5 = "";
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String libAppSoMD5 = "";
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String libSkinSoMD5 = "";
   
   public String getSharedPreferencesName()
@@ -19,12 +19,12 @@ public class QFlutterAppData
   
   public String getStrResName()
   {
-    return "qq.android.flutter.app.v8.3.3";
+    return "qq.android.flutter.app.v8.3.9";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData
  * JD-Core Version:    0.7.0.1
  */

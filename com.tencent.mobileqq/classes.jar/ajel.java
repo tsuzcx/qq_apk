@@ -1,55 +1,72 @@
-import VACDReport.ReportReq;
-import VACDReport.ReportRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ajel
-  extends MSFServlet
+  implements bics
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "onReceive request or response is null");
-      }
-    }
-    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
-    {
-      Bundle localBundle = new Bundle();
-      if (localReportRsp != null) {
-        localBundle.putSerializable("rsp", localReportRsp);
-      }
-      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
-      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-    }
-  }
+  public ajel(TroopActivity paramTroopActivity) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    switch (paramIntent.getExtras().getInt("cmd_type"))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
+    }
+    if (this.a.b != 2)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        bcst.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      for (;;)
+      {
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_Bkfv.sendEmptyMessage(1234);
+        TroopActivity.a(this.a, paramInt2);
+        return;
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        bcst.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        continue;
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        bcst.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+      }
+    }
+    switch (paramInt2)
     {
     default: 
-      return;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+        break;
+      }
     }
-    try
+    for (String str = "0";; str = "1")
     {
-      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
-      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
-      paramPacket.setFuncName("vacdReportProxy");
-      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
-      paramPacket.setTimeout(15000L);
-      return;
+      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 1;
+      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        break;
+      }
     }
-    catch (OutOfMemoryError paramIntent) {}
   }
 }
 

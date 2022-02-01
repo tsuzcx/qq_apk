@@ -1,94 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.widget.AbsListView.LayoutParams;
-
 public class bnao
-  extends bnar
 {
-  private final int b;
-  private boolean d;
-  private boolean e;
+  private static int a;
+  private static int b;
+  private static int c;
+  private static int d;
   
-  public bnao(Context paramContext, int paramInt)
+  public static int a()
   {
-    super(paramContext, "", "", -1);
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = 0;
-    }
-    this.b = i;
+    a();
+    return a;
   }
   
-  public int a()
+  private static void a()
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new RelativeLayout(this.a);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundColor(Color.parseColor("#F7F7F9"));
-    View localView = new View(this.a);
-    Object localObject = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(10);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localView.setBackgroundColor(Color.parseColor("#DEDFE0"));
-    localObject = new View(this.a);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
-    localLayoutParams.addRule(12);
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    ((View)localObject).setBackgroundColor(Color.parseColor("#DEDFE0"));
-    if (QQStoryContext.a())
+    String[] arrayOfString;
+    if (c == 0)
     {
-      paramViewGroup.setBackgroundColor(this.a.getResources().getColor(2131166398));
-      ((View)localObject).setBackgroundColor(this.a.getResources().getColor(2131166398));
-      localView.setBackgroundColor(this.a.getResources().getColor(2131166398));
+      arrayOfString = bdxz.a().split("\\.");
+      if (arrayOfString.length >= 4) {}
     }
-    paramViewGroup.addView(localView);
-    paramViewGroup.addView((View)localObject);
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView)
-  {
-    View localView = ((ViewGroup)paramView).getChildAt(0);
-    paramView = ((ViewGroup)paramView).getChildAt(1);
-    if (this.d) {
-      localView.setVisibility(0);
-    }
-    while (this.e)
+    else
     {
-      paramView.setVisibility(0);
       return;
-      localView.setVisibility(4);
     }
-    paramView.setVisibility(4);
+    try
+    {
+      a = Integer.valueOf(arrayOfString[0]).intValue();
+      b = Integer.valueOf(arrayOfString[1]).intValue();
+      d = Integer.valueOf(arrayOfString[2]).intValue();
+      c = Integer.valueOf(arrayOfString[3]).intValue();
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public static int b()
   {
-    this.d = paramBoolean1;
-    this.e = paramBoolean2;
+    a();
+    return b;
   }
   
-  public void b(boolean paramBoolean) {}
+  public static int c()
+  {
+    a();
+    return c;
+  }
+  
+  public static int d()
+  {
+    a();
+    return d;
+  }
 }
 
 

@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-final class aepk
-  implements beei
+public class aepk
+  implements DialogInterface.OnDismissListener
 {
-  public void a(boolean paramBoolean)
+  public aepk(MainFragment paramMainFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      aeoy.a();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

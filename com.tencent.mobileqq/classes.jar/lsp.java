@@ -1,51 +1,47 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class lsp
 {
-  public static void a(boolean paramBoolean)
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  public int b;
+  public int c = 7000;
+  public int d = 1000;
+  public int e = 0;
+  
+  public void a(String paramString)
   {
-    VideoController.a().k(paramBoolean);
-    if (VideoController.a().j() == VideoController.r)
+    try
     {
-      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
-      lvz.a();
+      paramString = new JSONObject(paramString).optJSONObject("result");
+      this.jdField_a_of_type_Int = paramString.optInt("rsptype", 0);
+      this.b = paramString.optInt("retcode", -1);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("errmsg");
+      this.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("rspbody");
+      paramString = paramString.optString("remain");
+      try
+      {
+        this.e = Integer.valueOf(paramString).intValue();
+        return;
+      }
+      catch (NumberFormatException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      return;
     }
-  }
-  
-  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
-  {
-    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
-    do
+    catch (Exception paramString)
     {
-      return true;
-      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
-        break;
-      }
-    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
-    return false;
-    return false;
-  }
-  
-  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
-  {
-    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
-        break;
-      }
-    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
-    return false;
-    return false;
+      this.b = 14;
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsp
  * JD-Core Version:    0.7.0.1
  */

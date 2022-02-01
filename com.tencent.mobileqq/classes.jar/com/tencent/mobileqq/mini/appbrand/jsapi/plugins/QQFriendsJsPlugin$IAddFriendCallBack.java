@@ -6,7 +6,7 @@ public abstract interface QQFriendsJsPlugin$IAddFriendCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.QQFriendsJsPlugin.IAddFriendCallBack
  * JD-Core Version:    0.7.0.1
  */

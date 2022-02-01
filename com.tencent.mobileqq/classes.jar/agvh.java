@@ -1,33 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class agvh
-  implements View.OnClickListener
+  implements bkhy
 {
-  agvh(agvf paramagvf) {}
+  agvh(agvg paramagvg) {}
   
-  public void onClick(View paramView)
-  {
-    aepi.n = true;
-    int i;
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
-  }
+  public void onDismiss() {}
 }
 
 

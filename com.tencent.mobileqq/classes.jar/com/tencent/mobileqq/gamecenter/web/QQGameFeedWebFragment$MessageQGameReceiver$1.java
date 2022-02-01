@@ -1,21 +1,31 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import asoz;
+import auvw;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.util.ArrayList;
 
 public class QQGameFeedWebFragment$MessageQGameReceiver$1
   implements Runnable
 {
-  public QQGameFeedWebFragment$MessageQGameReceiver$1(asoz paramasoz, ArrayList paramArrayList) {}
+  public QQGameFeedWebFragment$MessageQGameReceiver$1(auvw paramauvw, ArrayList paramArrayList) {}
   
   public void run()
   {
-    QQGameFeedWebFragment.a(this.jdField_a_of_type_Asoz.a, this.jdField_a_of_type_JavaUtilArrayList);
+    try
+    {
+      QQGameFeedWebFragment.a(this.jdField_a_of_type_Auvw.a, this.jdField_a_of_type_JavaUtilArrayList);
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "clearUnreadMsg", null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1
  * JD-Core Version:    0.7.0.1
  */

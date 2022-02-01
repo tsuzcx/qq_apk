@@ -1,118 +1,77 @@
-import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
-import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lko
-  implements CameraInterFace
+class lko
+  extends BroadcastReceiver
 {
-  private static volatile lko jdField_a_of_type_Lko;
-  private volatile int jdField_a_of_type_Int = -1;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  lko(lkn paramlkn) {}
   
-  public static lko a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Lko == null) {}
-    try
+    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
     {
-      if (jdField_a_of_type_Lko == null) {
-        jdField_a_of_type_Lko = new lko();
+      if (QLog.isColorLevel()) {
+        QLog.d(lkn.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
       }
-      return jdField_a_of_type_Lko;
+      paramContext = paramIntent.getBundleExtra("msgData");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getByteArray("value");
+        if (paramContext != null) {
+          this.a.jdField_a_of_type_Lkm.a(0L, paramContext, null);
+        }
+      }
     }
-    finally {}
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
-  }
-  
-  public void a(SensorEventListener paramSensorEventListener)
-  {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
-    Sensor localSensor;
+    label154:
+    int i;
     do
     {
-      return;
-      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
-    } while (localSensor == null);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
-  }
-  
-  public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
-  {
-    if (paramCameraChangedCallBack == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    b(paramBoolean);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
-    do
-    {
-      return;
-      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localCameraChangedCallBack == null);
-    localCameraChangedCallBack.onCameraChanged(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(SensorEventListener paramSensorEventListener)
-  {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int getCameraID()
-  {
-    return this.jdField_a_of_type_Int;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
+                  break label154;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(lkn.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
+                }
+                if (!paramIntent.getBooleanExtra("timeout", false)) {
+                  break;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.d(lkn.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
+              return;
+              paramContext = paramIntent.getBundleExtra("msgData");
+            } while (paramContext == null);
+            paramContext = paramContext.getByteArray("value");
+          } while (paramContext == null);
+          this.a.jdField_a_of_type_Lkm.b(0L, paramContext, null);
+          return;
+        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("deviceoprstcode");
+      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
+    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lko
  * JD-Core Version:    0.7.0.1
  */

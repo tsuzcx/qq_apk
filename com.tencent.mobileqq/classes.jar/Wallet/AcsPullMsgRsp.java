@@ -13,6 +13,7 @@ public final class AcsPullMsgRsp
   public String err_str = "";
   public ArrayList<AcsMsg> msgs;
   public int ret_code;
+  public String sub_url = "";
   
   static
   {
@@ -22,12 +23,13 @@ public final class AcsPullMsgRsp
   
   public AcsPullMsgRsp() {}
   
-  public AcsPullMsgRsp(int paramInt, String paramString1, ArrayList<AcsMsg> paramArrayList, String paramString2)
+  public AcsPullMsgRsp(int paramInt, String paramString1, ArrayList<AcsMsg> paramArrayList, String paramString2, String paramString3)
   {
     this.ret_code = paramInt;
     this.err_str = paramString1;
     this.msgs = paramArrayList;
     this.all_url = paramString2;
+    this.sub_url = paramString3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -36,6 +38,7 @@ public final class AcsPullMsgRsp
     this.err_str = paramJceInputStream.readString(1, false);
     this.msgs = ((ArrayList)paramJceInputStream.read(cache_msgs, 2, false));
     this.all_url = paramJceInputStream.readString(3, false);
+    this.sub_url = paramJceInputStream.readString(4, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -49,6 +52,9 @@ public final class AcsPullMsgRsp
     }
     if (this.all_url != null) {
       paramJceOutputStream.write(this.all_url, 3);
+    }
+    if (this.sub_url != null) {
+      paramJceOutputStream.write(this.sub_url, 4);
     }
   }
 }

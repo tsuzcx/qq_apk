@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bejc;
+import bhqg;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class SwiftBrowserTBSHandler$6
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$6(bejc parambejc) {}
+  public SwiftBrowserTBSHandler$6(bhqg parambhqg) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class SwiftBrowserTBSHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.6
  * JD-Core Version:    0.7.0.1
  */

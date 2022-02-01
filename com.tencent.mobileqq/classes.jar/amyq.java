@@ -1,45 +1,60 @@
-import java.util.HashMap;
+import android.util.SparseArray;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
-public class amyq
+class amyq
+  implements amjp
 {
-  private static int a;
-  public static String a;
-  public static HashMap<String, amxy> a;
-  private static int b;
-  public static String b;
-  public static String c;
-  public static String d;
+  amyq(amyl paramamyl, int paramInt, int[] paramArrayOfInt, List paramList, AppInterface paramAppInterface, JSONArray paramJSONArray, String paramString) {}
   
-  static
+  public void a(boolean paramBoolean, amjo paramamjo)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Int = 5;
-    jdField_b_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    d = "";
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new amxy(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new amxy(2147483647));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    c = paramString3;
-    d = paramString4;
+    amyl.a(this.jdField_a_of_type_Amyl).remove(this.jdField_a_of_type_Int);
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc onCheckFinish success:" + paramBoolean);
+    if (paramBoolean)
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        paramamjo = amjg.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+        if (paramamjo != null) {
+          this.jdField_a_of_type_JavaUtilList.add(paramamjo);
+        }
+        i += 1;
+      }
+      amji.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new amyr(this), this.jdField_a_of_type_JavaUtilList, false, null);
+      return;
+    }
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      paramamjo = amjg.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramamjo != null)
+      {
+        amyl localamyl = this.jdField_a_of_type_Amyl;
+        int k = paramamjo.b;
+        if (paramamjo.a())
+        {
+          j = 0;
+          label167:
+          paramamjo = amyl.a(localamyl, 8, String.valueOf(k), j);
+          this.jdField_a_of_type_OrgJsonJSONArray.put(paramamjo);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label167;
+        paramamjo = amyl.a(this.jdField_a_of_type_Amyl, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramamjo);
+      }
+    }
+    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, anni.a(2131699307), this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

@@ -1,41 +1,39 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class aebd
-  extends avvk
+  implements azxf
 {
-  public aebd(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  private WeakReference<BaseActivity> a;
+  private WeakReference<TextView> b;
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public aebd(WeakReference<BaseActivity> paramWeakReference, WeakReference<TextView> paramWeakReference1)
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+    if ((paramWeakReference == null) || (paramWeakReference1 == null)) {
       return;
     }
-    String str2 = this.a.getResources().getString(2131699624);
-    String str1 = str2;
-    if (paramTranslateResult != null)
+    this.a = paramWeakReference;
+    this.b = paramWeakReference1;
+  }
+  
+  private boolean a()
+  {
+    if ((this.a == null) || (this.b == null) || (this.a.get() == null) || (this.b.get() == null))
     {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
-      }
-      str1 = paramTranslateResult.e;
+      QLog.e("DevlockQuickLoginActivity", 1, "sanityCheckPCVerifyWrong(): params empty");
+      return true;
     }
-    for (;;)
-    {
-      QQToast.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131699603);
-      }
-    }
+    return false;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.1(this, paramBoolean));
   }
 }
 

@@ -1,6 +1,57 @@
-// INTERNAL ERROR //
+import android.os.Handler;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class nah
+  extends mwx
+{
+  nah(nag paramnag) {}
+  
+  public void a()
+  {
+    int i = leo.b();
+    if (mxl.a().a()) {
+      this.a.a.sendEmptyMessageDelayed(8, 0L);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "onEnterRoomSucess, curNetType[" + i + "]");
+      }
+      return;
+      this.a.a.sendEmptyMessageDelayed(8, 3000L);
+      this.a.a.sendEmptyMessageDelayed(9, 6000L);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    nag.a(this.a);
+  }
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    nag.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 1, "onMemberVideoInOrOut userUin:" + paramLong + "  videoIn:" + paramBoolean + "  videoSrcType:" + paramInt);
+    }
+    this.a.a.sendEmptyMessage(2);
+    nag.a(this.a);
+    this.a.a(250);
+  }
+  
+  public void b(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    this.a.a(250);
+  }
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nah
  * JD-Core Version:    0.7.0.1
  */

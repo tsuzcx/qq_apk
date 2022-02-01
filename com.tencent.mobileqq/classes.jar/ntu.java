@@ -1,33 +1,26 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
 
 public class ntu
-  extends alzr
+  implements obd<OACProfilePb.ProfileDataRsp>
 {
-  public ntu(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public ntu(AccountSettingFragment paramAccountSettingFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (paramBoolean)
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701651));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
+      AccountSettingFragment.a(this.a, new AccountDetail(paramProfileDataRsp));
+      AccountSettingFragment.a(this.a, AccountSettingFragment.a(this.a));
+      AccountSettingFragment.b(this.a);
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701630));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846638);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntu
  * JD-Core Version:    0.7.0.1
  */

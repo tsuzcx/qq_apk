@@ -1,47 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class assq
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public assq(HiBoomTextView paramHiBoomTextView) {}
+  public assq(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Assw != null)
-    {
-      this.a.jdField_a_of_type_Assw.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    assa localassa = asry.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Asrz);
-    if (this.a.b())
-    {
-      localassa.a(true);
-      this.a.invalidate();
-      return true;
-    }
-    if (HiBoomTextView.a(this.a)) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return super.onSingleTapConfirmed(paramMotionEvent);
-      if (localassa.jdField_a_of_type_Int == 3)
-      {
-        this.a.a(true);
-      }
-      else if (localassa.jdField_a_of_type_Int == 4)
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, localIntent);
+    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

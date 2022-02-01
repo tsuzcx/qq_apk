@@ -1,26 +1,69 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class arak
-  extends BroadcastReceiver
+  extends aqkz<arah>
 {
-  public arak(UniformDownloadMgr.1 param1) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static arah a()
   {
-    if (paramIntent == null) {
-      return;
+    return (arah)aqlk.a().a(383);
+  }
+  
+  @NonNull
+  public arah a(int paramInt)
+  {
+    return new arah();
+  }
+  
+  @Nullable
+  public arah a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arah.a(paramArrayOfaqlg);
     }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    araj.a().a(paramIntent, paramContext);
+    return null;
+  }
+  
+  public void a(arah paramarah)
+  {
+    if ((paramarah != null) && (!TextUtils.isEmpty(paramarah.b()))) {
+      ((bdks)BaseApplicationImpl.getApplication().getRuntime().getManager(305)).a(paramarah);
+    }
+  }
+  
+  public Class<arah> clazz()
+  {
+    return arah.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 383;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arak
  * JD-Core Version:    0.7.0.1
  */

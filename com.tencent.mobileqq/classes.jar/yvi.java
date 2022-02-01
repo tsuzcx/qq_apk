@@ -1,15 +1,13 @@
-import android.view.View;
-import android.widget.TextView;
-
-public class yvi
+public abstract interface yvi
+  extends ytx
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  public abstract zhp a(int paramInt);
+  
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvi
  * JD-Core Version:    0.7.0.1
  */

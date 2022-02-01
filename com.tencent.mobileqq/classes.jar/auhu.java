@@ -1,30 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class auhu
-  implements View.OnClickListener
+class auhu
+  extends niv
 {
-  public auhu(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  auhu(auhq paramauhq) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (MsgBackupDateFragment.a(this.a) == 0) {
-      aujo.a("0X800A237");
-    }
-    for (;;)
+    QLog.d(auhq.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(auhq.a(this.a)) });
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.a();
+      aukw.a("KEY_STAGE_2_NORMAL_DC2", bool);
+      if (!auhq.a(this.a)) {
+        break;
+      }
       return;
-      if (augo.c) {
-        aujo.a("0X800A25C");
+    }
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(auhq.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(auhq.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+      }
+      if ((l == -1L) || (l != auhq.a(this.a)))
+      {
+        auhq.a(this.a);
+        return;
       }
     }
+    bcst.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
+    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.e(auhq.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+      auhq.a(this.a);
+      return;
+    }
+    auhq.a(this.a, paramArrayOfByte);
+    ForwardUtils.a(auhq.a(this.a), paramArrayOfByte, auhq.a(this.a), auhq.a(this.a).getString("share_comment_message_for_server"));
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(auhq.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhu
  * JD-Core Version:    0.7.0.1
  */

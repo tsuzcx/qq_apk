@@ -1,261 +1,197 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.util.NearbyProfileUtil.2;
-import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.hlyyb.HalleyAgent;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
+import com.tencent.hlyyb.downloader.DownloaderTaskStatus;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class bdda
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public static final String[] d;
-  public static final String[] e;
+  public static bdda a;
+  private int jdField_a_of_type_Int;
+  private bdcx jdField_a_of_type_Bdcx;
+  private bdcz jdField_a_of_type_Bdcz = new bddb(this);
+  private Downloader jdField_a_of_type_ComTencentHlyybDownloaderDownloader;
+  private HashMap<String, bdcy> jdField_a_of_type_JavaUtilHashMap;
+  Map<String, bddc> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845128, 2130845136 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
-    c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-    d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
-    e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130845485, 2130844525, 2130844525, 2130844525, 2130845244, 2130845244, 2130845502, 2130845502, 2130845026, 2130845026, 2130845026, 2130845485, 2130845485, 2130845305, 2130845485 };
+    jdField_a_of_type_Bdda = new bdda();
   }
   
-  public static final int a(int paramInt)
+  private DownloaderTask a(String paramString)
   {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfInt[paramInt];
+    Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
+    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {
+      return null;
     }
-    return 0;
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+      if (localDownloaderTask.getUrl().equals(paramString))
+      {
+        QLog.i("DownloadManager_Now_for_qq", 4, "isHalleyTaskAlreadyExist:YES");
+        return localDownloaderTask;
+      }
+    }
+    return null;
   }
   
-  public static final int a(byte[] paramArrayOfByte)
+  private void a(String paramString)
   {
-    int j = 0;
-    int i = j;
-    flower_info.SFlowerInfoRsp localSFlowerInfoRsp;
-    if (paramArrayOfByte != null) {
-      localSFlowerInfoRsp = new flower_info.SFlowerInfoRsp();
-    }
     try
     {
-      localSFlowerInfoRsp.mergeFrom(paramArrayOfByte);
-      i = j;
-      if (localSFlowerInfoRsp.num.has()) {
-        i = localSFlowerInfoRsp.num.get();
+      QLog.d("DownloadManager_Now_for_qq", 1, String.format("removeNowDownloadTask taskUrl=%s", new Object[] { paramString }));
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+      {
+        paramString = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        while (paramString.hasNext())
+        {
+          bddc localbddc = (bddc)((Map.Entry)paramString.next()).getValue();
+          if (localbddc != null)
+          {
+            QLog.d("DownloadManager_Now_for_qq", 1, String.format("removeNowDownloadTask next task url=%s", new Object[] { localbddc.b }));
+            a(localbddc);
+          }
+        }
       }
-      return i;
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    finally {}
+  }
+  
+  private void b(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setProgressInterval(1000);
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setTaskNumForCategory(DownloaderTaskCategory.Cate_CustomMass1, 3);
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.enableUserAction(true);
+    UserAction.initUserAction(paramContext);
+  }
+  
+  private void b(bddc parambddc)
+  {
+    DownloaderTask localDownloaderTask = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.createNewTask(parambddc.b, parambddc.g, parambddc.h, this.jdField_a_of_type_Bdcx);
+    localDownloaderTask.setCategory(DownloaderTaskCategory.Cate_CustomMass1);
+    localDownloaderTask.setAppScene(parambddc.d);
+    if (!TextUtils.isEmpty(parambddc.e)) {
+      localDownloaderTask.setApkId(parambddc.e);
+    }
+    localDownloaderTask.setNotUseTempFile();
+    parambddc.a(localDownloaderTask);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    HalleyAgent.init(paramContext, "1", "now_for_qq");
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader = HalleyAgent.getDownloader();
+    b(paramContext);
+    this.jdField_a_of_type_Bdcx = new bdcx(this.jdField_a_of_type_Bdcz);
+  }
+  
+  public void a(bddc parambddc)
+  {
+    if (this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader == null) {}
+    String str;
+    do
     {
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        return;
+        DownloaderTask localDownloaderTask = a(parambddc.b);
+        try
+        {
+          str = parambddc.b;
+          if (!TextUtils.isEmpty(str)) {
+            break label134;
+          }
+          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload, wurl:" + str + "wrong status or parammter");
+          if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)))
+          {
+            ((bdcy)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a(-1000, -1, "url is invalid");
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload---exception happend:", localException);
+        }
       }
-    }
-  }
-  
-  private static final long a()
-  {
-    return 0L | 0x4 | 0x800 | 0x1000 | 0x8000;
-  }
-  
-  public static final String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-      return jdField_b_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return "";
-  }
-  
-  public static final void a(auxh paramauxh, QQAppInterface paramQQAppInterface, long paramLong1, String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2, long paramLong4, int paramInt2)
-  {
-    if (paramLong1 > 0L)
+    } while (this.jdField_a_of_type_Int >= 3);
+    this.jdField_a_of_type_Int += 1;
+    a(parambddc);
+    return;
+    label134:
+    if ((localException == null) || (!str.equals(localException.getUrl())))
     {
-      if (ProfileActivity.d(paramInt1))
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 45, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (ProfileActivity.b(paramInt1))
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 39, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 16)
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 46, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 38)
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 47, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 100)
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 49, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 51)
-      {
-        paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 51, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), "0", 41, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload: url is changed, thread = " + Thread.currentThread().getId() + "," + str + "path = " + parambddc.h);
+      if (localException != null) {}
+      b(parambddc);
+      this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.addNewTask(parambddc.a());
+      QLog.i("DownloadManager_Now_for_qq", 4, "mHellyDownloader.addNewTask");
       return;
     }
-    if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
+    parambddc.a(localException);
+    DownloaderTaskStatus localDownloaderTaskStatus = localException.getStatus();
+    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----hstatus:" + localDownloaderTaskStatus);
+    if (localDownloaderTaskStatus == DownloaderTaskStatus.COMPLETE)
     {
-      paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentAccountUin(), 0, 0L, (byte)0, 0L, 0L, null, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+        ((bdcy)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
+      }
+      a(localException.getUrl(), false);
       return;
     }
-    int i = 6;
-    if (ProfileActivity.c(paramInt1)) {
-      i = 42;
-    }
-    for (;;)
+    if (localDownloaderTaskStatus == DownloaderTaskStatus.DOWNLOADING)
     {
-      paramauxh.a(paramQQAppInterface.getCurrentAccountUin(), paramString, i, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-      return;
-      if (ProfileActivity.d(paramInt1)) {
-        i = 45;
-      } else if (ProfileActivity.b(paramInt1)) {
-        i = 39;
-      } else if (paramInt1 == 16) {
-        i = 46;
-      } else if (paramInt1 == 38) {
-        i = 47;
-      } else if (paramInt1 == 51) {
-        i = 51;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
+      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----Task is already Downloading!");
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_is_nearby_people_card", true);
-    localBundle.putShort("key_new_profile_modified_flag", (short)1);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
+    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----resume halley task");
+    localException.resume();
+  }
+  
+  public void a(String paramString, bdcy parambdcy)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, parambdcy);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
+    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {}
+    DownloaderTask localDownloaderTask;
+    do
     {
-      localBundle.putShort("key_flower_visible_switch", (short)i);
-      localBundle.putBoolean("key_nearby_people_card_force_update", true);
-      auxh localauxh = (auxh)paramQQAppInterface.a(60);
-      if (localauxh == null) {
-        break;
-      }
-      paramQQAppInterface.a(new NearbyProfileUtil.2(localauxh, localBundle));
       return;
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -1) || ((paramInt >= 0) && (paramInt < d.length));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return true;
-    }
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface = null;
-    Object localObject = null;
-    if (localawgf != null)
-    {
-      paramQQAppInterface = localObject;
-      if (!bdnn.a(str)) {
-        paramQQAppInterface = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "uin=?", new String[] { str });
+      while (!((Iterator)localObject).hasNext()) {
+        localObject = ((List)localObject).iterator();
       }
-      localawgf.a();
-    }
-    boolean bool;
-    if (paramQQAppInterface != null) {
-      if (paramQQAppInterface.switchGiftVisible == 0L) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      continue;
-      bool = true;
-    }
-  }
-  
-  public static final int b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return jdField_b_of_type_ArrayOfInt[paramInt];
-    }
-    return 0;
-  }
-  
-  public static final String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return "";
-  }
-  
-  public static int c(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 5) {
-      return 2;
-    }
-    if (ProfileActivity.c(paramInt)) {
-      return 3;
-    }
-    if (paramInt == 21) {
-      return 4;
-    }
-    if (ProfileActivity.d(paramInt)) {
-      return 5;
-    }
-    return 99;
-  }
-  
-  public static final String c(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 12)) {
-      return c[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String d(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return e[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String e(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 14)) {
-      return d[paramInt];
-    }
-    return "";
+      localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+    } while (!localDownloaderTask.getUrl().equals(paramString));
+    bize.c("DownloadManager_Now_for_qq", "removeDownloadTask---delete unactive halley task, Id:" + localDownloaderTask.getId());
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.deleteTask(localDownloaderTask, paramBoolean);
   }
 }
 

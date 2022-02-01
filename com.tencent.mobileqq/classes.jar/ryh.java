@@ -1,26 +1,32 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public class ryh
-  implements oma
+class ryh
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public ryh(FastWebActivity paramFastWebActivity) {}
+  ryh(ryd paramryd) {}
   
-  public void a() {}
-  
-  public void onClick(View paramView)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    switch (paramView.getId())
+    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
+    if (ryd.a(this.a) != null)
     {
-    default: 
+      localReadInJoyCommentListFragment = ryd.a(this.a);
+      if ((paramInt & 0x2) != 0) {
+        break label32;
+      }
+    }
+    label32:
+    for (boolean bool = true;; bool = false)
+    {
+      localReadInJoyCommentListFragment.a(bool);
       return;
     }
-    this.a.a(false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryh
  * JD-Core Version:    0.7.0.1
  */

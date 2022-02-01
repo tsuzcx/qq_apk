@@ -2,7 +2,7 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azos;
+import bcqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,11 +13,11 @@ public final class ProcessInfoUtil$1
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = azos.a();
+    SharedPreferences localSharedPreferences = bcqt.a();
     int i;
     if (localSharedPreferences != null)
     {
-      i = azos.a(BaseApplicationImpl.getContext(), this.a);
+      i = bcqt.a(BaseApplicationImpl.getContext(), this.a);
       if (i != -1) {
         break label27;
       }
@@ -36,7 +36,7 @@ public final class ProcessInfoUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.ProcessInfoUtil.1
  * JD-Core Version:    0.7.0.1
  */

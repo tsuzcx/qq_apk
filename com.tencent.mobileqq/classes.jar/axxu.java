@@ -1,124 +1,136 @@
-import android.graphics.Rect;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
-import com.tencent.richmediabrowser.model.BrowserAnimation;
-import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class axxu
-  extends BrowserAnimation
-  implements IBrowserAnimationListener
+  extends axxm
 {
-  public int a;
-  public Rect a;
-  private RichMediaBaseData a;
-  Rect b;
-  
-  public axxu() {}
-  
-  public axxu(RichMediaBaseData paramRichMediaBaseData)
+  public axxu(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
+    super(paramContext, paramQQAppInterface);
   }
   
-  public Drawable getAnimationDrawable()
+  public int a(axxt paramaxxt)
   {
-    for (;;)
+    return 3;
+  }
+  
+  public View a(ViewGroup paramViewGroup, axxt paramaxxt)
+  {
+    paramaxxt = (axxv)paramaxxt;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561307, paramViewGroup, false);
+    paramaxxt.g = ((TextView)paramViewGroup.findViewById(2131379942));
+    paramaxxt.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369094));
+    paramaxxt.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369223));
+    paramaxxt.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131366434);
+    paramaxxt.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131366435);
+    return paramViewGroup;
+  }
+  
+  public axxt a()
+  {
+    return new axxv(this);
+  }
+  
+  public String b(axxt paramaxxt)
+  {
+    return ((axzn)((axxv)paramaxxt).a).jdField_a_of_type_JavaLangString;
+  }
+  
+  public void f(axxt paramaxxt)
+  {
+    paramaxxt = (axxv)paramaxxt;
+    Object localObject1 = (axzn)paramaxxt.a;
+    label69:
+    int j;
+    if (((axzn)localObject1).c > 1)
     {
-      try
+      paramaxxt.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      paramaxxt.jdField_f_of_type_AndroidViewView.setVisibility(0);
+      paramaxxt.g.setMovementMethod(LinkMovementMethod.getInstance());
+      if (!TextUtils.isEmpty(((axzn)localObject1).n)) {
+        break label307;
+      }
+      paramaxxt.g.setVisibility(8);
+      j = zlx.a(this.a, 200.0F);
+      if ((((axzn)localObject1).jdField_a_of_type_Int <= 0) || (((axzn)localObject1).jdField_b_of_type_Int <= 0)) {
+        break label414;
+      }
+    }
+    label414:
+    for (int i = ((axzn)localObject1).jdField_b_of_type_Int * j / ((axzn)localObject1).jdField_a_of_type_Int;; i = j)
+    {
+      if (i * 3 > j * 4) {
+        i = j * 4 / 3;
+      }
+      for (;;)
       {
-        Drawable localDrawable;
-        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        for (;;)
         {
-          localDrawable = new axyn().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-          localObject2 = getThumbRect();
-          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
-            this.isImgCenterCropMode = false;
-          }
-          if ((localDrawable != null) && (localObject2 != null))
+          Object localObject2;
+          if (!TextUtils.equals((String)paramaxxt.jdField_e_of_type_AndroidWidgetImageView.getTag(2131378283), ((axzn)localObject1).jdField_b_of_type_JavaLangString))
           {
-            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
-            if (localDrawable.getIntrinsicHeight() == -1) {
+            paramaxxt.jdField_e_of_type_AndroidWidgetImageView.setTag(2131378283, ((axzn)localObject1).jdField_b_of_type_JavaLangString);
+            localObject2 = (FrameLayout.LayoutParams)paramaxxt.jdField_e_of_type_AndroidWidgetImageView.getLayoutParams();
+            if (localObject2 != null) {
+              break label330;
+            }
+            localObject2 = new FrameLayout.LayoutParams(j, i);
+            paramaxxt.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          try
+          {
+            for (;;)
+            {
+              localObject2 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845481);
+              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845481);
+              localObject1 = URLDrawable.getDrawable(((axzn)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+              ((URLDrawable)localObject1).setTag(bgey.b(j, i, bggq.a(this.a, 3.0F)));
+              ((URLDrawable)localObject1).setDecodeHandler(bgey.e);
+              paramaxxt.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+              return;
+              paramaxxt.jdField_e_of_type_AndroidViewView.setVisibility(8);
+              paramaxxt.jdField_f_of_type_AndroidViewView.setVisibility(8);
               break;
+              label307:
+              paramaxxt.g.setVisibility(0);
+              paramaxxt.g.setText(((axzn)localObject1).n);
+              break label69;
+              label330:
+              if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i))
+              {
+                ((FrameLayout.LayoutParams)localObject2).width = j;
+                ((FrameLayout.LayoutParams)localObject2).height = i;
+                paramaxxt.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              }
             }
-            localObject2 = localDrawable;
-            if (localDrawable.getIntrinsicWidth() != -1) {
-              return localObject2;
-            }
-            break;
           }
-        }
-        else
-        {
-          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+          catch (Exception localException)
           {
-            localDrawable = new axyo().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-            continue;
+            do
+            {
+              paramaxxt.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130845481));
+            } while (!QLog.isColorLevel());
+            QLog.i("BaseMomentItemBuilder", 1, localException.toString());
+            return;
           }
-          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
-          {
-            localDrawable = new axyj().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-            continue;
-          }
-          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
-            break label219;
-          }
-          localDrawable = new axyk().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
-          continue;
         }
-        return null;
       }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AIOImageInfo", 2, "getAnimationBitmap ", localThrowable);
-        }
-        return null;
-      }
-      label219:
-      Object localObject1 = null;
     }
-    Object localObject2 = null;
-    return localObject2;
-  }
-  
-  public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
-  {
-    paramRichMediaBaseData = new axxu(paramRichMediaBaseData);
-    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    return paramRichMediaBaseData;
-  }
-  
-  public int getCutValue()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Rect getStartSrcRect()
-  {
-    return this.b;
-  }
-  
-  public int getStartX()
-  {
-    return 0;
-  }
-  
-  public int getStartY()
-  {
-    return 0;
-  }
-  
-  public Rect getThumbRect()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-      return this.jdField_a_of_type_AndroidGraphicsRect;
-    }
-    return super.getThumbRect();
   }
 }
 

@@ -1,20 +1,45 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
 
-class ykj
-  implements zac<CertifiedAccountRead.StGetFeedDetailRsp>
+public class ykj
+  extends zoo<ykm>
 {
-  ykj(yki paramyki, ykg paramykg) {}
+  private LruCache<ykm, Drawable> a = new ykk(this, 5242880);
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public LruCache<ykm, Drawable> a()
   {
-    if (this.jdField_a_of_type_Ykg != null) {
-      this.jdField_a_of_type_Ykg.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
+    return this.a;
+  }
+  
+  public zop a(ImageView paramImageView, ykm paramykm)
+  {
+    return new ykn(paramImageView, paramykm);
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.a = new ykl(this, 5242880);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykj
  * JD-Core Version:    0.7.0.1
  */

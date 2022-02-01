@@ -1,35 +1,19 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bjuc
-  implements Downloader.DownloadListener
+class bjuc
+  implements DialogInterface.OnClickListener
 {
-  public bjuc(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  bjuc(bjtv parambjtv) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjuc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import aase;
+import acqy;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
@@ -11,7 +11,7 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    aase.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    acqy.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);
@@ -22,7 +22,7 @@ class GdtVideoImaxFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.2
  * JD-Core Version:    0.7.0.1
  */

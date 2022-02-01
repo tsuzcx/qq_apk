@@ -1,33 +1,81 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ngh
-  extends Handler
 {
-  public ngh(NowVideoView paramNowVideoView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (paramInt == 0) {
+      return paramBitmap;
     }
-    do
+    return a(paramBitmap, paramInt, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    long l1 = System.currentTimeMillis();
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.i("MosaicUtil", 2, "mosaic function call");
+    }
+    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    while (paramInt2 < paramInt4)
     {
-      do
+      int i = paramInt3;
+      while (i < paramInt5)
       {
-        return;
-      } while ((this.a.jdField_a_of_type_Nga == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
-      this.a.jdField_a_of_type_Nga.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
-      return;
-    } while ((this.a.jdField_a_of_type_Nga == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
-    this.a.jdField_a_of_type_Nga.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+        localPaint.setColor(paramBitmap.getPixel(paramInt2, i));
+        int m = Math.min(j, paramInt2 + paramInt1);
+        int n = Math.min(k, i + paramInt1);
+        localCanvas.drawRect(paramInt2, i, m, n, localPaint);
+        i += paramInt1;
+      }
+      paramInt2 += paramInt1;
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("MosaicUtil", 2, "DrawTime: " + (l2 - l1));
+    }
+    return localBitmap;
+  }
+  
+  public static Bitmap a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      localObject = (BitmapDrawable)paramDrawable;
+      if (((BitmapDrawable)localObject).getBitmap() != null) {
+        return ((BitmapDrawable)localObject).getBitmap();
+      }
+    }
+    if ((paramDrawable instanceof RegionDrawable)) {
+      return ((RegionDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
+    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
+    {
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ngh
  * JD-Core Version:    0.7.0.1
  */

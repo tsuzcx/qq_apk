@@ -1,35 +1,23 @@
-import android.os.Bundle;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class pik
-  implements yrb
+public class pik
+  extends SimpleConfigHandler
 {
-  pik(pih parampih, String paramString) {}
-  
-  public void callback(Bundle paramBundle)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
+    bmqa.a("daily_header_proteus_bid", paramString);
+    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pik
  * JD-Core Version:    0.7.0.1
  */

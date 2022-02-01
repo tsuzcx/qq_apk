@@ -1,28 +1,31 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class poq
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public poq(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
   
-  public poq(ArticleInfo paramArticleInfo, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    ppm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     poq
  * JD-Core Version:    0.7.0.1
  */

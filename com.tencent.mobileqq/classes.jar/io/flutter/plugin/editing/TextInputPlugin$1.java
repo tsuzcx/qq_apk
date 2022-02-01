@@ -11,7 +11,7 @@ class TextInputPlugin$1
   
   public void clearClient()
   {
-    TextInputPlugin.access$600(this.this$0);
+    TextInputPlugin.access$400(this.this$0);
   }
   
   public void hide()
@@ -21,17 +21,17 @@ class TextInputPlugin$1
   
   public void setClient(int paramInt, TextInputChannel.Configuration paramConfiguration)
   {
-    TextInputPlugin.access$300(this.this$0, paramInt, paramConfiguration);
+    this.this$0.setTextInputClient(paramInt, paramConfiguration);
   }
   
   public void setEditingState(TextInputChannel.TextEditState paramTextEditState)
   {
-    TextInputPlugin.access$500(this.this$0, TextInputPlugin.access$000(this.this$0), paramTextEditState);
+    this.this$0.setTextInputEditingState(TextInputPlugin.access$000(this.this$0), paramTextEditState);
   }
   
   public void setPlatformViewClient(int paramInt)
   {
-    TextInputPlugin.access$400(this.this$0, paramInt);
+    TextInputPlugin.access$300(this.this$0, paramInt);
   }
   
   public void show()
@@ -41,7 +41,7 @@ class TextInputPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.TextInputPlugin.1
  * JD-Core Version:    0.7.0.1
  */

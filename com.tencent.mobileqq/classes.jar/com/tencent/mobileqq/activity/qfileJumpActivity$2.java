@@ -4,7 +4,7 @@ import android.content.Intent;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import dl;
+import dq;
 
 class qfileJumpActivity$2
   implements Runnable
@@ -13,11 +13,11 @@ class qfileJumpActivity$2
   
   public void run()
   {
-    dl.r(this.this$0.app);
+    dq.r(this.this$0.app);
     Intent localIntent = new Intent(this.this$0, LiteActivity.class);
     localIntent.addFlags(67108864);
     localIntent.putExtra("targetUin", this.this$0.a);
-    localIntent.putExtra("leftViewText", this.this$0.app.getApp().getString(2131690623));
+    localIntent.putExtra("leftViewText", this.this$0.app.getApp().getString(2131690563));
     this.this$0.startActivity(localIntent);
     this.this$0.finish();
   }

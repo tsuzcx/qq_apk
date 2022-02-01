@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class bmlr
-  implements DialogInterface.OnDismissListener
+  implements bihh
 {
-  bmlr(bmlp parambmlp) {}
+  bmlr(bmlo parambmlo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
-    }
-    this.a.jdField_a_of_type_Bmnj.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
+    bmlo.a(this.a, paramBaseResp);
   }
 }
 

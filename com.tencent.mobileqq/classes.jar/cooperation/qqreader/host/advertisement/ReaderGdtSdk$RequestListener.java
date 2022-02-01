@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
-import aamt;
-import aamu;
-import aamv;
+import ackd;
+import acke;
+import ackf;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -20,22 +20,22 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements aamu
+  implements acke
 {
-  public void onResponse(aamt paramaamt)
+  public void onResponse(ackd paramackd)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramaamt = paramaamt.a().a;
-    if (paramaamt == null) {
-      paramaamt = (aamt)localObject;
+    paramackd = paramackd.a().a;
+    if (paramackd == null) {
+      paramackd = (ackd)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramaamt);
+      onResult(localArrayList, paramackd);
       return;
-      localObject = paramaamt.pos_ads_info.get();
-      paramaamt = paramaamt.gdt_cookie.get();
+      localObject = paramackd.pos_ads_info.get();
+      paramackd = paramackd.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {
@@ -61,7 +61,7 @@ public abstract class ReaderGdtSdk$RequestListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk.RequestListener
  * JD-Core Version:    0.7.0.1
  */

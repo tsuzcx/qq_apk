@@ -16,7 +16,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import apkp;
+import arnj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.OnStateListener;
@@ -25,8 +25,8 @@ import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.widget.PAVideoView;
-import wre;
-import wxe;
+import ykp;
+import yqp;
 
 public class AutoPlayImageView
   extends ImageView
@@ -100,7 +100,7 @@ public class AutoPlayImageView
     {
       Object localObject = paramString;
       if (paramString == null) {
-        localObject = new apkp(-2631721, paramInt1, paramInt2);
+        localObject = new arnj(-2631721, paramInt1, paramInt2);
       }
       return localObject;
     }
@@ -129,7 +129,7 @@ public class AutoPlayImageView
     paramOnStateListener.mDataSourceType = 3;
     paramOnStateListener.mDataSource = paramString2;
     paramOnStateListener.mCoverUrl = paramString1;
-    paramOnStateListener.mCoverLoadingDrawable = new apkp(-2631721, i, paramInt1);
+    paramOnStateListener.mCoverLoadingDrawable = new arnj(-2631721, i, paramInt1);
     paramOnStateListener.mLoopback = true;
     paramOnStateListener.msgUniseq = paramLong;
     return paramOnStateListener;
@@ -142,7 +142,7 @@ public class AutoPlayImageView
   
   public void a()
   {
-    wxe.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    yqp.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -154,7 +154,7 @@ public class AutoPlayImageView
   
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
-    wxe.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
+    yqp.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
     paramString1 = a(paramInt1, paramInt2, paramLong, paramString1, paramString2, this);
@@ -162,7 +162,7 @@ public class AutoPlayImageView
     paramString2.mExtraInfo = paramString1;
     paramString2.mLoadingDrawable = a(paramString1.mCoverUrl, paramInt1, paramInt2);
     paramString1 = URLDrawable.getDrawable(PAVideoView.a(paramLong), paramString2);
-    paramString1.setURLDrawableListener(new wre(this));
+    paramString1.setURLDrawableListener(new ykp(this));
     setImageDrawable(paramString1);
   }
   
@@ -180,7 +180,7 @@ public class AutoPlayImageView
   
   public void b()
   {
-    wxe.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
+    yqp.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -201,7 +201,7 @@ public class AutoPlayImageView
   
   public void c()
   {
-    wxe.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    yqp.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_Boolean = false;
     }
@@ -242,7 +242,7 @@ public class AutoPlayImageView
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
       if (QQStoryContext.a()) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166403));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166477));
       }
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
@@ -308,7 +308,7 @@ public class AutoPlayImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView
  * JD-Core Version:    0.7.0.1
  */

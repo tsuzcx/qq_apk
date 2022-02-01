@@ -1,29 +1,90 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-class aijm
-  implements Animation.AnimationListener
+public class aijm
+  extends aiiq
 {
-  aijm(aijl paramaijl, Activity paramActivity) {}
+  private Collection<String> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aijm(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_Aijl.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_Aijl.a)))
+    super(paramQQAppInterface);
+  }
+  
+  public List<? extends aiit> a(String paramString, SessionInfo paramSessionInfo)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticon search start.");
+    }
+    paramSessionInfo = new ArrayList();
+    awmr localawmr = (awmr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    Object localObject = (arro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    aijp localaijp = aijp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localObject = ((arro)localObject).a();
+    if (localObject != null)
     {
-      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Aijl.a);
-      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Aijl.a));
-      paramAnimation.putExtra("clickID", -1);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticonDataList.size : " + ((List)localObject).size());
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+        if (("isUpdate".equals(localCustomEmotionData.RomaingType)) || ("needDownload".equals(localCustomEmotionData.RomaingType)) || ("overflow".equals(localCustomEmotionData.RomaingType)) || ("overflow_downloaded".equals(localCustomEmotionData.RomaingType))) {
+          if ((!TextUtils.isEmpty(localCustomEmotionData.modifyWord)) && (paramString.equals(localaijp.b(localCustomEmotionData.modifyWord))))
+          {
+            paramSessionInfo.add(new aijl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+          }
+          else if ((!TextUtils.isEmpty(localCustomEmotionData.ocrWord)) && (paramString.equals(localaijp.b(localCustomEmotionData.ocrWord))))
+          {
+            paramSessionInfo.add(new aijl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+          }
+          else if (localCustomEmotionData.isMarkFace)
+          {
+            Emoticon localEmoticon = localawmr.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId);
+            if ((localEmoticon != null) && (!TextUtils.isEmpty(localEmoticon.name)) && (paramString.equals(localaijp.b(localEmoticon.name)))) {
+              paramSessionInfo.add(new aijl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+            }
+          }
+        }
+      }
+    }
+    if (paramSessionInfo.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite onSearchStickerRecLocalEmoticon matchList is null or empty,keyWord: " + bgjw.a(paramString));
+      }
+      return null;
+    }
+    return paramSessionInfo;
+  }
+  
+  public void a()
+  {
+    aijp localaijp = aijp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (localaijp != null) {
+      this.jdField_a_of_type_JavaUtilCollection = localaijp.b();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+      a();
+    }
+    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
+  }
 }
 
 

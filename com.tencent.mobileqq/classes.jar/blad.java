@@ -1,41 +1,141 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.data.AEMaterialMgr.1;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
-
 public class blad
-  implements baug
 {
-  public blad(AEMaterialMgr.1 param1, String paramString) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "", "", "", "", "", "", "", "", "", "" };
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  private String e = "";
+  private String f = "";
+  private String g = "";
+  private String h = "";
+  private String i = "";
+  private String j = "";
+  private String k = "";
+  private String l = "";
+  private String m = "";
+  private String n = "";
+  private String o = "1001";
   
-  public void onResp(bavf parambavf)
+  public blad a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(blac.a(), 2, "onResp url: " + this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.packageUrl + " resultcode: " + parambavf.c);
-    }
-    if (this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a)) {}
-    try
-    {
-      ndr.a(new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id), bkoz.e + File.separator);
-      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
-      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).remove(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id);
-      return;
-    }
-    catch (IOException parambavf)
-    {
-      while (!QLog.isColorLevel()) {}
-      parambavf.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  public blad a(String... paramVarArgs)
   {
-    blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a, (int)(paramLong1 / paramLong2 * 100L));
-    if (!blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).containsKey(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id)) {
-      blac.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).put(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+    int i1 = 0;
+    while ((i1 < this.jdField_a_of_type_ArrayOfJavaLangString.length) && (i1 < paramVarArgs.length))
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i1] = paramVarArgs[i1];
+      i1 += 1;
     }
+    return this;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public blad b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public blad c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public blad d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public blad e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public String g()
+  {
+    return this.g;
+  }
+  
+  public String h()
+  {
+    return this.h;
+  }
+  
+  public String i()
+  {
+    return this.i;
+  }
+  
+  public String j()
+  {
+    return this.j;
+  }
+  
+  public String k()
+  {
+    return this.k;
+  }
+  
+  public String l()
+  {
+    return this.l;
+  }
+  
+  public String m()
+  {
+    return this.m;
+  }
+  
+  public String n()
+  {
+    return this.n;
+  }
+  
+  public String o()
+  {
+    return this.o;
   }
 }
 

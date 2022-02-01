@@ -1,33 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
+import java.net.URL;
 
-public class rfm
-  extends oxe
+public abstract interface rfm
 {
-  private rfm(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public abstract int getCommentCount();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (VideoFeedsPlayActivity.a(this.a).getVisibility() == 0))
-    {
-      VideoFeedsPlayActivity.b(this.a, true);
-      localqhj = new qhj(this.a);
-      localqhj.a(paramString);
-      localqhj.a(RIJRedPacketManager.a().d());
-      localqhj.showAsDropDown(VideoFeedsPlayActivity.a(this.a), 0, -bdoo.a(10.0F));
-    }
-    while (!paramBoolean)
-    {
-      qhj localqhj;
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a).setVisibilityChangedListener(new rfn(this, paramString));
-  }
+  public abstract String getInnerUniqueID();
+  
+  public abstract String getShareUrl();
+  
+  public abstract String getSubscribeName();
+  
+  public abstract String getSubscribeUin();
+  
+  public abstract URL getVideoCoverURL();
+  
+  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
+  
+  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
+  
+  public abstract int getVideoDuration();
+  
+  public abstract int getVideoHeight();
+  
+  public abstract String getVideoVid();
+  
+  public abstract int getVideoWidth();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rfm
  * JD-Core Version:    0.7.0.1
  */

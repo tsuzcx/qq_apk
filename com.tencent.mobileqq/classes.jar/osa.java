@@ -1,53 +1,73 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import android.app.Activity;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class osa
 {
-  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  @Nullable
+  private osb a;
+  
+  public void a()
   {
-    int j = 0;
-    int i = j;
-    if (b(paramBaseArticleInfo))
+    if (this.a != null) {
+      this.a.a();
+    }
+  }
+  
+  public void a(Activity paramActivity, ListView paramListView)
+  {
+    if ((oqr.a().a() == 1) && (oqr.e()))
     {
-      i = j;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
-        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
+      str = oqr.a().a();
+      i = oqr.a().b();
+      if (!oqr.a(i)) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
+      int i;
+      return;
+      if (atwl.a(str))
+      {
+        this.a = new osb(paramActivity, paramListView, str);
+        this.a.a(i);
+        paramActivity = oqr.a().a();
+        if (paramActivity != null) {
+          oon.b(paramActivity, true, "no error");
+        }
+        oqr.a().a = this;
+      }
+      for (;;)
+      {
+        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oqr.a().f());
+        oqr.a().a();
+        return;
+        oqr.a().b(3);
+        paramActivity = oqr.a().a();
+        if (paramActivity != null) {
+          oon.b(paramActivity, false, "apng not exit");
+        }
       }
     }
-    return i;
+    QLog.i("KandianAdPandentMask", 2, "status: " + oqr.a().a() + " Aladdin: " + oqr.e());
   }
   
-  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  public void a(boolean paramBoolean)
   {
-    int j = paramView.getPaddingTop();
-    int k = paramView.getPaddingBottom();
-    if (ors.s()) {
-      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 8.0F));
-    }
-    for (int i = bdaq.a(paramContext, 14.0F);; i = bdaq.a(paramContext, 6.0F))
-    {
-      paramView.setPadding(i, j, i, k);
-      return;
-      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 0.0F));
+    if (this.a != null) {
+      this.a.b(paramBoolean);
     }
   }
   
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  public boolean a()
   {
-    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
+    return (this.a != null) && (osb.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     osa
  * JD-Core Version:    0.7.0.1
  */

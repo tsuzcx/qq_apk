@@ -1,12 +1,26 @@
-public abstract interface awaq
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+
+class awaq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
+  awaq(awap paramawap) {}
   
-  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
+  public void onGlobalLayout()
+  {
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
+    if (localCameraPosition != null) {
+      MapWidget.a(this.a.a).a(localCameraPosition.target);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awaq
  * JD-Core Version:    0.7.0.1
  */

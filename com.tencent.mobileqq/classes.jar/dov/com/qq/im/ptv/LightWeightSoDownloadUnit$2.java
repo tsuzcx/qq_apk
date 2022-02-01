@@ -1,17 +1,17 @@
 package dov.com.qq.im.ptv;
 
 import android.widget.TextView;
-import bmgs;
+import boxy;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightSoDownloadUnit$2
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$2(bmgs parambmgs, String paramString) {}
+  public LightWeightSoDownloadUnit$2(boxy paramboxy, String paramString) {}
   
   public void run()
   {
-    bmgs.a(this.this$0).setText(this.a);
+    boxy.a(this.this$0).setText(this.a);
     if (QLog.isColorLevel()) {
       QLog.d("LightWeightSoDownloadUnit", 2, "setTipsTextData: textData=" + this.a);
     }
@@ -19,7 +19,7 @@ public class LightWeightSoDownloadUnit$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightSoDownloadUnit.2
  * JD-Core Version:    0.7.0.1
  */

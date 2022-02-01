@@ -1,52 +1,71 @@
-import java.io.File;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xte
-  extends xtb
+public class xte
+  extends QQUIEventReceiver<xsw, xfn>
 {
-  xte(xtc paramxtc, xtk paramxtk, File paramFile) {}
-  
-  public void onFailure(String paramString)
+  public xte(@NonNull xsw paramxsw)
   {
-    this.jdField_a_of_type_Xtk.onFailure(paramString);
+    super(paramxsw);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(@NonNull xsw paramxsw, @NonNull xfn paramxfn)
   {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    if (TextUtils.equals(String.valueOf(paramxsw.hashCode()), paramxfn.jdField_a_of_type_JavaLangString)) {
+      b(paramxsw, paramxfn);
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Xtc.b.size())
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xfn.class;
+  }
+  
+  public void b(xsw paramxsw, xfn paramxfn)
+  {
+    paramxsw = ((StoryPlayerGroupHolder)paramxsw.a()).a();
+    if (paramxsw != null) {
+      paramxsw.c(false);
+    }
+    if (paramxfn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = xfe.a(paramxfn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramxfn.jdField_a_of_type_Int)
     {
-      File localFile = new File((String)this.jdField_a_of_type_Xtc.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131699980), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramxsw = "2";; paramxsw = "1")
+      {
+        yqu.a("play_video", "down_suc", 0, 0, new String[] { paramxsw, "", "", paramxfn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        QQToast.a(BaseApplicationImpl.getContext(), 2, wjz.a(2131698526), 0).a();
+        return;
       }
-      i += 1;
     }
-    this.jdField_a_of_type_Xtc.b = new ArrayList();
-    this.jdField_a_of_type_Xtk.onFinish(paramBoolean);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Xtk.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xtk.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xtk.onSuccess(paramString);
+    if (bool) {}
+    for (paramxsw = "2";; paramxsw = "1")
+    {
+      yqu.a("play_video", "down_fail", 0, 0, new String[] { paramxsw, "", "", paramxfn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131699981), 0).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xte
  * JD-Core Version:    0.7.0.1
  */

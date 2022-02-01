@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface ahsh
+class ahsh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(List<MayKnowRecommend> paramList);
+  ahsh(ahsd paramahsd) {}
   
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ahsd.s(this.a).setResult(8001);
+  }
 }
 
 

@@ -1,77 +1,68 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
 public class bmrg
-  extends bmyj
 {
-  public float a;
-  public int a;
-  @NonNull
-  public Bitmap a;
-  public PointF a;
-  public bmqv a;
-  public bnfb a;
-  public boolean a;
-  public Rect[] a;
-  public String[] a;
-  public float b;
-  public boolean b;
-  public float c;
-  public float d;
-  public float e = 1.0F;
+  private static bmrg jdField_a_of_type_Bmrg;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
+  private int jdField_a_of_type_Int = 22;
+  private ankk jdField_a_of_type_Ankk = new bmrh(this);
   
-  public bmrg(bmre parambmre, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  private bmrg()
   {
-    super(paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Bnfb = new bnfb();
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    DeviceProfileManager.a(this.jdField_a_of_type_Ankk);
+    a();
   }
   
-  public void a(Canvas paramCanvas)
+  public static bmrg a()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoteLayer", 2, "draw bitmap is null");
-      }
-    }
-    do
+    if (jdField_a_of_type_Bmrg == null) {}
+    try
     {
-      return;
-      paramCanvas.save();
-      paramCanvas.concat(bmre.a(this.jdField_a_of_type_Bmre).a(this));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, -this.u / 2.0F, -this.v / 2.0F, bmre.a(this.jdField_a_of_type_Bmre));
-      if ((this.k) && (this.jdField_a_of_type_Boolean))
-      {
-        paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-        Path localPath = new Path();
-        Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-        int j = arrayOfRect.length;
-        i = 0;
-        while (i < j)
-        {
-          Rect localRect = arrayOfRect[i];
-          localPath.reset();
-          localPath.addRoundRect(new RectF(localRect.left + 10, localRect.top + 5, localRect.right - 10, localRect.bottom - 5), 4.0F, 4.0F, Path.Direction.CCW);
-          paramCanvas.drawPath(localPath, bmre.b(this.jdField_a_of_type_Bmre));
-          i += 1;
-        }
+      if (jdField_a_of_type_Bmrg == null) {
+        jdField_a_of_type_Bmrg = new bmrg();
       }
-      paramCanvas.restore();
-    } while (!this.k);
-    int i = -1;
-    if (this.b) {
-      i = 2130839424;
+      return jdField_a_of_type_Bmrg;
     }
-    bmyg.a(paramCanvas, bmre.a(this.jdField_a_of_type_Bmre), this, i, 2130844230, 2130844237);
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 22;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 22;
+    }
+  }
+  
+  public boolean a()
+  {
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
   }
 }
 

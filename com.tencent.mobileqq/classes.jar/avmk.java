@@ -1,51 +1,70 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
+import com.tencent.qphone.base.util.QLog;
 
-public class avmk
-  implements View.OnClickListener
+class avmk
+  implements bieu
 {
-  public avmk(NearbyProfileDisplayTribePanel.13.1 param1) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(View paramView)
+  avmk(avmi paramavmi, Context paramContext) {}
+  
+  public boolean a()
   {
-    if (TextUtils.isEmpty(avmf.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
     }
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a, QQBrowserActivity.class);
-    Object localObject = new StringBuilder().append(avmf.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl).append("&gender=");
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
+    if (avmi.a(this.jdField_a_of_type_Avmi) == null) {
+      return true;
+    }
+    if (avmi.a(this.jdField_a_of_type_Avmi).isIsAdm())
     {
-      i = 0;
-      paramView.putExtra("url", i);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.startActivity(paramView);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.app;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.e != 2) {
-        break label202;
+      avmc.a(this.jdField_a_of_type_AndroidContentContext, 5, avmi.a(this.jdField_a_of_type_Avmi).getCurUin());
+      return true;
+    }
+    bcst.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), "", "", "");
+    this.jdField_a_of_type_Avmi.b();
+    return true;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    if ((avmi.a(this.jdField_a_of_type_Avmi) == null) || (avmi.a(this.jdField_a_of_type_Avmi) == null)) {
+      return false;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
       }
+      return true;
     }
-    label202:
-    for (paramView = "1";; paramView = "2")
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramInt1 = avmi.a(this.jdField_a_of_type_Avmi).a();
+    if (paramInt1 == 1)
     {
-      azqs.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, paramView, "", "", "");
-      return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
-      break;
+      bdro.a(this.jdField_a_of_type_AndroidContentContext, 1, avmi.a(this.jdField_a_of_type_Avmi).getBigUrl(), null, new Bundle(), avmi.a(this.jdField_a_of_type_Avmi).getCurType());
+      this.jdField_a_of_type_Avmi.a(avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), avmi.a(this.jdField_a_of_type_Avmi).getCurType(), false);
+    }
+    for (;;)
+    {
+      return true;
+      if (paramInt1 == 2)
+      {
+        avmi.a(this.jdField_a_of_type_Avmi).a(avmi.a(this.jdField_a_of_type_Avmi).getSmallUrl());
+        bcst.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmk
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public class AndroidXmlResourceParser
   private static final int z = 1048833;
   private ByteBuffer a;
   private boolean b = false;
-  private k c;
+  private i c;
   private int[] d;
   private AndroidXmlResourceParser.a e = new AndroidXmlResourceParser.a();
   private boolean f;
@@ -110,9 +110,9 @@ public class AndroidXmlResourceParser
     int i2 = 3;
     if (this.c == null)
     {
-      b.a(this.a, 524291);
-      b.b(this.a, 4);
-      this.c = k.a(this.a);
+      a.a(this.a, 524291);
+      a.b(this.a, 4);
+      this.c = i.a(this.a);
       this.e.f();
       this.b = true;
     }
@@ -152,7 +152,7 @@ public class AndroidXmlResourceParser
             }
             else
             {
-              this.d = b.c(this.a, i1 / 4 - 2);
+              this.d = a.c(this.a, i1 / 4 - 2);
               break;
             }
           }
@@ -165,9 +165,9 @@ public class AndroidXmlResourceParser
           this.g = 0;
           return;
         }
-        b.b(this.a, 4);
+        a.b(this.a, 4);
         i4 = this.a.getInt();
-        b.b(this.a, 4);
+        a.b(this.a, 4);
         if ((i1 != 1048832) && (i1 != 1048833)) {
           break;
         }
@@ -179,8 +179,8 @@ public class AndroidXmlResourceParser
         }
         else
         {
-          b.b(this.a, 4);
-          b.b(this.a, 4);
+          a.b(this.a, 4);
+          a.b(this.a, 4);
           this.e.d();
         }
       }
@@ -189,13 +189,13 @@ public class AndroidXmlResourceParser
       {
         this.j = this.a.getInt();
         this.i = this.a.getInt();
-        b.b(this.a, 4);
+        a.b(this.a, 4);
         i1 = this.a.getInt();
         this.l = ((i1 >>> 16) - 1);
         this.m = this.a.getInt();
         this.n = ((this.m >>> 16) - 1);
         this.m = ((this.m & 0xFFFF) - 1);
-        this.k = b.c(this.a, (i1 & 0xFFFF) * 5);
+        this.k = a.c(this.a, (i1 & 0xFFFF) * 5);
         i1 = i2;
         while (i1 < this.k.length)
         {
@@ -216,12 +216,12 @@ public class AndroidXmlResourceParser
       }
     } while (i1 != 1048836);
     this.i = this.a.getInt();
-    b.b(this.a, 4);
-    b.b(this.a, 4);
+    a.b(this.a, 4);
+    a.b(this.a, 4);
     this.g = 4;
   }
   
-  final k a()
+  final i a()
   {
     return this.c;
   }

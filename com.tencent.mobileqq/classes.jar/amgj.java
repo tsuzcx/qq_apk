@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amgj
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+class amgj
+  implements DialogInterface.OnClickListener
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
+  amgj(amgh paramamgh) {}
   
-  public AddFriendBlockedInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new AddFriendBlockedInfo[paramInt];
+    if (QLog.isDevelopLevel()) {
+      QLog.d(amgh.a(this.a), 4, "right button is clicked! ");
+    }
+    amgh.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amgj
  * JD-Core Version:    0.7.0.1
  */

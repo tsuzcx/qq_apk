@@ -1,23 +1,40 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 class aqkg
-  implements Animation.AnimationListener
+  implements Comparator<aqkh>
 {
-  aqkg(aqke paramaqke) {}
+  aqkg(aqkc paramaqkc, boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(aqkh paramaqkh1, aqkh paramaqkh2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
+    int i = -1;
+    if (paramaqkh1.jdField_a_of_type_Int > paramaqkh2.jdField_a_of_type_Int) {}
+    do
+    {
+      return 1;
+      if (paramaqkh1.jdField_a_of_type_Int < paramaqkh2.jdField_a_of_type_Int) {
+        return -1;
+      }
+      if ((paramaqkh1.jdField_a_of_type_Boolean) && (!paramaqkh2.jdField_a_of_type_Boolean))
+      {
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          return i;
+          i = 1;
+        }
+      }
+      if ((paramaqkh1.jdField_a_of_type_Boolean) || (!paramaqkh2.jdField_a_of_type_Boolean)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return -1;
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaqkh1.jdField_a_of_type_Float - paramaqkh2.jdField_a_of_type_Float) > 3.0F)) {
+      return Float.compare(paramaqkh1.jdField_a_of_type_Float, paramaqkh2.jdField_a_of_type_Float);
     }
+    return 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

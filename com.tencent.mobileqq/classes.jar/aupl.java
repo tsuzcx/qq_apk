@@ -1,133 +1,229 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForRichText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.database.sqlite.SQLiteException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.fts.FTSTroop;
+import com.tencent.mobileqq.data.fts.TroopIndex;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.List;
+import java.util.Map;
 
-class aupl
-  implements awkh
+public class aupl
 {
-  private int jdField_a_of_type_Int;
-  private aupg jdField_a_of_type_Aupg;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  private int b;
-  
-  private aupl(MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, aupg paramaupg)
+  public static int a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Aupg = paramaupg;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    paramString = "SELECT cursor FROM " + paramString + " WHERE id=1;";
+    try
+    {
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
   {
-    if (paramRichText != null)
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack attachRichText2Msg with " + paramRichText.toString());
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: entities == null");
       }
-      if (((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText == null)) {
-        if (QLog.isColorLevel()) {
-          break label185;
-        }
+      return -1;
+    }
+    long l1 = System.currentTimeMillis();
+    int k = a(paramFTSDatabase, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.FTSDatabaseHelper", 2, "FTSDatabaseHelper.queryCursorTable = " + k + " cost:" + (System.currentTimeMillis() - l1));
+    }
+    if (k == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: syncCursor == -1");
       }
-      for (;;)
+      return -1;
+    }
+    if (!paramFTSDatabase.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
+      }
+      return -1;
+    }
+    int i = 0;
+    long l3 = 0L;
+    long l2 = 0L;
+    l1 = 0L;
+    boolean bool1 = true;
+    int j = 0;
+    long l4;
+    TroopIndex localTroopIndex;
+    if (j < paramArrayList.size())
+    {
+      l4 = System.currentTimeMillis();
+      FTSTroop localFTSTroop = (FTSTroop)paramArrayList.get(j);
+      localTroopIndex = new TroopIndex(localFTSTroop.mType, localFTSTroop.mTroopUin, localFTSTroop.mMemberUin, localFTSTroop.mMemberName, localFTSTroop.mMemberCard, localFTSTroop.mMemberNick);
+      localTroopIndex.preWrite();
+      switch (localFTSTroop.mOpt)
       {
-        ((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText = paramRichText;
-        if (!(this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt)) {
-          break label272;
-        }
-        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize >= 0L) {
-          break label211;
-        }
-        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg with fileSize < 0");
-        if (!QLog.isColorLevel()) {
+      default: 
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        label268:
+        if (bool1) {
           break;
         }
-        QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
-        paramRichText = Thread.currentThread().getStackTrace();
-        int j = paramRichText.length;
-        int i = 0;
-        while (i < j)
-        {
-          QLog.d("MultiMsg_TAG", 2, new Object[] { paramRichText[i] });
-          i += 1;
-        }
-        label185:
-        QLog.d("MultiMsg_TAG", 2, "PttUploadCallback.attachRichText2Msg return but mr.richtext is null");
-      }
-      ((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize = 1L;
-      for (;;)
-      {
-        label211:
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-        aupg.a(this.jdField_a_of_type_Aupg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new HashMap(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.b);
-        return null;
-        label272:
-        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg but not message for ptt");
       }
     }
-    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack attachRichText2Msg with null");
-    return null;
-  }
-  
-  public void a(awki paramawki)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack updateMsg with " + paramawki.toString());
-    }
-  }
-  
-  public void b(awki paramawki)
-  {
-    if (paramawki.jdField_a_of_type_Int != 0)
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "mPttUpCallBack onSend fail with " + paramawki.toString());
+        QLog.d("Q.fts.FTSDatabaseHelper", 2, String.format("batchTransToDatabase: insert count = %d, insertCost=%d, delCost=%d, updateCost=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }));
       }
-      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
+      i = paramInt;
+      if (paramInt == -1) {
+        i = paramArrayList.size();
+      }
+      label400:
+      long l5;
+      if ((bool1) && (paramArrayList.size() != 0) && (i != 0))
       {
-        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
+        bool1 = paramFTSDatabase.a("UPDATE " + paramString + " SET cursor=" + (k + i) + " WHERE id=1;");
+        boolean bool2 = bool1;
+        if (bool1)
         {
-          QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend with fileSize < 0");
-          if (QLog.isColorLevel())
+          l1 = System.currentTimeMillis();
+          bool1 = paramFTSDatabase.c();
+          l1 = System.currentTimeMillis() - l1;
+          if (!QLog.isColorLevel())
           {
-            QLog.d("MultiMsg_TAG", 2, "start print stack trace ---------");
-            paramawki = Thread.currentThread().getStackTrace();
-            int j = paramawki.length;
-            int i = 0;
-            while (i < j)
-            {
-              QLog.d("MultiMsg_TAG", 2, new Object[] { paramawki[i] });
-              i += 1;
-            }
+            bool2 = bool1;
+            if (l1 <= 30000L) {}
+          }
+          else
+          {
+            QLog.d("Q.fts.FTSDatabaseHelper", 1, "commitTransaction cost=" + l1 + " success=" + bool1);
+            bool2 = bool1;
           }
         }
+        if (bool2)
+        {
+          return k + i;
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+          l5 = System.currentTimeMillis();
+          i += 1;
+          l4 = l1 + (l5 - l4);
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          l5 = System.currentTimeMillis();
+          l2 += l5 - l4;
+          l4 = l1;
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          if (!bool1) {
+            break label650;
+          }
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+        }
       }
-      else {
-        QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend but no message for ptt");
+      label650:
+      for (;;)
+      {
+        l5 = System.currentTimeMillis();
+        l4 = l3 + (l5 - l4);
+        l3 = l1;
+        l1 = l4;
+        break label268;
+        j += 1;
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        break;
+        return k;
+        break label400;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-      aupg.a(this.jdField_a_of_type_Aupg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      return;
+      l4 = l1;
+      l1 = l3;
+      l3 = l4;
     }
-    QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack onSend result ok");
+  }
+  
+  public static boolean a(FTSDatabase paramFTSDatabase, TroopIndex paramTroopIndex)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("DELETE FROM " + paramTroopIndex.getTableName() + " WHERE " + paramTroopIndex.getTableName() + " MATCH 'type:");
+    localStringBuilder.append(paramTroopIndex.type);
+    localStringBuilder.append(" ext1:");
+    localStringBuilder.append(paramTroopIndex.ext1);
+    if (!TextUtils.isEmpty(paramTroopIndex.ext6))
+    {
+      localStringBuilder.append(" ext6:");
+      localStringBuilder.append(paramTroopIndex.ext6);
+    }
+    localStringBuilder.append("';");
+    return paramFTSDatabase.a(localStringBuilder.toString());
+  }
+  
+  public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    paramFTSDatabase = paramFTSDatabase.a("SELECT name FROM sqlite_master WHERE type='table' AND name='" + paramString + "'", new int[] { 3 });
+    return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
+  }
+  
+  public static int b(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    paramString = "SELECT COUNT(*) FROM " + paramString;
+    try
+    {
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
+  }
+  
+  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    if (!paramFTSDatabase.b()) {}
+    do
+    {
+      return false;
+      paramFTSDatabase.a("CREATE TABLE IF NOT EXISTS " + paramString + "(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
+      paramFTSDatabase.a("INSERT INTO " + paramString + "(cursor) VALUES(0);");
+    } while (!paramFTSDatabase.c());
+    return true;
+  }
+  
+  public static int c(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No result or result size != 1");
+    }
+    paramFTSDatabase = (Map)paramFTSDatabase.get(0);
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No column or column count != 1");
+    }
+    try
+    {
+      int i = ((Long)paramFTSDatabase.values().toArray()[0]).intValue();
+      return i;
+    }
+    catch (Exception paramFTSDatabase)
+    {
+      throw new SQLiteException("No column or column count != 1");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupl
  * JD-Core Version:    0.7.0.1
  */

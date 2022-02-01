@@ -1,60 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class qkz
+  extends ClickableSpan
+  implements sth, tfr
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  boolean jdField_a_of_type_Boolean;
+  private int b = -1;
+  private int c = -1;
   
-  public static qkz a(articlesummary.HotWordItem paramHotWordItem)
+  public qkz(int paramInt1, int paramInt2, int paramInt3)
   {
-    qkz localqkz = new qkz();
-    if (paramHotWordItem.hot_word.has()) {
-      localqkz.a = paramHotWordItem.hot_word.get().toStringUtf8();
-    }
-    if (paramHotWordItem.jump_url.has()) {
-      localqkz.b = paramHotWordItem.jump_url.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_word_color.has()) {
-      localqkz.c = paramHotWordItem.index_word_color.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_bg_color.has()) {
-      localqkz.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
-    }
-    return localqkz;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public articlesummary.HotWordItem a()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    return localHotWordItem;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public boolean equals(Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    return ((paramObject instanceof qkz)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qkz)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qkz)paramObject).b));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+    {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      return;
+    }
+    paramView.callOnClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.c);
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkz
  * JD-Core Version:    0.7.0.1
  */

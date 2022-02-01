@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo;
 
-import akpy;
-import alko;
+import amje;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import andw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatPieApolloViewController$2
   implements Runnable
 {
-  public ChatPieApolloViewController$2(akpy paramakpy, BaseChatPie paramBaseChatPie) {}
+  public ChatPieApolloViewController$2(amje paramamje, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
@@ -22,13 +22,13 @@ public class ChatPieApolloViewController$2
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null)
     {
       float f = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = new ApolloRender(f, this.a.jdField_a_of_type_Alnq, 0);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = new ApolloRender(f, this.a.jdField_a_of_type_Anha, 0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.setUseGlobalTimer(true);
     }
-    alko.b(this.this$0.jdField_a_of_type_Alkp);
+    andw.b(this.this$0.jdField_a_of_type_Andx);
     if (!ApolloEngine.a())
     {
-      alko.a(this.this$0.jdField_a_of_type_Alkp);
+      andw.a(this.this$0.jdField_a_of_type_Andx);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine !isEngineReady");
       }
@@ -39,19 +39,19 @@ public class ChatPieApolloViewController$2
       if (QLog.isColorLevel()) {
         QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine isEngineReady");
       }
-      if (akpy.a(this.this$0))
+      if (amje.a(this.this$0))
       {
         QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine but AIO destroy!");
         return;
       }
     } while (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null);
     this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
-    akpy.a(this.this$0);
+    amje.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ChatPieApolloViewController.2
  * JD-Core Version:    0.7.0.1
  */

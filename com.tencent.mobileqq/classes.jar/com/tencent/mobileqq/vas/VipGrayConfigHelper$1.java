@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdvk;
+import bham;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -16,29 +16,29 @@ public final class VipGrayConfigHelper$1
 {
   public void run()
   {
-    int i = bdvk.a().get();
-    if ((i < 0) || (i >= bdvk.a().size())) {}
+    int i = bham.a().get();
+    if ((i < 0) || (i >= bham.a().size())) {}
     for (;;)
     {
       return;
-      String str = (String)bdvk.a().get(i);
-      AtomicInteger localAtomicInteger = (AtomicInteger)bdvk.a().get(str);
-      Object localObject = (AtomicInteger)bdvk.b().get(str);
-      for (AtomicReference localAtomicReference = (AtomicReference)bdvk.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)bdvk.c().get(str))
+      String str = (String)bham.a().get(i);
+      AtomicInteger localAtomicInteger = (AtomicInteger)bham.a().get(str);
+      Object localObject = (AtomicInteger)bham.b().get(str);
+      for (AtomicReference localAtomicReference = (AtomicReference)bham.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)bham.c().get(str))
       {
         i += 1;
         j = i;
-        if (i >= bdvk.a().size()) {
+        if (i >= bham.a().size()) {
           break label175;
         }
-        str = (String)bdvk.a().get(i);
-        localAtomicInteger = (AtomicInteger)bdvk.a().get(str);
-        localObject = (AtomicInteger)bdvk.b().get(str);
+        str = (String)bham.a().get(i);
+        localAtomicInteger = (AtomicInteger)bham.a().get(str);
+        localObject = (AtomicInteger)bham.b().get(str);
       }
       int j = i;
       label175:
-      bdvk.a().set(j);
-      if (j >= bdvk.a().size()) {
+      bham.a().set(j);
+      if (j >= bham.a().size()) {
         continue;
       }
       if (QLog.isColorLevel()) {
@@ -67,7 +67,7 @@ public final class VipGrayConfigHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper.1
  * JD-Core Version:    0.7.0.1
  */

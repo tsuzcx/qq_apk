@@ -20,7 +20,7 @@ public class ReadInJoyAdPingUrlUtil
   public static void a(JSONObject paramJSONObject)
   {
     if (!TextUtils.isEmpty(paramJSONObject.toString())) {
-      a().execute(new ReadInJoyAdPingUrlUtil.URLConnection_Ping_Runner(paramJSONObject));
+      a().execute(new ReadInJoyAdPingUrlUtil.URLConnectionPingRunner(paramJSONObject));
     }
   }
 }

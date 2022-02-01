@@ -1,16 +1,10 @@
-public class mus
+public abstract interface mus
 {
-  public byte a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  public mus(mup parammup) {}
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mus
  * JD-Core Version:    0.7.0.1
  */

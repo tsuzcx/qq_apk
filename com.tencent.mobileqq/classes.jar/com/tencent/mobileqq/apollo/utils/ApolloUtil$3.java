@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aknx;
-import algo;
-import aliw;
-import apsp;
-import bamp;
-import bamw;
-import banh;
+import amhd;
+import amzv;
+import ancd;
+import arvq;
+import bdnt;
+import bdoa;
+import bdol;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,16 +19,16 @@ import mqq.app.MobileQQ;
 final class ApolloUtil$3
   implements Runnable
 {
-  ApolloUtil$3(int paramInt, boolean paramBoolean, CharSequence paramCharSequence, aliw paramaliw, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
+  ApolloUtil$3(int paramInt, boolean paramBoolean, CharSequence paramCharSequence, ancd paramancd, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 2) && (!this.jdField_a_of_type_Boolean)) {}
     for (int j = 0;; j = 1)
     {
-      Object localObject1 = (bamp)this.jdField_a_of_type_JavaLangCharSequence;
+      Object localObject1 = (bdnt)this.jdField_a_of_type_JavaLangCharSequence;
       ArrayList localArrayList = new ArrayList();
-      Object localObject2 = (bamw[])((bamp)localObject1).getSpans(0, ((bamp)localObject1).length(), bamw.class);
+      Object localObject2 = (bdoa[])((bdnt)localObject1).getSpans(0, ((bdnt)localObject1).length(), bdoa.class);
       if ((localObject2 != null) && (localObject2.length > 0))
       {
         int n = localObject2.length;
@@ -41,15 +41,15 @@ final class ApolloUtil$3
           }
           int i1 = localObject2[k].a();
           m = i;
-          if (banh.a(i1))
+          if (bdol.a(i1))
           {
-            i1 = apsp.a(i1);
+            i1 = arvq.a(i1);
             m = i;
             if (i1 >= 0)
             {
               if (j != 0)
               {
-                i = ApolloUtil.a(this.jdField_a_of_type_Aliw, i1, this.jdField_a_of_type_Int);
+                i = ApolloUtil.a(this.jdField_a_of_type_Ancd, i1, this.jdField_a_of_type_Int);
                 if (i > 0) {
                   localArrayList.add(Integer.valueOf(i));
                 }
@@ -64,8 +64,8 @@ final class ApolloUtil$3
       if ((j == 0) && (m != 0)) {
         ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
-      if ((localArrayList.size() == 0) && (1 == aknx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (bamp)localObject1, localArrayList);
+      if ((localArrayList.size() == 0) && (1 == amhd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (bdnt)localObject1, localArrayList);
       }
       for (int i = 1;; i = 0)
       {
@@ -76,7 +76,7 @@ final class ApolloUtil$3
           if (QLog.isColorLevel()) {
             QLog.d("ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] send action list to play, actionList=", localArrayList });
           }
-          localObject2 = algo.a();
+          localObject2 = amzv.a();
           localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
           localChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
           if (i == 0) {
@@ -86,7 +86,7 @@ final class ApolloUtil$3
         label360:
         for (localObject1 = localArrayList;; localObject1 = null)
         {
-          ((algo)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
+          ((amzv)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
           localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
           if (localObject1 != null)
           {
@@ -103,7 +103,7 @@ final class ApolloUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloUtil.3
  * JD-Core Version:    0.7.0.1
  */

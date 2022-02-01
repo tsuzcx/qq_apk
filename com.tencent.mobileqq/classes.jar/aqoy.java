@@ -1,22 +1,70 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqoy
-  implements Comparator<Long>
+  extends aqkz<aqox>
 {
-  public aqoy(QfileLocalFileDelFileTabView.1 param1) {}
-  
-  public int a(Long paramLong1, Long paramLong2)
+  public static aqox a()
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
+    return (aqox)aqlk.a().a(660);
+  }
+  
+  @NonNull
+  public aqox a(int paramInt)
+  {
+    return new aqox();
+  }
+  
+  @Nullable
+  public aqox a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterEnterConfProc", 2, "GameCenterEnterConfProcessor onParsed ");
     }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aqox.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(aqox paramaqox) {}
+  
+  public Class<aqox> clazz()
+  {
+    return aqox.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 660;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqoy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-class sbf
-  implements ViewFactory.FoundClickableViewListener
+public class sbf
+  extends oce
 {
-  sbf(sbe paramsbe) {}
+  private sbf(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onFound(ViewBase paramViewBase)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramViewBase.setOnClickListener(new sbg(this));
+    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = paramBundle.getString("VALUE_VIDEO_VID");
+      } while (localObject == null);
+      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
+    } while (localObject == null);
+    ((VideoInfo)localObject).q = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,293 +1,288 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 
-@TargetApi(16)
 public class mpu
 {
-  private int jdField_a_of_type_Int;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private BufferedOutputStream jdField_a_of_type_JavaIoBufferedOutputStream;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private mpv jdField_a_of_type_Mpv;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  public static int a;
+  public static String a;
+  public static int b;
   
-  public mpu() {}
-  
-  public mpu(int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
+    jdField_a_of_type_Int = -1;
   }
   
-  private void a()
+  public static long a(VideoAppInterface paramVideoAppInterface)
   {
-    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-    Object localObject;
-    int j;
-    if (i >= 0)
-    {
-      localObject = arrayOfByteBuffer[i];
-      ((ByteBuffer)localObject).clear();
-      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
-      if (j < 0)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 0);
-        label66:
-        arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      }
-    }
-    for (;;)
-    {
-      i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-      if (i >= 0)
-      {
-        localObject = arrayOfByteBuffer[i];
-        byte[] arrayOfByte = new byte[this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size];
-        ((ByteBuffer)localObject).get(arrayOfByte);
-        ((ByteBuffer)localObject).clear();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
-        a(arrayOfByte);
-        continue;
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, 0L, 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-        break;
-        if (i != -1) {
-          break;
-        }
-        break label66;
-      }
-      if (i != -2) {
-        return;
-      }
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, "encoder output format changed: " + localObject);
-      }
-    }
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    while ((this.d == 0) || (this.e == 0) || (this.f == 0)) {
-      return;
-    }
-    paramArrayOfByte = mpx.a(paramArrayOfByte, this.d, this.e, this.f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
     try
     {
-      this.jdField_a_of_type_JavaIoBufferedOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-      return;
+      long l = Long.valueOf(paramVideoAppInterface.getCurrentAccountUin()).longValue();
+      return l;
     }
-    catch (IOException paramArrayOfByte)
-    {
-      QLog.e("AudioFileDecoder", 1, "writeFile exception", paramArrayOfByte);
-      paramArrayOfByte.printStackTrace();
-    }
+    catch (Exception paramVideoAppInterface) {}
+    return 0L;
   }
   
-  private void b()
+  public static Bitmap a(Resources paramResources, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-    }
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoBufferedOutputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.flush();
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.close();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("decode successful, save to %s, size: %sK", new Object[] { this.jdField_b_of_type_JavaLangString, Long.valueOf(new File(this.jdField_b_of_type_JavaLangString).length() / 1024L) }));
-      }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
+    return a(paramString, 320, paramResources.getDisplayMetrics().densityDpi);
   }
   
-  public void a(String paramString1, String paramString2)
+  public static Bitmap a(String paramString, int paramInt1, int paramInt2)
   {
-    int j = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    paramString1 = new File(this.jdField_a_of_type_JavaLangString);
-    if (!paramString1.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("audio file %s is not exist", new Object[] { this.jdField_a_of_type_JavaLangString }));
-      }
-      if (this.jdField_a_of_type_Mpv != null) {
-        this.jdField_a_of_type_Mpv.a(-2);
-      }
-      return;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = paramInt1;
+    if (paramInt2 >= 0) {
+      localOptions.inTargetDensity = paramInt2;
     }
-    int i;
-    for (;;)
-    {
-      try
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_JavaLangString);
-          i = 0;
-          if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
-          {
-            paramString2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-            String str = paramString2.getString("mime");
-            if (!str.startsWith("audio")) {
-              break label281;
-            }
-            this.jdField_a_of_type_AndroidMediaMediaFormat = paramString2;
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-            this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-          }
-          try
-          {
-            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(paramString2, null, null, 0);
-            if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-              break label288;
-            }
-            QLog.e("AudioFileDecoder", 1, "init audioCodec fail");
-            if (this.jdField_a_of_type_Mpv == null) {
-              break;
-            }
-            this.jdField_a_of_type_Mpv.a(-1);
-            return;
-          }
-          catch (Throwable paramString2)
-          {
-            for (;;)
-            {
-              if (this.jdField_a_of_type_Mpv != null) {
-                this.jdField_a_of_type_Mpv.a(-5);
-              }
-              QLog.e("AudioFileDecoder", 1, "decode configure exception:" + paramString2, paramString2);
-            }
-          }
-        }
-        if (this.jdField_a_of_type_Mpv == null) {
-          break;
-        }
-      }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-      this.jdField_a_of_type_Mpv.a(-3);
-      return;
-      label281:
-      i += 1;
+    localOptions.inScaled = true;
+    Bitmap localBitmap = bggl.a(paramString, localOptions);
+    if (localBitmap == null) {
+      QLog.w("AVRedBag", 1, "decodeFileWithxhdpi, 加载失败, path[" + paramString + "]");
     }
-    label288:
-    this.d = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
-    this.f = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
-    this.e = 16;
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioFileDecoder", 2, String.format("decode audio sampleRate: %s, channelCount: %s, bitDeepth: %s", new Object[] { Integer.valueOf(this.d), Integer.valueOf(this.f), Integer.valueOf(this.e) }));
+    while (!AudioHelper.e()) {
+      return localBitmap;
     }
-    for (;;)
+    QLog.w("AVRedBag", 1, "decodeFileWithxhdpi, bitmap[" + localBitmap.getWidth() + ", " + localBitmap.getHeight() + "], Density[" + localBitmap.getDensity() + "], path[" + paramString + "], _density[" + paramInt1 + "], _inTargetDensity[" + paramInt2 + "], outWidth[" + localOptions.outWidth + "], outHeight[" + localOptions.outHeight + "], inDensity[" + localOptions.inDensity + "], inSampleSize[" + localOptions.inSampleSize + "], inScreenDensity[" + localOptions.inScreenDensity + "], inTargetDensity[" + localOptions.inTargetDensity + "], bitmapSize[" + localBitmap.getWidth() + ", " + localBitmap.getHeight() + "]");
+    return localBitmap;
+  }
+  
+  public static Bitmap a(String paramString, boolean paramBoolean)
+  {
+    Object localObject1 = c();
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    do
     {
-      try
+      for (;;)
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaIoBufferedOutputStream = new BufferedOutputStream(this.jdField_a_of_type_JavaIoFileOutputStream);
-        if (QLog.isColorLevel()) {
-          QLog.d("AudioFileDecoder", 2, String.format("start decode file %s, size: %sK", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(paramString1.length() / 1024L) }));
-        }
-      }
-      catch (IOException paramString2)
-      {
+        return null;
+        localObject1 = (String)localObject1 + paramString;
         try
         {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-          if (this.jdField_a_of_type_Mpv != null) {
-            this.jdField_a_of_type_Mpv.a(this.jdField_a_of_type_JavaLangString);
-          }
-          this.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Boolean) {
-            break label652;
+          Object localObject2 = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject2).inPurgeable = true;
+          ((BitmapFactory.Options)localObject2).inInputShareable = true;
+          ((BitmapFactory.Options)localObject2).inSampleSize = 1;
+          ((BitmapFactory.Options)localObject2).inPreferredConfig = Bitmap.Config.ARGB_8888;
+          ((BitmapFactory.Options)localObject2).inDither = paramBoolean;
+          localObject2 = BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
+          return localObject2;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AVRedBag", 2, "getGameResBitmap sample1 OOM|url:" + paramString);
           }
           try
           {
-            a();
+            BitmapFactory.Options localOptions = new BitmapFactory.Options();
+            localOptions.inSampleSize = 4;
+            localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            localObject1 = BitmapFactory.decodeFile((String)localObject1, localOptions);
+            return localObject1;
           }
-          catch (Throwable paramString1)
+          catch (OutOfMemoryError localOutOfMemoryError1) {}
+          if (QLog.isColorLevel())
           {
-            QLog.e("AudioFileDecoder", 1, "decode frame exception:" + paramString1, paramString1);
-            i = j;
-            if (this.jdField_a_of_type_Mpv != null)
-            {
-              this.jdField_a_of_type_Mpv.a(-6);
-              i = j;
-            }
+            QLog.w("AVRedBag", 2, "getGameResBitmap sample4 OOM|url:" + paramString);
+            return null;
           }
-          b();
-          if ((i == 0) || (this.jdField_a_of_type_Mpv == null)) {
-            break;
-          }
-          this.jdField_a_of_type_Mpv.b(this.jdField_b_of_type_JavaLangString);
-          return;
         }
-        catch (Exception paramString1)
-        {
-          QLog.e("AudioFileDecoder", 1, "decode start exception:" + paramString1, paramString1);
-        }
-        paramString2 = paramString2;
-        QLog.e("AudioFileDecoder", 1, "decode io exception:" + paramString2, paramString2);
-        continue;
+        catch (Exception paramString) {}
       }
-      if (this.jdField_a_of_type_Mpv == null) {
-        break;
-      }
-      this.jdField_a_of_type_Mpv.a(-4);
+    } while (!QLog.isColorLevel());
+    QLog.w("AVRedBag", 2, "getGameResBitmap Exception:" + paramString.toString() + ",filePath:" + localOutOfMemoryError1);
+    return null;
+  }
+  
+  public static String a()
+  {
+    ley localley = VideoController.a().a();
+    if (localley != null) {
+      return localley.d;
+    }
+    return null;
+  }
+  
+  public static moy a(VideoAppInterface paramVideoAppInterface)
+  {
+    return (moy)paramVideoAppInterface.a(7);
+  }
+  
+  public static void a(int paramInt)
+  {
+    QLog.w("AVRedBag", 1, "setDensityDpi, dpi[" + b + "->" + paramInt + "]");
+    b = paramInt;
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = mue.a(paramVideoAppInterface).edit();
+    paramVideoAppInterface.putBoolean("qav_userguide_for_recever", false);
+    paramVideoAppInterface.commit();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, Intent paramIntent)
+  {
+    a(paramVideoAppInterface).b(paramInt, paramIntent);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
+  {
+    a(paramVideoAppInterface).a(paramAVActivity);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, int paramInt, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", paramString1);
+    localBundle.putInt("uinType", paramInt);
+    localBundle.putString("wording", paramString2);
+    try
+    {
+      QLog.w("AVRedBag", 1, "notifyWriteGrayMsg, peerUin[" + paramString1 + "], wording[" + paramString2 + "]");
+      paramVideoAppInterface.a(1, 0, 0, localBundle, null);
       return;
-      label652:
-      i = 1;
+    }
+    catch (Exception paramVideoAppInterface)
+    {
+      QLog.w("AVRedBag", 1, "notifyWriteGrayMsg, Exception[" + paramVideoAppInterface.getMessage() + "]");
     }
   }
   
-  public void a(mpv parammpv)
+  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Mpv = parammpv;
+    if (paramBundle == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object localObject = paramBundle.getString("uin");
+        int i = paramBundle.getInt("uinType");
+        paramBundle = paramBundle.getString("wording");
+        QLog.w("AVRedBag", 1, "writeGrayMsg_in_QQ, peerUin[" + (String)localObject + "], wording[" + paramBundle + "]");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          paramBundle = new auxc((String)localObject, paramQQAppInterface.getCurrentAccountUin(), paramBundle, i, -5040, 65560, 0L);
+          localObject = new MessageForUniteGrayTip();
+          ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramBundle);
+          auxd.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        QLog.w("AVRedBag", 1, "writeGrayMsg_in_QQ, Exception[" + paramQQAppInterface.getClass().getName() + "]", paramQQAppInterface);
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Int != -1) {
+      return jdField_a_of_type_Int == 1;
+    }
+    jdField_a_of_type_Int = 0;
+    if ((!loz.a(4, 1800000L)) && (!loz.a(8, 1400000L))) {}
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("AVRedBag", 1, "isDeviceSupport, sIsSupportRedbag[" + jdField_a_of_type_Int + "]");
+      }
+      if (jdField_a_of_type_Int == 1) {
+        break;
+      }
+      return false;
+      lod locallod = lod.a();
+      if ((locallod != null) && (!locallod.c()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AVRedBag", 2, "isSupportAVRedbag false");
+        }
+      }
+      else {
+        jdField_a_of_type_Int = 1;
+      }
+    }
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = paramVideoAppInterface.a().a();
+    if (paramVideoAppInterface != null) {
+      return paramVideoAppInterface.j;
+    }
+    return false;
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    if (a())
+    {
+      paramVideoAppInterface = a(paramVideoAppInterface);
+      if ((paramVideoAppInterface != null) && (paramVideoAppInterface.a()) && (!paramVideoAppInterface.d()))
+      {
+        QLog.w("AVRedBag", 1, "isSelfNeedBigView[" + paramString + "], 打开摄像头，设置为大画面");
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static String b()
+  {
+    return c() + "qav_redpacket_guide.mp4";
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, int paramInt, Intent paramIntent)
+  {
+    a(paramVideoAppInterface).a(paramInt, paramIntent);
+  }
+  
+  public static boolean b(VideoAppInterface paramVideoAppInterface)
+  {
+    boolean bool = mue.a(paramVideoAppInterface).getBoolean("qav_userguide_for_recever", true);
+    if (QLog.isColorLevel()) {
+      QLog.w("AVRedBag", 2, "isShowUserGuideForReceiver, reslut=" + bool);
+    }
+    return bool;
+  }
+  
+  public static String c()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static boolean c(VideoAppInterface paramVideoAppInterface)
+  {
+    return a(paramVideoAppInterface).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpu
  * JD-Core Version:    0.7.0.1
  */

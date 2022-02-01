@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-class obr
-  implements sgn
+public final class obr
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  obr(obq paramobq, rqj paramrqj) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    if (rqj.a() != null)
-    {
-      ocq localocq = (ocq)rqj.a().getManager(307);
-      if (localocq != null) {
-        localocq.a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Rqj.a(), true, paramInt1);
-      }
-    }
+    return new VideoInfo.DownloadBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obr
  * JD-Core Version:    0.7.0.1
  */

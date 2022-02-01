@@ -1,18 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibt
-  implements View.OnClickListener
+class aibt
+  implements DialogInterface.OnClickListener
 {
-  public aibt(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aibt(aiay paramaiay) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.u();
-    new azqx(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,8 +1,10 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
 public abstract interface bkln
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, bkkn parambkkn);
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

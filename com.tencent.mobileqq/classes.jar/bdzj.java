@@ -1,79 +1,118 @@
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import java.io.File;
-import java.util.HashSet;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController.1;
+import com.tencent.mobileqq.transfile.TransFileController.1.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class bdzj
+  implements ayyt
 {
-  public static final HashSet<String> a;
-  public static final String[] a;
-  public static final HashSet<String> b;
+  public bdzj(TransFileController.1 param1, boolean paramBoolean, String paramString) {}
   
-  static
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    b = new HashSet();
-    b.add(alof.aX + File.separator + "flashchat" + File.separator);
-    b.add(alof.bE);
-    b.add(alof.bF);
-    b.add(alof.bD);
-    b.add(alof.aZ);
-    b.add(alof.aW + "/tencent/MobileQQ/.troop/pic_effects/");
-    b.add(alof.aX + ".troop/enter_effects/");
-    b.add(alof.aX + ".gift/");
-    b.add(alof.aX + "qav/");
-    b.add(alof.aX + "new_ptv_template/");
-    b.add(alof.aX + "ptv_template/");
-    b.add(alof.aX + "funcall/");
-    b.add(alof.aX + "pddata/prd/av_redpacket/");
-    b.add(alof.aX + "pddata/prd/early");
-    b.add(alof.aX + "hotimage/");
-    b.add(alof.aX + "pddata/vas/");
-    b.add(alof.aX + ".profilecard/");
-    b.add(alof.aX + "head/");
-    b.add(alof.aX + ".hiboom_font/");
-    b.add(alof.aX + ".font_info/");
-    b.add(alof.aX + ".font_effect/");
-    b.add(alof.aX + ".pendant/");
-    b.add(alof.aX + ".vaspoke/");
-    b.add(alof.aX + "system_background/");
-    b.add(alof.aX + ".CorlorNick/");
-    b.add(alof.aX + "custom_background/");
-    b.add(alof.aX + ".starHead/");
-    b.add(alof.aX + "rbt/");
-    b.add(alof.aX + ".vipicon/");
-    b.add(alof.aX + "webso/offline/");
-    b.add(alof.aX + ".readInjoy/");
-    b.add(awzq.a);
-    b.add(alof.bg);
-    b.add(alof.aW + "/Tencent/ReaderZone/style/");
-    b.add(alof.aW + "/Tencent/ReaderZone/font/");
-    b.add(alof.aX + ".apollo/");
-    b.add(alof.aX + "DoutuRes" + File.separator);
-    b.add(alof.aW + "/tencent/TMAssistantSDK/Download/com.tencent.mobileqq" + File.separator);
-    b.add(alof.aW + "/tencent/MobileQQ/pddata/");
-    b.add(alof.aW + "/tencent/MobileQQ/pddata/APP/offline/html5/");
-    b.add(alof.aW + "/tencent/MobileQQ/pddata/APP/offline/tmp/");
-    b.add(alof.aW + "/tencent/MobileQQ/ShareScreenShots");
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aX + "diskcache" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(baqn.a);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aX + "photo/");
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aX + "thumb/");
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aX + "shortvideo" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(aujc.b);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.cV);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.cW);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aW + "/Tencent/QQfile_recv/");
-    jdField_a_of_type_JavaUtilHashSet.add(MiniAppFileManager.MINI_FILE_ROOT_PATH);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.bt);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.bu);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aX + ".Rock" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(alof.aW + "/Tencent/QQ_Collection/");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alof.aX + "keyword_emotion", alof.aX + ".sticker_recommended_pics", alof.aW + "/Tencent/QQ_CameraEmo", alof.aX + ".diy", alof.aX + "Scribble", alof.aX + ".emotionsm", alof.aW + "/Tencent/QQ_Favorite", alof.aX + "hotpic", alof.aX + "hugeimagecache", alof.aX + "ArkApp", alof.aX + "zhitu", alof.aX + "msgbackup", alof.aX + "qqmusic", alof.aX + "aio_long_shot", alof.aX + "tim_theme_aio", alof.aX + "qim_theme_aio", alof.aX + "nativemem", alof.aX + "pddata/prd/ar_promotion", alof.aX + "pddata/app/offline/html5", alof.aX + "iar", alof.aW + "/AVReportCenter" };
+    return null;
+  }
+  
+  public void a(ayyu paramayyu) {}
+  
+  public void b(ayyu paramayyu)
+  {
+    int j = 0;
+    Object localObject;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append(" onSend result is null ? ");
+      if (paramayyu != null) {
+        break label70;
+      }
+      bool = true;
+      localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
+      if (paramayyu != null) {
+        break label76;
+      }
+    }
+    label70:
+    label76:
+    for (int i = -99;; i = paramayyu.a)
+    {
+      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
+      if (paramayyu != null) {
+        break label84;
+      }
+      return;
+      bool = false;
+      break;
+    }
+    label84:
+    if (paramayyu.a == 0)
+    {
+      bool = true;
+      label94:
+      localObject = (anip)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
+      if (localObject == null) {
+        break label226;
+      }
+      ((anip)localObject).a(bool, this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      if (bool) {
+        break label233;
+      }
+      bghy.a("TransferRequest.onSend", paramayyu.b, paramayyu.toString());
+      if (!"FROM_MINI_APP".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label394;
+      }
+      if (!bool) {
+        break label396;
+      }
+      i = j;
+      if (!bool) {
+        break label403;
+      }
+    }
+    label133:
+    label151:
+    label170:
+    for (paramayyu = "ok";; paramayyu = "upload failed")
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_code", i);
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_desc", paramayyu);
+      anjg.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent);
+      return;
+      bool = false;
+      break label94;
+      label226:
+      bghy.a(null);
+      break label133;
+      label233:
+      if (((Integer)axdz.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+        axdz.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new TransFileController.1.1.1(this));
+      }
+      if (bgsg.af(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) == 2) {
+        break label151;
+      }
+      paramayyu = (anip)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(Integer.valueOf(42104));
+      paramayyu.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, (ArrayList)localObject);
+      break label151;
+      break;
+      i = -10002;
+      break label170;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdzj
  * JD-Core Version:    0.7.0.1
  */

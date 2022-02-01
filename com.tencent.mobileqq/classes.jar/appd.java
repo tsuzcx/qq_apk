@@ -1,26 +1,20 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
 
 public class appd
-  extends DataSetObserver
 {
-  public appd(DragSortListView paramDragSortListView) {}
+  protected static boolean a = false;
   
-  private void a()
+  public static void a()
   {
-    if (this.a.g == 4) {
-      this.a.a();
+    if (!a) {
+      a = true;
     }
   }
   
-  public void onChanged()
+  public static void a(appf paramappf)
   {
-    a();
-  }
-  
-  public void onInvalidated()
-  {
-    a();
+    ThreadManager.post(new ArkMessageServerLogic.1(paramappf), 5, null, true);
   }
 }
 

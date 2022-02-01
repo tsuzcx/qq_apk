@@ -1,32 +1,25 @@
-import android.content.Intent;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class airz
-  implements MediaScanner.OnMediaInfoScannerListener
+public class airz
+  implements DialogInterface.OnClickListener
 {
-  airz(airx paramairx, Intent paramIntent, ArrayList paramArrayList) {}
+  public airz(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bnfr.a(this.jdField_a_of_type_Airx.mActivity, paramLocalMediaInfo))
+    switch (paramInt)
     {
-      if ((airx.a(this.jdField_a_of_type_Airx) != null) && (paramLocalMediaInfo.mDuration > airx.a(this.jdField_a_of_type_Airx).videoDurationLimit))
-      {
-        ((NewPhotoListActivity)this.jdField_a_of_type_Airx.mActivity).cancleProgressDailog();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.a(this.jdField_a_of_type_Airx.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-        return;
-      }
-      new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration).a(new aisa(this, paramLocalMediaInfo));
-      zaj.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
       return;
     }
-    ((NewPhotoListActivity)this.jdField_a_of_type_Airx.mActivity).cancleProgressDailog();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public final class axli
-  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
+final class axli
+  implements bihh
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
-  {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
-  }
+  axli(String paramString, axlm paramaxlm) {}
   
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Axlm != null) {
+        this.jdField_a_of_type_Axlm.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Axlm == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axlm.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axli
  * JD-Core Version:    0.7.0.1
  */

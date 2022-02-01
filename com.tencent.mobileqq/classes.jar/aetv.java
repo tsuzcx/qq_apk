@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-final class aetv
-  implements bhum
+public class aetv
+  implements bkhy
 {
-  aetv(QQAppInterface paramQQAppInterface) {}
+  public aetv(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
   public void onDismiss()
   {
-    azqs.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+    if (this.a.a) {
+      this.a.finish();
+    }
   }
 }
 

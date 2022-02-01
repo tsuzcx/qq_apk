@@ -1,9 +1,12 @@
-public class aqub
+import java.util.Comparator;
+
+final class aqub
+  implements Comparator<bdrj>
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  public int a(bdrj parambdrj1, bdrj parambdrj2)
+  {
+    return parambdrj1.c - parambdrj2.c;
+  }
 }
 
 

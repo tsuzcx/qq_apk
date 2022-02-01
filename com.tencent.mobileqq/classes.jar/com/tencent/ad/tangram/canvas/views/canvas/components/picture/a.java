@@ -14,10 +14,12 @@ public class a
   public boolean enableRoundRectBackground = false;
   public int floatingBarBackgroundColor;
   public int floatingBarTextColor;
-  public String guassianUrl;
+  public String gaussianUrl;
   public int height = 0;
+  public boolean hitLoadImageExp = false;
   public ArrayList<c> hotAreaList;
   public String imageId;
+  public boolean isLoadFirst = true;
   public int radius = 0;
   public String url;
   public int width = 0;
@@ -34,7 +36,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.picture.a
  * JD-Core Version:    0.7.0.1
  */

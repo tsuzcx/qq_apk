@@ -1,27 +1,100 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
-class acsm
-  implements DialogInterface.OnClickListener
+public class acsm
+  implements DownloadListener
 {
   acsm(acsl paramacsl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (this.a.a.a() != null)
+    if ((acsl.a(this.a) == null) || (acsl.a(this.a).getAppId() == null) || (acsl.a(this.a).getAppPackageName() == null) || (!acsl.a(this.a).getAppId().equals(paramString1)) || (!acsl.a(this.a).getAppPackageName().equals(paramString2)))
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+      acqy.d("GdtDownloadReportManager", "no ad or not the same ad");
+      return;
     }
-    paramDialogInterface.dismiss();
+    paramString2 = acsl.a(this.a, paramString2);
+    ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
+    do
+    {
+      return;
+      acqy.a("GdtDownloadReportManager", "onDownloadFinish: infos:" + paramDownloadInfo.f);
+      if ((acsl.a(this.a).containsKey(paramDownloadInfo.c)) && (acsl.a(this.a).get(paramDownloadInfo.c) != null))
+      {
+        acrm.a((Ad)acsl.a(this.a).get(paramDownloadInfo.c), 274);
+        return;
+      }
+    } while (!acsl.a(this.a, paramDownloadInfo, acsl.a(this.a)));
+    acrm.a(acsl.a(this.a), 274);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
+    do
+    {
+      return;
+      acqy.a("GdtDownloadReportManager", "onDownloadPause: infos:" + paramDownloadInfo.f);
+      if ((acsl.a(this.a).containsKey(paramDownloadInfo.c)) && (acsl.a(this.a).get(paramDownloadInfo.c) != null))
+      {
+        acrm.a((Ad)acsl.a(this.a).get(paramDownloadInfo.c), 273);
+        acsl.b(this.a).put(paramDownloadInfo.c, acsl.a(this.a).get(paramDownloadInfo.c));
+        return;
+      }
+    } while (!acsl.a(this.a, paramDownloadInfo, acsl.a(this.a)));
+    acrm.a(acsl.a(this.a), 273);
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      acqy.a("GdtDownloadReportManager", "onDownloadUpdate: infos:" + paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if ((localDownloadInfo != null) && (!TextUtils.isEmpty(localDownloadInfo.c)))
+        {
+          acqy.a("GdtDownloadReportManager", "onDownloadUpdate: progress:" + localDownloadInfo.f);
+          if ((acsl.b(this.a).containsKey(localDownloadInfo.c)) && (acsl.b(this.a).get(localDownloadInfo.c) != null))
+          {
+            acrm.a((Ad)acsl.b(this.a).get(localDownloadInfo.c), 271);
+            acsl.b(this.a).remove(localDownloadInfo.c);
+          }
+        }
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    installSucceed(paramString1, paramString2);
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

@@ -1,11 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
+import bjww;
 import java.util.ArrayList;
 
-class MiniAppProxyImpl$1
+public class MiniAppProxyImpl$1
   extends ArrayList<Integer>
 {
-  MiniAppProxyImpl$1(MiniAppProxyImpl paramMiniAppProxyImpl)
+  public MiniAppProxyImpl$1(bjww parambjww)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));
@@ -15,7 +16,7 @@ class MiniAppProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

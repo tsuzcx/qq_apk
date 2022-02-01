@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import tnw;
+import uuw;
 
 public class RotationSeekBar
   extends SeekBar
@@ -17,7 +17,7 @@ public class RotationSeekBar
   private static float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private tnw jdField_a_of_type_Tnw;
+  private uuw jdField_a_of_type_Uuw;
   private float[] jdField_a_of_type_ArrayOfFloat;
   
   public RotationSeekBar(Context paramContext)
@@ -93,8 +93,8 @@ public class RotationSeekBar
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Tnw != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Tnw.a();
+    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Uuw != null)) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Uuw.a();
     }
     MotionEvent localMotionEvent;
     if (this.jdField_a_of_type_Int == 0)
@@ -147,14 +147,14 @@ public class RotationSeekBar
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnRotationChangeListener(tnw paramtnw)
+  public void setOnRotationChangeListener(uuw paramuuw)
   {
-    this.jdField_a_of_type_Tnw = paramtnw;
+    this.jdField_a_of_type_Uuw = paramuuw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

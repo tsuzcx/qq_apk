@@ -1,78 +1,111 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class band
+  implements GLGestureListener
 {
-  static String jdField_a_of_type_JavaLangString;
-  static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?=.*,)(?=.*#)(\\+*[0-9]+[\\-,]*)?(\\([0-9]+\\)[\\-,]*)?([0-9][0-9\\-,][0-9\\-,#]+#)");
-  public static final String b;
-  public static final Pattern b;
-  public static final Pattern c;
-  static final Pattern d;
-  public static final Pattern e;
-  public static final Pattern f;
-  public static final Pattern g = Pattern.compile(jdField_b_of_type_JavaLangString, 2);
+  int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  int jdField_b_of_type_Int;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private final int c;
+  private final int d;
+  private final int e;
   
-  static
+  public band(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "((100)(00|10|11|50|60|86))|(11185)|(12110)|((123)(10|15|18|20|33|36|45|48|51|55|58|61|65|66|69|80|95|98))|((950)(00|01|03|05|06|08|09|10|11|13|15|16|18|19|22|28|29|30|33|50|51|52|53|55|56|57|58|59|61|63|66|70|71|77|78|80|88|90|95|98|99))|((951)(00|01|02|03|05|06|07|08|09|11|13|15|16|17|18|19|21|22|23|28|30|31|32|33|35|37|38|39|48|51|55|58|60|66|68|69|77|78|80|81|85|86|88|90|95|98|99))|((955)(00|01|02|05|08|09|10|11|12|15|16|18|19|22|28|33|55|56|58|59|61|65|66|67|68|69|77|80|85|86|88|89|90|91|95|96|98|99))|((957)(00|01|02|68|77|88|98|99))|((958)(03|08|10|11|15|16|21|22|25|26|27|28|29|30|32|38|39|55|56|59|65|66|68|82|87|88))|((959)(02|06|09|33|50|51|56|59|63|68|69|93|96|98|99))|((96011))|((961)(02|03|10|30|48|56|89|98))|(96315)|(96677)|(96678)|(96822)|(\\+[0-9]+[\\-]*)?(\\([0-9]+\\)[\\-]*)?([0-9][0-9\\-][0-9\\-]+[0-9])";
-    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("[\\d]{5,15}");
-    c = Pattern.compile("[\\d,]+");
-    d = Pattern.compile("((100)(00|10|11|50|60|86))|(11185)|(12110)|((123)(10|15|18|20|33|36|45|48|51|55|58|61|65|66|69|80|95|98))|((950)(00|01|03|05|06|08|09|10|11|13|15|16|18|19|22|28|29|30|33|50|51|52|53|55|56|57|58|59|61|63|66|70|71|77|78|80|88|90|95|98|99))|((951)(00|01|02|03|05|06|07|08|09|11|13|15|16|17|18|19|21|22|23|28|30|31|32|33|35|37|38|39|48|51|55|58|60|66|68|69|77|78|80|81|85|86|88|90|95|98|99))|((955)(00|01|02|05|08|09|10|11|12|15|16|18|19|22|28|33|55|56|58|59|61|65|66|67|68|69|77|80|85|86|88|89|90|91|95|96|98|99))|((957)(00|01|02|68|77|88|98|99))|((958)(03|08|10|11|15|16|21|22|25|26|27|28|29|30|32|38|39|55|56|59|65|66|68|82|87|88))|((959)(02|06|09|33|50|51|56|59|63|68|69|93|96|98|99))|((96011))|((961)(02|03|10|30|48|56|89|98))|(96315)|(96677)|(96678)|(96822)");
-    e = Pattern.compile(jdField_a_of_type_JavaLangString);
-    f = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
-    jdField_b_of_type_JavaLangString = bdix.c.pattern() + "|" + bdix.d.pattern() + "|" + "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+" + "|" + "(?=.*,)(?=.*#)(\\+*[0-9]+[\\-,]*)?(\\([0-9]+\\)[\\-,]*)?([0-9][0-9\\-,][0-9\\-,#]+#)" + "|" + "[\\d]{5,15}" + "|" + jdField_a_of_type_JavaLangString;
+    paramContext = ViewConfiguration.get(paramContext);
+    this.c = ViewConfiguration.getDoubleTapTimeout();
+    this.d = 1000;
+    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
+    this.e = paramContext.getScaledTouchSlop();
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  static List<bame> a(String paramString)
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (a(paramString)) {}
-    for (;;)
+    int i = (int)paramFloat3 - (int)paramFloat1;
+    int j = (int)paramFloat4 - (int)paramFloat2;
+    return i * i + j * j > this.e;
+  }
+  
+  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    int i;
+    int j;
+    do
     {
-      return localArrayList;
-      if (bdix.jdField_b_of_type_JavaUtilRegexPattern.matcher(paramString).find())
+      do
       {
-        Matcher localMatcher1 = g.matcher(paramString);
-        while (localMatcher1.find())
+        return false;
+      } while ((Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) || (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) || (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())));
+      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    } while (i * i + j * j >= this.jdField_b_of_type_Int);
+    return true;
+  }
+  
+  public int onGetPriority()
+  {
+    return 0;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean)) {}
+    switch (j & 0xFF)
+    {
+    default: 
+      return false;
+    case 0: 
+      GLSurfaceView localGLSurfaceView;
+      if (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))
+      {
+        localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
+        if (localGLSurfaceView != null)
         {
-          int i = localMatcher1.start();
-          int j = localMatcher1.end();
-          String str = paramString.substring(i, j);
-          if (bdix.c.matcher(str).find()) {
-            localArrayList.add(new bame(str, i, j));
-          } else if (bdix.d.matcher(str).find()) {
-            localArrayList.add(new bame(str, i, j));
-          } else if (jdField_a_of_type_JavaUtilRegexPattern.matcher(str).find()) {
-            localArrayList.add(new bame(str, i, j));
-          } else if (c.matcher(str).find())
-          {
-            if ((j - i >= 5) && (j - i <= 16))
-            {
-              Matcher localMatcher2 = d.matcher(str);
-              if (((j - i != 5) || (localMatcher2.find())) && ((i <= 0) || (!a(paramString.charAt(i - 1)))) && ((j >= paramString.length()) || (!a(paramString.charAt(j))))) {
-                localArrayList.add(new bame(str, i, j));
-              }
-            }
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if (!(localGLSurfaceView instanceof CameraCaptureView)) {
+            break label168;
           }
-          else {
-            localArrayList.add(new bame(str, i, j));
-          }
+          ((CameraCaptureView)localGLSurfaceView).q();
+        }
+      }
+      for (;;)
+      {
+        yqu.a("camera_clkdouble", banm.jdField_a_of_type_Int, 0, new String[0]);
+        banm.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });
+        }
+        if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+          this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+        }
+        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        return false;
+        label168:
+        if ((localGLSurfaceView instanceof AECameraGLSurfaceView)) {
+          ((AECameraGLSurfaceView)localGLSurfaceView).j();
         }
       }
     }
-  }
-  
-  public static boolean a(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return (paramString == null) || ("".equals(paramString));
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    return false;
   }
 }
 

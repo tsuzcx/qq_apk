@@ -1,34 +1,40 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import com.tencent.biz.subscribe.network.DoTipOffRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
-final class yln
-  implements bhuk
+public class yln
 {
-  yln(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr, bhuf parambhuf) {}
+  public int a;
+  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
+  public String a;
+  public final ArrayList<String> a;
+  public wqp a;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public yln()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
-      VSNetworkHelper.a().a(paramView, new ylo(this));
-      if (this.jdField_a_of_type_Ylr != null) {
-        this.jdField_a_of_type_Ylr.a(false);
-      }
-    }
+    this(0, null);
+  }
+  
+  public yln(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Wqp = new wqp();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
+  }
+  
+  public static yln a(String paramString)
+  {
+    yln localyln = new yln();
+    localyln.jdField_a_of_type_JavaLangString = paramString;
+    return localyln;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yln
  * JD-Core Version:    0.7.0.1
  */

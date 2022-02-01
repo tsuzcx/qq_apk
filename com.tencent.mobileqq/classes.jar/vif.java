@@ -1,40 +1,33 @@
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudWrite.StDoReplyRsp;
+import java.util.Map;
+
 class vif
-  implements vkw
+  implements zxa<FeedCloudWrite.StDoReplyRsp>
 {
-  vif(vic paramvic) {}
+  vif(vhu paramvhu, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    if (vic.a(this.a) != null) {
-      vic.a(this.a).c();
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoReplyRsp == null))
+    {
+      QLog.e("QCircleCommentBusiness", 1, "deleteCommentReply error:" + paramLong + "  errorMsg:" + paramString);
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    vic.a(this.a).a(paramInt);
-    if (vic.a(this.a) != null) {
-      vic.a(this.a).b(paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (vic.a(this.a) != null) {
-      vic.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (vic.a(this.a) != null) {
-      vic.a(this.a).d(-1);
-    }
+    QLog.d("QCircleCommentBusiness", 1, "deleteCommentReply Success");
+    paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get());
+    vhu.a(this.jdField_a_of_type_Vhu).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vhu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1));
+    zwp.a().a(new QCircleCommentUpdateEvent(6, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Vhu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vif
  * JD-Core Version:    0.7.0.1
  */

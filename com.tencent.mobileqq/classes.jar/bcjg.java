@@ -1,15 +1,47 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.maxvideo.mediadevice.AVCodec;
 
 public class bcjg
-  implements bcqu
 {
-  public bcjg(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public static bcjg a;
+  public static String a;
+  private bchb a;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  static
   {
-    paramView.setVisibility(8);
+    jdField_a_of_type_Bcjg = new bcjg();
+  }
+  
+  private bcjg()
+  {
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
+  
+  public static bcjg a()
+  {
+    return jdField_a_of_type_Bcjg;
+  }
+  
+  public bchb a()
+  {
+    if (this.jdField_a_of_type_Bchb == null) {
+      this.jdField_a_of_type_Bchb = new bchb(40, bcjb.c);
+    }
+    return this.jdField_a_of_type_Bchb;
+  }
+  
+  public bche a()
+  {
+    return bche.a();
+  }
+  
+  public AVCodec a()
+  {
+    return AVCodec.get();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bchb = null;
   }
 }
 

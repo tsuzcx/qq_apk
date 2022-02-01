@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class akvn
+public abstract interface akvn
 {
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<ApolloGameData> b = new ArrayList();
-  public List<String> c = new ArrayList();
-  
-  public akvn(akvj paramakvj)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

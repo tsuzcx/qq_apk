@@ -1,56 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ayli
-  extends aynv
+public class ayli
+  implements View.OnClickListener
 {
-  protected QQAppInterface a;
-  protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
+  public ayli(PromotionEntry paramPromotionEntry, aosj paramaosj) {}
   
-  public ayli(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
+    bcst.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Aosj.a, "0", "0", "");
+    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Aosj);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.d == null) {
-      this.d = ayvm.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    return this.d;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public abstract CharSequence e();
 }
 
 

@@ -1,21 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adoz
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public adoz(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adoz(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.a();
-      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
-    }
-    return true;
+    this.a.b.dismiss();
   }
 }
 

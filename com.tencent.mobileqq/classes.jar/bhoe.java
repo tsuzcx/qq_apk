@@ -1,21 +1,15 @@
-public class bhoe
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+
+public abstract interface bhoe
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public String toString()
-  {
-    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
-  }
+  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoe
  * JD-Core Version:    0.7.0.1
  */

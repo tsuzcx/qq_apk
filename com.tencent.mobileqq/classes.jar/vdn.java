@@ -1,17 +1,43 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
 
-public final class vdn
-  extends uli
+class vdn
+  implements DialogInterface.OnClickListener
 {
-  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
-  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
+  vdn(vde paramvde) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (!vde.a(this.a).a.isRecomFd.get()) {
+        break label118;
+      }
+      paramDialogInterface = new FeedCloudMeta.StFeed();
+      paramDialogInterface.id.set(vde.a(this.a).a.recomForward.id.get());
+      paramDialogInterface.poster.set(vde.a(this.a).a.recomForward.poster.get());
+    }
+    for (;;)
+    {
+      String str = paramDialogInterface.id.get();
+      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
+      VSNetworkHelper.a().a(paramDialogInterface, new vdo(this, str));
+      return;
+      label118:
+      paramDialogInterface = vde.a(this.a).a;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdn
  * JD-Core Version:    0.7.0.1
  */

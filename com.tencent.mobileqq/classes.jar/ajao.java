@@ -1,146 +1,104 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajao
-  extends ajan
+  extends anqd
 {
-  private static volatile ajao a;
+  public ajao(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  private ajao(AppRuntime paramAppRuntime)
+  protected void a(String paramString)
   {
-    super(paramAppRuntime);
-    ajaw.a().a();
-  }
-  
-  public static ajao a()
-  {
-    return a(BaseApplicationImpl.getApplication().getRuntime());
-  }
-  
-  @Deprecated
-  public static ajao a(AppRuntime paramAppRuntime)
-  {
-    if (jdField_a_of_type_Ajao == null) {}
-    try
+    if (this.a.a())
     {
-      if (jdField_a_of_type_Ajao == null) {
-        jdField_a_of_type_Ajao = new ajao(paramAppRuntime);
+      paramString = this.a.getResources().getString(2131718381);
+      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    }
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
       }
-      return jdField_a_of_type_Ajao;
     }
-    finally {}
-  }
-  
-  public static ResultReceiver a(ResultReceiver paramResultReceiver)
-  {
-    if (paramResultReceiver == null) {
-      return null;
-    }
-    Parcel localParcel = Parcel.obtain();
-    paramResultReceiver.writeToParcel(localParcel, 0);
-    localParcel.setDataPosition(0);
-    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    return paramResultReceiver;
-  }
-  
-  private void a(String paramString1, Bundle paramBundle, ajah paramajah, String paramString2)
-  {
-    paramBundle.putParcelable("receiver", a(new PreloadManagerProxy.1(this, null, paramajah, paramString2)));
-    if (paramString1.equals("downloadModule")) {
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadModule", paramBundle, null);
-    }
-    while (!paramString1.equals("downloadRes")) {
-      return;
-    }
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadRes", paramBundle, null);
-  }
-  
-  public void a(DownloadParam paramDownloadParam, ajal paramajal)
-  {
-    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {}
-    do
-    {
-      return;
-      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("method_type", 1);
-        localBundle.putSerializable("download_params", paramDownloadParam);
-        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new ajaq(this, paramajal, paramDownloadParam));
-        return;
-      }
-    } while (paramajal == null);
-    paramajal.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadParam.url));
-  }
-  
-  public void a(String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramResultReceiver == null) {
-      return;
-    }
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("id", paramString);
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new ajap(this, paramResultReceiver));
-      return;
-    }
-    paramResultReceiver.send(0, null);
-  }
-  
-  @Deprecated
-  public void a(String paramString1, String paramString2, ajah paramajah)
-  {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("id", paramString1);
-      localBundle.putString("config_str", paramString2);
-      a("downloadModule", localBundle, paramajah, paramString1);
-    }
-  }
-  
-  public String d(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      localObject1 = localObject2;
-    }
+    long l1;
+    structmsg.StructMsg localStructMsg;
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadManagerProxy", 2, "getVideoResPathByID:" + paramString + "|" + (String)localObject1);
-      }
-      return localObject1;
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("mid", paramString);
-      ajaw.a().a();
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject1);
-      localObject1 = localObject2;
-      if (localEIPCResult != null)
+      return;
+      long l2 = bdgm.a().b();
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString1)) {}
+      try
       {
-        localObject1 = localObject2;
-        if (localEIPCResult.isSuccess()) {
-          localObject1 = localEIPCResult.data.getString("path");
+        l1 = Long.parseLong(paramString1);
+        localStructMsg = bdgm.a().a(Long.valueOf(l1));
+        if (!paramBoolean) {
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+            if (!bdgo.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+              continue;
+            }
+            SystemRequestInfoView.a(this.a).finish();
+            return;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          l1 = l2;
+          continue;
+          paramString3 = this.a.getResources().getString(2131717746);
+        }
+        bdgo.a(localStructMsg, paramInt1, paramString2, paramInt2);
+        paramString2 = null;
+        if (paramInt1 != 1) {
+          break label234;
+        }
+      }
+    }
+    SystemRequestInfoView.a(this.a).finish();
+    paramString1 = this.a.getResources().getString(2131692412);
+    for (;;)
+    {
+      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      return;
+      label234:
+      paramString1 = paramString2;
+      if (paramInt1 == 0)
+      {
+        paramString1 = paramString2;
+        if (localStructMsg != null)
+        {
+          paramString1 = this.a.getResources().getString(2131692406);
+          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
         }
       }
     }
   }
+  
+  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 

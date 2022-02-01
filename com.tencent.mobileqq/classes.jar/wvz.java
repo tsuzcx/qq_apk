@@ -1,18 +1,25 @@
-import android.os.Handler;
+import java.util.ArrayList;
 
-class wvz
-  implements wry
+public class wvz
+  extends weu
 {
-  wvz(wvy paramwvy) {}
+  public final int a;
+  public ArrayList<wvy> a;
   
-  public void a(wrd paramwrd)
+  public wvz(int paramInt)
   {
-    wvq.a(this.a.a).sendMessage(wvq.a(this.a.a).obtainMessage(0, paramwrd));
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvz
  * JD-Core Version:    0.7.0.1
  */

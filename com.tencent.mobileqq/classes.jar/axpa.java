@@ -1,101 +1,75 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class axpa
-  implements GLGestureListener
+  implements axkz
 {
-  protected View a;
-  private axpb a;
-  protected ProviderContainerView a;
-  protected AEMaterialPanel a;
-  protected AEProviderContainerView a;
-  protected QIMProviderContainerView a;
+  axpa(axop paramaxop) {}
   
-  public axpa() {}
-  
-  public axpa(QIMProviderContainerView paramQIMProviderContainerView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(axpb paramaxpb)
-  {
-    this.jdField_a_of_type_Axpb = paramaxpb;
-  }
-  
-  public void a(AEMaterialPanel paramAEMaterialPanel)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
-  }
-  
-  public void a(AEProviderContainerView paramAEProviderContainerView)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1060;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int j = paramMotionEvent.getPointerCount();
-    int k = paramMotionEvent.getAction() & 0xFF;
-    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      bljn.a("CameraProviderViewGesture", i);
-      if ((j == 1) && (!paramBoolean)) {}
-      switch (k)
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
-      default: 
-        return false;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + axop.c(this.a));
+        }
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + axop.c(this.a));
+          }
+          if (paramArrayOfByte.ret.get() == 0)
+          {
+            axop.c(this.a, true);
+            if (axop.d(this.a))
+            {
+              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
+              axop.d(this.a, false);
+            }
+            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
+            new axlq().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (axby)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
+          {
+            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
+            return;
+          }
+        }
       }
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
-    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
-    {
-      if (this.jdField_a_of_type_Axpb != null) {
-        this.jdField_a_of_type_Axpb.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
+        paramArrayOfByte.printStackTrace();
       }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
-      {
-        bljn.a("CameraProviderViewGesture", "in hide close panel.");
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
-      }
-      if ((localObject == null) || (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView == null) || (paramMotionEvent.getY() >= ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
-        break;
-      }
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
-      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpa
  * JD-Core Version:    0.7.0.1
  */

@@ -26,6 +26,7 @@ public class TransactionReport
   
   public static void reportFunction(String paramString, Transaction paramTransaction, HashMap<String, String> paramHashMap)
   {
+    int j = 1;
     Object localObject = paramHashMap;
     if (paramHashMap == null) {
       localObject = new HashMap();
@@ -40,14 +41,27 @@ public class TransactionReport
       paramHashMap = "1";
       ((HashMap)localObject).put("param_succ_flag", paramHashMap);
       if (!paramTransaction.mTransReport.isIpv6) {
-        break label205;
+        break label239;
+      }
+      i = 1;
+      label92:
+      ((HashMap)localObject).put("param_is_ipv6", String.valueOf(i));
+      if (!paramTransaction.mTransReport.mIPv6Fast) {
+        break label244;
+      }
+      i = 1;
+      label116:
+      ((HashMap)localObject).put("param_hasV6List", String.valueOf(i));
+      if (!paramTransaction.mTransReport.mHasIpv6List) {
+        break label249;
       }
     }
-    label205:
-    for (int i = 1;; i = 0)
+    label239:
+    label244:
+    label249:
+    for (int i = j;; i = 0)
     {
-      ((HashMap)localObject).put("param_is_ipv6", String.valueOf(i));
-      ((HashMap)localObject).put("param_net_ip_type", String.valueOf(paramTransaction.mTransReport.netIpType));
+      ((HashMap)localObject).put("param_ipv6First", String.valueOf(i));
       paramHashMap = new RdmReq();
       paramHashMap.eventName = paramString;
       paramHashMap.elapse = (SystemClock.uptimeMillis() - paramTransaction.startTime);
@@ -68,6 +82,10 @@ public class TransactionReport
       }
       paramHashMap = "0";
       break;
+      i = 0;
+      break label92;
+      i = 0;
+      break label116;
     }
   }
   

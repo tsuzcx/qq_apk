@@ -2,7 +2,7 @@ package com.tencent.beacon.core.a.a;
 
 import java.util.Locale;
 
-public final class d
+public class d
 {
   public static int a = 30;
   public static final String[][] b = new String[7][];
@@ -20,7 +20,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.a.a.d
  * JD-Core Version:    0.7.0.1
  */

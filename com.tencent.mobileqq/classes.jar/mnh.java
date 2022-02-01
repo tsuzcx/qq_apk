@@ -1,108 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.view.KeyEvent;
-import android.view.View;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-
-public abstract class mnh
+class mnh
 {
-  protected int a;
-  protected long a;
-  public final VideoInviteActivity a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
+  public int a;
+  public mng a;
+  public boolean a;
   
-  public mnh(VideoInviteActivity paramVideoInviteActivity)
+  public mnh(mng parammng, boolean paramBoolean)
   {
+    this.jdField_a_of_type_Mng = parammng;
+    this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
-    this.jdField_a_of_type_Long = AudioHelper.b();
-    this.jdField_b_of_type_Int = mww.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
-    this.jdField_b_of_type_Int = mww.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
   }
   
-  public void BtnOnClick(View paramView) {}
-  
-  public int a()
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Resources a()
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, String paramString, Intent paramIntent) {}
-  
-  protected void a(String paramString)
-  {
-    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
-  }
-  
-  public void a(mnh parammnh)
-  {
-    if (parammnh != null)
-    {
-      this.jdField_b_of_type_Long = parammnh.jdField_b_of_type_Long;
-      this.c = parammnh.c;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      for (;;)
+      {
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
+        }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mng.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Mng.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Mng.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (a())
     {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-      return;
+      i = 0;
+      return i;
     }
-    this.c = SystemClock.elapsedRealtime();
+    paramInt2 = Math.min(this.jdField_a_of_type_Mng.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Mng.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
   }
   
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public boolean a()
   {
-    return false;
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mng.a.length);
   }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mnh
  * JD-Core Version:    0.7.0.1
  */

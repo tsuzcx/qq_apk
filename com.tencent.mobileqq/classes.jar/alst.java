@@ -1,22 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class alst
-  implements alzw
+  extends anmu
 {
-  public alst(FrameHelperActivity paramFrameHelperActivity) {}
+  public alst(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a()
-  {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
-  }
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alst
  * JD-Core Version:    0.7.0.1
  */

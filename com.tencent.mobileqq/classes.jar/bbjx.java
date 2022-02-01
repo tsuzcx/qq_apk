@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bbjx
-  implements QQPermissionCallback
+public class bbjx
+  extends anxw
 {
-  public bbjx(BaseActivity paramBaseActivity) {}
+  public bbjx(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, String paramString)
   {
-    if (!this.a.isFinishing()) {
-      bdgm.b(this.a);
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
     }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void a(int paramInt, List<BusinessGroupWord> paramList)
+  {
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

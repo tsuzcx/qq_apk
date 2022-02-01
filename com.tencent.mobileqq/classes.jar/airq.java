@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 class airq
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  airq(airj paramairj, Runnable paramRunnable) {}
+  airq(airp paramairp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 

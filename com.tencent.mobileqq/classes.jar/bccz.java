@@ -1,75 +1,89 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import java.util.ArrayList;
-import java.util.List;
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bccz
-  extends BaseAdapter
+  extends MSFServlet
 {
-  protected SearchReciteArticleFragment a;
-  protected String a;
-  protected List<bccy> a;
-  
-  public bccz(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
-  }
-  
-  public bccy a(int paramInt)
-  {
-    return (bccy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(bccy parambccy)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambccy);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560474, null, false);
-      paramViewGroup = new bcda(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378722));
-      paramView.setTag(paramViewGroup);
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      bccy localbccy = a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localbccy.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramViewGroup.b.setText(localbccy.b);
-      return paramView;
-      paramViewGroup = (bcda)paramView.getTag();
+      return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
+      }
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bguc.b(paramFromServiceMsg.getWupBuffer());
+      try
+      {
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bkze.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
+          {
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = bgmj.a((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
+            {
+              paramFromServiceMsg.apply();
+              return;
+            }
+          }
+        }
+      }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
+      }
     }
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = bgmj.a(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
+    }
+    blrc localblrc = new blrc(l, arrayOfByte);
+    arrayOfByte = localblrc.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localblrc.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localblrc.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

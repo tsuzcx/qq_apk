@@ -1,45 +1,52 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ExecutorService;
 
-public abstract class avkr
+public class avkr
+  implements IShadow
 {
-  protected Context a;
-  protected View a;
+  private avgz a;
   
-  public avkr(Context paramContext)
+  private void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  protected abstract int a();
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    int i = a();
-    if (i > 0)
+    try
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
+      avkt.a().a().b("enter_shadow_err").c(paramString).b();
+      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
+      return;
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      return this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidViewView = null;
+      paramString.printStackTrace();
     }
   }
   
-  protected void a(View paramView) {}
+  public avgz a(Context paramContext, String paramString1, String paramString2)
+  {
+    return avhi.a(paramContext, paramString1, paramString2);
+  }
   
-  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    anvy.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.a != null;
+  }
+  
+  public void setILoggerFactory() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkr
  * JD-Core Version:    0.7.0.1
  */

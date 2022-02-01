@@ -1,82 +1,100 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class arus
+class arus
+  extends bhhe
 {
-  public static final int[] a;
-  protected Context a;
-  protected Bundle a;
-  protected QQAppInterface a;
-  protected QFileSendBottomView a;
-  protected boolean a;
-  
-  static
+  arus(arup paramarup, String paramString1, String paramString2)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 5 };
+    super(paramString1, paramString2);
   }
   
-  public arus(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  public void onDone(bhhf parambhhf)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView = paramQFileSendBottomView;
-  }
-  
-  public static arus a(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView, Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("qfile_search_param_exparams_busi_type");
-    paramBundle.getInt("qfile_search_param_exparams_peer_type");
-    if (i == 1) {
-      paramQQAppInterface = new aroa(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    try
+    {
+      super.onDone(parambhhf);
+      Bundle localBundle = parambhhf.a();
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonPackage.epId);
+      int i = localBundle.getInt("businessType");
+      if (parambhhf.a() != 3) {}
+      for (boolean bool = true;; bool = false)
+      {
+        long l1 = parambhhf.h;
+        long l2 = parambhhf.g;
+        this.a.a(localBundle, parambhhf, bool, parambhhf.jdField_a_of_type_Int, parambhhf.d, l1 - l2, i);
+        return;
+      }
+      return;
     }
+    catch (Exception parambhhf)
+    {
+      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDone failed", parambhhf);
+    }
+  }
+  
+  public void onDoneFile(bhhf parambhhf)
+  {
     for (;;)
     {
-      paramQQAppInterface.a(paramBundle);
-      return paramQQAppInterface;
-      if (i == 5) {
-        paramQQAppInterface = new arnx(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-      } else {
-        paramQQAppInterface = new arut(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+      int i;
+      try
+      {
+        Object localObject = parambhhf.a();
+        i = ((Bundle)localObject).getInt(parambhhf.c);
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "emotionDownloadListener | onDoneFile epId=" + localEmoticonPackage.epId + ",task:" + parambhhf);
+        }
+        arup.jdField_a_of_type_Aruo.b(localEmoticonPackage, (int)parambhhf.jdField_a_of_type_Long, (int)parambhhf.b);
+        if (i == 9)
+        {
+          localObject = ((Bundle)localObject).getString(parambhhf.c + "emoticonId");
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (localEmoticonPackage != null)) {
+            arup.a(this.a, localEmoticonPackage.epId, (String)localObject, parambhhf.jdField_a_of_type_Int);
+          }
+        }
+        if (parambhhf.jdField_a_of_type_Int != 0)
+        {
+          QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDoneFile : ondone error , reportCode = " + parambhhf.jdField_a_of_type_Int);
+          if (arup.a(i)) {
+            arup.jdField_a_of_type_Aruo.a(localEmoticonPackage, i, -1, parambhhf.jdField_a_of_type_Int);
+          }
+          bhab.a("emotionType", "emotionActionDownload", "10", localEmoticonPackage.epId, "", "", parambhhf.jdField_a_of_type_Int + "", "", "", "");
+          return;
+        }
+        if (arup.a(i))
+        {
+          arup.jdField_a_of_type_Aruo.a(localEmoticonPackage, i, 0, 0);
+          if ((localEmoticonPackage.jobType != 3) && (localEmoticonPackage.jobType != 5)) {
+            break;
+          }
+          this.a.b(parambhhf);
+          return;
+        }
+      }
+      catch (Exception parambhhf)
+      {
+        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDoneFile failed", parambhhf);
+        return;
+      }
+      if (i == 7) {
+        this.a.a(parambhhf);
       }
     }
   }
   
-  public void a() {}
-  
-  protected void a(int paramInt, Intent paramIntent)
+  public boolean onStart(bhhf parambhhf)
   {
-    if (paramIntent != null) {}
-    for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
-    {
-      paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      localActivity.setResult(paramInt, paramIntent);
-      localActivity.finish();
-      return;
-    }
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)parambhhf.a().getSerializable("emoticonPackage");
+    arup.jdField_a_of_type_Aruo.a(localEmoticonPackage);
+    super.onStart(parambhhf);
+    return true;
   }
-  
-  protected void a(Intent paramIntent)
-  {
-    a(-1, paramIntent);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b() {}
 }
 
 

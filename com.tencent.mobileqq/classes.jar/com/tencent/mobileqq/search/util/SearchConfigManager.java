@@ -3,7 +3,7 @@ package com.tencent.mobileqq.search.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import ayvi;
+import bbul;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -61,7 +61,7 @@ public class SearchConfigManager
   public static int troopDurationUnderWifi;
   public static int troopMemberLimit;
   public static String troopMemberUpdateConfigStr;
-  public static ArrayList<ayvi> troopMemberUpdateConfigs;
+  public static ArrayList<bbul> troopMemberUpdateConfigs;
   public static long typeCircleContact;
   public static long typeDiscussion;
   public static long typeDiscussionConversation;
@@ -158,7 +158,7 @@ public class SearchConfigManager
     troopMemberUpdateConfigs = a("0|100|1|3,101|500|7|15");
   }
   
-  private static ArrayList<ayvi> a(String paramString)
+  private static ArrayList<bbul> a(String paramString)
   {
     int i = 0;
     if (QLog.isColorLevel()) {
@@ -191,12 +191,12 @@ public class SearchConfigManager
               localObject1 = arrayOfString[i].trim().split("\\|");
               if ((localObject1 != null) && (localObject1.length == 4))
               {
-                ayvi localayvi = new ayvi();
-                localayvi.a = Integer.valueOf(localObject1[0]).intValue();
-                localayvi.b = Integer.valueOf(localObject1[1]).intValue();
-                localayvi.c = (Integer.valueOf(localObject1[2]).intValue() * 24);
-                localayvi.d = (Integer.valueOf(localObject1[3]).intValue() * 24);
-                localArrayList.add(localayvi);
+                bbul localbbul = new bbul();
+                localbbul.a = Integer.valueOf(localObject1[0]).intValue();
+                localbbul.b = Integer.valueOf(localObject1[1]).intValue();
+                localbbul.c = (Integer.valueOf(localObject1[2]).intValue() * 24);
+                localbbul.d = (Integer.valueOf(localObject1[3]).intValue() * 24);
+                localArrayList.add(localbbul);
               }
               i += 1;
             }
@@ -340,7 +340,7 @@ public class SearchConfigManager
     //   108: invokevirtual 354	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   111: ifne +13 -> 124
     //   114: invokestatic 407	com/tencent/mobileqq/search/util/SearchConfigManager:a	()V
-    //   117: invokestatic 410	ayhr:a	()V
+    //   117: invokestatic 410	bbgl:a	()V
     //   120: ldc 2
     //   122: monitorexit
     //   123: return
@@ -519,7 +519,7 @@ public class SearchConfigManager
     //   571: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   574: invokeinterface 494 3 0
     //   579: pop
-    //   580: invokestatic 410	ayhr:a	()V
+    //   580: invokestatic 410	bbgl:a	()V
     //   583: getstatic 255	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigStr	Ljava/lang/String;
     //   586: invokestatic 259	com/tencent/mobileqq/search/util/SearchConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   589: putstatic 261	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigs	Ljava/util/ArrayList;
@@ -602,15 +602,15 @@ public class SearchConfigManager
     //   745: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   748: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   751: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   754: invokestatic 538	aoks:a	()Laoks;
+    //   754: invokestatic 538	aqlk:a	()Laqlk;
     //   757: sipush 414
-    //   760: invokevirtual 541	aoks:a	(I)Ljava/lang/Object;
-    //   763: checkcast 543	aonv
+    //   760: invokevirtual 541	aqlk:a	(I)Ljava/lang/Object;
+    //   763: checkcast 543	aqpc
     //   766: astore_0
     //   767: aload_0
     //   768: ifnull -648 -> 120
     //   771: aload_0
-    //   772: invokevirtual 545	aonv:a	()Z
+    //   772: invokevirtual 545	aqpc:a	()Z
     //   775: putstatic 360	com/tencent/mobileqq/search/util/SearchConfigManager:needSeparate	Z
     //   778: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   781: ifeq -661 -> 120
@@ -834,7 +834,7 @@ public class SearchConfigManager
     //   183: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   186: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   189: iload_3
-    //   190: invokestatic 601	awkd:a	(I)V
+    //   190: invokestatic 601	ayyp:a	(I)V
     //   193: aload_1
     //   194: invokevirtual 604	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   197: astore_2
@@ -1001,7 +1001,7 @@ public class SearchConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchConfigManager
  * JD-Core Version:    0.7.0.1
  */

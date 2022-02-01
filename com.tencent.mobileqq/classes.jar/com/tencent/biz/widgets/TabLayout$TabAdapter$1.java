@@ -1,12 +1,12 @@
 package com.tencent.biz.widgets;
 
+import abei;
 import android.view.View;
-import zhn;
 
 public class TabLayout$TabAdapter$1
   implements Runnable
 {
-  public TabLayout$TabAdapter$1(zhn paramzhn, int paramInt, View paramView) {}
+  public TabLayout$TabAdapter$1(abei paramabei, int paramInt, View paramView) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class TabLayout$TabAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.TabAdapter.1
  * JD-Core Version:    0.7.0.1
  */

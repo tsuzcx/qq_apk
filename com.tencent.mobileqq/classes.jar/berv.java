@@ -1,16 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class berv
-  extends AnimatorListenerAdapter
+final class berv
+  extends anmu
 {
-  public berv(ParticipleView paramParticipleView) {}
+  WeakReference<bers> a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private berv(bers parambers)
   {
-    ParticipleView.a(this.a, 1.0F);
-    this.a.invalidate();
+    this.a = new WeakReference(parambers);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    bers localbers = (bers)this.a.get();
+    if ((localbers != null) && (paramBoolean) && (paramString != null) && (localbers.a != null) && (localbers.a.size() > 0) && (paramString.equals(((TroopInfo)localbers.a.get(0)).troopuin))) {
+      localbers.c();
+    }
   }
 }
 

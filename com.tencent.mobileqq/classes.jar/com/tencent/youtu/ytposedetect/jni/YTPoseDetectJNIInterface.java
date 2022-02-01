@@ -7,8 +7,6 @@ import java.io.ByteArrayOutputStream;
 
 public class YTPoseDetectJNIInterface
 {
-  public static native String base64Encode(byte[] paramArrayOfByte);
-  
   public static native boolean canReflect();
   
   public static byte[] encodeJpeg(Bitmap paramBitmap)
@@ -22,13 +20,9 @@ public class YTPoseDetectJNIInterface
   
   public static native byte[] getBestImage(int paramInt);
   
-  public static native Bitmap getBitmapFromYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
-  
   public static native byte[] getEyeImage(int paramInt);
   
   public static native byte[][] getFrameList();
-  
-  public static native int getFrameNum();
   
   public static native byte[] getMouthImage(int paramInt);
   
@@ -44,13 +38,11 @@ public class YTPoseDetectJNIInterface
   
   public static native void resetDetect();
   
-  public static native void setFrameNum(int paramInt);
-  
   public static native void setSafetyLevel(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

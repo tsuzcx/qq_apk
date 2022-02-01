@@ -1,12 +1,30 @@
-public abstract interface ylb
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.lang.ref.WeakReference;
+
+public class ylb
 {
-  public abstract int a();
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  public abstract int[] a(int paramInt1, int paramInt2);
+  public static void a(yle<Integer> paramyle)
+  {
+    paramyle = new WeakReference(paramyle);
+    ylw localylw = new ylw(null);
+    localylw.a(new ylc(paramyle));
+    localylw.a(new yld(paramyle));
+    localylw.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylb
  * JD-Core Version:    0.7.0.1
  */

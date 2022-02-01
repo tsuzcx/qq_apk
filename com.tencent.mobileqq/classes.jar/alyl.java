@@ -1,102 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class alyl
-  implements Comparator<PhoneContact>
+  implements bkmq
 {
-  public alyl(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public alyl(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    int n = 0;
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    int k;
-    label99:
-    label112:
-    int m;
-    if (j == 0)
-    {
-      if (TextUtils.isEmpty(paramPhoneContact1.uin)) {
-        break label176;
-      }
-      i = 1;
-      if ((i == 0) || (paramPhoneContact1.uin.equals("0"))) {
-        break label181;
-      }
-      k = 1;
-      if (TextUtils.isEmpty(paramPhoneContact2.uin)) {
-        break label187;
-      }
-      j = 1;
-      if ((j == 0) || (paramPhoneContact2.uin.equals("0"))) {
-        break label193;
-      }
-      m = 1;
-      label132:
-      if (k == 0) {
-        break label199;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      label139:
-      if (m != 0) {
-        j = n;
-      }
-      for (;;)
-      {
-        i -= j;
-        j = i;
-        if (i == 0) {
-          j = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-        }
-        return j;
-        label176:
-        i = 0;
-        break;
-        label181:
-        k = 0;
-        break label99;
-        label187:
-        j = 0;
-        break label112;
-        label193:
-        m = 0;
-        break label132;
-        label199:
-        if (i == 0) {
-          break label225;
-        }
-        i = 1;
-        break label139;
-        if (j != 0) {
-          j = 1;
-        } else {
-          j = 2;
-        }
-      }
-      label225:
-      i = 2;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    if (bgnt.d(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
+      this.a.jdField_a_of_type_Boolean = true;
+      ((bafv)this.a.app.getManager(91)).a();
+      return true;
+    }
+    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyl
  * JD-Core Version:    0.7.0.1
  */

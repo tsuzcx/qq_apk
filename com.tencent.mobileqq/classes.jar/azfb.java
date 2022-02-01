@@ -1,12 +1,31 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-
-public abstract interface azfb
+public class azfb
 {
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  public boolean a()
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.b != null)
+    {
+      bool1 = bool2;
+      if (this.b.trim().length() > 0) {
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

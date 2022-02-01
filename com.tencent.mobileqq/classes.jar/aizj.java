@@ -1,40 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aizj
-  implements IRedPacket.OnGetSkinListener
+public class aizj
+  extends aiyi
+  implements View.OnClickListener
 {
-  aizj(aizh paramaizh) {}
-  
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public aizj(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    aize localaize = aizg.a(aizh.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localaize != null)
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aizk)))
     {
-      localList = aizh.a(this.a).getList();
-      QLog.d("HbSkinLogic", 2, "redl iscache = " + aize.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      if ((aize.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localaize))) {
-        break label98;
+      localObject = new aizk();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561334, null);
+      ((aizk)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378776));
+      ((aizk)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366048);
+      ((aizk)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(localObject);
+      ((aizk)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((ajba)this.jdField_a_of_type_Ajax).a.title);
+      localObject = ((aizk)localObject).jdField_a_of_type_AndroidViewView;
+      if (!((ajba)this.jdField_a_of_type_Ajax).a.showEntrance) {
+        break label133;
       }
-      QLog.d("HbSkinLogic", 2, "no add in list...");
     }
-    label98:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
+    label133:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      return paramView;
+      localObject = (aizk)paramView.getTag();
+      break;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      aiwt.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      bcst.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
     }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = aizh.a();
-    }
-    localaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    QLog.d("HbSkinLogic", 2, "redl add to list show!");
-    localList.add(localaize);
-    aize.a(localList);
-    aizh.a(this.a).notifyDataSetChanged();
   }
 }
 

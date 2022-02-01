@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import java.util.List;
-import ovx;
+import plf;
 
 class DynamicChannelDataModule$2$1
   implements Runnable
@@ -10,7 +10,7 @@ class DynamicChannelDataModule$2$1
   
   public void run()
   {
-    ovx.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$2.a, this.jdField_a_of_type_JavaUtilList);
+    plf.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$2.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

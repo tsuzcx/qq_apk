@@ -1,37 +1,26 @@
-public class oyc
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oyc
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public long a;
-  float[] a;
-  public int b;
-  long jdField_b_of_type_Long;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  public int c;
-  public int d;
-  int e;
-  int f;
-  int g;
-  int h;
-  int i;
+  oyc(pan parampan, pay parampay) {}
   
-  public String a()
+  public final void onClick(ViewBase paramViewBase)
   {
-    double d1 = this.g * 1.0D / this.h;
-    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
-    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
-    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
-    double d5 = this.b[0] / this.i;
-    double d6 = this.b[1] / this.h;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int j = 0;; j = 1) {
-      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    paramViewBase = this.jdField_a_of_type_Pan;
+    if (paramViewBase == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
     }
+    ((ozh)paramViewBase).a(this.jdField_a_of_type_Pay, oyk.a(this.jdField_a_of_type_Pay, 0), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyc
  * JD-Core Version:    0.7.0.1
  */

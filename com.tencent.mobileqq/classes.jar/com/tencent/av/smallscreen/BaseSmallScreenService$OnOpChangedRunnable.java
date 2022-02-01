@@ -6,9 +6,9 @@ import com.tencent.av.VideoController;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lkx;
-import mbt;
-import mls;
+import lhu;
+import lyu;
+import miu;
 
 class BaseSmallScreenService$OnOpChangedRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class BaseSmallScreenService$OnOpChangedRunnable
       }
       i = 1;
       boolean bool1 = bool2;
-      if (mbt.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
+      if (lyu.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
       {
         bool1 = bool2;
         if (i == 0) {
@@ -36,19 +36,19 @@ class BaseSmallScreenService$OnOpChangedRunnable
       if (bool1 != this.this$0.e)
       {
         this.this$0.e = bool1;
-        this.this$0.e();
+        this.this$0.c();
       }
-      bool1 = mbt.i();
+      bool1 = lyu.i();
       if (bool1 != this.this$0.b)
       {
         this.this$0.b = bool1;
-        this.this$0.d();
+        this.this$0.b();
       }
-      bool1 = mbt.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
+      bool1 = lyu.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
       if (bool1 != this.this$0.c)
       {
         this.this$0.c = bool1;
-        this.this$0.c();
+        this.this$0.a();
       }
       bool1 = this.this$0.a();
       if (bool1 != this.this$0.f)
@@ -68,7 +68,7 @@ class BaseSmallScreenService$OnOpChangedRunnable
     label275:
     for (long l = 1L;; l = 2L)
     {
-      lkx.a(20, l);
+      lhu.a(20, l);
       this.this$0.a().postDelayed(this, 1000L);
       return;
       i = 0;
@@ -78,7 +78,7 @@ class BaseSmallScreenService$OnOpChangedRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.smallscreen.BaseSmallScreenService.OnOpChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

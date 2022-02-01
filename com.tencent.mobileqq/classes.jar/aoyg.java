@@ -1,53 +1,17 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IInterface;
 
-public class aoyg
+public abstract interface aoyg
+  extends IInterface
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  public abstract void a(int paramInt);
   
-  public static aoyg a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
-    }
-    aoyg localaoyg = new aoyg();
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
-      localaoyg.a = paramArrayOfaoko.getBoolean("fastload");
-      localaoyg.b = paramArrayOfaoko.getBoolean("prefetch");
-      localaoyg.c = paramArrayOfaoko.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localaoyg.a + ", prefetch = " + localaoyg.b + ", preloadWebView = " + localaoyg.c);
-      return localaoyg;
-    }
-    catch (JSONException paramArrayOfaoko)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaoko.getLocalizedMessage(), paramArrayOfaoko);
-    }
-    return localaoyg;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyg
  * JD-Core Version:    0.7.0.1
  */

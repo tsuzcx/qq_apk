@@ -1,42 +1,62 @@
+import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI.RecordInfo.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class mcn
-  extends MagicFaceDataEntity
 {
-  public mcn(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  private int jdField_a_of_type_Int = 0;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity;
+  public Runnable a;
+  private int b;
+  private int c = 2130842162;
+  
+  private mcn()
   {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
+    this.jdField_a_of_type_JavaLangRunnable = new DoubleVideoCtrlUI.RecordInfo.1(this);
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
+  public void a()
   {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (paramBoolean) {
-      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
+    this.c = 2130842162;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    this.jdField_a_of_type_ComTencentAvUiAVActivity = null;
+  }
+  
+  void a(long paramLong)
+  {
+    QLog.w("RecordInfo", 1, "onClick_Record, cancel, seq[" + paramLong + "]");
+    a();
+  }
+  
+  public void a(long paramLong, VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    if (this.jdField_a_of_type_Int == 0) {
+      a(paramLong, paramAVActivity);
     }
+    while (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    a(paramLong);
   }
   
-  public void c()
+  void a(long paramLong, AVActivity paramAVActivity)
   {
-    super.c();
-    c(0);
-    c(1);
-    a(true);
-    a(null);
-  }
-  
-  public void d()
-  {
-    super.d();
-    b(0);
-    b(1);
+    QLog.w("RecordInfo", 1, "onClick_Record, start, seq[" + paramLong + "]");
+    this.jdField_a_of_type_Int = 1;
+    this.c = 2130842165;
+    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mcn
  * JD-Core Version:    0.7.0.1
  */

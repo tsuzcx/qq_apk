@@ -1,12 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-public abstract interface saj
+public class saj
+  implements TopGestureLayout.OnGestureListener
 {
-  public abstract void a(BaseData paramBaseData);
+  public saj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  
+  public void flingLToR()
+  {
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.e();
+  }
+  
+  public void flingRToL()
+  {
+    if (VideoFeedsPlayActivity.a(this.a) != null) {
+      VideoFeedsPlayActivity.a(this.a).b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     saj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
-
 public class aghi
-  implements arrh
 {
-  public aghi(AIOFileVideoData paramAIOFileVideoData, Context paramContext, aiqi paramaiqi) {}
+  public int a;
+  public byte[] a;
   
-  public void a()
+  aghi(aghh paramaghh)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Aiqi.b();
-      this.jdField_a_of_type_Aiqi.f();
-    }
+    this.jdField_a_of_type_Int = 0;
   }
-  
-  public void b() {}
 }
 
 

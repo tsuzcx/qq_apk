@@ -2,7 +2,7 @@ package com.tencent.superplayer.player;
 
 import android.graphics.Bitmap;
 import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnAudioPcmDataListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnAudioFrameOutputListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnDefinitionInfoListener;
@@ -10,19 +10,21 @@ import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnTVideoNetInfoListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnVideoOutputFrameListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoFrameOutputListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnVideoSizeChangedListener;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import java.util.ArrayList;
 
 class SuperPlayerListenerMgr
-  implements ISuperPlayer.OnAudioPcmDataListener, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnTVideoNetInfoListener, ISuperPlayer.OnVideoOutputFrameListener, ISuperPlayer.OnVideoPreparedListener, ISuperPlayer.OnVideoSizeChangedListener
+  implements ISuperPlayer.OnAudioFrameOutputListener, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnTVideoNetInfoListener, ISuperPlayer.OnVideoFrameOutputListener, ISuperPlayer.OnVideoPreparedListener, ISuperPlayer.OnVideoSizeChangedListener
 {
   private static final String FILENAME = "SuperPlayerListenerMgr.java";
   private String TAG;
-  private ISuperPlayer.OnAudioPcmDataListener mOnAudioPcmDataListener = null;
+  private ISuperPlayer.OnAudioFrameOutputListener mOnAudioFrameOutputListener = null;
   private ISuperPlayer.OnCaptureImageListener mOnCaptureImageListener = null;
   private ISuperPlayer.OnCompletionListener mOnCompletionListener = null;
   private ISuperPlayer.OnDefinitionInfoListener mOnDefinitionInfoListener = null;
@@ -30,7 +32,7 @@ class SuperPlayerListenerMgr
   private ISuperPlayer.OnInfoListener mOnInfoListener = null;
   private ISuperPlayer.OnSeekCompleteListener mOnSeekCompleteListener = null;
   private ISuperPlayer.OnTVideoNetInfoListener mOnTVideoNetInfoListener = null;
-  private ISuperPlayer.OnVideoOutputFrameListener mOnVideoOutputFrameListener = null;
+  private ISuperPlayer.OnVideoFrameOutputListener mOnVideoFrameOutputListener = null;
   private ISuperPlayer.OnVideoPreparedListener mOnVideoPreparedListener = null;
   private ISuperPlayer.OnVideoSizeChangedListener mOnVideoSizeChangedListener = null;
   
@@ -39,10 +41,10 @@ class SuperPlayerListenerMgr
     this.TAG = (paramString + "_" + "SuperPlayerListenerMgr.java");
   }
   
-  public void onAudioPcmData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    if (this.mOnAudioPcmDataListener != null) {
-      this.mOnAudioPcmDataListener.onAudioPcmData(paramArrayOfByte, paramInt1, paramInt2, paramLong);
+    if (this.mOnAudioFrameOutputListener != null) {
+      this.mOnAudioFrameOutputListener.onAudioFrameOutput(paramTPAudioFrameBuffer);
     }
   }
   
@@ -73,14 +75,16 @@ class SuperPlayerListenerMgr
   {
     if (this.mOnDefinitionInfoListener != null)
     {
-      LogUtil.i(this.TAG, "notify : onDefinitionInfoUpdate");
+      LogUtil.i(this.TAG, "notify : onDefinitionInfoUpdate currentDefinition:" + paramString + ", definitionList.size():" + paramArrayList.size());
       this.mOnDefinitionInfoListener.onDefinitionInfoUpdate(paramISuperPlayer, paramString, paramArrayList);
     }
   }
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.mOnErrorListener != null) {
+    if (this.mOnErrorListener != null)
+    {
+      LogUtil.e(this.TAG, "notify : on error, module:" + paramInt1 + ", errorType:" + paramInt2 + ", errorCode:" + paramInt3 + ", extraInfo:" + paramString);
       return this.mOnErrorListener.onError(paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
     }
     return false;
@@ -114,10 +118,10 @@ class SuperPlayerListenerMgr
     }
   }
   
-  public void onVideoOutputFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  public void onVideoFrameOutput(TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    if (this.mOnVideoOutputFrameListener != null) {
-      this.mOnVideoOutputFrameListener.onVideoOutputFrame(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong);
+    if (this.mOnVideoFrameOutputListener != null) {
+      this.mOnVideoFrameOutputListener.onVideoFrameOutput(paramTPVideoFrameBuffer);
     }
   }
   
@@ -141,7 +145,7 @@ class SuperPlayerListenerMgr
   
   public void release()
   {
-    this.mOnAudioPcmDataListener = null;
+    this.mOnAudioFrameOutputListener = null;
     this.mOnCaptureImageListener = null;
     this.mOnCompletionListener = null;
     this.mOnDefinitionInfoListener = null;
@@ -149,14 +153,14 @@ class SuperPlayerListenerMgr
     this.mOnErrorListener = null;
     this.mOnInfoListener = null;
     this.mOnSeekCompleteListener = null;
-    this.mOnVideoOutputFrameListener = null;
+    this.mOnVideoFrameOutputListener = null;
     this.mOnVideoPreparedListener = null;
     this.mOnVideoSizeChangedListener = null;
   }
   
-  public void setOnAudioPcmDataListener(ISuperPlayer.OnAudioPcmDataListener paramOnAudioPcmDataListener)
+  public void setOnAudioFrameOutputListener(ISuperPlayer.OnAudioFrameOutputListener paramOnAudioFrameOutputListener)
   {
-    this.mOnAudioPcmDataListener = paramOnAudioPcmDataListener;
+    this.mOnAudioFrameOutputListener = paramOnAudioFrameOutputListener;
   }
   
   public void setOnCaptureImageListener(ISuperPlayer.OnCaptureImageListener paramOnCaptureImageListener)
@@ -194,9 +198,9 @@ class SuperPlayerListenerMgr
     this.mOnTVideoNetInfoListener = paramOnTVideoNetInfoListener;
   }
   
-  public void setOnVideoOutputFrameListener(ISuperPlayer.OnVideoOutputFrameListener paramOnVideoOutputFrameListener)
+  public void setOnVideoOutputFrameListener(ISuperPlayer.OnVideoFrameOutputListener paramOnVideoFrameOutputListener)
   {
-    this.mOnVideoOutputFrameListener = paramOnVideoOutputFrameListener;
+    this.mOnVideoFrameOutputListener = paramOnVideoFrameOutputListener;
   }
   
   public void setOnVideoPreparedListener(ISuperPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
@@ -211,7 +215,7 @@ class SuperPlayerListenerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerListenerMgr
  * JD-Core Version:    0.7.0.1
  */

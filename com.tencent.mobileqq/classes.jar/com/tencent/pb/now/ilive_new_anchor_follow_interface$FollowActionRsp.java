@@ -15,7 +15,7 @@ public final class ilive_new_anchor_follow_interface$FollowActionRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp
  * JD-Core Version:    0.7.0.1
  */

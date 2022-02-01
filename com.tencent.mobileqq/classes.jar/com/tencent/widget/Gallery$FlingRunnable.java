@@ -2,9 +2,9 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bhrx;
-import bhxh;
-import bhzg;
+import bkfh;
+import bkkt;
+import bkmr;
 
 class Gallery$FlingRunnable
   implements Runnable
@@ -12,7 +12,7 @@ class Gallery$FlingRunnable
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bhzg jdField_a_of_type_Bhzg;
+  private bkmr jdField_a_of_type_Bkmr;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -22,13 +22,13 @@ class Gallery$FlingRunnable
   
   public Gallery$FlingRunnable(Gallery paramGallery)
   {
-    this.jdField_a_of_type_Bhzg = new bhzg(paramGallery.getContext());
-    this.jdField_a_of_type_Bhzg.a(0.04F);
+    this.jdField_a_of_type_Bkmr = new bkmr(paramGallery.getContext());
+    this.jdField_a_of_type_Bkmr.a(0.04F);
   }
   
   private float a(float paramFloat)
   {
-    return bhrx.a(paramFloat);
+    return bkfh.a(paramFloat);
   }
   
   private void a()
@@ -38,10 +38,10 @@ class Gallery$FlingRunnable
   
   private void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bhzg.a(true);
+    this.jdField_a_of_type_Bkmr.a(true);
     this.jdField_a_of_type_Long = -1L;
-    if (this.this$0.jdField_a_of_type_Bhxh != null) {
-      this.this$0.jdField_a_of_type_Bhxh.b(this.this$0.mSelectedPosition);
+    if (this.this$0.jdField_a_of_type_Bkkt != null) {
+      this.this$0.jdField_a_of_type_Bkkt.b(this.this$0.mSelectedPosition);
     }
     if (this.this$0.j == 2)
     {
@@ -53,8 +53,8 @@ class Gallery$FlingRunnable
   
   public int a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bhzg.a(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
-    return this.jdField_a_of_type_Bhzg.d();
+    this.jdField_a_of_type_Bkmr.a(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
+    return this.jdField_a_of_type_Bkmr.d();
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -66,10 +66,10 @@ class Gallery$FlingRunnable
       a();
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Bhzg.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
+      this.jdField_a_of_type_Bkmr.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
       this.this$0.post(this);
-    } while (this.this$0.jdField_a_of_type_Bhxh == null);
-    this.this$0.jdField_a_of_type_Bhxh.a(this.this$0.mSelectedPosition);
+    } while (this.this$0.jdField_a_of_type_Bkkt == null);
+    this.this$0.jdField_a_of_type_Bkkt.a(this.this$0.mSelectedPosition);
   }
   
   public void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -80,7 +80,7 @@ class Gallery$FlingRunnable
     a();
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Bhzg.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
+    this.jdField_a_of_type_Bkmr.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
     this.this$0.post(this);
     this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
     this.jdField_a_of_type_Float = paramFloat1;
@@ -99,17 +99,17 @@ class Gallery$FlingRunnable
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     if (AnimationUtils.currentAnimationTimeMillis() - this.this$0.jdField_a_of_type_Long > 15L) {
-      this.jdField_a_of_type_Bhzg.a(this.this$0.jdField_a_of_type_Long + 15L, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
+      this.jdField_a_of_type_Bkmr.a(this.this$0.jdField_a_of_type_Long + 15L, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
     }
     for (;;)
     {
       this.this$0.post(this);
-      if (this.this$0.jdField_a_of_type_Bhxh == null) {
+      if (this.this$0.jdField_a_of_type_Bkkt == null) {
         break;
       }
-      this.this$0.jdField_a_of_type_Bhxh.a(this.this$0.mSelectedPosition);
+      this.this$0.jdField_a_of_type_Bkkt.a(this.this$0.mSelectedPosition);
       return;
-      this.jdField_a_of_type_Bhzg.a(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
+      this.jdField_a_of_type_Bkmr.a(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
     }
   }
   
@@ -130,10 +130,10 @@ class Gallery$FlingRunnable
       return;
     }
     Gallery.b(this.this$0, false);
-    Object localObject = this.jdField_a_of_type_Bhzg;
-    boolean bool = ((bhzg)localObject).b();
-    int i = ((bhzg)localObject).a();
-    int j = ((bhzg)localObject).b();
+    Object localObject = this.jdField_a_of_type_Bkmr;
+    boolean bool = ((bkmr)localObject).b();
+    int i = ((bkmr)localObject).a();
+    int j = ((bkmr)localObject).b();
     int k = this.jdField_a_of_type_Int;
     int m = this.jdField_b_of_type_Int;
     float f2;
@@ -209,7 +209,7 @@ class Gallery$FlingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.Gallery.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,74 @@
-import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2.1.1.1;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
-class aarv
-  implements aaru
+public class aarv
+  extends bhhe
 {
-  private aamu jdField_a_of_type_Aamu = new aarw(this);
-  private WeakReference<aarb> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<aamt, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  aarv(aaru paramaaru, long paramLong, String paramString, int paramInt) {}
   
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void onDone(bhhf parambhhf)
   {
-    if (paramaarb != null) {}
-    for (Activity localActivity = paramaarb.a(); (paramaarb == null) || (localActivity == null); localActivity = null)
-    {
-      aase.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
-      return true;
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGiftPanel.time", 2, "onDone, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
     }
-    try
-    {
-      Object localObject = new JSONObject(paramVarArgs[0]);
-      aase.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject).toString());
-      paramVarArgs = new aamv();
-      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aasd.a(new qq_ad_get.QQAdGet(), localObject)));
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaarb);
-      localObject = new aamt(paramVarArgs, new WeakReference(this.jdField_a_of_type_Aamu));
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
-      ((aamt)localObject).a(new WeakReference(localActivity));
-      paramString = new ArrayList();
-      if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
+    if (parambhhf.jdField_a_of_type_Int == 0) {
+      localObject = parambhhf.a().getString("filePath");
+    }
+    while (!QLog.isColorLevel()) {
+      try
       {
-        int i = 0;
-        while (i < paramVarArgs.a.position_info.size())
-        {
-          localObject = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramString.add(localObject);
-          }
-          i += 1;
+        Object localObject;
+        parambhhf = new File((String)localObject);
+        String str = bgmg.b(parambhhf);
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGiftPanelContainer", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
         }
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject = new aasj(new JSONObject(str), this.jdField_a_of_type_JavaLangString);
+          ((aasj)localObject).a(this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aasj = ((aasj)localObject);
+          this.jdField_a_of_type_Aaru.jdField_a_of_type_Bfst.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Aaru.jdField_a_of_type_Bfst.a(false);
+          if (!this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+            this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_AndroidOsHandler.post(new AIOGiftPanelContainer.2.1.1.1(this));
+          }
+          parambhhf.deleteOnExit();
+        }
+        aart.a(this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
+        this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        return;
       }
-      if (paramaarb == null) {}
+      catch (IOException parambhhf)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambhhf));
+        return;
+      }
+      catch (JSONException parambhhf)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambhhf));
+        return;
+      }
     }
-    catch (JSONException paramaarb)
-    {
-      aase.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramaarb);
-      return true;
-    }
-    for (paramaarb = paramaarb.a();; paramaarb = null)
-    {
-      AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramaarb);
-      return true;
-    }
+    QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Aaru.jdField_a_of_type_Long) + ", errorCode = " + parambhhf.jdField_a_of_type_Int);
+  }
+  
+  public boolean onStart(bhhf parambhhf)
+  {
+    return super.onStart(parambhhf);
   }
 }
 

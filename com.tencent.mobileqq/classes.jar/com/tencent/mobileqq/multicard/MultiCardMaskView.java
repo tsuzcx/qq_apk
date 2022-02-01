@@ -9,12 +9,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdoo;
+import bgtn;
 
 public class MultiCardMaskView
   extends View
 {
-  private float jdField_a_of_type_Float = bdoo.b(12.0F);
+  private float jdField_a_of_type_Float = bgtn.b(12.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private boolean jdField_a_of_type_Boolean = true;
@@ -60,7 +60,7 @@ public class MultiCardMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardMaskView
  * JD-Core Version:    0.7.0.1
  */

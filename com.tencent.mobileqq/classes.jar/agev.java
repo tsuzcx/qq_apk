@@ -1,29 +1,29 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agev
-  extends agem
+  extends Handler
 {
-  public agev(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public agev(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+    super(paramLooper);
   }
   
-  public aeqi a()
+  public void handleMessage(Message paramMessage)
   {
-    return new agex(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562755, paramBaseChatItemLayout, false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.k(1);
+    this.a.d();
+    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131697732), 1).a();
   }
 }
 

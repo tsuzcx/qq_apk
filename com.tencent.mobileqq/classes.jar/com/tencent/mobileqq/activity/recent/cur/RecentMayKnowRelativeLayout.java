@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -48,8 +48,8 @@ public class RecentMayKnowRelativeLayout
     this.jdField_a_of_type_Boolean = false;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849646);
-      this.jdField_a_of_type_Int = aepi.a(0.5F, getResources());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850222);
+      this.jdField_a_of_type_Int = afur.a(0.5F, getResources());
       return;
     }
     catch (Throwable paramContext)
@@ -109,7 +109,7 @@ public class RecentMayKnowRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.RecentMayKnowRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

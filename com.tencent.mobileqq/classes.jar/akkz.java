@@ -1,17 +1,23 @@
-class akkz
+import com.tencent.image.Utils;
+
+public class akkz
+  extends akla
 {
-  bcpf jdField_a_of_type_Bcpf;
-  Boolean jdField_a_of_type_JavaLangBoolean;
-  
-  public akkz(akkt paramakkt, bcpf parambcpf)
+  public akkz(String paramString)
   {
-    this.jdField_a_of_type_Bcpf = parambcpf;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
+  }
+  
+  static boolean a(String paramString)
+  {
+    return Utils.isHeifFile(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.lang.ref.WeakReference;
 
 class sdo
+  implements uan
 {
-  public long a;
-  public List<Pair<Long, Long>> a;
-  private boolean a;
-  public long b;
-  public List<Pair<Long, Long>> b;
-  public long c;
-  public long d;
-  public long e;
+  private int jdField_a_of_type_Int;
+  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
+  private int c;
+  private int d;
   
-  public sdo(long paramLong)
+  public sdo(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
   }
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
-      return;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      sce.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
     }
-    this.d = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = this.d;
-    }
-    this.e = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
-    do
-    {
-      return;
-      l3 = (this.c - this.d) / 100L;
-    } while (l3 == 0L);
-    long l1 = paramLong - this.e;
-    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
-    long l3 = Utils.px2dp((float)(l1 / l3));
-    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
-    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
-      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
-    }
-    this.e = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,16 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class ymz
-  implements IVideoInnerStatusListener
+class ymz
+  implements ymi
 {
-  public ymz(VideoPlayerView paramVideoPlayerView) {}
+  ymz(ymo paramymo) {}
   
-  public void notifyVideoClose(int paramInt)
+  public void a()
   {
-    VideoPlayerView.c(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.a(this.a, null);
-    }
-    VideoPlayerView.a(this.a, null);
-    this.a.g();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().b() / 100L);
-  }
-  
-  public void notifyVideoStart()
-  {
-    if (VideoPlayerView.a(this.a).a() < VideoPlayerView.a(this.a).b())
-    {
-      this.a.d();
-      return;
-    }
-    if (VideoPlayerView.c(this.a))
-    {
-      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
-      return;
-    }
-    VideoPlayerView.a(this.a).a(true);
-    this.a.f();
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
-    }
-    QLog.d("VideoPlayerView", 4, "no more, player repeat");
-  }
-  
-  public void notifyVideoStop()
-  {
-    this.a.a();
+    yqp.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ymz
  * JD-Core Version:    0.7.0.1
  */

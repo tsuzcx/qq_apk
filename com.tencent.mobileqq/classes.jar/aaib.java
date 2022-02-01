@@ -1,22 +1,35 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aaib
+public abstract class aaib
 {
-  private static aaib jdField_a_of_type_Aaib;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
+  public static final AtomicInteger a = new AtomicInteger(0);
   
-  public static aaib a()
+  public abstract byte[] a();
+  
+  public byte[] a(Intent paramIntent, int paramInt, String paramString)
   {
-    if (jdField_a_of_type_Aaib == null) {
-      jdField_a_of_type_Aaib = new aaib();
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException("req traceId is null!");
     }
-    return jdField_a_of_type_Aaib;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(paramInt);
+    localStQWebReq.qua.set(blru.a());
+    localStQWebReq.deviceInfo.set(blrt.a().c());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    if (!TextUtils.isEmpty(paramString)) {
+      localStQWebReq.traceid.set(paramString);
+    }
+    if (paramIntent != null) {
+      paramIntent.putExtra("traceid", paramString);
+    }
+    return localStQWebReq.toByteArray();
   }
 }
 

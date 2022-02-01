@@ -1,42 +1,53 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-class aevf
-  extends View
+public class aevf
+  implements Comparator<aevm>
 {
-  public aevf(aeva paramaeva, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aevf(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void draw(Canvas paramCanvas)
+  public int a(aevm paramaevm1, aevm paramaevm2)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
+    paramaevm1 = paramaevm1.a.name;
+    paramaevm2 = paramaevm2.a.name;
+    if ((paramaevm1 == null) && (paramaevm2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
-    {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
-    }
+      return 0;
+      if ((paramaevm1 == null) && (paramaevm2 != null)) {
+        return -1;
+      }
+      if ((paramaevm1 != null) && (paramaevm2 == null)) {
+        return 1;
+      }
+      j = paramaevm1.length();
+      k = paramaevm2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramaevm1.charAt(i);
+        char c2 = paramaevm2.charAt(i);
+        if (c1 != c2)
+        {
+          paramaevm1 = ChnToSpell.a(c1, i);
+          paramaevm2 = ChnToSpell.a(c2, i);
+          if (paramaevm1.jdField_a_of_type_Int == paramaevm2.jdField_a_of_type_Int) {
+            return paramaevm1.jdField_a_of_type_JavaLangString.compareTo(paramaevm2.jdField_a_of_type_JavaLangString);
+          }
+          return paramaevm1.jdField_a_of_type_Int - paramaevm2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

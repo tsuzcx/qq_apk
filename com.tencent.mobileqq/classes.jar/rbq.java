@@ -1,26 +1,22 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.service.redpacket.RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import kotlin.Metadata;
+import mqq.os.MqqHandler;
 
-public class rbq
-  extends rbl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IShouldDoTaskTimingCallback$Stub;", "onShouldDoTaskTimingCallback", "", "shouldDoTaskTiming", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbq
+  extends rbm
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131369781);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131369787);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131369790);
+  rbq(qzb paramqzb) {}
   
-  public rbq(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    super(paramView, paramInt);
+    ThreadManager.getUIHandler().post((Runnable)new RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1(this, paramBoolean));
   }
-  
-  public void a(raw paramraw, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbq
  * JD-Core Version:    0.7.0.1
  */

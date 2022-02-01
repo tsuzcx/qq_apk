@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agea;
+import ahln;
+import ahls;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
 import com.tencent.qphone.base.util.QLog;
 
-class TribeShortVideoItemBuilder$6
+public class TribeShortVideoItemBuilder$6
   implements Runnable
 {
-  TribeShortVideoItemBuilder$6(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, agea paramagea, long paramLong) {}
+  public TribeShortVideoItemBuilder$6(ahln paramahln, ahls paramahls, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Agea == null) {
+    if (this.jdField_a_of_type_Ahls == null) {
       if (QLog.isColorLevel()) {
         QLog.e("TribeShortVideoItemBuilder", 2, "showPlayIcon");
       }
@@ -20,15 +22,15 @@ class TribeShortVideoItemBuilder$6
     do
     {
       return;
-      localLong = (Long)this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView.getTag();
+      localLong = (Long)this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getTag();
     } while ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_Agea.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
+    this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
+    this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

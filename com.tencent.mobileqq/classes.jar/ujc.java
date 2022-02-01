@@ -1,14 +1,43 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
-public abstract interface ujc
+public class ujc
+  implements IMiniMsgUnreadCallback
 {
-  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
+  public void destroy()
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser destroy");
+  }
+  
+  public void hide()
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser hide");
+  }
+  
+  public void hideUnread()
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser hideUnread");
+  }
+  
+  public boolean show(int paramInt)
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    upe.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujc
  * JD-Core Version:    0.7.0.1
  */

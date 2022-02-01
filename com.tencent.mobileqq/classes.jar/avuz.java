@@ -1,55 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
-public class avuz
-  implements Manager
+class avuz
+  implements Animator.AnimatorListener
 {
-  private QQAppInterface a;
+  avuz(avuv paramavuv, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public avuz(QQAppInterface paramQQAppInterface)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
   
-  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
-      }
-      ((atdh)this.a.getManager(306)).c();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
   
-  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    if (a(paramNowPushMsg)) {}
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
-  {
-    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
-    c(paramNowPushMsg);
-  }
-  
-  public void onDestroy() {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuz
  * JD-Core Version:    0.7.0.1
  */

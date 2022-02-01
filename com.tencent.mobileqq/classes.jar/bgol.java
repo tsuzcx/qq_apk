@@ -1,39 +1,36 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
+
 public class bgol
 {
-  bgok a = new bgok();
+  public String a;
+  public boolean a;
   
-  public bgok a()
+  public static bgol a(Bundle paramBundle)
   {
-    return this.a;
+    bgol localbgol = new bgol();
+    localbgol.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
+    localbgol.jdField_a_of_type_Boolean = paramBundle.getBoolean("enableInvite");
+    return localbgol;
   }
   
-  public bgol a(int paramInt)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    this.a.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bgol a(bglu parambglu)
-  {
-    this.a.jdField_a_of_type_Bglu = parambglu;
-    return this;
-  }
-  
-  public bgol a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bgol b(String paramString)
-  {
-    this.a.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    boolean bool = bgoh.a(paramString1, paramQQAppInterface, paramString2);
+    paramString1 = new Intent();
+    paramString1.setAction("tencent.video.q2v.GroupInfoChanged");
+    paramString1.putExtra("uin", paramString2);
+    paramString1.putExtra("enableInvite", bool);
+    paramString1.setPackage(paramQQAppInterface.getApplication().getPackageName());
+    paramQQAppInterface.getApp().sendBroadcast(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgol
  * JD-Core Version:    0.7.0.1
  */

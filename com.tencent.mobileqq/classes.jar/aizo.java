@@ -1,6 +1,9 @@
-public abstract interface aizo
+import android.widget.LinearLayout;
+
+public class aizo
 {
-  public abstract void a(aize paramaize);
+  public LinearLayout a;
+  public LinearLayout b;
 }
 
 

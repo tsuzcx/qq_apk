@@ -1,6 +1,6 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -51,7 +51,7 @@ public final class MethodCall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.MethodCall
  * JD-Core Version:    0.7.0.1
  */

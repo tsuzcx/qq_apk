@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acfm;
+import admx;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class AssociatedAccountActivity$14$1
   implements Runnable
 {
-  public AssociatedAccountActivity$14$1(acfm paramacfm) {}
+  public AssociatedAccountActivity$14$1(admx paramadmx) {}
   
   public void run()
   {

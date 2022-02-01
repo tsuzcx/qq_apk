@@ -1,29 +1,36 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.Set;
+import mqq.util.WeakReference;
 
 public class WSVideoPreDownloadManager$PreDownloadNotAlreadyVideoTask
   implements Runnable
 {
-  private boolean a;
+  private WeakReference<WSVideoPreDownloadManager> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
   public WSVideoPreDownloadManager$PreDownloadNotAlreadyVideoTask(WSVideoPreDownloadManager paramWSVideoPreDownloadManager, boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramWSVideoPreDownloadManager);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void run()
   {
-    if ((this.a) && (WSVideoPreDownloadManager.a(this.this$0) != null)) {
-      WSVideoPreDownloadManager.a(this.this$0).add(WSVideoPreDownloadManager.a(this.this$0));
+    WSVideoPreDownloadManager localWSVideoPreDownloadManager = (WSVideoPreDownloadManager)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localWSVideoPreDownloadManager == null) {
+      return;
     }
-    WSVideoPreDownloadManager.a(this.this$0, null);
-    WSVideoPreDownloadManager.b(this.this$0);
+    if ((this.jdField_a_of_type_Boolean) && (WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager) != null)) {
+      WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager).add(WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager));
+    }
+    WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager, null);
+    WSVideoPreDownloadManager.b(localWSVideoPreDownloadManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask
  * JD-Core Version:    0.7.0.1
  */

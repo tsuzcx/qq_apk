@@ -1,29 +1,14 @@
-import java.io.BufferedReader;
+import android.graphics.Bitmap;
 
-public class los
-  extends lor
+public abstract interface los
 {
-  private float a;
-  private float b;
+  public abstract void a(Bitmap paramBitmap, lvj paramlvj);
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * loj.a();
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Float = loo.a(paramBufferedReader, "lowMin");
-    this.b = loo.a(paramBufferedReader, "lowMax");
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lvj paramlvj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     los
  * JD-Core Version:    0.7.0.1
  */

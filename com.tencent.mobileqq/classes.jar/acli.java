@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public final class acli
-  implements DialogInterface.OnCancelListener
+public abstract interface acli
+  extends ackq
 {
-  public acli(aclo paramaclo, acln paramacln) {}
+  public static final AdAntiSpamForClick a = new AdAntiSpamForClick();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Aclo.a) {
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_Acln != null) {
-      this.jdField_a_of_type_Acln.a();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract View b();
+  
+  public abstract void setSize(int paramInt1, int paramInt2);
 }
 
 

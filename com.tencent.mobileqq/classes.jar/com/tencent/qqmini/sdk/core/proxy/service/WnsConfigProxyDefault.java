@@ -1,8 +1,10 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
 import java.util.List;
 
+@ProxyService(proxy=WnsConfigProxy.class)
 public class WnsConfigProxyDefault
   extends WnsConfigProxy
 {
@@ -18,7 +20,7 @@ public class WnsConfigProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.WnsConfigProxyDefault
  * JD-Core Version:    0.7.0.1
  */

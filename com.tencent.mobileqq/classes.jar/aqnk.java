@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ExpandableListView;
+import java.util.ArrayList;
 
-class aqnk
-  implements xyf
+public class aqnk
 {
-  aqnk(aqni paramaqni, int paramInt) {}
+  public int a;
+  public String a;
+  public ArrayList<aqnu> a;
+  public int b;
   
-  public void a()
+  public aqnk(int paramInt1, int paramInt2, String paramString, ArrayList<aqnu> paramArrayList)
   {
-    String str = (String)this.jdField_a_of_type_Aqni.getGroup(this.jdField_a_of_type_Int);
-    if (aqni.a(this.jdField_a_of_type_Aqni).c(this.jdField_a_of_type_Int))
-    {
-      QQAppInterface.f(str + alud.a(2131710020));
-      return;
-    }
-    QQAppInterface.f(str + alud.a(2131710000));
-  }
-  
-  public void b()
-  {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnk
  * JD-Core Version:    0.7.0.1
  */

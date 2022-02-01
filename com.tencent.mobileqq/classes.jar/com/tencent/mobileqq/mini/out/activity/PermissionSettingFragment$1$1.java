@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import bety;
+import biau;
 
 class PermissionSettingFragment$1$1
   implements Runnable
@@ -15,7 +15,7 @@ class PermissionSettingFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

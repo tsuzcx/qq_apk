@@ -1,32 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
-class beis
-  implements yrb
+public class beis
+  implements bkik
 {
-  beis(beir parambeir) {}
+  public beis(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  public void callback(Bundle paramBundle)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
+    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
+      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
     }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131720958, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131720955, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+    return true;
   }
 }
 

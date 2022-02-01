@@ -1,64 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract class yud
-  extends nac
+class yud
+  extends SimpleJob<Object>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  yud(yty paramyty, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    if (paramInt != 0) {
-      a(false, paramInt, null);
-    }
-    label103:
-    do
-    {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0x6d8.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
-          if (!paramArrayOfByte.int32_ret_code.has()) {
-            break label103;
-          }
-          if (paramArrayOfByte.int32_ret_code.get() == 0)
-          {
-            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-            if (paramArrayOfByte == null) {
-              continue;
-            }
-            a(true, 0, paramArrayOfByte);
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          a(false, -1, null);
-          return;
-        }
-      }
-      a(false, paramArrayOfByte.int32_ret_code.get(), null);
-      return;
-      if (!paramArrayOfByte.file_info.has()) {
-        break;
-      }
-      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-    } while (paramArrayOfByte == null);
-    a(true, 0, paramArrayOfByte);
-    return;
-    a(false, -1, null);
+    super(paramString1);
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    yqu.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yud
  * JD-Core Version:    0.7.0.1
  */

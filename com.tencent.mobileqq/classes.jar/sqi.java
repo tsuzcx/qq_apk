@@ -1,32 +1,21 @@
-public abstract interface sqi
+import com.tencent.widget.AbsListView;
+
+class sqi
+  extends pue
 {
-  public abstract void a(sqh paramsqh, int paramInt);
+  sqi(sqh paramsqh, String paramString, AbsListView paramAbsListView, int paramInt)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(sqh paramsqh, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(sqh paramsqh, long paramLong);
-  
-  public abstract void a(sqh paramsqh, boolean paramBoolean);
-  
-  public abstract void b(sqh paramsqh);
-  
-  public abstract void b(sqh paramsqh, int paramInt);
-  
-  public abstract void c(sqh paramsqh);
-  
-  public abstract void d(sqh paramsqh);
-  
-  public abstract void e(sqh paramsqh);
-  
-  public abstract void f(sqh paramsqh);
-  
-  public abstract void g(sqh paramsqh);
-  
-  public abstract void h(sqh paramsqh);
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqi
  * JD-Core Version:    0.7.0.1
  */

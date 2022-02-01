@@ -1,37 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-final class bjxi
-  implements bjsb
+class bjxi
+  extends BroadcastReceiver
 {
-  public void a(BaseResp paramBaseResp)
+  bjxi(bjww parambjww, AsyncResult paramAsyncResult) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!TextUtils.isEmpty(bjxh.jdField_a_of_type_JavaLangString)) && (bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
-      bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bjxh.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
-    }
-    for (;;)
+    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
+    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
+    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
+    try
     {
-      bjxh.jdField_a_of_type_JavaLangString = null;
-      bjxh.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-      bjsa.a().b(this);
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("result", str);
+      localJSONObject2.put("scanType", paramIntent);
+      localJSONObject2.put("rawData", bisz.a(str));
+      localJSONObject2.put("charSet", "utf-8");
+      localJSONObject1.put("detail", localJSONObject2);
+      localJSONObject1.put("result", str);
+      localJSONObject1.put("scanType", paramIntent);
+      localJSONObject1.put("rawData", bisz.a(str));
+      localJSONObject1.put("charSet", "utf-8");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
+      paramContext.unregisterReceiver(bjww.a(this.jdField_a_of_type_Bjww));
+      bjww.a(this.jdField_a_of_type_Bjww, null);
       return;
-      switch (paramBaseResp.errCode)
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
       {
-      case -2: 
-      case -1: 
-      default: 
-        ybk.a(1, 2131720031);
-        break;
-      case 0: 
-        ybk.a(2, 2131720050);
+        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxi
  * JD-Core Version:    0.7.0.1
  */

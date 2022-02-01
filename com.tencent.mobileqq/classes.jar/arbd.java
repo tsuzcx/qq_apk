@@ -1,37 +1,51 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arbd
-  implements bkkj<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
+public class arbd
+  extends aqkz<arbc>
 {
-  arbd(arau paramarau, arbi paramarbi) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  @NonNull
+  public arbc a(int paramInt)
   {
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
-    if (this.jdField_a_of_type_Arbi != null) {
-      this.jdField_a_of_type_Arbi.a(paramInt, paramString);
-    }
+    return new arbc();
   }
   
-  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  @Nullable
+  public arbc a(aqlg[] paramArrayOfaqlg)
   {
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
-    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
-    {
-      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
-      if (this.jdField_a_of_type_Arbi != null) {
-        this.jdField_a_of_type_Arbi.a(-3, "copyFileToOtherBid_fail");
-      }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbc.a(paramArrayOfaqlg);
     }
-    do
-    {
-      return;
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
-    } while (this.jdField_a_of_type_Arbi == null);
-    this.jdField_a_of_type_Arbi.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
+    return null;
+  }
+  
+  public void a(arbc paramarbc) {}
+  
+  public Class<arbc> clazz()
+  {
+    return arbc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 440;
   }
 }
 

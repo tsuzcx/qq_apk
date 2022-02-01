@@ -1,16 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
-public class bnlj
-  implements View.OnTouchListener
+class bnlj
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  public bnlj(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bnlj(bnlc parambnlc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    bnzb.b("VideoStoryCapturePart", "mCurrentRatio---onChanged: ratio=" + paramRatio);
+    if (paramRatio == null) {}
+    while (bnlc.a(this.a) == paramRatio) {
+      return;
+    }
+    bnlc.a(this.a, paramRatio);
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {}
+    for (int i = bnlc.a;; i = 0)
+    {
+      bnlc.a(this.a, i, bnza.a(bnlc.a(this.a), bnza.a(), bnlc.b(this.a), paramRatio));
+      return;
+    }
   }
 }
 

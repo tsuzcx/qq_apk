@@ -1,6 +1,13 @@
-public abstract interface adry
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class adry
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

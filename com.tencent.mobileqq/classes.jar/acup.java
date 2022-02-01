@@ -1,12 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.Map;
 
-public class acup
+public abstract interface acup
 {
-  public int a = 1;
-  public ImageView a;
-  TextView a;
-  public String a;
+  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
 }
 
 

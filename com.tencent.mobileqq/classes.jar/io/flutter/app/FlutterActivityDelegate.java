@@ -104,6 +104,9 @@ public final class FlutterActivityDelegate
     if (paramIntent.getBooleanExtra("dump-skp-on-shader-compilation", false)) {
       localArrayList.add("--dump-skp-on-shader-compilation");
     }
+    if (paramIntent.getBooleanExtra("cache-sksl", false)) {
+      localArrayList.add("--cache-sksl");
+    }
     if (paramIntent.getBooleanExtra("verbose-logging", false)) {
       localArrayList.add("--verbose-logging");
     }
@@ -371,7 +374,7 @@ public final class FlutterActivityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.app.FlutterActivityDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
-import begz;
+import bhod;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -972,7 +972,7 @@ public class QWalletBluetoothJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,181 +1,271 @@
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.GamePlayView;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class moi
 {
-  static int jdField_a_of_type_Int;
-  static long jdField_a_of_type_Long;
-  public static String a;
-  static boolean jdField_a_of_type_Boolean;
-  static int jdField_b_of_type_Int;
-  static String jdField_b_of_type_JavaLangString = "0";
-  static boolean jdField_b_of_type_Boolean;
-  static int jdField_c_of_type_Int;
-  static String jdField_c_of_type_JavaLangString = "actAVFunChatVoiceChange";
-  static boolean jdField_c_of_type_Boolean;
-  static boolean d;
+  Context jdField_a_of_type_AndroidContentContext;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  ZimuView jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+  lij jdField_a_of_type_Lij = null;
+  lip jdField_a_of_type_Lip = null;
   
-  static
+  public moi(VideoAppInterface paramVideoAppInterface, Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeDataReport";
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static void a(int paramInt, long paramLong)
+  private boolean a(long paramLong, ViewGroup paramViewGroup)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("typeid", paramInt + "");
-    localHashMap.put("duration", paramLong + "");
-    UserAction.onUserAction(jdField_c_of_type_JavaLangString, true, -1L, -1L, localHashMap, true);
-    lek.a(jdField_a_of_type_JavaLangString, String.format("reportVoiceChange voiceType = %s, duration = %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    lek.a(jdField_a_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    d = true;
-    jdField_b_of_type_JavaLangString = paramString;
-    if ((paramInt == 1) || (paramInt == 3))
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
     {
-      if (jdField_a_of_type_Int != 0) {
-        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.h();
+      paramViewGroup.removeView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView);
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+      return true;
+    }
+    if (this.jdField_a_of_type_Lij != null)
+    {
+      this.jdField_a_of_type_Lij.b();
+      lim locallim = this.jdField_a_of_type_Lij.a();
+      if (locallim != null) {
+        paramViewGroup.removeView((View)locallim);
       }
-      jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Lij = null;
+      return true;
     }
-    while ((paramInt != 2) && (paramInt != 4)) {
-      return;
-    }
-    if (jdField_a_of_type_Int != 0) {
-      jdField_c_of_type_Int = jdField_a_of_type_Int;
-    }
-    jdField_b_of_type_Boolean = true;
+    return false;
   }
   
-  public static void a(String paramString1, String paramString2)
+  private boolean a(long paramLong, ViewGroup paramViewGroup, String paramString)
   {
-    lek.a(jdField_a_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_b_of_type_JavaLangString }));
-    azqs.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", jdField_b_of_type_JavaLangString, "");
+    this.jdField_a_of_type_Lij = null;
+    this.jdField_a_of_type_Lij = lin.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559697, null);
+    if (this.jdField_a_of_type_Lij == null)
+    {
+      QLog.w("ZimuViewProxy", 1, "creatARZimuTask, fail");
+      return false;
+    }
+    int i = this.jdField_a_of_type_Lij.a();
+    String str = this.jdField_a_of_type_Lij.c();
+    paramString.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (AVActivity)this.jdField_a_of_type_AndroidContentContext, str, i);
+    this.jdField_a_of_type_Lij.a(paramString);
+    paramViewGroup.addView(paramString);
+    this.jdField_a_of_type_Lij.a();
+    return true;
   }
   
-  public static void a(lid paramlid)
+  private boolean c(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    if ((!jdField_c_of_type_Boolean) || (!d)) {
-      return;
-    }
-    if ((paramlid.d == 1) || (paramlid.d == 2)) {
-      if (jdField_a_of_type_Boolean)
-      {
-        if (jdField_b_of_type_Int == 0) {
-          a("0X8007DC3", "");
-        }
+    float f2 = 0.0F;
+    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = mof.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    float f1;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
+    {
+      f1 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a();
+      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)f1);
+      if (!paramString.equals("film")) {
+        break label121;
       }
-      else if (jdField_b_of_type_Boolean)
-      {
-        if (jdField_c_of_type_Int != 0) {
-          break label115;
-        }
-        a("0X8007DC5", "");
-      }
+      f1 = paramInt2 - localResources.getDimension(2131297649);
+      localLayoutParams.addRule(12);
     }
     for (;;)
     {
-      a(paramlid, 0);
-      jdField_c_of_type_Boolean = false;
-      d = false;
-      jdField_b_of_type_JavaLangString = "0";
-      return;
-      a("0X8007DC2", jdField_b_of_type_Int + "");
-      break;
-      label115:
-      a("0X8007DC4", jdField_c_of_type_Int + "");
-      continue;
-      if ((paramlid.d == 3) || (paramlid.d == 4)) {
-        if (paramlid.C == 1)
+      localLayoutParams.setMargins(0, (int)f2, 0, (int)f1);
+      paramViewGroup.addView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView, localLayoutParams);
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
+        break;
+      }
+      return true;
+      label121:
+      f2 = paramInt1;
+      f1 = 0.0F;
+    }
+    return false;
+  }
+  
+  public ZimuItem a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+    {
+      a();
+      return (ZimuItem)this.jdField_a_of_type_Lip.a();
+    }
+    return null;
+  }
+  
+  public lip a()
+  {
+    if (this.jdField_a_of_type_Lip == null) {
+      this.jdField_a_of_type_Lip = ((lip)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
+    }
+    return this.jdField_a_of_type_Lip;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+    {
+      Object localObject = a();
+      if (localObject != null)
+      {
+        localObject = (ZimuItem)((lip)localObject).a();
+        if (localObject != null)
         {
-          if (jdField_a_of_type_Boolean)
-          {
-            if (jdField_b_of_type_Int != 0) {
-              break label209;
-            }
-            a("0X8007E67", "");
+          localObject = ((ZimuItem)localObject).getId();
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            new mcd(AudioHelper.b(), "maybeShowZimu", 1, (String)localObject).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
           }
-          for (;;)
-          {
-            if (!jdField_b_of_type_Boolean) {
-              break label236;
-            }
-            if (jdField_c_of_type_Int != 0) {
-              break label238;
-            }
-            a("0X8007E69", "");
-            break;
-            label209:
-            a("0X8007E68", jdField_b_of_type_Int + "");
-          }
-          label236:
-          continue;
-          label238:
-          a("0X8007E6A", jdField_c_of_type_Int + "");
-        }
-        else if (paramlid.C == 10)
-        {
-          if (jdField_a_of_type_Boolean)
-          {
-            if (jdField_b_of_type_Int != 0) {
-              break label317;
-            }
-            a("0X8007E63", "");
-          }
-          for (;;)
-          {
-            if (!jdField_b_of_type_Boolean) {
-              break label344;
-            }
-            if (jdField_c_of_type_Int != 0) {
-              break label346;
-            }
-            a("0X8007E65", "");
-            break;
-            label317:
-            a("0X8007E64", jdField_b_of_type_Int + "");
-          }
-          label344:
-          continue;
-          label346:
-          a("0X8007E66", jdField_c_of_type_Int + "");
         }
       }
     }
   }
   
-  public static void a(lid paramlid, int paramInt)
+  public void a(long paramLong)
   {
-    lek.a(jdField_a_of_type_JavaLangString, String.format("updateReportData sessionType = %d, voiceType = %d", new Object[] { Integer.valueOf(paramlid.d), Integer.valueOf(paramInt) }));
-    long l = System.currentTimeMillis();
-    if (jdField_a_of_type_Int != 0) {
-      a(jdField_a_of_type_Int, (l - jdField_a_of_type_Long) / 1000L);
-    }
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_Long = l;
-    if ((paramlid.d == 1) || (paramlid.d == 3))
+    a(false);
+    if (this.jdField_a_of_type_Lij != null)
     {
-      if (jdField_a_of_type_Int != 0) {
-        jdField_b_of_type_Int = jdField_a_of_type_Int;
-      }
-      jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Lip.a(paramLong, null);
+      this.jdField_a_of_type_Lip.a("DisableARZimu", paramLong);
+      this.jdField_a_of_type_Lij.b();
+      this.jdField_a_of_type_Lij = null;
     }
-    while ((paramlid.d != 2) && (paramlid.d != 4)) {
+  }
+  
+  public void a(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2)
+  {
+    RelativeLayout.LayoutParams localLayoutParams;
+    Resources localResources;
+    float f;
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.getLayoutParams();
+      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals("film")) {
+        break label110;
+      }
+      if (!paramVideoLayerUI.i()) {
+        break label91;
+      }
+      f = paramVideoLayerUI.c() - mio.b(paramVideoLayerUI.b());
+      localLayoutParams.bottomMargin = ((int)(localResources.getDimension(2131297545) + f));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.setLayoutParams(localLayoutParams);
+      return;
+      label91:
+      localLayoutParams.bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131297649)));
+      continue;
+      label110:
+      f = paramInt1;
+      localLayoutParams.topMargin = ((int)(localResources.getDimension(2131297663) + f));
+    }
+  }
+  
+  public void a(lga paramlga)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramlga);
+    }
+    while (this.jdField_a_of_type_Lij == null) {
       return;
     }
-    if (jdField_a_of_type_Int != 0) {
-      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_Lij.a(paramlga);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a();
+    lio.a(paramBoolean);
+    this.jdField_a_of_type_Lip.a(paramBoolean);
+  }
+  
+  public boolean a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("ZimuViewProxy", 1, "hideZimuView, exchangeItem[" + paramBoolean + "], seq[" + paramLong + "]");
     }
-    jdField_b_of_type_Boolean = true;
+    a();
+    if (paramBoolean) {
+      this.jdField_a_of_type_Lip.a(paramLong, null);
+    }
+    return a(paramLong, paramViewGroup);
+  }
+  
+  public boolean a(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Lij != null) {
+      a(paramLong, paramViewGroup);
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
+      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
+    }
+    if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals(paramString))
+    {
+      a(paramLong, paramViewGroup);
+      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
+    }
+    return true;
+  }
+  
+  public boolean a(ViewGroup paramViewGroup, long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("ZimuViewProxy", 1, "stopZimuView, seq[" + paramLong + "]");
+    }
+    a();
+    a(paramLong, paramViewGroup);
+    this.jdField_a_of_type_Lip.a(paramLong, null);
+    this.jdField_a_of_type_Lip.a("stopZimuView", paramLong);
+    return true;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramBoolean);
+    }
+    if (this.jdField_a_of_type_Lij != null) {
+      this.jdField_a_of_type_Lij.b();
+    }
+  }
+  
+  public boolean b(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      a(paramLong, paramViewGroup);
+    }
+    if (!lio.a()) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Lij == null) {
+      return a(paramLong, paramViewGroup, paramString);
+    }
+    a(paramLong, paramViewGroup);
+    return a(paramLong, paramViewGroup, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     moi
  * JD-Core Version:    0.7.0.1
  */

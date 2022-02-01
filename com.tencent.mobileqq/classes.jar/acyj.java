@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyj
-  implements View.OnClickListener
+  extends aczg
 {
-  public acyj(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    ForwardTroopListFragment.a(this.a);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().f(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (23 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

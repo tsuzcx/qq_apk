@@ -1,15 +1,23 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.widget.ListView;
 
-public final class bbka
-  extends Editable.Factory
+public class bbka
+  extends bbip<bbmy, bbvg>
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public bbka(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, aobu paramaobu)
   {
-    if ((paramCharSequence instanceof bamz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bamz(paramCharSequence, 3, 20);
+    super(paramListView, paramaobu);
+  }
+  
+  protected bbps<bbmy, bbvg> a(int paramInt)
+  {
+    return new bbqp(this.a.a);
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bbww(paramViewGroup, 2131562845);
   }
 }
 

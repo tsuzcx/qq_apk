@@ -1,60 +1,28 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
-class nog
-  implements INetInfoHandler
+public class nog
+  implements bhuq
 {
-  nog(noe paramnoe) {}
+  public nog(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2None");
-    }
-    noe.b(this.a);
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    if (LebaSearchPluginManagerActivity.a(this.a))
+    {
+      this.a.a(paramInt2);
+      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
-    }
-    noe.b(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
-    }
-    noe.b(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2None");
-    }
-    noe.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nog
  * JD-Core Version:    0.7.0.1
  */

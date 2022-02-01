@@ -1,13 +1,8 @@
-class afxk
+public abstract interface afxk
 {
-  public int a;
-  public long a;
-  public int b;
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  afxk(afxh paramafxh)
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

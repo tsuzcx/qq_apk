@@ -1,26 +1,67 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
 class blvl
-  extends uxx
+  implements ModuleDownloadListener
 {
-  blvl(blvk paramblvk, String paramString)
+  blvl(blvk paramblvk) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    super(paramString);
+    blvk.b(false);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onDownloadFailed(String paramString)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      wxe.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      blvi.a(this.a.jdField_a_of_type_Blvi, true);
-      blvi.a(this.a.jdField_a_of_type_Blvi, this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_Blvi.a(null);
+    blvk.b(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("upload.so")) {
       return;
     }
-    wxe.b("PasterDataManager", "onLocationUpdate() error");
+    blvk.b(false);
+    String str = blvk.a().getAbsolutePath();
+    QLog.d("UploadEnv", 1, "upload so download success : " + str);
+    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if (!bmij.b(new File(paramString), localFile))
+    {
+      QLog.d("UploadEnv", 1, "upload so unzip fail");
+      blvk.b(false);
+      return;
+    }
+    if (blvk.a(this.a, str))
+    {
+      QLog.d("UploadEnv", 1, "upload so save success");
+      blvk.a(this.a, true);
+      blvk.a(true);
+    }
+    for (;;)
+    {
+      blvk.b(false);
+      return;
+      try
+      {
+        localFile.delete();
+        blvk.a(this.a, false);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    }
   }
 }
 

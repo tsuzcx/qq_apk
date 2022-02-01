@@ -19,7 +19,7 @@ class VideoNetStateBar$GroupNetLevelRunnable
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.f();
+    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.g();
     this.this$0.e = true;
     switch (i)
     {
@@ -45,7 +45,7 @@ class VideoNetStateBar$GroupNetLevelRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.VideoNetStateBar.GroupNetLevelRunnable
  * JD-Core Version:    0.7.0.1
  */

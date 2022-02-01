@@ -1,66 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
-class uzx
-  extends SimpleObserver<List<vlp>>
+public abstract class uzx
+  extends zyu
+  implements zxl<QCircleReportBean>
 {
-  uzx(uzw paramuzw, vaa paramvaa, uyg paramuyg) {}
+  protected QCircleReportBean a;
   
-  public void a(List<vlp> paramList)
+  public uzx(Bundle paramBundle)
   {
-    super.onNext(paramList);
-    ArrayList localArrayList;
-    int i;
-    vlp localvlp;
-    if (this.jdField_a_of_type_Vaa != null)
-    {
-      localArrayList = new ArrayList();
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        Collections.sort(paramList, new uzy(this));
-        paramList = paramList.iterator();
-        i = 0;
-        if (paramList.hasNext())
-        {
-          localvlp = (vlp)paramList.next();
-          if (i < uzw.a(this.jdField_a_of_type_Uzw)) {
-            break label100;
-          }
-        }
-      }
-      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, localArrayList);
-    }
-    else
-    {
-      return;
-    }
-    label100:
-    if ((localvlp != null) && (!localvlp.jdField_a_of_type_Boolean) && (localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
-    {
-      localArrayList.add(localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      i += 1;
-    }
-    for (;;)
-    {
-      break;
-    }
+    super(paramBundle);
   }
   
-  public void onError(@NonNull Error paramError)
+  public QCircleReportBean a()
   {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, paramError);
+    if (this.a == null) {
+      this.a = new QCircleReportBean();
     }
+    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+  }
+  
+  protected abstract String a();
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+  }
+  
+  protected int b()
+  {
+    return QCircleReportBean.getPageId(a(), this.a);
+  }
+  
+  protected String b()
+  {
+    if (this.a != null) {
+      return this.a.getModuleIdStr();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzx
  * JD-Core Version:    0.7.0.1
  */

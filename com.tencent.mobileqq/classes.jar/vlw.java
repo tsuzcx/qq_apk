@@ -1,23 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
 
-public final class vlw
-  implements urr<vfd, vhb>
+public class vlw
+  extends RecyclerView.OnScrollListener
 {
-  vlw(vmd paramvmd) {}
+  public vlw(QCircleAggregationFragment paramQCircleAggregationFragment) {}
   
-  public void a(@NonNull vfd paramvfd, @Nullable vhb paramvhb, @NonNull ErrorMessage paramErrorMessage)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramvhb, paramErrorMessage));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      adcd.a().a("qcircle_follow_tab_page", false);
+      return;
+    }
+    adcd.a().a("qcircle_follow_tab_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlw
  * JD-Core Version:    0.7.0.1
  */

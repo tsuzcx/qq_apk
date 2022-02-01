@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import oat;
+import oks;
 
 public class ReadinjoyJumpActivity$2$1
   implements Runnable
 {
-  public ReadinjoyJumpActivity$2$1(oat paramoat) {}
+  public ReadinjoyJumpActivity$2$1(oks paramoks) {}
   
   public void run()
   {

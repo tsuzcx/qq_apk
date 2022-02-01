@@ -1,6 +1,8 @@
+import java.util.List;
+
 public abstract interface aaqv
 {
-  public abstract aaqx a(aaqw paramaaqw);
+  public abstract void a(List<atsc> paramList);
 }
 
 

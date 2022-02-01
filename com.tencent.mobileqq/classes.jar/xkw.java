@@ -1,25 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xkw
-  implements View.OnClickListener
+  extends QQUIEventReceiver<xko, wwx>
 {
-  public xkw(PermissionSettingActivity paramPermissionSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public xkw(@NonNull xko paramxko)
   {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
+    super(paramxko);
+  }
+  
+  public void a(@NonNull xko paramxko, @NonNull wwx paramwwx)
+  {
+    if (paramwwx.a.isSuccess())
     {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
+      yqp.a(this.TAG, "receive user info event. %s.", paramwwx.toString());
+      paramxko = paramxko.a();
+      if (paramxko != null) {
+        paramxko.a();
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xkw
  * JD-Core Version:    0.7.0.1
  */

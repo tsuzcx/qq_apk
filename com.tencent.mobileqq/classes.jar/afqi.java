@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.persistence.Entity;
 
-class afqi
-  extends afuf
+public class afqi
 {
-  afqi(afpy paramafpy)
+  public int a;
+  public Entity a;
+  public String a;
+  
+  public afqi(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, Entity paramEntity)
   {
-    super(paramafpy, null);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(String paramString)
   {
-    return new afhk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

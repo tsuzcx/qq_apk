@@ -1,47 +1,24 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class axbi
-  extends MSFServlet
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class axbi
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
-  }
+  axbi(Function0 paramFunction0) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public final void onClick(View paramView)
   {
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
-    {
-      axbh localaxbh = new axbh(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
-      byte[] arrayOfByte = localaxbh.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localaxbh.uniKey());
-      paramPacket.putSendData(paramIntent);
-    }
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbi
  * JD-Core Version:    0.7.0.1
  */

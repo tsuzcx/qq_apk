@@ -1,37 +1,48 @@
 package cooperation.wadl.sso;
 
-import aahi;
-import android.content.Intent;
-import bdhb;
-import bkjb;
-import com.tencent.common.app.BaseApplicationImpl;
+import aceh;
+import bmxq;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class WadlCmdUtil$1
   implements Runnable
 {
-  public WadlCmdUtil$1(bkjb parambkjb, String paramString, long paramLong) {}
+  public WadlCmdUtil$1(bmxq parambmxq, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
-    Object localObject = bkjb.a();
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
+    long l1 = aceh.a("LAST_GET_CONF_VERSION");
+    if (QLog.isColorLevel()) {
+      QLog.d(bmxq.a, 2, "checkConfigUpdate isForce=" + this.jdField_a_of_type_Boolean + ",newVersion=" + this.jdField_a_of_type_Long + ",currVersion=" + l1);
     }
-    if (bdhb.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_JavaLangString, false))
+    if ((this.jdField_a_of_type_Long > -1L) && (this.jdField_a_of_type_Long == l1) && (bmxq.a().exists())) {}
+    long l2;
+    do
     {
-      aahi.a("LAST_GET_CONF_VERSION", this.jdField_a_of_type_Long);
-      aahi.a("LAST_GET_CONF_TIME", bkjb.a(this.this$0));
-      localObject = new Intent("com.tencent.gamecenter.action");
-      ((Intent)localObject).setPackage(BaseApplicationImpl.getApplication().getPackageName());
-      ((Intent)localObject).putExtra("key_event_id", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
-    }
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bmxq.a(this.this$0, l1);
+        return;
+      }
+      if (bmxq.a(this.this$0) >= 3)
+      {
+        bmxq.a(this.this$0, System.currentTimeMillis());
+        bmxq.a(this.this$0, (short)0);
+        return;
+      }
+      if (bmxq.a(this.this$0) == -1L) {
+        bmxq.a(this.this$0, aceh.a("LAST_GET_CONF_TIME"));
+      }
+      l2 = System.currentTimeMillis();
+    } while ((bmxq.a(this.this$0) + 86400000L >= l2) && (bmxq.a(this.this$0) <= l2));
+    bmxq.a(this.this$0, l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.wadl.sso.WadlCmdUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,79 @@
-import android.app.Activity;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
 import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class uqn
+  extends ueh<Object>
 {
-  public static int a(int paramInt)
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  
+  public uqn(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
   }
   
-  public static Boolean a(int paramInt)
+  protected void a()
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
+    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
+    }
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  protected int b()
   {
-    return ura.a(paramClass, paramVarArgs);
+    return 2131559995;
   }
   
-  public static String a(int paramInt)
+  protected void b()
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
+    {
+      int i = (int)(this.jdField_b_of_type_AndroidViewView.getWidth() * 1.5F);
+      int j = upr.c();
+      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(j - i);
+      String str = a().getString(2131719180);
+      str = str + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    }
   }
   
-  public static String a(int paramInt, Object... paramVarArgs)
+  public void b(int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+    if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
+    {
+      String str = paramInt + "/" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.feed_count;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+    }
   }
   
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
+  protected void c() {}
   
-  public static <T extends Activity> uqw<T> a(Class<? extends uqw<T>> paramClass, Class<uqw<T>> paramClass1, Object... paramVarArgs)
+  protected void e()
   {
-    return (uqw)ura.a(paramClass, paramClass1, paramVarArgs);
-  }
-  
-  public static xvp a(Context paramContext, int paramInt)
-  {
-    return urd.a(paramContext, paramInt);
-  }
-  
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    urg.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    urg.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    ure.a(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return urf.a();
-  }
-  
-  public static String[] a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+      return;
+    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380514);
+    urc.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
+    this.jdField_b_of_type_AndroidViewView = a(2131380513);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new uqo(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380506));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379568));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqn
  * JD-Core Version:    0.7.0.1
  */

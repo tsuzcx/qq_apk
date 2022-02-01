@@ -1,24 +1,42 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahiz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AnimatorListenerAdapter
 {
-  public ahiz(TroopView paramTroopView) {}
+  public ahiz(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
+    do
     {
-      TroopView.a(this.a);
+      do
+      {
+        return;
+        SixCombolEffectView.jdField_a_of_type_Int = 4;
+        if (QLog.isColorLevel()) {
+          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+        }
+      } while (SixCombolEffectView.a(this.a) == null);
+      paramAnimator = SixCombolEffectView.a(this.a);
+    } while (paramAnimator == null);
+    SixCombolEffectView.a(this.a).a(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
       return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+      SixCombolEffectView.jdField_a_of_type_Int = 3;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

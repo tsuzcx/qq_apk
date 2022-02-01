@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import alof;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import arso;
-import arss;
-import bbsa;
-import bbtn;
+import anhk;
+import atwl;
+import atwp;
+import besl;
+import bety;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,7 +45,7 @@ public class TroopFileTransferManager$Item
   public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
   public transient boolean isFileExist;
   public transient String mExcitingSpeed;
-  public arss mForwardCallback;
+  public atwp mForwardCallback;
   public transient int retryTimes;
   public transient String rspHeadStr;
   public transient int thumbInvalidCode;
@@ -55,21 +55,21 @@ public class TroopFileTransferManager$Item
   
   public TroopFileTransferManager$Item() {}
   
-  public TroopFileTransferManager$Item(bbsa parambbsa)
+  public TroopFileTransferManager$Item(besl parambesl)
   {
-    this.Id = parambbsa.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = parambbsa.jdField_h_of_type_JavaLangString;
-    this.Status = parambbsa.jdField_e_of_type_Int;
-    this.FilePath = parambbsa.jdField_b_of_type_JavaLangString;
-    this.FileName = parambbsa.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = parambbsa.jdField_a_of_type_Long;
-    this.UploadTime = parambbsa.a();
-    this.BusId = parambbsa.jdField_a_of_type_Int;
-    if ((parambbsa.jdField_i_of_type_JavaLangString != null) && (parambbsa.jdField_i_of_type_JavaLangString.length() > 0))
+    this.Id = parambesl.jdField_a_of_type_JavaUtilUUID;
+    this.LocalFile = parambesl.jdField_h_of_type_JavaLangString;
+    this.Status = parambesl.jdField_e_of_type_Int;
+    this.FilePath = parambesl.jdField_b_of_type_JavaLangString;
+    this.FileName = parambesl.jdField_c_of_type_JavaLangString;
+    this.ProgressTotal = parambesl.jdField_a_of_type_Long;
+    this.UploadTime = parambesl.a();
+    this.BusId = parambesl.jdField_a_of_type_Int;
+    if ((parambesl.jdField_i_of_type_JavaLangString != null) && (parambesl.jdField_i_of_type_JavaLangString.length() > 0))
     {
       bool1 = true;
       this.HasThumbnailFile_Small = bool1;
-      if ((parambbsa.j == null) || (parambbsa.j.length() <= 0)) {
+      if ((parambesl.jdField_j_of_type_JavaLangString == null) || (parambesl.jdField_j_of_type_JavaLangString.length() <= 0)) {
         break label140;
       }
     }
@@ -77,8 +77,8 @@ public class TroopFileTransferManager$Item
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.HasThumbnailFile_Large = bool1;
-      this.NickName = parambbsa.n;
-      this.mParentId = parambbsa.f;
+      this.NickName = parambesl.n;
+      this.mParentId = parambesl.f;
       return;
       bool1 = false;
       break;
@@ -126,6 +126,12 @@ public class TroopFileTransferManager$Item
     this.smallThumbFile = paramTroopFileTansferItemEntity.smallThumbFile;
     this.largeThumbnailFile = paramTroopFileTansferItemEntity.largeThumbnailFile;
     this.middleThumbnailFile = paramTroopFileTansferItemEntity.middleThumbnailFile;
+    this.yybApkPackageName = paramTroopFileTansferItemEntity.yybApkPackageName;
+    this.yybApkName = paramTroopFileTansferItemEntity.yybApkName;
+    this.yybApkIconUrl = paramTroopFileTansferItemEntity.yybApkIconUrl;
+    this.apkSafeLevel = paramTroopFileTansferItemEntity.apkSafeLevel;
+    this.apkSafeMsg = paramTroopFileTansferItemEntity.apkSafeMsg;
+    this.apkSafeDetailUrl = paramTroopFileTansferItemEntity.apkSafeDetailUrl;
   }
   
   public final boolean canFetchThumbnailFile(int paramInt)
@@ -193,63 +199,71 @@ public class TroopFileTransferManager$Item
     new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
-  public final bbtn getInfo(long paramLong)
+  public final bety getInfo(long paramLong)
   {
-    bbtn localbbtn = new bbtn();
-    localbbtn.jdField_b_of_type_Long = paramLong;
-    localbbtn.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbbtn.jdField_d_of_type_Long = this.ProgressValue;
-    localbbtn.jdField_b_of_type_Int = this.Status;
-    localbbtn.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbbtn.jdField_c_of_type_Int = this.ErrorCode;
-    localbbtn.jdField_h_of_type_Int = this.BusId;
+    bety localbety = new bety();
+    localbety.jdField_b_of_type_Long = paramLong;
+    localbety.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localbety.jdField_d_of_type_Long = this.ProgressValue;
+    localbety.jdField_b_of_type_Int = this.Status;
+    localbety.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localbety.jdField_c_of_type_Int = this.ErrorCode;
+    localbety.jdField_h_of_type_Int = this.BusId;
     if (this.HasThumbnailFile_Small)
     {
       str = getThumbnailFile(paramLong, 128);
-      localbbtn.jdField_b_of_type_JavaLangString = str;
+      localbety.jdField_b_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Large) {
-        break label349;
+        break label403;
       }
       str = getThumbnailFile(paramLong, 640);
       label107:
-      localbbtn.jdField_c_of_type_JavaLangString = str;
+      localbety.jdField_c_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Middle) {
-        break label371;
+        break label425;
       }
       str = getThumbnailFile(paramLong, 383);
       label129:
-      localbbtn.jdField_d_of_type_JavaLangString = str;
-      localbbtn.jdField_c_of_type_Long = this.ProgressTotal;
-      localbbtn.jdField_d_of_type_Int = this.UploadTime;
-      localbbtn.jdField_e_of_type_JavaLangString = this.FilePath;
+      localbety.jdField_d_of_type_JavaLangString = str;
+      localbety.jdField_c_of_type_Long = this.ProgressTotal;
+      localbety.jdField_d_of_type_Int = this.UploadTime;
+      localbety.jdField_e_of_type_JavaLangString = this.FilePath;
       if ((TextUtils.isEmpty(this.NameForSave)) || (this.SafeCheckRes != 2)) {
-        break label393;
+        break label447;
       }
-      localbbtn.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localbety.jdField_g_of_type_JavaLangString = this.NameForSave;
       label189:
-      localbbtn.jdField_a_of_type_JavaLangString = this.LocalFile;
-      localbbtn.jdField_h_of_type_JavaLangString = this.NickName;
-      localbbtn.jdField_e_of_type_Long = this.entrySessionID;
+      localbety.jdField_a_of_type_JavaLangString = this.LocalFile;
+      localbety.jdField_h_of_type_JavaLangString = this.NickName;
+      localbety.jdField_e_of_type_Long = this.entrySessionID;
       if (!TextUtils.isEmpty(this.mParentId)) {
-        break label405;
+        break label459;
       }
     }
-    label393:
-    label405:
+    label403:
+    label425:
+    label447:
+    label459:
     for (String str = "/";; str = this.mParentId)
     {
-      localbbtn.jdField_i_of_type_JavaLangString = str;
-      localbbtn.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-      if ((localbbtn.jdField_b_of_type_Boolean) && (!arso.b(localbbtn.jdField_d_of_type_JavaLangString))) {
-        localbbtn.jdField_d_of_type_JavaLangString = null;
+      localbety.jdField_i_of_type_JavaLangString = str;
+      localbety.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
+      if ((localbety.jdField_b_of_type_Boolean) && (!atwl.b(localbety.jdField_d_of_type_JavaLangString))) {
+        localbety.jdField_d_of_type_JavaLangString = null;
       }
-      localbbtn.jdField_e_of_type_Int = this.width;
-      localbbtn.f = this.height;
-      localbbtn.jdField_g_of_type_Int = this.duration;
-      localbbtn.j = this.mExcitingSpeed;
-      localbbtn.jdField_i_of_type_Int = this.thumbInvalidCode;
-      localbbtn.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
-      return localbbtn;
+      localbety.jdField_e_of_type_Int = this.width;
+      localbety.f = this.height;
+      localbety.jdField_g_of_type_Int = this.duration;
+      localbety.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
+      localbety.jdField_j_of_type_Int = this.thumbInvalidCode;
+      localbety.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+      localbety.k = this.yybApkPackageName;
+      localbety.l = this.yybApkName;
+      localbety.m = this.yybApkIconUrl;
+      localbety.jdField_i_of_type_Int = this.apkSafeLevel;
+      localbety.n = this.apkSafeMsg;
+      localbety.o = this.apkSafeDetailUrl;
+      return localbety;
       if (canFetchThumbnailFile(128))
       {
         str = null;
@@ -257,7 +271,6 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break;
-      label349:
       if (canFetchThumbnailFile(640))
       {
         str = null;
@@ -265,7 +278,6 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label107;
-      label371:
       if (canFetchThumbnailFile(383))
       {
         str = null;
@@ -273,7 +285,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label129;
-      localbbtn.jdField_g_of_type_JavaLangString = this.FileName;
+      localbety.jdField_g_of_type_JavaLangString = this.FileName;
       break label189;
     }
   }
@@ -281,17 +293,17 @@ public class TroopFileTransferManager$Item
   public final String getThumbnailFile(long paramLong, int paramInt)
   {
     if (paramInt == 128) {
-      return alof.bp + "[Thumb]" + paramLong + "-" + this.Id.toString();
+      return anhk.bs + "[Thumb]" + paramLong + "-" + this.Id.toString();
     }
     if (paramInt == 383) {
-      return alof.bp + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
+      return anhk.bs + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
     }
-    return alof.bp + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
+    return anhk.bs + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item
  * JD-Core Version:    0.7.0.1
  */

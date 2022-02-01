@@ -2,13 +2,14 @@ package io.flutter.plugin.platform;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent.PointerCoords;
 import android.view.MotionEvent.PointerProperties;
 import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewsHandler;
@@ -30,11 +31,13 @@ public class PlatformViewsController
   private final PlatformViewsChannel.PlatformViewsHandler channelHandler = new PlatformViewsController.1(this);
   private Context context;
   private final HashMap<Context, View> contextToPlatformView = new HashMap();
+  private View flutterView;
   private PlatformViewsChannel platformViewsChannel;
   private final PlatformViewRegistryImpl registry = new PlatformViewRegistryImpl();
   private TextInputPlugin textInputPlugin;
   private TextureRegistry textureRegistry;
-  private final HashMap<Integer, VirtualDisplayController> vdControllers = new HashMap();
+  @VisibleForTesting
+  final HashMap<Integer, VirtualDisplayController> vdControllers = new HashMap();
   
   private void flushAllViews()
   {
@@ -164,6 +167,15 @@ public class PlatformViewsController
     this.textInputPlugin = paramTextInputPlugin;
   }
   
+  public void attachToView(@NonNull View paramView)
+  {
+    this.flutterView = paramView;
+    Iterator localIterator = this.vdControllers.values().iterator();
+    while (localIterator.hasNext()) {
+      ((VirtualDisplayController)localIterator.next()).onFlutterViewAttached(paramView);
+    }
+  }
+  
   public boolean checkInputConnectionProxy(View paramView)
   {
     if (!this.contextToPlatformView.containsKey(paramView.getContext())) {
@@ -188,6 +200,15 @@ public class PlatformViewsController
   public void detachAccessibiltyBridge()
   {
     this.accessibilityEventsDelegate.setAccessibilityBridge(null);
+  }
+  
+  public void detachFromView()
+  {
+    this.flutterView = null;
+    Iterator localIterator = this.vdControllers.values().iterator();
+    while (localIterator.hasNext()) {
+      ((VirtualDisplayController)localIterator.next()).onFlutterViewDetached();
+    }
   }
   
   public void detachTextInputPlugin()
@@ -221,7 +242,7 @@ public class PlatformViewsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController
  * JD-Core Version:    0.7.0.1
  */

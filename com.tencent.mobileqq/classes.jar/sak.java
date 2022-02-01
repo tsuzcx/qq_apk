@@ -1,22 +1,19 @@
-import com.tencent.widget.AbsListView;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
-public abstract interface sak
+public class sak
+  implements qzc
 {
-  public abstract void a();
+  public sak(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public abstract void a(AbsListView paramAbsListView, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(String paramString)
+  {
+    tti.a(this.a, paramString, 0).show();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sak
  * JD-Core Version:    0.7.0.1
  */

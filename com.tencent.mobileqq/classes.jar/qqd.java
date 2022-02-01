@@ -1,21 +1,25 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.view.View.OnAttachStateChangeListener;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class qqd
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$initCallback$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qqd
+  implements View.OnAttachStateChangeListener
 {
-  public qqd(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public void onClick(View paramView)
+  public void onViewAttachedToWindow(@Nullable View paramView)
   {
-    this.a.getActivity().finish();
+    pmk.a().a(qqa.a(this.a));
+  }
+  
+  public void onViewDetachedFromWindow(@Nullable View paramView)
+  {
+    pmk.a().b(qqa.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqd
  * JD-Core Version:    0.7.0.1
  */

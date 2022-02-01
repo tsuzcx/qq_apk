@@ -1,6 +1,29 @@
-public abstract interface ahud
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
+
+class ahud
+  extends FrameLayout
 {
-  public abstract void a();
+  public ahud(ahua paramahua, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = ahua.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
+    }
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(ahua.a(this.a).getMeasuredWidth() - ahua.a(this.a).getPaddingLeft() - ahua.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+  }
 }
 
 

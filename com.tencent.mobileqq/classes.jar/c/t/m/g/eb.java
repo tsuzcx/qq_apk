@@ -1,96 +1,35 @@
 package c.t.m.g;
 
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.Pair;
+import android.os.Bundle;
 
-public final class eb
+public abstract class eb
 {
-  private long A = 30000L;
-  private String B = "6.0.5.4";
-  private String C = "200210";
-  private String D = this.B;
-  public int a;
-  String b;
-  String c;
-  public String d;
-  String e;
-  public String f;
-  public String g;
-  public String h;
-  int i;
-  public String j;
-  public long k;
-  boolean l = true;
-  boolean m = true;
-  boolean n = true;
-  public int o = -2;
-  public Pair<String, String> p;
-  private final ea q;
-  private String r;
-  private int s = 0;
-  private int t = 0;
-  private int u = 0;
-  private boolean v = false;
-  private boolean w = false;
-  private boolean x = false;
-  private boolean y = false;
-  private long z = 20000L;
+  private String a;
+  private String b;
+  private boolean c;
   
-  eb(ea paramea)
+  public eb(String paramString1, String paramString2)
   {
-    this.q = paramea;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = true;
   }
   
-  public final String a()
+  public void a() {}
+  
+  public final boolean a(Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "0123456789ABCDEF";
+    if (!this.c) {
+      return false;
     }
-    return this.b;
+    return b(paramBundle);
   }
   
-  public final String b()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return "0123456789ABCDEF";
-    }
-    return this.c;
-  }
+  protected abstract boolean b(Bundle paramBundle);
   
-  public final String c()
+  public String toString()
   {
-    if ((TextUtils.isEmpty(this.e)) || (this.e.contains("0000")) || (Build.VERSION.SDK_INT >= 29)) {
-      return "0123456789ABCDEF";
-    }
-    return this.e;
-  }
-  
-  public final String d()
-  {
-    if (this.B == null) {
-      return "None";
-    }
-    return this.B;
-  }
-  
-  public final String e()
-  {
-    if (this.C == null) {
-      return "None";
-    }
-    return this.C;
-  }
-  
-  public final String f()
-  {
-    if (this.r == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(a()).append("_").append(b()).append("_").append(c()).append("_QQGeoLocation");
-      this.r = co.d(localStringBuilder.toString());
-    }
-    return this.r;
+    return "[name=" + this.a + ",desc=" + this.b + ",enabled=" + this.c + "]";
   }
 }
 

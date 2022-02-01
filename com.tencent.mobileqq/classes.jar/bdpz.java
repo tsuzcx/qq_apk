@@ -1,16 +1,22 @@
-public abstract interface bdpz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeUtil.2.1;
+import mqq.os.MqqHandler;
+
+public final class bdpz
+  extends bdpx
 {
-  public abstract void a(bdpx parambdpx1, bdpx parambdpx2);
+  public bdpz(QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(bdpx parambdpx1, bdpx parambdpx2, int paramInt);
-  
-  public abstract void b(bdpx parambdpx1, bdpx parambdpx2);
+  public boolean a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
+    return super.a(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdpz
  * JD-Core Version:    0.7.0.1
  */

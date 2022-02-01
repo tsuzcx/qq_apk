@@ -1,48 +1,30 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleSetProfileRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.List;
+import qqcircle.QQCircleProfile.SetProfileRsp;
 
-class vtx
-  implements AbsListView.OnScrollListener
+public class vtx
+  extends zxg
 {
-  vtx(vtv paramvtv) {}
+  public MutableLiveData<vup<QQCircleProfile.SetProfileRsp>> a = new MutableLiveData();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    if (SystemClock.uptimeMillis() - vtv.a(this.a) < 500L) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        vtv.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Vpm instanceof vqa));
-      i = paramInt1 + paramInt2;
-      ((vqa)this.a.jdField_a_of_type_Vpm).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Vsj.a();
-    wxe.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Vpm.toString());
+    return "QCircleDataEditViewMode";
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString, List<FeedCloudMeta.StTagInfo> paramList, List<Long> paramList1)
   {
-    if (paramInt == 0) {
-      vtv.a(this.a, false);
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (vtv.a(this.a))) {
-        this.a.d();
-      }
-      return;
-      vtv.a(this.a, true);
-    }
+    paramString = new QCircleSetProfileRequest(paramString, paramList, paramList1);
+    this.a.setValue(vup.b());
+    VSNetworkHelper.a().a(paramString, new vty(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeaf
-  implements View.OnFocusChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aeaf(SubLoginActivity paramSubLoginActivity) {}
+  public aeaf(Conversation paramConversation) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
     }
+    Conversation.n(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

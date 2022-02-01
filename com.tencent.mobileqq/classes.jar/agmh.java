@@ -1,18 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.ArrayList;
+import java.util.List;
 
 class agmh
-  implements bjch
+  implements DialogInterface.OnClickListener
 {
-  agmh(agmg paramagmg) {}
+  agmh(agmg paramagmg, List paramList, BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    switch (paramInt)
     {
-      QLog.i(agmg.a, 2, "error get pskey...");
-      return;
     }
-    agmg.a(this.a, paramVarArgs[0]);
+    do
+    {
+      return;
+      paramDialogInterface = awwt.a(agmg.a(this.jdField_a_of_type_Agmg), (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
+    agmg.a(this.jdField_a_of_type_Agmg, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
   }
 }
 

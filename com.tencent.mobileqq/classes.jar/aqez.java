@@ -1,55 +1,44 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqez
-  extends aqbl
+  implements View.OnClickListener
 {
-  public aqez(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aqez(HistoryFormItem paramHistoryFormItem) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (paramInt == 1)) {
-      ExtendFriendSquareFragment.b(this.a);
-    }
-    if (paramBoolean) {
-      ExtendFriendSquareFragment.a(this.a);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aqcl paramaqcl, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onMatchResponse success=%s match_op=%s retCode=%s info=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramaqcl }));
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aqcx> paramList, aqck paramaqck)
-  {
-    if (this.a.b != paramLong) {
-      return;
-    }
-    try
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (aqcf.a())
     {
-      ExtendFriendSquareFragment.a(this.a, 1);
-      ExtendFriendSquareFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaqck);
-      return;
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label119;
+        }
+      }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramString);
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aqda.a(paramView.getContext());
+      i = 0;
+      break;
+      label119:
+      bool = false;
     }
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, "onLimitChatResourceStateUpdate, isReady = " + paramBoolean);
-    }
-    ExtendFriendSquareFragment.a(this.a);
   }
 }
 

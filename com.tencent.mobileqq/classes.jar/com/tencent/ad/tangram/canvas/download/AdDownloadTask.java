@@ -41,10 +41,18 @@ public enum AdDownloadTask
       localAdDownloadTaskAdapter.setDownloadTask(paramObject);
     }
   }
+  
+  public static void setDownloadUrl(String paramString)
+  {
+    AdDownloadTaskAdapter localAdDownloadTaskAdapter = getAdapter();
+    if (localAdDownloadTaskAdapter != null) {
+      localAdDownloadTaskAdapter.setDownloadUrl(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.download.AdDownloadTask
  * JD-Core Version:    0.7.0.1
  */

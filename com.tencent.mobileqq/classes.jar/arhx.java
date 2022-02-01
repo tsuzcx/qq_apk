@@ -1,10 +1,19 @@
-public abstract interface arhx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arhx
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public arhx(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,41 +1,28 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
 
 public class avvp
-  extends asjx
 {
-  public avvp(OCRPerformFragment paramOCRPerformFragment) {}
-  
-  public void a()
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.a.a.sendEmptyMessageDelayed(101, 60000L);
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
   }
   
-  public void a(aska paramaska)
+  public static void a(boolean paramBoolean, int paramInt)
   {
-    this.a.a.obtainMessage(102, paramaska).sendToTarget();
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
   }
   
-  protected void a(boolean paramBoolean, aska paramaska)
+  public static void b(boolean paramBoolean, int paramInt)
   {
-    if (!OCRPerformFragment.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other!");
-      }
-      return;
-    }
-    this.a.a.removeMessages(101);
-    OCRPerformFragment.a(this.a, false);
-    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramaska));
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bgnt.b(null), paramInt), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvp
  * JD-Core Version:    0.7.0.1
  */

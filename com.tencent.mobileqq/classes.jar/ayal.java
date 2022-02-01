@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 class ayal
-  implements DialogInterface.OnClickListener
+  implements Callback
 {
-  ayal(ayaa paramayaa) {}
+  ayal(ayak paramayak) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
+    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("TurtleReportCenter", 4, "data report success.");
+    }
   }
 }
 

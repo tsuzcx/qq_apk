@@ -1,133 +1,72 @@
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.jubao.JubaoMsgData;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class atkl
+  extends atkj
 {
-  public static List<ChatMessage> a(List<ChatMessage> paramList)
+  final long jdField_a_of_type_Long;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  final byte[] b;
+  
+  public atkl(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramList.next();
-        if ((!abti.k(localChatMessage.msgtype)) && (!aeqn.a(localChatMessage))) {
-          localArrayList.add(localChatMessage);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("jubaoApiPlugin", 0, "filterMsgSize = " + localArrayList.size());
-    }
-    return localArrayList;
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
+  public boolean a()
   {
-    aupg.a().jdField_a_of_type_Int = 7;
-    Object localObject2 = paramIntent.getStringExtra("uin");
-    int j = paramIntent.getIntExtra("uintype", 0);
-    paramIntent = paramIntent.getSerializableExtra("msgs");
-    Object localObject3;
-    if (paramIntent != null)
-    {
-      localObject3 = (ArrayList)paramIntent;
-      if (((ArrayList)localObject3).size() != 0) {
-        break label50;
-      }
-    }
-    label50:
-    label206:
-    label237:
+    if (!super.a()) {}
     do
     {
-      return;
-      Object localObject1 = (JubaoMsgData)((ArrayList)localObject3).get(0);
-      int i = 1;
-      JubaoMsgData localJubaoMsgData;
-      if (i < ((ArrayList)localObject3).size())
+      do
       {
-        localJubaoMsgData = (JubaoMsgData)((ArrayList)localObject3).get(i);
-        if ((j == 3000) || (j == 1))
+        do
         {
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgSeq > localJubaoMsgData.msgSeq) {
-            paramIntent = localJubaoMsgData;
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject1 = paramIntent;
-          break;
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgTime > localJubaoMsgData.msgTime) {
-            paramIntent = localJubaoMsgData;
-          }
-        }
-      }
-      long l;
-      if ((j == 3000) || (j == 1))
-      {
-        l = ((JubaoMsgData)localObject1).msgSeq;
-        paramIntent = new ArrayList();
-        paramQQAppInterface = paramQQAppInterface.a().a((String)localObject2, j, l);
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0)) {
-          break label356;
-        }
-        localObject1 = ((ArrayList)localObject3).iterator();
-        break label237;
-      }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label356;
-        }
-        localJubaoMsgData = (JubaoMsgData)((Iterator)localObject1).next();
-        localObject2 = paramQQAppInterface.iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          i = (int)((ChatMessage)localObject3).time;
-          if ((j == 3000) || (j == 1))
-          {
-            i = (int)((ChatMessage)localObject3).shmsgseq;
-            if (localJubaoMsgData.msgSeq != i) {
-              break label206;
-            }
-            paramIntent.add(localObject3);
-            continue;
-            l = ((JubaoMsgData)localObject1).msgTime;
+          return false;
+          if (this.jdField_a_of_type_Long != 0L) {
             break;
           }
-          int k = (short)(int)((ChatMessage)localObject3).shmsgseq;
-          if ((localJubaoMsgData.msgSeq != (0xFFFF & k)) || (localJubaoMsgData.msgTime != i)) {
-            break label206;
-          }
-          paramIntent.add(localObject3);
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mGroupCode is err");
+        return false;
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
+          break;
         }
-      }
-      if (paramIntent.size() > 0)
-      {
-        paramQQAppInterface = paramIntent.iterator();
-        while (paramQQAppInterface.hasNext())
-        {
-          localObject1 = (ChatMessage)paramQQAppInterface.next();
-          aupg.a().jdField_a_of_type_JavaUtilHashMap.put(localObject1, Boolean.valueOf(true));
-        }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
+      return false;
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
       }
     } while (!QLog.isColorLevel());
-    label356:
-    QLog.d("jubaoApiPlugin", 0, "handleOpenAIO = " + paramIntent.size());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
+    return true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" mGroupCode:").append(this.jdField_a_of_type_Long).append(" uuid:");
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label88;
+      }
+    }
+    label88:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
+    }
   }
 }
 

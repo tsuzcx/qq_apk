@@ -5,24 +5,25 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bkpl;
+import bndy;
+import bnpt;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bkpl a;
+  private bndy a;
   
-  public AECameraBroadcastReceiver(bkpl parambkpl)
+  public AECameraBroadcastReceiver(bndy parambndy)
   {
-    this.a = parambkpl;
+    this.a = parambndy;
   }
   
   private IntentFilter a()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction("new_qq_android_native_short_filter_");
-    localIntentFilter.addAction("new_qq_android_native_ptu_res_");
+    localIntentFilter.addAction(bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(bnpt.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -40,16 +41,18 @@ public class AECameraBroadcastReceiver
   {
     paramContext = this.a.a();
     if ((paramContext == null) || (paramContext.isFinishing())) {}
-    while (!"new_qq_android_native_ptu_res_".equals(paramIntent.getAction())) {
+    do
+    {
       return;
-    }
-    azdw.a = true;
-    this.a.r();
+      paramContext = paramIntent.getAction();
+    } while (!bnpt.c.jdField_b_of_type_JavaLangString.equals(paramContext));
+    bqft.a = true;
+    this.a.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.open.appstore.dl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bfbm;
-import bfkr;
-import bflp;
+import biip;
+import bisa;
+import bisy;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,16 +14,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManagerV2$20
   implements Runnable
 {
-  public DownloadManagerV2$20(bfkr parambfkr) {}
+  public DownloadManagerV2$20(bisa parambisa) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo;
     try
     {
-      if (!bfbm.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
+      if (!biip.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
       {
-        Iterator localIterator = bfkr.a(this.this$0).values().iterator();
+        Iterator localIterator = bisa.a(this.this$0).values().iterator();
         for (;;)
         {
           if (!localIterator.hasNext()) {
@@ -39,7 +39,7 @@ public class DownloadManagerV2$20
           String str = localDownloadInfo.d;
           label77:
           if (this.this$0.a(str) == null) {
-            bfkr.a(this.this$0, localDownloadInfo);
+            bisa.a(this.this$0, localDownloadInfo);
           }
         }
       }
@@ -47,7 +47,7 @@ public class DownloadManagerV2$20
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManagerV2", "checkDownloadList>>>", localException);
+      bisy.c("DownloadManagerV2", "checkDownloadList>>>", localException);
     }
     label117:
     do
@@ -57,18 +57,18 @@ public class DownloadManagerV2$20
       if (this.this$0.a(localDownloadInfo) != null) {
         break;
       }
-      bfkr.a(this.this$0, localDownloadInfo);
+      bisa.a(this.this$0, localDownloadInfo);
       break;
-    } while (bfkr.a(this.this$0).size() <= 200);
+    } while (bisa.a(this.this$0).size() <= 200);
     label139:
-    Object localObject = bfbm.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
+    Object localObject = biip.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
     ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.RspBody;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 
 public class ho
-  extends nac
+  extends anii
 {
-  private hm a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private hn jdField_a_of_type_Hn;
   
-  public ho(boolean paramBoolean, hm paramhm)
+  public ho(QQAppInterface paramQQAppInterface)
   {
-    super(paramBoolean);
-    this.a = paramhm;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(hn paramhn)
   {
-    paramBundle = new oidb_0xa4d.RspBody();
-    if (paramInt == 0) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ImmersionHandler", 2, "HapticMediaPlayer request success.errorcode = " + paramInt);
-        }
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (oidb_0xa4d.IMMRRsp)paramBundle.msg_immr_rsp.get();
-        this.a.setConnection(new hk(paramArrayOfByte));
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-    }
+    this.jdField_a_of_type_Hn = paramhn;
+  }
+  
+  public void a(String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.e("ImmersionHandler", 2, "HapticMediaPlayer request failerrorcode = " + paramInt);
+      QLog.i("ImmersionHandler", 2, "HapticMediaPlayer start request");
     }
-    this.a.setConnection(null);
+    oidb_0xa4d.IMMRReq localIMMRReq = new oidb_0xa4d.IMMRReq();
+    localIMMRReq.str_url.set(paramString);
+    paramString = new oidb_0xa4d.ReqBody();
+    paramString.msg_immr_req.set(localIMMRReq);
+    nir.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new hp(false, this.jdField_a_of_type_Hn), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ho
  * JD-Core Version:    0.7.0.1
  */

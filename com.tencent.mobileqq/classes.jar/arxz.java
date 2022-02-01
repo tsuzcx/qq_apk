@@ -1,40 +1,82 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
 public class arxz
 {
-  private static final String a = alof.aW + File.separator + "qflutter";
-  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter-so" + File.separator;
+  int jdField_a_of_type_Int = 0;
+  public arxd a;
+  arxk jdField_a_of_type_Arxk;
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+  public String a;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public boolean b = false;
+  public int c;
+  boolean c = true;
+  public boolean d = false;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = false;
+  boolean i = false;
+  boolean j = false;
+  boolean k = false;
   
-  public static void a()
+  public arxz() {}
+  
+  public arxz(EmoticonMainPanel paramEmoticonMainPanel)
   {
-    if (arso.a(a))
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = paramEmoticonMainPanel;
+    if (paramEmoticonMainPanel != null)
     {
-      int i = bdhb.a(a, b, false, true, true);
-      if (i == 0)
+      paramEmoticonMainPanel = paramEmoticonMainPanel.a();
+      if (paramEmoticonMainPanel != null)
       {
-        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
-        File[] arrayOfFile = new File(b).listFiles();
-        int j = arrayOfFile.length;
-        i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
-          i += 1;
-        }
-        aryd.a().a(true, b, true, true);
-        return;
+        this.jdField_a_of_type_Arxd = paramEmoticonMainPanel.jdField_a_of_type_Arxd;
+        this.jdField_a_of_type_Boolean = paramEmoticonMainPanel.h;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        this.c = paramEmoticonMainPanel.k;
+        this.jdField_a_of_type_Arxk = EmoticonPanelController.a(paramEmoticonMainPanel);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+        this.i = EmoticonPanelController.a(paramEmoticonMainPanel);
+        this.k = paramEmoticonMainPanel.l;
       }
     }
-    aryd.a().a(false, b, true, true);
   }
   
-  public static boolean a()
+  public void a()
   {
-    return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) {}
+    EmoticonPanelController localEmoticonPanelController;
+    do
+    {
+      return;
+      localEmoticonPanelController = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a();
+    } while (localEmoticonPanelController == null);
+    this.h = false;
+    localEmoticonPanelController.jdField_a_of_type_Arxz = this;
+    localEmoticonPanelController.jdField_a_of_type_Arxd = this.jdField_a_of_type_Arxd;
+    localEmoticonPanelController.h = this.jdField_a_of_type_Boolean;
+    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localEmoticonPanelController.k = this.c;
+    EmoticonPanelController.a(localEmoticonPanelController, this.jdField_a_of_type_Arxk);
+    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+    EmoticonPanelController.a(localEmoticonPanelController, this.i);
+    localEmoticonPanelController.l = this.k;
+    localEmoticonPanelController.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) || (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a() == null)) {
+      return;
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a().a();
   }
 }
 

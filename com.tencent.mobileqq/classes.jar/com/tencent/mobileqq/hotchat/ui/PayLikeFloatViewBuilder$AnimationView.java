@@ -4,22 +4,22 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
-import astm;
+import avav;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PayLikeFloatViewBuilder$AnimationView
   extends TextView
 {
   protected AnimationDrawable a;
-  protected astm a;
+  protected avav a;
   protected QQAppInterface a;
   
-  public PayLikeFloatViewBuilder$AnimationView(Context paramContext, QQAppInterface paramQQAppInterface, astm paramastm)
+  public PayLikeFloatViewBuilder$AnimationView(Context paramContext, QQAppInterface paramQQAppInterface, avav paramavav)
   {
     super(paramContext);
     super.setGravity(17);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Astm = paramastm;
+    this.jdField_a_of_type_Avav = paramavav;
     if (super.getVisibility() == 0) {
       setVisibility(0);
     }
@@ -50,7 +50,7 @@ public class PayLikeFloatViewBuilder$AnimationView
     if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() != 20))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
-      Drawable[] arrayOfDrawable = this.jdField_a_of_type_Astm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      Drawable[] arrayOfDrawable = this.jdField_a_of_type_Avav.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (arrayOfDrawable == null) {
         return;
       }
@@ -81,7 +81,7 @@ public class PayLikeFloatViewBuilder$AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder.AnimationView
  * JD-Core Version:    0.7.0.1
  */

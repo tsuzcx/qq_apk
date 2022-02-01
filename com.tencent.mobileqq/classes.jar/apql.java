@@ -1,42 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apql
-  implements TVK_SDKMgr.InstallListener
+public class apql
+  implements View.OnClickListener
 {
-  apql(apqh paramapqh, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public apql(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onClick(View paramView)
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > bdzr.a)
-    {
-      bdzr.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    ArkIDESettingFragment.a(this.a, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

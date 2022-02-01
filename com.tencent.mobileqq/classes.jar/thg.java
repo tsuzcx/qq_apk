@@ -1,68 +1,39 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public class thg
-  implements INetInfoHandler
+class thg
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private WSPlayerManager a;
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public thg(WSPlayerManager paramWSPlayerManager)
+  thg(thf paramthf, int paramInt1, int paramInt2)
   {
-    this.a = paramWSPlayerManager;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  private void a()
+  public boolean onPreDraw()
   {
-    if ((this.a != null) && (this.a.a() != null))
-    {
-      thl localthl = this.a.a();
-      if ((!this.a.f()) && (!this.a.e())) {
-        break label55;
-      }
-      this.a.b(localthl, false);
+    this.jdField_a_of_type_Thf.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a) + thf.a(this.jdField_a_of_type_Thf));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Thf.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Thf.a) + thf.b(this.jdField_a_of_type_Thf));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a).setVisibility(0);
     }
-    label55:
-    while (!this.a.g()) {
-      return;
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a, this.jdField_a_of_type_Thf.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a).setVisibility(4);
     }
-    this.a.a();
-  }
-  
-  public void onNetMobile2None()
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
-    a();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
-    a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Thf.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thg
  * JD-Core Version:    0.7.0.1
  */

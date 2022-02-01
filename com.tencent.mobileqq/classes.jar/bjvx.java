@@ -1,147 +1,58 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
-import cooperation.qzone.util.QZLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.io.InterruptedIOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeObserver;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
-public class bjvx
+class bjvx
+  extends MiniAppSendSmsCodeObserver
 {
-  private static ConcurrentHashMap<String, Process> a = new ConcurrentHashMap(8, 0.75F, 2);
+  bjvx(bjvo parambjvo, AsyncResult paramAsyncResult) {}
   
-  public static int a(String paramString, String[] paramArrayOfString)
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    label263:
+    super.onFailedResponse(paramString1, paramInt, paramString2);
+    QLog.e("ChannelProxyImpl", 1, "verify onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
     try
     {
-      a(new File(a()));
-      Object localObject = new ArrayList();
-      ((ArrayList)localObject).add(a());
-      ((ArrayList)localObject).addAll(Arrays.asList(paramArrayOfString));
-      ((ArrayList)localObject).add(b());
-      paramArrayOfString = new ProcessBuilder((List)localObject).redirectErrorStream(true).start();
-      if (!TextUtils.isEmpty(paramString)) {
-        a.put(paramString, paramArrayOfString);
-      }
-      localObject = new BufferedReader(new InputStreamReader(paramArrayOfString.getInputStream()));
-      while (((BufferedReader)localObject).readLine() != null) {}
-      j = paramArrayOfString.waitFor();
-      i = j;
-      if (!TextUtils.isEmpty(paramString))
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
       {
-        a.remove(paramString);
-        i = j;
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("message", paramString2);
+        localJSONObject.put("code", paramInt);
+        localJSONObject.put("cmd", paramString1);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, localJSONObject);
       }
-    }
-    catch (InterruptedIOException paramArrayOfString)
-    {
-      for (;;)
-      {
-        QZLog.i("QZoneVideoCompressor", "process is terminated. key=" + paramString);
-        j = 0;
-        i = j;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          a.remove(paramString);
-          i = j;
-        }
-      }
-    }
-    catch (Throwable paramArrayOfString)
-    {
-      for (;;)
-      {
-        int j = -1111;
-        QZLog.e("QZoneVideoCompressor", "trimByFFmpeg", paramArrayOfString);
-        int i = j;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          a.remove(paramString);
-          i = j;
-        }
-      }
-    }
-    finally
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        break label263;
-      }
-      a.remove(paramString);
-    }
-    QZLog.i("QZoneVideoCompressor", 1, "trimByFFmpeg ret=" + i);
-    return i;
-  }
-  
-  public static int a(String[] paramArrayOfString)
-  {
-    return a(null, paramArrayOfString);
-  }
-  
-  private static String a()
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + str;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QZLog.w("QZoneVideoCompressor", "cancel: key is empty!");
       return;
     }
-    if (!a.containsKey(paramString))
+    catch (Throwable paramString1)
     {
-      QZLog.w("QZoneVideoCompressor", "cancel: process not exists or finished. key=" + paramString);
-      return;
+      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramString1);
     }
-    Process localProcess = (Process)a.remove(paramString);
-    if (localProcess == null)
-    {
-      QZLog.w("QZoneVideoCompressor", "cancel: process == null. key=" + paramString);
-      return;
-    }
-    QZLog.i("QZoneVideoCompressor", "cancel: killProcess. key=" + paramString);
-    localProcess.destroy();
   }
   
-  private static boolean a(File paramFile)
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
-    }
-    do
+    super.verifySmsCodeSuccess(paramRspBody);
+    QLog.d("ChannelProxyImpl", 1, "verify success");
+    try
     {
-      do
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
       {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
-    return false;
-  }
-  
-  private static String b()
-  {
-    return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + VideoEnvironment.a();
+        paramRspBody = new JSONObject();
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
+      }
+      return;
+    }
+    catch (Throwable paramRspBody)
+    {
+      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramRspBody);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvx
  * JD-Core Version:    0.7.0.1
  */

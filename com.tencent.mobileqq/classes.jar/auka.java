@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.widget.QQToast;
 
-class auka
-  implements DialogInterface.OnClickListener
+public class auka
+  extends Handler
 {
-  auka(aujr paramaujr) {}
+  public auka(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (bkjn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aujr.a(this.a), aujr.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      aujr.a(this.a).a(false, null, false);
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, anni.a(2131703606), 0).a();
     }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auka
  * JD-Core Version:    0.7.0.1
  */

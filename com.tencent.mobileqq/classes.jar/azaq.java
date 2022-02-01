@@ -1,214 +1,79 @@
-import QQWalletPay.ReqCheckChangePwdAuth;
-import QQWalletPay.RespCheckChangePwdAuth;
-import Wallet.AuthCodeReq;
-import Wallet.AuthCodeRsp;
-import Wallet.GetPasswordReq;
-import Wallet.GetPasswordRsp;
-import Wallet.PfaFriendRqt;
-import Wallet.PfaFriendRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class azaq
-  extends zhu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/PlusPanelRedPointAppIdInterface;", "Lcom/tencent/mobileqq/app/BusinessInfoCheckUpdateItem$DynamicRedPointPathInterface;", "()V", "getAioPanelRedDotIds", "", "", "getRedPointPaths", "appInterface", "Lcom/tencent/common/app/AppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azaq
+  implements anik
 {
-  private static final String[] a = { "QQWalletPayAuthServer", "AdvRuleSvrCmd", "WalletGestureSvc", "VacThirdCodeSvc", "QWalletPfa" };
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private final List<String> a()
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
+    Set localSet = (Set)new HashSet();
+    Object localObject2;
+    int i;
     try
     {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (RespCheckChangePwdAuth)paramToServiceMsg.getByClass("resp", new RespCheckChangePwdAuth());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
+      Object localObject1 = azar.a(false);
+      if (localObject1 != null)
+      {
+        localObject2 = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList();
+        localObject2 = ((Iterable)localObject2).iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break label140;
+          }
+          Object localObject3 = ((Iterator)localObject2).next();
+          String str = ((TroopAIOAppInfo)localObject3).redDotID;
+          Intrinsics.checkExpressionValueIsNotNull(str, "it.redDotID");
+          if (Integer.parseInt(str) <= 0) {
+            break;
+          }
+          i = 1;
+          if (i != 0) {
+            ((Collection)localObject1).add(localObject3);
+          }
+        }
       }
-      return null;
+      return (List)new ArrayList((Collection)localSet);
     }
-    catch (Exception paramToServiceMsg)
+    catch (Throwable localThrowable)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
+      QLog.e("PlusPanelRedPointAppIdInterface", 1, localThrowable, new Object[0]);
+    }
+    for (;;)
+    {
+      i = 0;
+      break;
+      label140:
+      Iterator localIterator = ((Iterable)localThrowable).iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = ((TroopAIOAppInfo)localIterator.next()).redDotID;
+        Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.redDotID");
+        localSet.add(localObject2);
       }
     }
-    return null;
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  @NotNull
+  public List<String> a(@NotNull AppInterface paramAppInterface)
   {
-    paramUniPacket.setServantName("MQQ.OpenPayServer.QQWalletPayAuthObj");
-    paramUniPacket.setFuncName("checkChangePwdAuth");
-    paramUniPacket.put("req", (ReqCheckChangePwdAuth)paramToServiceMsg.extraData.getSerializable("ReqCheckChangePwdAuth"));
-    return true;
-  }
-  
-  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      return null;
+    Intrinsics.checkParameterIsNotNull(paramAppInterface, "appInterface");
+    if (QLog.isColorLevel()) {
+      QLog.d("PlusPanelRedPointAppIdInterface", 2, "getRedPointPaths");
     }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (GetPasswordRsp)paramToServiceMsg.getByClass("rsp", new GetPasswordRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("Wallet.GesturePasswordServer.GesturePasswordObj");
-    paramUniPacket.setFuncName("GetPassword");
-    paramUniPacket.put("req", (GetPasswordReq)paramToServiceMsg.extraData.getSerializable("GetPasswordReq"));
-    return true;
-  }
-  
-  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (AuthCodeRsp)paramToServiceMsg.getByClass("rsp", new AuthCodeRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("VAC.AuthCodeCoroServer.AuthCodeCoroObj");
-    paramUniPacket.setFuncName("fetchCodes");
-    paramUniPacket.put("req", (AuthCodeReq)paramToServiceMsg.extraData.getSerializable("AuthCodeReq"));
-    return true;
-  }
-  
-  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (PfaFriendRsp)paramToServiceMsg.getByClass("rsp", new PfaFriendRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("Wallet.WalletFriendQueryServer.WalletFriendObj");
-    paramUniPacket.setFuncName("QueryRecommendFriend");
-    paramUniPacket.put("rqt", (PfaFriendRqt)paramToServiceMsg.extraData.getSerializable("PfaFriendRqt"));
-    return true;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return null;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramFromServiceMsg);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return false;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramUniPacket);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return a;
+    return a();
   }
 }
 

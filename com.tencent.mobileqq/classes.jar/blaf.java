@@ -1,59 +1,55 @@
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper.1;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class blaf
+  implements nkl
 {
-  private String a;
-  private String b;
+  public blaf(VipComicHelper.1 param1) {}
   
-  public blaf(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    return this.a;
-  }
-  
-  @Nullable
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject != null) && (!(paramObject instanceof blaf))) {}
-    do
-    {
-      return false;
-      paramObject = (blaf)paramObject;
-    } while ((bdnn.a(this.a)) || (bdnn.a(this.b)) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
-    return true;
-  }
-  
-  public int hashCode()
+  public void loaded(String paramString, int paramInt)
   {
     int j = 0;
-    int i;
-    if (this.b == null)
-    {
-      i = 0;
-      if (this.a != null) {
-        break label40;
-      }
+    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString == null) {
+      return;
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
+    }
+    switch (paramInt)
     {
-      return (i + 527) * 31 + j;
-      i = this.b.hashCode();
-      break;
-      label40:
-      j = this.a.hashCode();
+    }
+    for (int i = 0;; i = 1)
+    {
+      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i == 0) {
+        break;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt + "|");
+      ((StringBuilder)localObject).append(j + "|");
+      ((StringBuilder)localObject).append(l + "|");
+      ((StringBuilder)localObject).append("|||||");
+      bcrt.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
+      return;
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

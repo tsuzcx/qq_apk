@@ -1,155 +1,175 @@
-import com.tencent.av.app.VideoAppInterface;
+import kotlin.Metadata;
 
-public class azqk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/misc/VasProfileTemplatePreloadHelper;", "", "()V", "BACKGROUND", "", "BODY", "HEADER", "TAG", "TITLE_STYLE", "URL_PREFIX", "initDiyData", "", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azqk
 {
-  static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static long jdField_b_of_type_Long;
-  private static String jdField_b_of_type_JavaLangString = "MultiVideoRichActionReportCollection";
-  public static int c;
-  private static long jdField_c_of_type_Long;
-  private static String jdField_c_of_type_JavaLangString = "";
-  public static int d;
-  private static long jdField_d_of_type_Long;
-  private static String jdField_d_of_type_JavaLangString = "";
-  private static int jdField_e_of_type_Int;
-  private static String jdField_e_of_type_JavaLangString = "";
-  private static String f = "";
+  public static final azqk a = new azqk();
   
-  static
+  /* Error */
+  public final boolean a(@org.jetbrains.annotations.NotNull azfe paramazfe)
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    lek.a(jdField_b_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_JavaLangString = paramString;
-    if ((jdField_a_of_type_Int == 4) || (jdField_a_of_type_Int == 3)) {
-      jdField_e_of_type_Int = jdField_d_of_type_Int;
-    }
-    while ((jdField_a_of_type_Int != 2) && (jdField_a_of_type_Int != 1)) {
-      return;
-    }
-    jdField_e_of_type_Int = jdField_c_of_type_Int;
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface)
-  {
-    int i = 0;
-    if (paramVideoAppInterface != null) {
-      i = paramVideoAppInterface.b("BEAUTY_SKIN");
-    }
-    if (i > 0) {
-      d(i + "");
-    }
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int)
-    {
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F32");
-      }
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F34");
-      }
-      if (jdField_c_of_type_Long == 0L) {
-        a("0X8007F36");
-      }
-      if (jdField_d_of_type_Long == 0L) {
-        a("0X8007E69");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (jdField_e_of_type_Int != jdField_d_of_type_Int);
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F38");
-      }
-      if (jdField_b_of_type_Long == 0L) {
-        a("0X8007F3A");
-      }
-      if (jdField_c_of_type_Long == 0L) {
-        a("0X8007F3C");
-      }
-    } while (jdField_d_of_type_Long != 0L);
-    a("0X8007E65");
-  }
-  
-  public static void a(String paramString)
-  {
-    lek.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString, "", jdField_a_of_type_JavaLangString }));
-    azqs.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    lek.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent id = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_a_of_type_JavaLangString }));
-    azqs.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
-  }
-  
-  public static void b(String paramString)
-  {
-    jdField_c_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public static void c(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F33", paramString);
-    }
-    for (;;)
-    {
-      jdField_d_of_type_JavaLangString = paramString;
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F39", paramString);
-      }
-    }
-  }
-  
-  public static void d(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F35", paramString);
-    }
-    for (;;)
-    {
-      jdField_e_of_type_JavaLangString = paramString;
-      jdField_c_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F3B", paramString);
-      }
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007E6A", paramString);
-    }
-    for (;;)
-    {
-      f = paramString;
-      jdField_d_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007E66", paramString);
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ldc 45
+    //   3: invokestatic 51	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: aload_1
+    //   7: aconst_null
+    //   8: checkcast 53	azph
+    //   11: putfield 58	azfe:jdField_a_of_type_Azph	Lazph;
+    //   14: aload_1
+    //   15: getfield 61	azfe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   18: getfield 67	com/tencent/mobileqq/data/Card:diyComplicatedInfo	Ljava/lang/String;
+    //   21: astore 4
+    //   23: aload 4
+    //   25: checkcast 69	java/lang/CharSequence
+    //   28: astore 5
+    //   30: aload 5
+    //   32: ifnull +13 -> 45
+    //   35: aload 5
+    //   37: invokeinterface 73 1 0
+    //   42: ifne +19 -> 61
+    //   45: iconst_1
+    //   46: istore_2
+    //   47: iload_2
+    //   48: ifeq +18 -> 66
+    //   51: ldc 75
+    //   53: iconst_1
+    //   54: ldc 77
+    //   56: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: iconst_0
+    //   60: ireturn
+    //   61: iconst_0
+    //   62: istore_2
+    //   63: goto -16 -> 47
+    //   66: new 85	org/json/JSONObject
+    //   69: dup
+    //   70: aload 4
+    //   72: invokespecial 88	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   75: astore 8
+    //   77: aload 8
+    //   79: ldc 90
+    //   81: ldc 91
+    //   83: invokevirtual 95	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   86: astore 4
+    //   88: aload 8
+    //   90: ldc 97
+    //   92: invokevirtual 101	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   95: astore 5
+    //   97: aload 5
+    //   99: ifnull +81 -> 180
+    //   102: aload 8
+    //   104: ldc 103
+    //   106: invokevirtual 101	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   109: astore 6
+    //   111: aload 6
+    //   113: ifnull +113 -> 226
+    //   116: aload 8
+    //   118: ldc 105
+    //   120: invokevirtual 109	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   123: astore 7
+    //   125: aload 7
+    //   127: ifnull +130 -> 257
+    //   130: aload 7
+    //   132: ldc 111
+    //   134: invokevirtual 114	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   137: invokestatic 120	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   140: istore_2
+    //   141: aload 7
+    //   143: ldc 122
+    //   145: iconst_0
+    //   146: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   149: istore_3
+    //   150: aload 4
+    //   152: ldc 128
+    //   154: invokestatic 131	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   157: aload_1
+    //   158: new 53	azph
+    //   161: dup
+    //   162: aload 4
+    //   164: iload_3
+    //   165: iload_2
+    //   166: aload 6
+    //   168: aload 7
+    //   170: aload 5
+    //   172: invokespecial 134	azph:<init>	(Ljava/lang/String;IILjava/lang/Object;Lorg/json/JSONObject;Ljava/lang/Object;)V
+    //   175: putfield 58	azfe:jdField_a_of_type_Azph	Lazph;
+    //   178: iconst_1
+    //   179: ireturn
+    //   180: new 42	org/json/JSONException
+    //   183: dup
+    //   184: new 136	java/lang/StringBuilder
+    //   187: dup
+    //   188: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   191: ldc 139
+    //   193: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: aload 8
+    //   198: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokespecial 151	org/json/JSONException:<init>	(Ljava/lang/String;)V
+    //   207: checkcast 153	java/lang/Throwable
+    //   210: athrow
+    //   211: astore_1
+    //   212: ldc 75
+    //   214: iconst_1
+    //   215: ldc 77
+    //   217: aload_1
+    //   218: checkcast 153	java/lang/Throwable
+    //   221: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   224: iconst_0
+    //   225: ireturn
+    //   226: new 42	org/json/JSONException
+    //   229: dup
+    //   230: new 136	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   237: ldc 158
+    //   239: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: aload 8
+    //   244: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokespecial 151	org/json/JSONException:<init>	(Ljava/lang/String;)V
+    //   253: checkcast 153	java/lang/Throwable
+    //   256: athrow
+    //   257: new 42	org/json/JSONException
+    //   260: dup
+    //   261: new 136	java/lang/StringBuilder
+    //   264: dup
+    //   265: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   268: ldc 160
+    //   270: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: aload 8
+    //   275: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   278: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   281: invokespecial 151	org/json/JSONException:<init>	(Ljava/lang/String;)V
+    //   284: checkcast 153	java/lang/Throwable
+    //   287: athrow
+    //   288: astore 8
+    //   290: ldc 161
+    //   292: istore_2
+    //   293: goto -152 -> 141
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	296	0	this	azqk
+    //   0	296	1	paramazfe	azfe
+    //   46	247	2	i	int
+    //   149	16	3	j	int
+    //   21	142	4	str	java.lang.String
+    //   28	143	5	localObject1	Object
+    //   109	58	6	localObject2	Object
+    //   123	46	7	localJSONObject1	org.json.JSONObject
+    //   75	199	8	localJSONObject2	org.json.JSONObject
+    //   288	1	8	localIllegalArgumentException	java.lang.IllegalArgumentException
+    // Exception table:
+    //   from	to	target	type
+    //   66	97	211	org/json/JSONException
+    //   102	111	211	org/json/JSONException
+    //   116	125	211	org/json/JSONException
+    //   130	141	211	org/json/JSONException
+    //   141	178	211	org/json/JSONException
+    //   180	211	211	org/json/JSONException
+    //   226	257	211	org/json/JSONException
+    //   257	288	211	org/json/JSONException
+    //   130	141	288	java/lang/IllegalArgumentException
   }
 }
 

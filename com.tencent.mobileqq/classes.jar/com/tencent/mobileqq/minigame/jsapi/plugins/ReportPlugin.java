@@ -9,12 +9,11 @@ import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04363;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04682;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
-import com.tencent.mobileqq.minigame.manager.GameLibVersionManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.qphone.base.util.QLog;
@@ -104,7 +103,7 @@ public class ReportPlugin
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
               return "";
             }
-            localJSONObject2.put("version", localGameRuntimeLoader.getLibVersionManager().getGameEngineVersion());
+            localJSONObject2.put("version", localGameRuntimeLoader.getJsVersion());
             localJSONObject1.put("actionData", localJSONObject2);
             paramString2 = localJSONObject1.toString();
           }
@@ -133,7 +132,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

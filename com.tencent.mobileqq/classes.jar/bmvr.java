@@ -1,37 +1,29 @@
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
+
 public class bmvr
+  extends bmvz
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public int d;
+  public bmvr(QzoneHuangzuanVipIconShow paramQzoneHuangzuanVipIconShow, VipResourcesListener paramVipResourcesListener, int paramInt1, bmvo parambmvo, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5) {}
   
-  static
+  public void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
+    QzoneHuangzuanVipIconShow.access$000(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, paramInt, paramDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmvo);
+    if (this.mCount <= 0)
+    {
+      QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_Bmvo, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
+      if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
+        this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onLoaded(this.jdField_a_of_type_Bmvo);
+      }
+    }
   }
   
-  public bmvr() {}
-  
-  public bmvr(int paramInt, float paramFloat1, float paramFloat2)
+  public void onFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public bmvr(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
+    if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
+      this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onFailed();
+    }
   }
 }
 

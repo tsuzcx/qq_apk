@@ -1,53 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-
-class aqss
-  extends aqtd
+public class aqss
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  @avnm(a="isStatusBarWhite")
+  public int a;
+  @avnm(a="bkgURL")
+  public String a;
+  @avnm(a="isNavBarWhite")
+  public int b;
+  @avnm(a="logoColor")
+  public String b;
+  @avnm(a="needShowLogo")
+  public int c = 1;
   
-  public aqss(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public aqss()
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  public boolean a()
   {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
-      return;
-    }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aqsf.a(this.jdField_a_of_type_Aqsf).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqst(this, paramString, paramaqtc));
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 1;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return "QrCodeList{bkgURL = " + this.jdField_a_of_type_JavaLangString + ", isStatusBarWhite = " + this.jdField_a_of_type_Int + ", isNavBarWhite = " + this.jdField_b_of_type_Int + ", logoColor = " + this.jdField_b_of_type_JavaLangString + ", needShowLogo = " + this.c + '}';
   }
 }
 

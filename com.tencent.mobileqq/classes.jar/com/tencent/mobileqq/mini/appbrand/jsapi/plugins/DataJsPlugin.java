@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aasd;
-import abwu;
-import abwx;
-import abxc;
+import acqx;
+import adea;
+import aded;
+import adei;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,14 +19,30 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mini.MiniAppInterface;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.app.AuthorizeCenter;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.ShareUtils;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
 import com.tencent.mobileqq.mini.util.AdUtils;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
+import com.tencent.mobileqq.minigame.jsapi.callbacks.IGameUI;
+import com.tencent.mobileqq.minigame.jsapi.manager.SystemInfoManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
+import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -37,7 +53,7 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import wxe;
+import yqp;
 
 public class DataJsPlugin
   extends BaseJsPlugin
@@ -67,11 +83,16 @@ public class DataJsPlugin
   public static final String API_SHARE_APP_PIC_MSG = "shareAppPictureMessage";
   public static final String API_SHARE_APP_PIC_MSG_DIRECTLY = "shareAppPictureMessageDirectly";
   public static final String API_SHARE_APP_PIC_MSG_TO_FRIEND_LIST = "shareAppPictureMessageDirectlyToFriendList";
+  public static final String API_SHARE_INVITE = "shareInvite";
   public static final String API_SHOW_SHARE_MENU = "showShareMenu";
   public static final String API_SHOW_SHARE_MENU_WITH_SHARE_TICKET = "showShareMenuWithShareTicket";
   public static final String API_UPDATE_SHARE_MENU = "updateShareMenuShareTicket";
   public static final String API_VERIFY_PLUGIN = "verifyPlugin";
   private static final String CONFIG_SPLIT = ",";
+  public static final int ERRCODE_INVITE_CANCEL = 1;
+  public static final int ERRCODE_INVITE_REQUIRE = 2;
+  public static final String ERRMSG_INVITE_CANCEL = "用户取消";
+  public static final String ERRMSG_INVITE_REQUIRE = "分享失败";
   private static final String MINI_APP_STORE_APPID = "1108291530";
   public static final int NEED_HIDE = 0;
   public static final int NEED_SHOW = 1;
@@ -93,12 +114,28 @@ public class DataJsPlugin
   public static final int UNDEFINED = -1;
   private static final int WHAT_GET_SHARE_INFO_TIMEOUT = 1;
   private static final String fakeCheckNavigateRightRsp = "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}";
-  private abwx apiManager;
+  private aded apiManager;
   private Long lastNotRspReqTime = Long.valueOf(0L);
-  private List<abwu> loginCallBacks = new LinkedList();
+  private List<adea> loginCallBacks = new LinkedList();
   protected GdtAppReceiver mGgtAppReceiver;
+  private SystemInfoManager mSystemInfoManager;
   private ArrayList<String> openUrlDomainWhiteList;
   private String privateOpenUrlDomainWhiteList;
+  
+  private boolean doShareInvite(JsRuntime paramJsRuntime, String paramString, int paramInt)
+  {
+    try
+    {
+      MiniProgramShareUtils.shareUpdatableMsg(this.jsPluginEngine.activityContext, this.jsPluginEngine.appBrandRuntime.appId, this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.verType, "657667B4D8C04B3F84E4AAA3D046A903", paramString, paramInt);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("[mini] DataJsPlugin", 1, "shareInvite error, ", localThrowable);
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
+    }
+    return false;
+  }
   
   private void downloadImageByURLDrawable(String paramString, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
@@ -106,9 +143,9 @@ public class DataJsPlugin
     if (paramURLDrawableListener != null)
     {
       if (paramString.getStatus() != 1) {
-        break label44;
+        break label45;
       }
-      wxe.b("[mini] DataJsPlugin", "URLDrawable's status is SUCCESSED.");
+      yqp.b("[mini] DataJsPlugin", "URLDrawable's status is SUCCESSED.");
       paramURLDrawableListener.onLoadSuccessed(paramString);
     }
     for (;;)
@@ -116,8 +153,8 @@ public class DataJsPlugin
       paramString.setURLDrawableListener(paramURLDrawableListener);
       paramString.downloadImediatly();
       return;
-      label44:
-      wxe.b("[mini] DataJsPlugin", "start load URLDrawable.");
+      label45:
+      yqp.b("[mini] DataJsPlugin", "start load URLDrawable.");
     }
   }
   
@@ -131,7 +168,7 @@ public class DataJsPlugin
       if (i == 0)
       {
         localObject = ((JSONObject)localObject).getJSONArray("ads_info").getJSONObject(0);
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
         return localObject;
       }
     }
@@ -188,10 +225,204 @@ public class DataJsPlugin
     return null;
   }
   
+  private void handleAdApi(JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString, int paramInt1, int paramInt2)
+  {
+    String str3 = paramJSONObject.optJSONObject("data").optString("pos_id");
+    if (paramJSONObject.optJSONObject("data").has("adType")) {
+      paramInt2 = paramJSONObject.optJSONObject("data").optInt("adType");
+    }
+    for (;;)
+    {
+      int i = 1;
+      if (paramJSONObject.optJSONObject("data").has("size")) {
+        i = paramJSONObject.optJSONObject("data").optInt("size");
+      }
+      long l = Long.valueOf(this.jsPluginEngine.activityContext.getCurrentAccountUin()).longValue();
+      paramJSONObject = null;
+      if (this.jsPluginEngine.appBrandRuntime != null) {
+        paramJSONObject = this.jsPluginEngine.appBrandRuntime.appId;
+      }
+      QLog.d("[mini] DataJsPlugin", 2, "getBlockAd appid = " + paramJSONObject);
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        String str4 = AdUtils.getSpAdGdtCookie(paramInt2);
+        ApkgInfo localApkgInfo = this.jsPluginEngine.appBrandRuntime.getApkgInfo();
+        Object localObject2 = "";
+        Object localObject4 = "";
+        String str2 = "";
+        String str1 = "";
+        Object localObject1 = localObject2;
+        if (localApkgInfo != null)
+        {
+          localObject1 = localObject2;
+          if (localApkgInfo.appConfig != null)
+          {
+            localObject1 = localObject2;
+            if (localApkgInfo.appConfig.launchParam != null)
+            {
+              localObject1 = localObject2;
+              if (localApkgInfo.appConfig.launchParam.entryPath != null) {
+                localObject1 = localApkgInfo.appConfig.launchParam.entryPath;
+              }
+            }
+          }
+        }
+        Object localObject3 = localObject4;
+        localObject2 = str2;
+        if (localApkgInfo != null)
+        {
+          localObject3 = localObject4;
+          localObject2 = str2;
+          if (localApkgInfo.appConfig != null)
+          {
+            localObject3 = localObject4;
+            localObject2 = str2;
+            if (localApkgInfo.appConfig.launchParam != null)
+            {
+              localObject3 = localApkgInfo.appConfig.launchParam.reportData;
+              localObject2 = String.valueOf(localApkgInfo.appConfig.launchParam.scene);
+            }
+          }
+        }
+        localObject4 = str1;
+        if (localApkgInfo != null)
+        {
+          localObject4 = str1;
+          if (localApkgInfo.appConfig != null)
+          {
+            localObject4 = str1;
+            if (localApkgInfo.appConfig.config != null) {
+              localObject4 = localApkgInfo.appConfig.config.via;
+            }
+          }
+        }
+        sendAdRequest(AdUtils.createAdRequest(this.jsPluginEngine.activityContext, l, str3, paramJSONObject, 53, paramInt2, 0, str4, (String)localObject1, (String)localObject3, (String)localObject2, (String)localObject4, i), paramJsRuntime, paramString, paramInt1, paramInt2);
+      }
+      return;
+    }
+  }
+  
+  private String handleGameSystemInfo(String paramString, JsRuntime paramJsRuntime, int paramInt)
+  {
+    MiniGamePkg localMiniGamePkg = null;
+    if (this.jsPluginEngine != null) {}
+    for (Object localObject1 = this.jsPluginEngine.getActivityContext();; localObject1 = null)
+    {
+      boolean bool;
+      if ((localObject1 instanceof GameActivity)) {
+        if (this.mSystemInfoManager == null)
+        {
+          this.mSystemInfoManager = new SystemInfoManager((Context)localObject1);
+          Object localObject2 = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
+          if (localObject2 != null) {
+            localMiniGamePkg = ((GameRuntimeLoader)localObject2).getMiniGamePkg();
+          }
+          localObject2 = this.mSystemInfoManager;
+          if ((localMiniGamePkg == null) || (!localMiniGamePkg.isOrientationLandscape())) {
+            break label142;
+          }
+          bool = true;
+          ((SystemInfoManager)localObject2).setLandscape(bool);
+          this.mSystemInfoManager.setGameUI((IGameUI)localObject1);
+        }
+      }
+      for (localObject1 = this.mSystemInfoManager.getSystemInfo();; localObject1 = ApiUtil.wrapCallbackFail(paramString, null))
+      {
+        if (!"getSystemInfoSync".equals(paramString)) {
+          break label167;
+        }
+        return ((JSONObject)localObject1).toString();
+        label142:
+        bool = false;
+        break;
+        QLog.e("[mini] DataJsPlugin", 1, "getSystemInfo error, context is not GameActivity");
+      }
+      label167:
+      paramJsRuntime.evaluateCallbackJs(paramInt, ((JSONObject)localObject1).toString());
+      return "";
+    }
+  }
+  
+  private void handleWebapiPluginGetuserinfo(JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString1, int paramInt, String paramString2)
+  {
+    try
+    {
+      Object localObject = paramJSONObject.optJSONObject("data");
+      paramJSONObject = ((JSONObject)localObject).optString("miniprogram_appid");
+      boolean bool = ((JSONObject)localObject).optBoolean("withCredentials");
+      localObject = ((JSONObject)localObject).optString("lang");
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        getUserInfo(paramJSONObject, paramJsRuntime, paramString1, paramString2, paramInt, bool, (String)localObject);
+        return;
+      }
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+      AuthorizeCenter.setAllowPluginScopeName(null);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  private void handleWebapiPluginLogin(JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString, int paramInt)
+  {
+    try
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("data").optString("miniprogram_appid");
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        MiniAppCmdUtil.getInstance().getLoginCode(paramJSONObject, new DataJsPlugin.24(this, paramJsRuntime, paramString, paramInt));
+        return;
+      }
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  private void handleWebapiPluginSetauth(JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString, int paramInt)
+  {
+    try
+    {
+      Object localObject1 = paramJSONObject.optJSONObject("data");
+      if (localObject1 != null)
+      {
+        localObject1 = ((JSONObject)localObject1).optString("miniprogram_appid");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          Object localObject2 = getAppBrandRuntime();
+          if (localObject2 == null) {
+            return;
+          }
+          paramJSONObject = paramJSONObject.optString("plugin_appid");
+          localObject2 = ((AppBrandRuntime)localObject2).appInterface.getAuthorizeCenter((String)localObject1);
+          paramJSONObject = AuthorizeCenter.getScopePluginSetauthName((String)localObject1, paramJSONObject);
+          AuthorizeCenter.setAllowPluginScopeName(paramJSONObject);
+          ((AuthorizeCenter)localObject2).setAuthorize(paramJSONObject, true);
+          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString, null, paramInt);
+          return;
+        }
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return;
+    }
+    this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
+  }
+  
   private void initApiManager(int paramInt, String paramString)
   {
-    abxc.a();
-    this.apiManager = abxc.a(this.jsPluginEngine.getActivityContext(), paramInt, paramString);
+    adei.a();
+    this.apiManager = adei.a(this.jsPluginEngine.getActivityContext(), paramInt, paramString);
   }
   
   private void operateGetShareInfo(String paramString1, int paramInt1, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
@@ -203,9 +434,9 @@ public class DataJsPlugin
     }
     Object localObject = new HandlerThread("getShareInfoHandlerThread");
     ((HandlerThread)localObject).start();
-    localObject = new Handler(((HandlerThread)localObject).getLooper(), new DataJsPlugin.24(this, paramJsRuntime, paramString2, paramInt2));
+    localObject = new Handler(((HandlerThread)localObject).getLooper(), new DataJsPlugin.25(this, paramJsRuntime, paramString2, paramInt2));
     ((Handler)localObject).sendEmptyMessageDelayed(1, paramInt1);
-    MiniAppCmdUtil.getInstance().getGroupShareInfo(this.jsPluginEngine.appBrandRuntime.appId, paramString1, null, new DataJsPlugin.25(this, paramJsRuntime, paramString2, paramInt2, (Handler)localObject));
+    MiniAppCmdUtil.getInstance().getGroupShareInfo(this.jsPluginEngine.appBrandRuntime.appId, paramString1, null, new DataJsPlugin.26(this, paramJsRuntime, paramString2, paramInt2, (Handler)localObject));
   }
   
   private void saveAdCookie(String paramString, int paramInt)
@@ -232,7 +463,7 @@ public class DataJsPlugin
   
   private void sendAdRequest(MiniAppAd.StGetAdReq paramStGetAdReq, JsRuntime paramJsRuntime, String paramString, int paramInt1, int paramInt2)
   {
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramStGetAdReq, new DataJsPlugin.28(this, paramJsRuntime, paramString, paramInt1, paramInt2));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramStGetAdReq, new DataJsPlugin.29(this, paramJsRuntime, paramString, paramInt1, paramInt2));
   }
   
   private void startGroupBrowserActivity(Activity paramActivity, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt)
@@ -242,7 +473,7 @@ public class DataJsPlugin
     paramString1 = new Bundle();
     paramString1.putBoolean("hide_more_button", true);
     localIntent.putExtras(paramString1);
-    MiniAppController.getInstance().setActivityResultListener(new DataJsPlugin.29(this, paramJsRuntime, paramString2, paramInt));
+    MiniAppController.getInstance().setActivityResultListener(new DataJsPlugin.30(this, paramJsRuntime, paramString2, paramInt));
     paramActivity.startActivityForResult(localIntent, 9);
   }
   
@@ -257,7 +488,7 @@ public class DataJsPlugin
       ShareUtils.startSharePicToQQ(this.jsPluginEngine.getActivityContext(), paramString2);
       return;
     case 1: 
-      ShareUtils.startSharePicToQzone(this.jsPluginEngine.getActivityContext(), paramString2, this.jsPluginEngine.appBrandRuntime.getApkgInfo());
+      ShareUtils.startSharePicToQzone(this.jsPluginEngine.getActivityContext(), paramString2, this.jsPluginEngine.appBrandRuntime.getApkgInfo().apkgName);
       return;
     case 3: 
       ShareUtils.startSharePicToWeChat(this.jsPluginEngine.getActivityContext(), ShareUtils.getFileUri(this.jsPluginEngine.getActivityContext(), paramString2), true);
@@ -268,5007 +499,5154 @@ public class DataJsPlugin
   
   private void startShareNetworkPicMessage(Context paramContext, String paramString1, String paramString2, int paramInt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
   {
-    ThreadManager.getUIHandler().post(new DataJsPlugin.30(this, paramContext, paramString2, paramString1, paramInt));
+    ThreadManager.getUIHandler().post(new DataJsPlugin.31(this, paramContext, paramString2, paramString1, paramInt));
   }
   
   public void getUserInfo(JsRuntime paramJsRuntime, String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
   {
-    String str = this.jsPluginEngine.appBrandRuntime.appId;
-    QLog.d("[mini] DataJsPlugin", 1, "getUserInfo appID:" + str);
-    MiniAppCmdUtil.getInstance().getUserInfo(str, paramBoolean, paramString3, new DataJsPlugin.27(this, paramString2, paramJsRuntime, paramString1, paramInt));
+    getUserInfo(this.jsPluginEngine.appBrandRuntime.appId, paramJsRuntime, paramString1, paramString2, paramInt, paramBoolean, paramString3);
+  }
+  
+  public void getUserInfo(String paramString1, JsRuntime paramJsRuntime, String paramString2, String paramString3, int paramInt, boolean paramBoolean, String paramString4)
+  {
+    QLog.d("[mini] DataJsPlugin", 1, "getUserInfo appID:" + paramString1);
+    MiniAppCmdUtil.getInstance().getUserInfo(paramString1, paramBoolean, paramString4, new DataJsPlugin.28(this, paramString3, paramJsRuntime, paramString2, paramInt));
   }
   
   /* Error */
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 618	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 863	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +50 -> 53
-    //   6: ldc 139
+    //   6: ldc 150
     //   8: iconst_2
-    //   9: new 321	java/lang/StringBuilder
+    //   9: new 398	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 620
-    //   19: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 865
+    //   19: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: aload_1
-    //   23: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc_w 622
-    //   29: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc_w 867
+    //   29: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_2
-    //   33: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc_w 624
-    //   39: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc_w 869
+    //   39: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: iload 4
-    //   44: invokevirtual 493	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   44: invokevirtual 747	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   53: aload_3
     //   54: ifnonnull +18 -> 72
-    //   57: ldc 139
+    //   57: ldc 150
     //   59: iconst_4
-    //   60: ldc_w 626
-    //   63: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   66: ldc_w 631
+    //   60: ldc_w 871
+    //   63: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   66: ldc_w 525
     //   69: astore_2
     //   70: aload_2
     //   71: areturn
     //   72: aconst_null
     //   73: astore 22
     //   75: aload_0
-    //   76: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   76: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
     //   79: ifnull +12 -> 91
     //   82: aload_0
-    //   83: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   86: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   83: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   86: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
     //   89: astore 22
     //   91: aload 22
     //   93: ifnull +26 -> 119
-    //   96: new 321	java/lang/StringBuilder
+    //   96: new 398	java/lang/StringBuilder
     //   99: dup
-    //   100: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   100: invokespecial 399	java/lang/StringBuilder:<init>	()V
     //   103: aload_1
-    //   104: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: aload 22
-    //   109: invokevirtual 636	java/lang/Object:hashCode	()I
-    //   112: invokevirtual 493	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokevirtual 876	java/lang/Object:hashCode	()I
+    //   112: invokevirtual 747	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: pop
     //   119: ldc 35
     //   121: aload_1
-    //   122: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   122: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   125: ifne +12 -> 137
     //   128: ldc 38
     //   130: aload_1
-    //   131: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   134: ifeq +1111 -> 1245
+    //   131: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   134: ifeq +1149 -> 1283
     //   137: aload 22
-    //   139: ifnull +1074 -> 1213
-    //   142: getstatic 641	android/os/Build$VERSION:SDK_INT	I
-    //   145: bipush 17
-    //   147: if_icmplt +806 -> 953
-    //   150: new 643	android/util/DisplayMetrics
-    //   153: dup
-    //   154: invokespecial 644	android/util/DisplayMetrics:<init>	()V
-    //   157: astore_2
-    //   158: aload 22
-    //   160: ldc_w 646
-    //   163: invokevirtual 650	android/app/Activity:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   166: checkcast 652	android/view/WindowManager
-    //   169: invokeinterface 656 1 0
-    //   174: aload_2
-    //   175: invokevirtual 662	android/view/Display:getRealMetrics	(Landroid/util/DisplayMetrics;)V
-    //   178: aload 22
-    //   180: invokestatic 668	com/tencent/mobileqq/mini/util/DisplayUtil:hasNavBar	(Landroid/content/Context;)Z
-    //   183: ifeq +11 -> 194
-    //   186: aload 22
-    //   188: invokestatic 672	com/tencent/mobileqq/mini/util/DisplayUtil:isNavigationBarExist	(Landroid/app/Activity;)Z
-    //   191: ifne +9 -> 200
-    //   194: invokestatic 675	com/tencent/mobileqq/mini/util/DisplayUtil:isFlymeOS7NavBarShow	()Z
-    //   197: ifeq +768 -> 965
-    //   200: iconst_1
-    //   201: istore 16
-    //   203: aload_2
-    //   204: getfield 679	android/util/DisplayMetrics:density	F
-    //   207: f2d
-    //   208: dstore 5
-    //   210: aload_2
-    //   211: getfield 682	android/util/DisplayMetrics:widthPixels	I
-    //   214: i2d
-    //   215: dload 5
-    //   217: ddiv
-    //   218: invokestatic 688	java/lang/Math:round	(D)J
-    //   221: l2f
-    //   222: ldc_w 689
-    //   225: fadd
-    //   226: f2i
-    //   227: istore 9
-    //   229: aload_2
-    //   230: getfield 692	android/util/DisplayMetrics:heightPixels	I
-    //   233: i2d
-    //   234: dload 5
-    //   236: ddiv
-    //   237: invokestatic 688	java/lang/Math:round	(D)J
-    //   240: l2f
-    //   241: ldc_w 689
-    //   244: fadd
-    //   245: f2i
-    //   246: istore 8
-    //   248: iload 8
-    //   250: istore 7
-    //   252: iload 16
-    //   254: ifeq +23 -> 277
-    //   257: iload 8
-    //   259: aload_0
-    //   260: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   263: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   266: invokestatic 696	com/tencent/mobileqq/mini/util/DisplayUtil:getNavigationBarHeight	(Landroid/content/Context;)I
-    //   269: i2d
-    //   270: dload 5
-    //   272: ddiv
-    //   273: d2i
-    //   274: isub
-    //   275: istore 7
-    //   277: aload 22
-    //   279: invokestatic 701	com/tencent/widget/immersive/ImmersiveUtils:getStatusBarHeight	(Landroid/content/Context;)I
-    //   282: i2f
-    //   283: invokestatic 704	java/lang/Math:round	(F)I
-    //   286: i2d
-    //   287: dload 5
-    //   289: ddiv
-    //   290: d2i
-    //   291: istore 10
-    //   293: ldc_w 705
-    //   296: invokestatic 709	bdoo:b	(F)I
-    //   299: i2d
-    //   300: dload 5
-    //   302: ddiv
-    //   303: ldc2_w 710
-    //   306: dadd
-    //   307: d2i
-    //   308: istore 11
-    //   310: ldc_w 712
-    //   313: invokestatic 709	bdoo:b	(F)I
-    //   316: i2d
-    //   317: dload 5
-    //   319: ddiv
-    //   320: ldc2_w 710
-    //   323: dadd
-    //   324: d2i
-    //   325: istore 8
-    //   327: aconst_null
-    //   328: astore 20
-    //   330: aload_0
-    //   331: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   334: ifnull +637 -> 971
-    //   337: aload_0
-    //   338: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   341: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   344: ifnull +627 -> 971
+    //   139: ifnull +1112 -> 1251
+    //   142: aload_0
+    //   143: getfield 880	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isGameRuntime	Z
+    //   146: ifeq +12 -> 158
+    //   149: aload_0
+    //   150: aload_1
+    //   151: aload_3
+    //   152: iload 4
+    //   154: invokespecial 882	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:handleGameSystemInfo	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;I)Ljava/lang/String;
+    //   157: areturn
+    //   158: getstatic 887	android/os/Build$VERSION:SDK_INT	I
+    //   161: bipush 17
+    //   163: if_icmplt +800 -> 963
+    //   166: new 889	android/util/DisplayMetrics
+    //   169: dup
+    //   170: invokespecial 890	android/util/DisplayMetrics:<init>	()V
+    //   173: astore_2
+    //   174: aload 22
+    //   176: ldc_w 892
+    //   179: invokevirtual 896	android/app/Activity:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   182: checkcast 898	android/view/WindowManager
+    //   185: invokeinterface 902 1 0
+    //   190: aload_2
+    //   191: invokevirtual 908	android/view/Display:getRealMetrics	(Landroid/util/DisplayMetrics;)V
+    //   194: getstatic 913	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   197: ldc_w 915
+    //   200: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   203: ifeq +772 -> 975
+    //   206: aload 22
+    //   208: invokestatic 924	com/tencent/mobileqq/mini/util/DisplayUtil:checkNavigationBarShow	(Landroid/content/Context;)Z
+    //   211: istore 15
+    //   213: aload_2
+    //   214: getfield 928	android/util/DisplayMetrics:density	F
+    //   217: f2d
+    //   218: dstore 5
+    //   220: aload_2
+    //   221: getfield 931	android/util/DisplayMetrics:widthPixels	I
+    //   224: i2d
+    //   225: dload 5
+    //   227: ddiv
+    //   228: invokestatic 937	java/lang/Math:round	(D)J
+    //   231: l2f
+    //   232: ldc_w 938
+    //   235: fadd
+    //   236: f2i
+    //   237: istore 9
+    //   239: aload_2
+    //   240: getfield 941	android/util/DisplayMetrics:heightPixels	I
+    //   243: i2d
+    //   244: dload 5
+    //   246: ddiv
+    //   247: invokestatic 937	java/lang/Math:round	(D)J
+    //   250: l2f
+    //   251: ldc_w 938
+    //   254: fadd
+    //   255: f2i
+    //   256: istore 8
+    //   258: iload 8
+    //   260: istore 7
+    //   262: iload 15
+    //   264: ifeq +23 -> 287
+    //   267: iload 8
+    //   269: aload_0
+    //   270: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   273: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   276: invokestatic 945	com/tencent/mobileqq/mini/util/DisplayUtil:getNavigationBarHeight	(Landroid/content/Context;)I
+    //   279: i2d
+    //   280: dload 5
+    //   282: ddiv
+    //   283: d2i
+    //   284: isub
+    //   285: istore 7
+    //   287: aload 22
+    //   289: invokestatic 950	com/tencent/widget/immersive/ImmersiveUtils:getStatusBarHeight	(Landroid/content/Context;)I
+    //   292: i2f
+    //   293: invokestatic 953	java/lang/Math:round	(F)I
+    //   296: i2d
+    //   297: dload 5
+    //   299: ddiv
+    //   300: d2i
+    //   301: istore 10
+    //   303: ldc_w 954
+    //   306: invokestatic 958	bgtn:b	(F)I
+    //   309: i2d
+    //   310: dload 5
+    //   312: ddiv
+    //   313: ldc2_w 959
+    //   316: dadd
+    //   317: d2i
+    //   318: istore 11
+    //   320: ldc_w 961
+    //   323: invokestatic 958	bgtn:b	(F)I
+    //   326: i2d
+    //   327: dload 5
+    //   329: ddiv
+    //   330: ldc2_w 959
+    //   333: dadd
+    //   334: d2i
+    //   335: istore 8
+    //   337: aconst_null
+    //   338: astore 20
+    //   340: aload_0
+    //   341: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   344: ifnull +665 -> 1009
     //   347: aload_0
-    //   348: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   351: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   354: invokevirtual 716	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
-    //   357: ifnull +614 -> 971
-    //   360: aload_0
-    //   361: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   364: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   367: invokevirtual 716	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
-    //   370: invokevirtual 721	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getUrl	()Ljava/lang/String;
-    //   373: ifnull +598 -> 971
-    //   376: aload_0
-    //   377: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   380: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   383: invokevirtual 716	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
-    //   386: invokevirtual 721	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getUrl	()Ljava/lang/String;
-    //   389: astore 20
-    //   391: aload 20
-    //   393: astore_2
-    //   394: aload 20
-    //   396: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   399: ifne +9815 -> 10214
-    //   402: aload_0
-    //   403: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   406: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   409: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   412: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   415: aload 20
-    //   417: invokevirtual 733	com/tencent/mobileqq/mini/apkg/AppConfigInfo:getPageInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/PageInfo;
-    //   420: getfield 739	com/tencent/mobileqq/mini/apkg/PageInfo:windowInfo	Lcom/tencent/mobileqq/mini/apkg/WindowInfo;
-    //   423: getfield 745	com/tencent/mobileqq/mini/apkg/WindowInfo:navigationBarInfo	Lcom/tencent/mobileqq/mini/apkg/NavigationBarInfo;
-    //   426: getfield 750	com/tencent/mobileqq/mini/apkg/NavigationBarInfo:style	Ljava/lang/String;
-    //   429: astore 21
-    //   431: aload 20
-    //   433: astore_2
-    //   434: aload_0
-    //   435: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   438: ifnull +9770 -> 10208
-    //   441: aload_0
-    //   442: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   445: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   448: ifnull +9760 -> 10208
+    //   348: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   351: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   354: ifnull +655 -> 1009
+    //   357: aload_0
+    //   358: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   361: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   364: invokevirtual 965	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
+    //   367: ifnull +642 -> 1009
+    //   370: aload_0
+    //   371: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   374: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   377: invokevirtual 965	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
+    //   380: invokevirtual 970	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getUrl	()Ljava/lang/String;
+    //   383: ifnull +626 -> 1009
+    //   386: aload_0
+    //   387: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   390: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   393: invokevirtual 965	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getCurPage	()Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
+    //   396: invokevirtual 970	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getUrl	()Ljava/lang/String;
+    //   399: astore 20
+    //   401: aload 20
+    //   403: astore_2
+    //   404: aload 20
+    //   406: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   409: ifne +10114 -> 10523
+    //   412: aload_0
+    //   413: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   416: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   419: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   422: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   425: aload 20
+    //   427: invokevirtual 980	com/tencent/mobileqq/mini/apkg/AppConfigInfo:getPageInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/PageInfo;
+    //   430: getfield 986	com/tencent/mobileqq/mini/apkg/PageInfo:windowInfo	Lcom/tencent/mobileqq/mini/apkg/WindowInfo;
+    //   433: getfield 992	com/tencent/mobileqq/mini/apkg/WindowInfo:navigationBarInfo	Lcom/tencent/mobileqq/mini/apkg/NavigationBarInfo;
+    //   436: getfield 997	com/tencent/mobileqq/mini/apkg/NavigationBarInfo:style	Ljava/lang/String;
+    //   439: astore 21
+    //   441: aload 20
+    //   443: astore_2
+    //   444: aload_0
+    //   445: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   448: ifnull +10069 -> 10517
     //   451: aload_0
-    //   452: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   455: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   458: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   461: ifnull +9747 -> 10208
-    //   464: aload_0
-    //   465: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   468: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   471: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   474: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   477: ifnull +9731 -> 10208
-    //   480: aload_0
-    //   481: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   484: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   487: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   490: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   493: getfield 754	com/tencent/mobileqq/mini/apkg/AppConfigInfo:tabBarInfo	Lcom/tencent/mobileqq/mini/apkg/TabBarInfo;
-    //   496: ifnull +684 -> 1180
-    //   499: aload_0
-    //   500: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   503: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   506: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   509: aload_2
-    //   510: invokevirtual 757	com/tencent/mobileqq/mini/apkg/ApkgInfo:isTabBarPage	(Ljava/lang/String;)Z
-    //   513: ifeq +667 -> 1180
-    //   516: aload_0
-    //   517: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   520: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   523: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   526: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   529: getfield 754	com/tencent/mobileqq/mini/apkg/AppConfigInfo:tabBarInfo	Lcom/tencent/mobileqq/mini/apkg/TabBarInfo;
-    //   532: invokevirtual 762	com/tencent/mobileqq/mini/apkg/TabBarInfo:isShow	()Z
-    //   535: ifeq +645 -> 1180
-    //   538: iconst_1
-    //   539: istore 15
-    //   541: ldc_w 764
-    //   544: aload 21
-    //   546: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   549: ifeq +643 -> 1192
-    //   552: iload 15
-    //   554: ifeq +632 -> 1186
-    //   557: iload 7
-    //   559: iload 10
-    //   561: isub
-    //   562: iload 11
-    //   564: isub
-    //   565: iload 8
-    //   567: isub
-    //   568: istore 8
-    //   570: invokestatic 767	com/tencent/qphone/base/util/QLog:isDebugVersion	()Z
-    //   573: ifeq +63 -> 636
-    //   576: ldc 139
-    //   578: iconst_1
-    //   579: new 321	java/lang/StringBuilder
-    //   582: dup
-    //   583: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   586: ldc_w 769
-    //   589: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   592: iload 8
-    //   594: invokevirtual 493	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   597: ldc_w 771
-    //   600: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   603: aload 21
-    //   605: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   608: ldc_w 773
-    //   611: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   614: iload 15
-    //   616: invokevirtual 776	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   619: ldc_w 778
-    //   622: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   625: iload 16
-    //   627: invokevirtual 776	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   630: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   633: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   636: invokestatic 784	com/tencent/mobileqq/mini/app/AppLoaderFactory:getAppLoaderManager	()Lcom/tencent/mobileqq/mini/app/BaseAppLoaderManager;
-    //   639: invokeinterface 790 1 0
-    //   644: getfield 795	com/tencent/mobileqq/mini/sdk/BaseLibInfo:baseLibVersion	Ljava/lang/String;
-    //   647: astore_2
-    //   648: new 271	org/json/JSONObject
-    //   651: dup
-    //   652: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   655: astore 20
-    //   657: aload 20
-    //   659: ldc_w 798
-    //   662: getstatic 803	android/os/Build:BRAND	Ljava/lang/String;
-    //   665: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   668: pop
-    //   669: aload 20
-    //   671: ldc_w 809
-    //   674: getstatic 812	android/os/Build:MODEL	Ljava/lang/String;
-    //   677: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   680: pop
-    //   681: aload 20
-    //   683: ldc_w 814
-    //   686: dload 5
-    //   688: invokevirtual 817	org/json/JSONObject:put	(Ljava/lang/String;D)Lorg/json/JSONObject;
-    //   691: pop
-    //   692: aload 20
-    //   694: ldc_w 819
-    //   697: iload 9
-    //   699: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   702: pop
-    //   703: aload 20
-    //   705: ldc_w 824
-    //   708: iload 7
-    //   710: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   713: pop
-    //   714: aload 20
-    //   716: ldc_w 826
-    //   719: iload 9
-    //   721: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   724: pop
-    //   725: aload 20
-    //   727: ldc_w 828
-    //   730: iload 8
-    //   732: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   735: pop
-    //   736: aload 20
-    //   738: ldc_w 830
-    //   741: iload 10
-    //   743: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   746: pop
-    //   747: aload 20
-    //   749: ldc_w 832
-    //   752: ldc_w 834
-    //   755: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   758: pop
-    //   759: aload 20
-    //   761: ldc_w 836
-    //   764: invokestatic 841	bdgk:c	()Ljava/lang/String;
-    //   767: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   770: pop
-    //   771: aload 20
-    //   773: ldc_w 843
-    //   776: new 321	java/lang/StringBuilder
-    //   779: dup
-    //   780: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   783: ldc_w 845
-    //   786: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   789: getstatic 848	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   792: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   795: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   798: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   801: pop
-    //   802: aload 20
-    //   804: ldc_w 850
-    //   807: ldc_w 852
-    //   810: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   813: pop
-    //   814: aload 20
-    //   816: ldc_w 854
-    //   819: bipush 16
-    //   821: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   824: pop
-    //   825: aload 20
-    //   827: ldc_w 856
-    //   830: aload_2
-    //   831: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   452: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   455: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   458: ifnull +10059 -> 10517
+    //   461: aload_0
+    //   462: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   465: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   468: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   471: ifnull +10046 -> 10517
+    //   474: aload_0
+    //   475: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   478: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   481: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   484: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   487: ifnull +10030 -> 10517
+    //   490: aload_0
+    //   491: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   494: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   497: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   500: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   503: getfield 1001	com/tencent/mobileqq/mini/apkg/AppConfigInfo:tabBarInfo	Lcom/tencent/mobileqq/mini/apkg/TabBarInfo;
+    //   506: ifnull +712 -> 1218
+    //   509: aload_0
+    //   510: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   513: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   516: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   519: aload_2
+    //   520: invokevirtual 1004	com/tencent/mobileqq/mini/apkg/ApkgInfo:isTabBarPage	(Ljava/lang/String;)Z
+    //   523: ifeq +695 -> 1218
+    //   526: aload_0
+    //   527: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   530: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   533: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   536: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   539: getfield 1001	com/tencent/mobileqq/mini/apkg/AppConfigInfo:tabBarInfo	Lcom/tencent/mobileqq/mini/apkg/TabBarInfo;
+    //   542: invokevirtual 1009	com/tencent/mobileqq/mini/apkg/TabBarInfo:isShow	()Z
+    //   545: ifeq +673 -> 1218
+    //   548: iconst_1
+    //   549: istore 16
+    //   551: ldc_w 1011
+    //   554: aload 21
+    //   556: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   559: ifeq +671 -> 1230
+    //   562: iload 16
+    //   564: ifeq +660 -> 1224
+    //   567: iload 7
+    //   569: iload 10
+    //   571: isub
+    //   572: iload 11
+    //   574: isub
+    //   575: iload 8
+    //   577: isub
+    //   578: istore 8
+    //   580: invokestatic 1014	com/tencent/qphone/base/util/QLog:isDebugVersion	()Z
+    //   583: ifeq +63 -> 646
+    //   586: ldc 150
+    //   588: iconst_1
+    //   589: new 398	java/lang/StringBuilder
+    //   592: dup
+    //   593: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   596: ldc_w 1016
+    //   599: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: iload 8
+    //   604: invokevirtual 747	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   607: ldc_w 1018
+    //   610: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   613: aload 21
+    //   615: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: ldc_w 1020
+    //   621: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   624: iload 16
+    //   626: invokevirtual 1023	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   629: ldc_w 1025
+    //   632: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   635: iload 15
+    //   637: invokevirtual 1023	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   640: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   643: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   646: invokestatic 1031	com/tencent/mobileqq/mini/app/AppLoaderFactory:getAppLoaderManager	()Lcom/tencent/mobileqq/mini/app/BaseAppLoaderManager;
+    //   649: invokeinterface 1037 1 0
+    //   654: getfield 1042	com/tencent/mobileqq/mini/sdk/BaseLibInfo:baseLibVersion	Ljava/lang/String;
+    //   657: astore_2
+    //   658: new 348	org/json/JSONObject
+    //   661: dup
+    //   662: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   665: astore 20
+    //   667: aload 20
+    //   669: ldc_w 1045
+    //   672: getstatic 1048	android/os/Build:BRAND	Ljava/lang/String;
+    //   675: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   678: pop
+    //   679: aload 20
+    //   681: ldc_w 1054
+    //   684: getstatic 1057	android/os/Build:MODEL	Ljava/lang/String;
+    //   687: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   690: pop
+    //   691: aload 20
+    //   693: ldc_w 1059
+    //   696: dload 5
+    //   698: invokevirtual 1062	org/json/JSONObject:put	(Ljava/lang/String;D)Lorg/json/JSONObject;
+    //   701: pop
+    //   702: aload 20
+    //   704: ldc_w 1064
+    //   707: iload 9
+    //   709: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   712: pop
+    //   713: aload 20
+    //   715: ldc_w 1069
+    //   718: iload 7
+    //   720: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   723: pop
+    //   724: aload 20
+    //   726: ldc_w 1071
+    //   729: iload 9
+    //   731: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   734: pop
+    //   735: aload 20
+    //   737: ldc_w 1073
+    //   740: iload 8
+    //   742: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   745: pop
+    //   746: aload 20
+    //   748: ldc_w 1075
+    //   751: iload 10
+    //   753: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   756: pop
+    //   757: aload 20
+    //   759: ldc_w 1077
+    //   762: ldc_w 1079
+    //   765: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   768: pop
+    //   769: aload 20
+    //   771: ldc_w 1081
+    //   774: invokestatic 1086	bgln:c	()Ljava/lang/String;
+    //   777: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   780: pop
+    //   781: aload 20
+    //   783: ldc_w 1088
+    //   786: new 398	java/lang/StringBuilder
+    //   789: dup
+    //   790: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   793: ldc_w 1090
+    //   796: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   799: getstatic 1093	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
+    //   802: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   805: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   808: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   811: pop
+    //   812: aload 20
+    //   814: ldc_w 1095
+    //   817: ldc_w 1097
+    //   820: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   823: pop
+    //   824: aload 20
+    //   826: ldc_w 1099
+    //   829: bipush 16
+    //   831: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   834: pop
     //   835: aload 20
-    //   837: ldc_w 858
-    //   840: ldc 112
-    //   842: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   845: pop
-    //   846: aload 20
-    //   848: ldc_w 860
-    //   851: aload 22
-    //   853: invokestatic 864	com/tencent/mobileqq/mini/util/DisplayUtil:getDisplayCutoutSafeArea	(Landroid/app/Activity;)Lorg/json/JSONObject;
-    //   856: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   859: pop
-    //   860: aload_1
-    //   861: aload 20
-    //   863: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   866: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   869: astore 20
+    //   837: ldc_w 1101
+    //   840: aload_2
+    //   841: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   844: pop
+    //   845: aload 20
+    //   847: ldc_w 1103
+    //   850: ldc 124
+    //   852: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   855: pop
+    //   856: aload 20
+    //   858: ldc_w 1105
+    //   861: aload 22
+    //   863: invokestatic 1109	com/tencent/mobileqq/mini/util/DisplayUtil:getDisplayCutoutSafeArea	(Landroid/app/Activity;)Lorg/json/JSONObject;
+    //   866: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   869: pop
+    //   870: aload_1
     //   871: aload 20
-    //   873: astore_2
-    //   874: ldc 35
-    //   876: aload_1
-    //   877: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   880: ifeq -810 -> 70
-    //   883: aload_3
-    //   884: iload 4
-    //   886: aload 20
-    //   888: invokeinterface 876 3 0
-    //   893: aload 20
-    //   895: areturn
-    //   896: astore_2
-    //   897: ldc 139
-    //   899: iconst_1
-    //   900: new 321	java/lang/StringBuilder
-    //   903: dup
-    //   904: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   907: ldc_w 878
-    //   910: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   913: new 341	java/lang/Throwable
-    //   916: dup
-    //   917: aload_2
-    //   918: invokespecial 881	java/lang/Throwable:<init>	(Ljava/lang/Throwable;)V
-    //   921: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   924: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   927: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   930: aload_1
-    //   931: aconst_null
-    //   932: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   935: astore_1
-    //   936: aload_3
-    //   937: iload 4
-    //   939: aload_1
-    //   940: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   943: invokeinterface 876 3 0
-    //   948: aload_1
-    //   949: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   952: areturn
-    //   953: aload 22
-    //   955: invokevirtual 891	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   958: invokevirtual 897	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   961: astore_2
-    //   962: goto -784 -> 178
-    //   965: iconst_0
-    //   966: istore 16
-    //   968: goto -765 -> 203
-    //   971: aload 20
-    //   973: astore_2
-    //   974: aload_0
-    //   975: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   978: ifnull +9236 -> 10214
-    //   981: aload 20
-    //   983: astore_2
-    //   984: aload_0
-    //   985: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   988: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   991: ifnull +9223 -> 10214
-    //   994: aload 20
-    //   996: astore_2
-    //   997: aload_0
-    //   998: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1001: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1004: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1007: ifnull +9207 -> 10214
-    //   1010: aconst_null
-    //   1011: astore 20
-    //   1013: aload 20
-    //   1015: astore_2
-    //   1016: aload_0
-    //   1017: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1020: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1023: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1026: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   1029: ifnull +45 -> 1074
+    //   873: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   876: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   879: astore 20
+    //   881: aload 20
+    //   883: astore_2
+    //   884: ldc 35
+    //   886: aload_1
+    //   887: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   890: ifeq -820 -> 70
+    //   893: aload_3
+    //   894: iload 4
+    //   896: aload 20
+    //   898: invokeinterface 623 3 0
+    //   903: aload 20
+    //   905: areturn
+    //   906: astore_2
+    //   907: ldc 150
+    //   909: iconst_1
+    //   910: new 398	java/lang/StringBuilder
+    //   913: dup
+    //   914: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   917: ldc_w 1114
+    //   920: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   923: new 245	java/lang/Throwable
+    //   926: dup
+    //   927: aload_2
+    //   928: invokespecial 1117	java/lang/Throwable:<init>	(Ljava/lang/Throwable;)V
+    //   931: invokevirtual 1120	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   934: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   937: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   940: aload_1
+    //   941: aconst_null
+    //   942: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   945: astore_1
+    //   946: aload_3
+    //   947: iload 4
+    //   949: aload_1
+    //   950: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   953: invokeinterface 623 3 0
+    //   958: aload_1
+    //   959: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   962: areturn
+    //   963: aload 22
+    //   965: invokevirtual 1124	android/app/Activity:getResources	()Landroid/content/res/Resources;
+    //   968: invokevirtual 1130	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   971: astore_2
+    //   972: goto -778 -> 194
+    //   975: aload 22
+    //   977: invokestatic 1133	com/tencent/mobileqq/mini/util/DisplayUtil:hasNavBar	(Landroid/content/Context;)Z
+    //   980: ifeq +11 -> 991
+    //   983: aload 22
+    //   985: invokestatic 1137	com/tencent/mobileqq/mini/util/DisplayUtil:isNavigationBarExist	(Landroid/app/Activity;)Z
+    //   988: ifne +9 -> 997
+    //   991: invokestatic 1140	com/tencent/mobileqq/mini/util/DisplayUtil:isFlymeOS7NavBarShow	()Z
+    //   994: ifeq +9 -> 1003
+    //   997: iconst_1
+    //   998: istore 15
+    //   1000: goto -787 -> 213
+    //   1003: iconst_0
+    //   1004: istore 15
+    //   1006: goto -793 -> 213
+    //   1009: aload 20
+    //   1011: astore_2
+    //   1012: aload_0
+    //   1013: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1016: ifnull +9507 -> 10523
+    //   1019: aload 20
+    //   1021: astore_2
+    //   1022: aload_0
+    //   1023: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1026: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1029: ifnull +9494 -> 10523
     //   1032: aload 20
     //   1034: astore_2
     //   1035: aload_0
-    //   1036: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1039: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1042: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1045: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   1048: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   1051: ifnull +23 -> 1074
+    //   1036: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1039: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1042: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1045: ifnull +9478 -> 10523
+    //   1048: aconst_null
+    //   1049: astore 20
+    //   1051: aload 20
+    //   1053: astore_2
     //   1054: aload_0
-    //   1055: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1058: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1061: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1064: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   1067: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   1070: getfield 912	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
-    //   1073: astore_2
-    //   1074: aconst_null
-    //   1075: astore 20
-    //   1077: aload_0
-    //   1078: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1081: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1084: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1087: getfield 916	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   1090: ifnull +21 -> 1111
-    //   1093: aload_0
-    //   1094: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1097: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1100: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1103: getfield 916	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   1106: getfield 919	com/tencent/mobileqq/mini/apkg/AppConfigInfo:entryPagePath	Ljava/lang/String;
-    //   1109: astore 20
-    //   1111: aload_0
-    //   1112: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1115: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1118: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1121: aload_2
-    //   1122: invokevirtual 922	com/tencent/mobileqq/mini/apkg/ApkgInfo:isUrlFileExist	(Ljava/lang/String;)Z
-    //   1125: ifne +49 -> 1174
-    //   1128: aload 20
-    //   1130: astore_2
-    //   1131: aload 20
-    //   1133: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1136: ifne +9078 -> 10214
-    //   1139: aload_0
-    //   1140: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1143: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1146: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1149: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   1152: aload 20
-    //   1154: invokevirtual 733	com/tencent/mobileqq/mini/apkg/AppConfigInfo:getPageInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/PageInfo;
-    //   1157: getfield 739	com/tencent/mobileqq/mini/apkg/PageInfo:windowInfo	Lcom/tencent/mobileqq/mini/apkg/WindowInfo;
-    //   1160: getfield 745	com/tencent/mobileqq/mini/apkg/WindowInfo:navigationBarInfo	Lcom/tencent/mobileqq/mini/apkg/NavigationBarInfo;
-    //   1163: getfield 750	com/tencent/mobileqq/mini/apkg/NavigationBarInfo:style	Ljava/lang/String;
-    //   1166: astore 21
-    //   1168: aload 20
-    //   1170: astore_2
-    //   1171: goto -737 -> 434
-    //   1174: aload_2
-    //   1175: astore 20
-    //   1177: goto -49 -> 1128
-    //   1180: iconst_0
-    //   1181: istore 15
-    //   1183: goto -642 -> 541
-    //   1186: iconst_0
-    //   1187: istore 8
-    //   1189: goto -632 -> 557
-    //   1192: iload 15
-    //   1194: ifeq +13 -> 1207
-    //   1197: iload 7
-    //   1199: iload 8
-    //   1201: isub
-    //   1202: istore 8
-    //   1204: goto -634 -> 570
-    //   1207: iconst_0
-    //   1208: istore 8
-    //   1210: goto -13 -> 1197
-    //   1213: ldc 139
-    //   1215: iconst_1
-    //   1216: ldc_w 924
-    //   1219: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1222: aload_1
-    //   1223: aconst_null
-    //   1224: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   1227: astore_1
-    //   1228: aload_3
-    //   1229: iload 4
-    //   1231: aload_1
-    //   1232: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1235: invokeinterface 876 3 0
-    //   1240: aload_1
-    //   1241: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1244: areturn
-    //   1245: ldc_w 926
-    //   1248: aload_1
-    //   1249: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1252: ifeq +135 -> 1387
-    //   1255: iconst_0
-    //   1256: istore 8
-    //   1258: iload 8
-    //   1260: istore 7
-    //   1262: aload_2
-    //   1263: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1266: ifne +70 -> 1336
-    //   1269: new 271	org/json/JSONObject
-    //   1272: dup
-    //   1273: aload_2
-    //   1274: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1277: ldc_w 928
-    //   1280: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1283: astore_1
-    //   1284: iload 8
-    //   1286: istore 7
-    //   1288: aload_1
-    //   1289: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1292: ifne +44 -> 1336
-    //   1295: iconst_1
-    //   1296: istore 7
-    //   1298: aload 22
-    //   1300: new 512	android/content/Intent
-    //   1303: dup
-    //   1304: ldc_w 933
-    //   1307: new 321	java/lang/StringBuilder
+    //   1055: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1058: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1061: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1064: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   1067: ifnull +45 -> 1112
+    //   1070: aload 20
+    //   1072: astore_2
+    //   1073: aload_0
+    //   1074: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1077: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1080: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1083: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   1086: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   1089: ifnull +23 -> 1112
+    //   1092: aload_0
+    //   1093: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1096: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1099: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1102: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   1105: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   1108: getfield 534	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
+    //   1111: astore_2
+    //   1112: aconst_null
+    //   1113: astore 20
+    //   1115: aload_0
+    //   1116: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1119: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1122: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1125: getfield 1144	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   1128: ifnull +21 -> 1149
+    //   1131: aload_0
+    //   1132: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1135: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1138: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1141: getfield 1144	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   1144: getfield 1147	com/tencent/mobileqq/mini/apkg/AppConfigInfo:entryPagePath	Ljava/lang/String;
+    //   1147: astore 20
+    //   1149: aload_0
+    //   1150: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1153: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1156: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1159: aload_2
+    //   1160: invokevirtual 1150	com/tencent/mobileqq/mini/apkg/ApkgInfo:isUrlFileExist	(Ljava/lang/String;)Z
+    //   1163: ifne +49 -> 1212
+    //   1166: aload 20
+    //   1168: astore_2
+    //   1169: aload 20
+    //   1171: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1174: ifne +9349 -> 10523
+    //   1177: aload_0
+    //   1178: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1181: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1184: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1187: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   1190: aload 20
+    //   1192: invokevirtual 980	com/tencent/mobileqq/mini/apkg/AppConfigInfo:getPageInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/PageInfo;
+    //   1195: getfield 986	com/tencent/mobileqq/mini/apkg/PageInfo:windowInfo	Lcom/tencent/mobileqq/mini/apkg/WindowInfo;
+    //   1198: getfield 992	com/tencent/mobileqq/mini/apkg/WindowInfo:navigationBarInfo	Lcom/tencent/mobileqq/mini/apkg/NavigationBarInfo;
+    //   1201: getfield 997	com/tencent/mobileqq/mini/apkg/NavigationBarInfo:style	Ljava/lang/String;
+    //   1204: astore 21
+    //   1206: aload 20
+    //   1208: astore_2
+    //   1209: goto -765 -> 444
+    //   1212: aload_2
+    //   1213: astore 20
+    //   1215: goto -49 -> 1166
+    //   1218: iconst_0
+    //   1219: istore 16
+    //   1221: goto -670 -> 551
+    //   1224: iconst_0
+    //   1225: istore 8
+    //   1227: goto -660 -> 567
+    //   1230: iload 16
+    //   1232: ifeq +13 -> 1245
+    //   1235: iload 7
+    //   1237: iload 8
+    //   1239: isub
+    //   1240: istore 8
+    //   1242: goto -662 -> 580
+    //   1245: iconst_0
+    //   1246: istore 8
+    //   1248: goto -13 -> 1235
+    //   1251: ldc 150
+    //   1253: iconst_1
+    //   1254: ldc_w 1152
+    //   1257: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1260: aload_1
+    //   1261: aconst_null
+    //   1262: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   1265: astore_1
+    //   1266: aload_3
+    //   1267: iload 4
+    //   1269: aload_1
+    //   1270: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1273: invokeinterface 623 3 0
+    //   1278: aload_1
+    //   1279: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1282: areturn
+    //   1283: ldc_w 1154
+    //   1286: aload_1
+    //   1287: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1290: ifeq +135 -> 1425
+    //   1293: iconst_0
+    //   1294: istore 8
+    //   1296: iload 8
+    //   1298: istore 7
+    //   1300: aload_2
+    //   1301: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1304: ifne +70 -> 1374
+    //   1307: new 348	org/json/JSONObject
     //   1310: dup
-    //   1311: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   1314: ldc_w 935
-    //   1317: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1320: aload_1
-    //   1321: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1324: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1327: invokestatic 941	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   1330: invokespecial 944	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   1333: invokevirtual 948	android/app/Activity:startActivity	(Landroid/content/Intent;)V
-    //   1336: iload 7
-    //   1338: ifeq +38 -> 1376
-    //   1341: ldc_w 926
-    //   1344: aconst_null
-    //   1345: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   1348: astore_1
-    //   1349: aload_1
-    //   1350: ifnull +15 -> 1365
-    //   1353: aload_3
-    //   1354: iload 4
-    //   1356: aload_1
-    //   1357: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1360: invokeinterface 876 3 0
-    //   1365: ldc_w 631
-    //   1368: areturn
-    //   1369: astore_1
-    //   1370: iconst_0
-    //   1371: istore 7
-    //   1373: goto -37 -> 1336
-    //   1376: ldc_w 926
-    //   1379: aconst_null
-    //   1380: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   1383: astore_1
-    //   1384: goto -35 -> 1349
-    //   1387: ldc_w 950
-    //   1390: aload_1
-    //   1391: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1394: ifeq +202 -> 1596
-    //   1397: ldc 139
-    //   1399: iconst_2
-    //   1400: iconst_2
-    //   1401: anewarray 633	java/lang/Object
-    //   1404: dup
-    //   1405: iconst_0
-    //   1406: ldc_w 951
-    //   1409: aastore
-    //   1410: dup
-    //   1411: iconst_1
-    //   1412: aload_2
-    //   1413: aastore
-    //   1414: invokestatic 954	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   1417: new 271	org/json/JSONObject
-    //   1420: dup
-    //   1421: aload_2
-    //   1422: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1425: ldc_w 956
-    //   1428: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1431: astore 20
-    //   1433: aload 20
-    //   1435: ldc_w 962
-    //   1438: ldc_w 631
-    //   1441: invokevirtual 965	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1444: astore 21
-    //   1446: aload 20
-    //   1448: ldc_w 967
-    //   1451: iconst_1
-    //   1452: invokevirtual 971	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   1455: pop
-    //   1456: ldc_w 973
-    //   1459: aload 21
-    //   1461: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1464: ifeq -99 -> 1365
-    //   1467: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1470: invokevirtual 977	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   1473: astore 20
-    //   1475: aload 20
-    //   1477: instanceof 979
-    //   1480: ifeq +101 -> 1581
-    //   1483: aload 20
-    //   1485: checkcast 979	com/tencent/mobileqq/mini/MiniAppInterface
-    //   1488: aload_0
-    //   1489: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1492: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1495: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   1498: invokevirtual 983	com/tencent/mobileqq/mini/MiniAppInterface:getAuthorizeCenter	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;
-    //   1501: astore 20
-    //   1503: aload 20
-    //   1505: ifnull +61 -> 1566
-    //   1508: aload 20
-    //   1510: aload_1
-    //   1511: aload_2
-    //   1512: invokevirtual 989	com/tencent/mobileqq/mini/app/AuthorizeCenter:getAuthFlag	(Ljava/lang/String;Ljava/lang/String;)I
-    //   1515: iconst_2
-    //   1516: if_icmpne +50 -> 1566
-    //   1519: new 991	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$2
-    //   1522: dup
-    //   1523: aload_0
-    //   1524: aload_3
-    //   1525: aload_1
-    //   1526: iload 4
-    //   1528: invokespecial 992	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   1531: astore_1
-    //   1532: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   1535: aload_0
-    //   1536: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1539: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1542: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   1545: aload_1
-    //   1546: invokevirtual 995	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getPhoneNumber	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   1549: goto -184 -> 1365
-    //   1552: astore_1
-    //   1553: ldc 139
-    //   1555: iconst_2
-    //   1556: ldc_w 951
-    //   1559: aload_1
-    //   1560: invokestatic 997	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1563: goto -198 -> 1365
-    //   1566: aload_0
-    //   1567: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1570: aload_3
-    //   1571: aload_1
-    //   1572: aconst_null
-    //   1573: iload 4
-    //   1575: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   1578: goto -213 -> 1365
-    //   1581: aload_0
-    //   1582: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1585: aload_3
-    //   1586: aload_1
-    //   1587: aconst_null
-    //   1588: iload 4
-    //   1590: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   1593: goto -228 -> 1365
-    //   1596: ldc 50
-    //   1598: aload_1
-    //   1599: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1602: ifeq +86 -> 1688
-    //   1605: ldc 139
-    //   1607: iconst_2
-    //   1608: new 321	java/lang/StringBuilder
-    //   1611: dup
-    //   1612: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   1615: ldc_w 1002
-    //   1618: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1621: iload 4
-    //   1623: invokevirtual 493	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1626: ldc_w 1004
-    //   1629: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1632: aload_0
-    //   1633: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1636: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1639: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   1642: getfield 916	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   1645: getfield 1007	com/tencent/mobileqq/mini/apkg/AppConfigInfo:PackageToolVersion	Ljava/lang/String;
-    //   1648: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1651: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1654: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1657: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   1660: aload_0
-    //   1661: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1664: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1667: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   1670: new 1009	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$3
-    //   1673: dup
-    //   1674: aload_0
-    //   1675: aload_3
-    //   1676: aload_1
-    //   1677: iload 4
-    //   1679: invokespecial 1010	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   1682: invokevirtual 1013	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getLoginCode	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   1685: goto -320 -> 1365
-    //   1688: ldc_w 1015
-    //   1691: aload_1
-    //   1692: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1695: ifeq +1131 -> 2826
-    //   1698: new 271	org/json/JSONObject
-    //   1701: dup
-    //   1702: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   1705: pop
-    //   1706: new 271	org/json/JSONObject
-    //   1709: dup
-    //   1710: aload_2
-    //   1711: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1714: astore 20
-    //   1716: aload 20
-    //   1718: ldc_w 956
-    //   1721: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1724: astore 22
-    //   1726: aload 22
-    //   1728: ldc_w 962
-    //   1731: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1734: astore 21
-    //   1736: ldc_w 1017
-    //   1739: aload 21
-    //   1741: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1744: ifne +14 -> 1758
-    //   1747: ldc_w 1019
-    //   1750: aload 21
-    //   1752: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1755: ifeq +101 -> 1856
-    //   1758: aload 22
-    //   1760: ldc_w 967
-    //   1763: invokevirtual 1021	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   1766: istore 15
-    //   1768: aload 22
-    //   1770: ldc_w 1023
-    //   1773: aconst_null
-    //   1774: invokevirtual 965	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1777: astore 20
-    //   1779: aload 22
-    //   1781: ldc_w 956
-    //   1784: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1787: astore_2
-    //   1788: aload_2
-    //   1789: ifnull +49 -> 1838
-    //   1792: aload_2
-    //   1793: ldc_w 1023
-    //   1796: ldc_w 1025
-    //   1799: invokevirtual 965	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1802: astore_2
-    //   1803: aload_0
-    //   1804: aload_3
-    //   1805: aload_1
-    //   1806: aload 21
-    //   1808: iload 4
-    //   1810: iload 15
-    //   1812: aload_2
-    //   1813: invokevirtual 1027	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getUserInfo	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;)V
-    //   1816: goto -451 -> 1365
-    //   1819: astore_1
-    //   1820: ldc 139
-    //   1822: iconst_1
-    //   1823: aload_1
-    //   1824: iconst_0
-    //   1825: anewarray 633	java/lang/Object
-    //   1828: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1831: aload_1
-    //   1832: invokevirtual 1031	java/lang/Exception:printStackTrace	()V
-    //   1835: goto -470 -> 1365
-    //   1838: aload 20
+    //   1311: aload_2
+    //   1312: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1315: ldc_w 1156
+    //   1318: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1321: astore_1
+    //   1322: iload 8
+    //   1324: istore 7
+    //   1326: aload_1
+    //   1327: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1330: ifne +44 -> 1374
+    //   1333: iconst_1
+    //   1334: istore 7
+    //   1336: aload 22
+    //   1338: new 764	android/content/Intent
+    //   1341: dup
+    //   1342: ldc_w 1158
+    //   1345: new 398	java/lang/StringBuilder
+    //   1348: dup
+    //   1349: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   1352: ldc_w 1160
+    //   1355: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1358: aload_1
+    //   1359: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1362: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1365: invokestatic 1166	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   1368: invokespecial 1169	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   1371: invokevirtual 1173	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   1374: iload 7
+    //   1376: ifeq +38 -> 1414
+    //   1379: ldc_w 1154
+    //   1382: aconst_null
+    //   1383: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   1386: astore_1
+    //   1387: aload_1
+    //   1388: ifnull +15 -> 1403
+    //   1391: aload_3
+    //   1392: iload 4
+    //   1394: aload_1
+    //   1395: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1398: invokeinterface 623 3 0
+    //   1403: ldc_w 525
+    //   1406: areturn
+    //   1407: astore_1
+    //   1408: iconst_0
+    //   1409: istore 7
+    //   1411: goto -37 -> 1374
+    //   1414: ldc_w 1154
+    //   1417: aconst_null
+    //   1418: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   1421: astore_1
+    //   1422: goto -35 -> 1387
+    //   1425: ldc_w 1175
+    //   1428: aload_1
+    //   1429: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1432: ifeq +190 -> 1622
+    //   1435: ldc 150
+    //   1437: iconst_2
+    //   1438: iconst_2
+    //   1439: anewarray 873	java/lang/Object
+    //   1442: dup
+    //   1443: iconst_0
+    //   1444: ldc_w 1176
+    //   1447: aastore
+    //   1448: dup
+    //   1449: iconst_1
+    //   1450: aload_2
+    //   1451: aastore
+    //   1452: invokestatic 1179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   1455: new 348	org/json/JSONObject
+    //   1458: dup
+    //   1459: aload_2
+    //   1460: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1463: astore_2
+    //   1464: aload_2
+    //   1465: ldc_w 479
+    //   1468: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1471: astore 20
+    //   1473: aload 20
+    //   1475: ldc_w 1181
+    //   1478: ldc_w 525
+    //   1481: invokevirtual 1183	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1484: astore 21
+    //   1486: aload 20
+    //   1488: ldc_w 1185
+    //   1491: iconst_1
+    //   1492: invokevirtual 1188	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   1495: pop
+    //   1496: ldc_w 1190
+    //   1499: aload 21
+    //   1501: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1504: ifeq +49 -> 1553
+    //   1507: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   1510: aload_0
+    //   1511: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1514: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1517: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   1520: new 1192	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$2
+    //   1523: dup
+    //   1524: aload_0
+    //   1525: aload_3
+    //   1526: aload_1
+    //   1527: iload 4
+    //   1529: aload_2
+    //   1530: invokespecial 1195	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;ILorg/json/JSONObject;)V
+    //   1533: invokevirtual 1197	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getPhoneNumber	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   1536: goto -133 -> 1403
+    //   1539: astore_1
+    //   1540: ldc 150
+    //   1542: iconst_2
+    //   1543: ldc_w 1176
+    //   1546: aload_1
+    //   1547: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1550: goto -147 -> 1403
+    //   1553: ldc 150
+    //   1555: iconst_1
+    //   1556: new 398	java/lang/StringBuilder
+    //   1559: dup
+    //   1560: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   1563: ldc_w 1199
+    //   1566: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1569: aload 21
+    //   1571: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1574: ldc_w 1201
+    //   1577: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1580: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1583: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1586: aload_0
+    //   1587: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1590: aload_3
+    //   1591: aload_1
+    //   1592: aconst_null
+    //   1593: new 398	java/lang/StringBuilder
+    //   1596: dup
+    //   1597: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   1600: aload 21
+    //   1602: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1605: ldc_w 1201
+    //   1608: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1611: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1614: iload 4
+    //   1616: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   1619: goto -216 -> 1403
+    //   1622: ldc 50
+    //   1624: aload_1
+    //   1625: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1628: ifeq +86 -> 1714
+    //   1631: ldc 150
+    //   1633: iconst_2
+    //   1634: new 398	java/lang/StringBuilder
+    //   1637: dup
+    //   1638: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   1641: ldc_w 1203
+    //   1644: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1647: iload 4
+    //   1649: invokevirtual 747	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1652: ldc_w 1205
+    //   1655: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1658: aload_0
+    //   1659: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1662: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1665: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   1668: getfield 1144	com/tencent/mobileqq/mini/apkg/ApkgInfo:mAppConfigInfo	Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   1671: getfield 1208	com/tencent/mobileqq/mini/apkg/AppConfigInfo:PackageToolVersion	Ljava/lang/String;
+    //   1674: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1677: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1680: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1683: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   1686: aload_0
+    //   1687: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   1690: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   1693: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   1696: new 1210	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$3
+    //   1699: dup
+    //   1700: aload_0
+    //   1701: aload_3
+    //   1702: aload_1
+    //   1703: iload 4
+    //   1705: invokespecial 1211	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   1708: invokevirtual 660	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getLoginCode	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   1711: goto -308 -> 1403
+    //   1714: ldc_w 1213
+    //   1717: aload_1
+    //   1718: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1721: ifeq +1387 -> 3108
+    //   1724: new 348	org/json/JSONObject
+    //   1727: dup
+    //   1728: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   1731: pop
+    //   1732: new 348	org/json/JSONObject
+    //   1735: dup
+    //   1736: aload_2
+    //   1737: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1740: astore 20
+    //   1742: aload 20
+    //   1744: ldc_w 479
+    //   1747: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1750: astore 22
+    //   1752: aload 22
+    //   1754: ldc_w 1181
+    //   1757: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1760: astore 21
+    //   1762: ldc 150
+    //   1764: iconst_2
+    //   1765: new 398	java/lang/StringBuilder
+    //   1768: dup
+    //   1769: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   1772: ldc_w 1215
+    //   1775: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1778: aload 21
+    //   1780: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1783: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1786: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1789: ldc_w 1217
+    //   1792: aload 21
+    //   1794: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1797: ifne +14 -> 1811
+    //   1800: ldc_w 1219
+    //   1803: aload 21
+    //   1805: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1808: ifeq +101 -> 1909
+    //   1811: aload 22
+    //   1813: ldc_w 1185
+    //   1816: invokevirtual 632	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   1819: istore 15
+    //   1821: aload 22
+    //   1823: ldc_w 634
+    //   1826: aconst_null
+    //   1827: invokevirtual 1183	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1830: astore 20
+    //   1832: aload 22
+    //   1834: ldc_w 479
+    //   1837: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   1840: astore_2
-    //   1841: aload 20
-    //   1843: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1846: ifeq -43 -> 1803
-    //   1849: ldc_w 1025
-    //   1852: astore_2
-    //   1853: goto -50 -> 1803
-    //   1856: ldc_w 1033
+    //   1841: aload_2
+    //   1842: ifnull +49 -> 1891
+    //   1845: aload_2
+    //   1846: ldc_w 634
+    //   1849: ldc_w 1221
+    //   1852: invokevirtual 1183	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1855: astore_2
+    //   1856: aload_0
+    //   1857: aload_3
+    //   1858: aload_1
     //   1859: aload 21
-    //   1861: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1864: ifeq +47 -> 1911
-    //   1867: new 1035	Wallet/IsUinFocusMpIdReq
-    //   1870: dup
-    //   1871: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1874: invokevirtual 977	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   1877: invokevirtual 1040	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   1880: aload_0
-    //   1881: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1884: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1887: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   1890: invokespecial 1042	Wallet/IsUinFocusMpIdReq:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1893: new 1044	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$4
-    //   1896: dup
-    //   1897: aload_0
-    //   1898: aload_3
-    //   1899: aload_1
-    //   1900: iload 4
-    //   1902: invokespecial 1045	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$4:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   1905: invokestatic 1050	aivh:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
-    //   1908: goto -543 -> 1365
-    //   1911: ldc_w 1052
-    //   1914: aload 21
-    //   1916: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1919: ifeq +141 -> 2060
-    //   1922: aload 20
-    //   1924: ldc_w 1054
-    //   1927: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1930: ldc_w 1056
-    //   1933: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1936: astore_2
-    //   1937: ldc 98
-    //   1939: aload_0
-    //   1940: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   1943: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   1946: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   1949: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1952: ifeq +75 -> 2027
-    //   1955: ldc 139
-    //   1957: iconst_1
-    //   1958: ldc_w 1058
-    //   1961: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1964: new 271	org/json/JSONObject
-    //   1967: dup
-    //   1968: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   1971: astore_2
-    //   1972: new 271	org/json/JSONObject
-    //   1975: dup
-    //   1976: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   1979: astore 20
-    //   1981: aload 20
-    //   1983: ldc_w 956
-    //   1986: ldc 145
-    //   1988: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1991: pop
-    //   1992: aload_2
-    //   1993: ldc_w 1060
-    //   1996: aload 20
-    //   1998: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2001: pop
-    //   2002: aload_0
-    //   2003: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2006: aload_3
-    //   2007: aload_1
-    //   2008: aload_2
-    //   2009: iload 4
-    //   2011: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   2014: goto -649 -> 1365
-    //   2017: astore 20
-    //   2019: aload 20
-    //   2021: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   2024: goto -22 -> 2002
-    //   2027: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   2030: aload_0
-    //   2031: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2034: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2037: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   2040: aload_2
-    //   2041: aconst_null
-    //   2042: new 1066	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$5
-    //   2045: dup
-    //   2046: aload_0
-    //   2047: aload_3
-    //   2048: aload_1
-    //   2049: iload 4
-    //   2051: invokespecial 1067	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$5:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   2054: invokevirtual 1070	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:checkNavigateRight	(Ljava/lang/String;Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   2057: goto -692 -> 1365
-    //   2060: ldc_w 1072
-    //   2063: aload 21
-    //   2065: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2068: ifeq +404 -> 2472
-    //   2071: aload 22
-    //   2073: ldc_w 956
-    //   2076: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2079: ldc_w 1074
-    //   2082: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2085: astore 26
-    //   2087: iconst_2
-    //   2088: istore 7
-    //   2090: aload 22
-    //   2092: ldc_w 956
-    //   2095: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2098: ldc_w 1076
-    //   2101: invokevirtual 483	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   2104: ifeq +19 -> 2123
-    //   2107: aload 22
-    //   2109: ldc_w 956
-    //   2112: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2115: ldc_w 1076
-    //   2118: invokevirtual 1080	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   2121: istore 7
-    //   2123: aload_0
-    //   2124: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2127: getfield 1084	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2130: invokevirtual 1089	com/tencent/mobileqq/app/BaseActivity:getCurrentAccountUin	()Ljava/lang/String;
-    //   2133: invokestatic 1092	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   2136: invokevirtual 1096	java/lang/Long:longValue	()J
-    //   2139: lstore 18
-    //   2141: aconst_null
-    //   2142: astore_2
-    //   2143: aload_0
-    //   2144: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2147: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2150: ifnull +14 -> 2164
-    //   2153: aload_0
-    //   2154: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2157: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2160: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   2163: astore_2
-    //   2164: ldc 139
-    //   2166: iconst_2
-    //   2167: new 321	java/lang/StringBuilder
-    //   2170: dup
-    //   2171: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   2174: ldc_w 1098
-    //   2177: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2180: aload_2
-    //   2181: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2184: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2187: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2190: aload_2
-    //   2191: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2194: ifne -829 -> 1365
-    //   2197: iload 7
-    //   2199: invokestatic 1102	com/tencent/mobileqq/mini/util/AdUtils:getSpAdGdtCookie	(I)Ljava/lang/String;
-    //   2202: astore 27
-    //   2204: aload_0
-    //   2205: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2208: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2211: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   2214: astore 28
-    //   2216: ldc_w 631
-    //   2219: astore 21
-    //   2221: ldc_w 631
-    //   2224: astore 23
-    //   2226: ldc_w 631
-    //   2229: astore 25
-    //   2231: ldc_w 631
-    //   2234: astore 24
-    //   2236: aload 21
-    //   2238: astore 20
-    //   2240: aload 28
-    //   2242: ifnull +61 -> 2303
-    //   2245: aload 21
-    //   2247: astore 20
-    //   2249: aload 28
-    //   2251: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2254: ifnull +49 -> 2303
-    //   2257: aload 21
-    //   2259: astore 20
-    //   2261: aload 28
-    //   2263: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2266: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2269: ifnull +34 -> 2303
-    //   2272: aload 21
-    //   2274: astore 20
-    //   2276: aload 28
-    //   2278: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2281: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2284: getfield 912	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
-    //   2287: ifnull +16 -> 2303
-    //   2290: aload 28
-    //   2292: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2295: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2298: getfield 912	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
-    //   2301: astore 20
-    //   2303: aload 23
-    //   2305: astore 22
-    //   2307: aload 25
-    //   2309: astore 21
-    //   2311: aload 28
-    //   2313: ifnull +67 -> 2380
-    //   2316: aload 23
-    //   2318: astore 22
-    //   2320: aload 25
-    //   2322: astore 21
-    //   2324: aload 28
-    //   2326: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2329: ifnull +51 -> 2380
-    //   2332: aload 23
-    //   2334: astore 22
-    //   2336: aload 25
-    //   2338: astore 21
-    //   2340: aload 28
-    //   2342: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2345: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2348: ifnull +32 -> 2380
-    //   2351: aload 28
-    //   2353: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2356: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2359: getfield 1105	com/tencent/mobileqq/mini/sdk/LaunchParam:reportData	Ljava/lang/String;
-    //   2362: astore 22
-    //   2364: aload 28
-    //   2366: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2369: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   2372: getfield 1108	com/tencent/mobileqq/mini/sdk/LaunchParam:scene	I
-    //   2375: invokestatic 1110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   2378: astore 21
-    //   2380: aload 24
-    //   2382: astore 23
-    //   2384: aload 28
-    //   2386: ifnull +43 -> 2429
-    //   2389: aload 24
-    //   2391: astore 23
-    //   2393: aload 28
-    //   2395: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2398: ifnull +31 -> 2429
-    //   2401: aload 24
-    //   2403: astore 23
-    //   2405: aload 28
-    //   2407: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2410: getfield 1114	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   2413: ifnull +16 -> 2429
-    //   2416: aload 28
-    //   2418: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   2421: getfield 1114	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   2424: getfield 1119	com/tencent/mobileqq/mini/apkg/MiniAppInfo:via	Ljava/lang/String;
-    //   2427: astore 23
-    //   2429: aload_0
-    //   2430: aload_0
-    //   2431: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2434: getfield 1084	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2437: lload 18
-    //   2439: aload 26
-    //   2441: aload_2
-    //   2442: bipush 53
-    //   2444: iload 7
-    //   2446: iconst_0
-    //   2447: aload 27
-    //   2449: aload 20
-    //   2451: aload 22
-    //   2453: aload 21
-    //   2455: aload 23
-    //   2457: invokestatic 1123	com/tencent/mobileqq/mini/util/AdUtils:createAdRequest	(Landroid/content/Context;JLjava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)LNS_MINI_AD/MiniAppAd$StGetAdReq;
-    //   2460: aload_3
-    //   2461: aload_1
-    //   2462: iload 4
-    //   2464: iload 7
-    //   2466: invokespecial 1125	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:sendAdRequest	(LNS_MINI_AD/MiniAppAd$StGetAdReq;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;II)V
-    //   2469: goto -1104 -> 1365
-    //   2472: ldc_w 1127
-    //   2475: aload 21
-    //   2477: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2480: ifeq +232 -> 2712
-    //   2483: new 271	org/json/JSONObject
-    //   2486: dup
-    //   2487: new 271	org/json/JSONObject
-    //   2490: dup
-    //   2491: aload_2
-    //   2492: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   2495: ldc_w 956
-    //   2498: invokevirtual 1129	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2501: ldc_w 956
-    //   2504: invokevirtual 1129	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2507: ldc_w 304
-    //   2510: invokevirtual 1132	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   2513: invokevirtual 1133	java/lang/Object:toString	()Ljava/lang/String;
-    //   2516: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   2519: astore_2
-    //   2520: ldc_w 306
-    //   2523: new 306	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
-    //   2526: dup
-    //   2527: invokespecial 307	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:<init>	()V
-    //   2530: aload_2
-    //   2531: invokestatic 313	aasd:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
-    //   2534: invokevirtual 319	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2537: checkcast 306	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
-    //   2540: astore 20
-    //   2542: aload_0
-    //   2543: getfield 1135	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
-    //   2546: ifnonnull +45 -> 2591
-    //   2549: aload_0
-    //   2550: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2553: ifnull +38 -> 2591
+    //   1861: iload 4
+    //   1863: iload 15
+    //   1865: aload_2
+    //   1866: invokevirtual 1223	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getUserInfo	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;)V
+    //   1869: goto -466 -> 1403
+    //   1872: astore_1
+    //   1873: ldc 150
+    //   1875: iconst_1
+    //   1876: aload_1
+    //   1877: iconst_0
+    //   1878: anewarray 873	java/lang/Object
+    //   1881: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1884: aload_1
+    //   1885: invokevirtual 644	java/lang/Exception:printStackTrace	()V
+    //   1888: goto -485 -> 1403
+    //   1891: aload 20
+    //   1893: astore_2
+    //   1894: aload 20
+    //   1896: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1899: ifeq -43 -> 1856
+    //   1902: ldc_w 1221
+    //   1905: astore_2
+    //   1906: goto -50 -> 1856
+    //   1909: ldc_w 1228
+    //   1912: aload 21
+    //   1914: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1917: ifeq +16 -> 1933
+    //   1920: aload_0
+    //   1921: aload 22
+    //   1923: aload_3
+    //   1924: aload_1
+    //   1925: iload 4
+    //   1927: invokespecial 1230	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:handleWebapiPluginSetauth	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   1930: goto -527 -> 1403
+    //   1933: ldc_w 1232
+    //   1936: aload 21
+    //   1938: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1941: ifeq +16 -> 1957
+    //   1944: aload_0
+    //   1945: aload 22
+    //   1947: aload_3
+    //   1948: aload_1
+    //   1949: iload 4
+    //   1951: invokespecial 1234	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:handleWebapiPluginLogin	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   1954: goto -551 -> 1403
+    //   1957: ldc_w 1236
+    //   1960: aload 21
+    //   1962: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1965: ifeq +18 -> 1983
+    //   1968: aload_0
+    //   1969: aload 22
+    //   1971: aload_3
+    //   1972: aload_1
+    //   1973: iload 4
+    //   1975: aload 21
+    //   1977: invokespecial 1238	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:handleWebapiPluginGetuserinfo	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;ILjava/lang/String;)V
+    //   1980: goto -577 -> 1403
+    //   1983: ldc_w 1240
+    //   1986: aload 21
+    //   1988: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1991: ifeq +47 -> 2038
+    //   1994: new 1242	Wallet/IsUinFocusMpIdReq
+    //   1997: dup
+    //   1998: invokestatic 471	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   2001: invokevirtual 1246	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   2004: invokevirtual 1251	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   2007: aload_0
+    //   2008: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2011: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2014: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   2017: invokespecial 1253	Wallet/IsUinFocusMpIdReq:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2020: new 1255	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$4
+    //   2023: dup
+    //   2024: aload_0
+    //   2025: aload_3
+    //   2026: aload_1
+    //   2027: iload 4
+    //   2029: invokespecial 1256	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$4:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   2032: invokestatic 1261	akmf:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
+    //   2035: goto -632 -> 1403
+    //   2038: ldc_w 1263
+    //   2041: aload 21
+    //   2043: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2046: ifeq +141 -> 2187
+    //   2049: aload 20
+    //   2051: ldc_w 1265
+    //   2054: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2057: ldc_w 1267
+    //   2060: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2063: astore_2
+    //   2064: ldc 112
+    //   2066: aload_0
+    //   2067: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2070: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2073: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   2076: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2079: ifeq +75 -> 2154
+    //   2082: ldc 150
+    //   2084: iconst_1
+    //   2085: ldc_w 1269
+    //   2088: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2091: new 348	org/json/JSONObject
+    //   2094: dup
+    //   2095: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   2098: astore_2
+    //   2099: new 348	org/json/JSONObject
+    //   2102: dup
+    //   2103: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   2106: astore 20
+    //   2108: aload 20
+    //   2110: ldc_w 479
+    //   2113: ldc 156
+    //   2115: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   2118: pop
+    //   2119: aload_2
+    //   2120: ldc_w 1271
+    //   2123: aload 20
+    //   2125: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   2128: pop
+    //   2129: aload_0
+    //   2130: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2133: aload_3
+    //   2134: aload_1
+    //   2135: aload_2
+    //   2136: iload 4
+    //   2138: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   2141: goto -738 -> 1403
+    //   2144: astore 20
+    //   2146: aload 20
+    //   2148: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   2151: goto -22 -> 2129
+    //   2154: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   2157: aload_0
+    //   2158: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2161: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2164: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   2167: aload_2
+    //   2168: aconst_null
+    //   2169: new 1274	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$5
+    //   2172: dup
+    //   2173: aload_0
+    //   2174: aload_3
+    //   2175: aload_1
+    //   2176: iload 4
+    //   2178: invokespecial 1275	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$5:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   2181: invokevirtual 1278	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:checkNavigateRight	(Ljava/lang/String;Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   2184: goto -781 -> 1403
+    //   2187: ldc_w 1280
+    //   2190: aload 21
+    //   2192: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2195: ifeq +405 -> 2600
+    //   2198: aload 22
+    //   2200: ldc_w 479
+    //   2203: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2206: ldc_w 485
+    //   2209: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2212: astore 26
+    //   2214: iconst_2
+    //   2215: istore 7
+    //   2217: aload 22
+    //   2219: ldc_w 479
+    //   2222: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2225: ldc_w 490
+    //   2228: invokevirtual 494	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   2231: ifeq +19 -> 2250
+    //   2234: aload 22
+    //   2236: ldc_w 479
+    //   2239: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2242: ldc_w 490
+    //   2245: invokevirtual 498	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   2248: istore 7
+    //   2250: aload_0
+    //   2251: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2254: getfield 255	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2257: invokevirtual 505	com/tencent/mobileqq/app/BaseActivity:getCurrentAccountUin	()Ljava/lang/String;
+    //   2260: invokestatic 508	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   2263: invokevirtual 512	java/lang/Long:longValue	()J
+    //   2266: lstore 18
+    //   2268: aconst_null
+    //   2269: astore_2
+    //   2270: aload_0
+    //   2271: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2274: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2277: ifnull +14 -> 2291
+    //   2280: aload_0
+    //   2281: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2284: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2287: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   2290: astore_2
+    //   2291: ldc 150
+    //   2293: iconst_2
+    //   2294: new 398	java/lang/StringBuilder
+    //   2297: dup
+    //   2298: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   2301: ldc_w 1282
+    //   2304: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2307: aload_2
+    //   2308: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2311: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2314: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2317: aload_2
+    //   2318: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2321: ifne -918 -> 1403
+    //   2324: iload 7
+    //   2326: invokestatic 523	com/tencent/mobileqq/mini/util/AdUtils:getSpAdGdtCookie	(I)Ljava/lang/String;
+    //   2329: astore 27
+    //   2331: aload_0
+    //   2332: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2335: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   2338: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   2341: astore 28
+    //   2343: ldc_w 525
+    //   2346: astore 21
+    //   2348: ldc_w 525
+    //   2351: astore 23
+    //   2353: ldc_w 525
+    //   2356: astore 25
+    //   2358: ldc_w 525
+    //   2361: astore 24
+    //   2363: aload 21
+    //   2365: astore 20
+    //   2367: aload 28
+    //   2369: ifnull +61 -> 2430
+    //   2372: aload 21
+    //   2374: astore 20
+    //   2376: aload 28
+    //   2378: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2381: ifnull +49 -> 2430
+    //   2384: aload 21
+    //   2386: astore 20
+    //   2388: aload 28
+    //   2390: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2393: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2396: ifnull +34 -> 2430
+    //   2399: aload 21
+    //   2401: astore 20
+    //   2403: aload 28
+    //   2405: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2408: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2411: getfield 534	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
+    //   2414: ifnull +16 -> 2430
+    //   2417: aload 28
+    //   2419: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2422: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2425: getfield 534	com/tencent/mobileqq/mini/sdk/LaunchParam:entryPath	Ljava/lang/String;
+    //   2428: astore 20
+    //   2430: aload 23
+    //   2432: astore 22
+    //   2434: aload 25
+    //   2436: astore 21
+    //   2438: aload 28
+    //   2440: ifnull +67 -> 2507
+    //   2443: aload 23
+    //   2445: astore 22
+    //   2447: aload 25
+    //   2449: astore 21
+    //   2451: aload 28
+    //   2453: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2456: ifnull +51 -> 2507
+    //   2459: aload 23
+    //   2461: astore 22
+    //   2463: aload 25
+    //   2465: astore 21
+    //   2467: aload 28
+    //   2469: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2472: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2475: ifnull +32 -> 2507
+    //   2478: aload 28
+    //   2480: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2483: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2486: getfield 537	com/tencent/mobileqq/mini/sdk/LaunchParam:reportData	Ljava/lang/String;
+    //   2489: astore 22
+    //   2491: aload 28
+    //   2493: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2496: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   2499: getfield 540	com/tencent/mobileqq/mini/sdk/LaunchParam:scene	I
+    //   2502: invokestatic 542	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   2505: astore 21
+    //   2507: aload 24
+    //   2509: astore 23
+    //   2511: aload 28
+    //   2513: ifnull +43 -> 2556
+    //   2516: aload 24
+    //   2518: astore 23
+    //   2520: aload 28
+    //   2522: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2525: ifnull +31 -> 2556
+    //   2528: aload 24
+    //   2530: astore 23
+    //   2532: aload 28
+    //   2534: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2537: getfield 280	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   2540: ifnull +16 -> 2556
+    //   2543: aload 28
+    //   2545: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   2548: getfield 280	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   2551: getfield 545	com/tencent/mobileqq/mini/apkg/MiniAppInfo:via	Ljava/lang/String;
+    //   2554: astore 23
     //   2556: aload_0
-    //   2557: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2560: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2563: ifnull +28 -> 2591
-    //   2566: aload_0
-    //   2567: new 1137	com/tencent/gdtad/aditem/GdtAppReceiver
-    //   2570: dup
-    //   2571: invokespecial 1138	com/tencent/gdtad/aditem/GdtAppReceiver:<init>	()V
-    //   2574: putfield 1135	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
-    //   2577: aload_0
-    //   2578: getfield 1135	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
-    //   2581: aload_0
-    //   2582: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2585: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2588: invokevirtual 1142	com/tencent/gdtad/aditem/GdtAppReceiver:register	(Landroid/content/Context;)V
-    //   2591: new 1144	com/tencent/gdtad/aditem/GdtHandler$Params
-    //   2594: dup
-    //   2595: invokespecial 1145	com/tencent/gdtad/aditem/GdtHandler$Params:<init>	()V
-    //   2598: astore_2
-    //   2599: aload_2
-    //   2600: bipush 11
-    //   2602: putfield 1147	com/tencent/gdtad/aditem/GdtHandler$Params:c	I
-    //   2605: aload_2
-    //   2606: new 1149	java/lang/ref/WeakReference
-    //   2609: dup
-    //   2610: aload_0
-    //   2611: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2614: getfield 1084	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2617: invokespecial 1152	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   2620: putfield 1155	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   2623: aload_2
-    //   2624: new 1157	com/tencent/gdtad/aditem/GdtAd
-    //   2627: dup
-    //   2628: aload 20
-    //   2630: invokespecial 1160	com/tencent/gdtad/aditem/GdtAd:<init>	(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)V
-    //   2633: putfield 1163	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_ComTencentGdtadAditemGdtAd	Lcom/tencent/gdtad/aditem/GdtAd;
-    //   2636: aload_2
-    //   2637: iconst_1
-    //   2638: putfield 1166	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_Boolean	Z
-    //   2641: aload_2
-    //   2642: iconst_1
-    //   2643: putfield 1168	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_Boolean	Z
-    //   2646: aload_2
-    //   2647: new 1149	java/lang/ref/WeakReference
-    //   2650: dup
-    //   2651: aload_0
-    //   2652: getfield 1135	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
-    //   2655: invokespecial 1152	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   2658: putfield 1170	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   2661: aload_2
-    //   2662: ldc_w 1172
-    //   2665: putfield 1175	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_JavaLangClass	Ljava/lang/Class;
-    //   2668: new 525	android/os/Bundle
-    //   2671: dup
-    //   2672: invokespecial 526	android/os/Bundle:<init>	()V
-    //   2675: astore 20
-    //   2677: aload 20
-    //   2679: ldc_w 1177
-    //   2682: ldc 8
-    //   2684: invokevirtual 1180	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2687: aload_2
-    //   2688: aload 20
-    //   2690: putfield 1183	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   2693: aload_2
-    //   2694: invokestatic 1188	com/tencent/gdtad/aditem/GdtHandler:a	(Lcom/tencent/gdtad/aditem/GdtHandler$Params;)V
-    //   2697: aload_0
-    //   2698: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2701: aload_3
-    //   2702: aload_1
-    //   2703: aconst_null
-    //   2704: iload 4
-    //   2706: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   2709: goto -1344 -> 1365
-    //   2712: ldc_w 1190
-    //   2715: aload 21
-    //   2717: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2720: ifeq +63 -> 2783
-    //   2723: aload 22
-    //   2725: ldc_w 956
-    //   2728: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2731: ldc_w 1192
-    //   2734: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2737: astore_2
-    //   2738: aload 22
-    //   2740: ldc_w 956
-    //   2743: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2746: ldc_w 1194
-    //   2749: iconst_0
-    //   2750: invokevirtual 1197	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   2753: istore 8
-    //   2755: iload 8
-    //   2757: istore 7
-    //   2759: iload 8
-    //   2761: ifgt +8 -> 2769
-    //   2764: sipush 30000
-    //   2767: istore 7
-    //   2769: aload_0
-    //   2770: aload_2
-    //   2771: iload 7
-    //   2773: aload_3
-    //   2774: aload_1
-    //   2775: iload 4
-    //   2777: invokespecial 1199	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:operateGetShareInfo	(Ljava/lang/String;ILcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   2780: goto -1415 -> 1365
-    //   2783: ldc_w 1201
-    //   2786: aload 21
-    //   2788: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2791: ifeq -1426 -> 1365
-    //   2794: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   2797: aload_0
-    //   2798: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2801: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2804: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   2807: aconst_null
-    //   2808: new 1203	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$6
-    //   2811: dup
-    //   2812: aload_0
-    //   2813: aload_3
-    //   2814: aload_1
-    //   2815: iload 4
-    //   2817: invokespecial 1204	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$6:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   2820: invokevirtual 1208	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserHealthData	(Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   2823: goto -1458 -> 1365
-    //   2826: ldc 59
-    //   2828: aload_1
-    //   2829: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2832: ifeq +34 -> 2866
-    //   2835: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   2838: aload_0
-    //   2839: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2842: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2845: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   2848: new 1210	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$7
-    //   2851: dup
-    //   2852: aload_0
-    //   2853: aload_3
-    //   2854: aload_1
-    //   2855: iload 4
-    //   2857: invokespecial 1211	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$7:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   2860: invokevirtual 1214	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:checkSession	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   2863: goto -1498 -> 1365
-    //   2866: ldc 83
-    //   2868: aload_1
-    //   2869: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2872: ifne +12 -> 2884
-    //   2875: ldc 86
-    //   2877: aload_1
-    //   2878: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2881: ifeq +771 -> 3652
-    //   2884: aload_0
-    //   2885: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2888: ifnull +752 -> 3640
-    //   2891: aload_0
-    //   2892: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   2895: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   2898: ifnull +688 -> 3586
-    //   2901: iconst_m1
-    //   2902: istore 9
-    //   2904: aload_2
-    //   2905: ifnull +23 -> 2928
-    //   2908: ldc_w 1216
-    //   2911: aload_2
-    //   2912: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2915: ifne +13 -> 2928
-    //   2918: ldc_w 1218
-    //   2921: aload_2
-    //   2922: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2925: ifeq +103 -> 3028
-    //   2928: iconst_0
-    //   2929: istore 15
-    //   2931: iconst_1
-    //   2932: istore 13
-    //   2934: iconst_1
-    //   2935: istore 12
-    //   2937: iconst_1
-    //   2938: istore 9
-    //   2940: iconst_1
-    //   2941: istore 7
-    //   2943: aload_0
-    //   2944: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   2947: ifeq +412 -> 3359
-    //   2950: aload_0
-    //   2951: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   2954: astore_2
-    //   2955: aload_2
-    //   2956: ifnull +384 -> 3340
-    //   2959: iload 13
-    //   2961: iconst_1
-    //   2962: if_icmpne +346 -> 3308
-    //   2965: aload_2
-    //   2966: iconst_1
-    //   2967: putfield 1230	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
-    //   2970: iload 12
-    //   2972: iconst_1
-    //   2973: if_icmpne +343 -> 3316
-    //   2976: aload_2
-    //   2977: iconst_1
-    //   2978: putfield 1233	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
-    //   2981: iload 9
-    //   2983: iconst_1
-    //   2984: if_icmpne +340 -> 3324
-    //   2987: aload_2
-    //   2988: iconst_1
-    //   2989: putfield 1236	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
-    //   2992: iload 7
-    //   2994: iconst_1
-    //   2995: if_icmpne +337 -> 3332
-    //   2998: aload_2
-    //   2999: iconst_1
-    //   3000: putfield 1239	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
-    //   3003: aload_2
-    //   3004: iload 15
-    //   3006: putfield 1242	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareTicket	Z
-    //   3009: aload_0
-    //   3010: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3013: aload_3
-    //   3014: aload_1
-    //   3015: aload_1
-    //   3016: aconst_null
-    //   3017: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3020: iload 4
-    //   3022: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3025: goto -1660 -> 1365
-    //   3028: new 271	org/json/JSONObject
-    //   3031: dup
-    //   3032: aload_2
-    //   3033: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   3036: astore_2
-    //   3037: aload_2
-    //   3038: ldc_w 1243
-    //   3041: iconst_0
-    //   3042: invokevirtual 971	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   3045: istore 16
-    //   3047: aload_2
-    //   3048: ldc_w 1245
-    //   3051: invokevirtual 1248	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   3054: checkcast 282	org/json/JSONArray
-    //   3057: astore_2
-    //   3058: aload_2
-    //   3059: ifnonnull +7163 -> 10222
-    //   3062: iconst_1
-    //   3063: istore 13
-    //   3065: iconst_1
-    //   3066: istore 12
-    //   3068: iconst_1
-    //   3069: istore 9
-    //   3071: iconst_1
-    //   3072: istore 7
-    //   3074: iload 16
-    //   3076: istore 15
-    //   3078: goto -135 -> 2943
-    //   3081: iload 10
-    //   3083: aload_2
-    //   3084: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   3087: if_icmpge +76 -> 3163
-    //   3090: aload_2
-    //   3091: iload 10
-    //   3093: invokevirtual 1253	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   3096: astore 20
-    //   3098: aload 20
-    //   3100: ldc 112
-    //   3102: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   3105: ifeq +6 -> 3111
-    //   3108: iconst_1
-    //   3109: istore 11
-    //   3111: aload 20
-    //   3113: ldc 115
-    //   3115: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   3118: ifeq +6 -> 3124
-    //   3121: iconst_1
-    //   3122: istore 7
-    //   3124: aload 20
-    //   3126: ldc 118
-    //   3128: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   3131: ifeq +6 -> 3137
-    //   3134: iconst_1
-    //   3135: istore 9
-    //   3137: aload 20
-    //   3139: ldc 121
-    //   3141: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   3144: istore 15
-    //   3146: iload 15
-    //   3148: ifeq +6 -> 3154
-    //   3151: iconst_1
-    //   3152: istore 8
-    //   3154: iload 10
-    //   3156: iconst_1
-    //   3157: iadd
-    //   3158: istore 10
-    //   3160: goto -79 -> 3081
-    //   3163: iload 11
-    //   3165: istore 10
-    //   3167: iload 11
-    //   3169: iconst_m1
-    //   3170: if_icmpne +6 -> 3176
-    //   3173: iconst_0
-    //   3174: istore 10
-    //   3176: iload 7
-    //   3178: istore 11
-    //   3180: iload 7
-    //   3182: iconst_m1
-    //   3183: if_icmpne +6 -> 3189
-    //   3186: iconst_0
-    //   3187: istore 11
-    //   3189: iload 9
-    //   3191: iconst_m1
-    //   3192: if_icmpne +7009 -> 10201
-    //   3195: iconst_0
-    //   3196: istore 14
-    //   3198: iload 14
-    //   3200: istore 9
-    //   3202: iload 8
-    //   3204: istore 7
-    //   3206: iload 11
-    //   3208: istore 12
-    //   3210: iload 10
-    //   3212: istore 13
-    //   3214: iload 16
-    //   3216: istore 15
-    //   3218: iload 8
-    //   3220: iconst_m1
-    //   3221: if_icmpne -278 -> 2943
-    //   3224: iconst_0
-    //   3225: istore 7
-    //   3227: iload 14
-    //   3229: istore 9
-    //   3231: iload 11
-    //   3233: istore 12
-    //   3235: iload 10
-    //   3237: istore 13
-    //   3239: iload 16
-    //   3241: istore 15
-    //   3243: goto -300 -> 2943
-    //   3246: astore_2
+    //   2557: aload_0
+    //   2558: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2561: getfield 255	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2564: lload 18
+    //   2566: aload 26
+    //   2568: aload_2
+    //   2569: bipush 53
+    //   2571: iload 7
+    //   2573: iconst_0
+    //   2574: aload 27
+    //   2576: aload 20
+    //   2578: aload 22
+    //   2580: aload 21
+    //   2582: aload 23
+    //   2584: iconst_1
+    //   2585: invokestatic 549	com/tencent/mobileqq/mini/util/AdUtils:createAdRequest	(Landroid/content/Context;JLjava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)LNS_MINI_AD/MiniAppAd$StGetAdReq;
+    //   2588: aload_3
+    //   2589: aload_1
+    //   2590: iload 4
+    //   2592: iload 7
+    //   2594: invokespecial 553	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:sendAdRequest	(LNS_MINI_AD/MiniAppAd$StGetAdReq;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;II)V
+    //   2597: goto -1194 -> 1403
+    //   2600: ldc_w 1284
+    //   2603: aload 21
+    //   2605: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2608: ifeq +360 -> 2968
+    //   2611: new 348	org/json/JSONObject
+    //   2614: dup
+    //   2615: aload_2
+    //   2616: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   2619: astore 22
+    //   2621: ldc_w 525
+    //   2624: astore_2
+    //   2625: new 348	org/json/JSONObject
+    //   2628: dup
+    //   2629: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   2632: astore 21
+    //   2634: aload_2
+    //   2635: astore 20
+    //   2637: aload 22
+    //   2639: ldc_w 479
+    //   2642: invokevirtual 494	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   2645: ifeq +7866 -> 10511
+    //   2648: aload 22
+    //   2650: ldc_w 479
+    //   2653: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2656: astore 22
+    //   2658: aload_2
+    //   2659: astore 20
+    //   2661: aload 22
+    //   2663: ifnull +7848 -> 10511
+    //   2666: aload_2
+    //   2667: astore 20
+    //   2669: aload 22
+    //   2671: ldc_w 479
+    //   2674: invokevirtual 494	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   2677: ifeq +7834 -> 10511
+    //   2680: aload 22
+    //   2682: ldc_w 479
+    //   2685: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2688: astore 22
+    //   2690: aload_2
+    //   2691: astore 20
+    //   2693: aload 22
+    //   2695: ifnull +7816 -> 10511
+    //   2698: aload 22
+    //   2700: ldc_w 381
+    //   2703: invokevirtual 494	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   2706: ifeq +12 -> 2718
+    //   2709: aload 22
+    //   2711: ldc_w 381
+    //   2714: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2717: astore_2
+    //   2718: aload_2
+    //   2719: astore 20
+    //   2721: aload 22
+    //   2723: ldc_w 1286
+    //   2726: invokevirtual 494	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   2729: ifeq +7782 -> 10511
+    //   2732: aload 22
+    //   2734: ldc_w 1286
+    //   2737: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2740: astore 21
+    //   2742: aload_2
+    //   2743: astore 20
+    //   2745: aload 21
+    //   2747: astore_2
+    //   2748: new 348	org/json/JSONObject
+    //   2751: dup
+    //   2752: aload 20
+    //   2754: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   2757: astore 20
+    //   2759: ldc_w 383
+    //   2762: new 383	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
+    //   2765: dup
+    //   2766: invokespecial 384	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:<init>	()V
+    //   2769: aload 20
+    //   2771: invokestatic 390	acqx:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
+    //   2774: invokevirtual 396	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2777: checkcast 383	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
+    //   2780: astore 21
+    //   2782: aload_0
+    //   2783: getfield 1288	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
+    //   2786: ifnonnull +45 -> 2831
+    //   2789: aload_0
+    //   2790: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2793: ifnull +38 -> 2831
+    //   2796: aload_0
+    //   2797: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2800: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2803: ifnull +28 -> 2831
+    //   2806: aload_0
+    //   2807: new 1290	com/tencent/gdtad/aditem/GdtAppReceiver
+    //   2810: dup
+    //   2811: invokespecial 1291	com/tencent/gdtad/aditem/GdtAppReceiver:<init>	()V
+    //   2814: putfield 1288	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
+    //   2817: aload_0
+    //   2818: getfield 1288	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
+    //   2821: aload_0
+    //   2822: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2825: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2828: invokevirtual 1294	com/tencent/gdtad/aditem/GdtAppReceiver:register	(Landroid/content/Context;)V
+    //   2831: new 1296	com/tencent/gdtad/aditem/GdtHandler$Params
+    //   2834: dup
+    //   2835: invokespecial 1297	com/tencent/gdtad/aditem/GdtHandler$Params:<init>	()V
+    //   2838: astore 20
+    //   2840: aload 20
+    //   2842: bipush 11
+    //   2844: putfield 1299	com/tencent/gdtad/aditem/GdtHandler$Params:c	I
+    //   2847: aload 20
+    //   2849: new 1301	java/lang/ref/WeakReference
+    //   2852: dup
+    //   2853: aload_0
+    //   2854: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2857: getfield 255	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2860: invokespecial 1304	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   2863: putfield 1307	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   2866: aload 20
+    //   2868: new 1309	com/tencent/gdtad/aditem/GdtAd
+    //   2871: dup
+    //   2872: aload 21
+    //   2874: invokespecial 1312	com/tencent/gdtad/aditem/GdtAd:<init>	(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)V
+    //   2877: putfield 1315	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_ComTencentGdtadAditemGdtAd	Lcom/tencent/gdtad/aditem/GdtAd;
+    //   2880: aload 20
+    //   2882: iconst_1
+    //   2883: putfield 1317	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_Boolean	Z
+    //   2886: aload 20
+    //   2888: iconst_1
+    //   2889: putfield 1319	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_Boolean	Z
+    //   2892: aload 20
+    //   2894: new 1301	java/lang/ref/WeakReference
+    //   2897: dup
+    //   2898: aload_0
+    //   2899: getfield 1288	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:mGgtAppReceiver	Lcom/tencent/gdtad/aditem/GdtAppReceiver;
+    //   2902: invokespecial 1304	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   2905: putfield 1321	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   2908: aload 20
+    //   2910: ldc_w 1323
+    //   2913: putfield 1326	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_b_of_type_JavaLangClass	Ljava/lang/Class;
+    //   2916: new 777	android/os/Bundle
+    //   2919: dup
+    //   2920: invokespecial 778	android/os/Bundle:<init>	()V
+    //   2923: astore 21
+    //   2925: aload 21
+    //   2927: ldc_w 1328
+    //   2930: ldc 8
+    //   2932: invokevirtual 1331	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2935: aload 20
+    //   2937: aload 21
+    //   2939: putfield 1334	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   2942: aload 20
+    //   2944: aload_2
+    //   2945: putfield 1337	com/tencent/gdtad/aditem/GdtHandler$Params:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   2948: aload 20
+    //   2950: invokestatic 1342	com/tencent/gdtad/aditem/GdtHandler:a	(Lcom/tencent/gdtad/aditem/GdtHandler$Params;)V
+    //   2953: aload_0
+    //   2954: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   2957: aload_3
+    //   2958: aload_1
+    //   2959: aconst_null
+    //   2960: iload 4
+    //   2962: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   2965: goto -1562 -> 1403
+    //   2968: ldc_w 1344
+    //   2971: aload 21
+    //   2973: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2976: ifeq +18 -> 2994
+    //   2979: aload_0
+    //   2980: aload 22
+    //   2982: aload_3
+    //   2983: aload_1
+    //   2984: iload 4
+    //   2986: bipush 12
+    //   2988: invokespecial 1346	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:handleAdApi	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;II)V
+    //   2991: goto -1588 -> 1403
+    //   2994: ldc_w 1348
+    //   2997: aload 21
+    //   2999: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3002: ifeq +63 -> 3065
+    //   3005: aload 22
+    //   3007: ldc_w 479
+    //   3010: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   3013: ldc_w 1350
+    //   3016: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   3019: astore_2
+    //   3020: aload 22
+    //   3022: ldc_w 479
+    //   3025: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   3028: ldc_w 1352
+    //   3031: iconst_0
+    //   3032: invokevirtual 1355	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   3035: istore 8
+    //   3037: iload 8
+    //   3039: istore 7
+    //   3041: iload 8
+    //   3043: ifgt +8 -> 3051
+    //   3046: sipush 30000
+    //   3049: istore 7
+    //   3051: aload_0
+    //   3052: aload_2
+    //   3053: iload 7
+    //   3055: aload_3
+    //   3056: aload_1
+    //   3057: iload 4
+    //   3059: invokespecial 1357	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:operateGetShareInfo	(Ljava/lang/String;ILcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   3062: goto -1659 -> 1403
+    //   3065: ldc_w 1359
+    //   3068: aload 21
+    //   3070: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3073: ifeq -1670 -> 1403
+    //   3076: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   3079: aload_0
+    //   3080: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3083: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3086: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   3089: aconst_null
+    //   3090: new 1361	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$6
+    //   3093: dup
+    //   3094: aload_0
+    //   3095: aload_3
+    //   3096: aload_1
+    //   3097: iload 4
+    //   3099: invokespecial 1362	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$6:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   3102: invokevirtual 1366	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserHealthData	(Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   3105: goto -1702 -> 1403
+    //   3108: ldc 59
+    //   3110: aload_1
+    //   3111: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3114: ifeq +34 -> 3148
+    //   3117: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   3120: aload_0
+    //   3121: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3124: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3127: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   3130: new 1368	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$7
+    //   3133: dup
+    //   3134: aload_0
+    //   3135: aload_3
+    //   3136: aload_1
+    //   3137: iload 4
+    //   3139: invokespecial 1369	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$7:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   3142: invokevirtual 1372	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:checkSession	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   3145: goto -1742 -> 1403
+    //   3148: ldc 86
+    //   3150: aload_1
+    //   3151: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3154: ifne +12 -> 3166
+    //   3157: ldc 89
+    //   3159: aload_1
+    //   3160: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3163: ifeq +771 -> 3934
+    //   3166: aload_0
+    //   3167: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3170: ifnull +752 -> 3922
+    //   3173: aload_0
+    //   3174: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3177: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3180: ifnull +688 -> 3868
+    //   3183: iconst_m1
+    //   3184: istore 9
+    //   3186: aload_2
+    //   3187: ifnull +23 -> 3210
+    //   3190: ldc_w 1374
+    //   3193: aload_2
+    //   3194: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3197: ifne +13 -> 3210
+    //   3200: ldc_w 1376
+    //   3203: aload_2
+    //   3204: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3207: ifeq +103 -> 3310
+    //   3210: iconst_0
+    //   3211: istore 15
+    //   3213: iconst_1
+    //   3214: istore 13
+    //   3216: iconst_1
+    //   3217: istore 12
+    //   3219: iconst_1
+    //   3220: istore 9
+    //   3222: iconst_1
+    //   3223: istore 7
+    //   3225: aload_0
+    //   3226: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   3229: ifeq +412 -> 3641
+    //   3232: aload_0
+    //   3233: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   3236: astore_2
+    //   3237: aload_2
+    //   3238: ifnull +384 -> 3622
+    //   3241: iload 13
+    //   3243: iconst_1
+    //   3244: if_icmpne +346 -> 3590
     //   3247: aload_2
-    //   3248: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   3251: ldc 139
-    //   3253: iconst_1
-    //   3254: aload_2
-    //   3255: iconst_0
-    //   3256: anewarray 633	java/lang/Object
-    //   3259: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   3262: aload_0
-    //   3263: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   3266: ifeq +23 -> 3289
-    //   3269: aload_0
-    //   3270: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3273: aload_3
-    //   3274: aload_1
-    //   3275: aload_1
-    //   3276: aconst_null
-    //   3277: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3280: iload 4
-    //   3282: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3285: ldc_w 631
-    //   3288: areturn
-    //   3289: aload_0
-    //   3290: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3293: aload_3
-    //   3294: aload_1
-    //   3295: aload_1
-    //   3296: aconst_null
-    //   3297: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3300: iload 4
-    //   3302: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3305: goto -20 -> 3285
-    //   3308: aload_2
-    //   3309: iconst_0
-    //   3310: putfield 1230	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
-    //   3313: goto -343 -> 2970
-    //   3316: aload_2
-    //   3317: iconst_0
-    //   3318: putfield 1233	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
-    //   3321: goto -340 -> 2981
-    //   3324: aload_2
-    //   3325: iconst_0
-    //   3326: putfield 1236	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
-    //   3329: goto -337 -> 2992
-    //   3332: aload_2
-    //   3333: iconst_0
-    //   3334: putfield 1239	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
-    //   3337: goto -334 -> 3003
-    //   3340: aload_0
-    //   3341: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3344: aload_3
-    //   3345: aload_1
-    //   3346: aload_1
-    //   3347: aconst_null
-    //   3348: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3351: iload 4
-    //   3353: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3356: goto -1991 -> 1365
-    //   3359: aload_0
-    //   3360: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3363: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3366: invokevirtual 1260	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
-    //   3369: ifnull +198 -> 3567
-    //   3372: aload_0
-    //   3373: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3376: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3379: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3382: ifnull +185 -> 3567
-    //   3385: iload 13
-    //   3387: iconst_1
-    //   3388: if_icmpne +111 -> 3499
-    //   3391: aload_0
-    //   3392: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3395: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3398: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3401: iconst_1
-    //   3402: putfield 1267	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
-    //   3405: iload 12
-    //   3407: iconst_1
-    //   3408: if_icmpne +108 -> 3516
-    //   3411: aload_0
-    //   3412: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3415: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3418: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3421: iconst_1
-    //   3422: putfield 1268	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
-    //   3425: iload 9
-    //   3427: iconst_1
-    //   3428: if_icmpne +105 -> 3533
-    //   3431: aload_0
-    //   3432: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3435: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3438: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3441: iconst_1
-    //   3442: putfield 1269	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
-    //   3445: iload 7
-    //   3447: iconst_1
-    //   3448: if_icmpne +102 -> 3550
-    //   3451: aload_0
-    //   3452: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3455: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3458: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3461: iconst_1
-    //   3462: putfield 1270	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
-    //   3465: aload_0
-    //   3466: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3469: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3472: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3475: iload 15
-    //   3477: putfield 1271	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareTicket	Z
-    //   3480: aload_0
-    //   3481: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3484: aload_3
-    //   3485: aload_1
-    //   3486: aload_1
-    //   3487: aconst_null
-    //   3488: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3491: iload 4
-    //   3493: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3496: goto -2131 -> 1365
-    //   3499: aload_0
-    //   3500: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3503: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3506: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3509: iconst_0
-    //   3510: putfield 1267	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
-    //   3513: goto -108 -> 3405
-    //   3516: aload_0
-    //   3517: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3520: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3523: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3526: iconst_0
-    //   3527: putfield 1268	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
-    //   3530: goto -105 -> 3425
-    //   3533: aload_0
-    //   3534: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3537: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3540: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3543: iconst_0
-    //   3544: putfield 1269	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
-    //   3547: goto -102 -> 3445
-    //   3550: aload_0
-    //   3551: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3554: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3557: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3560: iconst_0
-    //   3561: putfield 1270	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
-    //   3564: goto -99 -> 3465
-    //   3567: aload_0
-    //   3568: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3571: aload_3
-    //   3572: aload_1
-    //   3573: aload_1
-    //   3574: aconst_null
-    //   3575: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3578: iload 4
-    //   3580: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3583: goto -2218 -> 1365
-    //   3586: ldc 139
-    //   3588: iconst_1
-    //   3589: ldc_w 1273
-    //   3592: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3595: aload_0
-    //   3596: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   3599: ifeq +22 -> 3621
-    //   3602: aload_0
-    //   3603: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3606: aload_3
-    //   3607: aload_1
-    //   3608: aload_1
-    //   3609: aconst_null
-    //   3610: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3613: iload 4
-    //   3615: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3618: goto -2253 -> 1365
-    //   3621: aload_0
-    //   3622: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3625: aload_3
-    //   3626: aload_1
+    //   3248: iconst_1
+    //   3249: putfield 1388	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
+    //   3252: iload 12
+    //   3254: iconst_1
+    //   3255: if_icmpne +343 -> 3598
+    //   3258: aload_2
+    //   3259: iconst_1
+    //   3260: putfield 1391	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
+    //   3263: iload 9
+    //   3265: iconst_1
+    //   3266: if_icmpne +340 -> 3606
+    //   3269: aload_2
+    //   3270: iconst_1
+    //   3271: putfield 1394	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
+    //   3274: iload 7
+    //   3276: iconst_1
+    //   3277: if_icmpne +337 -> 3614
+    //   3280: aload_2
+    //   3281: iconst_1
+    //   3282: putfield 1397	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
+    //   3285: aload_2
+    //   3286: iload 15
+    //   3288: putfield 1400	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareTicket	Z
+    //   3291: aload_0
+    //   3292: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3295: aload_3
+    //   3296: aload_1
+    //   3297: aload_1
+    //   3298: aconst_null
+    //   3299: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3302: iload 4
+    //   3304: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3307: goto -1904 -> 1403
+    //   3310: new 348	org/json/JSONObject
+    //   3313: dup
+    //   3314: aload_2
+    //   3315: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   3318: astore_2
+    //   3319: aload_2
+    //   3320: ldc_w 1401
+    //   3323: iconst_0
+    //   3324: invokevirtual 1188	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   3327: istore 16
+    //   3329: aload_2
+    //   3330: ldc_w 1403
+    //   3333: invokevirtual 1406	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   3336: checkcast 359	org/json/JSONArray
+    //   3339: astore_2
+    //   3340: aload_2
+    //   3341: ifnonnull +7190 -> 10531
+    //   3344: iconst_1
+    //   3345: istore 13
+    //   3347: iconst_1
+    //   3348: istore 12
+    //   3350: iconst_1
+    //   3351: istore 9
+    //   3353: iconst_1
+    //   3354: istore 7
+    //   3356: iload 16
+    //   3358: istore 15
+    //   3360: goto -135 -> 3225
+    //   3363: iload 10
+    //   3365: aload_2
+    //   3366: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   3369: if_icmpge +76 -> 3445
+    //   3372: aload_2
+    //   3373: iload 10
+    //   3375: invokevirtual 1411	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   3378: astore 20
+    //   3380: aload 20
+    //   3382: ldc 124
+    //   3384: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   3387: ifeq +6 -> 3393
+    //   3390: iconst_1
+    //   3391: istore 11
+    //   3393: aload 20
+    //   3395: ldc 127
+    //   3397: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   3400: ifeq +6 -> 3406
+    //   3403: iconst_1
+    //   3404: istore 7
+    //   3406: aload 20
+    //   3408: ldc 130
+    //   3410: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   3413: ifeq +6 -> 3419
+    //   3416: iconst_1
+    //   3417: istore 9
+    //   3419: aload 20
+    //   3421: ldc 133
+    //   3423: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   3426: istore 15
+    //   3428: iload 15
+    //   3430: ifeq +6 -> 3436
+    //   3433: iconst_1
+    //   3434: istore 8
+    //   3436: iload 10
+    //   3438: iconst_1
+    //   3439: iadd
+    //   3440: istore 10
+    //   3442: goto -79 -> 3363
+    //   3445: iload 11
+    //   3447: istore 10
+    //   3449: iload 11
+    //   3451: iconst_m1
+    //   3452: if_icmpne +6 -> 3458
+    //   3455: iconst_0
+    //   3456: istore 10
+    //   3458: iload 7
+    //   3460: istore 11
+    //   3462: iload 7
+    //   3464: iconst_m1
+    //   3465: if_icmpne +6 -> 3471
+    //   3468: iconst_0
+    //   3469: istore 11
+    //   3471: iload 9
+    //   3473: iconst_m1
+    //   3474: if_icmpne +7030 -> 10504
+    //   3477: iconst_0
+    //   3478: istore 14
+    //   3480: iload 14
+    //   3482: istore 9
+    //   3484: iload 8
+    //   3486: istore 7
+    //   3488: iload 11
+    //   3490: istore 12
+    //   3492: iload 10
+    //   3494: istore 13
+    //   3496: iload 16
+    //   3498: istore 15
+    //   3500: iload 8
+    //   3502: iconst_m1
+    //   3503: if_icmpne -278 -> 3225
+    //   3506: iconst_0
+    //   3507: istore 7
+    //   3509: iload 14
+    //   3511: istore 9
+    //   3513: iload 11
+    //   3515: istore 12
+    //   3517: iload 10
+    //   3519: istore 13
+    //   3521: iload 16
+    //   3523: istore 15
+    //   3525: goto -300 -> 3225
+    //   3528: astore_2
+    //   3529: aload_2
+    //   3530: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   3533: ldc 150
+    //   3535: iconst_1
+    //   3536: aload_2
+    //   3537: iconst_0
+    //   3538: anewarray 873	java/lang/Object
+    //   3541: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   3544: aload_0
+    //   3545: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   3548: ifeq +23 -> 3571
+    //   3551: aload_0
+    //   3552: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3555: aload_3
+    //   3556: aload_1
+    //   3557: aload_1
+    //   3558: aconst_null
+    //   3559: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3562: iload 4
+    //   3564: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3567: ldc_w 525
+    //   3570: areturn
+    //   3571: aload_0
+    //   3572: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3575: aload_3
+    //   3576: aload_1
+    //   3577: aload_1
+    //   3578: aconst_null
+    //   3579: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3582: iload 4
+    //   3584: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3587: goto -20 -> 3567
+    //   3590: aload_2
+    //   3591: iconst_0
+    //   3592: putfield 1388	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
+    //   3595: goto -343 -> 3252
+    //   3598: aload_2
+    //   3599: iconst_0
+    //   3600: putfield 1391	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
+    //   3603: goto -340 -> 3263
+    //   3606: aload_2
+    //   3607: iconst_0
+    //   3608: putfield 1394	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
+    //   3611: goto -337 -> 3274
+    //   3614: aload_2
+    //   3615: iconst_0
+    //   3616: putfield 1397	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
+    //   3619: goto -334 -> 3285
+    //   3622: aload_0
+    //   3623: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3626: aload_3
     //   3627: aload_1
-    //   3628: aconst_null
-    //   3629: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3632: iload 4
-    //   3634: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3637: goto -2272 -> 1365
-    //   3640: ldc 139
-    //   3642: iconst_1
-    //   3643: ldc_w 1275
-    //   3646: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3649: goto -2284 -> 1365
-    //   3652: ldc 89
-    //   3654: aload_1
-    //   3655: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3658: ifeq +220 -> 3878
-    //   3661: new 271	org/json/JSONObject
-    //   3664: dup
-    //   3665: aload_2
-    //   3666: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   3669: astore_2
-    //   3670: aload_2
-    //   3671: ldc_w 1243
-    //   3674: iconst_0
-    //   3675: invokevirtual 971	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   3678: istore 15
-    //   3680: aload_2
-    //   3681: ldc_w 1277
-    //   3684: invokevirtual 1021	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   3687: pop
-    //   3688: aload_2
-    //   3689: ldc_w 1279
-    //   3692: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   3695: pop
-    //   3696: aload_2
-    //   3697: ldc_w 1281
-    //   3700: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   3703: pop
-    //   3704: aload_0
-    //   3705: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   3708: ifeq +91 -> 3799
-    //   3711: aload_0
-    //   3712: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   3715: astore_2
-    //   3716: aload_2
-    //   3717: ifnull +63 -> 3780
-    //   3720: aload_2
-    //   3721: iload 15
-    //   3723: putfield 1242	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareTicket	Z
-    //   3726: aload_0
-    //   3727: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3730: aload_3
-    //   3731: aload_1
-    //   3732: aload_1
-    //   3733: aconst_null
-    //   3734: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3737: iload 4
-    //   3739: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3742: aload_0
-    //   3743: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3746: aload_3
-    //   3747: aload_1
-    //   3748: aload_1
-    //   3749: aconst_null
-    //   3750: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3753: iload 4
-    //   3755: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3758: goto -2393 -> 1365
-    //   3761: astore_1
-    //   3762: ldc 139
-    //   3764: iconst_1
-    //   3765: aload_1
-    //   3766: iconst_0
-    //   3767: anewarray 633	java/lang/Object
-    //   3770: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   3773: aload_1
-    //   3774: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   3777: goto -2412 -> 1365
-    //   3780: aload_0
-    //   3781: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3784: aload_3
-    //   3785: aload_1
-    //   3786: aload_1
-    //   3787: aconst_null
-    //   3788: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3791: iload 4
-    //   3793: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3796: goto -54 -> 3742
-    //   3799: aload_0
-    //   3800: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3803: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3806: invokevirtual 1260	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
-    //   3809: ifnull +50 -> 3859
-    //   3812: aload_0
-    //   3813: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3816: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3819: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3822: ifnull +37 -> 3859
-    //   3825: aload_0
-    //   3826: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3829: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   3832: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   3835: iload 15
-    //   3837: putfield 1271	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareTicket	Z
-    //   3840: aload_0
-    //   3841: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3844: aload_3
-    //   3845: aload_1
-    //   3846: aload_1
-    //   3847: aconst_null
-    //   3848: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3851: iload 4
-    //   3853: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3856: goto -114 -> 3742
-    //   3859: aload_0
-    //   3860: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   3863: aload_3
-    //   3864: aload_1
-    //   3865: aload_1
-    //   3866: aconst_null
-    //   3867: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   3870: iload 4
-    //   3872: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   3875: goto -133 -> 3742
-    //   3878: ldc 32
-    //   3880: aload_1
-    //   3881: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3884: ifeq +79 -> 3963
-    //   3887: new 271	org/json/JSONObject
-    //   3890: dup
-    //   3891: aload_2
-    //   3892: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   3895: astore_2
-    //   3896: aload_2
-    //   3897: ldc_w 1192
-    //   3900: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   3903: astore 20
-    //   3905: aload_2
-    //   3906: ldc_w 1194
-    //   3909: iconst_0
-    //   3910: invokevirtual 1197	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   3913: istore 8
-    //   3915: iload 8
-    //   3917: istore 7
-    //   3919: iload 8
-    //   3921: ifgt +8 -> 3929
-    //   3924: sipush 30000
-    //   3927: istore 7
-    //   3929: aload_0
-    //   3930: aload 20
-    //   3932: iload 7
-    //   3934: aload_3
-    //   3935: aload_1
-    //   3936: iload 4
-    //   3938: invokespecial 1199	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:operateGetShareInfo	(Ljava/lang/String;ILcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   3941: goto -2576 -> 1365
-    //   3944: astore_1
-    //   3945: ldc 139
-    //   3947: iconst_1
-    //   3948: aload_1
-    //   3949: iconst_0
-    //   3950: anewarray 633	java/lang/Object
-    //   3953: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   3956: aload_1
-    //   3957: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   3960: goto -2595 -> 1365
-    //   3963: ldc 68
-    //   3965: aload_1
-    //   3966: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3969: ifne +21 -> 3990
-    //   3972: ldc 65
-    //   3974: aload_1
-    //   3975: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3978: ifne +12 -> 3990
-    //   3981: ldc 71
-    //   3983: aload_1
-    //   3984: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3987: ifeq +1371 -> 5358
-    //   3990: iconst_0
-    //   3991: istore 15
-    //   3993: ldc 68
-    //   3995: aload_1
-    //   3996: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3999: ifeq +6 -> 4005
-    //   4002: iconst_1
-    //   4003: istore 15
-    //   4005: new 271	org/json/JSONObject
-    //   4008: dup
-    //   4009: aload_2
-    //   4010: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   4013: astore 23
-    //   4015: aload 23
-    //   4017: ldc_w 1283
-    //   4020: iconst_m1
-    //   4021: invokevirtual 1197	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   4024: istore 9
-    //   4026: iconst_m1
-    //   4027: istore 7
-    //   4029: aconst_null
-    //   4030: astore 22
-    //   4032: iload 9
-    //   4034: ifne +6223 -> 10257
-    //   4037: iconst_0
-    //   4038: istore 7
-    //   4040: aconst_null
-    //   4041: astore_2
-    //   4042: aload 23
-    //   4044: ldc_w 1285
-    //   4047: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4050: astore 25
-    //   4052: aload 23
-    //   4054: ldc_w 1287
-    //   4057: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4060: astore 26
-    //   4062: ldc 68
-    //   4064: aload_1
-    //   4065: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4068: ifne +6169 -> 10237
-    //   4071: ldc 71
-    //   4073: aload_1
-    //   4074: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4077: ifeq +29 -> 4106
-    //   4080: goto +6157 -> 10237
-    //   4083: aload_0
-    //   4084: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4087: ifeq +510 -> 4597
-    //   4090: aload_0
-    //   4091: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4094: ifnull +503 -> 4597
-    //   4097: aload_0
-    //   4098: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4101: iload 8
-    //   4103: putfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   4106: aload_0
-    //   4107: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4110: ifeq +524 -> 4634
-    //   4113: aload_0
-    //   4114: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4117: ifnull +517 -> 4634
-    //   4120: aload_0
-    //   4121: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4124: aload_1
-    //   4125: putfield 1293	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareEvent	Ljava/lang/String;
-    //   4128: aload_0
-    //   4129: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4132: iload 4
-    //   4134: putfield 1296	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareCallbackId	I
-    //   4137: aload 23
-    //   4139: ldc_w 1298
-    //   4142: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4145: astore 20
-    //   4147: aload 20
-    //   4149: astore 21
-    //   4151: aload 20
-    //   4153: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4156: ifeq +13 -> 4169
-    //   4159: aload 23
-    //   4161: ldc_w 1300
-    //   4164: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4167: astore 21
-    //   4169: aload 23
-    //   4171: ldc_w 1302
-    //   4174: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4177: astore 24
-    //   4179: aload 23
-    //   4181: ldc_w 1304
-    //   4184: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4187: astore 27
-    //   4189: aload 23
-    //   4191: ldc_w 1306
-    //   4194: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4197: astore 23
-    //   4199: aload 21
-    //   4201: astore 20
-    //   4203: aload 21
-    //   4205: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4208: ifeq +15 -> 4223
+    //   3628: aload_1
+    //   3629: aconst_null
+    //   3630: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3633: iload 4
+    //   3635: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3638: goto -2235 -> 1403
+    //   3641: aload_0
+    //   3642: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3645: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3648: invokevirtual 1415	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
+    //   3651: ifnull +198 -> 3849
+    //   3654: aload_0
+    //   3655: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3658: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3661: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3664: ifnull +185 -> 3849
+    //   3667: iload 13
+    //   3669: iconst_1
+    //   3670: if_icmpne +111 -> 3781
+    //   3673: aload_0
+    //   3674: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3677: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3680: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3683: iconst_1
+    //   3684: putfield 1422	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
+    //   3687: iload 12
+    //   3689: iconst_1
+    //   3690: if_icmpne +108 -> 3798
+    //   3693: aload_0
+    //   3694: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3697: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3700: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3703: iconst_1
+    //   3704: putfield 1423	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
+    //   3707: iload 9
+    //   3709: iconst_1
+    //   3710: if_icmpne +105 -> 3815
+    //   3713: aload_0
+    //   3714: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3717: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3720: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3723: iconst_1
+    //   3724: putfield 1424	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
+    //   3727: iload 7
+    //   3729: iconst_1
+    //   3730: if_icmpne +102 -> 3832
+    //   3733: aload_0
+    //   3734: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3737: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3740: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3743: iconst_1
+    //   3744: putfield 1425	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
+    //   3747: aload_0
+    //   3748: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3751: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3754: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3757: iload 15
+    //   3759: putfield 1426	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareTicket	Z
+    //   3762: aload_0
+    //   3763: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3766: aload_3
+    //   3767: aload_1
+    //   3768: aload_1
+    //   3769: aconst_null
+    //   3770: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3773: iload 4
+    //   3775: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3778: goto -2375 -> 1403
+    //   3781: aload_0
+    //   3782: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3785: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3788: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3791: iconst_0
+    //   3792: putfield 1422	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
+    //   3795: goto -108 -> 3687
+    //   3798: aload_0
+    //   3799: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3802: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3805: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3808: iconst_0
+    //   3809: putfield 1423	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
+    //   3812: goto -105 -> 3707
+    //   3815: aload_0
+    //   3816: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3819: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3822: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3825: iconst_0
+    //   3826: putfield 1424	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
+    //   3829: goto -102 -> 3727
+    //   3832: aload_0
+    //   3833: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3836: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   3839: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   3842: iconst_0
+    //   3843: putfield 1425	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
+    //   3846: goto -99 -> 3747
+    //   3849: aload_0
+    //   3850: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3853: aload_3
+    //   3854: aload_1
+    //   3855: aload_1
+    //   3856: aconst_null
+    //   3857: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3860: iload 4
+    //   3862: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3865: goto -2462 -> 1403
+    //   3868: ldc 150
+    //   3870: iconst_1
+    //   3871: ldc_w 1428
+    //   3874: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3877: aload_0
+    //   3878: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   3881: ifeq +22 -> 3903
+    //   3884: aload_0
+    //   3885: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3888: aload_3
+    //   3889: aload_1
+    //   3890: aload_1
+    //   3891: aconst_null
+    //   3892: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3895: iload 4
+    //   3897: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3900: goto -2497 -> 1403
+    //   3903: aload_0
+    //   3904: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   3907: aload_3
+    //   3908: aload_1
+    //   3909: aload_1
+    //   3910: aconst_null
+    //   3911: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   3914: iload 4
+    //   3916: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   3919: goto -2516 -> 1403
+    //   3922: ldc 150
+    //   3924: iconst_1
+    //   3925: ldc_w 1430
+    //   3928: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3931: goto -2528 -> 1403
+    //   3934: ldc 92
+    //   3936: aload_1
+    //   3937: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3940: ifeq +220 -> 4160
+    //   3943: new 348	org/json/JSONObject
+    //   3946: dup
+    //   3947: aload_2
+    //   3948: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   3951: astore_2
+    //   3952: aload_2
+    //   3953: ldc_w 1401
+    //   3956: iconst_0
+    //   3957: invokevirtual 1188	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   3960: istore 15
+    //   3962: aload_2
+    //   3963: ldc_w 1432
+    //   3966: invokevirtual 632	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   3969: pop
+    //   3970: aload_2
+    //   3971: ldc_w 1434
+    //   3974: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   3977: pop
+    //   3978: aload_2
+    //   3979: ldc_w 1436
+    //   3982: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   3985: pop
+    //   3986: aload_0
+    //   3987: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   3990: ifeq +91 -> 4081
+    //   3993: aload_0
+    //   3994: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   3997: astore_2
+    //   3998: aload_2
+    //   3999: ifnull +63 -> 4062
+    //   4002: aload_2
+    //   4003: iload 15
+    //   4005: putfield 1400	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareTicket	Z
+    //   4008: aload_0
+    //   4009: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4012: aload_3
+    //   4013: aload_1
+    //   4014: aload_1
+    //   4015: aconst_null
+    //   4016: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   4019: iload 4
+    //   4021: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   4024: aload_0
+    //   4025: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4028: aload_3
+    //   4029: aload_1
+    //   4030: aload_1
+    //   4031: aconst_null
+    //   4032: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   4035: iload 4
+    //   4037: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   4040: goto -2637 -> 1403
+    //   4043: astore_1
+    //   4044: ldc 150
+    //   4046: iconst_1
+    //   4047: aload_1
+    //   4048: iconst_0
+    //   4049: anewarray 873	java/lang/Object
+    //   4052: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   4055: aload_1
+    //   4056: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   4059: goto -2656 -> 1403
+    //   4062: aload_0
+    //   4063: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4066: aload_3
+    //   4067: aload_1
+    //   4068: aload_1
+    //   4069: aconst_null
+    //   4070: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   4073: iload 4
+    //   4075: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   4078: goto -54 -> 4024
+    //   4081: aload_0
+    //   4082: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4085: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4088: invokevirtual 1415	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
+    //   4091: ifnull +50 -> 4141
+    //   4094: aload_0
+    //   4095: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4098: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4101: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4104: ifnull +37 -> 4141
+    //   4107: aload_0
+    //   4108: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4111: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4114: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4117: iload 15
+    //   4119: putfield 1426	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareTicket	Z
+    //   4122: aload_0
+    //   4123: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4126: aload_3
+    //   4127: aload_1
+    //   4128: aload_1
+    //   4129: aconst_null
+    //   4130: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   4133: iload 4
+    //   4135: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   4138: goto -114 -> 4024
+    //   4141: aload_0
+    //   4142: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4145: aload_3
+    //   4146: aload_1
+    //   4147: aload_1
+    //   4148: aconst_null
+    //   4149: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   4152: iload 4
+    //   4154: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   4157: goto -133 -> 4024
+    //   4160: ldc 32
+    //   4162: aload_1
+    //   4163: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4166: ifeq +79 -> 4245
+    //   4169: new 348	org/json/JSONObject
+    //   4172: dup
+    //   4173: aload_2
+    //   4174: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   4177: astore_2
+    //   4178: aload_2
+    //   4179: ldc_w 1350
+    //   4182: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4185: astore 20
+    //   4187: aload_2
+    //   4188: ldc_w 1352
+    //   4191: iconst_0
+    //   4192: invokevirtual 1355	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   4195: istore 8
+    //   4197: iload 8
+    //   4199: istore 7
+    //   4201: iload 8
+    //   4203: ifgt +8 -> 4211
+    //   4206: sipush 30000
+    //   4209: istore 7
     //   4211: aload_0
-    //   4212: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4215: ifeq +451 -> 4666
-    //   4218: ldc_w 1308
-    //   4221: astore 20
-    //   4223: new 1310	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$8
-    //   4226: dup
-    //   4227: aload_0
-    //   4228: aload_3
-    //   4229: aload_1
-    //   4230: iload 4
-    //   4232: invokespecial 1311	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$8:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   4235: astore_1
-    //   4236: aload_0
-    //   4237: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4240: ifeq +21 -> 4261
-    //   4243: aload_0
-    //   4244: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4247: ifnull +14 -> 4261
-    //   4250: aload_0
-    //   4251: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4254: getfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   4257: iconst_1
-    //   4258: if_icmpeq +27 -> 4285
-    //   4261: aload_0
-    //   4262: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4265: ifne +506 -> 4771
-    //   4268: aload_0
-    //   4269: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4272: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4275: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4278: getfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   4281: iconst_1
-    //   4282: if_icmpne +489 -> 4771
-    //   4285: aload 27
-    //   4287: ldc_w 1314
-    //   4290: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   4293: ifne +14 -> 4307
-    //   4296: aload 27
-    //   4298: ldc_w 1319
-    //   4301: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   4304: ifeq +383 -> 4687
-    //   4307: aload_0
-    //   4308: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4311: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   4314: aload 24
-    //   4316: aload 27
-    //   4318: aload 20
-    //   4320: aload_0
-    //   4321: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4324: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4327: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4330: iload 15
-    //   4332: invokestatic 1323	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToQzone	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Z)V
-    //   4335: goto +5918 -> 10253
-    //   4338: iload 9
-    //   4340: iconst_2
-    //   4341: if_icmpne +5930 -> 10271
-    //   4344: iconst_0
-    //   4345: istore 7
-    //   4347: aload 23
-    //   4349: ldc_w 1325
-    //   4352: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4355: astore_2
-    //   4356: aload_2
-    //   4357: ifnull +80 -> 4437
-    //   4360: aload_0
-    //   4361: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4364: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4367: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4370: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   4373: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   4376: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   4379: ifnull +58 -> 4437
-    //   4382: aload_2
-    //   4383: aload_0
-    //   4384: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4387: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4390: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4393: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   4396: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   4399: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   4402: invokevirtual 1334	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
-    //   4405: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4408: ifeq +29 -> 4437
-    //   4411: aload_0
-    //   4412: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4415: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4418: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4421: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   4424: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   4427: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   4430: astore 22
-    //   4432: aconst_null
-    //   4433: astore_2
-    //   4434: goto -392 -> 4042
-    //   4437: ldc 139
-    //   4439: iconst_1
-    //   4440: new 321	java/lang/StringBuilder
-    //   4443: dup
-    //   4444: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   4447: ldc_w 1336
-    //   4450: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4453: aload_2
-    //   4454: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4457: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4460: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4463: aconst_null
-    //   4464: astore_2
-    //   4465: goto -423 -> 4042
-    //   4468: iload 9
-    //   4470: iconst_5
-    //   4471: if_icmpne +102 -> 4573
-    //   4474: aload 23
-    //   4476: ldc_w 1338
-    //   4479: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   4482: astore 20
-    //   4484: aload_0
-    //   4485: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4488: ifeq +37 -> 4525
-    //   4491: aload_0
-    //   4492: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4495: ifnull +30 -> 4525
-    //   4498: aload_0
-    //   4499: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4502: getfield 1342	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareChatModel	Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;
-    //   4505: astore_2
-    //   4506: aload_2
-    //   4507: ifnull +35 -> 4542
-    //   4510: aload_2
-    //   4511: invokevirtual 1345	com/tencent/mobileqq/mini/sdk/ShareChatModel:getEntryHash	()Ljava/lang/String;
-    //   4514: aload 20
-    //   4516: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4519: ifeq +23 -> 4542
-    //   4522: goto +5777 -> 10299
+    //   4212: aload 20
+    //   4214: iload 7
+    //   4216: aload_3
+    //   4217: aload_1
+    //   4218: iload 4
+    //   4220: invokespecial 1357	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:operateGetShareInfo	(Ljava/lang/String;ILcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   4223: goto -2820 -> 1403
+    //   4226: astore_1
+    //   4227: ldc 150
+    //   4229: iconst_1
+    //   4230: aload_1
+    //   4231: iconst_0
+    //   4232: anewarray 873	java/lang/Object
+    //   4235: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   4238: aload_1
+    //   4239: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   4242: goto -2839 -> 1403
+    //   4245: ldc 68
+    //   4247: aload_1
+    //   4248: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4251: ifne +21 -> 4272
+    //   4254: ldc 65
+    //   4256: aload_1
+    //   4257: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4260: ifne +12 -> 4272
+    //   4263: ldc 71
+    //   4265: aload_1
+    //   4266: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4269: ifeq +1371 -> 5640
+    //   4272: iconst_0
+    //   4273: istore 15
+    //   4275: ldc 68
+    //   4277: aload_1
+    //   4278: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4281: ifeq +6 -> 4287
+    //   4284: iconst_1
+    //   4285: istore 15
+    //   4287: new 348	org/json/JSONObject
+    //   4290: dup
+    //   4291: aload_2
+    //   4292: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   4295: astore 23
+    //   4297: aload 23
+    //   4299: ldc_w 1438
+    //   4302: iconst_m1
+    //   4303: invokevirtual 1355	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   4306: istore 9
+    //   4308: iconst_m1
+    //   4309: istore 7
+    //   4311: aconst_null
+    //   4312: astore 22
+    //   4314: iload 9
+    //   4316: ifne +6250 -> 10566
+    //   4319: iconst_0
+    //   4320: istore 7
+    //   4322: aconst_null
+    //   4323: astore_2
+    //   4324: aload 23
+    //   4326: ldc_w 1440
+    //   4329: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4332: astore 25
+    //   4334: aload 23
+    //   4336: ldc_w 1442
+    //   4339: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4342: astore 26
+    //   4344: ldc 68
+    //   4346: aload_1
+    //   4347: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4350: ifne +6196 -> 10546
+    //   4353: ldc 71
+    //   4355: aload_1
+    //   4356: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4359: ifeq +29 -> 4388
+    //   4362: goto +6184 -> 10546
+    //   4365: aload_0
+    //   4366: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4369: ifeq +510 -> 4879
+    //   4372: aload_0
+    //   4373: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4376: ifnull +503 -> 4879
+    //   4379: aload_0
+    //   4380: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4383: iload 8
+    //   4385: putfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   4388: aload_0
+    //   4389: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4392: ifeq +524 -> 4916
+    //   4395: aload_0
+    //   4396: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4399: ifnull +517 -> 4916
+    //   4402: aload_0
+    //   4403: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4406: aload_1
+    //   4407: putfield 1448	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareEvent	Ljava/lang/String;
+    //   4410: aload_0
+    //   4411: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4414: iload 4
+    //   4416: putfield 1451	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareCallbackId	I
+    //   4419: aload 23
+    //   4421: ldc_w 1453
+    //   4424: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4427: astore 20
+    //   4429: aload 20
+    //   4431: astore 21
+    //   4433: aload 20
+    //   4435: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4438: ifeq +13 -> 4451
+    //   4441: aload 23
+    //   4443: ldc_w 1455
+    //   4446: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4449: astore 21
+    //   4451: aload 23
+    //   4453: ldc_w 1457
+    //   4456: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4459: astore 24
+    //   4461: aload 23
+    //   4463: ldc_w 1459
+    //   4466: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4469: astore 27
+    //   4471: aload 23
+    //   4473: ldc_w 1461
+    //   4476: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4479: astore 23
+    //   4481: aload 21
+    //   4483: astore 20
+    //   4485: aload 21
+    //   4487: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4490: ifeq +15 -> 4505
+    //   4493: aload_0
+    //   4494: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4497: ifeq +451 -> 4948
+    //   4500: ldc_w 1463
+    //   4503: astore 20
+    //   4505: new 1465	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$8
+    //   4508: dup
+    //   4509: aload_0
+    //   4510: aload_3
+    //   4511: aload_1
+    //   4512: iload 4
+    //   4514: invokespecial 1466	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$8:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   4517: astore_1
+    //   4518: aload_0
+    //   4519: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4522: ifeq +21 -> 4543
     //   4525: aload_0
-    //   4526: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4529: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4532: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4535: getfield 1346	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareChatModel	Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;
-    //   4538: astore_2
-    //   4539: goto -33 -> 4506
-    //   4542: ldc 139
-    //   4544: iconst_1
-    //   4545: new 321	java/lang/StringBuilder
-    //   4548: dup
-    //   4549: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   4552: ldc_w 1336
-    //   4555: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4558: aconst_null
-    //   4559: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4562: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4565: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4568: aconst_null
-    //   4569: astore_2
-    //   4570: goto +5729 -> 10299
-    //   4573: iload 9
-    //   4575: bipush 6
-    //   4577: if_icmpne +5619 -> 10196
-    //   4580: ldc 71
-    //   4582: aload_1
-    //   4583: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4586: ifeq +5610 -> 10196
-    //   4589: iconst_0
-    //   4590: istore 7
-    //   4592: aconst_null
-    //   4593: astore_2
-    //   4594: goto -552 -> 4042
-    //   4597: aload_0
-    //   4598: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4601: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4604: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4607: iload 8
-    //   4609: putfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   4612: goto -506 -> 4106
-    //   4615: astore_1
-    //   4616: ldc 139
-    //   4618: iconst_1
-    //   4619: aload_1
-    //   4620: iconst_0
-    //   4621: anewarray 633	java/lang/Object
-    //   4624: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   4627: aload_1
-    //   4628: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   4631: goto -3266 -> 1365
-    //   4634: aload_0
-    //   4635: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4638: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4641: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4644: aload_1
-    //   4645: putfield 1347	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareEvent	Ljava/lang/String;
-    //   4648: aload_0
-    //   4649: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4652: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4655: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4658: iload 4
-    //   4660: putfield 1348	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareCallbackId	I
-    //   4663: goto -526 -> 4137
-    //   4666: aload_0
-    //   4667: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4670: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4673: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4676: invokevirtual 727	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
-    //   4679: getfield 919	com/tencent/mobileqq/mini/apkg/AppConfigInfo:entryPagePath	Ljava/lang/String;
-    //   4682: astore 20
-    //   4684: goto -461 -> 4223
-    //   4687: aload_0
-    //   4688: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4691: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4694: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4697: pop
-    //   4698: invokestatic 1353	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   4701: aload 27
-    //   4703: invokevirtual 1356	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   4706: astore_1
-    //   4707: aload_1
-    //   4708: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
-    //   4711: ifne +33 -> 4744
-    //   4714: aload_0
-    //   4715: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4718: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   4721: aload 24
-    //   4723: aload_1
-    //   4724: aload 20
-    //   4726: aload_0
-    //   4727: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4730: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4733: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4736: iload 15
-    //   4738: invokestatic 1323	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToQzone	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Z)V
-    //   4741: goto +5512 -> 10253
-    //   4744: aload_0
-    //   4745: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4748: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4751: new 1362	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$9
-    //   4754: dup
-    //   4755: aload_0
-    //   4756: aload 24
-    //   4758: aload 20
-    //   4760: iload 15
-    //   4762: invokespecial 1365	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$9:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   4765: invokevirtual 1369	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
-    //   4768: goto +5485 -> 10253
-    //   4771: aload_0
-    //   4772: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4775: ifeq +21 -> 4796
-    //   4778: aload_0
-    //   4779: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4782: ifnull +14 -> 4796
-    //   4785: aload_0
-    //   4786: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4789: getfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   4792: iconst_3
-    //   4793: if_icmpeq +27 -> 4820
-    //   4796: aload_0
-    //   4797: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4800: ifne +55 -> 4855
-    //   4803: aload_0
-    //   4804: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4807: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4810: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4813: getfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   4816: iconst_3
-    //   4817: if_icmpne +38 -> 4855
-    //   4820: aload_0
-    //   4821: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4824: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4827: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4830: astore_1
-    //   4831: aload_0
-    //   4832: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4835: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   4838: aload 24
-    //   4840: aload_1
-    //   4841: getfield 1372	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
-    //   4844: aload 20
-    //   4846: iconst_3
-    //   4847: aload_1
-    //   4848: invokestatic 1376	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToWeChat	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/apkg/ApkgInfo;)V
-    //   4851: ldc_w 631
-    //   4854: areturn
-    //   4855: aload_0
-    //   4856: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4859: ifeq +21 -> 4880
-    //   4862: aload_0
-    //   4863: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4866: ifnull +14 -> 4880
-    //   4869: aload_0
-    //   4870: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   4873: getfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   4876: iconst_4
-    //   4877: if_icmpeq +27 -> 4904
-    //   4880: aload_0
-    //   4881: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   4884: ifne +55 -> 4939
-    //   4887: aload_0
-    //   4888: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4891: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4894: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   4897: getfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   4900: iconst_4
-    //   4901: if_icmpne +38 -> 4939
-    //   4904: aload_0
-    //   4905: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4908: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4911: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   4914: astore_1
-    //   4915: aload_0
-    //   4916: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4919: invokevirtual 417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   4922: aload 24
-    //   4924: aload_1
-    //   4925: getfield 1372	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
-    //   4928: aload 20
-    //   4930: iconst_4
-    //   4931: aload_1
-    //   4932: invokestatic 1376	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToWeChat	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/apkg/ApkgInfo;)V
-    //   4935: ldc_w 631
-    //   4938: areturn
-    //   4939: aload 27
-    //   4941: invokestatic 1381	android/webkit/URLUtil:isHttpUrl	(Ljava/lang/String;)Z
-    //   4944: ifne +5361 -> 10305
-    //   4947: aload 27
-    //   4949: invokestatic 1384	android/webkit/URLUtil:isHttpsUrl	(Ljava/lang/String;)Z
-    //   4952: ifeq +5359 -> 10311
-    //   4955: goto +5350 -> 10305
-    //   4958: aload_0
-    //   4959: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4962: ifnull +5355 -> 10317
-    //   4965: aload_0
-    //   4966: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   4969: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   4972: ifnull +5345 -> 10317
-    //   4975: aload 27
-    //   4977: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4980: ifne +5337 -> 10317
-    //   4983: new 1386	java/io/File
-    //   4986: dup
-    //   4987: invokestatic 1353	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   4990: aload 27
-    //   4992: invokevirtual 1356	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   4995: invokespecial 1387	java/io/File:<init>	(Ljava/lang/String;)V
-    //   4998: invokevirtual 1390	java/io/File:exists	()Z
-    //   5001: ifeq +5316 -> 10317
-    //   5004: iconst_1
-    //   5005: istore 17
-    //   5007: aload 27
-    //   5009: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
-    //   5012: ifne +13 -> 5025
-    //   5015: iload 16
-    //   5017: ifne +197 -> 5214
-    //   5020: iload 17
-    //   5022: ifne +192 -> 5214
-    //   5025: aload_0
-    //   5026: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5029: ifeq +110 -> 5139
-    //   5032: aload_0
-    //   5033: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5036: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5039: astore_3
-    //   5040: invokestatic 1395	com/tencent/mobileqq/minigame/utils/GameWnsUtils:defaultShareImg	()Ljava/lang/String;
-    //   5043: astore 21
-    //   5045: iload 15
-    //   5047: ifeq +5276 -> 10323
-    //   5050: bipush 11
-    //   5052: istore 4
-    //   5054: aload_3
-    //   5055: aload 24
-    //   5057: aload 21
-    //   5059: aload 20
-    //   5061: aload 23
-    //   5063: aload 25
-    //   5065: aload 26
-    //   5067: aload 22
-    //   5069: aload_2
-    //   5070: iload 4
-    //   5072: iload 9
-    //   5074: ldc_w 631
-    //   5077: aload_1
-    //   5078: invokevirtual 1399	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5081: ldc 139
-    //   5083: iconst_1
-    //   5084: new 321	java/lang/StringBuilder
-    //   5087: dup
-    //   5088: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   5091: ldc_w 1401
-    //   5094: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5097: iload 16
-    //   5099: invokevirtual 776	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   5102: ldc_w 1403
-    //   5105: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5108: iload 17
-    //   5110: invokevirtual 776	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   5113: ldc_w 1405
-    //   5116: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5119: aload 27
-    //   5121: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5124: ldc_w 1407
-    //   5127: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5130: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5133: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5136: goto -3771 -> 1365
-    //   5139: aload_0
-    //   5140: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5143: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5146: ifnull -3781 -> 1365
-    //   5149: aload_0
-    //   5150: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5153: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5156: getfield 1410	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:isGettingScreenShot	Z
-    //   5159: ifeq +16 -> 5175
-    //   5162: ldc 139
-    //   5164: iconst_1
-    //   5165: ldc_w 1412
-    //   5168: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5171: ldc_w 631
-    //   5174: areturn
-    //   5175: aload_0
-    //   5176: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5179: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5182: new 1414	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$10
-    //   5185: dup
+    //   4526: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4529: ifnull +14 -> 4543
+    //   4532: aload_0
+    //   4533: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4536: getfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   4539: iconst_1
+    //   4540: if_icmpeq +27 -> 4567
+    //   4543: aload_0
+    //   4544: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4547: ifne +506 -> 5053
+    //   4550: aload_0
+    //   4551: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4554: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4557: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4560: getfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   4563: iconst_1
+    //   4564: if_icmpne +489 -> 5053
+    //   4567: aload 27
+    //   4569: ldc_w 1469
+    //   4572: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   4575: ifne +14 -> 4589
+    //   4578: aload 27
+    //   4580: ldc_w 1474
+    //   4583: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   4586: ifeq +383 -> 4969
+    //   4589: aload_0
+    //   4590: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4593: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   4596: aload 24
+    //   4598: aload 27
+    //   4600: aload 20
+    //   4602: aload_0
+    //   4603: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4606: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4609: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4612: iload 15
+    //   4614: invokestatic 1478	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToQzone	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Z)V
+    //   4617: goto +5945 -> 10562
+    //   4620: iload 9
+    //   4622: iconst_2
+    //   4623: if_icmpne +5957 -> 10580
+    //   4626: iconst_0
+    //   4627: istore 7
+    //   4629: aload 23
+    //   4631: ldc_w 1480
+    //   4634: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4637: astore_2
+    //   4638: aload_2
+    //   4639: ifnull +80 -> 4719
+    //   4642: aload_0
+    //   4643: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4646: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4649: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4652: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   4655: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   4658: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   4661: ifnull +58 -> 4719
+    //   4664: aload_2
+    //   4665: aload_0
+    //   4666: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4669: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4672: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4675: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   4678: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   4681: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   4684: invokevirtual 1489	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
+    //   4687: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4690: ifeq +29 -> 4719
+    //   4693: aload_0
+    //   4694: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4697: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4700: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4703: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   4706: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   4709: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   4712: astore 22
+    //   4714: aconst_null
+    //   4715: astore_2
+    //   4716: goto -392 -> 4324
+    //   4719: ldc 150
+    //   4721: iconst_1
+    //   4722: new 398	java/lang/StringBuilder
+    //   4725: dup
+    //   4726: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   4729: ldc_w 1491
+    //   4732: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4735: aload_2
+    //   4736: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4739: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4742: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4745: aconst_null
+    //   4746: astore_2
+    //   4747: goto -423 -> 4324
+    //   4750: iload 9
+    //   4752: iconst_5
+    //   4753: if_icmpne +102 -> 4855
+    //   4756: aload 23
+    //   4758: ldc_w 1493
+    //   4761: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   4764: astore 20
+    //   4766: aload_0
+    //   4767: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   4770: ifeq +37 -> 4807
+    //   4773: aload_0
+    //   4774: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4777: ifnull +30 -> 4807
+    //   4780: aload_0
+    //   4781: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   4784: getfield 1497	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareChatModel	Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;
+    //   4787: astore_2
+    //   4788: aload_2
+    //   4789: ifnull +35 -> 4824
+    //   4792: aload_2
+    //   4793: invokevirtual 1500	com/tencent/mobileqq/mini/sdk/ShareChatModel:getEntryHash	()Ljava/lang/String;
+    //   4796: aload 20
+    //   4798: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4801: ifeq +23 -> 4824
+    //   4804: goto +5804 -> 10608
+    //   4807: aload_0
+    //   4808: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4811: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4814: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4817: getfield 1501	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareChatModel	Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;
+    //   4820: astore_2
+    //   4821: goto -33 -> 4788
+    //   4824: ldc 150
+    //   4826: iconst_1
+    //   4827: new 398	java/lang/StringBuilder
+    //   4830: dup
+    //   4831: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   4834: ldc_w 1491
+    //   4837: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4840: aconst_null
+    //   4841: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4844: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4847: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4850: aconst_null
+    //   4851: astore_2
+    //   4852: goto +5756 -> 10608
+    //   4855: iload 9
+    //   4857: bipush 6
+    //   4859: if_icmpne +5640 -> 10499
+    //   4862: ldc 71
+    //   4864: aload_1
+    //   4865: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4868: ifeq +5631 -> 10499
+    //   4871: iconst_0
+    //   4872: istore 7
+    //   4874: aconst_null
+    //   4875: astore_2
+    //   4876: goto -552 -> 4324
+    //   4879: aload_0
+    //   4880: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4883: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4886: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4889: iload 8
+    //   4891: putfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   4894: goto -506 -> 4388
+    //   4897: astore_1
+    //   4898: ldc 150
+    //   4900: iconst_1
+    //   4901: aload_1
+    //   4902: iconst_0
+    //   4903: anewarray 873	java/lang/Object
+    //   4906: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   4909: aload_1
+    //   4910: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   4913: goto -3510 -> 1403
+    //   4916: aload_0
+    //   4917: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4920: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4923: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4926: aload_1
+    //   4927: putfield 1502	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareEvent	Ljava/lang/String;
+    //   4930: aload_0
+    //   4931: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4934: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4937: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   4940: iload 4
+    //   4942: putfield 1503	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareCallbackId	I
+    //   4945: goto -526 -> 4419
+    //   4948: aload_0
+    //   4949: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4952: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4955: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4958: invokevirtual 974	com/tencent/mobileqq/mini/apkg/ApkgInfo:getAppConfigInfo	()Lcom/tencent/mobileqq/mini/apkg/AppConfigInfo;
+    //   4961: getfield 1147	com/tencent/mobileqq/mini/apkg/AppConfigInfo:entryPagePath	Ljava/lang/String;
+    //   4964: astore 20
+    //   4966: goto -461 -> 4505
+    //   4969: aload_0
+    //   4970: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   4973: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   4976: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   4979: pop
+    //   4980: invokestatic 1508	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   4983: aload 27
+    //   4985: invokevirtual 1511	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   4988: astore_1
+    //   4989: aload_1
+    //   4990: invokestatic 1515	bgsp:a	(Ljava/lang/String;)Z
+    //   4993: ifne +33 -> 5026
+    //   4996: aload_0
+    //   4997: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5000: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   5003: aload 24
+    //   5005: aload_1
+    //   5006: aload 20
+    //   5008: aload_0
+    //   5009: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5012: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5015: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   5018: iload 15
+    //   5020: invokestatic 1478	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToQzone	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Z)V
+    //   5023: goto +5539 -> 10562
+    //   5026: aload_0
+    //   5027: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5030: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5033: new 1517	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$9
+    //   5036: dup
+    //   5037: aload_0
+    //   5038: aload 24
+    //   5040: aload 20
+    //   5042: iload 15
+    //   5044: invokespecial 1520	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$9:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   5047: invokevirtual 1524	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
+    //   5050: goto +5512 -> 10562
+    //   5053: aload_0
+    //   5054: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5057: ifeq +21 -> 5078
+    //   5060: aload_0
+    //   5061: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5064: ifnull +14 -> 5078
+    //   5067: aload_0
+    //   5068: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5071: getfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   5074: iconst_3
+    //   5075: if_icmpeq +27 -> 5102
+    //   5078: aload_0
+    //   5079: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5082: ifne +55 -> 5137
+    //   5085: aload_0
+    //   5086: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5089: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5092: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   5095: getfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   5098: iconst_3
+    //   5099: if_icmpne +38 -> 5137
+    //   5102: aload_0
+    //   5103: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5106: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5109: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   5112: astore_1
+    //   5113: aload_0
+    //   5114: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5117: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   5120: aload 24
+    //   5122: aload_1
+    //   5123: getfield 1527	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
+    //   5126: aload 20
+    //   5128: iconst_3
+    //   5129: aload_1
+    //   5130: invokestatic 1531	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToWeChat	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/apkg/ApkgInfo;)V
+    //   5133: ldc_w 525
+    //   5136: areturn
+    //   5137: aload_0
+    //   5138: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5141: ifeq +21 -> 5162
+    //   5144: aload_0
+    //   5145: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5148: ifnull +14 -> 5162
+    //   5151: aload_0
+    //   5152: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5155: getfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   5158: iconst_4
+    //   5159: if_icmpeq +27 -> 5186
+    //   5162: aload_0
+    //   5163: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5166: ifne +55 -> 5221
+    //   5169: aload_0
+    //   5170: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5173: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5176: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   5179: getfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   5182: iconst_4
+    //   5183: if_icmpne +38 -> 5221
     //   5186: aload_0
-    //   5187: aload 24
-    //   5189: aload 20
-    //   5191: aload 23
-    //   5193: aload 25
-    //   5195: aload 26
-    //   5197: aload 22
-    //   5199: aload_2
-    //   5200: iload 15
-    //   5202: iload 9
-    //   5204: aload_1
-    //   5205: invokespecial 1417	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$10:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;ZILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5208: invokevirtual 1369	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
-    //   5211: goto -3846 -> 1365
-    //   5214: aload 27
-    //   5216: ldc_w 1314
-    //   5219: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   5222: ifne +14 -> 5236
-    //   5225: aload 27
-    //   5227: ldc_w 1319
-    //   5230: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   5233: ifeq +50 -> 5283
-    //   5236: aload_0
-    //   5237: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5240: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5243: astore_3
-    //   5244: iload 15
-    //   5246: ifeq +5084 -> 10330
-    //   5249: bipush 11
-    //   5251: istore 4
-    //   5253: aload_3
-    //   5254: aload 24
-    //   5256: aload 27
-    //   5258: aload 20
-    //   5260: aload 23
-    //   5262: aload 25
-    //   5264: aload 26
-    //   5266: aload 22
-    //   5268: aload_2
-    //   5269: iload 4
-    //   5271: iload 9
-    //   5273: ldc_w 631
-    //   5276: aload_1
-    //   5277: invokevirtual 1399	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5280: goto -3915 -> 1365
-    //   5283: aload_0
-    //   5284: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5287: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5290: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   5293: pop
-    //   5294: invokestatic 1353	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   5297: aload 27
-    //   5299: invokevirtual 1356	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   5302: astore_3
-    //   5303: aload_0
-    //   5304: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5307: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5310: astore 21
-    //   5312: iload 15
-    //   5314: ifeq +37 -> 5351
-    //   5317: bipush 11
-    //   5319: istore 4
-    //   5321: aload 21
-    //   5323: aload 24
-    //   5325: aload_3
-    //   5326: aload 20
-    //   5328: aload 23
-    //   5330: aload 25
-    //   5332: aload 26
-    //   5334: aload 22
-    //   5336: aload_2
-    //   5337: iload 4
-    //   5339: iload 9
-    //   5341: ldc_w 631
-    //   5344: aload_1
-    //   5345: invokevirtual 1399	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5348: goto -3983 -> 1365
-    //   5351: bipush 12
-    //   5353: istore 4
-    //   5355: goto -34 -> 5321
-    //   5358: ldc 74
-    //   5360: aload_1
-    //   5361: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   5364: ifne +12 -> 5376
-    //   5367: ldc 77
-    //   5369: aload_1
-    //   5370: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   5373: ifeq +531 -> 5904
-    //   5376: new 271	org/json/JSONObject
-    //   5379: dup
-    //   5380: aload_2
-    //   5381: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   5384: astore_2
-    //   5385: aload_2
-    //   5386: ldc_w 1283
-    //   5389: iconst_m1
-    //   5390: invokevirtual 1197	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   5393: istore 8
-    //   5395: iconst_m1
-    //   5396: istore 7
-    //   5398: iload 8
-    //   5400: ifne +242 -> 5642
-    //   5403: iconst_0
-    //   5404: istore 7
-    //   5406: ldc 77
-    //   5408: aload_1
-    //   5409: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   5412: ifeq +39 -> 5451
-    //   5415: iload 7
-    //   5417: istore 8
-    //   5419: iload 7
-    //   5421: iconst_m1
-    //   5422: if_icmpne +6 -> 5428
-    //   5425: iconst_0
-    //   5426: istore 8
-    //   5428: aload_0
-    //   5429: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5432: ifeq +258 -> 5690
-    //   5435: aload_0
-    //   5436: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5439: ifnull +251 -> 5690
-    //   5442: aload_0
-    //   5443: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5446: iload 8
-    //   5448: putfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   5451: aload_0
-    //   5452: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5455: ifeq +253 -> 5708
-    //   5458: aload_0
-    //   5459: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5462: ifnull +246 -> 5708
-    //   5465: aload_0
-    //   5466: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5469: getfield 1290	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
-    //   5472: istore 7
-    //   5474: aload_0
-    //   5475: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5478: ifeq +248 -> 5726
-    //   5481: aload_0
-    //   5482: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5485: ifnull +241 -> 5726
-    //   5488: aload_0
-    //   5489: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5492: aload_1
-    //   5493: putfield 1293	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareEvent	Ljava/lang/String;
-    //   5496: aload_0
-    //   5497: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5500: iload 4
-    //   5502: putfield 1296	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareCallbackId	I
-    //   5505: new 1419	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$11
-    //   5508: dup
-    //   5509: aload_0
-    //   5510: aload_3
-    //   5511: aload_1
-    //   5512: iload 4
-    //   5514: invokespecial 1420	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$11:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   5517: astore_1
+    //   5187: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5190: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5193: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   5196: astore_1
+    //   5197: aload_0
+    //   5198: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5201: invokevirtual 559	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   5204: aload 24
+    //   5206: aload_1
+    //   5207: getfield 1527	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
+    //   5210: aload 20
+    //   5212: iconst_4
+    //   5213: aload_1
+    //   5214: invokestatic 1531	com/tencent/mobileqq/mini/appbrand/utils/ShareUtils:startShareToWeChat	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/apkg/ApkgInfo;)V
+    //   5217: ldc_w 525
+    //   5220: areturn
+    //   5221: aload 27
+    //   5223: invokestatic 1536	android/webkit/URLUtil:isHttpUrl	(Ljava/lang/String;)Z
+    //   5226: ifne +5388 -> 10614
+    //   5229: aload 27
+    //   5231: invokestatic 1539	android/webkit/URLUtil:isHttpsUrl	(Ljava/lang/String;)Z
+    //   5234: ifeq +5386 -> 10620
+    //   5237: goto +5377 -> 10614
+    //   5240: aload_0
+    //   5241: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5244: ifnull +5382 -> 10626
+    //   5247: aload_0
+    //   5248: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5251: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5254: ifnull +5372 -> 10626
+    //   5257: aload 27
+    //   5259: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5262: ifne +5364 -> 10626
+    //   5265: new 1541	java/io/File
+    //   5268: dup
+    //   5269: invokestatic 1508	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   5272: aload 27
+    //   5274: invokevirtual 1511	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   5277: invokespecial 1542	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5280: invokevirtual 1545	java/io/File:exists	()Z
+    //   5283: ifeq +5343 -> 10626
+    //   5286: iconst_1
+    //   5287: istore 17
+    //   5289: aload 27
+    //   5291: invokestatic 1515	bgsp:a	(Ljava/lang/String;)Z
+    //   5294: ifne +13 -> 5307
+    //   5297: iload 16
+    //   5299: ifne +197 -> 5496
+    //   5302: iload 17
+    //   5304: ifne +192 -> 5496
+    //   5307: aload_0
+    //   5308: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5311: ifeq +110 -> 5421
+    //   5314: aload_0
+    //   5315: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5318: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5321: astore_3
+    //   5322: invokestatic 1550	com/tencent/mobileqq/minigame/utils/GameWnsUtils:defaultShareImg	()Ljava/lang/String;
+    //   5325: astore 21
+    //   5327: iload 15
+    //   5329: ifeq +5303 -> 10632
+    //   5332: bipush 11
+    //   5334: istore 4
+    //   5336: aload_3
+    //   5337: aload 24
+    //   5339: aload 21
+    //   5341: aload 20
+    //   5343: aload 23
+    //   5345: aload 25
+    //   5347: aload 26
+    //   5349: aload 22
+    //   5351: aload_2
+    //   5352: iload 4
+    //   5354: iload 9
+    //   5356: ldc_w 525
+    //   5359: aload_1
+    //   5360: invokevirtual 1554	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   5363: ldc 150
+    //   5365: iconst_1
+    //   5366: new 398	java/lang/StringBuilder
+    //   5369: dup
+    //   5370: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   5373: ldc_w 1556
+    //   5376: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5379: iload 16
+    //   5381: invokevirtual 1023	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5384: ldc_w 1558
+    //   5387: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5390: iload 17
+    //   5392: invokevirtual 1023	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5395: ldc_w 1560
+    //   5398: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5401: aload 27
+    //   5403: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5406: ldc_w 1562
+    //   5409: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5412: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5415: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5418: goto -4015 -> 1403
+    //   5421: aload_0
+    //   5422: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5425: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5428: ifnull -4025 -> 1403
+    //   5431: aload_0
+    //   5432: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5435: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5438: getfield 1565	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:isGettingScreenShot	Z
+    //   5441: ifeq +16 -> 5457
+    //   5444: ldc 150
+    //   5446: iconst_1
+    //   5447: ldc_w 1567
+    //   5450: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5453: ldc_w 525
+    //   5456: areturn
+    //   5457: aload_0
+    //   5458: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5461: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5464: new 1569	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$10
+    //   5467: dup
+    //   5468: aload_0
+    //   5469: aload 24
+    //   5471: aload 20
+    //   5473: aload 23
+    //   5475: aload 25
+    //   5477: aload 26
+    //   5479: aload 22
+    //   5481: aload_2
+    //   5482: iload 15
+    //   5484: iload 9
+    //   5486: aload_1
+    //   5487: invokespecial 1572	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$10:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;ZILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   5490: invokevirtual 1524	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
+    //   5493: goto -4090 -> 1403
+    //   5496: aload 27
+    //   5498: ldc_w 1469
+    //   5501: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   5504: ifne +14 -> 5518
+    //   5507: aload 27
+    //   5509: ldc_w 1474
+    //   5512: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   5515: ifeq +50 -> 5565
     //   5518: aload_0
-    //   5519: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5522: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5525: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   5528: astore_3
-    //   5529: aload_2
-    //   5530: ldc_w 1302
-    //   5533: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   5536: astore 20
-    //   5538: aload_2
-    //   5539: ldc_w 1304
-    //   5542: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   5545: astore_2
-    //   5546: aload_2
-    //   5547: invokestatic 1381	android/webkit/URLUtil:isHttpUrl	(Ljava/lang/String;)Z
-    //   5550: ifne +4787 -> 10337
-    //   5553: aload_2
-    //   5554: invokestatic 1384	android/webkit/URLUtil:isHttpsUrl	(Ljava/lang/String;)Z
-    //   5557: ifeq +4786 -> 10343
-    //   5560: goto +4777 -> 10337
-    //   5563: invokestatic 1353	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   5566: aload_2
-    //   5567: invokevirtual 1356	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   5570: astore 21
-    //   5572: aload_0
-    //   5573: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5576: ifnull +4773 -> 10349
-    //   5579: aload_0
-    //   5580: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5583: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5586: ifnull +4763 -> 10349
-    //   5589: aload_2
-    //   5590: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   5593: ifne +4756 -> 10349
-    //   5596: new 1386	java/io/File
-    //   5599: dup
-    //   5600: aload 21
-    //   5602: invokespecial 1387	java/io/File:<init>	(Ljava/lang/String;)V
-    //   5605: invokevirtual 1390	java/io/File:exists	()Z
-    //   5608: ifeq +4741 -> 10349
-    //   5611: iconst_1
-    //   5612: istore 8
-    //   5614: iload 4
-    //   5616: ifeq +142 -> 5758
-    //   5619: aload_0
-    //   5620: aload 22
-    //   5622: aload 20
-    //   5624: aload_2
-    //   5625: iload 7
-    //   5627: aload_1
-    //   5628: invokespecial 188	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareNetworkPicMessage	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5631: goto -4266 -> 1365
-    //   5634: astore_1
-    //   5635: aload_1
-    //   5636: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   5639: goto -4274 -> 1365
-    //   5642: iload 8
-    //   5644: iconst_1
-    //   5645: if_icmpne +9 -> 5654
-    //   5648: iconst_1
-    //   5649: istore 7
-    //   5651: goto -245 -> 5406
-    //   5654: iload 8
-    //   5656: iconst_2
-    //   5657: if_icmpne +9 -> 5666
-    //   5660: iconst_0
-    //   5661: istore 7
-    //   5663: goto -257 -> 5406
-    //   5666: iload 8
-    //   5668: iconst_3
-    //   5669: if_icmpne +9 -> 5678
-    //   5672: iconst_3
-    //   5673: istore 7
-    //   5675: goto -269 -> 5406
-    //   5678: iload 8
-    //   5680: iconst_4
-    //   5681: if_icmpne -275 -> 5406
-    //   5684: iconst_4
-    //   5685: istore 7
-    //   5687: goto -281 -> 5406
-    //   5690: aload_0
-    //   5691: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5694: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5697: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   5700: iload 8
-    //   5702: putfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   5705: goto -254 -> 5451
-    //   5708: aload_0
-    //   5709: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5712: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5715: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   5718: getfield 1312	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
-    //   5721: istore 7
-    //   5723: goto -249 -> 5474
-    //   5726: aload_0
-    //   5727: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5730: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5733: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   5736: aload_1
-    //   5737: putfield 1347	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareEvent	Ljava/lang/String;
+    //   5519: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5522: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5525: astore_3
+    //   5526: iload 15
+    //   5528: ifeq +5111 -> 10639
+    //   5531: bipush 11
+    //   5533: istore 4
+    //   5535: aload_3
+    //   5536: aload 24
+    //   5538: aload 27
+    //   5540: aload 20
+    //   5542: aload 23
+    //   5544: aload 25
+    //   5546: aload 26
+    //   5548: aload 22
+    //   5550: aload_2
+    //   5551: iload 4
+    //   5553: iload 9
+    //   5555: ldc_w 525
+    //   5558: aload_1
+    //   5559: invokevirtual 1554	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   5562: goto -4159 -> 1403
+    //   5565: aload_0
+    //   5566: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5569: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5572: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   5575: pop
+    //   5576: invokestatic 1508	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   5579: aload 27
+    //   5581: invokevirtual 1511	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   5584: astore_3
+    //   5585: aload_0
+    //   5586: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5589: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5592: astore 21
+    //   5594: iload 15
+    //   5596: ifeq +37 -> 5633
+    //   5599: bipush 11
+    //   5601: istore 4
+    //   5603: aload 21
+    //   5605: aload 24
+    //   5607: aload_3
+    //   5608: aload 20
+    //   5610: aload 23
+    //   5612: aload 25
+    //   5614: aload 26
+    //   5616: aload 22
+    //   5618: aload_2
+    //   5619: iload 4
+    //   5621: iload 9
+    //   5623: ldc_w 525
+    //   5626: aload_1
+    //   5627: invokevirtual 1554	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:startShare	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/EntryModel;Lcom/tencent/mobileqq/mini/sdk/ShareChatModel;IILjava/lang/String;Lcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   5630: goto -4227 -> 1403
+    //   5633: bipush 12
+    //   5635: istore 4
+    //   5637: goto -34 -> 5603
+    //   5640: ldc 74
+    //   5642: aload_1
+    //   5643: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5646: ifne +12 -> 5658
+    //   5649: ldc 77
+    //   5651: aload_1
+    //   5652: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5655: ifeq +531 -> 6186
+    //   5658: new 348	org/json/JSONObject
+    //   5661: dup
+    //   5662: aload_2
+    //   5663: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   5666: astore_2
+    //   5667: aload_2
+    //   5668: ldc_w 1438
+    //   5671: iconst_m1
+    //   5672: invokevirtual 1355	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   5675: istore 8
+    //   5677: iconst_m1
+    //   5678: istore 7
+    //   5680: iload 8
+    //   5682: ifne +242 -> 5924
+    //   5685: iconst_0
+    //   5686: istore 7
+    //   5688: ldc 77
+    //   5690: aload_1
+    //   5691: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5694: ifeq +39 -> 5733
+    //   5697: iload 7
+    //   5699: istore 8
+    //   5701: iload 7
+    //   5703: iconst_m1
+    //   5704: if_icmpne +6 -> 5710
+    //   5707: iconst_0
+    //   5708: istore 8
+    //   5710: aload_0
+    //   5711: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5714: ifeq +258 -> 5972
+    //   5717: aload_0
+    //   5718: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5721: ifnull +251 -> 5972
+    //   5724: aload_0
+    //   5725: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5728: iload 8
+    //   5730: putfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   5733: aload_0
+    //   5734: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5737: ifeq +253 -> 5990
     //   5740: aload_0
-    //   5741: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5744: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5747: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   5750: iload 4
-    //   5752: putfield 1348	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareCallbackId	I
-    //   5755: goto -250 -> 5505
-    //   5758: aload_2
-    //   5759: invokestatic 1360	bdnn:a	(Ljava/lang/String;)Z
-    //   5762: ifne +13 -> 5775
-    //   5765: iload 4
-    //   5767: ifne +114 -> 5881
-    //   5770: iload 8
-    //   5772: ifne +109 -> 5881
-    //   5775: aload_0
-    //   5776: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5779: ifeq +37 -> 5816
-    //   5782: aload_3
-    //   5783: ifnull +21 -> 5804
-    //   5786: aload_0
-    //   5787: aload 22
-    //   5789: aload 20
-    //   5791: aload_3
-    //   5792: getfield 1372	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
-    //   5795: iload 7
-    //   5797: aload_1
-    //   5798: invokespecial 188	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareNetworkPicMessage	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5801: goto -4436 -> 1365
-    //   5804: ldc 139
-    //   5806: iconst_1
-    //   5807: ldc_w 1422
-    //   5810: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5813: goto -4448 -> 1365
-    //   5816: aload_0
-    //   5817: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5820: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5823: ifnull -4458 -> 1365
-    //   5826: aload_0
-    //   5827: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5830: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5833: getfield 1410	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:isGettingScreenShot	Z
-    //   5836: ifeq +16 -> 5852
-    //   5839: ldc 139
-    //   5841: iconst_1
-    //   5842: ldc_w 1424
-    //   5845: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5848: ldc_w 631
-    //   5851: areturn
-    //   5852: aload_0
-    //   5853: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5856: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5859: new 1426	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$12
-    //   5862: dup
-    //   5863: aload_0
-    //   5864: aload_3
-    //   5865: aload 22
-    //   5867: aload 20
-    //   5869: iload 7
-    //   5871: aload_1
-    //   5872: invokespecial 1429	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$12:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Landroid/app/Activity;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
-    //   5875: invokevirtual 1369	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
-    //   5878: goto -4513 -> 1365
-    //   5881: iload 4
-    //   5883: ifne -4518 -> 1365
-    //   5886: iload 8
-    //   5888: ifeq -4523 -> 1365
-    //   5891: aload_0
-    //   5892: aload 20
-    //   5894: aload 21
-    //   5896: iload 7
-    //   5898: invokespecial 194	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareLocalPicMessage	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   5901: goto -4536 -> 1365
-    //   5904: ldc 44
-    //   5906: aload_1
-    //   5907: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   5910: ifeq +383 -> 6293
-    //   5913: aload_0
-    //   5914: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5917: ifnull -4552 -> 1365
-    //   5920: aload_0
-    //   5921: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   5924: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   5927: ifnull -4562 -> 1365
-    //   5930: new 271	org/json/JSONObject
-    //   5933: dup
-    //   5934: aload_2
-    //   5935: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   5938: ldc_w 1431
-    //   5941: invokevirtual 1248	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   5944: checkcast 282	org/json/JSONArray
-    //   5947: astore_2
-    //   5948: aload_2
-    //   5949: ifnonnull +98 -> 6047
-    //   5952: iconst_0
-    //   5953: istore 10
-    //   5955: iconst_0
-    //   5956: istore 9
-    //   5958: iconst_0
-    //   5959: istore 8
-    //   5961: iconst_0
-    //   5962: istore 7
-    //   5964: aload_0
-    //   5965: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   5968: ifeq +185 -> 6153
-    //   5971: aload_0
-    //   5972: invokevirtual 1225	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
-    //   5975: astore_2
-    //   5976: aload_2
-    //   5977: ifnull +157 -> 6134
-    //   5980: iload 10
-    //   5982: ifne +8 -> 5990
-    //   5985: aload_2
-    //   5986: iconst_0
-    //   5987: putfield 1230	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
-    //   5990: iload 9
-    //   5992: ifne +8 -> 6000
-    //   5995: aload_2
-    //   5996: iconst_0
-    //   5997: putfield 1233	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
-    //   6000: iload 8
-    //   6002: ifne +8 -> 6010
-    //   6005: aload_2
-    //   6006: iconst_0
-    //   6007: putfield 1236	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
-    //   6010: iload 7
-    //   6012: ifne +8 -> 6020
-    //   6015: aload_2
-    //   6016: iconst_0
-    //   6017: putfield 1239	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
-    //   6020: aload_0
-    //   6021: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6024: aload_3
-    //   6025: aload_1
-    //   6026: aload_1
-    //   6027: aconst_null
-    //   6028: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   6031: iload 4
-    //   6033: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6036: goto -4671 -> 1365
-    //   6039: astore_1
-    //   6040: aload_1
-    //   6041: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   6044: goto -4679 -> 1365
-    //   6047: iconst_m1
-    //   6048: istore 7
-    //   6050: iconst_m1
-    //   6051: istore 8
-    //   6053: iconst_m1
-    //   6054: istore 9
-    //   6056: iconst_m1
-    //   6057: istore 10
-    //   6059: iconst_0
-    //   6060: istore 11
-    //   6062: iload 11
-    //   6064: aload_2
-    //   6065: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   6068: if_icmpge +4125 -> 10193
-    //   6071: aload_2
-    //   6072: iload 11
-    //   6074: invokevirtual 1253	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   6077: astore 20
-    //   6079: aload 20
-    //   6081: ldc 112
-    //   6083: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   6086: ifeq +6 -> 6092
-    //   6089: iconst_0
-    //   6090: istore 10
-    //   6092: aload 20
-    //   6094: ldc 115
-    //   6096: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   6099: ifeq +6 -> 6105
-    //   6102: iconst_0
-    //   6103: istore 9
-    //   6105: aload 20
-    //   6107: ldc 118
-    //   6109: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   6112: ifeq +6 -> 6118
-    //   6115: iconst_0
-    //   6116: istore 8
-    //   6118: aload 20
-    //   6120: ldc 121
-    //   6122: invokevirtual 1256	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   6125: ifeq +4230 -> 10355
-    //   6128: iconst_0
-    //   6129: istore 7
-    //   6131: goto +4224 -> 10355
+    //   5741: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5744: ifnull +246 -> 5990
+    //   5747: aload_0
+    //   5748: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5751: getfield 1445	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:fromShareMenuBtn	I
+    //   5754: istore 7
+    //   5756: aload_0
+    //   5757: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   5760: ifeq +248 -> 6008
+    //   5763: aload_0
+    //   5764: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5767: ifnull +241 -> 6008
+    //   5770: aload_0
+    //   5771: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5774: aload_1
+    //   5775: putfield 1448	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareEvent	Ljava/lang/String;
+    //   5778: aload_0
+    //   5779: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   5782: iload 4
+    //   5784: putfield 1451	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:shareCallbackId	I
+    //   5787: new 1574	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$11
+    //   5790: dup
+    //   5791: aload_0
+    //   5792: aload_3
+    //   5793: aload_1
+    //   5794: iload 4
+    //   5796: invokespecial 1575	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$11:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   5799: astore_1
+    //   5800: aload_0
+    //   5801: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5804: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5807: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   5810: astore_3
+    //   5811: aload_2
+    //   5812: ldc_w 1457
+    //   5815: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5818: astore 20
+    //   5820: aload_2
+    //   5821: ldc_w 1459
+    //   5824: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5827: astore_2
+    //   5828: aload_2
+    //   5829: invokestatic 1536	android/webkit/URLUtil:isHttpUrl	(Ljava/lang/String;)Z
+    //   5832: ifne +4814 -> 10646
+    //   5835: aload_2
+    //   5836: invokestatic 1539	android/webkit/URLUtil:isHttpsUrl	(Ljava/lang/String;)Z
+    //   5839: ifeq +4813 -> 10652
+    //   5842: goto +4804 -> 10646
+    //   5845: invokestatic 1508	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   5848: aload_2
+    //   5849: invokevirtual 1511	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   5852: astore 21
+    //   5854: aload_0
+    //   5855: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5858: ifnull +4800 -> 10658
+    //   5861: aload_0
+    //   5862: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5865: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5868: ifnull +4790 -> 10658
+    //   5871: aload_2
+    //   5872: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5875: ifne +4783 -> 10658
+    //   5878: new 1541	java/io/File
+    //   5881: dup
+    //   5882: aload 21
+    //   5884: invokespecial 1542	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5887: invokevirtual 1545	java/io/File:exists	()Z
+    //   5890: ifeq +4768 -> 10658
+    //   5893: iconst_1
+    //   5894: istore 8
+    //   5896: iload 4
+    //   5898: ifeq +142 -> 6040
+    //   5901: aload_0
+    //   5902: aload 22
+    //   5904: aload 20
+    //   5906: aload_2
+    //   5907: iload 7
+    //   5909: aload_1
+    //   5910: invokespecial 201	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareNetworkPicMessage	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   5913: goto -4510 -> 1403
+    //   5916: astore_1
+    //   5917: aload_1
+    //   5918: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   5921: goto -4518 -> 1403
+    //   5924: iload 8
+    //   5926: iconst_1
+    //   5927: if_icmpne +9 -> 5936
+    //   5930: iconst_1
+    //   5931: istore 7
+    //   5933: goto -245 -> 5688
+    //   5936: iload 8
+    //   5938: iconst_2
+    //   5939: if_icmpne +9 -> 5948
+    //   5942: iconst_0
+    //   5943: istore 7
+    //   5945: goto -257 -> 5688
+    //   5948: iload 8
+    //   5950: iconst_3
+    //   5951: if_icmpne +9 -> 5960
+    //   5954: iconst_3
+    //   5955: istore 7
+    //   5957: goto -269 -> 5688
+    //   5960: iload 8
+    //   5962: iconst_4
+    //   5963: if_icmpne -275 -> 5688
+    //   5966: iconst_4
+    //   5967: istore 7
+    //   5969: goto -281 -> 5688
+    //   5972: aload_0
+    //   5973: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5976: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5979: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   5982: iload 8
+    //   5984: putfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   5987: goto -254 -> 5733
+    //   5990: aload_0
+    //   5991: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   5994: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   5997: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6000: getfield 1467	com/tencent/mobileqq/mini/appbrand/page/PageWebview:fromShareMenuBtn	I
+    //   6003: istore 7
+    //   6005: goto -249 -> 5756
+    //   6008: aload_0
+    //   6009: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6012: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6015: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6018: aload_1
+    //   6019: putfield 1502	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareEvent	Ljava/lang/String;
+    //   6022: aload_0
+    //   6023: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6026: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6029: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6032: iload 4
+    //   6034: putfield 1503	com/tencent/mobileqq/mini/appbrand/page/PageWebview:shareCallbackId	I
+    //   6037: goto -250 -> 5787
+    //   6040: aload_2
+    //   6041: invokestatic 1515	bgsp:a	(Ljava/lang/String;)Z
+    //   6044: ifne +13 -> 6057
+    //   6047: iload 4
+    //   6049: ifne +114 -> 6163
+    //   6052: iload 8
+    //   6054: ifne +109 -> 6163
+    //   6057: aload_0
+    //   6058: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   6061: ifeq +37 -> 6098
+    //   6064: aload_3
+    //   6065: ifnull +21 -> 6086
+    //   6068: aload_0
+    //   6069: aload 22
+    //   6071: aload 20
+    //   6073: aload_3
+    //   6074: getfield 1527	com/tencent/mobileqq/mini/apkg/ApkgInfo:iconUrl	Ljava/lang/String;
+    //   6077: iload 7
+    //   6079: aload_1
+    //   6080: invokespecial 201	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareNetworkPicMessage	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   6083: goto -4680 -> 1403
+    //   6086: ldc 150
+    //   6088: iconst_1
+    //   6089: ldc_w 1577
+    //   6092: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6095: goto -4692 -> 1403
+    //   6098: aload_0
+    //   6099: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6102: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6105: ifnull -4702 -> 1403
+    //   6108: aload_0
+    //   6109: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6112: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6115: getfield 1565	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:isGettingScreenShot	Z
+    //   6118: ifeq +16 -> 6134
+    //   6121: ldc 150
+    //   6123: iconst_1
+    //   6124: ldc_w 1579
+    //   6127: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6130: ldc_w 525
+    //   6133: areturn
     //   6134: aload_0
-    //   6135: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6138: aload_3
-    //   6139: aload_1
-    //   6140: aload_1
-    //   6141: aconst_null
-    //   6142: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   6145: iload 4
-    //   6147: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6150: goto -4785 -> 1365
-    //   6153: aload_0
-    //   6154: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6157: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6160: invokevirtual 1260	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
-    //   6163: ifnull +111 -> 6274
-    //   6166: aload_0
-    //   6167: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6170: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6173: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   6176: ifnull +98 -> 6274
-    //   6179: iload 10
-    //   6181: ifne +17 -> 6198
-    //   6184: aload_0
-    //   6185: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6188: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6191: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   6194: iconst_0
-    //   6195: putfield 1267	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
-    //   6198: iload 9
-    //   6200: ifne +17 -> 6217
-    //   6203: aload_0
-    //   6204: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6207: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6210: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   6213: iconst_0
-    //   6214: putfield 1268	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
-    //   6217: iload 8
-    //   6219: ifne +17 -> 6236
-    //   6222: aload_0
-    //   6223: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6226: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6229: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   6232: iconst_0
-    //   6233: putfield 1269	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
-    //   6236: iload 7
-    //   6238: ifne +17 -> 6255
-    //   6241: aload_0
-    //   6242: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6245: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6248: invokevirtual 1264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   6251: iconst_0
-    //   6252: putfield 1270	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
-    //   6255: aload_0
-    //   6256: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6259: aload_3
-    //   6260: aload_1
-    //   6261: aload_1
-    //   6262: aconst_null
-    //   6263: invokestatic 870	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   6266: iload 4
-    //   6268: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6271: goto -4906 -> 1365
-    //   6274: aload_0
-    //   6275: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6278: aload_3
-    //   6279: aload_1
-    //   6280: aload_1
-    //   6281: aconst_null
-    //   6282: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   6285: iload 4
-    //   6287: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6290: goto -4925 -> 1365
-    //   6293: ldc_w 1433
-    //   6296: aload_1
-    //   6297: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6300: ifeq +298 -> 6598
-    //   6303: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   6306: invokevirtual 977	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   6309: astore 20
-    //   6311: aload 20
-    //   6313: instanceof 979
-    //   6316: ifeq +3871 -> 10187
-    //   6319: aload 20
-    //   6321: checkcast 979	com/tencent/mobileqq/mini/MiniAppInterface
-    //   6324: astore 20
-    //   6326: aload 20
-    //   6328: ifnonnull +18 -> 6346
-    //   6331: aload_0
-    //   6332: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6335: aload_3
-    //   6336: aload_1
-    //   6337: aconst_null
-    //   6338: iload 4
-    //   6340: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6343: goto -4978 -> 1365
-    //   6346: new 271	org/json/JSONObject
-    //   6349: dup
-    //   6350: aload_2
-    //   6351: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   6354: ldc_w 1435
-    //   6357: invokevirtual 1438	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   6360: iconst_0
-    //   6361: invokevirtual 1253	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   6364: astore 22
-    //   6366: aload 22
-    //   6368: astore 21
-    //   6370: aload 22
-    //   6372: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6375: ifne +10 -> 6385
-    //   6378: aload 22
-    //   6380: invokevirtual 1441	java/lang/String:trim	()Ljava/lang/String;
-    //   6383: astore 21
-    //   6385: aload 20
-    //   6387: aload_0
-    //   6388: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6391: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6394: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   6397: invokevirtual 983	com/tencent/mobileqq/mini/MiniAppInterface:getAuthorizeCenter	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;
-    //   6400: astore 20
-    //   6402: aload 20
-    //   6404: ifnull +179 -> 6583
-    //   6407: aload 21
-    //   6409: invokestatic 1444	com/tencent/mobileqq/mini/app/AuthorizeCenter:isScopeNameValid	(Ljava/lang/String;)Z
-    //   6412: ifeq +171 -> 6583
-    //   6415: aload 20
-    //   6417: invokevirtual 1447	com/tencent/mobileqq/mini/app/AuthorizeCenter:isAuthorizeSynchronized	()Z
-    //   6420: istore 15
-    //   6422: aload 21
-    //   6424: ldc_w 1449
-    //   6427: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   6430: ifeq +59 -> 6489
-    //   6433: iload 15
-    //   6435: ifne +54 -> 6489
-    //   6438: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   6441: aconst_null
-    //   6442: aload_0
-    //   6443: invokevirtual 1452	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getAppId	()Ljava/lang/String;
-    //   6446: new 1454	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$13
-    //   6449: dup
-    //   6450: aload_0
-    //   6451: aload 20
-    //   6453: aload 21
-    //   6455: aload_3
-    //   6456: aload_1
-    //   6457: iload 4
-    //   6459: aload_2
-    //   6460: invokespecial 1457	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$13:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;ILjava/lang/String;)V
-    //   6463: invokevirtual 1461	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getAuthList	(LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   6466: goto -5101 -> 1365
-    //   6469: astore_2
-    //   6470: aload_2
-    //   6471: invokevirtual 391	java/lang/Throwable:printStackTrace	()V
-    //   6474: aload_0
-    //   6475: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6478: aload_3
-    //   6479: aload_1
-    //   6480: aconst_null
-    //   6481: iload 4
-    //   6483: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6486: goto -5121 -> 1365
-    //   6489: aload 20
-    //   6491: aload 21
-    //   6493: invokevirtual 1464	com/tencent/mobileqq/mini/app/AuthorizeCenter:getAuthFlagFromAuthorize	(Ljava/lang/String;)I
-    //   6496: istore 8
-    //   6498: iload 8
-    //   6500: istore 7
-    //   6502: iload 8
-    //   6504: iconst_1
-    //   6505: if_icmpne +42 -> 6547
-    //   6508: aload_0
-    //   6509: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6512: invokevirtual 1467	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:apiAuthoritySilent	()Z
-    //   6515: ifne +3849 -> 10364
-    //   6518: aload_0
-    //   6519: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6522: astore 20
-    //   6524: iload 8
-    //   6526: istore 7
-    //   6528: aload_0
-    //   6529: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6532: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6535: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   6538: invokestatic 1470	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:isAuthWhiteAppId	(Ljava/lang/String;)Z
-    //   6541: ifeq +6 -> 6547
-    //   6544: goto +3820 -> 10364
-    //   6547: iload 7
-    //   6549: iconst_2
-    //   6550: if_icmpne +18 -> 6568
-    //   6553: aload_0
-    //   6554: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6557: aload_3
-    //   6558: aload_1
-    //   6559: aconst_null
-    //   6560: iload 4
-    //   6562: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6565: goto -5200 -> 1365
-    //   6568: aload_0
-    //   6569: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6572: aload_1
-    //   6573: aload_2
-    //   6574: aload_3
-    //   6575: iload 4
-    //   6577: invokevirtual 1474	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:reqAuthorize	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;I)V
-    //   6580: goto -5215 -> 1365
-    //   6583: aload_0
-    //   6584: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6587: aload_3
-    //   6588: aload_1
-    //   6589: aconst_null
-    //   6590: iload 4
-    //   6592: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   6595: goto -5230 -> 1365
-    //   6598: ldc 56
-    //   6600: aload_1
-    //   6601: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6604: ifeq +165 -> 6769
-    //   6607: new 271	org/json/JSONObject
-    //   6610: dup
-    //   6611: aload_2
-    //   6612: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   6615: astore_1
-    //   6616: ldc 139
-    //   6618: iconst_2
-    //   6619: new 321	java/lang/StringBuilder
-    //   6622: dup
-    //   6623: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   6626: ldc_w 1476
-    //   6629: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6632: aload_1
-    //   6633: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   6636: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6639: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6642: new 512	android/content/Intent
-    //   6645: dup
-    //   6646: invokespecial 1477	android/content/Intent:<init>	()V
-    //   6649: astore_2
-    //   6650: aload_2
-    //   6651: new 1479	android/content/ComponentName
-    //   6654: dup
-    //   6655: aload_0
-    //   6656: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6659: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6662: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   6665: ldc_w 1485
-    //   6668: invokespecial 1486	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   6671: invokevirtual 1490	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
-    //   6674: pop
-    //   6675: aload_2
-    //   6676: ldc_w 1492
-    //   6679: aload_1
-    //   6680: ldc_w 1492
-    //   6683: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   6686: invokevirtual 523	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   6689: pop
-    //   6690: aload_2
-    //   6691: ldc_w 1494
-    //   6694: sipush 1008
-    //   6697: invokevirtual 1497	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   6700: pop
-    //   6701: aload_2
-    //   6702: ldc_w 1499
-    //   6705: iconst_2
-    //   6706: invokevirtual 1497	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   6709: pop
-    //   6710: aload_2
-    //   6711: ldc_w 1501
-    //   6714: aload_1
-    //   6715: ldc_w 1503
-    //   6718: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   6721: invokevirtual 523	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   6724: pop
-    //   6725: aload_2
-    //   6726: ldc_w 1504
-    //   6729: invokevirtual 1508	android/content/Intent:setFlags	(I)Landroid/content/Intent;
-    //   6732: pop
-    //   6733: aload_0
-    //   6734: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6737: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6740: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   6743: aload_2
-    //   6744: invokevirtual 948	android/app/Activity:startActivity	(Landroid/content/Intent;)V
-    //   6747: goto -5382 -> 1365
-    //   6750: astore_1
-    //   6751: ldc 139
-    //   6753: iconst_1
-    //   6754: aload_1
-    //   6755: iconst_0
-    //   6756: anewarray 633	java/lang/Object
-    //   6759: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   6762: aload_1
-    //   6763: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   6766: goto -5401 -> 1365
-    //   6769: ldc 11
-    //   6771: aload_1
-    //   6772: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6775: ifeq +61 -> 6836
-    //   6778: new 271	org/json/JSONObject
-    //   6781: dup
-    //   6782: aload_2
-    //   6783: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   6786: astore_2
-    //   6787: new 1510	Wallet/FocusMpIdReq
-    //   6790: dup
-    //   6791: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   6794: invokevirtual 977	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   6797: invokevirtual 1040	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   6800: aload_2
-    //   6801: ldc_w 1512
-    //   6804: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   6807: invokespecial 1513	Wallet/FocusMpIdReq:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6810: new 1515	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$14
-    //   6813: dup
-    //   6814: aload_0
-    //   6815: aload_3
-    //   6816: aload_1
-    //   6817: iload 4
-    //   6819: invokespecial 1516	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$14:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   6822: invokestatic 1050	aivh:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
-    //   6825: goto -5460 -> 1365
-    //   6828: astore_1
-    //   6829: aload_1
-    //   6830: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   6833: goto -5468 -> 1365
-    //   6836: ldc_w 1518
-    //   6839: aload_1
-    //   6840: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6843: ifeq +34 -> 6877
-    //   6846: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   6849: aload_0
-    //   6850: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6853: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6856: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   6859: new 1520	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$15
-    //   6862: dup
-    //   6863: aload_0
-    //   6864: aload_3
-    //   6865: aload_1
-    //   6866: iload 4
-    //   6868: invokespecial 1521	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$15:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   6871: invokevirtual 1524	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getFormId	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   6874: goto -5509 -> 1365
-    //   6877: ldc 109
-    //   6879: aload_1
-    //   6880: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6883: ifeq +149 -> 7032
-    //   6886: aload_0
-    //   6887: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6890: ifnonnull +7 -> 6897
-    //   6893: ldc_w 631
-    //   6896: areturn
-    //   6897: new 271	org/json/JSONObject
-    //   6900: dup
-    //   6901: aload_2
-    //   6902: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   6905: ldc_w 1525
-    //   6908: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   6911: astore_2
-    //   6912: invokestatic 1531	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
-    //   6915: aload_0
-    //   6916: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   6919: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   6922: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   6925: invokevirtual 1535	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
-    //   6928: astore_1
-    //   6929: aload_1
-    //   6930: ifnull +3440 -> 10370
-    //   6933: aload_1
-    //   6934: invokevirtual 1541	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getMiniGamePkg	()Lcom/tencent/mobileqq/minigame/gpkg/MiniGamePkg;
-    //   6937: astore_1
-    //   6938: aload_2
-    //   6939: aload_1
-    //   6940: invokestatic 1547	com/tencent/mobileqq/mini/entry/MiniAppUtils:checkNavigationAppIdListForMiniGame	(Ljava/lang/String;Lcom/tencent/mobileqq/minigame/gpkg/MiniGamePkg;)Z
-    //   6943: istore 15
-    //   6945: new 271	org/json/JSONObject
-    //   6948: dup
-    //   6949: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   6952: astore_1
-    //   6953: aload_1
-    //   6954: ldc_w 1549
-    //   6957: iload 15
-    //   6959: invokevirtual 1552	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-    //   6962: pop
-    //   6963: ldc 139
-    //   6965: iconst_2
-    //   6966: new 321	java/lang/StringBuilder
-    //   6969: dup
-    //   6970: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   6973: ldc_w 1554
-    //   6976: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6979: aload_1
-    //   6980: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   6983: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6986: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6989: aload_1
-    //   6990: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   6993: areturn
-    //   6994: astore_2
-    //   6995: ldc 139
-    //   6997: iconst_1
-    //   6998: aload_2
-    //   6999: iconst_0
-    //   7000: anewarray 633	java/lang/Object
-    //   7003: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   7006: aload_2
-    //   7007: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   7010: goto -47 -> 6963
-    //   7013: astore_1
-    //   7014: ldc 139
-    //   7016: iconst_1
-    //   7017: aload_1
-    //   7018: iconst_0
-    //   7019: anewarray 633	java/lang/Object
-    //   7022: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   7025: aload_1
-    //   7026: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   7029: goto -5664 -> 1365
-    //   7032: ldc_w 1556
-    //   7035: aload_1
-    //   7036: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7039: ifeq +222 -> 7261
-    //   7042: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   7045: invokevirtual 977	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   7048: astore_1
-    //   7049: aload_1
-    //   7050: instanceof 979
-    //   7053: ifeq +3129 -> 10182
-    //   7056: aload_1
-    //   7057: checkcast 979	com/tencent/mobileqq/mini/MiniAppInterface
-    //   7060: astore_1
-    //   7061: aload_0
-    //   7062: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7065: ifnull +7 -> 7072
-    //   7068: aload_1
-    //   7069: ifnonnull +26 -> 7095
-    //   7072: aload_0
-    //   7073: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7076: aload_3
-    //   7077: ldc_w 1557
-    //   7080: aconst_null
-    //   7081: ldc_w 1558
-    //   7084: invokestatic 1562	alud:a	(I)Ljava/lang/String;
-    //   7087: iload 4
-    //   7089: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7092: goto -5727 -> 1365
-    //   7095: aload_1
+    //   6135: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6138: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6141: new 1581	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$12
+    //   6144: dup
+    //   6145: aload_0
+    //   6146: aload_3
+    //   6147: aload 22
+    //   6149: aload 20
+    //   6151: iload 7
+    //   6153: aload_1
+    //   6154: invokespecial 1584	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$12:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;Landroid/app/Activity;Ljava/lang/String;ILcom/tencent/mobileqq/mini/share/MiniProgramShareUtils$OnShareListener;)V
+    //   6157: invokevirtual 1524	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getShareScreenshot	(Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime$ShareScreenshotCallback;)V
+    //   6160: goto -4757 -> 1403
+    //   6163: iload 4
+    //   6165: ifne -4762 -> 1403
+    //   6168: iload 8
+    //   6170: ifeq -4767 -> 1403
+    //   6173: aload_0
+    //   6174: aload 20
+    //   6176: aload 21
+    //   6178: iload 7
+    //   6180: invokespecial 207	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startShareLocalPicMessage	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   6183: goto -4780 -> 1403
+    //   6186: ldc 44
+    //   6188: aload_1
+    //   6189: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6192: ifeq +383 -> 6575
+    //   6195: aload_0
+    //   6196: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6199: ifnull -4796 -> 1403
+    //   6202: aload_0
+    //   6203: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6206: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6209: ifnull -4806 -> 1403
+    //   6212: new 348	org/json/JSONObject
+    //   6215: dup
+    //   6216: aload_2
+    //   6217: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   6220: ldc_w 1586
+    //   6223: invokevirtual 1406	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   6226: checkcast 359	org/json/JSONArray
+    //   6229: astore_2
+    //   6230: aload_2
+    //   6231: ifnonnull +98 -> 6329
+    //   6234: iconst_0
+    //   6235: istore 10
+    //   6237: iconst_0
+    //   6238: istore 9
+    //   6240: iconst_0
+    //   6241: istore 8
+    //   6243: iconst_0
+    //   6244: istore 7
+    //   6246: aload_0
+    //   6247: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   6250: ifeq +185 -> 6435
+    //   6253: aload_0
+    //   6254: invokevirtual 1383	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getGameBrandRuntime	()Lcom/tencent/mobileqq/minigame/jsapi/GameBrandRuntime;
+    //   6257: astore_2
+    //   6258: aload_2
+    //   6259: ifnull +157 -> 6416
+    //   6262: iload 10
+    //   6264: ifne +8 -> 6272
+    //   6267: aload_2
+    //   6268: iconst_0
+    //   6269: putfield 1388	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQQ	Z
+    //   6272: iload 9
+    //   6274: ifne +8 -> 6282
+    //   6277: aload_2
+    //   6278: iconst_0
+    //   6279: putfield 1391	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareQzone	Z
+    //   6282: iload 8
+    //   6284: ifne +8 -> 6292
+    //   6287: aload_2
+    //   6288: iconst_0
+    //   6289: putfield 1394	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatFriend	Z
+    //   6292: iload 7
+    //   6294: ifne +8 -> 6302
+    //   6297: aload_2
+    //   6298: iconst_0
+    //   6299: putfield 1397	com/tencent/mobileqq/minigame/jsapi/GameBrandRuntime:withShareWeChatMoment	Z
+    //   6302: aload_0
+    //   6303: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6306: aload_3
+    //   6307: aload_1
+    //   6308: aload_1
+    //   6309: aconst_null
+    //   6310: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   6313: iload 4
+    //   6315: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6318: goto -4915 -> 1403
+    //   6321: astore_1
+    //   6322: aload_1
+    //   6323: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   6326: goto -4923 -> 1403
+    //   6329: iconst_m1
+    //   6330: istore 7
+    //   6332: iconst_m1
+    //   6333: istore 8
+    //   6335: iconst_m1
+    //   6336: istore 9
+    //   6338: iconst_m1
+    //   6339: istore 10
+    //   6341: iconst_0
+    //   6342: istore 11
+    //   6344: iload 11
+    //   6346: aload_2
+    //   6347: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   6350: if_icmpge +4146 -> 10496
+    //   6353: aload_2
+    //   6354: iload 11
+    //   6356: invokevirtual 1411	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   6359: astore 20
+    //   6361: aload 20
+    //   6363: ldc 124
+    //   6365: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   6368: ifeq +6 -> 6374
+    //   6371: iconst_0
+    //   6372: istore 10
+    //   6374: aload 20
+    //   6376: ldc 127
+    //   6378: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   6381: ifeq +6 -> 6387
+    //   6384: iconst_0
+    //   6385: istore 9
+    //   6387: aload 20
+    //   6389: ldc 130
+    //   6391: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   6394: ifeq +6 -> 6400
+    //   6397: iconst_0
+    //   6398: istore 8
+    //   6400: aload 20
+    //   6402: ldc 133
+    //   6404: invokevirtual 918	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   6407: ifeq +4257 -> 10664
+    //   6410: iconst_0
+    //   6411: istore 7
+    //   6413: goto +4251 -> 10664
+    //   6416: aload_0
+    //   6417: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6420: aload_3
+    //   6421: aload_1
+    //   6422: aload_1
+    //   6423: aconst_null
+    //   6424: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   6427: iload 4
+    //   6429: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6432: goto -5029 -> 1403
+    //   6435: aload_0
+    //   6436: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6439: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6442: invokevirtual 1415	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getContainer	()Landroid/view/View;
+    //   6445: ifnull +111 -> 6556
+    //   6448: aload_0
+    //   6449: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6452: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6455: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6458: ifnull +98 -> 6556
+    //   6461: iload 10
+    //   6463: ifne +17 -> 6480
+    //   6466: aload_0
+    //   6467: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6470: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6473: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6476: iconst_0
+    //   6477: putfield 1422	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQQ	Z
+    //   6480: iload 9
+    //   6482: ifne +17 -> 6499
+    //   6485: aload_0
+    //   6486: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6489: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6492: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6495: iconst_0
+    //   6496: putfield 1423	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareQzone	Z
+    //   6499: iload 8
+    //   6501: ifne +17 -> 6518
+    //   6504: aload_0
+    //   6505: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6508: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6511: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6514: iconst_0
+    //   6515: putfield 1424	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatFriend	Z
+    //   6518: iload 7
+    //   6520: ifne +17 -> 6537
+    //   6523: aload_0
+    //   6524: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6527: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6530: invokevirtual 1419	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getPageWebView	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   6533: iconst_0
+    //   6534: putfield 1425	com/tencent/mobileqq/mini/appbrand/page/PageWebview:withShareWeChatMoment	Z
+    //   6537: aload_0
+    //   6538: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6541: aload_3
+    //   6542: aload_1
+    //   6543: aload_1
+    //   6544: aconst_null
+    //   6545: invokestatic 1112	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   6548: iload 4
+    //   6550: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6553: goto -5150 -> 1403
+    //   6556: aload_0
+    //   6557: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6560: aload_3
+    //   6561: aload_1
+    //   6562: aload_1
+    //   6563: aconst_null
+    //   6564: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   6567: iload 4
+    //   6569: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6572: goto -5169 -> 1403
+    //   6575: ldc_w 1588
+    //   6578: aload_1
+    //   6579: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6582: ifeq +298 -> 6880
+    //   6585: invokestatic 471	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   6588: invokevirtual 1246	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   6591: astore 20
+    //   6593: aload 20
+    //   6595: instanceof 675
+    //   6598: ifeq +3892 -> 10490
+    //   6601: aload 20
+    //   6603: checkcast 675	com/tencent/mobileqq/mini/MiniAppInterface
+    //   6606: astore 20
+    //   6608: aload 20
+    //   6610: ifnonnull +18 -> 6628
+    //   6613: aload_0
+    //   6614: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6617: aload_3
+    //   6618: aload_1
+    //   6619: aconst_null
+    //   6620: iload 4
+    //   6622: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6625: goto -5222 -> 1403
+    //   6628: new 348	org/json/JSONObject
+    //   6631: dup
+    //   6632: aload_2
+    //   6633: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   6636: ldc_w 1590
+    //   6639: invokevirtual 1593	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   6642: iconst_0
+    //   6643: invokevirtual 1411	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   6646: astore 22
+    //   6648: aload 22
+    //   6650: astore 21
+    //   6652: aload 22
+    //   6654: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6657: ifne +10 -> 6667
+    //   6660: aload 22
+    //   6662: invokevirtual 1596	java/lang/String:trim	()Ljava/lang/String;
+    //   6665: astore 21
+    //   6667: aload 20
+    //   6669: aload_0
+    //   6670: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6673: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6676: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   6679: invokevirtual 679	com/tencent/mobileqq/mini/MiniAppInterface:getAuthorizeCenter	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;
+    //   6682: astore 20
+    //   6684: aload 20
+    //   6686: ifnull +179 -> 6865
+    //   6689: aload 21
+    //   6691: invokestatic 1599	com/tencent/mobileqq/mini/app/AuthorizeCenter:isScopeNameValid	(Ljava/lang/String;)Z
+    //   6694: ifeq +171 -> 6865
+    //   6697: aload 20
+    //   6699: invokevirtual 1602	com/tencent/mobileqq/mini/app/AuthorizeCenter:isAuthorizeSynchronized	()Z
+    //   6702: istore 15
+    //   6704: aload 21
+    //   6706: ldc_w 1604
+    //   6709: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   6712: ifeq +59 -> 6771
+    //   6715: iload 15
+    //   6717: ifne +54 -> 6771
+    //   6720: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   6723: aconst_null
+    //   6724: aload_0
+    //   6725: invokevirtual 1607	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getAppId	()Ljava/lang/String;
+    //   6728: new 1609	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$13
+    //   6731: dup
+    //   6732: aload_0
+    //   6733: aload 20
+    //   6735: aload 21
+    //   6737: aload_3
+    //   6738: aload_1
+    //   6739: iload 4
+    //   6741: aload_2
+    //   6742: invokespecial 1612	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$13:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;ILjava/lang/String;)V
+    //   6745: invokevirtual 1616	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getAuthList	(LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   6748: goto -5345 -> 1403
+    //   6751: astore_2
+    //   6752: aload_2
+    //   6753: invokevirtual 463	java/lang/Throwable:printStackTrace	()V
+    //   6756: aload_0
+    //   6757: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6760: aload_3
+    //   6761: aload_1
+    //   6762: aconst_null
+    //   6763: iload 4
+    //   6765: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6768: goto -5365 -> 1403
+    //   6771: aload 20
+    //   6773: aload 21
+    //   6775: invokevirtual 1619	com/tencent/mobileqq/mini/app/AuthorizeCenter:getAuthFlagFromAuthorize	(Ljava/lang/String;)I
+    //   6778: istore 8
+    //   6780: iload 8
+    //   6782: istore 7
+    //   6784: iload 8
+    //   6786: iconst_1
+    //   6787: if_icmpne +42 -> 6829
+    //   6790: aload_0
+    //   6791: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6794: invokevirtual 1622	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:apiAuthoritySilent	()Z
+    //   6797: ifne +3876 -> 10673
+    //   6800: aload_0
+    //   6801: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6804: astore 20
+    //   6806: iload 8
+    //   6808: istore 7
+    //   6810: aload_0
+    //   6811: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6814: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6817: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   6820: invokestatic 1625	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:isAuthWhiteAppId	(Ljava/lang/String;)Z
+    //   6823: ifeq +6 -> 6829
+    //   6826: goto +3847 -> 10673
+    //   6829: iload 7
+    //   6831: iconst_2
+    //   6832: if_icmpne +18 -> 6850
+    //   6835: aload_0
+    //   6836: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6839: aload_3
+    //   6840: aload_1
+    //   6841: aconst_null
+    //   6842: iload 4
+    //   6844: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6847: goto -5444 -> 1403
+    //   6850: aload_0
+    //   6851: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6854: aload_1
+    //   6855: aload_2
+    //   6856: aload_3
+    //   6857: iload 4
+    //   6859: invokevirtual 1629	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:reqAuthorize	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;I)V
+    //   6862: goto -5459 -> 1403
+    //   6865: aload_0
+    //   6866: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6869: aload_3
+    //   6870: aload_1
+    //   6871: aconst_null
+    //   6872: iload 4
+    //   6874: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   6877: goto -5474 -> 1403
+    //   6880: ldc 56
+    //   6882: aload_1
+    //   6883: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6886: ifeq +165 -> 7051
+    //   6889: new 348	org/json/JSONObject
+    //   6892: dup
+    //   6893: aload_2
+    //   6894: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   6897: astore_1
+    //   6898: ldc 150
+    //   6900: iconst_2
+    //   6901: new 398	java/lang/StringBuilder
+    //   6904: dup
+    //   6905: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   6908: ldc_w 1631
+    //   6911: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6914: aload_1
+    //   6915: invokevirtual 1120	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   6918: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6921: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6924: new 764	android/content/Intent
+    //   6927: dup
+    //   6928: invokespecial 1632	android/content/Intent:<init>	()V
+    //   6931: astore_2
+    //   6932: aload_2
+    //   6933: new 1634	android/content/ComponentName
+    //   6936: dup
+    //   6937: aload_0
+    //   6938: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   6941: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   6944: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   6947: ldc_w 1636
+    //   6950: invokespecial 1637	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   6953: invokevirtual 1641	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   6956: pop
+    //   6957: aload_2
+    //   6958: ldc_w 1643
+    //   6961: aload_1
+    //   6962: ldc_w 1643
+    //   6965: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   6968: invokevirtual 775	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   6971: pop
+    //   6972: aload_2
+    //   6973: ldc_w 1645
+    //   6976: sipush 1008
+    //   6979: invokevirtual 1648	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   6982: pop
+    //   6983: aload_2
+    //   6984: ldc_w 1650
+    //   6987: iconst_2
+    //   6988: invokevirtual 1648	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   6991: pop
+    //   6992: aload_2
+    //   6993: ldc_w 1652
+    //   6996: aload_1
+    //   6997: ldc_w 1654
+    //   7000: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7003: invokevirtual 775	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   7006: pop
+    //   7007: aload_2
+    //   7008: ldc_w 1655
+    //   7011: invokevirtual 1659	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   7014: pop
+    //   7015: aload_0
+    //   7016: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7019: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7022: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   7025: aload_2
+    //   7026: invokevirtual 1173	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   7029: goto -5626 -> 1403
+    //   7032: astore_1
+    //   7033: ldc 150
+    //   7035: iconst_1
+    //   7036: aload_1
+    //   7037: iconst_0
+    //   7038: anewarray 873	java/lang/Object
+    //   7041: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   7044: aload_1
+    //   7045: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   7048: goto -5645 -> 1403
+    //   7051: ldc 11
+    //   7053: aload_1
+    //   7054: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7057: ifeq +61 -> 7118
+    //   7060: new 348	org/json/JSONObject
+    //   7063: dup
+    //   7064: aload_2
+    //   7065: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   7068: astore_2
+    //   7069: new 1661	Wallet/FocusMpIdReq
+    //   7072: dup
+    //   7073: invokestatic 471	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7076: invokevirtual 1246	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   7079: invokevirtual 1251	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   7082: aload_2
+    //   7083: ldc_w 1663
+    //   7086: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7089: invokespecial 1664	Wallet/FocusMpIdReq:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7092: new 1666	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$14
+    //   7095: dup
     //   7096: aload_0
-    //   7097: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7100: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   7103: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   7106: invokevirtual 983	com/tencent/mobileqq/mini/MiniAppInterface:getAuthorizeCenter	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;
-    //   7109: astore_1
-    //   7110: aload_1
-    //   7111: ifnull +121 -> 7232
-    //   7114: ldc_w 1564
-    //   7117: invokestatic 1444	com/tencent/mobileqq/mini/app/AuthorizeCenter:isScopeNameValid	(Ljava/lang/String;)Z
-    //   7120: ifeq +112 -> 7232
-    //   7123: aload_1
-    //   7124: ldc_w 1564
-    //   7127: invokevirtual 1464	com/tencent/mobileqq/mini/app/AuthorizeCenter:getAuthFlagFromAuthorize	(Ljava/lang/String;)I
-    //   7130: istore 8
-    //   7132: iload 8
-    //   7134: istore 7
-    //   7136: iload 8
-    //   7138: iconst_1
-    //   7139: if_icmpne +41 -> 7180
-    //   7142: aload_0
-    //   7143: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7146: invokevirtual 1467	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:apiAuthoritySilent	()Z
-    //   7149: ifne +28 -> 7177
-    //   7152: aload_0
-    //   7153: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7156: astore_1
-    //   7157: iload 8
-    //   7159: istore 7
-    //   7161: aload_0
-    //   7162: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7165: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   7168: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   7171: invokestatic 1470	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:isAuthWhiteAppId	(Ljava/lang/String;)Z
-    //   7174: ifeq +6 -> 7180
-    //   7177: iconst_2
-    //   7178: istore 7
-    //   7180: iload 7
-    //   7182: iconst_2
-    //   7183: if_icmpne +20 -> 7203
-    //   7186: aload_0
-    //   7187: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7190: aload_3
-    //   7191: ldc_w 1557
-    //   7194: aconst_null
-    //   7195: iload 4
-    //   7197: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   7200: goto -5835 -> 1365
-    //   7203: ldc 139
-    //   7205: iconst_1
-    //   7206: ldc_w 1566
-    //   7209: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   7212: aload_0
-    //   7213: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7216: aload_3
-    //   7217: ldc_w 1557
-    //   7220: aconst_null
-    //   7221: ldc_w 1566
-    //   7224: iload 4
-    //   7226: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7229: goto -5864 -> 1365
-    //   7232: aload_0
-    //   7233: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7236: aload_3
-    //   7237: ldc_w 1557
-    //   7240: aconst_null
-    //   7241: ldc_w 1568
-    //   7244: iload 4
-    //   7246: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7249: ldc 139
-    //   7251: iconst_1
-    //   7252: ldc_w 1570
-    //   7255: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   7258: goto -5893 -> 1365
-    //   7261: ldc_w 1572
-    //   7264: aload_1
-    //   7265: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7268: ifeq +213 -> 7481
-    //   7271: new 271	org/json/JSONObject
-    //   7274: dup
-    //   7275: aload_2
-    //   7276: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   7279: astore 20
-    //   7281: aload 20
-    //   7283: ldc_w 1574
-    //   7286: invokevirtual 1438	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   7289: astore_2
-    //   7290: aload 20
-    //   7292: ldc_w 1023
-    //   7295: ldc_w 1025
-    //   7298: invokevirtual 965	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   7301: astore 20
-    //   7303: aload_2
-    //   7304: ifnull -5939 -> 1365
-    //   7307: aload_2
-    //   7308: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   7311: ifle -5946 -> 1365
-    //   7314: aload_2
-    //   7315: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   7318: anewarray 363	java/lang/String
-    //   7321: astore 21
-    //   7323: iconst_0
-    //   7324: istore 7
-    //   7326: iload 7
-    //   7328: aload_2
-    //   7329: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   7332: if_icmpge +23 -> 7355
-    //   7335: aload 21
-    //   7337: iload 7
-    //   7339: aload_2
-    //   7340: iload 7
-    //   7342: invokevirtual 1253	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   7345: aastore
-    //   7346: iload 7
-    //   7348: iconst_1
-    //   7349: iadd
-    //   7350: istore 7
-    //   7352: goto -26 -> 7326
-    //   7355: invokestatic 1531	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
-    //   7358: aload_0
-    //   7359: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7362: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   7365: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   7368: invokevirtual 1535	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
-    //   7371: astore_2
-    //   7372: aload_2
-    //   7373: ifnonnull +26 -> 7399
-    //   7376: aload_1
-    //   7377: aconst_null
-    //   7378: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   7381: astore_2
-    //   7382: aload_0
-    //   7383: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7386: aload_3
-    //   7387: aload_1
-    //   7388: aload_2
-    //   7389: iload 4
-    //   7391: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   7394: aload_2
-    //   7395: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   7398: areturn
-    //   7399: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   7402: aload_2
-    //   7403: invokevirtual 1578	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
-    //   7406: invokevirtual 1581	com/tencent/mobileqq/minigame/manager/GameInfoManager:getAppId	()Ljava/lang/String;
-    //   7409: aload 20
-    //   7411: aload 21
-    //   7413: new 1583	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$16
-    //   7416: dup
-    //   7417: aload_0
-    //   7418: aload_2
-    //   7419: aload_3
-    //   7420: aload_1
-    //   7421: iload 4
-    //   7423: invokespecial 1586	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$16:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   7426: invokevirtual 1590	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserInfoOpenData	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   7429: goto -6064 -> 1365
-    //   7432: astore_2
-    //   7433: aload_0
-    //   7434: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7437: aload_3
-    //   7438: aload_1
-    //   7439: aconst_null
-    //   7440: iload 4
-    //   7442: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   7445: ldc 139
-    //   7447: iconst_1
-    //   7448: new 321	java/lang/StringBuilder
-    //   7451: dup
-    //   7452: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   7455: ldc_w 1592
-    //   7458: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7461: aload_1
-    //   7462: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7465: ldc_w 1594
-    //   7468: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7471: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   7474: aload_2
-    //   7475: invokestatic 997	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   7478: goto -6113 -> 1365
-    //   7481: ldc 41
-    //   7483: aload_1
-    //   7484: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7487: ifeq +424 -> 7911
-    //   7490: new 271	org/json/JSONObject
-    //   7493: dup
-    //   7494: aload_2
-    //   7495: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   7498: astore_2
-    //   7499: aload_2
-    //   7500: ldc_w 1596
-    //   7503: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   7506: astore 23
-    //   7508: aload_2
-    //   7509: ldc_w 1598
-    //   7512: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   7515: astore 24
-    //   7517: aload_2
-    //   7518: ldc_w 1600
-    //   7521: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   7524: astore 25
-    //   7526: aload_2
-    //   7527: ldc_w 1602
-    //   7530: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   7533: astore 21
-    //   7535: aload_2
-    //   7536: ldc_w 1604
-    //   7539: invokevirtual 1607	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   7542: istore 7
-    //   7544: ldc_w 1609
-    //   7547: aload 24
-    //   7549: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7552: ifne +33 -> 7585
-    //   7555: ldc_w 1611
-    //   7558: aload 24
-    //   7560: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7563: ifne +22 -> 7585
-    //   7566: aload_0
-    //   7567: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7570: aload_3
-    //   7571: aload_1
-    //   7572: aconst_null
-    //   7573: ldc_w 1613
-    //   7576: iload 4
-    //   7578: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7581: ldc_w 631
-    //   7584: areturn
-    //   7585: ldc_w 1609
-    //   7588: aload 23
-    //   7590: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7593: ifne +33 -> 7626
-    //   7596: ldc_w 1615
-    //   7599: aload 23
-    //   7601: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7604: ifne +22 -> 7626
-    //   7607: aload_0
-    //   7608: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7611: aload_3
-    //   7612: aload_1
-    //   7613: aconst_null
-    //   7614: ldc_w 1617
-    //   7617: iload 4
-    //   7619: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7622: ldc_w 631
-    //   7625: areturn
-    //   7626: iload 7
-    //   7628: ifgt +22 -> 7650
-    //   7631: aload_0
-    //   7632: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7635: aload_3
-    //   7636: aload_1
-    //   7637: aconst_null
-    //   7638: ldc_w 1619
-    //   7641: iload 4
-    //   7643: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7646: ldc_w 631
-    //   7649: areturn
-    //   7650: aload 21
-    //   7652: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7655: ifeq +22 -> 7677
-    //   7658: aload_0
-    //   7659: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7662: aload_3
-    //   7663: aload_1
-    //   7664: aconst_null
-    //   7665: ldc_w 1621
-    //   7668: iload 4
-    //   7670: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7673: ldc_w 631
-    //   7676: areturn
-    //   7677: new 1623	android/graphics/Paint
-    //   7680: dup
-    //   7681: invokespecial 1624	android/graphics/Paint:<init>	()V
-    //   7684: astore 22
-    //   7686: aload 22
-    //   7688: iload 7
-    //   7690: i2f
-    //   7691: invokevirtual 1628	android/graphics/Paint:setTextSize	(F)V
-    //   7694: aconst_null
-    //   7695: astore 20
-    //   7697: ldc_w 1609
-    //   7700: aload 23
-    //   7702: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7705: ifeq +68 -> 7773
-    //   7708: ldc_w 1609
-    //   7711: aload 24
-    //   7713: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7716: ifeq +33 -> 7749
-    //   7719: aload 25
-    //   7721: iconst_0
-    //   7722: invokestatic 1634	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
-    //   7725: astore_2
-    //   7726: aload_2
-    //   7727: ifnonnull +105 -> 7832
-    //   7730: aload_0
-    //   7731: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7734: aload_3
-    //   7735: aload_1
-    //   7736: aconst_null
-    //   7737: ldc_w 1636
-    //   7740: iload 4
-    //   7742: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7745: ldc_w 631
-    //   7748: areturn
-    //   7749: aload 20
-    //   7751: astore_2
-    //   7752: ldc_w 1611
-    //   7755: aload 24
-    //   7757: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7760: ifeq -34 -> 7726
-    //   7763: aload 25
-    //   7765: iconst_1
-    //   7766: invokestatic 1634	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
-    //   7769: astore_2
-    //   7770: goto -44 -> 7726
-    //   7773: aload 20
-    //   7775: astore_2
-    //   7776: ldc_w 1615
-    //   7779: aload 23
-    //   7781: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7784: ifeq -58 -> 7726
-    //   7787: ldc_w 1609
-    //   7790: aload 24
-    //   7792: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7795: ifeq +13 -> 7808
-    //   7798: aload 25
-    //   7800: iconst_2
-    //   7801: invokestatic 1634	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
-    //   7804: astore_2
-    //   7805: goto -79 -> 7726
-    //   7808: aload 20
-    //   7810: astore_2
-    //   7811: ldc_w 1611
-    //   7814: aload 24
-    //   7816: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7819: ifeq -93 -> 7726
-    //   7822: aload 25
-    //   7824: iconst_3
-    //   7825: invokestatic 1634	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
-    //   7828: astore_2
-    //   7829: goto -103 -> 7726
-    //   7832: new 1638	android/graphics/Rect
-    //   7835: dup
-    //   7836: invokespecial 1639	android/graphics/Rect:<init>	()V
-    //   7839: astore_2
-    //   7840: aload 22
-    //   7842: aload 21
-    //   7844: iconst_0
-    //   7845: aload 21
-    //   7847: invokevirtual 1640	java/lang/String:length	()I
-    //   7850: aload_2
-    //   7851: invokevirtual 1644	android/graphics/Paint:getTextBounds	(Ljava/lang/String;IILandroid/graphics/Rect;)V
-    //   7854: aload_0
-    //   7855: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7858: aload_3
-    //   7859: aload_1
-    //   7860: aconst_null
-    //   7861: iload 4
-    //   7863: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   7866: new 321	java/lang/StringBuilder
-    //   7869: dup
-    //   7870: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   7873: ldc_w 631
-    //   7876: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7879: aload_2
-    //   7880: invokevirtual 1647	android/graphics/Rect:height	()I
-    //   7883: invokevirtual 493	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   7886: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   7889: astore_2
-    //   7890: aload_2
-    //   7891: areturn
-    //   7892: astore_2
-    //   7893: aload_0
-    //   7894: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7897: aload_3
-    //   7898: aload_1
-    //   7899: aconst_null
-    //   7900: ldc_w 1649
-    //   7903: iload 4
-    //   7905: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   7908: goto -6543 -> 1365
-    //   7911: ldc_w 1651
-    //   7914: aload_1
-    //   7915: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7918: ifeq +28 -> 7946
-    //   7921: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   7924: aload_0
-    //   7925: invokevirtual 1452	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getAppId	()Ljava/lang/String;
-    //   7928: new 1653	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$17
-    //   7931: dup
-    //   7932: aload_0
-    //   7933: aload_3
-    //   7934: aload_1
-    //   7935: iload 4
-    //   7937: invokespecial 1654	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$17:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   7940: invokevirtual 1656	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserInfoExtra	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   7943: goto -6578 -> 1365
-    //   7946: ldc 23
-    //   7948: aload_1
-    //   7949: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   7952: ifeq +323 -> 8275
-    //   7955: aload_0
-    //   7956: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   7959: ifeq -6594 -> 1365
-    //   7962: invokestatic 1531	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
-    //   7965: aload_0
-    //   7966: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7969: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   7972: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   7975: invokevirtual 1535	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
-    //   7978: astore 20
-    //   7980: aload 20
-    //   7982: ifnonnull +26 -> 8008
-    //   7985: aload_1
-    //   7986: aconst_null
-    //   7987: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   7990: astore_2
-    //   7991: aload_0
-    //   7992: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   7995: aload_3
-    //   7996: aload_1
-    //   7997: aload_2
-    //   7998: iload 4
-    //   8000: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   8003: aload_2
-    //   8004: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   8007: areturn
-    //   8008: aload 20
-    //   8010: invokevirtual 1578	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
-    //   8013: invokevirtual 1660	com/tencent/mobileqq/minigame/manager/GameInfoManager:getLaunchOptions	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions;
-    //   8016: astore 21
-    //   8018: new 271	org/json/JSONObject
-    //   8021: dup
-    //   8022: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   8025: astore 22
-    //   8027: new 271	org/json/JSONObject
-    //   8030: dup
-    //   8031: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   8034: astore 23
-    //   8036: aload 21
-    //   8038: getfield 1665	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:fromMiniAppId	Ljava/lang/String;
-    //   8041: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8044: ifeq +170 -> 8214
-    //   8047: aconst_null
-    //   8048: astore_2
-    //   8049: aload 23
-    //   8051: ldc_w 1525
-    //   8054: aload_2
-    //   8055: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8058: pop
-    //   8059: aload 21
-    //   8061: getfield 1668	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:navigateExtData	Ljava/lang/String;
-    //   8064: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8067: ifeq +156 -> 8223
-    //   8070: aconst_null
-    //   8071: astore_2
-    //   8072: aload 23
-    //   8074: ldc_w 1670
-    //   8077: aload_2
-    //   8078: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8081: pop
-    //   8082: aload 22
-    //   8084: ldc_w 1671
-    //   8087: aload 21
-    //   8089: getfield 1672	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:scene	I
-    //   8092: invokestatic 1678	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getWikiScene	(I)I
-    //   8095: invokevirtual 822	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   8098: pop
-    //   8099: aload 22
-    //   8101: ldc_w 1300
-    //   8104: aload 21
-    //   8106: getfield 1681	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:query	Lorg/json/JSONObject;
-    //   8109: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8112: pop
-    //   8113: aload 21
-    //   8115: getfield 1683	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:shareTicket	Ljava/lang/String;
-    //   8118: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8121: ifeq +111 -> 8232
-    //   8124: aconst_null
-    //   8125: astore_2
-    //   8126: aload 22
-    //   8128: ldc_w 1192
-    //   8131: aload_2
-    //   8132: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8135: pop
-    //   8136: aload 22
-    //   8138: ldc_w 1685
-    //   8141: aload 23
-    //   8143: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8146: pop
-    //   8147: aload 22
-    //   8149: ldc_w 1687
-    //   8152: aload 20
-    //   8154: invokevirtual 1578	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
-    //   8157: invokevirtual 1690	com/tencent/mobileqq/minigame/manager/GameInfoManager:getExtendData	()Ljava/lang/String;
-    //   8160: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8163: pop
-    //   8164: aload 22
-    //   8166: ldc_w 1325
-    //   8169: aload 21
-    //   8171: getfield 1692	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:entryDataHash	Ljava/lang/String;
-    //   8174: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   8177: pop
-    //   8178: ldc 139
-    //   8180: iconst_1
-    //   8181: new 321	java/lang/StringBuilder
-    //   8184: dup
-    //   8185: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   8188: ldc_w 1694
-    //   8191: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8194: aload 22
-    //   8196: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   8199: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8202: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8205: invokestatic 372	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8208: aload 22
-    //   8210: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   8213: areturn
-    //   8214: aload 21
-    //   8216: getfield 1665	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:fromMiniAppId	Ljava/lang/String;
-    //   8219: astore_2
-    //   8220: goto -171 -> 8049
-    //   8223: aload 21
-    //   8225: getfield 1668	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:navigateExtData	Ljava/lang/String;
-    //   8228: astore_2
-    //   8229: goto -157 -> 8072
-    //   8232: aload 21
-    //   8234: getfield 1683	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:shareTicket	Ljava/lang/String;
-    //   8237: astore_2
-    //   8238: goto -112 -> 8126
-    //   8241: astore_2
-    //   8242: ldc 139
-    //   8244: iconst_1
-    //   8245: ldc_w 1696
-    //   8248: aload_2
-    //   8249: invokestatic 997	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   8252: aload_1
-    //   8253: aconst_null
-    //   8254: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   8257: astore_1
-    //   8258: aload_3
-    //   8259: iload 4
-    //   8261: aload_1
-    //   8262: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   8265: invokeinterface 876 3 0
-    //   8270: aload_1
-    //   8271: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   8274: areturn
-    //   8275: ldc 53
-    //   8277: aload_1
-    //   8278: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   8281: ifeq +648 -> 8929
-    //   8284: new 271	org/json/JSONObject
-    //   8287: dup
-    //   8288: aload_2
-    //   8289: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   8292: astore_2
-    //   8293: ldc 139
-    //   8295: iconst_1
-    //   8296: new 321	java/lang/StringBuilder
-    //   8299: dup
-    //   8300: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   8303: ldc_w 1698
-    //   8306: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8309: aload_2
-    //   8310: invokevirtual 884	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   8313: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8316: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8319: aload_2
-    //   8320: ldc_w 519
-    //   8323: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   8326: astore 22
-    //   8328: aload 22
-    //   8330: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8333: ifeq +20 -> 8353
-    //   8336: aload_0
-    //   8337: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8340: aload_3
-    //   8341: aload_1
-    //   8342: aconst_null
-    //   8343: ldc_w 1700
-    //   8346: iload 4
-    //   8348: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   8351: aconst_null
-    //   8352: areturn
-    //   8353: aload_2
-    //   8354: ldc_w 1702
-    //   8357: iconst_0
-    //   8358: invokevirtual 971	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   8361: istore 15
-    //   8363: aload 22
-    //   8365: invokevirtual 1705	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   8368: astore 20
-    //   8370: aload 20
-    //   8372: invokestatic 1711	com/tencent/mobileqq/mini/apkg/DomainConfig:getDomainConfig	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/DomainConfig;
-    //   8375: astore 21
-    //   8377: iload 15
-    //   8379: ifne +78 -> 8457
-    //   8382: aload_0
-    //   8383: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8386: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8389: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   8392: aload 20
-    //   8394: iconst_0
-    //   8395: invokevirtual 1714	com/tencent/mobileqq/mini/apkg/ApkgInfo:isValidPrefix	(Ljava/lang/String;Z)Z
-    //   8398: ifne +20 -> 8418
-    //   8401: aload_0
-    //   8402: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8405: aload_3
-    //   8406: aload_1
-    //   8407: aconst_null
-    //   8408: ldc_w 1716
-    //   8411: iload 4
-    //   8413: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   8416: aconst_null
-    //   8417: areturn
-    //   8418: aload_0
-    //   8419: getfield 343	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:openUrlDomainWhiteList	Ljava/util/ArrayList;
-    //   8422: ifnull +35 -> 8457
-    //   8425: aload_0
-    //   8426: getfield 343	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:openUrlDomainWhiteList	Ljava/util/ArrayList;
-    //   8429: aload 21
-    //   8431: getfield 1719	com/tencent/mobileqq/mini/apkg/DomainConfig:host	Ljava/lang/String;
-    //   8434: invokevirtual 1722	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
-    //   8437: ifne +20 -> 8457
-    //   8440: aload_0
-    //   8441: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8444: aload_3
-    //   8445: aload_1
-    //   8446: aconst_null
-    //   8447: ldc_w 1724
-    //   8450: iload 4
-    //   8452: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   8455: aconst_null
-    //   8456: areturn
-    //   8457: ldc_w 1726
-    //   8460: aload 21
-    //   8462: getfield 1719	com/tencent/mobileqq/mini/apkg/DomainConfig:host	Ljava/lang/String;
-    //   8465: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   8468: ifeq +438 -> 8906
-    //   8471: ldc_w 1728
-    //   8474: ldc_w 1730
-    //   8477: invokestatic 1735	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   8480: astore_2
-    //   8481: aload 22
-    //   8483: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8486: ifne +402 -> 8888
-    //   8489: aload_0
-    //   8490: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8493: ifnull +395 -> 8888
-    //   8496: aload_0
-    //   8497: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8500: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8503: ifnull +385 -> 8888
-    //   8506: invokestatic 1740	com/tencent/mobileqq/mini/mainpage/MainPageFragment:getUin	()Ljava/lang/String;
-    //   8509: astore 21
-    //   8511: aload 21
-    //   8513: ifnonnull +1862 -> 10375
-    //   8516: ldc_w 631
-    //   8519: astore 20
-    //   8521: aload 22
-    //   8523: ldc_w 1742
-    //   8526: aload 20
-    //   8528: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8531: ldc_w 1748
-    //   8534: invokestatic 841	bdgk:c	()Ljava/lang/String;
-    //   8537: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8540: ldc_w 1750
-    //   8543: ldc_w 1752
-    //   8546: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8549: ldc_w 1754
-    //   8552: getstatic 641	android/os/Build$VERSION:SDK_INT	I
-    //   8555: invokestatic 1110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   8558: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8561: ldc_w 1756
-    //   8564: invokestatic 1760	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   8567: invokestatic 1765	bdin:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   8570: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8573: ldc_w 1767
-    //   8576: aload_2
-    //   8577: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8580: astore 22
-    //   8582: invokestatic 399	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   8585: new 321	java/lang/StringBuilder
-    //   8588: dup
-    //   8589: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   8592: getstatic 1773	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
-    //   8595: invokevirtual 1774	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
-    //   8598: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8601: aload 21
-    //   8603: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8606: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8609: invokevirtual 1777	com/tencent/common/app/BaseApplicationImpl:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   8612: astore 20
-    //   8614: aload 20
-    //   8616: astore_2
-    //   8617: aload 20
-    //   8619: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8622: ifeq +7 -> 8629
-    //   8625: ldc_w 631
-    //   8628: astore_2
-    //   8629: aload 22
-    //   8631: ldc_w 1779
-    //   8634: aload_2
-    //   8635: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   8638: astore_2
-    //   8639: invokestatic 618	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   8642: ifeq +29 -> 8671
-    //   8645: ldc 139
-    //   8647: iconst_2
-    //   8648: new 321	java/lang/StringBuilder
-    //   8651: dup
-    //   8652: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   8655: ldc_w 1781
-    //   8658: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8661: aload_2
-    //   8662: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8665: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8668: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8671: new 512	android/content/Intent
-    //   8674: dup
-    //   8675: aload_0
-    //   8676: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8679: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8682: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   8685: ldc_w 514
-    //   8688: invokespecial 517	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   8691: astore 20
-    //   8693: aload 20
-    //   8695: ldc_w 1783
-    //   8698: ldc_w 1784
-    //   8701: invokestatic 1562	alud:a	(I)Ljava/lang/String;
-    //   8704: invokevirtual 523	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   8707: pop
-    //   8708: aload 20
-    //   8710: ldc_w 528
-    //   8713: iconst_1
-    //   8714: invokevirtual 1787	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   8717: pop
-    //   8718: aload 20
-    //   8720: ldc_w 1789
-    //   8723: iconst_1
-    //   8724: invokevirtual 1787	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   8727: pop
-    //   8728: aload 20
-    //   8730: ldc_w 519
-    //   8733: aload_2
-    //   8734: invokevirtual 523	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   8737: pop
-    //   8738: aload_0
-    //   8739: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8742: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8745: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   8748: aload 20
-    //   8750: invokevirtual 948	android/app/Activity:startActivity	(Landroid/content/Intent;)V
-    //   8753: aload_0
-    //   8754: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8757: aload_3
-    //   8758: aload_1
-    //   8759: aconst_null
-    //   8760: iload 4
-    //   8762: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   8765: aload_2
-    //   8766: ldc_w 1791
-    //   8769: invokevirtual 1317	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   8772: ifeq -7407 -> 1365
-    //   8775: ldc 139
-    //   8777: iconst_2
-    //   8778: ldc_w 1793
-    //   8781: invokestatic 600	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8784: new 525	android/os/Bundle
-    //   8787: dup
-    //   8788: invokespecial 526	android/os/Bundle:<init>	()V
-    //   8791: astore_1
-    //   8792: aload_1
-    //   8793: ldc_w 1795
-    //   8796: aload_0
-    //   8797: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8800: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8803: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   8806: invokevirtual 1180	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   8809: invokestatic 1800	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   8812: ldc_w 1802
-    //   8815: ldc_w 1804
-    //   8818: aload_1
-    //   8819: new 1806	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$18
-    //   8822: dup
-    //   8823: aload_0
-    //   8824: invokespecial 1809	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$18:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;)V
-    //   8827: invokevirtual 1813	com/tencent/mobileqq/qipc/QIPCClientHelper:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Leipc/EIPCResultCallback;)V
-    //   8830: goto -7465 -> 1365
-    //   8833: astore_1
-    //   8834: ldc 139
-    //   8836: iconst_1
-    //   8837: aload_1
-    //   8838: iconst_0
-    //   8839: anewarray 633	java/lang/Object
-    //   8842: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   8845: goto -7480 -> 1365
-    //   8848: astore_2
-    //   8849: ldc 139
-    //   8851: iconst_1
-    //   8852: new 321	java/lang/StringBuilder
-    //   8855: dup
-    //   8856: invokespecial 322	java/lang/StringBuilder:<init>	()V
-    //   8859: ldc_w 1815
-    //   8862: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8865: ldc_w 631
-    //   8868: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8871: invokevirtual 332	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8874: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8877: aload_2
-    //   8878: invokevirtual 1816	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   8881: ldc_w 631
-    //   8884: astore_2
-    //   8885: goto -404 -> 8481
-    //   8888: aload_0
-    //   8889: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8892: aload_3
-    //   8893: aload_1
-    //   8894: aconst_null
-    //   8895: ldc_w 1818
-    //   8898: iload 4
-    //   8900: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   8903: goto -7538 -> 1365
-    //   8906: new 1820	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$19
-    //   8909: dup
-    //   8910: aload_0
-    //   8911: aload_2
-    //   8912: aload_3
-    //   8913: aload_1
-    //   8914: iload 4
-    //   8916: invokespecial 1823	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$19:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   8919: bipush 16
-    //   8921: aconst_null
-    //   8922: iconst_0
-    //   8923: invokestatic 1827	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   8926: goto -7561 -> 1365
-    //   8929: ldc 62
-    //   8931: aload_1
-    //   8932: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   8935: ifeq +113 -> 9048
-    //   8938: new 271	org/json/JSONObject
-    //   8941: dup
-    //   8942: aload_2
-    //   8943: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   8946: ldc_w 1829
-    //   8949: iconst_0
-    //   8950: invokevirtual 971	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   8953: istore 15
-    //   8955: aload_0
-    //   8956: invokevirtual 1221	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
-    //   8959: ifeq -7594 -> 1365
-    //   8962: invokestatic 1531	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
-    //   8965: aload_0
-    //   8966: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8969: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   8972: getfield 1483	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
-    //   8975: invokevirtual 1535	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
-    //   8978: astore_2
-    //   8979: aload_2
-    //   8980: ifnonnull +26 -> 9006
-    //   8983: aload_1
-    //   8984: aconst_null
-    //   8985: invokestatic 887	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   8988: astore_2
-    //   8989: aload_0
-    //   8990: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   8993: aload_3
-    //   8994: aload_1
-    //   8995: aload_2
-    //   8996: iload 4
-    //   8998: invokevirtual 1000	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   9001: aload_2
-    //   9002: invokevirtual 871	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   9005: areturn
-    //   9006: aload_2
-    //   9007: invokevirtual 1578	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
-    //   9010: invokevirtual 1833	com/tencent/mobileqq/minigame/manager/GameInfoManager:getMiniAppConfig	()Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9013: iload 15
-    //   9015: invokestatic 1839	com/tencent/mobileqq/minigame/gpkg/GpkgManager:setOfflineResourceContent	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Z)V
-    //   9018: aload_0
-    //   9019: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9022: aload_3
-    //   9023: aload_1
-    //   9024: aconst_null
-    //   9025: iload 4
-    //   9027: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   9030: goto -7665 -> 1365
-    //   9033: astore_1
-    //   9034: ldc 139
-    //   9036: iconst_1
-    //   9037: aload_1
-    //   9038: iconst_0
-    //   9039: anewarray 633	java/lang/Object
-    //   9042: invokestatic 1030	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   9045: goto -7680 -> 1365
-    //   9048: ldc 92
-    //   9050: aload_1
-    //   9051: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9054: ifeq +178 -> 9232
-    //   9057: aload_0
-    //   9058: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9061: ifnull -7696 -> 1365
-    //   9064: new 374	java/util/ArrayList
-    //   9067: dup
-    //   9068: invokespecial 375	java/util/ArrayList:<init>	()V
-    //   9071: astore 20
-    //   9073: new 271	org/json/JSONObject
-    //   9076: dup
-    //   9077: aload_2
-    //   9078: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   9081: ldc_w 956
-    //   9084: invokevirtual 960	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   9087: ldc_w 1841
-    //   9090: invokevirtual 1438	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   9093: astore_2
-    //   9094: aload_2
-    //   9095: ifnull +85 -> 9180
-    //   9098: aload_2
-    //   9099: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   9102: ifle +78 -> 9180
-    //   9105: iconst_0
-    //   9106: istore 7
-    //   9108: iload 7
-    //   9110: aload_2
-    //   9111: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   9114: if_icmpge +66 -> 9180
-    //   9117: aload_2
-    //   9118: iload 7
-    //   9120: invokevirtual 1844	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   9123: checkcast 271	org/json/JSONObject
-    //   9126: astore 21
-    //   9128: new 1846	com/tencent/mobileqq/mini/apkg/PluginInfo
-    //   9131: dup
-    //   9132: invokespecial 1847	com/tencent/mobileqq/mini/apkg/PluginInfo:<init>	()V
-    //   9135: astore 22
-    //   9137: aload 22
-    //   9139: aload 21
-    //   9141: ldc_w 1849
-    //   9144: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   9147: invokevirtual 1852	com/tencent/mobileqq/mini/apkg/PluginInfo:setPluginId	(Ljava/lang/String;)V
-    //   9150: aload 22
-    //   9152: aload 21
-    //   9154: ldc_w 1854
-    //   9157: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   9160: invokevirtual 1857	com/tencent/mobileqq/mini/apkg/PluginInfo:setInnerVersion	(Ljava/lang/String;)V
-    //   9163: aload 20
-    //   9165: aload 22
-    //   9167: invokevirtual 388	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   9170: pop
-    //   9171: iload 7
-    //   9173: iconst_1
-    //   9174: iadd
-    //   9175: istore 7
-    //   9177: goto -69 -> 9108
-    //   9180: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   9183: aload_0
-    //   9184: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9187: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9190: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   9193: aload 20
-    //   9195: new 1859	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$20
-    //   9198: dup
-    //   9199: aload_0
-    //   9200: aload_3
-    //   9201: aload_1
-    //   9202: iload 4
-    //   9204: invokespecial 1860	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$20:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   9207: invokevirtual 1863	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:verifyPlugin	(Ljava/lang/String;Ljava/util/ArrayList;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   9210: goto -7845 -> 1365
-    //   9213: astore_2
-    //   9214: aload_0
-    //   9215: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9218: aload_3
-    //   9219: aload_1
-    //   9220: aconst_null
-    //   9221: ldc_w 1865
-    //   9224: iload 4
-    //   9226: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   9229: goto -7864 -> 1365
-    //   9232: ldc 14
-    //   9234: aload_1
-    //   9235: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9238: ifeq +127 -> 9365
-    //   9241: aload_0
-    //   9242: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9245: ifnull -7880 -> 1365
-    //   9248: aload_2
-    //   9249: ifnull -7884 -> 1365
-    //   9252: new 271	org/json/JSONObject
-    //   9255: dup
-    //   9256: aload_2
-    //   9257: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   9260: ldc_w 1867
-    //   9263: invokevirtual 1438	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   9266: astore_2
-    //   9267: new 374	java/util/ArrayList
-    //   9270: dup
-    //   9271: invokespecial 375	java/util/ArrayList:<init>	()V
-    //   9274: astore 20
-    //   9276: aload_2
-    //   9277: ifnull +46 -> 9323
-    //   9280: aload_2
-    //   9281: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   9284: ifle +39 -> 9323
-    //   9287: iconst_0
-    //   9288: istore 7
-    //   9290: iload 7
-    //   9292: aload_2
-    //   9293: invokevirtual 1251	org/json/JSONArray:length	()I
-    //   9296: if_icmpge +27 -> 9323
-    //   9299: aload 20
-    //   9301: aload_2
-    //   9302: iload 7
-    //   9304: invokevirtual 1844	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   9307: invokestatic 1870	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   9310: invokevirtual 388	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   9313: pop
-    //   9314: iload 7
-    //   9316: iconst_1
-    //   9317: iadd
-    //   9318: istore 7
-    //   9320: goto -30 -> 9290
-    //   9323: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   9326: aload 20
-    //   9328: new 1872	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$21
-    //   9331: dup
-    //   9332: aload_0
-    //   9333: aload_3
-    //   9334: aload_1
-    //   9335: iload 4
-    //   9337: invokespecial 1873	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$21:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   9340: invokevirtual 1876	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:batchGetContact	(Ljava/util/ArrayList;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   9343: goto -7978 -> 1365
-    //   9346: astore_2
-    //   9347: aload_0
-    //   9348: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9351: aload_3
-    //   9352: aload_1
-    //   9353: aconst_null
-    //   9354: ldc_w 1878
-    //   9357: iload 4
-    //   9359: invokevirtual 428	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
-    //   9362: goto -7997 -> 1365
-    //   9365: ldc 26
-    //   9367: aload_1
-    //   9368: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9371: ifeq +60 -> 9431
-    //   9374: new 271	org/json/JSONObject
-    //   9377: dup
-    //   9378: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   9381: astore_2
-    //   9382: aload_2
-    //   9383: ldc_w 288
-    //   9386: aload_0
-    //   9387: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9390: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9393: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   9396: getfield 1879	com/tencent/mobileqq/mini/apkg/ApkgInfo:appId	Ljava/lang/String;
-    //   9399: invokestatic 1884	com/tencent/mobileqq/mini/report/MiniReportManager:getLaunchPerformance	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   9402: invokevirtual 807	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   9405: pop
-    //   9406: aload_0
-    //   9407: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9410: aload_3
-    //   9411: aload_1
-    //   9412: aload_2
-    //   9413: iload 4
-    //   9415: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   9418: goto -8053 -> 1365
-    //   9421: astore 20
-    //   9423: aload 20
-    //   9425: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   9428: goto -22 -> 9406
-    //   9431: ldc_w 1886
-    //   9434: aload_1
-    //   9435: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9438: ifeq +131 -> 9569
-    //   9441: new 271	org/json/JSONObject
-    //   9444: dup
-    //   9445: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   9448: astore_2
-    //   9449: aload_0
-    //   9450: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9453: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9456: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   9459: astore 20
-    //   9461: iconst_0
-    //   9462: istore 16
-    //   9464: iload 16
-    //   9466: istore 15
-    //   9468: aload 20
-    //   9470: ifnull +64 -> 9534
-    //   9473: iload 16
-    //   9475: istore 15
-    //   9477: aload 20
-    //   9479: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9482: ifnull +52 -> 9534
-    //   9485: iload 16
-    //   9487: istore 15
-    //   9489: aload 20
-    //   9491: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9494: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9497: ifnull +37 -> 9534
-    //   9500: iload 16
-    //   9502: istore 15
-    //   9504: aload 20
-    //   9506: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9509: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9512: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9515: ifnull +19 -> 9534
-    //   9518: aload 20
-    //   9520: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9523: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9526: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9529: getfield 1889	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
-    //   9532: istore 15
-    //   9534: aload_2
-    //   9535: ldc_w 1891
-    //   9538: iload 15
-    //   9540: invokevirtual 1552	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-    //   9543: pop
-    //   9544: aload_0
-    //   9545: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9548: aload_3
-    //   9549: aload_1
-    //   9550: aload_2
-    //   9551: iload 4
-    //   9553: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   9556: goto -8191 -> 1365
-    //   9559: astore 20
-    //   9561: aload 20
-    //   9563: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   9566: goto -22 -> 9544
-    //   9569: ldc_w 1893
-    //   9572: aload_1
-    //   9573: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9576: ifeq +293 -> 9869
-    //   9579: new 271	org/json/JSONObject
-    //   9582: dup
+    //   7097: aload_3
+    //   7098: aload_1
+    //   7099: iload 4
+    //   7101: invokespecial 1667	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$14:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   7104: invokestatic 1261	akmf:a	(Lcom/qq/taf/jce/JceStruct;Lmqq/observer/BusinessObserver;)V
+    //   7107: goto -5704 -> 1403
+    //   7110: astore_1
+    //   7111: aload_1
+    //   7112: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   7115: goto -5712 -> 1403
+    //   7118: ldc_w 1669
+    //   7121: aload_1
+    //   7122: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7125: ifeq +34 -> 7159
+    //   7128: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   7131: aload_0
+    //   7132: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7135: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7138: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   7141: new 1671	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$15
+    //   7144: dup
+    //   7145: aload_0
+    //   7146: aload_3
+    //   7147: aload_1
+    //   7148: iload 4
+    //   7150: invokespecial 1672	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$15:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   7153: invokevirtual 1675	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getFormId	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   7156: goto -5753 -> 1403
+    //   7159: ldc 121
+    //   7161: aload_1
+    //   7162: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7165: ifeq +149 -> 7314
+    //   7168: aload_0
+    //   7169: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7172: ifnonnull +7 -> 7179
+    //   7175: ldc_w 525
+    //   7178: areturn
+    //   7179: new 348	org/json/JSONObject
+    //   7182: dup
+    //   7183: aload_2
+    //   7184: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   7187: ldc_w 1676
+    //   7190: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7193: astore_2
+    //   7194: invokestatic 574	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
+    //   7197: aload_0
+    //   7198: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7201: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7204: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   7207: invokevirtual 582	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
+    //   7210: astore_1
+    //   7211: aload_1
+    //   7212: ifnull +3467 -> 10679
+    //   7215: aload_1
+    //   7216: invokevirtual 588	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getMiniGamePkg	()Lcom/tencent/mobileqq/minigame/gpkg/MiniGamePkg;
+    //   7219: astore_1
+    //   7220: aload_2
+    //   7221: aload_1
+    //   7222: invokestatic 1682	com/tencent/mobileqq/mini/entry/MiniAppUtils:checkNavigationAppIdListForMiniGame	(Ljava/lang/String;Lcom/tencent/mobileqq/minigame/gpkg/MiniGamePkg;)Z
+    //   7225: istore 15
+    //   7227: new 348	org/json/JSONObject
+    //   7230: dup
+    //   7231: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   7234: astore_1
+    //   7235: aload_1
+    //   7236: ldc_w 1684
+    //   7239: iload 15
+    //   7241: invokevirtual 1687	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   7244: pop
+    //   7245: ldc 150
+    //   7247: iconst_2
+    //   7248: new 398	java/lang/StringBuilder
+    //   7251: dup
+    //   7252: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   7255: ldc_w 1689
+    //   7258: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7261: aload_1
+    //   7262: invokevirtual 1120	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   7265: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   7268: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   7271: aload_1
+    //   7272: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   7275: areturn
+    //   7276: astore_2
+    //   7277: ldc 150
+    //   7279: iconst_1
+    //   7280: aload_2
+    //   7281: iconst_0
+    //   7282: anewarray 873	java/lang/Object
+    //   7285: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   7288: aload_2
+    //   7289: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   7292: goto -47 -> 7245
+    //   7295: astore_1
+    //   7296: ldc 150
+    //   7298: iconst_1
+    //   7299: aload_1
+    //   7300: iconst_0
+    //   7301: anewarray 873	java/lang/Object
+    //   7304: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   7307: aload_1
+    //   7308: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   7311: goto -5908 -> 1403
+    //   7314: ldc_w 1691
+    //   7317: aload_1
+    //   7318: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7321: ifeq +222 -> 7543
+    //   7324: invokestatic 471	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7327: invokevirtual 1246	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   7330: astore_1
+    //   7331: aload_1
+    //   7332: instanceof 675
+    //   7335: ifeq +3150 -> 10485
+    //   7338: aload_1
+    //   7339: checkcast 675	com/tencent/mobileqq/mini/MiniAppInterface
+    //   7342: astore_1
+    //   7343: aload_0
+    //   7344: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7347: ifnull +7 -> 7354
+    //   7350: aload_1
+    //   7351: ifnonnull +26 -> 7377
+    //   7354: aload_0
+    //   7355: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7358: aload_3
+    //   7359: ldc_w 1692
+    //   7362: aconst_null
+    //   7363: ldc_w 1693
+    //   7366: invokestatic 1697	anni:a	(I)Ljava/lang/String;
+    //   7369: iload 4
+    //   7371: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7374: goto -5971 -> 1403
+    //   7377: aload_1
+    //   7378: aload_0
+    //   7379: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7382: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7385: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   7388: invokevirtual 679	com/tencent/mobileqq/mini/MiniAppInterface:getAuthorizeCenter	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/app/AuthorizeCenter;
+    //   7391: astore_1
+    //   7392: aload_1
+    //   7393: ifnull +121 -> 7514
+    //   7396: ldc_w 1699
+    //   7399: invokestatic 1599	com/tencent/mobileqq/mini/app/AuthorizeCenter:isScopeNameValid	(Ljava/lang/String;)Z
+    //   7402: ifeq +112 -> 7514
+    //   7405: aload_1
+    //   7406: ldc_w 1699
+    //   7409: invokevirtual 1619	com/tencent/mobileqq/mini/app/AuthorizeCenter:getAuthFlagFromAuthorize	(Ljava/lang/String;)I
+    //   7412: istore 8
+    //   7414: iload 8
+    //   7416: istore 7
+    //   7418: iload 8
+    //   7420: iconst_1
+    //   7421: if_icmpne +41 -> 7462
+    //   7424: aload_0
+    //   7425: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7428: invokevirtual 1622	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:apiAuthoritySilent	()Z
+    //   7431: ifne +28 -> 7459
+    //   7434: aload_0
+    //   7435: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7438: astore_1
+    //   7439: iload 8
+    //   7441: istore 7
+    //   7443: aload_0
+    //   7444: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7447: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7450: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   7453: invokestatic 1625	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:isAuthWhiteAppId	(Ljava/lang/String;)Z
+    //   7456: ifeq +6 -> 7462
+    //   7459: iconst_2
+    //   7460: istore 7
+    //   7462: iload 7
+    //   7464: iconst_2
+    //   7465: if_icmpne +20 -> 7485
+    //   7468: aload_0
+    //   7469: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7472: aload_3
+    //   7473: ldc_w 1692
+    //   7476: aconst_null
+    //   7477: iload 4
+    //   7479: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   7482: goto -6079 -> 1403
+    //   7485: ldc 150
+    //   7487: iconst_1
+    //   7488: ldc_w 1701
+    //   7491: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   7494: aload_0
+    //   7495: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7498: aload_3
+    //   7499: ldc_w 1692
+    //   7502: aconst_null
+    //   7503: ldc_w 1701
+    //   7506: iload 4
+    //   7508: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7511: goto -6108 -> 1403
+    //   7514: aload_0
+    //   7515: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7518: aload_3
+    //   7519: ldc_w 1692
+    //   7522: aconst_null
+    //   7523: ldc_w 1703
+    //   7526: iload 4
+    //   7528: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7531: ldc 150
+    //   7533: iconst_1
+    //   7534: ldc_w 1705
+    //   7537: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   7540: goto -6137 -> 1403
+    //   7543: ldc_w 1707
+    //   7546: aload_1
+    //   7547: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7550: ifeq +213 -> 7763
+    //   7553: new 348	org/json/JSONObject
+    //   7556: dup
+    //   7557: aload_2
+    //   7558: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   7561: astore 20
+    //   7563: aload 20
+    //   7565: ldc_w 1709
+    //   7568: invokevirtual 1593	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   7571: astore_2
+    //   7572: aload 20
+    //   7574: ldc_w 634
+    //   7577: ldc_w 1221
+    //   7580: invokevirtual 1183	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   7583: astore 20
+    //   7585: aload_2
+    //   7586: ifnull -6183 -> 1403
+    //   7589: aload_2
+    //   7590: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   7593: ifle -6190 -> 1403
+    //   7596: aload_2
+    //   7597: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   7600: anewarray 435	java/lang/String
+    //   7603: astore 21
+    //   7605: iconst_0
+    //   7606: istore 7
+    //   7608: iload 7
+    //   7610: aload_2
+    //   7611: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   7614: if_icmpge +23 -> 7637
+    //   7617: aload 21
+    //   7619: iload 7
+    //   7621: aload_2
+    //   7622: iload 7
+    //   7624: invokevirtual 1411	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   7627: aastore
+    //   7628: iload 7
+    //   7630: iconst_1
+    //   7631: iadd
+    //   7632: istore 7
+    //   7634: goto -26 -> 7608
+    //   7637: invokestatic 574	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
+    //   7640: aload_0
+    //   7641: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7644: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   7647: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   7650: invokevirtual 582	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
+    //   7653: astore_2
+    //   7654: aload_2
+    //   7655: ifnonnull +26 -> 7681
+    //   7658: aload_1
+    //   7659: aconst_null
+    //   7660: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   7663: astore_2
+    //   7664: aload_0
+    //   7665: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7668: aload_3
+    //   7669: aload_1
+    //   7670: aload_2
+    //   7671: iload 4
+    //   7673: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   7676: aload_2
+    //   7677: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   7680: areturn
+    //   7681: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   7684: aload_2
+    //   7685: invokevirtual 1713	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
+    //   7688: invokevirtual 1716	com/tencent/mobileqq/minigame/manager/GameInfoManager:getAppId	()Ljava/lang/String;
+    //   7691: aload 20
+    //   7693: aload 21
+    //   7695: new 1718	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$16
+    //   7698: dup
+    //   7699: aload_0
+    //   7700: aload_2
+    //   7701: aload_3
+    //   7702: aload_1
+    //   7703: iload 4
+    //   7705: invokespecial 1721	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$16:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   7708: invokevirtual 1725	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserInfoOpenData	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   7711: goto -6308 -> 1403
+    //   7714: astore_2
+    //   7715: aload_0
+    //   7716: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7719: aload_3
+    //   7720: aload_1
+    //   7721: aconst_null
+    //   7722: iload 4
+    //   7724: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   7727: ldc 150
+    //   7729: iconst_1
+    //   7730: new 398	java/lang/StringBuilder
+    //   7733: dup
+    //   7734: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   7737: ldc_w 1727
+    //   7740: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7743: aload_1
+    //   7744: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7747: ldc_w 1729
+    //   7750: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7753: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   7756: aload_2
+    //   7757: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   7760: goto -6357 -> 1403
+    //   7763: ldc 41
+    //   7765: aload_1
+    //   7766: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7769: ifeq +424 -> 8193
+    //   7772: new 348	org/json/JSONObject
+    //   7775: dup
+    //   7776: aload_2
+    //   7777: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   7780: astore_2
+    //   7781: aload_2
+    //   7782: ldc_w 1731
+    //   7785: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7788: astore 23
+    //   7790: aload_2
+    //   7791: ldc_w 1733
+    //   7794: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7797: astore 24
+    //   7799: aload_2
+    //   7800: ldc_w 1735
+    //   7803: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7806: astore 25
+    //   7808: aload_2
+    //   7809: ldc_w 1737
+    //   7812: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   7815: astore 21
+    //   7817: aload_2
+    //   7818: ldc_w 1739
+    //   7821: invokevirtual 1742	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   7824: istore 7
+    //   7826: ldc_w 1744
+    //   7829: aload 24
+    //   7831: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7834: ifne +33 -> 7867
+    //   7837: ldc_w 1746
+    //   7840: aload 24
+    //   7842: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7845: ifne +22 -> 7867
+    //   7848: aload_0
+    //   7849: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7852: aload_3
+    //   7853: aload_1
+    //   7854: aconst_null
+    //   7855: ldc_w 1748
+    //   7858: iload 4
+    //   7860: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7863: ldc_w 525
+    //   7866: areturn
+    //   7867: ldc_w 1744
+    //   7870: aload 23
+    //   7872: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7875: ifne +33 -> 7908
+    //   7878: ldc_w 1750
+    //   7881: aload 23
+    //   7883: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7886: ifne +22 -> 7908
+    //   7889: aload_0
+    //   7890: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7893: aload_3
+    //   7894: aload_1
+    //   7895: aconst_null
+    //   7896: ldc_w 1752
+    //   7899: iload 4
+    //   7901: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7904: ldc_w 525
+    //   7907: areturn
+    //   7908: iload 7
+    //   7910: ifgt +22 -> 7932
+    //   7913: aload_0
+    //   7914: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7917: aload_3
+    //   7918: aload_1
+    //   7919: aconst_null
+    //   7920: ldc_w 1754
+    //   7923: iload 4
+    //   7925: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7928: ldc_w 525
+    //   7931: areturn
+    //   7932: aload 21
+    //   7934: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7937: ifeq +22 -> 7959
+    //   7940: aload_0
+    //   7941: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   7944: aload_3
+    //   7945: aload_1
+    //   7946: aconst_null
+    //   7947: ldc_w 1756
+    //   7950: iload 4
+    //   7952: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   7955: ldc_w 525
+    //   7958: areturn
+    //   7959: new 1758	android/graphics/Paint
+    //   7962: dup
+    //   7963: invokespecial 1759	android/graphics/Paint:<init>	()V
+    //   7966: astore 22
+    //   7968: aload 22
+    //   7970: iload 7
+    //   7972: i2f
+    //   7973: invokevirtual 1763	android/graphics/Paint:setTextSize	(F)V
+    //   7976: aconst_null
+    //   7977: astore 20
+    //   7979: ldc_w 1744
+    //   7982: aload 23
+    //   7984: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7987: ifeq +68 -> 8055
+    //   7990: ldc_w 1744
+    //   7993: aload 24
+    //   7995: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   7998: ifeq +33 -> 8031
+    //   8001: aload 25
+    //   8003: iconst_0
+    //   8004: invokestatic 1769	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
+    //   8007: astore_2
+    //   8008: aload_2
+    //   8009: ifnonnull +105 -> 8114
+    //   8012: aload_0
+    //   8013: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8016: aload_3
+    //   8017: aload_1
+    //   8018: aconst_null
+    //   8019: ldc_w 1771
+    //   8022: iload 4
+    //   8024: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   8027: ldc_w 525
+    //   8030: areturn
+    //   8031: aload 20
+    //   8033: astore_2
+    //   8034: ldc_w 1746
+    //   8037: aload 24
+    //   8039: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8042: ifeq -34 -> 8008
+    //   8045: aload 25
+    //   8047: iconst_1
+    //   8048: invokestatic 1769	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
+    //   8051: astore_2
+    //   8052: goto -44 -> 8008
+    //   8055: aload 20
+    //   8057: astore_2
+    //   8058: ldc_w 1750
+    //   8061: aload 23
+    //   8063: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8066: ifeq -58 -> 8008
+    //   8069: ldc_w 1744
+    //   8072: aload 24
+    //   8074: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8077: ifeq +13 -> 8090
+    //   8080: aload 25
+    //   8082: iconst_2
+    //   8083: invokestatic 1769	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
+    //   8086: astore_2
+    //   8087: goto -79 -> 8008
+    //   8090: aload 20
+    //   8092: astore_2
+    //   8093: ldc_w 1746
+    //   8096: aload 24
+    //   8098: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8101: ifeq -93 -> 8008
+    //   8104: aload 25
+    //   8106: iconst_3
+    //   8107: invokestatic 1769	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
+    //   8110: astore_2
+    //   8111: goto -103 -> 8008
+    //   8114: new 1773	android/graphics/Rect
+    //   8117: dup
+    //   8118: invokespecial 1774	android/graphics/Rect:<init>	()V
+    //   8121: astore_2
+    //   8122: aload 22
+    //   8124: aload 21
+    //   8126: iconst_0
+    //   8127: aload 21
+    //   8129: invokevirtual 1775	java/lang/String:length	()I
+    //   8132: aload_2
+    //   8133: invokevirtual 1779	android/graphics/Paint:getTextBounds	(Ljava/lang/String;IILandroid/graphics/Rect;)V
+    //   8136: aload_0
+    //   8137: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8140: aload_3
+    //   8141: aload_1
+    //   8142: aconst_null
+    //   8143: iload 4
+    //   8145: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   8148: new 398	java/lang/StringBuilder
+    //   8151: dup
+    //   8152: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   8155: ldc_w 525
+    //   8158: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8161: aload_2
+    //   8162: invokevirtual 1782	android/graphics/Rect:height	()I
+    //   8165: invokevirtual 747	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8168: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8171: astore_2
+    //   8172: aload_2
+    //   8173: areturn
+    //   8174: astore_2
+    //   8175: aload_0
+    //   8176: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8179: aload_3
+    //   8180: aload_1
+    //   8181: aconst_null
+    //   8182: ldc_w 1784
+    //   8185: iload 4
+    //   8187: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   8190: goto -6787 -> 1403
+    //   8193: ldc_w 1786
+    //   8196: aload_1
+    //   8197: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8200: ifeq +28 -> 8228
+    //   8203: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   8206: aload_0
+    //   8207: invokevirtual 1607	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:getAppId	()Ljava/lang/String;
+    //   8210: new 1788	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$17
+    //   8213: dup
+    //   8214: aload_0
+    //   8215: aload_3
+    //   8216: aload_1
+    //   8217: iload 4
+    //   8219: invokespecial 1789	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$17:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   8222: invokevirtual 1791	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserInfoExtra	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   8225: goto -6822 -> 1403
+    //   8228: ldc 23
+    //   8230: aload_1
+    //   8231: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8234: ifeq +323 -> 8557
+    //   8237: aload_0
+    //   8238: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   8241: ifeq -6838 -> 1403
+    //   8244: invokestatic 574	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
+    //   8247: aload_0
+    //   8248: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8251: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   8254: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   8257: invokevirtual 582	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
+    //   8260: astore 20
+    //   8262: aload 20
+    //   8264: ifnonnull +26 -> 8290
+    //   8267: aload_1
+    //   8268: aconst_null
+    //   8269: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   8272: astore_2
+    //   8273: aload_0
+    //   8274: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8277: aload_3
+    //   8278: aload_1
+    //   8279: aload_2
+    //   8280: iload 4
+    //   8282: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   8285: aload_2
+    //   8286: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   8289: areturn
+    //   8290: aload 20
+    //   8292: invokevirtual 1713	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
+    //   8295: invokevirtual 1795	com/tencent/mobileqq/minigame/manager/GameInfoManager:getLaunchOptions	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions;
+    //   8298: astore 21
+    //   8300: new 348	org/json/JSONObject
+    //   8303: dup
+    //   8304: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   8307: astore 22
+    //   8309: new 348	org/json/JSONObject
+    //   8312: dup
+    //   8313: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   8316: astore 23
+    //   8318: aload 21
+    //   8320: getfield 1800	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:fromMiniAppId	Ljava/lang/String;
+    //   8323: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8326: ifeq +170 -> 8496
+    //   8329: aconst_null
+    //   8330: astore_2
+    //   8331: aload 23
+    //   8333: ldc_w 1676
+    //   8336: aload_2
+    //   8337: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8340: pop
+    //   8341: aload 21
+    //   8343: getfield 1803	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:navigateExtData	Ljava/lang/String;
+    //   8346: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8349: ifeq +156 -> 8505
+    //   8352: aconst_null
+    //   8353: astore_2
+    //   8354: aload 23
+    //   8356: ldc_w 1805
+    //   8359: aload_2
+    //   8360: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8363: pop
+    //   8364: aload 22
+    //   8366: ldc_w 1806
+    //   8369: aload 21
+    //   8371: getfield 1807	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:scene	I
+    //   8374: invokestatic 1813	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getWikiScene	(I)I
+    //   8377: invokevirtual 1067	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   8380: pop
+    //   8381: aload 22
+    //   8383: ldc_w 1455
+    //   8386: aload 21
+    //   8388: getfield 1815	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:query	Lorg/json/JSONObject;
+    //   8391: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8394: pop
+    //   8395: aload 21
+    //   8397: getfield 1817	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:shareTicket	Ljava/lang/String;
+    //   8400: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8403: ifeq +111 -> 8514
+    //   8406: aconst_null
+    //   8407: astore_2
+    //   8408: aload 22
+    //   8410: ldc_w 1350
+    //   8413: aload_2
+    //   8414: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8417: pop
+    //   8418: aload 22
+    //   8420: ldc_w 1819
+    //   8423: aload 23
+    //   8425: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8428: pop
+    //   8429: aload 22
+    //   8431: ldc_w 1821
+    //   8434: aload 20
+    //   8436: invokevirtual 1713	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
+    //   8439: invokevirtual 1824	com/tencent/mobileqq/minigame/manager/GameInfoManager:getExtendData	()Ljava/lang/String;
+    //   8442: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8445: pop
+    //   8446: aload 22
+    //   8448: ldc_w 1480
+    //   8451: aload 21
+    //   8453: getfield 1826	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:entryDataHash	Ljava/lang/String;
+    //   8456: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   8459: pop
+    //   8460: ldc 150
+    //   8462: iconst_1
+    //   8463: new 398	java/lang/StringBuilder
+    //   8466: dup
+    //   8467: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   8470: ldc_w 1828
+    //   8473: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8476: aload 22
+    //   8478: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   8481: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8484: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8487: invokestatic 444	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8490: aload 22
+    //   8492: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   8495: areturn
+    //   8496: aload 21
+    //   8498: getfield 1800	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:fromMiniAppId	Ljava/lang/String;
+    //   8501: astore_2
+    //   8502: goto -171 -> 8331
+    //   8505: aload 21
+    //   8507: getfield 1803	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:navigateExtData	Ljava/lang/String;
+    //   8510: astore_2
+    //   8511: goto -157 -> 8354
+    //   8514: aload 21
+    //   8516: getfield 1817	com/tencent/mobileqq/minigame/manager/GameInfoManager$LaunchOptions:shareTicket	Ljava/lang/String;
+    //   8519: astore_2
+    //   8520: goto -112 -> 8408
+    //   8523: astore_2
+    //   8524: ldc 150
+    //   8526: iconst_1
+    //   8527: ldc_w 1830
+    //   8530: aload_2
+    //   8531: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   8534: aload_1
+    //   8535: aconst_null
+    //   8536: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   8539: astore_1
+    //   8540: aload_3
+    //   8541: iload 4
+    //   8543: aload_1
+    //   8544: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   8547: invokeinterface 623 3 0
+    //   8552: aload_1
+    //   8553: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   8556: areturn
+    //   8557: ldc 53
+    //   8559: aload_1
+    //   8560: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8563: ifeq +648 -> 9211
+    //   8566: new 348	org/json/JSONObject
+    //   8569: dup
+    //   8570: aload_2
+    //   8571: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   8574: astore_2
+    //   8575: ldc 150
+    //   8577: iconst_1
+    //   8578: new 398	java/lang/StringBuilder
+    //   8581: dup
+    //   8582: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   8585: ldc_w 1832
+    //   8588: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8591: aload_2
+    //   8592: invokevirtual 1120	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   8595: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8598: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8601: aload_2
+    //   8602: ldc_w 771
+    //   8605: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   8608: astore 22
+    //   8610: aload 22
+    //   8612: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8615: ifeq +20 -> 8635
+    //   8618: aload_0
+    //   8619: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8622: aload_3
+    //   8623: aload_1
+    //   8624: aconst_null
+    //   8625: ldc_w 1834
+    //   8628: iload 4
+    //   8630: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   8633: aconst_null
+    //   8634: areturn
+    //   8635: aload_2
+    //   8636: ldc_w 1836
+    //   8639: iconst_0
+    //   8640: invokevirtual 1188	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   8643: istore 15
+    //   8645: aload 22
+    //   8647: invokevirtual 1839	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   8650: astore 20
+    //   8652: aload 20
+    //   8654: invokestatic 1845	com/tencent/mobileqq/mini/apkg/DomainConfig:getDomainConfig	(Ljava/lang/String;)Lcom/tencent/mobileqq/mini/apkg/DomainConfig;
+    //   8657: astore 21
+    //   8659: iload 15
+    //   8661: ifne +78 -> 8739
+    //   8664: aload_0
+    //   8665: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8668: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   8671: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   8674: aload 20
+    //   8676: iconst_0
+    //   8677: invokevirtual 1848	com/tencent/mobileqq/mini/apkg/ApkgInfo:isValidPrefix	(Ljava/lang/String;Z)Z
+    //   8680: ifne +20 -> 8700
+    //   8683: aload_0
+    //   8684: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8687: aload_3
+    //   8688: aload_1
+    //   8689: aconst_null
+    //   8690: ldc_w 1850
+    //   8693: iload 4
+    //   8695: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   8698: aconst_null
+    //   8699: areturn
+    //   8700: aload_0
+    //   8701: getfield 415	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:openUrlDomainWhiteList	Ljava/util/ArrayList;
+    //   8704: ifnull +35 -> 8739
+    //   8707: aload_0
+    //   8708: getfield 415	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:openUrlDomainWhiteList	Ljava/util/ArrayList;
+    //   8711: aload 21
+    //   8713: getfield 1853	com/tencent/mobileqq/mini/apkg/DomainConfig:host	Ljava/lang/String;
+    //   8716: invokevirtual 1856	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   8719: ifne +20 -> 8739
+    //   8722: aload_0
+    //   8723: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8726: aload_3
+    //   8727: aload_1
+    //   8728: aconst_null
+    //   8729: ldc_w 1858
+    //   8732: iload 4
+    //   8734: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   8737: aconst_null
+    //   8738: areturn
+    //   8739: ldc_w 1860
+    //   8742: aload 21
+    //   8744: getfield 1853	com/tencent/mobileqq/mini/apkg/DomainConfig:host	Ljava/lang/String;
+    //   8747: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8750: ifeq +438 -> 9188
+    //   8753: ldc_w 1862
+    //   8756: ldc_w 1864
+    //   8759: invokestatic 1869	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   8762: astore_2
+    //   8763: aload 22
+    //   8765: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8768: ifne +402 -> 9170
+    //   8771: aload_0
+    //   8772: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8775: ifnull +395 -> 9170
+    //   8778: aload_0
+    //   8779: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8782: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   8785: ifnull +385 -> 9170
+    //   8788: invokestatic 1874	com/tencent/mobileqq/mini/mainpage/MainPageFragment:getUin	()Ljava/lang/String;
+    //   8791: astore 21
+    //   8793: aload 21
+    //   8795: ifnonnull +1889 -> 10684
+    //   8798: ldc_w 525
+    //   8801: astore 20
+    //   8803: aload 22
+    //   8805: ldc_w 1876
+    //   8808: aload 20
+    //   8810: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8813: ldc_w 1882
+    //   8816: invokestatic 1086	bgln:c	()Ljava/lang/String;
+    //   8819: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8822: ldc_w 1884
+    //   8825: ldc_w 1097
+    //   8828: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8831: ldc_w 1886
+    //   8834: getstatic 887	android/os/Build$VERSION:SDK_INT	I
+    //   8837: invokestatic 542	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   8840: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8843: ldc_w 1888
+    //   8846: invokestatic 1892	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   8849: invokestatic 1897	bgnt:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   8852: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8855: ldc_w 1899
+    //   8858: aload_2
+    //   8859: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8862: astore 22
+    //   8864: invokestatic 471	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   8867: new 398	java/lang/StringBuilder
+    //   8870: dup
+    //   8871: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   8874: getstatic 1905	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
+    //   8877: invokevirtual 1906	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
+    //   8880: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8883: aload 21
+    //   8885: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8888: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8891: invokevirtual 1909	com/tencent/common/app/BaseApplicationImpl:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   8894: astore 20
+    //   8896: aload 20
+    //   8898: astore_2
+    //   8899: aload 20
+    //   8901: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8904: ifeq +7 -> 8911
+    //   8907: ldc_w 525
+    //   8910: astore_2
+    //   8911: aload 22
+    //   8913: ldc_w 1911
+    //   8916: aload_2
+    //   8917: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   8920: astore_2
+    //   8921: invokestatic 863	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   8924: ifeq +29 -> 8953
+    //   8927: ldc 150
+    //   8929: iconst_2
+    //   8930: new 398	java/lang/StringBuilder
+    //   8933: dup
+    //   8934: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   8937: ldc_w 1913
+    //   8940: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8943: aload_2
+    //   8944: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8947: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8950: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8953: new 764	android/content/Intent
+    //   8956: dup
+    //   8957: aload_0
+    //   8958: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   8961: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   8964: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   8967: ldc_w 766
+    //   8970: invokespecial 769	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   8973: astore 20
+    //   8975: aload 20
+    //   8977: ldc_w 1915
+    //   8980: ldc_w 1916
+    //   8983: invokestatic 1697	anni:a	(I)Ljava/lang/String;
+    //   8986: invokevirtual 775	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   8989: pop
+    //   8990: aload 20
+    //   8992: ldc_w 780
+    //   8995: iconst_1
+    //   8996: invokevirtual 1919	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   8999: pop
+    //   9000: aload 20
+    //   9002: ldc_w 1921
+    //   9005: iconst_1
+    //   9006: invokevirtual 1919	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   9009: pop
+    //   9010: aload 20
+    //   9012: ldc_w 771
+    //   9015: aload_2
+    //   9016: invokevirtual 775	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   9019: pop
+    //   9020: aload_0
+    //   9021: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9024: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9027: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   9030: aload 20
+    //   9032: invokevirtual 1173	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   9035: aload_0
+    //   9036: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9039: aload_3
+    //   9040: aload_1
+    //   9041: aconst_null
+    //   9042: iload 4
+    //   9044: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   9047: aload_2
+    //   9048: ldc_w 1923
+    //   9051: invokevirtual 1472	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   9054: ifeq -7651 -> 1403
+    //   9057: ldc 150
+    //   9059: iconst_2
+    //   9060: ldc_w 1925
+    //   9063: invokestatic 517	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9066: new 777	android/os/Bundle
+    //   9069: dup
+    //   9070: invokespecial 778	android/os/Bundle:<init>	()V
+    //   9073: astore_1
+    //   9074: aload_1
+    //   9075: ldc_w 1927
+    //   9078: aload_0
+    //   9079: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9082: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9085: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   9088: invokevirtual 1331	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9091: invokestatic 1932	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   9094: ldc_w 1934
+    //   9097: ldc_w 1936
+    //   9100: aload_1
+    //   9101: new 1938	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$18
+    //   9104: dup
+    //   9105: aload_0
+    //   9106: invokespecial 1941	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$18:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;)V
+    //   9109: invokevirtual 1945	com/tencent/mobileqq/qipc/QIPCClientHelper:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Leipc/EIPCResultCallback;)V
+    //   9112: goto -7709 -> 1403
+    //   9115: astore_1
+    //   9116: ldc 150
+    //   9118: iconst_1
+    //   9119: aload_1
+    //   9120: iconst_0
+    //   9121: anewarray 873	java/lang/Object
+    //   9124: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   9127: goto -7724 -> 1403
+    //   9130: astore_2
+    //   9131: ldc 150
+    //   9133: iconst_1
+    //   9134: new 398	java/lang/StringBuilder
+    //   9137: dup
+    //   9138: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   9141: ldc_w 1947
+    //   9144: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9147: ldc_w 525
+    //   9150: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9153: invokevirtual 409	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   9156: invokestatic 612	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9159: aload_2
+    //   9160: invokevirtual 1948	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   9163: ldc_w 525
+    //   9166: astore_2
+    //   9167: goto -404 -> 8763
+    //   9170: aload_0
+    //   9171: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9174: aload_3
+    //   9175: aload_1
+    //   9176: aconst_null
+    //   9177: ldc_w 1950
+    //   9180: iload 4
+    //   9182: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   9185: goto -7782 -> 1403
+    //   9188: new 1952	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$19
+    //   9191: dup
+    //   9192: aload_0
+    //   9193: aload_2
+    //   9194: aload_3
+    //   9195: aload_1
+    //   9196: iload 4
+    //   9198: invokespecial 1955	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$19:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   9201: bipush 16
+    //   9203: aconst_null
+    //   9204: iconst_0
+    //   9205: invokestatic 1959	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   9208: goto -7805 -> 1403
+    //   9211: ldc 62
+    //   9213: aload_1
+    //   9214: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9217: ifeq +113 -> 9330
+    //   9220: new 348	org/json/JSONObject
+    //   9223: dup
+    //   9224: aload_2
+    //   9225: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9228: ldc_w 1961
+    //   9231: iconst_0
+    //   9232: invokevirtual 1188	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   9235: istore 15
+    //   9237: aload_0
+    //   9238: invokevirtual 1379	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:isMiniGameRuntime	()Z
+    //   9241: ifeq -7838 -> 1403
+    //   9244: invokestatic 574	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:g	()Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager;
+    //   9247: aload_0
+    //   9248: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9251: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9254: getfield 578	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:activity	Landroid/app/Activity;
+    //   9257: invokevirtual 582	com/tencent/mobileqq/minigame/manager/GameRuntimeLoaderManager:getBindRuntimeLoader	(Landroid/content/Context;)Lcom/tencent/mobileqq/minigame/manager/GameRuntimeLoader;
+    //   9260: astore_2
+    //   9261: aload_2
+    //   9262: ifnonnull +26 -> 9288
+    //   9265: aload_1
+    //   9266: aconst_null
+    //   9267: invokestatic 618	com/tencent/mobileqq/mini/util/ApiUtil:wrapCallbackFail	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   9270: astore_2
+    //   9271: aload_0
+    //   9272: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9275: aload_3
+    //   9276: aload_1
+    //   9277: aload_2
+    //   9278: iload 4
+    //   9280: invokevirtual 305	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   9283: aload_2
+    //   9284: invokevirtual 608	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   9287: areturn
+    //   9288: aload_2
+    //   9289: invokevirtual 1713	com/tencent/mobileqq/minigame/manager/GameRuntimeLoader:getGameInfoManager	()Lcom/tencent/mobileqq/minigame/manager/GameInfoManager;
+    //   9292: invokevirtual 1965	com/tencent/mobileqq/minigame/manager/GameInfoManager:getMiniAppConfig	()Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9295: iload 15
+    //   9297: invokestatic 1971	com/tencent/mobileqq/minigame/gpkg/GpkgManager:setOfflineResourceContent	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Z)V
+    //   9300: aload_0
+    //   9301: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9304: aload_3
+    //   9305: aload_1
+    //   9306: aconst_null
+    //   9307: iload 4
+    //   9309: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   9312: goto -7909 -> 1403
+    //   9315: astore_1
+    //   9316: ldc 150
+    //   9318: iconst_1
+    //   9319: aload_1
+    //   9320: iconst_0
+    //   9321: anewarray 873	java/lang/Object
+    //   9324: invokestatic 1226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   9327: goto -7924 -> 1403
+    //   9330: ldc 95
+    //   9332: aload_1
+    //   9333: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9336: ifeq +178 -> 9514
+    //   9339: aload_0
+    //   9340: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9343: ifnull -7940 -> 1403
+    //   9346: new 446	java/util/ArrayList
+    //   9349: dup
+    //   9350: invokespecial 447	java/util/ArrayList:<init>	()V
+    //   9353: astore 20
+    //   9355: new 348	org/json/JSONObject
+    //   9358: dup
+    //   9359: aload_2
+    //   9360: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9363: ldc_w 479
+    //   9366: invokevirtual 483	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   9369: ldc_w 1973
+    //   9372: invokevirtual 1593	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   9375: astore_2
+    //   9376: aload_2
+    //   9377: ifnull +85 -> 9462
+    //   9380: aload_2
+    //   9381: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   9384: ifle +78 -> 9462
+    //   9387: iconst_0
+    //   9388: istore 7
+    //   9390: iload 7
+    //   9392: aload_2
+    //   9393: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   9396: if_icmpge +66 -> 9462
+    //   9399: aload_2
+    //   9400: iload 7
+    //   9402: invokevirtual 1977	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   9405: checkcast 348	org/json/JSONObject
+    //   9408: astore 21
+    //   9410: new 1979	com/tencent/mobileqq/mini/apkg/PluginInfo
+    //   9413: dup
+    //   9414: invokespecial 1980	com/tencent/mobileqq/mini/apkg/PluginInfo:<init>	()V
+    //   9417: astore 22
+    //   9419: aload 22
+    //   9421: aload 21
+    //   9423: ldc_w 1982
+    //   9426: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   9429: invokevirtual 1985	com/tencent/mobileqq/mini/apkg/PluginInfo:setPluginId	(Ljava/lang/String;)V
+    //   9432: aload 22
+    //   9434: aload 21
+    //   9436: ldc_w 1987
+    //   9439: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   9442: invokevirtual 1990	com/tencent/mobileqq/mini/apkg/PluginInfo:setInnerVersion	(Ljava/lang/String;)V
+    //   9445: aload 20
+    //   9447: aload 22
+    //   9449: invokevirtual 460	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   9452: pop
+    //   9453: iload 7
+    //   9455: iconst_1
+    //   9456: iadd
+    //   9457: istore 7
+    //   9459: goto -69 -> 9390
+    //   9462: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   9465: aload_0
+    //   9466: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9469: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9472: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   9475: aload 20
+    //   9477: new 1992	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$20
+    //   9480: dup
+    //   9481: aload_0
+    //   9482: aload_3
+    //   9483: aload_1
+    //   9484: iload 4
+    //   9486: invokespecial 1993	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$20:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   9489: invokevirtual 1996	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:verifyPlugin	(Ljava/lang/String;Ljava/util/ArrayList;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   9492: goto -8089 -> 1403
+    //   9495: astore_2
+    //   9496: aload_0
+    //   9497: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9500: aload_3
+    //   9501: aload_1
+    //   9502: aconst_null
+    //   9503: ldc_w 1998
+    //   9506: iload 4
+    //   9508: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   9511: goto -8108 -> 1403
+    //   9514: ldc 14
+    //   9516: aload_1
+    //   9517: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9520: ifeq +127 -> 9647
+    //   9523: aload_0
+    //   9524: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9527: ifnull -8124 -> 1403
+    //   9530: aload_2
+    //   9531: ifnull -8128 -> 1403
+    //   9534: new 348	org/json/JSONObject
+    //   9537: dup
+    //   9538: aload_2
+    //   9539: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9542: ldc_w 2000
+    //   9545: invokevirtual 1593	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   9548: astore_2
+    //   9549: new 446	java/util/ArrayList
+    //   9552: dup
+    //   9553: invokespecial 447	java/util/ArrayList:<init>	()V
+    //   9556: astore 20
+    //   9558: aload_2
+    //   9559: ifnull +46 -> 9605
+    //   9562: aload_2
+    //   9563: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   9566: ifle +39 -> 9605
+    //   9569: iconst_0
+    //   9570: istore 7
+    //   9572: iload 7
+    //   9574: aload_2
+    //   9575: invokevirtual 1409	org/json/JSONArray:length	()I
+    //   9578: if_icmpge +27 -> 9605
+    //   9581: aload 20
     //   9583: aload_2
-    //   9584: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   9587: ldc_w 1325
-    //   9590: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   9593: astore_2
-    //   9594: aload_0
-    //   9595: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9598: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9601: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   9604: astore 20
-    //   9606: new 271	org/json/JSONObject
-    //   9609: dup
-    //   9610: invokespecial 796	org/json/JSONObject:<init>	()V
-    //   9613: astore 21
-    //   9615: iconst_0
-    //   9616: istore 16
-    //   9618: iload 16
-    //   9620: istore 15
-    //   9622: aload 20
-    //   9624: ifnull +64 -> 9688
-    //   9627: iload 16
-    //   9629: istore 15
-    //   9631: aload 20
-    //   9633: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9636: ifnull +52 -> 9688
-    //   9639: iload 16
-    //   9641: istore 15
-    //   9643: aload 20
-    //   9645: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9648: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9651: ifnull +37 -> 9688
-    //   9654: iload 16
-    //   9656: istore 15
-    //   9658: aload 20
-    //   9660: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9663: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9666: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9669: ifnull +19 -> 9688
-    //   9672: aload 20
-    //   9674: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9677: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9680: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9683: getfield 1889	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
-    //   9686: istore 15
-    //   9688: aload 21
-    //   9690: ldc_w 1891
-    //   9693: iload 15
-    //   9695: invokevirtual 1552	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
-    //   9698: pop
-    //   9699: aload 20
-    //   9701: ifnull +152 -> 9853
-    //   9704: aload 20
-    //   9706: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9709: ifnull +144 -> 9853
-    //   9712: aload 20
-    //   9714: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9717: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9720: ifnull +133 -> 9853
-    //   9723: aload 20
-    //   9725: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9728: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9731: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9734: ifnull +119 -> 9853
-    //   9737: aload_2
-    //   9738: ifnull +115 -> 9853
-    //   9741: aload_2
-    //   9742: aload 20
-    //   9744: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9747: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9750: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9753: invokevirtual 1334	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
-    //   9756: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9759: ifeq +94 -> 9853
-    //   9762: aload 20
-    //   9764: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9767: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9770: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9773: getfield 1896	com/tencent/mobileqq/mini/sdk/EntryModel:type	I
-    //   9776: iconst_1
-    //   9777: if_icmpne +76 -> 9853
-    //   9780: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   9783: aconst_null
-    //   9784: aload_0
-    //   9785: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9788: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9791: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   9794: aload 20
-    //   9796: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9799: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9802: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9805: getfield 1899	com/tencent/mobileqq/mini/sdk/EntryModel:uin	J
-    //   9808: invokestatic 1902	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   9811: aload 20
-    //   9813: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9816: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9819: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9822: getfield 1905	com/tencent/mobileqq/mini/sdk/EntryModel:dwGroupClassExt	J
-    //   9825: new 1907	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$22
-    //   9828: dup
-    //   9829: aload_0
-    //   9830: aload 21
-    //   9832: aload_3
-    //   9833: aload_1
-    //   9834: iload 4
-    //   9836: invokespecial 1908	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$22:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   9839: invokevirtual 1912	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserGroupInfo	(LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Ljava/lang/String;JLcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   9842: goto -8477 -> 1365
-    //   9845: astore_1
-    //   9846: aload_1
-    //   9847: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   9850: goto -8485 -> 1365
-    //   9853: aload_0
-    //   9854: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9857: aload_3
-    //   9858: aload_1
-    //   9859: aload 21
-    //   9861: iload 4
-    //   9863: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   9866: goto -8501 -> 1365
-    //   9869: ldc_w 1914
-    //   9872: aload_1
-    //   9873: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9876: ifeq +193 -> 10069
-    //   9879: new 271	org/json/JSONObject
-    //   9882: dup
-    //   9883: aload_2
-    //   9884: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   9887: astore 20
-    //   9889: aload 20
-    //   9891: ldc_w 1325
-    //   9894: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   9897: astore_2
-    //   9898: aload 20
-    //   9900: ldc_w 519
-    //   9903: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   9906: astore 20
-    //   9908: aload_0
-    //   9909: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   9912: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   9915: invokevirtual 564	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
-    //   9918: astore 21
-    //   9920: aload 21
-    //   9922: ifnull -8557 -> 1365
-    //   9925: aload 21
-    //   9927: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9930: ifnull -8565 -> 1365
-    //   9933: aload 21
-    //   9935: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9938: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9941: ifnull -8576 -> 1365
-    //   9944: aload 21
-    //   9946: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9949: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9952: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9955: ifnull -8590 -> 1365
-    //   9958: aload_2
-    //   9959: ifnull -8594 -> 1365
-    //   9962: aload_2
-    //   9963: aload 21
-    //   9965: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9968: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9971: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9974: invokevirtual 1334	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
-    //   9977: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9980: ifeq -8615 -> 1365
-    //   9983: aload 21
-    //   9985: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   9988: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   9991: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   9994: getfield 1889	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
-    //   9997: ifeq -8632 -> 1365
-    //   10000: aload 20
-    //   10002: ifnull -8637 -> 1365
+    //   9584: iload 7
+    //   9586: invokevirtual 1977	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   9589: invokestatic 2003	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   9592: invokevirtual 460	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   9595: pop
+    //   9596: iload 7
+    //   9598: iconst_1
+    //   9599: iadd
+    //   9600: istore 7
+    //   9602: goto -30 -> 9572
+    //   9605: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   9608: aload 20
+    //   9610: new 2005	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$21
+    //   9613: dup
+    //   9614: aload_0
+    //   9615: aload_3
+    //   9616: aload_1
+    //   9617: iload 4
+    //   9619: invokespecial 2006	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$21:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   9622: invokevirtual 2009	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:batchGetContact	(Ljava/util/ArrayList;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   9625: goto -8222 -> 1403
+    //   9628: astore_2
+    //   9629: aload_0
+    //   9630: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9633: aload_3
+    //   9634: aload_1
+    //   9635: aconst_null
+    //   9636: ldc_w 2011
+    //   9639: iload 4
+    //   9641: invokevirtual 704	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   9644: goto -8241 -> 1403
+    //   9647: ldc 26
+    //   9649: aload_1
+    //   9650: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9653: ifeq +60 -> 9713
+    //   9656: new 348	org/json/JSONObject
+    //   9659: dup
+    //   9660: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   9663: astore_2
+    //   9664: aload_2
+    //   9665: ldc_w 365
+    //   9668: aload_0
+    //   9669: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9672: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9675: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   9678: getfield 2012	com/tencent/mobileqq/mini/apkg/ApkgInfo:appId	Ljava/lang/String;
+    //   9681: invokestatic 2017	com/tencent/mobileqq/mini/report/MiniReportManager:getLaunchPerformance	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   9684: invokevirtual 1052	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   9687: pop
+    //   9688: aload_0
+    //   9689: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9692: aload_3
+    //   9693: aload_1
+    //   9694: aload_2
+    //   9695: iload 4
+    //   9697: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   9700: goto -8297 -> 1403
+    //   9703: astore 20
+    //   9705: aload 20
+    //   9707: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   9710: goto -22 -> 9688
+    //   9713: ldc_w 2019
+    //   9716: aload_1
+    //   9717: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9720: ifeq +131 -> 9851
+    //   9723: new 348	org/json/JSONObject
+    //   9726: dup
+    //   9727: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   9730: astore_2
+    //   9731: aload_0
+    //   9732: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9735: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9738: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   9741: astore 20
+    //   9743: iconst_0
+    //   9744: istore 16
+    //   9746: iload 16
+    //   9748: istore 15
+    //   9750: aload 20
+    //   9752: ifnull +64 -> 9816
+    //   9755: iload 16
+    //   9757: istore 15
+    //   9759: aload 20
+    //   9761: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9764: ifnull +52 -> 9816
+    //   9767: iload 16
+    //   9769: istore 15
+    //   9771: aload 20
+    //   9773: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9776: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9779: ifnull +37 -> 9816
+    //   9782: iload 16
+    //   9784: istore 15
+    //   9786: aload 20
+    //   9788: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9791: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9794: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   9797: ifnull +19 -> 9816
+    //   9800: aload 20
+    //   9802: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9805: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9808: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   9811: getfield 2022	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
+    //   9814: istore 15
+    //   9816: aload_2
+    //   9817: ldc_w 2024
+    //   9820: iload 15
+    //   9822: invokevirtual 1687	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   9825: pop
+    //   9826: aload_0
+    //   9827: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9830: aload_3
+    //   9831: aload_1
+    //   9832: aload_2
+    //   9833: iload 4
+    //   9835: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   9838: goto -8435 -> 1403
+    //   9841: astore 20
+    //   9843: aload 20
+    //   9845: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   9848: goto -22 -> 9826
+    //   9851: ldc_w 2026
+    //   9854: aload_1
+    //   9855: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9858: ifeq +293 -> 10151
+    //   9861: new 348	org/json/JSONObject
+    //   9864: dup
+    //   9865: aload_2
+    //   9866: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9869: ldc_w 1480
+    //   9872: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   9875: astore_2
+    //   9876: aload_0
+    //   9877: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   9880: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   9883: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   9886: astore 20
+    //   9888: new 348	org/json/JSONObject
+    //   9891: dup
+    //   9892: invokespecial 1043	org/json/JSONObject:<init>	()V
+    //   9895: astore 21
+    //   9897: iconst_0
+    //   9898: istore 16
+    //   9900: iload 16
+    //   9902: istore 15
+    //   9904: aload 20
+    //   9906: ifnull +64 -> 9970
+    //   9909: iload 16
+    //   9911: istore 15
+    //   9913: aload 20
+    //   9915: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9918: ifnull +52 -> 9970
+    //   9921: iload 16
+    //   9923: istore 15
+    //   9925: aload 20
+    //   9927: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9930: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9933: ifnull +37 -> 9970
+    //   9936: iload 16
+    //   9938: istore 15
+    //   9940: aload 20
+    //   9942: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9945: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9948: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   9951: ifnull +19 -> 9970
+    //   9954: aload 20
+    //   9956: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9959: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   9962: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   9965: getfield 2022	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
+    //   9968: istore 15
+    //   9970: aload 21
+    //   9972: ldc_w 2024
+    //   9975: iload 15
+    //   9977: invokevirtual 1687	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   9980: pop
+    //   9981: aload 20
+    //   9983: ifnull +152 -> 10135
+    //   9986: aload 20
+    //   9988: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9991: ifnull +144 -> 10135
+    //   9994: aload 20
+    //   9996: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   9999: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10002: ifnull +133 -> 10135
     //   10005: aload 20
-    //   10007: ldc_w 1916
-    //   10010: invokevirtual 1918	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   10013: ifeq -8648 -> 1365
-    //   10016: aload 20
-    //   10018: ldc_w 1916
-    //   10021: aload 21
-    //   10023: getfield 901	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
-    //   10026: getfield 907	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
-    //   10029: getfield 1329	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   10032: getfield 1899	com/tencent/mobileqq/mini/sdk/EntryModel:uin	J
-    //   10035: invokestatic 1902	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   10038: invokevirtual 1746	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   10041: astore_2
-    //   10042: aload_0
-    //   10043: aload_0
-    //   10044: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   10047: getfield 1084	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   10050: aload_2
-    //   10051: aload_3
-    //   10052: aload_1
-    //   10053: iload 4
-    //   10055: invokespecial 1920	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startGroupBrowserActivity	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   10058: goto -8693 -> 1365
-    //   10061: astore_1
-    //   10062: aload_1
-    //   10063: invokevirtual 1064	org/json/JSONException:printStackTrace	()V
-    //   10066: goto -8701 -> 1365
-    //   10069: ldc_w 1922
-    //   10072: aload_1
-    //   10073: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   10076: ifne +13 -> 10089
-    //   10079: ldc_w 1924
-    //   10082: aload_1
-    //   10083: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   10086: ifeq +18 -> 10104
-    //   10089: aload_0
-    //   10090: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   10093: aload_3
-    //   10094: aload_1
-    //   10095: aconst_null
-    //   10096: iload 4
-    //   10098: invokevirtual 1063	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
-    //   10101: goto -8736 -> 1365
-    //   10104: ldc 20
-    //   10106: aload_1
-    //   10107: invokevirtual 367	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   10110: ifeq -8745 -> 1365
-    //   10113: new 271	org/json/JSONObject
-    //   10116: dup
-    //   10117: aload_2
-    //   10118: invokespecial 274	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   10121: ldc_w 1926
-    //   10124: invokevirtual 931	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   10127: astore_2
-    //   10128: aload_2
-    //   10129: invokestatic 385	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10132: ifne -8767 -> 1365
-    //   10135: invokestatic 459	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
-    //   10138: aload_0
-    //   10139: getfield 411	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
-    //   10142: getfield 463	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
-    //   10145: getfield 468	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
-    //   10148: aconst_null
-    //   10149: aload_2
-    //   10150: new 1928	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$23
-    //   10153: dup
-    //   10154: aload_0
-    //   10155: aload_3
-    //   10156: aload_1
-    //   10157: iload 4
-    //   10159: invokespecial 1929	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$23:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
-    //   10162: invokevirtual 1933	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getTcbTicket	(Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
-    //   10165: goto -8800 -> 1365
-    //   10168: astore_1
-    //   10169: ldc 139
-    //   10171: iconst_1
-    //   10172: ldc_w 1935
-    //   10175: aload_1
-    //   10176: invokestatic 997	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   10179: goto -8814 -> 1365
-    //   10182: aconst_null
-    //   10183: astore_1
-    //   10184: goto -3123 -> 7061
-    //   10187: aconst_null
+    //   10007: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10010: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10013: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10016: ifnull +119 -> 10135
+    //   10019: aload_2
+    //   10020: ifnull +115 -> 10135
+    //   10023: aload_2
+    //   10024: aload 20
+    //   10026: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10029: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10032: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10035: invokevirtual 1489	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
+    //   10038: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10041: ifeq +94 -> 10135
+    //   10044: aload 20
+    //   10046: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10049: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10052: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10055: getfield 2029	com/tencent/mobileqq/mini/sdk/EntryModel:type	I
+    //   10058: iconst_1
+    //   10059: if_icmpne +76 -> 10135
+    //   10062: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   10065: aconst_null
+    //   10066: aload_0
+    //   10067: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10070: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   10073: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   10076: aload 20
+    //   10078: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10081: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10084: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10087: getfield 2032	com/tencent/mobileqq/mini/sdk/EntryModel:uin	J
+    //   10090: invokestatic 2035	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   10093: aload 20
+    //   10095: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10098: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10101: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10104: getfield 2038	com/tencent/mobileqq/mini/sdk/EntryModel:dwGroupClassExt	J
+    //   10107: new 2040	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$22
+    //   10110: dup
+    //   10111: aload_0
+    //   10112: aload 21
+    //   10114: aload_3
+    //   10115: aload_1
+    //   10116: iload 4
+    //   10118: invokespecial 2041	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$22:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lorg/json/JSONObject;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   10121: invokevirtual 2045	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getUserGroupInfo	(LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Ljava/lang/String;JLcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   10124: goto -8721 -> 1403
+    //   10127: astore_1
+    //   10128: aload_1
+    //   10129: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   10132: goto -8729 -> 1403
+    //   10135: aload_0
+    //   10136: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10139: aload_3
+    //   10140: aload_1
+    //   10141: aload 21
+    //   10143: iload 4
+    //   10145: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   10148: goto -8745 -> 1403
+    //   10151: ldc_w 2047
+    //   10154: aload_1
+    //   10155: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10158: ifeq +193 -> 10351
+    //   10161: new 348	org/json/JSONObject
+    //   10164: dup
+    //   10165: aload_2
+    //   10166: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   10169: astore 20
+    //   10171: aload 20
+    //   10173: ldc_w 1480
+    //   10176: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   10179: astore_2
+    //   10180: aload 20
+    //   10182: ldc_w 771
+    //   10185: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   10188: astore 20
-    //   10190: goto -3864 -> 6326
-    //   10193: goto -4229 -> 5964
-    //   10196: aconst_null
-    //   10197: astore_2
-    //   10198: goto -6156 -> 4042
-    //   10201: iload 9
-    //   10203: istore 14
-    //   10205: goto -7007 -> 3198
-    //   10208: iconst_0
-    //   10209: istore 15
-    //   10211: goto -9670 -> 541
-    //   10214: ldc_w 764
-    //   10217: astore 21
-    //   10219: goto -9785 -> 434
-    //   10222: iconst_m1
-    //   10223: istore 8
-    //   10225: iconst_m1
-    //   10226: istore 7
-    //   10228: iconst_m1
-    //   10229: istore 11
-    //   10231: iconst_0
-    //   10232: istore 10
-    //   10234: goto -7153 -> 3081
-    //   10237: iload 7
-    //   10239: istore 8
-    //   10241: iload 7
-    //   10243: iconst_m1
-    //   10244: if_icmpne -6161 -> 4083
-    //   10247: iconst_0
-    //   10248: istore 8
-    //   10250: goto -6167 -> 4083
-    //   10253: ldc_w 631
-    //   10256: areturn
-    //   10257: iload 9
-    //   10259: iconst_1
-    //   10260: if_icmpne -5922 -> 4338
-    //   10263: iconst_1
-    //   10264: istore 7
-    //   10266: aconst_null
-    //   10267: astore_2
-    //   10268: goto -6226 -> 4042
-    //   10271: iload 9
-    //   10273: iconst_3
-    //   10274: if_icmpne +11 -> 10285
-    //   10277: iconst_3
-    //   10278: istore 7
-    //   10280: aconst_null
-    //   10281: astore_2
-    //   10282: goto -6240 -> 4042
-    //   10285: iload 9
-    //   10287: iconst_4
-    //   10288: if_icmpne -5820 -> 4468
-    //   10291: iconst_4
-    //   10292: istore 7
-    //   10294: aconst_null
-    //   10295: astore_2
-    //   10296: goto -6254 -> 4042
-    //   10299: iconst_0
-    //   10300: istore 7
-    //   10302: goto -6260 -> 4042
-    //   10305: iconst_1
-    //   10306: istore 16
-    //   10308: goto -5350 -> 4958
-    //   10311: iconst_0
-    //   10312: istore 16
-    //   10314: goto -5356 -> 4958
-    //   10317: iconst_0
-    //   10318: istore 17
-    //   10320: goto -5313 -> 5007
-    //   10323: bipush 12
-    //   10325: istore 4
-    //   10327: goto -5273 -> 5054
-    //   10330: bipush 12
-    //   10332: istore 4
-    //   10334: goto -5081 -> 5253
-    //   10337: iconst_1
-    //   10338: istore 4
-    //   10340: goto -4777 -> 5563
-    //   10343: iconst_0
-    //   10344: istore 4
-    //   10346: goto -4783 -> 5563
-    //   10349: iconst_0
-    //   10350: istore 8
-    //   10352: goto -4738 -> 5614
-    //   10355: iload 11
-    //   10357: iconst_1
-    //   10358: iadd
-    //   10359: istore 11
-    //   10361: goto -4299 -> 6062
-    //   10364: iconst_2
-    //   10365: istore 7
-    //   10367: goto -3820 -> 6547
-    //   10370: aconst_null
-    //   10371: astore_1
-    //   10372: goto -3434 -> 6938
-    //   10375: aload 21
-    //   10377: astore 20
-    //   10379: goto -1858 -> 8521
+    //   10190: aload_0
+    //   10191: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10194: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   10197: invokevirtual 268	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:getApkgInfo	()Lcom/tencent/mobileqq/mini/apkg/ApkgInfo;
+    //   10200: astore 21
+    //   10202: aload 21
+    //   10204: ifnull -8801 -> 1403
+    //   10207: aload 21
+    //   10209: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10212: ifnull -8809 -> 1403
+    //   10215: aload 21
+    //   10217: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10220: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10223: ifnull -8820 -> 1403
+    //   10226: aload 21
+    //   10228: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10231: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10234: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10237: ifnull -8834 -> 1403
+    //   10240: aload_2
+    //   10241: ifnull -8838 -> 1403
+    //   10244: aload_2
+    //   10245: aload 21
+    //   10247: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10250: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10253: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10256: invokevirtual 1489	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
+    //   10259: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10262: ifeq -8859 -> 1403
+    //   10265: aload 21
+    //   10267: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10270: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10273: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10276: getfield 2022	com/tencent/mobileqq/mini/sdk/EntryModel:isAdmin	Z
+    //   10279: ifeq -8876 -> 1403
+    //   10282: aload 20
+    //   10284: ifnull -8881 -> 1403
+    //   10287: aload 20
+    //   10289: ldc_w 2049
+    //   10292: invokevirtual 2051	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   10295: ifeq -8892 -> 1403
+    //   10298: aload 20
+    //   10300: ldc_w 2049
+    //   10303: aload 21
+    //   10305: getfield 274	com/tencent/mobileqq/mini/apkg/ApkgInfo:appConfig	Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   10308: getfield 529	com/tencent/mobileqq/mini/apkg/MiniAppConfig:launchParam	Lcom/tencent/mobileqq/mini/sdk/LaunchParam;
+    //   10311: getfield 1484	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   10314: getfield 2032	com/tencent/mobileqq/mini/sdk/EntryModel:uin	J
+    //   10317: invokestatic 2035	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   10320: invokevirtual 1880	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   10323: astore_2
+    //   10324: aload_0
+    //   10325: aload_0
+    //   10326: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10329: getfield 255	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:activityContext	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   10332: aload_2
+    //   10333: aload_3
+    //   10334: aload_1
+    //   10335: iload 4
+    //   10337: invokespecial 2053	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:startGroupBrowserActivity	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   10340: goto -8937 -> 1403
+    //   10343: astore_1
+    //   10344: aload_1
+    //   10345: invokevirtual 1272	org/json/JSONException:printStackTrace	()V
+    //   10348: goto -8945 -> 1403
+    //   10351: ldc_w 2055
+    //   10354: aload_1
+    //   10355: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10358: ifne +13 -> 10371
+    //   10361: ldc_w 2057
+    //   10364: aload_1
+    //   10365: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10368: ifeq +18 -> 10386
+    //   10371: aload_0
+    //   10372: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10375: aload_3
+    //   10376: aload_1
+    //   10377: aconst_null
+    //   10378: iload 4
+    //   10380: invokevirtual 690	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventOK	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   10383: goto -8980 -> 1403
+    //   10386: ldc 20
+    //   10388: aload_1
+    //   10389: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10392: ifeq +72 -> 10464
+    //   10395: new 348	org/json/JSONObject
+    //   10398: dup
+    //   10399: aload_2
+    //   10400: invokespecial 351	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   10403: ldc_w 2059
+    //   10406: invokevirtual 488	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   10409: astore_2
+    //   10410: aload_2
+    //   10411: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10414: ifne -9011 -> 1403
+    //   10417: invokestatic 651	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getInstance	()Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdUtil;
+    //   10420: aload_0
+    //   10421: getfield 249	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   10424: getfield 259	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:appBrandRuntime	Lcom/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime;
+    //   10427: getfield 264	com/tencent/mobileqq/mini/appbrand/BaseAppBrandRuntime:appId	Ljava/lang/String;
+    //   10430: aconst_null
+    //   10431: aload_2
+    //   10432: new 2061	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$23
+    //   10435: dup
+    //   10436: aload_0
+    //   10437: aload_3
+    //   10438: aload_1
+    //   10439: iload 4
+    //   10441: invokespecial 2062	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin$23:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)V
+    //   10444: invokevirtual 2066	com/tencent/mobileqq/mini/reuse/MiniAppCmdUtil:getTcbTicket	(Ljava/lang/String;LNS_COMM/COMM$StCommonExt;Ljava/lang/String;Lcom/tencent/mobileqq/mini/reuse/MiniAppCmdInterface;)V
+    //   10447: goto -9044 -> 1403
+    //   10450: astore_1
+    //   10451: ldc 150
+    //   10453: iconst_1
+    //   10454: ldc_w 2068
+    //   10457: aload_1
+    //   10458: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   10461: goto -9058 -> 1403
+    //   10464: ldc 83
+    //   10466: aload_1
+    //   10467: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   10470: ifeq -9067 -> 1403
+    //   10473: aload_0
+    //   10474: aload_3
+    //   10475: aload_1
+    //   10476: iload 4
+    //   10478: invokespecial 2070	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/DataJsPlugin:doShareInvite	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;I)Z
+    //   10481: pop
+    //   10482: goto -9079 -> 1403
+    //   10485: aconst_null
+    //   10486: astore_1
+    //   10487: goto -3144 -> 7343
+    //   10490: aconst_null
+    //   10491: astore 20
+    //   10493: goto -3885 -> 6608
+    //   10496: goto -4250 -> 6246
+    //   10499: aconst_null
+    //   10500: astore_2
+    //   10501: goto -6177 -> 4324
+    //   10504: iload 9
+    //   10506: istore 14
+    //   10508: goto -7028 -> 3480
+    //   10511: aload 21
+    //   10513: astore_2
+    //   10514: goto -7766 -> 2748
+    //   10517: iconst_0
+    //   10518: istore 16
+    //   10520: goto -9969 -> 551
+    //   10523: ldc_w 1011
+    //   10526: astore 21
+    //   10528: goto -10084 -> 444
+    //   10531: iconst_m1
+    //   10532: istore 8
+    //   10534: iconst_m1
+    //   10535: istore 7
+    //   10537: iconst_m1
+    //   10538: istore 11
+    //   10540: iconst_0
+    //   10541: istore 10
+    //   10543: goto -7180 -> 3363
+    //   10546: iload 7
+    //   10548: istore 8
+    //   10550: iload 7
+    //   10552: iconst_m1
+    //   10553: if_icmpne -6188 -> 4365
+    //   10556: iconst_0
+    //   10557: istore 8
+    //   10559: goto -6194 -> 4365
+    //   10562: ldc_w 525
+    //   10565: areturn
+    //   10566: iload 9
+    //   10568: iconst_1
+    //   10569: if_icmpne -5949 -> 4620
+    //   10572: iconst_1
+    //   10573: istore 7
+    //   10575: aconst_null
+    //   10576: astore_2
+    //   10577: goto -6253 -> 4324
+    //   10580: iload 9
+    //   10582: iconst_3
+    //   10583: if_icmpne +11 -> 10594
+    //   10586: iconst_3
+    //   10587: istore 7
+    //   10589: aconst_null
+    //   10590: astore_2
+    //   10591: goto -6267 -> 4324
+    //   10594: iload 9
+    //   10596: iconst_4
+    //   10597: if_icmpne -5847 -> 4750
+    //   10600: iconst_4
+    //   10601: istore 7
+    //   10603: aconst_null
+    //   10604: astore_2
+    //   10605: goto -6281 -> 4324
+    //   10608: iconst_0
+    //   10609: istore 7
+    //   10611: goto -6287 -> 4324
+    //   10614: iconst_1
+    //   10615: istore 16
+    //   10617: goto -5377 -> 5240
+    //   10620: iconst_0
+    //   10621: istore 16
+    //   10623: goto -5383 -> 5240
+    //   10626: iconst_0
+    //   10627: istore 17
+    //   10629: goto -5340 -> 5289
+    //   10632: bipush 12
+    //   10634: istore 4
+    //   10636: goto -5300 -> 5336
+    //   10639: bipush 12
+    //   10641: istore 4
+    //   10643: goto -5108 -> 5535
+    //   10646: iconst_1
+    //   10647: istore 4
+    //   10649: goto -4804 -> 5845
+    //   10652: iconst_0
+    //   10653: istore 4
+    //   10655: goto -4810 -> 5845
+    //   10658: iconst_0
+    //   10659: istore 8
+    //   10661: goto -4765 -> 5896
+    //   10664: iload 11
+    //   10666: iconst_1
+    //   10667: iadd
+    //   10668: istore 11
+    //   10670: goto -4326 -> 6344
+    //   10673: iconst_2
+    //   10674: istore 7
+    //   10676: goto -3847 -> 6829
+    //   10679: aconst_null
+    //   10680: astore_1
+    //   10681: goto -3461 -> 7220
+    //   10684: aload 21
+    //   10686: astore 20
+    //   10688: goto -1885 -> 8803
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	10382	0	this	DataJsPlugin
-    //   0	10382	1	paramString1	String
-    //   0	10382	2	paramString2	String
-    //   0	10382	3	paramJsRuntime	JsRuntime
-    //   0	10382	4	paramInt	int
-    //   208	479	5	d	double
-    //   250	10116	7	i	int
-    //   246	10105	8	j	int
-    //   227	10062	9	k	int
-    //   291	9942	10	m	int
-    //   308	10052	11	n	int
-    //   2935	474	12	i1	int
-    //   2932	457	13	i2	int
-    //   3196	7008	14	i3	int
-    //   539	9671	15	bool1	boolean
-    //   201	10112	16	bool2	boolean
-    //   5005	5314	17	bool3	boolean
-    //   2139	299	18	l	long
-    //   328	1669	20	localObject1	Object
-    //   2017	3	20	localJSONException1	org.json.JSONException
-    //   2238	7089	20	localObject2	Object
-    //   9421	3	20	localJSONException2	org.json.JSONException
-    //   9459	60	20	localApkgInfo1	com.tencent.mobileqq.mini.apkg.ApkgInfo
-    //   9559	3	20	localJSONException3	org.json.JSONException
-    //   9604	774	20	localObject3	Object
-    //   429	9947	21	localObject4	Object
-    //   73	9093	22	localObject5	Object
-    //   2224	5918	23	localObject6	Object
-    //   2234	5581	24	str1	String
-    //   2229	5594	25	str2	String
-    //   2085	3248	26	str3	String
-    //   2202	3096	27	str4	String
-    //   2214	203	28	localApkgInfo2	com.tencent.mobileqq.mini.apkg.ApkgInfo
+    //   0	10691	0	this	DataJsPlugin
+    //   0	10691	1	paramString1	String
+    //   0	10691	2	paramString2	String
+    //   0	10691	3	paramJsRuntime	JsRuntime
+    //   0	10691	4	paramInt	int
+    //   218	479	5	d	double
+    //   260	10415	7	i	int
+    //   256	10404	8	j	int
+    //   237	10361	9	k	int
+    //   301	10241	10	m	int
+    //   318	10351	11	n	int
+    //   3217	474	12	i1	int
+    //   3214	457	13	i2	int
+    //   3478	7029	14	i3	int
+    //   211	9765	15	bool1	boolean
+    //   549	10073	16	bool2	boolean
+    //   5287	5341	17	bool3	boolean
+    //   2266	299	18	l	long
+    //   338	1786	20	localObject1	Object
+    //   2144	3	20	localJSONException1	org.json.JSONException
+    //   2365	7244	20	localObject2	Object
+    //   9703	3	20	localJSONException2	org.json.JSONException
+    //   9741	60	20	localApkgInfo1	ApkgInfo
+    //   9841	3	20	localJSONException3	org.json.JSONException
+    //   9886	801	20	localObject3	Object
+    //   439	10246	21	localObject4	Object
+    //   73	9375	22	localObject5	Object
+    //   2351	6073	23	localObject6	Object
+    //   2361	5736	24	str1	String
+    //   2356	5749	25	str2	String
+    //   2212	3403	26	str3	String
+    //   2329	3251	27	str4	String
+    //   2341	203	28	localApkgInfo2	ApkgInfo
     // Exception table:
     //   from	to	target	type
-    //   636	871	896	java/lang/Exception
-    //   874	893	896	java/lang/Exception
-    //   1269	1284	1369	java/lang/Exception
-    //   1288	1295	1369	java/lang/Exception
-    //   1298	1336	1369	java/lang/Exception
-    //   1417	1503	1552	org/json/JSONException
-    //   1508	1549	1552	org/json/JSONException
-    //   1566	1578	1552	org/json/JSONException
-    //   1581	1593	1552	org/json/JSONException
-    //   1706	1758	1819	java/lang/Exception
-    //   1758	1788	1819	java/lang/Exception
-    //   1792	1803	1819	java/lang/Exception
-    //   1803	1816	1819	java/lang/Exception
-    //   1841	1849	1819	java/lang/Exception
-    //   1856	1908	1819	java/lang/Exception
-    //   1911	1981	1819	java/lang/Exception
-    //   1981	2002	1819	java/lang/Exception
-    //   2002	2014	1819	java/lang/Exception
-    //   2019	2024	1819	java/lang/Exception
-    //   2027	2057	1819	java/lang/Exception
-    //   2060	2087	1819	java/lang/Exception
-    //   2090	2123	1819	java/lang/Exception
-    //   2123	2141	1819	java/lang/Exception
-    //   2143	2164	1819	java/lang/Exception
-    //   2164	2216	1819	java/lang/Exception
-    //   2249	2257	1819	java/lang/Exception
-    //   2261	2272	1819	java/lang/Exception
-    //   2276	2303	1819	java/lang/Exception
-    //   2324	2332	1819	java/lang/Exception
-    //   2340	2380	1819	java/lang/Exception
-    //   2393	2401	1819	java/lang/Exception
-    //   2405	2429	1819	java/lang/Exception
-    //   2429	2469	1819	java/lang/Exception
-    //   2472	2591	1819	java/lang/Exception
-    //   2591	2709	1819	java/lang/Exception
-    //   2712	2755	1819	java/lang/Exception
-    //   2769	2780	1819	java/lang/Exception
-    //   2783	2823	1819	java/lang/Exception
-    //   1981	2002	2017	org/json/JSONException
-    //   3028	3058	3246	org/json/JSONException
-    //   3081	3098	3246	org/json/JSONException
-    //   3098	3108	3246	org/json/JSONException
-    //   3111	3121	3246	org/json/JSONException
-    //   3124	3134	3246	org/json/JSONException
-    //   3137	3146	3246	org/json/JSONException
-    //   3661	3716	3761	org/json/JSONException
-    //   3720	3742	3761	org/json/JSONException
-    //   3742	3758	3761	org/json/JSONException
-    //   3780	3796	3761	org/json/JSONException
-    //   3799	3856	3761	org/json/JSONException
-    //   3859	3875	3761	org/json/JSONException
-    //   3887	3915	3944	org/json/JSONException
-    //   3929	3941	3944	org/json/JSONException
-    //   3993	4002	4615	org/json/JSONException
-    //   4005	4026	4615	org/json/JSONException
-    //   4042	4080	4615	org/json/JSONException
-    //   4083	4106	4615	org/json/JSONException
-    //   4106	4137	4615	org/json/JSONException
-    //   4137	4147	4615	org/json/JSONException
-    //   4151	4169	4615	org/json/JSONException
-    //   4169	4199	4615	org/json/JSONException
-    //   4203	4218	4615	org/json/JSONException
-    //   4223	4261	4615	org/json/JSONException
-    //   4261	4285	4615	org/json/JSONException
-    //   4285	4307	4615	org/json/JSONException
-    //   4307	4335	4615	org/json/JSONException
-    //   4347	4356	4615	org/json/JSONException
-    //   4360	4432	4615	org/json/JSONException
-    //   4437	4463	4615	org/json/JSONException
-    //   4474	4506	4615	org/json/JSONException
-    //   4510	4522	4615	org/json/JSONException
-    //   4525	4539	4615	org/json/JSONException
-    //   4542	4568	4615	org/json/JSONException
-    //   4580	4589	4615	org/json/JSONException
-    //   4597	4612	4615	org/json/JSONException
-    //   4634	4663	4615	org/json/JSONException
-    //   4666	4684	4615	org/json/JSONException
-    //   4687	4741	4615	org/json/JSONException
-    //   4744	4768	4615	org/json/JSONException
-    //   4771	4796	4615	org/json/JSONException
-    //   4796	4820	4615	org/json/JSONException
-    //   4820	4851	4615	org/json/JSONException
-    //   4855	4880	4615	org/json/JSONException
-    //   4880	4904	4615	org/json/JSONException
-    //   4904	4935	4615	org/json/JSONException
-    //   4939	4955	4615	org/json/JSONException
-    //   4958	5004	4615	org/json/JSONException
-    //   5007	5015	4615	org/json/JSONException
-    //   5025	5045	4615	org/json/JSONException
-    //   5054	5136	4615	org/json/JSONException
-    //   5139	5171	4615	org/json/JSONException
-    //   5175	5211	4615	org/json/JSONException
-    //   5214	5236	4615	org/json/JSONException
-    //   5236	5244	4615	org/json/JSONException
-    //   5253	5280	4615	org/json/JSONException
-    //   5283	5312	4615	org/json/JSONException
-    //   5321	5348	4615	org/json/JSONException
-    //   5376	5395	5634	org/json/JSONException
-    //   5406	5415	5634	org/json/JSONException
-    //   5428	5451	5634	org/json/JSONException
-    //   5451	5474	5634	org/json/JSONException
-    //   5474	5505	5634	org/json/JSONException
-    //   5505	5560	5634	org/json/JSONException
-    //   5563	5611	5634	org/json/JSONException
-    //   5619	5631	5634	org/json/JSONException
-    //   5690	5705	5634	org/json/JSONException
-    //   5708	5723	5634	org/json/JSONException
-    //   5726	5755	5634	org/json/JSONException
-    //   5758	5765	5634	org/json/JSONException
-    //   5775	5782	5634	org/json/JSONException
-    //   5786	5801	5634	org/json/JSONException
-    //   5804	5813	5634	org/json/JSONException
-    //   5816	5848	5634	org/json/JSONException
-    //   5852	5878	5634	org/json/JSONException
-    //   5891	5901	5634	org/json/JSONException
-    //   5930	5948	6039	org/json/JSONException
-    //   5964	5976	6039	org/json/JSONException
-    //   5985	5990	6039	org/json/JSONException
-    //   5995	6000	6039	org/json/JSONException
-    //   6005	6010	6039	org/json/JSONException
-    //   6015	6020	6039	org/json/JSONException
-    //   6020	6036	6039	org/json/JSONException
-    //   6062	6079	6039	org/json/JSONException
-    //   6079	6089	6039	org/json/JSONException
-    //   6092	6102	6039	org/json/JSONException
-    //   6105	6115	6039	org/json/JSONException
-    //   6118	6128	6039	org/json/JSONException
-    //   6134	6150	6039	org/json/JSONException
-    //   6153	6179	6039	org/json/JSONException
-    //   6184	6198	6039	org/json/JSONException
-    //   6203	6217	6039	org/json/JSONException
-    //   6222	6236	6039	org/json/JSONException
-    //   6241	6255	6039	org/json/JSONException
-    //   6255	6271	6039	org/json/JSONException
-    //   6274	6290	6039	org/json/JSONException
-    //   6346	6366	6469	java/lang/Throwable
-    //   6370	6385	6469	java/lang/Throwable
-    //   6385	6402	6469	java/lang/Throwable
-    //   6407	6433	6469	java/lang/Throwable
-    //   6438	6466	6469	java/lang/Throwable
-    //   6489	6498	6469	java/lang/Throwable
-    //   6508	6524	6469	java/lang/Throwable
-    //   6528	6544	6469	java/lang/Throwable
-    //   6553	6565	6469	java/lang/Throwable
-    //   6568	6580	6469	java/lang/Throwable
-    //   6583	6595	6469	java/lang/Throwable
-    //   6607	6747	6750	org/json/JSONException
-    //   6778	6825	6828	org/json/JSONException
-    //   6953	6963	6994	org/json/JSONException
-    //   6897	6929	7013	org/json/JSONException
-    //   6933	6938	7013	org/json/JSONException
-    //   6938	6953	7013	org/json/JSONException
-    //   6963	6994	7013	org/json/JSONException
-    //   6995	7010	7013	org/json/JSONException
-    //   7271	7303	7432	org/json/JSONException
-    //   7307	7323	7432	org/json/JSONException
-    //   7326	7346	7432	org/json/JSONException
-    //   7355	7372	7432	org/json/JSONException
-    //   7376	7399	7432	org/json/JSONException
-    //   7399	7429	7432	org/json/JSONException
-    //   7490	7581	7892	org/json/JSONException
-    //   7585	7622	7892	org/json/JSONException
-    //   7631	7646	7892	org/json/JSONException
-    //   7650	7673	7892	org/json/JSONException
-    //   7677	7694	7892	org/json/JSONException
-    //   7697	7726	7892	org/json/JSONException
-    //   7730	7745	7892	org/json/JSONException
-    //   7752	7770	7892	org/json/JSONException
-    //   7776	7805	7892	org/json/JSONException
-    //   7811	7829	7892	org/json/JSONException
-    //   7832	7890	7892	org/json/JSONException
-    //   8036	8047	8241	org/json/JSONException
-    //   8049	8070	8241	org/json/JSONException
-    //   8072	8124	8241	org/json/JSONException
-    //   8126	8214	8241	org/json/JSONException
-    //   8214	8220	8241	org/json/JSONException
-    //   8223	8229	8241	org/json/JSONException
-    //   8232	8238	8241	org/json/JSONException
-    //   8284	8351	8833	java/lang/Throwable
-    //   8353	8377	8833	java/lang/Throwable
-    //   8382	8416	8833	java/lang/Throwable
-    //   8418	8455	8833	java/lang/Throwable
-    //   8457	8471	8833	java/lang/Throwable
-    //   8471	8481	8833	java/lang/Throwable
-    //   8481	8511	8833	java/lang/Throwable
-    //   8521	8614	8833	java/lang/Throwable
-    //   8617	8625	8833	java/lang/Throwable
-    //   8629	8671	8833	java/lang/Throwable
-    //   8671	8830	8833	java/lang/Throwable
-    //   8849	8881	8833	java/lang/Throwable
-    //   8888	8903	8833	java/lang/Throwable
-    //   8906	8926	8833	java/lang/Throwable
-    //   8471	8481	8848	java/io/UnsupportedEncodingException
-    //   8938	8979	9033	java/lang/Throwable
-    //   8983	9006	9033	java/lang/Throwable
-    //   9006	9030	9033	java/lang/Throwable
-    //   9064	9094	9213	java/lang/Throwable
-    //   9098	9105	9213	java/lang/Throwable
-    //   9108	9171	9213	java/lang/Throwable
-    //   9180	9210	9213	java/lang/Throwable
-    //   9252	9276	9346	java/lang/Throwable
-    //   9280	9287	9346	java/lang/Throwable
-    //   9290	9314	9346	java/lang/Throwable
-    //   9323	9343	9346	java/lang/Throwable
-    //   9382	9406	9421	org/json/JSONException
-    //   9449	9461	9559	org/json/JSONException
-    //   9477	9485	9559	org/json/JSONException
-    //   9489	9500	9559	org/json/JSONException
-    //   9504	9534	9559	org/json/JSONException
-    //   9534	9544	9559	org/json/JSONException
-    //   9579	9615	9845	org/json/JSONException
-    //   9631	9639	9845	org/json/JSONException
-    //   9643	9654	9845	org/json/JSONException
-    //   9658	9688	9845	org/json/JSONException
-    //   9688	9699	9845	org/json/JSONException
-    //   9704	9737	9845	org/json/JSONException
-    //   9741	9842	9845	org/json/JSONException
-    //   9853	9866	9845	org/json/JSONException
-    //   9879	9920	10061	org/json/JSONException
-    //   9925	9958	10061	org/json/JSONException
-    //   9962	10000	10061	org/json/JSONException
-    //   10005	10058	10061	org/json/JSONException
-    //   10113	10165	10168	java/lang/Throwable
+    //   646	881	906	java/lang/Exception
+    //   884	903	906	java/lang/Exception
+    //   1307	1322	1407	java/lang/Exception
+    //   1326	1333	1407	java/lang/Exception
+    //   1336	1374	1407	java/lang/Exception
+    //   1455	1536	1539	org/json/JSONException
+    //   1553	1619	1539	org/json/JSONException
+    //   1732	1811	1872	java/lang/Exception
+    //   1811	1841	1872	java/lang/Exception
+    //   1845	1856	1872	java/lang/Exception
+    //   1856	1869	1872	java/lang/Exception
+    //   1894	1902	1872	java/lang/Exception
+    //   1909	1930	1872	java/lang/Exception
+    //   1933	1954	1872	java/lang/Exception
+    //   1957	1980	1872	java/lang/Exception
+    //   1983	2035	1872	java/lang/Exception
+    //   2038	2108	1872	java/lang/Exception
+    //   2108	2129	1872	java/lang/Exception
+    //   2129	2141	1872	java/lang/Exception
+    //   2146	2151	1872	java/lang/Exception
+    //   2154	2184	1872	java/lang/Exception
+    //   2187	2214	1872	java/lang/Exception
+    //   2217	2250	1872	java/lang/Exception
+    //   2250	2268	1872	java/lang/Exception
+    //   2270	2291	1872	java/lang/Exception
+    //   2291	2343	1872	java/lang/Exception
+    //   2376	2384	1872	java/lang/Exception
+    //   2388	2399	1872	java/lang/Exception
+    //   2403	2430	1872	java/lang/Exception
+    //   2451	2459	1872	java/lang/Exception
+    //   2467	2507	1872	java/lang/Exception
+    //   2520	2528	1872	java/lang/Exception
+    //   2532	2556	1872	java/lang/Exception
+    //   2556	2597	1872	java/lang/Exception
+    //   2600	2621	1872	java/lang/Exception
+    //   2625	2634	1872	java/lang/Exception
+    //   2637	2658	1872	java/lang/Exception
+    //   2669	2690	1872	java/lang/Exception
+    //   2698	2718	1872	java/lang/Exception
+    //   2721	2742	1872	java/lang/Exception
+    //   2748	2831	1872	java/lang/Exception
+    //   2831	2965	1872	java/lang/Exception
+    //   2968	2991	1872	java/lang/Exception
+    //   2994	3037	1872	java/lang/Exception
+    //   3051	3062	1872	java/lang/Exception
+    //   3065	3105	1872	java/lang/Exception
+    //   2108	2129	2144	org/json/JSONException
+    //   3310	3340	3528	org/json/JSONException
+    //   3363	3380	3528	org/json/JSONException
+    //   3380	3390	3528	org/json/JSONException
+    //   3393	3403	3528	org/json/JSONException
+    //   3406	3416	3528	org/json/JSONException
+    //   3419	3428	3528	org/json/JSONException
+    //   3943	3998	4043	org/json/JSONException
+    //   4002	4024	4043	org/json/JSONException
+    //   4024	4040	4043	org/json/JSONException
+    //   4062	4078	4043	org/json/JSONException
+    //   4081	4138	4043	org/json/JSONException
+    //   4141	4157	4043	org/json/JSONException
+    //   4169	4197	4226	org/json/JSONException
+    //   4211	4223	4226	org/json/JSONException
+    //   4275	4284	4897	org/json/JSONException
+    //   4287	4308	4897	org/json/JSONException
+    //   4324	4362	4897	org/json/JSONException
+    //   4365	4388	4897	org/json/JSONException
+    //   4388	4419	4897	org/json/JSONException
+    //   4419	4429	4897	org/json/JSONException
+    //   4433	4451	4897	org/json/JSONException
+    //   4451	4481	4897	org/json/JSONException
+    //   4485	4500	4897	org/json/JSONException
+    //   4505	4543	4897	org/json/JSONException
+    //   4543	4567	4897	org/json/JSONException
+    //   4567	4589	4897	org/json/JSONException
+    //   4589	4617	4897	org/json/JSONException
+    //   4629	4638	4897	org/json/JSONException
+    //   4642	4714	4897	org/json/JSONException
+    //   4719	4745	4897	org/json/JSONException
+    //   4756	4788	4897	org/json/JSONException
+    //   4792	4804	4897	org/json/JSONException
+    //   4807	4821	4897	org/json/JSONException
+    //   4824	4850	4897	org/json/JSONException
+    //   4862	4871	4897	org/json/JSONException
+    //   4879	4894	4897	org/json/JSONException
+    //   4916	4945	4897	org/json/JSONException
+    //   4948	4966	4897	org/json/JSONException
+    //   4969	5023	4897	org/json/JSONException
+    //   5026	5050	4897	org/json/JSONException
+    //   5053	5078	4897	org/json/JSONException
+    //   5078	5102	4897	org/json/JSONException
+    //   5102	5133	4897	org/json/JSONException
+    //   5137	5162	4897	org/json/JSONException
+    //   5162	5186	4897	org/json/JSONException
+    //   5186	5217	4897	org/json/JSONException
+    //   5221	5237	4897	org/json/JSONException
+    //   5240	5286	4897	org/json/JSONException
+    //   5289	5297	4897	org/json/JSONException
+    //   5307	5327	4897	org/json/JSONException
+    //   5336	5418	4897	org/json/JSONException
+    //   5421	5453	4897	org/json/JSONException
+    //   5457	5493	4897	org/json/JSONException
+    //   5496	5518	4897	org/json/JSONException
+    //   5518	5526	4897	org/json/JSONException
+    //   5535	5562	4897	org/json/JSONException
+    //   5565	5594	4897	org/json/JSONException
+    //   5603	5630	4897	org/json/JSONException
+    //   5658	5677	5916	org/json/JSONException
+    //   5688	5697	5916	org/json/JSONException
+    //   5710	5733	5916	org/json/JSONException
+    //   5733	5756	5916	org/json/JSONException
+    //   5756	5787	5916	org/json/JSONException
+    //   5787	5842	5916	org/json/JSONException
+    //   5845	5893	5916	org/json/JSONException
+    //   5901	5913	5916	org/json/JSONException
+    //   5972	5987	5916	org/json/JSONException
+    //   5990	6005	5916	org/json/JSONException
+    //   6008	6037	5916	org/json/JSONException
+    //   6040	6047	5916	org/json/JSONException
+    //   6057	6064	5916	org/json/JSONException
+    //   6068	6083	5916	org/json/JSONException
+    //   6086	6095	5916	org/json/JSONException
+    //   6098	6130	5916	org/json/JSONException
+    //   6134	6160	5916	org/json/JSONException
+    //   6173	6183	5916	org/json/JSONException
+    //   6212	6230	6321	org/json/JSONException
+    //   6246	6258	6321	org/json/JSONException
+    //   6267	6272	6321	org/json/JSONException
+    //   6277	6282	6321	org/json/JSONException
+    //   6287	6292	6321	org/json/JSONException
+    //   6297	6302	6321	org/json/JSONException
+    //   6302	6318	6321	org/json/JSONException
+    //   6344	6361	6321	org/json/JSONException
+    //   6361	6371	6321	org/json/JSONException
+    //   6374	6384	6321	org/json/JSONException
+    //   6387	6397	6321	org/json/JSONException
+    //   6400	6410	6321	org/json/JSONException
+    //   6416	6432	6321	org/json/JSONException
+    //   6435	6461	6321	org/json/JSONException
+    //   6466	6480	6321	org/json/JSONException
+    //   6485	6499	6321	org/json/JSONException
+    //   6504	6518	6321	org/json/JSONException
+    //   6523	6537	6321	org/json/JSONException
+    //   6537	6553	6321	org/json/JSONException
+    //   6556	6572	6321	org/json/JSONException
+    //   6628	6648	6751	java/lang/Throwable
+    //   6652	6667	6751	java/lang/Throwable
+    //   6667	6684	6751	java/lang/Throwable
+    //   6689	6715	6751	java/lang/Throwable
+    //   6720	6748	6751	java/lang/Throwable
+    //   6771	6780	6751	java/lang/Throwable
+    //   6790	6806	6751	java/lang/Throwable
+    //   6810	6826	6751	java/lang/Throwable
+    //   6835	6847	6751	java/lang/Throwable
+    //   6850	6862	6751	java/lang/Throwable
+    //   6865	6877	6751	java/lang/Throwable
+    //   6889	7029	7032	org/json/JSONException
+    //   7060	7107	7110	org/json/JSONException
+    //   7235	7245	7276	org/json/JSONException
+    //   7179	7211	7295	org/json/JSONException
+    //   7215	7220	7295	org/json/JSONException
+    //   7220	7235	7295	org/json/JSONException
+    //   7245	7276	7295	org/json/JSONException
+    //   7277	7292	7295	org/json/JSONException
+    //   7553	7585	7714	org/json/JSONException
+    //   7589	7605	7714	org/json/JSONException
+    //   7608	7628	7714	org/json/JSONException
+    //   7637	7654	7714	org/json/JSONException
+    //   7658	7681	7714	org/json/JSONException
+    //   7681	7711	7714	org/json/JSONException
+    //   7772	7863	8174	org/json/JSONException
+    //   7867	7904	8174	org/json/JSONException
+    //   7913	7928	8174	org/json/JSONException
+    //   7932	7955	8174	org/json/JSONException
+    //   7959	7976	8174	org/json/JSONException
+    //   7979	8008	8174	org/json/JSONException
+    //   8012	8027	8174	org/json/JSONException
+    //   8034	8052	8174	org/json/JSONException
+    //   8058	8087	8174	org/json/JSONException
+    //   8093	8111	8174	org/json/JSONException
+    //   8114	8172	8174	org/json/JSONException
+    //   8318	8329	8523	org/json/JSONException
+    //   8331	8352	8523	org/json/JSONException
+    //   8354	8406	8523	org/json/JSONException
+    //   8408	8496	8523	org/json/JSONException
+    //   8496	8502	8523	org/json/JSONException
+    //   8505	8511	8523	org/json/JSONException
+    //   8514	8520	8523	org/json/JSONException
+    //   8566	8633	9115	java/lang/Throwable
+    //   8635	8659	9115	java/lang/Throwable
+    //   8664	8698	9115	java/lang/Throwable
+    //   8700	8737	9115	java/lang/Throwable
+    //   8739	8753	9115	java/lang/Throwable
+    //   8753	8763	9115	java/lang/Throwable
+    //   8763	8793	9115	java/lang/Throwable
+    //   8803	8896	9115	java/lang/Throwable
+    //   8899	8907	9115	java/lang/Throwable
+    //   8911	8953	9115	java/lang/Throwable
+    //   8953	9112	9115	java/lang/Throwable
+    //   9131	9163	9115	java/lang/Throwable
+    //   9170	9185	9115	java/lang/Throwable
+    //   9188	9208	9115	java/lang/Throwable
+    //   8753	8763	9130	java/io/UnsupportedEncodingException
+    //   9220	9261	9315	java/lang/Throwable
+    //   9265	9288	9315	java/lang/Throwable
+    //   9288	9312	9315	java/lang/Throwable
+    //   9346	9376	9495	java/lang/Throwable
+    //   9380	9387	9495	java/lang/Throwable
+    //   9390	9453	9495	java/lang/Throwable
+    //   9462	9492	9495	java/lang/Throwable
+    //   9534	9558	9628	java/lang/Throwable
+    //   9562	9569	9628	java/lang/Throwable
+    //   9572	9596	9628	java/lang/Throwable
+    //   9605	9625	9628	java/lang/Throwable
+    //   9664	9688	9703	org/json/JSONException
+    //   9731	9743	9841	org/json/JSONException
+    //   9759	9767	9841	org/json/JSONException
+    //   9771	9782	9841	org/json/JSONException
+    //   9786	9816	9841	org/json/JSONException
+    //   9816	9826	9841	org/json/JSONException
+    //   9861	9897	10127	org/json/JSONException
+    //   9913	9921	10127	org/json/JSONException
+    //   9925	9936	10127	org/json/JSONException
+    //   9940	9970	10127	org/json/JSONException
+    //   9970	9981	10127	org/json/JSONException
+    //   9986	10019	10127	org/json/JSONException
+    //   10023	10124	10127	org/json/JSONException
+    //   10135	10148	10127	org/json/JSONException
+    //   10161	10202	10343	org/json/JSONException
+    //   10207	10240	10343	org/json/JSONException
+    //   10244	10282	10343	org/json/JSONException
+    //   10287	10340	10343	org/json/JSONException
+    //   10395	10447	10450	java/lang/Throwable
   }
   
-  public void login(abwu paramabwu)
+  public void login(adea paramadea)
   {
-    if (paramabwu == null) {
+    if (paramadea == null) {
       return;
     }
-    ThreadManager.excute(new DataJsPlugin.26(this, paramabwu), 16, null, false);
+    ThreadManager.excute(new DataJsPlugin.27(this, paramadea), 16, null, false);
   }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
@@ -5294,7 +5672,7 @@ public class DataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

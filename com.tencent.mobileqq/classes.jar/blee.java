@@ -1,6 +1,6 @@
 public abstract interface blee
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a();
 }
 
 

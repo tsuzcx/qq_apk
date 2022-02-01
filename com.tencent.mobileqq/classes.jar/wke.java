@@ -1,53 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
 public class wke
-  extends umf<wjw, wpf>
 {
-  public wke(wjw paramwjw)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    super(paramwjw);
+    return wkx.a(paramQQUserUIItem);
   }
   
-  public void a(@NonNull wjw paramwjw, @NonNull wpf paramwpf)
+  public static boolean a()
   {
-    if ((paramwpf.jdField_a_of_type_Int == 2) || (!paramwpf.jdField_a_of_type_JavaLangString.equals(wjw.a(paramwjw))) || (wjw.a(paramwjw) == null))
-    {
-      wxe.b(this.TAG, "ignore this video cookie change event. %s.", paramwpf.toString());
-      return;
-    }
-    if (!wjw.a(paramwjw).c())
-    {
-      wxe.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramwpf.toString() });
-      return;
-    }
-    paramwpf = wjw.a(paramwjw).a(wjw.a(paramwjw), wjw.a(paramwjw).a().mVideoPullType);
-    if (paramwpf == null)
-    {
-      wxe.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { wjw.a(paramwjw), Integer.valueOf(wjw.a(paramwjw).a().mVideoPullType) });
-      return;
-    }
-    wxe.a(this.TAG, "receive video cookie change event. %s.", paramwpf.toString());
-    wjw.a(paramwjw).a().updateVideoInfo(paramwpf);
-    wjw.a(paramwjw).a(paramwpf.mVideoItemList, true);
-    if (wjw.a(paramwjw) != null) {
-      wjw.a(paramwjw).a(paramwpf.mVideoPullType, paramwpf.mVideoNextCookie, paramwpf.mVideoSeq);
-    }
-    wjw.a(paramwjw).c();
+    return true;
   }
   
-  public Class acceptEventClass()
+  public static String b(QQUserUIItem paramQQUserUIItem)
   {
-    return wpf.class;
+    return wkx.b(paramQQUserUIItem);
   }
-  
-  public void b(@NonNull wjw paramwjw, @NonNull wpf paramwpf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wke
  * JD-Core Version:    0.7.0.1
  */

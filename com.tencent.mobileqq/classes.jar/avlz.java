@@ -1,33 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface.OnClickListener;
 
 class avlz
-  implements View.OnClickListener
 {
-  avlz(avkt paramavkt, String paramString) {}
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(View paramView)
+  public avlz(avlw paramavlw, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Avkt.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Avkt.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avkt.a.j)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Avkt.a.startActivity(localIntent);
-      azqs.b(this.jdField_a_of_type_Avkt.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Avkt.a.l = true;
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avlz
  * JD-Core Version:    0.7.0.1
  */

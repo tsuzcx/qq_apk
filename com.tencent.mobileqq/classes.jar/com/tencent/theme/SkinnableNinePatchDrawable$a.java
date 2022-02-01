@@ -8,16 +8,16 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 final class SkinnableNinePatchDrawable$a
-  extends a
+  extends BaseConstantState
 {
-  NinePatch l;
-  Rect m;
-  Rect n;
-  final boolean o;
-  int p;
-  int q = 160;
-  Bitmap r;
-  Paint s = new Paint();
+  NinePatch a;
+  Rect b;
+  Rect c;
+  final boolean d;
+  int e;
+  int f = 160;
+  Bitmap g;
+  Paint h = new Paint();
   
   SkinnableNinePatchDrawable$a(NinePatch paramNinePatch, Bitmap paramBitmap, Rect paramRect)
   {
@@ -26,24 +26,24 @@ final class SkinnableNinePatchDrawable$a
   
   SkinnableNinePatchDrawable$a(NinePatch paramNinePatch, Bitmap paramBitmap, Rect paramRect, boolean paramBoolean)
   {
-    this.r = paramBitmap;
-    this.l = paramNinePatch;
-    this.m = paramRect;
-    this.o = paramBoolean;
+    this.g = paramBitmap;
+    this.a = paramNinePatch;
+    this.b = paramRect;
+    this.d = paramBoolean;
   }
   
   SkinnableNinePatchDrawable$a(a parama)
   {
-    this.l = parama.l;
-    this.m = parama.m;
-    this.o = parama.o;
-    this.p = parama.p;
-    this.q = parama.q;
+    this.a = parama.a;
+    this.b = parama.b;
+    this.d = parama.d;
+    this.e = parama.e;
+    this.f = parama.f;
   }
   
   public int getChangingConfigurations()
   {
-    return this.p;
+    return this.e;
   }
   
   public Drawable newDrawable()

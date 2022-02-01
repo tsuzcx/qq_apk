@@ -1,63 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-public class oto
-  implements AladdinConfigHandler
+class oto
+  implements URLDrawable.URLDrawableListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  oto(otn paramotn, String paramString) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = osq.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "kingcard_switch")) {
-            bkbq.o(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "kingcard_guide_url")) {
-        bkbq.i(str2);
-      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
-        bkbq.j(str2);
-      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
-        bkbq.k(str2);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    bkbq.o(0);
-    bkbq.i("");
-    bkbq.j("");
-    bkbq.k("");
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramURLDrawable != null)
+    {
+      otn.a(this.jdField_a_of_type_Otn, new otl(paramURLDrawable.getCurrDrawable(), otn.a(this.jdField_a_of_type_Otn), otn.b(this.jdField_a_of_type_Otn) - (otn.c(this.jdField_a_of_type_Otn) + otn.d(this.jdField_a_of_type_Otn))));
+      otn.a(this.jdField_a_of_type_Otn).setImageDrawable(otn.a(this.jdField_a_of_type_Otn));
+      otn.a(this.jdField_a_of_type_Otn, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oto
  * JD-Core Version:    0.7.0.1
  */

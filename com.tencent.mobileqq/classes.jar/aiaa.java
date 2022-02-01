@@ -1,41 +1,86 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiaa
-  implements acpa
+class aiaa
+  extends anqd
 {
-  public aiaa(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  aiaa(ahzy paramahzy) {}
   
-  public void a(Activity paramActivity)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    QQToast.a(paramActivity, 2, 2131691566, 0).b(this.a.getActivity().getTitleBarHeight());
-    paramActivity.setResult(-1);
-    paramActivity.finish();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
+      if ((paramString1 != null) && (paramString1.msgtype == -2058) && ((paramString1.extraflag == 32768) || (paramString1.sendFailCode == 41)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, false);
+      }
       return;
     }
-    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
+    ahzy.a(this.a, paramString1, paramInt1, paramLong2);
+    this.a.f(196608);
   }
   
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 0) {
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
     }
-    while (paramInt != 1) {
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
+    this.a.t = true;
+    this.a.a(262144, paramanqa, paramLong);
+    ((awhj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, awhj.jdField_a_of_type_Int);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.f(131072);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

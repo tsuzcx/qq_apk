@@ -1,11 +1,22 @@
-public abstract interface aneb
-  extends aneg
+public class aneb
 {
-  public abstract void a(int paramInt);
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  public long d;
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat);
+  static
+  {
+    jdField_a_of_type_JavaLangString = bgln.i();
+    b = bgln.e();
+    c = bgln.g();
+    jdField_a_of_type_Int = bgln.b();
+    jdField_a_of_type_Long = bgln.a();
+  }
 }
 
 

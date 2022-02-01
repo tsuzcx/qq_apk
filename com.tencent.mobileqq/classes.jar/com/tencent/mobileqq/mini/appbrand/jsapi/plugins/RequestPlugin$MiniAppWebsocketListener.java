@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bdin;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -52,74 +52,81 @@ public class RequestPlugin$MiniAppWebsocketListener
   
   public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    Object localObject1 = null;
-    QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure, socketId=" + this.currSocketId, paramThrowable);
-    if (paramThrowable != null) {}
-    int i;
-    Object localObject3;
-    try
+    int i = this.currSocketId;
+    if (paramResponse != null)
     {
-      if ((paramThrowable.getMessage() != null) && ((paramThrowable.getMessage().equals("SSL handshake timed out")) || (paramThrowable.getMessage().equals("timeout"))))
-      {
-        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure , timeout , send close state. socketId=" + this.currSocketId);
-        paramWebSocket = new JSONObject();
-        paramWebSocket.put("socketTaskId", this.currSocketId);
-        paramWebSocket.put("state", "close");
-        if (paramResponse == null)
-        {
-          i = 600;
-          paramWebSocket.put("statusCode", i);
-          if (RequestPlugin.access$000(this.this$0) != null) {
-            RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", paramWebSocket.toString(), 0);
-          }
-        }
+      paramWebSocket = Integer.valueOf(paramResponse.code());
+      QLog.e("[mini] http.RequestPlugin", 1, new Object[] { "[minigame][socket] MiniAppWebsocketListener onFailure, socketId=", Integer.valueOf(i), "response code=", paramWebSocket, paramThrowable });
+      if (paramThrowable == null) {
+        break label343;
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      Object localObject2;
+      try
       {
-        if ((this.this$0.jsPluginEngine == null) || (this.this$0.jsPluginEngine.appBrandRuntime == null) || (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo() == null) || (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig == null)) {
-          return;
-        }
-        Object localObject2 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
-        localObject3 = MiniReportManager.getAppType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
-        paramWebSocket = localObject1;
-        if (paramResponse != null)
+        if ((paramThrowable.getMessage() != null) && ((paramThrowable.getMessage().equals("SSL handshake timed out")) || (paramThrowable.getMessage().equals("timeout"))))
         {
-          paramWebSocket = localObject1;
-          if (paramResponse.request() != null) {
-            paramWebSocket = paramResponse.request().url().toString();
+          QLog.e("[mini] http.RequestPlugin", 1, new Object[] { "[minigame][socket] MiniAppWebsocketListener onFailure , timeout , send close state. socketId=", Integer.valueOf(this.currSocketId) });
+          paramWebSocket = new JSONObject();
+          paramWebSocket.put("socketTaskId", this.currSocketId);
+          paramWebSocket.put("state", "close");
+          if (paramResponse == null)
+          {
+            i = 600;
+            paramWebSocket.put("statusCode", i);
+            if (RequestPlugin.access$000(this.this$0) != null) {
+              RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", paramWebSocket.toString(), 0);
+            }
+            if ((this.this$0.jsPluginEngine != null) && (this.this$0.jsPluginEngine.appBrandRuntime != null) && (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo() != null) && (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig != null))
+            {
+              localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
+              localObject2 = MiniReportManager.getAppType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
+              if ((paramResponse == null) || (paramResponse.request() == null)) {
+                break label533;
+              }
+              paramWebSocket = paramResponse.request().url().toString();
+              MiniReportManager.reportEventType((MiniAppConfig)localObject1, 634, null, null, null, 0, (String)localObject2, 0L, RequestPlugin.access$100(paramWebSocket));
+            }
+            return;
+            paramWebSocket = "";
+            break;
           }
+          i = paramResponse.code();
+          continue;
         }
-        MiniReportManager.reportEventType((MiniAppConfig)localObject2, 634, null, null, null, 0, (String)localObject3, 0L, RequestPlugin.access$100(paramWebSocket));
+        label343:
+        Object localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("socketTaskId", this.currSocketId);
+        ((JSONObject)localObject1).put("state", "error");
+        if ((bgnt.b(BaseApplicationImpl.getContext()) == 0) || (bgnt.b(BaseApplicationImpl.getContext()) == -1))
+        {
+          paramWebSocket = "network is down";
+          ((JSONObject)localObject1).put("errMsg", "network is down");
+          QLog.e("[mini] http.RequestPlugin", 1, new Object[] { "[minigame][socket] MiniAppWebsocketListener onFailure socketId=", Integer.valueOf(this.currSocketId), " errMsg=", paramWebSocket });
+          if (RequestPlugin.access$000(this.this$0) == null) {
+            continue;
+          }
+          RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", ((JSONObject)localObject1).toString(), 0);
+          continue;
+        }
+        localObject2 = new StringBuilder().append("resposeCode=");
+      }
+      catch (JSONException paramWebSocket)
+      {
+        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure exception:", paramThrowable);
         return;
-        i = paramResponse.code();
-        break;
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("socketTaskId", this.currSocketId);
-        ((JSONObject)localObject2).put("state", "error");
-        if ((bdin.b(BaseApplicationImpl.getContext()) != 0) && (bdin.b(BaseApplicationImpl.getContext()) != -1)) {
-          break label468;
-        }
-        paramWebSocket = "network is down";
-        ((JSONObject)localObject2).put("errMsg", "network is down");
-        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure socketId=" + this.currSocketId + " errMsg=" + paramWebSocket);
-        if (RequestPlugin.access$000(this.this$0) != null) {
-          RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", ((JSONObject)localObject2).toString(), 0);
-        }
       }
-      localObject3 = new StringBuilder().append("resposeCode=");
-    }
-    catch (JSONException paramWebSocket)
-    {
-      QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure exception:", paramThrowable);
-      return;
-    }
-    label468:
-    if (paramResponse == null) {}
-    for (paramWebSocket = "-1";; paramWebSocket = Integer.valueOf(i))
-    {
-      paramWebSocket = paramWebSocket;
-      break;
-      i = paramResponse.code();
+      if (paramResponse == null) {}
+      for (paramWebSocket = "-1";; paramWebSocket = Integer.valueOf(i))
+      {
+        paramWebSocket = paramWebSocket;
+        break;
+        i = paramResponse.code();
+      }
+      label533:
+      paramWebSocket = null;
     }
   }
   
@@ -210,7 +217,7 @@ public class RequestPlugin$MiniAppWebsocketListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RequestPlugin.MiniAppWebsocketListener
  * JD-Core Version:    0.7.0.1
  */

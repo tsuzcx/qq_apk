@@ -1,6 +1,16 @@
-public abstract interface ahkc
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
+
+public class ahkc
+  extends afwr
 {
-  public abstract void a(String paramString);
+  public RelativeLayout a;
+  public SessionInfo a;
+  public MessageProgressTextView a;
+  public boolean a;
+  public RelativeLayout b;
+  public RelativeLayout c;
 }
 
 

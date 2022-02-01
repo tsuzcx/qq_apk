@@ -18,6 +18,7 @@ public final class FeedCloudMeta$StReply
   public final PBUInt64Field createTime = PBField.initUInt64(0L);
   public final PBStringField id = PBField.initString("");
   public FeedCloudMeta.StLike likeInfo = new FeedCloudMeta.StLike();
+  public final PBUInt32Field modifyflag = PBField.initUInt32(0);
   public FeedCloudMeta.StUser postUser = new FeedCloudMeta.StUser();
   public FeedCloudMeta.StUser targetUser = new FeedCloudMeta.StUser();
   public final PBUInt32Field typeFlag = PBField.initUInt32(0);
@@ -25,12 +26,12 @@ public final class FeedCloudMeta$StReply
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 64 }, new String[] { "id", "postUser", "createTime", "content", "targetUser", "busiData", "likeInfo", "typeFlag" }, new Object[] { "", null, Long.valueOf(0L), "", null, localByteStringMicro, null, Integer.valueOf(0) }, StReply.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 64, 72 }, new String[] { "id", "postUser", "createTime", "content", "targetUser", "busiData", "likeInfo", "typeFlag", "modifyflag" }, new Object[] { "", null, Long.valueOf(0L), "", null, localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0) }, StReply.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StReply
  * JD-Core Version:    0.7.0.1
  */

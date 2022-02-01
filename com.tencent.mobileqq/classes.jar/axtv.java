@@ -1,26 +1,20 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
 
-@TargetApi(14)
 public class axtv
+  extends axbm
 {
-  public int a;
-  public SurfaceTexture a;
-  public Surface a;
+  axtv(axtp paramaxtp) {}
   
-  public axtv(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  public void a(axbn paramaxbn)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramaxbn), 8, null, false);
+    this.a.a = paramaxbn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtv
  * JD-Core Version:    0.7.0.1
  */

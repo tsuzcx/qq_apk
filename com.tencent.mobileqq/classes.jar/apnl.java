@@ -1,26 +1,21 @@
-public class apnl
+import java.util.ArrayList;
+
+class apnl
+  implements apnr
 {
-  public static int a = 300;
+  apnl(apni paramapni) {}
   
-  public static String a(String paramString)
+  public void a(apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (bdnn.a(paramString)) {
-      return "";
+    int i = 0;
+    while (i < paramapnu.b.size())
+    {
+      apnq localapnq = (apnq)paramapnu.b.get(i);
+      if (localapnq != null) {
+        localapnq.b(paramBoolean, paramapnu.a, paramArrayOfByte);
+      }
+      i += 1;
     }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
-    }
-    return "";
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if ((bdnn.a(paramString1)) || (bdnn.a(paramString2))) {
-      return "";
-    }
-    paramString2 = bflq.a(paramString2);
-    return alof.bj + paramString2 + paramString1;
   }
 }
 

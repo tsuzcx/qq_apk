@@ -1,26 +1,60 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
+import com.tencent.smtt.utils.TbsLog;
 
 final class QbSdk$5
-  implements TbsDownloader.TbsDownloaderCallback
+  implements TbsListener
 {
-  QbSdk$5(Context paramContext, QbSdk.PreInitCallback paramPreInitCallback) {}
-  
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public void onDownloadFinish(int paramInt)
   {
-    if ((TbsShareManager.findCoreForThirdPartyApp(this.val$context) == 0) && (!TbsShareManager.getCoreDisabled())) {
-      TbsShareManager.forceToLoadX5ForThirdApp(this.val$context, false);
+    if (TbsDownloader.needDownloadDecoupleCore())
+    {
+      TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is true", true);
+      TbsDownloader.a = true;
     }
-    if ((QbSdk.mIsBuglyEnabled) && (TbsShareManager.isThirdPartyApp(this.val$context))) {
-      TbsExtensionFunctionManager.getInstance().initTbsBuglyIfNeed(this.val$context);
+    do
+    {
+      return;
+      TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is false", true);
+      TbsDownloader.a = false;
+      if ((paramInt != 100) || (QbSdk.c() != null)) {
+        QbSdk.c().onDownloadFinish(paramInt);
+      }
+    } while (QbSdk.d() == null);
+    QbSdk.d().onDownloadFinish(paramInt);
+  }
+  
+  public void onDownloadProgress(int paramInt)
+  {
+    if (QbSdk.d() != null) {
+      QbSdk.d().onDownloadProgress(paramInt);
     }
-    QbSdk.preInit(this.val$context, this.val$callback);
+    if (QbSdk.c() != null) {
+      QbSdk.c().onDownloadProgress(paramInt);
+    }
+  }
+  
+  public void onInstallFinish(int paramInt)
+  {
+    if ((paramInt != 200) && (paramInt == 220)) {}
+    QbSdk.setTBSInstallingStatus(false);
+    TbsDownloader.a = false;
+    if (TbsDownloader.startDecoupleCoreIfNeeded()) {}
+    for (TbsDownloader.a = true;; TbsDownloader.a = false)
+    {
+      if (QbSdk.c() != null) {
+        QbSdk.c().onInstallFinish(paramInt);
+      }
+      if (QbSdk.d() != null) {
+        QbSdk.d().onInstallFinish(paramInt);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.5
  * JD-Core Version:    0.7.0.1
  */

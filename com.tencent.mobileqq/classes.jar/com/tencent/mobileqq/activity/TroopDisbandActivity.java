@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aecm;
-import aecn;
-import aeco;
-import aecp;
-import aecq;
-import aect;
-import aecu;
-import altm;
-import alud;
-import amdu;
-import ameq;
+import Override;
+import afix;
+import afiy;
+import afiz;
+import afja;
+import afjb;
+import afje;
+import afjf;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,6 +15,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -25,12 +23,16 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import azqx;
-import bdgm;
-import bdin;
-import bdjz;
-import beub;
+import anmu;
+import anni;
+import anwd;
+import anxg;
+import bcst;
+import bcsy;
+import bglp;
+import bgnt;
+import bgpa;
+import biax;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,6 +40,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
 
 public class TroopDisbandActivity
@@ -46,15 +50,15 @@ public class TroopDisbandActivity
 {
   public int a;
   public long a;
-  public aecu a;
-  private altm jdField_a_of_type_Altm = new aect(this);
-  ameq jdField_a_of_type_Ameq = new aecq(this);
+  public afjf a;
   protected View a;
   protected Button a;
   protected GridView a;
   protected ImageView a;
   protected TextView a;
-  public beub a;
+  private anmu jdField_a_of_type_Anmu = new afje(this);
+  anxg jdField_a_of_type_Anxg = new afjb(this);
+  public biax a;
   public TroopInfo a;
   public String a;
   public ArrayList<String> a;
@@ -73,26 +77,26 @@ public class TroopDisbandActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378460));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378359));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378361);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378360));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131378357);
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131378358));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379312));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379209));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379211);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379210));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131379207);
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131379208));
     this.jdField_a_of_type_AndroidWidgetGridView.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetGridView.setClickable(false);
     this.jdField_a_of_type_AndroidWidgetGridView.setEnabled(false);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378362));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378510));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379212));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379364));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131378356));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131379206));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_Aecu = new aecu(this);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Aecu);
-    this.jdField_c_of_type_Int = (getResources().getDimensionPixelSize(2131297142) * 2);
+    this.jdField_a_of_type_Afjf = new afjf(this);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Afjf);
+    this.jdField_c_of_type_Int = (getResources().getDimensionPixelSize(2131297195) * 2);
     this.jdField_c_of_type_Int += this.jdField_b_of_type_AndroidViewView.getPaddingLeft() + this.jdField_b_of_type_AndroidViewView.getPaddingRight();
-    this.jdField_c_of_type_Int += getResources().getDimensionPixelSize(2131298946) * 2;
-    this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131298944);
+    this.jdField_c_of_type_Int += getResources().getDimensionPixelSize(2131299030) * 2;
+    this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131299028);
     b();
     Object localObject = (TroopManager)this.app.getManager(52);
     if (localObject == null) {}
@@ -106,23 +110,23 @@ public class TroopDisbandActivity
   
   private void d()
   {
-    Dialog localDialog = new Dialog(this, 2131755801);
-    localDialog.setContentView(2131560906);
-    ((TextView)localDialog.findViewById(2131365271)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131365260);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131365258);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131365264);
-    String str = alud.a(2131715681);
-    localTextView1.setText(getString(2131691098, new Object[] { str, str }));
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755823);
+    localReportDialog.setContentView(2131561111);
+    ((TextView)localReportDialog.findViewById(2131365514)).setVisibility(8);
+    TextView localTextView1 = (TextView)localReportDialog.findViewById(2131365502);
+    TextView localTextView2 = (TextView)localReportDialog.findViewById(2131365500);
+    TextView localTextView3 = (TextView)localReportDialog.findViewById(2131365506);
+    String str = anni.a(2131713962);
+    localTextView1.setText(getString(2131690919, new Object[] { str, str }));
     localTextView1.setGravity(3);
-    localTextView2.setText(2131694953);
-    localTextView3.setText(2131690648);
-    localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new aecm(this, localDialog));
-    localTextView3.setOnClickListener(new aecn(this, localDialog));
+    localTextView2.setText(2131694081);
+    localTextView3.setText(2131690582);
+    localReportDialog.setCanceledOnTouchOutside(false);
+    localTextView2.setOnClickListener(new afix(this, localReportDialog));
+    localTextView3.setOnClickListener(new afiy(this, localReportDialog));
     try
     {
-      localDialog.show();
+      localReportDialog.show();
       return;
     }
     catch (Exception localException) {}
@@ -130,17 +134,17 @@ public class TroopDisbandActivity
   
   private void e()
   {
-    String str1 = getString(2131691863);
-    String str2 = getString(2131691097);
-    bdjz localbdjz = bdgm.a(this, 230);
-    localbdjz.setTitle(str1);
-    localbdjz.setMessage(str2);
-    localbdjz.setPositiveButton(getString(2131691096), new aeco(this, localbdjz));
-    localbdjz.setPositiveButtonContentDescription(getString(2131691279));
-    localbdjz.setNegativeButton(getString(2131690648), new aecp(this));
-    localbdjz.setNegativeButtonContentDescription(getString(2131691278));
-    localbdjz.show();
-    azqs.b(this.app, "CliOper", "", "", "Grp", "Clk_dismiss_grp", 0, 0, "", "", "", "");
+    String str1 = getString(2131691585);
+    String str2 = getString(2131690918);
+    bgpa localbgpa = bglp.a(this, 230);
+    localbgpa.setTitle(str1);
+    localbgpa.setMessage(str2);
+    localbgpa.setPositiveButton(getString(2131690917), new afiz(this, localbgpa));
+    localbgpa.setPositiveButtonContentDescription(getString(2131691084));
+    localbgpa.setNegativeButton(getString(2131690582), new afja(this));
+    localbgpa.setNegativeButtonContentDescription(getString(2131691083));
+    localbgpa.show();
+    bcst.b(this.app, "CliOper", "", "", "Grp", "Clk_dismiss_grp", 0, 0, "", "", "", "");
   }
   
   protected void a()
@@ -188,15 +192,15 @@ public class TroopDisbandActivity
       if (QLog.isColorLevel()) {
         QLog.i("Q.troopdisband.disband", 2, "initTroopTips groupInfo mTroopUin =" + this.jdField_a_of_type_JavaLangString + ", wMemberNum=" + this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum + ", troopCreateTime = " + this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getString(2131720996), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum) }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getString(2131718724), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum) }));
       if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum <= 1)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131721003);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720998);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718731);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718726);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setClickable(false);
         this.jdField_b_of_type_AndroidViewView.setClickable(false);
-        this.jdField_a_of_type_Aecu.a();
+        this.jdField_a_of_type_Afjf.a();
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         return;
       }
@@ -207,12 +211,12 @@ public class TroopDisbandActivity
       for (;;)
       {
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131721002);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720997);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718730);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718725);
         if (!paramBoolean) {
           break;
         }
-        this.jdField_a_of_type_Aecu.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getSomeMemberUins());
+        this.jdField_a_of_type_Afjf.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getSomeMemberUins());
         ThreadManager.post(new TroopDisbandActivity.1(this), 5, null, true);
         return;
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -237,7 +241,7 @@ public class TroopDisbandActivity
       if (localLayoutParams != null) {
         localLayoutParams.height = (i + 4);
       }
-      this.jdField_a_of_type_Aecu.a(i);
+      this.jdField_a_of_type_Afjf.a(i);
       if (QLog.isColorLevel())
       {
         QLog.i("Q.troopdisband.disband", 2, "initListItemSize|width = " + k + ", columnWidth = " + i);
@@ -248,29 +252,37 @@ public class TroopDisbandActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentViewB(2131561361);
-    setTitle(2131717664);
+    setContentViewB(2131561594);
+    setTitle(2131715889);
     a();
     this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_d_of_type_JavaLangString = this.app.getCurrentAccountUin();
-    addObserver(this.jdField_a_of_type_Ameq);
-    addObserver(this.jdField_a_of_type_Altm);
+    addObserver(this.jdField_a_of_type_Anxg);
+    addObserver(this.jdField_a_of_type_Anmu);
     c();
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Ameq);
-    removeObserver(this.jdField_a_of_type_Altm);
-    if (this.jdField_a_of_type_Beub != null)
+    removeObserver(this.jdField_a_of_type_Anxg);
+    removeObserver(this.jdField_a_of_type_Anmu);
+    if (this.jdField_a_of_type_Biax != null)
     {
-      this.jdField_a_of_type_Beub.b();
-      this.jdField_a_of_type_Beub = null;
+      this.jdField_a_of_type_Biax.b();
+      this.jdField_a_of_type_Biax = null;
     }
     super.doOnDestroy();
   }
@@ -301,48 +313,50 @@ public class TroopDisbandActivity
       Intent localIntent;
       return;
     }
-    if (this.jdField_a_of_type_Beub == null) {
-      this.jdField_a_of_type_Beub = new beub(this);
+    if (this.jdField_a_of_type_Biax == null) {
+      this.jdField_a_of_type_Biax = new biax(this);
     }
-    this.jdField_a_of_type_Beub.a(1, str, 1500);
+    this.jdField_a_of_type_Biax.a(1, str, 1500);
   }
   
   public void onClick(View paramView)
   {
+    Object localObject;
     switch (paramView.getId())
     {
     default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131378357: 
-    case 2131378361: 
+    case 2131379207: 
+    case 2131379211: 
       if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {}
-      for (paramView = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin;; paramView = this.jdField_a_of_type_JavaLangString)
+      for (String str = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin;; localObject = this.jdField_a_of_type_JavaLangString)
       {
-        startActivity(TroopMemberListActivity.a(this, paramView, 4));
-        try
+        for (;;)
         {
-          azqs.b(this.app, "P_CliOper", "Grp_mber", "", "mber_list", "Clk_mberlist", 0, 0, paramView, "1", "0", "");
-          return;
+          startActivity(TroopMemberListActivity.a(this, str, 4));
+          try
+          {
+            bcst.b(this.app, "P_CliOper", "Grp_mber", "", "mber_list", "Clk_mberlist", 0, 0, str, "1", "0", "");
+          }
+          catch (Exception localException1) {}
         }
-        catch (Exception paramView)
-        {
-          return;
-        }
+        break;
       }
-    case 2131378510: 
+    case 2131379364: 
       if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum > 1)) {
         break;
       }
     }
     for (int i = 0;; i = 1)
     {
-      if (this.jdField_a_of_type_Beub == null) {
-        this.jdField_a_of_type_Beub = new beub(this);
+      if (this.jdField_a_of_type_Biax == null) {
+        this.jdField_a_of_type_Biax = new biax(this);
       }
-      if ((i != 0) && (bdin.d(this)))
+      if ((i != 0) && (bgnt.d(this)))
       {
-        paramView = (amdu)this.app.a(20);
-        if (paramView != null) {
+        localObject = (anwd)this.app.a(20);
+        if (localObject != null) {
           if ((this.jdField_b_of_type_Int & 0x2) != 0) {}
         }
       }
@@ -354,40 +368,43 @@ public class TroopDisbandActivity
           this.jdField_b_of_type_Int |= 0x2;
           this.jdField_b_of_type_Long = 0L;
           this.jdField_a_of_type_JavaUtilArrayList.clear();
-          paramView.a(l, this.jdField_b_of_type_Long, 4, 0, 0);
-          this.jdField_a_of_type_Beub.b(0, 2131720994, 1000);
-          azqs.b(this.app, "CliOper", "", "", "Grp", "Clk_transgrp", 0, 0, "", "", "", "");
+          ((anwd)localObject).a(l, this.jdField_b_of_type_Long, 4, 0, 0);
+          this.jdField_a_of_type_Biax.b(0, 2131718722, 1000);
+          bcst.b(this.app, "CliOper", "", "", "Grp", "Clk_transgrp", 0, 0, "", "", "", "");
           if (!"troopMemberCardMoreInfoPage".equals(this.e)) {
             break;
           }
-          new azqx(this.app).a("dc00899").b("Grp_mem_card").c("more").d("transfer_clk").a(new String[] { this.jdField_a_of_type_JavaLangString }).a();
-          return;
+          new bcsy(this.app).a("dc00899").b("Grp_mem_card").c("more").d("transfer_clk").a(new String[] { this.jdField_a_of_type_JavaLangString }).a();
         }
-        catch (Exception paramView)
+        catch (Exception localException2)
         {
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.i("Q.troopdisband.disband", 2, paramView.toString());
+          QLog.i("Q.troopdisband.disband", 2, localException2.toString());
           continue;
         }
-        this.jdField_a_of_type_Beub.b(2, 2131720995, 1500);
+        this.jdField_a_of_type_Biax.b(2, 2131718723, 1500);
         continue;
         if (i != 0) {
-          this.jdField_a_of_type_Beub.b(2, 2131694831, 1500);
+          this.jdField_a_of_type_Biax.b(2, 2131693991, 1500);
         } else {
-          this.jdField_a_of_type_Beub.b(2, 2131720999, 1500);
+          this.jdField_a_of_type_Biax.b(2, 2131718727, 1500);
         }
       }
       if (((this.jdField_a_of_type_Long & 0x800) != 0L) || (this.jdField_a_of_type_Int != 0)) {
         d();
       }
-      while ("troopMemberCardMoreInfoPage".equals(this.e))
+      for (;;)
       {
-        new azqx(this.app).a("dc00899").b("Grp_mem_card").c("more").d("dissolve_clk").a(new String[] { this.jdField_a_of_type_JavaLangString }).a();
-        return;
+        if (!"troopMemberCardMoreInfoPage".equals(this.e)) {
+          break label541;
+        }
+        new bcsy(this.app).a("dc00899").b("Grp_mem_card").c("more").d("dissolve_clk").a(new String[] { this.jdField_a_of_type_JavaLangString }).a();
+        break;
         e();
       }
+      label541:
       break;
     }
   }
@@ -396,11 +413,12 @@ public class TroopDisbandActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     b();
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity
  * JD-Core Version:    0.7.0.1
  */

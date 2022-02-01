@@ -1,8 +1,20 @@
-public abstract interface bnqu
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class bnqu
+  implements Animation.AnimationListener
 {
-  public abstract bnqz a();
+  bnqu(bnqt parambnqt) {}
   
-  public abstract bnqz a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    bnqt.a(this.a).setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

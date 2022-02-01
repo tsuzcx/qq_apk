@@ -1,15 +1,26 @@
-import android.animation.ValueAnimator;
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
 
-public class bmtb
-  implements bmta
+public abstract class bmtb
+  implements GLSurfaceView.Renderer
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  public Context a;
+  protected ViewGroup a;
   
-  public void b(ValueAnimator paramValueAnimator) {}
+  public bmtb(Context paramContext, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
   
-  public void c(ValueAnimator paramValueAnimator) {}
+  public void c() {}
   
-  public void d(ValueAnimator paramValueAnimator) {}
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

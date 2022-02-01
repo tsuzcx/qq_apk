@@ -11,28 +11,30 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bdep;
-import bhtb;
+import bgjq;
 import com.tencent.biz.pubaccount.readinjoy.view.AlbumPermissionView;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.List;
 import mqq.app.QQPermissionCallback;
-import oxb;
-import qnz;
-import qrf;
-import qri;
-import qsb;
-import qtd;
-import qwl;
-import qwn;
-import qwo;
-import qwp;
-import qwy;
+import pmk;
+import pmn;
+import riw;
+import rmi;
+import rml;
+import rne;
+import rsj;
+import rsl;
+import rsm;
+import rsn;
+import rsw;
 
 public class SelectVideoFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, QQPermissionCallback, qri, qwl
+  implements View.OnClickListener, QQPermissionCallback, rml, rsj
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -41,9 +43,9 @@ public class SelectVideoFragment
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AlbumPermissionView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  private qrf jdField_a_of_type_Qrf;
-  private qtd jdField_a_of_type_Qtd = new qwn(this);
-  private qwp jdField_a_of_type_Qwp;
+  private pmn jdField_a_of_type_Pmn = new rsl(this);
+  private rmi jdField_a_of_type_Rmi;
+  private rsn jdField_a_of_type_Rsn;
   private boolean jdField_a_of_type_Boolean = true;
   private View jdField_b_of_type_AndroidViewView;
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -59,7 +61,7 @@ public class SelectVideoFragment
   
   private void a()
   {
-    if ((bhtb.k()) && (!bdep.b()) && (!bdep.d()))
+    if ((VersionUtils.isM()) && (!bgjq.b()) && (!bgjq.d()))
     {
       getActivity().getWindow().getDecorView().setSystemUiVisibility(9216);
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(-1);
@@ -70,7 +72,7 @@ public class SelectVideoFragment
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.a())
     {
-      this.jdField_a_of_type_Qwp.a();
+      this.jdField_a_of_type_Rsn.a();
       return;
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
@@ -97,23 +99,23 @@ public class SelectVideoFragment
   
   public int a()
   {
-    return this.jdField_a_of_type_Qrf.getItemCount();
+    return this.jdField_a_of_type_Rmi.getItemCount();
   }
   
-  public qnz a(int paramInt)
+  public riw a(int paramInt)
   {
-    return (qnz)this.jdField_a_of_type_Qrf.a(paramInt);
+    return (riw)this.jdField_a_of_type_Rmi.a(paramInt);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Qwp.a(paramInt);
+    this.jdField_a_of_type_Rsn.a(paramInt);
   }
   
-  public void a(List<qnz> paramList, boolean paramBoolean)
+  public void a(List<riw> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Qrf.b(paramList);
-    if (this.jdField_a_of_type_Qrf.a())
+    this.jdField_a_of_type_Rmi.b(paramList);
+    if (this.jdField_a_of_type_Rmi.b())
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -121,19 +123,19 @@ public class SelectVideoFragment
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(qnz paramqnz)
+  public void a(riw paramriw)
   {
-    this.jdField_a_of_type_Qwp.a(paramqnz);
+    this.jdField_a_of_type_Rsn.a(paramriw);
   }
   
-  public boolean a(int paramInt, qnz paramqnz)
+  public boolean a(int paramInt, riw paramriw)
   {
-    return this.jdField_a_of_type_Qwp.a(paramqnz);
+    return this.jdField_a_of_type_Rsn.a(paramriw);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Qrf.a(paramInt);
+    this.jdField_a_of_type_Rmi.a(paramInt);
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
@@ -144,7 +146,7 @@ public class SelectVideoFragment
     {
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setVisibility(8);
-      this.jdField_a_of_type_Qwp.a();
+      this.jdField_a_of_type_Rsn.a();
     }
   }
   
@@ -157,70 +159,76 @@ public class SelectVideoFragment
   {
     super.onAttach(paramActivity);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Qwp = new qwp(getActivity(), this);
-    oxb.a().a(this.jdField_a_of_type_Qtd);
-    qsb.d();
+    this.jdField_a_of_type_Rsn = new rsn(getActivity(), this);
+    pmk.a().a(this.jdField_a_of_type_Pmn);
+    rne.d();
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
     if (i == this.jdField_a_of_type_AndroidWidgetTextView.getId()) {
-      this.jdField_a_of_type_Qwp.b();
+      this.jdField_a_of_type_Rsn.b();
     }
-    while (i != this.jdField_a_of_type_AndroidViewView.getId()) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (i == this.jdField_a_of_type_AndroidViewView.getId()) {
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     c();
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559842, null);
+    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559978, null);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Qwp.a().c();
-    oxb.a().b(this.jdField_a_of_type_Qtd);
+    this.jdField_a_of_type_Rsn.a().c();
+    pmk.a().b(this.jdField_a_of_type_Pmn);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Qwp.a().b();
+    this.jdField_a_of_type_Rsn.a().b();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Qwp.a().a();
+    this.jdField_a_of_type_Rsn.a().a();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131379746));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378899));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379801));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131377964));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378030));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364340);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362504));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365742);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131380702));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379782));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380759));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131378804));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378874));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364551);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362592));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365983);
     d();
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_Qrf = new qrf(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Qrf.a(this);
+    this.jdField_a_of_type_Rmi = new rmi(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Rmi.a(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 3, 1, false));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Qrf);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new qwo(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rmi);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new rsm(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setContextStyleBlack(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setCallback(this);
-    this.jdField_a_of_type_Qwp.a().a(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Rsn.a().a(this.jdField_a_of_type_AndroidViewViewGroup);
     b();
   }
 }

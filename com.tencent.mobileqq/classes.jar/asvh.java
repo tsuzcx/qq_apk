@@ -1,7 +1,4 @@
-public abstract interface asvh
-{
-  public abstract void a(asvi paramasvi);
-}
+public abstract interface asvh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

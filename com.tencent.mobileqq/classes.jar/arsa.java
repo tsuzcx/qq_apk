@@ -1,10 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class arsa
-  implements DialogInterface.OnClickListener
+public class arsa
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  ImageView d;
+  ImageView e;
+  ImageView f;
+  
+  public arsa(arrz paramarrz) {}
 }
 
 

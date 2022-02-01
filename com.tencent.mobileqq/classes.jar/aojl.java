@@ -1,32 +1,16 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aojl
-  implements Comparator<Rect>
+public class aojl
+  extends aojt
 {
-  aojl(aojk paramaojk) {}
-  
-  public int a(Rect paramRect1, Rect paramRect2)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    if (this.a.g.contains(paramRect1)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
+    paramQQAppInterface = new aojk(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "miniapp";
+    paramQQAppInterface.c = "open";
+    return paramQQAppInterface;
   }
 }
 

@@ -7,34 +7,34 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import nxf;
-import nxi;
+import oha;
+import ohd;
 
 public class ReadInJoyNaviController$2
   implements Runnable
 {
-  public ReadInJoyNaviController$2(nxf paramnxf, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ReadInJoyNaviController$2(oha paramoha, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
-    Object localObject = nxf.a(this.this$0).a();
-    nxf.a(this.this$0, 1000L);
-    if ((localObject != null) && (nxf.a(this.this$0)))
+    Object localObject = oha.a(this.this$0).a();
+    oha.a(this.this$0, 1000L);
+    if ((localObject != null) && (oha.a(this.this$0)))
     {
-      nxf.a(this.this$0, false);
+      oha.a(this.this$0, false);
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -((View)localObject).getHeight());
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new nxi(this));
+      localTranslateAnimation.setAnimationListener(new ohd(this));
       ((View)localObject).startAnimation(localTranslateAnimation);
-      if (nxf.a(this.this$0) != null)
+      if (oha.a(this.this$0) != null)
       {
         localObject = new RotateAnimation(180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
         ((Animation)localObject).setDuration(200L);
         ((Animation)localObject).setFillEnabled(true);
         ((Animation)localObject).setFillAfter(true);
-        nxf.a(this.this$0).startAnimation((Animation)localObject);
+        oha.a(this.this$0).startAnimation((Animation)localObject);
       }
-      nxf.a(1, nxf.a(1, this.a));
+      oha.a(1, oha.a(1, this.a));
     }
   }
 }

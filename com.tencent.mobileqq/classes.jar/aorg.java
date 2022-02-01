@@ -1,67 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class aorg
+public abstract class aorg
+  implements anil
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public String b = "";
+  public abstract void a(aozl paramaozl);
   
-  public aorg()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static aorg a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    aorg localaorg;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
     try
     {
-      localaorg = new aorg();
-      localaorg.jdField_a_of_type_JavaLangString = paramString;
-      paramString = new JSONObject(paramString);
-      localaorg.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
-      localaorg.b = paramString.optString("iconUrl");
-      if (!TextUtils.isEmpty(localaorg.b)) {
-        localaorg.b = localaorg.b.trim();
-      }
-      paramString = paramString.optJSONObject("grayTips");
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localaorg.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
-      }
-      QLog.d("ConfBean", 0, "confBean = " + localaorg.toString());
+      a((aozl)paramObject);
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ConfBean", 1, "parse e:", paramString);
-      }
-      return null;
+      a(new aozl());
     }
-    return localaorg;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorg
  * JD-Core Version:    0.7.0.1
  */

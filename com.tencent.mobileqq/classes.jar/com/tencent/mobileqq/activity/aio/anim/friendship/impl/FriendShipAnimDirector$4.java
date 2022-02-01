@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import aewe;
-import aexe;
+import agcq;
+import agdq;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -12,14 +12,14 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 public class FriendShipAnimDirector$4
   implements Runnable
 {
-  public FriendShipAnimDirector$4(aewe paramaewe) {}
+  public FriendShipAnimDirector$4(agcq paramagcq) {}
   
   public void run()
   {
-    if (aewe.a(this.this$0) != null) {
-      aewe.a(this.this$0).a(aewe.a(this.this$0) + "icon_close.png");
+    if (agcq.a(this.this$0) != null) {
+      agcq.a(this.this$0).a(agcq.a(this.this$0) + "icon_close.png");
     }
-    if ((aewe.a(this.this$0) == null) || (aewe.a(this.this$0).isAnimating())) {
+    if ((agcq.a(this.this$0) == null) || (agcq.a(this.this$0).isAnimating())) {
       return;
     }
     FriendShipLayout localFriendShipLayout = this.this$0.a();
@@ -29,31 +29,31 @@ public class FriendShipAnimDirector$4
         localFriendShipLayout.removeAllViews();
       }
       this.this$0.a(0);
-      aewe.a(this.this$0, new ImageView(this.this$0.a()));
-      aewe.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      agcq.a(this.this$0, new ImageView(this.this$0.a()));
+      agcq.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 81;
       View localView = new View(this.this$0.a());
       localView.setBackgroundColor(-16777216);
       localFriendShipLayout.addView(localView, localLayoutParams);
-      localFriendShipLayout.addView(aewe.a(this.this$0), localLayoutParams);
-      aewe.a(this.this$0).setImageDrawable(aewe.a(this.this$0));
-      aewe.a(this.this$0).a(localView);
-      aewe.a(this.this$0).a(localFriendShipLayout);
+      localFriendShipLayout.addView(agcq.a(this.this$0), localLayoutParams);
+      agcq.a(this.this$0).setImageDrawable(agcq.a(this.this$0));
+      agcq.a(this.this$0).a(localView);
+      agcq.a(this.this$0).a(localFriendShipLayout);
     }
-    if (aewe.a(this.this$0).isAnimating()) {
-      aewe.a(this.this$0).cancelAnimation();
+    if (agcq.a(this.this$0).isAnimating()) {
+      agcq.a(this.this$0).cancelAnimation();
     }
-    if (aewe.a(this.this$0).a()) {
-      aewe.a(this.this$0).b();
+    if (agcq.a(this.this$0).a()) {
+      agcq.a(this.this$0).b();
     }
-    aewe.a(this.this$0).playAnimation();
-    aewe.a(this.this$0).a();
+    agcq.a(this.this$0).playAnimation();
+    agcq.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.FriendShipAnimDirector.4
  * JD-Core Version:    0.7.0.1
  */

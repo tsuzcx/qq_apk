@@ -1,74 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class aolf
-  extends aokh<aolg>
+  extends aojt
 {
-  public static aolg a()
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    return (aolg)aoks.a().a(457);
-  }
-  
-  public int a()
-  {
-    return 457;
-  }
-  
-  @NonNull
-  public aolg a(int paramInt)
-  {
-    return new aolg();
-  }
-  
-  @Nullable
-  public aolg a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
-      return null;
+    paramQQAppInterface = new aolb(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wallet";
+    paramQQAppInterface.c = "modify_pass";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaoko);
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
-    return aolg.a(paramArrayOfaoko);
-  }
-  
-  public Class<aolg> a()
-  {
-    return aolg.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aolg paramaolg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
-    }
-    ((alwd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolf
  * JD-Core Version:    0.7.0.1
  */

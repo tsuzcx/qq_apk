@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.widget.MultiImageTextView;
@@ -21,12 +21,12 @@ public class AccountOnlineStatusFormSimpleItem
   protected void a()
   {
     super.a();
-    this.a.setCompoundDrawablePadding(aepi.a(12.0F, getResources()));
+    this.a.setCompoundDrawablePadding(afur.a(12.0F, getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AccountOnlineStatusFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 
-public class amvy
-  extends amvl
+public final class amvy
+  implements Parcelable.Creator<IPCSpriteContext>
 {
-  public String b;
-  public String c;
-  
-  public amvy(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
+  public IPCSpriteContext a(Parcel paramParcel)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString2.split("\\|");
-      if (paramString1.length > 0) {
-        this.b = paramString1[0];
-      }
-    }
-    this.c = paramString3;
-    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
+    return new IPCSpriteContext(paramParcel);
+  }
+  
+  public IPCSpriteContext[] a(int paramInt)
+  {
+    return new IPCSpriteContext[paramInt];
   }
 }
 

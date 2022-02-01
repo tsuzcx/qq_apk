@@ -1,41 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class mii
-  implements DialogInterface.OnClickListener
+class mii
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mii(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  mii(mih parammih) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.g()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().a() == -1) {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.r(this.jdField_a_of_type_Long);
-    }
-    for (;;)
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
     {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
-      {
-        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
-      }
+      f = i / 220.0F;
+      mih.a(this.a).setAlpha(f);
+    }
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      mih.a(this.a).setAlpha(f);
+    }
+    if (mih.a(this.a) != null) {
+      mih.a(this.a).requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mii
  * JD-Core Version:    0.7.0.1
  */

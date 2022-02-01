@@ -1,98 +1,51 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeURLImageView;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ayfp
+  implements ActionMode.Callback
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  public ayfp(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
   
-  public static Drawable a(Context paramContext)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramContext == null) {
-      return null;
-    }
-    return paramContext.getResources().getDrawable(2130845754);
-  }
-  
-  private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (paramMenuItem.getItemId() == 2131371903)
     {
-      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localDrawable != null) {
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-        {
-          paramQQAppInterface = localDrawable;
-          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
-        }
-        else
-        {
-          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
-          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-          paramQQAppInterface = localDrawable;
-        }
+      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, anni.a(2131706589), 0).a();
       }
     }
-    do
+    else
     {
-      return paramQQAppInterface;
-      paramContext = a(paramContext);
-      paramQQAppInterface = paramContext;
-    } while (paramContext == null);
-    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
-    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    return paramQQAppInterface;
+      return false;
+    }
+    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
+    return true;
   }
   
-  public static ThemeURLImageView a(Context paramContext)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    if (paramContext == null) {}
-    Drawable localDrawable;
-    do
-    {
-      return null;
-      localDrawable = a(paramContext);
-    } while (localDrawable == null);
-    paramContext = new ThemeURLImageView(paramContext);
-    paramContext.setContentDescription("BOT");
-    paramContext.setImageDrawable(localDrawable);
-    return paramContext;
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
   }
   
-  public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
-  {
-    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!(localAppRuntime instanceof QQAppInterface)) || (!bclg.b((QQAppInterface)localAppRuntime, paramString))) {
-        break;
-      }
-      paramString = a((QQAppInterface)localAppRuntime, paramContext);
-    } while (paramString == null);
-    paramSingleLineTextView.setCompoundDrawablePadding((int)bdgz.a(paramContext, 5.0F));
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
-    return;
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
-  }
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public static boolean a(String paramString)
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return ((localAppRuntime instanceof QQAppInterface)) && (bclg.b((QQAppInterface)localAppRuntime, paramString));
+    return false;
   }
 }
 

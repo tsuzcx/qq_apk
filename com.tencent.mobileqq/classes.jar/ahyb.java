@@ -1,80 +1,144 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.data.PubAccountNavigationMenu;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class ahyb
-  extends AsyncTask<String, Void, Boolean>
+class ahyb
+  extends bjha
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  ahyb(ahxt paramahxt) {}
   
-  public ahyb(View paramView)
+  protected void a(boolean paramBoolean, bjhc parambjhc)
   {
-    if (paramView != null)
-    {
-      Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
-      ScreenCapture.setSnapFile(localContext, false);
-    }
-  }
-  
-  protected Boolean a(String... paramVarArgs)
-  {
-    Boolean localBoolean = Boolean.FALSE;
-    if (isCancelled()) {}
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return localBoolean;
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramVarArgs = new File(paramVarArgs[0]);
-    File localFile = paramVarArgs.getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    try
-    {
-      paramVarArgs = new FileOutputStream(paramVarArgs);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
-      paramVarArgs.flush();
-      paramVarArgs.close();
-      paramVarArgs = Boolean.TRUE;
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-    return localBoolean;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localView != null)
-      {
-        if (paramBoolean.booleanValue()) {
-          ScreenCapture.setSnapFile(localView.getContext(), true);
+    boolean bool = true;
+    if ((paramBoolean) && (parambjhc != null)) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(parambjhc.jdField_a_of_type_Long)))) {
+        if (parambjhc.jdField_a_of_type_Int == 1)
+        {
+          localbjhd = (bjhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(105);
+          localPubAccountNavigationMenu = localbjhd.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          localahxt = this.a;
+          if (parambjhc.jdField_b_of_type_Int == 0)
+          {
+            paramBoolean = bool;
+            ahxt.b(localahxt, paramBoolean);
+            if ((localPubAccountNavigationMenu != null) && (parambjhc.jdField_b_of_type_Int == localPubAccountNavigationMenu.version)) {
+              break label152;
+            }
+            localbjhd.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, parambjhc.jdField_b_of_type_Long);
+          }
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localView.setDrawingCacheEnabled(false);
-        localView.destroyDrawingCache();
       }
     }
+    label152:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        do
+        {
+          PubAccountNavigationMenu localPubAccountNavigationMenu;
+          for (;;)
+          {
+            bjhd localbjhd;
+            ahxt localahxt;
+            return;
+            paramBoolean = false;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("BusinessChatPie", 2, "onGetNatigationStatus show directly");
+          }
+          if (ahxt.a(this.a) == 0)
+          {
+            this.a.a(localPubAccountNavigationMenu);
+            return;
+          }
+          ahxt.a(this.a, 0);
+          return;
+          if (parambjhc.c == 1) {
+            ahxt.a(this.a, 1);
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response no need show");
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response not the same aio");
+      return;
+    }
+    QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response error");
   }
   
-  protected void onCancelled() {}
+  protected void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu)
+  {
+    if (paramBoolean) {
+      if ((!ahxt.b(this.a)) && (ahxt.a(this.a) != 0)) {
+        ahxt.a(this.a, 0);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      this.a.a(paramPubAccountNavigationMenu);
+      return;
+    }
+    QLog.d("BusinessChatPie", 2, "onGetNatigation response error");
+  }
+  
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin))
+      {
+        if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramHashMap.nickname;
+          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        }
+        this.a.r();
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo not current uin");
+      return;
+    }
+    QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo fail");
+  }
+  
+  protected void c(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    int i = 0;
+    super.c(paramBoolean, paramHashMap);
+    if ((paramBoolean) && (paramHashMap != null)) {}
+    try
+    {
+      int j = Integer.parseInt(String.valueOf(paramHashMap.get("result")));
+      String.valueOf(paramHashMap.get("master_uin"));
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (j == 1))
+      {
+        long l1 = Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        paramHashMap = ((bjhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(105)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        bjhb localbjhb = (bjhb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(85);
+        long l2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+        if (paramHashMap != null) {
+          i = paramHashMap.version;
+        }
+        localbjhb.a(l1, l2, i, ahxt.a(this.a), false);
+      }
+      return;
+    }
+    catch (Exception paramHashMap) {}
+  }
 }
 
 

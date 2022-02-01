@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import afwu;
-import agiy;
-import agjb;
-import aheg;
-import aheh;
-import alse;
-import alul;
+import ahdu;
+import ahte;
+import ahth;
+import aiqt;
+import aiqu;
 import android.text.TextUtils;
-import aqwl;
-import arrr;
-import arsx;
-import azwy;
-import bdil;
-import bhtd;
+import anlk;
+import annq;
+import atcv;
+import atvo;
+import atwt;
+import bcxy;
+import bgnr;
+import bkgm;
 import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
@@ -44,9 +44,9 @@ public class TroopAIOImageGeter
 {
   int jdField_a_of_type_Int = 1;
   long jdField_a_of_type_Long;
-  aheg jdField_a_of_type_Aheg;
-  aheh jdField_a_of_type_Aheh;
-  bhtd jdField_a_of_type_Bhtd;
+  aiqt jdField_a_of_type_Aiqt;
+  aiqu jdField_a_of_type_Aiqu;
+  bkgm jdField_a_of_type_Bkgm;
   String jdField_a_of_type_JavaLangString;
   final List<AIORichMediaData> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
   volatile boolean jdField_a_of_type_Boolean = false;
@@ -72,7 +72,7 @@ public class TroopAIOImageGeter
       this.jdField_a_of_type_Long = paramChatMessage.msgseq;
       this.jdField_b_of_type_JavaUtilList.add(paramChatMessage);
     }
-    this.jdField_a_of_type_Bhtd = new bhtd(ThreadManager.getFileThreadLooper(), null);
+    this.jdField_a_of_type_Bkgm = new bkgm(ThreadManager.getFileThreadLooper(), null);
   }
   
   private List<AIORichMediaData> a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
@@ -117,9 +117,9 @@ public class TroopAIOImageGeter
       {
         k += 1;
         break;
-        if ((!alul.a((MessageRecord)localObject1)) && (!alse.a((MessageRecord)localObject1)) && (!afwu.a((MessageForPic)localObject1)))
+        if ((!annq.a((MessageRecord)localObject1)) && (!anlk.a((MessageRecord)localObject1)) && (!ahdu.a((MessageForPic)localObject1)))
         {
-          localArrayList1.add(agjb.a((MessageForPic)localObject1));
+          localArrayList1.add(ahth.a((MessageForPic)localObject1));
           localArrayList2.add(localObject1);
           continue;
           if ((localObject3 instanceof MessageForMixedMsg))
@@ -132,7 +132,7 @@ public class TroopAIOImageGeter
               localObject2 = (MessageRecord)((Iterator)localObject1).next();
               if ((localObject2 instanceof MessageForPic))
               {
-                localArrayList1.add(agjb.a((MessageForPic)localObject2));
+                localArrayList1.add(ahth.a((MessageForPic)localObject2));
                 localArrayList2.add((MessageForPic)localObject2);
               }
             }
@@ -144,26 +144,26 @@ public class TroopAIOImageGeter
             if ((localMessageForStructing.structingMsg != null) && ((localMessageForStructing.structingMsg.mMsgServiceID == 5) || (localMessageForStructing.structingMsg.mMsgServiceID == 137)))
             {
               StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)localMessageForStructing.structingMsg;
-              azwy localazwy = localStructMsgForImageShare.getFirstImageElement();
-              if (localazwy != null)
+              bcxy localbcxy = localStructMsgForImageShare.getFirstImageElement();
+              if (localbcxy != null)
               {
-                localObject2 = localazwy.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+                localObject2 = localbcxy.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
                 localObject1 = localObject2;
                 if (localObject2 == null)
                 {
-                  if (localazwy.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-                    localazwy.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = localStructMsgForImageShare;
+                  if (localbcxy.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
+                    localbcxy.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = localStructMsgForImageShare;
                   }
-                  localObject1 = localazwy.a();
+                  localObject1 = localbcxy.a();
                 }
-                localObject2 = agjb.a((MessageForPic)localObject1);
+                localObject2 = ahth.a((MessageForPic)localObject1);
                 ((AIOImageData)localObject2).g = localMessageForStructing.time;
                 ((AIOImageData)localObject2).i = localMessageForStructing.shmsgseq;
                 if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
                 {
                   ((AIOImageData)localObject2).jdField_b_of_type_Int = 1;
                   ((AIOImageData)localObject2).a = localStructMsgForImageShare.getBytes();
-                  ((AIOImageData)localObject2).jdField_d_of_type_Int = agiy.a(agiy.a(localStructMsgForImageShare));
+                  ((AIOImageData)localObject2).jdField_d_of_type_Int = ahte.a(ahte.a(localStructMsgForImageShare));
                 }
                 for (;;)
                 {
@@ -174,7 +174,7 @@ public class TroopAIOImageGeter
                   {
                     ((AIOImageData)localObject2).jdField_b_of_type_Int = 2;
                     ((AIOImageData)localObject2).a = localStructMsgForImageShare.getBytes();
-                    if ((bdil.b(((MessageRecord)localObject3).issend)) && (!TextUtils.isEmpty(((MessageForPic)localObject1).path)) && (new File(((MessageForPic)localObject1).path).exists())) {
+                    if ((bgnr.b(((MessageRecord)localObject3).issend)) && (!TextUtils.isEmpty(((MessageForPic)localObject1).path)) && (new File(((MessageForPic)localObject1).path).exists())) {
                       ((AIOImageData)localObject2).jdField_b_of_type_JavaLangString = ((MessageForPic)localObject1).path;
                     }
                   }
@@ -190,7 +190,7 @@ public class TroopAIOImageGeter
             if (MessageForLightVideo.class.isInstance(localObject3))
             {
               localObject1 = (MessageForLightVideo)localObject3;
-              localArrayList1.add(agjb.a((MessageForLightVideo)localObject1));
+              localArrayList1.add(ahth.a((MessageForLightVideo)localObject1));
               localArrayList2.add(localObject1);
             }
             else
@@ -198,7 +198,7 @@ public class TroopAIOImageGeter
               localObject1 = (MessageForShortVideo)localObject3;
               if ((((MessageForShortVideo)localObject1).busiType == 1) || (((MessageForShortVideo)localObject1).busiType == 2) || (((MessageForShortVideo)localObject1).busiType == 1007) || (((MessageForShortVideo)localObject1).busiType == 1009) || (((MessageForShortVideo)localObject1).busiType == 0))
               {
-                localArrayList1.add(agjb.a((MessageForShortVideo)localObject1));
+                localArrayList1.add(ahth.a((MessageForShortVideo)localObject1));
                 localArrayList2.add(localObject1);
               }
             }
@@ -210,7 +210,7 @@ public class TroopAIOImageGeter
         localObject3 = (MessageForFile)localObject3;
         localObject1 = paramQQAppInterface.a().a(((MessageForFile)localObject3).uniseq, ((MessageForFile)localObject3).frienduin, ((MessageForFile)localObject3).istroop);
         j = 0;
-        if ((localObject1 == null) || (((!arrr.e((FileManagerEntity)localObject1)) || (((FileManagerEntity)localObject1).nFileType == 2)) && (16 == ((FileManagerEntity)localObject1).status))) {
+        if ((localObject1 == null) || (((!atvo.e((FileManagerEntity)localObject1)) || (((FileManagerEntity)localObject1).nFileType == 2)) && (16 == ((FileManagerEntity)localObject1).status))) {
           break label1339;
         }
         if (((FileManagerEntity)localObject1).nFileType == 0)
@@ -231,7 +231,7 @@ public class TroopAIOImageGeter
       if (i != 0)
       {
         ((MessageForFile)localObject3).parse();
-        localObject1 = agjb.a((ChatMessage)localObject3, paramQQAppInterface);
+        localObject1 = ahth.a((ChatMessage)localObject3, paramQQAppInterface);
       }
       for (;;)
       {
@@ -249,7 +249,7 @@ public class TroopAIOImageGeter
         if (j != 0)
         {
           ((MessageForFile)localObject3).parse();
-          localObject1 = agjb.a((ChatMessage)localObject3, paramQQAppInterface);
+          localObject1 = ahth.a((ChatMessage)localObject3, paramQQAppInterface);
         }
         else
         {
@@ -266,7 +266,7 @@ public class TroopAIOImageGeter
       if ((localObject3 instanceof MessageForTroopFile))
       {
         localObject1 = (MessageForTroopFile)localObject3;
-        j = arrr.a(((MessageForTroopFile)localObject1).fileName);
+        j = atvo.a(((MessageForTroopFile)localObject1).fileName);
         if ((j == 0) && (((MessageForTroopFile)localObject1).fileSize < 10485760L))
         {
           i = 1;
@@ -281,17 +281,17 @@ public class TroopAIOImageGeter
           if (i == 0) {
             break label1127;
           }
-          localArrayList1.add(agjb.a((MessageForTroopFile)localObject1, paramQQAppInterface));
+          localArrayList1.add(ahth.a((MessageForTroopFile)localObject1, paramQQAppInterface));
           localArrayList2.add(localObject1);
           break;
           i = 0;
           break label1076;
         }
         label1127:
-        if ((j == 0) || (!arsx.a(paramQQAppInterface))) {
+        if ((j == 0) || (!atwt.a(paramQQAppInterface))) {
           break;
         }
-        localArrayList1.add(agjb.a((ChatMessage)localObject1, paramQQAppInterface));
+        localArrayList1.add(ahth.a((ChatMessage)localObject1, paramQQAppInterface));
         localArrayList2.add(localObject1);
         break;
       }
@@ -323,19 +323,19 @@ public class TroopAIOImageGeter
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_Aheg;
+    Object localObject = this.jdField_a_of_type_Aiqt;
     if (localObject != null) {
-      ((aheg)localObject).a(null, -1);
+      ((aiqt)localObject).a(null, -1);
     }
-    localObject = this.jdField_a_of_type_Aheh;
+    localObject = this.jdField_a_of_type_Aiqu;
     if (localObject != null) {
-      ((aheh)localObject).a(null, -1);
+      ((aiqu)localObject).a(null, -1);
     }
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aheg == null) && (this.jdField_a_of_type_Aheh == null)) {
+    if ((this.jdField_a_of_type_Aiqt == null) && (this.jdField_a_of_type_Aiqu == null)) {
       a();
     }
     do
@@ -349,10 +349,10 @@ public class TroopAIOImageGeter
       default: 
         return;
       case 0: 
-        this.jdField_a_of_type_Bhtd.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
+        this.jdField_a_of_type_Bkgm.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
         return;
       }
-    } while (this.jdField_a_of_type_Aheg == null);
+    } while (this.jdField_a_of_type_Aiqt == null);
     ArrayList localArrayList;
     if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
@@ -375,31 +375,31 @@ public class TroopAIOImageGeter
       }
       finally {}
       ??? = (AIORichMediaData[])localObject2.toArray(new AIORichMediaData[localObject2.size()]);
-      this.jdField_a_of_type_Aheg.a((AIORichMediaData[])???, -1);
+      this.jdField_a_of_type_Aiqt.a((AIORichMediaData[])???, -1);
       return;
-      this.jdField_a_of_type_Bhtd.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
+      this.jdField_a_of_type_Bkgm.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
       return;
-      if (this.jdField_a_of_type_Aheh == null) {
+      if (this.jdField_a_of_type_Aiqu == null) {
         break;
       }
       if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
         synchronized (this.jdField_a_of_type_JavaUtilList)
         {
           AIORichMediaData[] arrayOfAIORichMediaData = (AIORichMediaData[])this.jdField_a_of_type_JavaUtilList.toArray(new AIORichMediaData[this.jdField_a_of_type_JavaUtilList.size()]);
-          this.jdField_a_of_type_Aheh.a(arrayOfAIORichMediaData, -1);
+          this.jdField_a_of_type_Aiqu.a(arrayOfAIORichMediaData, -1);
           return;
         }
       }
-      this.jdField_a_of_type_Bhtd.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
+      this.jdField_a_of_type_Bkgm.post(new TroopAIOImageGeter.IncreasinglyLoadMediaTask(this));
       return;
       label344:
       paramInt += 1;
     }
   }
   
-  public void a(aheg paramaheg)
+  public void a(aiqt paramaiqt)
   {
-    this.jdField_a_of_type_Aheg = paramaheg;
+    this.jdField_a_of_type_Aiqt = paramaiqt;
   }
   
   boolean a(AIORichMediaData paramAIORichMediaData)
@@ -418,7 +418,7 @@ public class TroopAIOImageGeter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+
+class bomr
+  extends AnimatorListenerAdapter
+{
+  bomr(bomp parambomp) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.a().setVisibility(8);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bomr
+ * JD-Core Version:    0.7.0.1
+ */

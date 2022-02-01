@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class pjj
-  implements View.OnClickListener
+public class pjj
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pjj(pji parampji, pgd parampgd, rvg paramrvg) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (pji.a(this.jdField_a_of_type_Pji) == null) {
-      pji.a(this.jdField_a_of_type_Pji, new bhxx(pji.a(this.jdField_a_of_type_Pji)));
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = phv.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bmqa.a((String)paramString.get("readinjoy_single_video_switch"));
     }
-    pji.a(this.jdField_a_of_type_Pji).a((pgq)this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Pgd.a().mDislikeInfos);
-    pji.a(this.jdField_a_of_type_Pji).a(paramView, new pjk(this));
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmqa.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjj
  * JD-Core Version:    0.7.0.1
  */

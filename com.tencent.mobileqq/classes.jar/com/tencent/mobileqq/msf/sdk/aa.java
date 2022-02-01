@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Handler;
 import android.os.RemoteException;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.report.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IBaseActionListener;
@@ -78,7 +78,7 @@ public abstract class aa
   
   protected FromServiceMsg a(ToServiceMsg paramToServiceMsg, String paramString)
   {
-    paramToServiceMsg = t.a(paramToServiceMsg);
+    paramToServiceMsg = w.a(paramToServiceMsg);
     paramToServiceMsg.setBusinessFail(1013, paramString);
     return paramToServiceMsg;
   }
@@ -273,6 +273,22 @@ public abstract class aa
   protected boolean m()
   {
     return this.c != null;
+  }
+  
+  public final int onKillProcess()
+  {
+    IBaseService localIBaseService = this.c;
+    if (localIBaseService != null) {}
+    try
+    {
+      localIBaseService.onKillProcess();
+      label16:
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label16;
+    }
   }
   
   public int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString)

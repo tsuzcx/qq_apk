@@ -1,41 +1,40 @@
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class xfj
-  implements View.OnTouchListener
+final class xfj
+  implements bkhw
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  xfj(QQUserUIItem paramQQUserUIItem, bkho parambkho) {}
   
-  xfj(xfh paramxfh) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    switch (paramInt)
     {
     default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new wxi().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
     }
-    return this.jdField_a_of_type_Boolean;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      yqp.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfj
  * JD-Core Version:    0.7.0.1
  */

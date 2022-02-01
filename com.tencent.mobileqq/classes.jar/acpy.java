@@ -1,29 +1,49 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acpy
-  extends ImageSpan
+class acpy
+  implements acqj
 {
-  public acpy(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    super(paramDrawable, paramInt);
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
-  {
-    paramCanvas.save();
-    paramCanvas.translate(azkz.a(5.0F), -azkz.a(2.0F));
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public Drawable getDrawable()
-  {
-    return super.getDrawable();
+    Object localObject = null;
+    if (paramacpp != null) {}
+    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acqy.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("deviceId", acsa.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacpp != null) {
+            paramString = paramacpp.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acqy.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acqy.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

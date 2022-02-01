@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
-import java.util.Random;
-
 public class aqlt
-  implements View.OnClickListener
 {
-  public aqlt(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131695289);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_Arca != null)
-    {
-      paramView = this.a.jdField_a_of_type_Arca;
-      paramView.a += 1;
-    }
-    int i = new Random(System.currentTimeMillis()).nextInt(1500);
-    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
-  }
+  public static String a = "com.tencent.map.WelcomeActivity";
+  public static String b = "com.google.android.maps.MapsActivity";
+  public static String c = "com.tencent.map";
+  public static String d = "com.autonavi.minimap";
+  public static String e = "com.google.android.apps.maps";
+  public static String f = "com.baidu.BaiduMap";
+  public static String g = anhk.br + "tencentmap.apk";
+  public static String h = "QQMAP_DEFAULT";
+  public static String i = "Location";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlt
  * JD-Core Version:    0.7.0.1
  */

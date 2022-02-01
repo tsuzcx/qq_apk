@@ -1,24 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-class anwu
-  extends AnimatorListenerAdapter
+public final class anwu
+  implements DialogInterface.OnClickListener
 {
-  anwu(anwq paramanwq, anwx paramanwx, ObjectAnimator paramObjectAnimator) {}
+  public anwu(TroopManager paramTroopManager, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Anwx != null) {
-      this.jdField_a_of_type_Anwx.a.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import aezl;
+import agfx;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import bida;
+import bkqm;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -28,12 +28,12 @@ import com.tencent.widget.XPanelContainer;
 
 public class ConfessPanel
   extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, bida
+  implements View.OnClickListener, View.OnLongClickListener, bkqm
 {
   public static int a;
   public static final int b;
   public static int c;
-  private aezl jdField_a_of_type_Aezl;
+  private agfx jdField_a_of_type_Agfx;
   private Context jdField_a_of_type_AndroidContentContext;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
@@ -124,10 +124,10 @@ public class ConfessPanel
   {
     if (!this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Aezl = new aezl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = this.jdField_a_of_type_Aezl.a(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.jdField_a_of_type_Agfx = new agfx(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView = this.jdField_a_of_type_Agfx.a(this.jdField_a_of_type_AndroidWidgetFrameLayout);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(this.jdField_a_of_type_Aezl);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(this.jdField_a_of_type_Agfx);
       this.jdField_b_of_type_Boolean = true;
     }
   }
@@ -144,8 +144,8 @@ public class ConfessPanel
         }
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.removeAllViews();
       }
-      if (this.jdField_a_of_type_Aezl != null) {
-        this.jdField_a_of_type_Aezl.a();
+      if (this.jdField_a_of_type_Agfx != null) {
+        this.jdField_a_of_type_Agfx.a();
       }
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
       this.jdField_b_of_type_Boolean = false;
@@ -187,7 +187,7 @@ public class ConfessPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, jdField_b_of_type_Int);
     jdField_a_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364683));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364898));
   }
   
   public void a(boolean paramBoolean)
@@ -247,7 +247,7 @@ public class ConfessPanel
       if (QLog.isColorLevel()) {
         QLog.d("ConfessPanel", 2, "onShow url :" + str);
       }
-      this.jdField_a_of_type_Aezl.a(str);
+      this.jdField_a_of_type_Agfx.a(str);
     }
   }
   
@@ -273,7 +273,7 @@ public class ConfessPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessPanel
  * JD-Core Version:    0.7.0.1
  */

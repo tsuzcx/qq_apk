@@ -1,73 +1,225 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.1;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.2;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.3;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.4;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class baqr
-  extends alwx
+  implements baqu
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  private static String jdField_a_of_type_JavaLangString = "PeakAudioTransHandler ConnManager";
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private baqs jdField_a_of_type_Baqs;
+  private baqt jdField_a_of_type_Baqt;
+  private bavr jdField_a_of_type_Bavr;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArrayList<baqs> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected ConcurrentLinkedQueue<byte[]> a;
   
-  /* Error */
-  protected void a(boolean paramBoolean, QQService.RespTmpChatPicDownload paramRespTmpChatPicDownload)
+  public baqr(AppInterface paramAppInterface, bavr parambavr)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_1
-    //   4: putfield 18	baqr:jdField_b_of_type_Boolean	Z
-    //   7: iload_1
-    //   8: ifeq +56 -> 64
-    //   11: aload_2
-    //   12: ifnull +35 -> 47
-    //   15: aload_2
-    //   16: getfield 23	QQService/RespTmpChatPicDownload:lReplyCode	I
-    //   19: ifne +28 -> 47
-    //   22: aload_2
-    //   23: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   26: ifnull +21 -> 47
-    //   29: aload_2
-    //   30: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   33: invokevirtual 32	java/lang/String:length	()I
-    //   36: ifle +11 -> 47
-    //   39: aload_0
-    //   40: aload_2
-    //   41: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   44: putfield 34	baqr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: aload_0
-    //   48: iconst_1
-    //   49: putfield 36	baqr:jdField_a_of_type_Int	I
-    //   52: aload_0
-    //   53: iconst_1
-    //   54: putfield 38	baqr:jdField_a_of_type_Boolean	Z
-    //   57: aload_0
-    //   58: invokevirtual 43	java/lang/Object:notify	()V
-    //   61: aload_0
-    //   62: monitorexit
-    //   63: return
-    //   64: aload_0
-    //   65: sipush 9006
-    //   68: putfield 45	baqr:jdField_b_of_type_Int	I
-    //   71: goto -19 -> 52
-    //   74: astore_2
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_2
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	baqr
-    //   0	79	1	paramBoolean	boolean
-    //   0	79	2	paramRespTmpChatPicDownload	QQService.RespTmpChatPicDownload
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	74	finally
-    //   15	47	74	finally
-    //   47	52	74	finally
-    //   52	63	74	finally
-    //   64	71	74	finally
-    //   75	77	74	finally
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bavr = parambavr;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  private void b(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.4(this, paramLong));
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Baqt != null)
+    {
+      if (!this.jdField_a_of_type_Bavr.d()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "closeConnection : TCP not opened  mTCPstate =" + this.jdField_a_of_type_Bavr.b());
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Bavr.b(13);
+    this.jdField_a_of_type_Baqt.b();
+    this.jdField_a_of_type_Baqt = null;
+  }
+  
+  public void a(long paramLong, baqt parambaqt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onDisConnect connId = " + paramLong + ",sendDataQueue size =" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + " mTCPstate =" + this.jdField_a_of_type_Bavr.b());
+    }
+    this.jdField_a_of_type_Bavr.b(10);
+    this.jdField_a_of_type_Baqs = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Bavr.a())
+    {
+      ((bavs)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
+      return;
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "onDisConnect : session not open need not sso exit");
+  }
+  
+  public void a(baqs parambaqs, long paramLong)
+  {
+    if (parambaqs == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is null");
+    }
+    do
+    {
+      return;
+      if ((TextUtils.isEmpty(parambaqs.jdField_a_of_type_JavaLangString)) || (parambaqs.jdField_a_of_type_Int == 0))
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is illegal");
+        return;
+      }
+      if (!this.jdField_a_of_type_Bavr.a())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : Session not Open");
+        return;
+      }
+      if (!this.jdField_a_of_type_Bavr.f())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : TCP not Close mTCPstate =" + this.jdField_a_of_type_Bavr.b());
+        return;
+      }
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "openNewConnection : host:" + parambaqs.jdField_a_of_type_JavaLangString + ",port=" + parambaqs.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Baqs = parambaqs;
+      if (this.jdField_a_of_type_Baqt != null) {
+        this.jdField_a_of_type_Baqt.b();
+      }
+      this.jdField_a_of_type_Baqt = new LiteTcpConnection(this, paramLong, parambaqs, 3000, 10000);
+    } while (this.jdField_a_of_type_Baqt == null);
+    this.jdField_a_of_type_Baqt.a(this);
+    this.jdField_a_of_type_Baqt.a();
+    this.jdField_a_of_type_Bavr.b(11);
+  }
+  
+  public void a(ArrayList<baqs> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, baqt parambaqt, baqs parambaqs, int paramInt)
+  {
+    int j = 0;
+    parambaqt = (bavs)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
+    if (parambaqs == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect failed ep = null return");
+      b(paramLong);
+    }
+    for (;;)
+    {
+      return;
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.1(this, parambaqt, paramLong, parambaqs));
+        return;
+      }
+      parambaqt = parambaqs.jdField_a_of_type_JavaLangString;
+      int i = parambaqs.jdField_a_of_type_Int;
+      if ((this.jdField_a_of_type_Baqs == null) || (!parambaqt.equals(this.jdField_a_of_type_Baqs.jdField_a_of_type_JavaLangString)) || (i != this.jdField_a_of_type_Baqs.jdField_a_of_type_Int))
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect ip or port changed ");
+        b(paramLong);
+        return;
+      }
+      if (!this.jdField_a_of_type_Bavr.h())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect reConnect state legal lSessionID = " + paramLong);
+        }
+        b(paramLong);
+        return;
+      }
+      if (!this.jdField_a_of_type_Bavr.e())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "onConnect : TCP not in Opening state = " + this.jdField_a_of_type_Bavr.b());
+        a(paramLong);
+        return;
+      }
+      if (this.jdField_a_of_type_Baqs.c >= 1)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "reConnect > 1 return");
+        paramInt = 0;
+        for (;;)
+        {
+          i = j;
+          if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            parambaqt = (baqs)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+            if ((parambaqt != this.jdField_a_of_type_Baqs) && (parambaqt.c == 0))
+            {
+              this.jdField_a_of_type_Baqs = parambaqt;
+              i = 1;
+            }
+          }
+          else
+          {
+            if (i == 0) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed change ip new ip = " + this.jdField_a_of_type_Baqs.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Baqs.jdField_a_of_type_Int);
+            }
+            a(this.jdField_a_of_type_Baqs, paramLong);
+            return;
+          }
+          paramInt += 1;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect  not ip notify  connect failed ");
+        b(paramLong);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed reconnect ip = " + this.jdField_a_of_type_Baqs.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Baqs.jdField_a_of_type_Int);
+      }
+      if (paramInt == 3) {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ConnManager.2(this, paramLong), 2000L);
+      }
+      while (this.jdField_a_of_type_Baqs != null)
+      {
+        parambaqt = this.jdField_a_of_type_Baqs;
+        parambaqt.c += 1;
+        return;
+        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.3(this, paramLong));
+      }
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramArrayOfByte);
+    }
+    if (this.jdField_a_of_type_Baqt != null) {
+      this.jdField_a_of_type_Baqt.c();
+    }
+  }
+  
+  public boolean a()
+  {
+    return bgnt.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
+  }
+  
+  public byte[] a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+      return (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    }
+    return null;
   }
 }
 

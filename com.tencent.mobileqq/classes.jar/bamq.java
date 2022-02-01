@@ -1,21 +1,49 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class bamq
-  extends Spannable.Factory
+class bamq
+  implements bdvw
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  bamq(bamn parambamn) {}
+  
+  public void onResp(bdwt parambdwt)
   {
-    if ((!bamp.b) && ((paramCharSequence instanceof bamp))) {
+    Object localObject = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
+    if (parambdwt.jdField_a_of_type_Int != 0) {
+      lbc.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
+    {
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
+      {
+        lbc.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
+        return;
+      }
+      lbc.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
       try
       {
-        bamp localbamp = (bamp)((bamp)paramCharSequence).clone();
-        return localbamp;
+        localObject = bamn.b;
+        bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, (String)localObject, false);
+        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
+        if ((bamn.a(this.a).decrementAndGet() == 0) && (bamn.a(this.a) != null))
+        {
+          bamn.a(this.a).a(true);
+          return;
+        }
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+      catch (IOException parambdwt)
+      {
+        parambdwt.printStackTrace();
+        lbc.c("CaptureVideoFilterManager", "unzip file failed.");
+      }
     }
-    return super.newSpannable(paramCharSequence);
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

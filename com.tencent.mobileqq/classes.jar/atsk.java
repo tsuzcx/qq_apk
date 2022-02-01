@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
-
 public abstract interface atsk
 {
-  public abstract void a(List<LocationRoom.Venue> paramList);
+  public abstract void o();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsk
  * JD-Core Version:    0.7.0.1
  */

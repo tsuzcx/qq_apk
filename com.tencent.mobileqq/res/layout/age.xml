@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:control="http://www.tencent.com/tenpay/android/qqwallet">
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:control="http://schemas.android.com/apk/res-auto">
     <View android:layout_marginBottom="15.0dip" style="@style/ta" />
-    <com.tenpay.sdk.view.NameValueText android:id="@id/jdu" android:layout_width="fill_parent" android:layout_height="wrap_content" control:nameText="金        额" control:nameTextColor="777777" control:nameTextSize="16" control:valueLinePosition="32" control:valueText="" control:valueTextColor="0" control:valueTextSize="23" />
+    <com.tenpay.sdk.view.NameValueText android:id="@id/jdu" android:layout_width="fill_parent" android:layout_height="wrap_content" control:nameText="金        额" control:nameTextColor="777777" control:nameTextSize="16" control:valueLinePosition="32" control:valueText="" control:valueTextColor="000000" control:valueTextSize="23" />
     <View android:layout_marginTop="13.0dip" android:layout_marginBottom="18.0dip" style="@style/ta" />
     <com.tenpay.sdk.view.NameValueText android:id="@id/deposit_bank" android:layout_width="fill_parent" android:layout_height="wrap_content" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="充值方式" control:valueText="" />
     <com.tenpay.sdk.view.NameValueText android:id="@id/gg4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="交易时间" control:valueText="" />

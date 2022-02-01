@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import java.util.List;
 
 public class adjh
-  implements DialogInterface.OnClickListener
+  implements aisq
 {
-  public adjh(NearbyActivity paramNearbyActivity) {}
+  public adjh(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bbmx> paramList)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (AddFriendActivity.a(this.a))
+    {
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
+    }
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 

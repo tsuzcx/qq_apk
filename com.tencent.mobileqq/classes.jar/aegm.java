@@ -1,16 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aegm
-  implements View.OnTouchListener
+  implements anxf
 {
-  public aegm(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegm(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(Object paramObject)
   {
-    return true;
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 

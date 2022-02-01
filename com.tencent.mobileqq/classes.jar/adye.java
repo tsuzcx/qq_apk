@@ -1,33 +1,22 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.image.URLImageView;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
-class adye
-  extends RecyclerView.ViewHolder
+public class adye
+  extends ScaleAnimation
 {
-  View jdField_a_of_type_AndroidViewView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  URLImageView b;
-  
-  public adye(adyd paramadyd, View paramView)
+  public adye(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368053));
-    this.b = ((URLImageView)paramView.findViewById(2131368068));
-    this.b.setBackgroundDrawable(a());
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369767);
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
   }
   
-  private Drawable a()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    Resources localResources = this.itemView.getResources();
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(aepi.a(5.0F, localResources));
-    localGradientDrawable.setStroke(aepi.a(1.5F, localResources), localResources.getColor(2131167005));
-    return localGradientDrawable;
+    if (paramTransformation == null) {
+      return;
+    }
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

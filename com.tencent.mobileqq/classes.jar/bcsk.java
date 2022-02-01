@@ -1,11 +1,28 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class bcsk
+public final class bcsk
 {
-  int jdField_a_of_type_Int;
-  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+  public boolean a;
   
-  public bcsk(bcsf parambcsf) {}
+  private void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
+      }
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
 }
 
 

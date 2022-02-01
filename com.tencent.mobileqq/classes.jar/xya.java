@@ -1,19 +1,31 @@
-final class xya
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xya
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wwf>
 {
-  public float a;
-  public float b;
-  public float c;
-  
-  public xya(float paramFloat1, float paramFloat2, float paramFloat3)
+  public xya(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wwf paramwwf)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwf);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xya
  * JD-Core Version:    0.7.0.1
  */

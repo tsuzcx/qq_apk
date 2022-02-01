@@ -1,17 +1,89 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class bbdm
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bbdg
 {
-  public bbdm(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bbdm(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 0;
+  }
+  
+  public View a(RichStatus paramRichStatus)
+  {
+    paramRichStatus = super.a(paramRichStatus);
+    l();
+    return paramRichStatus;
+  }
+  
+  protected CharSequence a(RichStatus paramRichStatus, bbdp parambbdp, int paramInt)
+  {
+    if (paramRichStatus == null) {
+      parambbdp = "";
+    }
+    do
+    {
+      return parambbdp;
+      localObject1 = paramRichStatus.toSpannableStringWithoutAction(parambbdp);
+      parambbdp = (bbdp)localObject1;
+    } while (TextUtils.isEmpty(paramRichStatus.actionText));
+    Object localObject2 = paramRichStatus.actionText;
+    parambbdp = (bbdp)localObject2;
+    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
+      parambbdp = (String)localObject2 + paramRichStatus.dataText;
+    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849584);
+    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849577);
+    String str = bbce.a().a(paramRichStatus.actionId);
+    paramRichStatus = (RichStatus)localObject1;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
+      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
+      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
+      paramRichStatus.mRequestWidth = paramInt;
+      paramRichStatus.mRequestHeight = paramInt;
+      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
+      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+    }
+    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+    int i = Color.parseColor("#ffa8a8a8");
+    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
+    for (paramRichStatus = new bbaw(paramRichStatus, 1, parambbdp, i, localDrawable, paramInt);; paramRichStatus = new bbaw(paramRichStatus, 0, parambbdp, i, localDrawable, paramInt))
+    {
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      return localObject2;
+    }
+  }
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  protected void e()
+  {
+    int i = jdField_a_of_type_ArrayOfInt[6];
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 

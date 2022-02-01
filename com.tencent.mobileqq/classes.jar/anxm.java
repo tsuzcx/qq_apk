@@ -1,71 +1,25 @@
-public class anxm
-  extends anxk
+import android.view.View;
+import java.lang.ref.WeakReference;
+
+class anxm
 {
-  public float a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
-  public float g;
-  public int g;
-  public float h;
-  public int h;
-  public int i;
-  public int j = 1;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<anxl> b;
   
-  public anxm()
+  public anxm(anxi paramanxi, View paramView, anxl paramanxl)
   {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 100;
-    this.jdField_g_of_type_Int = 100;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramanxl);
   }
   
-  public anxm a()
+  public View a()
   {
-    anxm localanxm = new anxm();
-    localanxm.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-    localanxm.jdField_b_of_type_Float = this.d;
-    localanxm.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
-    localanxm.d = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_JavaLangString += "reverse";
-    boolean bool;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      bool = true;
-      localanxm.jdField_b_of_type_Boolean = bool;
-      localanxm.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localanxm.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localanxm.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
-      localanxm.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
-      localanxm.jdField_h_of_type_Int = this.i;
-      localanxm.i = this.jdField_h_of_type_Int;
-      if (!this.jdField_c_of_type_Boolean) {
-        break label214;
-      }
-      localanxm.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
-      localanxm.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
-      localanxm.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
-    }
-    for (localanxm.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localanxm.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
-    {
-      localanxm.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
-      localanxm.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-      localanxm.j = this.j;
-      localanxm.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localanxm.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localanxm;
-      bool = false;
-      break;
-      label214:
-      localanxm.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
-      localanxm.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
-      localanxm.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
-    }
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public anxl a()
+  {
+    return (anxl)this.b.get();
   }
 }
 

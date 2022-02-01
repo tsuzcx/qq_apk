@@ -1,59 +1,46 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qbf
-  extends qbh
 {
-  public qbf(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext, parambdbb, paramrqj);
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pxl o()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Pxk != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      qcd.a(paramBaseArticleInfo, localJSONObject1, true);
+      oqj.b(paramBaseArticleInfo, localJSONObject1);
+      qcd.b(paramBaseArticleInfo, localJSONObject1);
+      qcd.e(paramBaseArticleInfo, localJSONObject1);
+      qcd.l(paramBaseArticleInfo, localJSONObject1);
+      qcd.g(paramBaseArticleInfo, localJSONObject1);
+      qcd.Z(paramBaseArticleInfo, localJSONObject1);
+      if (!nxw.a(paramBaseArticleInfo)) {
+        break label125;
       }
-      this.jdField_a_of_type_Pxk.a(ComponentContentGridImage.a(((pgd)this.jdField_a_of_type_JavaLangObject).a()));
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    for (;;)
+    {
+      localJSONObject1.put("id_small_cell_container", new JSONObject());
+      qcd.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      str = null;
+      break;
+      label125:
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qbf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,23 @@
-import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bivq
+public final class bivq
+  implements Parcelable.Creator<DownloadInfo>
 {
-  public long a;
-  public Intent a;
+  public DownloadInfo a(Parcel paramParcel)
+  {
+    return new DownloadInfo(paramParcel);
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bivq
  * JD-Core Version:    0.7.0.1
  */

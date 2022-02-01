@@ -10,7 +10,7 @@ import android.graphics.Shader.TileMode;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bewy;
+import bidw;
 import com.tencent.qphone.base.util.QLog;
 
 public class KSongTextView
@@ -21,7 +21,7 @@ public class KSongTextView
   private long jdField_a_of_type_Long = 50L;
   private LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private bewy jdField_a_of_type_Bewy;
+  private bidw jdField_a_of_type_Bidw;
   private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -124,14 +124,14 @@ public class KSongTextView
     ((LinearGradient)localObject1).setLocalMatrix((Matrix)localObject2);
   }
   
-  public void a(long paramLong, bewy parambewy)
+  public void a(long paramLong, bidw parambidw)
   {
     QLog.i("KSongTextView", 2, "startDownTime = " + paramLong);
     if (4 == getVisibility()) {
       setVisibility(0);
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bewy = parambewy;
+    this.jdField_a_of_type_Bidw = parambidw;
     this.jdField_a_of_type_Float = getPaint().measureText(getText().toString());
     paramLong /= this.jdField_a_of_type_Long;
     this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float / (float)paramLong);
@@ -151,14 +151,14 @@ public class KSongTextView
       this.jdField_a_of_type_Float -= this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_Float <= 0.0F)
       {
-        if (this.jdField_a_of_type_Bewy != null) {
-          this.jdField_a_of_type_Bewy.a();
+        if (this.jdField_a_of_type_Bidw != null) {
+          this.jdField_a_of_type_Bidw.a();
         }
         setVisibility(4);
         return;
       }
-      if (this.jdField_a_of_type_Bewy != null) {
-        this.jdField_a_of_type_Bewy.a(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      if (this.jdField_a_of_type_Bidw != null) {
+        this.jdField_a_of_type_Bidw.a(System.currentTimeMillis() - this.jdField_b_of_type_Long);
       }
       postInvalidateDelayed(this.jdField_a_of_type_Long);
     }
@@ -168,7 +168,7 @@ public class KSongTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ksong.KSongTextView
  * JD-Core Version:    0.7.0.1
  */

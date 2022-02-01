@@ -1,39 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.view.View;
 
-public class naw
+public abstract interface naw
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public abstract int a();
   
-  public byte[] a()
-  {
-    if (TextUtils.isEmpty(this.a)) {}
-    do
-    {
-      return null;
-      try
-      {
-        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
-        return arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
-    return null;
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(RectF paramRectF);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(String paramString, RectF paramRectF, int paramInt);
+  
+  public abstract void b(RectF paramRectF);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString, RectF paramRectF, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     naw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nye;
+import ohz;
 
 public class ReadInJoyBaseDeliverActivity$11$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$11$1(nye paramnye) {}
+  public ReadInJoyBaseDeliverActivity$11$1(ohz paramohz) {}
   
   public void run()
   {

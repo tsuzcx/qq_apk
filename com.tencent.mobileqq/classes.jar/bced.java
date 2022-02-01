@@ -1,211 +1,187 @@
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
-import com.tribe.async.reactive.UIThreadOffFunction;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import java.io.File;
-import java.net.URI;
-import java.net.URL;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class bced
-  extends bcei
 {
-  public int a;
-  public long a;
-  public String a;
-  public URL a;
-  public ConcurrentHashMap<String, bkdb> a;
-  public int b;
-  protected String b;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  
-  public bced() {}
-  
-  public bced(String paramString)
+  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    b(paramString);
-    a();
-    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
-  }
-  
-  public bced(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
-  }
-  
-  public static String b()
-  {
-    VFSFile localVFSFile = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
-    if (!localVFSFile.exists())
+    VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:APPID=" + AppSetting.a() + " subVersion=" + "8.4.1" + " buildnum=" + "4680", null);
+    String str;
+    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
     {
-      localVFSFile.mkdirs();
-      bdhb.c(TroopHWJsPlugin.jdField_a_of_type_JavaLangString + ".nomedia");
+      str = "new_qq_android_native_short_video_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 65)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInShortVideo=" + 65, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
     }
-    return TroopHWJsPlugin.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int a()
-  {
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_"))
+    {
+      str = "new_qq_android_native_art_filter_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 9)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInArt=" + 9, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_new_other_"))
+    {
+      str = "new_qq_android_native_short_new_other_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 1)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInOther=" + 1, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_"))
+    {
+      str = "new_qq_android_native_short_other_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 1)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInOther=" + 1, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else
+    {
+      if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
+        return bgvy.a(paramSVConfigItem);
+      }
+      if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_"))
+      {
+        str = "new_qq_android_native_portrait_filter_" + paramSVConfigItem.versionCode;
+        if (paramSVConfigItem.name.equalsIgnoreCase(str))
+        {
+          if (paramSVConfigItem.versionCode < 9)
+          {
+            VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPortrait=" + 9, null);
+            return -2;
+          }
+        }
+        else {
+          return -4;
+        }
+      }
+      else if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_"))
+      {
+        return bcfm.a(paramSVConfigItem);
+      }
+    }
     return 0;
   }
   
-  public bkdb a(String paramString1, String paramString2)
+  public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
+    boolean bool1 = true;
+    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
     {
-      paramString2 = new bkdb(vls.a(), paramString1, paramString2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
-      return paramString2;
-    }
-    return (bkdb)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-  }
-  
-  public Stream<bced> a(XMediaEditor paramXMediaEditor)
-  {
-    this.g = 1;
-    Object localObject2 = Stream.of(this).map(new ThreadOffFunction("ImageInfo", 2));
-    Object localObject1 = localObject2;
-    if (!arso.b(this.jdField_c_of_type_JavaLangString)) {
-      localObject1 = ((Stream)localObject2).map(new bcee(this.jdField_d_of_type_Int));
-    }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localObject1 = ((Stream)localObject1).map(new bcef(0, paramXMediaEditor, paramXMediaEditor.a("troopuin")));
+      boolean bool2 = VideoEnvironment.a(paramSVConfigItem.versionCode);
+      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload[Builtin Mode]:needDownload=" + bool2 + ",itemConfig.name=" + paramSVConfigItem.name, null);
+      bool1 = bool2;
+      if (bool2) {
+        bool1 = VideoEnvironment.d(paramAppInterface);
+      }
     }
     for (;;)
     {
-      localObject2 = paramXMediaEditor.findViewHolderForLayoutPosition(this.jdField_c_of_type_Int);
-      if ((localObject2 instanceof bcfe))
-      {
-        localObject2 = (bcfe)localObject2;
-        if (this.jdField_d_of_type_JavaLangString.equals(((bcfe)localObject2).a.getTag())) {
-          ((bcfa)((bcdu)paramXMediaEditor.getAdapter()).a.a(1)).a((bcfe)localObject2, this, 0);
-        }
-      }
-      return ((Stream)localObject1).map(new UIThreadOffFunction(null));
-    }
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", "img");
-      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("width", this.jdField_a_of_type_Int);
-      localJSONObject.put("height", this.jdField_b_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ImageInfo", 2, "ImageInfo getContent exception.");
-    }
-    return localJSONObject;
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    if (arso.b(this.jdField_a_of_type_JavaLangString))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, localOptions);
-      this.jdField_a_of_type_Int = localOptions.outWidth;
-      this.jdField_b_of_type_Int = localOptions.outHeight;
-      int i = JpegExifReader.readOrientation(this.jdField_a_of_type_JavaLangString);
-      if ((i == 6) || (i == 5) || (i == 8) || (i == 7))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize need orientation. before width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString });
-        }
-        i = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = i;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize result. width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString, ", cost=", Long.valueOf(System.currentTimeMillis() - l) });
+      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:needDownload=" + bool1 + ",itemConfig.name=" + paramSVConfigItem.name, null);
+      return bool1;
+      if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_")) {
+        bool1 = bcdz.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_")) {
+        bool1 = bcel.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
+        bool1 = bgvy.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_")) {
+        bool1 = bcem.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_")) {
+        bool1 = bcfm.a(paramAppInterface, paramSVConfigItem);
       }
     }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageInfo", 2, new Object[] { "ImageInfo createFrom json: ", paramJSONObject });
+    if (paramString.startsWith("new_qq_android_native_short_video_")) {
+      return VideoEnvironment.e(paramQQAppInterface);
     }
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    c(paramJSONObject.optString("url"));
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaNetURL = new File(paramString).toURI().toURL();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
+    if (paramString.startsWith("new_qq_android_native_art_filter_")) {
+      return bcdz.a();
     }
-    catch (Exception paramString)
-    {
-      QLog.e("ImageInfo", 1, "setURLFromPath exception.");
+    if (paramString.startsWith("new_qq_android_native_short_other_")) {
+      return bcel.a();
     }
+    if (paramString.startsWith("msf_quic_lib")) {
+      return bgvy.a(paramQQAppInterface);
+    }
+    if (paramString.startsWith("new_qq_android_native_portrait_filter_")) {
+      return bcem.a();
+    }
+    if (paramString.startsWith("new_qq_android_native_object_tracking_")) {
+      return bcfm.a();
+    }
+    return false;
   }
   
-  public boolean b()
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public void c(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaNetURL = new URL(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString;
-      return;
+    if (paramString1 == null) {
+      return false;
     }
-    catch (Exception paramString)
+    boolean bool;
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      QLog.e("ImageInfo", 1, "Image setURLFromContentUrl exception.");
+      bool = VideoEnvironment.a(paramQQAppInterface, paramString3, paramInt);
+      if (bool) {
+        VideoEnvironment.a(false, paramQQAppInterface);
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      VideoEnvironment.a(true, paramQQAppInterface);
+      continue;
+      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
+        bool = bcdz.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      } else if (paramString1.startsWith("new_qq_android_native_short_other_")) {
+        bool = bcel.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      } else if (paramString1.startsWith("msf_quic_lib")) {
+        bool = bgvy.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      } else if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
+        bool = bcem.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      } else if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
+        bool = bcfm.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      } else {
+        bool = false;
+      }
     }
   }
 }

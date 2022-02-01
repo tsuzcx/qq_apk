@@ -1,91 +1,57 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class bdyh
-  implements SensorEventListener
+  implements ITransactionCallback
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  bdyh(bdyg parambdyg, long paramLong) {}
   
-  private void a(long paramLong)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    bdyd.b = 1;
-    bdyd.a = true;
-  }
-  
-  public void b()
-  {
-    bdyd.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    label66:
-    do
-    {
-      do
-      {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-      }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-      {
-        a();
-        a(l1);
-        return;
-      }
-      if (this.jdField_a_of_type_Int < 10)
-      {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
-      }
-      a(l1);
-    } while (bdyd.b >= 3);
-    b();
+    this.jdField_a_of_type_Bdyg.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bdyg.b);
+    this.jdField_a_of_type_Bdyg.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Bdyg.b.b();
+    this.jdField_a_of_type_Bdyg.b.a = 1;
+    this.jdField_a_of_type_Bdyg.s = this.jdField_a_of_type_Bdyg.jdField_q_of_type_Long;
+    this.jdField_a_of_type_Bdyg.a.a = paramArrayOfByte;
+    this.jdField_a_of_type_Bdyg.e();
+    this.jdField_a_of_type_Bdyg.a.a();
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Bdyg.b.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    bdyg localbdyg = this.jdField_a_of_type_Bdyg;
+    bduk localbduk = this.jdField_a_of_type_Bdyg.a;
+    long l = paramInt;
+    localbduk.e = l;
+    localbdyg.s = l;
+    if ((paramInt < this.jdField_a_of_type_Bdyg.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bdyg.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bdyg.m)) {
+      this.jdField_a_of_type_Bdyg.j();
+    }
   }
 }
 

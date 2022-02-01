@@ -1,28 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class alfy
+public class alfy
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public List<alfw> a;
-  public List<alfv> b = new ArrayList();
+  public alfy(LoginView paramLoginView) {}
   
-  public alfy()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    LoginView.c(this.a, false);
   }
   
-  public String toString()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
-    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", mCGIConfigs=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.c(this.a, false);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

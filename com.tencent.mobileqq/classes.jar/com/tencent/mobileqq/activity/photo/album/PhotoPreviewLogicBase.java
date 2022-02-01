@@ -1,33 +1,21 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqf;
-import aiqn;
-import aiqo;
-import aiqy;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bayu;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.photo.DragGallery;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.Gallery.LayoutParams;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,14 +23,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
-  extends PhotoPreviewLogic<K>
-  implements PhotoPreviewLogic.IimageAdapterCallback, PhotoPreviewLogic.IonCheckedChangedCallback
+public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O extends OtherCommonData>
+  extends PhotoPreviewLogic<K, O>
+  implements PhotoPreviewLogic.IonCheckedChangedCallback
 {
   protected PhotoPreviewLogicBase(K paramK)
   {
     super(paramK);
-    this.mImageAdapterCallback = this;
     this.mOnCheckedChangedCallback = this;
   }
   
@@ -68,10 +55,6 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       if (QLog.isColorLevel()) {
         QLog.e("PhotoPreviewActivity", 2, "remove file error");
       }
-      if (this.mActivity.mVideoPlayController != null) {
-        this.mActivity.mVideoPlayController.k();
-      }
-      this.mActivity.mVideoPlayController = null;
       close();
     }
   }
@@ -81,130 +64,18 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
     if ((this.mPhotoPreviewData.showBar) && (this.mActivity.topBar != null)) {
       this.mActivity.topBar.setVisibility(0);
     }
-    if (this.mActivity.mVideoPlayController != null) {
-      this.mActivity.mVideoPlayController.j();
-    }
   }
   
   public void flashPicCheckedChanged(boolean paramBoolean) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected BasePreviewAdapter getPreviewAdapter()
   {
-    Object localObject2 = null;
-    if (paramView != null) {
-      return paramView;
-    }
-    Object localObject3 = this.mActivity.adapter.getItem(paramInt);
-    int i;
-    label38:
-    View localView;
-    Object localObject1;
-    if (this.mActivity.getMediaType((String)localObject3) == 1)
-    {
-      i = 1;
-      URLDrawable localURLDrawable = (URLDrawable)this.mPhotoPreviewData.activeDrawable.get(paramInt);
-      if (i == 0) {
-        break label181;
-      }
-      localView = this.mActivity.getLayoutInflater().inflate(2131561155, null);
-      localView.setTag(2131296400, Boolean.valueOf(true));
-      localView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-      localObject1 = (ImageView)localView.findViewById(2131372258);
-      label111:
-      Object localObject4 = new File((String)localObject3);
-      localObject4 = this.mActivity.getFileUrl((File)localObject4);
-      if ((localURLDrawable == null) || (localURLDrawable.getStatus() != 1) || (!localURLDrawable.getURL().equals(localObject4))) {
-        break label200;
-      }
-      ((ImageView)localObject1).setImageDrawable(localURLDrawable);
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        break label477;
-      }
-      return localView;
-      i = 0;
-      break label38;
-      label181:
-      localObject1 = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-      localView = null;
-      break label111;
-      label200:
-      if (localObject3 == null) {
-        break;
-      }
-      paramView = new File((String)localObject3);
-      if (paramView.exists())
-      {
-        if (i != 0)
-        {
-          paramView = this.mActivity.getMediaInfo((String)localObject3);
-          int k = paramViewGroup.getWidth();
-          int j = paramViewGroup.getHeight();
-          if (paramView.mediaWidth > paramView.mediaHeight)
-          {
-            k = paramViewGroup.getHeight();
-            j = paramViewGroup.getWidth();
-          }
-          paramViewGroup = QAlbumUtil.generateAlbumThumbURL(paramView, "FLOW_THUMB");
-          if (paramViewGroup != null)
-          {
-            ((ImageView)localObject1).setImageDrawable(this.mActivity.getCoverDrawable(paramViewGroup.toString(), k, j, paramView));
-            paramView = localObject2;
-          }
-        }
-        for (;;)
-        {
-          if (paramView == null) {
-            break label463;
-          }
-          ((ImageView)localObject1).setImageDrawable(paramView);
-          this.mPhotoPreviewData.activeDrawable.put(paramInt, paramView);
-          break;
-          QLog.d("PhotoPreviewActivity", 2, "url  is null ");
-          paramView = localObject2;
-          continue;
-          localObject3 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = paramViewGroup.getWidth();
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = paramViewGroup.getHeight();
-          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bayu.a;
-          ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-          paramViewGroup = this.mActivity.getFileUrl(paramView);
-          paramView = localObject2;
-          if (paramViewGroup != null)
-          {
-            paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject3);
-            paramView = paramViewGroup;
-            if (paramViewGroup != null)
-            {
-              paramView = paramViewGroup;
-              switch (paramViewGroup.getStatus())
-              {
-              }
-              paramViewGroup.setTag(Integer.valueOf(1));
-              paramViewGroup.startDownload();
-              paramView = paramViewGroup;
-            }
-          }
-        }
-      }
-      else
-      {
-        label463:
-        getViewNotLocalFile((String)localObject3, (ImageView)localObject1, paramViewGroup);
-      }
-    }
-    label477:
-    return localObject1;
+    return new BasePreviewAdapter(this);
   }
-  
-  protected void getViewNotLocalFile(String paramString, ImageView paramImageView, ViewGroup paramViewGroup) {}
   
   protected void initData(Intent paramIntent)
   {
-    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131296978);
-    this.mActivity.mVideoPlayController = new aiqn();
+    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131297031);
     this.mPhotoPreviewData.from = paramIntent.getStringExtra("FROM_WHERE");
     paramIntent.removeExtra("FROM_WHERE");
     this.mPhotoPreviewData.isSingleMode = paramIntent.getBooleanExtra("PhotoConst.IS_SINGLE_MODE", false);
@@ -304,6 +175,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
   
   protected void initUI()
   {
+    this.mActivity.gallery.setSelection(this.mPhotoPreviewData.firstSelectedPostion);
     if (this.mPhotoPreviewData.showBar)
     {
       this.mActivity.topBar.setVisibility(0);
@@ -316,15 +188,6 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       }
       this.mActivity.selectLayout.setOnClickListener(new PhotoPreviewLogicBase.1(this));
       this.mActivity.backToPhotoListBtn.setOnClickListener(new PhotoPreviewLogicBase.2(this));
-      this.mActivity.gallery.setSupportMatchParent(true);
-      this.mActivity.gallery.setAdapter(this.mActivity.adapter);
-      this.mActivity.gallery.setOnNoBlankListener(this.mActivity.adapter);
-      this.mActivity.gallery.setOnItemSelectedListener(new PhotoPreviewLogicBase.3(this));
-      this.mActivity.gallery.setSpacing(this.mActivity.getResources().getDimensionPixelSize(2131297026));
-      if (this.mPhotoPreviewData.firstSelectedPostion != -1) {
-        this.mActivity.gallery.setSelection(this.mPhotoPreviewData.firstSelectedPostion);
-      }
-      this.mActivity.gallery.setOnItemClickListener(new PhotoPreviewLogicBase.4(this));
       updateButton();
       if (this.mPhotoPreviewData.isSingleMode)
       {
@@ -332,7 +195,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
         this.mActivity.selectLayout.setVisibility(8);
         this.mActivity.cancelTv.setVisibility(0);
       }
-      this.mActivity.cancelTv.setOnClickListener(new PhotoPreviewLogicBase.5(this));
+      this.mActivity.cancelTv.setOnClickListener(new PhotoPreviewLogicBase.3(this));
       if (!TextUtils.isEmpty(this.mPhotoPreviewData.backBtnText)) {
         this.mActivity.backToPhotoListBtn.setText(this.mPhotoPreviewData.backBtnText);
       }
@@ -357,7 +220,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       localIntent.setClass(this.mActivity, this.mActivity.getBackActivity());
       localIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.mPhotoCommonData.currentQualityType);
       if (!this.mPhotoPreviewData.isSingleMode) {
-        break label176;
+        break label173;
       }
       localIntent.removeExtra("PhotoConst.PHOTO_PATHS");
     }
@@ -375,65 +238,54 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       }
       this.mActivity.finish();
       return;
-      label176:
+      label173:
       localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.mPhotoCommonData.selectedPhotoList);
       localIntent.putExtra("PhotoConst.editPathMap", this.mPhotoPreviewData.editPathMap);
     }
   }
   
-  protected void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onGalleryItemClicked(int paramInt1, String paramString, int paramInt2)
   {
-    String str = this.mActivity.adapter.getItem(paramInt);
-    if (this.mActivity.getMediaType(str) == 1)
+    if (paramInt1 == 1) {
+      return;
+    }
+    if (this.mPhotoPreviewData.showBar)
     {
-      if (this.mActivity.mVideoPlayController != null)
+      this.mActivity.hideMenuBar();
+      return;
+    }
+    this.mActivity.showMenuBar();
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = this.mActivity.adapter.getItem(paramInt);
+    if (this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(paramInt))) {
+      if (paramAdapterView != null)
       {
-        aiqo localaiqo = new aiqo();
-        localaiqo.jdField_a_of_type_Boolean = false;
-        localaiqo.jdField_a_of_type_JavaLangString = str;
-        this.mActivity.mVideoPlayController.a(paramAdapterView, localaiqo);
-      }
-      if (paramView != null)
-      {
-        this.mActivity.mCenterVideoPlayBtn = ((ImageView)paramView.findViewById(2131372257));
-        this.mActivity.mCenterVideoPlayBtn.setVisibility(0);
-      }
-      if (!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(paramInt))) {
-        break label277;
-      }
-      if (str == null) {
-        break label263;
-      }
-      this.mActivity.setCheckedNumber(str);
-      label134:
-      updateButton();
-      if (!this.mPhotoPreviewData.showAlbum)
-      {
-        if (this.mPhotoPreviewData.paths.size() <= 1) {
-          break label291;
+        this.mActivity.setCheckedNumber(paramAdapterView);
+        updateButton();
+        if (!this.mPhotoPreviewData.showAlbum)
+        {
+          if (this.mPhotoPreviewData.paths.size() <= 1) {
+            break label172;
+          }
+          this.mActivity.titleView.setText(paramInt + 1 + " / " + this.mPhotoPreviewData.paths.size());
         }
-        this.mActivity.titleView.setText(paramInt + 1 + " / " + this.mPhotoPreviewData.paths.size());
       }
     }
     for (;;)
     {
-      if ((this.mActivity.getMediaType(str) == 1) && (!this.mPhotoPreviewData.showBar)) {
+      if ((this.mActivity.getMediaType(paramAdapterView) == 1) && (!this.mPhotoPreviewData.showBar)) {
         this.mActivity.showMenuBar();
       }
       return;
-      if (this.mActivity.mVideoPlayController == null) {
-        break;
-      }
-      this.mActivity.mVideoPlayController.a(null, null);
+      this.mActivity.selectedBox.setChecked(false);
       break;
-      label263:
       this.mActivity.selectedBox.setChecked(false);
-      break label134;
-      label277:
-      this.mActivity.selectedBox.setChecked(false);
-      break label134;
-      label291:
-      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131695497));
+      break;
+      label172:
+      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131694409));
     }
   }
   
@@ -510,7 +362,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
       }
       this.mActivity.selectedBox.setActivated(true);
       return;
-      localObject = ((Resources)localObject).getString(2131695245);
+      localObject = ((Resources)localObject).getString(2131694260);
       break;
       label153:
       i = 0;
@@ -527,7 +379,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase
  * JD-Core Version:    0.7.0.1
  */

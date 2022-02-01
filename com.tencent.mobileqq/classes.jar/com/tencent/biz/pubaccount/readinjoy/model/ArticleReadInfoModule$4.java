@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import pfb;
+import com.tencent.mobileqq.persistence.EntityManager;
+import pwg;
 
 public class ArticleReadInfoModule$4
   implements Runnable
 {
-  public ArticleReadInfoModule$4(pfb parampfb, ArticleReadInfo paramArticleReadInfo) {}
+  public ArticleReadInfoModule$4(pwg parampwg, ArticleReadInfo paramArticleReadInfo) {}
   
   public void run()
   {
-    this.this$0.a.b(this.a);
+    this.this$0.a.remove(this.a);
   }
 }
 

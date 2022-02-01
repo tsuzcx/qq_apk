@@ -1,23 +1,19 @@
-class vwk
-  implements vwf
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+
+public class vwk
+  implements vuw
 {
-  public vwf a;
+  public vwk(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  private vwk(vwg paramvwg) {}
-  
-  public void a(vwa paramvwa)
+  public void a(String paramString)
   {
-    if (vwg.a(this.jdField_a_of_type_Vwg) != null) {
-      vwg.a(this.jdField_a_of_type_Vwg).a(0L, paramvwa.b(), paramvwa);
-    }
-    if (this.jdField_a_of_type_Vwf != null) {
-      this.jdField_a_of_type_Vwf.a(paramvwa);
-    }
+    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwk
  * JD-Core Version:    0.7.0.1
  */

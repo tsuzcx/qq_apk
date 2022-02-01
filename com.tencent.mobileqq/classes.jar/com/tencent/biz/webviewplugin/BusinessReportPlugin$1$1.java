@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import begz;
-import ntv;
-import zde;
+import aazx;
+import bhod;
+import ocz;
 
 class BusinessReportPlugin$1$1
   implements Runnable
@@ -11,12 +11,12 @@ class BusinessReportPlugin$1$1
   
   public void run()
   {
-    ntv.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
+    ocz.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.BusinessReportPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

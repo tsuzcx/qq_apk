@@ -1,19 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aelz
-  extends avva
+  extends aelh
 {
-  public aelz(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aelz(JumpActivity paramJumpActivity)
   {
-    this.a.f();
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.d(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aelz
  * JD-Core Version:    0.7.0.1
  */

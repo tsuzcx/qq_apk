@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
-public final class bnky
-  implements Parcelable.Creator<FilterCategoryItem>
+public abstract class bnky
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
-  
-  public FilterCategoryItem[] a(int paramInt)
-  {
-    return new FilterCategoryItem[paramInt];
-  }
+  abstract bnkz a();
 }
 
 

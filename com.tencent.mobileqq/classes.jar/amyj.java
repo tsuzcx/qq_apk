@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class amyj
-  implements awbh
+  extends Animation
 {
-  public amyj(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  private final int a;
+  private final int b;
+  private final int c;
+  private final int d;
+  private final int e;
+  private final int f;
   
-  public void a()
+  public amyj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-    }
-    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.d = paramInt5;
+    this.c = paramInt6;
+    this.a = paramInt3;
+    this.b = paramInt4;
   }
   
-  public void b()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
+    float f1 = this.e;
+    float f2 = this.a;
+    float f3 = this.d;
+    float f4 = this.f;
+    float f5 = this.b;
+    float f6 = this.c;
+    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
   }
 }
 

@@ -1,27 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
 public class qca
-  implements View.OnClickListener
 {
-  public qca(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
-    do
-    {
-      return;
-      paramView = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
-    } while (paramView == null);
-    paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
+    JSONObject localJSONObject1 = new JSONObject();
+    qcd.w(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    qcd.b(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_multi_image", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", anni.a(2131711798));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    qcd.a(paramBaseArticleInfo, localJSONObject1, true);
+    qcd.e(paramBaseArticleInfo, localJSONObject1);
+    qcd.l(paramBaseArticleInfo, localJSONObject1);
+    qcd.C(paramBaseArticleInfo, localJSONObject1);
+    qcd.D(paramBaseArticleInfo, localJSONObject1);
+    qcd.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qca
  * JD-Core Version:    0.7.0.1
  */

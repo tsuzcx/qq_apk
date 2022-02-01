@@ -1,13 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface rme
+public class rme
+  extends rmq
 {
-  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
+  public rme(GalleryFragment paramGalleryFragment) {}
+  
+  public rmr a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  {
+    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, bggq.a(this.a.a, 8.0F));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rme
  * JD-Core Version:    0.7.0.1
  */

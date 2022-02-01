@@ -1,32 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFollowListRsp;
 
-final class von
-  extends SimpleJob<Object>
+class von
+  implements zxa<FeedCloudRead.StGetFollowListRsp>
 {
-  von(String paramString, umg paramumg, String[] paramArrayOfString, int paramInt, voo paramvoo, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    super(paramString);
-  }
+  von(vol paramvol, int paramInt) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(boolean paramBoolean, long paramLong, String arg4, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
   {
-    paramJobContext = this.jdField_a_of_type_Umg.a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bhsz.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
+    QLog.d("QCircleSpecialFollowMgr", 1, "updateSpecialFollowList: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + ???);
+    synchronized (this.jdField_a_of_type_Vol)
+    {
+      if (vol.b(this.jdField_a_of_type_Vol) != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Vol.b();
+        return;
+      }
+      vol.a(this.jdField_a_of_type_Vol, false);
+      if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowListRsp != null))
+      {
+        vol.a(this.jdField_a_of_type_Vol).obtainMessage(1003, new vos(paramStGetFollowListRsp, this.jdField_a_of_type_Int, null)).sendToTarget();
+        return;
+      }
     }
-    voi.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Voo);
-    return null;
+    vol.a(this.jdField_a_of_type_Vol).obtainMessage(1005).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     von
  * JD-Core Version:    0.7.0.1
  */

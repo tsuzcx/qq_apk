@@ -51,8 +51,13 @@ public class StickerItem
   public String countExternalTriggerWords;
   public int countTriggerType;
   public CpRange cpRange;
+  public String crazyFacePath;
   public int delayedTriggedTime = 0;
   public String dexName;
+  public String[] disableDetectors;
+  public String displacementLutPath;
+  public float displacementX;
+  public float displacementY;
   public int dx = 0;
   public int dy = 0;
   public int extarTypeHeight;
@@ -79,6 +84,7 @@ public class StickerItem
   public int height;
   public double[] hotArea;
   public String id;
+  public int isCanDiyPitcureVideo = 0;
   public boolean isFabbyMvItem = false;
   public boolean isStrokeBlur;
   public int lazyLoad;
@@ -121,8 +127,10 @@ public class StickerItem
   public int strokeStyle;
   public int strokeType;
   public double strokeWidth;
+  public String styleFilter;
   public String subFolder;
   public int support3D;
+  public String textureMaterials;
   public int transformType;
   public Transition transition;
   public int triggedTimes = 0;
@@ -169,6 +177,11 @@ public class StickerItem
     return (this.audioTriggerType == 1) || (this.audioTriggerType == 2);
   }
   
+  public boolean isDisplacementMaterial()
+  {
+    return (this.displacementX > 0.0F) || (this.displacementY > 0.0F);
+  }
+  
   public void setTriggerType(String paramString)
   {
     this.triggerType = paramString;
@@ -181,7 +194,7 @@ public class StickerItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.StickerItem
  * JD-Core Version:    0.7.0.1
  */

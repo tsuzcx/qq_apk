@@ -1,23 +1,39 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
 
-class askh
-  implements View.OnClickListener
+public class askh
+  extends RecyclerView.ItemDecoration
 {
-  askh(askd paramaskd, String paramString) {}
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onClick(View paramView)
+  public askh(Fragment paramFragment)
   {
-    paramView = new HashMap();
-    aahi.a(paramView, this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(10), "0");
-    aahi.a(akwd.a(), "769", "205711", this.jdField_a_of_type_Askd.a().gameAppId, "76905", "1", "160", paramView);
-    askd.a(this.jdField_a_of_type_Askd).dismiss();
+    this.a = afur.a(11.0F, paramFragment.getResources());
+    this.b = afur.a(11.0F, paramFragment.getResources());
+    this.c = afur.a(8.0F, paramFragment.getResources());
+    this.d = afur.a(8.0F, paramFragment.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  {
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
+    {
+      paramRect.set(0, this.a, 0, 0);
+      return;
+    }
+    if (paramInt == i - 1)
+    {
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
+    }
+    paramRect.set(this.c, this.a, this.d, 0);
   }
 }
 

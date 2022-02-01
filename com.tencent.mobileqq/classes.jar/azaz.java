@@ -1,52 +1,46 @@
-import CliLogSvc.strupbuff;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.ProgressViewRed;
 
-public class azaz
-  extends zhu
+class azaz
+  extends CountDownTimer
 {
-  private static final String[] a = { "CliLogSvc" };
-  
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  azaz(azav paramazav, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-    paramUniPacket.setFuncName("UploadReq");
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
-    strupbuff localstrupbuff = new strupbuff();
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(arrayOfString[i].getBytes());
-      i += 1;
-    }
-    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
-    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
-    {
-      localHashMap.put(paramToServiceMsg, localArrayList);
-      localstrupbuff.setLogstring(localHashMap);
-      paramUniPacket.put("Data", localstrupbuff);
-      return true;
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(79);
+    if (localPortalManager != null) {
+      localPortalManager.a();
     }
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void onTick(long paramLong)
   {
-    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
-      return b(paramToServiceMsg, paramUniPacket);
+    if (azav.a(this.jdField_a_of_type_Azav).getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Azav.a(paramLong);
+      azav.a(this.jdField_a_of_type_Azav).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Azav.jdField_a_of_type_JavaLangStringBuilder);
     }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return a;
+    if (this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Azav.a(paramLong);
+      this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Azav.jdField_b_of_type_JavaLangStringBuilder);
+    }
+    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_Azav.jdField_b_of_type_Long;
+    if (paramLong > 2000L) {
+      this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
+    }
+    while (paramLong <= 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Azav.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
   }
 }
 

@@ -1,24 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class sxf
-  extends Handler
+public class sxf
+  implements MessageQueue.IdleHandler
 {
-  sxf(sxe paramsxe) {}
+  public sxf(FastWebActivity paramFastWebActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean queueIdle()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a = false;
+    FastWebActivity.e(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxf
  * JD-Core Version:    0.7.0.1
  */

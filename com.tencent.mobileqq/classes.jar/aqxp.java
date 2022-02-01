@@ -1,27 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import java.lang.ref.WeakReference;
-
-class aqxp
-  implements TVK_IMediaPlayer.OnErrorListener
+public class aqxp
 {
-  aqxp(aqxo paramaqxo) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public aqxp()
   {
-    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
-    paramTVK_IMediaPlayer = alud.a(2131704981);
-    paramString = (aqxm)this.a.a.get();
-    if (paramString != null) {
-      paramString.a(paramInt2, paramTVK_IMediaPlayer);
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = anni.a(2131710035);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class arjy
   implements View.OnClickListener
 {
-  arjy(arjq paramarjq) {}
+  arjy(arjx paramarjx, WindowManager paramWindowManager) {}
   
   public void onClick(View paramView)
   {
-    arrr.a(this.a.a, this.a.d());
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Arjx.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

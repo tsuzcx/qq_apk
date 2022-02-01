@@ -1,15 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.widget.ProgressPieView;
 
-class bknp
-  implements View.OnTouchListener
+public class bknp
+  extends Handler
 {
-  bknp(bknm parambknm) {}
+  long jdField_a_of_type_Long;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bknp(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    return true;
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    {
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      sendEmptyMessageDelayed(0, 1L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
   }
 }
 

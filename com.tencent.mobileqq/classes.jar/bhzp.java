@@ -1,33 +1,24 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public class bhzp
-  implements View.OnTouchListener
+class bhzp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhzp(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
+  bhzp(bhzm parambhzm) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (bhzm.a(this.a) != null)
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_Bhwx == null) || (!this.a.jdField_a_of_type_Bhwx.a(this.a, paramView, i, this.a.jdField_a_of_type_Bhzr.getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      bhzm.a(this.a).setAlpha(f);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzp
  * JD-Core Version:    0.7.0.1
  */

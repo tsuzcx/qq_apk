@@ -1,107 +1,76 @@
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class anrx
+  implements bcbk
 {
-  public long a;
-  public String a;
-  public ArrayList<anrw> a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public anrx(PublicAccountHandler paramPublicAccountHandler) {}
   
-  public JSONObject a()
+  public int a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 0;
+    localReqItem.eServiceID = 102;
+    boolean bool = tyg.c();
+    long l1 = PublicAccountHandler.a(this.a, bool);
+    long l2 = PublicAccountHandler.b(this.a, bool);
+    Object localObject2 = PublicAccountHandler.a(this.a);
+    if (bool)
     {
-      try
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          Object localObject = this.jdField_a_of_type_JavaLangString;
-          localJSONObject.put("uin", localObject);
-          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            break label285;
-          }
-          localObject = this.jdField_b_of_type_JavaLangString;
-          localJSONObject.put("phone", localObject);
-          if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-            break label291;
-          }
-          localObject = this.jdField_c_of_type_JavaLangString;
-          localJSONObject.put("os", localObject);
-          if (TextUtils.isEmpty(this.d)) {
-            break label297;
-          }
-          localObject = this.d;
-          localJSONObject.put("qqver", localObject);
-          if (TextUtils.isEmpty(this.e)) {
-            break label303;
-          }
-          localObject = this.e;
-          localJSONObject.put("scene", localObject);
-          if (TextUtils.isEmpty(this.f)) {
-            break label309;
-          }
-          localObject = this.f;
-          localJSONObject.put("startEvt", localObject);
-          if (TextUtils.isEmpty(this.g)) {
-            break label315;
-          }
-          localObject = this.g;
-          localJSONObject.put("endEvt", localObject);
-          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
-          localJSONObject.put("endTime", this.jdField_b_of_type_Long);
-          localJSONObject.put("costTime", this.jdField_c_of_type_Long);
-          localObject = new JSONArray();
-          if (this.jdField_a_of_type_JavaUtilArrayList != null)
-          {
-            int i = 0;
-            if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-            {
-              ((JSONArray)localObject).put(i, ((anrw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-              i += 1;
-              continue;
-            }
-          }
-          localJSONObject.put("evtlist", localObject);
-          return localJSONObject;
-        }
+      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bgjw.a(l1));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bgjw.a(1L));
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
       }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("ArkVipReportScene", 1, "getJsonObject()", localJSONException);
-        return localJSONObject;
+      localObject2 = new PROTOCAL.StQWebReq();
+      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
+      ((PROTOCAL.StQWebReq)localObject2).qua.set(blru.a());
+      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(blrt.a().c());
+      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
+      localObject1 = aahw.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
       }
-      String str = "";
-      continue;
-      label285:
-      str = "";
-      continue;
-      label291:
-      str = "";
-      continue;
-      label297:
-      str = "";
-      continue;
-      label303:
-      str = "";
-      continue;
-      label309:
-      str = "";
-      continue;
-      label315:
-      str = "";
+      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new byte[4];
+      }
+      localReqItem.vecParam = bguc.a((byte[])localObject1);
+      return localReqItem;
+    }
+    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
+    localReqItem.vecParam = bguc.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
+      this.a.b();
     }
   }
 }

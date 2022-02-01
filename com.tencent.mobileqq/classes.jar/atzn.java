@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
 class atzn
-  implements atzi
+  implements auco
 {
-  atzn(atzj paramatzj, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
+  atzn(atzj paramatzj) {}
   
-  public void a()
+  public void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Atzj.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    if (auck.a(paramString))
+    {
+      bcti.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      return;
+    }
+    bcti.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atzn
  * JD-Core Version:    0.7.0.1
  */

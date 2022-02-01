@@ -1,17 +1,46 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class acux
-  implements bhuw
 {
-  public acux(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    Object localObject = bkfy.a("406d43");
+    int i;
+    HashMap localHashMap;
+    if ((!TextUtils.isEmpty(((bkga)localObject).a)) && (((bkga)localObject).a.startsWith("66666")))
+    {
+      i = 1;
+      boolean bool = Build.FINGERPRINT.contains("generic/vbox86tp/");
+      if ((i != 0) || (bool))
+      {
+        localHashMap = new HashMap();
+        if (i == 0) {
+          break label115;
+        }
+        localObject = "1";
+        label63:
+        localHashMap.put("imei_match", localObject);
+        if (!bool) {
+          break label121;
+        }
+      }
+    }
+    label115:
+    label121:
+    for (localObject = "1";; localObject = "0")
+    {
+      localHashMap.put("finger_print_match", localObject);
+      bctj.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "game_assist_vbox_stat", true, 0L, 0L, localHashMap, null);
+      return;
+      i = 0;
+      break;
+      localObject = "0";
+      break label63;
+    }
   }
 }
 

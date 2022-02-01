@@ -1,54 +1,59 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
 public class bfyt
-  extends nbn
+  extends bfyu
 {
-  public bfyt(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
+  public bfyt(bfyr parambfyr, int paramInt)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_Awqt.a.a)) {
-        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
-        {
-          i = 1;
-          if (i == 0) {
-            break label80;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
-          this.a.c(0);
-        }
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
+    super(parambfyr, paramInt);
+  }
+  
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_Bfyr.a)) {
       return;
     }
-    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
+    e();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      c();
+    }
+  }
+  
+  public void c()
+  {
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 0);
+    if (this.b != null)
+    {
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.b);
+    }
+    for (;;)
+    {
+      bfys.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyt
  * JD-Core Version:    0.7.0.1
  */

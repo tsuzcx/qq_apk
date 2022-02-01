@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdnf;
+import bgsh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Set;
-import ntw;
+import oda;
 
 public class EcShopAssistantManager$2
   implements Runnable
 {
-  public EcShopAssistantManager$2(ntw paramntw) {}
+  public EcShopAssistantManager$2(oda paramoda) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class EcShopAssistantManager$2
     {
       Object[] arrayOfObject = this.this$0.jdField_a_of_type_JavaUtilSet.toArray();
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        bdnf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
+        bgsh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
       }
       return;
     }

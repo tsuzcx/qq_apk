@@ -50,7 +50,7 @@ public class b
       paramArrayOfByte = new ClientPow().a(paramArrayOfByte);
       if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
       {
-        oicq.wlogin_sdk.request.t.am = paramArrayOfByte;
+        oicq.wlogin_sdk.request.t.an = paramArrayOfByte;
         return;
       }
       util.LOGI("outBuf is null", "");
@@ -72,7 +72,7 @@ public class b
         arrayOfByte = new ClientPow().a(this.b);
         if ((arrayOfByte != null) && (arrayOfByte.length != 0))
         {
-          oicq.wlogin_sdk.request.t.am = arrayOfByte;
+          oicq.wlogin_sdk.request.t.an = arrayOfByte;
           return;
         }
         util.LOGI("outBuf is null", "");
@@ -88,7 +88,7 @@ public class b
         arrayOfByte = new ClientPow().nativeGetTestData();
         if ((arrayOfByte != null) && (arrayOfByte.length != 0))
         {
-          oicq.wlogin_sdk.request.t.an = arrayOfByte;
+          oicq.wlogin_sdk.request.t.ao = arrayOfByte;
           util.LOGI("get performance" + arrayOfByte.length, "");
           return;
         }

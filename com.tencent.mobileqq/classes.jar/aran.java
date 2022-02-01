@@ -1,24 +1,61 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aran
-  implements artt
+public class aran
+  extends aqkz<aral>
 {
-  aran(araj paramaraj) {}
-  
-  public void a(String paramString, long paramLong)
+  public static aral a()
   {
-    if (artp.a(paramString))
-    {
-      azrh.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
+    return (aral)aqlk.a().a(429);
+  }
+  
+  @NonNull
+  public aral a(int paramInt)
+  {
+    return new aral();
+  }
+  
+  @Nullable
+  public aral a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aral.a(paramArrayOfaqlg);
     }
-    azrh.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+    return null;
+  }
+  
+  public void a(aral paramaral) {}
+  
+  public Class<aral> clazz()
+  {
+    return aral.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 429;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aran
  * JD-Core Version:    0.7.0.1
  */

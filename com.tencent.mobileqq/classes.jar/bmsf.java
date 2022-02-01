@@ -1,8 +1,27 @@
-import java.util.List;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 
-public abstract interface bmsf
+public class bmsf
 {
-  public abstract void a(int paramInt, List<uxf> paramList);
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

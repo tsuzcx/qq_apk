@@ -1,69 +1,52 @@
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiqn
-  extends aiqf
+  extends BaseAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  public Handler a;
+  public QQAppInterface a;
+  public String[] a;
   
-  public void a()
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    return this.a[paramInt];
   }
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    if (this.a == null) {
+      return 0;
     }
+    return this.a.length;
   }
   
-  public void a(int paramInt, String paramString)
+  public long getItemId(int paramInt)
   {
-    if (paramInt == 0) {
-      b(8);
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    View localView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559341, paramViewGroup, false);
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    aiqo localaiqo;
+    for (paramView = new aiqo(localView);; paramView = localaiqo)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365828)).setText(paramString);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372258));
-    this.b = ((ImageView)paramView.findViewById(2131372257));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372259));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b != null) {
-      this.b.setVisibility(paramInt);
+      paramView.a.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localaiqo = (aiqo)paramView.getTag();
+      localView = paramView;
     }
   }
 }

@@ -1,25 +1,23 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class qwx
-  implements URLDrawable.DownloadListener
+public class qwx
+  implements View.OnClickListener
 {
-  qwx(qwp paramqwp) {}
+  public qwx(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    qwp.b(this.a);
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    qwp.c(this.a);
+    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwx
  * JD-Core Version:    0.7.0.1
  */

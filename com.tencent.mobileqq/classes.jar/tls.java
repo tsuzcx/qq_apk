@@ -1,23 +1,23 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class tls
-  implements bfah
+public class tls
+  implements View.OnClickListener
 {
-  public void a(BaseResp paramBaseResp)
+  public tls(ViolaFragment paramViolaFragment) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      bflz.a().a(2131720031);
-    }
-    WXShareHelper.a().b(this);
+    this.a.a.d();
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,35 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.wordsegment.WordSegment.ILogCallback;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity.9.1;
+import com.tencent.mobileqq.app.FrameHelperActivity.9.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
-final class anmk
-  implements WordSegment.ILogCallback
+public class anmk
+  implements aypb
 {
-  public void OnLog(String paramString1, String paramString2)
+  public anmk(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public TextView a()
   {
-    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
+    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
+    if (localConversation != null) {
+      return localConversation.a;
+    }
+    return null;
+  }
+  
+  public void a(Drawable paramDrawable, String paramString)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.2(this, paramDrawable, paramString));
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
+    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.1(this, localConversation, paramDrawable, paramString));
   }
 }
 

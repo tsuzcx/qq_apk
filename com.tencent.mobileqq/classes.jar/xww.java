@@ -1,40 +1,37 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
 public class xww
-  extends ImageSpan
 {
-  public xww(Context paramContext, int paramInt)
+  @NonNull
+  private final Bitmap a;
+  
+  public xww(Bitmap paramBitmap)
   {
-    super(paramContext, paramInt);
+    if (paramBitmap == null) {
+      throw new NullPointerException("bitmap should not be null");
+    }
+    this.a = paramBitmap;
   }
   
-  public xww(Drawable paramDrawable)
+  public int a()
   {
-    super(paramDrawable);
+    return this.a.getWidth();
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public Bitmap a()
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    return Bitmap.createBitmap(this.a);
+  }
+  
+  public int b()
+  {
+    return this.a.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xww
  * JD-Core Version:    0.7.0.1
  */

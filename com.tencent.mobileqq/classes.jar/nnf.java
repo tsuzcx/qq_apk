@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class nnf
-  implements DialogInterface.OnClickListener
+public class nnf
+  implements aaob
 {
-  nnf(nmx paramnmx, JsResult paramJsResult) {}
+  public nnf(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnf
  * JD-Core Version:    0.7.0.1
  */

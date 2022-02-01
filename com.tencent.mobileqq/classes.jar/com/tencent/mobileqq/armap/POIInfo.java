@@ -3,7 +3,7 @@ package com.tencent.mobileqq.armap;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anss;
+import apsx;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class POIInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<POIInfo> CREATOR = new anss();
+  public static final Parcelable.Creator<POIInfo> CREATOR = new apsx();
   public double a;
   public int a;
   public long a;
@@ -96,7 +96,7 @@ public class POIInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.POIInfo
  * JD-Core Version:    0.7.0.1
  */

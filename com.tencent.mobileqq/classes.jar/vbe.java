@@ -1,33 +1,53 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.app.Activity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import qqcircle.QQCircleProfile.CheckBindGroupRsp;
 
 class vbe
-  implements View.OnLayoutChangeListener
+  implements zxa<QQCircleProfile.CheckBindGroupRsp>
 {
-  vbe(vaw paramvaw, uvt paramuvt) {}
+  vbe(vax paramvax, List paramList) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.CheckBindGroupRsp paramCheckBindGroupRsp)
   {
-    wxe.b(vaw.b(), "onLayoutChange");
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Vaw.d) || (this.jdField_a_of_type_Vaw.e)) && (!this.jdField_a_of_type_Vaw.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
+    if ((!paramBoolean) || (paramLong != 0L) || (paramCheckBindGroupRsp == null))
     {
-      wxe.b(vaw.b(), "first show node, showStoryNode");
-      if (this.jdField_a_of_type_Vaw.d)
-      {
-        this.jdField_a_of_type_Vaw.d = false;
-        this.jdField_a_of_type_Uvt.b("first_show_node", Boolean.valueOf(false));
-      }
-      this.jdField_a_of_type_Vaw.e = false;
-      if (this.jdField_a_of_type_Vaw.a()) {
-        this.jdField_a_of_type_Vaw.jdField_a_of_type_Vai.a("exp_story", 4);
+      QLog.e("QCircleDataEditContentP", 1, "requestCheckBindGroup error:" + paramLong + "  errorMsg:" + paramString);
+      vax.a(this.jdField_a_of_type_Vax).h();
+      vax.a(this.jdField_a_of_type_Vax).c(this.jdField_a_of_type_Vax.a().getString(2131694081));
+      QQToast.a(this.jdField_a_of_type_Vax.a(), 1, paramString, 0).a();
+      return;
+    }
+    QLog.d("QCircleDataEditContentP", 1, "requestCheckBindGroup success:" + paramLong);
+    vax.a(this.jdField_a_of_type_Vax).h();
+    vax.a(this.jdField_a_of_type_Vax).c(this.jdField_a_of_type_Vax.a().getString(2131694081));
+    vax.a(this.jdField_a_of_type_Vax).a("");
+    vax.a(this.jdField_a_of_type_Vax).b(null);
+    vax.a(this.jdField_a_of_type_Vax).dismiss();
+    if (vax.a(this.jdField_a_of_type_Vax) == null) {
+      vax.a(this.jdField_a_of_type_Vax, new ArrayList());
+    }
+    paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString.hasNext())
+    {
+      paramLong = ((Long)paramString.next()).longValue();
+      if (!vax.a(this.jdField_a_of_type_Vax).contains(Long.valueOf(paramLong))) {
+        vax.a(this.jdField_a_of_type_Vax).add(Long.valueOf(paramLong));
       }
     }
+    vax.a(this.jdField_a_of_type_Vax);
+    QQToast.a(this.jdField_a_of_type_Vax.a(), 2, this.jdField_a_of_type_Vax.a().getString(2131697273), 0).a();
+    vrf.a(vax.a(this.jdField_a_of_type_Vax).id.get(), 11, 25, 6, "", String.valueOf(this.jdField_a_of_type_JavaUtilList.get(0)), "", "", "", this.jdField_a_of_type_Vax.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,10 @@
-import android.util.Log;
-import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
-import com.tencent.TMG.sdk.AVView;
-
-class akxh
-  implements AVRoomMulti.RequestViewListCompleteCallback
+public abstract interface akxh
 {
-  akxh(akxb paramakxb) {}
+  public abstract void l();
   
-  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
-  {
-    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
-  }
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

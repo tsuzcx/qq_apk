@@ -1,51 +1,69 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
 
-class aqtg
-  extends aqtd
+public class aqtg
+  extends aqkz<aqth>
 {
-  private long jdField_a_of_type_Long;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aqtc jdField_a_of_type_Aqtc;
-  private bbxs jdField_a_of_type_Bbxs = new aqth(this);
-  private String jdField_a_of_type_JavaLangString;
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  
-  private aqtg(aqsf paramaqsf, String paramString1, String paramString2)
+  public static aqth a()
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+    return (aqth)aqlk.a().a(564);
   }
   
-  void a(String paramString, int paramInt)
+  @NonNull
+  public aqth a(int paramInt)
   {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-    bbxo.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+    return new aqth();
   }
   
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  @Nullable
+  public aqth a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramaqtc == null)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
-      return;
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
+      return null;
     }
-    this.jdField_a_of_type_Aqtc = paramaqtc;
-    this.jdField_b_of_type_Long = Long.parseLong(paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    bbxo.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bbxs);
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfaqlg);
+    }
+    return aqth.a(paramArrayOfaqlg);
+  }
+  
+  public void a(aqth paramaqth)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    }
+    if (paramaqth != null) {
+      bazp.a = (int)(paramaqth.a * 60.0D * 60.0D);
+    }
+  }
+  
+  public Class<aqth> clazz()
+  {
+    return aqth.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 564;
   }
 }
 

@@ -1,46 +1,55 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
-public class yje
-  implements aocf
+final class yje
+  implements wld<wyd, wye>
 {
-  public yje(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  yje(yka paramyka) {}
   
-  public ColorNote getColorNote()
+  public void a(@NonNull wyd paramwyd, @Nullable wye paramwye, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
-      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
+    yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
+    if (paramwye == null)
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
+      new wye(paramErrorMessage);
     }
-    byte[] arrayOfByte;
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
     do
     {
-      return null;
-      arrayOfByte = yly.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
-      localObject = new ydo();
-      ((ydo)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
-      ((ydo)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
-      str1 = SubscribeHybirdFragment.a(this.a).id.get();
-      str2 = ((ydo)localObject).c();
-      ((ydo)localObject).d();
-      str3 = ((ydo)localObject).e();
-      localObject = ((ydo)localObject).f();
-    } while (TextUtils.isEmpty(str1));
-    return new aocl().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
+      do
+      {
+        return;
+        if (paramErrorMessage.isFail()) {
+          yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        }
+      } while ((paramwye.jdField_a_of_type_JavaUtilList == null) || (paramwye.jdField_a_of_type_JavaUtilList.isEmpty()));
+      paramwyd = (woj)wpm.a(17);
+      paramwye = (wyf)paramwye.jdField_a_of_type_JavaUtilList.get(0);
+    } while (paramwye.jdField_a_of_type_JavaUtilList == null);
+    yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramwye.jdField_a_of_type_JavaLangString, Integer.valueOf(paramwye.jdField_a_of_type_Int), Integer.valueOf(paramwye.jdField_a_of_type_JavaUtilList.size()) });
+    paramwyd.a(paramwye.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
+    paramwyd = new ybk(paramErrorMessage, paramwye.jdField_a_of_type_JavaLangString, 1);
+    paramwyd.jdField_a_of_type_JavaUtilList = paramwye.jdField_a_of_type_JavaUtilList;
+    paramwyd.c = true;
+    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramwyd.jdField_a_of_type_Boolean = bool;
+      paramwyd.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
+      paramwyd.jdField_b_of_type_Int = paramwye.jdField_a_of_type_Int;
+      wfo.a().dispatch(paramwyd);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yje
  * JD-Core Version:    0.7.0.1
  */

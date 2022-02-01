@@ -1,40 +1,30 @@
-import android.os.Build;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aurg
+  implements auta
 {
-  public static String[] a = { "samsung SM-N7508V", "samsung SM-N9002", "samsung SM-N9005", "samsung SM-N9006", "samsung SM-N9008", "samsung SM-N9009", "samsung SM-N9009V", "samsung SM-G3858", "samsung SM-G7108V", "samsung SM-G7108U", "samsung SM-G9008V", "samsung GT-I9308I", "samsung GT-I9508V", "samsung SM-G3588V", "samsung SM-T2558", "samsung SM-G9300", "HTC T528w", "MI 3", "HTC 802t", "GT-I9100", "GT-I9300", "SCH-I939", "MX4", "HUAWEI C8813D" };
+  aurg(aurd paramaurd) {}
   
-  public static boolean a()
+  public void a(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
+    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePubFeedsAdapter", 4, "onAudioMute id=" + paramInt + " mute=" + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurg
  * JD-Core Version:    0.7.0.1
  */

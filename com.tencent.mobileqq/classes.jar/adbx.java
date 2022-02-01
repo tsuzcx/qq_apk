@@ -1,12 +1,11 @@
-public class adbx
+public abstract interface adbx
+  extends adbu
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString, Object[] paramArrayOfObject);
 }
 
 

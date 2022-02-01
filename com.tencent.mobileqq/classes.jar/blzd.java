@@ -1,6 +1,19 @@
-public abstract interface blzd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DynamicPhotoData;
+
+public final class blzd
+  implements Parcelable.Creator<DynamicPhotoData>
 {
-  public abstract void a(String paramString);
+  public DynamicPhotoData a(Parcel paramParcel)
+  {
+    return new DynamicPhotoData(paramParcel);
+  }
+  
+  public DynamicPhotoData[] a(int paramInt)
+  {
+    return new DynamicPhotoData[paramInt];
+  }
 }
 
 

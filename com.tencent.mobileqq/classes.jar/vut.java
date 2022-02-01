@@ -1,39 +1,66 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import java.util.List;
 
-public class vut<T>
-  extends SimpleObserver<T>
+public class vut
+  extends bkif
 {
-  private vut(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onCancel()
+  public static vus a(Context paramContext, View paramView)
   {
-    super.onCancel();
-    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    paramContext = vus.a(paramContext);
+    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
+    return paramContext;
   }
   
-  public void onError(@NonNull Error paramError)
+  public static vus a(Context paramContext, List<bkhn> paramList, bkhw parambkhw)
   {
-    super.onError(paramError);
-    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    return a(paramContext, null, paramList, parambkhw);
   }
   
-  public void onNext(T paramT)
+  public static vus a(Context paramContext, vus paramvus, List<bkhn> paramList, bkhw parambkhw)
   {
-    super.onNext(paramT);
-    wxe.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    int i;
+    if (paramvus == null)
+    {
+      paramvus = a(paramContext, null);
+      i = 0;
+      label32:
+      if (i >= paramList.size()) {
+        break label113;
+      }
+      paramContext = (bkhn)paramList.get(i);
+      if (paramContext.d == 0)
+      {
+        if (paramContext.a != 1) {
+          break label96;
+        }
+        paramvus.a(paramContext, 1);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label32;
+      paramvus.c();
+      paramvus.a();
+      break;
+      label96:
+      if (paramContext.a == 2) {
+        paramvus.a(paramContext, 3);
+      }
+    }
+    label113:
+    paramvus.a(parambkhw);
+    return paramvus;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vut
  * JD-Core Version:    0.7.0.1
  */

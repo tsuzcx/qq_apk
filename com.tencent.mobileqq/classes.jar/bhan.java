@@ -1,60 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhan
+class bhan
+  implements URLDrawableDownListener
 {
-  public static JSONObject a(String paramString)
+  bhan(bham parambham, String paramString, URLImageView paramURLImageView) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = 0;
-    localJSONObject = new JSONObject();
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        int j = paramString.indexOf("?");
-        String str = paramString;
-        if (j > -1)
-        {
-          str = paramString;
-          if (paramString.length() > j + 1) {
-            str = paramString.substring(j + 1);
-          }
-        }
-        paramString = str.split("&");
-        if ((paramString != null) && (paramString.length > 0))
-        {
-          j = paramString.length;
-          while (i < j)
-          {
-            str = paramString[i];
-            if (!TextUtils.isEmpty(str))
-            {
-              int k = str.indexOf("=");
-              if (k >= 0) {
-                localJSONObject.put(str.substring(0, k), str.substring(k + 1));
-              }
-            }
-            i += 1;
-          }
-        }
-      }
-      return localJSONObject;
-    }
-    catch (Throwable paramString)
-    {
-      QMLog.e("PathUtil", "getJSONQueryString exception " + paramString);
-    }
+    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
   }
   
-  public static boolean a(String paramString)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhan
  * JD-Core Version:    0.7.0.1
  */

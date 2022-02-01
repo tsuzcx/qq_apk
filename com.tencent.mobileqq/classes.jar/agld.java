@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.app.Dialog;
 
-public class agld
-  implements bezx
+public abstract interface agld
 {
-  public agld(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  public abstract Dialog a(int paramInt);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a(int paramInt, Dialog paramDialog);
 }
 
 

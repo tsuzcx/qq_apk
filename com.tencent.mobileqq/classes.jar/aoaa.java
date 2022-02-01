@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
-public final class aoaa
-  implements Parcelable.Creator<CardUinInfo>
+public class aoaa
+  extends anmu
 {
-  public CardUinInfo a(Parcel paramParcel)
-  {
-    return new CardUinInfo(paramParcel);
-  }
+  private aoaa(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public CardUinInfo[] a(int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new CardUinInfo[paramInt];
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      this.a.a.a = 3;
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoaa
  * JD-Core Version:    0.7.0.1
  */

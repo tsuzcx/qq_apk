@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pew;
+import pmk;
+import pwb;
 
 public class ArticleInfoModule$45
   implements Runnable
 {
-  public ArticleInfoModule$45(pew parampew, int paramInt1, int paramInt2) {}
+  public ArticleInfoModule$45(pwb parampwb, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     boolean bool = true;
-    oxb localoxb = oxb.a();
+    pmk localpmk = pmk.a();
     long l = this.a;
     if (this.b == 1) {}
     for (;;)
     {
-      localoxb.a(l, bool);
+      localpmk.a(l, bool);
       return;
       bool = false;
     }

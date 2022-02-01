@@ -1,20 +1,21 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
-class yfz
+public class yfz
+  extends weu
 {
-  public COMM.StCommonExt a;
+  public List<MomeriesYearNode> a;
   public boolean a;
-  public boolean b;
   
-  public String toString()
+  public yfz(yfw paramyfw, ErrorMessage paramErrorMessage)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yfz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,57 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-class rbj
-  extends RecyclerView.AdapterDataObserver
+public abstract class rbj
+  extends Binder
+  implements rbi
 {
-  private rbj(raw paramraw) {}
-  
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public rbj()
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+  }
+  
+  public static rbi a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof rbi))) {
+      return (rbi)localIInterface;
+    }
+    return new rbk(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbj
  * JD-Core Version:    0.7.0.1
  */

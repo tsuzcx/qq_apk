@@ -1,475 +1,374 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost.3;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost.4;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 public class bmqu
-  extends bmri
-  implements Drawable.Callback
+  implements Observer
 {
-  public static final String a;
-  public int a;
-  public bmqv a;
-  public bmyi a;
-  public bmyj a;
+  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bmqw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bmqv(this, Looper.getMainLooper());
+  public bmqr a;
+  public QQAppInterface a;
+  public ArrayList<Bundle> a;
   public boolean a;
-  public bmyj b;
   
-  static
+  public bmqu(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = bmqu.class.getSimpleName();
-  }
-  
-  public bmqu(DoodleView paramDoodleView)
-  {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Bmyi = new bmyi();
-    this.jdField_a_of_type_Bmyi.a(true);
-    this.jdField_a_of_type_Bmyi.a(6.0F);
-    this.jdField_a_of_type_Bmyi.b(0.2F);
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, f1, f2)) {
-      this.jdField_a_of_type_Bmyj.jdField_k_of_type_Int = 0;
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Bmyi.e(this.jdField_a_of_type_Bmyj, f1, f2))
-      {
-        this.jdField_a_of_type_Bmyj.jdField_k_of_type_Int = 1;
-        return;
-      }
-    } while (!this.jdField_a_of_type_Bmyi.b(this.jdField_a_of_type_Bmyj, f1, f2));
-    this.jdField_a_of_type_Bmyj.jdField_k_of_type_Int = 2;
-  }
-  
-  private void a(bmrg parambmrg)
-  {
-    if (parambmrg == null) {
-      return;
-    }
-    boolean bool1 = this.jdField_a_of_type_Bmyi.a(parambmrg, StoryGuideLineView.jdField_a_of_type_Int, true);
-    boolean bool2 = this.jdField_a_of_type_Bmyi.a(parambmrg, StoryGuideLineView.b, false);
-    boolean bool3 = this.jdField_a_of_type_Bmyi.b(parambmrg, StoryGuideLineView.d, false);
-    if ((!bool1) && (!bool2) && (!bool3))
-    {
-      parambmrg.e = parambmrg.w;
-      parambmrg.jdField_a_of_type_AndroidGraphicsPointF = parambmrg.jdField_b_of_type_AndroidGraphicsPointF;
-      parambmrg.jdField_a_of_type_Float = parambmrg.q;
-      parambmrg.jdField_b_of_type_Float = parambmrg.r;
-      parambmrg.c = parambmrg.s;
-      parambmrg.d = parambmrg.t;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
     }
     for (;;)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(parambmrg.l, parambmrg.r, parambmrg.s, parambmrg.t, parambmrg.jdField_b_of_type_AndroidGraphicsPointF, parambmrg.m, 0);
-      if (this.jdField_a_of_type_Bmqv == null) {
-        break;
-      }
-      this.jdField_a_of_type_Bmqv.a(bool1, bool2, false, bool3, parambmrg.l);
+      c();
+      d();
       return;
-      parambmrg.w = parambmrg.e;
-      parambmrg.jdField_b_of_type_AndroidGraphicsPointF = parambmrg.jdField_a_of_type_AndroidGraphicsPointF;
-      parambmrg.q = parambmrg.jdField_a_of_type_Float;
-      parambmrg.r = parambmrg.jdField_b_of_type_Float;
-      if (bool3)
-      {
-        parambmrg.t = parambmrg.d;
-        if ((!bool1) && (!bool2)) {
-          parambmrg.c = parambmrg.s;
-        }
-      }
-      if ((bool1) || (bool2))
-      {
-        parambmrg.s = parambmrg.c;
-        if (!bool3) {
-          parambmrg.d = parambmrg.t;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost() construct!!!!! error: app == null");
       }
     }
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    return this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, paramFloat1, paramFloat2, true);
-  }
-  
-  private boolean a(bmyj parambmyj, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {}
-    float f1;
-    float f2;
-    do
-    {
-      return true;
-      f1 = paramMotionEvent.getX();
-      f2 = paramMotionEvent.getY();
-    } while (((!(parambmyj instanceof bmqr)) && (!(parambmyj instanceof bmrg))) || (!((bmrg)this.jdField_a_of_type_Bmyj).jdField_b_of_type_Boolean));
-    boolean bool1;
-    if (!this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, f1, f2))
-    {
-      bool1 = true;
-      label68:
-      bool2 = bool1;
-      if (bool1) {
-        if (this.jdField_a_of_type_Bmyi.e(this.jdField_a_of_type_Bmyj, f1, f2)) {
-          break label127;
-        }
-      }
-    }
-    label127:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (!bool2) {
-        break label133;
-      }
-      if (!this.jdField_a_of_type_Bmyi.b(this.jdField_a_of_type_Bmyj, f1, f2)) {
-        break;
-      }
-      return false;
-      bool1 = false;
-      break label68;
-    }
-    label133:
-    return bool2;
-  }
-  
-  private void b(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, f1, f2)) {
-      if (this.jdField_a_of_type_Bmqv != null)
-      {
-        if (!(this.jdField_a_of_type_Bmyj instanceof bmqz)) {
-          break label77;
-        }
-        paramMotionEvent = ((bmqz)this.jdField_a_of_type_Bmyj).a;
-        if (paramMotionEvent != null) {
-          this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj, paramMotionEvent.b(), 2);
-        }
-      }
-    }
-    label77:
-    DynamicTextItem localDynamicTextItem;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj, 0, 0);
-              return;
-              if (!this.jdField_a_of_type_Bmyi.e(this.jdField_a_of_type_Bmyj, f1, f2)) {
-                break;
-              }
-            } while (this.jdField_a_of_type_Bmqv == null);
-            this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj);
-            return;
-            if (!this.jdField_a_of_type_Bmyi.b(this.jdField_a_of_type_Bmyj, f1, f2)) {
-              break;
-            }
-          } while (this.jdField_a_of_type_Bmqv == null);
-          this.jdField_a_of_type_Bmqv.b(this.jdField_a_of_type_Bmyj);
-          return;
-          if (!this.jdField_a_of_type_Bmyi.c(this.jdField_a_of_type_Bmyj, f1, f2)) {
-            break;
-          }
-          if (!this.jdField_a_of_type_Bmyj.g) {
-            this.jdField_a_of_type_Bmyj.g = true;
-          }
-        } while (this.jdField_a_of_type_Bmqv == null);
-        this.jdField_a_of_type_Bmqv.b(this.jdField_a_of_type_Bmyj, 0, 0);
-        return;
-      } while ((!this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, f1, f2, true)) || (this.jdField_a_of_type_Bmqv == null) || (this.jdField_a_of_type_Bmyj == null));
-      if (!(this.jdField_a_of_type_Bmyj instanceof bmqz)) {
-        break;
-      }
-      localDynamicTextItem = ((bmqz)this.jdField_a_of_type_Bmyj).a;
-    } while (localDynamicTextItem == null);
-    if ((localDynamicTextItem.a()) && (localDynamicTextItem.f()))
-    {
-      int i = localDynamicTextItem.a(paramMotionEvent, c(), d(), (bmqz)this.jdField_a_of_type_Bmyj, this.jdField_a_of_type_Bmyi);
-      localDynamicTextItem.b(i);
-      this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj, i, 3, f1, f2);
-      return;
-    }
-    this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj, localDynamicTextItem.b(), 0, f1, f2);
-    return;
-    wxe.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Bmyj);
-    this.jdField_a_of_type_Bmqv.a(this.jdField_a_of_type_Bmyj, 0, 0, f1, f2);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
+    if ((this.jdField_a_of_type_Bmqr == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      QLog.d("SmartDeviceIPCHost", 1, "start plugin service now");
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300000L);
+      accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 0, 0);
+      bmqo.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentServiceConnection);
+    }
   }
   
-  private void d(bmyj parambmyj)
+  private void e()
   {
-    boolean bool1 = this.jdField_a_of_type_Bmyi.a(parambmyj, StoryGuideLineView.jdField_a_of_type_Int, true);
-    boolean bool2 = this.jdField_a_of_type_Bmyi.a(parambmyj, StoryGuideLineView.b, false);
-    boolean bool3 = this.jdField_a_of_type_Bmyi.b(parambmyj, StoryGuideLineView.d, false);
-    if (this.jdField_a_of_type_Bmqv != null) {
-      this.jdField_a_of_type_Bmqv.a(bool1, bool2, false, bool3, parambmyj.l);
-    }
-    if (parambmyj != null)
-    {
-      if (parambmyj.jdField_k_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(parambmyj.l, parambmyj.r, parambmyj.s, parambmyj.t, parambmyj.jdField_b_of_type_AndroidGraphicsPointF, parambmyj.m, 2);
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SmartDeviceIPCHost", 2, "unregisterRemoteCommand PluginCommunicationHandler.getInstance failed");
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(parambmyj.l, parambmyj.r, parambmyj.s, parambmyj.t, parambmyj.jdField_b_of_type_AndroidGraphicsPointF, parambmyj.m, 1);
-  }
-  
-  private void e(bmyj parambmyj)
-  {
-    if ((parambmyj == null) || (parambmyj.jdField_k_of_type_Int != 2)) {}
     do
     {
-      return;
-      if ((parambmyj instanceof bmqr))
+      do
       {
-        wxj.a("video_shoot_new", "qa_zoom", 2, 0, new String[0]);
         return;
+      } while (!localPluginCommunicationHandler.containsCmd("com.qqsmartdevice.remotecall"));
+      localPluginCommunicationHandler.unregister("com.qqsmartdevice.remotecall");
+    } while (!QLog.isColorLevel());
+    QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::unregisterRemoteCommand unregister CMD:com.qqsmartdevice.remotecall");
+  }
+  
+  public Bundle a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    for (;;)
+    {
+      return paramBundle;
+      String str = paramBundle.getString("notify_cmd");
+      if ((this.jdField_a_of_type_Bmqr == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        boolean bool = paramBundle.getBoolean("forceStart", false);
+        paramBundle = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+        if ((bool) || ((paramBundle != null) && (paramBundle.a())))
+        {
+          QLog.d("SmartDeviceIPCHost", 1, "start plugin service when send " + str);
+          d();
+        }
+        return null;
       }
-    } while (!(parambmyj instanceof bmrg));
-    wxj.a("video_shoot_new", "qa_zoom", 1, 0, new String[0]);
-  }
-  
-  public bmyj a()
-  {
-    return this.jdField_a_of_type_Bmyj;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
+      b();
+      try
+      {
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        Bundle localBundle = this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", paramBundle);
+        paramBundle = localBundle;
+        if (localBundle != null)
+        {
+          localBundle.setClassLoader(getClass().getClassLoader());
+          return localBundle;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("SmartDeviceIPCHost", 2, "plugin service transfer failed strNotifyCmd:" + str);
+        }
+      }
+    }
+    return null;
   }
   
   public void a()
   {
-    b(this.jdField_a_of_type_Bmyj);
-    this.jdField_a_of_type_Bmyj = null;
-    this.jdField_a_of_type_Bmyi.a();
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Bmyj == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnDestory");
     }
-    paramCanvas.save();
-    this.jdField_a_of_type_Bmyj.a(paramCanvas);
-    paramCanvas.restore();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    }
+    e();
   }
   
-  public void a(Canvas paramCanvas, float paramFloat)
+  public void a(Bundle paramBundle)
   {
-    throw new IllegalStateException("TextFaceEditLayer should not save");
-  }
-  
-  public void a(bmqv parambmqv)
-  {
-    this.jdField_a_of_type_Bmqv = parambmqv;
-  }
-  
-  public void a(bmyj parambmyj)
-  {
-    this.jdField_a_of_type_Bmyj = parambmyj;
-    if (this.jdField_a_of_type_Bmyj == null) {}
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SmartDeviceIPCHost", 2, "params is null");
+      }
+    }
+    Object localObject;
     do
     {
-      return;
-      bmqw.c(true);
-      if ((this.jdField_a_of_type_Bmyj instanceof bmqz))
+      boolean bool;
+      abqn localabqn;
+      do
       {
-        this.jdField_a_of_type_Bmyi.a(6.0F);
-        this.jdField_a_of_type_Bmyi.b(0.2F);
+        return;
+        localObject = paramBundle.getString("notify_cmd");
+        if ((this.jdField_a_of_type_Bmqr != null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SmartDeviceIPCHost", 2, "plugin service not started strNotifyCmd:" + (String)localObject + " cached");
+        }
+        bool = paramBundle.getBoolean("forceStart", false);
+        localabqn = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      } while ((!bool) && ((localabqn == null) || (!localabqn.a())));
+      QLog.d("SmartDeviceIPCHost", 1, "start plugin service when post " + (String)localObject);
+      d();
+      localObject = Looper.getMainLooper();
+      if (Thread.currentThread() != ((Looper)localObject).getThread())
+      {
+        new Handler((Looper)localObject).post(new SmartDeviceIPCHost.3(this, paramBundle));
         return;
       }
-      if (((this.jdField_a_of_type_Bmyj instanceof bmqk)) || ((this.jdField_a_of_type_Bmyj instanceof bmqh)))
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
+      b();
+      return;
+      b();
+      if (paramBundle != null) {}
+      try
       {
-        this.jdField_a_of_type_Bmyi.a(18.0F);
-        this.jdField_a_of_type_Bmyi.b(0.2F);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", paramBundle);
         return;
       }
-    } while (!(this.jdField_a_of_type_Bmyj instanceof bmrg));
-    this.jdField_a_of_type_Bmyi.a(18.0F);
-    this.jdField_a_of_type_Bmyi.b(0.5F);
-    ((bmrg)this.jdField_a_of_type_Bmyj).jdField_a_of_type_Bnfb.a((bmrg)this.jdField_a_of_type_Bmyj, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView, false, 3000, 500, null);
+      catch (RemoteException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SmartDeviceIPCHost", 2, " plugin service transfer failed strNotifyCmd:" + (String)localObject);
   }
   
-  public boolean a()
+  public Bundle b(Bundle paramBundle)
   {
-    return false;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    throw new IllegalStateException("TextFaceEditLayer should not save");
-  }
-  
-  public void b(bmyj parambmyj)
-  {
-    if (parambmyj == null) {}
-    while ((parambmyj.jdField_a_of_type_AndroidAnimationValueAnimator == null) || (!parambmyj.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
-      return;
+    Object localObject = paramBundle.getString("invoke_cmd");
+    if ((QLog.isColorLevel()) && (!"invokeCmdGetFaceBitmap".equals(localObject))) {
+      QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnRemoteInvoke strNotifyCmd:" + (String)localObject);
     }
-    wxe.b(jdField_a_of_type_JavaLangString, "cancelNailAnimator");
-    parambmyj.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Bmyj != null;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj, f1, f2, true))
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return null;
+    }
+    if (((String)localObject).compareToIgnoreCase("invokeCmdOpenChatMsgActivity") == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+      ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramBundle);
+      return null;
+    }
+    if (((String)localObject).equals("SmartDeviceHandler_makeSureProxyServiceStart"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50);
+      if (this.jdField_a_of_type_Bmqr != null)
+      {
+        accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Remote", 0, 1, 0);
+        return null;
       }
-      return true;
+      this.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "try to start service again");
+      d();
+      accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Remote", 0, 0, 0);
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+    if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoChat") == 0)
+    {
+      if (!paramBundle.containsKey("devSubCode")) {
+        break label726;
+      }
+      localObject = new HashMap();
+      ((Map)localObject).put("devSubCode", paramBundle.getString("devSubCode"));
     }
-    return false;
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), 9500, paramBundle.getString("din"), paramBundle.getString("devName"), "", paramBundle.getBoolean("onlyAudio", false), paramBundle.getString("tinyid"), true, false, null, "from_internal", (Map)localObject);
+      return null;
+      if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoMessage") == 0)
+      {
+        abru.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramBundle.getString("din"), paramBundle.getString("videoPath"));
+        return null;
+      }
+      if (((String)localObject).compareToIgnoreCase("invokeCmdGetBuddyName") == 0)
+      {
+        paramBundle = paramBundle.getString("Uin");
+        paramBundle = bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, true);
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("BuddyName", paramBundle);
+        return localObject;
+      }
+      if (((String)localObject).compareToIgnoreCase("invokeCmdTransFileController") == 0)
+      {
+        ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).b(paramBundle);
+        return null;
+      }
+      if (((String)localObject).compareToIgnoreCase("invokeCmdGetLockState") == 0)
+      {
+        i = asfr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication());
+        paramBundle = new Bundle();
+        paramBundle.putInt("LockState", i);
+        return paramBundle;
+      }
+      if (((String)localObject).compareToIgnoreCase("qfind_localnotify") == 0)
+      {
+        long l = paramBundle.getLong("din");
+        paramBundle = paramBundle.getString("msg");
+        localObject = (MessageForText)bbzh.a(-1000);
+        ((MessageForText)localObject).msgtype = -1000;
+        ((MessageForText)localObject).istroop = 9501;
+        ((MessageForText)localObject).issend = 0;
+        ((MessageForText)localObject).isread = false;
+        ((MessageForText)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        ((MessageForText)localObject).senderuin = (l + "");
+        ((MessageForText)localObject).frienduin = (l + "");
+        ((MessageForText)localObject).msg = paramBundle;
+        ((MessageForText)localObject).time = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject);
+        return null;
+      }
+      if (((String)localObject).compareToIgnoreCase("init_msgHandler") == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);
+        return null;
+      }
+      if (((String)localObject).compareToIgnoreCase("invokeCmdGetFaceBitmap") == 0)
+      {
+        paramBundle = paramBundle.getString("uin");
+        paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramBundle, true);
+        localObject = new Bundle();
+        ((Bundle)localObject).putParcelable("face_bitmap", paramBundle);
+        return localObject;
+      }
+      if (((String)localObject).compareToIgnoreCase("invokeCmdGetUnreadMsgNum") != 0) {
+        break;
+      }
+      paramBundle = paramBundle.getString("din");
+      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBundle, 9501);
+      paramBundle = new Bundle();
+      paramBundle.putInt("unread", i);
+      return paramBundle;
+      label726:
+      localObject = null;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_Bmqr == null)) {}
+    for (;;)
+    {
+      return;
+      Object localObject1 = Looper.getMainLooper();
+      if (Thread.currentThread() != ((Looper)localObject1).getThread())
+      {
+        new Handler((Looper)localObject1).post(new SmartDeviceIPCHost.4(this));
+        return;
+      }
+      while (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localObject1 = "";
+        Object localObject2 = localObject1;
+        if (localBundle != null) {}
+        try
+        {
+          localObject2 = localBundle.getString("notify_cmd");
+          localObject1 = localObject2;
+          localBundle.setClassLoader(getClass().getClassLoader());
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = localObject2;
+            QLog.d("SmartDeviceIPCHost", 2, "qq->plugin main thread doPostCachedMsg strNotifyCmd:" + (String)localObject2 + " thread:" + Thread.currentThread());
+          }
+          localObject1 = localObject2;
+          this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", localBundle);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SmartDeviceIPCHost", 2, "mSmartDeviceService.transfer failed strNotifyCmd:" + (String)localObject1);
+        }
+      }
+    }
   }
   
   public void c()
   {
-    b(this.jdField_a_of_type_Bmyj);
-    this.jdField_a_of_type_Bmyj = null;
-    bmqw.c(false);
-    k();
-  }
-  
-  public void c(bmyj parambmyj)
-  {
-    if (parambmyj == null) {
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SmartDeviceIPCHost", 2, "PluginCommunicationHandler.getInstance failed");
+      }
       return;
     }
-    parambmyj.jdField_k_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bmyj != null) {
-      parambmyj.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.lockData(this.jdField_a_of_type_Bmyj.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked());
-    }
-    if (((parambmyj instanceof bmqk)) && ((((bmqk)parambmyj).h == 1) || (((bmqk)parambmyj).h == 3))) {
-      ((bmqk)parambmyj).a.setCallback(this);
-    }
-    this.jdField_a_of_type_Bmyj = parambmyj;
+    localPluginCommunicationHandler.register(new bmqx(this, "com.qqsmartdevice.remotecall"));
   }
   
-  public boolean c(MotionEvent paramMotionEvent)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    int i = 0;
-    if ((this.jdField_a_of_type_Bmrj != null) && (a(this.jdField_a_of_type_Bmyj, paramMotionEvent))) {
-      this.jdField_a_of_type_Bmrj.a(this, paramMotionEvent);
-    }
-    int j = (int)paramMotionEvent.getY();
-    int k = Math.abs(j - this.jdField_a_of_type_Int);
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if ((paramObject instanceof MessageRecord))
     {
-    default: 
-      i = 1;
-      label86:
-      this.jdField_a_of_type_Bmyi.a(paramMotionEvent, true);
-      if (i == 0) {
-        d();
-      }
-      break;
-    }
-    do
-    {
-      return true;
-      this.jdField_a_of_type_Int = j;
-      this.jdField_a_of_type_Boolean = false;
-      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
-      if (this.jdField_a_of_type_Bmyj != null) {
-        this.jdField_a_of_type_Bmyi.a(this.jdField_a_of_type_Bmyj);
-      }
-      if (this.jdField_a_of_type_Bmyj != null) {
-        a(paramMotionEvent);
-      }
-      if ((this.jdField_a_of_type_Bmyj == null) || (this.jdField_a_of_type_Bmyj.e != true) || (!this.jdField_a_of_type_Bmyj.g) || (this.jdField_a_of_type_Bmyj.jdField_a_of_type_AndroidAnimationValueAnimator == null) || (!this.jdField_a_of_type_Bmyj.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
-        break;
-      }
-      wxe.b(jdField_a_of_type_JavaLangString, "cancelNailAnimator");
-      this.jdField_a_of_type_Bmyj.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      i = 1;
-      break label86;
-      if (k > 10) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      i = 1;
-      break label86;
-      if (!this.jdField_a_of_type_Boolean) {
-        b(paramMotionEvent);
-      }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bmyj != null)) {
-        e(this.jdField_a_of_type_Bmyj);
-      }
-      if (this.jdField_a_of_type_Bmyj != null) {
-        this.jdField_a_of_type_Bmyj.jdField_k_of_type_Int = -1;
-      }
-      if (this.jdField_a_of_type_Bmyj != null) {
-        this.jdField_a_of_type_Bmyj.e = false;
-      }
-      this.jdField_a_of_type_Bmyi.a();
-      break label86;
-      if (((this.jdField_a_of_type_Bmyj instanceof bmqk)) || ((this.jdField_a_of_type_Bmyj instanceof bmqz)))
+      paramObservable = (MessageRecord)paramObject;
+      if ((paramObservable.istroop == 9501) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramObservable.frienduin, 9501) > 0))
       {
-        d(this.jdField_a_of_type_Bmyj);
-        return true;
+        paramObservable = new Bundle();
+        paramObservable.putString("notify_cmd", "updateUnreadMsgsNum");
+        a(paramObservable);
       }
-    } while (!(this.jdField_a_of_type_Bmyj instanceof bmrg));
-    a((bmrg)this.jdField_a_of_type_Bmyj);
-    return true;
+    }
   }
-  
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
-  {
-    k();
-  }
-  
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

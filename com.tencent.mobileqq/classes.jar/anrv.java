@@ -1,82 +1,198 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.text.TextUtils;
+import com.tencent.jungle.weather.WeatherReportInfo.GetWeatherMessageReq;
+import com.tencent.jungle.weather.WeatherReportInfo.PbReqMsgHead;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
+import java.util.regex.Pattern;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class anrv
-  implements anrt
+public class anrv
+  extends aoou
 {
-  anrv(anru paramanru) {}
-  
-  public void a(boolean paramBoolean, JSONObject paramJSONObject, Object arg3)
+  public anrv(PublicAccountHandler paramPublicAccountHandler, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)anru.a(this.a).get();
-    if ((localQQAppInterface == null) || (??? == null) || (!(??? instanceof Bundle)))
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    Object localObject1;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback invalid param app=", localQQAppInterface, ",userData=", ??? });
-      return;
-    }
-    Object localObject1 = (Bundle)???;
-    long l = ((Bundle)localObject1).getLong("key_process_message_uniseq");
-    Object localObject2 = ((Bundle)localObject1).getString("key_process_message_friend_uin");
-    int i = ((Bundle)localObject1).getInt("key_process_message_uin_type");
-    synchronized (anru.a(this.a))
-    {
-      if ((Bundle)anru.a(this.a).get(Long.valueOf(l)) != null)
+      localObject1 = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo == null)
       {
-        anru.a(this.a).remove(Long.valueOf(l));
-        anru.a(this.a).removeMessages(1, localObject1);
-        ??? = localQQAppInterface.a().b((String)localObject2, i, l);
-        if ((??? == null) || (!(??? instanceof MessageForArkApp))) {
-          QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.sArkMsgPrepCallback find ArkMsg failed!");
+        bool = true;
+        QLog.d("PublicAccountHandler", 2, bool);
+      }
+    }
+    else
+    {
+      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+        break label696;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramInt = Integer.parseInt(paramSosoLbsInfo.a.f);
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountHandler", 2, "LocalInfo" + paramInt);
+        }
+        localObject1 = "8.4.1".replaceAll("\\.", "");
+        paramSosoLbsInfo = new WeatherReportInfo.PbReqMsgHead();
+        paramSosoLbsInfo.uint32_platform_type.set(1);
+        paramSosoLbsInfo.uint32_version.set(Integer.parseInt((String)localObject1));
+        localGetWeatherMessageReq = new WeatherReportInfo.GetWeatherMessageReq();
+        localGetWeatherMessageReq.pbReqMsgHead.set(paramSosoLbsInfo);
+        localGetWeatherMessageReq.uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.app.getCurrentAccountUin()).longValue());
+        localGetWeatherMessageReq.lat.set(this.jdField_a_of_type_Int);
+        localGetWeatherMessageReq.lng.set(this.b);
+        localGetWeatherMessageReq.fore_flag.set(0);
+        localGetWeatherMessageReq.area_id.set(this.c);
+        localGetWeatherMessageReq.adcode_from_mapsdk.set(paramInt);
+      }
+      catch (Throwable paramSosoLbsInfo)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramSosoLbsInfo = new JSONObject();
+            if (this.d != 0) {
+              break label445;
+            }
+            localGetWeatherMessageReq.source.set(2);
+            paramSosoLbsInfo.put("platform", 109);
+            paramSosoLbsInfo.put("version", "8.4.1");
+            localObject1 = paramSosoLbsInfo.toString();
+            localObject2 = localGetWeatherMessageReq.extra;
+            paramSosoLbsInfo = (SosoInterface.SosoLbsInfo)localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              paramSosoLbsInfo = "";
+            }
+            ((PBStringField)localObject2).set(paramSosoLbsInfo);
+            paramSosoLbsInfo = PublicAccountHandler.a;
+            localObject1 = paramSosoLbsInfo;
+            if (!TextUtils.isEmpty(paramSosoLbsInfo)) {
+              break label505;
+            }
+            try
+            {
+              localObject2 = NetworkInterface.getNetworkInterfaces();
+              for (;;)
+              {
+                localObject1 = paramSosoLbsInfo;
+                if (!((Enumeration)localObject2).hasMoreElements()) {
+                  break;
+                }
+                localObject1 = ((NetworkInterface)((Enumeration)localObject2).nextElement()).getInetAddresses();
+                InetAddress localInetAddress;
+                do
+                {
+                  if (!((Enumeration)localObject1).hasMoreElements()) {
+                    break;
+                  }
+                  localInetAddress = (InetAddress)((Enumeration)localObject1).nextElement();
+                } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+                paramSosoLbsInfo = localInetAddress.getHostAddress().toString();
+              }
+              bool = false;
+            }
+            catch (Exception paramSosoLbsInfo)
+            {
+              label445:
+              localObject1 = "";
+              paramSosoLbsInfo.printStackTrace();
+            }
+          }
+          paramSosoLbsInfo = paramSosoLbsInfo;
+          if (QLog.isColorLevel()) {
+            QLog.e("PublicAccountHandler", 2, paramSosoLbsInfo, new Object[0]);
+          }
+          paramInt = 0;
+          continue;
+          if (this.d == -1)
+          {
+            localGetWeatherMessageReq.source.set(1);
+            continue;
+          }
+        }
+        catch (JSONException paramSosoLbsInfo)
+        {
+          WeatherReportInfo.GetWeatherMessageReq localGetWeatherMessageReq;
+          Object localObject2;
+          paramSosoLbsInfo.printStackTrace();
+          continue;
+          paramSosoLbsInfo.put("cmd", this.d);
+          localGetWeatherMessageReq.source.set(0);
+          continue;
+          label505:
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            try
+            {
+              paramSosoLbsInfo = ((String)localObject1).split(Pattern.quote("."));
+              k = paramSosoLbsInfo.length;
+              j = 0;
+              paramInt = 0;
+            }
+            catch (Exception paramSosoLbsInfo)
+            {
+              try
+              {
+                int k;
+                int j;
+                paramInt = Integer.parseInt((String)localObject2);
+                j += 1;
+                paramInt = i | paramInt;
+              }
+              catch (Exception paramSosoLbsInfo)
+              {
+                continue;
+              }
+              paramSosoLbsInfo = paramSosoLbsInfo;
+              i = 0;
+            }
+            i = paramInt;
+            if (j < k)
+            {
+              localObject2 = paramSosoLbsInfo[j];
+              i = paramInt << 8;
+              paramSosoLbsInfo.printStackTrace();
+            }
+            PublicAccountHandler.a = (String)localObject1;
+            localGetWeatherMessageReq.ip.set(i);
+            paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.createToServiceMsg("QQWeatherReport.getWeatherInfo");
+            paramSosoLbsInfo.putWupBuffer(localGetWeatherMessageReq.toByteArray());
+            this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.sendPbReq(paramSosoLbsInfo);
+            if (QLog.isColorLevel()) {
+              QLog.d("PublicAccountHandler", 2, String.format("send tianqi lat=%d, lng=%d, type=%d, areaid = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.d), Integer.valueOf(this.c) }));
+            }
+            return;
+          }
+          int i = 0;
+          continue;
+          continue;
         }
       }
-      else
-      {
-        QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback.failed for msg callback timeout uniseq=", Long.valueOf(l) });
-        return;
-      }
+      label696:
+      paramInt = 0;
     }
-    localObject1 = (MessageForArkApp)???;
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.sArkMsgPrepCallback  uniseq=", Long.valueOf(l), ", processState=", Integer.valueOf(((MessageForArkApp)localObject1).getProcessState()), ", success=", Boolean.valueOf(paramBoolean), String.format(" ,msg=%h", new Object[] { localObject1 }), ", this=", ((MessageForArkApp)localObject1).getBaseInfoString(), ", msgJson=", paramJSONObject });
-    }
-    if (((MessageForArkApp)localObject1).ark_app_message != null)
-    {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("appid", ((MessageForArkApp)localObject1).ark_app_message.appName);
-      if (!paramBoolean) {
-        break label441;
-      }
-    }
-    label441:
-    for (??? = "1";; ??? = "2")
-    {
-      ((HashMap)localObject2).put("result", ???);
-      azri.a(BaseApplicationImpl.getApplication()).a(null, "actAsyncShareCallback", true, 0L, 0L, (HashMap)localObject2, null);
-      if (!paramBoolean) {
-        break;
-      }
-      ((MessageForArkApp)localObject1).updateArkAppMetaData(paramJSONObject);
-      ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1002);
-      ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
-      ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
-      localQQAppInterface.a().b((MessageRecord)localObject1, null);
-      return;
-    }
-    ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1003);
-    ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
-    ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
-    localQQAppInterface.a().a(((MessageForArkApp)localObject1).frienduin, ((MessageForArkApp)localObject1).istroop, ((MessageForArkApp)localObject1).uniseq);
-    anru.a(this.a, localQQAppInterface, (MessageForArkApp)localObject1);
   }
 }
 

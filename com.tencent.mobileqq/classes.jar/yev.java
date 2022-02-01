@@ -1,57 +1,49 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class yev
-  extends yiu
 {
-  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
-  private yif jdField_a_of_type_Yif;
+  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public yev(Bundle paramBundle)
+  public yev(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
   {
-    super(paramBundle);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
   }
   
-  public int a()
+  public yev(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.b();
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
+      return;
     }
-    return 0;
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramyhy);
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
-  }
-  
-  public void loadData(yii paramyii) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_Yif);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
     }
   }
   
-  public void onPrepareParams(Bundle paramBundle) {}
-  
-  public void setShareData(String paramString, yif paramyif)
+  public CardItem.CardVideoInfo a()
   {
-    super.setShareData(paramString, paramyif);
-    this.jdField_a_of_type_Yif = paramyif;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramyif);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
     }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yev
  * JD-Core Version:    0.7.0.1
  */

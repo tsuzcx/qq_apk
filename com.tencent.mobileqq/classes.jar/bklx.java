@@ -1,11 +1,10 @@
-public final class bklx
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+public abstract interface bklx
 {
-  public int a;
-  public long a;
-  public String a;
-  public Throwable a = null;
-  public long b;
-  public long c;
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

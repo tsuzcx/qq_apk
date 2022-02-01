@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import atkb;
-import bddt;
-import begz;
+import avqs;
+import bgim;
+import bhod;
 import org.json.JSONObject;
 
 public class UiApiPlugin$8
@@ -13,12 +13,12 @@ public class UiApiPlugin$8
   public void run()
   {
     this.this$0.i = this.a.optString("callback");
-    bddt.a(this.this$0.mRuntime.a(), new atkb(this));
+    bgim.a(this.this$0.mRuntime.a(), new avqs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.8
  * JD-Core Version:    0.7.0.1
  */

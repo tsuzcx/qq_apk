@@ -1,71 +1,42 @@
-import android.content.Context;
-import android.util.Log;
-import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-public class apwy
+class apwy
+  extends AnimatorListenerAdapter
 {
-  private static apwy jdField_a_of_type_Apwy;
-  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  apwy(apwv paramapwv, ObjectAnimator paramObjectAnimator, apxc paramapxc) {}
   
-  public static apwy a()
-  {
-    if (jdField_a_of_type_Apwy == null) {}
-    try
-    {
-      if (jdField_a_of_type_Apwy == null) {
-        jdField_a_of_type_Apwy = new apwy();
-      }
-      return jdField_a_of_type_Apwy;
-    }
-    finally {}
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public EmotionPanelListView a(Context paramContext)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (QLog.isColorLevel()) {
-        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      return paramContext;
-    }
-    return new EmotionPanelListView(paramContext);
-  }
-  
-  public void a()
+  public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      Log.d("EmotionPanelListViewPool", "destory");
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
     }
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    }
+    if ((this.jdField_a_of_type_Apxc != null) && (this.jdField_a_of_type_Apxc.a != null))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Apxc.a.istroop != 0) {
+        break label98;
+      }
+      paramAnimator = "1";
     }
-  }
-  
-  public void a(EmotionPanelListView paramEmotionPanelListView)
-  {
-    if (paramEmotionPanelListView == null) {}
     for (;;)
     {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(anuk.a(this.jdField_a_of_type_Apxc.a.vipBubbleID)), "");
       return;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelListViewPool", "relase listview");
-        return;
-        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
-          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
-        }
+      label98:
+      if (this.jdField_a_of_type_Apxc.a.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Apxc.a.istroop == 3000) {
+        paramAnimator = "3";
       }
     }
   }

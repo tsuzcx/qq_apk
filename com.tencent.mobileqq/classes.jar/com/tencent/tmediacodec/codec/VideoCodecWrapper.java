@@ -1,30 +1,25 @@
 package com.tencent.tmediacodec.codec;
 
 import android.media.MediaCodec;
+import android.support.annotation.NonNull;
 import com.tencent.tmediacodec.reuse.ReuseHelper;
 import com.tencent.tmediacodec.reuse.ReuseHelper.ReuseType;
-import com.tencent.tmediacodec.util.LogUtils;
 import com.tencent.tmediacodec.util.TUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/codec/VideoCodecWrapper;", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "codec", "Landroid/media/MediaCodec;", "format", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "(Landroid/media/MediaCodec;Lcom/tencent/tmediacodec/codec/FormatWrapper;)V", "canReuse", "Lcom/tencent/tmediacodec/reuse/ReuseHelper$ReuseType;", "newFormat", "dequeueInputBuffer", "", "timeoutUs", "", "isNeedKeep", "", "toString", "", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class VideoCodecWrapper
   extends ReuseCodecWrapper
 {
-  public VideoCodecWrapper(@NotNull MediaCodec paramMediaCodec, @NotNull FormatWrapper paramFormatWrapper)
+  public VideoCodecWrapper(@NonNull MediaCodec paramMediaCodec, @NonNull FormatWrapper paramFormatWrapper)
   {
     super(paramMediaCodec, paramFormatWrapper);
   }
   
-  @NotNull
-  public ReuseHelper.ReuseType canReuse(@NotNull FormatWrapper paramFormatWrapper)
+  @NonNull
+  public ReuseHelper.ReuseType canReuse(@NonNull FormatWrapper paramFormatWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "newFormat");
-    if ((ReuseHelper.isSeamlessAdaptationSupported$default(ReuseHelper.INSTANCE, (ReuseCodecWrapper)this, paramFormatWrapper, false, 4, null)) && (paramFormatWrapper.getWidth() <= getCodecMaxValues().getWidth()) && (paramFormatWrapper.getHeight() <= getCodecMaxValues().getHeight()) && (TUtils.INSTANCE.getMaxInputSize((ReuseCodecWrapper)this, paramFormatWrapper) <= getCodecMaxValues().getInputSize()))
+    if ((ReuseHelper.isSeamlessAdaptationSupported(this, paramFormatWrapper)) && (paramFormatWrapper.width <= this.codecMaxValues.width) && (paramFormatWrapper.height <= this.codecMaxValues.height) && (TUtils.getMaxInputSize(this, paramFormatWrapper) <= this.codecMaxValues.inputSize))
     {
-      if (paramFormatWrapper.initializationDataEquals(getFormat())) {
+      if (paramFormatWrapper.initializationDataEquals(this.format)) {
         return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION;
       }
       return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITH_RECONFIGURATION;
@@ -32,18 +27,12 @@ public final class VideoCodecWrapper
     return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO;
   }
   
-  public int dequeueInputBuffer(long paramLong)
-  {
-    LogUtils.INSTANCE.v("ReuseCodecWrapper", "dequeueInputBuffer decodeState:" + getDecodeState());
-    return super.dequeueInputBuffer(paramLong);
-  }
-  
   public boolean isNeedKeep()
   {
-    return (super.isNeedKeep()) && (getMSurface() != null) && (getFormat().getRotationDegrees() == 0);
+    return (super.isNeedKeep()) && (this.mSurface != null) && (this.format.rotationDegrees == 0);
   }
   
-  @NotNull
+  @NonNull
   public String toString()
   {
     return "VideoCodecWrapper[" + hashCode() + ']';
@@ -51,7 +40,7 @@ public final class VideoCodecWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.VideoCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

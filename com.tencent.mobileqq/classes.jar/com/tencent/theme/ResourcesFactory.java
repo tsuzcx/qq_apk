@@ -55,6 +55,35 @@ public class ResourcesFactory
     }
   }
   
+  static BaseConstantState a(Resources paramResources, XmlPullParser paramXmlPullParser1, XmlPullParser paramXmlPullParser2, boolean paramBoolean)
+  {
+    AttributeSet localAttributeSet1 = Xml.asAttributeSet(paramXmlPullParser1);
+    int i;
+    do
+    {
+      i = paramXmlPullParser1.next();
+    } while ((i != 2) && (i != 1));
+    if (paramXmlPullParser2 == null) {
+      if (i != 2) {
+        throw new XmlPullParserException("No start tag found");
+      }
+    }
+    AttributeSet localAttributeSet2;
+    for (paramResources = a(paramResources, paramXmlPullParser1, localAttributeSet1, null, paramBoolean); paramResources == null; paramResources = a(paramResources, paramXmlPullParser1, localAttributeSet1, localAttributeSet2, paramBoolean))
+    {
+      throw new RuntimeException("Unknown initial tag: " + paramXmlPullParser1.getName());
+      localAttributeSet2 = Xml.asAttributeSet(paramXmlPullParser2);
+      do
+      {
+        i = paramXmlPullParser2.next();
+      } while ((i != 2) && (i != 1));
+      if (i != 2) {
+        throw new XmlPullParserException("No start tag found");
+      }
+    }
+    return paramResources;
+  }
+  
   static SkinnableBitmapDrawable.a a(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet1, AttributeSet paramAttributeSet2, boolean paramBoolean)
   {
     int k = 0;
@@ -92,7 +121,7 @@ public class ResourcesFactory
         else
         {
           if (j != 0) {
-            paramResources.e = 1;
+            paramResources.bitmapType = 1;
           }
           return paramResources;
           i += 1;
@@ -121,35 +150,6 @@ public class ResourcesFactory
       }
       return paramSkinEngine;
     }
-  }
-  
-  static a a(Resources paramResources, XmlPullParser paramXmlPullParser1, XmlPullParser paramXmlPullParser2, boolean paramBoolean)
-  {
-    AttributeSet localAttributeSet1 = Xml.asAttributeSet(paramXmlPullParser1);
-    int i;
-    do
-    {
-      i = paramXmlPullParser1.next();
-    } while ((i != 2) && (i != 1));
-    if (paramXmlPullParser2 == null) {
-      if (i != 2) {
-        throw new XmlPullParserException("No start tag found");
-      }
-    }
-    AttributeSet localAttributeSet2;
-    for (paramResources = a(paramResources, paramXmlPullParser1, localAttributeSet1, null, paramBoolean); paramResources == null; paramResources = a(paramResources, paramXmlPullParser1, localAttributeSet1, localAttributeSet2, paramBoolean))
-    {
-      throw new RuntimeException("Unknown initial tag: " + paramXmlPullParser1.getName());
-      localAttributeSet2 = Xml.asAttributeSet(paramXmlPullParser2);
-      do
-      {
-        i = paramXmlPullParser2.next();
-      } while ((i != 2) && (i != 1));
-      if (i != 2) {
-        throw new XmlPullParserException("No start tag found");
-      }
-    }
-    return paramResources;
   }
   
   static byte[] a(Bitmap paramBitmap)
@@ -448,7 +448,7 @@ public class ResourcesFactory
     }
   }
   
-  public static a createImageFromResourceStream(Resources paramResources, TypedValue paramTypedValue, InputStream paramInputStream, String paramString, BitmapFactory.Options paramOptions, Rect paramRect, boolean paramBoolean)
+  public static BaseConstantState createImageFromResourceStream(Resources paramResources, TypedValue paramTypedValue, InputStream paramInputStream, String paramString, BitmapFactory.Options paramOptions, Rect paramRect, boolean paramBoolean)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -481,9 +481,9 @@ public class ResourcesFactory
         if (paramString.endsWith(".9.png"))
         {
           paramInputStream = new SkinnableNinePatchDrawable.a(null, null, new Rect(0, 0, 0, 0));
-          paramInputStream.k = paramTypedValue;
+          paramInputStream.mImageSizeWhenOOM = paramTypedValue;
           if (paramResources != null) {
-            paramInputStream.q = paramResources.getDisplayMetrics().densityDpi;
+            paramInputStream.f = paramResources.getDisplayMetrics().densityDpi;
           }
           return paramInputStream;
           try
@@ -502,9 +502,9 @@ public class ResourcesFactory
         else
         {
           paramInputStream = new SkinnableBitmapDrawable.a((Bitmap)null);
-          paramInputStream.k = paramTypedValue;
+          paramInputStream.mImageSizeWhenOOM = paramTypedValue;
           if (paramResources != null) {
-            paramInputStream.r = paramResources.getDisplayMetrics().densityDpi;
+            paramInputStream.g = paramResources.getDisplayMetrics().densityDpi;
           }
           return paramInputStream;
         }
@@ -527,9 +527,9 @@ public class ResourcesFactory
     {
       paramTypedValue = new SkinnableNinePatchDrawable.a(new NinePatch(paramTypedValue, paramInputStream, paramString), paramTypedValue, paramRect);
       if (paramResources != null) {
-        paramTypedValue.q = paramResources.getDisplayMetrics().densityDpi;
+        paramTypedValue.f = paramResources.getDisplayMetrics().densityDpi;
       }
-      paramTypedValue.j = paramBoolean;
+      paramTypedValue.hasProblem = paramBoolean;
       return paramTypedValue;
       try
       {
@@ -540,9 +540,9 @@ public class ResourcesFactory
           paramRect = new Rect();
           paramBoolean = true;
           paramTypedValue = new SkinnableNinePatchDrawable.a(new NinePatch(paramTypedValue, paramInputStream, paramString), paramTypedValue, paramRect);
-          paramTypedValue.j = paramBoolean;
+          paramTypedValue.hasProblem = paramBoolean;
           if (paramResources != null) {
-            paramTypedValue.q = paramResources.getDisplayMetrics().densityDpi;
+            paramTypedValue.f = paramResources.getDisplayMetrics().densityDpi;
           }
           return paramTypedValue;
         }
@@ -569,7 +569,7 @@ public class ResourcesFactory
       if (paramResources == null) {
         break;
       }
-      paramTypedValue.r = paramResources.getDisplayMetrics().densityDpi;
+      paramTypedValue.g = paramResources.getDisplayMetrics().densityDpi;
       return paramTypedValue;
     }
   }

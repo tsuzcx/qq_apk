@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
-
-class axzn
-  implements DialogInterface.OnDismissListener
+public class axzn
+  extends axzq
 {
-  axzn(axzm paramaxzm) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.a.a.updateSystemUIVisablity();
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

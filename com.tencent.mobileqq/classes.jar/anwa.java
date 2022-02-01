@@ -1,120 +1,205 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqPreDownloadRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqUpdateDownCountRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspUpdateDownCountRecmd;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
+import java.io.File;
 
 public class anwa
-  extends MSFServlet
 {
-  private String a = "RockDownloaderServlet";
+  private static anwa jdField_a_of_type_Anwa;
+  private int jdField_a_of_type_Int = -2;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static anwa a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
-    boolean bool = paramFromServiceMsg.isSuccess();
     try
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
-      localByteBuffer.get(paramFromServiceMsg);
-      if ("QQApkSvc.pre_download_apk".equals(localObject))
+      if (jdField_a_of_type_Anwa == null) {
+        jdField_a_of_type_Anwa = new anwa();
+      }
+      anwa localanwa = jdField_a_of_type_Anwa;
+      return localanwa;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if ((this.b) || (this.c)) {}
+    for (;;)
+    {
+      int i;
+      try
       {
-        localObject = new Bundle();
-        ((Bundle)localObject).putByteArray("BUNDLE_KEY_RESPONSE_BYTE", paramFromServiceMsg);
-        if ((paramIntent instanceof NewIntent))
+        Object localObject = Thread.currentThread().getThreadGroup();
+        Thread[] arrayOfThread = new Thread[((ThreadGroup)localObject).activeCount()];
+        ((ThreadGroup)localObject).enumerate(arrayOfThread);
+        int j = arrayOfThread.length;
+        i = 0;
+        if (i < j)
         {
-          paramIntent = (NewIntent)paramIntent;
-          if (paramIntent.getObserver() != null) {
-            paramIntent.getObserver().onReceive(1, bool, (Bundle)localObject);
+          Thread localThread = arrayOfThread[i];
+          if (localThread == null) {
+            break label216;
+          }
+          if (localThread.getName() == null) {
+            break label223;
+          }
+          localObject = localThread.getName();
+          if ((this.b) && ("MSF-Receiver".equals(localObject))) {
+            localThread.setPriority(1);
+          } else if ((this.c) && (("logWriteThread".equals(localObject)) || (((String)localObject).startsWith("GlobalPool")) || (((String)localObject).startsWith("Face")) || (((String)localObject).startsWith("um-stack")) || (((String)localObject).startsWith("QQ_FTS")) || (((String)localObject).startsWith("httpcomm")))) {
+            localThread.setPriority(1);
           }
         }
       }
-      else if ("QQApkSvc.update_download_count".equals(localObject))
+      catch (Exception localException)
       {
-        paramIntent = new ServerApi.RspUpdateDownCountRecmd();
-        paramIntent.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
-        if (paramFromServiceMsg != null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.Optimizer", 2, "", localException);
         }
+        if (this.c)
+        {
+          ThreadManager.getSubThread().setPriority(1);
+          ThreadManager.getFileThread().setPriority(1);
+          ThreadManager.getRecentThreadLooper().getThread().setPriority(1);
+        }
+      }
+      return;
+      label216:
+      i += 1;
+      continue;
+      label223:
+      String str = "";
+    }
+  }
+  
+  private void a(DeviceProfileManager paramDeviceProfileManager, String[] paramArrayOfString)
+  {
+    float f = Float.parseFloat(paramArrayOfString[1]);
+    if (paramDeviceProfileManager.jdField_a_of_type_Int * 1.0F / 10000.0F < f)
+    {
+      this.jdField_a_of_type_Int = Integer.valueOf(paramArrayOfString[0]).intValue();
+      this.jdField_a_of_type_Boolean = "1".equals(paramArrayOfString[2]);
+      this.b = "1".equals(paramArrayOfString[3]);
+      this.c = "1".equals(paramArrayOfString[4]);
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private void a(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString.length > 7)
+    {
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("mobileQQ", 4);
+      boolean bool1 = localSharedPreferences.getBoolean("enableUpdateIconStep", false);
+      boolean bool2 = "1".equals(paramArrayOfString[7]);
+      if (bool1 != bool2) {
+        localSharedPreferences.edit().putBoolean("enableUpdateIconStep", bool2).commit();
       }
     }
-    catch (Exception paramIntent)
+  }
+  
+  private void b(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString.length > 6)
     {
-      if (QLog.isColorLevel())
+      if ("1".equals(paramArrayOfString[6])) {
+        com.tencent.common.config.AppSetting.e = true;
+      }
+    }
+    else {
+      return;
+    }
+    com.tencent.common.config.AppSetting.e = false;
+  }
+  
+  private void c(String[] paramArrayOfString)
+  {
+    File localFile;
+    if (paramArrayOfString.length > 5)
+    {
+      localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "disableSmallLock");
+      if (!"1".equals(paramArrayOfString[5])) {
+        break label47;
+      }
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+    }
+    return;
+    label47:
+    localFile.createNewFile();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(DeviceProfileManager paramDeviceProfileManager)
+  {
+    Object localObject = paramDeviceProfileManager.a(DeviceProfileManager.DpcNames.qq_thread_config.name());
+    if (QLog.isColorLevel()) {
+      QLog.d("ThreadManager.Optimizer", 2, "config = " + (String)localObject);
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      return;
+      try
       {
-        QLog.d(this.a, 2, paramIntent, new Object[0]);
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 5) {
+          continue;
+        }
+        a(paramDeviceProfileManager, (String[])localObject);
+        c((String[])localObject);
+        b((String[])localObject);
+        a((String[])localObject);
+        a();
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
+      }
+      catch (Exception paramDeviceProfileManager)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ThreadManager.Optimizer", 2, "", paramDeviceProfileManager);
+          }
         }
       }
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("BUNDLE_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, new Object[] { "cmd=", str });
-    }
-    Object localObject;
-    if ("QQApkSvc.pre_download_apk".equals(str))
-    {
-      localObject = new ServerApi.ReqPreDownloadRecmd();
-      ((ServerApi.ReqPreDownloadRecmd)localObject).platform.set("android");
-      ((ServerApi.ReqPreDownloadRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-      paramPacket.setSSOCommand(str);
-      paramPacket.putSendData(bdpd.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onSendFinish");
-      }
-      return;
-      if ("QQApkSvc.update_download_count".equals(str))
-      {
-        localObject = new ServerApi.ReqUpdateDownCountRecmd();
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-        paramPacket.setSSOCommand(str);
-        paramPacket.putSendData(bdpd.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
-      }
-    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anwa
  * JD-Core Version:    0.7.0.1
  */

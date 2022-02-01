@@ -1,25 +1,34 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.Window;
+import bgjq;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import tat;
-import tau;
-import tav;
-import taw;
-import tbf;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import uch;
+import uci;
+import ucj;
+import uck;
+import ucv;
 
-public abstract class WSBaseFragment<V extends tat, P extends taw<V>>
+public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
   extends PublicBaseFragment
-  implements tat, tau<V, P>
+  implements uch, uci<V, P>
 {
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private tav<V, P> jdField_a_of_type_Tav;
-  protected P a;
-  private boolean jdField_a_of_type_Boolean;
+  private ucj<V, P> jdField_a_of_type_Ucj;
+  public P a;
+  protected boolean a;
+  public boolean b;
+  private boolean c;
   
   public MiniMsgUser a()
   {
@@ -45,17 +54,17 @@ public abstract class WSBaseFragment<V extends tat, P extends taw<V>>
   }
   
   @NonNull
-  protected tav<V, P> a()
+  protected ucj<V, P> a()
   {
-    if (this.jdField_a_of_type_Tav == null) {
-      this.jdField_a_of_type_Tav = new tbf(this);
+    if (this.jdField_a_of_type_Ucj == null) {
+      this.jdField_a_of_type_Ucj = new ucv(this);
     }
-    return this.jdField_a_of_type_Tav;
+    return this.jdField_a_of_type_Ucj;
   }
   
   public void a(P paramP)
   {
-    this.jdField_a_of_type_Taw = paramP;
+    this.jdField_a_of_type_Uck = paramP;
   }
   
   protected boolean a()
@@ -63,9 +72,55 @@ public abstract class WSBaseFragment<V extends tat, P extends taw<V>>
     return false;
   }
   
+  public boolean a(boolean paramBoolean)
+  {
+    int i = 9216;
+    if (getActivity() == null) {
+      return false;
+    }
+    boolean bool;
+    if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.d()) && (!bgjq.b())) {
+      if (paramBoolean)
+      {
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
+        bool = paramBoolean;
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      i = 1280;
+      break;
+      if (ImmersiveUtils.a())
+      {
+        ImmersiveUtils.a(getActivity().getWindow(), paramBoolean);
+        bool = paramBoolean;
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          bool = paramBoolean;
+          if (bgjq.b())
+          {
+            if (paramBoolean) {}
+            for (;;)
+            {
+              getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
+              bool = paramBoolean;
+              break;
+              i = 1280;
+            }
+          }
+        }
+      }
+      else
+      {
+        bool = false;
+      }
+    }
+  }
+  
   public P b()
   {
-    return this.jdField_a_of_type_Taw;
+    return this.jdField_a_of_type_Uck;
   }
   
   protected void b() {}
@@ -73,6 +128,7 @@ public abstract class WSBaseFragment<V extends tat, P extends taw<V>>
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    this.b = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     a().a(paramBundle);
     if (a())
     {
@@ -122,18 +178,24 @@ public abstract class WSBaseFragment<V extends tat, P extends taw<V>>
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean))
+    if ((paramBoolean) && (!this.c))
     {
       if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showOnFirst();
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+    this.jdField_a_of_type_Boolean = getUserVisibleHint();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseFragment
  * JD-Core Version:    0.7.0.1
  */

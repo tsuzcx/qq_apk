@@ -1,38 +1,100 @@
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.util.Log;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.smtt.sdk.WebView;
 
-public class osy
-  implements AladdinConfigHandler
+class osy
+  extends acuc
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  osy(ost paramost, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
-        bkbq.a("ad_native_proteus_offline_bid", str2);
-      }
-    }
-    return true;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    bkbq.a("ad_native_proteus_offline_bid", "0");
+    super.onPageFinished(paramWebView, paramString);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(ost.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - ost.b(this.a)));
+      QLog.d(ost.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - ost.c(this.a)));
+    }
+    if (ost.a(this.a) != null) {
+      ost.a(this.a).a((byte)2);
+    }
+    if (ost.a(this.a) != null) {
+      ost.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ost.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ost.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
+    }
+    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    {
+      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
+      }
+    }
+    paramString = Uri.parse(paramString);
+    localObject = paramString.getScheme();
+    if (nhe.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+    {
+      paramWebView = new Intent("android.intent.action.VIEW", paramString);
+      paramWebView.addFlags(268435456);
+    }
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return false;
+    }
+    catch (ActivityNotFoundException paramWebView)
+    {
+      for (;;)
+      {
+        Log.e("AbsWebView", paramWebView.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     osy
  * JD-Core Version:    0.7.0.1
  */

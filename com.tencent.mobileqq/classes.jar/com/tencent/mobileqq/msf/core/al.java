@@ -1,16 +1,12 @@
 package com.tencent.mobileqq.msf.core;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 
-final class al
+class al
   extends Handler
 {
-  al(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  al(ak paramak) {}
   
   public void handleMessage(Message paramMessage)
   {
@@ -19,19 +15,8 @@ final class al
     default: 
       return;
     }
-    try
-    {
-      ak.a();
-      ak.b().sendEmptyMessageDelayed(1000, 3600000L);
-      return;
-    }
-    catch (Throwable paramMessage)
-    {
-      for (;;)
-      {
-        paramMessage.printStackTrace();
-      }
-    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.s.refreshWebviewTickets(paramMessage, "SidExpiredPush");
   }
 }
 

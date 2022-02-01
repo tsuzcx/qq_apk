@@ -1,35 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asoz
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  private asoz(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public asoz(HorseRaceLampVew.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
+    if (!this.a.this$0.b) {
+      QLog.e("HorseRaceLampVew + horserace", 2, "CLICK WITH TOUCH SCROLL THROW IT");
+    }
+    for (;;)
     {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof aspc)) && (HorseRaceLampVew.a(this.a.this$0) != null))
       {
-        do
-        {
-          return;
-        } while (!"action_qgame_tool_messgae".equals(paramContext));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
-    } while ((paramContext == null) || (paramContext.size() <= 0));
-    ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
+        localObject = (aspc)localObject;
+        HorseRaceLampVew.a(this.a.this$0).a(((aspc)localObject).a);
+      }
+    }
   }
 }
 

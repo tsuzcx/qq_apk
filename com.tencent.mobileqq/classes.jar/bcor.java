@@ -1,71 +1,112 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.splashad.SplashADUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.Set;
 
 public class bcor
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, List<String> paramList, long paramLong)
+  public static long a;
+  private static boolean a;
+  private static long b;
+  
+  public static int a(Context paramContext)
   {
-    long l = LocalMultiProcConfig.getLong4Uin("aio_qzone_troop_gray_tips", 0L, Long.parseLong(paramString2));
-    if (System.currentTimeMillis() <= l * 1000L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips during cool down");
-      }
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+    return paramContext.getDefaultDisplay().getWidth();
+  }
+  
+  public static long a(Context paramContext)
+  {
+    if (b == 0L) {
+      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
     }
-    do
+    return b;
+  }
+  
+  private static void a() {}
+  
+  public static void a(int paramInt, String paramString)
+  {
+    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
+    b = 0L;
+  }
+  
+  public static void a(Context paramContext, long paramLong)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
+    b = paramLong;
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    boolean bool2 = false;
+    Object localObject = paramActivity.getIntent();
+    paramActivity = ((Intent)localObject).getCategories();
+    localObject = ((Intent)localObject).getAction();
+    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
+    boolean bool1 = bool2;
+    if (paramActivity != null)
     {
-      return;
-      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_min_photo_count", 9);
-      if (paramList.size() >= i) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips, current photos count: " + paramList.size() + " required min photos count: " + i);
-    return;
-    Object localObject = alud.a(2131721054);
-    String str2 = alud.a(2131721052);
-    String str1 = alud.a(2131721053);
-    str2 = (String)localObject + " " + str2 + " " + str1;
-    paramString1 = new aspy(paramString1, paramString2, str2, 1, -5040, 131086, System.currentTimeMillis() / 1000L);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      if (i != paramList.size() - 1) {
-        localStringBuilder.append((String)paramList.get(i)).append(",");
-      }
-      for (;;)
+      bool1 = bool2;
+      if (paramActivity.contains("android.intent.category.LAUNCHER"))
       {
-        i += 1;
-        break;
-        localStringBuilder.append((String)paramList.get(i));
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          bool1 = bool2;
+          if (((String)localObject).equals("android.intent.action.MAIN")) {
+            bool1 = true;
+          }
+        }
       }
     }
-    paramList = new ArrayList();
-    i = BaseApplicationImpl.getApplication().getResources().getColor(2131167167);
-    localObject = new MessageForGrayTips.HightlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
-    paramString2 = new MessageForGrayTips.HightlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
-    paramList.add(localObject);
-    paramList.add(paramString2);
-    paramString1.a = paramList;
-    paramString2 = new MessageForUniteGrayTip();
-    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
-    paramString2.saveExtInfoToExtStr("grayLastUniseq", paramLong + "");
-    aspz.a(paramQQAppInterface, paramString2);
-    LpReportInfo_pf00064.allReport(40, 3, 1);
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (paramActivity == null)
+      {
+        bool2 = bool1;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          bool2 = true;
+        }
+      }
+    }
+    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
+    return bool2;
+  }
+  
+  public static void b(Context paramContext)
+  {
+    if (!a)
+    {
+      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+      a();
+      a = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcor
  * JD-Core Version:    0.7.0.1
  */

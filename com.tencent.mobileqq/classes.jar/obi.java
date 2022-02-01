@@ -1,127 +1,71 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.AppInterface;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-public class obi
+class obi
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private int jdField_c_of_type_Int;
-  private JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  private int jdField_d_of_type_Int;
-  private JSONObject jdField_d_of_type_OrgJsonJSONObject;
-  private JSONObject e;
-  private JSONObject f;
+  private NewIntent a;
   
-  public int a()
+  obi(NewIntent paramNewIntent)
   {
-    return this.jdField_a_of_type_Int;
+    this.a = paramNewIntent;
   }
   
-  public long a()
+  private void a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public Bundle a()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public VideoAdInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  }
-  
-  public AdvertisementInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public JSONObject b()
-  {
-    return this.jdField_b_of_type_OrgJsonJSONObject;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public JSONObject c()
-  {
-    return this.jdField_c_of_type_OrgJsonJSONObject;
-  }
-  
-  public int d()
-  {
-    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos > 0)) {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onSuccess: ");
     }
-    return this.jdField_c_of_type_Int;
   }
   
-  public JSONObject d()
+  private void a(int paramInt, String paramString)
   {
-    return this.jdField_d_of_type_OrgJsonJSONObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
+    }
   }
   
-  public JSONObject e()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.f;
-  }
-  
-  public JSONObject f()
-  {
-    return this.e;
+    this.a.setObserver(null);
+    if (paramBoolean)
+    {
+      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null)
+        {
+          a(-123, "data null");
+          return;
+        }
+        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
+        localReportInfoRsp.mergeFrom(paramBundle);
+        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        {
+          a();
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
+      return;
+    }
+    a(-123, "success=false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obi
  * JD-Core Version:    0.7.0.1
  */

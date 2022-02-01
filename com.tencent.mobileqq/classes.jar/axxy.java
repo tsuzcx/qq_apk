@@ -1,23 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.view.View;
 
-public class axxy
-  extends BroadcastReceiver
+public abstract interface axxy
 {
-  public axxy(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "receive videochat in aiogallery");
-      this.a.finish();
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

@@ -1,65 +1,47 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class auiy
-  extends aujd<MessageForMixedMsg>
+class auiy
+  extends auiz
 {
-  public auiy(MessageForMixedMsg paramMessageForMixedMsg)
+  public ImageView a;
+  public TextView a;
+  
+  public auiy(View paramView)
   {
-    super(paramMessageForMixedMsg);
+    super(paramView);
+    this.jdField_a_of_type_Int = auis.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368507));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380124));
+    paramView.setTag(this);
   }
   
-  protected int a()
+  public void a(String paramString1, String paramString2, aobu paramaobu)
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bdnt((CharSequence)localObject, 2));
+    localObject = paramaobu.a(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
     {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
+      localObject = bgmo.a();
+      paramString2 = (String)localObject;
+      if (!paramaobu.a())
       {
-        localObject = augx.a((MessageRecord)localObject);
-        ((aujd)localObject).a(this.a);
-        localArrayList.addAll(((aujd)localObject).a());
+        paramaobu.a(paramString1, 1, false);
+        paramString2 = (String)localObject;
       }
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        augx.a(localMessageRecord).a();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auiy
  * JD-Core Version:    0.7.0.1
  */

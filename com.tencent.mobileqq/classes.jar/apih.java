@@ -1,72 +1,311 @@
-import EncounterSvc.RespEncounterInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ModuleCallbackWrapper;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.QzoneMainRuntime;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.1.1;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.1.2;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.1.3;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.util.WeakReference;
 
-public class apih
-  extends alvn
+public abstract class apih
+  implements ark.ModuleCallbackWrapper
 {
-  public apih(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public static boolean a;
+  protected long a;
+  protected ark.Application a;
+  public String a;
+  private HashMap<Long, ark.VariantWrapper> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Map<String, Set<aplw>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private long jdField_b_of_type_Long = 1L;
+  public String b;
+  private final HashMap<String, apin> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  public String c;
   
-  protected void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  static
   {
-    if ((paramBoolean) && (paramArrayOfObject != null) && ((paramArrayOfObject instanceof Object[])) && (MsgBoxListActivity.a(this.a) != null))
-    {
-      MsgBoxListActivity.a(this.a).a((List)paramArrayOfObject[0], 0, (ArrayList)paramArrayOfObject[1]);
-      this.a.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig = MsgBoxListActivity.a(this.a).a();
-      this.a.app.getPreferences().edit().putLong("sp_key_dating_config_time", System.currentTimeMillis()).commit();
-      this.a.runOnUiThread(new MsgBoxListActivity.1.3(this));
-    }
+    jdField_a_of_type_Boolean = true;
   }
   
-  protected void e(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected apih(ark.Application paramApplication, long paramLong)
   {
-    int i;
-    LinearLayout localLinearLayout;
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentArkArk$Application = paramApplication;
+    this.jdField_a_of_type_JavaLangString = paramApplication.GetSpecific("appName");
+    this.c = paramApplication.GetSpecific("appPath");
+    this.jdField_b_of_type_JavaLangString = paramApplication.GetID();
+    this.jdField_a_of_type_Long = paramLong;
+    a();
+  }
+  
+  public static Activity a()
+  {
+    if (BaseActivity.sTopActivity != null) {
+      return BaseActivity.sTopActivity;
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QzoneMainRuntime))
     {
-      if (paramArrayOfObject == null) {
-        break label101;
+      localObject = ((AppRuntime)localObject).getApplication().getResumeActivity();
+      if (localObject != null) {
+        return (Activity)((WeakReference)localObject).get();
       }
-      i = 1;
-      if (((i & paramArrayOfObject instanceof Object[]) != 0) && (this.a.d != null) && (this.a.jdField_a_of_type_Avud != null) && (((Integer)paramArrayOfObject[1]).intValue() == 1))
+    }
+    return null;
+  }
+  
+  public static SessionInfo a()
+  {
+    SessionInfo localSessionInfo = null;
+    Object localObject2 = a();
+    Object localObject1 = localSessionInfo;
+    if ((localObject2 instanceof FragmentActivity))
+    {
+      localObject2 = (FragmentActivity)localObject2;
+      localObject1 = (ChatFragment)((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject1 == null) {
+        break label91;
+      }
+      localObject1 = ((ChatFragment)localObject1).a();
+      if (localObject1 == null) {
+        break label157;
+      }
+      localSessionInfo = ((BaseChatPie)localObject1).a();
+      localObject1 = localSessionInfo;
+      if (QLog.isColorLevel())
       {
-        paramArrayOfObject = (List)paramArrayOfObject[0];
-        localLinearLayout = (LinearLayout)this.a.d.findViewById(2131372512);
-        if (localLinearLayout.getChildCount() != 0) {
-          break label106;
-        }
-        this.a.runOnUiThread(new MsgBoxListActivity.1.1(this, paramArrayOfObject));
+        QLog.d("ArkApp.ArkAppModuleBase", 2, new Object[] { "multiAio.getTopChatSessionInfo form baseChatPie=", a(localSessionInfo) });
+        localObject1 = localSessionInfo;
       }
     }
     for (;;)
     {
-      return;
-      label101:
-      i = 0;
-      break;
-      label106:
-      if (localLinearLayout.getChildCount() == paramArrayOfObject.size())
+      return localObject1;
+      label91:
+      localObject1 = localSessionInfo;
+      if ((localObject2 instanceof MiniChatActivity))
       {
-        i = 0;
-        while (i < localLinearLayout.getChildCount())
+        localObject2 = ((MiniChatActivity)localObject2).a();
+        localObject1 = localSessionInfo;
+        if ((localObject2 instanceof MiniChatFragment))
         {
-          View localView = localLinearLayout.getChildAt(i);
-          RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramArrayOfObject.get(i);
-          this.a.runOnUiThread(new MsgBoxListActivity.1.2(this, localView, localRespEncounterInfo));
-          i += 1;
+          localSessionInfo = ((MiniChatFragment)localObject2).a();
+          localObject1 = localSessionInfo;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ArkApp.ArkAppModuleBase", 2, new Object[] { "multiAio.getTopChatSessionInfo form miniChatPie=", a(localSessionInfo) });
+            return localSessionInfo;
+            label157:
+            localObject1 = null;
+          }
         }
       }
     }
+  }
+  
+  public static QQAppInterface a()
+  {
+    return apkd.a();
+  }
+  
+  public static String a(SessionInfo paramSessionInfo)
+  {
+    return apkd.a(paramSessionInfo);
+  }
+  
+  private void a()
+  {
+    apin[] arrayOfapin = a();
+    if (arrayOfapin != null)
+    {
+      int j = arrayOfapin.length;
+      int i = 0;
+      while (i < j)
+      {
+        apin localapin = arrayOfapin[i];
+        this.jdField_b_of_type_JavaUtilHashMap.put(localapin.a(), localapin);
+        i += 1;
+      }
+    }
+  }
+  
+  private static boolean a()
+  {
+    return a() != null;
+  }
+  
+  private boolean a(apin paramapin)
+  {
+    if (paramapin.a()) {}
+    while (this.jdField_a_of_type_Long == 0L) {
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean b(apin paramapin)
+  {
+    if (a()) {
+      return true;
+    }
+    return paramapin.b();
+  }
+  
+  private boolean c(apin paramapin)
+  {
+    return apgt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentArkArk$Application, paramapin.b());
+  }
+  
+  public void Destruct()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((ark.VariantWrapper)((Map.Entry)localIterator.next()).getValue()).Reset();
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    paramString = (apin)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    if (!a(paramString))
+    {
+      QLog.i("ArkApp.ArkAppModuleBase", 1, "HasMethod, method not support app type, method=" + paramString);
+      return false;
+    }
+    if (!b(paramString))
+    {
+      QLog.i("ArkApp.ArkAppModuleBase", 1, "HasMethod, method not support multi process, method=" + paramString);
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    apin localapin = (apin)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    if (localapin == null) {
+      return false;
+    }
+    if (!a(paramString))
+    {
+      QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, check frequency fail, method=" + paramString);
+      return false;
+    }
+    if (!c(localapin))
+    {
+      QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, no permission, method=" + paramString);
+      return false;
+    }
+    if ((a()) || (localapin.b()))
+    {
+      localapin.a(this, paramArrayOfVariantWrapper, paramVariantWrapper);
+      return true;
+    }
+    QLog.i("ArkApp.ArkAppModuleBase", 1, "Invoke, method not support multiprocess, method=" + localapin);
+    return false;
+  }
+  
+  long a(ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction())) {
+      return 0L;
+    }
+    this.jdField_b_of_type_Long += 1L;
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = 1L;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_b_of_type_Long), paramVariantWrapper);
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public ark.VariantWrapper a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    return localVariantWrapper;
+  }
+  
+  protected void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramLong2 > 0L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkApp", 2, String.format("ModuleBase.addTokenBucket.api:%s,times:%d,period:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      }
+      Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Object localObject = localSet;
+      if (localSet == null)
+      {
+        localObject = new HashSet();
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      }
+      ((Set)localObject).add(new aplw(paramLong1, paramLong2));
+    }
+  }
+  
+  public void a(List<apmf> paramList)
+  {
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        apmf localapmf = (apmf)paramList.next();
+        a(localapmf.jdField_a_of_type_JavaLangString, localapmf.jdField_a_of_type_Long, localapmf.jdField_b_of_type_Long);
+      }
+    }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localObject == null) {
+        return true;
+      }
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        aplw localaplw = (aplw)((Iterator)localObject).next();
+        if (!localaplw.a())
+        {
+          QLog.i("ArkApp", 2, String.format("ModuleBase.checkFrequency.Refuse:%s,%s ", new Object[] { paramString, localaplw.toString() }));
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  protected abstract apin[] a();
+  
+  public ark.VariantWrapper b(long paramLong)
+  {
+    return (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
   }
 }
 

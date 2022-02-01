@@ -1,9 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-
 public abstract interface apen
 {
-  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
+  public abstract boolean a(byte[] paramArrayOfByte);
 }
 
 

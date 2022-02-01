@@ -1,350 +1,557 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.utils.AssertUtil;
+import com.tencent.component.network.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.XListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.2;
-import dov.com.qq.im.capture.poi.FacePoiUI.4;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import java.io.File;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class blwf
-  implements View.OnClickListener, bhuw, blvz
 {
-  long jdField_a_of_type_Long = 0L;
-  View jdField_a_of_type_AndroidViewView;
-  ViewStub jdField_a_of_type_AndroidViewViewStub;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private blvw jdField_a_of_type_Blvw = new blvw(this);
-  private blwi jdField_a_of_type_Blwi;
-  bnav jdField_a_of_type_Bnav = null;
-  PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  public XListView a;
-  View jdField_b_of_type_AndroidViewView = null;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  View c = null;
-  View d = null;
-  View e;
+  private static blwj jdField_a_of_type_Blwj;
+  private static Object jdField_a_of_type_JavaLangObject;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static final HashMap<String, blwh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static String jdField_b_of_type_JavaLangString;
+  private static HashMap<String, String> jdField_b_of_type_JavaUtilHashMap;
+  private static HashMap<String, Boolean> c;
   
-  public blwf()
+  static
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    c = new HashMap();
   }
   
-  private void a(int paramInt)
+  public static final long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
+    if (!a()) {
+      return -1L;
+    }
+    Object localObject = p();
+    try
     {
-      acrg localacrg = (acrg)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
-      if (localacrg != null)
-      {
-        localacrg.a = false;
-        new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.4(this), 800L);
-        if (paramInt == 0) {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(paramInt);
-      }
+      localObject = new StatFs((String)localObject);
+      long l = ((StatFs)localObject).getBlockSize();
+      int i = ((StatFs)localObject).getBlockCount();
+      return i * l;
     }
-  }
-  
-  private void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    catch (Exception localException)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      return;
+      QLog.e("CacheManager", 1, "", localException);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    if (paramBoolean2)
-    {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    return -1L;
   }
   
-  public blvw a()
+  public static blwh a()
   {
-    return this.jdField_a_of_type_Blvw;
+    return a("audio", 104857600, 41943040);
   }
   
-  public void a()
+  public static blwh a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368624));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376243);
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131376267);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365763));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365764));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.c.setOnClickListener(this);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368670)).setText(alud.a(2131704691));
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372148));
-      b();
-      c();
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new blwg(this));
-      this.jdField_a_of_type_Bnav = new bnav(this.e.getContext());
-      this.jdField_a_of_type_Bnav.a(this.jdField_a_of_type_Blvw.a(), this.jdField_a_of_type_Blvw.a());
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bnav);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void a(int paramInt, String... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-    case 3: 
-      do
-      {
-        return;
-        this.e.getContext().getString(2131718310);
-        return;
-        this.e.getContext().getString(2131718311);
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          QQToast.a(this.e.getContext(), paramVarArgs[0], 1).a();
-        }
-      } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0));
-      a(false, false);
-      return;
-    case 2: 
-      this.e.getContext().getString(2131718312);
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (!TextUtils.isEmpty(paramVarArgs[0])))
-    {
-      if (TextUtils.isEmpty(paramVarArgs[0]))
-      {
-        a(3, new String[0]);
-        return;
-      }
-      paramVarArgs = paramVarArgs[0];
-      return;
-    }
-    a(0, new String[0]);
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
-      throw new IllegalStateException("FacePoiUI rootView can't be null");
-    }
-    this.e = paramView;
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.e.findViewById(2131373849));
-  }
-  
-  public void a(blwi paramblwi)
-  {
-    this.jdField_a_of_type_Blwi = paramblwi;
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.d == null) {
-      return;
-    }
-    TextView localTextView = (TextView)this.d.findViewById(2131375587);
-    if (paramBoolean)
-    {
-      localTextView.setText(2131720344);
-      return;
-    }
-    localTextView.setText(2131720339);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      b(paramBoolean1, paramBoolean2);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new FacePoiUI.2(this, paramBoolean1, paramBoolean2));
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
-  {
-    if (paramBoolean1)
-    {
-      a(paramBoolean2);
-      if (this.jdField_a_of_type_Bnav != null)
-      {
-        this.jdField_a_of_type_Bnav.a(paramArrayList, paramTroopBarPOI);
-        this.jdField_a_of_type_Bnav.notifyDataSetChanged();
-        if (paramArrayList.isEmpty()) {
-          a(false, false);
-        }
-      }
-      else
-      {
-        if (paramTroopBarPOI == null) {
-          break label100;
-        }
-        if (!TextUtils.isEmpty(paramTroopBarPOI.c)) {
-          break label91;
-        }
-      }
-      label91:
-      for (paramArrayList = paramTroopBarPOI.d;; paramArrayList = paramTroopBarPOI.c)
-      {
-        a(1, new String[] { paramArrayList });
-        return;
-        a(true, false);
-        break;
-      }
-      label100:
-      a(0, new String[0]);
-      return;
-    }
-    a(3, new String[0]);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.e.getContext()).inflate(2131559510, null, false));
-    }
-    acrg localacrg = new acrg();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localacrg);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "setOverScrollHeader----------------------");
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new blwh(this));
-  }
-  
-  protected void c()
-  {
-    if (this.d == null)
-    {
-      this.d = LayoutInflater.from(this.e.getContext()).inflate(2131559510, null);
-      ImageView localImageView = (ImageView)this.d.findViewById(2131375585);
-      TextView localTextView1 = (TextView)this.d.findViewById(2131375587);
-      TextView localTextView2 = (TextView)this.d.findViewById(2131375593);
-      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131375588);
-      localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131720339);
-      localTextView2.setVisibility(8);
-      localImageView.setVisibility(8);
-      localProgressBar.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
-  }
-  
-  public void d()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bnav != null)
-    {
-      this.jdField_a_of_type_Bnav.a(this.jdField_a_of_type_Blvw.a(), this.jdField_a_of_type_Blvw.a());
-      this.jdField_a_of_type_Bnav.notifyDataSetChanged();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131368624: 
-    case 2131376243: 
-    case 2131376267: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Blvw.c();
-        if (this.jdField_a_of_type_Blwi != null)
-        {
-          this.jdField_a_of_type_Blwi.aX_();
-          return;
-        }
-        d();
-        return;
-      } while (this.jdField_a_of_type_Blwi == null);
-      this.jdField_a_of_type_Blwi.b();
-      return;
-    }
-    this.jdField_a_of_type_Blvw.a();
-    a(false, true);
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((this.jdField_a_of_type_Blvw.a(paramInt)) || (this.jdField_a_of_type_Bnav == null)) {
-      return;
-    }
-    paramView = (TroopBarPOI)this.jdField_a_of_type_Blvw.a().get(paramInt);
-    this.jdField_a_of_type_Blvw.a(paramView);
-    e();
-    bmnv localbmnv = this.jdField_a_of_type_Blvw.a();
-    if (paramView != null) {
-      if (TextUtils.isEmpty(paramView.c))
-      {
-        paramAdapterView = paramView.d;
-        a(1, new String[] { paramAdapterView });
-        if (localbmnv != null) {
-          localbmnv.a(paramView);
-        }
-      }
-    }
+    boolean bool = true;
+    if (!TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_Blwi == null) {
-        break label150;
+      AssertUtil.assertTrue(bool);
+      synchronized (jdField_a_of_type_JavaUtilHashMap)
+      {
+        blwh localblwh2 = (blwh)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        blwh localblwh1 = localblwh2;
+        if (localblwh2 == null)
+        {
+          localblwh1 = new blwh(paramString, 1, paramInt1, paramInt2);
+          localblwh1.a(a());
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, localblwh1);
+        }
+        return localblwh1;
       }
-      this.jdField_a_of_type_Blwi.c();
-      return;
-      paramAdapterView = paramView.c;
-      break;
-      a(0, new String[0]);
-      if (localbmnv != null) {
-        localbmnv.a(null);
+      bool = false;
+    }
+  }
+  
+  public static blwj a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Blwj == null) {
+        jdField_a_of_type_Blwj = new blwj(new blwg());
+      }
+      return jdField_a_of_type_Blwj;
+    }
+  }
+  
+  public static final String a()
+  {
+    return d().a();
+  }
+  
+  private static String a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return "byte";
+    }
+    if (paramInt == 1) {
+      return "KB";
+    }
+    if (paramInt == 2) {
+      return "MB";
+    }
+    if (paramInt == 3) {
+      return "GB";
+    }
+    if (paramInt == 4) {
+      return "TB";
+    }
+    if (paramInt == 5) {
+      return "PB";
+    }
+    return "";
+  }
+  
+  private static final String a(int paramInt, float paramFloat)
+  {
+    if (paramFloat < 0.0F) {
+      return "";
+    }
+    if (paramFloat < 1024.0F) {
+      return String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }) + a(paramInt);
+    }
+    return a(paramInt + 1, paramFloat / 1024.0F);
+  }
+  
+  private static final String a(long paramLong)
+  {
+    return a(0, (float)paramLong);
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    String str = c(paramString);
+    if (TextUtils.isEmpty(str)) {}
+    for (;;)
+    {
+      int i = paramString.hashCode();
+      if ("mounted".equals(Environment.getExternalStorageState()))
+      {
+        paramContext = blwp.q;
+        if (paramContext != null) {
+          break label95;
+        }
+      }
+      label95:
+      for (paramContext = null;; paramContext = paramContext + File.separator + String.valueOf(i))
+      {
+        return paramContext;
+        paramContext = paramContext.getCacheDir().getAbsolutePath() + File.separator + "qzone" + File.separator + "image";
+        break;
+      }
+      paramString = str;
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = p();
+    if (TextUtils.isEmpty(paramString)) {
+      return str;
+    }
+    paramString = new File(str + File.separator + paramString);
+    if (paramString.isFile()) {
+      FileUtils.delete(paramString);
+    }
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+    return paramString.getAbsolutePath();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    return a(paramString);
+  }
+  
+  public static void a()
+  {
+    c.clear();
+    jdField_a_of_type_Boolean = false;
+    a(false);
+  }
+  
+  public static void a(long paramLong)
+  {
+    b(paramLong);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext = blwp.q;
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+    atwl.c(blwp.t);
+    paramContext = blwp.r;
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+    atwl.c(blwp.s);
+    paramContext = blwp.u;
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+    paramContext = blwp.v;
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+    paramContext = p();
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+    paramContext = n();
+    if (paramContext != null) {
+      atwl.c(paramContext);
+    }
+  }
+  
+  static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        jdField_b_of_type_JavaLangString = n();
+        File localFile = new File(jdField_b_of_type_JavaLangString);
+        if ((!localFile.exists()) && (!localFile.mkdirs()) && (QLog.isColorLevel())) {
+          QLog.w("CacheManager", 2, "Unable to create external cache directory");
+        }
+        if (!localFile.exists()) {
+          return;
+        }
+        localFile = new File(jdField_b_of_type_JavaLangString, ".nomedia");
+        if (localFile.exists()) {
+          return;
+        }
+        localFile.createNewFile();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("CacheManager", 1, "", localException);
+      }
+      jdField_b_of_type_JavaLangString = blwp.jdField_b_of_type_JavaLangString;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return SDCardMountMonitorReceiver.a().a();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    String str = Environment.getDataDirectory().getAbsolutePath();
+    return (paramString != null) && (paramString.startsWith(str));
+  }
+  
+  public static final long b()
+  {
+    if (!a()) {
+      return -1L;
+    }
+    Object localObject = p();
+    try
+    {
+      localObject = new StatFs((String)localObject);
+      long l = ((StatFs)localObject).getBlockSize();
+      int i = ((StatFs)localObject).getAvailableBlocks();
+      return i * l;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("CacheManager", 1, "", localException);
+    }
+    return -1L;
+  }
+  
+  public static blwh b()
+  {
+    return a("offline", 104857600, 20971520);
+  }
+  
+  public static String b()
+  {
+    return a("video");
+  }
+  
+  public static String b(String paramString)
+  {
+    String str = n();
+    if (TextUtils.isEmpty(paramString)) {
+      return str;
+    }
+    paramString = new File(str + File.separator + paramString);
+    if (paramString.isFile()) {
+      FileUtils.delete(paramString);
+    }
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+    return paramString.getAbsolutePath();
+  }
+  
+  public static void b()
+  {
+    a();
+    f();
+    b();
+    d();
+    h();
+    a().a();
+  }
+  
+  private static void b(long paramLong)
+  {
+    String str1 = LocalMultiProcConfig.getString("qua", "");
+    String str2 = blru.a();
+    if (!str1.equals(str2))
+    {
+      LocalMultiProcConfig.putString4Uin("getMapLastGetTime", "", paramLong);
+      LocalMultiProcConfig.putString("qua", str2);
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return false;
+      if ((paramString.startsWith("https://")) || (paramString.startsWith("https://"))) {
+        return true;
+      }
+    } while (!URLUtil.isNetworkUrl(paramString));
+    return true;
+  }
+  
+  public static blwh c()
+  {
+    return a("zip_cache", 104857600, 20971520);
+  }
+  
+  public static String c()
+  {
+    Object localObject = blwp.jdField_b_of_type_JavaLangString;
+    if (localObject != null)
+    {
+      File localFile = new File((String)localObject);
+      if (localFile.isFile()) {
+        FileUtils.delete(localFile);
+      }
+      if (!localFile.exists()) {
+        localFile.mkdirs();
       }
     }
-    label150:
-    d();
+    localObject = new File((String)localObject + File.separator + "video_cache");
+    if (((File)localObject).isFile()) {
+      FileUtils.delete((File)localObject);
+    }
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return ((File)localObject).getAbsolutePath();
+  }
+  
+  public static String c(String paramString)
+  {
+    String str = paramString;
+    if (b(paramString))
+    {
+      int k = paramString.indexOf('/', 8);
+      int j = paramString.indexOf("ek=1");
+      int i = j;
+      if (j == -1)
+      {
+        j = paramString.indexOf('#');
+        i = j;
+        if (j == -1) {
+          i = paramString.length();
+        }
+      }
+      str = paramString.substring(k + 1, i);
+    }
+    return str;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    localObject = (Boolean)c.get(paramString);
+    if (localObject != null) {
+      return ((Boolean)localObject).booleanValue();
+    }
+    bool2 = false;
+    bool1 = false;
+    long l = Thread.currentThread().getId();
+    localObject = new File(paramString + "/qz" + l);
+    for (;;)
+    {
+      try
+      {
+        if (!((File)localObject).exists()) {
+          continue;
+        }
+        if (((File)localObject).delete()) {
+          bool1 = ((File)localObject).createNewFile();
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("CacheManager", 1, "", localThrowable);
+        ((File)localObject).delete();
+        bool1 = bool2;
+        continue;
+      }
+      finally
+      {
+        ((File)localObject).delete();
+      }
+      c.put(paramString, Boolean.valueOf(bool1));
+      return bool1;
+      bool1 = ((File)localObject).createNewFile();
+    }
+  }
+  
+  public static blwh d()
+  {
+    return a("personalise_font", 104857600, 41943040);
+  }
+  
+  public static String d()
+  {
+    return a("rapid_comment");
+  }
+  
+  public static blwh e()
+  {
+    return a("qzone_widgetai", 104857600, 20971520);
+  }
+  
+  public static String e()
+  {
+    return a("gift_fullscreen");
+  }
+  
+  public static blwh f()
+  {
+    return a("avatar", 52428800, 20971520);
+  }
+  
+  public static String f()
+  {
+    return a("passive_praise");
+  }
+  
+  public static blwh g()
+  {
+    return a("personality_canvas", 2097152, 1048576);
+  }
+  
+  public static String g()
+  {
+    return a("dehaze_pic");
+  }
+  
+  public static blwh h()
+  {
+    return a("batch_image", 104857600, 62914560);
+  }
+  
+  public static String h()
+  {
+    return a("plus_operation");
+  }
+  
+  public static String i()
+  {
+    return a("plus_decorate");
+  }
+  
+  public static String j()
+  {
+    return a("moodlistIcons");
+  }
+  
+  public static String k()
+  {
+    return a("head_drop_operaion");
+  }
+  
+  public static String l()
+  {
+    return a("surprise");
+  }
+  
+  public static String m()
+  {
+    return a("smart_beautify");
+  }
+  
+  public static String n()
+  {
+    File localFile = BaseApplicationImpl.getContext().getCacheDir();
+    if (localFile != null) {
+      return localFile.getAbsolutePath() + File.separator + "qzone";
+    }
+    return null;
+  }
+  
+  public static String o()
+  {
+    return bhgg.a(anhk.bg + UUID.randomUUID().toString() + ".jpg");
+  }
+  
+  public static String p()
+  {
+    if (jdField_b_of_type_JavaLangString == null) {}
+    try
+    {
+      if (jdField_b_of_type_JavaLangString == null) {
+        a(false);
+      }
+      return jdField_b_of_type_JavaLangString;
+    }
+    finally {}
+  }
+  
+  public static final String q()
+  {
+    long l = a();
+    if (l >= 0L) {
+      return a(l);
+    }
+    return "无SD Card";
+  }
+  
+  public static final String r()
+  {
+    long l = b();
+    if (l >= 0L) {
+      return a(l);
+    }
+    return "无SD Card";
   }
 }
 

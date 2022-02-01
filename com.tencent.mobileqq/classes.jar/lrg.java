@@ -1,98 +1,212 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class lrg
+public abstract class lrg
+  extends lra
 {
-  private static lrg jdField_a_of_type_Lrg;
-  int jdField_a_of_type_Int = 0;
+  private static int k;
+  boolean a;
+  protected Bitmap b;
+  private boolean b;
+  private boolean c = true;
+  private boolean d;
   
-  public static lrg a()
+  protected lrg()
   {
-    try
+    super(null, 0);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private Bitmap b()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
     {
-      lrg locallrg;
-      if (jdField_a_of_type_Lrg != null)
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a();
+      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
       {
-        locallrg = jdField_a_of_type_Lrg;
-        return locallrg;
+        int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
+        int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
+        if (this.e == -1) {
+          a(i, j);
+        }
       }
-      return null;
     }
-    finally
-    {
+    return this.jdField_b_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void c(lpx paramlpx)
+  {
+    Bitmap localBitmap = b();
+    if (localBitmap != null) {
       try
       {
-        jdField_a_of_type_Lrg = new lrg();
-        locallrg = jdField_a_of_type_Lrg;
-        return locallrg;
+        int i = localBitmap.getWidth();
+        int j = localBitmap.getHeight();
+        int m = e();
+        int n = f();
+        if (this.jdField_a_of_type_ArrayOfInt == null) {
+          this.jdField_a_of_type_ArrayOfInt = new int[1];
+        }
+        this.jdField_a_of_type_ArrayOfInt[0] = paramlpx.a().a();
+        paramlpx.a(this);
+        if ((i == m) && (j == n)) {
+          paramlpx.a(this, localBitmap);
+        }
+        for (;;)
+        {
+          e();
+          a(paramlpx);
+          this.jdField_b_of_type_Int = 1;
+          this.jdField_b_of_type_Boolean = true;
+          return;
+          i = GLUtils.getInternalFormat(localBitmap);
+          j = GLUtils.getType(localBitmap);
+          paramlpx.a(this, i, j);
+          paramlpx.a(this, 0, 0, localBitmap, i, j);
+        }
+        this.jdField_b_of_type_Int = -1;
       }
-      catch (Exception localException) {}
-      localObject = finally;
+      finally
+      {
+        e();
+      }
+    }
+    throw new RuntimeException("Texture load fail, no bitmap");
+  }
+  
+  private void e()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    {
+      a(this.jdField_b_of_type_AndroidGraphicsBitmap);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     }
   }
   
-  public boolean a()
+  public static boolean e()
   {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
-      bool = true;
+    return k > 100;
+  }
+  
+  public static void g()
+  {
+    k = 0;
+  }
+  
+  protected abstract Bitmap a();
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
     }
-    return bool;
+  }
+  
+  protected abstract void a(Bitmap paramBitmap);
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean a(lpx paramlpx)
+  {
+    b(paramlpx);
+    return true;
+  }
+  
+  public lqy[] a(lpx paramlpx)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+    }
+    return super.a(paramlpx);
+  }
+  
+  public void b(lpx paramlpx)
+  {
+    if (!c()) {
+      if (this.d)
+      {
+        int i = k + 1;
+        k = i;
+        if (i <= 100) {}
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        c(paramlpx);
+        return;
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          Bitmap localBitmap = b();
+          if (localBitmap != null) {
+            try
+            {
+              if (!localBitmap.isRecycled())
+              {
+                paramlpx.a(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
+                e();
+                this.jdField_b_of_type_Boolean = true;
+                return;
+              }
+            }
+            catch (IllegalArgumentException paramlpx) {}
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("UploadedTexture", 2, "WL_DEBUG updateContent e = " + paramlpx);
   }
   
   public boolean b()
   {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
-      bool = true;
+    return this.c;
+  }
+  
+  public int c()
+  {
+    if (this.e == -1) {
+      b();
     }
-    return bool;
+    return this.e;
   }
   
-  public boolean c()
+  public int d()
   {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
-      bool = true;
+    if (this.e == -1) {
+      b();
     }
-    return bool;
+    return this.f;
   }
   
-  public boolean d()
+  protected void f()
   {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
-      bool = true;
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
     }
-    return bool;
+    this.jdField_b_of_type_Boolean = false;
+    this.e = -1;
+    this.f = -1;
   }
   
-  public boolean e()
+  public int g()
   {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean f()
-  {
-    return lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
-  }
-  
-  public boolean g()
-  {
-    return lim.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
-  }
-  
-  public boolean h()
-  {
-    return 1 == lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
+    return 3553;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lrg
  * JD-Core Version:    0.7.0.1
  */

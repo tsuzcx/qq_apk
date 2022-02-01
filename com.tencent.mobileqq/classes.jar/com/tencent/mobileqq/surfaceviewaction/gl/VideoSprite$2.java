@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.media.MediaPlayer;
-import baej;
-import baew;
+import bdfn;
+import bdga;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoSprite$2
@@ -23,7 +23,7 @@ public class VideoSprite$2
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
       this.this$0.n = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
       this.this$0.o = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new baew(this));
+      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new bdga(this));
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
       this.this$0.b = this.jdField_a_of_type_JavaLangString;
       return;
@@ -35,8 +35,8 @@ public class VideoSprite$2
         if (QLog.isColorLevel()) {
           QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(localException));
         }
-        if (this.this$0.jdField_a_of_type_Baej != null) {
-          this.this$0.jdField_a_of_type_Baej.a();
+        if (this.this$0.jdField_a_of_type_Bdfn != null) {
+          this.this$0.jdField_a_of_type_Bdfn.a();
         }
       }
     }
@@ -44,7 +44,7 @@ public class VideoSprite$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2
  * JD-Core Version:    0.7.0.1
  */

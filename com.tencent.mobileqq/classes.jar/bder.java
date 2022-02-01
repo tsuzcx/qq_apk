@@ -1,26 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-final class bder
-  extends Handler
+public class bder
 {
-  bder(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public float a;
+  public float b;
   
-  public void handleMessage(Message paramMessage)
+  public bder(float paramFloat1, float paramFloat2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bdeq.a();
-      return;
-    }
-    bdeq.b();
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
 }
 

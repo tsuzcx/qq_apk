@@ -1,25 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import mqq.os.MqqHandler;
 
-class ajgm
-  implements View.OnClickListener
+public class ajgm
+  extends anxg
 {
-  ajgm(ajgb paramajgb) {}
+  public ajgm(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1018);
     }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    biun.a(ajgb.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1016);
+    }
   }
 }
 

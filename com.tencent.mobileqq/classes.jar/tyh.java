@@ -1,93 +1,89 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class tyh
-  implements View.OnClickListener
+public class tyh
 {
-  tyh(txz paramtxz) {}
+  int jdField_a_of_type_Int = 0;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
   
-  public void onClick(View paramView)
+  public tyh(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
-    trz localtrz = new trz();
-    Object localObject = null;
-    ReportExtraTypeInfo localReportExtraTypeInfo = new ReportExtraTypeInfo();
-    paramView = (View)localObject;
-    if (txz.a(this.a) != null)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
+    this.b = "";
+    try
     {
-      paramView = (View)localObject;
-      if (txz.a(this.a).a() != null)
-      {
-        localObject = txz.a(this.a).a();
-        if (!(localObject instanceof txm)) {
-          break label267;
-        }
-        paramView = ((txm)localObject).a;
-        if (paramView == null) {
-          break label304;
-        }
-        paramView = (FeedCloudMeta.StFeed)paramView.a();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
+      label66:
+      this.c = a(paramInt1);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      break label66;
+    }
+  }
+  
+  public tyh(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = a(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = tyg.a(paramContext, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
+    }
+    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
+    {
+      paramString1 = aend.b(paramContext, paramString2);
+      if (paramString1 != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
       }
     }
-    for (;;)
+    while (!QLog.isColorLevel())
     {
-      localReportExtraTypeInfo.mFeed = paramView;
-      localReportExtraTypeInfo.mDataPosition = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
-      localReportExtraTypeInfo.mPlayScene = 2;
-      localtrz.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = localReportExtraTypeInfo;
-      localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramView;
-      localtrz.jdField_a_of_type_Int = 0;
-      if (!tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed)) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        localtrz.c = bool1;
-        localtrz.b = tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
-        localtrz.d = false;
-        if (localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
-        {
-          localObject = localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.opMask2.get();
-          if ((localObject != null) && (((List)localObject).contains(Integer.valueOf(3))))
-          {
-            bool1 = bool2;
-            if (!tra.a((FeedCloudMeta.StUser)localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
-              bool1 = true;
-            }
-            localtrz.d = bool1;
-          }
-        }
-        if (paramView != null)
-        {
-          this.a.b("share_action_show_share_sheet", localtrz);
-          txz.a(this.a, true);
-        }
-        return;
-        label267:
-        if (!(localObject instanceof txn)) {
-          break label304;
-        }
-        paramView = ((txn)localObject).a;
-        if (paramView == null) {
-          break label304;
-        }
-        paramView = (FeedCloudMeta.StFeed)paramView.a();
-        break;
-      }
-      label304:
-      paramView = null;
+      return;
+      aend.a(paramQQAppInterface, paramContext, paramString2, new aene(paramContext, new tyi(this, paramQQAppInterface, this.c), new Object[0]));
+      return;
     }
+    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return String.valueOf(7210);
+    case 2: 
+      return String.valueOf(anhk.az);
+    }
+    return String.valueOf(anhk.aA);
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyh
  * JD-Core Version:    0.7.0.1
  */

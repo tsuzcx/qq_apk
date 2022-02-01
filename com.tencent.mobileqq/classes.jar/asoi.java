@@ -1,45 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
-public class asoi
-  extends Handler
+class asoi
+  implements Animation.AnimationListener
 {
-  private WeakReference<ScrollTextView> a;
+  asoi(asoh paramasoh) {}
   
-  public asoi(ScrollTextView paramScrollTextView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramScrollTextView);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new asoj(this));
+    this.a.c.startAnimation(paramAnimation);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
-    if (localScrollTextView == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (ScrollTextView.a(localScrollTextView) != null)
-    {
-      localScrollTextView.b();
-      ScrollTextView.a(localScrollTextView);
-      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
-        ScrollTextView.a(localScrollTextView, 0);
-      }
-      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
-    }
-    removeMessages(9001);
-    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

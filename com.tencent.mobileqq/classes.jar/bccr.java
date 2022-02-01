@@ -1,18 +1,52 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
 
 public class bccr
-  implements bccw
+  extends MSFServlet
 {
-  public bccr(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  public static void a(int paramInt, AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    paramView = this.a.jdField_a_of_type_Bccv.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-    bdes.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bccr.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    localNewIntent.putExtra("type", paramInt);
+    paramAppRuntime.startServlet(localNewIntent);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  {
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bccr.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    paramAppRuntime.startServlet(localNewIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
+      }
+      return;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = new blyw(paramIntent.getIntExtra("type", 1), (UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
+    paramPacket.setTimeout(10000L);
+    paramPacket.setSSOCommand(paramIntent.getCmdString());
+    paramPacket.putSendData(paramIntent.encode());
   }
 }
 

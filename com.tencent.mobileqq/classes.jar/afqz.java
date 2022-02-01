@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class afqz
-  extends afuf
+public class afqz
+  implements DialogInterface.OnClickListener
 {
-  afqz(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afqz(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return aqvw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
+    this.a.l();
+    this.a.b(this.a.n);
+    if (VipUtils.b(this.a.app)) {}
+    for (paramDialogInterface = "4";; paramDialogInterface = "3")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), paramDialogInterface, "1");
+      return;
+    }
   }
 }
 

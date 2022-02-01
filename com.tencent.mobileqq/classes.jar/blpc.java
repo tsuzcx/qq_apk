@@ -1,12 +1,37 @@
-class blpc
-  implements blpa
+import android.os.Bundle;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+
+public class blpc
 {
-  blpc(blpb paramblpb) {}
+  private static blpc a;
   
-  public void a(int paramInt)
+  public static blpc a()
   {
-    blpb.a(this.a).a(paramInt);
-    blpb.a(this.a);
+    try
+    {
+      if (a == null) {
+        a = new blpc();
+      }
+      blpc localblpc = a;
+      return localblpc;
+    }
+    finally {}
+  }
+  
+  public boolean a(String paramString, Bundle paramBundle)
+  {
+    if (!blnn.a().a())
+    {
+      blpu.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
+      blnn.a().a();
+    }
+    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
+    do
+    {
+      return false;
+      localReaderInterfacePluginProxy = blnn.a().a();
+    } while (localReaderInterfacePluginProxy == null);
+    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
   }
 }
 

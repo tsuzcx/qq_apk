@@ -5,10 +5,7 @@ import android.content.res.AssetManager;
 import android.os.Build.VERSION;
 import android.util.Log;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
 
 public class Auth
 {
@@ -52,40 +49,6 @@ public class Auth
     return licensePath;
   }
   
-  private static String getSerial()
-  {
-    String str2 = "";
-    try
-    {
-      LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
-      int i = 1;
-      for (;;)
-      {
-        String str1 = str2;
-        if (i < 100)
-        {
-          String str3 = localLineNumberReader.readLine();
-          str1 = str2;
-          if (str3 != null)
-          {
-            if (str3.indexOf("Serial") <= -1) {
-              break label88;
-            }
-            str1 = str3.substring(str3.indexOf(":") + 1, str3.length()).trim();
-          }
-        }
-        return str1;
-        label88:
-        i += 1;
-      }
-      return "";
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-  }
-  
   public static int getVersion()
   {
     return nativeGetVersion();
@@ -95,52 +58,48 @@ public class Auth
   {
     boolean bool1 = false;
     YTLog.d("youtu-common", "start init");
-    if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0)) {}
-    for (;;)
+    if ((Build.VERSION.SDK_INT < 29) || (paramInt == 0)) {}
+    do
     {
-      if (paramInt == 0) {}
-      for (;;)
+      do
       {
+        boolean bool2;
         try
         {
           InputStream localInputStream = paramContext.getAssets().open(paramString, 0);
-          if (localInputStream == null) {
+          if (localInputStream == null)
+          {
             return -10;
+            if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0)) {
+              break;
+            }
+            bool1 = true;
+            break;
           }
           localInputStream.close();
           handle = nativeInitN(paramContext, paramInt, paramString, paramContext.getAssets(), paramString, bool1);
           YTLog.d("youtu-common", "handleinit: " + handle);
           return getCurrentAuthStatus(handle);
         }
-        catch (Exception paramContext)
-        {
-          boolean bool2;
-          return -10;
-        }
-        if (paramInt == 2)
-        {
-          bool2 = new File(paramString).exists();
-          if (!bool2) {
-            return -10;
-          }
-        }
-      }
-      bool1 = true;
-    }
+        catch (Exception paramContext) {}
+      } while (paramInt != 2);
+      bool2 = new File(paramString).exists();
+    } while (bool2);
+    return -10;
+    return -10;
   }
   
   public static int init(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
   {
+    boolean bool = false;
     if (licensePath.isEmpty())
     {
       licensePath = paramContext.getFilesDir().getPath() + File.separator + ".youtu_common.lic";
-      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
-        break label207;
+      if (Build.VERSION.SDK_INT < 29) {
+        break label191;
       }
     }
-    label200:
-    label207:
-    for (boolean bool = false;; bool = true)
+    for (;;)
     {
       int i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), paramInt, bool, paramString3);
       paramInt = i;
@@ -148,7 +107,7 @@ public class Auth
       {
         handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
         if (getCurrentAuthStatus(handle) == 0) {
-          break label200;
+          break label214;
         }
         i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), 1, bool, paramString3);
         paramInt = i;
@@ -164,7 +123,28 @@ public class Auth
       }
       Log.e("youtu-common", "WRITE_EXTERNAL_STORAGE permission required.");
       return 2004;
+      label191:
+      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
+        bool = true;
+      }
+    }
+    label214:
+    return getCurrentAuthStatus(handle);
+  }
+  
+  public static int initAuthForQQ(Context paramContext)
+  {
+    boolean bool = false;
+    YTLog.d("youtu-common", "start init");
+    if (Build.VERSION.SDK_INT >= 29) {}
+    for (;;)
+    {
+      handle = nativeInitN(paramContext, 1, "oWxLt1xJmA2/uaL5b3J2OrUdgDRjGZ1UgdsvOop8fuauDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFtkAJ63rYp9+bHnm0Ity2Sh84FsmFHUZvUpYYSNS4K3VubQNfCo8r4Q8WL1LNolUBIbo/QqDSAqfiBwJDpcuwOJuSWWb7zEBfe4G/wytC2t+7XGmdz8sw3L/j8ccEJZBfgcr5DJVyfSezYBQHSZW0EyYVvKTV2lFxpe/KXmznUMfKTs+qDE30SjGYQKbPQS+tsO1Yrq0bsUiw7ViurRuxSLDtWK6tG7FIgNMklswqskLLzMQJiZU/R4vMxAmJlT9Hi8zECYmVP0eJ63g0TIusPM0okMOXrstslseVFT69i6Bxf78s4sNUfQ=", paramContext.getAssets(), "oWxLt1xJmA2/uaL5b3J2OrUdgDRjGZ1UgdsvOop8fuauDF40cJoVL+9UUfHwStdYs6QEDV1cYTR4i/S2HAQurX+asnVcb4AW+O5XfqUMBdN/mrJ1XG+AFtkAJ63rYp9+bHnm0Ity2Sh84FsmFHUZvUpYYSNS4K3VubQNfCo8r4Q8WL1LNolUBIbo/QqDSAqfiBwJDpcuwOJuSWWb7zEBfe4G/wytC2t+7XGmdz8sw3L/j8ccEJZBfgcr5DJVyfSezYBQHSZW0EyYVvKTV2lFxpe/KXmznUMfKTs+qDE30SjGYQKbPQS+tsO1Yrq0bsUiw7ViurRuxSLDtWK6tG7FIgNMklswqskLLzMQJiZU/R4vMxAmJlT9Hi8zECYmVP0eJ63g0TIusPM0okMOXrstslseVFT69i6Bxf78s4sNUfQ=", bool);
+      YTLog.d("youtu-common", "handleinit: " + handle);
       return getCurrentAuthStatus(handle);
+      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
+        bool = true;
+      }
     }
   }
   
@@ -187,7 +167,7 @@ public class Auth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ytcommon.auth.Auth
  * JD-Core Version:    0.7.0.1
  */

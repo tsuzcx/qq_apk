@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import alct;
+import amvz;
 
 public final class CmShowTest$4
   implements Runnable
@@ -11,8 +11,8 @@ public final class CmShowTest$4
   {
     CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
     localPlayActionConfig.jdField_a_of_type_Int = 300272;
-    int i = alct.jdField_a_of_type_Int + 1;
-    alct.jdField_a_of_type_Int = i;
+    int i = amvz.jdField_a_of_type_Int + 1;
+    amvz.jdField_a_of_type_Int = i;
     localPlayActionConfig.jdField_b_of_type_Int = i;
     localPlayActionConfig.jdField_b_of_type_Boolean = true;
     localPlayActionConfig.c = 2;
@@ -25,7 +25,7 @@ public final class CmShowTest$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowTest.4
  * JD-Core Version:    0.7.0.1
  */

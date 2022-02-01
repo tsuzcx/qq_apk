@@ -1,6 +1,14 @@
-public abstract interface apay
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
+
+public final class apay
+  implements AVGestureWrapper.AVUploadReport
 {
-  public abstract void a(int paramInt);
+  public void avGestureUploadReport(String paramString1, String paramString2)
+  {
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+  }
 }
 
 

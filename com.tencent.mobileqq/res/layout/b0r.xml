@@ -9,7 +9,4 @@
     <FrameLayout android:id="@id/a3y" android:background="@drawable/agn" android:layout_width="wrap_content" android:layout_height="20.0dip" android:contentDescription="@string/c9g">
         <com.tencent.widget.ThemeImageView android:layout_gravity="center_vertical" android:id="@id/bn6" android:background="@drawable/bz4" android:layout_width="36.0dip" android:layout_height="16.0dip" android:layout_marginRight="6.0dip" android:includeFontPadding="false" />
     </FrameLayout>
-    <FrameLayout android:id="@id/eo7" android:background="@drawable/agn" android:layout_width="wrap_content" android:layout_height="20.0dip">
-        <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="@color/ahb" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/eo_" android:background="@drawable/f40" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
 </merge>

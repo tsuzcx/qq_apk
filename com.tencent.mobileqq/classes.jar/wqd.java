@@ -1,48 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-
 public class wqd
-  extends umf<wpr, wql>
 {
-  public wqd(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  public final int a;
+  public final String a;
   
-  public void a(@NonNull wpr paramwpr, @NonNull wql paramwql)
+  public wqd(int paramInt, String paramString)
   {
-    Object localObject = paramwql.a;
-    paramwql = paramwpr.a(((wqn)localObject).a.feedId);
-    if (paramwql == null)
-    {
-      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((wqn)localObject).a.feedId });
-      return;
-    }
-    if ((!(localObject instanceof wqp)) || (!(paramwql instanceof wqp)))
-    {
-      wxe.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
-      return;
-    }
-    localObject = (wqp)localObject;
-    paramwql = (wqp)paramwql;
-    paramwql.a = ((wqp)localObject).a;
-    paramwql.a(((wqp)localObject).b(), false);
-    paramwql.b(((wqp)localObject).c(), false);
-    paramwql.c(((wqp)localObject).a(), false);
-    wpr.a(paramwpr).b(paramwql.a.feedId);
-    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramwql);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public Class acceptEventClass()
-  {
-    return wql.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull wql paramwql) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqd
  * JD-Core Version:    0.7.0.1
  */

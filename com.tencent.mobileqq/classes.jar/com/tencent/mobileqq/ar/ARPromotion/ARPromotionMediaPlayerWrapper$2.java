@@ -1,43 +1,41 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amtd;
-import amte;
-import amvz;
+import aoru;
+import aorv;
+import aouq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
 public class ARPromotionMediaPlayerWrapper$2
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$2(amtd paramamtd, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2) {}
-  
   public void run()
   {
-    if (amtd.a(this.this$0)) {}
+    if (aoru.a(this.this$0)) {}
     for (;;)
     {
       return;
       try
       {
-        amtd.a(this.this$0);
-        amtd.a(this.this$0);
-        if ((amtd.a(this.this$0) != null) && (amtd.a(this.this$0) != null))
+        aoru.a(this.this$0);
+        aoru.a(this.this$0);
+        if ((aoru.a(this.this$0) != null) && (aoru.a(this.this$0) != null))
         {
-          amtd.a(this.this$0).bind();
-          amtd.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-          if (!amtd.a(this.this$0).a())
+          aoru.a(this.this$0).bind();
+          aoru.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
+          if (!aoru.a(this.this$0).a())
           {
-            amtd.a(this.this$0).a();
-            amvz localamvz = amtd.a(this.this$0);
-            amtd.a(this.this$0);
-            localamvz.a(amvz.f);
+            aoru.a(this.this$0).a();
+            aouq localaouq = aoru.a(this.this$0);
+            aoru.a(this.this$0);
+            localaouq.a(aouq.g);
           }
-          amtd.a(this.this$0).a(amtd.a(this.this$0)[0], amtd.a(this.this$0)[1], amtd.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          amtd.a(this.this$0).b();
-          amtd.a(this.this$0).unbind();
-          if ((amtd.b(this.this$0) == 2L) && (amtd.a(this.this$0) != null))
+          aoru.a(this.this$0).a(aoru.a(this.this$0)[0], aoru.a(this.this$0)[1], aoru.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          aoru.a(this.this$0).b();
+          aoru.a(this.this$0).unbind();
+          if ((aoru.b(this.this$0) == 2L) && (aoru.a(this.this$0) != null))
           {
-            amtd.a(this.this$0).a(amtd.b(this.this$0), 0, amtd.a(this.this$0).getTexId());
+            aoru.a(this.this$0).a(aoru.b(this.this$0), 0, aoru.a(this.this$0).getTexId());
             QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
             return;
           }
@@ -53,7 +51,7 @@ public class ARPromotionMediaPlayerWrapper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.2
  * JD-Core Version:    0.7.0.1
  */

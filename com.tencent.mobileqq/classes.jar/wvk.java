@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class wvk
+  extends wvi
 {
-  public final int a;
-  public final List<LocalMediaInfo> a;
-  public final uiz a;
+  protected TextView c = (TextView)a(2131380252);
   
-  public wvk(List<LocalMediaInfo> paramList, int paramInt, uiz paramuiz)
+  public wvk(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Uiz = paramuiz;
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a(wrs paramwrs)
+  {
+    if (paramwrs.b > 99)
+    {
+      this.c.setText("99+");
+      return;
+    }
+    this.c.setText(String.valueOf(paramwrs.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvk
  * JD-Core Version:    0.7.0.1
  */

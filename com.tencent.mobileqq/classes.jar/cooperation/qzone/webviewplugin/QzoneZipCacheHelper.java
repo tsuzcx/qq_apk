@@ -5,10 +5,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bhsz;
-import bjhx;
-import bjhz;
-import bjzj;
+import bkgj;
+import blwf;
+import blwh;
+import bmnu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import ndr;
+import nmk;
 
 public class QzoneZipCacheHelper
 {
@@ -33,7 +33,7 @@ public class QzoneZipCacheHelper
   private static final String TAG = "QzoneZipCacheHelper";
   private static final byte[] URL_LOCK = new byte[0];
   public static final String ZIPURL = "zipurl";
-  private static bjhz mFileCache;
+  private static blwh mFileCache;
   private static ConcurrentHashMap<String, CopyOnWriteArrayList<Object>> sDownloadindUrlMap = new ConcurrentHashMap();
   
   public static boolean checkAndDownLoadFileIfNeeded(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
@@ -57,13 +57,13 @@ public class QzoneZipCacheHelper
           {
             updateLruFileInNewThread(paramString2, paramString3);
             if (QLog.isColorLevel()) {
-              QLog.i("QzoneZipCacheHelper", 2, String.format("file exist,update lru,url:%s,path:%s", new Object[] { paramString2, str }));
+              QLog.i("QzoneZipCacheHelper", 2, String.format("file exist,update lru,url:%s,path:%s , zipUrl = %s ", new Object[] { paramString2, str, paramString1 }));
             }
             if (paramQzoneZipCacheHelperCallBack == null) {
-              break label300;
+              break label304;
             }
             paramQzoneZipCacheHelperCallBack.onResultOfNativeRequest(true, str, paramString1);
-            break label300;
+            break label304;
           }
         }
         synchronized (URL_LOCK)
@@ -72,7 +72,7 @@ public class QzoneZipCacheHelper
           {
             paramString3 = (CopyOnWriteArrayList)sDownloadindUrlMap.get(paramString1);
             if (paramString3 != null) {
-              break label302;
+              break label306;
             }
             paramString3 = new CopyOnWriteArrayList();
             i = 0;
@@ -87,7 +87,7 @@ public class QzoneZipCacheHelper
             else
             {
               if (i == 0) {
-                break label274;
+                break label278;
               }
               return false;
             }
@@ -100,12 +100,12 @@ public class QzoneZipCacheHelper
         QLog.e("QzoneZipCacheHelper", 1, paramAppInterface, new Object[0]);
         return false;
       }
-      label274:
-      ThreadManager.postDownLoadTask(new QzoneZipCacheHelper.2(paramString2, str, paramInt, paramString1, paramAppInterface), 2, null, false);
+      label278:
+      ThreadManager.postDownLoadTask(new QzoneZipCacheHelper.2(paramString2, str, paramString1, paramInt, paramAppInterface), 2, null, false);
       continue;
-      label300:
+      label304:
       return true;
-      label302:
+      label306:
       int i = 1;
     }
   }
@@ -181,10 +181,10 @@ public class QzoneZipCacheHelper
     return getFileCache().a(getFolderName(paramString1, paramString2));
   }
   
-  private static bjhz getFileCache()
+  private static blwh getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bjhx.c();
+      mFileCache = blwf.c();
     }
     return mFileCache;
   }
@@ -194,7 +194,7 @@ public class QzoneZipCacheHelper
     if (!URLUtil.isNetworkUrl(paramString)) {
       return null;
     }
-    Map localMap = bhsz.a(paramString);
+    Map localMap = bkgj.a(paramString);
     return getFileIfExists(paramAppInterface, getUrlBase(paramString), getFileName(paramString), (String)localMap.get("business"), (String)localMap.get("dir"), null);
   }
   
@@ -223,14 +223,13 @@ public class QzoneZipCacheHelper
   public static String[] getFileList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    File localFile;
     for (;;)
     {
       return null;
       try
       {
-        localFile = new File(paramString);
-        if (!localFile.exists())
+        localObject = new File(paramString);
+        if (!((File)localObject).exists())
         {
           if (!QLog.isColorLevel()) {
             continue;
@@ -245,11 +244,14 @@ public class QzoneZipCacheHelper
         return null;
       }
     }
-    paramString = localFile.list();
-    if (paramString != null) {
-      Arrays.sort(paramString);
+    Object localObject = ((File)localObject).list();
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneZipCacheHelper", 2, "getFileList path = " + paramString + " nameList = " + localObject);
     }
-    return paramString;
+    if (localObject != null) {
+      Arrays.sort((Object[])localObject);
+    }
+    return localObject;
   }
   
   private static String getFileName(String paramString)
@@ -305,17 +307,17 @@ public class QzoneZipCacheHelper
   public static void unzipFile(String paramString1, String paramString2)
   {
     createAndClearFile(new File(paramString2));
-    ndr.a(paramString1, paramString2);
+    nmk.a(paramString1, paramString2);
   }
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)
   {
-    PriorityThreadPool.getDefault().submit(new bjzj(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
+    PriorityThreadPool.getDefault().submit(new bmnu(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneZipCacheHelper
  * JD-Core Version:    0.7.0.1
  */

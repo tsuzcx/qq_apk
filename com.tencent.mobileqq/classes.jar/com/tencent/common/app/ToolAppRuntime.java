@@ -1,9 +1,9 @@
 package com.tencent.common.app;
 
-import bimq;
-import bixo;
-import biyo;
-import bizm;
+import blae;
+import bllz;
+import blmz;
+import blnx;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -13,6 +13,7 @@ import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveAppInterface;
 import cooperation.liveroom.LiveRoomHelper;
 import cooperation.qwallet.plugin.QWalletHelper;
 import mqq.app.AppRuntime;
@@ -47,17 +48,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = bimq.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = blae.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = bizm.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = blnx.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = biyo.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = blmz.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -70,7 +71,7 @@ public class ToolAppRuntime
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = bixo.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bllz.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))
@@ -99,6 +100,11 @@ public class ToolAppRuntime
       else if ("LiveRoomPlugin.apk".equals(paramString))
       {
         paramString = LiveRoomHelper.createLiveRoomRuntime(localBaseApplicationImpl, MobileQQ.processName);
+        bool = false;
+      }
+      else if ("ilive_plugin".equals(paramString))
+      {
+        paramString = new IliveAppInterface(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else

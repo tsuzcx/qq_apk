@@ -1,70 +1,77 @@
-import android.os.Build;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QzoneHardwareRestriction;
+import com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeObserver;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
-public class bjvw
+class bjvw
+  extends MiniAppSendSmsCodeObserver
 {
-  public static final int a = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifLowDeviceSize", 720);
-  public static final int b = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifMiddleDeviceSize", 720);
-  public static final int c = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifHighDeviceSize", 720);
-  public static final int d = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_delay", 200);
-  public static final int e = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_size_limit", 64);
-  public static final int f = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_max_speed", 20);
-  public static final int g = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_min_multiple_speed", 3);
-  private static int h = -1;
+  bjvw(bjvo parambjvo, AsyncResult paramAsyncResult) {}
   
-  public static int a()
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    int i = 2;
-    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
-      i = 3;
-    }
-    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
-      return i;
-    }
-    return 1;
-  }
-  
-  public static boolean a()
-  {
-    if (h >= 0) {
-      return h == 1;
-    }
-    String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    super.onFailedResponse(paramString1, paramInt, paramString2);
+    QLog.e("ChannelProxyImpl", 1, "send onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
+    try
     {
-      String str = arrayOfString[i];
-      if (Build.MODEL.equalsIgnoreCase(str))
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
       {
-        h = 1;
-        return true;
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("message", paramString2);
+        localJSONObject.put("code", paramInt);
+        localJSONObject.put("cmd", paramString1);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, localJSONObject);
       }
-      i += 1;
+      return;
     }
-    h = 0;
-    return false;
+    catch (Throwable paramString1)
+    {
+      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramString1);
+    }
   }
   
-  public static int b()
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
   {
-    int i = a();
-    if (i == 1) {
-      return a;
+    super.sendSmsCodeSuccess(paramRspBody);
+    QLog.d("ChannelProxyImpl", 1, "send success");
+    if (paramRspBody != null) {}
+    try
+    {
+      int i = paramRspBody.uint32_resend_interval.get();
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult == null) {
+        return;
+      }
+      paramRspBody = new JSONObject();
+      if (i > 0) {
+        paramRspBody.put("intervalTime", i);
+      }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
+      return;
     }
-    if (i == 2) {
-      return b;
+    catch (Throwable paramRspBody)
+    {
+      QLog.e("ChannelProxyImpl", 1, "sendSmsCodeSuccess error,", paramRspBody);
     }
-    if (i == 3) {
-      return c;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
+    {
+      paramRspBody = new JSONObject();
+      paramRspBody.put("message", "请求回包异常");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramRspBody);
+      return;
     }
-    return 720;
+  }
+  
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
+  {
+    super.verifySmsCodeSuccess(paramRspBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvw
  * JD-Core Version:    0.7.0.1
  */

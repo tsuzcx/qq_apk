@@ -1,30 +1,32 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.graphics.Point;
 
-public class bnkz
-  implements DialogInterface.OnClickListener
+abstract interface bnkz
 {
-  public bnkz(CaptureQmcfSoDownloadFragment.7 param7) {}
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
-    {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
-    }
-    paramDialogInterface.finish();
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, aavt paramaavt);
+  
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
+  
+  public abstract void a(bnim parambnim, int paramInt, Point paramPoint);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(bnkp parambnkp);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 

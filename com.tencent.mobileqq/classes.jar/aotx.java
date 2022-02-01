@@ -1,34 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-public class aotx
-  implements aokj<String>
+public final class aotx
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  public boolean a;
-  
-  public void a(String paramString)
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("QFileIPv6ConfigBean", 1, "receiveAllConfigs|type: 449configContent is empty");
-      return;
-    }
-    try
-    {
-      this.a = new JSONObject(paramString).getJSONObject("ipv6Config").getBoolean("allSwitch");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
-    }
+    return new ARRelationShipAIOMsg(paramParcel);
+  }
+  
+  public ARRelationShipAIOMsg[] a(int paramInt)
+  {
+    return new ARRelationShipAIOMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aotx
  * JD-Core Version:    0.7.0.1
  */

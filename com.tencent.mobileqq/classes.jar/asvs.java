@@ -1,26 +1,23 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-class asvs
-  implements asvh
+public class asvs
+  implements bkkl
 {
-  asvs(asvr paramasvr, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  public asvs(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public void a(asvi paramasvi)
+  public void a(int paramInt)
   {
-    if (paramasvi.a)
+    if ((paramInt == this.a.jdField_a_of_type_Asti.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasvi.a();
-      asvr.a(this.jdField_a_of_type_Asvr, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
+      if (!this.a.b()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
     }
-    do
-    {
+    else {
       return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
-    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 

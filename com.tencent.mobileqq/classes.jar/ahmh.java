@@ -1,57 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NewFriendSubTitle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ahmh
-  extends ahln
-  implements View.OnClickListener
+class ahmh
+  implements TextWatcher
 {
-  public ahmh(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
-  {
-    super(paramContext, paramQQAppInterface, paramakln, paramavun);
-  }
+  ahmh(ahmg paramahmg) {}
   
-  public View a(int paramInt, View paramView)
-  {
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahmi)))
-    {
-      localObject = new ahmi();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561123, null);
-      ((ahmi)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377938));
-      ((ahmi)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365801);
-      ((ahmi)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      paramView.setTag(localObject);
-      ((ahmi)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((avuq)this.jdField_a_of_type_Avun).a.title);
-      localObject = ((ahmi)localObject).jdField_a_of_type_AndroidViewView;
-      if (!((avuq)this.jdField_a_of_type_Avun).a.showEntrance) {
-        break label133;
-      }
-    }
-    label133:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      return paramView;
-      localObject = (ahmi)paramView.getTag();
-      break;
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onClick(View paramView)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    amgf.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-    azqs.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
+    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373759, null);
   }
 }
 

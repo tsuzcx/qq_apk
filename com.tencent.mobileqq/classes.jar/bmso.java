@@ -1,18 +1,26 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
 class bmso
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  bmso(bmsi parambmsi) {}
+  bmso(bmsl parambmsl, String paramString) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
+    bmsl.a(this.jdField_a_of_type_Bmsl);
+    if ((bmsl.a(this.jdField_a_of_type_Bmsl) != null) && (bmsl.a(this.jdField_a_of_type_Bmsl).a() != null) && (bmsl.a(this.jdField_a_of_type_Bmsl).a().app != null) && (bmsl.a(this.jdField_a_of_type_Bmsl) != null))
+    {
+      bmsk.a(bmsl.a(this.jdField_a_of_type_Bmsl).a().app, bmsl.a(this.jdField_a_of_type_Bmsl).a(), this.jdField_a_of_type_JavaLangString, 4005);
+      bmsk.a(bmsl.a(this.jdField_a_of_type_Bmsl).a().app, 102, String.valueOf(bmsl.a(this.jdField_a_of_type_Bmsl).iAdId.get()), bmsl.a(this.jdField_a_of_type_Bmsl).traceinfo.get());
     }
-    wxe.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

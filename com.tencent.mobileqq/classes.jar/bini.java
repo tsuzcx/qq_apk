@@ -1,59 +1,22 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bini
-  extends RemoteCommand
+  extends bkot
 {
-  private boolean a;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public bini(String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-    this.a = paramBoolean;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new bini("qqcomicemoticonipccmd", false));
-    }
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
-      }
-    }
-    do
-    {
-      do
-      {
-        return null;
-        localObject = (QQAppInterface)localObject;
-      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
-      localObject = (bing)((QQAppInterface)localObject).getManager(147);
-    } while (localObject == null);
-    ((bing)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
-    return null;
-  }
-  
-  public boolean isSynchronized()
-  {
-    return this.a;
-  }
+  private bini(OpenCardContainer paramOpenCardContainer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bini
  * JD-Core Version:    0.7.0.1
  */

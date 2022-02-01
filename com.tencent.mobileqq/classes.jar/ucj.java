@@ -1,51 +1,20 @@
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-class ucj
-  implements yhs
+public abstract interface ucj<V extends uch, P extends uck<V>>
 {
-  ucj(uce paramuce) {}
+  public abstract void a();
   
-  public void a()
-  {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
-    if (uce.a(this.a))
-    {
-      uce.b(this.a, false);
-      if (uce.a(this.a) != null) {
-        uce.a(this.a).setVisibility(0);
-      }
-      if (uce.a(this.a) != null) {
-        uce.a(this.a).setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      uce.a(this.a, false);
-      return;
-      this.a.dismiss();
-    }
-  }
+  public abstract void a(Bundle paramBundle);
   
-  public void a(int paramInt)
-  {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
-    if (uce.a(this.a) != paramInt)
-    {
-      uce.a(this.a, paramInt);
-      uce.a(this.a);
-      uce.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      uce.a(this.a).commit();
-    }
-    this.a.c();
-    uce.a(this.a, true);
-  }
+  public abstract void a(View paramView, @Nullable Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucj
  * JD-Core Version:    0.7.0.1
  */

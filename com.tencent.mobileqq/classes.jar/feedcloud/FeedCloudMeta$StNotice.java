@@ -5,6 +5,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -20,16 +21,18 @@ public final class FeedCloudMeta$StNotice
   public final PBStringField message = PBField.initString("");
   public final PBUInt32Field noticeType = PBField.initUInt32(0);
   public FeedCloudMeta.StOperation operation = new FeedCloudMeta.StOperation();
+  public final PBStringField subMessage = PBField.initString("");
+  public final PBRepeatMessageField<FeedCloudMeta.StUser> vecUser = PBField.initRepeatMessage(FeedCloudMeta.StUser.class);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "" }, StNotice.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message", "vecUser", "subMessage" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "", null, "" }, StNotice.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StNotice
  * JD-Core Version:    0.7.0.1
  */

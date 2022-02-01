@@ -1,17 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.List;
 
-public class ayda
-  implements ga
+public abstract interface ayda
 {
-  public ayda(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
-    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
-  }
+  public abstract void a(List<ayde> paramList);
 }
 
 

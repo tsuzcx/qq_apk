@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import beko;
-import beks;
-import belc;
-import bjdt;
+import bhrs;
+import bhrw;
+import bhsg;
+import blsb;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -127,7 +127,7 @@ public class WebSoServlet
   
   public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
   {
-    if ((paramClass == beko.class) && (a()))
+    if ((paramClass == bhrs.class) && (a()))
     {
       paramIntent = new WebSoServlet.ReceiveRunnable(paramInt, paramBoolean, paramBundle);
       QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").getHandler().post(paramIntent);
@@ -202,7 +202,7 @@ public class WebSoServlet
       if (paramFromServiceMsg != null)
       {
         paramIntent = a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramFromServiceMsg);
-        bjdt.a(null, belc.f(str), paramFromServiceMsg.getResultCode(), paramIntent[0], 1, System.currentTimeMillis());
+        blsb.a(null, bhsg.f(str), paramFromServiceMsg.getResultCode(), paramIntent[0], 1, System.currentTimeMillis());
         if (QLog.isColorLevel()) {
           QLog.d("WebSoServlet", 2, "WebSo url: " + str + ", req time cost: " + paramIntent[0]);
         }
@@ -212,7 +212,7 @@ public class WebSoServlet
         break label498;
       }
       paramIntent = paramFromServiceMsg.getWupBuffer();
-      paramFromServiceMsg = beks.a(belc.e(str));
+      paramFromServiceMsg = bhrw.a(bhsg.e(str));
       if (!TextUtils.isEmpty(paramFromServiceMsg)) {
         break;
       }
@@ -220,7 +220,7 @@ public class WebSoServlet
       return;
     }
     localBundle.putInt("rsp_code", 0);
-    paramIntent = beks.a(paramIntent, paramFromServiceMsg);
+    paramIntent = bhrw.a(paramIntent, paramFromServiceMsg);
     if (paramIntent != null)
     {
       localBundle.putSerializable("rsp_data", paramIntent);
@@ -249,7 +249,7 @@ public class WebSoServlet
     String str2 = paramIntent.getStringExtra("refer");
     String str1 = paramIntent.getStringExtra("url");
     int i = paramIntent.getIntExtra("key_time_out", 60000);
-    paramIntent = new beks(belc.e(str1), l, localHttpReq, str2).encode();
+    paramIntent = new bhrw(bhsg.e(str1), l, localHttpReq, str2).encode();
     if (paramIntent == null) {
       paramIntent = new byte[4];
     }
@@ -259,7 +259,7 @@ public class WebSoServlet
       for (l = 60000L;; l = i)
       {
         paramPacket.setTimeout(l);
-        paramPacket.setSSOCommand(belc.f(str1));
+        paramPacket.setSSOCommand(bhsg.f(str1));
         paramPacket.putSendData(paramIntent);
         if (QLog.isColorLevel()) {
           QLog.d("WebSoServlet", 2, "send req url: " + str1);
@@ -278,7 +278,7 @@ public class WebSoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet
  * JD-Core Version:    0.7.0.1
  */

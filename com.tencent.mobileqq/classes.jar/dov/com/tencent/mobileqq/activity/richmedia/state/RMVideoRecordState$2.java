@@ -1,14 +1,14 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import alud;
-import bnhp;
+import anni;
+import bpys;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 
 public class RMVideoRecordState$2
   implements Runnable
 {
-  public RMVideoRecordState$2(bnhp parambnhp) {}
+  public RMVideoRecordState$2(bpys parambpys) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class RMVideoRecordState$2
       if (localRMVideoStateMgr.a.i != -1) {
         break label95;
       }
-      localRMVideoStateMgr.b(0, alud.a(2131713867), false);
+      localRMVideoStateMgr.b(0, anni.a(2131712246), false);
     }
     for (;;)
     {
@@ -33,18 +33,18 @@ public class RMVideoRecordState$2
       return;
       label95:
       if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, alud.a(2131713863), false);
+        localRMVideoStateMgr.b(0, anni.a(2131712242), false);
       } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, alud.a(2131713862), false);
+        localRMVideoStateMgr.b(0, anni.a(2131712241), false);
       } else {
-        localRMVideoStateMgr.b(0, alud.a(2131713865), false);
+        localRMVideoStateMgr.b(0, anni.a(2131712244), false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2
  * JD-Core Version:    0.7.0.1
  */

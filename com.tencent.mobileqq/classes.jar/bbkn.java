@@ -1,30 +1,54 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bbkn
-  extends ampt
+public abstract class bbkn
+  extends bbmz
 {
-  public bbkn(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bckx parambckx)
+  public int a;
+  protected QQAppInterface a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected List<? extends FTSEntity> a;
+  public int b;
+  protected CharSequence b;
+  protected String b;
+  public int c = -1;
+  protected CharSequence c;
+  public int d = -1;
+  protected CharSequence d;
+  
+  public bbkn(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bckx);
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public abstract CharSequence e();
+  
+  public abstract CharSequence f();
 }
 
 

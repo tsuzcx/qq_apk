@@ -1,22 +1,39 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.UiSettings;
 
-class nhv
-  implements View.OnClickListener
+public class nhv
+  implements Animation.AnimationListener
 {
-  nhv(nhu paramnhu, Dialog paramDialog) {}
+  public nhv(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (PoiMapActivity.h(this.a) != null) {
+      PoiMapActivity.i(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
     }
+    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.p);
+    this.a.b.setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
+      this.a.e.setVisibility(0);
+    }
+    PoiMapActivity.e(this.a).clearAnimation();
+    this.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhv
  * JD-Core Version:    0.7.0.1
  */

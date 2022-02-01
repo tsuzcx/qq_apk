@@ -1,122 +1,67 @@
-import android.os.Bundle;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardHelper;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bkzo
-  extends zhu
+  implements ActivityLifecycle.ActivityLifecycleCallback
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "CameraModuleSvc" };
-  public static final HashMap<String, String> b = new HashMap();
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  
-  public bkzo(AppInterface paramAppInterface)
+  public void onNewIntent(Activity paramActivity, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  private String a(String paramString)
-  {
-    return bljc.a().a(paramString, "", 4);
-  }
-  
-  private ArrayList<MetaSdkInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
-    localMetaSdkInfo.sdk = 0;
-    localMetaSdkInfo.sdkVersion = AEModule.getVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
-    localArrayList.add(localMetaSdkInfo);
-    return localArrayList;
-  }
-  
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = new GetCameraConfigReq();
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetCameraConfig");
-    paramUniPacket.put("CameraModuleSvc.GetCameraConfig", paramToServiceMsg);
-    return true;
-  }
-  
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    GetCategoryMaterialReq localGetCategoryMaterialReq = new GetCategoryMaterialReq();
-    localGetCategoryMaterialReq.ServiceId = paramToServiceMsg.extraData.getString("ServiceId");
-    localGetCategoryMaterialReq.ETag = a("CameraModuleSvc.GetCompressedCategoryMaterial" + localGetCategoryMaterialReq.ServiceId);
-    localGetCategoryMaterialReq.SdkInfos = a();
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetCompressedCategoryMaterial");
-    paramUniPacket.put("CameraModuleSvc.GetCompressedCategoryMaterial", localGetCategoryMaterialReq);
-    return true;
-  }
-  
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = new GetPlayShowCatMatTreeReq();
-    paramToServiceMsg.ETag = a("CameraModuleSvc.GetPlayShowCatMatTree");
-    paramToServiceMsg.MqVersion = "8.3.5";
-    paramUniPacket.setServantName("CameraModuleSvc");
-    paramUniPacket.setFuncName("CameraModuleSvc.GetPlayShowCatMatTree");
-    paramUniPacket.put("CameraModuleSvc.GetPlayShowCatMatTree", paramToServiceMsg);
-    return true;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
-      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCameraConfig", new GetCameraConfigRsp());
+    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
+      BuscardHelper.a("", paramActivity, paramIntent);
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
-      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCompressedCategoryMaterial", new GetCategoryMaterialRsp());
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
-      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetPlayShowCatMatTree", new GetPlayShowCatMatTreeRsp());
-    }
-    return null;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void onPause(Activity paramActivity)
   {
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
-      return b(paramToServiceMsg, paramUniPacket);
-    }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
-      return c(paramToServiceMsg, paramUniPacket);
-    }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
-      return d(paramToServiceMsg, paramUniPacket);
-    }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public final <T> T b(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    bkzw localbkzw = new bkzw(true);
     try
     {
-      localbkzw.setEncodeName("utf-8");
-      localbkzw.decode(paramArrayOfByte);
-      return localbkzw.getByClass(paramString, paramT);
+      BuscardHelper.a(paramActivity, true, "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
+      }
+      return;
     }
-    catch (Exception paramArrayOfByte) {}
-    return null;
+    catch (Throwable paramActivity)
+    {
+      for (;;)
+      {
+        paramActivity.printStackTrace();
+      }
+    }
+  }
+  
+  public void onResume(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
+    }
+    try
+    {
+      if ((paramActivity instanceof AppActivity))
+      {
+        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
+        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
+        {
+          BuscardHelper.a(paramActivity, true, "", "", null);
+          return;
+        }
+        BuscardHelper.a(paramActivity, true, "", "");
+        return;
+      }
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
   }
 }
 

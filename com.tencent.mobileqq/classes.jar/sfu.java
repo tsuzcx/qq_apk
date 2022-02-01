@@ -1,42 +1,36 @@
-public class sfu
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+
+class sfu
+  implements oqo
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  sfu(sfq paramsfq) {}
   
-  public sfu(String paramString)
+  public void a(sey paramsey, AdvertisementInfo paramAdvertisementInfo)
   {
-    this.a = paramString;
+    sfq.a(this.a).b(2);
+    sfq.a(this.a).a = paramAdvertisementInfo;
+    oqm.a(this.a);
+    sfq.a(this.a).setVisibility(0);
+    sfq.a(this.a).setVisibility(0);
+    sfq.a(this.a).setVisibility(0);
+    sfq.a(this.a).a(paramsey, paramAdvertisementInfo, 1);
   }
   
-  public void a(String paramString)
+  public void b(sey paramsey, AdvertisementInfo paramAdvertisementInfo)
   {
-    this.d = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if ((paramObject instanceof sfu)) {
-        return false;
-      }
-      paramObject = (sfu)paramObject;
-    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
-    return false;
-  }
-  
-  public String toString()
-  {
-    return " bid :" + this.b + " localPath:" + this.c + "  ";
+    sfq.a(this.a).a = paramAdvertisementInfo;
+    oqm.a(this.a);
+    sfq.a(this.a).setVisibility(0);
+    sfq.a(this.a).setVisibility(0);
+    sfq.a(this.a).a(paramsey, paramAdvertisementInfo, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfu
  * JD-Core Version:    0.7.0.1
  */

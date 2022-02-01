@@ -1,44 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atsb
+class atsb
   implements View.OnClickListener
 {
-  public atsb(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  atsb(atrw paramatrw) {}
   
   public void onClick(View paramView)
   {
-    int i = 2;
-    if (!bdin.a())
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694129, 0).a();
-      return;
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
     }
-    paramView = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + paramView);
-    }
-    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
-    for (;;)
-    {
-      azqs.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_picked_location", paramView);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-      i = 1;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsb
  * JD-Core Version:    0.7.0.1
  */

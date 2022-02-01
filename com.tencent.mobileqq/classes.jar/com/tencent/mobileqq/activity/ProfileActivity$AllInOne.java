@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adnx;
+import aeuo;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator<AllInOne> CREATOR = new adnx();
+  public static final Parcelable.Creator<AllInOne> CREATOR = new aeuo();
   public byte a;
   public int a;
   public long a;
@@ -300,7 +300,7 @@ public class ProfileActivity$AllInOne
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity.AllInOne
  * JD-Core Version:    0.7.0.1
  */

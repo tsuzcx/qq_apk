@@ -4,21 +4,21 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Message;
-import bdfz;
-import bepy;
-import bepz;
-import bkok;
+import bglc;
+import bhxg;
+import bhxh;
+import bncx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class GifAnimationDrawable$Decoder
   implements Runnable
 {
-  private final bepy a;
+  private final bhxg a;
   
-  public GifAnimationDrawable$Decoder(GifAnimationDrawable paramGifAnimationDrawable, bepy parambepy)
+  public GifAnimationDrawable$Decoder(GifAnimationDrawable paramGifAnimationDrawable, bhxg parambhxg)
   {
-    this.a = parambepy;
+    this.a = parambhxg;
   }
   
   @TargetApi(12)
@@ -27,7 +27,7 @@ public class GifAnimationDrawable$Decoder
     if (QLog.isColorLevel()) {
       QLog.d(GifAnimationDrawable.a(this.this$0), 2, "decodeBitmap() called with: path = [" + paramString + "]");
     }
-    return new BitmapDrawable(bkok.a(paramString, 320, 320, true));
+    return new BitmapDrawable(bncx.a(paramString, 320, 320, true));
   }
   
   public void run()
@@ -40,7 +40,7 @@ public class GifAnimationDrawable$Decoder
         QLog.d(GifAnimationDrawable.a(this.this$0), 2, "Decoder index:" + this.a.jdField_a_of_type_Int);
       }
       Object localObject = "android.resource://main_tab_animation_" + (String)GifAnimationDrawable.a(this.this$0).get(this.a.jdField_a_of_type_Int);
-      Bitmap localBitmap = bdfz.a((String)localObject);
+      Bitmap localBitmap = bglc.a((String)localObject);
       if (localBitmap != null)
       {
         if (QLog.isColorLevel()) {
@@ -59,14 +59,14 @@ public class GifAnimationDrawable$Decoder
         if (QLog.isColorLevel()) {
           QLog.d(GifAnimationDrawable.a(this.this$0), 2, "Decoder decodeBitmap index:" + this.a.jdField_a_of_type_Int + " cost:" + (l2 - l1) + " delay:" + GifAnimationDrawable.a(this.this$0));
         }
-        bdfz.a((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap());
+        bglc.a((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GifAnimationDrawable.Decoder
  * JD-Core Version:    0.7.0.1
  */

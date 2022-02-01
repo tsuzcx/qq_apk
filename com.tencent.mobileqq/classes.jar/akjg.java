@@ -1,55 +1,30 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 
-public class akjg<T>
-  extends apoy<T>
-  implements View.OnClickListener
+class akjg
+  extends akhu
 {
-  private DragSortListView a;
-  
-  public akjg(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
+  protected akjg(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    super(paramContext, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
+    super(paramNewPhotoListActivity);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
   {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560985, null);
-    }
-    paramViewGroup.setVisibility(0);
-    paramViewGroup.findViewById(2131376551).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131367344);
-    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView.setText(localGroups.group_name);
-    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131367348), 1);
-    paramViewGroup.setContentDescription(localGroups.group_name + alud.a(2131705733));
-    if ((bhtb.m()) && (AppSetting.c)) {
-      paramViewGroup.setOnClickListener(this);
-    }
-    return paramViewGroup;
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131694268, new Object[] { Integer.valueOf(i) });
   }
   
-  public void onClick(View paramView)
+  public void initData(Intent paramIntent)
   {
-    if (AppSetting.c) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
-    }
+    super.initData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjg
  * JD-Core Version:    0.7.0.1
  */

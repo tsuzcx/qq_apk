@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afzt;
+import ahgx;
 import android.content.Context;
-import apdz;
+import argw;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,12 +14,12 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$3
   implements Runnable
 {
-  public ReplyTextItemBuilder$3(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, afzt paramafzt, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$3(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ahgx paramahgx, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof apdz)) {}
-    for (Object localObject = ((apdz)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).getSourceMsgInfo();; localObject = null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof argw)) {}
+    for (Object localObject = ((argw)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).getSourceMsgInfo();; localObject = null)
     {
       if (localObject == null) {
         return;
@@ -44,7 +44,7 @@ public final class ReplyTextItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

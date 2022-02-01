@@ -1,50 +1,43 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
-public class biej<M>
-  extends RecyclerView.ViewHolder
+public class biej
+  implements Animator.AnimatorListener
 {
-  private SparseArray<View> a = new SparseArray();
+  public biej(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public biej(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramView);
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public biej(ViewGroup paramViewGroup, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  public void a(M paramM) {}
-  
-  protected <T extends View> T b(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
     }
-    return localView1;
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public void c() {}
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
+    }
+    FloatingScreenContainer.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biej
  * JD-Core Version:    0.7.0.1
  */

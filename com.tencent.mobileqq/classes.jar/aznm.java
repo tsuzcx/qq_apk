@@ -1,34 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent.1.1;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aznm
-  implements View.OnClickListener
+  implements zxa<FeedCloudRead.StGetMainPageRsp>
 {
-  public aznm(SplashADView paramSplashADView) {}
+  aznm(aznl paramaznl) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    aznl.a(this.a).set(false);
+    if (paramStGetMainPageRsp != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
+      paramString = paramStGetMainPageRsp.vecFeed.get();
+      if ((paramString != null) && (paramString.size() > 0))
       {
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849834);
+        aznl.a(this.a, paramString);
+        aznl.a(this.a).post(new ProfileCircleComponent.1.1(this));
+        QLog.d("ProfileCircleComponent", 4, "makeOrRefreshQQCircle onResponse success");
       }
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznm
  * JD-Core Version:    0.7.0.1
  */

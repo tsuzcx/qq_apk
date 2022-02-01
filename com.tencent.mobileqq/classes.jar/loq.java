@@ -1,137 +1,337 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
+import android.view.Surface;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.nio.ByteBuffer;
 
 public class loq
-  extends BitmapDrawable
+  extends lpg
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  protected float a;
-  protected int a;
-  private Matrix a = new Matrix();
-  protected float[] a;
-  protected float b;
-  protected int b;
-  protected float c;
-  protected float d;
-  protected float e;
-  protected float f;
-  protected float g;
-  protected float h;
-  protected float i;
-  protected float j;
-  protected float k;
-  protected float l;
-  protected float m;
-  protected float n;
-  protected float o;
-  protected float p;
-  private float q;
-  private float r;
-  private float s;
-  private float t = 1.0F;
-  private float u;
-  private float v;
-  private float w;
-  private float x;
+  private float jdField_a_of_type_Float = -1.0F;
+  private final int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private final lor jdField_a_of_type_Lor = new lor();
+  private los jdField_a_of_type_Los;
+  private lpn jdField_a_of_type_Lpn;
+  private final lvj jdField_a_of_type_Lvj = new lvj();
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private final int jdField_b_of_type_Int = 2;
+  private long jdField_b_of_type_Long;
+  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private final lvj jdField_b_of_type_Lvj = new lvj();
+  private boolean jdField_b_of_type_Boolean = true;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private final int jdField_c_of_type_Int = 3;
+  private long jdField_c_of_type_Long;
+  private int d;
+  private int e;
+  private int f;
+  private int g = 100;
   
-  public loq(BitmapDrawable paramBitmapDrawable)
+  @RequiresApi(api=21)
+  private void b()
   {
-    super(paramBitmapDrawable.getBitmap());
-  }
-  
-  private void a()
-  {
-    this.a.reset();
-    this.a.preRotate(this.s, this.q, this.r);
-    this.a.preScale(this.t, this.t, this.q, this.r);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.s != paramFloat)
-    {
-      this.s = paramFloat;
-      a();
+    this.d = GlUtil.createTexture(36197);
+    GLES20.glBindTexture(36197, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.d);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setDefaultBufferSize(this.e, this.f);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Lor.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("EGLScreenCaptureThread", 2, "initGLEnv");
     }
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  private void e()
   {
-    a(this.u + paramFloat1, this.v + paramFloat2, this.w, this.x);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    Rect localRect1 = getBounds();
-    Rect localRect2 = new Rect();
-    this.u = paramFloat1;
-    this.v = paramFloat2;
-    this.w = paramFloat3;
-    this.x = paramFloat4;
-    localRect2.left = ((int)this.u);
-    localRect2.top = ((int)this.v);
-    localRect2.right = ((int)(this.u + this.w));
-    localRect2.bottom = ((int)(this.v + this.x));
-    if (!localRect1.equals(localRect2)) {
-      setBounds(localRect2);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_Lpn != null)
+    {
+      this.jdField_a_of_type_Lpn.c();
+      this.jdField_a_of_type_Lpn = null;
+    }
+    this.jdField_a_of_type_Lor.b();
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.i("EGLScreenCaptureThread", 2, "releaseGLEnv");
     }
   }
   
-  public void b(float paramFloat)
+  private void g()
   {
-    if (this.t != paramFloat)
-    {
-      this.t = paramFloat;
-      a();
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    setColorFilter(Color.argb(255, (int)(paramFloat1 * 255.0F), (int)(paramFloat2 * 255.0F), (int)(paramFloat3 * 255.0F)), PorterDuff.Mode.SRC_ATOP);
-    setAlpha((int)(paramFloat4 * 255.0F));
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    paramCanvas.concat(this.a);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i1 = 1;
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f1 = (paramInt1 + paramInt3) / 2;
-    float f2 = (paramInt2 + paramInt4) / 2;
-    paramInt1 = 0;
-    if (this.q != f1)
-    {
-      this.q = f1;
-      paramInt1 = 1;
-    }
-    if (this.r != f2)
-    {
-      this.r = f2;
-      paramInt1 = i1;
+    if ((this.jdField_b_of_type_Lvj.a()) || (this.jdField_a_of_type_Lvj.a())) {
+      i();
     }
     for (;;)
     {
-      if (paramInt1 != 0) {
-        a();
-      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 2000L);
       return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("EGLScreenCaptureThread", 4, "check, param not valid.");
+      }
+    }
+  }
+  
+  private void h()
+  {
+    boolean bool = this.jdField_a_of_type_Lvj.a(this.jdField_b_of_type_Lvj);
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
+    {
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      }
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int, 33984);
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if ((this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
+      {
+        if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+          this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+        }
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int, 33985);
+      }
+      if (this.jdField_a_of_type_Lpn == null)
+      {
+        this.jdField_a_of_type_Lpn = new lpn();
+        this.jdField_a_of_type_Lpn.b();
+      }
+      if (bool) {
+        this.jdField_a_of_type_Lpn.a(this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int);
+      }
+      if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (bool)) {
+        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_a_of_type_Lvj.jdField_a_of_type_Int * this.jdField_a_of_type_Lvj.jdField_b_of_type_Int * 3 / 2);
+      }
+    }
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (bool)) {
+      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Lvj.jdField_a_of_type_Int * this.jdField_a_of_type_Lvj.jdField_b_of_type_Int * 3 / 2];
+    }
+  }
+  
+  private void i()
+  {
+    long l6 = SystemClock.elapsedRealtime();
+    h();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    if (this.jdField_b_of_type_ArrayOfFloat == null)
+    {
+      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.e, this.f, this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int);
+      Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.d, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    long l7 = Math.abs(SystemClock.elapsedRealtime() - l6);
+    long l4 = 0L;
+    long l5 = 0L;
+    long l1 = 0L;
+    long l3;
+    long l2;
+    Object localObject;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      l1 = SystemClock.elapsedRealtime();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.jdField_a_of_type_Lpn.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+      l3 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      l1 = SystemClock.elapsedRealtime();
+      GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      l2 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Lvj.jdField_a_of_type_Int * this.jdField_a_of_type_Lvj.jdField_b_of_type_Int * 3 / 2);
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      localObject = this.jdField_a_of_type_Los;
+      if (localObject == null) {
+        break label398;
+      }
+      l1 = SystemClock.elapsedRealtime();
+      ((los)localObject).a(this.jdField_a_of_type_ArrayOfByte, this.g, 2, this.jdField_a_of_type_Lvj);
+      l1 = SystemClock.elapsedRealtime() - l1;
+    }
+    for (;;)
+    {
+      this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+      l4 = this.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Lor.a(l7, l3, l2, l1, l4 - l6);
+      return;
+      localObject = GlUtil.captureFrame(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_a_of_type_Lvj.jdField_a_of_type_Int, this.jdField_a_of_type_Lvj.jdField_b_of_type_Int, 0);
+      los locallos = this.jdField_a_of_type_Los;
+      l3 = l4;
+      l2 = l5;
+      if (locallos != null)
+      {
+        l1 = SystemClock.elapsedRealtime();
+        locallos.a((Bitmap)localObject, this.jdField_a_of_type_Lvj);
+        l1 = SystemClock.elapsedRealtime() - l1;
+        l3 = l4;
+        l2 = l5;
+        continue;
+        label398:
+        l1 = 0L;
+      }
+    }
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public Surface a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  @RequiresApi(api=21)
+  public void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      c();
+      b();
+      return;
+    case 2: 
+      e();
+      f();
+      return;
+    }
+    g();
+  }
+  
+  public void a(los paramlos)
+  {
+    this.jdField_a_of_type_Los = paramlos;
+  }
+  
+  public void a(lvj paramlvj)
+  {
+    if ((paramlvj == null) || (!paramlvj.a())) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("EGLScreenCaptureThread", 4, "updateRecordParam cur[" + this.jdField_b_of_type_Lvj + "], come[" + paramlvj + "]");
+    }
+    this.jdField_b_of_type_Lvj.a(paramlvj);
+  }
+  
+  @RequiresApi(api=18)
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("EGLScreenCaptureThread", 4, "quit");
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quitSafely();
+    }
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    int i = 0;
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Long += 1L;
+      l = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_ArrayOfFloat == null) {
+        this.jdField_a_of_type_ArrayOfFloat = new float[16];
+      }
+      paramSurfaceTexture.updateTexImage();
+      paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_Float = ((float)paramSurfaceTexture.getTimestamp());
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("EGLScreenCaptureThread", 4, "onFrameAvailable, time[" + this.jdField_a_of_type_Float + "]");
+    return;
+    long l = Math.abs(l - this.jdField_c_of_type_Long);
+    if (this.jdField_c_of_type_Long != 0L) {
+      if (l >= this.jdField_a_of_type_Lvj.jdField_a_of_type_Long) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {}
+      for (l = Math.min(this.jdField_a_of_type_Lvj.jdField_a_of_type_Long - l, 2000L);; l = 2000L)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, l);
+        if ((i != 0) || ((!this.jdField_b_of_type_Lvj.a()) && (!this.jdField_a_of_type_Lvj.a()))) {
+          break;
+        }
+        i();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     loq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class apzo
-  implements ShareActionSheet.OnItemClickListener
 {
-  public apzo(AIOEmotionFragment paramAIOEmotionFragment) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
-  {
-    this.a.a.dismiss();
-    int i = paramActionSheetItem.action;
-    this.a.a(i, paramActionSheetItem);
-  }
+  public apzo(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 

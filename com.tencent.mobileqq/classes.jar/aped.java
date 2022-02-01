@@ -1,33 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
 public final class aped
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  public IPSiteModel.Game a(Parcel paramParcel)
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    IPSiteModel.Game localGame = new IPSiteModel.Game();
-    localGame.cover = paramParcel.readString();
-    localGame.desc = paramParcel.readString();
-    localGame.id = paramParcel.readString();
-    localGame.jumpUrl = paramParcel.readString();
-    localGame.name = paramParcel.readString();
-    localGame.recommDesc = paramParcel.readString();
-    if (localGame.gameRiches == null) {
-      localGame.gameRiches = new ArrayList();
-    }
-    localGame.gameRiches.clear();
-    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
-    return localGame;
+    return new ArAwardInfo(paramParcel);
   }
   
-  public IPSiteModel.Game[] a(int paramInt)
+  public ArAwardInfo[] a(int paramInt)
   {
-    return new IPSiteModel.Game[paramInt];
+    return new ArAwardInfo[paramInt];
   }
 }
 

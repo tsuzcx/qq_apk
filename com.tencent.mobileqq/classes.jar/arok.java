@@ -1,14 +1,112 @@
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.JpegSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.PttTransitonAnimData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class arok
-  implements bago
+public class arok
+  extends arnz
 {
-  arok(aroj paramaroj) {}
-  
-  public void a(bety parambety)
+  public arok(QQAppInterface paramQQAppInterface)
   {
-    SimpleFileViewer.a(this.a.a.this$0, parambety);
+    super("ptt.transition.anim.res.zip", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10094;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PttTransitonAnimData.class;
+  }
+  
+  public String a()
+  {
+    return "PttTransitionAnimZip";
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler onDownloadProgeress() curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    }
+    super.a(paramLong1, paramLong2);
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof JpegSoData))) {
+      QLog.d("EarlyDown", 2, new Object[] { "PttTransitionAnimHandler doOnServerResp, xmlData=", paramXmlData });
+    }
+    super.a(paramXmlData);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EarlyDown", 2, " PttTransitionAnimHandler download success: " + paramString);
+    }
+    try
+    {
+      String str = agec.a;
+      if ((str != null) && (!str.equals("")))
+      {
+        bgmg.a(str);
+        if (new File(str).mkdir())
+        {
+          bgmg.a(paramString, str, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("EarlyDown", 2, " PttTransitionAnimHandler uncompressZip success: " + paramString + " tempPath=" + str);
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("EarlyDown", 2, "PttTransitionAnimHandler uncompressZip failed: " + localException.getMessage());
+        }
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler onDownloadBegin()");
+    }
+    super.b(paramXmlData);
+  }
+  
+  public boolean h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload");
+    }
+    if ((PttTransitonAnimData)a() == null) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload return " + true);
+    }
+    return true;
   }
 }
 

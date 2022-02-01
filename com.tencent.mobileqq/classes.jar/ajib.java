@@ -1,74 +1,124 @@
-import android.app.PendingIntent;
-import android.app.PendingIntent.CanceledException;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class ajib
-  implements ajhw
+public class ajib
 {
-  @Nullable
-  private ajhy jdField_a_of_type_Ajhy;
-  @NonNull
-  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public ArrayList<ajin> a;
+  private boolean a;
+  public int[] a;
+  public String[] a;
   
-  public ajib(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
+  public ajib(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(@Nullable ajhy paramajhy)
-  {
-    this.jdField_a_of_type_Ajhy = paramajhy;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Ajhy == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((paramBoolean) && (!bdch.a())) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
-  }
-  
-  public void onEnter()
-  {
-    if (this.jdField_a_of_type_Ajhy == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    try
-    {
-      this.jdField_a_of_type_AndroidAppPendingIntent.send();
-      ajgb.a(localQQAppInterface, this.jdField_a_of_type_Ajhy);
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      a();
       return;
     }
-    catch (PendingIntent.CanceledException localCanceledException)
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((ajin)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
+    }
+    return 1;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(0, 2131364959, anni.a(2131701363)));
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(6, 2131364956, anni.a(2131701349)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(1, 2131364955, anni.a(2131701320)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(2, 2131364960, anni.a(2131701362)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(3, 2131364953, anni.a(2131701346)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(4, 2131364957, anni.a(2131701342)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajin(5, 2131364958, tyg.a()));
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    this.jdField_a_of_type_ArrayOfInt = new int[j];
+    int i = 0;
+    while (i < j)
     {
-      for (;;)
-      {
-        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
+      this.jdField_a_of_type_ArrayOfInt[i] = ((ajin)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((ajin)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.jdField_a_of_type_Boolean + " tabSize:" + j);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!bdch.a()))
+    {
+      paramBoolean = true;
+      if (paramBoolean == this.jdField_a_of_type_Boolean) {
+        break label200;
       }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!paramBoolean) {
+        break label146;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, new ajin(0, 2131364959, anni.a(2131701317)));
     }
+    int j;
+    for (;;)
+    {
+      j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+      this.jdField_a_of_type_ArrayOfInt = new int[j];
+      int i = 0;
+      while (i < j)
+      {
+        ajin localajin = (ajin)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localajin.c == 5) {
+          localajin.f = tyg.a();
+        }
+        this.jdField_a_of_type_ArrayOfInt[i] = localajin.d;
+        this.jdField_a_of_type_ArrayOfJavaLangString[i] = localajin.f;
+        i += 1;
+      }
+      paramBoolean = false;
+      break;
+      label146:
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean + " tabSize:" + j);
+    }
+    return true;
+    label200:
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    return false;
   }
   
-  public void onOverride() {}
+  public int b(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((ajin)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
 }
 
 

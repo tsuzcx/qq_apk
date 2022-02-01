@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 
-class ziu
-  implements View.OnClickListener
+public abstract interface ziu
 {
-  ziu(zis paramzis) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.e();
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ziu
  * JD-Core Version:    0.7.0.1
  */

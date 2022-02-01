@@ -1,65 +1,71 @@
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.troop.homework.ErrorInfo;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
 public class bfnn
-  extends SQLiteOpenHelper
+  extends anxg
 {
-  protected static bfnn a;
-  protected String a;
-  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
-  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  public bfnn(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  protected bfnn(Context paramContext)
+  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
   {
-    super(paramContext, "open_report.db", null, 3);
-    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  }
-  
-  public static bfnn a(Context paramContext)
-  {
-    try
-    {
-      if (jdField_a_of_type_Bfnn == null) {
-        jdField_a_of_type_Bfnn = new bfnn(paramContext);
+    if (QLog.isColorLevel()) {
+      if (paramRspSend1V1Msg != null) {
+        break label97;
       }
-      paramContext = jdField_a_of_type_Bfnn;
-      return paramContext;
     }
-    finally {}
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    bflp.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
-    bflp.b("opensdk", "sql2:" + this.b);
-    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
-    paramSQLiteDatabase.execSQL(this.b);
-    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
-    paramSQLiteDatabase.execSQL(this.c);
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
+    label97:
+    for (Object localObject = "null";; localObject = zlb.a(paramRspSend1V1Msg))
+    {
+      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
+      if (this.a.jdField_a_of_type_Zma != null)
+      {
+        this.a.jdField_a_of_type_Zma.a();
+        this.a.jdField_a_of_type_Zma = null;
+      }
+      localObject = this.a.getActivity();
+      if (localObject != null) {
+        break;
+      }
+      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
+      return;
+    }
+    if (paramRspSend1V1Msg == null)
+    {
+      QQToast.a((Context)localObject, 1, anni.a(2131700037), 1).a();
+      return;
+    }
+    if (paramRspSend1V1Msg.result.error_code.get() != 0)
+    {
+      QQToast.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
+      return;
+    }
+    QQToast.a((Context)localObject, 2, anni.a(2131700033), 1).a();
+    ((FragmentActivity)localObject).finish();
+    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
+    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (paramRspSend1V1Msg != null) {
+      paramRspSend1V1Msg.sendEmptyMessage(1009);
+    }
+    paramRspSend1V1Msg = bgjt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+    bgjt.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfnn
  * JD-Core Version:    0.7.0.1
  */

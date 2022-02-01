@@ -1,68 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rrs
-  implements bhtv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rrs
+  implements AbsListView.OnScrollListener
 {
-  List<bhtv> a = new ArrayList();
+  public void onScroll(@Nullable AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a()
+  public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
   {
-    this.a.clear();
-  }
-  
-  public void a(bhtv parambhtv)
-  {
-    if (!this.a.contains(parambhtv)) {
-      this.a.add(parambhtv);
-    }
-  }
-  
-  public void b(bhtv parambhtv)
-  {
-    this.a.remove(parambhtv);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseSelectView.a(this.a))) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      bhtv localbhtv = (bhtv)localIterator.next();
-      try
-      {
-        localbhtv.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      if (paramInt != 0) {
+        BaseSelectView.a(this.a).c();
       }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bhtv localbhtv = (bhtv)localIterator.next();
-      try
-      {
-        localbhtv.onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
-      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrs
  * JD-Core Version:    0.7.0.1
  */

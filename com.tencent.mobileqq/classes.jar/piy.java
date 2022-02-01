@@ -1,203 +1,62 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class piy
+  implements AladdinConfigHandler
 {
-  public static final AtomicLong a = new AtomicLong(0L);
+  private static final Set<String> a = ;
   
-  public static long a(pve parampve)
+  public static Set<String> a()
   {
-    if (!a())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, preloadSwitch is off.");
-      return -1L;
-    }
-    if (parampve == null)
-    {
-      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, params is null.");
-      return -1L;
-    }
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "updateRequestVersionAndGet, channelID = ", Integer.valueOf(parampve.b), ", beginSeq = ", Long.valueOf(parampve.a) });
-    if ((parampve.b == 0) && (parampve.a == -1L))
-    {
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "feedsRequestVersion = ", Long.valueOf(a.incrementAndGet()) });
-      return a.get();
-    }
-    QLog.d("FeedsPreloadHelper", 1, "not recommend feeds or pull down request, return -1");
-    return -1L;
+    return a;
   }
   
-  public static void a()
+  private static Set<String> b()
   {
-    long l = System.currentTimeMillis();
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "enterKDTab, time = ", Long.valueOf(l) });
-    bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(l));
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bmqa.a("default_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
+    }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
   }
   
-  public static void a(long paramLong, boolean paramBoolean) {}
-  
-  public static boolean a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (!bkbq.i())
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, not independent kd tab.");
-      return false;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      bmqa.a("default_feeds_aladdin_keys", str2);
     }
-    if (!((Boolean)bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, switch is off.");
-      return false;
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: YES.");
     return true;
   }
   
-  public static boolean a(ToServiceMsg paramToServiceMsg)
+  public void onWipeConfig(int paramInt)
   {
-    if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes() != null))
-    {
-      paramToServiceMsg = (Boolean)paramToServiceMsg.getAttributes().get("isFeedsPreload");
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", paramToServiceMsg });
-        return paramToServiceMsg.booleanValue();
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
-    return false;
-  }
-  
-  public static boolean a(pve parampve)
-  {
-    if ((parampve != null) && (a()) && (parampve.b == 0) && (parampve.a == -1L))
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: YES");
-      return true;
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: NO");
-    return false;
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    if (!bkbq.i())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload : NO, not independent kd tab.");
-      return false;
-    }
-    if (!((Boolean)bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, switch is off.");
-      return false;
-    }
-    long l1 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(-1L))).longValue();
-    if (l1 == -1L)
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, have not entered kd yet.");
-      return false;
-    }
-    long l2 = System.currentTimeMillis();
-    long l3 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(90L))).longValue();
-    long l4 = (l2 - l1) / 1000L / 60L / 60L / 24L;
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "have left kd for ", Long.valueOf((l2 - l1) / 1000L / 60L), " minute(s), ", Long.valueOf(l4), " day(s), config days = ", Long.valueOf(l3) });
-    if (l4 > l3)
-    {
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, have left kd for more than ", Long.valueOf(l3), " day(s)." });
-      return false;
-    }
-    if (paramBoolean)
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES, red point preload.");
-      return true;
-    }
-    l2 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(-1L))).longValue();
-    if (l2 != -1L)
-    {
-      l3 = System.currentTimeMillis();
-      l1 = ((Long)bkbq.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(30L))).longValue();
-      l2 = (l3 - l2) / 1000L / 60L;
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "it has been ", Long.valueOf(l2), " minute(s) since last feeds preload, config minutes = ", Long.valueOf(l1) });
-      if (l2 < l1)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, it has been less than ", Long.valueOf(l1), " minute(s) since last feeds preload." });
-        return false;
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES.");
-    return true;
-  }
-  
-  public static void b()
-  {
-    long l = System.currentTimeMillis();
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "preload succeed, time = ", Long.valueOf(l) });
-    bkbq.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(l));
-  }
-  
-  public static boolean b()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!(localBaseActivity instanceof SplashActivity)) {
-      QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false, is not splashActivity.");
-    }
-    for (;;)
-    {
-      return false;
-      try
-      {
-        int i = localBaseActivity.getIntent().getIntExtra("launch_from", 5);
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFromLockScreenPush, launchFrom = ", Integer.valueOf(i) });
-        if ((i == 6) || (i == 9)) {
-          return true;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush, t = ", localThrowable);
-        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false");
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(ToServiceMsg paramToServiceMsg)
-  {
-    if (paramToServiceMsg != null)
-    {
-      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute("feedsRequestVersion");
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isLatestRequestVersion, reqVersion = ", Long.valueOf(paramToServiceMsg.longValue()), ", latestVersion = ", Long.valueOf(a.get()) });
-        return paramToServiceMsg.longValue() == a.get();
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "is not latest request version.");
-    return false;
-  }
-  
-  public static boolean b(pve parampve)
-  {
-    if (parampve != null)
-    {
-      if ((parampve.i & 0x100) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", Boolean.valueOf(bool) });
-        return bool;
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
-    return false;
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     piy
  * JD-Core Version:    0.7.0.1
  */

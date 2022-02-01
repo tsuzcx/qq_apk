@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import java.util.concurrent.Callable;
 
-class avhj
-  implements View.OnClickListener
+final class avhj
+  implements Callable<avgz>
 {
-  avhj(avhf paramavhf) {}
+  avhj(Context paramContext, String paramString) {}
   
-  public void onClick(View paramView)
+  public avgz a()
   {
-    this.a.b(paramView);
+    return avhi.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhj
  * JD-Core Version:    0.7.0.1
  */

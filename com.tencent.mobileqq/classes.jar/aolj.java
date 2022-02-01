@@ -1,76 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aolj
-  extends aokh<aolk>
+  extends aojt
 {
-  public int a()
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    return 537;
-  }
-  
-  @NonNull
-  public aolk a(int paramInt)
-  {
-    return new aolk();
-  }
-  
-  @Nullable
-  public aolk a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
+    paramQQAppInterface = new aoli(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wallet";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      paramArrayOfaoko = paramArrayOfaoko[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
-      return aolk.a(paramArrayOfaoko);
     }
-    return new aolk();
-  }
-  
-  public Class a()
-  {
-    return aolk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(aolk paramaolk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
-    }
-    azun.a().a(paramaolk);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolj
  * JD-Core Version:    0.7.0.1
  */

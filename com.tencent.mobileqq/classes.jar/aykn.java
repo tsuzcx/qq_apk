@@ -1,25 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
 
-public class aykn
-  implements View.OnTouchListener
+public final class aykn
+  implements Parcelable.Creator<ShuayishuaConfig>
 {
-  public aykn(ContactSearchFragment paramContactSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ShuayishuaConfig a(Parcel paramParcel)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new ShuayishuaConfig(paramParcel);
+  }
+  
+  public ShuayishuaConfig[] a(int paramInt)
+  {
+    return new ShuayishuaConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykn
  * JD-Core Version:    0.7.0.1
  */

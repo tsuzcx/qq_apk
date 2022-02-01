@@ -1,57 +1,38 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class vxi
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements vxd
 {
-  vxi(vxe paramvxe) {}
+  public vxi(QCircleLightInteractPolyLikeWidget paramQCircleLightInteractPolyLikeWidget) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    switch (paramInt)
+    vrr localvrr;
+    vrt localvrt;
+    if (paramBoolean)
     {
-    default: 
-      wxe.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), vwo.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
+      vrc.a(73, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
+      localvrr = vrr.a();
+      localvrt = new vrt().a("followbutton");
+      if (!paramBoolean) {
+        break label125;
+      }
     }
-    for (;;)
+    label125:
+    for (String str = "follow";; str = "unfollow")
     {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this, paramInt, paramObject));
-      return false;
-      int i = ((Integer)paramObject).intValue();
-      if ((i >= 0) && (i <= vwo.b.length))
-      {
-        wxe.d(this.a.a, "onInfo. playerType %s", new Object[] { vwo.b[i] });
-      }
-      else
-      {
-        wxe.d(this.a.a, "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
-        continue;
-        wxe.d(this.a.a, "onInfo. start buffering");
-        continue;
-        wxe.d(this.a.a, "onInfo. end buffering");
-        continue;
-        i = ((Integer)paramObject).intValue();
-        if ((i >= 0) && (i < vwo.jdField_a_of_type_ArrayOfJavaLangString.length))
-        {
-          wxe.d(this.a.a, "onInfo. set decoder. %s", new Object[] { vwo.jdField_a_of_type_ArrayOfJavaLangString[i] });
-          vxe.a(this.a).d = vwo.jdField_a_of_type_ArrayOfJavaLangString[i];
-        }
-        else
-        {
-          wxe.d(this.a.a, "onInfo. set decoder. %d", new Object[] { Integer.valueOf(i) });
-          vxe.a(this.a).d = ("Unknown " + i);
-        }
-      }
+      localvrr.a(localvrt.b(str).a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(paramStUser.id.get()));
+      return;
+      vrc.a(74, 2, this.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.a.d());
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxi
  * JD-Core Version:    0.7.0.1
  */

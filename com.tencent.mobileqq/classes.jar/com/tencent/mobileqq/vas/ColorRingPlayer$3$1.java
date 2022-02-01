@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vas;
 
 import android.media.MediaPlayer;
 import android.widget.ProgressBar;
-import bdsg;
+import bgxg;
 
 class ColorRingPlayer$3$1
   implements Runnable
@@ -36,7 +36,7 @@ class ColorRingPlayer$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingPlayer.3.1
  * JD-Core Version:    0.7.0.1
  */

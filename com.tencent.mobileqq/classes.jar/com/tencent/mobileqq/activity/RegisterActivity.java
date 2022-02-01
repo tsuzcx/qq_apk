@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import adtu;
-import adtv;
-import adtw;
-import adtx;
-import adty;
-import adtz;
-import adua;
-import adub;
-import aduc;
-import adud;
-import alud;
+import Override;
+import afae;
+import afaf;
+import afag;
+import afah;
+import afai;
+import afaj;
+import afak;
+import afal;
+import afam;
+import afan;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -29,14 +31,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import bdgm;
-import bdjz;
-import bety;
+import anni;
+import bglp;
+import bgpa;
+import biau;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.Timer;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
@@ -52,11 +57,11 @@ public class RegisterActivity
   public Handler a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bety jdField_a_of_type_Bety;
+  private biau jdField_a_of_type_Biau;
   public String a;
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adtx(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adtv(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new afah(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new afaf(this);
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
   private TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
@@ -97,7 +102,7 @@ public class RegisterActivity
     this.jdField_a_of_type_Byte = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 30;
-    this.jdField_a_of_type_AndroidOsHandler = new adtw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afag(this);
   }
   
   private void a(int paramInt)
@@ -150,9 +155,9 @@ public class RegisterActivity
   
   private boolean a()
   {
-    boolean bool = ((CheckBox)findViewById(2131375233)).isChecked();
+    boolean bool = ((CheckBox)findViewById(2131375963)).isChecked();
     if (!bool) {
-      Toast.makeText(getApplicationContext(), 2131717512, 0).show();
+      Toast.makeText(getApplicationContext(), 2131715757, 0).show();
     }
     return bool;
   }
@@ -162,7 +167,7 @@ public class RegisterActivity
     int i2 = paramString.length();
     if ((i2 < 6) || (i2 > 16))
     {
-      Toast.makeText(getApplicationContext(), 2131717504, 0).show();
+      Toast.makeText(getApplicationContext(), 2131715751, 0).show();
       return false;
     }
     try
@@ -179,7 +184,7 @@ public class RegisterActivity
     }
     if ((i2 <= 9) && (i1 != 0))
     {
-      Toast.makeText(getApplicationContext(), 2131717505, 0).show();
+      Toast.makeText(getApplicationContext(), 2131715752, 0).show();
       return false;
     }
     return true;
@@ -187,15 +192,15 @@ public class RegisterActivity
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131755801);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558428);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365233)).setText(getString(paramInt));
+    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755823);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558434);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365475)).setText(getString(paramInt));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   private boolean b()
   {
-    Editable localEditable = ((EditText)findViewById(2131370668)).getText();
+    Editable localEditable = ((EditText)findViewById(2131371223)).getText();
     boolean bool2 = true;
     int i1;
     if (localEditable != null) {
@@ -233,7 +238,7 @@ public class RegisterActivity
         }
       }
       if (!bool1) {
-        Toast.makeText(getApplicationContext(), 2131717510, 0).show();
+        Toast.makeText(getApplicationContext(), 2131715755, 0).show();
       }
       return bool1;
       bool1 = "886".equals(this.jdField_g_of_type_JavaLangString);
@@ -253,12 +258,12 @@ public class RegisterActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Bety == null) {
-        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_Biau == null) {
+        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bety.a(paramString);
-      this.jdField_a_of_type_Bety.setOnKeyListener(new adub(this));
-      this.jdField_a_of_type_Bety.show();
+      this.jdField_a_of_type_Biau.a(paramString);
+      this.jdField_a_of_type_Biau.setOnKeyListener(new afal(this));
+      this.jdField_a_of_type_Biau.show();
       return;
     }
     catch (Throwable paramString)
@@ -271,7 +276,7 @@ public class RegisterActivity
   {
     try
     {
-      ((AccountManager)this.app.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, Long.valueOf(AppSetting.a()), "8.3.5", new Bundle(), this.jdField_a_of_type_MqqObserverAccountObserver);
+      ((AccountManager)this.app.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, Long.valueOf(AppSetting.a()), "8.4.1", new Bundle(), this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }
     catch (Exception paramString)
@@ -282,20 +287,20 @@ public class RegisterActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363798));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364004));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)findViewById(2131379521));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)findViewById(2131376497));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)findViewById(2131375621));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)findViewById(2131380456));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)findViewById(2131377287));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)findViewById(2131376346));
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[2];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(2131379520));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(2131376496));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(2131380455));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(2131377286));
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = findViewById(2131379515);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = findViewById(2131376495);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = findViewById(2131375619);
-    TextView localTextView = (TextView)findViewById(2131372380);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = findViewById(2131380450);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = findViewById(2131377285);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[2] = findViewById(2131376344);
+    TextView localTextView = (TextView)findViewById(2131372973);
     localTextView.setMovementMethod(LinkMovementMethod.getInstance());
     localTextView.setOnClickListener(this);
     localTextView.getPaint().setFlags(8);
@@ -306,21 +311,21 @@ public class RegisterActivity
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369811));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.jdField_g_of_type_JavaLangString + alud.a(2131713754));
-    findViewById(2131364093).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370248));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.jdField_g_of_type_JavaLangString + anni.a(2131712133));
+    findViewById(2131364300).setOnClickListener(this);
   }
   
   private void g()
   {
-    bdjz localbdjz = bdgm.a(this, 230);
-    localbdjz.setTitle(getString(2131717525));
-    localbdjz.setMessage(getString(2131717469));
-    adtu localadtu = new adtu(this);
-    adty localadty = new adty(this);
-    localbdjz.setPositiveButton(2131694953, localadtu);
-    localbdjz.setNegativeButton(2131690648, localadty);
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this, 230);
+    localbgpa.setTitle(getString(2131715768));
+    localbgpa.setMessage(getString(2131715727));
+    afae localafae = new afae(this);
+    afai localafai = new afai(this);
+    localbgpa.setPositiveButton(2131694081, localafae);
+    localbgpa.setNegativeButton(2131690582, localafai);
+    localbgpa.show();
   }
   
   private void h()
@@ -366,7 +371,7 @@ public class RegisterActivity
     try
     {
       ((AccountManager)this.app.getManager(0)).sendRegisterQueryMobile(this.jdField_g_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverAccountObserver);
-      b(2131717556);
+      b(2131715790);
       return;
     }
     catch (Exception localException)
@@ -377,16 +382,16 @@ public class RegisterActivity
   
   private void l()
   {
-    findViewById(2131370669).setVisibility(8);
-    findViewById(2131379519).setVisibility(0);
-    ((TextView)findViewById(2131375596)).setOnClickListener(this);
+    findViewById(2131371224).setVisibility(8);
+    findViewById(2131380454).setVisibility(0);
+    ((TextView)findViewById(2131376321)).setOnClickListener(this);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717463);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131715720);
   }
   
   private void m()
   {
-    Editable localEditable = ((EditText)findViewById(2131379514)).getText();
+    Editable localEditable = ((EditText)findViewById(2131380449)).getText();
     if (localEditable != null)
     {
       this.jdField_d_of_type_JavaLangString = localEditable.toString();
@@ -398,7 +403,7 @@ public class RegisterActivity
       try
       {
         ((AccountManager)this.app.getManager(0)).sendRegisterByCommitSmsVerifycode(this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverAccountObserver);
-        b(2131717465);
+        b(2131715722);
         return;
       }
       catch (Exception localException)
@@ -407,23 +412,23 @@ public class RegisterActivity
         return;
       }
     }
-    Toast.makeText(getApplicationContext(), 2131717476, 0).show();
+    Toast.makeText(getApplicationContext(), 2131715733, 0).show();
   }
   
   private void n()
   {
     this.jdField_a_of_type_Int = 0;
-    findViewById(2131370669).setVisibility(8);
-    findViewById(2131379519).setVisibility(8);
-    findViewById(2131371618).setVisibility(0);
+    findViewById(2131371224).setVisibility(8);
+    findViewById(2131380454).setVisibility(8);
+    findViewById(2131372191).setVisibility(0);
     a(1);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717462);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131715719);
   }
   
   private void o()
   {
     Object localObject3 = null;
-    Object localObject1 = ((EditText)findViewById(2131371611)).getText();
+    Object localObject1 = ((EditText)findViewById(2131372184)).getText();
     Object localObject2;
     if (localObject1 != null)
     {
@@ -439,14 +444,14 @@ public class RegisterActivity
           break label66;
         }
       }
-      Toast.makeText(getApplicationContext(), 2131717513, 0).show();
+      Toast.makeText(getApplicationContext(), 2131715758, 0).show();
     }
     label66:
     do
     {
       return;
       localObject2 = null;
-      localObject1 = ((EditText)findViewById(2131375228)).getText();
+      localObject1 = ((EditText)findViewById(2131375958)).getText();
       if (localObject1 != null)
       {
         localObject3 = localObject1.toString();
@@ -461,7 +466,7 @@ public class RegisterActivity
         }
         else
         {
-          Toast.makeText(getApplicationContext(), 2131717511, 0).show();
+          Toast.makeText(getApplicationContext(), 2131715756, 0).show();
           return;
         }
       }
@@ -472,8 +477,8 @@ public class RegisterActivity
     try
     {
       this.jdField_f_of_type_JavaLangString = ((String)localObject2);
-      ((AccountManager)this.app.getManager(0)).sendRegisterBySetPass((String)localObject2, "nickName", "smsCode", null, true, "8.3.5", this.jdField_a_of_type_MqqObserverAccountObserver);
-      b(2131717464);
+      ((AccountManager)this.app.getManager(0)).sendRegisterBySetPass((String)localObject2, "nickName", "smsCode", null, true, "8.4.1", this.jdField_a_of_type_MqqObserverAccountObserver);
+      b(2131715721);
       return;
     }
     catch (Exception localException)
@@ -481,16 +486,16 @@ public class RegisterActivity
       localException.printStackTrace();
       return;
     }
-    Toast.makeText(getApplicationContext(), 2131717503, 0).show();
+    Toast.makeText(getApplicationContext(), 2131715750, 0).show();
   }
   
   private void p()
   {
-    findViewById(2131371618).setVisibility(8);
-    findViewById(2131375620).setVisibility(0);
+    findViewById(2131372191).setVisibility(8);
+    findViewById(2131376345).setVisibility(0);
     a(2);
-    ((TextView)findViewById(2131370946)).setText(this.jdField_e_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131717483);
+    ((TextView)findViewById(2131371514)).setText(this.jdField_e_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131715739);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 200L);
   }
   
@@ -509,10 +514,10 @@ public class RegisterActivity
     try
     {
       ((AccountManager)this.app.getManager(0)).sendRegistByResendSms(this.jdField_a_of_type_MqqObserverAccountObserver);
-      ((TextView)findViewById(2131377874)).setVisibility(0);
-      ((TextView)findViewById(2131375596)).setVisibility(8);
+      ((TextView)findViewById(2131378713)).setVisibility(0);
+      ((TextView)findViewById(2131376321)).setVisibility(8);
       b();
-      b(2131717465);
+      b(2131715722);
       return;
     }
     catch (Exception localException)
@@ -558,13 +563,17 @@ public class RegisterActivity
       return;
     }
     String str = paramString;
-    if (!paramString.startsWith("http://")) {
-      str = "http://" + paramString;
+    if (!paramString.startsWith("http://"))
+    {
+      str = paramString;
+      if (!paramString.startsWith("https://")) {
+        str = "https://" + paramString;
+      }
     }
-    paramString = bdgm.a(this, 230);
-    paramString.setTitle(2131717578);
-    paramString.setMessage(2131717581);
-    paramString.setPositiveButton(2131694953, new adtz(this, str));
+    paramString = bglp.a(this, 230);
+    paramString.setTitle(2131715807);
+    paramString.setMessage(2131715808);
+    paramString.setPositiveButton(2131694081, new afaj(this, str));
     paramString.show();
   }
   
@@ -574,11 +583,11 @@ public class RegisterActivity
     while ((paramString2 == null) || (paramString2.length() <= 0)) {
       return;
     }
-    bdjz localbdjz = bdgm.a(this, 230);
-    localbdjz.setTitle(2131717578);
-    localbdjz.setMessage(alud.a(2131713759) + paramString2 + alud.a(2131713741) + paramString1 + alud.a(2131713755));
-    localbdjz.setPositiveButton(2131694953, new adua(this, paramString2, paramString1));
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this, 230);
+    localbgpa.setTitle(2131715807);
+    localbgpa.setMessage(anni.a(2131712138) + paramString2 + anni.a(2131712120) + paramString1 + anni.a(2131712134));
+    localbgpa.setPositiveButton(2131694081, new afak(this, paramString2, paramString1));
+    localbgpa.show();
   }
   
   public void b()
@@ -586,11 +595,11 @@ public class RegisterActivity
     if (this.jdField_a_of_type_Int <= 0)
     {
       this.jdField_a_of_type_Int = 30;
-      ((TextView)findViewById(2131377874)).setVisibility(8);
-      ((TextView)findViewById(2131375596)).setVisibility(0);
+      ((TextView)findViewById(2131378713)).setVisibility(8);
+      ((TextView)findViewById(2131376321)).setVisibility(0);
       return;
     }
-    ((TextView)findViewById(2131377874)).setText(this.jdField_a_of_type_Int + getResources().getString(2131717568));
+    ((TextView)findViewById(2131378713)).setText(this.jdField_a_of_type_Int + getResources().getString(2131715800));
     this.jdField_a_of_type_Int -= 1;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
@@ -607,14 +616,14 @@ public class RegisterActivity
   
   public void b(String paramString1, String paramString2)
   {
-    bdjz localbdjz = bdgm.a(this, 230);
-    localbdjz.setTitle(paramString1);
-    localbdjz.setMessage(paramString2);
-    paramString1 = new aduc(this);
-    paramString2 = new adud(this);
-    localbdjz.setPositiveButton(2131694953, paramString1);
-    localbdjz.setNegativeButton(2131363909, paramString2);
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this, 230);
+    localbgpa.setTitle(paramString1);
+    localbgpa.setMessage(paramString2);
+    paramString1 = new afam(this);
+    paramString2 = new afan(this);
+    localbgpa.setPositiveButton(2131694081, paramString1);
+    localbgpa.setNegativeButton(2131364112, paramString2);
+    localbgpa.show();
   }
   
   public void c()
@@ -638,71 +647,71 @@ public class RegisterActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 606	com/tencent/mobileqq/activity/RegisterActivity:getResources	()Landroid/content/res/Resources;
-    //   4: invokevirtual 653	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   7: getfield 658	android/util/DisplayMetrics:widthPixels	I
+    //   1: invokevirtual 610	com/tencent/mobileqq/activity/RegisterActivity:getResources	()Landroid/content/res/Resources;
+    //   4: invokevirtual 657	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   7: getfield 662	android/util/DisplayMetrics:widthPixels	I
     //   10: aload_0
-    //   11: invokevirtual 606	com/tencent/mobileqq/activity/RegisterActivity:getResources	()Landroid/content/res/Resources;
-    //   14: invokevirtual 653	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   17: getfield 661	android/util/DisplayMetrics:heightPixels	I
-    //   20: getstatic 667	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   23: invokestatic 673	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   11: invokevirtual 610	com/tencent/mobileqq/activity/RegisterActivity:getResources	()Landroid/content/res/Resources;
+    //   14: invokevirtual 657	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   17: getfield 665	android/util/DisplayMetrics:heightPixels	I
+    //   20: getstatic 671	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   23: invokestatic 677	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   26: astore_3
-    //   27: new 675	android/graphics/Canvas
+    //   27: new 679	android/graphics/Canvas
     //   30: dup
     //   31: aload_3
-    //   32: invokespecial 678	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   32: invokespecial 682	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   35: astore_1
     //   36: aload_0
-    //   37: invokevirtual 682	com/tencent/mobileqq/activity/RegisterActivity:getWindow	()Landroid/view/Window;
-    //   40: invokevirtual 688	android/view/Window:getDecorView	()Landroid/view/View;
+    //   37: invokevirtual 686	com/tencent/mobileqq/activity/RegisterActivity:getWindow	()Landroid/view/Window;
+    //   40: invokevirtual 692	android/view/Window:getDecorView	()Landroid/view/View;
     //   43: aload_1
-    //   44: invokevirtual 692	android/view/View:draw	(Landroid/graphics/Canvas;)V
-    //   47: new 694	java/io/File
+    //   44: invokevirtual 696	android/view/View:draw	(Landroid/graphics/Canvas;)V
+    //   47: new 698	java/io/File
     //   50: dup
-    //   51: getstatic 697	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   54: invokespecial 699	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: getstatic 701	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   54: invokespecial 703	java/io/File:<init>	(Ljava/lang/String;)V
     //   57: astore_1
     //   58: aload_1
-    //   59: invokevirtual 702	java/io/File:exists	()Z
+    //   59: invokevirtual 706	java/io/File:exists	()Z
     //   62: ifne +8 -> 70
     //   65: aload_1
-    //   66: invokevirtual 705	java/io/File:mkdirs	()Z
+    //   66: invokevirtual 709	java/io/File:mkdirs	()Z
     //   69: pop
-    //   70: new 694	java/io/File
+    //   70: new 698	java/io/File
     //   73: dup
     //   74: new 173	java/lang/StringBuilder
     //   77: dup
     //   78: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   81: getstatic 697	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   81: getstatic 701	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   84: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: aload_0
     //   88: getfield 71	com/tencent/mobileqq/activity/RegisterActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
     //   91: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: ldc_w 707
+    //   94: ldc_w 711
     //   97: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokespecial 699	java/io/File:<init>	(Ljava/lang/String;)V
+    //   103: invokespecial 703	java/io/File:<init>	(Ljava/lang/String;)V
     //   106: astore_1
     //   107: aload_1
     //   108: ifnull +33 -> 141
     //   111: aconst_null
     //   112: astore_2
-    //   113: new 709	java/io/FileOutputStream
+    //   113: new 713	java/io/FileOutputStream
     //   116: dup
     //   117: aload_1
-    //   118: invokespecial 712	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   118: invokespecial 716	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   121: astore_1
     //   122: aload_3
-    //   123: getstatic 718	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   123: getstatic 722	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   126: bipush 100
     //   128: aload_1
-    //   129: invokevirtual 722	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   129: invokevirtual 726	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   132: pop
     //   133: aload_1
     //   134: ifnull +7 -> 141
     //   137: aload_1
-    //   138: invokevirtual 725	java/io/FileOutputStream:close	()V
+    //   138: invokevirtual 729	java/io/FileOutputStream:close	()V
     //   141: return
     //   142: astore_1
     //   143: aconst_null
@@ -710,7 +719,7 @@ public class RegisterActivity
     //   145: aload_1
     //   146: ifnull -5 -> 141
     //   149: aload_1
-    //   150: invokevirtual 725	java/io/FileOutputStream:close	()V
+    //   150: invokevirtual 729	java/io/FileOutputStream:close	()V
     //   153: return
     //   154: astore_1
     //   155: return
@@ -718,7 +727,7 @@ public class RegisterActivity
     //   157: aload_2
     //   158: ifnull +7 -> 165
     //   161: aload_2
-    //   162: invokevirtual 725	java/io/FileOutputStream:close	()V
+    //   162: invokevirtual 729	java/io/FileOutputStream:close	()V
     //   165: aload_1
     //   166: athrow
     //   167: astore_1
@@ -760,6 +769,14 @@ public class RegisterActivity
     //   122	133	181	java/io/FileNotFoundException
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 1) && (paramInt2 == -1))
@@ -787,36 +804,45 @@ public class RegisterActivity
   public void onClick(View paramView)
   {
     int i1 = paramView.getId();
-    if (i1 == 2131363798) {
+    if (i1 == 2131364004) {
       k();
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i1 == 2131364093)
+      if (i1 == 2131364300)
       {
         startActivityForResult(new Intent(this, CountryActivity.class), 1);
-        return;
       }
-      if (i1 == 2131375596)
+      else if (i1 == 2131376321)
       {
         r();
-        return;
       }
-    } while (i1 != 2131372380);
-    paramView = new Intent(this, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.app.getCurrentAccountUin());
-    paramView.putExtra("ba_is_login", false);
-    paramView.putExtra("url", "https://ti.qq.com/agreement/index.html");
-    startActivity(paramView);
+      else if (i1 == 2131372973)
+      {
+        Intent localIntent = new Intent(this, QQBrowserActivity.class);
+        localIntent.putExtra("uin", this.app.getCurrentAccountUin());
+        localIntent.putExtra("ba_is_login", false);
+        localIntent.putExtra("url", "https://ti.qq.com/agreement/index.html");
+        startActivity(localIntent);
+      }
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562564);
-    setContentBackgroundResource(2130838592);
-    setTitle(2131717525);
+    super.setContentView(2131562802);
+    setContentBackgroundResource(2130838758);
+    setTitle(2131715768);
     e();
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     getWindow().getDecorView().setDrawingCacheEnabled(true);
@@ -836,7 +862,7 @@ public class RegisterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity
  * JD-Core Version:    0.7.0.1
  */

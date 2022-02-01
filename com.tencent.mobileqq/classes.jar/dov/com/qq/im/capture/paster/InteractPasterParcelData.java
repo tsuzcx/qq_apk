@@ -6,13 +6,13 @@ import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blvh;
-import bmrg;
+import bool;
+import bpim;
 
 public class InteractPasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<InteractPasterParcelData> CREATOR = new blvh();
+  public static final Parcelable.Creator<InteractPasterParcelData> CREATOR = new bool();
   public float a;
   public int a;
   public PointF a;
@@ -45,17 +45,17 @@ public class InteractPasterParcelData
     }
   }
   
-  public InteractPasterParcelData(bmrg parambmrg)
+  public InteractPasterParcelData(bpim parambpim)
   {
     this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = parambmrg.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPointF = parambmrg.b;
-    this.jdField_a_of_type_Float = parambmrg.q;
-    this.b = parambmrg.r;
-    this.c = parambmrg.s;
-    this.d = parambmrg.t;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parambmrg.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = parambmrg.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+    this.jdField_a_of_type_Int = parambpim.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPointF = parambpim.b;
+    this.jdField_a_of_type_Float = parambpim.q;
+    this.b = parambpim.r;
+    this.c = parambpim.s;
+    this.d = parambpim.t;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parambpim.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = parambpim.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
   }
   
   public int describeContents()
@@ -88,7 +88,7 @@ public class InteractPasterParcelData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.InteractPasterParcelData
  * JD-Core Version:    0.7.0.1
  */

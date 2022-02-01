@@ -1,36 +1,30 @@
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahmj
-  extends ahln
-  implements View.OnClickListener
+  extends ahmb
 {
-  public ahmj(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
+  public ahmj(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    super(paramContext, paramQQAppInterface, paramakln, paramavun);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
   }
   
-  public View a(int paramInt, View paramView)
+  public afwr a()
   {
-    ahmk localahmk;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahmk)))
-    {
-      localahmk = new ahmk();
-      paramView = LayoutInflater.from(this.a).inflate(2131561124, null);
-      paramView.setTag(localahmk);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      return paramView;
-      localahmk = (ahmk)paramView.getTag();
-    }
+    return new ahml(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public void onClick(View paramView) {}
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562993, paramBaseChatItemLayout, false);
+  }
 }
 
 

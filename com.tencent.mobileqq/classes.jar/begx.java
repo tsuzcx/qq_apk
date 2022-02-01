@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.IntRange;
 
-final class begx
-  extends WebAccelerateHelper.CommonJsPluginFactory
+public abstract interface begx
 {
-  public List<WebViewPlugin> getCommonJsPlugin()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new beez());
-    localArrayList.add(new athj());
-    localArrayList.add(new UiApiPlugin());
-    localArrayList.add(new atfg());
-    return localArrayList;
-  }
+  public abstract void a(String paramString, @IntRange(from=1L, to=4L) int paramInt);
 }
 
 

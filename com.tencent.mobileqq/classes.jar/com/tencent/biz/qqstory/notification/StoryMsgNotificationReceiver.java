@@ -12,24 +12,24 @@ import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import nga;
-import uvo;
-import uwa;
-import uza;
-import vle;
-import vod;
-import wxj;
+import noq;
+import wpa;
+import wpm;
+import wsm;
+import xeq;
+import xho;
+import yqu;
 
 public class StoryMsgNotificationReceiver
   extends BroadcastReceiver
 {
   public static final Intent a(Context paramContext)
   {
-    ((uvo)uwa.a(18)).a();
+    ((wpa)wpm.a(18)).a();
     if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + nga.c);
+      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + noq.c);
     }
-    if (nga.c)
+    if (noq.c)
     {
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
@@ -53,7 +53,7 @@ public class StoryMsgNotificationReceiver
     if ("com.tencent.biz.qqstory.notification.qqstory_delete_notify".equals(localObject))
     {
       i = paramIntent.getIntExtra("push_type", 0);
-      vle.a().a(paramContext, i);
+      xeq.a().a(paramContext, i);
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "delete type = " + i);
       }
@@ -82,7 +82,7 @@ public class StoryMsgNotificationReceiver
     }
     for (localObject = "9999";; localObject = ((StoryPushMsg)localObject).jdField_a_of_type_JavaLangString)
     {
-      wxj.a("notice_msg", "clk_push", 0, 0, new String[] { localObject, paramIntent, "", "" });
+      yqu.a("notice_msg", "clk_push", 0, 0, new String[] { localObject, paramIntent, "", "" });
       if ((i != 0) || (localIntent == null)) {
         break;
       }
@@ -92,19 +92,19 @@ public class StoryMsgNotificationReceiver
       localIntent.putExtra("action", 8);
       localIntent.putExtra("pushType", i);
       localIntent.putExtra("extra_feedid", ((StoryPushMsg)localObject).d);
-      wxj.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
+      yqu.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
       i = 0;
       break label310;
-      if (((uza)QQStoryContext.a().getManager(252)).a)
+      if (((wsm)QQStoryContext.a().getManager(252)).a)
       {
-        vod.a(paramContext, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e);
-        wxj.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+        xho.a(paramContext, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e);
+        yqu.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
         i = 1;
         break label310;
       }
       localIntent.putExtra("EXTRA_PLAY_INFO", new SingleFeedPlayInfo(((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e, 1, true));
       localIntent.putExtra("action", 9);
-      wxj.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+      yqu.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
       i = 0;
       break label310;
       i = 0;
@@ -135,21 +135,21 @@ public class StoryMsgNotificationReceiver
       localIntent.putExtra("webStyle", "noBottomBar");
       i = 0;
       break label310;
-      paramIntent = new StringBuilder("http://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0");
+      paramIntent = new StringBuilder("https://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0");
       paramIntent.append("&vid=").append(((StoryPushMsg)localObject).e);
       localIntent.putExtra("action", 10);
       localIntent.putExtra("url", paramIntent.toString());
       localIntent.putExtra("webStyle", "noBottomBar");
       i = 0;
       break label310;
-      paramIntent = new StringBuilder("http://story.now.qq.com/m/score/index.html?_wv=3&_nav_alpha=0");
+      paramIntent = new StringBuilder("https://story.now.qq.com/m/score/index.html?_wv=3&_nav_alpha=0");
       paramIntent.append("&vid=").append(((StoryPushMsg)localObject).e);
       localIntent.putExtra("action", 10);
       localIntent.putExtra("url", paramIntent.toString());
       localIntent.putExtra("webStyle", "noBottomBar");
       i = 0;
       break label310;
-      vod.b(paramContext, ((StoryPushMsg)localObject).e, ((StoryPushMsg)localObject).d, 29);
+      xho.b(paramContext, ((StoryPushMsg)localObject).e, ((StoryPushMsg)localObject).d, 29);
       i = 1;
       break label310;
     }
@@ -157,7 +157,7 @@ public class StoryMsgNotificationReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotificationReceiver
  * JD-Core Version:    0.7.0.1
  */

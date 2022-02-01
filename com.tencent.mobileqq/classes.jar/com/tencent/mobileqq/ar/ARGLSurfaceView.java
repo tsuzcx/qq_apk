@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.ar;
 
-import amsh;
-import amsi;
-import amsj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -10,26 +7,29 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
+import aoqy;
+import aoqz;
+import aora;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private amsi jdField_a_of_type_Amsi;
-  private amsj jdField_a_of_type_Amsj;
+  private aoqz jdField_a_of_type_Aoqz;
+  private aora jdField_a_of_type_Aora;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, amsi paramamsi)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, aoqz paramaoqz)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramamsi);
-    setEGLContextFactory(new amsh(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramaoqz);
+    setEGLContextFactory(new aoqy(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_Amsi = paramamsi;
+    this.jdField_a_of_type_Aoqz = paramaoqz;
   }
   
   public void onPause()
@@ -44,16 +44,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Amsi != null) {
-      this.jdField_a_of_type_Amsi.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_Aoqz != null) {
+      this.jdField_a_of_type_Aoqz.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
     return false;
   }
   
-  public void setOnEglContextDestoryListener(amsj paramamsj)
+  public void setOnEglContextDestoryListener(aora paramaora)
   {
-    this.jdField_a_of_type_Amsj = paramamsj;
+    this.jdField_a_of_type_Aora = paramaora;
   }
   
   @Deprecated
@@ -64,7 +64,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

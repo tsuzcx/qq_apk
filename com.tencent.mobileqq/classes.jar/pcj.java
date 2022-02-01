@@ -1,31 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import java.util.ArrayList;
 
-public class pcj
-  implements TVK_IMediaPlayer.OnCompletionListener
+class pcj
+  extends pcm
 {
-  public pcj(VideoView paramVideoView) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  pcj(pbe parampbe, int paramInt)
   {
-    try
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    if (parampcp == null) {}
+    do
     {
-      VideoView.a(this.a, 10);
-      if (VideoView.b(this.a)) {
-        VideoView.h(this.a);
-      }
-      if (VideoView.a(this.a) != null) {
-        VideoView.a(this.a).c();
-      }
       return;
-    }
-    finally {}
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        parampcp.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    parampcp.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcj
  * JD-Core Version:    0.7.0.1
  */

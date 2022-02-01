@@ -1,26 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
 
-class wle
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class wle<Request extends wlf, Respond extends wla>
+  implements wld<Request, Respond>
 {
-  wle(wlc paramwlc, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public static Handler a = new Handler(Looper.getMainLooper());
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    if (Thread.currentThread() == a.getLooper().getThread())
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      b(paramRequest, paramRespond, paramErrorMessage);
       return;
     }
-    catch (Exception paramValueAnimator) {}
+    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
   }
+  
+  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wle
  * JD-Core Version:    0.7.0.1
  */

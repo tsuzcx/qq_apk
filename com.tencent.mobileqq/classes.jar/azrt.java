@@ -1,71 +1,31 @@
-import com.tencent.common.config.AppSetting;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-class azrt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azrt
+  extends RecyclerView.ViewHolder
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k = "8.3.5.4555";
-  public String l = "AND";
+  @NotNull
+  private FormSwitchItem a;
   
-  public azrt()
+  public azrt(@NotNull View paramView)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = AppSetting.a();
-    this.jdField_a_of_type_JavaLangString = bdgk.a();
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramView);
+    paramView = paramView.findViewById(2131372914);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    }
+    this.a = ((FormSwitchItem)paramView);
   }
   
-  public String a()
+  @NotNull
+  public final FormSwitchItem a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    return this.a;
   }
 }
 

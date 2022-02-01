@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class StoryAlbumPicEntry
-  extends awge
+  extends Entity
 {
   public static final int PIC_STATE_BLACK_POI = 4;
   public static final int PIC_STATE_DEFAULT = 1;
@@ -28,7 +28,7 @@ public class StoryAlbumPicEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryAlbumPicEntry
  * JD-Core Version:    0.7.0.1
  */

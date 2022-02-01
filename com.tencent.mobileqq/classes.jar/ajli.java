@@ -1,27 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-@Deprecated
-public class ajli
-  extends ajju
+class ajli
+  extends anmu
 {
-  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
+  ajli(ajld paramajld) {}
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2131562749, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
     }
-    paramajjp = paramObject.findViewById(2131378340);
-    paramajjp.setTag(-1, Integer.valueOf(paramInt));
-    paramajjp.setOnClickListener(paramOnClickListener);
-    paramajjp = paramObject.findViewById(2131378339);
-    paramajjp.setTag(-1, Integer.valueOf(paramInt));
-    paramajjp.setOnClickListener(paramOnClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    if (paramBoolean)
+    {
+      ajld.a(this.a, true);
+      ajld.a(this.a);
+    }
   }
 }
 

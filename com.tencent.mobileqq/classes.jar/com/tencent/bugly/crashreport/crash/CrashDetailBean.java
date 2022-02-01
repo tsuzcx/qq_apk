@@ -27,14 +27,15 @@ public class CrashDetailBean
   public long M = -1L;
   public boolean N = false;
   public Map<String, String> O = null;
-  public int P = -1;
+  public Map<String, String> P = null;
   public int Q = -1;
-  public Map<String, String> R = null;
+  public int R = -1;
   public Map<String, String> S = null;
-  public byte[] T = null;
-  public String U = null;
+  public Map<String, String> T = null;
+  public byte[] U = null;
   public String V = null;
-  private String W = "";
+  public String W = null;
+  private String X = "";
   public long a = -1L;
   public int b = 0;
   public String c = UUID.randomUUID().toString();
@@ -76,16 +77,16 @@ public class CrashDetailBean
       this.f = paramParcel.readString();
       this.g = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label709;
-      }
-      bool1 = true;
-      label356:
-      this.j = bool1;
-      if (paramParcel.readByte() != 1) {
         break label714;
       }
       bool1 = true;
-      label371:
+      label361:
+      this.j = bool1;
+      if (paramParcel.readByte() != 1) {
+        break label719;
+      }
+      bool1 = true;
+      label376:
       this.k = bool1;
       this.l = paramParcel.readInt();
       this.m = paramParcel.readString();
@@ -109,40 +110,40 @@ public class CrashDetailBean
       this.G = paramParcel.readLong();
       this.H = paramParcel.readLong();
       this.I = paramParcel.readString();
-      this.W = paramParcel.readString();
+      this.X = paramParcel.readString();
       this.J = paramParcel.readString();
       this.K = paramParcel.readString();
       this.L = paramParcel.readString();
       this.M = paramParcel.readLong();
       if (paramParcel.readByte() != 1) {
-        break label719;
+        break label724;
       }
     }
-    label709:
     label714:
     label719:
+    label724:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.N = bool1;
       this.O = z.b(paramParcel);
       this.h = z.a(paramParcel);
       this.i = z.a(paramParcel);
-      this.P = paramParcel.readInt();
       this.Q = paramParcel.readInt();
-      this.R = z.b(paramParcel);
+      this.R = paramParcel.readInt();
       this.S = z.b(paramParcel);
-      this.T = paramParcel.createByteArray();
+      this.T = z.b(paramParcel);
+      this.U = paramParcel.createByteArray();
       this.y = paramParcel.createByteArray();
-      this.U = paramParcel.readString();
       this.V = paramParcel.readString();
+      this.W = paramParcel.readString();
       this.x = paramParcel.readString();
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label356;
+      break label361;
       bool1 = false;
-      break label371;
+      break label376;
     }
   }
   
@@ -197,7 +198,7 @@ public class CrashDetailBean
       paramParcel.writeLong(this.G);
       paramParcel.writeLong(this.H);
       paramParcel.writeString(this.I);
-      paramParcel.writeString(this.W);
+      paramParcel.writeString(this.X);
       paramParcel.writeString(this.J);
       paramParcel.writeString(this.K);
       paramParcel.writeString(this.L);
@@ -215,14 +216,14 @@ public class CrashDetailBean
       z.b(paramParcel, this.O);
       z.a(paramParcel, this.h);
       z.a(paramParcel, this.i);
-      paramParcel.writeInt(this.P);
       paramParcel.writeInt(this.Q);
-      z.b(paramParcel, this.R);
+      paramParcel.writeInt(this.R);
       z.b(paramParcel, this.S);
-      paramParcel.writeByteArray(this.T);
+      z.b(paramParcel, this.T);
+      paramParcel.writeByteArray(this.U);
       paramParcel.writeByteArray(this.y);
-      paramParcel.writeString(this.U);
       paramParcel.writeString(this.V);
+      paramParcel.writeString(this.W);
       paramParcel.writeString(this.x);
       return;
       paramInt = 0;

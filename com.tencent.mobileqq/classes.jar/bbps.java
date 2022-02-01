@@ -1,27 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import java.util.List;
-
-public class bbps
-  extends bbpz
+public abstract interface bbps<M extends bbmw, V extends bbvh>
 {
-  public bbps(TroopAioKeywordTipBar.4 param4, List paramList, bbpw parambbpw) {}
-  
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (bbpo.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
-    this.jdField_a_of_type_Bbpw.a(this.jdField_a_of_type_JavaUtilList, null, 2, new bbpt(this));
-    return;
-    bbpo.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
-  }
+  public abstract void a(M paramM, V paramV);
 }
 
 

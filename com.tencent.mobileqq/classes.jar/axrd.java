@@ -1,31 +1,68 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
 public class axrd
-  extends Animation
+  extends axrc
 {
-  public axrd(CircleBarView paramCircleBarView) {}
+  protected View a;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected int a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    return 2131561261;
+  }
+  
+  protected LabelContainer a(View paramView, int paramInt1, axid paramaxid, int paramInt2)
+  {
+    paramaxid = (ImageView)paramView.findViewById(2131380151);
+    if (paramInt1 == 7) {
+      paramaxid.setVisibility(8);
     }
-    this.a.postInvalidate();
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      {
+        paramaxid = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+        paramaxid.topMargin = zby.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+        paramView.setLayoutParams(paramaxid);
+      }
+      paramInt1 = zby.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramInt2 = zby.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramView = (LabelContainer)paramView.findViewById(2131369508);
+      paramView.setSpace(paramInt1, paramInt2);
+      return paramView;
+      paramaxid.setImageResource(b[paramInt1]);
+    }
+  }
+  
+  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
+  {
+    super.a(paramContext, paramLinearLayout);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public boolean a(axid[] paramArrayOfaxid)
+  {
+    if (super.a(paramArrayOfaxid))
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrd
  * JD-Core Version:    0.7.0.1
  */

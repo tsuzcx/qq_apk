@@ -1,6 +1,6 @@
 package cooperation.qqfav;
 
-import bivc;
+import bljn;
 import com.tencent.qphone.base.util.QLog;
 
 public final class QfavHelper$2
@@ -11,9 +11,9 @@ public final class QfavHelper$2
     synchronized ()
     {
       if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
+        QLog.i("qqfav", 2, "notify(IS_PLUGININSTALLED) qqfav.apk");
       }
-      bivc.a().notifyAll();
+      bljn.a().notifyAll();
       return;
     }
   }

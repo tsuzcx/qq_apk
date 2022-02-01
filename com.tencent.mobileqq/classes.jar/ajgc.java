@@ -1,29 +1,26 @@
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajgc
-  implements aufw
+public class ajgc
+  extends anif
 {
-  ajgc(ajgb paramajgb) {}
+  public ajgc(TroopView paramTroopView) {}
   
-  public void a(int paramInt)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    ajgb.a(this.a).removeMessages(11);
-    ajgb.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt & 0x1) != 0)
-    {
-      ajgb.a(this.a).removeMessages(11);
-      ajgb.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+    if (paramInt2 == 0) {
+      this.a.j();
     }
+    while (this.a.a()) {
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694156);
+    }
+    QQToast.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 

@@ -41,7 +41,9 @@ public class DOMActionContextImpl
   final ConcurrentHashMap<String, DomObject> mRegistry;
   private ViolaRenderManager mRenderManager;
   private DomObject.Consumer mUnregisterDomConsumer;
+  private String nvRootRef;
   private String rootDomRef;
+  private boolean supportNv;
   
   public DOMActionContextImpl(String paramString, ViolaRenderManager paramViolaRenderManager)
   {
@@ -170,6 +172,11 @@ public class DOMActionContextImpl
     return this.mInstanceId;
   }
   
+  public String getNvRootRef()
+  {
+    return this.nvRootRef;
+  }
+  
   public DomObject.Consumer getRemoveElementConsumer()
   {
     return this.mUnregisterDomConsumer;
@@ -183,6 +190,11 @@ public class DOMActionContextImpl
   public boolean isDestory()
   {
     return false;
+  }
+  
+  public boolean isSupportNv()
+  {
+    return this.supportNv;
   }
   
   void layout(DomObject paramDomObject)
@@ -219,6 +231,14 @@ public class DOMActionContextImpl
     }
   }
   
+  public void nvBatch()
+  {
+    if ((!this.mDirty) || (this.mDestroy) || (TextUtils.isEmpty(this.nvRootRef))) {
+      return;
+    }
+    layout((DomObject)this.mRegistry.get(this.nvRootRef));
+  }
+  
   public void postRenderTask(RenderAction paramRenderAction)
   {
     this.mNormalTasks.add(new RenderActionTask(paramRenderAction, this.mRenderManager.getRenderContext(this.mInstanceId)));
@@ -235,9 +255,19 @@ public class DOMActionContextImpl
     this.mRegistry.put(paramString, paramDomObject);
   }
   
+  public void setNvRootRef(String paramString)
+  {
+    this.nvRootRef = paramString;
+  }
+  
   public void setRootRef(@NonNull String paramString)
   {
     this.rootDomRef = paramString;
+  }
+  
+  public void supportNv(boolean paramBoolean)
+  {
+    this.supportNv = paramBoolean;
   }
   
   public VComponent unregisterComponent(String paramString)
@@ -252,7 +282,7 @@ public class DOMActionContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl
  * JD-Core Version:    0.7.0.1
  */

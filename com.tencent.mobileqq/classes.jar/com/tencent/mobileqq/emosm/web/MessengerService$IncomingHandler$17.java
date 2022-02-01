@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.emosm.web;
 
-import altr;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apol;
-import apon;
-import apqh;
-import awgg;
-import bdhe;
+import anmz;
+import arrm;
+import arro;
+import arti;
+import bgmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
@@ -24,13 +24,13 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$17
   implements Runnable
 {
-  public MessengerService$IncomingHandler$17(apqh paramapqh, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$17(arti paramarti, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = (apon)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    Object localObject3 = ((apon)localObject2).a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    Object localObject2 = (arro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    Object localObject3 = ((arro)localObject2).a();
     HashSet localHashSet;
     int i;
     if (localObject3 != null) {
@@ -95,13 +95,13 @@ public class MessengerService$IncomingHandler$17
           j = i + 1;
           if ((!((CustomEmotionData)localObject4).isMarkFace) && (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) && (!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)))
           {
-            ((CustomEmotionData)localObject4).md5 = bdhe.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
-            ((apon)localObject2).b((CustomEmotionBase)localObject4);
+            ((CustomEmotionData)localObject4).md5 = bgmj.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
+            ((arro)localObject2).b((CustomEmotionBase)localObject4);
           }
           if ((TextUtils.isEmpty(((CustomEmotionData)localObject4).url)) || (!((CustomEmotionData)localObject4).url.contains("qto_"))) {
             continue;
           }
-          localObject4 = altr.a(((CustomEmotionData)localObject4).url);
+          localObject4 = anmz.a(((CustomEmotionData)localObject4).url);
           i = j;
           if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
@@ -119,13 +119,13 @@ public class MessengerService$IncomingHandler$17
     do
     {
       Object localObject1;
-      localHashSet.addAll(altr.a);
+      localHashSet.addAll(anmz.a);
       localObject2 = localHashSet.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
       }
       localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("remainNum", apol.a - i);
+      ((JSONObject)localObject2).put("remainNum", arrm.a - i);
       ((JSONObject)localObject2).put("uid", localObject1);
       this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
       this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject2).toString());
@@ -134,7 +134,7 @@ public class MessengerService$IncomingHandler$17
       try
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("remainNum", apol.a);
+        ((JSONObject)localObject1).put("remainNum", arrm.a);
         ((JSONObject)localObject1).put("uid", new JSONArray());
         this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
         this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());
@@ -148,7 +148,7 @@ public class MessengerService$IncomingHandler$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.17
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atag
-  implements EnterCallback
+class atag
+  implements DialogInterface.OnClickListener
 {
-  public atag(GroupVideoManager.3 param3) {}
+  atag(atae paramatae, atak paramatak) {}
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcst.b(null, "dc00898", "", "", "0X800AE41", "0X800AE41", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Atak != null) {
+      this.jdField_a_of_type_Atak.b();
+    }
+  }
 }
 
 

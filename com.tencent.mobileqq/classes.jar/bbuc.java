@@ -1,51 +1,45 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.qun.group_effect.group_effect.EffectInfo;
-import tencent.qun.group_effect.group_effect.UserConfig;
-import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-public class bbuc
+class bbuc
+  implements Comparator<bbmu>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
+  bbuc(bbub parambbub) {}
   
-  public group_effect_commu.TEffectDetail a()
+  public int a(bbmu parambbmu1, bbmu parambbmu2)
   {
-    group_effect_commu.TEffectDetail localTEffectDetail = new group_effect_commu.TEffectDetail();
-    Object localObject = new group_effect.UserConfig();
-    ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
-    ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
-    localObject = ((group_effect.UserConfig)localObject).status;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (long l = 1L;; l = 0L)
+    int i = -1;
+    parambbmu1 = (bboi)parambbmu1;
+    parambbmu2 = (bboi)parambbmu2;
+    anmw localanmw = (anmw)this.a.a.getManager(51);
+    boolean bool1 = localanmw.b((String)parambbmu1.a());
+    boolean bool2 = localanmw.b((String)parambbmu2.a());
+    if ((!bool1) && (!bool2))
     {
-      ((PBUInt64Field)localObject).set(l);
-      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
-      return localTEffectDetail;
+      bool1 = localanmw.d((String)parambbmu1.a());
+      bool2 = localanmw.d((String)parambbmu2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambbmu2.f() - parambbmu1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return parambbmu2.f() - parambbmu1.f();
     }
-  }
-  
-  public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
-  {
-    group_effect.UserConfig localUserConfig = (group_effect.UserConfig)paramTEffectDetail.st_userconfig.get();
-    paramTEffectDetail = (group_effect.EffectInfo)paramTEffectDetail.st_effectinfo.get();
-    this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
-    this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
-    this.jdField_a_of_type_Long = localUserConfig.group_code.get();
-    if (localUserConfig.status.get() != 0L) {}
-    for (boolean bool = true;; bool = false)
+    if (bool1 != bool2)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
+    return parambbmu2.f() - parambbmu1.f();
   }
 }
 

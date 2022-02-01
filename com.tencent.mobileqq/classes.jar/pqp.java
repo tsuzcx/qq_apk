@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pqp
-  implements ViewBase.IBuilder
+  implements prw
 {
-  public ViewBase build(VafContext paramVafContext)
+  public pqp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    return new pqo(paramVafContext);
+    tlg.a(this.a.a.getContext(), "viola测试页面", "https://kandian.qq.com/viola/bundle_home.js?v_bid=3256&statusColor=1", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pqp
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 
 public class TAVCutImageView
   extends FrameLayout
 {
+  private Bitmap curBitmap;
   private ImageView imageView;
   
   public TAVCutImageView(@NonNull Context paramContext)
@@ -33,10 +33,22 @@ public class TAVCutImageView
     init(paramContext);
   }
   
+  private void clearAndResetCurBitmap(Bitmap paramBitmap)
+  {
+    try
+    {
+      if ((this.curBitmap != null) && (this.curBitmap != paramBitmap)) {
+        this.curBitmap.recycle();
+      }
+      this.curBitmap = paramBitmap;
+      return;
+    }
+    finally {}
+  }
+  
   private void init(Context paramContext)
   {
     this.imageView = new ImageView(paramContext);
-    this.imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     addView(this.imageView, new FrameLayout.LayoutParams(-1, -1));
   }
   
@@ -47,7 +59,7 @@ public class TAVCutImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.view.TAVCutImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,50 @@ package com.tencent.smtt.sdk;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
+import com.tencent.smtt.utils.TbsLog;
 
 final class QbSdk$1
-  extends Thread
+  extends Handler
 {
-  QbSdk$1(Context paramContext, String paramString, ValueCallback paramValueCallback) {}
-  
-  public void run()
+  QbSdk$1(Looper paramLooper, QbSdk.PreInitCallback paramPreInitCallback, Context paramContext)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    localX5CoreEngine.init(this.val$context, null);
-    boolean bool = false;
-    if (localX5CoreEngine.isX5Core()) {
-      bool = localX5CoreEngine.wizard().canOpenFile(this.val$context, this.val$filePath);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    new Handler(Looper.getMainLooper()).post(new QbSdk.1.1(this, bool));
+    do
+    {
+      return;
+      if (this.a != null) {
+        this.a.onViewInitFinished(false);
+      }
+      TbsLog.writeLogToDisk();
+      return;
+      QbSdk.a(TbsExtensionFunctionManager.getInstance().canUseFunction(this.b, "disable_unpreinit.txt"));
+      if (QbSdk.j)
+      {
+        paramMessage = v.a().c();
+        if (paramMessage != null) {
+          paramMessage.a(this.b);
+        }
+      }
+      if (this.a != null) {
+        this.a.onViewInitFinished(true);
+      }
+      TbsLog.writeLogToDisk();
+      return;
+    } while (this.a == null);
+    this.a.onCoreInitFinished();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.1
  * JD-Core Version:    0.7.0.1
  */

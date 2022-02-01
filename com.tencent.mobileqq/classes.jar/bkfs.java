@@ -1,70 +1,40 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import org.json.JSONObject;
+import android.os.Debug;
+import java.io.IOException;
 
 public class bkfs
 {
-  public View a(Context paramContext, String paramString)
+  private static boolean jdField_a_of_type_Boolean;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
+  
+  public static void a(String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new TextView(paramContext);
+      return;
+      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (localObject[i].equals(paramString))
+        {
+          localObject = anhk.bg + "dump_";
+          try
+          {
+            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
+            jdField_a_of_type_Boolean = true;
+            return;
+          }
+          catch (IOException paramString)
+          {
+            return;
+          }
+        }
+        i += 1;
       }
-      if ("image_view".equals(paramString)) {
-        return new ImageView(paramContext);
-      }
-      if ("layout".equals(paramString)) {
-        return new RelativeLayout(paramContext);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new DiniFlyAnimationView(paramContext);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new ImageView(paramContext);
-  }
-  
-  public bkfr a(View paramView)
-  {
-    if ((paramView == null) || (paramView.getClass() == null)) {
-      return null;
     }
-    if (RelativeLayout.class.isInstance(paramView)) {
-      return new bkfp("layout", paramView);
-    }
-    return new bkfr(paramView);
   }
-  
-  public bkfr a(String paramString, View paramView)
-  {
-    if ((paramView == null) || (paramView.getClass() == null)) {}
-    do
-    {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new bkfq(paramString, paramView);
-      }
-      if ("image_view".equals(paramString)) {
-        return new bkfm(paramString, paramView);
-      }
-      if ("layout".equals(paramString)) {
-        return new bkfp(paramString, paramView);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new bkfn(paramString, paramView);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new bkfo(paramString, paramView);
-  }
-  
-  public void a(bkfr parambkfr, JSONObject paramJSONObject) {}
 }
 
 

@@ -1,6 +1,18 @@
-public abstract interface afax
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afax
+  implements View.OnClickListener
 {
-  public abstract void a(afav paramafav, int paramInt);
+  public afax(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,19 +1,32 @@
-class bmee<K, V>
-  extends bmeh<K, V>
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class bmee
+  extends Handler
 {
-  bmee(bmef<K, V> parambmef1, bmef<K, V> parambmef2)
+  bmee(bmed parambmed, Looper paramLooper)
   {
-    super(parambmef1, parambmef2);
+    super(paramLooper);
   }
   
-  bmef<K, V> a(bmef<K, V> parambmef)
+  public void handleMessage(Message paramMessage)
   {
-    return parambmef.b;
-  }
-  
-  bmef<K, V> b(bmef<K, V> parambmef)
-  {
-    return parambmef.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bmed.a());
+    }
+    if (paramMessage.what == 1) {}
+    try
+    {
+      paramMessage = (String)paramMessage.obj;
+      bmed.a(this.a).a(paramMessage, this.a, 2);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+    }
   }
 }
 

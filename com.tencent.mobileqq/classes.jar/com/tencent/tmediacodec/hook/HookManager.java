@@ -1,59 +1,53 @@
 package com.tencent.tmediacodec.hook;
 
 import android.graphics.SurfaceTexture;
+import android.support.annotation.NonNull;
 import com.tencent.tmediacodec.util.LogUtils;
-import java.util.HashMap;
 import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/hook/HookManager;", "", "()V", "TAG", "", "isSurfaceMethodHooked", "", "mHoldCallbackMap", "Ljava/util/HashMap;", "Lcom/tencent/tmediacodec/hook/SurfaceCallback;", "Lkotlin/collections/HashMap;", "hookSurfaceCallback", "", "name", "callback", "realReleaseSurfaceTexture", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "unHookSurfaceCallback", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class HookManager
 {
-  public static final HookManager INSTANCE = new HookManager();
   private static final String TAG = "HookManager";
   private static boolean isSurfaceMethodHooked;
-  private static final HashMap<String, SurfaceCallback> mHoldCallbackMap = new HashMap();
+  private static final Map<String, SurfaceCallback> mHoldCallbackMap = new ConcurrentHashMap();
   
-  public final void hookSurfaceCallback(@NotNull String paramString, @NotNull SurfaceCallback paramSurfaceCallback)
+  public static void hookSurfaceCallback(@NonNull String paramString, @NonNull SurfaceCallback paramSurfaceCallback)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "name");
-    Intrinsics.checkParameterIsNotNull(paramSurfaceCallback, "callback");
-    ((Map)mHoldCallbackMap).put(paramString, paramSurfaceCallback);
-    LogUtils.INSTANCE.d(TAG, "after hookSurfaceCallback mHoldCallbackMap:" + mHoldCallbackMap);
-    if (isSurfaceMethodHooked) {
-      return;
+    mHoldCallbackMap.put(paramString, paramSurfaceCallback);
+    if (LogUtils.isLogEnable()) {
+      LogUtils.d("HookManager", "after hookSurfaceCallback size:" + mHoldCallbackMap.size() + " mHoldCallbackMap:" + mHoldCallbackMap);
     }
-    isSurfaceMethodHooked = true;
-    THookTextureView.Companion.setHookCallback((THookTextureView.SurfaceTextureHookCallback)new HookManager.hookSurfaceCallback.1());
+    if (!isSurfaceMethodHooked)
+    {
+      isSurfaceMethodHooked = true;
+      THookTextureView.setHookCallback(new HookManager.1());
+    }
   }
   
-  public final void realReleaseSurfaceTexture(@NotNull SurfaceTexture paramSurfaceTexture)
+  public static void realReleaseSurfaceTexture(@NonNull SurfaceTexture paramSurfaceTexture)
   {
-    Intrinsics.checkParameterIsNotNull(paramSurfaceTexture, "surfaceTexture");
     try
     {
-      LogUtils.w$default(LogUtils.INSTANCE, "ReuseCodecWrapper", "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture, null, 4, null);
+      LogUtils.w("HookManager", "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture);
       unHookSurfaceCallback(paramSurfaceTexture.toString());
       paramSurfaceTexture.release();
       return;
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.INSTANCE.w(TAG, "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture + " ignoreThrowable", localThrowable);
+      LogUtils.w("HookManager", "realReleaseSurfaceTexture surfaceTexture:" + paramSurfaceTexture + " ignoreThrowable", localThrowable);
     }
   }
   
-  public final void unHookSurfaceCallback(@NotNull String paramString)
+  public static void unHookSurfaceCallback(@NonNull String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "name");
     mHoldCallbackMap.remove(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.HookManager
  * JD-Core Version:    0.7.0.1
  */

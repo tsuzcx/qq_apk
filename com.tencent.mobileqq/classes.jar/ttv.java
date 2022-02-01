@@ -1,60 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ttv
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  ttv(ttr paramttr) {}
+  ttv(ttu paramttu, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      abvl.a().a("qcircle_tag_page", false);
-      return;
-    }
-    abvl.a().a("qcircle_tag_page");
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    ttr.a(this.a, paramInt2);
-    if ((paramRecyclerView.getLayoutManager() instanceof yiq))
-    {
-      int[] arrayOfInt = ((yiq)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(null);
-      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-      {
-        paramInt2 = arrayOfInt[0];
-        if (!this.a.a().a().b()) {
-          break label151;
-        }
-      }
-    }
-    label151:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt2 == paramInt1)
-      {
-        QLog.i("QCircleTagPageBodyPart", 1, "onScrolled headView completeVisible");
-        ttr.a(this.a);
-      }
-      paramRecyclerView = ((yiq)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPositions(null);
-      if ((paramRecyclerView != null) && (paramRecyclerView.length > 0) && (this.a.a().a().b()) && (paramRecyclerView[0] == 0))
-      {
-        QLog.i("QCircleTagPageBodyPart", 1, "onScrolled refreshItem visible");
-        ttr.a(this.a);
-      }
-      return;
-    }
+    aaae.a(this.jdField_a_of_type_Ttu.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    aaxb.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttv
  * JD-Core Version:    0.7.0.1
  */

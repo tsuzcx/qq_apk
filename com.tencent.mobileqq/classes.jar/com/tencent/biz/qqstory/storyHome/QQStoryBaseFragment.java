@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import alud;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import anni;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import umc;
+import wfo;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -61,7 +61,7 @@ public abstract class QQStoryBaseFragment
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + alud.a(2131711194));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + anni.a(2131709570));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      umc.a().registerSubscriber((String)localObject2, localSubscriber);
+      wfo.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      umc.a().unRegisterSubscriber(localSubscriber);
+      wfo.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }
@@ -129,7 +129,7 @@ public abstract class QQStoryBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment
  * JD-Core Version:    0.7.0.1
  */

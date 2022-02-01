@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class arvz
-  implements arrh
+class arvz
+  implements DialogInterface.OnDismissListener
 {
-  public arvz(SendBottomBar paramSendBottomBar) {}
+  arvz(arvy paramarvy) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    }
+    this.a.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    }
   }
-  
-  public void b() {}
 }
 
 

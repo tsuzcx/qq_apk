@@ -1,72 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class aorp
-  extends aokh<aorq>
+class aorp
+  implements SoundPool.OnLoadCompleteListener
 {
-  public int a()
-  {
-    return 362;
-  }
+  aorp(aorl paramaorl) {}
   
-  @NonNull
-  public aorq a(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    return new aorq();
-  }
-  
-  @Nullable
-  public aorq a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    if (paramInt2 != 0) {}
+    try
     {
-      aorq localaorq = aorq.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaorq;
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
     }
-    return null;
-  }
-  
-  public Class<aorq> a()
-  {
-    return aorq.class;
-  }
-  
-  public void a(int paramInt)
-  {
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
     }
-  }
-  
-  public void a(aorq paramaorq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramaorq });
+    aorl.a(this.a).add(Integer.valueOf(paramInt1));
+    if (aorl.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorp
  * JD-Core Version:    0.7.0.1
  */

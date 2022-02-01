@@ -1,11 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
 
-public class bb
+class bb
   implements DialogInterface.OnClickListener
 {
-  public bb(LiteActivity paramLiteActivity) {}
+  bb(az paramaz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

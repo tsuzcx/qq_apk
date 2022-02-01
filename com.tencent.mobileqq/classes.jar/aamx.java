@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
-public final class aamx
-  implements Parcelable.Creator<GdtBaseAdItem>
+public class aamx
+  implements DialogInterface.OnDismissListener
 {
-  public GdtBaseAdItem a(Parcel paramParcel)
-  {
-    return new GdtBaseAdItem(paramParcel);
-  }
+  public aamx(FollowTextView paramFollowTextView) {}
   
-  public GdtBaseAdItem[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new GdtBaseAdItem[paramInt];
+    FollowTextView.a(this.a, true);
   }
 }
 

@@ -1,20 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class besz
-  implements View.OnClickListener
+class besz
+  implements DialogInterface.OnClickListener
 {
-  public besz(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  besz(besy parambesy, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent();
-    paramView.putExtra("key_jump_from", "5");
-    tqs.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin, paramView);
-    tzv.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, 3, 1L, 2L);
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
+    }
   }
 }
 

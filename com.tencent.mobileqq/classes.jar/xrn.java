@@ -1,107 +1,77 @@
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 
 public class xrn
+  extends Handler
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static String b = "";
+  private xrn(MediaPlayer paramMediaPlayer) {}
   
-  public static String a(Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    b(paramContext);
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String b(Context paramContext)
-  {
-    b(paramContext);
-    return b;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
+    switch (paramMessage.what)
     {
-      paramContext = paramContext.getApplicationContext();
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(paramContext, new xro(paramContext));
-      c(paramContext);
-    }
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String c(Context paramContext)
-  {
-    if (paramContext != null) {}
-    for (;;)
-    {
-      try
+    default: 
+    case 1: 
+    case 4: 
+    case 2: 
+    case 5: 
+      do
       {
-        paramContext = (WifiManager)paramContext.getSystemService("wifi");
-        if (paramContext != null)
+        do
         {
-          paramContext = paramContext.getConnectionInfo();
-          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getSSID())))
+          do
           {
-            paramContext = paramContext.getSSID().replace("\"", "");
-            return paramContext;
-          }
+            return;
+            Log.d("Story-MediaPlayer", "onPrepared");
+          } while (this.a.jdField_a_of_type_Xry == null);
+          this.a.jdField_a_of_type_Xry.a_(this.a);
+          return;
+          Log.d("Story-MediaPlayer", "onSeekComplete");
+        } while (this.a.jdField_a_of_type_Xrz == null);
+        this.a.jdField_a_of_type_Xrz.a(this.a);
+        return;
+        Log.d("Story-MediaPlayer", "onPlaybackComplete");
+        if (this.a.jdField_a_of_type_Xrv != null) {
+          this.a.jdField_a_of_type_Xrv.a(this.a);
         }
-      }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-        return "";
-      }
-      paramContext = "";
-    }
-  }
-  
-  private static void c(Context paramContext)
-  {
-    WifiInfo localWifiInfo;
-    if (paramContext != null)
-    {
-      localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (localWifiInfo != null)
-      {
-        if (!TextUtils.isEmpty(localWifiInfo.getBSSID())) {
-          break label55;
-        }
-        paramContext = "";
-        jdField_a_of_type_JavaLangString = paramContext;
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          break label63;
-        }
-      }
-    }
-    label55:
-    label63:
-    for (paramContext = "";; paramContext = localWifiInfo.getSSID())
-    {
-      b = paramContext;
+        this.a.c(false);
+        return;
+        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+      } while (this.a.jdField_a_of_type_Xsb == null);
+      this.a.jdField_a_of_type_Xsb.a(this.a, paramMessage.arg1, paramMessage.arg2);
       return;
-      paramContext = localWifiInfo.getBSSID();
-      break;
+    case 100: 
+      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+      if (this.a.jdField_a_of_type_Xrw == null) {
+        break;
+      }
+    }
+    for (boolean bool = this.a.jdField_a_of_type_Xrw.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    {
+      if ((this.a.jdField_a_of_type_Xrv != null) && (!bool)) {
+        this.a.jdField_a_of_type_Xrv.a(this.a);
+      }
+      this.a.c(false);
+      return;
+      Log.d("Story-MediaPlayer", "onInfo");
+      if (this.a.jdField_a_of_type_Xrx == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Xrx.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+      if (this.a.jdField_a_of_type_Xru != null) {
+        this.a.jdField_a_of_type_Xru.a(this.a, paramMessage.arg1);
+      }
+      this.a.e = paramMessage.arg1;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xrn
  * JD-Core Version:    0.7.0.1
  */

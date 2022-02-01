@@ -1,32 +1,47 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoTopRsp;
+import android.view.View;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 
-class tut
-  implements zac<FeedCloudWrite.StDoTopRsp>
+public class tut
+  implements bkhw
 {
-  tut(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
+  public tut(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, bkho parambkho) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null))
+    switch (paramInt)
     {
-      QLog.e(tuk.a(), 1, "cancelStickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+    default: 
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
     }
-    QLog.d(tuk.a(), 1, "cancelStickyFeedComment Success");
-    tuk.a(this.jdField_a_of_type_Tuk, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), "");
-    yiw.a().a(new QCircleCommentUpdateEvent(7, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get())));
-    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(10), Long.valueOf(paramLong), paramString, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
+    twi.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
+    paramInt = tzo.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
+    aldk.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    oat.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
+    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
+    twg localtwg;
+    do
+    {
+      if (!paramView.hasNext()) {
+        break;
+      }
+      localtwg = (twg)paramView.next();
+    } while ((localtwg.jdField_a_of_type_JavaLangString == null) || (!localtwg.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
+    for (paramInt = localtwg.b;; paramInt = 0)
+    {
+      bcst.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tut
  * JD-Core Version:    0.7.0.1
  */

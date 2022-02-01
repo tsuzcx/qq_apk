@@ -1,28 +1,6 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-
-public class bbdk
-  implements TVK_IMediaPlayer.OnInfoListener
+public abstract interface bbdk
 {
-  public bbdk(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
-    }
-  }
+  public abstract void k();
 }
 
 

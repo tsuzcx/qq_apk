@@ -1,37 +1,265 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import com.tencent.tmediacodec.util.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ruj
-  extends pdi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion;", "", "()V", "DEFAULT_CONFIG_URL", "", "DEFAULT_DEVICE_SUPPORT", "", "DEFAULT_MODE", "", "DEFAULT_VIDEO_CODEC_REUSE_ENABLE", "FETCH_CONFIG_LIMIT", "KEY_BLACK_BRAND_LIST", "KEY_BLACK_MODEL_LIST", "KEY_WHITE_BRAND_LIST", "KEY_WHITE_MODEL_LIST", "MODE_BLACK_LIST", "SEPARATOR", "SP_KEY_REUSE_CONFIG", "TAG", "TRUE", "UNKOWN", "VIDEO_CODEC_REUSE_ENABLE", "configUrl", "configVersion", "getConfigVersion", "()I", "setConfigVersion", "(I)V", "deviceSupport", "getDeviceSupport", "()Z", "setDeviceSupport", "(Z)V", "fetchConfigRetryCount", "hasReadLocalConfig", "getHasReadLocalConfig", "setHasReadLocalConfig", "lastFetchTime", "", "appendBySeparator", "originStr", "appendStr", "separator", "fetchConfig", "", "getTargetList", "", "jsonObject", "Lorg/json/JSONObject;", "listKey", "isCodecReuseEnable", "parseJsonConfig", "configJson", "pullConfigFromServer", "readConfigFromLocal", "saveConfigToLocal", "configStr", "setToReportData", "mediaCodecInfo", "Lcom/tencent/thumbplayer/api/TPPlayerMsg$TPMediaCodecInfo;", "reportData", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ReadinjoyVideoReportData;", "setToReportDataByExtraObject", "extraObject", "Ljava/lang/Object;", "videoFrameCheckEnable", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ruj
 {
-  ruj(ruh paramruh, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, ViewGroup paramViewGroup)
+  private final String a()
   {
-    super(paramString);
+    Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("SP_KEY_SUPERPLAYER_REUSE_CONFIG", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getC…IG, Context.MODE_PRIVATE)");
+    localObject = ((SharedPreferences)localObject).getString("SP_KEY_SUPERPLAYER_REUSE_CONFIG", "");
+    if (localObject != null) {
+      return localObject;
+    }
+    return "";
   }
   
-  public void a(pdc parampdc)
+  private final String a(String paramString1, String paramString2, String paramString3)
   {
-    biby.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Ruh.a(this.jdField_a_of_type_Int)) {
-      if ((opy.a(this.jdField_a_of_type_Ruh.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Ruh.c != 56))
+    if (TextUtils.isEmpty((CharSequence)paramString1)) {
+      return paramString2;
+    }
+    return paramString1 + paramString3 + paramString2;
+  }
+  
+  private final void a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("SP_KEY_SUPERPLAYER_REUSE_CONFIG", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localSharedPreferences, "BaseApplicationImpl.getC…IG, Context.MODE_PRIVATE)");
+    localSharedPreferences.edit().putString("SP_KEY_SUPERPLAYER_REUSE_CONFIG", paramString).apply();
+  }
+  
+  private final void b()
+  {
+    if (rui.b() > 3) {
+      return;
+    }
+    String str = Aladdin.getConfig(309).getString("config_file_url", "https://sqimg.qq.com/qq_product_operations/kan/superplayer_codecreuse_config.json");
+    Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…url\", DEFAULT_CONFIG_URL)");
+    rui.b(str);
+    rui.a(System.currentTimeMillis());
+    rui.b(rui.b() + 1);
+    tlg.a(rui.b(), (tsq)new rul());
+  }
+  
+  public final int a()
+  {
+    return rui.a();
+  }
+  
+  @NotNull
+  public final List<String> a(@NotNull JSONObject paramJSONObject, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonObject");
+    Intrinsics.checkParameterIsNotNull(paramString, "listKey");
+    ArrayList localArrayList = new ArrayList();
+    paramJSONObject = paramJSONObject.getJSONArray(paramString);
+    if (paramJSONObject != null) {
+      try
       {
-        if ((parampdc instanceof pde)) {}
+        paramJSONObject = new Gson().fromJson(paramJSONObject.toString(), new ruk().getType());
+        Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "Gson().fromJson(it.toStr…<List<String>>() {}.type)");
+        paramJSONObject = (List)paramJSONObject;
+        return paramJSONObject;
       }
-      else {
-        while ((parampdc instanceof pde)) {
-          return;
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("CodecReuseHelper", 1, "getTargetList failed for ...", paramJSONObject);
+      }
+    }
+    return (List)localArrayList;
+  }
+  
+  public final void a()
+  {
+    if (!((ruj)this).b())
+    {
+      ((ruj)this).b(true);
+      String str = ((ruj)this).a();
+      ((ruj)this).a(((ruj)this).a(str));
+    }
+    if (((ruj)this).a() == Aladdin.getConfig(309).getIntegerFromString("config_version", -1)) {}
+    for (int i = 1; i != 0; i = 0) {
+      return;
+    }
+    rui.b(0);
+    ((ruj)this).b();
+  }
+  
+  public final void a(int paramInt)
+  {
+    rui.a(paramInt);
+  }
+  
+  public final void a(@NotNull TPPlayerMsg.TPMediaCodecInfo paramTPMediaCodecInfo, @NotNull rgc paramrgc)
+  {
+    Intrinsics.checkParameterIsNotNull(paramTPMediaCodecInfo, "mediaCodecInfo");
+    Intrinsics.checkParameterIsNotNull(paramrgc, "reportData");
+    if (paramTPMediaCodecInfo.mediaType == TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO)
+    {
+      if (paramTPMediaCodecInfo.infoType != TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY) {
+        break label118;
+      }
+      paramTPMediaCodecInfo = paramTPMediaCodecInfo.msg;
+      paramrgc.n = paramTPMediaCodecInfo;
+    }
+    label118:
+    while (paramTPMediaCodecInfo.infoType != TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_EXCEPTION) {
+      try
+      {
+        paramTPMediaCodecInfo = new JSONObject(paramTPMediaCodecInfo);
+        paramrgc.j = paramTPMediaCodecInfo.optBoolean("reuseEnable");
+        paramrgc.k = paramTPMediaCodecInfo.optBoolean("isReuse");
+        paramrgc.u = paramTPMediaCodecInfo.optInt("totalCodec");
+        return;
+      }
+      catch (Throwable paramTPMediaCodecInfo)
+      {
+        LogUtil.e("CodecReuseHelper", "onCodecReuseInfo error:" + paramTPMediaCodecInfo.getMessage());
+        return;
+      }
+    }
+    try
+    {
+      String str = new JSONObject(paramTPMediaCodecInfo.msg).optString("errorCode");
+      paramrgc.o = ((ruj)this).a(paramrgc.o, str, ";");
+      paramrgc.p = ((ruj)this).a(paramrgc.p, paramTPMediaCodecInfo.msg, ";");
+      return;
+    }
+    catch (Throwable paramrgc)
+    {
+      LogUtils.e("CodecReuseHelper", "onCodecReuseInfo error for jsonObject:" + paramTPMediaCodecInfo.msg);
+    }
+  }
+  
+  public final void a(@NotNull Object paramObject, @NotNull rgc paramrgc)
+  {
+    Intrinsics.checkParameterIsNotNull(paramObject, "extraObject");
+    Intrinsics.checkParameterIsNotNull(paramrgc, "reportData");
+    if ((paramObject instanceof TPPlayerMsg.TPMediaCodecInfo))
+    {
+      paramObject = (TPPlayerMsg.TPMediaCodecInfo)paramObject;
+      ((ruj)this).a(paramObject, paramrgc);
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    rui.a(paramBoolean);
+  }
+  
+  public final boolean a()
+  {
+    return rui.a();
+  }
+  
+  public final boolean a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "configJson");
+    if (TextUtils.isEmpty((CharSequence)paramString)) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.optInt("mode", 0);
+        ((ruj)this).a(paramString.optInt("version", -1));
+        List localList;
+        if (i == 0)
+        {
+          localList = ((ruj)this).a(paramString, "black_brand_list");
+          paramString = ((ruj)this).a(paramString, "black_model_list");
+          if (!localList.contains(Build.BRAND)) {
+            if (!paramString.contains(Build.MODEL)) {
+              break label185;
+            }
+          }
+        }
+        else
+        {
+          localList = ((ruj)this).a(paramString, "white_brand_list");
+          paramString = ((ruj)this).a(paramString, "white_model_list");
+          if (!localList.contains(Build.BRAND))
+          {
+            bool = paramString.contains(Build.MODEL);
+            if (!bool) {
+              continue;
+            }
+          }
+          return true;
         }
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("CodecReuseHelper", 1, "error for parseJsonConfig return true");
+        return false;
+      }
     }
-    if (parampdc.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = parampdc.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
+    int i = 1;
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      label185:
+      i = 0;
+      break;
     }
-    biby.a();
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    rui.b(paramBoolean);
+  }
+  
+  public final boolean b()
+  {
+    return rui.b();
+  }
+  
+  public final boolean c()
+  {
+    boolean bool = true;
+    if (!((ruj)this).a())
+    {
+      QLog.w("CodecReuseHelper", 1, "isCodecReuseEnable return false because not support, model:" + Build.MODEL + "   brand:" + Build.BOARD);
+      return false;
+    }
+    if (1 == Aladdin.getConfig(309).getIntegerFromString("video_codec_reuse_enable", 0)) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public final boolean d()
+  {
+    return Aladdin.getConfig(309).getIntegerFromString("video_frame_check_enable", -1) == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ruj
  * JD-Core Version:    0.7.0.1
  */

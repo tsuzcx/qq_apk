@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aktr;
+import ammx;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ApolloFragmentManager$2
   implements Runnable
 {
-  public ApolloFragmentManager$2(aktr paramaktr, ApolloFragment paramApolloFragment) {}
+  public ApolloFragmentManager$2(ammx paramammx, ApolloFragment paramApolloFragment) {}
   
   public void run()
   {
-    ((ApolloGameActivity)aktr.a(this.this$0)).a(this.a.a());
+    ((ApolloGameActivity)ammx.a(this.this$0)).a(this.a.getIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloFragmentManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,16 @@
-public abstract interface azlz
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+
+public class azlz
+  implements azmj
 {
-  public abstract void ab_();
+  public azlz(ComponentCenter paramComponentCenter, BaseActivity paramBaseActivity, Bundle paramBundle) {}
   
-  public abstract void f();
-  
-  public abstract void g();
+  public void a(azlv paramazlv)
+  {
+    paramazlv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

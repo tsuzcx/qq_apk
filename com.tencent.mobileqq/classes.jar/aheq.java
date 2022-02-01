@@ -1,64 +1,57 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-@SuppressLint({"UseSparseArrays"})
 public class aheq
+  extends afwr
 {
-  private static aheq jdField_a_of_type_Aheq;
-  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public afzq a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public VoicePrintUtils.VoicePrintView a;
+  public BreathAnimationLayout a;
+  public PttAudioChangeView a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public StringBuilder a;
+  private boolean a;
+  public ImageView b;
+  public TextView b;
+  public PttAudioChangeView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  private aheq(Context paramContext)
+  public void a()
   {
-    a(paramContext);
-  }
-  
-  public static aheq a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Aheq == null) {
-        jdField_a_of_type_Aheq = new aheq(BaseApplicationImpl.getContext());
-      }
-      return jdField_a_of_type_Aheq;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
     }
-    finally {}
-  }
-  
-  private void a(Context paramContext)
-  {
-    try
-    {
-      SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
-      aher localaher = new aher(this);
-      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localaher);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
     }
-    catch (Exception paramContext) {}
-  }
-  
-  public int a(int paramInt)
-  {
-    return a(paramInt, 1);
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    if (localInteger == null) {
-      return paramInt2;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
     }
-    return localInteger.intValue();
   }
   
-  public boolean a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramInt = a(paramInt);
-    return (paramInt == 3) || (paramInt == 2);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

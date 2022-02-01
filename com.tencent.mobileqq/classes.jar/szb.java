@@ -1,44 +1,89 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-final class szb
-  implements DialogInterface.OnClickListener
+public class szb
+  implements URLDrawableDownListener
 {
-  szb(int paramInt1, int paramInt2, Runnable paramRunnable) {}
+  szb(sza paramsza) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramInt = 1;
-    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(1));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
-      }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 2);
+    if (paramURLDrawable == null) {
+      return;
     }
-    catch (JSONException localJSONException)
+    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + sza.a(this.a));
+    paramThrowable = (ImageData)this.a.a;
+    boolean bool = syz.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = syz.a(paramThrowable.jdField_a_of_type_JavaLangString, paramThrowable);; paramView = paramThrowable.jdField_a_of_type_JavaLangString)
     {
-      for (;;)
+      paramView = tyc.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if (sza.b(this.a) < 2) {
+        sza.c(this.a);
+      }
+      sza.d(this.a);
+      if ((bool) && (sza.a(this.a) < 3))
       {
-        localJSONException.printStackTrace();
+        paramThrowable.jdField_a_of_type_Boolean = false;
+        ThreadManager.getUIHandler().post(new WebFastImageViewCreator.ImageViewHolder.1.1(this, paramThrowable));
       }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
+      bctj.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
+      return;
     }
-    nrt.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == null) {
+      return;
+    }
+    ImageData localImageData = (ImageData)this.a.a;
+    boolean bool = syz.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = syz.a(localImageData.jdField_a_of_type_JavaLangString, localImageData);; paramView = localImageData.jdField_a_of_type_JavaLangString)
+    {
+      paramView = tyc.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if ((localImageData.jdField_a_of_type_Int == 0) || (localImageData.b == 0))
+      {
+        sza.a(this.a, paramURLDrawable);
+        sza.a(this.a).setImageDrawable(paramURLDrawable);
+      }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
+      bctj.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szb
  * JD-Core Version:    0.7.0.1
  */

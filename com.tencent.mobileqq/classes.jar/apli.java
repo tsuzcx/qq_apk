@@ -1,215 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
 
-public class apli
-  extends apld
+class apli
+  implements aplk
 {
-  private int a;
-  private boolean d;
+  apli(aplh paramaplh, aplf paramaplf) {}
   
-  public apli(QQAppInterface paramQQAppInterface)
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    super("qq.android.minidecode.so_v8.2.0", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10083;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return MiniScanDecodeSoData.class;
-  }
-  
-  public String a()
-  {
-    return "MiniScanDecodeSoData";
-  }
-  
-  public void a()
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("mini_scan_sp", 4).edit().putInt("minidecode_so_version", b()).apply();
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.a = ((int)(100L * paramLong1 / paramLong2));
-    aneo.a(0, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download progress: " + this.a);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean)
+    Bundle localBundle = new Bundle();
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      g();
-      a();
-      aneo.a(0, false);
+      localBundle.putString("userAccount", paramString1);
+      localBundle.putString("openID", paramString2);
+      localBundle.putString("openToken", paramString3);
+      localBundle.putLong("dstAppID", paramLong);
     }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download success: " + paramString);
-    }
-    int i = aneq.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
-    }
-    if (i != 0)
-    {
-      g();
-      a();
-      aneo.a(0, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      aneo.a(0, true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Object localObject = a();
-    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
-    {
-      localObject = (MiniScanDecodeSoData)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
-      }
-      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
-    }
-    do
-    {
-      return;
-      if (!this.d) {
-        this.d = paramBoolean;
-      }
-      super.a(paramBoolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    boolean bool = arso.a(new File(aneq.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    int i = 0;
-    long l1 = anet.a("report_tag_so_cover", 0L);
-    long l2 = System.currentTimeMillis();
-    String str;
-    if (l2 - l1 > 86400000L)
-    {
-      str = "";
-      XmlData localXmlData = a();
-      if ((localXmlData == null) || (!(localXmlData instanceof MiniScanDecodeSoData))) {
-        break label107;
-      }
-      i = ((MiniScanDecodeSoData)localXmlData).Version;
-      str = aneq.c("minicode");
-      if ((localXmlData.loadState != 1) || (i <= 0) || (TextUtils.isEmpty(str))) {
-        break label102;
-      }
-      paramBoolean = true;
-    }
-    for (;;)
-    {
-      anet.a(paramBoolean, i, str);
-      anet.a("report_tag_so_cover", l2);
-      return;
-      label102:
-      paramBoolean = false;
-      continue;
-      label107:
-      paramBoolean = false;
-    }
-  }
-  
-  public boolean e()
-  {
-    if (!this.d)
-    {
-      if (BaseActivity.mAppForground) {}
-      for (boolean bool = false;; bool = true)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "downloadResource later " + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        return false;
-      }
-    }
-    return super.e();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    apkr.a(a(), new String[0]);
+    this.jdField_a_of_type_Aplf.a(EIPCResult.createResult(0, localBundle));
   }
 }
 

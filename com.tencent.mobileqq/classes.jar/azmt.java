@@ -1,32 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class azmt
+  implements View.OnClickListener
 {
-  azmq jdField_a_of_type_Azmq;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public azmt(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
   
-  public azmt(String paramString, azmq paramazmq)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = ("lib" + paramString + ".so");
-    if (paramazmq != null)
-    {
-      this.jdField_a_of_type_Azmq = paramazmq;
-      return;
-    }
-    this.jdField_a_of_type_Azmq = new azmr().a();
-  }
-  
-  public boolean a(azmt paramazmt)
-  {
-    if (!ajeu.c(paramazmt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    return this.jdField_a_of_type_Azmq.a(paramazmt.jdField_a_of_type_Azmq);
-  }
-  
-  public String toString()
-  {
-    return "LoadItem{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", lops=" + this.jdField_a_of_type_Azmq + '}';
+    azfy.a().c(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

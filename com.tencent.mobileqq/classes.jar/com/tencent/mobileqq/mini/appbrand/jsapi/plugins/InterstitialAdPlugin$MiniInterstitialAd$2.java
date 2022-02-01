@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import aaon;
+import acly;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
@@ -92,7 +92,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
         i = 0;
         ((GdtInterstitialParams)localObject).jdField_a_of_type_Int = i;
         ((GdtInterstitialParams)localObject).jdField_a_of_type_Boolean = true;
-        InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new aaon(this.val$activity, (GdtInterstitialParams)localObject));
+        InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new acly(this.val$activity, (GdtInterstitialParams)localObject));
         InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, true, "operateInterstitialAd", this.val$compId, j, this.val$callbackId);
         InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
         if (localStGetAdRsp == null) {}
@@ -132,7 +132,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InterstitialAdPlugin.MiniInterstitialAd.2
  * JD-Core Version:    0.7.0.1
  */

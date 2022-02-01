@@ -1,23 +1,28 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class agnr
-  extends alrs
+public class agnr
+  implements agma
 {
-  agnr(agnn paramagnn) {}
+  private BaseChatPie a;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public agnr(BaseChatPie paramBaseChatPie)
   {
-    if (paramBoolean)
-    {
-      this.a.b = aqau.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.t(false);
-      }
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bhdd.a(this.a.a).a(str);
     }
   }
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public int[] a()
+  {
+    return new int[7];
+  }
 }
 
 

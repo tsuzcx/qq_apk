@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.SurfaceTexture;
-import axrp;
+import bapq;
 import com.tencent.qphone.base.util.QLog;
 
 public class FollowCaptureView$1$1
   implements Runnable
 {
-  public FollowCaptureView$1$1(axrp paramaxrp, SurfaceTexture paramSurfaceTexture) {}
+  public FollowCaptureView$1$1(bapq parambapq, SurfaceTexture paramSurfaceTexture) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class FollowCaptureView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1
  * JD-Core Version:    0.7.0.1
  */

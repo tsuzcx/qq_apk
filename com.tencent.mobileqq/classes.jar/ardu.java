@@ -1,51 +1,29 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.text.Editable;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
-public class ardu
-  implements ayqp<aynu, aywd>
+class ardu
+  implements View.OnClickListener
 {
-  public void a(aynu paramaynu, aywd paramaywd)
+  ardu(ardr paramardr, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramaywd.a() != null) && (!TextUtils.isEmpty(paramaynu.a())))
-    {
-      paramaywd.a().setVisibility(0);
-      paramaywd.a().setText(paramaynu.a());
-    }
-    if ((paramaywd.b() != null) && (!TextUtils.isEmpty(paramaynu.b())))
-    {
-      paramaywd.b().setVisibility(0);
-      paramaywd.b().setText(paramaynu.b());
-    }
-    if ((paramaywd.c() != null) && (!TextUtils.isEmpty(paramaynu.c())))
-    {
-      paramaywd.c().setVisibility(0);
-      paramaywd.c().setText(paramaynu.c());
-    }
-    if ((paramaynu.d() == null) && (paramaywd.d() != null)) {
-      paramaywd.d().setVisibility(8);
-    }
-    if ((paramaywd.d() != null) && (paramaynu.d() != null))
-    {
-      paramaywd.d().setVisibility(0);
-      paramaywd.d().setText(paramaynu.d());
-    }
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramaywd.b();
-    Object localObject = (ardt)paramaynu;
-    String str = ((ardt)localObject).c();
-    localObject = ((ardt)localObject).d();
-    if (bdhb.b(str)) {
-      arrr.a(localAsyncImageView, str, arrr.a((String)localObject));
+    ardr.a(this.jdField_a_of_type_Ardr).removeCallbacks(ardr.a(this.jdField_a_of_type_Ardr));
+    ardr.a(this.jdField_a_of_type_Ardr).run();
+    int i = ardr.a(this.jdField_a_of_type_Ardr).getSelectionStart();
+    Editable localEditable = ardr.a(this.jdField_a_of_type_Ardr).getEditableText();
+    if ((i < 0) || (i >= localEditable.length())) {
+      localEditable.append(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      paramaywd = paramaywd.a();
-      if (paramaywd != null) {
-        paramaywd.setOnClickListener(new ardv(this, paramaynu));
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localAsyncImageView.setDefaultImage(arrr.b((String)localObject));
+      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry.search.comm;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StUserInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StoreAppInfo;
-import alud;
+import anni;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -11,10 +11,12 @@ import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
 
 public class SearchInfo
+  implements ItemInfo
 {
   public String categoryDesc;
   public MiniAppInfo miniAppInfo;
   public String playingFriendsDesc;
+  private int position;
   public List<STORE_APP_CLIENT.StUserInfo> userInfoList;
   public int userNum;
   
@@ -37,20 +39,35 @@ public class SearchInfo
     return this.miniAppInfo;
   }
   
+  public int getPosition()
+  {
+    return this.position;
+  }
+  
+  public int getType()
+  {
+    return 2;
+  }
+  
   public String getUseNumberDesc()
   {
     if (this.userNum < 10000) {
-      return this.userNum + alud.a(2131694431);
+      return this.userNum + anni.a(2131693701);
     }
     if (this.userNum >= 100000000) {
-      return this.userNum / 100000000 + alud.a(2131694430);
+      return this.userNum / 100000000 + anni.a(2131693700);
     }
-    return this.userNum / 10000 + alud.a(2131694432);
+    return this.userNum / 10000 + anni.a(2131693702);
+  }
+  
+  public void setPosition(int paramInt)
+  {
+    this.position = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.comm.SearchInfo
  * JD-Core Version:    0.7.0.1
  */

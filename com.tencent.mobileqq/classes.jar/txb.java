@@ -1,22 +1,62 @@
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class txb
-  implements yia<trn>
+  extends tyc
 {
-  public txb(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
+  final int a = 3;
   
-  public void a(yii paramyii, trn paramtrn)
+  public txb(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if ((paramyii.d()) && (QCirclePersonalDetailFragment.a(this.a) != null))
+    super(paramBaseApplicationImpl);
+  }
+  
+  public static URL a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      QCirclePersonalDetailFragment.a(this.a).a(QCirclePersonalDetailFragment.a(this.a), false);
-      QCirclePersonalDetailFragment.a(this.a).b(QCirclePersonalDetailFragment.a(this.a), false);
+      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
+        paramString = null;
+      }
+    }
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (GifDrawable.isGifFile(paramFile)) {
+      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
+        break label52;
+      }
+    }
+    label52:
+    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
+    {
+      return new txc(paramFile, true, i);
+      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txb
  * JD-Core Version:    0.7.0.1
  */

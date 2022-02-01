@@ -1,17 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class oeb
-  implements DialogInterface.OnClickListener
+public class oeb
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public oeb(ShopWebViewFragment paramShopWebViewFragment) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.jdField_a_of_type_Odq != null) {
+      this.a.jdField_a_of_type_Odq.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_Odq.a.a(134248548, null, null, null, null, 0L, false);
+      label57:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label57;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oeb
  * JD-Core Version:    0.7.0.1
  */

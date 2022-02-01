@@ -1,23 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Message;
+import mqq.util.WeakReference;
 
-public class rsx
-  extends pdi
+class rsx
+  extends Handler
 {
-  public rsx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Set paramSet, Map paramMap)
+  private WeakReference<rsw> a;
+  
+  public rsx(rsw paramrsw)
   {
-    super(paramString);
+    this.a = new WeakReference(paramrsw);
   }
   
-  public void a(pdc parampdc)
+  public void handleMessage(Message paramMessage)
   {
-    parampdc.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
+    super.handleMessage(paramMessage);
+    rsw localrsw = (rsw)this.a.get();
+    if (localrsw == null) {}
+    while (paramMessage.what != 101) {
+      return;
+    }
+    rsw.a(localrsw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsx
  * JD-Core Version:    0.7.0.1
  */

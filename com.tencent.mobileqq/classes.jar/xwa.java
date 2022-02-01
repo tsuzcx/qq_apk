@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xwa
-  implements View.OnClickListener
 {
-  public xwa(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
     }
-    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xwa
  * JD-Core Version:    0.7.0.1
  */

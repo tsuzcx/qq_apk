@@ -1,29 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class ajyt
-  implements Animation.AnimationListener
+class ajyt
+  implements bkij
 {
-  public ajyt(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  ajyt(ajyr paramajyr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-    paramAnimation = (FrameLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((ajyr.a(this.a).getCount() <= 0) || (paramInt <= 0)) {
+      return;
+    }
+    paramAdapterView = (ajyc)ajyr.a(this.a).getItem(paramInt - 1);
+    if ((paramAdapterView != null) && (paramAdapterView.a != null))
+    {
+      paramAdapterView = paramAdapterView.a;
+      QLog.d("TenDocMessageSearchDialog", 4, "jump to mr: " + paramAdapterView.msgseq + " " + paramAdapterView.shmsgseq);
+      if (acwh.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
+      }
+      for (;;)
+      {
+        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", ajyr.a(this.a), 0, "", "", "s_qq_history_tab", "");
+        this.a.a(true);
+        return;
+        ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
+      }
+    }
+    QLog.e("TenDocMessageSearchDialog", 2, "null item: " + paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,36 +1,35 @@
+import QC.SuixintieCheckInfo;
+import QC.SuixintieCheckItem;
+import com.qq.taf.jce.JceInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class azja
 {
-  private aziw a;
-  
-  public azja(aziy paramaziy)
+  public static SuixintieCheckInfo a(String paramString)
   {
-    this.a = new aziw(paramaziy);
+    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
+    localSuixintieCheckInfo.readFrom(new JceInputStream(bigh.a(paramString, 0)));
+    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
+      return localSuixintieCheckInfo;
+    }
+    return null;
   }
   
-  public void a(azjb paramazjb, long paramLong)
+  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
   {
-    switch (paramazjb.jdField_a_of_type_Int)
+    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
     {
-    case 4: 
-    default: 
-      return;
-    case 5: 
-      this.a.a(paramLong, paramazjb.c, paramazjb.jdField_a_of_type_Float, paramazjb.jdField_b_of_type_Float, 5, paramazjb.jdField_a_of_type_Long);
-      return;
-    case 0: 
-      this.a.a(paramLong, paramazjb.jdField_a_of_type_ArrayOfInt[0], paramazjb.jdField_a_of_type_ArrayOfFloat[0], paramazjb.jdField_b_of_type_ArrayOfFloat[0], 0, paramazjb.jdField_a_of_type_Long);
-      return;
-    case 2: 
-      this.a.a(paramLong, paramazjb.jdField_a_of_type_ArrayOfInt, paramazjb.jdField_a_of_type_ArrayOfFloat, paramazjb.jdField_b_of_type_ArrayOfFloat, paramazjb.jdField_a_of_type_Long);
-      return;
-    case 6: 
-      this.a.b(paramLong, paramazjb.c, paramazjb.jdField_a_of_type_Float, paramazjb.jdField_b_of_type_Float, 6, paramazjb.jdField_a_of_type_Long);
-      return;
-    case 1: 
-      this.a.b(paramLong, paramazjb.jdField_a_of_type_ArrayOfInt[0], paramazjb.jdField_a_of_type_ArrayOfFloat[0], paramazjb.jdField_b_of_type_ArrayOfFloat[0], 1, paramazjb.jdField_a_of_type_Long);
-      return;
+      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
+      while (paramSuixintieCheckInfo.hasNext())
+      {
+        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
+        if (localSuixintieCheckItem.appid == paramInt) {
+          return localSuixintieCheckItem;
+        }
+      }
     }
-    this.a.b(paramLong, paramazjb.jdField_a_of_type_ArrayOfInt, paramazjb.jdField_a_of_type_ArrayOfFloat, paramazjb.jdField_b_of_type_ArrayOfFloat, paramazjb.jdField_a_of_type_Long);
+    return null;
   }
 }
 

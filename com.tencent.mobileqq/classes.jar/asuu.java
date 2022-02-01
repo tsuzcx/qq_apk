@@ -1,9 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asuu
+public class asuu
+  implements View.OnClickListener
 {
-  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
+  public asuu(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  public void onClick(View paramView)
+  {
+    QfileCloudFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

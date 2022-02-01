@@ -1,32 +1,43 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener.1;
 
-class ascs
-  implements zhk
+public class ascs
+  implements Animator.AnimatorListener
 {
-  ascs(ascq paramascq) {}
+  private ascs(asco paramasco) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
     {
-      if (this.a.k) {
-        ascq.a(this.a.a, true, "shareToQQ", this.a.b);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new StickerGestureDetector.StickerAnimationListener.1(this));
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aY();
+      this.a.jdField_b_of_type_Double = 1.0D;
+      this.a.jdField_a_of_type_Double = 0.0D;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
+        this.a.c = null;
       }
-      return;
-      label75:
-      this.a.a(-1, bfmt.d, bfmt.d);
+      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
+      {
+        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
+        this.a.jdField_b_of_type_AndroidViewView = null;
+      }
+      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

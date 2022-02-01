@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ExceptionTracker.Proxy;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
 
-final class bcqf
-  extends bead
+public final class bcqf
+  implements IMCoreProxyRoute.ExceptionTracker.Proxy
 {
-  bcqf(WeakReference paramWeakReference, File paramFile, baej parambaej) {}
-  
-  public void onDone(beae parambeae)
+  public void trackException(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambeae.a);
-    }
-    bcqe.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Baej);
+    ExceptionTracker.trackException(paramString1, paramString2);
   }
 }
 

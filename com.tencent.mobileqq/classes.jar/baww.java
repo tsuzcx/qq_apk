@@ -1,111 +1,295 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.widget.RelativeLayout;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.richmediabrowser.ImmersionHelper;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.BasePresenter;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class baww
-  implements ITransactionCallback
+public class baww
+  extends BrowserBasePresenter
 {
-  baww(bawv parambawv, long paramLong) {}
+  public bawx a;
+  public baxu a;
+  private ImmersionHelper a;
+  public ConcurrentHashMap<Long, Set<DanmuItemBean>> a;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public baww()
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public int a(long paramLong, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null)) {
+      return this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a(paramLong, paramInt1, paramInt2, paramString);
+    }
+    return -1;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public aqhb a()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      return this.jdField_a_of_type_Bawx.a();
+    }
+    return null;
+  }
+  
+  public baqx a()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      return this.jdField_a_of_type_Bawx.a();
+    }
+    return null;
+  }
+  
+  public bara a()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      return this.jdField_a_of_type_Bawx.a();
+    }
+    return null;
+  }
+  
+  public ImmersionHelper a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper = new ImmersionHelper(this);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper;
+  }
+  
+  public RichMediaBrowserInfo a()
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null)) {
+      return this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a();
+    }
+    return null;
+  }
+  
+  public RichMediaBrowserInfo a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null)) {
+      return this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a(paramLong);
+    }
+    return null;
+  }
+  
+  public RichMediaBrowserInfo a(long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null)) {
+      return this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a(paramLong1, paramLong2);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.d();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.a(paramInt);
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null)) {
+      this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a(paramLong, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean) {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle) {}
+  
+  public void a(long paramLong1, long paramLong2, String paramString)
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.a(paramLong1, paramLong2, paramString);
+    }
+  }
+  
+  public void a(bawx parambawx)
+  {
+    this.jdField_a_of_type_Bawx = parambawx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Bawp.a());
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      return this.jdField_a_of_type_Bawx.b(paramInt);
+    }
+    return false;
+  }
+  
+  public boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
+  {
+    return bawc.a(paramRichMediaBrowserInfo);
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Baxw != null)) {
+      this.jdField_a_of_type_Bawx.jdField_a_of_type_Baxw.a(paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void back()
+  {
+    super.back();
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.j();
+    }
+  }
+  
+  public void c()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+      QLog.d("AIOBrowserBasePresenter", 0, "onDanmakuDrawFinish");
     }
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bawv.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Bawv.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bawv.b);
-    this.jdField_a_of_type_Bawv.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    String str1 = (String)paramHashMap.get("tc_p:");
-    String str2 = (String)paramHashMap.get("rep_bdhTrans");
-    String str3 = (String)paramHashMap.get("segspercnt");
-    String str4 = (String)paramHashMap.get("param_conf_segSize");
-    String str5 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Bawv.jdField_a_of_type_Bass.jdField_a_of_type_Long + " transInfo:" + str2);
-    }
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-    this.jdField_a_of_type_Bawv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bawv.b.b();
-    this.jdField_a_of_type_Bawv.b.a = 1;
-    this.jdField_a_of_type_Bawv.s = this.jdField_a_of_type_Bawv.q;
-    paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
-    try
+    if ((b()) && (!a().a))
     {
-      paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-      bawv.a(this.jdField_a_of_type_Bawv, paramHashMap.bytes_download_url.get().toStringUtf8());
-      if (bawv.a(this.jdField_a_of_type_Bawv) == null)
-      {
-        this.jdField_a_of_type_Bawv.a(-1, "URL IS NULL", "", this.jdField_a_of_type_Bawv.b);
-        this.jdField_a_of_type_Bawv.d();
-        this.jdField_a_of_type_Bawv.a(l2, l3, l4, l5);
-        this.jdField_a_of_type_Bawv.jdField_a_of_type_Bass.a();
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        bawv.a(this.jdField_a_of_type_Bawv);
-      }
+      a().b();
+      a().a();
     }
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public boolean c()
   {
-    this.jdField_a_of_type_Bawv.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Bawv.b.a();
+    return false;
   }
   
-  public void onUpdateProgress(int paramInt)
+  @RequiresApi(api=11)
+  public void d()
   {
-    bawv localbawv = this.jdField_a_of_type_Bawv;
-    bass localbass = this.jdField_a_of_type_Bawv.jdField_a_of_type_Bass;
-    long l = paramInt;
-    localbass.e = l;
-    localbawv.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Bawv.q) && (!this.jdField_a_of_type_Bawv.o) && (!this.jdField_a_of_type_Bawv.k)) {
-      this.jdField_a_of_type_Bawv.i();
+    if (getContentView() != null) {
+      getContentView().setAlpha(0.3F);
+    }
+  }
+  
+  public boolean d()
+  {
+    if ((this.jdField_a_of_type_Bawx != null) && (this.jdField_a_of_type_Bawx.jdField_a_of_type_Baxw != null)) {
+      return this.jdField_a_of_type_Bawx.jdField_a_of_type_Baxw.a();
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    if ((this.jdField_a_of_type_Baxu != null) && (this.jdField_a_of_type_Baxu.a != null)) {
+      this.jdField_a_of_type_Baxu.a.setAlpha(0.3F);
+    }
+  }
+  
+  @RequiresApi(api=11)
+  public void f()
+  {
+    if (getContentView() != null) {
+      getContentView().setAlpha(1.0F);
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_Baxu != null) && (this.jdField_a_of_type_Baxu.a != null)) {
+      this.jdField_a_of_type_Baxu.a.setAlpha(1.0F);
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.f();
+    }
+  }
+  
+  public void i()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.k();
+    }
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.l();
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.m();
+    }
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Bawx != null) {
+      this.jdField_a_of_type_Bawx.n();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+  }
+  
+  public void setGalleryView(BrowserBaseView paramBrowserBaseView)
+  {
+    super.setGalleryView(paramBrowserBaseView);
+    if ((paramBrowserBaseView instanceof baxu)) {
+      this.jdField_a_of_type_Baxu = ((baxu)paramBrowserBaseView);
+    }
+  }
+  
+  public void setRelyPresenter(BasePresenter paramBasePresenter)
+  {
+    super.setRelyPresenter(paramBasePresenter);
+    if ((paramBasePresenter instanceof bawx)) {
+      a((bawx)paramBasePresenter);
     }
   }
 }

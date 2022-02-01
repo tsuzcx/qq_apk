@@ -1,20 +1,24 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import android.graphics.Bitmap;
 
-public class mbj
-  extends PhoneStateListener
+class mbj
+  implements lmr
 {
-  public mbj(BaseSmallScreenService paramBaseSmallScreenService) {}
+  mbj(mbi parammbi) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(paramBitmap);
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbj
  * JD-Core Version:    0.7.0.1
  */

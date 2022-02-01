@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.ad.view;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import ogp;
+import otl;
 
 public class ReadInjoyAdSuperBgDrawable$1
   implements Runnable
 {
-  public ReadInjoyAdSuperBgDrawable$1(ogp paramogp, Drawable paramDrawable, int paramInt1, int paramInt2) {}
+  public ReadInjoyAdSuperBgDrawable$1(otl paramotl, Drawable paramDrawable, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ogp.a(this.this$0, ogp.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.b));
-    if (ogp.a(this.this$0) != null) {
+    otl.a(this.this$0, otl.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.b));
+    if (otl.a(this.this$0) != null) {
       ThreadManager.getUIHandler().post(new ReadInjoyAdSuperBgDrawable.1.1(this));
     }
   }

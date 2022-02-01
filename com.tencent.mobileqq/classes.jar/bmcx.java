@@ -1,32 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.plugin.PluginRecord;
 
-class bmcx
-  implements EIPCOnGetConnectionListener
+public final class bmcx
+  implements Parcelable.Creator<PluginRecord>
 {
-  bmcx(bmcv parambmcv) {}
-  
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public PluginRecord a(Parcel paramParcel)
   {
-    if (paramEIPCConnection != null) {
-      bmcv.a(this.a, paramEIPCConnection.procName);
-    }
-    bmcv.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
-    }
+    return new PluginRecord(paramParcel);
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public PluginRecord[] a(int paramInt)
   {
-    if (paramEIPCConnection != null) {
-      bmcv.a(this.a, paramEIPCConnection.procName);
-    }
-    bmcv.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bmcv.a(this.a));
-    }
+    return new PluginRecord[paramInt];
   }
 }
 

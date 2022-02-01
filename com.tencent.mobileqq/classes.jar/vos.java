@@ -1,59 +1,48 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudCommon.Entry;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StRelationInfo;
+import feedcloud.FeedCloudRead.StGetFollowListRsp;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class vos
-  extends BaseAdapter
 {
-  private vos(VideoCoverListBar paramVideoCoverListBar) {}
+  private final int a;
+  public final List<FeedCloudMeta.StRelationInfo> a;
+  public final vor a;
   
-  public String a(int paramInt)
+  private vos(FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp, int paramInt)
   {
-    return (String)VideoCoverListBar.a(this.a).get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return VideoCoverListBar.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.jdField_a_of_type_JavaUtilList = new LinkedList(paramStGetFollowListRsp.relationInfo.get());
+    String str;
+    long l;
+    if (paramStGetFollowListRsp.hasNext.get() == 1)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561537, null);
-      paramViewGroup = new vot(this, paramView);
-      paramView.setTag(paramViewGroup);
+      str = paramStGetFollowListRsp.attachInfo.get();
+      l = 0L;
+      paramStGetFollowListRsp = paramStGetFollowListRsp.extInfo.mapInfo.get().iterator();
+      while (paramStGetFollowListRsp.hasNext())
+      {
+        FeedCloudCommon.Entry localEntry = (FeedCloudCommon.Entry)paramStGetFollowListRsp.next();
+        if ((localEntry != null) && ("timestamp".equals(localEntry.key.get()))) {
+          l = Long.parseLong(localEntry.value.get());
+        }
+      }
     }
-    for (;;)
+    for (this.jdField_a_of_type_Vor = new vor(str, l, paramInt, null);; this.jdField_a_of_type_Vor = null)
     {
-      paramViewGroup.a(paramInt);
-      return paramView;
-      paramViewGroup = (vot)paramView.getTag();
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vos
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,45 @@
 package cooperation.vip.qqbanner;
 
-import ajin;
-import ajio;
+import alaw;
+import alax;
 import android.util.SparseArray;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdoo;
-import bkbb;
-import bkgj;
-import bkgm;
+import bgtn;
+import bmpl;
+import bmvc;
+import bmvf;
 
 public class QbossADImmersionBannerManager$1
   implements Runnable
 {
-  public QbossADImmersionBannerManager$1(bkgm parambkgm, ajin paramajin) {}
+  public QbossADImmersionBannerManager$1(bmvf parambmvf, alaw paramalaw) {}
   
   public void run()
   {
     if (this.a == null) {}
-    while (!(this.a instanceof bkgj)) {
+    while (!(this.a instanceof bmvc)) {
       return;
     }
-    bkgm.a(this.this$0, (bkgj)this.a);
-    bkgm.a(this.this$0).setText(bkgm.a(this.this$0, bkgm.a(this.this$0).c));
-    bkgm.b(this.this$0).setText(bkgm.b(this.this$0, bkgm.a(this.this$0).d));
-    bkgm.a(this.this$0).setTextColor(bkgm.a(this.this$0, bkgm.a(this.this$0).e));
-    bkgm.b(this.this$0).setTextColor(bkgm.b(this.this$0, bkgm.a(this.this$0).e));
-    ajio localajio = (ajio)this.a.a.get(2);
-    bkgm.a(this.this$0, new bkbb());
-    bkgm.a(this.this$0).a(localajio.c, bkgm.a(this.this$0, bkgm.a(this.this$0)));
-    bkgm.a(this.this$0).a(bdoo.a() / 720.0F);
-    bkgm.a(this.this$0).a();
-    bkgm.a(this.this$0).a(true);
-    bkgm.a(this.this$0).b(true);
-    bkgm.a(this.this$0).start();
-    bkgm.a(this.this$0).setImageDrawable(bkgm.a(this.this$0));
+    bmvf.a(this.this$0, (bmvc)this.a);
+    bmvf.a(this.this$0).setText(bmvf.a(this.this$0, bmvf.a(this.this$0).c));
+    bmvf.b(this.this$0).setText(bmvf.b(this.this$0, bmvf.a(this.this$0).d));
+    bmvf.a(this.this$0).setTextColor(bmvf.a(this.this$0, bmvf.a(this.this$0).e));
+    bmvf.b(this.this$0).setTextColor(bmvf.b(this.this$0, bmvf.a(this.this$0).e));
+    alax localalax = (alax)this.a.a.get(2);
+    bmvf.a(this.this$0, new bmpl());
+    bmvf.a(this.this$0).a(localalax.c, bmvf.a(this.this$0, bmvf.a(this.this$0)));
+    bmvf.a(this.this$0).a(bgtn.a() / 720.0F);
+    bmvf.a(this.this$0).a();
+    bmvf.a(this.this$0).a(true);
+    bmvf.a(this.this$0).b(true);
+    bmvf.a(this.this$0).start();
+    bmvf.a(this.this$0).setImageDrawable(bmvf.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.qqbanner.QbossADImmersionBannerManager.1
  * JD-Core Version:    0.7.0.1
  */

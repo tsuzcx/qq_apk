@@ -3,10 +3,10 @@ package com.tencent.thumbplayer.core.downloadproxy.api;
 public abstract interface ITPDLProxyLogListener
 {
   public static final String COMMON_TAG = "tpdlnative";
-  public static final int LOG_DEBUG = 50;
-  public static final int LOG_ERROR = 10;
-  public static final int LOG_INFO = 40;
-  public static final int LOG_WARN = 20;
+  public static final int LOG_DEBUG = 3;
+  public static final int LOG_ERROR = 6;
+  public static final int LOG_INFO = 4;
+  public static final int LOG_WARN = 5;
   
   public abstract int d(String paramString1, int paramInt, String paramString2, String paramString3);
   
@@ -18,7 +18,7 @@ public abstract interface ITPDLProxyLogListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPDLProxyLogListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 
 public class mew
-  extends mey
+  implements View.OnTouchListener
 {
-  public int a = 0;
-  public int b = -1;
+  public mew(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public mew(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.a = paramInt;
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mew
  * JD-Core Version:    0.7.0.1
  */

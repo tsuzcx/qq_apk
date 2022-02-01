@@ -1,82 +1,43 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class atib
-  extends WebViewPlugin
+  extends bbip<bbmy, bbvg>
 {
-  String jdField_a_of_type_JavaLangString;
-  nbg jdField_a_of_type_Nbg = new atic(this);
-  yqz jdField_a_of_type_Yqz;
-  
-  public atib()
+  public atib(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, aobu paramaobu, bbmy parambbmy, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.mPluginNameSpace = "push";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
-    for (;;)
+    super(paramListView, paramaobu);
+    paramFileSearchDetailFragment = (athz)parambbmy;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
     {
-      int i;
-      try
+      paramListView = new ArrayList();
+      paramaobu = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramaobu.hasNext())
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("appid");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        this.jdField_a_of_type_Yqz.a().a(i, this.jdField_a_of_type_Nbg);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-        }
-        return true;
+        parambbmy = (FileManagerEntity)paramaobu.next();
+        paramString = new athz();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(parambbmy);
+        paramListView.add(paramString);
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-        }
-        return false;
-      }
-      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_Yqz.a().a(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (this.jdField_a_of_type_Yqz == null)
-    {
-      this.jdField_a_of_type_Yqz = yqz.a();
-      this.jdField_a_of_type_Yqz.a();
+      a(paramListView);
     }
   }
   
-  public void onDestroy()
+  protected bbps<bbmy, bbvg> a(int paramInt)
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Yqz != null) {
-      this.jdField_a_of_type_Yqz.b();
-    }
+    return new atie(this.a.a);
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atif(paramViewGroup);
   }
 }
 

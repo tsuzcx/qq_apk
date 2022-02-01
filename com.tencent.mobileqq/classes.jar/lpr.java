@@ -1,105 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.gaudio.AVObserver.1;
+import com.tencent.av.VideoController;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class lpr
-  implements Observer
 {
-  Handler a = null;
-  
-  protected void a(int paramInt, long paramLong) {}
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void a(int paramInt, String paramString1, String paramString2) {}
-  
-  protected void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
-  
-  protected void a(long paramLong1, int paramInt, long paramLong2, String paramString) {}
-  
-  public void a(Object paramObject)
+  public static void a(boolean paramBoolean)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    switch (i)
+    VideoController.a().j(paramBoolean);
+    if (VideoController.a().k() == VideoController.q)
     {
-    default: 
-      int j = ((Integer)paramObject[1]).intValue();
-      long l1 = ((Long)paramObject[2]).longValue();
-      long l2 = ((Long)paramObject[3]).longValue();
-      if (QLog.isDevelopLevel()) {
-        QLog.w("GAudioObserver", 1, "OnUpdate, relationType[" + j + "], discussId[" + l1 + "], memberUin[" + l2 + "], msg[" + i + "]");
-      }
-      a(j, l1, l2);
-      return;
-    case 21: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 22: 
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 23: 
-      c(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 28: 
-      a(((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 29: 
-      a((String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 32: 
-      i = ((Integer)paramObject[1]).intValue();
-      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 33: 
-      i = ((Integer)paramObject[1]).intValue();
-      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), (String)paramObject[4]);
-      return;
-    case 36: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 37: 
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 408: 
-      a(((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
-      return;
+      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
+      ltb.a();
     }
-    a((String)paramObject[1]);
   }
   
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString1, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong) {}
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void c(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
+    do
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+      return true;
+      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
+        break;
       }
-      this.a.post(new AVObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
+    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  {
+    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
+        break;
+      }
+    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
+    return false;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import aewc;
+import agco;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 public class BoatAnimDirector$2
   implements Runnable
 {
-  public BoatAnimDirector$2(aewc paramaewc) {}
+  public BoatAnimDirector$2(agco paramagco) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class BoatAnimDirector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.BoatAnimDirector.2
  * JD-Core Version:    0.7.0.1
  */

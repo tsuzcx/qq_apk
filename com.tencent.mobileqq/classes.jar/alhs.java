@@ -1,45 +1,26 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
-public class alhs
+class alhs
+  implements afwa
 {
-  int jdField_a_of_type_Int;
-  private alic jdField_a_of_type_Alic;
-  private alid jdField_a_of_type_Alid;
-  private alif jdField_a_of_type_Alif;
-  String jdField_a_of_type_JavaLangString;
-  int b = 30000;
+  alhs(alhr paramalhr) {}
   
-  public alhq a()
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    if (this.jdField_a_of_type_Alif == null) {
-      this.jdField_a_of_type_Alif = new alib();
+    if (alhr.a(this.a))
+    {
+      alhr.a(this.a, false);
+      alhr.a(this.a);
     }
-    if (this.jdField_a_of_type_Alid == null) {
-      this.jdField_a_of_type_Alid = new alia();
-    }
-    if (this.jdField_a_of_type_Alic == null) {
-      this.jdField_a_of_type_Alic = new alho();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalArgumentException("appId required.");
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("current account uid is required.");
-    }
-    return new alhq(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Alif, this.jdField_a_of_type_Alid, this.jdField_a_of_type_Alic, null);
   }
   
-  public alhs a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
   
-  public alhs a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
-public final class anzy
-  implements Parcelable.Creator<CardMobileInfo>
+public class anzy
+  extends ResourcePluginListener
 {
-  public CardMobileInfo a(Parcel paramParcel)
+  private anzy(GetConfig paramGetConfig) {}
+  
+  public void a(byte paramByte)
   {
-    return new CardMobileInfo(paramParcel);
+    if (this.a.b == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.c(GetConfig.a(this.a));
+      this.a.a(7);
+    }
   }
   
-  public CardMobileInfo[] a(int paramInt)
+  public void b(byte paramByte)
   {
-    return new CardMobileInfo[paramInt];
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.d(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzy
  * JD-Core Version:    0.7.0.1
  */

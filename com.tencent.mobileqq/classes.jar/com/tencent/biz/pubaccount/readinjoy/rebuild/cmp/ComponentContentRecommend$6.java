@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import owy;
+import pmh;
 
 class ComponentContentRecommend$6
   implements Runnable
@@ -10,12 +10,12 @@ class ComponentContentRecommend$6
   
   public void run()
   {
-    owy localowy = owy.a();
+    pmh localpmh = pmh.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localowy.b(l, i);
+      localpmh.b(l, i);
       return;
     }
   }

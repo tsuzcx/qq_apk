@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import azri;
+import bctj;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class DataReport$ReportTask
     do
     {
       return;
-      azri.a(BaseApplication.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+      bctj.a(BaseApplication.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
     } while (!QLog.isColorLevel());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("eventCode:" + this.jdField_a_of_type_JavaLangString + "\n");
@@ -37,7 +37,7 @@ public class DataReport$ReportTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask
  * JD-Core Version:    0.7.0.1
  */

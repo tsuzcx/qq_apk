@@ -1,54 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.8.1;
-import com.tencent.mobileqq.ar.ArConfigService.8.2;
-import com.tencent.mobileqq.ar.ArConfigService.8.3;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
 public class amwy
-  implements andm
+  implements amkj
 {
-  public amwy(ArConfigService paramArConfigService) {}
+  private SoftReference<ApolloGuestsStateActivity> a;
   
-  public void a()
+  public amwy(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
-    }
+    this.a = new SoftReference(paramApolloGuestsStateActivity);
   }
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
-    }
-  }
+  public void onNotifyLongTouch(String paramString) {}
   
-  public void a(boolean paramBoolean, andn paramandn)
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
     }
-    if (paramBoolean)
-    {
-      ArConfigService.f(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
-      }
-    }
-    while (ArConfigService.e(this.a)) {
+    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
+    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
       return;
     }
-    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
-    ArConfigService.a(this.a, true);
+    float f3 = anll.a() / 16.0F;
+    float f2 = localApolloGuestsStateActivity.c;
+    float f1 = f2;
+    if (0.0F != f3) {
+      f1 = f2 / f3;
+    }
+    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
+    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
+      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
+    }
+    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
+    localApolloGuestsStateActivity.b = paramInt1;
   }
-  
-  public void b() {}
 }
 
 

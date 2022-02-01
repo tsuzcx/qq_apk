@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afpu
-  implements DialogInterface.OnClickListener
+public class afpu
+  implements TextWatcher
 {
-  afpu(afps paramafps, ChatMessage paramChatMessage) {}
+  private afpu(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    acjm.b(this.jdField_a_of_type_Afps.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afps.b, this.jdField_a_of_type_Afps.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

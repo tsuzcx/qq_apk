@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 public class RingAvatarView
-  extends RelativeLayout
+  extends FrameLayout
 {
   public RingAvatarView(Context paramContext)
   {
@@ -23,19 +23,19 @@ public class RingAvatarView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
-  {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130848971));
-  }
-  
-  public void b()
+  public void showNormal()
   {
     setBackgroundDrawable(null);
+  }
+  
+  public void showStarRing()
+  {
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130849469));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView
  * JD-Core Version:    0.7.0.1
  */

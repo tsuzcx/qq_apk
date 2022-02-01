@@ -1,13 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import alof;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
+import anhk;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class QQStoryTakeVideoCloseAnimationActivity
@@ -19,7 +23,15 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = alof.bo + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = anhk.br + "qqstory/animation_cover.jpg";
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -41,6 +53,13 @@ public class QQStoryTakeVideoCloseAnimationActivity
     ThreadManager.getUIHandler().postDelayed(new QQStoryTakeVideoCloseAnimationActivity.1(this), 150L);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onDestroy()
   {
     super.onDestroy();
@@ -58,7 +77,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity
  * JD-Core Version:    0.7.0.1
  */

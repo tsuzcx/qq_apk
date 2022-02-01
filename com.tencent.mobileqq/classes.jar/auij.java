@@ -1,44 +1,74 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 public class auij
-  implements bexc
 {
-  public auij(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public void a(View paramView, int paramInt)
+  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    int i = augd.a().a();
-    switch (paramInt)
-    {
+    if (paramDrawable == null) {
+      return;
     }
-    do
+    if (paramBoolean1)
     {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (!paramBoolean2)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bgtn.a(140.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bgtn.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bgtn.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840132);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840133);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
-      }
-      this.a.aI_();
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
-      augo.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + augo.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
-      }
-      augo.a().a().a(null);
-      augo.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
-      }
-    } while (!this.a.e);
-    aujo.a("0X800A260");
-    return;
-    aujo.a("0X800A284");
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auij
  * JD-Core Version:    0.7.0.1
  */

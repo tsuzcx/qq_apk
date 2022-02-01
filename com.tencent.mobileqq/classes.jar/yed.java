@@ -1,34 +1,62 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
-class yed
-  implements ymp
+public class yed
+  extends yku
 {
-  yed(ydw paramydw, CertifiedAccountMeta.StFeed paramStFeed) {}
+  public yed(yea paramyea) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
   {
-    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
-    if ((ydw.n(this.jdField_a_of_type_Ydw) != null) && (paramInt == 1))
+    if ((paramInt < 0) || (paramInt > this.a.a.a(yea.a(this.a)).size())) {}
+    do
     {
-      if (ymo.a().a(ydw.o(this.jdField_a_of_type_Ydw), "subscribe_sp_key_show_praise_guide") != 0) {
-        break label90;
-      }
-      if ((this.jdField_a_of_type_Ydw.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Ydw.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
-        this.jdField_a_of_type_Ydw.i();
-      }
-    }
-    label90:
-    while ((ymo.a().a(ydw.p(this.jdField_a_of_type_Ydw), "subscribe_sp_key_show_follow_guide") != 0) || (ybu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
+      do
+      {
+        do
+        {
+          return;
+          paramObject = (CommentEntry)this.a.a.a(yea.a(this.a)).get(paramInt);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
+        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+        wjz.a(paramView.getContext(), 12, paramObject.authorUnionId);
+        return;
+      } while (yea.a(this.a) == null);
+      yea.a(this.a).a(paramObject, paramInt);
       return;
-    }
-    this.jdField_a_of_type_Ydw.h();
+    } while (yea.a(this.a) == null);
+    yea.a(this.a).N_();
+  }
+  
+  public void b(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  {
+    if ((paramInt < 0) || (paramInt > this.a.a.a(yea.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (CommentEntry)this.a.a.a(yea.a(this.a)).get(paramInt);
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (yea.a(this.a) == null);
+      yea.a(this.a).b(paramObject, paramInt);
+      return;
+    } while (yea.a(this.a) == null);
+    yea.a(this.a).N_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yed
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class ReadInJoyUtils$8
   
   public void run()
   {
-    ((KandianMergeManager)this.a.getManager(162)).i();
+    ((KandianMergeManager)this.a.getManager(162)).j();
   }
 }
 

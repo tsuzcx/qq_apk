@@ -1,88 +1,97 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import java.util.Calendar;
 
-public class alin
-  implements Handler.Callback
+public abstract class alin
 {
-  private int jdField_a_of_type_Int;
-  private final alio jdField_a_of_type_Alio;
-  private alip jdField_a_of_type_Alip;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  public static float a;
+  public static int a;
+  public static int b = 3;
+  public static int c = 2;
+  public static int d = 1;
   
-  public alin(alio paramalio)
+  static
   {
-    this.jdField_a_of_type_Alio = paramalio;
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(ThreadManager.getSubThreadLooper(), this);
+    jdField_a_of_type_Float = 0.75F;
+    jdField_a_of_type_Int = 2;
   }
   
-  public void a()
+  public static String a()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt, alip paramalip)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Alip = paramalip;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
+    Calendar localCalendar = Calendar.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder(alkn.b);
+    localStringBuilder.append("IMG");
+    localStringBuilder.append(localCalendar.get(1));
+    int i = localCalendar.get(2) + 1;
+    if (i < 10)
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Alio.a(paramBundle))
-        {
-        case 0: 
-        default: 
-          break;
-        case -1: 
-          if (this.jdField_a_of_type_Alip != null)
-          {
-            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
-          }
-          break;
-        }
+      localObject = "0" + i;
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(5);
+      if (i >= 10) {
+        break label300;
       }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_Alip = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+      localObject = "0" + i;
+      label108:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(11);
+      if (i >= 10) {
+        break label308;
+      }
+      localObject = "0" + i;
+      label148:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(12);
+      if (i >= 10) {
+        break label316;
+      }
+      localObject = "0" + i;
+      label188:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(13);
+      if (i >= 10) {
+        break label324;
+      }
     }
+    label300:
+    label308:
+    label316:
+    label324:
+    for (Object localObject = "0" + i;; localObject = Integer.valueOf(i))
+    {
+      localStringBuilder.append(localObject);
+      if (new File(localStringBuilder.toString() + ".jpg").exists()) {
+        break label332;
+      }
+      return localStringBuilder.toString() + ".jpg";
+      localObject = Integer.valueOf(i);
+      break;
+      localObject = Integer.valueOf(i);
+      break label108;
+      localObject = Integer.valueOf(i);
+      break label148;
+      localObject = Integer.valueOf(i);
+      break label188;
+    }
+    label332:
+    localObject = new StringBuilder(localStringBuilder);
+    int j = localStringBuilder.length();
+    i = 1;
     for (;;)
     {
-      return false;
-      if (!this.b) {
-        a(paramMessage.getData());
-      }
-      return true;
-      if (this.jdField_a_of_type_Alip != null)
+      if (i < 2147483647)
       {
-        this.jdField_a_of_type_Alip.b();
-        this.jdField_a_of_type_Alip = null;
+        ((StringBuilder)localObject).append('(');
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(')');
+        ((StringBuilder)localObject).append(".jpg");
+        if (new File(((StringBuilder)localObject).toString()).exists()) {}
       }
+      else
+      {
+        return ((StringBuilder)localObject).toString();
+      }
+      ((StringBuilder)localObject).delete(j, ((StringBuilder)localObject).length());
+      i += 1;
     }
   }
 }

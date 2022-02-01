@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/afy" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/du6" android:background="@drawable/ggg" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/gg2" android:scaleType="fitCenter" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wsw" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nnf" android:background="@drawable/g9c" android:layout_width="81.0dip" android:layout_height="46.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitCenter" android:text="@string/wsu" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff7c878e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/wst" />
+    <LinearLayout android:background="@drawable/gm7" android:layout_width="fill_parent" android:layout_height="201.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="12.0dip">
+        <com.tencent.biz.subscribe.comment.CommentEditText android:textSize="16.0dip" android:textColor="#ff000000" android:gravity="top" android:id="@id/bys" android:background="@color/ajr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="13.0dip" android:includeFontPadding="false" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/ng6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/muk" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/gf9" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/wsv" android:layout_toRightOf="@id/muk" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/goc" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/nbq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.0dip" />
+    <RelativeLayout android:id="@id/ng9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/mux" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/gfd" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/wsx" android:layout_toRightOf="@id/mux" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/muw" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/gp1" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/nbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.0dip" />
+</LinearLayout>

@@ -1,8 +1,15 @@
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bnth
+class bnth
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(File paramFile, bntf parambntf, boolean paramBoolean);
+  bnth(bnta parambnta) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bnta.a(this.a).dismiss();
+  }
 }
 
 

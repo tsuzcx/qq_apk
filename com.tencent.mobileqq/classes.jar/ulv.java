@@ -1,25 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-class ulv
-  extends SimpleJob<Object>
+public final class ulv
+  implements Parcelable.Creator<WSPushStrategyInfo>
 {
-  ulv(ulu paramulu, String paramString, boolean paramBoolean)
+  public WSPushStrategyInfo a(Parcel paramParcel)
   {
-    super(paramString);
+    return new WSPushStrategyInfo(paramParcel);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public WSPushStrategyInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_Ulu.b(this.jdField_a_of_type_Boolean);
-    return null;
+    return new WSPushStrategyInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ulv
  * JD-Core Version:    0.7.0.1
  */

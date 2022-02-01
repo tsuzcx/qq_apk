@@ -1,31 +1,28 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibx
-  implements View.OnClickListener
+class aibx
+  implements anof
 {
-  public aibx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aibx(aibv paramaibv) {}
   
-  public void onClick(View paramView)
+  public boolean a(anok paramanok)
   {
-    xqq.a(this.a.jdField_a_of_type_Aidh);
-    xqq.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView.add(((aidf)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+    if (QLog.isDevelopLevel()) {
+      axei.a(this.a.jdField_a_of_type_JavaLangString, "onShowHotchatNote", new Object[] { paramanok });
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    if (paramanok == null)
+    {
+      if ((this.a.jdField_a_of_type_Anoe.b) && (this.a.jdField_a_of_type_Bfhl != null)) {
+        this.a.jdField_a_of_type_Bfhl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
+      }
+      return false;
+    }
+    if (this.a.jdField_a_of_type_Bfhl == null) {
+      this.a.jdField_a_of_type_Bfhl = new bfhl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aibv.a(this.a), aibv.a(this.a), this.a.jdField_a_of_type_Beqr, this.a.U, null);
+    }
+    this.a.jdField_a_of_type_Bfhl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramanok.jdField_a_of_type_JavaLangString, paramanok.b);
+    this.a.jdField_a_of_type_Anoe.b = true;
+    return true;
   }
 }
 

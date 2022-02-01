@@ -1,27 +1,34 @@
-import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import java.lang.ref.WeakReference;
 
 public class yeb
-  implements ylh
+  implements yck
 {
-  yeb(ydw paramydw) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<ybl> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a() {}
-  
-  public void a(AnimationDrawable paramAnimationDrawable)
+  public yeb(int paramInt)
   {
-    if (ydw.g(this.a) != null) {
-      ydw.m(this.a).runOnUiThread(new DetailBaseAdapter.4.1(this, paramAnimationDrawable));
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
+  public void a(String paramString, int paramInt)
+  {
+    yqp.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    ((ybl)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void a(ybl paramybl)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramybl);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yeb
  * JD-Core Version:    0.7.0.1
  */

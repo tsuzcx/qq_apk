@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import bivc;
-import bivt;
-import bivu;
+import bljn;
+import blka;
+import blkb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,13 +15,13 @@ import mqq.app.AppContentProvider;
 
 public class FavoritesProvider
   extends AppContentProvider
-  implements bivt
+  implements blka
 {
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, bivu> jdField_a_of_type_JavaUtilMap;
+  private Map<Integer, blkb> jdField_a_of_type_JavaUtilMap;
   
-  private bivu a(Uri paramUri)
+  private blkb a(Uri paramUri)
   {
     int i = 1;
     int n = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
@@ -54,7 +54,7 @@ public class FavoritesProvider
             j = i;
             if (i != 0)
             {
-              bivc.a(false);
+              bljn.a(false);
               j = 0;
             }
             localObject = localBaseApplicationImpl.getRuntime();
@@ -79,7 +79,7 @@ public class FavoritesProvider
     paramUri = paramUri.getLastPathSegment();
     if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
     {
-      localObject = (bivu)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
+      localObject = (blkb)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
       if (localObject != null) {
         switch (n)
         {
@@ -113,7 +113,7 @@ public class FavoritesProvider
         break;
       }
     }
-    for (paramUri = (bivu)bivc.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bivu)bivc.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
+    for (paramUri = (blkb)bljn.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (blkb)bljn.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
     {
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(n), paramUri);
       return paramUri;
@@ -126,9 +126,9 @@ public class FavoritesProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    bivu localbivu = a(paramUri);
-    if (localbivu != null) {
-      return localbivu.delete(paramUri, paramString, paramArrayOfString);
+    blkb localblkb = a(paramUri);
+    if (localblkb != null) {
+      return localblkb.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -140,9 +140,9 @@ public class FavoritesProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    bivu localbivu = a(paramUri);
-    if (localbivu != null) {
-      return localbivu.insert(paramUri, paramContentValues);
+    blkb localblkb = a(paramUri);
+    if (localblkb != null) {
+      return localblkb.insert(paramUri, paramContentValues);
     }
     return null;
   }
@@ -160,21 +160,21 @@ public class FavoritesProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    bivu localbivu = a(paramUri);
+    blkb localblkb = a(paramUri);
     if (QLog.isDevelopLevel()) {
-      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbivu + ",uri=" + paramUri + ",selection=" + paramString1);
+      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localblkb + ",uri=" + paramUri + ",selection=" + paramString1);
     }
-    if (localbivu != null) {
-      return localbivu.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    if (localblkb != null) {
+      return localblkb.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    bivu localbivu = a(paramUri);
-    if (localbivu != null) {
-      return localbivu.update(paramUri, paramContentValues, paramString, paramArrayOfString);
+    blkb localblkb = a(paramUri);
+    if (localblkb != null) {
+      return localblkb.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }

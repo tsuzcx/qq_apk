@@ -1,68 +1,85 @@
-import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
-public class aynm
-  implements aynt
+class aynm
+  implements View.OnClickListener
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private final List<aynu> jdField_a_of_type_JavaUtilList;
-  private final String b;
+  aynm(aymu paramaymu) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131705753);
-  }
-  
-  public aynm(List<aynu> paramList, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return ayhw.a("pref_fts_native_search_public_account_max_num", 3);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Int == 12) {
-      return alud.a(2131705778) + swy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayvm.a(this.b, 50, 0, paramView);
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity))) {
-      azqs.b(((BaseActivity)localContext).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1C", "0X8005D1C", 0, 1, 0, "0", "", this.b, "");
-    }
-    if ((paramView.getContext() instanceof UniteSearchActivity))
+    if ((paramView.getTag() instanceof aynn)) {}
+    SubAccountInfo localSubAccountInfo;
+    Object localObject1;
+    switch (((aynn)paramView.getTag()).a)
     {
-      ayvm.a("all_result", "clk_public_uin_more", new String[] { "" + this.b });
-      aysc.a(null, 0, this.jdField_a_of_type_Int, "0X8009D53", 0, 0, null, null);
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    case 2: 
+      localSubAccountInfo = (SubAccountInfo)paramView.getTag(2131361895);
+      if (localSubAccountInfo != null)
+      {
+        localObject1 = aymu.a(this.a).getApplication().getAllAccounts();
+        Object localObject2 = new ArrayList();
+        if (localObject1 != null) {
+          ((List)localObject2).addAll((Collection)localObject1);
+        }
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
+        {
+          localObject2 = ((List)localObject2).iterator();
+          do
+          {
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            localObject1 = (SimpleAccount)((Iterator)localObject2).next();
+          } while (!TextUtils.equals(((SimpleAccount)localObject1).getUin(), localSubAccountInfo.subuin));
+        }
+      }
+      break;
     }
-    PublicAcntSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int);
-  }
-  
-  public String b()
-  {
-    return this.b;
+    for (;;)
+    {
+      if (localObject1 != null) {
+        this.a.a((SimpleAccount)localObject1, aymu.a(this.a).app);
+      }
+      for (;;)
+      {
+        bcst.b(aymu.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
+        bcst.b(aymu.a(this.a), "CliOper", "", "", "0X80072D2", "0X80072D2", 0, 0, "", "", "", "");
+        aypy.a("0X800AF3A");
+        break;
+        if (localSubAccountInfo != null)
+        {
+          localObject1 = new Intent("before_account_change");
+          aymu.a(this.a).sendBroadcast((Intent)localObject1);
+          localObject1 = new Intent(aymu.a(this.a), SubAccountUgActivity.class);
+          ((Intent)localObject1).putExtra("subAccount", localSubAccountInfo.subuin);
+          aymu.a(this.a).startActivity((Intent)localObject1);
+        }
+      }
+      localObject1 = (SimpleAccount)paramView.getTag(2131361895);
+      this.a.a((SimpleAccount)localObject1, aymu.a(this.a));
+      bcst.b(aymu.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
+      bcst.b(aymu.a(this.a), "CliOper", "", "", "0X80072D3", "0X80072D3", 0, 0, "", "", "", "");
+      aypy.a("0X800AF3A");
+      break;
+      localObject1 = null;
+    }
   }
 }
 

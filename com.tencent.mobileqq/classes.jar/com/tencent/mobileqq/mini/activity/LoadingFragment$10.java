@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.activity;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -32,13 +32,13 @@ class LoadingFragment$10
       str = null;
       break;
       label68:
-      str = alud.a(2131706636);
+      str = anni.a(2131705047);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment.10
  * JD-Core Version:    0.7.0.1
  */

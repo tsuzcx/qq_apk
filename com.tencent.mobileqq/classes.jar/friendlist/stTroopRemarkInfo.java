@@ -7,6 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stTroopRemarkInfo
   extends JceStruct
 {
+  static byte[] cache_vecGroupHonor = (byte[])new byte[1];
   public long GlamourLevel;
   public long MemberUin;
   public long TorchbearerFlag;
@@ -21,10 +22,16 @@ public final class stTroopRemarkInfo
   public String strNick = "";
   public String strRank = "";
   public String strRemark = "";
+  public byte[] vecGroupHonor;
+  
+  static
+  {
+    ((byte[])cache_vecGroupHonor)[0] = 0;
+  }
   
   public stTroopRemarkInfo() {}
   
-  public stTroopRemarkInfo(long paramLong1, String paramString1, String paramString2, String paramString3, byte paramByte1, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong2, long paramLong3, byte paramByte2)
+  public stTroopRemarkInfo(long paramLong1, String paramString1, String paramString2, String paramString3, byte paramByte1, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong2, long paramLong3, byte paramByte2, byte[] paramArrayOfByte)
   {
     this.MemberUin = paramLong1;
     this.strNick = paramString1;
@@ -40,6 +47,7 @@ public final class stTroopRemarkInfo
     this.GlamourLevel = paramLong2;
     this.TorchbearerFlag = paramLong3;
     this.cRichCardNameVer = paramByte2;
+    this.vecGroupHonor = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -58,6 +66,7 @@ public final class stTroopRemarkInfo
     this.GlamourLevel = paramJceInputStream.read(this.GlamourLevel, 11, false);
     this.TorchbearerFlag = paramJceInputStream.read(this.TorchbearerFlag, 12, false);
     this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 13, false);
+    this.vecGroupHonor = ((byte[])paramJceInputStream.read(cache_vecGroupHonor, 14, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -90,11 +99,14 @@ public final class stTroopRemarkInfo
     paramJceOutputStream.write(this.GlamourLevel, 11);
     paramJceOutputStream.write(this.TorchbearerFlag, 12);
     paramJceOutputStream.write(this.cRichCardNameVer, 13);
+    if (this.vecGroupHonor != null) {
+      paramJceOutputStream.write(this.vecGroupHonor, 14);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stTroopRemarkInfo
  * JD-Core Version:    0.7.0.1
  */

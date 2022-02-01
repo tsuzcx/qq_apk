@@ -1,13 +1,26 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
+import com.tencent.qphone.base.util.QLog;
 
-class bcpl
-  implements bcpo
+public final class bcpl
+  implements IDiniFlyQLog
 {
-  bcpl(bcpg parambcpg, String paramString) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    if (paramInt == 0) {}
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
+    {
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
+      return;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
+    }
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

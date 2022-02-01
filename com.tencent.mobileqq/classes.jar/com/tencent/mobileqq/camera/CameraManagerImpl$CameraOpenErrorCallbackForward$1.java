@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.camera;
 
-import aoan;
-import aoaw;
+import aqas;
+import aqbb;
 
 public class CameraManagerImpl$CameraOpenErrorCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$CameraOpenErrorCallbackForward$1(aoaw paramaoaw, int paramInt) {}
+  public CameraManagerImpl$CameraOpenErrorCallbackForward$1(aqbb paramaqbb, int paramInt) {}
   
   public void run()
   {
-    aoaw.a(this.this$0).a(this.a);
+    aqbb.a(this.this$0).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1
  * JD-Core Version:    0.7.0.1
  */

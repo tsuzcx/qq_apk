@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
-
-public class avml
-  extends auua
+public abstract interface avml
 {
-  avml(avmf paramavmf) {}
+  public abstract void a(int paramInt);
   
-  public void a(auub paramauub)
-  {
-    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramauub), 8, null, false);
-    this.a.a = paramauub;
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avml
  * JD-Core Version:    0.7.0.1
  */

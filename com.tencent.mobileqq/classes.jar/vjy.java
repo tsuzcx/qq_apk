@@ -1,20 +1,19 @@
-class vjy
-  extends viq
+import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+
+public class vjy
+  implements wbf
 {
-  vjy(vji paramvji, String paramString1, String paramString2, boolean paramBoolean, vko paramvko)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public vjy(QCircleContentImage paramQCircleContentImage) {}
   
-  public boolean b()
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Vko.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    zwp.a().a(new QCircleContentImmersiveEvent(3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjy
  * JD-Core Version:    0.7.0.1
  */

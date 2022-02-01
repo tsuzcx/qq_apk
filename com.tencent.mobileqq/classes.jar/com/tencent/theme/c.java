@@ -1,27 +1,25 @@
 package com.tencent.theme;
 
-import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.os.SystemClock;
 import android.util.Log;
-import android.util.LongSparseArray;
+import android.util.SparseArray;
 import android.util.TypedValue;
 
-@TargetApi(16)
 public class c
-  extends LongSparseArray
+  extends SparseArray<ColorStateList>
 {
-  LongSparseArray<Integer> a;
-  LongSparseArray<ColorStateList> b;
+  SparseArray<Integer> a;
+  SparseArray<ColorStateList> b;
   SkinEngine c;
   
-  public c(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, int paramInt1, int paramInt2)
+  public c(SkinEngine paramSkinEngine, Resources paramResources, SparseArray<ColorStateList> paramSparseArray, int paramInt1, int paramInt2)
   {
     this.c = paramSkinEngine;
-    this.b = paramLongSparseArray;
-    this.a = new LongSparseArray(paramInt1 + 10);
+    this.b = paramSparseArray;
+    this.a = new SparseArray(paramInt1 + 10);
     long l1 = SystemClock.uptimeMillis();
     paramSkinEngine = new TypedValue();
     try
@@ -36,7 +34,7 @@ public class c
         else
         {
           if (paramSkinEngine.string.toString().endsWith(".xml")) {
-            this.a.put(paramSkinEngine.assetCookie << 32 | paramSkinEngine.data, Integer.valueOf(paramInt2));
+            this.a.put(paramSkinEngine.assetCookie << 24 | paramSkinEngine.data, Integer.valueOf(paramInt2));
           }
           paramInt2 += 1;
         }
@@ -54,11 +52,11 @@ public class c
     }
   }
   
-  public Object get(long paramLong)
+  public ColorStateList a(int paramInt)
   {
-    Integer localInteger = (Integer)this.a.get(paramLong);
+    Integer localInteger = (Integer)this.a.get(paramInt);
     if (localInteger == null) {
-      return this.b.get(paramLong);
+      return (ColorStateList)this.b.get(paramInt);
     }
     return this.c.b(localInteger.intValue());
   }

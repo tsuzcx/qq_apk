@@ -1,32 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
 
 public class vht
-  extends uro
+  implements Animation.AnimationListener
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
+  public vht(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
   
-  public vht(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+    QCircleCommentBottomBar.a(this.a);
   }
   
-  public String toString()
-  {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vht
  * JD-Core Version:    0.7.0.1
  */

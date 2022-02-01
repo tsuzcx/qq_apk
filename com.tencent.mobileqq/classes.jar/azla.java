@@ -1,256 +1,250 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.profilecard.base.view.ProfileBaseView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PullToZoomHeaderListView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azla
+  extends azks
 {
-  private static int jdField_a_of_type_Int;
-  public static String a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015" };
-  private static String jdField_b_of_type_JavaLangString;
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = new String[0];
-  private static String c = "";
+  private aeij jdField_a_of_type_Aeij;
+  private azmz jdField_a_of_type_Azmz;
+  private aznh jdField_a_of_type_Aznh;
+  private biab jdField_a_of_type_Biab;
+  private PullToZoomHeaderListView jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public azla(azlw paramazlw, azfe paramazfe)
   {
-    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
+    super(paramazlw, paramazfe);
   }
   
-  public static void a(Activity paramActivity)
+  private void a(int paramInt)
   {
-    if (!TextUtils.isEmpty(c))
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A88A", "0X800A88A", paramInt, 0, "", "", "", "");
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.b);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a == 0) {}
+    for (int i = ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.defaultCardId;; i = 0)
     {
-      Intent localIntent = new Intent();
-      localIntent.setClassName("com.tencent.mobileqq", SendWebPicActivity.class.getName());
-      localIntent.putExtra("shareto_web_mode", jdField_a_of_type_Int);
-      localIntent.putExtra("edit_video_call_back", jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", c);
-      localIntent.setFlags(536870912);
-      paramActivity.startActivity(localIntent);
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, CardPicGalleryActivity.class);
+      localIntent.putExtra("extra_mode", 2);
+      localIntent.putExtra("is_from_mine_profile", paramBoolean);
+      localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
+      localIntent.putExtra("default_card_id", i);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.b)) {
+        localIntent.putExtra("extra_default", 2130845730);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130772311, 0);
+      return;
     }
   }
   
-  public static void a(AppInterface paramAppInterface, Activity paramActivity, int paramInt)
+  private void i()
   {
-    paramAppInterface = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramAppInterface.putExtra("jump_action", 6);
-    paramAppInterface.putExtra("web_target_type", paramInt);
-    paramActivity.startActivity(paramAppInterface);
+    if (this.jdField_a_of_type_Aeij == null) {
+      this.jdField_a_of_type_Aeij = new aeij(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new azlb(this));
+    }
   }
   
-  public static boolean a(AppInterface paramAppInterface)
+  private void j()
   {
-    if (!b(paramAppInterface))
+    if (this.jdField_a_of_type_Aeij != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= false");
-      }
-      return false;
+      this.jdField_a_of_type_Aeij.a();
+      this.jdField_a_of_type_Aeij = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= true");
-    }
-    return true;
   }
   
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, bkoe parambkoe)
+  private void k()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "startPTVActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", beauty:" + paramString4 + ", unfoldDDStr:" + paramString6 + ", dDCategoryName:" + paramString7 + ", dDItemID:" + paramString8 + ", unfoldFilter:" + paramString10 + ", filterCategoryName:" + paramString11 + ", filterItemID:" + paramString12 + ", dealtype:" + paramString14 + ", activityType:" + paramString15 + ", activityId:" + paramString16 + ", callback:" + paramString17 + " subtitle:" + paramString13 + ", callerType:" + paramString18 + ", topicId:" + paramString19 + ", topicName:" + paramString20 + ", adTag=" + paramString21);
+    if ((!ProfileActivity.AllInOne.g(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+      return;
     }
-    boolean bool1 = "1".equals(paramString1);
-    boolean bool2 = "1".equals(paramString2);
-    int i;
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    boolean bool7;
-    if ("1".equals(paramString3))
+    if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
     {
-      i = 2;
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString5);
-      bool5 = "1".equals(paramString9);
-      bool6 = "1".equals(paramString6);
-      bool7 = "1".equals(paramString10);
-      "1".equals(paramString13);
-      if (!"1".equals(paramString14)) {
-        break label400;
+      l();
+      if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != 0) {
+        break label98;
       }
     }
-    label400:
-    for (int j = 1;; j = 0)
+    label98:
+    for (int i = 1;; i = 2)
     {
-      if (parambkoe != null)
-      {
-        parambkoe.jdField_a_of_type_Boolean = "1".equals(parambkoe.jdField_a_of_type_JavaLangString);
-        parambkoe.jdField_b_of_type_Boolean = "1".equals(parambkoe.jdField_b_of_type_JavaLangString);
-        parambkoe.c = "1".equals(parambkoe.e);
-        parambkoe.d = "1".equals(parambkoe.f);
-      }
-      if (axpm.a()) {
-        break label406;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "supportMediaCodec = false");
-      }
-      return false;
-      i = 1;
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A889", "0X800A889", i, 0, "", "", "", "");
+      return;
+      a(false);
       break;
     }
-    label406:
-    paramAppInterface = bkof.a(bool1, bool2, i, bool3, bool4, bool6, paramString7, paramString8, bool5, bool7, paramString11, paramString12, j, paramString15, paramString16, paramString17, paramString18, paramString19, paramString20, paramString21, parambkoe);
-    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramString1.putExtras(paramAppInterface);
-    paramString1.putExtra("jump_action", 7);
-    paramActivity.startActivity(paramString1);
-    return true;
   }
   
-  public static boolean b(AppInterface paramAppInterface)
+  private void l()
   {
-    boolean bool2 = azkt.c();
-    boolean bool1;
-    if (!bool2)
+    bkho localbkho = (bkho)bkif.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null);
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.b)) {
+      localArrayList.add(new azlc(this, 2131692980));
+    }
+    localArrayList.add(new azld(this, 2131692978));
+    localArrayList.add(new azle(this, 2131692976));
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localbkho.b(((bgtm)localIterator.next()).a);
+    }
+    localbkho.c(2131690582);
+    localbkho.a(new azlf(this, localArrayList, localbkho));
+    try
     {
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
-        bool1 = bool2;
-      }
+      localbkho.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ProfileHeaderBaseComponent", 2, "showProfileCoverActionSheet fail.", localException);
+    }
+  }
+  
+  private void m()
+  {
+    if (this.jdField_a_of_type_Azmz == null)
+    {
+      View localView = this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.findViewById(2131374065);
+      this.jdField_a_of_type_Azmz = ((azmz)azlu.a(1024, this.jdField_a_of_type_Azlw, (azfe)this.b));
+      this.jdField_a_of_type_Azmz.a(this.jdField_a_of_type_Azkz, this.jdField_a_of_type_Biab, null);
+      this.jdField_a_of_type_Azmz.a(localView);
+      this.jdField_a_of_type_Azmz.g();
+      a(this.jdField_a_of_type_Azmz);
+    }
+  }
+  
+  private void n()
+  {
+    if (this.jdField_a_of_type_Azmz != null)
+    {
+      b(this.jdField_a_of_type_Azmz);
+      this.jdField_a_of_type_Azmz.h();
+      this.jdField_a_of_type_Azmz = null;
+    }
+  }
+  
+  private void o()
+  {
+    if (this.jdField_a_of_type_Aznh == null)
+    {
+      View localView = this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.findViewById(2131374067);
+      this.jdField_a_of_type_Aznh = ((aznh)azlu.a(1022, this.jdField_a_of_type_Azlw, (azfe)this.b));
+      this.jdField_a_of_type_Aznh.a(this.jdField_a_of_type_Azkz, this.jdField_a_of_type_Biab, null);
+      this.jdField_a_of_type_Aznh.a(localView);
+      this.jdField_a_of_type_Aznh.g();
+      a(this.jdField_a_of_type_Aznh);
+    }
+  }
+  
+  private void p()
+  {
+    if (this.jdField_a_of_type_Aznh != null)
+    {
+      b(this.jdField_a_of_type_Aznh);
+      this.jdField_a_of_type_Aznh.h();
+      this.jdField_a_of_type_Aznh = null;
+    }
+  }
+  
+  public int a()
+  {
+    return 1002;
+  }
+  
+  public String a()
+  {
+    return "ProfileHeaderBaseComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      ProfileBaseView localProfileBaseView = new ProfileBaseView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
+      localProfileBaseView.setProfileArgs(this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView, this.jdField_a_of_type_Boolean);
+      localProfileBaseView.setClickListener(this);
+      localProfileBaseView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localProfileBaseView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    switch (paramInt1)
+    {
     }
     do
     {
-      return bool1;
-      if (VideoEnvironment.b(paramAppInterface)) {
-        break;
-      }
-      bool1 = false;
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady isVersion fasle");
-    return false;
-    return true;
+      return;
+    } while (this.jdField_a_of_type_Aeij == null);
+    this.jdField_a_of_type_Aeij.a(paramInt2, paramIntent);
   }
   
-  public static boolean c(AppInterface paramAppInterface)
+  public void a(Intent paramIntent)
   {
-    boolean bool = true;
-    if (paramAppInterface.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "isAccLoginSucdess false.");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (a(paramAppInterface)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "isGuideReaded false.");
-        return false;
-        if (azkt.a(BaseApplicationImpl.getContext()) == 1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
-      return false;
-    } while (!axpm.a());
-    if (ShortVideoUtils.a()) {}
-    for (;;)
-    {
-      return bool;
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        bool = false;
-      }
+    super.a(paramIntent);
+    ArrayList localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    if ((localArrayList != null) && (localArrayList.size() > 0) && (this.jdField_a_of_type_Aeij != null)) {
+      this.jdField_a_of_type_Aeij.a(paramIntent, localArrayList);
     }
   }
   
-  public static boolean d(AppInterface paramAppInterface)
+  public void a(biab parambiab, PullToZoomHeaderListView paramPullToZoomHeaderListView)
   {
-    if (!ShortVideoUtils.a())
-    {
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        return false;
-      }
-    }
-    return true;
+    this.jdField_a_of_type_Biab = parambiab;
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = paramPullToZoomHeaderListView;
   }
   
-  public static boolean e(AppInterface paramAppInterface)
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    boolean bool = VideoEnvironment.b(paramAppInterface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isMobileSupportPTV fasle");
+    Intent localIntent = paramBaseActivity.getIntent();
+    if (localIntent != null) {
+      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
     }
-    return bool;
+    super.a(paramBaseActivity, paramBundle);
+    i();
+    m();
+    o();
   }
   
-  public static boolean f(AppInterface paramAppInterface)
+  public void f()
   {
-    boolean bool = azkt.c();
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "issupportFilterSo false");
-    }
-    return bool;
+    j();
+    n();
+    p();
+    super.f();
   }
   
-  public static boolean g(AppInterface paramAppInterface)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (Build.VERSION.SDK_INT < 21) {
-      bool2 = bool1;
+    super.onClick(paramView);
+    if (((paramView.getTag() instanceof azde)) && (((azde)paramView.getTag()).a == 17)) {
+      k();
     }
-    do
-    {
-      return bool2;
-      bool1 = bool2;
-      if (e(paramAppInterface))
-      {
-        bool1 = bool2;
-        if (f(paramAppInterface)) {
-          bool1 = true;
-        }
-      }
-      bool2 = bool1;
-    } while (!bool1);
-    return azgd.c();
-  }
-  
-  public static boolean h(AppInterface paramAppInterface)
-  {
-    if ((e(paramAppInterface)) && (f(paramAppInterface))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        if (azjx.b()) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "isSupportDanceGame false");
-        }
-      }
-      return false;
-    }
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

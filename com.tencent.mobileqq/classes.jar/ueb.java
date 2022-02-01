@@ -1,26 +1,19 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleInviteBannerView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class ueb
-  implements URLDrawableDownListener
+class ueb
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public ueb(QCircleInviteBannerView paramQCircleInviteBannerView) {}
+  ueb(uea paramuea) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable) {}
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    upe.a("WSUserAuthDialog", "jump to miniApp result = " + paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ueb
  * JD-Core Version:    0.7.0.1
  */

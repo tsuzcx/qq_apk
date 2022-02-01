@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aitv
-  implements DialogInterface.OnClickListener
+public class aitv
+  implements View.OnTouchListener
 {
-  aitv(aitu paramaitu) {}
+  public aitv(ViewFactory paramViewFactory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-    aitt.a(this.a.a).dismiss();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

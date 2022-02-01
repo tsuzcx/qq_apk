@@ -1,88 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
 
-final class avro
-  implements avdq
+class avro
+  implements View.OnClickListener
 {
-  avro(avrs paramavrs) {}
+  avro(avrn paramavrn) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    arcs localarcs = (arcs)avrn.a(this.a).getItem(i);
+    if (localarcs == null) {
+      QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
     }
-    for (;;)
+    Map localMap;
+    do
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
-        }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localMap = avrn.a(this.a).a();
+    } while (avrn.a(this.a) == null);
+    avrw localavrw = new avrw();
+    localavrw.jdField_a_of_type_Boolean = false;
+    localavrw.jdField_a_of_type_Long = localarcs.jdField_a_of_type_Long;
+    Integer localInteger = null;
+    if (localMap != null) {
+      localInteger = (Integer)localMap.get(Long.valueOf(localarcs.jdField_a_of_type_Long));
+    }
+    if (localInteger == null) {}
+    for (i = 0;; i = localInteger.intValue())
+    {
+      localavrw.jdField_a_of_type_Int = i;
+      if ((paramView instanceof RedTouch)) {
+        localavrw.b = avry.a((RedTouch)paramView);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+      avrn.a(this.a).a(paramView, localarcs, localavrw);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avro
  * JD-Core Version:    0.7.0.1
  */

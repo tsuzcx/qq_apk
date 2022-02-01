@@ -1,30 +1,31 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Message;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import mqq.os.MqqHandler;
 
 class audx
-  extends ClickableSpan
+  implements agra
 {
-  audx(audv paramaudv, BaseActivity paramBaseActivity) {}
+  audx(audv paramaudv, audy paramaudy, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    audv.a(this.jdField_a_of_type_Audv, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    FlashChatTextEffectView.a(this.jdField_a_of_type_Audy);
+    Message localMessage = Message.obtain();
+    localMessage.obj = this.jdField_a_of_type_Audy;
+    localMessage.what = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
+    {
+      audv.a(this.jdField_a_of_type_Audv).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
+      return;
+    }
+    audv.a(this.jdField_a_of_type_Audv).sendMessageDelayed(localMessage, 7000L);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_Audv.a.getApp().getResources().getColor(2131166911));
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     audx
  * JD-Core Version:    0.7.0.1
  */

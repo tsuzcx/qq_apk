@@ -1,162 +1,78 @@
-import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.HiBoomMessage;
-import com.tencent.mobileqq.data.MessageForHiBoom;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class afps
-  extends BaseBubbleBuilder
+  extends amck
 {
-  private assw a;
-  Context b;
+  private List<afpv> jdField_a_of_type_JavaUtilList;
   
-  public afps(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public afps(List<afpv> paramList)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Assw = new afpt(this);
-    this.b = paramContext;
+    super(paramList, paramList.app, paramList.b, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  private void g(ChatMessage paramChatMessage)
+  public int getCount()
   {
-    if ((paramChatMessage instanceof MessageForHiBoom))
-    {
-      paramChatMessage = (MessageForHiBoom)paramChatMessage;
-      ((amca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(paramChatMessage.mHiBoomMessage.id, paramChatMessage.mHiBoomMessage.text, 1);
-      paramChatMessage = assg.a(this.b);
-      if (paramChatMessage != null)
-      {
-        paramChatMessage.a(alud.a(2131705853));
-        paramChatMessage.show();
-      }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public int a(ChatMessage paramChatMessage)
+  public Object getItem(int paramInt)
   {
-    return 0;
-  }
-  
-  public aeqi a()
-  {
-    return new afpw();
-  }
-  
-  public View a(ChatMessage paramChatMessage, aeqi paramaeqi, View paramView, BaseChatItemLayout paramBaseChatItemLayout, aetk paramaetk)
-  {
-    if ((paramaeqi instanceof afpw))
-    {
-      paramBaseChatItemLayout = (afpw)paramaeqi;
-      paramaeqi = paramView;
-      paramView = paramBaseChatItemLayout;
-      if (!(paramaeqi instanceof HiBoomTextView)) {
-        break label129;
-      }
-      paramaetk = (HiBoomTextView)paramaeqi;
-      paramBaseChatItemLayout = paramaeqi;
-      paramaeqi = paramaetk;
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.jdField_a_of_type_Assw = this.jdField_a_of_type_Assw;
-      if ((paramChatMessage instanceof MessageForHiBoom))
-      {
-        paramChatMessage = (MessageForHiBoom)paramChatMessage;
-        if (paramChatMessage.mHiBoomMessage != null)
-        {
-          paramaeqi.setHiBoom(paramChatMessage.mHiBoomMessage.id, 0, paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, assg.jdField_a_of_type_Asrz);
-          paramaeqi.setText(paramChatMessage.mHiBoomMessage.text);
-          if (e) {
-            paramaeqi.setContentDescription(a(paramChatMessage));
-          }
-        }
-      }
-      return paramBaseChatItemLayout;
-      paramView = (afpw)a();
-      paramaeqi = null;
-      break;
-      label129:
-      paramaeqi = new HiBoomTextView(this.b);
-      paramaeqi.setMaxSize(Math.min(BaseChatItemLayout.e, assg.jdField_a_of_type_Int));
-      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = paramaeqi;
-      paramaeqi.setOnLongClickListener(paramaetk);
-      paramaeqi.setOnTouchListener(paramaetk);
-      paramaeqi.setTag(paramView);
-      paramBaseChatItemLayout = paramaeqi;
-    }
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForHiBoom))
-    {
-      paramChatMessage = (MessageForHiBoom)paramChatMessage;
-      if (paramChatMessage.mHiBoomMessage != null) {
-        return paramChatMessage.mHiBoomMessage.text;
-      }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  public long getItemId(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    case 2131370861: 
-      super.d(paramChatMessage);
-      return;
-    case 2131367643: 
-      g(paramChatMessage);
-      return;
-    case 2131365071: 
-      acjm.b(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      return;
-    }
-    super.a(paramChatMessage);
+    return paramInt;
   }
   
-  public void a(View paramView)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    super.a(paramView);
-    paramView = aepi.a(paramView);
-    String str1 = this.b.getString(2131690042);
-    String str2 = this.b.getString(2131690043);
-    if (paramView.isSendFromLocal()) {
-      bdgm.a(this.b, 230, str1, str2, new afpu(this, paramView), new afpv(this)).show();
-    }
-  }
-  
-  public bdpk[] a(View paramView)
-  {
-    bdpi localbdpi = new bdpi();
-    if ((aepi.a(paramView) instanceof afpw))
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      paramView = (afpw)aepi.a(paramView);
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForHiBoom))
-      {
-        localbdpi.a(2131367643, this.b.getString(2131692837), 2130838678);
-        if (((MessageForHiBoom)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage).istroop == 0) {
-          a(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, localbdpi);
-        }
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131562871, paramViewGroup, false);
+      paramView = new afpx(null);
+      paramView.c = ((ImageView)localView.findViewById(2131369143));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379779));
+      ((TextView)localView.findViewById(2131379915)).setText("");
+      localView.setTag(paramView);
+      localObject = (afpv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((TextUtils.isEmpty(((afpv)localObject).e)) || (((afpv)localObject).e.equals(((afpv)localObject).b))) {
+        break label231;
       }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
-        a(localbdpi, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      }
-      a(localbdpi, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((afpv)localObject).b + "(" + ((afpv)localObject).e + ")");
     }
-    super.c(localbdpi, this.b);
-    super.e(localbdpi, this.b);
-    return localbdpi.a();
+    for (;;)
+    {
+      paramView.jdField_a_of_type_JavaLangString = ((afpv)localObject).jdField_a_of_type_JavaLangString;
+      paramView.jdField_a_of_type_Afpv = ((afpv)localObject);
+      paramView.c.setImageBitmap(a(1, ((afpv)localObject).jdField_a_of_type_JavaLangString));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (afpx)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label231:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((afpv)localObject).b);
+    }
   }
 }
 

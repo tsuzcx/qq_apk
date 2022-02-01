@@ -1,39 +1,40 @@
-import java.io.File;
-import java.io.IOException;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class basj
+class basj
+  implements GLSurfaceView.EGLContextFactory
 {
-  File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int = 12440;
   
-  basj(basi parambasi, String paramString)
-  {
-    if (!parambasi.jdField_a_of_type_JavaIoFile.exists()) {
-      parambasi.jdField_a_of_type_JavaIoFile.mkdirs();
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(parambasi.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
-  }
+  basj(basi parambasi) {}
   
-  File a()
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    File localFile = this.jdField_a_of_type_Basi.a(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      return localFile;
-    }
-    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Basi.a);
+    arrayOfInt[2] = 12344;
+    yqp.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Basi.a) });
+    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Basi.a);
+    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Basi.a) != 0) {}
+    for (;;)
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      throw new IOException("write 0 length file or null File");
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
-    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
-    return localFile;
   }
   
-  void a(boolean paramBoolean)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      yqp.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      yqp.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
+      basm.a("eglDestroyContex", paramEGL10.eglGetError());
     }
   }
 }

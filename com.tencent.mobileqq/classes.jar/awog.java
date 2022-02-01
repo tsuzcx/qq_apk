@@ -1,27 +1,51 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awog
-  implements URLDrawable.URLDrawableListener
 {
-  public awog(CoverDetailFragment paramCoverDetailFragment) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public awof a()
   {
-    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
+    return new awof(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+  }
+  
+  public awog a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awog a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public awog a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public awog b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public awog c(String paramString)
+  {
+    this.c = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awog
  * JD-Core Version:    0.7.0.1
  */

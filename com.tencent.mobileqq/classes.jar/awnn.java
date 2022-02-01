@@ -1,26 +1,20 @@
-import android.text.TextUtils;
-
-public class awnn
+public abstract interface awnn
 {
-  public String a;
-  public String b;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
+  public abstract void a(long paramLong);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnn
  * JD-Core Version:    0.7.0.1
  */

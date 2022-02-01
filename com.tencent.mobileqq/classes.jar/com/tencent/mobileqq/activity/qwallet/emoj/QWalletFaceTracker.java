@@ -8,9 +8,9 @@ import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lvw;
-import lvx;
-import lvy;
+import lsy;
+import lsz;
+import lta;
 
 public class QWalletFaceTracker
 {
@@ -24,15 +24,15 @@ public class QWalletFaceTracker
   public String[] modelPathsDetector = { "net_1_bin.rpnproto", "net_1.rpnmodel", "net_2_bin.rpnproto", "net_2.rpnmodel", "net_3_bin.rpnproto", "net_3.rpnmodel" };
   public String[] modelPathsPose = { "meshBasis.bin", "rotBasis.bin", "pdm.txt", "pdm_82.txt" };
   private long nativePtr;
-  public lvx normalFaceExpression;
+  public lsz normalFaceExpression;
   public final String[] soFileNames = { "libYTIllumination.so", "libfacetrackwrap.so" };
   public final String[] soNames = { "YTIllumination", "facetrackwrap" };
   
-  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, lvx paramlvx, List<PointF> paramList, float[] paramArrayOfFloat)
+  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, lsz paramlsz, List<PointF> paramList, float[] paramArrayOfFloat)
   {
-    paramlvx.expressionWeight = paramArrayOfDouble;
-    paramlvx.a = paramArrayOfInt;
-    return lvw.a(paramlvx, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
+    paramlsz.expressionWeight = paramArrayOfDouble;
+    paramlsz.a = paramArrayOfInt;
+    return lsy.a(paramlsz, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
   }
   
   public static QWalletFaceTracker getInstance()
@@ -153,7 +153,7 @@ public class QWalletFaceTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public abstract class LazyFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
   protected LayoutInflater a;
@@ -90,10 +92,12 @@ public abstract class LazyFragment
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     a(paramBundle);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    for (paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);; paramLayoutInflater = this.jdField_a_of_type_AndroidViewView)
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
     }
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroyView()

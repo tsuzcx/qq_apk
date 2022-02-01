@@ -1,21 +1,27 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class awtf
+  implements Comparator<View>
 {
-  public long a;
-  public Drawable a;
-  public boolean a;
-  
-  public awtf(long paramLong, boolean paramBoolean, Drawable paramDrawable)
+  public int a(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtf
  * JD-Core Version:    0.7.0.1
  */

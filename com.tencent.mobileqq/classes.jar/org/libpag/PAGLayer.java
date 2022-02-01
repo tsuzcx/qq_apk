@@ -36,6 +36,8 @@ public class PAGLayer
   
   private native void setMatrix(float[] paramArrayOfFloat);
   
+  public native void addFilter(PAGFilter paramPAGFilter);
+  
   public native long currentTime();
   
   public native long duration();
@@ -55,6 +57,8 @@ public class PAGLayer
     return false;
     return false;
   }
+  
+  public native boolean excludedFromTimeline();
   
   protected void finalize()
   {
@@ -83,8 +87,6 @@ public class PAGLayer
     return (int)(this.nativeContext ^ this.nativeContext >>> 32) + 527;
   }
   
-  public native boolean hitTestPoint(float paramFloat1, float paramFloat2, boolean paramBoolean);
-  
   public native String layerName();
   
   public native int layerType();
@@ -102,11 +104,17 @@ public class PAGLayer
     return localMatrix;
   }
   
+  public native int numFilters();
+  
   public native PAGComposition parent();
+  
+  public native void removeAllFilters();
   
   public native void resetMatrix();
   
   public native void setCurrentTime(long paramLong);
+  
+  public native void setExcludedFromTimeline(boolean paramBoolean);
   
   public void setMatrix(Matrix paramMatrix)
   {
@@ -132,7 +140,7 @@ public class PAGLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGLayer
  * JD-Core Version:    0.7.0.1
  */

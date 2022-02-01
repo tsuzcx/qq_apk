@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnki
-  implements DialogInterface.OnClickListener
+class bnki
+  implements Animator.AnimatorListener
 {
-  public bnki(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  bnki(bnkd parambnkd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

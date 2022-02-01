@@ -1,24 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public class ryo
-  implements sag
+public abstract interface ryo
 {
-  public ryo(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  public abstract long a();
   
-  public BaseData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-  }
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-  }
+  public abstract long b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryo
  * JD-Core Version:    0.7.0.1
  */

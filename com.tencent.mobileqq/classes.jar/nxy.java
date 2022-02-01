@@ -1,25 +1,40 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.2;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class nxy
-  extends apmh
+public class nxy
+  implements BusinessObserver
 {
-  nxy(nxx paramnxx) {}
+  public nxy(NativeAdUtils.2 param2) {}
   
-  public void onBindedToClient()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, " new report success");
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxy
  * JD-Core Version:    0.7.0.1
  */

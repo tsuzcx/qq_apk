@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amns;
 import android.content.ContentValues;
 import android.text.TextUtils;
+import aonc;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class DataLineMsgProxy$9
   implements Runnable
 {
-  public DataLineMsgProxy$9(amns paramamns, long paramLong, String paramString, byte[] paramArrayOfByte) {}
+  public DataLineMsgProxy$9(aonc paramaonc, long paramLong, String paramString, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class DataLineMsgProxy$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.9
  * JD-Core Version:    0.7.0.1
  */

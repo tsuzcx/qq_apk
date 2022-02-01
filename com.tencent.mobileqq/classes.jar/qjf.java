@@ -1,18 +1,18 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qjf
-  extends qip
+public class qjf
+  implements ViewBase.IBuilder
 {
-  qjf(qja paramqja) {}
-  
-  public Drawable a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    return a("readinjoy_diandian_icon_background");
+    return new qje(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,24 @@
-public class bdre
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+class bdre
+  extends anmu
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  bdre(bdrb parambdrb) {}
   
-  public void a(int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
+    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      Iterator localIterator = bdrb.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((bdrm)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      }
+    }
   }
 }
 

@@ -1,213 +1,91 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.Gift;
+import java.util.List;
 
 public class aush
+  extends ause
 {
-  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
+  public LinearLayout a;
+  public ImageView[] a;
+  public LinearLayout[] a;
+  public TextView[] a;
+  public TextView d;
+  
+  public aush(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    return a(paramQQAppInterface, paramString, paramLong1, paramLong2, false);
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559195, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    }
+    this.d = ((TextView)paramContext.findViewById(2131379698));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369601));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout = new LinearLayout[4];
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramContext.findViewById(2131368440));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramContext.findViewById(2131379691));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[0] = ((LinearLayout)paramContext.findViewById(2131369597));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramContext.findViewById(2131368441));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramContext.findViewById(2131379692));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[1] = ((LinearLayout)paramContext.findViewById(2131369598));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramContext.findViewById(2131368442));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramContext.findViewById(2131379693));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[2] = ((LinearLayout)paramContext.findViewById(2131369599));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)paramContext.findViewById(2131368443));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)paramContext.findViewById(2131379694));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[3] = ((LinearLayout)paramContext.findViewById(2131369600));
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    if (!TextUtils.isEmpty(paramString))
+    super.a(paramFeedsItemData);
+    this.d.setText(paramFeedsItemData.title);
+    int i;
+    if ((paramFeedsItemData.giftList != null) && (paramFeedsItemData.giftList.size() > 0))
     {
-      int i = autd.a(paramQQAppInterface, paramString, paramLong1, paramLong2);
-      if (i != 0) {
-        return i;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      i = 0;
+      label45:
+      if (i >= 4) {
+        return;
       }
+      if (i >= paramFeedsItemData.giftList.size()) {
+        break label176;
+      }
+      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(0);
+      FeedsItemData.Gift localGift = (FeedsItemData.Gift)paramFeedsItemData.giftList.get(i);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(localGift.text);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130839551);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130839551);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(URLDrawable.getDrawable(localGift.picture, localURLDrawableOptions));
     }
-    switch ((int)paramLong1)
+    for (;;)
     {
+      i += 1;
+      break label45;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      break;
+      label176:
+      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(8);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              return 0;
-                              if (paramLong2 == 0L) {
-                                return 2130849612;
-                              }
-                              if (paramLong2 == 1L) {
-                                return 2130849613;
-                              }
-                            } while (paramLong2 != 2L);
-                            return 2130849614;
-                            if (paramLong2 == 0L) {
-                              return 2130849606;
-                            }
-                            if (paramLong2 == 1L) {
-                              return 2130849607;
-                            }
-                          } while (paramLong2 != 2L);
-                          return 2130849608;
-                          if (paramLong2 == 0L) {
-                            return 2130849609;
-                          }
-                          if (paramLong2 == 1L) {
-                            return 2130849610;
-                          }
-                        } while (paramLong2 != 2L);
-                        return 2130849611;
-                        if (paramLong2 == 1L) {
-                          return 2130849603;
-                        }
-                        if (paramLong2 == 2L) {
-                          return 2130849604;
-                        }
-                      } while (paramLong2 != 3L);
-                      return 2130849605;
-                      if (paramLong2 == 1L) {
-                        return 2130849630;
-                      }
-                    } while (paramLong2 != 2L);
-                    return 2130849589;
-                    if (paramLong2 == 1L) {
-                      return 2130849634;
-                    }
-                  } while (paramLong2 != 2L);
-                  return 2130849593;
-                  if (paramLong2 == 1L) {
-                    return 2130849622;
-                  }
-                } while (paramLong2 != 2L);
-                return 2130849621;
-                if (paramLong2 == 1L) {
-                  return 2130849628;
-                }
-              } while (paramLong2 != 2L);
-              return 2130849629;
-              if (paramLong2 == 1L) {
-                return 2130849633;
-              }
-            } while (paramLong2 != 2L);
-            return 2130849592;
-          } while (paramLong2 != 1L);
-          return 2130849627;
-        } while ((!paramBoolean) || (paramLong2 != 1L));
-        return 2130849625;
-        if (paramLong2 == 1L) {
-          return 2130849618;
-        }
-        if (paramLong2 == 2L) {
-          return 2130849619;
-        }
-      } while (paramLong2 != 3L);
-      return 2130849620;
-      if (paramLong2 == 1L) {
-        return 2130849600;
-      }
-      if (paramLong2 == 2L) {
-        return 2130849601;
-      }
-    } while (paramLong2 != 3L);
-    return 2130849602;
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    return a(paramQQAppInterface, paramString1, auss.b(paramString2), auss.a(paramString2));
-  }
-  
-  public static auth a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    return aooq.a().a(paramLong);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    return a(paramQQAppInterface, auss.a(paramLong1, paramLong2));
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = aooq.a().a(paramString);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.jdField_b_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
-  {
-    int i = a(paramQQAppInterface, paramString, paramLong1, paramLong2);
-    if (i != 0) {
-      return auss.a(i);
-    }
-    return "";
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    return a(paramQQAppInterface, paramString1, auss.b(paramString2), auss.a(paramString2));
-  }
-  
-  public static ArrayList<auti> a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = aooq.a().a();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      auti localauti = (auti)((Iterator)localObject).next();
-      if (b(paramQQAppInterface, localauti.a, localauti.jdField_b_of_type_Long)) {
-        localArrayList.add(localauti);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    return (aooq.a().a(paramLong)) && (b(paramQQAppInterface, paramLong));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    return (aooq.a().a(paramLong1, paramLong2)) && (b(paramQQAppInterface, paramLong1, paramLong2));
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    return ((paramLong != 1L) && (paramLong != 2L) && (paramLong != 3L)) || (autm.a(paramQQAppInterface.c()));
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    if (!b(paramQQAppInterface, paramLong1)) {}
-    while (((paramLong1 == 1L) || (paramLong1 == 2L) || (paramLong1 == 3L)) && (paramLong2 > 0L) && (!autm.a())) {
-      return false;
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aush
  * JD-Core Version:    0.7.0.1
  */

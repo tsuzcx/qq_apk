@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class aczf
-  extends aqbl
+  extends aczg
 {
-  public aczf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, String.format("ProfileCardExtendFriendView onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (paramInt == 2)) {
-      this.a.a(0L, null, null, false);
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    awbh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (31 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

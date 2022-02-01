@@ -1,7 +1,5 @@
 package c.t.m.g;
 
-import android.os.Build.VERSION;
-
 public final class cx
 {
   public static volatile String a = "";
@@ -23,9 +21,6 @@ public final class cx
   
   public static String d()
   {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return "";
-    }
     return dz.e();
   }
 }

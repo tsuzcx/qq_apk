@@ -1,20 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 class bcxt
-  implements bcxv
+  implements akmc
 {
-  bcxt(bcxl parambcxl) {}
+  bcxt(bcxs parambcxs, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      bcxl.d(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131716178), 0).a();
+    int i = paramBundle.getInt("retCode");
+    String str = paramBundle.getString("retMsg");
+    int j = paramBundle.getInt("payTime");
+    paramBundle = paramBundle.getString("orderId");
+    this.jdField_a_of_type_Bcxs.a.b(i);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcxs.a.ar, i);
+    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
   }
 }
 

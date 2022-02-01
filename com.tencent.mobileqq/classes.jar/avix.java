@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-
-public final class avix
+public abstract interface avix
 {
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a(int paramInt);
   
-  private avix(TopicLabelListView paramTopicLabelListView) {}
+  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avix
  * JD-Core Version:    0.7.0.1
  */

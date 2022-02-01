@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import android.os.Bundle;
 
 class uaz
-  implements DialogInterface.OnShowListener
+  implements aaob
 {
-  uaz(uax paramuax, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
+  uaz(uay paramuay, twm paramtwm) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void callback(Bundle paramBundle)
   {
-    paramDialogInterface = uax.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-    uax.a(this.jdField_a_of_type_Uax).a(paramDialogInterface);
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    uat.a(this.jdField_a_of_type_Uay.a, this.jdField_a_of_type_Twm.a, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uaz
  * JD-Core Version:    0.7.0.1
  */

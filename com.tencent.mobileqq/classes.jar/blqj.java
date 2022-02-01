@@ -1,15 +1,25 @@
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class blqj
+class blqj
+  implements View.OnClickListener
 {
-  public AppInterface a()
+  blqj(blqi paramblqi) {}
+  
+  public void onClick(View paramView)
   {
-    return blqh.a();
+    if (blqi.a(this.a))
+    {
+      if (blqi.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (blqi.a(this.a) != null) {
+        blqi.a(this.a).onClick(paramView);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 

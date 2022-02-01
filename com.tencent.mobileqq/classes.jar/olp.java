@@ -1,33 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface olp
+class olp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  olp(oln paramoln, boolean paramBoolean) {}
   
-  public abstract void a(int paramInt, String paramString, oog paramoog, ooh paramooh);
-  
-  public abstract void a(int paramInt, oog paramoog1, oog paramoog2, ooh paramooh);
-  
-  public abstract void a(int paramInt, oog paramoog, ooh paramooh, CommentData paramCommentData);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData);
-  
-  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, oog paramoog, ooh paramooh, CommentData paramCommentData);
-  
-  public abstract void c(int paramInt, oog paramoog, ooh paramooh, CommentData paramCommentData);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt != 1) {
+      oll.a(this.jdField_a_of_type_Oln.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, oln.a(this.jdField_a_of_type_Oln));
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Oln.a()) {}
+    }
+    while (!(this.jdField_a_of_type_Oln.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      return;
+      oln.a(this.jdField_a_of_type_Oln).set(true);
+      this.jdField_a_of_type_Oln.b();
+      return;
+    }
+    oli.a(this.jdField_a_of_type_Oln.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.jdField_a_of_type_Oln.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     olp
  * JD-Core Version:    0.7.0.1
  */

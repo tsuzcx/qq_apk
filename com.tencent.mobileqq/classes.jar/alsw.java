@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import mqq.app.AppRuntime.Status;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class alsw
-  implements awdo
+  implements DialogInterface.OnClickListener
 {
-  public alsw(FrameHelperActivity paramFrameHelperActivity) {}
+  public alsw(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(AppRuntime.Status paramStatus)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.v();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class alyo
-  implements Comparator<PhoneContact>
+public class alyo
+  implements View.OnClickListener
 {
-  alyo(alyn paramalyn) {}
+  public alyo(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyo
  * JD-Core Version:    0.7.0.1
  */

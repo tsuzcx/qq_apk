@@ -53,7 +53,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   22: new 46	java/lang/StringBuilder
     //   25: dup
     //   26: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   29: getstatic 52	alof:bm	Ljava/lang/String;
+    //   29: getstatic 52	anhk:bp	Ljava/lang/String;
     //   32: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_1
     //   36: invokevirtual 62	java/lang/String:getBytes	()[B
@@ -118,7 +118,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   159: getfield 26	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:jdField_a_of_type_Int	I
     //   162: iconst_0
     //   163: iconst_1
-    //   164: invokestatic 99	bcxl:a	(Ljava/lang/String;Landroid/content/res/Resources;IIZ)Landroid/graphics/Bitmap;
+    //   164: invokestatic 99	bgbw:a	(Ljava/lang/String;Landroid/content/res/Resources;IIZ)Landroid/graphics/Bitmap;
     //   167: astore_2
     //   168: aload_2
     //   169: astore_3
@@ -128,7 +128,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   174: astore 5
     //   176: aload_2
     //   177: aload 9
-    //   179: invokestatic 104	bdhj:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
+    //   179: invokestatic 104	bgmo:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
     //   182: pop
     //   183: aload_2
     //   184: astore_1
@@ -151,7 +151,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   209: aload_2
     //   210: aload_0
     //   211: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:c	I
-    //   214: invokestatic 107	bdhj:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   214: invokestatic 107	bgmo:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   217: astore_1
     //   218: aload_0
     //   219: monitorexit
@@ -187,7 +187,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   265: aload_2
     //   266: aload_0
     //   267: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:c	I
-    //   270: invokestatic 107	bdhj:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   270: invokestatic 107	bgmo:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   273: astore_1
     //   274: goto -56 -> 218
     //   277: astore_2
@@ -303,7 +303,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatDemoChatPie.LoadQRCodeImg
  * JD-Core Version:    0.7.0.1
  */

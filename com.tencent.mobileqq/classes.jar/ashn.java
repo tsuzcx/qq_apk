@@ -1,25 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class ashn
-  implements bexc
+public abstract interface ashn
 {
-  public ashn(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 

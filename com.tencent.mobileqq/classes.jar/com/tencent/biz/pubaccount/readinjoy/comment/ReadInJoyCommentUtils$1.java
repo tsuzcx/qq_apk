@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import oxb;
+import pmk;
 
 public final class ReadInJoyCommentUtils$1
   implements Runnable
 {
   public void run()
   {
-    oxb.a().b();
+    pmk.a().b();
   }
 }
 

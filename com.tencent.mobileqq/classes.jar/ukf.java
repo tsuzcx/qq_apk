@@ -1,31 +1,38 @@
 public class ukf
 {
-  public static double a(int[] paramArrayOfInt)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  
+  public int a()
   {
-    int j = 0;
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    double d1 = 0.0D;
-    int i = 0;
-    while (i < k)
-    {
-      d1 += paramArrayOfInt[i];
-      i += 1;
+    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
+      return 2;
     }
-    double d3 = d1 / k;
-    i = j;
-    d1 = d2;
-    while (i < k)
-    {
-      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
-      i += 1;
+    return 0;
+  }
+  
+  public int b()
+  {
+    if ((this.a > 0) && (this.b > 0)) {
+      return 0;
     }
-    return d1 / k;
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukf
  * JD-Core Version:    0.7.0.1
  */

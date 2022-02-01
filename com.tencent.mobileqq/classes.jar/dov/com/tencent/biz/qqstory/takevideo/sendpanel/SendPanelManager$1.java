@@ -1,20 +1,20 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bncl;
+import bptr;
 
 public class SendPanelManager$1
   implements Runnable
 {
-  public SendPanelManager$1(bncl parambncl) {}
+  public SendPanelManager$1(bptr parambptr) {}
   
   public void run()
   {
-    bncl.a(this.this$0);
+    bptr.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
 import java.util.ArrayList;
 
-final class afsn
-  implements afug
+public class afsn
+  extends anyu
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afsn(ActivateFriendGrid paramActivateFriendGrid) {}
+  
+  public void b()
   {
-    int j = 0;
-    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
-    int i = j;
-    if (paramQQAppInterface != null)
+    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+      return;
+    }
+    int i = 0;
+    label23:
+    if (i < ActivateFriendGrid.a(this.a).size())
     {
-      i = j;
-      if (paramQQAppInterface.items != null)
+      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
+        break label122;
+      }
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label23;
+      break;
+      label122:
+      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
       {
-        i = j;
-        if (paramQQAppInterface.items.size() != 0)
-        {
-          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
-            break label85;
-          }
-          if (paramQQAppInterface.items.size() != 1) {
-            break label74;
-          }
-          i = 6;
-        }
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
       }
     }
-    return i;
-    label74:
-    paramQQAppInterface.items.size();
-    return 7;
-    label85:
-    return 8;
   }
 }
 

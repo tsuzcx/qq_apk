@@ -15,7 +15,7 @@ public final class nearby_date$Wifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.nearfield_date.nearby_date.Wifi
  * JD-Core Version:    0.7.0.1
  */

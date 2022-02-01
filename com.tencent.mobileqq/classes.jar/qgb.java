@@ -1,78 +1,50 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 
 class qgb
-  implements bhtv
+  implements ViewBase.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  View jdField_a_of_type_AndroidViewView = null;
-  int jdField_b_of_type_Int = 0;
-  View jdField_b_of_type_AndroidViewView = null;
+  qgb(qga paramqga, pxk parampxk, Container paramContainer) {}
   
-  qgb(qga paramqga, AbsListView paramAbsListView, ChatMessage paramChatMessage) {}
-  
-  private void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    int i;
-    int j;
-    label84:
-    PressEffectImageView localPressEffectImageView;
-    if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) != null) && ("RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTag(2131369576))))
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
+    Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localArticleInfo.mArticleContentUrl);
+    Object localObject1;
+    String str1;
+    String str2;
+    if ((paramViewBase instanceof qkq))
     {
-      i = 1;
-      if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) == null) || (!"RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTag(2131369576)))) {
-        break label260;
+      localObject1 = ((qkq)paramViewBase).getText();
+      bbrf.a(null, ((ReportModelDC02528)localObject2).ver4((String)localObject1).ver5(localArticleInfo.mTitle).ver6(ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8()).ver7("{jumpurl:" + paramViewBase.getEventAttachedData() + ",clk_index:" + paramViewBase.getClickEvnet().substring("search_word_click_".length()) + "}").session_id(localArticleInfo.mSearchWordSessionId));
+      bbup.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
+      localObject1 = (anxu)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111);
+      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      str1 = localArticleInfo.mSearchWordSessionId;
+      str2 = localArticleInfo.mArticleContentUrl;
+      if (!(paramViewBase instanceof qkq)) {
+        break label261;
       }
-      j = 1;
-      if (((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView == this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0)) || (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) == null) || (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTop() >= this.jdField_a_of_type_Int))) || (i == 0)) {
-        break label265;
-      }
-      QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 1");
-      localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).findViewById(2131375244);
-      qga.a(this.jdField_a_of_type_Qga, localPressEffectImageView);
-      qga.a(this.jdField_a_of_type_Qga, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
     }
-    for (;;)
+    label261:
+    for (paramViewBase = ((qkq)paramViewBase).getText();; paramViewBase = "")
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewView.getTop();
-      }
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidViewView.getTop();
-      }
+      ((anxu)localObject1).a((QQAppInterface)localObject2, "clk_Kdfeedsback_list", str1, str2, paramViewBase, localArticleInfo.mTitle, ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8());
       return;
-      i = 0;
+      localObject1 = "";
       break;
-      label260:
-      j = 0;
-      break label84;
-      label265:
-      if (((this.jdField_b_of_type_AndroidViewView == null) || ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1)) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) != null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTop() > this.jdField_b_of_type_Int))) && (j != 0))
-      {
-        QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 2");
-        localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).findViewById(2131375244);
-        qga.a(this.jdField_a_of_type_Qga, localPressEffectImageView);
-        qga.a(this.jdField_a_of_type_Qga, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      }
     }
   }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a();
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgb
  * JD-Core Version:    0.7.0.1
  */

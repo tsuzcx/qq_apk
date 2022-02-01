@@ -1,126 +1,136 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class wmh
-  extends SimpleJob<Object>
+final class wmh
+  implements wnp
 {
-  wmh(wmf paramwmf, String paramString, VideoCollectionItem paramVideoCollectionItem)
+  wmh(wme paramwme, CommentEntry paramCommentEntry, woj paramwoj, boolean paramBoolean1, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean2) {}
+  
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super(paramString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      wmf.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wme, false, this.b);
+      int i;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply())
+      {
+        paramInt = 2;
+        i = yqu.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+        if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+          break label117;
+        }
+      }
+      label117:
+      for (paramBundle = "1";; paramBundle = "2")
+      {
+        yqu.a("home_page", "comment_auto", i, paramInt, new String[] { paramBundle, yqu.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+        return;
+        paramInt = 1;
+        break;
+      }
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
+    this.jdField_a_of_type_Woj.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, "ReqAddComment errorCode " + paramInt);
+    }
+    QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703179), 0).a();
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(int paramInt, String paramString)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (uvn)uwa.a(19);
-    MemoryInfoEntry localMemoryInfoEntry = paramJobContext.a(vcg.a(this.jdField_a_of_type_Wmf.jdField_b_of_type_JavaLangString));
-    boolean bool1;
-    boolean bool2;
-    label56:
-    List localList;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
+    this.jdField_a_of_type_Woj.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (paramInt == 10407) {
+      yqu.a("play_video", "exp_limit", 0, 0, new String[] { "", "", "", "" });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, "ReqAddComment fails: " + paramInt + "|" + paramString);
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anni.a(2131703214);
+    }
+    QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    paramMessageMicro = (qqstory_service.RspAddFeedComment)paramMessageMicro;
+    if (this.jdField_a_of_type_Wme.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, paramMessageMicro)) {
+      return;
+    }
+    this.jdField_a_of_type_Woj.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId = paramMessageMicro.comment_id.get();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    this.jdField_a_of_type_Woj.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    wnb.a().a();
+    if ((this.jdField_a_of_type_Boolean) && (!paramBoolean))
     {
-      bool1 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label250;
+      wnh.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      return;
+    }
+    wmf.a(this.jdField_a_of_type_Int, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    boolean bool;
+    int i;
+    label93:
+    label100:
+    String str2;
+    String str3;
+    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status == 0))
+    {
+      bool = true;
+      this.jdField_a_of_type_Wme.a(bool, paramBundle, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply()) {
+        break label202;
       }
-      bool2 = true;
-      if (this.jdField_a_of_type_Wmf.jdField_b_of_type_Boolean) {
-        break label414;
+      i = 2;
+      if (!paramBoolean) {
+        break label207;
       }
-      localList = paramJobContext.a(this.jdField_a_of_type_Wmf.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
-      paramVarArgs = new vck(this.jdField_a_of_type_Wmf.c, new ErrorMessage());
-      paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Wmf.jdField_b_of_type_JavaLangString;
-      paramVarArgs.jdField_b_of_type_Boolean = true;
-      paramVarArgs.c = bool2;
-      paramVarArgs.e = true;
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      paramVarArgs.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label256;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label177:
-      if (paramJobContext != null) {
-        break label285;
-      }
-      this.jdField_a_of_type_Wmf.jdField_b_of_type_Boolean = true;
-      if (!bool2) {
-        break label261;
-      }
-      this.jdField_a_of_type_Wmf.a.a(null, 0);
-      label206:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label274;
+      paramBundle = "comment_suc";
+      str2 = yqu.a("home_page-comment_suc-d1");
+      str3 = wnh.a().a;
+      if (!this.b) {
+        break label213;
       }
     }
-    label256:
-    label261:
-    label274:
-    for (paramJobContext = "null";; paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key)
+    label202:
+    label207:
+    label213:
+    for (int j = 12;; j = yqu.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
     {
-      wxe.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      return null;
-      bool1 = false;
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = "0";
+      }
+      yqu.a("home_page", paramBundle, j, i, new String[] { str1, yqu.a(this.jdField_a_of_type_Int), str3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      wnh.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      return;
+      bool = false;
       break;
-      label250:
-      bool2 = false;
-      break label56;
-      paramJobContext = null;
-      break label177;
-      this.jdField_a_of_type_Wmf.a.c();
-      break label206;
-    }
-    label285:
-    if ((localMemoryInfoEntry != null) && (paramJobContext.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
-    {
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Wmf.jdField_b_of_type_Boolean = true;
-      label317:
-      umc.a().dispatch(paramVarArgs);
-      this.jdField_a_of_type_Wmf.a(localList, false);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label397;
-      }
-      paramJobContext = "null";
-      label346:
-      if (!paramVarArgs.jdField_a_of_type_Boolean) {
-        break label408;
-      }
-    }
-    label397:
-    label408:
-    for (paramVarArgs = "true";; paramVarArgs = "false")
-    {
-      wxe.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
-      break;
-      paramVarArgs.jdField_a_of_type_Boolean = false;
-      break label317;
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key;
-      break label346;
-    }
-    label414:
-    if (bool2) {
-      this.jdField_a_of_type_Wmf.a.a(null, 0);
-    }
-    for (;;)
-    {
-      wxe.d("Q.qqstory.memories:MemoryDataPuller", String.format("Req from net ,  spend time = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      break;
-      this.jdField_a_of_type_Wmf.a.c();
+      i = 1;
+      break label93;
+      paramBundle = "comment_fail";
+      break label100;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmh
  * JD-Core Version:    0.7.0.1
  */

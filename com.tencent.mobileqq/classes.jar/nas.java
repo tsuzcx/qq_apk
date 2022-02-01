@@ -1,91 +1,114 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
-import tencent.im.troop_search_searchtab.searchtab.RspBody;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nas
-  implements BusinessObserver
+  implements nat
 {
-  protected int a;
-  protected WeakReference<nar> a;
-  protected WeakReference<QQAppInterface> b;
+  protected nal a;
+  protected nau a;
   
-  public nas(nar paramnar, QQAppInterface paramQQAppInterface, int paramInt)
+  public nas(nau paramnau)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnar);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Nau = paramnau;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    boolean bool2 = false;
-    nar localnar = (nar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject1 = (QQAppInterface)this.b.get();
-    Object localObject2;
-    if (QLog.isColorLevel())
+    return mxl.a().a().jdField_a_of_type_Int;
+  }
+  
+  public List<myg> a()
+  {
+    return mxl.a().a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    myc localmyc = mxl.a().a();
+    mxl.a().a(localmyc.a(), mxl.a().a().getAccount(), 0, 3);
+  }
+  
+  public void a(myc parammyc)
+  {
+    this.jdField_a_of_type_Nau.a(parammyc);
+  }
+  
+  public void a(myg parammyg, int paramInt)
+  {
+    if (parammyg != null)
     {
-      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
-      if (localnar != null) {
-        break label270;
-      }
+      mxl.a().b(parammyg.jdField_a_of_type_Int);
+      bcst.b(null, "dc00898", "", "", "0X800B06D", "0X800B06D", parammyg.jdField_a_of_type_Int, 0, "", "" + mxl.a().a().a().players.size(), "", "");
     }
-    label269:
-    label270:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
-      bool1 = bool2;
-      if (localObject1 == null) {
-        bool1 = true;
-      }
-      QLog.d("AddContactTroopHandler", 2, bool1);
-      if ((localnar != null) && (localObject1 != null)) {
-        if ((paramBoolean) && (paramBundle != null)) {
-          try
-          {
-            paramBundle = paramBundle.getByteArray("data");
-            if (paramBundle != null)
-            {
-              localObject1 = (nat)((QQAppInterface)localObject1).getManager(80);
-              if (this.jdField_a_of_type_Int == 1)
-              {
-                localObject2 = new popclassifc.RspBody();
-                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
-                ((nat)localObject1).a((popclassifc.RspBody)localObject2);
-                localnar.a();
-                return;
-              }
-              if (this.jdField_a_of_type_Int != 2) {
-                break label269;
-              }
-              localObject2 = new searchtab.RspBody();
-              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
-              ((nat)localObject1).a((searchtab.RspBody)localObject2);
-              localnar.a();
-              return;
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
-            }
-          }
-        } else {
-          localnar.b();
-        }
-      }
+  }
+  
+  public void a(nal paramnal)
+  {
+    this.jdField_a_of_type_Nal = paramnal;
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Nau.a(paramArrayOfInt);
+  }
+  
+  public boolean a()
+  {
+    return mxl.a().a();
+  }
+  
+  public void b()
+  {
+    myc localmyc = mxl.a().a();
+    mxl.a().a(localmyc.a(), mxl.a().a().getAccount(), 1, 3);
+  }
+  
+  public void b(myg parammyg, int paramInt)
+  {
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_Nal.c();
+    QLog.i("GameListPresenterImp", 1, "clickBeginGame players:" + localObject1);
+    if (((List)localObject1).size() <= 1) {
       return;
     }
+    paramInt = 0;
+    for (;;)
+    {
+      int i = j;
+      if (paramInt < ((List)localObject1).size())
+      {
+        if ((((List)localObject1).get(paramInt) != null) && (((Player)((List)localObject1).get(paramInt)).status == 0)) {
+          i = 1;
+        }
+      }
+      else
+      {
+        if ((i != 0) || (parammyg == null)) {
+          break;
+        }
+        Object localObject2 = mxl.a().a();
+        localObject1 = ((myc)localObject2).a(parammyg.jdField_a_of_type_Int);
+        String str = ((myc)localObject2).jdField_a_of_type_JavaLangString;
+        localObject2 = ((myc)localObject2).b;
+        if ((localObject1 == null) || (((myh)localObject1).a == null) || (((myh)localObject1).a.size() <= 0) || (str == null) || (localObject2 == null)) {
+          break label206;
+        }
+        new.a(this.jdField_a_of_type_Nau.a(), parammyg.jdField_a_of_type_Int, ((myh)localObject1).a, str, (String)localObject2);
+        return;
+      }
+      paramInt += 1;
+    }
+    label206:
+    mxl.a().a(parammyg.jdField_a_of_type_Int, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nas
  * JD-Core Version:    0.7.0.1
  */

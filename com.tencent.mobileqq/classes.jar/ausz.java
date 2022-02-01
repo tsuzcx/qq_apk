@@ -1,31 +1,20 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-class ausz
-  implements bauf
+public class ausz
+  implements SDKInitListener
 {
-  ausz(ausx paramausx) {}
+  public ausz(GameCenterVideoViewController paramGameCenterVideoViewController) {}
   
-  public void a(bave parambave, bavf parambavf)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if ((parambave != null) && (parambavf != null) && ((parambave instanceof baub)))
-    {
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-      if (parambavf.contains("range="))
-      {
-        parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
-        parambave.jdField_a_of_type_JavaLangString = (parambavf + "range=" + parambave.jdField_a_of_type_Long);
-      }
-    }
+    QLog.d("GameCenterVideoViewController", 4, "onSDKInited result:" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausz
  * JD-Core Version:    0.7.0.1
  */

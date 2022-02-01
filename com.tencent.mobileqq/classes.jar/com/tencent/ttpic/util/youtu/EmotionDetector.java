@@ -147,7 +147,7 @@ public class EmotionDetector
     }
   }
   
-  public Object detectSmile(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<EmotionInfo> paramList)
+  public Object detectSmile(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<EmotionInfo> paramList, boolean paramBoolean)
   {
     int m = 0;
     int i = 0;
@@ -160,8 +160,9 @@ public class EmotionDetector
     }
     this.mSmileDetector.setData(paramArrayOfByte);
     this.mSmileDetector.setImgWH(paramInt1, paramInt2);
+    paramInt2 = paramList.size();
     int k;
-    if (paramList.size() <= sMaxFaceCount)
+    if ((paramBoolean) || (paramInt2 <= sMaxFaceCount))
     {
       paramInt2 = 0;
       k = paramInt2;
@@ -228,7 +229,13 @@ public class EmotionDetector
     }
     if (k != 0)
     {
-      localPTEmotionAttr.setValue(this.mSmileDetector.detectSmile());
+      localPTEmotionAttr.setValue(this.mSmileDetector.detectSmile(paramBoolean));
+      if (paramBoolean)
+      {
+        localPTEmotionAttr.setSmileValues(this.mSmileDetector.getSmileValues());
+        localPTEmotionAttr.setIsSmiles(this.mSmileDetector.getIsSmiles());
+        localPTEmotionAttr.setCurrentFrameSmile(this.mSmileDetector.isCurrentFrameSmile());
+      }
       localPTEmotionAttr.setSmile(this.mSmileDetector.isSmile());
     }
     return localPTEmotionAttr;
@@ -263,7 +270,7 @@ public class EmotionDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.EmotionDetector
  * JD-Core Version:    0.7.0.1
  */

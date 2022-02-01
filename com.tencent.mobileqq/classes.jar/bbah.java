@@ -1,49 +1,81 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 
 public class bbah
-  extends bbal
+  implements TextWatcher
 {
-  void a(int paramInt, bbbi parambbbi, cmd0x352.ReqBody paramReqBody)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public bbah(RichStatusEditText paramRichStatusEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    parambbbi = (bbbg)parambbbi;
-    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
-    localTryUpImgReq.uint64_file_id.set(paramInt);
-    localTryUpImgReq.setHasFlag(true);
-    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(parambbbi.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpImgReq.uint64_file_size.set(parambbbi.jdField_a_of_type_Long);
-    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambbbi.jdField_a_of_type_ArrayOfByte));
-    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(parambbbi.jdField_a_of_type_JavaLangString));
-    localTryUpImgReq.uint32_src_term.set(5);
-    localTryUpImgReq.bool_address_book.set(parambbbi.jdField_c_of_type_Boolean);
-    localTryUpImgReq.uint32_platform_type.set(9);
-    localTryUpImgReq.uint32_bu_type.set(1);
-    localTryUpImgReq.bool_pic_original.set(parambbbi.b);
-    localTryUpImgReq.uint32_pic_width.set(parambbbi.jdField_c_of_type_Int);
-    localTryUpImgReq.uint32_pic_height.set(parambbbi.d);
-    localTryUpImgReq.uint32_pic_type.set(parambbbi.jdField_a_of_type_Int);
-    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(baws.a()));
-    localTryUpImgReq.bool_reject_tryfast.set(true);
-    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
+    }
   }
   
-  public void a(bbax parambbax)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((parambbax != null) && (parambbax.jdField_a_of_type_JavaUtilList != null) && (parambbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      bavq localbavq = new bavq();
-      localbavq.jdField_a_of_type_JavaLangString = "LongConn.ArtisticFilter";
-      localbavq.jdField_a_of_type_ArrayOfByte = a(parambbax.jdField_a_of_type_JavaUtilList);
-      localbavq.jdField_a_of_type_JavaLangObject = parambbax;
-      localbavq.jdField_a_of_type_Bavp = this;
-      a(parambbax, localbavq);
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      return;
     }
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt3;
+      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
+    if (paramCharSequence != null)
+    {
+      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
+      if (paramInt3 != paramInt1)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
+        this.jdField_a_of_type_JavaLangString = "";
+      }
+    }
+    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      bhvb localbhvb = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
+      if ((localbhvb != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localbhvb)))
+      {
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Boolean = true;
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
+    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
   }
 }
 

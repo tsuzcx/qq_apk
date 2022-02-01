@@ -1,173 +1,388 @@
-import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.nio.channels.SocketChannel;
+import javax.net.ssl.HandshakeCompletedListener;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
 
 public class bdhe
+  extends SSLSocket
 {
-  public static final byte[] a;
-  private static final char[] a;
+  protected final SSLSocket a;
   
-  static
+  bdhe(bdhc parambdhc, SSLSocket paramSSLSocket)
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-    jdField_a_of_type_ArrayOfByte = new byte[0];
+    this.jdField_a_of_type_JavaxNetSslSSLSocket = paramSSLSocket;
   }
   
-  public static byte a(char paramChar)
+  public void addHandshakeCompletedListener(HandshakeCompletedListener paramHandshakeCompletedListener)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
-    }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
-    }
-    return 0;
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.addHandshakeCompletedListener(paramHandshakeCompletedListener);
   }
   
-  public static String a(byte paramByte)
+  public void bind(SocketAddress paramSocketAddress)
   {
-    int i = jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)];
-    paramByte = (byte)(paramByte >>> 4);
-    return new String(new char[] { jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)], i });
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.bind(paramSocketAddress);
   }
   
-  public static String a(String paramString)
+  public void close()
   {
-    return new String(a(paramString));
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    char[] arrayOfChar;
-    for (;;)
+    try
     {
-      return null;
-      arrayOfChar = new char[paramArrayOfByte.length * 2];
-      int i = 0;
-      try
-      {
-        while (i < paramArrayOfByte.length)
-        {
-          int j = paramArrayOfByte[i];
-          arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-          j = (byte)(j >>> 4);
-          arrayOfChar[(i * 2 + 0)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-          i += 1;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramArrayOfByte) {}
-    }
-    QLog.d("HexUtil", 2, " === bytes2HexStr error === " + paramArrayOfByte.toString());
-    return null;
-    return new String(arrayOfChar);
-  }
-  
-  public static void a(String paramString, byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      b(paramString, paramArrayOfByte);
-    }
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    Object localObject;
-    if ((paramString == null) || (paramString.equals(""))) {
-      localObject = jdField_a_of_type_ArrayOfByte;
-    }
-    for (;;)
-    {
-      return localObject;
-      byte[] arrayOfByte = new byte[paramString.length() / 2];
-      int i = 0;
-      localObject = arrayOfByte;
-      try
-      {
-        if (i < arrayOfByte.length)
-        {
-          char c1 = paramString.charAt(i * 2);
-          char c2 = paramString.charAt(i * 2 + 1);
-          arrayOfByte[i] = ((byte)(a(c1) * 16 + a(c2)));
-          i += 1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HexUtil", 2, " === hexStr2Bytes error === " + paramString.toString());
-        }
-      }
-    }
-    return jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public static String b(String paramString)
-  {
-    return a(paramString.getBytes());
-  }
-  
-  public static void b(String paramString, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      QLog.i(paramString, 2, "bytes = null or bytes.length = 0");
+      this.jdField_a_of_type_JavaxNetSslSSLSocket.close();
       return;
     }
-    StringBuilder localStringBuilder1 = new StringBuilder((paramArrayOfByte.length + 15) / 16 * 73 + 85);
-    localStringBuilder1.append("buf size: " + paramArrayOfByte.length).append("\r\n");
-    localStringBuilder1.append("______00_01_02_03_04_05_06_07_08_09_0A_0B_0C_0D_0E_0F\r\n");
-    StringBuilder localStringBuilder2 = new StringBuilder(32);
-    localStringBuilder2.append(" ");
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    for (;;)
+    finally
     {
-      if (j < paramArrayOfByte.length)
-      {
-        if (i == 0) {
-          localStringBuilder1.append(String.format("%04x: ", new Object[] { Integer.valueOf(j) }));
-        }
-        localStringBuilder1.append(String.format("%02x ", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        if ((paramArrayOfByte[j] >= 32) && (paramArrayOfByte[j] <= 127)) {
-          localStringBuilder2.append(String.format("%c", new Object[] { Byte.valueOf(paramArrayOfByte[j]) }));
-        }
-      }
-      for (;;)
-      {
-        int m = i + 1;
-        i = m;
-        if (m < 16) {
-          break label293;
-        }
-        localStringBuilder1.append(localStringBuilder2.toString()).append("\r\n");
-        localStringBuilder2.setLength(1);
-        if (k == 0) {
-          break;
-        }
-        do
-        {
-          QLog.i(paramString, 2, localStringBuilder1.toString());
-          return;
-          localStringBuilder2.append(".");
-          break;
-        } while (i == 0);
-        localStringBuilder1.append("   ");
-        localStringBuilder2.append(" ");
-        k = 1;
-      }
-      i = 0;
-      label293:
-      j += 1;
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public void connect(SocketAddress paramSocketAddress)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.connect(paramSocketAddress);
+  }
+  
+  public void connect(SocketAddress paramSocketAddress, int paramInt)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.connect(paramSocketAddress, paramInt);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.equals(paramObject);
+  }
+  
+  public SocketChannel getChannel()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getChannel();
+  }
+  
+  public boolean getEnableSessionCreation()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnableSessionCreation();
+  }
+  
+  public String[] getEnabledCipherSuites()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnabledCipherSuites();
+  }
+  
+  public String[] getEnabledProtocols()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnabledProtocols();
+  }
+  
+  public InetAddress getInetAddress()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getInetAddress();
+  }
+  
+  public InputStream getInputStream()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getInputStream();
+  }
+  
+  public boolean getKeepAlive()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getKeepAlive();
+  }
+  
+  public InetAddress getLocalAddress()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalAddress();
+  }
+  
+  public int getLocalPort()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalPort();
+  }
+  
+  public SocketAddress getLocalSocketAddress()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalSocketAddress();
+  }
+  
+  public boolean getNeedClientAuth()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getNeedClientAuth();
+  }
+  
+  public boolean getOOBInline()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getOOBInline();
+  }
+  
+  public OutputStream getOutputStream()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getOutputStream();
+  }
+  
+  public int getPort()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getPort();
+  }
+  
+  public int getReceiveBufferSize()
+  {
+    try
+    {
+      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getReceiveBufferSize();
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public SocketAddress getRemoteSocketAddress()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getRemoteSocketAddress();
+  }
+  
+  public boolean getReuseAddress()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getReuseAddress();
+  }
+  
+  public int getSendBufferSize()
+  {
+    try
+    {
+      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getSendBufferSize();
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public SSLSession getSession()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSession();
+  }
+  
+  public int getSoLinger()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSoLinger();
+  }
+  
+  public int getSoTimeout()
+  {
+    try
+    {
+      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getSoTimeout();
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public String[] getSupportedCipherSuites()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSupportedCipherSuites();
+  }
+  
+  public String[] getSupportedProtocols()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSupportedProtocols();
+  }
+  
+  public boolean getTcpNoDelay()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getTcpNoDelay();
+  }
+  
+  public int getTrafficClass()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getTrafficClass();
+  }
+  
+  public boolean getUseClientMode()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getUseClientMode();
+  }
+  
+  public boolean getWantClientAuth()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getWantClientAuth();
+  }
+  
+  public boolean isBound()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isBound();
+  }
+  
+  public boolean isClosed()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isClosed();
+  }
+  
+  public boolean isConnected()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isConnected();
+  }
+  
+  public boolean isInputShutdown()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isInputShutdown();
+  }
+  
+  public boolean isOutputShutdown()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isOutputShutdown();
+  }
+  
+  public void removeHandshakeCompletedListener(HandshakeCompletedListener paramHandshakeCompletedListener)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.removeHandshakeCompletedListener(paramHandshakeCompletedListener);
+  }
+  
+  public void sendUrgentData(int paramInt)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.sendUrgentData(paramInt);
+  }
+  
+  public void setEnableSessionCreation(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnableSessionCreation(paramBoolean);
+  }
+  
+  public void setEnabledCipherSuites(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnabledCipherSuites(paramArrayOfString);
+  }
+  
+  public void setEnabledProtocols(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnabledProtocols(paramArrayOfString);
+  }
+  
+  public void setKeepAlive(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setKeepAlive(paramBoolean);
+  }
+  
+  public void setNeedClientAuth(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setNeedClientAuth(paramBoolean);
+  }
+  
+  public void setOOBInline(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setOOBInline(paramBoolean);
+  }
+  
+  public void setPerformancePreferences(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setPerformancePreferences(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void setReceiveBufferSize(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaxNetSslSSLSocket.setReceiveBufferSize(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setReuseAddress(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setReuseAddress(paramBoolean);
+  }
+  
+  public void setSendBufferSize(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaxNetSslSSLSocket.setSendBufferSize(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setSoLinger(boolean paramBoolean, int paramInt)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setSoLinger(paramBoolean, paramInt);
+  }
+  
+  public void setSoTimeout(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaxNetSslSSLSocket.setSoTimeout(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setTcpNoDelay(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setTcpNoDelay(paramBoolean);
+  }
+  
+  public void setTrafficClass(int paramInt)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setTrafficClass(paramInt);
+  }
+  
+  public void setUseClientMode(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setUseClientMode(paramBoolean);
+  }
+  
+  public void setWantClientAuth(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.setWantClientAuth(paramBoolean);
+  }
+  
+  public void shutdownInput()
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.shutdownInput();
+  }
+  
+  public void shutdownOutput()
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.shutdownOutput();
+  }
+  
+  public void startHandshake()
+  {
+    this.jdField_a_of_type_JavaxNetSslSSLSocket.startHandshake();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaxNetSslSSLSocket.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bkms;
+import bnbf;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$6
   implements Runnable
 {
-  public QIMCameraCaptureUnit$6(bkms parambkms) {}
+  public QIMCameraCaptureUnit$6(bnbf parambnbf) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QIMCameraCaptureUnit$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,18 @@
-public abstract interface blpm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+
+public class blpm
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public blpm(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    ForceUserUpdateActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

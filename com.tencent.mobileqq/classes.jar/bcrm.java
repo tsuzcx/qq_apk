@@ -1,18 +1,43 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ArkAppReportController.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcrm
-  implements bcpo
 {
-  public bcrm(RobotPanelLayoutBase paramRobotPanelLayoutBase, bcrq parambcrq) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  private static String a(bcrn parambcrn)
   {
-    if (paramInt == 0) {
+    return parambcrn.a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  {
+    bcrn localbcrn = new bcrn();
+    localbcrn.jdField_a_of_type_JavaLangString = paramString1;
+    localbcrn.jdField_b_of_type_JavaLangString = paramString2;
+    localbcrn.jdField_c_of_type_JavaLangString = paramString3;
+    localbcrn.jdField_a_of_type_Long = paramLong1;
+    localbcrn.jdField_b_of_type_Long = paramLong2;
+    localbcrn.jdField_d_of_type_Long = paramLong3;
+    localbcrn.f = paramLong4;
+    localbcrn.g = paramLong5;
+    localbcrn.jdField_d_of_type_JavaLangString = paramString4;
+    localbcrn.e = paramString5;
+    localbcrn.jdField_c_of_type_Long = 1L;
+    if (paramQQAppInterface == null)
+    {
+      paramQQAppInterface = a(localbcrn);
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
+      }
+      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, alud.a(2131713874) + "", 0).a();
+    paramString1 = a(localbcrn);
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
+    }
+    bcst.b(paramQQAppInterface, "dc01616", paramString1, 1);
   }
 }
 

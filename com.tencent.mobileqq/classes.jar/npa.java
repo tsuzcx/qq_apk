@@ -1,38 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class npa
-  implements BusinessObserver
+public class npa
+  implements View.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public npa(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, nyl paramnyl) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
-        }
-      }
-      return;
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString.contains(anni.a(2131702970)))) {
+      oat.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
-      paramBundle.printStackTrace();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npa
  * JD-Core Version:    0.7.0.1
  */

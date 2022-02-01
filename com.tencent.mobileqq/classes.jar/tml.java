@@ -1,20 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-public class tml
-  implements View.OnClickListener
+class tml
+  implements tlf
 {
-  public tml(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  tml(tmk paramtmk, FrameLayout paramFrameLayout) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    WSVerticalPageFragment.a(this.a);
+    if (tmk.a(this.jdField_a_of_type_Tmk) != null) {
+      tmk.a(this.jdField_a_of_type_Tmk).a(paramInt);
+    }
   }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 5)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      tmk.a(this.jdField_a_of_type_Tmk).getActivity().sendBroadcast(localIntent);
+    }
+    tmk.a(this.jdField_a_of_type_Tmk).getActivity().doOnBackPressed();
+    tmk.a(this.jdField_a_of_type_Tmk).getActivity().overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 2) && (tmk.a(this.jdField_a_of_type_Tmk).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tml
  * JD-Core Version:    0.7.0.1
  */

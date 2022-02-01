@@ -1,59 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import tencent.im.group.nearbybanner.nearbybanner.Banners;
-import tencent.im.group.nearbybanner.nearbybanner.RspBody;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
-class yrs
-  implements BusinessObserver
+public class yrs
+  extends bcdu
 {
-  yrs(yrr paramyrr, Bundle paramBundle) {}
+  public yrs(EditPicActivity paramEditPicActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    yqp.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    yrd localyrd = (yrd)this.a.a.a(yrd.class);
+    if (localyrd != null) {
+      localyrd.Z_();
     }
-    paramBundle = paramBundle.getByteArray("data");
-    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramBundle);
-      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
-      {
-        this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
-      if (!paramBundle.rpt_banner_info.has())
-      {
-        this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-    this.jdField_a_of_type_Yrr.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrs
  * JD-Core Version:    0.7.0.1
  */

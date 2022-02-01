@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.widget.SeekBar;
 import com.tencent.viola.ui.component.VSeekBar;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
+import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
@@ -49,14 +50,11 @@ public class VSeekBarView
     setProgressColor(Color.parseColor("#ffffff"));
     ClipDrawable localClipDrawable = new ClipDrawable(this.progressDrawable, 3, 1);
     this.drawables[1] = localClipDrawable;
-    this.layerDrawable = new LayerDrawable(this.drawables);
-    this.layerDrawable.setId(0, 16908288);
-    this.layerDrawable.setId(1, 16908301);
     setSeekBarHeight(FlexConvertUtils.dip2px(3));
     setProgressDrawable(this.layerDrawable);
     this.cycleThumbDrawable = new GradientDrawable();
     this.cycleThumbDrawable.setShape(1);
-    setCycleThumbColor(Color.parseColor("#ffffff"));
+    this.cycleThumbDrawable.setColor(Color.parseColor("#ffffff"));
     setThumbSize(FlexConvertUtils.dip2px(15));
     setThumb(this.cycleThumbDrawable);
   }
@@ -69,6 +67,11 @@ public class VSeekBarView
   public VSeekBar getComponent()
   {
     return (VSeekBar)this.mWeakReference.get();
+  }
+  
+  public void invalidateProgressDrawable()
+  {
+    setProgressDrawable(this.layerDrawable);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -86,7 +89,20 @@ public class VSeekBarView
   
   public void setCycleThumbColor(int paramInt)
   {
+    if (paramInt == 0)
+    {
+      setThumb(null);
+      return;
+    }
+    this.cycleThumbDrawable = new GradientDrawable();
     this.cycleThumbDrawable.setColor(paramInt);
+    if (getComponent() != null) {}
+    for (paramInt = getComponent().getThumbSize();; paramInt = 0)
+    {
+      setThumbSize(paramInt);
+      setThumb(this.cycleThumbDrawable);
+      return;
+    }
   }
   
   public void setEnableSeek(boolean paramBoolean)
@@ -101,6 +117,9 @@ public class VSeekBarView
   
   public void setSeekBarHeight(int paramInt)
   {
+    this.layerDrawable = new LayerDrawable(this.drawables);
+    this.layerDrawable.setId(0, 16908288);
+    this.layerDrawable.setId(1, 16908301);
     if (Build.VERSION.SDK_INT >= 23)
     {
       this.layerDrawable.setLayerHeight(0, paramInt);
@@ -111,14 +130,14 @@ public class VSeekBarView
     }
     try
     {
-      Field localField = getClass().getSuperclass().getSuperclass().getDeclaredField("mMaxHeight");
+      Field localField = getClass().getSuperclass().getSuperclass().getSuperclass().getDeclaredField("mMaxHeight");
       localField.setAccessible(true);
       localField.set(this, Integer.valueOf(paramInt));
       return;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
+      ViolaLogUtils.e("VSeekBarView", "[setSeekBarHeight]: " + localException.getMessage());
     }
   }
   
@@ -130,7 +149,7 @@ public class VSeekBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSeekBarView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,31 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class sxo
-  implements yrb
+public class sxo
+  implements tbj
 {
-  sxo(sxe paramsxe, boolean paramBoolean, String paramString1, String paramString2) {}
+  private WeakReference<FastWebActivity> a;
   
-  public void callback(Bundle paramBundle)
+  public sxo(FastWebActivity paramFastWebActivity)
   {
-    String str2;
-    JSONObject localJSONObject;
-    if (paramBundle != null)
-    {
-      if (this.jdField_a_of_type_Sxe.a != null) {
-        this.jdField_a_of_type_Sxe.l();
-      }
-      str2 = paramBundle.getString("pic_local_id");
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!"-1".equals(str2)) {
-          continue;
-        }
-        localJSONObject.put("retCode", -1);
-        localJSONObject.put("msg", "fail");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-        paramBundle = str2;
-        localJSONObject.put("localId", paramBundle);
-      }
-      catch (JSONException paramBundle)
-      {
-        String str1;
-        paramBundle.printStackTrace();
-        continue;
-      }
-      this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Sxe.c(this.b);
-      }
+    this.a = new WeakReference(paramFastWebActivity);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
+    if (localFastWebActivity == null) {
       return;
-      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-      paramBundle = str2;
-      continue;
-      str1 = str2;
-      if (this.jdField_a_of_type_Boolean) {
-        str1 = "mqqpa://resourceid/" + str2;
-      }
-      paramBundle = paramBundle.getString("pic_local_path");
-      sxe.b.put(str1, paramBundle);
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", alud.a(2131709163) + str1);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
-        paramBundle = str1;
-      }
-      else
-      {
-        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
-        paramBundle = str1;
-      }
     }
+    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
-class afhp
-  extends aepm
+public class afhp
+  implements ayjd
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public afhp(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  afhp(afhn paramafhn) {}
+  public void a(int paramInt, ayje paramayje)
+  {
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramayje.b)))
+    {
+      TextPreviewTranslateActivity.a(this.a, paramayje.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    }
+  }
 }
 
 

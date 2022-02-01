@@ -1,32 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
 class nxk
-  implements rua
+  implements uwv
 {
-  private WeakReference<nxf> a;
+  nxk(nxj paramnxj, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  nxk(nxf paramnxf)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    this.a = new WeakReference(paramnxf);
+    this.jdField_a_of_type_Nxj.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370202).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366231).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366231).setOnClickListener(new nxl(this));
   }
   
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  public void a(URL paramURL, tds paramtds)
   {
-    nxf localnxf = (nxf)this.a.get();
-    if (((localnxf == null) || (nxf.a(localnxf).a())) && (QLog.isColorLevel()))
-    {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
-      return;
-    }
-    localnxf.a(paramChannelCoverInfo);
+    this.jdField_a_of_type_Nxj.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370202).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    nxj.a(this.jdField_a_of_type_Nxj, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxk
  * JD-Core Version:    0.7.0.1
  */

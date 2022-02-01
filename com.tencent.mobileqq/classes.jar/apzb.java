@@ -1,16 +1,46 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class apzb
-  implements View.OnClickListener
+  implements bkhw
 {
-  public apzb(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
+  public apzb(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693000, 1);
+        continue;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+        {
+          paramView = new Intent();
+          paramView.setAction("android.intent.action.SENDTO");
+          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693000, 1);
+        }
+      }
     }
   }
 }

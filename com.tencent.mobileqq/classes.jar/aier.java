@@ -1,18 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.leba.QzoneFrame;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 
-public class aier
-  extends BroadcastReceiver
+class aier
+  implements oap
 {
-  public aier(QzoneFrame paramQzoneFrame) {}
+  aier(aidp paramaidp) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    if (QzoneFrame.a(this.a) != null) {
-      ((bjht)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    this.a.bp();
+    if (!paramBoolean)
+    {
+      this.a.A(2131694617);
+      return;
     }
+    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.find(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localEntityManager.remove(localAccountDetail);
+    }
+    localEntityManager.close();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.I();
   }
 }
 

@@ -1,11 +1,19 @@
-class aewo
-  implements aewp
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
+
+public class aewo
+  implements QQPermissionCallback
 {
-  aewo(aewn paramaewn) {}
+  public aewo(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b();
+    bglp.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 

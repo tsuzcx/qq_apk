@@ -1,20 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
 
 public class apij
-  implements avdq
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public apij(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public apij(ArkAppModuleBase.APIAuthority.1 param1, bgpa parambgpa) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bgpa.findViewById(2131365434)).setImageBitmap(paramBitmap);
     }
-    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
   }
 }
 

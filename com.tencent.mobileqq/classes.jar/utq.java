@@ -1,44 +1,41 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stSimpleMetaFeed;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class utq
-  implements TextView.OnEditorActionListener
+class utq
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public utq(StoryInputBarView paramStoryInputBarView) {}
+  utq(uto paramuto) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (paramInt == 4)
+    if ((paramSeekBar == null) || (uto.a(this.a) == null) || (uto.a(this.a) == null)) {}
+    for (;;)
     {
-      paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label140;
-      }
-      this.a.setKeyBoardState(false);
-      if (this.a.jdField_a_of_type_Ust != null) {
-        this.a.jdField_a_of_type_Ust.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      uru localuru = (uru)uto.a(this.a).a;
+      if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed)))
+      {
+        float f = paramSeekBar.getProgress();
+        int i = ((stSimpleMetaFeed)localuru.a()).video.duration;
+        int j = (int)(f / 1000.0F * i);
+        upe.a("WS_VIDEO_seekBar", "WSVerticalItemVideoProgressController onStopTrackingTouch() progress:" + f + ", videoDuration:" + i + ", position:" + j);
+        uto.a(this.a).a(j, true);
       }
     }
-    return false;
-    label140:
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utq
  * JD-Core Version:    0.7.0.1
  */

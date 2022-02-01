@@ -1,65 +1,75 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import alud;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$8
   implements MiniAppCmdInterface
 {
-  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, int paramInt, String paramString) {}
+  PayJsPlugin$8(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, JsRuntime paramJsRuntime, String paramString3, int paramInt) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null)
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      paramJSONObject = new JSONObject();
       try
       {
-        paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", alud.a(2131708298));
-        PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, paramJSONObject, "");
-        return;
+        if (!paramJSONObject.has("retCode")) {
+          break label217;
+        }
+        i = paramJSONObject.getInt("retCode");
+        if ((paramJSONObject == null) || (!paramJSONObject.has("errMsg"))) {
+          break label222;
+        }
+        str = paramJSONObject.getString("errMsg");
+        if ((!paramBoolean) || (i != 0)) {
+          break label173;
+        }
+        if ((paramJSONObject == null) || (!paramJSONObject.has("key_url_valid"))) {
+          break label229;
+        }
+        i = paramJSONObject.getInt("key_url_valid");
+        if (i == 1)
+        {
+          if (this.this$0.jsPluginEngine.activityContext != null)
+          {
+            PayJsPlugin.access$600(this.this$0, this.this$0.jsPluginEngine.activityContext, this.val$payUrl, this.val$referer, this.val$webview, this.val$eventName, this.val$callbackId);
+            return;
+          }
+          QLog.i("PayJsPlugin", 1, "context is null");
+          return;
+        }
       }
-      catch (JSONException paramJSONObject)
+      catch (Exception paramJSONObject)
       {
-        QLog.e("PayJsPlugin", 1, "invokeMidasConsume JSONException ", paramJSONObject);
+        PayJsPlugin.access$200(this.this$0, this.val$callbackId, this.val$eventName, null, "pay fail");
         return;
       }
-    }
-    QLog.d("PayJsPlugin", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    try
-    {
-      MiniAppMidasPay.StGamePayRsp localStGamePayRsp = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
-      int i = paramJSONObject.getInt("resultCode");
-      paramJSONObject = paramJSONObject.getString("errMsg");
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject(new HashMap());
-      localJSONObject2.put("attachInfo", localStGamePayRsp.extInfo.attachInfo.get());
-      localJSONObject2.put("mapInfo", localJSONObject3);
-      localJSONObject1.put("resultCode", i);
-      localJSONObject1.put("extInfo", localJSONObject2);
-      localJSONObject1.put("resultMsg", paramJSONObject);
-      QLog.d("PayJsPlugin", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + localJSONObject1.toString());
-      PayJsPlugin.access$400(this.this$0, this.val$seq, this.val$event, localJSONObject1);
+      PayJsPlugin.access$200(this.this$0, this.val$callbackId, this.val$eventName, null, "url is invalid");
       return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("PayJsPlugin", 1, "invokeMidasConsume JSONException ", paramJSONObject);
+      label173:
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("resultCode", i);
+      paramJSONObject.put("resultMsg", str);
+      PayJsPlugin.access$200(this.this$0, this.val$callbackId, this.val$eventName, null, "pay fail");
+      return;
+      label217:
+      int i = -1;
+      continue;
+      label222:
+      String str = "";
+      continue;
+      label229:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

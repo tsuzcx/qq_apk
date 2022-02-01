@@ -2,7 +2,9 @@ package mqq.observer;
 
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import mqq.app.AppRuntime.Status;
 import mqq.app.Constants.Action;
 import oicq.wlogin_sdk.tools.ErrMsg;
@@ -10,105 +12,92 @@ import oicq.wlogin_sdk.tools.ErrMsg;
 public abstract class AccountObserver
   implements Constants.Action, BusinessObserver
 {
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
+  private static final List<Integer> LOGIN_ACTIONS = Arrays.asList(new Integer[] { Integer.valueOf(1001), Integer.valueOf(2205), Integer.valueOf(2206), Integer.valueOf(2207) });
+  private static final List<Integer> OTHER_ACCOUNT_ACTIONS = Arrays.asList(new Integer[] { Integer.valueOf(2211), Integer.valueOf(1022), Integer.valueOf(1007), Integer.valueOf(1030), Integer.valueOf(1032), Integer.valueOf(1046) });
+  private static final List<Integer> REGISTER_ACTIONS = Arrays.asList(new Integer[] { Integer.valueOf(1040), Integer.valueOf(1002), Integer.valueOf(1041), Integer.valueOf(1003), Integer.valueOf(1004), Integer.valueOf(1020), Integer.valueOf(1005), Integer.valueOf(1008), Integer.valueOf(1009) });
   
-  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void onDeleteAccount(boolean paramBoolean) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onGetKeyResp(String paramString) {}
-  
-  public void onGetQuickRegisterAccount(boolean paramBoolean, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte) {}
-  
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2) {}
-  
-  public void onLoginSuccess(String paramString1, String paramString2) {}
-  
-  protected void onLoginTimeout(String paramString) {}
-  
-  protected void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4) {}
-  
-  protected void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private void onReceiveLoginActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     Object localObject1;
-    String str;
-    Object localObject2;
+    label131:
     int i;
+    Object localObject2;
     switch (paramInt)
     {
     default: 
       return;
-    case 2205: 
-      localObject1 = paramBundle.getString("uin");
-      paramInt = paramBundle.getInt("resultCode");
-      onVerifyPasswd((String)localObject1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, paramBundle.getInt("ret"), paramBundle.getString("notice"), paramBundle.getByteArray("image"));
-      return;
-    case 2206: 
-      localObject1 = paramBundle.getString("uin");
-      paramInt = paramBundle.getInt("resultCode");
-      str = paramBundle.getString("userAccount");
-      localObject2 = paramBundle.getString("errorMsg");
-      i = paramBundle.getInt("ret");
-      ErrMsg localErrMsg = (ErrMsg)paramBundle.getParcelable("lastError");
-      onVerifyPasswdImage((String)localObject1, paramBoolean, (String)localObject2, paramInt, str, paramBundle.getByteArray("userInput"), i, localErrMsg, paramBundle.getByteArray("image"));
-      return;
-    case 2207: 
-      localObject1 = paramBundle.getString("uin");
-      paramInt = paramBundle.getInt("resultCode");
-      str = paramBundle.getString("userAccount");
-      onVerifyPasswdRefreshImage((String)localObject1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, str, paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"), paramBundle.getByteArray("pictureData"));
-      return;
     case 1001: 
       paramInt = paramBundle.getInt("code");
-      str = paramBundle.getString("alias");
+      str2 = paramBundle.getString("alias");
       if (QLog.isColorLevel())
       {
-        localObject2 = new StringBuilder().append("onRV  action login code = ").append(paramInt).append("; alias = ");
-        if (str != null) {
-          break label439;
+        localObject1 = new StringBuilder().append("onRV  action login code = ").append(paramInt).append("; alias = ");
+        if (str2 != null) {
+          break label131;
         }
       }
-      for (localObject1 = "is null";; localObject1 = str)
+      for (str1 = "is null";; str1 = str2)
       {
-        QLog.d("AccountObserver", 2, (String)localObject1);
+        QLog.d("AccountObserver", 2, str1);
         if (!paramBoolean) {
           break;
         }
-        onLoginSuccess(paramBundle.getString("uin"), str);
+        onLoginSuccess(paramBundle.getString("uin"), str2);
         return;
       }
       if ((paramInt == 1002) || (paramInt == 1013))
       {
-        onLoginTimeout(str);
+        onLoginTimeout(str2);
         return;
       }
       if (paramInt == 2006)
       {
-        onUserCancel(str);
+        onUserCancel(str2);
         return;
       }
-      localObject1 = paramBundle.getString("errorurl");
+      str1 = paramBundle.getString("errorurl");
       paramInt = paramBundle.getInt("loginret");
-      localObject2 = paramBundle.getByteArray("lhsig");
+      localObject1 = paramBundle.getByteArray("lhsig");
       i = paramBundle.getInt("errorver");
-      onLoginFailed(str, paramBundle.getString("error"), (String)localObject1, paramInt, (byte[])localObject2, i);
+      localObject2 = paramBundle.getByteArray("tlverror");
+      onLoginFailed(str2, paramBundle.getString("error"), str1, paramInt, (byte[])localObject1, i, (byte[])localObject2);
+      return;
+    case 2205: 
+      str1 = paramBundle.getString("uin");
+      paramInt = paramBundle.getInt("resultCode");
+      onVerifyPasswd(str1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, paramBundle.getInt("ret"), paramBundle.getString("notice"), paramBundle.getByteArray("image"));
+      return;
+    case 2206: 
+      str1 = paramBundle.getString("uin");
+      paramInt = paramBundle.getInt("resultCode");
+      str2 = paramBundle.getString("userAccount");
+      localObject1 = paramBundle.getString("errorMsg");
+      i = paramBundle.getInt("ret");
+      localObject2 = (ErrMsg)paramBundle.getParcelable("lastError");
+      onVerifyPasswdImage(str1, paramBoolean, (String)localObject1, paramInt, str2, paramBundle.getByteArray("userInput"), i, (ErrMsg)localObject2, paramBundle.getByteArray("image"));
+      return;
+    }
+    String str1 = paramBundle.getString("uin");
+    paramInt = paramBundle.getInt("resultCode");
+    String str2 = paramBundle.getString("userAccount");
+    onVerifyPasswdRefreshImage(str1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, str2, paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"), paramBundle.getByteArray("pictureData"));
+  }
+  
+  private void onReceiveLoginRegisterActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
     case 1040: 
       onRegisterCmdCallback(paramBoolean);
       return;
     case 1002: 
-      localObject1 = (AppRuntime.Status)paramBundle.getSerializable("onlineStatus");
+      AppRuntime.Status localStatus = (AppRuntime.Status)paramBundle.getSerializable("onlineStatus");
       boolean bool1 = paramBundle.getBoolean("isChanged");
       long l = paramBundle.getLong("timeStamp");
       boolean bool2 = paramBundle.getBoolean("isLargeChanged");
-      onOnlineStatusChanged(paramBoolean, (AppRuntime.Status)localObject1, paramBundle.getBoolean("isUserSet", false), bool1, l, bool2);
-      return;
-    case 2211: 
-      onOnlineStatusPush((AppRuntime.Status)paramBundle.getSerializable("onlineStatus"), paramBundle.getLong("extOnlineStatus"));
+      onOnlineStatusChanged(paramBoolean, localStatus, paramBundle.getBoolean("isUserSet", false), bool1, l, bool2);
       return;
     case 1041: 
       onRegQueryAccountResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"));
@@ -122,9 +111,6 @@ public abstract class AccountObserver
     case 1020: 
       onRegisterSendResendSmsreqResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"));
       return;
-    case 1022: 
-      onRegisterQuerySmsStatResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"), paramBundle.getString("uin"), paramBundle.getString("nick"), paramBundle.getString("faceUrl"), paramBundle.getString("errmsg"));
-      return;
     case 1005: 
       if (paramBundle.getBoolean("reg_Lianghao", false))
       {
@@ -137,13 +123,25 @@ public abstract class AccountObserver
       if (QLog.isColorLevel()) {
         QLog.d("wtLogin_LiangHao", 2, "onRegisterCommitPassResp");
       }
-      onRegisterCommitPassResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("uin"), paramBundle.getByteArray("promptInfo"), paramBundle.getByteArray("promptInfo_error"));
+      onRegisterCommitPassResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("uin"), paramBundle.getByteArray("promptInfo"), paramBundle.getByteArray("promptInfo_error"), paramBundle.getByteArray("resp_register_supersig"));
       return;
     case 1008: 
       onCheckQuickRegisterAccount(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo_error"));
       return;
-    case 1009: 
-      onGetQuickRegisterAccount(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("uin"), paramBundle.getString("phone"), paramBundle.getByteArray("promptInfo_error"));
+    }
+    onGetQuickRegisterAccount(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("uin"), paramBundle.getString("phone"), paramBundle.getByteArray("promptInfo_error"));
+  }
+  
+  private void onReceiveOtherAccountActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2211: 
+      onOnlineStatusPush((AppRuntime.Status)paramBundle.getSerializable("onlineStatus"), paramBundle.getLong("extOnlineStatus"));
+    case 1022: 
+      onRegisterQuerySmsStatResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"), paramBundle.getString("uin"), paramBundle.getString("nick"), paramBundle.getString("faceUrl"), paramBundle.getString("errmsg"));
       return;
     case 1007: 
       onDeleteAccount(paramBoolean);
@@ -152,11 +150,49 @@ public abstract class AccountObserver
       onGetKeyResp(paramBundle.getString("key"));
       return;
     case 1032: 
-      label439:
       onChangeToken(paramBoolean, (HashMap)paramBundle.getSerializable("map"));
       return;
     }
     onRefreshDA2(paramBoolean, paramBundle.getString("account"), paramBundle.getString("da2"));
+  }
+  
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
+  
+  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte) {}
+  
+  public void onDeleteAccount(boolean paramBoolean) {}
+  
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3) {}
+  
+  public void onGetKeyResp(String paramString) {}
+  
+  public void onGetQuickRegisterAccount(boolean paramBoolean, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte) {}
+  
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2) {}
+  
+  public void onLoginSuccess(String paramString1, String paramString2) {}
+  
+  protected void onLoginTimeout(String paramString) {}
+  
+  protected void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4) {}
+  
+  protected void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (REGISTER_ACTIONS.contains(Integer.valueOf(paramInt))) {
+      onReceiveLoginRegisterActions(paramInt, paramBoolean, paramBundle);
+    }
+    do
+    {
+      return;
+      if (LOGIN_ACTIONS.contains(Integer.valueOf(paramInt)))
+      {
+        onReceiveLoginActions(paramInt, paramBoolean, paramBundle);
+        return;
+      }
+    } while (!OTHER_ACCOUNT_ACTIONS.contains(Integer.valueOf(paramInt)));
+    onReceiveOtherAccountActions(paramInt, paramBoolean, paramBundle);
   }
   
   public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2) {}
@@ -167,7 +203,7 @@ public abstract class AccountObserver
   
   public void onRegisterCommitMobileResp(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString) {}
   
-  public void onRegisterCommitPassResp(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2) {}
+  public void onRegisterCommitPassResp(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3) {}
   
   public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3) {}
   

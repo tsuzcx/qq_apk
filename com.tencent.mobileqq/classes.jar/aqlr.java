@@ -1,21 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.taobao.android.dexposed.XC_MethodHook;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
+import de.robv.android.xposed.XC_MethodHook.MethodHookParam;
 
-public class aqlr
-  implements View.OnClickListener
+final class aqlr
+  extends XC_MethodHook
 {
-  public aqlr(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    azqs.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, bagk.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720691), true));
+    try
+    {
+      paramMethodHookParam = aqln.a();
+      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
+        aqln.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
+      }
+      return;
+    }
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlr
  * JD-Core Version:    0.7.0.1
  */

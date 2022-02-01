@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.statistics.GdtReportForAntiSpam.1;
+import org.json.JSONObject;
 
-public class acrk
-  implements DialogInterface.OnClickListener
+public final class acrk
 {
-  public acrk(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(JSONObject paramJSONObject)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.c);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    JSONObject localJSONObject;
+    if (paramJSONObject != null)
+    {
+      localJSONObject = paramJSONObject;
+      if (!JSONObject.NULL.equals(paramJSONObject)) {}
+    }
+    else
+    {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("ct", System.currentTimeMillis());
+      paramJSONObject = localJSONObject.toString().getBytes();
+      AdThreadManager.INSTANCE.post(new GdtReportForAntiSpam.1(paramJSONObject), 4);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      for (;;)
+      {
+        acqy.d("GdtReportForAntiSpam", "reportAntiSpamForClick", paramJSONObject);
+      }
+    }
   }
 }
 

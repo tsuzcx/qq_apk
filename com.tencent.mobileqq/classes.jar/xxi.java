@@ -1,46 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.support.annotation.NonNull;
 
-public class xxi
-  implements xxg
+public abstract class xxi
+  implements xwz
 {
-  protected final xxk a;
-  protected final xxm a;
+  protected void a(Error paramError) {}
   
-  public xxi(xxm paramxxm)
+  protected void a(xww paramxww) {}
+  
+  public final void a(@NonNull xwx paramxwx)
   {
-    this.jdField_a_of_type_Xxk = new xxk();
-    this.jdField_a_of_type_Xxm = paramxxm;
+    a(new xww(paramxwx.a()));
   }
   
-  public void a(xxg paramxxg) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public final void b(@NonNull xwx paramxwx)
   {
-    View localView = this.jdField_a_of_type_Xxm.a();
-    xxh localxxh = this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxh;
-    if (!localxxh.a(localView, this.jdField_a_of_type_Xxk, paramMotionEvent)) {}
-    xxl localxxl;
-    do
-    {
-      return false;
-      localxxl = this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxl;
-    } while (((!localxxh.a(localView)) || (!this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean)) && ((!localxxh.b(localView)) || (this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean)));
-    localxxl.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
-    localxxl.jdField_a_of_type_Float = this.jdField_a_of_type_Xxk.jdField_a_of_type_Float;
-    localxxl.jdField_a_of_type_Boolean = this.jdField_a_of_type_Xxk.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Xxm.a(this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxn);
-    return this.jdField_a_of_type_Xxm.jdField_a_of_type_Xxn.a(paramMotionEvent);
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    a(paramxwx.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxi
  * JD-Core Version:    0.7.0.1
  */

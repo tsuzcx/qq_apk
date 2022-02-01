@@ -1,10 +1,16 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-public abstract interface afki
+public class afki
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public afki(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public abstract void a(Bundle paramBundle);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

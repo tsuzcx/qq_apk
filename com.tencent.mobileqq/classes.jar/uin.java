@@ -1,21 +1,27 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import UserGrowth.stSchema;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 public class uin
-  implements nbt
+  extends uig
 {
-  public uin(StoryAlbumResourceDownloader.3 param3) {}
-  
-  public void loaded(int paramInt, String paramString)
+  public uin(uii paramuii)
   {
-    uik.a(this.a.this$0);
-    uik.a(this.a.this$0, false);
-    uik.a(this.a.this$0, false);
-    wxe.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    super(paramuii);
+  }
+  
+  public boolean a(uii paramuii)
+  {
+    MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = paramuii.a();
+    uee.a(paramuii.a(), paramuii.a().miniAppSchema, new uio(this, localMiniAppLaunchListener));
+    if (paramuii.a() != null) {
+      paramuii.a().b();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uin
  * JD-Core Version:    0.7.0.1
  */

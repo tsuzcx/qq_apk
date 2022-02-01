@@ -1,19 +1,39 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiby
-  implements View.OnClickListener
+class aiby
+  implements bkhw
 {
-  public aiby(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aiby(aibv paramaibv, bkho parambkho, ChatMessage paramChatMessage, String paramString) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aibv.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_Aibv.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+      }
+      if (!bgnt.d(BaseApplication.getContext()))
+      {
+        QQToast.a(this.jdField_a_of_type_Aibv.a(), this.jdField_a_of_type_Aibv.a().getString(2131693948), 0).b(this.jdField_a_of_type_Aibv.a().getTitleBarHeight());
+        return;
+      }
+    } while ((anno)this.jdField_a_of_type_Aibv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
+    paramView = bglp.a(this.jdField_a_of_type_Aibv.a(), 230).setMessage(2131692884).setNegativeButton(2131690564, new aica(this)).setPositiveButton(2131690566, new aibz(this));
+    paramView.setTitle(2131692885);
+    paramView.show();
   }
 }
 

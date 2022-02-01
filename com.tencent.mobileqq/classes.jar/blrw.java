@@ -1,17 +1,9 @@
-class blrw
-  implements bnha
+import cooperation.qzone.QzoneExternalRequest;
+
+public abstract class blrw
+  extends QzoneExternalRequest
 {
-  blrw(blru paramblru) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a(4);
-  }
+  public abstract int a();
 }
 
 

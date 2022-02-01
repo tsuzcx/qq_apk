@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqtr;
-import ardz;
+import aszs;
+import auaq;
 
 public class NewDiscFileUploader$2
   implements Runnable
 {
-  public NewDiscFileUploader$2(aqtr paramaqtr) {}
+  public NewDiscFileUploader$2(aszs paramaszs) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class NewDiscFileUploader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.NewDiscFileUploader.2
  * JD-Core Version:    0.7.0.1
  */

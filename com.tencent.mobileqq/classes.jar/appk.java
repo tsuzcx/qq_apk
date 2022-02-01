@@ -1,6 +1,26 @@
-public abstract interface appk
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
+
+class appk
+  extends anqd
 {
-  public abstract void a_(int paramInt1, int paramInt2);
+  appk(appj paramappj) {}
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    if ((appj.a(this.a) != null) && (paramList != null))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == appj.a(this.a).b)) {
+          this.a.a(localMessageRecord.uniseq);
+        }
+      }
+    }
+  }
 }
 
 

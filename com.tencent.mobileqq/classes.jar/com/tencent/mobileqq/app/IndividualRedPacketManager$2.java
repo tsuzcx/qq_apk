@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alvg;
-import azri;
+import anom;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class IndividualRedPacketManager$2
   implements Runnable
 {
-  public IndividualRedPacketManager$2(alvg paramalvg) {}
+  public IndividualRedPacketManager$2(anom paramanom) {}
   
   public void run()
   {
@@ -23,13 +23,13 @@ public class IndividualRedPacketManager$2
     {
       arrayOfString = new String[4];
       localObject1 = str;
-      arrayOfString[0] = alvg.a(5);
+      arrayOfString[0] = anom.a(5);
       localObject1 = str;
-      arrayOfString[1] = alvg.a(6);
+      arrayOfString[1] = anom.a(6);
       localObject1 = str;
-      arrayOfString[2] = alvg.a(7);
+      arrayOfString[2] = anom.a(7);
       localObject1 = str;
-      arrayOfString[3] = alvg.a(8);
+      arrayOfString[3] = anom.a(8);
     }
     catch (Exception localException2)
     {
@@ -40,14 +40,14 @@ public class IndividualRedPacketManager$2
         File[] arrayOfFile;
         int j;
         if (QLog.isColorLevel()) {
-          QLog.e(alvg.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
+          QLog.e(anom.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
         }
         label425:
         try
         {
           HashMap localHashMap = new HashMap();
           localHashMap.put("param_FailCode", localObject1);
-          azri.a(BaseApplicationImpl.sApplication.getApplicationContext()).a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getAccount(), "RedpacketClearCacheError", false, 1L, 0L, localHashMap, "", false);
+          bctj.a(BaseApplicationImpl.sApplication.getApplicationContext()).a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getAccount(), "RedpacketClearCacheError", false, 1L, 0L, localHashMap, "", false);
           return;
         }
         catch (Exception localException1) {}
@@ -109,7 +109,7 @@ public class IndividualRedPacketManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.IndividualRedPacketManager.2
  * JD-Core Version:    0.7.0.1
  */

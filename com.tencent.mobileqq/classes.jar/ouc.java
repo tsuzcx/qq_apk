@@ -1,46 +1,88 @@
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.util.Log;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ouc
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+public abstract class ouc
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private long jdField_a_of_type_Long;
+  @Nullable
+  private String jdField_a_of_type_JavaLangString;
+  @NotNull
+  private final oub jdField_a_of_type_Oub;
+  @Nullable
+  private ouf jdField_a_of_type_Ouf;
+  private final boolean jdField_a_of_type_Boolean;
+  
+  public ouc(@NotNull oub paramoub, boolean paramBoolean, @Nullable String paramString)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = osq.a(paramString);
-    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
-      bkbq.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
-    }
-    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
-    if (paramString != null) {}
-    try
-    {
-      bkbq.d(Integer.parseInt(paramString));
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+    this.jdField_a_of_type_Oub = paramoub;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  @NotNull
+  public final oub a()
   {
-    super.onWipeConfig(paramInt);
-    bkbq.b(null);
-    bkbq.d(0);
+    return this.jdField_a_of_type_Oub;
+  }
+  
+  @Nullable
+  public final ouf a()
+  {
+    return this.jdField_a_of_type_Ouf;
+  }
+  
+  public void a()
+  {
+    a("onStop");
+  }
+  
+  protected final void a(@NotNull String paramString)
+  {
+    oud localoud = this.jdField_a_of_type_Oub.a();
+    if (localoud != null)
+    {
+      localoud.a("Step(" + this.jdField_a_of_type_JavaLangString + ')', paramString);
+      return;
+    }
+    Log.d("Step(" + this.jdField_a_of_type_JavaLangString + ')', paramString);
+  }
+  
+  public final void a(@Nullable ouf paramouf)
+  {
+    this.jdField_a_of_type_Ouf = paramouf;
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a("onStart");
+    return true;
+  }
+  
+  public abstract boolean b();
+  
+  public void c()
+  {
+    a("onEnd, time = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+  }
+  
+  public final boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Oub.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ouc
  * JD-Core Version:    0.7.0.1
  */

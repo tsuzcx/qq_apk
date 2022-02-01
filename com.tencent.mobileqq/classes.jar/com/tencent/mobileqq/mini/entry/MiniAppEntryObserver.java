@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import alpg;
+import anil;
 
 public class MiniAppEntryObserver
-  implements alpg
+  implements anil
 {
   public void onMiniAppEntryChanged() {}
   
@@ -14,7 +14,7 @@ public class MiniAppEntryObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryObserver
  * JD-Core Version:    0.7.0.1
  */

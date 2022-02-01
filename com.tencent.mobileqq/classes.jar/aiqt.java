@@ -1,22 +1,8 @@
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aiqt
-  implements bhtv
+public abstract interface aiqt
 {
-  public aiqt(NewPhotoListActivity paramNewPhotoListActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      abvl.a().a("list_photo", false);
-      return;
-    }
-    abvl.a().a("list_photo");
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

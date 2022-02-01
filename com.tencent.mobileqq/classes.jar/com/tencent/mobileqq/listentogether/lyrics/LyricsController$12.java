@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import atnu;
-import atnw;
+import avut;
+import avuv;
 import com.tencent.qphone.base.util.QLog;
 
 public class LyricsController$12
   implements Runnable
 {
-  public LyricsController$12(atnw paramatnw) {}
+  public LyricsController$12(avuv paramavuv) {}
   
   public void run()
   {
     this.this$0.a.f = true;
     if (this.this$0.b)
     {
-      if (atnw.a(this.this$0)) {
+      if (avuv.a(this.this$0)) {
         break label77;
       }
       int i = this.this$0.a.e;
@@ -26,12 +26,12 @@ public class LyricsController$12
     }
     return;
     label77:
-    atnw.a(this.this$0);
+    avuv.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.12
  * JD-Core Version:    0.7.0.1
  */

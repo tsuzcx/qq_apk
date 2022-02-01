@@ -1,20 +1,16 @@
-import android.widget.Button;
-import mqq.util.WeakReference;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-class bkro
-  implements arrh
+public abstract interface bkro
 {
-  bkro(bkrk parambkrk) {}
+  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  public void a()
-  {
-    this.a.i();
-  }
+  public abstract void a(View paramView);
   
-  public void b()
-  {
-    ((bkqs)this.a.a.get()).b.setClickable(true);
-  }
+  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  
+  public abstract void b(View paramView);
 }
 
 

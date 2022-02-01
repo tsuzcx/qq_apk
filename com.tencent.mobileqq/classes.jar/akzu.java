@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class akzu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akzu(akzr paramakzr, akzz paramakzz) {}
+  akzu(akyh paramakyh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Akzz != null) {
-      this.jdField_a_of_type_Akzz.a(this.jdField_a_of_type_Akzr.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

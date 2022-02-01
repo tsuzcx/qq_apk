@@ -1,55 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-public class axkj
-  implements URLDrawableDownListener
+public final class axkj
+  implements Parcelable.Creator<MedalItem>
 {
-  public axkj(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public MedalItem a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
-    }
+    return new MedalItem(paramParcel);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public MedalItem[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
-    }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    return new MedalItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkj
  * JD-Core Version:    0.7.0.1
  */

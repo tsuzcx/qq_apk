@@ -1,39 +1,23 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class bhoo
-  implements bhnr
+class bhoo
+  implements ValueCallback<Bundle>
 {
-  public void a()
-  {
-    if (QSecFramework.a()) {
-      return;
-    }
-    try
-    {
-      if (!QSecFramework.b()) {
-        System.loadLibrary("QSec");
-      }
-      QSecFramework.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-    }
-  }
+  bhoo(bhon parambhon) {}
   
-  public void b()
+  public void a(Bundle paramBundle)
   {
+    int i = paramBundle.getInt("input-box-num", 0);
     if (QLog.isColorLevel()) {
-      QLog.d("QSecFramework", 2, "Something wrong when load native so.");
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
     }
-    bhmr.a(1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoo
  * JD-Core Version:    0.7.0.1
  */

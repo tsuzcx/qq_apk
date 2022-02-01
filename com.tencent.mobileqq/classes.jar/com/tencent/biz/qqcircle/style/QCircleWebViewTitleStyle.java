@@ -3,12 +3,12 @@ package com.tencent.biz.qqcircle.style;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.webview.WebViewTitleStyle;
-import uai;
+import vsm;
 
 public class QCircleWebViewTitleStyle
   extends WebViewTitleStyle
 {
-  public static final Parcelable.Creator<QCircleWebViewTitleStyle> CREATOR = new uai();
+  public static final Parcelable.Creator<QCircleWebViewTitleStyle> CREATOR = new vsm();
   public int a;
   
   public QCircleWebViewTitleStyle() {}
@@ -32,7 +32,7 @@ public class QCircleWebViewTitleStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle
  * JD-Core Version:    0.7.0.1
  */

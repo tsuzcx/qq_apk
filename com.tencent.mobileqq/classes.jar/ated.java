@@ -1,28 +1,10 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
-
-class ated
-  implements ActionCallback
+public abstract interface ated
 {
-  ated(ateb paramateb) {}
+  public abstract void a();
   
-  public void onResult(String paramString)
-  {
-    try
-    {
-      i = Integer.parseInt(paramString);
-      if (ateb.a(this.a) != null) {
-        ateb.a(this.a).a(i, "");
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
-  }
+  public abstract void a(atec paramatec);
+  
+  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import amts;
+import aosj;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, amts paramamts) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, aosj paramaosj) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ class ScanEntryProviderContainerView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.4
  * JD-Core Version:    0.7.0.1
  */

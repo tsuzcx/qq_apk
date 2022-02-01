@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class agwi
-  extends baht
+  implements View.OnTouchListener
 {
-  public agwi(TroopChatPie paramTroopChatPie) {}
+  public agwi(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
   
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    baic.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    baic.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
+    return true;
   }
 }
 

@@ -1,65 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
 public class aoxa
-  extends aokh<aowz>
+  implements aykz
 {
-  public static aowz a()
-  {
-    return (aowz)aoks.a().a(334);
-  }
+  public aoxa(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public int a()
+  public void a()
   {
-    return 334;
-  }
-  
-  @NonNull
-  public aowz a(int paramInt)
-  {
-    return new aowz();
-  }
-  
-  @Nullable
-  public aowz a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aowz.a(paramArrayOfaoko);
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
     }
-    return null;
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
   }
   
-  public Class<aowz> a()
+  public void b()
   {
-    return aowz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aowz paramaowz) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxa
  * JD-Core Version:    0.7.0.1
  */

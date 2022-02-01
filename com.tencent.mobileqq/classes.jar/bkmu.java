@@ -1,16 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.database.DataSetObserver;
 
 class bkmu
-  extends AnimatorListenerAdapter
+  extends DataSetObserver
 {
-  bkmu(bkms parambkms) {}
+  bkmu(bkmt parambkmt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onChanged()
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.h();
-    this.a.g();
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.notifyDataSetInvalidated();
   }
 }
 

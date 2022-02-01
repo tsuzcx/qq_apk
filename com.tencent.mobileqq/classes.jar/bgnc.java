@@ -1,105 +1,41 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.cache.MiniCacheFreeManager.1;
-import com.tencent.qqmini.sdk.core.cache.MiniCacheFreeManager.2;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.StorageUtil;
-import java.io.File;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 public class bgnc
+  extends anmu
 {
-  public static void a(Activity paramActivity, String paramString1, MiniAppInfo paramMiniAppInfo, String paramString2)
+  private final bgmp b;
+  
+  public bgnc(bgmp parambgmp1, bgmp parambgmp2)
   {
-    bgor.a(new MiniCacheFreeManager.1(paramActivity, paramString2, paramString1, paramMiniAppInfo));
+    this.b = parambgmp2;
   }
   
-  public static void a(String paramString, MiniAppInfo paramMiniAppInfo)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    a(paramString, paramMiniAppInfo, true);
-  }
-  
-  public static void a(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
-  {
-    a(paramString, paramMiniAppInfo, paramBoolean, null);
-  }
-  
-  public static void a(String paramString, MiniAppInfo paramMiniAppInfo, boolean paramBoolean, bgnz parambgnz)
-  {
-    ThreadManager.a(new MiniCacheFreeManager.2(paramMiniAppInfo, paramString, paramBoolean), 16, parambgnz, true);
-  }
-  
-  private static void d(String paramString, MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {}
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilHashtable == null) || (!this.a.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString))) {}
     do
     {
       return;
-      paramString = bgnf.a(AppLoaderFactory.g().getContext().getCacheDir().getAbsolutePath(), paramString, paramMiniAppInfo.appId);
-    } while (!new File(paramString).exists());
-    bgpc.a(paramString, false);
-    QMLog.i("MiniCacheFreeManager", "clearStorageCache finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void e(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {}
-    String str;
-    do
-    {
-      return;
-      str = bgvi.a(paramMiniAppInfo);
-    } while (!new File(str).exists());
-    bgpc.a(str, false);
-    QMLog.i("MiniCacheFreeManager", "clearPkg finish: " + paramMiniAppInfo.appId);
-  }
-  
-  private static void e(String paramString, MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {}
-    while (!AppLoaderFactory.g().getContext().getSharedPreferences(paramMiniAppInfo.appId + "_" + paramString, 4).edit().clear().commit()) {
-      return;
-    }
-    QMLog.i("MiniCacheFreeManager", "clearAuthSp finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void f(MiniAppInfo paramMiniAppInfo)
-  {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return;
-    }
-    bgnt.a();
-    bgnt.a(paramMiniAppInfo.appId);
-    QMLog.i("MiniCacheFreeManager", "clearFileCache finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void g(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {}
-    while (!StorageUtil.getPreference().edit().putBoolean(paramMiniAppInfo.appId + "_debug", false).commit()) {
-      return;
-    }
-    QMLog.i("MiniCacheFreeManager", "clearDebugSp finish. " + paramMiniAppInfo.appId);
-  }
-  
-  private static void h(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {
-      return;
-    }
-    AppLoaderFactory.g().getAppBrandProxy().stopMiniApp(paramMiniAppInfo);
-    QMLog.i("MiniCacheFreeManager", "kill process. " + paramMiniAppInfo.appId);
+      this.a.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
+      if (this.a.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bgnc);
+      }
+      Object localObject = Uri.parse(bgmp.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent((String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
+      this.a.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    } while (!QLog.isColorLevel());
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + (String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgnc
  * JD-Core Version:    0.7.0.1
  */

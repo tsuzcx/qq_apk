@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Handler;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer;
 import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer.AudioPlayerListener;
+import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -33,7 +34,7 @@ class AudioJsPlugin$InnerAudioManager
   {
     paramString = JSONUtil.append(null, "state", paramString);
     JSONUtil.append(paramString, "audioId", Integer.valueOf(this.audioId));
-    AudioJsPlugin.access$1500(this.this$0, "onAudioStateChange", paramString.toString());
+    AudioJsPlugin.access$1600(this.this$0, "onAudioStateChange", paramString.toString());
   }
   
   private void evaluateErrorCallback(int paramInt1, int paramInt2)
@@ -53,7 +54,7 @@ class AudioJsPlugin$InnerAudioManager
         localJSONObject.put("state", "Error");
         localJSONObject.put("audioId", this.audioId);
         localJSONObject.put("errCode", paramInt2);
-        AudioJsPlugin.access$1500(this.this$0, "onAudioStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$1600(this.this$0, "onAudioStateChange", localJSONObject.toString());
         return;
       }
       catch (Exception localException)
@@ -109,7 +110,7 @@ class AudioJsPlugin$InnerAudioManager
     if ((this.mPlayer != null) && ((this.mPlayer.isPaused()) || (this.mPlayer.isPrepared())))
     {
       MiniAppAudioPlayer localMiniAppAudioPlayer = this.mPlayer;
-      if (!AudioJsPlugin.access$1700()) {}
+      if (!AudioJsPlugin.access$1800()) {}
       for (;;)
       {
         localMiniAppAudioPlayer.setAudioFocus(bool);
@@ -118,10 +119,10 @@ class AudioJsPlugin$InnerAudioManager
         bool = false;
       }
     }
-    playNew(true);
+    playNew(true, null);
   }
   
-  private void playNew(boolean paramBoolean)
+  private void playNew(boolean paramBoolean, MiniAppAudioPlayer.OnPreparedListener paramOnPreparedListener)
   {
     String str;
     int i;
@@ -133,7 +134,7 @@ class AudioJsPlugin$InnerAudioManager
       i = this.audioContext.optInt("startTime");
       bool = this.audioContext.optBoolean("loop");
       d = this.audioContext.optDouble("volume");
-      if (!bdnn.a(str)) {}
+      if (!bgsp.a(str)) {}
     }
     else
     {
@@ -153,7 +154,7 @@ class AudioJsPlugin$InnerAudioManager
     this.mPlayer.setAudioPlayerListener(this);
     this.mPlayer.setAudioContext(BaseApplication.getContext());
     this.mPlayer.setStartTime(this.startTime);
-    this.mPlayer.setDataSource(this.src, new AudioJsPlugin.InnerAudioManager.1(this, paramBoolean, bool, d));
+    this.mPlayer.setDataSource(this.src, new AudioJsPlugin.InnerAudioManager.1(this, paramBoolean, bool, d, paramOnPreparedListener));
     this.lastStartTime = System.currentTimeMillis();
   }
   
@@ -259,7 +260,7 @@ class AudioJsPlugin$InnerAudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.InnerAudioManager
  * JD-Core Version:    0.7.0.1
  */

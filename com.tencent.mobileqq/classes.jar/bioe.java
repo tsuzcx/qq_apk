@@ -1,34 +1,21 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class bioe
+  implements Comparator<Friend>
 {
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
+  public bioe(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
+  
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt2 + "|");
-    localStringBuilder.append(paramInt1 + "|");
-    localStringBuilder.append(paramLong + "|");
-    localStringBuilder.append(Build.BRAND + "|");
-    localStringBuilder.append(Build.MODEL + "|");
-    localStringBuilder.append(Build.VERSION.RELEASE);
-    if ((paramAppRuntime instanceof QQAppInterface)) {}
-    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadSuccessRateReporter", 2, "[preloadSuccessRate]: " + localStringBuilder.toString());
-      }
-      azps.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadSuccessRate", localStringBuilder.toString(), true);
-      return;
-    }
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bioe
  * JD-Core Version:    0.7.0.1
  */

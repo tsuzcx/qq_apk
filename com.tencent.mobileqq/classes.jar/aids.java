@@ -1,8 +1,82 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-public abstract interface aids
+class aids
+  extends anqd
 {
-  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
+  aids(aidp paramaidp) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    this.a.f(196608);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.t = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (paramArrayOfString != null))
+    {
+      paramArrayOfString = paramArrayOfString[0];
+      if (this.a.jdField_a_of_type_Bers.b.contains(paramArrayOfString))
+      {
+        this.a.jdField_a_of_type_Bers.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArrayOfString, 1)));
+        this.a.jdField_a_of_type_Bers.d();
+        this.a.jdField_a_of_type_Bers.e();
+        this.a.jdField_a_of_type_Bers.c();
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
+  }
 }
 
 

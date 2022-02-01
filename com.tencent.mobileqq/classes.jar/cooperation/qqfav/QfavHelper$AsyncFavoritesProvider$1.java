@@ -6,14 +6,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bivh;
+import bljs;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QfavHelper$AsyncFavoritesProvider$1
   implements Runnable
 {
-  public QfavHelper$AsyncFavoritesProvider$1(bivh parambivh) {}
+  public QfavHelper$AsyncFavoritesProvider$1(bljs parambljs) {}
   
   public void run()
   {
@@ -79,7 +79,7 @@ public class QfavHelper$AsyncFavoritesProvider$1
       }
       try
       {
-        localBundle.putString("rsp_fav_id", SecurityUtile.b((String)localObject2));
+        localBundle.putString("rsp_fav_id", SecurityUtile.decode((String)localObject2));
         bool2 = true;
         bool1 = bool2;
         if (localObject1 != null)

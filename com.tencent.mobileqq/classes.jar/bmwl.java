@@ -1,21 +1,15 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bmwl
-  extends SoftReference<V>
+public class bmwl
 {
-  private K jdField_a_of_type_JavaLangObject;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bmwk a;
   
-  public bmwl(K paramK, V paramV, ReferenceQueue<? super V> paramReferenceQueue)
-  {
-    super(paramReferenceQueue, localReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramV;
-  }
-  
-  public K a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
+  public bmwl(bmwe parambmwe) {}
 }
 
 

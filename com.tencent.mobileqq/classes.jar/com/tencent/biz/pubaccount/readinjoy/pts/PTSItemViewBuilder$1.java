@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts;
 
 import com.tencent.pts.core.itemview.PTSItemData;
-import pwx;
-import pwy;
+import qpk;
+import qpl;
 
 public class PTSItemViewBuilder$1
   implements Runnable
 {
   public void run()
   {
-    pwx.a("0X800A9DD", "", "", "", new pwy().a("app_name", this.a.getAppName()).a());
+    qpk.a("0X800A9DD", "", "", "", new qpl().a("page_name", this.a.getPageName()).a());
   }
 }
 

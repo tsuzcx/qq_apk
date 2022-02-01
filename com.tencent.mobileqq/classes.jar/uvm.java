@@ -1,135 +1,57 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class uvm
-  implements uvi
+class uvm
+  implements BusinessObserver
 {
-  public static final String a;
-  public static final String b = uqn.a("StoryGroupSvc.do_like_video");
-  private awgf a;
+  uvm(uvi paramuvi) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.do_like_video");
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
-  
-  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<LikeEntry> a(String paramString, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBoolean) {}
-    for (int i = 4;; i = 3)
-    {
-      List localList = a(this.jdField_a_of_type_Awgf, LikeEntry.class, LikeEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
-      paramString = localList;
-      if (localList == null) {
-        paramString = new ArrayList();
-      }
-      return paramString;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Awgf = QQStoryContext.a().a().createEntityManager();
-  }
-  
-  public void a(@NonNull LikeEntry paramLikeEntry)
-  {
-    awgf localawgf = a().a().createEntityManager();
-    localawgf.a().a();
     try
     {
-      paramLikeEntry.type = 3;
-      paramLikeEntry.setStatus(1000);
-      localawgf.b(paramLikeEntry);
-      LikeEntry localLikeEntry = new LikeEntry();
-      localLikeEntry.copy(paramLikeEntry);
-      localLikeEntry.type = 4;
-      localLikeEntry.setStatus(1000);
-      localawgf.b(localLikeEntry);
-      localawgf.a().c();
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          uvi.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          uvi.a(this.a, 2131694614);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          uvi.a(this.a, 2131694591);
+          return;
+        }
+        uvi.a(this.a, 2131694617);
+        return;
+        uvi.a(this.a, 2131694617);
+      }
       return;
     }
-    finally
-    {
-      localawgf.a().b();
-    }
-  }
-  
-  public void a(@NonNull List<LikeEntry> paramList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i;
-    if (paramBoolean1) {
-      i = 4;
-    }
-    awgf localawgf;
-    Object localObject;
-    for (;;)
-    {
-      localawgf = a().a().createEntityManager();
-      localawgf.a().a();
-      if (!paramBoolean2) {
-        break;
-      }
-      try
-      {
-        localObject = a(paramString, paramBoolean1);
-        if (localObject == null) {
-          break;
-        }
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          LikeEntry localLikeEntry = (LikeEntry)((Iterator)localObject).next();
-          localLikeEntry.setStatus(1001);
-          localawgf.b(localLikeEntry);
-        }
-        i = 3;
-      }
-      finally
-      {
-        localawgf.a().b();
-      }
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localObject = (LikeEntry)paramList.next();
-      ((LikeEntry)localObject).feedId = paramString;
-      ((LikeEntry)localObject).type = i;
-      localawgf.b((awge)localObject);
-    }
-    localawgf.a().c();
-    localawgf.a().b();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Awgf.a();
-  }
-  
-  public void b(@NonNull LikeEntry paramLikeEntry)
-  {
-    paramLikeEntry.setStatus(1001);
-    this.jdField_a_of_type_Awgf.a(paramLikeEntry, "unionId=? and feedId= ? and type in (?,?)", new String[] { paramLikeEntry.unionId, paramLikeEntry.feedId, String.valueOf(4), String.valueOf(3) });
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvm
  * JD-Core Version:    0.7.0.1
  */

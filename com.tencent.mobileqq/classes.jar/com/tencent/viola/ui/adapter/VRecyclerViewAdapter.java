@@ -8,6 +8,7 @@ import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaSDKManager;
@@ -21,6 +22,7 @@ import com.tencent.viola.ui.dom.DomObjectCell;
 import com.tencent.viola.ui.view.list.DefaultRecycleItemAnimator;
 import com.tencent.viola.ui.view.list.VRecyclerView;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -55,7 +57,7 @@ public class VRecyclerViewAdapter
   private void detectFooterOrHeader(List<DomObject> paramList)
   {
     if (paramList == null) {}
-    label75:
+    label46:
     do
     {
       return;
@@ -66,8 +68,8 @@ public class VRecyclerViewAdapter
         while (paramList.hasNext())
         {
           localDomObject = (DomObject)paramList.next();
-          if ((!"refresh".equals(localDomObject.getType())) && (!"header-view".equals(localDomObject.getType())) && (!"kdrefresh".equals(localDomObject.getType()))) {
-            break label75;
+          if (!ViolaUtils.isRefresh(localDomObject)) {
+            break label46;
           }
           this.mHasHeader = true;
         }
@@ -180,6 +182,16 @@ public class VRecyclerViewAdapter
   private boolean ifNeedDoItemAnim()
   {
     return (this.mDiffItemAnimListener != null) && (this.mDiffItemAnimListener.isDiffItemAnimEnable());
+  }
+  
+  private void internalNotifyItemInsert(int paramInt)
+  {
+    if ((this.mRecyclerList != null) && (this.mRecyclerList.disableAutoScroll()))
+    {
+      notifyItemChanged(paramInt);
+      return;
+    }
+    notifyItemInserted(paramInt);
   }
   
   private void onBindCell(VCell paramVCell)
@@ -321,7 +333,7 @@ public class VRecyclerViewAdapter
       ViolaLogUtils.d("VRecyclerViewAdapter", "insert, dataSize: " + this.mDataList.size() + ", index: " + paramInt + ", hasHeader: " + this.mHasHeader);
       return;
       label115:
-      notifyItemInserted(paramInt);
+      internalNotifyItemInsert(paramInt);
       continue;
       label123:
       if (paramInt == -1)
@@ -330,7 +342,7 @@ public class VRecyclerViewAdapter
         if (ifNeedDoItemAnim()) {
           doNotifyItemInsertWithAnim(this.mDataList.size());
         } else {
-          notifyItemInserted(this.mDataList.size());
+          internalNotifyItemInsert(this.mDataList.size());
         }
       }
     }
@@ -372,6 +384,7 @@ public class VRecyclerViewAdapter
     if (localDomObject == null)
     {
       ViolaLogUtils.d("VRecyclerViewAdapter", "onBindViewHolder: dom is null, may be position is invalid!");
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, getItemId(paramInt));
       return;
     }
     if (paramVH.mVCell == null)
@@ -384,14 +397,15 @@ public class VRecyclerViewAdapter
       this.mCurrentVisPos.put(paramInt, paramInt);
       paramVH.position = paramInt;
       fixBg(paramVH.itemView);
-      return;
+      break;
       if (!paramVH.mVCell.getRef().equals(localDomObject.getRef())) {
-        break;
+        break label126;
       }
       if (((DomObjectCell)paramVH.mVCell.getDomObject()).needRefresh) {
         onBindCell(paramVH.mVCell);
       }
     }
+    label126:
     if (this.mCurrentVisPos.get(paramVH.position, -1) != -1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -440,7 +454,7 @@ public class VRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

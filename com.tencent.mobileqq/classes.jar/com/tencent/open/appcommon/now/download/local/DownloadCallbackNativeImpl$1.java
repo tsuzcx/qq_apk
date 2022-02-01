@@ -1,9 +1,9 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import bfjr;
-import bfka;
-import bfkb;
-import bfkg;
+import bira;
+import birj;
+import birk;
+import birp;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,38 +12,38 @@ import java.util.Map;
 public class DownloadCallbackNativeImpl$1
   implements Runnable
 {
-  public DownloadCallbackNativeImpl$1(bfka parambfka, int paramInt) {}
+  public DownloadCallbackNativeImpl$1(birj parambirj, int paramInt) {}
   
   public void run()
   {
     Iterator localIterator;
     if ((this.a == 4) || (this.a == 3) || (this.a == 2)) {
-      localIterator = bfka.a(this.this$0).values().iterator();
+      localIterator = birj.a(this.this$0).values().iterator();
     }
     while (localIterator.hasNext())
     {
-      bfkg localbfkg = (bfkg)localIterator.next();
-      DownloadInfo localDownloadInfo = bfjr.a().a(localbfkg.a);
+      birp localbirp = (birp)localIterator.next();
+      DownloadInfo localDownloadInfo = bira.a().a(localbirp.a);
       if (localDownloadInfo != null) {
         if (localDownloadInfo.a() == 2)
         {
-          if (localbfkg.b) {
-            bfkb.a().a(localbfkg.a);
+          if (localbirp.b) {
+            birk.a().a(localbirp.a);
           }
         }
-        else if ((localDownloadInfo.a() == 3) && (!localbfkg.b) && (!localbfkg.c))
+        else if ((localDownloadInfo.a() == 3) && (!localbirp.b) && (!localbirp.c))
         {
-          bfkb.a().a(null, localbfkg);
+          birk.a().a(null, localbirp);
           continue;
           if (this.a == 1)
           {
-            localIterator = bfka.a(this.this$0).values().iterator();
+            localIterator = birj.a(this.this$0).values().iterator();
             while (localIterator.hasNext())
             {
-              localbfkg = (bfkg)localIterator.next();
-              localDownloadInfo = bfjr.a().a(localbfkg.a);
-              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbfkg.c)) {
-                bfkb.a().a(null, localbfkg);
+              localbirp = (birp)localIterator.next();
+              localDownloadInfo = bira.a().a(localbirp.a);
+              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbirp.c)) {
+                birk.a().a(null, localbirp);
               }
             }
           }
@@ -54,7 +54,7 @@ public class DownloadCallbackNativeImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl.1
  * JD-Core Version:    0.7.0.1
  */

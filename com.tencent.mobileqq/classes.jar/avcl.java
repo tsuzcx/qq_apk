@@ -1,96 +1,20 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
 
 class avcl
-  extends nab
+  implements View.OnHoverListener
 {
-  avcl(avcj paramavcj, avci paramavci, Comments.Comment paramComment) {}
+  avcl(avck paramavck) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    paramBundle = "";
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      for (;;)
-      {
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 2, "err_msg:   " + localRspBody.err_msg.get());
-          }
-          if (!localRspBody.busi_buf.has())
-          {
-            QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-            this.jdField_a_of_type_Avci.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
-            return;
-          }
-          localAddCommentNoFilterResp = new NowNearbyVideoCommentProto.AddCommentNoFilterResp();
-          localAddCommentNoFilterResp.mergeFrom(localRspBody.busi_buf.get().toByteArray());
-          if (!localAddCommentNoFilterResp.wording.has()) {
-            continue;
-          }
-          paramArrayOfByte = localAddCommentNoFilterResp.wording.get().toStringUtf8();
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          NowNearbyVideoCommentProto.AddCommentNoFilterResp localAddCommentNoFilterResp;
-          paramArrayOfByte = paramBundle;
-          continue;
-          paramArrayOfByte = "";
-          continue;
-        }
-        try
-        {
-          QLog.d("CommentsDataSource", 1, "id: " + localAddCommentNoFilterResp.comment_id.get() + ",ret:" + localAddCommentNoFilterResp.result.get() + ", tip=" + paramArrayOfByte);
-          if (localAddCommentNoFilterResp.result.get() == 0L) {
-            continue;
-          }
-          QLog.i("CommentsDataSource", 1, "error code :" + localAddCommentNoFilterResp.result.get());
-          this.jdField_a_of_type_Avci.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)localAddCommentNoFilterResp.result.get(), paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle) {}
-      }
-      QLog.i("CommentsDataSource", 1, "merge publish resp data error");
-      this.jdField_a_of_type_Avci.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, paramArrayOfByte);
-      return;
-      if (localAddCommentNoFilterResp.comment_id.get() > 0L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = localAddCommentNoFilterResp.comment_id.get();
-        this.jdField_a_of_type_Avci.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-        avcj.a(this.jdField_a_of_type_Avcj).add(Long.valueOf(localAddCommentNoFilterResp.comment_id.get()));
-        paramBundle = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramBundle != null) {
-          ((avrb)paramBundle.getManager(263)).e(avcj.a(this.jdField_a_of_type_Avcj).a);
-        }
-      }
-    }
-    else
-    {
-      QLog.i("CommentsDataSource", 1, "publishComment failed");
-      this.jdField_a_of_type_Avci.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
-      return;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avcl
  * JD-Core Version:    0.7.0.1
  */

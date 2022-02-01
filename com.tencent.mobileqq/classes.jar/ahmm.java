@@ -1,9 +1,12 @@
-import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahmm
+class ahmm
+  extends ahmi
 {
-  public LinearLayout a;
-  public LinearLayout b;
+  public ahmm(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
 }
 
 

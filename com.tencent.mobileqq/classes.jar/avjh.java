@@ -1,36 +1,63 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class avjh
-  extends zje
+class avjh
+  implements avjf
 {
-  public avjh(PicBrowserActivity paramPicBrowserActivity) {}
+  avjh(avjg paramavjg) {}
   
-  public zil a(Activity paramActivity, zir paramzir)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    return super.a(paramActivity, paramzir);
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
+    if (avjg.a(this.a) != null) {
+      avjg.a(this.a).deleteTask(paramDownloaderTask, false);
+    }
+    if ((avjg.a(this.a) != null) && (avjg.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avjg.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avje)avjg.a(this.a).get(paramDownloaderTask.getUrl())).a();
+    }
+    avjg.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public zin a(Activity paramActivity, zir paramzir)
+  public void b(DownloaderTask paramDownloaderTask)
   {
-    return new avjj((PicBrowserActivity)paramActivity, paramzir);
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public zir a(Activity paramActivity)
+  public void c(DownloaderTask paramDownloaderTask)
   {
-    paramActivity = new avjp(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
+    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
+    if (avjg.a(this.a) != null) {
+      avjg.a(this.a).deleteTask(paramDownloaderTask, false);
+    }
+    if ((avjg.a(this.a) != null) && (avjg.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avjg.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avje)avjg.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
+    }
+    avjg.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public zis a(Activity paramActivity, zir paramzir)
+  public void d(DownloaderTask paramDownloaderTask)
   {
-    return null;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
+  }
+  
+  public void e(DownloaderTask paramDownloaderTask)
+  {
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
+  }
+  
+  public void f(DownloaderTask paramDownloaderTask)
+  {
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
+    if ((avjg.a(this.a) != null) && (avjg.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avjg.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avje)avjg.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjh
  * JD-Core Version:    0.7.0.1
  */

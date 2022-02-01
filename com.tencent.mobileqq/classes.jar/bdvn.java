@@ -1,89 +1,30 @@
-import android.text.TextUtils;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class bdvn
+class bdvn
+  implements bdvw
 {
-  private static bdvn jdField_a_of_type_Bdvn;
-  private final String jdField_a_of_type_JavaLangString = "VipLongMsgShareDomainHelper";
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private List<String> b = new CopyOnWriteArrayList();
+  bdvn(bdvl parambdvl, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public bdvn()
-  {
-    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
-  }
+  public void onResp(bdwt parambdwt) {}
   
-  public static bdvn a()
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
   {
-    if (jdField_a_of_type_Bdvn == null) {}
+    int i;
+    if ((paramLong1 > 0L) && (paramLong2 > 0L)) {
+      i = (int)((float)paramLong1 / (float)paramLong2 * 9500.0F);
+    }
     try
     {
-      if (jdField_a_of_type_Bdvn == null) {
-        jdField_a_of_type_Bdvn = new bdvn();
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null) {
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(i);
       }
-      return jdField_a_of_type_Bdvn;
+      return;
     }
-    finally {}
-  }
-  
-  public void a(JSONArray paramJSONArray)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
-    }
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
+    catch (Throwable parambdws)
     {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramJSONArray.length()) {
-          return;
-        }
-        try
-        {
-          Object localObject = paramJSONArray.getJSONObject(i);
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("domain", "");
-            this.b.add(localObject);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
-          }
-        }
-        i += 1;
-      }
+      QLog.e("HttpDownloader", 1, "onUpdateProgeress error.", parambdws);
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Object localObject2 = this.b;
-    Object localObject1 = localObject2;
-    if (((List)localObject2).isEmpty()) {
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
-    }
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (paramString.endsWith((String)localObject2))) {
-        return true;
-      }
-    }
-    return false;
   }
 }
 

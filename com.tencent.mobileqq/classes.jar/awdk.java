@@ -1,36 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
 import com.tencent.qphone.base.util.QLog;
 
-class awdk
-  implements DialogInterface.OnClickListener
+public class awdk
+  implements awdh
 {
-  awdk(awcx paramawcx) {}
+  awdk(awdj paramawdj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(awde paramawde)
   {
-    try
-    {
-      if ((awcx.a(this.a) != null) && (awcx.a(this.a).isShowing()))
-      {
-        awcx.a(this.a).dismiss();
-        awcx.a(this.a, null);
-      }
-      label42:
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, "switch status cancel");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label42;
+    awdj.a(this.a, paramawde);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    }
+    if (awdj.a(this.a) != null) {
+      awdj.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdk
  * JD-Core Version:    0.7.0.1
  */

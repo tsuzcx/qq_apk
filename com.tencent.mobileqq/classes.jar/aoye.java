@@ -1,41 +1,61 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class aoye
+public abstract class aoye
+  extends Binder
+  implements aoyd
 {
-  public String a = alud.a(2131715216);
-  public String b = alud.a(2131715223);
-  public String c = alud.a(2131715219);
-  public String d = alud.a(2131715221);
-  public String e = alud.a(2131715214);
-  
-  public static aoye a(aoko[] paramArrayOfaoko)
+  public aoye()
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+  }
+  
+  public static aoyd a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
       return null;
     }
-    aoye localaoye = new aoye();
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a).optJSONObject("MyFileNameConfig");
-      localaoye.a = paramArrayOfaoko.optString("tdfileTabName");
-      localaoye.b = paramArrayOfaoko.optString("wyfileTabName");
-      localaoye.c = paramArrayOfaoko.optString("tdlistTabviewName");
-      localaoye.d = paramArrayOfaoko.optString("createTXDocTitle");
-      localaoye.e = paramArrayOfaoko.optString("safeShareToastWording");
-      return localaoye;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof aoyd))) {
+      return (aoyd)localIInterface;
     }
-    catch (JSONException paramArrayOfaoko)
+    return new aoyf(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfaoko.getLocalizedMessage(), paramArrayOfaoko);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
     }
-    return localaoye;
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoye
  * JD-Core Version:    0.7.0.1
  */

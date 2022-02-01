@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.matchchat;
 
-import abti;
-import ajim;
-import ajit;
-import ajlm;
-import alof;
-import altm;
+import acwh;
+import alav;
+import albc;
+import aled;
 import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -24,21 +23,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import apig;
-import aqbe;
-import aqbl;
-import atlt;
-import auaq;
-import auar;
-import auas;
-import auat;
-import auau;
-import azqs;
-import bdbk;
-import bdgc;
-import bdgf;
-import bhtv;
-import bibb;
+import anhk;
+import anmu;
+import aoch;
+import arlb;
+import asfs;
+import asfu;
+import asgf;
+import aslj;
+import avsr;
+import awhz;
+import awia;
+import awib;
+import awic;
+import awid;
+import awie;
+import bcst;
+import bglf;
+import bgli;
+import bkhe;
+import bkom;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
@@ -55,6 +59,7 @@ import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
@@ -73,19 +78,21 @@ import mqq.os.MqqHandler;
 
 public class MatchChatMsgListFragment
   extends IphoneTitleBarFragment
-  implements ajim, ajlm, Handler.Callback, View.OnClickListener, apig, bhtv, bibb, Observer
+  implements alav, aled, Handler.Callback, View.OnClickListener, arlb, bkhe, bkom, Observer
 {
   int jdField_a_of_type_Int = -1;
   public long a;
-  public ajit a;
-  final altm jdField_a_of_type_Altm = new auas(this);
-  final Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new auat(this);
+  public albc a;
+  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new awhz(this);
+  final Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new awid(this);
   public View a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aqbl jdField_a_of_type_Aqbl = new auaq(this);
+  final anmu jdField_a_of_type_Anmu = new awic(this);
+  private asfu jdField_a_of_type_Asfu;
+  private asgf jdField_a_of_type_Asgf = new awia(this);
   TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   public DragFrameLayout a;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  public BaseActivity a;
   public QQAppInterface a;
   FPSSwipListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -104,6 +111,7 @@ public class MatchChatMsgListFragment
   private List<Long> jdField_c_of_type_JavaUtilList = new ArrayList();
   public boolean c;
   boolean d = true;
+  private boolean e;
   
   public MatchChatMsgListFragment()
   {
@@ -133,7 +141,7 @@ public class MatchChatMsgListFragment
   
   public static void a(Context paramContext, int paramInt)
   {
-    paramContext.startActivity(auau.a(paramContext));
+    paramContext.startActivity(awie.a(paramContext));
   }
   
   private void a(Bundle paramBundle)
@@ -158,21 +166,21 @@ public class MatchChatMsgListFragment
       return;
     }
     Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560949, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561158, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     if ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams() == null)
     {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, localResources.getDimensionPixelSize(2131298635));
-      localLayoutParams.bottomMargin = localResources.getDimensionPixelSize(2131298111);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, localResources.getDimensionPixelSize(2131298717));
+      localLayoutParams.bottomMargin = localResources.getDimensionPixelSize(2131298193);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560952, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561161, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
       if ((LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams() != null) {
         break;
       }
-      paramLayoutInflater = new LinearLayout.LayoutParams(-1, localResources.getDimensionPixelSize(2131298112));
+      paramLayoutInflater = new LinearLayout.LayoutParams(-1, localResources.getDimensionPixelSize(2131298194));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView, paramLayoutInflater);
       return;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidViewView);
@@ -185,10 +193,10 @@ public class MatchChatMsgListFragment
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ChatActivity.class);
     localIntent.putExtra("uin", paramString);
     localIntent.putExtra("uintype", paramInt1);
-    String str2 = bdgc.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+    String str2 = bglf.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, false);
+      str1 = bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, false);
     }
     localIntent.putExtra("uinname", str1);
     localIntent.putExtra("entrance", paramInt2);
@@ -216,19 +224,25 @@ public class MatchChatMsgListFragment
     int i = paramList.size() - 1;
     if (i >= 0)
     {
-      if (localHashSet.contains(abti.a((MessageRecord)paramList.get(i)))) {
+      if (localHashSet.contains(acwh.a((MessageRecord)paramList.get(i)))) {
         localArrayList.add(paramList.get(i));
       }
       for (;;)
       {
         i -= 1;
         break;
-        localHashSet.add(abti.a((MessageRecord)paramList.get(i)));
+        localHashSet.add(acwh.a((MessageRecord)paramList.get(i)));
       }
     }
     paramList.removeAll(localArrayList);
     Collections.reverse(paramList);
     return paramList;
+  }
+  
+  private void c()
+  {
+    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698056));
+    setRightButton(2131698060, new awib(this));
   }
   
   private void c(View paramView)
@@ -237,10 +251,10 @@ public class MatchChatMsgListFragment
     do
     {
       return;
-      ImageView localImageView = (ImageView)paramView.findViewById(2131367819);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131368138);
       Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      Drawable localDrawable = bdbk.a(1, 3);
-      localObject = bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject, 3, localDrawable, localDrawable, null);
+      Drawable localDrawable = aoch.a(1, 3);
+      localObject = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject, 3, localDrawable, localDrawable, null);
       if (localImageView != null) {
         localImageView.setImageDrawable((Drawable)localObject);
       }
@@ -267,17 +281,11 @@ public class MatchChatMsgListFragment
     }
     if (!localArrayList.isEmpty())
     {
-      paramList = (aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+      paramList = (asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
       if (paramList != null) {
         paramList.a(localArrayList);
       }
     }
-  }
-  
-  private void d()
-  {
-    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131699470));
-    setRightButton(2131699474, new auar(this));
   }
   
   protected List<RecentBaseData> a(List<MessageRecord> paramList)
@@ -289,36 +297,38 @@ public class MatchChatMsgListFragment
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      Object localObject = (MessageRecord)paramList.next();
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
       boolean bool1;
-      if (localObject != null) {
+      if (localMessageRecord != null) {
         bool1 = false;
       }
       try
       {
-        long l = Long.valueOf(((MessageRecord)localObject).senderuin).longValue();
+        long l = Long.valueOf(localMessageRecord.senderuin).longValue();
         boolean bool2 = this.jdField_c_of_type_JavaUtilList.contains(Long.valueOf(l));
         bool1 = bool2;
       }
       catch (Exception localException)
       {
         label89:
+        RecentMatchChatListItem localRecentMatchChatListItem;
         break label89;
       }
-      localObject = new RecentMatchChatListItem((MessageRecord)localObject);
-      ((RecentMatchChatListItem)localObject).mExtendFriendOnline = bool1;
-      ((RecentMatchChatListItem)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localArrayList.add(localObject);
+      localRecentMatchChatListItem = new RecentMatchChatListItem(localMessageRecord);
+      localRecentMatchChatListItem.mExtendFriendOnline = bool1;
+      localRecentMatchChatListItem.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      localArrayList.add(localRecentMatchChatListItem);
+      this.jdField_a_of_type_Asfu.a(localMessageRecord.frienduin, true);
     }
     return localArrayList;
   }
   
-  protected void a()
+  public void a()
   {
-    if (auau.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "matchchat_redpoint_show"))
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      auau.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "matchchat_redpoint_show", false);
-      ((aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).c();
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
     }
   }
   
@@ -331,8 +341,8 @@ public class MatchChatMsgListFragment
   
   public void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramRecentBaseData.a())) {
-      a(paramRecentBaseData.a(), paramRecentBaseData.a(), 21);
+    if (!TextUtils.isEmpty(paramRecentBaseData.getRecentUserUin())) {
+      a(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType(), 21);
     }
   }
   
@@ -341,9 +351,9 @@ public class MatchChatMsgListFragment
   public void a(RecentBaseData paramRecentBaseData, String paramString)
   {
     if ((paramRecentBaseData instanceof RecentMatchChatListItem)) {
-      auau.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentMatchChatListItem)paramRecentBaseData, true);
+      awie.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentMatchChatListItem)paramRecentBaseData, true);
     }
-    b();
+    a();
   }
   
   public void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2) {}
@@ -366,22 +376,6 @@ public class MatchChatMsgListFragment
     }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(paramBoolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1)
-    {
-      b();
-      ((aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b();
-    }
-  }
-  
   public boolean a()
   {
     return (this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int != 1);
@@ -397,7 +391,7 @@ public class MatchChatMsgListFragment
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
         if (localRecentBaseData != null)
         {
-          boolean bool = TextUtils.equals(localRecentBaseData.a(), paramString);
+          boolean bool = TextUtils.equals(localRecentBaseData.getRecentUserUin(), paramString);
           if (bool) {
             return true;
           }
@@ -411,14 +405,7 @@ public class MatchChatMsgListFragment
     return false;
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
-    }
-  }
+  public void b() {}
   
   public void b(View paramView)
   {
@@ -432,44 +419,49 @@ public class MatchChatMsgListFragment
     this.jdField_a_of_type_JavaUtilList = b(paramList);
   }
   
-  public void c() {}
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(paramBoolean);
+    }
+  }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.d = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)this.mContentView.findViewById(2131369559));
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)this.mContentView.findViewById(2131369954));
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setBackgroundResource(2130838593);
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setBackgroundResource(2130838759);
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0);
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558855, null);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558927, null);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setRightIconMenuListener(this);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOnScrollListener(this);
-      this.jdField_a_of_type_Ajit = new ajit(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 13);
-      this.jdField_a_of_type_Ajit.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_Ajit);
-      this.jdField_a_of_type_Ajit.a(20);
-      this.jdField_a_of_type_MqqOsMqqHandler = new bdgf(ThreadManager.getSubThreadLooper(), this);
-      this.jdField_b_of_type_MqqOsMqqHandler = new bdgf(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+      this.jdField_a_of_type_Albc = new albc(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 13);
+      this.jdField_a_of_type_Albc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_Albc);
+      this.jdField_a_of_type_Albc.a(20);
+      this.jdField_a_of_type_MqqOsMqqHandler = new bgli(ThreadManager.getSubThreadLooper(), this);
+      this.jdField_b_of_type_MqqOsMqqHandler = new bgli(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
       this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
       this.jdField_b_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Altm, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anmu, true);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
       if (QLog.isColorLevel()) {
         this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
-      d();
+      c();
       a(paramLayoutInflater);
       c(this.jdField_b_of_type_AndroidViewView);
-      paramLayoutInflater = (aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+      paramLayoutInflater = (asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
       if (paramLayoutInflater != null) {
         paramLayoutInflater.a(false);
       }
@@ -486,7 +478,7 @@ public class MatchChatMsgListFragment
   
   public int getContentLayoutId()
   {
-    return 2131560950;
+    return 2131561159;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -614,16 +606,28 @@ public class MatchChatMsgListFragment
     return super.onBackEvent();
   }
   
+  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1)
+    {
+      a();
+      ((asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b();
+    }
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    ProfileActivity.b(getActivity(), paramView, 1031);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A697", "0X800A697", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      ProfileActivity.b(getActivity(), localAllInOne, 1031);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A697", "0X800A697", 0, 0, "", "", "", "");
+    }
   }
   
   public void onCreate(Bundle paramBundle)
@@ -631,17 +635,18 @@ public class MatchChatMsgListFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aqbl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asgf);
+    this.jdField_a_of_type_Asfu = ((asfu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264));
     paramBundle = getArguments();
     if (paramBundle != null)
     {
       this.jdField_a_of_type_Int = paramBundle.getInt("uintype", -1);
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("uin", "");
     }
-    if (!abti.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
+    if (!acwh.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
     {
       this.jdField_a_of_type_Int = 1044;
-      this.jdField_a_of_type_JavaLangString = alof.aU;
+      this.jdField_a_of_type_JavaLangString = anhk.aT;
     }
     a(paramBundle);
     if (QLog.isDevelopLevel()) {
@@ -656,14 +661,14 @@ public class MatchChatMsgListFragment
     this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Altm);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aqbl);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asgf);
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
       }
     }
-    if (this.jdField_a_of_type_Ajit != null) {
-      this.jdField_a_of_type_Ajit.b();
+    if (this.jdField_a_of_type_Albc != null) {
+      this.jdField_a_of_type_Albc.b();
     }
   }
   
@@ -678,7 +683,6 @@ public class MatchChatMsgListFragment
   public void onResume()
   {
     super.onResume();
-    b();
     a();
     this.jdField_b_of_type_Int = 0;
   }
@@ -694,7 +698,7 @@ public class MatchChatMsgListFragment
     for (int i = 1;; i = 0)
     {
       if ((paramInt == 0) || (paramInt == 1)) {
-        this.jdField_a_of_type_Ajit.a(false);
+        this.jdField_a_of_type_Albc.a(false);
       }
       for (;;)
       {
@@ -709,7 +713,7 @@ public class MatchChatMsgListFragment
         }
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
         return;
-        this.jdField_a_of_type_Ajit.a(true);
+        this.jdField_a_of_type_Albc.a(true);
       }
     }
   }
@@ -721,25 +725,34 @@ public class MatchChatMsgListFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptScrollRLFlag(false);
     }
+    if (!this.e) {
+      this.e = aslj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+    }
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    ((asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b();
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      if (atlt.a((MessageRecord)paramObject)) {}
+      if (avsr.a((MessageRecord)paramObject)) {}
     }
     while (!(paramObject instanceof RecentUser))
     {
       return;
-      b();
+      a();
       return;
     }
-    b();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgListFragment
  * JD-Core Version:    0.7.0.1
  */

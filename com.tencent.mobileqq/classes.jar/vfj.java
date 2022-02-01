@@ -1,62 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class vfj
-  extends urt<vhg>
+public abstract class vfj
 {
-  public static final String a;
-  public List<String> a;
+  private int jdField_a_of_type_Int;
+  protected String a;
+  private Matcher jdField_a_of_type_JavaUtilRegexMatcher;
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString;
   
-  static
+  protected vfj(Pattern paramPattern)
   {
-    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.feed_feature_775");
+    this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
   }
   
-  public String a()
+  private void a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uro a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
-    try
+    if (this.jdField_a_of_type_Boolean)
     {
-      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
-      return new vhg(localRspGetBatchFeedFeature);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilRegexMatcher.find();
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.start();
       }
     }
   }
   
-  protected byte[] a()
+  public int a()
   {
-    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public abstract ArrayList<TextCell> a(int paramInt, boolean paramBoolean, vhc paramvhc, CharSequence paramCharSequence, ArrayList<TextCell> paramArrayList);
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilRegexMatcher = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+    a();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaUtilRegexMatcher == null)) {}
+    while ((this.jdField_b_of_type_Int > paramInt) || (!this.jdField_a_of_type_Boolean)) {
+      return false;
     }
-    return localReqGetBatchFeedFeature.toByteArray();
+    if (this.jdField_b_of_type_Int == paramInt)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaUtilRegexMatcher.group();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.end();
+      a();
+      return true;
+    }
+    a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfj
  * JD-Core Version:    0.7.0.1
  */

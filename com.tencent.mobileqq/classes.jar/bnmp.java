@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnmp
-  implements ValueAnimator.AnimatorUpdateListener
+class bnmp
+  implements DialogInterface.OnClickListener
 {
-  public bnmp(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  bnmp(bnmn parambnmn, bnpf parambnpf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    bnmn.a(this.jdField_a_of_type_Bnmn, this.jdField_a_of_type_Bnpf);
   }
 }
 

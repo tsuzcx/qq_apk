@@ -1,96 +1,33 @@
-import com.tencent.mobileqq.magicface.DecoderUtil;
-import com.tencent.mobileqq.magicface.model.MagicFaceSuperBigDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atyh
-  extends atyn
+  implements View.OnClickListener
 {
-  private Runnable a;
+  public atyh(SendBottomBar paramSendBottomBar) {}
   
-  public atyh()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new MagicFaceSuperBigDecoder.1(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] begins");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    int i = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder();
-    int j = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder();
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] ends, videoRet:" + i + ",alphaRet:" + j);
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder begins");
-    }
-    this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Atyj.b;
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    do
+    if (SendBottomBar.a(this.a).isChecked())
     {
-      do
-      {
-        return;
-        this.d = this.jdField_a_of_type_Atyj.jdField_a_of_type_ArrayOfByte;
-      } while (this.d == null);
-      b();
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    } while (!QLog.isColorLevel());
-    QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder ends");
-  }
-  
-  protected void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig begins");
+      SendBottomBar.b(this.a, true);
+      atvm.a("0X800942B");
     }
-    try
+    for (;;)
     {
-      this.c = new byte[817920];
-      this.f = new byte[817920];
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig ends");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func release begins.");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
-      label37:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
-      super.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func release ends.");
-      }
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      break label37;
+      SendBottomBar.c(this.a, false);
+      SendBottomBar.b(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyh
  * JD-Core Version:    0.7.0.1
  */

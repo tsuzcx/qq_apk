@@ -1,77 +1,113 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CardEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract class wos<T extends wot>
-  extends vcf
+public class wos
+  implements wou
 {
-  private Stream<T> a;
-  public uxs a;
-  public wou a;
-  protected wow<T> a;
+  private String a;
   
-  public wos(@NonNull wow<T> paramwow)
+  public wos()
   {
-    this.jdField_a_of_type_Wou = new wou();
-    this.jdField_a_of_type_Wow = paramwow;
-    xqq.a(this.jdField_a_of_type_Wow);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
   }
   
-  private void d()
+  private QQStoryContext a()
   {
-    a();
-    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
+    return QQStoryContext.a();
   }
   
-  public abstract JobSegment<wov, T> a();
-  
-  public abstract JobSegment<Integer, wov> a(wou paramwou);
-  
-  protected abstract T a();
-  
-  protected abstract T a(ErrorMessage paramErrorMessage);
-  
-  public wou a()
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Wou;
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  private void a(CardItem paramCardItem)
   {
-    super.a(paramTencentLocation, paramInt);
-    this.jdField_a_of_type_Wou.a();
-    d();
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      CardEntry localCardEntry1 = paramCardItem.toCardEntry();
+      paramCardItem = a(localEntityManager, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
+      if (paramCardItem == null) {
+        return;
+      }
+      paramCardItem = paramCardItem.iterator();
+      while (paramCardItem.hasNext())
+      {
+        CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
+        localCardEntry2.PBData = localCardEntry1.PBData;
+        localEntityManager.update(localCardEntry2);
+        yqp.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
+      }
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    localEntityManager.getTransaction().end();
   }
   
-  protected abstract void a(List<String> paramList, boolean paramBoolean);
-  
-  public void a(wou paramwou)
+  public DiscoverBannerVideoEntry a(String paramString)
   {
-    this.jdField_a_of_type_Wou = paramwou;
-    wxe.a("Q.qqstory.home.position", "restore last time cache:%s", paramwou);
+    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
+    if ((paramString != null) && (paramString.size() > 0)) {
+      return (DiscoverBannerVideoEntry)paramString.get(0);
+    }
+    return null;
   }
   
-  public T b()
+  public void a() {}
+  
+  public void a(String paramString, xap paramxap)
   {
-    return a();
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      if (paramxap.jdField_b_of_type_JavaUtilList.size() == paramxap.jdField_a_of_type_JavaUtilList.size())
+      {
+        DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
+        localDiscoverBannerVideoEntry.bannerId = paramString;
+        localDiscoverBannerVideoEntry.totalCount = paramxap.jdField_b_of_type_Int;
+        paramString = new ArrayList(paramxap.jdField_b_of_type_JavaUtilList.size());
+        int i = 0;
+        while (i < paramxap.jdField_b_of_type_JavaUtilList.size())
+        {
+          DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
+          localBannerInfo.b = ((String)paramxap.jdField_b_of_type_JavaUtilList.get(i));
+          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramxap.jdField_a_of_type_JavaUtilList.get(i));
+          paramString.add(localBannerInfo);
+          i += 1;
+        }
+        localDiscoverBannerVideoEntry.bannerInfoList = paramString;
+        localDiscoverBannerVideoEntry.nextCookie = paramxap.jdField_a_of_type_JavaLangString;
+        localEntityManager.persistOrReplace(localDiscoverBannerVideoEntry);
+      }
+      localEntityManager.getTransaction().commit();
+      return;
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
   }
   
-  public void c()
-  {
-    super.c();
-    d();
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wos
  * JD-Core Version:    0.7.0.1
  */

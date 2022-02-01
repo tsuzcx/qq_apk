@@ -1,17 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class afoa
-  extends ClickableSpan
+public class afoa
+  extends bfrc
 {
-  afoa(afnq paramafnq) {}
+  public afoa(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    paramTextPaint.setColor(-12541697);
+    if ((paramBoolean) && (paramAccountDetail != null))
+    {
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
+    }
   }
 }
 

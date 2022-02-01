@@ -1,35 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adcy
-  extends Handler
+class adcy
+  implements DialogInterface.OnClickListener
 {
-  public adcy(GeneralSettingActivity paramGeneralSettingActivity) {}
+  adcy(adcw paramadcw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
-        this.a.jdField_a_of_type_Bety.d(2130849126);
-        this.a.jdField_a_of_type_Bety.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
-    this.a.jdField_a_of_type_Bety.cancel();
-    this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
-    this.a.jdField_a_of_type_Bety.c(true);
-    this.a.jdField_a_of_type_Bety.a(false);
-    this.a.jdField_a_of_type_Bety.b(true);
+    adcw.b(this.a);
   }
 }
 

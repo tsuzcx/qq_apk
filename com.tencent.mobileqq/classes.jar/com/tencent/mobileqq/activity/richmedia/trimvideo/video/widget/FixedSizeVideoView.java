@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ajvr;
-import ajvs;
-import ajvt;
+import aloh;
+import aloi;
+import aloj;
 import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
@@ -17,7 +17,7 @@ public class FixedSizeVideoView
   implements Handler.Callback
 {
   private int jdField_a_of_type_Int = -1;
-  public ajvt a;
+  public aloj a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private int b;
   private int c;
@@ -25,13 +25,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new ajvr(this));
+    super.setOnCompletionListener(new aloh(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new ajvs(this));
+    super.setOnCompletionListener(new aloi(this));
   }
   
   public int a()
@@ -47,8 +47,8 @@ public class FixedSizeVideoView
     for (;;)
     {
       return true;
-      if (this.jdField_a_of_type_Ajvt != null) {
-        this.jdField_a_of_type_Ajvt.a(this, this.c, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Aloj != null) {
+        this.jdField_a_of_type_Aloj.a(this, this.c, this.jdField_a_of_type_Int);
       }
     }
   }
@@ -64,10 +64,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(ajvt paramajvt)
+  public void setOnFixVDPlayCompelteListener(aloj paramaloj)
   {
-    if (paramajvt != null) {
-      this.jdField_a_of_type_Ajvt = paramajvt;
+    if (paramaloj != null) {
+      this.jdField_a_of_type_Aloj = paramaloj;
     }
   }
   
@@ -111,7 +111,7 @@ public class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

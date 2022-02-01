@@ -1,10 +1,8 @@
-import android.view.MotionEvent;
+import com.tencent.mobileqq.startup.step.RecordTracer;
 
-public abstract interface bcqw
+public final class bcqw
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public static final RecordTracer a = new RecordTracer();
 }
 
 

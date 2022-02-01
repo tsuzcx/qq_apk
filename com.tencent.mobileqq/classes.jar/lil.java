@@ -1,166 +1,113 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
+import android.graphics.PointF;
 
 public class lil
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
+  volatile boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
   
-  public lil(AppInterface paramAppInterface)
+  public PointF a(PointF paramPointF)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    if ((!a()) || (paramPointF == null)) {
+      return null;
+    }
+    float f1 = paramPointF.x * this.d;
+    float f2 = paramPointF.y * this.c;
+    float f4 = this.jdField_a_of_type_Int;
+    float f3 = this.jdField_b_of_type_Int;
+    f4 = (f4 + f1) / this.f;
+    f3 = (f3 + f2) / this.e;
+    lij.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
+    return new PointF(f4, f3);
   }
   
-  public AppInterface a()
+  public String a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, aohc paramaohc, Class<? extends MSFServlet> paramClass)
+  public void a(int paramInt)
   {
-    if (paramToServiceMsg.getWupBuffer() != null)
-    {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      bdqa.a(arrayOfByte, 0, 4L + l);
-      bdqa.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
-      }
-      paramToServiceMsg.actionListener = paramaohc;
-      paramaohc = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramaohc.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramaohc);
-      l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("sendtimekey", l);
-    }
+    this.g = paramInt;
   }
   
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
-    {
-      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
-      if (paramFromServiceMsg == null)
-      {
-        paramToServiceMsg = "null";
-        lek.d("MsfServletProxy", paramToServiceMsg);
-      }
-    }
-    AppInterface localAppInterface;
-    float f;
-    label149:
-    boolean bool;
-    do
-    {
-      return;
-      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-      break;
-      localAppInterface = a();
-      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-      if (!paramBoolean) {
-        break label335;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
-      }
-      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-    } while ((!paramBoolean) || (!bool));
-    Object localObject = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
     int i;
-    if (paramFromServiceMsg.getWupBuffer() != null)
+    int j;
+    if (this.jdField_b_of_type_JavaLangString != null)
     {
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      paramException = new byte[i];
-      bdqa.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      paramFromServiceMsg.putWupBuffer(paramException);
+      i = 1;
+      if ((this.e <= 0) || (this.f <= 0)) {
+        break label60;
+      }
+      j = 1;
+      label25:
+      if ((this.c <= 0) || (this.d <= 0)) {
+        break label65;
+      }
     }
-    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    label60:
+    label65:
+    for (int k = 1;; k = 0)
     {
-      for (;;)
-      {
-        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-        {
-          int j = arrayOfInt.length;
-          i = 0;
-          label290:
-          if (i >= j) {
-            break;
-          }
-          localObject = (alpd)localAppInterface.getBusinessHandler(arrayOfInt[i]);
-          if (localObject != null) {}
-          try
-          {
-            ((alpd)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-            i += 1;
-            break label290;
-            label335:
-            if (paramException != null)
-            {
-              localObject = new ByteArrayOutputStream();
-              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-              if (!QLog.isColorLevel()) {
-                break label149;
-              }
-              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-              break label149;
-            }
-            if (!QLog.isColorLevel()) {
-              break label149;
-            }
-            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              if (QLog.isColorLevel()) {
-                QLog.w("MsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
-              }
-            }
-          }
-        }
+      if ((i == 0) || (j == 0) || (k == 0)) {
+        break label70;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject);
-      return;
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label25;
     }
+    label70:
+    return false;
   }
   
-  public boolean a(String paramString, int[] paramArrayOfInt)
+  public String b()
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
-      return true;
-    }
-    return false;
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lil
  * JD-Core Version:    0.7.0.1
  */

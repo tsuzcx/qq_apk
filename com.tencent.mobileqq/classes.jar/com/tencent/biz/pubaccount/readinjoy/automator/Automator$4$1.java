@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ohk;
-import ohl;
+import oub;
+import ouc;
 
 class Automator$4$1
   implements Runnable
@@ -11,7 +11,7 @@ class Automator$4$1
   public void run()
   {
     this.a.a.c();
-    ohk.a(this.a.this$0);
+    oub.a(this.a.this$0);
   }
 }
 

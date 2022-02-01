@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-public final class tiy
-  implements Parcelable.Creator<WSPushOpDialogModel>
+public class tiy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public WSPushOpDialogModel a(Parcel paramParcel)
-  {
-    return new WSPushOpDialogModel(paramParcel);
-  }
+  public tiy(TabLayoutCompat paramTabLayoutCompat) {}
   
-  public WSPushOpDialogModel[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new WSPushOpDialogModel[paramInt];
+    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tiy
  * JD-Core Version:    0.7.0.1
  */

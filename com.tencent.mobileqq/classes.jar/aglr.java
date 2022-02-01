@@ -1,28 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.widget.RoundRectImageView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 class aglr
-  implements Animation.AnimationListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aglr(aglq paramaglq) {}
+  aglr(aglj paramaglj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGlobalLayout()
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    if ((aglj.a(this.a).a.getLineCount() > 3) && (aglj.a(this.a).h()) && (aglj.a(this.a).C()) && (!bcnj.b()))
+    {
+      this.a.a.setVisibility(0);
+      return;
+    }
+    this.a.a.setVisibility(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

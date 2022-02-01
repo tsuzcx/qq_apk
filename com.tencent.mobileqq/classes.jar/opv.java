@@ -1,47 +1,53 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class opv
+final class opv
+  implements bkhe
 {
-  private static boolean a;
+  opv(ReadInJoyCommentListView paramReadInJoyCommentListView, syi paramsyi) {}
   
-  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (BaseApplicationImpl.sApplication == null) {
-      return null;
+    if (this.jdField_a_of_type_Syi != null) {
+      this.jdField_a_of_type_Syi.a(paramAbsListView);
     }
-    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562705, null);
-    ((DragTextView)localView.findViewById(2131379281)).setDragViewType(2);
-    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131377377)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
-    ((TextView)localView.findViewById(2131379024)).setText(paramInt5);
-    return localView;
   }
   
-  public static void a(boolean paramBoolean)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    try
+    if ((opu.a() == null) || (opu.a().size() == 0)) {}
+    for (;;)
     {
-      a = paramBoolean;
       return;
+      paramInt = opu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView);
+      int i = paramAbsListView.getFirstVisiblePosition();
+      int j = paramAbsListView.getLastVisiblePosition();
+      paramAbsListView = opu.a().iterator();
+      while (paramAbsListView.hasNext())
+      {
+        Object localObject = (opw)paramAbsListView.next();
+        int k = ((opw)localObject).jdField_a_of_type_Int;
+        localObject = (ReadInJoyArticleBottomVideoView)((opw)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((k >= i - paramInt) && (k <= j - paramInt))
+        {
+          if (localObject != null) {
+            ((ReadInJoyArticleBottomVideoView)localObject).n();
+          }
+        }
+        else if (localObject != null) {
+          ((ReadInJoyArticleBottomVideoView)localObject).q();
+        }
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static boolean a()
-  {
-    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     opv
  * JD-Core Version:    0.7.0.1
  */

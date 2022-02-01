@@ -1,41 +1,29 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ault
-  extends aumb
+  implements View.OnClickListener
 {
-  private final MultiAIOBaseViewPager a;
+  public ault(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public ault(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
+  public void onClick(View paramView)
   {
-    this.a = paramMultiAIOBaseViewPager;
-  }
-  
-  public int a(View paramView1, View paramView2)
-  {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
     }
-    int i = this.a.a();
-    if (i == paramView1.b) {
-      return 1;
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
     }
-    if (i == paramView2.b) {
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ault
  * JD-Core Version:    0.7.0.1
  */

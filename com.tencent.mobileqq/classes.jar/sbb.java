@@ -1,47 +1,81 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class sbb
-  implements ViewBase.OnClickListener
+public class sbb
+  extends anmu
 {
-  sbb(sba paramsba) {}
+  private sbb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    int i;
-    if ((saz.a(this.a.jdField_a_of_type_Saz) instanceof AdData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-      }
+    int j = 0;
+    if (TextUtils.isEmpty(paramString)) {
+      break label10;
     }
+    label10:
+    label227:
     for (;;)
     {
-      say.a(this.a.jdField_a_of_type_Saz.a);
-      scp.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)saz.a(this.a.jdField_a_of_type_Saz), true, true, i);
       return;
-      sdj.a(saz.a(this.a.jdField_a_of_type_Saz), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      i = 4;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 8;
-      continue;
-      i = 1;
-      continue;
-      i = 1000;
+      if (paramBoolean)
+      {
+        Object localObject1 = VideoFeedsRecommendFragment.a(this.a);
+        if (localObject1 != null) {}
+        for (localObject1 = bglf.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label227;
+          }
+          Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject2 = (VideoInfo)localIterator.next();
+            int i = j;
+            if (paramString.equals(((VideoInfo)localObject2).j))
+            {
+              i = j;
+              if (!((String)localObject1).equals(((VideoInfo)localObject2).k))
+              {
+                ((VideoInfo)localObject2).k = ((String)localObject1);
+                i = 1;
+              }
+            }
+            j = i;
+            if (((VideoInfo)localObject2).d != null)
+            {
+              localObject2 = ((VideoInfo)localObject2).d.iterator();
+              for (;;)
+              {
+                j = i;
+                if (!((Iterator)localObject2).hasNext()) {
+                  break;
+                }
+                VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject2).next();
+                if ((paramString.equals(localVideoInfo.j)) && (!((String)localObject1).equals(localVideoInfo.k)))
+                {
+                  localVideoInfo.k = ((String)localObject1);
+                  i = 1;
+                }
+              }
+            }
+          }
+          if (j == 0) {
+            break;
+          }
+          VideoFeedsRecommendFragment.a(this.a).b(paramString);
+          return;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbb
  * JD-Core Version:    0.7.0.1
  */

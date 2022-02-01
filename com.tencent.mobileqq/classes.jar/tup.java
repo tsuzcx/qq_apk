@@ -1,35 +1,29 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoCommentRsp;
-import java.util.Map;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.List;
 
-class tup
-  implements zac<FeedCloudWrite.StDoCommentRsp>
+public class tup
+  implements ViewPager.OnPageChangeListener
 {
-  tup(tuk paramtuk, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed) {}
+  public tup(FolderRecommendTabFragment.FolderRecommendHeadItemView paramFolderRecommendHeadItemView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoCommentRsp == null))
-    {
-      QLog.e(tuk.a(), 1, "deleteFeedComment error:" + paramLong + "  errorMsg:" + paramString);
-      return;
+    bdri localbdri = (bdri)FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.a).a().get(paramInt);
+    if (localbdri != null) {
+      FolderRecommendTabFragment.a("227", "227", localbdri.a.iAdId + "", 101, 1);
     }
-    QLog.d(tuk.a(), 1, "deleteFeedComment Success");
-    paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
-    tuk.a(this.jdField_a_of_type_Tuk).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1 - this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size()));
-    yiw.a().a(new QCircleCommentUpdateEvent(2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tuk.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())));
-    umc.a().dispatch(this.jdField_a_of_type_Tuk.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Tuk.hashCode()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tup
  * JD-Core Version:    0.7.0.1
  */

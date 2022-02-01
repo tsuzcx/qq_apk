@@ -1,27 +1,22 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.5.1;
 
-class aphe
-  implements View.OnClickListener
+public class aphe
+  implements apic
 {
-  aphe(aphc paramaphc, ReportData paramReportData, WindowManager paramWindowManager) {}
+  public aphe(ArkAppDeviceModule.ObserverMethod.5.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    paramView = (ClipboardManager)this.jdField_a_of_type_Aphc.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
-    if (paramView != null)
-    {
-      paramView.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
-      QQToast.a(this.jdField_a_of_type_Aphc.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), alud.a(2131703158), 0).a();
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Apgx.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Aphc.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    apgu.a(this.a.a.jdField_a_of_type_Apgx.a, this.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

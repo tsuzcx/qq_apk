@@ -1,66 +1,70 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bhgg
 {
-  private bglv jdField_a_of_type_Bglv;
-  private ConcurrentHashMap<AppBrandPageContainer, bhfp> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static volatile boolean a;
+  private static boolean b;
   
-  public bhgg(bglv parambglv)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Bglv = parambglv;
-  }
-  
-  public bhfp a(AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    bhfp localbhfp = (bhfp)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramAppBrandPageContainer);
-    if (localbhfp == null)
-    {
-      QMLog.i("PageWebviewPool", "get page form new BrandPageWebview.");
-      return new bhfp(this.jdField_a_of_type_Bglv, paramAppBrandPageContainer);
-    }
-    QMLog.i("PageWebviewPool", "get page from cache.");
-    return localbhfp;
-  }
-  
-  public void a()
-  {
+    if (!a) {}
+    String str3;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      b = "mounted".equals(Environment.getExternalStorageState());
+      a = true;
+      String str1 = paramString;
+      if (!TextUtils.isEmpty(paramString))
       {
-        bhfp localbhfp = (bhfp)((Map.Entry)localIterator.next()).getValue();
-        if (localbhfp != null) {
-          localbhfp.c();
+        str1 = paramString;
+        if (b)
+        {
+          str3 = bhgh.a().a();
+          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
+            break label149;
+          }
+          str1 = paramString;
+          if (str3 != null)
+          {
+            str1 = paramString;
+            if (!paramString.startsWith(str3))
+            {
+              str1 = paramString;
+              if (paramString.startsWith(bhgh.a().b()))
+              {
+                String[] arrayOfString = paramString.split(bhgh.a().b());
+                str1 = paramString;
+                if (arrayOfString.length >= 2) {
+                  str1 = str3 + arrayOfString[1];
+                }
+              }
+            }
+          }
         }
-        localIterator.remove();
       }
-      return;
+      return str1;
     }
     catch (Exception localException)
     {
-      QMLog.e("PageWebviewPool", "destroyCachePage error:", localException);
+      label149:
+      do
+      {
+        for (;;)
+        {
+          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
+        }
+        String str2 = paramString;
+      } while (str3 == null);
     }
-  }
-  
-  public void a(AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramAppBrandPageContainer)) {
-      return;
-    }
-    QMLog.i("PageWebviewPool", "preLoad page");
-    bhfp localbhfp = new bhfp(this.jdField_a_of_type_Bglv, paramAppBrandPageContainer);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramAppBrandPageContainer, localbhfp);
+    return str3 + File.separator + paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgg
  * JD-Core Version:    0.7.0.1
  */

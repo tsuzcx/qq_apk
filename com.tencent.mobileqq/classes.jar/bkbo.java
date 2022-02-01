@@ -1,6 +1,10 @@
 public abstract interface bkbo
 {
-  public abstract void onZipLoaded(boolean paramBoolean);
+  public abstract void a(String paramString, Object paramObject);
+  
+  public abstract void b(String paramString, Object paramObject);
+  
+  public abstract void c(String paramString, Object paramObject);
 }
 
 

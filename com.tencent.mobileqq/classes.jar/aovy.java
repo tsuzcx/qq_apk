@@ -1,102 +1,58 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.qphone.base.util.QLog;
 
-public class aovy
-  extends aouf<SSOErrorInfoMapConfig>
+class aovy
+  implements apcd
 {
-  public static SSOErrorInfoMapConfig c()
+  aovy(aovw paramaovw, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  
+  public void a()
   {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)aoks.a().a(477);
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
-    if (localSSOErrorInfoMapConfig2 == null) {
-      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
+    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapcd != null) {
+      localapcd.a();
     }
-    return localSSOErrorInfoMapConfig1;
   }
   
-  public int a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 477;
+    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapcd != null) {
+      localapcd.a(paramLong1, paramLong2);
+    }
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig a()
+  public void a(boolean paramBoolean, apce paramapce)
   {
-    return new SSOErrorInfoMapConfig();
-  }
-  
-  @NonNull
-  public SSOErrorInfoMapConfig a(aoko[] paramArrayOfaoko)
-  {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    for (;;)
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramapce.c + ", url = " + paramapce.a);
+    if (paramBoolean) {
+      if (!aovw.a(this.jdField_a_of_type_Aovw, paramapce.c, paramapce.b))
+      {
+        aovw.a(this.jdField_a_of_type_Aovw, paramapce.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    apcd localapcd;
+    do
     {
-      String str1;
-      aovw localaovw;
-      String str2;
-      aovx localaovx;
-      try
-      {
-        if (!TextUtils.isEmpty(paramArrayOfaoko))
-        {
-          paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
-          Iterator localIterator1 = paramArrayOfaoko.keys();
-          if (localIterator1.hasNext())
-          {
-            str1 = (String)localIterator1.next();
-            JSONObject localJSONObject1 = paramArrayOfaoko.optJSONObject(str1);
-            Iterator localIterator2 = localJSONObject1.keys();
-            localaovw = new aovw();
-            if (!localIterator2.hasNext()) {
-              break label220;
-            }
-            str2 = (String)localIterator2.next();
-            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
-            Iterator localIterator3 = localJSONObject2.keys();
-            localaovx = new aovx();
-            if (!localIterator3.hasNext()) {
-              break label204;
-            }
-            String str3 = (String)localIterator3.next();
-            String str4 = localJSONObject2.optString(str3);
-            localaovx.a.put(str3, str4);
-            continue;
-          }
-        }
-        return localSSOErrorInfoMapConfig;
-      }
-      catch (JSONException paramArrayOfaoko)
-      {
-        wxe.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfaoko.getMessage());
-      }
-      label204:
-      localaovw.a.put(str2, localaovx);
-      continue;
-      label220:
-      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localaovw);
+      return;
+      if (this.jdField_a_of_type_Aovw.a(paramapce.d, paramapce.c, paramapce.b) == 0) {}
+      localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localapcd == null);
+    localapcd.a(paramBoolean, paramapce);
+  }
+  
+  public void b()
+  {
+    apcd localapcd = aovw.a(this.jdField_a_of_type_Aovw, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapcd != null) {
+      localapcd.b();
     }
-  }
-  
-  public Class<SSOErrorInfoMapConfig> a()
-  {
-    return SSOErrorInfoMapConfig.class;
-  }
-  
-  @NonNull
-  public SSOErrorInfoMapConfig b()
-  {
-    return new SSOErrorInfoMapConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovy
  * JD-Core Version:    0.7.0.1
  */

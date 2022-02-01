@@ -1,34 +1,88 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
 
 public class bkbp
+  implements bkbn
 {
-  public static int a(QQAppInterface paramQQAppInterface)
+  private bkbo jdField_a_of_type_Bkbo;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bkbp(bkbo parambkbo)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    this.jdField_a_of_type_Bkbo = parambkbo;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  private void b()
   {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
-    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
-    paramQQAppInterface.commit();
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Bkbo == null);
+    this.jdField_a_of_type_Bkbo.a(a(), null);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  private void c()
   {
-    boolean bool = false;
-    if (paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).getInt("hot_shortvideo_multi_video_support_799", 0) != 0) {
-      bool = true;
+    Object localObject = BaseApplication.getContext().getPackageManager();
+    if (localObject != null) {
+      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
     }
-    return bool;
+    for (;;)
+    {
+      PackageInfo localPackageInfo;
+      if (((Iterator)localObject).hasNext())
+      {
+        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+        if (this.jdField_a_of_type_Boolean) {}
+      }
+      else
+      {
+        return;
+      }
+      if (this.jdField_a_of_type_Bkbo != null) {
+        this.jdField_a_of_type_Bkbo.b(a(), localPackageInfo);
+      }
+    }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  private void d()
   {
-    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (this.jdField_a_of_type_Bkbo == null);
+    this.jdField_a_of_type_Bkbo.c(a(), null);
+  }
+  
+  public String a()
+  {
+    return "App";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      b();
+      c();
+      label16:
+      d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label16;
+    }
   }
 }
 

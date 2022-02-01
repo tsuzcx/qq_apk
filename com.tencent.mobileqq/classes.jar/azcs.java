@@ -1,51 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.profile.CoverDetailFragment;
 
 public class azcs
-  implements baug
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public azcs(PtvTemplateManager.15 param15) {}
+  public azcs(CoverDetailFragment paramCoverDetailFragment) {}
   
-  public void onResp(bavf parambavf)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + parambavf.c);
+    if (Build.VERSION.SDK_INT >= 16) {
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
-    if (this.a.a.doodleUsable) {}
-    try
+    for (;;)
     {
-      ndr.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
-      if (parambavf.jdField_a_of_type_Int == 0)
-      {
-        Object localObject = this.a.this$0.a();
-        if (localObject != null)
-        {
-          localObject = (bbaa)((QQAppInterface)localObject).getManager(193);
-          if (((bbaa)localObject).a()) {
-            ((bbaa)localObject).a(this.a.a.doodleUrl, parambavf.jdField_a_of_type_Long);
-          }
-        }
-      }
+      Object localObject = this.a.getActivity().getResources().getDrawable(2130850731);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
+      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
+      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
+      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
+      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
       return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

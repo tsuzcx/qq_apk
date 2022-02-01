@@ -1,23 +1,40 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
-class anng
-  implements alpg
+public class anng
+  extends BroadcastReceiver
 {
-  anng(annc paramannc) {}
+  public anng(GuardManager paramGuardManager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!paramBoolean)
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
+      }
+      appb.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
       return;
     }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    appb.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anng
  * JD-Core Version:    0.7.0.1
  */

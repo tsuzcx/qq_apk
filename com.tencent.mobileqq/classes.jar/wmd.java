@@ -1,31 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 class wmd
-  extends QQUIEventReceiver<wmb, vem>
+  extends wme
 {
-  public wmd(@NonNull wmb paramwmb)
-  {
-    super(paramwmb);
-  }
+  wmd(wmc paramwmc) {}
   
-  public void a(@NonNull wmb paramwmb, @NonNull vem paramvem)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    wxe.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramvem.toString());
-    if (paramvem.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      wmb.a(paramwmb).a(paramvem.jdField_a_of_type_JavaLangString, paramvem.jdField_a_of_type_JavaUtilList);
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vem.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmd
  * JD-Core Version:    0.7.0.1
  */

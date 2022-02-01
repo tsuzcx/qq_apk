@@ -1,120 +1,89 @@
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aovv
-  extends aouf<aovu>
 {
-  public int a()
+  public static int a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return 189;
-  }
-  
-  @NonNull
-  public aovu a()
-  {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    localObject = ((QQAppInterface)localObject).getApp().getSharedPreferences("sticker_pref", 0).edit();
-    ((SharedPreferences.Editor)localObject).putInt("sticker_max_show_num_" + str, EmojiStickerManager.c);
-    ((SharedPreferences.Editor)localObject).apply();
-    ((SharedPreferences.Editor)localObject).putInt("sticker_max_send_num_" + str, EmojiStickerManager.c);
-    ((SharedPreferences.Editor)localObject).commit();
-    FlatBuffersParser.a(true);
-    return new aovu();
-  }
-  
-  @NonNull
-  public aovu a(aoko[] paramArrayOfaoko)
-  {
-    int j = -1;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = localQQAppInterface.getCurrentAccountUin();
-    int m = paramArrayOfaoko.length;
-    int i = 0;
-    if (i < m)
+    for (;;)
     {
-      aoko localaoko = paramArrayOfaoko[i];
-      int k = localaoko.jdField_a_of_type_Int;
-      if (k < j) {
-        wxe.e("QVipStickerProcessor", "received old task id " + k + ", latest task id: " + j);
-      }
-      for (;;)
+      try
       {
-        i += 1;
-        break;
-        try
+        paramString1 = a(paramString1, paramString2, paramString3) + File.separator + paramString4 + ".so";
+        QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo. soFilename = " + paramString1);
+        boolean bool = new File(paramString1).exists();
+        if (bool)
         {
-          JSONObject localJSONObject = new JSONObject(new String(localaoko.jdField_a_of_type_JavaLangString.getBytes("utf-8")));
-          SharedPreferences.Editor localEditor = localQQAppInterface.getApp().getSharedPreferences("sticker_pref", 0).edit();
-          if (localJSONObject.has("emojiMaxShowNum"))
+          try
           {
-            EmojiStickerManager.f = localJSONObject.optInt("emojiMaxShowNum");
-            if (EmojiStickerManager.f <= 0) {
-              EmojiStickerManager.f = EmojiStickerManager.c;
+            if ((paramString1.endsWith("libARCloud.so")) || (paramString1.endsWith("libARCloud_64.so")) || (paramString1.endsWith("libARFeature.so"))) {
+              SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "c++_shared");
             }
-            localEditor.putInt("sticker_max_show_num_" + str, EmojiStickerManager.f);
-            localEditor.apply();
+            System.load(paramString1);
+            i = 0;
+            QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo successfully. result = " + 0 + ", soFilename = " + paramString1);
           }
-          if (localJSONObject.has("emojiMaxStickNum"))
+          catch (UnsatisfiedLinkError paramString2)
           {
-            EmojiStickerManager.e = localJSONObject.optInt("emojiMaxStickNum");
-            if (EmojiStickerManager.e <= 0) {
-              EmojiStickerManager.e = EmojiStickerManager.c;
-            }
-            localEditor.putInt("sticker_max_send_num_" + str, EmojiStickerManager.e);
-            localEditor.commit();
+            i = -4;
+            QLog.e("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -4 + ", soFilename = " + paramString1 + ", errMsg = " + paramString2.getMessage() + ", StackTrace = " + paramString2.getStackTrace().toString());
+            continue;
           }
-          if (localJSONObject.has("flatBufferEnable")) {
-            if (localJSONObject.optInt("flatBufferEnable") != 1) {
-              break label311;
-            }
-          }
-          label311:
-          for (boolean bool = true;; bool = false)
-          {
-            FlatBuffersParser.a(bool);
-            j = k;
-            break;
-          }
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-          wxe.e("QVipStickerProcessor", "item.content=" + localaoko.jdField_a_of_type_JavaLangString + " e=" + localUnsupportedEncodingException);
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          wxe.e("QVipStickerProcessor", "item.content=" + localaoko.jdField_a_of_type_JavaLangString + " e=" + localJSONException);
+          return i;
         }
       }
+      finally {}
+      int i = -2;
+      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -2 + ", soFilename = " + paramString1);
     }
-    return new aovu();
   }
   
-  public Class<aovu> a()
+  public static String a()
   {
-    return aovu.class;
+    if (BaseApplicationImpl.sApplication.getFilesDir() == null)
+    {
+      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "getARNativeSoRootDir. ARNativeSoRootDir is null.");
+      return "";
+    }
+    return BaseApplicationImpl.getContext().getFilesDir() + "/pddata/prd";
   }
   
-  @NonNull
-  public aovu b()
+  public static String a(String paramString)
   {
-    return new aovu();
+    return a() + File.separator + paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    return a(paramString1) + File.separator + paramString2 + File.separator + paramString3;
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    paramString1 = paramString1 + paramString2 + paramString3;
+    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
+    paramString2.putString(paramString1, paramString4);
+    paramString2.commit();
+    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "saveMd5. key = " + paramString1 + ", md5 = " + paramString4);
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = paramString1 + paramString2 + paramString3;
+    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString(paramString1, "");
+    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "readMd5. key = " + paramString1 + ", md5 = " + paramString2);
+    return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovv
  * JD-Core Version:    0.7.0.1
  */

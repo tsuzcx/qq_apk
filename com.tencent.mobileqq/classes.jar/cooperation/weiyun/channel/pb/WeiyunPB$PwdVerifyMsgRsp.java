@@ -21,7 +21,7 @@ public final class WeiyunPB$PwdVerifyMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp
  * JD-Core Version:    0.7.0.1
  */

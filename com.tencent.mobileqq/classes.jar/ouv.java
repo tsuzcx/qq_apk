@@ -1,19 +1,28 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.widget.AdapterView;
 
-class ouv
-  implements FileFilter
+public class ouv
+  implements bkij
 {
-  ouv(out paramout) {}
+  public ouv(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  public boolean accept(File paramFile)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return (!paramFile.getName().endsWith(".json")) && (!paramFile.getName().equalsIgnoreCase("__MACOSX"));
+    this.a.a.doOnBackPressed();
+    paramAdapterView = paramView.getTag();
+    if ((paramAdapterView instanceof oux))
+    {
+      paramAdapterView = (oux)paramAdapterView;
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ouv
  * JD-Core Version:    0.7.0.1
  */

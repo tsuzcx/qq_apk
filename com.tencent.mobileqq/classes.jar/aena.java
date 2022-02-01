@@ -1,54 +1,17 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class aena
-  extends alpq
+  implements bhlk
 {
-  public aena(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aena(Leba.5.1 param1) {}
   
-  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      amfz.a(this.a.app, false, true, false, true);
-      this.a.a();
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
     }
-    ActivateFriendActivity.a(this.a, paramBoolean2);
-  }
-  
-  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      amfz.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    if (!this.a.isFinishing())
-    {
-      if (!paramBoolean1) {
-        break label161;
-      }
-      ActivateFriendActivity.a(this.a, paramBoolean2);
-      if (!ActivateFriendActivity.a(this.a)) {
-        break label148;
-      }
-    }
-    label148:
-    for (String str = this.a.getString(2131689603);; str = this.a.getString(2131689604))
-    {
-      str = this.a.getString(2131689606, new Object[] { str });
-      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
-      if (ActivateFriendActivity.a(this.a) != null)
-      {
-        ActivateFriendActivity.a(this.a).c();
-        ActivateFriendActivity.b(this.a);
-      }
-      return;
-    }
-    label161:
-    QQToast.a(this.a, 1, this.a.getResources().getString(2131719884), 0).b(this.a.getTitleBarHeight());
   }
 }
 

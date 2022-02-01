@@ -1,12 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class aett
+  implements View.OnClickListener
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
+  public aett(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

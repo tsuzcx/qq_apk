@@ -1,84 +1,60 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.vas.update.callback.listener.IDownloadListener;
 
-public class bhdq
-  extends bhdw
+class bhdq
+  extends bhhe
 {
-  private CloudStorage.StGetUserInteractiveStorageReq a = new CloudStorage.StGetUserInteractiveStorageReq();
+  bhdq(bhdp parambhdp) {}
   
-  public bhdq(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString)
+  public void onDone(bhhf parambhhf)
   {
-    if (paramStCommonExt != null) {
-      this.a.ext.set(paramStCommonExt);
+    int j = 0;
+    if ((bhdp.a(this.a) == null) || (parambhhf == null)) {
+      return;
     }
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    Object localObject;
+    String str;
+    if ((parambhhf.a() == 3) && (parambhhf.jdField_a_of_type_Int == 0))
     {
-      paramStCommonExt = paramArrayOfString[i];
-      this.a.keyList.add(paramStCommonExt);
-      i += 1;
-    }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = new CloudStorage.StGetUserInteractiveStorageRsp();
-    try
-    {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetUserInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetUserInteractiveStorageRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGetUserInteractiveStorageRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+      i = 1;
+      localObject = parambhhf.a();
+      if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
+        bhdp.a(this.a, parambhhf.c, parambhhf.jdField_a_of_type_Long);
       }
-      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail.rsp = null");
-      return null;
+      localObject = bhdp.a(this.a);
+      str = parambhhf.jdField_a_of_type_JavaLangString;
+      if (i == 0) {
+        break label130;
+      }
     }
-    catch (Exception paramArrayOfByte)
+    label130:
+    for (int i = j;; i = 8)
     {
-      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+      ((IDownloadListener)localObject).onCompleted(str, i, parambhhf.jdField_a_of_type_Int, parambhhf.jdField_b_of_type_JavaLangString);
+      return;
+      i = 0;
+      break;
     }
-    return null;
   }
   
-  public byte[] a()
+  public void onProgress(bhhf parambhhf)
   {
-    return this.a.toByteArray();
+    if ((bhdp.a(this.a) != null) && (parambhhf != null)) {
+      bhdp.a(this.a).onProgress(parambhhf.jdField_a_of_type_JavaLangString, parambhhf.jdField_b_of_type_Long, parambhhf.jdField_a_of_type_Long, (int)parambhhf.jdField_a_of_type_Float);
+    }
   }
   
-  protected String b()
+  public boolean onStart(bhhf parambhhf)
   {
-    return "GetUserInteractiveStorage";
+    if ((bhdp.a(this.a) != null) && (parambhhf != null)) {
+      bhdp.a(this.a).onDownloadStart(parambhhf.jdField_a_of_type_JavaLangString);
+    }
+    return super.onStart(parambhhf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 public abstract interface blew
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void onPreloadEnd();
 }
 
 

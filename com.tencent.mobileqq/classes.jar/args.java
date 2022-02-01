@@ -1,8 +1,19 @@
-public abstract interface args
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.AutoReplyText;
+
+public final class args
+  implements Parcelable.Creator<AutoReplyText>
 {
-  public abstract void a(boolean paramBoolean);
+  public AutoReplyText a(Parcel paramParcel)
+  {
+    return new AutoReplyText(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public AutoReplyText[] a(int paramInt)
+  {
+    return new AutoReplyText[paramInt];
+  }
 }
 
 

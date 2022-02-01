@@ -1,30 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajxl
-  extends ajxt
+class ajxl
+  implements View.OnClickListener
 {
-  protected final BaseChatPie a;
+  ajxl(ajxi paramajxi) {}
   
-  public ajxl(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  void a(bdpi parambdpi, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((parambdpi != null) && (parambdpi.a() > 0))
-    {
-      if (this.a == null) {
-        break label43;
-      }
-      if (this.a.g() < 8) {
-        a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
-      }
-    }
-    return;
-    label43:
-    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

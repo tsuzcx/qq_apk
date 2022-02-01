@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 
 class UIJsPlugin$34
   implements Runnable
@@ -11,6 +12,12 @@ class UIJsPlugin$34
   
   public void run()
   {
+    if (this.this$0.isMiniGameRuntime())
+    {
+      ((GameBrandRuntime)this.this$0.jsPluginEngine.appBrandRuntime).showRestart = false;
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
+    }
     PageWebview localPageWebview = this.this$0.jsPluginEngine.appBrandRuntime.getPageWebView();
     if (localPageWebview != null)
     {
@@ -23,7 +30,7 @@ class UIJsPlugin$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.34
  * JD-Core Version:    0.7.0.1
  */

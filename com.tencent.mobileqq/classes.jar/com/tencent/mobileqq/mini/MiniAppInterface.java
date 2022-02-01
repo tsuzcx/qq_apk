@@ -13,7 +13,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -25,7 +24,9 @@ import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.mini.network.RequestStrategy;
 import com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,11 +41,12 @@ import java.util.List;
 public class MiniAppInterface
   extends AppInterface
 {
+  public static final String ACTION_MINI_PROCESS_EXIT = "com.tencent.mobile.mini.process.exit";
   private static final String ACTION_PROCESS_EXIT = "com.tencent.process.exit";
   static final String TAG = "MiniAppInterface";
   private BroadcastReceiver accountReceiver = new MiniAppInterface.2(this);
   private HashMap<String, AuthorizeCenter> authorizeMap = new HashMap();
-  private awgg mFactory;
+  private EntityManagerFactory mFactory;
   private List<Activity> mForegroundActivitys = new ArrayList();
   
   public MiniAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -112,6 +114,7 @@ public class MiniAppInterface
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
     localIntentFilter.addAction("mqq.intent.action.LOGOUT");
     localIntentFilter.addAction("com.tencent.process.exit");
+    localIntentFilter.addAction("com.tencent.mobile.mini.process.exit");
     this.app.registerReceiver(this.accountReceiver, localIntentFilter);
   }
   
@@ -190,7 +193,7 @@ public class MiniAppInterface
     return getAccount();
   }
   
-  public awgg getEntityManagerFactory(String paramString)
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     if (this.mFactory == null) {
       this.mFactory = new QQEntityManagerFactory(getAccount());
@@ -216,6 +219,7 @@ public class MiniAppInterface
     if (Build.VERSION.SDK_INT >= 15) {
       getApp().registerActivityLifecycleCallbacks(new MiniAppInterface.1(this));
     }
+    RequestStrategy.g.notifyNetWorkStatusChange();
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppInterface", 2, "Application OnCreate complete");
     }
@@ -226,51 +230,51 @@ public class MiniAppInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 390	com/tencent/common/app/AppInterface:onDestroy	()V
-    //   4: invokestatic 258	com/tencent/mobileqq/mini/launch/AppBrandProxy:g	()Lcom/tencent/mobileqq/mini/launch/AppBrandProxy;
-    //   7: invokestatic 178	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   10: invokevirtual 181	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
+    //   1: invokespecial 401	com/tencent/common/app/AppInterface:onDestroy	()V
+    //   4: invokestatic 261	com/tencent/mobileqq/mini/launch/AppBrandProxy:g	()Lcom/tencent/mobileqq/mini/launch/AppBrandProxy;
+    //   7: invokestatic 181	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   10: invokevirtual 184	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
     //   13: aconst_null
     //   14: aconst_null
-    //   15: invokevirtual 262	com/tencent/mobileqq/mini/launch/AppBrandProxy:onAppStop	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Landroid/os/Bundle;)V
-    //   18: invokestatic 395	com/tencent/mobileqq/mini/sdk/MiniAppController:getInstance	()Lcom/tencent/mobileqq/mini/sdk/MiniAppController;
-    //   21: invokevirtual 398	com/tencent/mobileqq/mini/sdk/MiniAppController:onDestory	()V
-    //   24: invokestatic 403	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   27: invokevirtual 407	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   15: invokevirtual 265	com/tencent/mobileqq/mini/launch/AppBrandProxy:onAppStop	(Ljava/lang/String;Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Landroid/os/Bundle;)V
+    //   18: invokestatic 406	com/tencent/mobileqq/mini/sdk/MiniAppController:getInstance	()Lcom/tencent/mobileqq/mini/sdk/MiniAppController;
+    //   21: invokevirtual 409	com/tencent/mobileqq/mini/sdk/MiniAppController:onDestory	()V
+    //   24: invokestatic 414	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   27: invokevirtual 418	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
     //   30: ifnull +15 -> 45
-    //   33: invokestatic 403	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   36: invokevirtual 407	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
-    //   39: invokestatic 413	com/tencent/mobileqq/mini/app/MiniAppClientQIPCModule:getQIPCModule	()Lcom/tencent/mobileqq/mini/app/MiniAppClientQIPCModule;
-    //   42: invokevirtual 419	eipc/EIPCClient:unRegisterModule	(Leipc/EIPCModule;)V
-    //   45: invokestatic 385	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 414	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   36: invokevirtual 418	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   39: invokestatic 424	com/tencent/mobileqq/mini/app/MiniAppClientQIPCModule:getQIPCModule	()Lcom/tencent/mobileqq/mini/app/MiniAppClientQIPCModule;
+    //   42: invokevirtual 430	eipc/EIPCClient:unRegisterModule	(Leipc/EIPCModule;)V
+    //   45: invokestatic 396	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq +12 -> 60
-    //   51: ldc 11
+    //   51: ldc 14
     //   53: iconst_2
-    //   54: ldc_w 420
-    //   57: invokestatic 271	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: ldc_w 431
+    //   57: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   60: aload_0
-    //   61: getfield 32	com/tencent/mobileqq/mini/MiniAppInterface:authorizeMap	Ljava/util/HashMap;
+    //   61: getfield 35	com/tencent/mobileqq/mini/MiniAppInterface:authorizeMap	Ljava/util/HashMap;
     //   64: astore_1
     //   65: aload_1
     //   66: monitorenter
     //   67: aload_0
-    //   68: getfield 32	com/tencent/mobileqq/mini/MiniAppInterface:authorizeMap	Ljava/util/HashMap;
-    //   71: invokevirtual 423	java/util/HashMap:clear	()V
+    //   68: getfield 35	com/tencent/mobileqq/mini/MiniAppInterface:authorizeMap	Ljava/util/HashMap;
+    //   71: invokevirtual 434	java/util/HashMap:clear	()V
     //   74: aload_1
     //   75: monitorexit
     //   76: return
     //   77: astore_1
-    //   78: ldc 11
+    //   78: ldc 14
     //   80: iconst_1
-    //   81: new 132	java/lang/StringBuilder
+    //   81: new 135	java/lang/StringBuilder
     //   84: dup
-    //   85: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   88: ldc_w 425
-    //   91: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   88: ldc_w 436
+    //   91: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: aload_1
-    //   95: invokevirtual 428	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   95: invokevirtual 439	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   104: goto -59 -> 45
     //   107: astore_2
     //   108: aload_1
@@ -309,7 +313,7 @@ public class MiniAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.MiniAppInterface
  * JD-Core Version:    0.7.0.1
  */

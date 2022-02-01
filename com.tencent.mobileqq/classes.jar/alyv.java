@@ -1,41 +1,31 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
 public class alyv
-  extends aluc
 {
-  protected void a()
-  {
-    super.a();
-    if (this.d >= alua.a().a / 12000L)
-    {
-      CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b();
-    CoreService.startTempService();
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public Friends a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyv
  * JD-Core Version:    0.7.0.1
  */

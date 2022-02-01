@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-class udc
-  implements DialogInterface.OnClickListener
+public class udc
+  implements uuv
 {
-  udc(udb paramudb) {}
+  public udc(WSHomeFragment paramWSHomeFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).b(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    WSPublicAccReport.getInstance().reportMessageBubblePopupClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+    WSHomeFragment.b(this.a);
+    ((ukz)this.a.b()).a(this.a.getActivity(), 601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udc
  * JD-Core Version:    0.7.0.1
  */

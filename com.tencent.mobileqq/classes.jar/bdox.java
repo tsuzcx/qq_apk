@@ -1,52 +1,57 @@
-public class bdox
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+
+public abstract class bdox
+  extends Binder
+  implements bdow
 {
-  static final bdox jdField_a_of_type_Bdox = new bdox(0);
-  static final bdox b = new bdox(1);
-  static final bdox c = new bdox(257);
-  static final bdox d = new bdox(2);
-  static final bdox e = new bdox(258);
-  static final bdox f = new bdox(3);
-  static final bdox g = new bdox(259);
-  final int jdField_a_of_type_Int;
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
+  static final int TRANSACTION_onComplete = 2;
+  static final int TRANSACTION_onProgress = 1;
   
-  public bdox(int paramInt)
+  public bdox()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
   }
   
-  public static bdox a(int paramInt)
+  public static bdow asInterface(IBinder paramIBinder)
   {
-    switch (paramInt)
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bdow))) {
+      return (bdow)localIInterface;
+    }
+    return new bdoy(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
     default: 
-      return jdField_a_of_type_Bdox;
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
+      return true;
     case 1: 
-      return b;
-    case 2: 
-      return d;
-    case 3: 
-      return f;
-    case 257: 
-      return c;
-    case 258: 
-      return e;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
+      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
     }
-    return g;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int & 0xF) == 1;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int & 0xF) == 3;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int > 15;
+    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
+    onComplete(paramParcel1.readString(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

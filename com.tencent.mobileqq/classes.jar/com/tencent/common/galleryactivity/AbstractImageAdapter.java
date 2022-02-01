@@ -1,21 +1,21 @@
 package com.tencent.common.galleryactivity;
 
+import abfp;
+import abfx;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
-import zir;
-import ziz;
 
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  zir jdField_a_of_type_Zir;
-  private ziz jdField_a_of_type_Ziz;
+  abfp jdField_a_of_type_Abfp;
+  private abfx jdField_a_of_type_Abfx;
   
-  private ziz a(int paramInt)
+  private abfx a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Zir != null) && (paramInt == this.jdField_a_of_type_Zir.b())) {
-      return this.jdField_a_of_type_Ziz;
+    if ((this.jdField_a_of_type_Abfp != null) && (paramInt == this.jdField_a_of_type_Abfp.b())) {
+      return this.jdField_a_of_type_Abfx;
     }
     return null;
   }
@@ -51,61 +51,61 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public zir a()
+  public abfp a()
   {
-    return this.jdField_a_of_type_Zir;
+    return this.jdField_a_of_type_Abfp;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ziz localziz = a(paramInt1);
-    if (localziz != null) {
-      localziz.a(paramInt2);
+    abfx localabfx = a(paramInt1);
+    if (localabfx != null) {
+      localabfx.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ziz localziz = a(paramInt);
-    if (localziz != null) {
-      localziz.c();
+    abfx localabfx = a(paramInt);
+    if (localabfx != null) {
+      localabfx.c();
     }
+  }
+  
+  public void a(abfp paramabfp)
+  {
+    this.jdField_a_of_type_Abfp = paramabfp;
+  }
+  
+  public void a(abfx paramabfx)
+  {
+    this.jdField_a_of_type_Abfx = paramabfx;
   }
   
   public abstract void a(View paramView, int paramInt);
   
-  public void a(zir paramzir)
-  {
-    this.jdField_a_of_type_Zir = paramzir;
-  }
-  
-  public void a(ziz paramziz)
-  {
-    this.jdField_a_of_type_Ziz = paramziz;
-  }
-  
   public void b(int paramInt1, int paramInt2)
   {
-    ziz localziz = a(paramInt1);
-    if ((localziz != null) && (localziz.a())) {
-      localziz.a(paramInt2);
+    abfx localabfx = a(paramInt1);
+    if ((localabfx != null) && (localabfx.a())) {
+      localabfx.a(paramInt2);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Zir == null) {
+    if (this.jdField_a_of_type_Abfp == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Zir.a();
+    return this.jdField_a_of_type_Abfp.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Zir == null) {
+    if (this.jdField_a_of_type_Abfp == null) {
       return null;
     }
-    return this.jdField_a_of_type_Zir.a(paramInt);
+    return this.jdField_a_of_type_Abfp.a(paramInt);
   }
   
   public long getItemId(int paramInt)

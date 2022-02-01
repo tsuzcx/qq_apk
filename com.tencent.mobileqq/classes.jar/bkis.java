@@ -1,54 +1,36 @@
-public class bkis
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
+
+final class bkis
+  extends ClickableSpan
 {
-  private static bkit a;
-  public static String a;
+  private WeakReference<Context> a;
   
-  static
+  private bkis(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
+    this.a = new WeakReference(paramContext);
   }
   
-  public static bkit a()
+  public void onClick(@NonNull View paramView)
   {
-    if (jdField_a_of_type_Bkit == null) {
-      a();
-    }
-    return jdField_a_of_type_Bkit;
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangString)
+    paramView = (Context)this.a.get();
+    if (paramView != null)
     {
-      if (jdField_a_of_type_Bkit == null) {
-        jdField_a_of_type_Bkit = new bkit();
-      }
-      jdField_a_of_type_Bkit.a();
-      return;
+      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://support.qq.com/product/36028");
+      paramView.startActivity(localIntent);
     }
   }
   
-  public static void a(bkik parambkik)
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    if (jdField_a_of_type_Bkit != null) {
-      jdField_a_of_type_Bkit.a(parambkik);
-    }
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Bkit != null)
-    {
-      jdField_a_of_type_Bkit.d();
-      jdField_a_of_type_Bkit = null;
-    }
-  }
-  
-  public static void b(bkik parambkik)
-  {
-    if (jdField_a_of_type_Bkit != null) {
-      jdField_a_of_type_Bkit.b(parambkik);
-    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

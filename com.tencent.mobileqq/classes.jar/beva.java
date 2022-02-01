@@ -1,120 +1,94 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewConfiguration;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class beva
-  implements Handler.Callback, beuz
+  implements bdfj
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  bevb jdField_a_of_type_Bevb = null;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 10;
-  boolean jdField_b_of_type_Boolean = false;
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private beuz jdField_a_of_type_Beuz;
+  private bhve jdField_a_of_type_Bhve = new bhve();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  List<bhvd> jdField_a_of_type_JavaUtilList;
   
-  public beva(bevb parambevb, Context paramContext)
+  public beva(beuq parambeuq, QQAppInterface paramQQAppInterface, beuz parambeuz)
   {
-    this.jdField_a_of_type_Bevb = parambevb;
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Beuz = parambeuz;
   }
   
-  void a(int paramInt)
+  private void a(List<bhvd> paramList, Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, Rect paramRect, int paramInt1, int paramInt2)
   {
-    int i;
-    if (paramInt != this.jdField_a_of_type_Int)
+    Object localObject = (bhvd)paramList.get(0);
+    if (((bhvd)localObject).c == 3)
     {
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Bevb != null) {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          break label47;
-        }
+      localObject = (bgxo)((bhvd)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+      if (((bgxo)localObject).a == 2) {
+        paramPaint.setColor(((bgxo)localObject).b);
       }
     }
-    label47:
-    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    else
     {
-      this.jdField_a_of_type_Bevb.a(localView, i, paramInt);
-      return;
+      paramList = paramList.iterator();
     }
-  }
-  
-  void a(View paramView)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    for (;;)
     {
-      if (localView != paramView) {
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      if (!paramList.hasNext()) {
+        break label275;
       }
-      return;
-    }
-  }
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2)
-  {
-    a(paramView);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    a(paramView);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    a(2);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramView);
-    paramInt3 = Math.abs(paramInt2 - paramInt4);
-    if ((paramInt3 == 0) || (paramInt2 == 0)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      if ((paramInt1 == 0) || (this.jdField_b_of_type_Boolean)) {
+      paramRect = (bhvd)paramList.next();
+      switch (paramRect.c)
+      {
+      default: 
         break;
+      case 1: 
+        paramCanvas.drawText(paramRect.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2 + paramFloat3, paramPaint);
+        paramFloat1 += paramPaint.measureText(paramRect.jdField_a_of_type_JavaLangString);
+        continue;
+        if (((bgxo)localObject).a != 3) {
+          break;
+        }
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(localAppRuntime instanceof QQAppInterface)) {
+          break;
+        }
+        paramPaint.setShader(bgwv.a((QQAppInterface)localAppRuntime).a(((bgxo)localObject).b, paramList, paramFloat1, paramFloat2, paramRect, paramPaint, paramInt1, paramInt2));
+        break;
+      case 2: 
+        paramRect = (bdoa)paramRect.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        paramInt1 = paramRect.a().getBounds().height();
+        paramRect.draw(paramCanvas, "", 0, 0, paramFloat1, (int)paramFloat2, (int)(paramInt1 + paramFloat2), (int)(paramInt1 + paramFloat2), paramPaint);
+        paramFloat1 += paramRect.a().getBounds().width();
       }
-      this.jdField_a_of_type_Boolean = false;
-      a(0);
-      return;
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramInt3 <= this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
-      }
-      a(2);
-      return;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (paramInt3 <= this.jdField_b_of_type_Int)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
-    }
-    a(1);
+    label275:
+    paramPaint.setShader(null);
   }
   
-  public void b(View paramView, float paramFloat1, float paramFloat2)
+  public int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint)
   {
-    a(paramView);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+    return bgwv.a(this.jdField_a_of_type_JavaUtilList, paramPaint, this.jdField_a_of_type_AndroidGraphicsRect);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public String a(bdep parambdep, String paramString)
   {
-    if (paramMessage.what == 0)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_Boolean = false;
-      a(0);
-    }
+    return paramString.replace("$NICK$", bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Beuz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Beuz.b, 1, 0));
+  }
+  
+  public void a(int paramInt, String paramString, Paint paramPaint)
+  {
+    this.jdField_a_of_type_JavaUtilList = bgwv.a(paramInt, paramString, paramPaint, this.jdField_a_of_type_Bhve, 32);
+  }
+  
+  public boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint)
+  {
+    a(this.jdField_a_of_type_JavaUtilList, paramCanvas, paramPaint, paramFloat1, paramFloat2, paramFloat3, this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2);
     return true;
   }
 }

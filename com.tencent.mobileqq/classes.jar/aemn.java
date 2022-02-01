@@ -1,25 +1,24 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.widget.SimpleTextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aemn
+  implements aenb
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SimpleTextView jdField_a_of_type_ComTencentWidgetSimpleTextView;
-  public Object a;
-  int jdField_b_of_type_Int;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
-  TextView e;
-  TextView f;
-  TextView g;
+  public aemn(Leba paramLeba, View paramView, arcs paramarcs) {}
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_Arcs);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("Leba", 1, "clickAction", localException);
+    }
+  }
 }
 
 

@@ -1,43 +1,63 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
 
 public class bnnw
+  extends bnva
 {
-  public static GPUBaseFilter a(int paramInt)
+  private static boolean jdField_a_of_type_Boolean;
+  private WatermarkEditView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView;
+  
+  public bnnw(Activity paramActivity, View paramView, bnvb parambnvb)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new bnny();
-    case 7: 
-      return new bnoa();
-    case 5: 
-      return new bnoc();
-    case 6: 
-      return new bnod();
-    case 4: 
-      return new bnnz();
-    case 106: 
-      return new bnob();
-    }
-    return new GPUOESMovieFilter();
+    super(paramActivity, paramView, parambnvb);
   }
   
-  public static boolean a(int paramInt)
+  private void d()
+  {
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)
+    {
+      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364111);
+      if (localViewStub != null)
+      {
+        localViewStub.inflate();
+        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364110));
+        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a(this.jdField_a_of_type_AndroidAppActivity);
+      }
+    }
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a();
+    }
+  }
+  
+  public Object a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
     default: 
-      return false;
+      return Boolean.valueOf(false);
     }
-    return true;
+    return Boolean.valueOf(jdField_a_of_type_Boolean);
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 589825: 
+      d();
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    if ((this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.getVisibility() == 0)) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
+    }
+    jdField_a_of_type_Boolean = false;
   }
 }
 

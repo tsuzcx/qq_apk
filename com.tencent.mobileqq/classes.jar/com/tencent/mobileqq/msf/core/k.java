@@ -1,102 +1,101 @@
 package com.tencent.mobileqq.msf.core;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.e;
+import com.tencent.mobileqq.msf.core.net.a.f;
+import com.tencent.mobileqq.msf.service.MsfService;
+import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 final class k
-  extends Thread
+  extends BroadcastReceiver
 {
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = new File(QLog.getLogPath());
-    Object localObject2;
-    int j;
-    if (((File)localObject1).exists())
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      if ((localObject1 == null) || (localObject1.length == 0)) {
-        return;
-      }
-      Arrays.sort((Object[])localObject1, new l(this));
-      localObject2 = Calendar.getInstance();
-      j = 3;
-      try
-      {
-        str = a.h();
-        i = j;
-        if (str != null)
-        {
-          i = j;
-          if (str.length() > 0) {
-            i = Integer.parseInt(str);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          String str;
-          long l;
-          localException.printStackTrace();
-          int i = j;
-          continue;
-          if ((!TextUtils.isEmpty(localException.getName())) && (localException.getName().endsWith(".log")) && ((localException.lastModified() < System.currentTimeMillis() - 3600000L) || (localException.getName().contains((CharSequence)localObject2)))) {
-            if (h.a(localException))
-            {
-              localException.delete();
-              QLog.d(h.b, 1, "compress log " + localException.getName());
-            }
-            else
-            {
-              QLog.d(h.b, 1, "compress log fail " + localException.getName());
-            }
-          }
-        }
-      }
-      if (i >= 1)
-      {
-        j = i;
-        if (i <= 14) {}
-      }
-      else
-      {
-        j = 3;
-      }
-      ((Calendar)localObject2).add(6, j - j * 2);
-      l = ((Calendar)localObject2).getTimeInMillis();
-      localObject2 = h.i();
-      j = localObject1.length;
-      i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label362;
-        }
-        str = localObject1[i];
-        if ((l <= str.lastModified()) && (str.lastModified() <= System.currentTimeMillis() + 3600000L)) {
-          break;
-        }
-        str.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d(h.b, 2, "del expires log " + str.getName());
-        }
-        i += 1;
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext)) {
+      if (QLog.isColorLevel()) {
+        QLog.d(i.b, 2, "onReceive broadcastreceiver.action null");
       }
     }
-    label362:
-    localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).set(6, ((Calendar)localObject1).get(6) - 7);
-    ((Calendar)localObject1).set(11, 0);
-    ((Calendar)localObject1).set(12, 0);
-    ((Calendar)localObject1).set(13, 0);
-    ((Calendar)localObject1).set(14, 0);
-    e.b(((Calendar)localObject1).getTimeInMillis());
+    for (;;)
+    {
+      return;
+      QLog.d(i.b, 1, "onReceive broadcastreceiver.action = " + paramContext);
+      boolean bool;
+      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+      {
+        i.c = false;
+        aj.V = -1;
+        aj.W.set(false);
+        if ((com.tencent.mobileqq.msf.core.a.a.r()) || (i.f()))
+        {
+          i.g().removeMessages(10000);
+          i.g().sendEmptyMessageDelayed(10000, com.tencent.mobileqq.msf.core.a.a.p());
+        }
+        for (;;)
+        {
+          try
+          {
+            bool = com.tencent.mobileqq.msf.core.a.a.aQ();
+            if (!bool) {
+              break;
+            }
+            try
+            {
+              MsfService.core.sender.I.c().c();
+              return;
+            }
+            catch (Exception paramContext) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d(i.b, 2, "failed to call adaptorcontroller screenoff ", paramContext);
+            return;
+          }
+          catch (Exception paramContext)
+          {
+            QLog.d(i.b, 1, "onReceive ScreenOff to controller failed " + paramContext.toString(), paramContext);
+            return;
+          }
+          i.d += 1;
+          if (i.d == BaseConstants.checkExpiresLogScreenOffCount) {
+            i.h();
+          }
+        }
+      }
+      if (paramContext.equals("android.intent.action.SCREEN_ON"))
+      {
+        i.c = true;
+        i.g().removeMessages(10000);
+        try
+        {
+          bool = com.tencent.mobileqq.msf.core.a.a.aQ();
+          if (bool)
+          {
+            try
+            {
+              MsfService.core.sender.I.c().d();
+              return;
+            }
+            catch (Exception paramContext) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.d(i.b, 2, "failed to call adaptorcontroller screenon ", paramContext);
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext)
+        {
+          QLog.d(i.b, 1, "onReceive ScreenOn to controller failed " + paramContext.toString(), paramContext);
+        }
+      }
+    }
   }
 }
 

@@ -62,6 +62,10 @@ public final class LifecycleCallback
   public void onActivityResumed(@NotNull Activity paramActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Iterator localIterator = callbackList.iterator();
+    while (localIterator.hasNext()) {
+      ((IForeBackInterface)localIterator.next()).onResume(paramActivity);
+    }
     weakActivity = new WeakReference(paramActivity);
     paramActivity = weakActivity;
     if (paramActivity != null)
@@ -111,6 +115,10 @@ public final class LifecycleCallback
   public void onActivityStopped(@NotNull Activity paramActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Iterator localIterator = callbackList.iterator();
+    while (localIterator.hasNext()) {
+      ((IForeBackInterface)localIterator.next()).onStop(paramActivity);
+    }
     if (paramActivity.isChangingConfigurations()) {
       bufferCount -= 1;
     }
@@ -120,7 +128,7 @@ public final class LifecycleCallback
       foregroundCount -= 1;
       if (foregroundCount <= 0)
       {
-        Iterator localIterator = callbackList.iterator();
+        localIterator = callbackList.iterator();
         while (localIterator.hasNext()) {
           ((IForeBackInterface)localIterator.next()).onBackground(paramActivity);
         }
@@ -153,7 +161,7 @@ public final class LifecycleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.activty.LifecycleCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
-import com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class bhbp
-  implements bhbg
+class bhbp
+  implements Handler.Callback
 {
-  private bhbp(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
+  bhbp(bhbn parambhbn) {}
   
-  public void a(long paramLong, double paramDouble)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a(paramDouble);
+    if ((paramMessage != null) && (paramMessage.obj != null)) {
+      bhbn.a().a(paramMessage.obj.toString());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbp
  * JD-Core Version:    0.7.0.1
  */

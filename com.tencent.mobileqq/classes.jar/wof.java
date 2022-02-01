@@ -1,36 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class wof
-  extends QQUIEventReceiver<StoryMessageListActivity, vdl>
+class wof
+  implements wri
 {
-  public wof(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  wof(woe paramwoe) {}
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull vdl paramvdl)
+  public void a(boolean paramBoolean, wre paramwre)
   {
-    if (paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    yqp.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwre != null))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramvdl.jdField_a_of_type_JavaUtilList);
-      }
-      paramStoryMessageListActivity.g();
+      yqp.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramwre.b), Integer.valueOf(paramwre.a));
+      this.a.a(paramwre.b, paramwre.a);
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdl.class;
+    yqp.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wof
  * JD-Core Version:    0.7.0.1
  */

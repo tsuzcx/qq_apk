@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bnak
-  implements View.OnClickListener
+public final class bnak
 {
-  bnak(bnaj parambnaj, bnam parambnam) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!this.jdField_a_of_type_Bnam.a()) {
-      this.jdField_a_of_type_Bnam.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bnaj.a != null) {
-        this.jdField_a_of_type_Bnaj.a.a(this.jdField_a_of_type_Bnaj);
-      }
-      return;
-      this.jdField_a_of_type_Bnam.c();
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public Throwable a = null;
+  public long b;
+  public long c;
 }
 
 

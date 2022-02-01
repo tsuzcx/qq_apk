@@ -1,100 +1,236 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.IntentFilter;
+import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bcmm
 {
-  public static final String a;
+  public static long a;
+  static bcmm jdField_a_of_type_Bcmm;
+  static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public static long b;
+  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bcmn(this);
+  bcmo jdField_a_of_type_Bcmo;
+  public String a;
+  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  long c = 0L;
   
   static
   {
-    jdField_a_of_type_JavaLangString = bcmm.class.getName();
+    jdField_a_of_type_Long = 57671680L;
+    jdField_b_of_type_Long = 209715200L;
   }
   
-  public static bcmn a(MessageRecord paramMessageRecord)
+  bcmm()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessageRecord != null)
-    {
-      localObject1 = localObject2;
-      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has")))
-      {
-        localObject1 = new bcmn();
-        ((bcmn)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
-        ((bcmn)localObject1).jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
-        ((bcmn)localObject1).jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
-        ((bcmn)localObject1).jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
-        ((bcmn)localObject1).jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
-      }
-    }
-    try
-    {
-      ((bcmn)localObject1).jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
-      ((bcmn)localObject1).jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
-      ((bcmn)localObject1).jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
-      return localObject1;
-    }
-    catch (Exception paramMessageRecord)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to int. " + paramMessageRecord.getMessage());
-    }
-    return localObject1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    c();
+    b();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.intent.action.MEDIA_BAD_REMOVAL");
+    localIntentFilter.addAction("android.intent.action.MEDIA_EJECT");
+    localIntentFilter.addAction("android.intent.action.MEDIA_MOUNTED");
+    localIntentFilter.addAction("android.intent.action.MEDIA_REMOVED");
+    localIntentFilter.addAction("android.intent.action.MEDIA_UNMOUNTED");
+    localIntentFilter.addDataScheme("file");
+    VideoEnvironment.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, bcmn parambcmn)
+  public static long a(String paramString)
   {
     try
     {
-      if (TextUtils.isEmpty(parambcmn.jdField_b_of_type_JavaLangString)) {
-        return;
-      }
-      if (parambcmn.jdField_b_of_type_JavaLangString.startsWith("http"))
-      {
-        paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-        paramAppInterface.putExtra("url", parambcmn.jdField_b_of_type_JavaLangString);
-        syb.a(paramAppInterface, parambcmn.jdField_b_of_type_JavaLangString);
-        paramContext.startActivity(paramAppInterface);
-        return;
-      }
-      if (!parambcmn.jdField_b_of_type_JavaLangString.startsWith("mqqapi")) {
-        return;
-      }
-      if ((paramAppInterface instanceof QQAppInterface))
-      {
-        bdib.a((QQAppInterface)paramAppInterface, paramContext, parambcmn.jdField_b_of_type_JavaLangString).c();
-        return;
-      }
+      paramString = new StatFs(paramString);
+      long l = paramString.getAvailableBlocks();
+      int i = paramString.getBlockSize();
+      return i * l;
     }
-    catch (Exception paramAppInterface)
+    catch (Exception paramString)
     {
-      paramAppInterface.printStackTrace();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("StorageManager", 2, "getFreeSpace throw an Exception!", paramString);
+      }
     }
-    paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(parambcmn.jdField_b_of_type_JavaLangString)));
+    return 0L;
   }
   
-  public static void a(MessageRecord paramMessageRecord, bcmn parambcmn)
+  public static bcmm a()
   {
-    if ((parambcmn == null) || (paramMessageRecord == null)) {
-      return;
+    if (jdField_a_of_type_Bcmm == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bcmm == null) {
+        jdField_a_of_type_Bcmm = new bcmm();
+      }
+      return jdField_a_of_type_Bcmm;
     }
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(parambcmn.jdField_a_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", parambcmn.jdField_a_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", parambcmn.jdField_b_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", parambcmn.jdField_c_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(parambcmn.jdField_b_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", parambcmn.jdField_d_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(parambcmn.jdField_c_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(parambcmn.jdField_d_of_type_Int));
+  }
+  
+  /* Error */
+  static boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: invokestatic 132	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   5: invokevirtual 136	java/lang/Thread:getId	()J
+    //   8: lstore_2
+    //   9: new 138	java/io/File
+    //   12: dup
+    //   13: new 140	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   20: aload_0
+    //   21: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 147
+    //   26: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: lload_2
+    //   30: invokevirtual 150	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokespecial 155	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: astore_0
+    //   40: aload_0
+    //   41: invokevirtual 158	java/io/File:exists	()Z
+    //   44: ifeq +22 -> 66
+    //   47: aload_0
+    //   48: invokevirtual 161	java/io/File:delete	()Z
+    //   51: ifeq +8 -> 59
+    //   54: aload_0
+    //   55: invokevirtual 164	java/io/File:createNewFile	()Z
+    //   58: istore_1
+    //   59: aload_0
+    //   60: invokevirtual 161	java/io/File:delete	()Z
+    //   63: pop
+    //   64: iload_1
+    //   65: ireturn
+    //   66: aload_0
+    //   67: invokevirtual 164	java/io/File:createNewFile	()Z
+    //   70: istore_1
+    //   71: goto -12 -> 59
+    //   74: astore 4
+    //   76: aload 4
+    //   78: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   81: aload_0
+    //   82: invokevirtual 161	java/io/File:delete	()Z
+    //   85: pop
+    //   86: iconst_0
+    //   87: ireturn
+    //   88: astore 4
+    //   90: aload_0
+    //   91: invokevirtual 161	java/io/File:delete	()Z
+    //   94: pop
+    //   95: aload 4
+    //   97: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	paramString	String
+    //   1	70	1	bool	boolean
+    //   8	22	2	l	long
+    //   74	3	4	localThrowable	Throwable
+    //   88	8	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   40	47	74	java/lang/Throwable
+    //   47	59	74	java/lang/Throwable
+    //   66	71	74	java/lang/Throwable
+    //   40	47	88	finally
+    //   47	59	88	finally
+    //   66	71	88	finally
+    //   76	81	88	finally
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      VideoEnvironment.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(bcmo parambcmo)
+  {
+    this.jdField_a_of_type_Bcmo = parambcmo;
+  }
+  
+  void b()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "/Android/data/com.tencent.mobileqq/qq/video");
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TAG", 2, "updateStorePath:storeVideoPath=" + this.jdField_b_of_type_JavaLangString);
+        QLog.e("TAG", 2, "updateStorePath:maxAvailableSizePath=" + this.jdField_a_of_type_JavaLangString);
+      }
+      try
+      {
+        File localFile = new File(this.jdField_b_of_type_JavaLangString);
+        if (!localFile.exists())
+        {
+          localFile.mkdirs();
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+      }
+    }
+  }
+  
+  void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.c = 0L;
+      Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath();
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsValue(localObject1)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("external_card", localObject1);
+      }
+      localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject1).hasNext())
+        {
+          String str = (String)((Iterator)localObject1).next();
+          try
+          {
+            Object localObject3 = new File(str);
+            if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
+            {
+              localObject3 = new StatFs(str);
+              long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
+              if ((l > 0L) && (this.c < l))
+              {
+                this.c = l;
+                this.jdField_a_of_type_JavaLangString = str;
+              }
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

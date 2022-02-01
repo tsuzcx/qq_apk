@@ -54,13 +54,21 @@ class ClipboardJsPlugin$2
         localThrowable.put("data", "");
       }
     }
-    ((ClipboardManager)this.val$webview.getContextEx().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, this.val$finalParams.optString("data")));
-    this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+    try
+    {
+      ((ClipboardManager)this.val$webview.getContextEx().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, this.val$finalParams.optString("data")));
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, localException.getMessage(), this.val$callbackId);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ClipboardJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

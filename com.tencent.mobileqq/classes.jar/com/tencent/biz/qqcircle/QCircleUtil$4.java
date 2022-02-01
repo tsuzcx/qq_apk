@@ -2,10 +2,10 @@ package com.tencent.biz.qqcircle;
 
 import android.content.Context;
 import android.content.Intent;
-import bkny;
+import bncl;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.activity.photo.PeakService;
-import tra;
+import uxx;
 
 public final class QCircleUtil$4
   implements Runnable
@@ -14,7 +14,7 @@ public final class QCircleUtil$4
   
   public void run()
   {
-    if (bkny.a(this.a)) {}
+    if (bncl.a(this.a)) {}
     do
     {
       return;
@@ -28,12 +28,12 @@ public final class QCircleUtil$4
       }
       catch (Exception localException) {}
     } while (!QLog.isColorLevel());
-    QLog.e(tra.a(), 0, "preload peak fail ", localException);
+    QLog.e(uxx.a(), 0, "preload peak fail ", localException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.QCircleUtil.4
  * JD-Core Version:    0.7.0.1
  */

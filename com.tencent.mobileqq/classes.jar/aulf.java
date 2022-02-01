@@ -1,147 +1,141 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.manager.Manager;
 
 public class aulf
-  implements Manager
+  extends RecyclerView.Adapter<auli>
 {
-  private auld jdField_a_of_type_Auld;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, aulg> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  float jdField_a_of_type_Float = 1.0F;
+  Context jdField_a_of_type_AndroidContentContext;
+  aobu jdField_a_of_type_Aobu;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public aulf(QQAppInterface paramQQAppInterface)
+  public aulf(Context paramContext, aobu paramaobu, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aobu = paramaobu;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public int a(aulg paramaulg)
+  public auli a(ViewGroup paramViewGroup, int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    try
+    if (paramInt == aulb.b)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramaulg);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "addAioContext() called with: multiAioContext = [" + paramaulg + "], id = [" + i + "]");
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297045);
+      paramInt = i;
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        paramInt = (int)(i / this.jdField_a_of_type_Float);
       }
-      return i;
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
+      return new auli(paramViewGroup);
     }
-    finally {}
-  }
-  
-  public aulg a(int paramInt)
-  {
-    try
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559178, paramViewGroup, false);
+    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
     {
-      aulg localaulg = (aulg)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "removeAioContext() called with: id = [" + paramInt + "], multiAioContext = " + localaulg);
-      }
-      return localaulg;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
+      Object localObject1 = paramViewGroup.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = afur.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = (ImageView)paramViewGroup.findViewById(2131368507);
+      Object localObject2;
+      if (localObject1 != null)
       {
-        aulg localaulg = (aulg)localIterator.next();
-        if (localaulg != null) {
-          localaulg.a();
+        localObject2 = ((ImageView)localObject1).getLayoutParams();
+        if (localObject2 != null)
+        {
+          paramInt = afur.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
+          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
+          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         }
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      localObject1 = (TextView)paramViewGroup.findViewById(2131380124);
+      if (localObject1 != null)
+      {
+        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
+        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
+        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
     }
-    finally {}
+    return new aulh(paramViewGroup);
   }
   
-  public void a(auld paramauld)
+  public void a(auli paramauli, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "onConfUpdate : " + paramauld);
-    }
-    this.jdField_a_of_type_Auld = paramauld;
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData isConfigInited = " + this.b);
-    }
-    if (this.b) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    this.b = true;
-    b();
-    if (!this.jdField_a_of_type_Auld.a())
+    if (paramauli.a == aulb.b) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_Auld.a();
-    String str = (Build.MANUFACTURER + Build.MODEL).trim();
-    if ((localObject != null) && (((List)localObject).contains(str)))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    localObject = this.jdField_a_of_type_Auld.a();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (azjg.b((String)localObject) <= 0))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
-  }
-  
-  public aulg b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "getAioContext() called with: id = [" + paramInt + "]");
-    }
-    try
-    {
-      aulg localaulg = (aulg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      return localaulg;
-    }
-    finally {}
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Auld = ((auld)aoks.a().a(478));
-    if (this.jdField_a_of_type_Auld == null)
-    {
-      this.jdField_a_of_type_Auld = new auld();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData =null, general new bean");
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramauli, paramInt, getItemId(paramInt));
+      return;
+      if (paramauli.a == aulb.a)
+      {
+        int i = paramInt - 1;
+        if (i < 0) {
+          QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
+        }
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((paramauli instanceof aulh)) {
+          ((aulh)paramauli).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Aobu);
+        }
       }
     }
   }
   
-  public void onDestroy()
+  public void a(List<Pair<String, String>> paramList)
   {
-    a();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return aulb.b;
+    }
+    return aulb.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new aulg(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulf
  * JD-Core Version:    0.7.0.1
  */

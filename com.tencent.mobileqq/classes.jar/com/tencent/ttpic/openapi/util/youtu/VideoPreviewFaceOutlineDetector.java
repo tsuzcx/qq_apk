@@ -11,27 +11,26 @@ import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceActionCounterListener;
 import com.tencent.ttpic.facedetect.FaceStatus;
+import com.tencent.ttpic.filter.Face3DLibJNI;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.DETECT_TYPE;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.FaceDetectListener;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
-import com.tencent.ttpic.openapi.initializer.AnimojiInitializer;
+import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
-import com.tencent.ttpic.openapi.initializer.FaceKitInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.util.AgeDetector;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.youtu.ExpressionDetectorObject;
-import com.tencent.ttpic.util.youtu.FaceKitSDK;
-import com.tencent.ttpic.util.youtu.GenderDetector;
 import com.tencent.ttpic.util.youtu.VideoFaceDetector;
 import com.tencent.ttpic.util.youtu.YTFaceDetectorBase;
 import com.tencent.ttpic.util.youtu.animojisdk.AnimojiSDK;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -49,10 +48,16 @@ public class VideoPreviewFaceOutlineDetector
   private static final float offsetY = -0.05F;
   private static final float xishuX = 1.5F;
   private static final float xishuY = 0.8F;
+  private int DISTANCE_MAX_TWO_POINTS = 100;
   private final int FACEINFO_BUFFER_LIFE = 0;
+  private final int SLEFT_EYE_INDEX = 43;
+  private final int SRIGHT_EYE_INDEX = 53;
   private float[] animojiSDKResetFaceAngles = { 90.0F, 90.0F, 90.0F };
   private Handler doTrackHandler;
-  private FaceKitSDK faceKitSDK = FaceKitSDK.INSTANCE;
+  private float[] face3DInputPtsArray = new float['¦'];
+  private float[] face3DOutputPoseParams = new float[6];
+  private List<float[]> face3DRotationArray = new ArrayList();
+  private List<float[]> face3DVerticesArray = new ArrayList();
   private List<float[]> faceKitVerticesArray = new ArrayList();
   private PointF facePiont2DCenter = new PointF(0.0F, 0.0F);
   private long faceTrackTime = 0L;
@@ -67,16 +72,20 @@ public class VideoPreviewFaceOutlineDetector
   private List<FaceInfo> lastFaceInfos = new ArrayList(3);
   private List<PointF> lastFaceKitPoint83 = new ArrayList();
   private int mDetectType = FaceDetector.DETECT_TYPE.DETECT_TYPE_NONE.value;
+  private HashMap<Integer, Long> mFaceCodeIDMap;
   private VideoFaceDetector mFaceDetect = new VideoFaceDetector();
   private boolean mInitSuccess = false;
   private boolean mIsLastFaceDetected = false;
   private boolean mIsSmallFace = false;
   private boolean mIsSupportSmallFace = false;
   private long mSmallFaceChangeTime = 0L;
+  private List<VideoPreviewFaceOutlineDetector.TraceFaceItem> mTraceFcaeList;
   private boolean needDetect3D = false;
   private boolean needExpressionWeights;
   private boolean needFaceKit = false;
+  private boolean needPoseEstimate = false;
   private boolean needReset = false;
+  private long sFaceIndexCount = 0L;
   
   private void bufferFaceInfos()
   {
@@ -146,9 +155,36 @@ public class VideoPreviewFaceOutlineDetector
     }
   }
   
+  private VideoPreviewFaceOutlineDetector.TraceFaceItem creatTraceFaceItem(FaceInfo paramFaceInfo)
+  {
+    long l = this.sFaceIndexCount;
+    this.sFaceIndexCount = (1L + l);
+    return new VideoPreviewFaceOutlineDetector.TraceFaceItem(this, l, paramFaceInfo);
+  }
+  
+  private double distance2Points(PointF paramPointF1, PointF paramPointF2)
+  {
+    Log.i(TAG, "DIS:(" + paramPointF1.x + "," + paramPointF1.y + ")->(" + paramPointF2.x + "," + paramPointF2.y + ")");
+    float f1 = paramPointF2.x - paramPointF1.x;
+    float f2 = paramPointF2.y - paramPointF1.y;
+    return Math.sqrt(f1 * f1 + f2 * f2);
+  }
+  
   private float getDist(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     return (float)Math.sqrt((paramFloat1 - paramFloat3) * (paramFloat1 - paramFloat3) + (paramFloat2 - paramFloat4) * (paramFloat2 - paramFloat4));
+  }
+  
+  private long getFaceIDByFaceInfo(FaceInfo paramFaceInfo)
+  {
+    if ((paramFaceInfo == null) || (this.mFaceCodeIDMap == null)) {
+      return -1L;
+    }
+    paramFaceInfo = (Long)this.mFaceCodeIDMap.get(Integer.valueOf(paramFaceInfo.hashCode()));
+    if (paramFaceInfo == null) {
+      return -2L;
+    }
+    return paramFaceInfo.longValue();
   }
   
   private float getFakeFaceValues(int paramInt)
@@ -174,35 +210,6 @@ public class VideoPreviewFaceOutlineDetector
   public static float getFov()
   {
     return fov;
-  }
-  
-  private boolean isFaceKitValid(List<PointF> paramList, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
-  {
-    if ((paramList == null) || (paramArrayOfFloat == null) || (paramInt1 == 0) || (paramInt2 == 0)) {
-      return false;
-    }
-    if ((paramList.size() < 83) || (paramArrayOfFloat.length < 19335)) {
-      return false;
-    }
-    PointF localPointF1 = new PointF((paramArrayOfFloat[18576] + paramArrayOfFloat[8439]) / 2.0F, paramInt2 - (paramArrayOfFloat[18577] + paramArrayOfFloat[8440]) / 2.0F);
-    paramArrayOfFloat = new PointF((paramArrayOfFloat[16227] + paramArrayOfFloat[13191]) / 2.0F, paramInt2 - (paramArrayOfFloat[16228] + paramArrayOfFloat[13192]) / 2.0F);
-    float f1 = ((PointF)paramList.get(37)).x;
-    f1 = (((PointF)paramList.get(41)).x + f1) / 2.0F;
-    float f2 = ((PointF)paramList.get(37)).y;
-    PointF localPointF2 = new PointF(f1, (((PointF)paramList.get(41)).y + f2) / 2.0F);
-    f1 = ((PointF)paramList.get(47)).x;
-    f1 = (((PointF)paramList.get(51)).x + f1) / 2.0F;
-    f2 = ((PointF)paramList.get(47)).y;
-    paramList = new PointF(f1, (((PointF)paramList.get(51)).y + f2) / 2.0F);
-    f1 = getDist(localPointF1.x, localPointF1.y, localPointF2.x, localPointF2.y);
-    f2 = getDist(paramArrayOfFloat.x, paramArrayOfFloat.y, paramList.x, paramList.y);
-    float f3 = getDist(localPointF2.x, localPointF2.y, paramList.x, paramList.y);
-    if (f1 + f2 > f3 / 2.0F)
-    {
-      Log.d("FaceKitIsValid", "leftEyeDis : " + f1 + "，rightEyeDis: " + f2 + "，eye2DDis：" + f3);
-      return false;
-    }
-    return true;
   }
   
   private boolean isInRefineCrashWhiteName()
@@ -317,7 +324,7 @@ public class VideoPreviewFaceOutlineDetector
       localObject = new PointF(((PointF)((List)localObject).get(35)).x - ((PointF)((List)localObject).get(39)).x, ((PointF)((List)localObject).get(35)).y - ((PointF)((List)localObject).get(39)).y);
       f2 = (float)(180.0D * (Math.atan2(localPointF2.x, localPointF2.y) - Math.atan2(((PointF)localObject).x, ((PointF)localObject).y)) / 3.141592653589793D);
       if (f2 <= 180.0D) {
-        break label899;
+        break label903;
       }
       f1 = (float)(f2 - 360.0D);
     }
@@ -336,7 +343,7 @@ public class VideoPreviewFaceOutlineDetector
       }
       f1 = (float)(f2 + 360.0D);
       break;
-      label899:
+      label903:
       f1 = f2;
       if (f2 < -180.0D) {
         f1 = (float)(f2 + 360.0D);
@@ -398,6 +405,7 @@ public class VideoPreviewFaceOutlineDetector
         this.lastDoTrackSize.y = 0;
         localPoint.x = 0;
       }
+      resetTraceFaceItems();
       return;
     }
   }
@@ -453,11 +461,11 @@ public class VideoPreviewFaceOutlineDetector
       i = 1;
       this.faceTrackTime = System.currentTimeMillis();
       if (i == 0) {
-        break label1440;
+        break label841;
       }
       BenchUtil.benchStart("only doTrack");
       if (!this.needDetect3D) {
-        break label366;
+        break label474;
       }
       BenchUtil.benchStart("faceDetect3D");
       localObject1 = this.mFaceDetect.doTrack3D(paramArrayOfByte, paramInt1, paramInt2, fov);
@@ -468,178 +476,123 @@ public class VideoPreviewFaceOutlineDetector
     for (;;)
     {
       this.faceTrackTime = (System.currentTimeMillis() - this.faceTrackTime);
-      boolean bool;
+      boolean bool1;
+      label145:
+      Object localObject2;
+      Object localObject3;
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        bool = true;
-        label145:
-        this.mIsLastFaceDetected = bool;
-        if (!bool)
+        bool1 = true;
+        this.mIsLastFaceDetected = bool1;
+        if (!bool1)
         {
           this.lastFaceDetectedPhoneRotation = 0;
           if (this.lastFaceKitPoint83 != null) {
             this.lastFaceKitPoint83.clear();
           }
         }
-        if ((this.needFaceKit) && (!FeatureManager.Features.FACE_KIT.isFunctionReady())) {
-          FeatureManager.Features.FACE_KIT.init();
+        updatePointsAndAngles((FaceStatus[])localObject1);
+        if ((!this.needFaceKit) && (!this.needExpressionWeights)) {
+          break label771;
         }
-        if ((this.needFaceKit) && (FeatureManager.Features.FACE_KIT.isFunctionReady()) && (localObject1 != null))
-        {
-          BenchUtil.benchStart("faceKit detect");
-          i = 0;
+        if (!FeatureManager.Features.FACE_3D_LIB.isFunctionReady()) {
+          FeatureManager.Features.FACE_3D_LIB.init();
+        }
+        if ((!FeatureManager.Features.FACE_3D_LIB.isFunctionReady()) || (localObject1 == null)) {
+          break label771;
+        }
+        if (this.face3DVerticesArray.size() == 0) {
+          this.face3DVerticesArray.add(new float[10344]);
+        }
+        if (this.face3DRotationArray.size() == 0) {
+          this.face3DRotationArray.add(new float[16]);
+        }
+        if (this.faceInfos.size() <= 0) {
+          break label737;
+        }
+        i = 0;
+        if (i >= this.faceInfos.size()) {
+          break label771;
+        }
+        localObject1 = (FaceInfo)this.faceInfos.get(i);
+        localObject2 = ((FaceInfo)localObject1).points;
+        if (i != 0) {
+          break label685;
+        }
+        if (!AlgoUtils.isFacePointsValid((List)localObject2)) {
+          break label700;
+        }
+        localObject3 = AlgoUtils.getFaceRectF((List)localObject2);
+        if ((localObject3 == null) || (Math.min(((RectF)localObject3).width(), ((RectF)localObject3).height()) <= 0.0F)) {
+          break label835;
         }
       }
-      else
+      label685:
+      label700:
+      label835:
+      for (float f1 = 60.0F / Math.min(((RectF)localObject3).width(), ((RectF)localObject3).height());; f1 = 1.0F)
       {
+        int j = 0;
         for (;;)
         {
-          if (i >= localObject1.length) {
-            break label1237;
-          }
-          if (i == 0)
+          if (j < 83)
           {
-            localAnimojiSDK = localObject1[i];
-            List localList = YoutuPointsUtil.transform90PointsTo83(localAnimojiSDK.xys);
-            int j = localList.size();
-            Object localObject2 = (float[][])Array.newInstance(Float.TYPE, new int[] { j, 2 });
-            j = 0;
-            for (;;)
-            {
-              if (j < localList.size())
-              {
-                localObject2[j][0] = ((PointF)localList.get(j)).x;
-                localObject2[j][1] = ((PointF)localList.get(j)).y;
-                j += 1;
-                continue;
-                i = 0;
-                break;
-                label366:
-                BenchUtil.benchStart("faceDetect");
-                localObject1 = this.mFaceDetect.doTrack(paramArrayOfByte, paramInt1, paramInt2);
-                BenchUtil.benchEnd("faceDetect");
-                break label112;
-                bool = false;
-                break label145;
-              }
-            }
-            Object localObject3 = new float[68];
-            float[] arrayOfFloat2 = new float[68];
-            float[] arrayOfFloat1 = new float[''];
-            ArrayList localArrayList1 = new ArrayList();
-            ArrayList localArrayList2 = new ArrayList();
-            FaceKitSDK localFaceKitSDK = this.faceKitSDK;
-            FaceKitSDK.convertPoints((float[][])localObject2, localArrayList1, localArrayList2);
-            j = 0;
-            while (j < 68)
-            {
-              localObject3[j] = ((Float)localArrayList1.get(j)).floatValue();
-              arrayOfFloat2[j] = (paramInt2 - ((Float)localArrayList2.get(j)).floatValue());
-              arrayOfFloat1[(j * 2)] = localObject3[j];
-              arrayOfFloat1[(j * 2 + 1)] = (paramInt2 - arrayOfFloat2[j]);
-              j += 1;
-            }
-            if (this.faceKitVerticesArray.size() == 0)
-            {
-              localObject2 = this.faceKitVerticesArray;
-              localObject3 = this.faceKitSDK;
-              ((List)localObject2).add(new float[19335]);
-              this.featureIndicesArray.add(new int[68]);
-            }
-            if (!AlgoUtils.samePeople(localList, this.lastFaceKitPoint83))
-            {
-              this.faceKitSDK.nativeReset();
-              this.animojiSDKResetFaceAngles[0] = localAnimojiSDK.pitch;
-              this.animojiSDKResetFaceAngles[1] = localAnimojiSDK.yaw;
-              this.animojiSDKResetFaceAngles[2] = localAnimojiSDK.roll;
-            }
-            for (;;)
-            {
-              this.lastFaceKitPoint83 = localList;
-              this.facePiont2DCenter.x = ((PointF)localList.get(63)).x;
-              this.facePiont2DCenter.y = ((PointF)localList.get(63)).y;
-              this.faceKitSDK.doTrack(arrayOfFloat1, paramInt1, paramInt2, (float[])this.faceKitVerticesArray.get(i), (int[])this.featureIndicesArray.get(i), true);
-              localObject2 = this.faceKitSDK;
-              j = 6310;
-              for (;;)
-              {
-                localObject2 = this.faceKitSDK;
-                if (j >= 6445) {
-                  break;
-                }
-                localObject2 = this.faceKitSDK;
-                localObject2 = FaceKitSDK.FACEKIT_INDEX_MAP;
-                localObject3 = this.faceKitSDK;
-                int k = localObject2[(j - 6310)];
-                ((float[])this.faceKitVerticesArray.get(i))[(j * 3)] = ((float[])this.faceKitVerticesArray.get(i))[(k * 3)];
-                ((float[])this.faceKitVerticesArray.get(i))[(j * 3 + 1)] = ((float[])this.faceKitVerticesArray.get(i))[(k * 3 + 1)];
-                ((float[])this.faceKitVerticesArray.get(i))[(j * 3 + 2)] = ((float[])this.faceKitVerticesArray.get(i))[(k * 3 + 2)];
-                j += 1;
-              }
-              if ((Math.abs(localAnimojiSDK.pitch) <= 15.0F) && (Math.abs(localAnimojiSDK.yaw) <= 15.0F) && (Math.abs(localAnimojiSDK.roll) <= 15.0F) && ((Math.abs(this.animojiSDKResetFaceAngles[0]) > 15.0F) || (Math.abs(this.animojiSDKResetFaceAngles[1]) > 15.0F) || (Math.abs(this.animojiSDKResetFaceAngles[2]) > 15.0F)))
-              {
-                this.faceKitSDK.nativeReset();
-                this.animojiSDKResetFaceAngles[0] = localAnimojiSDK.pitch;
-                this.animojiSDKResetFaceAngles[1] = localAnimojiSDK.yaw;
-                this.animojiSDKResetFaceAngles[2] = localAnimojiSDK.roll;
-              }
-            }
-            if (Float.isNaN(((float[])this.faceKitVerticesArray.get(i))[0]))
-            {
-              this.faceKitSDK.nativeResetAndReTrack(arrayOfFloat1, paramInt1, paramInt2);
-              this.animojiSDKResetFaceAngles[0] = localAnimojiSDK.pitch;
-              this.animojiSDKResetFaceAngles[1] = localAnimojiSDK.yaw;
-              this.animojiSDKResetFaceAngles[2] = localAnimojiSDK.roll;
-            }
-            if ((this.faceKitVerticesArray != null) && (!isFaceKitValid(localList, (float[])this.faceKitVerticesArray.get(i), paramInt1, paramInt2)))
-            {
-              if (this.lastFaceKitPoint83 != null) {
-                this.lastFaceKitPoint83.clear();
-              }
-              this.faceKitVerticesArray.clear();
-              this.featureIndicesArray.clear();
-              this.faceKitSDK.nativeReset();
-              this.animojiSDKResetFaceAngles[0] = localAnimojiSDK.pitch;
-              this.animojiSDKResetFaceAngles[1] = localAnimojiSDK.yaw;
-              this.animojiSDKResetFaceAngles[2] = localAnimojiSDK.roll;
-            }
+            this.face3DInputPtsArray[(j * 2)] = (((PointF)((List)localObject2).get(j)).x * f1);
+            this.face3DInputPtsArray[(j * 2 + 1)] = (((PointF)((List)localObject2).get(j)).y * f1);
+            j += 1;
+            continue;
+            i = 0;
+            break;
+            label474:
+            BenchUtil.benchStart("faceDetect");
+            localObject1 = this.mFaceDetect.doTrack(paramArrayOfByte, paramInt1, paramInt2, this.needPoseEstimate);
+            BenchUtil.benchEnd("faceDetect");
+            break label112;
+            bool1 = false;
+            break label145;
           }
-          i += 1;
         }
-      }
-      label1237:
-      updatePointsAndAngles((FaceStatus[])localObject1);
-      if (this.needExpressionWeights) {
-        FeatureManager.Features.ANIMOJI.init();
-      }
-      AnimojiSDK localAnimojiSDK = FeatureManager.Features.ANIMOJI.getAnimojiSDK();
-      if ((this.needExpressionWeights) && (FeatureManager.Features.ANIMOJI.isFunctionReady()) && (localObject1 != null))
-      {
-        BenchUtil.benchStart("animoji expression detect");
-        i = 0;
-        while (i < this.faceInfos.size())
+        if ((((FaceInfo)localObject1).expressionWeights == null) || (((FaceInfo)localObject1).expressionWeights.length != 52)) {
+          ((FaceInfo)localObject1).expressionWeights = new float[52];
+        }
+        float f2 = -((FaceInfo)localObject1).pitch;
+        float f3 = -((FaceInfo)localObject1).yaw;
+        float f4 = -((FaceInfo)localObject1).roll;
+        localObject2 = Face3DLibJNI.getInstance();
+        localObject3 = this.face3DInputPtsArray;
+        float[] arrayOfFloat1 = (float[])this.face3DVerticesArray.get(0);
+        float[] arrayOfFloat2 = this.face3DOutputPoseParams;
+        float[] arrayOfFloat3 = ((FaceInfo)localObject1).expressionWeights;
+        j = (int)(paramInt1 * f1);
+        int k = (int)(paramInt2 * f1);
+        boolean bool2 = this.needFaceKit;
+        ((Face3DLibJNI)localObject2).track((float[])localObject3, new float[] { f2, f3, f4 }, arrayOfFloat1, arrayOfFloat2, arrayOfFloat3, j, k, bool2);
+        AlgoUtils.calcTransformMatrix(this.face3DOutputPoseParams, (float[])this.face3DRotationArray.get(0), f1);
+        for (;;)
         {
-          localObject1 = (FaceInfo)this.faceInfos.get(i);
-          updateExpressionWeights(paramInt1, paramInt2, localAnimojiSDK, i, (FaceInfo)localObject1);
           updateEyeRollWeights((FaceInfo)localObject1);
           i += 1;
+          break;
+          Arrays.fill((float[])this.face3DVerticesArray.get(0), 0.0F);
+          Arrays.fill((float[])this.face3DRotationArray.get(0), 0.0F);
         }
+        label737:
+        Arrays.fill((float[])this.face3DVerticesArray.get(0), 0.0F);
+        Arrays.fill((float[])this.face3DRotationArray.get(0), 0.0F);
+        bufferFaceInfos();
+        this.mExpressionDetectorObject.addFaces(this.faceInfos);
+        updateFacesTrack(this.faceInfos);
+        if (AgeDetector.getInstance().isDetectAge()) {
+          AgeDetector.getInstance().detectAgeAndUpdateFaceInfo(paramArrayOfByte, paramInt1, paramInt2, this.faceInfos);
+        }
+        updateTriggerExpression();
+        updateActionCount();
+        updateActionStatusChanged();
+        notifyFaceDetectListener();
+        return bool1;
       }
-      bufferFaceInfos();
-      this.mExpressionDetectorObject.addFaces(this.faceInfos);
-      GenderDetector.getInstance().updateFacesTrack(this.faceInfos);
-      if (GenderDetector.getInstance().isDetectGender()) {
-        GenderDetector.getInstance().detectGenderAndUpdateFaceInfo(paramArrayOfByte, paramInt1, paramInt2, this.faceInfos);
-      }
-      if (AgeDetector.getInstance().isDetectAge()) {
-        AgeDetector.getInstance().detectAgeAndUpdateFaceInfo(paramArrayOfByte, paramInt1, paramInt2, this.faceInfos);
-      }
-      updateTriggerExpression();
-      updateActionCount();
-      updateActionStatusChanged();
-      notifyFaceDetectListener();
-      return bool;
-      label1440:
+      label771:
+      label841:
       localObject1 = null;
     }
   }
@@ -701,7 +654,7 @@ public class VideoPreviewFaceOutlineDetector
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   5: getfield 105	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
     //   8: istore_2
     //   9: iload_2
     //   10: ifeq +7 -> 17
@@ -710,29 +663,29 @@ public class VideoPreviewFaceOutlineDetector
     //   15: iload_1
     //   16: ireturn
     //   17: aload_0
-    //   18: invokespecial 709	com/tencent/ttpic/openapi/facedetect/FaceDetector:init	()I
+    //   18: invokespecial 732	com/tencent/ttpic/openapi/facedetect/FaceDetector:init	()I
     //   21: pop
     //   22: aload_0
-    //   23: getfield 166	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
+    //   23: getfield 189	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
     //   26: ifnull +14 -> 40
     //   29: aload_0
     //   30: aload_0
-    //   31: getfield 166	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
-    //   34: invokevirtual 710	com/tencent/ttpic/util/youtu/VideoFaceDetector:init	()Z
-    //   37: putfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
-    //   40: getstatic 73	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:TAG	Ljava/lang/String;
-    //   43: new 267	java/lang/StringBuilder
+    //   31: getfield 189	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mFaceDetect	Lcom/tencent/ttpic/util/youtu/VideoFaceDetector;
+    //   34: invokevirtual 733	com/tencent/ttpic/util/youtu/VideoFaceDetector:init	()Z
+    //   37: putfield 105	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   40: getstatic 85	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:TAG	Ljava/lang/String;
+    //   43: new 279	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 268	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 712
-    //   53: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   50: ldc_w 735
+    //   53: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_0
-    //   57: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
-    //   60: invokevirtual 715	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 284	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 720	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: getfield 105	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   60: invokevirtual 738	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokestatic 743	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   69: aload_0
-    //   70: getfield 93	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
+    //   70: getfield 105	com/tencent/ttpic/openapi/util/youtu/VideoPreviewFaceOutlineDetector:mInitSuccess	Z
     //   73: istore_2
     //   74: iload_2
     //   75: ifne -62 -> 13
@@ -795,14 +748,39 @@ public class VideoPreviewFaceOutlineDetector
     }
   }
   
+  public void reset()
+  {
+    this.mFaceDetect.reset();
+  }
+  
   public void resetAnimoji()
   {
     this.needReset = true;
   }
   
+  public void resetTraceFaceItems()
+  {
+    if (this.mFaceCodeIDMap != null) {
+      this.mFaceCodeIDMap.clear();
+    }
+    if (this.mTraceFcaeList != null) {
+      this.mTraceFcaeList.clear();
+    }
+  }
+  
   public void setDoTrackHandler(Handler paramHandler)
   {
     this.doTrackHandler = paramHandler;
+  }
+  
+  public void setFace3DRotationArray(List<float[]> paramList)
+  {
+    this.face3DRotationArray = paramList;
+  }
+  
+  public void setFace3DVerticesArray(List<float[]> paramList)
+  {
+    this.face3DVerticesArray = paramList;
   }
   
   public void setFaceKitVerticesArray(List<float[]> paramList)
@@ -843,15 +821,119 @@ public class VideoPreviewFaceOutlineDetector
     this.needFaceKit = paramBoolean;
   }
   
+  public void setNeedPoseEstimate(boolean paramBoolean)
+  {
+    this.needPoseEstimate = paramBoolean;
+  }
+  
   public void setSupportSmallFace(boolean paramBoolean)
   {
     this.mIsSupportSmallFace = paramBoolean;
     Log.i("faceDetect", "IsSupportSmallFace = " + this.mIsSupportSmallFace);
   }
+  
+  public void updateFacesTrack(List<FaceInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      if (this.mTraceFcaeList != null) {
+        this.mTraceFcaeList.clear();
+      }
+      this.mTraceFcaeList = null;
+    }
+    int j;
+    int k;
+    int i;
+    for (;;)
+    {
+      return;
+      if (this.mTraceFcaeList == null) {
+        this.mTraceFcaeList = new ArrayList();
+      }
+      j = paramList.size();
+      k = this.mTraceFcaeList.size();
+      if (j != k) {
+        break;
+      }
+      i = 0;
+      while (i < j)
+      {
+        ((VideoPreviewFaceOutlineDetector.TraceFaceItem)this.mTraceFcaeList.get(i)).updatePoints((FaceInfo)paramList.get(i));
+        i += 1;
+      }
+    }
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    label209:
+    FaceInfo localFaceInfo;
+    if (k > j)
+    {
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      Log.i(TAG, "人脸变少了：mTraceFcaeList=" + this.mTraceFcaeList.size() + "-->Faces=" + paramList.size());
+      Iterator localIterator1 = paramList.iterator();
+      if (localIterator1.hasNext())
+      {
+        localFaceInfo = (FaceInfo)localIterator1.next();
+        double d1 = this.DISTANCE_MAX_TWO_POINTS;
+        Iterator localIterator2 = this.mTraceFcaeList.iterator();
+        paramList = null;
+        label250:
+        while (localIterator2.hasNext())
+        {
+          VideoPreviewFaceOutlineDetector.TraceFaceItem localTraceFaceItem = (VideoPreviewFaceOutlineDetector.TraceFaceItem)localIterator2.next();
+          if (!localArrayList2.contains(localTraceFaceItem))
+          {
+            double d2 = localTraceFaceItem.distanceTwoFaces(localFaceInfo);
+            if (d2 >= d1) {
+              break label475;
+            }
+            d1 = d2;
+            paramList = localTraceFaceItem;
+          }
+        }
+      }
+    }
+    label396:
+    label447:
+    label475:
+    for (;;)
+    {
+      break label250;
+      if (paramList != null)
+      {
+        paramList.updatePoints(localFaceInfo);
+        localArrayList1.add(paramList);
+        localArrayList2.add(paramList);
+        Log.i(TAG, "匹配上一帧人脸，ID：" + VideoPreviewFaceOutlineDetector.TraceFaceItem.access$600(paramList));
+        break label209;
+      }
+      Log.i(TAG, "人脸丢失，ID");
+      break label209;
+      this.mTraceFcaeList.clear();
+      this.mTraceFcaeList = localArrayList1;
+      return;
+      i = 0;
+      if (i < j)
+      {
+        if (i >= k) {
+          break label447;
+        }
+        ((VideoPreviewFaceOutlineDetector.TraceFaceItem)this.mTraceFcaeList.get(i)).updatePoints((FaceInfo)paramList.get(i));
+      }
+      for (;;)
+      {
+        i += 1;
+        break label396;
+        break;
+        this.mTraceFcaeList.add(creatTraceFaceItem((FaceInfo)paramList.get(i)));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector
  * JD-Core Version:    0.7.0.1
  */

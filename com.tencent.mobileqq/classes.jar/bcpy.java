@@ -1,40 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopManagerProxy.Proxy;
 
-final class bcpy
-  implements bcxu
+public final class bcpy
+  implements RecentRoute.TroopManagerProxy.Proxy
 {
-  bcpy(TroopInfoData paramTroopInfoData) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public TroopInfoStub getTroopInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
   {
-    String str1;
-    if (this.a.isMember)
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
     {
-      str1 = "";
-      switch (paramInt)
-      {
+      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString, true);
       }
     }
-    while (TextUtils.isEmpty(str1))
-    {
-      return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
-    }
-    String str3 = this.a.troopUin;
-    String str4 = bdes.a(this.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      bdes.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
-      return;
-    }
+    return null;
   }
 }
 

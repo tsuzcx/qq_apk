@@ -1,67 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.MessageSearchActivity;
 import java.util.List;
 
 public class bbml
+  implements bbmx
 {
-  private final QQAppInterface a;
+  public static final String a;
+  private List<bbmy> a;
+  private String b;
   
-  bbml(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.a = paramQQAppInterface;
+    jdField_a_of_type_JavaLangString = anni.a(2131704183);
   }
   
-  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
+  public bbml(List<bbmy> paramList, String paramString)
   {
-    if ((paramFullListGroupAppEntity == null) || (bbmp.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
-      }
-      return;
-    }
-    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
-    paramFullListGroupAppEntity.setStatus(1000);
-    localawgf.a(FullListGroupAppEntity.class.getSimpleName(), null, null);
-    localawgf.b(paramFullListGroupAppEntity);
-    localawgf.a();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
   }
   
-  public void a()
+  public int a()
   {
-    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
-    bbmk localbbmk = bbmk.a(this.a);
-    Object localObject = localawgf.a(FullListGroupAppEntity.class);
-    if (!bbmp.a((Collection)localObject))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
-        if (!bbmp.a(localFullListGroupAppEntity.troopAIOAppInfos))
-        {
-          localbbmk.a = localFullListGroupAppEntity.troopAIOAppInfos;
-          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localbbmk.a);
-          return;
-        }
-      }
-    }
-    localawgf.a();
+    return 3;
   }
   
-  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
+  public String a()
   {
-    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  void b()
+  public List<bbmy> a()
   {
-    this.a.getEntityManagerFactory().createEntityManager().a(FullListGroupAppEntity.class.getSimpleName(), null, null);
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    bbup.a(this.b, 40, 0, paramView);
+    MessageSearchActivity.a(paramView.getContext(), this.b);
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

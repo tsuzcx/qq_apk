@@ -1,19 +1,11 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class aqia
-  implements View.OnClickListener
+public class aqia
 {
-  aqia(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
-  {
-    azqs.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public String a;
 }
 
 

@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
 
-class xzv
-  implements DialogInterface.OnClickListener
+public class xzv
+  implements bkle
 {
-  xzv(xzu paramxzu) {}
+  public xzv(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(int paramInt)
   {
-    ((ambq)this.a.a.app.a(10)).a(true);
-    azqs.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
+    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Xzy != null)) {
+      this.a.jdField_a_of_type_Xzy.a(this.a.jdField_a_of_type_Xzs.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzv
  * JD-Core Version:    0.7.0.1
  */

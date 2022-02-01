@@ -1,88 +1,112 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahqq
-  extends ameq
+  extends ahqi
+  implements Animation.AnimationListener
 {
-  public ahqq(TroopView paramTroopView) {}
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public ahqq(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.j();
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        paramQQAppInterface = (QQAppInterface)localObject;
+      }
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        return "troop_dna_aio_guide_counts";
       }
     }
+    return "troop_dna_aio_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561033, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362943));
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agis != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agis.b(true);
+    }
+    bcst.b(null, "dc00898", "", "", "0X800A469", "0X800A469", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = true;
+    boolean bool2 = awvy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Agis == null))
+    {
+      QLog.d("NavigateBarManager.TroopDNANavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+      bool1 = false;
+    }
+    int i;
     do
     {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.j();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.j();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      TroopView.a(this.a);
-    }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (!paramBoolean) {
-        break label79;
+      return bool1;
+      i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager.TroopDNANavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.a(101, 800L);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
-      return;
-      label79:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131720337);
-    }
+    } while ((bool2) && (i < 3));
+    return false;
   }
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  public void b()
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopDNANavBar.1(this), 500L);
+    ThreadManager.postImmediately(new TroopDNANavBar.2(this), null, false);
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void c() {}
+  
+  public void d()
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
   }
   
-  protected void b(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

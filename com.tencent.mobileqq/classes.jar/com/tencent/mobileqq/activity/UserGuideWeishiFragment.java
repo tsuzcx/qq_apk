@@ -16,6 +16,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 
@@ -35,10 +37,10 @@ public class UserGuideWeishiFragment
     if (QLog.isColorLevel()) {
       QLog.d("UserGuideWeishiFragment", 2, "initUI has been called");
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363399);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379435);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363593);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380359);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379436));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380360));
     b();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UserGuideWeishiFragment.FinishDeLay5Seconds(new WeakReference(getActivity())), 5000L);
@@ -98,12 +100,12 @@ public class UserGuideWeishiFragment
     //   91: astore 5
     //   93: aload 5
     //   95: ifnull +159 -> 254
-    //   98: new 154	bhvj
+    //   98: new 154	bkiw
     //   101: dup
     //   102: aload 5
     //   104: iload_1
     //   105: iload_2
-    //   106: invokespecial 157	bhvj:<init>	(Landroid/graphics/Bitmap;II)V
+    //   106: invokespecial 157	bkiw:<init>	(Landroid/graphics/Bitmap;II)V
     //   109: astore 5
     //   111: aload 5
     //   113: ifnull +71 -> 184
@@ -346,19 +348,23 @@ public class UserGuideWeishiFragment
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UserGuideWeishiFragment", 2, "user_guide_enter_qq has been clicked");
+      }
+      getActivity().finish();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UserGuideWeishiFragment", 2, "user_guide_enter_qq has been clicked");
-    }
-    getActivity().finish();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562808, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131563045, null);
     a(paramLayoutInflater);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -399,7 +405,7 @@ public class UserGuideWeishiFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class attd
-  implements View.OnClickListener
+public abstract interface attd<M>
 {
-  attd(atsy paramatsy, atso paramatso) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso.a()) {}
-    while (paramView.isSelected()) {
-      return;
-    }
-    this.jdField_a_of_type_Atsy.a(paramView);
-    this.jdField_a_of_type_Atsy.jdField_a_of_type_Int = 3;
-    atso.a(this.jdField_a_of_type_Atsy.jdField_a_of_type_Atso, Integer.valueOf(3));
-    azqs.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
-  }
+  public abstract void a(List<M> paramList, int paramInt, attj paramattj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attd
  * JD-Core Version:    0.7.0.1
  */

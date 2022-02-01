@@ -1,18 +1,20 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 
-public class acmf
-  implements DialogInterface.OnClickListener
+class acmf
+  implements AdIPCManager.Callback
 {
-  public acmf(ChatHistory paramChatHistory) {}
+  acmf(acme paramacme) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    if (paramResult != null) {}
+    for (boolean bool = paramResult.success;; bool = false)
+    {
+      acqy.b("GdtInterstitialPreDownloader", String.format("predownload.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
+    }
   }
 }
 

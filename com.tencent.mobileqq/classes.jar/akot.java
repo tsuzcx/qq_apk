@@ -1,24 +1,124 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class akot
-  implements akou
+public class akot
+  extends RecyclerView.Adapter<akou>
 {
-  akot(akos paramakos) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public akot(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
-    if ((akos.a(this.a) != null) && (paramApolloActionPush != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public akou a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new akou(this, new akov(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new ahgf(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
+  }
+  
+  public void a(akou paramakou, int paramInt)
+  {
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramakou.getPosition());
+    if (localRedPackGrapInfo == null) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((akos.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == akos.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(akos.a(this.a).jdField_a_of_type_JavaLangString)) && (akos.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramakou, paramInt, getItemId(paramInt));
+      return;
+      akov localakov = paramakou.a;
+      if (localakov != null) {
+        localakov.a(localRedPackGrapInfo);
       }
     }
+  }
+  
+  void a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          break label233;
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label234;
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        RedPackGrapInfo localRedPackGrapInfo;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
+        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
+        return;
+        i += 1;
+        continue;
+        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
+        return;
+        i = 0;
+        continue;
+      }
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        {
+          j = i;
+          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+            j = i - 1;
+          }
+          this.jdField_a_of_type_JavaUtilList.remove(j);
+          notifyItemRemoved(j);
+          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
+          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
+            break label233;
+          }
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
+            break label233;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+        }
+      }
+      label233:
+      return;
+      label234:
+      int i = 0;
+    }
+  }
+  
+  void a(List<RedPackGrapInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

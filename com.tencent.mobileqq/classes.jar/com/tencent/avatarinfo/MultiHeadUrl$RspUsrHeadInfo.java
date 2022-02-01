@@ -18,7 +18,7 @@ public final class MultiHeadUrl$RspUsrHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.avatarinfo.MultiHeadUrl.RspUsrHeadInfo
  * JD-Core Version:    0.7.0.1
  */

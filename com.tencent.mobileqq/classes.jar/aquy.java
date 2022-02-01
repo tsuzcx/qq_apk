@@ -1,53 +1,56 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aquy
+  extends aqkz<aqux>
 {
-  int jdField_a_of_type_Int;
-  public aqva a;
-  aqvc jdField_a_of_type_Aqvc;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
-  
-  aquy(aque paramaque, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
+  @NonNull
+  public aqux a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Aqva = new aquz(this, paramaque, paramMessageRecord);
+    return new aqux();
   }
   
-  void a()
+  @Nullable
+  public aqux a(aqlg[] paramArrayOfaqlg)
   {
-    if ((this.jdField_a_of_type_Aqvc != null) && (this.jdField_b_of_type_Int == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
-      }
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Aqvc.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aqva);
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aqux.a(paramArrayOfaqlg);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
+    return null;
   }
   
-  void b()
+  public void a(aqux paramaqux) {}
+  
+  public Class<aqux> clazz()
   {
-    if ((this.jdField_a_of_type_Aqvc != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
-    {
-      this.jdField_a_of_type_Aqvc.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Int = 4;
-    }
+    return aqux.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 484;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquy
  * JD-Core Version:    0.7.0.1
  */

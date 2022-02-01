@@ -1,38 +1,27 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public abstract class bgmb
+final class bgmb
+  implements DialogInterface.OnClickListener
 {
-  private static MiniAppInfo a;
-  public static List<String> a;
+  bgmb(Activity paramActivity) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
-  }
-  
-  public static MiniAppInfo a()
-  {
-    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
-    try
+    if (paramInt == 1)
     {
-      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-      {
-        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-        localMiniAppInfo.appId = "0000000000";
-        localMiniAppInfo.launchParam.miniAppId = "0000000000";
-        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
-      }
-      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,71 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.widget.TextView;
+import java.util.List;
 
-class bbqb
-  extends Handler
+public class bbqb
+  extends bbqm
 {
-  bbqb(bbqa parambbqa, Looper paramLooper)
+  public bbqb(aobu paramaobu)
   {
-    super(paramLooper);
+    super(paramaobu);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected bbpr<bbmy, bbvg> a(aobu paramaobu)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    return new bbqc(paramaobu);
+  }
+  
+  public void a(bbmw parambbmw, bbvf parambbvf)
+  {
+    int i = 0;
+    Object localObject = (bbmx)parambbmw;
+    a(parambbvf, (bbmx)localObject);
+    int k = ((bbmx)localObject).a();
+    parambbmw = parambbvf.a();
+    if ((parambbmw != null) && (parambbmw != null))
     {
+      localObject = ((bbmx)localObject).a();
+      if (localObject != null)
+      {
+        int m = Math.min(Math.min(parambbmw.size(), ((List)localObject).size()), k);
+        i = 0;
+        if (i < m)
+        {
+          ((bbvg)parambbmw.get(i)).a().setVisibility(0);
+          ((bbvg)parambbmw.get(i)).a().setTag(2131380929, ((List)localObject).get(i));
+          ((bbvg)parambbmw.get(i)).a().setTag(2131380935, parambbmw.get(i));
+          ((bbvg)parambbmw.get(i)).a().setTag(2131380930, Integer.valueOf(i));
+          ((bbvg)parambbmw.get(i)).a().setTag(2131380928, Integer.valueOf(parambbmw.size()));
+          ((bbvg)parambbmw.get(i)).a().setTag(2131380931, this.a);
+          bbus.a((bbmy)((List)localObject).get(i), m, i);
+          int n = ((bbmy)((List)localObject).get(i)).a();
+          int i1 = ((bbmy)((List)localObject).get(i)).b();
+          View localView = ((bbvg)parambbmw.get(i)).a();
+          if ((((List)localObject).get(i) instanceof bbmz)) {}
+          for (int j = ((bbmz)((List)localObject).get(i)).s;; j = 0)
+          {
+            bbus.a(n, i1, localView, j);
+            this.a.a((bbmw)((List)localObject).get(i), (bbvh)parambbmw.get(i));
+            i += 1;
+            break;
+          }
+        }
+        i = Math.min(((List)localObject).size(), k);
+        while (i < parambbmw.size())
+        {
+          ((bbvg)parambbmw.get(i)).a().setVisibility(8);
+          i += 1;
+        }
+      }
+      while (i < parambbmw.size())
+      {
+        ((bbvg)parambbmw.get(i)).a().setVisibility(8);
+        i += 1;
+      }
     }
-    do
-    {
-      return;
-    } while ((this.a.a == null) || (TextUtils.isEmpty(this.a.a.a)) || (!this.a.a.a.equals(this.a.b)));
-    this.a.h();
+    if (parambbvf.b() != null) {
+      parambbvf.b().setVisibility(8);
+    }
   }
 }
 

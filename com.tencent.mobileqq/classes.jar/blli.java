@@ -1,15 +1,17 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class blli
+  implements View.OnClickListener
 {
-  public String a;
-  public List<YoutuResultItem> a;
+  public blli(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public blli(String paramString, List<YoutuResultItem> paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a.b(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

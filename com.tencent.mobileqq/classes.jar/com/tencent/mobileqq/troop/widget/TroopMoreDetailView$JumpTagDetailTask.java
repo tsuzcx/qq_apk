@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bcwd;
-import bcwe;
+import anni;
+import bgao;
+import bgap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -40,7 +40,7 @@ class TroopMoreDetailView$JumpTagDetailTask
       localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
     } while (localQQAppInterface == null);
     Object localObject1 = Long.toString(localTroopMoreDetailView.a.dwGroupClassExt);
-    bcwd localbcwd = bcwe.a(localActivity).a(localActivity, (String)localObject1);
+    bgao localbgao = bgap.a(localActivity).a(localActivity, (String)localObject1);
     List localList = localTroopMoreDetailView.a.troopTags;
     Intent localIntent = new Intent(localActivity, TroopTagViewActivity.class);
     localIntent.putExtra("troopuin", localTroopMoreDetailView.a.troopUin);
@@ -67,17 +67,17 @@ class TroopMoreDetailView$JumpTagDetailTask
       }
       localObject1 = localObject2;
       i = j;
-      if (localbcwd != null)
+      if (localbgao != null)
       {
         localObject1 = localObject2;
         i = j;
-        if (!TextUtils.isEmpty(localbcwd.a))
+        if (!TextUtils.isEmpty(localbgao.a))
         {
           localObject1 = localObject2;
           i = j;
-          if (!alud.a(2131716055).equals(localbcwd.a))
+          if (!anni.a(2131714336).equals(localbgao.a))
           {
-            localObject1 = localbcwd.a;
+            localObject1 = localbgao.a;
             i = 1;
           }
         }
@@ -98,7 +98,7 @@ class TroopMoreDetailView$JumpTagDetailTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopMoreDetailView.JumpTagDetailTask
  * JD-Core Version:    0.7.0.1
  */

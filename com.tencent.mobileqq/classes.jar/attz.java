@@ -1,42 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class attz
-  implements Animator.AnimatorListener
+  extends attu
 {
-  public attz(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public attz(bety parambety)
   {
-    PoiSlideBottomPanel.h(this.a, false);
-    PoiSlideBottomPanel.i(this.a, false);
-    PoiSlideBottomPanel.j(this.a, false);
-    if (PoiSlideBottomPanel.k(this.a) != null) {
-      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
-    }
+    this.jdField_a_of_type_JavaLangString = parambety.e;
+    this.jdField_a_of_type_Int = 1;
+    this.b = String.valueOf(parambety.b);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String a()
   {
-    PoiSlideBottomPanel.e(this.a, false);
-    PoiSlideBottomPanel.f(this.a, false);
-    PoiSlideBottomPanel.g(this.a, false);
-    if (PoiSlideBottomPanel.i(this.a) != null) {
-      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
+    {
+      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
+      return "";
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.d(this.a, true);
+    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attz
  * JD-Core Version:    0.7.0.1
  */

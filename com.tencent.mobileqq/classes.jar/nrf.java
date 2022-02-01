@@ -1,40 +1,35 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class nrf
-  implements bhuk
+  implements View.OnClickListener
 {
-  nrf(nrc paramnrc, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bhuf parambhuf) {}
+  nrf(nre paramnre, nyl paramnyl, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-    case 0: 
-      aetu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
+    Intent localIntent = new Intent((Context)this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
+    localIntent.putExtra("lat", this.jdField_a_of_type_Nyl.g);
+    localIntent.putExtra("lon", this.jdField_a_of_type_Nyl.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIntent.putExtra("loc", this.jdField_a_of_type_JavaLangString);
     }
-    aetu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Bhuf.dismiss();
+    ((BaseActivity)this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(localIntent);
+    bcst.b(this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString, "", "", "");
+    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrf
  * JD-Core Version:    0.7.0.1
  */

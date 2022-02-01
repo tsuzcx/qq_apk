@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother;
 
-import anwc;
-import azqs;
+import apwh;
+import bcst;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -113,7 +113,7 @@ public class WeakOuterRefRunnable
     if ((this.jdField_a_of_type_JavaLangRunnable != null) && (a()))
     {
       this.jdField_a_of_type_JavaLangRunnable.run();
-      anwc.a().a(this.jdField_a_of_type_Int, this.b);
+      apwh.a().a(this.jdField_a_of_type_Int, this.b);
       i = 1;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -136,9 +136,9 @@ public class WeakOuterRefRunnable
     label123:
     for (String str3 = "";; str3 = this.jdField_a_of_type_JavaLangString)
     {
-      azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
+      bcst.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
       return;
-      anwc.a().a(this.jdField_a_of_type_Int, -3);
+      apwh.a().a(this.jdField_a_of_type_Int, -3);
       i = 0;
       break;
       str1 = "";
@@ -150,7 +150,7 @@ public class WeakOuterRefRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable
  * JD-Core Version:    0.7.0.1
  */

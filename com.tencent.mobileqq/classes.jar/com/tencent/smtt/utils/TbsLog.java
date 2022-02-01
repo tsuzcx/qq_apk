@@ -20,17 +20,11 @@ public class TbsLog
   public static final int TBSLOG_CODE_SDK_THIRD_MODE = 995;
   public static final int TBSLOG_CODE_SDK_UNAVAIL_X5CORE = 992;
   public static final String X5LOGTAG = "x5logtag";
-  private static TbsLogClient mTbsLogClient;
+  private static boolean a = false;
+  private static boolean b = true;
+  private static TbsLogClient c = null;
   public static int sLogMaxCount = 10;
-  public static List<String> sTbsLogList;
-  private static boolean should_show_toast = false;
-  private static boolean write_log_just_in_time = true;
-  
-  static
-  {
-    mTbsLogClient = null;
-    sTbsLogList = new LinkedList();
-  }
+  public static List<String> sTbsLogList = new LinkedList();
   
   /* Error */
   public static void addLog(int paramInt, String paramString, Object... paramVarArgs)
@@ -192,59 +186,59 @@ public class TbsLog
   
   public static void d(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    if (c == null) {
       return;
     }
-    mTbsLogClient.d(paramString1, "TBS:" + paramString2);
+    c.d(paramString1, "TBS:" + paramString2);
   }
   
   public static void d(String paramString1, String paramString2, boolean paramBoolean)
   {
     d(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    if ((c != null) && (a) && (paramBoolean)) {
+      c.showLog(paramString1 + ": " + paramString2);
     }
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    if (c == null) {
       return;
     }
-    mTbsLogClient.e(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(E)-" + paramString1 + "-TBS:" + paramString2);
+    c.e(paramString1, "TBS:" + paramString2);
+    c.writeLog("(E)-" + paramString1 + "-TBS:" + paramString2);
   }
   
   public static void e(String paramString1, String paramString2, boolean paramBoolean)
   {
     e(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    if ((c != null) && (a) && (paramBoolean)) {
+      c.showLog(paramString1 + ": " + paramString2);
     }
   }
   
   public static String getTbsLogFilePath()
   {
-    if (TbsLogClient.mLogFile != null) {
-      return TbsLogClient.mLogFile.getAbsolutePath();
+    if (TbsLogClient.c != null) {
+      return TbsLogClient.c.getAbsolutePath();
     }
     return null;
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    if (c == null) {
       return;
     }
-    mTbsLogClient.i(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(I)-" + paramString1 + "-TBS:" + paramString2);
+    c.i(paramString1, "TBS:" + paramString2);
+    c.writeLog("(I)-" + paramString1 + "-TBS:" + paramString2);
   }
   
   public static void i(String paramString1, String paramString2, boolean paramBoolean)
   {
     i(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    if ((c != null) && (a) && (paramBoolean)) {
+      c.showLog(paramString1 + ": " + paramString2);
     }
   }
   
@@ -252,7 +246,7 @@ public class TbsLog
   {
     try
     {
-      if (mTbsLogClient == null) {
+      if (c == null) {
         setTbsLogClient(new TbsLogClient(paramContext));
       }
       return;
@@ -266,10 +260,10 @@ public class TbsLog
   
   public static void setLogView(TextView paramTextView)
   {
-    if ((paramTextView == null) || (mTbsLogClient == null)) {
+    if ((paramTextView == null) || (c == null)) {
       return;
     }
-    mTbsLogClient.setLogView(paramTextView);
+    c.setLogView(paramTextView);
   }
   
   public static boolean setTbsLogClient(TbsLogClient paramTbsLogClient)
@@ -277,52 +271,52 @@ public class TbsLog
     if (paramTbsLogClient == null) {
       return false;
     }
-    mTbsLogClient = paramTbsLogClient;
-    paramTbsLogClient = mTbsLogClient;
-    TbsLogClient.setWriteLogJIT(write_log_just_in_time);
+    c = paramTbsLogClient;
+    paramTbsLogClient = c;
+    TbsLogClient.setWriteLogJIT(b);
     return true;
   }
   
   public static void setWriteLogJIT(boolean paramBoolean)
   {
-    write_log_just_in_time = paramBoolean;
-    if (mTbsLogClient == null) {
+    b = paramBoolean;
+    if (c == null) {
       return;
     }
-    TbsLogClient localTbsLogClient = mTbsLogClient;
+    TbsLogClient localTbsLogClient = c;
     TbsLogClient.setWriteLogJIT(paramBoolean);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    if (c == null) {
       return;
     }
-    mTbsLogClient.v(paramString1, "TBS:" + paramString2);
+    c.v(paramString1, "TBS:" + paramString2);
   }
   
   public static void v(String paramString1, String paramString2, boolean paramBoolean)
   {
     v(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    if ((c != null) && (a) && (paramBoolean)) {
+      c.showLog(paramString1 + ": " + paramString2);
     }
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    if (c == null) {
       return;
     }
-    mTbsLogClient.w(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(W)-" + paramString1 + "-TBS:" + paramString2);
+    c.w(paramString1, "TBS:" + paramString2);
+    c.writeLog("(W)-" + paramString1 + "-TBS:" + paramString2);
   }
   
   public static void w(String paramString1, String paramString2, boolean paramBoolean)
   {
     w(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    if ((c != null) && (a) && (paramBoolean)) {
+      c.showLog(paramString1 + ": " + paramString2);
     }
   }
   
@@ -330,8 +324,8 @@ public class TbsLog
   {
     try
     {
-      if (mTbsLogClient != null) {
-        mTbsLogClient.writeLogToDisk();
+      if (c != null) {
+        c.writeLogToDisk();
       }
       return;
     }
@@ -344,7 +338,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

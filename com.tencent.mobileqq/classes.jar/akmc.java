@@ -1,18 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
 
-public class akmc
+public abstract interface akmc
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  
-  protected akmc(akmb paramakmb) {}
+  public abstract void a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Grp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adaf
-  extends aqbl
+  implements acxp
 {
-  public adaf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void a(boolean paramBoolean, Card paramCard)
+  public int a()
   {
-    super.a(paramBoolean, paramCard);
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, got extend info");
-    }
-    if (FriendProfileCardActivity.a(this.a) != null) {
-      FriendProfileCardActivity.a(this.a).dismiss();
-    }
-    if (FriendProfileCardActivity.a(this.a) != null)
-    {
-      FriendProfileCardActivity.a(this.a).removeCallbacksAndMessages(null);
-      FriendProfileCardActivity.a(this.a, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, start add friend :" + FriendProfileCardActivity.d(this.a));
-      }
-      if (!FriendProfileCardActivity.d(this.a))
-      {
-        FriendProfileCardActivity.a(this.a, true);
-        FriendProfileCardActivity.b(this.a);
-      }
-    }
+    return 1026;
   }
   
-  protected void b(boolean paramBoolean)
+  public boolean a()
   {
-    super.b(paramBoolean);
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Grp();
+    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.grp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

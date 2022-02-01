@@ -1,32 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Deque;
+import java.util.LinkedList;
 
 class ree
-  extends QIPCModule
 {
-  ree(red paramred, String paramString)
-  {
-    super(paramString);
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Deque<reg> jdField_a_of_type_JavaUtilDeque = new LinkedList();
+  int b;
+  int c = 0;
+  private final int d = 50;
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  ree(rec paramrec) {}
+  
+  boolean a(reg paramreg)
   {
-    synchronized (red.a(this.a))
-    {
-      Iterator localIterator = red.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((ref)localIterator.next()).a(paramString, paramBundle);
-      }
+    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
+      this.jdField_a_of_type_JavaUtilDeque.poll();
     }
-    return null;
+    return this.jdField_a_of_type_JavaUtilDeque.offer(paramreg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ree
  * JD-Core Version:    0.7.0.1
  */

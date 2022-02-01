@@ -8,6 +8,7 @@ import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import android.os.SystemClock;
 import android.util.Printer;
+import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
 
 public class MqqMessageQueue
@@ -17,6 +18,7 @@ public class MqqMessageQueue
   private static final int MSG_HOOK = 1000;
   private static final int MSG_IDLE_TIMEOUT = 1001;
   private static final String TAG = "MqqMessage.Queue";
+  public static boolean sRemoveIdleTimeOutMsg = true;
   private static MqqMessageQueue sSubMainQueue;
   private volatile boolean hookReqeusted;
   private volatile boolean idleHandlerAttached;
@@ -40,10 +42,14 @@ public class MqqMessageQueue
       QLog.d("MqqMessage.Queue", 2, "enter dequeue, idle = " + paramBoolean);
     }
     MqqMessage localMqqMessage = next();
-    if (localMqqMessage != null) {}
-    for (String str = localMqqMessage.toString();; str = "null")
+    String str1;
+    if (localMqqMessage != null)
     {
-      if (localMqqMessage != null) {}
+      str1 = localMqqMessage.toString();
+      if (localMqqMessage == null) {}
+    }
+    for (;;)
+    {
       try
       {
         StringBuilder localStringBuilder;
@@ -72,31 +78,50 @@ public class MqqMessageQueue
           localStringBuilder.append(localMqqMessage.wrappedMsg.getCallback());
           this.mLogging.println(localStringBuilder.toString());
         }
-        localMqqMessage.recycle();
       }
-      catch (Throwable localThrowable)
+      catch (Throwable localThrowable1)
+      {
+        i = 0;
+      }
+      try
+      {
+        localMqqMessage.recycle();
+        if ((DEBUG_QUEUE) && (this.msgCount % 100L == 0L) && (QLog.isColorLevel())) {
+          QLog.d("MqqMessage.Queue", 2, new Object[] { "dequeue|", Long.valueOf(this.msgCount), "|", Long.valueOf(this.totalCost) });
+        }
+        if (localMqqMessage == null) {
+          break label487;
+        }
+        if ((DEBUG_QUEUE) && (QLog.isColorLevel())) {
+          QLog.d("MqqMessage.Queue", 2, new Object[] { "dequeue, msg = ", str1 });
+        }
+        return true;
+      }
+      catch (Throwable localThrowable2)
       {
         for (;;)
         {
-          throwException(localThrowable);
+          String str2;
+          i = 1;
         }
-        if ((!DEBUG_QUEUE) || (!QLog.isColorLevel())) {
-          break label424;
-        }
-        QLog.d("MqqMessage.Queue", 2, "dequeue, msg = null");
       }
-      if ((DEBUG_QUEUE) && (this.msgCount % 100L == 0L) && (QLog.isColorLevel())) {
-        QLog.d("MqqMessage.Queue", 2, new Object[] { "dequeue|", Long.valueOf(this.msgCount), "|", Long.valueOf(this.totalCost) });
+      str1 = "null";
+      break;
+      if ((localMqqMessage.wrappedMsg != null) && (i != 0))
+      {
+        str2 = "current message: " + localMqqMessage.wrappedMsg.toString();
+        QLog.e("MqqMessage.Queue", 1, str2);
+        CrashReport.handleCatchException(Thread.currentThread(), localThrowable1, "ExtraMessage: " + str2, null);
       }
-      if (localMqqMessage == null) {
-        break;
+      else
+      {
+        throwException(localThrowable1);
       }
-      if ((DEBUG_QUEUE) && (QLog.isColorLevel())) {
-        QLog.d("MqqMessage.Queue", 2, new Object[] { "dequeue, msg = ", str });
-      }
-      return true;
     }
-    label424:
+    label487:
+    if ((DEBUG_QUEUE) && (QLog.isColorLevel())) {
+      QLog.d("MqqMessage.Queue", 2, "dequeue, msg = null");
+    }
     return false;
   }
   
@@ -118,6 +143,11 @@ public class MqqMessageQueue
     if (dequeue(false)) {
       this.mHandler.sendEmptyMessage(1001);
     }
+    while (!sRemoveIdleTimeOutMsg) {
+      return;
+    }
+    QLog.d("MqqMessage.Queue", 1, "onQueueIdleTimeout,remove all MSG_IDLE_TIMEOUT");
+    this.mHandler.removeMessages(1001);
   }
   
   private void printDeletionLog(MqqMessage paramMqqMessage)
@@ -160,7 +190,7 @@ public class MqqMessageQueue
         paramMqqMessage.when = paramLong;
         localObject1 = this.mMessages;
         if ((localObject1 != null) && (paramLong != 0L) && (paramLong >= ((MqqMessage)localObject1).when)) {
-          break label149;
+          break label150;
         }
         paramMqqMessage.next = ((MqqMessage)localObject1);
         this.mMessages = paramMqqMessage;
@@ -179,7 +209,7 @@ public class MqqMessageQueue
         paramMqqMessage.next = localObject2.next;
         localObject2.next = paramMqqMessage;
         continue;
-        label149:
+        label150:
         localObject2 = null;
       }
     }

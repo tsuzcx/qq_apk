@@ -1,55 +1,41 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class xux
-  extends Dialog
+public final class xux
+  extends QQUIEventReceiver<xui, wwb>
 {
-  protected TextView a;
-  protected AnimationPoint a;
-  
-  public xux(Context paramContext)
+  public xux(@NonNull xui paramxui)
   {
-    super(paramContext, 2131755015);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561516, null);
-    localView.setOnTouchListener(new xuy(this));
-    super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362574));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367422));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(xsm.a(paramContext, 25.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new xuz(this, paramContext));
+    super(paramxui);
   }
   
-  public void a(String paramString)
+  public void a(@NonNull xui paramxui, @NonNull wwb paramwwb)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if ((paramwwb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwb.jdField_a_of_type_JavaUtilList != null) && (paramxui.a != null))
+    {
+      paramwwb = paramwwb.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwwb.hasNext())
+      {
+        wqp localwqp = (wqp)paramwwb.next();
+        if (TextUtils.equals(paramxui.a.b, localwqp.a)) {
+          paramxui.i();
+        }
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    return wwb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xux
  * JD-Core Version:    0.7.0.1
  */

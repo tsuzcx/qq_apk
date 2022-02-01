@@ -15,6 +15,7 @@ public final class obj_msg$MsgContentInfo$MsgFile
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ext = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_file_path = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_file_sha1 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt64Field int64_dead_time = PBField.initInt64(0L);
@@ -27,7 +28,8 @@ public final class obj_msg$MsgContentInfo$MsgFile
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 58 }, new String[] { "uint32_bus_id", "bytes_file_path", "uint64_file_size", "str_file_name", "int64_dead_time", "bytes_file_sha1", "bytes_ext" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), "", Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3 }, MsgFile.class);
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50, 58, 66 }, new String[] { "uint32_bus_id", "bytes_file_path", "uint64_file_size", "str_file_name", "int64_dead_time", "bytes_file_sha1", "bytes_ext", "bytes_file_md5" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), "", Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, MsgFile.class);
   }
 }
 

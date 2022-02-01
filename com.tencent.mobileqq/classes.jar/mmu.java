@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
-class mmu
-  implements DialogInterface.OnClickListener
+public class mmu
+  extends Handler
 {
-  mmu(mmt parammmt) {}
+  WeakReference<EffectFilterTextPager> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mmu(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    this.a = new WeakReference(paramEffectFilterTextPager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmu
  * JD-Core Version:    0.7.0.1
  */

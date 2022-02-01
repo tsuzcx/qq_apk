@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import algc;
+import amzj;
 
 public class ApolloUrlInterceptor$PreloadCGITask$1
   implements Runnable
 {
-  public ApolloUrlInterceptor$PreloadCGITask$1(algc paramalgc) {}
+  public ApolloUrlInterceptor$PreloadCGITask$1(amzj paramamzj) {}
   
   public void run()
   {
-    algc.a(this.a);
+    amzj.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor.PreloadCGITask.1
  * JD-Core Version:    0.7.0.1
  */

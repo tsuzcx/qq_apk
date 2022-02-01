@@ -1,41 +1,27 @@
-import android.text.Layout;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 class bdkc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  bdkc(bdjz parambdjz, int paramInt, String paramString) {}
+  bdkc(bdkb parambdkb, TimDocSSOMsg.UinRightInfo paramUinRightInfo) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdjz.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i;
-    if (this.jdField_a_of_type_Bdjz.text.getLineCount() > this.jdField_a_of_type_Int)
-    {
-      i = this.jdField_a_of_type_Bdjz.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label134;
-      }
-    }
-    label134:
-    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
-    {
-      boolean bool1 = bamp.a(str);
-      boolean bool2 = bamp.b(str);
-      if ((!bool1) && (!bool2))
-      {
-        str = this.jdField_a_of_type_Bdjz.text.getText().subSequence(0, i - 3) + "...";
-        this.jdField_a_of_type_Bdjz.text.setText(str);
-      }
-      return;
+    this.jdField_a_of_type_Bdkb.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bdkb.a.jdField_a_of_type_Bdhk.b(String.valueOf(this.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get()));
+    this.jdField_a_of_type_Bdkb.a.jdField_a_of_type_Bdhk.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Bdkb.a.b == 1) {
+      bcst.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_Bdkb.a), "dc00898", "", "", "0x8007CFD", "0x8007CFD", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqpw
-  extends aqru
 {
-  public aqpw(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public int a = 1;
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public static aqpw a(aqlg[] paramArrayOfaqlg)
   {
-    super.a(paramInt, paramLong, paramString);
-    arrr.a(paramLong, paramInt, paramString);
-    bkmm.a(this.a.a, paramInt);
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    arrr.a(paramLong);
-  }
-  
-  protected void a(arcg paramarcg)
-  {
-    if (paramarcg == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    aqpw localaqpw = new aqpw();
+    for (;;)
     {
-      do
+      int i;
+      try
       {
-        return;
-      } while (!(paramarcg.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramarcg.a;
-    } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramarcg.b;
-    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
+        int j = paramArrayOfaqlg.length;
+        i = 0;
+        if (i < j)
+        {
+          JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[i].a);
+          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
+            localaqpw.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localaqpw.a);
+          }
+          return localaqpw;
+        }
+      }
+      catch (Throwable paramArrayOfaqlg)
+      {
+        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfaqlg);
+        return localaqpw;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpw
  * JD-Core Version:    0.7.0.1
  */

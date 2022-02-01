@@ -10,12 +10,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import apxu;
-import awvm;
-import awvn;
-import awvp;
+import asbp;
+import azjq;
+import azjr;
+import azjt;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class ProfileLabelPanelAdapter
@@ -25,16 +26,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<awvp> a;
-  protected apxu a;
-  protected awvm a;
-  public awvn a;
-  protected awvp a;
+  protected SparseArray<azjt> a;
+  protected asbp a;
+  protected azjq a;
+  public azjr a;
+  protected azjt a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Apxu = new apxu();
+    this.jdField_a_of_type_Asbp = new asbp();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -56,32 +57,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Awvp = ((awvp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Awvp == null)
+    this.jdField_a_of_type_Azjt = ((azjt)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Azjt == null)
     {
-      this.jdField_a_of_type_Awvp = new awvp(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Awvp);
+      this.jdField_a_of_type_Azjt = new azjt(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Azjt);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Awvp.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Awvp);
+    this.jdField_a_of_type_Azjt.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Azjt);
   }
   
-  public void a(awvm paramawvm)
+  public void a(azjq paramazjq)
   {
-    this.jdField_a_of_type_Awvm = paramawvm;
+    this.jdField_a_of_type_Azjq = paramazjq;
   }
   
-  public void a(awvn paramawvn)
+  public void a(azjr paramazjr)
   {
-    this.jdField_a_of_type_Awvn = paramawvn;
+    this.jdField_a_of_type_Azjr = paramazjr;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Apxu.a((View)paramObject);
+    this.jdField_a_of_type_Asbp.a((View)paramObject);
   }
   
   public int getCount()
@@ -91,7 +92,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Apxu.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Asbp.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -112,26 +113,27 @@ public class ProfileLabelPanelAdapter
   {
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
-    paramView = (ProfileLabelInfo)paramView.getTag();
-    awvm localawvm;
-    if (paramView != null)
+    ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
+    azjq localazjq;
+    if (localProfileLabelInfo != null)
     {
-      localawvm = this.jdField_a_of_type_Awvm;
-      if (paramView.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label53;
+      localazjq = this.jdField_a_of_type_Azjq;
+      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
+        break label64;
       }
     }
-    label53:
+    label64:
     for (boolean bool = false;; bool = true)
     {
-      localawvm.a(paramView, localToggleButton, Boolean.valueOf(bool));
+      localazjq.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

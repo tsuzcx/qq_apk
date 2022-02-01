@@ -1,54 +1,29 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
-public final class aljx
-  implements abwu
+public class aljx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
+  public aljx(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
   
-  public aljx(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
-  
-  private String[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.b * f));
+    paramValueAnimator.height = ((int)(f * this.b));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
   }
-  
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
-    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new alka(this)), 8, null, false);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
-    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new aljy(this)), 8, null, false);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
-    try
-    {
-      String str = paramJSONObject.optString("openid");
-      paramJSONObject = paramJSONObject.optString("access_token");
-      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
-      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new aljz(this)), 8, null, false);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

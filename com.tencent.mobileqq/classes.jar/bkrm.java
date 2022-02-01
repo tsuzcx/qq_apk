@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class bkrm
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bkrm(bkrk parambkrk, Runnable paramRunnable) {}
+  bkrm(bkrl parambkrl, bkrd parambkrd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_Bkrl.a(paramValueAnimator.getAnimatedFraction());
   }
 }
 

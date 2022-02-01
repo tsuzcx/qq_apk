@@ -1,30 +1,53 @@
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public abstract class ayll
-  implements aynt
+class ayll
+  implements ImageAssetDelegate
 {
-  protected String a;
-  protected List<aynu> a;
+  ayll(aylk paramaylk) {}
   
-  public ayll(List<aynu> paramList, String paramString)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    int i;
+    int j;
+    if (localObject != null)
+    {
+      paramLottieImageAsset = paramLottieImageAsset.getFileName();
+      i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      localObject = this.a.jdField_a_of_type_JavaLangString + "entry_images" + File.separator + paramLottieImageAsset;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramLottieImageAsset = mpu.a((String)localObject, i, j);
+        localObject = paramLottieImageAsset;
+        if (paramLottieImageAsset == null) {
+          localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+        }
+        return localObject;
+      }
+      catch (Exception paramLottieImageAsset)
+      {
+        if (AudioHelper.f()) {
+          QLog.w(PromotionEntry.jdField_a_of_type_JavaLangString, 1, "UpdateOperateBtnStatusRunnable Exception, imagePath[" + (String)localObject + "]", paramLottieImageAsset);
+        }
+      }
+      paramLottieImageAsset = null;
+    }
   }
 }
 

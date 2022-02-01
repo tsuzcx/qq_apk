@@ -1,27 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 
-public class akfj
-  implements Animation.AnimationListener
+public final class akfj
+  implements Parcelable.Creator<PhotoSendParams>
 {
-  public akfj(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PhotoSendParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Akfw.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367819);
-    paramAnimation.addRule(10);
-    paramAnimation.setMargins(0, (int)(10.0F * SpecailCareListActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), this.jdField_a_of_type_Int, 0);
-    this.jdField_a_of_type_Akfw.a.setLayoutParams(paramAnimation);
+    return new PhotoSendParams(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public PhotoSendParams[] a(int paramInt)
+  {
+    return new PhotoSendParams[paramInt];
+  }
 }
 
 

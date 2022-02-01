@@ -1,43 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akzb
+class akzb
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  akzb(akyh paramakyh) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.d == 0) {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
+    {
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        this.a.jdField_b_of_type_Boolean = true;
+      }
+      this.a.c();
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(akyh.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("appType", this.a.jdField_b_of_type_Int);
+      localIntent.putExtra("subappid", this.a.a);
+      localIntent.putExtra("clientType", this.a.jdField_b_of_type_Long);
+      akyh.a(this.a).startActivity(localIntent);
+      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        bcst.b(akyh.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
       }
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
-    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mActivityId=").append(this.b);
-    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mAIOType=").append(this.c);
-    localStringBuffer.append(", mShareTo=").append(this.d);
-    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mShareRet=").append(this.e);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
   }
 }
 

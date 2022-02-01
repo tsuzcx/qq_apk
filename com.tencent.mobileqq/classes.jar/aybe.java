@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class aybe
-  extends WebChromeClient
+  implements URLDrawable.DownloadListener
 {
-  private aybe(ActionUrlActivity paramActionUrlActivity) {}
+  aybe(aybd paramaybd) {}
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void onFileDownloadFailed(int paramInt)
   {
-    super.onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.2(this));
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  public void onFileDownloadStarted()
   {
-    this.a.setTitle(paramString);
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
+    }
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.1(this));
   }
 }
 

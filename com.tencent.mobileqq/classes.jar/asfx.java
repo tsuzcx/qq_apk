@@ -1,16 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class asfx
-  implements Handler.Callback
+final class asfx
+  implements DialogInterface.OnClickListener
 {
-  public asfx(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  asfx(BaseActivity paramBaseActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupSettingFragment.a(this.a, paramMessage);
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

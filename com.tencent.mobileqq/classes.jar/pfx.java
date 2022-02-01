@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pfx
-  implements qob<oidb_cmd0x977.FollowStatusInfo, qkv>
+  implements ViewBase.OnClickListener
 {
-  pfx(pfw parampfw) {}
+  pfx(pfw parampfw, int paramInt, ViewBase paramViewBase) {}
   
-  public qkv a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public void onClick(ViewBase paramViewBase)
   {
-    return new qkv(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    try
+    {
+      pfo.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Pfw.jdField_a_of_type_Int, this.jdField_a_of_type_Pfw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Pfw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Pfw.jdField_a_of_type_Aobu, this.jdField_a_of_type_Pfw.jdField_a_of_type_Snh, this.jdField_a_of_type_Pfw.jdField_a_of_type_Pxk, this.jdField_a_of_type_Pfw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Pfw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfx
  * JD-Core Version:    0.7.0.1
  */

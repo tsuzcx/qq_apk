@@ -1,94 +1,99 @@
-import android.app.Activity;
-import android.content.IntentFilter;
-import android.view.KeyEvent;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qidian.proto.mobileqq_qidian.PubAccItem;
 
 public class bjhg
 {
-  public static String a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  public bjhi a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "WatchActivityManager";
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
   
   public bjhg()
   {
-    this.jdField_a_of_type_Bjhi = new bjhi(this, null);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  private void d()
+  public bjhg(mobileqq_qidian.PubAccItem paramPubAccItem)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.c = false;
-    this.d = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    a(paramPubAccItem);
   }
   
-  private void e()
+  public mobileqq_qidian.PubAccItem a()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    mobileqq_qidian.PubAccItem localPubAccItem = new mobileqq_qidian.PubAccItem();
+    localPubAccItem.str_uin.set(this.jdField_a_of_type_JavaLangString);
+    localPubAccItem.str_name.set(this.jdField_b_of_type_JavaLangString);
+    localPubAccItem.uint32_type.set(this.jdField_a_of_type_Int);
+    localPubAccItem.uint32_verity.set(this.jdField_b_of_type_Int);
+    localPubAccItem.str_face_url.set(this.c);
+    localPubAccItem.str_qr_url.set(this.d);
+    return localPubAccItem;
+  }
+  
+  public void a(mobileqq_qidian.PubAccItem paramPubAccItem)
+  {
+    if (paramPubAccItem.str_uin.has()) {
+      this.jdField_a_of_type_JavaLangString = paramPubAccItem.str_uin.get();
+    }
+    if (paramPubAccItem.str_name.has()) {
+      this.jdField_b_of_type_JavaLangString = paramPubAccItem.str_name.get();
+    }
+    if (paramPubAccItem.uint32_type.has()) {
+      this.jdField_a_of_type_Int = paramPubAccItem.uint32_type.get();
+    }
+    if (paramPubAccItem.uint32_verity.has()) {
+      this.jdField_b_of_type_Int = paramPubAccItem.uint32_verity.get();
+    }
+    if (paramPubAccItem.str_face_url.has()) {
+      this.c = paramPubAccItem.str_face_url.get();
+    }
+    if (paramPubAccItem.str_qr_url.has()) {
+      this.d = paramPubAccItem.str_qr_url.get();
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bjhi, localIntentFilter);
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bjhi);
-    }
-  }
-  
-  public void a()
-  {
-    d();
-  }
-  
-  public void a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    switch (paramInt)
+      return false;
+      if (paramObject == this) {
+        return true;
+      }
+    } while (paramObject.getClass() != getClass());
+    paramObject = (bjhg)paramObject;
+    if ((paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) && (paramObject.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (paramObject.c.equals(this.c)) && (paramObject.d.equals(this.d))) {}
+    for (;;)
     {
-    default: 
-      return;
+      return bool;
+      bool = false;
     }
-    this.c = true;
   }
   
-  public void a(Activity paramActivity)
+  public int hashCode()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    e();
-  }
-  
-  public boolean a()
-  {
-    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
-    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
-  }
-  
-  public void b()
-  {
-    this.d = true;
-  }
-  
-  public void c()
-  {
-    f();
+    int j = this.jdField_a_of_type_JavaLangString.hashCode();
+    int k = this.jdField_b_of_type_JavaLangString.hashCode();
+    int m = this.jdField_a_of_type_Int;
+    int n = this.jdField_b_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 1) {
+      return ((i + ((((j + 403) * 31 + k) * 31 + m) * 31 + n) * 31) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjhg
  * JD-Core Version:    0.7.0.1
  */

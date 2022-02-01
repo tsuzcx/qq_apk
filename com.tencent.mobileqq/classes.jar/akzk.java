@@ -1,10 +1,36 @@
-public class akzk
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONObject;
+
+class akzk
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  akzc jdField_a_of_type_Akzc;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  akzk(akyh paramakyh, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(akyh.a(this.jdField_a_of_type_Akyh), VipComicJumpActivity.class);
+      localIntent.putExtra("options", localJSONObject.toString());
+      akyh.a(this.jdField_a_of_type_Akyh).startActivity(localIntent);
+      blaq.a(akyh.a(this.jdField_a_of_type_Akyh).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
+  }
 }
 
 

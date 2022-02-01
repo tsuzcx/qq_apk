@@ -1,249 +1,248 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.10.1;
-import com.tencent.mobileqq.activity.EditInfoActivity.10.2;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import android.os.Bundle;
+import android.util.Pair;
+import com.tencent.imcore.message.BaseMessageProcessor.1;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lmsf.msgcomm.msg_comm.Msg;>;
+import java.util.Set;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
-public class acvl
-  extends ameq
+public abstract class acvl
 {
-  public acvl(EditInfoActivity paramEditInfoActivity) {}
+  protected QQMessageFacade a;
+  protected MessageHandler a;
+  public QQAppInterface a;
+  private List<aofv> a;
   
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  public acvl(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    if (!this.a.j) {
-      return;
-    }
-    this.a.j = false;
-    if ((!paramBoolean) || (paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      this.a.b(false);
-      EditInfoActivity localEditInfoActivity = this.a;
-      paramArrayList = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        paramArrayList = this.a.getString(2131694456);
-      }
-      QQToast.a(localEditInfoActivity, 1, paramArrayList, 0).b(this.a.getTitleBarHeight());
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditInfoActivity.10.1(this), 1500L);
-      return;
-    }
-    paramArrayList = (amdu)this.a.app.a(20);
-    try
-    {
-      paramArrayList.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
-      this.a.j = true;
-      return;
-    }
-    catch (Exception paramArrayList)
-    {
-      this.a.b(false);
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = paramMessageHandler;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQAppInterface.a();
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public acwn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    if (!this.a.j) {}
-    for (;;)
+    return null;
+  }
+  
+  protected Pair<Boolean, StringBuilder> a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
+  {
+    if ((paramList1 == null) || (paramList1.size() == 0)) {
+      return new Pair(Boolean.valueOf(false), null);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    HashSet localHashSet = new HashSet();
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = Boolean.valueOf(false);
+    while (localIterator.hasNext())
     {
-      return;
-      this.a.j = false;
-      this.a.b(false);
-      if (paramBoolean) {
-        try
+      Object localObject = (msg_comm.Msg)localIterator.next();
+      if (((msg_comm.Msg)localObject).msg_head.has())
+      {
+        String str = a((msg_comm.Msg)localObject);
+        if (localHashSet.contains(str))
         {
-          paramObject = (Object[])paramObject;
-          long l = ((Long)paramObject[0]).longValue();
-          ((Integer)paramObject[1]).intValue();
-          paramObject = (TroopMemberCard)paramObject[2];
-          if ((l == Long.parseLong(this.a.e)) && (paramObject != null) && (paramObject.memberUin == Long.parseLong(this.a.f)))
+          localObject = Boolean.valueOf(true);
+          paramList1 = (List<msg_comm.Msg>)localObject;
+          if (QLog.isColorLevel())
           {
-            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditInfoActivity.10.2(this, paramObject), 700L);
-            return;
+            localStringBuilder.append("< duplicatedMsg:").append(str).append(" >");
+            paramList1 = (List<msg_comm.Msg>)localObject;
           }
         }
-        catch (Exception paramObject) {}
+        for (;;)
+        {
+          break;
+          localHashSet.add(str);
+          paramList2.add(localObject);
+        }
+      }
+    }
+    return new Pair(paramList1, localStringBuilder);
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  protected String a(msg_comm.Msg paramMsg)
+  {
+    return String.valueOf(paramMsg.hashCode());
+  }
+  
+  public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((aofv)localIterator.next()).b(paramInt, paramBoolean, paramObject);
       }
     }
   }
   
-  /* Error */
-  protected void b(boolean paramBoolean, String paramString1, String paramString2)
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(aofv paramaofv)
   {
-    // Byte code:
-    //   0: ldc 127
-    //   2: istore 7
-    //   4: iload_1
-    //   5: ifeq +262 -> 267
-    //   8: aload_0
-    //   9: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   12: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   15: ifnull +228 -> 243
-    //   18: aload_2
-    //   19: ifnull +224 -> 243
-    //   22: aload_2
-    //   23: aload_0
-    //   24: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   27: getfield 95	com/tencent/mobileqq/activity/EditInfoActivity:f	Ljava/lang/String;
-    //   30: invokevirtual 136	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   33: ifeq +210 -> 243
-    //   36: aload_3
-    //   37: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   40: ifne +203 -> 243
-    //   43: new 138	android/text/SpannableString
-    //   46: dup
-    //   47: new 140	java/lang/StringBuilder
-    //   50: dup
-    //   51: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   54: ldc 143
-    //   56: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_3
-    //   60: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: ldc 149
-    //   65: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   71: invokespecial 156	android/text/SpannableString:<init>	(Ljava/lang/CharSequence;)V
-    //   74: astore 9
-    //   76: ldc 158
-    //   78: invokestatic 164	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   81: istore 4
-    //   83: ldc 166
-    //   85: invokestatic 164	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   88: istore 6
-    //   90: iload 4
-    //   92: istore 5
-    //   94: new 168	acvm
-    //   97: dup
-    //   98: aload_0
-    //   99: iload 5
-    //   101: iload 6
-    //   103: aload_3
-    //   104: invokespecial 171	acvm:<init>	(Lacvl;IILjava/lang/String;)V
-    //   107: astore 8
-    //   109: ldc 143
-    //   111: invokevirtual 174	java/lang/String:length	()I
-    //   114: istore 4
-    //   116: aload_3
-    //   117: invokevirtual 174	java/lang/String:length	()I
-    //   120: istore 5
-    //   122: aload 9
-    //   124: aload 8
-    //   126: ldc 143
-    //   128: invokevirtual 174	java/lang/String:length	()I
-    //   131: iload 4
-    //   133: iload 5
-    //   135: iadd
-    //   136: bipush 33
-    //   138: invokevirtual 178	android/text/SpannableString:setSpan	(Ljava/lang/Object;III)V
-    //   141: aload_0
-    //   142: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   145: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   148: iconst_0
-    //   149: invokevirtual 184	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setVisibility	(I)V
-    //   152: aload_0
-    //   153: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   156: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   159: aload 9
-    //   161: invokevirtual 187	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setText	(Ljava/lang/CharSequence;)V
-    //   164: aload_0
-    //   165: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   168: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   171: new 189	acwd
-    //   174: dup
-    //   175: aload_0
-    //   176: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   179: aconst_null
-    //   180: invokespecial 192	acwd:<init>	(Lcom/tencent/mobileqq/activity/EditInfoActivity;Lcom/tencent/mobileqq/activity/EditInfoActivity$1;)V
-    //   183: invokevirtual 196	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setMovementMethod	(Landroid/text/method/MovementMethod;)V
-    //   186: aload_0
-    //   187: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   190: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   193: aload_0
-    //   194: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   197: invokevirtual 200	com/tencent/mobileqq/activity/EditInfoActivity:getResources	()Landroid/content/res/Resources;
-    //   200: ldc 201
-    //   202: invokevirtual 207	android/content/res/Resources:getColor	(I)I
-    //   205: invokevirtual 210	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setHighlightColor	(I)V
-    //   208: aload_0
-    //   209: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   212: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   215: invokevirtual 212	com/tencent/mobileqq/troop/widget/EllipsizingTextView:a	()V
-    //   218: aload_0
-    //   219: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   222: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   225: bipush 10
-    //   227: invokevirtual 215	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setMaxLines	(I)V
-    //   230: aload_0
-    //   231: getfield 10	acvl:a	Lcom/tencent/mobileqq/activity/EditInfoActivity;
-    //   234: getfield 130	com/tencent/mobileqq/activity/EditInfoActivity:jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView	Lcom/tencent/mobileqq/troop/widget/EllipsizingTextView;
-    //   237: getstatic 221	android/text/TextUtils$TruncateAt:END	Landroid/text/TextUtils$TruncateAt;
-    //   240: invokevirtual 225	com/tencent/mobileqq/troop/widget/EllipsizingTextView:setEllipsize	(Landroid/text/TextUtils$TruncateAt;)V
-    //   243: invokestatic 231	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   246: ifeq +21 -> 267
-    //   249: ldc 233
-    //   251: iconst_2
-    //   252: iconst_2
-    //   253: anewarray 235	java/lang/Object
-    //   256: dup
-    //   257: iconst_0
-    //   258: aload_2
-    //   259: aastore
-    //   260: dup
-    //   261: iconst_1
-    //   262: aload_3
-    //   263: aastore
-    //   264: invokestatic 239	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   267: return
-    //   268: astore 8
-    //   270: ldc 127
-    //   272: istore 4
-    //   274: iload 7
-    //   276: istore 6
-    //   278: iload 4
-    //   280: istore 5
-    //   282: invokestatic 231	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   285: ifeq -191 -> 94
-    //   288: ldc 233
-    //   290: iconst_2
-    //   291: new 140	java/lang/StringBuilder
-    //   294: dup
-    //   295: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   298: ldc 241
-    //   300: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: aload 8
-    //   305: invokevirtual 242	java/lang/Exception:toString	()Ljava/lang/String;
-    //   308: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   311: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   314: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   317: iload 7
-    //   319: istore 6
-    //   321: iload 4
-    //   323: istore 5
-    //   325: goto -231 -> 94
-    //   328: astore 8
-    //   330: goto -56 -> 274
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	333	0	this	acvl
-    //   0	333	1	paramBoolean	boolean
-    //   0	333	2	paramString1	String
-    //   0	333	3	paramString2	String
-    //   81	241	4	i	int
-    //   92	232	5	j	int
-    //   88	232	6	k	int
-    //   2	316	7	m	int
-    //   107	18	8	localacvm	acvm
-    //   268	36	8	localException1	Exception
-    //   328	1	8	localException2	Exception
-    //   74	86	9	localSpannableString	android.text.SpannableString
-    // Exception table:
-    //   from	to	target	type
-    //   76	83	268	java/lang/Exception
-    //   83	90	328	java/lang/Exception
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramaofv);
+      return;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    paramToServiceMsg.extraData.putLong("msgSeq", paramLong);
+    if (paramBoolean1)
+    {
+      if (paramBoolean2) {
+        paramToServiceMsg.setNeedRemindSlowNetwork(true);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.sendPbReq(paramToServiceMsg);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.send(paramToServiceMsg);
+  }
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, int paramInt, long paramLong) {}
+  
+  public void a(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((aofv)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, List<MessageRecord> arg3, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    int i = acwh.a(???, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((aofv)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, i, paramBoolean2, paramBoolean3);
+      }
+    }
+  }
+  
+  protected void a(List<MessageRecord> paramList, ArrayList<MessageRecord> paramArrayList, boolean paramBoolean)
+  {
+    if (paramList.size() > 0)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if (!anqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, paramBoolean)) {
+          paramArrayList.add(localMessageRecord);
+        }
+      }
+    }
+  }
+  
+  public void a(msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "sendMsgReadConfirm");
+    }
+    a(true, true, false, 0L, new acvm(this, paramPbMsgReadedReportReq));
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, acvn paramacvn)
+  {
+    int i;
+    if (paramLong == 0L)
+    {
+      i = bbxc.a;
+      bbxc.a = i + 1;
+      paramLong = i;
+    }
+    for (;;)
+    {
+      long l = System.currentTimeMillis();
+      if (!paramBoolean1)
+      {
+        paramacvn = paramacvn.a();
+        if (paramacvn == null) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramacvn.getServiceCmd() + ",reqSeq=" + paramLong);
+        }
+        a(paramacvn, paramLong, paramBoolean2, paramBoolean3);
+        return;
+      }
+      SendMessageHandler localSendMessageHandler = new SendMessageHandler();
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramLong, localSendMessageHandler);
+      i = 0;
+      while (i < 9)
+      {
+        localSendMessageHandler.a(new BaseMessageProcessor.1(this, paramacvn, paramLong, l, paramBoolean2, paramBoolean3));
+        i += 1;
+      }
+      i = 0;
+      label168:
+      if (i < 3) {
+        if (i != 0) {
+          break label222;
+        }
+      }
+      label222:
+      for (paramLong = 480000L;; paramLong = (3 - i) * 480000 / 3 - i * 2000)
+      {
+        l = 480000 * i / 3;
+        localSendMessageHandler.getClass();
+        localSendMessageHandler.a(l, paramLong, "period");
+        i += 1;
+        break label168;
+        break;
+      }
+    }
+  }
+  
+  protected boolean a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    return anqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, paramBoolean);
+  }
+  
+  public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public void b(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((aofv)localIterator.next()).c(paramInt, paramBoolean, paramObject);
+      }
+    }
   }
 }
 

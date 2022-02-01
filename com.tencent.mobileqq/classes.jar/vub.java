@@ -1,120 +1,80 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLightInteractInfo;
+import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
+import java.util.List;
 
 public class vub
-  extends vua
+  extends zxg
 {
-  Map<String, vua> a;
+  public static String a;
+  private MutableLiveData<vup<List<FeedCloudMeta.StLightInteractInfo>>> a;
+  private String b = "";
   
-  public vub(@NonNull ViewGroup paramViewGroup)
+  static
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131379876)));
-    b(new vsk((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131368380)));
-    b(new vtf((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131379814)));
-    b(new vuc(this.jdField_a_of_type_AndroidViewView.findViewById(2131379783)));
-    b(new vtz((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131379877)));
+    jdField_a_of_type_JavaLangString = "QCircleLightInteractViewModel";
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public vub()
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561540, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public MutableLiveData<vup<List<FeedCloudMeta.StLightInteractInfo>>> a()
   {
-    super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).a(paramInt1, paramInt2);
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    if (!paramBoolean1) {
+      this.b = "";
     }
+    paramStFeed = new QCircleGetLightInteractRequest(paramStFeed, this.b, paramInt, paramString);
+    paramStFeed.setEnableCache(paramBoolean2);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.b());
+    a(paramStFeed, new vuc(this, paramStFeed, paramBoolean1));
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull vtt paramvtt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
   {
-    super.a(paramInt1, paramInt2, paramvtt, paramStoryPlayerGroupHolder);
-    wxe.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramvtt);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).a(paramInt1, paramInt2, paramvtt, paramStoryPlayerGroupHolder);
+    boolean bool1 = true;
+    boolean bool2 = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean1) || (paramLong != 0L) || (paramStGetLightInteractListRsp == null))
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.a(paramString).b(paramBoolean2));
+      return;
     }
-  }
-  
-  public void a(vth paramvth)
-  {
-    super.a(paramvth);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).a(paramvth);
+    this.b = paramStGetLightInteractListRsp.attachInfo.get();
+    Object localObject = paramStGetLightInteractListRsp.listInfo.get();
+    if (((List)localObject).size() > 0)
+    {
+      paramString = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+      localObject = vup.a(bool2).a(paramBoolean2, localObject);
+      if (paramStGetLightInteractListRsp.isFinish.get() == 1) {}
+      for (paramBoolean1 = bool1;; paramBoolean1 = false)
+      {
+        paramString.setValue(((vup)localObject).c(paramBoolean1));
+        return;
+      }
     }
-  }
-  
-  public void a(vub paramvub)
-  {
-    super.a(this);
-    paramvub = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (paramvub.hasNext()) {
-      ((vua)paramvub.next()).a(this);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  @Nullable
-  public vua b(Class<? extends vua> paramClass)
-  {
-    return (vua)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
-  }
-  
-  public void b()
-  {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).b();
-    }
-  }
-  
-  public void b(@NonNull vua paramvua)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramvua.getClass().getName(), paramvua);
-  }
-  
-  public void c()
-  {
-    super.c();
-    wxe.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_Vtt);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((vua)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return super.c();
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.a().b(paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vub
  * JD-Core Version:    0.7.0.1
  */

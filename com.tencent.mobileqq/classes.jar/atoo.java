@@ -1,129 +1,428 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.3;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.4;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
-class atoo
-  implements ServiceConnection
+public abstract class atoo
 {
-  atoo(aton paramaton) {}
+  protected int a;
+  public Activity a;
+  protected Bundle a;
+  private apcy a;
+  protected asrx a;
+  protected atdl a;
+  public atmk a;
+  protected atnd a;
+  protected atnf a;
+  protected atng a;
+  protected ator a;
+  public atot a;
+  public atou a;
+  protected atov a;
+  protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
+  protected HashMap<String, ArrayList<ShareActionSheetBuilder.ActionSheetItem>> a;
+  protected int b;
+  protected String f;
   
-  /* Error */
-  public void onServiceConnected(ComponentName arg1, android.os.IBinder paramIBinder)
+  public atoo(Activity paramActivity)
   {
-    // Byte code:
-    //   0: invokestatic 28	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +22 -> 25
-    //   6: ldc 30
-    //   8: iconst_2
-    //   9: ldc 32
-    //   11: iconst_1
-    //   12: anewarray 4	java/lang/Object
-    //   15: dup
-    //   16: iconst_0
-    //   17: aload_1
-    //   18: aastore
-    //   19: invokestatic 38	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   22: invokestatic 42	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: aload_0
-    //   26: getfield 12	atoo:a	Laton;
-    //   29: invokestatic 47	aton:a	(Laton;)Landroid/os/Messenger;
-    //   32: ifnull +95 -> 127
-    //   35: aload_0
-    //   36: getfield 12	atoo:a	Laton;
-    //   39: new 49	android/os/Messenger
-    //   42: dup
-    //   43: aload_2
-    //   44: invokespecial 52	android/os/Messenger:<init>	(Landroid/os/IBinder;)V
-    //   47: invokestatic 55	aton:a	(Laton;Landroid/os/Messenger;)Landroid/os/Messenger;
-    //   50: pop
-    //   51: aconst_null
-    //   52: iconst_1
-    //   53: invokestatic 61	android/os/Message:obtain	(Landroid/os/Handler;I)Landroid/os/Message;
-    //   56: astore_1
-    //   57: aload_1
-    //   58: new 63	android/os/Bundle
-    //   61: dup
-    //   62: invokespecial 64	android/os/Bundle:<init>	()V
-    //   65: invokevirtual 68	android/os/Message:setData	(Landroid/os/Bundle;)V
-    //   68: aload_1
-    //   69: aload_0
-    //   70: getfield 12	atoo:a	Laton;
-    //   73: invokestatic 47	aton:a	(Laton;)Landroid/os/Messenger;
-    //   76: putfield 72	android/os/Message:replyTo	Landroid/os/Messenger;
-    //   79: aload_0
-    //   80: getfield 12	atoo:a	Laton;
-    //   83: invokestatic 75	aton:b	(Laton;)Landroid/os/Messenger;
-    //   86: aload_1
-    //   87: invokevirtual 79	android/os/Messenger:send	(Landroid/os/Message;)V
-    //   90: aload_0
-    //   91: getfield 12	atoo:a	Laton;
-    //   94: astore_1
-    //   95: aload_1
-    //   96: monitorenter
-    //   97: aload_0
-    //   98: getfield 12	atoo:a	Laton;
-    //   101: invokestatic 82	aton:a	(Laton;)Ljava/util/concurrent/atomic/AtomicInteger;
-    //   104: iconst_1
-    //   105: invokevirtual 88	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   108: aload_1
-    //   109: monitorexit
-    //   110: aload_0
-    //   111: getfield 12	atoo:a	Laton;
-    //   114: aload_0
-    //   115: getfield 12	atoo:a	Laton;
-    //   118: invokestatic 82	aton:a	(Laton;)Ljava/util/concurrent/atomic/AtomicInteger;
-    //   121: invokevirtual 92	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   124: invokestatic 95	aton:a	(Laton;I)V
-    //   127: return
-    //   128: astore_1
-    //   129: ldc 30
-    //   131: iconst_1
-    //   132: ldc 97
-    //   134: aload_1
-    //   135: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   138: goto -48 -> 90
-    //   141: astore_1
-    //   142: ldc 30
-    //   144: iconst_1
-    //   145: ldc 102
-    //   147: aload_1
-    //   148: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   151: goto -61 -> 90
-    //   154: astore_2
-    //   155: aload_1
-    //   156: monitorexit
-    //   157: aload_2
-    //   158: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	159	0	this	atoo
-    //   0	159	2	paramIBinder	android.os.IBinder
-    // Exception table:
-    //   from	to	target	type
-    //   79	90	128	android/os/RemoteException
-    //   79	90	141	java/lang/Throwable
-    //   97	110	154	finally
-    //   155	157	154	finally
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = 0;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public abstract float a();
+  
+  public int a()
   {
-    synchronized (this.a)
+    int i = 3;
+    int j = e();
+    if ((d() == 3) && (atvo.c(d())) && (b() != 16))
     {
-      aton.a(this.a).set(-1);
-      aton.a(this.a, null);
-      aton.a(this.a, aton.a(this.a).get());
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->onServiceDisconnected %s", new Object[] { paramComponentName }));
+      switch (j)
+      {
+      case 3: 
+      default: 
+        i = 1;
+      case 5: 
+        return i;
+      case 1: 
+        return 4;
+      case 2: 
+        return 2;
+      case 0: 
+        return 6;
       }
+      if (h()) {
+        return 5;
+      }
+      return 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileBrowserModelBase", 2, "getCreateFileType error : this is a local file, but is invalid, may be can not find file path");
+    }
+    return 0;
+  }
+  
+  public Intent a()
+  {
+    return null;
+  }
+  
+  public aqck a()
+  {
+    return new atmx();
+  }
+  
+  public abstract atnd a();
+  
+  public abstract atnf a();
+  
+  public abstract atng a();
+  
+  public atnh a()
+  {
+    return null;
+  }
+  
+  public abstract TeamWorkFileImportInfo a();
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public abstract List<atoq> a();
+  
+  protected abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, atoq paramatoq);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(atmk paramatmk)
+  {
+    this.jdField_a_of_type_Atmk = paramatmk;
+  }
+  
+  public void a(ator paramator)
+  {
+    this.jdField_a_of_type_Ator = paramator;
+  }
+  
+  public abstract void a(atos paramatos);
+  
+  public void a(atot paramatot)
+  {
+    this.jdField_a_of_type_Atot = paramatot;
+  }
+  
+  public void a(atou paramatou)
+  {
+    this.jdField_a_of_type_Atou = paramatou;
+  }
+  
+  public void a(atov paramatov)
+  {
+    this.jdField_a_of_type_Atov = paramatov;
+  }
+  
+  public void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
+  
+  public void a(String paramString, Bundle paramBundle) {}
+  
+  public void a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  {
+    if (paramList == null) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        localObject = e();
+      } while (!bgmg.b((String)localObject));
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
+        break;
+      }
+      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
+    paramList.addAll((Collection)localObject);
+    return;
+    atwt.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new atop(this, (String)localObject));
+  }
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(atos paramatos)
+  {
+    if (paramatos != null) {
+      paramatos.aD_();
+    }
+    return false;
+  }
+  
+  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  protected abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public void b(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public abstract boolean b();
+  
+  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] b();
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Int < 0) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract long d();
+  
+  public abstract String d();
+  
+  protected abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public String e()
+  {
+    return "";
+  }
+  
+  public abstract void e();
+  
+  public void e(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract String f();
+  
+  public abstract void f();
+  
+  protected void f(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 118: 
+      bcst.b(null, "dc00898", "", "", "0X800ADBC", "0X800ADBC", 0, 0, "", "", "", "");
+      return;
+    case 52: 
+      bcst.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
+      return;
+    case 55: 
+      bcst.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
       return;
     }
+    bcst.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
+  }
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract String g();
+  
+  public abstract void g();
+  
+  public abstract boolean g();
+  
+  public abstract int h();
+  
+  public abstract String h();
+  
+  public abstract boolean h();
+  
+  public abstract int i();
+  
+  public String i()
+  {
+    return null;
+  }
+  
+  public void i()
+  {
+    a();
+    m();
+  }
+  
+  public abstract boolean i();
+  
+  public int j()
+  {
+    return 0;
+  }
+  
+  public String j()
+  {
+    return "";
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Atou != null) {
+      this.jdField_a_of_type_Atou = null;
+    }
+    if (this.jdField_a_of_type_Atot != null) {
+      this.jdField_a_of_type_Atot = null;
+    }
+    if (this.jdField_a_of_type_Atov != null) {
+      this.jdField_a_of_type_Atov = null;
+    }
+  }
+  
+  public abstract boolean j();
+  
+  public void j_()
+  {
+    b();
+    if (this.jdField_a_of_type_Atou != null) {
+      this.jdField_a_of_type_Atou = null;
+    }
+    if (this.jdField_a_of_type_Atot != null) {
+      this.jdField_a_of_type_Atot = null;
+    }
+    if (this.jdField_a_of_type_Atov != null) {
+      this.jdField_a_of_type_Atov = null;
+    }
+    n();
+  }
+  
+  public int k()
+  {
+    return 0;
+  }
+  
+  public String k()
+  {
+    return "";
+  }
+  
+  public int l()
+  {
+    return this.b;
+  }
+  
+  public String l()
+  {
+    return "";
+  }
+  
+  public void l() {}
+  
+  public boolean l()
+  {
+    return this.b != 12;
+  }
+  
+  public int m()
+  {
+    if (this.jdField_a_of_type_Atmk != null) {
+      return this.jdField_a_of_type_Atmk.a();
+    }
+    return 0;
+  }
+  
+  public String m()
+  {
+    return "";
+  }
+  
+  protected void m()
+  {
+    if (this.jdField_a_of_type_Apcy != null) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
+  }
+  
+  public String n()
+  {
+    return null;
+  }
+  
+  protected void n()
+  {
+    if (this.jdField_a_of_type_Apcy == null) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
+  }
+  
+  public String o()
+  {
+    return "";
+  }
+  
+  public String p()
+  {
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atoo
  * JD-Core Version:    0.7.0.1
  */

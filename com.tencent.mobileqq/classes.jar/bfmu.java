@@ -1,14 +1,20 @@
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-public abstract interface bfmu
+public class bfmu
+  implements bfvm
 {
-  public abstract String getJsCallbackMethod();
+  public bfmu(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public abstract WebView getWebview();
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  {
+    paramView.setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfmu
  * JD-Core Version:    0.7.0.1
  */

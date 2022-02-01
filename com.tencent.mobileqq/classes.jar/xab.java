@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
 
 public class xab
-  implements DialogInterface.OnDismissListener
+  extends wla
 {
-  public xab(EditVideoGuide paramEditVideoGuide) {}
+  public long a;
+  public String a;
+  public String c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xab(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
+  
+  public String toString()
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Xan.a(5);
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xab
  * JD-Core Version:    0.7.0.1
  */

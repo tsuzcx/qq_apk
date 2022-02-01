@@ -1,18 +1,47 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
-class afss
-  extends afuf
+public class afss
+  extends anyu
 {
-  afss(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afss(ActivateFriendView paramActivateFriendView) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void b()
   {
-    return new LightVideoItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
+    do
+    {
+      return;
+      ActivateFriendView.a(this.a, 0);
+      int i = 0;
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+        {
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+          {
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
+          }
+          else
+          {
+            ActivateFriendView.b(this.a);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
+          }
+        }
+      }
+    } while (ActivateFriendView.a(this.a) == null);
+    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
   }
 }
 

@@ -1,6 +1,5 @@
 package cooperation.qzone.widget;
 
-import alto;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
@@ -11,10 +10,11 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdhj;
-import bdns;
-import bjdt;
-import bjea;
+import anmw;
+import bgmo;
+import bgsu;
+import blsb;
+import blsi;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -49,7 +49,7 @@ public class QzoneSearchResultView
   
   public static void a(FragmentActivity paramFragmentActivity, String paramString)
   {
-    bjdt.a(paramFragmentActivity, paramString, -1, null, null);
+    blsb.a(paramFragmentActivity, paramString, -1, null, null);
   }
   
   public String a()
@@ -59,7 +59,7 @@ public class QzoneSearchResultView
   
   public void a(FragmentActivity paramFragmentActivity)
   {
-    bjdt.a(paramFragmentActivity, bjea.a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem.jmp_url.get().toStringUtf8(), -1);
+    blsb.a(paramFragmentActivity, blsi.a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem.jmp_url.get().toStringUtf8(), -1);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SearchBaseFragment paramSearchBaseFragment, AccountSearchPb.ResultItem paramResultItem)
@@ -71,7 +71,7 @@ public class QzoneSearchResultView
     }
     setVisibility(0);
     this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem = paramResultItem;
-    Object localObject1 = ((alto)paramQQAppInterface.getManager(51)).e(a());
+    Object localObject1 = ((anmw)paramQQAppInterface.getManager(51)).e(a());
     paramQQAppInterface = "";
     if (localObject1 != null) {
       paramQQAppInterface = ((Friends)localObject1).name;
@@ -82,7 +82,7 @@ public class QzoneSearchResultView
     localObject1 = paramResultItem.pic_url_list.get();
     int i = paramResultItem.total_pic_num.get();
     long l = paramResultItem.ftime.get();
-    CharSequence localCharSequence = bdns.a(getContext(), 3, 1000L * l, false);
+    CharSequence localCharSequence = bgsu.a(getContext(), 3, 1000L * l, false);
     localObject3 = paramSearchBaseFragment.a(80000004, (String)localObject3);
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
@@ -138,12 +138,12 @@ public class QzoneSearchResultView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367546));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366391));
-    this.b = ((TextView)findViewById(2131372482));
-    this.c = ((TextView)findViewById(2131377938));
-    this.d = ((TextView)findViewById(2131377276));
-    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131367991));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367857));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366643));
+    this.b = ((TextView)findViewById(2131373081));
+    this.c = ((TextView)findViewById(2131378776));
+    this.d = ((TextView)findViewById(2131378086));
+    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131368316));
   }
   
   public void setAvartaView(Bitmap paramBitmap)
@@ -155,12 +155,12 @@ public class QzoneSearchResultView
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bdhj.a());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bgmo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneSearchResultView
  * JD-Core Version:    0.7.0.1
  */

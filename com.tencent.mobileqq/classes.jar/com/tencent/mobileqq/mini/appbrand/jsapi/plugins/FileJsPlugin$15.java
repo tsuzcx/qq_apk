@@ -1,44 +1,61 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mm.vfs.VFSFileOp;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
-import ndr;
+import java.io.IOException;
 
 class FileJsPlugin$15
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$15(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, long paramLong) {}
+  FileJsPlugin$15(FileJsPlugin paramFileJsPlugin, String paramString1, String paramString2, long paramLong, String paramString3, JsRuntime paramJsRuntime, int paramInt, String paramString4, byte[] paramArrayOfByte) {}
   
   public String run()
   {
-    if ((MiniAppFileManager.getInstance().getWxFileType(this.val$zipFilePath) == 9999) && (!MiniAppFileManager.getInstance().isPackageRelativePath(this.val$zipFilePath))) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$zipFilePath, this.val$callbackId);
+    long l = System.currentTimeMillis();
+    if (!FileJsPlugin.access$400(this.this$0, this.val$encoding))
+    {
+      FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l, this.val$filePath);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "invalid encoding " + this.val$encoding, this.val$callbackId);
     }
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$targetPath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$targetPath, this.val$callbackId);
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) != 2)
+    {
+      FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l, this.val$filePath);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$filePath, this.val$callbackId);
     }
-    String str2 = MiniAppFileManager.getInstance().getAbsolutePath(this.val$zipFilePath);
-    String str1 = MiniAppFileManager.getInstance().getUsrPath(this.val$targetPath);
-    if ((TextUtils.isEmpty(str2)) || (!new VFSFile(str2).exists())) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open " + this.val$zipFilePath, this.val$callbackId);
+    String str1 = MiniAppFileManager.getInstance().getUsrPath(this.val$filePath);
+    if (!TextUtils.isEmpty(str1))
+    {
+      if (str1.contains("miniprogramLog"))
+      {
+        MiniLog.writeMiniLog(this.this$0.jsPluginEngine.appBrandRuntime.appId, this.val$data);
+        FileJsPlugin.access$100(this.this$0, this.val$event, true, this.val$startMS, l, str1);
+        return FileJsPlugin.access$300(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+      try
+      {
+        if (FileJsPlugin.access$500(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str1, true))
+        {
+          FileJsPlugin.access$100(this.this$0, this.val$event, true, this.val$startMS, l, str1);
+          String str2 = FileJsPlugin.access$300(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+          return str2;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l, str1);
+        return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, localIOException.getMessage(), this.val$callbackId);
+      }
     }
-    str2 = VFSFileOp.exportExternalPath(str2, true);
-    str1 = VFSFileOp.exportExternalPath(str1, true);
-    int i = ndr.a(str2, str1);
-    QLog.d("[mini] FileJsPlugin", 1, "unzip [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], zipPath:" + str2 + ", target:" + str1);
-    if (i == 0) {
-      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
-    }
-    return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "read zip data", this.val$callbackId);
+    FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l, this.val$filePath);
+    return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open ", this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.15
  * JD-Core Version:    0.7.0.1
  */

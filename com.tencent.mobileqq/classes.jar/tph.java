@@ -1,27 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import android.content.ClipboardManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tph
-  implements Animation.AnimationListener
+  extends tpg
 {
-  public tph(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  tph(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131379431);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131379432);
-    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString1);
+    zvc.a(2, 2131691142);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tph
  * JD-Core Version:    0.7.0.1
  */

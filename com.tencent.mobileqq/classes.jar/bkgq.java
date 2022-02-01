@@ -1,73 +1,58 @@
+import com.tencent.commonsdk.util.notification.NotificationLimiter;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class bkgq
+  implements NotificationLimiter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  
-  public bkgq()
+  private boolean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
+    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
   }
   
-  public bkgq(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt4)
+  private boolean b(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_e_of_type_JavaLangString = paramString2;
-    this.i = paramString3;
-    this.g = paramString4;
-    this.h = paramString5;
-    this.jdField_a_of_type_Long = paramInt4;
+    return (paramInt >= 528) && (paramInt <= 3000528);
+  }
+  
+  private boolean c(int paramInt)
+  {
+    return paramInt == 3000530;
+  }
+  
+  public boolean shouldNotify(int paramInt)
+  {
+    if (a(paramInt)) {}
+    while ((b(paramInt)) || (c(paramInt))) {
+      return true;
+    }
+    if (MiniChatActivity.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
+      }
+    }
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      boolean bool2 = bool1;
+      if (bool1) {
+        if (bdch.a(paramInt)) {
+          break label93;
+        }
+      }
+      label93:
+      for (bool2 = true;; bool2 = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
+        }
+        return bool2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkgq
  * JD-Core Version:    0.7.0.1
  */

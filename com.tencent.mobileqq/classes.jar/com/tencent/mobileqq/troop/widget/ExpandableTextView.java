@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import alud;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,9 +15,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcqu;
-import bcqv;
+import anni;
+import bfvm;
+import bfvn;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ExpandableTextView
   extends LinearLayout
@@ -28,8 +29,8 @@ public class ExpandableTextView
   private int jdField_a_of_type_Int;
   private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
   protected TextView a;
-  private bcqu jdField_a_of_type_Bcqu;
-  private bcqv jdField_a_of_type_Bcqv;
+  private bfvm jdField_a_of_type_Bfvm;
+  private bfvn jdField_a_of_type_Bfvn;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -69,9 +70,9 @@ public class ExpandableTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365870));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366122));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365868));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366120));
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
@@ -91,7 +92,7 @@ public class ExpandableTextView
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(3);
     this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = alud.a(2131704625);
+      this.jdField_a_of_type_JavaLangString = anni.a(2131703022);
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = "";
@@ -108,42 +109,48 @@ public class ExpandableTextView
   
   public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0) {}
-    label45:
-    do
+    boolean bool2 = false;
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_b_of_type_Boolean) {
-        break;
-      }
+    }
+    boolean bool1;
+    if (!this.jdField_b_of_type_Boolean)
+    {
       bool1 = true;
+      label29:
       this.jdField_b_of_type_Boolean = bool1;
       if (!this.jdField_b_of_type_Boolean) {
-        break label117;
+        break label135;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
       if (this.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.f, this.jdField_b_of_type_Boolean);
       }
-    } while (this.jdField_a_of_type_Bcqu == null);
-    paramView = this.jdField_a_of_type_Bcqu;
-    TextView localTextView1 = this.jdField_a_of_type_AndroidWidgetTextView;
-    TextView localTextView2 = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (!this.jdField_b_of_type_Boolean) {}
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramView.a(localTextView1, localTextView2, bool1);
-      return;
-      bool1 = false;
-      break;
-      label117:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(this.jdField_a_of_type_JavaLangCharSequence)) {
-        break label45;
+      if (this.jdField_a_of_type_Bfvm != null)
+      {
+        bfvm localbfvm = this.jdField_a_of_type_Bfvm;
+        TextView localTextView1 = this.jdField_a_of_type_AndroidWidgetTextView;
+        TextView localTextView2 = this.jdField_b_of_type_AndroidWidgetTextView;
+        bool1 = bool2;
+        if (!this.jdField_b_of_type_Boolean) {
+          bool1 = true;
+        }
+        localbfvm.a(localTextView1, localTextView2, bool1);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      break label45;
+      this.jdField_a_of_type_Boolean = true;
+      break;
+      bool1 = false;
+      break label29;
+      label135:
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+      if (!this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(this.jdField_a_of_type_JavaLangCharSequence)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      }
     }
   }
   
@@ -177,10 +184,10 @@ public class ExpandableTextView
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Bcqv == null) {
-          this.jdField_a_of_type_Bcqv = new bcqv(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Bfvn == null) {
+          this.jdField_a_of_type_Bfvn = new bfvn(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Bcqv);
+        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Bfvn);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
@@ -189,9 +196,9 @@ public class ExpandableTextView
     this.jdField_a_of_type_Int = getMeasuredHeight();
   }
   
-  public void setOnExpandStateChangeListener(bcqu parambcqu)
+  public void setOnExpandStateChangeListener(bfvm parambfvm)
   {
-    this.jdField_a_of_type_Bcqu = parambcqu;
+    this.jdField_a_of_type_Bfvm = parambfvm;
   }
   
   public void setOrientation(int paramInt)
@@ -236,7 +243,7 @@ public class ExpandableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView
  * JD-Core Version:    0.7.0.1
  */

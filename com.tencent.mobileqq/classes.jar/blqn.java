@@ -1,13 +1,10 @@
-class blqn
-  extends blsd
+public abstract interface blqn
 {
-  blqn(blqk paramblqk) {}
+  public abstract int a();
   
-  public void a()
-  {
-    super.a();
-    this.a.n();
-  }
+  public abstract Object a();
+  
+  public abstract Object b();
 }
 
 

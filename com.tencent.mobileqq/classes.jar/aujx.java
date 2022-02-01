@@ -1,19 +1,24 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-class aujx
-  implements DialogInterface.OnClickListener
+public class aujx
+  implements DialogInterface.OnDismissListener
 {
-  aujx(aujr paramaujr) {}
+  public aujx(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujx
  * JD-Core Version:    0.7.0.1
  */

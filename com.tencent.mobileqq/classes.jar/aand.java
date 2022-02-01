@@ -1,39 +1,49 @@
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public final class aand
 {
-  private int a = -2147483648;
-  
-  public aand(int paramInt)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    switch (a())
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString2));
+    localIntent.putExtra("srcAction", paramString3);
+    localIntent.putExtra("srcPackageName", paramString4);
+    localIntent.putExtra("srcClassName", paramString5);
+    localIntent.putExtra("params_appid", paramString1);
+    try
     {
-    default: 
-      return null;
-    case 0: 
-      return "Success";
-    case 1: 
-      return "Internal Error";
-    case 2: 
-      return "Ad was re-loaded too frequently";
-    case 3: 
-      return "Network Error";
-    case 4: 
-      return "Invalid Request";
-    case 5: 
-      return "No Fill";
-    case 6: 
-      return "Server Error";
+      paramContext.startActivity(localIntent);
+      return true;
     }
-    return "Display Format Mismatch";
+    catch (ActivityNotFoundException paramContext) {}
+    return false;
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString1));
+    if (localPackageManager.queryIntentActivities(localIntent, 0).size() != 0)
+    {
+      if (a(paramContext, paramString2, paramString1, paramString3, paramString4, paramString5)) {
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DataProviderApi", 2, "start scheme:" + paramString1 + " failed!");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataProviderApi", 2, "scheme:" + paramString1 + " is not found!");
+    }
+    return false;
   }
 }
 

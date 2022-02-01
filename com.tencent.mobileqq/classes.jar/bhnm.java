@@ -1,39 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-class bhnm
-  extends Handler
+public class bhnm
+  implements View.OnLayoutChangeListener
 {
-  public bhnm(bhne parambhne, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public void handleMessage(Message paramMessage)
+  public bhnm(WebViewFragment paramWebViewFragment) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
+    paramView.getWindowVisibleDisplayFrame(this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
     {
-    default: 
-      return;
-    case 1: 
-      bhne.a(this.a, bhne.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
-      bhne.a(this.a, true);
-      bhne.a(this.a);
-      bhne.a(this.a, false);
-      return;
-    case 3: 
-      bhne.a(this.a, paramMessage.obj);
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView == null) {
+        break label100;
+      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView.getPluginEngine();
+      if (paramView != null)
+      {
+        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
+        if (paramInt1 >= -100) {
+          break label105;
+        }
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934614L, null);
+      }
     }
-    bhne.b(this.a, paramMessage.obj);
+    label100:
+    label105:
+    while (paramInt1 <= 100)
+    {
+      return;
+      paramView = null;
+      break;
+    }
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934613L, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnm
  * JD-Core Version:    0.7.0.1
  */

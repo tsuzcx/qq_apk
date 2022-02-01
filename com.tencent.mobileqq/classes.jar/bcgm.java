@@ -1,66 +1,29 @@
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
 public class bcgm
-  extends aokh<bcgl>
+  extends CameraCaptureSession.CaptureCallback
 {
-  public int a()
+  public bcgm(Camera2Control paramCamera2Control) {}
+  
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    return 544;
+    bcgu.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
   }
   
-  @NonNull
-  public bcgl a(int paramInt)
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bcgl();
-  }
-  
-  @Nullable
-  public bcgl a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return bcgl.a(paramArrayOfaoko[0].a);
-    }
-    return null;
-  }
-  
-  public Class<bcgl> a()
-  {
-    return bcgl.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(bcgl parambcgl)
-  {
-    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambcgl);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((bcgc)((QQAppInterface)localAppRuntime).getManager(346)).a(parambcgl, false);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    bcgu.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

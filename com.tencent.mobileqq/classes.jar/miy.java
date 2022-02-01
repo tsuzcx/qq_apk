@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoControlUI;
 
 public class miy
-  implements DialogInterface.OnClickListener
+  implements GestureDetector.OnGestureListener
 {
-  public miy(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public miy(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.f != null) && (this.a.f.isShown())) {
+      this.a.r(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     miy
  * JD-Core Version:    0.7.0.1
  */

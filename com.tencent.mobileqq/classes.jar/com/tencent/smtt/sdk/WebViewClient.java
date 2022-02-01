@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.SslError;
@@ -31,7 +32,7 @@ public class WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
-  SmttWebViewClient mX5Client;
+  g a;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
   
@@ -50,8 +51,9 @@ public class WebViewClient
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (this.mX5Client != null) {
-      this.mX5Client.super_onPageStarted(paramWebView, paramString, paramBitmap);
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    if (this.a != null) {
+      this.a.a(paramWebView, paramString, paramBitmap);
     }
   }
   
@@ -64,9 +66,9 @@ public class WebViewClient
   
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    if (this.mX5Client != null) {
+    if (this.a != null) {
       if (paramWebResourceRequest.isForMainFrame()) {
-        this.mX5Client.onReceivedError(paramWebView.getX5WebView(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
+        this.a.onReceivedError(paramWebView.c(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
       }
     }
     while (!paramWebResourceRequest.isForMainFrame()) {
@@ -89,6 +91,11 @@ public class WebViewClient
     paramSslErrorHandler.cancel();
   }
   
+  public boolean onRenderProcessGone(WebView paramWebView, WebViewClient.a parama)
+  {
+    return false;
+  }
+  
   public void onScaleChanged(WebView paramWebView, float paramFloat1, float paramFloat2) {}
   
   public void onTooManyRedirects(WebView paramWebView, Message paramMessage1, Message paramMessage2) {}
@@ -97,16 +104,16 @@ public class WebViewClient
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldInterceptRequest(paramWebView.getX5WebView(), paramWebResourceRequest.getUrl().toString());
+    if (this.a != null) {
+      return this.a.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldInterceptRequest(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldInterceptRequest(paramWebView.getX5WebView(), paramWebResourceRequest);
+    if (this.a != null) {
+      return this.a.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest);
     }
     return null;
   }
@@ -123,8 +130,8 @@ public class WebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldOverrideUrlLoading(paramWebView.getX5WebView(), paramWebResourceRequest.getUrl().toString());
+    if (this.a != null) {
+      return this.a.shouldOverrideUrlLoading(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
@@ -136,7 +143,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

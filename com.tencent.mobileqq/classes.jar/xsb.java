@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class xsb
-  implements View.OnClickListener
+public abstract interface xsb
 {
-  xsb(xsa paramxsa) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Xrw;
-    if (paramView != null) {
-      paramView.a(this.a.jdField_a_of_type_Xsc, this.a);
-    }
-  }
+  public abstract void a(xrt paramxrt, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsb
  * JD-Core Version:    0.7.0.1
  */

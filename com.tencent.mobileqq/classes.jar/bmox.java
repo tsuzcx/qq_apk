@@ -1,19 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import com.tencent.biz.webviewplugin.OpenCenterPlugin;
+import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bmox
+final class bmox
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  public final Bitmap a;
-  public final boolean a;
-  public final Rect[] a;
-  public final String[] a;
-  
-  public bmox(String[] paramArrayOfString, Bitmap paramBitmap, Rect[] paramArrayOfRect, boolean paramBoolean)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new amgh());
+    localArrayList.add(new abbc());
+    localArrayList.add(new abcl());
+    localArrayList.add(new abbl());
+    localArrayList.add(new bhta());
+    localArrayList.add(new VasWebReport());
+    localArrayList.add(new avob());
+    localArrayList.add(new OpenCenterPlugin());
+    localArrayList.add(new MiniAppPlugin());
+    localArrayList.add(new abcg());
+    localArrayList.add(new QzoneWebMusicJsPlugin());
+    localArrayList.add(new abdf());
+    return localArrayList;
   }
 }
 

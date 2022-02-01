@@ -1,20 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
 public class ycc
-  implements View.OnClickListener
+  implements Comparator<CommentEntry>
 {
-  public ycc(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public ycc(ycb paramycb) {}
   
-  public void onClick(View paramView)
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    FollowedRecommendBannerView.a(this.a);
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    }
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    {
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycc
  * JD-Core Version:    0.7.0.1
  */

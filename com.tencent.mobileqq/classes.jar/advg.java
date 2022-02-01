@@ -1,25 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class advg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  advg(advf paramadvf) {}
+  advg(adve paramadve) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.a.a.b.setVisibility(8);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.a.c();
+    if ((paramView.getTag() instanceof String)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = (ambt)paramView.getTag();
+      if ((((ambt)localObject).a instanceof FileManagerEntity))
+      {
+        localObject = (FileManagerEntity)((ambt)localObject).a;
+        this.a.a((FileManagerEntity)localObject);
+      }
+      else if ((((ambt)localObject).a instanceof TencentDocData))
+      {
+        localObject = (TencentDocData)((ambt)localObject).a;
+        this.a.a((TencentDocData)localObject);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

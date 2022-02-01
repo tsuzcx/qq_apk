@@ -1,27 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class bcah
-  implements View.OnClickListener
+  implements bbzr
 {
-  public bcah(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  private acww<Integer, bbzr> a = new acwx();
   
-  public void onClick(View paramView)
+  public bcah()
   {
-    bhsj.b(paramView);
-    try
+    a();
+  }
+  
+  protected void a()
+  {
+    this.a.a(Integer.valueOf(169), bcaj.class);
+    this.a.a(Integer.valueOf(241), bcaj.class);
+    this.a.a(Integer.valueOf(242), bcaj.class);
+    this.a.a(Integer.valueOf(243), bcaj.class);
+    this.a.a(Integer.valueOf(175), bcai.class);
+    this.a.a(Integer.valueOf(11), bcai.class);
+    this.a.a(Integer.valueOf(129), bcak.class);
+    this.a.a(Integer.valueOf(131), bcak.class);
+    this.a.a(Integer.valueOf(133), bcak.class);
+  }
+  
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn)
+  {
+    if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {}
+    bbzr localbbzr;
+    do
     {
-      this.a.i();
       return;
-    }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
-    }
+      int i = paramMsg.msg_head.c2c_cmd.get();
+      localbbzr = (bbzr)this.a.a(Integer.valueOf(i));
+    } while (localbbzr == null);
+    localbbzr.a(paramMessageHandler, paramMsg, paramList, parambbyn);
   }
 }
 

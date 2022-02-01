@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.qphone.base.util.QLog;
 
-public final class amps
-  extends ampt
+class amps
+  implements MediaPlayer.OnErrorListener
 {
-  public amps(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  amps(ampr paramampr) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
-    }
-    synchronized (SosoInterface.a())
-    {
-      SosoInterface.a().notifyAll();
-      return;
-    }
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amps
  * JD-Core Version:    0.7.0.1
  */

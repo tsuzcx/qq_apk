@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
     <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1w" layout="@layout/bct" />
-    <LinearLayout android:orientation="vertical" android:paddingBottom="36.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="16.0dip" android:textColor="@color/k3" android:gravity="center_horizontal" android:id="@id/cu5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/bif" />
+    <LinearLayout android:orientation="vertical" android:id="@id/myb" android:paddingBottom="36.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/k3" android:gravity="center_horizontal" android:id="@id/cu5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/g_5" />
         <com.tencent.mobileqq.gesturelock.LockPatternView android:layout_gravity="center_horizontal" android:id="@id/cu4" android:layout_width="290.0dip" android:layout_height="290.0dip" />
     </LinearLayout>
     <TextView android:textSize="14.0dip" android:textColor="@color/k2" android:gravity="center_horizontal" android:id="@id/cu3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/g9w" android:layout_alignParentBottom="true" />

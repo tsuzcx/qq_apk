@@ -1,87 +1,107 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wnu
-  extends naa
+public abstract class wnu<M, VH extends wnt<M>>
+  extends RecyclerView.Adapter<wnt<M>>
 {
-  public wnu(StoryMessageListActivity paramStoryMessageListActivity) {}
+  protected Context a;
+  protected View a;
+  protected wnr a;
+  protected wns a;
+  protected View b;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public wnu(Context paramContext)
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public final wnt a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new wnt(this.jdField_a_of_type_AndroidViewView);
     }
     for (;;)
     {
-      int m;
-      int k;
-      try
-      {
-        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelOneMessage.errinfo.error_code.has()) {
-          break label239;
-        }
-        i = localRspDelOneMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
+      if (this.jdField_a_of_type_Wnr != null) {
+        paramViewGroup.itemView.setOnClickListener(new wnv(this, paramViewGroup));
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
+      if (this.jdField_a_of_type_Wns != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new wnw(this, paramViewGroup));
       }
-      try
-      {
-        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, alud.a(2131714922), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
-        i = 0;
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new wnt(this.b);
+      } else {
+        paramViewGroup = b(paramViewGroup, paramInt);
       }
     }
   }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null)
+    {
+      Log.w("HeaderAndFooterAdapter", "add the header view is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyDataSetChanged();
+  }
+  
+  public void a(wnr paramwnr)
+  {
+    this.jdField_a_of_type_Wnr = paramwnr;
+  }
+  
+  public void a(wns paramwns)
+  {
+    this.jdField_a_of_type_Wns = paramwns;
+  }
+  
+  public final void a(wnt paramwnt, int paramInt)
+  {
+    switch (paramwnt.getItemViewType())
+    {
+    default: 
+      b(paramwnt, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramwnt, paramInt, getItemId(paramInt));
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void b(VH paramVH, int paramInt);
+  
+  public abstract long getItemId(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wnu
  * JD-Core Version:    0.7.0.1
  */

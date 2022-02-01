@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alud;
+import anni;
 import java.util.HashMap;
 
 class QQIdentiferActivity$1
@@ -8,37 +8,37 @@ class QQIdentiferActivity$1
 {
   QQIdentiferActivity$1(QQIdentiferActivity paramQQIdentiferActivity)
   {
-    put("fl_no_face", alud.a(2131692695));
-    put("fl_no_left_face", alud.a(2131692697));
-    put("fl_no_right_face", alud.a(2131692701));
-    put("fl_no_chin", alud.a(2131692694));
-    put("fl_no_mouth", alud.a(2131692698));
-    put("fl_no_nose", alud.a(2131692699));
-    put("fl_no_left_eye", alud.a(2131692696));
-    put("fl_no_right_eye", alud.a(2131692700));
-    put("fl_pose_keep", alud.a(2131692704));
-    put("fl_pose_not_in_rect", alud.a(2131692705));
-    put("fl_act_blink", alud.a(2131692689));
-    put("fl_act_open_mouth", alud.a(2131692692));
-    put("fl_act_shake_head", alud.a(2131692693));
-    put("fl_act_nod_head", alud.a(2131692691));
-    put("fl_act_error", alud.a(2131692690));
-    put("rst_succeed", alud.a(2131719301));
-    put("rst_failed", alud.a(2131719300));
-    put("msg_light_bright", alud.a(2131694579));
-    put("msg_identity_error", alud.a(2131694575));
-    put("msg_light_norm", alud.a(2131694581));
-    put("msg_light_dark", alud.a(2131694580));
-    put("msg_param_error", alud.a(2131694583));
-    put("msg_net_error", alud.a(2131694582));
-    put("net_fetch_data", alud.a(2131694774));
-    put("net_fetch_failed", alud.a(2131694775));
-    put("net_reporting", alud.a(2131694776));
+    put("fl_no_face", anni.a(2131692269));
+    put("fl_no_left_face", anni.a(2131692271));
+    put("fl_no_right_face", anni.a(2131692275));
+    put("fl_no_chin", anni.a(2131692268));
+    put("fl_no_mouth", anni.a(2131692272));
+    put("fl_no_nose", anni.a(2131692273));
+    put("fl_no_left_eye", anni.a(2131692270));
+    put("fl_no_right_eye", anni.a(2131692274));
+    put("fl_pose_keep", anni.a(2131692276));
+    put("fl_pose_not_in_rect", anni.a(2131692277));
+    put("fl_act_blink", anni.a(2131692263));
+    put("fl_act_open_mouth", anni.a(2131692266));
+    put("fl_act_shake_head", anni.a(2131692267));
+    put("fl_act_nod_head", anni.a(2131692265));
+    put("fl_act_error", anni.a(2131692264));
+    put("rst_succeed", anni.a(2131717390));
+    put("rst_failed", anni.a(2131717389));
+    put("msg_light_bright", anni.a(2131693842));
+    put("msg_identity_error", anni.a(2131693840));
+    put("msg_light_norm", anni.a(2131693844));
+    put("msg_light_dark", anni.a(2131693843));
+    put("msg_param_error", anni.a(2131693846));
+    put("msg_net_error", anni.a(2131693845));
+    put("net_fetch_data", anni.a(2131693952));
+    put("net_fetch_failed", anni.a(2131693953));
+    put("net_reporting", anni.a(2131693954));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.1
  * JD-Core Version:    0.7.0.1
  */

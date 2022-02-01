@@ -19,13 +19,17 @@ public final class oidb_0xe03$RspBody
   public final PBEnumField enum_matchopcode = PBField.initEnum(1);
   public final PBEnumField enum_matchopretcode = PBField.initEnum(0);
   public oidb_0xe03.MatchInfo msg_match_info = new oidb_0xe03.MatchInfo();
+  public oidb_0xe03.matchTaskInfo msg_task_info = new oidb_0xe03.matchTaskInfo();
   public final PBRepeatMessageField<oidb_0xe03.TagInfo> rpt_tag = PBField.initRepeatMessage(oidb_0xe03.TagInfo.class);
   public final PBRepeatField<ByteStringMicro> rpt_tips_wording = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_default_tag_id = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_flare_switch = PBField.initUInt32(0);
   public final PBUInt32Field uint32_switch = PBField.initUInt32(0);
   public final PBUInt32Field uint32_time_out = PBField.initUInt32(0);
   public final PBUInt32Field uint32_voice_count = PBField.initUInt32(0);
+  public final PBUInt64Field uint64_matched_times = PBField.initUInt64(0L);
+  public final PBUInt64Field uint64_max_match_times = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
   public final PBRepeatField<Long> uint64_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_voice_match_flag = PBField.initUInt64(0L);
@@ -34,12 +38,12 @@ public final class oidb_0xe03$RspBody
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 72, 82, 90, 98, 104, 112, 120, 128, 136 }, new String[] { "uint64_uin", "enum_matchopcode", "enum_matchopretcode", "msg_match_info", "uint32_switch", "uint32_default_tag_id", "rpt_tag", "rpt_tips_wording", "bytes_match_fail_wording", "uint32_count", "uint64_uin_list", "uint32_time_out", "uint32_voice_count", "uint64_voice_match_flag" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 72, 82, 90, 98, 104, 112, 120, 128, 136, 144, 154, 160, 168 }, new String[] { "uint64_uin", "enum_matchopcode", "enum_matchopretcode", "msg_match_info", "uint32_switch", "uint32_default_tag_id", "rpt_tag", "rpt_tips_wording", "bytes_match_fail_wording", "uint32_count", "uint64_uin_list", "uint32_time_out", "uint32_voice_count", "uint64_voice_match_flag", "uint32_flare_switch", "msg_task_info", "uint64_max_match_times", "uint64_matched_times" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L) }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe03.oidb_0xe03.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.widget;
 
-import aieo;
+import ajvc;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 public class DispatchTouchEventRelativeLayout
   extends RelativeLayout
 {
-  private aieo a;
+  private ajvc a;
   
   public DispatchTouchEventRelativeLayout(Context paramContext)
   {
@@ -34,14 +34,14 @@ public class DispatchTouchEventRelativeLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDispatchListener(aieo paramaieo)
+  public void setOnDispatchListener(ajvc paramajvc)
   {
-    this.a = paramaieo;
+    this.a = paramajvc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.DispatchTouchEventRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

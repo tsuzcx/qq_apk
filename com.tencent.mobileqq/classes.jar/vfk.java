@@ -1,54 +1,59 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData;
+import com.tencent.component.app.common.ParcelableWrapper;
+import cooperation.qzone.util.QZLog;
 
-public class vfk
-  extends urt<vfm>
+public final class vfk
+  implements biuy<QzoneBarrageEffectData>
 {
-  public List<String> a = new ArrayList();
+  public int a()
+  {
+    return 1;
+  }
+  
+  public QzoneBarrageEffectData a(Cursor paramCursor)
+  {
+    Object localObject1 = paramCursor.getBlob(paramCursor.getColumnIndex("barrage_effect_data"));
+    paramCursor = Parcel.obtain();
+    try
+    {
+      paramCursor.unmarshall((byte[])localObject1, 0, localObject1.length);
+      paramCursor.setDataPosition(0);
+      localObject1 = (QzoneBarrageEffectData)ParcelableWrapper.createDataFromParcel(paramCursor);
+      return localObject1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QZLog.w("QzoneBarrageEffectData", "QzoneBarrageEffectData createFromCursor Error");
+      return null;
+    }
+    catch (Exception localException)
+    {
+      return null;
+    }
+    finally
+    {
+      if (paramCursor != null) {
+        paramCursor.recycle();
+      }
+    }
+    return null;
+  }
   
   public String a()
   {
-    return "StorySvc.homepage_batch_feeds_label";
+    return null;
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public biuz[] a()
   {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
-    {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new vfm(localRspStoryFeedTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqStoryFeedTagInfo.toByteArray();
+    return new biuz[] { new biuz("uin", "INTEGER UNIQUE"), new biuz("barrage_effect_data", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,55 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-final class auvq
-  implements View.OnClickListener
+public class auvq
+  extends auwc
 {
-  auvq(Dialog paramDialog, String paramString) {}
-  
-  public void onClick(View paramView)
+  public auvq(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.a.g = SystemClock.elapsedRealtime();
+    super.onPageFinished(paramWebView, paramString);
+    QQGameFeedWebFragment.a(this.a).setVisibility(0);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    QLog.d("GameWebPage", 4, "-->web onPageFinished");
+    try
+    {
+      QQGameFeedWebFragment.b(this.a);
+      return;
     }
+    catch (Throwable paramWebView)
+    {
+      paramWebView.printStackTrace();
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.a.e = SystemClock.elapsedRealtime();
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvq
  * JD-Core Version:    0.7.0.1
  */

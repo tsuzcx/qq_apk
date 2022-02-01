@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.view;
 
-import amwo;
+import aovf;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArWebInfo;
 
 class ARScanEntryView$8
   implements Runnable
 {
-  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, amwo paramamwo) {}
+  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, aovf paramaovf) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ class ARScanEntryView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.8
  * JD-Core Version:    0.7.0.1
  */

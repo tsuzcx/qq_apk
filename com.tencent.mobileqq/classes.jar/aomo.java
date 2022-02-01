@@ -1,21 +1,35 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aomo
+  extends aojt
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  
-  public aomo(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    paramQQAppInterface = new aomn(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "manage_troop";
+    paramQQAppInterface.c = "main_page";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      paramString = paramContext[i].split("=");
+      if (paramString.length == 2) {
+        paramQQAppInterface.a(paramString[0], paramString[1]);
+      }
+      i += 1;
+    }
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomo
  * JD-Core Version:    0.7.0.1
  */

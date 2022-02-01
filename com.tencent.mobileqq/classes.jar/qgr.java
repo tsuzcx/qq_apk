@@ -1,12 +1,45 @@
-public abstract interface qgr
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+public class qgr
+  implements ViewBase.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, qgt paramqgt);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public abstract void a(qgs paramqgs);
+  public qgr(Context paramContext, ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = bmqa.a("kd_topic_recommend_card_jump_url");
+    if ((paramViewBase instanceof String)) {}
+    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
+      }
+      if (!TextUtils.isEmpty(paramViewBase))
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+          snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+        }
+        pha.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,21 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class mtu
+class mtu
+  implements bkhy
 {
-  public static String a()
+  mtu(mts parammts) {}
+  
+  public void onDismiss()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DingdongSoundUtil", 2, "[sound_early] getFilesDir is null");
-      }
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
     }
-    return localFile.getParent() + "/dingdong/sound_early/";
+    bcst.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtu
  * JD-Core Version:    0.7.0.1
  */

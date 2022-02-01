@@ -1,7 +1,6 @@
-public class ateo
-  implements alpg
+public abstract interface ateo
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public abstract void a(boolean paramBoolean, atem paramatem);
 }
 
 

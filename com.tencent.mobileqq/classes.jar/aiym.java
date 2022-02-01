@@ -1,15 +1,6 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-public abstract class aiym
-  implements TextWatcher
-{
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-}
+public class aiym
+  extends aiyk
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public final class nsh
-  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
+class nsh
+  implements View.OnClickListener
 {
-  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
-  {
-    return new VideoAdInfo.NegFeedback(paramParcel);
-  }
+  nsh(nre paramnre, int paramInt, nyl paramnyl) {}
   
-  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoAdInfo.NegFeedback[paramInt];
+    aarp.a((BaseActivity)this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangRefWeakReference.get(), new aarr(this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nre.a(this.jdField_a_of_type_Nre), this.jdField_a_of_type_Int);
+    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsh
  * JD-Core Version:    0.7.0.1
  */

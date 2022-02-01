@@ -1,42 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings.System;
 
 class rvw
-  extends ClickableSpan
+  extends ContentObserver
 {
-  rvw(rvv paramrvv, int paramInt) {}
-  
-  public void onClick(View paramView)
+  rvw(rvv paramrvv, Handler paramHandler)
   {
-    paramView = new Intent(this.jdField_a_of_type_Rvv.getContext(), QQBrowserActivity.class);
-    String str = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Rvv.getContext()).getString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "https://kandian.qq.com/mqq/watchspot/extrapage.html ");
-    if (!TextUtils.isEmpty(str))
-    {
-      paramView.putExtra("url", URLUtil.guessUrl(str));
-      this.jdField_a_of_type_Rvv.getContext().startActivity(paramView);
-    }
+    super(paramHandler);
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void onChange(boolean paramBoolean, Uri paramUri)
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    super.onChange(paramBoolean, paramUri);
+    int i = Settings.System.getInt(rvv.a(this.a).getContentResolver(), "screen_brightness", 125);
+    if ((rvv.a(this.a)) && (i > 0)) {
+      this.a.a(i / 255.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvw
  * JD-Core Version:    0.7.0.1
  */

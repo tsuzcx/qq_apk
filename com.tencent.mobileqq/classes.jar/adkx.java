@@ -1,55 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
 import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
 
 public class adkx
-  implements DialogInterface.OnClickListener
+  extends ankx
 {
-  public adkx(NotificationActivity paramNotificationActivity) {}
+  public adkx(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    this.a.finish();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("password", null);
-    localBundle.putBoolean("is_from_account_another_login_exit", true);
-    if (!awia.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
-    {
-      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
-      this.a.app.getApplication().refreAccountList();
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
     }
-    paramDialogInterface = (badd)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
-    {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!awia.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkx
  * JD-Core Version:    0.7.0.1
  */

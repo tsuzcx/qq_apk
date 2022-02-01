@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.dom.Style;
 import com.tencent.viola.ui.view.VSeekBarView;
 import com.tencent.viola.utils.ViolaUtils;
 import java.util.Set;
@@ -207,9 +209,19 @@ public class VSeekBar
   private void setSeekBarHeight(Object paramObject)
   {
     VSeekBarView localVSeekBarView = (VSeekBarView)getHostView();
-    if (localVSeekBarView != null) {
+    if (localVSeekBarView != null)
+    {
       localVSeekBarView.setSeekBarHeight(ViolaUtils.getInt(paramObject));
+      localVSeekBarView.invalidateProgressDrawable();
     }
+  }
+  
+  public int getThumbSize()
+  {
+    if (this.mDomObj == null) {
+      return 0;
+    }
+    return ViolaUtils.getInt(this.mDomObj.getStyle().get("cycleThumbSize"));
   }
   
   protected VSeekBarView initComponentHostView(@NonNull Context paramContext)
@@ -240,6 +252,7 @@ public class VSeekBar
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     onStopSeek(paramSeekBar.getProgress());
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
   
   public boolean setProperty(String paramString, Object paramObject)
@@ -329,7 +342,7 @@ public class VSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSeekBar
  * JD-Core Version:    0.7.0.1
  */

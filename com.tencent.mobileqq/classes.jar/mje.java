@@ -1,28 +1,21 @@
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mje
-  implements Comparator<lfu>
+  implements DialogInterface.OnClickListener
 {
-  public mje(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public mje(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public int a(lfu paramlfu1, lfu paramlfu2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramlfu2.b) && (paramlfu1.b)) {
-      return paramlfu2.e - paramlfu1.e;
-    }
-    if ((!paramlfu2.b) && (!paramlfu1.b)) {
-      return paramlfu2.e - paramlfu1.e;
-    }
-    if ((paramlfu2.b) && (!paramlfu1.b)) {
-      return 1;
-    }
-    return -1;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mje
  * JD-Core Version:    0.7.0.1
  */

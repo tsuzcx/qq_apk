@@ -1,20 +1,21 @@
-class lnk
+import com.tencent.av.gaudio.QQGAudioCtrl;
+
+public class lnk
 {
-  byte jdField_a_of_type_Byte = 1;
-  byte b = 0;
-  byte c = 1;
-  byte d = 1;
-  byte e = 1;
-  byte f = 0;
-  byte g = 0;
-  byte h = 0;
-  byte i = 0;
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
   
-  lnk(lnf paramlnf) {}
+  public lnk(QQGAudioCtrl paramQQGAudioCtrl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lnk
  * JD-Core Version:    0.7.0.1
  */

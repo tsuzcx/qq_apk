@@ -1,34 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-
 public class rgi
-  extends nta
+  implements Cloneable
 {
-  private rgi(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public rgi()
   {
-    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = paramBundle.getString("VALUE_VIDEO_VID");
-      } while (localObject == null);
-      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
-    } while (localObject == null);
-    ((VideoInfo)localObject).p = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgi
  * JD-Core Version:    0.7.0.1
  */

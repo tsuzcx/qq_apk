@@ -1,38 +1,34 @@
-class wzg
-  implements xhq
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class wzg
+  extends wla
 {
-  wzg(wzb paramwzb) {}
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public void a()
-  {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    wzb.a(this.a);
-  }
+  public wzg() {}
   
-  public void a(String paramString)
+  public wzg(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    xan localxan = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
     {
-      localxan.a("download_face", 0, 0, new String[] { str, paramString });
-      wxk.b("0X80075DD");
-      if (!((xet)uwa.a(8)).a(paramString, true)) {
-        wxe.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
-      return;
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
     }
-  }
-  
-  public void b(String paramString)
-  {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzg
  * JD-Core Version:    0.7.0.1
  */

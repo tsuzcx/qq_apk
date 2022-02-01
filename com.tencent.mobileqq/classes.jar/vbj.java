@@ -1,87 +1,24 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
 public class vbj
-  extends RecyclerView.ItemDecoration
+  implements zzq<Object>
 {
-  static final Set<Integer> a;
-  protected int a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e;
+  public vbj(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  static
+  public void a(Object... paramVarArgs)
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-  }
-  
-  public vbj(Context paramContext)
-  {
-    this.jdField_a_of_type_Int = aepi.a(5.0F, paramContext.getResources());
-    this.b = aepi.a(16.0F, paramContext.getResources());
-    this.c = aepi.a(8.5F, paramContext.getResources());
-    this.d = aepi.a(3.0F, paramContext.getResources());
-    this.e = aepi.a(3.0F, paramContext.getResources());
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
-    paramView = paramRecyclerView.getAdapter();
-    if ((k < 0) || (k >= paramView.getItemCount())) {
-      return;
-    }
-    int m = paramView.getItemViewType(k);
-    if (paramView.getItemCount() > k + 1)
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4))
     {
-      int n = paramView.getItemViewType(k + 1);
-      int i = 0;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
-        i = 1;
-      }
-      int j = i;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
-        j = i + 1;
-      }
-      if (j == 1)
-      {
-        paramRect.right = this.d;
-        return;
-      }
-      if (j == 2)
-      {
-        paramRect.right = this.e;
-        return;
-      }
+      QLog.d("QCircleFolderFragmentsPart", 1, "preload requestTabData onReceive: dispatch Success:" + (Boolean)paramVarArgs[0] + " | retCode:" + (Long)paramVarArgs[1] + " | retMessage:" + (String)paramVarArgs[2]);
+      QCircleFolderFragmentsPart.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetBusiInfoRsp)paramVarArgs[3]);
     }
-    if (m == 2)
-    {
-      paramRect.right = this.b;
-      return;
-    }
-    if (k == paramState.getItemCount() - 1)
-    {
-      paramRect.right = this.c;
-      return;
-    }
-    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbj
  * JD-Core Version:    0.7.0.1
  */

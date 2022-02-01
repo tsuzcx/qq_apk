@@ -1,26 +1,9 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.support.annotation.NonNull;
+import java.util.Map;
 
-final class andp
-  implements FileFilter
+public abstract interface andp
 {
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
 }
 
 

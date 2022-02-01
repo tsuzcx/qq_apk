@@ -1,210 +1,146 @@
-import android.media.ExifInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.util.QZLog;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import java.util.HashSet;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bjud
+  extends BaseJsPlugin
+  implements bmxp
 {
-  public static boolean a(String paramString, double paramDouble1, double paramDouble2)
+  private int jdField_a_of_type_Int;
+  SparseArray<RequestEvent> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  
+  public bjud()
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if (JpegExifReader.isCrashJpeg(paramString)) {
-      return false;
-    }
-    ExifInterface localExifInterface;
+    bmxq.a().a(this);
+  }
+  
+  private int a()
+  {
     try
     {
-      localExifInterface = new ExifInterface(paramString);
-      if (localExifInterface == null) {
-        return false;
-      }
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      return i;
     }
-    catch (IOException paramString)
+    finally
     {
-      paramString.printStackTrace();
-      return false;
+      localObject = finally;
+      throw localObject;
     }
-    QLog.i("ExifComplement", 2, "complementByDB destPath:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-    if ((paramDouble1 == 0.0D) || (paramDouble2 == 0.0D) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-      return false;
-    }
-    QZLog.i("ExifComplement", 2, "[Complement] complementByDB gps lat: " + paramDouble2 + " lng:" + paramDouble1);
-    localExifInterface.setAttribute("GPSLatitude", bjup.a(paramDouble2));
-    localExifInterface.setAttribute("GPSLongitude", bjup.a(paramDouble1));
-    if (paramDouble1 > 0.0D)
+  }
+  
+  private JSONObject a(RequestEvent paramRequestEvent)
+  {
+    try
     {
-      paramString = "E";
-      localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-      if (paramDouble2 <= 0.0D) {
-        break label320;
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("WebSsoJsPlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+    }
+    return null;
+  }
+  
+  public HashSet<String> getFilterCmds()
+  {
+    bizg localbizg = (bizg)bizh.a().a("comminfo");
+    if (localbizg != null) {
+      return localbizg.a();
+    }
+    return bmxq.a;
+  }
+  
+  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
+  {
+    int i;
+    if (paramIntent != null)
+    {
+      i = paramIntent.getIntExtra("mini_seq", -1);
+      if (i != -1) {
+        break label26;
       }
     }
-    label320:
-    for (paramString = "N";; paramString = "S")
+    label26:
+    RequestEvent localRequestEvent;
+    do
     {
-      localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-      localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
-      try
-      {
-        localExifInterface.saveAttributes();
-        paramString = new HashMap();
-        paramString.put("gpsPicEdit", String.valueOf(1));
-        paramString.put("gpsComplementByDB", String.valueOf(1));
-        azri.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-        return true;
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      paramString = "W";
+      return;
+      i = -1;
       break;
+      localRequestEvent = (RequestEvent)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+    } while (localRequestEvent == null);
+    paramIntent = paramJSONObject;
+    if (paramJSONObject == null) {
+      paramIntent = new JSONObject();
     }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((JpegExifReader.isCrashJpeg(paramString2)) || (JpegExifReader.isCrashJpeg(paramString1))) {
-      return false;
-    }
-    ExifInterface localExifInterface1;
-    ExifInterface localExifInterface2;
+    paramJSONObject = new JSONObject();
     try
     {
-      localExifInterface1 = new ExifInterface(paramString2);
-      localExifInterface2 = new ExifInterface(paramString1);
-      if ((localExifInterface2 == null) || (localExifInterface1 == null)) {
-        return false;
-      }
-    }
-    catch (IOException paramString1)
-    {
-      paramString1.printStackTrace();
-      return false;
-    }
-    QLog.i("ExifComplement", 2, "complementByExif srcPath:" + paramString1 + "\ndestPath:" + paramString2 + "\nTAG_GPS_LONGITUDE:" + localExifInterface1.getAttribute("GPSLongitude"));
-    paramString1 = new HashMap();
-    if ((localExifInterface2 != null) && (TextUtils.isEmpty(localExifInterface1.getAttribute("GPSLongitude"))))
-    {
-      paramString2 = localExifInterface2.getAttribute("GPSLongitude");
-      String str = localExifInterface2.getAttribute("GPSLatitude");
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(str)))
+      paramJSONObject.put("cmd", paramString);
+      paramJSONObject.put("ret", paramLong);
+      paramJSONObject.put("rsp", paramIntent);
+      if (paramLong == 0L)
       {
-        QZLog.i("ExifComplement", 2, "[Complement] complementByExif lat: " + str + " lng:" + paramString2);
-        localExifInterface1.setAttribute("GPSLongitude", paramString2);
-        localExifInterface1.setAttribute("GPSLatitude", str);
-        if (localExifInterface2.getAttribute("GPSLongitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLongitudeRef", localExifInterface2.getAttribute("GPSLongitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("GPSLatitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLatitudeRef", localExifInterface2.getAttribute("GPSLatitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("DateTime") != null) {
-          localExifInterface1.setAttribute("DateTime", localExifInterface2.getAttribute("DateTime"));
-        }
-        if (localExifInterface2.getAttribute("Make") != null) {
-          localExifInterface1.setAttribute("Make", localExifInterface2.getAttribute("Make"));
-        }
-        if (localExifInterface2.getAttribute("Model") != null) {
-          localExifInterface1.setAttribute("Model", localExifInterface2.getAttribute("Model"));
-        }
-        try
-        {
-          localExifInterface1.saveAttributes();
-          paramString1.put("gpsPicEdit", String.valueOf(1));
-          paramString1.put("gpsComplementByExif", String.valueOf(1));
-          azri.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString1, null, true);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          paramString1.printStackTrace();
-          return false;
-        }
+        localRequestEvent.ok(paramJSONObject);
+        return;
       }
     }
-    return false;
-  }
-  
-  public static boolean b(String paramString, double paramDouble1, double paramDouble2)
-  {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((paramDouble1 == 4.9E-324D) || (paramDouble2 == 4.9E-324D)) {
-      return false;
-    }
-    if (!JpegExifReader.isCrashJpeg(paramString)) {
+    catch (JSONException paramIntent)
+    {
       for (;;)
       {
-        try
-        {
-          ExifInterface localExifInterface = new ExifInterface(paramString);
-          QLog.i("ExifComplement", 2, "complementByLocal path:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-          if ((localExifInterface == null) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-            break;
-          }
-          QLog.i("ExifComplement", 2, "[Complement] complementByLocal lat: " + paramDouble2 + " lng:" + paramDouble1);
-          localExifInterface.setAttribute("GPSLatitude", bjup.a(paramDouble2));
-          localExifInterface.setAttribute("GPSLongitude", bjup.a(paramDouble1));
-          if (paramDouble1 > 0.0D)
-          {
-            paramString = "E";
-            localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-            if (paramDouble2 <= 0.0D) {
-              break label320;
-            }
-            paramString = "N";
-            localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-            localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
-          }
-          paramString = "W";
-        }
-        catch (IOException paramString)
-        {
-          try
-          {
-            localExifInterface.saveAttributes();
-            paramString = new HashMap();
-            paramString.put("gpsCapturePic", String.valueOf(1));
-            paramString.put("gpsComplementByLocal", String.valueOf(1));
-            azri.a(BaseApplication.getContext()).a(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-            return true;
-          }
-          catch (IOException paramString)
-          {
-            paramString.printStackTrace();
-            return false;
-          }
-          paramString = paramString;
-          paramString.printStackTrace();
-          return false;
-        }
-        continue;
-        label320:
-        paramString = "S";
+        paramIntent.printStackTrace();
+      }
+      localRequestEvent.fail(paramJSONObject, "");
+    }
+  }
+  
+  @JsEvent({"requestWebSSO"})
+  public void requestWebSSO(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      JSONObject localJSONObject = a(paramRequestEvent).getJSONObject("data");
+      String str = localJSONObject.getString("webssoCmdId");
+      localJSONObject = localJSONObject.getJSONObject("webssoReq");
+      Object localObject = getFilterCmds();
+      if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((HashSet)localObject).contains(str)))
+      {
+        paramRequestEvent.fail(anni.a(2131715562));
+        return;
+      }
+      int i = a();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRequestEvent);
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("mini_seq", i);
+      bmxq.a().a(str, localJSONObject, (Bundle)localObject);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      paramRequestEvent.fail(anni.a(2131715561));
+      if (QLog.isColorLevel()) {
+        QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
       }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjud
  * JD-Core Version:    0.7.0.1
  */

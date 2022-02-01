@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import kotlin.Metadata;
 
-public class rys
-  implements View.OnClickListener
-{
-  public rys(FastWebActivity paramFastWebActivity, RIJRedPacketPopupView paramRIJRedPacketPopupView) {}
-  
-  public void onClick(View paramView)
-  {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView, false);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsGuideProxy$Companion;", "", "()V", "COLUMN_VIDEO_GUIDE_SHOW_PERCENT", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rys {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rys
  * JD-Core Version:    0.7.0.1
  */

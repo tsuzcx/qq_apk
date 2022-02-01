@@ -1,15 +1,28 @@
-import android.content.Context;
 import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aang
+public class aang
+  implements TouchWebView.OnScrollChangedListener
 {
-  public abstract View a();
+  public aang(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public abstract void a(Context paramContext);
-  
-  public abstract void b(Context paramContext);
-  
-  public abstract void c(Context paramContext);
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged before every thing t = " + paramInt2 + " oldt = " + paramInt4);
+    }
+    if (TribeVideoPlugin.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged t = " + paramInt2 + " oldt = " + paramInt4);
+      }
+      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
+      TribeVideoPlugin.a(this.a);
+    }
+  }
 }
 
 

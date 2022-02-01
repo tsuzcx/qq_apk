@@ -1,12 +1,14 @@
-public abstract interface amvc
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+public final class amvc
+  implements EIPCResultCallback
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void h();
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
+  }
 }
 
 

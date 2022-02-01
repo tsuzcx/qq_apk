@@ -1,5 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
+import abbc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -15,14 +16,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nbv;
-import ndq;
-import zej;
+import nko;
+import nmj;
 
 public class OfflinePlugin$6
   implements Runnable
 {
-  public OfflinePlugin$6(zej paramzej, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
+  public OfflinePlugin$6(abbc paramabbc, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
   
   public void run()
   {
@@ -38,10 +38,10 @@ public class OfflinePlugin$6
     {
       return;
       localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("offline_sw_register", 4);
-      str1 = nbv.d(this.jdField_a_of_type_JavaLangString);
+      str1 = nko.d(this.jdField_a_of_type_JavaLangString);
       str2 = str1 + "_register_time";
       l1 = ((SharedPreferences)localObject2).getLong(str2, -1L);
-      if ((!"0".equals(this.b)) && (zej.a())) {
+      if ((!"0".equals(this.b)) && (abbc.a())) {
         break;
       }
     } while (l1 == -1L);
@@ -51,7 +51,7 @@ public class OfflinePlugin$6
     ((SharedPreferences)localObject2).edit().putLong(str2, -1L).commit();
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().unRegisterServiceWorker(this.jdField_a_of_type_JavaLangString, true);
     return;
-    QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), ndq.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
+    QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), nmj.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
     Object localObject1 = ((SharedPreferences)localObject2).getString(str1, "");
     int j;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -150,7 +150,7 @@ public class OfflinePlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.6
  * JD-Core Version:    0.7.0.1
  */

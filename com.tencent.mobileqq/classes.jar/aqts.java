@@ -1,28 +1,36 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aqts
-  implements arec
+public class aqts
 {
-  aqts(aqtr paramaqtr, aqtt paramaqtt) {}
+  public String a = "";
   
-  public void a()
+  public static aqts a(String paramString)
   {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
-    this.jdField_a_of_type_Aqtr.a = true;
-    this.jdField_a_of_type_Aqtt.a(true);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Aqtt.a(false);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqts localaqts = new aqts();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("contents")) {
+          localaqts.a = paramString.getJSONArray("contents").toString();
+        }
+        return localaqts;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqts
  * JD-Core Version:    0.7.0.1
  */

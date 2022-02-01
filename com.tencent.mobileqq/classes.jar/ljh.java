@@ -1,123 +1,159 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljh
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private static volatile ljh jdField_a_of_type_Ljh;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ljg[] jdField_a_of_type_ArrayOfLjg = new ljg[14];
+  private lji[] jdField_a_of_type_ArrayOfLji = new lji[4];
   
-  public ljh(VideoAppInterface paramVideoAppInterface)
+  public static ljh a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    a(4);
-    a(5);
-    a(12);
-    a(10);
-  }
-  
-  public ljg a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLjg[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (jdField_a_of_type_Ljh == null) {}
+    try
     {
-      ljg localljg = this.jdField_a_of_type_ArrayOfLjg[paramInt];
-      localObject1 = localljg;
-      if (localljg == null)
-      {
-        localljg = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = localljg;
-        if (localljg != null)
-        {
-          this.jdField_a_of_type_ArrayOfLjg[paramInt] = localljg;
-          localObject1 = localljg;
-        }
+      if (jdField_a_of_type_Ljh == null) {
+        jdField_a_of_type_Ljh = new ljh();
       }
-      return localObject1;
+      return jdField_a_of_type_Ljh;
     }
+    finally {}
   }
   
-  protected ljg a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public int a()
   {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
-    {
-    case 9: 
-    default: 
-      lek.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
-      paramVideoAppInterface = localObject;
-    }
+    return this.jdField_a_of_type_ArrayOfLji.length;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "clear.");
     for (;;)
     {
-      if (paramVideoAppInterface != null) {
-        paramVideoAppInterface.a();
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLji.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLji[i] != null)
+          {
+            this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte = null;
+            this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int = 0;
+          }
+        }
+        else {
+          return;
+        }
       }
-      long l2 = System.currentTimeMillis();
-      lek.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
-      return paramVideoAppInterface;
-      paramVideoAppInterface = new lls(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new ljs(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lkt(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lkz(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new llc(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lju(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new mrt(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new llj(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lli(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new ljq(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lkj(paramVideoAppInterface);
+      i += 1;
     }
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt >= 0) && (paramInt < 14) && (!ljg.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
-      ljg.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLji.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int == paramInt1)
+          {
+            this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int = paramInt2;
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          }
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLji.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
+            this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int = paramInt;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
     }
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt >= 0)
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      bool1 = bool2;
-      if (paramInt < 14)
+      while (i < this.jdField_a_of_type_ArrayOfLji.length)
       {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfLjg[paramInt] != null) {
-          bool1 = true;
+        if (this.jdField_a_of_type_ArrayOfLji[i] == null) {
+          this.jdField_a_of_type_ArrayOfLji[i] = new lji(this);
+        }
+        if ((this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
+          this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        }
+        this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int = 0;
+        i += 1;
+      }
+      return true;
+    }
+  }
+  
+  public byte[] a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLji.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_Int == paramInt)
+          {
+            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLji[i].jdField_a_of_type_ArrayOfByte;
+            return arrayOfByte;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          return null;
         }
       }
+      finally {}
+      i += 1;
     }
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljh
  * JD-Core Version:    0.7.0.1
  */

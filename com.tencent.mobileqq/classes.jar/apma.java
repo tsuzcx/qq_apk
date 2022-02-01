@@ -1,244 +1,138 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.BaseEmosmStrategy.1;
-import com.tencent.mobileqq.emosm.BaseEmosmStrategy.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.GridView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.LinkedList;
 
-public abstract class apma
-  implements apni
+public class apma
+  implements apmd
 {
-  apmt jdField_a_of_type_Apmt;
-  apnj jdField_a_of_type_Apnj = null;
-  public QQAppInterface a;
-  public List<apxf> a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  public boolean a;
-  public boolean b;
+  public int a;
+  public RecommendCommonMessage.ArkMsgAppInfo a;
+  public RecommendCommonMessage a;
+  public int b;
+  public int c;
   
-  public apma(QQAppInterface paramQQAppInterface, apmt paramapmt)
+  private void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Apmt = paramapmt;
-    this.jdField_a_of_type_Apnj = new apnj(paramQQAppInterface);
+    new bibh(paramContext).a(2131717746, paramContext.getResources().getDimensionPixelSize(2131298998), 1, 0);
   }
   
-  public int a()
+  private void a(apow paramapow, appa paramappa)
   {
-    return 2131692076;
+    paramapow = new apmc(this, paramapow);
+    paramappa.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramapow);
   }
   
-  public View a(int paramInt, View paramView, apnb paramapnb, apuf paramapuf)
+  public void attachArkView(apow paramapow, appa paramappa, int paramInt)
   {
-    return paramView;
+    paramappa.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844889);
+    ArkAppView localArkAppView = paramappa.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+    localArkAppView.setBorderType(3);
+    localArkAppView.setClipRadiusTop(16.0F);
+    localArkAppView.setClipRadius(0.0F);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer = new agpp();
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a(paramapow);
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a = new ArkAppMessage.Config();
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a.autoSize = Integer.valueOf(1);
+      apok.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "ShowView", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, null, apok.f, 0, 0);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer;
+    if (this.c > 0) {
+      ((agpp)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appVer, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta, apoh.a(), this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo, paramapow.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
+    for (;;)
+    {
+      ((agpp)localObject).setFixSize(apoh.jdField_a_of_type_Int, apoh.jdField_a_of_type_Int);
+      ((agpp)localObject).setMaxSize(apoh.jdField_a_of_type_Int, apoh.jdField_a_of_type_Int);
+      ((agpp)localObject).setMinSize(apoh.jdField_a_of_type_Int * 7 / 10, apoh.jdField_a_of_type_Int);
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView appName:", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, ", getChatbubbleMaxWidth=", Integer.valueOf(apoh.jdField_a_of_type_Int) });
+      localObject = new apmb(this, paramappa, paramapow, paramInt, (agpp)localObject);
+      paramappa.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer, paramappa.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
+      localArkAppView.setOnTouchListener(paramapow.jdField_a_of_type_Afzq);
+      localArkAppView.setOnLongClickListener(paramapow.jdField_a_of_type_Afzq);
+      localArkAppView.setLoadCallback((ArkViewImplement.LoadCallback)localObject);
+      return;
+      ((agpp)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appVer, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta, apoh.a(), this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, paramapow.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
   }
   
-  public apnj a()
+  public void clickTail(appa paramappa, agqe paramagqe, Context paramContext) {}
+  
+  public void destroyContainerByRemove()
   {
-    return this.jdField_a_of_type_Apnj;
+    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.doOnEvent(2);
   }
   
-  public String a(apuf paramapuf)
+  public apmd extendArkCardByOpen(agpq paramagpq, String paramString1, String paramString2)
   {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer == paramagpq)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList;
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mOpenCardAppInfoList.size();
+      if (((ArrayList)localObject).size() == 1)
+      {
+        localObject = ((RecommendCommonMessage.ArkContextInfo)((ArrayList)localObject).get(0)).contextAppInfoList;
+        if ((((LinkedList)localObject).size() == 1) && (i >= appi.jdField_a_of_type_Int - 1)) {
+          return null;
+        }
+        if ((((LinkedList)localObject).size() > 1) && (i >= appi.c - 1)) {
+          return null;
+        }
+      }
+      else if ((((ArrayList)localObject).size() > 1) && (i >= appi.c - 1))
+      {
+        return null;
+      }
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject == null) {
+        return null;
+      }
+      localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      localObject = new apma();
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage;
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName = paramagpq.getAppName();
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appPath = ArkAppMgr.getInstance().getAppPathByNameFromLocal(((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, null, false);
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView = paramString1;
+      ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta = paramString2;
+      ((apma)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      ((apma)localObject).b = this.b;
+      ((apma)localObject).c = (this.b + 1);
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mOpenCardAppInfoList.add(0, ((apma)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo);
+      return localObject;
+    }
     return null;
   }
   
-  public List<apuf> a(List<apuf> paramList)
+  public String[] getArkAppNameAndPath()
   {
-    if (paramList == null) {
-      return null;
+    String[] arrayOfString = new String[3];
+    arrayOfString[0] = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
+    arrayOfString[1] = null;
+    arrayOfString[2] = null;
+    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return arrayOfString;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      apuf localapuf = (apuf)paramList.next();
-      Object localObject;
-      if ((localapuf instanceof aptr))
-      {
-        localObject = (aptr)localapuf;
-        if ((!TextUtils.isEmpty(((aptr)localObject).h)) && (!((aptr)localObject).h.equals("needUpload"))) {
-          localArrayList.add(localapuf);
-        }
-      }
-      else if ((localapuf instanceof apxf))
-      {
-        localObject = (apxf)localapuf;
-        if ((!TextUtils.isEmpty(((apxf)localObject).h)) && (!((apxf)localObject).h.equals("needUpload"))) {
-          localArrayList.add(localapuf);
-        }
-      }
-      else
-      {
-        localArrayList.add(localapuf);
-      }
-    }
-    return localArrayList;
+    arrayOfString[1] = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, null, false);
+    arrayOfString[2] = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
+    return arrayOfString;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseEmosmStrategy", 2, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW");
-      }
-      if (paramIntent == null) {
-        break;
-      }
-      paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-      if (paramIntent != null)
-      {
-        ThreadManager.excute(new BaseEmosmStrategy.2(this, paramIntent), 64, null, false);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onActivityResult, selected is empty");
-    return;
-    QLog.e("BaseEmosmStrategy", 1, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW, data is null");
-  }
-  
-  public void a(Context paramContext, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Apmt == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
-        {
-          this.jdField_a_of_type_Apmt.e();
-          return;
-        }
-      } while (!"com.tencent.mobileqq.action.upload.emotiom".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseEmosmStrategy", 2, "onReceive ACTION_UPLOAD_EMOTION");
-      }
-      paramContext = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-      if (paramContext != null)
-      {
-        ThreadManager.excute(new BaseEmosmStrategy.1(this, paramContext), 64, null, false);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onReceive selected is empty");
-  }
-  
-  public void a(apmj paramapmj)
-  {
-    a().a(paramapmj);
-  }
-  
-  public void a(GridView paramGridView, int paramInt, apxm paramapxm) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apmt == null) {
-      return;
-    }
-    Object localObject = a(this.jdField_a_of_type_Apmt.jdField_a_of_type_JavaUtilList);
-    if (localObject == null) {
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      if ((((List)localObject).size() > 0) && (((apuf)((List)localObject).get(0)).f == 1)) {
-        ((List)localObject).remove(0);
-      }
-      this.jdField_a_of_type_Apmt.d((List)localObject);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Apmt == null) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Apmt.jdField_a_of_type_JavaUtilList;
-    if (localObject == null) {
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      apuf localapuf;
-      if (a())
-      {
-        if (((List)localObject).size() <= 0) {
-          break label91;
-        }
-        if (((apuf)((List)localObject).get(0)).f != 1)
-        {
-          localapuf = new apuf();
-          localapuf.f = 1;
-          ((List)localObject).add(0, localapuf);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Apmt.d((List)localObject);
-        return;
-        label91:
-        localapuf = new apuf();
-        localapuf.f = 1;
-        ((List)localObject).add(0, localapuf);
-      }
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Apnj.onDestroy();
-    this.jdField_a_of_type_Apmt = null;
-  }
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

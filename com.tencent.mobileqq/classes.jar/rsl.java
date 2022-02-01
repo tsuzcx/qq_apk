@@ -1,23 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
 
 public class rsl
-  implements oot
+  extends pmn
 {
-  public rsl(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public rsl(SelectVideoFragment paramSelectVideoFragment) {}
   
-  public void a(int paramInt)
+  public void n()
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-    }
+    super.n();
+    SelectVideoFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsl
  * JD-Core Version:    0.7.0.1
  */

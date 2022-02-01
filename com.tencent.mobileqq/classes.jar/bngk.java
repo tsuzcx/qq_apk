@@ -1,24 +1,15 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bngk
-  implements blsa
+  implements DialogInterface.OnClickListener
 {
-  bngk(bngj parambngj) {}
+  bngk(bngh parambngh, Runnable paramRunnable) {}
   
-  public void a(blsn paramblsn) {}
-  
-  public void a(blsn paramblsn, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(blsq paramblsq, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.a_(4001, null);
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
-  
-  public void a(blsx paramblsx, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bnhc parambnhc) {}
 }
 
 

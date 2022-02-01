@@ -1,83 +1,66 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
-import mqq.app.AppRuntime;
+import java.util.List;
 
 class ysv
-  extends bead
+  extends QQUIEventReceiver<ysm, yyp>
 {
-  ysv(ysu paramysu, ysl paramysl, ArrayList paramArrayList, long paramLong) {}
-  
-  public void onDone(beae parambeae)
+  public ysv(@NonNull ysm paramysm)
   {
-    if (parambeae.a == 0)
+    super(paramysm);
+  }
+  
+  public void a(@NonNull ysm paramysm, @NonNull yyp paramyyp)
+  {
+    ysw localysw = paramysm.jdField_a_of_type_Ysw;
+    int i = paramyyp.jdField_a_of_type_Int;
+    paramyyp = paramyyp.jdField_a_of_type_JavaUtilList;
+    paramysm = paramysm.jdField_a_of_type_Zbf;
+    if (localysw != null)
     {
-      parambeae = this.jdField_a_of_type_Ysu.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (parambeae.hasNext()) {
-        if (!((File)parambeae.next()).exists())
-        {
-          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
-          return;
-        }
-      }
-      try
+      if (i != 0)
       {
-        parambeae = this.jdField_a_of_type_Ysl.b.iterator();
-        int i = 1;
-        while (parambeae.hasNext())
-        {
-          String str = (String)parambeae.next();
-          File localFile = new File(this.jdField_a_of_type_Ysu.a() + File.separator + "v_" + i + ".mp4");
-          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
-          if (localFile.exists())
-          {
-            i += 1;
-          }
-          else
-          {
-            if (!localFile.exists()) {
-              localFile.createNewFile();
-            }
-            xrg.a(new File(str), localFile);
-            i += 1;
-          }
-        }
-        this.jdField_a_of_type_Ysu.b();
-      }
-      catch (IOException parambeae)
-      {
-        QLog.e(".troop.VideoCombineHelper", 1, parambeae, new Object[0]);
-        this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
-        this.jdField_a_of_type_Ysl.b = this.jdField_a_of_type_JavaUtilArrayList;
-        this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysu);
-        this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz = new ysm(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysb, this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta, this.jdField_a_of_type_Ysu.c, this.jdField_a_of_type_Ysl.b, this.jdField_a_of_type_Ysl.d, this.jdField_a_of_type_Ysl.c);
-        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
-      }
-      for (;;)
-      {
-        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        yqp.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location failed.");
+        paramysm.jdField_a_of_type_Boolean = false;
+        localysw.a(paramysm);
+        yqv.a("0X80076CD");
+        yqv.b("0X80075E2");
         return;
-        if (this.jdField_a_of_type_Ysl.a) {
-          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz);
-        } else {
-          this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu.jdField_a_of_type_Ysz);
-        }
       }
+      yqp.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location success.");
+      paramysm.jdField_a_of_type_JavaUtilList.clear();
+      paramyyp = paramyyp.iterator();
+      while (paramyyp.hasNext())
+      {
+        wqr localwqr = (wqr)paramyyp.next();
+        if ((TextUtils.isEmpty(localwqr.d)) || (TextUtils.isEmpty(localwqr.a)) || (TextUtils.isEmpty(localwqr.b))) {
+          yqp.d(this.TAG, "find illegal content : url=%s, name=%s, des=%s", new Object[] { localwqr.d, localwqr.a, localwqr.b });
+        }
+        zbg localzbg = new zbg();
+        localzbg.d = localwqr.d;
+        localzbg.b = localwqr.a;
+        localzbg.c = localwqr.b;
+        localzbg.a = localwqr.c;
+        localzbg.e = localwqr.e;
+        paramysm.jdField_a_of_type_JavaUtilList.add(localzbg);
+      }
+      paramysm.jdField_a_of_type_Boolean = false;
+      localysw.a(paramysm);
+      return;
     }
-    this.jdField_a_of_type_Ysu.d = ("donwload failed!code = " + parambeae.a + "errmsg = " + parambeae.b);
-    this.jdField_a_of_type_Ysu.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysu);
+    yqp.b(this.TAG, "DoodleEmojiPoiPostersReceiver adapter is null");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return yyp.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysv
  * JD-Core Version:    0.7.0.1
  */

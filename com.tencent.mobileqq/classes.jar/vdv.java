@@ -1,28 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-public class vdv
-  extends uli
+class vdv
+  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  vdv(vdt paramvdt) {}
   
-  public vdv(vdu paramvdu, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
+  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
+    vdt.b(this.a, paramvup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdv
  * JD-Core Version:    0.7.0.1
  */

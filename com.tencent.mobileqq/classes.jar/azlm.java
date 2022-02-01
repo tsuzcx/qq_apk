@@ -1,29 +1,27 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
-public class azlm
+class azlm
+  implements Handler.Callback
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
+  azlm(azlk paramazlk) {}
   
-  public static String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    synchronized (a)
+    if (paramMessage.what == 100)
     {
-      int i = new Random().nextInt(10000);
-      String str = a.format(new Date()) + "_" + i;
-      return str;
+      paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+      if (azlk.a(this.a) == null)
+      {
+        View localView = azlk.a(this.a, azlk.b(this.a), 5, 0, 5, 0);
+        azlk.a(this.a, new RedTouch(azlk.a(this.a), localView).a(53).d(5).a());
+      }
+      azlk.a(this.a).a(paramMessage);
     }
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    return paramFile.getName();
+    return false;
   }
 }
 

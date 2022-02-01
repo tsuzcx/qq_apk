@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class adim
-  implements View.OnClickListener
+  extends aypl
 {
-  public adim(MainFragment paramMainFragment) {}
+  public adim(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.g();
+    AccountManageActivity.b(this.a);
   }
 }
 

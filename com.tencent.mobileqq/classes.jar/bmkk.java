@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.video.QzoneLiveVideoInterface;
 
 public final class bmkk
-  implements Parcelable.Creator<EditTakeGifSource>
+  implements bmec
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  public bmkk(String paramString) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void a(bmcj parambmcj)
   {
-    return new EditTakeGifSource[paramInt];
+    if (parambmcj == null) {
+      bmea.a(QzoneLiveVideoInterface.getContext(), this);
+    }
+    do
+    {
+      return;
+      parambmcj = parambmcj.a(this.a);
+    } while (parambmcj == null);
+    QzoneLiveVideoInterface.access$002(parambmcj.ver);
   }
 }
 

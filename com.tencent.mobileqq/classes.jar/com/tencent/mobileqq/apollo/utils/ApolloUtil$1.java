@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amrf;
+import aopw;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForApollo;
@@ -16,7 +16,7 @@ final class ApolloUtil$1
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed = true;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.isPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = amrf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = aopw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData);
       return;
     }
@@ -25,7 +25,7 @@ final class ApolloUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloUtil.1
  * JD-Core Version:    0.7.0.1
  */

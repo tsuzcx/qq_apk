@@ -1,31 +1,46 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class smh
-  extends AnimatorListenerAdapter
+class smh
+  implements View.OnClickListener
 {
-  public smh(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
+  smh(smg paramsmg, ViewGroup paramViewGroup) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a) != null) {
+      ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Smg.getItemId(i));
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("subchannelid", this.jdField_a_of_type_Smg.a(i).b());
+      localJSONObject.put("subchannelname", this.jdField_a_of_type_Smg.a(i).a());
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a));
+      oat.a(null, pha.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smh
  * JD-Core Version:    0.7.0.1
  */

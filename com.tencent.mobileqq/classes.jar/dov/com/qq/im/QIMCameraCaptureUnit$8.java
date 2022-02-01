@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
-import bkms;
+import bnbf;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$8
   implements Runnable
 {
-  public QIMCameraCaptureUnit$8(bkms parambkms, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
+  public QIMCameraCaptureUnit$8(bnbf parambnbf, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class QIMCameraCaptureUnit$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.8
  * JD-Core Version:    0.7.0.1
  */

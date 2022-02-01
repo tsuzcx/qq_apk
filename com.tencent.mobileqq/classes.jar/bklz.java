@@ -1,12 +1,4 @@
-public final class bklz
-{
-  public final byte[] a;
-  
-  bklz(byte[] paramArrayOfByte)
-  {
-    this.a = paramArrayOfByte;
-  }
-}
+public class bklz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

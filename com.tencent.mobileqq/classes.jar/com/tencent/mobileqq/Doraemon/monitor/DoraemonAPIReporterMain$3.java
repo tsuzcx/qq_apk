@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import abzk;
-import awgf;
-import awgg;
+import adgq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class DoraemonAPIReporterMain$3
   implements Runnable
 {
-  public DoraemonAPIReporterMain$3(abzk paramabzk, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+  public DoraemonAPIReporterMain$3(adgq paramadgq, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    awgf localawgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
     APIQuotaEntity localAPIQuotaEntity = new APIQuotaEntity();
     localAPIQuotaEntity.type = this.jdField_a_of_type_Int;
     localAPIQuotaEntity.appid = this.jdField_a_of_type_JavaLangString;
     localAPIQuotaEntity.apiName = this.jdField_b_of_type_JavaLangString;
     localAPIQuotaEntity.remainTimes = this.jdField_a_of_type_Long;
     localAPIQuotaEntity.expireTimeMillis = this.jdField_b_of_type_Long;
-    localawgf.b(localAPIQuotaEntity);
+    localEntityManager.persistOrReplace(localAPIQuotaEntity);
   }
 }
 

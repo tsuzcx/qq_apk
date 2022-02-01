@@ -1,14 +1,23 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
 
-public abstract interface rjw
+public final class rjw
+  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
 {
-  public abstract List<rjx> a(int paramInt, boolean paramBoolean);
+  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
+  {
+    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
+  }
   
-  public abstract boolean a();
+  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  {
+    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjw
  * JD-Core Version:    0.7.0.1
  */

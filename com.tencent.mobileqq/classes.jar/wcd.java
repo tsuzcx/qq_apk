@@ -1,36 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Comparator;
 
-public class wcd
-  extends QQUIEventReceiver<wcb, uow>
+final class wcd
+  implements Comparator<wcm>
 {
-  public wcd(@NonNull wcb paramwcb)
+  public int a(wcm paramwcm1, wcm paramwcm2)
   {
-    super(paramwcb);
-  }
-  
-  public void a(@NonNull wcb paramwcb, @NonNull uow paramuow)
-  {
-    if ((paramwcb.a == null) || (paramuow.a == null) || (!TextUtils.equals(paramwcb.a.a, paramuow.a.mVid))) {}
-    do
-    {
-      return;
-      paramwcb.i();
-      paramwcb = (vtv)paramwcb.a(vtv.class);
-    } while (paramwcb == null);
-    paramwcb.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uow.class;
+    if ((paramwcm1 == paramwcm2) || (paramwcm1.b == paramwcm2.b)) {
+      return 0;
+    }
+    if (paramwcm1.b < paramwcm2.b) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcd
  * JD-Core Version:    0.7.0.1
  */

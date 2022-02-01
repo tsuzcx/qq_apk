@@ -1,12 +1,11 @@
-import android.content.Intent;
-
 public class becd
+  extends becg
 {
-  public becg a;
+  public String a;
   
-  public becd(Intent paramIntent)
+  public String toString()
   {
-    this.a = new becg(paramIntent.getStringExtra("lh_uin"), paramIntent.getStringExtra("lh_light"));
+    return this.a;
   }
 }
 

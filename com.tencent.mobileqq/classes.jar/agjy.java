@@ -1,25 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agjy
+public class agjy
   implements View.OnClickListener
 {
-  agjy(agjx paramagjx, String paramString) {}
+  public agjy(AIOLongShotHelper paramAIOLongShotHelper) {}
   
   public void onClick(View paramView)
   {
-    if ((agjx.a(this.jdField_a_of_type_Agjx) == null) || (agjx.a(this.jdField_a_of_type_Agjx).a.a(this.jdField_a_of_type_JavaLangString) == null)) {
-      return;
-    }
-    boolean bool = agjx.a(this.jdField_a_of_type_Agjx).a.a(this.jdField_a_of_type_JavaLangString, agjx.a(this.jdField_a_of_type_Agjx).jdField_d_of_type_Int, agjx.a(this.jdField_a_of_type_Agjx).jdField_d_of_type_JavaUtilList);
-    String str = agjx.a(this.jdField_a_of_type_Agjx) + "";
-    if (bool) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      azqs.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str, paramView, "", "");
-      this.jdField_a_of_type_Agjx.notifyDataSetChanged();
-      return;
-    }
+    this.a.b(paramView);
+    AIOLongShotHelper.a("0X8009DE9");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

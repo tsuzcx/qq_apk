@@ -1,13 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.net.Uri;
 
-public abstract interface begc
+class begc
+  implements bekr
 {
-  public abstract WebViewFragment a(Intent paramIntent);
+  begc(begb parambegb) {}
   
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract WebViewFragment b();
+  public void a(Uri paramUri)
+  {
+    this.a.a.a = paramUri;
+  }
 }
 
 

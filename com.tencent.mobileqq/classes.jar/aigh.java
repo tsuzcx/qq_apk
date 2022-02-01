@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigh
-  implements View.OnClickListener
+public class aigh
+  implements DialogInterface.OnClickListener
 {
-  aigh(aigf paramaigf) {}
+  public aigh(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
+    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

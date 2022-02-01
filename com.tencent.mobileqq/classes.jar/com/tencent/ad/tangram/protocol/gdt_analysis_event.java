@@ -16,6 +16,8 @@ public final class gdt_analysis_event
   public static final int EVENT_CLOSE_INTERSTITIAL_INVOKED = 1091;
   public static final int EVENT_CLOSE_INTERSTITIAL_START = 1092;
   public static final int EVENT_CONSISTENCY_BETWEEN_DEVICE_ID_AND_IMEI = 1074;
+  public static final int EVENT_EXPOSURE_API_INVOKE = 1103;
+  public static final int EVENT_EXPOSURE_CALL_BACK = 1104;
   public static final int EVENT_GET_DEVICE_AID_TICKET = 1049;
   public static final int EVENT_GET_DEVICE_ANDROID_ID = 1042;
   public static final int EVENT_GET_DEVICE_CARRIER = 1039;
@@ -50,6 +52,8 @@ public final class gdt_analysis_event
   public static final int EVENT_METHOD_INVOKE = 1051;
   public static final int EVENT_METHOD_JSBRIDGE = 1052;
   public static final int EVENT_MUID_SOURCE_TYPE = 1075;
+  public static final int EVENT_OFFLINE = 1106;
+  public static final int EVENT_PRELOAD = 1105;
   public static final int EVENT_PRELOAD_INTERSTITIAL_END = 1082;
   public static final int EVENT_PRELOAD_INTERSTITIAL_START = 1081;
   public static final int EVENT_PRELOAD_INTERSTITIAL_STATUS_CHANGED = 1083;
@@ -90,7 +94,9 @@ public final class gdt_analysis_event
   public static final int STATISTICS_ACTION = 4;
   public static final int STATISTICS_CLICK = 2;
   public static final int STATISTICS_EFFECT = 3;
+  public static final int STATISTICS_FEEDBACK = 7;
   public static final int STATISTICS_IMPESSION = 1;
+  public static final int STATISTICS_SDK_MSG = 6;
   public static final int STATISTICS_VIDEO_PLAY = 5;
   public static final int THIRD_PARTY_MONITOR_STATISTICS_CLICK = 102;
   public static final int THIRD_PARTY_MONITOR_STATISTICS_IMPESSION = 101;
@@ -102,8 +108,8 @@ public final class gdt_analysis_event
   public static final int VIDEO_STATUS_PAUSED = 4;
   public static final int VIDEO_STATUS_PLAYING = 3;
   public static final int VIDEO_STATUS_UNKNOWN = 0;
-  public int acitivtyStatus = -2147483648;
   public int actionId = -2147483648;
+  public int activityStatus = -2147483648;
   public String aid;
   public String androidActivityName;
   public int androidAppInstalled = -2147483648;
@@ -113,6 +119,7 @@ public final class gdt_analysis_event
   public String androidFromProcessName;
   public String androidPackageName;
   public int androidSimState = -2147483648;
+  public String androidToProcessName;
   public String api;
   public String businessId;
   public int cached = -2147483648;
@@ -130,9 +137,11 @@ public final class gdt_analysis_event
   public int httpErrorCode = -2147483648;
   public int internalErrorCode = -2147483648;
   public long interval = -2147483648L;
+  public int isSupplement = -2147483648;
   public int muidSourceType = -2147483648;
   public int netType = -2147483648;
   public int networkType = -2147483648;
+  public String offlineVersion;
   public int orientation = -2147483648;
   public int phoneType = -2147483648;
   public String posId;
@@ -144,12 +153,13 @@ public final class gdt_analysis_event
   public int status4 = -2147483648;
   public int status5 = -2147483648;
   public String url;
+  public int urlType = -2147483648;
   public long videoPositionMillis = -2147483648L;
   public int videoStatus = -2147483648;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.gdt_analysis_event
  * JD-Core Version:    0.7.0.1
  */

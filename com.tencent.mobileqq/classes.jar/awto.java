@@ -1,47 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-public final class awto
-  implements apuc
+public class awto
+  implements awtk
 {
-  public awto(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public awto(TabPageIndicator paramTabPageIndicator) {}
   
-  public void a(apuf paramapuf)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (paramapuf != null) {}
-    try
-    {
-      paramapuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
-    }
-    catch (Throwable paramapuf) {}
-  }
-  
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
-  
-  public boolean a(apuf paramapuf)
-  {
+    TabPageIndicator.a(this.a);
     return false;
   }
-  
-  public void b()
-  {
-    banh.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awto
  * JD-Core Version:    0.7.0.1
  */

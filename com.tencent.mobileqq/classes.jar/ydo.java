@@ -1,158 +1,83 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.util.List;
 
 public class ydo
+  extends wfr<ydh, wmr>
 {
-  public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StShare a;
-  public ExtraTypeInfo a;
-  public String a;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
-  
-  public CertifiedAccountMeta.StFeed a()
+  public ydo(ydh paramydh)
   {
-    return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    super(paramydh);
   }
   
-  public String a()
+  public void a(@NonNull ydh paramydh, @NonNull wmr paramwmr)
   {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.id.get();
-    }
-    return "";
-  }
-  
-  public String b()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get())))
+    if ((paramwmr.jdField_a_of_type_Int == 2) || (!paramwmr.jdField_a_of_type_JavaLangString.equals(ydh.a(paramydh))) || (ydh.a(paramydh) == null))
     {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get();
+      yqp.b(this.TAG, "ignore this feed info change event. %s.", paramwmr.toString());
+      return;
     }
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        return "";
-      }
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    String str;
-    switch (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+    yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
+    switch (paramwmr.b)
     {
     default: 
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        str = "";
+      return;
+    case 1: 
+      if (paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
       }
-      break;
-    }
-    for (;;)
-    {
-      QLog.d("ShareInfoBean", 1, "share url is:" + str);
-      return str;
-      str = yod.e(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = yod.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = yod.d(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = yod.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = this.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get();
+      localObject = (woj)wpm.a(17);
+      localList = ((woj)localObject).a(paramwmr.jdField_a_of_type_JavaLangString, true);
+      ydh.a(paramydh).a(localList, true, true);
+      if (ydh.a(paramydh).a())
+      {
+        paramwmr = ((woj)localObject).a(paramwmr.jdField_a_of_type_JavaLangString, false);
+        ydh.a(paramydh).a(paramwmr, true, false);
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get();
-    }
-    return "";
-  }
-  
-  public String d()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.get();
+      paramydh.a();
+      return;
+    case 2: 
+      if (paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.subtitle.get();
+      ydh.a(paramydh).a(paramwmr.c);
+      paramydh.a();
+      return;
     }
-    return "";
-  }
-  
-  public String e()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get())))
+    if (paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
     {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get();
+      ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
+      ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
+      ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount;
+      ydh.a(paramydh).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount;
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
+    Object localObject = (woy)wpm.a(15);
+    List localList = ((woy)localObject).a(paramwmr.jdField_a_of_type_JavaLangString, true);
+    ydh.a(paramydh).b(localList, true, true);
+    if (ydh.a(paramydh).a())
     {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get();
-      }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get();
+      paramwmr = ((woy)localObject).a(paramwmr.jdField_a_of_type_JavaLangString, false);
+      ydh.a(paramydh).b(paramwmr, true, false);
     }
-    return "";
+    paramydh.a();
   }
   
-  public String f()
+  public Class acceptEventClass()
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.nick.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.nick.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get();
-    }
-    return "";
+    return wmr.class;
   }
   
-  public String g()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.desc.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.desc.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.get();
-    }
-    return "";
-  }
-  
-  public String h()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bdnn.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.shorturl.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.shorturl.get();
-    }
-    return "";
-  }
+  public void b(@NonNull ydh paramydh, @NonNull wmr paramwmr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydo
  * JD-Core Version:    0.7.0.1
  */

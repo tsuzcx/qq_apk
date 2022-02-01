@@ -1,28 +1,67 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aeaa
-  implements TextWatcher
+  implements alaq
 {
-  public aeaa(SubLoginActivity paramSubLoginActivity) {}
+  public aeaa(Conversation paramConversation) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
+    if (this.a.jdField_a_of_type_Albc != null) {
+      this.a.jdField_a_of_type_Albc.f();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
+    }
+    if (this.a.jdField_a_of_type_Wui != null) {
+      this.a.jdField_a_of_type_Wui.e();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_Azav.i();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        apsl localapsl = (apsl)localIterator.next();
+        if (localapsl != null) {
+          localapsl.h();
+        }
       }
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.F();
     }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    if (this.a.jdField_a_of_type_Wui != null) {
+      this.a.jdField_a_of_type_Wui.f();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.m(this.a);
+    this.a.jdField_a_of_type_Azav.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.E();
+    }
+    if (this.a.jdField_a_of_type_Wui != null) {
+      this.a.jdField_a_of_type_Wui.j();
+    }
+    if (this.a.jdField_a_of_type_Alfl != null) {
+      this.a.jdField_a_of_type_Alfl.f();
+    }
   }
 }
 

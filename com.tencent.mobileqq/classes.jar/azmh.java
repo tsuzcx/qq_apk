@@ -1,15 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
-class azmh
-  extends baot
+public class azmh
+  implements azmj
 {
-  azmh(azmg paramazmg) {}
+  public azmh(ComponentCenter paramComponentCenter, int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public boolean a(int paramInt)
+  public void a(azlv paramazlv)
   {
-    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
-    azmg.a(this.a, azmg.a(this.a), -2147483648, azmg.b(this.a), -2147483648, null, -2147483648);
-    return super.a(paramInt);
+    paramazlv.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

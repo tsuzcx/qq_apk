@@ -10,20 +10,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import augd;
-import augo;
-import auhc;
-import auif;
-import auig;
-import auih;
-import aujh;
-import aujo;
-import auke;
-import bdoo;
+import awng;
+import awnr;
+import awof;
+import awpi;
+import awpj;
+import awpk;
+import awql;
+import awqs;
+import awri;
+import bgtn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class MsgBackupPCAuthFragment
@@ -37,7 +38,7 @@ public class MsgBackupPCAuthFragment
   
   public MsgBackupPCAuthFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new auif(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new awpi(this));
   }
   
   private void a(int paramInt)
@@ -45,27 +46,27 @@ public class MsgBackupPCAuthFragment
     this.jdField_g_of_type_Int = paramInt;
     if (paramInt == 0)
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839108);
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130849482);
+    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130850033);
   }
   
   private void n()
   {
-    auke.a(BaseApplicationImpl.getContext(), "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/pcqq_version_upgrade_919.html", true, true, true, false, null, "biz_src_msg_backup");
+    awri.a(BaseApplicationImpl.getContext(), "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/pcqq_version_upgrade_919.html", true, true, true, false, null, "biz_src_msg_backup");
   }
   
-  protected void a(auhc paramauhc)
+  protected void a(awof paramawof)
   {
-    super.a(paramauhc);
+    super.a(paramawof);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "processGetQrRsp data = " + paramauhc);
+      QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "processGetQrRsp data = " + paramawof);
     }
-    if (paramauhc != null)
+    if (paramawof != null)
     {
-      augd.a().a(paramauhc.a());
-      augd.a().a(paramauhc.a());
+      awng.a().a(paramawof.a());
+      awng.a().a(paramawof.a());
     }
   }
   
@@ -82,27 +83,27 @@ public class MsgBackupPCAuthFragment
   
   protected void b()
   {
-    setTitle(getActivity().getString(2131690388));
+    setTitle(getActivity().getString(2131690393));
   }
   
   protected void c()
   {
     super.c();
-    bdoo.b(this.c, 0);
-    bdoo.b(this.d, 8);
-    bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-    bdoo.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
-    bdoo.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841024);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690466);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690469);
-    this.jdField_b_of_type_AndroidWidgetButton.setText(2131690473);
+    bgtn.b(this.c, 0);
+    bgtn.b(this.d, 8);
+    bgtn.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+    bgtn.b(this.jdField_a_of_type_AndroidWidgetButton, 8);
+    bgtn.b(this.jdField_b_of_type_AndroidWidgetButton, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841274);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690457);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690459);
+    this.jdField_b_of_type_AndroidWidgetButton.setText(2131690462);
     if (AppSetting.c) {
-      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131690473));
+      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131690462));
     }
     this.vg.setRightViewTextVisible(0);
-    this.vg.setOnItemSelectListener(new auig(this));
-    augo.a().a(new auih(this));
+    this.vg.setOnItemSelectListener(new awpj(this));
+    awnr.a().a(new awpk(this));
     this.jdField_b_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -131,13 +132,13 @@ public class MsgBackupPCAuthFragment
         }
         if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165798));
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165847));
           this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690411));
         }
         if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
           break;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690469));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690459));
         break;
       }
       label149:
@@ -151,25 +152,25 @@ public class MsgBackupPCAuthFragment
       label166:
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166903));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690466));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166986));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690457));
       }
       if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690469));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690459));
       }
     }
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    augo.c = false;
+    awnr.c = false;
     super.initWindowStyleAndAnimation(paramActivity);
   }
   
   public void k()
   {
-    augo.a().a().c();
-    aujh.a().b();
+    awnr.a().a().c();
+    awql.a().b();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -183,8 +184,9 @@ public class MsgBackupPCAuthFragment
     switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       if (this.jdField_g_of_type_Int == 0)
       {
@@ -194,25 +196,27 @@ public class MsgBackupPCAuthFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "migrate_sure onclick phone request backup!");
         }
-        augo.a().a(true);
-        aujo.a("0X800A26A");
-        return;
+        awnr.a().a(true);
+        awqs.a("0X800A26A");
       }
-    } while ((this.jdField_g_of_type_Int != 1) || (this.e));
-    aujo.a("0X800A26B");
+      else if ((this.jdField_g_of_type_Int == 1) && (!this.e))
+      {
+        awqs.a("0X800A26B");
+      }
+    }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    augo.a().a(null);
+    awnr.a().a(null);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    augo.a().a(null);
+    awnr.a().a(null);
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
@@ -220,7 +224,7 @@ public class MsgBackupPCAuthFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class anht
-  implements View.OnClickListener
+class anht
+  extends aniz
 {
-  public anht(QRScanEntryView paramQRScanEntryView) {}
+  anht(anhs paramanhs) {}
   
-  public void onClick(View paramView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = false;
-    if (QRScanEntryView.a(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload ");
+    }
+    if ((paramObject instanceof Card))
     {
-      paramView = anft.a();
-      if (!QRScanEntryView.b(this.a))
+      paramObject = (Card)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload set card info uin = " + paramObject.uin);
+      }
+      if (anhk.aC.equals(paramObject.uin))
       {
-        bool1 = true;
-        if (paramView.a(bool1))
-        {
-          paramView = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label118;
-          }
-          bool1 = true;
-          QRScanEntryView.a(paramView, bool1);
-          paramView = (anfy)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          paramView.a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
-        }
+        anhs.a(this.a, paramObject);
+        anhs.a(this.a).jdField_a_of_type_ComTencentMobileqqDataCard = anhs.a(this.a);
+        anhs.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[0] = anhs.a(this.a).strNick;
+        anhs.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[4] = anhs.a(this.a).strReMark;
       }
     }
-    label118:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        boolean bool1 = false;
-        continue;
-        bool1 = false;
-      }
+    if (anhs.a(this.a).get("getZanVoteCount") != null)
+    {
+      paramObject = (Bundle)anhs.a(this.a).get("getZanVoteCount");
+      int i = paramObject.getInt("key_process_callback_id");
+      paramObject = paramObject.getString("key_js_callback_id");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_method_action", "getZanVoteCount");
+      localBundle.putLong("key_get_zan_vote_count", anhs.a(this.a).lVoteCount);
+      localBundle.putString("web_js_call_back_id", paramObject);
+      this.a.callbackResult(i, EIPCResult.createSuccessResult(localBundle));
+      anhs.a(this.a).remove("getZanVoteCount");
     }
-    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
+  }
+  
+  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    anhs.a(this.a).babyQSwitch = paramBoolean2;
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQIPCModule", 2, "babyqWeb onGetBabyQSwitch babyQSwitch = " + paramBoolean2);
+    }
   }
 }
 

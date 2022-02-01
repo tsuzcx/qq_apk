@@ -2,18 +2,18 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
-import bdlj;
+import bgql;
 import java.lang.ref.SoftReference;
 import java.util.TimerTask;
 
 public class QQCustomDialogWtihInput$3
   extends TimerTask
 {
-  public QQCustomDialogWtihInput$3(bdlj parambdlj) {}
+  public QQCustomDialogWtihInput$3(bgql parambgql) {}
   
   public void run()
   {
-    Context localContext = (Context)bdlj.a(this.this$0).get();
+    Context localContext = (Context)bgql.a(this.this$0).get();
     if (localContext != null) {
       ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }

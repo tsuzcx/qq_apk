@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import alud;
 import android.content.Context;
+import anni;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class RecentCallItem
   extends RecentBaseData
@@ -13,21 +14,6 @@ public class RecentCallItem
   public static final int CALL_STATE_CALLOUT = 2;
   private static final String TAG = "RecentCallItem";
   protected QCallRecent call;
-  
-  public int a()
-  {
-    return this.call.type;
-  }
-  
-  public long a()
-  {
-    return this.call.lastCallTime;
-  }
-  
-  public String a()
-  {
-    return this.call.uin;
-  }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -42,23 +28,45 @@ public class RecentCallItem
     this.mShowTime = "0";
     this.mUnreadNum = 0;
     this.mMenuFlag = 12288;
-    this.mCallingText = alud.a(2131713543);
+    this.mCallingText = anni.a(2131711922);
     this.call.isVideo = 1;
   }
   
-  public long b()
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public long getLastDraftTime()
   {
     return 0L;
   }
   
-  public boolean b()
+  public long getLastMsgTime()
   {
-    return false;
+    return this.call.lastCallTime;
+  }
+  
+  public int getRecentUserType()
+  {
+    return this.call.type;
+  }
+  
+  public String getRecentUserUin()
+  {
+    return this.call.uin;
+  }
+  
+  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentCallItem
  * JD-Core Version:    0.7.0.1
  */

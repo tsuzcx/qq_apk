@@ -1,93 +1,42 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class yii
+  extends SimpleObserver<T>
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private String b;
+  public yii(yid paramyid) {}
   
-  public COMM.StCommonExt a()
+  public void a(T paramT)
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+    super.onNext(paramT);
+    this.a.b();
+    yqp.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
+    paramT.d = this.a.jdField_a_of_type_Boolean;
+    this.a.a(paramT.a, paramT.c);
+    this.a.jdField_a_of_type_Yif.b();
+    this.a.jdField_a_of_type_Yih.a(paramT);
+    this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
   }
   
-  public String a()
+  public void onCancel()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super.onCancel();
+    yqp.d("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data cancel");
   }
   
-  public void a(int paramInt)
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(COMM.StCommonExt paramStCommonExt)
-  {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String b()
-  {
-    if (this.b == null) {
-      this.b = bdea.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
-    }
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString != null) {
-      bdea.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
-    }
-    this.b = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 4;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Int == 3;
+    super.onError(paramError);
+    paramError = (ErrorMessage)paramError;
+    paramError = this.a.a(paramError);
+    paramError.d = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_Yih.a(paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yii
  * JD-Core Version:    0.7.0.1
  */

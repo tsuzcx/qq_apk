@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class aeto
-  implements aznz
+class aeto
+  implements DialogInterface.OnCancelListener
 {
-  public aeto(PlusPanel paramPlusPanel, ztp paramztp) {}
+  aeto(aetm paramaetm) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Ztp);
-  }
-  
-  public void b()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Ztp);
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

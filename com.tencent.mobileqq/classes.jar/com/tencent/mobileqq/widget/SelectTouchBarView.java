@@ -9,8 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdaq;
-import bdgk;
+import bggq;
+import bgln;
 
 public class SelectTouchBarView
   extends RelativeLayout
@@ -28,17 +28,17 @@ public class SelectTouchBarView
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131558607, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362381));
-    a((RelativeLayout)findViewById(2131362380));
+    LayoutInflater.from(paramContext).inflate(2131558635, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362466));
+    a((RelativeLayout)findViewById(2131362465));
   }
   
   private void a(RelativeLayout paramRelativeLayout)
   {
-    int i = (int)bdgk.a(true);
+    int i = (int)bgln.a(true);
     int j = View.MeasureSpec.makeMeasureSpec(0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.measure(j, j);
-    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - bdaq.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
+    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - bggq.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
     i = j;
     if (j < 0) {
       i = 0;
@@ -89,7 +89,7 @@ public class SelectTouchBarView
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362380);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362465);
     localRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     localRelativeLayout.removeView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     a(localRelativeLayout);
@@ -119,7 +119,7 @@ public class SelectTouchBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SelectTouchBarView
  * JD-Core Version:    0.7.0.1
  */

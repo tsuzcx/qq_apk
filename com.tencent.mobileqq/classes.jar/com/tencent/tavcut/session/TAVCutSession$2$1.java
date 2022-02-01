@@ -1,6 +1,7 @@
 package com.tencent.tavcut.session;
 
 import com.tencent.tavcut.session.callback.StickerOperationCallback;
+import com.tencent.tavcut.util.StickerUtil;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerOperationMode;
 import com.tencent.weseevideo.editor.sticker.dispatcher.IStickerEventListener;
@@ -26,18 +27,18 @@ class TAVCutSession$2$1
     if (this.this$1.this$0.stickerOperationCallback != null)
     {
       if (paramBoolean1) {
-        this.this$1.this$0.stickerOperationCallback.onStickerTouchStart(paramTAVSticker.getStickerId());
+        this.this$1.this$0.stickerOperationCallback.onStickerTouchStart(StickerUtil.stickerModel2EditorData(paramTAVSticker));
       }
     }
     else {
       return;
     }
-    this.this$1.this$0.stickerOperationCallback.onStickerTouchEnd(paramTAVSticker.getStickerId());
+    this.this$1.this$0.stickerOperationCallback.onStickerTouchEnd(StickerUtil.stickerModel2EditorData(paramTAVSticker));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.2.1
  * JD-Core Version:    0.7.0.1
  */

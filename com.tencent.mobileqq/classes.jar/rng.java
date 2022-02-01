@@ -1,62 +1,120 @@
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.view.KeyEvent;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
-public abstract interface rng
+public class rng
+  implements rmy, rnc
 {
-  @Nullable
-  public abstract VideoInfo a();
+  private Handler jdField_a_of_type_AndroidOsHandler = new rnh(this);
+  private Queue<rmz> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = anvy.a(64);
+  private rnd jdField_a_of_type_Rnd;
+  private boolean jdField_a_of_type_Boolean;
+  private Queue<rmz> b = new ArrayDeque();
   
-  public abstract VideoFeedsPlayManager a();
+  public rng(rnd paramrnd)
+  {
+    this.jdField_a_of_type_Rnd = paramrnd;
+    this.jdField_a_of_type_Rnd.a(this);
+  }
   
-  public abstract ArrayList<VideoInfo> a();
+  private boolean a()
+  {
+    return this.b.size() < 3;
+  }
   
-  public abstract rac a();
+  private void b()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilQueue.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PreviewCaptureManager", 2, "fetchTaskToExe return for capturePrepared is false or waittingTaskQueue is Empty");
+      }
+    }
+    for (;;)
+    {
+      return;
+      while (a())
+      {
+        rmz localrmz = (rmz)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (localrmz != null) {
+          e(localrmz);
+        }
+      }
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+  }
   
-  public abstract void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2);
+  private void d(rmz paramrmz)
+  {
+    paramrmz.a(this.jdField_a_of_type_Rnd);
+    paramrmz.a(this);
+  }
   
-  public abstract void a(VideoFeedsRecyclerView paramVideoFeedsRecyclerView, rmn paramrmn, View paramView);
+  private void e(rmz paramrmz)
+  {
+    this.b.add(paramrmz);
+    d(paramrmz);
+    paramrmz.executeOnExecutor(this.jdField_a_of_type_JavaUtilConcurrentExecutor, null);
+  }
   
-  public abstract void a(rne paramrne);
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilQueue);
+    localArrayList.addAll(this.b);
+    this.jdField_a_of_type_JavaUtilQueue.clear();
+    this.b.clear();
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      rmz localrmz = (rmz)localArrayList.get(i);
+      if (localrmz != null) {
+        localrmz.cancel(true);
+      }
+      i += 1;
+    }
+    if (this.jdField_a_of_type_Rnd != null) {
+      this.jdField_a_of_type_Rnd.a();
+    }
+  }
   
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  public void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    c();
+  }
   
-  public abstract boolean a(rmr paramrmr);
+  public void a(rmz paramrmz) {}
   
-  public abstract boolean a(rne paramrne);
+  public void b(rmz paramrmz)
+  {
+    this.b.remove(paramrmz);
+    c();
+  }
   
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void b(VideoInfo paramVideoInfo);
-  
-  public abstract void c();
-  
-  public abstract void c(VideoInfo paramVideoInfo);
-  
-  public abstract void d();
-  
-  public abstract void d(VideoInfo paramVideoInfo);
-  
-  public abstract void e();
-  
-  public abstract void e(VideoInfo paramVideoInfo);
-  
-  public abstract void f(VideoInfo paramVideoInfo);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void c(rmz paramrmz)
+  {
+    if ((this.jdField_a_of_type_JavaUtilQueue.contains(paramrmz)) || (this.b.contains(paramrmz))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PreviewCaptureManager", 2, "addCaptureTask task:" + paramrmz);
+    }
+    this.jdField_a_of_type_JavaUtilQueue.add(paramrmz);
+    c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rng
  * JD-Core Version:    0.7.0.1
  */

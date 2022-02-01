@@ -1,24 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class amfv
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
-  }
+  protected amfv(amfu paramamfu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amfv
  * JD-Core Version:    0.7.0.1
  */

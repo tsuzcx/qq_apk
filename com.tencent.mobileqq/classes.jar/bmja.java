@@ -1,357 +1,244 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.os.Build.VERSION;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer.3;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import java.util.Arrays;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-@TargetApi(14)
 public class bmja
-  extends bmnh
-  implements bmnt, bnti, bntj, vxb, vyn
 {
-  protected int a;
-  public ImageView a;
-  protected TextView a;
-  protected bmzs a;
-  protected TrimTextureVideoView a;
-  protected String a;
-  protected boolean a;
-  protected bmjd[] a;
-  protected int b;
-  protected boolean b;
+  public static int a;
+  public static String a;
+  public static WeakReference<Activity> a;
+  private static List<String> a;
   
-  public int a()
+  static
   {
-    return 0;
+    jdField_a_of_type_JavaLangString = "";
   }
   
-  public long a(int paramInt)
+  public static Activity a()
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBmjd.length)) {
-      throw new IllegalArgumentException("getDurationOfFragment 传入了错误的index: " + paramInt);
-    }
-    bmjd localbmjd = this.jdField_a_of_type_ArrayOfBmjd[paramInt];
-    return localbmjd.jdField_b_of_type_Int - localbmjd.jdField_a_of_type_Int;
+    return (Activity)jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public Bitmap a(int paramInt)
+  public static String a()
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBmjd.length)) {
-      throw new IllegalArgumentException("getDurationOfFragment 传入了错误的index: " + paramInt);
+    if (Build.VERSION.SDK_INT >= 21) {
+      return d();
     }
-    bmjd localbmjd = this.jdField_a_of_type_ArrayOfBmjd[paramInt];
-    if (localbmjd.c.isRecycled()) {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "自己的bitmap被外边recycle了!");
-    }
-    return localbmjd.c;
+    return b();
   }
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public static String a(Context paramContext)
   {
-    if (paramBitmap == null) {
+    int i = Process.myPid();
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext == null)
+    {
+      QLog.e("ProcessUtils", 1, "getCurProcessName: processInfos is null.");
       return null;
     }
-    return Bitmap.createBitmap(paramBitmap);
-  }
-  
-  public List<? extends bmpw> a()
-  {
-    bmjd[] arrayOfbmjd = new bmjd[this.jdField_a_of_type_ArrayOfBmjd.length];
-    int i = 0;
-    while (i < arrayOfbmjd.length)
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext())
     {
-      arrayOfbmjd[i] = bmjd.a(this.jdField_a_of_type_ArrayOfBmjd[i], a(this.jdField_a_of_type_ArrayOfBmjd[i].c));
-      i += 1;
-    }
-    return Arrays.asList(arrayOfbmjd);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if ((!this.jdField_a_of_type_Bmnj.a.d()) || (!this.jdField_a_of_type_Bmnj.a.b())) {
-      return;
-    }
-    Object localObject = (EditLocalVideoSource)this.jdField_a_of_type_Bmnj.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    int k = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
-    int m = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
-    int n = this.jdField_a_of_type_Bmnj.a.d();
-    this.jdField_a_of_type_ArrayOfBmjd = new bmjd[n];
-    wxe.a("Q.qqstory.record.EditLocalVideoPlayer", "onCreate EditSource fragmentCount is %d", Integer.valueOf(n));
-    int j = k;
-    int i = 0;
-    while (i < n)
-    {
-      this.jdField_a_of_type_ArrayOfBmjd[i] = new bmjd(i, null);
-      bmjd localbmjd = this.jdField_a_of_type_ArrayOfBmjd[i];
-      localbmjd.jdField_a_of_type_Int = j;
-      localbmjd.jdField_b_of_type_Int = Math.min(j + 10000, m);
-      if (i == n - 1) {
-        localbmjd.jdField_b_of_type_Int = m;
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      if (localRunningAppProcessInfo.pid == i) {
+        return localRunningAppProcessInfo.processName;
       }
-      j += 10000;
-      i += 1;
     }
-    this.jdField_a_of_type_Int = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)a(2131366553));
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364830));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131375222));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if (bnfr.a != null)
+    return null;
+  }
+  
+  private static List<String> a()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      return jdField_a_of_type_JavaUtilList;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    localObject = ((PackageManager)localObject).queryIntentActivities(localIntent, 65536).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((ResolveInfo)((Iterator)localObject).next()).activityInfo.packageName);
+    }
+    jdField_a_of_type_JavaUtilList = localArrayList;
+    return localArrayList;
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    jdField_a_of_type_Int = jdField_a_of_type_JavaLangRefWeakReference.hashCode();
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    List localList;
+    do
     {
-      boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a();
-      localObject = bnfr.a;
-      if (!bool) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      wxe.b("Q.qqstory.record.EditLocalVideoPlayer", "onCreate mBackgroundImage.setImageBitmap()");
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnRecyclePlayListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnPreparedListener(this);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bmnj.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVideoPath(this.jdField_a_of_type_JavaLangString);
-    localObject = this.jdField_a_of_type_Bmnj.a.a("extra_upload_temp_directory");
-    this.jdField_a_of_type_Bmzs = new bmzs();
-    this.jdField_a_of_type_Bmzs.a(null);
-    this.jdField_a_of_type_Bmzs.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, false, new bmjb(this), new bmjc(this));
-    a(bmnt.class, this);
-  }
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat) {}
-  
-  public void a(int paramInt, @NonNull bnaz parambnaz)
-  {
-    if ((parambnaz.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
-    {
-      parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.hasFragments = true;
-      wxe.b("Q.qqstory.record.EditLocalVideoPlayer", "editVideoPrePublish(%d) -> %s", Integer.valueOf(paramInt), this.jdField_a_of_type_ArrayOfBmjd[paramInt] + ",mNeedRotate=" + this.jdField_b_of_type_Boolean);
-      parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = this.jdField_b_of_type_Boolean;
-      parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart = this.jdField_a_of_type_ArrayOfBmjd[paramInt].jdField_a_of_type_Int;
-      parambnaz.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = this.jdField_a_of_type_ArrayOfBmjd[paramInt].jdField_b_of_type_Int;
-    }
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.seekTo((int)paramLong);
-    }
-  }
-  
-  public void a(Bitmap paramBitmap) {}
-  
-  public void a(Bitmap paramBitmap, boolean paramBoolean) {}
-  
-  public void a(TransferData paramTransferData) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ArrayOfBmjd[this.jdField_a_of_type_Bmnj.a()].jdField_a_of_type_Boolean = paramBoolean;
-    b(false);
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return false;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if (paramMessage.what == 3)
-    {
-      switch (paramMessage.arg1)
-      {
-      default: 
-        return true;
-      case 1: 
-        b(false);
-        return true;
-      case 2: 
-        this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
+      return false;
+      localList = a();
+      if (localList.contains(paramString)) {
         return true;
       }
-      b(true);
-      return true;
+      paramString = paramString.split("/");
+    } while (paramString.length < 2);
+    return localList.contains(paramString[0]);
+  }
+  
+  public static String b()
+  {
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningTasks(1);
+    if ((localObject == null) || (((List)localObject).get(0) == null) || (((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity == null)) {
+      return null;
     }
-    int i;
-    if (paramMessage.what == 6)
+    localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
+    return ((ComponentName)localObject).getPackageName() + "/" + ((ComponentName)localObject).getClassName();
+  }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool = true;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      i = paramMessage.arg2;
-      if ((this.jdField_a_of_type_ArrayOfBmjd == null) || (i >= this.jdField_a_of_type_ArrayOfBmjd.length) || (this.jdField_a_of_type_ArrayOfBmjd[i].jdField_b_of_type_Boolean))
+      return false;
+      if ("com.tencent.mobileqq:qzone".equals(paramString)) {
+        return true;
+      }
+      paramString = paramString.split("/");
+    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
+    paramString = paramString[1].toLowerCase().split("\\.");
+    if ((paramString.length > 0) && (paramString[(paramString.length - 1)].startsWith("qzone")) && (paramString[(paramString.length - 1)].endsWith("proxyactivity"))) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static String c()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:tool".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramString)));
+  }
+  
+  private static String d()
+  {
+    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ProcessUtils", 4, "processInfos.size()=" + ((List)localObject3).size());
+    }
+    for (;;)
+    {
+      try
       {
-        wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! PlayerContext is illegal %s index=%d", new Object[] { Arrays.toString(this.jdField_a_of_type_ArrayOfBmjd), Integer.valueOf(i) });
-        return false;
+        Object localObject1 = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
+        if (localObject1 != null)
+        {
+          Iterator localIterator = ((List)localObject3).iterator();
+          if (localIterator.hasNext())
+          {
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+            if (QLog.isDevelopLevel()) {
+              QLog.d("ProcessUtils", 4, "processInfo: processName=" + localRunningAppProcessInfo.processName + " importance=" + localRunningAppProcessInfo.importance + " importanceReasonCode=" + localRunningAppProcessInfo.importanceReasonCode);
+            }
+            if ((localRunningAppProcessInfo.importance != 100) || (localRunningAppProcessInfo.importanceReasonCode != 0)) {
+              continue;
+            }
+            try
+            {
+              int i = ((Field)localObject1).getInt(localRunningAppProcessInfo);
+              localObject3 = Integer.valueOf(i);
+            }
+            catch (IllegalAccessException localIllegalAccessException)
+            {
+              QLog.w("ProcessUtils", 1, "IllegalAccessException", localIllegalAccessException);
+              Object localObject4 = null;
+              continue;
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.d("ProcessUtils", 4, "processInfo: state=" + localObject3);
+            }
+            if ((localObject3 == null) || (((Integer)localObject3).intValue() != 2)) {
+              continue;
+            }
+            localObject1 = localRunningAppProcessInfo;
+            if (QLog.isDevelopLevel()) {
+              QLog.d("ProcessUtils", 4, "===============");
+            }
+            if (localObject1 == null) {
+              return null;
+            }
+          }
+        }
       }
-      b(true);
-      return true;
-    }
-    if (paramMessage.what == 7)
-    {
-      i = paramMessage.arg1;
-      if ((this.jdField_a_of_type_ArrayOfBmjd == null) || (i >= this.jdField_a_of_type_ArrayOfBmjd.length))
+      catch (NoSuchFieldException localNoSuchFieldException)
       {
-        wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! PlayerContext is illegal %s index=%d", new Object[] { Arrays.toString(this.jdField_a_of_type_ArrayOfBmjd), Integer.valueOf(i) });
-        return false;
+        QLog.w("ProcessUtils", 1, "NoSuchFieldException: processState", localNoSuchFieldException);
+        localObject2 = null;
+        continue;
+        return localObject2.processName;
       }
-      this.jdField_a_of_type_ArrayOfBmjd[i].jdField_b_of_type_Boolean = true;
-      wxe.b("Q.qqstory.record.EditLocalVideoPlayer", "PlayerContext %d Deleted!", Integer.valueOf(i));
-      return true;
+      Object localObject2 = null;
     }
-    return false;
   }
   
-  public void a_(int paramInt, Object paramObject)
+  public static boolean d(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
-      return;
-    }
-    switch (paramInt)
+    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:peak".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.PhotoListActivity".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.AlbumListActivity".equals(paramString)));
+  }
+  
+  public static boolean e(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:picture".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.QzonePicturePluginProxyActivity".equals(paramString)));
+  }
+  
+  public static boolean f(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:qzonelive".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity".equals(paramString)));
+  }
+  
+  public static boolean g(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-    case 6: 
-    case 10: 
-    case 2: 
-    case 5: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-      b(false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
-  }
-  
-  public void a_(vyi paramvyi)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new EditLocalVideoPlayer.3(this), 300L);
-    }
-    wxe.a("Q.qqstory.record.EditLocalVideoPlayer", "onPrepared %s", this.jdField_a_of_type_Bmnj.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
-    this.jdField_a_of_type_Boolean = true;
-    b(true);
-  }
-  
-  public void b()
-  {
-    bmjg localbmjg = (bmjg)a(bmjg.class);
-    if (localbmjg != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "onPlayRecycle()");
+      return false;
+      if ("com.tencent.mobileqq".equals(paramString)) {
+        return true;
       }
-      localbmjg.b();
-    }
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.seekTo((int)paramLong);
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    int i = this.jdField_a_of_type_Bmnj.a();
-    if ((this.jdField_a_of_type_ArrayOfBmjd == null) || (i >= this.jdField_a_of_type_ArrayOfBmjd.length) || (this.jdField_a_of_type_ArrayOfBmjd[i].jdField_b_of_type_Boolean))
-    {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! resumePlay(%b): PlayerContext is illegal %s index=%d", new Object[] { Boolean.valueOf(paramBoolean), Arrays.toString(this.jdField_a_of_type_ArrayOfBmjd), Integer.valueOf(i) });
-      return;
-    }
-    bmjd localbmjd = this.jdField_a_of_type_ArrayOfBmjd[i];
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setPlayRange(localbmjd.jdField_a_of_type_Int, localbmjd.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b(localbmjd.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b(localbmjd.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(false);
-  }
-  
-  public void ba_()
-  {
-    super.ba_();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void f()
-  {
-    super.f();
-    b(false);
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_Bmzs.a();
-  }
-  
-  public void i() {}
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Bmnj.a(Message.obtain(null, 8));
-  }
-  
-  public void k()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
-  }
-  
-  public void l()
-  {
-    b(true);
-  }
-  
-  public void z_()
-  {
-    super.z_();
+      paramString = paramString.split("/");
+    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmja
  * JD-Core Version:    0.7.0.1
  */

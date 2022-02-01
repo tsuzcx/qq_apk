@@ -1,28 +1,24 @@
-import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ufs
-  implements udu
+class ufs
+  implements View.OnClickListener
 {
-  public ufs(QCircleTagPageHeaderView paramQCircleTagPageHeaderView) {}
+  ufs(ufp paramufp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    tzv.a("", 6, 2L, 3L);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 0) {}
-    for (long l = 2L;; l = 1L)
-    {
-      tzv.a("", 6, 2L, l);
-      return;
-    }
+    upe.a("comment", "onClick hide comment");
+    ufp.a(this.a);
+    uhd.a().a(new WSCommentShowEvent(false));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufs
  * JD-Core Version:    0.7.0.1
  */

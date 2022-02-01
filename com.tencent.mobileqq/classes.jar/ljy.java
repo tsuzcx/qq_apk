@@ -1,51 +1,51 @@
-import android.os.Handler;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-
 public class ljy
-  implements Observer
 {
-  private WeakReference<MagicFaceDataEntity> a;
+  private int jdField_a_of_type_Int;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
+  private int b;
   
-  public ljy(MagicFaceDataEntity paramMagicFaceDataEntity)
+  public ljy()
   {
-    this.a = new WeakReference(paramMagicFaceDataEntity);
+    int i = 0;
+    while (i < 512)
+    {
+      this.jdField_a_of_type_ArrayOfByte[i] = 0;
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(byte paramByte)
   {
-    int j;
-    if (this.a.get() != null)
-    {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
-      if (paramObject != null)
-      {
-        Object[] arrayOfObject = (Object[])paramObject;
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
-        {
-          j = ((Integer)arrayOfObject[0]).intValue();
-          if ((j == 130) || (j == 131) || (j == 132)) {
-            if ((j != 131) && (j != 132)) {
-              break label152;
-            }
-          }
-        }
-      }
-    }
-    label152:
-    for (int i = 500;; i = 0)
-    {
-      lek.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
-      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
-      return;
-    }
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
+    this.jdField_a_of_type_Int += 1;
+    this.b += 1;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    int m = (byte)(paramInt >> 24 & 0xFF);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
+    this.jdField_a_of_type_Int += 4;
+    this.b += 4;
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = new byte[this.b];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljy
  * JD-Core Version:    0.7.0.1
  */

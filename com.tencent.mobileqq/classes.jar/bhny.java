@@ -1,12 +1,40 @@
-import android.util.Pair;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface bhny
+class bhny
+  implements bhqt
 {
-  public abstract Pair<String, String> a(String paramString);
+  bhny(bhnx parambhnx) {}
+  
+  public int a(Bundle paramBundle)
+  {
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
+    {
+    }
+    for (;;)
+    {
+      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost" + (System.currentTimeMillis() - l) + " ms.");
+      return i;
+      i = this.a.a(paramBundle);
+      continue;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhny
  * JD-Core Version:    0.7.0.1
  */

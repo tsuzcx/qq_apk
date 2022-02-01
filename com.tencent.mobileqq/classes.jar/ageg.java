@@ -1,13 +1,11 @@
-import android.widget.RelativeLayout;
+import android.animation.Animator;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class ageg
-  extends aeqi
+public abstract interface ageg
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  private ageg(agee paramagee) {}
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 

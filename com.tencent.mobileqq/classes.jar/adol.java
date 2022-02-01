@@ -1,41 +1,59 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class adol
-  implements awvm
+  extends ayeu
 {
-  public adol(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  private WeakReference<ayeu> a;
   
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
+  public adol(ayeu paramayeu)
   {
-    if (paramBoolean.booleanValue())
+    this.a = new WeakReference(paramayeu);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    ayeu localayeu = (ayeu)this.a.get();
+    if (localayeu != null)
     {
-      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
-          this.a.b(2131693656);
-        }
-        return;
-      }
-      azqs.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
-      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Awvn.c(paramProfileLabelInfo, paramToggleButton);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
-      if (this.a.jdField_a_of_type_Adop == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_Adop.notifyDataSetChanged();
+      localayeu.a(paramString1, paramInt, paramString2);
       return;
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
-        break;
-      }
-      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
     }
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    ayeu localayeu = (ayeu)this.a.get();
+    if (localayeu != null)
+    {
+      localayeu.a(paramString1, paramString2);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    ayeu localayeu = (ayeu)this.a.get();
+    if (localayeu != null)
+    {
+      localayeu.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
+  
+  public void a(oidb_0x87c.RspBody paramRspBody)
+  {
+    ayeu localayeu = (ayeu)this.a.get();
+    if (localayeu != null)
+    {
+      localayeu.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
   }
 }
 

@@ -1,112 +1,81 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class avqm
-  extends BaseAdapter
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
-  private int jdField_a_of_type_Int;
-  private avqo jdField_a_of_type_Avqo;
-  private List<avse> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public avqm(UiApiPlugin paramUiApiPlugin) {}
   
-  public void a(avqo paramavqo)
+  public void onFromMiniAIOToAIO()
   {
-    this.jdField_a_of_type_Avqo = paramavqo;
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "onFromMiniAIOToAIO ");
+    }
+    JSONObject localJSONObject = new JSONObject();
+    this.a.a("fromMiniAIOToAIO", localJSONObject);
   }
   
-  public void a(List<avse> paramList)
+  public void onGoToConversation()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561094, paramViewGroup, false);
-    avse localavse = (avse)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = localavse.a;
-    paramView = (View)localObject;
-    if (localObject != null)
+    try
     {
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "onGoToConversation ");
       }
+      JSONObject localJSONObject = new JSONObject();
+      this.a.a("returnMsgList", localJSONObject);
+      return;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
-    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject = localavse.b;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    catch (Exception localException)
     {
-      localSpannableStringBuilder.append(" 回复 ");
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
-      }
-      localSpannableStringBuilder.append(paramView);
-      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
     }
-    localSpannableStringBuilder.append("：").append(localavse.c);
-    paramView = localTextView.getPaint();
-    localObject = new ArrayList();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = (xsm.a(localTextView.getContext()) - xsm.a(localTextView.getContext(), 85.0F));
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+    Object localObject1 = localWebViewFragment.mKeyWording;
+    if (TextUtils.isEmpty(localWebViewFragment.mKeyWording)) {
+      localObject1 = localWebViewFragment.webView.getTitle();
     }
-    paramInt = 0;
-    while (paramInt < localSpannableStringBuilder.length())
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      int j = i;
-      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
-      {
-        ((List)localObject).add(Integer.valueOf(paramInt - 1));
-        j = paramInt;
-      }
-      paramInt += 1;
-      i = j;
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
     }
-    paramView = ((List)localObject).iterator();
-    while (paramView.hasNext())
+    else
     {
-      localObject = (Integer)paramView.next();
-      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
-        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
-      }
+      localObject2 = anni.a(2131714520);
     }
-    localTextView.setText(localSpannableStringBuilder);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localTextView.setOnClickListener(new avqn(this, paramViewGroup));
-    return localTextView;
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.a.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.generateGoToConversation((Bundle)localObject1);
+    bhre.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      localObject1 = new JSONObject();
+      this.a.a("entryClicked", (JSONObject)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqm
  * JD-Core Version:    0.7.0.1
  */

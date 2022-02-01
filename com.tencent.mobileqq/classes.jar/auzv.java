@@ -1,34 +1,25 @@
-public class auzv
+import com.etrump.mixlayout.EMEmoticon;
+import com.tencent.commonsdk.cache.QQLruCache;
+
+public final class auzv
+  extends QQLruCache<String, EMEmoticon>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public auzv(auzt paramauzt) {}
-  
-  public boolean equals(Object paramObject)
+  public auzv(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof auzv))
-    {
-      paramObject = (auzv)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-          bool1 = true;
-        }
-      }
+    super(paramInt1, paramInt2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, EMEmoticon paramEMEmoticon1, EMEmoticon paramEMEmoticon2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramEMEmoticon1, paramEMEmoticon2);
+    if (paramEMEmoticon1 != null) {
+      paramEMEmoticon1.deleteDescriptor();
     }
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzv
  * JD-Core Version:    0.7.0.1
  */

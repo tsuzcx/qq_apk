@@ -1,16 +1,16 @@
-import java.util.Comparator;
-
-final class aorz
-  implements Comparator<bapp>
+public class aorz
 {
-  public int a(bapp parambapp1, bapp parambapp2)
-  {
-    return parambapp1.c - parambapp2.c;
-  }
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorz
  * JD-Core Version:    0.7.0.1
  */

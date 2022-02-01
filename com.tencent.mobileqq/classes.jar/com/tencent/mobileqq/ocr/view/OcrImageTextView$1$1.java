@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
-import avvr;
+import ayfj;
 
 class OcrImageTextView$1$1
   implements Runnable
@@ -17,7 +17,7 @@ class OcrImageTextView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageTextView.1.1
  * JD-Core Version:    0.7.0.1
  */

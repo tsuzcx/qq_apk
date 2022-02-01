@@ -1,411 +1,243 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.ae.SessionWrap;
-import dov.com.qq.im.capture.mode.CaptureModeController;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.content.Context;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
 public class bkmr
-  extends QIMEffectCameraCaptureUnit
 {
-  public static long a;
-  private SessionWrap a;
-  public boolean a;
-  private int d;
-  private String l;
-  private String m;
-  private boolean y;
+  public static int a;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final bkms jdField_a_of_type_Bkms;
+  private final boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private final bkms jdField_b_of_type_Bkms;
   
   static
   {
-    jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_Int = 400;
   }
   
-  public bkmr(bmhh parambmhh, bmhg parambmhg)
+  public bkmr(Context paramContext)
   {
-    super(parambmhh, parambmhg);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bmgz = new bmgz(10000, 100, 2);
-    this.jdField_a_of_type_Int = 1;
-    ac();
+    this(paramContext, null);
   }
   
-  public static Bundle a(SessionWrap paramSessionWrap, String paramString, int paramInt1, int paramInt2)
+  public bkmr(Context paramContext, Interpolator paramInterpolator)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ARG_SESSION_INFO", paramSessionWrap);
-    localBundle.putInt("edit_video_type", paramInt1);
-    localBundle.putInt("entrance_type", paramInt2);
-    localBundle.putString("ARG_AIO_CLASS", paramString);
-    if (paramInt1 == 10000) {
-      localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
-    }
-    localBundle.putBoolean("enable_local_video", false);
-    return localBundle;
+    this(paramContext, paramInterpolator, true);
   }
   
-  public static Bundle a(SessionWrap paramSessionWrap, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString2)
+  public bkmr(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ARG_SESSION_INFO", paramSessionWrap);
-    localBundle.putInt("edit_video_type", paramInt1);
-    localBundle.putInt("entrance_type", paramInt2);
-    localBundle.putString("ARG_AIO_CLASS", paramString1);
-    localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
-    localBundle.putBoolean("enable_local_video", false);
-    localBundle.putBoolean("ARG_UNFOLD_DD", paramBoolean);
-    localBundle.putInt("ARG_DD_CATEGORY_ID", paramInt3);
-    localBundle.putString("ARG_DD_ITEM_ID", paramString2);
-    return localBundle;
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bkms = new bkms();
+    this.jdField_b_of_type_Bkms = new bkms();
+    bkms.a(paramContext);
   }
   
-  private void ac()
+  public float a()
   {
-    int i = a().getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", -1);
-    String str = a().getIntent().getStringExtra("VIDEO_STORY_ACTIVITY_ID");
-    bliy.a().a(i, str);
-    str = a().getIntent().getStringExtra("intent_key_uid_for_report");
-    bliy.a().a(str);
-    bliy.a().a(true);
-    bliy.a().a();
-    bliy.a().b();
-    bliy.a().b(bkzr.a(a()));
-    bliu.a().J();
+    return (float)Math.sqrt(bkms.a(this.jdField_a_of_type_Bkms) * bkms.a(this.jdField_a_of_type_Bkms) + bkms.a(this.jdField_b_of_type_Bkms) * bkms.a(this.jdField_b_of_type_Bkms));
   }
   
-  public int a()
+  public final int a()
   {
-    return 2131560741;
+    return bkms.a(this.jdField_a_of_type_Bkms);
   }
   
-  public View a()
+  public Interpolator a()
   {
-    View localView = super.a();
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    return localView;
-  }
-  
-  protected List<View> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_b_of_type_AndroidWidgetTextView);
-    return localArrayList;
+    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
   }
   
   public void a()
   {
-    super.a();
-    blyz.jdField_a_of_type_Blza.a(3, System.currentTimeMillis());
-    blyz.a();
-    if (azcm.j != 0L)
-    {
-      azcm.k = System.currentTimeMillis();
-      QLog.d("CAM_START_MONITOR", 1, new Object[] { "aio cost: ", Long.valueOf(azcm.k - azcm.jdField_b_of_type_Long), "\nStartClick cost: ", Long.valueOf(azcm.jdField_b_of_type_Long - azcm.jdField_a_of_type_Long), "\nStartActiv cost: ", Long.valueOf(azcm.c - azcm.jdField_b_of_type_Long), "\nStartProce cost: ", Long.valueOf(azcm.d - azcm.c), "\nCreateBase cost: ", Long.valueOf(azcm.e - azcm.d), "\nCreateQimA cost: ", Long.valueOf(azcm.f - azcm.e), "\nStartBaseA cost: ", Long.valueOf(azcm.g - azcm.f), "\nStartQimAc cost: ", Long.valueOf(azcm.h - azcm.g), "\nResumeBase cost: ", Long.valueOf(azcm.i - azcm.h), "\nResumeQimA cost: ", Long.valueOf(azcm.j - azcm.i), "\nFirstFrame cost: ", Long.valueOf(azcm.k - azcm.j), "\nPeakCreatS cost: ", Long.valueOf(azcm.l - azcm.d), "\nPeakCreatT cost: ", Long.valueOf(azcm.m - azcm.l) });
-    }
+    this.jdField_a_of_type_Bkms.a();
+    this.jdField_b_of_type_Bkms.a();
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public final void a(float paramFloat)
   {
-    if ((paramIntent != null) && (this.jdField_a_of_type_DovComQqImAeSessionWrap != null)) {
-      paramIntent.putExtra("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_DovComQqImAeSessionWrap.a());
-    }
-    super.a(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 10000) && (paramInt2 == -1))
-    {
-      this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-      bkoi.a(this.jdField_a_of_type_Bmhh.a(), paramIntent, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_Bmhg, null);
-    }
+    this.jdField_a_of_type_Bkms.a(paramFloat);
+    this.jdField_b_of_type_Bkms.a(paramFloat);
   }
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt)
   {
-    super.a(paramBundle);
-    this.jdField_a_of_type_DovComQqImAeSessionWrap = ((SessionWrap)this.jdField_a_of_type_Bmhh.a().getIntent().getParcelableExtra("ARG_SESSION_INFO"));
-    this.l = this.jdField_a_of_type_Bmhh.a().getIntent().getStringExtra("ARG_AIO_CLASS");
-    paramBundle = this.jdField_a_of_type_Bmhh.a().getIntent();
-    long l1 = paramBundle.getLongExtra("ACTIVITY_START_TIME", -1L);
-    int i = paramBundle.getIntExtra("edit_video_type", 10000);
-    if ((blyz.jdField_a_of_type_Boolean) && (i == 10000)) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_b_of_type_Bkms.a(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Bkms.b(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, 250);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bkms.a(paramInt1, paramInt3, paramInt5);
+    this.jdField_b_of_type_Bkms.a(paramInt2, paramInt4, paramInt5);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, 0, 0);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, 1);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      blyz.b = bool;
-      if (blyz.b)
+      float f1 = bkms.a(this.jdField_a_of_type_Bkms);
+      float f2 = bkms.a(this.jdField_b_of_type_Bkms);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
-        blyz.jdField_a_of_type_Blza.b();
-        blyz.jdField_a_of_type_Blza.a(0, l1);
-        blyz.jdField_a_of_type_Blza.a(1, System.currentTimeMillis());
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
       }
-      l1 = this.jdField_a_of_type_Bmhh.a().getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L);
-      if (l1 != 0L)
-      {
-        azcm.d = QLog.sInitLogTime;
-        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_PEAK_ATTACH ", Long.valueOf(azcm.d) });
-        azcm.jdField_a_of_type_Long = this.jdField_a_of_type_Bmhh.a().getIntent().getLongExtra("TIMESTAMP_PRELOAD_PEAK", 0L);
-        azcm.jdField_b_of_type_Long = this.jdField_a_of_type_Bmhh.a().getIntent().getLongExtra("TIMESTAMP_CLICK_CAMERA", 0L);
-        azcm.c = l1;
-        azcm.f = System.currentTimeMillis();
-        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_ONCREATE ", Long.valueOf(azcm.f) });
-      }
-      return;
-    }
-  }
-  
-  public void a(axqw paramaxqw)
-  {
-    super.a(paramaxqw);
-    bmha localbmha = new bmhc(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a()).a(this.jdField_a_of_type_DovComQqImAeSessionWrap).a(this.l).a(1).b(106).a();
-    this.jdField_a_of_type_Bmgz.a(localbmha);
-    bnld.a(this.jdField_a_of_type_Bmhh.a(), paramaxqw, this.jdField_a_of_type_Bmgz, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
-    wxj.a("clk_shoot", wxj.b(this.jdField_a_of_type_Bmgz.a()), 1, false, new String[0]);
-    bliy.a().b(1L);
-    bliu.a().b(-1L);
-    wxj.a("check_beacon_Android", 14, 0, new String[] { String.valueOf(UserAction.getQIMEI()) });
-  }
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
-  {
-    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
-    a(paramLocalMediaInfo);
-    bmhd localbmhd = new bmhf().c(true).e(false).a(true).l(true).b(1).a();
-    this.jdField_a_of_type_Bmgz.a(localbmhd);
-    bnld.a(this.jdField_a_of_type_Bmhh.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_Bmgz, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
-    wxj.a("clk_shoot", wxj.b(this.jdField_a_of_type_Bmgz.a()), 3, false, new String[0]);
-    bliy.a().b(2L);
-    bliu.a().b(paramLocalMediaInfo.mDuration);
-    wxj.a("check_beacon_Android", 14, 0, new String[] { String.valueOf(UserAction.getQIMEI()) });
-  }
-  
-  protected void a(CameraCaptureView paramCameraCaptureView)
-  {
-    if (paramCameraCaptureView != null) {
-      paramCameraCaptureView.d(true);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    if ((!this.jdField_a_of_type_Boolean) && (bool))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_b_of_type_Long == -1L) {
-        break label88;
-      }
-    }
-    label88:
-    for (int i = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);; i = 0)
-    {
-      wxj.a("video_shoot_new", "time_waitshoot", wxj.b(10000), i, new String[] { "", "1", "", "" });
-      return bool;
-    }
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_DovComQqImAeSessionWrap.jdField_a_of_type_Int == 0) {
-      return 1;
-    }
-    if ((this.jdField_a_of_type_DovComQqImAeSessionWrap.jdField_a_of_type_Int == 3000) || (this.jdField_a_of_type_DovComQqImAeSessionWrap.jdField_a_of_type_Int == 1)) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public void b(long paramLong)
-  {
-    int j = 0;
-    Activity localActivity = this.jdField_a_of_type_Bmhh.a();
-    int k = localActivity.getIntent().getIntExtra("entrance_type", 1);
-    String str;
-    Object localObject2;
-    int i;
-    if (localActivity.getIntent().hasExtra("pendingIntentClass"))
-    {
-      str = "1";
-      localObject2 = "0";
-      i = j;
-      if (this.jdField_b_of_type_Long != -1L)
-      {
-        i = j;
-        if (str.equals("0")) {
-          i = (int)(paramLong - this.jdField_b_of_type_Long);
-        }
-      }
-      localObject1 = localObject2;
-      if (Build.VERSION.SDK_INT < 23) {}
     }
     for (;;)
     {
-      try
+      this.jdField_b_of_type_Int = paramInt11;
+      this.jdField_a_of_type_Bkms.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.jdField_b_of_type_Bkms.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      return;
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+    bkms.a(this.jdField_a_of_type_Bkms, paramLong);
+    bkms.a(this.jdField_b_of_type_Bkms, paramLong);
+  }
+  
+  public void a(Interpolator paramInterpolator)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    bkms.a(this.jdField_a_of_type_Bkms, bkms.a(this.jdField_b_of_type_Bkms, paramBoolean));
+  }
+  
+  public final boolean a()
+  {
+    return (bkms.a(this.jdField_a_of_type_Bkms)) && (bkms.a(this.jdField_b_of_type_Bkms));
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    int i = bkms.c(this.jdField_a_of_type_Bkms);
+    int j = bkms.b(this.jdField_a_of_type_Bkms);
+    int k = bkms.c(this.jdField_b_of_type_Bkms);
+    int m = bkms.b(this.jdField_b_of_type_Bkms);
+    return (!a()) && (Math.signum(paramFloat1) == Math.signum(i - j)) && (Math.signum(paramFloat2) == Math.signum(k - m));
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    this.jdField_b_of_type_Int = 1;
+    boolean bool1 = this.jdField_a_of_type_Bkms.a(paramInt1, paramInt3, paramInt4);
+    boolean bool2 = this.jdField_b_of_type_Bkms.a(paramInt2, paramInt5, paramInt6);
+    return (bool1) || (bool2);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  {
+    this.jdField_b_of_type_Int = 1;
+    boolean bool1 = this.jdField_a_of_type_Bkms.a(paramInt1, paramInt3, paramInt4, paramInt7);
+    boolean bool2 = this.jdField_b_of_type_Bkms.a(paramInt2, paramInt5, paramInt6, paramInt7);
+    return (bool1) || (bool2);
+  }
+  
+  public float b()
+  {
+    return bkms.a(this.jdField_b_of_type_Bkms);
+  }
+  
+  public final int b()
+  {
+    return bkms.a(this.jdField_b_of_type_Bkms);
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return false;
+    }
+    switch (this.jdField_b_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - bkms.a(this.jdField_a_of_type_Bkms);
+      int i = bkms.d(this.jdField_a_of_type_Bkms);
+      if (l < i)
       {
-        if (localActivity.checkSelfPermission("android.permission.CAMERA") == 0) {
-          continue;
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = bkfh.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        {
+          if (!bkms.a(this.jdField_a_of_type_Bkms)) {
+            this.jdField_a_of_type_Bkms.b(f);
+          }
+          if (bkms.a(this.jdField_b_of_type_Bkms)) {
+            break;
+          }
+          this.jdField_b_of_type_Bkms.b(f);
+          break;
         }
-        bool1 = true;
-        if (localActivity.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-          continue;
-        }
-        bool2 = true;
-        if (localActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
-          continue;
-        }
-        bool3 = true;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("AIOEffectsCameraCaptureFragment", 2, new Object[] { "checkSelfPermission ", Boolean.valueOf(bool1), " ", Boolean.valueOf(bool2), " ", Boolean.valueOf(bool3) });
       }
-      catch (Exception localException)
+      a();
+      continue;
+      if ((!bkms.a(this.jdField_a_of_type_Bkms)) && (!this.jdField_a_of_type_Bkms.c()) && (!this.jdField_a_of_type_Bkms.b())) {
+        this.jdField_a_of_type_Bkms.a();
+      }
+      if ((!bkms.a(this.jdField_b_of_type_Bkms)) && (!this.jdField_b_of_type_Bkms.c()) && (!this.jdField_b_of_type_Bkms.b()))
       {
-        boolean bool1;
-        boolean bool2;
-        boolean bool3;
-        localObject1 = "4";
-        QLog.e("AIOEffectsCameraCaptureFragment", 1, "checkSelfPermission error, ", localException);
+        this.jdField_b_of_type_Bkms.a();
         continue;
-        if ((bool1) || (bool2)) {
-          continue;
+        if ((!bkms.a(this.jdField_a_of_type_Bkms)) && (!this.jdField_a_of_type_Bkms.c()) && (!this.jdField_a_of_type_Bkms.a())) {
+          this.jdField_a_of_type_Bkms.a();
         }
-        localObject1 = localException;
-        if (!bool3) {
-          continue;
+        if ((!bkms.a(this.jdField_b_of_type_Bkms)) && (!this.jdField_b_of_type_Bkms.c()) && (!this.jdField_b_of_type_Bkms.a())) {
+          this.jdField_b_of_type_Bkms.a();
         }
-        continue;
-      }
-      localObject1 = "";
-      if (bool1) {
-        localObject1 = "".concat("1");
-      }
-      localObject2 = localObject1;
-      if (bool2) {
-        localObject2 = ((String)localObject1).concat(",3");
-      }
-      localObject1 = localObject2;
-      if (bool3) {
-        localObject1 = ((String)localObject2).concat(",2");
-      }
-      wxj.a("video_shoot_new", "time_openshoot", wxj.b(10000), i, new String[] { str, localObject1, "", String.valueOf(k) });
-      return;
-      str = "0";
-      break;
-      bool1 = false;
-      continue;
-      bool2 = false;
-      continue;
-      bool3 = false;
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    bliy.a().a(false);
-    azft.a(this.jdField_m_of_type_Boolean, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.x, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.j(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.y);
-  }
-  
-  public void f()
-  {
-    super.f();
-    blyz.jdField_a_of_type_Blza.a(2, System.currentTimeMillis());
-    if (azcm.jdField_b_of_type_Long != 0L)
-    {
-      azcm.j = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_ONRESUME ", Long.valueOf(azcm.j) });
-    }
-  }
-  
-  public void h()
-  {
-    super.h();
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void j()
-  {
-    if (this.jdField_b_of_type_Int == 5) {
-      this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().h();
-    }
-    super.j();
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_b_of_type_Long == -1L) {
-        break label106;
       }
     }
-    label106:
-    for (int i = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);; i = 0)
-    {
-      wxj.a("video_shoot_new", "time_waitshoot", wxj.b(10000), i, new String[] { "", "0", "", "" });
-      return;
-    }
   }
   
-  public void n()
+  public final int c()
   {
-    super.n();
-    if (this.y) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, this.d, this.jdField_m_of_type_JavaLangString);
-    }
+    return bkms.b(this.jdField_a_of_type_Bkms);
   }
   
-  public void o()
+  public final int d()
   {
-    Bundle localBundle = this.jdField_a_of_type_Bmhh.a().getIntent().getExtras();
-    this.y = localBundle.getBoolean("ARG_UNFOLD_DD", false);
-    this.d = localBundle.getInt("ARG_DD_CATEGORY_ID");
-    this.jdField_m_of_type_JavaLangString = localBundle.getString("ARG_DD_ITEM_ID");
+    return bkms.c(this.jdField_a_of_type_Bkms);
   }
   
-  public void p()
+  public final int e()
   {
-    super.p();
-    if (azcm.jdField_b_of_type_Long != 0L)
-    {
-      azcm.h = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_ONSTART ", Long.valueOf(azcm.h) });
-    }
-  }
-  
-  public void q()
-  {
-    if (this.jdField_b_of_type_Int == 5) {
-      this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().j();
-    }
-    super.q();
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_b_of_type_Long == -1L) {
-        break label106;
-      }
-    }
-    label106:
-    for (int i = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);; i = 0)
-    {
-      wxj.a("video_shoot_new", "time_waitshoot", wxj.b(10000), i, new String[] { "", "0", "", "" });
-      return;
-    }
+    return bkms.c(this.jdField_b_of_type_Bkms);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkmr
  * JD-Core Version:    0.7.0.1
  */

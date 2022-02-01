@@ -1,31 +1,157 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class wcy
-  extends nac
+public class wcy
+  extends JobSegment<List<wcm>, List<wcm>>
+  implements wco, wcs
 {
-  wcy(wcv paramwcv, boolean paramBoolean) {}
+  private HashMap<String, wck> jdField_a_of_type_JavaUtilHashMap;
+  private wcz jdField_a_of_type_Wcz;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public wcy(wcz paramwcz)
   {
-    if (paramInt != 0)
+    this.jdField_a_of_type_Wcz = paramwcz;
+  }
+  
+  public void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap)
+  {
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handlePOIResult errorMessage=%s", new Object[] { paramErrorMessage.toString() });
+    if (paramErrorMessage.isFail())
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request POI list error:" + paramErrorMessage.getErrorMessage()));
+      return;
+    }
+    Object localObject;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    {
+      paramErrorMessage = paramHashMap.entrySet().iterator();
+      while (paramErrorMessage.hasNext())
       {
-        paramArrayOfByte.a(3, bool);
-        this.a.a(0, this.a.a.getString(2131721096));
-        return;
+        paramHashMap = (Map.Entry)paramErrorMessage.next();
+        localObject = (String)paramHashMap.getKey();
+        paramHashMap = (AddressItem)paramHashMap.getValue();
+        localObject = (wck)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        ((wck)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+        localObject = ((wck)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((wcm)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+        }
       }
     }
-    ((ulu)this.a.a.app.getManager(181)).b(this.b);
+    paramErrorMessage = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (paramHashMap.hasNext())
+      {
+        localObject = (wck)((Map.Entry)paramHashMap.next()).getValue();
+        paramErrorMessage.addAll(((wck)localObject).jdField_a_of_type_JavaUtilList);
+        if (((wcm)((wck)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null) {
+          yqp.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "后台返回的POI数据里缺少了 ：" + ((wck)localObject).jdField_a_of_type_Wdq);
+        }
+      }
+    }
+    yqp.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "this segment is finish  : result=%s", paramErrorMessage);
+    notifyResult(paramErrorMessage);
+  }
+  
+  public void a(ErrorMessage paramErrorMessage, List<String> paramList)
+  {
+    String str = paramErrorMessage.toString();
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
+      if (!paramErrorMessage.isFail()) {
+        break;
+      }
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request black list error:" + paramErrorMessage.getErrorMessage()));
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramErrorMessage = paramList.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        paramList = (String)paramErrorMessage.next();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramList);
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    {
+      notifyResult(new ArrayList());
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    {
+      a(new ErrorMessage(), null);
+      return;
+    }
+    paramErrorMessage = new wcn();
+    paramErrorMessage.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramErrorMessage.a(this);
+    paramErrorMessage.a();
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+  }
+  
+  protected void a(JobContext paramJobContext, List<wcm> paramList)
+  {
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "start PreProcessSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(paramList);
+      return;
+    }
+    int i = ((wca)wpm.a(30)).a().b();
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      paramList = (wcm)paramJobContext.next();
+      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {}
+      for (paramList.c = "EMPTY";; paramList.c = wdp.a(paramList.jdField_a_of_type_Double, paramList.b, i))
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramList.c)) {
+          break label192;
+        }
+        ((wck)this.jdField_a_of_type_JavaUtilHashMap.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
+        break;
+      }
+      label192:
+      wck localwck = new wck(paramList.c);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramList);
+      localwck.jdField_a_of_type_JavaUtilList = localArrayList;
+      if ((!TextUtils.isEmpty(localwck.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localwck.jdField_a_of_type_JavaLangString, "EMPTY"))) {
+        localwck.jdField_a_of_type_Wdq = wdp.a(localwck.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramList.c, localwck);
+    }
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    {
+      a(new ErrorMessage(), null);
+      return;
+    }
+    paramJobContext = new wcr();
+    paramJobContext.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramJobContext.a(this);
+    paramJobContext.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcy
  * JD-Core Version:    0.7.0.1
  */

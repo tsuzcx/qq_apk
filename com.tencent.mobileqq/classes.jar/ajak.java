@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
 
-class ajak
-  implements ajal
+public class ajak
+  extends aiww
 {
-  ajak(ajaj paramajaj) {}
+  public ajak(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    int i = 1;
-    ajaj localajaj = this.a;
-    localajaj.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Ajam != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Ajam;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
     }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
       return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
     }
+    SystemMsgListView.a(this.a).c();
   }
 }
 

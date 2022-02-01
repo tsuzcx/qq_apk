@@ -1,28 +1,10 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class anww
+public final class anww
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Bitmap a;
-  public Rect a;
-  public anwx a;
-  public anya a;
-  public Boolean a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b = "";
-  public boolean b;
-  public int c;
-  
-  public anww()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

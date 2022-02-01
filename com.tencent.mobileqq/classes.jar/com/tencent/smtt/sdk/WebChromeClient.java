@@ -4,11 +4,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Message;
 import android.view.View;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.PermissionRequest;
 
 public class WebChromeClient
 {
@@ -67,13 +69,17 @@ public class WebChromeClient
   
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    return false;
+    return JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult);
   }
   
   public boolean onJsTimeout()
   {
     return true;
   }
+  
+  public void onPermissionRequest(PermissionRequest paramPermissionRequest) {}
+  
+  public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest) {}
   
   public void onProgressChanged(WebView paramWebView, int paramInt) {}
   
@@ -106,7 +112,7 @@ public class WebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebChromeClient
  * JD-Core Version:    0.7.0.1
  */

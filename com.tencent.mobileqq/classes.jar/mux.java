@@ -1,34 +1,59 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 
 public class mux
-  extends BroadcastReceiver
 {
-  mux(muv parammuv) {}
+  public static String a;
+  public static String b = jdField_a_of_type_JavaLangString + "test/";
+  public static String c = "min_sdk";
+  public static String d = "disable_sdk";
+  public static String e = "flag";
+  public static String f = b + c;
+  public static String g = b + d;
+  public static String h = b + e;
+  @Deprecated
+  ljz a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onReceive NEW_OUTGOING_CALL");
-      }
-      return;
-    }
+    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
+  }
+  
+  public mux()
+  {
+    this.jdField_a_of_type_Ljz = null;
+  }
+  
+  public int a(ljz paramljz)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, String.format("PhoneStatusReceiver, isCallingRunnable begin,  action[%s]", new Object[] { paramContext }));
+      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
     }
-    ThreadManager.post(new PhoneStatusMonitor.PhoneStatusReceiver.1(this, paramContext), 5, null, false);
+    try
+    {
+      int[] arrayOfInt = paramljz.a(h);
+      if (arrayOfInt != null)
+      {
+        if ((arrayOfInt[0] & 0x1) != 1) {
+          return 0;
+        }
+        arrayOfInt = paramljz.a(f);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          boolean bool = mqp.a(paramljz.a(g), Build.VERSION.SDK_INT);
+          if (!bool) {
+            return 1;
+          }
+        }
+      }
+    }
+    catch (Exception paramljz) {}
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mux
  * JD-Core Version:    0.7.0.1
  */

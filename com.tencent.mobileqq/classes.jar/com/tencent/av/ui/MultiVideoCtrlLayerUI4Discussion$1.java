@@ -7,8 +7,8 @@ import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import mdd;
-import mww;
+import maf;
+import mue;
 
 class MultiVideoCtrlLayerUI4Discussion$1
   implements Runnable
@@ -22,7 +22,7 @@ class MultiVideoCtrlLayerUI4Discussion$1
     }
     String str2 = null;
     String str1;
-    if (this.jdField_a_of_type_Int == 2131696015)
+    if (this.jdField_a_of_type_Int == 2131694895)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
         str2 = (String)this.this$0.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
@@ -39,10 +39,10 @@ class MultiVideoCtrlLayerUI4Discussion$1
     label323:
     for (;;)
     {
-      float f = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297038);
-      str1 = mww.a((Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, this.this$0.jdField_d_of_type_AndroidWidgetTextView, f);
+      float f = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297091);
+      str1 = mue.a((Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, this.this$0.jdField_d_of_type_AndroidWidgetTextView, f);
       str1 = str1 + this.this$0.jdField_a_of_type_AndroidContentResResources.getString(this.jdField_a_of_type_Int);
-      mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 3009, str1);
+      maf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 3009, str1);
       QLog.e(this.this$0.jdField_d_of_type_JavaLangString, 1, "showHrMeetingInOrOutWordingWithDelay str=" + str1);
       return;
       str2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, String.valueOf(this.this$0.b), this.this$0.e);
@@ -63,7 +63,7 @@ class MultiVideoCtrlLayerUI4Discussion$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.1
  * JD-Core Version:    0.7.0.1
  */

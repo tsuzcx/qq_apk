@@ -9,7 +9,7 @@ import java.util.List;
 
 public class VInstanceManager
 {
-  private static VInstanceManager INSTANCE;
+  private static volatile VInstanceManager INSTANCE;
   public static final String TAG = "VInstanceManager";
   private VInstanceAction instanceAction;
   
@@ -58,10 +58,33 @@ public class VInstanceManager
     return false;
   }
   
+  public boolean bindNativeVueData(String paramString1, String paramString2, View paramView)
+  {
+    if (this.instanceAction != null) {
+      return this.instanceAction.bindNativeVueView(paramString1, paramString2, paramView);
+    }
+    return false;
+  }
+  
+  public View createNativeVueView(String paramString, Context paramContext)
+  {
+    if (this.instanceAction != null) {
+      return this.instanceAction.createNativeVueView(paramString, paramContext);
+    }
+    return null;
+  }
+  
   public void createVInstance(String paramString1, String paramString2)
   {
     if (this.instanceAction != null) {
       this.instanceAction.createVInstance(paramString1, paramString2);
+    }
+  }
+  
+  public void createVInstanceSync(String paramString1, String paramString2)
+  {
+    if (this.instanceAction != null) {
+      this.instanceAction.createVInstanceSync(paramString1, paramString2);
     }
   }
   
@@ -80,6 +103,22 @@ public class VInstanceManager
     return null;
   }
   
+  public int getHeight(String paramString)
+  {
+    if (this.instanceAction != null) {
+      return this.instanceAction.getHeight(paramString);
+    }
+    return 0;
+  }
+  
+  public int getWidth(String paramString)
+  {
+    if (this.instanceAction != null) {
+      return this.instanceAction.getWidth(paramString);
+    }
+    return 0;
+  }
+  
   public void init(VInstanceManager.Builder paramBuilder)
   {
     this.instanceAction = createVInstanceAction(new ViolaInstance(paramBuilder.application, paramBuilder.serviceJsUrl), paramBuilder, paramBuilder.isBlockingMode);
@@ -90,6 +129,13 @@ public class VInstanceManager
   {
     if (this.instanceAction != null) {
       this.instanceAction.onScroll(paramViewGroup, paramView, paramInt1, paramInt2);
+    }
+  }
+  
+  public void release(String paramString1, String paramString2)
+  {
+    if (this.instanceAction != null) {
+      this.instanceAction.release(paramString1, paramString2);
     }
   }
   
@@ -123,7 +169,7 @@ public class VInstanceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.VInstanceManager
  * JD-Core Version:    0.7.0.1
  */

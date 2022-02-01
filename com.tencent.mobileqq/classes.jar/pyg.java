@@ -1,93 +1,40 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class pyg
-  extends pxx
+  extends aopa
 {
-  public pyg(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public pyg(SelectPositionModule paramSelectPositionModule, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramContext, parambdbb, paramrqj);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public pxl a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).f().g().q().l().n().j();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPositionModule", 2, "onLocationFinish() errCode=" + paramInt);
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
-    }
-    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout2.setOrientation(1);
-    localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig)))
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (!TextUtils.isEmpty(paramSosoLbsInfo.a.e)))
     {
-      LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout3.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(0.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout3.setLayoutParams(localLayoutParams);
-      localLinearLayout3.addView((View)this.jdField_a_of_type_Pxk);
-      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentBigImageVideo)) {
-        localLinearLayout3.setOnClickListener(new pyh(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectPositionModule", 2, "onLocationFinish() info.mLocation =" + paramSosoLbsInfo.a);
       }
-      localLinearLayout2.setOnTouchListener(new pyi(this, localLinearLayout3));
-      opi.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842652));
-      localLinearLayout2.addView(localLinearLayout3);
-      localLinearLayout2.setDuplicateParentStateEnabled(true);
-      localLinearLayout2.setOnTouchListener(new pyj(this, localLinearLayout2));
-      localLinearLayout1.setOnTouchListener(new pyk(this, localLinearLayout2, localLinearLayout3));
+      SelectPositionModule.a(this.a, new SelectPositionModule.PositionData(paramSosoLbsInfo.a));
+      SelectPositionModule.a(this.a, SelectPositionModule.a(this.a));
+      SelectPositionModule.b(this.a, SelectPositionModule.a(this.a));
+      if (SelectPositionModule.a(this.a) != null) {
+        SelectPositionModule.a(this.a).a(SelectPositionModule.a(this.a));
+      }
     }
-    localLinearLayout2.setOnClickListener(new pyl(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (localLinearLayout2.getChildCount() > 0) {
-      localLinearLayout1.addView(localLinearLayout2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentPgcVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,221 +1,141 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoForward;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.1;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 public class xpr
-  implements Handler.Callback
+  implements xpl
 {
-  static final String jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.do_group_video_forward");
-  public int a;
-  alwx jdField_a_of_type_Alwx = new xpt(this);
-  public Handler a;
-  public QQAppInterface a;
-  public MessageForTroopStory a;
-  naa jdField_a_of_type_Naa = new xps(this);
-  protected boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  private xpl jdField_a_of_type_Xpl;
+  private xpt jdField_a_of_type_Xpt = new xpt(this, null);
+  private xpu jdField_a_of_type_Xpu = new xpu(this, null);
+  private xpv jdField_a_of_type_Xpv = new xpv(this, null);
+  private xpw jdField_a_of_type_Xpw;
   
-  private xpr(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
+  public xpr(xpl paramxpl)
   {
-    if (!a(paramBundle, paramSessionInfo)) {
-      throw new IllegalArgumentException("params in bundle is Illegal");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Xpl = paramxpl;
   }
   
-  private xpr(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = paramMessageForTroopStory;
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramMessageForTroopStory.uid);
-    this.jdField_c_of_type_JavaLangString = paramMessageForTroopStory.unionId;
-    this.jdField_d_of_type_JavaLangString = paramMessageForTroopStory.md5;
-    this.e = paramMessageForTroopStory.thumbUrl;
-    this.f = paramMessageForTroopStory.doodleUrl;
-    this.jdField_a_of_type_Int = paramMessageForTroopStory.videoWidth;
-    this.jdField_b_of_type_Int = paramMessageForTroopStory.videoHeight;
-    this.g = paramMessageForTroopStory.sourceName;
-    this.h = paramMessageForTroopStory.sourceActionType;
-    this.i = paramMessageForTroopStory.sourceActionData;
-    this.j = paramMessageForTroopStory.compatibleText;
-    this.jdField_c_of_type_Int = paramMessageForTroopStory.ctrVersion;
-    this.k = paramMessageForTroopStory.frienduin;
-    this.l = paramMessageForTroopStory.senderuin;
-    this.jdField_d_of_type_Int = paramMessageForTroopStory.istroop;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = true;
+    return this.jdField_a_of_type_Xpl.a();
   }
   
-  public static xpr a(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
+  public long a()
   {
-    try
-    {
-      paramQQAppInterface = new xpr(paramQQAppInterface, paramBundle, paramSessionInfo);
-      return paramQQAppInterface;
-    }
-    catch (IllegalArgumentException paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.troopstory.share", 2, "forward error", paramQQAppInterface);
-      }
-    }
-    return null;
+    return this.jdField_a_of_type_Xpl.a();
   }
   
-  public static xpr a(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
+  public View a()
   {
-    return new xpr(paramQQAppInterface, paramMessageForTroopStory);
+    return this.jdField_a_of_type_Xpl.a();
   }
   
-  private boolean a(Bundle paramBundle, SessionInfo paramSessionInfo)
+  public xpl a()
   {
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramBundle.getLong("key_uid"));
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("key_union_id");
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("key_md5");
-    this.e = paramBundle.getString("key_thumb_url");
-    this.f = paramBundle.getString("key_doodle_url");
-    this.jdField_a_of_type_Int = paramBundle.getInt("key_video_width");
-    this.jdField_b_of_type_Int = paramBundle.getInt("key_video_height");
-    this.g = paramBundle.getString("key_source_name");
-    this.h = paramBundle.getString("key_source_action_type");
-    this.i = paramBundle.getString("key_source_action_data");
-    this.j = paramBundle.getString("key_compatible_text");
-    this.jdField_c_of_type_Int = paramBundle.getInt("key_ctr_version");
-    this.k = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.l = paramSessionInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-    return true;
+    return this.jdField_a_of_type_Xpl;
+  }
+  
+  public xpy a()
+  {
+    return this.jdField_a_of_type_Xpl.a();
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ThreadManager.executeOnSubThread(new TroopStoryForwardTask.1(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    this.jdField_a_of_type_Xpl.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Xpl.a(paramInt);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Xpl.a(paramString1, paramString2, paramString3, paramLong, paramInt1, paramInt2);
+  }
+  
+  public void a(xpm paramxpm)
+  {
+    this.jdField_a_of_type_Xpl.a(paramxpm);
+  }
+  
+  public void a(xpn paramxpn)
+  {
+    this.jdField_a_of_type_Xpl.a(paramxpn);
+  }
+  
+  public void a(xpo paramxpo)
+  {
+    this.jdField_a_of_type_Xpt.a = paramxpo;
+    this.jdField_a_of_type_Xpl.a(this.jdField_a_of_type_Xpt);
+  }
+  
+  public void a(xpp paramxpp)
+  {
+    this.jdField_a_of_type_Xpu.a = paramxpp;
+    this.jdField_a_of_type_Xpl.a(this.jdField_a_of_type_Xpu);
+  }
+  
+  public void a(xpq paramxpq)
+  {
+    this.jdField_a_of_type_Xpv.a = paramxpq;
+    this.jdField_a_of_type_Xpl.a(this.jdField_a_of_type_Xpv);
+  }
+  
+  public void a(xpw paramxpw)
+  {
+    this.jdField_a_of_type_Xpw = paramxpw;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Xpl.a();
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Xpl.b();
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Xpl.b();
   }
   
   public void b()
   {
-    qqstory_group.ReqGroupVideoForward localReqGroupVideoForward = new qqstory_group.ReqGroupVideoForward();
-    int m;
-    switch (this.jdField_d_of_type_Int)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.troopstory.share", 2, "unsupport type:" + this.jdField_d_of_type_Int);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      return;
-    case 1: 
-      m = 1;
+    if (this.jdField_a_of_type_Xpw != null) {
+      this.jdField_a_of_type_Xpw.b(this.jdField_a_of_type_Xpl);
     }
-    for (;;)
-    {
-      localReqGroupVideoForward.type.set(m);
-      try
-      {
-        long l1 = Long.parseLong(this.k);
-        localReqGroupVideoForward.forward_to.set(l1);
-        localReqGroupVideoForward.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-        localReqGroupVideoForward.time.set((int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.time);
-        mzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Naa, localReqGroupVideoForward.toByteArray(), jdField_a_of_type_JavaLangString);
-        return;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.qqstory.troopstory.share", 2, "uin parse error:" + this.k);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      }
-      m = 2;
-      continue;
-      m = 3;
-    }
+    this.jdField_a_of_type_Xpl.b();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, this.jdField_a_of_type_Alwx);
+    if (this.jdField_a_of_type_Xpw != null) {
+      this.jdField_a_of_type_Xpw.c(this.jdField_a_of_type_Xpl);
+    }
+    this.jdField_a_of_type_Xpl.c();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
+    if (this.jdField_a_of_type_Xpw != null)
+    {
+      this.jdField_a_of_type_Xpw.a(0L, this.jdField_a_of_type_Xpl.b(), this.jdField_a_of_type_Xpl);
+      this.jdField_a_of_type_Xpw.b(this.jdField_a_of_type_Xpl);
+    }
+    this.jdField_a_of_type_Xpl.d();
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.troopstory.share", 2, "forward step=" + paramMessage.what + ", task=" + this);
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      a();
-      continue;
-      b();
-      continue;
-      c();
-      continue;
-      d();
-      continue;
-      e();
-    }
+    this.jdField_a_of_type_Xpl.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xpr
  * JD-Core Version:    0.7.0.1
  */

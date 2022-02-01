@@ -1,81 +1,80 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopFileData;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.HashMap;
+import java.util.Map;
 
-class bfrg
-  extends Handler
+public class bfrg
 {
-  public bfrg(bfrd parambfrd, Looper paramLooper)
+  public static Map<Long, bfrg> a;
+  public long a;
+  public Map<String, TroopFileData> b = new HashMap();
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public void handleMessage(Message paramMessage)
+  public bfrg(long paramLong)
   {
-    String str1 = null;
-    bflp.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
-    String str2;
-    bfrf localbfrf;
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public static bfrg a(long paramLong)
+  {
+    try
     {
-    default: 
-      str2 = (String)paramMessage.obj;
-      if (str2 != null)
+      bfrg localbfrg2 = (bfrg)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      bfrg localbfrg1 = localbfrg2;
+      if (localbfrg2 == null)
       {
-        localbfrf = (bfrf)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-        if (localbfrf == null) {
-          bflp.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
-        }
+        localbfrg1 = new bfrg(paramLong);
+        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localbfrg1);
       }
-      break;
+      return localbfrg1;
     }
-    do
+    finally {}
+  }
+  
+  public TroopFileData a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    TroopFileData localTroopFileData1 = null;
+    try
     {
-      do
-      {
-        return;
-        bfmy.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        bfmy.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        if (localbfrf.jdField_b_of_type_Int != 1) {
-          str1 = localbfrf.jdField_b_of_type_JavaLangString.substring(localbfrf.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
-        }
-        for (;;)
-        {
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1: 
-            this.a.jdField_a_of_type_Bfrc.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-            return;
-            str1 = localbfrf.jdField_b_of_type_JavaLangString;
-            continue;
-            bflp.e("PCPushProxy", "handleMessage get key = null");
-            localbfrf = null;
-          }
-        }
-      } while (localbfrf == null);
-      if (localbfrf.c.startsWith("ANDROIDQQ.PCPUSH.")) {
-        bfmy.a("100", localbfrf.c, str1);
+      if (this.b != null) {
+        localTroopFileData1 = (TroopFileData)this.b.get(paramString);
       }
-      for (;;)
+      TroopFileData localTroopFileData2 = localTroopFileData1;
+      if (localTroopFileData1 == null)
       {
-        this.a.jdField_a_of_type_Bfrc.a(localbfrf);
-        return;
-        bfmy.a("100", "ANDROIDQQ.PCPUSH." + localbfrf.c, str1);
+        paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+        localTroopFileData2 = (TroopFileData)paramQQAppInterface.find(TroopFileData.class, paramString);
+        paramQQAppInterface.close();
       }
-      this.a.jdField_a_of_type_Bfrc.a(str2);
+      return localTroopFileData2;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, TroopFileData paramTroopFileData)
+  {
+    try
+    {
+      if (this.b != null) {
+        this.b.put(paramTroopFileData.fileUrl, paramTroopFileData);
+      }
+      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+      paramQQAppInterface.persist(paramTroopFileData);
+      paramQQAppInterface.close();
       return;
-    } while (localbfrf == null);
-    bfmy.a("500", localbfrf.c, str1);
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrg
  * JD-Core Version:    0.7.0.1
  */

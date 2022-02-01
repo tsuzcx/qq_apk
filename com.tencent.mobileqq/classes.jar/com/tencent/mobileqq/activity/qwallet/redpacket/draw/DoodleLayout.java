@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import aepi;
-import aezq;
-import afal;
-import ajcp;
-import ajcq;
+import afur;
+import aggc;
+import aggx;
+import akuk;
+import akul;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,9 +19,9 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aygt;
-import bdal;
-import berz;
+import bbfb;
+import bggl;
+import bhzg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 import com.tencent.mobileqq.widget.QQToast;
@@ -30,10 +30,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DoodleLayout
   extends RelativeLayout
-  implements aygt
+  implements bbfb
 {
   private int jdField_a_of_type_Int;
-  private ajcq jdField_a_of_type_Ajcq;
+  private akul jdField_a_of_type_Akul;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private DoodleView jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
@@ -53,9 +53,9 @@ public class DoodleLayout
   
   private Drawable a(int paramInt1, int paramInt2)
   {
-    berz localberz = new berz(a(), 0, false);
-    localberz.setBounds(new Rect(0, 0, paramInt1, paramInt2));
-    return localberz;
+    bhzg localbhzg = new bhzg(a(), 0, false);
+    localbhzg.setBounds(new Rect(0, 0, paramInt1, paramInt2));
+    return localbhzg;
   }
   
   private boolean a(boolean paramBoolean)
@@ -67,8 +67,8 @@ public class DoodleLayout
       }
       return false;
     }
-    int i = aepi.a(50.0F, getResources());
-    int j = aepi.a(37.0F, getResources());
+    int i = afur.a(50.0F, getResources());
+    int j = afur.a(37.0F, getResources());
     if (this.b == null)
     {
       this.b = new ImageView(getContext());
@@ -99,9 +99,9 @@ public class DoodleLayout
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = new DoodleView(getContext(), null);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.setBackgroundColor(getResources().getColor(2131167140));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.setBackgroundColor(getResources().getColor(2131167224));
       addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.a(new ajcp(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.a(new akuk(this));
     }
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     setBackgroundColor(-1);
@@ -139,7 +139,7 @@ public class DoodleLayout
     }
   }
   
-  public aezq a()
+  public aggc a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView == null) {
       return null;
@@ -156,7 +156,7 @@ public class DoodleLayout
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = bdal.a(BaseApplicationImpl.getContext().getResources(), 2130839230);
+      localBitmap1 = bggl.a(BaseApplicationImpl.getContext().getResources(), 2130839407);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -197,7 +197,7 @@ public class DoodleLayout
         }
         a(false);
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689936), 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689837), 0);
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c());
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
@@ -239,9 +239,9 @@ public class DoodleLayout
     }
   }
   
-  public void setDoodleLayoutListener(ajcq paramajcq)
+  public void setDoodleLayoutListener(akul paramakul)
   {
-    this.jdField_a_of_type_Ajcq = paramajcq;
+    this.jdField_a_of_type_Akul = paramakul;
   }
   
   public void setTemplateID(int paramInt)
@@ -260,7 +260,7 @@ public class DoodleLayout
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        localObject = afal.a().a(3, this.jdField_a_of_type_Int);
+        localObject = aggx.a().a(3, this.jdField_a_of_type_Int);
         if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
@@ -271,20 +271,20 @@ public class DoodleLayout
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "load bitmap failed:" + this.jdField_a_of_type_Int);
         }
-        if (!afal.a().b(3, this.jdField_a_of_type_Int))
+        if (!aggx.a().b(3, this.jdField_a_of_type_Int))
         {
           if (QLog.isColorLevel()) {
             QLog.d("DoodleLayout", 2, "file not exist, start download:" + this.jdField_a_of_type_Int);
           }
           a(true);
           setTemplateVisible(Boolean.valueOf(false));
-          afal.a().b(1, paramInt, this, this);
+          aggx.a().b(1, paramInt, this, this);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "try use drawable:" + this.jdField_a_of_type_Int);
         }
-        localObject = afal.a().a(3, this.jdField_a_of_type_Int, false);
+        localObject = aggx.a().a(3, this.jdField_a_of_type_Int, false);
       } while ((localObject == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       setTemplateVisible(Boolean.valueOf(true));
@@ -319,7 +319,7 @@ public class DoodleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout
  * JD-Core Version:    0.7.0.1
  */

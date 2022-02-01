@@ -1,28 +1,32 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vto
-  implements vvs
+  implements Animator.AnimatorListener
 {
-  public vto(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public vto(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a(@NonNull View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (bnle.a)
-    {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-      paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
+    if (this.a.getContext() != null) {
+      uxx.a((Activity)this.a.getContext(), uxx.b(true));
+    }
+    if (QCircleSlidBottomView.a(this.a) != null) {
+      QCircleSlidBottomView.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vto
  * JD-Core Version:    0.7.0.1
  */

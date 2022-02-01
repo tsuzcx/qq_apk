@@ -12,7 +12,12 @@ public final class EventRecordPackage
   static ArrayList<EventRecord> cache_list;
   public ArrayList<EventRecord> list = null;
   
-  public final void readFrom(a parama)
+  protected Object clone()
+  {
+    return super.clone();
+  }
+  
+  public void readFrom(a parama)
   {
     if (cache_list == null)
     {
@@ -23,14 +28,14 @@ public final class EventRecordPackage
     this.list = ((ArrayList)parama.a(cache_list, 0, true));
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.list, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.event.EventRecordPackage
  * JD-Core Version:    0.7.0.1
  */

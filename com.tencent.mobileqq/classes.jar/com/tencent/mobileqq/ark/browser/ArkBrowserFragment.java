@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.browser;
 
-import abyx;
-import acab;
+import adgd;
+import adhh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anpm;
-import anpq;
-import beho;
-import beir;
-import bejk;
+import apps;
+import appw;
+import bhos;
+import bhpv;
+import bhqo;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -19,12 +19,12 @@ public class ArkBrowserFragment
 {
   public String a;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super.a(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-    String str = b();
-    if (TextUtils.isEmpty(acab.a(str))) {}
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    Object localObject = this.webView.getPluginEngine();
+    String str = getCurrentUrl();
+    if (TextUtils.isEmpty(adhh.a(str))) {}
     do
     {
       do
@@ -32,30 +32,30 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (anpq)((abyx)localObject).a(anpq.class, false);
+      localObject = (appw)((adgd)localObject).a(appw.class, false);
     } while (localObject == null);
-    ((anpq)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
-  }
-  
-  public void c()
-  {
-    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
-    if (localbeir != null)
-    {
-      localbeir.a(new anpm(this));
-      localbeir.a(b(), this.jdField_a_of_type_Bejk.a);
-    }
+    ((appw)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    a(a() & 0xFFFFFFFB);
+    setRulesFromUrl(getRulesFromUrl() & 0xFFFFFFFB);
+  }
+  
+  public void showActionSheet()
+  {
+    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
+    if (localbhpv != null)
+    {
+      localbhpv.a(new apps(this));
+      localbhpv.a(ensureShare(), this.mUIStyle.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

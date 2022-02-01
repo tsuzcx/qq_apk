@@ -1,20 +1,23 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-public class aosx
+public final class aosx
+  implements Parcelable.Creator<ARRecognition>
 {
-  public long a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public ARRecognition a(Parcel paramParcel)
+  {
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosx
  * JD-Core Version:    0.7.0.1
  */

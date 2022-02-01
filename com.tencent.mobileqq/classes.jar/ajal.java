@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface ajal
+public class ajal
+  extends aniz
 {
-  public abstract void onResult(int paramInt, PreloadManager.PathResult paramPathResult);
+  public ajal(SystemMsgListView paramSystemMsgListView) {}
+  
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean)
+    {
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+      QQToast.a(this.a.getContext(), 2131698107, 3000).a();
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131698106, 1).a();
+  }
 }
 
 

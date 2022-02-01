@@ -1,95 +1,97 @@
 package com.tencent.mobileqq.startup.step;
 
-import aznp;
-import azpg;
+import bcow;
+import bcrh;
 
 public class Step$AfterDexStepFactory
-  implements azpg
+  implements bcrh
 {
-  public Step a(int paramInt, aznp paramaznp, int[] paramArrayOfInt)
+  public Step a(int paramInt, bcow parambcow, int[] paramArrayOfInt)
   {
-    paramaznp = null;
+    parambcow = null;
     switch (paramInt)
     {
-    case 7: 
     case 8: 
     case 9: 
-    case 12: 
-    case 20: 
+    case 10: 
+    case 13: 
+    case 21: 
     default: 
-      paramaznp = new Step();
-    case 30: 
-      return paramaznp;
-    case 6: 
-    case 18: 
+      parambcow = new Step();
+    case 31: 
+      return parambcow;
+    case 7: 
+    case 19: 
       return new LoadData();
     case 5: 
       return new NewRuntime();
-    case 10: 
-      return new InitSkin();
+    case 6: 
+      return new LoadModule();
     case 11: 
+      return new InitSkin();
+    case 12: 
       return new InitUrlDrawable();
-    case 13: 
-      return new Rdm();
     case 14: 
-      return new ManageThread();
-    case 16: 
-      return new LoadUi();
-    case 17: 
-      return new LoadOtherStuff();
-    case 19: 
-      return new InitQzoneTracer();
-    case 21: 
-      return new StartServiceLiteCmp();
-    case 22: 
-      return new UpdateBubbleZip();
-    case 23: 
-      return new UpdateAvSo();
-    case 24: 
-      return new UpdateArkSo();
-    case 25: 
-      return new UpdateRMSo();
-    case 26: 
-      return new SetPlugin();
-    case 27: 
-      return new UpdatePluginVersion();
-    case 28: 
-      return new WebP();
-    case 31: 
-      return new PreInitValues();
+      return new Rdm();
     case 15: 
-      return new InitMagnifierSDK();
+      return new ManageThread();
+    case 17: 
+      return new LoadUi();
+    case 18: 
+      return new LoadOtherStuff();
+    case 20: 
+      return new InitQzoneTracer();
+    case 22: 
+      return new StartServiceLiteCmp();
+    case 23: 
+      return new UpdateBubbleZip();
+    case 24: 
+      return new AVSoUtils();
+    case 25: 
+      return new UpdateArkSo();
+    case 26: 
+      return new UpdateRMSo();
+    case 27: 
+      return new SetPlugin();
+    case 28: 
+      return new UpdatePluginVersion();
     case 29: 
-      return new InitHook();
+      return new WebP();
     case 32: 
-      return new InjectBitmap();
+      return new PreInitValues();
+    case 16: 
+      return new InitMagnifierSDK();
+    case 30: 
+      return new InitHook();
     case 33: 
-      return new MigrateSubscribeDB();
+      return new InjectBitmap();
     case 34: 
-      return new UpdatePatchConfig();
+      return new MigrateSubscribeDB();
     case 35: 
-      return new UpdateSecureFileStrategy();
+      return new UpdatePatchConfig();
     case 36: 
-      return new InstallPlugins();
+      return new UpdateSecureFileStrategy();
     case 37: 
-      return new HuayangPluginContainer();
-    case 47: 
-      return new StudyRoomPluginContainer();
+      return new InstallPlugins();
     case 38: 
-      return new ThreadHookStep();
+      return new HuayangPluginContainer();
+    case 48: 
+      return new StudyRoomPluginContainer();
     case 39: 
-      return new QzoneTracer();
+      return new ThreadHookStep();
     case 40: 
-      return new OpenThreadCreateHook();
+      return new QzoneTracer();
     case 41: 
+      return new OpenThreadCreateHook();
     case 42: 
     case 43: 
-      return new HackVm();
     case 44: 
-      return new BroadcastReportRegister();
+      return new HackVm();
     case 45: 
-      return RecordTracer.a();
+      return new BroadcastReportRegister();
     case 46: 
+      return RecordTracer.a();
+    case 47: 
       return new NowliveContainer();
     }
     return new GdtInitializeOnToolProcessStep();

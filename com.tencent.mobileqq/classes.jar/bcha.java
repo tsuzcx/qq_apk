@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-
 public abstract interface bcha
 {
-  public abstract void a(ArrayList<bcgz> paramArrayList);
+  public abstract void a(Object paramObject, int paramInt, Object... paramVarArgs);
 }
 
 

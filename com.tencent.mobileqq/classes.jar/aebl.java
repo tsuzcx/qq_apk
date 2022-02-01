@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aebl
   implements DialogInterface.OnClickListener
 {
-  public aebl(TranslucentTRansferFragment paramTranslucentTRansferFragment, bdjz parambdjz) {}
+  public aebl(DialogActivity paramDialogActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
+    this.a.finish();
   }
 }
 

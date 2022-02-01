@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.content.Context;
-import bfbm;
+import biip;
 import com.tencent.mobileqq.mini.cache.Storage;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ final class MiniAppUtils$3
     Object localObject1 = null;
     try
     {
-      Storage localStorage = Storage.open(this.val$context, String.valueOf(bfbm.a().a()), this.val$appId);
+      Storage localStorage = Storage.open(this.val$context, String.valueOf(biip.a().a()), this.val$appId);
       localObject1 = localStorage;
       localObject3 = localStorage;
       localStorage.writeSync(this.val$key, "Object", this.val$data);
@@ -38,7 +38,7 @@ final class MiniAppUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.3
  * JD-Core Version:    0.7.0.1
  */

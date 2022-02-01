@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.support.v4.app.FragmentActivity;
-import ankt;
+import apiq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.music.QQPlayerService;
 
 public class ArkAppMusicModule$2
   implements Runnable
 {
-  public ArkAppMusicModule$2(ankt paramankt) {}
+  public ArkAppMusicModule$2(apiq paramapiq) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ArkAppMusicModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppMusicModule.2
  * JD-Core Version:    0.7.0.1
  */

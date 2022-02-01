@@ -1,21 +1,61 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class mxh
-  extends mxi
+class mxh
+  extends BroadcastReceiver
 {
-  public mxh(VideoAppInterface paramVideoAppInterface, long paramLong)
-  {
-    super(paramVideoAppInterface, 64, paramLong);
-  }
+  mxh(mxb parammxb) {}
   
-  public void a(String paramString, mxk parammxk)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramString, parammxk);
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
+    }
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
+    {
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label120;
+      }
+      if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
+      {
+        this.a.a(false);
+        this.a.a = false;
+        mxb.a(this.a, false);
+      }
+    }
+    label120:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    if (i == 0)
+    {
+      this.a.a = true;
+      this.a.a(true);
+      mxb.a(this.a, false);
+      return;
+    }
+    if (mxb.b(this.a))
+    {
+      mxb.a(this.a, true);
+      return;
+    }
+    this.a.a = true;
+    mxb.a(this.a).a = true;
+    mxb.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.open.appstore.dl;
 
-import bfkr;
-import bflg;
-import bflp;
+import bisa;
+import bisp;
+import bisy;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManagerV2$6
   implements Runnable
 {
-  public DownloadManagerV2$6(bfkr parambfkr, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$6(bisa parambisa, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -22,20 +22,20 @@ public class DownloadManagerV2$6
         this.this$0.c(this.a);
         this.this$0.a(4, this.a);
       }
-      bflp.b("AppCenterReporter", "from:[onDownloadComplete]");
-      bflg.b(this.a);
+      bisy.b("AppCenterReporter", "from:[onDownloadComplete]");
+      bisp.b(this.a);
       this.this$0.a(this.a, false);
       return;
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bisy.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.6
  * JD-Core Version:    0.7.0.1
  */

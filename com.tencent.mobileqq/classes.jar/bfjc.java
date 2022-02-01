@@ -1,26 +1,31 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfjc
+class bfjc
+  implements View.OnClickListener
 {
-  public static ArrayList<String> a;
-  public static HashMap<String, Class<?>> a;
+  bfjc(bfja parambfja) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
-    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
-    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
-    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
-    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
-    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bgzo.e, anni.a(2131699033));
+    localBundle.putString(bgzo.f, "CJCLUBT");
+    localBundle.putString(bgzo.d, "1450000516");
+    localBundle.putInt(bgzo.b, 3);
+    localBundle.putString(bgzo.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bgzo.g, "svip");
+    localBundle.putString(bgzo.a, bfja.a(this.a).getCurrentAccountUin());
+    bgzo.a(bfja.a(this.a), bfja.a(this.a), localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjc
  * JD-Core Version:    0.7.0.1
  */

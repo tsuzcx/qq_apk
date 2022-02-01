@@ -15,7 +15,7 @@ public class FaceDetectInitializer
   private static final ModelInfo[] COMMON_MODEL = { new ModelInfo(true, "facedetect/detector", "net1_18.rpnmodel"), new ModelInfo(true, "facedetect/detector", "net1_18_bin.rpnproto"), new ModelInfo(true, "facedetect/detector", "net2_36.rpnmodel"), new ModelInfo(true, "facedetect/detector", "net2_36_bin.rpnproto"), new ModelInfo(true, "facedetect/poseest", "meshBasis.bin"), new ModelInfo(true, "facedetect/poseest", "rotBasis.bin") };
   private static final String TAG = FaceDetectInitializer.class.getSimpleName();
   private static final ModelInfo[] VIDEO_FACE_DET_MODEL = { new ModelInfo(true, "facedetect/align", "align.stb"), new ModelInfo(true, "facedetect/align", "align.rpdm"), new ModelInfo(true, "facedetect/align", "align_bin.rpdc"), new ModelInfo(true, "facedetect/align", "eye.rpdm"), new ModelInfo(true, "facedetect/align", "eye_bin.rpdc"), new ModelInfo(true, "facedetect/align", "eyebrow.rpdm"), new ModelInfo(true, "facedetect/align", "eyebrow_bin.rpdc"), new ModelInfo(true, "facedetect/align", "mouth.rpdm"), new ModelInfo(true, "facedetect/align", "mouth_bin.rpdc"), new ModelInfo(true, "facedetect/align", "refine1.rmd"), new ModelInfo(true, "facedetect/align", "refine2.rmd") };
-  private static final SharedLibraryInfo[] sharedLibraries4Video = { new SharedLibraryInfo("YTFaceTrackPro"), new SharedLibraryInfo("CameraFaceJNI") };
+  private static final SharedLibraryInfo[] sharedLibraries4Video = { new SharedLibraryInfo("c++_shared"), new SharedLibraryInfo("opencv_world"), new SharedLibraryInfo("YTFaceTrackPro"), new SharedLibraryInfo("CameraFaceJNI") };
   private boolean initPicDetect = false;
   private volatile boolean isCameraFaceTrackInited = false;
   private volatile boolean isCommonInited = false;
@@ -193,7 +193,7 @@ public class FaceDetectInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.FaceDetectInitializer
  * JD-Core Version:    0.7.0.1
  */

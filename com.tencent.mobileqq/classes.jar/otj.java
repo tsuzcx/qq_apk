@@ -1,60 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class otj
-  implements AladdinConfigHandler
+  extends Handler
 {
-  private static long a(String paramString, long paramLong)
+  public otj(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Looper paramLooper)
   {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
-    }
-    return paramLong;
+    super(paramLooper);
   }
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    }
+    switch (paramMessage.what)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("switch", str1)) {
-        bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      } else if (TextUtils.equals("preload_interval", str1)) {
-        bkbq.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
-      } else if (TextUtils.equals("last_enter_kandian", str1)) {
-        bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
-      } else if (TextUtils.equals("preload_time_limit", str1)) {
-        bkbq.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
-      } else if (TextUtils.equals("loading_time", str1)) {
-        bkbq.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
+    }
+    do
+    {
+      return;
+      int i = 0;
+      if ((paramMessage.obj instanceof Integer)) {
+        i = ((Integer)paramMessage.obj).intValue();
       }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
+      ReadInJoyPatchAdView.a(this.a, i);
+      return;
+      ReadInJoyPatchAdView.a(this.a);
+      return;
+    } while (this.a.a == null);
+    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otj
  * JD-Core Version:    0.7.0.1
  */

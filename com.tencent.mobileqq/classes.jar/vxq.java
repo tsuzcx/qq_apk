@@ -1,34 +1,34 @@
-class vxq
-  implements vym
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+
+public class vxq
+  extends ClickableSpan
 {
-  vxq(vxn paramvxn, vwe paramvwe) {}
+  public vxq(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
   
-  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
+  public void onClick(@NonNull View paramView)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
+    if (QCirclePushAsyncTextView.a(this.a) != null) {
+      QCirclePushAsyncTextView.a(this.a).b();
     }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Vwe.a(this.jdField_a_of_type_Vxn, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#03081A"));
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(bclx.a(13.0F));
+    zzr.a(paramTextPaint, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class pyp
-  implements View.OnClickListener
+  extends Handler
 {
-  pyp(pyn parampyn) {}
-  
-  public void onClick(View paramView)
+  pyp(pyn parampyn, Looper paramLooper)
   {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyp
  * JD-Core Version:    0.7.0.1
  */

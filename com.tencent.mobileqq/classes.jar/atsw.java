@@ -1,31 +1,22 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atsw
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  atsw(atso paramatso) {}
+  atsw(atsu paramatsu) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    atso.c(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    atso.c(this.a);
+    this.a.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsw
  * JD-Core Version:    0.7.0.1
  */

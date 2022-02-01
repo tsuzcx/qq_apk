@@ -1,28 +1,41 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xbb
-  implements bhtv
+public class xbb
+  extends wla
 {
-  int jdField_a_of_type_Int = 0;
+  public List<StoryVideoItem> a = new ArrayList();
   
-  xbb(xba paramxba) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public xbb(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    super(paramRspSimpleInfoList.result);
+    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
+    if (paramRspSimpleInfoList != null)
+    {
+      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
+      while (paramRspSimpleInfoList.hasNext())
+      {
+        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
+        this.a.add(localStoryVideoItem);
+      }
+    }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public String toString()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Xba.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Xba.a.size() - 1)) {
-      this.jdField_a_of_type_Xba.f();
-    }
+    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbb
  * JD-Core Version:    0.7.0.1
  */

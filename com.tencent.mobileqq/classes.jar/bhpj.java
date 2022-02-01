@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bhpj
-  implements bhot
+  implements View.OnTouchListener
 {
   bhpj(bhpi parambhpi) {}
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
-      }
-      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
-    }
-    return 0;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpj
  * JD-Core Version:    0.7.0.1
  */

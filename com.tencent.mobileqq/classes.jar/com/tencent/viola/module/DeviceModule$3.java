@@ -24,7 +24,9 @@ class DeviceModule$3
     try
     {
       paramUri.put("volume", DeviceModule.access$300(this.this$0).getStreamVolume(3) / DeviceModule.access$400(this.this$0));
-      ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, paramUri, true);
+      if (this.this$0.getViolaInstance() != null) {
+        ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, paramUri, true);
+      }
       return;
     }
     catch (Exception localException)
@@ -39,7 +41,7 @@ class DeviceModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.DeviceModule.3
  * JD-Core Version:    0.7.0.1
  */

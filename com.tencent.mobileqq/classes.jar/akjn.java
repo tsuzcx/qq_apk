@@ -1,31 +1,30 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.widget.Switch;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 
 class akjn
-  extends View.AccessibilityDelegate
+  extends RecyclerView.OnScrollListener
 {
-  akjn(akjk paramakjk) {}
+  akjn(akjm paramakjm) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (paramView != null)
-    {
-      paramView = (Switch)paramView.findViewById(2131363728);
-      if ((paramView != null) && (paramView.getVisibility() != 8))
-      {
-        paramAccessibilityNodeInfo.setCheckable(true);
-        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
-        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
-      }
+    if ((akjm.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (akjm.a(this.a).selectedMediaInfoHashMap != null)) {
+      akjm.a(this.a);
     }
+    if (paramInt == 0)
+    {
+      adcd.a().a("list_photo", false);
+      return;
+    }
+    adcd.a().a("list_photo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjn
  * JD-Core Version:    0.7.0.1
  */

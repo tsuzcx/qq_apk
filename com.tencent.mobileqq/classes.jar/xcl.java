@@ -1,31 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class xcl
-  implements Animator.AnimatorListener
+class xcl
+  implements URLDrawable.URLDrawableListener
 {
-  public xcl(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  xcl(xck paramxck) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772038);
+    xck.c(this.a, false);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772038);
+    xck.b(this.a, false);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    xck.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xcl
  * JD-Core Version:    0.7.0.1
  */

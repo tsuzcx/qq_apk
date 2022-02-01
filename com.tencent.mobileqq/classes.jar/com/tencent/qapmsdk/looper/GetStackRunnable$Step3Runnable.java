@@ -2,6 +2,7 @@ package com.tencent.qapmsdk.looper;
 
 import android.os.Handler;
 import android.os.SystemClock;
+import com.tencent.qapmsdk.common.logger.Logger;
 
 class GetStackRunnable$Step3Runnable
   implements Runnable
@@ -24,15 +25,18 @@ class GetStackRunnable$Step3Runnable
     {
       this.mi.cacheRealStackTime = System.currentTimeMillis();
       String str = GetStackRunnable.access$100(this.this$0, true);
+      Logger.INSTANCE.i(new String[] { "QAPM_looper_GetStackRunnable", "Main Thread suspend " + l + " ms, and the stack is " + str });
       this.mi.stack = str;
       this.mi.lastStackRequestTime = 0L;
+      this.mi.lastGetStackTimeStamp = this.mi.cacheRealStackTime;
+      this.stepHandler.postDelayed(new GetStackRunnable.ReportRunnable(this.this$0, this.mi, this.mi.lastGetStackTimeStamp), 3000L);
     }
     this.stepHandler.post(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable.Step3Runnable
  * JD-Core Version:    0.7.0.1
  */

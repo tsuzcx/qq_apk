@@ -1,26 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-
-public class pbj
-  implements Animation.AnimationListener
+class pbj
+  extends pcm
 {
-  public pbj(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  pbj(pbe parampbe, int paramInt1, pay parampay, int paramInt2)
   {
-    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    super(parampbe, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  void a(pcp parampcp)
+  {
+    parampcp.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Pay, this.b);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbj
  * JD-Core Version:    0.7.0.1
  */

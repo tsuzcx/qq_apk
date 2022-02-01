@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeqq;
-import aeuj;
+import afxa;
+import agat;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,10 +10,10 @@ import android.os.Parcelable.Creator;
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<SessionInfo> CREATOR = new aeuj();
+  public static final Parcelable.Creator<SessionInfo> CREATOR = new agat();
   public int a;
   public long a;
-  public aeqq a;
+  public afxa a;
   private Bundle a;
   public String a;
   public boolean a;
@@ -47,6 +47,7 @@ public class SessionInfo
   public boolean k;
   public boolean l;
   public boolean m;
+  public boolean n;
   
   public SessionInfo()
   {
@@ -67,6 +68,23 @@ public class SessionInfo
     this.k = paramParcel.readString();
     this.j = paramParcel.readString();
     this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
+  }
+  
+  public SessionInfo(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_d_of_type_Int = 3999;
+    this.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    this.b = paramSessionInfo.b;
+    this.jdField_d_of_type_JavaLangString = paramSessionInfo.jdField_d_of_type_JavaLangString;
+    this.e = paramSessionInfo.e;
+    this.jdField_d_of_type_Int = paramSessionInfo.jdField_d_of_type_Int;
+    this.k = paramSessionInfo.k;
+    this.j = paramSessionInfo.j;
+    if (paramSessionInfo.jdField_a_of_type_AndroidOsBundle != null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle(paramSessionInfo.jdField_a_of_type_AndroidOsBundle);
+    }
   }
   
   public Bundle a()
@@ -130,7 +148,7 @@ public class SessionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

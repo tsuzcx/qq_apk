@@ -1,6 +1,8 @@
 class blfx
 {
-  private static final blfv a = new blfv(null);
+  private bdvs jdField_a_of_type_Bdvs;
+  private beat jdField_a_of_type_Beat;
+  private blfy jdField_a_of_type_Blfy;
 }
 
 

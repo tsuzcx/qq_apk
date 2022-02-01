@@ -1,33 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class bcjh
-  implements Animation.AnimationListener
+  extends PreviewContext
+  implements SurfaceHolder.Callback, bciv
 {
-  public bcjh(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bcjh(bcio parambcio, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
-    }
-    if (paramAnimation == this.a.b) {
-      VisitorTroopCardFragment.a(this.a, false);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+    super(parambcio, paramInt1, paramInt2);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
-      VisitorTroopCardFragment.a(this.a, true);
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
     }
   }
 }

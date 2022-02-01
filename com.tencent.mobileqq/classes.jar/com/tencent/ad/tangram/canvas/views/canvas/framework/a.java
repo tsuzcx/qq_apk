@@ -19,7 +19,9 @@ public class a
   public int floatingBarBackgroundColor;
   public int floatingBarTextColor;
   public boolean hasFixedButtonData = false;
+  public boolean hasMultiPictureData = false;
   public String id;
+  public com.tencent.ad.tangram.canvas.views.a imageLoadParams;
   public boolean isFloatingBarStyleSetted = false;
   
   public AdCanvasComponentData getComponent(int paramInt)
@@ -84,7 +86,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.a
  * JD-Core Version:    0.7.0.1
  */

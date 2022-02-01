@@ -1,40 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.avgame.qav.AVGameCameraAssistant;
+import com.tencent.avgame.qav.AVGameCameraAssistant.3;
 import com.tencent.qphone.base.util.QLog;
 
-final class ndy
-  implements bhuk
+public class ndy
+  extends mws
 {
-  ndy(bhuf parambhuf, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  public ndy(AVGameCameraAssistant.3 param3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameCameraAssistant", 2, "notifyEvent, id[" + paramInt + "], result[" + paramBoolean + "]");
     }
-    do
+    if ((paramInt == 1) && (paramBoolean))
     {
-      return;
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
-      try
-      {
-        ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
-        return;
+      if (AVGameCameraAssistant.a(this.a.this$0) != null) {
+        AVGameCameraAssistant.a(this.a.this$0).g();
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
+      AVGameCameraAssistant.a(this.a.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ndy
  * JD-Core Version:    0.7.0.1
  */

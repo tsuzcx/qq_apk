@@ -1,13 +1,19 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
 class aaud
-  extends AdHttp.Params
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a = -2147483648;
+  aaud(aaub paramaaub, Container paramContainer) {}
   
-  public boolean isSuccess()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
+    localLayoutParams.topMargin = paramValueAnimator.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
   }
 }
 

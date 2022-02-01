@@ -1,54 +1,23 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asbk
-  extends URLDrawableDownListener.Adapter
+  implements View.OnClickListener
 {
-  asbk(asbj paramasbj) {}
+  asbk(asbi paramasbi, IPSiteModel.Goods paramGoods) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
+    Intent localIntent = new Intent(asbi.a(this.jdField_a_of_type_Asbi), QQBrowserActivity.class);
+    localIntent.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(asbi.a(this.jdField_a_of_type_Asbi), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, localIntent, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(asbi.a(this.jdField_a_of_type_Asbi), "IP", "aio_productmore", "", 0, 0, 0, asbi.b(this.jdField_a_of_type_Asbi), asbi.c(this.jdField_a_of_type_Asbi), "", "", "", "", "", 0, 0, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

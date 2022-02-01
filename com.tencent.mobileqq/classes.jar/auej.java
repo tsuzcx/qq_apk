@@ -1,57 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class auej
+  extends auee
 {
-  private boolean a(auec paramauec, MiniAppOptions paramMiniAppOptions)
+  public auej(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramauec.a.h });
-    }
-    return true;
+    super(paramString, paramBinaryMessenger);
   }
   
-  auec a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public MethodChannel.MethodCallHandler a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
-    }
-    switch (paramInt)
-    {
-    default: 
-      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
-    case 0: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 5: 
-      return null;
-    }
-    return new bfxp(paramMiniAppActivity, paramString, paramInt);
+    return new auek(this);
   }
   
-  void a(auec paramauec, MiniAppOptions paramMiniAppOptions)
+  public MethodCodec a()
   {
-    if (!a(paramauec, paramMiniAppOptions)) {
-      return;
-    }
-    bdgk.a();
-    paramauec.a();
-  }
-  
-  void a(auef paramauef, @NonNull aued paramaued)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramauef.h });
-    }
-    paramaued.a(paramauef.f, "MiniAppLauncher", paramauef.h);
+    return auel.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auej
  * JD-Core Version:    0.7.0.1
  */

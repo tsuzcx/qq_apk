@@ -1,26 +1,26 @@
-public class bmwb
-  extends bmvv
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.util.QZLog;
+
+class bmwb
+  extends BroadcastReceiver
 {
-  public static final String f = alud.a(2131706189);
+  bmwb(bmwa parambmwa) {}
   
-  public bmwb()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super("-1000");
-  }
-  
-  public String a()
-  {
-    return "InteractFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
+    try
+    {
+      paramContext = paramIntent.getAction();
+      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      this.a.a(paramIntent);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
+    }
   }
 }
 

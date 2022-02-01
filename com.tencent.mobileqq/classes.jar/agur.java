@@ -1,27 +1,17 @@
-import android.widget.ImageView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class agur
-  extends nub
+  implements atwb
 {
-  agur(agti paramagti) {}
+  agur(agup paramagup) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (agti.a(this.a).getVisibility() != 0))
-    {
-      if (mdj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        agti.b(this.a).setVisibility(0);
-        agti.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130846632, 2130846633);
-      }
-    }
-    else {
-      return;
-    }
-    agti.d(this.a).setVisibility(8);
+    atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
+    atvo.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
   }
 }
 

@@ -1,14 +1,22 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
 
-class apjv
+public class apjv
+  implements DialogInterface.OnClickListener
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+  public apjv(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bgpa parambgpa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bgpa.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

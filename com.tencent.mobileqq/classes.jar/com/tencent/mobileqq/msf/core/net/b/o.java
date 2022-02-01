@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.core.net.b;
 
 public abstract class o
 {
-  protected i[] f = { new j("http://sqimg.qq.com/qq_product_operations/nettest/index.html", "MobileQQ1"), new j("http://sqimg.qq.com/qq_product_operations/nettest/index2.html", "MobileQQ2") };
+  protected i[] f = { new j("https://sqimg.qq.com/qq_product_operations/nettest/index.html", "MobileQQ1"), new j("https://sqimg.qq.com/qq_product_operations/nettest/index2.html", "MobileQQ2") };
   
   protected a a(i parami, int paramInt, a.a parama)
   {

@@ -1,23 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class aptj
-  implements View.OnClickListener
+public class aptj
+  implements aptg
 {
-  aptj(aptg paramaptg, IPSiteModel.Comic paramComic, String paramString1, String paramString2) {}
+  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_Aptg.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Aptg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Comic.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_comicclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-  }
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
+  
+  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updateAzimuth(float paramFloat) {}
+  
+  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updatePitch(float paramFloat) {}
+  
+  public void updateRoll(float paramFloat) {}
+  
+  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  
+  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
 }
 
 

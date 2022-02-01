@@ -1,23 +1,67 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class lzm
-  implements Parcelable.Creator<LBSInfo>
+class lzm
+  extends BroadcastReceiver
 {
-  public LBSInfo a(Parcel paramParcel)
-  {
-    return new LBSInfo(paramParcel);
-  }
+  lzm(lzl paramlzl) {}
   
-  public LBSInfo[] a(int paramInt)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    return new LBSInfo[paramInt];
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    for (;;)
+    {
+      return;
+      if (!"tencent.video.somgr.notify".equals(paramIntent.getAction())) {
+        continue;
+      }
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = lzn.a(this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          QLog.i("QavSo", 1, String.format("receive notify, lastStatus[%s], progress[%s], mStatusSo[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((lzh)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavSo", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((lzh)???.next()).a(i);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import java.util.List;
 
-class ugm
-  implements udy
+public abstract interface ugm<T>
 {
-  ugm(ugl paramugl) {}
+  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))
-    {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject;
-      tzs.a(localStFeed.poster.id.get(), 17, 2, this.a.jdField_a_of_type_Int, localStFeed, null);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugm
  * JD-Core Version:    0.7.0.1
  */

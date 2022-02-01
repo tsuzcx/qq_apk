@@ -1,44 +1,72 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.os.Environment;
+import android.os.StatFs;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 
 public class mnb
-  extends BroadcastReceiver
 {
-  public mnb(VideoInviteActivity paramVideoInviteActivity) {}
+  public static String a = ".mp4";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static long a()
   {
-    String str = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
-    }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
-    do
+    File localFile = Environment.getExternalStorageDirectory();
+    try
     {
-      return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
-      {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
-        return;
+      StatFs localStatFs = new StatFs(localFile.getPath());
+      long l1 = localStatFs.getBlockSize();
+      long l2 = localStatFs.getAvailableBlocks();
+      if (QLog.isColorLevel()) {
+        QLog.d("FileSwapHelper", 2, "getStorageLeft left=" + l1 * l2);
       }
-      if ("android.intent.action.USER_PRESENT".equals(str))
-      {
-        this.a.a("ACTION_USER_PRESENT");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Mnh == null);
-    this.a.jdField_a_of_type_Mnh.a(paramContext, str, paramIntent);
+      return l1 * l2;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("FileSwapHelper", 1, "getSpaceLeft exception:" + localThrowable + ", path=" + localFile, localThrowable);
+    }
+    return 2147483647L;
+  }
+  
+  public static long a(File paramFile)
+  {
+    if (paramFile.exists())
+    {
+      paramFile = new FileInputStream(paramFile);
+      long l = paramFile.available();
+      paramFile.close();
+      return l;
+    }
+    QLog.e("FileSwapHelper", 1, new Object[] { "获取文件大小", "文件不存在!" });
+    return 0L;
+  }
+  
+  public static String a()
+  {
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    str = str + "/QQVideo/";
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str;
+  }
+  
+  public static void a(String paramString, Context paramContext)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FileSwapHelper", 2, "notifyMp4Saved=" + paramString);
+    }
+    zkr.a(paramContext, new File(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mnb
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,9 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import com.tencent.mobileqq.mini.launch.CmdCallback;
+import com.tencent.mobileqq.minigame.gpkg.GpkgManager.Info;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 class ApkgMainProcessManager$8
   implements GpkgManager.OnInitGpkgListener
 {
-  ApkgMainProcessManager$8(ApkgMainProcessManager paramApkgMainProcessManager, MiniAppConfig paramMiniAppConfig) {}
+  ApkgMainProcessManager$8(ApkgMainProcessManager paramApkgMainProcessManager, MiniAppConfig paramMiniAppConfig, long paramLong) {}
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
@@ -38,22 +40,25 @@ class ApkgMainProcessManager$8
     }
   }
   
-  public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString)
+  public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString, GpkgManager.Info paramInfo)
   {
     QLog.d("ApkgMainProcessManager", 2, new Object[] { "onInitGpkgInfo ", "load gpkg in main process end " + this.val$miniAppConfig });
-    paramMiniGamePkg = (List)ApkgMainProcessManager.access$000(this.this$0).remove(this.val$miniAppConfig.config.appId);
-    if (paramMiniGamePkg != null)
+    paramString = (List)ApkgMainProcessManager.access$000(this.this$0).remove(this.val$miniAppConfig.config.appId);
+    if (paramString != null)
     {
-      paramMiniGamePkg = paramMiniGamePkg.iterator();
-      while (paramMiniGamePkg.hasNext())
+      paramMiniGamePkg = new Bundle();
+      paramMiniGamePkg.putLong("DOWNLOAD_TIME_MS", SystemClock.uptimeMillis() - this.val$start);
+      paramMiniGamePkg.putBoolean("HAS_DOWNLOAD", true);
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
       {
-        paramString = (CmdCallback)paramMiniGamePkg.next();
-        if (paramString != null) {
+        paramInfo = (CmdCallback)paramString.next();
+        if (paramInfo != null) {
           try
           {
-            paramString.onCmdResult(true, new Bundle());
+            paramInfo.onCmdResult(true, paramMiniGamePkg);
           }
-          catch (RemoteException paramString) {}
+          catch (RemoteException paramInfo) {}
         }
       }
     }
@@ -61,7 +66,7 @@ class ApkgMainProcessManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager.8
  * JD-Core Version:    0.7.0.1
  */

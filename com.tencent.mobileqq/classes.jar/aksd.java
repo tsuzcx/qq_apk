@@ -1,16 +1,37 @@
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.HashMap;
 import java.util.List;
 
-public abstract interface aksd
+class aksd
+  implements akse
 {
-  public abstract int a();
+  aksd(aksc paramaksc) {}
   
-  public abstract akry a();
-  
-  public abstract void a(List<aksc> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract int b();
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    int i = 1;
+    aksc localaksc = this.a;
+    localaksc.jdField_a_of_type_Int += 1;
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
+      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Aksf != null))
+      {
+        paramPathResult = this.a.jdField_a_of_type_Aksf;
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label118;
+        }
+      }
+    }
+    label118:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
+      return;
+      this.a.jdField_a_of_type_Boolean = true;
+      break;
+    }
+  }
 }
 
 

@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public class afbq
-  implements afbv
+class afbq
+  implements Animation.AnimationListener
 {
-  public afbq(ColorPicker paramColorPicker, afbt paramafbt) {}
+  afbq(afbp paramafbp) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Afbt.a);
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.a.b.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

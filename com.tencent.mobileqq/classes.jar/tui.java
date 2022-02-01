@@ -1,21 +1,28 @@
-import com.tencent.biz.qqcircle.comment.ItemReplyView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class tui
-  implements ucd
+  extends zyu
 {
-  public tui(ItemReplyView paramItemReplyView, FeedCloudMeta.StReply paramStReply) {}
-  
-  public void a()
+  public tui(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
   {
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
+  {
+    return FolderFollowTabFragment.a(this.a);
+  }
+  
+  public void loadData(zxz paramzxz) {}
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,10 @@
-class amzz
-  extends amsp
+import com.tencent.TMG.sdk.AVContext.StartParam;
+
+public class amzz
+  extends AVContext.StartParam
 {
-  amzz(amzy paramamzy) {}
-  
-  public void a(anau paramanau)
-  {
-    if (amzy.a(this.a) != null) {
-      amzy.a(this.a).a(paramanau);
-    }
-  }
+  public int a;
+  public long a;
 }
 
 

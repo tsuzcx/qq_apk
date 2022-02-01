@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.QQPermissionCallback;
 
 class befd
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
   befd(befc parambefc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
+    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

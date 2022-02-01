@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
 
 public final class blsu
-  implements Parcelable.Creator<QIMFilterCategoryItem>
+  implements DialogInterface.OnClickListener
 {
-  public QIMFilterCategoryItem a(Parcel paramParcel)
-  {
-    return new QIMFilterCategoryItem(paramParcel);
-  }
+  public blsu(boolean paramBoolean, FragmentActivity paramFragmentActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public QIMFilterCategoryItem[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new QIMFilterCategoryItem[paramInt];
+    if (this.jdField_a_of_type_Boolean) {
+      asme.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      asme.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

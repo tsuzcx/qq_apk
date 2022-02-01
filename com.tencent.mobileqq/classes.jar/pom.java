@@ -1,17 +1,21 @@
-class pom
-  implements qci
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+
+public class pom
+  implements View.OnTouchListener
 {
-  pom(pol parampol, pgd parampgd, rqj paramrqj) {}
+  public pom(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ors.a = this.jdField_a_of_type_Pgd.a();
-    ors.a(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Pgd.a(), 2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pom
  * JD-Core Version:    0.7.0.1
  */

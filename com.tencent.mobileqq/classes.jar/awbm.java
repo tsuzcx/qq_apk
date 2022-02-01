@@ -1,32 +1,21 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class awbm
+  implements View.OnClickListener
 {
-  public View a;
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public ARTipsCircleProgress a;
-  public ViewGroup b;
-  public TextView b;
-  public ViewGroup c;
-  public TextView c;
-  public ViewGroup d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  awbm(awbl paramawbl) {}
   
-  private awbm(awaw paramawaw) {}
+  public void onClick(View paramView)
+  {
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbm
  * JD-Core Version:    0.7.0.1
  */

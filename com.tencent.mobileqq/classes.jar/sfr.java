@@ -1,51 +1,44 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.os.Handler;
+import android.os.Message;
 
-public class sfr
-  implements ComplementFileStringLoader
+class sfr
+  extends Handler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private sfy jdField_a_of_type_Sfy;
+  sfr(sfq paramsfq) {}
   
-  public sfr(Context paramContext, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Sfy = new sfy(paramContext, paramString);
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
+    switch (paramMessage.what)
     {
-      InputStream localInputStream = this.jdField_a_of_type_Sfy.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-      }
-      localObject = sgi.a((InputStream)localObject);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
+    default: 
+    case 100: 
+    case 101: 
+    case 102: 
+      do
       {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
+        return;
+        sfq.a(this.a);
+        return;
+        this.a.l();
+        return;
+        sfq.b(this.a);
+        sendEmptyMessageDelayed(102, 1000L);
+      } while (sfq.a(this.a) != 1);
+      sfq.c(this.a);
+      return;
+    case 103: 
+      sfq.a(this.a, 3);
+      return;
+    case 104: 
+      sfq.d(this.a);
+      return;
     }
-    return null;
+    sfq.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfr
  * JD-Core Version:    0.7.0.1
  */

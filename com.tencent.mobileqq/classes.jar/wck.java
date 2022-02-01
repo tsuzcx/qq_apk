@@ -1,22 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.List;
 
-class wck
-  implements DialogInterface.OnDismissListener
+public class wck
 {
-  wck(wcj paramwcj, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public AddressItem a;
+  public String a;
+  public List<wcm> a;
+  public wdq a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public wck(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof wck));
+    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((wck)paramObject).jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
+    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder2.append(i);
+      return localStringBuilder1.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wck
  * JD-Core Version:    0.7.0.1
  */

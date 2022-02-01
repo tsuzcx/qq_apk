@@ -1,95 +1,88 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobContext;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class xlu
-  extends xlo<xlb, xlb>
+  extends xlt
 {
-  protected void a(JobContext paramJobContext, xlb paramxlb)
+  protected Map<String, xlt> a = new HashMap();
+  
+  public xlu(@NonNull ViewGroup paramViewGroup)
   {
-    System.currentTimeMillis();
-    int i = xsm.a(BaseApplication.getContext());
-    i = xsm.d(BaseApplication.getContext()) * 720 / i;
-    if (i % 2 != 0) {
-      i += 1;
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561833, paramViewGroup, false);
+  }
+  
+  public void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
+  {
+    super.a(paramInt, paramxiy, paramArrayList);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((xlt)localIterator.next()).a(paramInt, paramxiy, paramArrayList);
     }
-    for (;;)
-    {
-      Object localObject = paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_JavaLangString;
-      paramJobContext = (JobContext)localObject;
-      if (!paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_Boolean)
-      {
-        paramJobContext = (JobContext)localObject;
-        if (paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Boolean) {
-          paramJobContext = paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_JavaLangString;
-        }
-      }
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      for (;;)
-      {
-        try
-        {
-          bdhj.a(paramJobContext, (BitmapFactory.Options)localObject);
-          if (((BitmapFactory.Options)localObject).outWidth * 720 == ((BitmapFactory.Options)localObject).outHeight * i)
-          {
-            j = 1;
-            if ((!(paramxlb.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)) && ((paramxlb.jdField_a_of_type_Int != 1) || (j != 0)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0)) {
-              break label384;
-            }
-            paramJobContext = paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_AndroidGraphicsBitmap;
-            if (paramJobContext != null) {
-              break;
-            }
-            wxe.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap is null please check!");
-            super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 0));
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          wxe.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "decode image failed", paramJobContext);
-          super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 6));
-          return;
-        }
-        int j = 0;
-      }
-      wxe.a("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap width=%s, height=%s", Integer.valueOf(paramJobContext.getWidth()), Integer.valueOf(paramJobContext.getHeight()));
-      localObject = xqw.b(paramJobContext, 720, i, false, false);
-      if (localObject == null)
-      {
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 5));
-        return;
-      }
-      paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_Boolean = false;
-      paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Boolean = true;
-      String str = xlr.a(paramxlb.jdField_a_of_type_Int, paramxlb.jdField_b_of_type_JavaLangString, ".jpg");
-      xqw.a((Bitmap)localObject, str);
-      if (paramJobContext != localObject)
-      {
-        ((Bitmap)localObject).recycle();
-        wxe.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge recycle bitmap");
-      }
-      for (;;)
-      {
-        paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_JavaLangString = str;
-        super.notifyResult(paramxlb);
-        return;
-        wxe.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge do not recycle bitmap");
-      }
-      label384:
-      wxe.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "no need resize. srcWidth=%s, srcHeight=%s, destWidth=%s, destHeight=%s", Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(720), Integer.valueOf(i));
-      super.notifyResult(paramxlb);
-      return;
+  }
+  
+  public void a(@NonNull xlt paramxlt)
+  {
+    this.a.put(paramxlt.getClass().getName(), paramxlt);
+  }
+  
+  public void a(xlu paramxlu)
+  {
+    super.a(paramxlu);
+    paramxlu = this.a.values().iterator();
+    while (paramxlu.hasNext()) {
+      ((xlt)paramxlu.next()).a(this);
+    }
+  }
+  
+  public void a(xms paramxms)
+  {
+    super.a(paramxms);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((xlt)localIterator.next()).a(paramxms);
+    }
+  }
+  
+  @Nullable
+  public xlt b(Class<? extends xlt> paramClass)
+  {
+    return (xlt)this.a.get(paramClass.getName());
+  }
+  
+  protected void b()
+  {
+    super.b();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((xlt)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((xlt)localIterator.next()).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xlu
  * JD-Core Version:    0.7.0.1
  */

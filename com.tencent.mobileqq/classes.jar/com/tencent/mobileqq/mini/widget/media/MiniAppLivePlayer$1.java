@@ -4,6 +4,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.media.live.TXLivePlayerJSAdapter.IPlayOuterListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,9 +42,30 @@ class MiniAppLivePlayer$1
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     QLog.d("MiniAppLivePlayer", 1, "onPlayEvent code:" + paramInt);
+    JSONObject localJSONObject;
+    if (2028 == paramInt) {
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("livePlayerId", this.this$0.livePlayerId);
+        localJSONObject.put("errCode", paramInt);
+        paramBundle = paramBundle.get("EVT_GET_METADATA");
+        if ((paramBundle instanceof HashMap)) {
+          localJSONObject.put("errMsg", new JSONObject((HashMap)paramBundle));
+        }
+        this.this$0.serviceWebview.evaluateSubcribeJS("onLivePlayerMetadata", localJSONObject.toString(), this.this$0.webviewId);
+        QLog.e("MiniAppLivePlayer", 1, "operate start evaluateSubcribeJS onLivePlayerMetadata = " + localJSONObject.toString());
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("MiniAppLivePlayer", 1, " onLivePlayerMetadata get an Exception " + paramBundle);
+        return;
+      }
+    }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
+      localJSONObject = new JSONObject();
       localJSONObject.put("livePlayerId", this.this$0.livePlayerId);
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.get("EVT_MSG"));
@@ -59,7 +81,7 @@ class MiniAppLivePlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppLivePlayer.1
  * JD-Core Version:    0.7.0.1
  */

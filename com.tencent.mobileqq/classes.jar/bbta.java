@@ -1,27 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.Map;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bbta
-  implements DialogInterface.OnClickListener
+public final class bbta
+  implements ThreadFactory
 {
-  bbta(bbsn parambbsn, bbsa parambbsa) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    TroopFileTransferManager.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bbsa.jdField_a_of_type_JavaUtilUUID);
-    paramDialogInterface = (bbsa)bcmu.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Bbsa.f);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bbsa.b);
-    }
-    azqs.b(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long + "", "", "");
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

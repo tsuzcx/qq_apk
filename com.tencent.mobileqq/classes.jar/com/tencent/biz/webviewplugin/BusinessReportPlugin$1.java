@@ -1,13 +1,13 @@
 package com.tencent.biz.webviewplugin;
 
-import begz;
+import aazx;
+import bhod;
 import com.tencent.biz.pubaccount.CustomWebView;
-import zde;
 
 public class BusinessReportPlugin$1
   implements Runnable
 {
-  public BusinessReportPlugin$1(zde paramzde, String paramString) {}
+  public BusinessReportPlugin$1(aazx paramaazx, String paramString) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class BusinessReportPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.BusinessReportPlugin.1
  * JD-Core Version:    0.7.0.1
  */

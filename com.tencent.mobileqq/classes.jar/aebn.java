@@ -1,26 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aebn
-  extends Handler
+  implements View.OnClickListener
 {
-  public aebn(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aebn(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_Akmb.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Akmb.notifyDataSetChanged();
-    this.a.b();
+    DiscussionInfoCardActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

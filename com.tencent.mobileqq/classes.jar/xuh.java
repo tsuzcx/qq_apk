@@ -1,26 +1,32 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xuh
+public class xuh
+  extends QQUIEventReceiver<xug, wii>
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
-  
-  private xuh()
+  public xuh(@NonNull xug paramxug)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    super(paramxug);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(@NonNull xug paramxug, @NonNull wii paramwii)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    if ((xug.a(paramxug) == null) || (paramwii.a == null) || (!TextUtils.equals(xug.a(paramxug).a, paramwii.a.mVid))) {
+      return;
+    }
+    paramxug.a.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wii.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,37 @@
-import mqq.app.QQPermissionCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-class tsr
-  implements QQPermissionCallback
+public class tsr
+  extends Handler
 {
-  tsr(tsk paramtsk) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public tsr(ViolaBaseView paramViolaBaseView, Looper paramLooper)
   {
-    tsk.a(this.a);
+    super(paramLooper);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    tsk.d(this.a);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsr
  * JD-Core Version:    0.7.0.1
  */

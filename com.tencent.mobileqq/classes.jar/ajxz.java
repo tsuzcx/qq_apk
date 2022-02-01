@@ -1,8 +1,19 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public abstract interface ajxz
+class ajxz
+  implements View.OnTouchListener
 {
-  public abstract void a(@NonNull ajyd paramajyd);
+  ajxz(ajxt paramajxt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

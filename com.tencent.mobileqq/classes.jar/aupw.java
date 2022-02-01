@@ -1,29 +1,56 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-
-public class aupw
+public final class aupw
 {
-  public static HashMap<Integer, String> a = new HashMap();
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString = "word";
+  private int c = 1;
   
-  static
+  public aupw(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131719320));
-    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131719318));
-    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131720283));
-    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691359));
-    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131719315));
-    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131719332));
-    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131719319));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public static String a(int paramInt)
+  public final int a()
   {
-    return (String)a.get(Integer.valueOf(paramInt));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public final String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public final String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("(" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_Int);
+    if (!this.jdField_b_of_type_JavaLangString.equals("word")) {
+      localStringBuffer.append(",type=" + this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.c != 1) {
+      localStringBuffer.append(",posIncr=" + this.c);
+    }
+    localStringBuffer.append(")");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupw
  * JD-Core Version:    0.7.0.1
  */

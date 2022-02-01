@@ -1,46 +1,27 @@
-class amat
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
+import com.tencent.mobileqq.activity.weather.webpage.WebViewFragmentWithArk;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "y", "<anonymous parameter 2>", "<anonymous parameter 3>", "<anonymous parameter 4>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onScrollChanged"}, k=3, mv={1, 1, 16})
+public final class amat
+  implements TouchWebView.OnScrollChangedListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  int jdField_d_of_type_Int;
-  long jdField_d_of_type_Long;
-  int jdField_e_of_type_Int;
-  long jdField_e_of_type_Long;
-  int jdField_f_of_type_Int;
-  long jdField_f_of_type_Long;
-  int jdField_g_of_type_Int;
-  long jdField_g_of_type_Long;
-  int h;
+  public amat(WebViewFragmentWithArk paramWebViewFragmentWithArk) {}
   
-  public String toString()
+  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("{");
-    localStringBuilder.append("wSubCmd: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", llAccount: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", cKeyLen: ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", dwRoomNum: ").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", dwClientSeq: ").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", llFromAccount: ").append(this.d);
-    localStringBuilder.append(", dwFlag: ").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", cRelationBufLen: ").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(", dwRelationId: ").append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(", wCount: ").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append(", dwSendTime: ").append(this.jdField_f_of_type_Long);
-    localStringBuilder.append(", wReverseLen: ").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append(", cOriginalType: ").append(this.h);
-    localStringBuilder.append(", dwMsgSeq: ").append(this.jdField_g_of_type_Long);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewFragmentWithArk", 2, "showPreview scrollChangedListener  y: " + paramInt2 + ", arkLoadState：" + WebViewFragmentWithArk.a(this.a));
+    }
+    WebViewFragmentWithArk.a(this.a).scrollTo(0, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amat
  * JD-Core Version:    0.7.0.1
  */

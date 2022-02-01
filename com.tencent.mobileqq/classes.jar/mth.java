@@ -1,75 +1,96 @@
-import android.os.SystemClock;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import mqq.util.WeakReference;
 
-public class mth
+class mth
+  extends BroadcastReceiver
 {
-  private static final Map<String, Long> a = new HashMap(5);
-  private static final Map<String, Long> b = new HashMap(5);
+  mth(mte parammte) {}
   
-  public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 0;
-    if (QLog.isColorLevel())
+    String str = paramIntent.getAction();
+    boolean bool3;
+    boolean bool1;
+    int i;
+    if (str.equals("android.intent.action.SCREEN_ON"))
     {
-      long l2 = SystemClock.elapsedRealtime();
-      Object localObject1 = (Long)b.get(paramString1);
-      long l1;
-      if ((paramInt == 1) || (localObject1 == null))
-      {
-        a.put(paramString1, Long.valueOf(l2));
-        b.put(paramString1, Long.valueOf(l2));
-        l1 = 0L;
+      bool3 = VideoController.a(paramContext);
+      if (Build.VERSION.SDK_INT < 20) {
+        break label437;
       }
-      for (;;)
+      bool1 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
+      paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
+      if (paramContext == null) {
+        break label432;
+      }
+      i = paramContext.getState();
+    }
+    for (;;)
+    {
+      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramIntent = new StringBuilder().append("ACTION_SCREEN_ON, mVideoController[");
+      boolean bool2;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
       {
-        Object localObject2 = "[]";
-        localObject1 = localObject2;
-        if (paramVarArgs == null) {
-          break label210;
-        }
-        localObject1 = localObject2;
-        if (paramVarArgs.length <= 0) {
-          break label210;
-        }
-        localObject1 = new StringBuilder(100);
-        ((StringBuilder)localObject1).append("[");
-        int k = paramVarArgs.length;
-        int i = 0;
-        while (i < k)
+        bool2 = true;
+        QLog.d(paramContext, 1, bool2 + "], isInteractive[" + bool1 + "], nState[" + i + "], inKeyguardRestrictedInputMode[" + bool3 + "], mIsStarted[" + this.a.d + "]");
+        if (this.a.d)
         {
-          localObject2 = paramVarArgs[i];
-          if (j > 0) {
-            ((StringBuilder)localObject1).append(",");
-          }
-          ((StringBuilder)localObject1).append(localObject2);
-          j += 1;
-          i += 1;
+          this.a.jdField_a_of_type_Int = 1;
+          mte.a(this.a, mte.a(this.a));
         }
-        l1 = l2 - ((Long)localObject1).longValue();
-        b.put(paramString1, Long.valueOf(l2));
       }
-      ((StringBuilder)localObject1).append("]");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      label210:
-      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
-      if (paramInt == 2)
+      label313:
+      do
       {
-        paramVarArgs = (Long)a.get(paramString1);
-        paramString2 = paramVarArgs;
-        if (paramVarArgs == null) {
-          paramString2 = Long.valueOf(l2);
-        }
-        l1 = paramString2.longValue();
-        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
-      }
+        do
+        {
+          do
+          {
+            return;
+            bool2 = false;
+            break;
+            if (!str.equals("android.intent.action.SCREEN_OFF")) {
+              break label313;
+            }
+            i = paramIntent.getIntExtra("why", 0);
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_SCREEN_OFF, why[" + i + "]");
+          } while (this.a.jdField_a_of_type_ComTencentAvVideoController == null);
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
+          lcc.jdField_a_of_type_JavaLangString = "4";
+          return;
+          if (str.equals("android.intent.action.USER_PRESENT"))
+          {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
+            return;
+          }
+        } while (!str.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+        paramContext = paramIntent.getStringExtra("reason");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+      } while ((!"homekey".equalsIgnoreCase(paramContext)) || (!this.a.d));
+      this.a.jdField_a_of_type_Int = 1;
+      mte.a(this.a, mte.a(this.a));
+      return;
+      label432:
+      i = 2;
+      continue;
+      label437:
+      i = 2;
+      bool1 = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mth
  * JD-Core Version:    0.7.0.1
  */

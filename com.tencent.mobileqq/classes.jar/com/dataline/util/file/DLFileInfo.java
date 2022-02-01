@@ -3,12 +3,12 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ex;
+import fc;
 
 public class DLFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DLFileInfo> CREATOR = new ex();
+  public static final Parcelable.Creator<DLFileInfo> CREATOR = new fc();
   public int a;
   public long a;
   public String a;
@@ -42,7 +42,7 @@ public class DLFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.dataline.util.file.DLFileInfo
  * JD-Core Version:    0.7.0.1
  */

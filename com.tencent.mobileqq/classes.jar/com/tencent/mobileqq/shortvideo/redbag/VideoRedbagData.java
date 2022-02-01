@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
 import android.content.ContentValues;
-import awge;
-import awgf;
-import awgg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,18 +16,18 @@ import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="shortVideoId,uniseq")
 public class VideoRedbagData
-  extends awge
+  extends Entity
 {
   public static String TAG = "VideoRedbagData";
   public int redBagStat;
   public String shortVideoId;
   public long uniseq;
   
-  private static awgf getEntityManager()
+  private static EntityManager getEntityManager()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return ((QQAppInterface)localAppRuntime).getEntityManagerFactory().createEntityManager();
+      return ((QQAppInterface)localAppRuntime).a().createEntityManager();
     }
     return null;
   }
@@ -42,7 +42,7 @@ public class VideoRedbagData
     if ((paramString != null) && ((paramString instanceof QQAppInterface)))
     {
       paramString = (QQAppInterface)paramString;
-      ((ProxyManager)paramString.getManager(18)).a(paramString.getAccount(), 0, localVideoRedbagData.getTableName(), localVideoRedbagData, 3, null);
+      ((ProxyManager)paramString.getManager(18)).addMsgQueue(paramString.getAccount(), 0, localVideoRedbagData.getTableName(), localVideoRedbagData, 3, null);
     }
   }
   
@@ -54,7 +54,7 @@ public class VideoRedbagData
       QLog.d(TAG, 1, "query uniseq, em null");
       return new ArrayList();
     }
-    localObject = (ArrayList)((awgf)localObject).a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
+    localObject = (ArrayList)((EntityManager)localObject).rawQuery(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
     paramString = new ArrayList();
     if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
@@ -72,13 +72,13 @@ public class VideoRedbagData
   
   public static boolean queryRewardStat(String paramString)
   {
-    awgf localawgf = getEntityManager();
-    if (localawgf == null)
+    EntityManager localEntityManager = getEntityManager();
+    if (localEntityManager == null)
     {
       QLog.d(TAG, 1, "query stat, em null");
       return false;
     }
-    paramString = (ArrayList)localawgf.a(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
+    paramString = (ArrayList)localEntityManager.rawQuery(VideoRedbagData.class, "select * from " + VideoRedbagData.class.getSimpleName() + " where shortVideoId=?", VideoRedbagData.class.getSimpleName(), "shortVideoId=?", new String[] { paramString });
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       paramString = paramString.iterator();
@@ -93,15 +93,15 @@ public class VideoRedbagData
   
   public static boolean updateRewardStat(String paramString)
   {
-    awgf localawgf = getEntityManager();
+    EntityManager localEntityManager = getEntityManager();
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("redBagStat", Boolean.valueOf(true));
-    return localawgf.a(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
+    return localEntityManager.update(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData
  * JD-Core Version:    0.7.0.1
  */

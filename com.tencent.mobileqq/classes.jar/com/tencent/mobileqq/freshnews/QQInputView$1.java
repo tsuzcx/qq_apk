@@ -2,7 +2,7 @@ package com.tencent.mobileqq.freshnews;
 
 import android.text.TextUtils;
 import android.widget.Button;
-import asia;
+import auop;
 import com.tencent.widget.XEditTextEx;
 
 class QQInputView$1
@@ -41,7 +41,7 @@ class QQInputView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.QQInputView.1
  * JD-Core Version:    0.7.0.1
  */

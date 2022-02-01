@@ -1,18 +1,13 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
 
 class aihg
-  implements View.OnTouchListener
+  implements bkhw
 {
-  aihg(aiha paramaiha) {}
+  aihg(aihe paramaihe, bkho parambkho) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    aihe.a(this.jdField_a_of_type_Aihe, paramView, paramInt, this.jdField_a_of_type_Bkho);
   }
 }
 

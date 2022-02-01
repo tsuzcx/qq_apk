@@ -1,16 +1,21 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aixm
-  extends aixi
+  extends aniz
 {
-  aixm(aixl paramaixl) {}
+  aixm(aixj paramaixj) {}
   
-  public void a(int paramInt)
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
+    if (paramBoolean)
+    {
+      QQToast.a(aixj.a(this.a), 2131698107, 3000).a();
+      if (aixj.a(this.a) != 23) {
+        this.a.a(true);
+      }
+      return;
     }
+    QQToast.a(aixj.a(this.a), 2131698106, 0).a();
   }
 }
 

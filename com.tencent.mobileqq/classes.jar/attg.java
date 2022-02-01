@@ -1,23 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
 class attg
-  implements View.OnClickListener
+  implements atve
 {
-  attg(atte paramatte) {}
+  attg(atte paramatte, List paramList, attj paramattj) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a.a()) {
-      return;
+    atvo.a(this.jdField_a_of_type_JavaUtilList, atte.a(this.jdField_a_of_type_Atte));
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(2, 0);
     }
-    atso.a(this.a.a, null);
-    azqs.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(2, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attg
  * JD-Core Version:    0.7.0.1
  */

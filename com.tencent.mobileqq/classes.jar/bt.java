@@ -1,30 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.MobileQQ;
+import com.tencent.widget.ListView;
 
 public class bt
-  implements Animator.AnimatorListener
+  implements bkmq
 {
   public bt(LiteActivity paramLiteActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void a(int paramInt, View paramView, ListView paramListView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
-    ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
-    this.a.a.setPadding(aepi.a(24.0F, this.a.app.getApplication().getResources()), aepi.a(10.0F, this.a.app.getApplication().getResources()), aepi.a(24.0F, this.a.app.getApplication().getResources()), 0);
-    LiteActivity.a(this.a).getLayoutParams().height = -1;
+    this.a.c();
+    return true;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void b(int paramInt, View paramView, ListView paramListView) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

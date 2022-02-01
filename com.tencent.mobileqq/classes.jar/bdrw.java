@@ -1,45 +1,55 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bdrw
-  implements aufy<EmoticonPackage>
+class bdrw
+  implements Handler.Callback
 {
-  bdrw(int paramInt1, int paramInt2, EditText paramEditText) {}
+  bdrw(bdrr parambdrr) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public boolean handleMessage(Message paramMessage)
   {
-    int j = 0;
-    char[] arrayOfChar1 = apmq.b(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[7];
-    arrayOfChar2[0] = '<';
-    arrayOfChar2[1] = '$';
-    arrayOfChar2[2] = arrayOfChar1[0];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[2];
-    arrayOfChar2[5] = arrayOfChar1[3];
-    arrayOfChar2[6] = '>';
-    int i = j;
-    if (paramEmoticonPackage != null)
+    switch (paramMessage.what)
     {
-      i = j;
-      if (paramEmoticonPackage.isAPNG == 2)
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
       {
-        arrayOfChar2[1] = 'ǿ';
-        i = j;
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
       }
+      this.a.b();
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      if ((this.a.b != null) && (this.a.b.size() > 3))
+      {
+        paramMessage = (String)this.a.b.get(3);
+        Drawable localDrawable = bgmo.a(true);
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localQQAppInterface != null) {
+          aoch.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+      return false;
     }
-    while (i < arrayOfChar2.length)
+    paramMessage = (ArrayList)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      if (arrayOfChar2[i] == 0) {
-        arrayOfChar2[i] = 'Ā';
-      }
-      i += 1;
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
     }
-    i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    bdrr.a(this.a, paramMessage);
+    return false;
   }
 }
 

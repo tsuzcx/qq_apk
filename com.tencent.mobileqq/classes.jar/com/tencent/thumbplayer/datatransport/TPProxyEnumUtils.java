@@ -30,8 +30,10 @@ public class TPProxyEnumUtils
       return 8;
     case 9: 
       return 9;
+    case 10: 
+      return 10;
     }
-    return 10;
+    return 12;
   }
   
   public static int eventID2Inner(int paramInt)
@@ -76,7 +78,7 @@ public class TPProxyEnumUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyEnumUtils
  * JD-Core Version:    0.7.0.1
  */

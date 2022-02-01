@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class blne
-  implements DialogInterface.OnClickListener
+class blne
+  implements FilenameFilter
 {
-  public blne(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  blne(blnd paramblnd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramFile != null) && (paramFile.isDirectory()) && (blnd.a(this.a).matcher(paramString).matches());
+  }
 }
 
 

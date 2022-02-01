@@ -1,12 +1,20 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public abstract interface mjq
+class mjq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mkj parammkj, mki parammki);
+  mjq(mjp parammjp) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjq
  * JD-Core Version:    0.7.0.1
  */

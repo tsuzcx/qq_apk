@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.text.TextUtils;
-import azdd;
-import azdx;
-import azen;
-import azri;
-import bdhb;
+import bcec;
+import bcev;
+import bcfn;
+import bctj;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -38,95 +38,83 @@ public class ShortVideoRealItemBuilder$UploadTask
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
+  private void a(long paramLong)
+  {
+    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = (ShortVideoRealItemBuilder)this.c.get();
+    if (localShortVideoRealItemBuilder != null) {
+      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, paramLong);
+    }
+  }
+  
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {}
-    MessageForShortVideo localMessageForShortVideo;
-    Object localObject1;
-    ShortVideoRealItemBuilder localShortVideoRealItemBuilder;
-    Object localObject2;
-    do
-    {
-      long l;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              this.jdField_a_of_type_Long = System.currentTimeMillis();
-              localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-              localObject1 = localMessageForShortVideo.videoFileName;
-              localShortVideoRealItemBuilder = (ShortVideoRealItemBuilder)this.c.get();
-              if (!bdhb.b((String)localObject1)) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoRealItemBuilder", 2, "mr.videoFileName is not null...");
-              }
-            } while (localShortVideoRealItemBuilder == null);
-            ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
-            return;
-            if (bdhb.b(this.jdField_a_of_type_JavaLangString)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file is null!");
-            }
-          } while (localShortVideoRealItemBuilder == null);
-          ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
-          return;
-          localObject1 = (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-          if (localObject1 != null) {
-            ((QQAppInterface)localObject1).getHwEngine().preConnect();
-          }
-          l = new File(this.jdField_a_of_type_JavaLangString).length();
-          if (l != 0L) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file mVideoSize = 0");
-          }
-        } while (localShortVideoRealItemBuilder == null);
-        ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
-        return;
-        if (!TextUtils.isEmpty(localMessageForShortVideo.md5)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoRealItemBuilder", 2, "process videoMd5 is empty, videoMd5: " + localMessageForShortVideo.md5);
-        }
-      } while (localShortVideoRealItemBuilder == null);
-      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
       return;
-      localMessageForShortVideo.videoFileSize = ((int)l);
-      if (!bdhb.b(localMessageForShortVideo.mThumbFilePath)) {
-        break label349;
-      }
-      localObject2 = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      if (((String)localObject2).equals(localMessageForShortVideo.mThumbFilePath)) {
-        break label349;
-      }
-      if (bdhb.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2)) {
-        break;
-      }
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    Object localObject1 = localMessageForShortVideo.videoFileName;
+    Object localObject2 = (ShortVideoRealItemBuilder)this.c.get();
+    if (bgmg.b((String)localObject1))
+    {
       if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoRealItemBuilder", 2, "process mThumbFilePath error!");
+        QLog.e("ShortVideoRealItemBuilder", 2, "mr.videoFileName is not null...");
       }
-    } while (localShortVideoRealItemBuilder == null);
-    ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
-    return;
-    localMessageForShortVideo.mThumbFilePath = ((String)localObject2);
-    label349:
+      a(localMessageForShortVideo.uniseq);
+      return;
+    }
+    if (!bgmg.b(this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file is null!");
+      }
+      a(localMessageForShortVideo.uniseq);
+      return;
+    }
+    localObject1 = (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 != null) {
+      ((QQAppInterface)localObject1).getHwEngine().preConnect();
+    }
+    long l = new File(this.jdField_a_of_type_JavaLangString).length();
+    if (l == 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file mVideoSize = 0");
+      }
+      a(localMessageForShortVideo.uniseq);
+      return;
+    }
+    if (TextUtils.isEmpty(localMessageForShortVideo.md5))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoRealItemBuilder", 2, "process videoMd5 is empty, videoMd5: " + localMessageForShortVideo.md5);
+      }
+      a(localMessageForShortVideo.uniseq);
+      return;
+    }
+    localMessageForShortVideo.videoFileSize = ((int)l);
+    if (bgmg.b(localMessageForShortVideo.mThumbFilePath))
+    {
+      localObject2 = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      if (!((String)localObject2).equals(localMessageForShortVideo.mThumbFilePath))
+      {
+        if (!bgmg.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ShortVideoRealItemBuilder", 2, "process mThumbFilePath error!");
+          }
+          a(localMessageForShortVideo.uniseq);
+          return;
+        }
+        localMessageForShortVideo.mThumbFilePath = ((String)localObject2);
+      }
+    }
     if (localObject1 != null)
     {
       localObject2 = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
       if (!this.jdField_a_of_type_JavaLangString.equals(localObject2))
       {
-        bdhb.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
+        bgmg.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoRealItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
         }
@@ -134,28 +122,25 @@ public class ShortVideoRealItemBuilder$UploadTask
       localMessageForShortVideo.videoFileName = ((String)localObject2);
       localMessageForShortVideo.serial();
       if (!(localMessageForShortVideo instanceof MessageForDevLittleVideo)) {
-        break label636;
+        break label601;
       }
     }
-    label636:
+    label601:
     for (int i = 4;; i = 2)
     {
       ((QQAppInterface)localObject1).a().a(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
-      localObject2 = azdd.a(0, i);
-      azen localazen = azdd.a(localMessageForShortVideo, (azdx)localObject2);
-      localazen.a = false;
-      ((azdx)localObject2).a(localazen);
-      azdd.a((azdx)localObject2, (QQAppInterface)localObject1);
+      localObject2 = bcec.a(0, i);
+      bcfn localbcfn = bcec.a(localMessageForShortVideo, (bcev)localObject2);
+      localbcfn.a = false;
+      ((bcev)localObject2).a(localbcfn);
+      bcec.a((bcev)localObject2, (QQAppInterface)localObject1);
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoRealItemBuilder", 2, "[" + localMessageForShortVideo.uniseq + "]mMessageForShortVideo = " + localMessageForShortVideo + "\n |- upload cost:" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
       }
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      azri.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
-      if (localShortVideoRealItemBuilder == null) {
-        break;
-      }
-      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, localMessageForShortVideo.uniseq);
+      bctj.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
+      a(localMessageForShortVideo.uniseq);
       return;
       if (!QLog.isColorLevel()) {
         break;
@@ -167,7 +152,7 @@ public class ShortVideoRealItemBuilder$UploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask
  * JD-Core Version:    0.7.0.1
  */

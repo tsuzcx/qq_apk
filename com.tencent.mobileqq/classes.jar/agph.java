@@ -1,51 +1,52 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agph
-  extends agkp
+public class agph
+  implements View.OnClickListener
 {
-  final String jdField_a_of_type_JavaLangString = agoz.class.getSimpleName();
-  WeakReference<agoz> jdField_a_of_type_JavaLangRefWeakReference;
+  public agph(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public agph(agoz paramagoz)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagoz);
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    Object localObject = (agpj)afur.a(paramView);
+    amhd localamhd = (amhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+    localObject = (MessageForApollo)((agpj)localObject).a;
+    if (localObject == null) {
+      QLog.e("ApolloItemBuilder", 1, "errInfo->mr is null.");
     }
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-    agoz localagoz = (agoz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localagoz == null)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      ApolloActionData localApolloActionData = ((ancd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(((MessageForApollo)localObject).mApolloMessage.id);
+      if (localApolloActionData == null)
+      {
+        QLog.e("ApolloItemBuilder", 1, "ApolloActionData is null.");
+      }
+      else
+      {
+        CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(localApolloActionData.gameId, ((MessageForApollo)localObject).isSend(), "message", 0L, 1, 0, 0, 0, "", 333001, localApolloActionData.gameName);
+        localStartCheckParam.version = localamhd.a(localApolloActionData.gameId);
+        localStartCheckParam.disableMinGame = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloItemBuilder", 2, "game tail click: " + localStartCheckParam.toString());
+        }
+        ApolloGameUtil.a(this.a.jdField_a_of_type_AndroidContentContext, localStartCheckParam);
+        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_actiontail_clk", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { Integer.toString(((MessageForApollo)localObject).mApolloMessage.id), Integer.toString(localApolloActionData.gameId) });
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
-    }
-    localagoz.f(paramCompressInfo.e);
-    agoz.a(localagoz).a();
   }
 }
 

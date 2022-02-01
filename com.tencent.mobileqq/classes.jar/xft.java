@@ -1,41 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xft
-  implements View.OnTouchListener
+public class xft
+  extends QQUIEventReceiver<xfs, xfn>
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  xft(xfr paramxfr) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public xft(@NonNull xfs paramxfs)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    super(paramxfs);
+  }
+  
+  public void a(@NonNull xfs paramxfs, @NonNull xfn paramxfn)
+  {
+    if (TextUtils.equals("SendVideoToFriendHelper", paramxfn.jdField_a_of_type_JavaLangString)) {}
+    switch (paramxfn.jdField_a_of_type_Int)
     {
     default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
+      return;
     }
-    return this.jdField_a_of_type_Boolean;
+    yqp.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramxfn.b);
+    xfs.a(paramxfs, false);
+    paramxfs.a(paramxfs.jdField_a_of_type_AndroidOsBundle, paramxfs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxfs.jdField_a_of_type_JavaLangString, paramxfn.b);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xfn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xft
  * JD-Core Version:    0.7.0.1
  */

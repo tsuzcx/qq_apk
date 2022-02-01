@@ -1,33 +1,33 @@
-public class amvd
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+public final class amvd
+  implements EIPCResultCallback
 {
-  private amve jdField_a_of_type_Amve = new amve();
-  private amvf jdField_a_of_type_Amvf = new amvf();
+  public amvd(amvf paramamvf) {}
   
-  public amvd()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Amve.a();
-    this.jdField_a_of_type_Amvf.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Amve.c();
-    this.jdField_a_of_type_Amvf.c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (paramInt1 == 36197)
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    amvf localamvf;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_Amvf.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
+      localamvf = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
     }
-    if (paramInt1 == 3553)
+    for (;;)
     {
-      this.jdField_a_of_type_Amve.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      localamvf.a(bool);
       return;
+      label82:
+      bool = false;
     }
-    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
   }
 }
 

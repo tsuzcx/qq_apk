@@ -1,197 +1,109 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentSinkData;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetReq;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetRsp;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.RspBody;
 
-public class pdm
-  extends pdu
-  implements View.OnClickListener, pdn
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentSinkHandler;", "", "data", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;)V", "getData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;", "onFailCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOverTimes", "", "getOnFailCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFailCallback", "(Lkotlin/jvm/functions/Function1;)V", "onSuccessCallback", "Lkotlin/Function0;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "onCommentOperationFailed", "errorCode", "", "errorMsg", "", "onCommentOperationSuccess", "", "send0xd1eRequest", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdm
 {
-  View a;
-  public ImageView a;
-  public TextView a;
-  public KandianUrlImageView a;
-  public VideoViewGroup a;
-  public rjk a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public KandianUrlImageView b;
-  public View c;
-  public TextView c;
-  public KandianUrlImageView c;
-  public View d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
+  @NotNull
+  private static final String jdField_a_of_type_JavaLangString = "FirstCommentSinkHandler";
+  public static final pdn a;
+  @NotNull
+  private final FirstCommentSinkData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData;
+  @Nullable
+  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  @Nullable
+  private Function1<? super Boolean, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
   
-  public pdm(Context paramContext, pdj parampdj)
+  static
   {
-    super(paramContext, parampdj);
+    jdField_a_of_type_Pdn = new pdn(null);
   }
   
-  public int a()
+  public pdm(@NotNull FirstCommentSinkData paramFirstCommentSinkData)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData = paramFirstCommentSinkData;
   }
   
-  public View a(int paramInt, ViewGroup paramViewGroup)
+  private final oidb_0xd1e.ReqBody a()
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560196, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131376034);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377938));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372080));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365506));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367921));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131379738));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371435));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371436));
-    this.e = ((TextView)paramViewGroup.findViewById(2131369096));
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131377989);
-    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131378016);
-    this.jdField_d_of_type_AndroidViewView = ((ViewGroup)paramViewGroup.findViewById(2131363376));
-    this.f = ((TextView)paramViewGroup.findViewById(2131366288));
-    this.g = ((TextView)paramViewGroup.findViewById(2131366273));
-    this.h = ((TextView)paramViewGroup.findViewById(2131364544));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131379300));
-    this.i = ((TextView)paramViewGroup.findViewById(2131366286));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366289));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131368776));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setTag(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView.setTag(this);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setTag(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    paramViewGroup.setTag(this);
-    return paramViewGroup;
+    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
+    oidb_0xd1e.FirstCommentAuthorTopSetReq localFirstCommentAuthorTopSetReq = new oidb_0xd1e.FirstCommentAuthorTopSetReq();
+    localFirstCommentAuthorTopSetReq.article_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.b());
+    localFirstCommentAuthorTopSetReq.comment_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.a());
+    localFirstCommentAuthorTopSetReq.comment_type.set(1);
+    localFirstCommentAuthorTopSetReq.op_type.set(3);
+    localFirstCommentAuthorTopSetReq.content_src.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.d());
+    localFirstCommentAuthorTopSetReq.src.set(0);
+    localFirstCommentAuthorTopSetReq.business_info.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.d());
+    localReqBody.first_comment_author_top_set_req.set((MessageMicro)localFirstCommentAuthorTopSetReq);
+    return localReqBody;
   }
   
-  public rjk a()
+  public final void a()
   {
-    return this.jdField_a_of_type_Rjk;
+    oidb_0xd1e.ReqBody localReqBody = a();
+    nir.a(pha.a(), (niv)new pdo(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 10);
   }
   
-  public boolean a(View paramView)
+  public final void a(int paramInt, @NotNull String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (!rdm.a(pdj.a(this.jdField_a_of_type_Pdj, paramView))) {}
-    int j;
-    float f1;
-    do
-    {
-      do
-      {
-        return false;
-        j = rdm.b();
-      } while (j == 0);
-      f1 = orc.a(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "BigImgVideoItemViewHolder() canAutoPlay percent:" + f1);
-      }
-      if (j == 1)
-      {
-        if ((qzy.a().f()) && (f1 >= 70.0F)) {}
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
-        }
-      }
-    } while (j != 2);
-    if (f1 >= 70.0F) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
+    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "errorCode : " + paramInt + "  msg: " + paramString);
+    paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    if (paramString != null) {
+      paramString = (Unit)paramString.invoke(Boolean.valueOf(false));
     }
   }
   
-  public void onClick(View paramView)
+  public final void a(@Nullable Function0<Unit> paramFunction0)
   {
-    switch (paramView.getId())
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+  }
+  
+  public final void a(@Nullable Function1<? super Boolean, Unit> paramFunction1)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+  }
+  
+  public final void a(@NotNull byte[] paramArrayOfByte)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
+    oidb_0xd1e.RspBody localRspBody = new oidb_0xd1e.RspBody();
+    localRspBody.mergeFrom(paramArrayOfByte);
+    if ((localRspBody.first_comment_author_top_set_rsp.over_times.has()) && (localRspBody.first_comment_author_top_set_rsp.over_times.get() > 0))
     {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "req fail, overtimes");
+      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte = (Unit)paramArrayOfByte.invoke(Boolean.valueOf(true));
+      }
     }
     do
     {
-      Object localObject1;
-      Object localObject2;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                localObject1 = pdj.a(this.jdField_a_of_type_Pdj, paramView);
-              } while (localObject1 == null);
-              if ((rdm.c() == 1) && (this.jdField_a_of_type_Pdj.a().a() != null))
-              {
-                localObject2 = this.jdField_a_of_type_Pdj.a().a();
-                if ((localObject2 != null) && (((rjg)localObject2).a() != null))
-                {
-                  ((rjg)localObject2).a().c(paramView);
-                  return;
-                }
-              }
-              localObject2 = pdj.a(paramView);
-            } while (localObject2 == null);
-            if (ors.a(paramView.getContext(), (BaseArticleInfo)localObject1))
-            {
-              this.jdField_a_of_type_Pdj.a().b(((pdn)localObject2).a(), (BaseArticleInfo)localObject1);
-              ors.a(paramView.getContext(), (BaseArticleInfo)localObject1, ors.i(((BaseArticleInfo)localObject1).getInnerUniqueID()));
-              return;
-            }
-            if (rdm.b(this.jdField_a_of_type_Pdj.a(), (BaseArticleInfo)localObject1))
-            {
-              this.jdField_a_of_type_Pdj.a().b(((pdn)localObject2).a(), (BaseArticleInfo)localObject1);
-              return;
-            }
-          } while (localObject2 == null);
-          this.jdField_a_of_type_Pdj.a().a(((pdn)localObject2).a(), (BaseArticleInfo)localObject1, false, true);
-          return;
-          localObject1 = pdj.a(paramView);
-        } while (localObject1 == null);
-        localObject2 = this.jdField_a_of_type_Pdj.a().b(this.jdField_a_of_type_Int);
-        if (ors.a(paramView.getContext(), (BaseArticleInfo)localObject2))
-        {
-          this.jdField_a_of_type_Pdj.a().b(((pdn)localObject1).a(), (BaseArticleInfo)localObject2);
-          ors.a(paramView.getContext(), (BaseArticleInfo)localObject2, ors.i(((BaseArticleInfo)localObject2).getInnerUniqueID()));
-          return;
-        }
-        if (rdm.b(this.jdField_a_of_type_Pdj.a(), (BaseArticleInfo)localObject2))
-        {
-          this.jdField_a_of_type_Pdj.a().b(((pdn)localObject1).a(), (BaseArticleInfo)localObject2);
-          return;
-        }
-      } while (localObject1 == null);
-      this.jdField_a_of_type_Pdj.a().a(((pdn)localObject1).a(), (BaseArticleInfo)localObject2, false, true);
       return;
-      paramView = this.jdField_a_of_type_Pdj.a().b(this.jdField_a_of_type_Int);
-    } while ((paramView == null) || (paramView.familyCommentInfo == null));
-    ors.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramView.familyCommentInfo.b);
-    QLog.d("ReadInJoyBaseAdapter", 2, "familyJumpUrl " + paramView.familyCommentInfo.b);
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "req success");
+      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte = (Unit)paramArrayOfByte.invoke();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdm
  * JD-Core Version:    0.7.0.1
  */

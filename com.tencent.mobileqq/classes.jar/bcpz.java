@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopUtils.4;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.HotChatManagerProxy.Proxy;
 
-public class bcpz
-  implements DialogInterface.OnClickListener
+public final class bcpz
+  implements RecentRoute.HotChatManagerProxy.Proxy
 {
-  public bcpz(TroopUtils.4 param4) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public HotChatInfoStub getHotCatInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
+    {
+      paramIMCoreAppRuntime = (HotChatManager)paramIMCoreAppRuntime.getManager(60);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString);
+      }
+    }
+    return null;
+  }
 }
 
 

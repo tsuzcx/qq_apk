@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import adue;
+import Override;
+import afao;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Configuration;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
-import beuj;
+import bibh;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RegisterBaseActivity
   extends IphoneTitleBarActivity
@@ -23,7 +27,7 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new adue(this);
+    this.jdField_b_of_type_AndroidOsHandler = new afao(this);
   }
   
   protected void a(int paramInt)
@@ -41,7 +45,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new beuj(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bibh(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -53,7 +57,7 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new beuj(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bibh(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
@@ -74,6 +78,14 @@ public class RegisterBaseActivity
     this.jdField_b_of_type_AndroidOsHandler.post(new RegisterBaseActivity.3(this));
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     switch (paramInt)
@@ -86,10 +98,17 @@ public class RegisterBaseActivity
     }
     paramDialogInterface.dismiss();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity
  * JD-Core Version:    0.7.0.1
  */

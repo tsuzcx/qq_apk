@@ -1,47 +1,31 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afmc
-  implements bhuk
+class afmc
+  implements View.OnClickListener
 {
-  afmc(aflw paramaflw, MessageForFile paramMessageForFile, bhuf parambhuf, BaseChatItemLayout paramBaseChatItemLayout, afme paramafme) {}
+  afmc(afmb paramafmb) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      this.jdField_a_of_type_Aflw.b.post(new FileItemBuilder.6.1(this));
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.cancel();
-      return;
-      paramView = arrr.a(this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-      if (paramView.status == 16)
-      {
-        arri.a(2131692941);
-        this.jdField_a_of_type_Bhuf.cancel();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
-      paramInt = paramView.peerType;
-      paramView.peerType = this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      if ((paramView.nOpType != 21) && (paramView.nOpType != 22) && (paramView.nOpType != 27) && (paramView.nOpType != 20)) {
-        paramView.selfUin = this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      }
-      arrr.a(this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.selfUin, paramView.peerUin, paramView);
-      if ((this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1004) || (this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1000)) {
-        paramView.tmpSessionRelatedUin = this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-      }
-      paramView.peerType = paramInt;
-      arrr.a(this.jdField_a_of_type_Aflw.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Aflw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      this.jdField_a_of_type_Aflw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afme, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131368947));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Afnc != null) {
+      this.a.a.jdField_a_of_type_Afnc.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

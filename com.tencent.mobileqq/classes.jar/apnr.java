@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-
 public abstract interface apnr
 {
-  public abstract void a(int paramInt, CameraEmotionData paramCameraEmotionData);
+  public abstract void a(apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte);
 }
 
 

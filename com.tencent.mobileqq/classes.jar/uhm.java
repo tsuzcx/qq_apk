@@ -1,28 +1,22 @@
-import android.content.Context;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import feedcloud.FeedCloudMeta.StNotice;
+import android.view.View.OnTouchListener;
 
-public class uhm
-  extends ugz
+class uhm
+  implements View.OnTouchListener
 {
-  public uhm(int paramInt)
-  {
-    super(paramInt);
-  }
+  uhm(uhk paramuhk) {}
   
-  void b(Context paramContext, View paramView) {}
-  
-  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.b != null) && (this.a != null)) {
-      this.b.setText(this.a.getString(2131698350));
-    }
+    uhk.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uhm
  * JD-Core Version:    0.7.0.1
  */

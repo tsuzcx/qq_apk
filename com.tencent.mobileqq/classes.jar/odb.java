@@ -1,74 +1,188 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class odb
-  extends rnr
+class odb
+  extends BroadcastReceiver
 {
-  private Set<String> a;
-  public odd a;
-  private Handler b = new odc(this, Looper.getMainLooper());
+  odb(oda paramoda) {}
   
-  public odb(odd paramodd, rnv paramrnv, VideoFeedsPlayManager paramVideoFeedsPlayManager, boolean paramBoolean)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    super(paramrnv, paramVideoFeedsPlayManager, paramBoolean);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_Odd = paramodd;
-  }
-  
-  public void a(rfs paramrfs)
-  {
-    super.a(paramrfs);
-    Log.d("MultiVideoAd", "onVideoStart");
-    this.b.sendEmptyMessageDelayed(101, 3000L);
-    if ((this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c) && (this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null))
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    for (;;)
     {
-      paramrfs = this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.h;
-      if (!this.jdField_a_of_type_JavaUtilSet.contains(paramrfs))
+      return;
+      ??? = paramIntent.getAction();
+      Object localObject;
+      if ("action_get_PA_head".equals(???))
       {
-        this.jdField_a_of_type_JavaUtilSet.add(paramrfs);
-        paramrfs = noy.a(this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-        if (!this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(this.jdField_a_of_type_Odd.jdField_a_of_type_AndroidAppActivity)) {
-          break label187;
+        ??? = paramIntent.getStringExtra("uin");
+        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Aobu == null)) {
+          continue;
         }
-        noy.a(new obk().a(this.jdField_a_of_type_Odd.jdField_a_of_type_AndroidAppActivity).a(noy.b).b(noy.P).a(paramrfs).a(this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a());
+        paramIntent = this.a.jdField_a_of_type_Aobu.a(1, ???);
+        if (paramIntent != null)
+        {
+          localObject = new Intent("action_decode_finish");
+          ((Intent)localObject).putExtra("bitmap", paramIntent);
+          ((Intent)localObject).putExtra("uin", ???);
+          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
+          return;
+        }
+        this.a.jdField_a_of_type_Aobu.a(???, 1, true);
+        return;
+      }
+      int i;
+      boolean bool;
+      long l;
+      if ("action_shop_set_read".equals(???))
+      {
+        localObject = paramIntent.getStringExtra("uin");
+        i = paramIntent.getIntExtra("unReadNum", 0);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
+        }
+        bool = paramIntent.getBooleanExtra("needDelete", false);
+        synchronized (oda.a(this.a))
+        {
+          paramIntent = (EcShopData)oda.a(this.a).get(localObject);
+          if (paramIntent == null) {
+            continue;
+          }
+          ??? = null;
+          paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+          if (paramIntent != null) {
+            ??? = paramIntent.a((String)localObject, 1008);
+          }
+          if (??? != null)
+          {
+            aldk.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
+            paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+            if (paramIntent != null) {
+              paramIntent.a(???.frienduin, ???.istroop, true);
+            }
+          }
+          if (!bool) {
+            continue;
+          }
+          this.a.b((String)localObject);
+          if (((String)localObject).equals(oda.g))
+          {
+            l = oda.a().getLong("ad_id", 0L);
+            ((odu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134246438, null, null, null, null, l, false);
+            ??? = oda.a().edit();
+            ???.remove("ad_id");
+            ???.putBoolean("is_ad_added", false);
+            ???.commit();
+            oda.g = "";
+            return;
+          }
+        }
+        bcst.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
+        return;
+      }
+      if ("action_folder_set_read".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("uin");
+        if (!TextUtils.isEmpty(???))
+        {
+          ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(???, 1008);
+          if (??? != null) {
+            this.a.a(???.time);
+          }
+        }
+        ??? = oda.a();
+        this.a.e = false;
+        if (???.getBoolean("folder_reddot", false)) {
+          ???.edit().putBoolean("folder_reddot", false).commit();
+        }
+        ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (??? == null) {
+          continue;
+        }
+        ???.sendEmptyMessage(1009);
+        return;
+      }
+      if ("action_folder_destroy".equals(???))
+      {
+        if (paramIntent.getLongExtra("stay_time", 0L) >= this.a.jdField_a_of_type_Long) {
+          oda.a().edit().putLong("last_stay_folder", System.currentTimeMillis());
+        }
+        this.a.f = false;
+        return;
+      }
+      if ("action_folder_msg_change".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("msg");
+        i = paramIntent.getIntExtra("type", -1);
+        paramIntent = this.a.a();
+        if ((TextUtils.isEmpty(???)) || (paramIntent == null)) {
+          continue;
+        }
+        paramIntent = oda.a().edit();
+        paramIntent.putString("str_ecshop_diy", ???);
+        paramIntent.putInt("last_show_time1", (int)(System.currentTimeMillis() / 1000L));
+        paramIntent.putInt("FOLDER_MSG_TYPE", i);
+        paramIntent.putString("PUSH_JUMP_URL", "");
+        paramIntent.commit();
+        return;
+      }
+      if ("action_set_folder_tab_red".equals(???))
+      {
+        oda.a().edit().putBoolean("folder_tab_red", true).commit();
+        return;
+      }
+      if (!"action_follow_status".equals(???)) {
+        continue;
+      }
+      ??? = paramIntent.getStringExtra("puin");
+      if (TextUtils.isEmpty(???)) {
+        continue;
+      }
+      try
+      {
+        l = Long.parseLong(???);
+        if (l == -1L) {
+          continue;
+        }
+        bool = ((anrs)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
+        paramIntent = new Intent("action_follow_status_finish");
+        paramIntent.putExtra("isFollow", bool);
+        paramIntent.putExtra("uin", String.valueOf(l));
+        BaseApplicationImpl.getContext().sendBroadcast(paramIntent);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("EcShopAssistantManager", 2, "follow_status uin:" + ??? + ",isfollow:" + bool);
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          l = -1L;
+        }
       }
     }
-    return;
-    label187:
-    noy.a(new obk().a(this.jdField_a_of_type_Odd.jdField_a_of_type_AndroidAppActivity).a(noy.b).b(noy.N).a(paramrfs).a(this.jdField_a_of_type_Odd.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a());
-  }
-  
-  public void b(rfs paramrfs)
-  {
-    super.b(paramrfs);
-    Log.d("MultiVideoAd", "onVideoRestart");
-    this.b.removeMessages(101);
-    this.b.sendEmptyMessageDelayed(101, 3000L);
-  }
-  
-  public void c(rfs paramrfs)
-  {
-    super.c(paramrfs);
-    Log.d("MultiVideoAd", "onVideoStop");
-    this.b.removeMessages(101);
-  }
-  
-  public void d(rfs paramrfs)
-  {
-    super.d(paramrfs);
-    Log.d("MultiVideoAd", "onVideoPause");
-    this.b.removeMessages(101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     odb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,77 @@
-import com.tencent.mobileqq.app.FriendsManager.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
-public class altp
-  extends AccountObserver
+class altp
+  implements aobv
 {
-  altp(alto paramalto) {}
+  protected aobu a;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public altp(alth paramalth, Context paramContext, AppInterface paramAppInterface)
   {
-    ThreadManager.executeOnSubThread(new FriendsManager.1.1(this, paramString2, paramString1));
+    this.jdField_a_of_type_Aobu = new aobu(paramContext, paramAppInterface);
+    this.jdField_a_of_type_Aobu.a(this);
   }
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "onOnlineStatusChanged isSuccess = " + paramBoolean1 + " ,curStatus =  , isUserSet = " + paramStatus + " ,isFriendListChang = " + paramBoolean3 + " ,timeStamp = " + paramLong + " ,isGatherListChange = " + paramBoolean4);
+    Object localObject;
+    if (this.jdField_a_of_type_Aobu == null) {
+      localObject = null;
     }
-    alto.a(this.a).a.a(paramBoolean3, paramLong, paramBoolean4);
-    if (!paramBoolean3)
+    Bitmap localBitmap;
+    do
     {
-      paramStatus = new amax(alto.a(this.a));
-      alto.a(this.a).a.a(101, paramStatus);
+      return localObject;
+      localBitmap = this.jdField_a_of_type_Aobu.b(paramInt1, paramString, paramInt2);
+      localObject = localBitmap;
+    } while (localBitmap != null);
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
+    this.jdField_a_of_type_Aobu.a(paramString, paramInt1, true, paramByte);
+    return bgmo.a();
+  }
+  
+  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
+  {
+    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Aobu != null)
+      {
+        this.jdField_a_of_type_Aobu.d();
+        this.jdField_a_of_type_Aobu = null;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_Aobu = null;
+      }
+    }
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    alth.a(this.jdField_a_of_type_Alth, paramString, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     altp
  * JD-Core Version:    0.7.0.1
  */

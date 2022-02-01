@@ -1,8 +1,12 @@
-public abstract interface becn
+import java.util.ArrayList;
+
+public class becn
+  extends becx
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(bece parambece);
+  public String a;
+  public ArrayList<bdyf> a = new ArrayList();
+  public String b;
+  public ArrayList<bdyf> b = new ArrayList();
 }
 
 

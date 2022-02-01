@@ -1,20 +1,42 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bbed
-  implements View.OnTouchListener
 {
-  public bbed(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  private boolean a = true;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static bbed a(String paramString)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    return true;
+    try
+    {
+      bbed localbbed = new bbed();
+      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
+      for (;;)
+      {
+        localbbed.a = bool;
+        return localbbed;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
   }
 }
 

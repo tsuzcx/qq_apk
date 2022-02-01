@@ -1,12 +1,17 @@
-import android.content.Context;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ajmb
-  extends ajlx
+  extends ajhg
 {
-  public ajmb(Context paramContext)
-  {
-    this.a = "";
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

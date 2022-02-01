@@ -1,124 +1,113 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class aeuw
+  extends BaseAdapter
 {
-  public static final int a;
-  String a;
-  int b;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeux(this);
+  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
   
-  static
+  public aeuw(List<ProfileLabelInfo> paramList)
   {
-    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public static int a(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("Emoji")) {
-      return 0;
-    }
-    if (paramString.equalsIgnoreCase("Face")) {
-      return 1;
-    }
-    if (paramString.equalsIgnoreCase("Image")) {
-      return 2;
-    }
-    if (paramString.equalsIgnoreCase("Lottie")) {
-      return 3;
-    }
-    return -1;
-  }
-  
-  public static Drawable a(Context paramContext, aeuw paramaeuw)
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
   {
     Object localObject = null;
-    switch (paramaeuw.b)
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azjr.a().keySet().iterator();
+    if (localIterator.hasNext())
     {
-    default: 
-      paramContext = localObject;
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          int i;
-          do
-          {
-            return paramContext;
-            i = Integer.valueOf(paramaeuw.jdField_a_of_type_JavaLangString).intValue();
-            paramContext = localObject;
-          } while (i < 0);
-          paramaeuw = apsi.a(i);
-          paramContext = paramaeuw;
-        } while (paramaeuw == null);
-        paramaeuw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-        return paramaeuw;
-        paramaeuw = a(paramaeuw.jdField_a_of_type_JavaLangString);
-        paramContext = paramaeuw;
-      } while (paramaeuw == null);
-      paramaeuw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-      return paramaeuw;
-    }
-    String str2 = aeur.jdField_a_of_type_JavaLangString + paramaeuw.jdField_a_of_type_JavaLangString;
-    String str1 = "JumpImage:" + str2;
-    Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
-    localObject = localBitmap;
-    if (localBitmap == null)
-    {
-      localBitmap = bdal.a(str2);
-      if (localBitmap == null) {
-        break label248;
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
       }
-      BaseApplicationImpl.sImageCache.put(str1, localBitmap);
-      localObject = localBitmap;
+      localObject = localProfileLabelInfo;
+    }
+    label114:
+    for (;;)
+    {
+      break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azjr.a(localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azjr.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azjr.a(localObject));
+        return;
+      }
+      a(paramProfileLabelInfo.labelId);
+      return;
+    }
+  }
+  
+  private void a(Long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
+    }
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562948, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramView = new aeuv();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378230));
+      localView.setTag(paramView);
     }
     for (;;)
     {
-      paramContext = new BitmapDrawable(paramContext.getResources(), localObject);
-      paramContext.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-      return paramContext;
-      label248:
-      localObject = localBitmap;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramaeuw.jdField_a_of_type_JavaLangString);
-        localObject = localBitmap;
-      }
-    }
-  }
-  
-  public static Drawable a(String paramString)
-  {
-    int j = bamd.a.length;
-    int i = 0;
-    if (i < j) {
-      if (paramString.equals(bamd.a[i]))
-      {
-        j = i;
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
-        }
-      }
-    }
-    for (j = i;; j = -1)
-    {
-      if (j < 0)
-      {
-        return null;
-        i += 1;
-        break;
-      }
-      return banh.a(j, false);
+      paramView.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      localView.setBackgroundResource(ProfileActivity.a[i][0]);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      aeuv localaeuv = (aeuv)paramView.getTag();
+      localView = paramView;
+      paramView = localaeuv;
     }
   }
 }

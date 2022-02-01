@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import awge;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id,uin")
 public abstract class BaseResData<T extends MessageMicro>
-  extends awge
+  extends Entity
 {
   public int beginTime;
   public String business = "";

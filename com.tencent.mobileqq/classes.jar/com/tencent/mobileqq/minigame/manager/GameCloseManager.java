@@ -1,98 +1,181 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.text.Html;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.TextView.BufferType;
-import bdgm;
-import bdjz;
-import com.tencent.image.URLDrawable;
+import bglp;
+import bgpa;
+import bgpo;
+import bgtn;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.util.GsonUtils;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class GameCloseManager
 {
   private static final String MINI_BATTLE_GAME_SHOW_ALERT_VIEW_SCENES = GameWnsUtils.getBattleGameShowAlertViewScenes();
-  private static final int MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD = ;
-  private static final String PREF_KEY_MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES = "pref_key_mini_game_close_confirm_exposure_times";
+  private static final int MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES_THRESHOLD = ;
+  private static final String PREF_KEY_MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES = "pref_key_mini_game_retain_confirm_exposure_times";
+  private static final String PREF_KEY_MINI_GAME_RETAIN_CONFIRM_LAST_EXPOSE_TIMESTAMP = "pref_key_mini_game_retain_confirm_last_expose_timestamp";
+  private static final int RETAIN_RECOMMEND_APP_NUM = 3;
+  private static final int SCENE_JUMPING_GAME = 2113;
   private static final String TAG = "GameCloseManager";
   
-  private static boolean isFromDesktop(int paramInt)
+  private static boolean checkInterval(Activity paramActivity)
   {
-    return (paramInt >= 3001) && (paramInt <= 3010);
+    int i = GameWnsUtils.getRetainConfirmInterval();
+    long l = 0L;
+    if ((paramActivity instanceof GameActivity)) {
+      l = ((GameActivity)paramActivity).getStartTime();
+    }
+    for (;;)
+    {
+      l = (System.currentTimeMillis() - l) / 1000L;
+      if (l <= i) {
+        break;
+      }
+      QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, duration=" + l + " timeInterval=" + i);
+      return true;
+      if ((paramActivity instanceof GameActivity1)) {
+        l = ((GameActivity1)paramActivity).getStartTime();
+      }
+    }
+    return false;
   }
   
-  private static boolean isInWnsBlackList(int paramInt)
+  private static void doShowRetainDialog(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ArrayList<MiniAppInfo> paramArrayList, DialogInterface.OnClickListener paramOnClickListener)
   {
-    boolean bool2 = false;
+    bgpo localbgpo = new bgpo(paramActivity, 2131755823);
+    localbgpo.setContentView(2131559009);
+    localbgpo.setBodyLayoutNoMargin();
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559425, null, false);
+    ((URLImageView)localView.findViewById(2131378807)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bgtn.b(296.0F), bgtn.b(166.0F));
+    localLayoutParams.gravity = 17;
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376203);
+    int i = 0;
+    while (i < 3)
+    {
+      GameCloseManager.MiniAppViewItem localMiniAppViewItem = new GameCloseManager.MiniAppViewItem(paramActivity);
+      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramArrayList.get(i);
+      localMiniAppViewItem.setData(localMiniAppInfo, new GameCloseManager.1(localMiniAppInfo, localbgpo, paramOnClickListener, paramActivity));
+      localLinearLayout.addView(GameCloseManager.MiniAppViewItem.access$100(localMiniAppViewItem));
+      i += 1;
+    }
+    localbgpo.setCancelable(false);
+    localbgpo.setTitle(null).setMessage(null).addView(localView, localLayoutParams).setNegativeButton(2131693708, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693709, new GameCloseManager.2(paramMiniAppInfo, paramOnClickListener, paramActivity));
+    localbgpo.getBtnight().setTypeface(Typeface.DEFAULT, 1);
+    localbgpo.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
+    localbgpo.show();
+    MiniProgramLpReportDC04239.reportAsync("minigame_popup", "popup", "expo", "");
+  }
+  
+  private static String getRetainInfoCache(String paramString1, int paramInt, String paramString2)
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    paramString1 = "retain_confirm_" + paramString1 + "_" + str + "_" + String.valueOf(paramInt) + "_" + paramString2;
+    return StorageUtil.getPreference().getString(paramString1, null);
+  }
+  
+  private static int getShowTimes()
+  {
+    int i = 1;
+    Object localObject = "pref_key_mini_game_retain_confirm_exposure_times_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    int j = StorageUtil.getPreference().getInt((String)localObject, 0);
+    localObject = "pref_key_mini_game_retain_confirm_last_expose_timestamp_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = StorageUtil.getPreference().getLong((String)localObject, 0L);
+    localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(l);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(System.currentTimeMillis());
+    if ((((Calendar)localObject).get(6) == localCalendar.get(6)) && (((Calendar)localObject).get(1) == localCalendar.get(1))) {}
+    while (i == 0)
+    {
+      return 0;
+      i = 0;
+    }
+    return j;
+  }
+  
+  private static void handleClick(MiniAppInfo paramMiniAppInfo, DialogInterface paramDialogInterface, int paramInt, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
     try
     {
-      Object localObject = GameWnsUtils.getExitConfirmAnimationBlackList();
-      boolean bool1 = bool2;
-      int j;
-      int i;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split(",");
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          j = localObject.length;
-          i = 0;
-        }
+      MiniAppController.launchMiniAppByAppInfo(paramActivity, paramMiniAppInfo, 2113);
+      paramDialogInterface.dismiss();
+      if (paramOnClickListener != null) {
+        paramOnClickListener.onClick(paramDialogInterface, paramInt);
       }
+      return;
+    }
+    catch (MiniAppException paramMiniAppInfo)
+    {
       for (;;)
       {
-        bool1 = bool2;
-        String str;
-        if (i < j) {
-          str = localObject[i];
-        }
-        try
-        {
-          int k = Integer.parseInt(str);
-          if (k == paramInt)
-          {
-            bool1 = true;
-            return bool1;
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("GameCloseManager", 2, "isInWnsBlackList", localException);
-          i += 1;
-        }
+        QLog.e("GameCloseManager", 1, "launch more game error", paramMiniAppInfo);
       }
-      return false;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  private static MiniAppInfo parseMoreAppInfo(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("moreAppInfo");
+    if (TextUtils.isEmpty(paramJSONObject))
     {
-      QLog.e("GameCloseManager", 2, "isInWnsBlackList", localThrowable);
+      QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, moreAppStr == null");
+      return null;
     }
+    return (MiniAppInfo)GsonUtils.json2Obj(paramJSONObject, MiniAppInfo.class);
+  }
+  
+  private static ArrayList<MiniAppInfo> parseRecommendList(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONArray("appList");
+    if ((paramJSONObject == null) || (paramJSONObject.length() < 3))
+    {
+      QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, appList is empty or too small");
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < 3)
+    {
+      MiniAppInfo localMiniAppInfo = (MiniAppInfo)GsonUtils.json2Obj(paramJSONObject.getString(i), MiniAppInfo.class);
+      if (localMiniAppInfo != null) {
+        localArrayList.add(localMiniAppInfo);
+      }
+      i += 1;
+    }
+    return localArrayList;
   }
   
   private static boolean shouldShowAlertViewForBattleGame(MiniAppConfig paramMiniAppConfig)
@@ -146,58 +229,94 @@ public class GameCloseManager
     while (!shouldShowAlertViewForBattleGame(paramMiniAppConfig)) {
       return false;
     }
-    paramGameActivity = bdgm.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131720808)).setMessage(paramGameActivity.getString(2131694412)).setNegativeButton(paramGameActivity.getString(2131690648), new GameCloseManager.3()).setPositiveButton(paramGameActivity.getString(2131694411), new GameCloseManager.2(paramOnClickListener));
+    paramGameActivity = bglp.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718563)).setMessage(paramGameActivity.getString(2131693676)).setNegativeButton(paramGameActivity.getString(2131690582), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693675), new GameCloseManager.4(paramOnClickListener));
     paramGameActivity.setCancelable(false);
     paramGameActivity.show();
     return true;
   }
   
-  public static boolean showPullDownGuideDialog(GameActivity paramGameActivity, MiniAppConfig paramMiniAppConfig, DialogInterface.OnClickListener paramOnClickListener)
+  public static boolean showRetainGuideDialog(Activity paramActivity, MiniAppConfig paramMiniAppConfig, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if ((paramGameActivity == null) || (paramMiniAppConfig == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-      } while ((paramMiniAppConfig.launchParam != null) && ((paramMiniAppConfig.launchParam.scene == 2001) || (paramMiniAppConfig.launchParam.scene == 1001) || (MiniAppUtils.isFromPullDownEntry(paramMiniAppConfig)) || (isInWnsBlackList(paramMiniAppConfig.launchParam.scene))));
-      i = StorageUtil.getPreference().getInt("pref_key_mini_game_close_confirm_exposure_times", 0);
-    } while (i >= MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD);
-    paramMiniAppConfig = bdgm.a(paramGameActivity, 230);
-    Object localObject = new URLImageView(paramGameActivity);
-    ((URLImageView)localObject).setImageDrawable(URLDrawable.getDrawable(GameWnsUtils.getGameExitConfirmImageUrl(), true));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((URLImageView)localObject).setAdjustViewBounds(true);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    if (paramGameActivity.getIsOrientationLandscape())
-    {
-      localLayoutParams.width = (paramGameActivity.getResources().getDisplayMetrics().heightPixels / 2);
-      localLayoutParams.height = ((int)(localLayoutParams.width / 1.05F));
+    int i = 0;
+    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+      return false;
     }
-    localLayoutParams.gravity = 1;
-    TextView localTextView = new TextView(paramGameActivity);
-    localTextView.setText(Html.fromHtml(paramGameActivity.getApplicationContext().getString(2131694409)), TextView.BufferType.SPANNABLE);
-    localTextView.setTextColor(Color.parseColor("#02081B"));
-    localTextView.setGravity(17);
-    localTextView.setTypeface(Typeface.DEFAULT, 1);
-    paramGameActivity = new LinearLayout(paramGameActivity);
-    paramGameActivity.setOrientation(1);
-    paramGameActivity.addView((View)localObject, localLayoutParams);
-    paramGameActivity.addView(localTextView, new LinearLayout.LayoutParams(-2, -2));
-    localObject = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject).gravity = 17;
-    paramMiniAppConfig.setCancelable(false);
-    paramMiniAppConfig.setTitle(null).setMessage(null).addView(paramGameActivity, (LinearLayout.LayoutParams)localObject).setPositiveButton(2131694595, new GameCloseManager.1(paramOnClickListener));
-    paramMiniAppConfig.getBtnight().setTypeface(Typeface.DEFAULT, 1);
-    paramMiniAppConfig.show();
-    StorageUtil.getPreference().edit().putInt("pref_key_mini_game_close_confirm_exposure_times", i + 1).apply();
-    return true;
+    String str = paramMiniAppConfig.config.appId;
+    if (paramMiniAppConfig.launchParam == null) {
+      if (paramMiniAppConfig.config.via != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramMiniAppConfig = "";; paramMiniAppConfig = paramMiniAppConfig.config.via)
+    {
+      return showRetainGuideDialog(paramActivity, str, i, paramMiniAppConfig, paramOnClickListener);
+      i = paramMiniAppConfig.launchParam.scene;
+      break;
+    }
+  }
+  
+  public static boolean showRetainGuideDialog(Activity paramActivity, String paramString1, int paramInt, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1))) {}
+    for (;;)
+    {
+      return false;
+      int i = getShowTimes();
+      if (i >= MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES_THRESHOLD)
+      {
+        QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, show too many times");
+        return false;
+      }
+      paramString1 = getRetainInfoCache(paramString1, paramInt, paramString2);
+      if (TextUtils.isEmpty(paramString1))
+      {
+        QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, no result cache");
+        return false;
+      }
+      try
+      {
+        paramString2 = new JSONObject(paramString1);
+        if (!checkInterval(paramActivity))
+        {
+          paramString1 = parseMoreAppInfo(paramString2);
+          if (paramString1 != null)
+          {
+            paramString2 = parseRecommendList(paramString2);
+            if (paramString2 != null)
+            {
+              paramInt = paramString2.size();
+              if (paramInt >= 3)
+              {
+                doShowRetainDialog(paramActivity, paramString1, paramString2, paramOnClickListener);
+                updateShowTimes(i);
+                return true;
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("GameCloseManager", 1, "showRetainGuideDialog: not show, parse json error", paramActivity);
+      }
+    }
+    return false;
+  }
+  
+  private static void updateShowTimes(int paramInt)
+  {
+    String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    String str2 = "pref_key_mini_game_retain_confirm_exposure_times_" + str1;
+    SharedPreferences.Editor localEditor = StorageUtil.getPreference().edit();
+    localEditor.putInt(str2, paramInt + 1);
+    localEditor.putLong("pref_key_mini_game_retain_confirm_last_expose_timestamp_" + str1, System.currentTimeMillis());
+    localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bdaq;
+import bggq;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import wgh;
-import wgk;
-import wgn;
-import wnd;
+import xzs;
+import xzv;
+import xzy;
+import ygo;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public wgh a;
-  public wgn a;
+  public xzs a;
+  public xzy a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bdaq.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Wgh = new wgh(getContext());
-    super.setAdapter(this.jdField_a_of_type_Wgh);
-    super.setOnItemClickListener(this.jdField_a_of_type_Wgh);
-    super.setOnScrollStateChangedListener(new wgk(this));
+    this.b = bggq.a(paramContext, 105.0F);
+    this.jdField_a_of_type_Xzs = new xzs(getContext());
+    super.setAdapter(this.jdField_a_of_type_Xzs);
+    super.setOnItemClickListener(this.jdField_a_of_type_Xzs);
+    super.setOnScrollStateChangedListener(new xzv(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Wgh;
+    return this.jdField_a_of_type_Xzs;
   }
   
-  public void setData(List<wnd> paramList, String paramString)
+  public void setData(List<ygo> paramList, String paramString)
   {
-    this.jdField_a_of_type_Wgh.a(paramList, paramString);
+    this.jdField_a_of_type_Xzs.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,14 +63,14 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(wgn paramwgn)
+  public void setOnHorizontalScrollListener(xzy paramxzy)
   {
-    this.jdField_a_of_type_Wgn = paramwgn;
+    this.jdField_a_of_type_Xzy = paramxzy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmnr;
+import bpex;
 
 class EditVideoPlayer$1$1
   implements Runnable
@@ -14,7 +14,7 @@ class EditVideoPlayer$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer.1.1
  * JD-Core Version:    0.7.0.1
  */

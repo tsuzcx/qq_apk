@@ -3,13 +3,13 @@ package com.tencent.mobileqq.vas.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azmk;
-import bdvy;
+import bcnj;
+import bhba;
 import com.etrump.mixlayout.ETEngine;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.TextHook;
-import fx;
+import gc;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,11 +20,11 @@ public final class ThemeFontAdapter$2
   
   public void run()
   {
-    Object localObject1 = fx.a(this.a, this.b);
+    Object localObject1 = gc.a(this.a, this.b);
     if (!new File((String)localObject1).exists())
     {
       QLog.d("ThemeFontAdapter", 1, "switchFont  fontPath not exists:" + this.a);
-      bdvy.c(this.a, this.b);
+      bhba.c(this.a, this.b);
       return;
     }
     Object localObject2;
@@ -32,11 +32,11 @@ public final class ThemeFontAdapter$2
     {
       if (!ETEngine.isSOLoaded.get())
       {
-        bdvy.c(this.a, this.b);
+        bhba.c(this.a, this.b);
         return;
       }
-      localObject2 = fx.b(this.a, this.b);
-      if (bdvy.a((String)localObject1, (String)localObject2)) {
+      localObject2 = gc.b(this.a, this.b);
+      if (bhba.a((String)localObject1, (String)localObject2)) {
         localObject1 = localObject2;
       }
     }
@@ -51,19 +51,20 @@ public final class ThemeFontAdapter$2
         QLog.e("ThemeFontAdapter", 1, "switchFont  context is null");
         return;
       }
-      if (azmk.b())
+      if (bcnj.b())
       {
-        bdvy.a((Context)localObject2, (String)localObject1);
+        bhba.a((Context)localObject2, (String)localObject1);
         return;
       }
       if (!TextHook.getInstance().switchFont((Context)localObject2, (String)localObject1)) {
         break;
       }
-      bdvy.a(this.a);
-      if (bdvy.a() != null)
+      bhba.a(0);
+      bhba.b(this.a);
+      if (bhba.a() != null)
       {
-        bdvy.a().c();
-        bdvy.a(null);
+        bhba.a().c();
+        bhba.a(null);
       }
       QLog.e("ThemeFontAdapter", 2, "switchFont  success:" + this.a + " type:" + this.b);
       TextHook.saveLastPath((Context)localObject2, (String)localObject1);
@@ -74,7 +75,7 @@ public final class ThemeFontAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.ThemeFontAdapter.2
  * JD-Core Version:    0.7.0.1
  */

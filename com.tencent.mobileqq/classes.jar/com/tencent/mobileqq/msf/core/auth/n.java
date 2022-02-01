@@ -2,11 +2,11 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ah;
+import com.tencent.mobileqq.msf.core.ak;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
-import com.tencent.mobileqq.msf.service.t;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -255,7 +255,7 @@ public class n
       ((a)localObject).j(arrayOfByte2);
       ((a)localObject).b(arrayOfByte4);
       ((a)localObject).c(arrayOfByte5);
-      ((a)localObject).c(t.b(paramToServiceMsg));
+      ((a)localObject).c(u.b(paramToServiceMsg));
       if (paramWtloginHelper.GetBasicUserInfo(paramString, localWloginSimpleInfo).booleanValue())
       {
         ((a)localObject).b(localWloginSimpleInfo._age[0]);
@@ -375,7 +375,7 @@ public class n
     try
     {
       byte[] arrayOfByte = l.e.GetPictureData(paramFromServiceMsg.getUin(), paramLong);
-      ah.a(paramFromServiceMsg);
+      ak.a(paramFromServiceMsg);
       VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
       localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
       localVerifyCodeInfo.verifyimage = arrayOfByte;

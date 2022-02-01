@@ -1,84 +1,40 @@
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class awrl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
+  public awrl(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
-  private String b()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (this.jdField_c_of_type_Int)
-    {
-    default: 
-      return "";
-    case 4: 
-      return alud.a(2131713956);
-    case 5: 
-      return alud.a(2131713954);
-    case 6: 
-      return alud.a(2131713952);
-    case 7: 
-      return alud.a(2131713953);
-    case 8: 
-      return alud.a(2131713957);
-    }
-    return alud.a(2131713955);
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_b_of_type_Int == 3)
-    {
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("   ");
-        }
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-      }
-      if (this.jdField_c_of_type_Int > 0)
-      {
-        String str = b();
-        if (!TextUtils.isEmpty(str))
-        {
-          if (localStringBuilder.length() > 0) {
-            localStringBuilder.append("   ");
-          }
-          localStringBuilder.append(str);
-        }
-      }
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
+    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
+    int i = this.g;
+    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
+    if (j > 0) {
+      i = j;
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
+      j = this.h;
+      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrl
  * JD-Core Version:    0.7.0.1
  */

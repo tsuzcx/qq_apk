@@ -1,13 +1,31 @@
-import android.util.Pair;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract interface bhol
+class bhol
+  extends bhon
 {
-  public abstract void a(List<Pair<Integer, Byte>> paramList);
+  bhol(bhoi parambhoi)
+  {
+    super(parambhoi);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhol
  * JD-Core Version:    0.7.0.1
  */

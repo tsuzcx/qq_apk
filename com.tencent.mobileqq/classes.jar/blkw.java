@@ -1,15 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.os.Bundle;
 
 public class blkw
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public blkw(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public int a;
+  public Bundle a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  blkw(blku paramblku, int paramInt, Bundle paramBundle)
   {
-    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

@@ -1,20 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bmql
-  implements ValueAnimator.AnimatorUpdateListener
+public class bmql
 {
-  bmql(bmqk parambmqk) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
-  }
+  protected void a(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmql
  * JD-Core Version:    0.7.0.1
  */

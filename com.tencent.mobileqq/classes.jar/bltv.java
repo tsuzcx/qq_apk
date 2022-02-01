@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-
 public abstract interface bltv
 {
   public abstract void a();
-  
-  public abstract void a(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void c(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void d(int paramInt, MusicItemInfo paramMusicItemInfo);
 }
 
 

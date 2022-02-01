@@ -1,28 +1,50 @@
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Rect;
+import android.view.Display;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class bfbs
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bfbs(AuthorityAccountView paramAuthorityAccountView, ImageView paramImageView) {}
+  private bfbs(InputMethodGuard paramInputMethodGuard) {}
+  
+  private int a()
+  {
+    if (bclx.b > 0) {
+      return bclx.b;
+    }
+    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+  }
   
   public void onGlobalLayout()
   {
-    View localView = AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).findViewById(2131361830);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-    localLayoutParams.topMargin = (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2 + this.jdField_a_of_type_AndroidWidgetImageView.getTop() - localView.getHeight() / 2);
-    localView.setLayoutParams(localLayoutParams);
-    if (Build.VERSION.SDK_INT >= 16)
+    boolean bool = InputMethodGuard.a(this.a);
+    Rect localRect = new Rect();
+    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = a();
+    int j = i - localRect.bottom;
+    if (Math.abs(j) > i / 5)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      return;
+      InputMethodGuard.a(this.a, true);
+      InputMethodGuard.a(this.a, j);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    for (;;)
+    {
+      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
+        InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
+      }
+      if (InputMethodGuard.b(this.a)) {
+        InputMethodGuard.b(this.a, false);
+      }
+      return;
+      InputMethodGuard.a(this.a, false);
+      InputMethodGuard.a(this.a, 0);
+    }
   }
 }
 

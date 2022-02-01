@@ -1,42 +1,26 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
 
 class bjxf
-  implements bjsb
+  implements URLDrawable.URLDrawableListener
 {
-  bjxf(bjxe parambjxe) {}
+  bjxf(bjww parambjww, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int i = 1;
-    int j = paramBaseResp.errCode;
-    if (j == 0)
-    {
-      i = 0;
-      paramBaseResp = alud.a(2131712740);
-      bjxe.d(this.a, paramBaseResp);
-    }
-    for (;;)
-    {
-      bjxe.a(this.a, bjxe.a(this.a), i, paramBaseResp);
-      return;
-      if (j == -2)
-      {
-        paramBaseResp = alud.a(2131712731);
-        bjxe.d(this.a, paramBaseResp);
-      }
-      else
-      {
-        paramBaseResp = alud.a(2131712728);
-        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
-        i = j;
-      }
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IDrawableLoadedCallBack.onLoadSuccessed(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beir;
-import beiu;
-import zfy;
+import abcr;
+import bhpv;
+import bhpy;
 
 class SwiftBrowserShareMenuHandler$5$1$1
   implements Runnable
@@ -16,7 +16,7 @@ class SwiftBrowserShareMenuHandler$5$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,317 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
 public class asgg
-  implements View.OnClickListener
 {
-  public asgg(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private asgl jdField_a_of_type_Asgl;
+  private beaw jdField_a_of_type_Beaw;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, asge> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  private String b;
   
-  public void onClick(View paramView)
+  public asgg(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = (String)auwq.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onClick, server mine url=" + (String)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_Beaw = ((beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
     }
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
+  }
+  
+  public static String a()
+  {
+    return String.format("%s/res", new Object[] { b() });
+  }
+  
+  private String a(String paramString)
+  {
+    return String.format("%s/%s.zip", new Object[] { b(), paramString });
+  }
+  
+  private void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      paramString.delete();
     }
-    localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramView);
-    this.a.getActivity().startActivity((Intent)localObject);
-    auwz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {}
-    for (boolean bool = false;; bool = this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b())
+  }
+  
+  private boolean a(asge paramasge)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (paramasge != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
-      try
-      {
-        azqs.b(null, "dc00899", "grp_lbs", "", "entry", "nearby_frag_mine_click_tmp", 0, 0, bool + "", "", "", "");
-        return;
+      bool1 = bool3;
+      if (paramasge.a()) {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
       }
-      catch (Exception paramView) {}
+    }
+    try
+    {
+      bool3 = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramasge.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+      if (bool3) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (new File(paramString1).exists())
+    {
+      paramString1 = azby.a(paramString1);
+      bool1 = bool2;
+      if (paramString2 != null)
+      {
+        bool1 = bool2;
+        if (paramString2.equalsIgnoreCase(paramString1)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private static String b()
+  {
+    Object localObject1 = null;
+    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject2 != null)
+    {
+      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/ef_res";
+      File localFile = new File((String)localObject2);
+      localObject1 = localObject2;
+      if (!localFile.exists())
+      {
+        localFile.mkdirs();
+        localObject1 = localObject2;
+      }
+    }
+    return localObject1;
+  }
+  
+  private void b(asge paramasge)
+  {
+    c(paramasge);
+    ThreadManager.getSubThreadHandler().post(new ExtendFriendResourceDownloader.4(this, paramasge));
+  }
+  
+  private boolean b()
+  {
+    boolean bool = false;
+    if (!TextUtils.isEmpty(this.b)) {
+      bool = a(a(this.b), this.b);
+    }
+    return bool;
+  }
+  
+  private boolean b(asge paramasge)
+  {
+    return (paramasge != null) && (paramasge.a()) && (aslb.a.contains(paramasge.jdField_a_of_type_JavaLangString));
+  }
+  
+  private boolean b(String paramString1, String paramString2)
+  {
+    try
+    {
+      aovr.a(paramString1, paramString2);
+      return true;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("ExtendFriendResourceDownloader", 1, "unzipResource fail.", paramString1);
+    }
+    return false;
+  }
+  
+  private void c(asge paramasge)
+  {
+    if ((paramasge != null) && (paramasge.a())) {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramasge.jdField_a_of_type_JavaLangString, paramasge);
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  private boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      bool1 = bool2;
+      if (asmk.a()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  private void d(asge paramasge)
+  {
+    if ((paramasge != null) && (paramasge.a())) {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramasge.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public void a()
+  {
+    int i = 1;
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
+      QLog.e("ExtendFriendResourceDownloader", 1, "downloadResource invalid parameters.");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    }
+    Object localObject1 = a(this.b);
+    if (!a((String)localObject1, this.b))
+    {
+      a((String)localObject1);
+      if (this.jdField_a_of_type_Beaw != null)
+      {
+        localObject2 = new bdvs();
+        ((bdvs)localObject2).jdField_a_of_type_Bdvw = new asgh(this);
+        ((bdvs)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        ((bdvs)localObject2).jdField_a_of_type_Int = 0;
+        ((bdvs)localObject2).c = ((String)localObject1);
+        ((bdvs)localObject2).d = 0;
+        ((bdvs)localObject2).jdField_a_of_type_Bdvv = new asgi(this);
+        localObject2 = new beau(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new asgj(this), (bdvs)localObject2);
+        this.jdField_a_of_type_Beaw.a(10073, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, 2, 0, false, (beat)localObject2);
+      }
+    }
+    while (c())
+    {
+      Object localObject2;
+      return;
+    }
+    boolean bool3 = b((String)localObject1, a());
+    boolean bool2 = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
+    }
+    boolean bool1;
+    if (this.jdField_a_of_type_Asgl != null)
+    {
+      localObject1 = this.jdField_a_of_type_Asgl;
+      if ((bool3) && (bool2))
+      {
+        bool1 = true;
+        ((asgl)localObject1).a(bool1);
+      }
+    }
+    else
+    {
+      localObject1 = asmj.a();
+      if ((!bool3) || (!bool2)) {
+        break label347;
+      }
+      bool1 = true;
+      label330:
+      if (bool2) {
+        break label352;
+      }
+    }
+    for (;;)
+    {
+      ((asmj)localObject1).b(bool1, i);
+      return;
+      bool1 = false;
+      break;
+      label347:
+      bool1 = false;
+      break label330;
+      label352:
+      i = 0;
+    }
+  }
+  
+  public void a(asge paramasge)
+  {
+    if (paramasge == null)
+    {
+      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is null");
+      return;
+    }
+    if (!paramasge.a())
+    {
+      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is not effect");
+      return;
+    }
+    if (!a(paramasge))
+    {
+      b(paramasge);
+      return;
+    }
+    QLog.i("ExtendFriendResourceDownloader", 2, "Limitchatres is downloading" + paramasge.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(asgl paramasgl)
+  {
+    this.jdField_a_of_type_Asgl = paramasgl;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("setDownloadInfo url=%s md5=%s", new Object[] { paramString1, paramString2 }));
+    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = b();
+    boolean bool2 = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    }
+    return (bool1) && (bool2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Beaw != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_Beaw.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

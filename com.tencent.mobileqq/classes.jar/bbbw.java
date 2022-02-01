@@ -1,15 +1,17 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public class bbbw
-  extends bbbz
+class bbbw
+  implements bbdb
 {
-  public int a;
-  public ArrayList<bawy> a = new ArrayList();
-  public byte[] a;
-  public int b;
-  public byte[] b;
-  public byte[] c;
-  public byte[] d;
+  bbbw(bbbv parambbbv) {}
+  
+  public void a(String paramString)
+  {
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
+    }
+    SignatureHistoryFragment.a(this.a.a, paramString);
+  }
 }
 
 

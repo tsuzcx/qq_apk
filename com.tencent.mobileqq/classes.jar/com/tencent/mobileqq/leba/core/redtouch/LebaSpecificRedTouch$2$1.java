@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
-import atlh;
+import avrv;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -29,13 +29,13 @@ class LebaSpecificRedTouch$2$1
       localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
       localRedTypeInfo.red_type.set(5);
       this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(localRedTypeInfo);
-      atlh.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
+      avrv.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.redtouch.LebaSpecificRedTouch.2.1
  * JD-Core Version:    0.7.0.1
  */

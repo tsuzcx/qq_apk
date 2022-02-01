@@ -1,12 +1,18 @@
-class avij
+import java.util.List;
+
+public class avij
 {
   public int a;
-  
-  private avij(avhf paramavhf) {}
+  public long a;
+  public List<Long> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avij
  * JD-Core Version:    0.7.0.1
  */

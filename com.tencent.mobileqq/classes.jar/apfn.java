@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public final class apfn
-  implements Parcelable.Creator<QQPhotoInfo>
+public class apfn
+  implements DialogInterface.OnDismissListener
 {
-  public QQPhotoInfo a(Parcel paramParcel)
-  {
-    return new QQPhotoInfo(paramParcel, null);
-  }
+  public apfn(ARScanEntryView paramARScanEntryView) {}
   
-  public QQPhotoInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new QQPhotoInfo[paramInt];
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

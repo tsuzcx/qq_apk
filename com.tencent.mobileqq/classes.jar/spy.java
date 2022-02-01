@@ -1,14 +1,22 @@
-public abstract interface spy
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
+public class spy
+  implements ViewFactory.FoundClickableViewListener
 {
-  public abstract void b(int paramInt);
+  public spy(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public void onFound(ViewBase paramViewBase)
+  {
+    paramViewBase.setOnClickListener(new spz(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spy
  * JD-Core Version:    0.7.0.1
  */

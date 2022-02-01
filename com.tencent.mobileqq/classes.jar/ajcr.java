@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
 public class ajcr
-  implements ajdq
+  extends ajcv<ajce>
 {
-  public ajcr(DoodleView paramDoodleView) {}
-  
-  public void a()
+  public ajcr(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, Context paramContext, int paramInt)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
+    super(paramContext, paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
-    }
+    return new ajcd(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
   }
   
-  public void b()
+  protected void a(ajdf paramajdf, ajce paramajce, int paramInt)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).b();
-    }
+    TroopRecommendFriendFragment.a(this.a, paramajdf, paramajce, paramInt);
   }
 }
 

@@ -13,7 +13,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.StateSet;
 import android.view.View;
-import bnsm;
+import bqja;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -42,14 +42,14 @@ public class BaseButton
   public BaseButton(Context paramContext)
   {
     super(paramContext);
-    this.jdField_c_of_type_Int = bnsm.a(10.0F);
+    this.jdField_c_of_type_Int = bqja.a(10.0F);
     a();
   }
   
   public BaseButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_c_of_type_Int = bnsm.a(10.0F);
+    this.jdField_c_of_type_Int = bqja.a(10.0F);
     a();
   }
   
@@ -246,7 +246,7 @@ public class BaseButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.BaseButton
  * JD-Core Version:    0.7.0.1
  */

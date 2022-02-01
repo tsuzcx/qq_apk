@@ -1,25 +1,14 @@
-import android.view.View;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.view.MotionEvent;
 
-public class bfyd
-  implements bhuw
+public abstract interface bfyd
 {
-  public bfyd(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (bfzs)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Bfyg == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bfyg.a(paramAdapterView);
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyd
  * JD-Core Version:    0.7.0.1
  */

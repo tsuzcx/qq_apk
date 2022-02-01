@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class agra
-  implements DialogInterface.OnDismissListener
+public abstract interface agra
 {
-  agra(agqq paramagqq) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.b(1);
-  }
+  public abstract void b();
 }
 
 

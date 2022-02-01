@@ -1,22 +1,22 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
-class bixx
-  extends alqh
+public class bixx
+  implements DialogInterface.OnClickListener
 {
-  bixx(bixv parambixv) {}
+  public bixx(ApkFileDownloadButton paramApkFileDownloadButton) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+    this.a.b(false, true);
+    paramDialogInterface.dismiss();
+    bisp.b(bisr.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixx
  * JD-Core Version:    0.7.0.1
  */

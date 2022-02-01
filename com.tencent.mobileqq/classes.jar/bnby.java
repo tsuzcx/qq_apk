@@ -1,41 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import java.util.ArrayList;
-
-class bnby
-  extends BroadcastReceiver
+public class bnby
 {
-  bnby(bnbw parambnbw) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static boyo a(int paramInt, boyn paramboyn, boym paramboym)
   {
-    wxe.c("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver onReceive.");
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    switch (paramInt)
     {
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      int i;
-      if ((paramContext != null) && (paramContext.size() > 0) && (paramIntent != null) && (paramIntent.size() > 0))
-      {
-        wxe.b("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=%d headPathList.size()=%d.", Integer.valueOf(paramContext.size()), Integer.valueOf(paramIntent.size()));
-        i = 0;
-      }
-      while (i < paramContext.size())
-      {
-        String str = (String)paramContext.get(i);
-        if (this.a.a.contains(str))
-        {
-          this.a.a.remove(str);
-          this.a.b.put(str, paramIntent.get(i));
-          this.a.a(str, (String)paramIntent.get(i));
-        }
-        i += 1;
-        continue;
-        wxe.e("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=0 | headPathList.size()=0.");
-      }
+    default: 
+      return new bncn(paramboyn, paramboym);
+    case 10026: 
+      return new bncy(paramboyn, paramboym);
+    case 10023: 
+    case 10024: 
+      return new bndy(paramboyn, paramboym);
+    case -1000: 
+      return new bndy();
+    case 10000: 
+      return new bnbe(paramboyn, paramboym);
+    case 10001: 
+      return new bncj(paramboyn, paramboym);
+    case 10002: 
+      return new bncn(paramboyn, paramboym);
+    case 10014: 
+      return new bnco(paramboyn, paramboym);
+    case 10004: 
+      return new bnch(paramboyn, paramboym);
+    case 10007: 
+      return new bncs(paramboyn, paramboym);
+    case 10012: 
+      return new bncq(paramboyn, paramboym);
+    case 10013: 
+      return new bnck(paramboyn, paramboym);
+    case 10017: 
+      return new rkp(paramboyn, paramboym);
+    case 10019: 
+      return new beyr(paramboyn, paramboym);
+    case 10021: 
+      return new bnbf(paramboyn, paramboym);
+    case 10022: 
+      return new bnbz(paramboyn, paramboym);
     }
+    return new ajon(paramboyn, paramboym);
   }
 }
 

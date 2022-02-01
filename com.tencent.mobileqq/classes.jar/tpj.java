@@ -1,32 +1,32 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tpj
-  extends npu
+  extends tpg
 {
-  public tpj(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
-  
-  public void a(boolean paramBoolean, tpr paramtpr, byte[] paramArrayOfByte, String paramString)
+  tpj(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    if (paramBoolean)
+    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    paramString1 = (QQAppInterface)pha.a();
+    if (paramString1 != null)
     {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramtpr != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramtpr.a);
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramtpr, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramtpr);
-      }
-      return;
+      paramString1 = paramString1.getAccount();
+      paramString2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
+      paramString3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("desc");
+      paramActionSheetItem = this.jdField_a_of_type_OrgJsonJSONObject.optString("image_url");
+      bljl.a(0, paramString2, this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url"), null, paramString3, paramActionSheetItem, null, null, false, -1L).c(paramString1).b(this.jdField_a_of_type_AndroidAppActivity, paramString1, 2, null);
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tpj
  * JD-Core Version:    0.7.0.1
  */

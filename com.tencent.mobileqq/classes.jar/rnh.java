@@ -1,68 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 
-public class rnh
+class rnh
+  extends Handler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private rez jdField_a_of_type_Rez;
-  private rmn jdField_a_of_type_Rmn;
-  private tap jdField_a_of_type_Tap;
+  rnh(rng paramrng) {}
   
-  rnh(Activity paramActivity, rmn paramrmn)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Rmn = paramrmn;
-    this.jdField_a_of_type_Tap = ((tap)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(126));
-    this.jdField_a_of_type_Rez = new rez(paramActivity, 1);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Rez.a();
-  }
-  
-  void a(VideoInfo paramVideoInfo)
-  {
-    int i = 0;
-    boolean bool;
-    if (!paramVideoInfo.p)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      bool = true;
-      paramVideoInfo.p = bool;
-      if (!paramVideoInfo.p) {
-        break label53;
-      }
-      i = paramVideoInfo.r + 1;
-    }
-    for (;;)
-    {
-      paramVideoInfo.r = i;
-      this.jdField_a_of_type_Tap.a(paramVideoInfo, paramVideoInfo.p);
+    default: 
       return;
-      bool = false;
-      break;
-      label53:
-      if (paramVideoInfo.r > 0) {
-        i = paramVideoInfo.r - 1;
-      }
     }
-  }
-  
-  void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
-  {
-    if (!paramVideoInfo.p) {
-      a(paramVideoInfo);
-    }
-    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
-      this.jdField_a_of_type_Rez.a(paramInt1, paramInt2);
-    }
+    rng.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rnh
  * JD-Core Version:    0.7.0.1
  */

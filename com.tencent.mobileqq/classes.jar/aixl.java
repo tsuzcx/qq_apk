@@ -1,79 +1,74 @@
-import Wallet.RedPackGrapInfo;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class aixl
-  extends FrameLayout
+class aixl
+  extends anmu
 {
-  afzb jdField_a_of_type_Afzb;
-  Context jdField_a_of_type_AndroidContentContext;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  aixl(aixj paramaixj) {}
   
-  public aixl(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, afzb paramafzb)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Afzb = paramafzb;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = -2;
-    paramTroopUnAccalimedRedPacketList.height = -2;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847017);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = xsm.a(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.height = xsm.a(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = xsm.a(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.height = xsm.a(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 17;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
   }
   
-  public void a(RedPackGrapInfo paramRedPackGrapInfo)
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      localObject = bdbk.a(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    if (paramInt2 == aixj.a(this.a)) {
+      this.a.a(false);
     }
-    if (this.jdField_a_of_type_Afzb != null)
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (aixj.a(this.a) == 23)) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Afzb.a(paramRedPackGrapInfo);
-      localObject = this.jdField_a_of_type_Afzb.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      if (localObject == null) {
-        break label120;
+      this.a.notifyDataSetChanged();
+      if (aixj.a(this.a) != null)
+      {
+        aixj.a(this.a).removeCallbacks(this.a.a);
+        aixj.a(this.a).postDelayed(this.a.a, 1600L);
       }
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.topMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 11.5F);
-      localLayoutParams.gravity = 16;
-      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Afzb.a((FrameLayout)localObject, paramRedPackGrapInfo, new aixm(this));
     }
-    label120:
-    while (!QLog.isColorLevel())
-    {
-      LinearLayout.LayoutParams localLayoutParams;
-      return;
-    }
-    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
   }
 }
 

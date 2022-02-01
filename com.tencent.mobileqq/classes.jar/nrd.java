@@ -1,20 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.1;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
-public class nrd
-  implements BusinessObserver
+class nrd
+  implements bkij
 {
-  public nrd(PublicAccountManager.1 param1) {}
+  nrd(nrb paramnrb) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
+    }
+    paramAdapterView = (nyl)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (this.a.jdField_a_of_type_Nql != null) {
+      this.a.jdField_a_of_type_Nql.a(paramAdapterView);
+    }
+    this.a.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpc
-  extends Handler
+  implements ahor
 {
-  public ahpc(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-    }
+    paramagup.e(paramafzq, paramagwc, paramString);
   }
 }
 

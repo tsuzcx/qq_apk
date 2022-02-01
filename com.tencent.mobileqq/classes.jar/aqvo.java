@@ -1,96 +1,53 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqvo
-  extends aqvx
+  implements aqlb<String>
 {
-  public aqvo(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public boolean a;
+  
+  public void a(String paramString)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public aqrm a()
-  {
-    return null;
-  }
-  
-  public aqrp a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<Integer> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView) {}
-  
-  protected void a(ChatMessage paramChatMessage) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public List<Integer> b(int paramInt)
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public int e()
-  {
-    return 0;
+    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.toLowerCase();
+    }
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
+      this.a = false;
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
+      if (paramString == null) {
+        break label118;
+      }
+      if (paramString.has("enable"))
+      {
+        this.a = paramString.getBoolean("enable");
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
+      return;
+    }
+    this.a = false;
+    return;
+    label118:
+    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqvo
  * JD-Core Version:    0.7.0.1
  */

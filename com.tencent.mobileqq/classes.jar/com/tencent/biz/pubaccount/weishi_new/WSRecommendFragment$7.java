@@ -4,9 +4,9 @@ import UserGrowth.stSimpleMetaFeed;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import java.util.HashMap;
 import java.util.List;
-import tfd;
-import tlo;
-import tlv;
+import uha;
+import upe;
+import ups;
 
 class WSRecommendFragment$7
   implements Runnable
@@ -26,12 +26,12 @@ class WSRecommendFragment$7
         if (!WSRecommendFragment.a(this.this$0).containsKey(Integer.valueOf(i)))
         {
           WSRecommendFragment.a(this.this$0).put(Integer.valueOf(i), localstSimpleMetaFeed.id);
-          tlo.b("weishi-report", "put:" + i);
+          upe.b("weishi-report", "put:" + i);
           localHashMap1.put(Integer.valueOf(i), localstSimpleMetaFeed);
           localHashMap2.put(Integer.valueOf(i), localstSimpleMetaFeed.id);
         }
         if (this.jdField_a_of_type_Boolean) {
-          tfd.a(1, tlv.a(localstSimpleMetaFeed, true));
+          uha.a(1, ups.a(localstSimpleMetaFeed, true));
         }
       }
       i += 1;
@@ -42,7 +42,7 @@ class WSRecommendFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import bjcn;
+import blqw;
 
 public class KSongFragment$KsongBundleInfo
-  extends bjcn
+  extends blqw
 {
   public String song_id;
   public String song_name;
@@ -11,7 +11,7 @@ public class KSongFragment$KsongBundleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.KSongFragment.KsongBundleInfo
  * JD-Core Version:    0.7.0.1
  */

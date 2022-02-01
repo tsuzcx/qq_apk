@@ -60,12 +60,10 @@ final class MiniAppInfo$1
         bool = true;
         localMiniAppInfo.isSupportBlueBar = bool;
         if (paramParcel.readInt() != 1) {
-          break label647;
+          break label686;
         }
-      }
-      label647:
-      for (boolean bool = true;; bool = false)
-      {
+        bool = true;
+        label411:
         localMiniAppInfo.isSupportOffline = bool;
         localMiniAppInfo.recommendAppIconUrl = paramParcel.readString();
         localMiniAppInfo.extendData = paramParcel.readString();
@@ -92,9 +90,23 @@ final class MiniAppInfo$1
         localMiniAppInfo.ide_extraData = paramParcel.readString();
         localMiniAppInfo.tianshuAdId = paramParcel.readInt();
         localMiniAppInfo.resourcePreCacheInfo = paramParcel.createTypedArrayList(ResourcePreCacheInfo.CREATOR);
+        if (paramParcel.readInt() != 1) {
+          break label691;
+        }
+      }
+      label686:
+      label691:
+      for (boolean bool = true;; bool = false)
+      {
+        localMiniAppInfo.enableLoadingAd = bool;
+        localMiniAppInfo.deviceOrientation = paramParcel.readInt();
+        localMiniAppInfo.showStatusBar = paramParcel.readInt();
+        localMiniAppInfo.prepayId = paramParcel.readString();
         return localMiniAppInfo;
         bool = false;
         break;
+        bool = false;
+        break label411;
       }
       return localMiniAppInfo;
     }
@@ -111,7 +123,7 @@ final class MiniAppInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

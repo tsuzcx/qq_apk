@@ -1,25 +1,41 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.album.preview.PicPreviewPresent;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharpP.SharpPUtils;
 
-class akky
-  extends ameq
+public class akky
+  extends PicPreviewPresent
 {
-  akky(akkt paramakkt) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public akky(PreviewBean paramPreviewBean)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(akkt.a(this.a))))
-    {
-      akkt.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
-      return;
+    super(paramPreviewBean);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = this.mBean.getPath();
+    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
+    localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
+    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+    paramViewGroup = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(str), localURLDrawableOptions);
+    if (paramViewGroup == null) {
+      QLog.w("PEAK", 2, "drawable == null");
     }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + akkt.a(this.a));
+    paramView.setImageDrawable(paramViewGroup);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akky
  * JD-Core Version:    0.7.0.1
  */

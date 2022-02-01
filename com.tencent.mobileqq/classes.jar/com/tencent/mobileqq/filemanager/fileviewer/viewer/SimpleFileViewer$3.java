@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aroj;
-import arti;
-import azqs;
+import atsq;
+import aucd;
+import bcst;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
@@ -33,18 +33,18 @@ public class SimpleFileViewer$3
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       localObject = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
     } while (localObject == null);
-    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560684, SimpleFileViewer.a(this.this$0), false));
-    Object localObject = new RelativeLayout.LayoutParams(-1, arti.a(localQQAppInterface));
+    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560888, SimpleFileViewer.a(this.this$0), false));
+    Object localObject = new RelativeLayout.LayoutParams(-1, aucd.a(localQQAppInterface));
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     SimpleFileViewer.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
     SimpleFileViewer.a(this.this$0).addView(SimpleFileViewer.a(this.this$0));
-    azqs.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
-    arti.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new aroj(this, localQQAppInterface));
+    bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
+    aucd.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new atsq(this, localQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3
  * JD-Core Version:    0.7.0.1
  */

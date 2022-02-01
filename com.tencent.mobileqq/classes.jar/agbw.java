@@ -1,26 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
 
 public class agbw
-  implements Animator.AnimatorListener
+  extends TranslateAnimation
 {
-  public agbw(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
+  public int a = 0;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public agbw()
   {
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.jdField_a_of_type_Agbz.b.start();
+    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public agbw(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
+  {
+    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  {
+    if (!agay.a) {
+      setStartTime(paramLong);
+    }
+    return super.getTransformation(paramLong, paramTransformation);
+  }
 }
 
 

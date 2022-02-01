@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
 import mqq.util.WeakReference;
-import tra;
-import yiw;
+import uxx;
+import zwp;
 
 class QCircleRecommendImageView$LongPressTimerTask$1
   implements Runnable
@@ -24,9 +24,9 @@ class QCircleRecommendImageView$LongPressTimerTask$1
       QCircleRecommendImageView localQCircleRecommendImageView = (QCircleRecommendImageView)QCircleRecommendImageView.LongPressTimerTask.a(this.this$0).get();
       if (localQCircleRecommendImageView != null)
       {
-        if ((QCircleRecommendImageView.a(localQCircleRecommendImageView) != null) && (tra.a((FeedCloudMeta.StUser)QCircleRecommendImageView.a(localQCircleRecommendImageView).poster.get())))
+        if ((QCircleRecommendImageView.a(localQCircleRecommendImageView) != null) && (uxx.a((FeedCloudMeta.StUser)QCircleRecommendImageView.a(localQCircleRecommendImageView).poster.get())))
         {
-          QCircleRecommendImageView.h(localQCircleRecommendImageView);
+          QCircleRecommendImageView.g(localQCircleRecommendImageView);
           return;
         }
         if (QCircleRecommendImageView.b(localQCircleRecommendImageView) < QCircleRecommendImageView.a())
@@ -36,7 +36,7 @@ class QCircleRecommendImageView$LongPressTimerTask$1
           QCircleRecommendImageView.b(localQCircleRecommendImageView, true);
           FeedCloudMeta.StFeed localStFeed = localQCircleRecommendImageView.a();
           if ((localStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-            yiw.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
+            zwp.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
           }
           ((Vibrator)localQCircleRecommendImageView.getContext().getSystemService("vibrator")).vibrate(50L);
           return;
@@ -52,7 +52,7 @@ class QCircleRecommendImageView$LongPressTimerTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.LongPressTimerTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,24 @@
-class agwx
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.ark.open.delegate.IArkDelegateNet;
+import java.lang.ref.WeakReference;
+
+public class agwx
+  extends ahhb
 {
-  boolean a;
-  
-  void a()
+  public agwx(String paramString)
   {
-    try
-    {
-      this.a = false;
-      return;
+    super(null, paramString);
+  }
+  
+  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    WeakReference localWeakReference = new WeakReference(this);
+    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
+    if (localIArkDelegateNet == null) {
+      return false;
     }
-    finally {}
-  }
-  
-  boolean a()
-  {
-    return a(0L);
-  }
-  
-  /* Error */
-  boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	agwx:a	Z
-    //   6: ifeq +7 -> 13
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: iconst_1
-    //   12: ireturn
-    //   13: aload_0
-    //   14: lload_1
-    //   15: invokevirtual 25	java/lang/Object:wait	(J)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iconst_1
-    //   21: ireturn
-    //   22: astore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_3
-    //   26: athrow
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iconst_0
-    //   35: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	agwx
-    //   0	36	1	paramLong	long
-    //   22	4	3	localObject	Object
-    //   27	2	3	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	22	finally
-    //   13	18	22	finally
-    //   18	20	22	finally
-    //   23	25	22	finally
-    //   28	34	22	finally
-    //   13	18	27	java/lang/InterruptedException
-  }
-  
-  void b()
-  {
-    try
-    {
-      this.a = true;
-      notify();
-      return;
-    }
-    finally {}
+    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new agwy(this, localWeakReference));
+    return true;
   }
 }
 

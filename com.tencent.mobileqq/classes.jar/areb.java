@@ -1,164 +1,106 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
-public class areb
+public abstract class areb
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public String g;
-  public long h;
-  public String h;
-  public long i;
-  public String i;
-  public long j;
-  public String j;
-  public String k;
+  protected int a;
+  protected arec a;
+  protected arew a;
+  protected final arfo a;
+  protected argb a;
+  protected argg a;
+  private ArrayList<arfr> a;
+  protected final List<aren> a;
+  protected final TreeSet<aren> a;
   
-  public areb(String paramString1, String paramString2)
+  protected areb(arew paramarew, arec paramarec, Comparator<aren> paramComparator, argg paramargg, argb paramargb)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Arew = paramarew;
+    this.jdField_a_of_type_Arec = paramarec;
+    this.jdField_a_of_type_Argg = paramargg;
+    this.jdField_a_of_type_Argb = paramargb;
+    this.jdField_a_of_type_Arfo = new arfo(paramarec);
+    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(paramComparator);
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    a();
   }
   
-  String a()
+  public static areb a(arew paramarew, arec paramarec, Comparator<aren> paramComparator, argg paramargg, argb paramargb)
   {
-    if (this.jdField_i_of_type_Long == 0L) {
-      return "0 KB/s";
-    }
-    long l = this.f - this.d;
-    if (l == 0L) {
-      return "0 KB/s";
-    }
-    float f1 = (float)(this.jdField_i_of_type_Long / 1024L) / (float)(l / 1000L);
-    return f1 + " KB/s";
+    return new arem(paramarew, paramarec, paramComparator, paramargg, paramargb);
   }
   
-  public HashMap<String, String> a()
+  private void a(Canvas paramCanvas, arew paramarew, long paramLong)
   {
-    HashMap localHashMap = null;
-    Object localObject = localHashMap;
-    try
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramCanvas != null))
     {
-      if (this.jdField_g_of_type_JavaLangString != null)
-      {
-        localObject = localHashMap;
-        if (this.jdField_g_of_type_JavaLangString.length() > 0) {
-          localObject = this.jdField_g_of_type_JavaLangString.substring(this.jdField_g_of_type_JavaLangString.indexOf("://") + 3, this.jdField_g_of_type_JavaLangString.lastIndexOf(":"));
-        }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((arfr)localIterator.next()).a(paramCanvas, paramarew, paramLong);
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str = this.jdField_g_of_type_JavaLangString;
-      }
-    }
-    localHashMap = new HashMap();
-    localHashMap.put("param_serverip", String.valueOf(localObject));
-    localHashMap.put("param_Server", String.valueOf(localObject));
-    localHashMap.put("param_PeerUin", String.valueOf(this.jdField_h_of_type_JavaLangString));
-    localHashMap.put("param_PeerType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_i_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", Long.toString(this.jdField_a_of_type_Long));
-    localHashMap.put("param_fsized", String.valueOf(this.jdField_h_of_type_Long));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_j_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_g_of_type_JavaLangString));
-    localHashMap.put("param_rspHeader", String.valueOf(this.jdField_j_of_type_JavaLangString));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_nSessionId", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_CSDuration", String.valueOf(this.d - this.jdField_c_of_type_Long));
-    localHashMap.put("param_HttpDuration", String.valueOf(this.f - this.e));
-    localHashMap.put("param_AllDuration", String.valueOf(this.jdField_g_of_type_Long - this.jdField_c_of_type_Long));
-    return localHashMap;
   }
   
-  public void a()
+  public int a()
   {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    azri localazri = azri.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString + "Detail";
-    if (this.jdField_a_of_type_Long == 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localazri.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      return;
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void b()
+  public abstract aren a(argk paramargk);
+  
+  public List<aren> a()
   {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    azri localazri = azri.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Long == 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localazri.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      return;
-    }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void c()
+  public void a() {}
+  
+  public final void a(Canvas paramCanvas, long paramLong)
   {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    azri localazri = azri.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      bool = true;
-      localazri.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      localazri = azri.a(BaseApplication.getContext());
-      str1 = this.jdField_b_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_JavaLangString + "Detail";
-      if (this.jdField_a_of_type_Long != 0L) {
-        break label165;
-      }
-    }
-    label165:
-    for (boolean bool = true;; bool = false)
-    {
-      localazri.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      return;
-      bool = false;
-      break;
-    }
+    b(paramCanvas, paramLong);
+    a(paramCanvas, this.jdField_a_of_type_Arew, paramLong);
   }
+  
+  protected void a(Canvas paramCanvas, aren paramaren)
+  {
+    arfn localarfn = this.jdField_a_of_type_Arew.a(paramaren);
+    this.jdField_a_of_type_Arfo.a(paramCanvas, paramaren, this.jdField_a_of_type_Arew, localarfn);
+    paramaren.f();
+  }
+  
+  public void a(aren paramaren)
+  {
+    this.jdField_a_of_type_JavaUtilTreeSet.add(paramaren);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(Canvas paramCanvas, long paramLong);
+  
+  public void b(aren paramaren)
+  {
+    paramaren.c(true);
+    paramaren.d(true);
+    float f = paramaren.f();
+    arek.a(this.jdField_a_of_type_Arew, paramaren);
+    paramaren.c((paramaren.f() + paramaren.f()) / (f + paramaren.f()));
+  }
+  
+  public abstract void c();
+  
+  public abstract void c(aren paramaren);
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public abstract void d(aren paramaren);
 }
 
 

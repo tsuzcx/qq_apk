@@ -468,28 +468,39 @@ public class FlexConvertUtils
   
   public static float px2dip(float paramFloat)
   {
-    float f2 = 2.0F;
     try
     {
       f1 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      if (f1 == 0.0F)
-      {
-        f1 = f2;
-        DecimalFormat localDecimalFormat = new DecimalFormat("0.00");
-        DecimalFormatSymbols localDecimalFormatSymbols = new DecimalFormatSymbols();
-        localDecimalFormatSymbols.setDecimalSeparator('.');
-        localDecimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
-        return Float.valueOf(localDecimalFormat.format(paramFloat / f1)).floatValue();
+      f2 = f1;
+      if (f1 == 0.0F) {
+        f2 = 2.0F;
       }
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
       for (;;)
       {
-        ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        float f1 = 2.0F;
+        try
+        {
+          float f2;
+          DecimalFormat localDecimalFormat = new DecimalFormat("0.00");
+          DecimalFormatSymbols localDecimalFormatSymbols = new DecimalFormatSymbols();
+          localDecimalFormatSymbols.setDecimalSeparator('.');
+          localDecimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
+          f1 = Float.valueOf(localDecimalFormat.format(paramFloat / f2)).floatValue();
+          return f1;
+        }
+        catch (Exception localException2)
+        {
+          float f1;
+          ViolaLogUtils.e(TAG, "[px2dip]: " + localException2.getMessage());
+        }
+        localException1 = localException1;
+        ViolaLogUtils.e(TAG, "Exception e:" + localException1.getMessage());
+        f1 = 2.0F;
       }
     }
+    return paramFloat;
   }
   
   public static int sp2px(float paramFloat)
@@ -532,7 +543,7 @@ public class FlexConvertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexConvertUtils
  * JD-Core Version:    0.7.0.1
  */

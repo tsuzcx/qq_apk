@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
-class alui
-  implements Comparator<HotChatItemData>
+public class alui
+  extends niv
 {
-  alui(alug paramalug) {}
+  alui(aluh paramaluh) {}
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
-    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
-    if (l1 < l2) {
-      return 1;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alui
  * JD-Core Version:    0.7.0.1
  */

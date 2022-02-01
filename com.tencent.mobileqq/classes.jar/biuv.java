@@ -1,40 +1,65 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-class biuv
-  implements ServiceConnection
+public class biuv
+  extends SQLiteOpenHelper
 {
-  biuv(biup parambiup) {}
+  protected static biuv a;
+  protected String a;
+  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
+  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected biuv(Context paramContext)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Biuw = biux.a(paramIBinder);
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
-    }
-    paramComponentName = (ambq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10);
-    this.a.a(paramComponentName.a(), paramComponentName.d(), paramComponentName.e(), paramComponentName.f(), paramComponentName.a());
-    biup.d(this.a);
+    super(paramContext, "open_report.db", null, 3);
+    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static biuv a(Context paramContext)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(biup.a(this.a));
-    this.a.jdField_a_of_type_Biuw = null;
-    this.a.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
+    try
+    {
+      if (jdField_a_of_type_Biuv == null) {
+        jdField_a_of_type_Biuv = new biuv(paramContext);
+      }
+      paramContext = jdField_a_of_type_Biuv;
+      return paramContext;
     }
+    finally {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    bisy.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
+    bisy.b("opensdk", "sql2:" + this.b);
+    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
+    paramSQLiteDatabase.execSQL(this.b);
+    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
+    paramSQLiteDatabase.execSQL(this.c);
+  }
+  
+  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biuv
  * JD-Core Version:    0.7.0.1
  */

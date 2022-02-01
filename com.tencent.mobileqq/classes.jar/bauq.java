@@ -1,80 +1,83 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.media.MediaMetadataRetriever;
 
-class bauq
-  implements ITransactionCallback
+public class bauq
 {
-  bauq(bauo parambauo, String paramString, long paramLong) {}
+  private static String a = "MediaUtil";
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  @TargetApi(10)
+  public static long a(String paramString)
   {
-    this.jdField_a_of_type_Bauo.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bauo.b);
-    this.jdField_a_of_type_Bauo.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    SystemClock.uptimeMillis();
+    long l1 = 0L;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
     try
     {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has())
-      {
-        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
-        if (paramArrayOfByte.length() > 0)
-        {
-          this.jdField_a_of_type_Bauo.f = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("LightVideoUploadProcessor", 2, "set uuid from BDH ");
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. ,fileSize:" + this.jdField_a_of_type_Bauo.jdField_a_of_type_Bass.jdField_a_of_type_Long);
-      }
-      this.jdField_a_of_type_Bauo.s = this.jdField_a_of_type_Bauo.q;
-      this.jdField_a_of_type_Bauo.d(1007);
-      this.jdField_a_of_type_Bauo.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
-      }
-      bdhb.d(this.jdField_a_of_type_JavaLangString);
-      return;
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
     }
-    catch (Exception paramArrayOfByte)
+    catch (RuntimeException localRuntimeException)
+    {
+      long l2;
+      yqp.c(a, "getVideoDuration path=" + paramString + " exists=" + zkr.e(paramString), localRuntimeException);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    catch (Error localError)
+    {
+      label32:
+      yqp.c(a, "getVideoDuration path=" + paramString + " exists=" + zkr.e(paramString), localError);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    try
+    {
+      l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+      break label32;
+    }
+    localMediaMetadataRetriever.release();
+    return l1;
+  }
+  
+  @TargetApi(10)
+  public static Bitmap a(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    if (!zkr.e(paramString))
+    {
+      yqp.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
+      return null;
+    }
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    long l = paramInt * 1000;
+    try
+    {
+      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
+      localMediaMetadataRetriever.release();
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
     {
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("LightVideoUploadProcessor", 2, "get uuid from BDH error", paramArrayOfByte);
-        }
+        yqp.c(a, "getFrameAtTime", paramString);
+        paramString = localObject;
       }
     }
   }
   
-  public void onSwitch2BackupChannel()
+  public static void a(String paramString1, String paramString2)
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Bauo.d("<BDH_LOG> onSwitch2BackupChannel()");
-    this.jdField_a_of_type_Bauo.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
-  }
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    bauo localbauo = this.jdField_a_of_type_Bauo;
-    bass localbass = this.jdField_a_of_type_Bauo.jdField_a_of_type_Bass;
-    long l = paramInt;
-    localbass.e = l;
-    localbauo.s = l;
-    if ((paramInt < this.jdField_a_of_type_Bauo.q) && (!this.jdField_a_of_type_Bauo.o) && (!this.jdField_a_of_type_Bauo.k)) {
-      this.jdField_a_of_type_Bauo.i();
+    paramString1 = a(paramString1, 0);
+    if (paramString1 != null) {
+      zkh.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
     }
   }
 }

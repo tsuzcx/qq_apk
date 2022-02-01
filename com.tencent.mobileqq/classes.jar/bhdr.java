@@ -1,68 +1,72 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
-import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.IVasLog;
 
 public class bhdr
-  extends bhdw
+  implements IVasLog
 {
-  private INTERFACE.StGetUserSettingReq a = new INTERFACE.StGetUserSettingReq();
-  
-  public bhdr(String paramString1, String paramString2, String paramString3)
+  public void d(String paramString1, String paramString2)
   {
-    this.a.appid.set(paramString1);
-    this.a.openid.set(paramString2);
-    this.a.settingItem.set(paramString3);
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  protected String a()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return "mini_user_info";
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void e(String paramString1, String paramString2)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
-    try
-    {
-      localStGetUserSettingRsp.mergeFrom(a(paramArrayOfByte));
-      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
-        paramArrayOfByte.put("desc", localStGetUserSettingRsp.setting.desc.get());
-        paramArrayOfByte.put("authState", localStGetUserSettingRsp.setting.authState.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  protected byte[] a()
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.a.toByteArray();
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
   }
   
-  protected String b()
+  public void i(String paramString1, String paramString2)
   {
-    return "GetUserSetting";
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdr
  * JD-Core Version:    0.7.0.1
  */

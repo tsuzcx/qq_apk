@@ -1,24 +1,69 @@
-import java.util.Comparator;
+import android.content.Intent;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class ujt
-  implements Comparator<uja>
+public class ujt
+  extends MSFServlet
 {
-  ujt(ujs paramujs) {}
-  
-  public int a(uja paramuja1, uja paramuja2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramuja1.b == paramuja2.b) {
-      return 0;
+    if (paramIntent == null) {
+      Log.e("weishi", "***onReceive request is null");
     }
-    if (paramuja1.b > paramuja2.b) {
-      return 1;
+    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
+      return;
     }
-    return -1;
+    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
+    {
+      Log.e("weishi", "onSend request is null");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if ((paramIntent instanceof WeishiIntent))
+        {
+          uju localuju = ((WeishiIntent)paramIntent).a;
+          ujr localujr = localuju.a;
+          byte[] arrayOfByte2 = localujr.encode();
+          byte[] arrayOfByte1 = arrayOfByte2;
+          if (arrayOfByte2 == null)
+          {
+            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localuju.a.uniKey());
+            arrayOfByte1 = new byte[4];
+          }
+          paramPacket.setTimeout(30000L);
+          Log.e("timeout", "timeout:30000");
+          paramPacket.setSSOCommand("SQQzoneSvc." + localuju.a.c());
+          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localuju.a.c());
+          localujr.d = arrayOfByte1.length;
+          paramPacket.putSendData(arrayOfByte1);
+          Log.i("weishi-Servlet", "onSend request cmd=" + localuju.a.uniKey() + " is correct");
+          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
+        return;
+      }
+      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ujt
  * JD-Core Version:    0.7.0.1
  */

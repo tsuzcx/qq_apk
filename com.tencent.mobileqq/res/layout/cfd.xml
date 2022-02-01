@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/gdy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/knw" android:layout_width="175.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/avk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:id="@id/dxz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/wdm" android:layout_below="@id/avk" />
+    <LinearLayout android:id="@id/nm5" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/nm6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:id="@id/nm7" android:visibility="visible" android:layout_width="15.0dip" android:layout_height="7.0dip" android:src="@drawable/h18" />
 </LinearLayout>

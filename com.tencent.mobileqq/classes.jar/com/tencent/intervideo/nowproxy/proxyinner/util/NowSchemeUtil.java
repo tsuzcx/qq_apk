@@ -55,7 +55,7 @@ public class NowSchemeUtil
     }
     if (!TextUtils.isEmpty(paramContext))
     {
-      paramContext = "http://c.gdt.qq.com/gdt_mclick.fcg?" + paramContext;
+      paramContext = "https://c.gdt.qq.com/gdt_mclick.fcg?" + paramContext;
       ThreadManager.getFileThreadHandler().post(new NowSchemeUtil.1(paramContext));
     }
     if (paramString.equalsIgnoreCase("openroom")) {
@@ -281,7 +281,7 @@ public class NowSchemeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.proxyinner.util.NowSchemeUtil
  * JD-Core Version:    0.7.0.1
  */

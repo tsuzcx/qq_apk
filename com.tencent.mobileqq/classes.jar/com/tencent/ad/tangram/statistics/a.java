@@ -1,6 +1,7 @@
 package com.tencent.ad.tangram.statistics;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.landing_page_collect_data.LandingPageCollectData;
@@ -34,10 +35,13 @@ public class a
       AdLog.e("AdReportForAction", "report error");
       return;
     }
-    for (Object localObject1 = parama.ad.getUrlForAction();; localObject1 = null) {
+    Object localObject1 = parama.ad.getUrlForAction();
+    label248:
+    for (;;)
+    {
       try
       {
-        Object localObject2 = ((String)localObject1).replace("__TRACE_ID__", URLEncoder.encode(parama.ad.getTraceId(), "utf-8")).replace("__PAGE_ACTION_ID__", String.valueOf(parama.data.landing_page_action_type));
+        localObject2 = ((String)localObject1).replace("__TRACE_ID__", URLEncoder.encode(parama.ad.getTraceId(), "utf-8")).replace("__PAGE_ACTION_ID__", String.valueOf(parama.data.landing_page_action_type));
         localObject1 = localObject2;
         if (parama.data.latency_ms != -2147483648L) {
           localObject1 = ((String)localObject2).replace("__PAGE_TIME__", String.valueOf(parama.data.latency_ms));
@@ -46,13 +50,18 @@ public class a
         if (parama.data.landing_error_code != -2147483648) {
           localObject2 = ((String)localObject1).replace("__LANDING_ERROR_CODE__", String.valueOf(parama.data.landing_error_code));
         }
-        localObject2 = ((String)localObject2).replace("__OS_TYPE__", String.valueOf(2)).replace("__VERSION__", URLEncoder.encode(AdVersion.getAppVersion(), "utf-8"));
-        AdLog.i("AdReportForAction", "GdtActionReporter report url = " + (String)localObject2);
+        localObject1 = ((String)localObject2).replace("__OS_TYPE__", String.valueOf(2));
+        localObject2 = AdVersion.getAppVersion();
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label248;
+        }
+        localObject1 = ((String)localObject1).replace("__VERSION__", URLEncoder.encode((String)localObject2, "utf-8"));
+        AdLog.i("AdReportForAction", "GdtActionReporter report url = " + (String)localObject1);
         if (parama.context != null)
         {
-          localObject1 = (Context)parama.context.get();
-          AdReporterForAnalysis.reportForActionStatisticsStart((Context)localObject1, parama.ad, (String)localObject2);
-          AdThreadManager.INSTANCE.post(new a.1((String)localObject2, parama), 4);
+          localObject2 = (Context)parama.context.get();
+          AdReporterForAnalysis.reportForActionStatisticsStart((Context)localObject2, parama.ad, (String)localObject1);
+          AdThreadManager.INSTANCE.post(new a.1((String)localObject1, parama), 4);
           return;
         }
       }
@@ -61,12 +70,13 @@ public class a
         AdLog.e("AdReportForAction", "report error", parama);
         return;
       }
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.a
  * JD-Core Version:    0.7.0.1
  */

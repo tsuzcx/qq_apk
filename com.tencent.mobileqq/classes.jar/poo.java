@@ -1,31 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class poo
-  implements ViewBase.OnClickListener
+class poo
+  implements Animation.AnimationListener
 {
-  BaseArticleInfo a;
+  poo(pon parampon) {}
   
-  public poo(BaseArticleInfo paramBaseArticleInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramBaseArticleInfo;
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    rqj.a((ArticleInfo)this.a, (int)this.a.mChannelID);
-    ors.a(localBaseActivity, paramViewBase);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     poo
  * JD-Core Version:    0.7.0.1
  */

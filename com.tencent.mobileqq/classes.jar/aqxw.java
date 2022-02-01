@@ -1,10 +1,46 @@
-public abstract interface aqxw
+import android.support.annotation.NonNull;
+
+public class aqxw
+  extends aqwr<aqxv>
 {
-  public abstract void a(String paramString);
+  @NonNull
+  public static aqxv c()
+  {
+    aqxv localaqxv2 = (aqxv)aqlk.a().a(618);
+    aqxv localaqxv1 = localaqxv2;
+    if (localaqxv2 == null) {
+      localaqxv1 = new aqxv();
+    }
+    return localaqxv1;
+  }
   
-  public abstract void a(String paramString, int paramInt);
+  @NonNull
+  public aqxv a()
+  {
+    return new aqxv();
+  }
   
-  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
+  @NonNull
+  public aqxv a(@NonNull aqlg[] paramArrayOfaqlg)
+  {
+    return aqxv.a(paramArrayOfaqlg[0].a);
+  }
+  
+  @NonNull
+  public aqxv b()
+  {
+    return new aqxv();
+  }
+  
+  public Class<aqxv> clazz()
+  {
+    return aqxv.class;
+  }
+  
+  public int type()
+  {
+    return 618;
+  }
 }
 
 

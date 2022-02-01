@@ -1,14 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adfz
-  implements adgm
+  extends adee
 {
-  public adfz(Leba paramLeba, View paramView, aozs paramaozs) {}
-  
-  public void a()
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_Aozs);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    paramJSONObject = (TicketManager)paramString.getManager(2);
+    paramString = paramString.getAccount();
+    paramJSONObject = paramJSONObject.getSkey(paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uin", paramString);
+      localJSONObject.put("skey", paramJSONObject);
+      adhh.a(paramadea, localJSONObject);
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramJSONObject = paramString.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
+        }
+        paramString = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramString = "";
+        }
+        adhh.a(paramadea, -1, paramString);
+      }
+    }
   }
 }
 

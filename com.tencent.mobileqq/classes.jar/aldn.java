@@ -1,23 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.widget.SingleLineTextView;
 
-class aldn
-  implements aled
+public class aldn
+  extends alcf
 {
-  aldn(aldl paramaldl) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
-      }
-      if (aldl.a(this.a) != null) {
-        aldl.a(this.a).e();
-      }
-      this.a.c();
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public MyGridView a;
+  public SingleLineTextView a;
 }
 
 

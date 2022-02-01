@@ -1,48 +1,17 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xzm
-  implements xyj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public WeakReference<QRDisplayActivity> a;
+  public xzm(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
-    {
-      do
-      {
-        return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-      }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.g();
-      return;
-    }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = ybk.a(paramString, -1);
-    if (paramString != null)
-    {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.f();
-      return;
-    }
-    localQRDisplayActivity.g();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,96 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class zec
-  implements aoil
+  extends zef
 {
-  public zec(NewerGuidePlugin paramNewerGuidePlugin, bhuf parambhuf) {}
+  private final int b;
+  private boolean c;
+  private boolean d;
   
-  public void a()
+  public zec(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
+    super(paramContext, paramString, -1);
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
     }
-    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing())) {
-      this.jdField_a_of_type_Bhuf.dismiss();
+    this.b = i;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(this.a);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
+    paramViewGroup.setBackgroundResource(2130850086);
+    paramInt = -2170912;
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+      paramInt = -16444373;
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    View localView = new View(this.a);
+    Object localObject = new RelativeLayout.LayoutParams(-1, zlx.a(this.a, 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10);
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localView.setBackgroundColor(paramInt);
+    localObject = new View(this.a);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, zlx.a(this.a, 1.0F));
+    localLayoutParams.addRule(12);
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    ((View)localObject).setBackgroundColor(paramInt);
+    paramViewGroup.addView(localView);
+    paramViewGroup.addView((View)localObject);
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView)
+  {
+    View localView = ((ViewGroup)paramView).getChildAt(0);
+    paramView = ((ViewGroup)paramView).getChildAt(1);
+    if (this.c) {
+      localView.setVisibility(0);
+    }
+    while (this.d)
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
+      paramView.setVisibility(0);
       return;
+      localView.setVisibility(4);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
-    }
+    paramView.setVisibility(4);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zec
  * JD-Core Version:    0.7.0.1
  */

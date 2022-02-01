@@ -1,19 +1,10 @@
-import android.view.View;
-
-class bhye
-  implements bhyc
+public abstract interface bhye
 {
-  bhye(bhyd parambhyd) {}
-  
-  public void a(View paramView)
-  {
-    this.a.c(paramView);
-    this.a.c();
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhye
  * JD-Core Version:    0.7.0.1
  */

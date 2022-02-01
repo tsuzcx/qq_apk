@@ -1,29 +1,18 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
 
-public abstract interface bfoj
+public class bfoj
+  extends anxg
 {
-  public abstract void installSucceed(String paramString1, String paramString2);
+  public bfoj(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
   
-  public abstract void onDownloadCancel(DownloadInfo paramDownloadInfo);
-  
-  public abstract void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2);
-  
-  public abstract void onDownloadFinish(DownloadInfo paramDownloadInfo);
-  
-  public abstract void onDownloadPause(DownloadInfo paramDownloadInfo);
-  
-  public abstract void onDownloadUpdate(List<DownloadInfo> paramList);
-  
-  public abstract void onDownloadWait(DownloadInfo paramDownloadInfo);
-  
-  public abstract void packageReplaced(String paramString1, String paramString2);
-  
-  public abstract void uninstallSucceed(String paramString1, String paramString2);
+  public void a(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
+  {
+    TroopAppShortcutContainer.a(this.a, paramBoolean, paramObject1, paramObject2, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfoj
  * JD-Core Version:    0.7.0.1
  */

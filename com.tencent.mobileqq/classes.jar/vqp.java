@@ -1,56 +1,50 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
 public class vqp
-  extends vpa<TroopAssistantHomeFeedPlayInfo>
+  extends zzj
 {
-  public vqp(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
-  {
-    super(paramTroopAssistantHomeFeedPlayInfo);
-    paramTroopAssistantHomeFeedPlayInfo = (woy)uwa.a(11);
-    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
-      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
-    }
-  }
+  private QCircleInitBean a;
+  private boolean b;
   
-  public woq a(String paramString)
+  public vqp(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      woq localwoq = (woq)localIterator.next();
-      if (localwoq.a.equals(paramString)) {
-        return localwoq;
-      }
-    }
-    return null;
+    this.a = paramQCircleInitBean;
+    this.b = paramBoolean;
   }
   
   public void a() {}
   
-  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  public void a(zzp paramzzp)
   {
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
+    QCircleGetFeedListRequest localQCircleGetFeedListRequest;
+    if ((this.a != null) && (this.a.getTagInfo() != null) && ((!TextUtils.isEmpty(this.a.getTagInfo().tagId.get())) || (!TextUtils.isEmpty(this.a.getTagInfo().tagName.get()))))
     {
-      List localList = b((List)localObject);
-      paramvps.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
+      localQCircleGetFeedListRequest = new QCircleGetFeedListRequest(this.a.getTagInfo().tagId.get(), this.a.getTagInfo().tagName.get(), this.b, null, null);
+      paramzzp = new vqq(this, localQCircleGetFeedListRequest, paramzzp);
+      if (!this.b) {
+        break label179;
+      }
+      localQCircleGetFeedListRequest.setEnableCache(false);
     }
-    localObject = new vgf();
-    ((vgf)localObject).a = this.a.a();
-    wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vgf)localObject).a);
-    urp.a().a((urt)localObject, new vqq(this, paramvps));
+    for (;;)
+    {
+      VSNetworkHelper.a().a(localQCircleGetFeedListRequest, paramzzp);
+      QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetFeedListRequest.getCmdName() + "| TraceId:" + localQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + localQCircleGetFeedListRequest.getCurrentSeq());
+      return;
+      label179:
+      localQCircleGetFeedListRequest.setEnableCache(true);
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqp
  * JD-Core Version:    0.7.0.1
  */

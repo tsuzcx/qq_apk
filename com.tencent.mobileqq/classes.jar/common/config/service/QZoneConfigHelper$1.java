@@ -1,11 +1,11 @@
 package common.config.service;
 
-import bilm;
+import bkyy;
 
 public final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bilm parambilm) {}
+  public QZoneConfigHelper$1(bkyy parambkyy) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public final class QZoneConfigHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     common.config.service.QZoneConfigHelper.1
  * JD-Core Version:    0.7.0.1
  */

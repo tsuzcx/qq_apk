@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public final class acjv
-  implements DialogInterface.OnCancelListener
+public class acjv
+  implements AdReportAdapter
 {
-  public acjv(aclo paramaclo, acln paramacln) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
   {
-    if (this.jdField_a_of_type_Aclo.a) {
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
+      return;
     }
-    if (this.jdField_a_of_type_Acln != null) {
-      this.jdField_a_of_type_Acln.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    acsl.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
+    acsl.a().a((GdtAd)paramAd, paramInt, paramBoolean);
+  }
+  
+  public AdRefreshCallback getAdReportAdapter()
+  {
+    return acsl.a();
   }
 }
 

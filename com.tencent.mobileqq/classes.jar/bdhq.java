@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class bdhq
-  implements acln
+final class bdhq
+  implements DialogInterface.OnClickListener
 {
-  bdhq(bdhk parambdhk) {}
+  bdhq(Context paramContext, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((BaseActivity)this.a.a).finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    ((BaseActivity)this.a.a).finish();
+    try
+    {
+      atvo.c(this.jdField_a_of_type_AndroidContentContext, arag.a().a());
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.triton.audio.AudioHandleThread;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,7 +22,7 @@ class WebAudioManager$6
       if (this.val$jsRuntime != null) {
         this.val$jsRuntime.evaluateSubcribeJS("onWebAudioScriptProcessorAudioProcess", localJSONObject.toString(), 0);
       }
-      AudioHandleThread.getInstance().postDelayed(this, this.val$interval);
+      ThreadManager.getSubThreadHandler().postDelayed(this, this.val$interval);
       return;
     }
     catch (JSONException localJSONException)
@@ -35,7 +36,7 @@ class WebAudioManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager.6
  * JD-Core Version:    0.7.0.1
  */

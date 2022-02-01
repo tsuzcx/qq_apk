@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.49.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
-class adzu
-  implements DialogInterface.OnClickListener
+public class adzu
+  extends BroadcastReceiver
 {
-  adzu(adzt paramadzt, bacu parambacu, Pair paramPair) {}
+  public adzu(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bacu.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bacu.a(this.jdField_a_of_type_Adzt.a.app))
-    {
-      this.jdField_a_of_type_Adzt.a.setTitle("");
-      bact.a(this.jdField_a_of_type_Adzt.a.app, this.jdField_a_of_type_Adzt.a, null);
-    }
-    this.jdField_a_of_type_Adzt.a.finish();
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Akyh.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Akyh.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Akyh.a(20, 2);
+    this.a.jdField_a_of_type_Akyh.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.49.1(this), i);
+    bcst.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

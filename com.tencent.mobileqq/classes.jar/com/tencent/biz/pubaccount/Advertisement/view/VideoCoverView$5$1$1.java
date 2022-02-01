@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
-import nms;
+import nvp;
 
 public class VideoCoverView$5$1$1
   implements Runnable
 {
-  public VideoCoverView$5$1$1(nms paramnms) {}
+  public VideoCoverView$5$1$1(nvp paramnvp) {}
   
   public void run()
   {

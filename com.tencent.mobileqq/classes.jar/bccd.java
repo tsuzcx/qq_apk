@@ -1,20 +1,49 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bccd
-  implements benw
+  extends MSFServlet
 {
-  public bccd(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
+      }
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
-class ahxj
-  implements DialogInterface.OnClickListener
+public class ahxj
+  extends ahxe
 {
-  ahxj(ahww paramahww, boolean paramBoolean, String paramString) {}
+  public AnimationView.AnimationInfo a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahxj(String paramString)
   {
-    azqs.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ahww.a(this.jdField_a_of_type_Ahww), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false);
-      return;
+      this.b = paramRedPacketInfo.background;
+      this.a = paramRedPacketInfo.animInfo;
     }
-    ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a()
+  {
+    return (this.b != null) || (this.a != null);
   }
 }
 

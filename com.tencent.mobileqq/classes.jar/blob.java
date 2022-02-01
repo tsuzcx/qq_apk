@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
 class blob
-  implements View.OnClickListener
+  implements ReaderJsCallback
 {
-  blob(bloa parambloa, AEEditorFilterBean paramAEEditorFilterBean, int paramInt) {}
+  blob(blnz paramblnz) {}
   
-  public void onClick(View paramView)
+  public void onCallback(String paramString1, String paramString2) {}
+  
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
   {
-    paramView = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean;
-    boolean bool = true;
-    if (bloa.a(this.jdField_a_of_type_Bloa) != null) {
-      bool = bloa.a(this.jdField_a_of_type_Bloa).a(this.jdField_a_of_type_Int, paramView);
-    }
-    if (bool)
-    {
-      bloa.a(this.jdField_a_of_type_Bloa, this.jdField_a_of_type_Int);
-      int i = bloa.a(this.jdField_a_of_type_Bloa);
-      bloa.a(this.jdField_a_of_type_Bloa, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bloa.notifyItemChanged(i);
-      this.jdField_a_of_type_Bloa.notifyItemChanged(bloa.a(this.jdField_a_of_type_Bloa));
-    }
+    paramReaderBaseWebViewPlugin.init(blnz.a(this.a), null);
   }
 }
 

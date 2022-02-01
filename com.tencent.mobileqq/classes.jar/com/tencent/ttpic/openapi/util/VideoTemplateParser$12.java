@@ -1,13 +1,19 @@
 package com.tencent.ttpic.openapi.util;
 
-import com.google.gson.reflect.TypeToken;
+import android.util.Pair;
+import java.util.Comparator;
 
 final class VideoTemplateParser$12
-  extends TypeToken<FramePositionsBean>
-{}
+  implements Comparator<Pair<Float, Double>>
+{
+  public int compare(Pair<Float, Double> paramPair1, Pair<Float, Double> paramPair2)
+  {
+    return ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.12
  * JD-Core Version:    0.7.0.1
  */

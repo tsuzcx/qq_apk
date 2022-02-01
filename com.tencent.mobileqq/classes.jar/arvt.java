@@ -1,199 +1,170 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.7.1;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticon.SogouEmoji.3;
+import com.tencent.mobileqq.emoticon.SogouEmoji.4;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class arvt
-  implements View.OnClickListener
 {
-  public arvt(SendBottomBar paramSendBottomBar) {}
+  public static String a;
+  public static String b;
+  int jdField_a_of_type_Int = 0;
+  anlb jdField_a_of_type_Anlb;
+  anlc jdField_a_of_type_Anlc = new arvx(this);
+  public arup a;
+  public arvd a;
+  public arvy a;
+  public awmr a;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public int b;
   
-  private void a()
+  static
   {
-    if (bcnt.a(SendBottomBar.a(this.a)) == 0)
-    {
-      bcmp.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131698042));
-      this.a.c();
+    jdField_a_of_type_JavaLangString = "taskId";
+    jdField_b_of_type_JavaLangString = "exprId";
+  }
+  
+  public arvt(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_Arvd = new arvu(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor begins");
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_Awmr = ((awmr)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(14));
+    this.jdField_a_of_type_Arup = ((arup)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(43));
+    this.jdField_a_of_type_Anlb = ((anlb)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.a(12));
+    this.jdField_a_of_type_Arvy = new arvy(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor ends");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.addObserver(this.jdField_a_of_type_Anlc);
+  }
+  
+  private boolean a(String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func" + paramString + " ends, maybe chatActivity is finished.");
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  public ArrayList<Emoticon> a(ArrayList<Emoticon> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon begins");
+    }
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return localArrayList;
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      Emoticon localEmoticon = (Emoticon)paramArrayList.next();
+      if (!localEmoticon.hasEncryptKey()) {
+        localArrayList.add(localEmoticon);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon ends, size:" + localArrayList.size());
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor begins");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null))
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app;
+      if (localQQAppInterface != null) {
+        localQQAppInterface.removeObserver(this.jdField_a_of_type_Anlc);
+      }
+    }
+    if (this.jdField_a_of_type_Arvy != null) {
+      this.jdField_a_of_type_Arvy.a();
+    }
+    aruo.a().b(this.jdField_a_of_type_Arvd);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor ends");
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func trySend begins, packId:" + paramInt + ",exprId:" + paramString);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getApplicationContext())))
+    {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131693946, 0).a();
+      return;
+    }
+    this.jdField_a_of_type_Awmr.a(Integer.toString(paramInt), paramString, new arvv(this, paramInt, paramString));
+  }
+  
+  void a(Emoticon paramEmoticon)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func sendEmoji begins, mCurTaskId:" + this.jdField_b_of_type_Int + ",emoticon:" + paramEmoticon);
+    }
+    this.jdField_a_of_type_Arvy.c();
+    this.jdField_a_of_type_Arvy.a(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Arvy.b();
+    if (!a("sendEmoji")) {
+      return;
+    }
+    asbq localasbq = new asbq(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getCurrentAccountUin());
+    localasbq.c = 6;
+    localasbq.a = paramEmoticon;
+    this.jdField_a_of_type_Awmr.a(paramEmoticon.epId, new arvw(this, localasbq));
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramString1 = new SogouEmoji.3(this, paramString1, paramString2, paramBoolean);
+    ThreadManager.getFileThreadHandler().post(paramString1);
+  }
+  
+  public void a(String paramString, ArrayList<Emoticon> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func getPackEmojiKey begins, packId:" + paramString);
+    }
+    if (!a("getPackEmojiKey")) {}
     do
     {
       return;
-      if (!arrr.a()) {
-        break;
+      String str = Integer.toString(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += 1;
+      if (arpm.a(paramString)) {
+        this.jdField_a_of_type_Anlb.a(Integer.parseInt(paramString), paramArrayList, str);
       }
-    } while (!bezm.a((Activity)SendBottomBar.a(this.a), 2, new arvw(this)));
-    Object localObject = new arvx(this);
-    String str = SendBottomBar.a(this.a).getString(2131697830);
-    localObject = bdgm.a(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131698039), str, 2131690648, 2131698230, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
-    if ((aoul.c().b.a) && (!beav.a().b())) {
-      ((bdjz)localObject).setMessageWithoutAutoLink(aoul.c().b.a(SendBottomBar.a(this.a), str));
-    }
-    ((bdjz)localObject).show();
-    return;
-    this.a.c();
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func getPackEmojiKey ends");
   }
   
-  public void onClick(View paramView)
+  public void a(List<String> paramList)
   {
-    if (SendBottomBar.a(this.a)) {
-      return;
-    }
-    SendBottomBar.a(this.a, true);
-    new Handler().postDelayed(new SendBottomBar.7.1(this), 800L);
-    int i = 4;
-    if (SendBottomBar.a(this.a).a() == 1)
-    {
-      i = 2;
-      label60:
-      paramView = SendBottomBar.a(this.a).a();
-      if ((TextUtils.isEmpty(paramView)) || (!paramView.equals(alof.z))) {
-        break label772;
-      }
-      i = 3;
-    }
-    label769:
-    label772:
-    for (;;)
-    {
-      long l = arbs.b();
-      azqs.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
-      Object localObject;
-      switch (SendBottomBar.a(this.a).b())
-      {
-      case 2: 
-      case 3: 
-      case 4: 
-      case 6: 
-      default: 
-        if (!AppNetConnInfo.isNetSupport())
-        {
-          arri.a(2131694702);
-          return;
-          if (SendBottomBar.a(this.a).a() != 0) {
-            break label60;
-          }
-          i = 1;
-        }
-        break;
-      case 7: 
-        if (SendBottomBar.a(this.a).c())
-        {
-          paramView = new ArrayList();
-          paramView.addAll(arbs.a());
-          localObject = new Intent();
-          ((Intent)localObject).putParcelableArrayListExtra("reslut_select_file_info_list", paramView);
-          ((Intent)localObject).putExtra("approval_attachment_customid", SendBottomBar.a(this.a).f());
-          SendBottomBar.a(this.a).setResult(-1, (Intent)localObject);
-        }
-        SendBottomBar.a(this.a).finish();
-        return;
-      case 1: 
-        SendBottomBar.b(this.a);
-        return;
-      case 5: 
-        if ((arrr.a()) && (arbs.c() > arbp.a()))
-        {
-          arre.a(SplashActivity.sTopActivity, 2131692754, 2131692759, new arvu(this));
-          return;
-        }
-        paramView = new ArrayList();
-        paramView.addAll(arbs.a());
-        localObject = new Intent();
-        ((Intent)localObject).putParcelableArrayListExtra("sFilesSelected", paramView);
-        SendBottomBar.a(this.a).setResult(-1, (Intent)localObject);
-        SendBottomBar.a(this.a).finish();
-        return;
-      case 8: 
-        paramView = SendBottomBar.a(this.a).getIntent();
-        if (paramView == null) {
-          break;
-        }
-        if (paramView.getStringExtra("posturl") != null)
-        {
-          localObject = new ArrayList();
-          ((ArrayList)localObject).addAll(arbs.a());
-          paramView.putParcelableArrayListExtra("fileinfo", (ArrayList)localObject);
-          SendBottomBar.a(this.a).setResult(-1, paramView);
-          SendBottomBar.a(this.a).finish();
-          return;
-        }
-        SendBottomBar.a(this.a).setResult(-1, paramView);
-        SendBottomBar.a(this.a).finish();
-        return;
-      case 9: 
-        this.a.b();
-        return;
-        int k = SendBottomBar.a(this.a).a();
-        if (k == 1) {}
-        for (i = 1; k == 5; i = 0)
-        {
-          this.a.c();
-          return;
-        }
-        if (i != 0)
-        {
-          a();
-          return;
-        }
-        if (SendBottomBar.a(this.a).i())
-        {
-          localObject = arbs.a();
-          paramView = arbs.b();
-          int j = 0;
-          localObject = ((Set)localObject).iterator();
-          FileInfo localFileInfo;
-          do
-          {
-            i = j;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localFileInfo = (FileInfo)((Iterator)localObject).next();
-          } while ((localFileInfo.a() <= 20971520L) || (!arbs.b(localFileInfo)));
-          i = 1;
-          if (i != 0) {
-            break label769;
-          }
-          paramView = paramView.iterator();
-          while (paramView.hasNext())
-          {
-            localObject = (FileManagerEntity)paramView.next();
-            if ((((FileManagerEntity)localObject).fileSize > 20971520L) && (arbs.b((FileManagerEntity)localObject))) {
-              i = 1;
-            }
-          }
-        }
-        for (;;)
-        {
-          if (i != 0)
-          {
-            arrp.a("0X800942E");
-            paramView = bdgm.a(SendBottomBar.a(this.a), 2131698507);
-            paramView.setPositiveButton(2131720972, new arvv(this, k));
-            paramView.show();
-            return;
-          }
-          this.a.a(k);
-          return;
-          this.a.a(k);
-          return;
-        }
-      }
-    }
+    paramList = new SogouEmoji.4(this, paramList);
+    ThreadManager.getFileThreadHandler().post(paramList);
   }
 }
 

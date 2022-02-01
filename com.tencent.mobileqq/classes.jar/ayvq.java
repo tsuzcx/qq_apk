@@ -1,92 +1,109 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
+import com.tencent.mobileqq.statistics.Reporting;
 
 public class ayvq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends OGAbstractDao
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final List<ayvr> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 200;
-  
-  public ayvq(View paramView)
+  public ayvq()
   {
-    this(paramView, false);
+    this.columnLen = 6;
   }
   
-  public ayvq(View paramView, boolean paramBoolean)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramEntity = (Reporting)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      ayvr localayvr = (ayvr)localIterator.next();
-      if (localayvr != null) {
-        localayvr.onSoftKeyboardClosed();
+      paramEntity.mTag = paramCursor.getString(paramCursor.getColumnIndex("mTag"));
+      paramEntity.mDetail = paramCursor.getString(paramCursor.getColumnIndex("mDetail"));
+      paramEntity.mCount = paramCursor.getInt(paramCursor.getColumnIndex("mCount"));
+      paramEntity.mLockedCount = paramCursor.getInt(paramCursor.getColumnIndex("mLockedCount"));
+      paramEntity.mSeqKey = paramCursor.getInt(paramCursor.getColumnIndex("mSeqKey"));
+      paramEntity.mDetailHashCode = paramCursor.getInt(paramCursor.getColumnIndex("mDetailHashCode"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("mTag");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mTag", String.class));
+      i = paramCursor.getColumnIndex("mDetail");
+      if (i != -1) {
+        break label345;
       }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ayvr localayvr = (ayvr)localIterator.next();
-      if (localayvr != null) {
-        localayvr.onSoftKeyboardOpened(paramInt);
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mDetail", String.class));
+      label188:
+      i = paramCursor.getColumnIndex("mCount");
+      if (i != -1) {
+        break label360;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mCount", Integer.TYPE));
+      label223:
+      i = paramCursor.getColumnIndex("mLockedCount");
+      if (i != -1) {
+        break label375;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mLockedCount", Integer.TYPE));
+      label258:
+      i = paramCursor.getColumnIndex("mSeqKey");
+      if (i != -1) {
+        break label390;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mSeqKey", Integer.TYPE));
     }
-  }
-  
-  public void a(ayvr paramayvr)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramayvr);
-  }
-  
-  public void b(ayvr paramayvr)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramayvr);
-  }
-  
-  public void onGlobalLayout()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - (localRect.bottom - localRect.top) - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("SoftKeyboardStateHelper", 2, "onGlobalLayout , activityRootView.Height = " + this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (i > this.b))
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = true;
-      a(i);
+      i = paramCursor.getColumnIndex("mDetailHashCode");
+      if (i != -1) {
+        break label405;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mDetailHashCode", Integer.TYPE));
+      return paramEntity;
+      paramEntity.mTag = paramCursor.getString(i);
+      break;
+      label345:
+      paramEntity.mDetail = paramCursor.getString(i);
+      break label188;
+      label360:
+      paramEntity.mCount = paramCursor.getInt(i);
+      break label223;
+      label375:
+      paramEntity.mLockedCount = paramCursor.getInt(i);
+      break label258;
+      label390:
+      paramEntity.mSeqKey = paramCursor.getInt(i);
     }
-    while ((!this.jdField_a_of_type_Boolean) || (i >= this.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    label405:
+    paramEntity.mDetailHashCode = paramCursor.getInt(i);
+    return paramEntity;
+  }
+  
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (Reporting)paramEntity;
+    paramContentValues.put("mTag", paramEntity.mTag);
+    paramContentValues.put("mDetail", paramEntity.mDetail);
+    paramContentValues.put("mCount", Integer.valueOf(paramEntity.mCount));
+    paramContentValues.put("mLockedCount", Integer.valueOf(paramEntity.mLockedCount));
+    paramContentValues.put("mSeqKey", Integer.valueOf(paramEntity.mSeqKey));
+    paramContentValues.put("mDetailHashCode", Integer.valueOf(paramEntity.mDetailHashCode));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,mTag TEXT ,mDetail TEXT ,mCount INTEGER ,mLockedCount INTEGER ,mSeqKey INTEGER ,mDetailHashCode INTEGER,UNIQUE(mTag, mDetail) ON CONFLICT IGNORE)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayvq
  * JD-Core Version:    0.7.0.1
  */

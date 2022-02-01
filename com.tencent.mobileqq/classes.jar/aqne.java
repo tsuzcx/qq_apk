@@ -1,24 +1,36 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
-public class aqne
-  implements arrh
+class aqne
+  extends aqnd
 {
-  public aqne(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private String a;
   
-  public void a()
+  public aqne(String paramString)
   {
-    UniformDownloadActivity.a(this.a);
+    this.a = paramString;
   }
   
-  public void b()
+  public Object a(Object paramObject)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqne
  * JD-Core Version:    0.7.0.1
  */

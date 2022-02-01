@@ -1,70 +1,68 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqmx
-  implements artx
+  extends aqmv
 {
-  public aqmx(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public aqmp a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
+    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    for (;;)
+    {
+      try
+      {
+        aqni localaqni = (aqni)aqlu.a(paramString, aqni.class);
+        aqns localaqns;
+        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException1)
+      {
+        try
+        {
+          localaqns = (aqns)aqlu.a(paramString, aqns.class);
+          return new aqmr(paramString, localaqni, localaqns);
+        }
+        catch (QStorageInstantiateException localQStorageInstantiateException2)
+        {
+          Object localObject;
+          break label71;
+        }
+        localQStorageInstantiateException1 = localQStorageInstantiateException1;
+        localaqni = null;
+      }
+      label71:
+      localObject = null;
     }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(aqmp paramaqmp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
+    super.a(paramaqmp);
+    if (paramaqmp == null) {
+      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
     }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
+    apme localapme;
+    do
+    {
+      return;
+      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramaqmp.a());
+      localapme = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(121)).a();
+      paramaqmp = paramaqmp.a();
+    } while (paramaqmp == null);
+    localapme.a(paramaqmp.a());
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
-    azqs.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
+    return 186;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmx
  * JD-Core Version:    0.7.0.1
  */

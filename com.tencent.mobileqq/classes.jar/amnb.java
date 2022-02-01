@@ -1,42 +1,38 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amnb
-  implements View.OnTouchListener
+public class amnb
+  extends amss
 {
-  amnb(ammy paramammy, ImageView paramImageView) {}
+  public amnb(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    switch (paramInt)
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    for (;;)
+    do
     {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnb
  * JD-Core Version:    0.7.0.1
  */

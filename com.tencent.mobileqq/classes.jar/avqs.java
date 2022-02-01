@@ -1,38 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
 
 public class avqs
-  implements bhtv
+  implements bgis
 {
-  public avqs(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public avqs(UiApiPlugin.8 param8) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(Bitmap paramBitmap)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
-      {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
-        }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
-      }
-    }
+    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqs
  * JD-Core Version:    0.7.0.1
  */

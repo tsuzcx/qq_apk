@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForLongMsg;
 
-public final class ahbz
-  implements Parcelable.Creator<ZhituResponse>
+class ahbz
+  implements DialogInterface.OnClickListener
 {
-  public ZhituResponse a(Parcel paramParcel)
-  {
-    return new ZhituResponse(paramParcel);
-  }
+  ahbz(ahbx paramahbx, MessageForLongMsg paramMessageForLongMsg) {}
   
-  public ZhituResponse[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ZhituResponse[paramInt];
+    adrm.a(this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahbx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
   }
 }
 

@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.mini.appbrand.worker;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.ServiceWebview;
+import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.JsContext;
 import com.tencent.smtt.sdk.JsVirtualMachine;
@@ -231,7 +233,12 @@ public class MiniAppWorker
       QLog.e("miniapp-worker", 1, "[loadExecutedAppConfig] failed : empty apkginfo");
       return false;
     }
-    evaluteJs(String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=JSON.parse('%1$s');Object.assign(__qqConfig, __tempConfig);", new Object[] { paramApkgInfo.mConfigStr }), new MiniAppWorker.3(this));
+    String str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=JSON.parse('%1$s');Object.assign(__qqConfig, __tempConfig);", new Object[] { paramApkgInfo.mConfigStr });
+    String str1 = str2;
+    if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
+      str1 = str2 + "__qqConfig.debug=true;";
+    }
+    evaluteJs(str1, new MiniAppWorker.3(this));
     return true;
   }
   
@@ -282,7 +289,7 @@ public class MiniAppWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.worker.MiniAppWorker
  * JD-Core Version:    0.7.0.1
  */

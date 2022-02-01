@@ -1,112 +1,102 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bioj
-  extends Observable
-  implements Manager
+  extends SSOAccountObserver
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public bioj(SwitchAccountActivity paramSwitchAccountActivity) {}
   
-  public bioj(AppInterface paramAppInterface)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new biok(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
-  }
-  
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
-  {
-    if (paramArrayList == null) {}
-    do
-    {
-      do
-      {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
-    }
-    return paramArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "reportRedTouchClick", localBundle);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("appId", paramInt);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "isLebaItemOpen", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).code == 0)
-      {
-        bool1 = bool2;
-        if (((EIPCResult)localObject).data != null) {
-          bool1 = ((EIPCResult)localObject).data.getBoolean("isLebaItemOpen", false);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public void onDestroy()
-  {
-    super.deleteObservers();
+    this.a.e();
+    String str = paramBundle.getString("error");
     try
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-      return;
+      paramInt1 = paramBundle.getInt("code");
+      biuo.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
+      if (paramInt2 == -1000) {
+        this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, this.a.getResources().getString(2131694142));
+      }
+      for (;;)
+      {
+        paramInt1 = paramBundle.getInt("code");
+        QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bipr.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
+        return;
+        if ((paramInt2 == 1) || (paramInt2 == -1004))
+        {
+          this.a.b();
+        }
+        else
+        {
+          Object localObject1 = (ErrMsg)paramBundle.getParcelable("lastError");
+          if (localObject1 == null) {
+            break;
+          }
+          localObject1 = ((ErrMsg)localObject1).getMessage();
+          Object localObject3;
+          if (localObject1 != null)
+          {
+            localObject3 = localObject1;
+            if (((String)localObject1).length() != 0) {}
+          }
+          else
+          {
+            localObject3 = this.a.getString(2131718945);
+          }
+          this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, (String)localObject3);
+        }
+      }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        localException.printStackTrace();
+        continue;
+        Object localObject2 = null;
       }
     }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
+      bivh.a(paramString, System.currentTimeMillis());
+    }
+    this.a.e();
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    this.a.a(paramString, str, paramBundle);
+    paramInt = paramBundle.getInt("code");
+    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bipr.a(paramString) + " | ret : success | code: " + paramInt);
+    try
+    {
+      biuo.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, 0, Long.parseLong(paramString), "1000069", null);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SwitchAccountActivity", 2, "report login error : " + paramString.toString());
+    }
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    this.a.e();
+    paramInt = paramBundle.getInt("code");
+    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bipr.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bioj
  * JD-Core Version:    0.7.0.1
  */

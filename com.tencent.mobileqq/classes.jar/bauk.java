@@ -1,409 +1,161 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import mqq.manager.ProxyIpManager;
-import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.opengl.GLES20;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import java.io.IOException;
 
 public class bauk
-  extends bara
-  implements bauf
+  extends bauh
 {
-  String[] a;
-  String e;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
+  private float jdField_a_of_type_Float = 30.0F;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private int d = -1;
+  private int e;
   
-  public bauk(bayf parambayf, bayk parambayk)
+  public bauk()
   {
-    super(parambayf, parambayk);
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mTextureType = 3553;
+    this.mFilterType = 106;
   }
   
-  private cmd0x346.ReqBody a()
+  public void a(float paramFloat)
   {
-    int j = 17;
-    cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
-    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString));
-    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Bayk.e));
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(1000);
-    localReqBody.uint32_seq.set(0);
-    int i;
-    if ("ftn".equals(this.d)) {
-      i = 3;
-    }
-    for (;;)
-    {
-      localReqBody.uint32_business_id.set(i);
-      localReqBody.uint32_client_type.set(104);
-      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
-      return localReqBody;
-      i = j;
-      if ("pttcenter".equals(this.d)) {
-        i = j;
-      }
-    }
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  private void h()
+  public void a(Bitmap paramBitmap)
   {
-    b("setSuccess", "req");
-    String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    if ("pttcenter".equals(this.d)) {
-      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    }
-    bavq localbavq;
-    for (;;)
-    {
-      cmd0x346.ReqBody localReqBody = a();
-      localbavq = new bavq();
-      localbavq.jdField_a_of_type_JavaLangString = str;
-      localbavq.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
-      localbavq.c = 1;
-      localbavq.jdField_a_of_type_Int = 30000;
-      localbavq.jdField_b_of_type_Int = 1;
-      localbavq.jdField_a_of_type_Bavp = this;
-      if (e()) {
-        break;
-      }
-      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
-      d();
+    a(paramBitmap, 0);
+  }
+  
+  public void a(@NonNull Bitmap paramBitmap, int paramInt)
+  {
+    if (paramBitmap == null) {
       return;
-      if ("ftn".equals(this.d)) {
-        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
-      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbavq);
+    if ((paramInt == 0) || (paramInt == 180))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+    Matrix localMatrix = new Matrix();
+    localMatrix.setRotate(360 - paramInt);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, false);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF1 = new RectF(0.0F, 0.0F, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF2 = new RectF();
+      localMatrix.mapRect(localRectF2, localRectF1);
+      localCanvas.translate(-localRectF2.left, -localRectF2.top);
+      localCanvas.concat(localMatrix);
+      localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+      localCanvas.drawBitmap(paramBitmap, localRect, localRectF1, new Paint());
+      localCanvas.setBitmap(null);
+    }
   }
   
-  public void a(bave parambave, bavf parambavf)
+  public void a(String paramString)
   {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    try
     {
-      do
+      this.jdField_a_of_type_AndroidGraphicsBitmap = zkh.a(paramString, null);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      yqp.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      yqp.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
+    }
+    if (this.d != -1) {
+      GlUtil.deleteTexture(this.d);
+    }
+  }
+  
+  public void onDrawTexture()
+  {
+    super.onDrawTexture();
+    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
+    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
+    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      yqp.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
+      return;
+    }
+    GLES20.glActiveTexture(33985);
+    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
       {
+        yqp.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
         return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-    } while (0L != parambave.jdField_b_of_type_Long);
-    parambavf.c = 0L;
-    parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-    parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-  }
-  
-  public void a(bavr parambavr, bavq parambavq)
-  {
-    a(null, parambavr.a, parambavr.a.getWupBuffer());
-  }
-  
-  public void a(bbax parambbax, bbbm parambbbm)
-  {
-    this.jdField_a_of_type_Bbax = null;
-    if (parambbbm != null)
-    {
-      int i = 0;
-      while (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
-      {
-        parambbax = (bbbp)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", parambbax.toString());
-        }
-        this.i = parambbax.d;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
-        }
-        a(this.jdField_a_of_type_Barh, parambbax);
-        if (parambbax.c == 0)
-        {
-          this.c = parambbax.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Bass.i = this.c;
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-          {
-            parambbax = baws.a(this.c);
-            if (parambbax != null) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(parambbax);
-            }
-          }
-          g();
-          i += 1;
-        }
-        else
-        {
-          d();
-        }
+      }
+      if (this.d != -1) {
+        GlUtil.deleteTexture(this.d);
+      }
+      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
     }
+    GLES20.glBindTexture(3553, this.d);
+    GLES20.glUniform1i(this.e, 1);
   }
   
-  /* Error */
-  protected void a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  public void onInitialized()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 126
-    //   3: ldc_w 317
-    //   6: invokevirtual 131	bauk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: invokevirtual 320	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   13: sipush 1000
-    //   16: if_icmpeq +38 -> 54
-    //   19: aload_2
-    //   20: invokevirtual 320	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   23: istore 4
-    //   25: aload_0
-    //   26: ldc_w 322
-    //   29: new 196	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 324
-    //   39: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: iload 4
-    //   44: invokevirtual 327	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokevirtual 131	bauk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: return
-    //   54: new 329	tencent/im/cs/cmd0x346/cmd0x346$RspBody
-    //   57: dup
-    //   58: invokespecial 330	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
-    //   61: astore_1
-    //   62: aload_1
-    //   63: aload_3
-    //   64: invokevirtual 334	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: pop
-    //   68: aload_1
-    //   69: getfield 335	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 338	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +91 -> 166
-    //   78: aload_1
-    //   79: getfield 335	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 340	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: i2l
-    //   86: lstore 5
-    //   88: lload 5
-    //   90: ldc2_w 341
-    //   93: lcmp
-    //   94: ifne -41 -> 53
-    //   97: aload_1
-    //   98: getfield 346	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   101: invokevirtual 349	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
-    //   104: ifeq -51 -> 53
-    //   107: aload_1
-    //   108: getfield 346	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   111: invokevirtual 352	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: checkcast 348	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   117: getfield 356	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 359	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   123: istore 4
-    //   125: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq -75 -> 53
-    //   131: aload_0
-    //   132: ldc_w 322
-    //   135: new 196	java/lang/StringBuilder
-    //   138: dup
-    //   139: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 361
-    //   145: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: iload 4
-    //   150: invokevirtual 327	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokevirtual 131	bauk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   159: return
-    //   160: astore_1
-    //   161: aload_1
-    //   162: invokevirtual 364	java/lang/Exception:printStackTrace	()V
-    //   165: return
-    //   166: ldc2_w 365
-    //   169: lstore 5
-    //   171: goto -83 -> 88
-    //   174: astore_1
-    //   175: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	176	0	this	bauk
-    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   0	176	2	paramFromServiceMsg	FromServiceMsg
-    //   0	176	3	paramArrayOfByte	byte[]
-    //   23	126	4	i	int
-    //   86	84	5	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   54	62	160	java/lang/Exception
-    //   68	88	160	java/lang/Exception
-    //   97	159	160	java/lang/Exception
-    //   62	68	174	java/lang/Exception
+    super.onInitialized();
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
+    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
+    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
+    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
+    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+    a(this.jdField_a_of_type_Float);
   }
   
-  public void aP_()
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    super.aP_();
-    d(2001);
-    f();
-  }
-  
-  public int c()
-  {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Bayk.toString());
-    String str = this.jdField_a_of_type_Bayk.e;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bdhb.c(str)) || (str.startsWith("http://")))
-    {
-      b(9302, a(new Exception("uuid illegal " + str)));
-      d();
-      return -1;
-    }
-    return 0;
-  }
-  
-  void d()
-  {
-    super.d();
-    d(2005);
-  }
-  
-  void e()
-  {
-    super.e();
-    d(2003);
-  }
-  
-  void f()
-  {
-    this.jdField_a_of_type_Barh.a();
-    this.d = "pttcenter";
-    b("findDbRec", "not found");
-    bbax localbbax = new bbax();
-    bbaz localbbaz = new bbaz();
-    localbbaz.c = this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString;
-    localbbaz.d = this.jdField_a_of_type_Bayk.c;
-    localbbaz.e = this.jdField_a_of_type_Bayk.d;
-    localbbaz.f = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    localbbaz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bayk.e;
-    localbbaz.jdField_b_of_type_JavaLangString = this.d;
-    localbbaz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bayk.jdField_b_of_type_Boolean;
-    localbbaz.jdField_a_of_type_Int = 0;
-    localbbaz.jdField_b_of_type_Int = 102;
-    localbbax.jdField_a_of_type_Bbce = this;
-    localbbax.jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
-    localbbax.jdField_a_of_type_JavaUtilList.add(localbbaz);
-    localbbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    if (!e())
-    {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
-      d();
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localbbax.toString());
-      }
-    } while (!f());
-    this.jdField_a_of_type_Bbax = localbbax;
-    bbcd.a(localbbax);
-  }
-  
-  void g()
-  {
-    this.jdField_b_of_type_Barh.a();
-    String str3 = a(this.c, this.jdField_a_of_type_JavaUtilArrayList);
-    barf.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = this;
-    localbaub.jdField_a_of_type_JavaLangString = str3;
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localbaub.c = this.jdField_a_of_type_Bayk.h;
-    localbaub.e = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-    localbaub.g = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    localbaub.f = this.jdField_a_of_type_Bayk.jdField_b_of_type_Int;
-    localbaub.jdField_a_of_type_Long = 0L;
-    localbaub.k = true;
-    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localbaub.l = true;
-    localbaub.jdField_a_of_type_Bauf = this;
-    localbaub.d = this.e;
-    String str2 = null;
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      str1 = str2;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        str1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
-      }
-    }
-    str2 = baws.a(str3);
-    b("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.jdField_a_of_type_Bayk.e + " downOffset:" + localbaub.jdField_a_of_type_Long);
-    if (!f()) {
-      return;
-    }
-    this.jdField_a_of_type_Bave = localbaub;
-    n();
-    this.jdField_a_of_type_Baue.a(localbaub);
-  }
-  
-  protected void n()
-  {
-    if ((this.jdField_a_of_type_Bave != null) && ((this.jdField_a_of_type_Bave instanceof baub))) {
-      ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onResp(bavf parambavf)
-  {
-    boolean bool2 = true;
-    super.onResp(parambavf);
-    this.jdField_a_of_type_Bave = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (parambavf.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      b("onHttpResp", bool1);
-      localObject = this.jdField_b_of_type_Barh;
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label152;
-      }
-    }
-    label152:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      a((barh)localObject, parambavf, bool1);
-      this.jdField_a_of_type_Long = parambavf.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambavf.jdField_b_of_type_Long + parambavf.jdField_a_of_type_Bave.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += parambavf.c;
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label157;
-      }
-      sxb.d(this.jdField_a_of_type_Bayk.h);
-      h();
-      e();
-      return;
-      bool1 = false;
-      break;
-    }
-    label157:
-    if ((parambavf.jdField_b_of_type_Int == 9364) && (this.l < 3))
-    {
-      b("[netChg]", "failed.but net change detect.so retry");
-      this.l += 1;
-      m();
-      f();
-      return;
-    }
-    d();
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    yqp.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_b_of_type_Float = 0.0009259259F;
+    this.jdField_c_of_type_Float = 0.0005208334F;
   }
 }
 

@@ -1,33 +1,147 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
+
 public class ammq
 {
-  public static boolean a(int paramInt)
+  public int a;
+  Handler a;
+  protected boolean a;
+  public boolean b;
+  public boolean c = true;
+  
+  public ammq(QQAppInterface paramQQAppInterface)
   {
-    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (paramQQAppInterface == null) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      i = localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_count_" + ApolloUtil.b(), 0);
+      j = localSharedPreferences.getInt("bubble_max_count", 3);
+      this.c = a(paramQQAppInterface);
+    } while (i < j);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("AplloDrawerStatus", 1, "Bubble show count limited:" + i + "," + j);
   }
   
-  public static boolean b(int paramInt)
+  public int a(amux paramamux, int paramInt1, int paramInt2, AppInterface paramAppInterface, Context paramContext)
   {
-    return paramInt == -2022;
+    if (QLog.isColorLevel()) {
+      QLog.d("AplloDrawerStatus", 2, new Object[] { "draw execAction default say hi, model:", Integer.valueOf(paramInt1) });
+    }
+    if (paramInt1 == 3) {}
+    for (paramInt1 = 14;; paramInt1 = 5)
+    {
+      paramAppInterface = new ApolloActionData();
+      paramAppInterface.actionId = -1;
+      paramAppInterface.actionType = 0;
+      amuo.a(paramamux, paramInt1, paramAppInterface);
+      return 0;
+    }
   }
   
-  public static boolean c(int paramInt)
+  public int a(amux paramamux, int paramInt, AppInterface paramAppInterface, Context paramContext)
   {
-    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
+    paramAppInterface = new ApolloActionData();
+    paramAppInterface.actionId = -1;
+    paramAppInterface.actionType = 0;
+    amuo.a(paramamux, 5, paramAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("AplloDrawerStatus", 2, "draw execAction random say hi");
+    }
+    return 0;
   }
   
-  public static boolean d(int paramInt)
+  public void a() {}
+  
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  protected void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return paramInt == -1035;
+    Object localObject2 = paramContext.getSharedPreferences("apollo_sp", 0);
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_count_";
+    paramContext = (String)localObject1 + ApolloUtil.b();
+    paramQQAppInterface = ((SharedPreferences)localObject2).edit();
+    if (((SharedPreferences)localObject2).contains(paramContext)) {
+      paramQQAppInterface.putInt(paramContext, ((SharedPreferences)localObject2).getInt(paramContext, 0) + 1);
+    }
+    for (;;)
+    {
+      paramQQAppInterface.commit();
+      return;
+      Object localObject3 = ((SharedPreferences)localObject2).getAll();
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+          String str = (String)localEntry.getKey();
+          if ((str != null) && (str.startsWith((String)localObject1))) {
+            ((List)localObject2).add(localEntry.getKey());
+          }
+        }
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          paramQQAppInterface.remove((String)((Iterator)localObject1).next());
+        }
+      }
+      paramQQAppInterface.putInt(paramContext, 1);
+    }
   }
   
-  public static boolean e(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, amux paramamux)
   {
-    return paramInt == -2011;
+    this.b = false;
   }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface == null) || (!(paramAppInterface instanceof QQAppInterface))) {}
+    boolean bool;
+    do
+    {
+      return false;
+      bool = ApolloGameUtil.b((QQAppInterface)paramAppInterface);
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("AplloDrawerStatus", 2, "isShowDrawerAction current is 3D User");
+      }
+    } while (bool);
+    return true;
+  }
+  
+  public void b(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammq
  * JD-Core Version:    0.7.0.1
  */

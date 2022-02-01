@@ -26,12 +26,12 @@ class ChatHistoryTroopAllFragment$3
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }
-    this.this$0.r();
+    this.this$0.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.3
  * JD-Core Version:    0.7.0.1
  */

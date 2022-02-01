@@ -1,24 +1,40 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 class yft
-  implements zac<CertifiedAccountWrite.StDoCommentRsp>
+  extends SimpleJob<Object>
 {
-  yft(yfp paramyfp, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
+  yft(yfq paramyfq, String paramString1, String paramString2)
   {
-    if ((paramStDoCommentRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)) {
-      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get());
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (woz)wpm.a(19);
+    paramVarArgs = paramJobContext.a(wvs.a(this.jdField_a_of_type_Yfq.b));
+    yfv localyfv = new yfv(this.jdField_a_of_type_Yfq.c);
+    ArrayList localArrayList = new ArrayList();
+    localyfv.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localyfv.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localyfv.jdField_a_of_type_Boolean = bool;
+      wfo.a().dispatch(localyfv);
+      yqp.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localyfv.jdField_a_of_type_JavaUtilList);
+      return null;
     }
-    umc.a().dispatch(this.jdField_a_of_type_Yfp.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Yfp.hashCode()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yft
  * JD-Core Version:    0.7.0.1
  */

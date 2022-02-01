@@ -1,28 +1,46 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class wzf
-  implements xfg
+public class wzf
+  extends wlf
 {
-  wzf(wzb paramwzb) {}
+  public String a;
   
-  public void a(int paramInt, List<uxf> paramList)
+  public String a()
   {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    return wjz.a("StorySvc.get_profile_year_node_info");
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    try
+    {
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new wzg(localRspProfileYearNodeList);
     }
-    umc.a().dispatch(new xfe(paramInt, (List)localObject));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzf
  * JD-Core Version:    0.7.0.1
  */

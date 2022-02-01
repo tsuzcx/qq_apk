@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.content.Intent;
-import bhqr;
+import bkeb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -20,7 +20,10 @@ abstract class TraeAudioManager$switchThread
   {
     this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + paramLong);
     this.jdField_a_of_type_Long = paramLong;
-    this.b = BaseApplicationImpl.processName.endsWith(":video");
+    if ((BaseApplicationImpl.processName.endsWith(":video")) || (BaseApplicationImpl.processName.endsWith(":avgame"))) {
+      bool = true;
+    }
+    this.b = bool;
     if (QLog.isColorLevel()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 2, "switchThread.init");
     }
@@ -141,7 +144,7 @@ abstract class TraeAudioManager$switchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.switchThread
  * JD-Core Version:    0.7.0.1
  */

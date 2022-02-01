@@ -1,61 +1,56 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.TracePathData;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class bdyj
-  implements SensorEventListener
+  extends bdsh
 {
-  public bdyj(PathTraceManager paramPathTraceManager) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
-    if (PathTraceManager.a(this.a) == 1)
+    return new File(paramDownloadParams.url.getFile());
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = 160;
+    localOptions.inTargetDensity = 160;
+    localOptions.inScreenDensity = 160;
+    localOptions.inJustDecodeBounds = false;
+    String str = paramFile.getAbsolutePath();
+    if (!bgmg.b(str))
     {
-      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
-      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
-        break label331;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
       }
-      i = PathTraceManager.a(this.a).totalSteps;
-      if (!this.a.e) {
-        break label246;
-      }
-      paramSensorEvent = PathTraceManager.a(this.a);
-      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
-      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
-      PathTraceManager.a(this.a, null);
-      if (PathTraceManager.a(this.a).type == 1)
-      {
-        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
-          break label281;
-        }
-        this.a.a(PathTraceManager.a(this.a), false, true);
-      }
+      return null;
     }
-    label246:
-    while (PathTraceManager.c(this.a) != 0)
-    {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramSensorEvent = PathTraceManager.a(this.a);
-          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
-        }
-      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
-      this.a.a(PathTraceManager.a(this.a), false, false);
-      return;
+    paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
+    SafeBitmapFactory.decodeFile(str, localOptions);
+    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
+    if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
+      paramURLDrawableHandler.recycle();
     }
-    label281:
-    label331:
-    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
+    paramFile = new RoundRectBitmap(new beak(paramFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+    paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
+    return paramFile;
   }
 }
 

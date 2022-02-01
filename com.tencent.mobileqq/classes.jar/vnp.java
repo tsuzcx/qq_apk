@@ -1,28 +1,64 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class vnp
-  extends QQUIEventReceiver<StoryPlayerActivity, vno>
+  extends RecyclerView.OnScrollListener
 {
-  public vnp(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
+  public vnp(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramStoryPlayerActivity);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      adcd.a().a("qcircle_personal_detail_page", false);
+      return;
+    }
+    adcd.a().a("qcircle_personal_detail_page");
   }
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull vno paramvno)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    paramStoryPlayerActivity.b = paramvno.a;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vno.class;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    QCirclePersonalDetailFragment.a(this.a, paramInt2);
+    if ((paramRecyclerView.getLayoutManager() instanceof zyj))
+    {
+      int[] arrayOfInt = ((zyj)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(null);
+      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+      {
+        paramInt2 = arrayOfInt[0];
+        if (!this.a.a().a().a().b()) {
+          break label171;
+        }
+      }
+    }
+    label171:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt2 == paramInt1)
+      {
+        QLog.i("QCirclePersonalDetailFragment", 1, "onScrolled headView completeVisible");
+        QCirclePersonalDetailFragment.a(this.a);
+      }
+      paramRecyclerView = ((zyj)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPositions(null);
+      if (paramRecyclerView != null) {
+        QCirclePersonalDetailFragment.b(this.a, paramRecyclerView[0]);
+      }
+      if ((paramRecyclerView != null) && (paramRecyclerView.length > 0) && (this.a.a().a().a().b()) && (paramRecyclerView[0] == 0))
+      {
+        QLog.i("QCirclePersonalDetailFragment", 1, "onScrolled refreshItem visible");
+        QCirclePersonalDetailFragment.a(this.a);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnp
  * JD-Core Version:    0.7.0.1
  */

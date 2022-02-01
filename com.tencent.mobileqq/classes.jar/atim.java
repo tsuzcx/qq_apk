@@ -1,36 +1,50 @@
 import android.os.Handler;
-import android.os.Message;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
 public class atim
-  extends Handler
+  extends bbio<bbmy, bbvg>
 {
-  atil a;
+  public atim(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  protected atim(atil paramatil)
+  protected bbps<bbmy, bbvg> a(int paramInt)
   {
-    this.a = paramatil;
+    atis localatis = new atis();
+    localatis.a(new atin(this));
+    return localatis;
   }
   
-  protected void a()
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.a = null;
+    return new ativ(paramViewGroup);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(List<bbmy> paramList)
   {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
       return;
     }
-    this.a.a();
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
+  }
+  
+  public void a(List<bbmy> paramList, boolean paramBoolean)
+  {
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 

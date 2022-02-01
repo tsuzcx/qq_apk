@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import android.widget.RelativeLayout;
 
-public class ahly
-  implements View.OnClickListener
+class ahly
+  extends afwr
 {
-  public ahly(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  private ahly(ahlw paramahlw) {}
 }
 
 

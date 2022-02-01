@@ -1,39 +1,33 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.regex.Pattern;
 
 public class vfi
-  extends urn
+  extends vfj
 {
-  public List<CommentEntry> a = new ArrayList();
-  public int b;
-  public String c;
+  private vhc a;
   
-  public vfi(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
+  public vfi(vhc paramvhc, Pattern paramPattern)
   {
-    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
-    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
-    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
-    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
-    while (paramRspFeedCommentList.hasNext())
-    {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
-      localCommentEntry.feedId = this.c;
-      this.a.add(localCommentEntry);
+    super(paramPattern);
+    this.jdField_a_of_type_Vhc = paramvhc;
+  }
+  
+  public ArrayList<TextCell> a(int paramInt, boolean paramBoolean, vhc paramvhc, CharSequence paramCharSequence, ArrayList<TextCell> paramArrayList)
+  {
+    paramInt = Math.max(paramInt, bgtn.a(10.0F));
+    paramCharSequence = vfw.a().a(this.jdField_a_of_type_JavaLangString, paramInt, this.jdField_a_of_type_Vhc);
+    paramvhc = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramvhc = new TextCell(0, this.jdField_a_of_type_JavaLangString);
     }
+    paramArrayList.add(paramvhc);
+    return paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfi
  * JD-Core Version:    0.7.0.1
  */

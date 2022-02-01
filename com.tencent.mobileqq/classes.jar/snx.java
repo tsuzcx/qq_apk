@@ -1,33 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class snx
-  implements DialogInterface.OnCancelListener
+  implements bkls
 {
-  snx(snu paramsnu, String paramString) {}
+  snx(snh paramsnh, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("index", snu.a(this.jdField_a_of_type_Snu));
-      paramDialogInterface.put("type", 1);
-      if (snu.a(this.jdField_a_of_type_Snu) != null) {
-        ((BridgeModule)snu.a(this.jdField_a_of_type_Snu).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
     }
-    catch (JSONException paramDialogInterface) {}
+    if ((this.jdField_a_of_type_Snh.a instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      PublicFragmentActivity.a(this.jdField_a_of_type_Snh.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snx
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Handler;
 import java.util.List;
-import wxe;
-import xax;
-import xci;
+import yqp;
+import yui;
+import yvt;
 
 public class EditVideoPlayer$1
   implements Runnable
 {
-  public EditVideoPlayer$1(xax paramxax, int paramInt1, int paramInt2) {}
+  public EditVideoPlayer$1(yui paramyui, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -17,12 +17,12 @@ public class EditVideoPlayer$1
     if ((localList != null) && (this.a < localList.size())) {}
     try
     {
-      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((xci)localList.get(this.a));
+      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((yvt)localList.get(this.a));
       if (this.a > this.b) {
         this.this$0.b.post(new EditVideoPlayer.1.1(this));
       }
       if ((localList != null) && (this.b < localList.size())) {
-        this.this$0.a((xci)localList.get(this.b));
+        this.this$0.a((yvt)localList.get(this.b));
       }
       return;
     }
@@ -30,14 +30,14 @@ public class EditVideoPlayer$1
     {
       for (;;)
       {
-        wxe.c("Q.qqstory.record.EditVideoPlayer", "setCurrentVideoFragment failed", localMultiOperateException);
+        yqp.c("Q.qqstory.record.EditVideoPlayer", "setCurrentVideoFragment failed", localMultiOperateException);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoPlayer.1
  * JD-Core Version:    0.7.0.1
  */

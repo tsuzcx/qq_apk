@@ -1,24 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class tje
-  extends tjd<tiw, WSPushStrategyInfo>
+class tje
+  extends AnimatorListenerAdapter
 {
-  public tje(tiw paramtiw)
-  {
-    super(paramtiw);
-  }
+  tje(tjc paramtjc, int paramInt) {}
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    WSHomeFragment.a(paramContext, 0, false);
-    return true;
+    this.jdField_a_of_type_Tjc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Tjc.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tje
  * JD-Core Version:    0.7.0.1
  */

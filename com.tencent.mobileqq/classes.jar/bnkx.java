@@ -1,18 +1,65 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.1;
 
-public final class bnkx
-  implements Parcelable.Creator<FilterCategory>
+public class bnkx
+  implements bnks
 {
-  public FilterCategory a(Parcel paramParcel)
+  private bnkx(AEBottomListScrollView paramAEBottomListScrollView) {}
+  
+  public void a()
   {
-    return new FilterCategory(paramParcel);
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
+    {
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.a(this.a, localViewHolder, i);
   }
   
-  public FilterCategory[] a(int paramInt)
+  public void a(float paramFloat)
   {
-    return new FilterCategory[paramInt];
+    if (AEBottomListScrollView.a(this.a) == null) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      i = this.a.a();
+      j = AEBottomListScrollView.a(this.a).a();
+    } while (i == j);
+    AEBottomListScrollView.a(this.a, paramFloat, i, j, this.a.a(i), this.a.a(j));
+  }
+  
+  public void b()
+  {
+    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {}
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    do
+    {
+      return;
+      i = AEBottomListScrollView.a(this.a).b();
+      localViewHolder = this.a.a(i);
+    } while (localViewHolder == null);
+    AEBottomListScrollView.b(this.a, localViewHolder, i);
+    AEBottomListScrollView.c(this.a, localViewHolder, i);
+  }
+  
+  public void c()
+  {
+    this.a.post(new AEBottomListScrollView.ScrollStateListener.1(this));
+  }
+  
+  public void d()
+  {
+    if (bnpc.a() != null) {
+      AEBottomListScrollView.a(this.a);
+    }
   }
 }
 

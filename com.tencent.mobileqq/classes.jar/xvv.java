@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xvv
-  implements View.OnLongClickListener
+class xvv
+  implements DialogInterface.OnDismissListener
 {
-  public xvv(InnerListView paramInnerListView, int paramInt) {}
+  xvv(xvu paramxvu, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public boolean onLongClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvv
  * JD-Core Version:    0.7.0.1
  */

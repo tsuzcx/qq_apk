@@ -1,15 +1,17 @@
-import android.text.Spanned;
-import java.util.Comparator;
-
-final class bcmd
-  implements Comparator<Object>
+public class bcmd
 {
-  bcmd(Spanned paramSpanned) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  public long e;
 }
 
 

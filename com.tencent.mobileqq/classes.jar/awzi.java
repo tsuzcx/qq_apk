@@ -1,98 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
-
 public class awzi
-  implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<awze> jdField_a_of_type_JavaUtilList = null;
-  List<String> b = null;
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public awzi(QQAppInterface paramQQAppInterface)
+  public awzi(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
-  
-  public awze a(String paramString)
-  {
-    if (bdnn.a(paramString)) {}
-    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    awze localawze;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localawze = (awze)localIterator.next();
-    } while ((localawze.f == null) || (!localawze.f.equalsIgnoreCase(paramString)));
-    for (paramString = localawze;; paramString = null) {
-      return paramString;
-    }
-  }
-  
-  public void a()
-  {
-    String str = awzg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    QLog.i("QAssistantManager", 2, "loadConfigFromLoacl config is " + str);
-    a(str);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bdnn.a(paramString)) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      label26:
-      if (this.b != null) {
-        break label81;
-      }
-      this.b = new ArrayList();
-    }
-    for (;;)
-    {
-      paramString = awzg.a(paramString, this.b);
-      if (paramString == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramString);
-      return;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      break label26;
-      label81:
-      this.b.clear();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((bdnn.a(paramString)) || (this.b == null)) {
-      return false;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (((String)localIterator.next()).equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzi
  * JD-Core Version:    0.7.0.1
  */

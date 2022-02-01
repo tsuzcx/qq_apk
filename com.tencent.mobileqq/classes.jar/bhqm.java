@@ -1,85 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
 
-public class bhqm
-  implements bhqw
+class bhqm
+  implements TouchWebView.OnOverScrollHandler
 {
-  public bhqm(AudioDeviceInterface paramAudioDeviceInterface) {}
+  bhqm(bhql parambhql, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
   
-  public void a(int paramInt)
+  public void onBack()
   {
+    this.jdField_a_of_type_Bhql.a = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
+    this.jdField_a_of_type_Bhql.b(true);
+  }
+  
+  public void onOverScroll(int paramInt)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_Bhql.a)
+    {
+      this.jdField_a_of_type_Bhql.a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
     try
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      localObject = Uri.parse((String)localObject);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        this.jdField_a_of_type_Bhql.b.setText(anni.a(2131713388) + ((Uri)localObject).getHost() + anni.a(2131713381));
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      this.jdField_a_of_type_Bhql.b.setVisibility(0);
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
+    catch (Exception localException)
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      for (;;)
+      {
+        localException.printStackTrace();
+        this.jdField_a_of_type_Bhql.b.setVisibility(8);
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
     }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
   }
-  
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
-    }
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqm
  * JD-Core Version:    0.7.0.1
  */

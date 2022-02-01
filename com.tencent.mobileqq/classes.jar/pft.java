@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public abstract interface pft
+class pft
+  implements ViewBase.OnClickListener
 {
-  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  pft(pfs parampfs) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, pfu parampfu);
-  
-  public abstract int[] a(int paramInt);
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity() != null)
+    {
+      pfr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity().finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pft
  * JD-Core Version:    0.7.0.1
  */

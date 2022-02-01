@@ -1,16 +1,34 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import mqq.os.MqqHandler;
 
 public class aeww
-  implements badp
+  implements Animation.AnimationListener
 {
-  public aeww(FriendShipWaveView paramFriendShipWaveView) {}
+  public aeww(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    badx localbadx = new badx(new bado[] { new badw(300, 0.1F, 1.1F), new badw(100, 1.2F, 0.9F), new badw(100, 0.9F, 1.0F) });
-    this.a.c.a(new bado[] { localbadx });
-    this.a.b.a(new bado[] { new badw(300, 0.0F, 1.0F) });
+    this.a.a.removeMessages(99);
+    if (VersionUtils.isJellyBean())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
+      }
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
+    }
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

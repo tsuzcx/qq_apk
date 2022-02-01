@@ -1,23 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
+import java.util.List;
 
-class asdy
-  implements DialogInterface.OnClickListener
+public class asdy
+  extends RecyclerView.OnScrollListener
 {
-  asdy(asdt paramasdt, int paramInt, String paramString) {}
+  public asdy(RelatedEmotionPanel paramRelatedEmotionPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramInt == 1)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
     {
-      asdt.a(asdt.a(this.jdField_a_of_type_Asdt), "shareToQQ", asdt.a(this.jdField_a_of_type_Asdt), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      ndq.a(asdt.a(this.jdField_a_of_type_Asdt), 0, "", "");
-      if (asdt.a(this.jdField_a_of_type_Asdt) != null) {
-        asdt.a(this.jdField_a_of_type_Asdt).b(1);
-      }
-      asdt.a(this.jdField_a_of_type_Asdt).moveTaskToBack(true);
+      AbstractGifImage.resumeAll();
+      return;
+    }
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void onScrolled(@NonNull RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if ((!paramRecyclerView.canScrollVertically(1)) && (RelatedEmotionPanel.a(this.a) == 1) && (!RelatedEmotionPanel.a(this.a)) && (RelatedEmotionPanel.a(this.a).a() != null))
+    {
+      RelatedEmotionPanel.a(this.a, true);
+      bcst.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B156", "0X800B156", 0, 0, RelatedEmotionPanel.a(this.a).a().size() + "", "", "", "");
     }
   }
 }

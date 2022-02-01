@@ -1,45 +1,65 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 
 public class yag
-  implements yas
+  implements yaq
 {
-  public yag(ScannerActivity paramScannerActivity) {}
+  public yag(QQStoryMainActivity paramQQStoryMainActivity) {}
   
-  public JSONObject a()
+  public View a()
   {
-    try
-    {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
-    }
-    return null;
+    return QQStoryMainActivity.a(this.a);
+  }
+  
+  public ImageView a()
+  {
+    return this.a.rightViewImg;
+  }
+  
+  public TextView a()
+  {
+    return this.a.rightViewText;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
+    this.a.onBackEvent();
   }
   
-  public void b()
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
+    QQStoryMainActivity.a(this.a, paramString);
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.startTitleProgress();
+      return;
+    }
+    this.a.stopTitleProgress();
+  }
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, wes.a, anni.a(2131709717));
+      return;
+    }
+    a(wes.a);
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yag
  * JD-Core Version:    0.7.0.1
  */

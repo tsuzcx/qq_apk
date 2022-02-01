@@ -1,20 +1,26 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class avdo
-  extends nab
+  implements DialogInterface.OnClickListener
 {
-  avdo(avdj paramavdj, avdq paramavdq) {}
+  avdo(avdh paramavdh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Avdq != null) {
-      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    avdh.jdField_a_of_type_Boolean = false;
+    avdh.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdo
  * JD-Core Version:    0.7.0.1
  */

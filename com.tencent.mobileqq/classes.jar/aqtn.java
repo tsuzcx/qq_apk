@@ -1,7 +1,7 @@
-class aqtn
+public class aqtn
 {
-  public long a;
-  public String a;
+  public int a;
+  public String a = "";
 }
 
 

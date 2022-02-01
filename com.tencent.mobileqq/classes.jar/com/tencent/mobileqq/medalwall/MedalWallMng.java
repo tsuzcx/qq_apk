@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
 import SummaryCard.TMedalWallInfo;
-import aeqn;
-import alpk;
-import alto;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -14,28 +11,27 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
-import aubj;
-import auwx;
-import avsm;
-import awge;
-import awgf;
-import awgg;
-import ayzl;
-import bdeu;
-import bdhb;
-import bdne;
-import bhtd;
+import anip;
+import anmw;
+import awit;
+import axeg;
+import axzw;
+import bgjw;
+import bgmg;
+import bgsg;
+import bkgm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.MedalInfo;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -58,9 +54,9 @@ public class MedalWallMng
   public static int f = 6;
   public static int g = 7;
   protected final SparseArray<MedalInfo> a;
-  protected final bhtd a;
+  protected final bkgm a;
   protected QQAppInterface a;
-  protected final ArrayList<aubj> a;
+  protected final ArrayList<awit> a;
   protected boolean a;
   private boolean b;
   private String c;
@@ -86,38 +82,52 @@ public class MedalWallMng
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bhtd = new bhtd(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Bkgm = new bkgm(ThreadManager.getSubThreadLooper(), this);
     this.h = 0;
   }
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramString.startsWith("http://")) {
-      return paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("MedalWallMng", 2, String.format("validateUrl>>> url=%s", new Object[] { paramString }));
     }
-    return "http://" + paramString;
+    String str;
+    if (TextUtils.isEmpty(paramString)) {
+      str = paramString;
+    }
+    do
+    {
+      do
+      {
+        return str;
+        str = paramString;
+      } while (paramString.startsWith("https://"));
+      paramString = "https://" + paramString;
+      str = paramString;
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalWallMng", 2, String.format("validateUrl<<< url=%s", new Object[] { paramString }));
+    return paramString;
   }
   
-  private void a(aubj paramaubj)
+  private void a(awit paramawit)
   {
-    if ((paramaubj == null) || (paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null)) {}
-    while (!bdhb.b(paramaubj.jdField_b_of_type_JavaLangString)) {
+    if ((paramawit == null) || (paramawit.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null)) {}
+    while (!bgmg.b(paramawit.jdField_b_of_type_JavaLangString)) {
       return;
     }
     try
     {
       Resources localResources = BaseApplicationImpl.getApplication().getResources();
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int k = localResources.getDimensionPixelSize(2131298113);
+      int k = localResources.getDimensionPixelSize(2131298195);
       localURLDrawableOptions.mRequestWidth = k;
       localURLDrawableOptions.mRequestHeight = k;
-      URLDrawable.getDrawable(new File(paramaubj.jdField_b_of_type_JavaLangString), localURLDrawableOptions).startDownload(true);
+      URLDrawable.getDrawable(new File(paramawit.jdField_b_of_type_JavaLangString), localURLDrawableOptions).startDownload(true);
       return;
     }
-    catch (Exception paramaubj)
+    catch (Exception paramawit)
     {
-      QLog.e("MedalWallMng", 1, "tryPreloadImg fail.", paramaubj);
+      QLog.e("MedalWallMng", 1, "tryPreloadImg fail.", paramawit);
     }
   }
   
@@ -166,7 +176,7 @@ public class MedalWallMng
   private boolean b()
   {
     boolean bool;
-    if (bdne.W(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != 1)
+    if (bgsg.W(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != 1)
     {
       bool = true;
       this.jdField_b_of_type_Boolean = bool;
@@ -175,7 +185,7 @@ public class MedalWallMng
       }
     }
     label42:
-    while ((((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).medalSwitchDisable) || (bdeu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+    while ((((anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).medalSwitchDisable) || (bgjw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
     {
       return true;
       bool = false;
@@ -198,7 +208,7 @@ public class MedalWallMng
           break label223;
         }
         StringBuilder localStringBuilder = new StringBuilder(200);
-        Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(MedalInfo.class);
+        Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().query(MedalInfo.class);
         if ((localObject4 != null) && (((List)localObject4).size() > 0)) {
           synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
           {
@@ -246,15 +256,15 @@ public class MedalWallMng
       break label178;
       if (k < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        aubj localaubj1 = (aubj)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-        if ((localaubj1 == null) || (localaubj1.jdField_a_of_type_Boolean))
+        awit localawit1 = (awit)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+        if ((localawit1 == null) || (localawit1.jdField_a_of_type_Boolean))
         {
           this.h = (k + 1);
         }
-        else if (localaubj1.a())
+        else if (localawit1.a())
         {
           this.h = (k + 1);
-          a(localaubj1);
+          a(localawit1);
         }
       }
     }
@@ -262,7 +272,7 @@ public class MedalWallMng
     {
       if (k != 0)
       {
-        ThreadManager.post(new MedalWallMng.DownloadResTask(this, localaubj2), 5, null, false);
+        ThreadManager.post(new MedalWallMng.DownloadResTask(this, localawit2), 5, null, false);
         return;
       }
       if (this.i > 0)
@@ -290,35 +300,30 @@ public class MedalWallMng
     if (QLog.isDevelopLevel()) {
       QLog.i("MedalWallMng", 4, "doCheckForLogin");
     }
-    this.jdField_a_of_type_Bhtd.removeMessages(3);
-    Object localObject = (avsm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(160);
-    boolean bool;
+    this.jdField_a_of_type_Bkgm.removeMessages(3);
+    Object localObject = (axzw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(160);
+    RedTouchItem localRedTouchItem = ((axzw)localObject).a(10015);
+    boolean bool = ((axzw)localObject).b(localRedTouchItem);
+    if (QLog.isColorLevel()) {
+      QLog.d("MedalWallMng", 2, String.format("doCheckForLogin item=%s hasMedalRedPoint=%s", new Object[] { localRedTouchItem, Boolean.valueOf(bool) }));
+    }
     int k;
-    if (((avsm)localObject).a(((avsm)localObject).a(10015), false))
+    if (bool)
     {
-      bool = true;
-      if (!bool) {
-        break label167;
-      }
       localObject = String.format(Locale.getDefault(), "%s%s", new Object[] { "medal_wall_", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() });
       k = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject, 4).getInt("MEDAL_CHECK_RES_STATE", 0);
-      if (k != 2) {
-        break label160;
+      if (k == 2) {
+        b();
       }
-      b();
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "doCheckForLogin hasRP: %s, flag: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(k) }));
+        QLog.d("MedalWallMng", 2, String.format("doCheckForLogin hasMedalRedPoint=%s, flag=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(k) }));
       }
       return;
-      bool = false;
-      break;
-      label160:
       c();
       continue;
-      label167:
       b(0);
       k = 0;
     }
@@ -408,8 +413,8 @@ public class MedalWallMng
           m = n;
           break label527;
         }
-        localObject1 = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        localObject2 = ((alto)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localObject1 = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        localObject2 = ((anmw)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         if (paramTMedalWallInfo != null)
         {
           ((Card)localObject2).iMedalCount = paramTMedalWallInfo.iMedalCount;
@@ -423,7 +428,7 @@ public class MedalWallMng
           }
           ((Card)localObject2).iNewCount = paramTMedalWallInfo.iNewCount;
           ((Card)localObject2).iUpgradeCount = paramTMedalWallInfo.iUpgradeCount;
-          ((alto)localObject1).a((Card)localObject2);
+          ((anmw)localObject1).a((Card)localObject2);
           return localObject2;
         }
       }
@@ -479,7 +484,7 @@ public class MedalWallMng
     if (!paramBoolean)
     {
       localStringBuilder = new StringBuilder(this.jdField_d_of_type_JavaLangString);
-      localStringBuilder.append("&tuin=").append(auwx.a(paramString));
+      localStringBuilder.append("&tuin=").append(axeg.a(paramString));
     }
     for (paramString = localStringBuilder;; paramString = new StringBuilder(this.jdField_c_of_type_JavaLangString))
     {
@@ -601,8 +606,8 @@ public class MedalWallMng
     } while (!QLog.isDevelopLevel());
     QLog.i("MedalWallMng", 4, "checkForLogin medal is off!");
     return;
-    this.jdField_a_of_type_Bhtd.removeMessages(3);
-    this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(3, 1000L);
+    this.jdField_a_of_type_Bkgm.removeMessages(3);
+    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(3, 1000L);
   }
   
   public void a(int paramInt)
@@ -621,13 +626,13 @@ public class MedalWallMng
     //   1: istore 5
     //   3: aload_0
     //   4: getfield 84	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   7: invokevirtual 364	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawgg;
-    //   10: invokevirtual 370	awgg:createEntityManager	()Lawgf;
+    //   7: invokevirtual 372	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
+    //   10: invokevirtual 378	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   13: astore 7
     //   15: new 93	java/util/ArrayList
     //   18: dup
     //   19: iconst_5
-    //   20: invokespecial 609	java/util/ArrayList:<init>	(I)V
+    //   20: invokespecial 615	java/util/ArrayList:<init>	(I)V
     //   23: astore 6
     //   25: iload_1
     //   26: iconst_2
@@ -642,38 +647,38 @@ public class MedalWallMng
     //   41: iload_3
     //   42: aload_0
     //   43: getfield 91	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   46: invokevirtual 408	android/util/SparseArray:size	()I
+    //   46: invokevirtual 417	android/util/SparseArray:size	()I
     //   49: if_icmpge +265 -> 314
     //   52: aload_0
     //   53: getfield 91	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   56: iload_3
-    //   57: invokevirtual 501	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
-    //   60: checkcast 197	com/tencent/mobileqq/data/MedalInfo
+    //   57: invokevirtual 509	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
+    //   60: checkcast 212	com/tencent/mobileqq/data/MedalInfo
     //   63: astore 9
     //   65: aload 9
     //   67: aload 6
-    //   69: invokevirtual 613	com/tencent/mobileqq/data/MedalInfo:putReportInfo	(Ljava/util/ArrayList;)V
+    //   69: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:putReportInfo	(Ljava/util/ArrayList;)V
     //   72: aload 9
-    //   74: invokevirtual 616	com/tencent/mobileqq/data/MedalInfo:setRead	()V
+    //   74: invokevirtual 622	com/tencent/mobileqq/data/MedalInfo:setRead	()V
     //   77: aload 9
-    //   79: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   79: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   82: sipush 1000
     //   85: if_icmpne +13 -> 98
     //   88: aload 7
     //   90: aload 9
-    //   92: invokevirtual 622	awgf:b	(Lawge;)V
+    //   92: invokevirtual 629	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   95: goto +469 -> 564
     //   98: aload 9
-    //   100: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   100: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   103: sipush 1001
     //   106: if_icmpeq +14 -> 120
     //   109: aload 9
-    //   111: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   111: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   114: sipush 1002
     //   117: if_icmpne +447 -> 564
     //   120: aload 7
     //   122: aload 9
-    //   124: invokevirtual 625	awgf:a	(Lawge;)Z
+    //   124: invokevirtual 633	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   127: pop
     //   128: goto +436 -> 564
     //   131: astore_2
@@ -685,19 +690,19 @@ public class MedalWallMng
     //   138: iconst_0
     //   139: istore_3
     //   140: aload_2
-    //   141: invokevirtual 628	java/lang/Throwable:printStackTrace	()V
+    //   141: invokevirtual 636	java/lang/Throwable:printStackTrace	()V
     //   144: iload_1
     //   145: ifne +320 -> 465
     //   148: aload_0
     //   149: aconst_null
     //   150: iconst_1
-    //   151: invokevirtual 630	com/tencent/mobileqq/medalwall/MedalWallMng:a	(LSummaryCard/TMedalWallInfo;Z)Lcom/tencent/mobileqq/data/Card;
+    //   151: invokevirtual 638	com/tencent/mobileqq/medalwall/MedalWallMng:a	(LSummaryCard/TMedalWallInfo;Z)Lcom/tencent/mobileqq/data/Card;
     //   154: astore_2
     //   155: aload_0
     //   156: getfield 84	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   159: sipush 160
-    //   162: invokevirtual 344	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   165: checkcast 443	avsm
+    //   162: invokevirtual 353	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   165: checkcast 452	axzw
     //   168: astore 7
     //   170: iload_1
     //   171: iconst_1
@@ -707,34 +712,34 @@ public class MedalWallMng
     //   177: if_icmpne +335 -> 512
     //   180: aload 7
     //   182: sipush 10015
-    //   185: invokevirtual 632	avsm:a	(I)V
+    //   185: invokevirtual 640	axzw:a	(I)V
     //   188: aload 7
     //   190: sipush 10016
-    //   193: invokevirtual 632	avsm:a	(I)V
+    //   193: invokevirtual 640	axzw:a	(I)V
     //   196: aload 6
-    //   198: invokevirtual 633	java/util/ArrayList:isEmpty	()Z
+    //   198: invokevirtual 641	java/util/ArrayList:isEmpty	()Z
     //   201: ifne +19 -> 220
     //   204: aload_0
     //   205: getfield 84	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   208: iconst_2
-    //   209: invokevirtual 636	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalpd;
-    //   212: checkcast 638	alpk
+    //   209: invokevirtual 644	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanii;
+    //   212: checkcast 646	anip
     //   215: aload 6
-    //   217: invokevirtual 640	alpk:b	(Ljava/util/ArrayList;)V
+    //   217: invokevirtual 648	anip:b	(Ljava/util/ArrayList;)V
     //   220: aload_2
     //   221: ifnull +17 -> 238
     //   224: aload_2
-    //   225: getfield 516	com/tencent/mobileqq/data/Card:iNewCount	I
+    //   225: getfield 524	com/tencent/mobileqq/data/Card:iNewCount	I
     //   228: ifne +15 -> 243
     //   231: aload_2
-    //   232: getfield 517	com/tencent/mobileqq/data/Card:iUpgradeCount	I
+    //   232: getfield 525	com/tencent/mobileqq/data/Card:iUpgradeCount	I
     //   235: ifne +8 -> 243
     //   238: aload_0
     //   239: iconst_0
-    //   240: invokespecial 433	com/tencent/mobileqq/medalwall/MedalWallMng:b	(I)V
-    //   243: invokestatic 271	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   240: invokespecial 442	com/tencent/mobileqq/medalwall/MedalWallMng:b	(I)V
+    //   243: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   246: ifeq +67 -> 313
-    //   249: invokestatic 277	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   249: invokestatic 288	java/util/Locale:getDefault	()Ljava/util/Locale;
     //   252: astore 6
     //   254: aload_2
     //   255: ifnonnull +286 -> 541
@@ -742,34 +747,34 @@ public class MedalWallMng
     //   259: istore 4
     //   261: aload_2
     //   262: ifnonnull +288 -> 550
-    //   265: ldc 183
+    //   265: ldc 120
     //   267: iconst_2
     //   268: aload 6
-    //   270: ldc_w 642
+    //   270: ldc_w 650
     //   273: iconst_4
     //   274: anewarray 4	java/lang/Object
     //   277: dup
     //   278: iconst_0
     //   279: iload_1
-    //   280: invokestatic 285	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   280: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   283: aastore
     //   284: dup
     //   285: iconst_1
     //   286: iload_3
-    //   287: invokestatic 285	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   287: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   290: aastore
     //   291: dup
     //   292: iconst_2
     //   293: iload 4
-    //   295: invokestatic 285	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   295: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   298: aastore
     //   299: dup
     //   300: iconst_3
     //   301: iload 5
-    //   303: invokestatic 285	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   303: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   306: aastore
-    //   307: invokestatic 289	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   310: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   307: invokestatic 299	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   310: invokestatic 301	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   313: return
     //   314: aload 8
     //   316: monitorexit
@@ -780,34 +785,34 @@ public class MedalWallMng
     //   325: monitorenter
     //   326: aload_0
     //   327: getfield 96	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   330: invokevirtual 643	java/util/ArrayList:clear	()V
+    //   330: invokevirtual 651	java/util/ArrayList:clear	()V
     //   333: aload 8
     //   335: monitorexit
     //   336: aload_2
-    //   337: instanceof 131
+    //   337: instanceof 150
     //   340: ifeq +219 -> 559
     //   343: aload_2
-    //   344: checkcast 131	aubj
+    //   344: checkcast 150	awit
     //   347: astore_2
     //   348: aload_2
-    //   349: getfield 134	aubj:jdField_a_of_type_ComTencentMobileqqDataMedalInfo	Lcom/tencent/mobileqq/data/MedalInfo;
-    //   352: getfield 200	com/tencent/mobileqq/data/MedalInfo:iId	I
+    //   349: getfield 153	awit:jdField_a_of_type_ComTencentMobileqqDataMedalInfo	Lcom/tencent/mobileqq/data/MedalInfo;
+    //   352: getfield 215	com/tencent/mobileqq/data/MedalInfo:iId	I
     //   355: istore_3
     //   356: aload_2
-    //   357: getfield 134	aubj:jdField_a_of_type_ComTencentMobileqqDataMedalInfo	Lcom/tencent/mobileqq/data/MedalInfo;
+    //   357: getfield 153	awit:jdField_a_of_type_ComTencentMobileqqDataMedalInfo	Lcom/tencent/mobileqq/data/MedalInfo;
     //   360: astore 8
     //   362: aload 8
     //   364: aload 6
-    //   366: invokevirtual 613	com/tencent/mobileqq/data/MedalInfo:putReportInfo	(Ljava/util/ArrayList;)V
+    //   366: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:putReportInfo	(Ljava/util/ArrayList;)V
     //   369: aload 8
-    //   371: invokevirtual 616	com/tencent/mobileqq/data/MedalInfo:setRead	()V
+    //   371: invokevirtual 622	com/tencent/mobileqq/data/MedalInfo:setRead	()V
     //   374: aload 8
-    //   376: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   376: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   379: sipush 1000
     //   382: if_icmpne +40 -> 422
     //   385: aload 7
     //   387: aload 8
-    //   389: invokevirtual 622	awgf:b	(Lawge;)V
+    //   389: invokevirtual 629	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   392: aload_0
     //   393: getfield 96	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   396: astore 7
@@ -816,7 +821,7 @@ public class MedalWallMng
     //   401: aload_0
     //   402: getfield 96	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   405: aload_2
-    //   406: invokevirtual 645	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   406: invokevirtual 653	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   409: pop
     //   410: aload 7
     //   412: monitorexit
@@ -827,16 +832,16 @@ public class MedalWallMng
     //   420: aload_2
     //   421: athrow
     //   422: aload 8
-    //   424: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   424: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   427: sipush 1001
     //   430: if_icmpeq +14 -> 444
     //   433: aload 8
-    //   435: invokevirtual 619	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
+    //   435: invokevirtual 625	com/tencent/mobileqq/data/MedalInfo:getStatus	()I
     //   438: sipush 1002
     //   441: if_icmpne -49 -> 392
     //   444: aload 7
     //   446: aload 8
-    //   448: invokevirtual 625	awgf:a	(Lawge;)Z
+    //   448: invokevirtual 633	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   451: pop
     //   452: goto -60 -> 392
     //   455: astore_2
@@ -849,44 +854,44 @@ public class MedalWallMng
     //   465: aload_0
     //   466: getfield 84	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   469: bipush 51
-    //   471: invokevirtual 344	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   474: checkcast 346	alto
+    //   471: invokevirtual 353	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   474: checkcast 355	anmw
     //   477: astore 7
     //   479: aload 7
     //   481: aload_0
     //   482: getfield 84	com/tencent/mobileqq/medalwall/MedalWallMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   485: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   488: invokevirtual 349	alto:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   485: invokevirtual 341	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   488: invokevirtual 358	anmw:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   491: astore_2
     //   492: aload_2
     //   493: iconst_0
-    //   494: putfield 517	com/tencent/mobileqq/data/Card:iUpgradeCount	I
+    //   494: putfield 525	com/tencent/mobileqq/data/Card:iUpgradeCount	I
     //   497: aload_2
     //   498: iconst_0
-    //   499: putfield 516	com/tencent/mobileqq/data/Card:iNewCount	I
+    //   499: putfield 524	com/tencent/mobileqq/data/Card:iNewCount	I
     //   502: aload 7
     //   504: aload_2
-    //   505: invokevirtual 528	alto:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   505: invokevirtual 534	anmw:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   508: pop
     //   509: goto -354 -> 155
     //   512: aload_2
     //   513: ifnull +17 -> 530
     //   516: aload_2
-    //   517: getfield 516	com/tencent/mobileqq/data/Card:iNewCount	I
+    //   517: getfield 524	com/tencent/mobileqq/data/Card:iNewCount	I
     //   520: ifne -324 -> 196
     //   523: aload_2
-    //   524: getfield 517	com/tencent/mobileqq/data/Card:iUpgradeCount	I
+    //   524: getfield 525	com/tencent/mobileqq/data/Card:iUpgradeCount	I
     //   527: ifne -331 -> 196
     //   530: aload 7
     //   532: sipush 10015
-    //   535: invokevirtual 632	avsm:a	(I)V
+    //   535: invokevirtual 640	axzw:a	(I)V
     //   538: goto -342 -> 196
     //   541: aload_2
-    //   542: getfield 516	com/tencent/mobileqq/data/Card:iNewCount	I
+    //   542: getfield 524	com/tencent/mobileqq/data/Card:iNewCount	I
     //   545: istore 4
     //   547: goto -286 -> 261
     //   550: aload_2
-    //   551: getfield 517	com/tencent/mobileqq/data/Card:iUpgradeCount	I
+    //   551: getfield 525	com/tencent/mobileqq/data/Card:iUpgradeCount	I
     //   554: istore 5
     //   556: goto -291 -> 265
     //   559: iconst_0
@@ -940,7 +945,7 @@ public class MedalWallMng
     if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_d_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null)) {
       g();
     }
-    if ((bdeu.a(paramString1, this.jdField_c_of_type_JavaLangString)) && (bdeu.a(paramString2, this.jdField_d_of_type_JavaLangString)) && (bdeu.a(paramString3, this.jdField_e_of_type_JavaLangString)))
+    if ((bgjw.a(paramString1, this.jdField_c_of_type_JavaLangString)) && (bgjw.a(paramString2, this.jdField_d_of_type_JavaLangString)) && (bgjw.a(paramString3, this.jdField_e_of_type_JavaLangString)))
     {
       if (QLog.isColorLevel()) {
         QLog.i("MedalWallMng", 4, "onGetConfig, no change return.");
@@ -961,54 +966,6 @@ public class MedalWallMng
       this.jdField_b_of_type_Boolean = bool;
       return;
       bool = false;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, "insertFriendMedalNewsMsg " + paramString2);
-    }
-    aeqn localaeqn = (aeqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
-    Object localObject = localaeqn.a(paramString2, 0, 3);
-    if (localObject != null) {
-      if (((BeancurdMsg)localObject).originTime < paramLong) {
-        break label262;
-      }
-    }
-    label262:
-    for (int k = 0;; k = 1) {
-      for (;;)
-      {
-        if (k != 0) {}
-        try
-        {
-          localObject = new BeancurdMsg();
-          ((BeancurdMsg)localObject).frienduin = paramString2;
-          ((BeancurdMsg)localObject).busiid = 4;
-          ((BeancurdMsg)localObject).isNeedDelHistory = true;
-          ((BeancurdMsg)localObject).ispush = false;
-          ((BeancurdMsg)localObject).originTime = paramLong;
-          ((BeancurdMsg)localObject).startTime = ayzl.a();
-          ((BeancurdMsg)localObject).validTime = 2592000L;
-          ((BeancurdMsg)localObject).buffer = paramString1;
-          localaeqn.a((BeancurdMsg)localObject);
-          return;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString2, 0, new int[] { -2062 });
-          if ((localObject != null) && (((List)localObject).size() > 0) && (((MessageForMedalNews)((List)localObject).get(((List)localObject).size() - 1)).ts >= paramLong)) {
-            k = 0;
-          }
-        }
-        catch (Exception paramString1)
-        {
-          do
-          {
-            paramString1.printStackTrace();
-          } while (!QLog.isColorLevel());
-          QLog.i("MedalWallMng", 2, "handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: " + paramString1.getMessage());
-          return;
-        }
-      }
     }
   }
   
@@ -1046,7 +1003,7 @@ public class MedalWallMng
       c();
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
     Object localObject3 = this.jdField_a_of_type_AndroidUtilSparseArray;
     int k = 0;
     for (;;)
@@ -1071,7 +1028,7 @@ public class MedalWallMng
           if (localMedalInfo.getStatus() != 1000) {
             break label413;
           }
-          ((awgf)localObject2).b(localMedalInfo);
+          ((EntityManager)localObject2).persistOrReplace(localMedalInfo);
           if (!QLog.isColorLevel()) {
             break label591;
           }
@@ -1084,7 +1041,7 @@ public class MedalWallMng
       label413:
       if ((localMedalInfo.getStatus() == 1001) || (localMedalInfo.getStatus() == 1002))
       {
-        ((awgf)localObject2).a(localMedalInfo);
+        ((EntityManager)localObject2).update(localMedalInfo);
         continue;
         label446:
         k = 0;
@@ -1098,7 +1055,7 @@ public class MedalWallMng
           else
           {
             if (((MedalInfo)localObject3).getStatus() == 1000) {
-              ((awgf)localObject2).b((awge)localObject3);
+              ((EntityManager)localObject2).persistOrReplace((Entity)localObject3);
             }
             for (;;)
             {
@@ -1107,7 +1064,7 @@ public class MedalWallMng
                 this.jdField_a_of_type_AndroidUtilSparseArray.put(((MedalInfo)localObject3).iId, localObject3);
               }
               if ((((MedalInfo)localObject3).getStatus() == 1001) || (((MedalInfo)localObject3).getStatus() == 1002)) {
-                ((awgf)localObject2).a((awge)localObject3);
+                ((EntityManager)localObject2).update((Entity)localObject3);
               }
             }
           }
@@ -1125,7 +1082,7 @@ public class MedalWallMng
   {
     if (this.j == -2147483648)
     {
-      this.j = bdne.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
+      this.j = bgsg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
       if (QLog.isColorLevel()) {
         QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "isMedalStrongReminderOff value: %s", new Object[] { Integer.valueOf(this.j) }));
       }
@@ -1151,21 +1108,21 @@ public class MedalWallMng
         QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkShowMedalGuide isMedalConfigOff: %s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
         return false;
       }
-      Object localObject1 = (avsm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(160);
-      if (((avsm)localObject1).a(((avsm)localObject1).a(10015), false)) {}
-      for (int k = 1;; k = 0)
+      Object localObject1 = (axzw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(160);
+      Object localObject3 = ((axzw)localObject1).a(10015);
+      boolean bool = ((axzw)localObject1).b((RedTouchItem)localObject3);
+      if (QLog.isColorLevel()) {
+        QLog.d("MedalWallMng", 2, String.format("checkShowMedalGuide item=%s hasMedalRedPoint=%s", new Object[] { localObject3, Boolean.valueOf(bool) }));
+      }
+      if (!bool)
       {
-        if (k != 0) {
-          break label131;
-        }
         if (!QLog.isDevelopLevel()) {
-          break;
+          continue;
         }
         QLog.i("MedalWallMng", 4, "checkShowMedalGuide no red point");
         return false;
       }
-      label131:
-      Object localObject3 = null;
+      localObject3 = null;
       localObject1 = null;
       try
       {
@@ -1177,61 +1134,61 @@ public class MedalWallMng
             break;
           }
           localObject3 = localObject1;
-          aubj localaubj = (aubj)localIterator.next();
-          if (localaubj != null)
+          awit localawit = (awit)localIterator.next();
+          if (localawit != null)
           {
             localObject3 = localObject1;
-            if (localaubj.jdField_b_of_type_Boolean) {
-              break label640;
+            if (localawit.jdField_b_of_type_Boolean) {
+              break label668;
             }
             localObject3 = localObject1;
-            if (!localaubj.jdField_a_of_type_Boolean) {
-              break label640;
+            if (!localawit.jdField_a_of_type_Boolean) {
+              break label668;
             }
             localObject3 = localObject1;
-            if (TextUtils.isEmpty(localaubj.jdField_a_of_type_JavaLangString)) {
-              break label640;
+            if (TextUtils.isEmpty(localawit.jdField_a_of_type_JavaLangString)) {
+              break label668;
             }
             localObject3 = localObject1;
-            if (TextUtils.isEmpty(localaubj.jdField_b_of_type_JavaLangString)) {
-              break label640;
+            if (TextUtils.isEmpty(localawit.jdField_b_of_type_JavaLangString)) {
+              break label668;
             }
             localObject3 = localObject1;
-            if (localaubj.jdField_a_of_type_Int == 2) {
-              break label640;
+            if (localawit.jdField_a_of_type_Int == 2) {
+              break label668;
             }
             localObject3 = localObject1;
-            if (localaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null) {
-              break label640;
+            if (localawit.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null) {
+              break label668;
             }
-            localObject3 = localaubj;
+            localObject3 = localawit;
             if (localObject1 != null)
             {
               localObject3 = localObject1;
-              boolean bool = localaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.isNewer(((aubj)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo);
+              bool = localawit.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.isNewer(((awit)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo);
               if (!bool) {
-                break label640;
+                break label668;
               }
-              localObject3 = localaubj;
+              localObject3 = localawit;
             }
             localObject1 = localObject3;
           }
         }
-        if ((localObject1 != null) && (((aubj)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
+        if ((localObject1 != null) && (((awit)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
         {
-          ((aubj)localObject1).jdField_b_of_type_Boolean = true;
-          localObject3 = ((aubj)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo;
+          ((awit)localObject1).jdField_b_of_type_Boolean = true;
+          localObject3 = ((awit)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo;
           if ((paramObject instanceof Card))
           {
             paramObject = (Card)paramObject;
             if (((MedalInfo)localObject3).iLevel == 255)
             {
               if (((MedalInfo)localObject3).iUnreadLevel1 != 1) {
-                break label631;
+                break label659;
               }
               k = 0;
               n = 1;
-              label371:
+              label399:
               paramObject.iNewCount -= n;
               paramObject.iUpgradeCount -= k;
             }
@@ -1241,8 +1198,8 @@ public class MedalWallMng
             paramObject = Message.obtain();
             paramObject.what = 4;
             paramObject.obj = localObject1;
-            this.jdField_a_of_type_Bhtd.sendMessage(paramObject);
-            MedalGuideView.a((aubj)localObject1, paramBaseActivity, paramView, paramInt);
+            this.jdField_a_of_type_Bkgm.sendMessage(paramObject);
+            MedalGuideView.a((awit)localObject1, paramBaseActivity, paramView, paramInt);
             if (QLog.isDevelopLevel()) {
               QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "checkShowMedalGuide [%d, %d,  %s]", new Object[] { Integer.valueOf(((MedalInfo)localObject3).iId), Integer.valueOf(((MedalInfo)localObject3).iLevel), ((MedalInfo)localObject3).strName }));
             }
@@ -1268,16 +1225,16 @@ public class MedalWallMng
                 n = m;
                 k = i1;
                 if (((MedalInfo)localObject3).iLevel < 3) {
-                  break label371;
+                  break label399;
                 }
                 n = m;
                 k = i1;
                 if (((MedalInfo)localObject3).iUnreadLevel3 != 1) {
-                  break label371;
+                  break label399;
                 }
                 k = i1 + 1;
                 n = m;
-                break label371;
+                break label399;
                 if (!QLog.isDevelopLevel()) {
                   break;
                 }
@@ -1286,11 +1243,11 @@ public class MedalWallMng
               }
             }
           }
-          label631:
-          k = 0;
+          label659:
+          int k = 0;
           int n = 0;
           continue;
-          label640:
+          label668:
           localObject3 = localObject2;
         }
       }
@@ -1299,22 +1256,16 @@ public class MedalWallMng
   
   public void b()
   {
-    if (a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "onGetSelfObtainNewMedalNotice medal strong reminder is off!");
-      }
+    boolean bool1 = a();
+    boolean bool2 = b();
+    if (QLog.isColorLevel()) {
+      QLog.d("MedalWallMng", 2, String.format("onGetSelfObtainNewMedalNotice isMedalStrongReminderOff=%s isMedalOff=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
     }
-    do
-    {
+    if ((bool1) || (bool2)) {
       return;
-      if (!b()) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("MedalWallMng", 4, "onGetSelfObtainNewMedalNotice medal is off!");
-    return;
-    this.jdField_a_of_type_Bhtd.removeMessages(3);
-    ((alpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).z();
+    }
+    this.jdField_a_of_type_Bkgm.removeMessages(3);
+    ((anip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).x();
   }
   
   protected void c()
@@ -1336,8 +1287,8 @@ public class MedalWallMng
     if (QLog.isColorLevel()) {
       QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkMedalWall mIsInit: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
-    this.jdField_a_of_type_Bhtd.removeMessages(3);
-    this.jdField_a_of_type_Bhtd.removeMessages(1);
+    this.jdField_a_of_type_Bkgm.removeMessages(3);
+    this.jdField_a_of_type_Bkgm.removeMessages(1);
     this.h = 0;
     this.i = 0;
     d();
@@ -1356,9 +1307,9 @@ public class MedalWallMng
             if ((localMedalInfo == null) || (!localMedalInfo.isUnread())) {
               break label255;
             }
-            aubj localaubj = new aubj();
-            localaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo = localMedalInfo;
-            localArrayList.add(localaubj);
+            awit localawit = new awit();
+            localawit.jdField_a_of_type_ComTencentMobileqqDataMedalInfo = localMedalInfo;
+            localArrayList.add(localawit);
           }
         }
         finally {}
@@ -1369,7 +1320,7 @@ public class MedalWallMng
           if (this.h >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
             break;
           }
-          this.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
+          this.jdField_a_of_type_Bkgm.sendEmptyMessage(1);
           return;
         }
       }
@@ -1390,23 +1341,23 @@ public class MedalWallMng
         return true;
         e();
         return true;
-        aubj localaubj = (aubj)paramMessage.obj;
-        if (localaubj != null)
+        awit localawit = (awit)paramMessage.obj;
+        if (localawit != null)
         {
-          if (localaubj.jdField_a_of_type_Int == 2) {
+          if (localawit.jdField_a_of_type_Int == 2) {
             this.i += 1;
           }
           if (QLog.isColorLevel()) {
-            QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "MSG_DOWNLOAD_RES_RESULT failCount: %d, cost: %d, failCode: %d, url: %s", new Object[] { Integer.valueOf(this.i), Integer.valueOf(paramMessage.arg1), Integer.valueOf(localaubj.jdField_b_of_type_Int), localaubj.jdField_a_of_type_JavaLangString }));
+            QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "MSG_DOWNLOAD_RES_RESULT failCount: %d, cost: %d, failCode: %d, url: %s", new Object[] { Integer.valueOf(this.i), Integer.valueOf(paramMessage.arg1), Integer.valueOf(localawit.jdField_b_of_type_Int), localawit.jdField_a_of_type_JavaLangString }));
           }
         }
       } while (this.h >= this.jdField_a_of_type_JavaUtilArrayList.size());
-      this.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
+      this.jdField_a_of_type_Bkgm.sendEmptyMessage(1);
       return true;
       f();
       return true;
-    } while (!(paramMessage.obj instanceof aubj));
-    a(0, (aubj)paramMessage.obj);
+    } while (!(paramMessage.obj instanceof awit));
+    a(0, (awit)paramMessage.obj);
     return true;
   }
   
@@ -1428,7 +1379,7 @@ public class MedalWallMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalWallMng
  * JD-Core Version:    0.7.0.1
  */

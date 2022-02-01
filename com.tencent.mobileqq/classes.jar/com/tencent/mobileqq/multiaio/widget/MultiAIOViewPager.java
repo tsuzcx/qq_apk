@@ -14,11 +14,11 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import aull;
-import aumc;
-import aumd;
-import aume;
-import aumq;
+import awsp;
+import awtg;
+import awth;
+import awti;
+import awtu;
 import com.tencent.qphone.base.util.QLog;
 
 public class MultiAIOViewPager
@@ -27,9 +27,9 @@ public class MultiAIOViewPager
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private aull jdField_a_of_type_Aull;
-  private aume jdField_a_of_type_Aume;
-  private aumq jdField_a_of_type_Aumq;
+  private awsp jdField_a_of_type_Awsp;
+  private awti jdField_a_of_type_Awti;
+  private awtu jdField_a_of_type_Awtu;
   private int d;
   private int e = -1;
   
@@ -67,8 +67,8 @@ public class MultiAIOViewPager
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aumc(this), new Handler(Looper.getMainLooper()));
-    a(new aumd(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new awtg(this), new Handler(Looper.getMainLooper()));
+    a(new awth(this));
   }
   
   public void b(float paramFloat)
@@ -85,8 +85,8 @@ public class MultiAIOViewPager
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOViewPager", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled " + bool);
     }
-    if ((bool) && (this.jdField_a_of_type_Aumq != null)) {
-      this.jdField_a_of_type_Aumq.b(this, paramMotionEvent);
+    if ((bool) && (this.jdField_a_of_type_Awtu != null)) {
+      this.jdField_a_of_type_Awtu.b(this, paramMotionEvent);
     }
     return bool;
   }
@@ -94,8 +94,8 @@ public class MultiAIOViewPager
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Aull != null) {
-      this.jdField_a_of_type_Aull.b();
+    if (this.jdField_a_of_type_Awsp != null) {
+      this.jdField_a_of_type_Awsp.b();
     }
   }
   
@@ -106,8 +106,8 @@ public class MultiAIOViewPager
   
   public void g()
   {
-    if (this.jdField_a_of_type_Aull != null) {
-      this.jdField_a_of_type_Aull.a();
+    if (this.jdField_a_of_type_Awsp != null) {
+      this.jdField_a_of_type_Awsp.a();
     }
   }
   
@@ -138,8 +138,8 @@ public class MultiAIOViewPager
       if (QLog.isColorLevel()) {
         QLog.d("MultiAIOViewPager", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
       }
-      if (this.jdField_a_of_type_Aume != null) {
-        this.jdField_a_of_type_Aume.a(bool);
+      if (this.jdField_a_of_type_Awti != null) {
+        this.jdField_a_of_type_Awti.a(bool);
       }
       return bool;
     }
@@ -213,8 +213,8 @@ public class MultiAIOViewPager
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_Aull = new aull();
-    this.jdField_a_of_type_Aull.a(paramString);
+    this.jdField_a_of_type_Awsp = new awsp();
+    this.jdField_a_of_type_Awsp.a(paramString);
   }
   
   public void setAnchorX(int paramInt)
@@ -223,9 +223,9 @@ public class MultiAIOViewPager
     invalidate();
   }
   
-  public void setIdleListener(aume paramaume)
+  public void setIdleListener(awti paramawti)
   {
-    this.jdField_a_of_type_Aume = paramaume;
+    this.jdField_a_of_type_Awti = paramawti;
   }
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
@@ -234,14 +234,14 @@ public class MultiAIOViewPager
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setTouchEventConsumer(aumq paramaumq)
+  public void setTouchEventConsumer(awtu paramawtu)
   {
-    this.jdField_a_of_type_Aumq = paramaumq;
+    this.jdField_a_of_type_Awtu = paramawtu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager
  * JD-Core Version:    0.7.0.1
  */

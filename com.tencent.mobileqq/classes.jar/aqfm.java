@@ -1,45 +1,45 @@
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.graphics.Point;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aqfm
-  implements aqgj
+public class aqfm
+  implements Animator.AnimatorListener
 {
-  aqfm(aqfk paramaqfk) {}
+  public aqfm(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public void a(int paramInt, aqcl paramaqcl, String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel())
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
+    if (!this.a.a())
     {
-      QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, "onMatchingResult, result = " + paramInt + " nickName : " + paramString1);
-      if (paramaqcl != null) {
-        QLog.d("ExtendFriendLimitChatManagerExtendFriendLimitChat", 2, " info：" + paramaqcl.toString());
-      }
+      paramAnimator.leftMargin = bggq.a(this.a.getContext(), 14.5F);
+      paramAnimator.rightMargin = 0;
     }
-    if ((aqfk.a(this.a) == null) || (aqfk.a(this.a).get() == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ExtendFriendLimitChatManager", 2, "onMatchingResult, listener = null");
-      }
-    }
-    while (this.a.a() != 2) {
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bggq.a(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    paramAnimator = this.a;
+    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
+    for (int i = 0;; i = 1)
+    {
+      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
+      ColorNoteSmallScreenRelativeLayout.d(this.a, false);
       return;
     }
-    if ((paramInt != 0) || (paramaqcl == null)) {
-      this.a.a().a(104);
-    }
-    for (;;)
-    {
-      ((aqfp)aqfk.a(this.a).get()).a(paramInt, paramaqcl, paramString1, paramString2);
-      return;
-      aqfk.a(this.a, paramaqcl.a());
-      this.a.a = paramString1;
-      this.a.a().a(105);
-      if (!aqfk.a(this.a))
-      {
-        QQNotificationManager.getInstance().createLimitChatNotificationChannel();
-        aqfk.a(this.a, true);
-      }
-    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ColorNoteSmallScreenRelativeLayout.d(this.a, true);
   }
 }
 

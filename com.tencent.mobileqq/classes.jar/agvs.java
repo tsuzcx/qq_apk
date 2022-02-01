@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.View;
 
-public class agvs
-  implements DialogInterface.OnClickListener
+class agvs
+  implements atwb
 {
-  public agvs(TroopChatPie paramTroopChatPie) {}
+  agvs(agup paramagup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.I();
+    paramView = bglp.a(this.a.a, 230);
+    paramView.setTitle(2131691361);
+    paramView.setMessage(2131691362);
+    paramView.setNegativeButton(2131690582, new agvt(this, paramView));
+    paramView.setPositiveButton(2131694081, new agvu(this));
+    paramView.show();
   }
 }
 

@@ -1,34 +1,88 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqzo
-  extends aqyt
+public class aqzo
+  extends aqkz<aqzm>
 {
-  public aqzo(aqyp paramaqyp)
+  @NonNull
+  public aqzm a(int paramInt)
   {
-    super(paramaqyp);
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aqzm();
   }
   
-  protected String a()
+  @Nullable
+  public aqzm a(aqlg[] paramArrayOfaqlg)
   {
-    return "StateSaveToWeiYunByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      }
+      return aqzm.a(paramArrayOfaqlg[0]);
+    }
+    return null;
+  }
+  
+  public void a(aqzm paramaqzm)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaqzm == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramaqzm = paramaqzm.toString();; paramaqzm = " empty")
+    {
+      QLog.d("VerticalSearchConfProcessor", 2, paramaqzm);
       return;
     }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 7);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Aqyt = new aqzn(this.jdField_a_of_type_Aqyp);
+  }
+  
+  public Class clazz()
+  {
+    return aqzm.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 456;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzo
  * JD-Core Version:    0.7.0.1
  */

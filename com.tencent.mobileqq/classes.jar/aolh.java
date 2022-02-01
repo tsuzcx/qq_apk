@@ -1,82 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aolh
-  extends aokh<aoli>
+  extends aojt
 {
-  public int a()
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    return 574;
-  }
-  
-  @NonNull
-  public aoli a(int paramInt)
-  {
-    return new aoli();
-  }
-  
-  @Nullable
-  public aoli a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    paramQQAppInterface = new aolg(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "buscard";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      aoli localaoli = aoli.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaoko[0].a);
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
-      return localaoli;
     }
-    return null;
-  }
-  
-  public Class<aoli> a()
-  {
-    return aoli.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoli paramaoli)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaoli.a());
-    }
-    ShortVideoUtils.a(paramaoli.a());
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
-    }
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,59 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adgs
-  extends ambl
+  implements adgo
 {
-  public adgs(LebaListMgrActivity paramLebaListMgrActivity) {}
+  adgp jdField_a_of_type_Adgp;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   
-  public void a(boolean paramBoolean, Object paramObject)
+  private void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+        {
+          IntentFilter localIntentFilter = new IntentFilter();
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
+          adgt localadgt = new adgt(this);
+          BaseApplicationImpl.getContext().registerReceiver(localadgt, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localadgt;
+        }
+        return;
+      }
+      finally {}
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = aieq.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
+  }
+  
+  public void a(adgp paramadgp)
+  {
+    this.jdField_a_of_type_Adgp = paramadgp;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    adeg.a(2, localBundle, null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    localBundle.putString("api", paramString3);
+    adeg.a(3, localBundle, null);
   }
 }
 

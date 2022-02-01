@@ -1,14 +1,45 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public abstract interface avci
+public class avci
+  extends MSFServlet
 {
-  public abstract void a(Comments.Comment paramComment);
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface)))
+    {
+      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false)) {
+        arqs.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+      }
+    }
+    else {
+      return;
+    }
+    avbk.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+  }
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
+    {
+      QLog.e("HotPicServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avci
  * JD-Core Version:    0.7.0.1
  */

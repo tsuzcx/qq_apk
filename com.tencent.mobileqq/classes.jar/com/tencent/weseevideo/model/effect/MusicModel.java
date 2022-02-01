@@ -1,7 +1,6 @@
 package com.tencent.weseevideo.model.effect;
 
 import com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean;
-import java.util.Map;
 
 public class MusicModel
   extends BaseEffectModel
@@ -28,9 +27,7 @@ public class MusicModel
     this.filePath = 0;
     this.bgmVolume = 0.8F;
     this.volume = 0.3F;
-    if (this.extraParams != null) {
-      this.extraParams.clear();
-    }
+    clearExtraParams();
     this.source = 0;
   }
   
@@ -146,7 +143,7 @@ public class MusicModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.MusicModel
  * JD-Core Version:    0.7.0.1
  */

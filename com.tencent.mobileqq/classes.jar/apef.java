@@ -1,29 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
 public final class apef
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
+    return new ArFeatureInfo(paramParcel);
   }
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public ArFeatureInfo[] a(int paramInt)
   {
-    return new IPSiteModel.Goods[paramInt];
+    return new ArFeatureInfo[paramInt];
   }
 }
 

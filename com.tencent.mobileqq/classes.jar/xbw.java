@@ -1,29 +1,40 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
+
 public class xbw
+  extends xdt
 {
-  @xrk(a="tag_type")
-  public int a;
-  @xrk(a="tag_id")
-  public long a;
-  @xrk(a="tag_name")
-  public String a;
-  @xrk(a="join_count")
-  public int b;
-  @xrk(a="tag_desc")
-  public String b;
-  @xrk(a="music_type")
-  public int c;
-  @xrk(a="wording")
-  public String c;
-  @xrk(a="music_id")
-  public String d;
-  @xrk(a="music_title")
-  public String e;
-  @xrk(a="music_download_url")
-  public String f;
+  StoryVideoItem a;
+  public xxm a;
+  
+  public xbw(StoryVideoItem paramStoryVideoItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      yqp.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
+    {
+      this.jdField_a_of_type_Xxm = new xxj();
+      this.jdField_a_of_type_Xxm.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new xbx(this));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,21 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbiz
-  implements bbeu
+class bbiz
+  implements View.OnClickListener
 {
-  public bbiz(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bbiz(bbiy parambbiy, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      break label37;
-    }
-    label37:
-    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_Bbfa.b.length();
-    int k = this.a.jdField_a_of_type_Bbfa.a.length();
-    int n = this.a.jdField_a_of_type_Bbfa.c.length() + (j + k);
-    if ((paramInt1 < this.a.J.length() + n) && (paramInt2 < this.a.J.length() + n))
-    {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        bhsj.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-    }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.J.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label203:
-        if (paramInt1 <= i) {
-          break label439;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.J.length() + n;
-      break label203;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.J.length() + n) {
-          label258:
-          if (paramInt1 <= i) {
-            break label434;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-        return;
-        paramInt1 = this.a.J.length() + n;
-        break label258;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Bbfa.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.J.length() + n)
-        {
-          j = n + this.a.J.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.J.length() + n)
-        {
-          paramInt1 = n + this.a.J.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label434:
-        i = paramInt1;
-      }
-      label439:
-      i = paramInt1;
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_Bbiy.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bbiy.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

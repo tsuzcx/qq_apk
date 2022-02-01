@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bbsy
-  implements DialogInterface.OnClickListener
+public class bbsy
+  extends bbti
 {
-  bbsy(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbsy(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
-    }
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
+  
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new atig(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

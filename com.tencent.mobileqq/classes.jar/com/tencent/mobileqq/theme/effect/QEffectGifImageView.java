@@ -21,9 +21,8 @@ public class QEffectGifImageView
   extends ImageView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private QEffectData jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
+  private QEffectData a;
   protected SensorParams a;
-  private final String jdField_a_of_type_JavaLangString = "QEffectGifImageView";
   
   public QEffectGifImageView(Context paramContext)
   {
@@ -70,7 +69,7 @@ public class QEffectGifImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.effect.QEffectGifImageView
  * JD-Core Version:    0.7.0.1
  */

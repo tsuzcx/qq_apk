@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import axoc;
-import bdhb;
+import bamd;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -12,7 +12,7 @@ public final class CapturePtvTemplateManager$2
   
   public void run()
   {
-    bdhb.a(axoc.a.getPath() + File.separator, this.a, this.b);
+    bgmg.a(bamd.a.getPath() + File.separator, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("CapturePtvTemplateManager", 2, "save Config to file finish.");
     }
@@ -20,7 +20,7 @@ public final class CapturePtvTemplateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.2
  * JD-Core Version:    0.7.0.1
  */

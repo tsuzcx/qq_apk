@@ -1,52 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asxt
-  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
+class asxt
+  implements View.OnClickListener
 {
-  asxt(asxr paramasxr) {}
+  asxt(asxs paramasxs, View paramView) {}
   
-  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
+  public void onClick(View paramView)
   {
-    asxr.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
-  }
-  
-  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
-  {
-    paramHashMap = asxy.a().a(5);
-    if (paramHashMap == null) {
-      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
-    }
-    do
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof asth))
     {
-      return;
-      paramHashMap = paramHashMap.optString("result_api_url", "");
-      if (TextUtils.isEmpty(paramHashMap))
-      {
-        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
-        return;
+      localObject = (FileManagerEntity)((asth)localObject).a;
+      if (paramView.getId() != 2131365302) {
+        break label121;
       }
-    } while (!paramHashMap.equals(paramString1));
-    QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_Asxe == null) {
-      this.a.jdField_a_of_type_Asxe = new asxc(asxr.a(this.a), paramString2, this.a.jdField_a_of_type_Asxw);
+      bkho localbkho = (bkho)bkif.a(this.jdField_a_of_type_Asxs.a.a, null);
+      localbkho.a(anni.a(2131708391));
+      localbkho.a(anni.a(2131708395), 3);
+      localbkho.d(anni.a(2131708393));
+      localbkho.a(new asxu(this, (FileManagerEntity)localObject, localbkho));
+      localbkho.show();
     }
     for (;;)
     {
-      asxr.a(this.a, new IdentificationPoseReflect.5.2(this));
-      if (!bdin.g(BaseApplicationImpl.getApplication())) {
-        break;
-      }
-      ((asxc)this.a.jdField_a_of_type_Asxe).b();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ((asxc)this.a.jdField_a_of_type_Asxe).a(paramString2);
+      localObject = (FileManagerEntity)((asyb)localObject).a;
+      break;
+      label121:
+      if (paramView.getId() == 2131367030) {
+        this.jdField_a_of_type_Asxs.a.c((FileManagerEntity)localObject);
+      } else if (paramView.getId() == 2131377201) {
+        ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Asxs.a));
+      }
     }
   }
 }

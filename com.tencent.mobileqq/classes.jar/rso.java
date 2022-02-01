@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.text.TextUtils;
 
-public class rso
-  implements View.OnLongClickListener
+class rso
+  implements rsh<riw>
 {
-  public rso(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
+  rso(rsn paramrsn) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean a(riw paramriw)
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-    return false;
+    return TextUtils.equals("video/mp4", paramriw.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rso
  * JD-Core Version:    0.7.0.1
  */

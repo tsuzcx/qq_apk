@@ -1,28 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
-public class bnjt
-  extends BroadcastReceiver
+class bnjt
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  public bnjt(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnjt(bnjl parambnjl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    if (paramRatio == null) {
+      return;
     }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
-    }
+    bnjl.a(this.a, paramRatio);
   }
 }
 

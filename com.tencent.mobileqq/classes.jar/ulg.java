@@ -1,77 +1,45 @@
-import android.annotation.TargetApi;
-import com.tencent.common.config.AppSetting;
+import UserGrowth.stNotificationRsp;
 
-@TargetApi(14)
-public class ulg
+class ulg
+  implements ujj
 {
-  public static final Boolean a;
-  public static final String a;
-  public static boolean a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public static final String i;
-  public static final String j;
-  public static final String k;
-  public static final String l;
-  public static final String m;
-  public static final String n;
-  public static final String o;
-  public static final String p;
-  public static final String q;
-  public static final String r;
-  public static final String s;
-  public static final String t;
-  public static final String u;
+  ulg(ulf paramulf) {}
   
-  static
+  public void a(uju paramuju)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131711207);
-    b = alud.a(2131711204);
-    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
-    c = ajrx.jdField_a_of_type_JavaLangString + "/qqstory/";
-    d = c + "debug/";
-    e = c + "upload/";
-    f = e + ".music/";
-    g = c + ".tmp/";
-    h = g + "download/preload/";
-    i = g + "download/mine/";
-    j = g + ".tmp/";
-    k = j + "watermark/";
-    l = j + "merge/";
-    m = j + "audio/";
-    n = j + "video/";
-    o = j + "slideshow/";
-    p = j + "textfilter/";
-    q = j + "pk/result/";
-    r = k + "source/";
-    s = k + "doodle/";
-    t = k + "composite/";
-    u = k + "download/";
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
+    upe.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramuju.b + " | resultBean:" + paramuju.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
+    if (this.a.a() == null)
     {
-    default: 
-      return "UNKNOWN";
-    case 0: 
-      return "VIDEO";
-    case 1: 
-      return "MASK_PIC";
+      upe.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
+      return;
     }
-    return "THUMBNAIL";
+    if (paramuju.a())
+    {
+      if ((paramuju.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
+      {
+        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramuju.jdField_a_of_type_JavaLangObject;
+        ujk localujk = paramuju.jdField_a_of_type_Ujk;
+        if (localujk != null) {
+          ugb.a().a(localstNotificationRsp.trace_id, localujk.a);
+        }
+        if (localstNotificationRsp.type > 0)
+        {
+          ((umh)this.a.a()).a(localstNotificationRsp, localujk);
+          return;
+        }
+        ((umh)this.a.a()).b(paramuju.b, paramuju.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ((umh)this.a.a()).b(paramuju.b, paramuju.jdField_a_of_type_JavaLangString);
+      upe.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramuju.b + " | " + paramuju.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ((umh)this.a.a()).b(paramuju.jdField_a_of_type_Int, paramuju.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ulg
  * JD-Core Version:    0.7.0.1
  */

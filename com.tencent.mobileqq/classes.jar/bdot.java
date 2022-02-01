@@ -1,25 +1,22 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bdot
-  implements Comparator<String>
+final class bdot
+  implements DialogInterface.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  bdot(bdov parambdov) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
+    bdoq.a("0X800A5CB");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
     }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
+    bdoq.a(false);
+    if (this.a != null) {
+      this.a.onConfirm();
     }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
   }
 }
 

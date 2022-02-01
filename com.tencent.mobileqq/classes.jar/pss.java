@@ -1,88 +1,63 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoPluginInstall.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pss
-  extends TextBase
 {
-  private final int jdField_a_of_type_Int = -11644322;
-  private NativeSummaryView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView;
-  private final int b = 5;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(new pst());
+  private static List<psu> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  public pss(VafContext paramVafContext)
+  public static void a()
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView = new NativeSummaryView(paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setTextColor(-11644322);
+    if ((!a()) && (!jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new VideoPluginInstall.1(), 8, null, true);
+    }
   }
   
-  public void a(pgd parampgd)
+  public static void a(psu parampsu)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getLayoutParams() == null)
+    jdField_a_of_type_JavaUtilList.add(parampsu);
+  }
+  
+  public static boolean a()
+  {
+    return TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext());
+  }
+  
+  public static boolean a(psu parampsu)
+  {
+    return jdField_a_of_type_JavaUtilList.contains(parampsu);
+  }
+  
+  private static void c()
+  {
+    TVK_SDKMgr.setOnLogListener(new psw(null));
+    try
     {
-      Object localObject = getComLayoutParams();
-      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (!b)
+      {
+        TVK_SDKMgr.setDebugEnable(true);
+        TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+        if (QLog.isColorLevel()) {
+          QLog.e("gifvideo.VideoPluginInstall", 2, "initVideoSDK() finish");
+        }
+        b = true;
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setModel(parampgd);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setTextSize(0, this.mTextSize);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    if ((paramObject instanceof pgd)) {
-      a((pgd)paramObject);
-    }
-    return true;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pss
  * JD-Core Version:    0.7.0.1
  */

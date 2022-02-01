@@ -1,29 +1,72 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqon
-  implements Cloneable
+  extends aqkz<aqoo>
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
-  public TextView c;
+  public static aqoo a()
+  {
+    return (aqoo)aqlk.a().a(622);
+  }
   
-  public aqon(aqom paramaqom) {}
+  @NonNull
+  public aqoo a(int paramInt)
+  {
+    return new aqoo();
+  }
+  
+  @Nullable
+  public aqoo a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aqoo.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(aqoo paramaqoo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonTabSortConfProcessor", 2, "EmoticonTabSortConfProcessor onUpdate");
+    }
+  }
+  
+  public Class<aqoo> clazz()
+  {
+    return aqoo.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 622;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqon
  * JD-Core Version:    0.7.0.1
  */

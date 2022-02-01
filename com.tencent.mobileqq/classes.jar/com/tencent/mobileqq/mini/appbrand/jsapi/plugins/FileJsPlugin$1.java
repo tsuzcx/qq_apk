@@ -42,11 +42,12 @@ final class FileJsPlugin$1
     add("fs_renameSync");
     add("stat");
     add("statSync");
+    add("downloadWithCache");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

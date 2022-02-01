@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.view.View;
 
-class bffn
-  implements DialogInterface.OnClickListener
+public class bffn
+  extends bffl<bfev>
 {
-  bffn(bffm parambffm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bffn(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffn
  * JD-Core Version:    0.7.0.1
  */

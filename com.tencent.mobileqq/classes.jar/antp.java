@@ -1,27 +1,75 @@
-class antp
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
+
+public class antp
+  implements Manager
 {
-  static final float[] a;
+  private QQAppInterface a;
   
-  static
+  public antp(QQAppInterface paramQQAppInterface)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if ((this.a != null) && (this.a.f()))
     {
-      j = k;
-      if (i >= 8192) {
-        break;
+      aong localaong = this.a.a().a();
+      paramString = (RecentUser)localaong.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        localaong.delRecentUser(paramString);
+        return true;
       }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
     }
-    while (j < 360)
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    if ((this.a != null) && (this.a.f()))
     {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
+      aong localaong = this.a.a().a();
+      paramString = (RecentUser)localaong.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        paramString.lastmsgtime = paramLong;
+        localaong.saveRecentUser(paramString);
+        return true;
+      }
     }
+    return false;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.f()))
+    {
+      aong localaong = this.a.a().a();
+      RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localaong.saveRecentUser(localRecentUser);
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

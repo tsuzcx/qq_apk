@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import ajeq;
-import aknx;
-import akqf;
-import akts;
-import alar;
-import alhp;
-import alhs;
-import aliq;
-import alit;
-import aliu;
+import akws;
+import amhd;
+import amjl;
+import ammy;
+import amtx;
+import anaw;
+import anaz;
+import anbx;
+import anca;
+import ancb;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bdhb;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
@@ -25,7 +25,7 @@ import java.util.Timer;
 public class ApolloManager$2
   implements Runnable
 {
-  public ApolloManager$2(aknx paramaknx) {}
+  public ApolloManager$2(amhd paramamhd) {}
   
   public void run()
   {
@@ -38,25 +38,25 @@ public class ApolloManager$2
       if (QLog.isColorLevel()) {
         l = System.currentTimeMillis();
       }
-      aknx.a(this.this$0);
-      aknx.b(this.this$0);
-      bdhb.c(aliu.a + "/.nomedia");
+      amhd.a(this.this$0);
+      amhd.b(this.this$0);
+      bgmg.c(ancb.a + "/.nomedia");
       this.this$0.a();
-      alhp.a(new alhs().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
-      new alar(0, null);
-      aknx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-      aknx.b(false);
+      anaw.a(new anaz().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
+      new amtx(0, null);
+      amhd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+      amhd.b(false);
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_pet_sp", 0);
       this.this$0.j = ((SharedPreferences)localObject).getString("pet_config", null);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "init apollo data from db done cost: " + (System.currentTimeMillis() - l) + ", mApp: " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      akts.a();
-      aliq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      aknx.b = true;
+      ammy.a();
+      anbx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      amhd.b = true;
       this.this$0.k();
       ApolloUtil.a();
-      akqf.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
+      amjl.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
         localObject = this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -68,14 +68,14 @@ public class ApolloManager$2
         }
       }
       CmGameCmdChannel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      new File(aliu.i).mkdirs();
-      localObject = ajeq.b();
+      new File(ancb.i).mkdirs();
+      localObject = akws.b();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         if (!((String)localObject).contains("EmotionUI ")) {
           break label422;
         }
-        if (alit.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
+        if (anca.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
           break label459;
         }
         bool1 = true;
@@ -93,7 +93,7 @@ public class ApolloManager$2
       if (((String)localObject).contains("EmotionUI_"))
       {
         bool1 = bool2;
-        if (alit.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
+        if (anca.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
         {
           bool1 = true;
           continue;
@@ -106,7 +106,7 @@ public class ApolloManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
 package com.tencent.tmdownloader.internal.remote;
 
 import android.os.IInterface;
+import com.tencent.tmassistant.appinfo.aidl.IGetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetailReqParam;
 
 public abstract interface a
   extends IInterface
 {
+  public abstract int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback);
+  
   public abstract void a();
   
   public abstract void a(int paramInt, String paramString);
@@ -37,7 +41,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.a
  * JD-Core Version:    0.7.0.1
  */

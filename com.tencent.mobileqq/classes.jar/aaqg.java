@@ -1,16 +1,30 @@
 import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 class aaqg
-  implements aaso
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aaqg(aaqa paramaaqa) {}
+  aaqg(aaqa paramaaqa, int paramInt) {}
   
-  public void reportImpression(View paramView)
+  public void onGlobalLayout()
   {
-    paramView = paramView.getTag(2131379969);
-    if ((paramView != null) && ((paramView instanceof GdtAd))) {
-      aasq.a(((GdtAd)paramView).getUrlForImpression());
+    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_Aaqa.b - this.jdField_a_of_type_Aaqa.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
+    }
+    if (this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
+    {
+      localLayoutParams.height = (i - 5);
+      this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    }
+    if ((this.jdField_a_of_type_Aaqa.jdField_a_of_type_Besk != null) && (this.jdField_a_of_type_Aaqa.d) && (this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
+      this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
     }
   }
 }

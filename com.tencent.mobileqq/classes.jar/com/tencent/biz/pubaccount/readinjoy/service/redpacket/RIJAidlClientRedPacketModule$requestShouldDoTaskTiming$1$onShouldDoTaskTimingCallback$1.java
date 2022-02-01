@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.service.redpacket;
 
 import kotlin.Metadata;
-import qft;
-import qii;
+import qzb;
+import rbq;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1$onShouldDoTaskTimingCallback$1
   implements Runnable
 {
-  public RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1$onShouldDoTaskTimingCallback$1(qii paramqii, boolean paramBoolean) {}
+  public RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1$onShouldDoTaskTimingCallback$1(rbq paramrbq, boolean paramBoolean) {}
   
   public final void run()
   {

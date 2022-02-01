@@ -1,8 +1,22 @@
 public abstract interface bewp
 {
-  public abstract void a(int paramInt);
+  public abstract void a(bewq parambewq);
   
-  public abstract void b(int paramInt);
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract String e();
 }
 
 

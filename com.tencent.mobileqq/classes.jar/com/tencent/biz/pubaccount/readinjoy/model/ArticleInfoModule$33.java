@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pew;
+import pmk;
+import pwb;
 
 public class ArticleInfoModule$33
   implements Runnable
 {
-  public ArticleInfoModule$33(pew parampew, long paramLong, int paramInt, String paramString) {}
+  public ArticleInfoModule$33(pwb parampwb, long paramLong, int paramInt, String paramString) {}
   
   public void run()
   {
-    oxb.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    pmk.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

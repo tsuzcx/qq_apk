@@ -1,72 +1,23 @@
-import java.util.Random;
+import android.support.annotation.NonNull;
 
-public final class loj
+public class loj
 {
-  private static final float jdField_a_of_type_Float;
-  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
-  public static Random a;
+  public float a;
+  public int a;
+  public float b;
+  public int b;
   
-  static
+  @NonNull
+  public String toString()
   {
-    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
-  
-  public static final float a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat();
-  }
-  
-  public static final float a(float paramFloat)
-  {
-    return lok.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
-  }
-  
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
-    }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
-    }
-    return paramFloat1;
-  }
-  
-  public static final int a(int paramInt)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    return paramInt1;
-  }
-  
-  public static final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return lok.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
-  }
-  
-  public static final float c(float paramFloat)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     loj
  * JD-Core Version:    0.7.0.1
  */

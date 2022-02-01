@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aixj;
+import akot;
 import android.support.v7.widget.RecyclerView;
 
 public class TroopUnAccalimedRedPacketList$HbListAdapter$1
   implements Runnable
 {
-  public TroopUnAccalimedRedPacketList$HbListAdapter$1(aixj paramaixj) {}
+  public TroopUnAccalimedRedPacketList$HbListAdapter$1(akot paramakot) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

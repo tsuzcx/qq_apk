@@ -1,40 +1,53 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aqbg;
-import aqbj;
-import aqbk;
-import aqbm;
-import aqfx;
+import asfu;
+import asgd;
+import asge;
+import asgg;
+import aslb;
+import bgnt;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ExtendFriendManager$5
   implements Runnable
 {
-  public ExtendFriendManager$5(aqbg paramaqbg) {}
+  public ExtendFriendManager$5(asfu paramasfu) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource");
     }
-    if (!aqbg.a(this.this$0)) {
+    if (!asfu.a(this.this$0)) {
       QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource !inited");
     }
-    if (!aqfx.a())
+    if (!aslb.a())
     {
-      if (aqbg.a(this.this$0) == null) {
+      QLog.e("ExtendFriendManagerLimitchat", 2, "isBgPicFileExist  no！");
+      if (asfu.a(this.this$0) == null) {
         QLog.d("ExtendFriendManagerLimitchat", 2, "mConfig  IS NOT READY");
       }
     }
-    else {
+    else
+    {
       return;
     }
-    Object localObject = aqfx.a();
-    if (aqbg.a(this.this$0).a != null)
+    long l1 = System.currentTimeMillis();
+    long l2 = asfu.a(this.this$0);
+    if ((!bgnt.h(BaseApplicationImpl.getContext())) && (l1 - l2 < 1200000L) && (asfu.a(this.this$0) > 2))
     {
-      localObject = (aqbk)aqbg.a(this.this$0).a.get(localObject);
-      aqbg.a(this.this$0).a((aqbk)localObject);
+      QLog.e("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY currentTime" + l1 + " lastDownloadTime " + asfu.a(this.this$0) + " downloadTimes" + asfu.a(this.this$0));
+      return;
+    }
+    Object localObject = aslb.a();
+    if (asfu.a(this.this$0).a != null)
+    {
+      localObject = (asge)asfu.a(this.this$0).a.get(localObject);
+      asfu.a(this.this$0).a((asge)localObject);
+      asfu.a(this.this$0, l1);
+      asfu.b(this.this$0);
       return;
     }
     QLog.d("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY");
@@ -42,7 +55,7 @@ public class ExtendFriendManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendManager.5
  * JD-Core Version:    0.7.0.1
  */

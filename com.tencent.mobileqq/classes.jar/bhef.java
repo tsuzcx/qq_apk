@@ -1,67 +1,46 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.graphics.Rect;
 
 public class bhef
-  extends bhdw
 {
-  private INTERFACE.StGetPhoneNumberReq a = new INTERFACE.StGetPhoneNumberReq();
+  private bhea jdField_a_of_type_Bhea;
+  private bhec jdField_a_of_type_Bhec;
   
-  public bhef(String paramString)
+  public bhef(bhea parambhea, bhec parambhec)
   {
-    this.a.appId.set(paramString);
+    this.jdField_a_of_type_Bhea = parambhea;
+    this.jdField_a_of_type_Bhec = parambhec;
   }
   
-  protected String a()
+  public void a()
   {
-    return "mini_user_info";
+    this.jdField_a_of_type_Bhea.a(new bheg(this));
+    b();
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetPhoneNumberRsp localStGetPhoneNumberRsp = new INTERFACE.StGetPhoneNumberRsp();
-    try
-    {
-      localStGetPhoneNumberRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetPhoneNumberRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("countryCode", localStGetPhoneNumberRsp.countryCode.get());
-        paramArrayOfByte.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
-        paramArrayOfByte.put("iv", localStGetPhoneNumberRsp.iv.get());
-        paramArrayOfByte.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
-        paramArrayOfByte.put("cloudID", "");
-        paramArrayOfByte.put("errMsg", "ok");
-        return paramArrayOfByte;
-      }
-      QMLog.d("getPhoneNumberRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("getPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    this.jdField_a_of_type_Bhec.a(new Rect(0, 0, paramInt1, paramInt2));
   }
   
-  protected byte[] a()
+  public void b()
   {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_Bhea.a();
   }
   
-  protected String b()
+  public void c()
   {
-    return "GetPhoneNumber";
+    this.jdField_a_of_type_Bhea.b();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Bhea.a(null);
+    this.jdField_a_of_type_Bhec.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhef
  * JD-Core Version:    0.7.0.1
  */

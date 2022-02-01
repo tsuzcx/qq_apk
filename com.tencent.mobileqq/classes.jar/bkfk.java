@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-
-public final class bkfk
-  implements Parcelable.Creator<AlumBasicData>
+public class bkfk
 {
-  public AlumBasicData a(Parcel paramParcel)
+  public static void a(Object paramObject)
   {
-    return new AlumBasicData(paramParcel);
+    a((String)null, paramObject);
   }
   
-  public AlumBasicData[] a(int paramInt)
+  public static void a(String paramString)
   {
-    return new AlumBasicData[paramInt];
+    if (paramString == null) {
+      throw new AssertionError();
+    }
+    throw new AssertionError(paramString);
+  }
+  
+  public static void a(String paramString, Object paramObject)
+  {
+    if (paramObject != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramString, bool);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      a(paramString);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a((String)null, paramBoolean);
   }
 }
 

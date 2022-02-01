@@ -1,43 +1,49 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
 class pno
-  implements ViewBase.OnClickListener
 {
-  pno(pnh parampnh, pgd parampgd, ViewBase paramViewBase) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static <T, S> String a(List<Pair<T, S>> paramList, String paramString1, String paramString2)
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    if (paramList.size() > 0)
     {
-      if ((this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.jdField_a_of_type_Qmr.a) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.jdField_a_of_type_Qmk != null))
+      ArrayList localArrayList = new ArrayList(paramList);
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        String str = this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.jdField_a_of_type_Qmk.a.h;
-        paramViewBase = paramViewBase.getNativeView();
-        pnh.a(this.jdField_a_of_type_Pnh, paramViewBase, str);
-        paramViewBase = this.jdField_a_of_type_Pgd.a();
-        if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
-        {
-          paramViewBase.click_area = 11;
-          paramViewBase.click_jump_target = pqd.a(str, "-1");
-          ors.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
+        Pair localPair = (Pair)localArrayList.get(i);
+        if (i != 0) {
+          localStringBuilder.append(paramString2);
         }
+        localStringBuilder.append(localPair.first);
+        if (i != 0) {
+          localStringBuilder.append(paramString1).append(localPair.second);
+        }
+        i += 1;
       }
-      return;
+      paramList.remove(localArrayList);
     }
-    catch (NullPointerException paramViewBase)
-    {
-      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (paramBoolean) {
+      return paramString1;
     }
+    return paramString2;
+  }
+  
+  public static <T> boolean a(T paramT1, T paramT2)
+  {
+    return paramT1 == paramT2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pno
  * JD-Core Version:    0.7.0.1
  */

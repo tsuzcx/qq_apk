@@ -1,11 +1,6 @@
-import android.widget.TextView;
-
-public class bbgs
-  extends akit
-{
-  public TextView a;
-  public TextView b;
-}
+public abstract interface bbgs
+  extends aobv
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

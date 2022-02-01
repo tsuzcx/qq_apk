@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class akda
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public akda(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public akda(CountryActivity paramCountryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.s();
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Akdg.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

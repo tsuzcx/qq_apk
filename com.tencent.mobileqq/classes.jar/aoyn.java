@@ -1,61 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class aoyn
-  extends aokh<aoym>
+public abstract class aoyn
+  extends Binder
+  implements aoym
 {
-  public static aoym a()
+  public aoyn()
   {
-    return (aoym)aoks.a().a(348);
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
   }
   
-  public int a()
+  public static aoym a(IBinder paramIBinder)
   {
-    return 348;
-  }
-  
-  @NonNull
-  public aoym a(int paramInt)
-  {
-    return new aoym();
-  }
-  
-  @Nullable
-  public aoym a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoym.a(paramArrayOfaoko);
+    if (paramIBinder == null) {
+      return null;
     }
-    return null;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof aoym))) {
+      return (aoym)localIInterface;
+    }
+    return new aoyo(paramIBinder);
   }
   
-  public Class<aoym> a()
+  public IBinder asBinder()
   {
-    return aoym.class;
+    return this;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aoym paramaoym) {}
-  
-  public int b()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyn
  * JD-Core Version:    0.7.0.1
  */

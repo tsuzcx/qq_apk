@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import absl;
-import amdu;
+import acvk;
+import anwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public class BaseMessageManagerForTroopAndDisc$2
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$2(absl paramabsl, ArrayList paramArrayList) {}
+  public BaseMessageManagerForTroopAndDisc$2(acvk paramacvk, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Object localObject = (amdu)this.this$0.a.a(20);
+    Object localObject = (anwd)this.this$0.a.a(20);
     if (localObject != null)
     {
-      localObject = ((amdu)localObject).a();
+      localObject = ((anwd)localObject).a();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).a(this.a);
       }
@@ -25,7 +25,7 @@ public class BaseMessageManagerForTroopAndDisc$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.2
  * JD-Core Version:    0.7.0.1
  */

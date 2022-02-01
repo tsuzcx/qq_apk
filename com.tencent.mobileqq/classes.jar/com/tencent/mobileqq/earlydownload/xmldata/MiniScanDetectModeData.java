@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
+import arov;
 
 public class MiniScanDetectModeData
   extends XmlData
 {
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean block_user_download;
   
   public String getSharedPreferencesName()
@@ -20,7 +20,7 @@ public class MiniScanDetectModeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectModeData
  * JD-Core Version:    0.7.0.1
  */

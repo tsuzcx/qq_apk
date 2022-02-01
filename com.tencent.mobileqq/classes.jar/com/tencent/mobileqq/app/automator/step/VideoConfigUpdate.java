@@ -9,7 +9,7 @@ public class VideoConfigUpdate
 {
   public int a()
   {
-    this.a.app.l();
+    this.a.app.m();
     return 7;
   }
 }

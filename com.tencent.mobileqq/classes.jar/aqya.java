@@ -1,14 +1,11 @@
-public abstract interface aqya
+public class aqya
 {
-  public abstract void a();
-  
-  public abstract void a(aqxz paramaqxz);
-  
-  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
+  public String a = "https://club.vip.qq.com/profile/music?_proxy=1";
+  public String b = "https://club.vip.qq.com/profile/music/player?_wv=131072&_fv=0&_proxy=1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqya
  * JD-Core Version:    0.7.0.1
  */

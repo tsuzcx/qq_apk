@@ -1,8 +1,22 @@
-public abstract interface arrh
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class arrh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  arrh(arre paramarre, BaseActivity paramBaseActivity) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      bgzo.a(arre.a(this.jdField_a_of_type_Arre), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", arre.a(this.jdField_a_of_type_Arre).getString(2131718361), "");
+    }
+  }
 }
 
 

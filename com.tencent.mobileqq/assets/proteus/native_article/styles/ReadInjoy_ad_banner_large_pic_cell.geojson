@@ -1,0 +1,189 @@
+{
+    "ReadInjoy_ad_banner_large_pic_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "match_parent"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "margin_left": "12",
+                "margin_top": "17",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "351"
+                },
+                "subviews": [
+                    {
+                        "view_type": "container",
+                        "view_id": "id_ad_bottom_top_container",
+                        "layout_type": "layout_relative",
+                        "margin_top": "0",
+                        "margin_left": "0",
+                        "height": {
+                            "type": "relative",
+                            "value": "196"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "351"
+                        },
+                        "visible_depend_on_children": "YES",
+                        "subviews": [
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "id_ad_banner_bottom_imge",
+                                "margin_left": "0",
+                                "margin_top": "0",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "196"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "351"
+                                },
+                                "event_type": "ad_img_click_in_detail",
+                                "attributes": {
+                                    "setBackgroundColorString:": "#FFD8DADA",
+                                    "setImageWithURLString:lineup:": [
+                                        "$image_url",
+                                        "-1"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_ad_title_mask",
+                                "layout_type": "layout_relative",
+                                "margin_left": "0",
+                                "margin_bottom": "0",
+                                "margin_top": "126",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "70"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "$mask_image_path"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_tv_title_inner",
+                                "margin_top": "169",
+                                "margin_left": "10",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "331"
+                                },
+                                "event_type": "ad_title_click_in_detail",
+                                "attributes": {
+                                    "setText:lineSpace:": [
+                                        "$inner_title",
+                                        "0"
+                                    ],
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setFontSizeString:": "16",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                              "view_type": "ReadInJoyIconText",
+                              "view_id": "id_ad_dislike_button_android",
+                              "align_parent_right": "YES",
+                              "align_parent_top": "YES",
+                              "margin_right": "5",
+                              "margin_top": "5",
+                              "padding_top": "1.5",
+                              "padding_bottom": "2",
+                              "padding_left": "4",
+                              "padding_right": "3",
+                              "event_type": "cmd_native_detail_ad_negative_click",
+                              "height": {
+                                "type": "wrap_content"
+                              },
+                              "width": {
+                                "type": "wrap_content"
+                              },
+                              "attributes": {
+                                "setBackgroundColorString:": "#4d000000",
+                                "setFrameString:": "-1",
+                                "setText:": "$dislike_text_android",
+                                "setTextColorString:": "#FFFFFF",
+                                "setFontSizeString:": "11",
+                                "setBorderWidthString:": "0.5",
+                                "setTextAlignmentString:": "1",
+                                "setBorderColorString:": "#4dFFFFFF",
+                                "setCornerRadiusString:": "1.0",
+                                "setNumberOfLinesString:": "1",
+                                "setImage:": "-1",
+                                "setRightImage:": "feeds_native_detail_ad_arrow",
+                                "setImagePadding:": "2",
+                                "setAlphaString:": "0.8"
+                              }
+                            },
+                            {
+                                "view_type": "ReadInJoyIconText",
+                                "view_id": "id_ad_dislike_button_ios",
+                                "align_parent_right": "YES",
+                                "align_parent_top": "YES",
+                                "margin_right": "5",
+                                "margin_top": "5",
+                                "event_type": "cmd_native_detail_ad_negative_click",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "14"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "36"
+                                },
+                                "attributes": {
+                                    "setBackgroundColorString:": "#4d000000",
+                                    "setFrameString:": "-1",
+                                    "setText:": "$dislike_text_ios",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setFontSizeString:": "11",
+                                    "setBorderWidthString:": "1",
+                                    "setTextAlignmentString:": "1",
+                                    "setCornerRadiusString:": "2.0",
+                                    "setBorderColorString:": "#4dFFFFFF",
+                                    "setNumberOfLinesString:": "1",
+                                    "setRightImage:": "feeds_native_detail_ad_arrow",
+                                    "setImagePadding:": "2"
+                                }
+                            }
+
+                        ]
+                    },
+                    {
+                        "$includeComponet": "componet/ad_large_bottom_origin.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/ad_large_bottom_one.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/ad_large_bottom_two.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/ad_large_bottom_three.geojson"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class QwAdapter<V>
@@ -59,13 +60,15 @@ public class QwAdapter<V>
         this.mHolder.initView(paramInt, paramView);
         paramView.setTag(this.mHolder);
       }
-      catch (CloneNotSupportedException paramViewGroup)
+      catch (CloneNotSupportedException localCloneNotSupportedException)
       {
-        paramViewGroup.printStackTrace();
+        Object localObject;
+        localCloneNotSupportedException.printStackTrace();
         continue;
       }
-      paramViewGroup = this.list.get(paramInt);
-      this.mHolder.setItemView(paramInt, paramView, paramViewGroup);
+      localObject = this.list.get(paramInt);
+      this.mHolder.setItemView(paramInt, paramView, localObject);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
       return paramView;
       this.mHolder = ((QwAdapter.IViewHolder)paramView.getTag());
     }
@@ -73,7 +76,7 @@ public class QwAdapter<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.QwAdapter
  * JD-Core Version:    0.7.0.1
  */

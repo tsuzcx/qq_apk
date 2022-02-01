@@ -1,19 +1,202 @@
-class afwm
-  extends aepm
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+
+public class afwm
+  implements anwz
 {
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public int a;
+  public BaseChatItemLayout a;
+  public TroopInfo a;
+  public boolean a;
   
-  afwm(afwk paramafwk) {}
+  private afwm(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  private int a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt = beui.a().jdField_a_of_type_Int;
+    }
+    return paramInt;
+  }
+  
+  private String a(TroopMemberInfo paramTroopMemberInfo, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    String str = paramString;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      if (!paramBoolean2)
+      {
+        str = paramString;
+        if (1 == this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.cGroupRankUserFlag) {}
+      }
+      else
+      {
+        str = paramString;
+        if (!paramBoolean1)
+        {
+          paramBoolean1 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {
+            break label96;
+          }
+          str = "";
+          if (!paramBoolean1) {
+            break label102;
+          }
+          str = anni.a(2131718864);
+        }
+      }
+    }
+    label96:
+    label102:
+    while (i == 0)
+    {
+      return str;
+      i = 0;
+      break;
+    }
+    return anni.a(2131718861);
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setTroopMemberLevel(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a, paramBoolean, paramString, false, paramInt, this.jdField_a_of_type_Int);
+      BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, paramBoolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setTag(Integer.valueOf(2131364417));
+      }
+    }
+  }
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
+  {
+    boolean bool3 = false;
+    Object localObject1 = (afwr)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
+    beuj localbeuj1;
+    beuj localbeuj2;
+    Object localObject2;
+    boolean bool1;
+    label87:
+    boolean bool4;
+    boolean bool2;
+    if ((paramTroopMemberInfo != null) && (TextUtils.equals(((afwr)localObject1).a.senderuin, paramTroopMemberInfo.memberuin)))
+    {
+      localbeuj1 = null;
+      localbeuj2 = null;
+      localObject2 = null;
+      localObject1 = null;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isQidianPrivateTroop())) {
+        break label227;
+      }
+      i = 1;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isHomeworkTroop())) {
+        break label232;
+      }
+      bool1 = true;
+      bool4 = bcnj.b();
+      if (!bool4) {
+        break label242;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) {
+        break label444;
+      }
+      bool2 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {
+        break label237;
+      }
+      i = 1;
+      label146:
+      localbeuj1 = beui.a().a(paramTroopMemberInfo, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+      if ((localbeuj1 == null) || ((i == 0) && (!bool2))) {
+        break label453;
+      }
+      localObject1 = localbeuj1.a;
+    }
+    label435:
+    label444:
+    label453:
+    for (int i = localbeuj1.b;; i = 0)
+    {
+      i = a(i);
+      for (;;)
+      {
+        paramTroopMemberInfo = a(paramTroopMemberInfo, (String)localObject1, bool1, bool4);
+        if (bfnl.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin))
+        {
+          bool1 = bool3;
+          label219:
+          a(paramTroopMemberInfo, i, bool1);
+          return;
+          label227:
+          i = 0;
+          break;
+          label232:
+          bool1 = false;
+          break label87;
+          label237:
+          i = 0;
+          break label146;
+          label242:
+          if (i != 0)
+          {
+            boolean bool5 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+            if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {}
+            for (bool2 = true;; bool2 = false)
+            {
+              localbeuj2 = beui.a().a(bool5, bool2);
+              if (localbeuj2 == null) {
+                break label444;
+              }
+              localObject1 = localbeuj2.a;
+              i = localbeuj2.b;
+              break;
+            }
+          }
+          if (bool1)
+          {
+            localbeuj1 = beui.a().a(paramTroopMemberInfo.level, false, false, false);
+            if ((localbeuj1 == null) || (!bfpj.a(paramTroopMemberInfo))) {
+              break label435;
+            }
+            localObject1 = localbeuj1.a;
+            i = localbeuj1.b;
+          }
+        }
+        for (;;)
+        {
+          i = a(i);
+          break;
+          localbeuj1 = beui.a().a(paramTroopMemberInfo, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+          if (localbeuj1 != null)
+          {
+            localObject1 = localbeuj1.a;
+            i = localbeuj1.b;
+          }
+          for (;;)
+          {
+            i = a(i);
+            break;
+            bool1 = true;
+            break label219;
+            i = 0;
+            localObject1 = localObject2;
+          }
+          i = 0;
+          localObject1 = localbeuj2;
+        }
+        i = 0;
+        localObject1 = localbeuj1;
+      }
+    }
+  }
 }
 
 

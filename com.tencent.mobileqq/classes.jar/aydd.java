@@ -1,16 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aydd
-  implements View.OnClickListener
+  implements ayda
 {
-  public aydd(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  private static volatile aydd jdField_a_of_type_Aydd;
+  private ayda jdField_a_of_type_Ayda;
+  private List<ayde> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onClick(View paramView)
+  public static aydd a()
   {
-    azqs.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
-    SignatureHistoryFragment.d(this.a, true);
+    if (jdField_a_of_type_Aydd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aydd == null) {
+        jdField_a_of_type_Aydd = new aydd();
+      }
+      return jdField_a_of_type_Aydd;
+    }
+    finally {}
+  }
+  
+  public List<ayde> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    new aydb().a(this);
+  }
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(ayda paramayda)
+  {
+    this.jdField_a_of_type_Ayda = paramayda;
+  }
+  
+  public void a(List<ayde> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Ayda != null) {
+      this.jdField_a_of_type_Ayda.a(paramList);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Ayda = null;
+    jdField_a_of_type_Aydd = null;
   }
 }
 

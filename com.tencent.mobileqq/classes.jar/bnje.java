@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.graphics.Bitmap;
+import java.util.ArrayList;
 
-public class bnje
-  implements DialogInterface.OnClickListener
+public abstract interface bnje
 {
-  public bnje(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.s();
-  }
+  public abstract void a(Bitmap paramBitmap, ArrayList<bnjf> paramArrayList, bnjg parambnjg);
 }
 
 

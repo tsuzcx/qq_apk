@@ -1,42 +1,40 @@
-import android.os.Message;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-class qxv
-  extends bayj
+public class qxv
+  implements pyu
 {
-  qxv(qxu paramqxu) {}
+  public qxv(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    bass localbass = (bass)paramMessage.obj;
-    if ((localbass == null) || (localbass.jdField_b_of_type_Int != 24) || (localbass.c != 10)) {}
-    while ((localbass.jdField_b_of_type_Long != this.a.a.a) || (localbass.f.equals(qxu.a(this.a)))) {
-      return;
-    }
-    switch (paramMessage.what)
+    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mVideoTransProcessorHandler transfer=" + localbass.e + ", total=" + localbass.a);
-      qxu.a(this.a, (float)localbass.e * 100.0F / (float)localbass.a);
-      return;
-    case 1003: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler send finished!");
-      qxu.a(this.a, localbass.f);
-      qxu.b(this.a, localbass.i);
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler mImageMd5=" + qxu.a(this.a) + ", mImageUrl=" + qxu.b(this.a));
-      qxu.a(this.a, 0, qxu.b(this.a), qxu.a(this.a), null, null, null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(anni.a(2131701073));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
+      pmh.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      pmh.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      pmk.a().b();
       return;
     }
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "upload king moment cover failed");
-    qxu.a(this.a, 13);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(anni.a(2131701070));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), anni.a(2131701103), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qxv
  * JD-Core Version:    0.7.0.1
  */

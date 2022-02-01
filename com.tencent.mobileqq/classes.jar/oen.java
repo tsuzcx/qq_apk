@@ -1,63 +1,88 @@
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class oen
 {
-  public static AdvertisementInfo a(VideoAdInfo paramVideoAdInfo)
+  public static oek a()
   {
-    if (paramVideoAdInfo == null) {
-      return null;
+    oek localoek2 = oem.a();
+    oek localoek1 = localoek2;
+    if (localoek2 == null) {
+      localoek1 = new oek();
     }
-    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
-    localAdvertisementInfo.mAdAdvertiseId = paramVideoAdInfo.jdField_g_of_type_Long;
-    localAdvertisementInfo.mAdVideoUrl = paramVideoAdInfo.s;
-    localAdvertisementInfo.mAdAid = paramVideoAdInfo.e;
-    localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.jdField_h_of_type_JavaLangString;
-    localAdvertisementInfo.mAdViewId = paramVideoAdInfo.m;
-    localAdvertisementInfo.mAdProductId = paramVideoAdInfo.i;
-    localAdvertisementInfo.mAdVia = paramVideoAdInfo.t;
-    localAdvertisementInfo.mAdNocoId = paramVideoAdInfo.jdField_h_of_type_Long;
-    localAdvertisementInfo.mAdApurl = paramVideoAdInfo.jdField_g_of_type_JavaLangString;
-    localAdvertisementInfo.mAdRl = paramVideoAdInfo.f;
-    localAdvertisementInfo.mAdEffectUrl = paramVideoAdInfo.A;
-    localAdvertisementInfo.mAdLandingPageReportUrl = paramVideoAdInfo.z;
-    localAdvertisementInfo.mAdLandingPage = paramVideoAdInfo.j;
-    localAdvertisementInfo.mAdCanvasJson = paramVideoAdInfo.y;
-    localAdvertisementInfo.mAdDestType = paramVideoAdInfo.jdField_n_of_type_Int;
-    localAdvertisementInfo.mAdExt = paramVideoAdInfo.r;
-    localAdvertisementInfo.mOrigin = noy.N;
-    localAdvertisementInfo.mAdAppDownLoadSchema = paramVideoAdInfo.x;
-    localAdvertisementInfo.mAdCustomizedInvokeUrl = paramVideoAdInfo.jdField_n_of_type_JavaLangString;
-    localAdvertisementInfo.mChannelID = 409409L;
-    localAdvertisementInfo.mAdProductType = paramVideoAdInfo.c;
-    localAdvertisementInfo.mAdJumpMode = paramVideoAdInfo.l;
-    localAdvertisementInfo.mAdPosID = paramVideoAdInfo.jdField_b_of_type_Long;
-    if (paramVideoAdInfo.v != null) {}
-    try
+    return localoek1;
+  }
+  
+  public static oel a(int paramInt)
+  {
+    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-      JSONObject localJSONObject = new JSONObject(paramVideoAdInfo.v);
-      if (localJSONObject.has("mini_program_type")) {
-        localAdvertisementInfo.miniProgramType = localJSONObject.optInt("mini_program_type");
-      }
-      localAdvertisementInfo.mAdExtInfo = paramVideoAdInfo.v;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localException.printStackTrace();
+        oel localoel = (oel)((Iterator)localObject).next();
+        if (localoel.jdField_a_of_type_Int == paramInt) {
+          return localoel;
+        }
       }
     }
-    localAdvertisementInfo.mPopFormH5Url = paramVideoAdInfo.C;
-    localAdvertisementInfo.mShowAdButton = paramVideoAdInfo.jdField_b_of_type_Boolean;
-    localAdvertisementInfo.processAdExt(paramVideoAdInfo.r);
-    return localAdvertisementInfo;
+    return new oel();
+  }
+  
+  public static oeo a()
+  {
+    return oep.a();
+  }
+  
+  public static boolean a()
+  {
+    return a(oem.a());
+  }
+  
+  public static boolean a(oek paramoek)
+  {
+    return a(paramoek, 1, 1);
+  }
+  
+  public static boolean a(oek paramoek, int paramInt1, int paramInt2)
+  {
+    if ((paramoek == null) || (paramoek.jdField_a_of_type_JavaUtilArrayList == null) || (paramoek.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      return false;
+    }
+    paramoek = paramoek.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramoek.hasNext())
+    {
+      oel localoel = (oel)paramoek.next();
+      if ((localoel.b == paramInt1) && (localoel.jdField_a_of_type_Int == paramInt2)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    oek localoek = a();
+    if (localoek == null) {}
+    for (String str = "false";; str = localoek.jdField_a_of_type_Int + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localoek != null) {
+        break;
+      }
+      return false;
+    }
+    if (localoek.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oen
  * JD-Core Version:    0.7.0.1
  */

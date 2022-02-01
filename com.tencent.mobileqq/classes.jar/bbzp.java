@@ -1,10 +1,30 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import java.util.List;
 
-class bbzp
+public class bbzp
+  implements bbzo
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private acwu<bbzr> jdField_a_of_type_Acwu = new acwv();
+  private acww<Integer, bbzr> jdField_a_of_type_Acww = new acwx();
+  
+  public bbzr a(Integer paramInteger)
+  {
+    return (bbzr)this.jdField_a_of_type_Acww.a(paramInteger);
+  }
+  
+  public List<bbzr> a()
+  {
+    return this.jdField_a_of_type_Acwu.a();
+  }
+  
+  public void a(Class<? extends bbzr> paramClass)
+  {
+    this.jdField_a_of_type_Acwu.a(paramClass);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends bbzr> paramClass)
+  {
+    this.jdField_a_of_type_Acww.a(paramInteger, paramClass);
+  }
 }
 
 

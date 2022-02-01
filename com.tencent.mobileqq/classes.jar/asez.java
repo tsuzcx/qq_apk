@@ -1,23 +1,10 @@
-import android.app.Activity;
-
-class asez
-  implements acln
+public abstract interface asez
 {
-  asez(asey paramasey) {}
+  public abstract void b();
   
-  public void a()
-  {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
+  public abstract void b(float paramFloat);
   
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
+  public abstract void c(float paramFloat);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import avbh;
+import axiq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,13 +14,13 @@ final class NowLiveFragment$6
     Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
     if ((localObject instanceof NearbyAppInterface))
     {
-      localObject = (avbh)((NearbyAppInterface)localObject).getManager(214);
+      localObject = (axiq)((NearbyAppInterface)localObject).getManager(214);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("NowLiveFragment", 2, "pre login now plugin!");
         }
-        ((avbh)localObject).d();
+        ((axiq)localObject).d();
       }
     }
     while (!QLog.isColorLevel())
@@ -38,7 +38,7 @@ final class NowLiveFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ae.SessionWrap;
-
-public final class bkpy
-  implements Parcelable.Creator<SessionWrap>
+public abstract interface bkpy
 {
-  public SessionWrap a(Parcel paramParcel)
-  {
-    return new SessionWrap(paramParcel);
-  }
-  
-  public SessionWrap[] a(int paramInt)
-  {
-    return new SessionWrap[0];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

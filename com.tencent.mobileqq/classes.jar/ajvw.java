@@ -1,12 +1,33 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface ajvw
+class ajvw
+  implements ajvq
 {
-  public abstract Context getContext();
+  ajvw(ajvr paramajvr) {}
   
-  public abstract void invalidate();
+  public void a()
+  {
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+  }
   
-  public abstract void postInvalidate();
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = pmy.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((pmy)localObject).b(bool);
+      return;
+      bool = false;
+    }
+  }
 }
 
 

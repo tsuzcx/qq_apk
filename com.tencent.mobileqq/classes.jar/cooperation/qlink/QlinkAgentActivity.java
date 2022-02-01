@@ -1,18 +1,30 @@
 package cooperation.qlink;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import aqwl;
-import bisq;
+import android.view.MotionEvent;
+import atcv;
+import blhj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QlinkAgentActivity
   extends BaseActivity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (10 == paramInt2) {
@@ -27,6 +39,13 @@ public class QlinkAgentActivity
       return;
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -80,7 +99,7 @@ public class QlinkAgentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qlink.QlinkAgentActivity
  * JD-Core Version:    0.7.0.1
  */

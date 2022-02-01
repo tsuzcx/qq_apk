@@ -1,57 +1,81 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import org.json.JSONObject;
+import android.util.DisplayMetrics;
 
-class zfo
-  extends Handler
+public class zfo
 {
-  zfo(zfn paramzfn, Looper paramLooper)
+  public int a;
+  protected Context a;
+  public Handler a;
+  public LruCache<String, zoc> a;
+  public int b;
+  
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    super(paramLooper);
+    yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
+    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    int i = paramBitmap.getWidth();
+    float f1 = f2;
+    if (i > 0)
+    {
+      f1 = f2;
+      if (i < this.jdField_a_of_type_Int * f2) {
+        f1 = i / this.jdField_a_of_type_Int;
+      }
+    }
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
+    this.b = ((int)(f1 * this.b));
+    i = this.jdField_a_of_type_Int;
+    yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
+    return bgmo.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
   }
   
-  public void handleMessage(Message paramMessage)
+  public Bitmap a(String paramString)
   {
-    Object localObject;
-    int i;
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    if (TextUtils.isEmpty(paramString))
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      localObject = paramMessage.getString("url");
-      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(zfn.a(this.a))) && (!TextUtils.isEmpty(zfn.b(this.a))) && (zfn.b(this.a).equals(localObject)))
-      {
-        i = paramMessage.getInt("result_code");
-        localObject = new JSONObject();
-        if (i != 0) {
-          break label158;
-        }
-      }
+      yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
+      return null;
     }
+    yqp.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
     try
     {
-      ((JSONObject)localObject).put("code", 0);
-      for (;;)
+      paramString = BitmapFactory.decodeFile(paramString);
+      if (paramString == null)
       {
-        label113:
-        this.a.callJs(zfn.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
-        return;
-        label158:
-        ((JSONObject)localObject).put("code", i);
-        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+        yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
+        return null;
       }
     }
-    catch (Exception paramMessage)
+    catch (OutOfMemoryError paramString)
     {
-      break label113;
+      for (;;)
+      {
+        yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
+        paramString = null;
+      }
+      Bitmap localBitmap = a(paramString);
+      if (localBitmap == null)
+      {
+        yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
+        return null;
+      }
+      if ((paramString != null) && (!paramString.isRecycled())) {
+        paramString.recycle();
+      }
+      yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
+      return localBitmap;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zfo
  * JD-Core Version:    0.7.0.1
  */

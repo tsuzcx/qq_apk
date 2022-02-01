@@ -1,9 +1,23 @@
-import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public class afht
-  extends afiv
+public final class afht
+  implements ajvc
 {
-  public ApolloMessageProgressView a;
+  private WeakReference<alrb> a;
+  
+  public afht(alrb paramalrb)
+  {
+    this.a = new WeakReference(paramalrb);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    alrb localalrb = (alrb)this.a.get();
+    if (localalrb != null) {
+      localalrb.a(paramMotionEvent);
+    }
+  }
 }
 
 

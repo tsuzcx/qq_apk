@@ -1,10 +1,80 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface aleq
+public class aleq
+  extends alej
 {
-  public abstract void a(int paramInt);
+  private String d;
   
-  public abstract void a(ApolloTextureView paramApolloTextureView);
+  public aleq a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.d;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if (this.jdField_a_of_type_Beps == null) {
+        this.jdField_a_of_type_Beps = new beps();
+      }
+      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Beps != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

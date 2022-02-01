@@ -1,28 +1,38 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 class bmkd
-  extends blts
+  implements ModuleDownloadListener
 {
-  bmkd(bmkb parambmkb) {}
+  bmkd(bmkc parambmkc, bmkf parambmkf) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onDownloadCanceled(String paramString)
   {
-    bflz.a().a(alud.a(2131704087) + bmkb.a(this.a));
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onDownloadFailed(String paramString)
   {
-    if ((paramBoolean) && (bmkb.a(this.a).getLocalPath().equals(paramString)))
-    {
-      bmkb.a(this.a).sendEmptyMessage(2);
-      bmkb.a(this.a, bmkb.a(this.a));
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+    bmkc.a(this.jdField_a_of_type_Bmkc, false);
+    this.jdField_a_of_type_Bmkf.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("xmpcore.jar")) {
+      return;
     }
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bmkc.a(), " onDownloadSucceed = ", bmkc.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", bmkc.b());
+    bmkc.a(this.jdField_a_of_type_Bmkc);
+    this.jdField_a_of_type_Bmkf.a(bmkc.a(this.jdField_a_of_type_Bmkc));
   }
 }
 

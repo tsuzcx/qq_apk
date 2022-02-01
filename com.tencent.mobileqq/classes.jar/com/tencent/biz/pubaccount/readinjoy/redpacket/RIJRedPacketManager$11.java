@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import awgf;
-import awgg;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class RIJRedPacketManager$11
@@ -13,11 +13,11 @@ class RIJRedPacketManager$11
   {
     try
     {
-      awgf localawgf = RIJRedPacketManager.a(this.this$0).createEntityManager();
+      EntityManager localEntityManager = RIJRedPacketManager.a(this.this$0).createEntityManager();
       RedPacketTaskData localRedPacketTaskData = new RedPacketTaskData();
       localRedPacketTaskData.rowKey = this.a;
       localRedPacketTaskData.insertTime = System.currentTimeMillis();
-      localawgf.b(localRedPacketTaskData);
+      localEntityManager.persistOrReplace(localRedPacketTaskData);
       return;
     }
     catch (Exception localException)

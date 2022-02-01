@@ -1,42 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class auik
-  implements DialogInterface.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  public auik(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public auik(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    aujq.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    augo.a().a().c();
-    augo.a().d();
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1)) {
-        this.a.a(this.a.getActivity());
-      }
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
     }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
     do
     {
       return;
-      this.a.m();
-      return;
-      if (!this.a.e) {
-        break;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
       }
-    } while (this.a.getActivity() == null);
-    this.a.getActivity().setResult(1001);
-    this.a.getActivity().finish();
-    return;
-    this.a.a(this.a.getActivity());
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auik
  * JD-Core Version:    0.7.0.1
  */

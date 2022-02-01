@@ -1,43 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qhc
-  implements qgs
+public class qhc
+  implements ViewBase.OnClickListener
 {
-  qhc(qhb paramqhb, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  snh jdField_a_of_type_Snh;
   
-  public void a(int paramInt, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
+  public qhc(ArticleInfo paramArticleInfo, Context paramContext, snh paramsnh)
   {
-    qgu localqgu = qhb.a(this.jdField_a_of_type_Qhb);
-    if (paramInt == 0)
-    {
-      if (paramBoolean2) {
-        RIJRedPacketManager.a().d();
-      }
-      if (paramBoolean1) {
-        RIJRedPacketManager.a().c();
-      }
-      if (localqgu != null)
-      {
-        localqgu.a(paramBoolean2, paramBoolean1);
-        if ((!paramBoolean2) || (paramBoolean1)) {
-          break label85;
-        }
-        localqgu.a(paramString1, paramString2, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Snh = paramsnh;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
     }
-    label85:
-    while (qhb.a(this.jdField_a_of_type_Qhb) == null)
+    for (;;)
     {
+      pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Snh);
+      qhj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
       return;
-      localqgu.j();
-      return;
+      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
     }
-    localqgu.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qhc
  * JD-Core Version:    0.7.0.1
  */

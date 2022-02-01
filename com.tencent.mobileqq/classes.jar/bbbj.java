@@ -1,50 +1,43 @@
-import com.qq.taf.jce.HexUtil;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bbbj
-  extends bbbi
+public final class bbbj
+  implements arxd
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public bbbj(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public String toString()
+  public void a(arxg paramarxg)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" clientType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" seq:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" fileId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" troopUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" agentType:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" fileType:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" downType:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" sceneType:");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.j);
-    return localStringBuilder.toString();
+    if (paramarxg != null) {}
+    try
+    {
+      paramarxg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramarxg) {}
   }
+  
+  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  
+  public boolean a(arxg paramarxg)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    bdol.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(arxg paramarxg) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

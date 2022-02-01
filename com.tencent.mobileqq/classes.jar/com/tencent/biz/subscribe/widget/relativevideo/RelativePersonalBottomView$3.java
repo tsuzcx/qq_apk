@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 
 import android.app.Activity;
 import android.support.v4.view.ViewPager;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import java.util.List;
@@ -33,7 +33,7 @@ class RelativePersonalBottomView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.3
  * JD-Core Version:    0.7.0.1
  */

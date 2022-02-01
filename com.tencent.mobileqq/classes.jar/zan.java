@@ -1,32 +1,17 @@
 public class zan
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public int a;
   
-  public zan(int paramInt, String paramString)
+  public zan(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zan
  * JD-Core Version:    0.7.0.1
  */

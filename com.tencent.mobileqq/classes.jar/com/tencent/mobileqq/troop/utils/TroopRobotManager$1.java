@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcpg;
+import bftx;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopRobotManager$1
   implements Runnable
 {
-  public TroopRobotManager$1(bcpg parambcpg) {}
+  public TroopRobotManager$1(bftx parambftx) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class TroopRobotManager$1
     {
       localRobot.mergeFrom(arrayOfByte);
       this.this$0.a(localRobot);
-      bcpg.a(this.this$0);
+      bftx.a(this.this$0);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -35,7 +35,7 @@ public class TroopRobotManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.1
  * JD-Core Version:    0.7.0.1
  */

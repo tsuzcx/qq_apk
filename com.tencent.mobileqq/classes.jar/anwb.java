@@ -1,50 +1,32 @@
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class anwb
-  extends QQEntityManagerFactory
+  extends MqqHandler
 {
-  private static Map<String, Class<?>> a = new HashMap();
-  
-  static
+  public anwb(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
+    super(paramLooper);
   }
   
-  public anwb()
+  public void handleMessage(Message paramMessage)
   {
-    super("RockDownload");
-  }
-  
-  public ambz build(String paramString)
-  {
-    if (this.dbHelper == null)
+    paramMessage = (anwc)paramMessage.obj;
+    if (paramMessage != null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
-      this.dbHelper = new ambz(this.mInnerDbHelper);
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      }
+      paramMessage.recycle();
     }
-    return this.dbHelper;
   }
-  
-  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL(awhf.a(new RockDownloadInfo()));
-  }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anwb
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.qqcircle.requests;
 
 import NS_COMM.COMM.Entry;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -25,7 +25,7 @@ public abstract class QCircleBaseRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleBaseRequest
  * JD-Core Version:    0.7.0.1
  */

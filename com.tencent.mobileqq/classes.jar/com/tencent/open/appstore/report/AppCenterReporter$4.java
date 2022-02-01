@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bfkp;
-import bflg;
-import bflp;
+import biry;
+import bisp;
+import bisy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.InstallStartLog;
@@ -23,18 +23,18 @@ public final class AppCenterReporter$4
     do
     {
       return;
-      localObject = bfkp.a().a(this.a.jdField_b_of_type_JavaLangString);
+      localObject = biry.a().a(this.a.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bflp.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
+        bisy.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
         this.a.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.a.w);
-      bflp.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
+      bisy.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
     } while (!bool);
-    bflp.b("AppCenterReporter", "[reportInstallStart]");
-    bflg.a(3007, bflg.a(this.a) + "|" + bflg.b(this.a) + "|" + new File(this.a.l).length());
+    bisy.b("AppCenterReporter", "[reportInstallStart]");
+    bisp.a(3007, bisp.a(this.a) + "|" + bisp.b(this.a) + "|" + new File(this.a.l).length());
     Object localObject = new InstallStartLog();
     ((InstallStartLog)localObject).packageName = this.a.e;
     ((InstallStartLog)localObject).versionCode = this.a.jdField_b_of_type_Int;
@@ -59,7 +59,7 @@ public final class AppCenterReporter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.4
  * JD-Core Version:    0.7.0.1
  */

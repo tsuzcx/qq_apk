@@ -1,38 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.NonNull;
 
 class pmz
-  implements puq
+  implements Comparable<pmz>
 {
-  pmz(pmx parampmx, List paramList, ArticleInfo paramArticleInfo, pgd parampgd) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
   
-  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  private pmz(pmy parampmy)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
-      return;
+    this.jdField_b_of_type_JavaLangString = "nil";
+  }
+  
+  public int a(pmz parampmz)
+  {
+    if (parampmz.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
+      return 1;
     }
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_Pgd.a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
-      return;
+    if (parampmz.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
+      return 0;
     }
-    catch (Exception paramViewBase)
+    return -1;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    int j = 1;
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
+    if (this.jdField_a_of_type_Boolean)
     {
-      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
+      i = 1;
+      localStringBuilder = localStringBuilder.append(i).append("_");
+      if (!this.jdField_b_of_type_Boolean) {
+        break label128;
+      }
+    }
+    label128:
+    for (int i = j;; i = 0)
+    {
+      return i + "_" + this.jdField_b_of_type_JavaLangString;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,45 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.qphone.base.util.QLog;
 
 public class azck
-  extends MSFServlet
+  extends beat
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  bdvs jdField_a_of_type_Bdvs;
+  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
-  
-  public void service(Intent paramIntent)
+  public azck(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, bdvs parambdvs)
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gif_ui_show".equals(str)))
-    {
-      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
-      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
-      paramIntent = new Bundle();
-      paramIntent.putInt("gif_ui_show_bid", i);
-      paramIntent.putLong("gif_ui_show_seq", l);
-      notifyObserver(null, 0, true, paramIntent, avve.class);
-      return;
+    super(paramQQAppInterface, paramPrecoverResource.md5);
+    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
+    this.jdField_a_of_type_Bdvs = parambdvs;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
     }
-    super.service(paramIntent);
+    azcg localazcg = (azcg)this.app.getManager(179);
+    if ((localazcg != null) && (localazcg.a() != null)) {
+      localazcg.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
+    }
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
+    }
+    azcg localazcg = (azcg)this.app.getManager(179);
+    if ((localazcg != null) && (localazcg.a() != null)) {
+      localazcg.a().a(this);
+    }
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] req=" + this.jdField_a_of_type_Bdvs + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   }
 }
 

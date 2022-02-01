@@ -1,45 +1,54 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class beto
-  extends Handler
+public class beto
+  extends atdl
 {
-  public int a;
+  long jdField_a_of_type_Long;
+  anif jdField_a_of_type_Anif = null;
+  bety jdField_a_of_type_Bety;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  beto(betn parambetn) {}
-  
-  public void a(int paramInt)
+  public beto(QQAppInterface paramQQAppInterface, long paramLong, bety parambety)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bety = parambety;
+    this.jdField_a_of_type_Long = paramLong;
+    b();
   }
   
-  public void handleMessage(Message paramMessage)
+  private void b()
   {
-    if (!this.jdField_a_of_type_Betn.isVisible())
-    {
-      this.jdField_a_of_type_Betn.b = this.jdField_a_of_type_Int;
-      return;
+    this.jdField_a_of_type_Anif = new betp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anif);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Anif != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anif);
     }
-    if (this.jdField_a_of_type_Betn.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Betn.c(this.jdField_a_of_type_Betn.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Betn.e);
-      return;
+  }
+  
+  public boolean a()
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      return false;
     }
-    if (this.jdField_a_of_type_Betn.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Betn.b + this.jdField_a_of_type_Betn.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Betn.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Betn.e);
-        return;
-        this.jdField_a_of_type_Betn.c(this.jdField_a_of_type_Int);
-      }
+    if (this.jdField_a_of_type_Bety.a != null) {
+      localTroopFileTransferManager.e(this.jdField_a_of_type_Bety.a);
     }
-    removeMessages(0);
+    for (;;)
+    {
+      return true;
+      localTroopFileTransferManager.a(this.jdField_a_of_type_Bety.e, this.jdField_a_of_type_Bety.g, this.jdField_a_of_type_Bety.h);
+    }
   }
 }
 

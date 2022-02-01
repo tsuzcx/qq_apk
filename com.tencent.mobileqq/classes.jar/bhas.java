@@ -1,76 +1,38 @@
-import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhas
+class bhas
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private IAudioNativeManager jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  bhas(bhar parambhar) {}
   
-  public bhas(IAudioNativeManager paramIAudioNativeManager)
+  public void onClick(View paramView)
   {
-    if (paramIAudioNativeManager != null)
+    switch (paramView.getId())
     {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager = paramIAudioNativeManager;
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.initAudioContext();
     }
-  }
-  
-  public float a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.getCurrentGain(paramInt);
-    }
-    return 0.0F;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager != null)
+    for (;;)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.createBufferSource();
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(i));
-      return i;
-    }
-    return -1;
-  }
-  
-  public long a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.stopSource(i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.a();
       }
-    }
-  }
-  
-  public void a(int paramInt, double paramDouble)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.setCurrentGain(paramInt, (float)paramDouble);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAudioIAudioNativeManager.setBufferSourceLoop(paramInt, paramBoolean);
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.b();
+      }
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhas
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,31 @@
-import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 
-public abstract interface ajyf
+class ajyf
+  implements TextWatcher
 {
-  public abstract int a();
+  ajyf(ajye paramajye) {}
   
-  public abstract void a();
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.b) {
+      this.a.jdField_a_of_type_Ajyo.a(paramEditable);
+    }
+    this.a.b = true;
+    if (paramEditable.length() == 0)
+    {
+      this.a.findViewById(2131368135).setVisibility(8);
+      return;
+    }
+    this.a.findViewById(2131368135).setVisibility(0);
+  }
   
-  public abstract void a(@Nullable ajyd paramajyd);
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

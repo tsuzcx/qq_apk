@@ -3,7 +3,7 @@ package com.tencent.mobileqq.apollo.store;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import azqs;
+import bcst;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,7 +17,7 @@ class ApolloBaseActivity$1
   
   public void run()
   {
-    azqs.b(null, "P_CliOper", "WebStatusReport", "", "", this.jdField_a_of_type_JavaLangString, 0, 1, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString, Build.VERSION.RELEASE, String.valueOf(this.this$0.f - this.this$0.g), String.valueOf(System.currentTimeMillis() - this.this$0.g));
+    bcst.b(null, "P_CliOper", "WebStatusReport", "", "", this.jdField_a_of_type_JavaLangString, 0, 1, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString, Build.VERSION.RELEASE, String.valueOf(this.this$0.f - this.this$0.g), String.valueOf(System.currentTimeMillis() - this.this$0.g));
     Object localObject1 = ApolloBaseActivity.a(this.this$0).getAll();
     if (QLog.isColorLevel()) {
       QLog.d("ApolloBaseActivity", 2, "mClickTime->" + this.this$0.g + " mCurrentStepTime - mClickTime->" + (this.this$0.f - this.this$0.g) + " mCurrentStep->" + this.this$0.jdField_a_of_type_Int);
@@ -46,7 +46,7 @@ class ApolloBaseActivity$1
         if (!((String)((Map.Entry)localObject2).getKey()).equalsIgnoreCase(String.valueOf(this.this$0.jdField_a_of_type_Long)))
         {
           localObject2 = String.valueOf(((Map.Entry)localObject2).getValue());
-          azqs.b(null, "P_CliOper", "WebStatusReport", "", "hard code unknown", this.jdField_a_of_type_JavaLangString, 0, 1, 100, (String)localObject2, Build.VERSION.RELEASE, "100", "200");
+          bcst.b(null, "P_CliOper", "WebStatusReport", "", "hard code unknown", this.jdField_a_of_type_JavaLangString, 0, 1, 100, (String)localObject2, Build.VERSION.RELEASE, "100", "200");
         }
       }
     }
@@ -55,7 +55,7 @@ class ApolloBaseActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

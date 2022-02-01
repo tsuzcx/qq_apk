@@ -1,18 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import java.util.List;
 
 public class acxj
-  implements View.OnClickListener
+  implements acxi
 {
-  public acxj(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  private acwu<acxh> a = new acwv();
   
-  public void onClick(View paramView)
+  public List<acxh> a()
   {
-    if (!this.a.isFinishing()) {
-      ForwardFriendListActivity.a(this.a).dismiss();
-    }
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends acxh> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

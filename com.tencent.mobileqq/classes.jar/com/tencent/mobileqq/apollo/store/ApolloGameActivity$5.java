@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akwd;
-import akyg;
+import ampj;
+import amrk;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
 class ApolloGameActivity$5
@@ -11,7 +11,7 @@ class ApolloGameActivity$5
   
   public void run()
   {
-    ApolloGameActivity.a(this.this$0, ApolloUtil.a(akwd.a(), ApolloGameActivity.a(this.this$0)));
+    ApolloGameActivity.a(this.this$0, ApolloUtil.a(ampj.a(), ApolloGameActivity.a(this.this$0)));
     if (ApolloGameActivity.a(this.this$0) != null) {
       ApolloGameActivity.a(this.this$0).a(ApolloGameActivity.a(this.this$0));
     }
@@ -20,7 +20,7 @@ class ApolloGameActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGameActivity.5
  * JD-Core Version:    0.7.0.1
  */

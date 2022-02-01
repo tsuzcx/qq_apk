@@ -1,21 +1,35 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aedu
-  implements URLDrawable.URLDrawableListener
+public abstract class aedu
+  extends ClickableSpan
 {
-  public aedu(TroopInfoActivity paramTroopInfoActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public aedu(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    TroopInfoActivity.b(this.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.os.Handler;
-import anga;
+import aper;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$7
   implements Runnable
 {
-  ARScanEntryView$7(ARScanEntryView paramARScanEntryView, long paramLong, anga paramanga) {}
+  ARScanEntryView$7(ARScanEntryView paramARScanEntryView, long paramLong, aper paramaper) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ class ARScanEntryView$7
     if ((this.jdField_a_of_type_Long & 0x4) != 0L)
     {
       i = 1;
-      if (!this.jdField_a_of_type_Anga.a(2)) {
+      if (!this.jdField_a_of_type_Aper.a(2)) {
         l1 = 0L | 0x2;
       }
       l2 = l1;
-      if (!this.jdField_a_of_type_Anga.a(8)) {
+      if (!this.jdField_a_of_type_Aper.a(8)) {
         l2 = l1 | 0x8;
       }
-      if ((this.jdField_a_of_type_Anga.a(4)) || (i == 0)) {
+      if ((this.jdField_a_of_type_Aper.a(4)) || (i == 0)) {
         break label294;
       }
       l2 |= 0x4;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Anga.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
-      boolean bool = this.jdField_a_of_type_Anga.c();
-      if ((this.jdField_a_of_type_Anga.a(4)) || (i == 0)) {
+      this.jdField_a_of_type_Aper.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
+      boolean bool = this.jdField_a_of_type_Aper.c();
+      if ((this.jdField_a_of_type_Aper.a(4)) || (i == 0)) {
         ARScanEntryView.b(this.this$0, 100);
       }
       if (bool)
@@ -64,7 +64,7 @@ class ARScanEntryView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.util.Log;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$30
@@ -29,7 +29,7 @@ class DesktopDataManager$30
     try
     {
       localMiniAppRedDotEntity.setStatus(1001);
-      if (((awgf)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
+      if (((EntityManager)localObject).remove(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
       {
         QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
         return;
@@ -45,7 +45,7 @@ class DesktopDataManager$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.30
  * JD-Core Version:    0.7.0.1
  */

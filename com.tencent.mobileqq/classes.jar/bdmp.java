@@ -1,26 +1,10 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class bdmp
+class bdmp
 {
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(paramInt);
-    paramArrayList.add(localActionSheetItem);
-    return localActionSheetItem;
-  }
-  
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, String paramString, int paramInt2)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
-    }
-    localActionSheetItem.argus = paramArrayList;
-    localActionSheetItem.firstLineCount = paramInt2;
-    return localActionSheetItem;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

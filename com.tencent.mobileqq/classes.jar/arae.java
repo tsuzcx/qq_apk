@@ -1,19 +1,65 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class arae
-  implements aqxw
+public class arae
+  extends aqkz<arad>
 {
-  arae(arad paramarad) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  @NonNull
+  public arad a(int paramInt)
   {
-    arad.c(this.a, paramString1);
-    arad.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
-    arad.a(this.a);
+    return new arad();
+  }
+  
+  @Nullable
+  public arad a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arad.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(arad paramarad)
+  {
+    if (paramarad == null) {}
+    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return;
+    }
+    bdjg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarad.a());
+    bdjg.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarad.b());
+  }
+  
+  public Class<arad> clazz()
+  {
+    return arad.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 294;
   }
 }
 

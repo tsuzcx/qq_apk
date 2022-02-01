@@ -1,33 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-class sax
-  implements Animation.AnimationListener
+public class sax
+  extends nyr
 {
-  sax(saw paramsaw, FastWebArticleInfo paramFastWebArticleInfo) {}
+  private sax(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(boolean paramBoolean, String paramString)
   {
-    ImageView localImageView = saw.a(this.jdField_a_of_type_Saw);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
-    for (int i = 2130842488;; i = 2130841342)
-    {
-      localImageView.setImageResource(i);
-      paramAnimation.setInterpolator(new AnticipateInterpolator());
-      return;
-    }
+    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sax
  * JD-Core Version:    0.7.0.1
  */

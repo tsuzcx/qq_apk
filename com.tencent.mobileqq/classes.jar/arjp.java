@@ -1,37 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class arjp
-  implements arrh
+  implements DialogInterface.OnClickListener
 {
-  arjp(arjo paramarjo) {}
+  arjp(arjn paramarjn) {}
   
-  public void a()
-  {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        if (this.a.a.h() == 2) {
-          arjk.c(this.a.a);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
-      }
-      return;
-      arjk.a(this.a.a);
-      continue;
-      arjk.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
-      }
-    }
-  }
-  
-  public void b() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

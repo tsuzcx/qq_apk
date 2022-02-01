@@ -1,23 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class avwe
-  implements avzl
+class avwe
+  implements avtt
 {
-  public avwe(OCRResultActivity paramOCRResultActivity) {}
+  avwe(avwb paramavwb, int paramInt, String paramString) {}
   
-  public void a(int paramInt, avzm paramavzm)
+  public void a()
   {
-    if ((paramavzm != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramavzm.b)))
-    {
-      OCRResultActivity.c(this.a, paramavzm.b);
-      OCRResultActivity.a(this.a, false);
-    }
+    ListenTogetherManager.a(this.jdField_a_of_type_Avwb.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Avwb.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
+    bcst.b(null, "dc00899", this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.b, "", this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.jdField_a_of_type_Int + "", "");
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwe
  * JD-Core Version:    0.7.0.1
  */

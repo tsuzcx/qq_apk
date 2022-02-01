@@ -1,397 +1,407 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.10;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.5;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.6;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.7;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.8;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.9;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.FeedsProtocol.LbsInfo;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.Comment;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
-import com.tencent.pb.now.ilive_feeds_read.FeedUserInfo;
-import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
-import com.tencent.pb.now.ilive_feeds_tmem.Chang;
-import com.tencent.pb.now.ilive_feeds_tmem.ChangFeed;
-import com.tencent.pb.now.ilive_feeds_tmem.FeedsTmemLike;
-import com.tencent.pb.now.ilive_feeds_tmem.LiveFeed;
-import com.tencent.pb.now.ilive_feeds_tmem.PicFeed;
-import com.tencent.pb.now.ilive_feeds_tmem.PicInfo;
-import com.tencent.pb.now.ilive_feeds_tmem.TextFeed;
-import com.tencent.pb.now.ilive_feeds_tmem.VideoFeed;
-import java.text.DecimalFormat;
+import android.util.Base64;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.jubao.JubaoMsgData;
+import com.tencent.mobileqq.mini.sdk.JsonORM;
+import com.tencent.mobileqq.mini.sdk.JsonORM.JsonParseException;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avrb
-  implements Manager
+  extends WebViewPlugin
+  implements BusinessObserver
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  protected DecimalFormat a;
-  private List<avri> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private String a;
+  private String b;
+  private final String c = "0x800A851";
+  private String d = anni.a(2131704684);
   
-  public avrb(QQAppInterface paramQQAppInterface)
+  public avrb()
   {
-    this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#.##");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.mPluginNameSpace = "jubao";
   }
   
-  private avsg a(ilive_feeds_read.FeedsInfo paramFeedsInfo)
+  public static String a(int paramInt, String paramString)
   {
-    if (paramFeedsInfo == null) {
-      return null;
-    }
-    Object localObject1;
-    if (paramFeedsInfo.feed_type.get() == 5)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localObject1 = new avsf();
-      ((avsf)localObject1).jdField_a_of_type_JavaLangString = paramFeedsInfo.live_info.pic_url.get().toStringUtf8();
-      ((avsf)localObject1).n = paramFeedsInfo.live_info.desc.get().toStringUtf8();
+      localJSONObject.put("result", paramInt);
+      localJSONObject.put("uuid", paramString);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public static String a(ArrayList<ChatMessage> paramArrayList)
+  {
+    Object localObject2 = "";
+    int j = 0;
+    int i = j;
+    Object localObject1 = localObject2;
+    if (paramArrayList != null)
+    {
+      i = j;
+      localObject1 = localObject2;
+      if (paramArrayList.size() > 0)
+      {
+        i = paramArrayList.size();
+        localObject1 = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localObject2 = JubaoMsgData.transfer((ChatMessage)paramArrayList.next());
+          try
+          {
+            ((JSONArray)localObject1).put(((JubaoMsgData)localObject2).toJson());
+          }
+          catch (JsonORM.JsonParseException localJsonParseException)
+          {
+            localJsonParseException.printStackTrace();
+          }
+        }
+        localObject1 = ((JSONArray)localObject1).toString();
+      }
+    }
+    paramArrayList = new JSONObject();
+    try
+    {
+      paramArrayList.put("msgcount", i);
+      paramArrayList.put("msgs", localObject1);
+      return paramArrayList.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs)) {
+      return;
     }
     for (;;)
     {
-      if (localObject1 != null)
+      Object localObject2;
+      String str;
+      try
       {
-        ((avsg)localObject1).jdField_d_of_type_Int = paramFeedsInfo.feed_type.get();
-        ((avsg)localObject1).e = String.valueOf(paramFeedsInfo.publish_info.uin.get());
-        ((avsg)localObject1).c = paramFeedsInfo.feeds_id.get().toStringUtf8();
-        ((avsg)localObject1).jdField_d_of_type_JavaLangString = String.valueOf(paramFeedsInfo.publish_info.url.get().toStringUtf8());
-        ((avsg)localObject1).m = paramFeedsInfo.jump_url.get().toStringUtf8();
-        boolean bool;
-        label162:
-        double d1;
-        if (paramFeedsInfo.like.get() == 1)
-        {
-          bool = true;
-          ((avsg)localObject1).jdField_a_of_type_Boolean = bool;
-          ((avsg)localObject1).jdField_f_of_type_Int = paramFeedsInfo.like_info.like_number.get();
-          ((avsg)localObject1).jdField_g_of_type_Int = paramFeedsInfo.comment_num.get();
-          ((avsg)localObject1).jdField_a_of_type_Long = paramFeedsInfo.create_time.get();
-          ((avsg)localObject1).jdField_f_of_type_JavaLangString = avru.a(paramFeedsInfo.create_time.get() * 1000L);
-          ((avsg)localObject1).h = paramFeedsInfo.lbs_info.lng.get().toStringUtf8();
-          ((avsg)localObject1).i = paramFeedsInfo.lbs_info.lat.get().toStringUtf8();
-          ((avsg)localObject1).j = paramFeedsInfo.lbs_info.city.get().toStringUtf8();
-          ((avsg)localObject1).k = paramFeedsInfo.lbs_info.name.get().toStringUtf8();
-          if (paramFeedsInfo.distance.has())
-          {
-            double d2 = paramFeedsInfo.distance.get();
-            d1 = d2;
-            if (d2 < 0.01D) {
-              d1 = 0.01D;
-            }
-            if (d1 >= 100.0D) {
-              break label1093;
-            }
-            ((avsg)localObject1).l = (this.jdField_a_of_type_JavaTextDecimalFormat.format(d1) + "km");
-          }
-          label375:
-          if (TextUtils.isEmpty(paramFeedsInfo.lbs_info.name.get().toStringUtf8())) {
-            break label1141;
-          }
+        JSONObject localJSONObject = new JSONObject(paramVarArgs);
+        localObject1 = localJSONObject.optString("chatuin", "");
+        localObject2 = localJSONObject.optString("groupcode", "");
+        j = localJSONObject.optInt("chattype", 0);
+        k = localJSONObject.optInt("topicid", 0);
+        str = localJSONObject.optString("uinname", "");
+        Object localObject3 = localJSONObject.optString("msgs");
+        paramVarArgs = (String[])localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramVarArgs = abao.c((String)localObject1, abao.b(1));
         }
-        label1093:
-        label1141:
-        for (((avsg)localObject1).jdField_g_of_type_JavaLangString = paramFeedsInfo.lbs_info.name.get().toStringUtf8();; ((avsg)localObject1).jdField_g_of_type_JavaLangString = paramFeedsInfo.lbs_info.city.get().toStringUtf8())
+        if (TextUtils.isEmpty(str)) {
+          break label437;
+        }
+        str = new String(Base64.decode(str, 0));
+        if (QLog.isColorLevel()) {
+          QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label440;
+        }
+        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+        localObject3 = new ArrayList();
+        int m = arrayOfJubaoMsgData.length;
+        int i = 0;
+        localObject1 = localObject3;
+        if (i < m)
         {
-          Object localObject2 = paramFeedsInfo.comments.get();
-          if (((List)localObject2).size() <= 0) {
-            break label1168;
-          }
-          paramFeedsInfo = new ArrayList();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
+          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
+          i += 1;
+          continue;
+        }
+        this.a = localJSONObject.optString("callback", "");
+        if (j == 1) {
+          break label446;
+        }
+        if (j != 3000) {
+          break label434;
+        }
+      }
+      catch (JSONException paramVarArgs)
+      {
+        int j;
+        int k;
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
+        ((Intent)localObject2).putExtra("uin", paramVarArgs);
+        ((Intent)localObject2).putExtra("uintype", j);
+        if (TextUtils.isEmpty(str)) {
+          continue;
+        }
+        if ((j != 1033) && (j != 1034)) {
+          break label421;
+        }
+        ((Intent)localObject2).putExtra("key_confessor_nick", str);
+        ((Intent)localObject2).putExtra("key_confess_topicid", k);
+        if (localObject1 == null) {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
+        ((Intent)localObject2).putExtra("entrance", 9);
+        startActivityForResult((Intent)localObject2, (byte)0);
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      if (TextUtils.isEmpty(paramVarArgs))
+      {
+        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
+        return;
+      }
+      label421:
+      ((Intent)localObject2).putExtra("uinname", str);
+      continue;
+      label434:
+      continue;
+      label437:
+      continue;
+      label440:
+      Object localObject1 = null;
+      continue;
+      label446:
+      paramVarArgs = (String[])localObject2;
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (!bgnt.g(this.mRuntime.a()))
+    {
+      paramVarArgs = a(5, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      return;
+    }
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs))
+    {
+      paramVarArgs = a(0, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramVarArgs);
+        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
+        str = ((JSONObject)localObject).optString("groupcode", "");
+        j = ((JSONObject)localObject).optInt("chattype", 0);
+        if (!TextUtils.isEmpty(paramVarArgs))
+        {
+          paramVarArgs = abao.c(paramVarArgs, abao.b(1));
+          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
+          localArrayList = new ArrayList();
+          int k = arrayOfJubaoMsgData.length;
+          int i = 0;
+          if (i < k)
           {
-            NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)((Iterator)localObject2).next();
-            avse localavse = new avse();
-            localavse.jdField_a_of_type_Long = localComment.comment_id.get();
-            localavse.jdField_a_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
-            localavse.jdField_b_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
-            localavse.c = ((NowNearbyVideoCommentProto.CommentMsg)((NowNearbyVideoCommentProto.CommentMsgBody)localComment.content.get()).msgs.get().get(0)).msg.get().toStringUtf8();
-            paramFeedsInfo.add(localavse);
+            localArrayList.add(arrayOfJubaoMsgData[i]);
+            i += 1;
           }
-          if ((paramFeedsInfo.feed_type.get() == 1) || (paramFeedsInfo.feed_type.get() == 3) || (paramFeedsInfo.feed_type.get() == 2))
+          else
           {
-            localObject1 = new avsj();
-            ((avsj)localObject1).jdField_a_of_type_JavaLangString = paramFeedsInfo.feed_info.pic_url.get().toStringUtf8();
-            ((avsj)localObject1).jdField_b_of_type_Long = paramFeedsInfo.feed_info.video_time.get();
-            ((avsj)localObject1).jdField_a_of_type_Int = paramFeedsInfo.feed_info.video_width.get();
-            ((avsj)localObject1).jdField_b_of_type_Int = paramFeedsInfo.feed_info.video_hight.get();
-            ((avsj)localObject1).n = paramFeedsInfo.feed_info.desc.get().toStringUtf8();
-            ((avsj)localObject1).e = paramFeedsInfo.view_times.get();
-            localObject1 = (avsj)avdd.a(paramFeedsInfo.topic_cfg.get(), (avsg)localObject1);
-            break;
-          }
-          if (paramFeedsInfo.feed_type.get() == 4)
-          {
-            localObject1 = new avsh();
-            localObject2 = paramFeedsInfo.pic_info.infos.get();
-            if (((List)localObject2).size() > 0)
+            this.b = ((JSONObject)localObject).optString("callback", "");
+            if ((localArrayList == null) || (localArrayList.size() == 0))
             {
-              localObject2 = (ilive_feeds_tmem.PicInfo)((List)localObject2).get(0);
-              ((avsh)localObject1).jdField_a_of_type_JavaLangString = ((ilive_feeds_tmem.PicInfo)localObject2).url.get().toStringUtf8();
-              ((avsh)localObject1).jdField_a_of_type_Int = ((ilive_feeds_tmem.PicInfo)localObject2).width.get();
-              ((avsh)localObject1).jdField_b_of_type_Int = ((ilive_feeds_tmem.PicInfo)localObject2).hight.get();
+              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
+              paramVarArgs = a(1, "");
+              callJs(this.b, new String[] { paramVarArgs });
+              return;
             }
-            ((avsh)localObject1).n = paramFeedsInfo.pic_info.desc.get().toStringUtf8();
-            localObject1 = (avsh)avdd.a(paramFeedsInfo.topic_cfg.get(), (avsg)localObject1);
-            break;
           }
-          if (paramFeedsInfo.feed_type.get() == 6)
-          {
-            localObject1 = new avsd();
-            ((avsd)localObject1).jdField_b_of_type_JavaLangString = paramFeedsInfo.chang_info.pic_url.get().toStringUtf8();
-            ((avsd)localObject1).jdField_a_of_type_Int = paramFeedsInfo.chang_info.width.get();
-            ((avsd)localObject1).jdField_b_of_type_Int = paramFeedsInfo.chang_info.hight.get();
-            if (paramFeedsInfo.chang_info.chang.size() > 0) {
-              ((avsd)localObject1).jdField_a_of_type_JavaLangString = ((ilive_feeds_tmem.Chang)paramFeedsInfo.chang_info.chang.get(0)).id.get().toStringUtf8();
-            }
-            ((avsd)localObject1).n = paramFeedsInfo.chang_info.desc.get().toStringUtf8();
-            ((avsd)localObject1).e = paramFeedsInfo.view_times.get();
-            ((avsd)localObject1).c = paramFeedsInfo.chang_info.chang.size();
-            break;
-          }
-          if (paramFeedsInfo.feed_type.get() != 10) {
-            break label1171;
-          }
-          localObject1 = new avsk();
-          ((avsk)localObject1).n = paramFeedsInfo.text_feed.text.get();
-          localObject1 = (avsk)avdd.a(paramFeedsInfo.topic_cfg.get(), (avsg)localObject1);
-          break;
-          bool = false;
-          break label162;
-          this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#");
-          ((avsg)localObject1).l = (this.jdField_a_of_type_JavaTextDecimalFormat.format(d1) + "km");
-          break label375;
         }
-        ((avsg)localObject1).jdField_a_of_type_JavaUtilList = paramFeedsInfo;
       }
-      label1168:
-      return localObject1;
-      label1171:
-      localObject1 = null;
-    }
-  }
-  
-  private List<avsg> a(List<ilive_feeds_read.FeedsInfo> paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      avsg localavsg = a((ilive_feeds_read.FeedsInfo)paramList.next());
-      if (localavsg != null)
+      catch (JSONException paramVarArgs)
       {
-        a(localavsg);
-        localArrayList.add(localavsg);
+        int j;
+        ArrayList localArrayList;
+        str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
+        }
+        Object localObject = new NewIntent(this.mRuntime.a(), avre.class);
+        ((NewIntent)localObject).putExtra("jubao_chat_uin", paramVarArgs);
+        ((NewIntent)localObject).putExtra("jubao_group_code", str);
+        ((NewIntent)localObject).putExtra("jubao_chat_type", j);
+        ((NewIntent)localObject).putExtra("jubao_msg_list", localArrayList);
+        ((NewIntent)localObject).setObserver(this);
+        BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+        bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        String str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
       }
     }
-    return localArrayList;
   }
   
-  private void a(avsg paramavsg)
+  public void callJs(String paramString, String... paramVarArgs)
   {
-    if ((paramavsg == null) || (TextUtils.isEmpty(paramavsg.n))) {
+    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
+      bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
+    }
+    super.callJs(paramString, paramVarArgs);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
+    if ("jubao".equals(paramString2))
+    {
+      if ("selectMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
+          if (paramJsBridgeListener != null) {
+            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
+          }
+          a(paramVarArgs);
+          bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
+        }
+        return true;
+      }
+      if ("uploadMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label248;
+        }
+        b(new String[] { paramVarArgs[0] });
+      }
+    }
+    label248:
+    for (int i = 0;; i = 1)
+    {
+      bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    QLog.d("jubaoApiPlugin", 1, "onActivityResult ");
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 0)
+    {
+      if (paramInt != -1) {
+        break label81;
+      }
+      paramIntent = paramIntent.getStringExtra("msgs");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
+      }
+      callJs(this.a, new String[] { paramIntent });
+    }
+    label81:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    Matcher localMatcher = Pattern.compile("\\[:([^(:\\])]+):\\]").matcher(paramavsg.n);
-    StringBuffer localStringBuffer = new StringBuffer();
-    while (localMatcher.find()) {
-      localMatcher.appendReplacement(localStringBuffer, "");
-    }
-    localMatcher.appendTail(localStringBuffer);
-    paramavsg.n = localStringBuffer.toString();
+    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
   }
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      c(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void a(avri paramavri)
-  {
-    try
+    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
+    int j = 1;
+    int i = 0;
+    bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
+    String str;
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramavri);
-      return;
-    }
-    finally
-    {
-      paramavri = finally;
-      throw paramavri;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    avrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new avrc(this, paramString));
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.8(this, paramString, paramInt));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.7(this, paramString, paramLong));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, avrh paramavrh)
-  {
-    avrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramLong, paramInt1, paramInt2, paramInt3, new avrf(this, paramavrh));
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt, avrg paramavrg)
-  {
-    if (paramInt == 6) {
-      paramInt = 10;
+      str = "";
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label226;
+      }
+      str = paramBundle.getString("jubao_uuid");
+      paramInt = paramBundle.getInt("jubao_result_code", 0);
+      i = 0;
+      paramBundle = str;
     }
     for (;;)
     {
-      avrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramLong, paramInt, new avre(this, paramavrg));
+      str = a(paramInt, paramBundle);
+      callJs(this.b, new String[] { str });
+      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
+      j = i;
+      i = paramInt;
+      bcst.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
       return;
+      label226:
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt("jubao_result_code", 1);
+        i = 1;
+        paramBundle = str;
+      }
+      else
+      {
+        paramInt = 0;
+        i = 1;
+        paramBundle = str;
+      }
     }
   }
   
-  public void b(avri paramavri)
+  public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramavri);
-      return;
-    }
-    finally
-    {
-      paramavri = finally;
-      throw paramavri;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    avrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new avrd(this, paramString));
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.9(this, paramString, paramInt));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.5(this, paramString));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void e(String paramString)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.6(this, paramString));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void f(String paramString)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.10(this, paramString));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    QLog.e("jubaoApiPlugin", 1, "startActivityForResult ");
+    super.startActivityForResult(paramIntent, paramByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avrb
  * JD-Core Version:    0.7.0.1
  */

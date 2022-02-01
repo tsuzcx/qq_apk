@@ -20,30 +20,34 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import nrt;
-import nwj;
-import nwm;
-import opw;
-import ors;
-import osk;
-import owv;
-import owy;
-import oxd;
-import oxp;
-import sdu;
+import oat;
+import oge;
+import ogh;
+import oqp;
+import pfn;
+import pha;
+import pho;
+import pkh;
+import pme;
+import pmh;
+import pmm;
+import pmy;
+import tcj;
 
 public class ReadInJoyBBCircleFragment
   extends ReadInJoyBaseFragment
-  implements owv
+  implements pme
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  protected nwj a;
-  private osk jdField_a_of_type_Osk = new osk();
+  protected oge a;
+  private pho jdField_a_of_type_Pho = new pho();
   private boolean jdField_a_of_type_Boolean;
   
   private void a()
@@ -73,41 +77,36 @@ public class ReadInJoyBBCircleFragment
         if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
           continue;
         }
-        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375349);
-        this.jdField_a_of_type_Nwj = ((nwj)ors.a.remove(Integer.valueOf(70)));
-        if (this.jdField_a_of_type_Nwj == null)
+        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131376073);
+        this.jdField_a_of_type_Oge = ((oge)pha.a.remove(Integer.valueOf(70)));
+        if (this.jdField_a_of_type_Oge == null)
         {
-          this.jdField_a_of_type_Nwj = new nwj((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_Nwj.a(70);
-          this.jdField_a_of_type_Nwj.b(0);
-          this.jdField_a_of_type_Nwj.a((ViewGroup)localObject);
-          this.jdField_a_of_type_Nwj.a();
-          this.jdField_a_of_type_Nwj.a(this.jdField_a_of_type_Rxg, this.d);
-          localObject = this.jdField_a_of_type_Nwj.a();
+          this.jdField_a_of_type_Oge = new oge((Activity)this.jdField_a_of_type_AndroidContentContext);
+          this.jdField_a_of_type_Oge.a(70);
+          this.jdField_a_of_type_Oge.b(0);
+          this.jdField_a_of_type_Oge.a((ViewGroup)localObject);
+          this.jdField_a_of_type_Oge.a();
+          this.jdField_a_of_type_Oge.a(this.jdField_a_of_type_Svd, this.d);
+          localObject = this.jdField_a_of_type_Oge.a();
           if ((localObject != null) && ((localObject instanceof ReadInJoyBaseListViewGroup))) {
             ((ReadInJoyBaseListViewGroup)localObject).h();
           }
-          oxp.a(0, opw.a(), 0);
-          ((KandianSubscribeManager)ors.a().getManager(280)).a(this);
+          pmy.a(0, pfn.a(), 0);
+          ((KandianSubscribeManager)pha.a().getManager(280)).a(this);
           this.jdField_a_of_type_Boolean = true;
           continue;
         }
-        this.jdField_a_of_type_Nwj.a(localViewGroup);
+        this.jdField_a_of_type_Oge.a(localViewGroup);
       }
       finally {}
-      this.jdField_a_of_type_Nwj.c();
-      this.jdField_a_of_type_Nwj.b();
+      this.jdField_a_of_type_Oge.c();
+      this.jdField_a_of_type_Oge.b();
     }
   }
   
   private void c()
   {
     ThreadManager.executeOnSubThread(new ReadInJoyBBCircleFragment.1(this));
-  }
-  
-  public void A_()
-  {
-    a();
   }
   
   public int a()
@@ -118,12 +117,12 @@ public class ReadInJoyBBCircleFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Nwj != null)
+    if (this.jdField_a_of_type_Oge != null)
     {
-      this.jdField_a_of_type_Nwj.a(true);
+      this.jdField_a_of_type_Oge.a(true);
       return;
     }
-    nwm.e(a());
+    ogh.e(a());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
@@ -132,19 +131,19 @@ public class ReadInJoyBBCircleFragment
     if (!this.jdField_a_of_type_Boolean) {
       b();
     }
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.h();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.h();
     }
     QLog.d("ReadInJoyBBCircleFragment", 2, "[notifyShowSelf] show!");
     a();
-    nrt.a(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
-    ((KandianSubscribeManager)ors.a().getManager(280)).a(this);
-    if ((this.jdField_a_of_type_Nwj != null) && ((this.jdField_a_of_type_Nwj.a() instanceof ReadInJoyListViewGroup)))
+    oat.a(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
+    ((KandianSubscribeManager)pha.a().getManager(280)).a(this);
+    if ((this.jdField_a_of_type_Oge != null) && ((this.jdField_a_of_type_Oge.a() instanceof ReadInJoyListViewGroup)))
     {
-      paramActivity = ((ReadInJoyListViewGroup)this.jdField_a_of_type_Nwj.a()).a().iterator();
+      paramActivity = ((ReadInJoyListViewGroup)this.jdField_a_of_type_Oge.a()).a().iterator();
       while (paramActivity.hasNext())
       {
-        paramBundle = (sdu)paramActivity.next();
+        paramBundle = (tcj)paramActivity.next();
         if ((paramBundle instanceof ReadInJoyDiandianHeaderController)) {
           paramBundle.e();
         }
@@ -155,38 +154,38 @@ public class ReadInJoyBBCircleFragment
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.a(true);
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.a(true);
     }
   }
   
   public void g()
   {
     super.g();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.g();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.g();
     }
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.k();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.k();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    View localView = this.jdField_a_of_type_Nwj.a();
+    View localView = this.jdField_a_of_type_Oge.a();
     if (((localView instanceof ReadInJoyListViewGroup)) && (((ReadInJoyListViewGroup)localView).e())) {
       return true;
     }
@@ -205,11 +204,15 @@ public class ReadInJoyBBCircleFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560029, paramViewGroup, false);
-    if ((!getUserVisibleHint()) && (ors.l())) {}
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560175, paramViewGroup, false);
+    if ((!getUserVisibleHint()) && (pha.n())) {}
     for (;;)
     {
-      return this.jdField_a_of_type_AndroidViewView;
+      VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "8014");
+      VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new pkh().a(70L).a());
+      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
       b();
     }
   }
@@ -218,23 +221,23 @@ public class ReadInJoyBBCircleFragment
   {
     c();
     super.onDestroy();
-    owy.a().a();
-    if (this.jdField_a_of_type_Nwj != null)
+    pmh.a().a();
+    if (this.jdField_a_of_type_Oge != null)
     {
-      this.jdField_a_of_type_Nwj.d();
-      localObject = this.jdField_a_of_type_Nwj.a();
+      this.jdField_a_of_type_Oge.d();
+      localObject = this.jdField_a_of_type_Oge.a();
       if ((localObject != null) && ((localObject instanceof ReadInJoyBaseListViewGroup))) {
         ((ReadInJoyBaseListViewGroup)localObject).i();
       }
     }
-    this.jdField_a_of_type_Nwj = null;
-    Object localObject = (QQAppInterface)ors.a();
+    this.jdField_a_of_type_Oge = null;
+    Object localObject = (QQAppInterface)pha.a();
     if (localObject != null)
     {
-      localObject = (oxd)((QQAppInterface)localObject).getManager(163);
-      if ((localObject != null) && (((oxd)localObject).a() != null))
+      localObject = (pmm)((QQAppInterface)localObject).getManager(163);
+      if ((localObject != null) && (((pmm)localObject).a() != null))
       {
-        localObject = ((oxd)localObject).a().a();
+        localObject = ((pmm)localObject).a().a();
         if (localObject != null) {
           ((ReadInJoyUserInfoModule)localObject).b();
         }
@@ -244,57 +247,63 @@ public class ReadInJoyBBCircleFragment
   
   public void onDestroyView()
   {
-    ((KandianSubscribeManager)ors.a().getManager(280)).b(this);
+    ((KandianSubscribeManager)pha.a().getManager(280)).b(this);
     super.onDestroyView();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.c();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.g();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_a_of_type_Nwj != null) && (this.c)) {
-      this.jdField_a_of_type_Nwj.h();
+    if ((this.jdField_a_of_type_Oge != null) && (this.c)) {
+      this.jdField_a_of_type_Oge.h();
     }
+    oqp.a();
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.e();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.e();
     }
-    this.jdField_a_of_type_Osk.a();
+    this.jdField_a_of_type_Pho.a();
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Nwj != null) {
-      this.jdField_a_of_type_Nwj.f();
+    if (this.jdField_a_of_type_Oge != null) {
+      this.jdField_a_of_type_Oge.f();
     }
     if (!BaseActivity.mAppForground) {
-      this.jdField_a_of_type_Osk.b();
+      this.jdField_a_of_type_Pho.b();
     }
     if (getActivity().isFinishing())
     {
-      oxp.a(1, opw.a(), 0);
-      opw.b();
+      pmy.a(1, pfn.a(), 0);
+      pfn.b();
     }
+  }
+  
+  public void z_()
+  {
+    a();
   }
 }
 

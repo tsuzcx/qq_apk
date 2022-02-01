@@ -1,40 +1,26 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
 public class ajee
-  implements View.OnClickListener
+  extends Handler
 {
-  public ajee(ViewPagerTabLayout paramViewPagerTabLayout) {}
+  public ajee(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
-    if (i != -1)
+    switch (paramMessage.what)
     {
-      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
-        break label85;
-      }
-      if (ViewPagerTabLayout.a(this.a)) {
-        break label74;
-      }
-      this.a.setCurrentTab(i, false);
-      if (ViewPagerTabLayout.a(this.a) != null) {
-        ViewPagerTabLayout.a(this.a).a(i);
-      }
     }
-    label74:
-    label85:
-    while (ViewPagerTabLayout.a(this.a) == null) {
-      for (;;)
-      {
-        return;
-        this.a.setCurrentTab(i);
-      }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
-    ViewPagerTabLayout.a(this.a).b(i);
   }
 }
 

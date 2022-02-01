@@ -1,8 +1,19 @@
-import android.view.MotionEvent;
+import android.graphics.Paint;
 
-public abstract interface aioq
+public class aioq
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public final Paint a;
+  public final float[] a;
+  public final String[] a;
+  public final Paint b;
+  
+  public aioq(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
+  {
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
+    this.b = paramPaint2;
+  }
 }
 
 

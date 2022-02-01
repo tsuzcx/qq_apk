@@ -1,8 +1,6 @@
 public abstract interface azhn
 {
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(RuntimeException paramRuntimeException);
+  public abstract void a(int paramInt1, azhm paramazhm, int paramInt2, String paramString);
 }
 
 

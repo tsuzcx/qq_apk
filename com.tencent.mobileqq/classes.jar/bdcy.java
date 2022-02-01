@@ -1,37 +1,10 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class bdcy
-  extends alsa
+public abstract interface bdcy
 {
-  bdcy(bdcx parambdcx) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Alsa != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Alsa);
-    }
-    if (paramBoolean)
-    {
-      paramFaceInfo = this.a.b();
-      if (paramFaceInfo != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
-        return;
-      }
-      this.a.a();
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

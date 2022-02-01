@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
-final class azqt
-  implements PluginRuntime.IClickEventReportor
+public class azqt
+  extends AnimatorListenerAdapter
 {
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    azqs.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
+  public azqt(VasProfileTagView paramVasProfileTagView, View paramView) {}
   
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    azqs.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+    if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b();
+    }
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azqt
  * JD-Core Version:    0.7.0.1
  */

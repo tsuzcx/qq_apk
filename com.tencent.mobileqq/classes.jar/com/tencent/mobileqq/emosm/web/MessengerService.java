@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.emosm.web;
 
-import akfy;
-import akwd;
-import alpq;
-import altm;
-import amaz;
+import alyx;
+import ampj;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -17,30 +14,33 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import appv;
-import appw;
-import appx;
-import appy;
-import appz;
-import apqa;
-import apqb;
-import apqc;
-import apqd;
-import apqe;
-import apqf;
-import apqg;
-import apqh;
-import aprg;
-import aprn;
-import apro;
-import aprz;
-import apsb;
-import aybu;
-import ayec;
-import bahj;
-import beak;
-import becy;
-import bfzo;
+import aniz;
+import anmu;
+import anth;
+import arsw;
+import arsx;
+import arsy;
+import arsz;
+import arta;
+import artb;
+import artc;
+import artd;
+import arte;
+import artf;
+import artg;
+import arth;
+import arti;
+import aruh;
+import aruo;
+import arup;
+import arva;
+import arvc;
+import bbad;
+import bbck;
+import bdin;
+import bhhl;
+import bhka;
+import bjha;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -53,31 +53,31 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.os.MqqHandler;
-import num;
+import odp;
 
 public class MessengerService
   extends AppService
-  implements appv
+  implements arsw
 {
-  public akfy a;
-  public alpq a;
-  public altm a;
-  public amaz a;
+  public alyx a;
   public Bundle a;
   public Handler a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
-  private apqh jdField_a_of_type_Apqh;
-  public aprg a;
-  public aprz a;
-  public apsb a;
-  public aybu a;
-  public bahj a;
-  public beak a;
-  public becy a;
-  public bfzo a;
+  public aniz a;
+  public anmu a;
+  public anth a;
+  private arti jdField_a_of_type_Arti;
+  public aruh a;
+  public arva a;
+  public arvc a;
+  public bbad a;
+  public bdin a;
+  public bhhl a;
+  public bhka a;
+  public bjha a;
   public List<Bundle> a;
-  num jdField_a_of_type_Num = new appx(this);
+  odp jdField_a_of_type_Odp = new arsy(this);
   public Bundle b;
   Messenger b;
   public Bundle c = null;
@@ -86,22 +86,22 @@ public class MessengerService
   public MessengerService()
   {
     this.jdField_a_of_type_AndroidOsMessenger = null;
-    this.jdField_a_of_type_Apsb = new appw(this);
-    this.jdField_a_of_type_Aprz = new appz(this);
-    this.jdField_a_of_type_Bahj = new apqa(this);
-    this.jdField_a_of_type_Becy = new apqb(this);
-    this.jdField_a_of_type_Beak = new apqc(this);
-    this.jdField_a_of_type_Aprg = new aprg(this);
-    this.jdField_a_of_type_Amaz = new amaz(this.jdField_a_of_type_Aprg);
+    this.jdField_a_of_type_Arvc = new arsx(this);
+    this.jdField_a_of_type_Arva = new arta(this);
+    this.jdField_a_of_type_Bdin = new artb(this);
+    this.jdField_a_of_type_Bhka = new artc(this);
+    this.jdField_a_of_type_Bhhl = new artd(this);
+    this.jdField_a_of_type_Aruh = new aruh(this);
+    this.jdField_a_of_type_Anth = new anth(this.jdField_a_of_type_Aruh);
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
     this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_Alpq = new apqd(this);
-    this.jdField_a_of_type_Akfy = new apqe(this);
+    this.jdField_a_of_type_Aniz = new arte(this);
+    this.jdField_a_of_type_Alyx = new artf(this);
     this.jdField_b_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Aybu = new apqf(this);
-    this.jdField_a_of_type_Altm = new apqg(this);
-    this.jdField_a_of_type_Bfzo = new appy(this);
+    this.jdField_a_of_type_Bbad = new artg(this);
+    this.jdField_a_of_type_Anmu = new arth(this);
+    this.jdField_a_of_type_Bjha = new arsz(this);
   }
   
   public static void a(MessengerService paramMessengerService)
@@ -188,11 +188,11 @@ public class MessengerService
       super.onCreate();
       this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Vas_MessengerServiceWorkerThread", -2);
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Apqh = new apqh(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Apqh);
+      this.jdField_a_of_type_Arti = new arti(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Arti);
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
-        ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Akfy);
+        ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Alyx);
         return;
       }
     }
@@ -217,17 +217,17 @@ public class MessengerService
   public void onDestroy()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Apqh != null)
+    if (this.jdField_a_of_type_Arti != null)
     {
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
         localObject = (VasQuickUpdateManager)((QQAppInterface)this.app).getManager(184);
         if (localObject != null) {
-          ((VasQuickUpdateManager)localObject).removeCallBacker(this.jdField_a_of_type_Apqh.a);
+          ((VasQuickUpdateManager)localObject).removeCallBacker(this.jdField_a_of_type_Arti.a);
         }
       }
-      this.jdField_a_of_type_Apqh.getLooper().quit();
-      this.jdField_a_of_type_Apqh = null;
+      this.jdField_a_of_type_Arti.getLooper().quit();
+      this.jdField_a_of_type_Arti = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
@@ -239,50 +239,50 @@ public class MessengerService
     if ((this.app != null) && ((this.app instanceof QQAppInterface)))
     {
       localObject = (QQAppInterface)this.app;
-      if ((apro)this.app.getManager(43) != null) {
-        apro.a.b(this.jdField_a_of_type_Apsb);
+      if ((arup)this.app.getManager(43) != null) {
+        arup.a.b(this.jdField_a_of_type_Arvc);
       }
-      if (this.jdField_a_of_type_Amaz != null)
+      if (this.jdField_a_of_type_Anth != null)
       {
-        this.jdField_a_of_type_Amaz.a();
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Amaz);
-        this.jdField_a_of_type_Amaz = null;
+        this.jdField_a_of_type_Anth.a();
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anth);
+        this.jdField_a_of_type_Anth = null;
       }
-      this.jdField_a_of_type_Aprg = null;
-      if (this.jdField_a_of_type_Alpq != null)
+      this.jdField_a_of_type_Aruh = null;
+      if (this.jdField_a_of_type_Aniz != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Alpq);
-        this.jdField_a_of_type_Alpq = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Aniz);
+        this.jdField_a_of_type_Aniz = null;
       }
-      if (this.jdField_a_of_type_Becy != null)
+      if (this.jdField_a_of_type_Bhka != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Becy);
-        this.jdField_a_of_type_Becy = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bhka);
+        this.jdField_a_of_type_Bhka = null;
       }
-      if (this.jdField_a_of_type_Bahj != null)
+      if (this.jdField_a_of_type_Bdin != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bahj);
-        this.jdField_a_of_type_Bahj = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bdin);
+        this.jdField_a_of_type_Bdin = null;
       }
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Akfy);
-      this.jdField_a_of_type_Akfy.a();
-      if (this.jdField_a_of_type_Num != null)
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Alyx);
+      this.jdField_a_of_type_Alyx.a();
+      if (this.jdField_a_of_type_Odp != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Num);
-        this.jdField_a_of_type_Num = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Odp);
+        this.jdField_a_of_type_Odp = null;
       }
-      if (this.jdField_a_of_type_Altm != null)
+      if (this.jdField_a_of_type_Anmu != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Altm);
-        this.jdField_a_of_type_Altm = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anmu);
+        this.jdField_a_of_type_Anmu = null;
       }
-      if (this.jdField_a_of_type_Aybu != null)
+      if (this.jdField_a_of_type_Bbad != null)
       {
-        localObject = (ayec)((QQAppInterface)localObject).getManager(15);
+        localObject = (bbck)((QQAppInterface)localObject).getManager(15);
         if (localObject != null)
         {
-          ((ayec)localObject).b(this.jdField_a_of_type_Aybu);
-          this.jdField_a_of_type_Aybu = null;
+          ((bbck)localObject).b(this.jdField_a_of_type_Bbad);
+          this.jdField_a_of_type_Bbad = null;
         }
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null)
@@ -303,13 +303,13 @@ public class MessengerService
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onUnbind");
     }
-    akwd.b();
+    ampj.b();
     return super.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,110 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.IBinder;
+import android.os.Parcel;
 
-final class bmcs
-  implements EIPCResultCallback
+class bmcs
+  implements bmcq
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  private IBinder a;
+  
+  bmcs(IBinder paramIBinder)
   {
-    if (paramEIPCResult != null)
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeFloat(paramFloat);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void c()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }

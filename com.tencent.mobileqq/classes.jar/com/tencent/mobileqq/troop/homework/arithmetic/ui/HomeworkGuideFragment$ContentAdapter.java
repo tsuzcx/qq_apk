@@ -5,7 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbzb;
+import bezm;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +31,11 @@ public class HomeworkGuideFragment$ContentAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560459, paramViewGroup, false);
-    bbzb localbbzb = new bbzb(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
-    localbbzb.a(paramInt, localView);
-    localView.setTag(localbbzb);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localbbzb);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560614, paramViewGroup, false);
+    bezm localbezm = new bezm(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
+    localbezm.a(paramInt, localView);
+    localView.setTag(localbezm);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localbezm);
     paramViewGroup.addView(localView, 0);
     return localView;
   }
@@ -47,7 +47,7 @@ public class HomeworkGuideFragment$ContentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment.ContentAdapter
  * JD-Core Version:    0.7.0.1
  */

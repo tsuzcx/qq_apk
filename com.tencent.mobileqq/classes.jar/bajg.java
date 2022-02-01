@@ -1,55 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class bajg
+public class bajg
+  implements View.OnClickListener
 {
-  public int a;
-  protected bajm a;
-  public QQAppInterface a;
-  public DataLineMsgRecord a;
-  public String a;
+  public bajg(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public bajg(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bajm parambajm)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_Bajm = parambajm;
-  }
-  
-  public abstract String a();
-  
-  public boolean a()
-  {
-    Object localObject = aoxk.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+    AIOIceBreakView.a(this.a).u(24);
+    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
+    if (acwh.a(AIOIceBreakView.a(this.a).a.a) != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label136;
       }
     }
-    String str;
-    do
+    label136:
+    for (int i = 1;; i = 2)
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = arso.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+      bcst.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
+      bcst.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

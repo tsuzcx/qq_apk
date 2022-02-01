@@ -1,10 +1,43 @@
-import java.util.List;
+import android.annotation.TargetApi;
+import android.view.View;
 
-public abstract interface aqai
+@TargetApi(11)
+final class aqai
 {
-  public abstract void a(List<aqae> paramList, aqae paramaqae);
+  static void a(View paramView, float paramFloat)
+  {
+    paramView.setPivotX(paramFloat);
+  }
   
-  public abstract void c();
+  static void b(View paramView, float paramFloat)
+  {
+    paramView.setPivotY(paramFloat);
+  }
+  
+  static void c(View paramView, float paramFloat)
+  {
+    paramView.setAlpha(paramFloat);
+  }
+  
+  static void d(View paramView, float paramFloat)
+  {
+    paramView.setScaleX(paramFloat);
+  }
+  
+  static void e(View paramView, float paramFloat)
+  {
+    paramView.setScaleY(paramFloat);
+  }
+  
+  static void f(View paramView, float paramFloat)
+  {
+    paramView.setTranslationY(paramFloat);
+  }
+  
+  static void g(View paramView, float paramFloat)
+  {
+    paramView.setX(paramFloat);
+  }
 }
 
 

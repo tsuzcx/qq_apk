@@ -1,36 +1,47 @@
-import android.os.Build.VERSION;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class aulh
+class aulh
+  extends auli
 {
-  public static void a()
+  public ImageView a;
+  public TextView a;
+  
+  public aulh(View paramView)
   {
-    if (Build.VERSION.SDK_INT > 25)
-    {
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().runFinalization();
+    super(paramView);
+    this.jdField_a_of_type_Int = aulb.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368507));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380124));
+    paramView.setTag(this);
+  }
+  
+  public void a(String paramString1, String paramString2, aobu paramaobu)
+  {
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
     }
-    for (;;)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bdnt((CharSequence)localObject, 2));
+    localObject = paramaobu.a(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
     {
-      return;
-      int i = 0;
-      while (i < 2)
+      localObject = bgmo.a();
+      paramString2 = (String)localObject;
+      if (!paramaobu.a())
       {
-        ArrayList localArrayList = new ArrayList();
-        do
-        {
-          localArrayList.add(new WeakReference(new byte[100]));
-        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
-        i += 1;
+        paramaobu.a(paramString1, 1, false);
+        paramString2 = (String)localObject;
       }
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulh
  * JD-Core Version:    0.7.0.1
  */

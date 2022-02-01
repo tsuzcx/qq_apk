@@ -11,6 +11,8 @@ public final class MsgBody
   static ArrayList<PhotoCell> cache_vecPhotos = new ArrayList();
   static ArrayList<String> cache_vecUserAvatar;
   public String content = "";
+  public String contentIcon = "";
+  public String coverPicUrl = "";
   public int mediaType;
   public String title = "";
   public ArrayList<PhotoCell> vecPhotos;
@@ -26,13 +28,15 @@ public final class MsgBody
   
   public MsgBody() {}
   
-  public MsgBody(int paramInt, String paramString1, String paramString2, ArrayList<PhotoCell> paramArrayList, ArrayList<String> paramArrayList1)
+  public MsgBody(int paramInt, String paramString1, String paramString2, ArrayList<PhotoCell> paramArrayList, ArrayList<String> paramArrayList1, String paramString3, String paramString4)
   {
     this.mediaType = paramInt;
     this.title = paramString1;
     this.content = paramString2;
     this.vecPhotos = paramArrayList;
     this.vecUserAvatar = paramArrayList1;
+    this.coverPicUrl = paramString3;
+    this.contentIcon = paramString4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -42,6 +46,8 @@ public final class MsgBody
     this.content = paramJceInputStream.readString(2, false);
     this.vecPhotos = ((ArrayList)paramJceInputStream.read(cache_vecPhotos, 3, false));
     this.vecUserAvatar = ((ArrayList)paramJceInputStream.read(cache_vecUserAvatar, 4, false));
+    this.coverPicUrl = paramJceInputStream.readString(5, false);
+    this.contentIcon = paramJceInputStream.readString(6, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -58,6 +64,12 @@ public final class MsgBody
     }
     if (this.vecUserAvatar != null) {
       paramJceOutputStream.write(this.vecUserAvatar, 4);
+    }
+    if (this.coverPicUrl != null) {
+      paramJceOutputStream.write(this.coverPicUrl, 5);
+    }
+    if (this.contentIcon != null) {
+      paramJceOutputStream.write(this.contentIcon, 6);
     }
   }
 }

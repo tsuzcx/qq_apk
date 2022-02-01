@@ -6,43 +6,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import rqd;
-import rqe;
+import snb;
+import snc;
 
 class LayoutInflateProcessor$InflateTask
   implements Runnable
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private rqd[] jdField_a_of_type_ArrayOfRqd;
+  private snb[] jdField_a_of_type_ArrayOfSnb;
   
-  public LayoutInflateProcessor$InflateTask(rqd[] paramArrayOfrqd, LayoutInflater paramLayoutInflater)
+  public LayoutInflateProcessor$InflateTask(snb[] paramArrayOfsnb, LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ArrayOfRqd = paramArrayOfrqd;
+    this.jdField_a_of_type_ArrayOfSnb = paramArrayOfsnb;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
   }
   
-  private boolean a(rqd paramrqd)
+  private boolean a(snb paramsnb)
   {
-    if ((paramrqd.a == null) || (paramrqd.a.size() >= 9)) {}
+    if ((paramsnb.a == null) || (paramsnb.a.size() >= 9)) {}
     for (;;)
     {
       return false;
       if (QLog.isColorLevel()) {
-        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(rqd.a(paramrqd)));
+        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(snb.a(paramsnb)));
       }
       try
       {
-        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(rqd.a(paramrqd), rqd.a(paramrqd), false);
+        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(snb.a(paramsnb), snb.a(paramsnb), false);
         if (localView == null) {
           continue;
         }
-        if (rqd.a(paramrqd) != null) {
-          rqd.a(paramrqd).a(localView);
+        if (snb.a(paramsnb) != null) {
+          snb.a(paramsnb).a(localView);
         }
-        if ((paramrqd.a == null) || (paramrqd.a.size() >= 9)) {
+        if ((paramsnb.a == null) || (paramsnb.a.size() >= 9)) {
           continue;
         }
-        paramrqd.a.add(localView);
+        paramsnb.a.add(localView);
         return true;
       }
       catch (RuntimeException localRuntimeException)
@@ -60,19 +60,19 @@ class LayoutInflateProcessor$InflateTask
   
   public void run()
   {
-    rqd[] arrayOfrqd = this.jdField_a_of_type_ArrayOfRqd;
-    int k = arrayOfrqd.length;
+    snb[] arrayOfsnb = this.jdField_a_of_type_ArrayOfSnb;
+    int k = arrayOfsnb.length;
     int i = 0;
     if (i < k)
     {
-      rqd localrqd = arrayOfrqd[i];
-      if (localrqd == null) {}
+      snb localsnb = arrayOfsnb[i];
+      if (localsnb == null) {}
       for (;;)
       {
         i += 1;
         break;
         int j = 0;
-        while ((j < rqd.b(localrqd)) && (a(localrqd))) {
+        while ((j < snb.b(localsnb)) && (a(localsnb))) {
           j += 1;
         }
       }
@@ -81,7 +81,7 @@ class LayoutInflateProcessor$InflateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor.InflateTask
  * JD-Core Version:    0.7.0.1
  */

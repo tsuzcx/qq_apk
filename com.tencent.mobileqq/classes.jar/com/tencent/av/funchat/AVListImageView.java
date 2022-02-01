@@ -1,6 +1,6 @@
 package com.tencent.av.funchat;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,7 +13,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
-import mwj;
+import mtr;
 
 public class AVListImageView
   extends ImageView
@@ -42,8 +42,8 @@ public class AVListImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = aepi.a(this.jdField_a_of_type_Int, getResources()) - 2;
-    int n = aepi.a(this.jdField_b_of_type_Int, getResources());
+    int m = afur.a(this.jdField_a_of_type_Int, getResources()) - 2;
+    int n = afur.a(this.jdField_b_of_type_Int, getResources());
     int i = Math.min(getWidth(), getHeight()) / 2;
     int j = getWidth() / 2;
     int k = getHeight() / 2;
@@ -53,7 +53,7 @@ public class AVListImageView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (!(localDrawable instanceof mwj)) {
+        if (!(localDrawable instanceof mtr)) {
           localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
         }
         localDrawable.setBounds(m, m, getWidth() - m, getHeight() - m);
@@ -83,7 +83,7 @@ public class AVListImageView
         localDrawable.setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
         break;
       }
-      if ((localDrawable instanceof mwj)) {
+      if ((localDrawable instanceof mtr)) {
         break;
       }
       localDrawable.clearColorFilter();
@@ -123,7 +123,7 @@ public class AVListImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.funchat.AVListImageView
  * JD-Core Version:    0.7.0.1
  */

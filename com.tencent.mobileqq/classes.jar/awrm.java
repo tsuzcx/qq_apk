@@ -1,38 +1,28 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class awrm
+  extends AnimatorListenerAdapter
 {
-  public String a;
-  public String b;
+  public awrm(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
   
-  public String a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
-    {
-      this.b = paramString[0];
-      this.a = paramString[1];
-      return;
-    }
-    this.b = "";
-    this.a = "";
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avzc
-  extends Handler
+  implements View.OnClickListener
 {
-  public avzc(ScanOcrView paramScanOcrView) {}
+  public avzc(LocationPickFragment paramLocationPickFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
-    }
-    switch (paramMessage.what)
-    {
+    if (LocationPickFragment.a(this.a).b()) {
+      LocationPickFragment.a(this.a).b();
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.a(paramMessage.arg1);
+      LocationPickFragment.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzc
  * JD-Core Version:    0.7.0.1
  */

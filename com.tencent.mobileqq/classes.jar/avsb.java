@@ -1,64 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnLongClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class avsb
-  extends avqc
+class avsb
+  implements View.OnLongClickListener
 {
-  public avsb(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramQQAppInterface);
-  }
+  avsb(avsa paramavsa, avse paramavse) {}
   
-  public int a(avqj paramavqj)
+  public boolean onLongClick(View paramView)
   {
-    return 5;
-  }
-  
-  public View a(ViewGroup paramViewGroup, avqj paramavqj)
-  {
-    paramViewGroup = (avsc)paramavqj;
-    paramavqj = new TextView(this.a);
-    paramavqj.setTextColor(this.a.getResources().getColor(2131165307));
-    paramavqj.setTextSize(1, 16.0F);
-    paramavqj.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup.g = paramavqj;
-    return paramavqj;
-  }
-  
-  public avqj a()
-  {
-    return new avsc(this);
-  }
-  
-  public void f(avqj paramavqj)
-  {
-    paramavqj = (avsc)paramavqj;
-    Object localObject = (avsk)paramavqj.a;
-    String str = ((avsk)localObject).n;
-    localObject = bdnu.a(this.a, ((avsk)localObject).a, str);
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    if (avsa.a(this.jdField_a_of_type_Avsa) != null)
     {
-      paramavqj.g.setVisibility(8);
-      return;
+      QLog.i("leba_sort_LebaTableMgrAdpter", 1, "startDrag");
+      avsa.a(this.jdField_a_of_type_Avsa).startDrag(this.jdField_a_of_type_Avse);
     }
-    paramavqj.g.setVisibility(0);
-    if ((localObject instanceof SpannableString)) {
-      paramavqj.g.setMovementMethod(LinkMovementMethod.getInstance());
-    }
-    paramavqj.g.setText((CharSequence)localObject);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsb
  * JD-Core Version:    0.7.0.1
  */

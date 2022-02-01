@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yoe
-  implements DialogInterface.OnDismissListener
+public class yoe
+  extends QQUIEventReceiver<ynm, wwx>
 {
-  yoe(yod paramyod) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public yoe(@NonNull ynm paramynm)
   {
-    yiw.a().a(new SharePanelShowStateEvent(false));
+    super(paramynm);
+  }
+  
+  public void a(@NonNull ynm paramynm, @NonNull wwx paramwwx)
+  {
+    paramynm.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yoe
  * JD-Core Version:    0.7.0.1
  */

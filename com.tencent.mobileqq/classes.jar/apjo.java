@@ -1,27 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 class apjo
-  extends Handler
+  extends apnq
 {
-  apjo(apjm paramapjm, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  apjo(apjn paramapjn, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
   {
-    switch (paramMessage.what)
+    if (!paramBoolean)
     {
-    }
-    do
-    {
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
       return;
-    } while (apjm.a(this.a));
-    QLog.e("CameraHelper", 1, "checkPermission uncertain");
-    apjm.a(this.a, false, 1830004);
+    }
+    apjn.a((apjn)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
+    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
   }
 }
 

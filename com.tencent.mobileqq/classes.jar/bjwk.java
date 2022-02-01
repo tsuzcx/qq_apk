@@ -1,204 +1,131 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QZoneClickReport;
-import java.net.URL;
-import java.util.List;
-import java.util.Map;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.mini.util.StorageUtil;
+import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.KingCardProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import mqq.app.AppRuntime;
 
+@ProxyService(proxy=KingCardProxy.class)
 public class bjwk
-  extends WebViewPlugin
+  implements KingCardProxy
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Map<Integer, String> jdField_a_of_type_JavaUtilMap;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  
-  public bjwk()
-  {
-    this.mPluginNameSpace = "gdtReportPlugin";
-  }
-  
-  private long a()
-  {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-  }
+  private bhij jdField_a_of_type_Bhij;
+  private final String jdField_a_of_type_JavaLangString = "KingCardProxyImpl";
+  private String b = "mini_app_kingcard_guide_";
+  private String c;
   
   private void a()
   {
-    Log.i("gdtReportPlugin", "172\t" + a());
-    bjqu.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2014, 0, a(), 0L);
+    String str = this.b + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StorageUtil.getPreference().edit().putBoolean(str, true).apply();
   }
   
-  private void a(int paramInt, Map<String, Object> paramMap)
+  private boolean a()
   {
-    Log.i("gdtReportPlugin", "173\t" + a());
-    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
-    for (paramInt = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; paramInt = 0)
+    String str = this.b + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    return StorageUtil.getPreference().getBoolean(str, false);
+  }
+  
+  private boolean a(MiniAppInfo paramMiniAppInfo)
+  {
+    boolean bool = true;
+    if (!AppNetConnInfo.isMobileConn())
     {
-      bjqu.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2014, 1, a(), paramInt);
-      return;
+      QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip network type is wifi + " + AppNetConnInfo.isWifiConn());
+      return false;
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
+      return false;
+    }
+    i = bhhb.a();
+    QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
+    if (i == 1) {}
     for (;;)
     {
-      return false;
-      try
-      {
-        paramString = new URL(paramString).getHost();
-        String[] arrayOfString = "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com".split("#");
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          boolean bool = paramString.equals(arrayOfString[i]);
-          if (bool) {
-            return true;
-          }
-          i += 1;
-        }
-        return false;
-      }
-      catch (Exception paramString) {}
+      return bool;
+      bool = false;
     }
   }
   
-  private long b()
+  public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
-    return SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
-  }
-  
-  private void b()
-  {
-    Log.i("gdtReportPlugin", "129\t" + a());
-    bjqu.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2005, 0, b(), 0L);
-  }
-  
-  private void b(int paramInt, Map<String, Object> paramMap)
-  {
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
-    for (int i = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; i = 0)
+    if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
+    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131693679))
     {
-      bjqu.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2000, paramInt, a(), i);
-      Log.i("gdtReportPlugin", paramInt + 120 + "\t" + a());
-      return;
+      this.c = ((String)localObject);
+      this.jdField_a_of_type_Bhij = new bhij(null, paramContext);
+      int i = (int)(MemoryManager.a() / 2L);
+      this.jdField_a_of_type_Bhij.a(i);
+      localObject = new DiniFlyAnimationView(paramContext);
+      ((DiniFlyAnimationView)localObject).setVisibility(0);
+      ((DiniFlyAnimationView)localObject).setContentDescription(anni.a(2131700158));
+      paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
+      paramContext.addRule(9, -1);
+      ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      ((DiniFlyAnimationView)localObject).setLayoutParams(paramContext);
+      return localObject;
     }
   }
   
-  private void c()
+  public boolean showKingCardTips(IMiniAppContext paramIMiniAppContext, ImageView paramImageView)
   {
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-    bjqu.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2000, 0, a(), 0L);
-    Log.i("gdtReportPlugin", "120\t" + a());
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (this.mRuntime.a().getIntent().getBooleanExtra("needGdtLandingPageReport", false)) {
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        if (this.jdField_b_of_type_Int == 1)
-        {
-          if ((paramLong != 8589934593L) || (this.jdField_a_of_type_Int != 1) || (a(paramString))) {
-            break label402;
-          }
-          a();
-          this.jdField_b_of_type_Int = 2;
-        }
-        break;
-      }
-    }
-    for (;;)
+    QLog.i("KingCardProxyImpl", 1, "showKingCardTips trigger");
+    Activity localActivity = paramIMiniAppContext.getAttachedActivity();
+    if ((localActivity == null) || (localActivity.isFinishing()))
     {
-      paramString = new bjdn();
-      paramString.c = String.valueOf(478);
-      if (paramLong == 8589934599L)
-      {
-        paramString.d = String.valueOf(2);
-        QZoneClickReport.report(this.mRuntime.a().getAccount(), paramString, true);
-      }
+      QLog.i("KingCardProxyImpl", 1, "activity is null");
       return false;
-      if (paramLong != 8589934593L) {
-        break;
-      }
-      if ((a(paramString)) && (this.jdField_b_of_type_Int == 0)) {
-        this.jdField_b_of_type_Int = 1;
-      }
-      List localList = (List)this.mRuntime.a().getIntent().getSerializableExtra("FeedDataCookie");
-      if ((localList != null) && (localList.size() == 1)) {
-        this.jdField_a_of_type_JavaUtilMap = ((Map)localList.get(0));
-      }
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Int = 1;
-      break;
-      if (paramLong == 8589934594L)
-      {
-        this.jdField_a_of_type_Int = 2;
-        c();
-        break;
-      }
-      if (paramLong == 8589934595L)
-      {
-        this.jdField_a_of_type_Int = 3;
-        b(1, paramMap);
-        break;
-      }
-      if (paramLong == 8589934601L)
-      {
-        this.jdField_a_of_type_Int = 4;
-        b(94, paramMap);
-        b();
-        break;
-      }
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 4;
-      b(95, paramMap);
-      b();
-      break;
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      b();
-      this.jdField_a_of_type_Int = 4;
-      break;
-      if (paramLong == 8589934593L)
-      {
-        this.jdField_a_of_type_Int = 4;
-        b();
-        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        break;
-      }
-      if (paramLong != 8589934597L) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 4;
-      b();
-      break;
-      label402:
-      if ((a(paramString)) && ((paramLong == 8589934598L) || (paramLong == 8589934595L)))
-      {
-        this.jdField_b_of_type_Int = 2;
-        a(1, paramMap);
-      }
     }
+    if (!(paramImageView instanceof DiniFlyAnimationView)) {
+      return false;
+    }
+    MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
+    if (localMiniAppInfo == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Bhij == null)
+    {
+      QMLog.w("KingCardProxyImpl", "lottie loader is null");
+      return false;
+    }
+    DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)paramImageView;
+    if (localDiniFlyAnimationView.getVisibility() != 0)
+    {
+      QLog.i("KingCardProxyImpl", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
+      return false;
+    }
+    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (a(localMiniAppInfo))) {
+      AppBrandTask.runTaskOnUiThreadIfNot(new KingCardProxyImpl.1(this, localActivity, localDiniFlyAnimationView, paramIMiniAppContext));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwk
  * JD-Core Version:    0.7.0.1
  */

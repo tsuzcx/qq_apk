@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -121,7 +121,7 @@ public class RequestProxyDefault$RequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.RequestProxyDefault.RequestTask
  * JD-Core Version:    0.7.0.1
  */

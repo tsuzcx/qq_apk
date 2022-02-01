@@ -1,12 +1,53 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+
 public abstract interface pxk
 {
-  public abstract void a(Object paramObject);
+  public abstract int a();
   
-  public abstract void a(pxt parampxt);
+  public abstract ArticleInfo a();
+  
+  public abstract VafContext a();
+  
+  public abstract snh a();
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract int h();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pxk
  * JD-Core Version:    0.7.0.1
  */

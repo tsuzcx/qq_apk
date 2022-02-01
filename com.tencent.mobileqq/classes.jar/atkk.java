@@ -1,402 +1,273 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.jubao.JubaoMsgData;
-import com.tencent.mobileqq.mini.sdk.JsonORM;
-import com.tencent.mobileqq.mini.sdk.JsonORM.JsonParseException;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadBizInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class atkk
-  extends WebViewPlugin
-  implements BusinessObserver
+  extends atkg
+  implements bexr
 {
-  private String a;
-  private String b;
-  private final String c = "0x800A851";
-  private String d = alud.a(2131706283);
+  protected bexs a;
+  protected ExcitingTransferUploadResultRp a;
+  protected String b = "";
   
-  public atkk()
+  private atkk(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, atkl paramatkl, atkm paramatkm)
   {
-    this.mPluginNameSpace = "jubao";
+    super(paramQQAppInterface, paramLong1, paramLong2, 1, paramatkl, paramatkm);
   }
   
-  public static String a(int paramInt, String paramString)
+  public static bexr a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, atkl paramatkl, atkm paramatkm)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", paramInt);
-      localJSONObject.put("uuid", paramString);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
+    if (paramatkl == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.TroopFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is null");
       }
     }
-  }
-  
-  public static String a(ArrayList<ChatMessage> paramArrayList)
-  {
-    Object localObject2 = "";
-    int j = 0;
-    int i = j;
-    Object localObject1 = localObject2;
-    if (paramArrayList != null)
+    do
     {
-      i = j;
-      localObject1 = localObject2;
-      if (paramArrayList.size() > 0)
+      do
       {
-        i = paramArrayList.size();
-        localObject1 = new JSONArray();
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
+        do
         {
-          localObject2 = JubaoMsgData.transfer((ChatMessage)paramArrayList.next());
-          try
-          {
-            ((JSONArray)localObject1).put(((JubaoMsgData)localObject2).toJson());
+          return null;
+          if (paramatkm != null) {
+            break;
           }
-          catch (JsonORM.JsonParseException localJsonParseException)
-          {
-            localJsonParseException.printStackTrace();
-          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.TroopFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is null");
+        return null;
+        if (paramatkl.a()) {
+          break;
         }
-        localObject1 = ((JSONArray)localObject1).toString();
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.TroopFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is err");
+      return null;
+      if (paramatkm.a()) {
+        break;
       }
-    }
-    paramArrayList = new JSONObject();
-    try
-    {
-      paramArrayList.put("msgcount", i);
-      paramArrayList.put("msgs", localObject1);
-      return paramArrayList.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.TroopFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is err");
+    return null;
+    return new atkk(paramQQAppInterface, paramLong1, paramLong2, paramatkl, paramatkm);
   }
   
-  private void a(String... paramVarArgs)
+  private void b(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (TextUtils.isEmpty(paramVarArgs)) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return (int)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount;
     }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize;
+    }
+    return 0L;
+  }
+  
+  protected ExcitingTransferUploadChnConfigInfo a()
+  {
+    return atjl.a().b();
+  }
+  
+  public ExcitingTransferUploadResultRp a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  protected List<ExcitingTransferHostInfo> a()
+  {
+    Object localObject;
+    List localList;
+    if (atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3))
+    {
+      QLog.i("ExcitingTransfer.TroopFileUploader<FileAssistant>", 1, "[IPv6-File] exciting groupfile upload. is config enable IPv6.");
+      localObject = atjl.a().a(false);
+      localList = atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3);
+      if (localList != null)
+      {
+        if (localObject != null) {
+          break label162;
+        }
+        localObject = new ArrayList();
+      }
+    }
+    label162:
     for (;;)
     {
-      Object localObject2;
-      String str;
-      try
+      if (atcq.a())
       {
-        JSONObject localJSONObject = new JSONObject(paramVarArgs);
-        localObject1 = localJSONObject.optString("chatuin", "");
-        localObject2 = localJSONObject.optString("groupcode", "");
-        j = localJSONObject.optInt("chattype", 0);
-        k = localJSONObject.optInt("topicid", 0);
-        str = localJSONObject.optString("uinname", "");
-        Object localObject3 = localJSONObject.optString("msgs");
-        paramVarArgs = (String[])localObject1;
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramVarArgs = zdv.c((String)localObject1, zdv.b(1));
-        }
-        if (TextUtils.isEmpty(str)) {
-          break label437;
-        }
-        str = new String(Base64.decode(str, 0));
-        if (QLog.isColorLevel()) {
-          QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label440;
-        }
-        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
-        localObject3 = new ArrayList();
-        int m = arrayOfJubaoMsgData.length;
-        int i = 0;
-        localObject1 = localObject3;
-        if (i < m)
-        {
-          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
-          i += 1;
-          continue;
-        }
-        this.a = localJSONObject.optString("callback", "");
-        if (j == 1) {
-          break label446;
-        }
-        if (j != 3000) {
-          break label434;
-        }
+        QLog.d("ExcitingTransfer.TroopFileUploader<FileAssistant>", 1, "[IPv6-File] exciting groupfile upload. debugIsDisableIPv4OnDoubleStack");
+        ((List)localObject).clear();
       }
-      catch (JSONException paramVarArgs)
+      int i = localList.size() - 1;
+      while (i >= 0)
       {
-        int j;
-        int k;
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
-        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
-        ((Intent)localObject2).putExtra("uin", paramVarArgs);
-        ((Intent)localObject2).putExtra("uintype", j);
-        if (TextUtils.isEmpty(str)) {
-          continue;
-        }
-        if ((j != 1033) && (j != 1034)) {
-          break label421;
-        }
-        ((Intent)localObject2).putExtra("key_confessor_nick", str);
-        ((Intent)localObject2).putExtra("key_confess_topicid", k);
-        if (localObject1 == null) {
-          continue;
-        }
-        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
-        ((Intent)localObject2).putExtra("entrance", 9);
-        startActivityForResult((Intent)localObject2, (byte)0);
-        return;
+        ((List)localObject).add(0, (ExcitingTransferHostInfo)localList.get(i));
+        i -= 1;
       }
-      catch (JsonORM.JsonParseException paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-        return;
-      }
-      if (TextUtils.isEmpty(paramVarArgs))
-      {
-        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
-        return;
-      }
-      label421:
-      ((Intent)localObject2).putExtra("uinname", str);
-      continue;
-      label434:
-      continue;
-      label437:
-      continue;
-      label440:
-      Object localObject1 = null;
-      continue;
-      label446:
-      paramVarArgs = (String[])localObject2;
+      this.jdField_c_of_type_Int = 2;
+      QLog.i("ExcitingTransfer.TroopFileUploader<FileAssistant>", 1, "[IPv6-File] exciting groupfile upload. use IPv6. hostlist:" + localObject.toString());
+      return localObject;
+      this.jdField_c_of_type_Int = 1;
+      return localObject;
+      return super.a();
     }
   }
   
-  private void b(String... paramVarArgs)
+  public void a()
   {
-    if (!bdin.g(this.mRuntime.a()))
-    {
-      paramVarArgs = a(5, "");
-      callJs(this.b, new String[] { paramVarArgs });
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    paramVarArgs = paramVarArgs[0];
-    if (TextUtils.isEmpty(paramVarArgs))
+    QLog.i("ExcitingTransfer.TroopFileUploader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
+    b();
+    b(null);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    super.a(paramLong1, paramLong2, paramLong3);
+    if (this.jdField_a_of_type_Bexs != null) {
+      this.jdField_a_of_type_Bexs.a(paramLong1);
+    }
+  }
+  
+  public void a(bexs parambexs)
+  {
+    this.jdField_a_of_type_Bexs = parambexs;
+  }
+  
+  protected void a(ExcitingTransferUploadBizInfo paramExcitingTransferUploadBizInfo)
+  {
+    super.a(paramExcitingTransferUploadBizInfo);
+    if ((this.jdField_a_of_type_Atkj instanceof atkl))
     {
-      paramVarArgs = a(0, "");
-      callJs(this.b, new String[] { paramVarArgs });
-      QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
+      atkl localatkl = (atkl)this.jdField_a_of_type_Atkj;
+      paramExcitingTransferUploadBizInfo.groupCode = localatkl.jdField_a_of_type_Long;
+      paramExcitingTransferUploadBizInfo.bufUuid = localatkl.jdField_a_of_type_ArrayOfByte;
+      paramExcitingTransferUploadBizInfo.bufUploadKey = localatkl.b;
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        localObject = new JSONObject(paramVarArgs);
-        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
-        str = ((JSONObject)localObject).optString("groupcode", "");
-        j = ((JSONObject)localObject).optInt("chattype", 0);
-        if (!TextUtils.isEmpty(paramVarArgs))
-        {
-          paramVarArgs = zdv.c(paramVarArgs, zdv.b(1));
-          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
-          localArrayList = new ArrayList();
-          int k = arrayOfJubaoMsgData.length;
-          int i = 0;
-          if (i < k)
-          {
-            localArrayList.add(arrayOfJubaoMsgData[i]);
-            i += 1;
-          }
-          else
-          {
-            this.b = ((JSONObject)localObject).optString("callback", "");
-            if ((localArrayList == null) || (localArrayList.size() == 0))
-            {
-              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
-              paramVarArgs = a(1, "");
-              callJs(this.b, new String[] { paramVarArgs });
-              return;
-            }
-          }
-        }
-      }
-      catch (JSONException paramVarArgs)
-      {
-        int j;
-        ArrayList localArrayList;
-        str = a(2, "");
-        callJs(this.b, new String[] { str });
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
-        }
-        Object localObject = new NewIntent(this.mRuntime.a(), atkn.class);
-        ((NewIntent)localObject).putExtra("jubao_chat_uin", paramVarArgs);
-        ((NewIntent)localObject).putExtra("jubao_group_code", str);
-        ((NewIntent)localObject).putExtra("jubao_chat_type", j);
-        ((NewIntent)localObject).putExtra("jubao_msg_list", localArrayList);
-        ((NewIntent)localObject).setObserver(this);
-        BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-        azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
-        return;
-      }
-      catch (JsonORM.JsonParseException paramVarArgs)
-      {
-        String str = a(2, "");
-        callJs(this.b, new String[] { str });
-        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
-        return;
-      }
-    }
+    QLog.w("ExcitingTransfer.TroopFileUploader<FileAssistant>", 1, "Id[" + this.d + "] onGetOtherSendBusInfo. no other info");
   }
   
-  public void callJs(String paramString, String... paramVarArgs)
+  protected void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
-    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
-      azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
-    }
-    super.callJs(paramString, paramVarArgs);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
-    if ("jubao".equals(paramString2))
+    super.a(paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
     {
-      if ("selectMsgs".equalsIgnoreCase(paramString3))
-      {
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-        {
-          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
-          if (paramJsBridgeListener != null) {
-            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
-          }
-          a(paramVarArgs);
-          azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
-        }
-        return true;
+      this.b = str;
+      b(paramExcitingTransferUploadResultRp);
+      if (this.jdField_a_of_type_Bexs != null) {
+        this.jdField_a_of_type_Bexs.g();
       }
-      if ("uploadMsgs".equalsIgnoreCase(paramString3))
-      {
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label248;
-        }
-        b(new String[] { paramVarArgs[0] });
-      }
-    }
-    label248:
-    for (int i = 0;; i = 1)
-    {
-      azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
-      return true;
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-    }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    QLog.d("jubaoApiPlugin", 1, "onActivityResult ");
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (paramByte == 0)
-    {
-      if (paramInt != -1) {
-        break label81;
-      }
-      paramIntent = paramIntent.getStringExtra("msgs");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
-      }
-      callJs(this.a, new String[] { paramIntent });
-    }
-    label81:
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean a()
   {
-    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
-    int j = 1;
-    int i = 0;
-    azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
-    String str;
-    if (paramInt == 0)
+    this.jdField_a_of_type_Boolean = false;
+    b(null);
+    return b();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return "";
+  }
+  
+  protected void b(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    super.b(paramInt, paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
     {
-      str = "";
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break label226;
+      this.b = str;
+      b(paramExcitingTransferUploadResultRp);
+      if (this.jdField_a_of_type_Bexs != null) {
+        this.jdField_a_of_type_Bexs.a(true, this.jdField_c_of_type_Long, paramInt, "", "");
       }
-      str = paramBundle.getString("jubao_uuid");
-      paramInt = paramBundle.getInt("jubao_result_code", 0);
-      i = 0;
-      paramBundle = str;
-    }
-    for (;;)
-    {
-      str = a(paramInt, paramBundle);
-      callJs(this.b, new String[] { str });
-      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
-      j = i;
-      i = paramInt;
-      azqs.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
       return;
-      label226:
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt("jubao_result_code", 1);
-        i = 1;
-        paramBundle = str;
-      }
-      else
-      {
-        paramInt = 0;
-        i = 1;
-        paramBundle = str;
-      }
     }
   }
   
-  public void startActivityForResult(Intent paramIntent, byte paramByte)
+  protected int c()
   {
-    QLog.e("jubaoApiPlugin", 1, "startActivityForResult ");
-    super.startActivityForResult(paramIntent, paramByte);
+    return 71;
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  protected int d()
+  {
+    return 1;
+  }
+  
+  public boolean d()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Atkj != null)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize == this.jdField_a_of_type_Atkj.a()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  protected int e()
+  {
+    return 102;
+  }
+  
+  public int h()
+  {
+    return 0;
+  }
+  
+  public void onExcitingSubSenderResult(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
+  {
+    if (paramExcitingTransferUploaderRp != null) {}
+    for (String str = paramExcitingTransferUploaderRp.m_strFileUrl;; str = "")
+    {
+      this.b = str;
+      super.onExcitingSubSenderResult(paramInt, paramExcitingTransferUploaderRp);
+      return;
+    }
   }
 }
 

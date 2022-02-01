@@ -1,17 +1,38 @@
-class xkt
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+public class xkt
+  extends SimpleObserver<ycb>
 {
-  final int jdField_a_of_type_Int;
-  final xku jdField_a_of_type_Xku;
+  public xkt(xko paramxko) {}
   
-  public xkt(xku paramxku, int paramInt)
+  public void a(ycb paramycb)
   {
-    this.jdField_a_of_type_Xku = paramxku;
-    this.jdField_a_of_type_Int = paramInt;
+    super.onNext(paramycb);
+    xko.a(this.a, paramycb, new ErrorMessage(), true);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    yqp.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      xko.a(this.a, xko.a(this.a), new ErrorMessage(), false);
+      return;
+    }
+    xko.a(this.a, xko.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xkt
  * JD-Core Version:    0.7.0.1
  */

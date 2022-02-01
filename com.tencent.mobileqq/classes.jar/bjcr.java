@@ -1,45 +1,45 @@
-public final class bjcr
+import com.tencent.qphone.base.util.QLog;
+
+public class bjcr
 {
-  private static final bjcr jdField_a_of_type_Bjcr = new bjcr();
-  private static volatile bjcu jdField_a_of_type_Bjcu = new bjct(null);
-  private static volatile boolean jdField_a_of_type_Boolean = true;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  
-  public static bjcr a()
+  public void a(String paramString1, String paramString2)
   {
-    if (!jdField_a_of_type_Boolean) {
-      return jdField_a_of_type_Bjcr;
-    }
-    return new bjcr();
+    QLog.e("AVLOG_" + paramString1, 1, paramString2);
   }
   
-  public void a()
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangThrowable = null;
+    QLog.e("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void a(String paramString)
+  public void b(String paramString1, String paramString2)
   {
-    if (paramString == null) {
-      throw new NullPointerException("closer == null");
-    }
-    if ((this == jdField_a_of_type_Bjcr) || (!jdField_a_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangThrowable = new Throwable("Explicit termination method '" + paramString + "' not called");
+    QLog.w("AVLOG_" + paramString1, 1, paramString2);
   }
   
-  public void b()
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((this.jdField_a_of_type_JavaLangThrowable == null) || (!jdField_a_of_type_Boolean)) {
-      return;
-    }
-    jdField_a_of_type_Bjcu.a("A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.", this.jdField_a_of_type_JavaLangThrowable);
+    QLog.w("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.d("AVLOG_" + paramString1, 2, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcr
  * JD-Core Version:    0.7.0.1
  */

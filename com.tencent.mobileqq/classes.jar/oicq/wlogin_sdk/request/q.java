@@ -25,7 +25,7 @@ public class q
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int j = t.x;
     tlv_t104 localtlv_t104 = t.b(this.x.h)._t104;
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
@@ -59,7 +59,7 @@ public class q
     Object localObject1 = new tlv_t8();
     tlv_t104 localtlv_t104 = new tlv_t104();
     Object localObject2 = new tlv_t116();
-    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.v, 0);
     paramArrayOfByte = localtlv_t104.get_tlv_104(paramArrayOfByte);
     paramArrayOfLong = ((tlv_t116)localObject2).get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
     localObject2 = new byte[localObject1.length + paramArrayOfByte.length + paramArrayOfLong.length];

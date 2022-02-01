@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atai
-  implements INetEventHandler
+  implements DialogInterface.OnClickListener
 {
-  atai(atad paramatad) {}
+  atai(atae paramatae) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (atad.a(this.a) == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + atad.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
+    bcst.b(null, "dc00898", "", "", "0X800AE3E", "0X800AE3E", 0, 0, "", "", "", "");
   }
 }
 

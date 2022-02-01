@@ -1,7 +1,4 @@
-public abstract interface bkdo
-{
-  public abstract void a(boolean paramBoolean, String paramString);
-}
+class bkdo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

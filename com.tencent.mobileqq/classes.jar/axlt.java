@@ -1,43 +1,157 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-public final class axlt
-  implements Parcelable.Creator<RedAppInfo>
+public class axlt
 {
-  public RedAppInfo a(Parcel paramParcel)
+  public static float a = 600.0F;
+  public static float b = 1334.0F;
+  public static float c = -1.0F;
+  
+  public static boolean a(axng paramaxng)
   {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
+    paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
+    ViewGroup.LayoutParams localLayoutParams = paramaxng.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -2;
+    paramaxng.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    return true;
   }
   
-  public RedAppInfo[] a(int paramInt)
+  public static boolean a(axng paramaxng, float paramFloat1, float paramFloat2)
   {
-    return new RedAppInfo[paramInt];
+    if ((paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView == null) || (paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView == null)) {}
+    while ((!(paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) || (paramFloat2 == 0.0F) || (paramFloat1 == 0.0F)) {
+      return false;
+    }
+    if ((paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 6))
+    {
+      a(paramaxng);
+      return false;
+    }
+    Object localObject = paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
+    View localView = ((Activity)paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+    Rect localRect = new Rect();
+    localView.getWindowVisibleDisplayFrame(localRect);
+    float f2 = localRect.height();
+    float f1 = mue.a(paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+    c = f2 / 2.0F;
+    if (f1 / f2 < paramFloat1 / paramFloat2)
+    {
+      paramFloat1 = f1 / paramFloat1 * paramFloat2;
+      ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+      ((ViewGroup.LayoutParams)localObject).height = ((int)paramFloat1);
+      if (paramFloat1 <= c)
+      {
+        localLayoutParams.width = ((int)f1);
+        localLayoutParams.height = ((int)c);
+        ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+        ((ViewGroup.LayoutParams)localObject).height = ((int)c);
+        paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(localLayoutParams);
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+        paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      localObject = (ImageView)paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369094);
+      paramaxng = (ImageView)paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365636);
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramaxng.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      return true;
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      continue;
+      ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+      ((ViewGroup.LayoutParams)localObject).height = ((int)f2);
+      paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      localLayoutParams.width = ((int)f1);
+      localLayoutParams.height = ((int)f2);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+    }
+  }
+  
+  public static boolean a(axng paramaxng, float paramFloat1, float paramFloat2, VideoData paramVideoData, ShortVideoCommentsView paramShortVideoCommentsView)
+  {
+    if ((paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView == null) || (paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView == null) || (paramShortVideoCommentsView == null)) {}
+    while (!(paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) {
+      return false;
+    }
+    if ((paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 6))
+    {
+      a(paramaxng);
+      return false;
+    }
+    paramVideoData = paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getLayoutParams();
+    paramShortVideoCommentsView = paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
+    View localView = ((Activity)paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+    Rect localRect = new Rect();
+    localView.getWindowVisibleDisplayFrame(localRect);
+    float f2 = localRect.height();
+    float f1 = mue.a(paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+    c = f2 / 2.0F;
+    if (f1 / f2 < paramFloat2 / paramFloat1)
+    {
+      paramFloat1 = f1 / paramFloat2 * paramFloat1;
+      paramVideoData.width = ((int)f1);
+      paramVideoData.height = ((int)paramFloat1);
+      if (paramFloat1 <= c)
+      {
+        paramShortVideoCommentsView.width = ((int)f1);
+        paramShortVideoCommentsView.height = ((int)c);
+        paramVideoData.width = ((int)f1);
+        paramVideoData.height = ((int)c);
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramShortVideoCommentsView);
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+        paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      paramaxng.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new ColorDrawable(-16777216));
+      return false;
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+      continue;
+      paramVideoData.width = ((int)f1);
+      paramVideoData.height = ((int)f2);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+      paramShortVideoCommentsView.width = ((int)f1);
+      paramShortVideoCommentsView.height = ((int)f2);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramaxng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlt
  * JD-Core Version:    0.7.0.1
  */

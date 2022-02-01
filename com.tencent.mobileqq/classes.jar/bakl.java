@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
 
 public class bakl
-  implements DialogInterface.OnClickListener
+  implements bkil
 {
-  public bakl(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public bakl(IosTimepicker paramIosTimepicker) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-
-public final class avcw
-  implements Parcelable.Creator<LocationInfo>
+public abstract interface avcw
 {
-  public LocationInfo a(Parcel paramParcel)
-  {
-    return new LocationInfo(paramParcel);
-  }
+  public abstract void a(String paramString);
   
-  public LocationInfo[] a(int paramInt)
-  {
-    return new LocationInfo[paramInt];
-  }
+  public abstract void c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avcw
  * JD-Core Version:    0.7.0.1
  */

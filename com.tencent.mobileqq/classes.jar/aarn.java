@@ -1,71 +1,43 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-class aarn
-  implements aaru
+public abstract class aarn
+  extends niv
 {
-  private GdtDwellTimeStatisticsAfterClick a;
-  
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = null;
-    if (paramaarb != null) {}
-    GdtHandler.Params localParams;
-    for (Activity localActivity = paramaarb.a();; localActivity = null)
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      localParams = new GdtHandler.Params();
-      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
-      if ((paramaarb != null) && (localActivity != null) && (bool)) {
-        break;
-      }
-      aase.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
-      return true;
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-    for (;;)
+    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
+    try
     {
-      try
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        aase.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
-        localParams.c = 7;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaarb.a());
-        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
-        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-        paramVarArgs = paramaarb.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramaarb.mRuntime.a()));
-          this.a.a();
-          GdtHandler.a(localParams);
-          paramaarb.callJs(paramString, null);
-          paramString = localObject;
-          if (paramaarb != null) {
-            paramString = paramaarb.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
-      catch (Throwable paramaarb)
-      {
-        aase.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramaarb);
-        return true;
-      }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

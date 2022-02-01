@@ -1,43 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-class oxz
-  extends BroadcastReceiver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oxz
+  implements ViewBase.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  oxz(pan parampan, pay parampay) {}
+  
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-        oxp.e(false);
-        return;
-      }
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        oxp.e(true);
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
-      {
-        oxp.c(false);
-        oxp.o();
-        return;
-      }
-    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
-    oxp.d(false);
-    oxp.o();
+    this.jdField_a_of_type_Pan.c(this.jdField_a_of_type_Pay);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxz
  * JD-Core Version:    0.7.0.1
  */

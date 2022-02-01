@@ -1,26 +1,43 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import aqud;
+import atam;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileConfigManager$3
   implements Runnable
 {
-  public QFileConfigManager$3(aqud paramaqud, Bundle paramBundle) {}
+  public QFileConfigManager$3(atam paramatam, Bundle paramBundle) {}
   
   public void run()
   {
-    if (!this.a.containsKey("ipv6_all_switch")) {
+    if (this.a == null) {}
+    do
+    {
       return;
-    }
-    aqud.d(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
-    QLog.i("QFileConfigManager", 1, "enableFileIPv6: set ipv6 config. enableFileIPv6[" + aqud.d(this.this$0) + "]");
+      QLog.i("QFileConfigManager", 1, "setFileIPv6Config[" + this.a.toString() + "]");
+      if (this.a.containsKey("ipv6_all_switch")) {
+        atam.e(this.this$0, this.a.getBoolean("ipv6_all_switch", false));
+      }
+      if (this.a.containsKey("ipv6_c2c_switch")) {
+        atam.f(this.this$0, this.a.getBoolean("ipv6_c2c_switch", false));
+      }
+      if (this.a.containsKey("ipv6_group_switch")) {
+        atam.g(this.this$0, this.a.getBoolean("ipv6_group_switch", false));
+      }
+      if (this.a.containsKey("ipv6_disc_switch")) {
+        atam.h(this.this$0, this.a.getBoolean("ipv6_disc_switch", false));
+      }
+      if (this.a.containsKey("ipv6_dataline_switch")) {
+        atam.i(this.this$0, this.a.getBoolean("ipv6_dataline_switch", false));
+      }
+    } while (!this.a.containsKey("ipv6_strategy"));
+    atam.a(this.this$0, this.a.getInt("ipv6_strategy", 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

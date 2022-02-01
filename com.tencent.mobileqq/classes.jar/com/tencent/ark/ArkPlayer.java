@@ -70,7 +70,17 @@ public class ArkPlayer
     if (this.mPlayer == null) {
       return 0.0D;
     }
-    return this.mPlayer.getDuration() * this.mBufferPercent / 100000.0D;
+    try
+    {
+      double d = this.mPlayer.getDuration();
+      int i = this.mBufferPercent;
+      return i * d / 100000.0D;
+    }
+    catch (Exception localException)
+    {
+      ENV.logE("ArkApp.ArkPlayer", localException.getLocalizedMessage());
+    }
+    return 0.0D;
   }
   
   public double GetCurrentTime()
@@ -82,7 +92,16 @@ public class ArkPlayer
     if (this.mSeekPos >= 0.0D) {
       return this.mSeekPos;
     }
-    return this.mPlayer.getCurrentPosition() / 1000.0D;
+    try
+    {
+      int i = this.mPlayer.getCurrentPosition();
+      return i / 1000.0D;
+    }
+    catch (Exception localException)
+    {
+      ENV.logE("ArkApp.ArkPlayer", localException.getLocalizedMessage());
+    }
+    return 0.0D;
   }
   
   public int GetErrorCode()
@@ -362,20 +381,30 @@ public class ArkPlayer
     if (this.mPlayer == null) {
       return false;
     }
-    if (paramFloat < 0.0F)
-    {
+    if (paramFloat < 0.0F) {
       paramFloat = 0.0F;
-      if (paramFloat <= 1.0F) {
-        break label153;
-      }
-      paramFloat = f;
     }
-    label153:
     for (;;)
     {
-      this.mPlayer.setVolume(paramFloat, paramFloat);
-      return true;
-      break;
+      if (paramFloat > 1.0F) {
+        paramFloat = f;
+      }
+      try
+      {
+        for (;;)
+        {
+          this.mPlayer.setVolume(paramFloat, paramFloat);
+          return true;
+          break;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ENV.logE("ArkApp.ArkPlayer", localException.getLocalizedMessage());
+        }
+      }
     }
   }
   
@@ -426,8 +455,19 @@ public class ArkPlayer
     if (ENV.mIsDebug) {
       ENV.logD("ArkApp.ArkPlayer", "onCompletion.call!!");
     }
-    paramMediaPlayer.stop();
-    changeState(5);
+    try
+    {
+      paramMediaPlayer.stop();
+      changeState(5);
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        ENV.logE("ArkApp.ArkPlayer", "onCompletion, exception!! " + paramMediaPlayer.getMessage());
+      }
+    }
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
@@ -544,7 +584,7 @@ public class ArkPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ark.ArkPlayer
  * JD-Core Version:    0.7.0.1
  */

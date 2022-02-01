@@ -17,12 +17,12 @@ class MiniAppLauncher$1$1
       QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131695370, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694345, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.1.1
  * JD-Core Version:    0.7.0.1
  */

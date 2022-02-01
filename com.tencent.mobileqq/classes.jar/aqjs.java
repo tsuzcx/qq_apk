@@ -1,23 +1,36 @@
+import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
 public class aqjs
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public aqjs(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public aqjs(ConfessPlugin paramConfessPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof TextView))
+      {
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
+        continue;
+        if ((paramView instanceof TextView))
+        {
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

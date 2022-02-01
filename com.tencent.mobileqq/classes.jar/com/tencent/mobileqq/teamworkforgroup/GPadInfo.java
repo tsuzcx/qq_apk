@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import awhp;
-import baky;
+import bdmc;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
@@ -9,23 +9,23 @@ import java.util.List;
 
 public class GPadInfo
   extends PadInfo
-  implements baky
+  implements bdmc
 {
   public String creatorCard;
   public long creatorUid;
   public long groupCode;
   public String lastModifyCard;
   public long lastModifyUid;
-  @awhp
+  @notColumn
   public boolean mClickable = true;
-  @awhp
+  @notColumn
   public boolean mSelectable;
-  @awhp
+  @notColumn
   public List<TimDocSSOMsg.UinRightInfo> mUins;
   public String ownerCard;
   public long ownerUin;
   public long owneruid;
-  @awhp
+  @notColumn
   public List<String> searchKeyWordList = new ArrayList();
   
   public void copyFrom(PadInfo paramPadInfo)
@@ -62,7 +62,7 @@ public class GPadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GPadInfo
  * JD-Core Version:    0.7.0.1
  */

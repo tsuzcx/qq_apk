@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-
-public class actr
-  implements DialogInterface.OnCancelListener
+public abstract interface actr
 {
-  public actr(DialogActivity paramDialogActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,62 +1,86 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
-import tencent.im.oidb.cmd0x885.oidb_0x885.RspBody;
+import mqq.app.AppRuntime;
 
-class ocv
-  extends nac
+public class ocv
+  extends aqkz<ocu>
 {
-  ocv(ocu paramocu) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NonNull
+  public ocu a(int paramInt)
   {
-    for (boolean bool = true;; bool = false) {
-      try
+    if (paramInt == 0)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
       {
-        paramBundle = new oidb_0x6cf.RspBody();
-        if (paramArrayOfByte != null) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        paramBundle = (oidb_0x885.RspBody)paramBundle.msg_ad_rsp.get();
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          paramBundle.mergeFrom(paramArrayOfByte);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
-        }
-        if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-          paramArrayOfByte = this.a;
-          if (paramInt == 0)
-          {
-            paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
-            ocx.a(null, true, "no error", paramBundle.bytes_ad_user_info.get().toStringUtf8());
-          }
-        }
-        else
-        {
-          ocx.a(null, false, "error with errorcode: " + paramInt, null);
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
-        }
-        return;
+        tyg.a((QQAppInterface)localAppRuntime);
+        return ocu.a();
       }
     }
+    return new ocu();
+  }
+  
+  @Nullable
+  public ocu a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return ocu.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(ocu paramocu)
+  {
+    paramocu.b();
+    paramocu.a();
+    paramocu.c();
+  }
+  
+  public Class<ocu> clazz()
+  {
+    return ocu.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return tyg.a((QQAppInterface)localAppRuntime);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 81;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ocv
  * JD-Core Version:    0.7.0.1
  */

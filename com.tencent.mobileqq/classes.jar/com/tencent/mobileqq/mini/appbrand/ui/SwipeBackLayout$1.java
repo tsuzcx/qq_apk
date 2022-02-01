@@ -4,11 +4,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import aobv;
-import aobx;
-import aocf;
-import aofy;
-import azqs;
+import aqca;
+import aqcc;
+import aqck;
+import aqgi;
+import bcst;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.swipeback.PostTable;
@@ -57,58 +57,60 @@ class SwipeBackLayout$1
   public void onViewReleased(View paramView, float paramFloat1, float paramFloat2, MotionEvent paramMotionEvent)
   {
     SwipeBackLayout.access$602(this.this$0, paramView);
-    if (SwipeBackLayout.access$700(this.this$0).getScrollDirction() == 1)
-    {
-      if (SwipeBackLayout.access$200(this.this$0) < SwipeBackLayout.access$400(this.this$0) / 10) {
-        break label85;
-      }
-      SwipeBackLayout.access$302(this.this$0, true);
-      SwipeBackLayout.access$700(this.this$0).settleCapturedViewAt(SwipeBackLayout.access$400(this.this$0), paramView.getTop());
-    }
-    while (this.this$0.isInternalApp)
-    {
-      return;
-      label85:
-      SwipeBackLayout.access$700(this.this$0).settleCapturedViewAt(0, paramView.getTop());
-    }
-    paramView = SwipeBackLayout.access$800(this.this$0);
     boolean bool;
+    label106:
     int j;
     int i;
-    if (paramView != null)
+    if (SwipeBackLayout.access$700(this.this$0).getScrollDirction() == 1)
     {
+      if (SwipeBackLayout.access$200(this.this$0) >= SwipeBackLayout.access$400(this.this$0) / 10)
+      {
+        SwipeBackLayout.access$302(this.this$0, true);
+        SwipeBackLayout.access$700(this.this$0).settleCapturedViewAt(SwipeBackLayout.access$400(this.this$0), paramView.getTop());
+      }
+    }
+    else
+    {
+      paramView = SwipeBackLayout.access$800(this.this$0);
+      if (paramView == null) {
+        break label335;
+      }
       bool = SwipeBackLayout.access$900(this.this$0).a(paramView.getServiceType(), paramView.getSubType());
       j = 0;
       SwipeBackLayout.access$1002(this.this$0, true);
       i = j;
+      if (this.this$0.isInternalApp) {
+        break label379;
+      }
+      i = j;
       if (!SwipeBackLayout.access$1100(this.this$0).a(paramMotionEvent, this.this$0.getContext())) {
-        break label376;
+        break label379;
       }
       i = j;
       if (bool) {
-        break label376;
+        break label379;
       }
       i = j;
       if (paramView == null) {
-        break label376;
+        break label379;
       }
       if (!SwipeBackLayout.access$900(this.this$0).a()) {
-        break label338;
+        break label341;
       }
       paramView = paramView.parseBundle();
       paramView.putInt("color_note_curd_from_type", 1);
       SwipeBackLayout.access$900(this.this$0).a(paramView);
-      azqs.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aobv.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
+      bcst.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aqca.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
       i = 0;
       j = 1;
-      label274:
+      label258:
       if (SwipeBackLayout.access$1300(this.this$0) != null)
       {
         SwipeBackLayout.access$1300(this.this$0).setVisibility(4);
         SwipeBackLayout.access$1402(this.this$0, false);
       }
       if (j == 0) {
-        break label382;
+        break label385;
       }
       ThreadManager.getUIHandler().post(new SwipeBackLayout.1.1(this));
     }
@@ -116,16 +118,19 @@ class SwipeBackLayout$1
     {
       this.this$0.invalidate();
       return;
-      bool = false;
+      SwipeBackLayout.access$700(this.this$0).settleCapturedViewAt(0, paramView.getTop());
       break;
-      label338:
+      label335:
+      bool = false;
+      break label106;
+      label341:
       i = 1;
       SwipeBackLayout.access$1300(this.this$0).a(0.0D);
-      azqs.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
-      label376:
+      bcst.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+      label379:
       j = 0;
-      break label274;
-      label382:
+      break label258;
+      label385:
       if (i != 0)
       {
         SwipeBackLayout.access$700(this.this$0).settleCapturedViewAt(0, 0);
@@ -153,7 +158,7 @@ class SwipeBackLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.SwipeBackLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,15 +25,15 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131165307);
+      return paramResources.getColorStateList(2131165343);
     case 0: 
-      return paramResources.getColorStateList(2131165307);
+      return paramResources.getColorStateList(2131165343);
     case 2: 
-      return paramResources.getColorStateList(2131165649);
+      return paramResources.getColorStateList(2131165687);
     case 1: 
-      return paramResources.getColorStateList(2131165345);
+      return paramResources.getColorStateList(2131165381);
     }
-    return paramResources.getColorStateList(2131165649);
+    return paramResources.getColorStateList(2131165687);
   }
   
   public Drawable a(Resources paramResources, int paramInt)
@@ -41,38 +41,38 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130845932);
+      return paramResources.getDrawable(2130846371);
     case 0: 
       if (b) {
-        return paramResources.getDrawable(2130845932);
+        return paramResources.getDrawable(2130846371);
       }
-      return paramResources.getDrawable(2130845926);
+      return paramResources.getDrawable(2130846365);
     case 1: 
       if (b) {
-        return paramResources.getDrawable(2130845935);
+        return paramResources.getDrawable(2130846374);
       }
-      return paramResources.getDrawable(2130845931);
+      return paramResources.getDrawable(2130846370);
     case 2: 
       if (b) {
-        return paramResources.getDrawable(2130845934);
+        return paramResources.getDrawable(2130846373);
       }
-      return paramResources.getDrawable(2130845929);
+      return paramResources.getDrawable(2130846368);
     }
     if (b) {
-      return paramResources.getDrawable(2130845933);
+      return paramResources.getDrawable(2130846372);
     }
-    return paramResources.getDrawable(2130845927);
+    return paramResources.getDrawable(2130846366);
   }
   
   public void a()
   {
-    setArrowIcon(getResources().getDrawable(2130846785));
+    setArrowIcon(getResources().getDrawable(2130847235));
     super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

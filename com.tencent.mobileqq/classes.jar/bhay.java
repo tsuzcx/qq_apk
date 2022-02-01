@@ -1,16 +1,37 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 class bhay
+  implements Observer
 {
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = -1;
+  bhay(bhax parambhax) {}
   
-  public bhay(bhaw parambhaw) {}
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
+    }
+    if ((paramObject instanceof Integer))
+    {
+      switch (((Integer)paramObject).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        this.a.a.a().sendEmptyMessage(10003);
+        return;
+      }
+      this.a.a.a().sendEmptyMessage(10002);
+      return;
+    }
+    this.a.a.a().sendEmptyMessage(10003);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhay
  * JD-Core Version:    0.7.0.1
  */

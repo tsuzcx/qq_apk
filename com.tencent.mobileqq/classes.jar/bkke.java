@@ -1,135 +1,63 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import java.util.ArrayList;
 
-public final class bkke
+public class bkke
 {
-  private static Singleton<bkke, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new bkkf();
-  private long jdField_a_of_type_Long = 1L;
-  private ConcurrentHashMap<Integer, bkkg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static ArrayList<bkke> a;
+  public int a;
+  public bkkf a;
+  public ExpandableListConnector.GroupMetadata a;
   
-  public static bkke a()
+  static
   {
-    return (bkke)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   }
   
-  private void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  private static bkke a()
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      QLog.e("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd is empty");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd[" + paramString + "]");
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String[] arrayOfString;
-    if (paramString.contains(".")) {
-      arrayOfString = paramString.split("\\.");
-    }
-    for (int i = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);; i = Integer.parseInt(paramString))
-    {
-      paramArrayOfByte = new bkkc(i, paramArrayOfByte);
-      paramString = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), paramString);
-      paramString.setTimeout(Math.min(60000L, (30000.0D * Math.pow(this.jdField_a_of_type_Long, 0.15D))));
-      paramString.setEnableFastResend(true);
-      paramString.putWupBuffer(bkkd.a(paramArrayOfByte));
-      paramString.extraData.putInt("sequence", paramInt);
-      paramString.extraData.putLong("sendtimekey", System.currentTimeMillis());
-      paramArrayOfByte = new NewIntent(localAppRuntime.getApplication(), bkkh.class);
-      paramArrayOfByte.putExtra(ToServiceMsg.class.getSimpleName(), paramString);
-      localAppRuntime.startServlet(paramArrayOfByte);
-      return;
-    }
-  }
-  
-  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = null;
-    int k = paramToServiceMsg.extraData.getInt("sequence");
-    int i;
-    label40:
-    bkkc localbkkc;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      i = 0;
-      if (i != 1002) {
-        break label148;
-      }
-      this.jdField_a_of_type_Long += 1L;
-      if (i != 0) {
-        break label156;
-      }
-      localbkkc = bkkd.a(paramFromServiceMsg.getWupBuffer());
-      label53:
-      paramFromServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
-      paramToServiceMsg = paramFromServiceMsg;
-      if (i == 1002) {
-        paramToServiceMsg = "(1002)" + paramFromServiceMsg;
-      }
-      if (i != 0) {
-        break label205;
-      }
-      if (localbkkc != null) {
-        break label162;
-      }
-      i = 1810023;
-    }
-    label148:
-    label156:
-    label162:
-    label196:
-    label205:
-    for (;;)
-    {
-      label99:
-      bkkg localbkkg = (bkkg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(k));
-      if (localbkkg != null) {
-        if (localbkkc != null) {
-          break label196;
-        }
-      }
-      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localbkkc.a())
+      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        localbkkg.a(i, paramToServiceMsg, paramFromServiceMsg);
-        return;
-        i = paramFromServiceMsg.getResultCode();
-        break;
-        this.jdField_a_of_type_Long = 1L;
-        break label40;
-        localbkkc = null;
-        break label53;
-        paramFromServiceMsg = localbkkc.a();
-        int j = paramFromServiceMsg.retcode.get();
-        if (j == 0) {
-          break label205;
-        }
-        paramToServiceMsg = paramFromServiceMsg.retmsg.get();
-        i = j;
-        break label99;
+        localbkke = (bkke)jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localbkke.b();
+        return localbkke;
       }
+      bkke localbkke = new bkke();
+      return localbkke;
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, bkkg parambkkg)
+  public static bkke a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    if (parambkkg != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), parambkkg);
+    bkke localbkke = a();
+    localbkke.jdField_a_of_type_Bkkf = bkkf.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localbkke.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
+    localbkke.jdField_a_of_type_Int = paramInt5;
+    return localbkke;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Bkkf = null;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        jdField_a_of_type_JavaUtilArrayList.add(this);
+      }
+      return;
     }
-    a(i, paramString, paramArrayOfByte);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
   }
 }
 

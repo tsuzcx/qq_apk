@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import bchl;
+import bfji;
 import com.tencent.qphone.base.util.QLog;
 
 public class AtPanelTouchController
@@ -18,7 +18,7 @@ public class AtPanelTouchController
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 1;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bchl jdField_a_of_type_Bchl;
+  private bfji jdField_a_of_type_Bfji;
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -110,7 +110,7 @@ public class AtPanelTouchController
     int j;
     for (float f = 0.0F;; f = 20.0F)
     {
-      i = aepi.a(f, getContext().getResources());
+      i = afur.a(f, getContext().getResources());
       j = (int)(getScrollY() + paramFloat);
       if (j >= i) {
         break;
@@ -119,8 +119,8 @@ public class AtPanelTouchController
     }
     if (j >= i)
     {
-      if (this.jdField_a_of_type_Bchl != null) {
-        this.jdField_a_of_type_Bchl.c();
+      if (this.jdField_a_of_type_Bfji != null) {
+        this.jdField_a_of_type_Bfji.c();
       }
       return i - getScrollY();
     }
@@ -164,8 +164,8 @@ public class AtPanelTouchController
         return;
       } while (!this.e);
       this.e = false;
-    } while (this.jdField_a_of_type_Bchl == null);
-    this.jdField_a_of_type_Bchl.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Bfji == null);
+    this.jdField_a_of_type_Bfji.a(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -198,9 +198,9 @@ public class AtPanelTouchController
         if (Math.abs(f2) > 5.0F) {
           this.d = true;
         }
-        if (this.jdField_a_of_type_Bchl != null)
+        if (this.jdField_a_of_type_Bfji != null)
         {
-          paramMotionEvent = this.jdField_a_of_type_Bchl;
+          paramMotionEvent = this.jdField_a_of_type_Bfji;
           if (getScrollY() > 0) {
             bool = true;
           }
@@ -228,7 +228,7 @@ public class AtPanelTouchController
         break;
       }
       label303:
-      if (this.jdField_a_of_type_Bchl != null)
+      if (this.jdField_a_of_type_Bfji != null)
       {
         this.e = true;
         a(-this.jdField_b_of_type_Int);
@@ -241,9 +241,9 @@ public class AtPanelTouchController
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAtPanelTouchListener(bchl parambchl)
+  public void setAtPanelTouchListener(bfji parambfji)
   {
-    this.jdField_a_of_type_Bchl = parambchl;
+    this.jdField_a_of_type_Bfji = parambfji;
   }
   
   public void setControlLitTongue(boolean paramBoolean)
@@ -263,7 +263,7 @@ public class AtPanelTouchController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController
  * JD-Core Version:    0.7.0.1
  */

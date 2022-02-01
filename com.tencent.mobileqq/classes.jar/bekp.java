@@ -1,18 +1,61 @@
-public class bekp
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+
+public final class bekp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public bekp(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "url=" + this.jdField_a_of_type_JavaLangString + " ,method=" + this.b + " ,jsonHeader=" + this.c + " ,body=" + this.d + " ," + this.e + " ,rspBase64=" + this.jdField_a_of_type_Boolean + " ,timeout=" + this.jdField_a_of_type_Int + " ,userInfo=" + this.jdField_a_of_type_JavaLangObject;
+    TroopBarPublishUtils.a().a();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
+      String str1;
+      if ("interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from")))
+      {
+        paramDialogInterface = "pub_page_new";
+        if (this.jdField_a_of_type_Int != 3) {
+          break label144;
+        }
+        str1 = "Clk_cancel";
+        label79:
+        if (this.jdField_a_of_type_Int != 3) {
+          break label155;
+        }
+        if (!"0".endsWith(str2)) {
+          break label150;
+        }
+        paramInt = 2;
+      }
+      for (;;)
+      {
+        bcst.b(null, "dc00899", "Grp_tribe", "", paramDialogInterface, str1, paramInt, 0, str2, "", "", "");
+        return;
+        if ("0".endsWith(str2)) {}
+        for (paramDialogInterface = "pub_page_new";; paramDialogInterface = "reply_page_new") {
+          break;
+        }
+        label144:
+        str1 = "Clk_cancelup";
+        break label79;
+        label150:
+        paramInt = 1;
+        continue;
+        label155:
+        paramInt = 0;
+      }
+    }
+    paramDialogInterface.dismiss();
+    TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

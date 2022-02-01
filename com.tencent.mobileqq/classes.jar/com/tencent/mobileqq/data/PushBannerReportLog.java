@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class PushBannerReportLog
-  extends awge
+  extends Entity
 {
   public String log = "";
   
@@ -19,7 +19,7 @@ public class PushBannerReportLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PushBannerReportLog
  * JD-Core Version:    0.7.0.1
  */

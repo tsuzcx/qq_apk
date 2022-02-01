@@ -1,29 +1,26 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.ViewGroup;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ReplacementSpan;
 
 public class tfv
+  extends ReplacementSpan
 {
-  public static biej<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, tby paramtby)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    switch (paramInt)
-    {
-    default: 
-      return tfy.a(paramViewGroup, paramtby);
-    case 1: 
-      return tfy.a(paramViewGroup, paramtby);
-    case 2: 
-      return tfz.a(paramViewGroup, paramtby);
-    case 3: 
-      return tga.a(paramViewGroup, paramtby);
-    case 4: 
-      return tgb.a(paramViewGroup, paramtby);
-    }
-    return tgc.a(paramViewGroup, paramtby);
+    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
+  }
+  
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfv
  * JD-Core Version:    0.7.0.1
  */

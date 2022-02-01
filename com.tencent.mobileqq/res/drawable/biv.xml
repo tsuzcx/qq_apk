@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffff5983" />
-    <corners android:radius="18.0dip" />
-    <padding android:left="5.5dip" android:top="2.0dip" android:right="5.5dip" android:bottom="2.0dip" />
+    <solid android:color="@color/skin_aio_at_white_for_theme" />
 </shape>

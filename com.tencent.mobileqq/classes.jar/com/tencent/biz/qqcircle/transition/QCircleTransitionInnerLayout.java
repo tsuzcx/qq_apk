@@ -43,10 +43,10 @@ public class QCircleTransitionInnerLayout
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      QLog.d("QCircleTransitionInnerLayout", 1, "dispatchTouchEvent mDisallowIntercept:true");
+      QLog.d("QCircleTransitionInnerLayout", 1, paramMotionEvent.getAction() + ":dispatchTouchEvent mDisallowIntercept:" + true);
       getParent().requestDisallowInterceptTouchEvent(true);
       continue;
-      QLog.d("QCircleTransitionInnerLayout", 1, "dispatchTouchEvent mDisallowIntercept:" + this.a);
+      QLog.d("QCircleTransitionInnerLayout", 1, paramMotionEvent.getAction() + ":dispatchTouchEvent mDisallowIntercept:" + this.a);
       getParent().requestDisallowInterceptTouchEvent(this.a);
     }
   }
@@ -55,7 +55,7 @@ public class QCircleTransitionInnerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout
  * JD-Core Version:    0.7.0.1
  */

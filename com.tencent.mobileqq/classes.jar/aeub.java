@@ -1,10 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class aeub
+class aeub
   implements DialogInterface.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aeub(aeua paramaeua) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

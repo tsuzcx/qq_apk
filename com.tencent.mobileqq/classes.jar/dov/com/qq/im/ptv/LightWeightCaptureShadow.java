@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import bnsm;
+import bqja;
 
 public class LightWeightCaptureShadow
   extends View
@@ -17,10 +17,10 @@ public class LightWeightCaptureShadow
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private int b;
   private int c;
-  private int d = bnsm.a(14.0F);
+  private int d = bqja.a(14.0F);
   private int e = 0;
-  private int f = bnsm.a(160.0F);
-  private int g = bnsm.a(160.0F);
+  private int f = bqja.a(160.0F);
+  private int g = bqja.a(160.0F);
   private int h = -1929379840;
   
   public LightWeightCaptureShadow(Context paramContext)
@@ -129,7 +129,7 @@ public class LightWeightCaptureShadow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCaptureShadow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.mobileqq.pb.PBEnumField;
-import phg;
-import phh;
-import phj;
-import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
+import pyq;
+import qps;
+import qpt;
 
 public class UserOperationModule$2
   implements Runnable
 {
-  public UserOperationModule$2(phg paramphg, phh paramphh, String paramString, oidb_cmd0x978.OneFollowOperationResult paramOneFollowOperationResult) {}
+  public UserOperationModule$2(pyq parampyq, String paramString) {}
   
   public void run()
   {
-    ((phj)this.jdField_a_of_type_Phh).a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
+    qps.a.a().a(true, this.a);
   }
 }
 

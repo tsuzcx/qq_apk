@@ -1,8 +1,25 @@
-public abstract interface blpv
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
+
+public class blpv
 {
-  public abstract void aS_();
-  
-  public abstract void aT_();
+  @Nullable
+  public static Activity a(Context paramContext)
+  {
+    if ((paramContext instanceof Activity)) {
+      return (Activity)paramContext;
+    }
+    if ((paramContext instanceof ContextWrapper))
+    {
+      paramContext = (ContextWrapper)paramContext;
+      if ((paramContext.getBaseContext() instanceof Activity)) {
+        return (Activity)paramContext.getBaseContext();
+      }
+    }
+    return null;
+  }
 }
 
 

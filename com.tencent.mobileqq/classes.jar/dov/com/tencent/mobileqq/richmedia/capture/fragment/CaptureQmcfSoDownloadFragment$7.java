@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bdgm;
-import bnkz;
-import bnla;
+import bglp;
+import bqby;
+import bqbz;
 
 public class CaptureQmcfSoDownloadFragment$7
   implements Runnable
@@ -11,14 +11,14 @@ public class CaptureQmcfSoDownloadFragment$7
   
   public void run()
   {
-    bnkz localbnkz = new bnkz(this);
-    bnla localbnla = new bnla(this);
-    bdgm.a(this.this$0.getActivity(), null, this.a, localbnkz, localbnkz, localbnla);
+    bqby localbqby = new bqby(this);
+    bqbz localbqbz = new bqbz(this);
+    bglp.a(this.this$0.getActivity(), null, this.a, localbqby, localbqby, localbqbz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7
  * JD-Core Version:    0.7.0.1
  */

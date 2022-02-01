@@ -1,83 +1,286 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.util.ReportBadCase.1;
+import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils;
+import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
+import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.ReportItemData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
-class banx
-  implements banv
+public class banx
+  implements BadcaseReportUtils.ReportItemData
 {
-  private IBinder a;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static ArrayList<BadcaseReportUtils.BadDataFrame> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  banx(IBinder paramIBinder)
+  public static void a(boolean paramBoolean)
   {
-    this.a = paramIBinder;
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void beginSwitch()
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    if (paramBoolean) {}
+    for (BadcaseReportUtils.ENABLE_REPORT = bclh.h();; BadcaseReportUtils.ENABLE_REPORT = false)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      this.a.transact(1, localParcel, null, 1);
+      BadcaseReportUtils.sTotalReportNumber = bclh.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("BadcaseReportUtils", 2, "BadcaseReportUtils dpcBadCaseSetting enable=" + BadcaseReportUtils.ENABLE_REPORT + " reportNumber=" + BadcaseReportUtils.sTotalReportNumber + " businessEnable=" + paramBoolean);
+      }
       return;
     }
-    finally
+  }
+  
+  public static boolean a(Bitmap paramBitmap, String paramString)
+  {
+    return a(paramBitmap, paramString, 80);
+  }
+  
+  /* Error */
+  public static boolean a(Bitmap paramBitmap, String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aconst_null
+    //   7: astore 8
+    //   9: iconst_0
+    //   10: istore 4
+    //   12: iload 4
+    //   14: istore_3
+    //   15: aload_0
+    //   16: ifnull +10 -> 26
+    //   19: aload_1
+    //   20: ifnonnull +8 -> 28
+    //   23: iload 4
+    //   25: istore_3
+    //   26: iload_3
+    //   27: ireturn
+    //   28: new 98	java/io/File
+    //   31: dup
+    //   32: aload_1
+    //   33: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: astore_1
+    //   37: aload_1
+    //   38: invokevirtual 104	java/io/File:exists	()Z
+    //   41: ifeq +8 -> 49
+    //   44: aload_1
+    //   45: invokevirtual 107	java/io/File:delete	()Z
+    //   48: pop
+    //   49: aload_1
+    //   50: invokevirtual 110	java/io/File:createNewFile	()Z
+    //   53: pop
+    //   54: new 112	java/io/FileOutputStream
+    //   57: dup
+    //   58: aload_1
+    //   59: invokespecial 115	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   62: astore_1
+    //   63: aload_1
+    //   64: astore 5
+    //   66: aload 7
+    //   68: astore 6
+    //   70: new 117	java/io/BufferedOutputStream
+    //   73: dup
+    //   74: aload_1
+    //   75: sipush 20480
+    //   78: invokespecial 120	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   81: astore 7
+    //   83: aload_0
+    //   84: getstatic 126	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   87: iload_2
+    //   88: aload 7
+    //   90: invokevirtual 132	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   93: istore_3
+    //   94: iload_3
+    //   95: istore 4
+    //   97: aload 7
+    //   99: ifnull +13 -> 112
+    //   102: aload 7
+    //   104: invokevirtual 137	java/io/OutputStream:flush	()V
+    //   107: aload 7
+    //   109: invokevirtual 140	java/io/OutputStream:close	()V
+    //   112: iload 4
+    //   114: istore_3
+    //   115: aload_1
+    //   116: ifnull -90 -> 26
+    //   119: aload_1
+    //   120: invokevirtual 141	java/io/FileOutputStream:close	()V
+    //   123: iload 4
+    //   125: ireturn
+    //   126: astore_0
+    //   127: iload 4
+    //   129: ireturn
+    //   130: astore_0
+    //   131: aconst_null
+    //   132: astore_1
+    //   133: aload 8
+    //   135: astore 7
+    //   137: aload_1
+    //   138: astore 5
+    //   140: aload 7
+    //   142: astore 6
+    //   144: aload_0
+    //   145: invokevirtual 144	java/io/FileNotFoundException:printStackTrace	()V
+    //   148: aload 7
+    //   150: ifnull +13 -> 163
+    //   153: aload 7
+    //   155: invokevirtual 137	java/io/OutputStream:flush	()V
+    //   158: aload 7
+    //   160: invokevirtual 140	java/io/OutputStream:close	()V
+    //   163: iload 4
+    //   165: istore_3
+    //   166: aload_1
+    //   167: ifnull -141 -> 26
+    //   170: aload_1
+    //   171: invokevirtual 141	java/io/FileOutputStream:close	()V
+    //   174: iconst_0
+    //   175: ireturn
+    //   176: astore_0
+    //   177: iconst_0
+    //   178: ireturn
+    //   179: astore_0
+    //   180: aconst_null
+    //   181: astore_1
+    //   182: aload 6
+    //   184: ifnull +13 -> 197
+    //   187: aload 6
+    //   189: invokevirtual 137	java/io/OutputStream:flush	()V
+    //   192: aload 6
+    //   194: invokevirtual 140	java/io/OutputStream:close	()V
+    //   197: aload_1
+    //   198: ifnull +7 -> 205
+    //   201: aload_1
+    //   202: invokevirtual 141	java/io/FileOutputStream:close	()V
+    //   205: aload_0
+    //   206: athrow
+    //   207: astore_0
+    //   208: iconst_0
+    //   209: ireturn
+    //   210: astore_1
+    //   211: goto -6 -> 205
+    //   214: astore 5
+    //   216: goto -19 -> 197
+    //   219: astore_0
+    //   220: aload 5
+    //   222: astore_1
+    //   223: goto -41 -> 182
+    //   226: astore_0
+    //   227: aload 7
+    //   229: astore 6
+    //   231: goto -49 -> 182
+    //   234: astore_0
+    //   235: goto -72 -> 163
+    //   238: astore_0
+    //   239: aload 8
+    //   241: astore 7
+    //   243: goto -106 -> 137
+    //   246: astore_0
+    //   247: goto -110 -> 137
+    //   250: astore_0
+    //   251: goto -139 -> 112
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	254	0	paramBitmap	Bitmap
+    //   0	254	1	paramString	String
+    //   0	254	2	paramInt	int
+    //   14	152	3	bool1	boolean
+    //   10	154	4	bool2	boolean
+    //   64	75	5	str	String
+    //   214	7	5	localIOException	IOException
+    //   1	229	6	localObject1	Object
+    //   4	238	7	localObject2	Object
+    //   7	233	8	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   119	123	126	java/io/IOException
+    //   54	63	130	java/io/FileNotFoundException
+    //   170	174	176	java/io/IOException
+    //   54	63	179	finally
+    //   49	54	207	java/io/IOException
+    //   201	205	210	java/io/IOException
+    //   187	197	214	java/io/IOException
+    //   70	83	219	finally
+    //   144	148	219	finally
+    //   83	94	226	finally
+    //   153	163	234	java/io/IOException
+    //   70	83	238	java/io/FileNotFoundException
+    //   83	94	246	java/io/FileNotFoundException
+    //   102	112	250	java/io/IOException
+  }
+  
+  private static void b()
+  {
+    Object localObject1 = new File(c());
+    if (((File)localObject1).exists())
     {
-      localParcel.recycle();
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
+      {
+        int j = localObject1.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.getName().equals(".nomedia")) {}
+          for (;;)
+          {
+            i += 1;
+            break;
+            localObject2.delete();
+          }
+        }
+      }
     }
   }
   
-  public void doSwitch(String paramString1, String paramString2)
+  private static void b(BadcaseReportUtils.BadDataFrame paramBadDataFrame, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  
+  private static String c()
   {
-    Parcel localParcel = Parcel.obtain();
+    Object localObject = new StringBuilder(alkn.a);
+    ((StringBuilder)localObject).append("/sv_capture_xx");
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File((String)localObject + ".nomedia");
+    if (!localFile.exists()) {}
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(3, localParcel, null, 1);
-      return;
+      localFile.createNewFile();
+      return localObject;
     }
-    finally
-    {
-      localParcel.recycle();
-    }
+    catch (IOException localIOException) {}
+    return localObject;
   }
   
-  public void onProgress(long paramLong1, long paramLong2)
+  private static String d()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    String str = c();
+    return str + bcmk.a() + "_jpg";
   }
   
-  public void postSwitch(int paramInt)
+  private static String e()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
+    Random localRandom = new Random(System.currentTimeMillis());
+    String str = "---------";
+    int i = 0;
+    while (i < 12)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(4, localParcel, null, 1);
-      return;
+      str = str + String.valueOf(localRandom.nextInt(10));
+      i += 1;
     }
-    finally
+    return str;
+  }
+  
+  public void itemOK(BadcaseReportUtils.BadDataFrame paramBadDataFrame)
+  {
+    if (paramBadDataFrame.pictureBuffer != null)
     {
-      localParcel.recycle();
+      paramBadDataFrame.picturePath = null;
+      ThreadManager.post(new ReportBadCase.1(this, paramBadDataFrame), 5, null, true);
     }
   }
 }

@@ -1,33 +1,38 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class ogu
-  implements oer
+public class ogu
+  implements AladdinConfigHandler
 {
-  ogu(ogr paramogr) {}
-  
-  public void a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (ogr.a(this.a).booleanValue())
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if ((ogr.a(this.a).isShown()) && (ogr.a(this.a).getWindowVisibility() == 0))
-      {
-        ogr.a(this.a, ogr.a(this.a));
-        ogr.a(this.a).removeCallbacks(ogr.a(this.a));
-        ogr.a(this.a).postDelayed(ogr.a(this.a), ogr.a(this.a).mAdvertisementExtInfo.p);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
+        bmqa.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
       }
     }
-    else {
-      return;
-    }
-    ogr.a(this.a, Boolean.valueOf(false));
-    ogr.a(this.a, ogr.a(this.a));
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bmqa.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ogu
  * JD-Core Version:    0.7.0.1
  */

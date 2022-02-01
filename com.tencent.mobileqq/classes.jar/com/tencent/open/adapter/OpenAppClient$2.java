@@ -1,7 +1,7 @@
 package com.tencent.open.adapter;
 
 import android.content.Context;
-import bflp;
+import bisy;
 import java.util.HashMap;
 
 final class OpenAppClient$2
@@ -19,13 +19,13 @@ final class OpenAppClient$2
     catch (Exception localException)
     {
       String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
-      bflp.c(OpenAppClient.a, str, localException);
+      bisy.c(OpenAppClient.a, str, localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient.2
  * JD-Core Version:    0.7.0.1
  */

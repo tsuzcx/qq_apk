@@ -1,24 +1,26 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agyv;
+import aijp;
 import android.util.Base64;
-import awgf;
-import bhsw;
+import bkgg;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class StickerRecManager$3
   implements Runnable
 {
-  public StickerRecManager$3(agyv paramagyv, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2, int paramInt, String paramString3) {}
+  public StickerRecManager$3(aijp paramaijp, String paramString1, boolean paramBoolean1, SessionInfo paramSessionInfo, String paramString2, boolean paramBoolean2, int paramInt, String paramString3) {}
   
   public void run()
   {
-    if (agyv.a(this.this$0) != null) {
+    if (aijp.a(this.this$0) != null) {
       try
       {
-        agyv.a(this.this$0, this.jdField_a_of_type_Boolean, this.this$0.b(this.jdField_a_of_type_JavaLangString));
-        Object localObject1 = (StickerRecommendEntity)agyv.a(this.this$0).a(StickerRecommendEntity.class, "usrMessage=?", new String[] { this.jdField_b_of_type_JavaLangString });
+        this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        Object localObject1 = (StickerRecommendEntity)aijp.a(this.this$0).find(StickerRecommendEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
         if (localObject1 == null) {
           if (QLog.isColorLevel()) {
             QLog.d("StickerRecManager", 2, "entity is null");
@@ -28,18 +30,19 @@ public class StickerRecManager$3
         while ((localObject1 != null) && (System.currentTimeMillis() - ((StickerRecommendEntity)localObject1).cachedTime < 86400000L))
         {
           localObject1 = Base64.decode(((StickerRecommendEntity)localObject1).recList, 0);
-          localObject2 = (StickerRecommendSortEntity)agyv.a(this.this$0).a(StickerRecommendSortEntity.class, "usrMessage=?", new String[] { this.jdField_b_of_type_JavaLangString });
+          localObject2 = (StickerRecommendSortEntity)aijp.a(this.this$0).find(StickerRecommendSortEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
           if (localObject2 != null) {
             ((StickerRecommendSortEntity)localObject2).convertToList();
           }
-          agyv.a(this.this$0, (byte[])localObject1, this.jdField_b_of_type_JavaLangString, "cache", this.jdField_b_of_type_Boolean, (StickerRecommendSortEntity)localObject2);
+          aijp.a(this.this$0, (byte[])localObject1, this.jdField_b_of_type_JavaLangString, "cache", this.jdField_b_of_type_Boolean, (StickerRecommendSortEntity)localObject2, 0);
           return;
           if (QLog.isColorLevel()) {
             QLog.d("StickerRecManager", 2, "cache Time : " + (System.currentTimeMillis() - ((StickerRecommendEntity)localObject1).cachedTime));
           }
         }
         int j;
-        agyv localagyv;
+        ArrayList localArrayList;
+        String str;
         int i;
         return;
       }
@@ -47,16 +50,18 @@ public class StickerRecManager$3
       {
         if (QLog.isColorLevel())
         {
-          QLog.d("StickerRecManager", 2, bhsw.a(localException));
+          QLog.d("StickerRecManager", 2, bkgg.a(localException));
           return;
-          agyv.a(this.this$0).a(StickerRecommendEntity.class.getSimpleName(), "usrMessage=?", new String[] { this.jdField_b_of_type_JavaLangString });
-          j = agyv.a(this.this$0, this.jdField_a_of_type_Int);
-          localagyv = this.this$0;
-          localObject2 = agyv.a(this.this$0).c();
+          aijp.a(this.this$0).delete(StickerRecommendEntity.class.getSimpleName(), "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
+          j = aijp.a(this.this$0, this.jdField_a_of_type_Int);
+          localArrayList = new ArrayList();
+          localArrayList.add(this.jdField_b_of_type_JavaLangString);
+          localObject2 = this.this$0;
+          str = aijp.a(this.this$0).c();
           if (this.jdField_b_of_type_Boolean) {}
           for (i = 4;; i = 3)
           {
-            localagyv.a((String)localObject2, i, j, this.c, this.jdField_b_of_type_JavaLangString);
+            ((aijp)localObject2).a(str, i, j, this.c, localArrayList);
             return;
           }
         }
@@ -66,7 +71,7 @@ public class StickerRecManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.3
  * JD-Core Version:    0.7.0.1
  */

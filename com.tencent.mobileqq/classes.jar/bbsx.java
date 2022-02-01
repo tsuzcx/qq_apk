@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bbsx
-  implements DialogInterface.OnClickListener
+public class bbsx
+  extends bbti
 {
-  bbsx(bbsn parambbsn, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbsx(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    if (paramInt == 1) {
-      bbsn.a(this.jdField_a_of_type_Bbsn, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
+  
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new blkm(paramList, paramString);
   }
 }
 

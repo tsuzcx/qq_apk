@@ -24,9 +24,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import szn;
-import taj;
-import tak;
+import ubc;
+import ubx;
+import uby;
 
 public class SwipeBackLayout
   extends RelativeLayout
@@ -34,13 +34,13 @@ public class SwipeBackLayout
   protected int a;
   public Context a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final Handler jdField_a_of_type_AndroidOsHandler = new taj(this);
+  final Handler jdField_a_of_type_AndroidOsHandler = new ubx(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected View a;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   public WebViewFragment a;
   protected List<ViewPager> a;
-  public szn a;
+  public ubc a;
   protected boolean a;
   protected int b;
   protected boolean b;
@@ -71,11 +71,11 @@ public class SwipeBackLayout
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_JavaUtilList = new LinkedList();
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Szn = new szn();
+    this.jdField_a_of_type_Ubc = new ubc();
     this.jdField_e_of_type_Boolean = true;
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842307);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842617);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
@@ -84,7 +84,7 @@ public class SwipeBackLayout
     this(paramContext, null);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new tak(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new uby(this, paramContext));
   }
   
   private void a(List<ViewPager> paramList, ViewGroup paramViewGroup)
@@ -175,7 +175,7 @@ public class SwipeBackLayout
             int j = (int)((paramMotionEvent.getX() + ((CustomWebView)localObject).getWebScrollX()) / f1);
             float f2 = paramMotionEvent.getY();
             int k = (int)((((CustomWebView)localObject).getWebScrollY() + f2) / f1);
-            bool1 = this.jdField_a_of_type_Szn.a(new Point(j, k));
+            bool1 = this.jdField_a_of_type_Ubc.a(new Point(j, k));
           }
         }
       }
@@ -203,7 +203,7 @@ public class SwipeBackLayout
       postInvalidate();
       if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.H();
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
         a();
       }
     }
@@ -236,7 +236,7 @@ public class SwipeBackLayout
         this.jdField_d_of_type_Int = j;
         this.jdField_b_of_type_Int = j;
         this.c = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Szn.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Ubc.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
           this.jdField_d_of_type_Boolean = true;
         }
       }
@@ -309,7 +309,7 @@ public class SwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

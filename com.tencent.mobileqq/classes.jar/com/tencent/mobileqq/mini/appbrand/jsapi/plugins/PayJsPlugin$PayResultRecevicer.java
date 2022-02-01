@@ -138,7 +138,7 @@ class PayJsPlugin$PayResultRecevicer
           QLog.e("PayJsPlugin", 1, localThrowable1, new Object[0]);
           try
           {
-            if (PayJsPlugin.access$500(this.this$0)) {
+            if (PayJsPlugin.access$800(this.this$0)) {
               paramBundle.put("resultCode", -3);
             }
             for (;;)
@@ -148,14 +148,14 @@ class PayJsPlugin$PayResultRecevicer
               if ((paramInt == 9) && (localObject2 != null)) {
                 localJSONObject1.put("data", localObject2);
               }
-              PayJsPlugin.access$400(this.this$0, i, paramString, localJSONObject1);
+              PayJsPlugin.access$500(this.this$0, i, paramString, localJSONObject1);
               return;
               if (n == -1) {}
               for (paramBundle = ApiUtil.wrapCallbackCancel(paramString, null, localJSONException2);; paramBundle = ApiUtil.wrapCallbackFail(paramString, localJSONObject2, localJSONException2))
               {
                 try
                 {
-                  if (PayJsPlugin.access$500(this.this$0)) {
+                  if (PayJsPlugin.access$800(this.this$0)) {
                     paramBundle.put("resultCode", -3);
                   }
                   if (n != -1) {
@@ -184,12 +184,12 @@ class PayJsPlugin$PayResultRecevicer
         String str2 = "";
         continue;
       }
-      QLog.d("PayJsPlugin", 1, "onReceiveResult seq = " + i + " callbackSn=" + str3 + " ret = " + n + " miniGameAutoConsume = " + PayJsPlugin.access$500(this.this$0));
+      QLog.d("PayJsPlugin", 1, "onReceiveResult seq = " + i + " callbackSn=" + str3 + " ret = " + n + " miniGameAutoConsume = " + PayJsPlugin.access$800(this.this$0));
       localJSONObject1.put("resultCode", n);
       if (n != 0) {
         break label840;
       }
-      if (!PayJsPlugin.access$500(this.this$0)) {
+      if (!PayJsPlugin.access$800(this.this$0)) {
         break label806;
       }
       paramInt = localJSONObject2.optInt("payChannel", -1);
@@ -252,7 +252,7 @@ class PayJsPlugin$PayResultRecevicer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin.PayResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

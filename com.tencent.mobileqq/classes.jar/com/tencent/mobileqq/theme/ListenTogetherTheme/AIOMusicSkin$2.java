@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import banz;
+import bdpd;
 import com.tencent.mobileqq.activity.ChatFragment;
 
 public class AIOMusicSkin$2
   implements Runnable
 {
-  public AIOMusicSkin$2(banz parambanz) {}
+  public AIOMusicSkin$2(bdpd parambdpd) {}
   
   public void run()
   {
-    if (banz.a(this.this$0) != null) {
-      banz.a(this.this$0, banz.a(this.this$0).a, banz.a(this.this$0));
+    if (bdpd.a(this.this$0) != null) {
+      bdpd.a(this.this$0, bdpd.a(this.this$0).a, bdpd.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,100 @@
-import android.content.Context;
-import android.opengl.GLES20;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class amvt
+class amvt
 {
-  private static final String jdField_a_of_type_JavaLangString = amvt.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  public final float[] a;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}";
-  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
-  public final float[] b;
-  private int jdField_c_of_type_Int;
-  private final String jdField_c_of_type_JavaLangString = "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}";
-  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer;
-  private int d;
-  private int e = -1;
-  private int f = 36197;
+  private amup jdField_a_of_type_Amup;
+  private amvi jdField_a_of_type_Amvi;
+  private amvm jdField_a_of_type_Amvm;
+  private CopyOnWriteArrayList<amvk> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   
-  public amvt()
+  public amvt(amvm paramamvm, amup paramamup, amvi paramamvi)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F, 1.0F };
-    this.jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+    this.jdField_a_of_type_Amup = paramamup;
+    this.jdField_a_of_type_Amvm = paramamvm;
+    this.jdField_a_of_type_Amvi = paramamvi;
   }
   
-  public int a()
+  public amvk a(int paramInt)
   {
-    return this.e;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      amvk localamvk = (amvk)localIterator.next();
+      if (localamvk.b() == paramInt) {
+        return localamvk;
+      }
+    }
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public amvk a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Amvm == null) {
+      return null;
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject = a(paramInt1);
+    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    if (localObject != null)
+    {
+      if (bool)
+      {
+        QLog.w("CmShow_SpriteCreator", 1, "createScript init load but has last script");
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      }
+    }
+    else {
+      switch (paramInt1)
+      {
+      default: 
+        localObject = new amvl(paramInt1, paramInt2, this.jdField_a_of_type_Amvm, this.jdField_a_of_type_Amvi);
+      }
+    }
+    while ((localObject != null) && (((amvk)localObject).a()))
+    {
+      ((amvk)localObject).d();
+      ((amvk)localObject).a(this.jdField_a_of_type_Amup);
+      ((amvk)localObject).c();
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject);
+      long l2 = System.currentTimeMillis();
+      QLog.i("CmShow_SpriteCreator", 1, "create script, bid:" + paramInt1 + ",cost:" + (l2 - l1) + ",threadId:" + Thread.currentThread().getId() + ",init:" + bool);
+      return localObject;
+      return localObject;
+      localObject = new amvj(paramInt1, this.jdField_a_of_type_Amvm, this.jdField_a_of_type_Amvi);
+      continue;
+      localObject = new amvj(paramInt1, "cmshow_base.js", this.jdField_a_of_type_Amvm, this.jdField_a_of_type_Amvi);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Amvm == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    float f1 = paramInt1 / paramInt2;
-    float f2 = paramInt3 / paramInt4;
-    Object localObject;
-    if (f1 < f2)
+    if (this.jdField_a_of_type_Amvm.a() == null)
     {
-      f1 = f2 / f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[1] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[3] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[5] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[7] = (f1 * localObject[7]);
-    }
-    for (;;)
-    {
-      localObject = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-      localObject = ByteBuffer.allocateDirect(32);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_b_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      QLog.w("CmShow_SpriteCreator", 1, "[loadBasicScript], fail. surfaceView is null.");
       return;
-      f1 /= f2;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[0] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[2] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[4] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[6] = (f1 * localObject[6]);
     }
+    a(100, -1);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
   
-  public void a(Context paramContext)
+  public void b()
   {
-    Object localObject = new int[1];
-    GLES20.glGenTextures(1, (int[])localObject, 0);
-    this.e = localObject[0];
-    GLES20.glBindTexture(this.f, this.e);
-    GLES20.glTexParameteri(this.f, 10242, 33071);
-    GLES20.glTexParameteri(this.f, 10243, 33071);
-    GLES20.glTexParameteri(this.f, 10241, 9728);
-    GLES20.glTexParameteri(this.f, 10240, 9728);
-    if (4 != this.jdField_a_of_type_ArrayOfFloat.length / 2) {
-      throw new RuntimeException("Unexpected number of vertices in BackgroundRenderer.");
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return;
     }
-    localObject = ByteBuffer.allocateDirect(32);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.jdField_c_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-    int i = angr.a(jdField_a_of_type_JavaLangString, paramContext, 35633, "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}");
-    int j = angr.a(jdField_a_of_type_JavaLangString, paramContext, 35632, "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}");
-    this.jdField_a_of_type_Int = GLES20.glCreateProgram();
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, i);
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, j);
-    GLES20.glLinkProgram(this.jdField_a_of_type_Int);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    angr.a(jdField_a_of_type_JavaLangString, "program creation");
-    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_Position");
-    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_TexCoord");
-    this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "sTexture");
-    angr.a(jdField_a_of_type_JavaLangString, "program parameters");
-  }
-  
-  public void a(FloatBuffer paramFloatBuffer)
-  {
-    angr.a(jdField_a_of_type_JavaLangString, "before draw");
-    this.jdField_c_of_type_JavaNioFloatBuffer = paramFloatBuffer;
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glColorMask(true, true, true, true);
-    GLES20.glClear(16640);
-    GLES20.glDepthMask(false);
-    GLES20.glDisable(2929);
-    GLES20.glDisable(3042);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, this.e);
-    GLES20.glUniform1i(this.d, 0);
-    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 2, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
-    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glEnable(2929);
-    angr.a(jdField_a_of_type_JavaLangString, "after draw");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((amvk)localIterator.next()).g();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 

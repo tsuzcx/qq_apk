@@ -1,61 +1,62 @@
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.15;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
+import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
 
 public class arlh
-  extends yub
 {
-  public arlh(TroopFileModel.15 param15) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    paramByteStringMicro1 = arrr.a(paramByteStringMicro1);
-    paramString2 = null;
-    paramString1 = paramString2;
-    if (paramBoolean)
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      paramString1 = paramString2;
-      if (!TextUtils.isEmpty(paramByteStringMicro1))
-      {
-        paramInt1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipType;
-        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + bhsz.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipInnerPath) + "&";
-      }
+      localReqBody.a2.set(str);
+      localReqBody.platform.set(1);
+      localReqBody.version.set("8.4.1");
+      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
+      localReqBody.original_key.set((String)localObject);
+      localReqBody.original_id_type.set(1);
     }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (this.a.jdField_a_of_type_Arkm != null) {
-        this.a.jdField_a_of_type_Arkm.a(paramString1, paramString4);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
-      }
-      if (this.a.this$0.a.a() != null)
-      {
-        paramString1 = String.valueOf(this.a.this$0.a.a().TroopUin);
-        if (this.a.this$0.a.a() == null) {
-          break label299;
-        }
-        paramString2 = arrr.b(this.a.this$0.a.a().nFileType);
-        label269:
-        azqs.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
-      }
+    localReqBody.cmd.set(24727);
+    localReqBody.subcmd.set(6);
+    nir.a(paramQQAppInterface, new arli(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, arlj paramarlj)
+  {
+    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
+    localReqBody.uint32_refer.set(paramInt);
+    nir.a(paramQQAppInterface, paramarlj, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, arlk paramarlk)
+  {
+    nir.a(paramQQAppInterface, paramarlk, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, arll paramarll)
+  {
+    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
+    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
+    paramList = paramBundle;
+    if (paramBundle == null) {
+      paramList = new Bundle();
     }
-    label299:
-    do
-    {
-      return;
-      paramString1 = "";
-      break;
-      paramString2 = "unknow";
-      break label269;
-      if (this.a.jdField_a_of_type_Arkm != null) {
-        this.a.jdField_a_of_type_Arkm.c();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
+    nir.a(paramQQAppInterface, paramarll, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
   }
 }
 

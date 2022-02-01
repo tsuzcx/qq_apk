@@ -1,71 +1,51 @@
-import android.app.Activity;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
 
-public class ajyl
-  extends ajxw<TextPreviewTranslateActivity>
+class ajyl
+  implements bkij
 {
-  protected void a(ContainerView paramContainerView)
-  {
-    super.a(paramContainerView);
-    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
-    if (localTextPreviewTranslateActivity != null) {
-      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376201));
-    }
-    paramContainerView.jdField_a_of_type_Boolean = false;
-    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
-  }
+  ajyl(ajye paramajye) {}
   
-  protected void a(ContainerView paramContainerView, View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramContainerView, paramView);
-    azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
-  }
-  
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onItemClick, position = " + paramInt);
     }
-    for (;;)
+    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+    if (paramAdapterView == this.a.jdField_a_of_type_Ajyd)
     {
-      if ((paramView.getId() != 2131376341) && (ajxm.a().c())) {
-        ajxm.a().d();
+      paramAdapterView = (ajyc)this.a.jdField_a_of_type_Ajyd.getItem(paramInt);
+      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      if (QLog.isColorLevel()) {
+        QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int);
       }
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            banj.a(a(), "TextPreview");
-            azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
-          }
-          catch (Exception paramView) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("TranslateSelectableMenu", 2, paramView.toString());
+      this.a.a(true);
+      this.a.dismiss();
+    }
+    do
+    {
       return;
-      banj.a((Activity)paramView.getContext(), a());
-      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
-      continue;
-      if (localQQAppInterface != null) {
-        banj.a((Activity)paramView.getContext(), localQQAppInterface, a());
+      if (paramAdapterView == this.a.jdField_a_of_type_Ajyo)
+      {
+        paramAdapterView = (ajxs)this.a.jdField_a_of_type_Ajyo.getItem(paramInt);
+        this.a.b = false;
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramAdapterView.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramAdapterView.jdField_a_of_type_JavaLangString.length());
+        this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+        ((InputMethodManager)this.a.jdField_a_of_type_AndroidWidgetEditText.getContext().getSystemService("input_method")).toggleSoftInput(0, 2);
+        return;
       }
-      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
-      continue;
-      ajxm.a().a(null);
-      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onItemClick, unknown data type");
   }
 }
 

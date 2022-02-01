@@ -1,287 +1,171 @@
-import android.content.Context;
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import java.io.File;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
 public class akid
-  extends BaseAdapter
+  extends PhotoPreviewLogicBase
 {
-  acoj jdField_a_of_type_Acoj;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  public ArrayList<Object> a;
-  View.OnClickListener b;
+  private int jdField_a_of_type_Int;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private String jdField_a_of_type_JavaLangString;
+  private int b = 0;
   
-  public akid(Context paramContext, ArrayList<Object> paramArrayList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, acoj paramacoj)
+  public akid(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_Acoj = paramacoj;
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
+  private void a()
   {
-    Object localObject1;
-    Object localObject2;
-    if (paramString.equals("cover"))
+    if (this.mPhotoCommonData.selectedPhotoList.size() == 0)
     {
-      localObject1 = paramAbsShareMsg.mContentCover;
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      if (a(this.mActivity.getMediaInfo(this.jdField_a_of_type_JavaLangString)))
       {
-        localObject2 = localObject1;
-        if ((paramAbsShareMsg instanceof StructMsgForGeneralShare))
-        {
-          paramAbsShareMsg = (StructMsgForGeneralShare)paramAbsShareMsg;
-          localObject2 = localObject1;
-          if (paramAbsShareMsg.mStructMsgItemLists != null)
-          {
-            localObject2 = localObject1;
-            if (!paramAbsShareMsg.mStructMsgItemLists.isEmpty())
-            {
-              Iterator localIterator = paramAbsShareMsg.mStructMsgItemLists.iterator();
-              paramAbsShareMsg = (AbsShareMsg)localObject1;
-              if (!localIterator.hasNext()) {
-                return paramAbsShareMsg;
-              }
-              localObject2 = (azus)localIterator.next();
-              if (!(localObject2 instanceof azut)) {
-                break label214;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((azut)localObject2).jdField_a_of_type_JavaUtilArrayList == null) {
-                break label248;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((azut)localObject2).jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-                break label248;
-              }
-              localObject2 = ((azut)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
-              localObject1 = paramAbsShareMsg;
-              label176:
-              do
-              {
-                paramAbsShareMsg = (AbsShareMsg)localObject1;
-                if (!((Iterator)localObject2).hasNext()) {
-                  break;
-                }
-                paramAbsShareMsg = (azus)((Iterator)localObject2).next();
-                if (!paramString.equals("cover")) {
-                  break label206;
-                }
-                paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory(paramAbsShareMsg);
-                localObject1 = paramAbsShareMsg;
-              } while (TextUtils.isEmpty(paramAbsShareMsg));
-              localObject1 = paramAbsShareMsg;
-              if (TextUtils.isEmpty(paramAbsShareMsg)) {
-                break label248;
-              }
-              localObject2 = paramAbsShareMsg;
-            }
-          }
-        }
+        QQToast.a(this.mActivity, anni.a(2131689731), 0).b(this.mActivity.getResources().getDimensionPixelSize(2131298998));
+        return;
       }
+      this.mPhotoCommonData.selectedPhotoList.add(this.jdField_a_of_type_JavaLangString);
     }
-    label206:
-    label214:
-    label228:
-    do
-    {
-      return localObject2;
-      localObject1 = paramAbsShareMsg.mContentTitle;
-      break;
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory(paramAbsShareMsg);
-      break label176;
-      if (!paramString.equals("cover")) {
-        break label240;
-      }
-      paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((azus)localObject2);
-      localObject2 = paramAbsShareMsg;
-    } while (!TextUtils.isEmpty(paramAbsShareMsg));
-    for (;;)
-    {
-      break;
-      label240:
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((azus)localObject2);
-      break label228;
-      label248:
-      paramAbsShareMsg = (AbsShareMsg)localObject1;
-    }
-    return paramAbsShareMsg;
+    boiv.a(this.b, this.mActivity, this.mPhotoCommonData, false);
+    this.mActivity.finish();
+    a(false);
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  private void a(boolean paramBoolean)
   {
-    if ((paramMessageRecord instanceof MessageForStructing))
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
     {
-      Object localObject = ((MessageForStructing)paramMessageRecord).structingMsg;
-      if (localObject == null) {
-        ((MessageForStructing)paramMessageRecord).parse();
+      if (!paramBoolean) {
+        break label78;
       }
-      if (nav.a(paramMessageRecord)) {
-        return false;
-      }
-      if (localObject != null)
+      if (this.jdField_a_of_type_AndroidAppDialog == null)
       {
-        if ((((AbsStructMsg)localObject).fwFlag == 1) || (((AbsStructMsg)localObject).hasFlag(1))) {
-          return false;
-        }
-        if ((localObject instanceof StructMsgForAudioShare)) {
-          return true;
-        }
-        if ((localObject instanceof StructMsgForGeneralShare))
-        {
-          paramMessageRecord = a((StructMsgForGeneralShare)localObject, "cover");
-          localObject = a((StructMsgForGeneralShare)localObject, "title");
-          if ((!TextUtils.isEmpty(paramMessageRecord)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            return true;
-          }
-        }
+        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.mActivity, 2131755823);
+        this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
+        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559567);
       }
+      this.jdField_a_of_type_AndroidAppDialog.show();
     }
-    return false;
-  }
-  
-  public void a(URLImageView paramURLImageView, AbsShareMsg paramAbsShareMsg)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    String str = a(paramAbsShareMsg, "cover");
-    int i = 2130849859;
-    if ((paramAbsShareMsg instanceof StructMsgForAudioShare)) {
-      i = 2130849869;
-    }
-    localObject = ((Resources)localObject).getDrawable(i);
-    if (TextUtils.isEmpty(str))
-    {
-      paramURLImageView.setImageDrawable((Drawable)localObject);
+    label78:
+    while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
       return;
     }
-    if ((!str.startsWith("http://")) && (!str.startsWith("https://"))) {}
-    for (paramAbsShareMsg = Uri.fromFile(new File(str)).toString();; paramAbsShareMsg = str)
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+  }
+  
+  private boolean a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    return (paramLocalMediaInfo != null) && ("image/gif".equals(paramLocalMediaInfo.mMimeType));
+  }
+  
+  public void doOnDestroy()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("choosed_num", 0);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    this.mActivity.selectLayout.setVisibility(8);
+    this.mActivity.sendBtn.setOnClickListener(new akie(this));
+  }
+  
+  public void onGalleryItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    int i = 1;
+    String str = this.mActivity.adapter.getItem(paramInt);
+    this.jdField_a_of_type_JavaLangString = str;
+    if (this.mActivity.getMediaType(str) == 1)
     {
-      paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramAbsShareMsg, (Drawable)localObject, (Drawable)localObject));
-      return;
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = getItem(paramInt);
-    Object localObject1;
-    if ((localObject2 instanceof MessageForStructing))
-    {
-      localObject1 = (MessageForStructing)localObject2;
-      if ((paramView != null) && ((paramView.getTag() instanceof akie)))
-      {
-        paramViewGroup = (akie)paramView.getTag();
-        paramViewGroup.jdField_a_of_type_JavaLangObject = localObject1;
-        paramViewGroup.jdField_a_of_type_JavaLangString = ((acoh)this.jdField_a_of_type_Acoj).c;
-        if (!(localObject1 instanceof MessageForStructing)) {
-          break label305;
-        }
-        if (localObject1 == null) {
-          ((MessageForStructing)localObject1).parse();
-        }
-        if ((((MessageForStructing)localObject1).structingMsg != null) && ((((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-        {
-          localObject2 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-          a(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, (AbsShareMsg)localObject2);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(a((AbsShareMsg)localObject2, "title"));
-          paramViewGroup.b.setText(((AbsShareMsg)localObject2).mSourceName);
-        }
-        label147:
-        if (!this.jdField_a_of_type_Acoj.b()) {
-          break label328;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Acoj.a.a((ChatMessage)localObject1));
-        paramViewGroup = paramView;
+      if (i == 0) {
+        break label68;
       }
-    }
-    label305:
-    label328:
-    do
-    {
-      return paramViewGroup;
-      paramViewGroup = new akie(this);
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562675, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375388));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131377109));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377107));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363449));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131370835));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      paramViewGroup.b.setText("");
-      break label147;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      return paramView;
-      paramViewGroup = paramView;
-    } while (!(localObject2 instanceof String));
-    if ((paramView != null) && ((paramView.getTag() instanceof TextView)))
-    {
-      localObject1 = (TextView)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject1;
+      this.mActivity.selectLayout.setVisibility(8);
     }
     for (;;)
     {
-      paramView.setText((String)localObject2);
-      return paramViewGroup;
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562676, null);
-      paramView = (TextView)paramViewGroup.findViewById(2131377620);
-      paramViewGroup.setTag(paramView);
+      super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      i = 0;
+      break;
+      label68:
+      this.mActivity.selectLayout.setVisibility(0);
     }
+  }
+  
+  public void onSelectClick(View paramView)
+  {
+    int i = this.mActivity.getCurrentSelectedPostion();
+    String str = "";
+    if (i != -1) {
+      str = (String)this.mPhotoPreviewData.paths.get(i);
+    }
+    LocalMediaInfo localLocalMediaInfo = this.mActivity.getMediaInfo(str);
+    int j = bgkc.getMediaType(localLocalMediaInfo);
+    if (!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(i)))
+    {
+      if (this.mPhotoCommonData.needMediaInfo) {
+        this.mPhotoCommonData.selectedMediaInfoHashMap.put(str, localLocalMediaInfo);
+      }
+      if (this.jdField_a_of_type_Int == 9)
+      {
+        QQToast.a(this.mActivity, anni.a(2131689732), 0).b(this.mActivity.getResources().getDimensionPixelSize(2131298998));
+        return;
+      }
+      if (a(localLocalMediaInfo))
+      {
+        QQToast.a(this.mActivity, anni.a(2131689731), 0).b(this.mActivity.getResources().getDimensionPixelSize(2131298998));
+        return;
+      }
+      if ((j == 1) && (this.jdField_a_of_type_Int != 0))
+      {
+        QQToast.a(this.mActivity, anni.a(2131689733), 0).b(this.mActivity.getResources().getDimensionPixelSize(2131298998));
+        return;
+      }
+      if (j != 1) {}
+    }
+    for (;;)
+    {
+      super.onSelectClick(paramView);
+      this.jdField_a_of_type_Int = this.mPhotoCommonData.selectedPhotoList.size();
+      return;
+      if (this.mPhotoCommonData.needMediaInfo) {
+        this.mPhotoCommonData.selectedMediaInfoHashMap.remove(str);
+      }
+    }
+  }
+  
+  public void updateButton()
+  {
+    this.mActivity.sendBtn.setClickable(true);
+    this.mActivity.sendBtn.setBackgroundResource(2130837953);
+    super.updateButton();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akid
  * JD-Core Version:    0.7.0.1
  */

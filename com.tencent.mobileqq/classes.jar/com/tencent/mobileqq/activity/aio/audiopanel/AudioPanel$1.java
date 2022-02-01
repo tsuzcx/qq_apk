@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bavt;
+import bdxh;
 
 class AudioPanel$1
   implements Runnable
@@ -9,12 +9,12 @@ class AudioPanel$1
   
   public void run()
   {
-    bavt.c(this.a);
+    bdxh.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class sgr
+class sgr
+  implements Animation.AnimationListener
 {
-  public static sgm a(Context paramContext, int paramInt)
+  sgr(sgp paramsgp) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new sgp(paramContext);
-    case 2: 
-      return new ReadInJoySkinAnimManager(paramContext);
-    }
-    return new sgq(paramContext);
+    paramAnimation = (ImageView)sgp.a(this.a).findViewById(2131380357);
+    ImageView localImageView = (ImageView)sgp.a(this.a).findViewById(2131380358);
+    sgp.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgr
  * JD-Core Version:    0.7.0.1
  */

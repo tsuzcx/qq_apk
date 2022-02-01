@@ -1,42 +1,77 @@
-import android.widget.EditText;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
 
 public class aizr
-  extends aizb
+  extends aiyi
+  implements View.OnClickListener
 {
-  private int a;
-  
-  public aizr(EditText paramEditText)
+  public aizr(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    super(paramEditText);
-    this.jdField_a_of_type_Int = 2;
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private void a(TextView paramTextView, ajax paramajax)
   {
-    CharSequence localCharSequence = paramCharSequence;
-    if (paramCharSequence.toString().contains("."))
+    if ((paramajax == null) || (!(paramajax instanceof ajbe))) {}
+    do
     {
-      localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
-      {
-        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
-      }
+      return;
+      paramajax = (ajbe)paramajax;
+    } while ((paramajax.jdField_a_of_type_JavaUtilArrayList == null) || (paramajax.jdField_a_of_type_JavaUtilArrayList.size() == 0));
+    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131698105);
+    paramTextView.setVisibility(0);
+    paramTextView.setText(str);
+    if (paramajax.jdField_a_of_type_Boolean)
+    {
+      paramTextView.setPadding(0, bgtn.a(16.0F), 0, bgtn.a(6.0F));
+      return;
     }
-    paramCharSequence = localCharSequence;
-    if (localCharSequence.toString().trim().substring(0).equals("."))
+    paramTextView.setPadding(0, bgtn.a(16.0F), 0, bgtn.a(6.0F));
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    View localView;
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aizs)))
     {
-      paramCharSequence = "0" + localCharSequence;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
+      paramView = new aizs();
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561332, null);
+      paramView.a = ((TextView)localView.findViewById(2131378191));
+      localView.setTag(paramView);
+      localObject = paramView;
     }
-    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
+      c(((aizs)localObject).a);
+      a(((aizs)localObject).a, this.jdField_a_of_type_Ajax);
+      localView.setOnClickListener(this);
+      return localView;
+      localObject = (aizs)paramView.getTag();
+      localView = paramView;
     }
   }
+  
+  public void c(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (ThemeUtil.isDefaultTheme())
+    {
+      paramView.setBackgroundResource(2130839394);
+      return;
+    }
+    paramView.setBackgroundResource(2130850219);
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 

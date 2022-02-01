@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bnpo;
+import bqgf;
 import java.io.File;
 
 public final class QQStoryFollowCaptureResManager$1
@@ -10,12 +10,12 @@ public final class QQStoryFollowCaptureResManager$1
   
   public void run()
   {
-    bnpo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+    bqgf.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QQStoryFollowCaptureResManager.1
  * JD-Core Version:    0.7.0.1
  */

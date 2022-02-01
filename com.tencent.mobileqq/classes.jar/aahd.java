@@ -1,14 +1,19 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aahd
-  implements aahz
+  implements View.OnClickListener
 {
-  public aahd(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
+  public aahd(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

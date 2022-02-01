@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import aeti;
-import alud;
+import afzo;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import awhp;
-import bart;
-import batj;
-import bbck;
-import bdeu;
-import bdhe;
-import bdjf;
-import bdnn;
-import bhpp;
+import anni;
+import bdtl;
+import bdvf;
+import bedk;
+import bgjw;
+import bgmj;
+import bgog;
+import bgsp;
+import bkcx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,6 +23,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +39,7 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class MessageForPtt
   extends MessageForRichText
-  implements aeti
+  implements afzo
 {
   public static final int PTT_SIZE_ANIM_START = -2;
   public static final int PTT_SIZE_RECV_ERROR = -4;
@@ -60,7 +60,7 @@ public class MessageForPtt
   public int busiType;
   public boolean c2cViaOffline;
   public String directUrl = "";
-  @awhp
+  @notColumn
   public long estimatedSize;
   public boolean expandStt = true;
   public long extFlag;
@@ -70,18 +70,18 @@ public class MessageForPtt
   public String groupFileKeyStr;
   public boolean isReadPtt;
   public int isReport;
-  @awhp
+  @notColumn
   public boolean isResend;
   public int itemType;
   public int longPttVipFlag;
-  @awhp
+  @notColumn
   public String mInputContent;
   public String md5;
   public long msgRecTime = 0L;
   public long msgTime = 0L;
   public int msgVia;
   public float playProgress;
-  @awhp
+  @notColumn
   public float playSpeedPos = MediaPlayerManager.a;
   public int sampleRate;
   public String storageSource;
@@ -109,7 +109,7 @@ public class MessageForPtt
         str = paramString + ".slk";
       }
     }
-    return bbck.a(str, true);
+    return bedk.a(str, true);
   }
   
   public static String getMsgFilePath(int paramInt, String paramString)
@@ -177,7 +177,7 @@ public class MessageForPtt
     //   32: iconst_1
     //   33: istore_1
     //   34: iload_1
-    //   35: ifeq +791 -> 826
+    //   35: ifeq +815 -> 850
     //   38: aload_0
     //   39: aload 7
     //   41: getfield 195	localpb/richMsg/RichMsg$PttRec:localPath	Lcom/tencent/mobileqq/pb/PBStringField;
@@ -266,7 +266,7 @@ public class MessageForPtt
     //   244: aload 7
     //   246: getfield 285	localpb/richMsg/RichMsg$PttRec:msgTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   249: invokevirtual 286	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   252: ifeq +1001 -> 1253
+    //   252: ifeq +1025 -> 1277
     //   255: aload 7
     //   257: getfield 285	localpb/richMsg/RichMsg$PttRec:msgTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   260: invokevirtual 210	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
@@ -277,7 +277,7 @@ public class MessageForPtt
     //   271: aload 7
     //   273: getfield 288	localpb/richMsg/RichMsg$PttRec:msgRecTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   276: invokevirtual 286	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   279: ifeq +980 -> 1259
+    //   279: ifeq +1004 -> 1283
     //   282: aload 7
     //   284: getfield 288	localpb/richMsg/RichMsg$PttRec:msgRecTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   287: invokevirtual 210	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
@@ -288,7 +288,7 @@ public class MessageForPtt
     //   298: aload 7
     //   300: getfield 290	localpb/richMsg/RichMsg$PttRec:voiceType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   303: invokevirtual 291	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   306: ifeq +959 -> 1265
+    //   306: ifeq +983 -> 1289
     //   309: aload 7
     //   311: getfield 290	localpb/richMsg/RichMsg$PttRec:voiceType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   314: invokevirtual 220	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
@@ -299,7 +299,7 @@ public class MessageForPtt
     //   323: aload 7
     //   325: getfield 295	localpb/richMsg/RichMsg$PttRec:voiceLength	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   328: invokevirtual 291	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   331: ifeq +939 -> 1270
+    //   331: ifeq +963 -> 1294
     //   334: aload 7
     //   336: getfield 295	localpb/richMsg/RichMsg$PttRec:voiceLength	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   339: invokevirtual 220	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
@@ -310,7 +310,7 @@ public class MessageForPtt
     //   348: aload 7
     //   350: getfield 299	localpb/richMsg/RichMsg$PttRec:voiceChangeFlag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   353: invokevirtual 291	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   356: ifeq +919 -> 1275
+    //   356: ifeq +943 -> 1299
     //   359: aload 7
     //   361: getfield 299	localpb/richMsg/RichMsg$PttRec:voiceChangeFlag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   364: invokevirtual 220	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
@@ -321,7 +321,7 @@ public class MessageForPtt
     //   373: aload 7
     //   375: getfield 303	localpb/richMsg/RichMsg$PttRec:busiType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   378: invokevirtual 291	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   381: ifeq +899 -> 1280
+    //   381: ifeq +923 -> 1304
     //   384: aload 7
     //   386: getfield 303	localpb/richMsg/RichMsg$PttRec:busiType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   389: invokevirtual 220	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
@@ -332,7 +332,7 @@ public class MessageForPtt
     //   398: aload 7
     //   400: getfield 307	localpb/richMsg/RichMsg$PttRec:directUrl	Lcom/tencent/mobileqq/pb/PBStringField;
     //   403: invokevirtual 281	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   406: ifeq +879 -> 1285
+    //   406: ifeq +903 -> 1309
     //   409: aload 7
     //   411: getfield 307	localpb/richMsg/RichMsg$PttRec:directUrl	Lcom/tencent/mobileqq/pb/PBStringField;
     //   414: invokevirtual 200	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
@@ -402,7 +402,7 @@ public class MessageForPtt
     //   564: astore 7
     //   566: aload 7
     //   568: invokeinterface 346 1 0
-    //   573: ifeq +127 -> 700
+    //   573: ifeq +151 -> 724
     //   576: aload 7
     //   578: invokeinterface 350 1 0
     //   583: checkcast 352	com/tencent/mobileqq/data/MessageForText$AtTroopMemberInfo
@@ -446,330 +446,340 @@ public class MessageForPtt
     //   664: istore_1
     //   665: goto -141 -> 524
     //   668: aload_0
-    //   669: aload_0
-    //   670: ldc_w 370
-    //   673: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   676: invokestatic 379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   679: putfield 382	com/tencent/mobileqq/data/MessageForPtt:mRobotFlag	I
-    //   682: aload_0
-    //   683: new 334	org/json/JSONArray
-    //   686: dup
-    //   687: aload_0
-    //   688: ldc_w 384
-    //   691: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   694: invokespecial 387	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   697: putfield 337	com/tencent/mobileqq/data/MessageForPtt:atInfo	Lorg/json/JSONArray;
-    //   700: aload_0
-    //   701: ldc_w 389
-    //   704: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   707: astore 7
-    //   709: aload 7
-    //   711: ifnull +95 -> 806
-    //   714: aload 7
-    //   716: invokevirtual 117	java/lang/String:length	()I
-    //   719: istore_1
-    //   720: iload_1
-    //   721: ifle +85 -> 806
-    //   724: new 334	org/json/JSONArray
-    //   727: dup
-    //   728: aload 7
-    //   730: invokespecial 387	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   733: astore 7
-    //   735: aload 7
-    //   737: invokevirtual 390	org/json/JSONArray:length	()I
-    //   740: istore_3
-    //   741: iload_3
-    //   742: newarray int
-    //   744: astore 8
-    //   746: iload_2
-    //   747: istore_1
-    //   748: iload_1
-    //   749: iload_3
-    //   750: if_icmpge +30 -> 780
-    //   753: aload 8
-    //   755: iload_1
-    //   756: aload 7
-    //   758: iload_1
-    //   759: invokevirtual 393	org/json/JSONArray:getInt	(I)I
-    //   762: iastore
-    //   763: iload_1
-    //   764: iconst_1
-    //   765: iadd
-    //   766: istore_1
-    //   767: goto -19 -> 748
-    //   770: astore 7
-    //   772: aload 7
-    //   774: invokevirtual 366	java/lang/Exception:printStackTrace	()V
-    //   777: goto -77 -> 700
-    //   780: aload_0
-    //   781: aload 8
-    //   783: putfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
-    //   786: return
-    //   787: astore 7
-    //   789: aload_0
-    //   790: invokevirtual 399	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   793: invokevirtual 404	java/lang/Class:getName	()Ljava/lang/String;
-    //   796: iconst_2
-    //   797: ldc_w 406
-    //   800: aload 7
-    //   802: invokestatic 410	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   805: return
-    //   806: aload_0
-    //   807: getfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
-    //   810: ifnull +11 -> 821
+    //   669: ldc_w 370
+    //   672: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   675: astore 7
+    //   677: aload 7
+    //   679: invokestatic 378	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   682: ifne +12 -> 694
+    //   685: aload_0
+    //   686: aload 7
+    //   688: invokestatic 384	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   691: putfield 387	com/tencent/mobileqq/data/MessageForPtt:mRobotFlag	I
+    //   694: aload_0
+    //   695: ldc_w 389
+    //   698: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   701: astore 7
+    //   703: aload 7
+    //   705: invokestatic 378	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   708: ifne +16 -> 724
+    //   711: aload_0
+    //   712: new 334	org/json/JSONArray
+    //   715: dup
+    //   716: aload 7
+    //   718: invokespecial 392	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   721: putfield 337	com/tencent/mobileqq/data/MessageForPtt:atInfo	Lorg/json/JSONArray;
+    //   724: aload_0
+    //   725: ldc_w 394
+    //   728: invokevirtual 373	com/tencent/mobileqq/data/MessageForPtt:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   731: astore 7
+    //   733: aload 7
+    //   735: ifnull +95 -> 830
+    //   738: aload 7
+    //   740: invokevirtual 117	java/lang/String:length	()I
+    //   743: istore_1
+    //   744: iload_1
+    //   745: ifle +85 -> 830
+    //   748: new 334	org/json/JSONArray
+    //   751: dup
+    //   752: aload 7
+    //   754: invokespecial 392	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   757: astore 7
+    //   759: aload 7
+    //   761: invokevirtual 395	org/json/JSONArray:length	()I
+    //   764: istore_3
+    //   765: iload_3
+    //   766: newarray int
+    //   768: astore 8
+    //   770: iload_2
+    //   771: istore_1
+    //   772: iload_1
+    //   773: iload_3
+    //   774: if_icmpge +30 -> 804
+    //   777: aload 8
+    //   779: iload_1
+    //   780: aload 7
+    //   782: iload_1
+    //   783: invokevirtual 398	org/json/JSONArray:getInt	(I)I
+    //   786: iastore
+    //   787: iload_1
+    //   788: iconst_1
+    //   789: iadd
+    //   790: istore_1
+    //   791: goto -19 -> 772
+    //   794: astore 7
+    //   796: aload 7
+    //   798: invokevirtual 366	java/lang/Exception:printStackTrace	()V
+    //   801: goto -77 -> 724
+    //   804: aload_0
+    //   805: aload 8
+    //   807: putfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
+    //   810: return
+    //   811: astore 7
     //   813: aload_0
-    //   814: getfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
-    //   817: arraylength
-    //   818: ifne -188 -> 630
-    //   821: aload_0
-    //   822: invokevirtual 412	com/tencent/mobileqq/data/MessageForPtt:buileDefaultWaveform	()V
-    //   825: return
-    //   826: aload_0
-    //   827: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   830: astore 7
-    //   832: aload 7
-    //   834: ifnonnull +28 -> 862
+    //   814: invokevirtual 404	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   817: invokevirtual 409	java/lang/Class:getName	()Ljava/lang/String;
+    //   820: iconst_2
+    //   821: ldc_w 411
+    //   824: aload 7
+    //   826: invokestatic 415	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   829: return
+    //   830: aload_0
+    //   831: getfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
+    //   834: ifnull +11 -> 845
     //   837: aload_0
-    //   838: getfield 415	com/tencent/mobileqq/data/MessageForPtt:versionCode	I
-    //   841: ifle +21 -> 862
-    //   844: aload_0
-    //   845: new 109	java/lang/String
-    //   848: dup
-    //   849: aload_0
-    //   850: getfield 187	com/tencent/mobileqq/data/MessageForPtt:msgData	[B
-    //   853: ldc_w 417
-    //   856: invokespecial 420	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   859: putfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   862: aload_0
-    //   863: iconst_0
-    //   864: putfield 85	com/tencent/mobileqq/data/MessageForPtt:subVersion	I
-    //   867: aload_0
-    //   868: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   871: ifnull +377 -> 1248
-    //   874: aload_0
-    //   875: getfield 423	com/tencent/mobileqq/data/MessageForPtt:msgtype	I
-    //   878: sipush -1031
-    //   881: if_icmpne +367 -> 1248
-    //   884: aload_0
-    //   885: aload_0
-    //   886: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   889: invokestatic 428	bdex:a	(Ljava/lang/String;)LActionMsg/MsgBody;
-    //   892: getfield 431	ActionMsg/MsgBody:msg	Ljava/lang/String;
-    //   895: putfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   898: iconst_1
-    //   899: istore_1
-    //   900: aload_0
-    //   901: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   904: ifnull +324 -> 1228
-    //   907: aload_0
-    //   908: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   911: invokevirtual 117	java/lang/String:length	()I
-    //   914: ifle +314 -> 1228
-    //   917: aload_0
-    //   918: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   921: iconst_0
-    //   922: invokevirtual 435	java/lang/String:charAt	(I)C
-    //   925: bipush 22
-    //   927: if_icmpne +301 -> 1228
-    //   930: aload_0
-    //   931: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   934: ldc_w 437
-    //   937: invokevirtual 441	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   940: astore 7
-    //   942: aload 7
-    //   944: ifnull +284 -> 1228
-    //   947: aload 7
-    //   949: arraylength
-    //   950: ifle +127 -> 1077
-    //   953: aload_0
-    //   954: aload 7
-    //   956: iconst_0
-    //   957: aaload
-    //   958: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   961: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
-    //   964: iload_1
-    //   965: ifeq +11 -> 976
-    //   968: aload_0
-    //   969: aload_0
-    //   970: getfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
-    //   973: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
-    //   976: aload 7
-    //   978: arraylength
-    //   979: istore_1
-    //   980: iload_1
-    //   981: iconst_1
-    //   982: if_icmple +17 -> 999
-    //   985: aload_0
-    //   986: aload 7
-    //   988: iconst_1
-    //   989: aaload
-    //   990: invokestatic 450	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   993: invokevirtual 453	java/lang/Long:longValue	()J
-    //   996: putfield 212	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
-    //   999: aload 7
-    //   1001: arraylength
-    //   1002: istore_1
-    //   1003: iload_1
-    //   1004: iconst_2
-    //   1005: if_icmple +14 -> 1019
-    //   1008: aload_0
-    //   1009: aload 7
-    //   1011: iconst_2
-    //   1012: aaload
-    //   1013: invokestatic 379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   1016: putfield 222	com/tencent/mobileqq/data/MessageForPtt:itemType	I
-    //   1019: aload 7
-    //   1021: arraylength
-    //   1022: iconst_3
-    //   1023: if_icmple +197 -> 1220
-    //   1026: aload 7
-    //   1028: iconst_3
-    //   1029: aaload
-    //   1030: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   1033: invokestatic 456	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   1036: invokevirtual 459	java/lang/Integer:intValue	()I
-    //   1039: ifeq +253 -> 1292
-    //   1042: iconst_1
-    //   1043: istore 4
-    //   1045: aload_0
-    //   1046: iload 4
-    //   1048: putfield 232	com/tencent/mobileqq/data/MessageForPtt:isReadPtt	Z
-    //   1051: aload 7
-    //   1053: arraylength
-    //   1054: iconst_4
-    //   1055: if_icmple -425 -> 630
-    //   1058: aload_0
-    //   1059: aload 7
-    //   1061: iconst_4
-    //   1062: aaload
-    //   1063: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
-    //   1066: return
-    //   1067: astore 7
-    //   1069: aload 7
-    //   1071: invokevirtual 366	java/lang/Exception:printStackTrace	()V
-    //   1074: goto -212 -> 862
-    //   1077: aload_0
-    //   1078: ldc 87
-    //   1080: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
-    //   1083: iload_1
-    //   1084: ifeq -108 -> 976
-    //   1087: aload_0
-    //   1088: aload_0
-    //   1089: getfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
-    //   1092: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
-    //   1095: goto -119 -> 976
-    //   1098: astore 8
-    //   1100: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1103: ifeq -104 -> 999
-    //   1106: aload_0
-    //   1107: invokevirtual 399	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   1110: invokevirtual 404	java/lang/Class:getName	()Ljava/lang/String;
-    //   1113: iconst_2
-    //   1114: new 123	java/lang/StringBuilder
-    //   1117: dup
-    //   1118: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   1121: ldc_w 461
-    //   1124: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1127: aload 7
-    //   1129: iconst_1
-    //   1130: aaload
-    //   1131: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1134: ldc_w 463
-    //   1137: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1140: aload_0
-    //   1141: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1144: invokestatic 467	bdeu:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1147: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1150: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1153: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1156: goto -157 -> 999
-    //   1159: astore 8
-    //   1161: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1164: ifeq -145 -> 1019
-    //   1167: aload_0
-    //   1168: invokevirtual 399	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   1171: invokevirtual 404	java/lang/Class:getName	()Ljava/lang/String;
-    //   1174: iconst_2
-    //   1175: new 123	java/lang/StringBuilder
-    //   1178: dup
-    //   1179: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   1182: ldc_w 469
-    //   1185: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1188: aload 7
-    //   1190: iconst_2
-    //   1191: aaload
-    //   1192: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1195: ldc_w 463
-    //   1198: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1201: aload_0
-    //   1202: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1205: invokestatic 467	bdeu:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1208: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1211: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1214: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1217: goto -198 -> 1019
-    //   1220: aload_0
-    //   1221: iconst_1
-    //   1222: putfield 232	com/tencent/mobileqq/data/MessageForPtt:isReadPtt	Z
-    //   1225: goto -174 -> 1051
-    //   1228: aload_0
-    //   1229: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1232: ifnonnull -602 -> 630
-    //   1235: aload_0
-    //   1236: ldc 87
-    //   1238: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
-    //   1241: aload_0
-    //   1242: ldc 87
-    //   1244: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
-    //   1247: return
-    //   1248: iconst_0
-    //   1249: istore_1
-    //   1250: goto -350 -> 900
-    //   1253: lconst_0
-    //   1254: lstore 5
-    //   1256: goto -991 -> 265
-    //   1259: lconst_0
-    //   1260: lstore 5
-    //   1262: goto -970 -> 292
-    //   1265: iconst_0
-    //   1266: istore_1
-    //   1267: goto -949 -> 318
-    //   1270: iconst_0
-    //   1271: istore_1
-    //   1272: goto -929 -> 343
-    //   1275: iconst_0
-    //   1276: istore_1
-    //   1277: goto -909 -> 368
-    //   1280: iconst_0
-    //   1281: istore_1
-    //   1282: goto -889 -> 393
-    //   1285: ldc 87
-    //   1287: astore 8
-    //   1289: goto -870 -> 419
-    //   1292: iconst_0
-    //   1293: istore 4
-    //   1295: goto -250 -> 1045
+    //   838: getfield 175	com/tencent/mobileqq/data/MessageForPtt:waveformArray	[I
+    //   841: arraylength
+    //   842: ifne -212 -> 630
+    //   845: aload_0
+    //   846: invokevirtual 417	com/tencent/mobileqq/data/MessageForPtt:buileDefaultWaveform	()V
+    //   849: return
+    //   850: aload_0
+    //   851: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   854: astore 7
+    //   856: aload 7
+    //   858: ifnonnull +28 -> 886
+    //   861: aload_0
+    //   862: getfield 420	com/tencent/mobileqq/data/MessageForPtt:versionCode	I
+    //   865: ifle +21 -> 886
+    //   868: aload_0
+    //   869: new 109	java/lang/String
+    //   872: dup
+    //   873: aload_0
+    //   874: getfield 187	com/tencent/mobileqq/data/MessageForPtt:msgData	[B
+    //   877: ldc_w 422
+    //   880: invokespecial 425	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   883: putfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   886: aload_0
+    //   887: iconst_0
+    //   888: putfield 85	com/tencent/mobileqq/data/MessageForPtt:subVersion	I
+    //   891: aload_0
+    //   892: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   895: ifnull +377 -> 1272
+    //   898: aload_0
+    //   899: getfield 428	com/tencent/mobileqq/data/MessageForPtt:msgtype	I
+    //   902: sipush -1031
+    //   905: if_icmpne +367 -> 1272
+    //   908: aload_0
+    //   909: aload_0
+    //   910: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   913: invokestatic 433	bgjz:a	(Ljava/lang/String;)LActionMsg/MsgBody;
+    //   916: getfield 436	ActionMsg/MsgBody:msg	Ljava/lang/String;
+    //   919: putfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   922: iconst_1
+    //   923: istore_1
+    //   924: aload_0
+    //   925: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   928: ifnull +324 -> 1252
+    //   931: aload_0
+    //   932: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   935: invokevirtual 117	java/lang/String:length	()I
+    //   938: ifle +314 -> 1252
+    //   941: aload_0
+    //   942: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   945: iconst_0
+    //   946: invokevirtual 440	java/lang/String:charAt	(I)C
+    //   949: bipush 22
+    //   951: if_icmpne +301 -> 1252
+    //   954: aload_0
+    //   955: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   958: ldc_w 442
+    //   961: invokevirtual 446	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   964: astore 7
+    //   966: aload 7
+    //   968: ifnull +284 -> 1252
+    //   971: aload 7
+    //   973: arraylength
+    //   974: ifle +127 -> 1101
+    //   977: aload_0
+    //   978: aload 7
+    //   980: iconst_0
+    //   981: aaload
+    //   982: invokevirtual 449	java/lang/String:trim	()Ljava/lang/String;
+    //   985: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   988: iload_1
+    //   989: ifeq +11 -> 1000
+    //   992: aload_0
+    //   993: aload_0
+    //   994: getfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   997: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
+    //   1000: aload 7
+    //   1002: arraylength
+    //   1003: istore_1
+    //   1004: iload_1
+    //   1005: iconst_1
+    //   1006: if_icmple +17 -> 1023
+    //   1009: aload_0
+    //   1010: aload 7
+    //   1012: iconst_1
+    //   1013: aaload
+    //   1014: invokestatic 455	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   1017: invokevirtual 458	java/lang/Long:longValue	()J
+    //   1020: putfield 212	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
+    //   1023: aload 7
+    //   1025: arraylength
+    //   1026: istore_1
+    //   1027: iload_1
+    //   1028: iconst_2
+    //   1029: if_icmple +14 -> 1043
+    //   1032: aload_0
+    //   1033: aload 7
+    //   1035: iconst_2
+    //   1036: aaload
+    //   1037: invokestatic 384	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1040: putfield 222	com/tencent/mobileqq/data/MessageForPtt:itemType	I
+    //   1043: aload 7
+    //   1045: arraylength
+    //   1046: iconst_3
+    //   1047: if_icmple +197 -> 1244
+    //   1050: aload 7
+    //   1052: iconst_3
+    //   1053: aaload
+    //   1054: invokevirtual 449	java/lang/String:trim	()Ljava/lang/String;
+    //   1057: invokestatic 461	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1060: invokevirtual 464	java/lang/Integer:intValue	()I
+    //   1063: ifeq +253 -> 1316
+    //   1066: iconst_1
+    //   1067: istore 4
+    //   1069: aload_0
+    //   1070: iload 4
+    //   1072: putfield 232	com/tencent/mobileqq/data/MessageForPtt:isReadPtt	Z
+    //   1075: aload 7
+    //   1077: arraylength
+    //   1078: iconst_4
+    //   1079: if_icmple -449 -> 630
+    //   1082: aload_0
+    //   1083: aload 7
+    //   1085: iconst_4
+    //   1086: aaload
+    //   1087: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
+    //   1090: return
+    //   1091: astore 7
+    //   1093: aload 7
+    //   1095: invokevirtual 366	java/lang/Exception:printStackTrace	()V
+    //   1098: goto -212 -> 886
+    //   1101: aload_0
+    //   1102: ldc 87
+    //   1104: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   1107: iload_1
+    //   1108: ifeq -108 -> 1000
+    //   1111: aload_0
+    //   1112: aload_0
+    //   1113: getfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   1116: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
+    //   1119: goto -119 -> 1000
+    //   1122: astore 8
+    //   1124: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1127: ifeq -104 -> 1023
+    //   1130: aload_0
+    //   1131: invokevirtual 404	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   1134: invokevirtual 409	java/lang/Class:getName	()Ljava/lang/String;
+    //   1137: iconst_2
+    //   1138: new 123	java/lang/StringBuilder
+    //   1141: dup
+    //   1142: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1145: ldc_w 466
+    //   1148: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1151: aload 7
+    //   1153: iconst_1
+    //   1154: aaload
+    //   1155: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1158: ldc_w 468
+    //   1161: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1164: aload_0
+    //   1165: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   1168: invokestatic 472	bgjw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1171: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1174: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1177: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1180: goto -157 -> 1023
+    //   1183: astore 8
+    //   1185: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1188: ifeq -145 -> 1043
+    //   1191: aload_0
+    //   1192: invokevirtual 404	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   1195: invokevirtual 409	java/lang/Class:getName	()Ljava/lang/String;
+    //   1198: iconst_2
+    //   1199: new 123	java/lang/StringBuilder
+    //   1202: dup
+    //   1203: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1206: ldc_w 474
+    //   1209: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1212: aload 7
+    //   1214: iconst_2
+    //   1215: aaload
+    //   1216: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1219: ldc_w 468
+    //   1222: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1225: aload_0
+    //   1226: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   1229: invokestatic 472	bgjw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1232: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1235: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1238: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1241: goto -198 -> 1043
+    //   1244: aload_0
+    //   1245: iconst_1
+    //   1246: putfield 232	com/tencent/mobileqq/data/MessageForPtt:isReadPtt	Z
+    //   1249: goto -174 -> 1075
+    //   1252: aload_0
+    //   1253: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
+    //   1256: ifnonnull -626 -> 630
+    //   1259: aload_0
+    //   1260: ldc 87
+    //   1262: putfield 202	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   1265: aload_0
+    //   1266: ldc 87
+    //   1268: putfield 237	com/tencent/mobileqq/data/MessageForPtt:urlAtServer	Ljava/lang/String;
+    //   1271: return
+    //   1272: iconst_0
+    //   1273: istore_1
+    //   1274: goto -350 -> 924
+    //   1277: lconst_0
+    //   1278: lstore 5
+    //   1280: goto -1015 -> 265
+    //   1283: lconst_0
+    //   1284: lstore 5
+    //   1286: goto -994 -> 292
+    //   1289: iconst_0
+    //   1290: istore_1
+    //   1291: goto -973 -> 318
+    //   1294: iconst_0
+    //   1295: istore_1
+    //   1296: goto -953 -> 343
+    //   1299: iconst_0
+    //   1300: istore_1
+    //   1301: goto -933 -> 368
+    //   1304: iconst_0
+    //   1305: istore_1
+    //   1306: goto -913 -> 393
+    //   1309: ldc 87
+    //   1311: astore 8
+    //   1313: goto -894 -> 419
+    //   1316: iconst_0
+    //   1317: istore 4
+    //   1319: goto -250 -> 1069
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1298	0	this	MessageForPtt
-    //   33	1249	1	i	int
-    //   4	743	2	j	int
-    //   740	11	3	k	int
-    //   1	1293	4	bool	boolean
-    //   263	998	5	l	long
+    //   0	1322	0	this	MessageForPtt
+    //   33	1273	1	i	int
+    //   4	767	2	j	int
+    //   764	11	3	k	int
+    //   1	1317	4	bool	boolean
+    //   263	1022	5	l	long
     //   12	565	7	localObject1	Object
     //   604	22	7	localThrowable1	java.lang.Throwable
-    //   707	50	7	localObject2	Object
-    //   770	3	7	localException1	Exception
-    //   787	14	7	localThrowable2	java.lang.Throwable
-    //   830	230	7	localObject3	Object
-    //   1067	122	7	localException2	Exception
+    //   675	106	7	localObject2	Object
+    //   794	3	7	localException1	Exception
+    //   811	14	7	localThrowable2	java.lang.Throwable
+    //   854	230	7	localObject3	Object
+    //   1091	122	7	localException2	Exception
     //   26	567	8	localObject4	Object
     //   631	3	8	localException3	Exception
-    //   645	137	8	localObject5	Object
-    //   1098	1	8	localException4	Exception
-    //   1159	1	8	localException5	Exception
-    //   1287	1	8	str	String
+    //   645	161	8	localObject5	Object
+    //   1122	1	8	localException4	Exception
+    //   1183	1	8	localException5	Exception
+    //   1311	1	8	str	String
     // Exception table:
     //   from	to	target	type
     //   5	14	604	java/lang/Throwable
@@ -791,41 +801,43 @@ public class MessageForPtt
     //   524	566	604	java/lang/Throwable
     //   566	601	604	java/lang/Throwable
     //   633	638	604	java/lang/Throwable
-    //   668	700	604	java/lang/Throwable
-    //   700	709	604	java/lang/Throwable
-    //   714	720	604	java/lang/Throwable
-    //   772	777	604	java/lang/Throwable
-    //   789	805	604	java/lang/Throwable
-    //   806	821	604	java/lang/Throwable
-    //   821	825	604	java/lang/Throwable
-    //   826	832	604	java/lang/Throwable
-    //   837	862	604	java/lang/Throwable
-    //   862	898	604	java/lang/Throwable
-    //   900	942	604	java/lang/Throwable
-    //   947	964	604	java/lang/Throwable
-    //   968	976	604	java/lang/Throwable
-    //   976	980	604	java/lang/Throwable
-    //   985	999	604	java/lang/Throwable
-    //   999	1003	604	java/lang/Throwable
-    //   1008	1019	604	java/lang/Throwable
-    //   1019	1042	604	java/lang/Throwable
-    //   1045	1051	604	java/lang/Throwable
-    //   1051	1066	604	java/lang/Throwable
-    //   1069	1074	604	java/lang/Throwable
-    //   1077	1083	604	java/lang/Throwable
-    //   1087	1095	604	java/lang/Throwable
-    //   1100	1156	604	java/lang/Throwable
-    //   1161	1217	604	java/lang/Throwable
-    //   1220	1225	604	java/lang/Throwable
-    //   1228	1247	604	java/lang/Throwable
+    //   668	694	604	java/lang/Throwable
+    //   694	724	604	java/lang/Throwable
+    //   724	733	604	java/lang/Throwable
+    //   738	744	604	java/lang/Throwable
+    //   796	801	604	java/lang/Throwable
+    //   813	829	604	java/lang/Throwable
+    //   830	845	604	java/lang/Throwable
+    //   845	849	604	java/lang/Throwable
+    //   850	856	604	java/lang/Throwable
+    //   861	886	604	java/lang/Throwable
+    //   886	922	604	java/lang/Throwable
+    //   924	966	604	java/lang/Throwable
+    //   971	988	604	java/lang/Throwable
+    //   992	1000	604	java/lang/Throwable
+    //   1000	1004	604	java/lang/Throwable
+    //   1009	1023	604	java/lang/Throwable
+    //   1023	1027	604	java/lang/Throwable
+    //   1032	1043	604	java/lang/Throwable
+    //   1043	1066	604	java/lang/Throwable
+    //   1069	1075	604	java/lang/Throwable
+    //   1075	1090	604	java/lang/Throwable
+    //   1093	1098	604	java/lang/Throwable
+    //   1101	1107	604	java/lang/Throwable
+    //   1111	1119	604	java/lang/Throwable
+    //   1124	1180	604	java/lang/Throwable
+    //   1185	1241	604	java/lang/Throwable
+    //   1244	1249	604	java/lang/Throwable
+    //   1252	1271	604	java/lang/Throwable
     //   14	28	631	java/lang/Exception
-    //   668	700	770	java/lang/Exception
-    //   724	746	787	java/lang/Throwable
-    //   753	763	787	java/lang/Throwable
-    //   780	786	787	java/lang/Throwable
-    //   837	862	1067	java/lang/Exception
-    //   985	999	1098	java/lang/Exception
-    //   1008	1019	1159	java/lang/Exception
+    //   668	694	794	java/lang/Exception
+    //   694	724	794	java/lang/Exception
+    //   748	770	811	java/lang/Throwable
+    //   777	787	811	java/lang/Throwable
+    //   804	810	811	java/lang/Throwable
+    //   861	886	1091	java/lang/Exception
+    //   1009	1023	1122	java/lang/Exception
+    //   1032	1043	1183	java/lang/Exception
   }
   
   public String getLocalFilePath()
@@ -841,14 +853,14 @@ public class MessageForPtt
     if (TextUtils.isEmpty(this.md5)) {}
     try
     {
-      this.md5 = bhpp.a(new File(getLocalFilePath()));
+      this.md5 = bkcx.a(new File(getLocalFilePath()));
       serial();
       if ((this.istroop == 1) || (this.istroop == 3000))
       {
         localPtt.uint32_file_type.set(4);
         localPtt.uint32_file_id.set((int)this.groupFileID);
         localPtt.uint32_file_size.set((int)this.fileSize);
-        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bdhe.a(this.md5)));
+        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bgmj.a(this.md5)));
         localPtt.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.urlAtServer));
         if (this.urlAtServer != null)
         {
@@ -859,13 +871,13 @@ public class MessageForPtt
           if (this.groupFileKeyStr != null) {
             localPtt.bytes_group_file_key.set(ByteStringMicro.copyFromUtf8(this.groupFileKeyStr));
           }
-          Object localObject1 = batj.a(this);
+          Object localObject1 = bdvf.a(this);
           localPtt.bytes_pb_reserve.set(ByteStringMicro.copyFrom((byte[])localObject1));
           localObject1 = new im_msg_body.GeneralFlags();
           localResvAttr = new generalflags.ResvAttr();
           if (this.waveformArray != null)
           {
-            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bdjf.a(this.waveformArray).toByteArray()));
+            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bgog.a(this.waveformArray).toByteArray()));
             ((im_msg_body.GeneralFlags)localObject1).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
           }
           localElem.general_flags.set((MessageMicro)localObject1);
@@ -889,15 +901,15 @@ public class MessageForPtt
         localPtt.uint32_file_type.set(4);
         localPtt.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.urlAtServer));
         localPtt.uint32_file_size.set((int)this.fileSize);
-        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bdhe.a(this.md5)));
-        localObject2 = bart.b(this);
+        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bgmj.a(this.md5)));
+        localObject2 = bdtl.b(this);
         localPtt.bytes_reserve.set(ByteStringMicro.copyFrom((byte[])localObject2));
         localPtt.bytes_down_para.set(ByteStringMicro.copyFromUtf8(this.directUrl));
         localObject2 = new im_msg_body.GeneralFlags();
         generalflags.ResvAttr localResvAttr = new generalflags.ResvAttr();
         if (this.waveformArray != null)
         {
-          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bdjf.a(this.waveformArray).toByteArray()));
+          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bgog.a(this.waveformArray).toByteArray()));
           ((im_msg_body.GeneralFlags)localObject2).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
         }
         localElem.general_flags.set((MessageMicro)localObject2);
@@ -908,14 +920,14 @@ public class MessageForPtt
   public String getSummaryMsg()
   {
     if (hasSttTxt()) {
-      return BaseApplicationImpl.sApplication.getResources().getString(2131691352) + this.sttText;
+      return BaseApplicationImpl.sApplication.getResources().getString(2131691134) + this.sttText;
     }
-    return alud.a(2131706997);
+    return anni.a(2131705388);
   }
   
   public boolean hasSttTxt()
   {
-    return (!bdnn.a(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131720353).equals(this.sttText)) && (this.sttAbility != 3);
+    return (!bgsp.a(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131718241).equals(this.sttText)) && (this.sttAbility != 3);
   }
   
   public boolean isReady()
@@ -993,7 +1005,7 @@ public class MessageForPtt
         ((RichMsg.PttRec)localObject2).msgTime.set(this.msgTime);
         ((RichMsg.PttRec)localObject2).msgRecTime.set(this.msgRecTime);
         ((RichMsg.PttRec)localObject2).voiceType.set(this.voiceType);
-        ((RichMsg.PttRec)localObject2).voiceLength.set(bdeu.a(this.voiceLength));
+        ((RichMsg.PttRec)localObject2).voiceLength.set(bgjw.a(this.voiceLength));
         ((RichMsg.PttRec)localObject2).voiceChangeFlag.set(this.voiceChangeFlag);
         ((RichMsg.PttRec)localObject2).busiType.set(this.busiType);
         ((RichMsg.PttRec)localObject2).directUrl.set(this.directUrl);
@@ -1051,7 +1063,7 @@ public class MessageForPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPtt
  * JD-Core Version:    0.7.0.1
  */

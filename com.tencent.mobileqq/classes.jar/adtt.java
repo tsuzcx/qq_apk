@@ -1,19 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.widget.AbsListView;
 
 public class adtt
-  implements bibb
+  implements bkhe
 {
-  public adtt(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public adtt(ChatHistory paramChatHistory) {}
   
-  public void a(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, false);
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void b(View paramView)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    RecommendFriendActivity.a(this.a, true);
+    this.a.m = paramInt;
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      return;
+    }
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
+    }
+    AbstractGifImage.pauseAll();
   }
 }
 

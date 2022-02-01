@@ -1,11 +1,20 @@
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class anvt
+class anvt
+  extends bdpx
 {
-  public abstract void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt);
+  anvt(anvs paramanvs) {}
   
-  public abstract void a(ArrayList<RockDownloadInfo> paramArrayList);
+  public boolean a(bdps parambdps)
+  {
+    String str = ThemeUtil.getCurrentThemeId();
+    if (!parambdps.a().equals(str)) {
+      QQToast.a(this.a.app.getApplication(), anni.a(2131713606), 4000).a();
+    }
+    return false;
+  }
 }
 
 

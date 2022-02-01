@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordConfig;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class azot
-  implements IRecordConfig
+class azot
+  extends aniz
 {
-  public azot(RecordTracer paramRecordTracer) {}
+  azot(azos paramazos) {}
   
-  public int getCachedEventSize()
+  protected void onDelQZonePhotoWall(boolean paramBoolean, String paramString)
   {
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfilePhotoWallComponent", 2, String.format("onDelQZonePhotoWall isSuc=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    azos.a(this.a, paramBoolean);
   }
   
-  public String getTitleBarId()
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
   {
-    return "com.tencent.mobileqq:id/ivTitleName";
-  }
-  
-  public boolean isEnableRelease()
-  {
-    return true;
-  }
-  
-  public boolean isFilterUGC()
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfilePhotoWallComponent", 2, String.format("onGetQZonePhotoWall isSuc=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString2 }));
+    }
+    azos.a(this.a, paramBoolean, paramString1, parammobile_sub_get_photo_wall_rsp, paramString2);
   }
 }
 

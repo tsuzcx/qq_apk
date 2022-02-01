@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import attk;
+import awao;
 
 class LocationShareFragment$3
   implements Runnable
@@ -9,12 +9,12 @@ class LocationShareFragment$3
   
   public void run()
   {
-    attk.a(this.this$0.getActivity());
+    awao.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,31 @@
-import java.net.URL;
-
 public class pai
 {
-  int jdField_a_of_type_Int;
-  URL jdField_a_of_type_JavaNetURL;
-  int b;
-  int c;
-  int d;
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public String toString()
+  public pai(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[WaterFallPic]--> url=");
-    if (this.jdField_a_of_type_JavaNetURL != null) {}
-    for (String str = this.jdField_a_of_type_JavaNetURL.toString();; str = "") {
-      return str + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
+    this(paramString, paramLong, paramCharSequence, 0);
+  }
+  
+  public pai(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
     }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pai
  * JD-Core Version:    0.7.0.1
  */

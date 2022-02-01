@@ -1,10 +1,17 @@
-import android.net.Uri;
-
-public abstract interface asqy
+public class asqy
+  extends asqw
 {
-  public abstract void a(Uri paramUri);
+  public String a;
+  public boolean a;
+  public String b;
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public asqy(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  {
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+  }
 }
 
 

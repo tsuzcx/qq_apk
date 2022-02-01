@@ -1,78 +1,136 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-public class tjf
-  extends tjd<WSRedDotPushMsg, WSPushStrategyInfo>
+public final class tjf
 {
-  private int a;
+  private int jdField_a_of_type_Int = -1;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  public TabLayoutCompat a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private Object jdField_a_of_type_JavaLangObject;
+  public tjg a;
+  private CharSequence b;
   
-  public tjf(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  public int a()
   {
-    super(paramWSRedDotPushMsg);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  @Nullable
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  @Nullable
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  @Nullable
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NonNull
+  public tjf a(int paramInt)
+  {
+    return a(LayoutInflater.from(this.jdField_a_of_type_Tjg.getContext()).inflate(paramInt, this.jdField_a_of_type_Tjg, false));
+  }
+  
+  @NonNull
+  public tjf a(@Nullable View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public tjf a(@Nullable CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public tjf a(@Nullable Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
+  }
+  
+  public void a(int paramInt)
+  {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public boolean a()
   {
-    int i = 2;
-    boolean bool1 = true;
-    if (paramWSPushStrategyInfo == null) {
-      return false;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
     }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
-    {
-      tch.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = tlv.a();
-      if (paramContext != null) {
-        paramContext.a(null);
-      }
-      tlv.a();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public CharSequence b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
-      {
-        i = 2;
-        if (this.jdField_a_of_type_Tiw != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        tju.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Tjg != null) {
+      this.jdField_a_of_type_Tjg.b();
     }
-    for (;;)
-    {
-      return bool1;
-      i = 1;
-      break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Tiw).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
-      }
-      if (bool2) {}
-      for (;;)
-      {
-        tju.d(i);
-        break;
-        i = 1;
-      }
-      label133:
-      bool1 = false;
-    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
+    this.jdField_a_of_type_Tjg = null;
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_JavaLangCharSequence = null;
+    this.b = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tjf
  * JD-Core Version:    0.7.0.1
  */

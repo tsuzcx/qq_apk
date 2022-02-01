@@ -1,30 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.List;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import java.util.Comparator;
 
-class bbex
-  implements View.OnClickListener
+public class bbex
+  implements Comparator<ScribbleResMgr.ResInfo>
 {
-  private bbey jdField_a_of_type_Bbey;
-  private bbez jdField_a_of_type_Bbez;
+  public bbex(ScribbleResMgr paramScribbleResMgr) {}
   
-  public bbex(bbez parambbez)
+  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
   {
-    this.jdField_a_of_type_Bbez = parambbez;
-  }
-  
-  public void a(bbey parambbey)
-  {
-    this.jdField_a_of_type_Bbey = parambbey;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    bbez.a(this.jdField_a_of_type_Bbez, i);
-    if (this.jdField_a_of_type_Bbey != null) {
-      this.jdField_a_of_type_Bbey.a((bbfa)bbez.a(this.jdField_a_of_type_Bbez).get(i));
+    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
+      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
     }
+    return -1;
   }
 }
 

@@ -1,35 +1,95 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
-import com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.UiThread;
+import android.view.View;
 
-public class ueg
-  implements RadioGroup.OnCheckedChangeListener
+public abstract class ueg<T>
+  implements Handler.Callback
 {
-  public ueg(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
+  protected int a;
+  protected Context a;
+  protected Handler a;
+  protected View a;
+  protected T a;
+  protected int b = -1;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public ueg(Context paramContext)
   {
-    if (QCirclePersonalBottomView.a(this.a).getId() == paramInt)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  protected Resources a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    }
+    return null;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+    e();
+  }
+  
+  @UiThread
+  protected abstract void b();
+  
+  protected abstract void c();
+  
+  public void d()
+  {
+    c();
+    a(-1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
     {
-      QCirclePersonalBottomView.a(this.a).setCurrentItem(0);
-      ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(0)).a(0);
-      ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(1)).e();
+      b();
+      return true;
     }
-    while (QCirclePersonalBottomView.b(this.a).getId() != paramInt) {
-      return;
-    }
-    QCirclePersonalBottomView.a(this.a).setCurrentItem(1);
-    ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(1)).a(1);
-    ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(0)).e();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ueg
  * JD-Core Version:    0.7.0.1
  */

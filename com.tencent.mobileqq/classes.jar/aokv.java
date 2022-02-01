@@ -1,85 +1,118 @@
-import com.tencent.mobileqq.config.QConfigureException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
-import java.util.List;
 
 public class aokv
+  extends aojs
 {
-  private aoky jdField_a_of_type_Aoky = new aoky(null);
-  private aokz jdField_a_of_type_Aokz = new aokz(null);
-  private aola jdField_a_of_type_Aola = new aola(null);
-  private List<Member> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static aokv a()
+  public aokv(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return aokx.a;
+    super(paramQQAppInterface, paramContext);
   }
   
-  private static String b()
+  private boolean C()
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("-----------------------------------------------\n");
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    if (arrayOfStackTraceElement != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("Jumpaction", 2, " source:" + this.jdField_a_of_type_JavaLangString + "  serverName:" + this.b + "  hostName:" + this.c);
+    }
+    Object localObject1;
+    if (this.c.equals("index"))
     {
-      int j = arrayOfStackTraceElement.length;
-      int i = 0;
-      while (i < j)
+      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+      ((Intent)localObject1).putExtra("goto_type", 1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+    }
+    do
+    {
+      do
       {
-        String str = arrayOfStackTraceElement[i].toString();
-        if ((!str.contains("com.tencent.mobileqq.config.QConfigWatchDog")) && (!str.contains("com.qq.android.dexposed.DexposedBridge")) && (!str.contains("me.weishu.epic.art")) && (!str.contains("java.lang.reflect.Method.invoke")) && (!str.contains("dalvik.system.VMStack.getThreadStackTrace")) && (!str.contains("java.lang.Thread.getStackTrace")) && (!str.contains("org.json.JSONTokener")) && (!str.contains("org.json.JSONObject.<init>"))) {
-          localStringBuilder.append(str).append("\n");
-        }
-        i += 1;
-      }
+        do
+        {
+          do
+          {
+            do
+            {
+              return true;
+              if (!this.c.equals("detail")) {
+                break;
+              }
+            } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+            localObject1 = biqd.g() + File.separator + "qapp_center_detail.htm";
+            if (new File((String)localObject1).exists()) {}
+            for (localObject1 = "file:///" + (String)localObject1;; localObject1 = biqd.m() + File.separator + "qapp_center_detail.htm")
+            {
+              localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+              localObject3 = new Bundle();
+              localObject4 = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("param");
+              ((Bundle)localObject3).putString("APP_URL", (String)localObject1);
+              ((Bundle)localObject3).putString("APP_PARAMS", "&" + (String)localObject4);
+              ((Bundle)localObject3).putInt("goto_type", 2);
+              ((Intent)localObject2).putExtras((Bundle)localObject3);
+              ((Intent)localObject2).putExtra("adapter_action", "action_app_detail");
+              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+              return true;
+            }
+            if (!this.c.equals("webview")) {
+              break;
+            }
+          } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+          localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("APP_URL", Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("url"));
+          ((Bundle)localObject2).putInt("goto_type", 3);
+          ((Intent)localObject1).putExtras((Bundle)localObject2);
+          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+          return true;
+        } while ((!this.c.equals("local")) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
+        localObject2 = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        localObject1 = ((Uri)localObject2).getQueryParameter("title");
+        localObject3 = biqd.a(((Uri)localObject2).getQueryParameter("url"));
+      } while (localObject3.length <= 1);
+      localObject2 = localObject3[0];
+    } while ((!((String)localObject2).startsWith("file://")) || ((!((String)localObject2).contains(biqd.g())) && (!((String)localObject2).contains("android_asset/Page/system/"))));
+    Object localObject3 = localObject3[1];
+    Object localObject4 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("APP_URL", (String)localObject2);
+    Object localObject2 = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      ((ArrayList)localObject2).add(localObject1);
     }
-    return localStringBuilder.toString();
+    localBundle.putStringArrayList("titleName", (ArrayList)localObject2);
+    if ((localObject3 != null) && (((String)localObject3).length() > 0)) {
+      localBundle.putString("APP_PARAMS", (String)localObject3);
+    }
+    localBundle.putInt("goto_type", 4);
+    ((Intent)localObject4).putExtras(localBundle);
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject4);
+    return true;
   }
   
-  private void b(aokh paramaokh, aoko[] paramArrayOfaoko, int paramInt, Exception paramException) {}
-  
-  private void b(aoki paramaoki, File paramFile, Exception paramException) {}
-  
-  private void b(Class paramClass, Exception paramException) {}
-  
-  private static void b(Exception paramException, String paramString1, String paramString2)
+  public boolean a()
   {
-    azpo.a(new QConfigureException(paramException, "TAG: " + paramString2 + " Message: " + paramException.getMessage()), paramString1);
-  }
-  
-  public void a(aokh paramaokh, aoko[] paramArrayOfaoko, int paramInt, Exception paramException)
-  {
-    int i = paramaokh.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigWatchDog", 2, "handleParsedJsonOrXmlException, parsed type=" + i + ", version=" + paramInt, paramException);
+    try
+    {
+      boolean bool = C();
+      return bool;
     }
-    b(paramException, "parsed config failed, type=" + i + ", version=" + paramInt, "QConfigWatchDog_parsedConfig");
-    b(paramaokh, paramArrayOfaoko, paramInt, paramException);
-  }
-  
-  public void a(aoki paramaoki, File paramFile, Exception paramException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigWatchDog", 2, "handleParsedIOException", paramException);
+    catch (Exception localException)
+    {
+      QLog.e("QappCenterJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("QappCenterJumpAction");
     }
-    b(paramException, "write\\read IO failed", "QConfigWatchDog_parsedIO");
-    b(paramaoki, paramFile, paramException);
-  }
-  
-  public void a(Class paramClass, Exception paramException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigWatchDog", 2, "handleParsedJsonOrXmlException", paramException);
-    }
-    b(paramException, "parsed json\\Xml failed", "QConfigWatchDog_parsedIO");
-    b(paramClass, paramException);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aokv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,8 @@
-import android.support.annotation.Nullable;
+import com.tencent.widget.VerticalGallery;
 
-class bkpp
-  implements bmeo<blfi>
+public abstract interface bkpp
 {
-  bkpp(bkpl parambkpl) {}
-  
-  public void a(@Nullable blfi paramblfi)
-  {
-    if (paramblfi != null) {
-      bkpl.a(this.a, paramblfi.a);
-    }
-  }
+  public abstract void a(VerticalGallery paramVerticalGallery);
 }
 
 

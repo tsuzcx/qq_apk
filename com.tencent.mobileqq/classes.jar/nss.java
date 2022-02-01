@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-public final class nss
-  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
+public class nss
+  implements DialogInterface.OnClickListener
 {
-  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
-  {
-    return new VideoInfo.InterruptedWeishiAd(paramParcel);
-  }
+  public nss(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
   
-  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new VideoInfo.InterruptedWeishiAd[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
+      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nss
  * JD-Core Version:    0.7.0.1
  */

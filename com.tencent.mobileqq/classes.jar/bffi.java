@@ -1,39 +1,67 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bffi
-  implements bffw
+public abstract class bffi<VH extends RecyclerView.ViewHolder, D extends bfem>
+  implements View.OnClickListener
 {
-  public bffi(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public bffj a;
+  public XMediaEditor a;
   
-  public void a()
+  public bffi(XMediaEditor paramXMediaEditor)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
-    localIntent.putExtra("key_req_src", 1);
-    localIntent.putExtra("is_first_login", true);
-    this.a.jdField_a_of_type_JavaLangString = null;
-    this.a.getActivity().startActivityForResult(localIntent, 1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public abstract VH a(ViewGroup paramViewGroup);
+  
+  public bffi a(bffj parambffj)
   {
-    this.a.a(paramString, paramBoolean);
+    this.jdField_a_of_type_Bffj = parambffj;
+    return this;
   }
   
-  public void b()
+  public bffj a()
   {
-    this.a.c(this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer != null) {
-      this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.b();
-    }
+    return this.jdField_a_of_type_Bffj;
+  }
+  
+  public void a() {}
+  
+  public void a(VH paramVH) {}
+  
+  public abstract void a(VH paramVH, D paramD, int paramInt);
+  
+  public abstract void a(View paramView, VH paramVH);
+  
+  public void b(VH paramVH) {}
+  
+  public void b(View paramView, VH paramVH)
+  {
+    paramView.setTag(paramVH);
+    paramView.setOnClickListener(this);
+  }
+  
+  public void b(D paramD) {}
+  
+  public void c(VH paramVH) {}
+  
+  public void c(D paramD) {}
+  
+  public void d(D paramD) {}
+  
+  public void onClick(View paramView)
+  {
+    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffi
  * JD-Core Version:    0.7.0.1
  */

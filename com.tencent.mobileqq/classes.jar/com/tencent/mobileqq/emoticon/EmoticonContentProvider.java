@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import apsr;
+import arvs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
@@ -57,7 +57,7 @@ public class EmoticonContentProvider
     {
       localObject = (QQAppInterface)localObject;
       if ("vip_type".equals(paramString1)) {
-        return apsr.a((QQAppInterface)localObject, paramString1);
+        return arvs.a((QQAppInterface)localObject, paramString1);
       }
     }
     return super.call(paramString1, paramString2, paramBundle);
@@ -131,13 +131,13 @@ public class EmoticonContentProvider
       }
       paramArrayOfString1.setNotificationUri(getContext().getContentResolver(), paramUri);
       return paramArrayOfString1;
-      paramArrayOfString1 = localSQLiteDatabase.a("EmoticonPackage", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      paramArrayOfString1 = localSQLiteDatabase.query("EmoticonPackage", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
       continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("EmoticonTab", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      paramArrayOfString1 = localSQLiteDatabase.query("EmoticonTab", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
       continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("CustomEmotionData", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      paramArrayOfString1 = localSQLiteDatabase.query("CustomEmotionData", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
       continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("Emoticon", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      paramArrayOfString1 = localSQLiteDatabase.query("Emoticon", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
     }
   }
   

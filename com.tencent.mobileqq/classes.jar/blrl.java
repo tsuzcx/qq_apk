@@ -1,20 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-public class blrl
-  implements baug
+public final class blrl
+  implements Parcelable.Creator<LbsDataV2.CellInfo>
 {
-  public blrl(QIMCaptureBannerManager.3 param3) {}
-  
-  public void onResp(bavf parambavf)
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + parambavf.c);
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
     }
+    return localCellInfo;
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public LbsDataV2.CellInfo[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

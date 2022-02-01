@@ -1,20 +1,31 @@
 public class anbq
 {
   public int a;
-  public String a;
   public int b;
-  public String b;
   public int c;
-  
-  public anbq()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
   public String toString()
   {
-    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
+    }
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
+    }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

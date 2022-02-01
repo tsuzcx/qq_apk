@@ -1,20 +1,22 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-final class bdfu
-  extends TextView
+public class bdfu
+  extends bdek
 {
-  bdfu(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
+  protected SpriteGLView a;
+  
+  public bdeq a()
   {
-    super(paramContext);
+    return this.a;
   }
   
-  public boolean performClick()
+  public void aK_() {}
+  
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    boolean bool = super.performClick();
-    this.a.b();
-    return bool;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    b();
   }
 }
 

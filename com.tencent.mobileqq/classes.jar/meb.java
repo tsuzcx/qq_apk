@@ -1,260 +1,110 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.av.ui.MultiIncomingCallUICtr.3.1;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class meb
+  extends ldy
 {
-  public static void a()
-  {
-    azqs.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
-  }
+  meb(mdz parammdz) {}
   
-  static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  protected void a(long paramLong, int paramInt)
   {
-    String str2;
-    Object localObject;
-    String str1;
-    switch (paramInt1)
+    if (this.a.jdField_b_of_type_Boolean)
     {
-    default: 
-      str2 = "0X8008395";
-      localObject = str2;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+      long l = AudioHelper.b();
+      if (QLog.isColorLevel()) {
+        QLog.w("MultiIncomingCallUICtr", 1, "onDestroyInviteUI, groupId[" + paramLong + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + l + "]");
+      }
+      if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(String.valueOf(paramLong))))
       {
-        str1 = "0X8008396";
-        localObject = str2;
+        this.a.a(l, paramInt);
+        this.a.a();
       }
-      break;
     }
     for (;;)
     {
-      str2 = String.valueOf(paramInt3);
-      String str3 = String.valueOf(paramLong);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        azqs.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiIncomingCallUICtr", 2, "onDestroyInviteUI, groupId:" + paramLong + ", reason:" + paramInt + ", mGroupId:" + this.a.jdField_a_of_type_Long);
       }
       return;
-      str1 = "0X8007F37";
-      localObject = str1;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-      {
-        str2 = "0X80083AA";
-        localObject = str1;
-        str1 = str2;
-        continue;
-        str1 = "0X8007F31";
-        localObject = str1;
-        if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-        {
-          str2 = "0X8008398";
-          localObject = str1;
-          str1 = str2;
-          continue;
-        }
-      }
-      str1 = null;
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "0X8006F87";
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        azqs.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
-      }
-      return;
-      str = "0X8007F2B";
-      continue;
-      str = "0X8007F25";
-    }
-  }
-  
-  static void a(long paramLong, boolean paramBoolean)
-  {
-    Object localObject = loc.a();
-    if (!log.a()) {
-      localObject = "0X80077BF";
-    }
-    for (;;)
-    {
-      a((String)localObject, paramBoolean, paramLong);
-      return;
-      if (!((loc)localObject).a()) {
-        localObject = "0X80077C0";
-      } else if (!((loc)localObject).b) {
-        localObject = "0X80077BE";
-      } else {
-        localObject = "0X80077BD";
+      if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+        this.a.a();
       }
     }
   }
   
-  static void a(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  protected void a(long paramLong1, long paramLong2)
   {
-    String str = null;
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean) {
-        str = "0X8006F8D";
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        a(str, paramBoolean, paramLong);
-      }
-      return;
-      if (paramInt2 == 4) {
-        if (ljs.a(paramContext))
-        {
-          str = "0X8007F2E";
-        }
-        else
-        {
-          str = "0X8007F2F";
-          continue;
-          if (paramInt2 == 4) {
-            if (ljs.a(paramContext))
-            {
-              str = "0X8007F28";
-            }
-            else
-            {
-              str = "0X8007F29";
-              continue;
-              str = "0X8006F8E";
-            }
-          }
-        }
-      }
+    this.a.jdField_a_of_type_Ley.al = true;
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
     }
   }
   
-  static void a(VideoAppInterface paramVideoAppInterface, long paramLong, boolean paramBoolean)
+  protected void a(long paramLong, String paramString)
   {
-    boolean bool;
-    if (paramVideoAppInterface != null)
-    {
-      paramVideoAppInterface = (llc)paramVideoAppInterface.a(5);
-      bool = paramVideoAppInterface.a(3, "normal");
-      if (!paramVideoAppInterface.a(3, "interact")) {
-        break label42;
-      }
-      paramVideoAppInterface = "0X8008023";
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->GroupID=" + paramLong);
     }
-    for (;;)
-    {
-      a(paramVideoAppInterface, paramBoolean, paramLong);
-      return;
-      label42:
-      if (bool) {
-        paramVideoAppInterface = "0X8008024";
-      } else {
-        paramVideoAppInterface = "0X8008132";
-      }
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.a();
     }
   }
   
-  public static void a(String paramString, boolean paramBoolean, long paramLong)
+  protected void b(long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w("MultiIncomingCallUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
     }
-    if (paramBoolean) {}
-    for (int i = 1;; i = -1)
-    {
-      azqs.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
-      return;
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.3.1(this, paramLong2), 500L);
+    this.a.f();
+    lyj.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
+    if (this.a.jdField_a_of_type_Mkf != null) {
+      this.a.jdField_a_of_type_Mkf.c();
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+    mts.a().a(this.a.f);
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.a();
     }
   }
   
-  static void b()
+  protected void d(long paramLong)
   {
-    azqs.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->GroupID=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      this.a.b(0);
+    }
+    this.a.a();
   }
   
-  static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  protected void e(long paramLong)
   {
-    int j = 0;
-    Object localObject = "";
-    int i = j;
-    if (paramBoolean)
-    {
-      i = j;
-      if (ljs.a(paramContext))
-      {
-        i = j;
-        if (azgg.a().c()) {
-          i = 1;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->GroupID=" + paramLong);
     }
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean)
-      {
-        localObject = "0X8006F89";
-        paramContext = (Context)localObject;
-        if (i == 0) {
-          break label163;
-        }
-        paramContext = "0X8008394";
-      }
-      break;
-    }
-    for (;;)
-    {
-      a((String)localObject, paramBoolean, paramLong);
-      a(paramContext, paramBoolean, paramLong);
-      return;
-      paramContext = (Context)localObject;
-      if (paramInt2 == 4)
-      {
-        paramContext = "0X8007F2C";
-        if (i != 0)
-        {
-          paramContext = "0X80083A9";
-          localObject = "0X8007F2C";
-          continue;
-          paramContext = (Context)localObject;
-          if (paramInt2 == 4)
-          {
-            paramContext = "0X8007F26";
-            if (i != 0)
-            {
-              paramContext = "0X8008397";
-              localObject = "0X8007F26";
-              continue;
-              localObject = "0X8006F8A";
-              break;
-            }
-          }
-        }
-      }
-      label163:
-      String str = "";
-      localObject = paramContext;
-      paramContext = str;
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     meb
  * JD-Core Version:    0.7.0.1
  */

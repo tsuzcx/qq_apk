@@ -1,115 +1,129 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.SSOAccountObserver;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bfbx
-  extends SSOAccountObserver
+public final class bfbx
 {
-  public bfbx(AuthorityActivity paramAuthorityActivity) {}
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, bfby> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  private static void a(bfby parambfby, boolean paramBoolean)
   {
-    this.a.i = true;
-    String str = paramBundle.getString("error");
-    paramInt1 = paramBundle.getInt("code");
-    try
+    if ((parambfby != null) && (parambfby.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      bfng.a().a("agent_login", this.a.d, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      bfnj.a().a(1, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt1, 1, str);
-      bfhz.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "" + paramInt1, false);
-      bfhz.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + paramInt1, false);
-      aseh.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-      aseh.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, true);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-      if ((paramInt2 == -1000) || (paramInt2 == 154))
+      if (parambfby.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
       {
-        this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-        bflp.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-        if ((paramInt1 == 1002) && (this.a.b < 2))
+        if (parambfby.jdField_a_of_type_JavaIoFile == null)
         {
-          paramString = this.a;
-          paramString.b += 1;
-          this.a.f();
-          return;
+          File localFile = new File(parambfby.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          parambfby.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
+          parambfby.jdField_a_of_type_JavaIoFile = localFile;
         }
+        parambfby.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(parambfby.jdField_a_of_type_JavaIoFileOutputStream);
       }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
+      if (paramBoolean)
       {
-        bflp.c("Authority_Report", "report login error : ", paramBundle);
+        if (parambfby.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          parambfby.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          parambfby.jdField_a_of_type_JavaIoFileOutputStream.close();
+          parambfby.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        parambfby.jdField_a_of_type_JavaIoFile = null;
       }
-      this.a.a(3003, this.a.getResources().getString(2131695065));
-      paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      paramString.what = 6;
-      paramString.arg1 = 3003;
-      paramString.obj = this.a.getResources().getString(2131695065);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
-      return;
     }
-    this.a.c(paramString);
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public static void a(String paramString)
   {
-    long l = System.currentTimeMillis();
-    boolean bool = paramBundle.getBoolean("fake_callback");
-    if ((!bool) && (paramInt == 4096)) {
-      bfnz.a(paramString, l);
-    }
-    int i;
-    Object localObject;
-    if (!bool)
+    b(paramString);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((bfby)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
     {
-      i = paramBundle.getInt("code");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "103");
-      ((Bundle)localObject).putString("act_type", "10");
-      ((Bundle)localObject).putString("stringext_1", "GetTicketNoPassword");
-      ((Bundle)localObject).putString("intext_2", "" + i);
-      ((Bundle)localObject).putString("intext_5", "" + (l - AuthorityActivity.a(this.a).jdField_a_of_type_Long));
-      bfhz.a().a((Bundle)localObject, AuthorityActivity.jdField_e_of_type_JavaLangString, paramString, false);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : success | code: " + i);
-      bflp.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
+      bfby localbfby = new bfby();
+      localbfby.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localbfby);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (bfby)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
     }
     try
     {
-      bfng.a().a("agent_login", this.a.d, this.a.jdField_a_of_type_JavaLangString.length(), paramArrayOfByte.length, 0, Long.parseLong(paramString), "1000069", null);
-      bfnj.a().a(0, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-      bfhz.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "0", false);
-      this.a.i = false;
-      this.a.b = 0;
-      localObject = null;
-      if (paramInt == 4096) {
-        localObject = new String(paramArrayOfByte);
-      }
-      this.a.a(paramString, (String)localObject, paramBundle);
-      this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-      return;
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
     }
-    catch (Exception localException)
+    catch (IOException paramArrayOfByte)
     {
-      for (;;)
-      {
-        bflp.c("Authority_Report", "report login error : ", localException);
-      }
+      break label66;
     }
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  private static void b(String paramString)
   {
-    paramInt = paramBundle.getInt("code");
-    this.a.b = 0;
-    this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-    bflp.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-    aseh.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-    aseh.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, false);
-    QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfii.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
+    bfby localbfby = (bfby)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbfby == null) || (localbfby.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localbfby.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localbfby.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localbfby.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localbfby.jdField_a_of_type_JavaIoFileOutputStream = null;
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    bfby localbfby = (bfby)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbfby != null) && (localbfby.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localbfby, true);
+      label29:
+      localbfby.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      b(paramString);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
   }
 }
 

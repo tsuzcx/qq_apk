@@ -1,21 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class blod
-  extends RecyclerView.ViewHolder
+class blod
+  implements blfn
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
+  blod(blnz paramblnz) {}
   
-  public blod(bloa parambloa, View paramView)
+  public void a(boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367944));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377620));
-    this.b = ((ImageView)paramView.findViewById(2131376339));
+    if (!paramBoolean)
+    {
+      blpu.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
+      if (blnz.a(this.a) != null) {
+        blnz.a(this.a).setText("跳转失败，请返回重试");
+      }
+      return;
+    }
+    blpu.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
+    blnz.b(this.a);
   }
 }
 

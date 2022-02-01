@@ -1,14 +1,31 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.9.1;
 
-class azwc
-  implements View.OnLongClickListener
+public class azwc
+  extends bhka
 {
-  azwc(azwb paramazwb) {}
+  public azwc(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return true;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (Bundle)paramObject;
+      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
+      if (this.a.app != null) {
+        this.a.app.removeObserver(this);
+      }
+    } while (!paramBoolean);
+    this.a.runOnUiThread(new QCallDetailActivity.9.1(this));
   }
 }
 

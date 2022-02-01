@@ -1,40 +1,64 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.PointF;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import java.util.List;
 
-class azqr
-  extends avvd
+public class azqr
+  extends AnimatorListenerAdapter
 {
-  protected void e(boolean paramBoolean, Bundle paramBundle)
+  public azqr(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    paramAnimator = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramAnimator != null)
     {
-      int i = azqp.a().decrementAndGet();
-      azqp.a(0);
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
-      azqp.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneReport", 2, "next req time: " + azqp.b() + ", left: " + i);
+      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
       }
-      azqs.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
+      if ((paramAnimator.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimator.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
+      {
+        paramAnimator.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+        paramAnimator.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+        this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+        this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
+          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
+        }
+      }
+      VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+      if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b())
+        {
+          paramAnimator = VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.getLabelList();
+          if (paramAnimator != null)
+          {
+            if ((VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView)[(VasProfileTagView.a().length - 1)] == null) || (paramAnimator.size() != 0)) {
+              break label255;
+            }
+            VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(0);
+          }
+        }
+      }
     }
     for (;;)
     {
-      azqp.a().set(false);
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(azqp.a());
-      return;
-      azqp.c();
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "qzone report failed");
+      if (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b(VasProfileTagView.d(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
+        VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
       }
+      return;
+      label255:
+      VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(4);
     }
   }
 }

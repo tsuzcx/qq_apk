@@ -1,36 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class agbq
-  implements Animator.AnimatorListener
 {
-  public agbq(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private static String a(agbe paramagbe)
   {
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
-      return;
+    if (paramagbe.b < bgnk.a(paramagbe.jdField_a_of_type_JavaUtilArrayList)) {
+      return (String)paramagbe.jdField_a_of_type_JavaUtilArrayList.get(paramagbe.b);
     }
-    SixCombolEffectView.a(this.a).start();
-    this.a.a();
+    return "";
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, agbe paramagbe)
   {
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 1;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    bcst.b(paramQQAppInterface, "dc00898", "", paramString2, paramString1, paramString1, 0, 0, "", "", a(paramagbe), String.valueOf(paramagbe.jdField_a_of_type_Int));
+  }
+  
+  public static boolean a(agbe paramagbe)
+  {
+    return paramagbe.jdField_a_of_type_Int == 560;
   }
 }
 

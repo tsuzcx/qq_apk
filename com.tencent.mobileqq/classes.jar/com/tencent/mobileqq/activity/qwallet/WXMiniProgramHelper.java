@@ -1,10 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import akoz;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -15,6 +20,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 import java.util.Map;
 import mqq.os.MqqHandler;
 
@@ -47,6 +53,24 @@ public class WXMiniProgramHelper
   private void a(MqqHandler paramMqqHandler, int paramInt)
   {
     paramMqqHandler.post(new WXMiniProgramHelper.1(this, paramInt));
+  }
+  
+  private void b()
+  {
+    try
+    {
+      Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+      if (QLog.isColorLevel()) {
+        QLog.i("WXMiniProgramHelper", 2, "launchWXUsingPendingIntent");
+      }
+      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new akoz(this), null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WXMiniProgramHelper", 1, "launchWXUsingPendingIntent pendingIntent send failed: " + localException.getMessage());
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.openWXApp();
+    }
   }
   
   public void a()
@@ -87,13 +111,16 @@ public class WXMiniProgramHelper
     Object localObject = ThreadManager.getUIHandler();
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled())
     {
-      a((MqqHandler)localObject, 2131693075);
+      a((MqqHandler)localObject, 2131692608);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() < 621086464)
     {
-      a((MqqHandler)localObject, 2131693076);
+      a((MqqHandler)localObject, 2131692609);
       return;
+    }
+    if (Build.VERSION.SDK_INT >= 29) {
+      b();
     }
     localObject = new WXLaunchMiniProgram.Req();
     ((WXLaunchMiniProgram.Req)localObject).userName = ((String)paramMap.get("user_name"));
@@ -101,23 +128,31 @@ public class WXMiniProgramHelper
     {
       i = Integer.valueOf((String)paramMap.get("app_type")).intValue();
       ((WXLaunchMiniProgram.Req)localObject).miniprogramType = i;
-      String str = (String)paramMap.get("path");
-      if (str != null) {
-        ((WXLaunchMiniProgram.Req)localObject).path = str;
-      }
-      paramMap = (String)paramMap.get("ext");
-      if (paramMap != null) {
-        ((WXLaunchMiniProgram.Req)localObject).extData = paramMap;
-      }
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject);
-      return;
+      str = (String)paramMap.get("path");
+      if (TextUtils.isEmpty(str)) {}
     }
     catch (Exception localException)
     {
-      for (;;)
+      try
       {
+        String str;
+        ((WXLaunchMiniProgram.Req)localObject).path = URLDecoder.decode(str, "UTF-8");
+        paramMap = (String)paramMap.get("ext");
+        if (paramMap != null) {
+          ((WXLaunchMiniProgram.Req)localObject).extData = paramMap;
+        }
+        this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject);
+        return;
+        localException = localException;
         QLog.e("WXMiniProgramHelper", 1, localException, new Object[0]);
         int i = 0;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          localThrowable.printStackTrace();
+        }
       }
     }
   }
@@ -149,7 +184,7 @@ public class WXMiniProgramHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper
  * JD-Core Version:    0.7.0.1
  */

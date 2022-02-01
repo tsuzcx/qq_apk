@@ -1,25 +1,31 @@
+import android.animation.Animator;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
 
-public class ufq
-  implements Animation.AnimationListener
+class ufq
+  extends uev
 {
-  public ufq(QCircleRockeyPopupView paramQCircleRockeyPopupView, View paramView) {}
+  ufq(ufp paramufp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    int i = 0;
+    super.onAnimationStart(paramAnimator);
+    this.a.b.setTranslationY(this.a.b.getHeight());
+    this.a.b.setVisibility(0);
+    paramAnimator = ufp.a(this.a);
+    if (TextUtils.equals(this.a.a(), "focus")) {}
+    for (;;)
+    {
+      paramAnimator.setVisibility(i);
+      return;
+      i = 8;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufq
  * JD-Core Version:    0.7.0.1
  */

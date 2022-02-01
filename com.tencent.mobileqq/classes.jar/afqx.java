@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class afqx
-  implements afug
+public class afqx
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afqx(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (assg.a(paramQQAppInterface).a()) {
-      return 78;
-    }
-    return 0;
+    this.a.l();
+    this.a.a(azfl.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), "2", "1");
   }
 }
 

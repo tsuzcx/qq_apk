@@ -1,67 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
 public class amcm
-  implements alpg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected void a() {}
+  public amcm(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int j = 0;
-    int i;
-    if (paramObject != null)
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
+    if (AppSetting.c)
     {
-      ArrayList localArrayList = new ArrayList();
-      if ((paramObject instanceof long[])) {
-        paramObject = (long[])paramObject;
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label124;
       }
-      Object[] arrayOfObject;
-      for (i = 0;; i = ((Integer)arrayOfObject[1]).intValue())
-      {
-        int k = paramObject.length;
-        while (j < k)
-        {
-          localArrayList.add(Long.valueOf(paramObject[j]));
-          j += 1;
-        }
-        arrayOfObject = (Object[])paramObject;
-        paramObject = (long[])arrayOfObject[0];
-      }
-      paramObject = localArrayList;
     }
-    for (;;)
+    label124:
+    for (int i = 2131690708;; i = 2131718933)
     {
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 1: 
-        a(paramBoolean);
-        return;
-      case 2: 
-        a(paramBoolean, paramObject);
-        a(paramBoolean, paramObject, i);
-        return;
-      case 3: 
-        b(paramBoolean, paramObject);
-        b(paramBoolean, paramObject, i);
-        return;
-      }
-      a();
+      paramValueAnimator = paramValueAnimator.getString(i);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
       return;
-      paramObject = null;
-      i = 0;
     }
   }
 }

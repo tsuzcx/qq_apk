@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aill
-  implements DialogInterface.OnClickListener
+class aill
+  implements View.OnClickListener
 {
-  public aill(BindNumberActivity paramBindNumberActivity) {}
+  aill(ailk paramailk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    Intent localIntent = new Intent(ailk.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { ailk.a(this.a).getAccount(), ailk.a(this.a), Integer.valueOf(auwj.a(ailk.a(this.a).jdField_a_of_type_Int)), ailk.a(this.a).jdField_a_of_type_JavaLangString }));
+    ailk.a(this.a).startActivity(localIntent);
+    bipi.a().a(ailk.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

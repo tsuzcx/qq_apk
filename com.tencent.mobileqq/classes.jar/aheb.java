@@ -1,14 +1,29 @@
+import android.os.SystemClock;
 import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
 class aheb
+  implements bkhw
 {
-  public TextView a;
+  aheb(ahea paramahea, MessageForPokeEmo paramMessageForPokeEmo, bkho parambkho) {}
   
-  public aheb(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = ((TextView)paramView.findViewById(2131377606));
-    paramView.setTag(this);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Ahea.c < 500L);
+      this.jdField_a_of_type_Ahea.c = l;
+      adrm.b(this.jdField_a_of_type_Ahea.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahea.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahea.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
   }
 }
 

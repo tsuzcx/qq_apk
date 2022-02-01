@@ -1,121 +1,99 @@
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class pqb
+  extends ogd
+  implements View.OnClickListener
 {
-  public static void a(@NonNull View paramView, String paramString)
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private snh jdField_a_of_type_Snh;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  
+  public pqb(Activity paramActivity)
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramView, localJSONObject);
-      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
-      return;
+    super(paramActivity);
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    catch (Exception paramView)
-    {
-      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373602);
     }
   }
   
-  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
+  public ViewGroup a()
   {
-    int i = paramView.getLeft();
-    int j = paramView.getRight();
-    int k = paramView.getTop();
-    int m = paramView.getBottom();
-    Object localObject1 = paramView.getClass().getSimpleName();
-    Object localObject2 = new Rect(i, k, j, m);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject1);
-    localJSONObject.put("visibility", paramView.getVisibility());
-    localJSONObject.put("bounds", localObject2);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramView instanceof ViewGroup))
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560266);
+    this.jdField_a_of_type_Snh = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    i();
+  }
+  
+  public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      j = ((ViewGroup)paramView).getChildCount();
-      localObject1 = new JSONArray();
-      i = 0;
-      while (i < j)
+      a();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
       {
-        localObject2 = new JSONObject();
-        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
-        ((JSONArray)localObject1).put(localObject2);
-        i += 1;
-      }
-      paramJSONObject.put("children", localObject1);
-    }
-  }
-  
-  public static void a(@NonNull ViewBase paramViewBase, String paramString)
-  {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramViewBase, localJSONObject);
-      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
-    }
-  }
-  
-  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
-  {
-    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
-    Object localObject2 = paramViewBase.getClass().getSimpleName();
-    Object localObject3 = paramViewBase.getName();
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject2);
-    localJSONObject.put("id", localObject3);
-    localJSONObject.put("visibility", paramViewBase.getVisibility());
-    localJSONObject.put("bounds", localObject1);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramViewBase instanceof Layout))
-    {
-      localObject1 = ((Layout)paramViewBase).getSubViews();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        paramViewBase = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ViewBase)((Iterator)localObject1).next();
-          localObject3 = new JSONObject();
-          a((ViewBase)localObject2, (JSONObject)localObject3);
-          paramViewBase.put(localObject3);
+        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent() != null) {
+          ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
         }
-        paramJSONObject.put("children", paramViewBase);
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
       }
+      ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(true, paramList);
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void c()
   {
-    QLog.d(paramString1, 1, paramString2);
+    super.c();
   }
   
-  public static boolean a()
+  public void d()
   {
-    return true;
+    if (this.jdField_a_of_type_Snh != null) {
+      this.jdField_a_of_type_Snh.a();
+    }
   }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pqb
  * JD-Core Version:    0.7.0.1
  */

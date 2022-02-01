@@ -1,582 +1,220 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.Spannable;
 import android.text.TextUtils;
+import android.text.style.BackgroundColorSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azml
-  implements azmp
+  implements View.OnClickListener, View.OnLongClickListener, bkiz
 {
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static Map<String, azmo> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private azms jdField_a_of_type_Azms;
-  private azmt jdField_a_of_type_Azmt;
-  private azmw jdField_a_of_type_Azmw;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  private View jdField_a_of_type_AndroidViewView;
+  private azmm jdField_a_of_type_Azmm;
+  private azmn jdField_a_of_type_Azmn;
   
-  private int a(String paramString, azmt paramazmt)
+  private azml(View paramView, azmn paramazmn)
   {
-    int i = 0;
-    if (!new File(paramString).exists()) {
-      i = 5;
+    if (QLog.isColorLevel()) {
+      QLog.d("LongClickCopyAction", 2, String.format("TextViewCopyAction target=%s copyData=%s", new Object[] { paramView, paramazmn }));
     }
-    while (paramazmt.jdField_a_of_type_Azmq.jdField_a_of_type_Boolean) {
-      return i;
-    }
-    try
-    {
-      System.load(paramString);
-      jdField_a_of_type_JavaUtilHashMap.put(paramazmt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_JavaLangString = paramString;
-      return 0;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SoLoadWidget.DownSoLoader", 1, paramString, new Object[0]);
-      this.jdField_c_of_type_JavaLangString = ajeu.a(paramString);
-    }
-    return 6;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Azmn = paramazmn;
   }
   
-  private SharedPreferences a()
+  public static azml a(View paramView, azmn paramazmn)
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_so_load", 4);
-    }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
-  }
-  
-  private aznj a(azmt paramazmt, SoConfig.SoDetailInfo paramSoDetailInfo)
-  {
-    Object localObject = a(paramazmt, paramSoDetailInfo.url);
-    String str = ((aznj)localObject).jdField_c_of_type_JavaLangString;
-    if ((TextUtils.isEmpty(str)) || (!new File(str).exists()))
+    azmn localazmn = null;
+    if (paramView != null)
     {
-      localObject = new DownloadParam();
-      ((DownloadParam)localObject).filePos = 1;
-      ((DownloadParam)localObject).url = paramSoDetailInfo.url;
-      ((DownloadParam)localObject).md5ForChecked = paramSoDetailInfo.md5;
-      paramSoDetailInfo = PreloadManager.a((DownloadParam)localObject);
-      if ((paramSoDetailInfo != null) && (paramSoDetailInfo.folderPath != null))
+      paramazmn = new azml(paramView, paramazmn);
+      paramView.setOnLongClickListener(paramazmn);
+      localazmn = paramazmn;
+      if ((paramView instanceof TextView))
       {
-        paramazmt = new File(paramSoDetailInfo.folderPath, paramazmt.jdField_b_of_type_JavaLangString).getAbsolutePath();
-        if (QLog.isColorLevel()) {
-          QLog.i("SoLoadWidget.DownSoLoader", 2, "[getLocalInfoFromCacheOrConfig] return info from sync method");
-        }
-        paramazmt = new aznj(paramazmt);
+        paramView = (TextView)paramView;
+        paramView.setText(paramView.getText(), TextView.BufferType.SPANNABLE);
+        localazmn = paramazmn;
       }
     }
-    do
-    {
-      return paramazmt;
-      paramazmt = "";
-      break;
-      paramazmt = (azmt)localObject;
-    } while (!QLog.isColorLevel());
-    QLog.i("SoLoadWidget.DownSoLoader", 2, "[getLocalInfoFromCacheOrConfig] return info from cache");
-    return localObject;
+    return localazmn;
   }
   
-  private aznj a(azmt paramazmt, String paramString)
+  public static azml a(View paramView, String paramString1, String paramString2)
   {
-    try
-    {
-      paramazmt = aznj.a(a().getString(a(paramazmt), ""));
-      boolean bool = TextUtils.equals(paramString, paramazmt.d);
-      if (bool) {
-        return paramazmt;
-      }
-    }
-    catch (Throwable paramazmt)
-    {
-      QLog.e("SoLoadWidget.DownSoLoader", 1, paramazmt, new Object[0]);
-    }
-    return new aznj();
+    azmn localazmn = new azmn();
+    localazmn.a(paramString1, paramString2);
+    return a(paramView, localazmn);
   }
   
-  private LoadExtResult a(int paramInt)
+  public static azml a(TextView paramTextView)
+  {
+    String str1 = null;
+    String str2;
+    if (paramTextView != null)
+    {
+      str2 = paramTextView.getResources().getString(2131698174);
+      str1 = paramTextView.getText().toString();
+    }
+    for (;;)
+    {
+      azmn localazmn = new azmn();
+      localazmn.a(str2, str1);
+      return a(paramTextView, localazmn);
+      str2 = null;
+    }
+  }
+  
+  public static azml a(TextView paramTextView, String paramString)
   {
     String str = null;
-    if (paramInt == 6) {
-      str = this.jdField_c_of_type_JavaLangString;
+    if (paramTextView != null) {
+      str = paramTextView.getText().toString();
     }
-    return a(paramInt, str);
+    azmn localazmn = new azmn();
+    localazmn.a(paramString, str);
+    return a(paramTextView, localazmn);
   }
   
-  private LoadExtResult a(int paramInt, String paramString)
+  private void a(String paramString)
   {
-    int i = 1;
-    this.jdField_c_of_type_Boolean = true;
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, "ver=" + this.jdField_a_of_type_JavaLangString, "load.item.load", this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, paramInt, paramString);
-    LoadExtResult localLoadExtResult = LoadExtResult.create(paramInt, 1, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    if ((paramInt != 0) && (this.jdField_a_of_type_Azms.d == azms.c))
+    if (paramString != null) {}
+    try
     {
-      azmo localazmo = (azmo)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString);
-      paramString = localazmo;
-      if (localazmo == null) {
-        paramString = new azmo();
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (localBaseApplicationImpl != null) {
+        ((ClipboardManager)localBaseApplicationImpl.getSystemService("clipboard")).setText(paramString);
       }
-      boolean bool = bdin.d(BaseApplicationImpl.getApplication());
-      long l3 = NetConnInfoCenter.getServerTimeMillis();
-      int j = bdin.a(BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.DownSoLoader", 2, "[onLoadResult]AsyncFailInfo:" + paramString + ",name:" + this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString + ",isNetSupport:" + bool + ",curTime=" + l3 + ",netType=" + j);
-      }
-      if (bool)
-      {
-        paramString.jdField_a_of_type_Int = paramInt;
-        paramString.c = j;
-        paramString.jdField_a_of_type_Long = l3;
-        paramString.b = this.jdField_a_of_type_Int;
-        jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, paramString);
-      }
+      return;
     }
-    if (this.jdField_a_of_type_Azms.d == azms.b) {
-      localLoadExtResult.failInfo = ((azmo)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString));
-    }
-    if (this.jdField_a_of_type_Azmw != null) {
-      this.jdField_a_of_type_Azmw.a(paramInt, localLoadExtResult);
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    catch (Exception paramString)
     {
-      azqs.b(null, "dc00899", "SoLoad", "", "resSingle", this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azms.d, paramInt, this.jdField_a_of_type_JavaLangString, i + "", l1 - l2 + "", "");
-      return localLoadExtResult;
-      if (this.jdField_b_of_type_Boolean) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+      QLog.e("LongClickCopyAction", 2, "copyContent fail.", paramString);
     }
   }
   
-  private LoadExtResult a(azmt paramazmt, SoConfig.SoInfo paramSoInfo)
+  private void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] info=" + paramSoInfo + ",is64Bit:" + azmx.a());
-    }
-    SoConfig.SoInfo localSoInfo = null;
-    if (paramSoInfo != null)
+    int k;
+    Spannable localSpannable;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof TextView)))
     {
-      if (azmx.a())
-      {
-        paramSoInfo = paramSoInfo.arm64Info;
-        localSoInfo = paramSoInfo;
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView;
+      k = localTextView.getText().toString().length();
+      localSpannable = null;
+      if ((localTextView.getText() instanceof Spannable)) {
+        localSpannable = (Spannable)localTextView.getText();
       }
-    }
-    else
-    {
-      if ((localSoInfo == null) || (TextUtils.isEmpty(localSoInfo.url))) {
-        break label146;
-      }
-      bool = true;
-      label84:
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] isConfigValid=" + bool);
-      }
-      if (bool) {
-        break label157;
-      }
-      if (!a(paramazmt)) {
-        break label152;
-      }
-    }
-    label146:
-    label152:
-    for (int i = 0;; i = 2)
-    {
-      return a(i);
-      paramSoInfo = paramSoInfo.arm32Info;
-      break;
-      bool = false;
-      break label84;
-    }
-    label157:
-    this.jdField_a_of_type_JavaLangString = localSoInfo.ver;
-    if (((Build.VERSION.SDK_INT == 22) || (Build.VERSION.SDK_INT == 21)) && (!(BaseApplicationImpl.getApplication().peekAppRuntime() instanceof QQAppInterface))) {
-      try
-      {
-        if ((TextUtils.equals("TcHevcDec", paramazmt.jdField_a_of_type_JavaLangString)) && (a(paramazmt, localSoInfo.url).jdField_a_of_type_Long == -1L))
-        {
-          paramSoInfo = a(3);
-          return paramSoInfo;
+      if (localSpannable != null) {
+        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan == null) {
+          i = 1714664933;
         }
       }
-      catch (Throwable paramSoInfo)
-      {
-        QLog.e("SoLoadWidget.DownSoLoader", 1, paramSoInfo, new Object[0]);
-      }
     }
-    paramSoInfo = a(paramazmt, localSoInfo);
-    String str = paramSoInfo.jdField_c_of_type_JavaLangString;
-    long l = paramSoInfo.jdField_a_of_type_Long;
-    if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] configSoFile exist");
-      }
-      if (a(str, l, paramazmt, localSoInfo, 1)) {
-        return a(str, paramazmt, localSoInfo.url);
-      }
-      return a(10);
-    }
-    boolean bool = a(paramazmt);
-    paramSoInfo = new DownloadParam();
-    paramSoInfo.filePos = 1;
-    paramSoInfo.url = localSoInfo.url;
-    paramSoInfo.md5ForChecked = localSoInfo.md5;
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] configSoFile not exist - loadOldSoSucc=" + bool);
-    }
-    if (bool)
-    {
-      PreloadManager.a().a(paramSoInfo, null);
-      return a(0);
-    }
-    VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, null, "load.item.download.start", null, 0, null);
-    if (this.jdField_a_of_type_Azms.d == azms.b) {
-      return a(3);
-    }
-    if (this.jdField_a_of_type_Azms.d == azms.c) {
-      paramSoInfo.isPreDownload = true;
-    }
-    PreloadManager.a().a(paramSoInfo, new azmn(this, paramazmt, localSoInfo, paramSoInfo));
-    return null;
-  }
-  
-  private LoadExtResult a(String paramString1, azmt paramazmt, String paramString2)
-  {
-    int i = a(paramString1, paramazmt);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.DownSoLoader", 2, "[loadConfigSo] res=" + i + ",filePath=" + paramString1);
-    }
-    if (i == 0)
-    {
-      a(paramazmt, paramString1);
-      a(paramazmt, this.jdField_a_of_type_JavaLangString, paramString1, paramString2);
-      return a(i);
-    }
-    if (b(paramazmt)) {
-      return a(0);
-    }
-    return a(i);
-  }
-  
-  private String a()
-  {
-    if (azmx.a()) {
-      return "_arm64_path";
-    }
-    return "_arm32_path";
-  }
-  
-  private String a(azmt paramazmt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("key_local_info_").append(paramazmt.jdField_a_of_type_JavaLangString);
-    if (!azmx.a()) {}
-    for (paramazmt = "_32";; paramazmt = "_64") {
-      return paramazmt;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    return (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  @Deprecated
-  public static List<String> a()
-  {
-    return new LinkedList(jdField_a_of_type_JavaUtilHashMap.keySet());
-  }
-  
-  private void a(azmt paramazmt)
-  {
-    SharedPreferences localSharedPreferences = a();
-    paramazmt = a(paramazmt);
-    localSharedPreferences.edit().remove(paramazmt).apply();
-  }
-  
-  private void a(azmt paramazmt, String paramString)
-  {
     try
     {
-      a().edit().putString("key_last_succ_" + paramazmt.jdField_a_of_type_JavaLangString + a(), paramString).apply();
+      int j = Color.parseColor("#33000000");
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      label87:
+      break label87;
+    }
+    this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(i);
+    localSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, 0, k, 17);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof TextView)))
+    {
+      localObject = (TextView)this.jdField_a_of_type_AndroidViewView;
+      if (!(((TextView)localObject).getText() instanceof Spannable)) {
+        break label58;
+      }
+    }
+    label58:
+    for (Object localObject = (Spannable)((TextView)localObject).getText();; localObject = null)
+    {
+      if (localObject != null) {
+        ((Spannable)localObject).removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+      }
       return;
     }
-    catch (Throwable paramazmt)
-    {
-      paramazmt.printStackTrace();
-    }
   }
   
-  private void a(azmt paramazmt, String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    try
-    {
-      SharedPreferences localSharedPreferences = a();
-      String str = a(paramazmt);
-      aznj localaznj = a(paramazmt, paramString3);
-      if ((TextUtils.equals(localaznj.jdField_c_of_type_JavaLangString, paramString2)) && (localaznj.jdField_a_of_type_Long != -1L)) {
-        return;
-      }
-      long l = IOUtil.getCRC32Value(new File(paramString2));
-      paramazmt = new aznj(paramString1, paramazmt.jdField_a_of_type_JavaLangString, paramString2, l, paramString3);
-      localSharedPreferences.edit().putString(str, paramazmt.a()).commit();
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      c();
+    }
+    while (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    catch (Throwable paramazmt)
-    {
-      paramazmt.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
   
-  private boolean a()
+  public void a(azmm paramazmm)
   {
-    boolean bool = false;
-    if (jdField_a_of_type_JavaUtilHashMap.keySet().contains(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString));
-      bool = true;
-    }
-    return bool;
+    this.jdField_a_of_type_Azmm = paramazmm;
   }
   
-  private boolean a(azmt paramazmt)
+  public void onClick(View paramView)
   {
-    String str = paramazmt.jdField_a_of_type_Azmq.a();
-    if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+    String str = null;
+    if ((paramView instanceof TextView))
     {
-      int i = a(str, paramazmt);
-      VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, null, "load.item.load.oldpath", null, i, null);
-      return i == 0;
+      str = ((TextView)paramView).getText().toString();
+      str = this.jdField_a_of_type_Azmn.a(str);
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LongClickCopyAction", 2, String.format("onClick view=%s copyResult=%s", new Object[] { paramView, str }));
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      a(str);
+      if (this.jdField_a_of_type_Azmm != null) {
+        this.jdField_a_of_type_Azmm.a(str);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  private boolean a(String paramString, long paramLong, azmt paramazmt, SoConfig.SoDetailInfo paramSoDetailInfo, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramLong == -1L) && (paramSoDetailInfo.crc == -1L)) {
-      return true;
-    }
-    long l1;
-    boolean bool2;
-    long l2;
-    label149:
-    boolean bool3;
-    label165:
-    int i;
-    boolean bool1;
-    if (paramSoDetailInfo.crc != -1L)
+    bguh localbguh;
+    if (this.jdField_a_of_type_Azmn != null)
     {
-      l1 = paramSoDetailInfo.crc;
-      bool2 = true;
-      l2 = IOUtil.getCRC32Value(new File(paramString));
-      if (l1 == l2) {
-        break label432;
+      localbguh = new bguh();
+      this.jdField_a_of_type_Azmn.a(localbguh);
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+        break label63;
       }
-      a(paramazmt);
-      ajeu.a(paramString);
-      paramString = new DownloadParam();
-      paramString.filePos = 1;
-      paramString.url = paramSoDetailInfo.url;
-      paramString.md5ForChecked = paramSoDetailInfo.md5;
-      PreloadManager.PathResult localPathResult = PreloadManager.a(paramString);
-      if ((localPathResult == null) || (TextUtils.isEmpty(localPathResult.folderPath))) {
-        break label387;
-      }
-      paramString = new File(localPathResult.folderPath, paramazmt.jdField_b_of_type_JavaLangString).getAbsolutePath();
-      if ((localPathResult == null) || (!localPathResult.retryUnzip())) {
-        break label393;
-      }
-      bool3 = true;
-      i = 0;
-      if (!bool3) {
-        break label414;
-      }
-      paramLong = IOUtil.getCRC32Value(new File(paramString));
-      if (!bool2) {
-        break label408;
-      }
-      if (paramLong != l1) {
-        break label399;
-      }
-      bool1 = true;
-      label200:
-      if (i == 0) {
-        break label434;
-      }
-      if ((localPathResult == null) || (TextUtils.isEmpty(localPathResult.filePath))) {
-        break label427;
-      }
-      paramString = MD5Coding.encodeFile2HexStr(localPathResult.filePath);
-      label230:
-      if ((!TextUtils.isEmpty(paramSoDetailInfo.md5)) && (!paramSoDetailInfo.md5.equalsIgnoreCase(paramString))) {
-        PreloadManager.a(paramSoDetailInfo.url, false, 1);
-      }
+      b();
     }
     for (;;)
     {
-      VACDReportUtil.a(paramazmt.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_JavaLangString, "qqwallet", "SoLoadCRC", l2 + "_" + l1 + "_" + bool3 + "_" + paramLong + "_" + bool2 + "_" + paramString, null, paramInt, null);
-      return bool1;
-      bool2 = false;
-      l1 = paramLong;
-      break;
-      label387:
-      paramString = "";
-      break label149;
-      label393:
-      bool3 = false;
-      break label165;
-      label399:
-      i = 1;
-      bool1 = false;
-      break label200;
-      label408:
-      bool1 = true;
-      break label200;
-      label414:
-      i = 1;
-      bool1 = false;
-      paramLong = -1L;
-      break label200;
-      label427:
-      paramString = null;
-      break label230;
-      label432:
+      bgkw.a(paramView, localbguh, this, this);
+      if (this.jdField_a_of_type_Azmm != null) {
+        this.jdField_a_of_type_Azmm.a();
+      }
       return true;
-      label434:
-      paramString = null;
-    }
-  }
-  
-  private static int b()
-  {
-    QQAppInterface localQQAppInterface = ajeu.a();
-    if (localQQAppInterface == null) {
-      return 0;
-    }
-    return aoks.a().a(526, localQQAppInterface.getCurrentAccountUin());
-  }
-  
-  private String b(azmt paramazmt)
-  {
-    try
-    {
-      paramazmt = a().getString("key_last_succ_" + paramazmt.jdField_a_of_type_JavaLangString + a(), "");
-      return paramazmt;
-    }
-    catch (Throwable paramazmt)
-    {
-      paramazmt.printStackTrace();
-    }
-    return "";
-  }
-  
-  private void b(azms paramazms, azmw paramazmw)
-  {
-    this.jdField_a_of_type_Azms = paramazms;
-    this.jdField_a_of_type_Azmw = paramazmw;
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_Azmt = ((azmt)paramazms.jdField_a_of_type_JavaUtilList.get(0));
-    VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, null, "load.item.start", this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, 0, null);
-  }
-  
-  private boolean b(azmt paramazmt)
-  {
-    if (paramazmt.jdField_a_of_type_Azmq.jdField_b_of_type_Boolean)
-    {
-      String str = b(paramazmt);
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = a(str, paramazmt);
-        VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, null, "load.item.load.last", null, i, null);
-        return i == 0;
+      label63:
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setSelected(true);
       }
     }
-    return false;
-  }
-  
-  public LoadExtResult a(azms paramazms)
-  {
-    int i = 0;
-    b(paramazms, null);
-    if (a()) {
-      return a(0);
-    }
-    paramazms = aznc.a().a(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, null, paramazms.d);
-    long l = this.jdField_a_of_type_Azms.jdField_a_of_type_Long;
-    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
-    if (azmx.a()) {
-      i = 1;
-    }
-    VACDReportUtil.a(l, null, "load.item.getconfig.end", i + "&v=" + b() + "&f=" + this.jdField_a_of_type_Azms.d, SoConfig.SoInfo.getReportCode(paramazms), null);
-    return a(this.jdField_a_of_type_Azmt, paramazms);
-  }
-  
-  public void a(azms paramazms, azmw paramazmw)
-  {
-    b(paramazms, paramazmw);
-    if (a())
-    {
-      a(0);
-      return;
-    }
-    VACDReportUtil.a(this.jdField_a_of_type_Azms.jdField_a_of_type_Long, null, "load.item.getconfig.start", this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, 0, null);
-    aznc.a().a(this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, new azmm(this), this.jdField_a_of_type_Azms.d);
-  }
-  
-  public void a(String paramString)
-  {
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Azms.d != azms.b))
-    {
-      a(8, paramString);
-      return;
-    }
-    VACDReportUtil.a("ver=" + this.jdField_a_of_type_JavaLangString, "SoLoadModule", "SoLoadSingle", "Exception", this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString, 2, paramString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str1;
-    String str2;
-    do
-    {
-      return false;
-      str1 = this.jdField_a_of_type_Azmt.jdField_a_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_Azmt.jdField_b_of_type_JavaLangString;
-    } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (!paramString.contains(str2)));
-    return true;
   }
 }
 

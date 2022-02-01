@@ -1,42 +1,82 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmd
-  implements bhuk
+  extends aqkz<aqme>
 {
-  public aqmd(LocalFileBrowserActivity paramLocalFileBrowserActivity, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public aqme a(int paramInt)
   {
-    switch (paramInt)
+    return new aqme();
+  }
+  
+  @Nullable
+  public aqme a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        if ((!arso.a(paramView.c())) || (arso.c(paramView.c())))
-        {
-          arrr.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          arri.a(2131692487);
-        }
+      aqme localaqme = aqme.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaqlg[0].a);
       }
+      return localaqme;
     }
+    return null;
+  }
+  
+  public void a(aqme paramaqme)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaqme.a());
+    }
+    ShortVideoUtils.a(paramaqme.a());
+  }
+  
+  public Class<aqme> clazz()
+  {
+    return aqme.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int onSend(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 574;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmd
  * JD-Core Version:    0.7.0.1
  */

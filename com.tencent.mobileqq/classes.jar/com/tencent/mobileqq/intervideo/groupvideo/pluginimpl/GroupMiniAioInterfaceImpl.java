@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import aepf;
-import alud;
+import afuo;
 import android.app.Activity;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -13,8 +12,9 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import atgd;
-import bdoo;
+import anni;
+import avmt;
+import bgtn;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -26,7 +26,7 @@ public class GroupMiniAioInterfaceImpl
   implements NewMiniAioInterface
 {
   private Activity mActivity;
-  private atgd mMiniMsgUser;
+  private avmt mMiniMsgUser;
   private long roomId;
   private int roomType;
   private int xPoint;
@@ -38,7 +38,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.setFlags(67108864);
     localIntent1.putExtra("tab_index", MainFragment.b);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", alud.a(2131705734));
+    localIntent1.putExtra("banner_wording", anni.a(2131704135));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -56,14 +56,14 @@ public class GroupMiniAioInterfaceImpl
   {
     int i = this.mActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int j = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297205);
+    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297268);
     if (this.xPoint == 0)
     {
-      i = i - k * 4 - bdoo.b(35.0F);
+      i = i - k * 4 - bgtn.b(35.0F);
       if (this.yPoint != 0) {
         break label147;
       }
-      j += bdoo.a(7.0F);
+      j += bgtn.a(7.0F);
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class GroupMiniAioInterfaceImpl
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
     this.roomType = paramInt;
-    this.mMiniMsgUser = new atgd(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
+    this.mMiniMsgUser = new avmt(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
     ThreadManagerV2.getUIHandlerV2().post(new GroupMiniAioInterfaceImpl.1(this));
   }
   
@@ -118,7 +118,7 @@ public class GroupMiniAioInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.GroupMiniAioInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

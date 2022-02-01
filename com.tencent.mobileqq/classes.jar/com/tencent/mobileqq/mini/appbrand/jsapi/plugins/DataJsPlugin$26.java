@@ -1,41 +1,73 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import abwu;
-import abwx;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class DataJsPlugin$26
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  DataJsPlugin$26(DataJsPlugin paramDataJsPlugin, abwu paramabwu) {}
+  DataJsPlugin$26(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt, Handler paramHandler) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    synchronized (DataJsPlugin.access$200(this.this$0))
+    if (paramBoolean)
     {
-      if (Math.abs(System.currentTimeMillis() - DataJsPlugin.access$300(this.this$0).longValue()) <= 5000L)
+      QLog.d("[mini] DataJsPlugin", 2, "call getGroupShareInfo  ret:" + paramJSONObject.toString());
+      for (;;)
       {
-        DataJsPlugin.access$200(this.this$0).add(this.val$callback);
-        return;
+        try
+        {
+          Object localObject = (MiniProgramShare.StGetGroupShareInfoRsp)paramJSONObject.get("response");
+          int i = paramJSONObject.getInt("resultCode");
+          paramJSONObject = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).encryptedData.get();
+          String str = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).iv.get();
+          QLog.d("[mini] DataJsPlugin", 1, "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + paramJSONObject + " iv=" + str);
+          localObject = new JSONObject();
+          ((JSONObject)localObject).putOpt("encryptedData", paramJSONObject);
+          ((JSONObject)localObject).putOpt("iv", str);
+          if (!this.this$0.isGameRuntime)
+          {
+            paramJSONObject = new JSONObject();
+            try
+            {
+              paramJSONObject.put("data", localObject);
+              QLog.d("[mini] DataJsPlugin", 1, "call getGroupShareInfo： " + paramJSONObject.toString());
+              this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, paramJSONObject, this.val$callbackId);
+              if (this.val$getShareInfoHandler == null) {
+                break;
+              }
+              this.val$getShareInfoHandler.removeMessages(1);
+              return;
+            }
+            catch (JSONException localJSONException)
+            {
+              localJSONException.printStackTrace();
+              continue;
+            }
+          }
+          this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, localJSONException, this.val$callbackId);
+        }
+        catch (Exception paramJSONObject)
+        {
+          QLog.e("[mini] DataJsPlugin", 2, "call getGroupShareInfo failed ");
+          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+          return;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("[mini] DataJsPlugin", 2, "really call login");
-      }
-      String str = this.this$0.jsPluginEngine.appBrandRuntime.appId;
-      if (DataJsPlugin.access$400(this.this$0) == null) {
-        DataJsPlugin.access$500(this.this$0, 6, str);
-      }
-      DataJsPlugin.access$302(this.this$0, Long.valueOf(System.currentTimeMillis()));
-      DataJsPlugin.access$200(this.this$0).add(this.val$callback);
-      DataJsPlugin.access$400(this.this$0).a("login", null, new DataJsPlugin.26.1(this));
     }
+    QLog.e("[mini] DataJsPlugin", 2, "call getGroupShareInfo failed ");
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.26
  * JD-Core Version:    0.7.0.1
  */

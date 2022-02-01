@@ -1,7 +1,4 @@
-public abstract interface agby
-{
-  public abstract void a(afnk paramafnk);
-}
+public class agby {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

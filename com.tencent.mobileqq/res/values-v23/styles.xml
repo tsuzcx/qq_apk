@@ -3,4 +3,10 @@
     <style name="c1" parent="@style/at">
         <item name="by">?android:colorBackgroundFloating</item>
     </style>
+    <style name="vb" parent="@android:style/Widget">
+        <item name="android:button">@drawable/azp</item>
+    </style>
+    <style name="vc" parent="@android:style/Widget">
+        <item name="android:button">@drawable/g87</item>
+    </style>
 </resources>

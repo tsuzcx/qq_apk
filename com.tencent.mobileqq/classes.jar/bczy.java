@@ -1,28 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class bczy
-  implements DownloadParams.DecodeHandler
+class bczy
+  extends afwr
 {
-  private final int a = 10;
-  private final int b = 20;
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    try
-    {
-      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
-      bdnl.a(paramDownloadParams, 10);
-      return paramDownloadParams;
-    }
-    catch (OutOfMemoryError paramDownloadParams)
-    {
-      return paramBitmap;
-    }
-    catch (Exception paramDownloadParams) {}
-    return paramBitmap;
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

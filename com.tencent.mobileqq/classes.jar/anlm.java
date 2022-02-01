@@ -1,88 +1,111 @@
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-class anlm
-  implements bfoj
+public final class anlm
 {
-  anlm(anlk paramanlk) {}
+  private List<anlo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public static anlm a()
   {
-    if (anlk.a(this.a) != null) {
-      anlk.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
-    }
+    return anlp.a();
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public List<anlo> a()
   {
-    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
-      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
-      anlk.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
-      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
-      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if ((paramList != null) && (anlk.a(this.a) != null))
+    try
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        localJSONArray.put(this.a.a(localDownloadInfo));
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      return localList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    zwp.a().a(new ForeBackgroundEvent(true));
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    uot.a().a();
+    awbj.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((anlo)localIterator.next()).b();
+    }
+  }
+  
+  public void a(anlo paramanlo)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramanlo);
+      return;
+    }
+    finally
+    {
+      paramanlo = finally;
+      throw paramanlo;
+    }
+  }
+  
+  public final void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
+    }
+    if (abev.b <= 0L)
+    {
+      abev.b = System.currentTimeMillis();
+      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(abev.b) });
+    }
+    awbj.a();
+    if ((TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("mini")))) {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
       }
-      anlk.a(this.a).a(localJSONArray.toString());
+    }
+    for (;;)
+    {
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
+      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext()) {
+        ((anlo)paramString.next()).a();
+      }
+      paramString = new ForeBackgroundEvent(false);
+      zwp.a().a(paramString);
+      continue;
+      paramString = new ForeBackgroundEvent(false);
+      zwp.a().a(paramString);
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void b(anlo paramanlo)
   {
-    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
-      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramanlo);
+      return;
     }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (anlk.a(this.a) != null) {
-      anlk.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (anlk.a(this.a) != null) {
-      anlk.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    finally
+    {
+      paramanlo = finally;
+      throw paramanlo;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anlm
  * JD-Core Version:    0.7.0.1
  */

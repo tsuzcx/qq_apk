@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts;
 
 import com.tencent.pts.core.itemview.PTSItemData;
-import pwx;
-import pwy;
+import qpk;
+import qpl;
 
 public class PTSItemViewBuilder$2
   implements Runnable
 {
   public void run()
   {
-    pwx.a("0X800A9DC", "", "", "", new pwy().a("app_name", this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData.getAppName()).a("get_view_cost", String.valueOf(this.jdField_a_of_type_Long)).a());
+    qpk.a("0X800A9DC", "", "", "", new qpl().a("page_name", this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData.getPageName()).a("get_view_cost", String.valueOf(this.jdField_a_of_type_Long)).a());
   }
 }
 

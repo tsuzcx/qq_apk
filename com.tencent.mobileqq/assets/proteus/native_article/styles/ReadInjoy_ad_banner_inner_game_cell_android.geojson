@@ -303,7 +303,7 @@
                 ]
               },
               {
-                "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                "view_type": "ReadInJoyAdDownloadView",
                 "view_id": "id_view_AdDownloadView",
                 "height": {
                   "type": "relative",

@@ -1,84 +1,28 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class axrg
+  extends axeu
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public axrg(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public static axrg a(axrk paramaxrk)
+  protected void a(boolean paramBoolean)
   {
-    Object localObject;
-    if ((paramaxrk instanceof QIMEffectCameraCaptureUnit))
-    {
-      localObject = (bnpl)blqr.a(3);
-      if (localObject == null) {
-        break label290;
-      }
-      localObject = ((bnpl)localObject).a();
-      if ((localObject != null) || (!(paramaxrk instanceof bkoa))) {
-        break label292;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
     }
-    label290:
-    label292:
-    for (paramaxrk = ((bmhq)blqr.a(17)).a();; paramaxrk = (axrk)localObject)
-    {
-      if (paramaxrk != null)
-      {
-        localObject = new axrg();
-        ((axrg)localObject).e = bnpl.jdField_a_of_type_JavaLangString;
-        ((axrg)localObject).jdField_a_of_type_Boolean = paramaxrk.usable;
-        ((axrg)localObject).jdField_a_of_type_Int = paramaxrk.kind;
-        ((axrg)localObject).jdField_a_of_type_JavaLangString = paramaxrk.id;
-        ((axrg)localObject).jdField_b_of_type_JavaLangString = paramaxrk.name;
-        ((axrg)localObject).jdField_c_of_type_JavaLangString = paramaxrk.dgStageName;
-        ((axrg)localObject).d = paramaxrk.dgModelName;
-        ((axrg)localObject).jdField_b_of_type_Boolean = paramaxrk.hasFace();
-        ((axrg)localObject).jdField_c_of_type_Boolean = paramaxrk.hasGesture();
-        ((axrg)localObject).jdField_b_of_type_Int = paramaxrk.category;
-        ((axrg)localObject).f = paramaxrk.gestureType;
-        ((axrg)localObject).g = paramaxrk.gestureWording;
-        ((axrg)localObject).h = paramaxrk.bigHeadName;
-        return localObject;
-        paramaxrk = axoc.a().a();
-        if (paramaxrk != null)
-        {
-          localObject = new axrg();
-          ((axrg)localObject).e = axoc.jdField_a_of_type_JavaLangString;
-          ((axrg)localObject).jdField_a_of_type_Boolean = paramaxrk.usable;
-          ((axrg)localObject).jdField_a_of_type_Int = paramaxrk.kind;
-          ((axrg)localObject).jdField_a_of_type_JavaLangString = paramaxrk.id;
-          ((axrg)localObject).jdField_b_of_type_JavaLangString = paramaxrk.name;
-          ((axrg)localObject).jdField_c_of_type_JavaLangString = paramaxrk.dgStageName;
-          ((axrg)localObject).d = paramaxrk.dgModelName;
-          ((axrg)localObject).jdField_b_of_type_Boolean = paramaxrk.hasFace();
-          ((axrg)localObject).jdField_c_of_type_Boolean = paramaxrk.hasGesture();
-          ((axrg)localObject).jdField_b_of_type_Int = paramaxrk.category;
-          ((axrg)localObject).f = paramaxrk.gestureType;
-          ((axrg)localObject).g = paramaxrk.gestureWording;
-          ((axrg)localObject).h = paramaxrk.bigHeadName;
-          return localObject;
-        }
-        return null;
-      }
-      return null;
+    ((axby)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean) {
+      this.a.getActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrg
  * JD-Core Version:    0.7.0.1
  */

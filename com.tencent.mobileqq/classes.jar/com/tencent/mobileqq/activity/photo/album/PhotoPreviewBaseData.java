@@ -1,14 +1,11 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import android.util.SparseArray;
-import com.tencent.image.URLDrawable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PhotoPreviewBaseData
 {
   public static final String BACK_BTN_TEXT = "back_btn_text";
-  public SparseArray<URLDrawable> activeDrawable = new SparseArray();
   public String backBtnText;
   public int cameraType;
   public boolean canUseURL = false;
@@ -26,7 +23,7 @@ public class PhotoPreviewBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData
  * JD-Core Version:    0.7.0.1
  */

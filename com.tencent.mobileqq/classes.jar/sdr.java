@@ -1,28 +1,22 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
 class sdr
-  implements yrb
+  implements sna
 {
-  sdr(sdq paramsdq, boolean paramBoolean) {}
+  sdr(sdq paramsdq, rxy paramrxy) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    int j = paramBundle.getInt("readinjoy_to_wx_config");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "config = " + j + ", scene" + i);
-      }
-      this.jdField_a_of_type_Sdq.a(j, i);
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Rxy.x.getVisibility() == 0)) {
+      sdq.a(this.jdField_a_of_type_Sdq).resumeAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdr
  * JD-Core Version:    0.7.0.1
  */

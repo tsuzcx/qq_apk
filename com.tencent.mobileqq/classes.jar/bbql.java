@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bbql
-  implements Parcelable.Creator<TroopBarPOI>
+class bbql
+  implements View.OnClickListener
 {
-  public TroopBarPOI a(Parcel paramParcel)
-  {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
+  bbql(bbqk parambbqk, bbmx parambbmx) {}
   
-  public TroopBarPOI[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return null;
+    this.jdField_a_of_type_Bbmx.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

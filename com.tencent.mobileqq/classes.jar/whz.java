@@ -1,34 +1,25 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
 import java.util.List;
 
-public class whz
-  extends vcb
+final class whz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  public int c;
+  whz(List paramList) {}
   
-  public whz(ErrorMessage paramErrorMessage, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      why.a((String)localIterator.next());
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whz
  * JD-Core Version:    0.7.0.1
  */

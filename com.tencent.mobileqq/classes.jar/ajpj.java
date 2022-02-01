@@ -1,50 +1,92 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ajpj
-  implements View.OnTouchListener
+  extends bdix
 {
-  public ajpj(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ajpj(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (!this.a.l) {}
-    while (((!this.a.f) && (!this.a.c)) || (paramView.getId() != 2131366505)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    try
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      String str = (String)paramArrayOfObject[1];
+      long l = ((Long)paramArrayOfObject[2]).longValue();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718493).equals(str))
+      {
+        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
+        {
+          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
+          }
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          localObject = new Message();
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
+          ((Message)localObject).setData(localBundle);
+          ((Message)localObject).what = 78;
+          ((Message)localObject).arg1 = 0;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+        }
       }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
+      QQToast.a(this.a.getActivity(), str, 0).a();
+      QLog.i(bdhn.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
+      return;
+    }
+    catch (Exception paramArrayOfObject)
+    {
+      QLog.e(bdhn.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    try
+    {
+      QLog.i(bdhn.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
+      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      String str = (String)paramArrayOfObject[1];
+      long l = ((Long)paramArrayOfObject[2]).longValue();
+      if (paramBoolean)
+      {
+        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
+        {
+          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
+          }
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          localObject = new Message();
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
+          ((Message)localObject).setData(localBundle);
+          ((Message)localObject).what = 78;
+          ((Message)localObject).arg1 = 0;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+        }
       }
-      this.a.b.setText(null);
-      return false;
+      QQToast.a(this.a.getActivity(), str, 0).a();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+    catch (Exception paramArrayOfObject)
+    {
+      QLog.e(bdhn.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131692718);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
   }
 }
 

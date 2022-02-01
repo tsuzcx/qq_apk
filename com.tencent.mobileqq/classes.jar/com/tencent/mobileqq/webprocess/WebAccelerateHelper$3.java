@@ -7,8 +7,8 @@ import com.tencent.smtt.sdk.CookieManager;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
-import myl;
-import ndq;
+import nhe;
+import nmj;
 
 class WebAccelerateHelper$3
   implements Runnable
@@ -19,7 +19,7 @@ class WebAccelerateHelper$3
   {
     Object localObject1 = CookieManager.getInstance().getCookie(this.val$url);
     if (QLog.isColorLevel()) {
-      QLog.d("WebAccelerateHelper", 2, "cookie=" + ndq.c((String)localObject1, new String[0]));
+      QLog.d("WebAccelerateHelper", 2, "cookie=" + nmj.c((String)localObject1, new String[0]));
     }
     boolean bool3 = TextUtils.isEmpty((CharSequence)localObject1);
     boolean bool2;
@@ -34,7 +34,7 @@ class WebAccelerateHelper$3
         if ((!((String)localObject1).contains("uin")) || (!((String)localObject1).contains(str)))
         {
           bool2 = true;
-          if (!myl.a().a(this.val$url)) {
+          if (!nhe.a().a(this.val$url)) {
             break label272;
           }
           if ((((String)localObject1).contains("skey")) && (((String)localObject1).contains((CharSequence)localObject2))) {
@@ -72,7 +72,7 @@ class WebAccelerateHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.3
  * JD-Core Version:    0.7.0.1
  */

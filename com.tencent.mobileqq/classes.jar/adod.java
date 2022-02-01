@@ -1,59 +1,94 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class adod
-  implements bhuk
+  implements InputFilter
 {
-  public adod(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, bhuf parambhuf) {}
+  private int jdField_a_of_type_Int = 32;
   
-  public void OnClick(View paramView, int paramInt)
+  public adod(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    switch (paramInt)
+    int j = paramInt1;
+    int k = 0;
+    if (j < paramInt2)
     {
+      i = paramCharSequence.charAt(j);
+      if (i < 128) {
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        k += i;
+        break;
+        if (i < 2048) {
+          i = 2;
+        } else {
+          i = 3;
+        }
+      }
     }
+    int n = paramSpanned.length();
+    int i = 0;
+    int m = 0;
+    if (m < n)
+    {
+      if ((m >= paramInt3) && (m < paramInt4)) {
+        break label272;
+      }
+      j = paramSpanned.charAt(m);
+      if (j < 128)
+      {
+        j = 1;
+        label127:
+        i = j + i;
+      }
+    }
+    label272:
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.e();
-      return;
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      if (bdin.d(BaseApplication.getContext()))
+      m += 1;
+      break;
+      if (j < 2048)
       {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
-        if (bdeu.b(this.jdField_a_of_type_JavaLangString)) {
-          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+        j = 2;
+        break label127;
       }
-      else
+      j = 3;
+      break label127;
+      i = this.jdField_a_of_type_Int - i;
+      if (i <= 0) {
+        return "";
+      }
+      if (i >= k) {
+        return null;
+      }
+      paramInt4 = paramInt1;
+      while (paramInt4 < paramInt2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131691543, 1);
-        continue;
-        if (bdeu.b(this.jdField_a_of_type_JavaLangString)) {
-          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        paramInt3 = paramCharSequence.charAt(paramInt4);
+        if (paramInt3 < 128) {
+          paramInt3 = 1;
         }
+        for (;;)
+        {
+          i -= paramInt3;
+          if (i >= 0) {
+            break;
+          }
+          return paramCharSequence.subSequence(paramInt1, paramInt4);
+          if (paramInt3 < 2048) {
+            paramInt3 = 2;
+          } else {
+            paramInt3 = 3;
+          }
+        }
+        paramInt4 += 1;
       }
+      return null;
     }
   }
 }

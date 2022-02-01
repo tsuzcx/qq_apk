@@ -1,39 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import mqq.app.AppRuntime;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class alvv
-  extends aluc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected void a(String paramString)
+  public alvv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      localGuardManager.a(i, paramString);
-      return;
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
+      }
+      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.c.setAlpha(Float.valueOf(f).floatValue());
+      }
     }
-  }
-  
-  protected void b()
-  {
-    this.a.a(6, "fake_p_msg");
-  }
-  
-  public void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.c();
-    this.a.c(true);
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, alua.a().a, 0L);
-    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alvv
  * JD-Core Version:    0.7.0.1
  */

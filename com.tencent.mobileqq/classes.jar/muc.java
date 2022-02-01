@@ -1,67 +1,72 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-final class muc
-  implements muf
+public class muc
 {
-  muc(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
-  
-  private void a(Context paramContext)
+  public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    if ((paramContext instanceof JumpActivity)) {
-      ((Activity)paramContext).finish();
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return a((QQAppInterface)paramAppInterface, paramString1, paramString2);
     }
+    return c(paramAppInterface, paramString1, paramString2);
   }
   
-  public void a(int paramInt1, muh parammuh, int paramInt2)
+  private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    switch (paramInt1)
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface != null)
+      {
+        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
+          return 3;
+        }
+        paramQQAppInterface = paramQQAppInterface.b(paramString2);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
+          return 0;
+        }
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopAdmin(paramString1))) {
+          return 1;
+        }
+        if (paramQQAppInterface != null) {
+          return 2;
+        }
+        return -1;
+      }
+      return -1;
+    }
+    return -1;
+  }
+  
+  public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    switch (a(paramAppInterface, paramString1, paramString2))
     {
     default: 
-      a(this.jdField_a_of_type_AndroidContentContext);
+      return 4;
+    case 0: 
+      return 3;
+    case 1: 
+      return 2;
+    case 2: 
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return;
-        bipu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
-        return;
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", parammuh.jdField_a_of_type_JavaLangString);
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          localIntent.addFlags(268435456);
-        }
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        a(this.jdField_a_of_type_AndroidContentContext);
-        return;
-        ((atad)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
-        return;
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          mtz.a(this.jdField_a_of_type_AndroidContentContext, parammuh.b, parammuh.c, new mud(this));
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
-      return;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-      {
-        mtz.a(this.jdField_a_of_type_AndroidContentContext, parammuh.b, parammuh.c, new mue(this));
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
+    return 0;
+  }
+  
+  private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    if ((paramAppInterface instanceof mud)) {
+      return ((mud)paramAppInterface).a(paramString1, paramString2);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     muc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
 public class mlv
-  implements View.OnClickListener
+  implements ajim
 {
-  public mlv(VideoControlUI paramVideoControlUI) {}
+  public mlv(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  public void onClick(View paramView)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    mtq.c(paramView.getId());
-    AVActivity localAVActivity = this.a.a();
-    if (localAVActivity != null) {
-      localAVActivity.BtnOnClick(paramView);
-    }
+    this.a.setCurSelTab(paramInt, paramBoolean, 1);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mlv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.ResultReceiver;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.qphone.base.util.QLog;
 
 class aapf
-  implements aaqi
+  extends aapv
 {
-  aapf(aape paramaape) {}
-  
-  public Activity a()
+  aapf(aapa paramaapa, aapi paramaapi, String paramString)
   {
-    return aape.a(this.a);
+    super(paramaapa);
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.a.dismiss();
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    aape.a(this.a).a().resultReceiver.send(paramInt, paramIntent.getExtras());
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapa.a));
+      this.jdField_a_of_type_Aapa.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aapi.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
+    }
   }
 }
 

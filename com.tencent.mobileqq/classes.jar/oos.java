@@ -1,35 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class oos
-  implements ViewBase.OnClickListener
+public class oos
+  implements acup
 {
-  oos(oor paramoor) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    if (paramLong == 8589934598L)
     {
-    default: 
-      return;
-    case 1093: 
-      ors.a(oop.a(this.a.a), oop.a(this.a.a), otd.a(oop.a(this.a.a).innerUniqueID));
-      this.a.a.a(2);
-      this.a.a.dismiss();
-      paramViewBase = new orz();
-      paramViewBase.i().b("wording", "" + otd.a());
-      olt.a("0X8009FE8", oop.a(this.a.a), paramViewBase);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
+      }
+      paramString = new Bundle();
+      aanz.a().a(140, paramString);
     }
-    this.a.a.a(1);
-    this.a.a.dismiss();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oos
  * JD-Core Version:    0.7.0.1
  */

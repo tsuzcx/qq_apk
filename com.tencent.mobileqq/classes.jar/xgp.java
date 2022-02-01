@@ -1,28 +1,16 @@
-import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface xgp
+class xgp
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public ImageView a;
+  public TextView a;
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(xhv paramxhv);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
+  xgp(xgo paramxgo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgp
  * JD-Core Version:    0.7.0.1
  */

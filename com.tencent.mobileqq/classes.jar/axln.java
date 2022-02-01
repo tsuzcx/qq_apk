@@ -1,151 +1,98 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.Date;
-
 public class axln
 {
-  private static bhsk<Integer> jdField_a_of_type_Bhsk;
-  private static String jdField_a_of_type_JavaLangString = "ReceiptUtil";
-  private static boolean jdField_a_of_type_Boolean;
-  
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static int a(CharSequence paramCharSequence)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
+    if (paramCharSequence == null) {
+      return 0;
     }
-    return aeow.a;
-  }
-  
-  private static long a(String paramString)
-  {
-    try
+    int m = paramCharSequence.length();
+    int i = 0;
+    int j = 0;
+    if (i < m)
     {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      if (paramCharSequence.charAt(i) < '') {}
+      for (int k = 1;; k = 2)
+      {
+        j += k;
+        i += 1;
+        break;
       }
     }
-    return -1L;
+    return j;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
-    }
-    int i = c(paramQQAppInterface) + 1;
-    a(paramQQAppInterface, i);
-    if (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "increaseSentNum with result:  " + Integer.toString(i));
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setSentNum: " + paramInt);
-    }
-    jdField_a_of_type_Bhsk.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
-    paramQQAppInterface.getPreferences().edit().putInt("receipt_msg_sent_num", paramInt).apply();
-  }
-  
-  public static boolean a()
-  {
-    return aeow.b;
-  }
-  
-  private static boolean a(long paramLong1, long paramLong2)
-  {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong2);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    Date localDate = localCalendar.getTime();
-    localCalendar.setTimeInMillis(paramLong1);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    if (localDate.compareTo(localCalendar.getTime()) == 0) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramLong1 + " and " + paramLong2 + "isToday? " + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null)
+    int m = paramCharSequence.length();
+    int j = 0;
+    int i = paramInt1;
+    for (;;)
     {
-      bool1 = bool2;
-      if ((paramMessageRecord instanceof MessageForStructing))
-      {
-        bool1 = bool2;
-        if (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107) {
-          bool1 = true;
+      CharSequence localCharSequence = paramCharSequence;
+      if (i < m) {
+        if (paramCharSequence.charAt(i) >= '') {
+          break label91;
         }
       }
+      label91:
+      for (int k = 1;; k = 2)
+      {
+        j = k + j;
+        if (j <= paramInt2) {
+          break;
+        }
+        paramInt2 = i;
+        if (i > 0)
+        {
+          paramInt2 = i;
+          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
+            paramInt2 = i - 1;
+          }
+        }
+        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+        return localCharSequence;
+      }
+      i += 1;
     }
-    return bool1;
   }
   
-  public static int b(QQAppInterface paramQQAppInterface)
+  public static String a(long paramLong)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
+    paramLong = System.currentTimeMillis() - paramLong;
+    if (paramLong < 3600000L) {
+      return paramLong / 60L / 1000L + 1L + anni.a(2131701012);
     }
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    long l1 = localSharedPreferences.getLong("receipt_msg_store_time", 0L);
-    long l2 = NetConnInfoCenter.getServerTime() * 1000L;
-    if (!a(l1, l2))
-    {
-      a(paramQQAppInterface, 0);
-      localSharedPreferences.edit().putLong("receipt_msg_store_time", l2).apply();
+    if (paramLong < 86400000L) {
+      return paramLong / 60L / 60L / 1000L + anni.a(2131701019);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getLeftNum max is " + a(paramQQAppInterface));
-    }
-    return a(paramQQAppInterface) - c(paramQQAppInterface);
+    return paramLong / 24L / 60L / 60L / 1000L + anni.a(2131701011);
   }
   
-  private static void b(QQAppInterface paramQQAppInterface)
+  public static String b(long paramLong)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    jdField_a_of_type_Bhsk = new bhsk(1);
-    int i = localSharedPreferences.getInt("receipt_msg_sent_num", 0);
-    jdField_a_of_type_Bhsk.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(i));
-    jdField_a_of_type_Boolean = true;
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if (paramLong > 100000L) {
+      return "9.9万+";
+    }
+    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
   }
   
-  private static int c(QQAppInterface paramQQAppInterface)
+  public static String c(long paramLong)
   {
-    int i = ((Integer)jdField_a_of_type_Bhsk.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getSentNum is " + i);
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
     }
-    return i;
+    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
+      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    }
+    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axln
  * JD-Core Version:    0.7.0.1
  */

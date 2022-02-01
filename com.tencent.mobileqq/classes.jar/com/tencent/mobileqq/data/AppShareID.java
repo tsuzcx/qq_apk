@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class AppShareID
-  extends awge
+  extends Entity
 {
   public String appstorelink;
   public String bundleid;
@@ -14,14 +14,14 @@ public class AppShareID
   public short sPriority;
   public short sResType;
   public String sourceUrl;
-  @awhs
+  @unique
   public String strPkgName;
   public String strResDesc;
   public String strResName;
   public String strResURL_big;
   public String strResURL_small;
   public long uiNewVer;
-  @awhs
+  @unique
   public long uiResID;
   public long updateTime;
   
@@ -34,7 +34,7 @@ public class AppShareID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AppShareID
  * JD-Core Version:    0.7.0.1
  */

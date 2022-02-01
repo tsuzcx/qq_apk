@@ -1,23 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class aefq
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public aefq(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  public aefq(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,44 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aasv
-  implements BusinessObserver
+  implements aats
 {
-  protected void a(int paramInt, String paramString1, String paramString2) {}
+  public aasv(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt) {}
+  
+  public void a(List<bfte> paramList, aasn paramaasn)
   {
-    if (100 == paramInt)
+    if (this.a.jdField_a_of_type_Aasj == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
+        QLog.e("TroopGiftPanel", 2, "getPackGiftStorage--onGetPackGift error--mTroopGifPanelData is null");
       }
-      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
+    this.a.jdField_a_of_type_Aasj.b(paramList);
+    this.a.jdField_a_of_type_Aasj.a(paramaasn);
+    if ((this.a.jdField_a_of_type_Aasj != null) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList.size() > 0) && (this.a.jdField_a_of_type_Aasj.b.size() > 0) && (this.a.jdField_a_of_type_Aasj.jdField_e_of_type_Int != -1))
+    {
+      this.a.jdField_a_of_type_Aasi = ((aasi)this.a.jdField_a_of_type_Aasj.jdField_e_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Aasj.jdField_e_of_type_Int));
+      TroopGiftPanel.a(this.a, this.a.jdField_a_of_type_Aasi);
+    }
+    if (this.a.d())
+    {
+      paramList = this.a;
+      if ((!TextUtils.isEmpty(this.a.f)) && (TroopGiftPanel.a(this.a))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramList.setSendGiftBtnEnabled(bool);
+        return;
+      }
+    }
+    this.a.setSendGiftBtnEnabled(TroopGiftPanel.a(this.a));
   }
 }
 

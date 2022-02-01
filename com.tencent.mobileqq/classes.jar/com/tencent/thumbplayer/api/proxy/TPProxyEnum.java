@@ -5,6 +5,7 @@ public class TPProxyEnum
   public static final int DLTYPE_AUTO = 0;
   public static final int DLTYPE_CLIP_MP4_VOD = 2;
   public static final int DLTYPE_FILE_DOWNLOAD = 10;
+  public static final int DLTYPE_FLV_LIVE = 11;
   public static final int DLTYPE_HLS_ADV = 7;
   public static final int DLTYPE_HLS_ADV_LOOP = 8;
   public static final int DLTYPE_HLS_LIVE = 5;
@@ -29,7 +30,7 @@ public class TPProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPProxyEnum
  * JD-Core Version:    0.7.0.1
  */

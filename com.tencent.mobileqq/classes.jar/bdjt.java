@@ -1,47 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bdjt
+class bdjt
+  extends bdjv
 {
-  public float a;
-  public afii a;
-  public SessionInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e = "";
-  
-  public bdjt(Bundle paramBundle)
+  bdjt(bdjq parambdjq)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
-    this.b = paramBundle.getString("appView");
-    this.c = paramBundle.getString("appMinVersion");
-    this.d = paramBundle.getString("metaData");
-    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    paramBundle = paramBundle.getString("troopUin");
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
-    }
+    super(parambdjq);
   }
   
-  public static Bundle a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, String paramString5, Bundle paramBundle)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putString("appName", paramString1);
-    localBundle.putString("appMinVersion", paramString3);
-    localBundle.putString("appView", paramString2);
-    localBundle.putString("metaData", paramString4);
-    localBundle.putFloat("scale", paramFloat);
-    localBundle.putString("troopUin", paramString5);
-    return localBundle;
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

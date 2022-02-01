@@ -1,44 +1,19 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 
-public class bepc
-  implements Animation.AnimationListener
+class bepc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private bepc(DraggableGridView paramDraggableGridView) {}
+  bepc(bepb parambepb, View paramView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
-    {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
-      if ((paramAnimation instanceof GridView))
-      {
-        paramAnimation = (GridView)paramAnimation;
-        int j = 0;
-        while (j < paramAnimation.getChildCount())
-        {
-          paramAnimation.getChildAt(j).clearAnimation();
-          paramAnimation.getChildAt(j).setPressed(false);
-          paramAnimation.getChildAt(j).setVisibility(0);
-          j += 1;
-        }
-      }
-      i += 1;
-    }
-    this.a.a();
-    DraggableGridView.b(this.a, false);
-    DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

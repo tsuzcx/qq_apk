@@ -14,6 +14,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListe
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
@@ -38,7 +39,9 @@ import com.tencent.thumbplayer.core.common.TPMediaTrackInfo;
 import com.tencent.thumbplayer.core.imagegenerator.TPImageGeneratorParams;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerAudioFrameCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaCodecInfo;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoCropInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerSubtitleFrameCallback;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerVideoFrameCallback;
 import com.tencent.thumbplayer.core.player.TPNativePlayer;
 import com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig;
@@ -60,6 +63,7 @@ public class TPThumbPlayer
   private ITPNativePlayerAudioFrameCallback mNativeAudioFrameCallback = new TPThumbPlayer.2(this);
   private TPNativePlayerInitConfig mNativeInitConfig;
   private ITPNativePlayerMessageCallback mNativeMessageCallback = new TPThumbPlayer.1(this);
+  private ITPNativePlayerSubtitleFrameCallback mNativeSubtitleFrameCallback = new TPThumbPlayer.4(this);
   private ITPNativePlayerVideoFrameCallback mNativeVideoFrameCallback = new TPThumbPlayer.3(this);
   private TPNativePlayer mPlayer;
   private TPPlayerBaseListeners mPlayerListenerReps;
@@ -71,6 +75,7 @@ public class TPThumbPlayer
     this.mPlayer.setMessageCallback(this.mNativeMessageCallback);
     this.mPlayer.setAudioFrameCallback(this.mNativeAudioFrameCallback);
     this.mPlayer.setVideoFrameCallback(this.mNativeVideoFrameCallback);
+    this.mPlayer.setSubtitleFrameCallback(this.mNativeSubtitleFrameCallback);
     this.mNativeInitConfig = new TPNativePlayerInitConfig();
     this.mPlayerListenerReps = new TPPlayerBaseListeners(TAG);
     paramContext = Looper.myLooper();
@@ -127,16 +132,26 @@ public class TPThumbPlayer
       TPLogUtil.w(TAG, "msgType:" + paramInt + ", connot convert to thumbPlayer Info");
       return;
     }
-    Object localObject = paramOnInfoObjectInfo.objParam;
+    Object localObject2 = paramOnInfoObjectInfo.objParam;
+    Object localObject1 = localObject2;
     switch (i)
     {
+    default: 
+      localObject1 = localObject2;
     }
     for (;;)
     {
-      this.mPlayerListenerReps.onInfo(i, 0L, 0L, localObject);
+      this.mPlayerListenerReps.onInfo(i, 0L, 0L, localObject1);
       return;
-      if (paramOnInfoObjectInfo.objParam != null) {
-        localObject = TPThumbPlayerUtils.convert2TPVideoCropInfo((ITPNativePlayerMessageCallback.VideoCropInfo)paramOnInfoObjectInfo.objParam);
+      localObject1 = localObject2;
+      if (paramOnInfoObjectInfo.objParam != null)
+      {
+        localObject1 = TPThumbPlayerUtils.convert2TPVideoCropInfo((ITPNativePlayerMessageCallback.VideoCropInfo)paramOnInfoObjectInfo.objParam);
+        continue;
+        localObject1 = localObject2;
+        if (paramOnInfoObjectInfo.objParam != null) {
+          localObject1 = TPThumbPlayerUtils.convert2TPMediaCodecInfo((ITPNativePlayerMessageCallback.MediaCodecInfo)paramOnInfoObjectInfo.objParam);
+        }
       }
     }
   }
@@ -418,16 +433,6 @@ public class TPThumbPlayer
     this.mPlayer.deselectTrackAsync(paramInt, paramLong);
   }
   
-  public long getBufferedDurationMs()
-  {
-    if (this.mPlayer == null)
-    {
-      TPLogUtil.i(TAG, "player has released, return 0");
-      return 0L;
-    }
-    return this.mPlayer.getBufferedDurationMs();
-  }
-  
   public long getCurrentPositionMs()
   {
     if (this.mPlayer == null)
@@ -446,6 +451,16 @@ public class TPThumbPlayer
       return 0L;
     }
     return this.mPlayer.getDurationMs();
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    if (this.mPlayer == null)
+    {
+      TPLogUtil.i(TAG, "player has released, return 0");
+      return 0L;
+    }
+    return this.mPlayer.getBufferedDurationMs() + this.mPlayer.getCurrentPositionMs();
   }
   
   public TPProgramInfo[] getProgramInfo()
@@ -612,7 +627,7 @@ public class TPThumbPlayer
   
   public void selectProgram(int paramInt, long paramLong)
   {
-    TPLogUtil.i(TAG, "selectProgram");
+    TPLogUtil.i(TAG, "selectProgram, programIndex:" + paramInt);
     if (this.mPlayer == null)
     {
       TPLogUtil.w(TAG, "player has released, return");
@@ -746,6 +761,11 @@ public class TPThumbPlayer
   public void setOnSubtitleDataListener(ITPPlayerBaseListener.IOnSubtitleDataListener paramIOnSubtitleDataListener)
   {
     this.mPlayerListenerReps.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
+  }
+  
+  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  {
+    this.mPlayerListenerReps.setOnSubtitleFrameOutLisener(paramIOnSubtitleFrameOutListener);
   }
   
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
@@ -908,7 +928,7 @@ public class TPThumbPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/cg_" android:background="@color/dg" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.tavcut.view.TAVCutImageView android:id="@id/mqz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.ae.view.TabLayout android:id="@id/njp" android:layout_width="fill_parent" android:layout_height="@dimen/b69" android:layout_marginLeft="@dimen/b6d" android:layout_marginTop="@dimen/b6a" android:layout_marginRight="@dimen/b6d" android:layout_marginBottom="@dimen/b6_" android:layout_alignParentBottom="true" />
 </RelativeLayout>

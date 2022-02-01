@@ -1,59 +1,135 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
 
 public class vfb
-  extends urt<vgz>
+  extends vex
 {
-  private static final String b = uqn.a("StorySvc.video_show_delete");
-  public String a;
+  private vfc a;
+  protected float[] a;
+  protected float l;
+  protected float m = -1.0F;
+  protected float n;
+  protected int v;
   
-  public vfb(String paramString)
+  public vfb(vel paramvel, vey paramvey, vfa paramvfa)
   {
-    this.a = paramString;
+    super(paramvel, paramvey, paramvfa);
   }
   
-  public String a()
+  public float a()
   {
-    return b;
+    return -this.n;
   }
   
-  public vgz a(byte[] paramArrayOfByte)
+  protected float a(long paramLong)
   {
-    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
-    try
-    {
-      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
-      return new vgz(localRspDeleteVideo);
+    long l1 = this.c;
+    return this.o - (float)(paramLong - l1) * this.n;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(vfc paramvfc)
+  {
+    this.jdField_a_of_type_Vfc = paramvfc;
+  }
+  
+  public float[] a(long paramLong)
+  {
+    if (!a()) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    float f = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
     }
-    return null;
+    this.jdField_a_of_type_ArrayOfFloat[0] = f;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.m;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f + this.h);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.m + this.i);
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
-  protected byte[] a()
+  public float b()
   {
-    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
-    localReqDeleteVideo.vid_list.addAll(localArrayList);
-    return localReqDeleteVideo.toByteArray();
+    return this.l;
   }
   
-  public String toString()
+  protected void b()
   {
-    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
+    if (this.jdField_a_of_type_Vfc != null) {
+      this.jdField_a_of_type_Vfc.a();
+    }
+  }
+  
+  public void b(PhotoDanmakuDrawer paramPhotoDanmakuDrawer)
+  {
+    super.b(paramPhotoDanmakuDrawer);
+    this.v = ((int)(this.o + this.h));
+    this.n = (this.v / (float)this.jdField_a_of_type_Vey.a());
+    this.l = this.o;
+  }
+  
+  public void b(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_Vfa != null)
+    {
+      if (!c())
+      {
+        this.l = a(this.jdField_a_of_type_Vfa.a());
+        if (!b())
+        {
+          this.m = paramFloat2;
+          a(true);
+        }
+        return;
+      }
+      a(false);
+    }
+    this.l = this.o;
+  }
+  
+  public float[] b(long paramLong)
+  {
+    if (!a()) {
+      return null;
+    }
+    float f = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = f;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.m;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f + this.h);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.m + this.i);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float c()
+  {
+    return this.m;
+  }
+  
+  public float d()
+  {
+    return this.l + this.h;
+  }
+  
+  public void d()
+  {
+    this.l = a(this.jdField_a_of_type_Vfa.a());
+  }
+  
+  public float e()
+  {
+    return this.m + this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfb
  * JD-Core Version:    0.7.0.1
  */

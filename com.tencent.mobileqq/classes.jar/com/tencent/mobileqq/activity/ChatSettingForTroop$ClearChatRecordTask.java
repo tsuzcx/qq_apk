@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import alaz;
+import amuf;
 import android.os.Handler;
 import android.os.Message;
-import auam;
-import ayzl;
-import bcpx;
+import awhv;
+import bbyp;
+import bfup;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -41,7 +41,7 @@ public class ChatSettingForTroop$ClearChatRecordTask
       localObject1 = localChatSettingForTroop.app;
       str = localChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
       localObject2 = new StringBuilder();
-      i = bcpx.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
+      i = bfup.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
       List localList = ((QQAppInterface)localObject1).a().b(str, 1);
       if ((localList == null) || (localList.isEmpty())) {
         break label367;
@@ -70,7 +70,7 @@ public class ChatSettingForTroop$ClearChatRecordTask
           FriendsStatusUtil.a((QQAppInterface)localObject1, str, 1);
           ((QQAppInterface)localObject1).a().a(str, 1, true, false);
           ((QQAppInterface)localObject1).a().e(str, 1);
-          alaz.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
+          amuf.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
           localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
           Object localObject2 = ((MqqHandler)localObject1).obtainMessage(1017);
           ((Message)localObject2).obj = str;
@@ -93,7 +93,7 @@ public class ChatSettingForTroop$ClearChatRecordTask
         return;
         label325:
         ((QQAppInterface)localObject1).a().a(localException, 1);
-        auam.a().b(localException, (QQAppInterface)localObject1);
+        awhv.a().b(localException, (QQAppInterface)localObject1);
         continue;
         if (QLog.isColorLevel())
         {
@@ -109,7 +109,7 @@ public class ChatSettingForTroop$ClearChatRecordTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,44 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
 
-class aixu
-  implements BusinessObserver
+public class aixu
 {
-  aixu(aixs paramaixs) {}
+  public int a;
+  public boolean a;
+  public int b = 0;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aixu()
   {
-    if (paramInt == 17)
-    {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
-      }
-    }
+    this.jdField_a_of_type_Int = 23;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
   }
 }
 

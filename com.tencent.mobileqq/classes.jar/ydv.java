@@ -1,24 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ydv
-  implements View.OnClickListener
+public class ydv
+  extends QQUIEventReceiver<ydh, wpw>
 {
-  ydv(ydu paramydu, CertifiedAccountMeta.StUser paramStUser) {}
-  
-  public void onClick(View paramView)
+  public ydv(@NonNull ydh paramydh)
   {
-    zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + yod.a(this.jdField_a_of_type_Ydu.getExtraTypeInfo()), "clk_shop", 0, 0, new String[0]);
-    ybt.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    super(paramydh);
+  }
+  
+  public void a(@NonNull ydh paramydh, @NonNull wpw paramwpw)
+  {
+    if (ydh.a(paramydh) == null)
+    {
+      yqp.b(this.TAG, "ignore this troop nick name change event. %s.", paramwpw.toString());
+      return;
+    }
+    yqp.a(this.TAG, "receive troop nick name change event. %s.", paramwpw.toString());
+    ydh.a(paramydh).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wpw.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydv
  * JD-Core Version:    0.7.0.1
  */

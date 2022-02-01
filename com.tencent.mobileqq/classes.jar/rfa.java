@@ -1,27 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
-public class rfa
-  implements alpg
+public final class rfa
+  implements Parcelable.Creator<DislikeInfo>
 {
-  public rfa(rez paramrez) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public DislikeInfo a(Parcel paramParcel)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    rez.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bkbq.a();
-    bkbq.a(rez.a(this.a));
-    rez.a(this.a, rez.a(this.a));
+    return new DislikeInfo(paramParcel);
+  }
+  
+  public DislikeInfo[] a(int paramInt)
+  {
+    return new DislikeInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rfa
  * JD-Core Version:    0.7.0.1
  */

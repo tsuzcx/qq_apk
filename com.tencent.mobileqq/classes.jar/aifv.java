@@ -1,43 +1,34 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aifv
-  extends ampi
+class aifv
+  implements View.OnClickListener
 {
-  aifv(aiez paramaiez) {}
+  aifv(aift paramaift) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (bkbq.j()) {
-      this.a.a(39, null);
+    afur.n = true;
+    int i;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
+    {
+    default: 
+      i = 0;
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!bkbq.i()) {}
-    while (this.a.a == null) {
+    for (;;)
+    {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      agaa.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void c()
-  {
-    if (!bkbq.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
   }
 }
 

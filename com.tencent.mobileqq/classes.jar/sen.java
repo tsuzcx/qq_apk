@@ -1,33 +1,22 @@
 import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import org.json.JSONObject;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 class sen
-  implements URLDrawableDownListener
+  extends bkfi
 {
-  sen(sei paramsei) {}
+  sen(sek paramsek, AlphaAnimation paramAlphaAnimation) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AbstractGifImage.resumeAll();
-    sei.a(this.a).setVisibility(0);
-    this.a.a("0X800920C", new JSONObject());
+    this.jdField_a_of_type_Sek.a.q.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sen
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.widget.QQToast;
 
 class rst
-  extends pdi
+  implements rsi<String>
 {
-  rst(rss paramrss, String paramString, AbsListView paramAbsListView, int paramInt)
-  {
-    super(paramString);
-  }
+  rst(rsn paramrsn) {}
   
-  public void a(pdc parampdc)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    QQToast.a(rsn.a(this.a), paramString, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rst
  * JD-Core Version:    0.7.0.1
  */

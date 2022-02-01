@@ -1,22 +1,54 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import java.util.ArrayList;
 
-public class ahre
-  extends RecyclerView.ItemDecoration
+class ahre
+  implements ahvj
 {
-  private int a;
+  ahre(ahrd paramahrd) {}
   
-  public ahre(int paramInt)
+  public void a(Intent paramIntent)
   {
-    this.a = paramInt;
+    ahrd.a(this.a).a(ahrd.a(this.a).hashCode(), paramIntent);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public boolean a(int paramInt)
   {
-    paramRect.right = this.a;
+    Object localObject = ahrd.a(this.a).a(ahrd.a(this.a).hashCode());
+    int i = paramInt;
+    if (localObject != null)
+    {
+      i = paramInt;
+      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
+      {
+        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+        i = paramInt;
+        if (localObject != null) {
+          i = ((ArrayList)localObject).size();
+        }
+      }
+    }
+    PanelIconLinearLayout localPanelIconLinearLayout;
+    if ((ahrd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!ahrd.a(this.a).J))
+    {
+      boolean bool = njo.a().a(ahrd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if (ahrd.a(this.a).g() == 4) {}
+      localPanelIconLinearLayout = ahrd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      if (!bool) {
+        break label182;
+      }
+    }
+    label182:
+    for (localObject = ahqr.m;; localObject = ahqr.l)
+    {
+      localPanelIconLinearLayout.a((int[])localObject, i);
+      if ((i > 0) && (!ahrd.a(this.a).B())) {
+        ahrd.a(this.a).a(true);
+      }
+      return false;
+    }
   }
 }
 

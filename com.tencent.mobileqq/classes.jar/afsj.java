@@ -1,17 +1,54 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
-class afsj
-  extends afuf
+public class afsj
+  extends aniz
 {
-  afsj(afpy paramafpy)
+  public afsj(ActivateFriendActivity paramActivateFriendActivity) {}
+  
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramafpy, null);
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      anyq.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new afmy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      anyq.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
+    }
+    label148:
+    for (String str = this.a.getString(2131689527);; str = this.a.getString(2131689528))
+    {
+      str = this.a.getString(2131689530, new Object[] { str });
+      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
+      return;
+    }
+    label161:
+    QQToast.a(this.a, 1, this.a.getResources().getString(2131717834), 0).b(this.a.getTitleBarHeight());
   }
 }
 

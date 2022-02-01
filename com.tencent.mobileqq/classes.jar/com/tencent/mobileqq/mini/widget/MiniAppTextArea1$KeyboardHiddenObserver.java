@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.widget;
 
+import android.os.Build;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.JsPluginEngine;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -18,9 +19,10 @@ public class MiniAppTextArea1$KeyboardHiddenObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    int i = 0;
+    boolean bool1 = false;
     if (MiniAppTextArea1.access$600(this.this$0) != null)
     {
+      int i;
       try
       {
         if ((paramObject instanceof String))
@@ -46,8 +48,7 @@ public class MiniAppTextArea1$KeyboardHiddenObserver
       catch (Exception paramObservable)
       {
         int j;
-        label322:
-        int k;
+        label323:
         QLog.e("MiniAppTextArea1", 1, "KeyboardHiddenObserver error.", paramObservable);
         return;
       }
@@ -56,39 +57,59 @@ public class MiniAppTextArea1$KeyboardHiddenObserver
         paramObservable = new JSONObject();
         paramObservable.put("inputId", MiniAppTextArea1.access$900(this.this$0));
         j = MiniAppTextArea1.access$400(this.this$0);
-        if (MiniAppTextArea1.access$200(this.this$0)) {
-          i = MiniAppTextArea1.access$500(this.this$0);
+        if (!MiniAppTextArea1.access$200(this.this$0)) {
+          break label550;
         }
+        i = MiniAppTextArea1.access$500(this.this$0);
         paramObservable.put("height", (int)((i + j) / DisplayUtil.getDensity(this.this$0.getContext()) + 0.5F));
         QLog.d("MiniAppTextArea1", 1, "onKeyboardShow : " + paramObservable.toString());
         MiniAppTextArea1.access$600(this.this$0).getPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), MiniAppTextArea1.access$600(this.this$0).getPageWebview().pageWebviewId);
       }
       catch (Throwable paramObservable)
       {
-        break label322;
+        label550:
+        break label323;
       }
       MiniAppTextArea1.access$402(this.this$0, (int)(Integer.valueOf(String.valueOf(paramObject)).intValue() * DisplayUtil.getDensity(this.this$0.getContext())));
-      if ((DisplayUtil.hasNavBar(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity)) && (DisplayUtil.isNavigationBarExist(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity))) {
-        MiniAppTextArea1.access$402(this.this$0, MiniAppTextArea1.access$400(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity));
+      if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
+        bool1 = DisplayUtil.checkNavigationBarShow(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity);
       }
-      if (this.this$0.isFocused())
+      for (;;)
       {
+        QLog.d("MiniAppTextArea1", 1, " hasNavBar : " + bool1);
+        if (bool1) {
+          MiniAppTextArea1.access$402(this.this$0, MiniAppTextArea1.access$400(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity));
+        }
+        if (!this.this$0.isFocused()) {
+          return;
+        }
         if (MiniAppTextArea1.access$200(this.this$0))
         {
           i = MiniAppTextArea1.access$300(this.this$0);
           j = MiniAppTextArea1.access$400(this.this$0);
-          k = MiniAppTextArea1.access$500(this.this$0);
+          int k = MiniAppTextArea1.access$500(this.this$0);
           MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().showKeyBoardConfirmView(i - j - k);
         }
         MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.jsPluginEngine.setCurInputId(MiniAppTextArea1.access$900(this.this$0));
         return;
+        i = 0;
+        break;
+        if ((!DisplayUtil.hasNavBar(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity)) || (!DisplayUtil.isNavigationBarExist(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity)))
+        {
+          boolean bool2 = DisplayUtil.isFlymeOS7NavBarShow();
+          if (!bool2) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea1.KeyboardHiddenObserver
  * JD-Core Version:    0.7.0.1
  */

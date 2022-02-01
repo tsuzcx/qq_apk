@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agse;
+import aicl;
+import android.support.v4.app.FragmentActivity;
 
 class LimitChatPie$6$1
   implements Runnable
@@ -9,14 +10,14 @@ class LimitChatPie$6$1
   
   public void run()
   {
-    if (agse.b(this.a.this$0)) {
-      agse.b(this.a.this$0);
+    if ((!this.a.this$0.a.isFinishing()) && (aicl.b(this.a.this$0))) {
+      aicl.b(this.a.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.6.1
  * JD-Core Version:    0.7.0.1
  */

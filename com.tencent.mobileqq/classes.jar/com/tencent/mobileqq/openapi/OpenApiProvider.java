@@ -8,11 +8,11 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Pair;
-import awfk;
-import awfn;
-import awfp;
-import awfq;
-import bdnn;
+import ayum;
+import ayup;
+import ayur;
+import ayus;
+import bgsp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class OpenApiProvider
   
   private Cursor a(int paramInt)
   {
-    MatrixCursor localMatrixCursor = new MatrixCursor(awfk.a);
+    MatrixCursor localMatrixCursor = new MatrixCursor(ayum.a);
     localMatrixCursor.addRow(new Object[] { Integer.valueOf(paramInt) });
     return localMatrixCursor;
   }
@@ -129,7 +129,7 @@ public class OpenApiProvider
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder(150);
-        paramString1.append("query face, uin = ").append(bdnn.e(paramArrayOfString1));
+        paramString1.append("query face, uin = ").append(bgsp.e(paramArrayOfString1));
         paramString1.append(", type = ").append(i);
         paramString1.append(", rs = ").append(paramUri.b);
         paramString1.append(", path = ").append(paramUri.jdField_a_of_type_JavaLangString);
@@ -138,7 +138,7 @@ public class OpenApiProvider
       if (paramUri.b != 0) {
         return a(paramUri.b);
       }
-      paramArrayOfString1 = new MatrixCursor(awfk.c);
+      paramArrayOfString1 = new MatrixCursor(ayum.c);
       paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
       return paramArrayOfString1;
     case 0: 
@@ -191,7 +191,7 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder(100);
-      paramString1.append("query msg, uin = ").append(bdnn.e(paramArrayOfString1));
+      paramString1.append("query msg, uin = ").append(bgsp.e(paramArrayOfString1));
       paramString1.append(", type = ").append(i);
       paramString1.append(", count = ").append(j);
       paramString1.append(", rs = ").append(k);
@@ -201,10 +201,10 @@ public class OpenApiProvider
     if (k != 0) {
       return a(k);
     }
-    paramArrayOfString1 = new MatrixCursor(awfk.b);
+    paramArrayOfString1 = new MatrixCursor(ayum.b);
     paramUri = paramUri.iterator();
     while (paramUri.hasNext()) {
-      paramArrayOfString1.addRow(((awfn)paramUri.next()).a());
+      paramArrayOfString1.addRow(((ayup)paramUri.next()).a());
     }
     return paramArrayOfString1;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -226,7 +226,7 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder(150);
-      paramString1.append("query nick, uin = ").append(bdnn.e(paramArrayOfString1));
+      paramString1.append("query nick, uin = ").append(bgsp.e(paramArrayOfString1));
       paramString1.append(", type = ").append(i);
       paramString1.append(", rs = ").append(paramUri.b);
       QLog.d("OpenApi.Provider", 2, paramString1.toString());
@@ -234,7 +234,7 @@ public class OpenApiProvider
     if (paramUri.b != 0) {
       return a(paramUri.b);
     }
-    paramArrayOfString1 = new MatrixCursor(awfk.d);
+    paramArrayOfString1 = new MatrixCursor(ayum.d);
     paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
     return paramArrayOfString1;
     i = 0;
@@ -285,10 +285,10 @@ public class OpenApiProvider
       if (QLog.isColorLevel()) {
         QLog.d("OpenApi.Provider", 2, "reg, op = " + k + ", filter = " + i + ", rs = " + paramUri.jdField_a_of_type_Int + ", stamp = " + paramUri.jdField_a_of_type_Long + ", uin = " + paramUri.jdField_a_of_type_JavaLangString);
       }
-      paramArrayOfString1 = new MatrixCursor(awfk.e);
+      paramArrayOfString1 = new MatrixCursor(ayum.e);
       paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.jdField_a_of_type_Int), Long.valueOf(paramUri.jdField_a_of_type_Long), paramUri.jdField_a_of_type_JavaLangString });
       return paramArrayOfString1;
-      paramUri = new awfp(paramString1.unregisterThirdApp(paramString2, str1), 0L, null);
+      paramUri = new ayur(paramString1.unregisterThirdApp(paramString2, str1), 0L, null);
     }
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
     try
@@ -315,7 +315,7 @@ public class OpenApiProvider
     if (paramUri.b != 0) {
       return a(paramUri.b);
     }
-    paramArrayOfString1 = new MatrixCursor(awfk.f);
+    paramArrayOfString1 = new MatrixCursor(ayum.f);
     paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
     return paramArrayOfString1;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -338,13 +338,13 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramUri = new StringBuilder();
-      paramUri.append("set readed, uin = ").append(bdnn.e(paramArrayOfString1));
+      paramUri.append("set readed, uin = ").append(bgsp.e(paramArrayOfString1));
       paramUri.append(", uinType = ").append(i);
       paramUri.append(", msgids = ").append(paramArrayOfString2);
       paramUri.append(", rs = ").append(j);
       QLog.d("OpenApi.Provider", 2, paramUri.toString());
     }
-    paramUri = new MatrixCursor(awfk.a);
+    paramUri = new MatrixCursor(ayum.a);
     paramUri.addRow(new Object[] { Integer.valueOf(j) });
     return paramUri;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -355,7 +355,7 @@ public class OpenApiProvider
       if (QLog.isColorLevel()) {
         QLog.d("OpenApi.Provider", 2, "open aio, result = " + i);
       }
-      paramUri = new MatrixCursor(awfk.h);
+      paramUri = new MatrixCursor(ayum.h);
       paramUri.addRow(new Object[] { Integer.valueOf(i) });
       return paramUri;
     }
@@ -390,7 +390,7 @@ public class OpenApiProvider
         }
       }
       paramUri = paramString1.decodePtt(paramString2, str1, paramArrayOfString1, i, paramArrayOfString2, str2, paramUri);
-      paramArrayOfString1 = new MatrixCursor(awfk.i);
+      paramArrayOfString1 = new MatrixCursor(ayum.i);
       paramArrayOfString1.addRow(new Object[] { paramUri.first, paramUri.second });
       return paramArrayOfString1;
     }
@@ -419,7 +419,7 @@ public class OpenApiProvider
       if (((Integer)paramUri.first).intValue() != 0) {
         return a(((Integer)paramUri.first).intValue());
       }
-      paramArrayOfString1 = new MatrixCursor(awfk.j);
+      paramArrayOfString1 = new MatrixCursor(ayum.j);
       paramArrayOfString1.addRow(new Object[] { paramUri.second });
       return paramArrayOfString1;
     }
@@ -455,7 +455,7 @@ public class OpenApiProvider
         break label2306;
       }
       return a(paramString1[0].b);
-      paramArrayOfString1 = new MatrixCursor(awfk.k);
+      paramArrayOfString1 = new MatrixCursor(ayum.k);
       j = paramString1.length;
       i = 0;
       paramUri = paramArrayOfString1;
@@ -479,13 +479,13 @@ public class OpenApiProvider
     }
     while ((paramUri != null) && (paramUri.size() > 0))
     {
-      paramArrayOfString1 = new MatrixCursor(awfk.l);
+      paramArrayOfString1 = new MatrixCursor(ayum.l);
       paramUri = paramUri.iterator();
       for (;;)
       {
         if (paramUri.hasNext())
         {
-          paramString1 = (awfq)paramUri.next();
+          paramString1 = (ayus)paramUri.next();
           paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramString1.jdField_a_of_type_Int), Integer.valueOf(paramString1.b), paramString1.jdField_a_of_type_JavaLangString });
           continue;
           paramUri = paramString1.handlePayMsgRsp(null);

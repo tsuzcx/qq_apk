@@ -1,19 +1,11 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
 
-class ayae
-  implements QQPermissionCallback
+abstract interface ayae
 {
-  ayae(ayaa paramayaa) {}
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdgm.b(this.a.mContext);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ayaa.a(this.a);
-  }
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 

@@ -1,81 +1,209 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build;
-import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.remind.RemindPB.RemindItem;
+import com.tencent.pb.remind.RemindPB.RemindQuota;
+import com.tencent.pb.remind.RemindPB.ReqBody;
+import com.tencent.pb.remind.RemindPB.RspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class antm
-  extends antj
+  extends anii
 {
-  private float[] d = new float[4];
-  
-  public antm(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
+  public antm(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, paramInt, paramSensorManager, paramantb);
-    Sensor localSensor;
-    if (paramInt == 5)
+    super(paramQQAppInterface);
+  }
+  
+  private boolean a(List<String> paramList)
+  {
+    return (paramList != null) && (paramList.size() > 0);
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    Object localObject1;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      paramInt = 15;
-      paramContext = paramSensorManager.getDefaultSensor(paramInt);
-      localSensor = paramSensorManager.getDefaultSensor(1);
-      paramSensorManager = paramSensorManager.getDefaultSensor(4);
-      if ((paramSensorManager == null) || (paramContext == null) || (Build.VERSION.SDK_INT < 9)) {
-        break label150;
+      localObject1 = new RemindPB.RspBody();
+      try
+      {
+        ((RemindPB.RspBody)localObject1).mergeFrom((byte[])paramObject);
+        paramObject = localObject1;
       }
-      paramantb.onSensorSupport(4, true);
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      QLog.i("OrientationProvider2", 2, "Gyroscope support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-    }
-    for (;;)
-    {
-      if (localSensor == null) {
-        break label298;
+      catch (Exception paramObject)
+      {
+        do
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("SpecialRemind.Service", 2, "handle send special sound exception:" + paramObject.getMessage());
+            }
+            paramObject.printStackTrace();
+            paramObject = null;
+            continue;
+            if (paramObject.msg_quota.has())
+            {
+              paramObject = (RemindPB.RemindQuota)paramObject.msg_quota.get();
+              if (paramObject.uint32_comm_quota.has()) {
+                alxx.a(paramObject.uint32_comm_quota.get(), this.app);
+              }
+              if (paramObject.uint32_svip_quota.has()) {
+                alxx.b(paramObject.uint32_svip_quota.get(), this.app);
+              }
+              alxx.b(this.app);
+              continue;
+              if (paramObject.rep_set_info.has())
+              {
+                localObject1 = paramObject.rep_set_info.get();
+                if ((localObject1 != null) && (((List)localObject1).size() > 0))
+                {
+                  paramObject = new ArrayList();
+                  localObject1 = ((List)localObject1).iterator();
+                  while (((Iterator)localObject1).hasNext())
+                  {
+                    localObject2 = (RemindPB.RemindItem)((Iterator)localObject1).next();
+                    if ((((RemindPB.RemindItem)localObject2).uint64_uin.has()) && (((RemindPB.RemindItem)localObject2).uint32_id.has()))
+                    {
+                      str = String.valueOf(((RemindPB.RemindItem)localObject2).uint64_uin.get());
+                      paramObject.add(str);
+                      alxx.a(str, ((RemindPB.RemindItem)localObject2).uint32_id.get(), this.app);
+                    }
+                  }
+                  alxx.a(paramObject, this.app);
+                  continue;
+                  if (paramObject.rep_clear_uin.has())
+                  {
+                    localObject1 = paramObject.rep_clear_uin.get();
+                    paramObject = new ArrayList();
+                    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+                    {
+                      localObject1 = ((List)localObject1).iterator();
+                      while (((Iterator)localObject1).hasNext())
+                      {
+                        localObject2 = String.valueOf((Long)((Iterator)localObject1).next());
+                        paramObject.add(localObject2);
+                        alxx.c((String)localObject2, this.app);
+                      }
+                      alxx.b(paramObject, this.app);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (i != 1) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("SpecialRemind.Service", 2, "get count fail.");
+        return;
+        int i = paramObject.int32_ret.get();
+        notifyUI(1001, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
+        return;
       }
-      paramantb.onSensorSupport(1, true);
-      this.jdField_a_of_type_JavaUtilList.add(localSensor);
-      return;
-      paramInt = 11;
-      break;
-      label150:
-      paramantb.onSensorSupport(4, false);
-      if (paramSensorManager == null) {
-        QLog.i("OrientationProvider2", 2, "Gyroscope not support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-      } else if (paramContext == null) {
-        if (Build.VERSION.SDK_INT >= 9) {
-          QLog.i("OrientationProvider2", 2, "Gyroscope not support(rotationVectorSensor),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-        } else {
-          QLog.i("OrientationProvider2", 2, "Gyroscope not support(sdk < 9),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+      if ((paramObject != null) && (paramObject.uint32_method.has()))
+      {
+        i = paramObject.uint32_method.get();
+        if (paramObject.int32_ret.has())
+        {
+          if (paramObject.int32_ret.get() != 0) {
+            break label503;
+          }
+          switch (i)
+          {
+          default: 
+            notifyUI(1000, paramFromServiceMsg.isSuccess(), Integer.valueOf(i));
+          }
         }
       }
     }
-    label298:
-    paramantb.onSensorSupport(1, false);
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (this.jdField_a_of_type_Antb == null) {
-      return;
-    }
-    this.jdField_a_of_type_Antb.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  @TargetApi(9)
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if ((paramSensorEvent.sensor.getType() == 11) || (paramSensorEvent.sensor.getType() == 15))
+    label503:
+    do
     {
-      SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
-      this.jdField_a_of_type_Antb.onRotationUpdateQuaternion(this.d);
+      return;
+      Object localObject2;
+      String str;
+      if (QLog.isColorLevel()) {
+        QLog.e("QVipSpeicalCareHandler", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + this.app.getCurrentAccountUin());
+      }
+    } while (paramFromServiceMsg.isSuccess());
+    bipi.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 1000277, anni.a(2131710163), true);
+  }
+  
+  public void a(List<String> paramList1, int paramInt, List<String> paramList2)
+  {
+    RemindPB.ReqBody localReqBody = new RemindPB.ReqBody();
+    switch (paramInt)
+    {
     }
-    while (paramSensorEvent.sensor.getType() != 1) {
+    for (;;)
+    {
+      try
+      {
+        paramList1 = createToServiceMsg("SpecialRemind.Service");
+        paramList1.putWupBuffer(localReqBody.toByteArray());
+        sendPbReq(paramList1);
+        return;
+      }
+      catch (Exception paramList1)
+      {
+        paramList1.printStackTrace();
+        return;
+      }
+      localReqBody.uint32_method.set(1);
+      continue;
+      if ((a(paramList1)) && (a(paramList2)) && (paramList1.size() == paramList2.size()))
+      {
+        int j = paramList2.size();
+        int i = 0;
+        while (i < j)
+        {
+          RemindPB.RemindItem localRemindItem = new RemindPB.RemindItem();
+          localRemindItem.uint64_uin.set(Long.parseLong((String)paramList1.get(i)));
+          localRemindItem.uint32_id.set(Integer.parseInt((String)paramList2.get(i)));
+          localReqBody.rep_set_info.add(localRemindItem);
+          localReqBody.setHasFlag(true);
+          i += 1;
+        }
+        localReqBody.uint32_method.set(paramInt);
+        continue;
+        if (a(paramList1))
+        {
+          paramList1 = paramList1.iterator();
+          while (paramList1.hasNext())
+          {
+            paramList2 = (String)paramList1.next();
+            localReqBody.rep_clear_uin.add(Long.valueOf(Long.parseLong(paramList2)));
+          }
+          localReqBody.uint32_method.set(4);
+        }
+      }
+    }
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return antn.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
+    while (!"SpecialRemind.Service".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
+    a(paramFromServiceMsg, paramObject);
   }
 }
 

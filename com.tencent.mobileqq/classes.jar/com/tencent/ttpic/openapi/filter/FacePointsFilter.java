@@ -6,14 +6,14 @@ import com.tencent.aekit.openrender.UniformParam.Float1sParam;
 import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.Float4fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.filter.BaseFilter;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.List;
 
 public class FacePointsFilter
-  extends BaseFilter
+  extends VideoFilterBase
 {
   private static final String FRAGMENT_SHADER = FileUtils.loadAssetsString(AEModule.getContext(), "DrawPoints.glsl");
   
@@ -102,7 +102,7 @@ public class FacePointsFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FacePointsFilter
  * JD-Core Version:    0.7.0.1
  */

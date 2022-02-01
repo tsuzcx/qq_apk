@@ -1,20 +1,47 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+
 public class pfm
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  private static boolean a;
   
-  public String toString()
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    return "ColumnInfoForSelfPage{myVideoCount=" + this.jdField_a_of_type_Int + ", myColumnCount=" + this.jdField_b_of_type_Int + ", mySubscribeCount=" + this.jdField_c_of_type_Int + ", myVideoJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", myColumnJumpUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mySubscribeJumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
+    }
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562944, null);
+    ((DragTextView)localView.findViewById(2131380208)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131378202)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131379932)).setText(paramInt5);
+    return localView;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
+    {
+      a = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.3;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
 public class smn
-  implements nbs
+  implements Interpolator
 {
-  public smn(ViolaAccessHelper.3 param3) {}
+  public smn(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   
-  public void loaded(String paramString, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "downOffline  code " + paramInt + "  param " + paramString);
+    if (paramFloat < 0.2F) {
+      return 0.0F;
     }
-    if (paramInt == 0) {
-      if (paramString == null) {
-        if (this.a.jdField_a_of_type_Smr != null) {
-          this.a.jdField_a_of_type_Smr.a();
-        }
-      }
+    if (paramFloat < 0.5F) {
+      return (paramFloat - 0.2F) / 0.3F;
     }
-    while (this.a.jdField_a_of_type_Smr == null)
-    {
-      return;
-      if (paramString.contains("url"))
-      {
-        QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
-        return;
-      }
-      long l1 = System.currentTimeMillis();
-      long l2 = this.a.jdField_a_of_type_Long;
-      if (this.a.jdField_a_of_type_Smr != null) {
-        this.a.jdField_a_of_type_Smr.a();
-      }
-      QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
-      return;
-    }
-    this.a.jdField_a_of_type_Smr.b();
-  }
-  
-  public void progress(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Smr != null) {
-      this.a.jdField_a_of_type_Smr.a(paramInt);
-    }
+    return 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smn
  * JD-Core Version:    0.7.0.1
  */

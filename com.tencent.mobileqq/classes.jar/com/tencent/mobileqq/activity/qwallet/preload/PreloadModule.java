@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajar;
-import ajeu;
+import aksk;
+import akww;
 import android.net.Uri;
 import android.text.TextUtils;
-import bead;
+import bhhe;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import nbv;
+import nko;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -75,7 +75,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    nbv.b(paramString, paramAppRuntime, true, new ajar(this));
+    nko.b(paramString, paramAppRuntime, true, new aksk(this));
   }
   
   private boolean a(String paramString)
@@ -184,7 +184,7 @@ public class PreloadModule
     }
   }
   
-  public void downloadModule(boolean paramBoolean1, bead parambead, PreloadManager paramPreloadManager, boolean paramBoolean2)
+  public void downloadModule(boolean paramBoolean1, bhhe parambhhe, PreloadManager paramPreloadManager, boolean paramBoolean2)
   {
     if (this.name.equals("wallet_offline")) {
       handleHtmlOffline(paramPreloadManager.a);
@@ -205,7 +205,7 @@ public class PreloadModule
           }
           else if ((localPreloadResource.isAbiMatch()) && (localPreloadResource.isTimeToDownload(paramPreloadManager)))
           {
-            localPreloadResource.startDownload(paramPreloadManager, this, parambead, paramBoolean2);
+            localPreloadResource.startDownload(paramPreloadManager, this, parambhhe, paramBoolean2);
           }
         }
       }
@@ -271,7 +271,7 @@ public class PreloadModule
     while (localIterator.hasNext())
     {
       PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
-      if (ajeu.c(localPreloadResource.mResId, paramString)) {
+      if (akww.c(localPreloadResource.mResId, paramString)) {
         return localPreloadResource;
       }
     }
@@ -303,7 +303,7 @@ public class PreloadModule
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!ajeu.c(this.mid, paramPreloadModule.mid))
+    if (!akww.c(this.mid, paramPreloadModule.mid))
     {
       bool1 = true;
       return bool1;
@@ -311,7 +311,7 @@ public class PreloadModule
     if (this.mBackControl != paramPreloadModule.mBackControl) {
       return true;
     }
-    if (!ajeu.c(this.name, paramPreloadModule.name)) {
+    if (!akww.c(this.name, paramPreloadModule.name)) {
       return true;
     }
     if (this.option != paramPreloadModule.option) {
@@ -326,7 +326,7 @@ public class PreloadModule
     if (this.mRetryCount != paramPreloadModule.mRetryCount) {
       return true;
     }
-    if (!ajeu.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
+    if (!akww.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
       return true;
     }
     List localList = getResList();
@@ -439,7 +439,7 @@ public class PreloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadModule
  * JD-Core Version:    0.7.0.1
  */

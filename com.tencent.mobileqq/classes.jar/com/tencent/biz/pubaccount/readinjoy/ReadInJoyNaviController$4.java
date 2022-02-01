@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nxf;
+import oha;
 
 public class ReadInJoyNaviController$4
   implements Runnable
 {
-  public ReadInJoyNaviController$4(nxf paramnxf) {}
+  public ReadInJoyNaviController$4(oha paramoha) {}
   
   public void run()
   {
-    nxf.a(this.this$0, true);
+    oha.a(this.this$0, true);
   }
 }
 

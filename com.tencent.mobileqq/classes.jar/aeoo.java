@@ -1,14 +1,17 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
-class aeoo
-  implements FileFilter
+public class aeoo
+  implements View.OnCreateContextMenuListener
 {
-  aeoo(aeom paramaeom) {}
+  public aeoo(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public boolean accept(File paramFile)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    return paramFile.getName().startsWith(aeom.a(this.a));
+    paramContextMenu.clear();
   }
 }
 

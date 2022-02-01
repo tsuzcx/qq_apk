@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.view.View;
-import bhuf;
-import bhuk;
+import bkho;
+import bkhw;
 import com.tencent.qphone.base.util.QLog;
 
 class ContactJsPlugin$2$1
-  implements bhuk
+  implements bkhw
 {
-  ContactJsPlugin$2$1(ContactJsPlugin.2 param2, bhuf parambhuf) {}
+  ContactJsPlugin$2$1(ContactJsPlugin.2 param2, bkho parambkho) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -34,7 +34,7 @@ class ContactJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ContactJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
@@ -10,6 +13,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -35,16 +39,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131720894;
+      i = 2131718632;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131721504;
+        return 2131719211;
       }
     } while (k != j - 2);
-    return 2131690507;
+    return 2131690491;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -55,7 +59,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131720894) {
+      if (k != 2131718632) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -63,7 +67,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131720894) {
+      if (k == 2131718632) {
         if (m == 24)
         {
           i = 24;
@@ -114,9 +118,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131561332);
-    setContentBackgroundResource(2130838592);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377345));
+    super.setContentView(2131561565);
+    setContentBackgroundResource(2130838758);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378171));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -189,6 +193,21 @@ public class BaseSystemActivity
     this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(a());
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -207,7 +226,7 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850010, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850602, 0, 0, 0);
     return this.rightViewText;
   }
   
@@ -244,7 +263,7 @@ public class BaseSystemActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class aiyd
-  implements View.OnClickListener
-{
-  public aiyd(LingHbFragment paramLingHbFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    QLog.i("LingHbFragment", 2, "change others...");
-    if (this.a.channel == 65536) {}
-    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
-    {
-      this.a.addUploadData(paramView, "");
-      return;
-    }
-  }
-}
+  extends aiyk
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

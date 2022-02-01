@@ -1,49 +1,135 @@
-import com.tencent.qphone.base.util.Cryptor;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class leo
+  implements INetInfoHandler
 {
-  public final String a = "uid";
-  public final String b = "ukey";
-  public final String c = "^%QAI$I+j{2HuP0L";
-  public String d;
-  public String e;
+  private lep a;
   
-  public static leo a(String paramString)
+  public leo(lep paramlep)
   {
-    leo localleo = new leo();
-    if (localleo.a(paramString)) {
-      return localleo;
-    }
-    return null;
+    this.a = paramlep;
   }
   
-  private boolean a(String paramString)
+  public static int a()
   {
-    try
+    int j = 1;
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    for (;;)
     {
-      paramString = bdfr.decode(paramString, 0);
-      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
-      if (paramString.has("uid")) {
-        this.d = paramString.getString("uid");
+      if (QLog.isColorLevel()) {
+        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
       }
-      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
+      return i;
+      if (AppNetConnInfo.isMobileConn())
       {
-        this.e = paramString.getString("ukey");
-        return true;
+        j = AppNetConnInfo.getMobileInfo();
+        switch (j)
+        {
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
+        }
       }
-      return false;
+      else
+      {
+        j = -1;
+        i = 0;
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+  }
+  
+  public static int b()
+  {
+    int i = -1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
     }
-    return false;
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    return AppNetConnInfo.getMobileInfo();
+  }
+  
+  public void onNetMobile2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
+    }
+    if (this.a != null) {
+      this.a.a(0);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
+    }
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
+    }
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
+    }
+    if (this.a != null) {
+      this.a.a(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     leo
  * JD-Core Version:    0.7.0.1
  */

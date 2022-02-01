@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rxr;
+import svo;
 
 public class SlideActiveAnimController$4$1
   implements Runnable
 {
-  public SlideActiveAnimController$4$1(rxr paramrxr) {}
+  public SlideActiveAnimController$4$1(svo paramsvo) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class SlideActiveAnimController$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1
  * JD-Core Version:    0.7.0.1
  */

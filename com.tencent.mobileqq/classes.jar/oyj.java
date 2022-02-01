@@ -1,51 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class oyj
-  extends oyf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oyj
+  implements ViewBase.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  oyj(pay parampay, pan parampan, Container paramContainer) {}
   
-  public oyj(@NotNull oyg paramoyg, Activity paramActivity)
+  public final void onClick(ViewBase paramViewBase)
   {
-    super(paramoyg, "RIJLockScreenPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean c()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if (opu.a(this.jdField_a_of_type_Pay))
     {
-      Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-      if ((localIntent != null) && (localIntent.hasExtra("launch_from")) && (localIntent.hasExtra("kan_dian_lock_screen_flag")) && (localIntent.getIntExtra("launch_from", 0) == 9))
-      {
-        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, localIntent);
-        localIntent.removeExtra("kan_dian_lock_screen_flag");
-        QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
-        return true;
-      }
+      paramViewBase = this.jdField_a_of_type_Pan.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, 2);
+      return;
     }
-    return false;
-  }
-  
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Pan.b(this.jdField_a_of_type_Pay);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyj
  * JD-Core Version:    0.7.0.1
  */

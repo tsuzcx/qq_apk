@@ -1,13 +1,20 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public final class anch
-  implements AVGestureWrapper.AVUploadReport
+class anch
+  implements Comparator<ApolloActionData>
 {
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  anch(ancd paramancd) {}
+  
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
+    }
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aszf;
+import avgy;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new aszf();
+  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new avgy();
   public int a;
   public long a;
   public Bundle a;
@@ -149,7 +149,7 @@ public class IVPluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVPluginInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,37 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
 public class axqo
-  implements azht
+  extends abgc
 {
-  public axqo(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
+  public axqo(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public abfj a(Activity paramActivity, abfp paramabfp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
-    }
-    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
+    return super.a(paramActivity, paramabfp);
+  }
+  
+  public abfl a(Activity paramActivity, abfp paramabfp)
+  {
+    return new axqq((PicBrowserActivity)paramActivity, paramabfp);
+  }
+  
+  public abfp a(Activity paramActivity)
+  {
+    paramActivity = new axqz(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public abfq a(Activity paramActivity, abfp paramabfp)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqo
  * JD-Core Version:    0.7.0.1
  */

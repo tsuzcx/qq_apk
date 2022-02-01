@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import owy;
-import qlo;
+import pmh;
+import rga;
 
 class ComponentHeaderPolymeric$5
   implements Runnable
@@ -11,7 +11,7 @@ class ComponentHeaderPolymeric$5
   
   public void run()
   {
-    owy.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.b, this.jdField_a_of_type_Int);
+    pmh.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.b, this.jdField_a_of_type_Int);
   }
 }
 

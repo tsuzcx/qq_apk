@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface augh
+class augh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(List<RecentBaseData> paramList);
+  augh(aufz paramaufz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.r();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     augh
  * JD-Core Version:    0.7.0.1
  */

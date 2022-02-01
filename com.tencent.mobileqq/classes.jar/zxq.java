@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class zxq
-  implements View.OnClickListener
+class zxq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public zxq(DeviceTipActivity paramDeviceTipActivity) {}
+  zxq(zxo paramzxo) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (!bdin.g(this.a)) {
-      QQToast.a(this.a, alud.a(2131703623), 2000).a();
-    }
-    DeviceTipActivity.a(this.a, 2);
-    this.a.finish();
+    zxo.a(this.a, this.a.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.history;
 
-import aici;
+import ajsw;
 
 public class ChatHistoryTroopMemberFragment$29$2
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$29$2(aici paramaici) {}
+  public ChatHistoryTroopMemberFragment$29$2(ajsw paramajsw) {}
   
   public void run()
   {
-    this.a.a.A();
+    this.a.a.B();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.2
  * JD-Core Version:    0.7.0.1
  */

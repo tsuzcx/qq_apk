@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import azpf;
-import azsj;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import bcrg;
 
 class LoadDex$2
   implements Runnable
@@ -12,21 +9,7 @@ class LoadDex$2
   
   public void run()
   {
-    try
-    {
-      QQAppInterface.a().a();
-      azpf.b(29, this.this$0.mDirector, null).step();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadDex", 2, "", localThrowable);
-        }
-      }
-    }
+    bcrg.b(16, this.this$0.mDirector, null).step();
   }
 }
 

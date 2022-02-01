@@ -20,6 +20,7 @@ import com.tencent.ttpic.model.Audio2Text;
 import com.tencent.ttpic.model.FaceFeatureItem;
 import com.tencent.ttpic.model.FaceMeshItem;
 import com.tencent.ttpic.model.MultiViewerItem;
+import com.tencent.ttpic.offlineset.beans.StyleFilterSettingJsonBean;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.config.MediaConfig.ENCODE_SIZE;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector.DETECT_TYPE;
@@ -28,6 +29,7 @@ import com.tencent.ttpic.openapi.filter.FabbyParts;
 import com.tencent.ttpic.openapi.model.AnimationItem;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.Point3D;
@@ -245,12 +247,32 @@ public class VideoMaterialUtil
   
   public static boolean canStickerItemUseFastRender(StickerItem paramStickerItem)
   {
-    return (ENABLE_FAST_RENDER) && (paramStickerItem != null) && (paramStickerItem.markMode == 0) && (paramStickerItem.personID < 0) && (paramStickerItem.genderType == 0) && (paramStickerItem.stickerType == 0) && ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.BODY.type)) && ((paramStickerItem.blendMode < 2) || (paramStickerItem.blendMode > 12)) && (paramStickerItem.zIndex == 0) && (paramStickerItem.charmRange == null) && (paramStickerItem.ageRange == null) && (paramStickerItem.popularRange == null) && (paramStickerItem.genderRange == null) && (paramStickerItem.cpRange == null) && (paramStickerItem.randomGroupNum == 0) && (paramStickerItem.audioTriggerType == 0) && (paramStickerItem.particleConfig == null) && (paramStickerItem.gpuParticleConfig == null);
+    return (ENABLE_FAST_RENDER) && (paramStickerItem != null) && (paramStickerItem.markMode == 0) && (paramStickerItem.personID < 0) && (paramStickerItem.genderType == 0) && (paramStickerItem.stickerType == 0) && ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.BODY.type)) && ((paramStickerItem.blendMode < 2) || (paramStickerItem.blendMode > 12)) && (paramStickerItem.zIndex == 0) && (paramStickerItem.charmRange == null) && (paramStickerItem.ageRange == null) && (paramStickerItem.popularRange == null) && (paramStickerItem.genderRange == null) && (paramStickerItem.cpRange == null) && (paramStickerItem.randomGroupNum == 0) && (paramStickerItem.audioTriggerType == 0) && (paramStickerItem.particleConfig == null) && (paramStickerItem.gpuParticleConfig == null) && (!paramStickerItem.isDisplacementMaterial());
   }
   
   public static boolean canUseLongLeg(VideoMaterial paramVideoMaterial)
   {
     return (paramVideoMaterial == null) || ((!paramVideoMaterial.isSegmentRequired()) && (!isParticleMaterial(paramVideoMaterial)));
+  }
+  
+  private static boolean checkTNNElement(VideoMaterial paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE paramSTYLE_CHANGE_TYPE)
+  {
+    if (paramVideoMaterial == null) {
+      return false;
+    }
+    paramVideoMaterial = paramVideoMaterial.getFaceStyleItemList();
+    if (paramVideoMaterial != null)
+    {
+      paramVideoMaterial = paramVideoMaterial.iterator();
+      while (paramVideoMaterial.hasNext())
+      {
+        FaceStyleItem localFaceStyleItem = (FaceStyleItem)paramVideoMaterial.next();
+        if ((!TextUtils.isEmpty(localFaceStyleItem.modelName)) && (localFaceStyleItem.styleChangeType == paramSTYLE_CHANGE_TYPE.value)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   public static void copyArrayToArray(PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2)
@@ -826,18 +848,18 @@ public class VideoMaterialUtil
     //   2: iconst_0
     //   3: newarray int
     //   5: astore 7
-    //   7: new 676	java/io/RandomAccessFile
+    //   7: new 695	java/io/RandomAccessFile
     //   10: dup
     //   11: aload_0
-    //   12: ldc_w 678
-    //   15: invokespecial 681	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: ldc_w 697
+    //   15: invokespecial 700	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   18: astore 9
     //   20: aload 9
     //   22: astore_0
     //   23: aload 7
     //   25: astore 8
     //   27: aload 9
-    //   29: invokevirtual 685	java/io/RandomAccessFile:length	()J
+    //   29: invokevirtual 704	java/io/RandomAccessFile:length	()J
     //   32: lstore_3
     //   33: aload 9
     //   35: astore_0
@@ -845,9 +867,9 @@ public class VideoMaterialUtil
     //   38: astore 8
     //   40: aload 9
     //   42: lload_3
-    //   43: ldc2_w 686
+    //   43: ldc2_w 705
     //   46: lsub
-    //   47: invokevirtual 691	java/io/RandomAccessFile:seek	(J)V
+    //   47: invokevirtual 710	java/io/RandomAccessFile:seek	(J)V
     //   50: aload 9
     //   52: astore_0
     //   53: aload 7
@@ -861,14 +883,14 @@ public class VideoMaterialUtil
     //   67: astore 8
     //   69: aload 9
     //   71: aload 10
-    //   73: invokevirtual 695	java/io/RandomAccessFile:read	([B)I
+    //   73: invokevirtual 714	java/io/RandomAccessFile:read	([B)I
     //   76: pop
     //   77: aload 9
     //   79: astore_0
     //   80: aload 7
     //   82: astore 8
     //   84: aload 10
-    //   86: invokestatic 700	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
+    //   86: invokestatic 719	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
     //   89: istore_2
     //   90: iload_2
     //   91: bipush 12
@@ -881,20 +903,20 @@ public class VideoMaterialUtil
     //   106: aload 7
     //   108: astore 8
     //   110: aload 9
-    //   112: invokevirtual 703	java/io/RandomAccessFile:close	()V
+    //   112: invokevirtual 722	java/io/RandomAccessFile:close	()V
     //   115: aload 7
     //   117: astore_0
     //   118: aload 9
     //   120: ifnull +11 -> 131
     //   123: aload 9
-    //   125: invokevirtual 703	java/io/RandomAccessFile:close	()V
+    //   125: invokevirtual 722	java/io/RandomAccessFile:close	()V
     //   128: aload 7
     //   130: astore_0
     //   131: aload_0
     //   132: areturn
     //   133: astore_0
     //   134: aload_0
-    //   135: invokevirtual 555	java/io/IOException:printStackTrace	()V
+    //   135: invokevirtual 579	java/io/IOException:printStackTrace	()V
     //   138: aload 7
     //   140: areturn
     //   141: iload_2
@@ -908,9 +930,9 @@ public class VideoMaterialUtil
     //   154: lload_3
     //   155: lload 5
     //   157: lsub
-    //   158: ldc2_w 704
+    //   158: ldc2_w 723
     //   161: ladd
-    //   162: invokevirtual 691	java/io/RandomAccessFile:seek	(J)V
+    //   162: invokevirtual 710	java/io/RandomAccessFile:seek	(J)V
     //   165: aload 9
     //   167: astore_0
     //   168: aload 7
@@ -936,7 +958,7 @@ public class VideoMaterialUtil
     //   201: astore 8
     //   203: aload 9
     //   205: aload 10
-    //   207: invokevirtual 695	java/io/RandomAccessFile:read	([B)I
+    //   207: invokevirtual 714	java/io/RandomAccessFile:read	([B)I
     //   210: pop
     //   211: aload 9
     //   213: astore_0
@@ -945,7 +967,7 @@ public class VideoMaterialUtil
     //   218: aload 7
     //   220: iload_1
     //   221: aload 10
-    //   223: invokestatic 700	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
+    //   223: invokestatic 719	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
     //   226: iastore
     //   227: iload_1
     //   228: iconst_1
@@ -957,12 +979,12 @@ public class VideoMaterialUtil
     //   237: aload 9
     //   239: ifnull -108 -> 131
     //   242: aload 9
-    //   244: invokevirtual 703	java/io/RandomAccessFile:close	()V
+    //   244: invokevirtual 722	java/io/RandomAccessFile:close	()V
     //   247: aload 7
     //   249: areturn
     //   250: astore_0
     //   251: aload_0
-    //   252: invokevirtual 555	java/io/IOException:printStackTrace	()V
+    //   252: invokevirtual 579	java/io/IOException:printStackTrace	()V
     //   255: aload 7
     //   257: areturn
     //   258: astore 10
@@ -971,18 +993,18 @@ public class VideoMaterialUtil
     //   263: aload 8
     //   265: astore_0
     //   266: aload 10
-    //   268: invokevirtual 706	java/lang/Exception:printStackTrace	()V
+    //   268: invokevirtual 725	java/lang/Exception:printStackTrace	()V
     //   271: aload 7
     //   273: astore_0
     //   274: aload 8
     //   276: ifnull -145 -> 131
     //   279: aload 8
-    //   281: invokevirtual 703	java/io/RandomAccessFile:close	()V
+    //   281: invokevirtual 722	java/io/RandomAccessFile:close	()V
     //   284: aload 7
     //   286: areturn
     //   287: astore_0
     //   288: aload_0
-    //   289: invokevirtual 555	java/io/IOException:printStackTrace	()V
+    //   289: invokevirtual 579	java/io/IOException:printStackTrace	()V
     //   292: aload 7
     //   294: areturn
     //   295: astore 7
@@ -991,12 +1013,12 @@ public class VideoMaterialUtil
     //   299: aload_0
     //   300: ifnull +7 -> 307
     //   303: aload_0
-    //   304: invokevirtual 703	java/io/RandomAccessFile:close	()V
+    //   304: invokevirtual 722	java/io/RandomAccessFile:close	()V
     //   307: aload 7
     //   309: athrow
     //   310: astore_0
     //   311: aload_0
-    //   312: invokevirtual 555	java/io/IOException:printStackTrace	()V
+    //   312: invokevirtual 579	java/io/IOException:printStackTrace	()V
     //   315: goto -8 -> 307
     //   318: astore 7
     //   320: goto -21 -> 299
@@ -1089,6 +1111,11 @@ public class VideoMaterialUtil
   public static boolean is3DMaterial(VideoMaterial paramVideoMaterial)
   {
     return (isGameplayMaterial(paramVideoMaterial)) || (isFilamentMaterial(paramVideoMaterial));
+  }
+  
+  public static boolean isAR3DMaterial(VideoMaterial paramVideoMaterial)
+  {
+    return (paramVideoMaterial != null) && (paramVideoMaterial.getIsAR3DMaterial());
   }
   
   public static boolean isARMaterial(VideoMaterial paramVideoMaterial)
@@ -1255,6 +1282,83 @@ public class VideoMaterialUtil
     return paramInt == 401;
   }
   
+  public static boolean isCartoonFrozenMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial == null) {}
+    do
+    {
+      return false;
+      paramVideoMaterial = paramVideoMaterial.getFaceStyleItemList();
+    } while ((paramVideoMaterial == null) || (paramVideoMaterial.size() <= 0));
+    if (((FaceStyleItem)paramVideoMaterial.get(0)).styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE.value) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public static boolean isCatItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.CAT.type);
+  }
+  
+  public static boolean isCatMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      Object localObject2 = paramVideoMaterial.getItemList();
+      Object localObject1 = paramVideoMaterial.getItemList3D();
+      Object localObject3 = paramVideoMaterial.getHeadCropItemList();
+      paramVideoMaterial = paramVideoMaterial.getFaceOffItemList();
+      ArrayList localArrayList = new ArrayList();
+      if (localObject2 != null) {
+        localArrayList.addAll((Collection)localObject2);
+      }
+      if (localObject3 != null) {
+        localArrayList.addAll((Collection)localObject3);
+      }
+      localObject2 = localArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (StickerItem)((Iterator)localObject2).next();
+        if (((StickerItem)localObject3).type == VideoFilterFactory.POSITION_TYPE.CAT.type) {
+          return true;
+        }
+        if (isBodyTriggerType(((StickerItem)localObject3).getTriggerTypeInt())) {
+          return true;
+        }
+      }
+      if (paramVideoMaterial != null)
+      {
+        paramVideoMaterial = paramVideoMaterial.iterator();
+        while (paramVideoMaterial.hasNext()) {
+          if (isBodyTriggerType(((FaceItem)paramVideoMaterial.next()).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+      if (localObject1 != null)
+      {
+        paramVideoMaterial = ((List)localObject1).iterator();
+        while (paramVideoMaterial.hasNext())
+        {
+          localObject1 = (StickerItem3D)paramVideoMaterial.next();
+          if (((StickerItem3D)localObject1).type == VideoFilterFactory.POSITION_TYPE.CAT.type) {
+            return true;
+          }
+          if (isBodyTriggerType(((StickerItem3D)localObject1).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean isCatTriggerType(int paramInt)
+  {
+    return paramInt == 700;
+  }
+  
   public static boolean isChangeFaceMaterial(VideoMaterial paramVideoMaterial)
   {
     boolean bool2 = false;
@@ -1319,6 +1423,40 @@ public class VideoMaterialUtil
       }
     }
     return false;
+  }
+  
+  public static boolean isCyberpunkMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial == null) {}
+    List localList;
+    do
+    {
+      return false;
+      localList = paramVideoMaterial.getItemList();
+      paramVideoMaterial = paramVideoMaterial.getStyleFilterList();
+    } while ((paramVideoMaterial == null) || (localList == null));
+    int i = 0;
+    label26:
+    Object localObject;
+    if (i < localList.size())
+    {
+      localObject = (StickerItem)localList.get(i);
+      if ((!TextUtils.isEmpty(((StickerItem)localObject).styleFilter)) && (paramVideoMaterial.containsKey(((StickerItem)localObject).styleFilter)))
+      {
+        localObject = (StyleFilterSettingJsonBean)paramVideoMaterial.get(((StickerItem)localObject).styleFilter);
+        if (localObject != null) {
+          break label95;
+        }
+      }
+    }
+    label95:
+    while (((StyleFilterSettingJsonBean)localObject).type != 6)
+    {
+      i += 1;
+      break label26;
+      break;
+    }
+    return true;
   }
   
   public static boolean isDistortionFilter(VideoMaterial paramVideoMaterial)
@@ -1467,6 +1605,11 @@ public class VideoMaterialUtil
     return (paramStickerItem != null) && (2 <= paramStickerItem.countTriggerType) && (paramStickerItem.countTriggerType <= 107);
   }
   
+  public static boolean isFaceDetectMaterial(VideoMaterial paramVideoMaterial)
+  {
+    return isCyberpunkMaterial(paramVideoMaterial);
+  }
+  
   public static boolean isFaceItem(StickerItem paramStickerItem)
   {
     return (paramStickerItem != null) && ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type));
@@ -1598,37 +1741,52 @@ public class VideoMaterialUtil
   {
     if (paramVideoMaterial != null)
     {
-      Object localObject7 = paramVideoMaterial.getItemList();
-      Object localObject5 = paramVideoMaterial.getItemList3D();
-      Object localObject8 = paramVideoMaterial.getHeadCropItemList();
+      Object localObject8 = paramVideoMaterial.getItemList();
+      Object localObject6 = paramVideoMaterial.getItemList3D();
+      Object localObject9 = paramVideoMaterial.getHeadCropItemList();
       Object localObject3 = paramVideoMaterial.getFaceFeatureItemList();
-      Object localObject6 = paramVideoMaterial.getFaceOffItemList();
+      Object localObject7 = paramVideoMaterial.getFaceOffItemList();
       Object localObject4 = paramVideoMaterial.getFaceStyleItemList();
       ArrayList localArrayList = new ArrayList();
+      Object localObject5 = paramVideoMaterial.getFaceMeshItemList();
       Object localObject2 = paramVideoMaterial.getFabbyParts();
       Object localObject1 = paramVideoMaterial.getTriggerActionItemList();
-      if (localObject7 != null) {
-        localArrayList.addAll((Collection)localObject7);
-      }
       if (localObject8 != null) {
         localArrayList.addAll((Collection)localObject8);
       }
-      localObject7 = localArrayList.iterator();
-      while (((Iterator)localObject7).hasNext())
+      if (localObject9 != null) {
+        localArrayList.addAll((Collection)localObject9);
+      }
+      localObject8 = localArrayList.iterator();
+      while (((Iterator)localObject8).hasNext())
       {
-        localObject8 = (StickerItem)((Iterator)localObject7).next();
-        if (((StickerItem)localObject8).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) {
+        localObject9 = (StickerItem)((Iterator)localObject8).next();
+        if (((StickerItem)localObject9).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) {
           return true;
         }
-        if (isGestureTriggerType(((StickerItem)localObject8).getTriggerTypeInt())) {
+        if (isGestureTriggerType(((StickerItem)localObject9).getTriggerTypeInt())) {
           return true;
+        }
+      }
+      if (localObject7 != null)
+      {
+        localObject7 = ((List)localObject7).iterator();
+        while (((Iterator)localObject7).hasNext()) {
+          if (isGestureTriggerType(((FaceItem)((Iterator)localObject7).next()).getTriggerTypeInt())) {
+            return true;
+          }
         }
       }
       if (localObject6 != null)
       {
         localObject6 = ((List)localObject6).iterator();
-        while (((Iterator)localObject6).hasNext()) {
-          if (isGestureTriggerType(((FaceItem)((Iterator)localObject6).next()).getTriggerTypeInt())) {
+        while (((Iterator)localObject6).hasNext())
+        {
+          localObject7 = (StickerItem3D)((Iterator)localObject6).next();
+          if (((StickerItem3D)localObject7).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) {
+            return true;
+          }
+          if (isGestureTriggerType(((StickerItem3D)localObject7).getTriggerTypeInt())) {
             return true;
           }
         }
@@ -1636,23 +1794,49 @@ public class VideoMaterialUtil
       if (localObject5 != null)
       {
         localObject5 = ((List)localObject5).iterator();
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (StickerItem3D)((Iterator)localObject5).next();
-          if (((StickerItem3D)localObject6).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) {
-            return true;
-          }
-          if (isGestureTriggerType(((StickerItem3D)localObject6).getTriggerTypeInt())) {
+        while (((Iterator)localObject5).hasNext()) {
+          if (isGestureTriggerType(((FaceMeshItem)((Iterator)localObject5).next()).getTriggerTypeInt())) {
             return true;
           }
         }
       }
       if (localObject4 != null)
       {
-        localObject4 = ((List)localObject4).iterator();
-        while (((Iterator)localObject4).hasNext()) {
-          if (isGestureTriggerType(((FaceStyleItem)((Iterator)localObject4).next()).getTriggerTypeInt())) {
+        localObject5 = ((List)localObject4).iterator();
+        break label369;
+        label324:
+        do
+        {
+          if (!((Iterator)localObject5).hasNext()) {
+            break;
+          }
+          if (isGestureTriggerType(((FaceStyleItem)((Iterator)localObject5).next()).getTriggerTypeInt())) {
             return true;
+          }
+        } while (localObject4 == null);
+        localObject6 = ((List)localObject4).iterator();
+        for (;;)
+        {
+          label369:
+          if (!((Iterator)localObject6).hasNext()) {
+            break label324;
+          }
+          localObject7 = (FaceStyleItem)((Iterator)localObject6).next();
+          if (((FaceStyleItem)localObject7).stickerItemList == null) {
+            break;
+          }
+          localObject7 = ((FaceStyleItem)localObject7).stickerItemList;
+          int i = PTFaceAttr.PTExpression.FACE_DETECT.value;
+          i = 0;
+          while ((localObject7 != null) && (i < ((List)localObject7).size()))
+          {
+            localObject8 = ((List)localObject7).iterator();
+            while (((Iterator)localObject8).hasNext()) {
+              if (isGestureTriggerType(((StickerItem)((Iterator)localObject8).next()).getTriggerTypeInt())) {
+                return true;
+              }
+            }
+            i += 1;
           }
         }
       }
@@ -1824,6 +2008,131 @@ public class VideoMaterialUtil
       return false;
     }
     return true;
+  }
+  
+  public static boolean isHumanSegMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if ((paramVideoMaterial != null) && (paramVideoMaterial.getItemList() != null))
+    {
+      paramVideoMaterial = paramVideoMaterial.getItemList().iterator();
+      while (paramVideoMaterial.hasNext()) {
+        if ("human".equals(((StickerItem)paramVideoMaterial.next()).maskType)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean isKissMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      Object localObject7 = paramVideoMaterial.getItemList();
+      Object localObject5 = paramVideoMaterial.getItemList3D();
+      List localList = paramVideoMaterial.getHeadCropItemList();
+      Object localObject6 = paramVideoMaterial.getFaceOffItemList();
+      Object localObject3 = paramVideoMaterial.getFaceStyleItemList();
+      ArrayList localArrayList = new ArrayList();
+      Object localObject4 = paramVideoMaterial.getFaceMeshItemList();
+      Object localObject2 = paramVideoMaterial.getFabbyParts();
+      Object localObject1 = paramVideoMaterial.getTriggerActionItemList();
+      if (localObject7 != null) {
+        localArrayList.addAll((Collection)localObject7);
+      }
+      if (localList != null) {
+        localArrayList.addAll(localList);
+      }
+      localObject7 = localArrayList.iterator();
+      while (((Iterator)localObject7).hasNext()) {
+        if (isKissTriggerType(((StickerItem)((Iterator)localObject7).next()).getTriggerTypeInt())) {
+          return true;
+        }
+      }
+      if (localObject6 != null)
+      {
+        localObject6 = ((List)localObject6).iterator();
+        while (((Iterator)localObject6).hasNext()) {
+          if (isKissTriggerType(((FaceItem)((Iterator)localObject6).next()).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+      if (localObject5 != null)
+      {
+        localObject5 = ((List)localObject5).iterator();
+        while (((Iterator)localObject5).hasNext()) {
+          if (isKissTriggerType(((StickerItem3D)((Iterator)localObject5).next()).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+      if (localObject4 != null)
+      {
+        localObject4 = ((List)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext()) {
+          if (isKissTriggerType(((FaceMeshItem)((Iterator)localObject4).next()).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          if (isKissTriggerType(((FaceStyleItem)((Iterator)localObject3).next()).getTriggerTypeInt())) {
+            return true;
+          }
+        }
+      }
+      if (paramVideoMaterial.getGlbList() != null)
+      {
+        do
+        {
+          paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
+          while (!((Iterator)localObject3).hasNext())
+          {
+            do
+            {
+              if (!paramVideoMaterial.hasNext()) {
+                break;
+              }
+              localObject3 = (GLBItemJava)paramVideoMaterial.next();
+            } while (((GLBItemJava)localObject3).animationList == null);
+            localObject3 = ((GLBItemJava)localObject3).animationList.iterator();
+          }
+        } while (!isKissTriggerType(((AnimationItem)((Iterator)localObject3).next()).getTriggerTypeInt()));
+        return true;
+      }
+      if (localObject2 != null)
+      {
+        paramVideoMaterial = ((FabbyParts)localObject2).getParts().iterator();
+        while (paramVideoMaterial.hasNext())
+        {
+          localObject2 = ((FabbyMvPart)paramVideoMaterial.next()).transitionItem;
+          if ((localObject2 != null) && (isKissTriggerType(((StickerItem)localObject2).getTriggerTypeInt()))) {
+            return true;
+          }
+        }
+      }
+      if (localObject1 != null)
+      {
+        paramVideoMaterial = ((List)localObject1).iterator();
+        while (paramVideoMaterial.hasNext())
+        {
+          localObject1 = (TriggerActionItem)paramVideoMaterial.next();
+          if ((((TriggerActionItem)localObject1).mTriggerExpression != null) && (isKissTriggerType(((TriggerActionItem)localObject1).mTriggerExpression.mTriggerType))) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean isKissTriggerType(int paramInt)
+  {
+    return PTFaceAttr.PTExpression.KISS.value == paramInt;
   }
   
   public static boolean isMeshUsed(VideoMaterial paramVideoMaterial)
@@ -2065,6 +2374,23 @@ public class VideoMaterialUtil
       return false;
     }
     return needRenderStar(paramVideoMaterial.getStarParam());
+  }
+  
+  public static boolean isTNNMaterial(VideoMaterial paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE paramSTYLE_CHANGE_TYPE)
+  {
+    if (paramVideoMaterial == null) {
+      return false;
+    }
+    if (!isMultiViewerMaterial(paramVideoMaterial)) {
+      return checkTNNElement(paramVideoMaterial, paramSTYLE_CHANGE_TYPE);
+    }
+    paramVideoMaterial = paramVideoMaterial.getMultiViewerItemList().iterator();
+    while (paramVideoMaterial.hasNext()) {
+      if (checkTNNElement(((MultiViewerItem)paramVideoMaterial.next()).videoMaterial, paramSTYLE_CHANGE_TYPE)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static boolean isTimeTriggerType(int paramInt)
@@ -2471,28 +2797,44 @@ public class VideoMaterialUtil
   {
     if (paramVideoMaterial != null)
     {
-      Object localObject5 = paramVideoMaterial.getItemList();
-      Object localObject3 = paramVideoMaterial.getItemList3D();
-      Object localObject6 = paramVideoMaterial.getHeadCropItemList();
-      Object localObject4 = paramVideoMaterial.getFaceOffItemList();
-      Object localObject2 = paramVideoMaterial.getFaceMeshItemList();
+      Object localObject6 = paramVideoMaterial.getItemList();
+      Object localObject4 = paramVideoMaterial.getItemList3D();
+      Object localObject7 = paramVideoMaterial.getHeadCropItemList();
+      Object localObject5 = paramVideoMaterial.getFaceOffItemList();
+      Object localObject3 = paramVideoMaterial.getFaceMeshItemList();
       Object localObject1 = paramVideoMaterial.getFaceFeatureItemList();
+      Object localObject2 = paramVideoMaterial.getFaceStyleItemList();
       ArrayList localArrayList = new ArrayList();
-      if (localObject5 != null) {
-        localArrayList.addAll((Collection)localObject5);
-      }
       if (localObject6 != null) {
         localArrayList.addAll((Collection)localObject6);
       }
-      localObject5 = localArrayList.iterator();
-      while (((Iterator)localObject5).hasNext())
+      if (localObject7 != null) {
+        localArrayList.addAll((Collection)localObject7);
+      }
+      localObject6 = localArrayList.iterator();
+      while (((Iterator)localObject6).hasNext())
       {
-        localObject6 = (StickerItem)((Iterator)localObject5).next();
-        if (((StickerItem)localObject6).charmRange != null) {
-          if ((((StickerItem)localObject6).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem)localObject6).getTriggerTypeInt()))) {
+        localObject7 = (StickerItem)((Iterator)localObject6).next();
+        if (((StickerItem)localObject7).charmRange != null) {
+          if ((((StickerItem)localObject7).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem)localObject7).getTriggerTypeInt()))) {
             paramVideoMaterial.setHandCharmRangeMaterial(true);
           } else {
             paramVideoMaterial.setFaceCharmRangeMaterial(true);
+          }
+        }
+      }
+      if (localObject5 != null)
+      {
+        localObject5 = ((List)localObject5).iterator();
+        while (((Iterator)localObject5).hasNext())
+        {
+          localObject6 = (FaceItem)((Iterator)localObject5).next();
+          if (((FaceItem)localObject6).charmRange != null) {
+            if (isGestureTriggerType(((FaceItem)localObject6).getTriggerTypeInt())) {
+              paramVideoMaterial.setHandCharmRangeMaterial(true);
+            } else {
+              paramVideoMaterial.setFaceCharmRangeMaterial(true);
+            }
           }
         }
       }
@@ -2501,9 +2843,9 @@ public class VideoMaterialUtil
         localObject4 = ((List)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (FaceItem)((Iterator)localObject4).next();
-          if (((FaceItem)localObject5).charmRange != null) {
-            if (isGestureTriggerType(((FaceItem)localObject5).getTriggerTypeInt())) {
+          localObject5 = (StickerItem3D)((Iterator)localObject4).next();
+          if (((StickerItem3D)localObject5).charmRange != null) {
+            if ((((StickerItem3D)localObject5).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem3D)localObject5).getTriggerTypeInt()))) {
               paramVideoMaterial.setHandCharmRangeMaterial(true);
             } else {
               paramVideoMaterial.setFaceCharmRangeMaterial(true);
@@ -2516,9 +2858,9 @@ public class VideoMaterialUtil
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (StickerItem3D)((Iterator)localObject3).next();
-          if (((StickerItem3D)localObject4).charmRange != null) {
-            if ((((StickerItem3D)localObject4).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (isGestureTriggerType(((StickerItem3D)localObject4).getTriggerTypeInt()))) {
+          localObject4 = (FaceMeshItem)((Iterator)localObject3).next();
+          if (((FaceMeshItem)localObject4).charmRange != null) {
+            if (isGestureTriggerType(((FaceMeshItem)localObject4).getTriggerTypeInt())) {
               paramVideoMaterial.setHandCharmRangeMaterial(true);
             } else {
               paramVideoMaterial.setFaceCharmRangeMaterial(true);
@@ -2531,12 +2873,26 @@ public class VideoMaterialUtil
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (FaceMeshItem)((Iterator)localObject2).next();
-          if (((FaceMeshItem)localObject3).charmRange != null) {
-            if (isGestureTriggerType(((FaceMeshItem)localObject3).getTriggerTypeInt())) {
-              paramVideoMaterial.setHandCharmRangeMaterial(true);
-            } else {
-              paramVideoMaterial.setFaceCharmRangeMaterial(true);
+          localObject3 = (FaceStyleItem)((Iterator)localObject2).next();
+          if (((FaceStyleItem)localObject3).stickerItemList != null)
+          {
+            localObject3 = ((FaceStyleItem)localObject3).stickerItemList;
+            int i = 0;
+            while ((localObject3 != null) && (i < ((List)localObject3).size()))
+            {
+              localObject4 = ((List)localObject3).iterator();
+              while (((Iterator)localObject4).hasNext())
+              {
+                localObject5 = (StickerItem)((Iterator)localObject4).next();
+                if (((StickerItem)localObject5).charmRange != null) {
+                  if (isGestureTriggerType(((StickerItem)localObject5).getTriggerTypeInt())) {
+                    paramVideoMaterial.setHandCharmRangeMaterial(true);
+                  } else {
+                    paramVideoMaterial.setFaceCharmRangeMaterial(true);
+                  }
+                }
+              }
+              i += 1;
             }
           }
         }
@@ -2831,7 +3187,7 @@ public class VideoMaterialUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoMaterialUtil
  * JD-Core Version:    0.7.0.1
  */

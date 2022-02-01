@@ -1,76 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
 
-public class ayoo
-  extends ayod
+public abstract class ayoo
 {
-  public static final String a;
-  public List<ayoz> a;
+  public long a;
+  protected ayop a;
+  protected BaseActivity a;
+  protected QQAppInterface a;
+  public String a;
+  public boolean a;
   public String b;
-  public boolean b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  protected boolean b = true;
+  public String c;
+  public String d = "";
   
-  static
+  public ayoo(long paramLong, ayop paramayop, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    jdField_a_of_type_JavaLangString = ayon.class.getSimpleName();
+    this.jdField_a_of_type_Ayop = paramayop;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public ayoo(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  protected abstract void a();
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public void a(boolean paramBoolean, long paramLong)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.b = paramBoolean;
   }
   
-  private List<ayoz> a(JSONArray paramJSONArray)
+  public abstract void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem);
+  
+  public boolean a()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
-    {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        localObject = new ayoz(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
-        if (((ayoz)localObject).a()) {
-          localArrayList.add(localObject);
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
+    return true;
   }
   
-  public void a(String paramString)
-  {
-    this.f = false;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
-      this.l = paramString.optString("jumpUrl");
-      this.m = paramString.optString("subItemLeftIconUrl");
-      paramString = paramString.optJSONArray("itemList");
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList = a(paramString);
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
-    }
-  }
+  public abstract void b();
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

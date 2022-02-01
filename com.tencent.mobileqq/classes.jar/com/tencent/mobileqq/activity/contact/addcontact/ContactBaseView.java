@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahhc;
+import aisn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,45 +12,45 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class ContactBaseView
   extends FrameLayout
 {
-  public ahhc a;
+  public aisn a;
   public Activity a;
   public QQAppInterface a;
   
-  public ContactBaseView(ahhc paramahhc)
+  public ContactBaseView(aisn paramaisn)
   {
-    super(paramahhc.a());
-    this.jdField_a_of_type_Ahhc = paramahhc;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Ahhc.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramahhc.a();
+    super(paramaisn.a());
+    this.jdField_a_of_type_Aisn = paramaisn;
+    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Aisn.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaisn.a();
   }
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131297948);
+    return getResources().getDimensionPixelSize(2131298029);
   }
   
-  protected void a() {}
+  public void a() {}
   
-  protected final void a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public final void setContentView(int paramInt)
   {
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
   }
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void d() {}
-  
-  protected void g() {}
-  
-  protected void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView
  * JD-Core Version:    0.7.0.1
  */

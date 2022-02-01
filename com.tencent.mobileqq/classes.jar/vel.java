@@ -1,65 +1,140 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class vel
-  extends vce
-  implements urr<vfz, vhp>
 {
-  protected String a;
-  protected List<String> a;
+  public static final int a;
+  public static final SparseArray<vel> a;
+  public static final int b;
+  public static final int c;
+  public static boolean d;
+  public float a;
+  public boolean a;
+  public float b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public int d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public vel(String paramString, List<String> paramList)
+  static
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
+    jdField_a_of_type_Int = vtu.b(5.0F);
+    jdField_b_of_type_Int = vtu.b(10.0F);
+    jdField_c_of_type_Int = vtu.b(1.5F);
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_d_of_type_Boolean = true;
   }
   
-  public void a()
+  private vel(Context paramContext, int paramInt1, int paramInt2)
   {
-    vfz localvfz = new vfz();
-    localvfz.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    urp.a().a(localvfz, this);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    paramInt1 = paramContext.widthPixels;
+    int i1 = paramContext.heightPixels;
+    if (BaseApplicationImpl.getContext().getResources().getConfiguration().orientation == 2) {
+      this.l = Math.min(paramInt1, i1);
+    }
+    for (this.k = Math.max(paramInt1, i1);; this.k = Math.min(paramInt1, i1)) {
+      switch (paramInt2)
+      {
+      default: 
+        return;
+        this.l = Math.max(paramInt1, i1);
+      }
+    }
+    this.jdField_d_of_type_Int = 8000;
+    this.jdField_e_of_type_Int = (vtu.a(jdField_a_of_type_Int) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + bmjz.a(BaseApplicationImpl.getApplication(), null));
+    this.jdField_g_of_type_Int = vtu.a(16.0F);
+    this.h = vtu.a(9.0F);
+    this.jdField_b_of_type_Float = vtu.a(2.0F);
+    this.jdField_c_of_type_Float = vtu.a(jdField_c_of_type_Int);
+    this.jdField_f_of_type_Float = vtu.a(15.0F);
+    this.jdField_g_of_type_Float = vtu.a(10.0F);
+    this.i = 255;
+    this.jdField_a_of_type_Float = vtu.a(14.0F);
+    this.j = -1;
+    this.m = 16;
+    this.n = 30;
+    this.jdField_d_of_type_Float = vtu.a(0.0F);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_e_of_type_Float = vtu.a(6.0F);
+    this.jdField_f_of_type_Int = 2;
+    return;
+    this.jdField_d_of_type_Int = 8000;
+    this.jdField_e_of_type_Int = (vtu.a(24 + jdField_a_of_type_Int) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()));
+    this.jdField_g_of_type_Int = vtu.a(4.0F);
+    this.h = vtu.a(9.0F);
+    this.jdField_b_of_type_Float = vtu.a(2.0F);
+    this.jdField_c_of_type_Float = vtu.a(jdField_c_of_type_Int);
+    this.jdField_f_of_type_Float = vtu.a(15.0F);
+    this.jdField_g_of_type_Float = vtu.a(10.0F);
+    this.i = 255;
+    this.jdField_a_of_type_Float = vtu.a(14.0F);
+    this.j = -1;
+    this.m = 10;
+    this.n = 30;
+    this.jdField_d_of_type_Float = vtu.a(0.0F);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_e_of_type_Float = vtu.a(6.0F);
+    this.jdField_f_of_type_Int = 2;
   }
   
-  public void a(@NonNull vfz paramvfz, @Nullable vhp paramvhp, @NonNull ErrorMessage paramErrorMessage)
+  public static vel a(Context paramContext, int paramInt1, int paramInt2)
   {
-    paramvfz = new vem();
-    if ((paramvhp == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      umc.a().dispatch(paramvfz);
-      return;
+    Object localObject = (vel)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1 * 10 + paramInt2);
+    if (localObject == null) {
+      try
+      {
+        vel localvel = (vel)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1 * 10 + paramInt2);
+        localObject = localvel;
+        if (localvel == null)
+        {
+          localObject = new vel(paramContext, paramInt1, paramInt2);
+          jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1 * 10 + paramInt2, localObject);
+        }
+        return localObject;
+      }
+      finally {}
     }
-    b();
-    paramvhp.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvhp.jdField_a_of_type_JavaUtilList);
-    paramvfz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramvhp = paramvhp.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramvhp.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramvhp.next();
-      paramErrorMessage = new wnd(paramErrorMessage.mVid, paramErrorMessage);
-      paramvfz.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
-    }
-    umc.a().dispatch(paramvfz);
+    return localObject;
   }
   
-  public String toString()
+  public static void a(boolean paramBoolean)
   {
-    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+    jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_d_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vel
  * JD-Core Version:    0.7.0.1
  */

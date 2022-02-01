@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aitm
-  implements View.OnClickListener
+public class aitm
+  implements aiwf
 {
-  aitm(aitl paramaitl) {}
+  public aitm(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    AIOLongShotHelper.a(this.a.mActivity, (String)aitl.a(this.a).selectedPhotoList.get(0), new aitn(this));
-    AIOLongShotHelper.a("0X8009DEE");
+    return this.a.a();
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.a;
   }
 }
 

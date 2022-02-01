@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.entry;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import bdhj;
-import bdoo;
+import bgmo;
+import bgtn;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
@@ -26,11 +26,11 @@ class MiniAppEntryLayout$2
       paramDownloadParams = localBitmap2;
       localRect.right = paramBitmap.getWidth();
       paramDownloadParams = localBitmap2;
-      int i = bdoo.a(240.0F);
+      int i = bgtn.a(240.0F);
       paramDownloadParams = localBitmap2;
       localRect.bottom = Math.min(paramBitmap.getHeight(), i);
       paramDownloadParams = localBitmap2;
-      localBitmap2 = bdhj.a(paramBitmap, localRect, 2);
+      localBitmap2 = bgmo.a(paramBitmap, localRect, 2);
       localBitmap1 = localBitmap2;
       paramDownloadParams = localBitmap2;
       if (QLog.isColorLevel())
@@ -50,7 +50,7 @@ class MiniAppEntryLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryLayout.2
  * JD-Core Version:    0.7.0.1
  */

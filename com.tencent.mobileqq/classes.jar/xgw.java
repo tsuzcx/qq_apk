@@ -1,30 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class xgw
-  implements xek
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  @NonNull
-  private final xeh[] a;
+  public xgw(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
   
-  public xgw(xeh... paramVarArgs)
+  public boolean onPreDraw()
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = paramVarArgs;
-  }
-  
-  public void a(List<xeh> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(Arrays.asList(this.a));
+    xlk.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new xgx(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgw
  * JD-Core Version:    0.7.0.1
  */

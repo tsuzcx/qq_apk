@@ -2,18 +2,5 @@
 <animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:duration="125" android:drawable="@drawable/hjz" />
-    <item android:duration="125" android:drawable="@drawable/hk6" />
-    <item android:duration="125" android:drawable="@drawable/hk7" />
-    <item android:duration="125" android:drawable="@drawable/hk8" />
-    <item android:duration="125" android:drawable="@drawable/hk9" />
-    <item android:duration="125" android:drawable="@drawable/hk_" />
-    <item android:duration="125" android:drawable="@drawable/hka" />
-    <item android:duration="125" android:drawable="@drawable/hkb" />
-    <item android:duration="125" android:drawable="@drawable/hkc" />
-    <item android:duration="125" android:drawable="@drawable/hk0" />
-    <item android:duration="125" android:drawable="@drawable/hk1" />
-    <item android:duration="125" android:drawable="@drawable/hk2" />
-    <item android:duration="125" android:drawable="@drawable/hk3" />
-    <item android:duration="125" android:drawable="@drawable/hk4" />
-    <item android:duration="125" android:drawable="@drawable/hk5" />
+    <item android:duration="125" android:drawable="@drawable/hjz" />
 </animation-list>

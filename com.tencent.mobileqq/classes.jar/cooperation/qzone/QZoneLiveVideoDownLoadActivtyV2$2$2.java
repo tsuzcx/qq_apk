@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import bjej;
+import blsp;
 
 public class QZoneLiveVideoDownLoadActivtyV2$2$2
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$2(bjej parambjej) {}
+  public QZoneLiveVideoDownLoadActivtyV2$2$2(blsp paramblsp) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QZoneLiveVideoDownLoadActivtyV2$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2
  * JD-Core Version:    0.7.0.1
  */

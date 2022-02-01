@@ -1,69 +1,40 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class qqi
-  implements TextWatcher
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qqi
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  qqi(qqa paramqqa) {}
   
-  public qqi(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public final void onClick(View paramView)
   {
-    int k = paramEditable.length();
-    int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      i = 1;
-      if (k <= 0) {
-        break label120;
-      }
-      j = 1;
-      if ((j ^ i) != 0)
-      {
-        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label125;
-        }
-        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839356);
+    qqa.a(this.a, qqa.a(this.a) ^ true);
+    if (qqa.a(this.a)) {
+      if (qqa.a(this.a).a()) {
+        qqa.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849416, 0, 0, 0);
       }
     }
     for (;;)
     {
-      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      if (paramEditable.length() <= 0) {
-        break label133;
-      }
-      owy.a().g(paramEditable.toString());
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = 0;
-      break;
-      label120:
-      j = 0;
-      break label24;
-      label125:
-      arrayOfDrawable[2] = null;
+      qqa.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849417, 0, 0, 0);
+      continue;
+      if (qqa.a(this.a).a()) {
+        qqa.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849422, 0, 0, 0);
+      } else {
+        qqa.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849423, 0, 0, 0);
+      }
     }
-    label133:
-    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqi
  * JD-Core Version:    0.7.0.1
  */

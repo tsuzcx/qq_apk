@@ -1,25 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.widget.EditText;
 
-public class mmd
-  implements View.OnTouchListener
+class mmd
+  extends AccessibilityDelegateCompat
 {
-  public mmd(VideoControlUI paramVideoControlUI) {}
+  mmd(mlz parammlz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramView = bdol.e(((EditText)paramView).getText().toString());
+    paramAccessibilityNodeInfoCompat.setText(paramView);
+    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmd
  * JD-Core Version:    0.7.0.1
  */

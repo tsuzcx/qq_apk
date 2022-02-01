@@ -1,28 +1,37 @@
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aomx
+public class aomx
+  extends aojs
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public String a()
+  public aomx(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return this.a + this.b;
+    super(paramQQAppInterface, paramContext);
   }
   
   public boolean a()
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+    boolean bool = false;
+    try
+    {
+      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
+        bool = ujd.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WeishiPublicAccountVideoAction", 1, "doAction error: " + localException.getMessage());
+      a("WeishiPublicAccountVideoAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomx
  * JD-Core Version:    0.7.0.1
  */

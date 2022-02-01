@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import aszd;
-import atdh;
-import azoa;
+import avgw;
+import avju;
+import bcph;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.shadow.core.common.LoggerFactory;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(aszd.a());
+    LoggerFactory.setILoggerFactory(avgw.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    atdh.d();
-    azoa localazoa = new azoa(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localazoa);
+    avju.d();
+    bcph localbcph = new bcph(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localbcph);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;
@@ -39,7 +39,7 @@ public class HuayangPluginContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.HuayangPluginContainer
  * JD-Core Version:    0.7.0.1
  */

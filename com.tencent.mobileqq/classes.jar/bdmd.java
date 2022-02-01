@@ -1,28 +1,38 @@
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-
-public abstract interface bdmd
+public class bdmd
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d;
   
-  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  public bdmd(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
   
-  public abstract void a();
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
-  public abstract void a(int paramInt);
+  public int b()
+  {
+    return this.b;
+  }
   
-  public abstract void a(String paramString);
+  public int c()
+  {
+    return this.c;
+  }
   
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
-  
-  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  public int d()
+  {
+    return this.d;
+  }
 }
 
 

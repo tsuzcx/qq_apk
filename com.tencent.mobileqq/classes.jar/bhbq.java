@@ -1,22 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.report.GdtCgiReportRunnable;
-
-public class bhbq
+public abstract interface bhbq
 {
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ThreadManager.a(new GdtCgiReportRunnable(paramString), 16, null, false);
-    QMLog.i("GDT_CGI_REPORT", paramString);
-  }
+  public abstract void a();
+  
+  public abstract void a(bhbr parambhbr);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbq
  * JD-Core Version:    0.7.0.1
  */

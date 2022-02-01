@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
+import java.lang.ref.WeakReference;
 
-class apyu
-  implements Animator.AnimatorListener
+public class apyu
 {
-  apyu(apyt paramapyt) {}
+  public int a;
+  public String a;
+  public WeakReference<apyt> a;
+  public int b = 0;
+  public int c = 0;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public apyu()
   {
-    if (this.a.a != null)
-    {
-      float f = this.a.a.getTranslationX();
-      this.a.a.setTranslationX(0.0F);
-      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

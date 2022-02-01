@@ -1,13 +1,10 @@
-public class ovi
+public abstract interface ovi
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ovi
  * JD-Core Version:    0.7.0.1
  */

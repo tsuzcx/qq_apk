@@ -1,52 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agym
+final class agym
+  implements ahbm
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static agym a(String paramString)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    agym localagym = new agym();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localagym.a(paramString.getBoolean("useRecommendedSticker"));
-        localagym.a(paramString.getInt("maxMatchLength"));
-      }
-      return localagym;
+    if (paramChatMessage.msgtype == -3016) {
+      return 93;
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
-    }
-    return localagym;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return 15;
   }
 }
 

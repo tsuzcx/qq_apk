@@ -1,18 +1,47 @@
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 public class awif
+  extends asgf
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  public awif(MatchChatSettingFragment paramMatchChatSettingFragment) {}
   
-  public String toString()
+  protected void a(boolean paramBoolean1, ArrayList<ashw> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
   {
-    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      MatchChatSettingFragment.a(this.a, paramBoolean2);
+    }
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
+    }
+    MatchChatSettingFragment localMatchChatSettingFragment;
+    if (!paramBoolean)
+    {
+      localMatchChatSettingFragment = this.a;
+      if (MatchChatSettingFragment.a(this.a).a()) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awif
  * JD-Core Version:    0.7.0.1
  */

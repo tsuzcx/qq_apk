@@ -1,19 +1,32 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 
-public class akta
-  implements aksu
+class akta
+  implements OnUpdateListener
 {
-  public akta(CmGameDebugView paramCmGameDebugView) {}
+  akta(akss paramakss, ResultReceiver paramResultReceiver) {}
   
-  public void a(int paramInt)
+  public void onCheckForUpdate(boolean paramBoolean)
   {
-    if (CmGameDebugView.a(this.a).getVisibility() != 0)
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
     {
-      CmGameDebugView.b(this.a, true);
-      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 0);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
     }
-    CmGameDebugView.b(this.a, paramInt);
+  }
+  
+  public void onUpdateSucc(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 1);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
   }
 }
 

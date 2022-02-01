@@ -1,21 +1,29 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awrj
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<awrh> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public awrj(MultiAIOFragment paramMultiAIOFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379999);
+    awsm.a -= 1;
+    if (awsm.a < 1) {
+      awsm.a = 1;
+    }
+    localTextView.setText(anni.a(2131705776) + awsm.a);
+    MultiAIOFragment.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrj
  * JD-Core Version:    0.7.0.1
  */

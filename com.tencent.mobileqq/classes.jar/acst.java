@@ -1,14 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
-
-public class acst
-  implements DialogInterface.OnDismissListener
-{
-  public acst(Conversation paramConversation) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
-}
+class acst {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

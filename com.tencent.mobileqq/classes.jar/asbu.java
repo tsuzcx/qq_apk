@@ -1,45 +1,92 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
+import android.content.Context;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.os.MqqHandler;
 
-class asbu
-  implements bdbc
+final class asbu
+  implements awnc<EmoticonPackage>
 {
-  asbu(asbs paramasbs) {}
+  asbu(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, arup paramarup, SessionInfo paramSessionInfo, EmojiStickerManager.StickerInfo paramStickerInfo) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (asbs.a(this.a) == null) {}
-    while (asbs.a(this.a).a()) {
-      return;
-    }
-    paramInt2 = asbs.a(this.a).findFirstVisibleItemPosition();
-    int i = asbs.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)asbs.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
+    boolean bool;
+    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
+      if (paramEmoticonPackage.jobType == 4)
       {
-        asbz localasbz = (asbz)asbs.a(this.a).getChildViewHolder(asbs.a(this.a).getChildAt(paramInt1));
-        if (!(localasbz instanceof asby)) {
-          break label170;
-        }
-        ((asby)localasbz).a.setImageBitmap(paramBitmap);
+        bool = true;
+        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
       }
     }
-    for (;;)
+    do
     {
-      paramInt1 += 1;
-      break label74;
+      return;
+      bool = false;
       break;
-      label170:
-      QLog.e("Forward.Preview.Dialog", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
+      if (!this.jdField_a_of_type_Arup.c()) {
+        break label483;
+      }
+      if (this.jdField_a_of_type_Arup.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
+        break label170;
+      }
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689909, 0);
+      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramEmoticonPackage == null);
+    paramEmoticonPackage.obtainMessage(10).sendToTarget();
+    paramEmoticonPackage.obtainMessage(21).sendToTarget();
+    return;
+    label170:
+    Object localObject = awgb.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0);
+    if ((localObject != null) && (((awfj)localObject).a))
+    {
+      if (awgs.a())
+      {
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0, null, false);
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = "value=1";
     }
+    do
+    {
+      asbq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo);
+      return;
+      int j = awfd.a(awgb.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0));
+      int i = 0;
+      if (paramEmoticonPackage != null) {
+        i = paramEmoticonPackage.rscType;
+      }
+      paramEmoticonPackage = "rscType?" + i + ";value=" + j;
+      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = paramEmoticonPackage;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
+      }
+      if ((localObject != null) && (!((awfj)localObject).c))
+      {
+        adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+        return;
+      }
+      localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    } while (localObject == null);
+    ((ChatFragment)localObject).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, new asbv(this, paramEmoticonPackage));
+    return;
+    label483:
+    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689925);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
   }
 }
 

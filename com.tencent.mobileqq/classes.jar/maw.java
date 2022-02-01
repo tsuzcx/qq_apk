@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class maw
-  implements DialogInterface.OnClickListener
+public class maw
+  implements URLDrawable.URLDrawableListener
 {
-  maw(mav parammav) {}
+  public maw(AVActivity paramAVActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.a.a.b();
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     maw
  * JD-Core Version:    0.7.0.1
  */

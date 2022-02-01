@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket.widget;
 
-import qhj;
+import rar;
 
 public class RIJRedPacketPopupTips$1
   implements Runnable
 {
-  public RIJRedPacketPopupTips$1(qhj paramqhj) {}
+  public RIJRedPacketPopupTips$1(rar paramrar) {}
   
   public void run()
   {

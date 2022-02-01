@@ -1,29 +1,33 @@
 package com.tencent.mobileqq.activity;
 
-import aepi;
+import Override;
+import afur;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import aryl;
-import aryv;
-import asbd;
-import azqs;
+import android.view.MotionEvent;
+import aufw;
+import aufz;
+import auie;
+import bcst;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class BaseForwardSelectionActivity
   extends FragmentActivity
 {
   protected Bundle a;
-  public aryv a;
+  public aufz a;
   public boolean a;
   public boolean b;
   
   private void a()
   {
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -42,6 +46,14 @@ public class BaseForwardSelectionActivity
     PhotoUtils.a(this, localIntent, localArrayList, 0, false);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramInt2 == -1) {}
@@ -54,7 +66,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Aryv.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Aufz.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -66,8 +78,8 @@ public class BaseForwardSelectionActivity
       this.b = getIntent().getBooleanExtra("call_by_forward", false);
       if (this.b)
       {
-        this.jdField_a_of_type_Aryv = asbd.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aryv.a();
+        this.jdField_a_of_type_Aufz = auie.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aufz.a();
       }
     }
     return true;
@@ -75,8 +87,8 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aryv != null) {
-      this.jdField_a_of_type_Aryv.w();
+    if (this.jdField_a_of_type_Aufz != null) {
+      this.jdField_a_of_type_Aufz.x();
     }
     super.doOnDestroy();
   }
@@ -99,14 +111,14 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == aryl.f.intValue()) || (i == aryl.k.intValue()))
+    if ((i == aufw.f.intValue()) || (i == aufw.k.intValue()))
     {
-      this.jdField_a_of_type_Aryv.b(i);
+      this.jdField_a_of_type_Aufz.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    azqs.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()
@@ -114,10 +126,17 @@ public class BaseForwardSelectionActivity
     super.finish();
     overridePendingTransition(2130771988, 2130771989);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseForwardSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class amov
-  implements ArkViewImplement.LoadCallback
+class amov
 {
-  public amov(QQDailyArkView paramQQDailyArkView) {}
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if (paramInt != 1) {
-      QQDailyArkView.a(this.a);
-    }
-  }
+  amov(amou paramamou) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amov
  * JD-Core Version:    0.7.0.1
  */

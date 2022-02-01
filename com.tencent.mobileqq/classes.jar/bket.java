@@ -1,19 +1,11 @@
-import cooperation.qzone.util.QZLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
 
-class bket
-  extends bfxf
+public class bket
+  implements LowLightResource
 {
-  bket(bkes parambkes) {}
-  
-  public void a()
+  public String getLowLightDir()
   {
-    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bfxg.b.get());
-  }
-  
-  public void b()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bfxg.b.get());
+    return anhk.ba;
   }
 }
 

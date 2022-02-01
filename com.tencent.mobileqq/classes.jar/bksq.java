@@ -1,14 +1,12 @@
-import android.graphics.Rect;
-import dov.com.qq.im.ae.camera.core.AECameraManager.7;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class bksq
-  implements azht
+class bksq
+  extends RecyclerView.ViewHolder
 {
-  public bksq(AECameraManager.7 param7) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  bksq(bksn parambksn, View paramView)
   {
-    bksp.a().a(this.a.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.a.this$0.jdField_a_of_type_Int, this.a.this$0.b), this.a.jdField_a_of_type_Ajwh, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, 1, this.a.this$0.e);
+    super(paramView);
   }
 }
 

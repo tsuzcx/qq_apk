@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-class agqn
-  implements DialogInterface.OnClickListener
+public abstract interface agqn
 {
-  agqn(agqk paramagqk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
 }
 
 

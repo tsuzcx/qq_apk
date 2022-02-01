@@ -1,9 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+
 public class adwz
+  implements DialogInterface.OnClickListener
 {
-  public volatile long a;
-  public String a;
+  public adwz(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  protected adwz(adws paramadws) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

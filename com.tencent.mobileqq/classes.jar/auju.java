@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-class auju
-  implements aupv
+public class auju
+  implements augr
 {
-  auju(aujt paramaujt) {}
+  public auju(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
   public void a()
   {
-    if ((aujr.a(this.a.jdField_a_of_type_Aujr) != null) && (aujr.a(this.a.jdField_a_of_type_Aujr).a != null)) {
-      this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, aujr.a(this.a.jdField_a_of_type_Aujr).a.a);
-    }
-    this.a.jdField_a_of_type_Auqc.a();
-    if (aujr.a(this.a.jdField_a_of_type_Aujr) != null) {
-      aujr.a(this.a.jdField_a_of_type_Aujr).a(false, null, false);
-    }
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
+    ((auke)this.a.a.getManager(350)).a().a(null);
+    this.a.y();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auju
  * JD-Core Version:    0.7.0.1
  */

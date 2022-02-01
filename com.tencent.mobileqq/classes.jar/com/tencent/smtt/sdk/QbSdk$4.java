@@ -3,22 +3,24 @@ package com.tencent.smtt.sdk;
 import android.content.Context;
 
 final class QbSdk$4
-  implements TbsListener
+  implements TbsDownloader.TbsDownloaderCallback
 {
   QbSdk$4(Context paramContext, QbSdk.PreInitCallback paramPreInitCallback) {}
   
-  public void onDownloadFinish(int paramInt) {}
-  
-  public void onDownloadProgress(int paramInt) {}
-  
-  public void onInstallFinish(int paramInt)
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    QbSdk.preInit(this.val$context, this.val$callback);
+    if ((TbsShareManager.findCoreForThirdPartyApp(this.a) == 0) && (!TbsShareManager.getCoreDisabled())) {
+      TbsShareManager.forceToLoadX5ForThirdApp(this.a, false);
+    }
+    if ((QbSdk.i) && (TbsShareManager.isThirdPartyApp(this.a))) {
+      TbsExtensionFunctionManager.getInstance().initTbsBuglyIfNeed(this.a);
+    }
+    QbSdk.preInit(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.4
  * JD-Core Version:    0.7.0.1
  */

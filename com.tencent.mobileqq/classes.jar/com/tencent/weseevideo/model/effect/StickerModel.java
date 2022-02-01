@@ -1,16 +1,19 @@
 package com.tencent.weseevideo.model.effect;
 
+import com.tencent.tavcut.bean.SolidData;
 import com.tencent.tavcut.bean.TextItem;
 import com.tencent.weseevideo.composition.effectnode.VideoEffectType;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StickerModel
   extends VideoPagModel
 {
   protected float centerX = 0.0F;
   protected float centerY = 0.0F;
-  protected boolean editable = true;
+  public boolean editable = true;
   protected long endTime = 0L;
   protected String fontId = "";
   protected int height = 0;
@@ -21,6 +24,7 @@ public class StickerModel
   protected float minScale = 0.0F;
   protected float rotate = 0.0F;
   protected float scale = 0.5F;
+  protected Map<String, SolidData> solidItems = new HashMap();
   protected List<TextItem> textItems = new ArrayList();
   protected String type = "";
   protected int width = 0;
@@ -88,6 +92,11 @@ public class StickerModel
   public float getScale()
   {
     return this.scale;
+  }
+  
+  public Map<String, SolidData> getSolidItems()
+  {
+    return this.solidItems;
   }
   
   public List<TextItem> getTextItems()
@@ -175,6 +184,11 @@ public class StickerModel
     this.scale = paramFloat;
   }
   
+  public void setSolidItems(Map<String, SolidData> paramMap)
+  {
+    this.solidItems = paramMap;
+  }
+  
   public void setTextItems(List<TextItem> paramList)
   {
     this.textItems = paramList;
@@ -192,7 +206,7 @@ public class StickerModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.StickerModel
  * JD-Core Version:    0.7.0.1
  */

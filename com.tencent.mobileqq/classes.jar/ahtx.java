@@ -1,29 +1,12 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class ahtx
-  extends altm
+public abstract interface ahtx
 {
-  public ahtx(TroopFragment paramTroopFragment) {}
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.h();
-    }
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

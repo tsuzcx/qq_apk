@@ -1,8 +1,19 @@
-public abstract interface afil
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afil
+  implements View.OnClickListener
 {
-  public abstract boolean a(afii paramafii);
+  public afil(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public abstract boolean a(afii paramafii, String paramString1, String paramString2);
+  public void onClick(View paramView)
+  {
+    TroopAssistantActivity.a(this.a);
+    bcst.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

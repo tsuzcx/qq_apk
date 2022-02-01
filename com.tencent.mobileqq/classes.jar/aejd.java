@@ -1,37 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aejd
-  extends altm
+  implements View.OnClickListener
 {
-  public aejd(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejd(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
-    }
-    label28:
-    Friends localFriends;
-    do
-    {
-      return;
-      localFriends = ((alto)this.a.app.getManager(51)).e(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
+    awqs.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

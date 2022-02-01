@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
-public final class aamy
-  implements Parcelable.Creator<GdtHandler.Options>
+public class aamy
+  implements bkhw
 {
-  public GdtHandler.Options a(Parcel paramParcel)
-  {
-    return new GdtHandler.Options(paramParcel);
-  }
+  public aamy(FollowTextView paramFollowTextView, bkho parambkho) {}
   
-  public GdtHandler.Options[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new GdtHandler.Options[paramInt];
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
+      return;
+    }
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    }
   }
 }
 

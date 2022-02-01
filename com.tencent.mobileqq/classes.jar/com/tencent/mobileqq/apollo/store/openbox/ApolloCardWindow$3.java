@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import aliu;
+import ancb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
@@ -17,7 +17,7 @@ class ApolloCardWindow$3
     {
       try
       {
-        Object localObject1 = new File(aliu.k);
+        Object localObject1 = new File(ancb.k);
         if (((File)localObject1).exists())
         {
           if (!((File)localObject1).isDirectory()) {
@@ -52,7 +52,7 @@ class ApolloCardWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow.3
  * JD-Core Version:    0.7.0.1
  */

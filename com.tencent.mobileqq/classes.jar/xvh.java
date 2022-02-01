@@ -1,23 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.app.Activity;
+import android.content.Intent;
 
 public class xvh
-  implements bibd
+  extends xmr
 {
-  public xvh(SegmentList paramSegmentList) {}
+  public xvh(xvg paramxvg) {}
   
-  public void a_(View paramView) {}
-  
-  public void e() {}
-  
-  public void e(boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
+    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
+      this.a.b().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvh
  * JD-Core Version:    0.7.0.1
  */

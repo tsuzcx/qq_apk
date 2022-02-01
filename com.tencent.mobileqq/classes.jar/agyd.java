@@ -1,14 +1,15 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 final class agyd
-  implements Comparator<agxy>
+  implements ahbm
 {
-  public int a(agxy paramagxy1, agxy paramagxy2)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if ((paramagxy1 == null) || (paramagxy2 == null)) {
-      return 0;
+    if (auzk.a(paramQQAppInterface).a()) {
+      return 78;
     }
-    return Float.compare(paramagxy1.a(), paramagxy2.a());
+    return 0;
   }
 }
 

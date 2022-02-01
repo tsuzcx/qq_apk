@@ -1,24 +1,63 @@
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
 
 public class bhua
+  implements bidl
 {
-  private int a;
+  public bhua(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  private bhua(AbsListView paramAbsListView) {}
-  
-  public void a()
+  public void a(int paramInt)
   {
-    this.a = AbsListView.access$200(this.this$0);
-  }
-  
-  public boolean a()
-  {
-    return (this.this$0.hasWindowFocus()) && (AbsListView.access$300(this.this$0) == this.a);
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
+    {
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
+      }
+      i += 1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i > -1) && (i < j))
+      {
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
+        }
+      }
+      return;
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
+        }
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhua
  * JD-Core Version:    0.7.0.1
  */

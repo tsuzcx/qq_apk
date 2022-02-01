@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aivd
-  implements DialogInterface.OnClickListener
+public class aivd
+  implements View.OnClickListener
 {
-  aivd(aivc paramaivc) {}
+  public aivd(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
+    }
+    bcst.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
+    this.a.getActivity().requestPermissions(new aive(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

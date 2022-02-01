@@ -1,58 +1,83 @@
 package com.tencent.beacon.core.a;
 
-import java.util.concurrent.ScheduledExecutorService;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.beacon.core.e.f;
+import com.tencent.beacon.core.event.m;
 
-public abstract class b
+public class b
+  implements Runnable
 {
-  public static boolean a = true;
-  private static b b;
+  private final Context a;
+  private Object b;
+  private boolean c = false;
+  int d = 0;
   
-  public static b a(ScheduledExecutorService paramScheduledExecutorService)
+  public b(Context paramContext)
   {
-    return new b.a(paramScheduledExecutorService);
+    this.a = paramContext;
   }
   
-  public static void a(b paramb)
+  private void a()
   {
-    try
+    if (this.b == null) {
+      this.b = f.a("android.app.ActivityThread", "currentActivityThread", new Class[0], new Object[0]);
+    }
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      com.tencent.beacon.core.d.b.b("[task] setInstance: " + paramb, new Object[0]);
-      if (b != null) {
-        b.a();
+      int i = f.a("android.app.ActivityThread", localObject, "mNumVisibleActivities");
+      if (i > 0)
+      {
+        com.tencent.beacon.core.e.d.a("[core] mNumVisibleActivities: " + i, new Object[0]);
+        com.tencent.beacon.core.info.a.f = true;
       }
-      b = paramb;
-      com.tencent.beacon.core.d.b.b("[task] setInstance end", new Object[0]);
+    }
+  }
+  
+  private void b()
+  {
+    if ((Integer.valueOf(Build.VERSION.SDK).intValue() < 18) && (this.b == null) && (!this.c))
+    {
+      new Handler(this.a.getMainLooper()).post(new a(this));
+      this.c = true;
       return;
     }
-    finally {}
+    a();
   }
   
-  public static b b()
+  public void run()
   {
-    try
-    {
-      if (b == null) {
-        b = new b.a();
-      }
-      b localb = b;
-      return localb;
+    if (this.d == 0) {
+      com.tencent.beacon.core.e.d.a("[core] Activity Monitor Task was started.", new Object[0]);
     }
-    finally {}
+    int i = this.d;
+    this.d = (i + 1);
+    if (i < 10)
+    {
+      if (!com.tencent.beacon.core.info.a.f) {
+        break label88;
+      }
+      com.tencent.beacon.core.e.d.a("[core] Found visible activity.", new Object[0]);
+      new m(this.a).c();
+      this.d = 10;
+    }
+    for (;;)
+    {
+      if (this.d == 10) {
+        com.tencent.beacon.core.e.d.a("[core] Activity Monitor Task was exited.", new Object[0]);
+      }
+      return;
+      label88:
+      b();
+      d.a().a(this, 5000L);
+    }
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Runnable paramRunnable, long paramLong1, long paramLong2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(Runnable paramRunnable, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.a.b
  * JD-Core Version:    0.7.0.1
  */

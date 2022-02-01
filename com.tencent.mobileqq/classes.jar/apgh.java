@@ -1,41 +1,56 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apgh
-  implements DialogInterface.OnClickListener
+public class apgh
+  implements View.OnClickListener
 {
-  apgh(apgd paramapgd) {}
+  public apgh(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
-    boolean bool = false;
-    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > bdhb.a()))
+    boolean bool2 = false;
+    boolean bool1;
+    if (QRScanEntryView.a(this.a))
     {
-      bool = true;
-      apgd.a(this.a);
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
+      Object localObject = apek.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (((apek)localObject).a(bool1))
+        {
+          localObject = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label131;
+          }
+          bool1 = true;
+          label56:
+          QRScanEntryView.a((QRScanEntryView)localObject, bool1);
+          localObject = (apep)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          ((apep)localObject).a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
     }
     for (;;)
     {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
-      azri.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, apgd.c, apgd.c, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      apgd.b(this.a);
+      bool1 = false;
+      break;
+      label131:
+      bool1 = false;
+      break label56;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
+      }
     }
   }
 }

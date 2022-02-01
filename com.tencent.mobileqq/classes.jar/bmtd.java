@@ -1,35 +1,19 @@
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bmtd
-  extends ValueAnimator
+class bmtd
+  extends bjer
 {
-  private bmte jdField_a_of_type_Bmte;
-  private boolean jdField_a_of_type_Boolean;
+  bmtd(bmtc parambmtc) {}
   
-  public bmtd()
+  public void a()
   {
-    setInterpolator(new AccelerateDecelerateInterpolator());
+    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bjes.b.get());
   }
   
-  public void a(bmtc parambmtc1, bmtc parambmtc2)
+  public void b()
   {
-    setObjectValues(new Object[] { parambmtc1, parambmtc2 });
-    this.jdField_a_of_type_Boolean = bmtc.a(parambmtc1, parambmtc2);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void setObjectValues(Object... paramVarArgs)
-  {
-    super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_Bmte == null) {
-      this.jdField_a_of_type_Bmte = new bmte();
-    }
-    setEvaluator(this.jdField_a_of_type_Bmte);
+    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bjes.b.get());
   }
 }
 

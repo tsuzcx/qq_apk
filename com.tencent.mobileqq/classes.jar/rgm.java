@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
 
-class rgm
-  implements View.OnLayoutChangeListener
+public final class rgm
+  implements pvb<articlesummary.LongContentInfo, rhg>
 {
-  rgm(rgl paramrgl) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public rhg a(articlesummary.LongContentInfo paramLongContentInfo)
   {
-    VideoFeedsRecommendFragment.a(this.a.a).removeOnLayoutChangeListener(this);
-    VideoFeedsRecommendFragment.a(this.a.a).a();
+    return new rhg(paramLongContentInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgm
  * JD-Core Version:    0.7.0.1
  */

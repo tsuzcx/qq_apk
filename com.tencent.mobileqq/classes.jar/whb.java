@@ -1,19 +1,25 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class whb
-  implements xco
+class whb
+  extends SimpleJob
 {
-  public whb(QQStoryMainController paramQQStoryMainController) {}
-  
-  public void a()
+  whb(wha paramwha, String paramString, boolean paramBoolean)
   {
-    wxj.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Wha.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
 import android.text.TextUtils;
-import bayf;
-import bayk;
+import bdzi;
+import bdzn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class NearbyVideoUtils$3
@@ -14,17 +14,17 @@ public final class NearbyVideoUtils$3
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      bayk localbayk = new bayk();
-      localbayk.a = true;
-      localbayk.i = this.jdField_a_of_type_JavaLangString;
-      localbayk.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbayk);
+      bdzn localbdzn = new bdzn();
+      localbdzn.a = true;
+      localbdzn.i = this.jdField_a_of_type_JavaLangString;
+      localbdzn.b = 64;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbdzn);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyVideoUtils.3
  * JD-Core Version:    0.7.0.1
  */

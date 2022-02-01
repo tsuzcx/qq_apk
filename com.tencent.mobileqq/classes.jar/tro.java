@@ -1,47 +1,54 @@
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import qqcircle.QQCircleDitto.StCircleDittoDataNew;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class tro
-  extends yiu
+  extends Handler
 {
-  private QQCircleDitto.StCircleDittoDataNew jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew;
-  private ubm jdField_a_of_type_Ubm;
+  private WeakReference<VideoPlayManager> a;
   
-  public tro(Bundle paramBundle)
+  public tro(VideoPlayManager paramVideoPlayManager)
   {
-    super(paramBundle);
-    a(false);
+    this.a = new WeakReference(paramVideoPlayManager);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  public void handleMessage(Message paramMessage)
   {
-    return new QCirclePushRankTopView(paramViewGroup.getContext());
+    VideoPlayManager localVideoPlayManager;
+    if (this.a != null)
+    {
+      localVideoPlayManager = (VideoPlayManager)this.a.get();
+      if (localVideoPlayManager != null) {
+        switch (paramMessage.what)
+        {
+        }
+      }
+    }
+    do
+    {
+      return;
+      localVideoPlayManager = null;
+      break;
+    } while ((VideoPlayManager.a(localVideoPlayManager) == null) || (trp.a(VideoPlayManager.a(localVideoPlayManager)) == null));
+    Object localObject = trp.a(VideoPlayManager.a(localVideoPlayManager));
+    paramMessage = VideoPlayManager.a(localVideoPlayManager);
+    if ((localObject != null) && (((sfb)localObject).f()))
+    {
+      long l = ((sfb)localObject).a();
+      localObject = VideoPlayManager.a(localVideoPlayManager).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((trq)((Iterator)localObject).next()).a(paramMessage, trr.a(l) * 1000);
+      }
+    }
+    VideoPlayManager.a(localVideoPlayManager).sendEmptyMessageDelayed(0, VideoPlayManager.a(localVideoPlayManager));
   }
-  
-  public void a(ubm paramubm, LifecycleOwner paramLifecycleOwner)
-  {
-    this.jdField_a_of_type_Ubm = paramubm;
-    this.jdField_a_of_type_Ubm.a().observe(paramLifecycleOwner, new trp(this));
-  }
-  
-  public void loadData(yii paramyii) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    ((QCirclePushRankTopView)a()).setData(this.jdField_a_of_type_QqcircleQQCircleDitto$StCircleDittoDataNew);
-  }
-  
-  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tro
  * JD-Core Version:    0.7.0.1
  */

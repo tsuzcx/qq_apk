@@ -1,47 +1,47 @@
-import android.os.Handler;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.InstallRunable;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 
 public class bkct
-  extends OnPluginInstallListener.Stub
 {
-  public bkct(TroopPluginManager.InstallRunable paramInstallRunable) {}
+  private static ConcurrentHashMap<String, bkcu> a = new ConcurrentHashMap();
   
-  public void onInstallBegin(String paramString)
+  public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallBegin...  pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    if (paramFromServiceMsg != null)
+    {
+      Object localObject = paramFromServiceMsg.getServiceCmd();
+      localObject = (bkcu)a.get(localObject);
+      if (localObject != null) {
+        ((bkcu)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
     }
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public static void a(String paramString, bkcu parambkcu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallDownloadProgress... pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    if ((paramString != null) && (parambkcu != null)) {
+      a.put(paramString, parambkcu);
     }
   }
   
-  public void onInstallError(String paramString, int paramInt)
+  public static boolean a(String paramString, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallError... = " + this.a.jdField_a_of_type_JavaLangString);
+    if (paramString == null) {
+      return false;
     }
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
-    azqs.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 1, null, null, null, null);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallFinish...   pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localQQAppInterface == null) {
+      return false;
     }
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-    azqs.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 0, null, null, null, null);
+    paramString = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), paramString);
+    paramString.putWupBuffer(paramArrayOfByte);
+    paramString.extraData.putBoolean("req_pb_protocol_flag", true);
+    localQQAppInterface.sendToService(paramString);
+    return true;
   }
 }
 

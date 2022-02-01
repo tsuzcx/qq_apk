@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aepi;
+import afur;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -9,17 +9,17 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import apmh;
-import apmm;
-import apmn;
-import aprh;
-import bdgm;
-import bdkn;
-import bdtg;
-import beft;
-import begz;
-import bejh;
-import bety;
+import arpd;
+import arpi;
+import arpj;
+import arui;
+import bglp;
+import bgpp;
+import bgyg;
+import bhmv;
+import bhod;
+import bhql;
+import biau;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -44,7 +44,7 @@ public abstract class EmojiUiPlugin
   EmojiUiPlugin.HomePageLoadInfo homePageUrlInfo = new EmojiUiPlugin.HomePageLoadInfo(this);
   protected int loadmode;
   protected int mActivityType = 2;
-  apmh mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
+  arpd mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
   protected int mEmomallNewTimeFlag = -1;
   protected String mSelfUin;
   String mSid = "";
@@ -53,7 +53,7 @@ public abstract class EmojiUiPlugin
   long openToOncreateGap = -1L;
   long openTogetKeyTimeGap = -1L;
   int processStep = 1;
-  bety progressDialog;
+  biau progressDialog;
   
   private void dismissProgressDialog()
   {
@@ -119,10 +119,10 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    bdkn localbdkn = bdgm.a(this.activity, 230).a(this.activity.getString(2131692089)).b(this.activity.getString(2131692088)).a(this.activity.getString(2131694953), new EmojiUiPlugin.3(this));
-    localbdkn.setOnDismissListener(this);
-    localbdkn.setCanceledOnTouchOutside(false);
-    localbdkn.show();
+    bgpp localbgpp = bglp.a(this.activity, 230).a(this.activity.getString(2131691732)).b(this.activity.getString(2131691731)).a(this.activity.getString(2131694081), new EmojiUiPlugin.3(this));
+    localbgpp.setOnDismissListener(this);
+    localbgpp.setCanceledOnTouchOutside(false);
+    localbgpp.show();
   }
   
   private void showProgressDialog()
@@ -142,13 +142,13 @@ public abstract class EmojiUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "emojiactivity oncreate");
     }
-    aprh.a().a(this.mEmojiKeygetOnRemoteResp);
+    arui.a().a(this.mEmojiKeygetOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    aprh.a().b(this.mEmojiKeygetOnRemoteResp);
+    arui.a().b(this.mEmojiKeygetOnRemoteResp);
   }
   
   protected void OnActivityPause()
@@ -199,7 +199,7 @@ public abstract class EmojiUiPlugin
       localIntent.addFlags(536870912);
       localIntent.putExtra("back_from_emojimall", true);
       localIntent.setClass(this.activity, SplashActivity.class);
-      localIntent = aepi.a(localIntent, null);
+      localIntent = afur.a(localIntent, null);
       this.activity.startActivity(localIntent);
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.emoji.web.EmojiUiPlugin", 4, "emojimallbaseactivity closeAllPage to chatactivity");
@@ -249,9 +249,9 @@ public abstract class EmojiUiPlugin
   {
     if (paramInt == 6)
     {
-      this.configUrl.index = bdtg.a(this.activity, "magicPlus", "");
+      this.configUrl.index = bgyg.a(this.activity, "magicPlus", "");
       if (this.configUrl.index == null) {
-        this.configUrl.index = bdtg.a(this.activity, "emoji", "");
+        this.configUrl.index = bgyg.a(this.activity, "emoji", "");
       }
       this.configUrl.indexSession = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
     }
@@ -267,9 +267,9 @@ public abstract class EmojiUiPlugin
     }
     if ((paramInt1 == 1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      apmn localapmn = apmn.a(paramIntent.getExtras());
-      paramIntent = apmm.a(paramIntent.getExtras());
-      onPayResultCallback(localapmn.jdField_a_of_type_JavaLangString, localapmn.jdField_a_of_type_Int, localapmn.b, localapmn.c, localapmn.d, localapmn.e, paramIntent.jdField_a_of_type_JavaLangString);
+      arpj localarpj = arpj.a(paramIntent.getExtras());
+      paramIntent = arpi.a(paramIntent.getExtras());
+      onPayResultCallback(localarpj.jdField_a_of_type_JavaLangString, localarpj.jdField_a_of_type_Int, localarpj.b, localarpj.c, localarpj.d, localarpj.e, paramIntent.jdField_a_of_type_JavaLangString);
     }
     do
     {
@@ -318,18 +318,18 @@ public abstract class EmojiUiPlugin
     WebViewFragment localWebViewFragment = this.mRuntime.a();
     if (localWebViewFragment != null)
     {
-      localWebViewFragment.jdField_a_of_type_Bejh.a(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
-      if ((localWebViewFragment.jdField_a_of_type_Beft.a != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
+      localWebViewFragment.mUIStyleHandler.a(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
+      if ((localWebViewFragment.mSwiftTitleUI.a != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
       {
-        localWebViewFragment.jdField_a_of_type_Beft.a.setText(2131690885);
-        localWebViewFragment.jdField_a_of_type_Beft.a.setOnClickListener(new EmojiUiPlugin.2(this));
+        localWebViewFragment.mSwiftTitleUI.a.setText(2131690728);
+        localWebViewFragment.mSwiftTitleUI.a.setOnClickListener(new EmojiUiPlugin.2(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin
  * JD-Core Version:    0.7.0.1
  */

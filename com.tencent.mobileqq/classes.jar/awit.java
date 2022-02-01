@@ -1,92 +1,86 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MedalInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class awit
-  extends Binder
-  implements awis
+public class awit
 {
+  public int a;
+  public MedalInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  
   public awit()
   {
-    attachInterface(this, "com.tencent.mobileqq.pic.IPresendPicMgr");
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static awis a(IBinder paramIBinder)
+  public boolean a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-    if ((localIInterface != null) && ((localIInterface instanceof awis))) {
-      return (awis)localIInterface;
-    }
-    return new awiu(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.pic.IPresendPicMgr");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      String str1 = paramParcel1.readString();
-      String str2 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
-        a(str1, str2, bool, paramParcel1.readInt(), paramParcel1.readInt());
-        paramParcel2.writeNoException();
-        return true;
+        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
+        localJSONObject = null;
+        i = localJSONArray.length();
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
+          continue;
+        }
+        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
+        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
+          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
+        }
+        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
+          this.c = MedalWallMng.a(localJSONObject.getString("share"));
+        }
       }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a(paramParcel1.readString(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      paramInt1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeBooleanArray(paramParcel1);
-      return true;
+      catch (Exception localException)
+      {
+        JSONArray localJSONArray;
+        JSONObject localJSONObject;
+        int i;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
+        continue;
+        if (this.jdField_a_of_type_Int != 1) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        if (!bgmg.b(this.b)) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+      }
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
+        this.b = (MedalWallMng.b + bita.d(this.jdField_a_of_type_JavaLangString));
+      }
+      if (this.jdField_a_of_type_Int != 2) {
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this.jdField_a_of_type_Boolean;
+      if (i > 1) {
+        localJSONObject = localJSONArray.getJSONObject(1);
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    paramParcel2.writeIntArray(paramParcel1);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awit
  * JD-Core Version:    0.7.0.1
  */

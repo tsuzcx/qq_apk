@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghi;
-import aghj;
-import agki;
-import aiqi;
-import aiqo;
+import ahro;
+import ahrp;
+import ahul;
+import akhc;
+import akhh;
 import android.content.Context;
 import android.os.Parcel;
 import android.text.TextUtils;
 import android.view.View;
-import arre;
-import arrr;
-import arso;
-import arsx;
+import atvb;
+import atvo;
+import atwl;
+import atwt;
 import java.io.File;
+import java.util.ArrayList;
 
 public class AIOFileVideoData
   extends AIORichMediaData
@@ -50,10 +51,10 @@ public class AIOFileVideoData
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  private void a(Context paramContext, aiqi paramaiqi)
+  private void a(Context paramContext, akhc paramakhc)
   {
-    paramaiqi = new aghi(this, paramContext, paramaiqi);
-    arre.a(paramContext, paramContext.getString(2131692754), paramContext.getString(2131692756), paramaiqi);
+    paramakhc = new ahro(this, paramContext, paramakhc);
+    atvb.a(paramContext, paramContext.getString(2131692321), paramContext.getString(2131692323), paramakhc);
   }
   
   private boolean c()
@@ -64,7 +65,7 @@ public class AIOFileVideoData
       do
       {
         return false;
-      } while (!arrr.a());
+      } while (!atvo.a());
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_h_of_type_Long > 0L) && (this.jdField_h_of_type_Long > this.jdField_a_of_type_Long)) {
         return true;
       }
@@ -72,33 +73,34 @@ public class AIOFileVideoData
     return true;
   }
   
-  public aiqo a(boolean paramBoolean)
+  public akhh a(boolean paramBoolean)
   {
     boolean bool = false;
-    aiqo localaiqo = new aiqo();
-    localaiqo.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.jdField_d_of_type_JavaLangString };
-    localaiqo.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+    akhh localakhh = new akhh();
+    localakhh.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.jdField_d_of_type_JavaLangString };
+    localakhh.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    localakhh.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_e_of_type_JavaLangString);
     if (!a()) {
       bool = true;
     }
-    localaiqo.jdField_a_of_type_Boolean = bool;
-    if (localaiqo.jdField_a_of_type_Boolean) {}
+    localakhh.jdField_a_of_type_Boolean = bool;
+    if (localakhh.jdField_a_of_type_Boolean) {}
     for (String str = this.jdField_f_of_type_JavaLangString;; str = this.jdField_c_of_type_JavaLangString)
     {
-      localaiqo.jdField_a_of_type_JavaLangString = str;
-      localaiqo.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
-      localaiqo.jdField_b_of_type_Boolean = true;
-      localaiqo.jdField_b_of_type_Long = this.jdField_h_of_type_Long;
-      localaiqo.jdField_a_of_type_Long = this.jdField_f_of_type_Long;
-      localaiqo.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
-      localaiqo.jdField_e_of_type_Boolean = paramBoolean;
-      return localaiqo;
+      localakhh.jdField_a_of_type_JavaLangString = str;
+      localakhh.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
+      localakhh.jdField_b_of_type_Boolean = true;
+      localakhh.jdField_b_of_type_Long = this.jdField_h_of_type_Long;
+      localakhh.jdField_a_of_type_Long = this.jdField_f_of_type_Long;
+      localakhh.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
+      localakhh.jdField_e_of_type_Boolean = paramBoolean;
+      return localakhh;
     }
   }
   
   public File a(int paramInt)
   {
-    if (!arso.b(this.jdField_b_of_type_JavaLangString)) {
+    if (!atwl.b(this.jdField_b_of_type_JavaLangString)) {
       return null;
     }
     return new File(this.jdField_b_of_type_JavaLangString);
@@ -153,22 +155,22 @@ public class AIOFileVideoData
     }
   }
   
-  public void a(View paramView, aiqi paramaiqi)
+  public void a(View paramView, akhc paramakhc)
   {
     if (c())
     {
-      if (arsx.a(paramView.getContext(), false, new aghj(this, paramaiqi, paramView))) {
-        a(paramView.getContext(), paramaiqi);
+      if (atwt.a(paramView.getContext(), false, new ahrp(this, paramakhc, paramView))) {
+        a(paramView.getContext(), paramakhc);
       }
       return;
     }
     if (this.jdField_f_of_type_Boolean)
     {
       this.jdField_f_of_type_Boolean = false;
-      paramaiqi.a(paramView, a(false));
+      paramakhc.a(paramView, a(false));
     }
-    paramaiqi.b();
-    paramaiqi.f();
+    paramakhc.b();
+    paramakhc.f();
   }
   
   public void a(String paramString)
@@ -191,16 +193,16 @@ public class AIOFileVideoData
   
   public boolean a(int paramInt)
   {
-    return arso.b(this.jdField_b_of_type_JavaLangString);
+    return atwl.b(this.jdField_b_of_type_JavaLangString);
   }
   
-  public boolean a(agki paramagki)
+  public boolean a(ahul paramahul)
   {
     if (a()) {}
     while ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
       return false;
     }
-    paramagki.a(this.jdField_f_of_type_Long, this.jdField_f_of_type_Int, 16842753);
+    paramahul.a(this.jdField_f_of_type_Long, this.jdField_f_of_type_Int, 16842753);
     return true;
   }
   
@@ -233,7 +235,7 @@ public class AIOFileVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

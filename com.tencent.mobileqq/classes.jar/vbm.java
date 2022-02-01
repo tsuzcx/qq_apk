@@ -1,25 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.qphone.base.util.QLog;
 
-@Deprecated
-public class vbm
-  extends vbo
+class vbm
+  implements MediaPlayer.OnInfoListener
 {
-  public vbm(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561509);
-  }
+  vbm(vbl paramvbl) {}
   
-  public void a(uyg paramuyg)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    super.a(paramuyg);
-    this.a.setDisplayState(5);
-    this.a.setNodeName(alud.a(2131707336), false);
+    if (paramInt1 == 3) {
+      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbm
  * JD-Core Version:    0.7.0.1
  */

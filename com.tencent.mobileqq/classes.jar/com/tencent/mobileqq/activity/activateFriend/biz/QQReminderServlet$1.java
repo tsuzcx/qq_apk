@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
-import aeol;
+import aftu;
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
 
 public class QQReminderServlet$1
   implements Runnable
 {
-  public QQReminderServlet$1(aeol paramaeol, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public QQReminderServlet$1(aftu paramaftu, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QQReminderServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.QQReminderServlet.1
  * JD-Core Version:    0.7.0.1
  */

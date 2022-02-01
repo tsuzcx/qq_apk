@@ -1,91 +1,44 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
-class bahb
-  extends aqtp
+public class bahb
+  extends bahu<ReceiptMessageDetailFragment>
 {
-  bahb(baha parambaha) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public bahb(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    paramInt = 0;
-    paramByteStringMicro = new JSONObject();
-    if (paramBoolean)
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJobForC2C", 2, "---onUpdateGetOfflineDownloadInfo retCode: " + paramLong1 + ",retMsg: " + paramString1 + ",strCookie: " + paramString2 + ",strIP: " + paramString3 + ",port: " + paramShort);
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
       }
-      paramString1 = new StringBuilder("http://");
-      paramString1.append(paramString3).append(":").append(paramShort).append(paramString4);
-      try
-      {
-        paramString3 = new JSONArray();
-        paramString3.put(0, paramString1.toString());
-        paramByteStringMicro.put("urls", paramString3);
-        paramByteStringMicro.put("filename", paramString5);
-        paramByteStringMicro.put("cookie", paramString2);
-        paramShort = 1;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramShort = 0;
-          QLog.e("TeamWorkFileImportJobForC2C", 2, "onUpdateGetOfflineDownloadInfo exception: " + paramString1.toString());
-        }
-      }
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-        {
-          if (paramShort == 0) {
-            paramByteStringMicro.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-          }
-          paramByteStringMicro.put("filetype", 1);
-          paramByteStringMicro.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-          paramByteStringMicro.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-          paramByteStringMicro.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
-          paramByteStringMicro.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j != null) {
-            paramByteStringMicro.put("senderuin", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-          this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.i = 1;
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend) {
-            continue;
-          }
-          paramByteStringMicro.put("ownertype", 1);
-          paramByteStringMicro.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g);
-          paramInt = 1;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("TeamWorkFileImportJobForC2C", 2, "put fileid exception: " + paramString1.toString());
-        paramInt = 0;
-        continue;
-        this.a.a(true);
-      }
-      if (((paramInt == 0) && (paramShort == 0)) || (!bagk.a(paramByteStringMicro)) || (!baha.a(this.a, paramByteStringMicro))) {
-        continue;
-      }
-      this.a.jdField_a_of_type_Bagw.a(paramByteStringMicro, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.a.hashCode());
+      paramBundle = new oidb_0x986.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_read_uin_num.get();
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
       return;
-      QLog.e("TeamWorkFileImportJobForC2C", 1, "---onUpdateGetOfflineDownloadInfo retCode: " + paramLong1 + ",fileName: " + paramString5 + "----");
-      paramShort = paramInt;
-      break;
-      paramByteStringMicro.put("ownertype", 2);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    return;
   }
 }
 

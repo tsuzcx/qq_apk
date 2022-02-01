@@ -1,15 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
 public class bmtw
-  implements bmut
 {
-  public bmtw(DoodleLayout paramDoodleLayout) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
   
-  public void a()
+  public bmtw(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null) {
-      this.a.a.r();
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 

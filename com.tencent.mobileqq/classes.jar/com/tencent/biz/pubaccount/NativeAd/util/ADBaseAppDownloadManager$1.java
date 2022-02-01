@@ -1,49 +1,22 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import bdin;
-import bfkr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import nop;
-import noy;
-import qyj;
+import java.util.ArrayList;
+import java.util.Iterator;
+import nxp;
+import olv;
+import orb;
 
 public class ADBaseAppDownloadManager$1
   implements Runnable
 {
-  public ADBaseAppDownloadManager$1(nop paramnop, qyj paramqyj) {}
+  public ADBaseAppDownloadManager$1(nxp paramnxp, orb paramorb, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((this.this$0.b(this.a)) && (noy.a(this.this$0.a, this.a.d)))
-    {
-      QLog.d("ADBaseAppDownloadManager", 1, "already installed." + this.a.d);
-      this.this$0.a(this.a, 1, 100);
+    Iterator localIterator = nxp.a(this.this$0).iterator();
+    while (localIterator.hasNext()) {
+      ((olv)localIterator.next()).a(this.jdField_a_of_type_Orb, this.jdField_a_of_type_Int, this.b);
     }
-    do
-    {
-      return;
-      if ((this.this$0.c(this.a)) && (nop.a(this.this$0.a, this.a)))
-      {
-        QLog.d("ADBaseAppDownloadManager", 1, "already finishDownload." + this.a.d);
-        this.this$0.a(this.a, 5, 100);
-        DownloadInfo localDownloadInfo = bfkr.a().c(this.a.jdField_a_of_type_JavaLangString);
-        bfkr.a().a(localDownloadInfo);
-        return;
-      }
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        nop.a(this.this$0, this.a);
-        return;
-      }
-      if (bdin.g(BaseApplicationImpl.getContext()))
-      {
-        this.this$0.a(this.a, 0);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ADBaseAppDownloadManager", 2, "initDownloadApp DOWNLOAD_NONE.");
   }
 }
 

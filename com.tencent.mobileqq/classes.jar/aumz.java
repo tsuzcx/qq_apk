@@ -1,28 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class aumz
-  implements View.OnLongClickListener
+public class aumz
+  implements View.OnTouchListener
 {
-  aumz(aumy paramaumy) {}
+  public aumz(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      paramView = (MultiCardItemFragment)this.a.a.get();
-      if (paramView != null) {
-        paramView.a(this.a);
-      }
+    if ((paramMotionEvent.getAction() == 1) && (QSecFramework.a().a(1001).booleanValue())) {
+      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(83), Integer.valueOf(1), Integer.valueOf(6), "clickWeb", null }, null);
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumz
  * JD-Core Version:    0.7.0.1
  */

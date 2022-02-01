@@ -1,40 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
 
-public class axkv
-  extends ameq
+class axkv
+  extends niu
 {
-  public axkv(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  axkv(axks paramaxks, axkz paramaxkz) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      if (!this.a.isAdded())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
-        }
-        return;
-      }
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
-      return;
+    if (this.jdField_a_of_type_Axkz != null) {
+      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkv
  * JD-Core Version:    0.7.0.1
  */

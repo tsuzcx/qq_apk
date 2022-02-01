@@ -21,6 +21,7 @@ public class ah
   
   private int a(int paramInt, UniPacket paramUniPacket1, UniPacket paramUniPacket2)
   {
+    ax.b("WupSession", "init wup session");
     paramUniPacket1.setRequestId(paramInt);
     paramUniPacket1.setServantName(ag.a(paramInt));
     paramUniPacket1.setFuncName(ag.b(paramInt));
@@ -55,12 +56,14 @@ public class ah
     }
     catch (IllegalArgumentException paramUniPacket1)
     {
+      ax.a("WupSession", "wup agrs error:" + paramUniPacket1.getMessage());
       paramUniPacket1.printStackTrace();
       return -6057;
     }
     catch (Exception paramUniPacket1)
     {
       i = -6000;
+      ax.a("WupSession", "wup error:" + paramUniPacket1.getMessage());
       paramUniPacket1.printStackTrace();
     }
     return i;
@@ -208,7 +211,7 @@ public class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.ah
  * JD-Core Version:    0.7.0.1
  */

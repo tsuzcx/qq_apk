@@ -1,62 +1,60 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.graphics.Bitmap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class bezg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private bezg(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  private void a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null)
+    float f2 = 0.0F;
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
+    float f4 = this.a.b;
+    float f5 = paramFloat2 / this.a.c;
+    float f1;
+    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
     {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
+      f1 = 0.0F;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
+        break label247;
+      }
+      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Float = f1;
+      this.a.b = paramFloat1;
+      this.a.invalidate();
+      return true;
+      f1 = f3;
+      if (paramFloat1 <= 0.0F) {
+        break;
+      }
+      f1 = f3;
+      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
+        break;
+      }
+      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      break;
+      label247:
+      if (paramFloat2 < 0.0F)
+      {
+        paramFloat1 = f2;
+        if (this.a.b(0.0F) >= 0.0F) {}
+      }
+      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
+      {
+        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      }
+      else
+      {
+        paramFloat1 = f4 - f5;
       }
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
-  
-  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
   }
 }
 

@@ -1,30 +1,23 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rlh
-  extends PhoneStateListener
+public class rlh
+  implements View.OnClickListener
 {
-  rlh(rlf paramrlf) {}
+  public rlh(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a(true);
-      return;
-    }
-    this.a.a(true);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlh
  * JD-Core Version:    0.7.0.1
  */

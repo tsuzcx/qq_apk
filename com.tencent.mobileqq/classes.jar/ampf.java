@@ -1,74 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class ampf
-  extends alpd
+class ampf
+  implements amxl
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  bkbv jdField_a_of_type_Bkbv = null;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
+  ampf(ampb paramampb, int paramInt) {}
   
-  public ampf(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, String paramString, List<amxj> paramList)
   {
-    super(paramQQAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bkbv != null)
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
     {
-      this.jdField_a_of_type_Bkbv.a();
-      this.jdField_a_of_type_Bkbv = null;
+      paramString = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Ampb.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyHandler", 2, "readInJoyFeedsMsgNotify, isSuccess=" + paramBoolean1 + ",isNewMsgCome=" + paramBoolean2 + ",reason=" + paramInt);
-    }
-    notifyUI(1, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyHandler", 2, "handleOnlinePushReadInJoyFeedsMsg");
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
+    {
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.jdField_a_of_type_Ampb.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
   }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null) {
-      this.allowCmdSet = new HashSet();
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return amph.class;
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    super.onDestroy();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampf
  * JD-Core Version:    0.7.0.1
  */

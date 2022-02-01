@@ -1,22 +1,17 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import java.util.Comparator;
 
-public class aiyt
-  implements AnimationView.MyAnimationListener
+class aiyt
+  implements Comparator<SysSuspiciousMsg>
 {
-  public aiyt(ThemeHbFragment paramThemeHbFragment) {}
+  aiyt(aiyr paramaiyr) {}
   
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
+    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
+      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
     }
+    return 0;
   }
 }
 

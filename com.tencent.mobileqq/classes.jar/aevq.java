@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
-public abstract interface aevq
+public class aevq
+  implements Comparator<aevm>
 {
-  public abstract Bitmap a();
+  public aevq(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public int a(aevm paramaevm1, aevm paramaevm2)
+  {
+    long l = paramaevm1.a.certifiedGrade;
+    return (int)(paramaevm2.a.certifiedGrade - l);
+  }
 }
 
 

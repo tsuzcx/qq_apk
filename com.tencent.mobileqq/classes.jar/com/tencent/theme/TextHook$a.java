@@ -35,7 +35,7 @@ class TextHook$a
       Typeface localTypeface = Typeface.createFromFile(new File(str));
       this.a.mTypefaceMap.put(str, localTypeface);
       TextHook.a(this.a, localTypeface);
-      i.a("TextHook", 1, "SwitchFontTask load fontFile cost:" + (SystemClock.uptimeMillis() - l));
+      h.a("TextHook", 1, "SwitchFontTask load fontFile cost:" + (SystemClock.uptimeMillis() - l));
       paramVarArgs = paramVarArgs[0];
       return paramVarArgs;
     }

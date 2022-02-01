@@ -1,148 +1,22 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class aina
-  extends Dialog
-  implements TextWatcher, View.OnClickListener, View.OnTouchListener
+class aina
+  implements ainn
 {
-  private aimz jdField_a_of_type_Aimz;
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  aina(aimx paramaimx, List paramList1, List paramList2) {}
   
-  public aina(NewStyleCountryActivity paramNewStyleCountryActivity, Context paramContext)
+  public void a(long paramLong, boolean paramBoolean)
   {
-    super(paramContext);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(36);
-    getWindow().addFlags(1024);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131561663);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365851));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367817));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131363522);
-    paramContext.setVisibility(0);
-    paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375722);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371205));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719579);
-    findViewById(2131376261).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131376283));
-    this.jdField_a_of_type_Aimz = new aimz(paramNewStyleCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aimz);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
-  }
-  
-  void a(String paramString)
-  {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      aimx.a(this.jdField_a_of_type_Aimx, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
+      aimx.a(this.jdField_a_of_type_Aimx).a(false, (ChatMessage)this.b.get(0), false);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Aimz.a(paramString);
-    if (this.jdField_a_of_type_Aimz.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aimz.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    a(paramEditable);
-    if (paramEditable.equals(""))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  /* Error */
-  public void dismiss()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 201	android/app/Dialog:dismiss	()V
-    //   4: aload_0
-    //   5: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	22	0	this	aina
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363522: 
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    QQToast.a(aimx.a(this.jdField_a_of_type_Aimx).a(), 0, 2131718959, 0).a();
   }
 }
 

@@ -1,102 +1,25 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+
 public class afbb
-  implements afax
+  implements View.OnTouchListener
 {
-  public static final afay<afbb> a;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
+  public afbb(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Afay = new afbc();
-  }
-  
-  public afbb() {}
-  
-  public afbb(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public afbb(afav paramafav)
-  {
-    paramafav.a();
-    this.jdField_a_of_type_Float = paramafav.a();
-    this.b = paramafav.a();
-    this.c = paramafav.a();
-    this.jdField_a_of_type_Long = paramafav.a();
-  }
-  
-  public afbb(afbb paramafbb)
-  {
-    if (paramafbb != null) {
-      a(paramafbb.a(), paramafbb.b(), paramafbb.c(), 0L);
+    switch (paramMotionEvent.getAction())
+    {
     }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(afav paramafav, int paramInt)
-  {
-    paramafav.a(1);
-    paramafav.a(this.jdField_a_of_type_Float);
-    paramafav.a(this.b);
-    paramafav.a(this.c);
-    paramafav.a(this.jdField_a_of_type_Long);
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_a_of_type_Float *= paramFloat;
-    this.b *= paramFloat;
-    this.c *= paramFloat;
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.7F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

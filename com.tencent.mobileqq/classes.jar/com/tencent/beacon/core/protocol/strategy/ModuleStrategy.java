@@ -4,6 +4,7 @@ import com.tencent.beacon.core.wup.JceStruct;
 import com.tencent.beacon.core.wup.a;
 import com.tencent.beacon.core.wup.b;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,11 +36,11 @@ public final class ModuleStrategy
     this.sampleEvent = paramArrayList2;
   }
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     this.mId = parama.a(this.mId, 0, true);
     this.onOff = parama.a(this.onOff, 1, true);
-    this.url = parama.b(2, true);
+    this.url = parama.a(2, true);
     if (cache_detail == null)
     {
       cache_detail = new HashMap();
@@ -52,8 +53,9 @@ public final class ModuleStrategy
       cache_preventEventCode.add("");
     }
     this.preventEventCode = ((ArrayList)parama.a(cache_preventEventCode, 4, false));
-    if (cache_sms != null) {
-      this.sms = parama.a(cache_sms, 5, false);
+    Object localObject = cache_sms;
+    if (localObject != null) {
+      this.sms = parama.a(localObject, 5, false);
     }
     if (cache_sampleEvent == null)
     {
@@ -63,26 +65,29 @@ public final class ModuleStrategy
     this.sampleEvent = ((ArrayList)parama.a(cache_sampleEvent, 6, false));
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.mId, 0);
     paramb.a(this.onOff, 1);
     paramb.a(this.url, 2);
     paramb.a(this.detail, 3);
-    if (this.preventEventCode != null) {
-      paramb.a(this.preventEventCode, 4);
+    Object localObject = this.preventEventCode;
+    if (localObject != null) {
+      paramb.a((Collection)localObject, 4);
     }
-    if (this.sms != null) {
-      paramb.a(this.sms, 5);
+    localObject = this.sms;
+    if (localObject != null) {
+      paramb.a(localObject, 5);
     }
-    if (this.sampleEvent != null) {
-      paramb.a(this.sampleEvent, 6);
+    localObject = this.sampleEvent;
+    if (localObject != null) {
+      paramb.a((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.strategy.ModuleStrategy
  * JD-Core Version:    0.7.0.1
  */

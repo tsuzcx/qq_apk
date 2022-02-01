@@ -1,49 +1,43 @@
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class txc
-  extends trw
+  extends NativeGifImage
 {
-  public txc(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
+  private int jdField_a_of_type_Int = 3;
+  private txd jdField_a_of_type_Txd;
   
-  public QCirclePolymorphicAniView a()
+  public txc(File paramFile, boolean paramBoolean, int paramInt)
   {
-    if (QCirclePersonalDetailFragment.a(this.a) != null) {
-      return (QCirclePolymorphicAniView)QCirclePersonalDetailFragment.b(this.a).findViewById(2131373208);
-    }
-    return null;
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public tuz a()
+  public void a()
   {
-    if ((QCirclePersonalDetailFragment.a(this.a) == null) && (QCirclePersonalDetailFragment.c(this.a) != null))
+    this.jdField_a_of_type_Txd = null;
+  }
+  
+  public void a(txd paramtxd)
+  {
+    this.jdField_a_of_type_Txd = paramtxd;
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
     {
-      ViewStub localViewStub = (ViewStub)QCirclePersonalDetailFragment.d(this.a).findViewById(2131373151);
-      QCirclePersonalDetailFragment.a(this.a, new tuz(this.a.getActivity()));
-      QCirclePersonalDetailFragment.a(this.a).a(this.a.getActivity(), localViewStub);
+      if (this.jdField_a_of_type_Txd != null) {
+        this.jdField_a_of_type_Txd.a();
+      }
+      return;
     }
-    return QCirclePersonalDetailFragment.a(this.a);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a.a != null) {
-      this.a.a.a("share_action_show_share_sheet", paramObject);
-    }
-  }
-  
-  public void a(ttf paramttf)
-  {
-    if (QCirclePersonalDetailFragment.a(this.a) != null) {
-      QCirclePersonalDetailFragment.a(this.a).a("poly_zan_list_show", paramttf);
-    }
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txc
  * JD-Core Version:    0.7.0.1
  */

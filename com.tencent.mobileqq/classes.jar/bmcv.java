@@ -1,104 +1,98 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bmcv
-  extends QIPCModule
+class bmcv
+  implements bmct
 {
-  private static bmcv jdField_a_of_type_Bmcv;
-  public static boolean a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean b;
+  private IBinder a;
   
-  private bmcv()
+  bmcv(IBinder paramIBinder)
   {
-    super("PeakIpcModuleClient");
-    b();
+    this.a = paramIBinder;
   }
   
-  /* Error */
-  public static bmcv a()
+  public void a(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 22	bmcv:jdField_a_of_type_Bmcv	Lbmcv;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 22	bmcv:jdField_a_of_type_Bmcv	Lbmcv;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	bmcv
-    //   21: dup
-    //   22: invokespecial 24	bmcv:<init>	()V
-    //   25: putstatic 22	bmcv:jdField_a_of_type_Bmcv	Lbmcv;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 22	bmcv:jdField_a_of_type_Bmcv	Lbmcv;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localbmcv	bmcv
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
-  }
-  
-  public static void a()
-  {
-    bmcv localbmcv = a();
-    if (!jdField_a_of_type_Boolean)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      QIPCClientHelper.getInstance().register(localbmcv);
-      jdField_a_of_type_Boolean = true;
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  private void b()
+  public void a(String paramString, float paramFloat, long paramLong)
   {
-    QIPCClientHelper.getInstance().getClient().connect(new bmcw(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new bmcx(this));
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeFloat(paramFloat);
+      localParcel1.writeLong(paramLong);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (("action_update_status".equals(paramString)) && (paramBundle != null))
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramInt = paramBundle.getInt("key_status");
-      int i = paramBundle.getInt("key_progress");
-      paramString = paramBundle.getString("uin");
-      int j = paramBundle.getInt("uintype");
-      paramBundle.getString("key_file_md5");
-      long l = paramBundle.getLong("key_uinsequence");
-      bncl.a().a(paramString, j, paramInt, i, l);
-      localBundle.putBoolean("key_result", false);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    return EIPCResult.createSuccessResult(localBundle);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

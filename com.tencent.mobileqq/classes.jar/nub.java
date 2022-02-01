@@ -1,51 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class nub
-  implements alpg
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public nub(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      f(paramBoolean, paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
     }
-    g(paramBoolean, paramObject);
+    bcst.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
+      PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nub
  * JD-Core Version:    0.7.0.1
  */

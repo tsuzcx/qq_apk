@@ -1,30 +1,45 @@
-import android.content.Intent;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 public class bahk
-  implements bfah
+  extends FragmentPagerAdapter
 {
-  public bahk(TeamWorkForceShare.2.1 param1) {}
+  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilArrayList;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> b;
   
-  public void a(BaseResp paramBaseResp)
+  private bahk(FragmentManager paramFragmentManager)
   {
-    if ((TeamWorkForceShare.b(this.a.a.this$0) == null) || (!TeamWorkForceShare.b(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d(TeamWorkForceShare.a(), 1, "wx rsp = " + paramBaseResp.errCode);
-    if (this.a.a.a) {}
-    for (byte b = 86;; b = 120)
+    super(paramFragmentManager);
+  }
+  
+  public void a(@Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList1, @Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList2, @Nonnull String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+    this.b = paramArrayList2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    switch (paramInt)
     {
-      TeamWorkForceShare.a(this.a.a.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
-      WXShareHelper.a().b(this);
-      return;
+    default: 
+      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    case 0: 
+      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
+    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
   }
 }
 

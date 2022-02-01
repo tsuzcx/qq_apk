@@ -1,32 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import java.util.Comparator;
 
 class azfa
-  implements azlg
+  implements Comparator<Pair<Long, String>>
 {
-  azfa(azey paramazey) {}
-  
-  public void a()
+  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
-    }
-  }
-  
-  public void a(Process paramProcess)
-  {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
-    }
-  }
-  
-  public void b()
-  {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
-    }
+    return azez.a((CharSequence)paramPair1.second) - azez.a((CharSequence)paramPair2.second);
   }
 }
 

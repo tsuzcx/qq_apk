@@ -1,37 +1,26 @@
-import android.app.Activity;
-import android.os.IBinder;
-import android.widget.Button;
+import android.view.View;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class bhym
-  extends bhyh
+  extends URLDrawableDownListener.Adapter
 {
-  public boolean b = true;
+  public bhym(NewStyleDropdownView paramNewStyleDropdownView) {}
   
-  public bhym(Activity paramActivity)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131706328));
-    }
-    b();
-  }
-  
-  protected void a(IBinder paramIBinder)
-  {
-    if (this.b) {
-      super.a(paramIBinder);
+    paramView = paramURLDrawable.getCurrDrawable();
+    if ((paramView instanceof ApngDrawable)) {
+      VasFaceManager.a(null, (ApngDrawable)paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,53 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.app.Application;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
+import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import com.tencent.mobileqq.videoplatform.util.RegisterTVideoUtil;
+import com.tencent.mobileqq.videoplatform.util.ReportUtil;
+import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 
-class azwq
-  implements View.OnLongClickListener
+public class azwq
 {
-  azwq(azwp paramazwp) {}
+  private static volatile boolean a;
   
-  public boolean onLongClick(View paramView)
+  static {}
+  
+  public static void a()
   {
-    if (this.a.a != null)
+    try
     {
-      aetk localaetk = (aetk)this.a.a.get();
-      if (localaetk != null) {
-        return localaetk.onLongClick(paramView);
+      if (!a)
+      {
+        LogUtil.setLogImp(new azww());
+        ThreadUtil.setThreadImp(new azwz());
+        LoadSoUtil.setLoadSoImp(new azwu());
+        ReportUtil.setReportImp(new azwy());
+        RegisterTVideoUtil.setRegisterTVideoImp(new azwx());
+        a = true;
       }
+      return;
     }
-    return false;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
+  {
+    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
+  }
+  
+  public static boolean a()
+  {
+    return VideoPlaySDKManager.getInstance().isSDKReady();
+  }
+  
+  public static boolean b()
+  {
+    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
 }
 

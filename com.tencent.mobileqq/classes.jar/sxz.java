@@ -1,12 +1,14 @@
-class sxz
+public class sxz
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public float a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,203 +1,419 @@
-import android.text.TextPaint;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class rbo
-  extends rbm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule;", "", "()V", "TAG", "", "rowkey", "currentContentTaskRowkey", "getCurrentContentTaskRowkey", "()Ljava/lang/String;", "setCurrentContentTaskRowkey", "(Ljava/lang/String;)V", "taskTimeInMs", "", "currentContentTaskTimeInMs", "getCurrentContentTaskTimeInMs", "()I", "setCurrentContentTaskTimeInMs", "(I)V", "type", "currentContentType", "getCurrentContentType", "setCurrentContentType", "curTaskTime", "globalCurrentTaskTimeInMs", "getGlobalCurrentTaskTimeInMs", "setGlobalCurrentTaskTimeInMs", "globalTotalTaskTimeInMs", "getGlobalTotalTaskTimeInMs", "isHighestRedPacketAuthorityOn", "", "()Z", "isNowInKanDianTab", "lastTaskContentRowkey", "getLastTaskContentRowkey", "lastTaskTimeForContentInMs", "getLastTaskTimeForContentInMs", "maxTaskTimePerContentInMs", "getMaxTaskTimePerContentInMs", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "getRijAidlInterfaceForRedPacket", "()Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "taskTimePerRoundInMs", "getTaskTimePerRoundInMs", "totalRound", "getTotalRound", "canDoTaskThisTime", "getInstance", "getTaskTimeFromCache", "rowKey", "hasRead", "hasRedPacketPermission", "reportTaskProgress", "", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RIJRedPacketManager$IReportTaskProgressCallback;", "requestShouldDoTaskTiming", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RIJRedPacketManager$IShouldDoTaskTimingCallback;", "saveTaskTimeToCache", "setCanDoTaskThisTime", "canDoTask", "nextRequestCanDoTaskTs", "", "setLastTaskTimeForContent", "setMaxTaskTimePerContent", "maxTaskTimeInMs", "setRead", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbo
 {
-  private rbt a;
+  public static final rbo a = new rbo();
   
-  public rbo(raw paramraw, rbt paramrbt)
+  private final rbf a()
   {
-    super(paramraw, paramrbt);
-    this.a = paramrbt;
+    Object localObject2 = null;
+    raz localraz = rbc.a.a();
+    Object localObject1 = localObject2;
+    if (localraz != null) {}
+    try
+    {
+      localObject1 = localraz.a();
+      return localObject1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("RIJAidlClientRedPacketModule", 2, localRemoteException.getMessage());
+    }
+    return null;
   }
   
-  int a(boolean paramBoolean)
+  @JvmStatic
+  @NotNull
+  public static final rbo a()
   {
-    if (paramBoolean) {
-      return 2130842713;
-    }
-    return 2130842625;
+    return a;
   }
   
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean) {}
-  
-  public void a(VideoInfo paramVideoInfo) {}
-  
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
+  public final int a()
   {
-    super.a(paramVideoInfo, paramBoolean);
-    this.a.B.setVisibility(0);
-    if (((this.a.c == 0) && (this.a.b == 0) && ((raw.a(this.c) instanceof VideoFeedsPlayActivity)) && (paramBoolean)) || (paramVideoInfo.jdField_c_of_type_Boolean))
-    {
-      this.a.B.setText("");
-      this.a.A.setText("");
-    }
-    for (;;)
-    {
-      this.a.B.getPaint().setFakeBoldText(true);
-      this.a.A.getPaint().setFakeBoldText(true);
-      raw.a(this.c, this.a, paramVideoInfo);
-      a(true);
-      if (this.a.q != null) {
-        this.a.q.setVisibility(8);
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.a();
+        return i;
       }
-      return;
-      this.a.B.setText(paramVideoInfo.jdField_c_of_type_JavaLangString);
-      this.a.A.setText(paramVideoInfo.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(rbt paramrbt, VideoInfo paramVideoInfo)
-  {
-    if (paramrbt.C != null)
-    {
-      paramrbt.C.setOnClickListener(this.c);
-      paramrbt.C.setTag(paramrbt);
-    }
-    paramrbt.n.setTag(paramrbt);
-    paramrbt.n.setOnClickListener(this.c);
-    paramrbt.n.setVisibility(0);
-    paramrbt.k.setTag(paramrbt);
-    paramrbt.k.setOnClickListener(this.c);
-    paramrbt.k.setOnLongClickListener(this.c);
-    if (paramrbt.o != null)
-    {
-      paramrbt.o.setOnClickListener(this.c);
-      paramrbt.o.setOnLongClickListener(this.c);
-      paramrbt.o.setTag(paramrbt);
-    }
-    if (!paramVideoInfo.jdField_c_of_type_Boolean) {
-      paramrbt.k.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramrbt.jdField_l_of_type_AndroidWidgetImageView.setTag(paramrbt);
-      paramrbt.jdField_l_of_type_AndroidWidgetImageView.setOnClickListener(this.c);
-      paramrbt.jdField_l_of_type_AndroidWidgetImageView.setVisibility(0);
-      b(paramVideoInfo);
-      return;
-      paramrbt.k.setVisibility(8);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.p != null)
-    {
-      if (paramBoolean) {
-        this.a.p.setVisibility(0);
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
       }
     }
-    else {
-      return;
-    }
-    this.a.p.setVisibility(8);
+    return 0;
   }
   
-  public void b(VideoInfo paramVideoInfo)
+  @NotNull
+  public final String a()
   {
-    c(paramVideoInfo);
-    VideoFeedsAccessibilityHelper.a(this.a.D, paramVideoInfo.e);
-    this.a.jdField_l_of_type_AndroidWidgetImageView.setImageDrawable(raw.a(this.c, a(paramVideoInfo.p)));
-    rdm.b(this.a.E, paramVideoInfo.r, "赞");
-    rdm.b(this.a.F, paramVideoInfo.f, "Biu");
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.a.jdField_l_of_type_AndroidViewViewGroup != null)
-    {
-      if ((this.a.a.a.a == 0) || (!this.a.a.a.a())) {
-        this.a.jdField_l_of_type_AndroidViewViewGroup.setVisibility(8);
+    Object localObject = a();
+    if (localObject != null) {
+      try
+      {
+        localObject = ((rbf)localObject).a();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "aidlInterface.currentContentTaskRowkey");
+        return localObject;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
       }
     }
-    else {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_l_of_type_AndroidViewViewGroup.setVisibility(0);
-      return;
-    }
-    this.a.jdField_l_of_type_AndroidViewViewGroup.setVisibility(8);
+    return "";
   }
   
-  void c(VideoInfo paramVideoInfo)
+  public final void a(int paramInt)
   {
-    if (paramVideoInfo.e > 0)
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
     {
-      this.a.D.setVisibility(0);
-      rdm.b(this.a.D, paramVideoInfo.e, "0");
-      this.a.j.setImageResource(2130842711);
+      localrbf.a(paramInt);
       return;
     }
-    this.a.D.setVisibility(8);
-    this.a.j.setImageResource(2130842712);
-  }
-  
-  public void d()
-  {
-    if (raw.a(this.c) == null)
+    catch (RemoteException localRemoteException)
     {
-      ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-      localScaleAnimation.setDuration(200L);
-      localScaleAnimation.setRepeatCount(1);
-      localScaleAnimation.setRepeatMode(2);
-      localScaleAnimation.setInterpolator(new DecelerateInterpolator());
-      raw.a(this.c, localScaleAnimation);
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
     }
-    raw.a(this.c).setAnimationListener(new rbp(this));
-    this.a.jdField_l_of_type_AndroidWidgetImageView.startAnimation(raw.a(this.c));
   }
   
-  public void e(boolean paramBoolean)
+  public final void a(@NotNull String paramString)
   {
-    super.e(paramBoolean);
-    if (paramBoolean)
+    Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
     {
-      this.a.B.setVisibility(8);
-      a(false);
-      b(false);
-      j(false);
+      localrbf.a(paramString);
       return;
     }
-    this.a.B.setVisibility(0);
-    a(true);
-    b(true);
-    j(true);
+    catch (RemoteException paramString)
+    {
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)paramString));
+    }
   }
   
-  public void j(boolean paramBoolean)
+  public final void a(@NotNull String paramString, int paramInt1, int paramInt2, @Nullable qza paramqza)
   {
-    if (this.a.m != null)
+    Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
     {
-      if (!this.a.a.a.a()) {
-        this.a.m.setVisibility(8);
+      localrbf.a(paramString, paramInt1, paramInt2, (rbi)new rbp(paramqza));
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)paramString));
+    }
+  }
+  
+  public final void a(@NotNull qzb paramqzb)
+  {
+    Intrinsics.checkParameterIsNotNull(paramqzb, "callback");
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        localrbf.a((rbl)new rbq(paramqzb));
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+        paramqzb.a(false);
+        return;
       }
     }
-    else {
-      return;
+    paramqzb.a(false);
+  }
+  
+  public final boolean a()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        boolean bool = localrbf.d();
+        return bool;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
     }
-    if (paramBoolean)
+    return false;
+  }
+  
+  public final boolean a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        boolean bool = localrbf.b(paramString);
+        return bool;
+      }
+      catch (RemoteException paramString)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)paramString));
+      }
+    }
+    return false;
+  }
+  
+  public final int b()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.b();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    Object localObject = a();
+    if (localObject != null) {
+      try
+      {
+        localObject = ((rbf)localObject).b();
+        return localObject;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return null;
+  }
+  
+  public final void b(int paramInt)
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
     {
-      this.a.m.setVisibility(0);
+      localrbf.b(paramInt);
       return;
     }
-    this.a.m.setVisibility(8);
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+    }
+  }
+  
+  public final boolean b()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        boolean bool = localrbf.c();
+        return bool;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return false;
+  }
+  
+  public final int c()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.c();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  public final void c(int paramInt)
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
+    {
+      localrbf.d(paramInt);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+    }
+  }
+  
+  public final boolean c()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        boolean bool = localrbf.a();
+        return bool;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return false;
+  }
+  
+  public final int d()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.d();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  public final void d(int paramInt)
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {}
+    try
+    {
+      localrbf.c(paramInt);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+    }
+  }
+  
+  public final boolean d()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        boolean bool = localrbf.b();
+        return bool;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return false;
+  }
+  
+  public final int e()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.f();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  public final int f()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.g();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  public final int g()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.h();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
+  }
+  
+  public final int h()
+  {
+    rbf localrbf = a();
+    if (localrbf != null) {
+      try
+      {
+        int i = localrbf.e();
+        return i;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("RIJAidlClientRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+      }
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbo
  * JD-Core Version:    0.7.0.1
  */

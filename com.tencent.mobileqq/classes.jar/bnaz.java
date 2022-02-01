@@ -1,72 +1,170 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bnaz
 {
-  public final int a;
-  public long a;
-  public bnbf a;
-  public bnbh a;
-  public final PublishVideoEntry a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
-  public String a;
-  public WeakReference<View> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  private static volatile long jdField_a_of_type_Long;
+  private static bgpa jdField_a_of_type_Bgpa;
+  private static bnbd jdField_a_of_type_Bnbd = new bnbd(Looper.getMainLooper());
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "TroopFileDetailBrowserActivity", "FMActivity", "FileBrowserActivity", "ChatHistoryFileActivity", "FileAssistantActivity" };
   
-  public bnaz(EditVideoParams paramEditVideoParams)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Message localMessage = jdField_a_of_type_Bnbd.obtainMessage();
+    localMessage.what = 3001;
+    jdField_a_of_type_Bnbd.sendMessage(localMessage);
   }
   
-  public View a()
+  public static void a(Activity paramActivity, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (a(paramInt)) {
+      b(paramActivity, paramInt);
     }
-    return null;
   }
   
-  public void a(View paramView)
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (paramView == null)
+    StringBuffer localStringBuffer = new StringBuffer("https://jump.weiyun.com?from=3092");
+    if (paramString != null) {
+      localStringBuffer.append("&aid=").append(paramString);
+    }
+    paramString = new Intent();
+    paramString.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
+    paramString.putExtra("url", localStringBuffer.toString());
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      paramActivity.startActivityForResult(paramString, 2000);
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    paramActivity.startActivity(paramString);
   }
   
-  public boolean a()
+  private static boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bnbf.jdField_a_of_type_Int > 0);
+    if (jdField_a_of_type_Long == 0L) {}
+    long l;
+    do
+    {
+      return true;
+      l = SystemClock.uptimeMillis();
+    } while (jdField_a_of_type_Long + 4000L < l);
+    return false;
   }
   
-  public String toString()
+  public static boolean a(int paramInt)
   {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+    return (c(paramInt)) || (b(paramInt));
+  }
+  
+  private static boolean a(Activity paramActivity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (paramActivity != null)
+    {
+      paramActivity = paramActivity.getClass().getName();
+      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      j = arrayOfString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str = arrayOfString[i];
+        if ((!TextUtils.isEmpty(paramActivity)) && (paramActivity.contains(str))) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static void b(Activity paramActivity, int paramInt)
+  {
+    QLog.d("OpenWeiyunVipHelper", 2, "showLimitDialog");
+    jdField_a_of_type_Bnbd.removeMessages(3000);
+    Message localMessage = jdField_a_of_type_Bnbd.obtainMessage();
+    localMessage.what = 3000;
+    localMessage.obj = paramActivity;
+    localMessage.arg1 = paramInt;
+    jdField_a_of_type_Bnbd.sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public static void b(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    paramString = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString });
+    Intent localIntent = new Intent();
+    localIntent.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    if (paramBoolean)
+    {
+      paramActivity.startActivityForResult(localIntent, 2000);
+      return;
+    }
+    paramActivity.startActivity(localIntent);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 1053) || (paramInt == 22081);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 1127) || (paramInt == 22000);
+  }
+  
+  private static void d(Activity paramActivity, int paramInt)
+  {
+    if ((paramActivity == null) || (paramActivity.isFinishing()) || (paramActivity != BaseActivity.sTopActivity))
+    {
+      paramActivity = BaseActivity.sTopActivity;
+      if ((paramActivity != null) && (!paramActivity.isFinishing()) && (a(paramActivity))) {
+        break label44;
+      }
+    }
+    label44:
+    while (((jdField_a_of_type_Bgpa != null) && (jdField_a_of_type_Bgpa.isShowing())) || (!a()))
+    {
+      return;
+      break;
+    }
+    String str1;
+    if (b(paramInt))
+    {
+      str1 = BaseApplicationImpl.getContext().getString(2131692365);
+      if (!b(paramInt)) {
+        break label161;
+      }
+    }
+    label161:
+    for (String str2 = BaseApplicationImpl.getContext().getString(2131692358);; str2 = BaseApplicationImpl.getContext().getString(2131692361))
+    {
+      jdField_a_of_type_Bgpa = bglp.a(paramActivity, 230, str1, str2, 2131692363, 2131692364, new bnba(paramInt, paramActivity), new bnbb());
+      jdField_a_of_type_Bgpa.setOnDismissListener(new bnbc());
+      jdField_a_of_type_Bgpa.show();
+      return;
+      str1 = BaseApplicationImpl.getContext().getString(2131692366);
+      break;
+    }
   }
 }
 

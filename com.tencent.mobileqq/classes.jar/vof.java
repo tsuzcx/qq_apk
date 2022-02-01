@@ -1,40 +1,73 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.TMG.utils.QLog;
+import java.lang.ref.SoftReference;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class vof
-  implements vmd
+public class vof
 {
-  vof(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  public static final String a;
+  private static volatile vof jdField_a_of_type_Vof;
+  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(int paramInt)
+  static
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
+    jdField_a_of_type_JavaLangString = vof.class.getSimpleName();
+  }
+  
+  public static vof a()
+  {
+    if (jdField_a_of_type_Vof == null) {}
+    try
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label66;
+      if (jdField_a_of_type_Vof == null) {
+        jdField_a_of_type_Vof = new vof();
       }
+      return jdField_a_of_type_Vof;
     }
-    label66:
-    for (paramInt = i;; paramInt = 2)
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      localData.mUIStyle.mPlayerRepeatMode = 2;
-      vod.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (a(paramString))
+    {
+      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString == null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "mUinFollowMap getValue uin null");
+        return false;
+      }
+      return paramString.booleanValue();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vof
  * JD-Core Version:    0.7.0.1
  */

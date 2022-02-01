@@ -1,24 +1,28 @@
 package com.tencent.mobileqq.search.ftsentity;
 
-import aepi;
-import alrk;
+import Override;
+import afur;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdgc;
+import ankw;
+import bglf;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class FTSEntitySearchDetailActivity
@@ -50,7 +54,7 @@ public class FTSEntitySearchDetailActivity
       }
       return;
     }
-    int i = ((alrk)this.app.getManager(53)).a(paramString2);
+    int i = ((ankw)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -58,7 +62,7 @@ public class FTSEntitySearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = aepi.a(207.0F, getResources());
+    int k = afur.a(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -108,26 +112,34 @@ public class FTSEntitySearchDetailActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2131558857);
+    setContentView(2131558929);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
-      a(bdgc.a(this.app, paramBundle, i), paramBundle, this.centerView);
+      a(bglf.a(this.app, paramBundle, i), paramBundle, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131364785, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131365013, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
-      super.setTitle(bdgc.a(this.app, paramBundle, i));
+      super.setTitle(bglf.a(this.app, paramBundle, i));
     }
   }
   
@@ -136,10 +148,17 @@ public class FTSEntitySearchDetailActivity
     super.doOnDestroy();
     jdField_a_of_type_JavaUtilList = null;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

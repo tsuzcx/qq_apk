@@ -1,26 +1,44 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.observer.BusinessObserver;
 
 public class bmfz
-  extends AnimatorListenerAdapter
+  implements BusinessObserver
 {
-  public bmfz(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmfz(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
-    }
-    this.a.jdField_a_of_type_Bmgo.d = 1;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.h = false;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, paramBundle.getMessage());
+          }
+        }
+      }
+      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+      return;
     }
   }
 }

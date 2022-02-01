@@ -1,32 +1,19 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.HorizontalListView;
+import android.widget.FrameLayout.LayoutParams;
 
 public class bhxp
-  extends DataSetObserver
+  extends FrameLayout.LayoutParams
 {
-  public bhxp(HorizontalListView paramHorizontalListView) {}
+  public int a;
+  public int b;
   
-  public void onChanged()
+  public bhxp(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.mDataChanged = true;
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
-  }
-  
-  public void onInvalidated()
-  {
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.reset(true);
-    this.a.invalidate();
-    this.a.requestLayout();
+    super(paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxp
  * JD-Core Version:    0.7.0.1
  */

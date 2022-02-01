@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acvv
-  implements View.OnClickListener
+class acvv
+  implements Comparator<MessageRecord>
 {
-  public acvv(EditInfoActivity paramEditInfoActivity) {}
+  acvv(acvt paramacvt) {}
   
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.o();
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

@@ -1,54 +1,72 @@
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+
 public class lwv
-  extends lwt
+  extends anmu
 {
-  public void a(long paramLong)
+  public lwv(QQServiceForAV paramQQServiceForAV) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramLong -= this.a;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if ((paramLong > 3099L) && (paramLong < 3432L))
-    {
-      i = (int)(255L * (paramLong - 3099L) / 333L);
-      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
+    localIntent.putExtra("uin", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (this.a.b.contains(paramString)) {
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    for (;;)
-    {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong >= 3432L) && (paramLong <= 3865L))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 3865L)
-        {
-          f1 = f2;
-          i = j;
-          if (paramLong < 4032L)
-          {
-            i = (int)(255L * (4032L - paramLong) / 167L);
-            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
-          }
-        }
-      }
+    this.a.b.remove(paramString);
+    if (this.a.b()) {
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anmu);
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    Intent localIntent;
+    if ((paramBoolean) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
+      localIntent.putExtra("uin", paramString);
+      localObject = (anmw)QQServiceForAV.m(this.a).getManager(51);
+      if (localObject == null) {
+        break label205;
+      }
+      localObject = ((anmw)localObject).e(paramString);
+      if (localObject == null) {
+        break label205;
+      }
+    }
+    label205:
+    for (Object localObject = bglf.a((Friends)localObject);; localObject = paramString)
+    {
+      localIntent.putExtra("nick", (String)localObject);
+      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anmu);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwv
  * JD-Core Version:    0.7.0.1
  */

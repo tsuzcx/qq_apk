@@ -1,22 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-
-class alne
-  implements DialogInterface.OnClickListener
+public class alne
 {
-  alne(alnc paramalnc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (alnc.a(this.a))
-    {
-      alnc.a(this.a, 1);
-      alnc.a(this.a);
-      this.a.a.r();
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

@@ -1,66 +1,111 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.biz.qqcircle.bizparts.QCircleRichMediaDownLoadPart.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import mqq.os.MqqHandler;
 
 public class vdc
-  extends urt<vdd>
+  extends zxj
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
   
-  static
+  private void a()
   {
-    jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.convert_group_id");
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(a(), 2131755241);
+      this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
+      View localView = LayoutInflater.from(a()).inflate(2131560780, null);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)localView.findViewById(2131373792));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(4.0F);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(20, Color.parseColor("#ffffff"), 90, Color.parseColor("#ffffff"));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373791));
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(localView);
+      this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+    if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.show();
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + "%");
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    Toast localToast;
+    View localView;
+    TextView localTextView;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      if (paramBoolean) {
+        a(100);
+      }
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      localToast = new Toast(a());
+      localView = LayoutInflater.from(a()).inflate(2131560781, null);
+      localToast.setDuration(0);
+      localTextView = (TextView)localView.findViewById(2131365681);
+      if (!paramBoolean) {
+        break label120;
+      }
+    }
+    label120:
+    for (String str = a().getResources().getString(2131697141);; str = a().getResources().getString(2131697140))
+    {
+      localTextView.setText(str);
+      localToast.setGravity(17, 0, 0);
+      localToast.setView(localView);
+      localToast.show();
+      return;
+    }
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public uro a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
-    try
-    {
-      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
-      return new vdd(localRspConvertGroupId);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
-    }
     return null;
   }
   
-  protected byte[] a()
+  protected void a(View paramView)
   {
-    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
-    localReqConvertGroupId.convert_from.set(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
-        localGroupId.group_uin.set(Long.valueOf(str).longValue());
-        localReqConvertGroupId.group_req_list.add(localGroupId);
-      }
+    super.a(paramView);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    ThreadManager.getUIHandler().post(new QCircleRichMediaDownLoadPart.1(this, paramString, paramObject));
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      return true;
     }
-    return localReqConvertGroupId.toByteArray();
+    return super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,26 @@
-public class akzo
-  implements alpg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class akzo
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  akzo(akyh paramakyh) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return;
-    case 2: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
+    if (bgdt.a().a() == 4) {
+      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "0");
     }
-    c(paramBoolean, paramObject);
+    for (;;)
+    {
+      this.a.a(15, 0);
+      this.a.a(-1, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "0");
+    }
   }
 }
 

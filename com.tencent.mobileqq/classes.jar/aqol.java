@@ -1,32 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqol
-  implements View.OnClickListener
+  extends aqkz<aqom>
 {
-  public aqol(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static aqom a()
   {
-    if (!QfileBaseCloudFileTabView.a(this.a)) {
-      return;
+    return (aqom)aqlk.a().a(620);
+  }
+  
+  @NonNull
+  public aqom a(int paramInt)
+  {
+    return new aqom();
+  }
+  
+  @Nullable
+  public aqom a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aqom.a(paramArrayOfaqlg);
     }
-    QfileBaseCloudFileTabView.a(this.a);
-    this.a.f();
-    if (this.a.jdField_a_of_type_Aqni.getGroupCount() > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Aqni.getGroupCount() - 1);
+    return null;
+  }
+  
+  public void a(aqom paramaqom)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonSearchTagsConfProcessor", 2, "EmoticonSearchTagsConfProcessor onUpdate");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
-    QfileBaseCloudFileTabView.a(this.a, false);
-    this.a.h();
+  }
+  
+  public Class<aqom> clazz()
+  {
+    return aqom.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 620;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqol
  * JD-Core Version:    0.7.0.1
  */

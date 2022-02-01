@@ -1,19 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
 
-class ahae
-  implements View.OnClickListener
+final class ahae
+  implements ahbm
 {
-  ahae(ahad paramahad) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramView = new Intent(ahad.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", ahad.a(this.a));
-    ahad.a(this.a).startActivity(paramView);
+    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
+      return 71;
+    }
+    return 84;
   }
 }
 

@@ -1,14 +1,16 @@
-public abstract interface vvr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class vvr
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  vvr(vvp paramvvp) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-final class afqr
-  implements afug
+public class afqr
+  extends VasQuickUpdateManager.CallBacker
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afqr(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
-    if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0)) {
-      return 83;
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
+    {
+      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
+        this.a.c(this.a.g);
+      }
     }
-    return 82;
+    else {
+      return;
+    }
+    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
   }
 }
 

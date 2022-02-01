@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo.widget;
 
-import bntj;
+import bqjx;
 
 class ImageViewVideoPlayer$3
   implements Runnable
@@ -16,7 +16,7 @@ class ImageViewVideoPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

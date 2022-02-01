@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.IJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
@@ -20,6 +21,14 @@ public abstract class BaseJsPlugin
     if ((paramBaseJsPluginEngine != null) && (paramBaseJsPluginEngine.appBrandRuntime != null)) {
       this.appId = paramBaseJsPluginEngine.appBrandRuntime.appId;
     }
+  }
+  
+  protected AppBrandRuntime getAppBrandRuntime()
+  {
+    if ((this.jsPluginEngine != null) && ((this.jsPluginEngine.appBrandRuntime instanceof AppBrandRuntime))) {
+      return (AppBrandRuntime)this.jsPluginEngine.appBrandRuntime;
+    }
+    return null;
   }
   
   public String getAppId()
@@ -101,7 +110,7 @@ public abstract class BaseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

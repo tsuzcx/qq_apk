@@ -1,14 +1,11 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public abstract interface axqk
-{
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
-}
+public abstract class axqk<T>
+  extends RecyclerView.Adapter<Object>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqk
  * JD-Core Version:    0.7.0.1
  */

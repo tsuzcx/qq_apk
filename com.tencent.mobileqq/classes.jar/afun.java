@@ -1,8 +1,6 @@
-public class afun
+public abstract interface afun
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
 }
 
 

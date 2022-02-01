@@ -1,23 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class afec
-  implements DialogInterface.OnClickListener
+public class afec
+  extends anmu
 {
-  afec(afeb paramafeb, String paramString, int paramInt) {}
+  public afec(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    paramDialogInterface = new Intent(afeb.a(this.jdField_a_of_type_Afeb), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    afeb.a(this.jdField_a_of_type_Afeb).startActivity(paramDialogInterface);
-    VipUtils.a(afeb.a(this.jdField_a_of_type_Afeb), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(afeb.a(this.jdField_a_of_type_Afeb).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
+    {
+      paramString = this.a;
+      if (!paramBoolean1)
+      {
+        paramBoolean1 = true;
+        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
+          QQToast.a(BaseApplication.getContext(), anni.a(2131712758), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998));
+        }
+      }
+    }
+    do
+    {
+      return;
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((anmw)this.a.app.getManager(51)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListActivity.a(this.a).a(paramString);
+    ShieldFriendsListActivity.a(this.a);
   }
 }
 

@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import adfp;
-import adfq;
-import adfr;
+import Override;
+import aemd;
+import aeme;
+import aemf;
 import android.app.Dialog;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import auwq;
-import bdap;
+import android.view.MotionEvent;
+import axdz;
+import bggp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class LbsBaseActivity
   extends IphoneTitleBarActivity
@@ -20,7 +24,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return auwq.a(getAppInterface().getAccount());
+    return axdz.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,15 +34,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new adfp(this, paramRunnable);
-    this.b = bdap.a(this, 2131692146, a(), 2131691958, 2131691955, new adfq(this), new adfr(this));
+    paramRunnable = new aemd(this, paramRunnable);
+    this.b = bggp.a(this, 2131691778, a(), 2131691639, 2131691636, new aeme(this), new aemf(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131692141;
+    return 2131691776;
   }
   
   public void a()
@@ -60,15 +64,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	adbo:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -98,6 +102,14 @@ public class LbsBaseActivity
     d(paramRunnable);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
@@ -117,10 +129,17 @@ public class LbsBaseActivity
     }
     super.doOnDestroy();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

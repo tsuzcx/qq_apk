@@ -1,23 +1,35 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bnrz
+class bnrz
+  implements View.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
-  }
+  bnrz(bnry parambnry, bnsa parambnsa, String paramString) {}
   
-  public static String b(Context paramContext)
+  public void onClick(View paramView)
   {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
+    if (bnry.a(this.jdField_a_of_type_Bnry) != this.jdField_a_of_type_Bnsa.getLayoutPosition()) {
+      bnyh.a().h(this.jdField_a_of_type_JavaLangString);
+    }
+    if ((bnry.a(this.jdField_a_of_type_Bnry) == -1) && (TextUtils.isEmpty(bnry.a(this.jdField_a_of_type_Bnry).a())))
+    {
+      bnry.a(this.jdField_a_of_type_Bnry).a(this.jdField_a_of_type_JavaLangString, ((bnrl)bnrk.a.get(0)).jdField_a_of_type_JavaLangString, ((bnrl)bnrk.a.get(0)).b);
+      bnry.a(this.jdField_a_of_type_Bnry).a(true, false);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bnry.a();
+      bnry.a(this.jdField_a_of_type_Bnry, this.jdField_a_of_type_Bnsa.getLayoutPosition());
+      ((bnrj)bnry.a(this.jdField_a_of_type_Bnry).get(bnry.a(this.jdField_a_of_type_Bnry) - 1)).a(true);
+      this.jdField_a_of_type_Bnsa.a(true);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bnry.a(this.jdField_a_of_type_Bnry).a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

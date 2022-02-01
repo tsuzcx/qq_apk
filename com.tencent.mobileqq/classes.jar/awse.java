@@ -1,37 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
 public class awse
-  extends awuk
+  implements View.OnLayoutChangeListener
 {
-  public awse(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  public awse(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
     {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
+      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awse
  * JD-Core Version:    0.7.0.1
  */

@@ -66,7 +66,7 @@ public final class b
       }
       x.a(" crash report start initializing...", new Object[0]);
       x.b("[init] Bugly start initializing...", new Object[0]);
-      x.a("[init] Bugly complete version: v%s", new Object[] { "3.1.7" });
+      x.a("[init] Bugly complete version: v%s", new Object[] { "3.2.3" });
       localContext = z.a(paramContext);
       locala1 = com.tencent.bugly.crashreport.common.info.a.a(localContext);
       locala1.s();

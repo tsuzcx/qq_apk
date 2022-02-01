@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class apfy
-  implements View.OnClickListener
+class apfy
+  implements Animator.AnimatorListener
 {
-  public apfy(DBFixConfigActivity paramDBFixConfigActivity) {}
+  apfy(apfw paramapfw) {}
   
-  public void onClick(View paramView)
-  {
-    ThreadManager.post(this.a.a, 8, null, true);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

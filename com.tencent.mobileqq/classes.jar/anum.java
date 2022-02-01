@@ -1,51 +1,48 @@
-import android.os.Build.VERSION;
-import android.os.MessageQueue.IdleHandler;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class anum
-  implements MessageQueue.IdleHandler
+  implements anil
 {
-  public anum(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public anum(SVIPHandler.2 param2, amgd paramamgd) {}
   
-  public boolean queueIdle()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (azhf.d(azhf.b)) {
-      this.a.a(true);
-    }
-    for (;;)
+    try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      DynamicAvatarRecordActivity.a(this.a);
-      if (Build.VERSION.SDK_INT < 14) {
-        this.a.jdField_a_of_type_Bdjz = bdgm.a(this.a, 230).setMessage(alud.a(2131703960)).setPositiveButton(this.a.getString(2131694207), new anun(this));
-      }
-      try
+      if ((paramObject instanceof List))
       {
-        this.a.jdField_a_of_type_Bdjz.setCancelable(false);
-        this.a.jdField_a_of_type_Bdjz.show();
-        if (QLog.isColorLevel()) {
-          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-        }
-        return false;
-        this.a.a(false);
-      }
-      catch (WindowManager.BadTokenException localBadTokenException)
-      {
-        for (;;)
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Amgd.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Amgd.b.add(localObject);
+            }
           }
         }
       }
+      return;
     }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_Amgd.b();
   }
 }
 

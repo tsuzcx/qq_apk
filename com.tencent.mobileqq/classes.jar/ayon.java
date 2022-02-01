@@ -1,69 +1,192 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.onlinestatus.AutoReplyManager.1;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class ayon
-  extends ayod
+  implements Manager
 {
-  public static final String a;
-  public List<ayoa> a;
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List<AutoReplyText> jdField_a_of_type_JavaUtilList;
   
-  static
+  public ayon(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = ayon.class.getSimpleName();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    a();
   }
   
-  public ayon(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  private void a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    ThreadManager.getFileThreadHandler().post(new AutoReplyManager.1(this));
   }
   
-  public ayon(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public AutoReplyText a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    Object localObject = null;
+    List localList = a();
+    Iterator localIterator = localList.iterator();
+    if (localIterator.hasNext())
     {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.l = paramString.optString("rightIconUrl");
-      this.m = paramString.optString("jumpUrl");
-      paramString = paramString.optJSONArray("pageInfo");
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
-        int i = 0;
-        while (i < paramString.length())
-        {
-          Object localObject = paramString.optJSONObject(i);
-          localObject = new ayoa(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          i += 1;
-        }
+      AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
+      if (!localAutoReplyText.isChecked()) {
+        break label107;
       }
+      localObject = localAutoReplyText;
+    }
+    label107:
+    for (;;)
+    {
+      break;
+      if (localObject == null)
+      {
+        localObject = (AutoReplyText)localList.get(0);
+        QLog.d("AutoReplyManager", 1, "getCurrentAutoReplyText is null, default check index 0");
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AutoReplyManager", 2, "getCurrentAutoReplyText: " + localObject);
+        }
+        return localObject;
+      }
+    }
+  }
+  
+  public List<AutoReplyText> a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      return new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new AutoReplyText(anni.a(2131699665), 0));
+    localArrayList.add(new AutoReplyText(anni.a(2131699664), 1));
+    localArrayList.add(new AutoReplyText(anni.a(2131699662), 2));
+    localArrayList.add(new AutoReplyText(anni.a(2131699663), 2147483647));
+    ((AutoReplyText)localArrayList.get(0)).mCheckFlag = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoReplyManager", 2, "getAutoReplyCache, buffList == null");
+    }
+    a();
+    return localArrayList;
+  }
+  
+  public void a(List<AutoReplyText> paramList, int paramInt)
+  {
+    if (paramList == null) {
       return;
     }
-    catch (JSONException paramString)
+    Object localObject2 = null;
+    ??? = null;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      try
+      {
+        localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        localEntityTransaction.begin();
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(AutoReplyText.class);
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        Iterator localIterator = paramList.iterator();
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        if (!localIterator.hasNext()) {
+          break label251;
+        }
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        localAutoReplyText = (AutoReplyText)localIterator.next();
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        if (localAutoReplyText.getTextId() != paramInt) {
+          continue;
+        }
+        ??? = localEntityTransaction;
+        localObject2 = localEntityTransaction;
+        localAutoReplyText.mCheckFlag = 1;
+      }
+      catch (Exception localException)
+      {
+        EntityTransaction localEntityTransaction;
+        AutoReplyText localAutoReplyText;
+        localObject2 = ???;
+        localException.printStackTrace();
+        localObject2 = ???;
+        QLog.d("AutoReplyManager", 1, "updateAutoReplyList, exception: ", localException);
+        if (??? == null) {
+          continue;
+        }
+        ???.end();
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.jdField_a_of_type_JavaUtilList != null) {
+            break label322;
+          }
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          return;
+        }
+        ??? = localException;
+        localObject2 = localException;
+        localAutoReplyText.mCheckFlag = 0;
+        continue;
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          continue;
+        }
+        localObject2.end();
+      }
+      ??? = localEntityTransaction;
+      localObject2 = localEntityTransaction;
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(localAutoReplyText);
+    }
+    for (;;)
+    {
+      label251:
+      ??? = localException;
+      localObject2 = localException;
+      localException.commit();
+      ??? = localException;
+      localObject2 = localException;
+      if (QLog.isColorLevel())
+      {
+        ??? = localException;
+        localObject2 = localException;
+        QLog.d("AutoReplyManager", 2, String.format("updateAutoReplyListCache, textList: %s, selectId: %s", new Object[] { paramList, Integer.valueOf(paramInt) }));
+      }
+      if (localException != null)
+      {
+        localException.end();
+        continue;
+        label322:
+        this.jdField_a_of_type_JavaUtilList.clear();
       }
     }
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoReplyManager", 2, "AutoReplyManager onDestroy");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 

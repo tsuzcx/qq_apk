@@ -1,61 +1,51 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class beoe
-  extends ExploreByTouchHelper
+  implements beoy
 {
-  public beoe(ConfigClearableEditText paramConfigClearableEditText, View paramView)
+  public beoe(NewTroopContactView paramNewTroopContactView) {}
+  
+  public ArrayList<ResultRecord> a()
   {
-    super(paramView);
+    return this.a.c;
   }
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  public void a()
   {
-    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    if (ConfigClearableEditText.a(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(alud.a(2131702808));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
+    this.a.jdField_a_of_type_Bens.notifyDataSetChanged();
+    if (this.a.jdField_a_of_type_Bens.getGroupCount() > 0)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(alud.a(2131702809));
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramInt = ConfigClearableEditText.a(this.a);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
+      Groups localGroups1 = this.a.jdField_a_of_type_Bens.a(1007L);
+      Groups localGroups2 = this.a.jdField_a_of_type_Bens.a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.a(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
+      }
+      if (localGroups1 != null) {
+        this.a.jdField_a_of_type_Beow.a();
+      }
+      if (localGroups2 != null) {
+        this.a.jdField_a_of_type_Beow.c();
+      }
     }
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.c.size())
+    {
+      localArrayList.add(((ResultRecord)this.a.c.get(i)).a);
+      i += 1;
+    }
+    return localArrayList;
   }
 }
 

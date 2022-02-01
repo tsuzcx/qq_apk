@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class rta
-  extends pdi
+  implements tja
 {
-  public rta(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  public rta(SelectVideoTabFragment paramSelectVideoTabFragment) {}
+  
+  public void a(tjf paramtjf)
   {
-    super(paramString);
+    SelectVideoTabFragment.a(this.a).setCurrentItem(paramtjf.a());
   }
   
-  public void a(pdc parampdc)
-  {
-    parampdc.d();
-  }
+  public void b(tjf paramtjf) {}
+  
+  public void c(tjf paramtjf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rta
  * JD-Core Version:    0.7.0.1
  */

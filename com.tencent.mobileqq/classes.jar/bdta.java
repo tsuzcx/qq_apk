@@ -1,11 +1,16 @@
+import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class bdta
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  protected static bdxv a;
+  public static WeakNetLearner a;
+  
+  static
+  {
+    jdField_a_of_type_Bdxv = new bdxv();
+    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new bdtb());
+  }
 }
 
 

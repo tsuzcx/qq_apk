@@ -9,7 +9,7 @@ public class FilamentAsset
   private Animator mAnimator;
   private long mNativeObject;
   
-  FilamentAsset(long paramLong)
+  public FilamentAsset(long paramLong)
   {
     this.mNativeObject = paramLong;
     this.mAnimator = null;
@@ -32,6 +32,8 @@ public class FilamentAsset
   private static native void nGetResourceUris(long paramLong, String[] paramArrayOfString);
   
   private static native int nGetRoot(long paramLong);
+  
+  private static native void nReleaseSourceData(long paramLong);
   
   private static native void nSetMorphBuffer(long paramLong, String paramString);
   
@@ -101,6 +103,11 @@ public class FilamentAsset
     return nGetRoot(this.mNativeObject);
   }
   
+  public void releaseSourceData()
+  {
+    nReleaseSourceData(this.mNativeObject);
+  }
+  
   public void setMorphWeights(String paramString)
   {
     nSetMorphBuffer(getNativeObject(), paramString);
@@ -118,7 +125,7 @@ public class FilamentAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.gltfio.FilamentAsset
  * JD-Core Version:    0.7.0.1
  */

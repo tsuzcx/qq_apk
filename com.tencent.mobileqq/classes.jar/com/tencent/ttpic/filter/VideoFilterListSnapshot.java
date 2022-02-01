@@ -121,7 +121,7 @@ public class VideoFilterListSnapshot
     {
       byte[] arrayOfByte = new byte[paramPTFaceAttr.getData().length];
       System.arraycopy(paramPTFaceAttr.getData(), 0, arrayOfByte, 0, arrayOfByte.length);
-      this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data(arrayOfByte).bodyPoints(paramPTFaceAttr.getBodyPoints()).faceKitVerticesArray(paramPTFaceAttr.getFaceKitVerticesArray()).featureIndicesArray(paramPTFaceAttr.getFeatureIndicesArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()));
+      this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data(arrayOfByte).bodyPoints(paramPTFaceAttr.getBodyPoints()).face3DVerticesArray(paramPTFaceAttr.getFace3DVerticesArray()).face3DRotationArray(paramPTFaceAttr.getFace3DRotationArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()));
     }
     if (paramPTSegAttr != null)
     {
@@ -173,7 +173,7 @@ public class VideoFilterListSnapshot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.VideoFilterListSnapshot
  * JD-Core Version:    0.7.0.1
  */

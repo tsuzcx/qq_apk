@@ -1,72 +1,140 @@
-import appoint.define.appoint_define.Elem;
-import appoint.define.appoint_define.Face;
-import appoint.define.appoint_define.RichText;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.component.media.image.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.reflect.Method;
 
 public class ashz
 {
-  public static String a(appoint_define.RichText paramRichText)
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private int jdField_a_of_type_Int = 0;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final View jdField_b_of_type_AndroidViewView;
+  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final TextView c;
+  
+  public ashz(View paramView)
   {
-    if (paramRichText == null) {
-      return "";
-    }
-    if (paramRichText.rpt_msg_elems.has()) {}
-    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramRichText.iterator();
-    label135:
-    label187:
-    label190:
-    label192:
-    label195:
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375326);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375328));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375761);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375760));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375763));
+    this.c = ((TextView)paramView.findViewById(2131375762));
+    try
     {
-      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
-      if (localElem != null)
+      ImageLoader.getInstance().downloadImageOnly("https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png", null);
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.w("ExtendEmptyViewDirector", 1, "init: failed to download image", paramView);
+    }
+  }
+  
+  @Nullable
+  private static Method a(ImageView paramImageView)
+  {
+    if (jdField_a_of_type_JavaLangReflectMethod != null) {
+      return jdField_a_of_type_JavaLangReflectMethod;
+    }
+    try
+    {
+      jdField_a_of_type_JavaLangReflectMethod = paramImageView.getClass().getMethod("setAsyncImage", new Class[] { String.class });
+      return jdField_a_of_type_JavaLangReflectMethod;
+    }
+    catch (Throwable paramImageView)
+    {
+      for (;;)
       {
-        if (localElem.str_content.has())
-        {
-          paramRichText = localElem.str_content.get();
-          label106:
-          localStringBuilder.append(paramRichText);
-          if (!localElem.msg_face_info.has()) {
-            break label187;
-          }
-          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
-          if (paramRichText == null) {
-            break label190;
-          }
-          if (!paramRichText.uint32_index.has()) {
-            break label192;
-          }
-        }
-        for (int i = paramRichText.uint32_index.get();; i = -1)
-        {
-          if (i < 0) {
-            break label195;
-          }
-          localStringBuilder.append('\024');
-          localStringBuilder.append((char)apsp.b(i));
-          break;
-          paramRichText = "";
-          break label106;
-          paramRichText = null;
-          break label135;
-          break;
-        }
+        QLog.w("ExtendEmptyViewDirector", 1, "getSetAsyncImageMethod: failed", paramImageView);
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FreshNewsUtil", 4, "getStringFromRichText, result=" + localStringBuilder.toString());
+  }
+  
+  private void a(ImageView paramImageView, @NonNull String paramString)
+  {
+    if (this.jdField_a_of_type_JavaLangString.equals(paramString)) {}
+    Method localMethod;
+    do
+    {
+      return;
+      localMethod = a(paramImageView);
+    } while (localMethod == null);
+    try
+    {
+      localMethod.invoke(paramImageView, new Object[] { paramString });
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
     }
-    return localStringBuilder.toString();
+    catch (Throwable paramImageView)
+    {
+      QLog.w("ExtendEmptyViewDirector", 1, "setAsyncImage: failed", paramImageView);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131716717);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int == 2) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("刷新失败，请下拉重试");
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("什么都没找到哦");
+    this.c.setText("没有搜索到相关内容");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200508145045_234LrOf7V4.png");
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Int == 4) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("无法连接到互联网");
+    this.c.setText("请关闭飞行模式或检查设备的网络设置");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png");
+    this.jdField_a_of_type_Int = 4;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import alud;
+import aanz;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -13,12 +13,12 @@ import android.text.TextUtils;
 import android.util.LruCache;
 import android.view.ViewGroup;
 import android.view.Window;
-import awgg;
-import babd;
-import bdgk;
-import bjdt;
-import bkbq;
-import bkgp;
+import anni;
+import bdch;
+import bgln;
+import blsb;
+import bmqa;
+import bmvl;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
@@ -37,6 +37,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.protofile.cmd0xe19.cmd0xe19.ReqBody;
 import com.tencent.protofile.cmd0xe19.cmd0xe19.RspBody;
@@ -53,37 +54,36 @@ import java.util.List;
 import java.util.TimeZone;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import mzy;
+import nir;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import ors;
-import oxb;
-import qfh;
-import qfi;
-import qfj;
-import qfk;
-import qfl;
-import qfm;
-import qfn;
-import qfo;
-import qfp;
-import qfq;
-import qfr;
-import qfs;
-import qft;
-import qfu;
-import qfz;
-import qgi;
-import rdm;
-import yqz;
+import pha;
+import pmk;
+import qyp;
+import qyq;
+import qyr;
+import qys;
+import qyt;
+import qyu;
+import qyv;
+import qyw;
+import qyx;
+import qyy;
+import qyz;
+import qza;
+import qzb;
+import qzc;
+import qzh;
+import qzq;
+import ryx;
 
 public class RIJRedPacketManager
 {
   private static volatile RIJRedPacketManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketRIJRedPacketManager;
   private LruCache<String, String> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10000);
   @Nullable
-  private awgg jdField_a_of_type_Awgg;
+  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   
   private long a()
   {
@@ -115,25 +115,6 @@ public class RIJRedPacketManager
     return PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
   }
   
-  private awgg a()
-  {
-    Object localObject1 = ors.a();
-    if (localObject1 == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_Awgg == null) || (!TextUtils.equals(((ReadInJoyEntityManagerFactory)this.jdField_a_of_type_Awgg).name, (CharSequence)localObject1)))
-      {
-        localObject1 = new ReadInJoyEntityManagerFactory((String)localObject1);
-        ThreadManager.excute(new RIJRedPacketManager.12(this, (ReadInJoyEntityManagerFactory)localObject1), 16, null, false);
-        this.jdField_a_of_type_Awgg = ((awgg)localObject1);
-      }
-      return this.jdField_a_of_type_Awgg;
-    }
-    finally {}
-  }
-  
   public static RIJRedPacketManager a()
   {
     Object localObject = jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketRIJRedPacketManager;
@@ -154,12 +135,31 @@ public class RIJRedPacketManager
     return localRIJRedPacketManager1;
   }
   
-  private void a(boolean paramBoolean)
+  private EntityManagerFactory a()
   {
-    a().putBoolean("enableDoArticleTask_" + ors.a(), paramBoolean).apply();
+    Object localObject1 = pha.a();
+    if (localObject1 == null) {
+      throw new IllegalStateException("Can not create a entity factory, the account is null.");
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) || (!TextUtils.equals(((ReadInJoyEntityManagerFactory)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory).name, (CharSequence)localObject1)))
+      {
+        localObject1 = new ReadInJoyEntityManagerFactory((String)localObject1);
+        ThreadManager.excute(new RIJRedPacketManager.12(this, (ReadInJoyEntityManagerFactory)localObject1), 16, null, false);
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+    }
+    finally {}
   }
   
-  private void a(byte[] paramArrayOfByte, @NotNull qfr paramqfr)
+  private void a(boolean paramBoolean)
+  {
+    a().putBoolean("enableDoArticleTask_" + pha.a(), paramBoolean).apply();
+  }
+  
+  private void a(byte[] paramArrayOfByte, @NotNull qyz paramqyz)
   {
     String str1 = null;
     try
@@ -174,12 +174,12 @@ public class RIJRedPacketManager
         paramArrayOfByte = str1;
         if (localRspBody.has_task.get())
         {
-          paramArrayOfByte = new qfz();
+          paramArrayOfByte = new qzh();
           paramArrayOfByte.a = ((cmd0xe19.TaskRedPacket)localRspBody.task.get()).head.get();
           paramArrayOfByte.b = ((cmd0xe19.TaskRedPacket)localRspBody.task.get()).nick.get();
           paramArrayOfByte.c = ((cmd0xe19.TaskRedPacket)localRspBody.task.get()).wording.get();
         }
-        paramqfr.a(i, l, str2, paramArrayOfByte, localRspBody.button_wording.get(), localRspBody.outcome_wording.get(), "");
+        paramqyz.a(i, l, str2, paramArrayOfByte, localRspBody.button_wording.get(), localRspBody.outcome_wording.get(), "");
         d();
         QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 ret = " + i + " money " + l + " detailWording " + str2);
         return;
@@ -196,7 +196,7 @@ public class RIJRedPacketManager
       if (localRspBody.detail_wording.has()) {
         str2 = localRspBody.detail_wording.get();
       }
-      paramqfr.a(i, 0L, str2, null, str1, localRspBody.outcome_wording.get(), paramArrayOfByte);
+      paramqyz.a(i, 0L, str2, null, str1, localRspBody.outcome_wording.get(), paramArrayOfByte);
       QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 ret = " + i + " toast wording: " + paramArrayOfByte);
       return;
     }
@@ -205,7 +205,7 @@ public class RIJRedPacketManager
       if (QLog.isColorLevel()) {
         QLog.i("RIJRedPacketManager", 1, QLog.getStackTraceString(paramArrayOfByte));
       }
-      paramqfr.a();
+      paramqyz.a();
     }
   }
   
@@ -217,44 +217,44 @@ public class RIJRedPacketManager
   
   private long b()
   {
-    return a().getLong("readinjoy_red_packet_next_request_ts" + ors.a(), 0L);
+    return a().getLong("readinjoy_red_packet_next_request_ts" + pha.a(), 0L);
   }
   
-  private void b(int paramInt, @NotNull qft paramqft)
+  private void b(int paramInt, @NotNull qzb paramqzb)
   {
     cmd0xe23.ReqBody localReqBody = new cmd0xe23.ReqBody();
-    localReqBody.uin.set(ors.a());
-    mzy.a(ors.a(), new qfi(this, paramInt, paramqft), localReqBody.toByteArray(), "OidbSvc.0xe23", 3619, 0, new Bundle(), 5000L);
+    localReqBody.uin.set(pha.a());
+    nir.a(pha.a(), new qyq(this, paramInt, paramqzb), localReqBody.toByteArray(), "OidbSvc.0xe23", 3619, 0, new Bundle(), 5000L);
   }
   
   private void b(boolean paramBoolean)
   {
-    a().putBoolean("enableDoVideoTask_" + ors.a(), paramBoolean).apply();
+    a().putBoolean("enableDoVideoTask_" + pha.a(), paramBoolean).apply();
   }
   
   private boolean f()
   {
-    return a().getBoolean("enableDoArticleTask_" + ors.a(), false);
+    return a().getBoolean("enableDoArticleTask_" + pha.a(), false);
   }
   
   private boolean g()
   {
-    return a().getBoolean("enableDoVideoTask_" + ors.a(), false);
+    return a().getBoolean("enableDoVideoTask_" + pha.a(), false);
   }
   
   public int a()
   {
-    if (a(a().getLong("task_progress_last_update_time_stamp" + ors.a(), 0L), NetConnInfoCenter.getServerTimeMillis())) {}
+    if (a(a().getLong("task_progress_last_update_time_stamp" + pha.a(), 0L), NetConnInfoCenter.getServerTimeMillis())) {}
     for (;;)
     {
-      return a().getInt("global_current_task_time" + ors.a(), 0);
+      return a().getInt("global_current_task_time" + pha.a(), 0);
       a(0);
     }
   }
   
   public String a()
   {
-    return Aladdin.getConfig(275).getString("video_tips_content", BaseApplicationImpl.getApplication().getString(2131719044));
+    return Aladdin.getConfig(275).getString("video_tips_content", BaseApplicationImpl.getApplication().getString(2131717172));
   }
   
   public JSONObject a(JSONObject paramJSONObject, BaseArticleInfo paramBaseArticleInfo)
@@ -280,17 +280,17 @@ public class RIJRedPacketManager
   public void a()
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    a().putLong("last_fetch_red_packet_info_time" + ors.a(), l).apply();
+    a().putLong("last_fetch_red_packet_info_time" + pha.a(), l).apply();
   }
   
   public void a(int paramInt)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    a().putLong("task_progress_last_update_time_stamp" + ors.a(), l).apply();
-    a().putInt("global_current_task_time" + ors.a(), paramInt).apply();
+    a().putLong("task_progress_last_update_time_stamp" + pha.a(), l).apply();
+    a().putInt("global_current_task_time" + pha.a(), paramInt).apply();
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, @NotNull qfr paramqfr)
+  public void a(int paramInt, String paramString1, String paramString2, @NotNull qyz paramqyz)
   {
     QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 \nshareSource: " + paramInt + "\nred packetId: " + paramString1 + "\nrowkey: " + paramString2);
     cmd0xe19.ReqBody localReqBody = new cmd0xe19.ReqBody();
@@ -298,20 +298,20 @@ public class RIJRedPacketManager
     localReqBody.rowkey.set(paramString2);
     localReqBody.task_idx.setHasFlag(true);
     paramString1 = new terminal_info.TerminalInfo();
-    paramString1.qimei.set(bkgp.b());
-    paramString1.os_version.set(String.valueOf(bdgk.a()));
-    paramString1.imsi.set(ors.g());
-    paramString1.qua.set(bjdt.a());
+    paramString1.qimei.set(bmvl.a());
+    paramString1.os_version.set(String.valueOf(bgln.a()));
+    paramString1.imsi.set(pha.i());
+    paramString1.qua.set(blsb.a());
     localReqBody.terminal_info.set(paramString1);
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 terminal info: qimei " + bkgp.b() + "\n os_version: " + bdgk.a() + "\n imsi: " + ors.g() + "\n qua: " + bjdt.a());
-    paramString1 = ((TicketManager)ors.a().getManager(2)).getSkey(ors.a().getAccount());
+    QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 terminal info: qimei " + bmvl.a() + "\n os_version: " + bgln.a() + "\n imsi: " + pha.i() + "\n qua: " + blsb.a());
+    paramString1 = ((TicketManager)pha.a().getManager(2)).getSkey(pha.a().getAccount());
     localReqBody.skey.set(paramString1);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      mzy.a(ors.a(), new qfl(this, paramqfr), localReqBody.toByteArray(), "OidbSvc.0xe19", 3609, 1, new Bundle(), 5000L);
+      nir.a(pha.a(), new qyt(this, paramqyz), localReqBody.toByteArray(), "OidbSvc.0xe19", 3609, 1, new Bundle(), 5000L);
       return;
       localReqBody.source.set(1);
       continue;
@@ -325,7 +325,7 @@ public class RIJRedPacketManager
     }
   }
   
-  public void a(int paramInt, @NotNull qft paramqft)
+  public void a(int paramInt, @NotNull qzb paramqzb)
   {
     boolean bool2 = true;
     long l = NetConnInfoCenter.getServerTimeMillis();
@@ -346,38 +346,38 @@ public class RIJRedPacketManager
       label103:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        rdm.a(new RIJRedPacketManager.2(this, paramqft, bool1));
+        ryx.a(new RIJRedPacketManager.2(this, paramqzb, bool1));
         return;
       }
     }
-    b(paramInt, paramqft);
+    b(paramInt, paramqzb);
   }
   
-  public void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, @NotNull qfu paramqfu, boolean paramBoolean, yqz paramyqz)
+  public void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, @NotNull qzc paramqzc, boolean paramBoolean, aanz paramaanz)
   {
     QLog.i("RIJRedPacketManager", 1, "onClickBubbleTips share source: " + paramInt + "\n encryptId: " + paramString1 + "\nrowkey: " + paramString2);
-    if (!bkbq.g())
+    if (!bmqa.f())
     {
-      a(paramActivity, paramString1, 2, 0, paramBoolean, paramyqz);
+      a(paramActivity, paramString1, 2, 0, paramBoolean, paramaanz);
       return;
     }
     if ("QzoneFeedsPluginProxyActivity".equals(paramActivity.getIntent().getStringExtra("SourceActivityName"))) {}
     for (int i = 3;; i = 2)
     {
-      a(paramInt, paramString1, paramString2, new qfm(this, paramActivity, paramString1, paramInt, i, paramString2, paramqfu));
+      a(paramInt, paramString1, paramString2, new qyu(this, paramActivity, paramString1, paramInt, i, paramString2, paramqzc));
       return;
     }
   }
   
-  public void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, yqz paramyqz)
+  public void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, aanz paramaanz)
   {
-    new qgi((ViewGroup)paramActivity.getWindow().getDecorView(), paramString, paramInt1, paramInt2, paramBoolean, paramyqz).a();
+    new qzq((ViewGroup)paramActivity.getWindow().getDecorView(), paramString, paramInt1, paramInt2, paramBoolean, paramaanz).a();
   }
   
   @SuppressLint({"DefaultLocale"})
   public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    ors.a(paramContext, String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+    pha.a(paramContext, String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
   }
   
   public void a(@NotNull String paramString)
@@ -387,11 +387,11 @@ public class RIJRedPacketManager
   
   public void a(String paramString, int paramInt)
   {
-    a().putString("readinjoy_red_packet_last_timing_task_rowkey" + ors.a(), paramString).apply();
-    a().putInt("readinjoy_red_packet_last_timing_task_time" + ors.a(), paramInt).apply();
+    a().putString("readinjoy_red_packet_last_timing_task_rowkey" + pha.a(), paramString).apply();
+    a().putInt("readinjoy_red_packet_last_timing_task_time" + pha.a(), paramInt).apply();
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, @Nullable qfs paramqfs)
+  public void a(String paramString, int paramInt1, int paramInt2, @Nullable qza paramqza)
   {
     oidb_0xe21.ReqBody localReqBody = new oidb_0xe21.ReqBody();
     QLog.i("RIJRedPacketManager", 1, "yyy_0xe21 report progress rowkey: " + paramString + " type: " + paramInt1 + " taskTime: " + paramInt2);
@@ -399,62 +399,62 @@ public class RIJRedPacketManager
     localReqBody.rowkey.set(paramString);
     localReqBody.type.set(paramInt1);
     Object localObject = new terminal_info.TerminalInfo();
-    ((terminal_info.TerminalInfo)localObject).qimei.set(bkgp.b());
-    ((terminal_info.TerminalInfo)localObject).os_version.set(String.valueOf(bdgk.a()));
-    ((terminal_info.TerminalInfo)localObject).imsi.set(ors.g());
-    ((terminal_info.TerminalInfo)localObject).qua.set(bjdt.a());
+    ((terminal_info.TerminalInfo)localObject).qimei.set(bmvl.a());
+    ((terminal_info.TerminalInfo)localObject).os_version.set(String.valueOf(bgln.a()));
+    ((terminal_info.TerminalInfo)localObject).imsi.set(pha.i());
+    ((terminal_info.TerminalInfo)localObject).qua.set(blsb.a());
     localReqBody.terminal_info.set((MessageMicro)localObject);
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe21 terminal info: qimei " + bkgp.b() + "\n os_version: " + bdgk.a() + "\n imsi: " + ors.g() + "\n qua: " + bjdt.a());
-    localObject = ((TicketManager)ors.a().getManager(2)).getSkey(ors.a().getAccount());
+    QLog.i("RIJRedPacketManager", 1, "yyy_0xe21 terminal info: qimei " + bmvl.a() + "\n os_version: " + bgln.a() + "\n imsi: " + pha.i() + "\n qua: " + blsb.a());
+    localObject = ((TicketManager)pha.a().getManager(2)).getSkey(pha.a().getAccount());
     localReqBody.skey.set((String)localObject);
-    mzy.a(ors.a(), new qfh(this, paramString, paramInt2, paramqfs), localReqBody.toByteArray(), "OidbSvc.0xe21", 3617, 1, new Bundle(), 5000L);
+    nir.a(pha.a(), new qyp(this, paramString, paramInt2, paramqza), localReqBody.toByteArray(), "OidbSvc.0xe21", 3617, 1, new Bundle(), 5000L);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, @NotNull qfo paramqfo)
+  public void a(String paramString1, String paramString2, int paramInt, @NotNull qyw paramqyw)
   {
     QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 rowkey: " + paramString1 + "\n");
     cmd0xe40.ReqBody localReqBody = new cmd0xe40.ReqBody();
     localReqBody.rowkey.set(paramString1);
     localReqBody.id.set(paramString2);
     localReqBody.source.set(paramInt);
-    mzy.a(ors.a(), new qfn(this, paramqfo), localReqBody.toByteArray(), "OidbSvc.0xe40", 3648, 1, new Bundle(), 5000L);
+    nir.a(pha.a(), new qyv(this, paramqyw), localReqBody.toByteArray(), "OidbSvc.0xe40", 3648, 1, new Bundle(), 5000L);
   }
   
-  public void a(String paramString, @NotNull qfp paramqfp)
+  public void a(String paramString, @NotNull qyx paramqyx)
   {
     QLog.i("RIJRedPacketManager", 1, "yyy_0xe1f: rowkey: " + paramString);
     oidb_0xe1f.ReqBody localReqBody = new oidb_0xe1f.ReqBody();
     localReqBody.rowkey.set(paramString);
-    mzy.a(ors.a(), new qfj(this, paramqfp), localReqBody.toByteArray(), "OidbSvc.0xe1f", 3615, 1, new Bundle(), 5000L);
+    nir.a(pha.a(), new qyr(this, paramqyx), localReqBody.toByteArray(), "OidbSvc.0xe1f", 3615, 1, new Bundle(), 5000L);
   }
   
-  public void a(@NotNull String paramString, @NotNull qfq paramqfq)
+  public void a(@NotNull String paramString, @NotNull qyy paramqyy)
   {
-    ThreadManager.excute(new RIJRedPacketManager.10(this, paramString, paramqfq), 32, null, true);
+    ThreadManager.excute(new RIJRedPacketManager.10(this, paramString, paramqyy), 32, null, true);
   }
   
-  public void a(qft paramqft)
+  public void a(qzb paramqzb)
   {
     if ((c()) && (e()))
     {
-      a(2, paramqft);
+      a(2, paramqzb);
       return;
     }
-    rdm.a(new RIJRedPacketManager.1(this, paramqft));
+    ryx.a(new RIJRedPacketManager.1(this, paramqzb));
   }
   
-  public void a(@NotNull qfu paramqfu)
+  public void a(@NotNull qzc paramqzc)
   {
     QLog.i("RIJRedPacketManager", 1, "request yyy_0xe36");
     cmd0xe36.ReqBody localReqBody = new cmd0xe36.ReqBody();
     localReqBody.nothing.set(1);
-    mzy.a(ors.a(), new qfk(this, paramqfu), localReqBody.toByteArray(), "OidbSvc.0xe36", 3638, 1, new Bundle(), 5000L);
+    nir.a(pha.a(), new qys(this, paramqzc), localReqBody.toByteArray(), "OidbSvc.0xe36", 3638, 1, new Bundle(), 5000L);
   }
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    a().putLong("readinjoy_red_packet_next_request_ts" + ors.a(), paramLong).apply();
-    a().putBoolean("readinjoy_red_packet_can_do_task" + ors.a(), paramBoolean).apply();
+    a().putLong("readinjoy_red_packet_next_request_ts" + pha.a(), paramLong).apply();
+    a().putBoolean("readinjoy_red_packet_can_do_task" + pha.a(), paramBoolean).apply();
   }
   
   public boolean a()
@@ -465,9 +465,9 @@ public class RIJRedPacketManager
     do
     {
       return true;
-      l1 = a().getLong("last_fetch_red_packet_info_time" + ors.a(), 0L);
+      l1 = a().getLong("last_fetch_red_packet_info_time" + pha.a(), 0L);
       l2 = NetConnInfoCenter.getServerTimeMillis();
-    } while ((!a().getBoolean("readinjoy_red_packet_window_has_closed" + ors.a(), false)) && (l2 - l1 >= a()) && (e()));
+    } while ((!a().getBoolean("readinjoy_red_packet_window_has_closed" + pha.a(), false)) && (l2 - l1 >= a()) && (e()));
     return false;
   }
   
@@ -508,7 +508,7 @@ public class RIJRedPacketManager
       }
       i = 1;
       label186:
-      if ((!alud.a(2131718269).equals(str2)) && (TextUtils.isEmpty(str3))) {
+      if ((!anni.a(2131716428).equals(str2)) && (TextUtils.isEmpty(str3))) {
         break label280;
       }
     }
@@ -552,22 +552,22 @@ public class RIJRedPacketManager
   
   public int b()
   {
-    return a().getInt("readinjoy_red_packet_total_task_time_ms" + ors.a(), 300000);
+    return a().getInt("readinjoy_red_packet_total_task_time_ms" + pha.a(), 300000);
   }
   
   public String b()
   {
-    return a().getString("readinjoy_red_packet_last_timing_task_rowkey" + ors.a(), "");
+    return a().getString("readinjoy_red_packet_last_timing_task_rowkey" + pha.a(), "");
   }
   
   public void b()
   {
-    a().putBoolean("readinjoy_red_packet_window_has_closed" + ors.a(), true).apply();
+    a().putBoolean("readinjoy_red_packet_window_has_closed" + pha.a(), true).apply();
   }
   
   public void b(int paramInt)
   {
-    a().putInt("readinjoy_red_packet_total_task_time_ms" + ors.a(), paramInt).apply();
+    a().putInt("readinjoy_red_packet_total_task_time_ms" + pha.a(), paramInt).apply();
   }
   
   public void b(@NotNull String paramString)
@@ -577,32 +577,32 @@ public class RIJRedPacketManager
   
   public boolean b()
   {
-    return a().getBoolean("readinjoy_red_packet_has_opened" + ors.a(), false);
+    return a().getBoolean("readinjoy_red_packet_has_opened" + pha.a(), false);
   }
   
   public int c()
   {
-    return a().getInt("readinjoy_red_packet_station_article" + ors.a(), 3000);
+    return a().getInt("readinjoy_red_packet_station_article" + pha.a(), 3000);
   }
   
   public String c()
   {
-    return Aladdin.getConfig(275).getString("article_share_tips_wording_android", BaseApplicationImpl.getContext().getString(2131719003));
+    return Aladdin.getConfig(275).getString("article_share_tips_wording_android", BaseApplicationImpl.getContext().getString(2131717125));
   }
   
   public void c()
   {
-    a().putBoolean("readinjoy_red_packet_has_opened" + ors.a(), true).apply();
+    a().putBoolean("readinjoy_red_packet_has_opened" + pha.a(), true).apply();
   }
   
   public void c(int paramInt)
   {
-    a().putInt("readinjoy_red_packet_station_article" + ors.a(), paramInt).apply();
+    a().putInt("readinjoy_red_packet_station_article" + pha.a(), paramInt).apply();
   }
   
   public boolean c()
   {
-    return a().getBoolean("readinjoy_has_red_packet_permission" + ors.a(), false);
+    return a().getBoolean("readinjoy_has_red_packet_permission" + pha.a(), false);
   }
   
   public int d()
@@ -612,18 +612,18 @@ public class RIJRedPacketManager
   
   public void d()
   {
-    oxb.a().c(true);
-    a().putBoolean("readinjoy_has_red_packet_permission" + ors.a(), true).apply();
+    pmk.a().c(true);
+    a().putBoolean("readinjoy_has_red_packet_permission" + pha.a(), true).apply();
   }
   
   public void d(int paramInt)
   {
-    a().putInt("readinjoy_red_packet_max_task_time_for_article" + ors.a(), paramInt).apply();
+    a().putInt("readinjoy_red_packet_max_task_time_for_article" + pha.a(), paramInt).apply();
   }
   
   public boolean d()
   {
-    return a().getBoolean("readinjoy_red_packet_can_do_task" + ors.a(), true);
+    return a().getBoolean("readinjoy_red_packet_can_do_task" + pha.a(), true);
   }
   
   public int e()
@@ -638,7 +638,7 @@ public class RIJRedPacketManager
   
   public void e(int paramInt)
   {
-    a().putInt("readinjoy_red_packet_task_total_round" + ors.a(), paramInt).apply();
+    a().putInt("readinjoy_red_packet_task_total_round" + pha.a(), paramInt).apply();
   }
   
   public boolean e()
@@ -646,7 +646,7 @@ public class RIJRedPacketManager
     if (Aladdin.getConfig(285).getIntegerFromString("is_highest_red_packet_authority_on", 0) == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = babd.a();
+      boolean bool2 = bdch.a();
       QLog.i("RIJRedPacketManager", 1, "isHighestRedPacketAuthorityOn: " + bool1 + " ,isStudyMode=" + bool2);
       if ((!bool1) || (bool2)) {
         break;
@@ -658,12 +658,12 @@ public class RIJRedPacketManager
   
   public int f()
   {
-    return a().getInt("readinjoy_red_packet_last_timing_task_time" + ors.a(), 0);
+    return a().getInt("readinjoy_red_packet_last_timing_task_time" + pha.a(), 0);
   }
   
   public int g()
   {
-    return a().getInt("readinjoy_red_packet_max_task_time_for_article" + ors.a(), 20000);
+    return a().getInt("readinjoy_red_packet_max_task_time_for_article" + pha.a(), 20000);
   }
   
   public int h()
@@ -673,7 +673,7 @@ public class RIJRedPacketManager
   
   public int i()
   {
-    return a().getInt("readinjoy_red_packet_task_total_round" + ors.a(), 5);
+    return a().getInt("readinjoy_red_packet_task_total_round" + pha.a(), 5);
   }
 }
 

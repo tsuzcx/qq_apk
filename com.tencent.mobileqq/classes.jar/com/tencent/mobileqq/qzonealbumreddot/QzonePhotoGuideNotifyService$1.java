@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import axbg;
-import axbj;
+import azxi;
+import azxl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QzonePhotoGuideNotifyService$1
   implements Runnable
 {
-  public QzonePhotoGuideNotifyService$1(axbj paramaxbj) {}
+  public QzonePhotoGuideNotifyService$1(azxl paramazxl) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class QzonePhotoGuideNotifyService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService.1
  * JD-Core Version:    0.7.0.1
  */

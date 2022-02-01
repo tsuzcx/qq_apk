@@ -1,51 +1,40 @@
 package com.tencent.qapmsdk.dropframe;
 
-import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
-import com.tencent.qapmsdk.base.config.PluginCombination;
-import com.tencent.qapmsdk.base.monitorplugin.PluginController;
-import com.tencent.qapmsdk.common.logger.Logger;
+import android.support.annotation.NonNull;
+import com.tencent.qapmsdk.base.meta.DropFrameResultMeta;
 
 class DropFrameMonitor$2
-  implements Choreographer.FrameCallback
+  implements Handler.Callback
 {
   DropFrameMonitor$2(DropFrameMonitor paramDropFrameMonitor) {}
   
-  public void doFrame(long paramLong)
+  public boolean handleMessage(@NonNull Message paramMessage)
   {
-    if ((DropFrameMonitor.access$200(this.this$0) == null) || (!PluginController.INSTANCE.canCollect(PluginCombination.dropFramePlugin.plugin))) {
-      return;
-    }
-    try
+    if (paramMessage.what == 1)
     {
-      DropFrameMonitor.access$200(this.this$0).postFrameCallback(DropFrameMonitor.access$300(this.this$0));
-      if ((paramLong < DropFrameMonitor.access$400(this.this$0)) || (DropFrameMonitor.access$400(this.this$0) == 0L))
-      {
-        DropFrameMonitor.access$402(this.this$0, paramLong);
-        return;
+      long l = ((Long)paramMessage.obj).longValue();
+      int j = (int)((l - DropFrameMonitor.access$100(this.this$0)) / DropFrameMonitor.access$100(this.this$0));
+      int i = j;
+      if (j < 0) {
+        i = 0;
       }
+      j = DropFrameMonitor.access$200(this.this$0, i);
+      paramMessage = DropFrameMonitor.access$300(this.this$0).dropIntervals;
+      paramMessage[j] += 1L;
+      paramMessage = DropFrameMonitor.access$300(this.this$0);
+      paramMessage.dropCount = (i + paramMessage.dropCount);
+      paramMessage = DropFrameMonitor.access$300(this.this$0);
+      float f = paramMessage.duration;
+      paramMessage.duration = ((float)l + f);
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_dropframe_DropFrameMonitor", localThrowable);
-      }
-      long l = DropFrameMonitor.access$400(this.this$0);
-      DropFrameMonitor.access$402(this.this$0, paramLong);
-      Message localMessage = DropFrameMonitor.access$500(this.this$0).obtainMessage();
-      localMessage.what = 1;
-      localMessage.obj = Long.valueOf(paramLong - l);
-      DropFrameMonitor.access$500(this.this$0).sendMessage(localMessage);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.dropframe.DropFrameMonitor.2
  * JD-Core Version:    0.7.0.1
  */

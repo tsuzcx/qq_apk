@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bmqk;
-import bmqu;
-import bmqz;
-import bmub;
-import bmyj;
+import bphq;
+import bpia;
+import bpif;
+import bplh;
+import bppp;
 import java.util.Map;
 
 class DoodleLayout$16
@@ -14,33 +14,33 @@ class DoodleLayout$16
   
   public void run()
   {
-    bmyj localbmyj;
+    bppp localbppp;
     if ((this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b != null) && (this.a != null))
     {
-      localbmyj = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
-      if (!(localbmyj instanceof bmqk)) {
+      localbppp = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
+      if (!(localbppp instanceof bphq)) {
         break label97;
       }
-      ((bmqk)localbmyj).a = this.a;
+      ((bphq)localbppp).a = this.a;
     }
     for (;;)
     {
-      localbmyj.i = 3;
+      localbppp.i = 3;
       this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b = null;
-      if (this.this$0.jdField_a_of_type_Bmub != null) {
-        this.this$0.jdField_a_of_type_Bmub.s();
+      if (this.this$0.jdField_a_of_type_Bplh != null) {
+        this.this$0.jdField_a_of_type_Bplh.s();
       }
       return;
       label97:
-      if ((localbmyj instanceof bmqz)) {
-        ((bmqz)localbmyj).a = this.a;
+      if ((localbppp instanceof bpif)) {
+        ((bpif)localbppp).a = this.a;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.16
  * JD-Core Version:    0.7.0.1
  */

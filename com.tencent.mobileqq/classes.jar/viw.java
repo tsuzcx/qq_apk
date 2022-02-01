@@ -1,49 +1,79 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
 
 public class viw
-  extends vkh
 {
-  private String a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private vix jdField_a_of_type_Vix;
+  private String b;
+  private String c;
   
-  public viw()
+  public int a()
   {
-    a(false, true);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a()
+  public String a()
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    bayf localbayf = localQQAppInterface.a();
-    bayk localbayk = new bayk();
-    localbayk.jdField_a_of_type_Awkh = new vix(this);
-    localbayk.i = this.a;
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.jdField_b_of_type_Int = 196610;
-    localbayk.jdField_b_of_type_JavaLangString = localQQAppInterface.c();
-    localbayk.c = "";
-    localbayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localbayf.a(localbayk);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(Map<String, Object> paramMap)
+  public viw a(String paramString, int paramInt)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    Object localObject2 = bita.b(QCircleFeedPicLoader.a(paramString));
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = bita.a(paramString);
+    }
+    if (localObject1 == null)
+    {
+      localObject2 = new StringBuilder().append(vit.a()).append(paramString);
+      if (paramInt != 0) {
+        break label122;
+      }
+      localObject1 = ".mp4";
+      label65:
+      this.c = ((String)localObject1);
+      localObject1 = new StringBuilder().append(vit.c()).append(paramString);
+      if (paramInt != 0) {
+        break label128;
+      }
+    }
+    label128:
+    for (paramString = ".mp4";; paramString = ".jpeg")
+    {
+      this.b = paramString;
+      return this;
+      paramString = (String)localObject1;
+      break;
+      label122:
+      localObject1 = ".jpeg";
+      break label65;
     }
   }
   
-  public boolean a()
+  public viw a(vix paramvix)
   {
-    return !TextUtils.isEmpty(this.a);
+    this.jdField_a_of_type_Vix = paramvix;
+    return this;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     viw
  * JD-Core Version:    0.7.0.1
  */

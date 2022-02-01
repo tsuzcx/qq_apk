@@ -1,28 +1,24 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import java.util.Comparator;
 
-public class bfgv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bfgv
+  implements Comparator<bfgy>
 {
-  public bfgv(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  bfgv(bfgu parambfgu) {}
   
-  public void onGlobalLayout()
+  public int a(bfgy parambfgy1, bfgy parambfgy2)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
-    {
-      int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
+    if (parambfgy1.b < parambfgy2.b) {
+      return -1;
     }
-    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (parambfgy1.b > parambfgy2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfgv
  * JD-Core Version:    0.7.0.1
  */

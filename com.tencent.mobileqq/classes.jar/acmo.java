@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import kotlin.Metadata;
 
-public class acmo
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"}, k=3, mv={1, 1, 16})
+final class acmo
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public acmo(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  acmo(ViewGroup paramViewGroup) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public final void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if ((paramInt & 0x4) == 0) {
+      this.a.setSystemUiVisibility(7942);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

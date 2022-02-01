@@ -1,36 +1,43 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akzd
-  implements aksj
+  implements View.OnClickListener
 {
-  akzd(akzc paramakzc) {}
+  akzd(akyh paramakyh) {}
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void onClick(View paramView)
   {
-    akzc localakzc = this.a;
-    if (akzc.a(this.a).jdField_b_of_type_Boolean)
+    Object localObject = QQPlayerService.a();
+    int i;
+    if (localObject != null)
     {
-      paramStartCheckParam = akzc.a(this.a).e;
-      akzc.a(localakzc, paramStartCheckParam);
-      if (!"message".equals(akzc.a(this.a).f)) {
-        break label101;
+      akyh.a(this.a).startActivity((Intent)localObject);
+      localObject = ((Intent)localObject).getComponent().getClassName();
+      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
+        break label132;
       }
+      i = 0;
     }
-    label101:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(akzc.a(this.a).jdField_b_of_type_Int) });
+      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramStartCheckParam = akzc.a(this.a).d;
-      break;
-    }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (akzc.a(this.a) != null) {
-      akzc.a(this.a).c(-10001, akzc.a(this.a).jdField_b_of_type_JavaLangString);
+      label132:
+      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
     }
   }
 }

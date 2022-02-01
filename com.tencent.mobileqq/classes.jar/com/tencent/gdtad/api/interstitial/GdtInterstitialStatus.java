@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaox;
+import acmi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class GdtInterstitialStatus
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new aaox();
+  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new acmi();
   public int a;
   public long a;
   public String a;
@@ -216,7 +216,7 @@ public final class GdtInterstitialStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialStatus
  * JD-Core Version:    0.7.0.1
  */

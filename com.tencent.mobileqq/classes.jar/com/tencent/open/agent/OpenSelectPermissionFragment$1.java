@@ -1,25 +1,25 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import bhta;
+import bkgk;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-class OpenSelectPermissionFragment$1
+public class OpenSelectPermissionFragment$1
   implements Runnable
 {
   OpenSelectPermissionFragment$1(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
   public void run()
   {
-    Bitmap localBitmap = OpenSelectPermissionFragment.a(this.this$0).a(String.valueOf(OpenSelectPermissionFragment.a(this.this$0)));
+    Bitmap localBitmap = OpenSelectPermissionFragment.a(this.this$0).a(OpenSelectPermissionFragment.a(this.this$0));
     if (localBitmap != null) {
-      bhta.a(new OpenSelectPermissionFragment.1.1(this, localBitmap));
+      bkgk.a(new OpenSelectPermissionFragment.1.1(this, localBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment.1
  * JD-Core Version:    0.7.0.1
  */

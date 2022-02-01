@@ -1,24 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
-final class bdnb
-  extends alwx
+public class bdnb
+  implements FilenameFilter
 {
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  public bdnb(ShareAppLogHelper paramShareAppLogHelper) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    if (paramalwy != null)
+    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
+    do
     {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramalwy.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramalwy.b);
-      localStringBuilder.append("retryCount: " + paramalwy.c);
-      localStringBuilder.append("detailErrorReason: " + paramalwy.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramalwy.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
-      return;
-    }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pfm;
-import pgy;
+import pmk;
+import pwr;
+import pyi;
 
 public class SelfInfoModule$1
   implements Runnable
 {
-  public SelfInfoModule$1(pgy parampgy, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, pfm parampfm) {}
+  public SelfInfoModule$1(pyi parampyi, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, pwr parampwr) {}
   
   public void run()
   {
-    oxb.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Pfm);
+    pmk.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Pwr);
   }
 }
 

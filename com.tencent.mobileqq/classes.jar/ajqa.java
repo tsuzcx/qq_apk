@@ -1,22 +1,37 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class ajqa
+class ajqa
+  implements atve
 {
-  FlowActivity a;
+  ajqa(ajpz paramajpz, FileManagerEntity paramFileManagerEntity) {}
   
-  public ajqa(FlowActivity paramFlowActivity)
+  public void a()
   {
-    this.a = paramFlowActivity;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Ajpz.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    anjx localanjx;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localanjx = (anjx)this.jdField_a_of_type_Ajpz.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localanjx.a(localArrayList));
+    atvf.a(2131692313);
+    return;
+    this.jdField_a_of_type_Ajpz.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  public Context a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(ViewGroup paramViewGroup);
+  public void b() {}
 }
 
 

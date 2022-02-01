@@ -1,32 +1,61 @@
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abup
+  extends BroadcastReceiver
 {
-  public int a;
-  public String a;
-  public String b;
+  public abup(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public abup(abun paramabun) {}
-  
-  public boolean a(JSONObject paramJSONObject)
+  @TargetApi(12)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
-      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
-      return true;
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        this.a.finish();
+      }
     }
-    catch (Exception paramJSONObject)
+    long l;
+    do
     {
-      abui.a("KingKongNativePatch", "Parse HookPoint error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
+      do
+      {
+        do
+        {
+          return;
+          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+          {
+            bgkl.a();
+            return;
+          }
+          if (paramContext.equals("android.intent.action.SCREEN_ON"))
+          {
+            bgkl.a(2131230742, -1, null);
+            return;
+          }
+          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
+            break;
+          }
+        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
+        return;
+      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
+      }
+      paramContext = paramIntent.getExtras();
+      l = paramContext.getLong("din", 0L);
+      paramContext = paramContext.getString("uin", "");
+    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
+    this.a.finish();
   }
 }
 

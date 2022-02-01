@@ -1,15 +1,16 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bapa
+class bapa
+  implements bamt
 {
-  public abstract void callJs(String paramString, String... paramVarArgs);
+  bapa(baoz parambaoz) {}
   
-  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
-  
-  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
-  
-  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    }
+  }
 }
 
 

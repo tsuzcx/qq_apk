@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import baws;
+import bdxz;
 import java.util.TimerTask;
 
 public final class RichMediaUtil$1
@@ -10,12 +10,12 @@ public final class RichMediaUtil$1
   
   public void run()
   {
-    baws.a(this.a, false, null);
+    bdxz.a(this.a, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RichMediaUtil.1
  * JD-Core Version:    0.7.0.1
  */

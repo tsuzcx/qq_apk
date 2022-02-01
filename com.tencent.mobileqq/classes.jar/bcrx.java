@@ -1,15 +1,9 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.HashMap;
 
 public class bcrx
-  implements bcpo
 {
-  public bcrx(TroopAIORobotLayout paramTroopAIORobotLayout, bcrq parambcrq) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
 }
 
 

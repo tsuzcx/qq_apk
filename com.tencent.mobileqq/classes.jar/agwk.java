@@ -1,21 +1,11 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class agwk
-  implements aepd
 {
-  public agwk(TroopChatPie paramTroopChatPie) {}
+  public int a;
+  public String a;
   
-  public void a(ahan paramahan)
-  {
-    ((atpl)this.a.a(33)).a(1, paramahan);
-    ((afgf)this.a.a(43)).b(1, paramahan);
-  }
-  
-  public void b(ahan paramahan)
-  {
-    ((atpl)this.a.a(33)).b(1, paramahan);
-    ((afgf)this.a.a(43)).a(1, paramahan);
-  }
+  public agwk(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
 }
 
 

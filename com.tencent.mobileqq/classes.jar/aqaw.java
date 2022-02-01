@@ -1,9 +1,6 @@
-public class aqaw
+public abstract interface aqaw
 {
-  public String a;
-  public String b;
-  
-  aqaw(aqau paramaqau) {}
+  public abstract void a(aqav paramaqav);
 }
 
 

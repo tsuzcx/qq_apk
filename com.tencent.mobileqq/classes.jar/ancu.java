@@ -1,27 +1,44 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 public class ancu
-  extends ancs
+  implements bihh
 {
-  public static final ancu a;
-  public ancw a;
-  public ancy a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public ancu(ApolloGameInvitation.1 param1) {}
   
-  static
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    jdField_a_of_type_Ancu = new ancu(false);
-  }
-  
-  public ancu()
-  {
-    this.b = 128L;
-  }
-  
-  public ancu(boolean paramBoolean)
-  {
-    this.b = 128L;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBaseResp == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((anct.a(this.a.this$0) == null) || (!anct.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
+      if (paramBaseResp.errCode != 0) {
+        break;
+      }
+    } while ((anct.a(this.a.this$0) == null) || (anct.a(this.a.this$0) == null) || ((AppInterface)anct.a(this.a.this$0).get() == null));
+    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(anct.a(this.a.this$0).a) });
+    if (paramBaseResp.errCode == 0) {
+      anct.a(this.a.this$0, 0, 2);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      if (paramBaseResp.errCode == -2) {
+        anct.a(this.a.this$0, 2, 2);
+      } else {
+        anct.a(this.a.this$0, 1, 2);
+      }
+    }
   }
 }
 

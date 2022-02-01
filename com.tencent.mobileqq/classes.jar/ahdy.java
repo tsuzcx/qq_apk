@@ -1,15 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-
-public class ahdy
-  implements bhvm
+public abstract interface ahdy
 {
-  public ahdy(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public abstract void a(int paramInt);
 }
 
 

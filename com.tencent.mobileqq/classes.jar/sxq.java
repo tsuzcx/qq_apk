@@ -1,24 +1,19 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.database.DataSetObserver;
 
 class sxq
-  implements EIPCResultCallback
+  extends DataSetObserver
 {
-  sxq(sxe paramsxe, String paramString) {}
+  sxq(sxp paramsxp) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onChanged()
   {
-    if (paramEIPCResult.data != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
-      this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
-    }
+    super.onChanged();
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxq
  * JD-Core Version:    0.7.0.1
  */

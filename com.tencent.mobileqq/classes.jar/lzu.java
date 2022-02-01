@@ -1,40 +1,23 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
+import java.util.ArrayList;
 
-public class lzu
-  implements ServiceConnection
+class lzu
 {
-  public lzu(QQServiceForAV paramQQServiceForAV) {}
+  int jdField_a_of_type_Int;
+  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  mdt jdField_a_of_type_Mdt;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
-    QQServiceForAV.b(this.a, true);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
-    QQServiceForAV.b(this.a, false);
-    try
-    {
-      BaseApplicationImpl.getContext().unbindService(this);
-      return;
-    }
-    catch (Throwable paramComponentName)
-    {
-      QLog.e("QQServiceForAV", 1, "onServiceDisconnected unbindService exception:" + paramComponentName, paramComponentName);
-    }
-  }
+  lzu(lzt paramlzt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzu
  * JD-Core Version:    0.7.0.1
  */

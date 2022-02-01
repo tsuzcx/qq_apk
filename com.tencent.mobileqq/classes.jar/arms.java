@@ -1,50 +1,49 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.text.TextUtils;
 
-class arms
-  implements bhuy
+public class arms
 {
-  arms(armo paramarmo) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public arms() {}
+  
+  public arms(long paramLong, int paramInt)
   {
-    armo.a(this.a, paramInt);
-    paramAdapterView = this.a.jdField_a_of_type_Arog;
-    if (armo.a(this.a) == armo.b(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAdapterView.d(bool);
-      this.a.a(paramInt);
-      if (this.a.jdField_a_of_type_Arhx != null) {
-        this.a.jdField_a_of_type_Arhx.a(paramInt);
-      }
-      paramAdapterView = (arkl)armo.a(this.a).get(paramInt);
-      if (paramAdapterView != null) {
-        break;
-      }
-      arri.b(BaseApplicationImpl.getContext().getString(2131692560));
-      return;
-    }
-    this.a.jdField_a_of_type_Arki.a().a(paramAdapterView);
-    this.a.jdField_a_of_type_Arki.a(paramInt, paramAdapterView);
-    this.a.jdField_a_of_type_Arog.c(armo.a(this.a, armo.a(this.a)));
-    this.a.jdField_a_of_type_Arog.c();
-    if (this.a.jdField_a_of_type_Arhw != null) {
-      this.a.jdField_a_of_type_Arhw.e();
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Arhx.a(true);
-      this.a.jdField_a_of_type_Arog.a(false);
-      armo.a(this.a, true);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public arms(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url").append(this.c);
+    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:").append(this.d);
+    return localStringBuilder.toString();
+  }
 }
 
 

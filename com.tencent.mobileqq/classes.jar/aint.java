@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-
-public class aint
-  implements DialogInterface.OnCancelListener
+class aint
+  implements bkle
 {
-  public aint(CameraPreviewActivity paramCameraPreviewActivity) {}
+  aint(ains paramains) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.a = null;
+    if (paramInt == 4097) {}
   }
 }
 

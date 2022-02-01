@@ -1,17 +1,16 @@
-public class azlf
+import android.view.View;
+import java.util.ArrayList;
+
+class azlf
+  implements bkhw
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
+  azlf(azla paramazla, ArrayList paramArrayList, bkho parambkho) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    ((bgtm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bkho.e();
+  }
 }
 
 

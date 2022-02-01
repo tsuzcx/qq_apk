@@ -12,6 +12,7 @@ import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
+import oicq.wlogin_sdk.tools.e;
 import oicq.wlogin_sdk.tools.util;
 
 public class b
@@ -104,7 +105,7 @@ public class b
     }
     i = util.buf_to_int16(arrayOfByte1, k);
     j = k + 2;
-    i = oicq.wlogin_sdk.tools.c.a(i, arrayOfByte1, j, arrayOfByte1.length - j, paramMap);
+    i = e.a(i, arrayOfByte1, j, arrayOfByte1.length - j, paramMap);
     if (i != 0)
     {
       util.LOGI("parseTLV failed " + i, "");
@@ -137,7 +138,7 @@ public class b
       }
       paramMap.put_siginfo(paramLong, (byte[][])localObject3, t.f());
       paramContext.put(Long.valueOf(_status.a), paramMap.get_clone());
-      t.aq.a(paramContext, "tk_file");
+      t.ar.a(paramContext, "tk_file");
     }
     return _status.b;
   }
@@ -174,7 +175,7 @@ public class b
     {
       paramArrayOfByte3 = new tlv_t();
       paramArrayOfByte3.fill_head(104);
-      paramArrayOfByte3.fill_body(t.A, t.A.length);
+      paramArrayOfByte3.fill_body(t.B, t.B.length);
       paramArrayOfByte3.set_length();
       ((List)tmp35_30).add(paramArrayOfByte3.get_buf());
       paramInt = 0;

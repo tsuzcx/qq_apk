@@ -1,29 +1,25 @@
-public class pff
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
+
+final class pff
+  extends aopa
 {
-  public int a;
-  public long a;
-  public boolean a;
-  
-  public pff(long paramLong, int paramInt)
+  pff(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this(paramLong, paramInt, false);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public pff(long paramLong, int paramInt, boolean paramBoolean)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
+    pfe.a(false);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
+      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pff
  * JD-Core Version:    0.7.0.1
  */

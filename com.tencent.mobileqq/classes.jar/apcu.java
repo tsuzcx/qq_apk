@@ -1,8 +1,20 @@
-import android.graphics.Canvas;
+import android.graphics.Rect;
 
-public abstract interface apcu
+public class apcu
 {
-  public abstract void a(Canvas paramCanvas, apbz paramapbz, long paramLong);
+  public float a;
+  public int a;
+  public Rect a;
+  
+  public apcu()
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public String toString()
+  {
+    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
+  }
 }
 
 

@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bdgp
-  implements DialogInterface.OnClickListener
+public class bdgp
 {
-  bdgp(bdjz parambdjz) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean equals(Object paramObject)
   {
-    this.a.dismiss();
+    return this.b.equals(((bdgp)paramObject).b);
+  }
+  
+  public int hashCode()
+  {
+    return super.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdgp
  * JD-Core Version:    0.7.0.1
  */

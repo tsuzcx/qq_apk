@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beiy;
-import bekk;
+import bhqc;
+import bhro;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import ndd;
+import nlw;
 
 public class SwiftBrowserStatistics$5
   implements Runnable
 {
-  public SwiftBrowserStatistics$5(beiy parambeiy, TouchWebView paramTouchWebView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String[] paramArrayOfString) {}
+  public SwiftBrowserStatistics$5(bhqc parambhqc, TouchWebView paramTouchWebView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class SwiftBrowserStatistics$5
       if (!this.this$0.w) {
         break label143;
       }
-      switch (ndd.a())
+      switch (nlw.a())
       {
       case 0: 
       default: 
@@ -45,7 +45,7 @@ public class SwiftBrowserStatistics$5
     }
     for (;;)
     {
-      bekk.a(i, m, n, j, k, str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString);
+      bhro.a(i, m, n, j, k, str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString);
       return;
       i = 0;
       break;
@@ -69,7 +69,7 @@ public class SwiftBrowserStatistics$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.5
  * JD-Core Version:    0.7.0.1
  */

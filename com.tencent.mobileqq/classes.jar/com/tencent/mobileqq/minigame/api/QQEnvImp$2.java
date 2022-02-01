@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.api;
 
-import alud;
 import android.content.Context;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
@@ -17,15 +17,15 @@ class QQEnvImp$2
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), alud.a(2131710614), alud.a(2131710615), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
-    localbdjz.setCanceledOnTouchOutside(false);
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), anni.a(2131708990), anni.a(2131708991), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
+    localbgpa.setCanceledOnTouchOutside(false);
+    localbgpa.show();
     MiniReportManager.reportEventType(QQEnvImp.access$000(this.this$0).getGameInfoManager().getMiniAppConfig(), 1024, "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQEnvImp.2
  * JD-Core Version:    0.7.0.1
  */

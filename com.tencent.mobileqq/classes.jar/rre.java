@@ -1,28 +1,77 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
+import java.util.List;
 
-class rre
-  extends amck
+public class rre
 {
-  rre(rqj paramrqj) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 10;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c = 30;
   
-  protected void a()
+  public int a()
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (pid.a(this.a.a(), str) < qlx.d)
-    {
-      this.a.a.c(6);
-      return;
-    }
-    QQToast.a(this.a.a(), 0, this.a.a().getString(2131719066), 0).a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rre
  * JD-Core Version:    0.7.0.1
  */

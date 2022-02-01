@@ -1,22 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class owm
-  extends BroadcastReceiver
+  extends ClickableSpan
 {
-  public owm(KandianMergeManager paramKandianMergeManager) {}
+  public owm(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
+    paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramView = new pad(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(ozh.a).b(this.b.area).c(0).a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin).a();
+    oat.a(null, paa.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     owm
  * JD-Core Version:    0.7.0.1
  */

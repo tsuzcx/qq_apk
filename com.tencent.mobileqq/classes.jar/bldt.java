@@ -1,15 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class bldt
-  implements View.OnTouchListener
+  implements Callable<File>
 {
   bldt(blds paramblds) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public File a()
   {
-    return true;
+    if (blds.a(this.a).exists()) {
+      return blds.a(this.a);
+    }
+    return null;
   }
 }
 

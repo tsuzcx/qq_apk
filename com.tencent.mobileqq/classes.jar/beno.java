@@ -1,25 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class beno
-  extends Handler
+class beno
+  implements View.OnTouchListener
 {
-  public beno(CircleProgressBar paramCircleProgressBar) {}
+  beno(benn parambenn) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
     }
-    do
+    for (;;)
     {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public abstract interface ahdt
+class ahdt
+  extends afuv
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  public long a;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  
+  ahdt(ahdr paramahdr) {}
 }
 
 

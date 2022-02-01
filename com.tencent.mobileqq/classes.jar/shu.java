@@ -1,25 +1,23 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+
 public final class shu
+  implements Parcelable.Creator<DiscoveryInfo>
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public DiscoveryInfo a(Parcel paramParcel)
   {
-    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+    return new DiscoveryInfo(paramParcel);
   }
   
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public DiscoveryInfo[] a(int paramInt)
   {
-    paramFloat1 /= paramFloat4 / 2.0F;
-    if (paramFloat1 < 1.0F) {
-      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
-    }
-    paramFloat3 /= 2.0F;
-    paramFloat1 -= 2.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
+    return new DiscoveryInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     shu
  * JD-Core Version:    0.7.0.1
  */

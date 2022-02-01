@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import bejx;
+import bhrb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
@@ -18,7 +18,7 @@ public final class SwiftWebAccelerator$7
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine.run cost " + (l - this.a) + "ms.");
     l = System.currentTimeMillis();
-    synchronized (bejx.a)
+    synchronized (bhrb.a)
     {
       if (WebViewPluginEngine.a == null)
       {
@@ -38,7 +38,7 @@ public final class SwiftWebAccelerator$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.7
  * JD-Core Version:    0.7.0.1
  */

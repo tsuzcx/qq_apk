@@ -1,22 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
+import java.util.List;
 
-class pyd
-  implements View.OnClickListener
+public class pyd
 {
-  pyd(pxx parampxx) {}
+  private int jdField_a_of_type_Int = 1;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  public void onClick(View paramView)
+  public ReadInJoyUserInfoModule.Request0xb81Params a()
   {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
+  }
+  
+  public pyd a(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
+  }
+  
+  public pyd a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pyd b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public pyd c(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  public pyd d(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyd
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.ocr.view;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
-import avyx;
+import ayip;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 
 public class CommonMenuPopupView$1
   implements Runnable
 {
-  public CommonMenuPopupView$1(avyx paramavyx, View paramView, int paramInt1, int paramInt2) {}
+  public CommonMenuPopupView$1(ayip paramayip, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class CommonMenuPopupView$1
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {}
     try
     {
-      avyx.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
+      ayip.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ public class CommonMenuPopupView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CommonMenuPopupView.1
  * JD-Core Version:    0.7.0.1
  */

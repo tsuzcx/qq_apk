@@ -1,21 +1,15 @@
-public class aqky
-  extends aqkw
+class aqky
 {
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public aqky(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
-  {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-  }
+  byte jdField_a_of_type_Byte;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString = "";
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
+  short b = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqky
  * JD-Core Version:    0.7.0.1
  */

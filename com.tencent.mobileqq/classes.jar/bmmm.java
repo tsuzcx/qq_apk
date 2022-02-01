@@ -1,28 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import java.util.HashMap;
 
-class bmmm
-  extends AnimatorListenerAdapter
+public class bmmm
 {
-  bmmm(bmml parambmml, View paramView) {}
+  public String a;
+  public HashMap<String, String> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bmmm(bmml parambmml)
   {
-    wxe.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 

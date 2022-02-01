@@ -1,19 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class asqw
-  implements DialogInterface.OnDismissListener
+public abstract class asqw
 {
-  asqw(asqs paramasqs) {}
+  public int a = 1;
+  public String e;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public asqw(int paramInt, String paramString)
   {
-    if (this.a.a)
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof asqw))
     {
-      this.a.a = false;
-      asqs.a(this.a).finish();
+      paramObject = (asqw)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 

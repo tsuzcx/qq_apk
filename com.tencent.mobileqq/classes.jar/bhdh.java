@@ -1,75 +1,97 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineProxy.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.ICommonManager;
+import com.tencent.vas.update.entity.db.SeqConfigEntity;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class bhdh
-  extends bhdw
+  implements bhdf
 {
-  private CloudStorage.StGetPotentialFriendListReq a = new CloudStorage.StGetPotentialFriendListReq();
+  private bhdf a;
   
-  public bhdh(COMM.StCommonExt paramStCommonExt, String paramString)
+  public bhdh(QQAppInterface paramQQAppInterface)
   {
-    if (paramStCommonExt != null) {
-      this.a.ext.set(paramStCommonExt);
-    }
-    this.a.appid.set(paramString);
+    this.a = new bhdi(paramQQAppInterface);
   }
   
-  protected String a()
+  private void a()
   {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StGetPotentialFriendListRsp localStGetPotentialFriendListRsp = new CloudStorage.StGetPotentialFriendListRsp();
+    if (BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_common", 0).getInt("isFirstMove", 0) == 0) {}
     try
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetPotentialFriendListRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetPotentialFriendListRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGetPotentialFriendListRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+      bhdo localbhdo = (bhdo)((bhdg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(374)).a().getDbManager();
+      if (localbhdo != null) {
+        localbhdo.a();
       }
-      QMLog.d("GetPotentialFriendListRequest", "onResponse fail.rsp = null");
-      return null;
+      b();
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      QMLog.d("GetPotentialFriendListRequest", "onResponse fail." + paramArrayOfByte);
+      localThrowable.printStackTrace();
     }
-    return null;
   }
   
-  protected byte[] a()
+  private void b()
   {
-    return this.a.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.i("VasUpdateEngineProxy", 2, "copySeqConfig");
+    }
+    VasUpdateWrapper.getCommonManager().copyFile(VasQuickUpdateEngine.ENGINE_CONFIG_PATH + File.separator + "seq.cfg", SeqConfigEntity.SEQ_CONFIG_PATH);
   }
   
-  protected String b()
+  public void cancelDwonloadItem(long paramLong, String paramString)
   {
-    return "GetPotentialFriendList";
+    this.a.cancelDwonloadItem(paramLong, paramString);
+  }
+  
+  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
+  {
+    this.a.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
+  }
+  
+  public void downloadItem(long paramLong, String paramString1, String paramString2)
+  {
+    this.a.downloadItem(paramLong, paramString1, paramString2);
+  }
+  
+  public void onDestory()
+  {
+    this.a.onDestory();
+  }
+  
+  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.onPbMsgRecv(paramInt, paramString1, paramString2);
+  }
+  
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
+  {
+    this.a.queryItemVersion(paramInt, paramString, paramBoolean, paramQueryItemVersionCallback);
+  }
+  
+  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
+  {
+    this.a.setWeakHandler(paramWeakReference);
+  }
+  
+  public void startUpdateAllItem()
+  {
+    ThreadManagerV2.excute(new VasUpdateEngineProxy.1(this), 32, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,22 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class top
+  extends tou
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  public top(BridgeModule paramBridgeModule)
+  {
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$300(this.a, paramInt1, paramInt2, paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     top
  * JD-Core Version:    0.7.0.1
  */

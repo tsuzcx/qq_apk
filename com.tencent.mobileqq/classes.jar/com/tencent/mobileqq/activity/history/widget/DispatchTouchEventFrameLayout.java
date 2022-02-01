@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.widget;
 
-import aiem;
+import ajva;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class DispatchTouchEventFrameLayout
   extends FrameLayout
 {
-  private aiem a;
+  private ajva a;
   
   public DispatchTouchEventFrameLayout(Context paramContext)
   {
@@ -34,14 +34,14 @@ public class DispatchTouchEventFrameLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDispatchListener(aiem paramaiem)
+  public void setOnDispatchListener(ajva paramajva)
   {
-    this.a = paramaiem;
+    this.a = paramajva;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.DispatchTouchEventFrameLayout
  * JD-Core Version:    0.7.0.1
  */

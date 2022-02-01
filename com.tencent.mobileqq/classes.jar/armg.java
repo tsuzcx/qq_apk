@@ -1,15 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class armg
-  implements View.OnClickListener
+public class armg
 {
-  armg(armd paramarmd) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString)
   {
-    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
-    this.a.b = true;
+    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    bcst.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = armf.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    if (!bool) {
+      ((anip)paramQQAppInterface.a(2)).y();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.c();
+    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
+    paramQQAppInterface = arbv.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
+    }
+    return (!paramBoolean) && (paramBoolean);
   }
 }
 

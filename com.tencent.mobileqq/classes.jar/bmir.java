@@ -1,13 +1,20 @@
-import android.graphics.Canvas;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface bmir
-  extends bmni
+final class bmir
+  implements QQPermissionCallback
 {
-  public abstract int a(int paramInt);
+  bmir(String paramString1, String paramString2, Activity paramActivity) {}
   
-  public abstract boolean a(int paramInt);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.b(bmiq.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
   
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bmiq.a(this.jdField_a_of_type_JavaLangString, this.b);
+  }
 }
 
 

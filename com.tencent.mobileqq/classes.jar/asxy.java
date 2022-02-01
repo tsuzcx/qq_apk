@@ -1,68 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
 
 public class asxy
+  extends atwn
 {
-  private static asxy jdField_a_of_type_Asxy;
-  private static final String jdField_a_of_type_JavaLangString = asxy.class.getSimpleName();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private JSONObject b;
+  public asxy(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
-  public static asxy a()
+  public void a()
   {
-    try
-    {
-      if (jdField_a_of_type_Asxy == null) {
-        jdField_a_of_type_Asxy = new asxy();
-      }
-      asxy localasxy = jdField_a_of_type_Asxy;
-      return localasxy;
-    }
-    finally {}
+    this.a.a.a().b();
   }
   
-  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
+  public void b()
   {
-    YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    switch (paramInt)
-    {
-    default: 
-      return localYtSDKKitFrameworkWorkMode;
-    case 0: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    case 1: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
-    case 2: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
-    case 3: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
-    case 4: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
-    }
-    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+    this.a.a.a().o();
   }
   
-  public int a(String paramString1, String paramString2)
+  public void c()
   {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
-      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
-      return 0;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
-    }
-    return -1;
+    this.a.a.a().p();
   }
   
-  public JSONObject a(int paramInt)
+  public void d()
   {
-    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

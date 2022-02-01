@@ -1,60 +1,30 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qwb
-  extends ayrm
+class qwb
+  implements View.OnClickListener
 {
-  private ayqi jdField_a_of_type_Ayqi;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  qwb(qvz paramqvz, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  qwb(bdbb parambdbb, ayqi paramayqi, Set<String> paramSet)
+  public void onClick(View paramView)
   {
-    super(parambdbb);
-    this.jdField_a_of_type_Ayqi = paramayqi;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
-  
-  public void a(aynu paramaynu, aywd paramaywd)
-  {
-    if ((paramaynu instanceof qwe))
+    ComponentContentRecommend localComponentContentRecommend = this.jdField_a_of_type_Qvz.a;
+    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramaynu = ((qwe)paramaynu).a().b();
-      paramaywd = paramaywd.b();
-      Drawable localDrawable = paramaywd.getResources().getDrawable(2130840085);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      paramaynu = URLDrawable.getDrawable(paramaynu, localURLDrawableOptions);
-      paramaynu.setTag(bcyz.a(140, 140));
-      paramaynu.setDecodeHandler(bcyz.o);
-      paramaywd.setImageDrawable(paramaynu);
+      localComponentContentRecommend.a(localRecommendFollowInfo, bool);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    super.a(paramaynu, paramaywd);
-  }
-  
-  public void b(aynu paramaynu, aywd paramaywd)
-  {
-    super.b(paramaynu, paramaywd);
-  }
-  
-  protected void c(aynu paramaynu, aywd paramaywd)
-  {
-    super.c(paramaynu, paramaywd);
-    if ((this.jdField_a_of_type_Ayqi != null) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramaynu.b()))) {
-      paramaywd.a().setOnClickListener(new qwc(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwb
  * JD-Core Version:    0.7.0.1
  */

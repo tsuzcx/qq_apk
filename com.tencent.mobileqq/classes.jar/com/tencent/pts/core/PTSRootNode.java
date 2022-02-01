@@ -78,6 +78,11 @@ public class PTSRootNode
     return null;
   }
   
+  public View getRootView()
+  {
+    return this.mDelegate.getRootView();
+  }
+  
   boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
     return this.mDelegate.insert(paramPTSNodeInfo, paramInt);
@@ -110,7 +115,7 @@ public class PTSRootNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNode
  * JD-Core Version:    0.7.0.1
  */

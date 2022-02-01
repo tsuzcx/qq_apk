@@ -1,37 +1,37 @@
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class akxa
-  implements akxo
+final class akxa
+  implements View.OnTouchListener
 {
-  private int a;
+  private float b = 1.0F;
   
-  public akxa()
-  {
-    int i = akxn.a;
-    akxn.a = i + 1;
-    this.a = i;
-  }
+  akxa(float paramFloat) {}
   
-  public String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return null;
-  }
-  
-  public JSONObject a(akxn paramakxn, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramJSONObject = new akwn(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramakxn != null) {
-        paramakxn.a(paramJSONObject);
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        paramView.setAlpha(this.b);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!akww.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
       }
     }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.a;
   }
 }
 

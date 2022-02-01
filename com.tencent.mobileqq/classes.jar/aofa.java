@@ -1,535 +1,347 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.net.Uri;
-import android.os.Binder;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings;
-import android.support.annotation.RequiresApi;
+import android.os.Handler;
+import android.os.Looper;
+import com.dataline.activities.LiteActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.1;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.2;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.3;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import java.util.Map;
 
 public class aofa
+  implements aofk
 {
-  public static boolean a()
+  public int a;
+  public QQMessageFacade a;
+  public QQAppInterface a;
+  public String a;
+  
+  public aofa(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    return Build.MANUFACTURER.equalsIgnoreCase("vivo");
+    this.jdField_a_of_type_JavaLangString = anhk.z;
+    this.jdField_a_of_type_Int = 6000;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQMessageFacade;
   }
   
-  public static boolean a(Context paramContext)
+  private void a(DataLineMsgRecord paramDataLineMsgRecord, EntityManager paramEntityManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenPermissionUtil", 1, "checkPermission");
+    a().b(paramDataLineMsgRecord);
+    paramEntityManager = a().a(paramDataLineMsgRecord.groupId);
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    localMessage.selfuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.senderuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.msgtype = paramDataLineMsgRecord.msgtype;
+    if (localMessage.msgtype == -2009) {
+      localMessage.msgtype = -2005;
     }
-    boolean bool1;
-    if (paramContext == null)
+    localMessage.msg = paramDataLineMsgRecord.msg;
+    localMessage.emoRecentMsg = null;
+    if (paramDataLineMsgRecord.time > localMessage.time)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteSmallScreenPermissionUtil", 1, "checkPermission context == null");
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg mr msg time[" + localMessage.time + "] to time[" + paramDataLineMsgRecord.time + "]");
+      localMessage.time = paramDataLineMsgRecord.time;
+    }
+    localMessage.msgseq = paramDataLineMsgRecord.msgseq;
+    localMessage.isread = paramDataLineMsgRecord.isread;
+    localMessage.issend = paramDataLineMsgRecord.issend;
+    localMessage.frienduin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.istroop = this.jdField_a_of_type_Int;
+    localMessage.fileType = -1;
+    localMessage.msgId = paramDataLineMsgRecord.msgId;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessage);
+    if (!paramDataLineMsgRecord.isSend()) {
+      localMessage.hasReply = true;
+    }
+    if ((!paramDataLineMsgRecord.isSendFromLocal()) && (!paramDataLineMsgRecord.isread))
+    {
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(localMessage);
+      if (!DataLineMsgSet.isSingle(paramDataLineMsgRecord)) {
+        break label290;
       }
-      bool1 = false;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localMessage.frienduin, localMessage.istroop, 1);
     }
-    boolean bool2;
-    do
+    label290:
+    while ((paramEntityManager != null) && (paramEntityManager.getComeCount() != 1)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localMessage.frienduin, localMessage.istroop, 1);
+  }
+  
+  public int a()
+  {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread()) {
+      throw new RuntimeException("clearHistory in no-main thread");
+    }
+    localObject = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase() == null) {
+      return 0;
+    }
+    int i = a().a();
+    if (i > 0)
     {
-      do
+      ((QQMessageFacade.Message)localObject).msg = null;
+      ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+      ((QQMessageFacade.Message)localObject).fileType = -1;
+    }
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject);
+    return i;
+  }
+  
+  public int a(long paramLong)
+  {
+    DataLineMsgSet localDataLineMsgSet = a().a(paramLong);
+    if (localDataLineMsgSet == null) {
+      return -1;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread()) {
+      return a(localDataLineMsgSet);
+    }
+    new Handler(localLooper).post(new DatalineMessageManager.2(this, localDataLineMsgSet));
+    return 0;
+  }
+  
+  public int a(DataLineMsgSet paramDataLineMsgSet)
+  {
+    boolean bool = false;
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
+    {
+      int i = a().a(paramDataLineMsgSet);
+      if (i > 0)
       {
-        return bool1;
-        if (!a()) {
-          break;
+        paramDataLineMsgSet = acwh.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(paramDataLineMsgSet))
+        {
+          bool = ((QQMessageFacade.Message)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(paramDataLineMsgSet)).hasReply;
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(paramDataLineMsgSet);
         }
-        bool2 = b(paramContext);
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("ColorNoteSmallScreenPermissionUtil", 1, "checkPermission checkOpForVivo result = " + bool2);
-      return bool2;
-      bool2 = c(paramContext);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ColorNoteSmallScreenPermissionUtil", 1, "checkPermission checkOpForCommon result = " + bool2);
-    return bool2;
-  }
-  
-  private static boolean a(Context paramContext, Intent paramIntent)
-  {
-    if ((paramContext == null) || (paramIntent == null)) {}
-    do
-    {
-      return false;
-      paramContext = paramIntent.resolveActivityInfo(paramContext.getPackageManager(), 65536);
-    } while ((paramContext == null) || (!paramContext.exported));
-    return true;
-  }
-  
-  /* Error */
-  public static boolean b(Context paramContext)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 92	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: astore 4
-    //   6: ldc 94
-    //   8: invokestatic 100	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   11: astore 5
-    //   13: new 44	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   20: ldc 102
-    //   22: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_0
-    //   26: invokevirtual 105	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   29: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 107
-    //   34: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: astore 6
-    //   42: aload 4
-    //   44: aload 5
-    //   46: iconst_1
-    //   47: anewarray 16	java/lang/String
-    //   50: dup
-    //   51: iconst_0
-    //   52: ldc 109
-    //   54: aastore
-    //   55: aload 6
-    //   57: aconst_null
-    //   58: aconst_null
-    //   59: invokevirtual 115	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   62: astore 5
-    //   64: aload 5
-    //   66: ifnull +97 -> 163
-    //   69: aload 5
-    //   71: astore 4
-    //   73: aload 5
-    //   75: invokeinterface 120 1 0
-    //   80: ifeq +83 -> 163
-    //   83: aload 5
-    //   85: astore 4
-    //   87: aload 5
-    //   89: iconst_0
-    //   90: invokeinterface 124 2 0
-    //   95: istore_1
-    //   96: iload_1
-    //   97: ifne +61 -> 158
-    //   100: iconst_1
-    //   101: istore_2
-    //   102: aload 5
-    //   104: astore 4
-    //   106: ldc 29
-    //   108: iconst_1
-    //   109: iconst_4
-    //   110: anewarray 4	java/lang/Object
-    //   113: dup
-    //   114: iconst_0
-    //   115: ldc 126
-    //   117: aastore
-    //   118: dup
-    //   119: iconst_1
-    //   120: iload_1
-    //   121: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   124: aastore
-    //   125: dup
-    //   126: iconst_2
-    //   127: ldc 134
-    //   129: aastore
-    //   130: dup
-    //   131: iconst_3
-    //   132: iload_2
-    //   133: invokestatic 139	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   136: aastore
-    //   137: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   140: iload_2
-    //   141: istore_3
-    //   142: aload 5
-    //   144: ifnull +12 -> 156
-    //   147: aload 5
-    //   149: invokeinterface 145 1 0
-    //   154: iload_2
-    //   155: istore_3
-    //   156: iload_3
-    //   157: ireturn
-    //   158: iconst_0
-    //   159: istore_2
-    //   160: goto -58 -> 102
-    //   163: aload 5
-    //   165: astore 4
-    //   167: aload_0
-    //   168: invokestatic 64	aofa:c	(Landroid/content/Context;)Z
-    //   171: istore_2
-    //   172: aload 5
-    //   174: astore 4
-    //   176: ldc 29
-    //   178: iconst_1
-    //   179: iconst_4
-    //   180: anewarray 4	java/lang/Object
-    //   183: dup
-    //   184: iconst_0
-    //   185: ldc 147
-    //   187: aastore
-    //   188: dup
-    //   189: iconst_1
-    //   190: iload_2
-    //   191: invokestatic 139	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   194: aastore
-    //   195: dup
-    //   196: iconst_2
-    //   197: ldc 149
-    //   199: aastore
-    //   200: dup
-    //   201: iconst_3
-    //   202: aload 5
-    //   204: aastore
-    //   205: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   208: goto -68 -> 140
-    //   211: astore 6
-    //   213: aload 5
-    //   215: astore 4
-    //   217: ldc 29
-    //   219: iconst_1
-    //   220: ldc 151
-    //   222: aload 6
-    //   224: invokestatic 155	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   227: aload 5
-    //   229: astore 4
-    //   231: aload_0
-    //   232: invokestatic 64	aofa:c	(Landroid/content/Context;)Z
-    //   235: istore_2
-    //   236: iload_2
-    //   237: istore_3
-    //   238: aload 5
-    //   240: ifnull -84 -> 156
-    //   243: aload 5
-    //   245: invokeinterface 145 1 0
-    //   250: iload_2
-    //   251: ireturn
-    //   252: astore_0
-    //   253: aconst_null
-    //   254: astore 4
-    //   256: aload 4
-    //   258: ifnull +10 -> 268
-    //   261: aload 4
-    //   263: invokeinterface 145 1 0
-    //   268: aload_0
-    //   269: athrow
-    //   270: astore_0
-    //   271: goto -15 -> 256
-    //   274: astore 6
-    //   276: aconst_null
-    //   277: astore 5
-    //   279: goto -66 -> 213
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	282	0	paramContext	Context
-    //   95	26	1	i	int
-    //   101	150	2	bool1	boolean
-    //   141	97	3	bool2	boolean
-    //   4	258	4	localObject1	Object
-    //   11	267	5	localObject2	Object
-    //   40	16	6	str	String
-    //   211	12	6	localThrowable1	java.lang.Throwable
-    //   274	1	6	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   73	83	211	java/lang/Throwable
-    //   87	96	211	java/lang/Throwable
-    //   106	140	211	java/lang/Throwable
-    //   167	172	211	java/lang/Throwable
-    //   176	208	211	java/lang/Throwable
-    //   0	64	252	finally
-    //   73	83	270	finally
-    //   87	96	270	finally
-    //   106	140	270	finally
-    //   167	172	270	finally
-    //   176	208	270	finally
-    //   217	227	270	finally
-    //   231	236	270	finally
-    //   0	64	274	java/lang/Throwable
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return Settings.canDrawOverlays(paramContext);
+        long l = a().a().size();
+        if (l > 0L)
+        {
+          localObject = a().a();
+          paramDataLineMsgSet = (DataLineMsgSet)localObject;
+          if (localObject != null) {
+            if ((((DataLineMsgRecord)localObject).msgtype != -5000) && (((DataLineMsgRecord)localObject).msgtype != -5041))
+            {
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (((DataLineMsgRecord)localObject).msgtype != -2073) {}
+            }
+            else
+            {
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (l > 1L) {
+                paramDataLineMsgSet = a().a().get((int)(l - 2L)).getLastItem();
+              }
+            }
+          }
+          localObject = new QQMessageFacade.Message();
+          if (paramDataLineMsgSet != null)
+          {
+            MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject, paramDataLineMsgSet);
+            ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+            ((QQMessageFacade.Message)localObject).hasReply = bool;
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((QQMessageFacade.Message)localObject);
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(acwh.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int), localObject);
+          }
+        }
+        paramDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+        localObject = (RecentUser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        paramDataLineMsgSet.close();
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject);
+        }
+      }
+      return i;
     }
-    if (Build.VERSION.SDK_INT >= 19) {
-      return e(paramContext);
-    }
-    return true;
+    new Handler((Looper)localObject).post(new DatalineMessageManager.3(this, paramDataLineMsgSet));
+    return 0;
   }
   
-  public static boolean d(Context paramContext)
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    if (a())
+    long l2 = -1L;
+    long l1;
+    if (paramDataLineMsgRecord == null)
     {
-      bool2 = j(paramContext);
-      bool1 = bool2;
-      if (!bool2) {
-        bool1 = k(paramContext);
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg.DatalineMessageManager", 2, "mr is null");
+        l1 = l2;
       }
     }
-    boolean bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (Build.VERSION.SDK_INT >= 23) {
-        bool2 = f(paramContext);
-      }
-    }
-    bool1 = bool2;
-    if (!bool2) {
-      bool1 = l(paramContext);
-    }
-    bool2 = bool1;
-    if (!bool1) {
-      bool2 = m(paramContext);
-    }
-    bool1 = bool2;
-    if (!bool2) {
-      bool1 = n(paramContext);
-    }
-    bool2 = bool1;
-    if (!bool1) {
-      bool2 = i(paramContext);
-    }
-    bool1 = bool2;
-    if (!bool2) {
-      bool1 = g(paramContext);
-    }
-    bool2 = bool1;
-    if (!bool1) {
-      bool2 = h(paramContext);
-    }
-    return bool2;
-  }
-  
-  @TargetApi(19)
-  private static boolean e(Context paramContext)
-  {
-    if (paramContext == null) {}
+    Object localObject1;
+    Object localObject2;
     for (;;)
     {
-      return false;
-      try
+      return l1;
+      a();
+      localObject1 = new fb(false, false);
+      localObject2 = Looper.getMainLooper();
+      if (Thread.currentThread() == ((Looper)localObject2).getThread())
       {
-        Object localObject = paramContext.getSystemService("appops");
-        if (localObject == null) {
-          continue;
-        }
-        Method localMethod = localObject.getClass().getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-        if (localMethod == null) {
-          continue;
-        }
-        paramContext = (Integer)localMethod.invoke(localObject, new Object[] { Integer.valueOf(24), Integer.valueOf(Binder.getCallingUid()), paramContext.getPackageName() });
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteSmallScreenPermissionUtil", 2, new Object[] { "checkOps ", paramContext });
-        }
-        if (paramContext != null)
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+        try
         {
-          int i = paramContext.intValue();
-          if (i != 0) {}
+          if (paramDataLineMsgRecord.time == 0L) {
+            paramDataLineMsgRecord.time = bbyp.a();
+          }
+          if (paramDataLineMsgRecord.msgseq == 0L) {
+            paramDataLineMsgRecord.msgseq = ((int)paramDataLineMsgRecord.time);
+          }
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+          RecentUser localRecentUser = (RecentUser)((aong)localObject2).findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+          localRecentUser.setType(this.jdField_a_of_type_Int);
+          localRecentUser.lastmsgtime = paramDataLineMsgRecord.time;
+          ((aong)localObject2).saveRecentUser(localRecentUser);
+          a(paramDataLineMsgRecord, (EntityManager)localObject1);
+          l2 = paramDataLineMsgRecord.msgId;
+          if (paramBoolean) {
+            paramDataLineMsgRecord.issuc = true;
+          }
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramDataLineMsgRecord);
+          ((EntityManager)localObject1).close();
+          l1 = l2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l2);
+            return l2;
+          }
         }
-        for (boolean bool = true;; bool = false) {
-          return bool;
+        finally
+        {
+          ((EntityManager)localObject1).close();
         }
-        return false;
       }
-      catch (Exception paramContext) {}
+    }
+    new Handler((Looper)localObject2).post(new DatalineMessageManager.1(this, paramDataLineMsgRecord, (fb)localObject1));
+    ((fb)localObject1).a(-1L);
+    return 0L;
+  }
+  
+  public aonc a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+  }
+  
+  public DataLineMsgRecord a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  public DataLineMsgSet a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  protected void a()
+  {
+    ((anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
+  }
+  
+  public void a(int paramInt, aond paramaond)
+  {
+    a().a(paramInt, paramaond);
+  }
+  
+  public void a(long paramLong)
+  {
+    a().b(paramLong);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    a().b(paramLong, paramString);
+  }
+  
+  public void a(long paramLong, String paramString, byte[] paramArrayOfByte)
+  {
+    a().a(paramLong, paramString, paramArrayOfByte);
+  }
+  
+  public void b()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    try
+    {
+      aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      localRecentUser.setType(this.jdField_a_of_type_Int);
+      localRecentUser.lastmsgtime = bbyp.a();
+      localaong.saveRecentUser(localRecentUser);
+      ((EntityManager)localObject1).close();
+      localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject1);
+      return;
+    }
+    finally
+    {
+      ((EntityManager)localObject1).close();
     }
   }
   
-  @RequiresApi(api=23)
-  private static boolean f(Context paramContext)
+  public void b(long paramLong)
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + paramContext.getPackageName()));
-    localIntent.addFlags(268435456);
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    a().c(paramLong);
   }
   
-  private static boolean g(Context paramContext)
+  public void b(long paramLong, String paramString)
   {
-    boolean bool = false;
-    Intent localIntent = new Intent();
-    localIntent.setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
-    localIntent.putExtra("packageName", paramContext.getPackageName());
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    a().a(paramLong, paramString);
   }
   
-  private static boolean h(Context paramContext)
+  public void c()
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    a().d();
   }
   
-  private static boolean i(Context paramContext)
+  public void c(long paramLong)
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
-    localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
-    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    a().a(paramLong);
   }
   
-  private static boolean j(Context paramContext)
+  public void d()
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("com.iqoo.secure");
-    localIntent.setClassName("com.iqoo.secure", "com.iqoo.secure.MainActivity");
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    a().c();
   }
   
-  private static boolean k(Context paramContext)
+  public void d(long paramLong)
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("permission.intent.action.softPermissionDetail");
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    localIntent.putExtra("packagename", paramContext.getPackageName());
-    if (a(paramContext, localIntent)) {}
-    try
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (paramLong > localMessage.time)
     {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg msg time[" + localMessage.time + "] to time[" + paramLong + "]");
+      localMessage.time = paramLong;
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
   }
   
-  private static boolean l(Context paramContext)
+  public void e()
   {
-    boolean bool = false;
-    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
-    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    localIntent.addFlags(268435456);
-    if (a(paramContext, localIntent)) {}
-    try
+    if (!LiteActivity.class.getName().equals(anjo.a(BaseApplication.getContext()))) {}
+    do
     {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  private static boolean m(Context paramContext)
-  {
-    boolean bool = false;
-    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
-    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.RealAppPermissionsEditorActivity");
-    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  private static boolean n(Context paramContext)
-  {
-    boolean bool = false;
-    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
-    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
-    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", "biz_src_fs");
-    if (a(paramContext, localIntent)) {}
-    try
-    {
-      paramContext.startActivity(localIntent);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.DatalineMessageManager", 2, "setDataLineMsgReaded,unread=" + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+      }
+    } while (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) <= 0);
+    a().e();
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
   }
 }
 

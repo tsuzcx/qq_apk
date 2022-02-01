@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 
 public class behm
+  implements DialogInterface.OnClickListener
 {
-  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bevu parambevu)
+  public behm(QLifeCommentActivity paramQLifeCommentActivity, bgpa parambgpa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (paramIntent != null) {
-      i = paramIntent.getIntExtra("tabBarStyle", 0);
+    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
+      this.jdField_a_of_type_Bgpa.cancel();
     }
-    bjbl.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
-    if (i == 1)
-    {
-      paramContext = new QQComicTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambevu);
-      return paramContext;
-    }
-    if (i == 2)
-    {
-      paramContext = new ReaderTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambevu);
-      return paramContext;
-    }
-    paramContext = new SwiftFragmentTabBar(paramContext);
-    paramContext.a(paramList, parambevu);
-    return paramContext;
   }
 }
 

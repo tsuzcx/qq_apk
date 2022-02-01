@@ -1,67 +1,152 @@
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.open.base.BspatchUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.ICommonManager;
+import java.io.File;
 
 public class bhdn
-  extends bhdw
+  implements ICommonManager
 {
-  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
-  
-  public bhdn(String paramString1, String paramString2)
+  public boolean copyFile(String paramString1, String paramString2)
   {
-    this.a.appid.set(paramString1);
-    this.a.groupid.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_misc";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
+    boolean bool = false;
+    paramString1 = new File(paramString1);
+    if (paramString1.exists()) {}
     try
     {
-      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStTrans4RoomidRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
-        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
-        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetTransRoomIdRequest", "onResponse fail.rsp = null");
-      return null;
+      bool = bgmg.a(paramString1, bgmg.a(paramString2));
+      return bool;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable paramString1)
     {
-      QMLog.d("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
+      paramString1.printStackTrace();
     }
-    return null;
+    return false;
   }
   
-  public byte[] a()
+  public boolean filePatch(String paramString1, String paramString2)
   {
-    return this.a.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "bsPatch: srcFile = " + paramString1 + " patchFile = " + paramString2);
+    }
+    return BspatchUtil.a(paramString1, paramString2, paramString1);
   }
   
-  protected String b()
+  public String getAppVersion()
   {
-    return "Trans4Roomid";
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.4.1");
+    }
+    return "8.4.1";
+  }
+  
+  public Context getApplicationContext()
+  {
+    return BaseApplicationImpl.getContext();
+  }
+  
+  public String getFileMd5(String paramString)
+  {
+    return bita.a(paramString);
+  }
+  
+  public int getNetType()
+  {
+    int j = 0;
+    int i = j;
+    switch (nlw.a())
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasUpdate_CommonManagerImpl", 2, "getNetType netType = " + i + " local = " + nlw.a());
+      }
+      return i;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 5;
+      continue;
+      i = 4;
+      continue;
+      i = 3;
+    }
+  }
+  
+  public String getReportVersion()
+  {
+    return "8.4.1.4680";
+  }
+  
+  public String getSeqConfigPath()
+  {
+    return VasQuickUpdateEngine.ENGINE_CONFIG_PATH;
+  }
+  
+  public long getServiceTime()
+  {
+    return NetConnInfoCenter.getServerTime();
+  }
+  
+  public long getTimerDelay()
+  {
+    return 500L;
+  }
+  
+  public String unCompressFile(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip: type = " + paramInt + " srcFile = " + paramString);
+    }
+    if (paramInt != 1) {}
+    for (;;)
+    {
+      return null;
+      Object localObject = new File(paramString);
+      if (!((File)localObject).exists())
+      {
+        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip file un exist");
+        return null;
+      }
+      paramString = ((File)localObject).getParent() + File.separator;
+      try
+      {
+        localObject = VasQuickUpdateEngine.unZipFile((File)localObject, paramString);
+        if (localObject != null)
+        {
+          paramString = paramString + (String)localObject;
+          if (QLog.isColorLevel()) {
+            QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip result = " + paramString);
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("VasUpdate_CommonManagerImpl", 2, "uncompressZip fail");
+          return null;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip error : ", paramString);
+        return null;
+      }
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdn
  * JD-Core Version:    0.7.0.1
  */

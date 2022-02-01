@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
-import aepi;
-import afxl;
-import alud;
+import afur;
+import aheh;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -17,12 +16,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import anni;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.PokePanel;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class PokeAndEmoPanel
@@ -58,7 +59,7 @@ public class PokeAndEmoPanel
   public ImageView a(int paramInt1, int paramInt2, String paramString)
   {
     ImageButton localImageButton = new ImageButton(getContext());
-    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(aepi.a(50.0F, getResources()), -1));
+    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(afur.a(50.0F, getResources()), -1));
     localImageButton.setId(paramInt1);
     localImageButton.setImageResource(paramInt2);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -84,30 +85,30 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371675));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372249));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377402));
-    this.jdField_b_of_type_AndroidViewView = a(2131377385, 2130838072, getContext().getString(2131698812));
-    this.jdField_a_of_type_AndroidViewView = a(2131377384, 2130838073, getContext().getString(2131698811));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378226));
+    this.jdField_b_of_type_AndroidViewView = a(2131378210, 2130838166, getContext().getString(2131697693));
+    this.jdField_a_of_type_AndroidViewView = a(2131378209, 2130838167, getContext().getString(2131697692));
     if (AppSetting.c)
     {
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(alud.a(2131708713));
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(alud.a(2131708714));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(anni.a(2131707089));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(anni.a(2131707090));
     }
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558600, null));
-    String str = afxl.a(paramBaseChatPie.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558627, null));
+    String str = aheh.a(paramBaseChatPie.a());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(paramBaseChatPie, paramSessionInfo, str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel = new PEPanel(getContext());
-    str = afxl.a(paramBaseChatPie.a(), 8);
+    str = aheh.a(paramBaseChatPie.a(), 8);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(paramBaseChatPie, paramSessionInfo);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(str);
     paramSessionInfo = new ArrayList();
-    int i = afxl.b(paramBaseChatPie.a(), 4);
-    int j = afxl.b(paramBaseChatPie.a(), 11);
-    if ((i == 1) && (afxl.b))
+    int i = aheh.b(paramBaseChatPie.a(), 4);
+    int j = aheh.b(paramBaseChatPie.a(), 11);
+    if ((i == 1) && (aheh.b))
     {
       this.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
@@ -127,7 +128,7 @@ public class PokeAndEmoPanel
       if (paramSessionInfo.size() <= 1) {
         break label587;
       }
-      this.jdField_b_of_type_Int = afxl.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = aheh.jdField_a_of_type_Int;
       if (this.jdField_b_of_type_Int == -1) {
         this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 2);
       }
@@ -149,7 +150,7 @@ public class PokeAndEmoPanel
       paramSessionInfo.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      if ((j != 1) && (afxl.b)) {
+      if ((j != 1) && (aheh.b)) {
         break;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -169,7 +170,7 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.b();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.b();
-    afxl.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    aheh.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
   }
   
   public void c()
@@ -178,28 +179,24 @@ public class PokeAndEmoPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.e();
   }
   
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.c();
-  }
-  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131377384: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
       paramView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      return;
+      continue;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem((i + 1) % 2, true);
+      paramView.setSelected(true);
+      this.jdField_a_of_type_AndroidViewView.setSelected(false);
     }
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem((i + 1) % 2, true);
-    paramView.setSelected(true);
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -222,7 +219,7 @@ public class PokeAndEmoPanel
     for (;;)
     {
       this.jdField_b_of_type_Int = paramInt;
-      afxl.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      aheh.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
       return;
       this.jdField_b_of_type_AndroidViewView.setSelected(true);
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
@@ -235,7 +232,7 @@ public class PokeAndEmoPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public abstract class apmh
+class apmh
+  implements agpt
 {
-  private static int seed;
-  public int key;
+  apmh(apmg paramapmg) {}
   
-  public apmh()
+  public boolean a(agpq paramagpq)
   {
-    int i = seed;
-    seed = i + 1;
-    this.key = i;
+    if (apmg.a(this.a) != null)
+    {
+      apmg.a(this.a).ar();
+      return true;
+    }
+    return false;
   }
   
-  public abstract void onBindedToClient();
-  
-  public abstract void onDisconnectWithService();
-  
-  public abstract void onPushMsg(Bundle paramBundle);
-  
-  public abstract void onResponse(Bundle paramBundle);
+  public boolean a(agpq paramagpq, String paramString1, String paramString2)
+  {
+    return false;
+  }
 }
 
 

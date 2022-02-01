@@ -1,23 +1,10 @@
-import android.os.Bundle;
-
-public class taq
-  implements alpg
+public abstract interface taq
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
-  }
+  public abstract void a(tar paramtar);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     taq
  * JD-Core Version:    0.7.0.1
  */

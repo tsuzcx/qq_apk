@@ -1,24 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class atex
-  implements BusinessObserver
+  extends atch
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
+  int a;
+  int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public atex(FileManagerEntity paramFileManagerEntity)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
+    super(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atex
  * JD-Core Version:    0.7.0.1
  */

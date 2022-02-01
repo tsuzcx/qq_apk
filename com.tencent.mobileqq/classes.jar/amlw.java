@@ -1,37 +1,26 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
-
-class amlw
-  implements bavp
+public class amlw
 {
-  amlw(amlp paramamlp, long paramLong1, long paramLong2, long paramLong3) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void a(bavr parambavr, bavq parambavq)
+  public amlw(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      parambavr = parambavr.a.getWupBuffer();
-      parambavq = new structmsg.RspSystemMsgRead();
-      parambavq.mergeFrom(parambavr);
-      int i = parambavq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
-      return;
-    }
-    catch (Exception parambavr)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambavr);
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

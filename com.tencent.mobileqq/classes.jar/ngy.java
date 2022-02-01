@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
 
 class ngy
-  implements Animation.AnimationListener
+  extends nhd
 {
-  ngy(ngw paramngw) {}
+  ngy(ngx paramngx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(int paramInt, String paramString, myc parammyc)
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    bjcq.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    ngx.a(this.a).removeCallbacksAndMessages(null);
+    ngx.a(this.a).sendEmptyMessage(2);
+    return true;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ngy
  * JD-Core Version:    0.7.0.1
  */

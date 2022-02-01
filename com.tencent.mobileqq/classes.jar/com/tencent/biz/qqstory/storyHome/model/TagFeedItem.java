@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wqo;
-import xoe;
-import xof;
+import yjz;
+import zhp;
+import zhq;
 
 public class TagFeedItem
-  extends VideoListFeedItem<wqo, TagUserItem>
+  extends VideoListFeedItem<yjz, TagUserItem>
 {
   public String blurb;
   public String content;
@@ -24,7 +24,7 @@ public class TagFeedItem
   public long recommendId;
   public String recommendTitle = "";
   public String schema;
-  public xoe tagItem;
+  public zhp tagItem;
   public int videoCount;
   
   protected int assignType()
@@ -58,7 +58,7 @@ public class TagFeedItem
     {
       this.mIsVideoEnd = bool;
       this.mVideoNextCookie = paramTagFeed.next_cookie.get().toStringUtf8();
-      this.tagItem = new xoe((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
+      this.tagItem = new zhp((qqstory_struct.TagItem)paramTagFeed.tag_item.get());
       this.videoCount = paramTagFeed.video_total.get();
       this.schema = paramTagFeed.schema.get().toStringUtf8();
       this.content = paramTagFeed.content.get().toStringUtf8();
@@ -78,10 +78,10 @@ public class TagFeedItem
     SerializationPB.TagFeed localTagFeed = new SerializationPB.TagFeed();
     localTagFeed.video_list_feed.set(super.writeVideoListFeedLocalPB());
     localTagFeed.video_count.set(this.videoCount);
-    localTagFeed.tag_id.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_Long);
-    localTagFeed.tag_type.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_Int);
-    localTagFeed.tag_name.set(this.tagItem.jdField_a_of_type_Xof.jdField_a_of_type_JavaLangString);
-    localTagFeed.tag_desc.set(this.tagItem.jdField_a_of_type_Xof.b);
+    localTagFeed.tag_id.set(this.tagItem.jdField_a_of_type_Zhq.jdField_a_of_type_Long);
+    localTagFeed.tag_type.set(this.tagItem.jdField_a_of_type_Zhq.jdField_a_of_type_Int);
+    localTagFeed.tag_name.set(this.tagItem.jdField_a_of_type_Zhq.jdField_a_of_type_JavaLangString);
+    localTagFeed.tag_desc.set(this.tagItem.jdField_a_of_type_Zhq.b);
     localTagFeed.join_count.set(this.tagItem.jdField_a_of_type_Int);
     localTagFeed.wording.set(this.tagItem.jdField_a_of_type_JavaLangString);
     localTagFeed.schema.set(this.schema);
@@ -95,9 +95,9 @@ public class TagFeedItem
   }
   
   @NonNull
-  public wqo generateHomeFeed()
+  public yjz generateHomeFeed()
   {
-    return new wqo(this);
+    return new yjz(this);
   }
   
   public int getCommentLikeType()
@@ -131,7 +131,7 @@ public class TagFeedItem
     String str1 = localTagFeed.tag_desc.get();
     int j = localTagFeed.join_count.get();
     String str2 = localTagFeed.wording.get();
-    this.tagItem = new xoe(new xof(l, paramArrayOfByte, str1, i), j, str2);
+    this.tagItem = new zhp(new zhq(l, paramArrayOfByte, str1, i), j, str2);
     this.schema = localTagFeed.schema.get();
     this.content = localTagFeed.content.get();
     this.blurb = localTagFeed.blur.get();
@@ -141,7 +141,7 @@ public class TagFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.TagFeedItem
  * JD-Core Version:    0.7.0.1
  */

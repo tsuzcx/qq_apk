@@ -1,120 +1,55 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity.12.1;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ngm
-  implements BusinessObserver
 {
-  public ngm(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b = "";
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ngm()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "follow isSuccess:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.d(2131695729);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static ngm a(View paramView)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    Bitmap localBitmap;
+    if (paramView.getVisibility() == 0)
+    {
+      paramView.setDrawingCacheEnabled(true);
+      localBitmap = paramView.getDrawingCache();
+      if (localBitmap != null) {
+        break label42;
+      }
+      QLog.e("GameImageData", 1, "mTipsWrapper, get drawingCache return null");
+      localObject1 = localObject2;
     }
     for (;;)
     {
-      EqqAccountDetailActivity.e(this.a);
-      if (EqqAccountDetailActivity.f(this.a) == 0) {
-        EqqAccountDetailActivity.d(this.a);
-      }
-      EqqAccountDetailActivity.b(this.a).postDelayed(new EqqAccountDetailActivity.12.1(this), 1000L);
-      return;
-      Object localObject = new JSONObject();
-      ((FriendListHandler)EqqAccountDetailActivity.j(this.a).a(1)).a(true, false);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
-      try
-      {
-        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin);
-        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name);
-        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.summary);
-        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.certifiedGrade);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add("find.mp.qq.com");
-        localArrayList.add("post.mp.qq.com");
-        localArrayList.add("article.mp.qq.com");
-        athj.a("follow", (JSONObject)localObject, localArrayList, null);
-        if (!paramBoolean) {
-          break label555;
-        }
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            continue;
-          }
-          localObject = new mobileqq_mp.FollowResponse();
-          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
-            EqqAccountDetailActivity.a(this.a).setEnabled(false);
-            EqqAccountDetailActivity.b(this.a);
-            this.a.i();
-            EqqAccountDetailActivity.c(this.a);
-            AccountDetailActivity.a(EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.a(this.a));
-            if ((TextUtils.isEmpty(this.a.b)) || (TextUtils.isEmpty(this.a.c))) {
-              continue;
-            }
-            azqs.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "----[follow report done]----");
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        if (paramInt == 58)
-        {
-          this.a.d(2131695726);
-          continue;
-        }
-        if (paramInt == 65)
-        {
-          this.a.d(2131695699);
-          continue;
-        }
-        if (paramInt == 20)
-        {
-          this.a.d(2131695700);
-          continue;
-        }
-        this.a.d(2131695729);
-      }
-      continue;
-      label555:
-      this.a.d(2131695729);
+      paramView.setDrawingCacheEnabled(false);
+      return localObject1;
+      label42:
+      localObject1 = new ngm();
+      ((ngm)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
+      ((ngm)localObject1).c = paramView.getLeft();
+      ((ngm)localObject1).d = paramView.getTop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ngm
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,8 @@ class AVCosUpload$1
         if (AVGestureWrapper.mReport != null) {
           AVGestureWrapper.mReport.avGestureUploadReport("0X800839B", "0");
         }
-        String str3 = AVGestureWrapper.getMultiSign("1253925544", "gzdata2", "AKIDfHjBUedP6c8Sp17LoupZDoGXdgYFIsfT", "zymOoFiBSYTbeXbaUEwSlszvhItU0Qeh");
-        AVCosUpload.access$100(this.this$0, str2, this.val$gestureType, str1, "gzdata2", str3, 20971520, this.val$monitor);
+        String str3 = AVGestureWrapper.getMultiSign("", "", "", "");
+        AVCosUpload.access$100(this.this$0, str2, this.val$gestureType, str1, "", str3, 20971520, this.val$monitor);
         this.this$0.startUploadTimer(3);
       }
       return;
@@ -37,7 +37,7 @@ class AVCosUpload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.avgesture.AVCosUpload.1
  * JD-Core Version:    0.7.0.1
  */

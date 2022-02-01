@@ -1,48 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class bdos
-  implements URLDrawable.URLDrawableListener
+final class bdos
+  implements DialogInterface.OnClickListener
 {
-  public bdos(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
+  bdos(String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (paramURLDrawable != null)
-    {
-      i = aepi.a(15.0F, this.jdField_a_of_type_AndroidContentResResources);
-      j = paramURLDrawable.getIntrinsicHeight();
-      if (j == 0)
-      {
-        boolean bool = new File(bduc.a(this.jdField_a_of_type_JavaLangString)).delete();
-        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
+    paramDialogInterface = bdoq.a();
+    if (paramDialogInterface != null) {
+      ((anvs)paramDialogInterface.a(14)).a(this.a, this.b);
     }
-    else
-    {
-      return;
-    }
-    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.height = i;
-    localLayoutParams.width = j;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    bdoq.a("0X800A5B6");
   }
 }
 

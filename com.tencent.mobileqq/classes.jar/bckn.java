@@ -1,26 +1,11 @@
-import java.util.Observable;
-
-public class bckn
-  extends Observable
+class bckn
+  implements agsm
 {
-  private static bckn a;
+  bckn(bckg parambckg) {}
   
-  public static bckn a()
+  public void a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bckn();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void setChanged()
-  {
-    super.setChanged();
+    bckg.e(this.a);
   }
 }
 

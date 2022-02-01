@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bdku;
-import bhsj;
+import bgpw;
+import bkft;
 
 public class QQCustomDialogWtihEmoticonInput$8
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$8(bdku parambdku) {}
+  public QQCustomDialogWtihEmoticonInput$8(bgpw parambgpw) {}
   
   public void run()
   {
-    bhsj.a(this.this$0.a);
+    bkft.a(this.this$0.a);
   }
 }
 

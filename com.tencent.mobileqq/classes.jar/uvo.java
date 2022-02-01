@@ -1,125 +1,46 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.net.URL;
 
-public class uvo
-  implements uvi
+class uvo
+  implements uwv
 {
-  protected HashMap<String, WeakReference<QQStoryBaseActivity>> a;
-  public Map<String, WeakReference<QQStoryBaseActivity>> a;
-  public boolean a;
+  uvo(uvi paramuvi, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
   
-  public uvo()
+  public void a(URL paramURL, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
+    }
+    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
   }
   
-  public ArrayList<Integer> a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    ArrayList localArrayList2 = new ArrayList();
-    int j = localArrayList1.size();
-    int i = 0;
-    while (i < j)
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localArrayList1.get(i)).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing()) && (localQQStoryBaseActivity.getActivityName().equals(paramQQStoryBaseActivity.getActivityName())))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "QQStoryActivityManager getActivityFirstIndex: " + i + ", class = " + paramQQStoryBaseActivity.getActivityName());
-        }
-        localArrayList2.add(Integer.valueOf(i));
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
     }
-    return localArrayList2;
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
+    }
+    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void a(URL paramURL, tds paramtds)
   {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      Object localObject = (QQStoryBaseActivity)((WeakReference)localArrayList.get(paramInt2)).get();
-      if ((localObject != null) && (!((QQStoryBaseActivity)localObject).isFinishing()))
-      {
-        ((QQStoryBaseActivity)localObject).finish();
-        localObject = ((QQStoryBaseActivity)localObject).getActivityName() + "_" + localObject.hashCode();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
-        if (this.jdField_a_of_type_JavaUtilMap != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        }
-      }
-      paramInt2 -= 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
     }
-  }
-  
-  public void a(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    String str = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    paramQQStoryBaseActivity = new WeakReference(paramQQStoryBaseActivity);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null)) {
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramQQStoryBaseActivity);
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
     }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localIterator.next()).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing())) {
-        localQQStoryBaseActivity.finish();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    paramQQStoryBaseActivity = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null))
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramQQStoryBaseActivity);
-      if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-      {
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("qqstory.QQStoryActivityManager", 2, "player activity stack is empty, disable!");
-        }
-      }
-    }
+    uvi.a(this.jdField_a_of_type_Uvi, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvo
  * JD-Core Version:    0.7.0.1
  */

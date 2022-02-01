@@ -1,13 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.content.DialogInterface.OnDismissListener;
 
-public class alcy
-  implements DialogInterface.OnClickListener
+class alcy
+  implements DialogInterface.OnDismissListener
 {
-  public alcy(ApolloGameActivity paramApolloGameActivity) {}
+  alcy(alcv paramalcv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    alcv.a(this.a, false);
+  }
 }
 
 

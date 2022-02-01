@@ -1,9 +1,11 @@
-public class afwq
+import android.view.MotionEvent;
+import android.view.View;
+
+public abstract interface afwq
 {
-  public static boolean a(String paramString)
-  {
-    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
-  }
+  public abstract void a(View paramView, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 

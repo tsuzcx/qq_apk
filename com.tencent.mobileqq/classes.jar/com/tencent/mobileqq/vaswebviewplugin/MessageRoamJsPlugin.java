@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import apmh;
-import apml;
-import begz;
+import arpd;
+import arph;
+import bhod;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
@@ -54,7 +54,7 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(apml.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(arph.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
@@ -171,7 +171,7 @@ public class MessageRoamJsPlugin
         }
       }
     }
-    else if ((paramLong == 8589934601L) && ((paramString.startsWith("http://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString.startsWith("http://mapp.3g.qq.com/touch/psw/create.jsp"))))
+    else if ((paramLong == 8589934601L) && ((paramString.startsWith("https://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString.startsWith("https://mapp.3g.qq.com/touch/psw/create.jsp"))))
     {
       this.browserActivity.setResult(3000);
       this.browserActivity.finish();
@@ -347,7 +347,7 @@ public class MessageRoamJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(apml.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(arph.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
   public void onCreate()
@@ -416,7 +416,7 @@ public class MessageRoamJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin
  * JD-Core Version:    0.7.0.1
  */

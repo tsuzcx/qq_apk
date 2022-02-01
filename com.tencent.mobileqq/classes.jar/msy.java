@@ -1,170 +1,161 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class msy
-  extends msa
+public final class msy
+  extends Drawable
 {
-  public msz a;
-  public int b = 2;
-  public int c = 1;
-  public String g;
+  private final int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private HashMap<Integer, ArrayList<Bitmap>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private int c = -1;
+  private int d;
   
-  msy(mrt parammrt)
+  public msy(int paramInt1, int paramInt2)
   {
-    super(parammrt);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
   
-  public void a()
+  private ArrayList<Bitmap> a()
   {
-    QLog.w(this.i, 1, "SendRedBag, cancel");
-    Intent localIntent = new Intent("com.qwallet.report");
-    localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "video");
-    localIntent.putExtra("type", 999);
-    localIntent.putExtra("params", localBundle);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getBaseContext().sendBroadcast(localIntent);
-    this.b = 4;
-    a("cancel");
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.c));
   }
   
-  void a(String paramString)
+  private void a(Canvas paramCanvas) {}
+  
+  private boolean a()
   {
-    mso.a(this.c);
-    mso.b(this.b);
-    if (this.b == 0) {}
-    for (boolean bool = true;; bool = false)
+    return (this.c == 1) || (this.c == 3);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.c == paramInt) {
+      return;
+    }
+    int i = this.c;
+    this.c = paramInt;
+    invalidateSelf();
+  }
+  
+  public void a(int paramInt, Bitmap paramBitmap)
+  {
+    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localArrayList != null)
     {
-      lvz.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Msz != null)
+      localArrayList.add(paramBitmap);
+      return;
+    }
+    localArrayList = new ArrayList();
+    localArrayList.add(paramBitmap);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+    Object localObject = a();
+    if (a())
+    {
+      localBitmap = (Bitmap)((ArrayList)localObject).get(0);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    do
+    {
+      return;
+      if (this.c == 0)
       {
-        this.jdField_a_of_type_Msz.a(this);
-        this.jdField_a_of_type_Msz = null;
+        localBitmap = (Bitmap)((ArrayList)localObject).get(0);
+        localObject = (Bitmap)((ArrayList)localObject).get(1);
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.save();
+        int i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
+        if (QLog.isColorLevel()) {
+          QLog.d("huanxxiao", 1, "doUpdateAudioVolumeChange nexValue:=" + this.d);
+        }
+        this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
+        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.restore();
+        return;
       }
+    } while (this.c != 2);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (Bitmap localBitmap = (Bitmap)((ArrayList)localObject).get(1);; localBitmap = (Bitmap)((ArrayList)localObject).get(0))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
     }
   }
   
-  public boolean a(int paramInt, Intent paramIntent)
+  public int getIntrinsicHeight()
   {
-    boolean bool2 = false;
-    this.b = 3;
-    String str = this.i;
-    Object localObject = new StringBuilder().append("SendRedBag_onResult, resultCode[").append(paramInt).append("], intent[");
-    boolean bool1;
-    if (paramIntent != null)
-    {
-      bool1 = true;
-      QLog.w(str, 1, bool1 + "]");
-      if (paramIntent == null) {
-        break label260;
-      }
-      AudioHelper.a(alud.a(2131714220), paramIntent.getExtras());
-      str = String.valueOf(paramIntent.getExtras().get("result"));
-      localObject = paramIntent.getStringExtra("retmsg");
-      paramIntent = paramIntent.getStringExtra("data");
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.g = new JSONObject(paramIntent).getString("send_listid");
-        }
-        if ("-11001".equals(str)) {
-          this.b = 4;
-        }
-        QLog.w(this.i, 1, "SendRedBag_onResult, result[" + str + "], data[" + paramIntent + "], retmsg[" + (String)localObject + "], send_listid[" + this.g + "], mErrorType[" + this.b + "]");
-        bool1 = "0".equals(str);
-        if (bool1) {
-          this.b = 0;
-        }
-        paramIntent = str;
-        a(paramIntent);
-        return bool1;
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      label260:
-      paramIntent = "null";
-      bool1 = bool2;
-    }
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, msz parammsz)
+  public int getIntrinsicWidth()
   {
-    this.b = 2;
-    long l1 = msp.a(paramVideoAppInterface);
-    if (l1 == 0L) {
-      return false;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() == paramInt) {
+      return;
     }
-    long l2 = a(paramVideoAppInterface);
-    if (l2 == 0L) {
-      return false;
-    }
-    if (paramActivity == null)
-    {
-      QLog.w(this.i, 1, "SendRedBag, Activity为空");
-      return false;
-    }
-    String str = a(paramVideoAppInterface);
-    paramVideoAppInterface = b(paramVideoAppInterface);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("recv_uin", l2);
-      localJSONObject.put("recv_name", paramVideoAppInterface);
-      localJSONObject.put("bus_type", 2);
-      localJSONObject.put("channel", "16384");
-      localJSONObject.put("total_num", "2");
-      Intent localIntent = new Intent(BaseApplication.getContext(), SendHbActivity.class);
-      localIntent.putExtra("userId", l1);
-      localIntent.putExtra("userName", str);
-      if (paramInt == 2)
-      {
-        localIntent.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket2");
-        localIntent.putExtra("come_from", 2);
-        localIntent.putExtra("extra_data", localJSONObject.toString());
-        localIntent.setFlags(536870912);
-        paramActivity.startActivityForResult(localIntent, 801);
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
-        }
-        this.jdField_a_of_type_Msz = parammsz;
-        this.b = 1;
-        this.c = paramInt;
-        mso.i();
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        localJSONException.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket1");
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    invalidateSelf();
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msy
  * JD-Core Version:    0.7.0.1
  */

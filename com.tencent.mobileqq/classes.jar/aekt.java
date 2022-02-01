@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
 public class aekt
-  implements DialogInterface.OnClickListener
+  extends OvershootInterpolator
 {
-  public aekt(UpgradeActivity paramUpgradeActivity) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aekt(JDHongbaoActivity paramJDHongbaoActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    azqs.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      azqs.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
     }
-    UpgradeActivity.a(this.a, false);
-    azqs.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amqd.b(), String.valueOf(2), amqe.a(), "");
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

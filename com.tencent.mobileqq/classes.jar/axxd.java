@@ -1,55 +1,129 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.graphics.Rect;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
-class axxd
-  extends alwx
+public class axxd
 {
-  axxd(axxb paramaxxb) {}
+  private int jdField_a_of_type_Int;
+  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  private View a()
   {
-    if (axxb.a(this.a) == null)
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter();
+    if ((localObject != null) && ((localObject instanceof FragmentPagerAdapter)))
     {
-      QLog.d(axxb.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
-      return;
+      localObject = ((axto)localObject).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
+      if (localObject == null) {
+        Log.i("NestScrollHelper", "getScrollableView: fragment is null");
+      }
+      if ((localObject instanceof NearbyMomentFragment)) {
+        return ((NearbyMomentFragment)localObject).a();
+      }
+      if ((localObject instanceof NearbyProfileFragment)) {
+        return ((NearbyProfileFragment)localObject).a();
+      }
     }
-    axww localaxww = (axww)axxb.a(this.a).peek();
-    if (localaxww != null) {
-      if ((paramLong == localaxww.jdField_a_of_type_Long) && (localaxww.c == 4))
+    return null;
+  }
+  
+  private boolean a(LinearLayout paramLinearLayout)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramLinearLayout != null)
+    {
+      View localView = paramLinearLayout.getChildAt(0);
+      bool1 = bool2;
+      if (localView != null)
       {
-        localaxww.c = 5;
-        axxb.a(this.a).remove(localaxww);
-        if (localaxww.jdField_a_of_type_Alwx != null) {
-          localaxww.jdField_a_of_type_Alwx.a(paramBoolean, paramLong, paramalwy);
-        }
-        if (localaxww.jdField_a_of_type_Axwz != null) {
-          localaxww.jdField_a_of_type_Axwz.a(paramBoolean, paramLong);
-        }
-        if (localaxww.jdField_a_of_type_Boolean) {
-          azex.a().a(paramLong);
-        }
-        axxb.a(this.a).b(localaxww.jdField_a_of_type_Long);
-        if (QLog.isColorLevel())
+        Rect localRect = new Rect();
+        paramLinearLayout.getHitRect(localRect);
+        bool1 = bool2;
+        if (localView.getLocalVisibleRect(localRect))
         {
-          paramalwy = new StringBuilder();
-          paramalwy.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(axxb.a(this.a).size()).append(", mNeedCompress:").append(localaxww.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
-          QLog.d(axxb.a, 2, paramalwy.toString());
+          bool1 = bool2;
+          if (localRect.top == 0) {
+            bool1 = true;
+          }
         }
       }
     }
-    for (;;)
+    return bool1;
+  }
+  
+  private boolean a(ListView paramListView)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramListView != null)
     {
-      axxb.a(this.a);
-      return;
-      QLog.d(axxb.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localaxww.c), ", uniseq:", Long.valueOf(localaxww.jdField_a_of_type_Long) });
-      continue;
-      QLog.d(axxb.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
+      bool1 = bool2;
+      if (paramListView.getFirstVisiblePosition() == 0)
+      {
+        paramListView = paramListView.getChildAt(0);
+        if (paramListView != null)
+        {
+          bool1 = bool2;
+          if (paramListView.getTop() != 0) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    View localView = a();
+    if (localView == null) {
+      Log.e("NestScrollHelper", "smoothScrollBy: scrollableView is null");
+    }
+    while (!(localView instanceof ListView)) {
+      return;
+    }
+    ((ListView)localView).smoothScrollBy(paramInt2, paramInt3);
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
+  }
+  
+  public boolean a()
+  {
+    View localView = a();
+    if (localView == null)
+    {
+      Log.e("NestScrollHelper", "isTop: scrollableView is null");
+      return true;
+    }
+    if ((localView instanceof ListView)) {
+      return a((ListView)localView);
+    }
+    if ((localView instanceof LinearLayout)) {
+      return a((LinearLayout)localView);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxd
  * JD-Core Version:    0.7.0.1
  */

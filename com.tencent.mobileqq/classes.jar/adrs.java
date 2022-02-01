@@ -1,99 +1,44 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.8.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class adrs
-  extends ampn
+  extends ayev
 {
-  public adrs(QQMapActivity paramQQMapActivity, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
+  public boolean a;
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    String str;
-    GeoPoint localGeoPoint;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
-    {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("get_location", 2, "onLocationFinish errCode=" + paramInt);
+        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
       }
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label546;
-      }
-      localGeoPoint = new GeoPoint((int)(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D), (int)(paramSosoLbsInfo.a.jdField_b_of_type_Double * 1000000.0D));
-      if (this.a.s)
-      {
-        if (!this.a.k) {
-          break label181;
-        }
-        label129:
-        this.a.h();
-        this.a.s = false;
-      }
-      if (this.a.k) {
-        break label253;
-      }
-      this.a.a(localGeoPoint, str);
     }
-    for (;;)
+    QQAppInterface localQQAppInterface;
+    do
     {
-      label181:
-      label253:
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        break;
       }
-      catch (IllegalArgumentException paramSosoLbsInfo) {}
-      str = "";
-      break;
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.g = str;
-      this.a.c.setVisibility(0);
-      this.a.a(localGeoPoint);
-      break label129;
-      this.a.z();
-      long l = System.currentTimeMillis();
-      if (l - this.a.jdField_a_of_type_Long > 5000L)
-      {
-        if ((this.a.e != null) && (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null))
-        {
-          double d = zgv.a(localGeoPoint.getLongitudeE6() / 1000000.0D, localGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_Double, this.a.jdField_a_of_type_Double);
-          this.a.m();
-          this.a.e.setText(zgv.a(d));
-        }
-        this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint = localGeoPoint;
-        this.a.p = str;
-        this.a.q = paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker != null)
-        {
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setPosition(new LatLng(this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D));
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setSnippet("");
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.showInfoWindow();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("get_location", 2, "onLocationFinish, mSelfPoint=" + this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint + ",addr=" + str + ",poiName=" + this.a.q);
-        }
-        this.a.jdField_a_of_type_Long = l;
-        continue;
-        label546:
-        this.a.y();
-        new Handler().post(new QQMapActivity.8.1(this));
-      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
+      adrm.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
     }
+    paramBundle = (adrs)adrm.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    adrm.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    localQQAppInterface.unRegistObserver(paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 

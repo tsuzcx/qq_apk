@@ -1,20 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
 
-class blqm
-  implements View.OnTouchListener
+public final class blqm
 {
-  blqm(blqk paramblqk) {}
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bloy parambloy)
   {
-    if (((blqk.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)blqk.a(this.a)).c())) {
-      return true;
-    }
-    return blqk.a(this.a).a(paramMotionEvent);
+    a(paramPair, parambloy, false);
+  }
+  
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bloy parambloy, boolean paramBoolean)
+  {
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambloy, paramBoolean);
+    paramPair.a();
   }
 }
 

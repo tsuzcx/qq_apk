@@ -1,35 +1,32 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xvc
-  implements URLDrawable.URLDrawableListener
+class xvc
+  implements whm
 {
-  private final WeakReference<TextView> a;
+  xvc(xvb paramxvb) {}
   
-  public xvc(TextView paramTextView)
+  public void a(String paramString, int paramInt)
   {
-    this.a = new WeakReference(paramTextView);
+    yqp.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { xvb.a(this.a).mVid });
+    xfe.a(xvb.a(this.a), xvb.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
-    }
+    yqp.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { xvb.a(this.a).mVid, paramErrorMessage.toString() });
+    xfe.a(xvb.a(this.a), xvb.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    yqp.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { xvb.a(this.a).mVid });
+    xfe.a(xvb.a(this.a), xvb.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvc
  * JD-Core Version:    0.7.0.1
  */

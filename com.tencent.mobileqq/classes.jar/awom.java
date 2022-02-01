@@ -1,28 +1,51 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awom
-  extends RecyclerView.ViewHolder
 {
-  public awom(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  
+  public awol a()
   {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.itemView.findViewById(2131361899).setOnClickListener(paramCustomCoverFragment);
-    this.itemView.findViewById(2131361907).setOnClickListener(paramCustomCoverFragment);
-    this.itemView.findViewById(2131361896).setOnClickListener(paramCustomCoverFragment);
-    CustomCoverFragment.a(paramCustomCoverFragment, this.itemView.findViewById(2131369176));
-    CustomCoverFragment.a(paramCustomCoverFragment).setVisibility(8);
-    CustomCoverFragment.a(paramCustomCoverFragment, (ImageView)this.itemView.findViewById(2131368735));
-    CustomCoverFragment.a(paramCustomCoverFragment).setOnClickListener(paramCustomCoverFragment.a);
-    aepi.a(CustomCoverFragment.a(paramCustomCoverFragment), 0, 0, (int)(CustomCoverFragment.a(paramCustomCoverFragment) * 20.0F + 0.5F), (int)(CustomCoverFragment.b(paramCustomCoverFragment) * 20.0F + 0.5F));
+    return new awol(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_b_of_type_Int);
+  }
+  
+  public awom a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awom a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public awom a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public awom b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awom b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awom
  * JD-Core Version:    0.7.0.1
  */

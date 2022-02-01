@@ -55,6 +55,7 @@ public final class VideoMemoryManager
   private int mMaxPreloadSizeInKB;
   private int mSampleSize;
   private final Map<String, LoadItemManager> mStickerManagers = new ConcurrentHashMap();
+  private String mVideoPath = null;
   private final Map<String, Bitmap> mWM260Cache = new ConcurrentHashMap();
   private final Map<String, LoadItemManager> mWM260Managers = new ConcurrentHashMap();
   
@@ -412,6 +413,11 @@ public final class VideoMemoryManager
     return this.mSampleSize;
   }
   
+  public String getVideoPath()
+  {
+    return this.mVideoPath;
+  }
+  
   public void initInGLThread(String paramString, int paramInt)
   {
     paramString = (LoadItemManager)this.mStickerManagers.get(paramString);
@@ -544,10 +550,26 @@ public final class VideoMemoryManager
   {
     this.mMaxPreloadSizeInKB = paramInt;
   }
+  
+  public void setVideoPath(String paramString)
+  {
+    this.mVideoPath = paramString;
+  }
+  
+  public void updateCache(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (this.mStickerManagers == null)) {}
+    do
+    {
+      return;
+      paramString1 = (LoadItemManager)this.mStickerManagers.get(paramString1);
+    } while ((paramString1 == null) || (!(paramString1 instanceof LoadStickerItemManager)));
+    ((LoadStickerItemManager)paramString1).updateCache(paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.VideoMemoryManager
  * JD-Core Version:    0.7.0.1
  */

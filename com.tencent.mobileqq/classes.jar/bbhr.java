@@ -1,29 +1,36 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbhr
-  implements bhuk
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Bcsc.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+  public bbhr(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public bbhr(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bhuf parambhuf, URLDrawable paramURLDrawable) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693487).equals(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    this.a.c();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
+    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
+      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693497).equals(paramView)) {
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693495).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c, this.jdField_a_of_type_JavaLangString);
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
+      ActiveEntitySearchActivity.a(this.a, 2);
     }
   }
 }

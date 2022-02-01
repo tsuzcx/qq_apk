@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajua;
+import almq;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import java.lang.ref.WeakReference;
 
@@ -11,9 +11,9 @@ public class AudioTranslator$4
   {
     synchronized (this.this$0)
     {
-      if (ajua.a(this.this$0) != null)
+      if (almq.a(this.this$0) != null)
       {
-        AudioCapture localAudioCapture = (AudioCapture)ajua.a(this.this$0).get();
+        AudioCapture localAudioCapture = (AudioCapture)almq.a(this.this$0).get();
         if (localAudioCapture != null)
         {
           localAudioCapture.b(false);
@@ -26,7 +26,7 @@ public class AudioTranslator$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator.4
  * JD-Core Version:    0.7.0.1
  */

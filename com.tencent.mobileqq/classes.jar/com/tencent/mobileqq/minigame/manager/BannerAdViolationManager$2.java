@@ -3,6 +3,7 @@ package com.tencent.mobileqq.minigame.manager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Map;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
@@ -16,9 +17,9 @@ final class BannerAdViolationManager$2
     if (this.val$oldOnClickListener != null) {
       this.val$oldOnClickListener.onClick(paramView);
     }
-    paramView = (Long)BannerAdViolationManager.access$000().get(Long.valueOf(this.val$aid));
-    if (paramView != null) {}
-    for (long l = System.currentTimeMillis() - paramView.longValue();; l = 0L)
+    Long localLong = (Long)BannerAdViolationManager.access$000().get(Long.valueOf(this.val$aid));
+    if (localLong != null) {}
+    for (long l = System.currentTimeMillis() - localLong.longValue();; l = 0L)
     {
       int j = this.val$view.getWidth() / 5;
       int k = this.val$view.getHeight() / 2;
@@ -27,6 +28,7 @@ final class BannerAdViolationManager$2
       {
         QLog.d("BannerAdViolationManage", 1, "box = " + j + "," + k + " size = " + this.val$view.getWidth() + "," + this.val$view.getHeight() + " x,y = " + this.val$lastTouchDownXY[0] + "," + this.val$lastTouchDownXY[1] + " area = " + i);
         BannerAdViolationManager.access$100(this.val$miniAppId, this.val$adInfo, i, l);
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
       }
     }
@@ -34,7 +36,7 @@ final class BannerAdViolationManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.BannerAdViolationManager.2
  * JD-Core Version:    0.7.0.1
  */

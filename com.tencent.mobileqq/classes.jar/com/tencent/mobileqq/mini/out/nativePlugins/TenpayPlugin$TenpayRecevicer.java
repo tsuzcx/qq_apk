@@ -21,7 +21,7 @@ final class TenpayPlugin$TenpayRecevicer
     QLog.d("TenpayPlugin", 2, "onReceiveResult resultCode = " + paramInt + " resultData = " + paramBundle);
     if (paramInt != 0)
     {
-      TenpayPlugin.access$100(this.this$0).evaluateCallback(false, null, "error unkown!");
+      TenpayPlugin.access$000(this.this$0).evaluateCallback(false, null, "error unkown!");
       return;
     }
     paramBundle = paramBundle.getString("result");
@@ -33,7 +33,7 @@ final class TenpayPlugin$TenpayRecevicer
         paramBundle = new JSONObject(paramBundle);
         paramInt = paramBundle.optInt("resultCode", -1);
         String str = paramBundle.optString("retmsg");
-        NativePlugin.JSContext localJSContext = TenpayPlugin.access$100(this.this$0);
+        NativePlugin.JSContext localJSContext = TenpayPlugin.access$000(this.this$0);
         if (paramInt == 0)
         {
           bool = true;
@@ -44,7 +44,7 @@ final class TenpayPlugin$TenpayRecevicer
       catch (JSONException paramBundle)
       {
         paramBundle.printStackTrace();
-        TenpayPlugin.access$100(this.this$0).evaluateCallback(false, null, "error unkown!");
+        TenpayPlugin.access$000(this.this$0).evaluateCallback(false, null, "error unkown!");
         return;
       }
       boolean bool = false;
@@ -53,7 +53,7 @@ final class TenpayPlugin$TenpayRecevicer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin.TenpayRecevicer
  * JD-Core Version:    0.7.0.1
  */

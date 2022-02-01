@@ -1,7 +1,12 @@
-abstract class bdai
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bdai
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public byte[] a;
+  bdai(bdaf parambdaf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

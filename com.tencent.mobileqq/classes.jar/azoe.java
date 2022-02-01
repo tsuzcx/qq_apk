@@ -1,46 +1,26 @@
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDKData;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.1;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.2;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class azoe
-  implements abvf
+class azoe
+  implements Handler.Callback
 {
-  public List<String> a(String paramString)
+  azoe(azod paramazod) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.1(this, paramString));
+    switch (paramMessage.what)
+    {
     }
-    paramString = new ArrayList(4);
-    paramString.add(abvc.b());
-    paramString.add(abvc.a());
-    paramString.addAll(abvc.b());
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.2(this, paramString1, paramBoolean, paramString2));
+    for (;;)
+    {
+      return false;
+      azod.a(this.a, paramMessage);
     }
-  }
-  
-  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
-  {
-    return InitMagnifierSDKData.a(paramInspectUUID);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoe
  * JD-Core Version:    0.7.0.1
  */

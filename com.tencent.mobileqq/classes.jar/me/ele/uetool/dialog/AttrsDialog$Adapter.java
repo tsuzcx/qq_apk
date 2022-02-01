@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -113,37 +114,36 @@ public class AttrsDialog$Adapter
     if (paramViewHolder.getClass() == AttrsDialog.Adapter.TitleViewHolder.class) {
       ((AttrsDialog.Adapter.TitleViewHolder)paramViewHolder).bindView((TitleItem)getItem(paramInt));
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
       if (paramViewHolder.getClass() == AttrsDialog.Adapter.TextViewHolder.class)
       {
         ((AttrsDialog.Adapter.TextViewHolder)paramViewHolder).bindView((TextItem)getItem(paramInt));
-        return;
       }
-      if (paramViewHolder.getClass() == AttrsDialog.Adapter.EditTextViewHolder.class)
+      else if (paramViewHolder.getClass() == AttrsDialog.Adapter.EditTextViewHolder.class)
       {
         ((AttrsDialog.Adapter.EditTextViewHolder)paramViewHolder).bindView((EditTextItem)getItem(paramInt));
-        return;
       }
-      if (paramViewHolder.getClass() == AttrsDialog.Adapter.SwitchViewHolder.class)
+      else if (paramViewHolder.getClass() == AttrsDialog.Adapter.SwitchViewHolder.class)
       {
         ((AttrsDialog.Adapter.SwitchViewHolder)paramViewHolder).bindView((SwitchItem)getItem(paramInt));
-        return;
       }
-      if (paramViewHolder.getClass() == AttrsDialog.Adapter.AddMinusEditViewHolder.class)
+      else if (paramViewHolder.getClass() == AttrsDialog.Adapter.AddMinusEditViewHolder.class)
       {
         ((AttrsDialog.Adapter.AddMinusEditViewHolder)paramViewHolder).bindView((AddMinusEditItem)getItem(paramInt));
         ((AttrsDialog.Adapter.AddMinusEditViewHolder)paramViewHolder).setAddMin(((AddMinusEditItem)getItem(paramInt)).getAddMin());
-        return;
       }
-      if (paramViewHolder.getClass() == AttrsDialog.Adapter.BitmapInfoViewHolder.class)
+      else if (paramViewHolder.getClass() == AttrsDialog.Adapter.BitmapInfoViewHolder.class)
       {
         ((AttrsDialog.Adapter.BitmapInfoViewHolder)paramViewHolder).bindView((BitmapItem)getItem(paramInt));
-        return;
       }
-    } while (paramViewHolder.getClass() != AttrsDialog.Adapter.BriefDescViewHolder.class);
-    ((AttrsDialog.Adapter.BriefDescViewHolder)paramViewHolder).bindView((BriefDescItem)getItem(paramInt));
+      else if (paramViewHolder.getClass() == AttrsDialog.Adapter.BriefDescViewHolder.class)
+      {
+        ((AttrsDialog.Adapter.BriefDescViewHolder)paramViewHolder).bindView((BriefDescItem)getItem(paramInt));
+      }
+    }
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
@@ -189,7 +189,7 @@ public class AttrsDialog$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.dialog.AttrsDialog.Adapter
  * JD-Core Version:    0.7.0.1
  */

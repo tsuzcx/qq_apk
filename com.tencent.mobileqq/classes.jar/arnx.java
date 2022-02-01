@@ -1,53 +1,124 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.2;
+import com.tencent.mobileqq.earlydownload.xmldata.ChirpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class arnx
-  extends arus
+  extends arnz
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new arny(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private LinkedList<arny> a = new LinkedList();
+  private QQAppInterface b;
+  private boolean d;
   
-  public arnx(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  public arnx(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    c();
+    super("qq.android.system.chirp", paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
-  private void c()
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131376385));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371216));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return 10040;
   }
   
-  public void a()
+  public Class<? extends XmlData> a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692479) + this.jdField_a_of_type_AndroidContentContext.getString(2131692725) + arbs.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692726);
-    long l = arbs.d();
-    String str = "";
-    if (l > 0L) {
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692544) + arso.a(l);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (arbs.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
+    return ChirpSoData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyChirpSo";
+  }
+  
+  public void a(arny paramarny)
+  {
+    synchronized (this.a)
     {
-      ((TextView)localObject).setEnabled(bool);
-      this.b.setText(str);
+      if (!this.a.contains(paramarny)) {
+        this.a.add(paramarny);
+      }
       return;
     }
   }
   
-  public void a(Bundle paramBundle)
+  public void a(String paramString)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
+    }
+    paramString = new ChirpSoHandler.1(this, paramString);
+    if (Looper.getMainLooper() == Looper.myLooper()) {
+      ThreadManager.getSubThreadHandler().post(paramString);
+    }
+    for (;;)
+    {
+      BaseApplicationImpl.sUiHandler.post(new ChirpSoHandler.2(this));
+      return;
+      paramString.run();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChirpSoHandler", 2, "restartDownload " + paramBoolean);
+    }
+    if (!this.d) {
+      this.d = paramBoolean;
+    }
+    if ((a() != null) && (a().loadState == 2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChirpSoHandler", 2, "is in downloading");
+      }
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public void b(arny paramarny)
+  {
+    synchronized (this.a)
+    {
+      this.a.remove(paramarny);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.d)
+    {
+      this.b.F();
+      if (QLog.isColorLevel()) {
+        QLog.d("ChirpSoHandler", 2, "isNetValid2Download by user " + AppSetting.c);
+      }
+      return AppSetting.c;
+    }
+    this.b.F();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChirpSoHandler", 2, "isNetValid2Download by startup " + AppSetting.c);
+    }
+    return (AppSetting.c) && (super.b());
   }
 }
 

@@ -10,6 +10,7 @@ import com.tencent.qapmsdk.base.dbpersist.DBHandler;
 import com.tencent.qapmsdk.base.dbpersist.DBHelper;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
+import com.tencent.qapmsdk.base.reporter.ab.AbProviderSingleton;
 import com.tencent.qapmsdk.base.reporter.proxy.QAPMUploadProxy;
 import com.tencent.qapmsdk.base.reporter.uploaddata.data.ResultObject;
 import com.tencent.qapmsdk.base.reporter.uploaddata.runnable.CollectRecordDataRunnable;
@@ -17,7 +18,6 @@ import com.tencent.qapmsdk.base.reporter.uploaddata.runnable.StoreRecordDataRunn
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
 import com.tencent.qapmsdk.common.reporter.BaseJsonObject;
-import com.tencent.qapmsdk.common.reporter.IABProvider;
 import com.tencent.qapmsdk.common.reporter.IReporter;
 import com.tencent.qapmsdk.common.reporter.IReporter.ReportResultCallback;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
@@ -32,13 +32,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/ReporterMachine;", "", "()V", "TAG", "", "abManager", "Lcom/tencent/qapmsdk/common/reporter/IABProvider;", "getAbManager", "()Lcom/tencent/qapmsdk/common/reporter/IABProvider;", "setAbManager", "(Lcom/tencent/qapmsdk/common/reporter/IABProvider;)V", "handler", "Landroid/os/Handler;", "getHandler", "()Landroid/os/Handler;", "isStarted", "", "uploadProxy", "Lcom/tencent/qapmsdk/common/reporter/IReporter;", "getUploadProxy", "()Lcom/tencent/qapmsdk/common/reporter/IReporter;", "setUploadProxy", "(Lcom/tencent/qapmsdk/common/reporter/IReporter;)V", "addResultObj", "", "resultObject", "Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;", "callback", "Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;", "checkCollect", "reportOnce", "start", "updateToSendAway", "tableName", "dbId", "", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/ReporterMachine;", "", "()V", "TAG", "", "handler", "Landroid/os/Handler;", "getHandler", "()Landroid/os/Handler;", "isStarted", "", "uploadProxy", "Lcom/tencent/qapmsdk/common/reporter/IReporter;", "getUploadProxy", "()Lcom/tencent/qapmsdk/common/reporter/IReporter;", "setUploadProxy", "(Lcom/tencent/qapmsdk/common/reporter/IReporter;)V", "addResultObj", "", "resultObject", "Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;", "callback", "Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;", "checkCollect", "reportOnce", "start", "updateToSendAway", "tableName", "dbId", "", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class ReporterMachine
 {
   public static final ReporterMachine INSTANCE = new ReporterMachine();
   private static final String TAG = "QAPM_base_ReporterMachine";
-  @Nullable
-  private static IABProvider abManager;
   @NotNull
   private static final Handler handler = new Handler(ThreadManager.Companion.getReporterThreadLooper());
   private static boolean isStarted;
@@ -93,12 +91,6 @@ public final class ReporterMachine
     }
   }
   
-  @Nullable
-  public final IABProvider getAbManager()
-  {
-    return abManager;
-  }
-  
   @NotNull
   public final Handler getHandler()
   {
@@ -121,18 +113,15 @@ public final class ReporterMachine
       do
       {
         return;
-        Object localObject = BaseInfo.pubJson.keys();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseInfo.pubJson.keys()");
-        while (((Iterator)localObject).hasNext())
+        Iterator localIterator = BaseInfo.pubJson.keys();
+        Intrinsics.checkExpressionValueIsNotNull(localIterator, "BaseInfo.pubJson.keys()");
+        while (localIterator.hasNext())
         {
-          String str = (String)((Iterator)localObject).next();
+          String str = (String)localIterator.next();
           paramResultObject.getParams().put(str, BaseInfo.pubJson.get(str));
         }
-        localObject = abManager;
-        if (localObject != null) {
-          ((IABProvider)localObject).addFactorToAPM(paramResultObject.getParams());
-        }
-        uploadProxy.report((BaseJsonObject)paramResultObject, (IReporter.ReportResultCallback)new ReporterMachine.reportOnce.2(paramReportResultCallback));
+        AbProviderSingleton.getInstance().addAbToParams(paramResultObject.getParams());
+        uploadProxy.report((BaseJsonObject)paramResultObject, (IReporter.ReportResultCallback)new ReporterMachine.reportOnce.1(paramReportResultCallback));
         if (PluginCombination.Companion.isLoosePlugin(i))
         {
           paramResultObject = PluginController.INSTANCE;
@@ -146,11 +135,6 @@ public final class ReporterMachine
       paramResultObject.setAusterityReportNum(paramResultObject.getAusterityReportNum() + 1);
     } while (paramResultObject.getAusterityReportNum() % 10 != 0);
     BaseInfo.editor.putInt("count_today_austerity_reported", PluginController.INSTANCE.getAusterityReportNum()).apply();
-  }
-  
-  public final void setAbManager(@Nullable IABProvider paramIABProvider)
-  {
-    abManager = paramIABProvider;
   }
   
   public final void setUploadProxy(@NotNull IReporter paramIReporter)
@@ -194,7 +178,7 @@ public final class ReporterMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

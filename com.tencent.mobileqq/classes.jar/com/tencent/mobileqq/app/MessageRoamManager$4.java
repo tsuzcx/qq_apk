@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
-import amrg;
 import android.util.Pair;
+import anqg;
+import aopx;
 import java.util.Calendar;
 
 public class MessageRoamManager$4
   implements Runnable
 {
-  public MessageRoamManager$4(alxa paramalxa, Calendar paramCalendar) {}
+  public MessageRoamManager$4(anqg paramanqg, Calendar paramCalendar) {}
   
   public void run()
   {
@@ -19,12 +19,12 @@ public class MessageRoamManager$4
       this.this$0.a(0, null);
       return;
     }
-    this.this$0.jdField_a_of_type_Amrg.a(this.this$0.jdField_a_of_type_JavaLangString, (Calendar)this.a.clone(), true, 8 - i);
+    this.this$0.jdField_a_of_type_Aopx.a(this.this$0.jdField_a_of_type_JavaLangString, (Calendar)this.a.clone(), true, 8 - i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.4
  * JD-Core Version:    0.7.0.1
  */

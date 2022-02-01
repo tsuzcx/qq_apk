@@ -1,55 +1,35 @@
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axti
-  extends axtk
+class axti
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  axti(axsd paramaxsd, String paramString) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void onClick(View paramView)
   {
-    if ("actStreamingVideoPlay".equalsIgnoreCase(paramString))
+    Intent localIntent = new Intent(this.jdField_a_of_type_Axsd.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Axsd.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Axsd.a.j)) {}
+    for (localObject = "1";; localObject = "2")
     {
-      paramString = new HashMap();
-      paramString.put("StreamingVideoSupport", String.valueOf(this.jdField_a_of_type_Boolean));
-      paramString.put("FirstBufferTime", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("PlayProgress", String.valueOf(this.b));
-      paramString.put("LoadProgress", String.valueOf(this.c));
-      paramString.put("FileDuration", String.valueOf(this.d));
-      paramString.put("FileLen", String.valueOf(this.e));
-      paramString.put("param_seekTimes", String.valueOf(this.f));
-      paramString.put("PlayResult", String.valueOf(this.g));
-      paramString.put("param_playTimeCost", String.valueOf(this.jdField_a_of_type_Long));
-      return paramString;
+      localIntent.putExtra("url", (String)localObject);
+      bcst.b(this.jdField_a_of_type_Axsd.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Axsd.a.startActivity(localIntent);
+      this.jdField_a_of_type_Axsd.a.l = true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("exitPlayProgress ").append(this.b);
-    localStringBuilder.append("exitCacheProgress ").append(this.c);
-    localStringBuilder.append("durationTime ").append(this.d);
-    localStringBuilder.append("fileSize ").append(this.e);
-    localStringBuilder.append("seekTimes ").append(this.f);
-    localStringBuilder.append("playResult ").append(this.g);
-    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axti
  * JD-Core Version:    0.7.0.1
  */

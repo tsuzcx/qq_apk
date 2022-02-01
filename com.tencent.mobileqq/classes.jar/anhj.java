@@ -1,15 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Bitmap;
 
-class anhj
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface anhj
 {
-  anhj(anhi paramanhi) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-  }
+  public abstract void a(int paramInt, Bitmap paramBitmap);
 }
 
 

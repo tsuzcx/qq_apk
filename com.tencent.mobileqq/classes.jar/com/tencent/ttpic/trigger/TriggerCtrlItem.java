@@ -86,7 +86,7 @@ public class TriggerCtrlItem
   private boolean isSaveNoImadiateTrigger = false;
   private boolean lastTriggered = false;
   private int mRandomGroupValue;
-  private StickerItem mStickerItem;
+  protected StickerItem mStickerItem;
   private String name;
   private boolean needUpateFirstStateTime = true;
   private int playBPM = 0;
@@ -117,6 +117,7 @@ public class TriggerCtrlItem
     this.charmRange = paramFaceMeshItem.charmRange;
     this.frames = paramFaceMeshItem.frames;
     this.frameDuration = paramFaceMeshItem.frameDuration;
+    this.triggerState = paramFaceMeshItem.triggerState;
   }
   
   public TriggerCtrlItem(AnimationItem paramAnimationItem)
@@ -130,6 +131,7 @@ public class TriggerCtrlItem
     this.config = new TriggerConfig(paramFaceItem);
     this.charmRange = paramFaceItem.charmRange;
     this.frames = paramFaceItem.frames;
+    this.triggerState = paramFaceItem.triggerState;
     this.frameDuration = paramFaceItem.frameDuration;
   }
   
@@ -142,7 +144,7 @@ public class TriggerCtrlItem
   
   public TriggerCtrlItem(GLBItemJava paramGLBItemJava)
   {
-    this.config = new TriggerConfig();
+    this.config = paramGLBItemJava.triggerConfig;
     this.charmRange = paramGLBItemJava.charmRange;
   }
   
@@ -350,11 +352,10 @@ public class TriggerCtrlItem
     Map localMap2 = paramPTDetectInfo.handActionCounter;
     List localList = paramPTDetectInfo.bodyPoints;
     if (paramPTDetectInfo.aiAttr != null) {}
-    label166:
-    label318:
-    label371:
-    label499:
-    label502:
+    label179:
+    label343:
+    label753:
+    label2042:
     Object localObject2;
     for (Object localObject1 = (PTHandAttr)paramPTDetectInfo.aiAttr.getAvailableData(AEDetectorType.HAND.value);; localObject2 = null)
     {
@@ -368,6 +369,7 @@ public class TriggerCtrlItem
       boolean bool4;
       boolean bool5;
       boolean bool6;
+      boolean bool7;
       do
       {
         do
@@ -376,9 +378,9 @@ public class TriggerCtrlItem
           {
             return bool1;
             if (this.config.activateTriggerTotalCount == 0) {
-              break label1101;
+              break label1182;
             }
-            if ((this.config.preTriggerType != PTFaceAttr.PTExpression.ALWAYS.value) && (!VideoMaterialUtil.isFaceTriggerType(this.config.preTriggerType))) {
+            if ((this.config.preTriggerType != PTFaceAttr.PTExpression.ALWAYS.value) && (!VideoMaterialUtil.isFaceTriggerType(this.config.preTriggerType)) && (!VideoMaterialUtil.isCatTriggerType(this.config.preTriggerType))) {
               break;
             }
             bool1 = localSet.contains(Integer.valueOf(this.config.preTriggerType));
@@ -386,27 +388,28 @@ public class TriggerCtrlItem
               AIActionCounter.clearAction(AEDetectorType.HAND);
             }
             if (!bool1) {
-              break label1881;
+              break label2048;
             }
             bool4 = VideoMaterialUtil.isFaceTriggerType(this.config.countTriggerType);
             bool5 = VideoMaterialUtil.isHotAreaTriggerItem(this.config.getStickerItem());
             bool6 = VideoMaterialUtil.isExternalWordsTriggerType(this.config.countTriggerType);
+            bool7 = VideoMaterialUtil.isTouchTriggerType(this.config.countTriggerType);
             bool1 = bool2;
           } while (localMap1 == null);
           if (!bool4) {
-            break label728;
+            break label753;
           }
           bool1 = bool2;
         } while (localMap1 == null);
         bool1 = bool2;
       } while (!localMap1.containsKey(Integer.valueOf(this.config.countTriggerType)));
-      label280:
+      label305:
       int i;
       if (bool4)
       {
         localObject3 = (FaceActionCounter)localMap1.get(Integer.valueOf(this.config.countTriggerType));
         if (localObject3 == null) {
-          break label1887;
+          break label2054;
         }
         i = ((FaceActionCounter)localObject3).count;
       }
@@ -420,6 +423,7 @@ public class TriggerCtrlItem
             if (this.config.getStickerItem() != null)
             {
               i = this.config.getStickerItem().triggerHandPoint;
+              label396:
               bool2 = TriggerUtil.isGestureTriggered((PTHandAttr)localObject1, j, i, this.triggerFingerIndex, this.config.getStickerItem().triggerArea, paramPTDetectInfo.aiAttr);
               bool1 = bool2;
               if (this.config.activateTriggerCountOnce == 1)
@@ -432,15 +436,15 @@ public class TriggerCtrlItem
                   bool1 = bool2;
                 }
               }
-              label436:
+              label461:
               bool2 = bool1;
               if (!VideoFilterList.sIsUseFreezeFrame)
               {
                 if ((this.playCount >= this.config.playCount) && (this.config.lockTriggerCountUntilFail == 0)) {
-                  break label1009;
+                  break label1072;
                 }
                 if (!bool4) {
-                  break label933;
+                  break label978;
                 }
                 bool2 = bool1;
                 if (paramPTDetectInfo.faceDetector != null)
@@ -454,9 +458,11 @@ public class TriggerCtrlItem
         }
         for (;;)
         {
+          label524:
           bool1 = bool2;
           for (;;)
           {
+            label527:
             bool2 = bool1;
             if (this.triggerState != null)
             {
@@ -485,17 +491,17 @@ public class TriggerCtrlItem
             if (VideoMaterialUtil.isExternalWordsTriggerType(this.config.getTriggerTypeInt()))
             {
               bool1 = hitExternalTriggerWords(paramPTDetectInfo.aiAttr);
-              break label166;
+              break label179;
             }
             if (paramPTDetectInfo.isFreezeInfo)
             {
               if (paramPTDetectInfo.gestureTrigger == this.config.preTriggerType)
               {
                 bool1 = true;
-                break label166;
+                break label179;
               }
               bool1 = false;
-              break label166;
+              break label179;
             }
             j = this.config.preTriggerType;
             if (this.config.getStickerItem() != null) {}
@@ -509,112 +515,136 @@ public class TriggerCtrlItem
               bool1 = TriggerUtil.isGestureTriggered((PTHandAttr)localObject1, j, i, k, (ArrayList)localObject3, paramPTDetectInfo.aiAttr);
               break;
             }
-            label728:
             if (bool6)
             {
               if (AIActionCounter.getCommonActions(AEDetectorType.VOICE_RECOGNIZE).size() != 0) {
-                break label280;
+                break label305;
               }
               return false;
+            }
+            if (bool7) {
+              break label305;
             }
             bool1 = bool2;
             if (localMap2 == null) {
               break;
             }
             if (localMap2.containsKey(Integer.valueOf(this.config.countTriggerType))) {
-              break label280;
+              break label305;
             }
             return false;
             if (bool5)
             {
               i = HotAreaActionCounter.getCount();
-              break label318;
+              break label343;
             }
             if (bool6)
             {
               localObject3 = AIActionCounter.getCommonActions(AEDetectorType.VOICE_RECOGNIZE);
               if (!((Map)localObject3).containsKey(this.config.countExternalTriggerWords)) {
-                break label1887;
+                break label2054;
               }
               i = ((Integer)((Map)localObject3).get(this.config.countExternalTriggerWords)).intValue();
-              break label318;
+              break label343;
+            }
+            if (bool7)
+            {
+              i = TouchTriggerManager.getInstance().getTouchCount();
+              break label343;
             }
             localObject3 = (Integer)localMap2.get(Integer.valueOf(this.config.countTriggerType));
             if (localObject3 == null) {
-              break label1887;
+              break label2054;
             }
             i = ((Integer)localObject3).intValue();
-            break label318;
+            break label343;
             i = 0;
-            break label371;
+            break label396;
             if ((this.config.playCount == 0) || (this.playCount < this.config.playCount) || (this.config.lockTriggerCountUntilFail != 0))
             {
               bool1 = true;
-              break label436;
+              break label461;
             }
             bool1 = false;
-            break label436;
-            label933:
+            break label461;
+            label978:
             if (bool5)
             {
               HotAreaActionCounter.lockUpdate();
               bool2 = bool1;
-              break label499;
+              break label524;
             }
             if (bool6)
             {
               AIActionCounter.lockAction(AEDetectorType.VOICE_RECOGNIZE);
               bool2 = bool1;
-              break label499;
+              break label524;
+            }
+            if (bool7)
+            {
+              TouchTriggerManager.getInstance().lockAction();
+              bool2 = bool1;
+              break label524;
             }
             AIActionCounter.lockAction(AEDetectorType.HAND);
             if (localObject1 != null)
             {
               bool2 = bool1;
               if (((PTHandAttr)localObject1).getHandType() == this.config.countTriggerType) {
-                break label499;
+                break label524;
               }
             }
             AIActionCounter.clearAction(AEDetectorType.HAND);
             bool2 = bool1;
-            break label499;
-            label1009:
+            break label524;
+            label1072:
             bool2 = bool1;
             if (this.config.playCount <= 0) {
-              break label499;
+              break label524;
             }
             if (bool4)
             {
               bool2 = bool1;
               if (paramPTDetectInfo.faceDetector == null) {
-                break label499;
+                break label524;
               }
               paramPTDetectInfo.faceDetector.clearActionCounter();
               bool2 = bool1;
-              break label499;
+              break label524;
             }
             if (bool5)
             {
               HotAreaActionCounter.lockUpdate();
               bool2 = bool1;
-              break label499;
+              break label524;
             }
             if (bool6)
             {
               AIActionCounter.clearAction(AEDetectorType.VOICE_RECOGNIZE);
               bool2 = bool1;
-              break label499;
+              break label524;
+            }
+            if (bool7)
+            {
+              TouchTriggerManager.getInstance().clearAction();
+              bool2 = bool1;
+              break label524;
             }
             AIActionCounter.clearAction(AEDetectorType.HAND);
             bool2 = bool1;
-            break label499;
-            label1101:
-            if ((this.triggerForceInteger) || (AETriggerAnalyzer.getInstance().isInteger(this.config.getTriggerTypeString())))
+            break label524;
+            label1182:
+            if ((this.triggerForceInteger) || (this.config.isTypeInteger()))
             {
+              if (this.config.getTriggerTypeInt() == PTFaceAttr.PTExpression.ALWAYS.value)
+              {
+                bool1 = true;
+                continue;
+              }
               if (VideoMaterialUtil.isFaceTriggerType(this.config.getTriggerTypeInt()))
               {
                 if (localSet == null) {
-                  break label1875;
+                  break label2042;
                 }
                 bool1 = localSet.contains(Integer.valueOf(this.config.getTriggerTypeInt()));
                 continue;
@@ -655,7 +685,7 @@ public class TriggerCtrlItem
                 bool2 = this.config.isSentenceTriggered((String)localObject3);
                 bool1 = bool2;
                 if (!bool2) {
-                  break label502;
+                  break label527;
                 }
                 bool1 = bool2;
                 continue;
@@ -689,28 +719,33 @@ public class TriggerCtrlItem
               if (VideoMaterialUtil.isBodyTriggerType(this.config.getTriggerTypeInt()))
               {
                 if ((localList == null) || (localList.isEmpty())) {
-                  break label1875;
+                  break label2042;
                 }
                 if (this.bodyPositionRecord.size() == this.bodyPositionRecordMinNum) {
                   this.bodyPositionRecord.remove(0);
                 }
                 this.bodyPositionRecord.add(localList.get(this.config.bodyTriggerPoint));
                 if (this.bodyPositionRecord.size() <= 1) {
-                  break label1875;
+                  break label2042;
                 }
                 localObject1 = (PointF)localList.get(this.config.bodyTriggerPoint);
                 localObject3 = (PointF)this.bodyPositionRecord.get(0);
                 i = calPointsDistance((PointF)localObject3, (PointF)localObject1);
                 j = calPointsAngle((PointF)localObject3, (PointF)localObject1);
                 if (i < this.config.bodyTriggerDistance) {
-                  break label1875;
+                  break label2042;
                 }
                 i = Math.abs(j - this.config.getBodyTriggerAngle());
                 this.config.getClass();
                 if (i > 15) {
-                  break label1875;
+                  break label2042;
                 }
                 bool1 = true;
+                continue;
+              }
+              if (VideoMaterialUtil.isCatTriggerType(this.config.getTriggerTypeInt()))
+              {
+                bool1 = localSet.contains(Integer.valueOf(this.config.getTriggerTypeInt()));
                 continue;
               }
               if (VideoMaterialUtil.isExternalWordsTriggerType(this.config.getTriggerTypeInt()))
@@ -719,47 +754,53 @@ public class TriggerCtrlItem
                 continue;
               }
               if (!VideoMaterialUtil.isTimeTriggerType(this.config.getTriggerTypeInt())) {
-                break label1875;
+                break label2042;
               }
               bool1 = isTimeTriggered(paramPTDetectInfo);
               continue;
             }
-            if (this.config.getTriggerTypeString() != null)
+            if (VideoMaterialUtil.isCatTriggerType(this.config.getTriggerTypeInt()))
             {
-              localObject1 = this.config.getTriggerTypeString().split("-");
-              if (localObject1.length == 2)
-              {
-                localObject3 = localObject1[0];
-                try
-                {
-                  i = Integer.parseInt(localObject1[1]);
-                  localObject1 = AETriggerAnalyzer.getInstance().getClassifier((String)localObject3);
-                  if (localObject1 == null) {
-                    break label1875;
-                  }
-                  j = ((IAIDataClassifier)localObject1).classifyData2Type(paramPTDetectInfo.aiAttr);
-                  bool1 = ((IAIDataClassifier)localObject1).getClassifierTypeMap().containsValue(Integer.valueOf(j));
-                  if ((bool1) && (i == j))
-                  {
-                    bool1 = true;
-                    continue;
-                  }
-                  bool1 = false;
-                }
-                catch (NumberFormatException localNumberFormatException)
-                {
-                  bool1 = false;
-                }
-                continue;
-              }
+              bool1 = localSet.contains(Integer.valueOf(this.config.getTriggerTypeInt()));
             }
-            label1875:
-            bool1 = false;
+            else
+            {
+              if (this.config.getTriggerTypeString() != null)
+              {
+                localObject1 = this.config.getTriggerTypeString().split("-");
+                if (localObject1.length == 2)
+                {
+                  localObject3 = localObject1[0];
+                  try
+                  {
+                    i = Integer.parseInt(localObject1[1]);
+                    localObject1 = AETriggerAnalyzer.getInstance().getClassifier((String)localObject3);
+                    if (localObject1 == null) {
+                      break label2042;
+                    }
+                    j = ((IAIDataClassifier)localObject1).classifyData2Type(paramPTDetectInfo.aiAttr);
+                    bool1 = ((IAIDataClassifier)localObject1).getClassifierTypeMap().containsValue(Integer.valueOf(j));
+                    if ((bool1) && (i == j))
+                    {
+                      bool1 = true;
+                      continue;
+                    }
+                    bool1 = false;
+                  }
+                  catch (NumberFormatException localNumberFormatException)
+                  {
+                    bool1 = false;
+                  }
+                  continue;
+                }
+              }
+              bool1 = false;
+            }
           }
-          label1881:
+          label2048:
           bool2 = false;
         }
-        label1887:
+        label2054:
         i = 0;
       }
     }
@@ -930,10 +971,10 @@ public class TriggerCtrlItem
         this.playCount = 0;
       }
       if ((this.config.getTriggerTypeInt() != 220) || (this.config.alwaysTriggered) || (this.playMode != 0)) {
-        break label690;
+        break label675;
       }
       if ((!bool1) || (this.lastTriggered)) {
-        break label684;
+        break label669;
       }
     }
     for (;;)
@@ -989,9 +1030,6 @@ public class TriggerCtrlItem
           this.needUpateFirstStateTime = false;
           break label232;
         }
-        if (System.currentTimeMillis() - this.frameStartTime <= 33L) {
-          break label232;
-        }
         this.status = TRIGGERED_STATUS.TRIGGERED;
         break label232;
       }
@@ -1005,10 +1043,10 @@ public class TriggerCtrlItem
       }
       this.status = TRIGGERED_STATUS.TRIGGERED;
       break label232;
-      label684:
+      label669:
       bool2 = false;
       continue;
-      label690:
+      label675:
       bool2 = bool1;
     }
   }
@@ -1286,7 +1324,7 @@ public class TriggerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.TriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

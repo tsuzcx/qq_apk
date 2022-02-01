@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aepi;
+import afur;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,30 +16,28 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdaq;
-import bhtb;
+import bggq;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import com.tencent.util.VersionUtils;
 import java.util.ArrayList;
 import java.util.Set;
-import raw;
-import rdm;
-import ris;
+import rwy;
+import ryx;
+import seg;
 
 public class VideoFeedsTopicViewGroup
   extends LinearLayout
 {
+  private static boolean jdField_b_of_type_Boolean;
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext;
   private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
   private Set<String> jdField_a_of_type_JavaUtilSet;
-  private raw jdField_a_of_type_Raw;
+  private rwy jdField_a_of_type_Rwy;
   private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 13;
-  private boolean jdField_b_of_type_Boolean;
-  private final int c = 4;
-  private int d;
+  private int jdField_b_of_type_Int;
   
   public VideoFeedsTopicViewGroup(Context paramContext)
   {
@@ -62,7 +60,7 @@ public class VideoFeedsTopicViewGroup
   
   private void a()
   {
-    int j = this.jdField_a_of_type_Int - getPaddingLeft() - getPaddingRight() - this.d;
+    int j = this.jdField_a_of_type_Int - getPaddingLeft() - getPaddingRight() - this.jdField_b_of_type_Int;
     if (((j <= 0) && (this.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null)) {
       setVisibility(8);
     }
@@ -98,7 +96,7 @@ public class VideoFeedsTopicViewGroup
       if (getWidth() != 0) {
         break;
       }
-      rdm.a(this, 200);
+      ryx.a(this, 200);
       break;
       label182:
       TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -106,16 +104,16 @@ public class VideoFeedsTopicViewGroup
       localTextView.setGravity(17);
       localTextView.setTextColor(Color.parseColor("#FFFFFF"));
       localTextView.setTextSize(2, 13.0F);
-      localTextView.setId(2131375290);
-      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842626);
-      ((Drawable)localObject2).setBounds(0, 0, aepi.a(18.0F, getResources()), aepi.a(18.0F, getResources()));
+      localTextView.setId(2131376020);
+      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842955);
+      ((Drawable)localObject2).setBounds(0, 0, afur.a(18.0F, getResources()), afur.a(18.0F, getResources()));
       localTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);
-      int m = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+      int m = bggq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
       localTextView.setCompoundDrawablePadding(m);
-      if (bhtb.g()) {
-        localTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842377));
+      if (VersionUtils.isJellyBean()) {
+        localTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842696));
       }
-      localTextView.setPadding(aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      localTextView.setPadding(afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       TextPaint localTextPaint = localTextView.getPaint();
       localObject2 = new Rect();
       try
@@ -142,10 +140,10 @@ public class VideoFeedsTopicViewGroup
         }
         for (;;)
         {
-          localTextView.setOnClickListener(new ris(this, localChannelInfo));
+          localTextView.setOnClickListener(new seg(this, localChannelInfo));
           addView(localTextView, (ViewGroup.LayoutParams)localObject1);
           break;
-          k = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+          k = bggq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
           break label411;
           label497:
           if (getChildCount() == 0) {
@@ -156,7 +154,7 @@ public class VideoFeedsTopicViewGroup
           this.jdField_a_of_type_Boolean = true;
           return;
           label533:
-          ((LinearLayout.LayoutParams)localObject1).setMargins(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0, 0, 0);
+          ((LinearLayout.LayoutParams)localObject1).setMargins(bggq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0, 0, 0);
         }
       }
       catch (Exception localException)
@@ -178,20 +176,20 @@ public class VideoFeedsTopicViewGroup
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void setArticleInfo(Activity paramActivity, raw paramraw, VideoInfo paramVideoInfo, Set<String> paramSet, boolean paramBoolean)
+  public void setArticleInfo(Activity paramActivity, rwy paramrwy, VideoInfo paramVideoInfo, Set<String> paramSet, boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Raw = paramraw;
+    this.jdField_a_of_type_Rwy = paramrwy;
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     this.jdField_a_of_type_JavaUtilSet = paramSet;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    jdField_b_of_type_Boolean = paramBoolean;
     a();
   }
   
   public void setHorizontalMargin(int paramInt)
   {
-    this.d = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
 }
 

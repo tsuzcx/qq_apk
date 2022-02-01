@@ -1,9 +1,7 @@
 package c.t.m.g;
 
 import android.location.Location;
-import android.os.Bundle;
 import android.telephony.NeighboringCellInfo;
-import com.tencent.map.geolocation.TencentPoi;
 import com.tencent.tencentmap.lbssdk.service.e;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -11,52 +9,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class fp
 {
-  public int a;
-  public final ArrayList<TencentPoi> b = new ArrayList();
-  public fg c;
+  public final float a;
+  public final float b;
+  public final float c;
+  private final long d;
+  private final long e;
   
-  public fp() {}
-  
-  public fp(JSONObject paramJSONObject)
+  public fp(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = paramJSONObject.optInt("stat");
-    if (paramJSONObject.has("subnation")) {
-      this.c = new fg(paramJSONObject.optJSONObject("subnation"));
-    }
-    for (;;)
-    {
-      paramJSONObject = paramJSONObject.optJSONArray("poilist");
-      if (paramJSONObject != null) {
-        try
-        {
-          int j = paramJSONObject.length();
-          int i = 0;
-          for (;;)
-          {
-            if (i < j)
-            {
-              ff localff = new ff(paramJSONObject.getJSONObject(i));
-              this.b.add(localff);
-              i += 1;
-              continue;
-              if (paramJSONObject.has("results"))
-              {
-                this.c = a(paramJSONObject.optJSONArray("results"));
-                break;
-              }
-              this.c = fg.a;
-              new StringBuilder("DetailsData: unknown json ").append(paramJSONObject.toString());
-            }
-          }
-        }
-        catch (JSONException paramJSONObject) {}
-      }
-    }
+    this.d = paramLong1;
+    this.e = paramLong2;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
   
   private static double a(double paramDouble)
@@ -70,8 +39,8 @@ public final class fp
     paramDouble3 = a(paramDouble3);
     paramDouble2 = a(paramDouble2);
     paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D * 1000.0D;
+    double d1 = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    return Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d1)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D * 1000.0D;
   }
   
   public static double a(double paramDouble, int paramInt)
@@ -86,66 +55,6 @@ public final class fp
     }
     catch (Exception localException) {}
     return 0.0D;
-  }
-  
-  private static fg a(JSONArray paramJSONArray)
-  {
-    int i = 2;
-    if (paramJSONArray == null) {
-      localObject1 = null;
-    }
-    fg localfg;
-    int j;
-    Object localObject2;
-    do
-    {
-      return localObject1;
-      localfg = fg.a(fg.a);
-      j = paramJSONArray.length();
-      if (j > 0)
-      {
-        localObject1 = paramJSONArray.optJSONObject(0);
-        localfg.b = ((JSONObject)localObject1).optString("n");
-        localfg.e = ((JSONObject)localObject1).optString("p");
-        localfg.f = ((JSONObject)localObject1).optString("c");
-        localfg.g = ((JSONObject)localObject1).optString("d");
-        localfg.d = ((JSONObject)localObject1).optString("adcode");
-      }
-      if (j > 1)
-      {
-        localObject1 = paramJSONArray.optJSONObject(1);
-        localObject2 = ((JSONObject)localObject1).optString("address_name");
-        localfg.m.putString("addrdesp.name", (String)localObject2);
-        localObject2 = ((JSONObject)localObject1).optJSONObject("landmark");
-        localObject1 = ((JSONObject)localObject1).optJSONObject("second_landmark");
-        if (localObject2 != null) {
-          localfg.m.putParcelable("addrdesp.landmark", new fb((JSONObject)localObject2));
-        }
-        if (localObject1 != null) {
-          localfg.m.putParcelable("addrdesp.second_landmark", new fb((JSONObject)localObject1));
-        }
-      }
-      localObject1 = localfg;
-    } while (j <= 2);
-    Object localObject1 = new ArrayList();
-    if (i < j)
-    {
-      localObject2 = new fb(paramJSONArray.optJSONObject(i));
-      ((ArrayList)localObject1).add(localObject2);
-      if ("ST".equals(((fb)localObject2).b)) {
-        localfg.j = ((fb)localObject2).a;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ("ST_NO".equals(((fb)localObject2).b)) {
-          localfg.k = ((fb)localObject2).a;
-        }
-      }
-    }
-    localfg.m.putParcelableArrayList("addrdesp.results", (ArrayList)localObject1);
-    return localfg;
   }
   
   private static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
@@ -173,26 +82,26 @@ public final class fp
     return localStringBuilder.toString();
   }
   
-  public static String a(eu parameu, boolean paramBoolean)
+  public static String a(et paramet, boolean paramBoolean)
   {
-    if (parameu == null) {
+    if (paramet == null) {
       return "[]";
     }
-    int j = parameu.b;
-    int k = parameu.c;
-    int m = parameu.a.ordinal();
+    int j = paramet.b;
+    int k = paramet.c;
+    int m = paramet.a.ordinal();
     Object localObject1 = new ArrayList();
-    Object localObject2 = parameu.a();
+    Object localObject2 = paramet.a();
     int i;
     int n;
     Object localObject4;
-    if (fj.a(m, j, k, parameu.d, parameu.e))
+    if (fj.a(m, j, k, paramet.d, paramet.e))
     {
-      i = parameu.d;
-      int i2 = parameu.e;
-      int i3 = parameu.f;
-      n = parameu.g;
-      int i1 = parameu.h;
+      i = paramet.d;
+      int i2 = paramet.e;
+      int i3 = paramet.f;
+      n = paramet.g;
+      int i1 = paramet.h;
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("{");
       ((StringBuilder)localObject4).append("\"mcc\":");
@@ -234,7 +143,7 @@ public final class fp
           i = ((NeighboringCellInfo)localObject4).getLac();
           n = ((NeighboringCellInfo)localObject4).getCid();
           if (!fj.a(m, j, k, i, n)) {
-            break label607;
+            break label585;
           }
           ((ArrayList)localObject1).add(a(j, k, i, n, (((NeighboringCellInfo)localObject4).getRssi() << 1) - 113, 2147483647, 2147483647));
           continue;
@@ -244,29 +153,29 @@ public final class fp
       {
         try
         {
-          parameu = parameu.b().iterator();
+          paramet = paramet.b().iterator();
           Object localObject3;
-          if (parameu.hasNext())
+          if (paramet.hasNext())
           {
-            localObject3 = (eu)parameu.next();
-            ((ArrayList)localObject1).add(a(((eu)localObject3).b, ((eu)localObject3).c, ((eu)localObject3).d, ((eu)localObject3).e, ((eu)localObject3).f, ((eu)localObject3).g, ((eu)localObject3).h));
+            localObject3 = (et)paramet.next();
+            ((ArrayList)localObject1).add(a(((et)localObject3).b, ((et)localObject3).c, ((et)localObject3).d, ((et)localObject3).e, ((et)localObject3).f, ((et)localObject3).g, ((et)localObject3).h));
             continue;
           }
           i = 0;
         }
-        catch (Throwable parameu)
+        catch (Throwable paramet)
         {
-          parameu = new StringBuilder("[");
+          paramet = new StringBuilder("[");
           localObject3 = new fl(",");
           localObject1 = ((Iterable)localObject1).iterator();
-          parameu.append(((fl)localObject3).a(new StringBuilder(), (Iterator)localObject1).toString());
-          parameu.append("]");
-          return parameu.toString();
+          paramet.append(((fl)localObject3).a(new StringBuilder(), (Iterator)localObject1).toString());
+          paramet.append("]");
+          return paramet.toString();
         }
       }
-      a("illeagal main cell! ", j, k, m, parameu.d, parameu.e);
+      a("illeagal main cell! ", j, k, m, paramet.d, paramet.e);
       continue;
-      label607:
+      label585:
       a("illeagal neighboringCell! ", j, k, m, i, n);
     }
   }
@@ -367,18 +276,9 @@ public final class fp
     return false;
   }
   
-  public final String toString()
+  public final float a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("DetailsData{");
-    localStringBuilder.append("subnation=").append(this.c).append(",");
-    localStringBuilder.append("poilist=[");
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append((TencentPoi)localIterator.next()).append(",");
-    }
-    localStringBuilder.append("]");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return (float)Math.sqrt(Math.pow(this.a, 2.0D) + Math.pow(this.b, 2.0D) + Math.pow(this.c, 2.0D));
   }
 }
 

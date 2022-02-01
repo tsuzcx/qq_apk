@@ -1,20 +1,27 @@
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+
 class vke
-  extends viq
+  implements zxa<FeedCloudRead.StGetFeedDetailRsp>
 {
-  vke(vji paramvji, String paramString1, String paramString2, boolean paramBoolean, vkp paramvkp)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  vke(vkb paramvkb, QCircleGetFeedDetailRequest paramQCircleGetFeedDetailRequest) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    this.jdField_a_of_type_Vkp.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.extInfo.has())) {
+      this.jdField_a_of_type_Vkb.a((FeedCloudCommon.StCommonExt)paramStGetFeedDetailRsp.extInfo.get());
+    }
+    vkb.a(this.jdField_a_of_type_Vkb).postValue(new uzp(paramLong, paramString, paramStGetFeedDetailRsp, false));
+    this.jdField_a_of_type_Vkb.a().a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vke
  * JD-Core Version:    0.7.0.1
  */

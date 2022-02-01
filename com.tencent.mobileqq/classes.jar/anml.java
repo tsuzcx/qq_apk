@@ -1,8 +1,6 @@
-public class anml
+public abstract interface anml
 {
-  public String a;
-  public boolean a;
-  public String[] a;
+  public abstract void g(boolean paramBoolean);
 }
 
 

@@ -1,34 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import java.util.HashMap;
 
-public class xdb
-  extends JobSegment<Bitmap, Bitmap>
+class xdb
+  extends xcc
 {
-  public final float a;
-  public final boolean a;
-  
-  public xdb(float paramFloat, boolean paramBoolean)
+  xdb(xcu paramxcu, String paramString1, String paramString2, boolean paramBoolean, xdy paramxdy)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  public boolean b()
   {
-    paramJobContext = xqw.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    this.jdField_a_of_type_Xdy.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Xdy.a, this.jdField_a_of_type_Xdy.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xdb
  * JD-Core Version:    0.7.0.1
  */

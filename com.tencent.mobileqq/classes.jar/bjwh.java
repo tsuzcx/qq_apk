@@ -1,34 +1,28 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.minigame.manager.FileDownloadManager;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
+import java.util.Map;
 
+@ProxyService(proxy=DownloaderProxy.class)
 public class bjwh
-  extends JSONObject
+  extends DownloaderProxy
 {
-  public bjwh(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
-  
-  public bjwh a(String paramString1, String paramString2)
+  public void abort(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
-    }
-    try
-    {
-      put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
-    }
-    return this;
+    FileDownloadManager.abort(paramString);
   }
+  
+  public boolean download(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
+  {
+    return FileDownloadManager.download(paramString1, paramMap, paramString2, paramInt, paramDownloadListener);
+  }
+  
+  public void preConnectDownloadHost() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,26 @@
-public abstract class axxl
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class axxl
+  implements View.OnClickListener
 {
-  public static final String a;
-  public long a;
-  private String b;
+  axxl(axxk paramaxxk) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = axqt.jdField_a_of_type_JavaLangString;
-  }
-  
-  public axxl(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void a()
-  {
-    if (this.b == null) {
-      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
-    }
-  }
-  
-  public final String a()
-  {
-    a();
-    return this.b + "thumb.jpg";
-  }
-  
-  public final String b()
-  {
-    a();
-    return this.b + "combine.mp4";
-  }
-  
-  public final String c()
-  {
-    a();
-    return this.b + "audio.mp4";
-  }
-  
-  public String d()
-  {
-    a();
-    return this.b;
+    Intent localIntent = new Intent(axxk.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-topic/topicTags.html");
+    axxk.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxl
  * JD-Core Version:    0.7.0.1
  */

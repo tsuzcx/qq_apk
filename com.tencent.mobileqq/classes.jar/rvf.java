@@ -1,31 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class rvf
-  implements View.OnClickListener
+public class rvf
+  implements bfpo
 {
-  rvf(rve paramrve, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
+  public rvf(ReadInJoyWebDataManager.6 param6) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (rve.a(this.jdField_a_of_type_Rve) != null) {
-      rve.a(this.jdField_a_of_type_Rve).a(this.jdField_a_of_type_Int);
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
+        }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
+      }
     }
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
-    int j = ojb.b;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      ojb.a("0X8009496", paramView, j, i, this.jdField_a_of_type_Int);
-      return;
-    }
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvf
  * JD-Core Version:    0.7.0.1
  */

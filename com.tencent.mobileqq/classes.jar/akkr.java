@@ -1,23 +1,26 @@
-import com.tencent.widget.AbsListView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 class akkr
-  implements bhtv
+  implements DialogInterface.OnClickListener
 {
-  akkr(akkn paramakkn) {}
+  akkr(akkq paramakkq) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != 0) {
-      return;
-    }
-    this.a.d();
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    akkp.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkr
  * JD-Core Version:    0.7.0.1
  */

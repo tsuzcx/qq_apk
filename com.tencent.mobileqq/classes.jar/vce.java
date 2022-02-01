@@ -1,44 +1,32 @@
-public abstract class vce
+import android.view.View;
+
+class vce
+  implements bkhw
 {
-  protected int a;
-  protected vcc a;
+  vce(vcb paramvcb, int[] paramArrayOfInt, bkho parambkho) {}
   
-  public abstract void a();
-  
-  public void a(vcc paramvcc)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Vcc = paramvcc;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int < 1)
+    if (!aauy.a("showMoreActionSheetClick")) {
+      switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+      {
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Int += 1;
-      wxe.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Vcc != null) {
-      this.jdField_a_of_type_Vcc.a(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Vcc != null) {
-      this.jdField_a_of_type_Vcc.b(this);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      vcb.d(this.jdField_a_of_type_Vcb);
+      continue;
+      vol.a().a(vcb.a(this.jdField_a_of_type_Vcb), true);
+      continue;
+      vol.a().a(vcb.a(this.jdField_a_of_type_Vcb), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vce
  * JD-Core Version:    0.7.0.1
  */

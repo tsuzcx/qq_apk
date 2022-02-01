@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.drawable.BitmapDrawable;
 
-final class bmpu
-  implements Animation.AnimationListener
+public class bmpu
 {
-  bmpu(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public BitmapDrawable a;
+  public String a;
 }
 
 

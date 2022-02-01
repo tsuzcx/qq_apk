@@ -1,22 +1,51 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.qphone.base.util.QLog;
 
-class bfol
-  implements bfmp
+public class bfol
+  extends bfkt
 {
-  bfol(bfok parambfok, DownloadInfo paramDownloadInfo) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public bfol(TroopAppShortcutContainer paramTroopAppShortcutContainer, QQAppInterface paramQQAppInterface)
   {
-    bflp.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bfln.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
+    super(paramQQAppInterface);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopAppShortcutContainer", 2, "onSetTotalSwitch:" + String.valueOf(paramLong) + "isSuccess" + paramBoolean + "disabled" + paramInt);
+    }
+    bfnu localbfnu = new bfnu(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, TroopAppShortcutContainer.a(this.a), TroopAppShortcutContainer.a(this.a));
+    bfnv localbfnv = new bfnv();
+    bfkq localbfkq = ((bfkr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355)).a(Long.valueOf(TroopAppShortcutContainer.a(this.a)));
+    if (localbfkq != null) {
+      localbfnv.jdField_a_of_type_Bfkq = localbfkq;
+    }
+    localbfnv.b = bfqq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopAppShortcutContainer.a(this.a));
+    if (!paramBoolean)
+    {
+      if (paramInt != 0) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        localbfnv.jdField_a_of_type_Boolean = paramBoolean;
+        bfqq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbfnv, TroopAppShortcutContainer.a(this.a));
+        localbfnu.a(localbfnv);
+        this.a.jdField_a_of_type_Bfom.a(0, localbfnu);
+        return;
+      }
+    }
+    if (paramInt == 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localbfnv.jdField_a_of_type_Boolean = paramBoolean;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfol
  * JD-Core Version:    0.7.0.1
  */

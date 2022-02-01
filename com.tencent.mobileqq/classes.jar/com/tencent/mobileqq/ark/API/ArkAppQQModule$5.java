@@ -1,0 +1,39 @@
+package com.tencent.mobileqq.ark.API;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import apih;
+import apix;
+import aufz;
+import com.tencent.qphone.base.util.QLog;
+
+public class ArkAppQQModule$5
+  implements Runnable
+{
+  public ArkAppQQModule$5(apix paramapix, String paramString) {}
+  
+  public void run()
+  {
+    Activity localActivity = apih.a();
+    if ((localActivity instanceof FragmentActivity))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("forward_text", this.a);
+      Intent localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("direct_send_if_dataline_forward", true);
+      aufz.a(localActivity, localIntent, 21);
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkApp", 1, "multiAio.QQ.SendMessage text success.");
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppQQModule.5
+ * JD-Core Version:    0.7.0.1
+ */

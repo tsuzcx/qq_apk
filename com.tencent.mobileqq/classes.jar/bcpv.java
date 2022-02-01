@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ConversationFacadeProxy.Proxy;
 
-public class bcpv
-  extends bcqd
+public final class bcpv
+  implements RecentRoute.ConversationFacadeProxy.Proxy
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED) || (this.a.a()))
+    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
     {
-      this.a = ((TroopUploadingThread)bcqc.a(paramClass));
-      this.a.a(paramArrayList, paramHashMap, paramList, this);
-      this.a.start();
+      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).a();
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, paramInt);
+      }
     }
+    return 0;
+  }
+  
+  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
+    {
+      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).a();
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, ((QQMessageFacade.Message)paramIMCoreMessageStub).istroop);
+      }
+    }
+    return 0;
   }
 }
 

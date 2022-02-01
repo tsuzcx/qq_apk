@@ -1,17 +1,19 @@
-class amak
-  implements bipw
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enableNewWebWeatherPage", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amak
 {
-  amak(amai paramamai) {}
-  
-  public void a(bipv parambipv)
+  public final boolean a()
   {
-    parambipv.a(this.a.a);
-    parambipv.a();
+    Object localObject = aqlk.a().a(624);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((amal)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amak
  * JD-Core Version:    0.7.0.1
  */

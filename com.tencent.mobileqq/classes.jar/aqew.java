@@ -1,21 +1,30 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.comic.VipComicJumpActivity;
 
 public class aqew
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aqfb
 {
-  public aqew(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
-  
-  public void onGlobalLayout()
+  public String a()
   {
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
-    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
-    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690553);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = new Intent("android.intent.action.MAIN");
+    paramView = paramView.getContext();
+    localObject = VipComicJumpActivity.a((Intent)localObject);
+    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (blak)localObject)) {
+      VipComicJumpActivity.a(localQQAppInterface, true);
+    }
+    bcst.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", aqda.b(paramInt), 0, "", "", "", "");
   }
 }
 

@@ -1,12 +1,14 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
-public abstract interface bkch
-  extends IInterface
+class bkch
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
+  public int a;
+  public bkcs a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

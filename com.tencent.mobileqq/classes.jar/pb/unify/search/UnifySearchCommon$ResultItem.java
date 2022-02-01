@@ -24,6 +24,7 @@ public final class UnifySearchCommon$ResultItem
   public final PBBytesField jmp_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField layout_content = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field layout_id = PBField.initUInt32(0);
+  public final PBBytesField layout_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField ml_formula = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField pic_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -48,12 +49,13 @@ public final class UnifySearchCommon$ResultItem
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 80, 90, 96, 104, 114, 125, 130, 170, 176, 184, 194, 800 }, new String[] { "result_id", "name", "pic_url", "jmp_url", "word", "extension", "rpt_meaning", "group_mask", "sub_item_list", "layout_id", "layout_content", "is_top", "is_bottom", "dbg_msg", "final_score", "ml_formula", "sub_result_items", "result_item_type", "seporator_type", "report_ext_data", "is_multi_pic" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, null, Long.valueOf(0L), null, Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, Float.valueOf(0.0F), localByteStringMicro9, null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro10, Integer.valueOf(0) }, ResultItem.class);
+    ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 80, 90, 96, 104, 114, 125, 130, 170, 176, 184, 194, 800, 810 }, new String[] { "result_id", "name", "pic_url", "jmp_url", "word", "extension", "rpt_meaning", "group_mask", "sub_item_list", "layout_id", "layout_content", "is_top", "is_bottom", "dbg_msg", "final_score", "ml_formula", "sub_result_items", "result_item_type", "seporator_type", "report_ext_data", "is_multi_pic", "layout_name" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, null, Long.valueOf(0L), null, Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, Float.valueOf(0.0F), localByteStringMicro9, null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro10, Integer.valueOf(0), localByteStringMicro11 }, ResultItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pb.unify.search.UnifySearchCommon.ResultItem
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import mqe;
-import mqf;
+import mnj;
+import mnk;
 
 public class QavRecordButtonView
   extends View
@@ -25,7 +25,7 @@ public class QavRecordButtonView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private mqf jdField_a_of_type_Mqf;
+  private mnk jdField_a_of_type_Mnk;
   
   public QavRecordButtonView(Context paramContext)
   {
@@ -73,8 +73,8 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841887);
-    super.setOnTouchListener(new mqe(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842195);
+    super.setOnTouchListener(new mnj(this));
   }
   
   public int a()
@@ -116,9 +116,9 @@ public class QavRecordButtonView
     super.drawableStateChanged();
   }
   
-  public void setListener(mqf parammqf)
+  public void setListener(mnk parammnk)
   {
-    this.jdField_a_of_type_Mqf = parammqf;
+    this.jdField_a_of_type_Mnk = parammnk;
   }
   
   public void setProgress(long paramLong1, long paramLong2)
@@ -144,10 +144,10 @@ public class QavRecordButtonView
     for (;;)
     {
       invalidate();
-      if (this.jdField_a_of_type_Mqf == null) {
+      if (this.jdField_a_of_type_Mnk == null) {
         break;
       }
-      this.jdField_a_of_type_Mqf.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Mnk.e(this.jdField_a_of_type_Int);
       return;
       super.setAlpha(1.0F);
       if (paramBoolean)
@@ -156,10 +156,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131696244));
+          super.setContentDescription(getResources().getString(2131695124));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131696245));
+            super.setContentDescription(getResources().getString(2131695125));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }
@@ -169,7 +169,7 @@ public class QavRecordButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

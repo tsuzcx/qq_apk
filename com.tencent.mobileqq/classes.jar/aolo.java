@@ -1,74 +1,85 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class aolo
-  extends aokh<aoln>
+  extends aojs
 {
-  public static void b()
+  public aolo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    aoln localaoln = (aoln)aoks.a().a(430);
-    aoln.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaoln);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public int a()
+  private boolean C()
   {
-    return 430;
-  }
-  
-  @NonNull
-  public aoln a(int paramInt)
-  {
-    return new aoln();
-  }
-  
-  @Nullable
-  public aoln a(aoko[] paramArrayOfaoko)
-  {
-    return aoln.a(paramArrayOfaoko);
-  }
-  
-  public Class<aoln> a()
-  {
-    return aoln.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aoln paramaoln)
-  {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    aoln.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaoln);
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      if (!bmjn.a().b(this.e, this.jdField_a_of_type_JavaLangString))
+      {
+        QLog.e("QzoneAction", 1, "has no right to handle this schema");
+        return false;
+      }
+      String str;
+      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqzone"))
+      {
+        str = "mqzone" + this.jdField_a_of_type_JavaLangString.substring("mqqzone".length());
+        if (TextUtils.isEmpty(str)) {
+          break label198;
+        }
+        Intent localIntent = new Intent();
+        localIntent.putExtra("cmd", "Schema");
+        localIntent.putExtra("schema", str);
+        ups.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.d);
+        uee.a(this.jdField_a_of_type_AndroidContentContext, this.d, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, localIntent);
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          return true;
+          str = (String)bkgj.a(this.jdField_a_of_type_JavaLangString).get("schema");
+          if (!TextUtils.isEmpty(str)) {
+            try
+            {
+              str = new String(Base64.decode(str, 0), "utf-8");
+            }
+            catch (Exception localException)
+            {
+              QLog.e("QzoneAction", 1, localException, new Object[0]);
+            }
+          }
+        }
+        Object localObject = null;
+        break;
+        label198:
+        QLog.e("QzoneAction", 1, "gotoQzoneHandleSchema,schema=null");
+      }
+    }
+    return false;
   }
   
   public boolean a()
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneAction");
+    }
     return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolo
  * JD-Core Version:    0.7.0.1
  */

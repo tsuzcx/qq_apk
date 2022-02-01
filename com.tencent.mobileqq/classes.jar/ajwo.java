@@ -1,21 +1,43 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+
 public class ajwo
+  extends aoop
 {
-  public int a;
-  public boolean a;
+  ajwo(ajvr paramajvr) {}
   
-  public static int a(int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
+    if (bmqa.i()) {
+      this.a.a(39, null);
     }
-    return 180;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    super.a(paramInt, paramObject);
+    if (!bmqa.h()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    a(1, paramView);
+  }
+  
+  public void c()
+  {
+    if (!bmqa.h()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
   }
 }
 

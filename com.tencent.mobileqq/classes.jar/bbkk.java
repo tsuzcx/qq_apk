@@ -1,15 +1,30 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.List;
 
-public class bbkk
-  implements bbkd
+public abstract class bbkk
+  implements bbtj<bbkn>
 {
-  public bbkk(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  protected QQAppInterface a;
   
-  public void a(Uri paramUri)
+  public bbkk(QQAppInterface paramQQAppInterface)
   {
-    this.a.a = paramUri;
+    this.a = paramQQAppInterface;
   }
+  
+  public void a() {}
+  
+  public abstract void a(String paramString, List<FTSEntity> paramList);
+  
+  public void b() {}
+  
+  public abstract void b(bbtx parambbtx, bbtk<bbkm> parambbtk);
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

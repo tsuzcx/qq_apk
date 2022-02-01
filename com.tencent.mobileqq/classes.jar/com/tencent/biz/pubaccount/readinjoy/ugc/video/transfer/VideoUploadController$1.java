@@ -3,21 +3,21 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import qyb;
+import rua;
 
 public class VideoUploadController$1
   implements Runnable
 {
-  public VideoUploadController$1(qyb paramqyb) {}
+  public VideoUploadController$1(rua paramrua) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(qyb.a(this.this$0))) && (!TextUtils.isEmpty(qyb.b(this.this$0))) && (!qyb.a(this.this$0).equals(qyb.b(this.this$0))))
+    if ((!TextUtils.isEmpty(rua.a(this.this$0))) && (!TextUtils.isEmpty(rua.b(this.this$0))) && (!rua.a(this.this$0).equals(rua.b(this.this$0))))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + qyb.a(this.this$0) + ", compress:" + qyb.b(this.this$0));
+        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + rua.a(this.this$0) + ", compress:" + rua.b(this.this$0));
       }
-      File localFile = new File(qyb.b(this.this$0));
+      File localFile = new File(rua.b(this.this$0));
       if (localFile.exists()) {
         localFile.delete();
       }

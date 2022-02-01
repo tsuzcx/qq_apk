@@ -1,8 +1,14 @@
-abstract interface aqsa
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+
+class aqsa
+  implements bosh
 {
-  public abstract void a(int paramInt, String paramString);
+  aqsa(aqrz paramaqrz) {}
   
-  public abstract void a(String paramString);
+  public void a(String paramString)
+  {
+    ((QIMMusicConfigManager)bojv.a(2)).a(paramString);
+  }
 }
 
 

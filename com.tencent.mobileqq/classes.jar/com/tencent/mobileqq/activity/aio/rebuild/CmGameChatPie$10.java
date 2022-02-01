@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqo;
-import agoe;
+import afwy;
+import ahyk;
 
 public class CmGameChatPie$10
   implements Runnable
 {
-  public CmGameChatPie$10(agoe paramagoe) {}
+  public CmGameChatPie$10(ahyk paramahyk) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class CmGameChatPie$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.10
  * JD-Core Version:    0.7.0.1
  */

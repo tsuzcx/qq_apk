@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bizn;
+import blny;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nbv;
+import nko;
 
 public final class QReaderHelper$1
   implements Runnable
@@ -11,12 +11,12 @@ public final class QReaderHelper$1
   
   public void run()
   {
-    nbv.b("2036", this.a, true, new bizn(this));
+    nko.b("2036", this.a, true, new blny(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.QReaderHelper.1
  * JD-Core Version:    0.7.0.1
  */

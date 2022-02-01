@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.widget;
 
+import aalg;
 import android.os.Handler;
 import java.util.TimerTask;
-import yoj;
 
 class VideoNextFeedsView$2
   extends TimerTask
@@ -28,7 +28,7 @@ class VideoNextFeedsView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.VideoNextFeedsView.2
  * JD-Core Version:    0.7.0.1
  */

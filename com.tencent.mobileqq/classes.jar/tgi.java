@@ -1,10 +1,12 @@
-class tgi
+import android.graphics.RectF;
+
+public abstract interface tgi
 {
-  private static final tgg a = new tgg();
+  public abstract void a(RectF paramRectF);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgi
  * JD-Core Version:    0.7.0.1
  */

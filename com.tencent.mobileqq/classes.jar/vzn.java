@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
 class vzn
-  implements DialogInterface.OnDismissListener
+  implements vpo
 {
-  vzn(vzl paramvzl, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  vzn(vzl paramvzl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    vzl.a(this.jdField_a_of_type_Vzl).a = vzl.a(this.jdField_a_of_type_Vzl).a();
+    vrc.a(35, 2, this.a.a, this.a.b());
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzn
  * JD-Core Version:    0.7.0.1
  */

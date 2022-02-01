@@ -13,7 +13,7 @@ class ActivateFriendActivity$8
   public void run()
   {
     int i = this.this$0.app.a().b();
-    Object localObject2 = this.this$0.app.getApp().getString(2131720582);
+    Object localObject2 = this.this$0.app.getApp().getString(2131718387);
     Object localObject1 = localObject2;
     if (i > 0)
     {
@@ -33,7 +33,7 @@ class ActivateFriendActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.8
  * JD-Core Version:    0.7.0.1
  */

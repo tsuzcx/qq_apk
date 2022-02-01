@@ -1,44 +1,17 @@
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+
 public class bnrc
+  extends BaseFilter
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
-  
-  public long a(float paramFloat)
+  public bnrc()
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\n  float ty = textureCoordinate.y * 0.5;\n  float ny = ty + 0.5;\n  vec2 newCoord1 = vec2(textureCoordinate.x,ty);\n  vec2 newCoord2 = vec2(textureCoordinate.x,ny);\n  vec3 color = texture2D(inputImageTexture,newCoord1).xyz;\n  float alpha = 1.0-texture2D(inputImageTexture,newCoord2).r;\n  float newAlpha = step(0.5,alpha);\n\n  gl_FragColor = vec4(color,newAlpha);\n}");
   }
   
-  public long a(long paramLong)
+  public void a(Frame paramFrame1, int paramInt1, int paramInt2, Frame paramFrame2)
   {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
-    }
-    return paramLong * 1000L;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
+    RenderProcess(paramFrame1.getTextureId(), paramInt1, paramInt2, -1, 0.0D, paramFrame2);
   }
 }
 

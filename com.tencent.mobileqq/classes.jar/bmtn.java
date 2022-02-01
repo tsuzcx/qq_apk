@@ -1,8 +1,6 @@
 public abstract interface bmtn
 {
-  public abstract void a();
-  
-  public abstract void a(bmyj parambmyj);
+  public abstract void a(boolean paramBoolean);
 }
 
 

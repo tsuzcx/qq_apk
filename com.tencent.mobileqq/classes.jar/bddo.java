@@ -1,43 +1,17 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-final class bddo
-  implements URLDrawable.URLDrawableListener
+class bddo
+  implements Callable<File>
 {
-  bddo(View paramView) {}
+  bddo(bddn parambddn) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public File a()
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (bddn.a(this.a).exists()) {
+      return bddn.a(this.a);
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, xsm.a(BaseApplicationImpl.getContext(), 47.0F), xsm.a(BaseApplicationImpl.getContext(), 14.0F));
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    return null;
   }
 }
 

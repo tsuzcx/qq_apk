@@ -1,51 +1,60 @@
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class axqg
-  implements View.OnTouchListener
+  extends BaseAdapter
 {
-  public axqg(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public axqg(TopicLabelListView paramTopicLabelListView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + CameraCaptureButtonLayout.a(this.a));
+    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
-    this.a.a();
-    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, CameraCaptureButtonLayout.a(this.a));
-    if (CameraCaptureButtonLayout.a(this.a)) {}
-    do
+    return TopicLabelListView.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
-      }
-    } while (CameraCaptureButtonLayout.b(this.a));
-    if ((CameraCaptureButtonLayout.a(this.a) != null) && (!CameraCaptureButtonLayout.a(this.a).a())) {
-      return true;
+      paramView = new axqh(this.a, null);
+      localObject = new LabelViewItem(TopicLabelListView.a(this.a));
+      ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      ((View)localObject).setTag(paramView);
     }
-    this.a.b();
-    if ((CameraCaptureButtonLayout.a(this.a) == 3) || (CameraCaptureButtonLayout.a(this.a) == 1)) {
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
+    for (;;)
+    {
+      paramView.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+      ((LabelViewItem)localObject).setText(paramView.a);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      axqh localaxqh = (axqh)paramView.getTag();
+      localObject = paramView;
+      paramView = localaxqh;
     }
-    CameraCaptureButtonLayout.a(this.a, true);
-    return true;
-    CameraCaptureButtonLayout.b(this.a);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ajsu;
-import alof;
+import allk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,18 +9,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import azek;
-import azel;
-import azfd;
-import azfe;
-import azff;
-import azfx;
-import azhf;
-import azib;
-import azkt;
-import bdhb;
-import bdzf;
-import bhtb;
+import anhk;
+import bcfk;
+import bcfl;
+import bcgd;
+import bcge;
+import bcgf;
+import bcgx;
+import bcif;
+import bcjb;
+import bcls;
+import bgmg;
+import bhgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
@@ -30,19 +29,20 @@ import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import com.tencent.video.decode.ShortVideoSoLoad;
 import java.io.File;
 import java.util.ArrayList;
-import lnz;
+import lkw;
 
 public class VideoEnvironment
 {
   public static int a;
   public static Handler a;
-  public static azfe a;
+  public static bcge a;
   private static Object jdField_a_of_type_JavaLangObject;
   public static String a;
-  private static ArrayList<azff> jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
+  private static ArrayList<bcgf> jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
   public static boolean a;
   public static final int[] a;
   public static final String[] a;
@@ -59,7 +59,7 @@ public class VideoEnvironment
   static
   {
     jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaLangString = bdzf.a(alof.aW + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo");
+    jdField_a_of_type_JavaLangString = bhgg.a(anhk.aZ + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo");
     File localFile = new File(ShortVideoSoLoad.getShortVideoSoPath(a()));
     if (!localFile.exists())
     {
@@ -71,7 +71,7 @@ public class VideoEnvironment
     jdField_b_of_type_JavaLangObject = new Object();
     jdField_b_of_type_JavaLangString = "backup" + File.separatorChar;
     jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Azfe = new azfe();
+    jdField_a_of_type_Bcge = new bcge();
     jdField_c_of_type_JavaLangObject = new Object();
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "1920*1080", "1280*720", "960*720", "640*480" };
     jdField_a_of_type_ArrayOfInt = new int[] { 1920, 1280, 960, 640 };
@@ -177,17 +177,17 @@ public class VideoEnvironment
   
   private static int a(String[] paramArrayOfString)
   {
-    String str = azek.a();
+    String str = bcfk.a();
     a("LoadPathso: currentSoName=" + str, null);
     if (str.equals("d000_1")) {
       return -11;
     }
-    Object localObject = azek.a(str);
-    int i = ((azel)localObject).a();
+    Object localObject = bcfk.a(str);
+    int i = ((bcfl)localObject).a();
     a("LoadPathso: CfgParser err=" + i, null);
     if (i == 0)
     {
-      localObject = ((azel)localObject).b();
+      localObject = ((bcfl)localObject).b();
       a("LoadPathso: currentVersion=" + (String)localObject + " dymAVCodecVersion=" + 65, null);
       if (Integer.parseInt((String)localObject) >= 65)
       {
@@ -236,9 +236,9 @@ public class VideoEnvironment
     if ((jdField_a_of_type_Int & 0x1) == 0) {
       synchronized (jdField_c_of_type_JavaLangObject)
       {
-        azib.jdField_g_of_type_Int = jdField_a_of_type_Azfe.jdField_b_of_type_Int;
-        azib.h = jdField_a_of_type_Azfe.u;
-        azib.i = jdField_a_of_type_Azfe.v;
+        bcjb.jdField_g_of_type_Int = jdField_a_of_type_Bcge.jdField_b_of_type_Int;
+        bcjb.h = jdField_a_of_type_Bcge.u;
+        bcjb.i = jdField_a_of_type_Bcge.v;
         jdField_a_of_type_Int |= 0x1;
         return;
       }
@@ -263,8 +263,8 @@ public class VideoEnvironment
       int i = 0;
       while (i < localObject.length)
       {
-        azff localazff = (azff)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new VideoEnvironment.2(localazff, paramInt));
+        bcgf localbcgf = (bcgf)localObject[i];
+        jdField_a_of_type_AndroidOsHandler.post(new VideoEnvironment.2(localbcgf, paramInt));
         i += 1;
       }
     }
@@ -284,27 +284,27 @@ public class VideoEnvironment
       ((SharedPreferences)localObject).edit().putInt("flow_filter_clear_key", 1).commit();
     }
     a("initBuiltInDoCopyEnvStep:clear earlyDownload cache data...", null);
-    azkt.b();
+    bcls.a();
     a("initBuiltInDoCopyEnvStep:[end]...", null);
   }
   
   public static void a(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      azib.r = paramInt * 1000;
+      bcjb.r = paramInt * 1000;
     }
-    for (azib.r += 100000;; azib.r += 350000)
+    for (bcjb.r += 100000;; bcjb.r += 350000)
     {
-      azib.s *= 4;
+      bcjb.s *= 4;
       return;
     }
   }
   
-  public static void a(azfe paramazfe)
+  public static void a(bcge parambcge)
   {
     synchronized (jdField_c_of_type_JavaLangObject)
     {
-      jdField_a_of_type_Azfe = paramazfe;
+      jdField_a_of_type_Bcge = parambcge;
       jdField_a_of_type_Int = 0;
       return;
     }
@@ -334,7 +334,7 @@ public class VideoEnvironment
     if (QLog.isColorLevel()) {
       QLog.d("VideoEnvironment", 2, "initConfig(): config=" + paramString);
     }
-    azfe localazfe = new azfe();
+    bcge localbcge = new bcge();
     try
     {
       paramAppInterface = paramString.split(",");
@@ -378,7 +378,7 @@ public class VideoEnvironment
       if (QLog.isColorLevel()) {
         QLog.d("VideoEnvironment", 2, "initConfig(): time cost " + (l2 - l1) + "ms");
       }
-      a(localazfe);
+      a(localbcge);
       return;
       paramAppInterface = paramString[3].split("\\*");
       if ((paramAppInterface == null) || (paramAppInterface.length != 2))
@@ -389,21 +389,21 @@ public class VideoEnvironment
         QLog.d("VideoEnvironment", 2, "initConfig(): resolution is null or length is not 2");
         return;
       }
-      localazfe.jdField_a_of_type_Int = 0;
-      localazfe.jdField_d_of_type_Int = Integer.valueOf(paramAppInterface[0]).intValue();
-      localazfe.jdField_e_of_type_Int = Integer.valueOf(paramAppInterface[1]).intValue();
-      localazfe.jdField_b_of_type_Int = Integer.valueOf(paramString[0]).intValue();
-      localazfe.jdField_c_of_type_Int = Integer.valueOf(paramString[1]).intValue();
-      localazfe.l = Integer.valueOf(paramString[2]).intValue();
-      localazfe.jdField_f_of_type_Int = Integer.valueOf(paramString[4]).intValue();
-      localazfe.jdField_g_of_type_Int = Integer.valueOf(paramString[5]).intValue();
-      localazfe.i = Integer.valueOf(paramString[6]).intValue();
-      localazfe.h = Integer.valueOf(paramString[7]).intValue();
-      localazfe.j = Integer.valueOf(paramString[8]).intValue();
-      localazfe.k = Integer.valueOf(paramString[9]).intValue();
-      localazfe.m = Integer.valueOf(paramString[10]).intValue();
-      localazfe.n = Integer.valueOf(paramString[11]).intValue();
-      localazfe.o = Integer.valueOf(paramString[12]).intValue();
+      localbcge.jdField_a_of_type_Int = 0;
+      localbcge.jdField_d_of_type_Int = Integer.valueOf(paramAppInterface[0]).intValue();
+      localbcge.jdField_e_of_type_Int = Integer.valueOf(paramAppInterface[1]).intValue();
+      localbcge.jdField_b_of_type_Int = Integer.valueOf(paramString[0]).intValue();
+      localbcge.jdField_c_of_type_Int = Integer.valueOf(paramString[1]).intValue();
+      localbcge.l = Integer.valueOf(paramString[2]).intValue();
+      localbcge.jdField_f_of_type_Int = Integer.valueOf(paramString[4]).intValue();
+      localbcge.jdField_g_of_type_Int = Integer.valueOf(paramString[5]).intValue();
+      localbcge.i = Integer.valueOf(paramString[6]).intValue();
+      localbcge.h = Integer.valueOf(paramString[7]).intValue();
+      localbcge.j = Integer.valueOf(paramString[8]).intValue();
+      localbcge.k = Integer.valueOf(paramString[9]).intValue();
+      localbcge.m = Integer.valueOf(paramString[10]).intValue();
+      localbcge.n = Integer.valueOf(paramString[11]).intValue();
+      localbcge.o = Integer.valueOf(paramString[12]).intValue();
       if (paramString.length < 17)
       {
         i = 1;
@@ -414,27 +414,27 @@ public class VideoEnvironment
         if (QLog.isColorLevel()) {
           QLog.d("VideoEnvironment", 2, "initConfig(): (resolutions == null) || (resolutions.length == 0) || (indexs.length != 3)");
         }
-        localazfe.jdField_a_of_type_ArrayOfInt = new int[] { localazfe.jdField_d_of_type_Int };
-        localazfe.jdField_b_of_type_ArrayOfInt = new int[] { localazfe.jdField_e_of_type_Int };
-        localazfe.p = 0;
-        localazfe.q = 0;
+        localbcge.jdField_a_of_type_ArrayOfInt = new int[] { localbcge.jdField_d_of_type_Int };
+        localbcge.jdField_b_of_type_ArrayOfInt = new int[] { localbcge.jdField_e_of_type_Int };
+        localbcge.p = 0;
+        localbcge.q = 0;
       }
       label842:
       label1102:
       label1124:
       label1146:
-      for (localazfe.r = 0;; localazfe.r = i)
+      for (localbcge.r = 0;; localbcge.r = i)
       {
         if (paramString.length <= 25) {
           break label1153;
         }
         paramAppInterface = a(paramString[17], "").split(";");
-        localazfe.jdField_e_of_type_ArrayOfInt = new int[paramAppInterface.length];
+        localbcge.jdField_e_of_type_ArrayOfInt = new int[paramAppInterface.length];
         i = 0;
         while (i < paramAppInterface.length)
         {
           localObject1 = paramAppInterface[i];
-          localazfe.jdField_e_of_type_ArrayOfInt[i] = Integer.valueOf((String)localObject1).intValue();
+          localbcge.jdField_e_of_type_ArrayOfInt[i] = Integer.valueOf((String)localObject1).intValue();
           i += 1;
         }
         paramAppInterface = a(paramString[13], "");
@@ -448,10 +448,10 @@ public class VideoEnvironment
         if ((paramAppInterface == null) || (paramAppInterface.length == 0)) {
           break label1728;
         }
-        localazfe.jdField_a_of_type_ArrayOfInt = new int[paramAppInterface.length];
-        localazfe.jdField_b_of_type_ArrayOfInt = new int[paramAppInterface.length];
-        localazfe.jdField_c_of_type_ArrayOfInt = new int[paramAppInterface.length];
-        localazfe.jdField_d_of_type_ArrayOfInt = new int[paramAppInterface.length];
+        localbcge.jdField_a_of_type_ArrayOfInt = new int[paramAppInterface.length];
+        localbcge.jdField_b_of_type_ArrayOfInt = new int[paramAppInterface.length];
+        localbcge.jdField_c_of_type_ArrayOfInt = new int[paramAppInterface.length];
+        localbcge.jdField_d_of_type_ArrayOfInt = new int[paramAppInterface.length];
         i = 0;
         if (i >= paramAppInterface.length) {
           break label1722;
@@ -466,80 +466,80 @@ public class VideoEnvironment
           if (QLog.isColorLevel()) {
             QLog.d("VideoEnvironment", 2, "initConfig(): res is null or length is not 2");
           }
-          localazfe.jdField_a_of_type_ArrayOfInt[i] = localazfe.jdField_d_of_type_Int;
-          localazfe.jdField_b_of_type_ArrayOfInt[i] = localazfe.jdField_e_of_type_Int;
+          localbcge.jdField_a_of_type_ArrayOfInt[i] = localbcge.jdField_d_of_type_Int;
+          localbcge.jdField_b_of_type_ArrayOfInt[i] = localbcge.jdField_e_of_type_Int;
         }
         while ((localObject1[1] != null) && (localObject1[2] != null))
         {
-          localazfe.jdField_c_of_type_ArrayOfInt[i] = Integer.valueOf(localObject1[1]).intValue();
-          localazfe.jdField_d_of_type_ArrayOfInt[i] = Integer.valueOf(localObject1[2]).intValue();
+          localbcge.jdField_c_of_type_ArrayOfInt[i] = Integer.valueOf(localObject1[1]).intValue();
+          localbcge.jdField_d_of_type_ArrayOfInt[i] = Integer.valueOf(localObject1[2]).intValue();
           break;
-          localazfe.jdField_a_of_type_ArrayOfInt[i] = Integer.valueOf(localObject2[0]).intValue();
-          localazfe.jdField_b_of_type_ArrayOfInt[i] = Integer.valueOf(localObject2[1]).intValue();
+          localbcge.jdField_a_of_type_ArrayOfInt[i] = Integer.valueOf(localObject2[0]).intValue();
+          localbcge.jdField_b_of_type_ArrayOfInt[i] = Integer.valueOf(localObject2[1]).intValue();
         }
         label1023:
-        localazfe.p = Integer.valueOf(a(paramString[14], "0")).intValue();
-        localazfe.q = Integer.valueOf(a(paramString[15], "0")).intValue();
-        localazfe.r = Integer.valueOf(a(paramString[16], "0")).intValue();
-        if (localazfe.p >= paramAppInterface.length) {
+        localbcge.p = Integer.valueOf(a(paramString[14], "0")).intValue();
+        localbcge.q = Integer.valueOf(a(paramString[15], "0")).intValue();
+        localbcge.r = Integer.valueOf(a(paramString[16], "0")).intValue();
+        if (localbcge.p >= paramAppInterface.length) {
           break label1740;
         }
-        i = localazfe.p;
-        localazfe.p = i;
-        if (localazfe.q >= paramAppInterface.length) {
+        i = localbcge.p;
+        localbcge.p = i;
+        if (localbcge.q >= paramAppInterface.length) {
           break label1745;
         }
-        i = localazfe.q;
-        localazfe.q = i;
-        if (localazfe.r >= paramAppInterface.length) {
+        i = localbcge.q;
+        localbcge.q = i;
+        if (localbcge.r >= paramAppInterface.length) {
           break label1750;
         }
-        i = localazfe.r;
+        i = localbcge.r;
       }
     }
     paramAppInterface = a(paramString[18], "").split(";");
-    localazfe.jdField_f_of_type_ArrayOfInt = new int[paramAppInterface.length];
+    localbcge.jdField_f_of_type_ArrayOfInt = new int[paramAppInterface.length];
     int i = 0;
     while (i < paramAppInterface.length)
     {
       localObject1 = paramAppInterface[i];
-      localazfe.jdField_f_of_type_ArrayOfInt[i] = Integer.valueOf((String)localObject1).intValue();
+      localbcge.jdField_f_of_type_ArrayOfInt[i] = Integer.valueOf((String)localObject1).intValue();
       i += 1;
     }
     Object localObject1 = a(paramString[19], "").split(";");
-    localazfe.jdField_g_of_type_ArrayOfInt = new int[paramAppInterface.length];
+    localbcge.jdField_g_of_type_ArrayOfInt = new int[paramAppInterface.length];
     i = 0;
     while (i < localObject1.length)
     {
       paramAppInterface = localObject1[i];
-      localazfe.jdField_g_of_type_ArrayOfInt[i] = Integer.valueOf(paramAppInterface).intValue();
+      localbcge.jdField_g_of_type_ArrayOfInt[i] = Integer.valueOf(paramAppInterface).intValue();
       i += 1;
     }
     paramAppInterface = a(paramString[20], "").split(";");
     if ((paramAppInterface != null) && (paramAppInterface.length == 2))
     {
-      localazfe.s = Integer.valueOf(paramAppInterface[0]).intValue();
-      localazfe.t = Integer.valueOf(paramAppInterface[1]).intValue();
+      localbcge.s = Integer.valueOf(paramAppInterface[0]).intValue();
+      localbcge.t = Integer.valueOf(paramAppInterface[1]).intValue();
     }
-    localazfe.jdField_b_of_type_Boolean = a(paramString[21], "").toLowerCase().contains(Build.MODEL.toLowerCase());
-    if (!azhf.d(azhf.i)) {
-      if (!azhf.b(azhf.G)) {
+    localbcge.jdField_b_of_type_Boolean = a(paramString[21], "").toLowerCase().contains(Build.MODEL.toLowerCase());
+    if (!bcif.d(bcif.i)) {
+      if (!bcif.b(bcif.G)) {
         break label1767;
       }
     }
     for (;;)
     {
       label1381:
-      localazfe.jdField_c_of_type_Boolean = paramBoolean;
-      if (!localazfe.jdField_c_of_type_Boolean) {
-        localazfe.jdField_c_of_type_Boolean = c(a(paramString[22], ""));
+      localbcge.jdField_c_of_type_Boolean = paramBoolean;
+      if (!localbcge.jdField_c_of_type_Boolean) {
+        localbcge.jdField_c_of_type_Boolean = c(a(paramString[22], ""));
       }
-      localazfe.jdField_a_of_type_Boolean = a(paramString[23], "").equals("1");
+      localbcge.jdField_a_of_type_Boolean = a(paramString[23], "").equals("1");
       paramAppInterface = a(paramString[24], "").split(";");
       if ((paramAppInterface != null) && (paramAppInterface.length == 2))
       {
-        localazfe.u = Integer.valueOf(paramAppInterface[0]).intValue();
-        localazfe.v = Integer.valueOf(paramAppInterface[1]).intValue();
+        localbcge.u = Integer.valueOf(paramAppInterface[0]).intValue();
+        localbcge.v = Integer.valueOf(paramAppInterface[1]).intValue();
       }
       paramAppInterface = paramString[25].split(";");
       if ((paramAppInterface != null) && (paramAppInterface.length > 0)) {
@@ -556,26 +556,26 @@ public class VideoEnvironment
               break label1760;
             }
             int j = Integer.valueOf(localObject1[0]).intValue();
-            localObject2 = new azfd();
-            ((azfd)localObject2).jdField_a_of_type_Int = Integer.valueOf(localObject1[1]).intValue();
-            ((azfd)localObject2).jdField_c_of_type_Int = Integer.valueOf(localObject1[2]).intValue();
-            ((azfd)localObject2).jdField_d_of_type_Int = Integer.valueOf(localObject1[3]).intValue();
-            ((azfd)localObject2).jdField_b_of_type_Int = Integer.valueOf(localObject1[4]).intValue();
-            localazfe.jdField_a_of_type_AndroidUtilSparseArray.put(j, localObject2);
+            localObject2 = new bcgd();
+            ((bcgd)localObject2).jdField_a_of_type_Int = Integer.valueOf(localObject1[1]).intValue();
+            ((bcgd)localObject2).jdField_c_of_type_Int = Integer.valueOf(localObject1[2]).intValue();
+            ((bcgd)localObject2).jdField_d_of_type_Int = Integer.valueOf(localObject1[3]).intValue();
+            ((bcgd)localObject2).jdField_b_of_type_Int = Integer.valueOf(localObject1[4]).intValue();
+            localbcge.jdField_a_of_type_AndroidUtilSparseArray.put(j, localObject2);
             break label1760;
           }
           i = paramString.length;
           if (i > 26) {}
           try
           {
-            localazfe.jdField_a_of_type_Float = Float.parseFloat(paramString[26]);
-            if ((localazfe.jdField_a_of_type_Float < 0.0F) || (localazfe.jdField_a_of_type_Float > 1.0F)) {
-              localazfe.jdField_a_of_type_Float = 1.0F;
+            localbcge.jdField_a_of_type_Float = Float.parseFloat(paramString[26]);
+            if ((localbcge.jdField_a_of_type_Float < 0.0F) || (localbcge.jdField_a_of_type_Float > 1.0F)) {
+              localbcge.jdField_a_of_type_Float = 1.0F;
             }
             if (paramString.length <= 27) {
               break;
             }
-            localazfe.jdField_d_of_type_Boolean = a(paramString[27], "0").equals("1");
+            localbcge.jdField_d_of_type_Boolean = a(paramString[27], "0").equals("1");
           }
           catch (NumberFormatException paramAppInterface)
           {
@@ -664,8 +664,8 @@ public class VideoEnvironment
       int i = 0;
       while (i < paramAppInterface.length)
       {
-        azff localazff = (azff)paramAppInterface[i];
-        jdField_a_of_type_AndroidOsHandler.post(new VideoEnvironment.3(localazff, paramBoolean));
+        bcgf localbcgf = (bcgf)paramAppInterface[i];
+        jdField_a_of_type_AndroidOsHandler.post(new VideoEnvironment.3(localbcgf, paramBoolean));
         i += 1;
       }
     }
@@ -679,7 +679,7 @@ public class VideoEnvironment
     do
     {
       return false;
-      bool1 = lnz.e();
+      bool1 = lkw.d();
       bool2 = f();
       if (QLog.isColorLevel()) {
         QLog.d("VideoEnvironment", 2, "isX86Platform: isBeautySupported=" + bool1 + " isSoSupportBeauty=" + bool2);
@@ -711,7 +711,7 @@ public class VideoEnvironment
   
   public static boolean a(AppInterface paramAppInterface)
   {
-    return (bhtb.d()) && (c(paramAppInterface)) && (!g());
+    return (VersionUtils.isIceScreamSandwich()) && (c(paramAppInterface)) && (!g());
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -739,7 +739,7 @@ public class VideoEnvironment
               a("VideoEnvironment:[uncompressZipSo][has back file] path=" + paramQQAppInterface, null);
               localFile.delete();
             }
-            bdhb.a(paramString, (String)localObject2, false);
+            bgmg.a(paramString, (String)localObject2, false);
             bool1 = localFile.exists();
             a("VideoEnvironment:[end uncompressZipSo] existsFile=" + bool1, null);
             if (bool1) {
@@ -765,22 +765,22 @@ public class VideoEnvironment
     if (!paramString.exists()) {
       throw new RuntimeException("After uncompressZip,config_version file not exist...");
     }
-    localObject2 = azek.a(azek.a(paramString));
-    paramInt = ((azel)localObject2).a();
+    localObject2 = bcfk.a(bcfk.a(paramString));
+    paramInt = ((bcfl)localObject2).a();
     if (paramInt != 0)
     {
       a("VideoEnvironment:[uncompressZipSo][createParser] errorCodec=" + paramInt, null);
       throw new RuntimeException("createParser err=" + paramInt);
     }
-    Object localObject3 = azek.a(paramQQAppInterface);
-    paramString = ((azel)localObject2).a();
+    Object localObject3 = bcfk.a(paramQQAppInterface);
+    paramString = ((bcfl)localObject2).a();
     a("VideoEnvironment:[uncompressZipSo][Md5] md5Cfg=" + paramString + " md5Cmp=" + (String)localObject3, null);
     if (!paramString.equalsIgnoreCase((String)localObject3)) {
       throw new RuntimeException("[Md5 error] md5Cfg=" + paramString + " md5Cmp=" + (String)localObject3);
     }
     long l1 = localFile.length();
-    localObject3 = ((azel)localObject2).b().trim();
-    localObject2 = azek.a(paramString, (String)localObject3);
+    localObject3 = ((bcfl)localObject2).b().trim();
+    localObject2 = bcfk.a(paramString, (String)localObject3);
     a("VideoEnvironment:[uncompressZipSo][trim] versionvalid=" + (String)localObject3 + " soNewName=" + (String)localObject2, null);
     str1 = str1 + (String)localObject2;
     localObject3 = new File(str1);
@@ -790,7 +790,7 @@ public class VideoEnvironment
     if (((File)localObject3).exists())
     {
       l2 = ((File)localObject3).length();
-      str2 = azek.a(str1);
+      str2 = bcfk.a(str1);
       if (!paramString.equalsIgnoreCase(str2))
       {
         bool1 = true;
@@ -853,9 +853,9 @@ public class VideoEnvironment
       a("copySoToFilesDir: srcPath=" + str3 + " dstPath=" + str1 + " dstExists=" + bool, null);
       if (bool)
       {
-        String str2 = azek.a(str3);
+        String str2 = bcfk.a(str3);
         a("copySoToFilesDir:[destFile exists] srcMd5=" + str2 + " srcPath=" + str3, null);
-        str3 = azek.a(str1);
+        str3 = bcfk.a(str1);
         a("copySoToFilesDir:[destFile exists] dstMd5=" + str3 + " dstPath=" + str1, null);
         if ((str2 != null) && (!"".equals(str2)) && (str2.equalsIgnoreCase(str3))) {
           return true;
@@ -863,7 +863,7 @@ public class VideoEnvironment
         paramFile2.delete();
       }
       l1 = paramFile1.length();
-      bdhb.b(paramFile1, paramFile2);
+      bgmg.b(paramFile1, paramFile2);
       l2 = paramFile2.length();
       a("copySoToFilesDir: soSize=" + l1 + " deSize=" + l2, null);
     } while (l1 != l2);
@@ -873,18 +873,18 @@ public class VideoEnvironment
   private static boolean a(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    boolean bool3 = azek.a(paramString2);
+    boolean bool3 = bcfk.a(paramString2);
     a(paramString1 + " saveSuccess=" + bool3, null);
     boolean bool1 = bool2;
     if (!bool3)
     {
-      bool3 = azek.a(paramString2);
+      bool3 = bcfk.a(paramString2);
       a(paramString1 + " saveSuccessTwo=" + bool3, null);
       bool1 = bool2;
       if (!bool3)
       {
         bool1 = true;
-        bool2 = azek.a("d000_1");
+        bool2 = bcfk.a("d000_1");
         a("VideoEnvironment", paramString1 + "clearMemoryOK=" + bool2 + ",signature=" + paramString2, null);
       }
     }
@@ -901,30 +901,30 @@ public class VideoEnvironment
     {
       try
       {
-        localObject1 = azfx.jdField_d_of_type_ArrayOfInt;
+        localObject1 = bcgx.jdField_d_of_type_ArrayOfInt;
         localObject3 = localObject1;
-        if (localObject1.length != azfx.jdField_d_of_type_ArrayOfInt.length) {
-          localObject3 = azfx.jdField_d_of_type_ArrayOfInt;
+        if (localObject1.length != bcgx.jdField_d_of_type_ArrayOfInt.length) {
+          localObject3 = bcgx.jdField_d_of_type_ArrayOfInt;
         }
         return localObject3;
       }
       finally {}
-      Object localObject3 = jdField_a_of_type_Azfe.jdField_f_of_type_ArrayOfInt;
+      Object localObject3 = jdField_a_of_type_Bcge.jdField_f_of_type_ArrayOfInt;
       Object localObject1 = localObject3;
       if (localObject3 == null)
       {
-        localObject1 = azfx.jdField_f_of_type_ArrayOfInt;
+        localObject1 = bcgx.jdField_f_of_type_ArrayOfInt;
         continue;
-        localObject3 = jdField_a_of_type_Azfe.jdField_g_of_type_ArrayOfInt;
+        localObject3 = jdField_a_of_type_Bcge.jdField_g_of_type_ArrayOfInt;
         localObject1 = localObject3;
         if (localObject3 == null)
         {
-          localObject1 = azfx.jdField_e_of_type_ArrayOfInt;
+          localObject1 = bcgx.jdField_e_of_type_ArrayOfInt;
           continue;
-          localObject3 = jdField_a_of_type_Azfe.jdField_e_of_type_ArrayOfInt;
+          localObject3 = jdField_a_of_type_Bcge.jdField_e_of_type_ArrayOfInt;
           localObject1 = localObject3;
           if (localObject3 == null) {
-            localObject1 = azfx.jdField_d_of_type_ArrayOfInt;
+            localObject1 = bcgx.jdField_d_of_type_ArrayOfInt;
           }
         }
       }
@@ -946,39 +946,39 @@ public class VideoEnvironment
     {
       synchronized (jdField_c_of_type_JavaLangObject)
       {
-        if ((jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt == null) || (jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt == null) || (jdField_a_of_type_Azfe.jdField_c_of_type_ArrayOfInt == null) || (jdField_a_of_type_Azfe.jdField_d_of_type_ArrayOfInt == null)) {
+        if ((jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt == null) || (jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt == null) || (jdField_a_of_type_Bcge.jdField_c_of_type_ArrayOfInt == null) || (jdField_a_of_type_Bcge.jdField_d_of_type_ArrayOfInt == null)) {
           return null;
         }
-        if (jdField_a_of_type_Azfe.jdField_a_of_type_Boolean)
+        if (jdField_a_of_type_Bcge.jdField_a_of_type_Boolean)
         {
-          arrayOfInt[0] = jdField_a_of_type_Azfe.jdField_d_of_type_Int;
-          arrayOfInt[1] = jdField_a_of_type_Azfe.jdField_e_of_type_Int;
-          arrayOfInt[2] = jdField_a_of_type_Azfe.jdField_c_of_type_ArrayOfInt[1];
-          arrayOfInt[3] = jdField_a_of_type_Azfe.jdField_d_of_type_ArrayOfInt[1];
-          i = jdField_a_of_type_Azfe.jdField_d_of_type_Int;
-          paramInt = jdField_a_of_type_Azfe.jdField_e_of_type_Int;
+          arrayOfInt[0] = jdField_a_of_type_Bcge.jdField_d_of_type_Int;
+          arrayOfInt[1] = jdField_a_of_type_Bcge.jdField_e_of_type_Int;
+          arrayOfInt[2] = jdField_a_of_type_Bcge.jdField_c_of_type_ArrayOfInt[1];
+          arrayOfInt[3] = jdField_a_of_type_Bcge.jdField_d_of_type_ArrayOfInt[1];
+          i = jdField_a_of_type_Bcge.jdField_d_of_type_Int;
+          paramInt = jdField_a_of_type_Bcge.jdField_e_of_type_Int;
           localObject1 = arrayOfInt;
           j = i;
           m = paramInt;
-          ajrw.jdField_a_of_type_JavaLangString = j + "*" + m;
+          alkm.jdField_a_of_type_JavaLangString = j + "*" + m;
           if ((localObject1 == null) || (localObject1.length < 2)) {
             break label675;
           }
           QLog.d("DynamicAdjustment", 2, "预览分辨率 : " + localObject1[0] + " * " + localObject1[1]);
           return localObject1;
         }
-        if ((jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt != null) && (jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt != null))
+        if ((jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt != null) && (jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt != null))
         {
-          if (!jdField_a_of_type_Azfe.jdField_b_of_type_Boolean) {
+          if (!jdField_a_of_type_Bcge.jdField_b_of_type_Boolean) {
             break label678;
           }
           if (paramBoolean)
           {
             break label678;
             label274:
-            i = jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt[paramInt];
-            j = jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt[paramInt];
-            if (jdField_a_of_type_Azfe.jdField_d_of_type_Boolean)
+            i = jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt[paramInt];
+            j = jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt[paramInt];
+            if (jdField_a_of_type_Bcge.jdField_d_of_type_Boolean)
             {
               if (QLog.isColorLevel()) {
                 QLog.d("VideoEnvironment", 2, "dynamic adjust is enable");
@@ -990,29 +990,29 @@ public class VideoEnvironment
       }
       for (;;)
       {
-        ajsu localajsu;
+        allk localallk;
         try
         {
           localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("DynamicAdjustment", 4).getString("SVDNAdjustment_quality_resolution", null);
           k = paramInt;
-          localajsu = ajsu.a((String)localObject1);
+          localallk = allk.a((String)localObject1);
           k = paramInt;
           paramInt = 0;
-          if (localajsu == null) {
+          if (localallk == null) {
             break label717;
           }
         }
         catch (NumberFormatException localNumberFormatException1) {}
         try
         {
-          if (paramInt >= jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt.length) {
+          if (paramInt >= jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt.length) {
             break label717;
           }
           m = k;
-          if (jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt[paramInt] == localajsu.jdField_a_of_type_Int)
+          if (jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt[paramInt] == localallk.jdField_a_of_type_Int)
           {
-            int n = jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt[paramInt];
-            int i1 = localajsu.jdField_b_of_type_Int;
+            int n = jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt[paramInt];
+            int i1 = localallk.jdField_b_of_type_Int;
             m = k;
             if (n == i1)
             {
@@ -1032,18 +1032,18 @@ public class VideoEnvironment
           paramInt = k;
         }
       }
-      paramInt = jdField_a_of_type_Azfe.q;
+      paramInt = jdField_a_of_type_Bcge.q;
       continue;
-      paramInt = jdField_a_of_type_Azfe.r;
+      paramInt = jdField_a_of_type_Bcge.r;
       continue;
-      paramInt = jdField_a_of_type_Azfe.p;
+      paramInt = jdField_a_of_type_Bcge.p;
     }
     for (;;)
     {
-      arrayOfInt[0] = jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt[j];
-      arrayOfInt[1] = jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt[j];
-      arrayOfInt[2] = jdField_a_of_type_Azfe.jdField_c_of_type_ArrayOfInt[j];
-      arrayOfInt[3] = jdField_a_of_type_Azfe.jdField_d_of_type_ArrayOfInt[j];
+      arrayOfInt[0] = jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt[j];
+      arrayOfInt[1] = jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt[j];
+      arrayOfInt[2] = jdField_a_of_type_Bcge.jdField_c_of_type_ArrayOfInt[j];
+      arrayOfInt[3] = jdField_a_of_type_Bcge.jdField_d_of_type_ArrayOfInt[j];
       localObject1 = arrayOfInt;
       break;
       localObject2 = finally;
@@ -1060,8 +1060,8 @@ public class VideoEnvironment
           j = paramInt;
           paramInt = k;
           continue;
-          i = jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfInt[0];
-          paramInt = jdField_a_of_type_Azfe.jdField_b_of_type_ArrayOfInt[0];
+          i = jdField_a_of_type_Bcge.jdField_a_of_type_ArrayOfInt[0];
+          paramInt = jdField_a_of_type_Bcge.jdField_b_of_type_ArrayOfInt[0];
           j = 0;
           continue;
           Object localObject3 = null;
@@ -1113,11 +1113,11 @@ public class VideoEnvironment
   
   public static void b()
   {
-    azib.r = 450000;
-    azib.s = 100000;
-    azib.t = 38;
-    azib.u = 3;
-    azib.v = 5;
+    bcjb.r = 450000;
+    bcjb.s = 100000;
+    bcjb.t = 38;
+    bcjb.u = 3;
+    bcjb.v = 5;
   }
   
   public static void b(int paramInt)
@@ -1125,22 +1125,22 @@ public class VideoEnvironment
     if (jdField_a_of_type_Int != -1) {
       synchronized (jdField_c_of_type_JavaLangObject)
       {
-        azfd localazfd = (azfd)jdField_a_of_type_Azfe.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        if (localazfd != null)
+        bcgd localbcgd = (bcgd)jdField_a_of_type_Bcge.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        if (localbcgd != null)
         {
-          azib.t = localazfd.jdField_b_of_type_Int;
-          azib.u = localazfd.jdField_c_of_type_Int;
-          azib.v = localazfd.jdField_d_of_type_Int;
-          azib.r = jdField_a_of_type_Azfe.jdField_f_of_type_Int;
-          azib.s = jdField_a_of_type_Azfe.jdField_g_of_type_Int;
-          azib.w = jdField_a_of_type_Azfe.k;
-          azib.x = jdField_a_of_type_Azfe.l;
+          bcjb.t = localbcgd.jdField_b_of_type_Int;
+          bcjb.u = localbcgd.jdField_c_of_type_Int;
+          bcjb.v = localbcgd.jdField_d_of_type_Int;
+          bcjb.r = jdField_a_of_type_Bcge.jdField_f_of_type_Int;
+          bcjb.s = jdField_a_of_type_Bcge.jdField_g_of_type_Int;
+          bcjb.w = jdField_a_of_type_Bcge.k;
+          bcjb.x = jdField_a_of_type_Bcge.l;
           jdField_a_of_type_Int |= 0x2;
           return;
         }
-        azib.t = jdField_a_of_type_Azfe.h;
-        azib.u = jdField_a_of_type_Azfe.i;
-        azib.v = jdField_a_of_type_Azfe.j;
+        bcjb.t = jdField_a_of_type_Bcge.h;
+        bcjb.u = jdField_a_of_type_Bcge.i;
+        bcjb.v = jdField_a_of_type_Bcge.j;
       }
     }
   }
@@ -1161,7 +1161,7 @@ public class VideoEnvironment
   
   public static boolean b(AppInterface paramAppInterface)
   {
-    return (bhtb.d()) && (c(paramAppInterface));
+    return (VersionUtils.isIceScreamSandwich()) && (c(paramAppInterface));
   }
   
   private static boolean b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -1178,12 +1178,12 @@ public class VideoEnvironment
           do
           {
             return false;
-            paramString = azek.a(paramString);
+            paramString = bcfk.a(paramString);
           } while (TextUtils.isEmpty(paramString));
           paramString = paramString.trim();
           str = a();
         } while ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramString)));
-        paramString = azek.a(str);
+        paramString = bcfk.a(str);
       } while (paramString.a() != 0);
       paramString = paramString.b().trim();
     } while ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("" + paramInt)));
@@ -1237,17 +1237,17 @@ public class VideoEnvironment
     if (jdField_a_of_type_Int != -1) {
       synchronized (jdField_c_of_type_JavaLangObject)
       {
-        azfd localazfd = (azfd)jdField_a_of_type_Azfe.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        if (localazfd != null)
+        bcgd localbcgd = (bcgd)jdField_a_of_type_Bcge.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        if (localbcgd != null)
         {
-          azib.jdField_c_of_type_Int = localazfd.jdField_a_of_type_Int;
+          bcjb.jdField_c_of_type_Int = localbcgd.jdField_a_of_type_Int;
           jdField_a_of_type_Int |= 0x4;
           return;
         }
-        if (jdField_a_of_type_Azfe.jdField_c_of_type_Int > 600) {
-          jdField_a_of_type_Azfe.jdField_c_of_type_Int = 8;
+        if (jdField_a_of_type_Bcge.jdField_c_of_type_Int > 600) {
+          jdField_a_of_type_Bcge.jdField_c_of_type_Int = 8;
         }
-        azib.jdField_c_of_type_Int = jdField_a_of_type_Azfe.jdField_c_of_type_Int * 1000;
+        bcjb.jdField_c_of_type_Int = jdField_a_of_type_Bcge.jdField_c_of_type_Int * 1000;
       }
     }
   }
@@ -1263,7 +1263,7 @@ public class VideoEnvironment
     do
     {
       return true;
-      if (lnz.f() != 7) {
+      if (lkw.f() != 7) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -1280,9 +1280,9 @@ public class VideoEnvironment
     //   1: istore 5
     //   3: iconst_0
     //   4: istore 6
-    //   6: getstatic 867	com/tencent/mobileqq/shortvideo/ShortVideoUtils:jdField_b_of_type_Boolean	Z
+    //   6: getstatic 868	com/tencent/mobileqq/shortvideo/ShortVideoUtils:jdField_b_of_type_Boolean	Z
     //   9: ifne +11 -> 20
-    //   12: getstatic 867	com/tencent/mobileqq/shortvideo/ShortVideoUtils:jdField_b_of_type_Boolean	Z
+    //   12: getstatic 868	com/tencent/mobileqq/shortvideo/ShortVideoUtils:jdField_b_of_type_Boolean	Z
     //   15: istore 4
     //   17: iload 4
     //   19: ireturn
@@ -1293,11 +1293,11 @@ public class VideoEnvironment
     //   30: new 43	java/lang/StringBuilder
     //   33: dup
     //   34: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 869
+    //   37: ldc_w 870
     //   40: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: getstatic 874	android/os/Build$VERSION:SDK_INT	I
+    //   43: getstatic 875	android/os/Build$VERSION:SDK_INT	I
     //   46: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   49: ldc_w 876
+    //   49: ldc_w 877
     //   52: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: getstatic 528	android/os/Build:MODEL	Ljava/lang/String;
     //   58: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1305,7 +1305,7 @@ public class VideoEnvironment
     //   64: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: iload 6
     //   69: istore 4
-    //   71: getstatic 874	android/os/Build$VERSION:SDK_INT	I
+    //   71: getstatic 875	android/os/Build$VERSION:SDK_INT	I
     //   74: bipush 10
     //   76: if_icmplt -59 -> 17
     //   79: getstatic 119	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Int	I
@@ -1314,22 +1314,22 @@ public class VideoEnvironment
     //   86: aload_0
     //   87: aconst_null
     //   88: iconst_0
-    //   89: invokestatic 878	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Z)V
+    //   89: invokestatic 879	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Z)V
     //   92: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   95: ifeq +77 -> 172
     //   98: ldc_w 281
     //   101: iconst_2
-    //   102: ldc_w 880
+    //   102: ldc_w 881
     //   105: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   108: ldc_w 281
     //   111: iconst_2
     //   112: new 43	java/lang/StringBuilder
     //   115: dup
     //   116: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   119: ldc_w 882
+    //   119: ldc_w 883
     //   122: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   128: getfield 472	azfe:m	I
+    //   125: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   128: getfield 472	bcge:m	I
     //   131: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   134: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   137: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1338,10 +1338,10 @@ public class VideoEnvironment
     //   144: new 43	java/lang/StringBuilder
     //   147: dup
     //   148: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   151: ldc_w 884
+    //   151: ldc_w 885
     //   154: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   160: getfield 475	azfe:n	I
+    //   157: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   160: getfield 475	bcge:n	I
     //   163: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   166: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   169: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1349,17 +1349,17 @@ public class VideoEnvironment
     //   175: astore_0
     //   176: aload_0
     //   177: monitorenter
-    //   178: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   181: getfield 478	azfe:o	I
+    //   178: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   181: getfield 478	bcge:o	I
     //   184: istore_1
-    //   185: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   188: getfield 472	azfe:m	I
+    //   185: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   188: getfield 472	bcge:m	I
     //   191: istore_2
-    //   192: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   195: getfield 475	azfe:n	I
+    //   192: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   195: getfield 475	bcge:n	I
     //   198: istore_3
-    //   199: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Azfe	Lazfe;
-    //   202: getfield 545	azfe:jdField_c_of_type_Boolean	Z
+    //   199: getstatic 124	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_a_of_type_Bcge	Lbcge;
+    //   202: getfield 545	bcge:jdField_c_of_type_Boolean	Z
     //   205: istore 7
     //   207: aload_0
     //   208: monitorexit
@@ -1370,7 +1370,7 @@ public class VideoEnvironment
     //   219: new 43	java/lang/StringBuilder
     //   222: dup
     //   223: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 886
+    //   226: ldc_w 887
     //   229: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: iload_1
     //   233: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1381,7 +1381,7 @@ public class VideoEnvironment
     //   246: new 43	java/lang/StringBuilder
     //   249: dup
     //   250: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   253: ldc_w 888
+    //   253: ldc_w 889
     //   256: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: iload_2
     //   260: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1392,11 +1392,11 @@ public class VideoEnvironment
     //   273: new 43	java/lang/StringBuilder
     //   276: dup
     //   277: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   280: ldc_w 890
+    //   280: ldc_w 891
     //   283: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   286: iload_3
     //   287: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   290: ldc_w 892
+    //   290: ldc_w 893
     //   293: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   296: iload 7
     //   298: invokevirtual 307	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -1413,11 +1413,11 @@ public class VideoEnvironment
     //   326: new 43	java/lang/StringBuilder
     //   329: dup
     //   330: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   333: ldc_w 894
+    //   333: ldc_w 895
     //   336: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: iload 7
     //   341: invokevirtual 307	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   344: ldc_w 876
+    //   344: ldc_w 877
     //   347: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: getstatic 528	android/os/Build:MODEL	Ljava/lang/String;
     //   353: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1427,7 +1427,7 @@ public class VideoEnvironment
     //   363: ireturn
     //   364: astore_0
     //   365: aload_0
-    //   366: invokevirtual 895	java/lang/Throwable:printStackTrace	()V
+    //   366: invokevirtual 896	java/lang/Throwable:printStackTrace	()V
     //   369: iconst_0
     //   370: ireturn
     //   371: astore 8
@@ -1435,7 +1435,7 @@ public class VideoEnvironment
     //   374: monitorexit
     //   375: aload 8
     //   377: athrow
-    //   378: getstatic 849	android/os/Build:CPU_ABI	Ljava/lang/String;
+    //   378: getstatic 850	android/os/Build:CPU_ABI	Ljava/lang/String;
     //   381: astore_0
     //   382: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   385: ifeq +30 -> 415
@@ -1444,7 +1444,7 @@ public class VideoEnvironment
     //   392: new 43	java/lang/StringBuilder
     //   395: dup
     //   396: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   399: ldc_w 897
+    //   399: ldc_w 898
     //   402: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   405: aload_0
     //   406: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1452,7 +1452,7 @@ public class VideoEnvironment
     //   412: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   415: invokestatic 612	com/tencent/mobileqq/shortvideo/VideoEnvironment:c	()Z
     //   418: ifeq +49 -> 467
-    //   421: getstatic 898	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_b_of_type_Boolean	Z
+    //   421: getstatic 899	com/tencent/mobileqq/shortvideo/VideoEnvironment:jdField_b_of_type_Boolean	Z
     //   424: istore 5
     //   426: iload 5
     //   428: istore 4
@@ -1463,7 +1463,7 @@ public class VideoEnvironment
     //   440: new 43	java/lang/StringBuilder
     //   443: dup
     //   444: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   447: ldc_w 900
+    //   447: ldc_w 901
     //   450: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   453: iload 5
     //   455: invokevirtual 307	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -1480,9 +1480,9 @@ public class VideoEnvironment
     //   479: aload_0
     //   480: invokevirtual 200	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   483: ifne +108 -> 591
-    //   486: ldc_w 902
+    //   486: ldc_w 903
     //   489: aload_0
-    //   490: invokevirtual 682	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   490: invokevirtual 683	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   493: ifeq +98 -> 591
     //   496: iload 5
     //   498: istore 4
@@ -1493,11 +1493,11 @@ public class VideoEnvironment
     //   510: new 43	java/lang/StringBuilder
     //   513: dup
     //   514: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   517: ldc_w 904
+    //   517: ldc_w 905
     //   520: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   523: aload_0
     //   524: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   527: ldc_w 906
+    //   527: ldc_w 907
     //   530: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   533: iload 4
     //   535: invokevirtual 307	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -1514,7 +1514,7 @@ public class VideoEnvironment
     //   561: new 43	java/lang/StringBuilder
     //   564: dup
     //   565: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   568: ldc_w 908
+    //   568: ldc_w 909
     //   571: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   574: iconst_1
     //   575: invokevirtual 307	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -1587,7 +1587,7 @@ public class VideoEnvironment
   
   private static String d()
   {
-    return azek.a("HookTestAVCodec001", "65");
+    return bcfk.a("HookTestAVCodec001", "65");
   }
   
   private static void d()
@@ -1606,14 +1606,14 @@ public class VideoEnvironment
       {
         try
         {
-          azib.jdField_c_of_type_Int = paramInt * 1000;
-          jdField_a_of_type_Azfe.jdField_c_of_type_Int = paramInt;
+          bcjb.jdField_c_of_type_Int = paramInt * 1000;
+          jdField_a_of_type_Bcge.jdField_c_of_type_Int = paramInt;
           jdField_a_of_type_Int |= 0x4;
           return;
         }
         finally {}
-        jdField_a_of_type_Azfe.jdField_c_of_type_Int = 8;
-        azib.jdField_c_of_type_Int = jdField_a_of_type_Azfe.jdField_c_of_type_Int * 1000;
+        jdField_a_of_type_Bcge.jdField_c_of_type_Int = 8;
+        bcjb.jdField_c_of_type_Int = jdField_a_of_type_Bcge.jdField_c_of_type_Int * 1000;
       }
     }
   }
@@ -1635,7 +1635,7 @@ public class VideoEnvironment
   
   private static String e()
   {
-    return azek.a("HookTestAVCodecSdcard002", "65");
+    return bcfk.a("HookTestAVCodecSdcard002", "65");
   }
   
   private static void e()
@@ -1681,14 +1681,14 @@ public class VideoEnvironment
   
   private static boolean g()
   {
-    return azhf.a(azhf.n);
+    return bcif.a(bcif.n);
   }
   
   private static native void getAVCodecLibMetadata(int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoEnvironment
  * JD-Core Version:    0.7.0.1
  */

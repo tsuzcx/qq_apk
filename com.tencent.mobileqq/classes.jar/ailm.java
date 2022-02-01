@@ -1,25 +1,86 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class ailm
-  extends awhw
 {
-  public ailm(BindNumberActivity paramBindNumberActivity) {}
-  
-  protected void b(boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super.b(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
-    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = bbzh.a(-1026);
+      long l = bbyp.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8004C56", "0X8004C56", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
     for (;;)
     {
-      this.a.app.unRegistObserver(this.a.b);
-      this.a.b = null;
       return;
-      this.a.b();
-      this.a.b(2131719233);
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a(paramQQAppInterface, (String)paramList.next());
+      }
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = bbzh.a(-1027);
+      long l = bbyp.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+      bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8004C57", "0X8004C57", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsCancelSetTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        b(paramQQAppInterface, (String)paramList.next());
+      }
+    }
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Iterator localIterator = paramQQAppInterface.a().b(paramString, 0).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
+      {
+        paramQQAppInterface.a().b(paramString, 0, localMessageRecord.uniseq);
+        if (QLog.isColorLevel()) {
+          QLog.d("GatherContactsTipsHelper", 2, "deleteUncommonlyUsedContactsAndCancelTips, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString + " msgtype:" + localMessageRecord.msgtype);
+        }
+      }
     }
   }
 }

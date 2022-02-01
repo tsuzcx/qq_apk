@@ -1,35 +1,47 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wqz
-  extends LruCache<wrb, Drawable>
+public class wqz
 {
-  wqz(wqy paramwqy, int paramInt)
-  {
-    super(paramInt);
-  }
+  @zkv(a="gametype")
+  public int a;
+  @zkv(a="gameid")
+  public String a;
+  @zkv(a="name")
+  public String b;
+  @zkv(a="result")
+  public String c;
   
-  protected int a(wrb paramwrb, Drawable paramDrawable)
+  public static wqz a(String paramString)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
+      paramString = (wqz)JsonORM.a(new JSONObject(paramString), wqz.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        wrk.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwrb, " size=", Integer.valueOf(i) });
-        return i;
+        paramString.printStackTrace();
       }
     }
-    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqz
  * JD-Core Version:    0.7.0.1
  */

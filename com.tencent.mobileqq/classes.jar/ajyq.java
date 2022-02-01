@@ -1,25 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.widget.TextView;
 
-public class ajyq
-  implements View.OnClickListener
+class ajyq
 {
-  public ajyq(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.c) {
-      azqs.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(2130771988, 2130771989);
-      return;
-      azqs.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
-  }
+  public TextView a;
 }
 
 

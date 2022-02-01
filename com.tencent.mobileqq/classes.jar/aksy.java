@@ -1,17 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.SoLoadInfo;
+import eipc.EIPCResult;
 
-public class aksy
-  implements AdapterView.OnItemClickListener
+class aksy
+  implements bcoa
 {
-  public aksy(CmGameDebugView paramCmGameDebugView) {}
+  aksy(akss paramakss, int paramInt) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(SoLoadInfo paramSoLoadInfo)
   {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("res", paramSoLoadInfo);
+    this.jdField_a_of_type_Akss.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

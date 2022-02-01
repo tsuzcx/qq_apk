@@ -1,20 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
-class adkm
-  implements DialogInterface.OnDismissListener
+public class adkm
+  implements DialogInterface.OnClickListener
 {
-  adkm(adkl paramadkl) {}
+  public adkm(AddFriendVerifyActivity.30 param30) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkm
  * JD-Core Version:    0.7.0.1
  */

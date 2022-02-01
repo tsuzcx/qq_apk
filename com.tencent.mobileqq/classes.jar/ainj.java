@@ -1,14 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ainj
-  implements DialogInterface.OnClickListener
+public class ainj
 {
-  ainj(aini paramaini) {}
+  private int jdField_a_of_type_Int = 1;
+  private aink jdField_a_of_type_Aink;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ainj() {}
+  
+  public ainj(aink paramaink)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Aink = paramaink;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Aink != null)
+      {
+        this.jdField_a_of_type_Aink.a(1);
+        this.jdField_a_of_type_Int = 2;
+      }
+    }
+    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Aink == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Aink.a(2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Aink != null))
+    {
+      this.jdField_a_of_type_Aink.a();
+      this.jdField_a_of_type_Int = 3;
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Aink != null))
+    {
+      this.jdField_a_of_type_Aink.b();
+      this.jdField_a_of_type_Int = 1;
+    }
   }
 }
 

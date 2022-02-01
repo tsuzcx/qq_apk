@@ -1,29 +1,50 @@
-public class azvt
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
+
+public final class azvt
+  implements Parcelable.Creator<QCallCardInfo>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public azvt(String paramString)
+  public QCallCardInfo a(Parcel paramParcel)
   {
-    this(null, null, null, null, null, null, null, paramString);
+    QCallCardInfo localQCallCardInfo = new QCallCardInfo();
+    localQCallCardInfo.uin = paramParcel.readString();
+    localQCallCardInfo.nickname = paramParcel.readString();
+    localQCallCardInfo.gender = paramParcel.readInt();
+    localQCallCardInfo.birthday = paramParcel.readInt();
+    localQCallCardInfo.in_use_flag = paramParcel.readInt();
+    localQCallCardInfo.pre_recycle_flag = paramParcel.readInt();
+    localQCallCardInfo.recycle_flag = paramParcel.readInt();
+    localQCallCardInfo.reg_time = paramParcel.readInt();
+    localQCallCardInfo.reg_ip = paramParcel.readString();
+    localQCallCardInfo.recycle_time = paramParcel.readInt();
+    localQCallCardInfo.recycle_ip = paramParcel.readString();
+    localQCallCardInfo.remark = paramParcel.readString();
+    localQCallCardInfo.netstatus = paramParcel.readInt();
+    localQCallCardInfo.qq = paramParcel.readString();
+    localQCallCardInfo.phonenum = paramParcel.readString();
+    localQCallCardInfo.phone_mask = paramParcel.readInt();
+    localQCallCardInfo.freeStatus = paramParcel.readInt();
+    localQCallCardInfo.pstn_freeStatus = paramParcel.readInt();
+    localQCallCardInfo.is_ever_pstn = paramParcel.readInt();
+    localQCallCardInfo.vip_all_free_time = paramParcel.readInt();
+    localQCallCardInfo.vip_left_free_time = paramParcel.readInt();
+    localQCallCardInfo.normal_all_free_time = paramParcel.readInt();
+    localQCallCardInfo.normal_left_free_time = paramParcel.readInt();
+    localQCallCardInfo.used_free_time = paramParcel.readInt();
+    localQCallCardInfo.identity = paramParcel.readInt();
+    localQCallCardInfo.autoRemark = paramParcel.readString();
+    localQCallCardInfo.card_type = paramParcel.readInt();
+    localQCallCardInfo.isPopup = paramParcel.readInt();
+    localQCallCardInfo.qqUin2 = paramParcel.readString();
+    localQCallCardInfo.qid_qq_status = paramParcel.readInt();
+    localQCallCardInfo.contact_qq_status = paramParcel.readInt();
+    return localQCallCardInfo;
   }
   
-  public azvt(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public QCallCardInfo[] a(int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    return new QCallCardInfo[paramInt];
   }
 }
 

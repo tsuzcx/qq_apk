@@ -1,9 +1,9 @@
-import android.widget.RelativeLayout;
-
 public class aptw
-  extends aptf
 {
-  RelativeLayout[] a;
+  public static int a(float paramFloat)
+  {
+    return Float.floatToIntBits(paramFloat);
+  }
 }
 
 

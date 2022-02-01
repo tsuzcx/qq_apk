@@ -128,7 +128,7 @@ public final class a
         if (!this.d.b()) {
           x.d("no remote but still store!", new Object[0]);
         }
-        if ((this.d.c().g) || (!this.d.b())) {
+        if ((this.d.c().f) || (!this.d.b())) {
           break label739;
         }
         x.e("crash report was closed by remote , will not upload to Bugly , print local for helpful!", new Object[0]);
@@ -225,9 +225,9 @@ public final class a
       }
       paramString3 = b.a(paramString2, paramString8);
       if (!z.a(paramString3)) {
-        localCrashDetailBean.U = paramString3;
+        localCrashDetailBean.V = paramString3;
       }
-      localCrashDetailBean.V = b.b(paramString2);
+      localCrashDetailBean.W = b.b(paramString2);
       localCrashDetailBean.w = b.a(paramString9, c.e, c.h, c.m);
       localCrashDetailBean.x = b.a(paramString10, c.e, null, true);
       localCrashDetailBean.J = paramString7;
@@ -248,10 +248,6 @@ public final class a
       localCrashDetailBean.y = y.a();
       localCrashDetailBean.M = this.c.a;
       localCrashDetailBean.N = this.c.a();
-      localCrashDetailBean.P = this.c.G();
-      localCrashDetailBean.Q = this.c.H();
-      localCrashDetailBean.R = this.c.A();
-      localCrashDetailBean.S = this.c.F();
       localCrashDetailBean.z = z.a(c.f, false);
       int i = localCrashDetailBean.q.indexOf("java:\n");
       if (i > 0)
@@ -278,6 +274,10 @@ public final class a
         localCrashDetailBean.A = this.c.d;
       }
       this.b.d(localCrashDetailBean);
+      localCrashDetailBean.Q = this.c.G();
+      localCrashDetailBean.R = this.c.H();
+      localCrashDetailBean.S = this.c.A();
+      localCrashDetailBean.T = this.c.F();
     }
     label729:
     do
@@ -292,10 +292,10 @@ public final class a
         localCrashDetailBean.w = "this crash is occurred at last process! Log is miss, when get an terrible ABRT Native Exception etc.";
       }
       localCrashDetailBean.M = -1L;
-      localCrashDetailBean.P = -1;
       localCrashDetailBean.Q = -1;
-      localCrashDetailBean.R = paramMap;
-      localCrashDetailBean.S = this.c.F();
+      localCrashDetailBean.R = -1;
+      localCrashDetailBean.S = paramMap;
+      localCrashDetailBean.T = this.c.F();
       localCrashDetailBean.z = null;
       if (paramString1 == null) {
         localCrashDetailBean.A = "unknown(record)";

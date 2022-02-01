@@ -1,41 +1,58 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class adft
-  implements Handler.Callback
+class adft
+  implements BusinessObserver
 {
-  public adft(Leba paramLeba) {}
+  adft(adfo paramadfo, String paramString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (QLog.isColorLevel()) {
+      QLog.d(adfo.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
-      return false;
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
     }
-    switch (paramMessage.what)
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      localObject = new SdkAuthorize.AuthorizeResponse();
+      try
+      {
+        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, (String)localObject);
+          return;
+        }
       }
-      this.a.l();
-      continue;
-      Leba.c(this.a);
-      continue;
-      this.a.a(paramMessage);
-      continue;
-      this.a.s();
-      continue;
-      Leba.d(this.a);
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(adfo.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
+        }
+        adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, -2, "parse do auth result error");
+        return;
+      }
+      localObject = new adfn();
+      ((adfn)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
+      ((adfn)localObject).b = paramBundle.access_token.get().toUpperCase();
+      paramBundle = paramBundle.callbackURL.get();
+      if (QLog.isColorLevel()) {}
+      adfo.b(this.jdField_a_of_type_Adfo, paramBundle);
+      this.jdField_a_of_type_Adfo.jdField_a_of_type_Adfk.a((adfn)localObject);
+      adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, ((adfn)localObject).a());
+      return;
     }
+    adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, "do auth error");
   }
 }
 

@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.text.TextUtils;
-import aoom;
-import bdpd;
+import aqpv;
+import bguc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -51,61 +51,67 @@ public class MiniAppAbstractServlet
   private String page;
   private boolean shouldPerformDCReport = true;
   
-  protected void doReport(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private void reportSSOResult(Intent paramIntent, int paramInt1, String paramString, int paramInt2)
   {
-    String str1;
+    MiniAppConfig localMiniAppConfig;
     String str2;
-    label41:
-    int i;
-    label50:
-    long l;
+    String str1;
+    String str3;
     if (this.shouldPerformDCReport)
     {
-      MiniAppConfig localMiniAppConfig = this.miniAppConfig;
-      String str3 = this.page;
-      if (paramIntent != null)
-      {
-        str1 = paramIntent.getStringExtra("traceid");
-        if (paramFromServiceMsg == null) {
-          break label182;
-        }
-        str2 = paramFromServiceMsg.getServiceCmd();
-        if (paramFromServiceMsg == null) {
-          break label188;
-        }
-        i = paramFromServiceMsg.getResultCode();
-        String str4 = MiniReportManager.getAppType(this.miniAppConfig);
-        if ((paramIntent == null) || (!paramIntent.hasExtra("key_sso_cmd_start_time_millis"))) {
-          break label193;
-        }
-        l = System.currentTimeMillis() - paramIntent.getLongExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
-        label87:
-        MiniReportManager.reportEventType(localMiniAppConfig, 601, str3, str1, str2, i, str4, l, null);
-      }
-    }
-    else if (paramFromServiceMsg != null)
-    {
-      str1 = paramFromServiceMsg.getServiceCmd();
+      localMiniAppConfig = this.miniAppConfig;
+      str2 = this.page;
       if (paramIntent == null) {
-        break label199;
+        break label87;
+      }
+      str1 = paramIntent.getStringExtra("traceid");
+      str3 = MiniReportManager.getAppType(this.miniAppConfig);
+      if ((paramIntent == null) || (!paramIntent.hasExtra("key_sso_cmd_start_time_millis"))) {
+        break label93;
       }
     }
-    label182:
-    label188:
-    label193:
-    label199:
-    for (paramIntent = paramIntent.getStringExtra("traceid");; paramIntent = null)
+    label87:
+    label93:
+    for (long l = System.currentTimeMillis() - paramIntent.getLongExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());; l = 0L)
     {
-      QLog.i("miniapp-cmd", 1, "receive response cmd=" + str1 + " resultCode=" + paramFromServiceMsg.getResultCode() + " traceId=" + paramIntent);
+      MiniReportManager.reportEventType(localMiniAppConfig, paramInt1, str2, str1, paramString, paramInt2, str3, l, null);
       return;
       str1 = null;
       break;
-      str2 = null;
-      break label41;
+    }
+  }
+  
+  protected void doReport(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    String str;
+    int i;
+    if (paramFromServiceMsg != null)
+    {
+      str = paramFromServiceMsg.getServiceCmd();
+      if (paramFromServiceMsg == null) {
+        break label105;
+      }
+      i = paramFromServiceMsg.getResultCode();
+      label19:
+      reportSSOResult(paramIntent, 601, str, i);
+      if (paramFromServiceMsg != null)
+      {
+        str = paramFromServiceMsg.getServiceCmd();
+        if (paramIntent == null) {
+          break label110;
+        }
+      }
+    }
+    label105:
+    label110:
+    for (paramIntent = paramIntent.getStringExtra("traceid");; paramIntent = null)
+    {
+      QLog.i("miniapp-cmd", 1, "receive response cmd=" + str + " resultCode=" + paramFromServiceMsg.getResultCode() + " traceId=" + paramIntent);
+      return;
+      str = null;
+      break;
       i = 0;
-      break label50;
-      l = 0L;
-      break label87;
+      break label19;
     }
   }
   
@@ -137,15 +143,17 @@ public class MiniAppAbstractServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
         localBundle.putString("key_appid", String.valueOf(paramFromServiceMsg.getAppId()));
-        if (localStQWebRsp.retCode.get() != 0L) {
+        long l = localStQWebRsp.retCode.get();
+        if (l != 0L) {
           continue;
         }
         onProcessData(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
+        reportSSOResult(paramIntent, 599, paramFromServiceMsg.getServiceCmd(), (int)l);
       }
       catch (Throwable localThrowable)
       {
@@ -179,7 +187,7 @@ public class MiniAppAbstractServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
-    paramPacket.setTimeout(aoom.a("MiniAppMsfTimeoutValue", 10000));
+    paramPacket.setTimeout(aqpv.a("MiniAppMsfTimeoutValue", 10000));
     if (paramPacket != null) {}
     for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {
@@ -226,7 +234,7 @@ public class MiniAppAbstractServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

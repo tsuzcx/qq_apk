@@ -1,14 +1,14 @@
 package com.tencent.device.JNICallCenter;
 
+import abgm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zjo;
 
 public class DataPoint
   implements Parcelable
 {
-  public static final Parcelable.Creator<DataPoint> CREATOR = new zjo();
+  public static final Parcelable.Creator<DataPoint> CREATOR = new abgm();
   public static final int NAS_SUB_ISLOGIN = 1003;
   public static final int PID_ARK_MSG = 11010;
   public static final int PID_AUTH_REQUEST_StructMsg = 11008;
@@ -141,7 +141,7 @@ public class DataPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.JNICallCenter.DataPoint
  * JD-Core Version:    0.7.0.1
  */

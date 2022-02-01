@@ -18,31 +18,33 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.qphone.base.util.QLog;
-import uho;
-import uhq;
-import uhr;
-import uhs;
-import uht;
-import uhu;
-import uhv;
-import uhw;
-import uhx;
-import uhy;
-import uhz;
-import uia;
-import uib;
-import uid;
+import way;
+import wba;
+import wbb;
+import wbc;
+import wbd;
+import wbe;
+import wbf;
+import wbg;
+import wbh;
+import wbi;
+import wbj;
+import wbk;
+import wbl;
+import wbm;
+import wbn;
+import wbp;
 
 public class PhotoViewAttacher
   implements View.OnLayoutChangeListener, View.OnTouchListener
 {
-  private static float jdField_a_of_type_Float = 4.8F;
+  private static float jdField_a_of_type_Float = 7.0F;
   private static int jdField_a_of_type_Int = 200;
-  private static float jdField_b_of_type_Float = 4.0F;
+  private static float jdField_b_of_type_Float = 3.5F;
   private static int jdField_b_of_type_Int = 1;
   private static float jdField_c_of_type_Float = 1.75F;
   private static float jdField_d_of_type_Float = 1.0F;
-  private static float jdField_e_of_type_Float = 0.8F;
+  private static float jdField_e_of_type_Float = 0.6F;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
@@ -52,16 +54,18 @@ public class PhotoViewAttacher
   private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_CENTER;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private PhotoViewAttacher.FlingRunnable jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher$FlingRunnable;
-  private uho jdField_a_of_type_Uho;
-  private uhq jdField_a_of_type_Uhq;
-  private uhr jdField_a_of_type_Uhr = new uhz(this);
-  private uhs jdField_a_of_type_Uhs;
-  private uht jdField_a_of_type_Uht;
-  private uhu jdField_a_of_type_Uhu;
-  private uhv jdField_a_of_type_Uhv;
-  private uhw jdField_a_of_type_Uhw;
-  private uhx jdField_a_of_type_Uhx;
-  private uhy jdField_a_of_type_Uhy;
+  private way jdField_a_of_type_Way;
+  private wba jdField_a_of_type_Wba;
+  private wbb jdField_a_of_type_Wbb = new wbl(this);
+  private wbc jdField_a_of_type_Wbc;
+  private wbd jdField_a_of_type_Wbd;
+  private wbe jdField_a_of_type_Wbe;
+  private wbf jdField_a_of_type_Wbf;
+  private wbg jdField_a_of_type_Wbg;
+  private wbh jdField_a_of_type_Wbh;
+  private wbi jdField_a_of_type_Wbi;
+  private wbj jdField_a_of_type_Wbj;
+  private wbk jdField_a_of_type_Wbk;
   private boolean jdField_a_of_type_Boolean = true;
   private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
@@ -75,6 +79,8 @@ public class PhotoViewAttacher
   private float g = jdField_c_of_type_Float;
   private float h = jdField_b_of_type_Float;
   private float i;
+  private float j;
+  private float k;
   
   public PhotoViewAttacher(ImageView paramImageView)
   {
@@ -85,9 +91,9 @@ public class PhotoViewAttacher
       return;
     }
     this.i = 0.0F;
-    this.jdField_a_of_type_Uho = new uho(paramImageView.getContext(), this.jdField_a_of_type_Uhr);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramImageView.getContext(), new uia(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(new uib(this));
+    this.jdField_a_of_type_Way = new way(paramImageView.getContext(), this.jdField_a_of_type_Wbb);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramImageView.getContext(), new wbm(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(new wbn(this));
   }
   
   private float a(Matrix paramMatrix, int paramInt)
@@ -116,11 +122,11 @@ public class PhotoViewAttacher
   private void a(Matrix paramMatrix)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(paramMatrix);
-    if (this.jdField_a_of_type_Uhs != null)
+    if (this.jdField_a_of_type_Wbc != null)
     {
       paramMatrix = a(paramMatrix);
       if (paramMatrix != null) {
-        this.jdField_a_of_type_Uhs.a(paramMatrix);
+        this.jdField_a_of_type_Wbc.a(paramMatrix);
       }
     }
   }
@@ -132,14 +138,14 @@ public class PhotoViewAttacher
     }
     float f1 = a(this.jdField_a_of_type_AndroidWidgetImageView);
     float f2 = b(this.jdField_a_of_type_AndroidWidgetImageView);
-    int j = paramDrawable.getIntrinsicWidth();
-    int k = paramDrawable.getIntrinsicHeight();
-    QLog.d("PhotoViewAttacher", 4, "updateBaseMatrix viewWidth:" + f1 + " viewHeight:" + f2 + " drawableWidth:" + j + " drawableHeight:" + k + " drawableHash:" + paramDrawable.hashCode());
+    int m = paramDrawable.getIntrinsicWidth();
+    int n = paramDrawable.getIntrinsicHeight();
+    QLog.d("PhotoViewAttacher", 4, "updateBaseMatrix viewWidth:" + f1 + " viewHeight:" + f2 + " drawableWidth:" + m + " drawableHeight:" + n + " drawableHash:" + paramDrawable.hashCode());
     this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    float f3 = f1 / j;
-    float f4 = f2 / k;
+    float f3 = f1 / m;
+    float f4 = f2 / n;
     if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.CENTER) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - j) / 2.0F, (f2 - k) / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - m) / 2.0F, (f2 - n) / 2.0F);
     }
     for (;;)
     {
@@ -149,22 +155,22 @@ public class PhotoViewAttacher
       {
         f3 = Math.max(f3, f4);
         this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f3, f3);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - j * f3) / 2.0F, (f2 - f3 * k) / 2.0F);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - m * f3) / 2.0F, (f2 - f3 * n) / 2.0F);
       }
       else if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.CENTER_INSIDE)
       {
         f3 = Math.min(1.0F, Math.min(f3, f4));
         this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f3, f3);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - j * f3) / 2.0F, (f2 - f3 * k) / 2.0F);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - m * f3) / 2.0F, (f2 - f3 * n) / 2.0F);
       }
       else
       {
-        paramDrawable = new RectF(0.0F, 0.0F, j, k);
+        paramDrawable = new RectF(0.0F, 0.0F, m, n);
         RectF localRectF = new RectF(0.0F, 0.0F, f1, f2);
         if ((int)this.i % 180 != 0) {
-          paramDrawable = new RectF(0.0F, 0.0F, k, j);
+          paramDrawable = new RectF(0.0F, 0.0F, n, m);
         }
-        switch (uic.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+        switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
         {
         default: 
           break;
@@ -193,20 +199,20 @@ public class PhotoViewAttacher
     }
     float f1 = localRectF.height();
     float f3 = localRectF.width();
-    int j = b(this.jdField_a_of_type_AndroidWidgetImageView);
-    if (f1 <= j) {
-      switch (uic.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+    int m = b(this.jdField_a_of_type_AndroidWidgetImageView);
+    if (f1 <= m) {
+      switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
       {
       default: 
-        f1 = (j - f1) / 2.0F - localRectF.top;
+        f1 = (m - f1) / 2.0F - localRectF.top;
         this.jdField_e_of_type_Int = 2;
         label103:
-        j = a(this.jdField_a_of_type_AndroidWidgetImageView);
-        if (f3 <= j) {
-          switch (uic.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+        m = a(this.jdField_a_of_type_AndroidWidgetImageView);
+        if (f3 <= m) {
+          switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
           {
           default: 
-            f2 = (j - f3) / 2.0F - localRectF.left;
+            f2 = (m - f3) / 2.0F - localRectF.left;
             label170:
             this.jdField_d_of_type_Int = 2;
           }
@@ -220,7 +226,7 @@ public class PhotoViewAttacher
       return true;
       f1 = -localRectF.top;
       break;
-      f1 = j - f1 - localRectF.top;
+      f1 = m - f1 - localRectF.top;
       break;
       if (localRectF.top > 0.0F)
       {
@@ -228,10 +234,10 @@ public class PhotoViewAttacher
         f1 = -localRectF.top;
         break label103;
       }
-      if (localRectF.bottom < j)
+      if (localRectF.bottom < m)
       {
         this.jdField_e_of_type_Int = 1;
-        f1 = j - localRectF.bottom;
+        f1 = m - localRectF.bottom;
         break label103;
       }
       this.jdField_e_of_type_Int = -1;
@@ -239,16 +245,16 @@ public class PhotoViewAttacher
       break label103;
       f2 = -localRectF.left;
       break label170;
-      f2 = j - f3 - localRectF.left;
+      f2 = m - f3 - localRectF.left;
       break label170;
       if (localRectF.left > 0.0F)
       {
         this.jdField_d_of_type_Int = 0;
         f2 = -localRectF.left;
       }
-      else if (localRectF.right < j)
+      else if (localRectF.right < m)
       {
-        f2 = j - localRectF.right;
+        f2 = m - localRectF.right;
         this.jdField_d_of_type_Int = 1;
       }
       else
@@ -333,7 +339,7 @@ public class PhotoViewAttacher
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    uid.a(paramFloat1, paramFloat2, paramFloat3);
+    wbp.a(paramFloat1, paramFloat2, paramFloat3);
     this.f = paramFloat1;
     this.g = paramFloat2;
     this.h = paramFloat3;
@@ -380,51 +386,67 @@ public class PhotoViewAttacher
   
   public void a(ImageView.ScaleType paramScaleType)
   {
-    if ((uid.a(paramScaleType)) && (paramScaleType != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType))
+    if ((wbp.a(paramScaleType)) && (paramScaleType != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType))
     {
       this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
       a();
     }
   }
   
-  public void a(uhq paramuhq)
+  public void a(wba paramwba)
   {
-    this.jdField_a_of_type_Uhq = paramuhq;
+    this.jdField_a_of_type_Wba = paramwba;
   }
   
-  public void a(uhs paramuhs)
+  public void a(wbc paramwbc)
   {
-    this.jdField_a_of_type_Uhs = paramuhs;
+    this.jdField_a_of_type_Wbc = paramwbc;
   }
   
-  public void a(uht paramuht)
+  public void a(wbd paramwbd)
   {
-    this.jdField_a_of_type_Uht = paramuht;
+    this.jdField_a_of_type_Wbd = paramwbd;
   }
   
-  public void a(uhu paramuhu)
+  public void a(wbe paramwbe)
   {
-    this.jdField_a_of_type_Uhu = paramuhu;
+    this.jdField_a_of_type_Wbe = paramwbe;
   }
   
-  public void a(uhv paramuhv)
+  public void a(wbf paramwbf)
   {
-    this.jdField_a_of_type_Uhv = paramuhv;
+    this.jdField_a_of_type_Wbf = paramwbf;
+    if (this.jdField_a_of_type_Way != null) {
+      this.jdField_a_of_type_Way.a(paramwbf);
+    }
   }
   
-  public void a(uhw paramuhw)
+  public void a(wbg paramwbg)
   {
-    this.jdField_a_of_type_Uhw = paramuhw;
+    this.jdField_a_of_type_Wbg = paramwbg;
   }
   
-  public void a(uhx paramuhx)
+  public void a(wbh paramwbh)
   {
-    this.jdField_a_of_type_Uhx = paramuhx;
+    this.jdField_a_of_type_Wbh = paramwbh;
+    if (this.jdField_a_of_type_Way != null) {
+      this.jdField_a_of_type_Way.a(paramwbh);
+    }
   }
   
-  public void a(uhy paramuhy)
+  public void a(wbi paramwbi)
   {
-    this.jdField_a_of_type_Uhy = paramuhy;
+    this.jdField_a_of_type_Wbi = paramwbi;
+  }
+  
+  public void a(wbj paramwbj)
+  {
+    this.jdField_a_of_type_Wbj = paramwbj;
+  }
+  
+  public void a(wbk paramwbk)
+  {
+    this.jdField_a_of_type_Wbk = paramwbk;
   }
   
   public void a(boolean paramBoolean)
@@ -434,45 +456,45 @@ public class PhotoViewAttacher
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Uho.a()) && (!this.jdField_b_of_type_Boolean))
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Way.a()) && (!this.jdField_b_of_type_Boolean))
     {
-      int j;
+      int m;
       if ((Math.abs(paramFloat2) > 8.0F) && (Math.abs(paramFloat2) > Math.abs(paramFloat1)))
       {
-        j = 1;
+        m = 1;
         if ((Math.abs(paramFloat1) <= 8.0F) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2))) {
-          break label260;
+          break label259;
         }
       }
-      label260:
-      for (int k = 1;; k = 0)
+      label259:
+      for (int n = 1;; n = 0)
       {
-        if ((j == 0) || (Math.abs(paramFloat2) * 0.6F <= Math.abs(paramFloat1)) || ((this.jdField_e_of_type_Int != 2) && ((this.jdField_e_of_type_Int != 0) || (paramFloat2 < 8.0F)) && ((this.jdField_e_of_type_Int != 1) || (paramFloat2 > 0.0F - 8.0F)))) {
-          break label266;
+        if ((m == 0) || (Math.abs(paramFloat2) * 0.6F <= Math.abs(paramFloat1)) || ((this.jdField_e_of_type_Int != 2) && ((this.jdField_e_of_type_Int != 0) || (paramFloat2 < 8.0F)) && ((this.jdField_e_of_type_Int != 1) || (paramFloat2 > 0.0F - 8.0F)))) {
+          break label265;
         }
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent vertical solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Uho.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent vertical solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
-        j = 0;
+        m = 0;
         break;
       }
-      label266:
-      if ((k != 0) && (Math.abs(paramFloat1) * 0.6F > Math.abs(paramFloat2)) && ((this.jdField_d_of_type_Int == 2) || ((this.jdField_d_of_type_Int == 0) && (paramFloat1 >= 8.0F)) || ((this.jdField_d_of_type_Int == 1) && (paramFloat1 <= 0.0F - 8.0F))))
+      label265:
+      if ((n != 0) && (Math.abs(paramFloat1) * 0.6F > Math.abs(paramFloat2)) && ((this.jdField_d_of_type_Int == 2) || ((this.jdField_d_of_type_Int == 0) && (paramFloat1 >= 8.0F)) || ((this.jdField_d_of_type_Int == 1) && (paramFloat1 <= 0.0F - 8.0F))))
       {
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent horizontal solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Uho.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent horizontal solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
       }
       if (((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 >= 8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 >= 8.0F) && (paramFloat1 <= 0.0F - 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 <= 0.0F - 8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 <= 0.0F - 8.0F) && (paramFloat1 <= 0.0F - 8.0F)))
       {
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent corner slop false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Uho.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent corner slop false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
       }
     }
     else
     {
-      QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Uho.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+      QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
       return true;
     }
-    QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent default:true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Uho.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+    QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent default:true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
     return true;
   }
   
@@ -495,19 +517,19 @@ public class PhotoViewAttacher
   
   public void c(float paramFloat)
   {
-    uid.a(paramFloat, this.g, this.h);
+    wbp.a(paramFloat, this.g, this.h);
     this.f = paramFloat;
   }
   
   public void d(float paramFloat)
   {
-    uid.a(this.f, paramFloat, this.h);
+    wbp.a(this.f, paramFloat, this.h);
     this.g = paramFloat;
   }
   
   public void e(float paramFloat)
   {
-    uid.a(this.f, this.g, paramFloat);
+    wbp.a(this.f, this.g, paramFloat);
     this.h = paramFloat;
   }
   
@@ -526,7 +548,7 @@ public class PhotoViewAttacher
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
-    if ((this.jdField_c_of_type_Boolean) && (uid.a((ImageView)paramView)))
+    if ((this.jdField_c_of_type_Boolean) && (wbp.a((ImageView)paramView)))
     {
       boolean bool1;
       label59:
@@ -538,28 +560,28 @@ public class PhotoViewAttacher
       case 2: 
       default: 
         bool1 = false;
-        if (this.jdField_a_of_type_Uho != null)
+        if (this.jdField_a_of_type_Way != null)
         {
-          bool5 = this.jdField_a_of_type_Uho.a();
-          bool6 = this.jdField_a_of_type_Uho.b();
-          bool4 = this.jdField_a_of_type_Uho.a(paramMotionEvent);
-          if ((bool5) || (this.jdField_a_of_type_Uho.a())) {
-            break label612;
+          bool5 = this.jdField_a_of_type_Way.a();
+          bool6 = this.jdField_a_of_type_Way.b();
+          bool4 = this.jdField_a_of_type_Way.a(paramMotionEvent);
+          if ((bool5) || (this.jdField_a_of_type_Way.a())) {
+            break label611;
           }
           bool1 = true;
           label112:
-          if ((bool6) || (this.jdField_a_of_type_Uho.b())) {
-            break label618;
+          if ((bool6) || (this.jdField_a_of_type_Way.b())) {
+            break label617;
           }
         }
         break;
       }
-      label612:
-      label618:
+      label611:
+      label617:
       for (boolean bool2 = true;; bool2 = false)
       {
-        int j = paramMotionEvent.getPointerCount();
-        if (((bool1) && (bool2)) || (j > 1)) {
+        int m = paramMotionEvent.getPointerCount();
+        if (((bool1) && (bool2)) || (m > 1)) {
           bool3 = true;
         }
         this.jdField_b_of_type_Boolean = bool3;
@@ -588,7 +610,7 @@ public class PhotoViewAttacher
           if (f2 < jdField_e_of_type_Float) {
             f1 = jdField_e_of_type_Float;
           }
-          localRectF = a();
+          RectF localRectF = a();
           if (localRectF == null) {
             break;
           }
@@ -605,12 +627,8 @@ public class PhotoViewAttacher
         if (f2 > jdField_a_of_type_Float) {
           f1 = jdField_a_of_type_Float;
         }
-        RectF localRectF = a();
-        if (localRectF == null) {
-          break;
-        }
-        QLog.d("PhotoViewAttacher", 4, "postAnimationZoom maxscale event:" + paramMotionEvent.getAction() + " scale:" + a() + " startScale:" + f1 + " mMaxScale:" + this.h + " rect:" + localRectF.toString());
-        paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.h, localRectF.centerX(), localRectF.centerY()));
+        QLog.d("PhotoViewAttacher", 4, "postAnimationZoom maxscale event:" + paramMotionEvent.getAction() + " scale:" + a() + " startScale:" + f1 + " mMaxScale:" + this.h + " scaleX:" + this.j + " scaleY:" + this.k);
+        paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.h, this.j, this.k));
         bool1 = true;
         break label59;
         bool1 = false;
@@ -622,7 +640,7 @@ public class PhotoViewAttacher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher
  * JD-Core Version:    0.7.0.1
  */

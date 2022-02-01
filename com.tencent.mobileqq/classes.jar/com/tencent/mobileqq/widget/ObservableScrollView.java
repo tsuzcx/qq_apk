@@ -3,12 +3,12 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
-import bevc;
+import bica;
 
 public class ObservableScrollView
   extends ScrollView
 {
-  private bevc a;
+  private bica a;
   
   public ObservableScrollView(Context paramContext)
   {
@@ -33,14 +33,14 @@ public class ObservableScrollView
     }
   }
   
-  public void setScrollViewListener(bevc parambevc)
+  public void setScrollViewListener(bica parambica)
   {
-    this.a = parambevc;
+    this.a = parambica;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ObservableScrollView
  * JD-Core Version:    0.7.0.1
  */

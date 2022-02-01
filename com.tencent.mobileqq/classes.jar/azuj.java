@@ -1,548 +1,286 @@
-import android.os.Bundle;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class azuj
+  implements agma
 {
-  public static int a(String paramString)
+  private int jdField_a_of_type_Int = 12;
+  public bgpa a;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  
+  public azuj(BaseChatPie paramBaseChatPie)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a().size();
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if (paramBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().createEntityManager();
     }
-    return 0;
   }
   
-  public static int a(String paramString, short paramShort)
+  private auwu a(byte[] paramArrayOfByte)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    try
     {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        if (paramShort <= paramString.a().size()) {
-          return ((azui)paramString.a().get(paramShort - 1)).a();
-        }
-        QLog.w("StreamDataManager", 2, "getRecordedSize error shPackSeq: " + paramShort + "sfi.getStreamData().size(): " + paramString.a().size());
-      }
+      paramArrayOfByte = auxd.a(new String(paramArrayOfByte, "utf-8"));
+      return paramArrayOfByte;
     }
-    return 0;
-  }
-  
-  public static File a(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    catch (UnsupportedEncodingException paramArrayOfByte)
     {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
+      paramArrayOfByte.printStackTrace();
     }
     return null;
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  private void a(bgpa parambgpa, auwu paramauwu, PushDialogTemplate paramPushDialogTemplate)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.size() > 0))
+    paramauwu = paramauwu.a();
+    if (paramauwu.a() != 6) {}
+    Object localObject3;
+    Object localObject2;
+    label438:
+    do
     {
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      return;
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        azuk localazuk = (azuk)localHashMap.get(str);
-        if ((localazuk.b() == paramInt1) && (localazuk.a() == paramInt2)) {
-          return str;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static Map.Entry<String, azuk> a(long paramLong1, long paramLong2)
-  {
-    Object localObject = azul.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
-    }
-    if ((localObject != null) && (((HashMap)localObject).size() > 0))
-    {
-      localObject = ((HashMap)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        azuk localazuk = (azuk)localEntry.getValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + azah.a((int)localazuk.b) + ",msgSeq is:" + localazuk.jdField_a_of_type_Long);
-        }
-        if ((azah.a((int)localazuk.b) == paramLong1) && (paramLong2 == localazuk.jdField_a_of_type_Long)) {
-          return localEntry;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static short a(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.c();
-      }
-    }
-    return -1;
-  }
-  
-  public static void a(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        int i = paramString.a().size();
-        paramString.a((short)i);
-        if (i >= 1) {
-          ((azui)paramString.a().get(paramString.a().size() - 1)).a(true);
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.jdField_a_of_type_Long = paramLong;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    a(paramString1, paramQQAppInterface, paramString2, paramLong1, false, paramInt1, paramInt2, paramLong2, paramBundle);
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    short s1 = -1;
-    Object localObject = azul.a();
-    paramInt1 = bdml.a(paramInt1);
-    short s2;
-    azui localazui;
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
-    {
-      localObject = (azuk)((HashMap)localObject).get(paramString1);
-      ((azuk)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      if (localObject != null)
-      {
-        s2 = s1;
-        if (((azuk)localObject).a() == 0)
+        paramauwu = paramauwu.a();
+        if ((paramauwu != null) && (paramauwu.size() != 0))
         {
-          localObject = ((azuk)localObject).a();
-          s2 = s1;
-          if (localObject != null)
+          paramauwu = paramauwu.iterator();
+          while (paramauwu.hasNext())
           {
-            s2 = s1;
-            if (((List)localObject).size() > 0)
+            localObject1 = (auwv)paramauwu.next();
+            localObject3 = ((auwv)localObject1).a();
+            localObject2 = ((auwv)localObject1).a();
+            if (((auwv)localObject1).a() == 7)
             {
-              localObject = ((List)localObject).iterator();
-              s2 = s1;
-              if (((Iterator)localObject).hasNext())
-              {
-                localazui = (azui)((Iterator)localObject).next();
-                if ((localazui.a() == localazui.a().length) && (!localazui.b()))
-                {
-                  s1 = localazui.a();
-                  localazui.b(true);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ((!localazui.b()) && (localazui.a()))
-      {
-        s1 = localazui.a();
-        localazui.b(true);
-        continue;
-        if ((s2 != -1) && (paramLong1 != 0L)) {
-          paramQQAppInterface.a().a(paramString2, paramString1, paramLong1, s2, paramInt1, paramInt2, paramLong2, paramBundle);
-        }
-        return;
-      }
-    }
-  }
-  
-  public static void a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.c(paramShort);
-      }
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramBoolean);
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
-    {
-      paramQQAppInterface = new azuk(paramQQAppInterface, paramInt1, paramString, paramInt2);
-      paramQQAppInterface.a(paramInt3);
-      try
-      {
-        localHashMap.put(paramString, paramQQAppInterface);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      try
-      {
-        localHashMap.remove(paramString);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = azul.a();
-    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((azuk)localHashMap.get(paramString)).b() != paramShort);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort)
-  {
-    return a(paramString, paramArrayOfByte, paramInt, paramShort, false);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort, boolean paramBoolean)
-  {
-    Object localObject1 = azul.a();
-    if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
-    {
-      azuk localazuk = (azuk)((HashMap)localObject1).get(paramString);
-      if (!paramBoolean) {}
-      try
-      {
-        localazuk.a(paramArrayOfByte, paramInt);
-        if (localazuk.a() == 0)
-        {
-          paramString = localazuk.a();
-          if (paramString.size() == 0)
-          {
-            localObject1 = new azui(localazuk.jdField_a_of_type_Int);
-            System.arraycopy(paramArrayOfByte, 0, ((azui)localObject1).a(), 0, paramInt);
-            ((azui)localObject1).a(paramInt);
-            paramShort = localazuk.b();
-            s = (short)(paramShort + 1);
-            ((azui)localObject1).a(paramShort);
-            paramString.add(localObject1);
-            localazuk.b(s);
-            return true;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          short s;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("StreamDataManager", 2, "write fail", paramString);
-            continue;
-            localObject1 = (azui)paramString.get(paramString.size() - 1);
-            Object localObject2 = ((azui)localObject1).a();
-            int i;
-            if (((azui)localObject1).a() < localObject2.length)
-            {
-              i = localObject2.length - ((azui)localObject1).a();
-              if (i >= paramInt)
-              {
-                System.arraycopy(paramArrayOfByte, 0, ((azui)localObject1).a(), ((azui)localObject1).a(), paramInt);
-                ((azui)localObject1).a(((azui)localObject1).a() + paramInt);
-              }
-              else
-              {
-                if (paramInt <= i)
-                {
-                  System.arraycopy(paramArrayOfByte, 0, ((azui)localObject1).a(), ((azui)localObject1).a(), paramInt);
-                  ((azui)localObject1).a(((azui)localObject1).a() + paramInt);
-                  return true;
-                }
-                System.arraycopy(paramArrayOfByte, 0, ((azui)localObject1).a(), ((azui)localObject1).a(), i);
-                ((azui)localObject1).a(((azui)localObject1).a().length);
-                paramInt -= i;
-                localObject1 = new azui(localazuk.jdField_a_of_type_Int);
-                System.arraycopy(paramArrayOfByte, i, ((azui)localObject1).a(), 0, paramInt);
-                ((azui)localObject1).a(paramInt);
-                paramShort = localazuk.b();
-                s = (short)(paramShort + 1);
-                ((azui)localObject1).a(paramShort);
-                paramString.add(localObject1);
-                localazuk.b(s);
+              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+                parambgpa.setTitle((String)localObject1);
               }
             }
             else
             {
-              localObject1 = new azui(localazuk.jdField_a_of_type_Int);
-              System.arraycopy(paramArrayOfByte, 0, ((azui)localObject1).a(), 0, paramInt);
-              ((azui)localObject1).a(paramInt);
-              paramShort = localazuk.b();
-              s = (short)(paramShort + 1);
-              ((azui)localObject1).a(paramShort);
-              paramString.add(localObject1);
-              localazuk.b(s);
-              continue;
-              if (localazuk.a() == 1)
+              if (((auwv)localObject1).a() != 8) {
+                break label438;
+              }
+              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(1));
+              if ((localObject2 != null) && (((List)localObject2).size() != 0))
               {
-                localObject2 = localazuk.a();
-                paramInt = paramArrayOfByte.length;
-                i = 0;
-                if (paramInt > 0)
+                localObject1 = new SpannableStringBuilder();
+                localObject2 = ((List)localObject2).iterator();
+                while (((Iterator)localObject2).hasNext())
                 {
-                  if (((List)localObject2).size() == 0)
+                  Object localObject4 = (auwv)((Iterator)localObject2).next();
+                  localObject3 = ((auwv)localObject4).a();
+                  String str1;
+                  if (((auwv)localObject4).a() == 2)
                   {
-                    paramString = new azui(localazuk.jdField_a_of_type_Int);
-                    ((List)localObject2).add(paramString);
-                  }
-                  for (;;)
-                  {
-                    int k = paramString.a().length - paramString.a();
-                    int j = k;
-                    if (k >= paramInt) {
-                      j = paramInt;
-                    }
-                    System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
-                    i += j;
-                    paramInt -= j;
-                    paramString.a(j + paramString.a());
-                    paramString.a(paramShort);
-                    break;
-                    localObject1 = (azui)((List)localObject2).get(((List)localObject2).size() - 1);
-                    paramString = (String)localObject1;
-                    if (((azui)localObject1).a().length - ((azui)localObject1).a() <= 0)
+                    if (localObject3 != null)
                     {
-                      paramString = new azui(localazuk.jdField_a_of_type_Int);
-                      ((List)localObject2).add(paramString);
+                      localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                      str1 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
+                      if (!TextUtils.isEmpty((CharSequence)localObject4))
+                      {
+                        localObject3 = new SpannableString((CharSequence)localObject4);
+                        ((SpannableString)localObject3).setSpan(Integer.valueOf(Color.parseColor("#03081A")), 0, ((SpannableString)localObject3).length(), 33);
+                        ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
+                      }
                     }
+                  }
+                  else if ((((auwv)localObject4).a() == 3) && (localObject3 != null))
+                  {
+                    localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                    str1 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+                    String str2 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                    localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
+                    SpannableString localSpannableString = new SpannableString((CharSequence)localObject4);
+                    localSpannableString.setSpan(new azul(this, str1, (String)localObject3, str2), 0, ((String)localObject4).length(), 33);
+                    ((SpannableStringBuilder)localObject1).append(localSpannableString);
                   }
                 }
-                localazuk.b((short)(paramShort + 1));
+                parambgpa.setMessageWithoutAutoLink((CharSequence)localObject1);
               }
             }
           }
         }
       }
-    }
-    return false;
-  }
-  
-  public static byte[] a(String paramString, short paramShort)
-  {
-    Object localObject = azul.a();
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
+    } while ((((auwv)localObject1).a() != 9) || (localObject2 == null));
+    Object localObject1 = ((List)localObject2).iterator();
+    int i = 0;
+    label465:
+    if (((Iterator)localObject1).hasNext())
     {
-      paramString = (azuk)((HashMap)localObject).get(paramString);
-      if (paramString != null)
+      localObject2 = (auwv)((Iterator)localObject1).next();
+      if (((auwv)localObject2).a() != 10) {
+        break label590;
+      }
+      localObject3 = ((auwv)localObject2).a();
+      localObject2 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+      if (i != 0) {
+        break label564;
+      }
+      parambgpa.setNegativeButton((String)localObject2, new azum(this, (String)localObject3, paramPushDialogTemplate));
+    }
+    label555:
+    label564:
+    label590:
+    label591:
+    for (;;)
+    {
+      i += 1;
+      for (;;)
       {
-        localObject = (azui)paramString.a().get(paramShort - 1);
-        paramString = ((azui)localObject).a();
-        paramShort = ((azui)localObject).a();
-        if (paramShort != paramString.length)
-        {
-          localObject = new byte[paramShort];
-          System.arraycopy(paramString, 0, localObject, 0, paramShort);
-          return localObject;
+        break label465;
+        break;
+        if (i != 1) {
+          break label591;
         }
-        return paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static int b(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return -1;
-  }
-  
-  public static short b(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return 0;
-  }
-  
-  public static void b(String paramString)
-  {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a();
+        parambgpa.setPositiveButton((String)localObject2, new azun(this, (String)localObject3));
+        break label555;
       }
     }
   }
   
-  public static void b(String paramString, long paramLong)
+  private void a(EntityManager paramEntityManager, long paramLong)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.b = paramLong;
-      }
+    azup.a().a(paramEntityManager, paramLong, new azuk(this));
+  }
+  
+  private void a(PushDialogTemplate paramPushDialogTemplate, int paramInt)
+  {
+    if ((paramInt == 103) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)) {
+      azup.a().a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramPushDialogTemplate);
     }
   }
   
-  public static boolean b(String paramString)
+  private void b(PushDialogTemplate paramPushDialogTemplate, int paramInt)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_Boolean;
-      }
+    if ((paramInt == 102) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)) {
+      azup.a().b(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramPushDialogTemplate);
     }
-    return false;
+    if (this.jdField_a_of_type_Bgpa != null) {
+      this.jdField_a_of_type_Bgpa.dismiss();
+    }
   }
   
-  public static int c(String paramString)
+  public void a()
   {
-    HashMap localHashMap = azul.a();
-    int i;
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    String str;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null)
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      if (TextUtils.isEmpty(str)) {}
+    }
+    try
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, Long.valueOf(str).longValue());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AIOPushDialogHelper", 1, "db search error: ", localException);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 10: 
+      do
       {
-        i = paramString.a().size();
-        if ((i < 1) || (((azui)paramString.a().get(i - 1)).b())) {
-          return i;
+        return;
+        this.jdField_a_of_type_Int = 10;
+      } while (this.jdField_a_of_type_Bgpa == null);
+      this.jdField_a_of_type_Bgpa.dismiss();
+      return;
+    case 4: 
+      this.jdField_a_of_type_Int = 4;
+      return;
+    }
+    a();
+  }
+  
+  public void a(PushDialogTemplate paramPushDialogTemplate, int paramInt1, int paramInt2)
+  {
+    auwu localauwu;
+    if ((paramPushDialogTemplate != null) && (paramPushDialogTemplate.templ_content != null))
+    {
+      localauwu = a(paramPushDialogTemplate.templ_content);
+      if (localauwu != null)
+      {
+        if (this.jdField_a_of_type_Bgpa != null) {
+          break label217;
         }
-        return i - 1;
+        this.jdField_a_of_type_Bgpa = new bgpa(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 2131755823);
+        this.jdField_a_of_type_Bgpa.setContentView(2131559009);
+        this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(false);
+        LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_Bgpa.findViewById(2131363543);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
+        localLayoutParams.leftMargin = bggq.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
+        localLayoutParams.rightMargin = bggq.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
+        localLinearLayout.setLayoutParams(localLayoutParams);
       }
     }
-    return 0;
-    return i;
+    for (;;)
+    {
+      a(this.jdField_a_of_type_Bgpa, localauwu, paramPushDialogTemplate);
+      this.jdField_a_of_type_Bgpa.show();
+      if (this.jdField_a_of_type_Int != 4) {
+        break label267;
+      }
+      a(paramPushDialogTemplate, paramInt2);
+      if (!paramPushDialogTemplate.isFriendBanned()) {
+        break;
+      }
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800A4B9", "0X800A4B9", 0, 0, "", "", "", "");
+      return;
+      label217:
+      this.jdField_a_of_type_Bgpa.dismiss();
+    }
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800A4B8", "0X800A4B8", 0, 0, "", "", "", "");
+    return;
+    label267:
+    b(paramPushDialogTemplate, paramInt1);
   }
   
-  public static short c(String paramString)
+  public void a(List<PushDialogTemplate> paramList, int paramInt1, int paramInt2)
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
+      return;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        a((PushDialogTemplate)paramList.get(i), paramInt1, paramInt2);
+        i += 1;
       }
     }
-    return 0;
   }
   
-  public static void c(String paramString, long paramLong)
+  public int[] a()
   {
-    HashMap localHashMap = azul.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (azuk)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramLong);
-      }
-    }
-  }
-  
-  public static boolean c(String paramString)
-  {
-    List localList = azul.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean d(String paramString)
-  {
-    List localList = azul.a();
-    if ((localList != null) && (localList.contains(paramString)))
-    {
-      localList.remove(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean e(String paramString)
-  {
-    List localList = azul.a();
-    return (localList != null) && (localList.contains(paramString));
+    return new int[] { 10, 4, 7 };
   }
 }
 

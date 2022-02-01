@@ -1,76 +1,53 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class atbc
-  implements Handler.Callback
+  extends atbl
 {
-  atbc(atbb paramatbb) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public boolean handleMessage(Message paramMessage)
+  atbc(atan paramatan, MessageRecord paramMessageRecord)
   {
-    switch (paramMessage.what)
+    super(paramatan);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, atbj paramatbj)
+  {
+    if ("1".equals(this.g))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramatbj.a(atan.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    do
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      return false;
-      Object localObject = atbb.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((atbd)((Iterator)localObject).next()).a(paramMessage.arg1);
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
       }
-      localObject = atbb.a(this.a).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        atbd localatbd = (atbd)((Iterator)localObject).next();
-        if (paramMessage.arg1 == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localatbd.a(bool, (Throwable)paramMessage.obj);
-          break;
-        }
-      }
-      localObject = new Intent(atav.a(atbb.a(this.a).c));
-      if (paramMessage.arg1 == 0)
-      {
-        if (atav.a(atbb.a(this.a).c)) {}
-        for (int i = 9;; i = 8)
-        {
-          ((Intent)localObject).putExtra("key_state", i);
-          atbb.a(this.a).sendBroadcast((Intent)localObject);
-          if (atbi.a.get(atbb.a(this.a)) == null) {
-            break;
-          }
-          atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).f));
-          return false;
-        }
-      }
-      if (atav.a(atbb.a(this.a).c)) {
-        atbh.a("2691708");
-      }
-      for (;;)
-      {
-        ataq.a((Throwable)paramMessage.obj);
-        ((Intent)localObject).putExtra("key_state", 7);
-        atbb.a(this.a).sendBroadcast((Intent)localObject);
-        return false;
-        if (atav.b(atbb.a(this.a).c)) {
-          atbh.a("2597726");
-        } else if (atbi.a.get(atbb.a(this.a)) != null) {
-          atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).e));
-        }
-      }
-      paramMessage = new Intent(atav.a(atbb.a(this.a).c));
-      paramMessage.putExtra("key_state", 6);
-      atbb.a(this.a).sendBroadcast(paramMessage);
-    } while (atbi.a.get(atbb.a(this.a)) == null);
-    atbh.b(String.valueOf(((atbi)atbi.a.get(atbb.a(this.a))).d));
-    return false;
+      paramatbj.a(atan.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    atan.a(this.jdField_a_of_type_Atan).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new atbd(this, paramString, paramatbj));
   }
 }
 

@@ -1,122 +1,64 @@
-import com.tencent.av.VideoRecoveryReporter.1;
-import com.tencent.av.VideoRecoveryReporter.2;
-import com.tencent.av.VideoRecoveryReporter.3;
-import com.tencent.av.VideoRecoveryReporter.4;
-import com.tencent.av.VideoRecoveryReporter.5;
-import com.tencent.av.VideoRecoveryReporter.6;
-import com.tencent.av.VideoRecoveryReporter.7;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class lgb
+public abstract class lgb
 {
-  private static boolean a;
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  public static void a()
+  static
   {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationRequest");
-      a = true;
-      ThreadManager.post(new VideoRecoveryReporter.4(), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
-    }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG" };
   }
   
-  public static void a(int paramInt, long paramLong)
+  protected lgb(VideoAppInterface paramVideoAppInterface)
   {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryClose reason=%s duration=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-      ThreadManager.post(new VideoRecoveryReporter.3(paramInt, paramLong), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryClose fail.", localThrowable);
-    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
-  public static void a(int paramInt, long paramLong, boolean paramBoolean)
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    try
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryRequest source=%s interval=%s result=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-      ThreadManager.post(new VideoRecoveryReporter.1(paramInt, paramBoolean, paramLong), 5, null, false);
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bgsg.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lbc.e(paramString, "setPreload zzzzz  bid=" + paramInt);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
-    }
+    lbc.e(paramString, "setPreload ERROR : bid=" + paramInt);
   }
   
-  public static void a(boolean paramBoolean)
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    try
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportNodeReportRetry success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-      ThreadManager.post(new VideoRecoveryReporter.7(paramBoolean), 5, null, false);
-      return;
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bgsg.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lbc.c(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
-    }
+    lbc.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
+    return false;
   }
   
-  public static void a(boolean paramBoolean, long paramLong)
-  {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryResult result=%s timeCost=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
-      ThreadManager.post(new VideoRecoveryReporter.2(paramBoolean, paramLong), 5, null, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
-    }
-  }
+  protected abstract void a();
   
-  public static void b()
-  {
-    try
-    {
-      if (a) {
-        a = false;
-      }
-      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationResult");
-      ThreadManager.post(new VideoRecoveryReporter.5(), 5, null, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
-    }
-  }
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
   
-  public static void c()
-  {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, "reportNodeReportFail");
-      ThreadManager.post(new VideoRecoveryReporter.6(), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
-    }
-  }
+  protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lgb
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arxi;
-import arxj;
+import aues;
+import auet;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements arxi
+  implements aues
 {
-  private arxj a;
+  private auet a;
   
   public Activity a()
   {
@@ -34,23 +35,25 @@ public class QFlutterContainerFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.a = new arxj(this);
+    this.a = new auet(this);
     this.a.a(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.a != null) {
-      return this.a.a();
+    if (this.a != null) {}
+    for (paramLayoutInflater = this.a.a();; paramLayoutInflater = null)
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
     }
-    return null;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     if (this.a != null) {
-      this.a.d();
+      this.a.e();
     }
   }
   
@@ -58,7 +61,7 @@ public class QFlutterContainerFragment
   {
     super.onPause();
     if (this.a != null) {
-      this.a.c();
+      this.a.d();
     }
   }
   
@@ -66,7 +69,7 @@ public class QFlutterContainerFragment
   {
     super.onPostThemeChanged();
     if (this.a != null) {
-      this.a.e();
+      this.a.f();
     }
   }
   
@@ -74,7 +77,7 @@ public class QFlutterContainerFragment
   {
     super.onResume();
     if (this.a != null) {
-      this.a.b();
+      this.a.c();
     }
   }
   
@@ -87,7 +90,7 @@ public class QFlutterContainerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

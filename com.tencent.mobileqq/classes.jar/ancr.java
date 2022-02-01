@@ -1,20 +1,8 @@
-public class ancr
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract interface ancr
 {
-  public long a;
-  public ancg a;
-  public ancq a;
-  
-  public ancr()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Ancq = null;
-    this.jdField_a_of_type_Ancg = null;
-  }
-  
-  public String toString()
-  {
-    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Ancq + ", faceResult = " + this.jdField_a_of_type_Ancg + '}';
-  }
+  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

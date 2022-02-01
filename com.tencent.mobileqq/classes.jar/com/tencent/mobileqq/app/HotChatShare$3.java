@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aluw;
 import android.text.TextUtils;
+import anoc;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatShare$3
   implements Runnable
 {
-  public HotChatShare$3(aluw paramaluw) {}
+  public HotChatShare$3(anoc paramanoc) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class HotChatShare$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatShare.3
  * JD-Core Version:    0.7.0.1
  */

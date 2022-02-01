@@ -1,6 +1,12 @@
-public abstract interface ahue
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+public class ahue
 {
-  public abstract void a();
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public ahue(ahua paramahua) {}
 }
 
 

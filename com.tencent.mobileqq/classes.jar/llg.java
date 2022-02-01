@@ -1,134 +1,72 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
-public class llg
-  extends lld
+public final class llg
 {
-  private static int jdField_c_of_type_Int = -1;
-  static long d = 30000L;
-  long jdField_c_of_type_Long = 0L;
+  private static final float jdField_a_of_type_Float;
+  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
+  public static Random a;
   
-  public llg(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    super(paramVideoAppInterface);
+    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
+    jdField_a_of_type_JavaUtilRandom = new Random();
   }
   
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  public static final float a()
   {
-    return ((llc)paramVideoAppInterface.a(5)).a(2, "ptu_so");
+    return jdField_a_of_type_JavaUtilRandom.nextFloat();
   }
   
-  public static boolean b()
+  public static final float a(float paramFloat)
   {
-    return jdField_c_of_type_Int == 1;
+    return llh.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
   }
   
-  private boolean c()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (d()) {}
-    do
-    {
-      return true;
-      if (this.jdField_a_of_type_Int < 17)
-      {
-        lek.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
-        return false;
-      }
-      if (this.jdField_b_of_type_Int < 4)
-      {
-        lek.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
-        return false;
-      }
-      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
-      {
-        lek.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
-        return false;
-      }
-    } while (this.jdField_b_of_type_Long >= 1073741824L);
-    lek.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    String str = Build.MODEL;
-    if (TextUtils.isEmpty(str)) {
-      return false;
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
     }
-    return str.equals("MI 5");
-  }
-  
-  public int a(String paramString)
-  {
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    if (jdField_c_of_type_Int != 1)
-    {
-      if (azkt.a(BaseApplicationImpl.getContext())) {
-        break label138;
-      }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= this.jdField_c_of_type_Long) {
-        break label121;
-      }
-      long l2 = AudioHelper.c();
-      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
-        break label114;
-      }
-      jdField_c_of_type_Int = 1;
-      long l3 = AudioHelper.c();
-      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
-      this.jdField_c_of_type_Long = (l1 + d);
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
     }
-    label138:
-    for (;;)
-    {
-      if (jdField_c_of_type_Int != 1) {
-        break label145;
-      }
-      return true;
-      label114:
-      jdField_c_of_type_Int = 0;
-      break;
-      label121:
-      if (QLog.isDevelopLevel())
-      {
-        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
-        continue;
-        jdField_c_of_type_Int = 1;
-      }
-    }
-    label145:
-    return false;
+    return paramFloat1;
   }
   
-  public boolean a(int paramInt, String paramString)
+  public static final int a(int paramInt)
   {
-    return false;
+    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
   }
   
-  public boolean a(String paramString)
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ("ptu_so".equalsIgnoreCase(paramString)) {
-      return a();
+    if (paramInt1 < paramInt2) {
+      return paramInt2;
     }
-    return c();
+    if (paramInt1 > paramInt3) {
+      return paramInt3;
+    }
+    return paramInt1;
   }
   
-  public void b() {}
+  public static final boolean a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
+  }
   
-  public void c() {}
+  public static final float b(float paramFloat)
+  {
+    return llh.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+  }
+  
+  public static final float c(float paramFloat)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     llg
  * JD-Core Version:    0.7.0.1
  */

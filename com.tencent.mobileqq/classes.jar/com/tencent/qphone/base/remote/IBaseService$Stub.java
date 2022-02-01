@@ -13,6 +13,7 @@ public abstract class IBaseService$Stub
   private static final String DESCRIPTOR = "com.tencent.qphone.base.remote.IBaseService";
   static final int TRANSACTION_getMsfConnectedIPFamily = 4;
   static final int TRANSACTION_getMsfConnectedNetType = 3;
+  static final int TRANSACTION_onKillProcess = 6;
   static final int TRANSACTION_onProcessViewableChanged = 5;
   static final int TRANSACTION_sendSyncToServiceMsg = 1;
   static final int TRANSACTION_sendToServiceMsg = 2;
@@ -87,16 +88,22 @@ public abstract class IBaseService$Stub
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramInt1 = onProcessViewableChanged(bool, paramParcel1.readLong(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
     }
     paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramInt1 = onProcessViewableChanged(bool, paramParcel1.readLong(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    }
+    paramInt1 = onKillProcess();
+    paramParcel2.writeNoException();
+    paramParcel2.writeInt(paramInt1);
+    return true;
   }
 }
 

@@ -1,101 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class aeic
-  implements DialogInterface.OnDismissListener
+  extends anmu
 {
-  TroopRobotPickerActivity.RobotPickerData jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
+  public aeic(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public aeic(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
+        return;
+      }
+      paramString1 = (anmw)this.a.app.getManager(51);
+      if (paramString1 == null) {}
+      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
+        return;
+      }
+    }
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
     {
-      paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("ageStart", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1);
-        localJSONObject.put("ageEnd", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
-        paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
-        if (QLog.isColorLevel()) {
-          QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|mCurAgeIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 + ", mCurAgeIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 + ", mAgeSelectIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1 + ", mAgeSelectIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        }
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
+      localObject = (anmw)this.a.app.getManager(51);
+      if (localObject != null) {
+        break label90;
       }
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 1)
+    label90:
+    for (Object localObject = null;; localObject = ((anmw)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
     {
-      paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("sex", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex);
-        paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
-        return;
+      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
       }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
+      return;
     }
-    paramDialogInterface = new Intent();
-    JSONObject localJSONObject = new JSONObject();
-    i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray.length)
-      {
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[i]);
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i] + "Str", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[i].name);
-        i += 1;
-      }
-      localJSONObject.put("country", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
-      localJSONObject.put("countryStr", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name);
-    }
-    catch (JSONException localJSONException3)
-    {
-      for (;;)
-      {
-        localJSONException3.printStackTrace();
-      }
-    }
-    paramDialogInterface.putExtra("result", localJSONObject.toString());
-    paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
   }
 }
 

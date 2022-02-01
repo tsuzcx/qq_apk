@@ -1,76 +1,23 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bnns
+class bnns
+  implements Observer<Boolean>
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  public boolean a;
-  int b;
-  int c;
-  protected int d = -1;
-  protected int e = -1;
+  bnns(bnnl parambnnl) {}
   
-  public bnns(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
+    if (paramBoolean == null) {
+      return;
     }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    bnnl localbnnl = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
+      bnnl.a(localbnnl, bool);
+      return;
     }
-    return 5;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.e = paramInt;
   }
 }
 

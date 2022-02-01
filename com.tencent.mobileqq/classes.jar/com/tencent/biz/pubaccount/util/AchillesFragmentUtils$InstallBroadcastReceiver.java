@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import begz;
+import bhod;
 import com.tencent.biz.pubaccount.CustomWebView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public class AchillesFragmentUtils$InstallBroadcastReceiver
     try
     {
       String str = paramIntent.getAction();
-      paramContext = (begz)AchillesFragmentUtils.a().get();
+      paramContext = (bhod)AchillesFragmentUtils.a().get();
       paramIntent = paramIntent.getData().getEncodedSchemeSpecificPart();
       if ((paramContext != null) && (!TextUtils.isEmpty(paramIntent))) {
         if (paramContext == null) {
@@ -47,7 +47,7 @@ public class AchillesFragmentUtils$InstallBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.AchillesFragmentUtils.InstallBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

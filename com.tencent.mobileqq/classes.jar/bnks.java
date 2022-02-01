@@ -1,6 +1,14 @@
-class bnks
+public abstract interface bnks
 {
-  private static final bnkr a = new bnkr(null);
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

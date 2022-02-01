@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class anzq
-  implements bhuk
+  implements FilenameFilter
 {
-  public anzq(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bhuf parambhuf) {}
+  public anzq(CleanCache paramCleanCache) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_Bhuf.dismiss();
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzq
  * JD-Core Version:    0.7.0.1
  */

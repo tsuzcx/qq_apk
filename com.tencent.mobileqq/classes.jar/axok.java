@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class axok
+public abstract interface axok
 {
-  public int a;
-  public azcw a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  public ArrayList<axoj> a = new ArrayList();
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axok
  * JD-Core Version:    0.7.0.1
  */

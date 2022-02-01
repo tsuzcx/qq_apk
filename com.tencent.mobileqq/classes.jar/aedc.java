@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aedc
-  implements DialogInterface.OnClickListener
+  extends aniz
 {
-  public aedc(TroopInfoActivity paramTroopInfoActivity, bdjz parambdjz) {}
+  public aedc(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      this.jdField_a_of_type_Bdjz.cancel();
-    }
+    if (!this.a.j) {}
+    do
+    {
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramCard));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 

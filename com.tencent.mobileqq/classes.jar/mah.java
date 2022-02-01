@@ -1,39 +1,117 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-
-class mah
-  implements ServiceConnection
+public abstract class mah
 {
-  mah(maf parammaf) {}
+  protected int a;
+  protected String a;
+  protected int b = 0;
+  protected int c = 3;
+  protected int d;
+  protected int e = 1;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected mah(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavWrapper", 2, "Qav Service connected!");
-    }
-    this.a.jdField_a_of_type_Lza = lzb.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Lza != null) && (this.a.jdField_a_of_type_Mag != null)) {
-      this.a.jdField_a_of_type_Mag.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.c = paramInt3;
+    this.e = paramInt4;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static boolean a(mah parammah1, mah parammah2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavWrapper", 2, "Qav Service disconnected!");
+    boolean bool2 = true;
+    boolean bool1;
+    if (parammah2 == null) {
+      bool1 = false;
     }
-    this.a.jdField_a_of_type_Lza = null;
+    do
+    {
+      do
+      {
+        int i;
+        int j;
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (parammah1 == null);
+          i = parammah2.e();
+          j = parammah1.e();
+          lif.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + parammah2.b() + "], idOld[" + parammah1.b() + "]");
+          bool1 = bool2;
+        } while (i < j);
+        if (i > j) {
+          return false;
+        }
+        bool1 = bool2;
+      } while (parammah1.a());
+      if (parammah2.a()) {
+        return false;
+      }
+      bool1 = bool2;
+    } while (parammah2.c() <= parammah1.c());
+    return false;
+  }
+  
+  public abstract int a();
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.c == 0;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.e;
+  }
+  
+  public int e()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof mah))) {}
+    do
+    {
+      return false;
+      paramObject = (mah)paramObject;
+    } while (b() != paramObject.b());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mah
  * JD-Core Version:    0.7.0.1
  */

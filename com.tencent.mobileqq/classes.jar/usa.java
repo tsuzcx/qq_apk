@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class usa
-  extends SimpleJob<Void>
+class usa
+  implements AdExposureChecker.ExposureCallback
 {
-  public usa(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, urt paramurt)
-  {
-    super(paramString);
-  }
+  usa(urz paramurz) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Urt);
-    return null;
+    FLog.e("AdExposureChecker", "onExposure");
+    urv.a(urz.a(this.a), (uru)this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     usa
  * JD-Core Version:    0.7.0.1
  */

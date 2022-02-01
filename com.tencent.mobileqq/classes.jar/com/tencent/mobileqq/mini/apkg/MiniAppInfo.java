@@ -19,9 +19,10 @@ import NS_MINI_INTERFACE.INTERFACE.StMainPageExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StMotionPicInfo;
 import NS_MINI_INTERFACE.INTERFACE.StOperationInfo;
 import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
+import NS_MINI_INTERFACE.INTERFACE.StStartExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import aasd;
+import acqx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -31,6 +32,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
+import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByIdEntity;
+import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppShowInfoEntity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -68,6 +71,7 @@ public class MiniAppInfo
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
+  public static final String NATIVE_MINI_APP_ID_CHECKIN = "1108164955";
   public static final String TAG = "[mini] MiniAppInfo";
   public static final String TAG_DB = "miniapp-db";
   public String amsAdInfo;
@@ -83,8 +87,10 @@ public class MiniAppInfo
   public DebugInfo debugInfo;
   public String desc;
   public String developerDesc;
+  public int deviceOrientation;
   public List<String> downloadFileDomainList;
   public String downloadUrl;
+  public boolean enableLoadingAd;
   public int engineType;
   public ArrayList<ExtConfigInfo> extConfigInfoList;
   public String extendData;
@@ -105,6 +111,7 @@ public class MiniAppInfo
   public String openId;
   public int position;
   public ArrayList<PreCacheInfo> preCacheList;
+  public String prepayId;
   public ArrayList<String> qualifications;
   public int recommend;
   public String recommendAppIconUrl;
@@ -115,6 +122,7 @@ public class MiniAppInfo
   public ArrayList<ResourcePreCacheInfo> resourcePreCacheInfo;
   public List<SecondApiRightInfo> secondApiRightInfoList;
   public String shareId;
+  public int showStatusBar;
   public int skipDomainCheck;
   public List<String> socketDomainList;
   public List<SubPkgInfo> subpkgs;
@@ -151,10 +159,10 @@ public class MiniAppInfo
   
   private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo)
   {
-    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, 0, false, false, "", null, 0, null, null, null, null, null);
+    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, 0, false, false, "", null, 0, null, null, null, null, null, null);
   }
   
-  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig)
+  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig, String paramString12)
   {
     this.appId = paramString1;
     this.name = paramString2;
@@ -274,6 +282,7 @@ public class MiniAppInfo
     this.recommendAppIconUrl = paramString10;
     this.extendData = paramString11;
     this.clearAuths = paramInt6;
+    this.prepayId = paramString12;
     this.commonExt = paramStCommonExt.toByteArray();
     if (paramList1 != null)
     {
@@ -321,15 +330,12 @@ public class MiniAppInfo
       }
       this.versionUpdateTime = paramStAppBasicInfo.versionUpdateTime.get();
       if (!paramStAppBasicInfo.pkgType.has()) {
-        break label1424;
+        break label1489;
       }
       if (paramStAppBasicInfo.pkgType.get() != 1) {
-        break label1416;
+        break label1481;
       }
       this.engineType = 1;
-    }
-    for (;;)
-    {
       this.noNeedRealRecommend = paramStAppBasicInfo.noNeedRealRecommend.get();
       this.miniGamePluginInfo = MiniGamePluginInfo.fromProtocol(paramStAppBasicInfo.pluginInfo);
       this.renderInfo = RenderInfo.from(paramStAppBasicInfo.renderInfo);
@@ -338,6 +344,16 @@ public class MiniAppInfo
       }
       this.shareId = paramStAppBasicInfo.shareId.get();
       this.via = paramStAppBasicInfo.via.get();
+      if (paramStAppBasicInfo.splashScreenAd.get() != 1) {
+        break label1500;
+      }
+    }
+    label1481:
+    label1489:
+    label1500:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      this.enableLoadingAd = paramBoolean1;
       if (paramStOperationInfo != null)
       {
         this.amsAdInfo = paramStOperationInfo.amsAdInfo.get();
@@ -349,13 +365,17 @@ public class MiniAppInfo
         this.ide_scene = paramStIdeConfig.scene.get();
         this.ide_extraAppid = paramStIdeConfig.extraAppid.get();
         this.ide_extraData = paramStIdeConfig.extraData.get();
+        if (paramStIdeConfig.startExtInfo != null)
+        {
+          this.deviceOrientation = paramStIdeConfig.startExtInfo.deviceOrientation.get();
+          this.showStatusBar = paramStIdeConfig.startExtInfo.showStatusBar.get();
+        }
       }
       return;
-      label1416:
       this.engineType = 0;
-      continue;
-      label1424:
+      break;
       this.engineType = this.reportType;
+      break;
     }
   }
   
@@ -441,6 +461,7 @@ public class MiniAppInfo
     localMiniAppInfo.ide_extraAppid = paramMiniAppInfo.ide_extraAppid;
     localMiniAppInfo.ide_extraData = paramMiniAppInfo.ide_extraData;
     localMiniAppInfo.tianshuAdId = paramMiniAppInfo.tianshuAdId;
+    localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
     return localMiniAppInfo;
   }
   
@@ -454,7 +475,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(aasd.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(acqx.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -503,7 +524,7 @@ public class MiniAppInfo
     boolean bool2 = getSupportBlueBar(paramStApiAppInfo);
     if (paramStApiAppInfo.supportOffline.get() == 1) {}
     for (boolean bool1 = true;; bool1 = false) {
-      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get());
+      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get(), paramStApiAppInfo.appNoCacheExt.prepayId.get());
     }
   }
   
@@ -547,6 +568,22 @@ public class MiniAppInfo
     return null;
   }
   
+  public static MiniAppInfo getMiniAppInfoByIdFromDB(MiniAppInfoByIdEntity paramMiniAppInfoByIdEntity)
+  {
+    try
+    {
+      INTERFACE.StApiAppInfo localStApiAppInfo = new INTERFACE.StApiAppInfo();
+      localStApiAppInfo.mergeFrom(paramMiniAppInfoByIdEntity.appInfo);
+      paramMiniAppInfoByIdEntity = from(localStApiAppInfo);
+      return paramMiniAppInfoByIdEntity;
+    }
+    catch (Throwable paramMiniAppInfoByIdEntity)
+    {
+      QLog.e("miniapp-db", 1, "getMiniAppInfoByIdFromDB 2 error,", paramMiniAppInfoByIdEntity);
+    }
+    return null;
+  }
+  
   public static MiniAppInfo getMiniAppInfoByLinkFromDB(MiniAppByLinkEntity paramMiniAppByLinkEntity, MiniAppInfoEntity paramMiniAppInfoEntity)
   {
     try
@@ -559,14 +596,31 @@ public class MiniAppInfo
       localStApiAppInfo.operInfo.mergeFrom(paramMiniAppByLinkEntity.operInfo);
       localStApiAppInfo.extInfo.mergeFrom(paramMiniAppByLinkEntity.extInfo);
       localStApiAppInfo.extendData.set(paramMiniAppByLinkEntity.extendData);
-      paramMiniAppByLinkEntity = new INTERFACE.StAppFixInfoExt();
-      localStApiAppInfo.appNoCacheExt.mergeFrom(paramMiniAppByLinkEntity.toByteArray());
+      paramMiniAppInfoEntity = new INTERFACE.StAppFixInfoExt();
+      paramMiniAppInfoEntity.prepayId.set(paramMiniAppByLinkEntity.prepayId);
+      localStApiAppInfo.appNoCacheExt.mergeFrom(paramMiniAppInfoEntity.toByteArray());
       paramMiniAppByLinkEntity = from(localStApiAppInfo);
       return paramMiniAppByLinkEntity;
     }
     catch (Throwable paramMiniAppByLinkEntity)
     {
       QLog.e("miniapp-db", 1, "getMiniAppInfoByLinkFromDB error,", paramMiniAppByLinkEntity);
+    }
+    return null;
+  }
+  
+  public static MiniAppInfo getMiniAppInfoByLinkFromDB(MiniAppInfoByLinkEntity paramMiniAppInfoByLinkEntity)
+  {
+    try
+    {
+      INTERFACE.StApiAppInfo localStApiAppInfo = new INTERFACE.StApiAppInfo();
+      localStApiAppInfo.mergeFrom(paramMiniAppInfoByLinkEntity.appInfo);
+      paramMiniAppInfoByLinkEntity = from(localStApiAppInfo);
+      return paramMiniAppInfoByLinkEntity;
+    }
+    catch (Throwable paramMiniAppInfoByLinkEntity)
+    {
+      QLog.e("miniapp-db", 1, "getMiniAppInfoByLinkFromDB 2 error,", paramMiniAppInfoByLinkEntity);
     }
     return null;
   }
@@ -866,11 +920,36 @@ public class MiniAppInfo
     return paramJSONObject;
   }
   
+  public static void saveMiniAppByAppInfoLinkEntity(String paramString1, int paramInt, String paramString2, INTERFACE.StApiAppInfo paramStApiAppInfo)
+  {
+    MiniAppInfoByLinkEntity localMiniAppInfoByLinkEntity = new MiniAppInfoByLinkEntity();
+    localMiniAppInfoByLinkEntity.link = paramString1;
+    localMiniAppInfoByLinkEntity.linkType = paramInt;
+    localMiniAppInfoByLinkEntity.shareTicket = paramString2;
+    localMiniAppInfoByLinkEntity.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
+    localMiniAppInfoByLinkEntity.timeStamp = System.currentTimeMillis();
+    paramString1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString1 instanceof QQAppInterface)) {}
+    for (paramString1 = (MiniAppEntityManager)paramString1.getManager(330);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
+    {
+      if (paramString1 != null)
+      {
+        paramString1.insertOrReplaceEntity(localMiniAppInfoByLinkEntity);
+        QLog.d("miniapp-db", 1, "saveMiniAppByAppInfoLinkEntity ok." + localMiniAppInfoByLinkEntity.link + " linkType:" + paramInt);
+      }
+      return;
+    }
+  }
+  
   public static void saveMiniAppByIdEntity(String paramString, INTERFACE.StApiAppInfo paramStApiAppInfo)
   {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
     MiniAppByIdEntity localMiniAppByIdEntity = new MiniAppByIdEntity();
     localMiniAppByIdEntity.appId = paramStApiAppInfo.appId.get();
-    localMiniAppByIdEntity.entryPath = paramString;
+    localMiniAppByIdEntity.entryPath = str;
     localMiniAppByIdEntity.shareTicket = null;
     localMiniAppByIdEntity.first = ((INTERFACE.StFirstPage)paramStApiAppInfo.first.get()).toByteArray();
     localMiniAppByIdEntity.mDebug = ((INTERFACE.StMDebugInfo)paramStApiAppInfo.mDebug.get()).toByteArray();
@@ -906,6 +985,7 @@ public class MiniAppInfo
     localMiniAppByLinkEntity.extInfo = ((COMM.StCommonExt)paramStApiAppInfo.extInfo.get()).toByteArray();
     localMiniAppByLinkEntity.extendData = paramStApiAppInfo.extendData.get();
     localMiniAppByLinkEntity.timeStamp = System.currentTimeMillis();
+    localMiniAppByLinkEntity.prepayId = paramStApiAppInfo.appNoCacheExt.prepayId.get();
     paramString1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramString1 instanceof QQAppInterface)) {}
     for (paramString1 = (MiniAppEntityManager)paramString1.getManager(330);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
@@ -914,6 +994,30 @@ public class MiniAppInfo
       {
         paramString1.insertOrReplaceEntity(localMiniAppByLinkEntity);
         QLog.d("miniapp-db", 1, "saveMiniAppByLinkEntity ok." + localMiniAppByLinkEntity.appId);
+      }
+      return;
+    }
+  }
+  
+  public static void saveMiniAppInfoByIdEntity(String paramString, INTERFACE.StApiAppInfo paramStApiAppInfo)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    MiniAppInfoByIdEntity localMiniAppInfoByIdEntity = new MiniAppInfoByIdEntity();
+    localMiniAppInfoByIdEntity.appId = paramStApiAppInfo.appId.get();
+    localMiniAppInfoByIdEntity.entryPath = str;
+    localMiniAppInfoByIdEntity.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
+    localMiniAppInfoByIdEntity.timeStamp = System.currentTimeMillis();
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString instanceof QQAppInterface)) {}
+    for (paramString = (MiniAppEntityManager)paramString.getManager(330);; paramString = new MiniAppEntityManager(paramString.getAccount()))
+    {
+      if (paramString != null)
+      {
+        paramString.insertOrReplaceEntity(localMiniAppInfoByIdEntity);
+        QLog.d("miniapp-db", 1, "saveMiniAppInfoByIdEntity ok." + localMiniAppInfoByIdEntity.appId + " entryPath:" + str);
       }
       return;
     }
@@ -1047,7 +1151,7 @@ public class MiniAppInfo
         }
       } while (!(paramObject instanceof MiniAppInfo));
       paramObject = (MiniAppInfo)paramObject;
-    } while ((!TextUtils.equals(paramObject.appId, this.appId)) || (!TextUtils.equals(paramObject.name, this.name)) || (!TextUtils.equals(paramObject.iconUrl, this.iconUrl)) || (!TextUtils.equals(paramObject.downloadUrl, this.downloadUrl)) || (paramObject.verType != this.verType) || (paramObject.engineType != this.engineType) || (paramObject.reportType != this.reportType) || (!TextUtils.equals(paramObject.version, this.version)) || (!FirstPageInfo.equals(this.firstPage, paramObject.firstPage)) || (!DebugInfo.equals(this.debugInfo, paramObject.debugInfo)) || (!domainEquals(this.requestDomainList, paramObject.requestDomainList)) || (!domainEquals(this.socketDomainList, paramObject.socketDomainList)) || (!domainEquals(this.downloadFileDomainList, paramObject.downloadFileDomainList)) || (!domainEquals(this.uploadFileDomainList, paramObject.uploadFileDomainList)) || (!domainEquals(this.businessDomainList, paramObject.businessDomainList)) || (!this.udpIpList.equals(paramObject.udpIpList)) || (!TextUtils.equals(paramObject.extraData, this.extraData)) || (!TextUtils.equals(paramObject.shareId, this.shareId)) || (!TextUtils.equals(paramObject.via, this.via)) || (!TextUtils.equals(paramObject.ide_scene, this.ide_scene)) || (!TextUtils.equals(paramObject.ide_extraAppid, this.ide_extraAppid)) || (!TextUtils.equals(paramObject.ide_extraData, this.ide_extraData)));
+    } while ((!TextUtils.equals(paramObject.appId, this.appId)) || (!TextUtils.equals(paramObject.name, this.name)) || (!TextUtils.equals(paramObject.iconUrl, this.iconUrl)) || (!TextUtils.equals(paramObject.downloadUrl, this.downloadUrl)) || (paramObject.verType != this.verType) || (paramObject.engineType != this.engineType) || (paramObject.reportType != this.reportType) || (!TextUtils.equals(paramObject.version, this.version)) || (!FirstPageInfo.equals(this.firstPage, paramObject.firstPage)) || (!DebugInfo.equals(this.debugInfo, paramObject.debugInfo)) || (!domainEquals(this.requestDomainList, paramObject.requestDomainList)) || (!domainEquals(this.socketDomainList, paramObject.socketDomainList)) || (!domainEquals(this.downloadFileDomainList, paramObject.downloadFileDomainList)) || (!domainEquals(this.uploadFileDomainList, paramObject.uploadFileDomainList)) || (!domainEquals(this.businessDomainList, paramObject.businessDomainList)) || (!this.udpIpList.equals(paramObject.udpIpList)) || (!TextUtils.equals(paramObject.extraData, this.extraData)) || (!TextUtils.equals(paramObject.shareId, this.shareId)) || (!TextUtils.equals(paramObject.via, this.via)) || (!TextUtils.equals(paramObject.ide_scene, this.ide_scene)) || (!TextUtils.equals(paramObject.ide_extraAppid, this.ide_extraAppid)) || (!TextUtils.equals(paramObject.ide_extraData, this.ide_extraData)) || (paramObject.enableLoadingAd != this.enableLoadingAd));
     return true;
   }
   
@@ -1095,6 +1199,11 @@ public class MiniAppInfo
     return (this.appMode != null) && (this.appMode.interMode);
   }
   
+  public boolean isLandScape()
+  {
+    return (this.deviceOrientation == 2) || (this.deviceOrientation == 3) || (this.deviceOrientation == 4);
+  }
+  
   public boolean isLimitedAccessApp()
   {
     return (this.appMode != null) && (this.appMode.isLimitedAccess);
@@ -1108,6 +1217,11 @@ public class MiniAppInfo
   public boolean isReportTypeMiniGame()
   {
     return this.reportType == 1;
+  }
+  
+  public boolean isShowStatusBar()
+  {
+    return this.showStatusBar == 1;
   }
   
   public boolean isSpecialMiniApp()
@@ -1151,7 +1265,7 @@ public class MiniAppInfo
     StringBuilder localStringBuilder = new StringBuilder().append("MiniAppInfo{appId='").append(this.appId).append('\'').append(", name='").append(this.name).append('\'').append(", iconUrl='").append(this.iconUrl).append('\'').append(", downloadUrl='").append(this.downloadUrl).append('\'').append(", topType=").append(this.topType).append(", version='").append(this.version).append('\'').append(", desc='").append(this.desc).append('\'').append(", engineType='").append(this.engineType).append('\'').append(", reportType='").append(this.reportType).append('\'').append(", verType=").append(this.verType).append(", timestamp=").append(this.timestamp).append(", baselibMiniVersion='").append(this.baselibMiniVersion).append('\'').append(", filesize=").append(this.fileSize).append(", extraData=").append(this.extraData).append(", developerDesc=").append(this.developerDesc).append(", firstPage=").append(this.firstPage).append(", whiteList=").append(list2string(this.whiteList)).append(", blackList=").append(list2string(this.blackList)).append(", secondApiRightInfoList=").append(list2stringSecond(this.secondApiRightInfoList)).append(", requestDomainList=").append(list2string(this.requestDomainList)).append(", socketDomainList=").append(list2string(this.socketDomainList)).append(", uploadFileDomainList=").append(list2string(this.uploadFileDomainList)).append(", downloadFileDomainList=").append(list2string(this.downloadFileDomainList)).append(", businessDomainList=").append(list2string(this.businessDomainList)).append(", udpIpList=").append(list2string(this.udpIpList)).append(", subpkgs=").append(list2stringO(this.subpkgs)).append(", isSupportOffline=").append(this.isSupportOffline).append(", skipDomainCheck=").append(this.skipDomainCheck).append(", openId=").append(this.openId).append(", tinyId=").append(this.tinyId).append(", isSupportBlueBar=").append(this.isSupportBlueBar).append(", isSupportOffline=").append(this.isSupportOffline).append(", recommendIconUrl=").append(this.recommendAppIconUrl).append(", extendData=").append(this.extendData).append(", extConfigInfo=").append(list2String(this.extConfigInfoList)).append(", clearAuths=").append(this.clearAuths).append(", appStoreAnimPicUrl=").append(this.appStoreAnimPicUrl).append(", usrFileSizeLimit=").append(this.usrFileSizeLimit).append(", versionUpdateTime=").append(this.versionUpdateTime).append(", noNeedRealRecommend=").append(this.noNeedRealRecommend).append(", miniGamePluginInfo=").append(this.miniGamePluginInfo).append(", renderInfo=");
     if (this.renderInfo != null) {}
     for (int i = this.renderInfo.renderMode;; i = 0) {
-      return i + ", shareId=" + this.shareId + ", via=" + this.via + '}';
+      return i + ", shareId=" + this.shareId + ", via=" + this.via + ", enableLoadingAd=" + this.enableLoadingAd + ", prepayId=" + this.prepayId + '}';
     }
   }
   
@@ -1207,12 +1321,10 @@ public class MiniAppInfo
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.isSupportOffline) {
-        break label497;
+        break label535;
       }
-    }
-    label497:
-    for (paramInt = i;; paramInt = 0)
-    {
+      paramInt = 1;
+      label301:
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.recommendAppIconUrl);
       paramParcel.writeString(this.extendData);
@@ -1237,15 +1349,29 @@ public class MiniAppInfo
       paramParcel.writeString(this.ide_extraData);
       paramParcel.writeInt(this.tianshuAdId);
       paramParcel.writeTypedList(this.resourcePreCacheInfo);
+      if (!this.enableLoadingAd) {
+        break label540;
+      }
+    }
+    label535:
+    label540:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.deviceOrientation);
+      paramParcel.writeInt(this.showStatusBar);
+      paramParcel.writeString(this.prepayId);
       return;
       paramInt = 0;
       break;
+      paramInt = 0;
+      break label301;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

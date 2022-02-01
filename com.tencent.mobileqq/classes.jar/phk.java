@@ -1,486 +1,396 @@
-import android.os.Handler;
-import android.util.SparseArray;
-import android.util.SparseBooleanArray;
-import com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.3;
-import com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.4;
-import com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.5;
-import com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.8;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadinjoyJumpUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.util.PreloadManager;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.RspBody;
-import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.RspChannelArticle;
 
 public class phk
-  extends pgp
 {
-  public static final String a;
-  private SparseArray<CopyOnWriteArrayList<WeiShiVideoArticleInfo>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private LinkedHashMap<Integer, ConcurrentHashMap<Long, WeiShiVideoArticleInfo>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private SparseArray<HashSet<Long>> b = new SparseArray();
-  
-  static
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    jdField_a_of_type_JavaLangString = phk.class.getSimpleName();
+    if (paramBaseArticleInfo == null) {
+      throw new NullPointerException("article info is null");
+    }
+    if (pha.d(paramBaseArticleInfo)) {
+      return 3;
+    }
+    if (pha.a(paramBaseArticleInfo)) {
+      return 2;
+    }
+    return 0;
   }
   
-  public phk(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public static Intent a(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
-  }
-  
-  private void a(int paramInt, BaseVideoArticleInfo paramBaseVideoArticleInfo)
-  {
-    if (paramBaseVideoArticleInfo == null) {}
-    oye localoye;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 40677) || (paramBaseVideoArticleInfo == null) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)));
-      localoye = (oye)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(274);
-    } while (localoye == null);
-    long l = NetConnInfoCenter.getServerTime();
-    localoye.a(syb.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBaseVideoArticleInfo), l);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "request error, proto:" + paramToServiceMsg.getServiceCmd() + "    code:" + paramInt);
-    }
-  }
-  
-  private void a(Integer paramInteger, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo)
-  {
-    paramInteger = (CopyOnWriteArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInteger.intValue());
-    if ((paramInteger != null) && (paramInteger.contains(paramWeiShiVideoArticleInfo))) {
-      paramInteger.remove(paramWeiShiVideoArticleInfo);
-    }
-  }
-  
-  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<WeiShiVideoArticleInfo> paramList, long paramLong1, long paramLong2)
-  {
-    paramBoolean2 = false;
-    if (!paramBoolean1)
-    {
-      oxb.a().b(false, paramInt, null, false);
-      return;
-    }
-    if (paramList == null)
-    {
-      oxb.a().b(true, paramInt, null, true);
-      return;
-    }
-    a(Integer.valueOf(paramInt), paramList, true);
-    paramBoolean1 = paramBoolean2;
-    if (paramList.isEmpty()) {
-      paramBoolean1 = true;
-    }
-    paramList = b(Integer.valueOf(paramInt));
-    oxb.a().b(true, paramInt, paramList, paramBoolean1);
-  }
-  
-  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<WeiShiVideoArticleInfo> paramList, long paramLong1, long paramLong2, ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoArticleModule.3(this, paramLong1, paramBoolean1, paramList, paramInt, paramBoolean2, paramLong2, paramToServiceMsg));
-  }
-  
-  private boolean a(Integer paramInteger, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo, boolean paramBoolean)
-  {
-    int j = 0;
-    if (paramWeiShiVideoArticleInfo == null) {
-      return false;
-    }
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramInteger);
-    if (localConcurrentHashMap == null)
-    {
-      localConcurrentHashMap = new ConcurrentHashMap();
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramInteger, localConcurrentHashMap);
-    }
+    boolean bool = true;
+    paramContext = new Intent(paramContext, VideoFeedsPlayActivity.class);
+    paramContext.addFlags(536870912);
+    paramContext.putExtra("VIDEO_THIRD_ICON", paramArticleInfo.thirdIcon);
+    paramContext.putExtra("VIDEO_THIRD_NAME", paramArticleInfo.thirdName);
+    paramContext.putExtra("VIDEO_THIRD_ACTION", paramArticleInfo.thirdAction);
+    paramContext.putExtra("VIDEO_THIRD_URL", paramArticleInfo.mThirdVideoURL);
+    paramContext.putExtra("VIDEO_THRID_URL_EXPIRE_TIME", paramArticleInfo.mThirdVideoURLExpireTime);
+    paramContext.putExtra("VIDEO_ARTICLE_ID", paramArticleInfo.innerUniqueID);
+    paramContext.putExtra("VIDEO_ARTICLE_BUSITYPE", paramArticleInfo.busiType);
+    paramContext.putExtra("VIDEO_VID", paramArticleInfo.mVideoVid);
+    paramContext.putExtra("VIDEO_WIDTH", String.valueOf(paramArticleInfo.mVideoJsonWidth));
+    paramContext.putExtra("VIDEO_HEIGHT", String.valueOf(paramArticleInfo.mVideoJsonHeight));
+    paramContext.putExtra("VIDEO_TIME", String.valueOf(paramArticleInfo.mVideoDuration));
+    paramContext.putExtra("VIDEO_TITLE", paramArticleInfo.mTitle);
+    paramContext.putExtra("VIDEO_COVER", paramArticleInfo.mVideoCoverUrl.getFile());
+    paramContext.putExtra("VIDEO_H5_URL", paramArticleInfo.mArticleContentUrl);
+    paramContext.putExtra("VIDEO_PUB_ACCOUNT_NAME", paramArticleInfo.mSubscribeName);
+    paramContext.putExtra("VIDEO_PUB_ACCOUNT_UIN", paramArticleInfo.publishUin);
+    paramContext.putExtra("VIDEO_SUBS_TEXT", paramArticleInfo.mVideoArticleSubsText);
+    paramContext.putExtra("VIDEO_SUBS_COLOR", paramArticleInfo.mVideoArticleSubsColor);
+    if (paramArticleInfo.busiType == 1) {}
     for (;;)
     {
-      int i;
-      if (localConcurrentHashMap.get(Long.valueOf(paramWeiShiVideoArticleInfo.recommendSeq)) != null)
-      {
-        if (!QLog.isColorLevel()) {
-          break label448;
-        }
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "saveArticleInfo, article seq duplicated, article channelID=" + paramInteger + ", articleID=" + paramWeiShiVideoArticleInfo.articleID + "，seq=" + paramWeiShiVideoArticleInfo.recommendSeq + ", toDb=" + paramBoolean + "，isDupSeq =" + true);
-        i = 1;
+      paramContext.putExtra("VIDEO_IS_FROM_PUBLIC_ACCOUNT", bool);
+      paramContext.putExtra("video_url_load", false);
+      paramContext.putExtra("image_url_remote", paramArticleInfo.getVideoCoverURL().getFile());
+      paramContext.putExtra("detail_url", paramArticleInfo.mArticleContentUrl + "&sourcefrom=0");
+      paramContext.putExtra("video_url", paramArticleInfo.getVideoVid());
+      paramContext.putExtra("title", paramArticleInfo.mTitle);
+      paramContext.putExtra("req_create_time", pgz.a(paramArticleInfo.mTime));
+      paramContext.putExtra("brief_key", paramArticleInfo.mTitle);
+      paramContext.putExtra("KEY_VIDEO_JSON_LIST", paramArticleInfo.mJsonVideoList);
+      return paramContext;
+      bool = false;
+    }
+  }
+  
+  /* Error */
+  public static void a(Intent paramIntent)
+  {
+    // Byte code:
+    //   0: invokestatic 213	pha:a	()Lmqq/app/AppRuntime;
+    //   3: checkcast 215	com/tencent/mobileqq/app/QQAppInterface
+    //   6: astore 5
+    //   8: aload 5
+    //   10: ifnonnull +4 -> 14
+    //   13: return
+    //   14: aload 5
+    //   16: sipush 162
+    //   19: invokevirtual 219	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   22: checkcast 221	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager
+    //   25: invokevirtual 224	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:a	()Lcom/tencent/biz/pubaccount/readinjoy/struct/KandianRedDotInfo;
+    //   28: astore 6
+    //   30: aload 6
+    //   32: ifnonnull +12 -> 44
+    //   35: ldc 226
+    //   37: iconst_2
+    //   38: ldc 228
+    //   40: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   43: return
+    //   44: aload 6
+    //   46: invokevirtual 239	com/tencent/biz/pubaccount/readinjoy/struct/KandianRedDotInfo:getMessageRecord	()Lcom/tencent/mobileqq/data/MessageRecord;
+    //   49: astore 5
+    //   51: aload 5
+    //   53: instanceof 241
+    //   56: ifeq +267 -> 323
+    //   59: aload 5
+    //   61: checkcast 241	com/tencent/mobileqq/data/MessageForStructing
+    //   64: astore 5
+    //   66: aload 5
+    //   68: getfield 245	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   71: ifnull +239 -> 310
+    //   74: aload 5
+    //   76: getfield 245	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   79: getfield 250	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
+    //   82: invokestatic 256	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   85: ifne +225 -> 310
+    //   88: new 258	org/json/JSONObject
+    //   91: dup
+    //   92: aload 5
+    //   94: getfield 245	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   97: getfield 250	com/tencent/mobileqq/structmsg/AbsStructMsg:mExtraData	Ljava/lang/String;
+    //   100: invokespecial 259	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   103: astore 5
+    //   105: aload 5
+    //   107: ldc_w 261
+    //   110: invokevirtual 265	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   113: istore_2
+    //   114: aload 5
+    //   116: ldc_w 267
+    //   119: ldc_w 269
+    //   122: invokevirtual 273	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   125: astore 5
+    //   127: aload 5
+    //   129: invokestatic 278	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   132: invokevirtual 282	java/lang/Integer:intValue	()I
+    //   135: istore_1
+    //   136: aload_0
+    //   137: ldc_w 284
+    //   140: iload_1
+    //   141: invokevirtual 86	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   144: pop
+    //   145: iload_2
+    //   146: istore_3
+    //   147: iload_1
+    //   148: istore 4
+    //   150: iload_2
+    //   151: ifne +164 -> 315
+    //   154: ldc 226
+    //   156: iconst_1
+    //   157: new 171	java/lang/StringBuilder
+    //   160: dup
+    //   161: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   164: ldc_w 286
+    //   167: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: aload 6
+    //   172: getfield 290	com/tencent/biz/pubaccount/readinjoy/struct/KandianRedDotInfo:articleIDList	Ljava/util/ArrayList;
+    //   175: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: return
+    //   185: astore 5
+    //   187: aload 5
+    //   189: invokevirtual 296	java/lang/Exception:printStackTrace	()V
+    //   192: ldc 226
+    //   194: iconst_2
+    //   195: ldc_w 298
+    //   198: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   201: iload_2
+    //   202: istore_3
+    //   203: iload_1
+    //   204: istore_2
+    //   205: iload_3
+    //   206: istore_1
+    //   207: aload 6
+    //   209: getfield 290	com/tencent/biz/pubaccount/readinjoy/struct/KandianRedDotInfo:articleIDList	Ljava/util/ArrayList;
+    //   212: astore 5
+    //   214: aload 5
+    //   216: ifnull +46 -> 262
+    //   219: aload 5
+    //   221: invokevirtual 303	java/util/ArrayList:size	()I
+    //   224: ifle +38 -> 262
+    //   227: aload_0
+    //   228: ldc_w 305
+    //   231: aload 5
+    //   233: iconst_0
+    //   234: invokevirtual 309	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   237: checkcast 311	java/io/Serializable
+    //   240: invokevirtual 314	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+    //   243: pop
+    //   244: aload_0
+    //   245: ldc_w 316
+    //   248: iconst_0
+    //   249: invokevirtual 86	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   252: pop
+    //   253: aload_0
+    //   254: ldc_w 318
+    //   257: iload_2
+    //   258: invokevirtual 86	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   261: pop
+    //   262: ldc 226
+    //   264: iconst_1
+    //   265: new 171	java/lang/StringBuilder
+    //   268: dup
+    //   269: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   272: ldc_w 320
+    //   275: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: aload 5
+    //   280: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   283: ldc_w 322
+    //   286: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: iload_2
+    //   290: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   293: ldc_w 327
+    //   296: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: iload_1
+    //   300: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   303: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   309: return
+    //   310: iconst_0
+    //   311: istore_3
+    //   312: iconst_0
+    //   313: istore 4
+    //   315: iload 4
+    //   317: istore_2
+    //   318: iload_3
+    //   319: istore_1
+    //   320: goto -113 -> 207
+    //   323: ldc 226
+    //   325: iconst_2
+    //   326: ldc_w 329
+    //   329: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   332: iconst_0
+    //   333: istore_1
+    //   334: iconst_0
+    //   335: istore_2
+    //   336: goto -129 -> 207
+    //   339: astore 5
+    //   341: iconst_0
+    //   342: istore_1
+    //   343: iconst_0
+    //   344: istore_2
+    //   345: goto -158 -> 187
+    //   348: astore 5
+    //   350: iconst_0
+    //   351: istore_1
+    //   352: goto -165 -> 187
+    //   355: astore 5
+    //   357: iconst_0
+    //   358: istore_1
+    //   359: goto -214 -> 145
+    //   362: astore 5
+    //   364: goto -219 -> 145
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	367	0	paramIntent	Intent
+    //   135	224	1	i	int
+    //   113	232	2	j	int
+    //   146	173	3	k	int
+    //   148	168	4	m	int
+    //   6	122	5	localObject	Object
+    //   185	3	5	localException1	java.lang.Exception
+    //   212	67	5	localArrayList	ArrayList
+    //   339	1	5	localException2	java.lang.Exception
+    //   348	1	5	localException3	java.lang.Exception
+    //   355	1	5	localException4	java.lang.Exception
+    //   362	1	5	localException5	java.lang.Exception
+    //   28	180	6	localKandianRedDotInfo	com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo
+    // Exception table:
+    //   from	to	target	type
+    //   154	184	185	java/lang/Exception
+    //   59	114	339	java/lang/Exception
+    //   114	127	348	java/lang/Exception
+    //   127	136	355	java/lang/Exception
+    //   136	145	362	java/lang/Exception
+  }
+  
+  public static Intent b(Context paramContext, ArticleInfo paramArticleInfo)
+  {
+    if (pha.a(paramArticleInfo.mArticleContentUrl, paramArticleInfo.mChannelID, paramArticleInfo))
+    {
+      localObject1 = pmh.a().a();
+      if (localObject1 != null) {
+        ((pwt)localObject1).a(paramArticleInfo.mArticleContentUrl, String.valueOf(paramArticleInfo.innerUniqueID), paramArticleInfo.mSubscribeID, 1, null);
       }
-      for (;;)
+      paramContext = new Intent(paramContext, FastWebActivity.class);
+      paramContext.putExtra("fast_web_article_info", paramArticleInfo);
+      paramContext.putExtra("fast_web_from_channel_id", paramArticleInfo.mChannelID);
+      paramContext.putExtra("is_native_fast_web", true);
+      return paramContext;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("leftViewText", null);
+    Object localObject2 = paramArticleInfo.mArticleContentUrl;
+    Object localObject1 = localObject2;
+    if (snh.h(paramArticleInfo))
+    {
+      localObject1 = localObject2;
+      if (!snh.l(paramArticleInfo)) {
+        localObject1 = ((rik)paramArticleInfo.mSocialFeedInfo.a.a.get(0)).b;
+      }
+    }
+    localObject2 = localObject1;
+    if (!(paramArticleInfo instanceof AdvertisementInfo))
+    {
+      if (((String)localObject1).contains("?"))
       {
-        if ((j != 0) || (i != 0)) {
-          a(paramInteger, paramWeiShiVideoArticleInfo);
-        }
-        return true;
-        HashSet localHashSet2 = (HashSet)this.b.get(paramInteger.intValue());
-        HashSet localHashSet1 = localHashSet2;
-        if (localHashSet2 == null)
+        localObject1 = (String)localObject1 + "&";
+        localObject2 = (String)localObject1 + "from=0";
+      }
+    }
+    else
+    {
+      localObject1 = localObject2;
+      if (AdvertisementInfo.isAppAdvertisementInfo(paramArticleInfo))
+      {
+        localObject1 = localObject2;
+        if (bgnt.h(null))
         {
-          localHashSet1 = new HashSet();
-          this.b.put(paramInteger.intValue(), localHashSet1);
-        }
-        if (!localHashSet1.contains(Long.valueOf(paramWeiShiVideoArticleInfo.articleID)))
-        {
-          localHashSet1.add(Long.valueOf(paramWeiShiVideoArticleInfo.articleID));
-          i = 0;
-          label235:
-          if (i == 0) {
-            break label405;
+          if (!((String)localObject2).contains("?")) {
+            break label716;
           }
-          a(paramWeiShiVideoArticleInfo);
+          localObject1 = (String)localObject2 + "&";
+          label287:
+          localObject1 = (String)localObject1 + "acttype=42";
         }
-        for (;;)
+      }
+      localBundle.putString("url", (String)localObject1);
+      localBundle.putBoolean("hide_operation_bar", true);
+      localBundle.putString("from", String.valueOf(53));
+      localBundle.putString("subscribename", paramArticleInfo.mSubscribeName);
+      localBundle.putLong("articleid", paramArticleInfo.mArticleID);
+      localBundle.putLong("recommendSeq", paramArticleInfo.mRecommendSeq);
+      localBundle.putInt("channelid", (int)paramArticleInfo.mChannelID);
+      localBundle.putInt("strategyid", paramArticleInfo.mStrategyId);
+      localBundle.putLong("algorithmid", paramArticleInfo.mAlgorithmID);
+      localBundle.putInt("articalChannelId", 9);
+      localBundle.putStringArray("insertPluginsArray", new String[] { "pubAccountPreload" });
+      localBundle.putBoolean("ip_connect", tyg.m);
+      long l = System.currentTimeMillis();
+      localBundle.putLong("startOpenPageTime", l);
+      localBundle.putLong("click_time", l);
+      localBundle.putLong("available_memory", bgln.e());
+      localBundle.putBoolean("preload_tool_white_list", pha.h());
+      localObject2 = new Intent(paramContext, ReadInJoyArticleDetailActivity.class);
+      localObject1 = PreloadManager.a((String)localObject1);
+      paramContext = (Context)localObject1;
+      if (localObject1 == null) {
+        paramContext = "";
+      }
+      if ((bgmg.b(anhk.cK + paramContext)) && (PreloadManager.a().b(paramContext) != null))
+      {
+        localBundle.putString("read_in_joy_from_cache", paramContext);
+        if (!pmh.a().a(paramArticleInfo.mArticleID))
         {
-          if (paramBoolean)
+          paramArticleInfo = PreloadManager.a();
+          if ((NetworkState.getNetworkType() != 1) && (NetworkState.getNetworkType() != 4) && (NetworkState.getNetworkType() != 5)) {
+            break label754;
+          }
+          paramContext = paramArticleInfo.a(paramContext);
+          if ((paramContext != null) && (paramContext.size() > 0))
           {
-            if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
-            {
-              this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new VideoArticleModule.4(this, paramWeiShiVideoArticleInfo));
-              k = 0;
-              j = i;
-              i = k;
-              break;
-              this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(paramInteger.intValue(), true);
-              if (QLog.isColorLevel()) {
-                QLog.e(jdField_a_of_type_JavaLangString, 2, "saveArticleInfo, article articleID duplicated, article channelID=" + paramInteger + ", articleID=" + paramWeiShiVideoArticleInfo.articleID + "，seq=" + paramWeiShiVideoArticleInfo.recommendSeq + ", toDb=" + paramBoolean + "，isDupSeq =" + false);
-              }
-              i = 1;
-              break label235;
-              label405:
-              localConcurrentHashMap.put(Long.valueOf(paramWeiShiVideoArticleInfo.recommendSeq), paramWeiShiVideoArticleInfo);
-              continue;
+            ThreadManager.post(new ReadinjoyJumpUtils.1(paramArticleInfo, (txw)paramContext.get(0)), 5, null, false);
+            if (paramContext.size() <= 1) {
+              break label742;
             }
-            ThreadManager.executeOnSubThread(new VideoArticleModule.5(this, paramWeiShiVideoArticleInfo));
+            localBundle.putString("preload_iamge_url", ((txw)paramContext.get(1)).a);
           }
         }
-        int k = 0;
-        j = i;
-        i = k;
-        continue;
-        label448:
-        i = 1;
-      }
-    }
-  }
-  
-  private List<Long> b(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    Object localObject = a(paramInt1, paramInt2, paramLong, paramBoolean);
-    if (((List)localObject).isEmpty()) {
-      return null;
-    }
-    a(Integer.valueOf(paramInt1), (List)localObject, false);
-    ArrayList localArrayList = new ArrayList(((List)localObject).size());
-    HashSet localHashSet1 = new HashSet();
-    HashSet localHashSet2 = new HashSet();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      WeiShiVideoArticleInfo localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)((Iterator)localObject).next();
-      if (!localHashSet1.add(Long.valueOf(localWeiShiVideoArticleInfo.articleID))) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "loadChannelArticleSeqList articleID duplicated, channelID = " + paramInt1 + ", seq = " + localWeiShiVideoArticleInfo.recommendSeq + "articleID = " + localWeiShiVideoArticleInfo.articleID);
-      } else if (!localHashSet2.add(Long.valueOf(localWeiShiVideoArticleInfo.recommendSeq))) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "loadChannelArticleSeqList articleRecommendSeq duplicated, channelID = " + paramInt1 + ", seq = " + localWeiShiVideoArticleInfo.recommendSeq + "articleID = " + localWeiShiVideoArticleInfo.articleID);
-      } else {
-        localArrayList.add(Long.valueOf(localWeiShiVideoArticleInfo.recommendSeq));
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    oidb_cmd0xbed.RspBody localRspBody = new oidb_cmd0xbed.RspBody();
-    int j = pvb.a(paramFromServiceMsg, paramObject, localRspBody);
-    int i = ((Integer)paramToServiceMsg.getAttribute("channelID")).intValue();
-    long l1 = ((Long)paramToServiceMsg.getAttribute(d)).longValue();
-    long l2 = ((Long)paramToServiceMsg.getAttribute(e)).longValue();
-    int k = ((Integer)paramToServiceMsg.getAttribute("CountOfRequest_0xbed")).intValue();
-    paramFromServiceMsg = null;
-    label175:
-    boolean bool1;
-    if (j == 0)
-    {
-      if ((localRspBody.rspChannelArticle == null) || (!localRspBody.rspChannelArticle.has()) || (localRspBody.rspChannelArticle.get() == null)) {
-        break label417;
-      }
-      if (!localRspBody.rspChannelArticle.uint32_channel_id.has()) {
-        break label414;
-      }
-      i = localRspBody.rspChannelArticle.uint32_channel_id.get();
-      if (!localRspBody.rspChannelArticle.uint32_channel_type.has()) {
-        break label408;
-      }
-      j = localRspBody.rspChannelArticle.uint32_channel_type.get();
-      bool1 = bool3;
-      if (localRspBody.rspChannelArticle.uint32_is_no_more_data.has())
-      {
-        bool1 = bool3;
-        if (localRspBody.rspChannelArticle.uint32_is_no_more_data.get() == 1) {
-          bool1 = true;
-        }
-      }
-      if ((!localRspBody.rspChannelArticle.rpt_article_list.has()) || (localRspBody.rspChannelArticle.rpt_article_list.get() == null)) {
-        break label402;
-      }
-      paramFromServiceMsg = rka.a(localRspBody.rspChannelArticle.rpt_article_list.get(), i, j);
-      bool2 = true;
-    }
-    for (;;)
-    {
-      a(bool2, i, bool1, paramFromServiceMsg, l1, l2, paramToServiceMsg);
-      return;
-      if ((j == 154) && (k == 1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handle0xbedGetWeiShiVideoArticleInfoList re-request:" + j + " channelID=" + i + " beginSeq=" + l1 + " endSeq=" + l2);
-        }
-        paramToServiceMsg.getAttributes().put("CountOfRequest_0xbed", Integer.valueOf(2));
-        a(paramToServiceMsg);
-        bool1 = false;
-      }
-      else
-      {
-        a(paramToServiceMsg, j);
-        bool1 = false;
-        continue;
-        label402:
-        bool2 = true;
-        continue;
-        label408:
-        j = 0;
-        break label175;
-        label414:
-        break;
-        label417:
-        bool1 = false;
-        bool2 = true;
-      }
-    }
-  }
-  
-  private void b(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<WeiShiVideoArticleInfo> paramList, long paramLong1, long paramLong2, ToServiceMsg paramToServiceMsg)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-      if (paramBoolean1)
-      {
-        if ((paramList != null) && (!paramList.isEmpty())) {
-          a(paramInt, (BaseVideoArticleInfo)paramList.get(0));
-        }
-        if (!paramBoolean2) {
-          break label120;
-        }
-        a(Integer.valueOf(paramInt), paramList, true);
       }
     }
     for (;;)
     {
-      paramList = b(Integer.valueOf(paramInt));
-      oxb.a().a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      return;
-      paramToServiceMsg = new CopyOnWriteArrayList(paramList);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramToServiceMsg);
+      ((Intent)localObject2).putExtras(localBundle);
+      return localObject2;
+      localObject1 = (String)localObject1 + "?";
       break;
-      label120:
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        a(Integer.valueOf(paramInt), paramList, true);
-      }
-    }
-  }
-  
-  List<WeiShiVideoArticleInfo> a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    String str;
-    ArrayList localArrayList;
-    if (paramBoolean)
-    {
-      str = "channelID = ? and recommendSeq < ?";
-      localArrayList = new ArrayList();
-      localObject = this.jdField_a_of_type_Awgf.a(WeiShiVideoArticleInfo.class, true, str, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "recommendSeq desc", String.valueOf(paramInt2));
-      if (localObject != null) {
-        localArrayList.addAll((Collection)localObject);
-      }
-      if (!localArrayList.isEmpty()) {
-        break label160;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "loadChannelArticleSeqList mEntityManager.query return empty,with selection=" + str + "channelId=" + paramInt1 + " recommendSeq=" + paramLong + " count=" + paramInt2);
-      }
-    }
-    label160:
-    while (!QLog.isColorLevel())
-    {
-      return localArrayList;
-      str = "channelID = ? and recommendSeq > ?";
-      break;
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "loadChannelArticleSeqList mEntityManager.query size: " + ((List)localObject).size() + "with selection=" + str + "channelId=" + paramInt1 + " recommendSeq=" + paramLong + " count=" + paramInt2);
-    Object localObject = new StringBuilder("\n");
-    if ((localArrayList != null) && (localArrayList.size() > 0))
-    {
-      Iterator localIterator = localArrayList.iterator();
-      paramInt2 = 0;
-      if (localIterator.hasNext())
-      {
-        WeiShiVideoArticleInfo localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)localIterator.next();
-        StringBuilder localStringBuilder = new StringBuilder().append("article【").append(paramInt2).append("】 id : ").append(localWeiShiVideoArticleInfo.articleID).append(" seq : ").append(localWeiShiVideoArticleInfo.recommendSeq).append(" title : ").append(ors.c(localWeiShiVideoArticleInfo.title)).append(" rowkey : ").append(localWeiShiVideoArticleInfo.rowkey).append(" isUgc : ").append(localWeiShiVideoArticleInfo.isUgc).append(" vid : ");
-        if (localWeiShiVideoArticleInfo.videoData == null) {}
-        for (str = "";; str = localWeiShiVideoArticleInfo.videoData.jdField_a_of_type_JavaLangString)
-        {
-          ((StringBuilder)localObject).append(str + " feedsType : " + localWeiShiVideoArticleInfo.feedsType + " \n");
-          paramInt2 += 1;
-          break;
-        }
-      }
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 2, "loadFromDb return article list: channelId=" + paramInt1 + ", " + ((StringBuilder)localObject).toString());
-    return localArrayList;
-  }
-  
-  public List<WeiShiVideoArticleInfo> a(Integer paramInteger)
-  {
-    paramInteger = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramInteger);
-    if ((paramInteger == null) || (paramInteger.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramInteger.size());
-    Iterator localIterator = paramInteger.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add((WeiShiVideoArticleInfo)paramInteger.get((Long)localIterator.next()));
-    }
-    Collections.sort(localArrayList, new phl(this));
-    return localArrayList;
-  }
-  
-  public void a(int paramInt1, long paramLong, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "deleteChannelOutdatedArticle, channelID:" + paramInt1 + "    outdatedTime:" + paramLong + "   feedsReservedCnt:" + paramInt2);
-    }
-    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    if (localObject2 == null) {
-      return;
-    }
-    Object localObject1 = new ArrayList(((ConcurrentHashMap)localObject2).size());
-    Iterator localIterator = ((ConcurrentHashMap)localObject2).values().iterator();
-    WeiShiVideoArticleInfo localWeiShiVideoArticleInfo;
-    while (localIterator.hasNext())
-    {
-      localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)localIterator.next();
-      if (localWeiShiVideoArticleInfo.recommendTime < paramLong) {
-        ((ArrayList)localObject1).add(localWeiShiVideoArticleInfo);
-      }
-    }
-    int j = ((ConcurrentHashMap)localObject2).size() - ((ArrayList)localObject1).size();
-    if (j < paramInt2)
-    {
-      Collections.sort((List)localObject1, new phm(this));
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramInt2 - j) {
-          break label215;
-        }
-        if (((ArrayList)localObject1).size() <= 0) {
-          break;
-        }
-        ((ArrayList)localObject1).remove(0);
-        i += 1;
-      }
-    }
-    label215:
-    localIterator = ((ArrayList)localObject1).iterator();
-    while (localIterator.hasNext())
-    {
-      localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)localIterator.next();
-      ((ConcurrentHashMap)localObject2).remove(Long.valueOf(localWeiShiVideoArticleInfo.recommendSeq));
-      a(Integer.valueOf(paramInt1), localWeiShiVideoArticleInfo);
-    }
-    localObject2 = b(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoArticleModule.8(this, paramInt1, (List)localObject2));
-    localObject2 = jdField_a_of_type_JavaLangString;
-    localObject1 = new StringBuilder().append("delete outdated article cache , cnt ").append(((ArrayList)localObject1).size()).append(", reservedCnt : ");
-    if (j < paramInt2) {}
-    for (;;)
-    {
-      QLog.e((String)localObject2, 2, paramInt2);
-      return;
-      paramInt2 = j;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramToServiceMsg.getServiceCmd().equals("OidbSvc.0xbed")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-  }
-  
-  public boolean a(Integer paramInteger, List<WeiShiVideoArticleInfo> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
-      return false;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramInteger, (WeiShiVideoArticleInfo)paramList.next(), paramBoolean);
-    }
-    return true;
-  }
-  
-  public List<Long> b(Integer paramInteger)
-  {
-    Object localObject = a(paramInteger);
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(((List)localObject).size());
-    HashSet localHashSet = new HashSet();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      WeiShiVideoArticleInfo localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)((Iterator)localObject).next();
-      if (!localHashSet.add(Long.valueOf(localWeiShiVideoArticleInfo.articleID))) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getChannelArticleSeqList 有重复文章， channelID = " + paramInteger + ", seq = " + localWeiShiVideoArticleInfo.recommendSeq + "，articleID = " + localWeiShiVideoArticleInfo.articleID);
+      label716:
+      localObject1 = (String)localObject2 + "?";
+      break label287;
+      label742:
+      localBundle.putString("preload_iamge_url", null);
+      continue;
+      label754:
+      paramContext = paramArticleInfo.a(paramContext);
+      if ((paramContext != null) && (paramContext.size() > 0)) {
+        localBundle.putString("preload_iamge_url", ((txw)paramContext.get(0)).a);
       } else {
-        localArrayList.add(Long.valueOf(localWeiShiVideoArticleInfo.recommendSeq));
+        localBundle.putString("preload_iamge_url", null);
       }
     }
-    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     phk
  * JD-Core Version:    0.7.0.1
  */

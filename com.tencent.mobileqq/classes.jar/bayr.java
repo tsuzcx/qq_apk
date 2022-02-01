@@ -1,9 +1,18 @@
-public class bayr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+class bayr
+  implements DialogInterface.OnCancelListener
 {
-  public int a = -2;
-  public long a;
-  public bayk a;
-  public String a;
+  bayr(bayi parambayi) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a.b) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
+  }
 }
 
 

@@ -1,28 +1,76 @@
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class atqb
-  implements atqh
+public abstract class atqb
 {
-  atqb(atpw paramatpw, int paramInt, String paramString) {}
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = true;
   
-  public Pair<Integer, String> a()
+  public abstract Intent a();
+  
+  public SessionInfo a()
   {
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public atpo a()
+  public ChatMessage a()
   {
-    if (atpw.a(this.jdField_a_of_type_Atpw) == null) {
-      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
-    }
-    return new atpo(this.jdField_a_of_type_Atpw.app.c(), atpw.a(this.jdField_a_of_type_Atpw), atpw.a(this.jdField_a_of_type_Atpw));
+    return null;
+  }
+  
+  public void a(SessionInfo paramSessionInfo) {}
+  
+  public void a(ChatMessage paramChatMessage) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(Bundle paramBundle) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  boolean c()
+  {
+    return false;
+  }
+  
+  boolean d()
+  {
+    return false;
+  }
+  
+  public boolean e()
+  {
+    return this.b;
+  }
+  
+  public boolean f()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqb
  * JD-Core Version:    0.7.0.1
  */

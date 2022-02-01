@@ -1,48 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
 
 public class vfm
-  extends uro
+  implements View.OnLongClickListener
 {
-  public List<vfl> a;
+  public vfm(CellTextView paramCellTextView) {}
   
-  public vfm(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
-    if (paramRspStoryFeedTagInfo != null)
-    {
-      paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.iterator();
-      while (paramRspStoryFeedTagInfo.hasNext())
-      {
-        Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
-        vfl localvfl = new vfl();
-        localvfl.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
-        localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            xof localxof = new xof((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
-            localvfl.jdField_a_of_type_JavaUtilList.add(localxof);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.add(localvfl);
-      }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.postInvalidate();
+    boolean bool = false;
+    if (this.a.jdField_a_of_type_Vgs != null) {
+      bool = this.a.jdField_a_of_type_Vgs.a(this.a, this.a.jdField_a_of_type_Vfo);
     }
+    if (!bool) {}
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfm
  * JD-Core Version:    0.7.0.1
  */

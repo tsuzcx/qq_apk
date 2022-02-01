@@ -5,12 +5,12 @@ import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
-import vwo;
+import xpz;
 
 public class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
   implements Runnable
 {
-  public StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2(vwo paramvwo, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2(xpz paramxpz, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
@@ -24,11 +24,11 @@ public class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
       localProperties.load(new StringReader(str));
       if (localProperties != null)
       {
-        vwo.a(this.this$0).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
-        vwo.a(this.this$0).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
-        vwo.a(this.this$0).c = localProperties.getProperty("AudioCodec");
-        vwo.a(this.this$0).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
-        vwo.a(this.this$0).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
+        xpz.a(this.this$0).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
+        xpz.a(this.this$0).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
+        xpz.a(this.this$0).c = localProperties.getProperty("AudioCodec");
+        xpz.a(this.this$0).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
+        xpz.a(this.this$0).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
       }
       return;
     }
@@ -44,7 +44,7 @@ public class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.2
  * JD-Core Version:    0.7.0.1
  */

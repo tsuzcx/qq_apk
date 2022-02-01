@@ -3,7 +3,7 @@ package dov.com.qq.im.ptv;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.widget.ImageView;
-import bmfd;
+import bowj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -16,9 +16,9 @@ class AIOBusinessOperation$1$1
   {
     long l1 = SystemClock.uptimeMillis();
     long l2;
-    if (bmfd.a().equalsIgnoreCase(this.a))
+    if (bowj.a().equalsIgnoreCase(this.a))
     {
-      Drawable localDrawable = (Drawable)bmfd.a().get(bmfd.a());
+      Drawable localDrawable = (Drawable)bowj.a().get(bowj.a());
       if (localDrawable != null) {
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
       }
@@ -30,29 +30,29 @@ class AIOBusinessOperation$1$1
     do
     {
       return;
-      bmfd.a().clear();
+      bowj.a().clear();
       if (!"1000".equals(this.a)) {
         break;
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844052);
+      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844449);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
     QLog.i("AIOBusinessOperation", 2, "updateLightVideoEntry total cost:" + (l2 - l1) + " ms");
     return;
     if (this.this$0.jdField_a_of_type_Boolean) {
-      bmfd.a(this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.a);
+      bowj.a(this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.a);
     }
     for (;;)
     {
-      bmfd.a(this.a);
+      bowj.a(this.a);
       break;
-      bmfd.b(this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.a);
+      bowj.b(this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.AIOBusinessOperation.1.1
  * JD-Core Version:    0.7.0.1
  */

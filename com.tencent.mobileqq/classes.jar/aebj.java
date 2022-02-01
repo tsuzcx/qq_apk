@@ -1,36 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aebj
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public aebj(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aebj(DialogActivity paramDialogActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramMessage = this.a.findViewById(2131377807);
-    if (paramMessage != null) {}
-    try
-    {
-      paramMessage.setBackgroundResource(2130849977);
-      azqs.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
-      }
-    }
+    this.a.finish();
   }
 }
 

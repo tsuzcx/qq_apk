@@ -6,7 +6,7 @@ import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemMayKnowFriendVerticalListData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public int age = -1;
   public int gender = -1;
@@ -44,7 +44,7 @@ public class RecentItemMayKnowFriendVerticalListData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData
  * JD-Core Version:    0.7.0.1
  */

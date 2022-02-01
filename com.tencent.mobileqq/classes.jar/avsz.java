@@ -1,40 +1,24 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public final class avsz<Params, Result>
+public class avsz
+  implements avtt
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Params a;
-  public final String a;
-  public SoftReference<View> a;
-  public Future<?> a;
-  public SoftReference<View> b;
-  public SoftReference<Result> c;
+  public avsz(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
   
-  public avsz(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
-    {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
+    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
       return;
     }
+    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.data;
 
-import alto;
 import android.text.TextUtils;
-import awge;
-import awhp;
+import anmw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   public static boolean publicaccountTypeErrorReported = false;
   private static final String tableName = "conversation_info";
   public byte[] extData;
@@ -25,7 +25,7 @@ public class ConversationInfo
   public String extString;
   public boolean isImax;
   public long lastread;
-  @awhp
+  @notColumn
   public TinyInfo tinyInfo;
   public int type;
   public String uin;
@@ -66,7 +66,7 @@ public class ConversationInfo
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((alto)((AppRuntime)localObject).getManager(51)).c(paramString);
+          paramString = ((anmw)((AppRuntime)localObject).getManager(51)).c(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;

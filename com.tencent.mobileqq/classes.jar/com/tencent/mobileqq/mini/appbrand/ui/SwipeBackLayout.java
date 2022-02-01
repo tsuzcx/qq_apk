@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,19 +17,23 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import aobv;
-import aobx;
-import aocf;
-import aoer;
-import aofy;
-import azqs;
-import bczz;
-import bdgk;
-import bdjz;
+import aqca;
+import aqcc;
+import aqck;
+import aqfc;
+import aqgi;
+import bcst;
+import bgfz;
+import bgln;
+import bgpa;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.swipeback.PostTable;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
 
@@ -37,6 +42,7 @@ public class SwipeBackLayout
 {
   private static final int DEFAULT_SCRIM_COLOR = -1728053248;
   private static final String TAG = "SwipeBackLayout";
+  private static Deque<SwipeBackLayout.TouchInfo> touchInfoList = new LinkedList();
   private boolean allowedSliding;
   protected boolean isInternalApp;
   private int lastX;
@@ -45,11 +51,14 @@ public class SwipeBackLayout
   private SwipeBackLayout.Callback mCallback;
   private View mCapturedView;
   protected View mChildView;
-  private aobx mColorNoteCurd;
-  private aoer mColorNoteStateNotice;
+  private aqcc mColorNoteCurd;
+  private aqfc mColorNoteStateNotice;
   private int mContentHeight;
   private int mContentWidth;
-  private bdjz mDialog;
+  private bgpa mDialog;
+  private long mDownTime;
+  private int mDownX;
+  private int mDownY;
   private boolean mEnable = true;
   private boolean mFirstShow = true;
   private boolean mIsClose;
@@ -59,10 +68,10 @@ public class SwipeBackLayout
   private int mScrimColor = -1728053248;
   private float mScrimOpacity;
   private float mScrollPercent;
-  private aocf mServiceInfo;
+  private aqck mServiceInfo;
   private Drawable mShadowDrawable;
   private int mTouchSlop;
-  private aofy mTouchStateDetector;
+  private aqgi mTouchStateDetector;
   private Vibrator mVibrator;
   private ViewDragHelper mViewDragHelper;
   private boolean mhasVibrator;
@@ -127,11 +136,11 @@ public class SwipeBackLayout
       }
       localObject = (Activity)this.mActivityRef.get();
     } while (localObject == null);
-    this.mDialog = new bdjz((Context)localObject, 2131755801);
-    this.mDialog.setContentView(2131558942);
+    this.mDialog = new bgpa((Context)localObject, 2131755823);
+    this.mDialog.setContentView(2131559009);
     this.mDialog.setCanceledOnTouchOutside(false);
-    this.mDialog.setTitle(getContext().getString(2131690917));
-    this.mDialog.setNegativeButton(getContext().getString(2131690916), new SwipeBackLayout.5(this, (Activity)localObject));
+    this.mDialog.setTitle(getContext().getString(2131690759));
+    this.mDialog.setNegativeButton(getContext().getString(2131690758), new SwipeBackLayout.5(this, (Activity)localObject));
     for (;;)
     {
       this.mDialog.show();
@@ -139,7 +148,7 @@ public class SwipeBackLayout
       ((View)localObject).setClickable(true);
       ((View)localObject).setFocusable(true);
       ((View)localObject).setFocusableInTouchMode(true);
-      bczz.a((View)localObject, true);
+      bgfz.a((View)localObject, true);
       return;
       if (this.mDialog.isShowing()) {
         this.mDialog.dismiss();
@@ -155,6 +164,11 @@ public class SwipeBackLayout
     return null;
   }
   
+  public static List<SwipeBackLayout.TouchInfo> getTouchInfoList()
+  {
+    return new ArrayList(touchInfoList);
+  }
+  
   private void initColorNote(Context paramContext)
   {
     ThreadManager.getUIHandler().post(new SwipeBackLayout.2(this, paramContext));
@@ -164,9 +178,9 @@ public class SwipeBackLayout
   {
     if (this.mColorNoteStateNotice == null)
     {
-      this.mColorNoteCurd = new aobx();
+      this.mColorNoteCurd = new aqcc();
       this.mColorNoteCurd.a(new SwipeBackLayout.3(this));
-      this.mColorNoteStateNotice = new aoer();
+      this.mColorNoteStateNotice = new aqfc();
       this.mColorNoteStateNotice.a(this.mColorNoteCurd);
     }
   }
@@ -177,6 +191,32 @@ public class SwipeBackLayout
     this.mScrimOpacity = (1.0F - this.mScrollPercent);
     if ((this.mViewDragHelper != null) && (this.mViewDragHelper.continueSettling(true))) {
       ViewCompat.postInvalidateOnAnimation(this);
+    }
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    int j = (int)paramMotionEvent.getX();
+    int k = (int)paramMotionEvent.getY();
+    if (i == 0)
+    {
+      this.mDownTime = SystemClock.uptimeMillis();
+      this.mDownX = j;
+      this.mDownY = k;
+    }
+    for (;;)
+    {
+      return super.dispatchTouchEvent(paramMotionEvent);
+      if (i == 1)
+      {
+        long l = SystemClock.uptimeMillis();
+        SwipeBackLayout.TouchInfo localTouchInfo = new SwipeBackLayout.TouchInfo(this.mDownX, this.mDownY, j, k, l - this.mDownTime);
+        touchInfoList.offer(localTouchInfo);
+        while (touchInfoList.size() > 10) {
+          touchInfoList.poll();
+        }
+      }
     }
   }
   
@@ -223,7 +263,7 @@ public class SwipeBackLayout
         break label177;
       }
       return this.mViewDragHelper.shouldInterceptTouchEvent(paramMotionEvent);
-      if (Math.abs(i) < bdgk.a() * 30.0F) {}
+      if (Math.abs(i) < bgln.a() * 30.0F) {}
       for (bool1 = bool2;; bool1 = false)
       {
         this.allowedSliding = bool1;
@@ -290,7 +330,7 @@ public class SwipeBackLayout
       this.mPostTable.a(d);
       if (this.mFirstShow)
       {
-        azqs.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aobv.a(this.mServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aqca.a(this.mServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
         this.mFirstShow = false;
       }
     }
@@ -361,11 +401,11 @@ public class SwipeBackLayout
     }
   }
   
-  public void setServiceInfo(aocf paramaocf)
+  public void setServiceInfo(aqck paramaqck)
   {
-    this.mServiceInfo = paramaocf;
+    this.mServiceInfo = paramaqck;
     setColorNoteStateNotice();
-    this.mColorNoteStateNotice.a(paramaocf);
+    this.mColorNoteStateNotice.a(paramaqck);
   }
   
   public void setViewDragHelper(ViewGroup paramViewGroup, View paramView)
@@ -374,13 +414,13 @@ public class SwipeBackLayout
     this.mViewDragHelper = ViewDragHelper.create(paramViewGroup, 1.0F, new SwipeBackLayout.1(this));
     this.mViewDragHelper.setEdgeTrackingEnabled(1);
     this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.mShadowDrawable = getResources().getDrawable(2130842307);
+    this.mShadowDrawable = getResources().getDrawable(2130842617);
     this.mVibrator = ((Vibrator)getContext().getSystemService("vibrator"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

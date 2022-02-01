@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import peg;
-import peh;
-import pei;
+import pvi;
+import pvj;
+import pvk;
 
 public class FeManager$1
   implements Runnable
@@ -12,13 +12,13 @@ public class FeManager$1
   {
     try
     {
-      this.this$0.jdField_a_of_type_Peh.a(this.a);
+      this.this$0.jdField_a_of_type_Pvj.a(this.a);
     }
     catch (Exception localException2)
     {
       try
       {
-        this.this$0.jdField_a_of_type_Pei.a(this.a);
+        this.this$0.jdField_a_of_type_Pvk.a(this.a);
       }
       catch (Exception localException2)
       {
@@ -26,12 +26,12 @@ public class FeManager$1
         {
           for (;;)
           {
-            peg.a(this.this$0, System.currentTimeMillis());
-            peg.a(this.this$0, peg.a(this.this$0));
+            pvi.a(this.this$0, System.currentTimeMillis());
+            pvi.a(this.this$0, pvi.a(this.this$0));
             if (this.this$0.jdField_a_of_type_Boolean) {
               this.this$0.jdField_a_of_type_Boolean = false;
             }
-            peg.a(this.this$0).set(false);
+            pvi.a(this.this$0).set(false);
             return;
             localException1 = localException1;
             localException1.printStackTrace();

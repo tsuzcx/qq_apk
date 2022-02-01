@@ -17,11 +17,51 @@ public class MethodCreateBody
   extends MethodAbsAdd
 {
   public static String TAG = "MethodCreateBody";
+  private volatile boolean createFromNativeVue;
   private JSONObject mData;
   
   public MethodCreateBody(JSONObject paramJSONObject)
   {
     this.mData = paramJSONObject;
+  }
+  
+  private void forceBatch()
+  {
+    ViolaDomManager localViolaDomManager = ViolaSDKManager.getInstance().getDomManager();
+    if (this.createFromNativeVue)
+    {
+      localViolaDomManager.forceNvBatch();
+      return;
+    }
+    localViolaDomManager.forceBatch();
+  }
+  
+  private boolean isRootMeasuredExactly(ViolaInstance paramViolaInstance)
+  {
+    if (this.createFromNativeVue) {
+      return paramViolaInstance.mNVMeasuredExactly;
+    }
+    return paramViolaInstance.isRootMeasuredExactly();
+  }
+  
+  private void setRootMeasuredExactly(ViolaInstance paramViolaInstance, boolean paramBoolean)
+  {
+    if (this.createFromNativeVue)
+    {
+      paramViolaInstance.mNVMeasuredExactly = paramBoolean;
+      return;
+    }
+    paramViolaInstance.setRootMeasuredExactly(paramBoolean);
+  }
+  
+  private void setRootRef(DOMActionContext paramDOMActionContext, DomObject paramDomObject)
+  {
+    if (this.createFromNativeVue)
+    {
+      paramDOMActionContext.setNvRootRef(paramDomObject.getRef());
+      return;
+    }
+    paramDOMActionContext.setRootRef(paramDomObject.getRef());
   }
   
   protected void appendDomToTree(DOMActionContext paramDOMActionContext, DomObject paramDomObject)
@@ -32,11 +72,11 @@ public class MethodCreateBody
       float f = localViolaInstance.getRenderContainerHeight() / FlexConvertUtils.getScreenWidth() * 750.0F;
       if (f == 0.0F)
       {
-        localViolaInstance.setRootMeasuredExactly(false);
+        setRootMeasuredExactly(localViolaInstance, false);
         ViolaLogUtils.e(TAG, "测试算出来的高度：appendDomToTree");
       }
       paramDomObject.initRoot(paramDomObject.getRef(), f, 750.0F);
-      paramDOMActionContext.setRootRef(paramDomObject.getRef());
+      setRootRef(paramDOMActionContext, paramDomObject);
       this.mRootRef = paramDomObject.getRef();
     }
   }
@@ -80,15 +120,20 @@ public class MethodCreateBody
       ViolaLogUtils.e(TAG, "violaInstance renderManager null!");
       return;
     }
+    if (localVComponent == null)
+    {
+      ViolaLogUtils.e(TAG, "component null!");
+      return;
+    }
     paramRenderActionContext.mCreateViewStart = System.currentTimeMillis();
     float f;
-    if (!paramRenderActionContext.isRootMeasuredExactly())
+    if (!isRootMeasuredExactly(paramRenderActionContext))
     {
       f = paramRenderActionContext.getRenderContainerHeight() / FlexConvertUtils.getScreenWidth() * 750.0F;
       if (f != 0.0F) {
-        break label189;
+        break label208;
       }
-      paramRenderActionContext.setRootMeasuredExactly(false);
+      setRootMeasuredExactly(paramRenderActionContext, false);
     }
     for (;;)
     {
@@ -104,20 +149,30 @@ public class MethodCreateBody
       if (!(localVComponent instanceof VComponentContainer)) {
         break;
       }
-      paramRenderActionContext.onRootCreated((VComponentContainer)localVComponent);
+      paramRenderActionContext.onRootCreated((VComponentContainer)localVComponent, this.createFromNativeVue);
       return;
-      label189:
+      label208:
       localVComponent.getDomObject().initRoot(localVComponent.getDomObject().getRef(), f, 750.0F);
       if (f != localVComponent.getDomObject().getLayoutHeight()) {
-        ViolaSDKManager.getInstance().getDomManager().forceBatch();
+        forceBatch();
       }
-      paramRenderActionContext.setRootMeasuredExactly(true);
+      setRootMeasuredExactly(paramRenderActionContext, true);
     }
+  }
+  
+  public boolean isCreateFromNativeVue()
+  {
+    return this.createFromNativeVue;
+  }
+  
+  public void setCreateFromNativeVue(boolean paramBoolean)
+  {
+    this.createFromNativeVue = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodCreateBody
  * JD-Core Version:    0.7.0.1
  */

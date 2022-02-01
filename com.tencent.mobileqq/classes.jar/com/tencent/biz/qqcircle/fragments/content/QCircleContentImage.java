@@ -2,13 +2,13 @@ package com.tencent.biz.qqcircle.fragments.content;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import com.tencent.biz.qqcircle.widgets.multiTouchImage.QCircleMultiTouchImageView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -16,23 +16,27 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
-import java.io.File;
-import tql;
-import txo;
-import txp;
-import uaj;
+import uxh;
+import vju;
+import vjv;
+import vjw;
+import vjx;
+import vjy;
+import vjz;
+import vka;
+import vou;
 
 public class QCircleContentImage
-  extends BaseWidgetView<FeedCloudMeta.StFeed>
+  extends QCircleBaseWidgetView<FeedCloudMeta.StFeed>
   implements URLDrawableDownListener
 {
   private int jdField_a_of_type_Int;
   private QCircleMultiTouchImageView jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView;
   private boolean jdField_a_of_type_Boolean;
+  private int b = 2;
   
   public QCircleContentImage(@NonNull Context paramContext)
   {
@@ -41,8 +45,8 @@ public class QCircleContentImage
   
   private URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView, FeedCloudMeta.StImage paramStImage)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = tql.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView);
-    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850072);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = uxh.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView);
+    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850664);
     if ((paramStImage == null) || (paramURLImageView == null)) {}
     int k;
     do
@@ -63,8 +67,12 @@ public class QCircleContentImage
   {
     if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnDoubleTabListener(new txo(this, paramStFeed));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleChangeListener(new txp(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnDoubleTabListener(new vjv(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleChangeListener(new vjw(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnViewTapListener(new vjx(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleBeginListener(new vjy(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleEndListener(new vjz(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnLongClickListener(new vka(this));
     }
   }
   
@@ -73,11 +81,14 @@ public class QCircleContentImage
     return 0;
   }
   
-  public void a()
+  public ImageView a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setImageDrawable(null);
-    }
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView;
+  }
+  
+  public String a()
+  {
+    return "QCircleContentImage";
   }
   
   public void a(Context paramContext, View paramView)
@@ -90,38 +101,16 @@ public class QCircleContentImage
   {
     if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView != null)
     {
-      Object localObject1 = (FeedCloudMeta.StImage)((FeedCloudMeta.StImage)paramStFeed.images.get(this.c)).get();
-      String str1 = ((FeedCloudMeta.StImage)localObject1).picUrl.get();
-      if (str1 != null) {}
-      try
+      Object localObject = (FeedCloudMeta.StImage)((FeedCloudMeta.StImage)paramStFeed.images.get(this.c)).get();
+      String str = ((FeedCloudMeta.StImage)localObject).picUrl.get();
+      if (str != null)
       {
-        String str2 = uaj.b(str1);
-        Object localObject2 = uaj.a(str2);
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject2 = new File((String)localObject2);
-          if (((File)localObject2).exists()) {
-            this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setImageURI(Uri.fromFile((File)localObject2));
-          }
-          QLog.d("QCircleContentImage", 1, "bindData with local image path,url:" + str1 + ",trimUrl:" + str2);
-          b(paramStFeed);
-          return;
-        }
-        QLog.d("QCircleContentImage", 1, "bindData can't find local image path,url:" + str1);
+        localObject = a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView, (FeedCloudMeta.StImage)localObject);
+        localObject = new vou().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView).b(((URLDrawable.URLDrawableOptions)localObject).mRequestHeight).c(((URLDrawable.URLDrawableOptions)localObject).mRequestWidth).a(str).a(getResources().getDrawable(2130850664)).a(true);
+        QCircleFeedPicLoader.a().a((vou)localObject, new vju(this, paramStFeed, str));
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.d("QCircleContentImage", 1, "bindData set local image path error!exception:" + localException);
-        }
-      }
-      QLog.d("QCircleContentImage", 1, "bindData with network image url:" + str1);
-      localObject1 = a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView, (FeedCloudMeta.StImage)localObject1);
-      tql.a(str1, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView, (URLDrawable.URLDrawableOptions)localObject1, false, this);
       b(paramStFeed);
       this.jdField_a_of_type_Boolean = false;
-      return;
     }
   }
   
@@ -131,6 +120,18 @@ public class QCircleContentImage
       return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.a(paramFloat1, paramFloat2);
     }
     return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setImageDrawable(null);
+    }
   }
   
   protected void onAttachedToWindow()
@@ -161,6 +162,11 @@ public class QCircleContentImage
     }
   }
   
+  public void setPlayScene(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
   public void setVerticalPos(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
@@ -168,7 +174,7 @@ public class QCircleContentImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.content.QCircleContentImage
  * JD-Core Version:    0.7.0.1
  */

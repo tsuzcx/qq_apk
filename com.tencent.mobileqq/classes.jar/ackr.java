@@ -1,18 +1,62 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
-public final class ackr
-  implements DialogInterface.OnClickListener
+public class ackr
 {
-  public ackr(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
+  private ackt jdField_a_of_type_Ackt;
+  private acla jdField_a_of_type_Acla;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static acks a(Context paramContext)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
+    return new acks(paramContext);
+  }
+  
+  public GdtAdBoxData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ackt = new ackz(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Ackt.a(this);
+    this.jdField_a_of_type_Ackt.show();
+  }
+  
+  void a(acla paramacla)
+  {
+    this.jdField_a_of_type_Acla = paramacla;
+  }
+  
+  void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  void a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Ackt != null) && (this.jdField_a_of_type_Ackt.isShowing()))
+    {
+      this.jdField_a_of_type_Ackt.dismiss();
+      this.jdField_a_of_type_Ackt = null;
+    }
+    this.jdField_a_of_type_Acla = null;
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Acla != null) {
+      this.jdField_a_of_type_Acla.onDismiss();
+    }
   }
 }
 

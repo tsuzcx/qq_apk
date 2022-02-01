@@ -1,22 +1,38 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import java.util.List;
 
 public class vnn
-  extends AnimatorListenerAdapter
+  extends FragmentPagerAdapter
 {
-  public vnn(StoryPlayerActivity paramStoryPlayerActivity) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public vnn(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return QCirclePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
+      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnn
  * JD-Core Version:    0.7.0.1
  */

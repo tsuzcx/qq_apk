@@ -13,17 +13,18 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.videoplatform.VideoPlayerInnerCallback;
 import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
 import com.tencent.mobileqq.videoplatform.api.PlayerState;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
 import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 import com.tencent.mobileqq.videoplatform.util.UIUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QQVideoPlayView
   extends RelativeLayout
-  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, IBaseVideoView, VideoPlayerCallback
+  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, VideoPlayerInnerCallback, IBaseVideoView
 {
   public static final float MAX_PROGRESS = 10000.0F;
   BaseVideoView mBaseVideoView;
@@ -33,7 +34,7 @@ public class QQVideoPlayView
   private boolean mIsPlay = false;
   public SeekBar mPlayBar;
   public ImageView mPlayButton;
-  public LinearLayout mPlayPanel;
+  public RelativeLayout mPlayPanel;
   public TextView mProgressTime;
   public TextView mRateText;
   public TextView mTotalTime;
@@ -57,18 +58,19 @@ public class QQVideoPlayView
   
   private void addBuffView()
   {
-    this.mBufferPanel = ((RelativeLayout)inflate(getContext(), 2131562817, null));
-    new RelativeLayout.LayoutParams(-2, -2).addRule(13);
+    this.mBufferPanel = ((RelativeLayout)inflate(getContext(), 2131563054, null));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(13);
     this.mBufferPanel.setVisibility(8);
-    addView(this.mBufferPanel);
-    this.mRateText = ((TextView)this.mBufferPanel.findViewById(2131375207));
+    addView(this.mBufferPanel, localLayoutParams);
+    this.mRateText = ((TextView)this.mBufferPanel.findViewById(2131375937));
     this.mRateText.setVisibility(8);
   }
   
   private void addCenterPlayBtn()
   {
     this.mCenterPlayBtn = new ImageView(getContext());
-    this.mCenterPlayBtn.setImageDrawable(getResources().getDrawable(2130850166));
+    this.mCenterPlayBtn.setImageDrawable(getResources().getDrawable(2130850762));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13);
     this.mCenterPlayBtn.setLayoutParams(localLayoutParams);
@@ -79,24 +81,26 @@ public class QQVideoPlayView
   
   private void addErrView()
   {
-    this.mErrLayout = ((LinearLayout)inflate(getContext(), 2131562818, null));
-    new RelativeLayout.LayoutParams(-1, -1);
-    addView(this.mErrLayout);
+    this.mErrLayout = ((LinearLayout)inflate(getContext(), 2131563055, null));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.addRule(13);
+    addView(this.mErrLayout, localLayoutParams);
   }
   
   private void addPlayCtlView()
   {
-    this.mPlayPanel = ((LinearLayout)inflate(getContext(), 2131562819, null));
+    this.mPlayPanel = ((RelativeLayout)inflate(getContext(), 2131563056, null));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     this.mPlayPanel.setLayoutParams(localLayoutParams);
     addView(this.mPlayPanel);
     this.mPlayPanel.bringToFront();
-    this.mPlayBar = ((SeekBar)this.mPlayPanel.findViewById(2131376325));
-    this.mPlayButton = ((ImageView)this.mPlayPanel.findViewById(2131371461));
-    this.mPlayButton.setImageResource(2130850162);
-    this.mProgressTime = ((TextView)this.mPlayPanel.findViewById(2131372339));
-    this.mTotalTime = ((TextView)this.mPlayPanel.findViewById(2131378220));
+    this.mPlayBar = ((SeekBar)this.mPlayPanel.findViewById(2131377106));
+    this.mPlayButton = ((ImageView)this.mPlayPanel.findViewById(2131372032));
+    this.mPlayButton.setImageResource(2130850758);
+    this.mProgressTime = ((TextView)this.mPlayPanel.findViewById(2131372933));
+    this.mTotalTime = ((TextView)this.mPlayPanel.findViewById(2131379074));
+    updateTotalTime();
     this.mPlayButton.setOnClickListener(this);
     this.mPlayBar.setMax(10000);
     this.mPlayBar.setOnSeekBarChangeListener(this);
@@ -114,6 +118,13 @@ public class QQVideoPlayView
     addBuffView();
     addErrView();
     addCenterPlayBtn();
+  }
+  
+  private void updateTotalTime()
+  {
+    if ((getVideoDurationMs() > 0L) && (this.mTotalTime != null)) {
+      this.mTotalTime.setText(UIUtil.stringForTime(getVideoDurationMs()));
+    }
   }
   
   public void captureCurFrame(long paramLong, int paramInt1, int paramInt2)
@@ -146,6 +157,11 @@ public class QQVideoPlayView
     return this.mBaseVideoView.isLocalPlay();
   }
   
+  public boolean isMute()
+  {
+    return this.mBaseVideoView.isMute();
+  }
+  
   public boolean isPlaying()
   {
     return this.mBaseVideoView.isPlaying();
@@ -158,16 +174,20 @@ public class QQVideoPlayView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131371461)
+    if (paramView.getId() == 2131372032)
     {
-      if (this.mIsPlay) {
-        pause();
+      if (!this.mIsPlay) {
+        break label28;
       }
+      pause();
     }
-    else {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label28:
+      play();
     }
-    play();
   }
   
   public void onDownloadComplete(long paramLong)
@@ -180,6 +200,11 @@ public class QQVideoPlayView
     this.mBaseVideoView.onDownloadProgress(paramLong1, paramLong2);
   }
   
+  public void onFirstFrameRendered(long paramLong)
+  {
+    this.mBaseVideoView.onFirstFrameRendered(paramLong);
+  }
+  
   public void onLoopBack(long paramLong1, long paramLong2)
   {
     this.mBaseVideoView.onLoopBack(paramLong1, paramLong2);
@@ -187,12 +212,12 @@ public class QQVideoPlayView
   
   public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    String str = getContext().getString(2131721386);
+    String str = getContext().getString(2131719101);
     if (paramInt1 == 1) {
-      str = getContext().getString(2131721385);
+      str = getContext().getString(2131719100);
     }
     if (paramInt3 == 14011001) {
-      str = getContext().getString(2131721387);
+      str = getContext().getString(2131719102);
     }
     ThreadUtil.postOnUIThread(new QQVideoPlayView.2(this, str));
     this.mBaseVideoView.onPlayError(paramLong, paramInt1, paramInt2, paramInt3, paramString);
@@ -238,11 +263,12 @@ public class QQVideoPlayView
       this.mBufferPanel.setVisibility(8);
       this.mErrLayout.setVisibility(8);
       this.mCenterPlayBtn.setVisibility(8);
+      updateTotalTime();
       continue;
       if (this.mBaseVideoView != null)
       {
         if (!this.mBaseVideoView.isPlaying()) {
-          break label165;
+          break label169;
         }
         this.mBufferPanel.setVisibility(0);
       }
@@ -250,17 +276,22 @@ public class QQVideoPlayView
       {
         this.mErrLayout.setVisibility(8);
         break;
-        label165:
+        label169:
         this.mBufferPanel.setVisibility(8);
       }
       this.mBufferPanel.setVisibility(8);
       this.mErrLayout.setVisibility(8);
       this.mCenterPlayBtn.setVisibility(0);
-      this.mPlayButton.setImageResource(2130850162);
+      this.mPlayButton.setImageResource(2130850758);
     }
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onSurfaceDestroy(long paramLong)
+  {
+    this.mBaseVideoView.onSurfaceDestroy(paramLong);
+  }
   
   public void pause()
   {
@@ -268,7 +299,7 @@ public class QQVideoPlayView
     this.mBufferPanel.setVisibility(8);
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(0);
-    this.mPlayButton.setImageResource(2130850162);
+    this.mPlayButton.setImageResource(2130850758);
     this.mBaseVideoView.pause();
   }
   
@@ -282,7 +313,7 @@ public class QQVideoPlayView
     this.mIsPlay = true;
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(8);
-    this.mPlayButton.setImageResource(2130850163);
+    this.mPlayButton.setImageResource(2130850759);
     this.mBaseVideoView.play();
   }
   
@@ -297,11 +328,11 @@ public class QQVideoPlayView
     {
       this.mBaseVideoView.resume();
       this.mCenterPlayBtn.setVisibility(8);
-      this.mPlayButton.setImageResource(2130850163);
+      this.mPlayButton.setImageResource(2130850759);
       return;
     }
     this.mCenterPlayBtn.setVisibility(0);
-    this.mPlayButton.setImageResource(2130850162);
+    this.mPlayButton.setImageResource(2130850758);
   }
   
   public void resumeDownload()
@@ -324,12 +355,18 @@ public class QQVideoPlayView
     this.mBaseVideoView.setID(paramLong);
   }
   
+  public void setMute(boolean paramBoolean)
+  {
+    this.mBaseVideoView.setMute(paramBoolean);
+  }
+  
   public void setVideoParam(VideoPlayParam paramVideoPlayParam)
   {
     if (paramVideoPlayParam != null) {
       paramVideoPlayParam.mNeedPlayProgress = true;
     }
     this.mBaseVideoView.setVideoParam(paramVideoPlayParam);
+    updateTotalTime();
   }
   
   public void showCover(Drawable paramDrawable)
@@ -339,7 +376,7 @@ public class QQVideoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.QQVideoPlayView
  * JD-Core Version:    0.7.0.1
  */

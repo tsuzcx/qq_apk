@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
 public class aekg
-  implements DialogInterface.OnClickListener
+  extends anuu
 {
-  public aekg(UpgradeActivity paramUpgradeActivity) {}
+  public aekg(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
   }
 }
 

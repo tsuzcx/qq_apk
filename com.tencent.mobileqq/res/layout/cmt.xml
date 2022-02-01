@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:textColorHint="#ffffffff" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/k59" android:background="@drawable/diy" android:paddingLeft="14.5dip" android:paddingRight="14.5dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:minWidth="183.0dip" android:hint="@string/wqk" android:maxLines="1" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center|top" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFrameLayout android:id="@id/dwx" android:layout_width="46.0dip" android:layout_height="46.0dip" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/g0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wt0" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+        <ImageView android:id="@id/dus" android:background="@drawable/ggd" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/get" android:scaleType="fitCenter" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/dur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wq_" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/mwy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView android:layout_gravity="center" android:id="@id/dvj" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" />
+            <ImageView android:layout_gravity="center" android:id="@id/mu1" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/gnx" />
+        </FrameLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/mt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wtf" android:includeFontPadding="false" />
+    </LinearLayout>
+</LinearLayout>

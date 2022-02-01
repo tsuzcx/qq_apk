@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dating;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azqs;
+import bcst;
 
 class HotChatFlashPicActivity$6
   implements Runnable
@@ -18,7 +18,7 @@ class HotChatFlashPicActivity$6
       if (HotChatFlashPicActivity.a(this.this$0) != 1) {
         break label115;
       }
-      azqs.b(this.this$0.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
+      bcst.b(this.this$0.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -32,14 +32,14 @@ class HotChatFlashPicActivity$6
         if (!HotChatFlashPicActivity.b(this.this$0)) {
           localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.this$0) + 518400000L);
         }
-        azqs.b(this.this$0.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
+        bcst.b(this.this$0.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.6
  * JD-Core Version:    0.7.0.1
  */

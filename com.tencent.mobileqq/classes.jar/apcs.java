@@ -1,19 +1,11 @@
-import android.view.SurfaceView;
-import android.view.TextureView;
-import android.view.View;
-
-public class apcs
+public abstract interface apcs
+  extends apcx
 {
-  public static apcw a(View paramView)
-  {
-    if ((paramView instanceof SurfaceView)) {
-      return new apcy((SurfaceView)paramView);
-    }
-    if ((paramView instanceof TextureView)) {
-      return new apcz((TextureView)paramView);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat);
 }
 
 

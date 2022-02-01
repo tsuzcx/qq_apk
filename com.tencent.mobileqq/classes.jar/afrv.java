@@ -1,17 +1,25 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class afrv
-  extends afuf
+public class afrv
+  extends bkfi
 {
-  afrv(afpy paramafpy)
+  public afrv(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramafpy, null);
+    if ((paramAnimation == this.a.b) && (this.a.d)) {
+      this.a.centerView.setText("");
+    }
+    this.a.centerView.clearAnimation();
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new aflu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (paramAnimation == this.a.a) {
+      this.a.centerView.setText(2131693924);
+    }
   }
 }
 

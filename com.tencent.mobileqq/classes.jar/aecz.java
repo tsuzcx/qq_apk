@@ -1,14 +1,25 @@
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aecz
-  extends akit
+public class aecz
+  implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public aecz(EditInfoActivity paramEditInfoActivity) {}
   
-  private aecz(aecy paramaecy) {}
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702418));
+    this.a.jdField_a_of_type_Boolean = false;
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

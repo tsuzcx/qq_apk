@@ -1,85 +1,77 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import appoint.define.appoint_define.Elem;
+import appoint.define.appoint_define.Face;
+import appoint.define.appoint_define.RichText;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class auoo
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public List<RecommendPerson> a;
-  public List<auop> b;
-  
-  public auoo(auok paramauok, View paramView, int paramInt)
+  public static String a(appoint_define.RichText paramRichText)
   {
-    super(paramView);
-    this.jdField_a_of_type_JavaUtilList = ((List)paramauok.a.get(Integer.valueOf(paramInt)));
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
+    if (paramRichText == null) {
+      return "";
+    }
+    if (paramRichText.rpt_msg_elems.has()) {}
+    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramRichText.iterator();
+    label135:
+    label187:
+    label190:
+    label192:
+    label195:
+    while (localIterator.hasNext())
     {
-      return;
-      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379068));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376004));
-      paramauok = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramauok.hasNext())
+      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+      if (localElem != null)
       {
-        paramView = (RecommendPerson)paramauok.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.Adapter", 2, "CommonViewHolder, person.uin =" + paramView.uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        if (localElem.str_content.has())
+        {
+          paramRichText = localElem.str_content.get();
+          label106:
+          localStringBuilder.append(paramRichText);
+          if (!localElem.msg_face_info.has()) {
+            break label187;
+          }
+          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          if (paramRichText == null) {
+            break label190;
+          }
+          if (!paramRichText.uint32_index.has()) {
+            break label192;
+          }
         }
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562781, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376005);
-        ImageView localImageView = (ImageView)paramView.findViewById(2131368954);
-        TextView localTextView1 = (TextView)paramView.findViewById(2131379069);
-        TextView localTextView2 = (TextView)paramView.findViewById(2131379070);
-        Button localButton = (Button)paramView.findViewById(2131363746);
-        auop localauop = new auop(this);
-        localauop.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
-        localauop.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-        localauop.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-        localauop.b = localTextView2;
-        localauop.jdField_a_of_type_AndroidWidgetButton = localButton;
-        this.b.add(localauop);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
+        for (int i = paramRichText.uint32_index.get();; i = -1)
+        {
+          if (i < 0) {
+            break label195;
+          }
+          localStringBuilder.append('\024');
+          localStringBuilder.append((char)arvq.b(i));
+          break;
+          paramRichText = "";
+          break label106;
+          paramRichText = null;
+          break label135;
+          break;
+        }
       }
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FreshNewsUtil", 4, "getStringFromRichText, result=" + localStringBuilder.toString());
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (auok.a(this.jdField_a_of_type_Auok) == null);
-      auok.a(this.jdField_a_of_type_Auok).a((RecyclerView.ViewHolder)paramView.getTag(2131376003), (RecommendPerson)paramView.getTag(2131363745));
-      return;
-    } while (auok.a(this.jdField_a_of_type_Auok) == null);
-    auok.a(this.jdField_a_of_type_Auok).b((RecyclerView.ViewHolder)paramView.getTag(2131376003), (RecommendPerson)paramView.getTag(2131363745));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoo
  * JD-Core Version:    0.7.0.1
  */

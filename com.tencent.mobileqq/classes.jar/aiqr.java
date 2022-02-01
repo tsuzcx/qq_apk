@@ -1,29 +1,51 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.util.WeakReference;
 
 class aiqr
-  extends avvd
+  extends anxg
 {
-  aiqr(aiqq paramaiqq) {}
+  aiqr(aiqp paramaiqp) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
+    aiqp.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()))
     {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      this.a.mPhotoCommonData.jdField_a_of_type_Long = l;
-      paramBundle = this.a.a();
-      if (paramBundle != null)
-      {
-        paramBundle.a(this.a.mPhotoCommonData.jdField_a_of_type_Long);
-        paramBundle.postData();
+      QLog.e("SeparateForward", 1, new Object[] { "onBatchTroopCardDefaultNick timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    if (this.a.jdField_a_of_type_Biau != null) {
+      this.a.jdField_a_of_type_Biau.dismiss();
+    }
+    awwm.a().b.clear();
+    if ((paramBoolean) && (paramObject != null))
+    {
+      awwm.a().b.putAll((Map)paramObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick = " + paramObject);
       }
     }
-    this.a.mPhotoCommonData.jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
+    for (;;)
+    {
+      if (awwm.a().b.size() != 0) {
+        break label201;
+      }
+      paramObject = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (paramObject == null) {
+        break;
+      }
+      QQToast.a(paramObject, 2131697671, 0).b(paramObject.getTitleBarHeight());
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
+      }
+    }
+    label201:
+    this.a.a((Map)paramObject, awwm.a().a);
   }
 }
 

@@ -1,25 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arbg
-  implements bkmg
+public class arbg
 {
-  arbg(arau paramarau) {}
+  private boolean a;
+  private boolean b;
+  private boolean c;
   
-  public void a(long paramLong, float paramFloat) {}
-  
-  public void a(String paramString)
+  public static arbg a(aqlg[] paramArrayOfaqlg)
   {
-    arau.b(this.a, false);
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
+    }
+    arbg localarbg = new arbg();
+    try
+    {
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
+      localarbg.a = paramArrayOfaqlg.getBoolean("fastload");
+      localarbg.b = paramArrayOfaqlg.getBoolean("prefetch");
+      localarbg.c = paramArrayOfaqlg.getBoolean("preloadWebView");
+      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localarbg.a + ", prefetch = " + localarbg.b + ", preloadWebView = " + localarbg.c);
+      return localarbg;
+    }
+    catch (JSONException paramArrayOfaqlg)
+    {
+      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaqlg.getLocalizedMessage(), paramArrayOfaqlg);
+    }
+    return localarbg;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a()
   {
-    arau.a(this.a, true);
-    arau.b(this.a, false);
-    bkje.a(arau.a(this.a).getApplication(), true);
-    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+    return this.a;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
   }
 }
 

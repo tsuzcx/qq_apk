@@ -1,13 +1,18 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bknj
-  implements bnmk
+class bknj
+  implements View.OnClickListener
 {
-  public bknj(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  bknj(bkni parambkni) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    QIMEffectCameraCaptureUnit.d(this.a);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

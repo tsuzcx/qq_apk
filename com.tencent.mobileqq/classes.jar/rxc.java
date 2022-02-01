@@ -1,26 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class rxc
-  implements View.OnClickListener
+class rxc
+  implements INetInfoHandler
 {
-  public rxc(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rxc(rwy paramrwy) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bkny.a(BaseApplicationImpl.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
     }
-    ors.c("1");
+    rwy.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    }
+    rwy.a(this.a, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
+    }
+    rwy.a(this.a, false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    }
+    rwy.a(this.a, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    }
+    rwy.a(this.a, false);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    rwy.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxc
  * JD-Core Version:    0.7.0.1
  */

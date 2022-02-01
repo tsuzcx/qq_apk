@@ -1,23 +1,33 @@
-public class afxv
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+
+class afxv
+  implements akse
 {
-  public static float a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static float[] a;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
+  afxv(afxs paramafxs, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
-  static
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    jdField_a_of_type_Float = 1.0F;
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
-    jdField_a_of_type_JavaLangString = "ptt_uin";
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
+      }
+      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      return;
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 

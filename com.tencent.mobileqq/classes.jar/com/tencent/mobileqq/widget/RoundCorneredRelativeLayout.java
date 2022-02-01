@@ -44,6 +44,11 @@ public class RoundCorneredRelativeLayout
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
   }
   
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
   protected void dispatchDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.getWidth();
@@ -93,7 +98,7 @@ public class RoundCorneredRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundCorneredRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

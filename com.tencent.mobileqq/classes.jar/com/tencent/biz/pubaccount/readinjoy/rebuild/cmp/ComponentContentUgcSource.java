@@ -18,22 +18,23 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import nrt;
-import ors;
-import pgd;
-import pxj;
-import pxt;
-import qbs;
-import rqj;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import oat;
+import pha;
+import pxk;
+import qqr;
+import qrb;
+import qva;
+import snh;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, pxj
+  implements View.OnClickListener, qqr
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  qbs jdField_a_of_type_Qbs;
+  qva jdField_a_of_type_Qva;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -60,22 +61,22 @@ public class ComponentContentUgcSource
       localObject = new Intent(getContext(), PublicAccountBrowser.class);
       ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       getContext().startActivity((Intent)localObject);
-      localObject = this.jdField_a_of_type_Qbs.a.a();
+      localObject = this.jdField_a_of_type_Qva.a.a();
     } while (localObject == null);
-    nrt.a((ArticleInfo)localObject);
-    rqj.a((ArticleInfo)localObject, this.jdField_a_of_type_Qbs.a.e());
+    oat.a((ArticleInfo)localObject);
+    snh.a((ArticleInfo)localObject, this.jdField_a_of_type_Qva.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qbs = new qbs();
+    this.jdField_a_of_type_Qva = new qva();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560135, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560277, this, true);
   }
   
   public void a()
@@ -90,17 +91,17 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379240));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380167));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379241));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380168));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      paramObject = (pgd)paramObject;
-      this.jdField_a_of_type_Qbs.a(paramObject);
+      paramObject = (pxk)paramObject;
+      this.jdField_a_of_type_Qva.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
         break label46;
@@ -111,7 +112,7 @@ public class ComponentContentUgcSource
     }
     return;
     label46:
-    if ((rqj.b(paramObject)) || ((rqj.i(paramObject)) && (!rqj.m(paramObject))) || (ors.g(paramObject)) || ((ors.h(paramObject)) && (!rqj.l(paramObject))) || (rqj.d(paramObject)))
+    if ((snh.g(paramObject)) || ((snh.i(paramObject)) && (!snh.m(paramObject))) || (pha.g(paramObject)) || ((pha.h(paramObject)) && (!snh.l(paramObject))) || (snh.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -139,19 +140,22 @@ public class ComponentContentUgcSource
     }
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.jdField_a_of_type_Qbs.a(parampxt);
+    this.jdField_a_of_type_Qva.a(paramqrb);
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    b();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b();
+    }
   }
 }
 

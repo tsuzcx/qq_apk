@@ -1,16 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahhv
+class ahhv
   implements View.OnClickListener
 {
-  public ahhv(SearchBaseActivity paramSearchBaseActivity) {}
+  ahhv(ahhm paramahhm) {}
   
   public void onClick(View paramView)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof MessageForShortVideo))
+    {
+      localObject = (MessageForShortVideo)localObject;
+      bcek.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

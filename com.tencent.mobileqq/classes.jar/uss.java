@@ -1,19 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-public abstract class uss
+public class uss
+  extends utw
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
-  
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public uss(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    return false;
+    super(paramViewGroup, 2131560009, paramInt, paramWSVerticalPageFragment);
   }
+  
+  public FrameLayout a()
+  {
+    if ((this.a instanceof usp)) {
+      return ((usp)this.a).a();
+    }
+    return null;
+  }
+  
+  public usp a(int paramInt)
+  {
+    return new utx(a(), this);
+  }
+  
+  public void a() {}
+  
+  public void b() {}
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected boolean c()
+  {
+    return true;
+  }
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aleh;
-import aleo;
+import amxo;
+import amxv;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
@@ -28,8 +28,8 @@ class ApolloJsPlugin$4$1
         str = "{\"result\":1, \"msg\": \"终端初始化错误\" }";
         continue;
         if (this.this$1.val$from == 0) {
-          if ((this.this$1.val$activity instanceof aleo)) {
-            str = ((aleo)this.this$1.val$activity).a(ApolloJsPlugin.access$400(this.this$1.this$0), this.this$1.val$param);
+          if ((this.this$1.val$activity instanceof amxv)) {
+            str = ((amxv)this.this$1.val$activity).a(ApolloJsPlugin.access$400(this.this$1.this$0), this.this$1.val$param);
           } else {
             str = "{\"result\":1, \"msg\": \"非商城页面\" }";
           }
@@ -41,7 +41,7 @@ class ApolloJsPlugin$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.4.1
  * JD-Core Version:    0.7.0.1
  */

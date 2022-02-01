@@ -1,23 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-class sgx
-  implements OnCompositionLoadedListener
+public final class sgx
+  extends BroadcastReceiver
 {
-  sgx(sgw paramsgw, Runnable paramRunnable) {}
+  private sgx(sgu paramsgu) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    RefreshAnimView.a(this.jdField_a_of_type_Sgw.a, paramLottieComposition);
-    if (paramLottieComposition != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    sgu.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgx
  * JD-Core Version:    0.7.0.1
  */

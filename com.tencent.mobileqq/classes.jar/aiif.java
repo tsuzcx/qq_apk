@@ -1,42 +1,211 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Context;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-class aiif
-  implements TextWatcher
+public class aiif
 {
-  aiif(aiie paramaiie) {}
+  private aiie jdField_a_of_type_Aiie = new aiig(this);
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<aiii>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private aiie jdField_b_of_type_Aiie = new aiih(this);
+  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<aiii>> jdField_b_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_b_of_type_Boolean;
   
-  public void afterTextChanged(Editable paramEditable)
+  public static aiif a()
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131367817).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Aieh.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131367817).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
+    return aiij.a();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private void a(View paramView)
+  {
+    if (paramView.getParent() == null) {
+      return;
+    }
+    ((ViewGroup)paramView.getParent()).removeView(paramView);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private void a(ViewGroup paramViewGroup, View paramView)
+  {
+    new RelativeLayout.LayoutParams(-1, -1);
+    if (paramView.getParent() != null) {
+      if (paramView.getParent() != paramViewGroup)
+      {
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
+        paramViewGroup.addView(paramView);
+      }
+    }
+    for (;;)
+    {
+      paramView.bringToFront();
+      return;
+      paramViewGroup.addView(paramView);
+    }
+  }
+  
+  private void a(List<WeakReference<aiii>> paramList)
+  {
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        aiii localaiii = (aiii)((WeakReference)paramList.next()).get();
+        if (localaiii != null) {
+          localaiii.a();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  private void b(List<WeakReference<aiii>> paramList)
+  {
+    Iterator localIterator = new ArrayList(paramList).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      aiii localaiii = (aiii)localWeakReference.get();
+      if (localaiii != null) {
+        localaiii.b();
+      } else {
+        paramList.remove(localWeakReference);
+      }
+    }
+  }
+  
+  public StickerBubbleAnimationView a(Context paramContext)
+  {
+    paramContext = d(paramContext);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
+      }
+      a(paramContext);
+      this.jdField_b_of_type_Boolean = false;
+    }
+    return paramContext;
+  }
+  
+  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
+  {
+    paramContext = d(paramContext);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      }
+      a(paramViewGroup, paramContext);
+      this.jdField_b_of_type_Boolean = true;
+    }
+    return paramContext;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      a(this.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+  }
+  
+  public void a(aiii paramaiii)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramaiii));
+      return;
+    }
+    finally
+    {
+      paramaiii = finally;
+      throw paramaiii;
+    }
+  }
+  
+  public StickerBubbleAnimationView b(Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
+      }
+      a(paramContext);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    return paramContext;
+  }
+  
+  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      }
+      a(paramViewGroup, paramContext);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return paramContext;
+  }
+  
+  public void b(aiii paramaiii)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramaiii));
+      return;
+    }
+    finally
+    {
+      paramaiii = finally;
+      throw paramaiii;
+    }
+  }
+  
+  public StickerBubbleAnimationView c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377869);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Aiie);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  }
+  
+  public StickerBubbleAnimationView d(Context paramContext)
+  {
+    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377869);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Aiie);
+    }
+    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  }
 }
 
 

@@ -1,27 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vam
-  extends QQUIEventReceiver<vai, uvf>
+class vam
+  implements DialogInterface.OnClickListener
 {
-  public vam(@NonNull vai paramvai)
-  {
-    super(paramvai);
-  }
+  vam(val paramval) {}
   
-  public void a(@NonNull vai paramvai, @NonNull uvf paramuvf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramvai.a.b(paramuvf);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uvf.class;
+    vab.a(this.a.jdField_a_of_type_Vab).a(this.a.jdField_a_of_type_Vab.a().hashCode(), vab.a(this.a.jdField_a_of_type_Vab), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vam
  * JD-Core Version:    0.7.0.1
  */

@@ -17,20 +17,22 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
-import vnq;
-import vns;
-import vnt;
-import vnu;
-import voc;
+import xhb;
+import xhd;
+import xhe;
+import xhf;
+import xhn;
 
 public class StoryPlayerFragment
-  extends Fragment
-  implements voc
+  extends ReportV4Fragment
+  implements xhn
 {
   private int jdField_a_of_type_Int;
   public AnimationParam a;
-  protected vnu a;
+  protected xhf a;
   private boolean jdField_a_of_type_Boolean;
   
   @NonNull
@@ -53,20 +55,20 @@ public class StoryPlayerFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Vnu.a(paramBundle, getArguments());
+    this.jdField_a_of_type_Xhf.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Vnu.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Xhf.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_Vnu = new vnu();
-    this.jdField_a_of_type_Vnu.a(this);
+    this.jdField_a_of_type_Xhf = new xhf();
+    this.jdField_a_of_type_Xhf.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -77,7 +79,7 @@ public class StoryPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561533, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561768, paramViewGroup, false);
     paramViewGroup = getActivity();
     this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
     if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
@@ -91,16 +93,17 @@ public class StoryPlayerFragment
       }
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
-      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new vnq(this, paramLayoutInflater));
+      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new xhb(this, paramLayoutInflater));
     }
-    paramLayoutInflater.setOnTouchListener(new vns(this));
+    paramLayoutInflater.setOnTouchListener(new xhd(this));
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Vnu.g();
+    this.jdField_a_of_type_Xhf.g();
   }
   
   public void onDestroyView()
@@ -121,33 +124,33 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Vnu.e();
+    this.jdField_a_of_type_Xhf.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Vnu.d();
+    this.jdField_a_of_type_Xhf.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Vnu.c();
+    this.jdField_a_of_type_Xhf.c();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
-    getView().setOnKeyListener(new vnt(this));
+    getView().setOnKeyListener(new xhe(this));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Vnu.f();
+    this.jdField_a_of_type_Xhf.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerFragment
  * JD-Core Version:    0.7.0.1
  */

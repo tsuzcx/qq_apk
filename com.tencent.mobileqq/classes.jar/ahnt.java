@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-class ahnt
-  implements aybr
+public abstract interface ahnt
 {
-  ahnt(ahns paramahns) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a();
 }
 
 

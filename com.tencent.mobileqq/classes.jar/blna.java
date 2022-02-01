@@ -1,14 +1,30 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class blna
-  implements blpm
 {
-  public blna(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void a()
+  public static long a(Context paramContext, String paramString)
   {
-    this.a.a.removeMessages(0);
-    this.a.a.sendEmptyMessageDelayed(0, 2000L);
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
+      return;
+    }
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
 }
 

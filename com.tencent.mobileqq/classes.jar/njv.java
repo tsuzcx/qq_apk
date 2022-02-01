@@ -1,88 +1,104 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleViewLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
+import android.os.Bundle;
 
 public class njv
-  extends BaseAdapter
 {
-  public njv(nju paramnju) {}
+  aanz a;
   
-  public npo a(int paramInt)
+  public njv(aanz paramaanz)
   {
-    return (npo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    this.a = paramaanz;
   }
   
-  public int getCount()
+  public void a()
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 2);
+    this.a.a(8, localBundle);
   }
   
-  public long getItemId(int paramInt)
+  public void a(int paramInt)
   {
-    return paramInt;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 5);
+    localBundle.putInt("mode", paramInt);
+    this.a.a(8, localBundle);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(aaob paramaaob)
   {
-    paramViewGroup = this.a.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aepi.a(200.0F, paramViewGroup);
-    int j = aepi.a(140.0F, paramViewGroup);
-    int k = aepi.a(12.0F, paramViewGroup);
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new njw(this);
-      paramViewGroup = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.setRadius(6.0F);
-      paramViewGroup.a(false);
-      paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(j, i));
-      localObject = new URLImageView(this.a.jdField_a_of_type_AndroidContentContext);
-      ((URLImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      ((URLImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-      ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ViewGroup)paramViewGroup).addView((View)localObject);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject);
-      localObject = new TextView(this.a.jdField_a_of_type_AndroidContentContext);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(12, -1);
-      localLayoutParams.addRule(14, -1);
-      localLayoutParams.setMargins(k, 0, k, k);
-      ((TextView)localObject).setLayoutParams(localLayoutParams);
-      ((TextView)localObject).setTextColor(-1);
-      ((TextView)localObject).setTextSize(2, 16.0F);
-      ((TextView)localObject).setMaxLines(2);
-      ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-      ((ViewGroup)paramViewGroup).addView((View)localObject);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-      paramViewGroup.setTag(paramView);
+    if (paramaaob == null) {
+      return;
     }
-    for (;;)
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 4);
+    localBundle.putInt("seq", this.a.a(paramaaob));
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    aaob localaaob;
+    do
     {
-      localObject = a(paramInt);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((npo)localObject).e, null, null, true));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((npo)localObject).a);
-      return paramViewGroup;
-      localObject = (njw)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("seq", -1);
+      } while (i == -1);
+      localaaob = this.a.a(i);
+    } while (localaaob == null);
+    localaaob.callback(paramBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 1);
+    localBundle.putString("music", paramString);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 3);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b(aaob paramaaob)
+  {
+    if (paramaaob == null) {
+      return;
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 6);
+    localBundle.putInt("seq", this.a.a(paramaaob));
+    this.a.a(8, localBundle);
+  }
+  
+  public void c()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 8);
+    this.a.a(8, localBundle);
+  }
+  
+  public void c(aaob paramaaob)
+  {
+    if (paramaaob == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(njw.a, 7);
+    localBundle.putInt("seq", this.a.a(paramaaob));
+    this.a.a(8, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njv
  * JD-Core Version:    0.7.0.1
  */

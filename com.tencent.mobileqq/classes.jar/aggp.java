@@ -1,48 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public abstract class aggp
+class aggp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Context a;
-  protected BaseChatPie a;
-  protected SessionInfo a;
-  public QQAppInterface a;
-  public int b;
+  aggp(aggo paramaggo) {}
   
-  public aggp(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public String toString()
-  {
-    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    DoodlePanel.a(this.a.a, false);
   }
 }
 

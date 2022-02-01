@@ -1,12 +1,18 @@
-import java.util.List;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface xfg
+public final class xfg
+  implements wwi
 {
-  public abstract void a(int paramInt, List<uxf> paramList);
+  public void a(wwh paramwwh)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramwwh));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfg
  * JD-Core Version:    0.7.0.1
  */

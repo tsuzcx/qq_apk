@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ohx
-  extends altm
+  implements View.OnClickListener
 {
-  public ohx(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public ohx(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,44 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wmy
+class wmy
+  extends wnk
 {
-  public static int a;
-  public static int b = 2;
-  public Activity a;
-  public String a;
-  private List<xvp> a;
-  public wtr a;
-  public int c;
-  public int d;
+  wmy(wmx paramwmx) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public wmy(Activity paramActivity, int paramInt1, String paramString, int paramInt2, wtr paramwtr)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.d = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Wtr = paramwtr;
-    if (paramInt2 == jdField_a_of_type_Int)
+    wml localwml;
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
     {
-      a();
-      return;
+      localwml = (wml)this.a.a();
+      if (wmx.a(this.a) != 11) {
+        break label145;
+      }
+      i = 211;
     }
-    if (paramInt2 == b)
+    for (;;)
     {
-      b();
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = yqu.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      yqu.a("home_page", "clk_like_more", yqu.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), yqu.a(localwml.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label145:
+      if (wmx.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
+      }
     }
-    throw new IllegalStateException("setup profile list error because unknown list type.");
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new wnm(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wnk(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Wtr, false));
-    this.jdField_a_of_type_JavaUtilList.add(new wnj(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131700074), 2130846156, 2130846157));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new wnm(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wno(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new wnn(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public List<xvp> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmy
  * JD-Core Version:    0.7.0.1
  */

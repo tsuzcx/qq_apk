@@ -14,7 +14,7 @@ public final class oidb_cmd0x59a$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0x59a.oidb_cmd0x59a.RspBody
  * JD-Core Version:    0.7.0.1
  */

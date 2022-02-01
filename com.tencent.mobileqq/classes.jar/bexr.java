@@ -1,17 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-
-public final class bexr
-  implements DialogInterface.OnClickListener
+public abstract interface bexr
 {
-  public bexr(Context paramContext) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    FloatingScreenPermission.requestPermission(this.a);
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(bexs parambexs);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract int h();
 }
 
 

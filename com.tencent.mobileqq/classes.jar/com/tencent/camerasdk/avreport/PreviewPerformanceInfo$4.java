@@ -22,7 +22,7 @@ class PreviewPerformanceInfo$4
       localAEKitBean.ext_int5 = Integer.valueOf(j);
       localAEKitBean.ext_str1 = this.this$0.sticker_id;
       AVReportCenter.getInstance().commit(localAEKitBean, Boolean.valueOf(true));
-      LogUtils.d("PreviewPerformanceInfo", localAEKitBean.toString());
+      AVRLogUtils.d("PreviewPerformanceInfo", localAEKitBean.toString());
       PreviewPerformanceInfo.access$000(this.this$0);
       return;
     }
@@ -30,7 +30,7 @@ class PreviewPerformanceInfo$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.PreviewPerformanceInfo.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bnad;
-import bnae;
+import bprj;
+import bprk;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements bnae
+  implements bprk
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference<bnad> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bprj> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -55,23 +55,23 @@ public class SegmentPicker
   
   public void a(long paramLong)
   {
-    bnad localbnad = null;
+    bprj localbprj = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbprj = (bprj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnad != null) {
-      localbnad.a(paramLong);
+    if (localbprj != null) {
+      localbprj.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bnad localbnad = null;
+    bprj localbprj = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbprj = (bprj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnad != null) {
-      localbnad.a(paramList);
+    if (localbprj != null) {
+      localbprj.a(paramList);
     }
   }
   
@@ -82,9 +82,9 @@ public class SegmentPicker
     }
   }
   
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bnad parambnad, boolean paramBoolean2)
+  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bprj parambprj, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnad);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambprj);
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
     }
@@ -93,12 +93,12 @@ public class SegmentPicker
   
   public void b(long paramLong)
   {
-    bnad localbnad = null;
+    bprj localbprj = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbprj = (bprj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnad != null) {
-      localbnad.b(paramLong);
+    if (localbprj != null) {
+      localbprj.b(paramLong);
     }
   }
   
@@ -111,7 +111,7 @@ public class SegmentPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker
  * JD-Core Version:    0.7.0.1
  */

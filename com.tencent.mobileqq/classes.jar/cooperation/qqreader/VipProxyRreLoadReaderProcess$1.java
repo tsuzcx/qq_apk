@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bizu;
+import blof;
 import com.tencent.common.app.BaseApplicationImpl;
-import nbv;
+import nko;
 
 public class VipProxyRreLoadReaderProcess$1
   implements Runnable
@@ -11,12 +11,12 @@ public class VipProxyRreLoadReaderProcess$1
   
   public void run()
   {
-    nbv.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bizu(this));
+    nko.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new blof(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.VipProxyRreLoadReaderProcess.1
  * JD-Core Version:    0.7.0.1
  */

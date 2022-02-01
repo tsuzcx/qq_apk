@@ -1,43 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.4;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class beve
-  implements Animator.AnimatorListener
+class beve
+  implements ProxyListener
 {
-  public beve(ScrollerRunnable.4 param4) {}
+  beve(bevc parambevc, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    if (this.a.a.getParent() != null)
-    {
-      this.a.a.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
-    if ((bbqa.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.obtainMessage(50).sendToTarget();
-    }
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[del]. table:" + paramString);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onInsertFinish(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish[add]. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] updateItem finish. table:" + paramString);
   }
 }
 

@@ -1,33 +1,41 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class ycs
-  implements yqb
+class ycs
+  implements View.OnTouchListener
 {
-  public ycs(RecommendBannerItemView paramRecommendBannerItemView) {}
+  ycs(ycq paramycq) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (RecommendBannerItemView.a(this.a))
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (RecommendBannerItemView.a(this.a) != null) {
-        zaj.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+      if (ycq.a(this.a)) {
+        break label105;
       }
-      return;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(ycq.a(this.a), ycq.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, ycq.a(this.a).jdField_a_of_type_Boolean);
+      ycq.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
     }
-    if (paramBoolean)
+    label100:
+    for (boolean bool = true;; bool = false)
     {
-      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
-      return;
+      ycq.a(paramView, bool);
+      return false;
     }
-    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+    label105:
+    this.a.b();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycs
  * JD-Core Version:    0.7.0.1
  */

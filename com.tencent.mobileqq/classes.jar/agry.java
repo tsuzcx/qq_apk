@@ -1,21 +1,10 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.os.Bundle;
 
-class agry
-  implements bhtv
+public abstract interface agry
 {
-  agry(agrn paramagrn) {}
+  public abstract void a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Akjh != null) && (this.a.jdField_a_of_type_Akjh.a() != 0) && (this.a.jdField_a_of_type_Akjh.a()))
-    {
-      this.a.jdField_a_of_type_Akjh.b();
-      agrn.a(this.a, this.a.jdField_a_of_type_Akjh.a(), 10);
-    }
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

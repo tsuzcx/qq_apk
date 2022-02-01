@@ -1,52 +1,56 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-public class pjn
-  implements piz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pjn
+  implements AladdinConfigHandler
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private pgd jdField_a_of_type_Pgd;
-  private piz jdField_a_of_type_Piz;
-  private rvg jdField_a_of_type_Rvg;
-  private piz b;
+  public static final pjo a = new pjo(null);
   
-  public pjn(Context paramContext, rrn paramrrn, bdbb parambdbb, rqj paramrqj, bhxx parambhxx, ListView paramListView)
+  @JvmStatic
+  public static final boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Piz = new pji(paramContext, parambdbb, paramrqj, paramListView, parambhxx);
-    this.b = new pja(paramContext, paramrrn, paramrqj);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return a.a(paramInt);
   }
   
-  public void a(rvg paramrvg, pgd parampgd, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
   {
-    this.jdField_a_of_type_Rvg = paramrvg;
-    this.jdField_a_of_type_Pgd = parampgd;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Piz.a(paramrvg, parampgd, paramInt);
-    this.b.a(paramrvg, parampgd, paramInt);
-    if ((paramrvg != null) && (paramrvg.e != null))
+    try
     {
-      if (parampgd.h()) {
-        paramrvg.e.setVisibility(8);
+      paramString = phv.a(paramString);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "configs");
+      paramString = paramString.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramString.next();
+        if ("from_source".equals(localEntry.getKey())) {
+          bmqa.a("viola_video_feeds_config", localEntry.getValue());
+        }
       }
+      return true;
     }
-    else {
-      return;
+    catch (Exception paramString)
+    {
+      QLog.e("ViolaVideoFeedsConfigHandler", 1, "[ViolaVideoFeedsConfigHandler]: " + paramString.getMessage());
     }
-    paramrvg.e.setVisibility(0);
   }
   
-  public void a(rvg paramrvg, pgd parampgd, long paramLong, Bitmap paramBitmap)
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Piz.a(paramrvg, parampgd, paramLong, paramBitmap);
+    bmqa.a("viola_video_feeds_config", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjn
  * JD-Core Version:    0.7.0.1
  */

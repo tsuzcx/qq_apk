@@ -1,10 +1,16 @@
-public abstract interface xmo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class xmo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  xmo(xmn paramxmn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xmo
  * JD-Core Version:    0.7.0.1
  */

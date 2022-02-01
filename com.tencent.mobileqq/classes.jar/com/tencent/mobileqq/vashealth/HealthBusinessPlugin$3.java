@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
 import android.text.TextUtils;
-import bety;
+import biau;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -72,8 +72,8 @@ class HealthBusinessPlugin$3
       }
       finally
       {
-        if (this.this$0.jdField_a_of_type_Bety.isShowing()) {
-          this.this$0.jdField_a_of_type_Bety.dismiss();
+        if (this.this$0.jdField_a_of_type_Biau.isShowing()) {
+          this.this$0.jdField_a_of_type_Biau.dismiss();
         }
       }
     }
@@ -81,7 +81,7 @@ class HealthBusinessPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.3
  * JD-Core Version:    0.7.0.1
  */

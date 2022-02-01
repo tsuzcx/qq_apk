@@ -30,6 +30,7 @@ import java.util.List;
 import org.libpag.PAGFile;
 import org.libpag.PAGImage;
 import org.libpag.PAGLayer;
+import org.libpag.PAGSolidLayer;
 import org.libpag.PAGText;
 import org.libpag.PAGView;
 
@@ -46,13 +47,11 @@ public class TAVStickerEditView
   private PointF convertPoint = new PointF();
   private float correctedOriginalCenterX = 0.0F;
   private float correctedOriginalCenterY = 0.0F;
+  protected int eventType = 15;
   private boolean isDrawMovieLimitRect = false;
   private boolean isFirstDraw = true;
   private boolean isNeedInitLocation = true;
   private boolean isShowDefaultBorder = true;
-  protected int mEventType = 15;
-  private TAVStickerEditView.TavStickerTouchListener mStickerTouchListener = null;
-  private List<View.OnTouchListener> mTouchListeners = new ArrayList();
   private TAVStickerMode mode = TAVStickerMode.DEFAULT;
   private int moveRegionHeight = 0;
   private int moveRegionWidth = 0;
@@ -79,7 +78,9 @@ public class TAVStickerEditView
   private ITAVStickerEventListener stickerEventListener = null;
   protected int stickerHeight = 0;
   protected Rect stickerMoveLimitRect = null;
+  private TAVStickerEditView.TavStickerTouchListener stickerTouchListener = null;
   protected int stickerWidth = 0;
+  private List<View.OnTouchListener> touchListeners = new ArrayList();
   protected PointF[] vertexPoints = { new PointF(), new PointF(), new PointF(), new PointF() };
   
   public TAVStickerEditView(@NonNull Context paramContext, @NonNull TAVSticker paramTAVSticker)
@@ -319,8 +320,8 @@ public class TAVStickerEditView
     }
     setWillNotDraw(false);
     this.sticker.registerRenderer(this);
-    this.mStickerTouchListener = new TAVStickerEditView.TavStickerTouchListener(this, null);
-    addOnTouchListener(this.mStickerTouchListener);
+    this.stickerTouchListener = new TAVStickerEditView.TavStickerTouchListener(this, null);
+    addOnTouchListener(this.stickerTouchListener);
   }
   
   private void initLocationData()
@@ -469,7 +470,7 @@ public class TAVStickerEditView
     if (paramOnTouchListener == null) {
       return;
     }
-    this.mTouchListeners.add(paramOnTouchListener);
+    this.touchListeners.add(paramOnTouchListener);
   }
   
   public long duration()
@@ -521,63 +522,67 @@ public class TAVStickerEditView
   
   public void getUnderPointLayerItems(int paramInt1, int paramInt2, ITAVTouchStickerLayerListener paramITAVTouchStickerLayerListener)
   {
-    if (paramITAVTouchStickerLayerListener != null)
+    if (paramITAVTouchStickerLayerListener == null) {}
+    ArrayList localArrayList;
+    PAGLayer[] arrayOfPAGLayer;
+    do
     {
-      if ((isTouchInStickerEditView(paramInt1, paramInt2)) && (this.pagView != null))
+      do
       {
-        ArrayList localArrayList = new ArrayList();
-        Object localObject1 = convertCoordinate(paramInt1, paramInt2);
-        localObject1 = this.pagView.getLayersUnderPoint(((PointF)localObject1).x, ((PointF)localObject1).y);
-        if ((localObject1 != null) && (localObject1.length > 0))
+        return;
+      } while (this.pagView == null);
+      localObject = null;
+      if (!isTouchInStickerEditView(paramInt1, paramInt2)) {
+        break;
+      }
+      localArrayList = new ArrayList();
+      localObject = convertCoordinate(paramInt1, paramInt2);
+      arrayOfPAGLayer = this.pagView.getLayersUnderPoint(((PointF)localObject).x, ((PointF)localObject).y);
+    } while ((arrayOfPAGLayer == null) || (arrayOfPAGLayer.length <= 0));
+    paramInt2 = arrayOfPAGLayer.length;
+    paramInt1 = 0;
+    Object localObject = localArrayList;
+    if (paramInt1 < paramInt2)
+    {
+      localObject = arrayOfPAGLayer[paramInt1];
+      if (localObject == null) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        int i = ((PAGLayer)localObject).editableIndex();
+        if (3 == ((PAGLayer)localObject).layerType())
         {
-          paramInt2 = localObject1.length;
-          paramInt1 = 0;
-          if (paramInt1 < paramInt2)
-          {
-            Object localObject2 = localObject1[paramInt1];
-            int i;
-            if (localObject2 != null)
-            {
-              if (3 != ((PAGLayer)localObject2).layerType()) {
-                break label138;
-              }
-              i = ((PAGLayer)localObject2).editableIndex();
-              localObject2 = this.sticker.getTavStickerTextItem(i);
-              if (localObject2 != null) {
-                localArrayList.add(localObject2);
-              }
-            }
-            for (;;)
-            {
-              paramInt1 += 1;
-              break;
-              label138:
-              if (5 == ((PAGLayer)localObject2).layerType())
-              {
-                i = ((PAGLayer)localObject2).editableIndex();
-                localObject2 = this.sticker.getTavStickerImageItem(i);
-                if (localObject2 != null) {
-                  localArrayList.add(localObject2);
-                }
-              }
-            }
+          localObject = this.sticker.getTavStickerTextItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
           }
-          paramITAVTouchStickerLayerListener.onTouchSticker(this.sticker, localArrayList);
+        }
+        else if (5 == ((PAGLayer)localObject).layerType())
+        {
+          localObject = this.sticker.getTavStickerImageItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+        }
+        else if (2 == ((PAGLayer)localObject).layerType())
+        {
+          localObject = this.sticker.getTavStickerSolidItem(i);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
         }
       }
     }
-    else {
-      return;
-    }
-    paramITAVTouchStickerLayerListener.onTouchSticker(this.sticker, null);
+    paramITAVTouchStickerLayerListener.onTouchSticker(this.sticker, (List)localObject);
   }
   
   boolean handleTouchEvent(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = this.mTouchListeners.size() - 1;
+    int i = this.touchListeners.size() - 1;
     while (i >= 0)
     {
-      View.OnTouchListener localOnTouchListener = (View.OnTouchListener)this.mTouchListeners.get(i);
+      View.OnTouchListener localOnTouchListener = (View.OnTouchListener)this.touchListeners.get(i);
       if ((localOnTouchListener != null) && (localOnTouchListener.onTouch(paramView, paramMotionEvent))) {
         return true;
       }
@@ -695,12 +700,12 @@ public class TAVStickerEditView
     for (;;)
     {
       return;
-      Iterator localIterator = new ArrayList(this.mTouchListeners).iterator();
+      Iterator localIterator = new ArrayList(this.touchListeners).iterator();
       while (localIterator.hasNext())
       {
         View.OnTouchListener localOnTouchListener = (View.OnTouchListener)localIterator.next();
         if ((localOnTouchListener != null) && (localOnTouchListener == paramOnTouchListener)) {
-          this.mTouchListeners.remove(paramOnTouchListener);
+          this.touchListeners.remove(paramOnTouchListener);
         }
       }
     }
@@ -725,13 +730,40 @@ public class TAVStickerEditView
   
   public void setEventType(int paramInt)
   {
-    this.mEventType = paramInt;
+    this.eventType = paramInt;
   }
   
   public void setImageData(int paramInt, PAGImage paramPAGImage)
   {
     if (this.pagView != null) {
       this.pagView.replaceImage(paramInt, paramPAGImage);
+    }
+  }
+  
+  public void setLayerColor(int paramInt1, int paramInt2)
+  {
+    PAGLayer[] arrayOfPAGLayer;
+    if (this.pagView != null)
+    {
+      arrayOfPAGLayer = ((PAGFile)this.pagView.getComposition()).getLayersByEditableIndex(paramInt1, 2);
+      if (arrayOfPAGLayer != null) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label30:
+      int i = arrayOfPAGLayer.length;
+      paramInt1 = 0;
+      while (paramInt1 < i)
+      {
+        PAGLayer localPAGLayer = arrayOfPAGLayer[paramInt1];
+        if ((localPAGLayer instanceof PAGSolidLayer)) {
+          ((PAGSolidLayer)localPAGLayer).setSolidColor(paramInt2);
+        }
+        paramInt1 += 1;
+      }
     }
   }
   
@@ -804,7 +836,7 @@ public class TAVStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerEditView
  * JD-Core Version:    0.7.0.1
  */

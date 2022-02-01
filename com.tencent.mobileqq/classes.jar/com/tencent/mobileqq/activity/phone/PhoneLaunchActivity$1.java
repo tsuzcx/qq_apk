@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aine;
+import akdy;
 import android.widget.Button;
-import bdin;
+import bgnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PhoneLaunchActivity$1
@@ -12,24 +12,24 @@ public class PhoneLaunchActivity$1
   
   public void run()
   {
-    if (!bdin.d(this.this$0))
+    if (!bgnt.d(this.this$0))
     {
-      this.this$0.b(2131694831);
+      this.this$0.a(2131693991);
       PhoneLaunchActivity.a(this.this$0).setEnabled(true);
       return;
     }
     if (this.this$0.a == null)
     {
-      this.this$0.a = new aine(this);
+      this.this$0.a = new akdy(this);
       this.this$0.app.registObserver(this.this$0.a);
     }
     this.this$0.app.a(new PhoneLaunchActivity.1.2(this));
-    this.this$0.a(2131719785, 1000L, true);
+    this.this$0.a(2131717771, 1000L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1
  * JD-Core Version:    0.7.0.1
  */

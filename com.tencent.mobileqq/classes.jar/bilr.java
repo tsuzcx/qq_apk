@@ -1,46 +1,50 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.open.agent.FriendListOpenFrame;
 
 public class bilr
+  extends Handler
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  public bilr(FriendListOpenFrame paramFriendListOpenFrame) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    try
+    switch (paramMessage.what)
     {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
-      return paramClass;
     }
-    catch (IllegalAccessException paramClass)
+    for (;;)
     {
-      paramClass.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramClass)
-    {
-      for (;;)
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      return;
+      String str = paramMessage.getData().getString("url");
+      paramMessage = (Bitmap)paramMessage.obj;
+      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        paramClass.printStackTrace();
+        bilt localbilt = (bilt)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
+        if ((localbilt != null) && (str.equals(localbilt.b)))
+        {
+          localbilt.a.setImageBitmap(paramMessage);
+          return;
+        }
+        i += 1;
       }
     }
-  }
-  
-  public static byte[] a(JceStruct paramJceStruct)
-  {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("utf-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bilr
  * JD-Core Version:    0.7.0.1
  */

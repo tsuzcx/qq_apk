@@ -1,25 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import java.lang.ref.WeakReference;
-
-public class ahzg
-  implements DialogInterface.OnCancelListener
+class ahzg
+  implements bcpg
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  ahzg(ahzf paramahzf) {}
   
-  ahzg(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
+  public void a()
   {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+    ahzf.a(this.a);
+    this.a.I();
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void b()
   {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.I();
   }
 }
 

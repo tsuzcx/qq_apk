@@ -1,25 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController.5;
+import com.tencent.qphone.base.util.QLog;
+
 public class lsf
-  extends lrs
+  implements DialogInterface.OnClickListener
 {
-  short a;
-  short jdField_b_of_type_Short;
-  byte[] jdField_b_of_type_ArrayOfByte;
-  byte[] c;
-  byte[] d;
+  public lsf(RandomController.5 param5) {}
   
-  lsf(lrs paramlrs, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramlrs);
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.c = paramArrayOfByte2;
-    this.d = paramArrayOfByte3;
-    this.a = paramShort1;
-    this.jdField_b_of_type_Short = paramShort2;
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    }
+    this.a.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsf
  * JD-Core Version:    0.7.0.1
  */

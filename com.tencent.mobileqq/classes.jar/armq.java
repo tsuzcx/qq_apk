@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
 
 class armq
-  implements View.OnClickListener
 {
-  armq(armo paramarmo) {}
-  
-  public void onClick(View paramView)
-  {
-    armo.a(this.a);
-  }
+  int jdField_a_of_type_Int;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 

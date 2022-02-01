@@ -11,19 +11,19 @@ import com.tencent.av.gameplay.ARNativeBridge;
 import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
 import com.tencent.qphone.base.util.QLog;
-import lek;
-import llx;
-import mgs;
+import lbc;
+import liu;
+import mdw;
 
 public class GamePlayView
   extends FrameLayout
-  implements llx
+  implements liu
 {
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected VideoAppInterface a;
   private ARNativeBridge jdField_a_of_type_ComTencentAvGameplayARNativeBridge;
-  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new mgs(this);
+  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new mdw(this);
   private ARGLSurfaceView jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView;
   
   public GamePlayView(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,8 +45,8 @@ public class GamePlayView
   public void a(VideoAppInterface paramVideoAppInterface, Activity paramActivity, String paramString, int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    lek.c("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367241));
+    lbc.c("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367534));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge = new ARNativeBridge();
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge.native_updateResourcePath(paramString);
@@ -101,7 +101,7 @@ public class GamePlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.GamePlayView
  * JD-Core Version:    0.7.0.1
  */

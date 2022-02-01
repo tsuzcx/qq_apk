@@ -1,22 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aicb
-  implements View.OnTouchListener
+class aicb
+  implements DialogInterface.OnClickListener
 {
-  public aicb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicb(aibv paramaibv, bgpa parambgpa) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.x();
-      paramView = this.a.o;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
+    this.jdField_a_of_type_Bgpa.dismiss();
   }
 }
 

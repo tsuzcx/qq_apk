@@ -1,32 +1,37 @@
 package com.tencent.device.msg.activities;
 
-import aagb;
-import aagc;
-import amrk;
+import Override;
+import abug;
+import abuh;
+import abui;
+import abuj;
+import accz;
+import acda;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bety;
-import bflp;
+import aoqb;
+import biau;
+import bisy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.Iterator;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zxi;
-import zxj;
-import zxk;
-import zxl;
 
 public class DeviceMsgSettingActivity
   extends IphoneTitleBarActivity
@@ -35,10 +40,10 @@ public class DeviceMsgSettingActivity
   public Handler a;
   public CompoundButton a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bety a;
+  public biau a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<zxl> a;
+  public ArrayList<abuj> a;
   public String b;
   public String c;
   
@@ -70,7 +75,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    aagc.a(paramString, localBundle, i, null, this.app, new zxk(this));
+    acda.a(paramString, localBundle, i, null, this.app, new abui(this));
   }
   
   private void b()
@@ -80,14 +85,14 @@ public class DeviceMsgSettingActivity
     this.c = localIntent.getStringExtra("din");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Bety = new bety(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131376527));
-    this.jdField_a_of_type_Bety.c(2131693126);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau = new biau(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377317));
+    this.jdField_a_of_type_Biau.c(2131692655);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.show();
     }
     c();
-    aagb.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
+    accz.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
   }
   
   private void c()
@@ -111,12 +116,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    aagc.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new zxj(this));
+    acda.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new abuh(this));
   }
   
   private void d()
   {
-    Object localObject = (TextView)super.findViewById(2131376535);
+    Object localObject = (TextView)super.findViewById(2131377325);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -125,7 +130,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131376529);
+      localObject = super.findViewById(2131377319);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -136,14 +141,14 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131376530);
+      localObject = super.findViewById(2131377320);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
           break label107;
         }
         ((View)localObject).setVisibility(0);
-        bflp.c("DeviceMsgSettingActivity", "show none background");
+        bisy.c("DeviceMsgSettingActivity", "show none background");
       }
       return;
       ((TextView)localObject).setVisibility(0);
@@ -152,7 +157,7 @@ public class DeviceMsgSettingActivity
       ((View)localObject).setVisibility(0);
     }
     label107:
-    bflp.c("DeviceMsgSettingActivity", "hide none background");
+    bisy.c("DeviceMsgSettingActivity", "hide none background");
     ((View)localObject).setVisibility(8);
   }
   
@@ -163,10 +168,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      zxl localzxl = (zxl)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      abuj localabuj = (abuj)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localzxl.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localabuj.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -174,8 +179,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localzxl.jdField_a_of_type_Int));
-        if (localzxl.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localabuj.jdField_a_of_type_Int));
+        if (localabuj.b != 1) {
           break label173;
         }
       }
@@ -203,14 +208,22 @@ public class DeviceMsgSettingActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559006);
-    super.setTitle(2131691653);
+    super.setContentView(2131559074);
+    super.setTitle(2131691402);
     if (Build.VERSION.SDK_INT >= 23) {
-      if (!amrk.a(this)) {
-        amrk.a(this, 3, new zxi(this));
+      if (!aoqb.a(this)) {
+        aoqb.a(this, 3, new abug(this));
       }
     }
     for (;;)
@@ -225,68 +238,85 @@ public class DeviceMsgSettingActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    this.jdField_a_of_type_Bety.c(2131719836);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau.c(2131717807);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.show();
     }
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject1 = new JSONArray();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject2;
+    int i;
+    for (;;)
     {
-      Object localObject = (zxl)localIterator.next();
-      if (((zxl)localObject).jdField_a_of_type_Int == j)
+      if (localIterator.hasNext())
       {
-        int k = ((zxl)localObject).b;
-        long l;
-        if (paramBoolean)
+        localObject2 = (abuj)localIterator.next();
+        if (((abuj)localObject2).jdField_a_of_type_Int == j)
         {
-          i = 1;
-          if (k != i) {
-            break label164;
-          }
-          paramCompoundButton = this.app;
-          l = Long.parseLong(this.c);
-          if (!paramBoolean) {
-            break label159;
-          }
-        }
-        label159:
-        for (int i = 1;; i = 2)
-        {
-          aagb.a(paramCompoundButton, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
-          return;
-          i = 0;
-          break;
-        }
-        for (;;)
-        {
-          try
+          int k = ((abuj)localObject2).b;
+          if (paramBoolean)
           {
-            label164:
-            localObject = new JSONObject().put("id", ((zxl)localObject).jdField_a_of_type_Int);
+            i = 1;
+            label109:
+            if (k != i) {
+              break label174;
+            }
+            localObject1 = this.app;
+            long l = Long.parseLong(this.c);
             if (!paramBoolean) {
-              break label218;
+              break label169;
             }
             i = 1;
-            localJSONArray.put(((JSONObject)localObject).put("enable", i));
+            label136:
+            accz.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
           }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-          break;
-          label218:
-          i = 0;
         }
       }
     }
-    this.jdField_a_of_type_AndroidWidgetCompoundButton = paramCompoundButton;
-    a(localJSONArray.toString());
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break label109;
+      label169:
+      i = 2;
+      break label136;
+      for (;;)
+      {
+        try
+        {
+          label174:
+          localObject2 = new JSONObject().put("id", ((abuj)localObject2).jdField_a_of_type_Int);
+          if (!paramBoolean) {
+            break label228;
+          }
+          i = 1;
+          ((JSONArray)localObject1).put(((JSONObject)localObject2).put("enable", i));
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        break;
+        label228:
+        i = 0;
+      }
+      this.jdField_a_of_type_AndroidWidgetCompoundButton = paramCompoundButton;
+      a(((JSONArray)localObject1).toString());
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceMsgSettingActivity
  * JD-Core Version:    0.7.0.1
  */

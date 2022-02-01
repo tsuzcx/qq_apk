@@ -1,33 +1,39 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
+import com.tencent.open.model.AppInfo;
+import java.util.List;
 
 public class biyb
-  implements ServiceConnection
+  implements anil
 {
-  biyb(biya parambiya) {}
+  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_Bixq = bixr.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Bixq != null)
+    switch (paramInt)
     {
-      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+    default: 
+      return;
+    case 0: 
+      if (paramBoolean)
+      {
+        a(paramBoolean, (List)paramObject, null);
+        return;
+      }
+      a(paramBoolean, null, (String)paramObject);
+      return;
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_Bixq = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    if (paramBoolean)
+    {
+      a(paramBoolean, (List)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyb
  * JD-Core Version:    0.7.0.1
  */

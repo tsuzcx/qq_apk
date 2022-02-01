@@ -2,12 +2,15 @@ package com.tencent.qqmini.sdk.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 
+@MiniKeep
 public class DebugUtil
 {
   public static boolean getDebugEnabled(MiniAppInfo paramMiniAppInfo)
@@ -93,7 +96,7 @@ public class DebugUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DebugUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,47 @@
-import android.app.Activity;
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.4.1;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bbqy
-  extends alpa
+class bbqy
+  implements View.OnClickListener
 {
-  bbqy(bbqu parambbqu) {}
+  bbqy(bbqr parambbqr, Context paramContext, bbnx parambbnx) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Alpa);
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    bbup.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bbnx.a.jdField_a_of_type_JavaLangString);
+    bbhe localbbhe;
+    JSONObject localJSONObject;
+    if (bbhd.b.containsKey(this.jdField_a_of_type_Bbnx))
     {
-      this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-      if (this.a.jdField_a_of_type_Bbrd != null) {
-        break;
-      }
-      bbqu.a(this.a);
-      return;
+      localbbhe = (bbhe)bbhd.b.get(this.jdField_a_of_type_Bbnx);
+      localJSONObject = new JSONObject();
     }
-    int i = -1;
-    if (paramObject == null)
-    {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate data null");
-      bbqu.a(this.a);
-      this.a.jdField_a_of_type_Bbrd.a(-1, "");
-      this.a.jdField_a_of_type_Bbrd = null;
-      return;
-    }
-    if (!paramBoolean) {}
     try
     {
-      int j = ((bbrf)paramObject).jdField_a_of_type_Int;
-      i = j;
-    }
-    catch (Exception paramObject)
-    {
-      label135:
-      String str;
-      break label135;
-    }
-    QLog.i("TroopCreateLogic", 1, "onGetTroopCreate retCode:" + i + "  currentUin:" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    bbqu.a(this.a);
-    this.a.jdField_a_of_type_Bbrd.a(i, "");
-    return;
-    paramObject = (TroopInfo)paramObject;
-    str = paramObject.troopuin;
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate troopUin:" + str);
-      bbqu.a(this.a);
-      this.a.jdField_a_of_type_Bbrd.a(-1, "");
-      this.a.jdField_a_of_type_Bbrd = null;
+      localJSONObject.put("project", bbrf.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbbhe.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      bbrf.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbbhe.jdField_a_of_type_Long + "").obj2(localbbhe.b).ver1(localbbhe.jdField_a_of_type_JavaLangString).ver2(bbrf.a(this.jdField_a_of_type_Bbnx.c)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a.jdField_a_of_type_Bbre.f = str;
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_create", "", "new_create", "number", 0, 0, str, Integer.toString(this.a.jdField_a_of_type_Bbre.jdField_a_of_type_Int), "", "");
-    if (this.a.jdField_a_of_type_Bbre.jdField_a_of_type_JavaUtilArrayList == null)
+    catch (JSONException localJSONException)
     {
-      i = 1;
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "suc_create", "person_create", 0, 0, str, "" + this.a.jdField_a_of_type_Bbre.d, "" + i, "");
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate success troopUin:" + str + " number:" + i + "  createFrom:" + this.a.jdField_a_of_type_Bbre.d);
-      ThreadManager.post(new TroopCreateLogic.4.1(this, str, paramObject, i), 8, null, true);
-      if (this.a.jdField_a_of_type_Bbre.b)
+      for (;;)
       {
-        paramObject = localActivity;
-        if (localActivity == null) {
-          paramObject = BaseApplicationImpl.getContext();
-        }
-        this.a.a(paramObject, str);
+        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
       }
-      this.a.jdField_a_of_type_Bbrd.a(0, str);
-      if (this.a.jdField_a_of_type_Bbre.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-        break label630;
-      }
-      ((amdu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(str, this.a.jdField_a_of_type_Bbre.jdField_a_of_type_JavaUtilArrayList, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Ameq);
-    }
-    for (;;)
-    {
-      bbqu.a(this.a);
-      return;
-      i = this.a.jdField_a_of_type_Bbre.jdField_a_of_type_JavaUtilArrayList.size();
-      break;
-      label630:
-      this.a.jdField_a_of_type_Bbrd = null;
     }
   }
 }

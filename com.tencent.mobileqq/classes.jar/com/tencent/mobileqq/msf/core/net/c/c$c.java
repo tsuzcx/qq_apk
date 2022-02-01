@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.c;
 
 import android.os.Build.VERSION;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.w;
 
 class c$c
 {
@@ -31,7 +31,7 @@ class c$c
     this.h = 0L;
     this.i = "";
     this.j = "0.0.0.0";
-    this.k = t.e();
+    this.k = w.e();
     this.l = 0L;
     this.m = "0,0";
   }

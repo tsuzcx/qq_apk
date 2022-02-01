@@ -1,20 +1,29 @@
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+
 class vjq
-  extends viq
+  implements vvv
 {
-  vjq(vji paramvji, String paramString1, String paramString2, boolean paramBoolean, vkq paramvkq)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  vjq(vjn paramvjn) {}
   
-  public boolean b()
+  public void a()
   {
-    this.jdField_a_of_type_Vkq.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    if (vjn.a(this.a) != null)
+    {
+      String str = vjn.a(this.a).id.get();
+      int i = this.a.a();
+      zwp.a().a(new QCircleDoublePraiseAnimationEvent(str, i, vjn.a(this.a)));
+      QLog.d("QCircleContentHorizontalAdapter", 1, "dispatchEvent id:" + str + " pageType:" + i);
+      vrr.a().a(new vrt().a("content").b("like").a(vjn.a(this.a)).a(this.a.a()).a(vjn.a(this.a)).c(vjn.a(this.a).poster.id.get()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjq
  * JD-Core Version:    0.7.0.1
  */

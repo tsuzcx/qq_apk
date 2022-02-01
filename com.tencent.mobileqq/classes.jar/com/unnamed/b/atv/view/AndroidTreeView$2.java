@@ -2,6 +2,7 @@ package com.unnamed.b.atv.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.model.TreeNode.TreeNodeClickListener;
 
@@ -20,6 +21,7 @@ class AndroidTreeView$2
       if (AndroidTreeView.access$100(this.this$0)) {
         this.this$0.toggleNode(this.val$n);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       if (AndroidTreeView.access$000(this.this$0) != null) {
         AndroidTreeView.access$000(this.this$0).onClick(this.val$n, this.val$n.getValue());
@@ -29,7 +31,7 @@ class AndroidTreeView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.unnamed.b.atv.view.AndroidTreeView.2
  * JD-Core Version:    0.7.0.1
  */

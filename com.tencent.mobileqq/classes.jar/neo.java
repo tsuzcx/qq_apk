@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AVGameActivity;
+import com.tencent.avgame.ui.AVGameActivity.5;
 
 public class neo
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public neo(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public neo(AVGameActivity.5 param5) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
-    }
-    while (paramMessage.what != 291) {
-      return;
-    }
-    this.a.updateMicStatus((String)paramMessage.obj);
+    paramDialogInterface.dismiss();
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     neo
  * JD-Core Version:    0.7.0.1
  */

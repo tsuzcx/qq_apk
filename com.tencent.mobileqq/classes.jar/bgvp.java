@@ -1,82 +1,211 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 
-public class bgvp
+public final class bgvp
 {
-  private static Map<Long, Long> a = new HashMap();
+  private static final ThreadLocal<double[]> a = new ThreadLocal();
   
-  private static View.OnClickListener a(View paramView)
+  @FloatRange(from=0.0D, to=1.0D)
+  public static double a(@ColorInt int paramInt)
   {
-    if (paramView == null) {
-      return null;
+    double[] arrayOfDouble = a();
+    a(paramInt, arrayOfDouble);
+    return arrayOfDouble[1] / 100.0D;
+  }
+  
+  public static double a(@ColorInt int paramInt1, @ColorInt int paramInt2)
+  {
+    if (Color.alpha(paramInt2) != 255) {
+      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
     }
-    try
-    {
-      Field localField = View.class.getDeclaredField("mListenerInfo");
-      if (localField == null) {
-        break label96;
-      }
-      localField.setAccessible(true);
-      paramView = localField.get(paramView);
-      localField = paramView.getClass().getDeclaredField("mOnClickListener");
-      if ((localField == null) || (paramView == null)) {
-        break label96;
-      }
-      localField.setAccessible(true);
-      paramView = (View.OnClickListener)localField.get(paramView);
+    int i = paramInt1;
+    if (Color.alpha(paramInt1) < 255) {
+      i = a(paramInt1, paramInt2);
     }
-    catch (Throwable paramView)
+    double d1 = a(i) + 0.05D;
+    double d2 = a(paramInt2) + 0.05D;
+    return Math.max(d1, d2) / Math.min(d1, d2);
+  }
+  
+  private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
+    }
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
+    }
+    return paramFloat1;
+  }
+  
+  public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2)
+  {
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = c(j, i);
+    return Color.argb(k, a(Color.red(paramInt1), j, Color.red(paramInt2), i, k), a(Color.green(paramInt1), j, Color.green(paramInt2), i, k), a(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+  }
+  
+  public static int a(@ColorInt int paramInt1, @ColorInt int paramInt2, float paramFloat)
+  {
+    int j = 0;
+    int i = 255;
+    if (Color.alpha(paramInt2) != 255) {
+      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
+    }
+    if (a(b(paramInt1, 255), paramInt2) < paramFloat) {
+      m = -1;
+    }
+    int k;
+    do
     {
-      for (;;)
+      do
       {
-        QMLog.e("BannerAdViolationManage", "getOnClickListenerReflected", paramView);
-        paramView = null;
+        return m;
+        k = 0;
+        m = i;
+      } while (k > 10);
+      m = i;
+    } while (i - j <= 1);
+    int m = (j + i) / 2;
+    if (a(b(paramInt1, m), paramInt2) < paramFloat) {
+      j = m;
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+      i = m;
+    }
+  }
+  
+  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (paramInt5 == 0) {
+      return 0;
+    }
+    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
+  }
+  
+  public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull double[] paramArrayOfDouble)
+  {
+    if (paramArrayOfDouble.length != 3) {
+      throw new IllegalArgumentException("outXyz must have a length of 3.");
+    }
+    double d1 = paramInt1 / 255.0D;
+    double d2;
+    label66:
+    double d3;
+    if (d1 < 0.04045D)
+    {
+      d1 /= 12.92D;
+      d2 = paramInt2 / 255.0D;
+      if (d2 >= 0.04045D) {
+        break label194;
+      }
+      d2 /= 12.92D;
+      d3 = paramInt3 / 255.0D;
+      if (d3 >= 0.04045D) {
+        break label215;
       }
     }
-    QMLog.d("BannerAdViolationManage", "getOnClickListenerReflected: listener = " + paramView);
-    return paramView;
-  }
-  
-  public static void a(String paramString, long paramLong, View paramView)
-  {
-    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask() called with: miniAppId = [" + paramString + "], aid = [" + paramLong + "], view = [" + paramView + "]");
-    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
-      return;
-    }
-    a.put(Long.valueOf(paramLong), Long.valueOf(System.currentTimeMillis()));
-    float[] arrayOfFloat = new float[2];
-    paramView.setOnTouchListener(new bgvq(arrayOfFloat));
-    paramView.setOnClickListener(new bgvr(a(paramView), paramLong, paramView, arrayOfFloat, paramString));
-    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask: end");
-  }
-  
-  private static void b(String paramString, long paramLong1, int paramInt, long paramLong2)
-  {
-    QMLog.d("BannerAdViolationManage", "handleViolationReport() called with: miniAppId = [" + paramString + "], aid = [" + paramLong1 + "], clickArea = [" + paramInt + "], expoClickInterval = [" + paramLong2 + "]");
-    if ((paramInt > 0) && (paramInt < 11) && (paramLong2 > 0L))
+    label194:
+    label215:
+    for (d3 /= 12.92D;; d3 = Math.pow((d3 + 0.055D) / 1.055D, 2.4D))
     {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString).append('|').append(paramLong1).append('|').append(paramInt).append('|').append(paramLong2).append('|').append(System.currentTimeMillis()).append('|').append("Android").append('|').append("");
-      paramString = ((StringBuilder)localObject).toString();
-      QMLog.d("BannerAdViolationManage", "handleViolationReport: report one record " + paramString);
-      localObject = new Bundle();
-      ((Bundle)localObject).putStringArray("data", new String[] { paramString });
-      ((Bundle)localObject).putString("log_key", "dc05439");
-      bgtu.a().a("cmd_dc_report_log_key_data", (Bundle)localObject, null);
+      paramArrayOfDouble[0] = (100.0D * (0.4124D * d1 + 0.3576D * d2 + 0.1805D * d3));
+      paramArrayOfDouble[1] = (100.0D * (0.2126D * d1 + 0.7152D * d2 + 0.0722D * d3));
+      paramArrayOfDouble[2] = ((d3 * 0.9505D + (d2 * 0.1192D + d1 * 0.0193D)) * 100.0D);
+      return;
+      d1 = Math.pow((d1 + 0.055D) / 1.055D, 2.4D);
+      break;
+      d2 = Math.pow((d2 + 0.055D) / 1.055D, 2.4D);
+      break label66;
+    }
+  }
+  
+  public static void a(@IntRange(from=0L, to=255L) int paramInt1, @IntRange(from=0L, to=255L) int paramInt2, @IntRange(from=0L, to=255L) int paramInt3, @NonNull float[] paramArrayOfFloat)
+  {
+    float f1 = paramInt1 / 255.0F;
+    float f3 = paramInt2 / 255.0F;
+    float f5 = paramInt3 / 255.0F;
+    float f6 = Math.max(f1, Math.max(f3, f5));
+    float f7 = Math.min(f1, Math.min(f3, f5));
+    float f2 = f6 - f7;
+    float f4 = (f6 + f7) / 2.0F;
+    if (f6 == f7)
+    {
+      f1 = 0.0F;
+      f2 = 0.0F;
+      f3 = f2 * 60.0F % 360.0F;
+      f2 = f3;
+      if (f3 < 0.0F) {
+        f2 = f3 + 360.0F;
+      }
+      paramArrayOfFloat[0] = a(f2, 0.0F, 360.0F);
+      paramArrayOfFloat[1] = a(f1, 0.0F, 1.0F);
+      paramArrayOfFloat[2] = a(f4, 0.0F, 1.0F);
       return;
     }
-    QMLog.w("BannerAdViolationManage", "invalid report record clickArea = " + paramInt + ", expoClickInterval = " + paramLong2);
+    if (f6 == f1) {
+      f1 = (f3 - f5) / f2 % 6.0F;
+    }
+    for (;;)
+    {
+      f3 = f2 / (1.0F - Math.abs(2.0F * f4 - 1.0F));
+      f2 = f1;
+      f1 = f3;
+      break;
+      if (f6 == f3) {
+        f1 = (f5 - f1) / f2 + 2.0F;
+      } else {
+        f1 = (f1 - f3) / f2 + 4.0F;
+      }
+    }
+  }
+  
+  public static void a(@ColorInt int paramInt, @NonNull double[] paramArrayOfDouble)
+  {
+    a(Color.red(paramInt), Color.green(paramInt), Color.blue(paramInt), paramArrayOfDouble);
+  }
+  
+  public static void a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat)
+  {
+    a(Color.red(paramInt), Color.green(paramInt), Color.blue(paramInt), paramArrayOfFloat);
+  }
+  
+  private static double[] a()
+  {
+    double[] arrayOfDouble2 = (double[])a.get();
+    double[] arrayOfDouble1 = arrayOfDouble2;
+    if (arrayOfDouble2 == null)
+    {
+      arrayOfDouble1 = new double[3];
+      a.set(arrayOfDouble1);
+    }
+    return arrayOfDouble1;
+  }
+  
+  @ColorInt
+  public static int b(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
+  {
+    if ((paramInt2 < 0) || (paramInt2 > 255)) {
+      throw new IllegalArgumentException("alpha must be between 0 and 255.");
+    }
+    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
+  }
+  
+  private static int c(int paramInt1, int paramInt2)
+  {
+    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgvp
  * JD-Core Version:    0.7.0.1
  */

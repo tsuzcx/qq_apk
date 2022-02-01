@@ -3,7 +3,7 @@ package com.tencent.mobileqq.util;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Handler;
-import bddy;
+import bgir;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -12,14 +12,14 @@ import com.tencent.smtt.sdk.WebView;
 public final class ScreenShotUtil$2
   implements Runnable
 {
-  public ScreenShotUtil$2(WebView paramWebView, Canvas paramCanvas, bddy parambddy, Bitmap paramBitmap) {}
+  public ScreenShotUtil$2(WebView paramWebView, Canvas paramCanvas, bgir parambgir, Bitmap paramBitmap) {}
   
   public void run()
   {
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().snapshotWholePage(this.jdField_a_of_type_AndroidGraphicsCanvas, false, false);
-      Object localObject = this.jdField_a_of_type_Bddy.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Object localObject = this.jdField_a_of_type_Bgir.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       ThreadManagerV2.getUIHandlerV2().post(new ScreenShotUtil.2.1(this, localObject));
       return;
     }
@@ -41,7 +41,7 @@ public final class ScreenShotUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.2
  * JD-Core Version:    0.7.0.1
  */

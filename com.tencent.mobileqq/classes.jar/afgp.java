@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
-class afgp
-  implements anxr
+public class afgp
+  implements View.OnFocusChangeListener
 {
-  afgp(afgn paramafgn, int paramInt1, int paramInt2) {}
+  public afgp(SubLoginActivity paramSubLoginActivity) {}
   
-  public void a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    afgn.a(this.jdField_a_of_type_Afgn).a.setOnMeasureListener(null);
-    afgn.a(this.jdField_a_of_type_Afgn).a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

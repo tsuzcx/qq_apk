@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import akox;
+import amid;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class ApolloRender$11$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$11$1(akox paramakox, Map paramMap, int paramInt, byte[] paramArrayOfByte) {}
+  public ApolloRender$11$1(amid paramamid, Map paramMap, int paramInt, byte[] paramArrayOfByte) {}
   
   public String a()
   {
@@ -41,7 +41,7 @@ public class ApolloRender$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.11.1
  * JD-Core Version:    0.7.0.1
  */

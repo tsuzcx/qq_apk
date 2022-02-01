@@ -30,16 +30,16 @@ public class VideoLocalDataInitializer
     while (i < k)
     {
       str = arrayOfString[i];
-      localArrayList.add(new VideoMaterialMetaData(str, "", "http://res.tu.qq.com/materials/" + str + "Android.zip", "http://res.tu.qq.com/materials/" + str + ".png"));
+      localArrayList.add(new VideoMaterialMetaData(str, "", "https://res.tu.qq.com/materials/" + str + "Android.zip", "https://res.tu.qq.com/materials/" + str + ".png"));
       i += 1;
     }
-    localArrayList.add(new VideoMaterialMetaData("video_3DFace_fashionglass1", "", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1Android.zip", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1.png"));
+    localArrayList.add(new VideoMaterialMetaData("video_3DFace_fashionglass1", "", "https://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1Android.zip", "https://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1.png"));
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoLocalDataInitializer
  * JD-Core Version:    0.7.0.1
  */

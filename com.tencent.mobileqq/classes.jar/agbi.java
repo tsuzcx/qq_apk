@@ -1,39 +1,27 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.view.View;
 
 public class agbi
-  extends aeqi
 {
-  public ImageView a;
-  public TextView a;
-  public CropBubbleVideoView a;
-  public MessageProgressView a;
-  public ImageView b;
-  public int e;
-  public int f;
+  public float a;
+  public int a;
+  public long a;
+  public agbh a;
+  public View a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b;
+  public float c = 0.0F;
+  public float d = 1.0F;
+  public float e = 1.0F;
+  public float f = 1.0F;
   
-  public agbi(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a()
+  public agbi()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bdew.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
-    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

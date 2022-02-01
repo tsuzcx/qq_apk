@@ -1,15 +1,10 @@
-public class avvf
+public abstract interface avvf
 {
-  public String a = "auto";
-  
-  public String toString()
-  {
-    return "ARCloudReqOcrInfo{language = " + this.a + '}';
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvf
  * JD-Core Version:    0.7.0.1
  */

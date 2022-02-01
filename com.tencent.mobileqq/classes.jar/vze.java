@@ -1,31 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class vze
-  implements URLDrawable.URLDrawableListener
+class vze
+  implements View.OnClickListener
 {
-  vze(ImageView paramImageView, Drawable paramDrawable) {}
+  vze(vzd paramvzd, long paramLong) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    wxe.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (vyz.a(this.jdField_a_of_type_Vzd.a.a) != null) {
+      vyz.a(this.jdField_a_of_type_Vzd.a.a).b(this.jdField_a_of_type_Long);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vze
  * JD-Core Version:    0.7.0.1
  */

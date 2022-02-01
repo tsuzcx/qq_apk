@@ -1,24 +1,27 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class axmv
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public axmv(IosTimepicker paramIosTimepicker) {}
+  public axmv(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    if (paramMotionEvent.getAction() == 0)
     {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axmv
  * JD-Core Version:    0.7.0.1
  */

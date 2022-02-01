@@ -1,31 +1,44 @@
-public class ayzs
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public final class ayzs
 {
-  public static String a = "key_recv_queue_wait_length";
-  public static String b = "key_add_queue_time";
-  public static String c = "holiday_active_flag";
-  public static String d = "ark_at_babyq_flag";
-  public static String e = "ark_show_as_sdk_flag";
-  public static String f = "ark_babyq_gray_tip_flag";
-  public static String g = "ark_babyq_report_recv_flag";
-  public static String h = "is_redbag_video";
-  public static String i = "troop_at_info_list";
-  public static String j = "disc_at_info_list";
-  public static String k = "at_info";
-  public static String l = "is_troop";
-  public static String m = "pic_sync_story";
-  public static String n = "video_sync_story";
-  public static String o = "is_sync_qzone";
-  public static String p = "batch_id_qzone";
-  public static String q = "album_id_qzone";
-  public static String r = "aio_send_qzone_pic_flag";
-  public static String s = "aio_send_qzone_pic_url";
-  public static String t = "aio_send_qzone_pic_size";
-  public static String u = "aio_light_video_read_flag";
-  public static String v = "ark_msg_process_state";
-  public static String w = "service_msg_type";
-  public static String x = "service_msg_remind_type";
-  public static String y = "service_msg_name";
-  public static String z = "key_send_raw_video";
+  final TroopAIOAppInfo a = new TroopAIOAppInfo();
+  
+  private void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a.appid = paramString.optInt("appid");
+      this.a.name = paramString.optString("title");
+      this.a.enName = paramString.optString("eng_title");
+      this.a.iconUrl = paramString.optString("iconNormal");
+      this.a.iconPress = paramString.optString("iconPress");
+      this.a.simpleDayUrl = paramString.optString("iconConciseNormal");
+      this.a.simpleDayPressUrl = paramString.optString("iconConcisePress");
+      this.a.simpleNightUrl = paramString.optString("iconConciseNightNormal");
+      this.a.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
+      this.a.redDotID = azar.a(this.a.appid);
+      this.a.actionType = paramString.optString("actionType");
+      this.a.action = paramString.optString("action");
+      this.a.enableC2C = paramString.optInt("enableC2C");
+      this.a.enableGroup = paramString.optInt("enableGroup");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
 }
 
 

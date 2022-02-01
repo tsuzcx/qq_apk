@@ -1,12 +1,4 @@
-public abstract interface aexp
-{
-  public abstract boolean a();
-  
-  public abstract void d();
-  
-  public abstract void e();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexp

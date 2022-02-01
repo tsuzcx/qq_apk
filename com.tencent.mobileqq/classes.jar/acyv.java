@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.MarketTrans;
 
 public class acyv
-  extends VasQuickUpdateManager.CallBacker
+  extends aczg
 {
-  public acyv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int a()
   {
-    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
-    {
-      paramString1 = this.a.b.obtainMessage();
-      paramString1.what = 5;
-      paramString1.obj = this.a.a.a;
-      paramString1.arg1 = 0;
-      paramString1.arg2 = 17;
-      this.a.b.sendMessage(paramString1);
-      paramVasQuickUpdateManager.removeCallBacker(this);
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().a(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.market_trans.has();
   }
 }
 

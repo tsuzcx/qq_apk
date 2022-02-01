@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
-public abstract class aylg
-  implements ayug<aylj>
+public class aylg
+  implements Handler.Callback
 {
-  protected QQAppInterface a;
+  public aylg(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public aylg(QQAppInterface paramQQAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = paramQQAppInterface;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.f();
+    }
   }
-  
-  public void a() {}
-  
-  public abstract void a(String paramString, List<FTSEntity> paramList);
-  
-  public void b() {}
-  
-  public abstract void b(ayuu paramayuu, ayuh<ayli> paramayuh);
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

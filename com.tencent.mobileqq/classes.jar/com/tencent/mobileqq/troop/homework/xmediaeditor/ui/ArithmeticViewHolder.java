@@ -9,14 +9,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcdv;
-import bcdw;
-import bcex;
-import bdes;
+import bfej;
+import bfek;
+import bffl;
+import bgjt;
 import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithmeticCaptureTransferFragment;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,7 +25,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 public class ArithmeticViewHolder
-  extends bcex<bcdv>
+  extends bffl<bfej>
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
@@ -32,10 +33,10 @@ public class ArithmeticViewHolder
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcdv jdField_a_of_type_Bcdv;
+  private bfej jdField_a_of_type_Bfej;
   private XMediaEditor jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor;
   private String jdField_a_of_type_JavaLangString;
-  private HashMap<bcdw, ArithmeticViewHolder.ArithmeticImageView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<bfek, ArithmeticViewHolder.ArithmeticImageView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List<ArithmeticViewHolder.ArithmeticImageView> jdField_a_of_type_JavaUtilList = new ArrayList(6);
   private LinearLayout b;
   private LinearLayout c;
@@ -46,10 +47,10 @@ public class ArithmeticViewHolder
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a("troopuin");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367243));
-    this.b = ((LinearLayout)paramView.findViewById(2131364788));
-    this.c = ((LinearLayout)paramView.findViewById(2131368131));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364806));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367536));
+    this.b = ((LinearLayout)paramView.findViewById(2131365016));
+    this.c = ((LinearLayout)paramView.findViewById(2131368457));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365036));
     int i = 0;
     while (i < 6)
     {
@@ -66,14 +67,14 @@ public class ArithmeticViewHolder
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bcdv != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyItemChanged(this.jdField_a_of_type_Bcdv.c);
+    if (this.jdField_a_of_type_Bfej != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyItemChanged(this.jdField_a_of_type_Bfej.c);
     }
   }
   
-  private void a(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, bcdw parambcdw)
+  private void a(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, bfek parambfek)
   {
-    switch (parambcdw.jdField_b_of_type_Int)
+    switch (parambfek.jdField_b_of_type_Int)
     {
     default: 
       return;
@@ -81,7 +82,7 @@ public class ArithmeticViewHolder
       paramArithmeticImageView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       paramArithmeticImageView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
       paramArithmeticImageView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-      paramArithmeticImageView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambcdw.jdField_a_of_type_Int, parambcdw.jdField_b_of_type_JavaLangString);
+      paramArithmeticImageView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambfek.jdField_a_of_type_Int, parambfek.jdField_b_of_type_JavaLangString);
       return;
     case 2: 
       paramArithmeticImageView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
@@ -92,7 +93,7 @@ public class ArithmeticViewHolder
     paramArithmeticImageView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  public void a(bcdv parambcdv, int paramInt)
+  public void a(bfej parambfej, int paramInt)
   {
     if (paramInt != 2)
     {
@@ -100,8 +101,8 @@ public class ArithmeticViewHolder
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Bcdv = parambcdv;
-    int i = parambcdv.c();
+    this.jdField_a_of_type_Bfej = parambfej;
+    int i = parambfej.c();
     HashMap localHashMap = new HashMap();
     if (i == 0)
     {
@@ -114,13 +115,13 @@ public class ArithmeticViewHolder
     i = 0;
     for (;;)
     {
-      bcdw localbcdw;
+      bfek localbfek;
       ArithmeticViewHolder.ArithmeticImageView localArithmeticImageView;
       if (i < 6)
       {
-        localbcdw = parambcdv.a(i);
+        localbfek = parambfej.a(i);
         localArithmeticImageView = (ArithmeticViewHolder.ArithmeticImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localbcdw != null) {}
+        if (localbfek != null) {}
       }
       else
       {
@@ -131,8 +132,8 @@ public class ArithmeticViewHolder
           paramInt += 1;
         }
       }
-      localArithmeticImageView.a(localbcdw, paramInt);
-      localHashMap.put(localbcdw, localArithmeticImageView);
+      localArithmeticImageView.a(localbfek, paramInt);
+      localHashMap.put(localbfek, localArithmeticImageView);
       i += 1;
     }
     this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
@@ -141,7 +142,7 @@ public class ArithmeticViewHolder
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bcdv.a();
+      this.jdField_a_of_type_Bfej.a();
       a(false);
       if (!QLog.isColorLevel()) {
         break;
@@ -154,11 +155,11 @@ public class ArithmeticViewHolder
   
   public void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_Bcdv.a().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Bfej.a().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bcdw)localIterator.next();
-      if ((((bcdw)localObject).jdField_b_of_type_Int == -1) || (((bcdw)localObject).jdField_b_of_type_Int == 0) || ((paramBoolean) && (((bcdw)localObject).jdField_b_of_type_Int == 2)))
+      Object localObject = (bfek)localIterator.next();
+      if ((((bfek)localObject).jdField_b_of_type_Int == -1) || (((bfek)localObject).jdField_b_of_type_Int == 0) || ((paramBoolean) && (((bfek)localObject).jdField_b_of_type_Int == 2)))
       {
         localObject = (ArithmeticViewHolder.ArithmeticImageView)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
         if (localObject != null) {
@@ -172,20 +173,22 @@ public class ArithmeticViewHolder
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131367243: 
-      bdes.a("Grp_edu", "Grp_oral", "Oral_Clk", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
-      ArithmeticCaptureTransferFragment.a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext(), this.jdField_a_of_type_Bcdv.a(1).toString(), this.jdField_a_of_type_Bcdv.c, this.jdField_a_of_type_JavaLangString);
-      return;
     }
-    bdes.a("Grp_edu", "Grp_oral", "Finish_Oral_Again", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
-    ArithmeticCaptureTransferFragment.a(paramView.getContext(), this.jdField_a_of_type_Bcdv.a(1).toString(), this.jdField_a_of_type_Bcdv.c, this.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bgjt.a("Grp_edu", "Grp_oral", "Oral_Clk", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+      ArithmeticCaptureTransferFragment.a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext(), this.jdField_a_of_type_Bfej.a(1).toString(), this.jdField_a_of_type_Bfej.c, this.jdField_a_of_type_JavaLangString);
+      continue;
+      bgjt.a("Grp_edu", "Grp_oral", "Finish_Oral_Again", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+      ArithmeticCaptureTransferFragment.a(paramView.getContext(), this.jdField_a_of_type_Bfej.a(1).toString(), this.jdField_a_of_type_Bfej.c, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder
  * JD-Core Version:    0.7.0.1
  */

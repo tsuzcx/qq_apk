@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awgf;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @awhs
+  @unique
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,40 +39,40 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(awgf paramawgf, String paramString)
+  public static ResourcePluginInfo find(EntityManager paramEntityManager, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramawgf != null)
+    if (paramEntityManager != null)
     {
       localObject1 = localObject2;
       if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
+        localObject1 = (ResourcePluginInfo)paramEntityManager.find(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
       }
     }
     return localObject1;
   }
   
-  public static List<ResourcePluginInfo> getAll(awgf paramawgf, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(EntityManager paramEntityManager, int paramInt, boolean paramBoolean)
   {
     List localList = null;
-    if (paramawgf != null)
+    if (paramEntityManager != null)
     {
       if (paramBoolean) {
-        localList = paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        localList = paramEntityManager.query(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
     }
     else {
       return localList;
     }
-    return paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return paramEntityManager.query(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  public static void persistOrReplace(awgf paramawgf, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(EntityManager paramEntityManager, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramawgf != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramEntityManager != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramEntityManager.find(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
       if (localResourcePluginInfo != null)
       {
         localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
@@ -96,23 +96,23 @@ public class ResourcePluginInfo
         localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
         localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
         localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramawgf.a(localResourcePluginInfo);
+        paramEntityManager.update(localResourcePluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramawgf.a(paramResourcePluginInfo);
+    paramEntityManager.persist(paramResourcePluginInfo);
   }
   
-  public static void remove(awgf paramawgf, String paramString)
+  public static void remove(EntityManager paramEntityManager, String paramString)
   {
-    if ((paramawgf != null) && (paramString != null))
+    if ((paramEntityManager != null) && (paramString != null))
     {
-      paramString = find(paramawgf, paramString);
+      paramString = find(paramEntityManager, paramString);
       if (paramString != null) {
-        paramawgf.b(paramString);
+        paramEntityManager.remove(paramString);
       }
     }
   }
@@ -134,12 +134,12 @@ public class ResourcePluginInfo
   
   public String toString()
   {
-    return this.strPkgName + "|" + this.strResName + "|" + this.strResURL + "|" + this.uiCurVer + "|" + this.sLanType + "|" + this.strGotoUrl + "|" + this.sResSubType + "|" + this.sPriority + "|" + this.strResDesc + "|" + this.cDefaultState + "|" + this.cCanChangeState + "|" + this.uiResId + "|" + this.cLocalState + "|" + this.flags;
+    return this.strPkgName + "|" + this.strResName + "|" + this.strResURL + "|" + this.uiCurVer + "|" + this.sLanType + "|" + this.strGotoUrl + "|" + this.sResSubType + "|" + this.sPriority + "|" + this.strResDesc + "|" + this.cDefaultState + "|" + this.cCanChangeState + "|" + this.uiResId + "|" + this.cLocalState + "|" + this.flags + "|" + this.isNew;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ResourcePluginInfo
  * JD-Core Version:    0.7.0.1
  */

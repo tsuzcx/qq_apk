@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import avxo;
+import ayhg;
 
 class ScanOcrActivity$6$4$1
   implements Runnable
@@ -9,12 +9,12 @@ class ScanOcrActivity$6$4$1
   
   public void run()
   {
-    ScanOcrActivity.a(this.a.jdField_a_of_type_Avxo.a, this.a.jdField_a_of_type_JavaLangString, false);
+    ScanOcrActivity.a(this.a.jdField_a_of_type_Ayhg.a, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4.1
  * JD-Core Version:    0.7.0.1
  */

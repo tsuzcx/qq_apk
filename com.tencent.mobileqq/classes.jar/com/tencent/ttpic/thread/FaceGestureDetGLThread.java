@@ -498,7 +498,7 @@ public class FaceGestureDetGLThread
     RetrieveDataManager.getInstance().clear();
   }
   
-  public SegmentDataPipe postFaceGestureDet(Frame paramFrame, double paramDouble, boolean paramBoolean1, int paramInt, StarParam paramStarParam, boolean paramBoolean2)
+  public SegmentDataPipe postFaceGestureDet(Frame paramFrame, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, int paramInt, StarParam paramStarParam, boolean paramBoolean3, boolean paramBoolean4)
   {
     AEProfiler.getInstance().start("PTFaceDetect-detect", true);
     if (this.mListener == null) {
@@ -579,19 +579,25 @@ public class FaceGestureDetGLThread
     AsyncTask.THREAD_POOL_EXECUTOR.execute(new FaceGestureDetGLThread.1(this, arrayOfByte, j, k, localCountDownLatch1));
     this.mFaceDetector.init();
     this.mFaceDetector.autoChangeFaceRefine(j, k, paramInt);
-    this.mFaceDetector.setNeedFaceKit(paramBoolean2);
+    this.mFaceDetector.setNeedFaceKit(paramBoolean3);
     this.mFaceDetector.setFaceKitVerticesArray(paramFrame.faceKitVerticesArray);
+    this.mFaceDetector.setFace3DVerticesArray(paramFrame.face3DVerticesArray);
+    this.mFaceDetector.setFace3DRotationArray(paramFrame.face3DRotationArray);
     this.mFaceDetector.setFeatureIndicesArray(paramFrame.featureIndicesArray);
     this.mFaceDetector.setFacePiont2DCenter(paramFrame.facePiont2DCenter);
+    if (paramBoolean2) {
+      this.mFaceDetector.reset();
+    }
     if (paramBoolean1)
     {
       this.mFaceDetector.doDectectTrackByRGBA(paramFrame.mData, j, k);
       l1 = this.mFaceDetector.getFaceTrackTime();
+      this.mFaceDetector.updateAllFaceExpression(paramBoolean4);
       l2 = System.currentTimeMillis();
       localCountDownLatch2 = new CountDownLatch(1);
       i = 0;
       if (this.mLastBrightnessTime > 0L) {
-        break label713;
+        break label767;
       }
       this.mLastBrightnessTime = (l2 - 2000L + 2000L);
       if (i == 0) {
@@ -603,6 +609,7 @@ public class FaceGestureDetGLThread
       paramFrame.allFaceAngles = this.mFaceDetector.getAllFaceAngles();
       paramFrame.allPointsVis = this.mFaceDetector.getAllPointsVis();
       paramFrame.mTriggeredExpressionType = this.mFaceDetector.getTriggeredExpression();
+      paramFrame.expressions = this.mFaceDetector.getExpressions();
       paramFrame.faceStatus = this.mFaceDetector.getFaceStatus3Ds();
       paramFrame.recordFaceInfo = this.mFaceDetector.getRecordFaceInfo();
       paramFrame.faceActionCounter = this.mFaceDetector.getFaceActionCounter();
@@ -638,13 +645,6 @@ public class FaceGestureDetGLThread
     }
   }
   
-  public void setGenderDetectable(boolean paramBoolean)
-  {
-    if (this.mFaceDetector != null) {
-      this.mFaceDetector.setDetectGender(paramBoolean);
-    }
-  }
-  
   public void setMaxFaceCount(int paramInt)
   {
     if (this.mFaceDetector != null) {
@@ -673,7 +673,7 @@ public class FaceGestureDetGLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.thread.FaceGestureDetGLThread
  * JD-Core Version:    0.7.0.1
  */

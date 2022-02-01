@@ -1,8 +1,30 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
 
-public abstract interface bajf
+public class bajf
+  implements Animator.AnimatorListener
 {
-  public abstract void a(List<String> paramList);
+  public bajf(AIOIceBreakShow paramAIOIceBreakShow) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AIOIceBreakShow.a(this.a, false);
+    AIOIceBreakShow.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AIOIceBreakShow.a(this.a, false);
+    AIOIceBreakShow.a(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AIOIceBreakShow.a(this.a, true);
+  }
 }
 
 

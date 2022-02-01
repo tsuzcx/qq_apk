@@ -1,111 +1,131 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.2;
+import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.3;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
+import java.security.InvalidParameterException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class nvi
-  extends beej
-  implements befh
 {
-  private String a;
+  public int a;
+  protected long a;
+  public Handler a;
+  private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
+  public WeakReference<xpl> a;
+  public Timer a;
+  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public nvi(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
+  public nvi(SplitedProgressBar paramSplitedProgressBar)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
-    this.a = paramString;
+    this.jdField_a_of_type_AndroidOsHandler = new nvj(this, Looper.getMainLooper());
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
   }
   
-  public void a()
+  private void d()
   {
-    super.doOnResume();
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onResume");
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  protected void a()
+  {
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+  }
+  
+  protected void a(int paramInt, long paramLong)
+  {
+    int j = 100;
+    int i = 0;
+    if (this.b > 0L)
+    {
+      int k = (int)paramLong * 100 / (int)this.b;
+      i = k;
+      if (k > 100) {
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ProgressControler", 2, "setProgressNow index < 0 || index >= mProgressBar.mTotalCount, index = " + paramInt + ", mTotalCount = " + this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b);
+        }
+        if (this.jdField_a_of_type_JavaUtilTimer != null) {
+          this.jdField_a_of_type_JavaUtilTimer.cancel();
+        }
+        if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+          this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+        }
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(paramInt, i);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2, xpl paramxpl)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxpl);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    d();
   }
   
   public void b()
   {
-    super.doOnPause();
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onPause");
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopNewPageWebViewBuilder", 2, "[bindJavaScript]");
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new sxe());
-    paramArrayList.add(new atid());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new athd());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bdzc());
-    paramArrayList.add(new QWalletMixJsPlugin());
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
   }
   
   public void c()
   {
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onDestroy");
-    nvk.a().a(this.mWebview, this.a);
-    super.doOnDestroy();
+    this.jdField_a_of_type_Boolean = true;
+    b();
   }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvi
  * JD-Core Version:    0.7.0.1
  */

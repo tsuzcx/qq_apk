@@ -1,22 +1,43 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-class njf
-  implements View.OnClickListener
+public class njf
+  implements INetInfoHandler
 {
-  njf(nin paramnin, Dialog paramDialog) {}
+  protected WeakReference<niz> a;
   
-  public void onClick(View paramView)
+  public njf(niz paramniz)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a = new WeakReference(paramniz);
+  }
+  
+  public void onNetMobile2None()
+  {
+    niz localniz = (niz)this.a.get();
+    if (localniz != null) {
+      localniz.a = 2;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    niz localniz = (niz)this.a.get();
+    if (localniz != null) {
+      localniz.a = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-public class yqh
+public abstract interface yqh
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void Q_();
   
-  public yqh(yqg paramyqg) {}
+  public abstract void a(zhq paramzhq);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqh
  * JD-Core Version:    0.7.0.1
  */

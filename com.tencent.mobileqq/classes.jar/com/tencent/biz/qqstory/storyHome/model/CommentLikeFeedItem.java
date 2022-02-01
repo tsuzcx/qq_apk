@@ -6,11 +6,11 @@ import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import uxd;
-import uxe;
-import wqn;
+import wqp;
+import wqq;
+import yjy;
 
-public abstract class CommentLikeFeedItem<T extends wqn, E extends uxe>
+public abstract class CommentLikeFeedItem<T extends yjy, E extends wqq>
   extends FeedItem<T, E>
 {
   public static final int COMMENT_LIKE_TYPE_FANS = 1;
@@ -44,18 +44,18 @@ public abstract class CommentLikeFeedItem<T extends wqn, E extends uxe>
     return 0;
   }
   
-  public void convertFromFeedFeature(uxd paramuxd)
+  public void convertFromFeedFeature(wqp paramwqp)
   {
     int j = 1;
-    this.feedId = paramuxd.jdField_a_of_type_JavaLangString;
-    this.mLikeCount = paramuxd.jdField_a_of_type_Int;
-    this.mCommentCount = paramuxd.jdField_b_of_type_Int;
-    this.mViewTotalTime = paramuxd.c;
-    if (paramuxd.jdField_a_of_type_Boolean)
+    this.feedId = paramwqp.jdField_a_of_type_JavaLangString;
+    this.mLikeCount = paramwqp.jdField_a_of_type_Int;
+    this.mCommentCount = paramwqp.jdField_b_of_type_Int;
+    this.mViewTotalTime = paramwqp.c;
+    if (paramwqp.jdField_a_of_type_Boolean)
     {
       i = 1;
       this.mDenyComment = i;
-      if (!paramuxd.jdField_b_of_type_Boolean) {
+      if (!paramwqp.jdField_b_of_type_Boolean) {
         break label69;
       }
     }
@@ -165,7 +165,7 @@ public abstract class CommentLikeFeedItem<T extends wqn, E extends uxe>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,93 @@
-import android.os.Handler.Callback;
-import android.os.Message;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.widget.AbsListView;
 
 public class ynd
-  implements Handler.Callback
+  implements bkhe
 {
-  public ynd(VideoPlayerView paramVideoPlayerView) {}
+  public ynd(MystoryListView paramMystoryListView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
+    int j;
+    int k;
+    int m;
+    int i;
+    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
     {
+      if (-MystoryListView.b(this.a) > zlx.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
+        this.a.jdField_a_of_type_Ync.b(true);
+      }
+      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
+        return;
+      }
+      View localView = paramAbsListView.getChildAt(0);
+      j = localView.getTop();
+      k = localView.getBottom();
+      m = localView.getHeight();
+      if (paramInt1 <= MystoryListView.c(this.a)) {
+        break label257;
+      }
+      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
+      i = j - MystoryListView.d(this.a);
     }
-    label258:
-    do
+    for (;;)
     {
-      do
+      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
+      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
+      MystoryListView.b(this.a, j);
+      MystoryListView.c(this.a, k);
+      MystoryListView.d(this.a, m);
+      MystoryListView.a(this.a, paramInt1);
+      if (MystoryListView.a(this.a) == null) {
+        break;
+      }
+      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      return;
+      label257:
+      if (paramInt1 < MystoryListView.c(this.a))
       {
-        return false;
-        if (VideoPlayerView.g(this.a)) {}
-        for (int i = paramMessage.arg2 - paramMessage.arg1;; i = paramMessage.arg1)
-        {
-          int j = i / 1000 / 60;
-          i = i / 1000 % 60;
-          if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a).a() > VideoPlayerView.a(this.a).b() / 2L) && (!VideoPlayerView.h(this.a))) {
-            VideoPlayerView.f(this.a);
-          }
-          if (VideoPlayerView.i(this.a)) {
-            break label258;
-          }
-          if (this.a.b != null) {
-            this.a.b.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
-          }
-          if ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue())) {
-            break;
-          }
-          VideoPlayerView.a(this.a).a(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }), paramMessage.arg2, paramMessage.arg1);
-          return false;
-        }
-      } while ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue()));
-      VideoPlayerView.a(this.a).onVideoProgressUpdate(paramMessage.arg1);
-      return false;
-      VideoPlayerView.g(this.a);
-      return false;
-    } while (VideoPlayerView.d(this.a) == null);
-    VideoPlayerView.d(this.a).setVisibility(8);
-    return false;
+        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
+        i = k - MystoryListView.f(this.a);
+      }
+      else
+      {
+        i = k - MystoryListView.f(this.a);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (MystoryListView.a(this.a) != null) {
+        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      MystoryListView.a(this.a, false);
+      continue;
+      View localView = paramAbsListView.getChildAt(0);
+      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
+      if (localView != null)
+      {
+        MystoryListView.b(this.a, localView.getTop());
+        MystoryListView.c(this.a, localView.getBottom());
+        MystoryListView.d(this.a, localView.getHeight());
+      }
+      MystoryListView.a(this.a, true);
+      MystoryListView.e(this.a, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ynd
  * JD-Core Version:    0.7.0.1
  */

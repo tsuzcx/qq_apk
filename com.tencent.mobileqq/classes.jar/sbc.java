@@ -1,82 +1,102 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class sbc
-  implements sai, sak
+  implements ruu, ser, ses
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private pfq jdField_a_of_type_Pfq = new sbd(this);
+  private sbc(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public int a(BaseData paramBaseData)
+  public List<ruh> a(List<VideoInfo> paramList)
   {
-    return 16;
-  }
-  
-  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramBaseData.b;
-    }
-    paramViewGroup = (ProteusBookData)paramBaseData;
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup.a);
-    paramViewGroup = localContainer;
-    if (localContainer == null) {
-      paramViewGroup = new View(paramContext);
-    }
-    return new sbe(paramViewGroup, paramBaseData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.s == 18;
-  }
-  
-  public void b()
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = false;
-      pfo localpfo = owy.a().a();
-      if (localpfo != null) {
-        localpfo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Pfq, false);
+      VideoInfo localVideoInfo = (VideoInfo)paramList.next();
+      localArrayList.add(a(localVideoInfo));
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).b(localVideoInfo);
       }
     }
+    return localArrayList;
   }
   
-  public void c() {}
-  
-  public void d()
+  public sbd a(VideoInfo paramVideoInfo)
   {
-    pfo localpfo = owy.a().a();
-    if (localpfo != null) {
-      localpfo.a(this.jdField_a_of_type_Pfq);
+    sbd localsbd = new sbd(null);
+    sbd.a(localsbd, paramVideoInfo);
+    localsbd.jdField_b_of_type_Long = 409409L;
+    localsbd.jdField_a_of_type_Int = 0;
+    localsbd.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
+    localsbd.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+    localsbd.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
+    localsbd.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
+    return localsbd;
+  }
+  
+  public void a()
+  {
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rur.g(false);
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sek.a(6);
+  }
+  
+  public void a(ruh paramruh)
+  {
+    if ((paramruh instanceof sbd))
+    {
+      paramruh = sbd.a((sbd)paramruh);
+      if (paramruh != VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sar.a) {
+        break label64;
+      }
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sar, false);
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).d();
+      return;
+      label64:
+      int i = VideoFeedsRecommendFragment.a(this.a).c;
+      VideoFeedsRecommendFragment.a(this.a).remove(i);
+      VideoFeedsRecommendFragment.a(this.a).add(i, paramruh);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
     }
   }
   
-  public void e() {}
+  public void a(ruh paramruh1, ruh paramruh2, int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = sbd.a((sbd)VideoFeedsRecommendFragment.a(this.a).a());
+    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sar.a;
+    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sar.a != localObject)
+    {
+      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((rxy)localObject).b += 1;
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((rxy)localObject).c += 1;
+      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
+    }
+    if (paramBoolean) {
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sar, false);
+    }
+    oat.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new skc(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
+  }
+  
+  public void j()
+  {
+    VideoFeedsRecommendFragment.a(this.a).b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbc
  * JD-Core Version:    0.7.0.1
  */

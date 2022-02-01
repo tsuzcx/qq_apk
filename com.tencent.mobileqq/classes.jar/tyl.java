@@ -1,45 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class tyl
-  extends RecyclerView.ViewHolder
+class tyl
+  implements bhva
 {
-  private int jdField_a_of_type_Int;
-  private final QCircleContentOperationView jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-  public RecyclerViewCompat a;
-  public txj a;
+  tyl(tyj paramtyj) {}
   
-  public tyl(tyj paramtyj, View paramView)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    super(paramView);
-    paramtyj = (FrameLayout)paramView;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = ((RecyclerViewCompat)paramtyj.getChildAt(0));
-    this.jdField_a_of_type_Txj = ((txj)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getAdapter());
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = ((QCircleContentOperationView)paramtyj.getChildAt(1));
-    this.jdField_a_of_type_Txj.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView);
-  }
-  
-  public RecyclerViewCompat a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-  }
-  
-  public txj a()
-  {
-    return this.jdField_a_of_type_Txj;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyl
  * JD-Core Version:    0.7.0.1
  */

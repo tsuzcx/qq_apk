@@ -1,17 +1,10 @@
-import java.util.HashMap;
-
-public class ybj
+public abstract interface ybj
 {
-  public HashMap<String, String> a = new HashMap();
-  public HashMap<String, String> b = new HashMap();
-  public HashMap<String, String> c = new HashMap();
-  public HashMap<String, String> d = new HashMap();
-  public HashMap<String, String> e = new HashMap();
-  public HashMap<String, String> f = new HashMap();
+  public abstract void a(ybk paramybk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybj
  * JD-Core Version:    0.7.0.1
  */

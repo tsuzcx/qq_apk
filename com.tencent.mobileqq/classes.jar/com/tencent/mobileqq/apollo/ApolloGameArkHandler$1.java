@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import aknr;
+import amgx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQHeadDownloadHandler;
+import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class ApolloGameArkHandler$1
   implements Runnable
 {
-  public ApolloGameArkHandler$1(aknr paramaknr, String paramString) {}
+  public ApolloGameArkHandler$1(amgx paramamgx, String paramString) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class ApolloGameArkHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloGameArkHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,36 @@
-import android.view.View;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class yan
-  extends yaj
+public class yan
+  extends ayet
 {
-  yan(yam paramyam) {}
+  public yan(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a()
+  protected void a(Object paramObject)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    yoy localyoy;
+    do
     {
-      this.a.jdField_a_of_type_Yas.a();
       return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
-    {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_Yas.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      }
+      paramObject = ((njg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + njg.a(paramObject));
+      }
+      localyoy = (yoy)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localyoy == null);
+    localyoy.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yan
  * JD-Core Version:    0.7.0.1
  */

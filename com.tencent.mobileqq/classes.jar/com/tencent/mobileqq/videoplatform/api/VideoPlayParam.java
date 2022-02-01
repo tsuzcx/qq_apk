@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.videoplatform.api;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class VideoPlayParam
 {
   public VideoPlayerCallback mCallback;
+  public ArrayList<String> mCookies;
   public String mFileID;
   public long mFileSize;
   public boolean mIsLocal;
@@ -18,6 +20,7 @@ public class VideoPlayParam
   public String mSceneName;
   public String[] mUrls;
   public long mVideoFileTimeMs;
+  public int mVideoFormat = 101;
   public String mVideoPath;
   
   public boolean isSameVideo(Object paramObject)
@@ -39,7 +42,7 @@ public class VideoPlayParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.api.VideoPlayParam
  * JD-Core Version:    0.7.0.1
  */

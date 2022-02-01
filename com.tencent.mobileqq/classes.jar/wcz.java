@@ -1,31 +1,56 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class wcz
-  extends nac
+public class wcz
 {
-  wcz(wcv paramwcv, boolean paramBoolean) {}
+  private long jdField_a_of_type_Long = -1L;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  public String b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public wcz()
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(5, bool);
-        this.a.a(0, this.a.a.getString(2131721096));
-        return;
-      }
-    }
-    ((ulu)this.a.a.app.getManager(181)).c(this.b);
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcz
  * JD-Core Version:    0.7.0.1
  */

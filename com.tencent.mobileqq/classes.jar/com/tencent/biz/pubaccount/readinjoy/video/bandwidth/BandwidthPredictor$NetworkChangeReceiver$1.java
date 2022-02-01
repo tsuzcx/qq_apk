@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import rlt;
-import rlw;
+import sgu;
+import sgx;
 
 public class BandwidthPredictor$NetworkChangeReceiver$1
   implements Runnable
 {
-  public BandwidthPredictor$NetworkChangeReceiver$1(rlw paramrlw) {}
+  public BandwidthPredictor$NetworkChangeReceiver$1(sgx paramsgx) {}
   
   public void run()
   {
-    rlt.a(this.a.a);
+    sgu.a(this.a.a);
   }
 }
 

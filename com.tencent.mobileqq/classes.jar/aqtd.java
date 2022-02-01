@@ -1,10 +1,15 @@
-abstract class aqtd
+public class aqtd
 {
-  aqtd(aqsf paramaqsf) {}
+  public String a = "";
+  public String b = "";
   
-  abstract void a(String paramString, int paramInt);
+  public aqtd() {}
   
-  abstract void a(String paramString, int paramInt, aqtc paramaqtc);
+  public aqtd(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

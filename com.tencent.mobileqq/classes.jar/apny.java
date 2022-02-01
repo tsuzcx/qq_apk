@@ -1,18 +1,39 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class apny
-  implements View.OnClickListener
+public class apny
+  implements INetInfoHandler
 {
-  apny(apnw paramapnw, Dialog paramDialog) {}
+  public apny(ArkAppCenter paramArkAppCenter) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if ((!((Activity)this.jdField_a_of_type_Apnw.a).isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    ArkAppCenter.a(this.a, 1, 0);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 1, 2);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 2, 1);
+  }
+  
+  public void onNetWifi2None()
+  {
+    ArkAppCenter.a(this.a, 2, 0);
   }
 }
 

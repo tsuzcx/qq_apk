@@ -1,14 +1,22 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-public class auuq
-  implements BusinessObserver
+public abstract interface auuq
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auuq
  * JD-Core Version:    0.7.0.1
  */

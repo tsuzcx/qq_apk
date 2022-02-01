@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.teamwork;
 
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PadInfo
-  extends awge
+  extends Entity
 {
   public static final int TYPE_DOC = 1;
   public static final int TYPE_FORM = 3;
@@ -37,10 +37,10 @@ public class PadInfo
   public String lastViewerNick;
   public long lastViewerUin;
   public long lastshardTime;
-  @awhp
+  @notColumn
   private List<TimDocSSOMsg.UinRightInfo> mUins = new ArrayList();
   public String padId;
-  @awhs
+  @unique
   public String pad_url;
   public boolean pinInAllList;
   public boolean pinedFlag;
@@ -110,7 +110,7 @@ public class PadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.PadInfo
  * JD-Core Version:    0.7.0.1
  */

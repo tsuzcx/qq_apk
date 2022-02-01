@@ -1,78 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class artm
+class artm
+  implements TVK_SDKMgr.InstallListener
 {
-  private static artm a;
+  artm(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public static artm a()
+  public void onInstallProgress(float paramFloat)
   {
-    try
+    int i = (int)Math.floor(100.0F * paramFloat);
+    if (i > bhgs.a)
     {
-      if (a == null) {
-        a = new artm();
-      }
-      artm localartm = a;
-      return localartm;
-    }
-    finally {}
-  }
-  
-  public artn a(String paramString)
-  {
-    Object localObject = araj.a().a();
-    if (localObject == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    for (;;)
-    {
-      return null;
-      if (((QQAppInterface)localObject).a() != null) {}
-      for (paramString = ((QQAppInterface)localObject).a().a(paramString); paramString != null; paramString = null)
-      {
-        localObject = new artn();
-        ((artn)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
-        ((artn)localObject).jdField_a_of_type_Long = paramString.mFileSize;
-        ((artn)localObject).c = paramString.mFilePath;
-        ((artn)localObject).b = paramString.mTempPath;
-        return localObject;
-        QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getUDLBPTransProxy=null.");
-      }
+      bhgs.a = i;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("status", 1);
+      localBundle.putFloat("progress", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
     }
   }
   
-  public void a(String paramString)
+  public void onInstalledFailed(int paramInt)
   {
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
-    QQAppInterface localQQAppInterface = araj.a().a();
-    if (localQQAppInterface == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    while (localQQAppInterface.a() == null) {
-      return;
-    }
-    localQQAppInterface.a().a(paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 2);
+    localBundle.putInt("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
   
-  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  public void onInstalledSuccessed()
   {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.mUrl = paramString1;
-    localUniformDownloadBPTransEntity.mFileName = paramString2;
-    localUniformDownloadBPTransEntity.mFileSize = paramLong;
-    localUniformDownloadBPTransEntity.mFilePath = paramString4;
-    localUniformDownloadBPTransEntity.mTempPath = paramString3;
-    QQAppInterface localQQAppInterface = araj.a().a();
-    if (localQQAppInterface == null)
-    {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
-      return;
-    }
-    if (localQQAppInterface.a() != null) {
-      localQQAppInterface.a().a(localUniformDownloadBPTransEntity);
-    }
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 3);
+    localBundle.putBoolean("result", true);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pre
-  implements ViewBase.IBuilder
+  implements prw
 {
-  public ViewBase build(VafContext paramVafContext)
+  public pre(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    return new prd(paramVafContext);
+    ReadInJoySelfFragment.j(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pre
  * JD-Core Version:    0.7.0.1
  */

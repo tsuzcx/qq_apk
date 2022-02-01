@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="userUin,friendUin")
 public class UinPair
-  extends awge
+  extends Entity
 {
   public String friendUin;
   public String userUin;
@@ -57,7 +57,7 @@ public class UinPair
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.UinPair
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bibv;
-import bibw;
+import bkpg;
+import bkph;
 
 public class ThemeImageView
   extends ImageView
-  implements bibw
+  implements bkph
 {
-  public bibv a;
+  public bkpg a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bibv();
+        this.a = new bkpg();
       }
       this.a.a(true);
     }
@@ -75,7 +75,7 @@ public class ThemeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ThemeImageView
  * JD-Core Version:    0.7.0.1
  */

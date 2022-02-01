@@ -1,62 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bahd
-  extends bagz
+  extends anxg
 {
-  private aqtp jdField_a_of_type_Aqtp = new bahe(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  public bahd(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public bahd(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    while (TextUtils.isEmpty(paramJSONObject.optString("discussuin"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    if (paramBoolean)
     {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label250;
-      }
-      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForFile))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arrr.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin))) {
-        break label250;
-      }
-      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_Aqtp);
-    }
-    label250:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
+      if (!this.a.isAdded())
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bagw.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
+        }
+        return;
       }
-      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
       return;
     }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
   }
 }
 

@@ -1,22 +1,29 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class tsi
-  implements Observer<ubz<List<QQCircleFeedBase.StTabInfo>>>
+  implements tsq
 {
-  public tsi(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  public tsi(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void a(@Nullable ubz<List<QQCircleFeedBase.StTabInfo>> paramubz)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    QCircleFolderFragmentsPart.a(this.a, paramubz);
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.17.1(this, paramString), 8, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsi
  * JD-Core Version:    0.7.0.1
  */

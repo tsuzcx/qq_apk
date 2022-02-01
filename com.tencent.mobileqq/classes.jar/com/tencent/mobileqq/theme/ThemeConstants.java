@@ -19,7 +19,7 @@ public class ThemeConstants
   public static final int FEETYPE_SVIP = 5;
   public static final int FEETYPE_VIP = 4;
   public static final String SOUND_THEME_TYPE = "1";
-  public static final String StartDownloadResult = "StartDownloadResult";
+  public static final String START_DOWNLOAD_RESULT = "StartDownloadResult";
   public static final String THEME_DIY_BG_FEETYPE_SUFFIX = "_feetype";
   public static final String THEME_DIY_BG_FROM_SUFFIX = "_from";
   public static final String THEME_DIY_BG_ID_SUFFIX = "_id";
@@ -35,7 +35,7 @@ public class ThemeConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeConstants
  * JD-Core Version:    0.7.0.1
  */

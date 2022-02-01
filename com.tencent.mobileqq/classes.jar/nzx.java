@@ -1,28 +1,40 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzx
-  implements bhuk
+  extends AsyncTask<String, Integer, String>
 {
-  public nzx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void OnClick(View paramView, int paramInt)
+  protected String a(String... paramVarArgs)
   {
-    switch (paramInt)
-    {
+    if (super.isCancelled()) {
+      return null;
     }
-    for (;;)
-    {
-      ReadInJoySettingActivity.b(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.e(this.a, false);
-      ReadInJoySettingActivity.d(this.a, ReadInJoySettingActivity.d(this.a));
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
+  
+  protected void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { nmj.a(str), nmj.a(this.jdField_a_of_type_JavaLangString) });
+  }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzx
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atfa;
-import bapt;
-import bapu;
-import bibv;
+import avlq;
+import bdrn;
+import bdro;
+import bkpg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SingTogetherSession
-  extends bapt
+  extends bdrn
   implements Parcelable
 {
-  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new atfa();
+  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new avlq();
   public int a;
   public long a;
   public String a;
@@ -55,7 +55,7 @@ public class SingTogetherSession
       {
         paramQQAppInterface = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
         if (!TextUtils.isEmpty(paramQQAppInterface)) {
-          str = bapu.a(16, paramQQAppInterface);
+          str = bdro.a(16, paramQQAppInterface);
         }
       }
     }
@@ -71,7 +71,7 @@ public class SingTogetherSession
         {
           paramQQAppInterface = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
           if (!TextUtils.isEmpty(paramQQAppInterface)) {
-            str = bapu.a(16, paramQQAppInterface);
+            str = bdro.a(16, paramQQAppInterface);
           } else {
             str = "群友";
           }
@@ -86,7 +86,7 @@ public class SingTogetherSession
   
   public int a()
   {
-    return bibv.a;
+    return bkpg.a;
   }
   
   public String a()
@@ -148,7 +148,7 @@ public class SingTogetherSession
   
   public int b()
   {
-    return 2130838173;
+    return 2130838286;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -208,7 +208,7 @@ public class SingTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession
  * JD-Core Version:    0.7.0.1
  */

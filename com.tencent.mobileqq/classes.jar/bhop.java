@@ -1,51 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
 
 public class bhop
-  implements bhnr
+  extends bhoi
 {
-  public bhop(QSecFramework paramQSecFramework) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  private atzf jdField_a_of_type_Atzf;
   
-  public void a()
+  public bhop(AppInterface paramAppInterface, Activity paramActivity, bhnj parambhnj, Intent paramIntent, TouchWebView paramTouchWebView)
   {
-    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object[] arrayOfObject = new Object[1];
-        if ((QSecFramework.a(1L, 33751040L, bhmt.a(), 0L, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
-        {
-          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
-          bhmt.a = QSecFramework.a(this.a);
-          QSecFramework.a(this.a, true);
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), bhmt.a(QSecFramework.a(this.a)) }));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    super(paramAppInterface, parambhnj, paramIntent, paramTouchWebView);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    b();
+  }
+  
+  public bhop(AppInterface paramAppInterface, Activity paramActivity, bhnj parambhnj, Intent paramIntent, boolean paramBoolean)
+  {
+    super(paramAppInterface, parambhnj, paramIntent, paramActivity, paramBoolean);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    b();
+  }
+  
+  protected boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.isFinishing());
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QSecFramework", 2, "Something wrong when init native.");
-    }
-    bhmr.a(1, 2);
+    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromArkAppDownload", false);
+    this.jdField_a_of_type_Atzf = new atzf(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    this.jdField_a_of_type_Atzf.a(bool);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDownloadListener(this.jdField_a_of_type_Atzf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhop
  * JD-Core Version:    0.7.0.1
  */

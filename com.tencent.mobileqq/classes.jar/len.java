@@ -1,78 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.app.InviteMemberObserverWithoutCache.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class len
+  implements Observer
 {
-  public static String a()
-  {
-    return bdzf.a(alof.aX + "qav" + File.separator);
-  }
+  Handler a = null;
   
-  public static String b()
+  private void a(Object paramObject)
   {
-    return bdzf.a(alof.aX + "ptv_template" + File.separator);
-  }
-  
-  public static String c()
-  {
-    return bdzf.a(alof.aX + "new_ptv_template" + File.separator);
-  }
-  
-  public static String d()
-  {
-    return c() + "new_ptv_template_usable" + File.separator;
-  }
-  
-  public static String e()
-  {
-    return a() + "effect";
-  }
-  
-  public static String f()
-  {
-    return bdzf.a(alof.aX + "funcall" + File.separator);
-  }
-  
-  public static String g()
-  {
-    if (bdep.a()) {}
-    for (String str1 = bdzf.a(alof.aX);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
-    {
-      String str2 = str1;
-      if (str1 != null)
-      {
-        str2 = str1;
-        if (!str1.endsWith(File.separator)) {
-          str2 = str1 + File.separator;
-        }
-      }
-      return str2 + "pddata/prd/" + "av_redpacket" + File.separator;
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
     }
+    if (paramObject.length < 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
+      }
+      return;
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
   }
   
-  public static String h()
-  {
-    return a() + "beauty" + File.separator;
-  }
+  protected void a(long paramLong1, long paramLong2, ArrayList<lnh> paramArrayList) {}
   
-  public static String i()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return bdzf.a(alof.aX + "av_image_data" + File.separator);
-  }
-  
-  public static String j()
-  {
-    return bdzf.a(alof.aX + "av_report_record_dir");
-  }
-  
-  public static String k()
-  {
-    return BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.getContext()) + "/tencent/msflogs/com/tencent/mobileqq/";
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new InviteMemberObserverWithoutCache.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     len
  * JD-Core Version:    0.7.0.1
  */

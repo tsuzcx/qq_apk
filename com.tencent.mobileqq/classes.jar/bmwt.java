@@ -1,93 +1,171 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteFullException;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmwt
-  implements URLDrawableDownListener
+  extends SQLiteOpenHelper
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  private SQLiteDatabase a;
+  private SQLiteDatabase b;
   
-  public bmwt(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public bmwt(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
+    super(paramContext, "WADLPROVIDER.db", null, 28);
   }
   
-  private boolean a(ImageView paramImageView)
+  public int a(ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    paramImageView = (String)paramImageView.getTag(2131377450);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    wxe.b("InformationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    try
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
+      int j = this.a.update("TASKS", paramContentValues, paramString, paramArrayOfString);
+      i = j;
+      if (j <= 0)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("WadlProviderDBHelper", 2, "execUpdateSQL error selection=" + paramString);
+          i = j;
+        }
+      }
     }
-    wxe.b("InformationFaceAdapter", "onLoadCanceled error.");
+    catch (SQLiteFullException paramContentValues)
+    {
+      for (;;)
+      {
+        paramContentValues.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("WadlProviderDBHelper", 2, "execUpdateSQL exception ", paramContentValues);
+        }
+        int i = -1;
+      }
+    }
+    finally {}
+    return i;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int a(String paramString, String[] paramArrayOfString)
   {
-    wxe.b("InformationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    try
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlProviderDBHelper", 2, "execDelSQL selection=" + paramString);
+      }
+      int i = this.a.delete("TASKS", paramString, paramArrayOfString);
+      return i;
     }
-    wxe.b("InformationFaceAdapter", "onLoadFialed error.");
+    finally {}
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  /* Error */
+  public long a(ContentValues paramContentValues)
   {
-    wxe.b("InformationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
-    }
-    wxe.b("InformationFaceAdapter", "onLoadProgressed error.");
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +28 -> 33
+    //   8: ldc 36
+    //   10: iconst_2
+    //   11: new 38	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 78
+    //   20: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: aload_1
+    //   24: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: aload_0
+    //   34: getfield 20	bmwt:a	Landroid/database/sqlite/SQLiteDatabase;
+    //   37: ldc 22
+    //   39: aconst_null
+    //   40: aload_1
+    //   41: invokevirtual 85	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   44: lstore_2
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: lload_2
+    //   48: lreturn
+    //   49: astore_1
+    //   50: aload_1
+    //   51: invokevirtual 86	java/lang/Exception:printStackTrace	()V
+    //   54: ldc2_w 87
+    //   57: lstore_2
+    //   58: goto -13 -> 45
+    //   61: astore_1
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload_1
+    //   65: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	66	0	this	bmwt
+    //   0	66	1	paramContentValues	ContentValues
+    //   44	14	2	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   33	45	49	java/lang/Exception
+    //   2	33	61	finally
+    //   33	45	61	finally
+    //   50	54	61	finally
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public Cursor a(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    wxe.b("InformationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    try
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377419, Boolean.valueOf(true));
-      return;
+      paramArrayOfString1 = this.b.query("TASKS", paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
+      return paramArrayOfString1;
     }
-    wxe.b("InformationFaceAdapter", "onLoadSuccessed error.");
+    finally
+    {
+      paramArrayOfString1 = finally;
+      throw paramArrayOfString1;
+    }
+  }
+  
+  public void a(SQLiteDatabase paramSQLiteDatabase1, SQLiteDatabase paramSQLiteDatabase2)
+  {
+    this.b = paramSQLiteDatabase1;
+    this.a = paramSQLiteDatabase2;
+    paramSQLiteDatabase1 = new ContentValues();
+    paramSQLiteDatabase1.put("status", Integer.valueOf(5));
+    paramSQLiteDatabase2.update("TASKS", paramSQLiteDatabase1, "status<?", new String[] { "5" });
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProviderDBHelper", 2, "onCreate sql=" + "CREATE TABLE TASKS (appId TEXT NOT NULL, apkUrl TEXT NOT NULL, packageName TEXT, versionCode INTEGER, totalSize INTEGER, downloadSize INTEGER, status INTEGER ,apkChannel TEXT, PRIMARY KEY(appId))");
+    }
+    paramSQLiteDatabase.execSQL("CREATE TABLE TASKS (appId TEXT NOT NULL, apkUrl TEXT NOT NULL, packageName TEXT, versionCode INTEGER, totalSize INTEGER, downloadSize INTEGER, status INTEGER ,apkChannel TEXT, PRIMARY KEY(appId))");
+  }
+  
+  public void onOpen(SQLiteDatabase paramSQLiteDatabase)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProviderDBHelper", 2, "onOpen db=" + paramSQLiteDatabase);
+    }
+    super.onOpen(paramSQLiteDatabase);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProviderDBHelper", 2, "onUpgrade oldVersion=" + paramInt1 + ",newVersion=" + paramInt2);
+    }
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS TASKS");
+    onCreate(paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmwt
  * JD-Core Version:    0.7.0.1
  */

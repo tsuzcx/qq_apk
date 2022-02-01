@@ -5,8 +5,8 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
@@ -309,9 +309,9 @@ public class GameJsPluginEngine
     //   247: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   250: pop
     //   251: aload_1
-    //   252: new 262	com/tencent/mobileqq/minigame/jsapi/plugins/OpenDataPlugin
+    //   252: new 262	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OpenDataPlugin
     //   255: dup
-    //   256: invokespecial 263	com/tencent/mobileqq/minigame/jsapi/plugins/OpenDataPlugin:<init>	()V
+    //   256: invokespecial 263	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OpenDataPlugin:<init>	()V
     //   259: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   262: pop
     //   263: aload_1
@@ -440,27 +440,45 @@ public class GameJsPluginEngine
     //   508: invokespecial 326	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/InterstitialAdPlugin:<init>	()V
     //   511: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   514: pop
-    //   515: aload_0
-    //   516: aload_1
-    //   517: invokevirtual 330	com/tencent/mobileqq/minigame/jsapi/GameJsPluginEngine:registerPlugins	(Ljava/util/ArrayList;)V
-    //   520: goto -500 -> 20
-    //   523: astore_1
-    //   524: aload_0
-    //   525: monitorexit
-    //   526: aload_1
-    //   527: athrow
+    //   515: aload_1
+    //   516: new 328	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BlockAdPlugin
+    //   519: dup
+    //   520: invokespecial 329	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BlockAdPlugin:<init>	()V
+    //   523: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   526: pop
+    //   527: aload_1
+    //   528: new 331	com/tencent/mobileqq/minigame/jsapi/plugins/CustomButtonPlugin
+    //   531: dup
+    //   532: invokespecial 332	com/tencent/mobileqq/minigame/jsapi/plugins/CustomButtonPlugin:<init>	()V
+    //   535: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   538: pop
+    //   539: aload_1
+    //   540: new 334	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/AdJsPlugin
+    //   543: dup
+    //   544: invokespecial 335	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/AdJsPlugin:<init>	()V
+    //   547: invokevirtual 212	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   550: pop
+    //   551: aload_0
+    //   552: aload_1
+    //   553: invokevirtual 339	com/tencent/mobileqq/minigame/jsapi/GameJsPluginEngine:registerPlugins	(Ljava/util/ArrayList;)V
+    //   556: goto -536 -> 20
+    //   559: astore_1
+    //   560: aload_0
+    //   561: monitorexit
+    //   562: aload_1
+    //   563: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	528	0	this	GameJsPluginEngine
-    //   46	471	1	localArrayList	java.util.ArrayList
-    //   523	4	1	localObject	Object
+    //   0	564	0	this	GameJsPluginEngine
+    //   46	507	1	localArrayList	java.util.ArrayList
+    //   559	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	20	523	finally
-    //   23	520	523	finally
+    //   2	20	559	finally
+    //   23	556	559	finally
   }
   
-  public void onCreate(Context paramContext)
+  public void onCreate(Context paramContext, ITTEngine paramITTEngine)
   {
     super.onCreate();
   }
@@ -503,7 +521,7 @@ public class GameJsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

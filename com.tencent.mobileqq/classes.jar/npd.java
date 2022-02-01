@@ -1,115 +1,35 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
 
 public class npd
+  implements bkhw
 {
-  public static double a(String paramString, double paramDouble)
+  public npd(EqqAccountDetailActivity paramEqqAccountDetailActivity, bkho parambkho, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    double d = paramDouble;
-    try
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (paramInt)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        d = Double.valueOf(paramString.trim()).doubleValue();
-      }
-      return d;
-    }
-    catch (Exception paramString)
-    {
+    default: 
+    case 0: 
       do
       {
-        d = paramDouble;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseDouble error message=" + paramString.getMessage());
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      nmp.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+      return;
     }
-    return paramDouble;
-  }
-  
-  public static float a(String paramString, float paramFloat)
-  {
-    float f = paramFloat;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        f = Float.valueOf(paramString.trim()).floatValue();
-      }
-      return f;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        f = paramFloat;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseFloat error message=" + paramString.getMessage());
-    }
-    return paramFloat;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    int i = paramInt;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        i = Integer.valueOf(paramString.trim()).intValue();
-      }
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseInteger error message=" + paramString.getMessage());
-    }
-    return paramInt;
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        int i = Color.parseColor(paramString1.trim());
-        return i;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ParseUtil", 2, " parseColor error message=" + paramString1.getMessage());
-      }
-    }
-    return Color.parseColor(paramString2);
-  }
-  
-  public static long a(String paramString, long paramLong)
-  {
-    long l = paramLong;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        l = Long.valueOf(paramString.trim()).longValue();
-      }
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        l = paramLong;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseLong error message=" + paramString.getMessage());
-    }
-    return paramLong;
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npd
  * JD-Core Version:    0.7.0.1
  */

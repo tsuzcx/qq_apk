@@ -1,18 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akgh
-  implements ansr
+final class akgh
+  implements DialogInterface.OnClickListener
 {
-  public akgh(SessionClearFragment paramSessionClearFragment) {}
+  akgh(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (paramInt == 0)
+    {
+      akgc.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

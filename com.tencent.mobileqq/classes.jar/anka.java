@@ -1,36 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class anka
-  implements anqt
+class anka
+  extends BroadcastReceiver
 {
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
-    }
-    anqp.a().a(null);
-  }
+  anka(anjx paramanjx, QQAppInterface paramQQAppInterface) {}
   
-  public void a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
-    }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    if (paramIntent != null)
     {
-      if (localObject != null)
-      {
-        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
-        if (localObject != null) {
-          ((annc)localObject).a(paramString);
-        }
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_Anjx.a();
       }
-      return;
     }
   }
 }

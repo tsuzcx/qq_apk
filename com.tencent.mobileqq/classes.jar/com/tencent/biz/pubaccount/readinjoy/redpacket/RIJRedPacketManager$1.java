@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import qft;
+import qzb;
 
 class RIJRedPacketManager$1
   implements Runnable
 {
-  RIJRedPacketManager$1(RIJRedPacketManager paramRIJRedPacketManager, qft paramqft) {}
+  RIJRedPacketManager$1(RIJRedPacketManager paramRIJRedPacketManager, qzb paramqzb) {}
   
   public void run()
   {

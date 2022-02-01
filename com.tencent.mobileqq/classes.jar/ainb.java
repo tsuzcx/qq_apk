@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ainb
-  implements View.OnClickListener
+class ainb
+  extends aqce
 {
-  public ainb(PhoneFrameActivity paramPhoneFrameActivity) {}
+  ainb(aimx paramaimx) {}
   
-  public void onClick(View paramView)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a(false);
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (paramBoolean)
+    {
+      QQToast.a(aimx.a(this.a).a(), 2, 2131718961, 0).a();
+      return;
     }
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
+    QQToast.a(aimx.a(this.a).a(), 0, 2131718960, 0).a();
   }
 }
 

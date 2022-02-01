@@ -1,21 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
 
-final class rdt
-  extends AnimatorListenerAdapter
+public abstract interface rdt
 {
-  rdt(View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setTag(2131362578, null);
-  }
+  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,18 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
-class bcay
-  implements aoil
+public class bcay
+  implements bcba
 {
-  bcay(bcax parambcax) {}
-  
-  public void a()
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
   {
-    if (bcax.a(this.a) != null) {
-      bcax.a(this.a).a(bcax.b(this.a), bcax.c(this.a), bcax.a(this.a));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (bcax.a(this.a) != null) {
-        bcax.a(this.a).a(paramInt1, paramInt2);
-      }
-      if ((bcax.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1)))
-      {
-        bcax.a(this.a).a(2);
-        if (bcax.a(this.a) >= bcax.a(this.a).a(2)) {
-          bcax.c(this.a, bcax.a(this.a).a(2) - 1);
-        }
-      }
-      if (bcax.b(this.a) != null) {
-        bcax.b(this.a).a(paramInt1, paramInt2);
-      }
-      return;
-      bcax.a(this.a, paramInt2);
-      continue;
-      bcax.b(this.a, paramInt2);
-      continue;
-      bcax.c(this.a, paramInt2);
-    }
+    ((bdbq)paramMessageHandler.app.getManager(17)).a(paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 

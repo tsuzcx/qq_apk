@@ -1,55 +1,23 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class avbt
+  implements DialogInterface.OnClickListener
 {
-  private SplitedProgressBar a;
+  public avbt(HotPicPageView paramHotPicPageView, avbz paramavbz, int paramInt) {}
   
-  public avbt(SplitedProgressBar paramSplitedProgressBar)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      localSplitedProgressBar.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Avbz, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avbt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,14 @@
 package com.tencent.biz.widgets;
 
+import abee;
+import abef;
+import abeg;
+import abeh;
+import abei;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,17 +16,19 @@ import android.view.ViewParent;
 import com.tencent.widget.HorizontalListView;
 import java.util.HashMap;
 import java.util.Map;
-import zhl;
-import zhm;
-import zhn;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import uad;
 
 public class TabLayout
   extends HorizontalListView
 {
+  private abei jdField_a_of_type_Abei;
   private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private zhn jdField_a_of_type_Zhn;
+  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new abeg(this);
   private boolean jdField_a_of_type_Boolean;
-  private Map<Integer, Integer> b = new HashMap();
+  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new abeh(this);
   
   public TabLayout(Context paramContext)
   {
@@ -65,8 +73,8 @@ public class TabLayout
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Zhn != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Zhn.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Abei != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Abei.notifyDataSetChanged();
     }
   }
   
@@ -99,14 +107,19 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new zhl(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new zhm(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new abee(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new abef(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
     paramAnimatorListener.onAnimationEnd(null);
     this.jdField_a_of_type_Boolean = false;
     a();
+  }
+  
+  public void dispatchDraw(Canvas paramCanvas)
+  {
+    uad.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -123,11 +136,16 @@ public class TabLayout
     }
   }
   
-  public void setAdapter(zhn paramzhn)
+  public void draw(Canvas paramCanvas)
   {
-    super.setAdapter(paramzhn);
-    this.jdField_a_of_type_Zhn = paramzhn;
-    this.jdField_a_of_type_Zhn.a(this);
+    uad.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+  }
+  
+  public void setAdapter(abei paramabei)
+  {
+    super.setAdapter(paramabei);
+    this.jdField_a_of_type_Abei = paramabei;
+    this.jdField_a_of_type_Abei.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)
@@ -137,7 +155,7 @@ public class TabLayout
   
   public void setChildWidth(int paramInt1, int paramInt2)
   {
-    this.b.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
   public void setSwappingAnimation()
@@ -152,7 +170,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout
  * JD-Core Version:    0.7.0.1
  */

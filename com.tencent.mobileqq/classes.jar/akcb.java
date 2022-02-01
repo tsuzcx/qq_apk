@@ -1,28 +1,25 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akcb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface akcb
 {
-  public akcb(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
+  public abstract View a();
   
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
-    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
-    if (localBitmap == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.setTag(localBitmap);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract View b();
+  
+  public abstract TextView b();
+  
+  public abstract TextView c();
+  
+  public abstract TextView d();
 }
 
 

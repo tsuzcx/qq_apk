@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class agoo
-  implements DialogInterface.OnClickListener
+  implements aobv
 {
-  agoo(agoe paramagoe) {}
+  agoo(agol paramagol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    ((aknx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 319);
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    for (;;)
+    {
+      return;
+      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+        agol.b(this.a).setImageBitmap(paramBitmap);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+          agol.a(this.a).setImageBitmap(paramBitmap);
+        }
+      }
+    }
   }
 }
 

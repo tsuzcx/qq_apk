@@ -1,62 +1,33 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
-public class vqd
-  extends vpa<ProfileFeedPlayInfo>
+class vqd
+  implements zxa<FeedCloudWrite.StDoLikeRsp>
 {
-  public vqd(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
-  {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (woy)uwa.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
-  }
+  vqd(vqa paramvqa, QCircleDoLikeRequest paramQCircleDoLikeRequest, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
   
-  public woq a(String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (this.a == null) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    QLog.d(vqa.a(), 1, "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    vqa.b(this.jdField_a_of_type_Vqa, true);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      woq localwoq = (woq)localIterator.next();
-      if (localwoq.a.equals(paramString)) {
-        return localwoq;
+      if ((!vqa.b(this.jdField_a_of_type_Vqa)) && (this.jdField_a_of_type_Int != 21)) {
+        this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
+      }
+      if ((this.jdField_a_of_type_Int == 22) || (this.jdField_a_of_type_Int == 21)) {
+        vqa.a(this.jdField_a_of_type_Vqa, paramStDoLikeRsp);
       }
     }
-    return null;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, vps paramvps)
-  {
-    if (this.a == null)
-    {
-      paramvps.a(new ErrorMessage(940001, "null point"), null, true);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramvps.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new vfr();
-    ((vfr)localObject).a = this.a.a();
-    ((vfr)localObject).b = QQStoryContext.a().b();
-    wxe.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((vfr)localObject).a);
-    urp.a().a((urt)localObject, new vqe(this, paramvps));
+    vqa.a(this.jdField_a_of_type_Vqa, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqd
  * JD-Core Version:    0.7.0.1
  */

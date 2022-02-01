@@ -1,12 +1,22 @@
-public abstract interface bhjd
+class bhjd
+  implements bhjp
 {
-  public abstract void onDateCancel();
+  bhjd(bhjb parambhjb) {}
   
-  public abstract void onDateConfirm(String paramString1, String paramString2, String paramString3);
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(bhjg parambhjg)
+  {
+    if (parambhjg.a)
+    {
+      bhjb.a(this.a, parambhjg);
+      bhjb.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjd
  * JD-Core Version:    0.7.0.1
  */

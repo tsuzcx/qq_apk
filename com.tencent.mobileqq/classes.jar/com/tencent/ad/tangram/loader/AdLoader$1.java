@@ -31,7 +31,7 @@ final class AdLoader$1
         localSession.request = ((JSONObject)JSONObject.class.cast(localObject1));
         AdLoaderWithJSON.load(localSession);
         this.val$session.httpResponseCode = localSession.httpResponseCode;
-        if ((localSession.httpResponseCode != 200) || (localSession.response == null) || (localSession.response == JSONObject.NULL)) {
+        if ((localSession.httpResponseCode != 200) || (localSession.response == null) || (JSONObject.NULL.equals(localSession.response))) {
           continue;
         }
         try
@@ -56,7 +56,7 @@ final class AdLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.loader.AdLoader.1
  * JD-Core Version:    0.7.0.1
  */

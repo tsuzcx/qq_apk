@@ -1,40 +1,33 @@
-import QC.SuixintieCheckInfo;
-import QC.SuixintieCheckItem;
-import com.qq.taf.jce.JceInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class awuf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static SuixintieCheckInfo a(String paramString)
-  {
-    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
-    localSuixintieCheckInfo.readFrom(new JceInputStream(bezi.a(paramString, 0)));
-    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
-      return localSuixintieCheckInfo;
-    }
-    return null;
-  }
+  public awuf(MultiCardFragment paramMultiCardFragment, awur paramawur, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
-    {
-      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
-      while (paramSuixintieCheckInfo.hasNext())
-      {
-        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
-        if (localSuixintieCheckItem.appid == paramInt) {
-          return localSuixintieCheckItem;
-        }
-      }
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Awur == null) {
+      return;
     }
-    return null;
+    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Awur.a.setScaleX(f2);
+    this.jdField_a_of_type_Awur.a.setScaleY(f2);
+    this.jdField_a_of_type_Awur.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Awur.a.setTranslationY(this.b * f1);
+    paramValueAnimator = this.jdField_a_of_type_Awur.a.getLayoutParams();
+    float f3 = this.c;
+    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
+    this.jdField_a_of_type_Awur.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awuf
  * JD-Core Version:    0.7.0.1
  */

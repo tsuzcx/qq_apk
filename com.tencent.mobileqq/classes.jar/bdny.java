@@ -1,16 +1,23 @@
-public class bdny
+import android.content.Context;
+
+final class bdny
+  implements bkgi<Integer>
 {
-  private static bdnz a;
+  bdny(Context paramContext, String paramString, bkho parambkho) {}
   
-  public static void a(Runnable paramRunnable)
+  public void a(Integer paramInteger)
   {
-    if (paramRunnable == null) {
+    switch (paramInteger.intValue())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
+      bdnt.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      continue;
+      bdnt.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
     }
-    if (a == null) {
-      a = new bdnz(3, 10L);
-    }
-    a.execute(paramRunnable);
   }
 }
 

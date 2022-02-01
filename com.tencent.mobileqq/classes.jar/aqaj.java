@@ -1,77 +1,107 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.util.HashMap;
 
 public class aqaj
-  implements awiq, awke
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  private WeakReference<aqak> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public aqaj(MessageForPic paramMessageForPic, Handler paramHandler, aqak paramaqak)
+  public static BusinessCard a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaqak);
+    paramQQAppInterface = (apyx)paramQQAppInterface.getManager(112);
+    if (paramQQAppInterface != null) {}
+    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
+    {
+      Object localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        localObject = new BusinessCard();
+      }
+      return localObject;
+    }
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, awjm paramawjm)
+  public static BusinessCard a(QQAppInterface paramQQAppInterface, azfe paramazfe)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
+    apyx localapyx = (apyx)paramQQAppInterface.getManager(112);
+    if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
+      paramQQAppInterface = localapyx.a();
     }
+    for (;;)
+    {
+      paramazfe = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramazfe = new BusinessCard();
+      }
+      return paramazfe;
+      if (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      {
+        paramQQAppInterface = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
+        if ((paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
+          localapyx.a(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+        } else {
+          paramQQAppInterface = localapyx.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else
+      {
+        paramQQAppInterface = null;
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = 1000;
+      localURLDrawableOptions.mRequestHeight = 600;
+      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode", String.valueOf(paramInt));
+    bctj.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramawjm.jdField_a_of_type_Int) });
-      }
-      if (paramawjm.jdField_a_of_type_Int == 0)
+      try
       {
-        ((aqak)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = paramInt1;
+        localURLDrawableOptions.mRequestHeight = paramInt2;
+        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844938);
+        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+        paramURLImageView.setURLDrawableDownListener(new aqak(paramURLImageView));
         return;
       }
-    } while (-1 != paramawjm.jdField_a_of_type_Int);
-    if (paramawjm.jdField_a_of_type_Awjh != null) {
-      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramawjm.jdField_a_of_type_Awjh.b });
-    }
-    ((aqak)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("BusinessCard", 2, "error " + paramString.toString());
   }
-  
-  public void a(int paramInt, ArrayList<awjm> paramArrayList) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
-  }
-  
-  public void a(awir paramawir)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramawir));
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((aqak)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    }
-  }
-  
-  public void b(int paramInt, awjm paramawjm) {}
-  
-  public void c(int paramInt, awjm paramawjm) {}
-  
-  public void d(int paramInt, awjm paramawjm) {}
 }
 
 

@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import out;
-import ouw;
+import pka;
+import pkd;
 
 public class ReadInJoyLottieDrawable$3$1$1
   implements Runnable
 {
-  public ReadInJoyLottieDrawable$3$1$1(ouw paramouw, String paramString) {}
+  public ReadInJoyLottieDrawable$3$1$1(pkd parampkd, String paramString) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyLottieDrawable$3$1$1
     {
       Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
       if (localBitmap != null) {
-        out.b().put(this.jdField_a_of_type_JavaLangString, localBitmap);
+        pka.b().put(this.jdField_a_of_type_JavaLangString, localBitmap);
       }
       return;
     }

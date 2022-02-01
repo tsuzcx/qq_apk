@@ -1,14 +1,37 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bmrv
-  implements FileFilter
+public class bmrv
 {
-  bmrv(bmru parambmru) {}
+  public int a;
+  public Bitmap a;
+  public bmrk a;
+  public bmrl a;
+  public bmru a;
+  String jdField_a_of_type_JavaLangString;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public boolean accept(File paramFile)
+  public bmrv(TroopHWJsPlugin paramTroopHWJsPlugin)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_Bmrk = new bmrw(this);
+  }
+  
+  public void a()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
+  }
+  
+  public void b()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
   }
 }
 

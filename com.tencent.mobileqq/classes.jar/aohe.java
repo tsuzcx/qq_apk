@@ -1,52 +1,233 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.messageclean.FileCleanManager.1;
+import com.tencent.mobileqq.app.message.messageclean.FileCleanManager.2;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class aohe
-  extends MSFServlet
 {
-  public String[] getPreferSSOCommands()
+  private int jdField_a_of_type_Int;
+  private aohh jdField_a_of_type_Aohh;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, aohg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  
+  public aohe(aohh paramaohh)
   {
-    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
+    this.jdField_a_of_type_Aohh = paramaohh;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int a(int paramInt)
   {
-    if (paramIntent != null)
+    switch (paramInt)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    default: 
+      return 0;
+    case 1: 
+      return this.jdField_a_of_type_Int;
+    case 2: 
+      return this.jdField_b_of_type_Int;
     }
+    return this.jdField_c_of_type_Int;
+  }
+  
+  private String a()
+  {
+    return bedk.a(bdsh.jdField_a_of_type_JavaLangString);
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return this.jdField_a_of_type_JavaLangString;
+    case 2: 
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    paramString = new File(paramString);
+    File[] arrayOfFile;
+    if (paramString.exists())
+    {
+      arrayOfFile = paramString.listFiles();
+      if ((arrayOfFile != null) && (arrayOfFile.length != 0)) {
+        break label34;
+      }
+    }
+    label34:
+    File localFile;
     for (;;)
     {
-      if ((getAppRuntime() instanceof QQAppInterface)) {
-        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      }
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+      int j = arrayOfFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = arrayOfFile[i];
+        if (!localFile.isDirectory()) {
+          break label78;
+        }
+        a(localFile.getAbsolutePath(), paramInt);
+        label71:
+        i += 1;
+      }
+    }
+    label78:
+    int k = a(paramInt);
+    paramString = localFile.getAbsolutePath();
+    int m = paramString.length();
+    aohg localaohg = new aohg();
+    if (m > k) {}
+    for (paramString = paramString.substring(k, m);; paramString = "")
+    {
+      localaohg.jdField_a_of_type_JavaLangString = paramString;
+      localaohg.jdField_a_of_type_Long = localFile.length();
+      localaohg.jdField_a_of_type_Int = paramInt;
+      localaohg.jdField_b_of_type_Int = 0;
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localFile.getName(), localaohg);
+      break label71;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private String b()
   {
-    if (paramIntent != null)
+    return ShortVideoUtils.b();
+  }
+  
+  private String c()
+  {
+    return anhk.bp;
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_Aohh != null) && (a()))
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      this.jdField_a_of_type_Aohh.a();
+      if (QLog.isColorLevel()) {
+        QLog.e("FileCleanManager", 2, "fileScanNotify onScanFinish");
       }
     }
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaLangString = a();
+    this.jdField_b_of_type_JavaLangString = b();
+    this.jdField_c_of_type_JavaLangString = c();
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+    this.jdField_b_of_type_Int = this.jdField_b_of_type_JavaLangString.length();
+    this.jdField_c_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+  }
+  
+  private void e()
+  {
+    a(this.jdField_a_of_type_JavaLangString, 1);
+  }
+  
+  private void f()
+  {
+    a(this.jdField_b_of_type_JavaLangString, 2);
+  }
+  
+  private void g()
+  {
+    a(this.jdField_c_of_type_JavaLangString, 3);
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
+  }
+  
+  public String a(aohg paramaohg)
+  {
+    if (paramaohg == null) {
+      return "";
+    }
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(a(paramaohg.jdField_a_of_type_Int));
+    localStringBuffer.append(paramaohg.jdField_a_of_type_JavaLangString);
+    return localStringBuffer.toString();
+  }
+  
+  public ConcurrentHashMap<String, aohg> a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  }
+  
+  public void a()
+  {
+    h();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    d();
+    ThreadManager.getFileThreadHandler().post(new FileCleanManager.1(this));
+    ThreadManager.getFileThreadHandler().post(new FileCleanManager.2(this));
+  }
+  
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(String paramString, aohg paramaohg)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramaohg != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramaohg);
+    }
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        bgmg.d((String)paramList.next());
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean);
+  }
+  
+  public void b()
+  {
+    h();
+    this.jdField_a_of_type_Aohh = null;
   }
 }
 

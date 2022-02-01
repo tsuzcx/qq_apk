@@ -1,34 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Ref.ObjectRef;
 
-public final class ayty
-  extends ThreadPoolExecutor
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/WeatherView$bindTextView$2$1"}, k=3, mv={1, 1, 16})
+final class ayty
+  implements View.OnClickListener
 {
-  public ayty(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
-  {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-  }
+  ayty(aytv paramaytv, Ref.ObjectRef paramObjectRef, boolean paramBoolean) {}
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public final void onClick(View paramView)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      aypy.a("0X800AF49", 2, null, 4, null);
     }
-    catch (ExecutionException paramRunnable)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      StatusVisibleFragment.a(this.jdField_a_of_type_Aytv.a(), aytv.a(this.jdField_a_of_type_Aytv), 2, 998);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      aypy.a("0X800AF49", 1, null, 4, null);
     }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
   }
 }
 

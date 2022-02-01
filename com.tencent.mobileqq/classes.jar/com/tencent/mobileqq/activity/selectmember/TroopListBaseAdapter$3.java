@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import akbx;
-import alrk;
-import amnz;
+import alun;
 import android.text.TextUtils;
+import ankw;
+import aong;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,12 +17,12 @@ import mqq.os.MqqHandler;
 public class TroopListBaseAdapter$3
   implements Runnable
 {
-  public TroopListBaseAdapter$3(akbx paramakbx, TroopManager paramTroopManager, amnz paramamnz) {}
+  public TroopListBaseAdapter$3(alun paramalun, TroopManager paramTroopManager, aong paramaong) {}
   
   public void run()
   {
     ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((alrk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
+    ArrayList localArrayList2 = ((ankw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
     ArrayList localArrayList3 = new ArrayList();
     Iterator localIterator = localArrayList2.iterator();
     int i = 0;
@@ -50,7 +50,7 @@ public class TroopListBaseAdapter$3
         {
           localArrayList3.add(localDiscussionInfo);
         }
-        else if (this.this$0.jdField_a_of_type_Alrk.a(localDiscussionInfo.uin) > 0)
+        else if (this.this$0.jdField_a_of_type_Ankw.a(localDiscussionInfo.uin) > 0)
         {
           localArrayList3.add(localDiscussionInfo);
           i += 1;
@@ -69,7 +69,7 @@ public class TroopListBaseAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopListBaseAdapter.3
  * JD-Core Version:    0.7.0.1
  */

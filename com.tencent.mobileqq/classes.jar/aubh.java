@@ -1,40 +1,65 @@
-import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
 
-public class aubh
-  extends PopupWindow
+public final class aubh
+  implements bdvw
 {
-  private PopupWindow.OnDismissListener a;
+  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public aubh(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
+  private aubh(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    super(paramView, paramInt1, paramInt2, paramBoolean);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
   }
   
-  public void a()
+  public void onResp(bdwt parambdwt)
   {
-    super.dismiss();
-  }
-  
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
-  {
-    this.a = paramOnDismissListener;
-  }
-  
-  public void dismiss()
-  {
-    if (this.a != null)
+    int i = 0;
+    if (parambdwt.jdField_a_of_type_Int == 3) {}
+    label74:
+    label80:
+    for (;;)
     {
-      this.a.onDismiss();
       return;
+      boolean bool;
+      if (parambdwt.jdField_a_of_type_Int == 0)
+      {
+        bool = true;
+        if (!bool) {
+          break label74;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
+          break label80;
+        }
+        if (bool) {
+          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, parambdwt.jdField_a_of_type_Long, 1.0F);
+        }
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        return;
+        bool = false;
+        break;
+        i = parambdwt.b;
+      }
     }
-    super.dismiss();
+  }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      float f = (float)paramLong1 / (float)paramLong2;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aubh
  * JD-Core Version:    0.7.0.1
  */

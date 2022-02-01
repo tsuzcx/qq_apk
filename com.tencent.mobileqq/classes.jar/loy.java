@@ -1,59 +1,40 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class loy
+class loy
+  extends ljd
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  String b;
-  String c;
-  String d;
+  loy(lox paramlox) {}
   
-  public static loy a()
+  private void b(long paramLong)
   {
-    Object localObject = lex.b(298).jdField_a_of_type_JavaLangString;
-    loy localloy = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      localloy = a((String)localObject);
-    }
-    localObject = localloy;
-    if (localloy == null) {
-      localObject = new loy();
-    }
-    return localObject;
+    Message localMessage = this.a.a.obtainMessage(4);
+    localMessage.obj = Long.valueOf(paramLong);
+    localMessage.sendToTarget();
   }
   
-  static loy a(String paramString)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      loy localloy = new loy();
-      localloy.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
-      localloy.jdField_a_of_type_Int = paramString.getInt("task_id");
-      localloy.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
-      localloy.b = paramString.getString("MD5_zip_so");
-      localloy.c = paramString.getString("MD5_so");
-      localloy.d = paramString.getString("so_name");
-      return localloy;
+    QLog.w("EffectCtrlBase", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
+    if (paramBoolean) {
+      b(paramLong);
     }
-    catch (Exception paramString)
-    {
-      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
-    }
-    return null;
   }
   
-  public String toString()
+  protected void b(boolean paramBoolean)
   {
-    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
+    long l = AudioHelper.b();
+    QLog.w("EffectCtrlBase", 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
+    if (paramBoolean) {
+      b(l);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     loy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
-import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class blyc
-  implements blxl
+  implements EIPCResultCallback
 {
-  blyc(blyb paramblyb) {}
+  blyc(blya paramblya) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramInt == 0) {
-      return bcnt.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "startFontSoDownload download so success");
     }
-    return "";
   }
 }
 

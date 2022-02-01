@@ -1,41 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
 public class okn
-  implements View.OnClickListener
+  implements qzb
 {
-  public okn(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public okn(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    switch (paramView.getId())
+    if (paramBoolean)
     {
-    }
-    do
-    {
-      return;
-      if (this.a.b)
+      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(0);
+      if (ReadInJoyVideoSubChannelActivity.a(this.a).a() != null) {}
+      for (String str = ReadInJoyVideoSubChannelActivity.a(this.a).a().a();; str = null)
       {
-        ReadInJoyCommentComponentFragment.a(this.a, false);
+        ReadInJoyVideoSubChannelActivity.a(this.a).a(4, ReadInJoyVideoSubChannelActivity.a(this.a).a(), str);
         return;
       }
-      ReadInJoyCommentComponentFragment.a(this.a, true);
-      return;
-      ReadInJoyCommentComponentFragment.b(this.a);
-      return;
-      ReadInJoyCommentComponentFragment.b(this.a);
-    } while (ReadInJoyCommentComponentFragment.a(this.a) == null);
-    if (ReadInJoyCommentComponentFragment.c(this.a) >= ReadInJoyCommentComponentFragment.a(this.a).length) {
-      ReadInJoyCommentComponentFragment.a(this.a, 0);
     }
-    this.a.c.setText(ReadInJoyCommentComponentFragment.a(this.a)[ReadInJoyCommentComponentFragment.c(this.a)]);
+    ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     okn
  * JD-Core Version:    0.7.0.1
  */

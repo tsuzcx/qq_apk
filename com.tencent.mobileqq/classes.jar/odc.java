@@ -1,31 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class odc
-  extends Handler
+  implements aobv
 {
-  odc(odb paramodb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  odc(oda paramoda) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    switch (paramMessage.what)
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
     {
+      Intent localIntent = new Intent("action_decode_finish");
+      localIntent.putExtra("bitmap", paramBitmap);
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    do
-    {
-      return;
-    } while ((this.a.a == null) || (this.a.a.a == null));
-    this.a.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     odc
  * JD-Core Version:    0.7.0.1
  */

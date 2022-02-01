@@ -1,79 +1,65 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wzz
+public class wzz
+  extends wlf<xbk>
 {
-  int jdField_a_of_type_Int;
-  wqw jdField_a_of_type_Wqw;
-  wxs jdField_a_of_type_Wxs;
-  wxt jdField_a_of_type_Wxt;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  public static final String a = wjz.a("StorySvc.video_report_evil");
+  public long b;
+  public String b;
+  public final int c;
+  public String c;
   
-  public wzz(wzv paramwzv)
+  public String a()
   {
-    this.jdField_a_of_type_Int = aepi.a(15.0F, paramwzv.a());
-    this.b = aepi.a(12.0F, paramwzv.a());
-    this.c = aepi.a(2.0F, paramwzv.a());
-    this.d = ((azkz.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2 - this.b * 5) / 6);
-    this.e = (this.d - this.c * 2);
-    this.f = (this.e * 8 / 5);
-    this.jdField_a_of_type_Wqw = new wqw(aepi.a(3.0F, paramwzv.a()), 0, this.f * 1.0F / this.e, null, null);
-    this.jdField_a_of_type_Wxs = ((wxs)paramwzv.a(wxs.class));
-    this.jdField_a_of_type_Wxt = ((wxt)paramwzv.a(wxt.class));
+    return a;
   }
   
-  public Bitmap a(int paramInt)
+  public xbk a(byte[] paramArrayOfByte)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Wxs != null) {
-      if (this.jdField_a_of_type_Wxs.a(paramInt))
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_Wxt != null)
-        {
-          localObject1 = localObject2;
-          if (!this.jdField_a_of_type_Wxt.a(paramInt)) {}
-        }
-      }
-      else
-      {
-        Bitmap localBitmap1 = this.jdField_a_of_type_Wxs.a(paramInt);
-        localObject1 = localObject2;
-        if (localBitmap1 != null)
-        {
-          if (this.jdField_a_of_type_Wxt != null) {
-            this.jdField_a_of_type_Wxt.a(paramInt, new Canvas(localBitmap1), localBitmap1.getWidth(), localBitmap1.getHeight());
-          }
-          Bitmap localBitmap2 = xqw.a(localBitmap1, this.e, this.f, false);
-          this.jdField_a_of_type_Wxs.a(localBitmap1);
-          localObject1 = localObject2;
-          if (localBitmap2 != null) {
-            localObject1 = this.jdField_a_of_type_Wqw.a(localBitmap2);
-          }
-        }
-      }
+    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
+    try
+    {
+      localRspReportEvil.mergeFrom(paramArrayOfByte);
+      return new xbk(localRspReportEvil);
     }
-    return localObject1;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void a(xcs paramxcs, xaa paramxaa)
+  protected byte[] a()
   {
-    Bitmap localBitmap = xqw.a(paramxcs.c, this.e, this.f, false);
-    paramxcs = null;
-    if (localBitmap != null) {
-      paramxcs = this.jdField_a_of_type_Wqw.a(localBitmap);
+    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
     }
-    paramxaa.b = paramxcs;
+    if (this.jdField_b_of_type_Long != 0L) {
+      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
+    return localReqReportEvil.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzz
  * JD-Core Version:    0.7.0.1
  */

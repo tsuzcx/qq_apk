@@ -1,46 +1,41 @@
-import android.graphics.Typeface;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
+import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
+import com.tencent.av.common.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class lxx
-  implements ViewSwitcher.ViewFactory
+class lxx
+  extends lfz<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
 {
-  public lxx(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
+  lxx(lxv paramlxv) {}
   
-  public View makeView()
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
   {
-    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-    try
+    this.a.jdField_a_of_type_Boolean = false;
+    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
+    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
+    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
+    int i = lfw.a(paramRspCreateShareUrl);
+    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
+    if (i == 0)
     {
-      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(aepi.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
-      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-      localStrokeTextView.setIncludeFontPadding(false);
-      if (this.jdField_a_of_type_Boolean) {}
-      for (String str = "0";; str = "")
-      {
-        localStrokeTextView.setText(str);
-        localStrokeTextView.setStrokeEnable(true);
-        localStrokeTextView.setStrokeColor(-1);
-        localStrokeTextView.setStrokeSize(aepi.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
-        localStrokeTextView.setInnerTextColor(-2094274);
-        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
-        localStrokeTextView.setGravity(17);
-        return localStrokeTextView;
-      }
-      return localStrokeTextView;
+      this.a.c = paramObject;
+      this.a.b = paramReqCreateShareUrl;
+      bgoh.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      localException.printStackTrace();
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      return;
+      if (i != 11001) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lxx
  * JD-Core Version:    0.7.0.1
  */

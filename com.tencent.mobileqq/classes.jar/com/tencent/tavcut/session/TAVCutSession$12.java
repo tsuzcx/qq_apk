@@ -1,28 +1,45 @@
 package com.tencent.tavcut.session;
 
-import com.tencent.tavcut.aekit.AEKitModel;
+import android.os.Handler;
+import android.util.SparseArray;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.weseevideo.editor.sticker.StickerController;
+import com.tencent.weseevideo.editor.sticker.dispatcher.StickerEventDispatcher;
 
 class TAVCutSession$12
   implements Runnable
 {
-  TAVCutSession$12(TAVCutSession paramTAVCutSession, MediaModel paramMediaModel, float paramFloat, VideoRenderChainManager paramVideoRenderChainManager) {}
+  TAVCutSession$12(TAVCutSession paramTAVCutSession) {}
   
   public void run()
   {
-    AEKitModel localAEKitModel = this.val$mediaModel.getMediaEffectModel().getAeKitModel();
-    if ((localAEKitModel == null) || (localAEKitModel.getLutPath() == null)) {
-      return;
+    int j = 0;
+    StickerEventDispatcher.getInstance().removeStickerEventListener(this.this$0.stickerEventListener);
+    this.this$0.stickerOperationCallback = null;
+    int i = 0;
+    while (i < this.this$0.renderChainManagers.size())
+    {
+      int k = this.this$0.renderChainManagers.keyAt(i);
+      ((VideoRenderChainManager)this.this$0.renderChainManagers.get(k)).release();
+      i += 1;
     }
-    localAEKitModel.setLutAlpha(this.val$lutAlpha);
-    this.this$0.updateRenderChain(this.val$renderChainManager, this.val$mediaModel.getMediaEffectModel());
+    this.this$0.renderChainManagers.clear();
+    i = j;
+    while (i < this.this$0.stickerControllers.size())
+    {
+      j = this.this$0.stickerControllers.keyAt(i);
+      ((StickerController)this.this$0.stickerControllers.get(j)).destroy();
+      i += 1;
+    }
+    this.this$0.stickerControllers.clear();
+    if (this.this$0.handler != null) {
+      this.this$0.handler.post(new TAVCutSession.12.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.12
  * JD-Core Version:    0.7.0.1
  */

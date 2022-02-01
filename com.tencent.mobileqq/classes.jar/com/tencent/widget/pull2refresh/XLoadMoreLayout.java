@@ -1,6 +1,5 @@
 package com.tencent.widget.pull2refresh;
 
-import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,12 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bieo;
-import uqn;
+import anni;
+import bksa;
+import wjz;
 
 public class XLoadMoreLayout
   extends FrameLayout
-  implements bieo
+  implements bksa
 {
   protected int a;
   protected View a;
@@ -101,19 +101,19 @@ public class XLoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_JavaLangString = alud.a(2131717422);
-    this.c = alud.a(2131717423);
-    this.d = alud.a(2131717424);
-    this.b = uqn.a(2131700077);
-    this.e = alud.a(2131717425);
+    this.jdField_a_of_type_JavaLangString = anni.a(2131715691);
+    this.c = anni.a(2131715692);
+    this.d = anni.a(2131715693);
+    this.b = wjz.a(2131698503);
+    this.e = anni.a(2131715694);
   }
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131560205, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372494);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372497));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372498));
+    LayoutInflater.from(getContext()).inflate(2131560358, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373094);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373098));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373099));
     c(0);
   }
   
@@ -173,7 +173,7 @@ public class XLoadMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.XLoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

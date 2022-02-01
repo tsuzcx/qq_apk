@@ -10,7 +10,6 @@ import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.model.FabbyFaceActionCounter;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
@@ -184,10 +183,8 @@ public class FabbyFilters
     FabbyMvFilter localFabbyMvFilter = (FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex);
     if ((localFabbyMvFilter != null) && (localFabbyMvFilter.mvPart != null) && (localFabbyMvFilter.getLastRenderFrame() != null))
     {
-      BenchUtil.benchStart("[showPreview][FABBY] setTransitionParam");
       this.transitionFilter.setMvPart(((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).mvPart);
       this.transitionFilter.setLastTex(((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).getLastRenderFrame().getTextureId());
-      BenchUtil.benchEnd("[showPreview][FABBY] setTransitionParam");
       this.mTransitionDeadLine = paramLong;
       return;
     }
@@ -347,12 +344,9 @@ public class FabbyFilters
       if ((paramLong > this.mTransitionDeadLine) || (!this.transitionFilter.needRender())) {
         break;
       }
-      BenchUtil.benchStart("[showPreview][FABBY] transition");
       this.transitionFilter.updatePreview(paramLong);
       this.transitionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mTransitionFrame);
-      paramFrame = this.mTransitionFrame;
-      BenchUtil.benchEnd("[showPreview][FABBY] transition");
-      return paramFrame;
+      return this.mTransitionFrame;
       if (this.mPlayer == null)
       {
         createAudioPlayer();
@@ -404,7 +398,7 @@ public class FabbyFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyFilters
  * JD-Core Version:    0.7.0.1
  */

@@ -1,194 +1,204 @@
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class bddk
-  implements Handler.Callback, bdhh
+  implements bddq
 {
-  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private volatile String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile WeakReference<bddm> jdField_b_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private final File jdField_a_of_type_JavaIoFile;
+  private final String jdField_a_of_type_JavaLangString;
+  private Future<File> jdField_a_of_type_JavaUtilConcurrentFuture;
+  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 180000L);
+  private final boolean jdField_a_of_type_Boolean;
+  private final File jdField_b_of_type_JavaIoFile;
+  private final String jdField_b_of_type_JavaLangString;
+  private final String c;
+  private final String d;
+  private final String e;
   
-  private QQAppInterface a()
+  public bddk(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      return (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    }
-    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  private void a(String paramString)
-  {
-    try
-    {
-      paramString = BitmapFactory.decodeFile(paramString);
-      paramString = new BitmapDrawable(a().getApp().getResources(), paramString);
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
-      localMessage.obj = paramString;
-      localMessage.sendToTarget();
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar getDrawable " + paramString.toString());
-        }
-        paramString = null;
-      }
-    }
-  }
-  
-  private void b(String paramString)
-  {
+    this.e = paramString3;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences(String.format("%sShadowCdnPmUpdater", new Object[] { paramString1 }), 0);
+    this.jdField_b_of_type_JavaIoFile = new File(new File(paramContext.getFilesDir(), "ShadowCdnPmUpdater"), paramString1);
+    this.jdField_b_of_type_JavaIoFile.mkdirs();
+    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaIoFile, paramString1 + this.e + "_pm.temp");
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = ("pm_name_" + paramString1 + "_" + paramString2 + "_" + this.e);
+    this.d = ("wasUpdate_" + paramString1 + "_" + this.e);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "https://downv6.qq.com/innovate/qq/pm/release/StudyRoomPluginManager.apk";
     if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile ");
-    }
-    paramString = a().a(1, paramString, 0);
-    if (new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQAvatarFHDDecoder", 2, "getLocalThumbFile exist");
-      }
-      a(paramString);
+      QLog.i("studyroom.CdnPmUpdater", 2, "use cdnupdater url = " + this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(Setting paramSetting)
+  private void a(File paramFile)
   {
-    boolean bool1 = false;
-    Object localObject;
-    if ((paramSetting == null) || (TextUtils.isEmpty(paramSetting.uin)) || (TextUtils.isEmpty(paramSetting.url))) {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("downloadFHDAvatar return ");
-        if (paramSetting == null) {
-          break label71;
-        }
-        paramSetting = paramSetting.toString();
-        QLog.i("QQAvatarFHDDecoder", 2, paramSetting);
-      }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.c, paramFile.getAbsolutePath()).apply();
+  }
+  
+  @SuppressLint({"ApplySharedPref"})
+  private void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.d, paramBoolean).commit();
+    if (QLog.isColorLevel()) {
+      QLog.i("studyroom.CdnPmUpdater", 2, "setWasUpdating:" + paramBoolean);
     }
+  }
+  
+  private boolean b()
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    File localFile = getLatest();
+    if (localFile == null) {}
     for (;;)
     {
-      return;
-      label71:
-      paramSetting = "";
-      break;
-      localObject = bddf.b(paramSetting.uin);
-      if (arso.a((String)localObject))
+      return bool2;
+      long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+      if (l <= 180000L)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar already exist " + (String)localObject);
+          QLog.i("studyroom.CdnPmUpdater", 2, "短时间内不重复检测interval==" + l);
         }
-        a((String)localObject);
-        return;
+        return false;
       }
-      paramSetting = FaceDownloader.a(paramSetting.url, paramSetting.bFaceFlags);
-      File localFile1 = new File((String)localObject);
-      File localFile2 = new File(localFile1.getPath() + System.currentTimeMillis());
-      if (HttpDownloadUtil.a(a(), new aprk(MsfSdkUtils.insertMtype("friendlist", paramSetting), localFile2, 0), this) == 0) {
-        bool1 = true;
-      }
-      boolean bool2;
-      if (bool1)
+      try
       {
-        if (localFile2.exists()) {
-          bool1 = localFile2.renameTo(localFile1);
+        localObject1 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+        if ((localObject1 instanceof HttpURLConnection)) {
+          break label148;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQAvatarFHDDecoder", 2, "downloadFHDAvatar suc " + bool1 + " " + (String)localObject);
+        throw new Error(this.jdField_a_of_type_JavaLangString + anni.a(2131700274));
+      }
+      finally
+      {
+        localObject1 = null;
+      }
+      label135:
+      if (localObject1 != null) {
+        ((HttpURLConnection)localObject1).disconnect();
+      }
+      throw localObject2;
+      label148:
+      Object localObject1 = (HttpURLConnection)localObject1;
+      try
+      {
+        if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
+          throw new Error(anni.a(2131700276) + 200 + anni.a(2131700277) + ((HttpURLConnection)localObject1).getResponseCode());
         }
-        bool2 = bool1;
-        if (bool1)
+        l = localObject2.length();
+        int i = ((HttpURLConnection)localObject1).getContentLength();
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+        if (l != i) {}
+        for (;;)
         {
-          a((String)localObject);
           bool2 = bool1;
-        }
-      }
-      while (!bool2)
-      {
-        b(this.jdField_a_of_type_JavaLangString);
-        return;
-        bool2 = bool1;
-        if (localFile2.exists())
-        {
-          localFile2.delete();
-          bool2 = bool1;
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "onHttpStart " + paramString + " " + paramInt);
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAvatarFHDDecoder", 2, "onHttpEnd " + paramString + " " + paramInt);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    }
-    if ((paramMessage.obj instanceof Drawable)) {}
-    for (paramMessage = (Drawable)paramMessage.obj;; paramMessage = null)
-    {
-      bddm localbddm;
-      String str;
-      if (this.jdField_b_of_type_MqqUtilWeakReference != null)
-      {
-        localbddm = (bddm)this.jdField_b_of_type_MqqUtilWeakReference.get();
-        if (localbddm != null)
-        {
-          str = this.jdField_a_of_type_JavaLangString;
-          if (paramMessage == null) {
-            break label105;
+          if (localObject1 == null) {
+            break;
           }
+          ((HttpURLConnection)localObject1).disconnect();
+          return bool1;
+          bool1 = false;
         }
+        break label135;
       }
-      label105:
-      for (boolean bool = true;; bool = false)
-      {
-        localbddm.a(str, bool, paramMessage);
-        this.jdField_b_of_type_MqqUtilWeakReference = null;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaLangString = null;
-        return true;
+      finally {}
+    }
+  }
+  
+  private boolean c()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.d, false);
+  }
+  
+  public File a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("studyroom.CdnPmUpdater", 2, "start download ");
+    }
+    File localFile = new File(this.jdField_b_of_type_JavaIoFile, this.jdField_b_of_type_JavaLangString + "_" + Long.valueOf(new StringBuilder().append(System.currentTimeMillis()).append("").toString(), 36) + ".apk");
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Exception[] arrayOfException = new Exception[1];
+    System.currentTimeMillis();
+    bdda localbdda = new bdda();
+    localbdda.a(BaseApplicationImpl.getContext());
+    localbdda.a(this.jdField_a_of_type_JavaLangString, new bddm(this, localFile, arrayOfException, localCountDownLatch));
+    localbdda.a(bddc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+    localCountDownLatch.await();
+    if (arrayOfException[0] == null)
+    {
+      localFile.setLastModified(localFile.lastModified() + 1000L);
+      a(localFile);
+      return localFile;
+    }
+    throw arrayOfException[0];
+  }
+  
+  public void a()
+  {
+    File localFile = getLatest();
+    if (localFile != null) {
+      localFile.delete();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public File getLatest()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, null);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        return localObject;
       }
     }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    throw new UnsupportedOperationException(anni.a(2131700275));
+  }
+  
+  public Future<File> update()
+  {
+    a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("studyroom.CdnPmUpdater", 2, "update");
+    }
+    if ((this.jdField_a_of_type_JavaUtilConcurrentFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("studyroom.CdnPmUpdater", 2, "上一次update还没结束，返回相同Future");
+      }
+      return this.jdField_a_of_type_JavaUtilConcurrentFuture;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = anvy.a(192).submit(new bddl(this));
+    return this.jdField_a_of_type_JavaUtilConcurrentFuture;
+  }
+  
+  public boolean wasUpdating()
+  {
+    return c();
   }
 }
 

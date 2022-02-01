@@ -28,9 +28,14 @@ class TVideoImpl
   
   void doGetVInfo(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
+    Object localObject1 = VInfoCacheMgr.getVInfoFromCache(paramSuperPlayerVideoInfo);
+    if ((localObject1 != null) && (this.mListener != null))
+    {
+      this.mListener.onGetVInfoSuccess((SuperPlayerVideoInfo)localObject1);
+      return;
+    }
     int i;
-    Object localObject;
-    TVKPlaybackParam localTVKPlaybackParam;
+    Object localObject2;
     switch (paramSuperPlayerVideoInfo.getVideoType())
     {
     default: 
@@ -38,31 +43,31 @@ class TVideoImpl
       return;
     case 1: 
       i = 2;
-      localObject = new TVKPlayerVideoInfo(i, paramSuperPlayerVideoInfo.getVid(), paramSuperPlayerVideoInfo.getPid());
-      ((TVKPlayerVideoInfo)localObject).setPid(paramSuperPlayerVideoInfo.getPid());
-      ((TVKPlayerVideoInfo)localObject).setPlatform(paramSuperPlayerVideoInfo.getBusiPlatform());
-      localTVKPlaybackParam = new TVKPlaybackParam();
-      localTVKPlaybackParam.context(this.mContext);
-      localTVKPlaybackParam.userInfo(null);
-      localTVKPlaybackParam.videoInfo((TVKPlayerVideoInfo)localObject);
-      localTVKPlaybackParam.definition(paramSuperPlayerVideoInfo.getRequestDefinition());
-      localTVKPlaybackParam.mediaSource(new TVKMediaSource((TVKPlayerVideoInfo)localObject));
-      localObject = new TVKPlaybackInfo();
-      ((TVKPlaybackInfo)localObject).requestInfo().flowId(localTVKPlaybackParam.flowId());
-      ((TVKPlaybackInfo)localObject).requestInfo().definition(localTVKPlaybackParam.definition());
+      localObject2 = new TVKPlayerVideoInfo(i, paramSuperPlayerVideoInfo.getVid(), paramSuperPlayerVideoInfo.getPid());
+      ((TVKPlayerVideoInfo)localObject2).setPid(paramSuperPlayerVideoInfo.getPid());
+      ((TVKPlayerVideoInfo)localObject2).setPlatform(paramSuperPlayerVideoInfo.getBusiPlatform());
+      localObject1 = new TVKPlaybackParam();
+      ((TVKPlaybackParam)localObject1).context(this.mContext);
+      ((TVKPlaybackParam)localObject1).userInfo(null);
+      ((TVKPlaybackParam)localObject1).videoInfo((TVKPlayerVideoInfo)localObject2);
+      ((TVKPlaybackParam)localObject1).definition(paramSuperPlayerVideoInfo.getRequestDefinition());
+      ((TVKPlaybackParam)localObject1).mediaSource(new TVKMediaSource((TVKPlayerVideoInfo)localObject2));
+      localObject2 = new TVKPlaybackInfo();
+      ((TVKPlaybackInfo)localObject2).requestInfo().flowId(((TVKPlaybackParam)localObject1).flowId());
+      ((TVKPlaybackInfo)localObject2).requestInfo().definition(((TVKPlaybackParam)localObject1).definition());
       if (paramSuperPlayerVideoInfo.getVideoType() == 1) {
-        ((TVKPlaybackInfo)localObject).requestInfo().formatId(1);
+        ((TVKPlaybackInfo)localObject2).requestInfo().formatId(1);
       }
       break;
     }
     for (;;)
     {
-      ((TVKPlaybackInfo)localObject).requestInfo().tag(paramSuperPlayerVideoInfo);
-      this.mWrapperCGI.request(0, localTVKPlaybackParam, (TVKPlaybackInfo)localObject);
+      ((TVKPlaybackInfo)localObject2).requestInfo().tag(paramSuperPlayerVideoInfo);
+      this.mWrapperCGI.request(0, (TVKPlaybackParam)localObject1, (TVKPlaybackInfo)localObject2);
       return;
       i = 1;
       break;
-      ((TVKPlaybackInfo)localObject).requestInfo().formatId(2);
+      ((TVKPlaybackInfo)localObject2).requestInfo().formatId(2);
     }
   }
   
@@ -73,7 +78,7 @@ class TVideoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.TVideoImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class wuu
-  extends QQUIEventReceiver<wub, vej>
+  implements View.OnClickListener
 {
-  public wuu(@NonNull wub paramwub)
-  {
-    super(paramwub);
-  }
+  public wuu(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
   
-  public void a(@NonNull wub paramwub, @NonNull vej paramvej)
+  public void onClick(View paramView)
   {
-    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
+    for (int i = 1;; i = 0)
+    {
+      yqu.a("msg_tab", "clk_all", 0, i, new String[0]);
+      bgmp localbgmp = bgng.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
+      zkb.a(localbgmp);
+      if (localbgmp != null) {
+        localbgmp.a();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    paramwub.a(paramvej);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vej.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 
 public class apwm
-  implements Animator.AnimatorListener
 {
-  public apwm(EmotionKeywordLayout paramEmotionKeywordLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
-      this.a.setVisibility(8);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
-    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.putExtra("big_brother_source_key", paramString2);
+    localIntent.putExtra("key_callback_id", paramInt);
+    localIntent.setData(Uri.parse(paramString1));
+    paramActivity.startActivity(localIntent);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

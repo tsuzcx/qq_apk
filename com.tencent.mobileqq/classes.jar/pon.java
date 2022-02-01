@@ -1,31 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
-class pon
-  implements View.OnClickListener
+public class pon
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  pon(pol parampol, int paramInt, rqj paramrqj, pgd parampgd) {}
+  public pon(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_Int == 120) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a.c, "kandian feed click");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
     }
-    rro localrro;
-    do
-    {
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
       return;
-      localrro = this.jdField_a_of_type_Rqj.a();
-    } while (localrro == null);
-    localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setDuration(400L);
+    localAlphaAnimation.setAnimationListener(new poo(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pon
  * JD-Core Version:    0.7.0.1
  */

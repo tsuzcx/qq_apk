@@ -1,96 +1,45 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_QQ_STORY_META.META.StUser;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.confess.ConfessConvInfo;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.util.StStoryFeedUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 class agot
-  extends aoiz
+  implements View.OnClickListener
 {
-  agot(agos paramagos) {}
+  agot(agos paramagos, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (!aoiq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    do
+    long l = System.currentTimeMillis();
+    Object localObject1 = (afwx)this.jdField_a_of_type_Agos.a.getManager(282);
+    if (localObject1 != null) {
+      ((afwx)localObject1).a(4, 7);
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
+    if ((localObject2 != null) && (((META.StStoryFeed)localObject2).postUser != null))
     {
-      do
-      {
-        return;
-      } while ((!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int));
-      agos.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onCheckHolmesTipsView  frdUin:" + paramString + " type:" + paramInt2 + " topicid:" + paramInt1);
-  }
-  
-  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2)
-  {
-    if (!aoiq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      return;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("key_launch_time", l);
+      ((Bundle)localObject1).putLong("key_current_feeduin", ((META.StStoryFeed)localObject2).postUser.uin.get());
+      ((Bundle)localObject1).putInt("key_request_from", 3);
+      ((Bundle)localObject1).putInt("key_weishi_entrance_type", 19);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject2);
+      localObject2 = StStoryFeedUtil.getConvertDataList(localArrayList);
+      ((Bundle)localObject1).putInt("key_video_story_jump_position", 0);
+      ((Bundle)localObject1).putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject2);
+      ((Bundle)localObject1).putInt("key_request_business_type", 7);
+      bgmp.a((Bundle)localObject1);
     }
-    if (paramBoolean2) {}
-    for (;;)
-    {
-      String str = Long.toString(paramLong2);
-      if ((!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
-        break;
-      }
-      if (paramBoolean1)
-      {
-        aojd localaojd = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        ConfessConvInfo localConfessConvInfo = localaojd.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
-        if ((localConfessConvInfo != null) && ((localConfessConvInfo.holmesCurCount != paramInt3) || (localConfessConvInfo.holmesTolCount != paramInt4))) {
-          localaojd.a(str, paramInt2, paramInt1, paramInt3, paramInt4);
-        }
-        agos.a(this.a, true);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onGetHolmesProgress " + paramBoolean1 + " frdUin:" + str + " type:" + paramInt2 + " topicid:" + paramInt1 + " curCount:" + paramInt3);
-      return;
-      paramLong2 = paramLong1;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo)
-  {
-    String str;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (bdeu.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
-      if (QLog.isColorLevel())
-      {
-        str = this.a.jdField_a_of_type_JavaLangString;
-        paramInt2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e;
-        if (paramString2 != null) {
-          break label190;
-        }
-      }
-    }
-    label190:
-    for (paramConfessInfo = "";; paramConfessInfo = paramString2)
-    {
-      QLog.i(str, 2, String.format("onSetShieldFlag suc:%b frdUin:%s uinType:%d topicId:%d hours:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramConfessInfo }));
-      this.a.br();
-      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
-      {
-        paramString1 = new StringBuilder();
-        if (!paramBoolean) {
-          break;
-        }
-      }
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2))
-    {
-      paramString1.append("屏蔽失败，请重试。");
-      this.a.a(2, paramString1.toString(), 500);
-      return;
-    }
-    paramString1.append("屏蔽失败，").append(paramString2);
-    this.a.a(2, paramString1.toString(), 500);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

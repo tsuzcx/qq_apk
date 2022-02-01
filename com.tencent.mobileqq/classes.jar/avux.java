@@ -1,35 +1,53 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMFollwerAdd;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class avux
-  extends avun
+class avux
+  implements avts
 {
-  public QIMFollwerAdd a;
+  avux(avuv paramavuv) {}
   
-  public avux(QIMFollwerAdd paramQIMFollwerAdd)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
-    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
-  }
+  public void a() {}
   
-  public String a()
+  public void a(boolean paramBoolean)
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
+    int i = this.a.jdField_a_of_type_Avut.e;
+    String str3 = this.a.jdField_a_of_type_Avut.b;
+    this.a.b(i, str3);
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
+    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
+      bcst.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
+    }
+    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+      return;
+    }
+    String str2 = "2";
+    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
+    String str1 = str2;
+    if (localTroopInfo != null)
+    {
+      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+        break label180;
+      }
+      str1 = "0";
+    }
+    for (;;)
+    {
+      bcst.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
+      return;
+      label180:
+      str1 = str2;
+      if (localTroopInfo.isAdmin()) {
+        str1 = "1";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avux
  * JD-Core Version:    0.7.0.1
  */

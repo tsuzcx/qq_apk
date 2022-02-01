@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import bcea;
-import bkdb;
+import bfeo;
+import bmrl;
 
 class HWReciteItem$2
   implements Runnable
 {
-  HWReciteItem$2(HWReciteItem paramHWReciteItem, bcea parambcea) {}
+  HWReciteItem$2(HWReciteItem paramHWReciteItem, bfeo parambfeo) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ class HWReciteItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.2
  * JD-Core Version:    0.7.0.1
  */

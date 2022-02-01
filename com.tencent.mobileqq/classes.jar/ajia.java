@@ -1,27 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment;
+import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
 
-class ajia
-  implements View.OnClickListener
+public class ajia
 {
-  private ajhy jdField_a_of_type_Ajhy;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  
-  ajia(ajhy paramajhy, MqqHandler paramMqqHandler)
+  public static ContactsBaseFragment a(int paramInt)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Ajhy = paramajhy;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajhy.jdField_a_of_type_JavaLangString + " on enter");
+    Object localObject;
+    switch (paramInt)
+    {
+    default: 
+      localObject = new FriendFragment();
     }
-    this.jdField_a_of_type_Ajhy.jdField_a_of_type_Ajhw.onEnter();
-    azqs.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
+    for (;;)
+    {
+      ((ContactsBaseFragment)localObject).d(paramInt);
+      return localObject;
+      localObject = new RecommendFriendFragment();
+      continue;
+      localObject = new FriendFragment();
+      continue;
+      localObject = new TroopFragment();
+      continue;
+      localObject = new PublicAccountFragment();
+      continue;
+      localObject = new DeviceFragment();
+      continue;
+      localObject = new PhoneContactFragment();
+      continue;
+      localObject = new AlphabetFriendFragment();
+    }
   }
 }
 

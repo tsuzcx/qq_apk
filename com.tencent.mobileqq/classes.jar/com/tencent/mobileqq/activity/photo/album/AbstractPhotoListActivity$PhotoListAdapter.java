@@ -6,21 +6,26 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawableDownListener;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class AbstractPhotoListActivity$PhotoListAdapter
-  extends BaseAdapter
+  extends RecyclerView.Adapter<AbstractPhotoListActivity.Holder>
   implements URLDrawableDownListener
 {
   static final String REPORT_OLD_TAG = "AlbumThumbCostOld";
@@ -35,12 +40,17 @@ public class AbstractPhotoListActivity$PhotoListAdapter
   {
     this.mInflater = paramAbstractPhotoListActivity.getLayoutInflater();
     this.mResources = paramAbstractPhotoListActivity.getResources();
-    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847367);
+    this.mDefaultPhotoDrawable = this.mResources.getDrawable(2130847826);
   }
   
-  public int getCount()
+  public void addPhotoList(List<LocalMediaInfo> paramList)
   {
-    return this.mAllImages.size();
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    int i = this.mAllImages.size();
+    this.mAllImages.addAll(paramList);
+    notifyItemRangeInserted(i, paramList.size());
   }
   
   public LocalMediaInfo getItem(int paramInt)
@@ -48,9 +58,9 @@ public class AbstractPhotoListActivity$PhotoListAdapter
     return (LocalMediaInfo)this.mAllImages.get(paramInt);
   }
   
-  public long getItemId(int paramInt)
+  public int getItemCount()
   {
-    return 0L;
+    return this.mAllImages.size();
   }
   
   public int getItemViewType(int paramInt)
@@ -61,34 +71,6 @@ public class AbstractPhotoListActivity$PhotoListAdapter
   public List<LocalMediaInfo> getPhotoList()
   {
     return this.mAllImages;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AbstractPhotoListActivity.CheckBoxClickedListener localCheckBoxClickedListener = new AbstractPhotoListActivity.CheckBoxClickedListener(this.this$0);
-    AbstractPhotoListActivity.PhotoListAdapter.Holder localHolder;
-    if (paramView == null)
-    {
-      localHolder = new AbstractPhotoListActivity.PhotoListAdapter.Holder(this);
-      switch (getItemViewType(paramInt))
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramView;
-          localHolder = (AbstractPhotoListActivity.PhotoListAdapter.Holder)paramView.getTag();
-          break;
-        } while (this.this$0.mPhotoListLogic == null);
-        return this.this$0.mPhotoListLogic.getViewCaseImage(paramInt, paramView, paramViewGroup, localHolder, localCheckBoxClickedListener);
-      } while (this.this$0.mPhotoListLogic == null);
-      return this.this$0.mPhotoListLogic.getViewCaseVideo(paramInt, paramView, paramViewGroup, localHolder, localCheckBoxClickedListener);
-    } while (this.this$0.mPhotoListLogic == null);
-    return this.this$0.mPhotoListLogic.getViewCaseCamera(paramInt, paramView, paramViewGroup);
   }
   
   public int getViewTypeCount()
@@ -109,6 +91,97 @@ public class AbstractPhotoListActivity$PhotoListAdapter
     localGradientDrawable.setColor(1291845632);
     localTextView.setBackgroundDrawable(localGradientDrawable);
     return localTextView;
+  }
+  
+  public void onBindViewHolder(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
+  {
+    paramHolder.mOnItemClickListener.position = paramInt;
+    switch (getItemViewType(paramInt))
+    {
+    default: 
+      this.this$0.mPhotoListLogic.getViewCaseImage(paramHolder, paramInt);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramHolder, paramInt, getItemId(paramInt));
+      return;
+      this.this$0.mPhotoListLogic.getViewCaseVideo(paramHolder, paramInt);
+      continue;
+      this.this$0.mPhotoListLogic.getViewCaseCamera(paramHolder, paramInt);
+    }
+  }
+  
+  @NonNull
+  public AbstractPhotoListActivity.Holder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    AbstractPhotoListActivity.CheckBoxClickedListener localCheckBoxClickedListener = new AbstractPhotoListActivity.CheckBoxClickedListener(this.this$0);
+    View localView;
+    switch (paramInt)
+    {
+    default: 
+      localView = this.this$0.photoListAdapter.mInflater.inflate(2131561367, null);
+      paramViewGroup = new AbstractPhotoListActivity.Holder(localView);
+      localView.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
+      paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372468));
+      paramViewGroup.mImageViewPanoramaIcon = ((ImageView)localView.findViewById(2131372429));
+      paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368844));
+      paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372473));
+      paramViewGroup.mSelectedBtn = localView.findViewById(2131372470);
+      paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372471));
+      paramViewGroup.mPhotoFlagView = ((ImageView)localView.findViewById(2131372399));
+      paramViewGroup.mPhotoFlagView.setVisibility(8);
+      if (this.this$0.mPhotoListLogic.mPhotoCommonData.maxSelectNum > 100) {
+        paramViewGroup.mCheckBox.setTextSize(10.0F);
+      }
+      paramViewGroup.checkBoxListener = localCheckBoxClickedListener;
+      if (paramViewGroup.mSelectedBtn != null) {
+        paramViewGroup.mSelectedBtn.setOnClickListener(paramViewGroup.checkBoxListener);
+      }
+      localView.setTag(paramViewGroup);
+      if (!this.this$0.mPhotoListData.isSingleMode) {
+        paramViewGroup.mSelectedBtn.setVisibility(0);
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramViewGroup.mOnItemClickListener = new AbstractPhotoListActivity.OnItemClickListener(this.this$0);
+      if (paramViewGroup.mImageView != null)
+      {
+        paramViewGroup.mImageView.setOnClickListener(paramViewGroup.mOnItemClickListener);
+        return paramViewGroup;
+        localView = this.this$0.photoListAdapter.mInflater.inflate(2131561628, null);
+        paramViewGroup = new AbstractPhotoListActivity.Holder(localView);
+        localView.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
+        paramViewGroup.mImageView = ((ImageView)localView.findViewById(2131372468));
+        paramViewGroup.mTextView = ((TextView)localView.findViewById(2131372474));
+        paramViewGroup.mMaskView = ((ImageView)localView.findViewById(2131368844));
+        paramViewGroup.mSelectedIconView = ((ImageView)localView.findViewById(2131372473));
+        paramViewGroup.mSelectedBtn = localView.findViewById(2131372470);
+        paramViewGroup.mCheckBox = ((NumberCheckBox)localView.findViewById(2131372471));
+        if (this.this$0.mPhotoListLogic.mPhotoCommonData.maxSelectNum > 100) {
+          paramViewGroup.mCheckBox.setTextSize(10.0F);
+        }
+        paramViewGroup.checkBoxListener = localCheckBoxClickedListener;
+        if (paramViewGroup.mSelectedBtn != null) {
+          paramViewGroup.mSelectedBtn.setOnClickListener(paramViewGroup.checkBoxListener);
+        }
+        localView.setTag(paramViewGroup);
+        if ((!this.this$0.mPhotoListData.isSingleMode) && (this.this$0.mPhotoListData.isSupportVideoCheckbox))
+        {
+          paramViewGroup.mSelectedBtn.setVisibility(0);
+          continue;
+          paramViewGroup = this.this$0.photoListAdapter.mInflater.inflate(2131561082, null);
+          paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.this$0.mImageWidth, this.this$0.mImageHeight));
+          paramViewGroup = new AbstractPhotoListActivity.Holder(paramViewGroup);
+        }
+      }
+      else
+      {
+        paramViewGroup.itemView.setOnClickListener(paramViewGroup.mOnItemClickListener);
+        return paramViewGroup;
+      }
+    }
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
@@ -146,11 +219,12 @@ public class AbstractPhotoListActivity$PhotoListAdapter
       paramList.remove(0);
     }
     this.mAllImages.addAll(paramList);
+    notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter
  * JD-Core Version:    0.7.0.1
  */

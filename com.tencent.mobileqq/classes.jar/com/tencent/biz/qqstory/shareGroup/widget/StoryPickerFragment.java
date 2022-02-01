@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.shareGroup.widget;
 
-import alud;
 import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -15,13 +15,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Subscriber;
@@ -29,27 +31,27 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import ulg;
-import wfy;
-import wfz;
-import wga;
-import wgb;
-import wgc;
-import wgd;
-import wge;
-import wgf;
-import wgg;
-import wgl;
-import wgm;
-import wgo;
-import wmf;
-import wnd;
-import wxj;
-import xwc;
+import wes;
+import xzj;
+import xzk;
+import xzl;
+import xzm;
+import xzn;
+import xzo;
+import xzp;
+import xzq;
+import xzr;
+import xzw;
+import xzx;
+import xzz;
+import yfq;
+import ygo;
+import yqu;
+import zpn;
 
 public class StoryPickerFragment
   extends QQStoryBaseFragment
-  implements View.OnClickListener, wgl, wgm
+  implements View.OnClickListener, xzw, xzx
 {
   int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -57,8 +59,8 @@ public class StoryPickerFragment
   public QQStoryPullToRefreshListView a;
   public String a;
   public LinkedHashSet<String> a;
-  public wgo a;
-  public wmf a;
+  public xzz a;
+  public yfq a;
   boolean jdField_a_of_type_Boolean = false;
   String b;
   
@@ -89,53 +91,53 @@ public class StoryPickerFragment
   void a()
   {
     int i = 0;
-    this.leftView.setText(getString(2131690623));
-    super.setTitle(alud.a(2131714929) + ulg.jdField_a_of_type_JavaLangString);
-    super.a(String.format(alud.a(2131714931), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    this.leftView.setText(getString(2131690563));
+    super.setTitle(anni.a(2131713230) + wes.jdField_a_of_type_JavaLangString);
+    super.a(String.format(anni.a(2131713232), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {}
     for (;;)
     {
       super.setRightViewTextDisable(i);
-      this.jdField_a_of_type_AndroidViewView = super.a(2131365761);
-      this.jdField_a_of_type_Wgo = new wgo(getActivity());
-      this.jdField_a_of_type_Wgo.a(new wfy(this));
-      this.jdField_a_of_type_Wgo.a(this);
-      this.jdField_a_of_type_Wgo.a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131369559));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_Wgo);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new wfz(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new wga(this));
+      this.jdField_a_of_type_AndroidViewView = super.a(2131366002);
+      this.jdField_a_of_type_Xzz = new xzz(getActivity());
+      this.jdField_a_of_type_Xzz.a(new xzj(this));
+      this.jdField_a_of_type_Xzz.a(this);
+      this.jdField_a_of_type_Xzz.a(this);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131369954));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_Xzz);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new xzk(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new xzl(this));
       return;
       i = 1;
     }
   }
   
-  public void a(View paramView, wnd paramwnd)
+  public void a(View paramView, ygo paramygo)
   {
     boolean bool = true;
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramwnd.b))
+    if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramygo.b))
     {
-      paramView = bdgm.a(getActivity(), 230);
-      paramView.setMessage(String.format(alud.a(2131714933), new Object[] { Integer.valueOf(20), ulg.jdField_a_of_type_JavaLangString }));
-      paramView.setPositiveButton(alud.a(2131714932), new wgb(this));
+      paramView = bglp.a(getActivity(), 230);
+      paramView.setMessage(String.format(anni.a(2131713234), new Object[] { Integer.valueOf(20), wes.jdField_a_of_type_JavaLangString }));
+      paramView.setPositiveButton(anni.a(2131713233), new xzm(this));
       paramView.show();
       return;
     }
     int i;
-    if (!paramwnd.jdField_a_of_type_Boolean)
+    if (!paramygo.jdField_a_of_type_Boolean)
     {
-      paramwnd.jdField_a_of_type_Boolean = bool;
+      paramygo.jdField_a_of_type_Boolean = bool;
       paramView = (ImageView)paramView;
-      if (!paramwnd.jdField_a_of_type_Boolean) {
+      if (!paramygo.jdField_a_of_type_Boolean) {
         break label150;
       }
-      i = 2130840306;
+      i = 2130840485;
       label115:
       paramView.setImageResource(i);
-      if (!paramwnd.jdField_a_of_type_Boolean) {
+      if (!paramygo.jdField_a_of_type_Boolean) {
         break label156;
       }
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramwnd.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramygo.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
@@ -144,40 +146,40 @@ public class StoryPickerFragment
       bool = false;
       break;
       label150:
-      i = 2130840302;
+      i = 2130840481;
       break label115;
       label156:
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramwnd.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramygo.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(String paramString, int paramInt, View paramView, wnd paramwnd)
+  public void a(String paramString, int paramInt, View paramView, ygo paramygo)
   {
-    if (paramwnd.b) {
-      Bosses.get().postJob(new wgd(this, "StoryPickerFragment", paramString, paramwnd, paramInt, paramView));
+    if (paramygo.b) {
+      Bosses.get().postJob(new xzo(this, "StoryPickerFragment", paramString, paramygo, paramInt, paramView));
     }
   }
   
   public void a(@NonNull Map<Subscriber, String> paramMap)
   {
     super.a(paramMap);
-    paramMap.put(new wgf(this), "");
-    paramMap.put(new wgg(this), "");
-    paramMap.put(new wge(this), "");
+    paramMap.put(new xzq(this), "");
+    paramMap.put(new xzr(this), "");
+    paramMap.put(new xzp(this), "");
   }
   
   void b()
   {
     this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
-    this.jdField_a_of_type_Wmf = new wmf(QQStoryContext.a().b(), this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wmf.a();
+    this.jdField_a_of_type_Yfq = new yfq(QQStoryContext.a().b(), this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yfq.a();
     super.startTitleProgress();
-    this.jdField_a_of_type_Wmf.c();
+    this.jdField_a_of_type_Yfq.c();
   }
   
   public void c()
   {
-    super.a(String.format(alud.a(2131714930), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    super.a(String.format(anni.a(2131713231), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     int i;
     List localList;
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1)
@@ -186,7 +188,7 @@ public class StoryPickerFragment
       setRightViewTextDisable(i);
       if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20)
       {
-        localList = this.jdField_a_of_type_Wgo.a();
+        localList = this.jdField_a_of_type_Xzz.a();
         i = 0;
       }
     }
@@ -203,15 +205,15 @@ public class StoryPickerFragment
           if (!localIterator.hasNext()) {
             break label151;
           }
-          wnd localwnd = (wnd)localIterator.next();
-          if (localwnd.jdField_a_of_type_Boolean)
+          ygo localygo = (ygo)localIterator.next();
+          if (localygo.jdField_a_of_type_Boolean)
           {
-            localwnd.b = true;
+            localygo.b = true;
             continue;
             i = 1;
             break;
           }
-          localwnd.b = false;
+          localygo.b = false;
         }
         label151:
         i += 1;
@@ -221,21 +223,21 @@ public class StoryPickerFragment
       d();
     }
     label174:
-    this.jdField_a_of_type_Wgo.notifyDataSetChanged();
+    this.jdField_a_of_type_Xzz.notifyDataSetChanged();
   }
   
   void d()
   {
-    List localList = this.jdField_a_of_type_Wgo.a();
+    List localList = this.jdField_a_of_type_Xzz.a();
     int i = 0;
     while (i < localList.size())
     {
       Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
       while (localIterator.hasNext())
       {
-        wnd localwnd = (wnd)localIterator.next();
-        if (!localwnd.b) {
-          localwnd.b = true;
+        ygo localygo = (ygo)localIterator.next();
+        if (!localygo.b) {
+          localygo.b = true;
         }
       }
       i += 1;
@@ -251,7 +253,7 @@ public class StoryPickerFragment
   
   public int getContentLayoutId()
   {
-    return 2131561575;
+    return 2131561810;
   }
   
   public void init(Bundle paramBundle)
@@ -273,51 +275,55 @@ public class StoryPickerFragment
   
   public void onClick(View paramView)
   {
+    Object localObject;
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() > 0)
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView = new wgc(this);
-        bdjz localbdjz = bdgm.a(getActivity(), 230);
-        localbdjz.setMessage(getString(2131700087, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
-        localbdjz.setNegativeButton(2131690648, paramView);
-        localbdjz.setPositiveButton(alud.a(2131689628), paramView);
-        localbdjz.show();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label106;
       }
+      localObject = new xzn(this);
+      bgpa localbgpa = bglp.a(getActivity(), 230);
+      localbgpa.setMessage(getString(2131698513, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
+      localbgpa.setNegativeButton(2131690582, (DialogInterface.OnClickListener)localObject);
+      localbgpa.setPositiveButton(anni.a(2131689550), (DialogInterface.OnClickListener)localObject);
+      localbgpa.show();
     }
-    else {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label106:
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("extra_checked_vidset", this.jdField_a_of_type_JavaUtilLinkedHashSet);
+      getActivity().setResult(-1, (Intent)localObject);
+      getActivity().finish();
     }
-    paramView = new Intent();
-    paramView.putExtra("extra_checked_vidset", this.jdField_a_of_type_JavaUtilLinkedHashSet);
-    getActivity().setResult(-1, paramView);
-    getActivity().finish();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Wmf != null) {
-      this.jdField_a_of_type_Wmf.b();
+    if (this.jdField_a_of_type_Yfq != null) {
+      this.jdField_a_of_type_Yfq.b();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    wxj.a(18, this.jdField_a_of_type_Long);
+    yqu.a(18, this.jdField_a_of_type_Long);
   }
   
   public void onResume()
   {
     super.onResume();
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    wxj.a("share_story", "exp_all_story", this.jdField_a_of_type_Int, 0, new String[0]);
+    yqu.a("share_story", "exp_all_story", this.jdField_a_of_type_Int, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment
  * JD-Core Version:    0.7.0.1
  */

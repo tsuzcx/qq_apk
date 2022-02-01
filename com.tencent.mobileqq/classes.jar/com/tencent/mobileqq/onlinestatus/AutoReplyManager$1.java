@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import awem;
-import awgf;
+import ayon;
 import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +10,23 @@ import java.util.List;
 public class AutoReplyManager$1
   implements Runnable
 {
-  public AutoReplyManager$1(awem paramawem) {}
+  public AutoReplyManager$1(ayon paramayon) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (awem.a(this.this$0))
+      synchronized (ayon.a(this.this$0))
       {
-        if (awem.a(this.this$0) == null)
+        if (ayon.a(this.this$0) == null)
         {
-          List localList = awem.a(this.this$0).a(AutoReplyText.class);
+          List localList = ayon.a(this.this$0).query(AutoReplyText.class);
           if ((localList != null) && (localList.size() > 0))
           {
-            if (awem.a(this.this$0) == null)
+            if (ayon.a(this.this$0) == null)
             {
-              awem.a(this.this$0, new ArrayList());
-              awem.a(this.this$0).addAll(localList);
+              ayon.a(this.this$0, new ArrayList());
+              ayon.a(this.this$0).addAll(localList);
             }
           }
           else
@@ -36,7 +36,7 @@ public class AutoReplyManager$1
             }
             return;
           }
-          awem.a(this.this$0).clear();
+          ayon.a(this.this$0).clear();
         }
       }
       if (QLog.isColorLevel()) {
@@ -47,7 +47,7 @@ public class AutoReplyManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyManager.1
  * JD-Core Version:    0.7.0.1
  */

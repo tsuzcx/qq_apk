@@ -1,98 +1,64 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import protocol.KQQConfig.GetResourceReqInfo;
-
 public class bixv
-  implements bixu
 {
-  public boolean a(int paramInt, Bundle paramBundle)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "0";
+  public String d = "default_via";
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public bixv()
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_JavaLangString = "6000";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  public static bixv a(bixv parambixv)
+  {
+    bixv localbixv = new bixv();
+    if (parambixv == null) {
+      return localbixv;
     }
-    do
-    {
-      do
-      {
-        String str1;
-        String str2;
-        do
-        {
-          return true;
-          alpu.a((QQAppInterface)localObject);
-          return true;
-          paramBundle = (amfa)((QQAppInterface)localObject).a(44);
-          paramBundle.a(new bixw(this));
-          paramBundle.a("");
-          return true;
-          paramBundle = (alqf)((QQAppInterface)localObject).a(4);
-          paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.d() });
-          return true;
-          ((QQAppInterface)localObject).addObserver(new bixx(this));
-          return true;
-          boolean bool = paramBundle.getBoolean("visible");
-          ((alvm)((QQAppInterface)localObject).a(3)).a(bool);
-          return true;
-          paramInt = paramBundle.getInt("iFaceType");
-          str1 = paramBundle.getString("uinOrMobileNum");
-          byte b = paramBundle.getByte("faceFileType");
-          int i = paramBundle.getInt("idType");
-          paramBundle = (FriendListHandler)((QQAppInterface)localObject).a(1);
-          switch (paramInt)
-          {
-          default: 
-            return true;
-          case 1: 
-            paramBundle.a(str1, (byte)0, b);
-            return true;
-          case 11: 
-            paramBundle.b(str1, b);
-            return true;
-          case 4: 
-            paramBundle.a(str1, b);
-            return true;
-          case 32: 
-            paramBundle.a(str1, i, (byte)1, b);
-            return true;
-          }
-          paramBundle.b(str1, i, (byte)1, b);
-          return true;
-          str1 = paramBundle.getString("mUin");
-          str2 = paramBundle.getString("feedsId");
-          paramInt = paramBundle.getInt("action");
-          paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
-        } while (paramBundle == null);
-        paramBundle.a(str1, str2, 255, paramInt);
-        return true;
-        ((QQAppInterface)localObject).addObserver(new bixy(this));
-        return true;
-        ((QQAppInterface)localObject).registObserver(new bixz(this, null));
-        return true;
-        paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
-      } while (paramBundle == null);
-      paramBundle.a();
-      return true;
-      ((SignatureHandler)((QQAppInterface)localObject).a(41)).a(paramBundle.getString("uin"), paramBundle.getString("feedsId"), 255, true);
-      return true;
-      paramBundle = bdgc.j((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("name", paramBundle);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 6, (Bundle)localObject);
-      return true;
-    } while (paramBundle == null);
-    ((QQAppInterface)localObject).sendToService((ToServiceMsg)paramBundle.getParcelable("msg"));
-    return true;
+    localbixv.e = parambixv.e;
+    localbixv.f = parambixv.f;
+    localbixv.g = parambixv.g;
+    localbixv.jdField_a_of_type_Long = parambixv.jdField_a_of_type_Long;
+    localbixv.h = parambixv.h;
+    localbixv.jdField_a_of_type_Int = parambixv.jdField_a_of_type_Int;
+    localbixv.jdField_b_of_type_Int = parambixv.jdField_b_of_type_Int;
+    localbixv.c = parambixv.c;
+    localbixv.jdField_b_of_type_JavaLangString = parambixv.jdField_b_of_type_JavaLangString;
+    localbixv.jdField_a_of_type_JavaLangString = parambixv.jdField_a_of_type_JavaLangString;
+    localbixv.d = parambixv.d;
+    return localbixv;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pageId=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\nmoduleId=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\npositionId=" + this.c);
+    localStringBuilder.append("\nvia=" + this.d);
+    localStringBuilder.append("\nurl=" + this.e);
+    localStringBuilder.append("\npackageName=" + this.f);
+    localStringBuilder.append("\niconUrl=" + this.g);
+    localStringBuilder.append("\nlength=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("\nname=" + this.h);
+    localStringBuilder.append("\nprogress=" + this.jdField_a_of_type_Int);
+    localStringBuilder.append("\nstate=" + this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixv
  * JD-Core Version:    0.7.0.1
  */

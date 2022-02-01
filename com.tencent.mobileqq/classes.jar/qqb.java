@@ -1,72 +1,33 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qqb
-  implements TextWatcher
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$1", "Lcom/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyObserver;", "onChannelRefreshed", "", "success", "", "channelID", "", "articleSeqList", "", "", "noMoreData", "onPushNotifyDialogDismiss", "needAnimation", "uin", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qqb
+  extends pmn
 {
-  private int jdField_a_of_type_Int;
-  
-  public qqb(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2)
   {
-    int k = paramEditable.length();
-    int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      i = 1;
-      if (k <= 0) {
-        break label156;
-      }
-      j = 1;
-      if ((j ^ i) != 0)
-      {
-        arrayOfDrawable = ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label161;
-        }
-        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839356);
-        localDrawable.setBounds(0, 0, bdoo.b(16.0F), bdoo.b(16.0F));
-        arrayOfDrawable[2] = localDrawable;
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment, paramEditable.toString());
-      if (paramEditable.length() <= 0) {
-        break label169;
-      }
-      owy.a().h(ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment));
-      return;
-      i = 0;
-      break;
-      label156:
-      j = 0;
-      break label24;
-      label161:
-      arrayOfDrawable[2] = null;
-    }
-    label169:
-    ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setVisibility(4);
+    this.a.b(true);
+    qqa.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(0));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b(boolean paramBoolean, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    if ((Intrinsics.areEqual(paramString, qqa.a(this.a).b())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
+    {
+      this.a.b(paramBoolean);
+      qqa.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(0));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqb
  * JD-Core Version:    0.7.0.1
  */

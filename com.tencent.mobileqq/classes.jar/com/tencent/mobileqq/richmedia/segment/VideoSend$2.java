@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import axxo;
-import axxp;
-import bauo;
+import bavp;
+import bavq;
+import bdwd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class VideoSend$2
   implements Runnable
 {
-  public VideoSend$2(axxp paramaxxp, axxo paramaxxo) {}
+  public VideoSend$2(bavq parambavq, bavp parambavp) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class VideoSend$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.segment.VideoSend.2
  * JD-Core Version:    0.7.0.1
  */

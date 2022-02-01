@@ -1,32 +1,35 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wij
-  extends ParallelJobSegment<String, Integer>
+public class wij
+  extends QQUIEventReceiver<why, wjb>
 {
-  public wij(wib paramwib)
+  public wij(@NonNull why paramwhy)
   {
-    this(paramwib, "RequestViewCountSegment");
+    super(paramwhy);
   }
   
-  public wij(wib paramwib, String paramString)
+  public void a(@NonNull why paramwhy, @NonNull wjb paramwjb)
   {
-    super(paramString);
+    if (paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      yqp.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramwjb.jdField_a_of_type_JavaLangString, paramwjb.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramwhy, paramwjb), 0);
+    }
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public Class acceptEventClass()
   {
-    vfj localvfj = new vfj();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localvfj.a = localArrayList;
-    urp.a().a(localvfj, new wik(this, paramJobContext, paramString));
+    return wjb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wij
  * JD-Core Version:    0.7.0.1
  */

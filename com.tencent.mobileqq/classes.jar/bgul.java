@@ -1,25 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ProgressBar;
-import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bgul
-  implements Animation.AnimationListener
+  extends TextView
 {
-  public bgul(AppUIProxy.LoadingUI paramLoadingUI) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bgul(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
   {
-    AppUIProxy.LoadingUI.a(this.a).setVisibility(0);
+    super(paramContext);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    this.a.a.b();
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgul
  * JD-Core Version:    0.7.0.1
  */

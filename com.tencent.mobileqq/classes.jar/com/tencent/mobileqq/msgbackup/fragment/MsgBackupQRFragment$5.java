@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.graphics.Bitmap;
-import auhc;
+import awof;
 
 class MsgBackupQRFragment$5
   implements Runnable
 {
-  MsgBackupQRFragment$5(MsgBackupQRFragment paramMsgBackupQRFragment, auhc paramauhc) {}
+  MsgBackupQRFragment$5(MsgBackupQRFragment paramMsgBackupQRFragment, awof paramawof) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class MsgBackupQRFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.5
  * JD-Core Version:    0.7.0.1
  */

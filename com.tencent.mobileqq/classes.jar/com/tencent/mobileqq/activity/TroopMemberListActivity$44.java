@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,12 +22,12 @@ class TroopMemberListActivity$44
       Object localObject3;
       try
       {
-        localObject3 = this.this$0.app.getEntityManagerFactory().createEntityManager();
+        localObject3 = this.this$0.app.a().createEntityManager();
         if (localObject3 == null) {
           break label168;
         }
-        Object localObject1 = ((awgf)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.b }, null, null, null, null);
-        ((awgf)localObject3).a();
+        Object localObject1 = ((EntityManager)localObject3).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.b }, null, null, null, null);
+        ((EntityManager)localObject3).close();
         if (localObject1 == null) {
           break label165;
         }
@@ -53,7 +53,7 @@ class TroopMemberListActivity$44
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.44
  * JD-Core Version:    0.7.0.1
  */

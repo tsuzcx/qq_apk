@@ -1,40 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
-import mqq.os.MqqHandler;
+import android.arch.lifecycle.Observer;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-public class axbf
-  implements IThreadMgr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
+final class axbf<T>
+  implements Observer<T>
 {
-  public void postOnSubThread(Runnable paramRunnable)
-  {
-    ThreadManager.getSubThreadHandler().post(paramRunnable);
-  }
+  axbf(Function1 paramFunction1) {}
   
-  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
+  public final void onChanged(@Nullable T paramT)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void postOnUIThread(Runnable paramRunnable)
-  {
-    ThreadManager.getUIHandler().post(paramRunnable);
-  }
-  
-  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
-  {
-    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void quitSubThread() {}
-  
-  public void removeCallbackOnSubHandler(Runnable paramRunnable)
-  {
-    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
+    if (paramT != null) {
+      this.a.invoke(paramT);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbf
  * JD-Core Version:    0.7.0.1
  */

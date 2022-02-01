@@ -1,63 +1,50 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.List;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class bmll
-  implements bmby
+public class bmll
+  extends bmmk
 {
-  bmll(bmlk parambmlk) {}
+  public static bmll a;
+  
+  public bmll()
+  {
+    jdField_a_of_type_Bmll = this;
+  }
+  
+  public static void a(String paramString)
+  {
+    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    {
+      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
+      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
+    }
+  }
+  
+  public static void b()
+  {
+    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    {
+      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
+      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.cutCancel()");
+    }
+  }
+  
+  public static void c()
+  {
+    if ((jdField_a_of_type_Bmll != null) && (jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
+      jdField_a_of_type_Bmll.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
+    }
+  }
   
   public void a()
   {
-    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)this.a.a.jdField_a_of_type_Bmjt.a.a(113);
-    boolean bool;
-    Object localObject;
-    if (localVideoCoverPickerProviderView != null)
-    {
-      bool = this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_is_need_gaussion_blur", false);
-      if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakeVideoSource))
-      {
-        localObject = (EditTakeVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-        localVideoCoverPickerProviderView.setVideo(((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString, 0L, ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, ((EditTakeVideoSource)localObject).a(), ((EditTakeVideoSource)localObject).b(), ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource))
-    {
-      localObject = (EditLocalVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
-      localVideoCoverPickerProviderView.setVideo(((EditLocalVideoSource)localObject).jdField_a_of_type_JavaLangString, ((EditLocalVideoSource)localObject).jdField_a_of_type_Int, ((EditLocalVideoSource)localObject).b, ((EditLocalVideoSource)localObject).a(), ((EditLocalVideoSource)localObject).b(), ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
-      return;
-    }
-    throw new IllegalArgumentException("SegmentEdit init error");
+    jdField_a_of_type_Bmll = null;
   }
   
-  public void a(long paramLong)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    bmlk.a(this.a, true);
-    bmjf localbmjf = (bmjf)this.a.a(bmjf.class);
-    if (localbmjf != null) {
-      localbmjf.a(paramLong, true, false);
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    this.a.a(paramLong, paramBoolean);
-  }
-  
-  public void a(List<Long> paramList)
-  {
-    bmjf localbmjf = (bmjf)this.a.a(bmjf.class);
-    if (localbmjf != null) {
-      localbmjf.a(paramList);
-    }
+    return false;
   }
 }
 

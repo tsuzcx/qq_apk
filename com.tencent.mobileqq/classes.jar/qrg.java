@@ -1,104 +1,36 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qrg
-  extends biej<qnz>
+class qrg
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
+  qrg(qrf paramqrf, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
   
-  public qrg(qrf paramqrf, ViewGroup paramViewGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)b(2131368753));
-    this.jdField_a_of_type_AndroidViewView = b(2131370100);
-  }
-  
-  protected URL a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("#");
-    localStringBuilder.append("FLOW_THUMB");
-    try
-    {
-      paramString = new URL(localStringBuilder.toString());
-      return paramString;
+    bmqa.f(pha.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
+    spb localspb = this.jdField_a_of_type_Qrf.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.jdField_a_of_type_Qrf.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    catch (MalformedURLException paramString)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPhotoTrace", 2, paramString.getMessage(), paramString);
-      }
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
     }
-    return null;
-  }
-  
-  public void a(int paramInt, qnz paramqnz)
-  {
-    if (qrf.a(this.jdField_a_of_type_Qrf) == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new qrh(this, paramInt));
-      a(paramqnz);
-      return;
-    }
-  }
-  
-  protected void a(qnz paramqnz)
-  {
-    try
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = qrf.a(this.jdField_a_of_type_Qrf);
-      ((URLDrawable.URLDrawableOptions)localObject).mPriority = 2;
-      String str = paramqnz.b;
-      if (TextUtils.isEmpty(str))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(qrf.a(this.jdField_a_of_type_Qrf));
-        return;
-      }
-      localObject = URLDrawable.getDrawable(a(str), (URLDrawable.URLDrawableOptions)localObject);
-      if (paramqnz.a != null)
-      {
-        paramqnz.a.thumbWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-        paramqnz.a.thumbHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-        ((URLDrawable)localObject).setTag(paramqnz.a);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    catch (Throwable paramqnz)
-    {
-      QLog.e("RIJUGC.LocalMediaGridAdapter", 1, "load cover failed", paramqnz);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qrg
  * JD-Core Version:    0.7.0.1
  */

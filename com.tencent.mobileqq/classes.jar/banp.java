@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class banp
-  implements DialogInterface.OnClickListener
+class banp
 {
-  banp(banr parambanr) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public banp(bano parambano, String paramString, int paramInt1, int paramInt2)
   {
-    banm.a("0X800A5CB");
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.b * 100 / this.jdField_a_of_type_Int;
     }
-    banm.a(false);
-    if (this.a != null) {
-      this.a.onConfirm();
-    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    this.b += 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int += 1;
   }
 }
 

@@ -1,28 +1,25 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class aknp
-  extends AVVideoCtrl.RemoteVideoPreviewCallback
+  implements bhva
 {
-  aknp(aknn paramaknn) {}
+  public aknp(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    Object localObject = akwd.a(aknm.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((akyg)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.2.1(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknp
  * JD-Core Version:    0.7.0.1
  */

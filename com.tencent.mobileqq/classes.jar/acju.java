@@ -1,23 +1,20 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
-public final class acju
-  implements DialogInterface.OnClickListener
+class acju
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public acju(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln, aclo paramaclo, BaseActivity paramBaseActivity, boolean paramBoolean) {}
+  acju(acjt paramacjt, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
+    acqy.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

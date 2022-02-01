@@ -1,18 +1,35 @@
-import android.graphics.Outline;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaho
-  extends ViewOutlineProvider
+  implements View.OnClickListener
 {
-  public aaho(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  public aaho(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), aepi.a(5.0F, paramView.getResources()));
+    boolean bool2 = true;
+    aabx localaabx;
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    {
+      localaabx = SubscribeVideoDetailFragment.a(this.a).a(1);
+      bool1 = bool2;
+      if (SubscribeVideoDetailFragment.a(this.a).j()) {
+        if (SubscribeVideoDetailFragment.a(this.a).l()) {
+          break label88;
+        }
+      }
+    }
+    label88:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localaabx.c = bool1;
+      this.a.a(localaabx);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

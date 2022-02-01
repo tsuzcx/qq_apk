@@ -1,10 +1,12 @@
-public abstract interface bbyt
+public class bbyt
 {
-  public abstract void a(bbyl parambbyl);
+  public int a;
+  public int b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbyt
  * JD-Core Version:    0.7.0.1
  */

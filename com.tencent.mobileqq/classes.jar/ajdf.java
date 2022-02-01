@@ -1,55 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class ajdf
-  extends Handler
+  extends RecyclerView.ViewHolder
 {
-  public ajdf(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public ajdf(Context paramContext, View paramView)
   {
-    super(paramLooper);
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void handleMessage(Message paramMessage)
+  public static ajdf a(Context paramContext, View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    return new ajdf(paramContext, paramView);
+  }
+  
+  public static ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ajdf(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
     }
-    FragmentActivity localFragmentActivity;
-    do
-    {
-      return;
-      paramMessage = (ajdp)paramMessage.obj;
-      if (QLog.isColorLevel()) {
-        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
-      }
-      localFragmentActivity = this.a.getActivity();
-    } while (localFragmentActivity == null);
-    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
-    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramMessage.c);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
-    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
-    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
-    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    if (localArrayList.size() == 1) {
-      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
-    }
-    localFragmentActivity.startActivity(localIntent);
-    localFragmentActivity.finish();
+    return localView1;
   }
 }
 

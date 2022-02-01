@@ -1,25 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import java.util.concurrent.Executor;
 
-class bitm
-  extends RemoteCommand
+public abstract class bitm<Param, Progress, Result>
+  extends AsyncTask<Param, Progress, Result>
 {
-  bitm(bitl parambitl, String paramString)
+  protected String a;
+  protected String b;
+  
+  public bitm(String paramString1, String paramString2)
   {
-    super(paramString);
+    this.a = paramString1;
+    if (!paramString1.toLowerCase().startsWith("http")) {
+      this.a = ("https://openmobile.qq.com/" + paramString1);
+    }
+    this.b = paramString2;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public Executor a()
   {
-    bitl.a(this.a).a().c(paramBundle);
+    if (Build.VERSION.SDK_INT >= 11) {
+      return AsyncTask.THREAD_POOL_EXECUTOR;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bitm
  * JD-Core Version:    0.7.0.1
  */

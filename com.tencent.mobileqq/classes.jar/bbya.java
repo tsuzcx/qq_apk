@@ -1,15 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
 
-public class bbya
-  implements bcqu
+public final class bbya
+  implements Parcelable.Creator<FriendListInfo>
 {
-  public bbya(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
-  
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public FriendListInfo a(Parcel paramParcel)
   {
-    paramView.setVisibility(8);
+    return new FriendListInfo(paramParcel);
+  }
+  
+  public FriendListInfo[] a(int paramInt)
+  {
+    return new FriendListInfo[paramInt];
   }
 }
 

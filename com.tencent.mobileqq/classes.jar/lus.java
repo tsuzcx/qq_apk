@@ -1,57 +1,138 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class lus
+  extends ltv
 {
-  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static float b = 800.0F;
-  private static float c = 0.4F;
-  private static float d = 1.0F - c;
-  private static float e;
-  private static float f = 1.0F / a(1.0F);
+  public boolean a;
   
-  static
+  public void a(long paramLong)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[101];
-    float f1 = 0.0F;
-    int i = 0;
-    if (i <= 100)
-    {
-      float f4 = i / 100.0F;
-      float f2 = 1.0F;
-      for (;;)
+    long l = paramLong - this.jdField_a_of_type_Long;
+    int k = 0;
+    int j = 0;
+    int i;
+    float f;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((l > 0L) && (l < 100L))
       {
-        float f3 = (f2 - f1) / 2.0F + f1;
-        float f5 = 3.0F * f3 * (1.0F - f3);
-        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
-        if (Math.abs(f6 - f4) < 1.E-005D)
-        {
-          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
-          i += 1;
-          break;
+        i = (int)(255L * l / 100L);
+        if ((l <= 0L) || (l > 200L)) {
+          break label226;
         }
-        if (f6 > f4) {
-          f2 = f3;
+        f = -0.0035F * (float)l + 1.5F;
+      }
+    }
+    label539:
+    for (;;)
+    {
+      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
+      a(i);
+      b(f);
+      return;
+      if ((l >= 100L) && (l <= 1200L))
+      {
+        i = 255;
+        break;
+      }
+      i = j;
+      if (l <= 1200L) {
+        break;
+      }
+      i = j;
+      if (l >= 1250L) {
+        break;
+      }
+      i = (int)(255L * (l - 1250L) / -50L);
+      break;
+      label226:
+      if ((l > 200L) && (l <= 350L))
+      {
+        f = 0.001333333F * (float)l + 0.5333334F;
+      }
+      else if ((l > 350L) && (l <= 450L))
+      {
+        f = -0.001F * (float)l + 1.35F;
+      }
+      else if ((l > 450L) && (l <= 550L))
+      {
+        f = 0.001F * (float)l + 0.45F;
+      }
+      else if ((l > 550L) && (l <= 1100L))
+      {
+        f = 1.0F;
+      }
+      else if ((l > 1100L) && (l <= 1150L))
+      {
+        f = 0.0016F * (float)l - 0.76F;
+      }
+      else if ((l > 1150L) && (l <= 1250L))
+      {
+        f = -0.0108F * (float)l + 13.5F;
+      }
+      else
+      {
+        f = 0.0F;
+        continue;
+        if ((l > 0L) && (l < 100L)) {
+          i = (int)(255L * l / 100L);
+        }
+        for (;;)
+        {
+          if ((l <= 0L) || (l > 200L)) {
+            break label539;
+          }
+          f = -0.0035F * (float)l + 1.5F;
+          break;
+          if ((l >= 100L) && (l <= 700L))
+          {
+            i = 255;
+          }
+          else
+          {
+            i = k;
+            if (l > 700L)
+            {
+              i = k;
+              if (l < 750L) {
+                i = (int)(255L * (l - 750L) / -50L);
+              }
+            }
+          }
+        }
+        if ((l > 200L) && (l <= 350L)) {
+          f = 0.001333333F * (float)l + 0.5333334F;
+        } else if ((l > 350L) && (l <= 450L)) {
+          f = -0.001F * (float)l + 1.35F;
+        } else if ((l > 450L) && (l <= 550L)) {
+          f = 0.001F * (float)l + 0.45F;
+        } else if ((l > 550L) && (l <= 600L)) {
+          f = 1.0F;
+        } else if ((l > 600L) && (l <= 650L)) {
+          f = 0.0016F * (float)l + 0.04F;
+        } else if ((l > 650L) && (l <= 750L)) {
+          f = -0.0108F * (float)l + 8.1F;
         } else {
-          f1 = f3;
+          f = 0.0F;
         }
       }
     }
-    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
-    e = 8.0F;
-    f = 1.0F;
   }
   
-  static float a(float paramFloat)
+  public void a(boolean paramBoolean)
   {
-    paramFloat = e * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * f;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt2 = paramInt1 * 39 / 750;
+    paramInt3 = paramInt1 * 59 / 750;
+    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lus
  * JD-Core Version:    0.7.0.1
  */

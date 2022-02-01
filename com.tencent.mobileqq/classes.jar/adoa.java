@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adoa
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public adoa(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  public adoa(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368269);
+    if (localImageView != null)
+    {
+      int i = 0;
+      if (localImageView.getVisibility() == 0) {
+        i = 4;
+      }
+      localImageView.setVisibility(i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

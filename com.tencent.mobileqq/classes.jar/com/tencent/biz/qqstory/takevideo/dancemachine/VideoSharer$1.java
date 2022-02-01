@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import alud;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import anni;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import xdh;
-import xdi;
+import yws;
+import ywt;
 
 public class VideoSharer$1
   implements Runnable
 {
-  public VideoSharer$1(xdh paramxdh, int paramInt) {}
+  public VideoSharer$1(yws paramyws, int paramInt) {}
   
   public void run()
   {
@@ -71,28 +71,28 @@ public class VideoSharer$1
             if (QLog.isColorLevel()) {
               QLog.d("DanceMachinePKVideoSharer", 2, "share to wechat bitmap ratio  : " + i + "   size : " + j * k / 1024 + "KB  fileSize : " + new File(this.this$0.h).length());
             }
-            if (xdh.a(this.this$0) == null) {
-              xdh.a(this.this$0, new xdi(this, localBitmap));
+            if (yws.a(this.this$0) == null) {
+              yws.a(this.this$0, new ywt(this, localBitmap));
             }
             if (this.a == 1)
             {
-              WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, alud.a(2131716775), this.this$0.i);
-              WXShareHelper.a().a(xdh.a(this.this$0));
-              xdh.a(this.this$0, 1);
+              WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, anni.a(2131715052), this.this$0.i);
+              WXShareHelper.a().a(yws.a(this.this$0));
+              yws.a(this.this$0, 1);
               return;
             }
           }
         }
       }
     } while (this.a != 2);
-    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, alud.a(2131716771), this.this$0.i);
-    WXShareHelper.a().a(xdh.a(this.this$0));
-    xdh.a(this.this$0, 2);
+    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), this.this$0.j, localBitmap, anni.a(2131715048), this.this$0.i);
+    WXShareHelper.a().a(yws.a(this.this$0));
+    yws.a(this.this$0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer.1
  * JD-Core Version:    0.7.0.1
  */

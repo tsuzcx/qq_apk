@@ -1,156 +1,83 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.text.TextUtils;
-import com.tencent.maxvideo.common.GlobalInit;
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.PointF;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.filter.BaseFilter;
+import com.tencent.view.RendererUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bnqj
 {
-  public static int a;
-  public static long a;
-  public static Context a;
-  public static String a;
-  public static final int[] a;
-  public static int b;
-  private static String b;
-  public static final int[] b;
-  public static int c;
-  private static String c;
-  public static final int[] c;
-  public static int d;
-  private static String d;
-  public static final int[] d;
-  private static String e;
-  public static final int[] e;
-  private static String f;
-  public static final int[] f;
-  public static final int[] g = { 1280, 800 };
-  public static final int[] h = { 720, 480 };
+  private bnql jdField_a_of_type_Bnql;
+  private bnrd jdField_a_of_type_Bnrd = new bnrd();
+  private bnre jdField_a_of_type_Bnre = new bnre();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  private Bitmap a()
   {
-    jdField_a_of_type_AndroidContentContext = VideoEnvironment.a();
-    jdField_a_of_type_Long = -1L;
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 640;
-    jdField_d_of_type_Int = 480;
-    jdField_a_of_type_ArrayOfInt = new int[] { 960, 640 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 720, 480 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 720, 540, 640, 480, 480, 360, 320, 240 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 1, 1, 0 };
-    jdField_e_of_type_ArrayOfInt = new int[] { 1, 0, 0 };
-    jdField_f_of_type_ArrayOfInt = new int[] { 1, 1, 0 };
+    this.jdField_a_of_type_Bnrd.a(this.jdField_a_of_type_JavaUtilList);
+    return RendererUtils.saveTexture(this.jdField_a_of_type_Bnrd.a());
   }
   
-  public static String a()
+  public int a()
   {
-    return jdField_c_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static void a()
+  public void a()
   {
-    try
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_Bnre.apply();
+    this.jdField_a_of_type_Bnrd.apply();
+  }
+  
+  public void a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
+  {
+    paramList = this.jdField_a_of_type_Bnre.a(paramInt1, paramList, paramInt2, paramInt3);
+    paramList = this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(paramList.getTextureId(), 64, 64);
+    this.jdField_a_of_type_JavaUtilList.add(paramList);
+  }
+  
+  public void a(bnql parambnql)
+  {
+    this.jdField_a_of_type_Bnql = parambnql;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      AudioManager localAudioManager = (AudioManager)VideoEnvironment.a().getSystemService("audio");
-      int j = localAudioManager.requestAudioFocus(null, 3, 2);
-      int i = j;
-      if (j == 0) {
-        i = localAudioManager.requestAudioFocus(null, 3, 1);
-      }
-      if (i == 0) {
-        localAudioManager.requestAudioFocus(null, 3, 3);
-      }
+      AppInterface localAppInterface = QQStoryContext.a();
+      bnox localbnox = (bnox)localAppInterface.getBusinessHandler(3);
+      localAppInterface.addObserver(new bnqk(this, localAppInterface));
+      localbnox.a(a());
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Bnql.a(new bnrb());
   }
   
-  public static boolean a(long paramLong, Context paramContext)
+  public void c()
   {
-    if (paramLong <= 0L) {}
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            bool1 = bdhb.a();
-            if (!bool1)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("initDirs", 2, "hasSDCardAndWritable = false");
-              }
-              return bool1;
-            }
-            paramContext = bnsx.a().jdField_b_of_type_JavaLangString;
-            if (!TextUtils.isEmpty(paramContext)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("initDirs", 2, "sdcardDirPath = empty");
-          return false;
-          if (QLog.isColorLevel()) {
-            QLog.e("initDirs", 2, "sdcardDirPath:storeVideoPath=" + paramContext);
-          }
-          localFile = new File(paramContext);
-          if ((localFile.exists()) && (localFile.isDirectory()) && (localFile.canWrite())) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("initDirs", 2, "exists OR isDirectory OR canWrite = false");
-        return false;
-        jdField_a_of_type_JavaLangString = paramContext + File.separator + "trimvideo";
-        File localFile = new File(jdField_a_of_type_JavaLangString);
-        bool1 = localFile.mkdirs();
-        bool2 = localFile.isDirectory();
-        if (QLog.isColorLevel()) {
-          QLog.e("initDirs", 2, "trimVideoFilesDirPath:mkd=" + bool1 + " isdir=" + bool2);
-        }
-      } while ((!bool1) && (!bool2));
-      jdField_e_of_type_JavaLangString = paramContext + "/Product";
-      jdField_d_of_type_JavaLangString = paramContext + "/Material";
-      jdField_f_of_type_JavaLangString = jdField_d_of_type_JavaLangString + "/ProcessedMaterial";
-      jdField_b_of_type_JavaLangString = paramContext + "/log.txt";
-      jdField_c_of_type_JavaLangString = paramContext + File.separator + "Source";
-      paramContext = new File(jdField_c_of_type_JavaLangString);
-      bool1 = paramContext.mkdirs();
-      bool2 = paramContext.isDirectory();
-      if (QLog.isColorLevel()) {
-        QLog.e("initDirs", 2, "avSourceFilesDirPath:mkd=" + bool1 + " isdir=" + bool2);
-      }
-    } while ((!bool1) && (!bool2));
-    return true;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).unlock();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public static void b()
+  public void d()
   {
-    try
-    {
-      ((AudioManager)VideoEnvironment.a().getSystemService("audio")).abandonAudioFocus(null);
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).clear();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public static void c()
-  {
-    GlobalInit.nativeSyncProcessMsg(new MessageStruct(7), null, null);
-    jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSLSelf();
+    this.jdField_a_of_type_Bnre.clearGLSLSelf();
+    this.jdField_a_of_type_Bnrd.clearGLSLSelf();
   }
 }
 

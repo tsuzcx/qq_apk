@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import airx;
-import aisb;
+import akit;
+import akix;
 import android.util.Log;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class PhotoListLogicAECamera$3$2
   implements Runnable
 {
-  public PhotoListLogicAECamera$3$2(aisb paramaisb) {}
+  public PhotoListLogicAECamera$3$2(akix paramakix) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class PhotoListLogicAECamera$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicAECamera.3.2
  * JD-Core Version:    0.7.0.1
  */

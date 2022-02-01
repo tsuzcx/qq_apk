@@ -1,35 +1,36 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-@TargetApi(11)
-class avph
-  implements View.OnDragListener
+public class avph
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
+  private final aanz a = aanz.a();
   
-  public avph(avop paramavop, int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
+    {
+      this.a.k();
+      return true;
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  public void onCreate()
   {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-    }
+    super.onCreate();
+    this.a.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avph
  * JD-Core Version:    0.7.0.1
  */

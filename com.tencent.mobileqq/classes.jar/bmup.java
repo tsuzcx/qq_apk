@@ -1,121 +1,226 @@
-import android.graphics.Rect;
-import android.os.Message;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import cooperation.vip.manager.GdtGeneralManager.2;
+import cooperation.vip.manager.GdtGeneralManager.3;
+import cooperation.vip.manager.GdtGeneralManager.5;
+import cooperation.vip.pb.vac_adv_get.VacAdvMetaMsg;
+import cooperation.vip.pb.vac_adv_get.VacAdvRsp;
+import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class bmup
-  implements bmrj<bmre>
 {
-  private final int jdField_a_of_type_Int = bmyg.b(DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout), 40.0F);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private static final bmgv<bmup, Void> jdField_a_of_type_Bmgv = new bmuq();
+  public WeakReference<bmur> a;
+  public HashMap<Long, qq_ad_get.QQAdGetRsp.AdInfo> a;
+  public HashSet<String> a;
+  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
   
-  private bmup(DoodleLayout paramDoodleLayout) {}
-  
-  public boolean a(bmre parambmre, MotionEvent paramMotionEvent)
+  public bmup()
   {
-    float f3 = paramMotionEvent.getX();
-    float f4 = paramMotionEvent.getY();
-    if (bnle.b()) {}
-    for (float f1 = bnle.e;; f1 = 0.0F)
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
+  
+  public static bmup a()
+  {
+    return (bmup)jdField_a_of_type_Bmgv.b(null);
+  }
+  
+  public HashSet<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashSet;
+  }
+  
+  public qq_ad_get.QQAdGet.DeviceInfo a()
+  {
+    for (;;)
     {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() == DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(7);
-      }
-      float f2 = f1;
-      if (bidj.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext())) {
-        f2 = f1 + bidj.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext());
-      }
-      int i = (int)Math.abs(f4 - DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
-      int j;
-      int k;
-      int m;
-      switch (paramMotionEvent.getAction() & 0xFF)
+      try
       {
-      case 3: 
-      case 4: 
-      default: 
-      case 0: 
-      case 2: 
-      case 5: 
-      case 6: 
-        do
-        {
-          return false;
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-          if (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
-            bmpt.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-          }
-          this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-          parambmre = this.jdField_a_of_type_AndroidGraphicsRect;
-          parambmre.top -= this.jdField_a_of_type_Int;
-          parambmre = this.jdField_a_of_type_AndroidGraphicsRect;
-          parambmre.bottom += this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.getGlobalVisibleRect(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(4);
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, (int)f4);
-          return false;
-        } while (i <= DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
-        if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e()))
-        {
-          i = (int)f3;
-          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
-          k = (int)f4;
-          m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-          if ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f3, f4, null, f2)))
-          {
-            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-            return false;
-          }
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-          return false;
+        localObject = new acry();
+        ((acry)localObject).a = "1018ec";
+        localObject = acrx.a(BaseApplicationImpl.getApplication(), (acry)localObject);
+        if (localObject == null) {
+          continue;
         }
-        if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f3, (int)f4)))
-        {
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
-          return false;
-        }
-        DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-        return false;
-      }
-      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e())))
-      {
-        i = (int)f3;
-        j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
-        k = (int)f4;
-        m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-        if ((DoodleLayout.e(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f3, f4, null, f2))))
-        {
-          parambmre.a();
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, 0.0F, 0, 0, null, false, 0);
-          if (QLog.isColorLevel()) {
-            QLog.d("DoodleLayout", 2, "delete face, disable guideline");
-          }
+        localObject = ((acrz)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+        this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo = ((qq_ad_get.QQAdGet.DeviceInfo)localObject);
+        if ((QZLog.isColorLevel()) && (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.taid_ticket.get()))) {
+          QZLog.i("GdtGeneralManager", "@gdttaid  is not null");
         }
       }
-      for (;;)
+      catch (Exception localException)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.n();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(0);
-        DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-        if ((DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) != null) || (DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) == null)) {
+        Object localObject;
+        QZLog.e("GdtGeneralManager", 2, new Object[] { localException.toString() });
+        continue;
+      }
+      return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+      localObject = null;
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.executeOnSubThread(new GdtGeneralManager.5(this));
+  }
+  
+  public void a(int paramInt, vac_adv_get.VacAdvRsp paramVacAdvRsp)
+  {
+    switch (paramInt)
+    {
+    default: 
+      QZLog.e("GdtGeneralManager", "onGdtInfoResponse erro businessType =" + paramInt);
+      return;
+    }
+    a(paramVacAdvRsp);
+  }
+  
+  public void a(long paramLong, int paramInt1, String paramString, int paramInt2, bmur parambmur)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmur);
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new GdtGeneralManager.2(this, paramLong, paramInt1, paramInt2, paramString));
+  }
+  
+  public void a(bmtu parambmtu)
+  {
+    if (parambmtu == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo == null)
+    {
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new GdtGeneralManager.3(this, parambmtu));
+      return;
+    }
+    bmus.a(parambmtu, this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo);
+    QZLog.i("GdtGeneralManager", " @getGdtInfo sendAdvInfoExposeOrClickReport");
+  }
+  
+  public void a(vac_adv_get.VacAdvRsp paramVacAdvRsp)
+  {
+    if (paramVacAdvRsp == null) {
+      return;
+    }
+    ArrayList localArrayList;
+    try
+    {
+      localArrayList = new ArrayList();
+      paramVacAdvRsp = paramVacAdvRsp.vac_adv_msgs.get();
+      if ((paramVacAdvRsp == null) || (paramVacAdvRsp.size() <= 0)) {
+        break label209;
+      }
+      paramVacAdvRsp = paramVacAdvRsp.iterator();
+      while (paramVacAdvRsp.hasNext())
+      {
+        vac_adv_get.VacAdvMetaMsg localVacAdvMetaMsg = (vac_adv_get.VacAdvMetaMsg)paramVacAdvRsp.next();
+        localArrayList.add(AlumBasicData.a(localVacAdvMetaMsg));
+        if ((localVacAdvMetaMsg != null) && (localVacAdvMetaMsg.adv_rsp != null) && (localVacAdvMetaMsg.adv_rsp.report_info != null) && (localVacAdvMetaMsg.adv_rsp.report_info.trace_info != null)) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localVacAdvMetaMsg.adv_rsp.report_info.trace_info.aid.get()), localVacAdvMetaMsg.adv_rsp);
+        }
+      }
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+        break label200;
+      }
+    }
+    catch (Exception paramVacAdvRsp)
+    {
+      QZLog.e("GdtGeneralManager", "handleAlumFloatViewData erro");
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      ((bmur)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a((AlumBasicData)localArrayList.get(0));
+      QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData success");
+      return;
+    }
+    label200:
+    QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData alumBasicDataList is null");
+    return;
+    label209:
+    QZLog.i("GdtGeneralManager", " @getGdtInfo handleAlumFloatViewData advMetaMsg is null");
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
+  }
+  
+  public void a(URL paramURL)
+  {
+    if (paramURL == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramURL = (HttpURLConnection)paramURL.openConnection();
+        paramURL.setRequestMethod("POST");
+        paramURL.setConnectTimeout(10000);
+        paramURL.setReadTimeout(10000);
+        paramURL.setUseCaches(false);
+        paramURL.connect();
+        int i = paramURL.getResponseCode();
+        if (i != 200) {
+          break label124;
+        }
+        bool = true;
+        if (!QZLog.isColorLevel()) {
           break;
         }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, false, false, false);
-        return false;
-        if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f3, (int)f4)))
-        {
-          parambmre.a();
-          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
-        }
+        QZLog.i("GdtGeneralManager", "@getGdtInfo exporsure rspCode " + i + "， request gdt" + bool);
+        return;
       }
-      DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout).a.a(Message.obtain(null, 17, 0, 0, new bmnc(false, false, false, false, true)));
-      return false;
+      catch (Exception paramURL) {}
+      if (!QZLog.isColorLevel()) {
+        break;
+      }
+      QZLog.w("GdtGeneralManager", 2, new Object[] { paramURL.toString() });
+      return;
+      label124:
+      boolean bool = false;
+    }
+  }
+  
+  public byte[] a()
+  {
+    vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
+    try
+    {
+      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo != null) {
+        localVacFeedsAdvMetaReq.device_info.set(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo);
+      }
+      return localVacFeedsAdvMetaReq.toByteArray();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QZLog.e("GdtGeneralManager", 2, new Object[] { localException.toString() });
+      }
     }
   }
 }

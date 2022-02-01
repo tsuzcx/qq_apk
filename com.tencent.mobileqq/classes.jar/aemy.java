@@ -1,25 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.Leba.42;
 
 public class aemy
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public aemy(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aemy(Leba.42 param42) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null) {
-        ActivateFriendActivity.a(this.a).e();
-      }
-    }
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
+    this.a.jdField_a_of_type_Aenb.a();
   }
 }
 

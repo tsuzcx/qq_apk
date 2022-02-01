@@ -1,21 +1,41 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ocn
-  implements ViewFactory.FoundClickableViewListener
+  implements URLDrawableDownListener
 {
-  ocn(ocm paramocm, BaseData paramBaseData, Context paramContext) {}
+  ocn(ocm paramocm) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramViewBase.setOnClickListener(new oco(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (ocm.a(this.a) != null) {
+      ocm.a(this.a).setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ocn
  * JD-Core Version:    0.7.0.1
  */

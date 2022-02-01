@@ -1,8 +1,13 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-
-public abstract interface aheg
+class aheg
 {
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public int a;
+  public long a;
+  public int b;
+  
+  aheg(ahed paramahed)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

@@ -1,14 +1,45 @@
-public final class ahhx
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+public class ahhx
+  extends afwr
 {
-  public static String a(int paramInt)
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public CropBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public ahhx(ahhm paramahhm) {}
+  
+  public void a()
   {
-    if (paramInt == 0) {
-      return "1";
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bgjy.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          ahhm.a(this.jdField_a_of_type_Ahhm, localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      ahhm.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
-    if (paramInt == 1) {
-      return "2";
-    }
-    return "";
   }
 }
 

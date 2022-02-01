@@ -1,98 +1,260 @@
+import android.content.Context;
+import android.os.Environment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public class bbsb
 {
-  public static int a(String paramString)
+  private static volatile bbsb jdField_a_of_type_Bbsb;
+  public static final String a;
+  private Map<Integer, bbrk> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
+  private Map<Integer, bbru> b = new HashMap();
+  
+  static
   {
-    int i = -1;
-    if (paramString.equals("SCANNING")) {
-      i = 0;
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + File.separator + "ArkApp";
+  }
+  
+  private bbrr a(int paramInt)
+  {
+    bbrr localbbrr2 = c(paramInt);
+    bbrr localbbrr1 = localbbrr2;
+    if (localbbrr2 == null) {
+      localbbrr1 = b(paramInt);
     }
+    return localbbrr1;
+  }
+  
+  public static bbsb a()
+  {
+    if (jdField_a_of_type_Bbsb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bbsb == null)
+      {
+        jdField_a_of_type_Bbsb = new bbsb();
+        jdField_a_of_type_Bbsb.b();
+      }
+      return jdField_a_of_type_Bbsb;
+    }
+    finally {}
+  }
+  
+  private void a(List<bbru> arg1, List<bbrk> paramList1)
+  {
+    if (??? != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RichNodeFactory", 2, "updateConfig， nativesize :" + ???.size());
+      }
+      synchronized (this.b)
+      {
+        this.b.clear();
+        ??? = ???.iterator();
+        if (???.hasNext())
+        {
+          bbru localbbru = (bbru)???.next();
+          this.b.put(Integer.valueOf(localbbru.a()), localbbru);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramList1 == null) {
+        break label264;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RichNodeFactory", 2, "updateConfig， arksize:" + paramList1.size());
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        paramList1 = paramList1.iterator();
+        if (!paramList1.hasNext()) {
+          break;
+        }
+        ??? = (bbrk)paramList1.next();
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(((bbrk)???).a()), ???);
+      }
+      synchronized (this.b)
+      {
+        this.b.clear();
+        if (QLog.isColorLevel()) {
+          QLog.d("RichNodeFactory", 2, "updateConfig， nativesize = 0");
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      label264:
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("RichNodeFactory", 2, "updateConfig， arksize = 0");
+        return;
+      }
+    }
+  }
+  
+  private bbrr b(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      bbrk localbbrk = (bbrk)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (localbbrk != null) {
+        return new bbrp(localbbrk);
+      }
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    c();
+  }
+  
+  private bbrr c(int paramInt)
+  {
+    if (paramInt == 101) {
+      return new bbrw();
+    }
+    return null;
+  }
+  
+  private void c()
+  {
+    ArrayList localArrayList = null;
+    Object localObject1 = aqzh.a();
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RichNodeFactory", 2, "initConfig , config is null");
+      }
+      return;
+    }
+    this.jdField_a_of_type_Boolean = ((aqzh)localObject1).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeFactory", 2, "mRichSwitchOn :" + this.jdField_a_of_type_Boolean);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      a(null, null);
+      return;
+    }
+    Object localObject2 = ((aqzh)localObject1).a("ark");
+    Object localObject3 = ((aqzh)localObject1).a("native");
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+    {
+      localObject1 = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        aqzi localaqzi = (aqzi)((Iterator)localObject2).next();
+        ((List)localObject1).add(new bbrk(localaqzi.a, localaqzi.b, localaqzi.c, localaqzi.d, "", null));
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localArrayList;
+      if (localObject3 != null)
+      {
+        localObject2 = localArrayList;
+        if (((ArrayList)localObject3).size() > 0)
+        {
+          localArrayList = new ArrayList();
+          localObject3 = ((ArrayList)localObject3).iterator();
+          for (;;)
+          {
+            localObject2 = localArrayList;
+            if (!((Iterator)localObject3).hasNext()) {
+              break;
+            }
+            localArrayList.add(new bbru(((aqzi)((Iterator)localObject3).next()).a));
+          }
+        }
+      }
+      a((List)localObject2, (List)localObject1);
+      return;
+      localObject1 = null;
+    }
+  }
+  
+  public bbrr a(QQAppInterface paramQQAppInterface, Context paramContext, bbmw parambbmw)
+  {
+    Object localObject1 = null;
+    if (parambbmw == null) {}
+    Object localObject2;
+    String str1;
+    String str2;
     do
     {
-      return i;
-      if (paramString.equals("UPLOADING")) {
-        return 1;
-      }
-      if (paramString.equals("UPLOAD_SUSPEND")) {
-        return 2;
-      }
-      if (paramString.equals("UPLOAD_INTERRUPT")) {
-        return 3;
-      }
-      if (paramString.equals("FORWARDING")) {
-        return 4;
-      }
-      if (paramString.equals("FORWARD_FAILED")) {
-        return 5;
-      }
-      if (paramString.equals("UPLOADED")) {
-        return 6;
-      }
-      if (paramString.equals("NOT_DOWNLOAD")) {
-        return 7;
-      }
-      if (paramString.equals("DOWNLOADING")) {
-        return 8;
-      }
-      if (paramString.equals("DOWNLOAD_SUSPEND")) {
-        return 9;
-      }
-      if (paramString.equals("DOWNLOAD_INTERRUPT")) {
-        return 10;
-      }
-      if (paramString.equals("DOWNLOADED")) {
-        return 11;
-      }
-      if (paramString.equals("DELETED")) {
-        return 12;
-      }
-    } while (!paramString.equals("OTHER_UPLOADING"));
-    return 13;
+      int i;
+      do
+      {
+        do
+        {
+          return localObject1;
+        } while (!(parambbmw instanceof bboe));
+        localObject2 = (bboe)parambbmw;
+        i = ((bboe)localObject2).f();
+        parambbmw = a(i);
+        localObject1 = parambbmw;
+      } while (parambbmw == null);
+      str1 = ((bboe)localObject2).c();
+      str2 = ((bboe)localObject2).e();
+      localObject2 = ((bboe)localObject2).d();
+      parambbmw.a(paramQQAppInterface, paramContext, i, str1, (String)localObject2, str2);
+      localObject1 = parambbmw;
+    } while (!QLog.isColorLevel());
+    QLog.d("RichNodeFactory", 2, "create, data:" + str1 + " config:" + str2 + " extradata:" + (String)localObject2);
+    return parambbmw;
   }
   
-  public static String a(int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return "SCANNING";
-    case 1: 
-      return "UPLOADING";
-    case 2: 
-      return "UPLOAD_SUSPEND";
-    case 3: 
-      return "UPLOAD_INTERRUPT";
-    case 4: 
-      return "FORWARDING";
-    case 5: 
-      return "FORWARD_FAILED";
-    case 6: 
-      return "UPLOADED";
-    case 7: 
-      return "NOT_DOWNLOAD";
-    case 8: 
-      return "DOWNLOADING";
-    case 9: 
-      return "DOWNLOAD_SUSPEND";
-    case 10: 
-      return "DOWNLOAD_INTERRUPT";
-    case 11: 
-      return "DOWNLOADED";
-    case 12: 
-      return "DELETED";
+    c();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeFactory", 2, "nodeExist， id:" + paramInt);
     }
-    return "OTHER_UPLOADING";
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RichNodeFactory", 2, "nodeExist， switch off");
+      }
+      return false;
+    }
+    synchronized (this.b)
+    {
+      if (this.b.get(Integer.valueOf(paramInt)) != null) {
+        return true;
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      bbrk localbbrk = (bbrk)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (localbbrk != null)
+      {
+        return true;
+        localObject1 = finally;
+        throw localObject1;
+      }
+    }
+    return false;
   }
 }
 

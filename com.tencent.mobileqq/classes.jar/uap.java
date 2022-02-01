@@ -1,19 +1,31 @@
-import android.graphics.RectF;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import kotlin.Metadata;
 
-public class uap
-  implements uao
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "lastPosition", "", "newPosition", "onChange"}, k=3, mv={1, 1, 16})
+final class uap
+  implements bknt
 {
-  public uap(QCircleTransitionImageView paramQCircleTransitionImageView) {}
+  uap(uai paramuai) {}
   
-  public float a()
+  public final void a(int paramInt1, int paramInt2)
   {
-    return QCircleTransitionImageView.b(this.a).bottom;
+    uai.a(this.a, paramInt2);
+    Object localObject = uai.a(this.a);
+    if (localObject != null) {}
+    for (float f = ((smp)localObject).a(uai.a(this.a));; f = 1.0F)
+    {
+      bmqa.a("readinjoy_font_size_ratio_sp", Float.valueOf(f));
+      bmqa.a("readinjoy_font_size_index_sp" + pha.a(), Integer.valueOf(uai.a(this.a)));
+      localObject = uai.a(this.a);
+      if (localObject != null) {
+        ((ual)localObject).a(uai.a(this.a), f);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uap
  * JD-Core Version:    0.7.0.1
  */

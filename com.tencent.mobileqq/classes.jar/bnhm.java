@@ -1,16 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.graphics.Bitmap;
 
-public class bnhm
-  extends bnhq
+public abstract interface bnhm
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

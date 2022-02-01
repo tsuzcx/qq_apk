@@ -1,48 +1,24 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
 
 public class ajqp
-  extends OrientationEventListener
+  extends ajqq
 {
-  public ajqp(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public static final int[] a = { 2131690659, 2131690664, 2131690661, 2131690662, 2131690666, 2131690663, 2131690660 };
+  public static final int[] b = { 2131364355, 2131364360, 2131364357, 2131364358, 2131364361, 2131364359, 2131364356 };
+  
+  public ajqp(FragmentActivity paramFragmentActivity)
   {
-    super(paramContext);
+    super(paramFragmentActivity);
   }
   
-  public void onOrientationChanged(int paramInt)
+  protected int[] a()
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.i) {}
-    do
-    {
-      return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

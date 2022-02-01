@@ -1,24 +1,46 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ClipDrawable;
-import com.tencent.av.ui.QavPanel;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mko
-  implements ValueAnimator.AnimatorUpdateListener
+class mko
+  implements mib
 {
-  public mko(QavPanel paramQavPanel) {}
+  mko(mkn parammkn, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (QavPanel.a(this.a)) {
-      this.a.a.setLevel(i);
+    if (paramBoolean)
+    {
+      if (mkn.a(this.jdField_a_of_type_Mkn)) {
+        return;
+      }
+      if (this.jdField_a_of_type_Mkn.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        this.jdField_a_of_type_Mkn.a("0X80051FE");
+      }
+      for (;;)
+      {
+        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
+        this.jdField_a_of_type_Mkn.a.d = true;
+        this.jdField_a_of_type_Mkn.a.c(this.jdField_a_of_type_Long);
+        return;
+        if (this.jdField_a_of_type_Mkn.a.b) {
+          this.jdField_a_of_type_Mkn.a("0X8004201");
+        } else {
+          this.jdField_a_of_type_Mkn.a("0X8004205");
+        }
+      }
     }
+    if (this.jdField_a_of_type_Mkn.a.b)
+    {
+      this.jdField_a_of_type_Mkn.a("0X800439E");
+      return;
+    }
+    this.jdField_a_of_type_Mkn.a("0X80043FD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mko
  * JD-Core Version:    0.7.0.1
  */

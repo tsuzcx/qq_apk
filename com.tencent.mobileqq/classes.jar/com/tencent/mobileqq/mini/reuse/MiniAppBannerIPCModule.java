@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import ajgb;
-import ajhy;
+import akyh;
+import alah;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import azqs;
+import bcst;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -30,7 +30,7 @@ public class MiniAppBannerIPCModule
   public static final String TVALUE_CLOSE_MINIAPP = "0X800A124";
   public static final String TVALUE_SHOW_MINIAPP = "0X800A121";
   private Handler mHandler = new MiniAppBannerIPCModule.1(this, Looper.getMainLooper());
-  private ajhy mMessageToShowBanner;
+  private alah mMessageToShowBanner;
   
   private MiniAppBannerIPCModule()
   {
@@ -55,7 +55,7 @@ public class MiniAppBannerIPCModule
   {
     if (this.mMessageToShowBanner != null)
     {
-      ajgb.a(getAppInterface(), this.mMessageToShowBanner);
+      akyh.a(getAppInterface(), this.mMessageToShowBanner);
       this.mMessageToShowBanner = null;
     }
   }
@@ -108,9 +108,9 @@ public class MiniAppBannerIPCModule
       hideExistingMessageToBanner();
       if ("action.miniapp.enterbackground".equals(paramString))
       {
-        this.mMessageToShowBanner = ajgb.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
+        this.mMessageToShowBanner = akyh.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
         this.mHandler.sendEmptyMessageDelayed(1, 300000L);
-        azqs.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
+        bcst.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
       }
       return new EIPCResult();
       paramBundle = "正在使用";
@@ -120,7 +120,7 @@ public class MiniAppBannerIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule
  * JD-Core Version:    0.7.0.1
  */

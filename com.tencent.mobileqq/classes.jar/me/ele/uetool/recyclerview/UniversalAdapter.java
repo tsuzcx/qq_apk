@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.uetool.util.JarResource;
@@ -66,6 +67,7 @@ public class UniversalAdapter
   {
     paramViewPool.itemView.setTag(JarResource.getIdByName("id", "pd_recycler_adapter_id"), Integer.valueOf(paramInt));
     ((BaseItem)this.data.get(paramInt)).onBinding(paramInt, paramViewPool, ((BaseItem)this.data.get(paramInt)).data);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewPool, paramInt, getItemId(paramInt));
   }
   
   public void onClick(View paramView)
@@ -75,6 +77,7 @@ public class UniversalAdapter
       int i = ((Integer)paramView.getTag(JarResource.getIdByName("id", "pd_recycler_adapter_id"))).intValue();
       this.listener.onItemClick(i, (BaseItem)this.data.get(i));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public UniversalAdapter.ViewPool onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -128,7 +131,7 @@ public class UniversalAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.recyclerview.UniversalAdapter
  * JD-Core Version:    0.7.0.1
  */

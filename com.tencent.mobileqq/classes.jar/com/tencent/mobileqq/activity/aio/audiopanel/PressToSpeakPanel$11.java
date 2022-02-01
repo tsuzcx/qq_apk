@@ -13,13 +13,13 @@ class PressToSpeakPanel$11
     PressToSpeakPanel.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
     PressToSpeakPanel.a(this.this$0).b(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
     PressToSpeakPanel.a(this.this$0).b(this.jdField_a_of_type_JavaLangString, null);
-    this.this$0.b();
+    this.this$0.d();
     PressToSpeakPanel.a(this.this$0).c(this.jdField_a_of_type_JavaLangString, (int)this.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.11
  * JD-Core Version:    0.7.0.1
  */

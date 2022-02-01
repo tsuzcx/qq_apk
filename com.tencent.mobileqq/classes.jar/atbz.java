@@ -1,25 +1,11 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
 class atbz
-  extends BroadcastReceiver
+  implements bigw
 {
-  atbz(atbp paramatbp) {}
+  atbz(atbx paramatbx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ("close.activity".equals(paramContext)) {
-      if (atbp.a(this.a) != null) {
-        atbp.a(this.a).finish();
-      }
-    }
-    while ((!"close.loading".equals(paramContext)) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.dismiss();
+    atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atbx.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

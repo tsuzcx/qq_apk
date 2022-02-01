@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.subaccount;
 
-import bacu;
+import bddy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubAccountControll$5
   implements Runnable
 {
-  public SubAccountControll$5(bacu parambacu) {}
+  public SubAccountControll$5(bddy parambddy) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class SubAccountControll$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountControll.5
  * JD-Core Version:    0.7.0.1
  */

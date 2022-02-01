@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import com.tencent.mobileqq.mini.http.HttpCallBack;
+import com.tencent.mobileqq.mini.network.http.HttpCallBack;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
@@ -34,7 +34,7 @@ class MiniLogManager$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.7.1
  * JD-Core Version:    0.7.0.1
  */

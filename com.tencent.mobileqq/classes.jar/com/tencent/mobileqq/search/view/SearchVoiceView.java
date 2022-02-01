@@ -20,8 +20,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import ayxu;
-import ayxv;
+import bbwx;
+import bbwy;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -47,8 +47,8 @@ public class SearchVoiceView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ayxu(this));
-  private ayxv jdField_a_of_type_Ayxv;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bbwx(this));
+  private bbwy jdField_a_of_type_Bbwy;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
@@ -349,14 +349,14 @@ public class SearchVoiceView
     }
   }
   
-  public void setOnStateEndListener(ayxv paramayxv)
+  public void setOnStateEndListener(bbwy parambbwy)
   {
-    this.jdField_a_of_type_Ayxv = paramayxv;
+    this.jdField_a_of_type_Bbwy = parambbwy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.SearchVoiceView
  * JD-Core Version:    0.7.0.1
  */

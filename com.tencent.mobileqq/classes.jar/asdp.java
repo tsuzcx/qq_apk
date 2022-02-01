@@ -1,17 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
 class asdp
-  implements DialogInterface.OnClickListener
+  implements URLDrawableDownListener
 {
-  asdp(asdo paramasdo, bdjz parambdjz) {}
+  asdp(asdn paramasdn, arxg paramarxg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
-    this.jdField_a_of_type_Asdo.a.setResult(-1);
-    this.jdField_a_of_type_Asdo.a.finish();
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arxg.toString());
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arxg.toString());
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Arxg.toString());
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RelatedEmoticonListAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Arxg.toString());
+    }
   }
 }
 

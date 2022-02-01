@@ -1,46 +1,56 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.widget.QQToast;
 
 class axui
-  implements GLSurfaceView.EGLContextFactory
+  extends Handler
 {
-  private int jdField_a_of_type_Int = 12440;
+  axui(axtp paramaxtp) {}
   
-  axui(axuh paramaxuh) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void handleMessage(Message paramMessage)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axuh.a);
-    arrayOfInt[2] = 12344;
-    wxe.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axuh.a) });
-    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axuh.a);
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axuh.a) != 0) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
     }
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    do
     {
-      wxe.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      wxe.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
-      axul.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698201);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        return;
+      } while ((this.a.jdField_a_of_type_Axxf == null) || (axtp.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697879);
+      }
+      this.a.jdField_a_of_type_Axxf.a(axtp.a(this.a).uRoomid);
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, axtp.a(this.a).uin, "", "yes", "android");
+      return;
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131698198, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Axxf == null);
+    this.a.jdField_a_of_type_Axxf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axui
  * JD-Core Version:    0.7.0.1
  */

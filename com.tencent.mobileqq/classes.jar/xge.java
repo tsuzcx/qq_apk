@@ -1,76 +1,43 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.List;
 
-public class xge
-  implements xea
+class xge
+  extends PagerAdapter
 {
-  public xge(DoodleEditView paramDoodleEditView) {}
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public void a(xiq paramxiq)
+  public xge(List<View> paramList)
   {
-    if ((paramxiq instanceof xed))
-    {
-      paramxiq = (xeb)DoodleEditView.a(this.a).a("TextLayer");
-      if (paramxiq != null) {
-        paramxiq.a();
-      }
-    }
-    this.a.a.b();
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a(xiq paramxiq, int paramInt1, int paramInt2)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if ((paramxiq instanceof xed))
-    {
-      wxe.b("DoodleEditView", "click the TextItem:" + paramxiq);
-      paramxiq = (xeb)DoodleEditView.a(this.a).a("TextLayer");
-      this.a.a.b();
-      if ((paramxiq != null) && (paramxiq.a != null))
-      {
-        paramxiq.d();
-        paramxiq.a.a();
-      }
-    }
-    xdn localxdn;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramxiq instanceof xdr));
-        wxe.b("DoodleEditView", "click the FaceAndTextItem:" + paramxiq);
-        paramxiq.d = false;
-        localxdn = (xdn)DoodleEditView.a(this.a).a("FaceLayer");
-        xdr localxdr = (xdr)paramxiq;
-        if (localxdn != null) {
-          localxdn.jdField_a_of_type_JavaUtilList.add(localxdr);
-        }
-        this.a.a.b();
-        this.a.setVisibility(8);
-      } while (DoodleEditView.a(this.a) == null);
-      if (!(paramxiq instanceof xdo)) {
-        break;
-      }
-    } while ((localxdn == null) || (localxdn.jdField_a_of_type_Xdu == null));
-    localxdn.jdField_a_of_type_Xdu.a((xdo)paramxiq);
-    return;
-    DoodleEditView.a(this.a).a(paramxiq);
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  public int getCount()
   {
-    if (DoodleEditView.a(this.a) != null) {
-      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xge
  * JD-Core Version:    0.7.0.1
  */

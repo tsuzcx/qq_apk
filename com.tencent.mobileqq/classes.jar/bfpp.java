@@ -1,25 +1,79 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bfpp
-  implements View.OnClickListener
+public class bfpp
+  extends bfpn
 {
-  bfpp(bfpl parambfpl, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public bfpp(String paramString1, String paramString2, bfpo parambfpo, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfpl, this.jdField_a_of_type_Int);
+    super(paramString1, paramString2, parambfpo, paramInt, paramBundle);
+  }
+  
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  {
+    if (isCancelled()) {
+      return null;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bfpl.dismiss();
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    {
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Origin");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Origin", str3);
+          ((Bundle)localObject).remove("Origin");
+        }
+        paramVarArgs = new JSONObject(nlw.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfpp
  * JD-Core Version:    0.7.0.1
  */

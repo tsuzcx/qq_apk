@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-
-public class azab
+public final class azab
+  extends ayzn
 {
-  public MessageForReplyText.SourceMsgInfo a;
-  public MessageForText.AtTroopMemberInfo a;
-  public String a;
-  public byte[] a;
-  public String b;
-  
-  public azab(azaa paramazaa) {}
+  protected int a()
+  {
+    return 511;
+  }
 }
 
 

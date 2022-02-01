@@ -1,27 +1,16 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-final class bddp
-  implements URLDrawable.URLDrawableListener
+class bddp
+  implements Callable<Boolean>
 {
-  bddp(WeakReference paramWeakReference) {}
+  bddp(bddn parambddn, File paramFile) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Boolean a()
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    if ((bddn.a(this.jdField_a_of_type_Bddn).exists()) && (this.jdField_a_of_type_JavaIoFile == bddn.a(this.jdField_a_of_type_Bddn))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
   }
 }

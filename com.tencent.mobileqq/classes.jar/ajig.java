@@ -1,13 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-
-public class ajig
-  implements View.OnClickListener
+public abstract interface ajig
 {
-  public ajig(DrawerFrame paramDrawerFrame) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt);
 }
 
 

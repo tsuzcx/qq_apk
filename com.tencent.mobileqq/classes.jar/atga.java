@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.qphone.base.util.QLog;
 
 class atga
-  extends bapq
+  extends atfi
 {
-  atga(atfz paramatfz) {}
-  
-  protected void a(boolean paramBoolean, bapt parambapt, int paramInt, String paramString)
+  public atga(atfe paramatfe)
   {
-    if ((!paramBoolean) || (parambapt == null)) {}
-    do
+    super(paramatfe);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      do
-      {
-        return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambapt.e);
-      } while (!(parambapt instanceof WatchTogetherSession));
-      paramString = atfz.a(this.a, (WatchTogetherSession)parambapt);
-    } while (paramString == null);
-    this.a.b(parambapt.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 6);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Atfi = new atfy(this.jdField_a_of_type_Atfe);
   }
 }
 

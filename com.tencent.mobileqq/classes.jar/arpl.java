@@ -1,39 +1,17 @@
-import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
 
-class arpl
-  implements arrh
+public final class arpl
 {
-  arpl(arph paramarph, List paramList, aqsb paramaqsb, arpm paramarpm) {}
-  
-  public void a()
+  public static arow a(QQAppInterface paramQQAppInterface, arpp paramarpp, int paramInt)
   {
-    arri.d(arph.a(this.jdField_a_of_type_Arph).getString(2131692914));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    switch (paramInt)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bdhb.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity.getFilePath(), "", arph.a(this.jdField_a_of_type_Arph).getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
+    default: 
+      return new arpz(paramQQAppInterface, paramarpp);
+    case 0: 
+      return new arpz(paramQQAppInterface, paramarpp);
     }
-    if (this.jdField_a_of_type_Arpm != null) {
-      this.jdField_a_of_type_Arpm.a(4, 0);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Arpm != null) {
-      this.jdField_a_of_type_Arpm.a(4, 1);
-    }
+    return new arox(paramQQAppInterface, paramarpp);
   }
 }
 

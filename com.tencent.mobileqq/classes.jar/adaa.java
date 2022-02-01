@@ -1,27 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.DisTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-class adaa
-  implements aimo
+public class adaa
+  implements acxp
 {
-  adaa(aczv paramaczv) {}
-  
-  public void a(Context paramContext, boolean paramBoolean)
+  public int a()
   {
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getApplicationContext(), 1, alud.a(2131705285), 0).a();
-      return;
-    }
-    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
-    paramContext.putExtra("fromKeyForContactBind", 5);
-    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
-    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
-    this.a.a.startActivity(paramContext);
+    return 1004;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.DisTmp();
+    paramQQAppInterface.dis_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.dis_tmp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

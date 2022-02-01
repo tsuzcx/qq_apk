@@ -1,27 +1,18 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-class athi
-  implements apji
+public final class athi
+  implements Parcelable.Creator<FileInfo>
 {
-  athi(athh paramathh) {}
-  
-  public void a(apjh paramapjh)
+  public FileInfo a(Parcel paramParcel)
   {
-    try
-    {
-      paramapjh.dismiss();
-      this.a.mRuntime.a().finish();
-      azqs.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (Throwable paramapjh)
-    {
-      for (;;)
-      {
-        QLog.e("DocxApiPlugin", 1, "handleEvent", paramapjh);
-      }
-    }
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

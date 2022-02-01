@@ -1,16 +1,16 @@
-public abstract interface axss
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class axss
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  axss(axsd paramaxsd) {}
   
-  public abstract void a(axst paramaxst);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axss
  * JD-Core Version:    0.7.0.1
  */

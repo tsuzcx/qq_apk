@@ -1,53 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
-
-class uhi
-  implements ubb
+public abstract class uhi<T>
 {
-  uhi(uhf paramuhf) {}
+  protected T a;
+  protected StringBuilder a;
   
-  public void a(FeedCloudMeta.StComment paramStComment)
+  public T a()
   {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeComment stComment" + paramStComment.id.get());
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public void a(FeedCloudMeta.StReply paramStReply)
+  public String a()
   {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeReply stReply" + paramStReply.id.get());
-    trx localtrx = uhf.a(this.a);
-    if (localtrx != null)
-    {
-      if (this.a.a != 1) {
-        break label140;
-      }
-      uhf.a(this.a, localtrx, 7);
+    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
+      return "";
     }
-    for (;;)
-    {
-      localtrx.a = paramStReply;
-      paramStReply = uhf.a(this.a);
-      if (TextUtils.isEmpty(paramStReply)) {
-        break;
-      }
-      QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey" + paramStReply);
-      paramStReply = uax.a().a(paramStReply, localtrx);
-      uhf.a(this.a).a(paramStReply);
-      uhf.a(this.a).notifyDataSetChanged();
-      return;
-      label140:
-      if (this.a.a == 2) {
-        uhf.a(this.a, localtrx, 11);
-      }
-    }
-    QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey error");
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uhi
  * JD-Core Version:    0.7.0.1
  */

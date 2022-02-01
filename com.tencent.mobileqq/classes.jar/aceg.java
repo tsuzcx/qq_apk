@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
+import cooperation.wadl.ipc.WadlResult;
 
-public class aceg
-  implements DialogInterface.OnClickListener
+public abstract interface aceg
 {
-  public aceg(ArkFullScreenAppActivity.8.1.1 param1) {}
+  public abstract void a(WadlResult paramWadlResult);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b(WadlResult paramWadlResult);
+  
+  public abstract void c(WadlResult paramWadlResult);
 }
 
 

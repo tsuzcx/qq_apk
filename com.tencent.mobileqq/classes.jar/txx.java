@@ -1,39 +1,16 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import java.util.Comparator;
 
 public class txx
-  implements ucw
+  implements Comparator<txw>
 {
-  public txx(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
+  public int a(txw paramtxw1, txw paramtxw2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-    int i;
-    QCircleContentOperationView localQCircleContentOperationView;
-    if (paramBoolean)
-    {
-      i = 2130843648;
-      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
-      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-      if (!paramBoolean) {
-        break label52;
-      }
-    }
-    label52:
-    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
-    {
-      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
-      return;
-      i = 0;
-      break;
-    }
+    return paramtxw2.a - paramtxw1.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txx
  * JD-Core Version:    0.7.0.1
  */

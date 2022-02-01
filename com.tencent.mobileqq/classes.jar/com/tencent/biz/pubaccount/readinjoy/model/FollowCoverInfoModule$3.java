@@ -2,24 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bkbq;
-import pfv;
+import bmqa;
+import pxc;
 
 public class FollowCoverInfoModule$3
   implements Runnable
 {
-  public FollowCoverInfoModule$3(pfv parampfv) {}
-  
   public void run()
   {
-    Object localObject = bkbq.a(pfv.a(this.this$0), true, false);
+    Object localObject = bmqa.a(pxc.a(this.this$0), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
         ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info_exposure");
-        bkbq.a((SharedPreferences.Editor)localObject, true);
+        bmqa.a((SharedPreferences.Editor)localObject, true);
       }
     }
   }

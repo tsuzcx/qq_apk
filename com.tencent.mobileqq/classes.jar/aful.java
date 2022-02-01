@@ -1,38 +1,77 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder.ChatVideoView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.1;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.2;
 import com.tencent.qphone.base.util.QLog;
 
 public class aful
-  extends aeqi
 {
-  public ImageView a;
-  public TextView a;
-  public LightVideoItemBuilder.ChatVideoView a;
-  public MessageProgressView a;
-  public TextView b;
+  public afum a;
+  private ViewGroup a;
   
-  public aful(LightVideoItemBuilder paramLightVideoItemBuilder) {}
+  public aful(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LightVideoItemBuilder", 2, String.format("onScrollOutScreen but not recycle, message:%d is playing", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) }));
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+  }
+  
+  public void a(afum paramafum)
+  {
+    this.jdField_a_of_type_Afum = paramafum;
+  }
+  
+  public void a(aimh paramaimh)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramaimh != null) {
+        break label65;
       }
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getStatus() != 1) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable() instanceof QQLiveDrawable))) {
+    label65:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaimh)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramaimh));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoItemBuilder", 2, "onScrollOutScreen(): recyleAndKeepPostion ");
+  }
+  
+  public void a(View paramView, aimh paramaimh)
+  {
+    int j;
+    if (paramView != null)
+    {
+      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
+      if (j == -1) {
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        if (paramaimh != null) {
+          break label152;
+        }
+      }
     }
-    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable()).recyleAndKeepPostion();
+    label152:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaimh)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
+      paramView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramaimh));
+      return;
+    }
   }
 }
 

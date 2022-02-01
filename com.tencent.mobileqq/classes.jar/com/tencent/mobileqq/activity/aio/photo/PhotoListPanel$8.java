@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aglh;
+import ahvk;
 import java.util.ArrayList;
 
 class PhotoListPanel$8
@@ -14,12 +14,12 @@ class PhotoListPanel$8
       this.this$0.a.a();
     }
     this.this$0.b(this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_Boolean);
-    azdd.b = System.currentTimeMillis();
+    bcec.b = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.8
  * JD-Core Version:    0.7.0.1
  */

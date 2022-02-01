@@ -1,46 +1,62 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class skb
-  implements View.OnClickListener
 {
-  public skb(ReadInJoySelectPositionHeader paramReadInJoySelectPositionHeader, Context paramContext) {}
+  private JSONObject a;
   
-  public void onClick(View paramView)
+  public skb(String paramString)
   {
-    paramView = owy.a().a();
-    SelectPositionModule.PositionData localPositionData;
-    if (paramView != null)
+    try
     {
-      localPositionData = paramView.b();
-      if (!paramView.a(localPositionData)) {
-        break label53;
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.a = new JSONObject();
+        return;
       }
-      paramView.b(localPositionData);
-      if (ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader) != null) {
-        ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader).a(localPositionData);
-      }
-    }
-    label53:
-    do
-    {
+      this.a = new JSONObject(paramString);
       return;
-      if (localPositionData != null) {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, String.format("你当前在%s，暂无本地频道。", new Object[] { localPositionData.cityGPS }), 0).a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInJoySelectPositionHeader", 2, "onClick not in city white list gpsPosition = " + localPositionData);
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public skb(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.a = new JSONObject();
+    och.a(paramString1, paramString2, paramString3, paramString4, this.a);
+  }
+  
+  public skb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1);
+    och.a(paramString2, paramString3, paramString4, paramString5, this.a);
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  protected void a(String paramString, Object paramObject)
+  {
+    try
+    {
+      this.a.put(paramString, paramObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skb
  * JD-Core Version:    0.7.0.1
  */

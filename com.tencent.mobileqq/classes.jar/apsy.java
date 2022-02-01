@@ -1,20 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
 
-class apsy
-  implements DialogInterface.OnDismissListener
+public class apsy
 {
-  apsy(apsx paramapsx) {}
+  public static final String a;
+  public apta[] a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    jdField_a_of_type_JavaLangString = aptb.class.getSimpleName() + "." + apsy.class.getSimpleName();
+  }
+  
+  public apsy()
+  {
+    this.jdField_a_of_type_ArrayOfApta = new apta[7];
+  }
+  
+  public apta a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 7) {}
     }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfApta[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
+      {
+      default: 
+        paramAppInterface = (AppInterface)localObject;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new apsz();
+      }
+      this.jdField_a_of_type_ArrayOfApta[i] = localObject;
+      return localObject;
+      paramAppInterface = new lts();
+      continue;
+      paramAppInterface = new aosf();
+      continue;
+      paramAppInterface = new myv();
     }
   }
 }

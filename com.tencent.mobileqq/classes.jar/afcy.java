@@ -1,12 +1,24 @@
-public abstract interface afcy
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+
+public class afcy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public afcy(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afcy
  * JD-Core Version:    0.7.0.1
  */

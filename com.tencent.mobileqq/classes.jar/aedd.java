@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.13.1;
 
 public class aedd
-  implements nfd
+  extends anmu
 {
-  public aedd(TroopInfoActivity paramTroopInfoActivity) {}
+  public aedd(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a()
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
     }
-    azqs.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.13.1(this, paramBoolean, paramString2));
   }
 }
 

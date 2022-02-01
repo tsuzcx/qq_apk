@@ -1,22 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avzh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public avzh(ScanOcrView paramScanOcrView, avzi paramavzi) {}
+  public avzh(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Avzi.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+    bcst.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzh
  * JD-Core Version:    0.7.0.1
  */

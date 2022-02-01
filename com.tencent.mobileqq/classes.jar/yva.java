@@ -1,11 +1,16 @@
-public class yva
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class yva
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  yva(yuz paramyuz) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yva
  * JD-Core Version:    0.7.0.1
  */

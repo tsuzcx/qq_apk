@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aepi;
-import ainb;
-import ainc;
-import alud;
+import Override;
+import afur;
+import akdv;
+import akdw;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
+import anni;
+import bcst;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -18,6 +21,7 @@ import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class PhoneFrameActivity
@@ -38,7 +42,7 @@ public class PhoneFrameActivity
   
   private void a()
   {
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -63,29 +67,37 @@ public class PhoneFrameActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375863);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376599);
     this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368624));
-    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368626));
-    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368655));
-    this.rightViewText.setText(2131695209);
-    this.rightViewText.setOnClickListener(new ainb(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368638));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368947));
+    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368949));
+    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368979));
+    this.rightViewText.setText(2131694243);
+    this.rightViewText.setOnClickListener(new akdv(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368961));
     if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131708393));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131706770));
     }
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewView);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
     IphoneTitleBarActivity.setLayerType(this.leftView);
     IphoneTitleBarActivity.setLayerType(this.rightViewText);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131371762));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131372334));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new ainc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new akdw(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_req_type", this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.b(localBundle);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -106,7 +118,7 @@ public class PhoneFrameActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2131559424);
+    setContentView(2131559553);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_type", 0);
     b();
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
@@ -136,7 +148,7 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     a();
-    azqs.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void doOnPause()
@@ -163,10 +175,17 @@ public class PhoneFrameActivity
     super.finish();
     overridePendingTransition(2130771988, 2130771989);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrameActivity
  * JD-Core Version:    0.7.0.1
  */

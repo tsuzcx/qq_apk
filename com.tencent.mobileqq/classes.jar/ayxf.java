@@ -1,55 +1,87 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class ayxf
-  extends ayta
+public abstract class ayxf
+  extends Binder
+  implements ayxe
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ayxg jdField_a_of_type_Ayxg;
-  
-  public ayxf(ayso paramayso, Context paramContext)
+  public ayxf()
   {
-    super(paramayso, paramContext);
+    attachInterface(this, "com.tencent.mobileqq.pic.IPresendPicMgr");
   }
   
-  private void a()
+  public static ayxe a(IBinder paramIBinder)
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    if ((localIInterface != null) && ((localIInterface instanceof ayxe))) {
+      return (ayxe)localIInterface;
+    }
+    return new ayxg(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.pic.IPresendPicMgr");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      String str1 = paramParcel1.readString();
+      String str2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(str1, str2, bool, paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
       }
-      this.jdField_a_of_type_Ayxg.a();
-      this.jdField_a_of_type_Ayxg.a(str);
-      this.jdField_a_of_type_Ayxg.b();
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramInt1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBooleanArray(paramParcel1);
+      return true;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
-  }
-  
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559675, null, false);
-    this.jdField_a_of_type_Ayxg.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_Ayxg = new ayxg(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void e()
-  {
-    a();
+    paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    paramParcel2.writeIntArray(paramParcel1);
+    return true;
   }
 }
 

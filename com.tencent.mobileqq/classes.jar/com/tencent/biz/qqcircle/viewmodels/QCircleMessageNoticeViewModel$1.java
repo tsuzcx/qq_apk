@@ -1,23 +1,24 @@
 package com.tencent.biz.qqcircle.viewmodels;
 
-import axlx;
+import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import ubo;
-import ubp;
+import vqu;
+import vud;
+import vue;
 
 public class QCircleMessageNoticeViewModel$1
   implements Runnable
 {
-  public QCircleMessageNoticeViewModel$1(ubo paramubo) {}
+  public QCircleMessageNoticeViewModel$1(vud paramvud, Context paramContext) {}
   
   public void run()
   {
-    axlx localaxlx = (axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
+    vqu localvqu = (vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376);
     try
     {
-      localaxlx.a(new ubp(this));
+      localvqu.a("circle_entrance", new vue(this), false);
       return;
     }
     catch (Exception localException)
@@ -28,7 +29,7 @@ public class QCircleMessageNoticeViewModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1
  * JD-Core Version:    0.7.0.1
  */

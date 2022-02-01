@@ -1,50 +1,174 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ReqStoryMessageList;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-class yoy
-  implements zac<CertifiedAccountWrite.StDoLikeRsp>
+public class yoy
+  extends zpa<oidb_0x791.RedDotInfo>
+  implements View.OnClickListener
 {
-  yoy(yox paramyox) {}
+  public static final String KEY = "MessageNotifySegment";
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public yoy(Context paramContext)
   {
-    RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Int == 0)
     {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
+      paramynb.a(2131378737).setVisibility(8);
+      paramynb.a().setLayoutParams(new AbsListView.LayoutParams(-1, 0));
+      return paramynb.a();
+    }
+    paramInt = zlx.a(paramynb.a().getContext(), 52.0F);
+    paramynb.a(2131378737).setVisibility(0);
+    paramynb.a().setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
+    paramynb.a().setVisibility(0);
+    ImageView localImageView = (ImageView)paramynb.a(2131368138);
+    Drawable localDrawable = bgmo.b();
+    QQStoryContext.a();
+    if (QQStoryContext.a() == null) {
+      localImageView.setImageDrawable(localDrawable);
+    }
+    for (;;)
+    {
+      return paramynb.a();
+      if ((localImageView.getTag() != null) && ((this.jdField_a_of_type_JavaLangInteger == null) || (this.jdField_a_of_type_JavaLangInteger.equals(localImageView.getTag())))) {
+        return paramynb.a();
+      }
+      localImageView.setTag(this.jdField_a_of_type_JavaLangInteger);
+      localImageView.setImageDrawable(localDrawable);
+      TextView localTextView = (TextView)paramynb.a(2131364999);
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (this.jdField_a_of_type_Int > 99) {}
+      for (paramViewGroup = "99+";; paramViewGroup = Integer.valueOf(this.jdField_a_of_type_Int))
+      {
+        localTextView.setText(paramViewGroup + anni.a(2131705425));
+        if (this.jdField_a_of_type_Long > 0L) {
+          break label272;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "uin <=0. fetch first message.");
+        }
+        a(localImageView);
+        break;
+      }
+      label272:
+      ThreadManager.post(new MessageNotifySegment.1(this, localImageView, localDrawable), 8, null, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "MessageNotifySegment";
+  }
+  
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561742, paramViewGroup, false);
+    paramViewGroup.findViewById(2131378737).setOnClickListener(this);
+    return new ynb(paramViewGroup);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    qqstory_710_message.ReqStoryMessageList localReqStoryMessageList = new qqstory_710_message.ReqStoryMessageList();
+    localReqStoryMessageList.num.set(1);
+    localReqStoryMessageList.start_time.set(0);
+    localReqStoryMessageList.source.set(0);
+    localReqStoryMessageList.version_ctrl.set(775);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch first message from gray, start=0");
+    }
+    QQStoryContext.a();
+    nir.a(QQStoryContext.a(), new yoz(this, paramImageView), localReqStoryMessageList.toByteArray(), wjz.a("StorySvc.get_710_message_list"));
+  }
+  
+  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
+  {
+    if ((paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.get() == 52) && (paramRedDotInfo.bool_display_reddot.get()) && (paramRedDotInfo.uint32_number.get() > 0))
+    {
+      this.jdField_a_of_type_Int = paramRedDotInfo.uint32_number.get();
+      this.jdField_a_of_type_Long = paramRedDotInfo.uint64_cmd_uin.get();
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramRedDotInfo.uint32_last_time.get());
+      this.jdField_a_of_type_JavaLangString = paramRedDotInfo.str_face_url.get().toStringUtf8();
       return;
     }
-    int i;
-    String str;
-    if (paramStDoLikeRsp.like.status.get() == 1)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void c()
+  {
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    if (localQQAppInterface != null)
     {
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
-      str = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-      if (paramStDoLikeRsp.like.status.get() != 1) {
-        break label270;
+      a(((njg)localQQAppInterface.getManager(70)).a(52));
+      return;
+    }
+    yqp.e("Q.qqstory.home.MessageNotifySegment", "Get the QQAppInterface is null,we dont know the red point state");
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, StoryMessageListActivity.class);
+    ((Intent)localObject).putExtra("qqstory_message_list_source", 0);
+    ((Intent)localObject).putExtra("qqstory_jump_source", "2");
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+    localObject = ((wpy)wpm.a(2)).b(QQStoryContext.a().b());
+    if ((localObject != null) && (((QQUserUIItem)localObject).isVip))
+    {
+      i = 1;
+      if (i == 0) {
+        break label131;
       }
     }
-    label270:
-    for (paramString = "like";; paramString = "cancel_like")
+    label131:
+    for (int i = 1;; i = 2)
     {
-      zaj.a(str, "auth_feeds", paramString, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      yiw.a().a(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
+      yqu.a("play_video", "clk_grey", i, 0, new String[] { "", "", "", "" });
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
+      i = 0;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yoy
  * JD-Core Version:    0.7.0.1
  */

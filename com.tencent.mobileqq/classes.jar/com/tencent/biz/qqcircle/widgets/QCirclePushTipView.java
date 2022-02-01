@@ -27,14 +27,14 @@ public class QCirclePushTipView
   
   private void a()
   {
-    setBackgroundDrawable(getResources().getDrawable(2130843687));
-    setTextColor(getResources().getColor(2131167194));
+    setBackgroundDrawable(getResources().getDrawable(2130844054));
+    setTextColor(getResources().getColor(2131167279));
     setTextSize(1, 14.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCirclePushTipView
  * JD-Core Version:    0.7.0.1
  */

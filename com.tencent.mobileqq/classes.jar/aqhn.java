@@ -1,24 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class aqhn
-  implements DialogInterface.OnClickListener
+public class aqhn
+  extends MSFServlet
 {
-  aqhn(BaseActivity paramBaseActivity, boolean paramBoolean, awrl paramawrl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str = aqhi.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    if (this.jdField_a_of_type_Boolean) {
-      aqgz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awrl.jdField_a_of_type_Int, this.jdField_a_of_type_Awrl.b, this.jdField_a_of_type_Awrl.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bguc.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
-      paramDialogInterface.dismiss();
+      new Bundle().putByteArray("data", arrayOfByte);
+      anwd localanwd = (anwd)((QQAppInterface)getAppRuntime()).a(20);
+      if (localanwd != null) {
+        localanwd.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
       return;
-      aqgz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str);
     }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bguc.a(arrayOfByte));
   }
 }
 

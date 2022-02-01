@@ -1,47 +1,39 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xah
-  implements View.OnClickListener
+public class xah
+  extends wla
 {
-  xah(xae paramxae) {}
+  private final qqstory_group.RspAddGroupVideo a;
   
-  public void onClick(View paramView)
+  public xah(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Xjg.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Xjg.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        xan localxan = this.a.jdField_a_of_type_Xan;
-        if (this.a.jdField_a_of_type_Xan.a())
-        {
-          paramView = "2";
-          localxan.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
+    super(paramRspAddGroupVideo.result);
+    this.a = paramRspAddGroupVideo;
+  }
+  
+  public List<xai> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.group_feed_list.get().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new xai((qqstory_group.GroupFeed)localIterator.next()));
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Xan.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xah
  * JD-Core Version:    0.7.0.1
  */

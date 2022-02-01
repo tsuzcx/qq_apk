@@ -15,6 +15,11 @@ public final class d
     this.e.a = 2;
   }
   
+  public final void a(int paramInt)
+  {
+    this.e.b = 1;
+  }
+  
   public final <T> void a(String paramString, T paramT)
   {
     if (paramString.startsWith(".")) {
@@ -104,11 +109,6 @@ public final class d
       return localByteBuffer.array();
       ((j)localObject).a(this.d, 0);
     }
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.e.b = 1;
   }
   
   public final void b(String paramString)

@@ -1,35 +1,203 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.graphics.Paint;
+import java.util.ArrayList;
 
-class awdw
-  extends Animation
+public class awdw
 {
-  awdw(awdp paramawdp, View paramView, int paramInt) {}
+  public long a;
+  public awdx a;
+  public String a;
+  public ArrayList<awdy> a;
+  public long b;
+  public awdx b;
+  public ArrayList<awdt> b;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public awdw()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Awdx = new awdx();
+    this.jdField_b_of_type_Awdx = new awdx();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public awdw a()
+  {
+    awdw localawdw = new awdw();
+    localawdw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localawdw.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    localawdw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    {
+      localawdw.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      localawdw.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
     }
+    localawdw.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    return localawdw;
+  }
+  
+  public ArrayList<awdy> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    int k = (int)paramPaint1.measureText(this.jdField_a_of_type_JavaLangString);
+    int m = (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString);
+    int j = 0;
+    int i = 0;
+    if (k <= paramInt) {
+      if (paramBoolean2)
+      {
+        paramInt = j;
+        paramPaint1 = new awdy(this.jdField_a_of_type_JavaLangString, paramInt, i, m, k, this.jdField_b_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+      }
+    }
+    String[] arrayOfString;
+    int i6;
     do
     {
       return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+      i = paramInt - (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString) >> 1;
+      j = paramInt - k >> 1;
+      paramInt = i;
+      i = j;
+      break;
+      if (paramBoolean1)
+      {
+        paramPaint1 = new awdy(this.jdField_a_of_type_JavaLangString, 0, 0, m, k, this.jdField_b_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+        return;
+      }
+      arrayOfString = awdv.a(this.jdField_a_of_type_JavaLangString, paramPaint1, paramInt, paramInt);
+      i6 = arrayOfString.length;
+    } while (i6 <= 0);
+    int n = 0;
+    j = 0;
+    i = 0;
+    int i3 = 0;
+    int i1 = 0;
+    int i2 = 0;
+    m = 0;
+    k = 0;
+    label198:
+    label210:
+    Object localObject;
+    int i4;
+    awdt localawdt;
+    if (i3 < i6)
+    {
+      if (!paramBoolean2) {
+        break label481;
+      }
+      localObject = null;
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        break label705;
+      }
+      n += arrayOfString[i3].length();
+      localObject = new ArrayList();
+      i4 = m;
+      m = j;
+      j = k;
+      k = i4;
+      if (m >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
+        break label678;
+      }
+      localawdt = (awdt)this.jdField_b_of_type_JavaUtilArrayList.get(m);
+      if ((i3 == 0) || (i != m)) {
+        break label663;
+      }
+      k = n - arrayOfString[i3].length();
+      i4 = localawdt.jdField_a_of_type_Int;
+      j = k;
+      k = i4 - k;
+      label327:
+      if ((localawdt.jdField_a_of_type_Int > n) || (localawdt.jdField_b_of_type_Int < n)) {
+        break label573;
+      }
+      if (i3 != 0) {
+        break label520;
+      }
+      ((ArrayList)localObject).add(new awdt(localawdt.jdField_a_of_type_Long, localawdt.jdField_b_of_type_Long, localawdt.jdField_a_of_type_Int, arrayOfString[i3].length()));
+      label388:
+      m += 1;
+      i4 = m;
+      i = n;
+      n = k;
+      k = i4;
+    }
+    for (;;)
+    {
+      localObject = new awdy(arrayOfString[i3], i1, i2, (ArrayList)localObject);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      int i5 = i3 + 1;
+      i3 = k;
+      i4 = m;
+      m = j;
+      k = n;
+      j = i4;
+      n = i;
+      i = i3;
+      i3 = i5;
+      break label198;
+      break;
+      label481:
+      i1 = (int)paramPaint2.measureText(arrayOfString[i3]);
+      i2 = paramInt - (int)paramPaint1.measureText(arrayOfString[i3]) >> 1;
+      i1 = paramInt - i1 >> 1;
+      break label210;
+      label520:
+      i = localawdt.jdField_a_of_type_Int;
+      i4 = arrayOfString[i3].length();
+      ((ArrayList)localObject).add(new awdt(localawdt.jdField_a_of_type_Long, localawdt.jdField_b_of_type_Long, i - j - k, i4));
+      break label388;
+      label573:
+      if (i3 == 0) {
+        ((ArrayList)localObject).add(localawdt);
+      }
+      for (;;)
+      {
+        i4 = k;
+        m += 1;
+        k = j;
+        j = i4;
+        break;
+        i4 = localawdt.jdField_a_of_type_Int;
+        i5 = localawdt.jdField_b_of_type_Int;
+        ((ArrayList)localObject).add(new awdt(localawdt.jdField_a_of_type_Long, localawdt.jdField_b_of_type_Long, i4 - j - k, i5 - j - k));
+      }
+      label663:
+      i4 = j;
+      j = k;
+      k = i4;
+      break label327;
+      label678:
+      i4 = k;
+      i5 = j;
+      k = i;
+      i = n;
+      j = i4;
+      n = i5;
+      continue;
+      label705:
+      i4 = k;
+      i5 = j;
+      k = i;
+      i = n;
+      j = m;
+      n = i4;
+      m = i5;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdw
  * JD-Core Version:    0.7.0.1
  */

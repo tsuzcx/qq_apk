@@ -1,18 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-
-public class aice
-  implements View.OnTouchListener
+class aice
+  implements aatt
 {
-  public aice(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
+  aice(aibv paramaibv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 

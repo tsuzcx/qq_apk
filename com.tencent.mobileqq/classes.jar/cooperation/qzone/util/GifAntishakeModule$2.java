@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
-import bjua;
+import bmik;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -9,7 +9,7 @@ import java.util.concurrent.CountDownLatch;
 public class GifAntishakeModule$2
   implements Runnable
 {
-  public GifAntishakeModule$2(bjua parambjua, ArrayList paramArrayList, int paramInt1, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, int paramInt2, boolean[] paramArrayOfBoolean) {}
+  public GifAntishakeModule$2(bmik parambmik, ArrayList paramArrayList, int paramInt1, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, int paramInt2, boolean[] paramArrayOfBoolean) {}
   
   public void run()
   {
@@ -22,11 +22,11 @@ public class GifAntishakeModule$2
     if (this.jdField_a_of_type_Int != 0)
     {
       long l = System.currentTimeMillis();
-      int i = bjua.a(bjua.a(this.jdField_a_of_type_AndroidGraphicsBitmap), bjua.a(localBitmap));
+      int i = bmik.a(bmik.a(this.jdField_a_of_type_AndroidGraphicsBitmap), bmik.a(localBitmap));
       if (QLog.isColorLevel()) {
         QLog.d("QzoneVision", 2, "DHash: 第一帧与第" + (this.jdField_a_of_type_Int + 1) + "帧的相似度为 dif=" + i + " now:" + (System.currentTimeMillis() - l));
       }
-      if ((localBitmap.getWidth() == this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (localBitmap.getHeight() == this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) && (bjua.a(this.this$0, this.b, i))) {
+      if ((localBitmap.getWidth() == this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (localBitmap.getHeight() == this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) && (bmik.a(this.this$0, this.b, i))) {
         this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
       }
     }
@@ -35,7 +35,7 @@ public class GifAntishakeModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.GifAntishakeModule.2
  * JD-Core Version:    0.7.0.1
  */

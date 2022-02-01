@@ -1,23 +1,21 @@
-public class bhbo
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import java.io.File;
+import kotlin.jvm.functions.Function0;
+
+class bhbo
+  implements Function0<Drawable>
 {
-  public long a;
-  public String a;
-  public StackTraceElement[] a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
+  bhbo(bhbn parambhbn, File paramFile, Looper paramLooper, boolean paramBoolean) {}
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_Bhbn.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbo
  * JD-Core Version:    0.7.0.1
  */

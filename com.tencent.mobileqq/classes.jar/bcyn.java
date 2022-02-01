@@ -1,15 +1,16 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
-class bcyn
-  implements FilenameFilter
+public class bcyn
 {
-  bcyn(bcyj parambcyj, String paramString) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
-  }
+  bcyn(bcym parambcym) {}
 }
 
 

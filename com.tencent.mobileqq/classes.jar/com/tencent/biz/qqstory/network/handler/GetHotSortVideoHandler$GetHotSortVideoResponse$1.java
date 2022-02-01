@@ -2,28 +2,28 @@ package com.tencent.biz.qqstory.network.handler;
 
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import umc;
-import uvh;
-import uwa;
-import vcq;
-import vcs;
-import vct;
+import wfo;
+import wot;
+import wpm;
+import wwc;
+import wwe;
+import wwf;
 
 public class GetHotSortVideoHandler$GetHotSortVideoResponse$1
   implements Runnable
 {
-  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(vcs paramvcs, ArrayList paramArrayList, vct paramvct) {}
+  public GetHotSortVideoHandler$GetHotSortVideoResponse$1(wwe paramwwe, ArrayList paramArrayList, wwf paramwwf) {}
   
   public void run()
   {
-    ((uvh)uwa.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, vcq.a(this.jdField_a_of_type_Vcs.a), true);
-    this.jdField_a_of_type_Vct.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    umc.a().dispatch(this.jdField_a_of_type_Vct);
+    ((wot)wpm.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, wwc.a(this.jdField_a_of_type_Wwe.a), true);
+    this.jdField_a_of_type_Wwf.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    wfo.a().dispatch(this.jdField_a_of_type_Wwf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1
  * JD-Core Version:    0.7.0.1
  */

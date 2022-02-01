@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import apro;
-import apwf;
-import aufn;
+import arup;
+import arzp;
+import awmr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
@@ -26,25 +26,25 @@ import mqq.os.MqqHandler;
 public class EmotionKeywordAdapter$3
   implements Runnable
 {
-  public EmotionKeywordAdapter$3(apwf paramapwf, EmoticonResp paramEmoticonResp, String paramString) {}
+  public EmotionKeywordAdapter$3(arzp paramarzp, EmoticonResp paramEmoticonResp, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.resetKeywordExpose) {
-      apwf.a(this.this$0).c(apwf.a(this.this$0));
+      arzp.a(this.this$0).c(arzp.a(this.this$0));
     }
     Object localObject1 = new EmoticonKeywords();
-    ((EmoticonKeywords)localObject1).keyword = apwf.a(this.this$0);
+    ((EmoticonKeywords)localObject1).keyword = arzp.a(this.this$0);
     ((EmoticonKeywords)localObject1).lastReqTime = System.currentTimeMillis();
-    apwf.a(this.this$0).a((EmoticonKeywords)localObject1);
+    arzp.a(this.this$0).a((EmoticonKeywords)localObject1);
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.data;
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + apwf.a(this.this$0) + ",resp size = " + ((List)localObject1).size());
+      QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + arzp.a(this.this$0) + ",resp size = " + ((List)localObject1).size());
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("handleCloudEmotionForKeywordResp : eId = ");
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(apwf.a(this.this$0));
+    localArrayList.addAll(arzp.a(this.this$0));
     Object localObject3 = ((List)localObject1).iterator();
     EmosmPb.BqAssocInfo localBqAssocInfo;
     Emoticon localEmoticon;
@@ -59,7 +59,7 @@ public class EmotionKeywordAdapter$3
       localEmoticon.ipsiteUrl = localBqAssocInfo.str_ipsite_url.get();
       localEmoticon.ipsiteName = localBqAssocInfo.str_ipsite_name.get();
       if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + apwf.a(this.this$0) + "id = " + localEmoticon.epId + " ipSiteName = " + localEmoticon.ipsiteName + " ipsiteUrl = " + localEmoticon.ipsiteUrl);
+        QLog.d("EmotionKeywordAdapter", 2, "handleCloudEmotionForKeywordResp keyword = " + arzp.a(this.this$0) + "id = " + localEmoticon.epId + " ipSiteName = " + localEmoticon.ipsiteName + " ipsiteUrl = " + localEmoticon.ipsiteUrl);
       }
       if ((!TextUtils.isEmpty(localEmoticon.epId)) && (!TextUtils.isEmpty(localEmoticon.eId)) && (!TextUtils.isEmpty(localEmoticon.encryptKey)))
       {
@@ -73,8 +73,8 @@ public class EmotionKeywordAdapter$3
     label926:
     for (;;)
     {
-      if (apwf.a(this.this$0).a(localEmoticon.epId) == null) {
-        ((apro)apwf.a(this.this$0).getManager(43)).a(localEmoticon.epId, apro.c);
+      if (arzp.a(this.this$0).a(localEmoticon.epId) == null) {
+        ((arup)arzp.a(this.this$0).getManager(43)).a(localEmoticon.epId, arup.c);
       }
       label472:
       int i;
@@ -106,14 +106,14 @@ public class EmotionKeywordAdapter$3
         if (!localBqAssocInfo.rpt_apng_support_size.has()) {
           break label757;
         }
-        apwf.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_apng_support_size.get());
+        arzp.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_apng_support_size.get());
         label600:
         localObject1 = new EmotionKeyword();
-        ((EmotionKeyword)localObject1).keyword = apwf.a(this.this$0).toLowerCase();
+        ((EmotionKeyword)localObject1).keyword = arzp.a(this.this$0).toLowerCase();
         ((EmotionKeyword)localObject1).epId = localEmoticon.epId;
         ((EmotionKeyword)localObject1).eId = localEmoticon.eId;
-        apwf.a(this.this$0).a((EmotionKeyword)localObject1);
-        apwf.a(this.this$0).a(localEmoticon);
+        arzp.a(this.this$0).a((EmotionKeyword)localObject1);
+        arzp.a(this.this$0).a(localEmoticon);
         i = 0;
       }
       for (;;)
@@ -143,7 +143,7 @@ public class EmotionKeywordAdapter$3
           if (!localBqAssocInfo.rpt_support_size.has()) {
             break label600;
           }
-          apwf.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_support_size.get());
+          arzp.a(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_support_size.get());
           break label600;
         }
         i += 1;
@@ -170,7 +170,7 @@ public class EmotionKeywordAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter.3
  * JD-Core Version:    0.7.0.1
  */

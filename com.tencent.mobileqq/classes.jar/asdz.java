@@ -1,31 +1,8 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
-class asdz
-  extends BroadcastReceiver
+public abstract interface asdz
 {
-  asdz(asdt paramasdt) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((asdt.a(this.a) == null) || (asdt.a(this.a).isFinishing())) {}
-    do
-    {
-      return;
-      paramContext = asaj.a(paramIntent.getStringExtra("key_share_image_by_server"));
-      QLog.d("ForwardShareByServerHelper", 1, new Object[] { "initBroadcastReceiver errorMsg=", paramContext });
-    } while (paramContext == null);
-    if (TextUtils.isEmpty(paramContext))
-    {
-      asdt.a(this.a, asdt.a(this.a).getIntent().getExtras());
-      return;
-    }
-    asdt.a(this.a, paramContext);
-  }
+  public abstract void a(float paramFloat);
 }
 
 

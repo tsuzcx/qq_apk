@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import com.tencent.qphone.base.util.QLog;
-import xtj;
-import xtk;
+import zmu;
+import zmv;
 
 public class FFmpegExecuteAsyncTask$1
   implements Runnable
 {
-  public FFmpegExecuteAsyncTask$1(xtj paramxtj) {}
+  public FFmpegExecuteAsyncTask$1(zmu paramzmu) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class FFmpegExecuteAsyncTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteAsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,75 @@
-import android.app.Activity;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class aqrt
-  implements bhuk
+public class aqrt
+  extends aqkz<aqrs>
 {
-  aqrt(aqrs paramaqrs, String paramString, bbtn parambbtn) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public aqrs a(int paramInt)
   {
-    azqs.b(this.jdField_a_of_type_Aqrs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new bbsn(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aqrs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aqrs.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bbtn.a);
-    this.jdField_a_of_type_Aqrs.a();
+    return new aqrs();
+  }
+  
+  @Nullable
+  public aqrs a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      aqrs localaqrs = aqrs.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqrs;
+    }
+    return new aqrs();
+  }
+  
+  public void a(aqrs paramaqrs)
+  {
+    ((awhj)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramaqrs);
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramaqrs);
+    }
+  }
+  
+  public Class<aqrs> clazz()
+  {
+    return aqrs.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 390;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrt
  * JD-Core Version:    0.7.0.1
  */

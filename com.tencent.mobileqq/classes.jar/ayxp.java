@@ -1,51 +1,116 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pic.ReportInfo;
+import java.net.URL;
 
 public class ayxp
-  implements aywc
+  extends ayxl
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public ReportInfo a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public int e;
+  public long e;
+  public int f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public ayxp(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
-    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367921);
-    if ((paramViewGroup != null) && (paramInt2 > 0)) {
-      paramViewGroup.setImageResource(paramInt2);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369091));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365129));
-    if (paramInt3 == 12) {
-      this.b.setText(alud.a(2131714049) + swy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + alud.a(2131714048));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.f);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("groupFileID:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n |-").append("uinType:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-").append("subMsgId:").append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n |-").append("subVersion:").append(this.d);
+    localStringBuilder.append("\n |-").append("protocol:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("fileSizeFlag:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("thumbMsgUrl:").append(this.h);
+    localStringBuilder.append("\n |-").append("bigthumbMsgUrl:").append(this.k);
+    localStringBuilder.append("\n |-").append("bigMsgUrl:").append(this.i);
+    localStringBuilder.append("\n |-").append("rawMsgUrl:").append(this.j);
+    localStringBuilder.append("\n |-").append("isMixed:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("shareAppID:").append(this.jdField_e_of_type_Long);
+    localStringBuilder.append("\n |-").append("action:").append(this.l);
+    localStringBuilder.append("\n |-").append("actMsgContentValue:").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("picExtraFlag:").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-").append("picExtraObject:").append(this.jdField_a_of_type_JavaLangObject);
+    return localStringBuilder.toString();
   }
   
-  public View a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    if (TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString))
+    {
+      a("PicDownloadInfo.check", "uuid invaid:" + this.jdField_g_of_type_JavaLangString);
+      return false;
+    }
+    if (this.jdField_b_of_type_JavaLangString == null)
+    {
+      a("checkPicInfo", "selfUin invalid,selfUin:" + this.jdField_b_of_type_JavaLangString);
+      return false;
+    }
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_e_of_type_Long == 0L))
+    {
+      a("PicDownloadInfo.check", "groupFileID invaid:" + this.jdField_e_of_type_Long);
+      return false;
+    }
+    return super.a();
   }
   
-  public TextView a()
+  String b()
   {
+    int n = 65537;
+    if ("chatthumb".equals(this.jdField_e_of_type_JavaLangString)) {}
+    while (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new ayyg();
+      ((ayyg)localObject).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      ((ayyg)localObject).d = this.d;
+      ((ayyg)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((ayyg)localObject).f = this.f;
+      localObject = bdzx.a((ayyg)localObject, n, null);
+      if (localObject == null) {
+        break label129;
+      }
+      return ((URL)localObject).toString();
+      if ("chatimg".equals(this.jdField_e_of_type_JavaLangString)) {
+        n = 1;
+      } else if ("chatraw".equals(this.jdField_e_of_type_JavaLangString)) {
+        n = 131075;
+      }
+    }
+    Object localObject = bdzx.a(this, n, null);
+    if (localObject != null) {
+      return ((URL)localObject).toString();
+    }
+    label129:
     return null;
   }
   
-  public List<aywd> a()
+  public String d()
   {
-    return null;
+    return c() + "_dp";
   }
   
-  public TextView b()
+  public String toString()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

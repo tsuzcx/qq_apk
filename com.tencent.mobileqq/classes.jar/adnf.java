@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adnf
-  implements bhum
+  implements View.OnClickListener
 {
-  public adnf(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adnf(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    if (this.a.a) {
-      this.a.finish();
+    View localView = (View)paramView.getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+      if ((localView.getTag() instanceof SubAccountInfo)) {
+        this.a.a((SubAccountInfo)localView.getTag());
+      }
     }
   }
 }

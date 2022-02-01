@@ -1,8 +1,10 @@
-public class bmbj
+public abstract interface bmbj
 {
-  public int a;
-  public String a;
-  public int b;
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

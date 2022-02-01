@@ -1,25 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaml
-  implements AdReportAdapter
+class aaml
+  implements aajp
 {
-  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
+  aaml(aamk paramaamk) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
+    if (paramBoolean1)
+    {
+      aaxb.b(SubScribeDraftItemView.b(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "delete_draft", 0, 0, new String[0]);
+      paramString = new SubDraftChangeEvent();
+      paramString.setDraftID(String.valueOf(this.a.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      zwp.a().a(paramString);
+      QLog.d(SubScribeDraftItemView.a(), 4, "delete draft success");
       return;
     }
-    aatr.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
-    aatr.a().a((GdtAd)paramAd, paramInt, paramBoolean);
-  }
-  
-  public AdRefreshCallback getAdReportAdapter()
-  {
-    return aatr.a();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), "delete failed", 1).a();
   }
 }
 

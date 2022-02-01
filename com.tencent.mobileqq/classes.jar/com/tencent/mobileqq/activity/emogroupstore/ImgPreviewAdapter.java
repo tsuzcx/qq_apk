@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahwm;
+import ajna;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.PagerAdapter;
@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import apod;
-import azkz;
-import bduj;
+import arre;
+import bclx;
+import bgzk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,8 +25,8 @@ public class ImgPreviewAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahwm(this);
-  private apod jdField_a_of_type_Apod;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajna(this);
+  private arre jdField_a_of_type_Arre;
   private LinkedList<URLImageView> jdField_a_of_type_JavaUtilLinkedList;
   private List<EmoticonFromGroupEntity> jdField_a_of_type_JavaUtilList;
   
@@ -35,7 +35,7 @@ public class ImgPreviewAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_Apod = ((bduj)paramQQAppInterface.getManager(235)).jdField_a_of_type_Apod;
+    this.jdField_a_of_type_Arre = ((bgzk)paramQQAppInterface.getManager(235)).jdField_a_of_type_Arre;
   }
   
   public EmoticonFromGroupEntity a(int paramInt)
@@ -79,14 +79,14 @@ public class ImgPreviewAdapter
     }
     for (;;)
     {
-      localURLImageView.setImageDrawable((URLDrawable)this.jdField_a_of_type_Apod.a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt), 1, -1, null));
+      localURLImageView.setImageDrawable((URLDrawable)this.jdField_a_of_type_Arre.a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt), 1, -1, null));
       localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramViewGroup.addView(localURLImageView);
       return localURLImageView;
       localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      localURLImageView.setLayoutParams(new Gallery.LayoutParams(azkz.a(166.0F), azkz.a(166.0F)));
+      localURLImageView.setLayoutParams(new Gallery.LayoutParams(bclx.a(166.0F), bclx.a(166.0F)));
       localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localURLImageView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165394));
+      localURLImageView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165430));
     }
   }
   
@@ -97,7 +97,7 @@ public class ImgPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

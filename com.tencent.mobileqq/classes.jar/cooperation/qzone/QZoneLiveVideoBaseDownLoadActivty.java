@@ -1,14 +1,16 @@
 package cooperation.qzone;
 
-import alud;
+import Override;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -16,13 +18,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import bdin;
-import bexu;
-import bjef;
-import bjeg;
-import bjeh;
-import bjei;
-import bjwi;
+import anni;
+import bgnt;
+import bies;
+import blsl;
+import blsm;
+import blsn;
+import blso;
+import bmks;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -30,6 +33,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
 import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
@@ -43,7 +47,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   protected long a;
   protected BroadcastReceiver a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjeh(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new blsn(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -55,7 +59,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   public volatile boolean a;
   protected int b;
   private long jdField_b_of_type_Long;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bjei(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new blso(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   protected String b;
@@ -83,7 +87,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   
   public QZoneLiveVideoBaseDownLoadActivty()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bjef(this);
+    this.jdField_a_of_type_AndroidOsHandler = new blsl(this);
   }
   
   private boolean b()
@@ -104,11 +108,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372119));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365441));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363492));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363543));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374748));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372697));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365678));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363688));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363741));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375474));
     Boolean localBoolean = Boolean.valueOf(false);
     if (getIntent() != null) {
       localBoolean = Boolean.valueOf(getIntent().getBooleanExtra("isEcLive", false));
@@ -120,7 +124,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (paramInt != 0) {
         break label230;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712335));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710714));
     }
     for (;;)
     {
@@ -131,12 +135,12 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
         try
         {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable("http://qzonestyle.gtimg.cn/qzone/phone/n/QQ-Qzone-Android/qzone_live_video_download_bg.png", null);
+          this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/qzone/phone/n/QQ-Qzone-Android/qzone_live_video_download_bg.png", null);
           if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
             break;
           }
           this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-          this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new bjeg(this));
+          this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new blsm(this));
         }
         catch (Exception localException)
         {
@@ -145,7 +149,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       }
       break;
       label230:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712342));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710721));
     }
   }
   
@@ -282,12 +286,12 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     if (paramBoolean1)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712334));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710713));
       return;
     }
     if (paramBoolean2)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712345));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710724));
       return;
     }
     this.jdField_d_of_type_Int %= 3;
@@ -298,11 +302,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     {
       this.jdField_d_of_type_Int += 1;
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712327));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710706));
       continue;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712336));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710715));
       continue;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131712339));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131710718));
     }
   }
   
@@ -315,8 +319,8 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (localIntent == null)
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "intent is null");
-      Toast.makeText(getApplicationContext(), alud.a(2131712338), 1).show();
-      bjwi.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "6", null);
+      Toast.makeText(getApplicationContext(), anni.a(2131710717), 1).show();
+      bmks.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", 0.0D, 3, "0");
       finish();
       return false;
@@ -326,29 +330,29 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if ((3 != this.jdField_c_of_type_Int) && (1 != this.jdField_c_of_type_Int))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "mode invalid, mMode=" + this.jdField_c_of_type_Int);
-      Toast.makeText(getApplicationContext(), alud.a(2131712340) + this.jdField_c_of_type_Int, 1).show();
-      bjwi.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "6", null);
+      Toast.makeText(getApplicationContext(), anni.a(2131710719) + this.jdField_c_of_type_Int, 1).show();
+      bmks.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 3, this.jdField_c_of_type_Int + "");
       finish();
       return false;
     }
-    if (!bdin.g(getApplicationContext()))
+    if (!bgnt.g(getApplicationContext()))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onCreate, no network available");
-      QQToast.a(this, alud.a(2131712344), 0).a();
+      QQToast.a(this, anni.a(2131710723), 0).a();
       if (this.jdField_c_of_type_Int == 1) {
-        bjwi.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "2", null);
+        bmks.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "2", null);
       }
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 4, this.jdField_c_of_type_Int + "");
       finish();
       return false;
     }
     AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && (((QQAppInterface)localAppRuntime).c()))
+    if ((localAppRuntime != null) && (((QQAppInterface)localAppRuntime).d()))
     {
-      QQToast.a(this, alud.a(2131712348), 0).a();
+      QQToast.a(this, anni.a(2131710727), 0).a();
       if (this.jdField_c_of_type_Int == 1) {
-        bjwi.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "7", null);
+        bmks.a(this.jdField_b_of_type_JavaLangString, "live_video_entry", "7", null);
       }
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 2, this.jdField_c_of_type_Int + ",1");
       finish();
@@ -409,6 +413,14 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     this.jdField_b_of_type_Boolean = false;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   protected void e()
   {
     if (this.jdField_a_of_type_Boolean)
@@ -434,7 +446,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (!TextUtils.isEmpty(str1)) {
         break;
       }
-      QQToast.a(this, alud.a(2131712328), 0).a();
+      QQToast.a(this, anni.a(2131710707), 0).a();
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 6, this.jdField_c_of_type_Int + "");
       a();
       return;
@@ -489,10 +501,10 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     for (str2 = "com.qzone.adapter.livevideo.ECLiveVideoActivity";; str2 = str3)
     {
       QzoneLiveVideoPluginProxyActivity.a(this, str1, localIntent, -1, str2);
-      bexu.a(BaseApplicationImpl.getContext(), false, 5);
+      bies.a(BaseApplicationImpl.getContext(), false, 5);
       return;
       label708:
-      QQToast.a(this, alud.a(2131712326), 0).a();
+      QQToast.a(this, anni.a(2131710705), 0).a();
       a();
     }
   }
@@ -509,15 +521,22 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   
   protected void g() {}
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.mDrawStatus = false;
     }
-    setContentView(2131562169);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365449));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380113);
+    setContentView(2131562404);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365687));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381077);
   }
   
   public void onDestroy()
@@ -553,7 +572,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty
  * JD-Core Version:    0.7.0.1
  */

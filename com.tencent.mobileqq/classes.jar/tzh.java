@@ -1,28 +1,22 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
 
-public class tzh
-  extends yka
+class tzh
+  implements DialogInterface.OnClickListener
 {
-  private String a = "QCircleFuelInfoPreLoaderTask";
+  tzh(tzg paramtzg) {}
   
-  public void a() {}
-  
-  public void a(ykg paramykg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (tyz.a().a())
-    {
-      paramykg = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      paramykg.setEnableCache(true);
-      VSNetworkHelper.a().a(paramykg, new tzi(this));
-    }
+    anll.a();
+    this.a.a.this$0.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzh
  * JD-Core Version:    0.7.0.1
  */

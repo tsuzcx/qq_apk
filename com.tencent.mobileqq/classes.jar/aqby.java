@@ -1,13 +1,36 @@
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqby
-  extends aqcx
 {
-  public ArrayList<aqbz> a;
+  int a = -1;
   
-  public aqby()
+  public static aqby a(String paramString)
   {
-    this.mType = 6;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqby localaqby = new aqby();
+        localaqby.a = new JSONObject(paramString).getInt("maxcount");
+        aqcv.a = localaqby.a;
+        if (QLog.isColorLevel()) {
+          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localaqby.a);
+        }
+        return localaqby;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.a;
   }
 }
 

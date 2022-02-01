@@ -1,22 +1,20 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
-
 class atqa
-  implements TencentDirectionListener
+  implements atve
 {
-  atqa(atpw paramatpw) {}
+  atqa(atpy paramatpy) {}
   
-  public void onDirectionChanged(double paramDouble, int paramInt)
+  public void a()
   {
-    if (atpw.a(this.a) != null)
-    {
-      atpw.a(this.a, 180.0D + paramDouble);
-      atpw.a(this.a, false);
+    if (atpy.a(this.a) != null) {
+      atpy.a(this.a);
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqa
  * JD-Core Version:    0.7.0.1
  */

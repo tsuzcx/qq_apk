@@ -1,10 +1,11 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class bdtu
+class bdtu
 {
-  public int a;
-  public String a;
-  public ArrayList<bdtv> a = new ArrayList();
+  public LocalMediaInfo a;
+  public boolean a;
+  
+  bdtu(bdtt parambdtt) {}
 }
 
 

@@ -1,24 +1,110 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ad.tangram.canvas.download.AdDownloaderAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 
 public class acjc
-  implements QQPermissionCallback
+  implements AdDownloaderAdapter
 {
-  public acjc(BaseChatPie paramBaseChatPie) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void doDownloadAction(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
   {
-    bdgm.b(this.a.a());
-    ((afgb)this.a.a(29)).b(2);
+    bise.a().a(paramActivity, paramBundle, paramString, null, paramInt);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getCurrentPkgDownloadProgress(Context paramContext, String paramString1, String paramString2)
   {
-    aexq.a().a(this.a.jdField_a_of_type_AndroidContentContext);
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    aggx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    return acrw.c(paramContext, paramString1, paramString2);
+  }
+  
+  public Object getDownloadInfoByUrl(String paramString)
+  {
+    paramString = bisa.a().b(paramString);
+    paramString.m = "biz_src_ads";
+    return paramString;
+  }
+  
+  public IAdDownloader getDownloader()
+  {
+    return this;
+  }
+  
+  public int getProgress(Object paramObject)
+  {
+    if (!(paramObject instanceof DownloadInfo)) {
+      return 0;
+    }
+    paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
+    if (paramObject != null) {}
+    for (int i = paramObject.f;; i = 0) {
+      return i;
+    }
+  }
+  
+  public void installDownload(Object paramObject)
+  {
+    if ((paramObject instanceof DownloadInfo)) {
+      bisa.a().a((DownloadInfo)paramObject);
+    }
+    while (!(paramObject instanceof Bundle)) {
+      return;
+    }
+    bise.a((Bundle)paramObject);
+  }
+  
+  public boolean isCurrentPkgTask(Pair<String, String> paramPair, Object paramObject)
+  {
+    if ((paramPair == null) || (TextUtils.isEmpty((CharSequence)paramPair.first)) || (TextUtils.isEmpty((CharSequence)paramPair.second)) || (!(paramObject instanceof AdAppBtnData))) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramPair = bisa.a().b((String)paramPair.first);
+      } while (paramPair == null);
+      paramObject = (AdAppBtnData)paramObject;
+    } while ((TextUtils.isEmpty(paramPair.e)) || (TextUtils.isEmpty(paramPair.c)) || (TextUtils.isEmpty(paramObject.packageName)) || (TextUtils.isEmpty(paramObject.mGdtAd_appId)));
+    return (paramPair.e.equals(paramObject.packageName)) && (paramPair.c.equals(paramObject.mGdtAd_appId));
+  }
+  
+  public int isPkgDownloadPaused(Context paramContext, String paramString1, String paramString2)
+  {
+    return acrw.b(paramContext, paramString1, paramString2);
+  }
+  
+  public int isPkgDownloading(Context paramContext, String paramString1, String paramString2)
+  {
+    return acrw.a(paramContext, paramString1, paramString2);
+  }
+  
+  public boolean isPkgExist(Context paramContext, String paramString1, String paramString2)
+  {
+    return acrw.b(paramContext, paramString2);
+  }
+  
+  public void pauseDownload(String paramString1, String paramString2)
+  {
+    bisa.a().a(paramString2);
+  }
+  
+  public void registerListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof DownloadListener)) {
+      bisa.a().a((DownloadListener)paramCallback);
+    }
+  }
+  
+  public void unregisterListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof DownloadListener)) {
+      bisa.a().b((DownloadListener)paramCallback);
+    }
   }
 }
 

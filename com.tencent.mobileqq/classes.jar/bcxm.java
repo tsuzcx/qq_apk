@@ -1,129 +1,330 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.SystemClock;
+import android.util.StateSet;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
-class bcxm
-  implements AdapterView.OnItemClickListener
+public class bcxm
 {
-  bcxm(bcxl parambcxl) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static int a(String paramString)
   {
-    int j = 0;
-    paramAdapterView = paramView.getTag();
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null)) {
-      return;
+    int i = 0;
+    if (paramString != null) {
+      paramString.trim();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    switch (((bdmy)paramAdapterView).a.action)
+    try
     {
+      i = Integer.parseInt(paramString);
+      return i;
     }
-    for (;;)
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public static long a(String paramString)
+  {
+    long l = 0L;
+    if (paramString != null) {
+      paramString.trim();
+    }
+    try
     {
-      this.a.jdField_a_of_type_Int = ((int)paramLong);
-      if (paramLong != 7L) {
-        break;
+      l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  public static StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
+  {
+    GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
+    int k = Color.red(paramInt);
+    int i = Color.green(paramInt);
+    int j = Color.blue(paramInt);
+    paramInt = k;
+    k = 0;
+    if (k < arrayOfGradientDrawable.length)
+    {
+      arrayOfGradientDrawable[k] = new GradientDrawable();
+      arrayOfGradientDrawable[k].setShape(0);
+      int m = paramInt - (k << 5);
+      paramInt = m;
+      if (m < 0) {
+        paramInt = 0;
       }
-      paramAdapterView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
-      paramAdapterView.putExtra("activity_from_type", 1);
-      paramAdapterView.putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramAdapterView);
-      return;
-      paramLong = 0L;
-      continue;
-      paramLong = 1L;
-      continue;
-      paramLong = 3L;
-      continue;
-      paramLong = 2L;
-      continue;
-      paramLong = 4L;
-      continue;
-      paramLong = 5L;
-      continue;
-      paramLong = 7L;
-    }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131721491;
+      m = i - (k << 5);
+      i = m;
+      if (m < 0) {
+        i = 0;
       }
-    }
-    for (;;)
-    {
-      if (i != -1)
+      m = j - (k << 5);
+      j = m;
+      if (m < 0) {
+        j = 0;
+      }
+      arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
+      if (paramArrayOfFloat != null) {
+        arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
+      }
+      for (;;)
       {
-        this.a.b(false);
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.a.jdField_a_of_type_Int = -1;
-        this.a.b = -1;
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
+        k += 1;
+        break;
+        arrayOfGradientDrawable[k].setCornerRadius(afur.a(4.0F, paramResources));
+      }
+    }
+    paramResources = new StateListDrawable();
+    paramArrayOfFloat = arrayOfGradientDrawable[1];
+    paramResources.addState(new int[] { 16842919, 16842910 }, paramArrayOfFloat);
+    paramResources.addState(StateSet.WILD_CARD, arrayOfGradientDrawable[0]);
+    return paramResources;
+  }
+  
+  private static boolean a(Inflater paramInflater)
+  {
+    return (paramInflater.finished()) || (paramInflater.getRemaining() <= 0);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    Inflater localInflater = new Inflater();
+    localInflater.reset();
+    localInflater.setInput(paramArrayOfByte);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte1 = new byte[1024];
+        long l = SystemClock.uptimeMillis();
+        if (!a(localInflater))
+        {
+          localByteArrayOutputStream.write(arrayOfByte1, 0, localInflater.inflate(arrayOfByte1));
+          if (SystemClock.uptimeMillis() - l <= 15000L) {
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.w("StructMsg", 2, "decompress struct msg time out");
+          }
+          bcst.b(null, "dc00898", "", "", "0X8009845", "0X8009845", 0, 1, "", "", "", "");
+          try
+          {
+            localByteArrayOutputStream.close();
+            return paramArrayOfByte;
+          }
+          catch (IOException localIOException1)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("StructMsg", 2, localIOException1.getMessage());
+            return paramArrayOfByte;
+          }
         }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
-        if (WXShareHelper.a().b()) {
-          break label680;
+        arrayOfByte2 = localByteArrayOutputStream.toByteArray();
+        paramArrayOfByte = arrayOfByte2;
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte2;
+        localException = localException;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        i = 2131721492;
+        QLog.d("StructMsg", 2, localException.getMessage());
+        try
+        {
+          localIOException3.close();
+          arrayOfByte3 = paramArrayOfByte;
+        }
+        catch (IOException localIOException4)
+        {
+          arrayOfByte3 = paramArrayOfByte;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StructMsg", 2, localIOException4.getMessage());
+        byte[] arrayOfByte3 = paramArrayOfByte;
         continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
+      finally {}
+      try
       {
-        this.a.g();
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
-        }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
+        localByteArrayOutputStream.close();
+        arrayOfByte2 = paramArrayOfByte;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
+      catch (IOException localIOException3)
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          this.a.jdField_a_of_type_Boolean = true;
+        arrayOfByte2 = paramArrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          i = j;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
-            i = 1;
-          }
-          if ((paramInt | i) == 0) {
-            break;
-          }
-          this.a.b(true);
-          this.a.c();
-          return;
-        }
-        this.a.e();
-        return;
+        QLog.d("StructMsg", 2, localIOException3.getMessage());
+        arrayOfByte2 = paramArrayOfByte;
       }
-      this.a.b(true);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        this.a.jdField_a_of_type_Boolean = false;
-      }
-      this.a.b = 0;
-      bcxl.a(this.a);
-      return;
-      label680:
-      i = -1;
     }
+    localInflater.end();
+    return arrayOfByte2;
+    try
+    {
+      localIOException4.close();
+      throw paramArrayOfByte;
+    }
+    catch (IOException localIOException2)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, localIOException2.getMessage());
+        }
+      }
+    }
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = paramArrayOfByte.length;
+    Object localObject;
+    if (paramInt == -1)
+    {
+      paramInt = paramArrayOfByte[0];
+      localObject = new byte[i - 1];
+      if (paramInt == 1)
+      {
+        System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
+        paramArrayOfByte = a((byte[])localObject);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new String(paramArrayOfByte, 0, paramArrayOfByte.length);
+        QLog.d("StructMsg", 2, "getStructMsgFromXmlBuff xmlStr:" + (String)localObject);
+      }
+      return paramArrayOfByte;
+      System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
+      paramArrayOfByte = (byte[])localObject;
+      continue;
+      localObject = new byte[i];
+      if (paramInt == 1)
+      {
+        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
+        paramArrayOfByte = a((byte[])localObject);
+      }
+      else
+      {
+        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
+        paramArrayOfByte = (byte[])localObject;
+      }
+    }
+  }
+  
+  public static final byte[] b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    byte[] arrayOfByte1 = new byte[0];
+    Deflater localDeflater = new Deflater();
+    localDeflater.reset();
+    localDeflater.setInput(paramArrayOfByte);
+    localDeflater.finish();
+    localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
+    try
+    {
+      byte[] arrayOfByte3 = new byte[1024];
+      while (!localDeflater.finished()) {
+        localByteArrayOutputStream.write(arrayOfByte3, 0, localDeflater.deflate(arrayOfByte3));
+      }
+      try
+      {
+        byte[] arrayOfByte2;
+        localByteArrayOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (IOException localIOException1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, localIOException1.getMessage());
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException = localException;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, localException.getMessage());
+      }
+      for (;;)
+      {
+        try
+        {
+          localByteArrayOutputStream.close();
+          arrayOfByte2 = paramArrayOfByte;
+        }
+        catch (IOException localIOException3)
+        {
+          arrayOfByte2 = paramArrayOfByte;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("StructMsg", 2, localIOException3.getMessage());
+          arrayOfByte2 = paramArrayOfByte;
+          continue;
+        }
+        localDeflater.end();
+        return arrayOfByte2;
+        arrayOfByte3 = localByteArrayOutputStream.toByteArray();
+        paramArrayOfByte = arrayOfByte3;
+        try
+        {
+          localByteArrayOutputStream.close();
+          arrayOfByte2 = paramArrayOfByte;
+        }
+        catch (IOException localIOException2)
+        {
+          arrayOfByte2 = paramArrayOfByte;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("StructMsg", 2, localIOException2.getMessage());
+          arrayOfByte2 = paramArrayOfByte;
+        }
+      }
+    }
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte = paramArrayOfByte;
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
+        }
+        try
+        {
+          localByteArrayOutputStream.close();
+        }
+        catch (IOException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
+          }
+        }
+      }
+    }
+    finally {}
   }
 }
 

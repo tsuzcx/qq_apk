@@ -1,40 +1,89 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import java.lang.ref.WeakReference;
 
 public class blll
-  extends bllj
+  extends blle
 {
-  public List<bllo> a = new ArrayList();
+  private WeakReference<LocationDetailActivity> a;
   
-  public float a()
+  public blll(LocationDetailActivity paramLocationDetailActivity)
   {
-    return 0.0F;
+    this.a = new WeakReference(paramLocationDetailActivity);
   }
   
-  public String a()
+  public int a()
   {
-    return "";
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return 0;
+    }
+    return LocationDetailActivity.a(localLocationDetailActivity);
   }
   
-  public HashMap<String, String> a()
+  public void a()
   {
-    return null;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.b(true);
+    bljv.a(null, "User_Modify", 7, 0, localLocationDetailActivity.getIntent().getIntExtra("category", 1));
   }
   
-  public float b()
+  public void a(Bundle paramBundle)
   {
-    return 0.0F;
+    super.a(paramBundle);
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.a(paramBundle);
   }
   
-  public String b()
+  public void b()
   {
-    return null;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    LocationDetailActivity.a(localLocationDetailActivity);
   }
   
-  public float c()
+  public void c()
   {
-    return 0.0F;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {}
+    while (!localLocationDetailActivity.d()) {
+      return;
+    }
+    localLocationDetailActivity.finish();
+  }
+  
+  public void d()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.A();
+  }
+  
+  public void e()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
+    if (localIntent != null)
+    {
+      aufz.a(localLocationDetailActivity, localIntent, 103);
+      return;
+    }
+    QQToast.a(localLocationDetailActivity, 2131692007, 1, 2000).b(5);
   }
 }
 

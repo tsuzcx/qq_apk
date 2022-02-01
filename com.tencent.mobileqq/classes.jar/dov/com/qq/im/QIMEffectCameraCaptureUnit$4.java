@@ -1,6 +1,6 @@
 package dov.com.qq.im;
 
-import blqk;
+import bojo;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$4
@@ -22,7 +22,7 @@ class QIMEffectCameraCaptureUnit$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.4
  * JD-Core Version:    0.7.0.1
  */

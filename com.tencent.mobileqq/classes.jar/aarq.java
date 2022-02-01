@@ -1,35 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class aarq
-  implements View.OnClickListener
+final class aarq
+  implements bihh
 {
-  public aarq(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  aarq(String paramString) {}
   
-  public void onClick(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      paramView = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+    case -1: 
+    default: 
+      zvc.a(1, 2131718007);
     }
     for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      WXShareHelper.a().b(this);
       return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
-        paramView = "ad is loading";
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
-        paramView = GdtInterstitialFragmentForJS.a(this.a).a();
-      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
-        paramView = "正在打开插屏";
-      } else {
-        paramView = "打开插屏错误";
-      }
+      zvc.a(2, 2131718025);
     }
   }
 }

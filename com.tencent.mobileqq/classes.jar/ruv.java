@@ -1,75 +1,40 @@
-import android.app.Activity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class ruv
+public abstract interface ruv
 {
-  private static ruv jdField_a_of_type_Ruv;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private szw jdField_a_of_type_Szw;
-  private Integer b;
+  public abstract void a(sar paramsar);
   
-  public static ruv a(Activity paramActivity)
-  {
-    int i;
-    int j;
-    if (jdField_a_of_type_Ruv == null)
-    {
-      jdField_a_of_type_Ruv = new ruv();
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      i = localDisplayMetrics.widthPixels;
-      j = localDisplayMetrics.heightPixels;
-    }
-    try
-    {
-      jdField_a_of_type_Ruv.jdField_a_of_type_Szw = new szw(paramActivity, i, j);
-      jdField_a_of_type_Ruv.jdField_a_of_type_Szw.a(new ruw());
-      return jdField_a_of_type_Ruv;
-    }
-    catch (SecurityException paramActivity)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
-        jdField_a_of_type_Ruv.jdField_a_of_type_Szw = null;
-      }
-    }
-  }
+  public abstract void a(sar paramsar, int paramInt1, int paramInt2, String paramString);
   
-  public void a()
-  {
-    if (jdField_a_of_type_Ruv != null)
-    {
-      jdField_a_of_type_Ruv.jdField_a_of_type_JavaLangInteger = null;
-      jdField_a_of_type_Ruv.b = null;
-    }
-  }
+  public abstract void a(sar paramsar, int paramInt, boolean paramBoolean);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Ruv != null)
-    {
-      jdField_a_of_type_Ruv.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
-      jdField_a_of_type_Ruv.b = new Integer(paramInt1);
-    }
-  }
+  public abstract void a(sar paramsar, long paramLong1, long paramLong2);
   
-  public void b()
-  {
-    if ((jdField_a_of_type_Ruv != null) && (jdField_a_of_type_Ruv.jdField_a_of_type_Szw != null))
-    {
-      jdField_a_of_type_Ruv.jdField_a_of_type_Szw.a();
-      jdField_a_of_type_Ruv.jdField_a_of_type_Szw = null;
-    }
-    jdField_a_of_type_Ruv = null;
-  }
+  public abstract void a(sar paramsar, boolean paramBoolean);
+  
+  public abstract void a(sar paramsar, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a(sar paramsar);
+  
+  public abstract void b(sar paramsar);
+  
+  public abstract void b(sar paramsar, boolean paramBoolean);
+  
+  public abstract void c(sar paramsar);
+  
+  public abstract void d(sar paramsar);
+  
+  public abstract void e(sar paramsar);
+  
+  public abstract void f(sar paramsar);
+  
+  public abstract void g(sar paramsar);
+  
+  public abstract void h(sar paramsar);
+  
+  public abstract void i(sar paramsar);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ruv
  * JD-Core Version:    0.7.0.1
  */

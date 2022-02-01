@@ -1,53 +1,88 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.ksong.KSongProsBar;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class bewz
-  extends AsyncTask<String, Void, beww>
+class bewz
+  extends aark
 {
-  public bewz(KSongView paramKSongView) {}
+  bewz(bewy parambewy) {}
   
-  protected beww a(String... paramVarArgs)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    String str = paramVarArgs[0];
-    paramVarArgs = paramVarArgs[1];
-    for (;;)
+    if (!paramBundle.getBoolean("isPreview", false)) {}
+    do
     {
-      try
+      do
       {
-        KSongView.a(this.a, KSongView.a(this.a, paramVarArgs));
-        if ((KSongView.a(this.a) != null) && (KSongView.a(this.a, str)))
-        {
-          paramVarArgs = KSongView.a(this.a);
-          return paramVarArgs;
+        return;
+      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    bfsf localbfsf = new bfsf();
+    localbfsf.jdField_a_of_type_Int = -1;
+    try
+    {
+      localbfsf.e = this.a.a().toString();
+      localQQAppInterface = bevv.a();
+      if (localQQAppInterface == null)
+      {
+        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
+        return;
+      }
+    }
+    catch (NullPointerException paramBundle)
+    {
+      QQAppInterface localQQAppInterface;
+      for (;;)
+      {
+        localbfsf.e = null;
+      }
+      anie localanie = (anie)localQQAppInterface.a(22);
+      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
+      {
+        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
+        bfrh.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        localbfsf.jdField_a_of_type_Boolean = false;
+        localanie.c(localbfsf);
+        return;
+      }
+      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+      localbfsf.jdField_a_of_type_Int = paramInt;
+      localbfsf.jdField_a_of_type_Boolean = false;
+      String str = paramDownloadFileRspBody.str_download_ip.get();
+      paramBundle = "";
+      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
+        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
+      }
+      localbfsf.jdField_a_of_type_JavaLangString = str;
+      if ((TextUtils.isEmpty(localbfsf.jdField_a_of_type_JavaLangString)) || (localbfsf.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
+        localbfsf.jdField_a_of_type_JavaLangString = paramBundle;
+      }
+      localbfsf.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+      localbfsf.c = paramDownloadFileRspBody.str_ret_msg.get();
+      localbfsf.d = bgmj.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+      localbfsf.f = paramBundle;
+      if (paramInt < 0)
+      {
+        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localbfsf.c);
+        bfrh.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        if (TextUtils.isEmpty(localbfsf.c)) {
+          localbfsf.c = anni.a(2131714022);
         }
+        localbfsf.jdField_a_of_type_Boolean = false;
+        localanie.c(localbfsf);
+        return;
       }
-      finally {}
-      paramVarArgs = null;
-    }
-  }
-  
-  protected void a(beww parambeww)
-  {
-    boolean bool = false;
-    if (parambeww != null)
-    {
-      if (KSongView.a(this.a) != null) {
-        KSongView.a(this.a).a(parambeww);
-      }
-      KSongView.a(this.a).notifyDataSetChanged();
-      KSongView.a(this.a, 0);
-    }
-    QLog.i("KSongView", 2, "InitTask config = " + parambeww);
-    if (KSongView.a(this.a) != null)
-    {
-      bewy localbewy = KSongView.a(this.a);
-      if (parambeww != null) {
-        bool = true;
-      }
-      localbewy.a(bool);
+      bevx.c("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localbfsf.b + " downloadKey:" + localbfsf.d + " retMsg:" + localbfsf.c + " httpsDomain:" + localbfsf.f);
+      localbfsf.jdField_a_of_type_Boolean = true;
+      localanie.c(localbfsf);
     }
   }
 }

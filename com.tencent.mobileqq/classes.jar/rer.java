@@ -1,19 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class rer
-  extends ntc
+public final class rer
+  implements Parcelable.Creator<ArticleInfo>
 {
-  public rer(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public ArticleInfo a(Parcel paramParcel)
   {
-    this.a.a(paramBoolean, paramBundle);
+    return new ArticleInfo(paramParcel);
+  }
+  
+  public ArticleInfo[] a(int paramInt)
+  {
+    return new ArticleInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rer
  * JD-Core Version:    0.7.0.1
  */

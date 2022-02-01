@@ -1,103 +1,42 @@
 package com.tencent.beacon.stat;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.concurrent.atomic.AtomicLong;
 
-final class c
+class c
+  implements Runnable
 {
-  private int a;
-  private int b;
-  private int c;
-  private List<d> d = Collections.synchronizedList(new ArrayList());
+  private volatile long a = 0L;
+  private volatile long b = 0L;
   
-  public final int a()
-  {
-    try
-    {
-      int i = this.b;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  c(d paramd) {}
   
-  public final void a(int paramInt)
+  public void run()
   {
-    try
+    synchronized (this.c)
     {
-      this.a = paramInt;
+      long l1 = d.a(this.c).get();
+      long l2 = d.b(this.c).get();
+      if ((this.a == l1) && (this.b == l2)) {
+        return;
+      }
+      this.a = l1;
+      this.b = l2;
+      Object localObject1 = d.a(this.c, d.c(this.c)).edit();
+      localObject1 = ((SharedPreferences.Editor)localObject1).putString("on_date", d.d(this.c));
+      localObject1 = ((SharedPreferences.Editor)localObject1).putLong("realtime_log_id", this.a);
+      ((SharedPreferences.Editor)localObject1).putLong("normal_log_id", this.b).apply();
+      localObject1 = new StringBuilder();
+      localObject1 = ((StringBuilder)localObject1).append("[LogID ").append(d.e(this.c));
+      com.tencent.beacon.core.e.d.a("]  write serial to sp, date: %s ,realtime: %d, normal: %d ", new Object[] { d.d(this.c), Long.valueOf(this.a), Long.valueOf(this.b) });
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final int b()
-  {
-    try
-    {
-      int i = this.c;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void b(int paramInt)
-  {
-    try
-    {
-      this.b = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final List<d> c()
-  {
-    return this.d;
-  }
-  
-  public final void c(int paramInt)
-  {
-    try
-    {
-      this.c = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    while ((getClass() != paramObject.getClass()) || (!(paramObject instanceof c)) || (((c)paramObject).a != this.a)) {
-      return false;
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.stat.c
  * JD-Core Version:    0.7.0.1
  */

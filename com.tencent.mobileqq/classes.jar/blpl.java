@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class blpl
-  implements DialogInterface.OnDismissListener
+public class blpl
+  extends blpb
 {
-  blpl(blpi paramblpi) {}
+  public blpl(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(blpa paramblpa)
   {
-    if (blpi.a(this.a) != null) {
-      blpi.a(this.a).a();
+    boolean bool = false;
+    JSONObject localJSONObject = paramblpa.a();
+    if (localJSONObject == null) {}
+    try
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
+      return;
     }
+    catch (JSONException paramblpa)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + paramblpa.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    paramblpa = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + paramblpa);
+      return;
+    }
+    i = localJSONObject.optInt("err_code", 0);
+    paramblpa = localJSONObject.optString("err_msg");
+    if (i == 0) {
+      bool = true;
+    }
+    blps.b(ForceUserUpdateActivity.a(this.a), bool);
+    if (bool)
+    {
+      blpu.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + paramblpa);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
   }
 }
 

@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
 
-public class awms
-  implements Comparator<PortalManager.ComboNumber>
+class awms
+  implements awnd<Integer, List<EmoticonPackage>>
 {
-  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
+  awms(awmr paramawmr) {}
+  
+  public List<EmoticonPackage> a(Integer paramInteger)
   {
-    if (paramComboNumber1.number > paramComboNumber2.number) {
-      return 1;
-    }
-    if (paramComboNumber1.number < paramComboNumber2.number) {
-      return -1;
-    }
-    return 0;
+    return this.a.a(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awms
  * JD-Core Version:    0.7.0.1
  */

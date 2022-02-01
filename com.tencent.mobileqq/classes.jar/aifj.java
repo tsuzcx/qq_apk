@@ -1,20 +1,14 @@
-class aifj
-  extends alpq
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8;
+
+public class aifj
+  implements oao
 {
-  aifj(aiez paramaiez) {}
+  public aifj(PublicAccountChatPie.8 param8) {}
   
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if (paramBoolean1) {
-      this.a.e();
-    }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.e();
-    }
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 

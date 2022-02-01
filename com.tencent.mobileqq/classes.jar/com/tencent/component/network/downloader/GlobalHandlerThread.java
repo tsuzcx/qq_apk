@@ -43,10 +43,18 @@ public class GlobalHandlerThread
   {
     return this.mHandler;
   }
+  
+  public Looper getLooper()
+  {
+    if (this.mWorkThread != null) {
+      return this.mWorkThread.getLooper();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.GlobalHandlerThread
  * JD-Core Version:    0.7.0.1
  */

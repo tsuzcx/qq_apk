@@ -1,54 +1,27 @@
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import java.io.File;
 
-public abstract class bnar
+final class bnar
+  implements bmzr
 {
-  protected final int a;
-  protected Context a;
-  protected bnas a;
-  protected final String a;
-  protected boolean a;
-  protected final String b;
-  protected boolean b;
-  protected boolean c = true;
+  bnar(String paramString1, String paramString2, bnat parambnat, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public bnar(Context paramContext, String paramString1, String paramString2, int paramInt)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Bnat != null) {
+      this.jdField_a_of_type_Bnat.a(paramLong, paramFloat);
+    }
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(bnas parambnas)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    this.jdField_a_of_type_Bnas = parambnas;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {
+      bmzf.a().a(bnaq.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bnas(this));
+    }
+    while (this.jdField_a_of_type_Bnat == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bnat.a(paramString3);
   }
 }
 

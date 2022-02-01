@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bnsm;
+import bqja;
 
 public class LightWeightProgress
   extends View
@@ -27,7 +27,7 @@ public class LightWeightProgress
   int d;
   int e;
   int f = 2;
-  int g = bnsm.a(14.0F);
+  int g = bqja.a(14.0F);
   protected int h;
   protected int i;
   protected int j;
@@ -57,8 +57,8 @@ public class LightWeightProgress
     setLayerType(1, null);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_c_of_type_Int = 0;
-    this.d = getResources().getColor(2131166204);
-    this.e = getResources().getColor(2131166208);
+    this.d = getResources().getColor(2131166275);
+    this.e = getResources().getColor(2131166279);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -276,7 +276,7 @@ public class LightWeightProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightProgress
  * JD-Core Version:    0.7.0.1
  */

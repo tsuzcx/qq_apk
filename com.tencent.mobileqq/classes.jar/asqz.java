@@ -1,73 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-
 public class asqz
-  implements affa
 {
-  private final BaseChatPie a;
-  public boolean a;
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  public asqz(BaseChatPie paramBaseChatPie)
+  public asqz(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, float paramFloat3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public static asqz a(BaseChatPie paramBaseChatPie)
-  {
-    return (asqz)paramBaseChatPie.a(6);
-  }
-  
-  private void b(XEditTextEx paramXEditTextEx)
-  {
-    try
-    {
-      paramXEditTextEx.setTextMenuListener(null);
-      return;
-    }
-    catch (Throwable paramXEditTextEx) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
-    do
-    {
-      return;
-      if (paramInt == 11)
-      {
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-        return;
-      }
-    } while (paramInt != 4);
-    bhtk.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
-  public void a(XEditTextEx paramXEditTextEx)
-  {
-    asra localasra = new asra(this);
-    try
-    {
-      paramXEditTextEx.setTextMenuListener(localasra);
-      return;
-    }
-    catch (Throwable paramXEditTextEx)
-    {
-      paramXEditTextEx.printStackTrace();
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11, 4 };
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt >= 30) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_Float = paramInt1;
+    this.b = paramInt2;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.f = paramFloat3;
+    this.e = 0.0F;
   }
 }
 

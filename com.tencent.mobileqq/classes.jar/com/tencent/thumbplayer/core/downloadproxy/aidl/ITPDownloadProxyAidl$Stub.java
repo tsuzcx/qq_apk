@@ -18,6 +18,7 @@ public abstract class ITPDownloadProxyAidl$Stub
   static final int TRANSACTION_pauseDownload = 9;
   static final int TRANSACTION_pushEvent = 14;
   static final int TRANSACTION_resumeDownload = 10;
+  static final int TRANSACTION_setBusinessDownloadStrategy = 17;
   static final int TRANSACTION_setClipInfo = 4;
   static final int TRANSACTION_setMaxStorageSizeMB = 16;
   static final int TRANSACTION_setPlayState = 15;
@@ -167,16 +168,21 @@ public abstract class ITPDownloadProxyAidl$Stub
       setPlayState(paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      setMaxStorageSizeMB(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-    setMaxStorageSizeMB(paramParcel1.readLong());
+    setBusinessDownloadStrategy(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
     paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

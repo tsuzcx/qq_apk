@@ -1,96 +1,54 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class aqcl
 {
-  public int a;
-  public long a;
-  public aqbt a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  public String f = "";
+  private float jdField_a_of_type_Float;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  public aqcl()
+  public aqcl(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
-  public aqcl a()
+  private void b()
   {
-    aqcl localaqcl = new aqcl();
-    localaqcl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaqcl.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localaqcl.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localaqcl.c = this.c;
-    localaqcl.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localaqcl.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localaqcl.e = this.e;
-    return localaqcl;
+    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = bdeu.a("");
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_Aqbt = null;
+    b();
   }
   
-  public boolean a()
+  public void a(float paramFloat1, float paramFloat2)
   {
-    String str = bdeu.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public boolean equals(Object paramObject)
+  public void a(aqga paramaqga, boolean paramBoolean, int paramInt)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    do
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof aqcl));
-      paramObject = (aqcl)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = bdeu.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
+      Animator localAnimator = zrn.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
+      localAnimator.addListener(new aqcm(this, paramaqga, paramBoolean));
+      localAnimator.setDuration(300L);
+      localAnimator.start();
     }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.f).append("}");
-    if (this.jdField_a_of_type_Aqbt != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Aqbt.toString());
-    }
-    return localStringBuilder.toString();
   }
 }
 

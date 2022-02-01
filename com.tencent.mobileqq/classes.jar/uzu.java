@@ -1,58 +1,53 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import java.util.List;
 
-class uzu
-  extends uny
+public abstract class uzu
+  extends zxi
+  implements zxl<QCircleReportBean>
 {
-  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  protected QCircleReportBean a;
   
-  public uzu(uzq paramuzq)
+  public uzu() {}
+  
+  public uzu(int paramInt1, List<zxu> paramList, int paramInt2, int paramInt3)
   {
-    super("MsgTabStoryVideoPreloader");
+    super(paramInt1, paramList, paramInt2, paramInt3);
   }
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj)
+  public QCircleReportBean a()
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramunj);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
-      }
-      this.jdField_a_of_type_Uzq.a(paramunj.c, true);
+    if (this.a == null) {
+      this.a = new QCircleReportBean();
     }
+    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
   }
   
-  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
+  public void a(QCircleReportBean paramQCircleReportBean)
   {
-    super.a(paramString, paramInt1, paramFile, paramInt2, paramunj);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
-      }
-      this.jdField_a_of_type_Uzq.a(paramunj.c, true);
-    }
+    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
   }
   
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
+  protected int b()
   {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramunj);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
-      }
-      this.jdField_a_of_type_Uzq.a(paramunj.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    return QCircleReportBean.getParentPageId(a(), this.a);
+  }
+  
+  protected String b()
+  {
+    if (this.a != null) {
+      return this.a.getModuleIdStr();
     }
+    return null;
+  }
+  
+  public int c()
+  {
+    return QCircleReportBean.getPageId(a(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzu
  * JD-Core Version:    0.7.0.1
  */

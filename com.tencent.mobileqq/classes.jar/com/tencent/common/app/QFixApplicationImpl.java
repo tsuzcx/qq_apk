@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
-import asqb;
+import auxf;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.mobileqq.qfix.ApplicationDelegate;
 import com.tencent.mobileqq.qfix.QFixApplication;
@@ -31,12 +31,18 @@ import org.json.JSONObject;
 public class QFixApplicationImpl
   extends QFixApplication
 {
-  private static String a;
+  public static String a;
   public static boolean a;
+  private static String b;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "com.tencent.common.app.BaseApplicationImpl";
+  }
   
   public QFixApplicationImpl()
   {
-    super("com.tencent.common.app.BaseApplicationImpl");
+    super(jdField_a_of_type_JavaLangString);
   }
   
   public static int a(Context paramContext)
@@ -52,8 +58,8 @@ public class QFixApplicationImpl
   
   public static String a(Context paramContext)
   {
-    if (jdField_a_of_type_JavaLangString != null) {
-      return jdField_a_of_type_JavaLangString;
+    if (b != null) {
+      return b;
     }
     try
     {
@@ -85,7 +91,7 @@ public class QFixApplicationImpl
     if (paramContext == null) {
       localObject = "com.tencent.mobileqq";
     }
-    jdField_a_of_type_JavaLangString = (String)localObject;
+    b = (String)localObject;
     return localObject;
   }
   
@@ -151,7 +157,7 @@ public class QFixApplicationImpl
   public static void a(Context paramContext)
   {
     if (jdField_a_of_type_Boolean) {
-      paramContext.getSharedPreferences("hotpatch_preference", 4).edit().putInt("androidNTryCount" + jdField_a_of_type_JavaLangString, 0).commit();
+      paramContext.getSharedPreferences("hotpatch_preference", 4).edit().putInt("androidNTryCount" + b, 0).commit();
     }
   }
   
@@ -234,8 +240,8 @@ public class QFixApplicationImpl
       else
       {
         localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "fd2cc8f9");
-        if (!"fd2cc8f9".equals(localObject2))
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "2703aac4");
+        if (!"2703aac4".equals(localObject2))
         {
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
           bool1 = false;
@@ -290,7 +296,7 @@ public class QFixApplicationImpl
             else
             {
               if (bool1) {
-                break label496;
+                break label498;
               }
               Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process not match.");
               break;
@@ -298,7 +304,7 @@ public class QFixApplicationImpl
             j += 1;
           }
         }
-        label496:
+        label498:
         localObject3 = ((JSONObject)localObject1).optString("systemVersion", "");
         if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).contains(String.valueOf(Build.VERSION.SDK_INT))))
         {
@@ -308,7 +314,7 @@ public class QFixApplicationImpl
         {
           localObject3 = ((JSONObject)localObject1).optString("deviceInfo", "");
           if ((TextUtils.isEmpty((CharSequence)localObject3)) || ((((String)localObject3).contains(Build.BRAND)) && (((String)localObject3).contains(Build.MODEL)))) {
-            break label596;
+            break label598;
           }
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable device not match.");
         }
@@ -316,7 +322,7 @@ public class QFixApplicationImpl
     }
     for (;;)
     {
-      label596:
+      label598:
       if (localObject1 == null)
       {
         Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig not match.");
@@ -391,7 +397,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      asqb.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
+      auxf.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
       return;
     }
     catch (Throwable paramIntent)
@@ -406,7 +412,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      asqb.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
+      auxf.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
       return;
     }
     catch (Throwable paramIntent)

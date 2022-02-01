@@ -1,61 +1,42 @@
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.observer.AccountObserver;
 
-public class akgt
+class akgt
+  extends AccountObserver
 {
-  private static akgt a;
+  akgt(akgq paramakgq) {}
   
-  public static akgt a()
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    if (a == null) {}
-    try
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null)
     {
-      if (a == null) {
-        a = new akgt();
+      for (;;)
+      {
+        int j = i - 1;
+        if (i <= 0) {
+          break;
+        }
+        paramString1 = akgq.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
+        if (paramString1 == null)
+        {
+          i = j;
+        }
+        else
+        {
+          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
+          this.a.b(paramString1);
+          i = j;
+        }
       }
-      return a;
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
-    finally {}
-  }
-  
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return "folder_weather_arrive";
-    case 1: 
-      return "folder_weather_expose";
-    case 2: 
-      return "folder_weather_click";
-    case 3: 
-      return "aio_news_click";
-    case 4: 
-      return "aio_othercity_click";
-    case 5: 
-      return "aio_page_arrive";
-    }
-    return "aio_search_push";
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + a(paramInt) + "|" + "android";
-    azps.a(paramQQAppInterface, "dc04698", str);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + str);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      a().a(paramQQAppInterface, 0);
-    }
+    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
 }
 

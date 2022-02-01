@@ -1,74 +1,95 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.accounts.AbstractAccountAuthenticator;
+import android.accounts.Account;
+import android.accounts.AccountAuthenticatorResponse;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class ardi
-  implements ayqp<aynu, aywd>
+  extends AbstractAccountAuthenticator
 {
-  private ardn a;
+  private Context a;
   
-  public void a(ardn paramardn)
+  public ardi(Context paramContext)
   {
-    this.a = paramardn;
+    super(paramContext);
+    this.a = paramContext;
   }
   
-  public void a(aynu paramaynu, aywd paramaywd)
+  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
   {
-    if ((paramaywd.a() != null) && (!TextUtils.isEmpty(paramaynu.a())))
-    {
-      paramaywd.a().setVisibility(0);
-      paramaywd.a().setText(paramaynu.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "addAccount");
     }
-    if ((paramaywd.b() != null) && (!TextUtils.isEmpty(paramaynu.b())))
-    {
-      paramaywd.b().setVisibility(0);
-      paramaywd.b().setText(paramaynu.b());
+    paramAccountAuthenticatorResponse = new Bundle();
+    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
+    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
+    return paramAccountAuthenticatorResponse;
+  }
+  
+  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
     }
-    if ((paramaywd.c() != null) && (!TextUtils.isEmpty(paramaynu.c())))
-    {
-      paramaywd.c().setVisibility(0);
-      paramaywd.c().setText(paramaynu.c());
+    return null;
+  }
+  
+  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
+  {
+    return null;
+  }
+  
+  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
     }
-    if ((paramaynu.d() == null) && (paramaywd.d() != null)) {
-      paramaywd.d().setVisibility(8);
+    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
+      ContactSyncManager.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
     }
-    if ((paramaywd.d() != null) && (paramaynu.d() != null))
-    {
-      paramaywd.d().setVisibility(0);
-      paramaywd.d().setText(paramaynu.d());
+    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
+  }
+  
+  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
     }
-    ardh localardh = (ardh)paramaynu;
-    View localView = paramaywd.a();
-    paramaywd = (AsyncImageView)paramaywd.b();
-    String str = localardh.c();
-    int i = localardh.e();
-    if (!TextUtils.isEmpty(str))
-    {
-      arrr.a(paramaywd, str, i);
-      paramaywd.setOnClickListener(new ardj(this, paramaynu));
-      paramaywd = (CheckBox)localView.findViewById(2131366315);
-      if (localardh.d() <= 1) {
-        break label336;
-      }
-      paramaywd.setVisibility(8);
+    return null;
+  }
+  
+  public String getAuthTokenLabel(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
     }
-    for (;;)
-    {
-      paramaywd.setChecked(localardh.b());
-      localView.setOnClickListener(new ardk(this, paramaynu));
-      return;
-      paramaywd.setDefaultImage(arrr.a(i));
-      break;
-      label336:
-      paramaywd.setVisibility(0);
+    return "QQ通讯录同步@Authenticator";
+  }
+  
+  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
     }
+    return null;
+  }
+  
+  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardi
  * JD-Core Version:    0.7.0.1
  */

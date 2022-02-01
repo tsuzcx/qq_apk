@@ -1,92 +1,103 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.fts.FTSOptSync;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class aonl
-  extends aokh<aonm>
+  extends aonn
 {
-  public static int a = 16777216;
-  public static int b = 10240;
-  
-  public int a()
+  public aonl(QQAppInterface paramQQAppInterface, aonm paramaonm)
   {
-    return 561;
+    super(paramQQAppInterface, paramaonm);
+    this.d = true;
   }
   
-  @NonNull
-  public aonm a(int paramInt)
+  protected FTSOptSync a(int paramInt, long paramLong1, long paramLong2)
   {
-    aonm localaonm = new aonm();
-    localaonm.a = a;
-    localaonm.b = b;
-    return localaonm;
+    return new FTSNewTroopSync(paramInt, paramLong1, paramLong2);
   }
   
-  @Nullable
-  public aonm a(aoko[] paramArrayOfaoko)
+  protected List<FTSOptSync> a(SQLiteDatabase paramSQLiteDatabase, EntityManager paramEntityManager)
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
-      return new aonm();
-    }
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
-    }
-    aonm localaonm = new aonm();
+    localObject = null;
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfaoko);
-      localaonm.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
-      localaonm.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
-      return localaonm;
+      if (this.a > 0)
+      {
+        i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.a) });
+        if ((QLog.isColorLevel()) && (i > 0)) {
+          QLog.d("Q.fts.troop.operator.new", 2, "delete " + FTSNewTroopSync.class.getSimpleName() + " row=" + i);
+        }
+      }
+      paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.a) }, null, null, null, "300");
+      if (paramEntityManager == null) {
+        break label291;
+      }
+      paramSQLiteDatabase = new ArrayList(paramEntityManager.size());
+      try
+      {
+        paramEntityManager = paramEntityManager.iterator();
+        while (paramEntityManager.hasNext()) {
+          paramSQLiteDatabase.add(((FTSNewTroopSync)paramEntityManager.next()).transTroopSync());
+        }
+        QLog.e("Q.fts.troop.operator.new", 1, paramEntityManager, new Object[0]);
+      }
+      catch (Throwable paramEntityManager) {}
     }
-    catch (Exception localException)
+    catch (Throwable paramEntityManager)
     {
-      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfaoko);
-      localaonm.a = a;
-      localaonm.b = b;
+      for (;;)
+      {
+        int i;
+        paramSQLiteDatabase = localObject;
+        continue;
+        paramSQLiteDatabase = null;
+      }
     }
-    return localaonm;
-  }
-  
-  public Class a()
-  {
-    return aonm.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
+    paramEntityManager = new HashMap();
+    paramEntityManager.put("type", "2");
+    bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actGetOptFailed", true, 0L, 0L, paramEntityManager, null);
+    paramEntityManager = paramSQLiteDatabase;
+    label225:
+    return paramEntityManager;
+    paramEntityManager = paramSQLiteDatabase;
+    for (;;)
+    {
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label225;
+        }
+        paramEntityManager = new StringBuilder().append("getOptSyncList size:");
+        if (paramSQLiteDatabase == null) {
+          break label279;
+        }
+        i = paramSQLiteDatabase.size();
+        QLog.d("Q.fts.troop.operator.new", 2, i);
+        return paramSQLiteDatabase;
+      }
+      catch (Throwable paramEntityManager) {}
+      break;
+      label279:
+      i = 0;
     }
   }
   
-  public void a(aonm paramaonm)
+  protected String b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "NewTroopCursor";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aonl
  * JD-Core Version:    0.7.0.1
  */

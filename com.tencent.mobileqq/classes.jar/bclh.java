@@ -1,171 +1,359 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.LinkedList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class bclh
 {
-  private static bclh jdField_a_of_type_Bclh;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bcli(this, BaseApplication.getContext().getMainLooper());
-  private LinkedList<bclj> jdField_a_of_type_JavaUtilLinkedList;
-  public boolean a;
+  public static bclh a;
+  public float a;
+  public int a;
+  public int b = 1;
+  public int c = 1;
+  public int d = 1;
+  public int e = 1;
+  public int f = -1;
+  public int g = 1;
+  public int h = 6000;
+  public int i = 1;
+  public int j = 0;
+  public int k = 3;
+  public int l = 0;
+  public int m = 0;
+  public int n = 1;
+  public int o = 0;
+  public int p = 1;
+  public int q = 1;
+  public int r = 1;
+  public int s = 1;
+  public int t = 1;
+  public int u = -1;
+  public int v = -1;
+  
+  public bclh()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public static float a()
+  {
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.jdField_a_of_type_Float;
+    }
+    return 1.0F;
+  }
+  
+  public static int a()
+  {
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.f;
+    }
+    return -1;
+  }
   
   public static bclh a()
   {
     if (jdField_a_of_type_Bclh == null) {
-      jdField_a_of_type_Bclh = new bclh();
+      jdField_a_of_type_Bclh = b();
     }
     return jdField_a_of_type_Bclh;
   }
   
-  public Bitmap a(String paramString, RollangleImageView paramRollangleImageView)
+  public static boolean a()
   {
-    try
-    {
-      paramString = (Bitmap)RollangleImageView.a.get("troopfileimage://" + paramString);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.jdField_a_of_type_Int == 1);
   }
   
-  /* Error */
-  public void a()
+  public static int b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   18: invokevirtual 72	java/util/LinkedList:clear	()V
-    //   21: aload_0
-    //   22: aconst_null
-    //   23: putfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   26: goto -15 -> 11
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	bclh
-    //   6	2	1	localLinkedList	LinkedList
-    //   29	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	29	finally
-    //   14	26	29	finally
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.h;
+    }
+    return 6000;
   }
   
-  public void a(boolean paramBoolean)
+  public static bclh b()
   {
-    if (paramBoolean) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaCodecDPC", 2, "loadMediaCodecDPC!");
+    }
+    bclh localbclh = new bclh();
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SVideoCfg.name());
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaCodecDPC", 2, "loadMediaCodecDPC dpcValue: " + (String)localObject);
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localbclh;
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      try
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject == null) {
+          break;
+        }
+        if (localObject.length >= 1) {
+          localbclh.jdField_a_of_type_Int = Integer.valueOf(localObject[0]).intValue();
+        }
+        if (localObject.length >= 2) {
+          localbclh.b = Integer.valueOf(localObject[1]).intValue();
+        }
+        if (localObject.length >= 4)
+        {
+          f1 = Float.valueOf(localObject[2]).floatValue();
+          localbclh.c = Integer.valueOf(localObject[3]).intValue();
+          if ((f1 > 1.0D) || (f1 <= 0.0F)) {
+            continue;
+          }
+          localbclh.jdField_a_of_type_Float = f1;
+        }
+        if (localObject.length >= 5) {
+          localbclh.d = Integer.valueOf(localObject[4]).intValue();
+        }
+        if (localObject.length >= 6) {
+          localbclh.e = Integer.valueOf(localObject[5]).intValue();
+        }
+        if (localObject.length >= 7) {
+          localbclh.f = Integer.valueOf(localObject[6]).intValue();
+        }
+        if (localObject.length >= 8) {
+          localbclh.g = Integer.valueOf(localObject[7]).intValue();
+        }
+        if (localObject.length >= 9) {
+          localbclh.h = Integer.valueOf(localObject[8]).intValue();
+        }
+        if (localObject.length >= 10) {
+          localbclh.i = Integer.valueOf(localObject[9]).intValue();
+        }
+        if (localObject.length >= 12)
+        {
+          localbclh.j = Integer.valueOf(localObject[10]).intValue();
+          localbclh.k = Integer.valueOf(localObject[11]).intValue();
+        }
+        if (localObject.length >= 13) {
+          localbclh.l = Integer.valueOf(localObject[12]).intValue();
+        }
+        if (localObject.length >= 14) {
+          localbclh.m = Integer.valueOf(localObject[13]).intValue();
+        }
+        if (localObject.length >= 15) {
+          localbclh.n = Integer.valueOf(localObject[14]).intValue();
+        }
+        if (localObject.length >= 16) {
+          localbclh.o = Integer.valueOf(localObject[15]).intValue();
+        }
+        if (localObject.length >= 17) {
+          localbclh.p = Integer.valueOf(localObject[16]).intValue();
+        }
+        if (localObject.length >= 18) {
+          localbclh.q = Integer.valueOf(localObject[17]).intValue();
+        }
+        if (localObject.length >= 19) {
+          localbclh.r = Integer.valueOf(localObject[18]).intValue();
+        }
+        if (localObject.length >= 21)
+        {
+          localbclh.s = Integer.valueOf(localObject[19]).intValue();
+          localbclh.t = Integer.valueOf(localObject[20]).intValue();
+        }
+        if (localObject.length >= 23)
+        {
+          localbclh.u = Integer.valueOf(localObject[21]).intValue();
+          localbclh.v = Integer.valueOf(localObject[22]).intValue();
+        }
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
+      catch (Exception localException)
+      {
+        float f1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MediaCodecDPC", 2, "loadMediaCodecDPC exception:", localException);
+        continue;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("MediaCodecDPC", 2, "MediaCodecDPC:" + localbclh.toString());
+      return localbclh;
+      QLog.e("MediaCodecDPC", 1, new Object[] { "MediaCodecDPC:  beautyRate: ", Float.valueOf(f1) });
     }
-    finally {}
   }
   
-  /* Error */
-  public Bitmap b(String paramString, RollangleImageView paramRollangleImageView)
+  public static boolean b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 46	com/tencent/mobileqq/troop/utils/RollangleImageView:a	Landroid/support/v4/util/MQLruCache;
-    //   5: new 48	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 51
-    //   14: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_1
-    //   18: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokevirtual 65	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 67	android/graphics/Bitmap
-    //   30: astore_3
-    //   31: aload_3
-    //   32: ifnull +9 -> 41
-    //   35: aload_3
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: areturn
-    //   41: aload_0
-    //   42: getfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   45: ifnonnull +14 -> 59
-    //   48: aload_0
-    //   49: new 69	java/util/LinkedList
-    //   52: dup
-    //   53: invokespecial 77	java/util/LinkedList:<init>	()V
-    //   56: putfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   59: aload_0
-    //   60: getfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   63: invokevirtual 81	java/util/LinkedList:isEmpty	()Z
-    //   66: ifeq +17 -> 83
-    //   69: new 83	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1
-    //   72: dup
-    //   73: aload_0
-    //   74: invokespecial 86	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1:<init>	(Lbclh;)V
-    //   77: iconst_5
-    //   78: aconst_null
-    //   79: iconst_1
-    //   80: invokestatic 92	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   83: new 94	bclj
-    //   86: dup
-    //   87: invokespecial 95	bclj:<init>	()V
-    //   90: astore_3
-    //   91: aload_3
-    //   92: aload_2
-    //   93: putfield 98	bclj:jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView	Lcom/tencent/mobileqq/troop/utils/RollangleImageView;
-    //   96: aload_3
-    //   97: aload_1
-    //   98: putfield 101	bclj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   101: aload_0
-    //   102: getfield 40	bclh:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   105: aload_3
-    //   106: invokevirtual 105	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   109: pop
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: goto -75 -> 37
-    //   115: astore_1
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	bclh
-    //   0	120	1	paramString	String
-    //   0	120	2	paramRollangleImageView	RollangleImageView
-    //   30	76	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	31	115	finally
-    //   41	59	115	finally
-    //   59	83	115	finally
-    //   83	110	115	finally
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.b == 1);
+  }
+  
+  public static int c()
+  {
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.k;
+    }
+    return 3;
+  }
+  
+  public static boolean c()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.c == 1);
+  }
+  
+  public static int d()
+  {
+    int i2 = 1;
+    bclh localbclh = a();
+    int i1 = i2;
+    if (localbclh != null)
+    {
+      i1 = localbclh.t;
+      if (i1 != 1) {
+        return i1;
+      }
+      i1 = i2;
+      if (bcli.a()) {
+        i1 = 2;
+      }
+    }
+    return i1;
+    return i1;
+  }
+  
+  public static boolean d()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.d == 1);
+  }
+  
+  public static int e()
+  {
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.u;
+    }
+    return -1;
+  }
+  
+  public static boolean e()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.e == 1);
+  }
+  
+  public static int f()
+  {
+    bclh localbclh = a();
+    if (localbclh != null) {
+      return localbclh.v;
+    }
+    return -1;
+  }
+  
+  public static boolean f()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.g == 1);
+  }
+  
+  public static boolean g()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.i == 1);
+  }
+  
+  public static boolean h()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.j == 1);
+  }
+  
+  public static boolean i()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.l == 1);
+  }
+  
+  public static boolean j()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.m == 1);
+  }
+  
+  public static boolean k()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.n == 1);
+  }
+  
+  public static boolean l()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.o == 1);
+  }
+  
+  public static boolean m()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.p == 1);
+  }
+  
+  public static boolean n()
+  {
+    if (!bcif.f()) {}
+    bclh localbclh;
+    do
+    {
+      return false;
+      localbclh = a();
+    } while ((localbclh != null) && (localbclh.r == 0));
+    return true;
+  }
+  
+  public static boolean o()
+  {
+    bclh localbclh = a();
+    return (localbclh != null) && (localbclh.q == 1);
+  }
+  
+  public static boolean p()
+  {
+    bclh localbclh = a();
+    return (localbclh == null) || (localbclh.s == 1);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mediaCodecSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" beautySwitch: ").append(this.b);
+    localStringBuilder.append(" beautyRate: ").append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" svafSwitch: ").append(this.c);
+    localStringBuilder.append(" gestureDPCSwitch: ").append(this.d);
+    localStringBuilder.append(" deNoiseDPCSwitch: ").append(this.e);
+    localStringBuilder.append(" qmcfDPCFrameType: ").append(this.f);
+    localStringBuilder.append(" cqBitrateModeSwitch: ").append(this.g);
+    localStringBuilder.append(" cqMaxBitrate: ").append(this.h);
+    localStringBuilder.append(" faceDanceDPCSwitch: ").append(this.i);
+    localStringBuilder.append(" portraitDPCSwitch: ").append(this.l);
+    localStringBuilder.append(" danceRankingSwitch: ").append(this.m);
+    localStringBuilder.append(" arParticleDPCSwitch: ").append(this.n);
+    localStringBuilder.append(" rijiCameraDPCSwitch: ").append(this.o);
+    localStringBuilder.append(" segmentMediaCodecEncodeSwitch: ").append(this.p);
+    localStringBuilder.append(" transitionSwitch: ").append(this.q);
+    localStringBuilder.append(" rijiCamera720PSwitch: ").append(this.r);
+    localStringBuilder.append(" followCaptureSwitch: ").append(this.s);
+    localStringBuilder.append(" followCaptureGopSize: ").append(this.t);
+    localStringBuilder.append(" mLimittedSdkVersion: ").append(this.u);
+    localStringBuilder.append(" camera2Switch: ").append(this.v);
+    return localStringBuilder.toString();
   }
 }
 

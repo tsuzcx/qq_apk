@@ -1,61 +1,36 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
-public abstract class sij<T>
-  extends BaseAdapter
-  implements sil
+public abstract interface sij
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public abstract void onBufferEnd();
   
-  protected void a(T paramT)
-  {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
-  }
+  public abstract void onBufferStart();
   
-  protected void a(List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
+  public abstract void onCompletion();
   
-  protected void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
+  public abstract void onDownloadFinished();
   
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
+  public abstract void onFirstFrameRendered();
   
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
-  }
+  public abstract void onProgressChanged(long paramLong);
   
-  public final boolean hasStableIds()
-  {
-    return true;
-  }
+  public abstract void onVideoEnd(int paramInt);
+  
+  public abstract void onVideoError(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void onVideoOpen();
+  
+  public abstract void onVideoPause();
+  
+  public abstract void onVideoPrepared();
+  
+  public abstract void onVideoRestart();
+  
+  public abstract void onVideoStart();
+  
+  public abstract void onVideoStop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sij
  * JD-Core Version:    0.7.0.1
  */

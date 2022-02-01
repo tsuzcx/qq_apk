@@ -1,63 +1,14 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import java.util.Comparator;
 
-public class aiiw
-  implements IMiniMsgUnreadCallback
+final class aiiw
+  implements Comparator<aiis>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public aiiw(View paramView, TextView paramTextView)
+  public int a(aiis paramaiis1, aiis paramaiis2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
-  
-  public void destroy()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-  }
-  
-  public void hide()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
-  
-  public void hideUnread()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public boolean show(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    updateUnreadCount(paramInt, false);
-    return true;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str = String.valueOf(paramInt);
-    if (paramInt > 99) {
-      str = "99+";
+    if ((paramaiis1 == null) || (paramaiis2 == null)) {
+      return 0;
     }
-    localTextView.setText(str);
-    if (!paramBoolean)
-    {
-      if (paramInt <= 0) {
-        localTextView.setVisibility(8);
-      }
-    }
-    else {
-      return;
-    }
-    localTextView.setVisibility(0);
+    return Float.compare(paramaiis1.a(), paramaiis2.a());
   }
 }
 

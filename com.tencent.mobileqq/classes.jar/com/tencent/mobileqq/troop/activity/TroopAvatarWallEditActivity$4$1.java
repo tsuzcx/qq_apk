@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bcsc;
+import bfwu;
 import com.tencent.mobileqq.data.Setting;
 
 class TroopAvatarWallEditActivity$4$1
@@ -15,7 +15,7 @@ class TroopAvatarWallEditActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

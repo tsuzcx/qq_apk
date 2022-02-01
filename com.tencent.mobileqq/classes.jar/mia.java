@@ -1,26 +1,35 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
 public class mia
-  extends meu
+  extends BroadcastReceiver
 {
-  public mia(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  public mia(QavPanel paramQavPanel) {}
   
-  protected void a(bdjk parambdjk)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != parambdjk.a)) {
-      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambdjk.a + "]");
-    }
-    if (this.a.a != parambdjk.a)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      this.a.a = parambdjk.a;
-      this.a.f(0L, 65535);
-    }
+      do
+      {
+        return;
+        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+          break;
+        }
+      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
+      this.a.a.f();
+      return;
+    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mia
  * JD-Core Version:    0.7.0.1
  */

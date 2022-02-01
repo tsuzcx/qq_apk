@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import awge;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
 
 public final class RecommendTroopManagerImp$4
@@ -13,36 +14,36 @@ public final class RecommendTroopManagerImp$4
   
   public void run()
   {
-    awgf localawgf;
+    EntityManager localEntityManager;
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
-      localawgf = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
+      localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
     }
     for (;;)
     {
-      if (localawgf == null) {}
+      if (localEntityManager == null) {}
       for (;;)
       {
         return;
         if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
           break label89;
         }
-        localawgf = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
+        localEntityManager = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a().createEntityManager();
         break;
         if (this.jdField_a_of_type_Int == 2) {}
-        for (awge localawge = localawgf.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localawge != null; localawge = null)
+        for (Entity localEntity = localEntityManager.find(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localEntity != null; localEntity = null)
         {
-          localawgf.b(localawge);
+          localEntityManager.remove(localEntity);
           return;
         }
       }
       label89:
-      localawgf = null;
+      localEntityManager = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.RecommendTroopManagerImp.4
  * JD-Core Version:    0.7.0.1
  */

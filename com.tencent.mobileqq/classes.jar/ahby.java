@@ -1,16 +1,94 @@
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahby
+class ahby
+  implements bhue
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  @bdcu(a=String.class)
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  ahby(ahbx paramahbx, boolean paramBoolean) {}
   
-  public String toString()
+  public void a(View paramView)
   {
-    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bhqh.a(this.b) + '\'' + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("LongMsgItemBuilder", 2, "SingleTap invoked!");
+    }
+    Object localObject;
+    float f1;
+    float f2;
+    float f3;
+    int k;
+    boolean bool2;
+    int j;
+    boolean bool1;
+    if ((paramView instanceof AnimationTextView))
+    {
+      localObject = (AnimationTextView)paramView;
+      f1 = ((AnimationTextView)localObject).touchL - ahbx.b();
+      f2 = ((AnimationTextView)localObject).touchT;
+      f3 = ahbx.c();
+      if (this.jdField_a_of_type_Boolean) {
+        f1 = ((AnimationTextView)localObject).touchL - ahbx.d();
+      }
+      localObject = ((AnimationTextView)localObject).getText();
+      if ((localObject instanceof bdnt))
+      {
+        localObject = (bdnt)localObject;
+        localObject = (bdoa[])((bdnt)localObject).getSpans(0, ((bdnt)localObject).length(), bdoa.class);
+        if (!(paramView instanceof ETTextView)) {
+          break label332;
+        }
+        paramView = (ETTextView)paramView;
+        k = paramView.mClickEpId;
+        int m = paramView.mClickcEId;
+        if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
+          break label314;
+        }
+        bool2 = true;
+        i = k;
+        j = m;
+        bool1 = bool2;
+        if (bool2)
+        {
+          i = k;
+          j = m;
+          bool1 = bool2;
+          if (paramView.getETLayout() != null)
+          {
+            paramView = paramView.getETLayout();
+            if (QLog.isColorLevel()) {
+              QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
+            }
+            if (paramView.jdField_a_of_type_Boolean) {
+              break label320;
+            }
+            bool1 = true;
+            label248:
+            j = m;
+          }
+        }
+      }
+    }
+    for (int i = k;; i = -1)
+    {
+      if ((i != -1) && (j != -1)) {}
+      for (bool2 = true;; bool2 = false)
+      {
+        arze.a((bdoa[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahbx.jdField_a_of_type_AndroidContentContext, bool1);
+        return;
+        label314:
+        bool2 = false;
+        break;
+        label320:
+        bool1 = false;
+        break label248;
+      }
+      label332:
+      bool1 = false;
+      j = -1;
+    }
   }
 }
 

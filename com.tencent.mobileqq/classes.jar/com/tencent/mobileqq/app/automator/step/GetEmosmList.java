@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alrp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import apob;
-import aufn;
-import bdgk;
+import anlb;
+import arrc;
+import awmr;
+import bgln;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -26,7 +26,7 @@ public class GetEmosmList
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "getEmosmList start int QQInitHandler...");
     }
-    ((apob)this.a.app.getManager(259)).a();
+    ((arrc)this.a.app.getManager(259)).a();
     Object localObject1 = this.a.app.getApp().getSharedPreferences("sticker_pref", 0);
     Object localObject2 = this.a.app.getCurrentAccountUin();
     if ((((SharedPreferences)localObject1).getBoolean("sticker_switch_" + (String)localObject2, true)) && (EmojiStickerManager.a())) {}
@@ -35,7 +35,7 @@ public class GetEmosmList
       EmojiStickerManager.jdField_e_of_type_Boolean = bool;
       EmojiStickerManager.jdField_e_of_type_Int = ((SharedPreferences)localObject1).getInt("sticker_max_send_num_" + (String)localObject2, EmojiStickerManager.c);
       EmojiStickerManager.jdField_f_of_type_Int = ((SharedPreferences)localObject1).getInt("sticker_max_show_num_" + (String)localObject2, EmojiStickerManager.c);
-      EmojiStickerManager.jdField_f_of_type_Boolean = bdgk.e();
+      EmojiStickerManager.jdField_f_of_type_Boolean = bgln.e();
       EmojiStickerManager.d = ((SharedPreferences)localObject1).getLong("sticker_update_version_time_" + (String)localObject2, 0L);
       QLog.i("QQInitHandler", 1, String.format("Sticker config, switch %b, maxSendNum: %d, isRubbishMachine: %b, updateVersionTime: %d", new Object[] { Boolean.valueOf(EmojiStickerManager.jdField_e_of_type_Boolean), Integer.valueOf(EmojiStickerManager.jdField_e_of_type_Int), Boolean.valueOf(EmojiStickerManager.jdField_f_of_type_Boolean), Long.valueOf(EmojiStickerManager.d) }));
       if (EmojiStickerManager.d == 0L)
@@ -44,12 +44,12 @@ public class GetEmosmList
         ((SharedPreferences)localObject1).edit().putLong("sticker_update_version_time_" + (String)localObject2, l).apply();
         EmojiStickerManager.d = l;
       }
-      localObject2 = (aufn)this.a.app.getManager(14);
+      localObject2 = (awmr)this.a.app.getManager(14);
       localObject1 = this.a.app.getApplication().getSharedPreferences("mobileQQ", 0);
       if (Boolean.valueOf(((SharedPreferences)localObject1).getBoolean("emosm_has_set_emosmpackage_valid_" + this.a.app.getCurrentAccountUin(), false)).booleanValue()) {
         break label501;
       }
-      localObject3 = ((aufn)localObject2).a();
+      localObject3 = ((awmr)localObject2).a();
       if (localObject3 == null) {
         break label454;
       }
@@ -58,7 +58,7 @@ public class GetEmosmList
         ((EmoticonPackage)localIterator.next()).valid = true;
       }
     }
-    ((aufn)localObject2).a((List)localObject3);
+    ((awmr)localObject2).a((List)localObject3);
     label454:
     ((SharedPreferences)localObject1).edit().putBoolean("emosm_has_set_emosmpackage_valid_" + this.a.app.getCurrentAccountUin(), true).commit();
     label501:
@@ -70,22 +70,22 @@ public class GetEmosmList
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "kandianOidbFlag kandianOidbFlag int kandianOidbFlag..." + localObject1);
     }
-    Object localObject3 = (alrp)this.a.app.a(12);
+    Object localObject3 = (anlb)this.a.app.a(12);
     if (((Boolean)localObject2).booleanValue())
     {
-      ((alrp)localObject3).a(0, 0);
+      ((anlb)localObject3).a(0, 0);
       if (!((Boolean)localObject1).booleanValue()) {
         break label708;
       }
-      ((alrp)localObject3).a(0, 0, 1, 0);
+      ((anlb)localObject3).a(0, 0, 1, 0);
     }
     for (;;)
     {
       return 7;
-      ((alrp)localObject3).d(0);
+      ((anlb)localObject3).d(0);
       break;
       label708:
-      ((alrp)localObject3).d(1);
+      ((anlb)localObject3).d(1);
     }
   }
 }

@@ -10,16 +10,21 @@ import java.util.Map;
 public final class stGlobalConfig
   extends JceStruct
 {
-  static stCallInfo cache_callinfo = new stCallInfo();
+  static stAioAction cache_aioAction = new stAioAction();
+  static stCallInfo cache_callinfo;
+  static stCommentConfig cache_commentConfig;
   static downloadConfig cache_download;
   static stJumpInfo cache_jumpinfo = new stJumpInfo();
   static stLinkConfig cache_linkConfig;
   static Map<String, String> cache_mapExt;
   static pendantConfig cache_pendant;
   static stPopWindowsConfig cache_red_dot_window;
+  static stUserAuth cache_user_auth;
   static ArrayList<stPopWindowsConfig> cache_windows_config = new ArrayList();
+  public stAioAction aioAction;
   public int cache_size;
   public stCallInfo callinfo;
+  public stCommentConfig commentConfig;
   public downloadConfig download;
   public String encrypted_deviceid = "";
   public boolean isHalfAppStoreScreen;
@@ -32,6 +37,7 @@ public final class stGlobalConfig
   public int open_4g_autodownload;
   public pendantConfig pendant;
   public stPopWindowsConfig red_dot_window;
+  public stUserAuth user_auth;
   public ArrayList<stPopWindowsConfig> windows_config;
   
   static
@@ -44,11 +50,14 @@ public final class stGlobalConfig
     cache_red_dot_window = new stPopWindowsConfig();
     cache_mapExt = new HashMap();
     cache_mapExt.put("", "");
+    cache_callinfo = new stCallInfo();
+    cache_user_auth = new stUserAuth();
+    cache_commentConfig = new stCommentConfig();
   }
   
   public stGlobalConfig() {}
   
-  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo)
+  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo, stUserAuth paramstUserAuth, stCommentConfig paramstCommentConfig, stAioAction paramstAioAction)
   {
     this.jumpinfo = paramstJumpInfo;
     this.windows_config = paramArrayList;
@@ -65,6 +74,9 @@ public final class stGlobalConfig
     this.isHalfAppStoreScreen = paramBoolean;
     this.mapExt = paramMap;
     this.callinfo = paramstCallInfo;
+    this.user_auth = paramstUserAuth;
+    this.commentConfig = paramstCommentConfig;
+    this.aioAction = paramstAioAction;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -84,6 +96,9 @@ public final class stGlobalConfig
     this.isHalfAppStoreScreen = paramJceInputStream.read(this.isHalfAppStoreScreen, 12, false);
     this.mapExt = ((Map)paramJceInputStream.read(cache_mapExt, 13, false));
     this.callinfo = ((stCallInfo)paramJceInputStream.read(cache_callinfo, 14, false));
+    this.user_auth = ((stUserAuth)paramJceInputStream.read(cache_user_auth, 15, false));
+    this.commentConfig = ((stCommentConfig)paramJceInputStream.read(cache_commentConfig, 16, false));
+    this.aioAction = ((stAioAction)paramJceInputStream.read(cache_aioAction, 17, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -120,6 +135,15 @@ public final class stGlobalConfig
     }
     if (this.callinfo != null) {
       paramJceOutputStream.write(this.callinfo, 14);
+    }
+    if (this.user_auth != null) {
+      paramJceOutputStream.write(this.user_auth, 15);
+    }
+    if (this.commentConfig != null) {
+      paramJceOutputStream.write(this.commentConfig, 16);
+    }
+    if (this.aioAction != null) {
+      paramJceOutputStream.write(this.aioAction, 17);
     }
   }
 }

@@ -1,35 +1,18 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aefy
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aefy(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public aefy(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    ForwardTroopListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

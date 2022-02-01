@@ -33,6 +33,7 @@ public class PatchDelete
       ViolaLogUtils.d("PatchDelete", "deleteComponent is null");
       return;
     }
+    this.mDeleteComponent.removedByDiff();
     if ((this.mDeleteComponent instanceof VRecyclerList))
     {
       if (this.mParent.mChildren != null) {
@@ -53,7 +54,7 @@ public class PatchDelete
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.diff.PatchDelete
  * JD-Core Version:    0.7.0.1
  */

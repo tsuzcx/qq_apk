@@ -1,24 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
-
 public class bncr
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bncr(SlideBottomPanel paramSlideBottomPanel, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
-    {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b - this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.j));
-      }
-    }
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

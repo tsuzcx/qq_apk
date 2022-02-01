@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import alcs;
+import amvy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPCSpriteContext
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new alcs();
+  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new amvy();
   public float a;
   public int a;
   public String a;
@@ -72,7 +72,7 @@ public class IPCSpriteContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.IPCSpriteContext
  * JD-Core Version:    0.7.0.1
  */

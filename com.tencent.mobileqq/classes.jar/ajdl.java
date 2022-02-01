@@ -1,33 +1,33 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ajdl
-  implements ajcq
+class ajdl
+  implements View.OnClickListener
 {
-  public ajdl(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  ajdl(ajdk paramajdk) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    ajdm localajdm = (ajdm)paramView.getTag();
+    if ((localajdm == null) || (!(localajdm instanceof ajdm))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      View localView = (View)paramView.getParent();
+      if ((localView instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView).d();
+      }
+      ajdk.a(this.a, localajdm.a);
+      this.a.jdField_a_of_type_JavaUtilList.add(ajdk.a(this.a).remove(this.a.getCount() - localajdm.b - 1));
+      this.a.notifyDataSetChanged();
     }
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.c(this.a).setText(alud.a(2131703927));
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
-    }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

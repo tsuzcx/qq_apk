@@ -1,37 +1,20 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
 
-public class bdnu
+final class bdnu
+  extends Spannable.Factory
 {
-  public static CharSequence a(Context paramContext, avdd paramavdd, String paramString)
+  public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    if ((paramavdd == null) || (TextUtils.isEmpty(paramavdd.a()))) {
-      return paramString;
+    if ((!bdnt.b) && ((paramCharSequence instanceof bdnt))) {
+      try
+      {
+        bdnt localbdnt = (bdnt)((bdnt)paramCharSequence).clone();
+        return localbdnt;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException) {}
     }
-    String str = "#" + paramavdd.a() + "#";
-    paramString = new SpannableString(str + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicName is " + str);
-    }
-    paramString.setSpan(new bdnv(paramContext, paramavdd), 0, str.length(), 33);
-    return paramString;
-  }
-  
-  public static CharSequence b(Context paramContext, avdd paramavdd, String paramString)
-  {
-    if ((paramavdd == null) || (TextUtils.isEmpty(paramavdd.a()))) {
-      return paramString;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append("\n").append("#").append(paramavdd.a()).append("#");
-    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
-    }
-    localSpannableString.setSpan(new bdnw(paramContext, paramavdd), paramString.length(), localStringBuilder.length(), 33);
-    return localSpannableString;
+    return super.newSpannable(paramCharSequence);
   }
 }
 

@@ -1,32 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class apre
-  extends BroadcastReceiver
+final class apre
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  apre(apqh paramapqh, MessengerService paramMessengerService, Bundle paramBundle) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public HandlerThread createHanderThread(String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
-      return;
-    }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
-    if (paramContext != null) {
-      paramContext.unregisterReceiver(this);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
-    }
-    paramContext = new Bundle(paramIntent.getExtras());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 

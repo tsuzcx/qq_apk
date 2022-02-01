@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class ajrl
-  implements azhn
 {
-  public ajrl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public int a;
+  public String a;
   
-  public void a(Exception paramException)
+  public ajrl(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

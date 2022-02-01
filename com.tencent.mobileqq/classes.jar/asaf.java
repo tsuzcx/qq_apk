@@ -1,25 +1,43 @@
-import android.content.Intent;
-import java.util.Set;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class asaf
-  extends asbj
 {
-  public asaf(Intent paramIntent)
+  public int a;
+  public EmoticonPackage a;
+  public int b;
+  
+  public asaf(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
   {
-    super(paramIntent);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
   }
   
-  protected void a()
+  public boolean equals(Object paramObject)
   {
-    if (k()) {
-      this.a.add(d);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof asaf)) {
+        return false;
+      }
+      paramObject = (asaf)paramObject;
+      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+        break;
+      }
+    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
+    return false;
+    return false;
+  }
+  
+  public String toString()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
+      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
     }
-    if (l()) {
-      this.a.add(c);
-    }
-    if (m()) {
-      this.a.add(b);
-    }
+    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
   }
 }
 

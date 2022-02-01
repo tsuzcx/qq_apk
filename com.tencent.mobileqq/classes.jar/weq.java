@@ -1,34 +1,50 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class weq
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vsu>
+  extends QQUIEventReceiver<wep, wce>
 {
-  public weq(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public weq(@NonNull wep paramwep)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramwep);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsu paramvsu)
+  public void a(@NonNull wep paramwep, @NonNull wce paramwce)
   {
-    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vpx)))
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramwce.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      paramvsu = ((vpx)paramvsu.jdField_a_of_type_Vpm).a;
-      if (paramvsu != null) {
-        paramQQStoryShareGroupProfileActivity.a(paramvsu.jdField_a_of_type_JavaLangString);
+      yqp.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramwce.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
+      paramwep.d();
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      wep.a(paramwep).a(bool1);
+      return;
+      yqp.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramwce.jdField_a_of_type_JavaUtilList.size()));
+      bool1 = bool2;
+      if (paramwep.a(paramwce.jdField_a_of_type_JavaUtilList))
+      {
+        bool1 = bool2;
+        if (paramwce.jdField_a_of_type_JavaUtilList.size() > 0) {
+          bool1 = true;
+        }
       }
     }
   }
   
   public Class acceptEventClass()
   {
-    return vsu.class;
+    return wce.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     weq
  * JD-Core Version:    0.7.0.1
  */

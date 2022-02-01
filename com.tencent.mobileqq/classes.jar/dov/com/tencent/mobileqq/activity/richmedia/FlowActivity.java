@@ -1,6 +1,8 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public abstract class FlowActivity
   extends PeakActivity
@@ -31,7 +34,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131296969));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297022));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -39,6 +42,14 @@ public abstract class FlowActivity
   public boolean a(MotionEvent paramMotionEvent)
   {
     return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void finish()
@@ -57,6 +68,13 @@ public abstract class FlowActivity
     super.onBackPressed();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -64,11 +82,11 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296969));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297022));
     }
     a(paramBundle);
-    setContentView(2131558444);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366604));
+    setContentView(2131558449);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366870));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
@@ -107,7 +125,7 @@ public abstract class FlowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.FlowActivity
  * JD-Core Version:    0.7.0.1
  */

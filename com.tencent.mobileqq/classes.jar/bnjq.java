@@ -1,13 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bnjq
-  implements DialogInterface.OnClickListener
+class bnjq
+  extends Handler
 {
-  public bnjq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnjq(bnjl parambnjl, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      aaxb.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
+      return;
+    }
+    aaxb.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.d();
+  }
 }
 
 

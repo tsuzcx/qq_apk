@@ -1,26 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
 class agtc
-  extends auwn
+  implements atve
 {
-  agtc(agsy paramagsy) {}
+  agtc(agta paramagta, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
-    }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
-      return;
-    }
-    this.a.aE();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
-    this.a.g = paramString2;
+    ((abux)this.jdField_a_of_type_Agta.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    agta.b(this.jdField_a_of_type_Agta, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
   }
+  
+  public void b() {}
 }
 
 

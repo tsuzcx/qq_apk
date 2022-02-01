@@ -1,17 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+
 public class bbbe
-  extends bbbi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
+  public bbbe(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(" storeType:");
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
+    bbce.a().a(bbce.a().b);
+    this.a.getActivity().finish();
   }
 }
 

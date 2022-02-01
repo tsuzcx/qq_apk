@@ -1,22 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class avfj
-  implements View.OnClickListener
+  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
 {
-  public avfj(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  avfj(avfh paramavfh) {}
   
-  public void onClick(View paramView)
+  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
   {
-    this.a.j();
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
+    avfh.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
+  }
+  
+  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  {
+    paramHashMap = avfq.a().a(5);
+    if (paramHashMap == null) {
+      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
+    }
+    do
+    {
+      return;
+      paramHashMap = paramHashMap.optString("result_api_url", "");
+      if (TextUtils.isEmpty(paramHashMap))
+      {
+        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
+        return;
+      }
+    } while (!paramHashMap.equals(paramString1));
+    QLog.d("qq_Identification.Model", 1, "start upload face data");
+    if (this.a.jdField_a_of_type_Aven == null) {
+      this.a.jdField_a_of_type_Aven = new avel(avfh.a(this.a), paramString2, this.a.jdField_a_of_type_Avfm);
+    }
+    for (;;)
+    {
+      avfh.a(this.a, new IdentificationPoseReflect.5.2(this));
+      if (!bgnt.g(BaseApplicationImpl.getApplication())) {
+        break;
+      }
+      ((avel)this.a.jdField_a_of_type_Aven).b();
+      return;
+      ((avel)this.a.jdField_a_of_type_Aven).a(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avfj
  * JD-Core Version:    0.7.0.1
  */

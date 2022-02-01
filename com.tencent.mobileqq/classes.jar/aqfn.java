@@ -1,29 +1,30 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6.1.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
-class aqfn
-  implements DialogInterface.OnClickListener
+public class aqfn
+  implements OnCompositionLoadedListener
 {
-  aqfn(aqfk paramaqfk, Context paramContext) {}
+  public aqfn(ColorNoteSmallScreenRelativeLayout.6 param6) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {}
-    try
+    if (paramLottieComposition == null)
     {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", aqfk.a(this.jdField_a_of_type_Aqfk));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      if (QLog.isColorLevel()) {
-        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + aqfk.a(this.jdField_a_of_type_Aqfk));
-      }
+      QLog.e("ColorNoteSmallScreenRelativeLayout", 1, "getLottieDrawable onCompositionLoaded failed");
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    ColorNoteSmallScreenRelativeLayout.a(this.a.this$0, localLottieDrawable);
+    ThreadManagerV2.getUIHandlerV2().post(new ColorNoteSmallScreenRelativeLayout.6.1.1(this));
   }
 }
 

@@ -54,6 +54,7 @@ public class TXJSAdapterConstants
   public static final String PLAYER_KEY_AUTO_PLAY = "autoplay";
   public static final String PLAYER_KEY_BACKGROUND_MUTE = "backgroundMute";
   public static final String PLAYER_KEY_DEBUG = "debug";
+  public static final String PLAYER_KEY_ENABLE_META_DATA = "enableMetadata";
   public static final String PLAYER_KEY_ENABLE_RECV_MESSAGE = "enableRecvMessage";
   public static final String PLAYER_KEY_HIDE = "hide";
   public static final String PLAYER_KEY_MAX_CACHE = "maxCache";
@@ -72,6 +73,7 @@ public class TXJSAdapterConstants
   public static final int PLAY_ENTER_BACKGROUND_FOR_NATIVE = 2;
   public static final int PLAY_ENTER_BACKGROUND_FOR_NAVIGATE = 1;
   public static final int PLAY_ENTER_BACKGROUND_FOR_OTHERS = 3;
+  public static final int PLAY_EVT_GET_METADATA = 2028;
   public static final int PLAY_WARNING_HANDUP_STOP = 6000;
   public static final String PUSHER_KEY_ASPECT = "aspect";
   public static final String PUSHER_KEY_AUDIO_QUALITY = "audioQuality";
@@ -189,7 +191,7 @@ public class TXJSAdapterConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.live.TXJSAdapterConstants
  * JD-Core Version:    0.7.0.1
  */

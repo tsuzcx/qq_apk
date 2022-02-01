@@ -1,21 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
-class aitn
-  implements afdp
+public class aitn
+  implements aivy
 {
-  aitn(aitm paramaitm) {}
+  public aitn(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
+    }
   }
 }
 

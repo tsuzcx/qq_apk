@@ -1,24 +1,22 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
 
-class asdx
-  implements DialogInterface.OnClickListener
+public class asdx
+  implements DialogInterface.OnKeyListener
 {
-  asdx(asdt paramasdt) {}
+  public asdx(RelatedEmotionPanel paramRelatedEmotionPanel, RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 1)
+    if (paramInt == 4)
     {
-      ascq.a(asdt.a(this.a), false, "shareToQQ", asdt.a(this.a));
-      ndq.a(asdt.a(this.a), 0, "", "");
-      if (asdt.a(this.a) != null) {
-        asdt.a(this.a).b(1);
-      }
-      asdt.a(this.a).moveTaskToBack(true);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.a(4);
+      return true;
     }
+    return false;
   }
 }
 

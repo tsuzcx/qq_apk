@@ -1,27 +1,27 @@
 package cooperation.plugin;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 
 public class PluginInfo
   extends PluginBaseInfo
   implements Cloneable
 {
-  public static final String a = alud.a(2131708673);
-  public static final String b = alud.a(2131708672);
-  public static final String c = alud.a(2131708661);
-  public static final String d = alud.a(2131708664);
-  public static final String e = alud.a(2131708671);
-  public static final String f = alud.a(2131708666);
-  public static final String g = alud.a(2131708668);
-  public static final String h = alud.a(2131708670);
-  public static final String i = alud.a(2131708662);
-  public static final String j = alud.a(2131708665);
-  public static final String k = alud.a(2131708667);
-  public static final String l = alud.a(2131708674);
-  public static final String m = alud.a(2131708660);
-  public static final String n = alud.a(2131708663);
-  public static final String o = alud.a(2131708669);
+  public static final String a = anni.a(2131707049);
+  public static final String b = anni.a(2131707048);
+  public static final String c = anni.a(2131707037);
+  public static final String d = anni.a(2131707040);
+  public static final String e = anni.a(2131707047);
+  public static final String f = anni.a(2131707042);
+  public static final String g = anni.a(2131707044);
+  public static final String h = anni.a(2131707046);
+  public static final String i = anni.a(2131707038);
+  public static final String j = anni.a(2131707041);
+  public static final String k = anni.a(2131707043);
+  public static final String l = anni.a(2131707050);
+  public static final String m = anni.a(2131707036);
+  public static final String n = anni.a(2131707039);
+  public static final String o = anni.a(2131707045);
   public int a;
   
   public PluginInfo a()
@@ -31,7 +31,7 @@ public class PluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.plugin.PluginInfo
  * JD-Core Version:    0.7.0.1
  */

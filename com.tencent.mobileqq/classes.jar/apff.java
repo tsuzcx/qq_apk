@@ -1,88 +1,40 @@
-import com.tencent.mobileqq.data.MessageForStarLeague;
+import android.content.Context;
+import android.opengl.GLES20;
 import com.tencent.qphone.base.util.QLog;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class apff
-  extends DefaultHandler
 {
-  MessageForStarLeague a;
-  public String a;
-  
-  public apff()
+  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)azaf.a(-2069));
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public MessageForStarLeague a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (paramArrayOfChar.equals("\n")) {}
-    do
+    int i = 0;
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString2);
+    GLES20.glCompileShader(paramInt);
+    paramContext = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    if (paramContext[0] == 0)
     {
-      return;
-      if (this.jdField_a_of_type_JavaLangString.equals("title"))
-      {
-        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
-        for (;;)
-        {
-          localMessageForStarLeague.starName = paramArrayOfChar;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
-          return;
-          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
-        }
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
-    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
+      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
+      GLES20.glDeleteShader(paramInt);
+      paramInt = i;
+    }
     for (;;)
     {
-      localMessageForStarLeague.subTitle = paramArrayOfChar;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
-      return;
-      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
+      if (paramInt == 0) {}
+      return paramInt;
     }
   }
   
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public static void a(String paramString1, String paramString2)
   {
-    if (paramString3.equals("msg")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
-    }
-    do
+    for (;;)
     {
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
-        return;
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
       }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
-        }
-      }
-      if (paramString3.equals("picture"))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
-        return;
-      }
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-    } while (!paramString3.equals("summary"));
-    this.jdField_a_of_type_JavaLangString = "summary";
+      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+    }
   }
 }
 

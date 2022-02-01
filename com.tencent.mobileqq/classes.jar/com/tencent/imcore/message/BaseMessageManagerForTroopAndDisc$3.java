@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import absl;
-import ammb;
-import ayzl;
+import acvk;
+import aogp;
+import bbyp;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageManagerForTroopAndDisc$3
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$3(absl paramabsl, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
+  public BaseMessageManagerForTroopAndDisc$3(acvk paramacvk, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -34,13 +34,13 @@ public class BaseMessageManagerForTroopAndDisc$3
     {
       this.this$0.a.a().e(null);
       return;
-      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ammb.e, ammb.n);
+      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aogp.b, aogp.k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.3
  * JD-Core Version:    0.7.0.1
  */

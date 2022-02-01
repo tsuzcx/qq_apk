@@ -1,18 +1,33 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class sed
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public TextView a;
-  public SquareImageView a;
-  sef jdField_a_of_type_Sef;
-  TextView b;
+  public static long a;
+  
+  public static void a()
+  {
+    a = System.currentTimeMillis();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    if (l - a < 10000L)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_starttime", String.valueOf(l - a));
+      pha.d(paramContext, pha.a(), true, localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sed
  * JD-Core Version:    0.7.0.1
  */

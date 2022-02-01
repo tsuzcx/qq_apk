@@ -1,49 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class ykp
-  extends ykr
+  implements URLDrawable.URLDrawableListener
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  public ykp(AutoPlayImageView paramAutoPlayImageView) {}
   
-  public ykp(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
+    if (AutoPlayImageView.a(this.a) == 2) {
+      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
       }
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
+    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
+    }
+    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykp
  * JD-Core Version:    0.7.0.1
  */

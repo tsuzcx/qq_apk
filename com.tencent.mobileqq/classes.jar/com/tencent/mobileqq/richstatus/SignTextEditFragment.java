@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import aepi;
-import aklo;
-import aklp;
-import alud;
-import amct;
+import afur;
+import amfh;
+import amfi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,38 +39,40 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aybq;
-import aybu;
-import aycb;
-import aycc;
-import aycd;
-import ayce;
-import aycf;
-import aycg;
-import aych;
-import ayci;
-import aycj;
-import ayck;
-import aycl;
-import aycm;
-import aydw;
-import ayec;
-import ayff;
-import ayfi;
-import ayfm;
-import azqs;
-import bamp;
-import bdeu;
-import bdgm;
-import bdhb;
-import bdin;
-import bdjz;
-import bdoo;
-import bdtv;
-import bhsj;
-import bhuw;
-import bjdt;
-import bjea;
+import anni;
+import anvc;
+import bazz;
+import bbad;
+import bbak;
+import bbal;
+import bbam;
+import bban;
+import bbao;
+import bbap;
+import bbaq;
+import bbar;
+import bbas;
+import bbat;
+import bbau;
+import bbav;
+import bbce;
+import bbck;
+import bbdn;
+import bbdq;
+import bbdu;
+import bcst;
+import bdnt;
+import bgjw;
+import bglp;
+import bgmg;
+import bgnt;
+import bgpa;
+import bgtn;
+import bgyy;
+import bkft;
+import bkij;
+import blsb;
+import blsi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -85,6 +85,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.Pair;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.XListView;
@@ -94,29 +95,29 @@ import java.util.List;
 import java.util.Observer;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppActivity;
-import mww;
+import mue;
 
 public class SignTextEditFragment
   extends IphoneTitleBarFragment
-  implements aklp, Handler.Callback, TextWatcher, View.OnClickListener, bhuw
+  implements amfi, Handler.Callback, TextWatcher, View.OnClickListener, bkij
 {
-  private static final int[][] jdField_a_of_type_Array2dOfInt = { { 2130845712, Color.parseColor("#03081A"), Color.parseColor("#B0B3BF") }, { 2130845713, -1, -1 } };
+  private static final int[][] jdField_a_of_type_Array2dOfInt = { { 2130846122, Color.parseColor("#03081A"), Color.parseColor("#B0B3BF") }, { 2130846123, -1, -1 } };
   private static long jdField_b_of_type_Long;
   public int a;
   private long jdField_a_of_type_Long;
-  public aklo a;
-  amct jdField_a_of_type_Amct;
+  public amfh a;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
   public CheckBox a;
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aycd(this);
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bbam(this);
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  aybu jdField_a_of_type_Aybu = new aycj(this);
-  private ayec jdField_a_of_type_Ayec;
+  anvc jdField_a_of_type_Anvc;
+  bbad jdField_a_of_type_Bbad = new bbas(this);
+  private bbck jdField_a_of_type_Bbck;
   public QQAppInterface a;
   public RichStatus a;
   TopicEditTextView jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView;
@@ -129,7 +130,7 @@ public class SignTextEditFragment
   public Handler b;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  private aybu jdField_b_of_type_Aybu = new aycc(this);
+  private bbad jdField_b_of_type_Bbad = new bbal(this);
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   int jdField_c_of_type_Int;
@@ -145,7 +146,7 @@ public class SignTextEditFragment
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_JavaUtilObserver = new ayck(this);
+    this.jdField_a_of_type_JavaUtilObserver = new bbat(this);
   }
   
   private <T extends View> T a(int paramInt)
@@ -157,7 +158,7 @@ public class SignTextEditFragment
   {
     try
     {
-      RichStatus localRichStatus = (RichStatus)bdhb.a("file_richstatus_draft_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      RichStatus localRichStatus = (RichStatus)bgmg.a("file_richstatus_draft_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       if (QLog.isColorLevel()) {
         QLog.i("SignTextEditFragment", 2, String.format("readDraft %s", new Object[] { localRichStatus }));
       }
@@ -180,15 +181,15 @@ public class SignTextEditFragment
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
-    localLayoutParams.topMargin = aepi.a(80.0F, getResources());
+    localLayoutParams.topMargin = afur.a(80.0F, getResources());
     this.jdField_d_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
     if (paramInt == 1)
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       try
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131166983)));
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131714535));
+        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167066)));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(anni.a(2131712905));
         return;
       }
       catch (Exception localException1)
@@ -203,11 +204,11 @@ public class SignTextEditFragment
     }
     try
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131166983)));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849839);
+      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167066)));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850427);
       if (paramInt == 3)
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131714547));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(anni.a(2131712917));
         return;
       }
     }
@@ -221,7 +222,7 @@ public class SignTextEditFragment
       }
       if (paramInt == 2)
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131714548));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(anni.a(2131712918));
         return;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -281,7 +282,7 @@ public class SignTextEditFragment
   private void a(TextView paramTextView)
   {
     paramTextView = paramTextView.getCompoundDrawables();
-    int i = aepi.a(16.0F, getResources());
+    int i = afur.a(16.0F, getResources());
     if (paramTextView[0] != null) {
       paramTextView[0].setBounds(0, 0, i, i);
     }
@@ -291,12 +292,12 @@ public class SignTextEditFragment
   {
     boolean bool1 = false;
     int i = 1;
-    bdtv localbdtv = aydw.a().a(paramRichStatus.tplId);
+    bgyy localbgyy = bbce.a().a(paramRichStatus.tplId);
     int j = paramRichStatus.tplId;
-    if ((localbdtv.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localbdtv.jdField_a_of_type_Bdtx != null))
+    if ((localbgyy.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localbgyy.jdField_a_of_type_Bgza != null))
     {
-      boolean bool2 = localbdtv.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      if (localbdtv.jdField_a_of_type_Bdtx != null) {
+      boolean bool2 = localbgyy.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      if (localbgyy.jdField_a_of_type_Bgza != null) {
         bool1 = true;
       }
       QLog.d("SignTextEditFragment", 1, new Object[] { "insureNotImageSign set2Default tplId isParsing=", Boolean.valueOf(bool2), " isImageItem=", Boolean.valueOf(bool1) });
@@ -337,7 +338,7 @@ public class SignTextEditFragment
       for (;;)
       {
         a(-1, 0, "");
-        azqs.b(null, "dc00898", "", "", "0X800A642", "0X800A642", 0, 0, "0", "0", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800A642", "0X800A642", 0, 0, "0", "0", "", "");
         return;
         label174:
         a(paramTopicInfo.topicId, paramTopicInfo.topicStr, this.jdField_d_of_type_Int);
@@ -347,7 +348,7 @@ public class SignTextEditFragment
   
   private void a(boolean paramBoolean)
   {
-    int j = bdoo.c(bdoo.a());
+    int j = bgtn.c(bgtn.a());
     if (QLog.isColorLevel()) {
       QLog.i("SignTextEditFragment", 2, "width_1x=" + j);
     }
@@ -355,19 +356,19 @@ public class SignTextEditFragment
     {
       this.jdField_d_of_type_Boolean = true;
       localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = bdoo.b(28.0F);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin += bdoo.b(8.0F);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = bgtn.b(28.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin += bgtn.b(8.0F);
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).addRule(11);
       ((RelativeLayout.LayoutParams)localObject).addRule(1, 0);
     }
     Object localObject = this.jdField_b_of_type_AndroidWidgetTextView.getText().toString();
     TextPaint localTextPaint = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
-    int k = (int)(Layout.getDesiredWidth((CharSequence)localObject, localTextPaint) + 0.5F) - (int)(Layout.getDesiredWidth(aybq.jdField_a_of_type_JavaLangString, localTextPaint) + 0.5F);
+    int k = (int)(Layout.getDesiredWidth((CharSequence)localObject, localTextPaint) + 0.5F) - (int)(Layout.getDesiredWidth(bazz.jdField_a_of_type_JavaLangString, localTextPaint) + 0.5F);
     int i;
     if (this.jdField_d_of_type_Boolean)
     {
-      i = bdoo.b(j - 16 - 85 - 4 - 85 - 4 - 93 - 4 - 8 - 16);
+      i = bgtn.b(j - 16 - 85 - 4 - 85 - 4 - 93 - 4 - 8 - 16);
       if (QLog.isColorLevel()) {
         QLog.i("SignTextEditFragment", 2, String.format("isNarrow=%b widthLeft=%d needMoreLen=%d width=%d", new Object[] { Boolean.valueOf(this.jdField_d_of_type_Boolean), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) }));
       }
@@ -377,11 +378,11 @@ public class SignTextEditFragment
       }
     }
     label310:
-    for (((RelativeLayout.LayoutParams)localObject).width = -2;; ((RelativeLayout.LayoutParams)localObject).width = (i + bdoo.b(85.0F)))
+    for (((RelativeLayout.LayoutParams)localObject).width = -2;; ((RelativeLayout.LayoutParams)localObject).width = (i + bgtn.b(85.0F)))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
       return;
-      i = bdoo.b(j - 354);
+      i = bgtn.b(j - 354);
       break;
     }
   }
@@ -416,12 +417,12 @@ public class SignTextEditFragment
             break label283;
           }
           this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
-          this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(this.jdField_a_of_type_Ayec.a(true));
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(this.jdField_a_of_type_Bbck.a(true));
           this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText = null;
           this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId = 0;
           i = localBundle.getInt("key_sign_topic_id", -1);
           str1 = localBundle.getString("key_sign_topic_name");
-          if ((i >= 0) && (ayfm.a(str1))) {
+          if ((i >= 0) && (bbdu.a(str1))) {
             break;
           }
           return false;
@@ -448,7 +449,7 @@ public class SignTextEditFragment
     for (;;)
     {
       return true;
-      aydw.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      bbce.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     }
   }
   
@@ -467,7 +468,7 @@ public class SignTextEditFragment
       localRichStatus.setEmptyStatus(true);
       str1 = "";
     }
-    bdhb.a("file_richstatus_draft_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localRichStatus);
+    bgmg.a("file_richstatus_draft_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localRichStatus);
     String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
     paramRichStatus = str2;
     if (str2 == null) {
@@ -530,9 +531,9 @@ public class SignTextEditFragment
     if (QLog.isColorLevel()) {
       QLog.i("SignTextEditFragment", 2, String.format("updateSignViewShow content=%s", new Object[] { localObject2 }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setText(new bamp((CharSequence)localObject2, 1, 20));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setText(new bdnt((CharSequence)localObject2, 1, 20));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setSelection(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getEditableText().length());
-    bhsj.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView);
+    bkft.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView);
     d();
     c(ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null));
   }
@@ -540,7 +541,7 @@ public class SignTextEditFragment
   private boolean b(int paramInt)
   {
     Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getEditableText();
-    return (paramInt >= 0) && (localEditable.length() > paramInt) && (localEditable.charAt(paramInt) == '#') && (ayfm.a(localEditable, paramInt) == null);
+    return (paramInt >= 0) && (localEditable.length() > paramInt) && (localEditable.charAt(paramInt) == '#') && (bbdu.a(localEditable, paramInt) == null);
   }
   
   private void c(RichStatus paramRichStatus)
@@ -583,11 +584,11 @@ public class SignTextEditFragment
     if (paramBoolean)
     {
       this.rightViewText.setTextColor(Color.parseColor("#A8A8A8"));
-      this.rightViewText.setBackgroundDrawable(getResources().getDrawable(2130844793));
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130844793));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130844793));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130844793));
-      this.rightViewText.setOnTouchListener(mww.a);
+      this.rightViewText.setBackgroundDrawable(getResources().getDrawable(2130845190));
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130845190));
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130845190));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130845190));
+      this.rightViewText.setOnTouchListener(mue.a);
       localObject = this.rightViewText;
       if (this.jdField_c_of_type_Boolean) {}
       for (float f = 1.0F;; f = 0.5F)
@@ -636,8 +637,8 @@ public class SignTextEditFragment
       {
         if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845715);
-          int i = aepi.a(16.0F, getResources());
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846128);
+          int i = afur.a(16.0F, getResources());
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, i, i, i);
           this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         }
@@ -669,7 +670,7 @@ public class SignTextEditFragment
       a(false);
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-7894119);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(aybq.jdField_a_of_type_JavaLangString);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(bazz.jdField_a_of_type_JavaLangString);
       this.jdField_b_of_type_AndroidWidgetTextView.getBackground().setColorFilter(null);
       this.jdField_b_of_type_AndroidWidgetTextView.getBackground().setAlpha(255);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(null);
@@ -698,7 +699,7 @@ public class SignTextEditFragment
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getText().length() == 0)
     {
-      bdgm.a(getActivity(), 230, alud.a(2131714540), alud.a(2131714546), alud.a(2131714534), alud.a(2131714538), new aych(this), new ayci(this)).show();
+      bglp.a(getActivity(), 230, anni.a(2131712910), anni.a(2131712916), anni.a(2131712904), anni.a(2131712908), new bbaq(this), new bbar(this)).show();
       return;
     }
     f();
@@ -712,16 +713,16 @@ public class SignTextEditFragment
     RichStatus localRichStatus = new RichStatus(null);
     localRichStatus.copyFrom(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
     a(localRichStatus);
-    this.jdField_a_of_type_Ayec.a(localRichStatus, 1);
-    this.jdField_a_of_type_Ayec.a(this.jdField_a_of_type_Aybu);
+    this.jdField_a_of_type_Bbck.a(localRichStatus, 1);
+    this.jdField_a_of_type_Bbck.a(this.jdField_a_of_type_Bbad);
   }
   
   public long a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Aklo != null) && ((this.jdField_a_of_type_Aklo.a() == null) || (this.jdField_a_of_type_Aklo.a().size() <= 0))) {
+    if ((this.jdField_a_of_type_Amfh != null) && ((this.jdField_a_of_type_Amfh.a() == null) || (this.jdField_a_of_type_Amfh.a().size() <= 0))) {
       a(1);
     }
-    if (bdin.d(getActivity()))
+    if (bgnt.d(getActivity()))
     {
       SignatureHandler localSignatureHandler = (SignatureHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(41);
       if (localSignatureHandler != null)
@@ -740,9 +741,9 @@ public class SignTextEditFragment
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Aklo != null) && (this.jdField_a_of_type_Aklo.b() != null) && (this.jdField_a_of_type_Aklo.b().size() > 0)) {
-      if (this.jdField_a_of_type_Aklo.a(this.jdField_a_of_type_Aklo.b(), false)) {
-        this.jdField_a_of_type_Aklo.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Amfh != null) && (this.jdField_a_of_type_Amfh.b() != null) && (this.jdField_a_of_type_Amfh.b().size() > 0)) {
+      if (this.jdField_a_of_type_Amfh.a(this.jdField_a_of_type_Amfh.b(), false)) {
+        this.jdField_a_of_type_Amfh.notifyDataSetChanged();
       }
     }
     SignatureHandler localSignatureHandler;
@@ -750,7 +751,7 @@ public class SignTextEditFragment
     {
       return;
       a(1);
-      if (!bdin.d(getActivity())) {
+      if (!bgnt.d(getActivity())) {
         break;
       }
       localSignatureHandler = (SignatureHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(41);
@@ -766,14 +767,14 @@ public class SignTextEditFragment
     {
       str = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        str = alud.a(2131714549);
+        str = anni.a(2131712919);
       }
       QQToast.a(BaseApplication.context, 2, str, 0).a();
       return;
     }
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = alud.a(2131714544);
+      str = anni.a(2131712914);
     }
     QQToast.a(BaseApplication.context, 1, str, 0).a();
   }
@@ -783,7 +784,7 @@ public class SignTextEditFragment
     if (QLog.isColorLevel()) {
       QLog.i("SignTextEditFragment", 2, String.format("onTagSelectedInsert(%d,%s) index=%d selStart=%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(paramInt2) }));
     }
-    if ((!ayfm.a(paramString)) || (paramInt1 < 0)) {
+    if ((!bbdu.a(paramString)) || (paramInt1 < 0)) {
       return;
     }
     int j = this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getText().length();
@@ -812,7 +813,7 @@ public class SignTextEditFragment
       }
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    ayff localayff = new ayff(null, ayfm.a(-11692801, -2142399233), new Pair(Integer.valueOf(paramInt1), paramString));
+    bbdn localbbdn = new bbdn(null, bbdu.a(-11692801, -2142399233), new Pair(Integer.valueOf(paramInt1), paramString));
     if (i > 0) {
       localSpannableStringBuilder.insert(0, localEditable.subSequence(0, i));
     }
@@ -820,7 +821,7 @@ public class SignTextEditFragment
       localSpannableStringBuilder.insert(localSpannableStringBuilder.length(), localEditable.subSequence(i, localEditable.length()));
     }
     localSpannableStringBuilder.insert(i, paramString);
-    localSpannableStringBuilder.setSpan(localayff, i, paramString.length() + i, 33);
+    localSpannableStringBuilder.setSpan(localbbdn, i, paramString.length() + i, 33);
     if (QLog.isDevelopLevel()) {
       QLog.i("SignTextEditFragment", 2, String.format("onTagSelectedInsert [%d dstLen=%d] [src=%s,dst=%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(localSpannableStringBuilder.length()), localEditable.toString(), localSpannableStringBuilder.toString() }));
     }
@@ -883,12 +884,12 @@ public class SignTextEditFragment
     this.jdField_c_of_type_Boolean |= true;
     c(ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.ensureContent();
-    Object localObject = ayfm.a(paramEditable);
+    Object localObject = bbdu.a(paramEditable);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.set(0, localObject);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.clear();
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.addAll(ayfm.a(paramEditable));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.addAll(bbdu.a(paramEditable));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.clear();
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.addAll(ayfm.b(paramEditable));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.addAll(bbdu.b(paramEditable));
     b(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
     int i = 80 - this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.getTotalLenForShow();
     if (i >= 0) {}
@@ -902,7 +903,7 @@ public class SignTextEditFragment
       }
       int k = this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getSelectionStart();
       localObject = "";
-      int m = ayfm.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getEditableText(), k);
+      int m = bbdu.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getEditableText(), k);
       int j = k - 1 - m;
       i = j;
       if (j < 0) {
@@ -921,29 +922,29 @@ public class SignTextEditFragment
       }
       a(m, i, paramEditable);
       return;
-      ayfm.a(paramEditable, i, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      bbdu.a(paramEditable, i, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
       localObject = new Message();
       ((Message)localObject).what = 4;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      localObject = ayfm.a(paramEditable);
+      localObject = bbdu.a(paramEditable);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.set(0, localObject);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.clear();
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.addAll(ayfm.a(paramEditable));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.addAll(bbdu.a(paramEditable));
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.clear();
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.addAll(ayfm.b(paramEditable));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topicsPos.addAll(bbdu.b(paramEditable));
     }
   }
   
   void b()
   {
-    bhsj.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView);
+    bkft.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView);
     if (Build.VERSION.SDK_INT > 23)
     {
       FragmentActivity localFragmentActivity = getActivity();
       if (localFragmentActivity != null)
       {
         if (localFragmentActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
-          localFragmentActivity.requestPermissions(new aycl(this, localFragmentActivity), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          localFragmentActivity.requestPermissions(new bbau(this, localFragmentActivity), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
         }
       }
       else {
@@ -963,9 +964,9 @@ public class SignTextEditFragment
   
   public void c()
   {
-    bjea localbjea = bjea.a();
-    localbjea.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localbjea.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    blsi localblsi = blsi.a();
+    localblsi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localblsi.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString("sign_location_id_draft_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
@@ -979,47 +980,47 @@ public class SignTextEditFragment
       localBundle.putInt("key_lbs_state", 1);
       localBundle.putString("key_current_poi_id", this.jdField_b_of_type_JavaLangString);
     }
-    bjdt.a(getActivity(), localbjea, 18, localBundle);
+    blsb.a(getActivity(), localblsi, 18, localBundle);
     getActivity().overridePendingTransition(2130771979, 2130771990);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131692028));
-    setRightButtonText(alud.a(2131714539), this);
-    this.jdField_a_of_type_Ayec = ((ayec)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
+    setTitle(getString(2131691686));
+    setRightButtonText(anni.a(2131712909), this);
+    this.jdField_a_of_type_Bbck = ((bbck)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
     if (!a())
     {
       getActivity().finish();
       return;
     }
-    this.rightViewText.setBackgroundDrawable(getResources().getDrawable(2130844792));
+    this.rightViewText.setBackgroundDrawable(getResources().getDrawable(2130845189));
     paramLayoutInflater = (RelativeLayout.LayoutParams)this.rightViewText.getLayoutParams();
-    paramLayoutInflater.height = aepi.a(29.0F, getResources());
-    paramLayoutInflater.width = aepi.a(60.0F, getResources());
-    paramLayoutInflater.setMargins(0, 0, aepi.a(14.0F, getResources()), 0);
+    paramLayoutInflater.height = afur.a(29.0F, getResources());
+    paramLayoutInflater.width = afur.a(60.0F, getResources());
+    paramLayoutInflater.setMargins(0, 0, afur.a(14.0F, getResources()), 0);
     this.rightViewText.setGravity(17);
     this.rightViewText.setLayoutParams(paramLayoutInflater);
     this.rightViewText.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView = ((TopicEditTextView)a(2131365616));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setMovementMethod(ayfi.a());
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView = ((TopicEditTextView)a(2131365850));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setMovementMethod(bbdq.a());
     this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.addTextChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setOnEditorActionListener(new aycb(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131362078));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131362074));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(mww.a);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(mww.a);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setOnEditorActionListener(new bbak(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131362138));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131362134));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(mue.a);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(mue.a);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
     a(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131369391));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131369784));
     this.jdField_c_of_type_AndroidWidgetTextView.setTag(new Integer(-5196865));
-    this.jdField_a_of_type_AndroidViewView = a(2131369728);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131364046));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(mww.a);
+    this.jdField_a_of_type_AndroidViewView = a(2131370158);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131364250));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(mue.a);
     paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetCheckBox;
     boolean bool;
-    if ((this.jdField_a_of_type_Ayec != null) && (this.jdField_a_of_type_Ayec.b()))
+    if ((this.jdField_a_of_type_Bbck != null) && (this.jdField_a_of_type_Bbck.b()))
     {
       bool = true;
       paramLayoutInflater.setChecked(bool);
@@ -1028,19 +1029,19 @@ public class SignTextEditFragment
       a(true);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131366461));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365591));
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131369570));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131366726));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365825));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131369965));
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ayce(this));
-      this.jdField_b_of_type_AndroidViewView = a(2131365761);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365740));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365752));
-      this.jdField_a_of_type_Aklo = new aklo(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aklo);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new bban(this));
+      this.jdField_b_of_type_AndroidViewView = a(2131366002);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365982));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365993));
+      this.jdField_a_of_type_Amfh = new amfh(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Amfh);
       this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.jdField_b_of_type_AndroidViewView);
-      if (this.jdField_a_of_type_Ayec != null) {
-        this.jdField_a_of_type_Ayec.a(this.jdField_b_of_type_Aybu);
+      if (this.jdField_a_of_type_Bbck != null) {
+        this.jdField_a_of_type_Bbck.a(this.jdField_b_of_type_Bbad);
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(0);
@@ -1049,28 +1050,30 @@ public class SignTextEditFragment
         getActivity().getWindow().setSoftInputMode(32);
       }
       if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label727;
+        break label740;
       }
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(Color.parseColor("#000000"));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#000000"));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#000000"));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setTextColor(Color.parseColor("#ffffff"));
     }
     for (;;)
     {
-      azqs.b(null, "dc00898", "", "", "0X800A63E", "0X800A63E", 0, 0, "0", "0", "", "");
+      bcst.b(null, "dc00898", "", "", "0X800A63E", "0X800A63E", 0, 0, "0", "0", "", "");
       return;
       bool = false;
       break;
-      label727:
+      label740:
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(Color.parseColor("#ffffff"));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#f5f6fa"));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.setTextColor(Color.parseColor("#000000"));
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131561314;
+    return 2131561544;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1099,11 +1102,11 @@ public class SignTextEditFragment
         {
           getActivity().finish();
           continue;
-          QQToast.a(getActivity(), 1, alud.a(2131714542), 1).a();
+          QQToast.a(getActivity(), 1, anni.a(2131712912), 1).a();
           continue;
-          QQToast.a(getActivity(), 1, alud.a(2131714532), 1).a();
+          QQToast.a(getActivity(), 1, anni.a(2131712902), 1).a();
           continue;
-          QQToast.a(getActivity(), 1, alud.a(2131714537), 1).a();
+          QQToast.a(getActivity(), 1, anni.a(2131712907), 1).a();
           continue;
           a();
         }
@@ -1140,12 +1143,12 @@ public class SignTextEditFragment
         if (paramIntent == null) {
           this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText = "";
         }
-        while (!bdeu.a(str, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText))
+        while (!bgjw.a(str, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText))
         {
           this.jdField_c_of_type_Boolean = true;
           b(false);
           return;
-          if (paramIntent.poiName.equals(alud.a(2131714545)))
+          if (paramIntent.poiName.equals(anni.a(2131712915)))
           {
             this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText = "";
             this.jdField_b_of_type_JavaLangString = "";
@@ -1174,7 +1177,7 @@ public class SignTextEditFragment
       QLog.i("SignTextEditFragment", 2, String.format("onBackEvent len=%d bChanged=%b bPublishEver=%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
     if ((this.jdField_c_of_type_Boolean) && (i > 0) && (isAdded())) {
-      bdgm.a(getActivity(), alud.a(2131714536), 2131720749, 2131720748, new aycf(this), new aycg(this)).show();
+      bglp.a(getActivity(), anni.a(2131712906), 2131718539, 2131718538, new bbao(this), new bbap(this)).show();
     }
     for (;;)
     {
@@ -1192,59 +1195,63 @@ public class SignTextEditFragment
     boolean bool = false;
     if (paramView.getId() == this.rightViewText.getId())
     {
-      azqs.b(null, "dc00898", "", "", "0X800A63F", "0X800A63F", 0, 0, "0", "0", "", "");
-      if (!bdin.d(getActivity()))
-      {
-        QQToast.a(getActivity(), 2131693417, 0).a();
-        return;
+      bcst.b(null, "dc00898", "", "", "0X800A63F", "0X800A63F", 0, 0, "0", "0", "", "");
+      if (!bgnt.d(getActivity())) {
+        QQToast.a(getActivity(), 2131692897, 0).a();
       }
-      e();
-      return;
     }
-    switch (paramView.getId())
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131362074: 
-      b();
-      azqs.b(null, "dc00898", "", "", "0X800A641", "0X800A641", 0, 0, "0", "0", "", "");
-      return;
-    case 2131362078: 
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getSelectionStart();
-      ayfm.a(getActivity(), "https://ti.qq.com/signature/searchtopic?_wv=3&&_wwv=128", 17);
-      azqs.b(null, "dc00898", "", "", "0X800A640", "0X800A640", 0, 0, "0", "0", "", "");
-      return;
+      e();
+      continue;
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131362134: 
+        b();
+        bcst.b(null, "dc00898", "", "", "0X800A641", "0X800A641", 0, 0, "0", "0", "", "");
+        break;
+      case 2131362138: 
+        this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichstatusTopicTopicEditTextView.getSelectionStart();
+        bbdu.a(getActivity(), "https://ti.qq.com/signature/searchtopic?_wv=3&&_wwv=128", 17);
+        bcst.b(null, "dc00898", "", "", "0X800A640", "0X800A640", 0, 0, "0", "0", "", "");
+        break;
+      case 2131370158: 
+        CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+        if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+          bool = true;
+        }
+        localCheckBox.setChecked(bool);
+      }
     }
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-      bool = true;
-    }
-    paramView.setChecked(bool);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Amct = new aycm(this, null);
+    this.jdField_a_of_type_Anvc = new bbav(this, null);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amct);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvc);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Ayec.b(this.jdField_b_of_type_Aybu);
-    this.jdField_a_of_type_Ayec.b(this.jdField_a_of_type_Aybu);
+    this.jdField_a_of_type_Bbck.b(this.jdField_b_of_type_Bbad);
+    this.jdField_a_of_type_Bbck.b(this.jdField_a_of_type_Bbad);
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amct);
-    aydw.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvc);
+    bbce.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_Aklo != null) && (this.jdField_a_of_type_Aklo.a() != null) && (this.jdField_a_of_type_Aklo.a().size() > paramInt)) {
-      a(paramAdapterView, this.jdField_a_of_type_Aklo.a(paramInt));
+    if ((this.jdField_a_of_type_Amfh != null) && (this.jdField_a_of_type_Amfh.a() != null) && (this.jdField_a_of_type_Amfh.a().size() > paramInt)) {
+      a(paramAdapterView, this.jdField_a_of_type_Amfh.a(paramInt));
     }
   }
   
@@ -1252,7 +1259,7 @@ public class SignTextEditFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment
  * JD-Core Version:    0.7.0.1
  */

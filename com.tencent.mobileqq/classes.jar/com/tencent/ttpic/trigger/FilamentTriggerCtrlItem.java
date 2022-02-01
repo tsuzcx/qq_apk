@@ -37,13 +37,14 @@ public class FilamentTriggerCtrlItem
   {
     HashMap localHashMap = new HashMap();
     Iterator localIterator = this.animationTriggers.iterator();
-    while (localIterator.hasNext())
+    if (localIterator.hasNext())
     {
       TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)localIterator.next();
-      if (localTriggerCtrlItem.isTriggered()) {
-        localHashMap.put(localTriggerCtrlItem.getName(), Integer.valueOf(localTriggerCtrlItem.getTotalPlayCount()));
-      } else {
-        localHashMap.put(localTriggerCtrlItem.getName(), Integer.valueOf(-1));
+      if (localTriggerCtrlItem.isTriggered()) {}
+      for (int i = localTriggerCtrlItem.getTotalPlayCount();; i = -1)
+      {
+        localHashMap.put(localTriggerCtrlItem.getName(), Integer.valueOf(i));
+        break;
       }
     }
     return localHashMap;
@@ -51,7 +52,7 @@ public class FilamentTriggerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.FilamentTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,25 @@
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+
 public class bnmh
+  implements bgtg<Float>
 {
-  public static final int a;
-  public static final int b = bnsm.a(2.0F);
-  public static final int c = bnsm.a(4.0F);
-  public static final int d = bnsm.a(8.0F);
-  public float a;
-  public boolean a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
+  public bnmh(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
   
-  static
+  @TargetApi(11)
+  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    jdField_a_of_type_Int = bnsm.a(20.0F);
-  }
-  
-  public bnmh()
-  {
-    this.jdField_a_of_type_Float = jdField_a_of_type_Int;
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
   }
 }
 

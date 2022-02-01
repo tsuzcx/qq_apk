@@ -1,19 +1,18 @@
-import java.util.Comparator;
-
-class atww
-  implements Comparator<atwn>
+final class atww
+  implements bigw
 {
-  public int a(atwn paramatwn1, atwn paramatwn2)
+  atww(atwo paramatwo) {}
+  
+  public void a(int paramInt)
   {
-    if (paramatwn1.a >= paramatwn2.a) {
-      return 1;
+    if (paramInt == 2) {
+      this.a.a();
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atww
  * JD-Core Version:    0.7.0.1
  */

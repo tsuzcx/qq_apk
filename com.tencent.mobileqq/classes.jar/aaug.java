@@ -1,13 +1,30 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-class aaug
-  extends AdHttp.Params
+public class aaug
+  implements View.OnTouchListener
 {
-  public int a = -2147483648;
+  public aaug(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
   
-  public boolean isSuccess()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843195);
+      }
+    }
   }
 }
 

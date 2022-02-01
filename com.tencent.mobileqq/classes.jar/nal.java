@@ -1,66 +1,64 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.session.AVGameUserInfo;
 import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class nal
-  implements BusinessObserver
+public abstract interface nal
 {
-  nal(nag paramnag) {}
+  public abstract Activity a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-    }
-  }
+  public abstract AVGameUserInfo a(String paramString);
+  
+  public abstract String a();
+  
+  public abstract nat a();
+  
+  public abstract nav a();
+  
+  public abstract nbb a();
+  
+  public abstract nbo a();
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(Context paramContext, nat paramnat, nbn paramnbn, nbb paramnbb, nav paramnav, ndc paramndc, nbo paramnbo);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract List<Player> c();
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void i(myc parammyc);
+  
+  public abstract void k(myc parammyc);
+  
+  public abstract void m(myc parammyc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nal
  * JD-Core Version:    0.7.0.1
  */

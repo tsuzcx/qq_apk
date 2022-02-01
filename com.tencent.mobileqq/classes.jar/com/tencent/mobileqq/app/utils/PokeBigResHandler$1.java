@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app.utils;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import baub;
-import bavh;
+import bdvs;
+import bdwv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -16,7 +16,7 @@ class PokeBigResHandler$1
   public void run()
   {
     PokeBigResHandler.a(true);
-    baub localbaub = new baub();
+    bdvs localbdvs = new bdvs();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.this$0.app.getApp());
     String str = this.this$0.app.getAccount();
     PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
@@ -26,16 +26,16 @@ class PokeBigResHandler$1
       PokeBigResHandler.a(false);
       return;
     }
-    localbaub.jdField_a_of_type_Baug = PokeBigResHandler.a(this.this$0);
-    localbaub.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.c = (PokeBigResHandler.b() + "poke.zip");
-    ((bavh)this.this$0.mApp.getNetEngine(0)).a(localbaub);
+    localbdvs.jdField_a_of_type_Bdvw = PokeBigResHandler.a(this.this$0);
+    localbdvs.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
+    localbdvs.jdField_a_of_type_Int = 0;
+    localbdvs.c = (PokeBigResHandler.b() + "poke.zip");
+    ((bdwv)this.this$0.mApp.getNetEngine(0)).a(localbdvs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.PokeBigResHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.52;
 
-class aifa
-  extends avve
+public class aifa
+  implements bhlk
 {
-  aifa(aiez paramaiez) {}
+  public aifa(PublicAccountChatPie.52 param52) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      aiez.a(this.a);
+    if (paramBoolean) {
+      this.a.this$0.a.a();
     }
   }
 }

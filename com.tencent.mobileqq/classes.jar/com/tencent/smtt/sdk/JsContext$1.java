@@ -8,11 +8,11 @@ class JsContext$1
 {
   JsContext$1(JsContext paramJsContext, ValueCallback paramValueCallback) {}
   
-  public void onReceiveValue(IX5JsValue paramIX5JsValue)
+  public void a(IX5JsValue paramIX5JsValue)
   {
-    ValueCallback localValueCallback = this.val$resultCallback;
+    ValueCallback localValueCallback = this.a;
     if (paramIX5JsValue == null) {}
-    for (paramIX5JsValue = null;; paramIX5JsValue = new JsValue(this.this$0, paramIX5JsValue))
+    for (paramIX5JsValue = null;; paramIX5JsValue = new JsValue(this.b, paramIX5JsValue))
     {
       localValueCallback.onReceiveValue(paramIX5JsValue);
       return;
@@ -21,7 +21,7 @@ class JsContext$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsContext.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,37 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class afuc
-  extends afuf
+public class afuc
 {
-  afuc(afpy paramafpy)
+  public static BaseChatPie a()
   {
-    super(paramafpy, null);
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = ((FragmentActivity)localObject).getChatFragment();
+      if (localObject != null) {
+        return ((ChatFragment)localObject).a();
+      }
+    }
+    return null;
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public static boolean a()
   {
-    return new agfq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    boolean bool = false;
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null) {
+      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return a();
   }
 }
 

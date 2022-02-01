@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.List;
-import owx;
+import pmg;
 
 public class ReadInJoyFollowingMemberPrefetcher$3
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$3(owx paramowx, List paramList) {}
+  public ReadInJoyFollowingMemberPrefetcher$3(pmg parampmg, List paramList) {}
   
   public void run()
   {
-    owx.a(this.this$0, this.a, 2);
+    pmg.a(this.this$0, this.a, 2);
   }
 }
 

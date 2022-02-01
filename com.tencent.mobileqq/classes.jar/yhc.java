@@ -1,45 +1,34 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.subscribe.comment.EmoView;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yhc
-  implements AdapterView.OnItemClickListener
+  extends QQUIEventReceiver<ygz, xmf>
 {
-  public yhc(EmoView paramEmoView, int paramInt) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public yhc(@NonNull ygz paramygz)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramInt == 27)
+    super(paramygz);
+  }
+  
+  public void a(@NonNull ygz paramygz, @NonNull xmf paramxmf)
+  {
+    yqp.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramxmf.jdField_a_of_type_Xix, paramxmf.b);
+    if ((ygz.a(paramygz).equals(paramxmf.jdField_a_of_type_JavaLangString)) && ((paramxmf.jdField_a_of_type_Xix instanceof xji)))
     {
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
-      }
-      if (!bool1) {
-        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      yib localyib = ((xji)paramxmf.jdField_a_of_type_Xix).a;
+      if (localyib != null) {
+        paramygz.a(localyib.jdField_a_of_type_JavaLangString, paramxmf.b, true);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        paramInt = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
-      } while (paramInt >= 107);
-      paramAdapterView = yhp.b[yhg.b[paramInt]];
-      bool1 = bool2;
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
-      }
-    } while (bool1);
-    EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xmf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ahoa
-  extends akit
+final class ahoa
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

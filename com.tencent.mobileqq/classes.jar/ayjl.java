@@ -1,22 +1,32 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-public class ayjl
-  extends ClickableSpan
+public abstract interface ayjl
 {
-  public ayjl(UniteSearchActivity paramUniteSearchActivity) {}
+  public abstract void a(Matrix paramMatrix);
   
-  public void onClick(View paramView)
-  {
-    this.a.openContextMenu(this.a.a);
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void c(MotionEvent paramMotionEvent);
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,25 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
 
-class bapy
-  implements Animation.AnimationListener
+public class bapy
+  implements Animator.AnimatorListener
 {
-  bapy(bapx parambapx) {}
+  public bapy(ProviderContainerView paramProviderContainerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new bapz(this));
-    this.a.d.startAnimation(paramAnimation);
+    this.a.c.setVisibility(0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).a();
+    }
+  }
 }
 
 

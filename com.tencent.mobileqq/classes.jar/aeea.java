@@ -1,87 +1,65 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.widget.QQBlurView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeea
-  extends ameq
+  implements View.OnClickListener
 {
-  public aeea(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  public aeea(EmosmActivity paramEmosmActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList<String> paramArrayList, int paramInt4)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onGetGroupInviteStatus success:" + paramBoolean + " group_members_num:" + paramInt2 + " group_friends_num:" + paramInt3 + " friends_uins:" + paramArrayList + " status:" + paramInt4);
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691932);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
+      this.a.jdField_a_of_type_Arrz.a(true);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Arrz.notifyDataSetChanged();
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.setTitle(String.format(this.a.getResources().getString(2131691931), new Object[] { Integer.valueOf(0) }));
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, bgtn.a(44.0F));
+      bcst.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Int == 1) {
+        bcst.b(this.a.app, "dc00898", "", "", "0X800AB0F", "0X800AB0F", 0, 0, "", "", "", "");
+      }
     }
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+      for (;;)
+      {
+        this.a.a(this.a.jdField_b_of_type_Boolean);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bcst.b(this.a.app, "dc00898", "", "", "0X800AB16", "0X800AB16", 0, 0, "", "", "", "");
+      }
     }
-    if (this.a.jdField_a_of_type_Bety != null) {
-      this.a.jdField_a_of_type_Bety.dismiss();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691930);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
+    this.a.jdField_a_of_type_Arrz.a(false);
+    this.a.f();
+    this.a.jdField_b_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Arrz.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Arrz.a();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    if (this.a.jdField_b_of_type_Int == 2) {
+      this.a.setTitle(2131691734);
     }
-    if (paramBoolean) {}
     for (;;)
     {
-      synchronized (this.a)
-      {
-        this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-        this.a.jdField_b_of_type_Int = paramInt3;
-        this.a.jdField_a_of_type_Int = paramInt2;
-        this.a.jdField_c_of_type_Int = paramInt4;
-        paramInt1 = paramInt4;
-        if (paramInt4 == 5)
-        {
-          paramInt1 = paramInt4;
-          if (this.a.jdField_b_of_type_Boolean)
-          {
-            paramInt1 = paramInt4;
-            if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-            {
-              paramInt1 = paramInt4;
-              if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())
-              {
-                this.a.jdField_b_of_type_Boolean = false;
-                this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-                paramInt1 = paramInt4;
-              }
-            }
-          }
-        }
-        if (paramInt1 != 6) {
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            paramArrayList = "1";
-            bdes.a("Grp_AIO", "invite", "in_exp", 0, 0, new String[] { paramArrayList, String.valueOf(paramInt1) });
-            TroopInviteStatusFragment.a(this.a);
-            return;
-          }
-        }
-      }
-      switch (paramInt1)
-      {
-      default: 
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alud.a(2131715864), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
-        paramInt1 = paramInt4;
-        break;
-      case 1282: 
-      case 1283: 
-      case 1284: 
-      case 1285: 
-        synchronized (this.a)
-        {
-          this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-          this.a.jdField_b_of_type_Int = paramInt3;
-          this.a.jdField_a_of_type_Int = paramInt2;
-          this.a.jdField_c_of_type_Int = 6;
-          paramInt1 = 6;
-        }
-        paramArrayList = "2";
-        continue;
-        bdes.a("Grp_AIO", "invite", "in_past", 0, 0, new String[0]);
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, 0);
+      break;
+      this.a.setTitle(2131691939);
     }
   }
 }

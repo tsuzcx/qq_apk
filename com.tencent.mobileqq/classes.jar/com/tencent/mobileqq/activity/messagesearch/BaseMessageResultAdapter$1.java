@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import aiga;
+import ajwt;
 import android.os.Bundle;
 import android.os.Message;
-import bdhf;
-import bhsl;
+import bgmk;
+import bkfv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class BaseMessageResultAdapter$1
   implements Runnable
 {
-  public BaseMessageResultAdapter$1(aiga paramaiga, String paramString, int paramInt, long paramLong) {}
+  public BaseMessageResultAdapter$1(ajwt paramajwt, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
     boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.i(aiga.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+      QLog.i(ajwt.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
     }
     ??? = null;
     Object localObject2;
@@ -28,11 +28,11 @@ public class BaseMessageResultAdapter$1
     if (this.jdField_a_of_type_Int == 1)
     {
       ??? = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      bdhf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      bgmk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
       localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
-        QLog.i(aiga.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
+        QLog.i(ajwt.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
     }
     for (;;)
@@ -44,12 +44,12 @@ public class BaseMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localaiga = this.this$0;
+          localajwt = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            localaiga.jdField_a_of_type_Boolean = bool;
+            localajwt.jdField_a_of_type_Boolean = bool;
             this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.this$0.jdField_a_of_type_Bhsl.obtainMessage(2, localObject2);
+            localObject2 = this.this$0.jdField_a_of_type_Bkfv.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -72,13 +72,13 @@ public class BaseMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        aiga localaiga = this.this$0;
+        ajwt localajwt = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          localaiga.jdField_a_of_type_Boolean = bool;
+          localajwt.jdField_a_of_type_Boolean = bool;
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.this$0.jdField_a_of_type_Bhsl.obtainMessage(2, localObject2);
+          localObject2 = this.this$0.jdField_a_of_type_Bkfv.obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -93,7 +93,7 @@ public class BaseMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,33 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Grp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adad
-  extends amcd
+  implements acxp
 {
-  public adad(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
-    {
-      this.a.a(0L, null, null, false);
-      if (FriendProfileCardActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (FriendProfileCardActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          bdgm.a(this.a, 232, null, alud.a(2131705282), null, alud.a(2131705290), new adae(this), null).show();
-        }
-        this.a.removeObserver(FriendProfileCardActivity.a(this.a));
-      }
-    }
+    return 1;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Grp();
+    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.grp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

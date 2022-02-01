@@ -1,35 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
-class actg
-  implements DialogInterface.OnClickListener
+public class actg
+  extends acuc
 {
-  actg(acte paramacte, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public actg(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
-      if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-        break;
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), alud.a(2131702992), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      return;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acqy.b("AbsWebView", "GdtBaseHalfScreenFragment onReceivedTitle" + paramString);
+    if (GdtBaseHalfScreenFragment.a(this.a) != null) {
+      GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(acte.a(this.jdField_a_of_type_Acte));
-    ((aluj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL__ACTION_DELETE_SHELL);
-    this.jdField_a_of_type_Acte.a = new bety(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    this.jdField_a_of_type_Acte.a.setContentView(2131562577);
-    this.jdField_a_of_type_Acte.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692290));
-    this.jdField_a_of_type_Acte.a.setCancelable(true);
-    this.jdField_a_of_type_Acte.a.show();
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    for (;;)
+    {
+      return true;
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      localObject = AdUriUtil.parse(paramString);
+      if (localObject != null) {}
+      for (paramString = ((Uri)localObject).getScheme(); nhe.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          acqy.d("AbsWebView", paramWebView.toString());
+          return true;
+        }
+      }
+    }
   }
 }
 

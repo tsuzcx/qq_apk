@@ -1,25 +1,34 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
-class afqf
-  extends afuf
+public class afqf
+  implements DialogInterface.OnClickListener
 {
-  afqf(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afqf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, String paramString) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramChatMessage = new afum(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    afpy.a(this.a).add(paramChatMessage);
-    return paramChatMessage;
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    if (bgnt.d(BaseApplication.getContext()))
+    {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatActivity.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      }
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatSettingActivity.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131693992, 0);
   }
 }
 

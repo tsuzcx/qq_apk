@@ -1,5 +1,6 @@
 package com.tencent.ttpic.openapi.util;
 
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.util.Coffee;
 import com.tencent.ttpic.util.DecryptListener;
 
@@ -8,12 +9,21 @@ final class VideoTemplateParser$1
 {
   public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
+    try
+    {
+      paramArrayOfByte = Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
+      return paramArrayOfByte;
+    }
+    catch (UnsatisfiedLinkError paramArrayOfByte)
+    {
+      LogUtils.e(VideoTemplateParser.access$000(), paramArrayOfByte.toString());
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.1
  * JD-Core Version:    0.7.0.1
  */

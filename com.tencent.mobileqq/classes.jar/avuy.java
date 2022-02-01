@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
-public class avuy
-  extends avun
+class avuy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public QIMNotifyAddFriend a;
+  avuy(avuv paramavuv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
-  public avuy(QIMNotifyAddFriend paramQIMNotifyAddFriend)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
-    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
+    if (!this.jdField_a_of_type_Avuv.b)
+    {
+      paramValueAnimator.cancel();
+      this.jdField_a_of_type_Avuv.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      return;
+    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
+    int j = (int)(this.c + (this.d - this.c) * f1 + 0.5F);
+    int k = (int)(this.e + (this.f - this.e) * f1 + 0.5F);
+    float f2 = this.g;
+    int m = (int)(f1 * (this.h - this.g) + f2 + 0.5F);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(i, j);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(k, m);
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avuv.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuy
  * JD-Core Version:    0.7.0.1
  */

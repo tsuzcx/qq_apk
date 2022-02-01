@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class avxz
-  implements Parcelable.Creator<TranslateResult.Record>
+final class avxz
+  implements DialogInterface.OnClickListener
 {
-  public TranslateResult.Record a(Parcel paramParcel)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new TranslateResult.Record(paramParcel);
-  }
-  
-  public TranslateResult.Record[] a(int paramInt)
-  {
-    return new TranslateResult.Record[paramInt];
+    bcst.b(null, "CliOper", "", "", "0X800A971", "0X800A971", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxz
  * JD-Core Version:    0.7.0.1
  */

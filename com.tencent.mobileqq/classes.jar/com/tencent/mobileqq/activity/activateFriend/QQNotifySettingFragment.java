@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import adpn;
-import alud;
+import aevv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +14,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import anni;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import xsm;
+import zlx;
 
 public class QQNotifySettingFragment
   extends QQNotifySettingBaseFragment
@@ -43,17 +45,17 @@ public class QQNotifySettingFragment
     localIntent.putExtra("key_busid", URLDecoder.decode(paramString2));
     localIntent.putExtra("key_schema", URLDecoder.decode(paramString3));
     localIntent.putExtra("key_domain", URLDecoder.decode(paramString4));
-    adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
+    aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560798, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131561002, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), alud.a(2131710970), 0).a();
+    QQToast.a(getActivity(), anni.a(2131709346), 0).a();
   }
   
   public void b(int paramInt, String paramString)
@@ -69,9 +71,9 @@ public class QQNotifySettingFragment
         break label136;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131710966));
-      this.c.setText(alud.a(2131710972));
-      this.d.setText(alud.a(2131710968));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131709342));
+      this.c.setText(anni.a(2131709348));
+      this.d.setText(anni.a(2131709344));
       paramString = URLDrawable.URLDrawableOptions.obtain();
       paramString.mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
       paramString.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
@@ -113,33 +115,36 @@ public class QQNotifySettingFragment
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() == 2131378686) {
+    if (paramView.getId() == 2131379547) {
       a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368800));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369147));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368798));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369145));
     paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
-    paramLayoutInflater.mRequestHeight = xsm.a(getActivity(), 106.0F);
-    paramLayoutInflater.mRequestWidth = xsm.a(getActivity(), 195.0F);
+    paramLayoutInflater.mRequestHeight = zlx.a(getActivity(), 106.0F);
+    paramLayoutInflater.mRequestWidth = zlx.a(getActivity(), 195.0F);
     paramLayoutInflater = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201907/upload_a69bf0fc5262c4bc452dd03f6b95a9c0.png", paramLayoutInflater);
     if (paramLayoutInflater != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramLayoutInflater);
     }
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368799));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378686));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369146));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379547));
     this.c.setOnClickListener(this);
-    return this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingFragment
  * JD-Core Version:    0.7.0.1
  */

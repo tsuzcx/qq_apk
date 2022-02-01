@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.mutualmark.view;
 
-import aepi;
-import akfw;
-import akml;
-import alto;
-import alud;
+import afur;
+import ajjg;
+import alyv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -18,12 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ausj;
-import autj;
-import autp;
+import anmw;
+import anni;
+import awzp;
+import axap;
+import axav;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.FriendItemLayout;
+import com.tencent.mobileqq.activity.contacts.friend.FriendItemLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -110,7 +110,7 @@ public class MutualMarkIconsView
     label488:
     for (int i = 0;; i = 1)
     {
-      paramQQAppInterface = (alto)paramQQAppInterface.getManager(51);
+      paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
       j = k;
       if (paramQQAppInterface != null)
       {
@@ -126,7 +126,7 @@ public class MutualMarkIconsView
             if (this.jdField_a_of_type_Int != 4) {
               break label372;
             }
-            this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
+            this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166986));
             this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
             this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
             paramQQAppInterface = new LinearLayout.LayoutParams(-2, this.b);
@@ -140,10 +140,10 @@ public class MutualMarkIconsView
         if (paramLong > 9999L) {
           l = 9999L;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(l + alud.a(2131707436));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(l + anni.a(2131705827));
         if (AppSetting.c)
         {
-          paramQQAppInterface = String.format(autp.a(getContext(), 19), new Object[] { Long.valueOf(l) });
+          paramQQAppInterface = String.format(axav.a(getContext(), 19), new Object[] { Long.valueOf(l) });
           this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramQQAppInterface);
           if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
             this.jdField_a_of_type_JavaLangStringBuilder.append(paramQQAppInterface);
@@ -152,7 +152,7 @@ public class MutualMarkIconsView
         j = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
         i = j;
         if (j <= 0) {
-          i = aepi.a(32.0F, getResources());
+          i = afur.a(32.0F, getResources());
         }
         this.e = (i + this.e);
         j = 1;
@@ -163,13 +163,13 @@ public class MutualMarkIconsView
         }
         return;
         label372:
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166981));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167064));
         break;
         this.jdField_a_of_type_AndroidWidgetTextView = new BaselineTextView(getContext(), null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166986));
         this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, aepi.a(2.0F, getResources()));
+        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, afur.a(2.0F, getResources()));
         paramQQAppInterface = new LinearLayout.LayoutParams(-2, -2);
         paramQQAppInterface.gravity = 80;
         addView(this.jdField_a_of_type_AndroidWidgetTextView, paramQQAppInterface);
@@ -177,47 +177,47 @@ public class MutualMarkIconsView
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString, autj paramautj, ExtensionInfo paramExtensionInfo, MutualMarkIconItemView paramMutualMarkIconItemView)
+  private void a(QQAppInterface paramQQAppInterface, String paramString, axap paramaxap, ExtensionInfo paramExtensionInfo, MutualMarkIconItemView paramMutualMarkIconItemView)
   {
     int i;
-    if (paramautj.d())
+    if (paramaxap.d())
     {
-      paramMutualMarkIconItemView.setIconResource(paramautj);
+      paramMutualMarkIconItemView.setIconResource(paramaxap);
       paramMutualMarkIconItemView.setVisibility(0);
       if (AppSetting.c)
       {
-        paramQQAppInterface = paramautj.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramautj.d)) {
-          paramQQAppInterface = paramautj.d;
+        paramQQAppInterface = paramaxap.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramaxap.d)) {
+          paramQQAppInterface = paramaxap.d;
         }
         paramMutualMarkIconItemView.setContentDescription(paramQQAppInterface);
         if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
           this.jdField_a_of_type_JavaLangStringBuilder.append(paramQQAppInterface);
         }
       }
-      if ((!paramautj.a()) || (this.jdField_a_of_type_Int != 3) || (!paramautj.b()) || (paramautj.jdField_a_of_type_Boolean)) {
+      if ((!paramaxap.a()) || (this.jdField_a_of_type_Int != 3) || (!paramaxap.b()) || (paramaxap.jdField_a_of_type_Boolean)) {
         break label206;
       }
-      if ((paramautj.h != 0L) && (System.currentTimeMillis() - paramautj.h > 3500L))
+      if ((paramaxap.h != 0L) && (System.currentTimeMillis() - paramaxap.h > 3500L))
       {
-        paramautj.jdField_a_of_type_Boolean = true;
-        ausj.a(paramautj, paramExtensionInfo);
+        paramaxap.jdField_a_of_type_Boolean = true;
+        awzp.a(paramaxap, paramExtensionInfo);
         if (paramExtensionInfo == null) {
           break label206;
         }
-        autp.a(paramExtensionInfo);
+        axav.a(paramExtensionInfo);
         i = 0;
       }
     }
     for (;;)
     {
       if (i == 0) {
-        paramMutualMarkIconItemView.setIconAlpha(paramautj.a());
+        paramMutualMarkIconItemView.setIconAlpha(paramaxap.a());
       }
       this.e += paramMutualMarkIconItemView.a();
       return;
-      paramautj.h = System.currentTimeMillis();
-      ausj.a(paramautj, paramExtensionInfo);
+      paramaxap.h = System.currentTimeMillis();
+      awzp.a(paramaxap, paramExtensionInfo);
       paramMutualMarkIconItemView.a(paramString);
       i = 1;
       continue;
@@ -256,10 +256,10 @@ public class MutualMarkIconsView
     }
   }
   
-  public int a(View paramView, akfw paramakfw, int paramInt1, int paramInt2)
+  public int a(View paramView, alyv paramalyv, int paramInt1, int paramInt2)
   {
     int j = 0;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramakfw.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramalyv.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
     if (localLayoutParams != null) {}
     for (int i = localLayoutParams.rightMargin;; i = 0)
     {
@@ -276,13 +276,13 @@ public class MutualMarkIconsView
         }
         paramInt1 = paramView.getPaddingLeft();
         k = paramView.getPaddingRight();
-        int m = a(paramakfw.jdField_a_of_type_AndroidWidgetTextView.getText(), paramakfw.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-        m = Math.min(getResources().getDimensionPixelSize(2131296692), m);
-        int i1 = paramakfw.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingLeft();
-        int i2 = paramakfw.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingRight();
-        int i3 = paramakfw.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
-        int i4 = paramakfw.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft();
-        int n = aepi.a(72.0F, getResources());
+        int m = a(paramalyv.jdField_a_of_type_AndroidWidgetTextView.getText(), paramalyv.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
+        m = Math.min(getResources().getDimensionPixelSize(2131296742), m);
+        int i1 = paramalyv.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingLeft();
+        int i2 = paramalyv.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingRight();
+        int i3 = paramalyv.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
+        int i4 = paramalyv.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft();
+        int n = afur.a(72.0F, getResources());
         paramInt2 = paramInt2 - (paramInt1 + k) - n - i - m - (i1 + i2 + i3 + i4);
         if (QLog.isColorLevel()) {
           QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInSpecialCareList maxMutualMarkWidth:" + paramInt2 + " maybeWidth:" + this.e + " nickMinWidth:" + m + " nickRootLeft:" + n + " mutualMarkMarginRight:" + i);
@@ -324,10 +324,10 @@ public class MutualMarkIconsView
     }
   }
   
-  public int a(FriendItemLayout paramFriendItemLayout, akml paramakml, int paramInt)
+  public int a(FriendItemLayout paramFriendItemLayout, ajjg paramajjg, int paramInt)
   {
     int j = 0;
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramakml.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramajjg.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
     if (localLayoutParams != null) {}
     for (int i = localLayoutParams.rightMargin;; i = 0)
     {
@@ -341,17 +341,17 @@ public class MutualMarkIconsView
       }
       int m = paramFriendItemLayout.getPaddingLeft();
       int n = paramFriendItemLayout.getPaddingRight();
-      paramInt = a(paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a(), paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a());
-      int i1 = Math.min(getResources().getDimensionPixelSize(2131296692), paramInt);
-      int i2 = paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a();
-      int i3 = paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.b();
-      int i4 = paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingRight();
-      int i5 = paramakml.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingLeft();
-      paramFriendItemLayout = (FrameLayout.LayoutParams)paramakml.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      paramInt = a(paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a(), paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a());
+      int i1 = Math.min(getResources().getDimensionPixelSize(2131296742), paramInt);
+      int i2 = paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.a();
+      int i3 = paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.b();
+      int i4 = paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingRight();
+      int i5 = paramajjg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingLeft();
+      paramFriendItemLayout = (FrameLayout.LayoutParams)paramajjg.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       if (paramFriendItemLayout != null) {}
       for (paramInt = paramFriendItemLayout.leftMargin;; paramInt = 0)
       {
-        k = k - (m + n) - paramInt - i1 - (i5 + (i2 + i3 + i4)) - paramakml.b.getMeasuredWidth() - i;
+        k = k - (m + n) - paramInt - i1 - (i5 + (i2 + i3 + i4)) - paramajjg.b.getMeasuredWidth() - i;
         if (QLog.isColorLevel()) {
           QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInFriendItemLayout maxMutualMarkWidth:" + k + " maybeWidth:" + this.e + " nickMinWidth:" + i1 + " mutualMarkMarginRight:" + i);
         }
@@ -397,7 +397,7 @@ public class MutualMarkIconsView
       this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     this.jdField_a_of_type_Int = paramInt;
-    ArrayList localArrayList = ausj.a(paramQQAppInterface, paramString, false, paramInt);
+    ArrayList localArrayList = awzp.a(paramQQAppInterface, paramString, false, paramInt);
     if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
       a();
@@ -428,21 +428,21 @@ public class MutualMarkIconsView
     }
     setVisibility(0);
     this.e = 0;
-    Object localObject2 = (alto)paramQQAppInterface.getManager(51);
+    Object localObject2 = (anmw)paramQQAppInterface.getManager(51);
     Object localObject1 = null;
     if (localObject2 != null) {
-      localObject1 = ((alto)localObject2).a(paramString, false);
+      localObject1 = ((anmw)localObject2).a(paramString, false);
     }
     paramInt = 0;
     long l = 0L;
     if (paramInt < localArrayList.size())
     {
-      localObject2 = (autj)localArrayList.get(paramInt);
-      a(paramQQAppInterface, paramString, (autj)localObject2, (ExtensionInfo)localObject1, (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      if (((autj)localObject2).jdField_a_of_type_Long != 5L) {
+      localObject2 = (axap)localArrayList.get(paramInt);
+      a(paramQQAppInterface, paramString, (axap)localObject2, (ExtensionInfo)localObject1, (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      if (((axap)localObject2).jdField_a_of_type_Long != 5L) {
         break label301;
       }
-      l = ((autj)localObject2).c;
+      l = ((axap)localObject2).c;
     }
     label301:
     for (;;)
@@ -456,7 +456,7 @@ public class MutualMarkIconsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView
  * JD-Core Version:    0.7.0.1
  */

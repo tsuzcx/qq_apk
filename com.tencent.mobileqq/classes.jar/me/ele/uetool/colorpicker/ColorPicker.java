@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.List;
 import me.ele.uetool.colorpicker.listener.OnColorChangedListener;
 import me.ele.uetool.util.JarResource;
@@ -63,7 +64,7 @@ public class ColorPicker
   
   private void makeDialog()
   {
-    this.dialog = new Dialog(this.context, JarResource.getIdByName("style", "qb_uet_Theme.Holo.Dialog.background.Translucent"));
+    this.dialog = new ReportDialog(this.context, JarResource.getIdByName("style", "qb_uet_Theme.Holo.Dialog.background.Translucent"));
     this.dialog.setContentView(this.colorPickerView);
   }
   
@@ -113,7 +114,7 @@ public class ColorPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.colorpicker.ColorPicker
  * JD-Core Version:    0.7.0.1
  */

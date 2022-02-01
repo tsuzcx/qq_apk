@@ -1,6 +1,25 @@
-public abstract interface akqj
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+
+public class akqj
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean, akqi paramakqi);
+  public akqj(ThemeHbFragment paramThemeHbFragment) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
+    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+  }
 }
 
 

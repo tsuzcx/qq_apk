@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.DoubtInfo;
 
 public class SysSuspiciousMsg
-  extends awge
+  extends Entity
   implements Serializable
 {
   public int age;
@@ -24,7 +24,7 @@ public class SysSuspiciousMsg
   public int sex;
   public String source;
   public long time;
-  @awhs
+  @unique
   public long uin;
   
   public static SysSuspiciousMsg covertFrom(oidb_cmd0xd69.DoubtInfo paramDoubtInfo)
@@ -119,7 +119,7 @@ public class SysSuspiciousMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.SysSuspiciousMsg
  * JD-Core Version:    0.7.0.1
  */

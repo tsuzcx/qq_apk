@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aase;
+import acqy;
 import java.lang.ref.WeakReference;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    aase.a("FirstLoadDataTask", "run() called");
+    acqy.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do
@@ -23,7 +23,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager.FirstLoadDataTask.1
  * JD-Core Version:    0.7.0.1
  */

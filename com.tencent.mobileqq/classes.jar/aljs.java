@@ -1,26 +1,17 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aljs
-  implements akoh
+public class aljs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aljs(Context paramContext, AppInterface paramAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
+  public aljs(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentContext, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_gameId", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
-    localHashMap.put("param_src", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
-    azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "cmgame_data_init_duration", true, l, 0L, localHashMap, "", false);
-    QLog.d("CmGameStat", 1, new Object[] { "cmgame_data_init_duration=", Long.valueOf(l) });
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -33,26 +33,25 @@ public final class ResponsePackage
     this.encryPublicKey = paramString3;
   }
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     this.result = parama.a(this.result, 0, true);
     this.cmd = parama.a(this.cmd, 1, true);
     if (cache_sBuffer == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
-      cache_sBuffer = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      cache_sBuffer = new byte[1];
+      cache_sBuffer[0] = 0;
     }
-    this.sBuffer = ((byte[])parama.c(2, true));
-    this.srcGatewayIp = parama.b(3, true);
+    this.sBuffer = parama.a(cache_sBuffer, 2, true);
+    this.srcGatewayIp = parama.a(3, true);
     this.encryType = parama.a(this.encryType, 4, true);
     this.zipType = parama.a(this.zipType, 5, true);
     this.serverTime = parama.a(this.serverTime, 6, true);
-    this.encryKey = parama.b(7, false);
-    this.encryPublicKey = parama.b(8, false);
+    this.encryKey = parama.a(7, false);
+    this.encryPublicKey = parama.a(8, false);
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.result, 0);
     paramb.a(this.cmd, 1);
@@ -61,17 +60,19 @@ public final class ResponsePackage
     paramb.a(this.encryType, 4);
     paramb.a(this.zipType, 5);
     paramb.a(this.serverTime, 6);
-    if (this.encryKey != null) {
-      paramb.a(this.encryKey, 7);
+    String str = this.encryKey;
+    if (str != null) {
+      paramb.a(str, 7);
     }
-    if (this.encryPublicKey != null) {
-      paramb.a(this.encryPublicKey, 8);
+    str = this.encryPublicKey;
+    if (str != null) {
+      paramb.a(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.common.ResponsePackage
  * JD-Core Version:    0.7.0.1
  */

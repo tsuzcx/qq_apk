@@ -1,23 +1,24 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.widget.HongBaoListView;
 
-class bkla
-  implements ThreadPool.Job<Void>
+public abstract interface bkla
 {
-  bkla(bkks parambkks, List paramList) {}
+  public abstract void a();
   
-  public Void a(ThreadPool.JobContext paramJobContext)
-  {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bkks.a(l, true, false, false);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(HongBaoListView paramHongBaoListView);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(HongBaoListView paramHongBaoListView);
 }
 
 

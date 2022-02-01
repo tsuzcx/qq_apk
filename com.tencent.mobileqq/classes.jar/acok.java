@@ -1,38 +1,87 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMvAnimation185H.1;
 
 public class acok
-  implements acpa
+  extends acov
 {
-  public acok(ChatSettingActivity paramChatSettingActivity) {}
+  private Runnable a;
   
-  public void a(Activity paramActivity)
+  protected acok(Context paramContext)
   {
-    QQToast.a(this.a, 2, 2131691566, 0).b(this.a.getTitleBarHeight());
+    super(paramContext);
+    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation185H.1(this);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt == 0) {
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
+    super.a(paramInt);
+    acqy.b("GdtMotiveVideoAd", "185H doAnimation " + this.jdField_a_of_type_Acoj + " targetMode " + paramInt);
+    acog localacog;
+    if (this.jdField_a_of_type_Acoj != null)
+    {
+      localacog = (acog)this.jdField_a_of_type_Acoj;
+      a();
+      if (paramInt == 1)
+      {
+        if (localacog.jdField_a_of_type_AndroidViewView != null) {
+          localacog.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        }
+        a(localacog.jdField_f_of_type_AndroidViewView, localacog.j, localacog.k, localacog.i);
+        a(localacog.jdField_e_of_type_AndroidViewView, localacog.jdField_g_of_type_Int, localacog.jdField_h_of_type_Int);
+        a(localacog.jdField_b_of_type_AndroidViewView, localacog.jdField_a_of_type_Int, localacog.jdField_b_of_type_Int);
+        a(localacog.jdField_d_of_type_AndroidViewView, localacog.jdField_e_of_type_Int, localacog.jdField_f_of_type_Int);
+        a(localacog.jdField_c_of_type_AndroidViewView, localacog.jdField_c_of_type_Int, localacog.jdField_d_of_type_Int);
+      }
     }
-    while (paramInt != 1) {
+    else
+    {
       return;
     }
-    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+    a(localacog.jdField_f_of_type_AndroidViewView, -localacog.j, -localacog.k, -localacog.i);
+    a(localacog.jdField_e_of_type_AndroidViewView, -localacog.jdField_g_of_type_Int, -localacog.jdField_h_of_type_Int);
+    a(localacog.jdField_b_of_type_AndroidViewView, -localacog.jdField_a_of_type_Int, -localacog.jdField_b_of_type_Int);
+    a(localacog.jdField_d_of_type_AndroidViewView, -localacog.jdField_e_of_type_Int, -localacog.jdField_f_of_type_Int);
+    a(localacog.jdField_c_of_type_AndroidViewView, -localacog.jdField_c_of_type_Int, -localacog.jdField_d_of_type_Int);
   }
   
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
   {
-    if (paramInt == 0) {
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    acog localacog = new acog();
+    localacog.jdField_a_of_type_AndroidViewView = paramView1;
+    localacog.jdField_f_of_type_AndroidViewView = paramView3;
+    localacog.jdField_g_of_type_AndroidViewView = paramView2;
+    localacog.jdField_h_of_type_AndroidViewView = paramView8;
+    localacog.j = acsj.a(-85, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.k = acsj.a(-588, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext));
+    localacog.i = acsj.a(416, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext));
+    paramView1 = (RelativeLayout.LayoutParams)paramView2.getLayoutParams();
+    float f = acsj.a(400, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext));
+    if (f > 0.0F)
+    {
+      localacog.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / acsj.e(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
+      localacog.jdField_b_of_type_Float = localacog.jdField_a_of_type_Float;
     }
-    while (paramInt != 1) {
-      return;
-    }
-    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
+    localacog.l = acsj.a(50, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext));
+    localacog.m = acsj.a(50, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_b_of_type_AndroidViewView = paramView4;
+    localacog.jdField_c_of_type_AndroidViewView = paramView5;
+    localacog.jdField_d_of_type_AndroidViewView = paramView6;
+    localacog.jdField_e_of_type_AndroidViewView = paramView7;
+    localacog.jdField_a_of_type_Int = acsj.a(-436, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_b_of_type_Int = acsj.a(567, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_c_of_type_Int = acsj.a(-275, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_d_of_type_Int = ((acsj.e(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - acsj.a(196, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacog.jdField_e_of_type_Int = acsj.a(-269, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_f_of_type_Int = ((acsj.e(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - acsj.a(196, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacog.jdField_g_of_type_Int = acsj.a(-257, 750, acsj.f(this.jdField_a_of_type_AndroidContentContext));
+    localacog.jdField_h_of_type_Int = ((acsj.e(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - acsj.a(196, 1334, acsj.e(this.jdField_a_of_type_AndroidContentContext)));
+    a(localacog, paramView8);
+    this.jdField_a_of_type_Acoj = localacog;
   }
 }
 

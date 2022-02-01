@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +25,7 @@ class DesktopDataManager$31
     for (;;)
     {
       return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().a(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -33,7 +33,7 @@ class DesktopDataManager$31
         {
           MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject).next();
           if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
-            DesktopDataManager.access$2900(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
+            DesktopDataManager.access$2800(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
           }
         }
       }
@@ -42,7 +42,7 @@ class DesktopDataManager$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.31
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-public class bnhl
+import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
+
+public abstract interface bnhl
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public abstract void a(int paramInt);
   
-  public String toString()
-  {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
-  }
+  public abstract void a(baox parambaox);
+  
+  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
+  
+  public abstract void l();
+  
+  public abstract void m();
 }
 
 

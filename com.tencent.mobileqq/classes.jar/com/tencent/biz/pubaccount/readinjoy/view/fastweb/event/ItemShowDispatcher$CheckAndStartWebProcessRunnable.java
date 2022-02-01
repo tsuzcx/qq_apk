@@ -5,7 +5,7 @@ import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-class ItemShowDispatcher$CheckAndStartWebProcessRunnable
+public class ItemShowDispatcher$CheckAndStartWebProcessRunnable
   implements Runnable
 {
   private WeakReference<QQAppInterface> a;
@@ -42,7 +42,7 @@ class ItemShowDispatcher$CheckAndStartWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.CheckAndStartWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

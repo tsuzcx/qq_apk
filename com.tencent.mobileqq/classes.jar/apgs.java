@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ar.view.ViewfinderView;
 
 public class apgs
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public apgs(DataReportSettingFragment paramDataReportSettingFragment) {}
+  public apgs(ViewfinderView paramViewfinderView, Rect paramRect) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bdgm.a(this.a.getActivity(), 0, 2131559471, alud.a(2131703164), "", alud.a(2131703159), alud.a(2131703165), new apgt(this), new apgu(this)).show();
+    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
   }
 }
 

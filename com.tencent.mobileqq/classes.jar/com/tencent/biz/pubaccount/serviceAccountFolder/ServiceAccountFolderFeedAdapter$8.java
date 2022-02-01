@@ -1,45 +1,45 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import ajlb;
-import alzl;
-import awgf;
-import awgg;
+import aldk;
+import anrs;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
-import nrc;
-import ssj;
-import ssk;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import nzz;
+import tty;
+import ttz;
 
 public class ServiceAccountFolderFeedAdapter$8
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$8(ssk paramssk, String paramString, ssj paramssj) {}
+  public ServiceAccountFolderFeedAdapter$8(ttz paramttz, String paramString, tty paramtty) {}
   
   public void run()
   {
-    nrc.a().a(ssk.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (alzl)ssk.a(this.this$0).getManager(56);
+    nzz.a().a(ttz.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = (anrs)ttz.a(this.this$0).getManager(56);
     if (localObject != null)
     {
-      ((alzl)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((alzl)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
+      ((anrs)localObject).c(this.jdField_a_of_type_JavaLangString);
+      ((anrs)localObject).b(this.jdField_a_of_type_JavaLangString);
+      AccountDetail localAccountDetail = ((anrs)localObject).a(this.jdField_a_of_type_JavaLangString);
       if (localAccountDetail != null)
       {
-        ((alzl)localObject).a(this.jdField_a_of_type_JavaLangString);
-        localObject = ssk.a(this.this$0).getEntityManagerFactory().createEntityManager();
-        ((awgf)localObject).b(localAccountDetail);
-        ((awgf)localObject).a();
+        ((anrs)localObject).a(this.jdField_a_of_type_JavaLangString);
+        localObject = ttz.a(this.this$0).a().createEntityManager();
+        ((EntityManager)localObject).remove(localAccountDetail);
+        ((EntityManager)localObject).close();
       }
     }
-    ssk.a(this.this$0).a().a(this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, 1008);
-    ajlb.b(ssk.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
+    ttz.a(this.this$0).a().a(this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, 1008);
+    aldk.b(ttz.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.8
  * JD-Core Version:    0.7.0.1
  */

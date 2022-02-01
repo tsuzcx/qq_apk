@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.Context;
-import azri;
+import bctj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import nrt;
+import oat;
 import org.json.JSONObject;
 
 public final class ReadInJoyUtils$4
@@ -29,24 +29,22 @@ public final class ReadInJoyUtils$4
       QLog.d("Q.readinjoy.video", 2, "reportKandianVideoInfo, success =" + this.jdField_a_of_type_Boolean + ", data=" + ((StringBuilder)localObject).toString());
     }
     Object localObject = new HashMap(this.jdField_a_of_type_JavaUtilHashMap);
-    azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoWithExtraInfo", this.jdField_a_of_type_Boolean, -1L, 0L, (HashMap)localObject, null);
+    bctj.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoWithExtraInfo", this.jdField_a_of_type_Boolean, -1L, 0L, (HashMap)localObject, null);
     try
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("param_speedList")) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_speedList");
-      }
-      label185:
-      azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
+      this.jdField_a_of_type_JavaUtilHashMap.remove("param_speedList");
+      label173:
+      bctj.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
       try
       {
-        nrt.a(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", new JSONObject(this.jdField_a_of_type_JavaUtilHashMap).toString(), false);
+        oat.a(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", new JSONObject(this.jdField_a_of_type_JavaUtilHashMap).toString(), false);
         return;
       }
       catch (Throwable localThrowable1) {}
     }
     catch (Throwable localThrowable2)
     {
-      break label185;
+      break label173;
     }
   }
 }

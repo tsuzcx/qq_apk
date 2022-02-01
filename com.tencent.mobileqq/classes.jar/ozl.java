@@ -1,29 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ozl
-  extends BroadcastReceiver
+  implements pah
 {
-  public ozl(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  public ozl(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (this.a.getActivity() != null)
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      if (ReadInJoyDailyFragment.a(this.a) != null) {
-        ReadInJoyDailyFragment.a(this.a).i();
-      }
-      ReadInJoyDailyFragment.a(this.a, true);
-      this.a.getActivity().finish();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a(false, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozl
  * JD-Core Version:    0.7.0.1
  */

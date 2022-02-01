@@ -1,26 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.view.ViewTreeObserver;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import java.util.List;
 
 public class avyi
-  implements TextWatcher
+  implements TencentMap.OnMapLoadedCallback
 {
-  private avyi(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  public avyi(LocationMapWidget paramLocationMapWidget) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onMapLoaded()
   {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
+    if (LocationMapWidget.a(this.a) != null)
+    {
+      if (this.a.a.getCameraPosition() == null) {
+        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new avyj(this));
+      }
+    }
+    else {
+      return;
+    }
+    List localList = LocationMapWidget.a(this.a);
+    LocationMapWidget.a(this.a).a(this.a.a.getCameraPosition().target, localList);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyi
  * JD-Core Version:    0.7.0.1
  */

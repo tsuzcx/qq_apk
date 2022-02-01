@@ -9,7 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdgz;
+import bgme;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PublishItemBar
   extends LinearLayout
@@ -57,14 +58,14 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(1));
-        localImageButton.setImageResource(2130842167);
-        localImageButton.setContentDescription(getResources().getString(2131697705));
+        localImageButton.setImageResource(2130842477);
+        localImageButton.setContentDescription(getResources().getString(2131696547));
         a(localImageButton);
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(5));
-        localImageButton.setImageResource(2130842163);
-        localImageButton.setContentDescription(getResources().getString(2131697700));
+        localImageButton.setImageResource(2130842473);
+        localImageButton.setContentDescription(getResources().getString(2131696542));
         a(localImageButton);
       }
       if (this.jdField_b_of_type_Boolean)
@@ -72,8 +73,8 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(2));
-        localImageButton.setImageResource(2130842158);
-        localImageButton.setContentDescription(getResources().getString(2131697691));
+        localImageButton.setImageResource(2130842468);
+        localImageButton.setContentDescription(getResources().getString(2131696533));
         a(localImageButton);
       }
       if (this.jdField_c_of_type_Boolean)
@@ -81,8 +82,8 @@ public class PublishItemBar
         localImageButton = new ImageButton(getContext());
         localImageButton.setOnClickListener(this);
         localImageButton.setTag(Integer.valueOf(4));
-        localImageButton.setImageResource(2130842165);
-        localImageButton.setContentDescription(getResources().getString(2131697702));
+        localImageButton.setImageResource(2130842475);
+        localImageButton.setContentDescription(getResources().getString(2131696544));
         a(localImageButton);
       }
       return;
@@ -130,42 +131,45 @@ public class PublishItemBar
   public void a(ImageButton paramImageButton)
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    paramImageButton.setPadding(0, 0, (int)bdgz.a(getContext(), 24.0F), 0);
-    paramImageButton.setBackgroundResource(2130850072);
+    paramImageButton.setPadding(0, 0, (int)bgme.a(getContext(), 24.0F), 0);
+    paramImageButton.setBackgroundResource(2130850664);
     paramImageButton.setLayoutParams(localLayoutParams);
     addView(paramImageButton);
   }
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-      switch (((Integer)paramView).intValue())
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
+      switch (((Integer)localObject).intValue())
       {
       }
     }
-    do
+    for (;;)
     {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      if (this.d != null)
       {
-        do
-        {
-          return;
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        } while (this.d == null);
         this.d.sendEmptyMessage(2);
-        return;
+        continue;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      } while (this.jdField_c_of_type_AndroidOsHandler == null);
-      this.jdField_c_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      return;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      return;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    } while (this.jdField_b_of_type_AndroidOsHandler == null);
-    this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(3);
+        if (this.jdField_c_of_type_AndroidOsHandler != null)
+        {
+          this.jdField_c_of_type_AndroidOsHandler.sendEmptyMessage(4);
+          continue;
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          continue;
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+          continue;
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+          if (this.jdField_b_of_type_AndroidOsHandler != null) {
+            this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(3);
+          }
+        }
+      }
+    }
   }
   
   public void setAudioCallback(Handler paramHandler)
@@ -186,14 +190,14 @@ public class PublishItemBar
         if (!paramBoolean) {
           break label54;
         }
-        ((ImageButton)localView).setImageResource(2130843369);
+        ((ImageButton)localView).setImageResource(2130843730);
       }
       for (;;)
       {
         i += 1;
         break;
         label54:
-        ((ImageButton)localView).setImageResource(2130843368);
+        ((ImageButton)localView).setImageResource(2130843729);
       }
     }
   }
@@ -215,7 +219,7 @@ public class PublishItemBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PublishItemBar
  * JD-Core Version:    0.7.0.1
  */

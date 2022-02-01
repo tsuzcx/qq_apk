@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
 
-class atsq
-  extends altm
+public class atsq
+  implements aucg
 {
-  atsq(atso paramatso) {}
+  public atsq(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(atso.a(this.a).a())))
+    switch (paramInt)
     {
-      atso.a(atso.a(this.a), 0, String.valueOf(paramObject));
-      if (atso.a(this.a) != null) {
-        atso.a(this.a).finish();
-      }
+    default: 
+      return;
+    case 1: 
+      bdho.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new atsr(this));
+      return;
     }
+    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsq
  * JD-Core Version:    0.7.0.1
  */

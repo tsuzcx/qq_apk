@@ -1,454 +1,344 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.provider.Settings.SettingNotFoundException;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.location.ui.MapUtils.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.InetAddress;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URLEncoder;
+import mqq.app.MobileQQ;
 
 public class awao
-  implements baug
 {
-  private static int jdField_a_of_type_Int = 3;
-  static bauf jdField_a_of_type_Bauf = new awap();
-  private baue jdField_a_of_type_Baue;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<awaq> jdField_a_of_type_JavaUtilList = new Vector();
-  Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private static Boolean a;
   
-  public awao(QQAppInterface paramQQAppInterface)
+  private static double a(double paramDouble)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 3.141592653589793D * paramDouble / 180.0D;
   }
   
-  public static String a()
+  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    if (bdep.a()) {
-      return alof.aX + "OlympicRes/";
-    }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "OlympicRes/";
+    paramDouble1 = a(paramDouble1);
+    paramDouble3 = a(paramDouble3);
+    paramDouble2 = a(paramDouble2);
+    paramDouble4 = a(paramDouble4);
+    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
   }
   
-  public static String a(String paramString)
+  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    String str = a() + paramString + "_dir" + File.separator;
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicResources", 2, "getUncompressedZipFileDir ,md = " + paramString + ",dir = " + str);
-    }
-    return str;
+    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
   }
   
-  private void a(String paramString1, String paramString2, Object paramObject, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
+  public static int a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicResources", 2, "retry.url" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",retryCount=" + paramInt1);
-    }
-    if (this.jdField_a_of_type_Baue == null) {
-      this.jdField_a_of_type_Baue = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    }
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = this;
-    localbaub.jdField_a_of_type_JavaLangString = paramString1;
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.c = paramString3;
-    localbaub.e = 1;
-    localbaub.a(new Object[] { paramString2, paramObject, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-    localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
-    this.jdField_a_of_type_Baue.a(localbaub);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramString = new File(a() + paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicResources", 2, "isNeedDownload ,md = " + paramString1);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_JavaUtilSet.contains(paramString1))) {}
+    int j = 0;
+    if (Build.VERSION.SDK_INT >= 19) {}
     for (;;)
     {
-      return false;
       try
       {
-        String str = a();
-        paramString2 = new File(str + paramString1 + paramString2);
-        if (!paramString2.exists())
+        i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
+        if (QLog.isColorLevel()) {
+          QLog.d("MapUtils", 2, "getLocationMode: invoked. locationMode: " + i);
+        }
+        return i;
+      }
+      catch (Settings.SettingNotFoundException paramContext)
+      {
+        paramContext.printStackTrace();
+        i = j;
+        continue;
+      }
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "location_providers_allowed");
+      int i = j;
+      if (!TextUtils.isEmpty(paramContext)) {
+        if ((paramContext.contains("gps")) && (paramContext.contains("network")))
         {
-          this.jdField_a_of_type_JavaUtilSet.add(paramString1);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "isNeedDownload. file not exist,md = " + paramString1 + ",file = " + paramString2.getAbsolutePath());
+          i = 3;
+        }
+        else if (paramContext.contains("gps"))
+        {
+          i = 1;
+        }
+        else
+        {
+          i = j;
+          if (paramContext.contains("network")) {
+            i = 2;
           }
-          return true;
         }
       }
-      catch (Throwable paramString1)
+    }
+  }
+  
+  private static Object a(Object paramObject, String paramString)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    try
+    {
+      paramString = paramObject.getClass().getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramObject = paramString.get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      paramObject.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  static String a(double paramDouble)
+  {
+    if (paramDouble < 60.0D)
+    {
+      if (Math.round(paramDouble) <= 0L) {}
+      for (i = 1;; i = (int)Math.round(paramDouble)) {
+        return i + "分钟";
+      }
+    }
+    if (paramDouble < 1440.0D)
+    {
+      i = (int)(paramDouble / 60.0D);
+      j = (int)Math.round(paramDouble - i * 60);
+      return i + "小时" + j + "分钟";
+    }
+    int i = (int)(paramDouble / 1440.0D);
+    int j = (int)(paramDouble / 60.0D - i * 24);
+    int k = (int)Math.round(paramDouble - j * 60 - i * 24 * 60);
+    return i + "天" + j + "小时" + k + "分钟";
+  }
+  
+  public static void a()
+  {
+    a = null;
+  }
+  
+  static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
+  {
+    if (a())
+    {
+      String str = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
+      try
+      {
+        Intent localIntent = Intent.parseUri(str, 0);
+        localIntent.addCategory("android.intent.category.BROWSABLE");
+        localIntent.setComponent(null);
+        localIntent.setSelector(null);
+        localIntent.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramActivity.startActivity(localIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqmap", 2, "launchQQMap: " + str);
+        }
+        return;
+      }
+      catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "isNeedDownload.exception happen.e=" + paramString1.getMessage());
+          QLog.w("Q.qqmap", 2, "launchQQMap: " + str, localException);
         }
-        paramString1.printStackTrace();
+        bcst.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 1, 0, "0", "0", "0", "");
       }
-    }
-    return false;
-  }
-  
-  public void a(awaq paramawaq)
-  {
-    if (paramawaq == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramawaq)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramawaq);
-  }
-  
-  public boolean a(String paramString1, String paramString2, Object paramObject, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicResources", 2, "downLoad.url" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject);
-    }
-    if ((paramObject != null) && ((paramObject instanceof String)) && ("mp4".equals(paramObject))) {}
-    String str2;
-    for (String str1 = ".mp4";; str2 = "")
-    {
-      if (!a(paramString2, str1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "downLoad.not need to download.md5=" + paramString2 + ",url=" + paramString1);
-        }
-        if ((paramObject != null) && ((paramObject instanceof String[])))
-        {
-          paramString1 = (String[])paramObject;
-          paramObject = paramString1[0];
-          if ((paramObject != null) && ("shuayishua_anim".equals(paramObject)))
-          {
-            str1 = a(paramString2);
-            localObject = str1 + "pullfire";
-            String str3 = str1 + "takefire";
-            String str4 = str1 + "firestart";
-            String str5 = str1 + "fire";
-            if ((bdhb.a((String)localObject)) && (bdhb.a(str3)) && (bdhb.a(str4)) && (bdhb.a(str5))) {}
-          }
-        }
-        try
-        {
-          localObject = new File(str1);
-          if (((File)localObject).exists()) {
-            ((File)localObject).delete();
-          }
-          bdhb.a(a() + paramString2, str1, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "re un compressZip shuayishua_anim success.destDir=" + str1);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OlympicResources", 2, "re un compressZip shuayishua_anim failed: " + localException.getMessage());
-            }
-          }
-        }
-        if ((paramObject != null) && ("ActConfig".equals(paramObject)))
-        {
-          paramString1 = paramString1[1];
-          if ((paramString1 != null) && ("TorchAnim".equals(paramString1)))
-          {
-            paramString1 = a(paramString2);
-            if (bdhb.a(paramString1 + "fire")) {}
-          }
-        }
-        try
-        {
-          paramObject = new File(paramString1);
-          if (paramObject.exists()) {
-            paramObject.delete();
-          }
-          bdhb.a(a() + paramString2, paramString1, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("OlympicResources", 2, "re un compressZip TorchAnim success.destDir=" + paramString1);
-          }
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("OlympicResources", 2, "re un compressZip TorchAnim failed: " + paramString1.getMessage());
-            }
-          }
-        }
-        return false;
-      }
-      if (paramBoolean2)
-      {
-        localObject = (OlympicManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(167);
-        if (localObject != null)
-        {
-          if (!((OlympicManager)localObject).b(paramString1))
-          {
-            awci.b("OlympicResources", new Object[] { "download, checkLimit == false, url=", paramString1 });
-            return true;
-          }
-          ((OlympicManager)localObject).a(paramString1, 1, false);
-        }
-      }
-      if (this.jdField_a_of_type_Baue == null) {
-        this.jdField_a_of_type_Baue = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-      }
-      Object localObject = new baub();
-      ((baub)localObject).jdField_a_of_type_Baug = this;
-      ((baub)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((baub)localObject).jdField_a_of_type_Int = 0;
-      ((baub)localObject).c = (a() + paramString2 + localException);
-      ((baub)localObject).e = 1;
-      ((baub)localObject).a(new Object[] { paramString2, paramObject, Integer.valueOf(0), Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt) });
-      ((baub)localObject).jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
-      this.jdField_a_of_type_Baue.a((bave)localObject);
-      return true;
-    }
-  }
-  
-  public void b(awaq paramawaq)
-  {
-    if (paramawaq == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(paramawaq);
-  }
-  
-  public void onResp(bavf parambavf)
-  {
-    boolean bool1;
-    baub localbaub;
-    Object localObject2;
-    Object localObject1;
-    int i;
-    String str1;
-    label57:
-    Object localObject4;
-    Object localObject5;
-    int k;
-    boolean bool2;
-    int j;
-    long l;
-    if (parambavf.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      localbaub = (baub)parambavf.jdField_a_of_type_Bave;
-      localObject2 = new File(localbaub.c);
-      localObject1 = localbaub.a();
-      i = parambavf.b;
-      if (parambavf.jdField_a_of_type_JavaLangString != null) {
-        break label636;
-      }
-      str1 = "0";
-      if ((localObject1 == null) || (!(localObject1 instanceof Object[]))) {
-        break label888;
-      }
-      localObject1 = (Object[])localObject1;
-      localObject4 = (String)localObject1[0];
-      localObject5 = localObject1[1];
-      k = ((Integer)localObject1[2]).intValue();
-      bool2 = ((Boolean)localObject1[3]).booleanValue();
-      j = ((Integer)localObject1[4]).intValue();
-      if (!bool1) {
-        break label662;
-      }
-      if (this.jdField_a_of_type_JavaUtilSet.contains(localObject4)) {
-        this.jdField_a_of_type_JavaUtilSet.remove(localObject4);
-      }
-      localObject1 = awni.a(((File)localObject2).getAbsolutePath());
-      if (((String)localObject4).equals(localObject1)) {
-        break label645;
-      }
-      ((File)localObject2).delete();
-      bool1 = false;
-      QLog.i("OlympicResources", 1, "onResp.md5 verify fail.md5=" + (String)localObject4 + ",calMD5=" + (String)localObject1);
-      l = 0L;
-      i = -6103066;
-      localObject1 = null;
     }
     for (;;)
     {
-      label241:
-      HashMap localHashMap;
-      label267:
-      String str2;
-      Object localObject3;
-      if ((j == 1) || (j == 2))
+      try
       {
-        if (j == 1)
-        {
-          localObject2 = "olympic_down_shua";
-          if (i != 0) {
-            break label807;
-          }
-          j = 1;
-          localHashMap = new HashMap();
-          localHashMap.put("param_FailCode", String.valueOf(i));
-          localHashMap.put("url", awci.a(localbaub.jdField_a_of_type_JavaLangString));
-          localHashMap.put("err_desc", str1);
-          str2 = "0";
-          localObject3 = str2;
-          if (parambavf.jdField_a_of_type_JavaUtilHashMap != null)
-          {
-            localObject3 = str2;
-            if (parambavf.jdField_a_of_type_JavaUtilHashMap.containsKey("netresp_param_reason")) {
-              localObject3 = (String)parambavf.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason");
-            }
-          }
-          localHashMap.put("netresp_param_reason", localObject3);
-          str2 = "0";
-          if (j == 0) {
-            break label812;
-          }
-          localHashMap.put("file_size", String.valueOf(l));
-          localHashMap.put("cdn_ip", "0");
-          azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject2, true, 0L, l, localHashMap, "", false);
-          awci.b("OlympicResources", new Object[] { "onResp report Download, reportKey=", localObject2, ", errcode=", Integer.valueOf(i), ", url=", localbaub.jdField_a_of_type_JavaLangString });
-        }
-      }
-      else
-      {
-        localObject3 = localObject1;
-        localObject2 = localObject5;
-        localObject1 = localObject4;
-        label499:
+        paramString1 = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
         if (QLog.isColorLevel()) {
-          QLog.i("OlympicResources", 2, "onResp.url=" + localbaub.jdField_a_of_type_JavaLangString + ", result=" + parambavf.jdField_a_of_type_Int + ", errCode=" + i + ",md5 = " + (String)localObject1);
+          QLog.d("Q.qqmap", 2, "launchQQMap, mapparam = " + paramString1);
         }
-        j = 0;
-        for (;;)
-        {
-          if (j < this.jdField_a_of_type_JavaUtilList.size())
-          {
-            localObject4 = (awaq)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localObject4 != null) {
-              ((awaq)localObject4).a(localbaub.jdField_a_of_type_JavaLangString, (String)localObject1, localObject2, i, (String)localObject3);
-            }
-            j += 1;
-            continue;
-            bool1 = false;
-            break;
-            label636:
-            str1 = parambavf.jdField_a_of_type_JavaLangString;
-            break label57;
-            label645:
-            localObject1 = ((File)localObject2).getAbsolutePath();
-            l = ((File)localObject2).length();
-            break label241;
-            label662:
-            if ((localObject2 != null) && (((File)localObject2).exists())) {
-              ((File)localObject2).delete();
-            }
-            if ((k >= jdField_a_of_type_Int) || (!bool2)) {
-              break label1015;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("OlympicResources", 2, "onResp.retry.url=" + localbaub.jdField_a_of_type_JavaLangString + ",md5=" + (String)localObject4 + ", result=" + parambavf.jdField_a_of_type_Int + ", errCode=" + i + ",retryCount=" + k);
-            }
-            a(localbaub.jdField_a_of_type_JavaLangString, (String)localObject4, localObject5, k + 1, bool2, j, localbaub.c);
-          }
-        }
-      }
-      label807:
-      label812:
-      label888:
-      while (bool1)
-      {
-        for (;;)
-        {
-          return;
-          localObject2 = "olympic_down_act";
+        paramString1 = URLEncoder.encode(paramString1, "UTF-8");
+        paramString1 = "https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882&intention=" + paramString1;
+        paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
+        paramString2.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramString2.putExtra("url", paramString1);
+        paramActivity.startActivity(paramString2);
+        if (!QLog.isColorLevel()) {
           break;
-          j = 0;
-          break label267;
-          try
-          {
-            localObject3 = InetAddress.getByName("hb.url.cn").getHostAddress();
-            localHashMap.put("cdn_ip", localObject3);
-            azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject2, false, 0L, 0L, localHashMap, "", false);
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              localObject3 = str2;
-              if (QLog.isColorLevel())
-              {
-                localThrowable.printStackTrace();
-                localObject3 = str2;
-              }
-            }
-          }
         }
-        ((File)localObject2).delete();
-        azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_null", bool1, 0L, 0L, null, "", false);
-        localObject3 = null;
-        localObject2 = null;
-        localObject1 = null;
-        break label499;
+        QLog.d("Q.qqmap", 2, "launchQQMap, download = " + paramString1);
+        return;
       }
-      QLog.i("OlympicResources", 1, "onResp.url=" + localbaub.jdField_a_of_type_JavaLangString + ", result=" + parambavf.jdField_a_of_type_Int + ", errCode=" + i + ",md5 = " + (String)localObject1 + ", errDesc=" + str1);
+      catch (UnsupportedEncodingException paramString1)
+      {
+        paramString1.printStackTrace();
+        paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
+        paramString1.putExtra("big_brother_source_key", "biz_src_location_share");
+        paramString1.putExtra("url", "https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
+        paramActivity.startActivity(paramString1);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("Q.qqmap", 2, "launchQQMap, download = https://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
       return;
-      label1015:
-      localObject1 = null;
-      l = 0L;
+      bcst.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 2, 0, "0", "0", "0", "");
     }
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  public static void a(View paramView, String paramString)
   {
-    Object localObject = null;
-    if ((parambave == null) || (!(parambave instanceof baub))) {
+    if (AppSetting.c) {
+      paramView.setContentDescription(paramString);
+    }
+  }
+  
+  public static void a(ImageView paramImageView, String paramString)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramImageView.getWidth();
+    localURLDrawableOptions.mRequestHeight = paramImageView.getHeight();
+    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+    localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+    paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+  }
+  
+  public static void a(TencentMap paramTencentMap)
+  {
+    if (paramTencentMap != null) {
+      a(a(a(a(a(paramTencentMap, "m"), "a"), "b"), "b"), "b", null);
+    }
+  }
+  
+  public static void a(TencentMap paramTencentMap, int paramInt)
+  {
+    if (paramTencentMap != null)
+    {
+      paramTencentMap = a(a(a(a(paramTencentMap.getUiSettings(), "a"), "a"), "d"), "W");
+      if ((paramTencentMap instanceof ViewGroup)) {
+        ((ViewGroup)paramTencentMap).setVisibility(paramInt);
+      }
+    }
+  }
+  
+  public static void a(Marker paramMarker)
+  {
+    if (paramMarker != null)
+    {
+      String str1 = paramMarker.getTitle();
+      String str2 = paramMarker.getSnippet();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        paramMarker.showInfoWindow();
+      }
+    }
+    else
+    {
       return;
     }
-    String str = ((baub)parambave).jdField_a_of_type_JavaLangString;
-    parambave = parambave.a();
-    if ((parambave != null) && ((parambave instanceof Object[])))
-    {
-      localObject = (Object[])parambave;
-      parambave = (String)localObject[0];
-      localObject = localObject[1];
+    paramMarker.hideInfoWindow();
+  }
+  
+  private static void a(Object paramObject1, String paramString, Object paramObject2)
+  {
+    if (paramObject1 == null) {
+      return;
     }
-    for (;;)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OlympicResources", 2, "onUpdateProgeress.url=" + str + ", md5=" + parambave + ", userData=" + localObject + ",curOffset=" + paramLong1 + ",totalLen=" + paramLong2);
-      }
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        awaq localawaq = (awaq)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localawaq != null) {
-          localawaq.a(str, parambave, localObject, paramLong1, paramLong2);
-        }
-        i += 1;
-      }
-      break;
-      parambave = null;
+      paramString = paramObject1.getClass().getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramString.set(paramObject1, paramObject2);
+      return;
     }
+    catch (NoSuchFieldException paramObject1)
+    {
+      paramObject1.printStackTrace();
+      return;
+    }
+    catch (IllegalAccessException paramObject1)
+    {
+      paramObject1.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, TextView paramTextView)
+  {
+    if (paramTextView.getWidth() == 0)
+    {
+      paramTextView.post(new MapUtils.1(paramString1, paramString2, paramTextView));
+      return;
+    }
+    String str = paramString1 + paramString2;
+    float f2 = paramTextView.getWidth();
+    float f1 = paramTextView.getPaint().measureText(paramString1);
+    float f3 = paramTextView.getPaint().measureText(paramString2);
+    if (f1 + f3 <= f2)
+    {
+      paramTextView.setText(str);
+      return;
+    }
+    float f4 = paramTextView.getPaint().measureText("...");
+    while ((f1 + f4 + f3 > f2) && (paramString1.length() > 0))
+    {
+      paramString1 = paramString1.substring(0, paramString1.length() - 1);
+      f1 = paramTextView.getPaint().measureText(paramString1);
+    }
+    paramTextView.setText(paramString1 + "..." + paramString2);
+  }
+  
+  public static boolean a()
+  {
+    if (a == null) {
+      a = Boolean.valueOf(bkgu.a(MobileQQ.sMobileQQ, "com.tencent.map"));
+    }
+    return a.booleanValue();
+  }
+  
+  public static boolean a(Context paramContext, TencentMap paramTencentMap, LatLng paramLatLng)
+  {
+    boolean bool1 = false;
+    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
+    paramContext = new Rect(0, 0, paramContext.getResources().getDisplayMetrics().widthPixels, i);
+    paramTencentMap = paramTencentMap.getProjection();
+    if (paramTencentMap == null) {}
+    boolean bool2;
+    do
+    {
+      return bool1;
+      paramTencentMap = paramTencentMap.toScreenLocation(paramLatLng);
+      bool2 = paramContext.contains(paramTencentMap.x, paramTencentMap.y);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("MapUtils", 2, "[map][init]isLocationInScreen: invoked. location: " + paramLatLng + " screen: " + paramTencentMap + " inScreen: " + bool2);
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awao
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,15 @@ package com.tencent.mobileqq.mini.share;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import alud;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdnn;
+import anni;
+import aufz;
+import bgsp;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -31,21 +34,26 @@ public class MiniProgramShareUtils
 {
   public static final String MINI_APP_SHARE_APPID = "miniAppShareAppid";
   public static final String MINI_APP_SHARE_APP_TYPE = "miniAppShareAppType";
+  public static final String MINI_APP_SHARE_CALLBACK_ID = "miniAppShareCallbackId";
   public static final String MINI_APP_SHARE_DEST_ID = "miniAppShareDestId";
   public static final String MINI_APP_SHARE_DEST_TYPE = "miniAppShareDestType";
+  public static final String MINI_APP_SHARE_EVENT = "miniAppShareEvent";
   public static final String MINI_APP_SHARE_FROM = "miniAppShareFrom";
   public static final int MINI_APP_SHARE_FROM_DETAIL = 10;
   public static final int MINI_APP_SHARE_FROM_INNER_BUTTON = 11;
   public static final int MINI_APP_SHARE_FROM_MORE_BUTTON = 12;
+  public static final int MINI_APP_SHARE_FROM_PAY = 13;
+  public static final String MINI_APP_SHARE_IS_COMPLETE = "miniAppShareIsComplete";
   public static final String MINI_APP_SHARE_SCENE = "miniAppShareScene";
+  public static final String MINI_APP_SHARE_TEMPLATE_ID = "miniAppShareTemplateId";
   public static final String MINI_APP_SHARE_TYPE = "miniAppShareType";
   public static final long SHARE_APPID_MISMATCHING = -1000710003L;
   public static final long SHARE_OUT_OF_LIMIT = -100070004L;
   private static final String SHARE_PATH_DETAIL = "openMiniApp/detail";
   private static final String SHARE_SCHEME = "miniapp";
-  private static final String TAG = "MiniProgramShareUtils";
+  private static final String TAG = "MiniProgramShareUtils [miniappArkShare]";
   
-  private static String getArkPrompt(MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject)
+  public static String getArkPrompt(MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject)
   {
     Object localObject = null;
     if (paramJSONObject != null) {
@@ -64,7 +72,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = alud.a(2131707264);; paramJSONObject = alud.a(2131707265))
+    for (paramJSONObject = anni.a(2131705655);; paramJSONObject = anni.a(2131705656))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -85,7 +93,7 @@ public class MiniProgramShareUtils
     }
     catch (Exception localException)
     {
-      QLog.e("MiniProgramShareUtils", 1, "getLocalImagePathFromArkMeta get an exception: " + paramString + ",e:" + localException);
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, "getLocalImagePathFromArkMeta get an exception: " + paramString + ",e:" + localException);
       localException.printStackTrace();
     }
     return null;
@@ -157,9 +165,11 @@ public class MiniProgramShareUtils
     }
   }
   
-  private static boolean performShareAsArkMessage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, JSONObject paramJSONObject, int paramInt3, String paramString5, int paramInt4)
+  public static boolean performShareAsArkMessage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, JSONObject paramJSONObject, int paramInt3, String paramString5, int paramInt4)
   {
-    if ((TextUtils.isEmpty(paramString3)) || (paramJSONObject == null) || (paramJSONObject.isNull("appName")) || (paramJSONObject.isNull("appView")) || (paramJSONObject.isNull("metaData"))) {
+    if ((TextUtils.isEmpty(paramString3)) || (paramJSONObject == null) || (paramJSONObject.isNull("appName")) || (paramJSONObject.isNull("appView")) || (paramJSONObject.isNull("metaData")))
+    {
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 2, "performShareAsArkMessage Param Error!");
       return false;
     }
     String str1 = paramJSONObject.optString("appName");
@@ -191,7 +201,7 @@ public class MiniProgramShareUtils
       catch (JSONException paramString4)
       {
         int i;
-        QLog.e("MiniProgramShareUtils", 2, "performShareAsArkMessage", paramString4);
+        QLog.e("MiniProgramShareUtils [miniappArkShare]", 2, "performShareAsArkMessage", paramString4);
         paramString4 = paramJSONObject;
         continue;
       }
@@ -209,19 +219,19 @@ public class MiniProgramShareUtils
     shareAsArkMessage(paramActivity, paramMiniArkShareModel, paramBoolean, paramInt, null);
   }
   
-  public static void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
+  public static void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, COMM.StCommonExt paramStCommonExt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
   {
     if (paramMiniArkShareModel == null)
     {
-      QLog.e("MiniProgramShareUtils", 1, "shareAsArkMessage failed! miniArkShareModel is null");
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, "shareAsArkMessage failed! miniArkShareModel is null");
       return;
     }
     int j = 0;
     int i = j;
-    if (!bdnn.a(paramMiniArkShareModel.getTemplateId()))
+    if (!bgsp.a(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!bdnn.a(paramMiniArkShareModel.getTemplateData())) {
+      if (!bgsp.a(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }
@@ -230,9 +240,14 @@ public class MiniProgramShareUtils
     }
     for (;;)
     {
-      MiniAppCmdUtil.getInstance().getShareInfo(newShareInfoRequest(paramMiniArkShareModel.getAppId(), paramMiniArkShareModel.getTitle(), paramMiniArkShareModel.getDescription(), (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramMiniArkShareModel.getShareScene(), paramMiniArkShareModel.getShareTemplateType(), paramMiniArkShareModel.getShareBusinessType(), paramMiniArkShareModel.getPicUrl(), paramMiniArkShareModel.getVidUrl(), paramMiniArkShareModel.getJumpUrl(), paramMiniArkShareModel.getIconUrl(), null, paramMiniArkShareModel.getVersionType(), paramMiniArkShareModel.getVersionId(), i, paramBoolean, paramMiniArkShareModel.getWebURL(), paramMiniArkShareModel.getAppidRich(), paramMiniArkShareModel.getTemplateId(), paramMiniArkShareModel.getTemplateData(), paramMiniArkShareModel.getRcvOpenId()), new MiniProgramShareUtils.2(i, paramActivity, paramMiniArkShareModel, paramInt, paramOnShareListener));
+      MiniAppCmdUtil.getInstance().getShareInfo(newShareInfoRequest(paramMiniArkShareModel.getAppId(), paramMiniArkShareModel.getTitle(), paramMiniArkShareModel.getDescription(), (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramMiniArkShareModel.getShareScene(), paramMiniArkShareModel.getShareTemplateType(), paramMiniArkShareModel.getShareBusinessType(), paramMiniArkShareModel.getPicUrl(), paramMiniArkShareModel.getVidUrl(), paramMiniArkShareModel.getJumpUrl(), paramMiniArkShareModel.getIconUrl(), paramStCommonExt, paramMiniArkShareModel.getVersionType(), paramMiniArkShareModel.getVersionId(), i, paramBoolean, paramMiniArkShareModel.getWebURL(), paramMiniArkShareModel.getAppidRich(), paramMiniArkShareModel.getTemplateId(), paramMiniArkShareModel.getTemplateData(), paramMiniArkShareModel.getRcvOpenId()), new MiniProgramShareUtils.2(i, paramActivity, paramMiniArkShareModel, paramInt, paramOnShareListener));
       return;
     }
+  }
+  
+  public static void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
+  {
+    shareAsArkMessage(paramActivity, paramMiniArkShareModel, paramBoolean, paramInt, null, paramOnShareListener);
   }
   
   public static void shareAsQzoneFeeds(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -248,11 +263,11 @@ public class MiniProgramShareUtils
   public static void shareToChatDirectly(Activity paramActivity, Bundle paramBundle, int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniProgramShareUtils", 2, "shareToChatDirectly, chatType: " + paramInt1 + ",uin: " + paramString1 + ",name: " + paramString2);
+      QLog.d("MiniProgramShareUtils [miniappArkShare]", 2, "shareToChatDirectly, chatType: " + paramInt1 + ",uin: " + paramString1 + ",name: " + paramString2);
     }
     if (paramBundle == null)
     {
-      QLog.e("MiniProgramShareUtils", 1, "shareToChatDirectly shareDataBundle is null ");
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, "shareToChatDirectly shareDataBundle is null ");
       return;
     }
     Intent localIntent = new Intent(paramActivity, TroopCreateLogicActivity.class);
@@ -288,6 +303,18 @@ public class MiniProgramShareUtils
     paramActivity.startActivity(localIntent);
   }
   
+  public static void shareUpdatableMsg(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  {
+    Intent localIntent = new Intent(paramContext, ForwardRecentActivity.class);
+    localIntent.putExtra("forward_type", 44);
+    localIntent.putExtra("miniAppShareAppid", paramString1);
+    localIntent.putExtra("miniAppShareAppType", paramInt1);
+    localIntent.putExtra("miniAppShareTemplateId", paramString2);
+    localIntent.putExtra("miniAppShareEvent", paramString3);
+    localIntent.putExtra("miniAppShareCallbackId", paramInt2);
+    aufz.a(paramContext, localIntent);
+  }
+  
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)
   {
     try
@@ -309,7 +336,7 @@ public class MiniProgramShareUtils
     {
       try
       {
-        QLog.d("MiniProgramShareUtils", 2, "updateImagePathToArkMeta: " + paramString1);
+        QLog.d("MiniProgramShareUtils [miniappArkShare]", 2, "updateImagePathToArkMeta: " + paramString1);
         return paramString1;
       }
       catch (Exception paramString2)
@@ -317,7 +344,7 @@ public class MiniProgramShareUtils
         break label93;
       }
       paramString2 = paramString2;
-      QLog.e("MiniProgramShareUtils", 1, "updateImagePathToArkMeta get an exception: " + paramString1 + ",e:" + paramString2);
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, "updateImagePathToArkMeta get an exception: " + paramString1 + ",e:" + paramString2);
       paramString2.printStackTrace();
       return paramString1;
     }
@@ -325,7 +352,7 @@ public class MiniProgramShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils
  * JD-Core Version:    0.7.0.1
  */

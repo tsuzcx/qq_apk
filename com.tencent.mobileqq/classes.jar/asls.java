@@ -1,8 +1,14 @@
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+
 public class asls
+  implements aslx
 {
-  public long a;
-  public String a;
-  public long b;
+  public asls(PullToRefreshBase paramPullToRefreshBase) {}
+  
+  public void a()
+  {
+    PullToRefreshBase.a(this.a);
+  }
 }
 
 

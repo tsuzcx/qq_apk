@@ -1,34 +1,78 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bazk
+  extends BaseAdapter
 {
-  public static int a = -1;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public static void a(int paramInt)
+  public bazk(ArrayList<Integer> paramArrayList)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
-    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
-    localEditor.commit();
-    a = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
-    }
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  public static boolean a()
+  public int getCount()
   {
-    if (asrc.a().g()) {}
-    do
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bazj localbazj;
+    if (paramView == null)
     {
-      return true;
-      if (a < 0) {
-        a = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562919, paramViewGroup, false);
+      localbazj = new bazj(null);
+      localbazj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377990));
+      localbazj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377991));
+      paramView.setTag(localbazj);
+    }
+    for (;;)
+    {
+      localbazj = (bazj)paramView.getTag();
+      bazh localbazh = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
+      if ((localbazh != null) && (localbazj.jdField_a_of_type_Int != localbazh.jdField_a_of_type_Int))
+      {
+        localbazj.jdField_a_of_type_Int = localbazh.jdField_a_of_type_Int;
+        localbazj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bico(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localbazh.jdField_a_of_type_Int, 201), false, false));
+        localbazj.jdField_a_of_type_AndroidWidgetTextView.setText(localbazh.c);
+        if (localbazh.b != 1) {
+          break label226;
+        }
+        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       }
-    } while (a == 1);
-    return false;
+      for (;;)
+      {
+        paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        label226:
+        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839273), null);
+        localbazj.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      }
+    }
   }
 }
 

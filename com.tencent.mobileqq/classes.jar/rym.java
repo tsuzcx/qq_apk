@@ -1,32 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-
-public class rym
-  implements sag
+class rym
+  extends pmn
 {
-  public rym(FastWebActivity paramFastWebActivity, int paramInt, BaseData paramBaseData) {}
+  private rym(ryj paramryj) {}
   
-  public BaseData a()
+  public void f(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    this.a.a(2);
   }
   
-  public void a()
+  public void i()
   {
-    saf localsaf = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).a(this.jdField_a_of_type_Int);
-    if (localsaf != null)
-    {
-      sdn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, localsaf.jdField_a_of_type_Float, localsaf.jdField_a_of_type_Long);
-      return;
-    }
-    sdn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    ryj.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rym
  * JD-Core Version:    0.7.0.1
  */

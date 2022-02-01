@@ -1,18 +1,7 @@
-import java.util.List;
-
-class apxs
-  implements apwu
+public class apxs
+  extends apxp
 {
-  apxs(apxr paramapxr) {}
-  
-  public void a(List<apws> paramList)
-  {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public String e = "";
 }
 
 

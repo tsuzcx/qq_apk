@@ -1,15 +1,37 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxt
+  implements DialogInterface.OnClickListener
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
-  public URLImageView a;
-  public Switch a;
-  public String a;
+  public adxt(ChatSettingForTroop.51 param51) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
+  }
 }
 
 

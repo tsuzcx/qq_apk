@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afml
-  implements arrh
+public class afml
+  implements View.OnClickListener
 {
-  afml(afmf paramafmf, FileManagerEntity paramFileManagerEntity) {}
+  public afml(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Afmf.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.jdField_a_of_type_Afmf.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

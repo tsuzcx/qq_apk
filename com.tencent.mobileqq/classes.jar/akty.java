@@ -1,55 +1,64 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-class akty
-  implements EIPCResultCallback
+public abstract class akty
 {
-  akty(aktx paramaktx) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public akty(DoodleView paramDoodleView)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1) {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
     }
-    JSONObject localJSONObject;
-    while (i != 2) {
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("nickname", 1);
-        localJSONObject.put("data", paramEIPCResult);
-        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-        return;
-      }
-      catch (Throwable paramEIPCResult)
-      {
-        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-        return;
-      }
-    }
-    paramEIPCResult = akuf.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("avatar", 1);
-      localJSONObject.put("data", paramEIPCResult);
-      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-      return;
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
     }
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    a();
+    return b(paramMotionEvent);
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

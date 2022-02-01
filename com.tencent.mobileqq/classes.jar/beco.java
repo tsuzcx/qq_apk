@@ -1,26 +1,13 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
+import java.util.ArrayList;
 
 public class beco
-  implements bdgy
+  extends becx
 {
-  private Dialog a;
-  
-  public Dialog a(Context paramContext, becg parambecg, View.OnClickListener paramOnClickListener)
-  {
-    this.a = bdgm.a(paramContext, 2131693887, this, parambecg, 2131690648, 2131693885, new becp(this), paramOnClickListener, false, false);
-    return this.a;
-  }
-  
-  public View a(Context paramContext, Object paramObject)
-  {
-    paramContext = new LiangHaoDialogView(paramContext);
-    paramContext.a((becg)paramObject);
-    return paramContext;
-  }
+  public int a;
+  public String a;
+  public ArrayList<bdyf> a = new ArrayList();
+  public boolean a;
+  public String b;
 }
 
 

@@ -19,10 +19,13 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_1095 = 1095;
   public static final int LAUNCH_SCENE_1096 = 1096;
   public static final int LAUNCH_SCENE_1103 = 1103;
+  public static final int LAUNCH_SCENE_ACCOUNT_PANEL = 4013;
   public static final int LAUNCH_SCENE_AD_BANNER_POPUP = 2094;
   public static final int LAUNCH_SCENE_AD_SCHEME = 2054;
   public static final int LAUNCH_SCENE_AIO_PANEL = 2053;
+  public static final int LAUNCH_SCENE_AIO_SHORTCUT_PANEL = 4008;
   public static final int LAUNCH_SCENE_AIO_SWEET_GREY_TIPS = 2080;
+  public static final int LAUNCH_SCENE_AIO_TITLE = 4014;
   public static final int LAUNCH_SCENE_APP_STORE_GAME_LIST = 2002;
   public static final int LAUNCH_SCENE_APP_STORE_TOP_LIST = 2001;
   public static final int LAUNCH_SCENE_ARK_BATTLE = 2072;
@@ -50,19 +53,28 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
+  public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
   public static final int LAUNCH_SCENE_FRD_LIKE_MINI_APP_VIDEO = 2089;
   public static final int LAUNCH_SCENE_INTIMATE_RELATIONSHIP_PLAY_TOGETHER = 2064;
   public static final int LAUNCH_SCENE_INTIMATE_SWEET_KEY = 2087;
+  public static final int LAUNCH_SCENE_KD_SMALL_GAME_AD_CARD = 2086;
+  public static final int LAUNCH_SCENE_KD_SMALL_GAME_CARD = 2103;
   public static final int LAUNCH_SCENE_KUOLIE_RECOMM = 2065;
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
+  public static final int LAUNCH_SCENE_LEFT_PANEL = 4007;
+  public static final int LAUNCH_SCENE_LIEF_ACHIVEMENT = 2062;
   public static final int LAUNCH_SCENE_MAIN_ENTRY = 1001;
   public static final int LAUNCH_SCENE_MINIAPP_ECSHOP = 4003;
+  public static final int LAUNCH_SCENE_MINI_APP_MESSAGE_PUBLIC_ACCOUNT = 4012;
+  public static final int LAUNCH_SCENE_MINI_APP_ONCE_SUBSCRIBE = 2105;
+  public static final int LAUNCH_SCENE_MINI_APP_PHONE_NUMBER_SEARCH = 2111;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
+  public static final int LAUNCH_SCENE_MINI_GAME_PUBLIC_ACCOUNT = 4011;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PENDANTHOLDER = 4004;
@@ -70,6 +82,9 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MEMNU = 1035;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MESSAGE_CARD = 1074;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_TEMPLATE_MESSAGE = 1043;
+  public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_WEISHI = 4006;
+  public static final int LAUNCH_SCENE_QQ_NOTICE = 2102;
+  public static final int LAUNCH_SCENE_QQ_SAFE_CENTER = 4010;
   public static final int LAUNCH_SCENE_QQ_WALLET = 1019;
   public static final int LAUNCH_SCENE_QQ_X_MAN = 2093;
   public static final int LAUNCH_SCENE_QR_CODE_FROM_ALBUM = 1013;
@@ -79,12 +94,15 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE = 2009;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_NINE = 2092;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
+  public static final int LAUNCH_SCENE_QZONE_PUBLISH_MOOD = 2100;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
   public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2098;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
+  public static final int LAUNCH_SCENE_SEARCH_ENTRY = 4001;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
+  public static final int LAUNCH_SCENE_SEARCH_LIVE = 3017;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_FIND = 1006;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
   public static final int LAUNCH_SCENE_SETTING_ME = 2066;
@@ -94,6 +112,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_SHARE_QZONE = 2003;
   public static final int LAUNCH_SCENE_SHARE_TICKET = 1044;
   public static final int LAUNCH_SCENE_SPLASH = 2004;
+  public static final int LAUNCH_SCENE_STATUS_SETTING_UI = 4015;
   public static final int LAUNCH_SCENE_STORY_CAMERA_PLAY_SHOW = 2083;
   public static final int LAUNCH_SCENE_TEMPLATE_MESSAGE = 1014;
   public static final int LAUNCH_SCENE_UNKNOWN = 9999;
@@ -117,6 +136,7 @@ public class LaunchParam
   public long launchClickTimeMillis;
   public String miniAppId;
   public String navigateExtData;
+  public String privateExtraData;
   public String reportData;
   public int scene = 9999;
   public String shareTicket;
@@ -235,11 +255,12 @@ public class LaunchParam
     paramParcel.writeInt(this.fromBackToMiniApp);
     paramParcel.writeString(this.fromEnvVersion);
     paramParcel.writeParcelable(this.fromMiniAppInfo, paramInt);
+    paramParcel.writeString(this.privateExtraData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

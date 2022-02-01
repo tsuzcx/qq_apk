@@ -1,19 +1,36 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class atms
+  extends asyw
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  public atms(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
   
-  public atms(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-  }
-  
-  public String toString()
-  {
-    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
+    if (!paramBoolean) {
+      if ((paramString != null) && (paramString.length() > 0)) {
+        atvo.a(paramString);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.a.b == null) || (this.a.app == null));
+        if (this.a.b.b() == paramLong) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
+      return;
+    } while (this.a.app.a().b(paramLong) != null);
+    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
   }
 }
 

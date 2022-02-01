@@ -1,17 +1,45 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
+import java.util.List;
 
 public class bbkq
-  implements bctw
+  extends bbkp
 {
-  public bbkq(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  private int a;
   
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public bbkq(List<bbmy> paramList, String paramString, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
-      TroopBarReplyActivity.a(this.a, false);
+    super(paramList, paramString);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return bbgu.a("fts_native_chathistory_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return anni.a(2131703739);
+  }
+  
+  public void a(View paramView)
+  {
+    bbup.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
+    {
+      bbup.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+      bbrf.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
     }
-    return false;
+    bgur.d = -1;
+    bgur.f = 0;
+    bgur.g = -1;
+    bgur.h = -1;
+    bgur.i = -1;
+    bgur.j = -1;
+    bguq.a(paramView);
+    FTSEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

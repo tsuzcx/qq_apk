@@ -1,11 +1,23 @@
-class bcgv
-  implements bckv
+public class bcgv
 {
-  bcgv(bcgs parambcgs) {}
+  public float a;
+  public int a;
+  public alkl a;
+  public boolean a;
+  public float b;
+  public int b;
+  public int c;
   
-  public void a(int paramInt)
+  public bcgv() {}
+  
+  public bcgv(boolean paramBoolean)
   {
-    this.a.a(bckt.b(paramInt));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Alkl != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
   }
 }
 

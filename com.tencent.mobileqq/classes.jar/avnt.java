@@ -1,50 +1,26 @@
-import java.util.Calendar;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class avnt
-  implements aoim
+  implements aaob
 {
-  avnt(avnl paramavnl) {}
+  avnt(avns paramavns, String paramString) {}
   
-  public int a()
+  public void callback(Bundle paramBundle)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    if (this.jdField_a_of_type_Avns.isDestroy) {}
+    do
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + alud.a(2131707645);
-    case 1: 
-      return paramInt2 + 1 + alud.a(2131707748);
-    }
-    return paramInt2 + 1 + alud.a(2131707730);
+      return;
+      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
+      this.jdField_a_of_type_Avns.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    } while (!QLog.isColorLevel());
+    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avnt
  * JD-Core Version:    0.7.0.1
  */

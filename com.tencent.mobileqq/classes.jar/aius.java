@@ -1,28 +1,17 @@
-import Wallet.GetRandomHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
 
-class aius
-  implements ajfp
+public class aius
+  extends ajin
 {
-  aius(aiul paramaiul, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver) {}
-  
-  public void a(String paramString)
-  {
-    if (aiul.a(this.jdField_a_of_type_Aiul) != null)
-    {
-      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
-      localGetRandomHbIdiomReq.makeUin = aiul.a(this.jdField_a_of_type_Aiul).getLongAccountUin();
-      localGetRandomHbIdiomReq.subchannel = this.jdField_a_of_type_Int;
-      localGetRandomHbIdiomReq.sKey = paramString;
-      localGetRandomHbIdiomReq.appid = AppSetting.a();
-      localGetRandomHbIdiomReq.fromType = this.b;
-      localGetRandomHbIdiomReq.platform = 0;
-      localGetRandomHbIdiomReq.qqVersion = "8.3.5";
-      aivh.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
-    }
-  }
+  public int a;
+  public String a;
+  public ArrayList<aiut> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

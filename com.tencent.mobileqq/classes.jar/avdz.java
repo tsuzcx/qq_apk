@@ -1,34 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-final class avdz
-  implements bfah
+class avdz
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  avdz(String paramString, aved paramaved) {}
+  avdz(avdv paramavdv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    this.a.jdField_a_of_type_Boolean = false;
+    avdv.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Aved != null) {
-        this.jdField_a_of_type_Aved.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Aved == null) {
       return;
-    }
-    this.jdField_a_of_type_Aved.a(false);
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (avdv.a(this.a) == null);
+    avdv.a(this.a).j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdz
  * JD-Core Version:    0.7.0.1
  */

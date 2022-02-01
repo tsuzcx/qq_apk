@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.os.Message;
-import bdin;
+import bgnt;
 import mqq.os.MqqHandler;
 
 class MsgBackupBaseFragment$1
@@ -13,7 +13,7 @@ class MsgBackupBaseFragment$1
   {
     int j = 1;
     Message localMessage;
-    if (bdin.a(this.this$0.getActivity()) == 1)
+    if (bgnt.a(this.this$0.getActivity()) == 1)
     {
       i = 1;
       localMessage = this.this$0.a.obtainMessage(10012);
@@ -35,7 +35,7 @@ class MsgBackupBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */
